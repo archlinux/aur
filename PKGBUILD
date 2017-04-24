@@ -9,7 +9,7 @@ _upstream=fusion-icon
 
 pkgname=fusion-icon-git
 epoch=1
-pkgver=0.2.2.r10.gb6fb51a
+pkgver=0.2.3.r4.g84e27a8
 pkgrel=1
 pkgdesc="Simple tray icon for Compiz 0.8"
 arch=('any')
@@ -22,6 +22,7 @@ depends=('compizconfig-python' 'hicolor-icon-theme' 'xorg-utils' 'mesa-demos')
 # Note to anyone who builds this: Make sure you install the appropriate
 # dependencies for the user interfaces you want to use! Otherwise, it'll appear
 # like it's not working!
+# Change to python2 if using Compiz 0.9.x
 optdepends=(
 	'python-pyqt5: For the Qt Interface'
 	'python-gobject: For the GTK+ Interface'
@@ -36,11 +37,16 @@ pkgver() {
   git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "${srcdir}/${_upstream}"
+  # Change to python2 if using Compiz 0.9.x
+  python ./setup.py build
+}
+
 package() {
   cd "${srcdir}/${_upstream}"
-  # Workaround until upstream autofills out main.py for each interface
-  make PREFIX=/usr
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  # Change to python2 if using Compiz 0.9.x
+  python ./setup.py install --root="$pkgdir" --optimize=1
 }
 
 sha256sums=('SKIP')
