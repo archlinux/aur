@@ -2,10 +2,10 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-experimental
-pkgver=0.14.22
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (experimental branch)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio' 'factorio-demo')
@@ -15,15 +15,8 @@ md5sums=('5cacd198a3156c157a482aeab368e9a1'
          '22fce67d66c080fa5c89ab437b3d8724')
 source=(factorio.desktop LICENSE)
 options=(!strip)
-
-if [ "${CARCH}" = "i686" ]; then
-  _factorio_arch=i386
-  _url=https://www.factorio.com/get-download/${pkgver}/alpha/linux32
-else
-  _factorio_arch=x64
-  _url=https://www.factorio.com/get-download/${pkgver}/alpha/linux64
-fi
-_gamepkg=factorio_alpha_${_factorio_arch}_${pkgver}.tar.gz
+_url=https://www.factorio.com/get-download/${pkgver}/alpha/linux64
+_gamepkg=factorio_alpha_x64_${pkgver}.tar.xz
 
 build() {
   msg "You need a full copy of this game in order to install it"
@@ -68,7 +61,7 @@ package() {
   install -d "${pkgdir}/usr/share/licenses/factorio"
   install -d -m777 "${pkgdir}/usr/share/factorio/scenario-pack"
 
-  install -m755 "bin/${_factorio_arch}/factorio" "$pkgdir/usr/bin/factorio"
+  install -m755 "bin/x64/factorio" "$pkgdir/usr/bin/factorio"
   cp -r data/* "$pkgdir/usr/share/factorio"
   install -m644 "${srcdir}/factorio.desktop" "${pkgdir}/usr/share/applications/factorio.desktop"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/factorio/LICENSE"
