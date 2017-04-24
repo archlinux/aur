@@ -2,6 +2,7 @@
 *.log
 *.tar.xz
 *.tar.gz
+*.tar
 
 # All sub-folders
 */

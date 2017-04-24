@@ -3,7 +3,7 @@
 
 pkgbase="wfdb"
 pkgname=('wfdb' 'wfdb-samples')
-pkgver="10.5.24"
+pkgver="10.5.25"
 pkgrel="1"
 pkgdesc="Software from PhysioNet for viewing, analyzing, and creating recordings of physiologic signals"
 url="http://www.physionet.org/physiotools/wfdb.shtml"
@@ -15,7 +15,7 @@ makedepends=('gcc' 'chrpath')
 install="${pkgname}.install"
 changelog="ChangeLog"
 source=("http://www.physionet.org/physiotools/${pkgname}.tar.gz")
-md5sums=('b0542fadcdcaf131f9b447ec87828be3')
+md5sums=('30957232dbf4756301a66a45c6f876c6')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
