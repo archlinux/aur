@@ -2,8 +2,8 @@
 
 _pkgname=ghostwriter
 pkgname=${_pkgname}-l10n-git
-_commit=d3f782e # 7 digits
-pkgver=v1.4.2.r115.gd3f782e
+_commit=5736956 # 7 digits
+pkgver=v1.4.2.r120.g5736956
 pkgrel=1
 pkgdesc="A cross-platform, aesthetic, distraction-free Markdown editor"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('markdown: Text to (X)HTML conversion tool for web writers'
             'hunspell: Spell checker and morphological analyzer library and program')
 provides=('ghostwriter')
 conflicts=('ghostwriter' 'ghostwriter-git')
-source=("${_pkgname}::git+${url}.git#commit=${_commit}")
+source=("${_pkgname}::git+https://github.com/wereturtle/ghostwriter.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
