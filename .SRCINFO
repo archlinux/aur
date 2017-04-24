@@ -1,0 +1,19 @@
+pkgbase = bcachefs-tools
+	pkgdesc = Bcachefs filesystem utilities
+	pkgver = r251.1b495cf
+	pkgrel = 1
+	url = http://bcachefs.org/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = libsodium
+	makedepends = liburcu
+	makedepends = libscrypt
+	provides = bcachefs-tools
+	conflicts = bcachefs-tools
+	source = git+https://evilpiepirate.org/git/bcachefs-tools.git
+	sha256sums = SKIP
+
+pkgname = bcachefs-tools
+
