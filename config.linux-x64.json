@@ -1,0 +1,6 @@
+{
+    "platforms": [
+        "linux-x64"
+    ],
+    "electronVersion": "1.2.0"
+}

@@ -1,0 +1,6 @@
+{
+    "platforms": [
+        "linux-ia32"
+    ],
+    "electronVersion": "1.2.0"
+}

@@ -23,33 +23,44 @@ onlinebestmatch() {
   local package="$1";
   local semverspec="$2";
 
-  local json="$(npm view --json "$package@$semverspec")"
-  if [ $(echo "$json" | jq -r '.version?//"INVALID"') = "INVALID" ]; then
-    json=$(echo "$json" | jq '.[0]')
-  fi
-  local version="$(echo "$json" | jq -r '.version' | head -n1)"
-
-  local latestversion="$(echo "$json" | jq '.versions | .[]' | xargs semver -r "$semverspec" | tail -n1)"
-  if [ "$version" != "$latestversion" ]; then
-    json="$(npm view --json "$package@$latestversion")"
-  fi
-
-  local url=$(echo $json | jq -r '.dist.tarball');
-  local shasum=$(echo $json | jq -r '.dist.shasum');
-  local name=$(echo "$url" | gawk -F'/' '{ print $NF }')
-
-  if ! grep -q "$shasum" "$targetdepspath/sha1sumslist"; then
-    echo "$url" >> "$targetdepspath/sourcelist"
-    echo "$shasum" >> "$targetdepspath/sha1sumslist"
-    echo "$name" >> "$targetdepspath/noextractlist"
-    if [ -f "$depspath/$name" ]; then
-      mv "$depspath/$name" "$targetdepspath/"
-    else
-      cd "$targetdepspath/"
-      wget "$url"
+  if echo "$semverspec" | grep -q '/'; then
+    local fullname="${package}-$(echo "$semverspec" | cut -d/ -f1).zip"
+    if [ -f "$depspath/$fullname" ]; then
+      mv "$depspath/$fullname" "$targetdepspath/"
+    elif [ ! -f "$targetdepspath/$fullname" ]; then
+      echo "The $package [version = $semverspec] must be downloaded manually from github to continue."
+      exit -1;
     fi
+    echo "$fullname"
+  else
+    local json="$(npm view --json "$package@$semverspec")"
+    if [ $(echo "$json" | jq -r '.version?//"INVALID"') = "INVALID" ]; then
+      json=$(echo "$json" | jq '.[0]')
+    fi
+    local version="$(echo "$json" | jq -r '.version' | head -n1)"
+
+    local latestversion="$(echo "$json" | jq '.versions | .[]' | xargs semver -r "$semverspec" | tail -n1)"
+    if [ "$version" != "$latestversion" ]; then
+      json="$(npm view --json "$package@$latestversion")"
+    fi
+
+    local url=$(echo $json | jq -r '.dist.tarball');
+    local shasum=$(echo $json | jq -r '.dist.shasum');
+    local name=$(echo "$url" | gawk -F'/' '{ print $NF }')
+
+    if ! grep -q "$shasum" "$targetdepspath/sha1sumslist"; then
+      echo "$url" >> "$targetdepspath/sourcelist"
+      echo "$shasum" >> "$targetdepspath/sha1sumslist"
+      echo "$name" >> "$targetdepspath/noextractlist"
+      if [ -f "$depspath/$name" ]; then
+        mv "$depspath/$name" "$targetdepspath/"
+      else
+        cd "$targetdepspath/"
+        wget "$url"
+      fi
+    fi
+    echo "$name"
   fi
-  echo "$name"
 }
 
 recursivedownloaddeps() {
@@ -60,7 +71,11 @@ recursivedownloaddeps() {
     echo "Downloading dependency $target (recursively) ..."
     mkdir -p "$tmpbuildpath/$target"
     cd "$tmpbuildpath/$target"
-    bsdtar xzf "$targetdepspath/${target}"
+    if [ "${target: -4}" = ".zip" ]; then
+      unzip "$targetdepspath/${target}"
+    else
+      bsdtar xzf "$targetdepspath/${target}"
+    fi
     folder=$(ls)
     find "$folder" -mindepth 1 -maxdepth 1 | xargs mv -t .
     rm -r "$folder"
