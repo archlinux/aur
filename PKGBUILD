@@ -3,12 +3,12 @@
 pkgname=unigine-superposition
 _pkgname=Unigine_Superposition
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Interactive Unigine Benchmark: walk through a lab of a lone professor"
 arch=('x86_64')
 url="http://www.unigine.com"
 license=('custom:UNIGINE Engine')
-depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig' 'qt5-declarative' 'libxkbcommon-x11') #'openssl-1.0'
+depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig' 'qt5-declarative' 'libxkbcommon-x11' 'openssl-1.0')
 optdepends=('openal: sound support')
 options=("!strip")
 source=("https://assets.unigine.com/d/${_pkgname}-${pkgver}.run" "Superposition.desktop")
@@ -30,7 +30,7 @@ package() {
     cat >> "${pkgdir}/usr/bin/unigine-superposition" << \here
 #!/bin/sh
 cd /opt/unigine-superposition/bin
-./launcher
+LD_LIBRARY_PATH=/usr/lib/openssl-1.0 ./launcher
 here
     chmod a+x "${pkgdir}/usr/bin/unigine-superposition"
     # misc
