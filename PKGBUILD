@@ -15,7 +15,7 @@ provides=('mingw-w64-openblas' 'mingw-w64-blas' 'mingw-w64-lapack' 'mingw-w64-cb
 conflicts=('mingw-w64-openblas' 'mingw-w64-blas' 'mingw-w64-lapack' 'mingw-w64-cblas')
 options=('!buildflags' '!makeflags' '!strip' 'staticlibs')
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/xianyi/${_pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('28c998054fd377279741c6f0b9ea7941')
+sha256sums=('9c40b5e4970f27c5f6911cb0a28aa26b6c83f17418b69f8e5a116bb983ca8557')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
