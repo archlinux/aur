@@ -1,6 +1,6 @@
 pkgbase = ags-git
 	pkgdesc = Adventure Game Studio, a development tool that is primarily used to create graphical adventure games
-	pkgver = 3.4.1.1.r13.g6053e954
+	pkgver = 3.4.1.3.r7.gb4199b73
 	pkgrel = 1
 	url = http://www.adventuregamestudio.co.uk/
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = ags-git
 	depends = libtheora
 	depends = libvorbis
 	optdepends = wine: For non-native games
+	provides = ags
 	conflicts = ags
 	source = git+https://github.com/adventuregamestudio/ags.git
 	sha256sums = SKIP
