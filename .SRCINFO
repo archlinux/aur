@@ -1,20 +1,21 @@
 pkgbase = gog-stardew-valley
-	pkgdesc = You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life.
+	pkgdesc = You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life." url="http://stardewvalley.net/
 	pkgver = 2.3.0.4
 	pkgrel = 1
-	url = http://stardewvalley.net/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = openal
 	depends = sdl2
 	optdepends = firejail: Automatically sandbox this application from your OS
-	source = gog://gog_stardew_valley_2.3.0.4.sh
-	source = gog-stardew-valley.desktop
 	source = gog-stardew-valley
-	sha256sums = 88e1fae7226c7bfa91cb28c137c24867e12b1a0b6e824e6ffe73e1eefc166aac
-	sha256sums = 1dc48ca70b7274c065ee65e285102b07962096b650a34a898d10d6749039d3ca
+	source = gog-stardew-valley.desktop
+	source = gog-stardew-valley.profile
+	source = gog://gog_stardew_valley_2.3.0.4.sh
 	sha256sums = 7e03458fab2b426cce514a42663e56efd33d072bd319f513a5c8bdf7f4e09905
+	sha256sums = ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff
+	sha256sums = 380fac814e9076e4a886e85a2f48f1245434099340d622459cd51413b908a0cd
+	sha256sums = 88e1fae7226c7bfa91cb28c137c24867e12b1a0b6e824e6ffe73e1eefc166aac
 	depends_i686 = lib32-openal
 	depends_i686 = lib32-sdl2
 

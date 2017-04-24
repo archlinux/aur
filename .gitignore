@@ -1,0 +1,10 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!gog-stardew-valley
+!gog-stardew-valley.desktop
+!gog-stardew-valley.profile
