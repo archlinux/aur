@@ -1,7 +1,7 @@
 pkgbase = util-linux-aes
 	pkgdesc = Miscellaneous system utilities for Linux, with loop-AES support
 	pkgver = 2.29.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/loop-aes/
 	install = util-linux-aes.install
 	arch = any
@@ -48,7 +48,6 @@ pkgbase = util-linux-aes
 	source = pam-common::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-common?h=packages/util-linux
 	source = pam-login::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-login?h=packages/util-linux
 	source = pam-su::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-su?h=packages/util-linux
-	source = util-linux.sysusers::https://git.archlinux.org/svntogit/packages.git/plain/trunk/util-linux.sysusers?h=packages/util-linux
 	source = 0001-sfdisk-support-empty-label-use-case.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-sfdisk-support-empty-label-use-case.patch?h=packages/util-linux
 	source = util-linux-aes.sysusers
 	source = util-linux-aes.modules
@@ -59,7 +58,6 @@ pkgbase = util-linux-aes
 	md5sums = a31374fef2cba0ca34dfc7078e2969e4
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
 	md5sums = fa85e5cce5d723275b14365ba71a8aad
-	md5sums = dfc9904f67ebc54bb347ca3cc430ef2b
 	md5sums = 6d2e3915124938577f0ff18ef701c87f
 	md5sums = dfc9904f67ebc54bb347ca3cc430ef2b
 	md5sums = a10bfcaff767a4cb3066106bfd4ea30b
