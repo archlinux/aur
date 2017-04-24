@@ -2,7 +2,7 @@
 
 pkgbase=upp
 pkgname=(upp theide umk)
-pkgver=9251
+pkgver=10804
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('libnotify: Enables compiling gtk-styled apps' 'sox: Enables playing
 replaces=()
 backup=()
 options=(!makeflags emptydirs !strip)
-source=("http://downloads.sourceforge.net/project/upp/upp/2015.2/upp-x11-src-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/project/upp/upp/2017.1/upp-x11-src-$pkgver.tar.gz"
         'GCC.bm'
         'license.txt'
         'theide.install'
@@ -23,7 +23,7 @@ source=("http://downloads.sourceforge.net/project/upp/upp/2015.2/upp-x11-src-$pk
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/umk.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/mkfile')
 noextract=()
-md5sums=('e4a453bb587d2f53926bef4ce8d08e2a'
+md5sums=('20f1f01c8b3238a3e02a89bcc76a7aac'
          'a1b57c2231b6b0fa8070941fa4accf72'
          'b214709f096e4f50d61f50988359241e'
          '204e9ece27294b4b73cb3a31f0474d8d'
@@ -37,7 +37,7 @@ md5sums=('e4a453bb587d2f53926bef4ce8d08e2a'
 build() {
   cd "$srcdir/upp-x11-src-$pkgver"
 
-  FLAGS="GCC GUI STACKTRACE"
+  FLAGS="GCC GUI MT STACKTRACE"
   USE_NOGTK="${USE_NOGTK:-false}"
   if [ "$USE_NOGTK" == "true" ]; then
     SUFFIX="-nogtk"
