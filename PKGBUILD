@@ -2,7 +2,7 @@
 # Contributor   : Jestine Paul <jestine dot paul at gmail dot com>
 
 pkgname='libcs50-git'
-gitname='libcs50'
+_gitname='libcs50'
 pkgver=7.1.2.r3.g8a353ba
 pkgrel=1
 pkgdesc="CS50 Library for C"
@@ -17,7 +17,7 @@ source=('git+https://github.com/cs50/libcs50.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${gitname}"
+    cd "${_gitname}"
 
     git describe --tags                     \
         | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  \
@@ -25,13 +25,13 @@ pkgver() {
 }
 
 build() {
-    cd "${gitname}"
+    cd "${_gitname}"
 
     make build
 }
 
 package() {
-    cd "${gitname}"
+    cd "${_gitname}"
 
     cp -rp build/* "${pkgdir}"
 }
