@@ -6,7 +6,7 @@
 
 pkgname=luakit-git
 gitname=luakit
-pkgver=r3224.799e6bc
+pkgver=r3225.7687f25
 pkgrel=1
 pkgdesc='fork of luakit using webkit2'
 arch=('x86_64' 'i686' 'armv7h')
@@ -42,7 +42,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${gitname}"
-  wget https://raw.githubusercontent.com/mpeterv/markdown/master/markdown.lua
   make  DEVELOPMENT_PATHS=0 USE_LUAJIT=1 PREFIX=/usr all
 }
 package() {
