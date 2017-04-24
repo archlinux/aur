@@ -1,7 +1,7 @@
 # Contributor: Rod Kay     <charlie5 on #ada at freenode.net>
 
 pkgname=adacurses
-pkgver=20150808
+pkgver=20170415
 pkgrel=1
 pkgdesc="An Ada binding to the 'ncurses' C library."
 
@@ -11,24 +11,13 @@ license=('MIT')
 
 depends=('gcc-ada')
 
-source=('ftp://invisible-island.net/AdaCurses/AdaCurses-20150808.tgz'
+source=('ftp://invisible-island.net/AdaCurses/current/AdaCurses-20170415.tgz'
         'adacurses.gpr.in')
 
-md5sums=('dcc55b76341ed52427072d699a64a6bb'
+md5sums=('b629787a8b35a4576bcdc42202d10171'
          'bcf4fda38d94da5fb04325c51217d790')
 
 PREFIX=/usr
-
-
-prepare()
-{
-  cd "$srcdir/AdaCurses-$pkgver"
-
-  sed -e '/(INSTALL_PROG)/d'      \
-      -e 's/@ADAGEN_LDFLAGS@//'   \
-      -i                          \
-      gen/Makefile.in >> gen/Makefile.in
-}
 
 
 build() 
@@ -52,6 +41,13 @@ package()
 
   STAGEDIR=$pkgdir
   FILESDIR=$srcdir
+
+  # The DESTDIR line in gen/adacurses-config is not used and it contains a reference
+  # to the makepkg generated pkg directory, so delete that line.
+  #
+  sed -e '/DESTDIR/d'      \
+      -i                   \
+      gen/adacurses-config
 
   install gen/adacurses-config \
           ${STAGEDIR}${PREFIX}/bin/
