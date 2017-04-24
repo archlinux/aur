@@ -2,7 +2,7 @@
 
 pkgname=python-usfm2osis-cw-git
 _pypiname=usfm2osis
-pkgver=r129.0040e9d
+pkgver=r138.5ddb02d
 pkgrel=1
 _branch=module-tools-sync
 pkgdesc="Tools for converting Bibles from USFM to OSIS XML (CrossWire Development Fork)"
