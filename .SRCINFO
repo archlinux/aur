@@ -1,7 +1,7 @@
 pkgbase = uget-beta
 	pkgdesc = GTK+ download manager featuring download classification and HTML import
 	pkgver = 2.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ugetdm.com/
 	arch = i686
 	arch = x86_64

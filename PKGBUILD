@@ -1,9 +1,9 @@
 # Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 _pkgname=uget
-pkgname=${_pkgname}-beta
+pkgname="${_pkgname}-beta"
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ download manager featuring download classification and HTML import"
 arch=('i686' 'x86_64')
 url="http://ugetdm.com/"
@@ -27,23 +27,23 @@ build() {
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
   # Doc files
   install -Dm644 AUTHORS \
-    "$pkgdir/usr/share/doc/${_pkgname}/AUTHORS"
+    "${pkgdir}/usr/share/doc/${_pkgname}/AUTHORS"
   install -Dm644 ChangeLog \
-    "$pkgdir/usr/share/doc/${_pkgname}/CHANGELOG"
+    "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG"
   install -Dm644 INSTALL \
-    "$pkgdir/usr/share/doc/${_pkgname}/INSTALL"
+    "${pkgdir}/usr/share/doc/${_pkgname}/INSTALL"
   install -Dm644 README \
-    "$pkgdir/usr/share/doc/${_pkgname}/README"
+    "${pkgdir}/usr/share/doc/${_pkgname}/README"
   install -Dm644 NEWS \
-    "$pkgdir/usr/share/doc/${_pkgname}/NEWS"
+    "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
 
   # License
   install -Dm644 COPYING \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 cc=80 et:
