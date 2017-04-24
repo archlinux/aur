@@ -13,8 +13,6 @@ pkgdesc='You’ve inherited your grandfather’s old farm plot in Stardew Valley
 url="http://stardewvalley.net/'
 license=('custom')
 arch=('i686' 'x86_64')
-depends_x86_64=('openal' 'sdl2')
-depends_i686=('lib32-openal' 'lib32-sdl2')
 optdepends=(
     'firejail: Automatically sandbox this application from your OS'
 )
