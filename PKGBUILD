@@ -2,7 +2,7 @@
 
 _projname=sentry
 pkgname=python-${_projname}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Python monitoring tool'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/dopsi/${_projname}"
 license=('MIT')
 depends=('python-colored')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/dopsi/${_projname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b1f6384f2ad9bb40e9bd2f26c2aa5d96764df7ea5a37cb61989b11d0a86e0dd6')
+sha256sums=('6b250aa80d4d7828609c36c338471e68401d1995ac5f8bb595248977b51f3930')
 
 package() {
     cd ${_projname}-${pkgver}
