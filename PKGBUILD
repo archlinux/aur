@@ -2,7 +2,7 @@
 
 pkgname=cower
 pkgver=17
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple AUR agent with a pretentious name"
 arch=('i686' 'x86_64')
 url="http://github.com/falconindy/cower"
@@ -18,7 +18,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   make
-  sed '/^$/q' cower.c >LICENSE
+  sed '/^$/q' src/cower.c >LICENSE
 }
 
 package() {
