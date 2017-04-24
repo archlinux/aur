@@ -1,12 +1,13 @@
 pkgbase = anki
-	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
+	pkgdesc = Friendly, intelligent flash cards
 	pkgver = 2.1.0a13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ankisrs.net/
 	arch = x86_64
 	license = AGPL3
 	checkdepends = python-nose
 	checkdepends = python-coverage
+	checkdepends = texlive-bin
 	depends = python-pyqt5
 	depends = python-pyaudio
 	depends = python-requests
@@ -16,9 +17,7 @@ pkgbase = anki
 	depends = mplayer
 	depends = lame
 	source = https://apps.ankiweb.net/downloads/alpha/alpha13/anki-2.1.0a13-source.tgz
-	source = Makefile
 	sha512sums = 5a6055f3cf08a19a86843068135ea7034ee28bebb4c71453033c7e9a8f7e8e0281f4faca14f61debd16f0faad2cf6ba8c420a12d207ae380bfc3f282d9a2b0ba
-	sha512sums = 1139f4a1384194521517295768bbc42f32a801e93c294910d375eb5b55fa018f7d0bd40c5031c20fd891954aa54c4fd18a3fa16e75ed52de1c31ef8ab1f00fd0
 
 pkgname = anki
 
