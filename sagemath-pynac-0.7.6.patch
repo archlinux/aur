@@ -1,0 +1,44 @@
+diff --git a/src/sage/libs/pynac/pynac.pxd b/src/sage/libs/pynac/pynac.pxd
+index 15e8ac2..568dbd6 100644
+--- a/src/sage/libs/pynac/pynac.pxd
++++ b/src/sage/libs/pynac/pynac.pxd
+@@ -319,7 +319,7 @@ cdef extern from "sage/libs/pynac/wrap.h":
+ 
+ 
+     GEx g_abs "GiNaC::abs" (GEx x)                      except + # absolute value
+-    GEx g_step "GiNaC::step" (GEx x)                    except + # step function
++    GEx g_step "GiNaC::unit_step" (GEx x)               except + # step function
+     GEx g_csgn "GiNaC::csgn" (GEx x)                    except + # complex sign
+     GEx g_conjugate "GiNaC::conjugate_function" (GEx x) except + # complex conjugation
+     GEx g_real_part "GiNaC::real_part_function" (GEx x) except + # real part
+diff --git a/src/sage/symbolic/expression.pyx b/src/sage/symbolic/expression.pyx
+index 01319b5..735d6fa 100644
+--- a/src/sage/symbolic/expression.pyx
++++ b/src/sage/symbolic/expression.pyx
+@@ -7018,7 +7018,7 @@ cdef class Expression(CommutativeRingElement):
+     def step(self, hold=False):
+         """
+         Return the value of the Heaviside step function, which is 0 for
+-        negative x, 1/2 for 0, and 1 for positive x.
++        negative x, 1 for 0, and 1 for positive x.
+ 
+         EXAMPLES::
+ 
+@@ -7026,7 +7026,7 @@ cdef class Expression(CommutativeRingElement):
+             sage: SR(1.5).step()
+             1
+             sage: SR(0).step()
+-            1/2
++            1
+             sage: SR(-1/2).step()
+             0
+             sage: SR(float(-1)).step()
+@@ -7038,7 +7038,7 @@ cdef class Expression(CommutativeRingElement):
+             sage: SR(2).step()
+             1
+             sage: SR(2).step(hold=True)
+-            step(2)
++            unit_step(2)
+ 
+         """
+         return new_Expression_from_GEx(self._parent,
