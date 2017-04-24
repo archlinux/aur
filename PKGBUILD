@@ -2,7 +2,7 @@
 pkgname=texlive-csltex
 _pkgname=csltex
 pkgver=2007.0712
-pkgrel=1
+pkgrel=2
 pkgdesc="A LaTeX package for typing of Church Slavonic texts in the standard HIP (HIP-9)"
 arch=('any')
 url="https://sites.google.com/site/csltex"
@@ -19,3 +19,5 @@ package() {
     cp -rf "$srcdir/fonts" "$pkgdir/usr/share/texmf/"
 }
 
+md5sums=('717d9f4e4915646ab120556b6ffd6252'
+         '2428a571310206530cc9c2f466e79227')
