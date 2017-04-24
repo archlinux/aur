@@ -1,6 +1,6 @@
 # Maintainer: Peter Klotz <peter.klotz99@gmail.com>
 pkgname=uex
-pkgver=16.1.0.17
+pkgver=16.1.0.22
 pkgrel=1
 pkgdesc="UltraEdit is a powerful text editor."
 arch=('i686' 'x86_64')
@@ -9,12 +9,13 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk2' 'libjpeg6' 'libpng12' 'libsm')
 install=uex.install
 if [ "${CARCH}" = 'i686' ]; then
-  source=(http://www.ultraedit.com/files/uex/Other/uex-${pkgver}_i386.tar.gz)
-  md5sums=('f8ec6f6f4c8c9da61cabd2a827837c20')
+  source=(https://downloads.ultraedit.com/main/ue/linux/tar/uex-${pkgver}_i386.tar.gz)
+  md5sums=('573b59c11cb56331490f69cd2e86ffeb')
 else
-  source=(http://www.ultraedit.com/files/uex/Other/uex-${pkgver}_amd64.tar.gz)
-  md5sums=('c8c9fd5e3af10ef16a10265f3e96776e')
+  source=(https://downloads.ultraedit.com/main/ue/linux/tar/uex-${pkgver}_amd64.tar.gz)
+  md5sums=('4b522dd2c53164dd97872ebcc94e5cc0')
 fi
+DLAGENTS=('https::/usr/bin/curl -fLC - --user-agent Lynx --retry 3 --retry-delay 3 -o %o %u')
 
 package() {
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/pixmaps" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/licenses/${pkgname}"
