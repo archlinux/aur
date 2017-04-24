@@ -2,8 +2,8 @@
 
 pkgbase='vte3-tilix'
 pkgname=("${pkgbase}" 'vte-tilix-common')
-_vtever=0.46.1
-_tilixver=1.5.4
+_vtever=0.48.2
+_tilixver=1.5.6
 pkgver=${_vtever}+${_tilixver}
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches'
@@ -15,26 +15,23 @@ makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade'
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 _frepourl='http://pkgs.fedoraproject.org/cgit/rpms/vte291.git'
-_frepobranch='f25'
+_frepobranch='f26'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
 source=(
 	"https://download.gnome.org/sources/vte/${_vtever::4}/vte-${_vtever}.tar.xz"
 	"${_fpatchfile}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}"
 	'add-zsh-notfication-support.patch'
-	"gperf-fix.patch::https://git.gnome.org/browse/vte/patch/?id=1226f58cd97aa06f0ce58791153ca1f58e89658a"
 	"https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/alternate-screen.patch"
 	"https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/disable-bg-draw.patch"
 )
-sha256sums=('8800cf8bc259704a12ad1853fb0eb43bfe3857af15242e6fb9f2c3fd95b3f5c6'
-            '9238ca155af79ec4f55f13b82981ea97745c26e3fcc87ab6917a1d41b4b9d852'
+sha256sums=('c278b301edfe38b43baec1bccc86e225dacea5b670a96ca7ea55ca9a4b030690'
+            'd32201c04d9f688195725bf76d7c618ae24178a2578da01c507d8216f082cf8e'
             '150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
-            '7a2b1c74da87df40507df8a41524209a7e8aa77250af2fd11153beb3999db139'
             '980b6bc75a30ec56fe70387784083b5c7ded79715b7a0611e1d4358ee27c4720'
             'aa56313332850becb0b02aba1e05888ed978f7d8c006147679e2544cc0ca40cf')
 
 prepare() {
 	cd "vte-${_vtever}"
-	patch -p1 -i '../gperf-fix.patch'
 
 	echo '-> Making the patch-sets compatible'
 	sed -r -e 's/(\-\s*gpointer padding\[)16/\115/g' \
@@ -61,7 +58,7 @@ build() {
 }
 
 package_vte3-tilix(){
-	depends=('gtk3' 'vte-tilix-common')
+	depends+=('vte-tilix-common')
 	provides=("vte3=${_vtever}" "vte3-notification=${_vtever}-2" 'vte3-terminix-git')
 	conflicts=('vte3' 'vte3-notification' 'vte3-terminix-git')
 	cd "vte-${_vtever}"
@@ -71,6 +68,7 @@ package_vte3-tilix(){
 }
 
 package_vte-tilix-common() {
+	depends=('sh')
 	pkgdesc='Common files used by vte and vte3'
 	arch=('any')
 	provides=("vte-common=${_vtever}" "vte-notification-common=${_vtever}-2" 'vte-terminix-common-git')
