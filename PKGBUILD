@@ -10,7 +10,8 @@ arch=( 'i686' 'x86_64' )
 url="https://steamodd.readthedocs.io/en/latest/"
 license=( 'CUSTOM' )
 makedepends=( 'python' 'python-setuptools' 'python2' 'python2-setuptools' )
-_pkgname=python-steamodd
+conflicts=('python-steamodd-git')
+_pkgname=steamodd
 install=
 changelog=
 noextract=()
@@ -18,11 +19,17 @@ source=("https://github.com/Lagg/steamodd/archive/v4.21.tar.gz"
         "v4.21.tar.gz.sig")
 sha512sums=('5be53dd30476f1bfac725e97f691331f83c09ec44816ea34ae0a6917b74f324020919ffb7ec18e9d39c2f93fd898368fa642ff962625cdcb31e61425d3fb14fd'
             'SKIP')
-build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+
+package_python-steamodd() {
+        depends=('python')
+        cd "${srcdir}/${_pkgname}-${pkgver}"
+        python3 setup.py install --root="${pkgdir}" --optimize=1
+        install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+
+package_python2-steamodd() {
+        depends=('python')
+        cd "${srcdir}/${_pkgname}-${pkgver}"
+        python2 setup.py install --root="${pkgdir}" --optimize=1
+        install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
