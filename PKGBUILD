@@ -7,11 +7,11 @@
 
 pkgname='unreal-engine'
 pkgver=4.15.1
-pkgrel=2
+pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
-makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
+makedepends=('clang<4.0.0' 'mono' 'dos2unix' 'cmake' 'git')
 depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
 conflicts=('hardening-wrapper')
 license=('custom:UnrealEngine')
@@ -53,14 +53,6 @@ build() {
   # first build fails with more than one process
   make -j1
 
-  # deleting non-linux files would make the install quite a bit smaller, but things break when they are missing...
-
-  # delete windows-only files
-  #find \( -iname "Win64" -o -iname "vs2013" -o -iname "vs2015" \) -type d -prune -exec rm -r "{}" \;
-  #find -iregex '.*\.\(exe\|dll\|bat\|vcx?proj\(\.filters\|\.user\)?\|sln\)$' -delete
-
-  # delete mac-only files
-  #find Engine/Source/ThirdParty \( -iname "IOS" -o -iname "TVOS" -o -iname "osx64" \) -type d -prune -exec rm -r "{}" \;
 }
 
 package() {
