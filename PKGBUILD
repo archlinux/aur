@@ -11,7 +11,7 @@
 pkgname=paraview
 _pkgver=5.3.0
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
