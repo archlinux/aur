@@ -1,12 +1,12 @@
 pkgname=osx-arc-darker
-pkgver=1.3.9
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="OSX-Arc-Darker Theme for GTK 3.x"
 arch=(any)
 url=https://www.gnome-look.org/p/1167049/
 depends=('gtk3')
-source=("https://dl.opendesktop.org/api/files/download/id/1488643183/OSX-Arc-Darker-v1.3.9.tar.gz")
-md5sums=('0ce75be85fda8af6495671f382ae8cda')
+source=("https://dl.opendesktop.org/api/files/download/id/1492458071/OSX-Arc-Darker-v1.4.1.tar.gz")
+md5sums=('75130b63ee3617e5538f676e8cbc3acf')
 
 package(){
 	cd "$srcdir"
