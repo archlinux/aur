@@ -94,5 +94,5 @@ check() {
 
 package() {
     DESTDIR="${pkgdir}" \
-    ninja -C "${srcdir}"/build
+    ninja -C "${srcdir}"/build install
 }
