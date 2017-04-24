@@ -2,8 +2,8 @@
 # TODO: dynamically choose between /builds/.. and /builds/old/..
 
 pkgname=bombsquad
-pkgver=1.4.113
-pkgrel=2
+pkgver=1.4.116
+pkgrel=1
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64' 'i686')
 url='http://www.froemling.net/apps/bombsquad'
@@ -13,10 +13,10 @@ source=('bombsquad.sh' 'bombsquad.desktop')
 sha256sums=('850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515' '900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c')
 
 source_i686=("http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_32bit_${pkgver}.tar.gz")
-sha256sums_i686=('dcde9931a2d684553a52eabcb9b31f356460757d9fae26bbb7defc3bb3cb6130')
+sha256sums_i686=('5198c27f925d5e11b956ae5cfdc3a4a7bc5d08102500d237684846da9aad016f')
 
 source_x86_64=("http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_64bit_${pkgver}.tar.gz")
-sha256sums_x86_64=('119da3c8a54e316db944cb408dd871a206886722a7044a1abf6e70779fc1a659')
+sha256sums_x86_64=('97c046f2c2e4b384b15b9c2a56a0ed3d3571c49d83858803db9c744c213e3a15')
 
 
 package() {
