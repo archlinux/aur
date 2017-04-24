@@ -1,12 +1,13 @@
 # Maintainer: gato_lento <vukk.euob at gmail>
 pkgname=combustion
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Sleek, modern web interface for Transmission'
 arch=('any')
 url='https://github.com/Secretmapper/combustion'
 license=('MIT')
 depends=('transmission-cli')
+makedepends=('git')
 
 source=(
   "git+https://github.com/Secretmapper/combustion.git"
@@ -17,7 +18,7 @@ source=(
 sha1sums=(
   SKIP
   1b2e73e143508792e94bd7d35f2e0d68b837527a
-  1cc64c9ef6cf9023aa17ae51b454b1b3a420f2ae
+  449f682b9c6cb896d0650104c45bbdc07afcfece
 )
 
 package() {
