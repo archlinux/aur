@@ -112,9 +112,8 @@ prepare() {
   if [ "${CARCH}" = "armv7h" ]; then
     # RCN patch (CM3 firmware deblobbed and AUFS removed)
     # Note: For stability reasons, AUFS has been removed in the RCN patch.
-    # We are supporting AUFS in linux-libre-pck through PCK patch through
-    # its official patch in linux-libre-rt. See https://wiki.parabola.nu/PCK
-    # for further details about PCK.
+    # We are supporting AUFS in linux-libre-pck through PCK patch.
+    # See https://wiki.parabola.nu/PCK for further details.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
