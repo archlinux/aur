@@ -1,13 +1,13 @@
 pkgbase = phpmetrics
 	pkgdesc = A static analysis tool for PHP
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://www.phpmetrics.org/
 	arch = any
 	license = MIT
 	depends = php
-	source = https://github.com/Halleck45/PhpMetrics/raw/v2.1.0/build/phpmetrics.phar
-	source = https://raw.githubusercontent.com/Halleck45/PhpMetrics/v2.1.0/LICENSE
+	source = https://github.com/Halleck45/PhpMetrics/raw/v2.2.0/build/phpmetrics.phar
+	source = https://raw.githubusercontent.com/Halleck45/PhpMetrics/v2.2.0/LICENSE
 	sha512sums = cdd346eedf7e60c052cdc8d6029ebed5d92358cd08b4bbd5b82d906beb34358100ea6c8ec37b6552f37b60b26ce0b3127b3950f52f033765175517943aa95bf3
 	sha512sums = be822058c3c747ff43933ef66163ae99ed3901f8633f561811ada1d7d761309188301ae6ace33d3f53195793f0a500462ee666c7089faa2c80b6d9809a1b61b3
 
