@@ -1,8 +1,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=pamac-aur
-pkgver=4.3.3
-_pkgver=4.3.3
+pkgver=4.3.4
+_pkgver=4.3.4
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' '
   optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
               'lxsession: needed for authentification in Xfce, LXDE etc.'
               'pamac-tray-appindicator: tray icon for KDE')
-makedepends=('gettext' 'itstool' 'vala>=0.28')
+makedepends=('gettext' 'itstool' 'vala>=0.36')
 backup=('etc/pamac.conf')
 conflicts=('pamac')
 provides=('pamac')
@@ -21,12 +21,14 @@ options=(!emptydirs)
 install=pamac.install
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('9c648ade4122b918d19196ab597df2c5ca9f8ea79605b2d01ca02cd7e18b2358')
+sha256sums=('4befca2d0f93665bfa6ddf4551fefc1f2e7f9f1ce446411e4555569752ee5d0b')
   
 prepare() {
   # adjust version string
   cd "$srcdir/pamac-$_pkgver"
   sed -i -e "s|\"$pkgver\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala
+  # error with vala 0.36 
+  sed -i -e "s|ignorepkgs_liststore.remove (iter);|ignorepkgs_liststore.remove (ref iter);|g" src/preferences_dialog.vala
   # patches here
 }
 
