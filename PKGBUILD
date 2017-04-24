@@ -1,6 +1,6 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 pkgname=otfcc
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A C library and utility for parsing and writing OpenType font files.'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/caryll/otfcc'
 license=('APACHE')
 makedepends=('premake-git') # premake5
 source=("https://github.com/caryll/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('ca576854c8cf8d164711de3ab197b847')
+md5sums=('5858f5896048937130d488469eb2b79a')
 
 build() {
   cd "${pkgname}-${pkgver}"
