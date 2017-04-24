@@ -1,0 +1,10 @@
+# Blacklist:
+*
+
+# Whistlist:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!gog-dragonsphere
+!gog-dragonsphere.desktop
+!gog-dragonsphere.profile

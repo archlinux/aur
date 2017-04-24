@@ -1,20 +1,15 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
-# Thanks to: Ainola for the base PKGBUILD (gog-undertale)
 
 # All dependencies are included with the gog_dragonsphere_$version.sh archive.
 
-pkgname=gog-dragonsphere
+pkgname='gog-dragonsphere'
 pkgver=2.0.0.2
 pkgrel=1
 pkgdesc="Owned King Of Callahach! It's been twenty years since your father saved the world by entrapping the evil Sorcerer Sanwe. Now the spell is waning. Sanwe's malevolent force will soon consume the land, and only you can stop him."
-url="https://www.gog.com/game/dragonsphere"
-license=(
-    'custom'
-)
-arch=(
-    'i686'
-    'x86_64'
-)
+url='https://www.gog.com/game/dragonsphere'
+license=('custom')
+arch=('i686' 'x86_64')
+groups=('games' 'gog')
 optdepends=(
     'firejail: Automatically sandbox this application from your OS'
 )
@@ -29,36 +24,35 @@ sha256sums=(
     'd18a17f83d1efcf85bcbf479081bccb0433f9891e8822d9ef90e606a0dfb0d20'
 )
 DLAGENTS=(
-    "gog::/usr/bin/echo %u Download the GOG file to $PWD or set up a gog:// DLAGENT."
-)
-groups=(
-    'games'
-    'gog'
+    "gog::/usr/bin/echo %u Download the GOG file to ${PWD} or set up a gog:// DLAGENT."
 )
 
 package(){
-    cd "${srcdir}"
-
     # Install game
     install -d "${pkgdir}/opt/${pkgname}/"
     install -d "${pkgdir}/opt/${pkgname}/support"
     install -d "${pkgdir}/usr/bin/"
     cp -r "data/noarch" "${pkgdir}/opt/${pkgname}/"
     
-
     find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
-    install -Dm755 "data/noarch/start.sh"               \
-        "${pkgdir}/opt/${pkgname}/"
-    install -Dm755 data/noarch/support/*.{sh,shlib} -t  \
+    install -Dm 755             \
+        "data/noarch/start.sh"  \
+        "${pkgdir}/opt/${pkgname}"
+    install -Dm 755                         \
+        data/noarch/support/*.{sh,shlib} -t \
         "${pkgdir}/opt/${pkgname}/support"
 
     # Desktop integration
-    install -Dm 644 "data/noarch/support/icon.png" \
+    install -Dm 644                     \
+        "data/noarch/support/icon.png"  \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "data/noarch/docs/End User License Agreement.txt" \
+    install -Dm 644                                         \
+        "data/noarch/docs/End User License Agreement.txt"   \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${pkgname}.desktop" \
+    install -Dm 644                     \
+        "${srcdir}/${pkgname}.desktop"  \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "${srcdir}/${pkgname}" \
+    install -Dm 755             \
+        "${srcdir}/${pkgname}"  \
         "${pkgdir}/usr/bin/${pkgname}"
 }
