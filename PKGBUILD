@@ -19,7 +19,7 @@ _artwork_url='https://sources.archlinux.org/other/artwork'
 source=("https://github.com/Antergos/${pkgname}/archive/${pkgver}.zip"
 		"archlinux-logo.svg::${_artwork_url}/archlinux-logo-light-scalable.svg"
 		'archlinux-user.svg')
-md5sums=('160c6361a2b13303babf02afa66f590b'
+md5sums=('634c6080144169c7529291bf1c8a1429'
          '1ae4cc2e2469acbe15775358ed6b11b4'
          'b270926ddd965fc63a632156cedd734d')
 
