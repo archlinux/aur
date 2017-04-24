@@ -2,17 +2,17 @@
 
 _gemname=ssh_scan
 pkgname=ruby-$_gemname
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc='A prototype SSH configuration and policy scanner'
 arch=(any)
 url='https://github.com/mozilla/ssh_scan'
-license=(MIT)
+license=(MPL)
 depends=('ruby-bindata>=2.0' 'ruby-netaddr' 'ruby-net-ssh' 'ruby-sqlite3' 'ruby-sshkey')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('3c9e933bf77f43d08f66223c5200fdc207ff8014b2ab2c769a6316ed208fa6cd')
+sha256sums=('aefd94261505e482c79e19508a36ccc123c61974facd327e7a481963a8a6781c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
