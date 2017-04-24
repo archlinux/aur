@@ -2,19 +2,18 @@
 
 _pkgname=kdiff
 pkgname=${_pkgname}-git
-pkgver=r5.bd62738
-pkgrel=1
+pkgver=r10.15fca24
+pkgrel=2
 pkgdesc="Graphical difference viewer for the KDE platform. (GIT version)"
-url="https://github.com/jsalatas/kdiff"
 arch=('x86_64')
-license=('GPL' 'LGPL' 'FDL')
-depends=('libkomparediff2-git' 'ktexteditor' 'desktop-file-utils')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git')
+url="https://github.com/jsalatas/kdiff"
+license=('GPL' 'LGPL')
+depends=('ktexteditor')
+makedepends=('extra-cmake-modules' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/jsalatas/${_pkgname}.git")
 sha1sums=('SKIP')
-install=${pkgname}.install
 
 pkgver() {
   cd ${_pkgname}
@@ -23,7 +22,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  #sed 's|${DATA_INSTALL_DIR}|${KXMLGUI_INSTALL_DIR}|g' -i kdiff{,/kdiffpart}/CMakeLists.txt
 }
 
 build() {
@@ -40,3 +38,5 @@ package() {
   cd build
   make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=2 sw=2 et:
