@@ -14,7 +14,7 @@ source=("${pkgname}::git+https://github.com/icaroperseo/passera.git")
 sha256sums=('SKIP')
 
 prepare() {
-  cd $pkgname
+  cd "${pkgname}"
   git submodule update --init --recursive
   export GOPATH=$PWD
   go get github.com/howeyc/gopass
@@ -22,13 +22,13 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}/src
+  cd "${pkgname}/src"
   patch -p2 -i gopass.patch
   go build -o passera
 }
 
 package() {
-  cd $pkgname
+  cd "${pkgname}"
 
   install -Dm755 src/passera \
     "${pkgdir}/usr/bin/passera"
