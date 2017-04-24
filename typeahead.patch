@@ -2,7 +2,7 @@
  {
    GtkFileChooserWidget *impl = (GtkFileChooserWidget *) widget;
    GtkFileChooserWidgetPrivate *priv = impl->priv;
-+  gtk_widget_grab_focus (priv->browse_files_tree_view);
++  if(event->is_modifier) return FALSE; gtk_widget_grab_focus (priv->browse_files_tree_view);
 +  gboolean ret;
 +  g_signal_emit_by_name (priv->browse_files_tree_view, "key-press-event", event, &ret);
  
