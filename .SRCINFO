@@ -1,0 +1,14 @@
+pkgbase = manpager
+	pkgdesc = colourize manpages
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ybden/manpager/
+	arch = i686
+	arch = x86_64
+	license = custom: ISC
+	depends = less
+	source = https://github.com/ybden/manpager/archive/1.0.1.tar.gz
+	sha256sums = 6998f3183b07221eead640aed4dec6a5f17c60b9d143f6c91a90b543c8b328f2
+
+pkgname = manpager
+
