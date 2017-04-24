@@ -16,7 +16,6 @@ optdepends=('python2-nautilus: for "Open Tilix Here" support in nautilus'\
 provides=('terminix')
 conflicts=('terminix')
 replaces=('terminix')
-source=("$url/archive/$pkgver.tar.gz")
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('083a2f195f1eee726f8674c4330aaab05c54d80a988df610bb0af18f2d3740e4')
 
