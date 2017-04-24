@@ -41,14 +41,14 @@ pkgver() {
 package() {
   #  uncomment this line to remove these
   #  rm -rf firefox/{extensions,plugins,searchplugins}
-  install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
+  install -Dm644 "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
   cp -r firefox "${pkgdir}/opt/firefox-${_version}"
 
   ln -s "/opt/firefox-${_version}/firefox" \
     "${pkgdir}/usr/bin/firefox-developer"
-  install -m644 "${srcdir}/firefox-developer.desktop" \
+  install -Dm644 "${srcdir}/firefox-developer.desktop" \
     "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/firefox/browser/icons/mozicon128.png" \
+  install -Dm644 "${srcdir}/firefox/browser/icons/mozicon128.png" \
     "${pkgdir}/usr/share/pixmaps/${pkgname}-icon.png"
   install -Dm644 "${srcdir}/vendor.js" \
     "${pkgdir}/opt/firefox-${_version}/browser/defaults/preferences/vendor.js"
