@@ -4,10 +4,10 @@
 pkgbase=gvfs-nosystemd
 _pkgbase=gvfs
 pkgname=(gvfs-nosystemd gvfs-{smb,afc,gphoto2,goa,mtp,nfs,google}-nosystemd)
+pkgver=1.32.1
+pkgrel=1
 pkgdesc="Virtual filesystem implementation for GIO, nosystemd version"
 url="https://wiki.gnome.org/Projects/gvfs"
-pkgver=1.28.3
-pkgrel=2
 arch=(i686 x86_64)
 license=(LGPL)
 depends=(avahi dconf fuse libarchive libcdio-paranoia libsoup udisks2 libsecret
@@ -15,8 +15,8 @@ depends=(avahi dconf fuse libarchive libcdio-paranoia libsoup udisks2 libsecret
 makedepends=(dbus intltool libgphoto2 libimobiledevice smbclient docbook-xsl
              gtk3 libmtp gnome-online-accounts libnfs libgdata git gtk-doc python)
 groups=(gnome)
-_commit=70d801fc64cdee5f2ce85f405d43411433195aae
-source=("git://git.gnome.org/gvfs#commit=$_commit"
+_commit=4325a9be52a0c203384aa722aa440236eafded52  # tags/1.32.1^0
+source=("git+https://git.gnome.org/browse/gvfs#commit=$_commit"
         gvfsd.hook)
 sha256sums=('SKIP'
             '478b9cf7b4c242959fc640dbf0cd4935f16c59b81f5828a3af102d608d7a9d72')
@@ -36,7 +36,6 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static \
       --libexecdir=/usr/lib/gvfs \
-      --with-bash-completion-dir=/usr/share/bash-completion/completions \
       --disable-systemd
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
@@ -56,14 +55,15 @@ package_gvfs-nosystemd() {
               'gtk3: Recent files support')
 
   cd $_pkgbase
-  sed -e 's/^am__append_4/#am__append_4/' \
+  sed -e 's/^am__append_3/#am__append_3/' \
+      -e 's/^am__append_4/#am__append_4/' \
       -e 's/^am__append_5/#am__append_5/' \
       -e 's/^am__append_6/#am__append_6/' \
-      -e 's/^am__append_7/#am__append_7/' \
       -i monitor/Makefile
   make DESTDIR="$pkgdir" install
 
   install -Dm644 ../gvfsd.hook "$pkgdir/usr/share/libalpm/hooks/gvfsd.hook"
+  install -d -o root -g 102 -m 750 "$pkgdir/usr/share/polkit-1/rules.d"
 
   cd "$pkgdir"
   rm usr/lib/gvfs/gvfsd-{smb,smb-browse,afc,gphoto2,mtp,nfs,google}
