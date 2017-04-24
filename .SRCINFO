@@ -5,6 +5,7 @@ pkgbase = whipper-git
 	url = https://github.com/JoeLametta/whipper
 	arch = any
 	license = GPL3
+	checkdepends = python2-twisted
 	makedepends = git
 	makedepends = python2-gobject2
 	depends = accuraterip-checksum

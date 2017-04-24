@@ -29,6 +29,9 @@ makedepends=(
     'git'
     'python2-gobject2'
     )
+checkdepends=(
+    'python2-twisted'
+    )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'morituri')
 source=("git+${url}.git")
@@ -38,6 +41,11 @@ pkgver() {
     cd "$srcdir/${pkgname%-git}"
     # Cutting off "v" prefix present in the git tag
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+check() {
+    cd "$srcdir/${pkgname%-git}"
+    python2 -m unittest discover
 }
 
 package() {
