@@ -23,7 +23,7 @@ build() {
   export LDFLAGS="${LDFLAGS//,--as-needed}"
   mkdir -p build_cxx
   cd build_cxx
-  ../configure --prefix=/usr --enable-shared --with-cxx --enable-maintainer-mode
+  ../configure --prefix=/usr --enable-shared --with-cxx --enable-maintainer-mode --without-guile
   make
   cd ..
   mkdir -p build
