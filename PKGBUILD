@@ -1,7 +1,7 @@
 # Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 _pkgname=ghostwriter
-pkgname=${_pkgname}-l10n-git
+pkgname="${_pkgname}-l10n-git"
 _commit=5736956 # 7 digits
 pkgver=v1.4.2.r120.g5736956
 pkgrel=1
@@ -18,7 +18,7 @@ optdepends=('markdown: Text to (X)HTML conversion tool for web writers'
             'hunspell: Spell checker and morphological analyzer library and program')
 provides=('ghostwriter')
 conflicts=('ghostwriter' 'ghostwriter-git')
-source=("${_pkgname}::git+https://github.com/wereturtle/ghostwriter.git#commit=${_commit}")
+source=("${_pkgname}::git+https://github.com/wereturtle/${_pkgname}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -39,9 +39,9 @@ package() {
 
   # Doc files
   install -Dm644 CREDITS.md \
-    "$pkgdir/usr/share/doc/${_pkgname}/CREDITS.md"
+    "${pkgdir}/usr/share/doc/${_pkgname}/CREDITS.md"
   install -Dm644 README.md \
-    "$pkgdir/usr/share/doc/${_pkgname}/README.md"
+    "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
   # License
   install -Dm644 COPYING \
