@@ -8,7 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.4.0.r50.g223142f
+pkgver=0.5.1.r0.g17b70ce
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -37,7 +37,7 @@ md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     # Cutting off "v" prefix present in the git tag
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
