@@ -2,8 +2,8 @@
 # Contributors: Arkham, Christoph Zeiler, JD Steffen
 
 pkgname=eduke32
-_pkgdate=20160917
-_pkgrev=5875
+_pkgdate=20170409
+_pkgrev=6113
 pkgver=$_pkgdate.r$_pkgrev
 pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
@@ -22,15 +22,15 @@ install=$pkgname.install
 source=("http://dukeworld.duke4.net/$pkgname/synthesis/$_pkgdate-$_pkgrev/${pkgname}_src_$_pkgdate-$_pkgrev.tar.xz"
         "$pkgname.png"
         "$pkgname.desktop")
-sha256sums=('726f2ce51ffe6aec2f352ff0b8b233011d10edbd3e6e29422b080b9b1d9a4208'
+sha256sums=('7246cc7c0605b19178bb14a9fdc10ce45614c518a475e303120e371fecde9107'
             'b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863'
             'cf2ea2c6a0d85ab15e30171ed5b921f1fcf5644de7af9638c0ef60de21c44f24')
 
 build() {
   cd ${pkgname}_$_pkgdate-$_pkgrev
 
-  # add cflags, explicitly disable c++ building, use sdl 2, set revision
-  make debug="$CFLAGS" CPLUSPLUS=0 SDL_TARGET=2 VC_REV=$_pkgrev
+  # add cxxflags, set revision
+  make PACKAGE_REPOSITORY=1 VC_REV=$_pkgrev
 }
 
 package() {
