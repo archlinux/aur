@@ -10,7 +10,7 @@ _brandingrel=2
 _debver=45.8.0
 _debrel=deb3
 _debrepo=http://ftp.debian.org/debian/pool/main/
-_parabolarepo=https://repo.parabola.nu/other/icedove
+_coadderepo=https://github.com/coadde/icedove/raw/master/tarballs
 debfile() { echo $@|sed -r 's@(.).*@\1/&/&@'; }
 
 _pkgname=thunderbird
@@ -33,8 +33,8 @@ provides=("$_pkgname")
 install=$pkgname.install
 source=("$_debrepo/`debfile $_debname`_$_debver.orig.tar.xz"
         "$_debrepo/`debfile $_debname`_$_debver-${_debrel#deb}.debian.tar.xz"
-        "$_parabolarepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz"
-        "$_parabolarepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz.sig"
+        "$_coadderepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz"
+        "$_coadderepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz.sig"
         mozconfig
         $pkgname.desktop
         changing-the-default-search-engine.patch
