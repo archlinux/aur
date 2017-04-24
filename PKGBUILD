@@ -1,4 +1,4 @@
-# Maintainer: BigEagle < bigeagle(at)xdlinux(dot)info >
+# Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 
 pkgname=gnome-shell-extension-kimpanel-git
 pkgver=20170329
