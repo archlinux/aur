@@ -15,7 +15,8 @@ depends=('alsa-lib' 'gconf' 'gtk3' 'libxss' 'libxtst' 'nss')
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
-            'ttf-liberation: fix fonts for some PDFs (CRBug #369991)')
+            'ttf-liberation: fix fonts for some PDFs (CRBug #369991)'
+            'xdg-utils')
 provides=('google-chrome')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
