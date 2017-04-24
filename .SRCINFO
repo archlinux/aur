@@ -1,0 +1,21 @@
+pkgbase = diablorl-bin
+	pkgdesc = A roguelike game based on Blizzard's Diablo game
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://diablo.chaosforge.org/
+	install = diablorl-bin.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	depends = glibc
+	depends = libx11
+	source = diablorl
+	md5sums = 4b9d8d61586116dfd8348d89c603bcca
+	source_i686 = https://diablo.chaosforge.org/file_download/12/diablorl-linux-i386-050.tar.gz
+	md5sums_i686 = eb1e0ceefd73af6eac8de8d7b4429f2a
+	source_x86_64 = https://diablo.chaosforge.org/file_download/13/diablorl-linux-x64-050.tar.gz
+	md5sums_x86_64 = 894dc2324f16d2b9879c241472105531
+
+pkgname = diablorl-bin
+

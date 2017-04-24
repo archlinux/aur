@@ -1,0 +1,17 @@
+#!/bin/bash
+
+pkgname=diablorl
+if [[ ! -d "$HOME/.$pkgname" ]]; then
+  mkdir -p "$HOME/.$pkgname"
+  # link static files
+  ln -s /opt/$pkgname/font10x18.png "$HOME/.$pkgname/"
+  ln -s /opt/$pkgname/diablorl.mpq "$HOME/.$pkgname/"
+  ln -s /opt/$pkgname/rl "$HOME/.$pkgname/"
+
+  # copy editable files
+  cp /opt/$pkgname/config.lua "$HOME/.$pkgname/"
+  cp /opt/$pkgname/keybindings.lua "$HOME/.$pkgname/"
+fi
+
+cd "$HOME/.$pkgname"
+exec ./rl "$@"

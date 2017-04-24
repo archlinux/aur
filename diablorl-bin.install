@@ -1,0 +1,17 @@
+post_install() {
+  printf -- '-------------------------------------------------------------------\n'
+  printf '    This program will link itself into ~/.diablorl on first run.\n'
+  printf '       This folder will remain after you remove the game, so\n'
+  printf '      remember to remove it manually if you no longer want to\n'
+  printf '                    retain your save data.\n'
+  printf ' If you want to enable sound and music, edit ~/.dialorl/config.lua\n'
+  printf '           and add the path to your DIABDAT.MPQ file.\n'
+  printf -- '-------------------------------------------------------------------\n'
+}
+
+post_remove() {
+  printf -- '--------------------------------------------------------------\n'
+  printf ' Remember to clean up ~/.diablorl, if you no longer want to\n'
+  printf '                  keep your save data.\n'
+  printf -- '--------------------------------------------------------------\n'
+}
