@@ -7,7 +7,7 @@ url="https://github.com/julianxhokaxhiu/go-any-proxy"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('MIT')
 makedepends=('go' 'git')
-source=("https://github.com/julianxhokaxhiu/go-any-proxy.git")
+source=("git+https://github.com/julianxhokaxhiu/go-any-proxy")
 md5sums=('SKIP')
 
 build() {

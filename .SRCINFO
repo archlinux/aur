@@ -11,7 +11,7 @@ pkgbase = any-proxy-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = https://github.com/julianxhokaxhiu/go-any-proxy.git
+	source = git+https://github.com/julianxhokaxhiu/go-any-proxy
 	md5sums = SKIP
 
 pkgname = any-proxy-git
