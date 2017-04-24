@@ -1,6 +1,6 @@
 pkgbase = mpv-light
 	pkgdesc = Video player based on MPlayer/mplayer2, with selection of features.
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://mpv.io
 	arch = i686
@@ -15,13 +15,14 @@ pkgbase = mpv-light
 	depends = lua52
 	depends = uchardet
 	depends = hicolor-icon-theme
+	depends = libxinerama
 	optdepends = youtube-dl: for video-sharing websites playback
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
 	options = !buildflags
-	source = mpv-0.24.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.24.0.tar.gz
-	sha256sums = a41854fa0ac35b9c309ad692aaee67c8d4495c3546f11cb4cdd0a124195d3f15
+	source = mpv-0.25.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.25.0.tar.gz
+	sha256sums = 07423ffad6921ec4da32f703cd7fbfb27012301dcb736ac8542ac8e6083b0bce
 
 pkgname = mpv-light
 

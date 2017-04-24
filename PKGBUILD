@@ -2,20 +2,20 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2, with selection of features."
 url="https://mpv.io"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('ffmpeg' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'hicolor-icon-theme')
+depends=('ffmpeg' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'hicolor-icon-theme' 'libxinerama')
 makedepends=('mesa' 'python-docutils')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a41854fa0ac35b9c309ad692aaee67c8d4495c3546f11cb4cdd0a124195d3f15')
+sha256sums=('07423ffad6921ec4da32f703cd7fbfb27012301dcb736ac8542ac8e6083b0bce')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -36,24 +36,15 @@ build() {
     --disable-libsmbclient \
     --disable-encoding \
     --disable-libbluray \
-    --disable-dvdread \
-    --disable-dvdnav \
-    --disable-cdda \
     --disable-rubberband \
     --disable-vapoursynth \
     --disable-vapoursynth-lazy \
-    --disable-libarchive \
-    --disable-sdl2 \
-    --disable-sdl1 \
     --disable-oss-audio \
     --disable-rsound \
-    --disable-sndio \
     --disable-pulse \
     --disable-jack \
-    --disable-openal \
     --disable-opensles \
     --disable-xv \
-    --disable-xinerama \
     --disable-caca \
     --disable-tv \
     --disable-tv-v4l2 \
