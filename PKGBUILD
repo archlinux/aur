@@ -19,7 +19,7 @@ package() {
   local _npmdir="${pkgdir}/usr/lib/node_modules/"
   mkdir -p "${_npmdir}"
   cd "${_npmdir}"
-  npm install --user root -g --prefix "${pkgdir}/usr" $_npmname@$_npmver
+  npm install --user root -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
 }
 
 # vim:set ts=2 sw=2 cc=80 et:
