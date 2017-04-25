@@ -4,7 +4,7 @@
 pkgname=spotify094
 pkgver=0.9.4.183
 _anotherpkgver=.g644e24e.428-1
-pkgrel=2
+pkgrel=3
 pkgdesc="A proprietary music streaming service (pre dark-UI version)"
 arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -15,6 +15,7 @@ options=('!strip')
 provides=("spotify=${pkgver}")
 conflicts=('spotify-beta'
            'spotify-stable'
+           'spotify-legacy'
            'spotify')
 
 source=('spotify.protocol'
