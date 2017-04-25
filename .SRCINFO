@@ -1,0 +1,22 @@
+pkgbase = drminfo-git
+	pkgdesc = drminfo
+	pkgver = 3.1+0.g25f5e0e
+	pkgrel = 1
+	url = https://www.kraxel.org/cgit/drminfo/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = meson
+	depends = libdrm
+	depends = mesa
+	depends = libepoxy
+	depends = cairo
+	depends = pixman
+	depends = gtk3
+	provides = drminfo=3.1
+	conflicts = drminfo
+	source = git://git.kraxel.org/drminfo
+	sha256sums = SKIP
+
+pkgname = drminfo-git
+
