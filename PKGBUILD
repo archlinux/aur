@@ -4,7 +4,7 @@
 pkgname=dnsperf
 pkgver=2.1.0.0
 _pkgsubver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools that measure performance of authoritative Domain Name services"
 arch=('i686' 'x86_64')
 url="http://www.nominum.com/support/measurement-tools/"
