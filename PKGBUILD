@@ -1,4 +1,4 @@
-# Maintainer: Daniel Lima <mail@tinyprog.tk>
+# Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=ttf-sazanami-hanazono
 pkgver=20110504
@@ -9,7 +9,7 @@ url='http://www.javadikt.net/sazanami-hanazono/'
 license=('BSD3')
 makedepends=('unzip')
 source=(https://bitbucket.org/limadm/ttf-sazanami-hanazono/downloads/Sazanami-Hanazono.zip)
-sha256sums=('596b8912778317319e871ceb8985b3644dc5b46e6eb7ce317ff2b2bf02bccef5')
+md5sums=('326889dde3432d1e7175e821c866e4af')
 
 package() {
 	cd Sazanami-Hanazono
