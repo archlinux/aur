@@ -1,6 +1,6 @@
 pkgbase = libresponse
-	pkgdesc = A Easy to use HTTP , HTTPS , FTP , SCP , SFTP Library for C/C++
-	pkgver = 0.0.1
+	pkgdesc = Human Friendly HTTP/HTTPS library for C/C++
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/DeathSec/response
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libresponse
 	license = apache
 	depends = curl
 	depends = cmake
-	source = https://github.com/deathsec/response/archive/v0.0.1.tar.gz
-	sha256sums = 945ec206f354f7c3208b7055ac53670d1b282ae926d04259c9454cc274adb9f3
+	source = https://github.com/deathsec/response/archive/v0.0.3.tar.gz
+	sha256sums = ed3c93d6daea03dd1f2d836de63607f38865f97f4f16316ffff811edc4d1f76a
 
 pkgname = libresponse
 
