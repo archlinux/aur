@@ -176,7 +176,6 @@ build()
             --with-x \
             --enable-win64 \
             --with-xattr \
-            --with-d3dadapter \
             --disable-tests
         # Gstreamer was disabled for FS#33655
 
@@ -197,7 +196,6 @@ build()
         --with-x \
         --with-xattr \
         --disable-tests \
-        --with-d3dadapter \
         "${_wine32opts[@]}"
 
     # These additional flags solve FS#23277
