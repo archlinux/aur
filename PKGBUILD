@@ -2,8 +2,8 @@
 _basename=siunitx
 pkgname=texlive-"$_basename"
 # Use "grep ProvidesExplPackage -r src/" to find the version.
-pkgver=2.6q
-pkgrel=2
+pkgver=2.7f
+pkgrel=1
 pkgdesc="Typeset physical quantities in LaTeX."
 arch=('any')
 depends=('texlive-bin')
@@ -13,7 +13,6 @@ conflicts=('texlive-science')
 url="https://github.com/josephwright/$_basename/"
 source=("https://github.com/josephwright/$_basename/archive/v$pkgver.zip")
 license=('LPPL')
-install="$pkgname".install
 
 package() {
   cd -- "${srcdir}/${_basename}-${pkgver}"
@@ -23,4 +22,4 @@ package() {
   install -m644 -t "$_dstdir" *.cfg *.sty
 }
 
-sha1sums=('e5a9f70b9e139b57205d070952e5a033a808aac5')
+sha1sums=('c6286651d280d4aad190ccb43d9896bde97f25b8')
