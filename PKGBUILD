@@ -2,13 +2,13 @@
 
 pkgname=bdf2psf
 pkgdesc='Debian utility to convert BDF font files to PSF format.'
-pkgver=1.163
+pkgver=1.164
 pkgrel=1
 arch=('any')
 license=('GPL2+')
 url='https://packages.debian.org/sid/bdf2psf'
 source=("ftp://ftp.debian.org/debian/pool/main/c/console-setup/bdf2psf_${pkgver}_all.deb")
-sha1sums=('6f6a15f8bb7c626a2e3c312bf99fbbe333701c9a')
+md5sums=('c65aea483fc8658dfb2729d8bc294241')
 depends=('perl')
 
 build() {
