@@ -1,14 +1,14 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-accountsservice-git
-pkgver=20160918.c262a93
+pkgver=20170425.32acabd
 pkgrel=1
 pkgdesc="Qt-style wrapper for Accounts Service"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('LGPL3')
 depends=('qt5-declarative')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('git')
 conflicts=('qtaccountsservice-git' 'qt5-accountsservice')
 replaces=('qtaccountsservice-git' 'qt5-accountsservice')
 provides=('qt5-accountsservice')
@@ -27,19 +27,18 @@ pkgver() {
 
 prepare() {
 	mkdir -p build
+	pushd ${_gitname} && git submodule update --init && popd
 }
 
 build() {
 	cd build
-	cmake ../${_gitname} \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DKDE_INSTALL_LIBDIR=lib \
-		-DKDE_INSTALL_LIBEXECDIR=lib
+	qmake \
+		CONFIG+=use_qt_paths \
+		../${_gitname}/qtaccountsservice.pro
 	make
 }
 
 package() {
 	cd build
-	make DESTDIR="${pkgdir}" install
+	make INSTALL_ROOT="${pkgdir}" install
 }
