@@ -4,7 +4,7 @@
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
 pkgver=2.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Linux Guest Agent"
 arch=('any')
 url="https://github.com/Azure/WALinuxAgent"
@@ -14,7 +14,7 @@ makedepends=('python' 'python-setuptools')
 checkdepends=()
 optdepends=()
 provides=("walinuxagent")
-conflicts=("walinuxagent")
+backup=("etc/waagent.conf")
 options=()
 install=
 changelog=
