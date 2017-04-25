@@ -1,6 +1,6 @@
 pkgname=bearychat
 _pkgname=BearyChat-linux-x64
-pkgver=v2
+pkgver=20170330
 pkgrel=1
 pkgdesc="面向未来的团队工作方式，团队沟通与智能化工作流"
 arch=('x86_64')
