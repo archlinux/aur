@@ -3,17 +3,17 @@
 _pkgname=ts3client-notification-plugin
 pkgname=teamspeak3-plugin-notification
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin for Teamspeak 3. Sends simple desktop notifications when being mentioned or receiving private messages'
 arch=('i686' 'x86_64')
 url="https://github.com/svenpaulsen/${_pkgname}"
 license=('Unknown')
-makedepends=('teamspeak3-pluginsdk>=3.1.0.1')
+makedepends=('teamspeak3-pluginsdk>=3.1.0.1' 'qt5.6')
 depends=('teamspeak3>=3.1.0.1')
 source=("https://github.com/svenpaulsen/${_pkgname}/archive/${pkgver}.tar.gz"
         'change_include.patch')
 sha256sums=('096970a906f35a7faa8c0856aec7c5a49d072c040418e97c8e123e51c60f2309'
-            'ffbec2a3845be56f04f4e029c113d980523b249d397525764d9d66dda7342755')
+            '3e48db759bd2242c4cbf2145085ce8260eb6aeb144f6ecd4f0a36b32af071866')
 
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  qmake plugin.pro
+  /opt/qt5.6/bin/qmake plugin.pro
   make
 }
 
