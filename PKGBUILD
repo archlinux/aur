@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=giada
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host"
 arch=('i686' 'x86_64')
@@ -13,28 +13,13 @@ source=("${pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/gra
         "$pkgname.desktop"
         "$pkgname.png")
 install="$pkgname.install"
-md5sums=('08ee18d49b9271950a8a4533b7907e58'
+md5sums=('4c1df64360e0fe5cda803e6f494a32f3'
          '06238158680470ab01fbbeb33353e58e'
          'f9b6e4233890720af50c536c4b2c92c0')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver-src"
-
-  # src/deps/juce/juce_audio_processors/format_types/juce_VST3Headers.h
-  msg2 "Fixing VST3 SDK include paths in JUCE sources..."
-  for file in \
-      src/deps/juce/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp \
-      src/deps/juce/modules/juce_audio_plugin_client/VST3/juce_VST3_Wrapper.cpp
-  do
-    sed -i -e 's|pluginterfaces/vst2.x/|vst36/pluginterfaces/vst2.x/|g' "$file"
-  done
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-src"
 
-  # the rtmidi AUR package puts the RtMidi headers in /usr/include/rtmidi
-  export CXXFLAGS="$CXXFLAGS -I/usr/include/rtmidi"
   ./configure --prefix=/usr --target=linux --enable-vst
   make
 }
