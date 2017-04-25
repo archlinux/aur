@@ -1,22 +1,20 @@
 # Maintainer: Vincent Hourdin <aur at vinvin dot tf>
 pkgname=qsiapi
-pkgver=7.2.0
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="C++ API for QSI camera control and image capture via the USB interface"
 url="http://www.qsimaging.com/software-beta.html#api"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('bash' 'libftdi')
-# makedepends=('gcc46')
-source=("http://qsimaging.com/downloads/${pkgname}-${pkgver}.tar.gz" "patch_libftdi1.diff")
-sha1sums=('3c11fcefb122856807db6da937cb7fac4b0887fd' 'e8076f6501d13ee64fdf6fd3d421444b78bec125')
+source=("http://qsimaging.com/downloads/${pkgname}-${pkgver}.tar.gz")
+sha1sums=('c2d91e91c48e0e3f81938da8f29c5319f02e6bd4')
 install="${pkgname}.install"
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch < patch_libftdi1.diff
 	autoreconf -fi
-	./configure --enable-libftdi --prefix=/usr --enable-shared
+	./configure --with-ftd=ftdi1 --prefix=/usr --enable-shared
 	make all
 }
 

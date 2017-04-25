@@ -1,6 +1,6 @@
 pkgbase = qsiapi
 	pkgdesc = C++ API for QSI camera control and image capture via the USB interface
-	pkgver = 7.2.0
+	pkgver = 7.6.0
 	pkgrel = 1
 	url = http://www.qsimaging.com/software-beta.html#api
 	install = qsiapi.install
@@ -9,10 +9,8 @@ pkgbase = qsiapi
 	license = custom
 	depends = bash
 	depends = libftdi
-	source = http://qsimaging.com/downloads/qsiapi-7.2.0.tar.gz
-	source = patch_libftdi1.diff
-	sha1sums = 3c11fcefb122856807db6da937cb7fac4b0887fd
-	sha1sums = e8076f6501d13ee64fdf6fd3d421444b78bec125
+	source = http://qsimaging.com/downloads/qsiapi-7.6.0.tar.gz
+	sha1sums = c2d91e91c48e0e3f81938da8f29c5319f02e6bd4
 
 pkgname = qsiapi
 
