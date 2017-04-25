@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname="bcwc-pcie-dkms"
-pkgver=0r213.bb3c229
+pkgver=0r231.0712f39
 pkgrel=1
 pkgdesc="Reverse engineered Linux driver for the Broadcom 1570 PCIe webcam."
 arch=('x86_64')
