@@ -1,4 +1,5 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Janne Heß <jannehess@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Pavol (Lopo) Hluchy <lopo AT losys DOT eu>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
@@ -8,16 +9,16 @@
 
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
-pkgver=8.17.4
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README"
+url="https://gitlab.com/gitlab-org/gitlab-ee/tree/master#README"
 license=('MIT')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 depends=('ruby2.3' 'git' 'ruby2.3-bundler' 'gitlab-workhorse' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
-makedepends=('cmake' 'postgresql' 'mariadb')
+makedepends=('cmake' 'postgresql' 'mariadb' 'yarn')
 optdepends=('postgresql: database backend'
             'mysql: database backend'
             'python2-docutils: reStructuredText markup language support'
@@ -42,9 +43,11 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/gitlab-org/gitlab-ee/r
         apache2.2-ssl.conf.example
         nginx.conf.example
         nginx-ssl.conf.example
-        lighttpd.conf.example)
+        lighttpd.conf.example
+        10589.patch
+        shell-link.patch)
 install='gitlab.install'
-sha512sums=('cfd068187b3676a3d590d8dc304acae6e8672fca889b070dd5915e417a36ad7db0a1e41e13c9b9f7c29a1853c9c0c5d1408749c952ccd46e034db62c444a8f56'
+sha512sums=('7c56752f9d5252c5ca0b180ec0591f83910045d888b81654c4664b2be742be5f13cf98ad6405739e00afcbc87c5909db0d776eeead199dc52f7def7388540e04'
             '56cce150645ef74fa42a6100c8bc7689c4012579e1f3ba237c06c367b121246b39e968044615fa21c4757bc8e9d06f37f8ac8d39aa8b808c758e716857553f66'
             '52651e4a5dd2d632e31b7275283f9b8ab2c32c4d56b63d17bd843f300e273e382e339e5aed66222b1b2279273357cbb73aa38119f04784fe380d1550346f1ff3'
             '79cfb8ee740ab30f970c3113659b8349128abeae5e32cc81bb905f89a6db9941b7778040a094b884262daf020f66a1aee49a12d34fbb94efce6ade946bb4625b'
@@ -59,7 +62,9 @@ sha512sums=('cfd068187b3676a3d590d8dc304acae6e8672fca889b070dd5915e417a36ad7db0a
             '248d47b44fa5ed65e2a940f2b60d0482c481b3a438357ca510848221370367ffbc0d83ce046d688bebbbc75d4e321b140f6a5ce1a9d7ec0b034fafcf92dee107'
             '53a9d6d6f87874b29e48a8fb2e207094ebc1a80af478562ec4b591926d59e135a3166c20966704aa948ca7063ba63c1ec4ac290a343832fa18025ec3d85081ba'
             '6d3006da591acefcc534c6e3f1da8e812d0b3b21fc416bfaa8678b8e2d922be6b17d1c92b0d7164de3b8ad864139253707107ca082f78e823d23f3b65fcb5914'
-            'c78b6f46abcf603d8db6e38cf50868e14145928422ddfe17c88e2f006b5b910dddf456ec5d6d724b250994530643963809688a98f7e12ebd5b5dabf7f96f0e06')
+            'c78b6f46abcf603d8db6e38cf50868e14145928422ddfe17c88e2f006b5b910dddf456ec5d6d724b250994530643963809688a98f7e12ebd5b5dabf7f96f0e06'
+            '364408ad2cc7fd866c1f78a336fead0876c6af694cc45744a7dda680d40ad12bc2c35f18b54f4043af3f144a43a64ced5155e61210a88f814918152f041e1bb6'
+            '845338cb633fd57caccddce7c7bdea37568a66ef777f721639a53dbac56e10c4cbe77314d9875ade9eb43f3935ea894fcd3625f1580cda56b59809f76ab9d12f')
 
 _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
@@ -69,6 +74,12 @@ _srcdir="${pkgname}-v${pkgver}-ee-"
 
 prepare() {
   cd "${srcdir}/${_srcdir}"*
+
+  # https://gitlab.com/gitlab-org/gitlab-ce/merge_requests/10589
+  # https://gitlab.com/gitlab-org/gitlab-ce/issues/29562
+  # https://gitlab.com/gitlab-org/gitlab-ce/issues/30124
+  patch -Np1 < "${srcdir}"/10589.patch
+  patch -Np0 < "${srcdir}"/shell-link.patch
 
   export SKIP_STORAGE_VALIDATION='true'
 
@@ -111,9 +122,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcdir}"*
-  
-  export SKIP_STORAGE_VALIDATION='true'
 
+  export SKIP_STORAGE_VALIDATION='true'
   msg "Fetching bundled gems..."
   # Gems will be installed into vendor/bundle
 
@@ -125,7 +135,8 @@ build() {
   cp config/resque.yml.example config/resque.yml
   sed -i 's/url.*/nope.sock/g' config/resque.yml
 
-  bundle-2.3 exec rake assets:precompile RAILS_ENV=production --trace
+  yarn install --production --pure-lockfile
+  bundle-2.3 exec rake gitlab:assets:compile RAILS_ENV=production NODE_ENV=production
 
   # After building assets, clean this up again
   rm config/database.yml config/database.yml.postgresql.orig
@@ -172,7 +183,6 @@ package() {
   # Fix for ruby-2.3 and bundle-2.3
   sed -i "s|bundle|bundle-2.3|g" "${pkgdir}${_datadir}/lib/tasks/gitlab/check.rake"
   grep -rl "bin/env ruby" "${pkgdir}${_datadir}" | xargs sed -i "s|bin/env ruby$|bin/env ruby-2.3|g"
-  grep -rl "bin/env rake" "${pkgdir}${_datadir}" | xargs sed -i "s|bin/env rake$|bin/env rake-2.3|g"
 
   # Install config files
   for config_file in application.rb gitlab.yml unicorn.rb resque.yml; do

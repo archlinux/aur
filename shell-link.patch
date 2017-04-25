@@ -1,0 +1,10 @@
+--- lib/gitlab/shell.rb	2017-04-25 16:10:04.588925291 +0200
++++ lib/gitlab/shell.rb	2017-04-25 16:10:08.628924919 +0200
+@@ -53,7 +53,6 @@
+ 
+         link_path = File.join(shell_path, '.gitlab_shell_secret')
+         if File.exist?(shell_path) && !File.exist?(link_path)
+-          FileUtils.symlink(secret_file, link_path)
+         end
+       end
+     end
