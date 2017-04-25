@@ -1,8 +1,8 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=xandikos
-pkgver=0.0.3
-pkgrel=3
+pkgver=0.0.4
+pkgrel=1
 pkgdesc='CardDAV/CalDAV server that backs onto a Git repository'
 arch=('any')
 url=https://jelmer.uk/code/xandikos/
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('python-defusedxml' 'python-dulwich' 'python-icalendar' 'python-jinja')
 makedepends=('python-setuptools')
 source=("xandikos-$pkgver.tar.gz::${url}tarball/v$pkgver")
-sha512sums=('0af3c2bd511ab4014a231790fc6219c9f2589efe2af5cd6b1478f34bea96c813dcd9d622f0e9abc2e4545d7cbeac0e6a213672b5f9f371fe9f80d8ed59ed4509')
+sha512sums=('eae4e408adb9ffd55671b6203b871faa670642310a05f3f54bd829c2ded62b6dcdfcf57d1a4611371aeb9dd34596168bd0d2fb8df9f945deaf83e9c94eb1e56d')
 
 check() {
   make check
@@ -22,9 +22,6 @@ build() {
 
 package() {
   python setup.py install --root="$pkgdir" --optimize=1
-
-  # Workaround until next release
-  cp -r xandikos/templates "$pkgdir"/usr/lib/python3.6/site-packages/xandikos
 }
 
 # vim:set ts=2 sw=2 et:
