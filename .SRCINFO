@@ -1,6 +1,6 @@
 pkgbase = singular-factory
 	pkgdesc = Computer Algebra System for polynomial computations: factory and libfac
-	pkgver = 4.0.2
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = http://www.singular.uni-kl.de/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = singular-factory
 	depends = readline
 	depends = ntl
 	options = !strip
-	source = http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/Factory/factory-4.0.2.tar.gz
-	md5sums = 1129260eebdfb26cd3daefe13b542a4d
+	source = http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/Factory/factory-4.1.0.tar.gz
+	md5sums = 4674707d68a4413d8393db8bdbbdb643
 
 pkgname = singular-factory
 
