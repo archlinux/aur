@@ -1,11 +1,11 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=yq
-pkgver='2.0.2'
-pkgrel=1
+pkgver=2.0.2
+pkgrel=2
 pkgdesc="Command-line YAML processor - jq wrapper for YAML documents"
 url="https://github.com/kislyuk/yq"
-depends=('python')
+depends=('python' 'python-yaml')
 makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
