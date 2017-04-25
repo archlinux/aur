@@ -1,9 +1,10 @@
 # $Id$
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Andy Kluger <andykluger@gmail.com>
+# Contributer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-zen           # Build -zen kernel
+pkgbase=linux-zen-anbox     # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.10
 _zenpatch=zen-4.10.12-ad788e10ce86348ba49c41f24fe2ba24ea939479.diff

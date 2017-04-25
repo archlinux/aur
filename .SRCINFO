@@ -1,4 +1,4 @@
-pkgbase = linux-zen
+pkgbase = linux-zen-anbox
 	pkgver = 4.10.12
 	pkgrel = 1
 	url = https://github.com/zen-kernel/zen-kernel
@@ -36,19 +36,19 @@ pkgbase = linux-zen
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
-pkgname = linux-zen
-	pkgdesc = The Linux-zen kernel and modules
+pkgname = linux-zen-anbox
+	pkgdesc = The Linux-zen-anbox kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-zen.preset
+	backup = etc/mkinitcpio.d/linux-zen-anbox.preset
 
-pkgname = linux-zen-headers
-	pkgdesc = Header files and scripts for building modules for Linux-zen kernel
+pkgname = linux-zen-anbox-headers
+	pkgdesc = Header files and scripts for building modules for Linux-zen-anbox kernel
 
-pkgname = linux-zen-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-zen kernel
+pkgname = linux-zen-anbox-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-zen-anbox kernel
 
