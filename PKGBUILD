@@ -1,20 +1,20 @@
 # Maintainer: Tran Duc Nam <dynamo.foss@gmail.com>
 
 pkgname=awesome-gnome
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc='Setup awesome as window manager of GNOME 3'
 arch=('any')
 url='http://awesome.naquadah.org/wiki/Quickly_Setting_up_Awesome_with_Gnome'
 license=('CCPL')
-depends=('awesome' 'gnome-session<3.24' 'gnome-settings-daemon<3.24' 'notification-daemon')
+depends=('awesome' 'gnome-session>=3.24' 'gnome-settings-daemon>=3.24' 'notification-daemon')
 install=awesome-gnome.install
 source=($pkgname.desktop
         awesome.desktop
         awesome.session)
 md5sums=('33833f966597ae644bdc927750409b78'
          'ae7d8d0426c36c8c6f606cf28f13ac02'
-         '72d1b2d982650851cfcd1f12bb4fbff5')
+         '5e9ed66f253c060c0b23b7a9a2f907a2')
 
 package() {
     cd $srcdir
