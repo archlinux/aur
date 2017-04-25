@@ -1,17 +1,3 @@
---- a/src/vte.cc	2016-03-21 19:49:00.390775386 +0800
-+++ b/src/vte.cc	2016-03-21 19:50:22.627904117 +0800
-@@ -206,6 +206,11 @@
-                 return 0;
-         if (G_UNLIKELY (g_unichar_iswide (c)))
-                 return 2;
-+        if (G_UNLIKELY(0x25a0 <= c && c < 0x27c0 || // Geometric Shapes, Miscellaneous Symbols, Dingbats
-+                       0x2b00 <= c && c < 0x2c00 || // Miscellaneous Symbols and Arrows
-+                       0x1f300 <= c && c < 0x20000 || // Miscellaneous Symbols and Pictographs ... Supplemental Symbols and Pictographs
-+                       0))
-+                return 2;
-         if (G_LIKELY (utf8_ambiguous_width == 1))
-                 return 1;
-         if (G_UNLIKELY (g_unichar_iswide_cjk (c)))
 --- a/src/vteseq.cc	2016-04-05 10:56:49.875097322 +0800
 +++ b/src/vteseq.cc	2016-04-05 10:56:39.522122540 +0800
 @@ -25,6 +25,7 @@
@@ -50,18 +36,3 @@
  }
  
  /* Cursor left N columns. */
-diff --git i/src/app.vala w/src/app.vala
-index 8104964..cc871d8 100644
---- i/src/app.vala
-+++ w/src/app.vala
-@@ -214,8 +214,8 @@ class Window : Gtk.ApplicationWindow
-   private uint launch_idle_id;
- 
-   private string[] builtin_dingus = {
--    "(((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?",
--    "(((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"]"
-+    "((((filesystem|gopher|news|telnet|nntp|file|http|ftp|https):)+//)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?",
-+    "((((filesystem|gopher|news|telnet|nntp|file|http|ftp|https):)+//)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"]"
-   };
- 
-   private const GLib.ActionEntry[] action_entries = {
