@@ -1,6 +1,6 @@
 pkgname=pyf9-git
 _pkgname=PyF9
-pkgver=r10.db59753
+pkgver=r11.6f451b1
 pkgrel=1
 pkgdesc="Chinese IME in testing. No copyright infringing materials included."
 arch=('i686' 'x86_64')
