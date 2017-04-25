@@ -26,13 +26,9 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/"
-
-  install -Dm 644 $pkgname/dkms.conf "${pkgdir}/usr/src/bcwc-pcie-${pkgver}/dkms.conf"
-
   cd $srcdir/$pkgname
-  rm -rf .git
-  for FILE in $(find -type f); do
+
+  for FILE in dkms.conf Makefile *.[ch]; do
     install -Dm 644 "$FILE" "$pkgdir/usr/src/${pkgname/-dkms/}-${pkgver}/$FILE"
   done
 
