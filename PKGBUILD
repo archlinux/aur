@@ -2,7 +2,7 @@
 
 pkgname="adwaita-dark-darose"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adwaita theme hacked to use my custom color scheme.  (Dark blues instead of greys.)"
 url="none"
 license=('GPL')
@@ -30,6 +30,12 @@ build() {
 #    sed -i 's|#262b2d|#181c28|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|#262b2d|#1a1e2c|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|#215d9c|#566b96|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2d3234|#1c202e|' gtk-3.0/gtk-contained-dark.css
+
+    # dark gradient
+    sed -i 's|#2e3436|#293045|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2a2e30|#1c202e|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#25292b|#171b27|' gtk-3.0/gtk-contained-dark.css
 
     mkdir gtk-3.0/assets
     for f in $(gresource list /usr/lib/libgtk-3.so.0 | grep Adwaita/assets); do
