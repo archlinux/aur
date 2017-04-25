@@ -1,5 +1,6 @@
-# Maintainer: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
-# Maintainer: Hexchain Tong <i at hexchain dot org>
+# Maintainer: Miguel Revilla <yo at  miguelrevilla dot com>
+# Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
+# Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=megasync
 pkgver=3.0.1.0
 pkgrel=2
