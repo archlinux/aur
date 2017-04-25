@@ -3,7 +3,7 @@
 pkgname=pybitmessage
 _realname=PyBitmessage
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('any')
 depends=('openssl' 'python2' 'python2-pyqt4' 'python2-msgpack' 'qt4' 'sqlite')
@@ -26,6 +26,11 @@ prepare() {
   msg 'Fixing Python version...'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
+}
+
+build() {
+  cd "$srcdir/$_realname-$pkgver/src/bitmsghash"
+  make
 }
 
 package() {
