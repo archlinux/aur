@@ -1,12 +1,13 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=ankama-transition
 pkgver=3.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Updater for Ankama games Dofus and Wakfu"
 arch=('i686' 'x86_64')
 url="http://www.ankama.com"
 license=('custom')
 depends=('qt4' 'polkit' 'openssl')
+optdepends=('pulseaudio-alsa: required for Dofus to play sounds in PulseAudio')
 source=('http://dl.ak.ankama.com/games/linux/ankama-transition-release.tar.gz'
         'transition.sh')
 md5sums=('bac15a49942ac46c8270e8f5b94c3d1c'
