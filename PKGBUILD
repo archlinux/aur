@@ -5,7 +5,7 @@
 
 pkgname=mutter-hide-legacy-decorations
 _pkgname=mutter
-pkgver=3.22.3
+pkgver=3.24.1+1+geb394f19d
 pkgrel=1
 pkgdesc="A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)"
 url="https://git.gnome.org/browse/mutter"
@@ -21,7 +21,7 @@ provides=("mutter=${pkgver}")
 groups=(gnome)
 options=(!emptydirs)
 
-_commit=afb4165262ac7b51229663fdf859aee2dcc4b4e8  # tags/3.22.3^0
+_commit=eb394f19d343a119cc3a887e4b2c563ddda8c5f4  # gnome-3-24
 source=("git://git.gnome.org/mutter#commit=$_commit"
         "startup-notification.patch"
         "hideTitlebar.patch")
