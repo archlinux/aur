@@ -3,7 +3,7 @@
 
 _pkgname=phpstorm-url-handler
 pkgname=${_pkgname}
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Open phpstorm:// URLs in PHPStorm."
 arch=('any')
