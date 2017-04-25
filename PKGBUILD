@@ -56,7 +56,7 @@ build() {
         -DFORCE_COMPILE_FROM_TRUNK=TRUE \
         -DSTATE_INSTALL_DIR='/var/lib/telldus' \
         .
-    make
+    make -j1
 }
 
 package() {
