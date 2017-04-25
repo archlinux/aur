@@ -14,9 +14,8 @@ conflicts=(luvi)
 source=("git+https://github.com/luvit/luvi.git")
 sha256sums=('SKIP')
 pkgver() {
-  pushd $startdir/luvi > /dev/null
-  echo `git describe --long --tags| sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'`
-  popd > /dev/null
+  cd "$srcdir/luvi"
+  git describe --long --tags| sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
