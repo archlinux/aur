@@ -10,7 +10,7 @@ declare -rgA _system_libs=(
   [ffmpeg]=ffmpeg
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
-  [icu]=icu
+  #[icu]=icu
   [libjpeg]=libjpeg
   [libpng]=libpng
   #[libvpx]=libvpx     # https://bugs.gentoo.org/show_bug.cgi?id=611394
@@ -164,6 +164,7 @@ package() {
     out/Release/{chrome_{100,200}_percent,resources}.pak \
     out/Release/{*.bin,chromedriver,libwidevinecdmadapter.so} \
     out/Release/locales \
+    out/Release/icudtl.dat \
     "$pkgdir/usr/lib/chromium/"
 
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
