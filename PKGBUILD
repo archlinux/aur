@@ -1,4 +1,4 @@
-# Maintainer: Daniel Lima <danielm@tinyhub.tk>
+# Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=autoenv_fish
 pkgver=0.2.0
