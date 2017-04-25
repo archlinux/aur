@@ -1,8 +1,8 @@
-# Maintainer: Daniel Lima <danielm@tinyhub.tk>
+# Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=ccv
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='The C-based/Cached/Core Computer Vision Library'
 arch=('i686' 'x86_64')
 url='http://libccv.org/'
