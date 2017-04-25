@@ -1,0 +1,17 @@
+pkgbase = git-subsplit-git
+	pkgdesc = Automate and simplify the process of managing one-way read-only subtree splits.
+	pkgver = r30.2cde593
+	pkgrel = 1
+	url = https://github.com/dflydev/git-subsplit
+	arch = any
+	license = MIT
+	depends = git
+	provides = git-subsplit=r30.2cde593
+	conflicts = git-subsplit
+	source = git-subsplit::git+https://github.com/dflydev/git-subsplit.git
+	source = install-with-DESTDIR.patch
+	md5sums = SKIP
+	md5sums = 54079a630b700001111591a6b4b82269
+
+pkgname = git-subsplit-git
+

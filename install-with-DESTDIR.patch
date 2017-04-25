@@ -1,0 +1,8 @@
+diff --git a/install.sh b/install.sh
+index 9644838..9d3fe1b 100755
+--- a/install.sh
++++ b/install.sh
+@@ -1,2 +1,2 @@
+ # Copy subsplit to where the Git scripts belong.
+-cp git-subsplit.sh "$(git --exec-path)"/git-subsplit
++cp git-subsplit.sh "$DESTDIR/$(git --exec-path)"/git-subsplit
