@@ -28,4 +28,5 @@ package() {
     cd binaryen-version_${pkgver}/build
     make DESTDIR=${pkgdir} install
     install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    mv ${pkgdir}/usr/lib64 ${pkgdir}/usr/lib
 }
