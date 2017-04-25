@@ -6,7 +6,7 @@ pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Fortran interface to the GNU Scientific Library"
 arch=('i686' 'x86_64')
-url="http://www.lrz.de/services/software/mathematik/gsl/fortran/"
+url="https://www.lrz.de/services/software/mathematik/gsl/fortran/"
 license=('GPL')
 depends=("gsl>=2.1" 'gcc-fortran')
 source=("${url}download/${pkgname}-${pkgver}.tar.gz")
