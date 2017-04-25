@@ -1,10 +1,11 @@
-# Maintainer: Robert Schwarz <mail@rschwarz.net>
+# Maintainer: Ľubomir 'The_K' Kučera <lubomir-kucera-jr-at-gmail-dot-com>
+# Contributor: Robert Schwarz <mail@rschwarz.net>
 # Contributor: Johannes Schlatow <johannes.schlatow@googlemail.com>
 # Contributor: Stephan Friedrichs <deduktionstheorem@googlemail.com>
 
 pkgname='scipoptsuite'
-pkgver='3.2.0'
-pkgrel=2
+pkgver='4.0.0'
+pkgrel=1
 pkgdesc="Toolbox for generating and solving optimization problems."
 arch=('i686' 'x86_64')
 url='http://scip.zib.de'
@@ -12,10 +13,10 @@ license=('LGPL3' 'custom:ZIB Academic License')
 depends=('zlib' 'gmp' 'readline')
 replaces=('ziboptsuite')
 makedepends=('chrpath' 'doxygen' 'graphviz')
-provides=('scip=3.2.0' 'soplex=2.2.0' 'zimpl=3.3.3' 'gcg=2.1.0' 'ug=0.8.0')
+provides=('scip=4.0.0' 'soplex=3.0.0' 'zimpl=3.3.4' 'gcg=2.1.2' 'ug=0.8.3')
 options=(staticlibs)
 source=("http://scip.zib.de/download/release/${pkgname}-${pkgver}.tgz")
-sha256sums=('69bf32051c0dc4528dff57cacf8701bae0911186bb1f877cce0370bf699e69ae')
+sha256sums=('087535760eae3d633e2515d942a9b22e1f16332c022be8d093372bdc68e8a661')
 
 build() {
     # Extract directory names from the $provides array.
