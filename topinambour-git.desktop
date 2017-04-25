@@ -1,5 +1,6 @@
 [Desktop Entry]
 _Name=Topinambour
+Name=Topinambour
 _Comment=vte terminal based on the ruby-gnome2 bindings
 _Keywords=shell;prompt;command;commandline;cmd;
 TryExec=topinambour
@@ -8,7 +9,7 @@ Icon=utilities-terminal
 Type=Application
 Categories=GNOME;GTK;System;TerminalEmulator;Utility;
 StartupNotify=true
-[NewWindow Shortcut Group]
+[NewWindow]
 Name=Open a New Window
 Exec=topinambour
 
