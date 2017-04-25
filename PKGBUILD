@@ -10,7 +10,7 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.6.2
+pkgver=1.8rc3+10+gddd6f94ab
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -19,7 +19,7 @@ license=('GPL' 'LGPL2.1')
 url="https://wiki.gnome.org/Projects/NetworkManager"
 depends=("libnm-glib>=$pkgver" 'iproute2' 'polkit-consolekit' 'consolekit'
          'wpa_supplicant' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 'libteam'
-         'bluez-libs')
+         'bluez-libs' 'curl')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
              "ppp=$_pppver" 'modemmanager' 'vala' 'perl-yaml' 'python-gobject'
              'git' 'jansson' 'glib2-docs')
@@ -34,8 +34,9 @@ provides=("networkmanager=$pkgver")
 replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
+groups=('gnome')
 install=networkmanager.install
-_commit=037a12f96eff09aa48481fda7ea602a3388afc74  # tags/1.6.2^0
+_commit=ddd6f94ab70eae875641ab593e17326acf65644c  # nm-1-8
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf
