@@ -1,0 +1,23 @@
+pkgbase = gnome-usage-git
+	pkgdesc = A nice way to view information about use of system resources
+	pkgver = 0.4.5.20.g18032a6
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Usage
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = AGPL3
+	makedepends = git
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = gtk3
+	depends = libgtop
+	provides = gnome-usage
+	conflicts = gnome-usage
+	source = git://git.gnome.org/gnome-usage
+	md5sums = SKIP
+
+pkgname = gnome-usage-git
+
