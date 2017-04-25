@@ -1,4 +1,4 @@
-# Maintainer: Daniel Lima <danielm@tinyhub.tk>
+# Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=xsysroot
 pkgver=1.914
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git')
 depends=('python2' 'qemu-user-static' 'binfmt-support')
 source=('git+https://github.com/skarbat/xsysroot')
-sha1sums=('SKIP')
+md5sums=('SKIP')
 
 pkgver() {
 	grep __version__ $srcdir/xsysroot/xsysroot | cut -d' ' -f3
