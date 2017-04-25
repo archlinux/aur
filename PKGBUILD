@@ -4,7 +4,7 @@
 pkgbase=gregorio
 pkgname=$pkgbase
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 _pkgver_underscores=$(echo $pkgver | sed -e 's/\./_/g')
 pkgdesc="Command-line tool to typeset Gregorian chant"
 url=http://gregorio-project.github.io
@@ -13,7 +13,6 @@ license=("GPL")
 depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra")
 conflicts=("gregorio-svn" "gregorio-git" "gregoriotex")
 provides=("gregorio")
-install=gregorio.install
 source=("https://github.com/gregorio-project/gregorio/releases/download/v$pkgver/gregorio-$pkgver.tar.bz2" "https://github.com/gregorio-project/gregorio/releases/download/v$pkgver/supp_fonts-$_pkgver_underscores.zip")
 sha256sums=("79fea3d8292ed079ff524b7fdb3fee81ac032e6903158aa484ffc722ce9a0d99" "33f90a700c45896e99ab63ac45ff2e983305efa3f13cd495aa1e6eef797b1604")
 
