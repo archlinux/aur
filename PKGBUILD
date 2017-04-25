@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=fluid-git
-pkgver=20170425.a74d0e9
+pkgver=20170426.6b1dd8c
 pkgrel=1
 pkgdesc="Components for Qt Quick applications with Material Design and Universal"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -32,9 +32,7 @@ prepare() {
 
 build() {
 	cd build
-	qmake \
-		CONFIG+=use_qt_paths \
-		../${_gitname}/fluid.pro
+	qmake LIRI_INSTALL_PREFIX=/usr CONFIG+=use_qt_paths ../${_gitname}/fluid.pro
 	make
 }
 
