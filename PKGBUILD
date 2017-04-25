@@ -12,8 +12,20 @@ sha256sums=('86db7a18c71475d757bb98fa70efbe01993c25e38c7aca487b24a080bd771013')
 depends=('libdrm' 'mesa' 'libepoxy' 'cairo' 'pixman' 'gtk3')
 makedepends=('meson')
 
+source+=(0001-include-drm_fourcc.h-from-libdrm-not-the-kernel.patch
+         0002-meson-install-drminfo-drmtest.patch
+         0003-meson-install-drminfo-drmtest-man-pages.patch)
+sha256sums+=(SKIP SKIP SKIP)
+
 prepare() {
   cd drminfo-${pkgver/./-}
+
+	for patch in ../*.patch
+	do
+		msg2 "Applying $patch"
+		patch -sp1 -i "$patch"
+	done
+
   rm -rf build
   meson build --prefix='/usr'
 }
