@@ -1,7 +1,7 @@
 pkgbase = syncevolution
 	pkgdesc = Synchronize PIM data via various protocols
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://syncevolution.org/
 	arch = i686
 	arch = x86_64

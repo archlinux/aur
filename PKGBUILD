@@ -1,7 +1,7 @@
 # Maintainer: Justus Piater <Justus-dev at Piater dot name>
 pkgname=('syncevolution' 'syncevolution-http')
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Synchronize PIM data via various protocols"
 arch=('i686' 'x86_64')
 url="https://syncevolution.org/"
