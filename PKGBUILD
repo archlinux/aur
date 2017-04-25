@@ -1,4 +1,4 @@
-# Maintainer: Daniel Lima <danielm@tinyhub.tk>
+# Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=bdf-creep
 pkgdesc="A pretty sweet 4px wide pixel font with box-drawing, powerline, braille and sparklines glyphs."
