@@ -1,18 +1,16 @@
 # Maintainer:  <gucong43216@gmail.com>
 
 pkgname=ospray
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A Ray Tracing Based Rendering Engine for High-Fidelity Visualization"
 arch=('i686' 'x86_64')
 url="http://www.ospray.org/"
 license=('Apache')
 depends=('qt4>=4.6' 'ispc' 'intel-tbb' 'embree-isa' 'libgl' 'freeglut' 'glu' 'imagemagick')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ospray/OSPRay/archive/v$pkgver.tar.gz"
-       'sse4_2.patch')
-md5sums=('91d88c6e9b0ee5da3eca73a2c77aa019'
-         'cc7a98c9480594afd7db401948e0ceb8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ospray/OSPRay/archive/v$pkgver.tar.gz")
+md5sums=('37f9d7f59174d645a78da95f223cc118')
 
 prepare() {
   cd "$srcdir"
@@ -20,9 +18,6 @@ prepare() {
   [[ -d ${pkgname}-build ]] && rm -r ${pkgname}-build
   mkdir ${pkgname}-build
 
-  # issue #129
-  cd ${pkgname}-${pkgver}
-  patch -p1 < ../sse4_2.patch
 }
 
 build() {
