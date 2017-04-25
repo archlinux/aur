@@ -1,14 +1,17 @@
 pkgname=anki
 pkgver=2.1.0a13
 alpha=13
-pkgrel=4
+pkgrel=5
 pkgdesc="Friendly, intelligent flash cards"
 url="https://ankisrs.net/"
 license=('AGPL3')
-arch=('x86_64')
+arch=('any')
 depends=('python-pyqt5' 'python-pyaudio' 'python-requests' 'python-beautifulsoup4'
-'python-send2trash' 'python-httplib2' 'mplayer' 'lame' 'qt5-webengine')
+'python-send2trash' 'python-httplib2' 'qt5-webengine')
 checkdepends=('python-nose' 'python-coverage' 'texlive-bin')
+optdepends=('lame: record sound'
+            'mplayer: play sound'
+            'texlive-bin: add mathematical markup to notes')
 source=(https://apps.ankiweb.net/downloads/alpha/alpha$alpha/$pkgname-$pkgver-source.tgz)
 sha512sums=('5a6055f3cf08a19a86843068135ea7034ee28bebb4c71453033c7e9a8f7e8e0281f4faca14f61debd16f0faad2cf6ba8c420a12d207ae380bfc3f282d9a2b0ba')
 
