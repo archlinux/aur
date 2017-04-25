@@ -17,8 +17,8 @@ then
 fi
 
 pkgname=junest-git
-pkgver=6.0.6
-pkgrel=2
+pkgver=6.0.7
+pkgrel=1
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
 url="http://fsquillace.github.io/junest-site/"
