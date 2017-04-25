@@ -7,14 +7,14 @@
 
 pkgname=lib32-qt4
 pkgver=4.8.7
-pkgrel=10
+pkgrel=11
 pkgdesc='A cross-platform application and UI framework (32-bit)'
 arch=('x86_64')
 url='http://www.qt.io'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 depends=("${pkgname#lib32-}" 'lib32-alsa-lib' 'lib32-dbus' 'lib32-fontconfig' 'lib32-glib2'
          'lib32-libgl' 'lib32-libmng' 'lib32-libpng' 'lib32-libsm' 'lib32-libtiff'
-         'lib32-libxi' 'lib32-libxrandr' 'lib32-libxv' 'lib32-openssl' 'lib32-sqlite')
+         'lib32-libxi' 'lib32-libxrandr' 'lib32-libxv' 'lib32-openssl-1.0' 'lib32-sqlite')
 makedepends=('cups' 'gcc-multilib'  'lib32-gtk2' 'lib32-libcups' 'lib32-libxfixes' 'lib32-mesa')
 optdepends=('lib32-libxcursor: Xcursor support'
             'lib32-libxfixes: Xfixes support'
@@ -102,9 +102,11 @@ build() {
   export CXXFLAGS+=" -std=gnu++98" # Fix build with GCC 6
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 #  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+  export OPENSSL_LIBS='-L/usr/lib32/openssl-1.0 -lssl -lcrypto'
+  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
 
   cd ${_pkgfqn}
-  ./configure -confirm-license -opensource -platform linux-g++-32 \
+  ./configure -confirm-license -opensource \
     -prefix /usr \
     -bindir /usr/lib/qt4/bin \
     -headerdir /usr/include/qt4 \
