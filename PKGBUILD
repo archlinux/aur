@@ -2,7 +2,7 @@
 
 pkgname="adwaita-dark-darose"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Adwaita theme hacked to use my custom color scheme.  (Dark blues instead of greys.)"
 url="none"
 license=('GPL')
@@ -31,6 +31,10 @@ build() {
     sed -i 's|#262b2d|#1a1e2c|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|#215d9c|#566b96|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|#2d3234|#1c202e|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2c3233|#00001b|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#272c2e|#00001b|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2c3234|#181c28|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#252a2c|#00001b|' gtk-3.0/gtk-contained-dark.css
 
     # dark gradient
     sed -i 's|#2e3436|#293045|' gtk-3.0/gtk-contained-dark.css
