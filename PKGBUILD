@@ -7,7 +7,7 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=whipper
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -18,10 +18,6 @@ depends=(
     'cddb-py'                       # for showing but not using disc info if not in MusicBrainz (issue #28)
     'cdparanoia'                    # for the actual ripping
     'cdrdao'                        # for session, TOC, pregap, and ISRC extraction
-    'gstreamer0.10-base'            # for encoding
-    'gstreamer0.10-base-plugins'    # for appsink
-    'gstreamer0.10-good-plugins'    # for wav encoding
-    'gstreamer0.10-python'          # for encoding
     'libsndfile'                    # for reading wav files (pulls in flac, also required for reading flac files)
     'python2-musicbrainzngs'        # for metadata lookup
     'python2-pycdio'                # for storing drive identification in config file
@@ -31,9 +27,17 @@ depends=(
 makedepends=(
     'python2-gobject2'
     )
+checkdepends=(
+    'python2-twisted'
+    )
 conflicts=('morituri')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('04bab47dff73ac5c1476deda16d011bb68de1c945cb30b2e4673a5097afd5cf928a1cdfaaa6082bf51695f0e10a6257d313aa8f1b51b4b6a758bd47358ec023d')
+sha512sums=('0df0cd9934c344617a15c12f21e333d7b5d270c904d70df9930b24188c5657aed8bedd202acda59990143fafe9c27b2ee880939d034be52259cc143423d04348')
+
+check() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    python2 -m unittest discover
+}
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
