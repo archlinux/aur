@@ -2,7 +2,7 @@
 
 pkgname=softhsm
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software PKCS11 store"
 arch=('i686' 'x86_64')
 url="http://www.opendnssec.org/softhsm/"
@@ -32,7 +32,7 @@ build() {
   -e "s/libdir=\$full_libdir/#libdir=\$full_libdir/" \
   configure
 
-  ./configure --prefix=/usr --datarootdir=/usr/share --localstatedir=/var --sysconfdir=/etc --with-botan=/usr --with-migrate
+  ./configure --prefix=/usr --datarootdir=/usr/share --localstatedir=/var --sysconfdir=/etc --with-botan=/usr --with-migrate --disable-gost
   make
 }
 
