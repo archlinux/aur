@@ -1,5 +1,5 @@
 pkgname=luvi-git
-pkgver=2.7.6.r0.g74011c4
+pkgver=2.7.6.r5.g48454bf
 pkgrel=1
 pkgdesc="A project in-between luv and luvit"
 arch=(i686 x86_64)
@@ -21,9 +21,13 @@ pkgver() {
 
 package() {
   cd "$srcdir/luvi"
-  make tiny
-  make
+  PREFIX=/usr make regular PREFIX=/usr
+  PREFIX=/usr make PREFIX=/usr
 
   install -d "$pkgdir"/usr/bin
+  install -d "$pkgdir"/usr/local/lib/lua
+  install -d "$pkgdir"/usr/local/share/lua
+  ln -s /usr/lib/lua/5.1 "$pkgdir"/usr/local/lib/lua/5.1
+  ln -s /usr/share/lua/5.1 "$pkgdir"/usr/local/share/lua/5.1
   LUVI_PREFIX="$pkgdir/usr" make install
 }
