@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname="sickgear"
-pkgver="0.12.12"
+pkgver="0.12.13"
 pkgrel="1"
 pkgdesc="Automate your TV enjoyment with innovation, proven stability and reliability."
 arch=("any")
@@ -31,12 +31,12 @@ depends=("python2-backports-abc"
          "python2-xmltodict")
 conflicts=("$pkgname-git")
 install="$pkgname.install"
-source=("$url/archive/release_$pkgver.tar.gz"
+source=("$url/archive/release_$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "0001-adjust-imports.patch")
-sha256sums=('74c7c2faccdf802110d9bbe573b82223cb38281face1ebd5771075927d958cd5'
+sha256sums=('1a413e68998ae1aec4b7b6577beafced2aed64bb1ce51a342c5f8e600028b3c5'
             '91cd5e6bb57f23321926757497ba6cc8d4ac82784c73795279d17eab1d26a1dc'
             '8421dae047549f0db56278e8e2a0a46762804ac4552a5438c9093840fef0f57d'
             '43ed9ebfcda9e254084cc1bd43d3bca988139267406654f96a5f78ab223a323c'
