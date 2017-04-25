@@ -2,8 +2,8 @@
 # Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-next-latest-git
-pkgver=v0.2.4.r198.g577d7ce
-pkgrel=2
+pkgver=0.2.7.r123.gf3b2a1e
+pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, the latest version"
 arch=('i686' 'x86_64')
@@ -17,8 +17,10 @@ source=('ckb-next-latest-git::git+https://github.com/mattanger/ckb-next.git#bran
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-VCS}"
+  # based on annotated and lightweight tags, always has long version as it's a rolling release
+  # discards v, replaces dashes with dots
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
