@@ -1,7 +1,7 @@
 # Maintainer: youngunix <>
 
 
-_version=3.1
+_version=3.1.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ source=(
   "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
   "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
 )
-sha256sums=('ed70045a3b5afd89353eeedda26711e04dd7c6fc26dc47b3189a12bbdabc3308'
-            '22c3ab87a0468778c5d74e267f741568d708d43ac48c08f8aa96f8f421ace3db')
+sha256sums=('bdb1bd31bed391e27cd6aefba1fc98e18c12df64ad03f25b3f1431b344841d09'
+            '8562aeb942902bcf9ea6a8cb8855aafcbd401c2fe68509b91fc45e072469044d')
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}-RELEASE"*.tar.gz --strip 1

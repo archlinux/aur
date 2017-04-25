@@ -1,6 +1,6 @@
 pkgbase = swift-bin
 	pkgdesc = Official binary builds of the Swift programming language.
-	pkgver = 3.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://swift.org
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = swift-bin
 	conflicts = swift-language-git
 	replaces = swift-language-bin
 	options = !strip
-	source = https://swift.org/builds/swift-3.1-release/ubuntu1604/swift-3.1-RELEASE/swift-3.1-RELEASE-ubuntu16.04.tar.gz
-	source = https://swift.org/builds/swift-3.1-release/ubuntu1604/swift-3.1-RELEASE/swift-3.1-RELEASE-ubuntu16.04.tar.gz.sig
+	source = https://swift.org/builds/swift-3.1.1-release/ubuntu1604/swift-3.1.1-RELEASE/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz
+	source = https://swift.org/builds/swift-3.1.1-release/ubuntu1604/swift-3.1.1-RELEASE/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz.sig
 	validpgpkeys = A3BAFD3556A59079C06894BD63BC1CFE91D306C6
-	sha256sums = ed70045a3b5afd89353eeedda26711e04dd7c6fc26dc47b3189a12bbdabc3308
-	sha256sums = 22c3ab87a0468778c5d74e267f741568d708d43ac48c08f8aa96f8f421ace3db
+	sha256sums = bdb1bd31bed391e27cd6aefba1fc98e18c12df64ad03f25b3f1431b344841d09
+	sha256sums = 8562aeb942902bcf9ea6a8cb8855aafcbd401c2fe68509b91fc45e072469044d
 
 pkgname = swift-bin
 
