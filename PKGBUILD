@@ -7,14 +7,14 @@
 pkgname=brasero2
 _pkgname=brasero
 pkgver=2.32.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A disc burning application for Gnome"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/brasero"
 license=('GPL')
 options=('!libtool' '!emptydirs')
-depends=('gtk2' 'gstreamer0.10-base-plugins' 'totem-plparser' 'cdrkit' 'cdrdao' 'desktop-file-utils' 'hicolor-icon-theme' 'libunique'  'libcanberra' 'dvd+rw-tools' 'dconf' 'libsm' 'libsoup-gnome')
-makedepends=('gtk-doc' 'intltool' 'libburn' 'libisofs' 'gobject-introspection' 'gconf')
+depends=('gtk2' 'gstreamer0.10-base-plugins' 'totem-plparser' 'cdrkit' 'cdrdao' 'desktop-file-utils' 'hicolor-icon-theme' 'libunique'  'libcanberra' 'dvd+rw-tools' 'dconf' 'libsm' 'libsoup')
+makedepends=('gtk-doc' 'intltool' 'libburn' 'libisofs' 'gobject-introspection' 'gconf' 'gnome-doc-utils')
 optdepends=('libburn: alternative back-end'
             'libisofs: libburn back-end'
             'dvdauthor: video project'
