@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
-pkgver=3.2.2
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ conflicts=("$_pkgname")
 install="$_pkgname.install"
 source=("LICENSE.txt")
 sha256sums=('SKIP')
-sha256sums_i686=('557e195c7e5e064ba3046bf4480e2ca6a8412a04e88b15168438d4fd7ad45ac8')
-sha256sums_x86_64=('2a97469a0cf3afee3b752898b3885ac4dc66705fda23acb1234804d64ca35ea0')
+sha256sums_i686=('abd3b0470aed38caba2d9de4d95b7661862f57587a8f7c34831ede36b3bf14ca')
+sha256sums_x86_64=('ad2b32feb0f46e2eaeae5ee44d752a5e0b991e64d5eb82423b091d766a6ff141')
 source_i686=("http://www.ocenaudio.com.br/downloads/ocenaudio_debian32.deb")
 source_x86_64=("http://www.ocenaudio.com.br/downloads/ocenaudio_archlinux.pkg.tar.xz")
 
