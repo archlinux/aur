@@ -2,8 +2,8 @@
 
 _pkgname=ghostwriter
 pkgname="${_pkgname}-l10n-git"
-_commit=5736956 # 7 digits
-pkgver=v1.4.2.r120.g5736956
+_commit=69644ca # 7 digits
+pkgver=v1.4.2.r123.g69644ca
 pkgrel=1
 pkgdesc="A cross-platform, aesthetic, distraction-free Markdown editor"
 arch=('i686' 'x86_64')
