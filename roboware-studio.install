@@ -1,0 +1,20 @@
+post_install() {
+	# Symlink bin command to /usr/bin
+	rm -f /usr/bin/roboware-studio
+	ln -s /usr/share/roboware-studio/bin/roboware-studio /usr/bin/roboware-studio
+	# Install the desktop entry
+	if hash desktop-file-install 2>/dev/null; then
+		desktop-file-install /usr/share/applications/roboware-studio.desktop
+	fi
+
+	if [ "roboware-studio" != "code-oss" ]; then
+		# Remove the legacy bin command if this is the stable build
+		if [ "roboware-studio" = "code" ]; then
+			rm -f /usr/local/bin/code
+		fi
+	fi
+}
+
+post_remove() {
+	rm -f /usr/bin/roboware-studio
+}
