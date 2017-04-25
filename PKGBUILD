@@ -13,6 +13,7 @@ makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_githubusername}/${_projname}/archive/v${pkgver}.tar.gz")
 sha256sums=('fb0f834103ae055ce55e869807d0e50ff1df79e214e241d70a36e5969ea50c97')
 
+backup=("etc/webapps/$pkgname/config.env")
 install='cachet.install'
 
 package() {
