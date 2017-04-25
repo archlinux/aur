@@ -1,0 +1,35 @@
+# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+
+_plug=autocrop
+pkgname=vapoursynth-plugin-${_plug}-git
+pkgver=0.1.3.g24626e1
+pkgrel=1
+pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+arch=('i686' 'x86_64')
+url='https://github.com/Infiziert90/vapoursynth-autocrop'
+license=('GPL')
+depends=('vapoursynth')
+source=("${_plug}::git+https://github.com/Infiziert90/vapoursynth-autocrop.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_plug}"
+  echo "$(git describe --long --tags | tr - .)"
+}
+
+prepare() {
+
+  echo "all:
+	  g++ -c -std=c++98 -Wall -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o autocrop.o autocrop/autocrop.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o libautocrop.so autocrop.o" > Makefile
+}
+
+build() {
+  make
+}
+
+package(){
+  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+
+  install -Dm644 autocrop/README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+}
