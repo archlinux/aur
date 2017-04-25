@@ -33,7 +33,6 @@ install="${pkgname}.install"
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
 _archstr=$([ $CARCH = 'x86_64' ] && echo "${_idstr64}" || echo "${_idstr32}")
-_urlbase="https://dist.torproject.org/torbrowser/${pkgver}/${pkgname}-${_archstr}-${pkgver}"
 
 _localetor() {
 
@@ -46,6 +45,7 @@ _localetor() {
 
 	if [ -z "${TORBROWSER_PKGLANG}" ]; then
 
+		local _urlbase="https://dist.torproject.org/torbrowser/${pkgver}/${pkgname}-${_archstr}-${pkgver}"
 		local _fulllocale="$(locale | grep LANG | cut -d= -f2 | cut -d. -f1 | sed s/_/\-/)"
 		local _shortlocale="$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)"
 
