@@ -1,13 +1,14 @@
 pkgbase = goqat
 	pkgdesc = Operates any CCD camera from Quantum Scientific Imaging (QSI) and autoguides telescopes.
-	pkgver = 2.0.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = http://canburytech.net/GoQat/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = goocanvas
-	optdepends = qsiapi: QSI CDD camera support
+	depends = libindi
+	depends = qsiapi>7.2
 	optdepends = ds9: displays CCD images (FITS format)
 	optdepends = xpa: communication mechanism used to bind to DS9
 	optdepends = libparapin: parallel port support
@@ -15,8 +16,8 @@ pkgbase = goqat
 	optdepends = sextractor: analyse GoQats video recordings
 	optdepends = libraw1394: support of firewire cameras or coverters from The Imaging Source
 	optdepends = v4l-utils: use v4l devices (webcams) for autoguiding
-	source = http://canburytech.net/GoQat/download/goqat-2.0.0.tar.gz
-	sha1sums = 794f9a458c3da6b1f7c8068fe7a8c9f6f18fd426
+	source = http://canburytech.net/GoQat/download/goqat-2.1.1.tar.gz
+	sha1sums = 00d57b44a473694832a5b90865ae921596cceba2
 
 pkgname = goqat
 

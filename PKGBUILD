@@ -1,14 +1,13 @@
 # Maintainer: Vincent Hourdin <aur at vinvin dot tf>
 pkgname=goqat
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Operates any CCD camera from Quantum Scientific Imaging (QSI) and autoguides telescopes."
 url="http://canburytech.net/GoQat/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('goocanvas')
-optdepends=('qsiapi: QSI CDD camera support'
-'ds9: displays CCD images (FITS format)'
+depends=('goocanvas' 'libindi' 'qsiapi>7.2')
+optdepends=('ds9: displays CCD images (FITS format)'
 'xpa: communication mechanism used to bind to DS9'
 'libparapin: parallel port support'
 'grace: plotting support'
@@ -16,7 +15,7 @@ optdepends=('qsiapi: QSI CDD camera support'
 'libraw1394: support of firewire cameras or coverters from The Imaging Source'
 'v4l-utils: use v4l devices (webcams) for autoguiding')
 source=("http://canburytech.net/GoQat/download/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('794f9a458c3da6b1f7c8068fe7a8c9f6f18fd426')
+sha1sums=('00d57b44a473694832a5b90865ae921596cceba2')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,7 +23,7 @@ build() {
 #	sed -i 's/prefix/datarootdir/g' src/Makefile.am	# fix install dir
 #	truncate -s -290 Makefile.am			# remove post install hooks
 #	aclocal && autoconf && autoheader && automake
-	./configure --prefix=/usr
+	LIBS='-lnova -lftdi1' ./configure --prefix=/usr
 #	sed -i 's/$(MAKE) $(AM_MAKEFLAGS) install-data-hook//' Makefile
 	make
 }
