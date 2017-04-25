@@ -4,7 +4,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=pithos
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
@@ -20,18 +20,11 @@ optdepends=('libkeybinder3: for media keys plugin'
 makedepends=('intltool')
 source=(
   "https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz"{,.asc}
-  'fix-python36.patch::https://github.com/pithos/pithos/commit/be9e8cb35692ef0b7d835dc26b28996cf6aacb7b.patch'
 )
-sha256sums=('9ff5ae0aac3265cd8ba91d07f42ec0819d6909d9607e4f6c10188ff3645134a9'
-            'SKIP'
-            'e39a4d5ff114dcb30ffef5b927b757a09d025d73025d8c5d9043a7b9baa1ef07')
+sha256sums=('cf732bd5c541a55e160d58743e19c2beca69476fae6ead745f0ba6b08615d509'
+            'SKIP')
 
 validpgpkeys=('108BF2212A051F4A72B18448B3C7CE210DE76DFC')
-
-prepare() {
-  cd "$srcdir/${pkgname}-$pkgver"
-  patch -Np1 -i "$srcdir/fix-python36.patch"
-}
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
