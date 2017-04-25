@@ -11,21 +11,19 @@
 _pkgname=socat2
 pkgname=${_pkgname}-git
 pkgver=2.0.0.b9.0.g7beb9b3
-pkgrel=1
+pkgrel=2
 pkgdesc='Multipurpose relay (development version)'
 url='http://www.dest-unreach.org/socat/socat-version2.html'
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('readline' 'openssl')
+depends=('readline' 'openssl-1.0')
 makedepends=('yodl')
 source=(
     "$_pkgname"::"git+http://repo.or.cz/socat.git#branch=socat2"
     sslv3.patch
 )
-sha256sums=(
-    'SKIP'
-    '3744575806f489ad0d3673e6a397badd4b61ecbd6e474ece67b347e13c5076b5'
-)
+sha256sums=('SKIP'
+            '3744575806f489ad0d3673e6a397badd4b61ecbd6e474ece67b347e13c5076b5')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -45,6 +43,8 @@ build() {
     msg "Running autoconf..."
     autoconf
 
+    CPPFLAGS="-I/usr/include/openssl-1.0" \
+    LDFLAGS="-L/usr/lib/openssl-1.0" \
     ./configure \
         --prefix=/usr \
         --mandir=/usr/share/man \
