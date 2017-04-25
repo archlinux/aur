@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=firefly-iii
 pkgver=4.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -12,6 +12,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archi
 sha256sums=('47a8096ed23b5a49aa734b9854c70e6c1f991c90acbed904ee2a9c2d0c6d3d57')
 
 install=$pkgname.install
+backup=(
+    "etc/webapps/$pkgname/config.env"
+    "etc/webapps/$pkgname/config.env.docker"
+    "etc/webapps/$pkgname/config.env.example"
+    "etc/webapps/$pkgname/config.env.sandstorm"
+    "etc/webapps/$pkgname/config.env.testing")
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
