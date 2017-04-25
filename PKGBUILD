@@ -19,7 +19,7 @@ _frepobranch='f26'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
 _vtecommit=837cce9ced6bfe317cb97aeca171001da92cb3a1
 source=(
-	"git://git.gnome.org/vte#commit=$_vtecommit"
+	"git+https://git.gnome.org/browse/vte#commit=$_vtecommit"
 	"${_fpatchfile}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}"
 	'add-zsh-notfication-support.patch'
 	"https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/alternate-screen.patch"
