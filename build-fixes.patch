@@ -1,15 +1,20 @@
---- qt-linux/ts3soundboard_linux.pro_orig	2017-04-16 11:03:14.429439051 +0200
-+++ qt-linux/ts3soundboard_linux.pro	2017-04-16 11:03:38.873595978 +0200
-@@ -20,7 +20,7 @@
+--- qt-linux/ts3soundboard_linux.pro_orig	2017-04-25 08:23:53.644282489 +0200
++++ qt-linux/ts3soundboard_linux.pro	2017-04-25 08:26:55.262605010 +0200
+@@ -20,7 +20,12 @@
  CONFIG(debug, release|debug):DEFINES += _DEBUG
  CONFIG(release, release|debug):DEFINES += NDEBUG
  
 -INCLUDEPATH += ../include
++INCLUDEPATH += /opt/qt5.6/include
++INCLUDEPATH += /opt/qt5.6/include/QtWidgets
++INCLUDEPATH += /opt/qt5.6/include/QtGui
++INCLUDEPATH += /opt/qt5.6/include/QtNetwork
++INCLUDEPATH += /opt/qt5.6/include/QtCore
 +INCLUDEPATH += /usr/include/teamspeak3
  
  LIBS += -L$(TS3DIR)
  
-@@ -29,7 +29,7 @@
+@@ -29,7 +34,7 @@
      -lavutil \
      -lswresample
  
