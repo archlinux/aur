@@ -22,13 +22,13 @@ build() {
   cd "${pkgname%-git}"
   ./configure --dialect=guile --prefix=/usr
   # creating the documentation
-  yes "s"|xetex index
+  yes "s"|xetex index || true
   mpost lambda.mp
   epstopdf lambda-1.eps
   makeindex index
   bibtex index 
+  xetex index || true
   xetex index
-   xetex index
 }
 
 check() {
