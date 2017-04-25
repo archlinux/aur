@@ -1,0 +1,16 @@
+pkgbase = pymodoro-i3blocks
+	pkgdesc = Displays and manages Pymodoro session states via i3blocks.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/toroettg/pymodoro-i3blocks
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = pymodoro-git
+	options = !emptydirs
+	source = https://pypi.python.org/packages/7a/87/234cb42997519e7b6d6141d1e9c023cbd8cba2272e88252b61e3630a2869/pymodoro-i3blocks-0.1.0.tar.gz
+	sha256sums = 28fcfc107cf08635f3d3c323c7dd09f87174f3172de5a236122c75e69b73f0ee
+
+pkgname = pymodoro-i3blocks
+
