@@ -1,5 +1,5 @@
 pkgbase = astromatic-sextractor
-	pkgdesc = builds a catalogue of objects from an astronomical image
+	pkgdesc = builds a catalogue of objects from an astronomical image (build from source)
 	pkgver = 2.19.5
 	pkgrel = 1
 	url = http://www.astromatic.net/software/sextractor
