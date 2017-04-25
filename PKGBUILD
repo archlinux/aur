@@ -5,7 +5,7 @@
 
 pkgname=skype
 pkgver=4.3.0.37
-pkgrel=8
+pkgrel=9
 arch=('i686' 'x86_64')
 pkgdesc="P2P software for high-quality voice communication"
 url="http://www.skype.com/"
@@ -24,7 +24,7 @@ if [[ $CARCH == 'i686' ]]; then
   depends+=(libpulse qt4 libxss libxv libxcursor v4l-utils qtwebkit)
   optdepends+=('libcanberra: XDG sound support')
 else
-  depends+=(lib32-{libpulse,qt4,libxss,libxv,libxcursor,v4l-utils})
+  depends+=(lib32-{libpulse,qt4,libxss,libxv,libxcursor,v4l-utils,libopenssl-1.0-compat})
   optdepends+=('lib32-libcanberra: XDG sound support'
                'lib32-alsa-plugins: microphone support')
   source+=(https://archive.archlinux.org/packages/l/lib32-qt4/lib32-qt4-4.8.7-4-x86_64.pkg.tar.xz)
