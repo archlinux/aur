@@ -2,12 +2,12 @@
 
 pkgname=gush-git
 pkgver=0.1.0.1.g755f5b4
-pkgrel=1
+pkgrel=3
 pkgdesc="Genetic programming / stack based language on top of Guile"
 arch=('any')
 url="https://gitlab.com/dustyweb/gush"
 license=('GPL')
-depends=('guile-git')
+depends=('guile')
 makedepends=('git')
 provides=('gush')
 conflicts=('gush')
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
+  chmod u+x pre-inst-env.in
   ./bootstrap.sh
   ./configure --prefix=/usr
   make
