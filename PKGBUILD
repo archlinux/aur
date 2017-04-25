@@ -1,5 +1,3 @@
-
-
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
@@ -13,8 +11,8 @@
 # Based on the plex-media-server package by Maxime Gauduin.
 
 pkgname=plex-media-server-plexpass
-pkgver=1.5.5.3634
-_pkgsum=995f1dead
+pkgver=1.6.0.3698
+_pkgsum=7fe404e94
 pkgrel=1
 pkgdesc='Plex Media Server (PlexPass version)'
 arch=('armv7h' 'i686' 'x86_64')
@@ -38,9 +36,9 @@ sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
             'ebf153d5789f9d24cb98ae607d227286e1da6ce54e149c8be4f47e08ee729573'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
 
-sha256sums_armv7h=('e51029f586650d42f668421f432c5cecf3321bed11b0b78fcc7c9604b6cc3e37')
-sha256sums_i686=('95501db35a973122502749f7e4c20c3597a06db759944215bce14f6e3e908865')
-sha256sums_x86_64=('309167f3235f740871c52494e1e6bf7a5d447f878aece59e40c55592cffe627e')
+sha256sums_armv7h=('84a016ec00f7d747aaa1eaa686c66a528fc0e209a92b095f516453e5d1e3bf32')
+sha256sums_i686=('9e4ad5090fdc26ba7c8265aacdb7055c15c9675a76fd7e651c495ff078422b55')
+sha256sums_x86_64=('7f58b42f044f8de9a22d9552a9cb97686d9cb75f173a18627ede6bb46a9172e5')
 
 prepare() {
   if [[ $CARCH =~ arm* ]]; then
