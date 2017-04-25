@@ -14,10 +14,10 @@ source=("https://www.emacswiki.org/emacs/download/multi-term.el")
 sha256sums=('SKIP')
 
 build() {
- emacs -Q -batch -L . -f batch-byte-compile *.el
+  emacs -Q -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
- install -d "${pkgdir}/usr/share/emacs/site-lisp/multi-term"
- install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/multi-term/"
+  install -d "${pkgdir}/usr/share/emacs/site-lisp/multi-term"
+  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/multi-term/"
 }
