@@ -6,7 +6,7 @@
 
 pkgname=feedreader
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/jangernert/FeedReader"
@@ -14,8 +14,16 @@ license=('GPL3')
 conflicts=("$pkgname-git")
 depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'libpeas' 'gnome-online-accounts' 'curl')
 makedepends=('vala' 'gobject-introspection' 'cmake')
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('949262912bc07f8d1ec72dfa1bbeafb0ed1cea992589e1ee5901e0630c714261')
+source=("$url/archive/v$pkgver.tar.gz"
+        "$pkgname.patch")
+sha256sums=('949262912bc07f8d1ec72dfa1bbeafb0ed1cea992589e1ee5901e0630c714261'
+            'f25076b3d4f7fcff933cbc672be532bdfe46f732a066574078752db690321473')
+
+prepare() {
+  cd FeedReader-$pkgver
+
+  patch -p0 -i ../$pkgname.patch
+}
 
 build() {
   cd FeedReader-$pkgver
