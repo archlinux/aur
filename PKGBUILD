@@ -1,8 +1,8 @@
-# Maintainer: 4javier <4javiereg4 _ at _ gmail _ dot _com>
+# Maintainer: Jingbei Li <i@jingbei.li>
 
 pkgname=brackets
 pkgver=1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS. Stable git Tags."
 arch=('i686' 'x86_64')
 url="http://brackets.io"
@@ -18,9 +18,10 @@ optdepends=(
 conflicts=("brackets-git" "brackets-bin")
 makedepends=('git' 'unzip' 'gtk2')
 install=${pkgname}.install
-source=("brackets-shell::git+https://github.com/adobe/brackets-shell.git#branch=linux-1547"
+source=("git+https://github.com/adobe/brackets-shell.git#branch=linux-1547"
 	#"brackets-shell::git+https://github.com/adobe/brackets-shell.git#tag=release-${pkgver}"
-        "${pkgname}::git+https://github.com/adobe/brackets.git#tag=release-${pkgver}")
+	"git+https://github.com/adobe/brackets.git#tag=release-${pkgver}"
+)
 md5sums=('SKIP' 'SKIP')
 
 
@@ -30,6 +31,10 @@ prepare() {
 }
 
 build() {
+  cd ${srcdir}/brackets
+  npm install
+  node_modules/grunt-cli/bin/grunt build
+
   cd ${srcdir}/brackets-shell
   sed -i 's/python/python2/' gyp/gyp
   npm install
@@ -43,7 +48,7 @@ build() {
 
 package() {
   cd ${srcdir}/brackets-shell
-  
+
   install -dm755 "${pkgdir}/opt/brackets"
   cp -R out/Release/lib "${pkgdir}/opt/brackets/lib"
   cp -R out/Release/locales "${pkgdir}/opt/brackets/locales"
@@ -66,10 +71,12 @@ package() {
   for size in 32 48 128 256; do
     install -Dm644 "out/Release/appshell${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/brackets.png"
   done
-  
+
   cd ${srcdir}/${pkgname}
   # Copy samples
   cp -R "samples" "${pkgdir}/opt/brackets/samples"
   # Copy www
   cp -R "src" "${pkgdir}/opt/brackets/www"
+
+  cp -r $srcdir/brackets/src/thirdparty/CodeMirror $pkgdir/opt/brackets/www/thirdparty
 }
