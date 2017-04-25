@@ -16,7 +16,7 @@ depends=('boost-libs>=1.46' 'openssl')
 makedepends=('git' 'make' 'boost')
 provides=('mintcoin-daemon')
 conflicts=('mintcoin')
-source=('git://github.com/MintcoinCommunity/mintcoin.git#branch=2.0')
+source=('git+https://github.com/MintcoinCommunity/mintcoin.git#branch=2.0')
 md5sums=('SKIP')
 
 pkgver() {
