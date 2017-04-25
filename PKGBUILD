@@ -2,7 +2,7 @@
 
 pkgname=wavebox-bin
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64' 'i686')
 url="https://wavebox.io/"
@@ -10,7 +10,7 @@ _repourl="https://github.com/wavebox/waveboxapp"
 license=('Mozilla Public License version 2.0')
 options=(!strip)
 provides=('wavebox')
-depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libxss')
+depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libxss' 'libappindicator-gtk2')
 optdepends=('gvfs' 'libnotify')
 
 source=('wavebox.desktop')

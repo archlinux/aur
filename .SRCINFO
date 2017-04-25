@@ -1,7 +1,7 @@
 pkgbase = wavebox-bin
 	pkgdesc = The next generation of web-desktop communication
 	pkgver = 3.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wavebox.io/
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = wavebox-bin
 	depends = nss
 	depends = alsa-lib
 	depends = libxss
+	depends = libappindicator-gtk2
 	optdepends = gvfs
 	optdepends = libnotify
 	provides = wavebox
