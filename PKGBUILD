@@ -2,7 +2,7 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -24,9 +24,9 @@ sha256sums=('07639745ad1f790e7aaebfadfa4dd7a4b6eae176cc607803e0971d1411cfdec3'
             'SKIP'
             'SKIP')
 
-source=("http://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip"
-        "http://www.privateinternetaccess.com/openvpn/openvpn.zip"
-	"http://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
+source=("https://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip"
+        "https://www.privateinternetaccess.com/openvpn/openvpn.zip"
+	"https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
         "login-example.conf"
 	"pia-example.conf"
 	"restart.conf"
