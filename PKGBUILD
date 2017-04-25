@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=2.8.3pre.git20170419
+pkgver=2.8.3pre.git20170424
 pkgrel=1
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
@@ -21,9 +21,9 @@ depends=(python2-btchip
          python2-requests
          zbar)
 makedepends=(gettext python2-pycurl)
-_commit=197776d
+_commit=abcb4e3
 source=($pkgname-$_commit.tar.gz::https://codeload.github.com/pooler/$pkgname/tar.gz/$_commit)
-sha256sums=(fc609ce3b63fab5487b14f1ab57a327380b7cded809e2d087786f0fbbbf2ff4c)
+sha256sums=(f109642d27914587441a41ba660020269576ebe27be4b307cdeaa626d27f5b49)
 
 prepare() {
   cd $pkgname-$_commit/
@@ -36,19 +36,15 @@ prepare() {
 
   sed -i '/fee_widgets.append((rbf_label, rbf_combo))/d
           s/set_rbf(True)/set_rbf(False)/' gui/qt/main_window.py
-  sed -i 's/, rbf=False//
-          s/, rbf//' lib/commands.py
+  sed -i 's/, rbf=False//; s/, rbf//' lib/commands.py
 }
 
 build() {
   cd $pkgname-$_commit/
 
   pyrcc4 icons.qrc >gui/qt/icons_rc.py
-
   protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
-
   contrib/make_locale
-
   ./setup.py build
 }
 
