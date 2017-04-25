@@ -1,13 +1,13 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-wallpapers-git
-pkgver=20170101.6cb197f
+pkgver=20170425.9a114fb
 pkgrel=1
 pkgdesc="Wallpapers for Liri OS"
 arch=('any')
 url='https://liri.io'
 license=('CCPL')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('git' 'qt5-base')
 conflicts=('hawaii-wallpapers-git' 'liri-wallpapers')
 replaces=('hawaii-wallpapers-git' 'liri-wallpapers')
 provides=('liri-wallpapers')
@@ -26,16 +26,16 @@ pkgver() {
 
 prepare() {
 	mkdir -p build
+	pushd ${_gitname} && git submodule update --init && popd
 }
 
 build() {
 	cd build
-	cmake ../${_gitname} \
-		-DCMAKE_INSTALL_PREFIX=/usr
+	qmake LIRI_INSTALL_PREFIX=/usr ../${_gitname}/wallpapers.pro
 	make
 }
 
 package() {
 	cd build
-	make DESTDIR="${pkgdir}" install
+	make INSTALL_ROOT="${pkgdir}" install
 }
