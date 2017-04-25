@@ -6,7 +6,7 @@
 # Submitter: Bastien Traverse <firstname at lastname dot email>
 
 pkgname=hugo-bin
-pkgver=0.20.2
+pkgver=0.20.5
 pkgrel=1
 pkgdesc="A Fast and Flexible Static Site Generator built in Go - Precompiled binary from official repository"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -22,9 +22,9 @@ conflicts=('hugo')
 source_x86_64=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-64bit.tar.gz")
 source_i686=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-32bit.tar.gz")
 source_arm=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_linux_arm.tar.gz")
-sha256sums_x86_64=('7cbf607f981aa9366aa512a651400a7a06744beaf182345369a2cfbb6cf18420')
-sha256sums_i686=('33bda207515f6d3463d0668adba63abdf432a248268ebf86e73bf5d72e072e36')
-sha256sums_arm=('56bcc5f9285a53086f0e6dee3d784ba41394bfc8471815cc1f59098e7d0821fe')
+sha256sums_x86_64=('c34a6b52137761ce931eb2acbb99eaa18d30ded471ae72a656d59207276e643c')
+sha256sums_i686=('26b3189aa66ff91c5dd00c038fad12a3d384c46b457d7e1dc829a1dcc588143e')
+sha256sums_arm=('0480b903db98534d7311d487d4f8479d75df9ee4035e128101fb7bb229678fb6')
 
 case "$CARCH" in
   arm*) _pkgarch="arm"
@@ -36,14 +36,14 @@ case "$CARCH" in
 esac
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}" "${pkgdir}/usr/bin/${pkgname/-bin}"
-  install -Dm644 "${srcdir}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname/-bin}/LICENSE"
+  install -Dm755 "${srcdir}/${pkgname/-bin}" "${pkgdir}/usr/bin/${pkgname/-bin}"
+  install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname/-bin}/LICENSE"
 
   # Generate shell autocompletion script
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
-  "${srcdir}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}" gen autocomplete --completionfile="${pkgdir}/usr/share/bash-completion/completions/${pkgname/-bin}"
+  "${srcdir}/${pkgname/-bin}" gen autocomplete --completionfile="${pkgdir}/usr/share/bash-completion/completions/${pkgname/-bin}"
 
   # Generate man pages
   mkdir -p "${pkgdir}/usr/share/man/man1/"
-  "${srcdir}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}" gen man --dir="${pkgdir}/usr/share/man/man1/"
+  "${srcdir}/${pkgname/-bin}" gen man --dir="${pkgdir}/usr/share/man/man1/"
 }
