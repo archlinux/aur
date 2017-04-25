@@ -4,15 +4,15 @@
 
 pkgname=python33
 pkgver=3.3.6
-pkgrel=3
+pkgrel=4
 _pybasever=3.3
 _pymajver=3
 pkgdesc="Major release 3.3 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
-makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'hardening-wrapper')
+depends=('expat' 'bzip2' 'gdbm' 'openssl-1.0' 'libffi' 'zlib')
+makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal')
 optdepends=('mpdecimal: for decimal'
             'sqlite'
             'tk: for tkinter'
@@ -50,7 +50,8 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
-  export CPPFLAGS="-DOPENSSL_NO_SSL3"
+  export CPPFLAGS="-DOPENSSL_NO_SSL3 -I/usr/include/openssl-1.0"
+  export LDFLAGS="-L/usr/lib/openssl-1.0"
   ./configure --prefix=/usr \
               --enable-shared \
               --with-threads \
