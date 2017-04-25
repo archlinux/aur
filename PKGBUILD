@@ -4,13 +4,13 @@
 
 pkgname=python26
 pkgver=2.6.9
-pkgrel=10
+pkgrel=11
 _pybasever=2.6
 pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
 arch=('i686' 'x86_64' 'arm')
 license=('PSF')
 url="http://www.python.org/"
-depends=('db>=4.8' 'bzip2' 'gdbm' 'openssl' 'zlib' 'expat' 'sqlite3' 'libffi')
+depends=('db>=4.8' 'bzip2' 'gdbm' 'openssl-1.0' 'zlib' 'expat' 'sqlite3' 'libffi')
 makedepends=('gcc5' 'tk>=8.5.0')
 optdepends=('tk: for IDLE, pynche and modulator'
             'net-tools: arp, ifconfig and netstat are used in the uuid module')
@@ -98,7 +98,8 @@ build() {
   cd "${srcdir}/Python-${pkgver}"
 
   export OPT="${CFLAGS}"
-  export CPPFLAGS="-DOPENSSL_NO_SSL3"
+  export CPPFLAGS="-DOPENSSL_NO_SSL3 -I/usr/include/openssl-1.0"
+  export LDFLAGS="-L/usr/lib/openssl-1.0"
   # A lot of tests fail under GCC >= 6.x
   export CPP="cpp-5"
   export CC="gcc-5"
