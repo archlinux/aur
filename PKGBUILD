@@ -2,7 +2,7 @@
 
 pkgname=guile-git
 _gitname=guile
-pkgver=2.2.2.1.g886ac3e2a
+pkgver=2.2.2.2.gfc84f4f13
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
   cd $_gitname
   ./autogen.sh
   ./configure --prefix=/usr --disable-error-on-warning \
-	--program-suffix=-2.2
+	--program-suffix=${pkgver%-g?????????}
   make LDFLAGS+="-lpthread"
 }
 
@@ -38,7 +38,7 @@ package() {
   do
     mv $i guile-2.2${i#guile}
   done
-  mv r5rs.info r5rs-2.2.info
-  mv $pkgdir/usr/share/aclocal/guile.m4 $pkgdir/usr/share/aclocal/guile-2.2.m4
+  mv r5rs.info r5rs-${pkgver%-g?????????}.info
+  mv $pkgdir/usr/share/aclocal/guile.m4 $pkgdir/usr/share/aclocal/guile-${pkgver%-g?????????}.m4
   rm $pkgdir/usr/lib/libguile-2.2.so*-gdb.scm
 }
