@@ -2,7 +2,7 @@
 # Contributor:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vapoursynth-plugin-edi_rpow2-git
-pkgver=r20.1d158a3
+pkgver=r27.32f8947
 pkgrel=1
 pkgdesc="Plugins for Vapoursynth : nnedi3_rpow2, eedi3_rpow2 and eedi2_rpow2"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('vapoursynth')
 optdepends=('vapoursynth-plugin-eedi2-git: needed for eedi2_rpow2'
             'vapoursynth-plugin-nnedi3-git: needed for nnedi3_rpow2')
 makedepends=('git')
-source=("$pkgname"::"git://gist.github.com/020c497524e794779d9c.git")
+source=("$pkgname"::"git+https://gist.github.com/020c497524e794779d9c.git")
 sha1sums=('SKIP')
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
