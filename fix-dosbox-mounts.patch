@@ -1,0 +1,97 @@
+diff --git a/app/dosbox_fg_settings.conf b/app/dosbox_fg_settings.conf
+--- a/app/dosbox_fg_settings.conf
++++ b/app/dosbox_fg_settings.conf
+@@ -9,8 +9,8 @@ ipx=false
+ 
+ @echo off
+ cls
+-mount c ".."
+-imgmount d "..\game.ins" -t iso -fs iso
++mount c "."
++imgmount d "game.ins" -t iso -fs iso
+ c:
+ sound.bat
+ exit
+\ No newline at end of file
+diff --git a/app/dosbox_fg_single.conf b/app/dosbox_fg_single.conf
+--- a/app/dosbox_fg_single.conf
++++ b/app/dosbox_fg_single.conf
+@@ -9,8 +9,8 @@ ipx=false
+ 
+ @echo off
+ cls
+-mount c ".."
+-imgmount d "..\game.ins" -t iso -fs iso
++mount c "."
++imgmount d "game.ins" -t iso -fs iso
+ c:
+ fg.bat
+ exit
+\ No newline at end of file
+diff --git a/app/game.ins b/app/game.ins
+--- a/app/game.ins
++++ b/app/game.ins
+@@ -1,48 +1,48 @@
+ FILE "game.gog" BINARY
+   TRACK 01 MODE2/2352
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track02.ogg" MP3
++FILE "music\track02.ogg" MP3
+   TRACK 02 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track03.ogg" MP3
++FILE "music\track03.ogg" MP3
+   TRACK 03 AUDIO
+ 	INDEX 01 00:00:00
+-FILE "MUSIC\Track04.ogg" MP3
++FILE "music\track04.ogg" MP3
+   TRACK 04 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track05.ogg" MP3
++FILE "music\track05.ogg" MP3
+   TRACK 05 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track06.ogg" MP3
++FILE "music\track06.ogg" MP3
+   TRACK 06 AUDIO
+ 	INDEX 01 00:00:00
+-FILE "MUSIC\Track07.ogg" MP3
++FILE "music\track07.ogg" MP3
+   TRACK 07 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track08.ogg" MP3	
++FILE "music\track08.ogg" MP3	
+   TRACK 08 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track09.ogg" MP3
++FILE "music\track09.ogg" MP3
+   TRACK 09 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track10.ogg" MP3
++FILE "music\track10.ogg" MP3
+   TRACK 10 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track11.ogg" MP3
++FILE "music\track11.ogg" MP3
+   TRACK 11 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track12.ogg" MP3
++FILE "music\track12.ogg" MP3
+   TRACK 12 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track13.ogg" MP3
++FILE "music\track13.ogg" MP3
+   TRACK 13 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track14.ogg" MP3
++FILE "music\track14.ogg" MP3
+   TRACK 14 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track15.ogg" MP3	
++FILE "music\track15.ogg" MP3	
+   TRACK 15 AUDIO
+     INDEX 01 00:00:00
+-FILE "MUSIC\Track16.ogg" MP3
++FILE "music\track16.ogg" MP3
+   TRACK 16 AUDIO
+     INDEX 01 00:00:00
