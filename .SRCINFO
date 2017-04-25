@@ -1,0 +1,9 @@
+pkgbase = angular-cli-bash-completion
+	pkgdesc = Bash completion for Angular CLI
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = bash-completion
+
+pkgname = angular-cli-bash-completion
+
