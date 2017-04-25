@@ -12,8 +12,8 @@
 #######################
 
 pkgname=rstudio-desktop-bin
-pkgver=1.0.136
-pkgrel=2
+pkgver=1.0.143
+pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,8 +24,8 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin'
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-_x86md5=0a20fb89d8aaeb39b329a640ddadd2c5
-_x64md5=2a73b88a12a9fbaf96251cecf8b41340
+_x86md5=21ca14bffcdc1a2361ead2d763d0313d
+_x64md5=75761eae209158d8415d562b3771fbec
 
 case "$CARCH" in
 	'i686')
