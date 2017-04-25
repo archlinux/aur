@@ -1,0 +1,16 @@
+pkgbase = astromatic-scamp
+	pkgdesc = computes astrometric and photometric solutions for any arbitrary sequence of FITS images in a completely automatic way.
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = http://www.astromatic.net/software/scamp
+	arch = x86_64
+	license = GPL
+	depends = fftw
+	depends = atlas-lapack
+	depends = astromatic-sextractor
+	depends = cdsclient
+	source = http://www.astromatic.net/download/scamp/scamp-2.0.4.tar.gz
+	sha1sums = 0c81ba051c17adda3b779d06059cec86ab1912dd
+
+pkgname = astromatic-scamp
+
