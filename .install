@@ -1,0 +1,21 @@
+#!/bin/bash
+
+post_install() {
+    echo
+    echo "Configure plasma:"
+    echo
+    echo "   Plasma desktop settings"
+    echo "Wallpaper Type" : "Slideshow"
+    echo "Set Wallpaper folder : $ HOME/.local/share/wallpaperswitch/"
+    echo
+    return 0
+}
+
+pre_remove() {
+    echo "remove $ HOME/.local/share/wallpaperswitch/"
+}
+
+
+post_upgrade() {
+    return 0
+}
