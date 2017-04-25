@@ -4,8 +4,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=1.0.1.3.r929
-pkgrel=3
+pkgver=1.0.1.4.r944
+pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bitcoinunlimited.info"
@@ -43,7 +43,8 @@ pkgver() {
   cd "$srcdir/BitcoinUnlimited"
 
   # The latest version was not tagged, so throw away the version we get
-  # from the top-most tag, but keep,the revision height and commit hash
+  # from the top-most tag, but keep, the commit hash
+  # https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
   git describe --long | sed "s/^v[^-]\+-\([0-9]\+\)/$pkgver/;s/-/./g"
 }
 
