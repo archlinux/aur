@@ -2,13 +2,14 @@
 
 _pkgname=cni
 pkgname=${_pkgname}-git
-pkgver=r543.137b497
-pkgrel=1
+pkgver=r551.21d9639
+pkgrel=2
 pkgdesc="Specification and libraries for writing plugins to configure network interfaces in Linux containers"
 arch=('i686' 'x86_64')
 url="https://github.com/containernetworking/cni"
 license=('apache')
 makedepends=('git' 'go')
+depends=('glibc')
 source=("${pkgname}::git+https://github.com/containernetworking/${_pkgname}.git#branch=master")
 sha512sums=('SKIP')
 
