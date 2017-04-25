@@ -1,7 +1,7 @@
 _pkgbasename=net-snmp
 pkgname=lib32-${_pkgbasename}
 pkgver=5.7.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6"
 arch=('x86_64')
 url="http://www.net-snmp.org/"
@@ -9,20 +9,29 @@ license=('BSD')
 depends=("${_pkgbasename}" 'lib32-openssl' 'lib32-libnl' 'lib32-pciutils')
 makedepends=('python2-setuptools')
 options=('!emptydirs' '!makeflags')
-source=(http://downloads.sourceforge.net/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz{,.asc})
+source=(http://downloads.sourceforge.net/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz{,.asc}
+        fix-openssl-build-errors.patch)
 sha1sums=('97dc25077257680815de44e34128d365c76bd839'
-          'SKIP')
+          'SKIP'
+          'b329ff700a3e20cdfcab4643a573ef976f9182c0')
 validpgpkeys=('8AAA779B597B405BBC329B6376CF47B8A77C5329'
               '27CAA4A32E371383A33ED0587D5F9576E0F81533')  # Net-SNMP Administrators
+
+prepare() {
+  cd ${_pkgbasename}-${pkgver}
+  patch -p1 -i ../fix-openssl-build-errors.patch
+  autoreconf -i
+}
+
 
 build() {
   cd ${_pkgbasename}-${pkgver}
   CFLAGS="-m32" CPPFLAGS="-m32" PYTHONPROG=/usr/bin/python2 ./configure --prefix=/usr \
-	--libdir=/usr/lib32 \
+     --libdir=/usr/lib32 \
     --enable-ucd-snmp-compatibility \
     --enable-ipv6 \
     --disable-embedded-perl \
-	--disable-perl-cc-checks \
+    --disable-perl-cc-checks \
     --without-perl-modules \
     --without-python-modules \
     --with-default-snmp-version="3" \
