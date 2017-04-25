@@ -5,12 +5,12 @@
 pkgname=aacskeys
 pkgver="0.4.0e"
 _dmover="dmo7"
-pkgrel=7.1
+pkgrel=7.2
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://forum.doom9.org/showthread.php?t=123311"
 license=("custom")
-depends=("openssl")
+depends=("openssl-1.0")
 makedepends=("java-environment" "premake")
 source=("http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}.orig.tar.gz"
 	"http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}-${_dmover}.diff.gz")
@@ -40,15 +40,23 @@ prepare() {
 
   sed -i 's|/usr/local/ssl/include|/usr/include|' premake.lua
   sed -i 's|/usr/local/ssl/lib|/usr/lib|' premake.lua
-  sed -i "s|/usr/lib/jvm/java-6-sun/include|$JAVA_HOME/include|" premake.lua
+  sed -i 's|/usr/lib/jvm/java-6-sun/include|$JAVA_HOME/include|' premake.lua
+
+  sed -i 's|OPENSSL_INCLUDE = "/usr/include"|OPENSSL_INCLUDE = "/usr/include/openssl-1.0"|' premake.lua
+  sed -i 's|OPENSSL_LIB = "/usr/lib"|OPENSSL_LIB = "/usr/lib/openssl-1.0"|' premake.lua
+  sed -i 's|/usr/local/ssl/include|/usr/include/openssl-1.0|' *.make
+  sed -i 's|/usr/local/ssl/lib|/usr/lib/openssl-1.0|' *.make
 
   sed -i 's|@premake|@premake4|' Makefile
 }
 
 build() {
-
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make 
+
+  CPPFLAGS+=" -I/usr/include/openssl-1.0" \
+  LDFLAGS+=" -L/usr/lib/openssl-1.0" \
+
+  make OPENSSL_INCLUDE="/usr/include/openssl-1.0/" OPENSSL_LIB="/usr/lib/openssl-1.0/"
 }
 
 package() {
