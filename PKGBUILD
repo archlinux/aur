@@ -1,6 +1,8 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
 #
+# Maintainer: Strit <danjohansen at strits dot dk>
+#
 # Contributor: Jaroslav Lichtblau <dragonlord at aur dot archlinux dot org>
 # Contributor: Daniel J Griffiths <ghost1227 at archlinux dot us>
 # Contributor: Ronald van Haren <ronald at archlinux dot org>
@@ -9,7 +11,7 @@
 
 pkgname="griffith"
 pkgver=0.13
-pkgrel=13
+pkgrel=14
 pkgdesc="Movie collection manager application"
 arch=('any')
 url="http://www.griffith.cc/"
@@ -25,11 +27,13 @@ optdepends=('python2-psycopg2: postgreSQL support'
 )
 source=("http://launchpad.net/${pkgname}/trunk/0.13/+download/${pkgname}-${pkgver}.tar.gz"
 		"https://raw.githubusercontent.com/ValHue/AUR-PKGBUILDs/master/griffith/validators.py"
+		"https://raw.githubusercontent.com/ValHue/AUR-PKGBUILDs/master/griffith/movie_py.patch"
 		"http://www.strits.dk/files/PluginMovieIMDB.py"
 		"http://www.strits.dk/files/PluginExportPDF.py"
 )
 sha256sums=('60576d33aa855ab45d654288d7bf2ead8accecb72fd2acbc373656294ab8f242'
             'f5e0b43c6ee56148b55cc650599c96b7774491867d38b47278bc121bf33fb9af'
+            '3772e6068299427b6f1b3f7ffc454a593419fa7f501c833b3a14ae95538ac859'
             'c1f1c5dbe0b975f15a6d0265e53b993390eb33aca2011f2e0d390b326a017a21'
             '24f0f2deab05920911b24188605ab8b52c7c6696cb5ae80d71c22d749799b9e7'
 )
@@ -63,7 +67,8 @@ build() {
 	sed -i "35i\import gtk.glade" ./lib/initialize.py
 
 	# Fix to import movie info
-	sed -e 's,www.griffith.cc,www.google.com,' -i ./lib/movie.py
+	cd ./lib
+	patch  < ${srcdir}/movie_py.patch
 }
 
 package() {
