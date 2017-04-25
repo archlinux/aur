@@ -8,6 +8,7 @@ pkgbase = gloo-git
 	makedepends = git
 	makedepends = cmake
 	depends = cuda
+	depends = nccl
 	provides = gloo
 	conflicts = gloo
 	source = git+https://github.com/facebookincubator/gloo.git

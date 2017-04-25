@@ -9,7 +9,7 @@ url='https://github.com/facebookincubator/gloo'
 license=('BSD')
 
 source=('git+https://github.com/facebookincubator/gloo.git')
-depends=('cuda')
+depends=('cuda' 'nccl')
 makedepends=('git' 'cmake')
 provides=('gloo')
 conflicts=('gloo')
