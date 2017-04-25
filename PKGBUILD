@@ -3,8 +3,8 @@
 # Contributor: Julien Pecqueur <jpec@julienpecqueur.com>
 # Contributor: Sergiusz Urbaniak <sergiusz.urbaniak@gmail.com>
 pkgname=plan9port-git
-pkgver=r3479.35d4392
-pkgrel=2
+pkgver=r3492.9e52ea8a
+pkgrel=1
 pkgdesc="A port of many Plan 9 libraries and programs to Unix."
 arch=('i686' 'x86_64')
 url="https://github.com/9fans/plan9port"
@@ -34,14 +34,14 @@ prepare() {
   cd "$srcdir/"
   # Generate a desktop shortcut for the Acme editor
   gendesk -f \
-    --pkgname acme \
-    --name Acme \
-    --genericname Editor \
-    --comment 'Editor from Plan9' \
-    --categories 'Application;Development;TextEditor'
+          --pkgname acme \
+          --name Acme \
+          --genericname Editor \
+          --comment 'Editor from Plan9' \
+          --categories 'Application;Development;TextEditor'
 
-  # Use _DEFAULT_SOURCE instead of _BSD_SOURCE
-  grep -rl _BSD_SOURCE "$pkgname" | xargs sed -i s':_BSD_SOURCE:_DEFAULT_SOURCE:g'
+  # Fix PATH variable
+  sed -i '27s@.*@PATH=$PLAN9/bin:PATH=/bin:/usr/bin:$PATH export PATH@g' $pkgname/INSTALL
 }
 
 package() {
