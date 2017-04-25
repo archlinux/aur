@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=fluid-git
-pkgver=20170321.59b33b6
+pkgver=20170425.a74d0e9
 pkgrel=1
 pkgdesc="Components for Qt Quick applications with Material Design and Universal"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -27,17 +27,14 @@ pkgver() {
 
 prepare() {
 	mkdir -p build
-	pushd ${_gitname} >/dev/null
-	./scripts/fetch_icons.sh
-	popd >/dev/null
+	pushd ${_gitname} && git submodule update --init && popd
 }
 
 build() {
 	cd build
 	qmake \
 		CONFIG+=use_qt_paths \
-		CONFIG-=create_prl \
-		../${_gitname}
+		../${_gitname}/fluid.pro
 	make
 }
 
