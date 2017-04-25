@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsbag-tools-cl-git'
-pkgver=0.16.g56cd6b0
+pkgver=0.17.ge7f3ef2
 pkgrel=1
 pkgdesc='RSBag common lisp tools'
 arch=('i686' 'x86_64')
@@ -13,20 +13,18 @@ source=("rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl"
         "rsbag-cl::git+https://code.cor-lab.org/git/rsbag.git.cl"
         "rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl"
         "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl"
-        "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.1.tar.gz"
-        "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.1.tar.gz"
-        "architecture.builder-protocol.tar.gz::https://github.com/scymtym/architecture.builder-protocol/archive/release-0.5.tar.gz"
+        "cl-protobuf::git+https://github.com/scymtym/cl-protobuf"
+        "network.spread::git+https://github.com/scymtym/network.spread"
+        "architecture.builder-protocol::git+https://github.com/scymtym/architecture.builder-protocol"
         "iterate-sequence::git+https://github.com/scymtym/iterate-sequence")
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '701a2e598687ee881709dad4c8402967'
-         '4f548d04ab6a1e86832f266d7276ed4f'
-         '8a0bca93913ee772fc9267485659552b'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP')
-
-_qlver='2016-10-31'
 
 pkgver() {
     cd "${srcdir}/rsbag-tools-cl"
@@ -46,7 +44,6 @@ prepare() {
             --noinform --no-userinit --disable-debugger \
             --load quicklisp.lisp \
             --eval '(quicklisp-quickstart:install
-                     :dist-version "quicklisp/'"${_qlver}"'"
                      :path         "'"$(pwd)"'/quicklisp")' \
             --quit
     fi
