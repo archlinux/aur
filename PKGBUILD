@@ -6,7 +6,7 @@ arch=(any)
 url=https://www.gnome-look.org/p/1167049/
 depends=('gtk3')
 makedepends=('unzip')
-source=("https://dl.opendesktop.org/api/files/download/id/1488643195/OSX-Arc-White-v1.3.9.tar.gz")
+source=("https://dl.opendesktop.org/api/files/download/id/1492458057/OSX-Arc-White-v1.4.1.tar.gz")
 md5sums=('ff91677d23f7118b7ccd8ef1d6facea1')
 
 package(){
