@@ -7,7 +7,7 @@ pkgdesc='Setup awesome as window manager of GNOME 3'
 arch=('any')
 url='http://awesome.naquadah.org/wiki/Quickly_Setting_up_Awesome_with_Gnome'
 license=('CCPL')
-depends=('awesome' 'gnome-session' 'gnome-settings-daemon' 'notification-daemon')
+depends=('awesome' 'gnome-session<3.24' 'gnome-settings-daemon<3.24' 'notification-daemon')
 install=awesome-gnome.install
 source=($pkgname.desktop
         awesome.desktop
