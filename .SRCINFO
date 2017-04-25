@@ -13,10 +13,10 @@ pkgbase = firefox-beta-bin
 	depends = gtk3
 	depends = libxt
 	depends = nss
-	depends = pulseaudio
 	optdepends = ffmpeg: H264/AAC/MP3 decoding
 	optdepends = libnotify: Notification integration
 	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = pulseaudio
 	optdepends = upower: Battery API
 	provides = firefox=54.0b1
 	source = firefox-beta-bin.desktop
