@@ -1,6 +1,6 @@
 pkgbase = xedgewarp-git
 	pkgdesc = xedgewarp is a window manager agnostic tool for pointer warping between outputs
-	pkgver = r148.47c1035
+	pkgver = r157.0ce5187
 	pkgrel = 1
 	url = https://github.com/Airblader/xedgewarp
 	arch = i686

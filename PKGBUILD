@@ -1,7 +1,7 @@
 # vim:ts=4:sw=4:expandtab
 # xedgewarp -- window manager agnostic pointer warping between outputs
 pkgname=xedgewarp-git
-pkgver=r148.47c1035
+pkgver=r157.0ce5187
 pkgrel=1
 pkgdesc='xedgewarp is a window manager agnostic tool for pointer warping between outputs'
 arch=('i686' 'x86_64')
@@ -24,11 +24,11 @@ pkgver() {
 
 build() {
     cd "$_gitname"
-    make all
+    make PREFIX=/usr all
 }
 
 package() {
     cd "$_gitname"
-    make DESTDIR="$pkgdir" install
+    make PREFIX=/usr DESTDIR="$pkgdir" install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
