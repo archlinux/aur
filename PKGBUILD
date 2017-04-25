@@ -47,13 +47,11 @@ source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-system-ffmpeg-r4.patch
-        chromium-gn-bootstrap-r2.patch
         chromium-widevine.patch)
 sha256sums=('ec59bf66b1d686c85172c7b9dade6bbda10600df25b17f86a1847d29d8bb9d62'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
-            '64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -75,7 +73,6 @@ prepare() {
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
-  patch -Np1 -i ../chromium-gn-bootstrap-r2.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
