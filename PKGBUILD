@@ -46,11 +46,13 @@ options=('!strip')
 source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
+        sandbox-linux-build.patch
         chromium-system-ffmpeg-r4.patch
         chromium-widevine.patch)
 sha256sums=('ec59bf66b1d686c85172c7b9dade6bbda10600df25b17f86a1847d29d8bb9d62'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
+            '2ab5114225c3dd686025090098baefc02edfb0fc0cca3dbd5a289881e6169f26'
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
@@ -70,6 +72,8 @@ prepare() {
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
+
+  patch -Np1 -i ../sandbox-linux-build.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
