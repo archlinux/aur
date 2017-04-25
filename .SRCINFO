@@ -1,8 +1,8 @@
 pkgbase = perl-math-bigint
 	pkgdesc = Big integer calculations using the GNU Multiple Precision Arithmetic Library.
-	pkgver = 1.999722
+	pkgver = 1.999808
 	pkgrel = 1
-	url = http://search.cpan.org/~PJACKLAM/Math-BigInt-1.999722/
+	url = http://search.cpan.org/~PJACKLAM/Math-BigInt-1.999808/
 	arch = any
 	license = GPL
 	license = PerlArtistic
@@ -11,8 +11,8 @@ pkgbase = perl-math-bigint
 	provides = perl-math-bigint-calc
 	provides = perl-math-bigint-calcemu
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-authors/id/P/PJ/PJACKLAM/Math-BigInt-1.999722.tar.gz
-	sha256sums = c76a2d5e6a996186a42a7e516b8d82217fb0cd18c7e1e55241322c4a859ccf40
+	source = http://cpan.perl.org/modules/by-authors/id/P/PJ/PJACKLAM/Math-BigInt-1.999808.tar.gz
+	sha256sums = 279e7311f4ac0a00a61ffca2c3c508ba39a71b7510b4112af60979cf36d583c6
 
 pkgname = perl-math-bigint
 

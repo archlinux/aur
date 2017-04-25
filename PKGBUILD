@@ -3,7 +3,7 @@
 _author=PJACKLAM
 _perlmod=Math-BigInt
 pkgname=perl-math-bigint
-pkgver=1.999722
+pkgver=1.999808
 pkgrel=1
 pkgdesc="Big integer calculations using the GNU Multiple Precision Arithmetic Library."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl>=5.20.0')
 provides=('perl-math-bigfloat' 'perl-math-bigint-calc' 'perl-math-bigint-calcemu')
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/P/PJ/$_author/$_perlmod-$pkgver.tar.gz)
-sha256sums=('c76a2d5e6a996186a42a7e516b8d82217fb0cd18c7e1e55241322c4a859ccf40')
+sha256sums=('279e7311f4ac0a00a61ffca2c3c508ba39a71b7510b4112af60979cf36d583c6')
 
 
 build() {
