@@ -73,7 +73,7 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  patch -Np1 -i ../sandbox-linux-build.patch
+  patch -Np0 -i ../sandbox-linux-build.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
