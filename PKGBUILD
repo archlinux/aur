@@ -3,7 +3,7 @@
 pkgname=drminfo-git
 pkgver=3.1+0.g25f5e0e
 pkgrel=1
-pkgdesc="drminfo"
+pkgdesc="print drm device information"
 arch=('i686' 'x86_64')
 url="https://www.kraxel.org/cgit/drminfo/"
 license=('GPLv2')
