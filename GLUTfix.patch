@@ -1,0 +1,9 @@
+diff -ur pycam-0.6.1.orig/pycam/Gui/OpenGLTools.py pycam-0.6.1/pycam/Gui/OpenGLTools.py
+-- pycam-0.6.1.orig/pycam/Gui/OpenGLTools.py	2017-04-03 20:54:31.975806360 +0200
++++ pycam-0.6.1/pycam/Gui/OpenGLTools.py	2017-03-11 03:50:16.000000000 +0100
+@@ -91,4 +91,4 @@
+     # center the cone
+     GL.glTranslatef(0, 0, -cone_length * position)
+     # draw the cone
+-    #GLUT.glutSolidCone(cone_radius, cone_length, precision, 1)
++    GLUT.glutSolidCone(cone_radius, cone_length, precision, 1)

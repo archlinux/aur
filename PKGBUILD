@@ -1,34 +1,36 @@
-# Maintainer: David Manouchehri <manouchehri@riseup.net>
-# Contributor: Peter-Paul van Gemerden <info@ppvg.nl>
-# Contributor: Karsten Hinz <k.hinz@tu-bs.de>
+# Maintainer: Jake <ja.ke@posteo.de>
+# Contributor: Aurelien Cibrario <aurelien.cibrario at gmail dot com>
+# Contributor: David Manouchehri <manouchehri at riseup dot net>
+# Contributor: Peter-Paul van Gemerden <info at ppvg dot nl>
+# Contributor: Karsten Hinz <k.hinz at tu-bs dot de>
 
 pkgname=pycam
-pkgver=0.5.1
-pkgrel=5
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Toolpath generator for 3-axis CNC machining, written in Python."
 arch=('i686' 'x86_64')
 url="http://pycam.sourceforge.net/"
 license=('GPL3')
-depends=('python2' 'python2-opengl' 'python2-rsvg' 'python2-gtkglext' 'pstoedit')
-optdepends=('psyco')
-options=()
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        memoryfix.patch)
-sha512sums=('f880d960f82eb374465a593f3b27e9f72148b3ceb99fde15bee4ccf1078acc8ef44ddfd9ee12f89e5b5e5ee14706b6e5d76eff7d0334c9526866ff263a057994'
-            'fe6720e0afc2018ce16c37bacf6e905c3e4396c74759da600bd0f8268c6dca695d08da904b40816e43c84587e0812d599a1f61eaead02b8f739a6b467c473f09')
+depends=('python2' 'pygtk' 'python2-opengl' 'python2-rsvg' 'python2-gtkglext')
+source=("https://github.com/SebKuzminsky/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz" 
+        "GLUTfix.patch"
+        "${pkgname}")
+sha512sums=('962d6ba5b5790d244ac47684c2d67b791b91725a30c014a821925706e322b0cb43ce29b5b90b5e917e04151fdd5806916132ef8d9bfb3bd7fb854b558066827a'
+            '8d3a4610acad8a8f0dfcbcb62273f420f44b0db4c5e2c236eacbf49d5abd73394de3e302dfec1a6109160869513304274c74f784dc7f3c0fae505348868e90d5'
+            'fbb1b026dfa821caea352f44aa5eddb34fcb8ec87e27bf1390fb791b58733c011f5476203a5195bb1e737cd6194000c8ec30ac7444f638c2b70965071757c092')
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/"
-  patch -p1 -i "${srcdir}/memoryfix.patch"
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -R -p1 -i "${srcdir}/GLUTfix.patch"
 }
 
-package() {  
+package() {
+  # Application
   mkdir -p "${pkgdir}/usr/share/"
   cp -R "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
 
-  mkdir -p "${pkgdir}/usr/bin/"
-  echo -e "#! /bin/sh\npython2 /usr/share/${pkgname}/${pkgname}" > "${pkgdir}/usr/bin/${pkgname}"
-  chmod a+x "${pkgdir}/usr/bin/${pkgname}"
+  # Start script
+  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   # freedesktop.org compatibility
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/share/desktop/pycam.desktop" "${pkgdir}/usr/share/applications/pycam.desktop"
