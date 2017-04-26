@@ -4,7 +4,7 @@
 
 _pkgname=john
 pkgname=john-git
-pkgver=1.8.0.jumbo.1.r4934.ge4a65c7
+pkgver=1.8.0.jumbo.1.r5618.ga666e7e38
 pkgrel=1
 pkgdesc="fast password cracker (using the git repository of the jumbo patch)"
 arch=('i686' 'x86_64')
