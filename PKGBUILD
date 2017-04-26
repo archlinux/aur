@@ -14,11 +14,6 @@ makedepends=('meson')
 conflicts=('drminfo')
 provides=("drminfo=${pkgver%+*}")
 
-source+=(0001-include-drm_fourcc.h-from-libdrm-not-the-kernel.patch
-         0002-meson-install-drminfo-drmtest.patch
-         0003-meson-install-drminfo-drmtest-man-pages.patch)
-sha256sums+=(SKIP SKIP SKIP)
-
 pkgver() {
   cd drminfo
   git describe --long | sed 's/^drminfo-//; s/-/./; s/-/+/; s/-/./'
@@ -26,13 +21,6 @@ pkgver() {
 
 prepare() {
   cd drminfo
-
-	for patch in ../*.patch
-	do
-		msg2 "Applying $patch"
-		patch -sp1 -i $patch
-	done
-
   rm -rf build
   meson build --prefix='/usr'
 }
