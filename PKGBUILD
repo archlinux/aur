@@ -1,8 +1,8 @@
-# Maintainer: drakkan <nicola.murino@gmail.com>
-# Contributor: Marti Raudsepp <marti@juffo.org>
+# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Contributor: Marti Raudsepp <marti at juffo dot org>
 
 pkgname=pg_repack
-pkgver=1.3.4
+pkgver=1.4.0.1
 pkgrel=1
 pkgdesc="Reorganize tables in PostgreSQL databases with minimal locks (fork of pg_reorg)"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('postgresql-libs')
 makedepends=('postgresql')
 source=("https://github.com/reorg/pg_repack/archive/ver_${pkgver}.tar.gz")
-sha256sums=('59b32361d2d60b9d329e454b9a50462f976052c659d9dc4a6d1185c1c5ec6f88')
+sha256sums=('fb5594ebbc25c83c1939736b3f97c430e60e48934ef9498062527ffa73e21a64')
 
 prepare() {
   cd "$srcdir/$pkgname-ver_$pkgver"
