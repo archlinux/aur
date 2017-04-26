@@ -5,8 +5,8 @@
 # Contributor: Matthew Sharpe <matt.sharpe@gmail.com>
 
 pkgname=ophcrack
-pkgver=3.6.1
-pkgrel=3
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Windows password cracker based on rainbow tables"
 arch=('i686' 'x86_64')
 url="http://ophcrack.sourceforge.net"
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('qt4')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2
         ophcrack.desktop)
-md5sums=('f05e41f4261c488d7da1015374b5725b'
+md5sums=('dbcdb80e5c9d39198b4e5edd4349be27'
          '664599c4fd7fd210e6c421459f60e20d')
 
 build() {
