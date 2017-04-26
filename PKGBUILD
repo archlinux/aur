@@ -1,7 +1,7 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=gfs2-utils
-pkgver=3.1.8
+pkgver=3.1.10
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')
@@ -9,11 +9,14 @@ license=('GPL' 'LGPL' 'MIT')
 url="https://sourceware.org/cluster/gfs/"
 depends=('libutil-linux' 'ncurses' 'gettext' 'bison' 'flex' 'zlib')
 makedepends=('bc' 'util-linux' 'check')
-source=("https://git.fedorahosted.org/cgit/gfs2-utils.git/snapshot/${pkgname}-${pkgver}.tar.gz")
+source=("https://releases.pagure.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 options=('staticlibs')
-sha512sums=('6d38a4f48162d2ae90a923052df313e00f1f2ba815fa59b640ddceafb0d5452397caeb04a41f1e5d845bfbd9cbd26c29715ea865d13de2f61fd23a3d451c06d7')
+sha512sums=('99e20045f1fedaceb1f59e7a78189701e9c787821ac4232800dd2d451f2924cb0930544fee274277c6da1ff1a7e2077186a36dacd2769b3583a818cc31bd2c82')
 
 build() {
+#  LDFLAGS="-Wl,-O1,--sort-common,-z,relro"
+   LDFLAGS="${LDFLAGS//',--as-needed'}"
+   echo $LDFLAGS
   cd "${srcdir}/${pkgname}-${pkgver}"
    ./autogen.sh
    ./configure --prefix=/usr --with-root-prefix="" --libdir=/usr/lib \
@@ -30,8 +33,6 @@ build() {
 
 
 package() {
-  unset MAKEFLAGS
-
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
