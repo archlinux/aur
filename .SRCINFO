@@ -1,0 +1,15 @@
+pkgbase = sac-stdlib
+	pkgdesc = Provides the standard library of the Single-Assignment C programming language.
+	pkgver = 1.3REV2
+	pkgrel = 1
+	url = http://www.sac-home.org/
+	arch = x86_64
+	license = custom:SAC
+	depends = sac2c=1.2BETA467
+	source = https://github.com/SacBase/Stdlib/releases/download/1.3/sac-stdlib-1.3-2-g74f8-RHEL7.rpm
+	source = LICENSE.txt
+	md5sums = 22c3bb3023e30a8c8550d78fb515ed15
+	md5sums = 84e0ebe0672290c68bf47dbae66287a2
+
+pkgname = sac-stdlib
+
