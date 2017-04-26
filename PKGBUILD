@@ -3,7 +3,7 @@
 
 pkgname=visit-build
 _pkgname=visit
-pkgver=2.12.1
+pkgver=2.12.2
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool (built with build_visit)."
@@ -21,8 +21,8 @@ source=("https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/build
         'no_extract_visit.patch'
         "xdmf_stdc++.patch"
         'qt5-qpa.patch')
-sha256sums=('a853fd816846d1e8e5375c92cd8a1b1534aa409761ac3d5310feff48c484c849'
-            '484ef1ae3b1f97571f380abe4f1ef2512663d042453838314f4c0ea6be16ba19'
+sha256sums=('c28173a62fafae606280411186e15001bf939c248cfe07cb15ca0f6dbe512566'
+            '55897d656ac2ea4eb87a30118b2e3963d6c8a391dda0790268426a73e4b06943'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '8ec6767c3943c3b93c9817ef0d051799c5ebfac75e73e58175befd08bfd320e0'
             '6dfdf3fdf6e64437106fc4f9facc79e80ab204de12bb480c6209c6b3fc5b4e07'
@@ -122,7 +122,6 @@ _build_command(){
     --cc gcc --cxx g++ --fortran \
     --cflag "${CFLAGS}" --cxxflag "${CXXFLAGS}" \
     --build-mode Release \
-    --hdf5 \
     --icet \
     --java \
     --netcdf \
@@ -130,7 +129,6 @@ _build_command(){
     --silo \
     --szip \
     --xdmf \
-    --zlib \
     ${1}
 }
 
