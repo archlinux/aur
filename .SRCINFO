@@ -1,14 +1,14 @@
 pkgbase = check_mk-agent
 	pkgdesc = Agent to send information to a Check_MK server
-	pkgver = 1.2.8p20
+	pkgver = 1.2.8p21
 	pkgrel = 1
 	url = https://mathias-kettner.de
 	install = check_mk-agent.install
 	arch = any
 	license = GPLv2
 	depends = xinetd
-	source = https://mathias-kettner.de/download/check_mk-1.2.8p20.tar.gz
-	md5sums = ed94f9de84107d878ada48b36eea531e
+	source = https://mathias-kettner.de/download/check_mk-1.2.8p21.tar.gz
+	md5sums = 96c80d5ef359f7f35fa0c26ad59c24ac
 
 pkgname = check_mk-agent
 
