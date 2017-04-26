@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/pazz/urwidtrees"
 license=("GPL")
 depends=("python-urwid>=1.1.0" "python-mock")
-makedepends=("git" "python-sphinx")
+makedepends=("git")
 provides=('python-urwidtrees')
 conflicts=('python-urwidtrees')
 source=("git+https://github.com/pazz/urwidtrees.git")

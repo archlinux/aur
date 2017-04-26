@@ -6,7 +6,6 @@ pkgbase = python-urwidtrees-git
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = python-sphinx
 	depends = python-urwid>=1.1.0
 	depends = python-mock
 	provides = python-urwidtrees
