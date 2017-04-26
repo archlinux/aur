@@ -18,7 +18,7 @@ _UNIFONT_VER="9.0.06"
 [[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
 
 pkgname="grub-git"
-pkgver=2.02.rc2.r0.g8014b7b33
+pkgver=2.02.r0.ge54c99aaf
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -43,13 +43,14 @@ fi
 
 provides=("${pkgname%-*}" 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
 conflicts=("${pkgname%-*}" 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub-legacy')
-backup=('boot/grub/grub.cfg' 'etc/default/grub' 'etc/grub.d/40_custom')
+backup=('boot/grub/grub.cfg'
+        'etc/default/grub'
+        'etc/grub.d/40_custom')
 options=('!makeflags')
 install="${pkgname}.install"
 source=("grub::git+git://git.sv.gnu.org/grub.git#branch=master"
         "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#commit=branch=master"
-        "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"
-        "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz.sig"
+        "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
         'intel-ucode.patch'
         '10_linux-detect-archlinux-initramfs.patch'
         'add-GRUB_COLOR_variables.patch'
@@ -64,8 +65,9 @@ sha256sums=('SKIP'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
             'df764fbd876947dea973017f95371e53833bf878458140b09f0b70d900235676'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
-validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33')  # Paul Hardy <unifoundry@unifoundry.com>
-
+validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>
+              '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
+ 
 prepare() {
 	cd grub
 
@@ -83,26 +85,23 @@ prepare() {
 	echo
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
-	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "${srcdir}/grub/configure.ac"
+	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
 
 	msg "Fix mkinitcpio 'rw' FS#36275"
-	sed 's| ro | rw |g' -i "${srcdir}/grub/util/grub.d/10_linux.in"
+	sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
 
 	msg "Fix OS naming FS#33393"
-	sed 's|GNU/Linux|Linux|' -i "${srcdir}/grub/util/grub.d/10_linux.in"
-
-	# msg "autogen.sh requires python (2/3). since bzr is in makedepends, use python2 and no need to pull python3"
-	# sed 's|python |python2 |g' -i "${srcdir}/grub-${_pkgver}/autogen.sh"
+	sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
 
 	msg "Pull in latest language files"
 	./linguas.sh
 	echo
 
 	msg "Remove not working langs which need LC_ALL=C.UTF-8"
-	sed -e 's#en@cyrillic en@greek##g' -i "${srcdir}/grub/po/LINGUAS"
+	sed -e 's#en@cyrillic en@greek##g' -i "po/LINGUAS"
 
 	msg "Avoid problem with unifont during compile of grub, http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847"
-	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "${srcdir}/grub/unifont.bdf"
+	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "unifont.bdf"
 }
 
 pkgver() {
@@ -123,6 +122,8 @@ _build_grub-common_and_bios() {
 
 	msg "Copy the source for building the bios part"
 	cp -r "${srcdir}/grub" "${srcdir}/grub-bios"
+	cd "${srcdir}/grub-bios"
+
 	msg "Add the grub-extra sources for bios build"
 	install -d "${srcdir}/grub-bios/grub-extras"
 	cp -r "${srcdir}/grub-extras/915resolution" "${srcdir}/grub-bios/grub-extras/915resolution"
@@ -134,8 +135,6 @@ _build_grub-common_and_bios() {
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
-
-	cd "${srcdir}/grub-bios"
 
 	msg "Run autogen.sh for bios build"
 	./autogen.sh
@@ -175,6 +174,7 @@ _build_grub-common_and_bios() {
 _build_grub-efi() {
 	msg "Copy the source for building the ${_EFI_ARCH} efi part"
 	cp -r "${srcdir}/grub" "${srcdir}/grub-efi-${_EFI_ARCH}"
+	cd "${srcdir}/grub-efi-${_EFI_ARCH}"
 
 	msg "Unset all compiler FLAGS for ${_EFI_ARCH} efi build"
 	unset CFLAGS
@@ -182,8 +182,6 @@ _build_grub-efi() {
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
-
-	cd "${srcdir}/grub-efi-${_EFI_ARCH}"
 
 	msg "Run autogen.sh for ${_EFI_ARCH} efi build"
 	./autogen.sh
@@ -223,6 +221,7 @@ _build_grub-efi() {
 _build_grub-emu() {
 	msg "Copy the source for building the emu part"
 	cp -r "${srcdir}/grub" "${srcdir}/grub-emu"
+	cd "${srcdir}/grub-emu"
 
 	msg "Unset all compiler FLAGS for emu build"
 	unset CFLAGS
@@ -230,8 +229,6 @@ _build_grub-emu() {
 	unset CXXFLAGS
 	unset LDFLAGS
 	unset MAKEFLAGS
-
-	cd "${srcdir}/grub-emu"
 
 	msg "Run autogen.sh for emu build"
 	./autogen.sh
