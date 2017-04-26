@@ -8,9 +8,9 @@
 # Maintainer: Ben Morgan <neembi@gmail.com>
 
 _pkgname="pulseaudio"
-pkgname="$_pkgname-git"
+pkgname="$_pkgname-dmitryvk-bluetooth-lag"
 pkgdesc="A featureful, general-purpose sound server"
-pkgver=v8.0.76.gb5e5475
+pkgver=v10.0.141.g136be6bd
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
@@ -31,12 +31,18 @@ provides=("pulseaudio" "libpulse" "pulseaudio-zeroconf" "pulseaudio-gconf" "puls
 conflicts=("pulseaudio" "libpulse" "pulseaudio-zeroconf" "pulseaudio-gconf" "pulseaudio-equalizer" "pulseaudio-bluetooth" "pulseaudio-jack" "pulseaudio-xen" "pulseaudio-lirc")
 replaces=("pulseaudio" "libpulse" "pulseaudio-zeroconf" "pulseaudio-gconf" "pulseaudio-equalizer" "pulseaudio-bluetooth" "pulseaudio-jack" "pulseaudio-xen" "pulseaudio-lirc")
 options=(!emptydirs)
-source=("git+https://github.com/pulseaudio/pulseaudio.git")
-sha256sums=("SKIP")
+source=("git+https://github.com/pulseaudio/pulseaudio.git" "00-bluetooth-buffer.patch")
+sha256sums=('SKIP'
+            '893cc8fa2a0a40a8ff513e624346e1175a43e8e7c4763976533246cdcc40db44')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
     git describe --always | sed "s/-/./g"
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+	git am "${srcdir}/00-bluetooth-buffer.patch"
 }
 
 build() {
