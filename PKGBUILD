@@ -1,12 +1,12 @@
 # Maintainer: Milian Reichardt <mreichardt95@gmail.com>
 pkgname=cpuminer-multi-git
-pkgver=v1.3.1.multi.r0.gcce747e
+pkgver=v1.3.1.multi.r4.ge195764
 
 pkgver() {
 	cd "cpuminer-multi"
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgrel=2
+pkgrel=1
 pkgdesc="Multi-algo CPUMiner & Reference Cryptonote Miner (JSON-RPC 2.0) - GIT checkout"
 arch=('i686' 'x86_64')
 url="https://github.com/tpruvot/cpuminer-multi/"
