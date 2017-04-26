@@ -1,10 +1,10 @@
 pkgbase = pmrp-git
 	pkgdesc = Little Bash script for playing various internet radio stations
-	pkgver = r4.6998278
-	pkgrel = 1
-	url = http://adaptagrams.sourceforge.net/
+	pkgver = r10.910741d
+	pkgrel = 2
+	url = https://github.com/hakerdefo/pmrp
 	arch = any
-	license = Public Domain
+	license = Creative Commons Zero
 	makedepends = git
 	depends = mpg123
 	source = pmrp-git::git+https://github.com/hakerdefo/pmrp.git
