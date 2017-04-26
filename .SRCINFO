@@ -1,6 +1,6 @@
 pkgbase = phpbrew-git
 	pkgdesc = Brew & manage PHP versions in pure PHP at HOME
-	pkgver = 1.22.6.19.ge10237ff
+	pkgver = 1.22.6.37.g08534924
 	pkgrel = 1
 	url = http://phpbrew.github.io/phpbrew/
 	arch = any
