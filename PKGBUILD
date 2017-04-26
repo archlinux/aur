@@ -8,7 +8,7 @@
 
 pkgname=whipper
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
 url="https://github.com/JoeLametta/whipper"
@@ -19,6 +19,7 @@ depends=(
     'cdparanoia'                    # for the actual ripping
     'cdrdao'                        # for session, TOC, pregap, and ISRC extraction
     'libsndfile'                    # for reading wav files (pulls in flac, also required for reading flac files)
+    'mutagen'                       # for metadata handling
     'python2-musicbrainzngs'        # for metadata lookup
     'python2-pycdio'                # for storing drive identification in config file
     'python2-setuptools'            # for plugin support

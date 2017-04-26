@@ -1,7 +1,7 @@
 pkgbase = whipper
 	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JoeLametta/whipper
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = whipper
 	depends = cdparanoia
 	depends = cdrdao
 	depends = libsndfile
+	depends = mutagen
 	depends = python2-musicbrainzngs
 	depends = python2-pycdio
 	depends = python2-setuptools
