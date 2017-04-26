@@ -3,7 +3,7 @@
 
 pkgbase=waterfox-slim-i18n
 pkgver=53.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language pack for Waterfox"
 arch=('x86_64')
 url="http://waterfoxproject.org/"
@@ -105,12 +105,13 @@ pkgname=()
 source=()
 _url=https://github.com/hawkeye116477/Waterfox/raw/$pkgver/browser/extensions
 
-for _lang in "${_languages[@]}"; do
+for _lang in "${_languages[@]}"; 
+do
   _locale=${_lang%% *}
   _pkgname=waterfox-slim-i18n-${_locale,,}
 
   pkgname+=($_pkgname)
-  source+=("waterfox-slim-i18n-$pkgver-$_locale.xpi::$_url/langpack-$_locale@firefox.mozilla.org.xpi")
+  source+=("waterfox-slim-i18n-$pkgver-$_locale.xpi::${_url}/langpack-${_locale}@firefox.mozilla.org.xpi")
   eval "package_$_pkgname() {
     _package $_lang
   }"
