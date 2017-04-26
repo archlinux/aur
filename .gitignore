@@ -1,1 +1,4 @@
-/john
+/pkg/
+/src/
+/*.pkg.tar.xz
+/john/
