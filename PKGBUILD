@@ -15,7 +15,7 @@ _micro=""
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
 pkgver="${_pkgver}${_micro}"
-pkgrel=3
+pkgrel=4
 pkgdesc="This is the latest stable release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL' 'LGPL' 'MIT')
@@ -79,8 +79,7 @@ package_compiz-core() {
   cd "${srcdir}/${_upstream}-${pkgver}"
 
   pkgdesc+=" (Core w/o decorator)"
-  provides=("compiz-core=$pkgver")
-  conflicts=('compiz' 'compiz-core-git' 'compiz-git')
+  conflicts=('compiz')
 
   make DESTDIR="${pkgdir}" install
 
@@ -116,7 +115,6 @@ package_compiz-gtk()
   fi
 
   pkgdesc+=" (GTK+ window decorator)"
-  conflicts=('compiz-gtk-git')
 
   cd "${srcdir}/${_upstream}-${pkgver}/gtk-window-decorator"
   make DESTDIR="${pkgdir}" install
