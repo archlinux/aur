@@ -4,28 +4,28 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20170423
+pkgver=3.0.0v20170426
 _pkgver=3.0.0
-_snapshot_=20170423
+_snapshot_=20170426
 _snapver_=0240
 _nightly_=${_snapshot_}-${_snapver_}
-pkgrel=2
-_undetected_depends=()
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
 arch=("i686" "x86_64")
 url="http://www.videolan.org/vlc/"
 license=("LGPL2.1" "GPL2")
-depends=('a52dec' 'libaom-git' 'libfdk-aac' 'faad2' 'ffmpeg' 'libdca' 'daala-git' 'libdvbpsi'
+_undetected_depends=()
+depends=('libmatroska' 'a52dec' 'libaom-git' 'libfdk-aac' 'faad2' 'ffmpeg' 'libdca' 'daala-git' 'libdvbpsi'
          'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
-         'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'wayland' 'wayland-protocols'
+         'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'sndio' 'wayland' 'wayland-protocols'
          'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'libglvnd'
          'hicolor-icon-theme' 'qt5-x11extras' "${_undetected_depends[@]}")
 makedepends=('aalib' 'flac' 'git'
              'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
              'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
              'libssh2' 'lirc' 'live-media'  'opus'
-             'portaudio' 'projectm' 'twolame' 'vcdimager' 'xosd' 'smbclient')
+             'portaudio' 'projectm' 'twolame' 'vcdimager' 'smbclient')
 optdepends=('aalib: for ASCII art plugin'
             'avahi: for service discovery using bonjour protocol'
             'flac: for Free Lossless Audio Codec plugin'
@@ -91,7 +91,6 @@ build() {
 				--enable-opus \
 				--enable-sftp \
         --enable-fdkaac \
-        --enable-merge-ffmpeg \
         --enable-archive \
         --enable-bluray \
         --enable-aom \
@@ -114,14 +113,14 @@ package() {
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 
   # Update dependencies automatically based on dynamic libraries
-  _detected_depends=($(find "$pkgdir"/usr/lib/vlc -name "*.so" | xargs python "$srcdir"/find-deps.py))
+  _detected_depends=($(find "$pkgdir"/usr -name "*.so" | xargs python "$srcdir"/find-deps.py))
 
   msg 'Auto-detected dependencies:'
   echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
   depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('e50132842e22bcbd03de80b0d467716bf16b00e17c5d971fc5af089228ebc870'
+sha256sums=('fa0b882189756e927a2cd673a24c97aa925df4fa97a2d612026d9061499a8f97'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
