@@ -1,3 +1,4 @@
+# Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 
