@@ -3,12 +3,12 @@
 
 pkgname=msodbcsql
 pkgver=13.1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Microsoft® ODBC Driver 13 for SQL Server®"
 arch=('x86_64')
 url="https://blogs.msdn.microsoft.com/sqlnativeclient/"
 license=('custom')
-depends=('unixodbc' 'krb5' 'curl')
+depends=('unixodbc' 'krb5' 'curl' 'openssl-1.0')
 makedepends=('patchelf')
 options=('!strip')
 source=(https://packages.microsoft.com/rhel/7/prod/msodbcsql-$pkgver-1.x86_64.rpm)
