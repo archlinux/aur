@@ -1,8 +1,8 @@
 # Maintainer: Ainola
 
 pkgname=gtk-theme-minwaita
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="A tweaked, more compact version of Adwaita."
 arch=(any)
 url="https://github.com/godlyranchdressing/Minwaita"
