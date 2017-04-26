@@ -1,0 +1,19 @@
+pkgbase = brother-mfc-l5750dw
+	pkgdesc = Brother cups and lpd driver for L5750DW
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	source = http://download.brother.com/welcome/dlf102613/mfcl5750dwlpr-3.2.0-1.i386.deb
+	source = http://download.brother.com/welcome/dlf102614/mfcl5750dwcupswrapper-3.2.0-1.i386.deb
+	sha256sums = 7349a26fdb94c4a91d236bc437c338072f9fdd255105d818d392241b1a0c7775
+	sha256sums = 0987ba201ef76e8d9d7f08c6b11c5e66aa44d719c735b789fbebd8f606d99e07
+
+pkgname = brother-mfc-l5750dw
+
