@@ -1,7 +1,7 @@
 pkgbase = pmrp-git
 	pkgdesc = Little Bash script for playing various internet radio stations
-	pkgver = r10.910741d
-	pkgrel = 2
+	pkgver = r9.910741d
+	pkgrel = 3
 	url = https://github.com/hakerdefo/pmrp
 	arch = any
 	license = Creative Commons Zero

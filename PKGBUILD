@@ -1,6 +1,6 @@
 pkgname=pmrp-git
-pkgver=r10.910741d
-pkgrel=2
+pkgver=r9.910741d
+pkgrel=3
 pkgdesc="Little Bash script for playing various internet radio stations"
 arch=('any')
 url="https://github.com/hakerdefo/pmrp"
