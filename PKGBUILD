@@ -1,7 +1,7 @@
 # Maintainer: Johannes Pfrang <johannespfrang+arch @ gmail.com>
 
 pkgname=teleport
-pkgver=2.0.1
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 install=teleport.install
 source=("https://github.com/gravitational/teleport/releases/download/v${pkgver}/teleport-v${pkgver}-linux-amd64-bin.tar.gz"
         "teleport.service")
-sha256sums=('9c0f07f2d6202b73f41090b9ade06361ecb8a4a44f6bd50323ba80e3883f7ae2'
+sha256sums=('aa27fb0b200038f859a80e3165ac236f3b03d36b7c8a6c8e46ddb8fdcd2a642a'
             '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc')
 
 package() {
