@@ -1,7 +1,7 @@
 # Maintainer: Alex Smith <azphreal19@protonmail.com
 pkgname=koel
-pkgver=3.5.5
-pkgrel=2
+pkgver=3.6.2
+pkgrel=1
 pkgdesc="A personal music streaming server that works."
 arch=('any')
 url="http://koel.phanan.net/"

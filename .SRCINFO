@@ -1,6 +1,6 @@
 pkgbase = koel
 	pkgdesc = A personal music streaming server that works.
-	pkgver = 3.5.5
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = http://koel.phanan.net/
 	install = koel.install
