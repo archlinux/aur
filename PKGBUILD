@@ -6,7 +6,7 @@ _buildver=171.4249.39
 _veryear=2017
 _verrelease=1.2
 pkgver=${_veryear}.${_verrelease}
-pkgrel=2
+pkgrel=3
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
 arch=('any')
 options=(!strip)
@@ -15,7 +15,6 @@ license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
 source=("https://download.jetbrains.com/idea/ideaIC-${pkgver}.tar.gz")
-sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${pkgver}.tar.gz.sha256" | cut -f1 -d" "))
 
 package() {
     cd "$srcdir"
@@ -52,4 +51,4 @@ EOF
     ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
 }
 
-# vim:set ts=2 sw=2 et:
+md5sums=('6c5d4276dae0ff4b025e49fa8532369f')
