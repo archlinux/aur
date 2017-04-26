@@ -2,9 +2,9 @@
 
 pkgname=intellij-idea-ce
 _pkgname=idea-IC
-_buildver=171.4073.35
+_buildver=171.4249.39
 _veryear=2017
-_verrelease=1.1
+_verrelease=1.2
 pkgver=${_veryear}.${_verrelease}
 pkgrel=2
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
