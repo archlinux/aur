@@ -1,13 +1,13 @@
 pkgbase = anki
 	pkgdesc = Friendly, intelligent flash cards
 	pkgver = 2.1.0a13
-	pkgrel = 5
+	pkgrel = 6
 	url = https://ankisrs.net/
 	arch = any
 	license = AGPL3
 	checkdepends = python-nose
 	checkdepends = python-coverage
-	checkdepends = texlive-bin
+	checkdepends = texlive-core
 	depends = python-pyqt5
 	depends = python-pyaudio
 	depends = python-requests
@@ -17,7 +17,7 @@ pkgbase = anki
 	depends = qt5-webengine
 	optdepends = lame: record sound
 	optdepends = mplayer: play sound
-	optdepends = texlive-bin: add mathematical markup to notes
+	optdepends = texlive-core: use latex markup
 	source = https://apps.ankiweb.net/downloads/alpha/alpha13/anki-2.1.0a13-source.tgz
 	sha512sums = 5a6055f3cf08a19a86843068135ea7034ee28bebb4c71453033c7e9a8f7e8e0281f4faca14f61debd16f0faad2cf6ba8c420a12d207ae380bfc3f282d9a2b0ba
 
