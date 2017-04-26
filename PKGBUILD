@@ -12,8 +12,10 @@ url="http://fcitx-im.org"
 license=('GPL' 'LGPL')
 makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant' 'python2')
-source=("http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz")
-sha512sums=('5d3b669ed97423f976116385571d07f832e9e18007e6a3c2aef12957219739a81fbf2343825fea4a1b01a83a6bf9e40e9ffa88466c651876602517c6da1fb25d')
+source=("https://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz"{,.sig})
+sha512sums=('5d3b669ed97423f976116385571d07f832e9e18007e6a3c2aef12957219739a81fbf2343825fea4a1b01a83a6bf9e40e9ffa88466c651876602517c6da1fb25d'
+            'SKIP')
+validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
 
 prepare() {
   mkdir build
