@@ -1,5 +1,6 @@
 *.gz
 *.xz
 *.zip
+*.diff
 /pkg
 /src
