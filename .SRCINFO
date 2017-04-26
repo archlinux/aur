@@ -1,12 +1,14 @@
 pkgbase = proxmox-dab-git
 	pkgdesc = Debian Appliance Builder - A tool to create OpenVZ and LXC Debian instances for Proxmox
 	pkgver = r47.0580010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.proxmox.com/?p=dab.git;a=summary
 	arch = any
 	license = GPL2
 	depends = perl
 	depends = perl-uuid
+	depends = wget
+	depends = lxc
 	provides = proxmox-dab
 	conflicts = proxmox-dab
 	options = !emptydirs
