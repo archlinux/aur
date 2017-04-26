@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-accountsservice-git
-pkgver=20170425.32acabd
+pkgver=20170426.b8be73d
 pkgrel=1
 pkgdesc="Qt-style wrapper for Accounts Service"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -32,9 +32,7 @@ prepare() {
 
 build() {
 	cd build
-	qmake \
-		CONFIG+=use_qt_paths \
-		../${_gitname}/qtaccountsservice.pro
+	qmake LIRI_INSTALL_PREFIX=/usr CONFIG+=use_qt_paths ../${_gitname}/qtaccountsservice.pro
 	make
 }
 
