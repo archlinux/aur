@@ -1,9 +1,9 @@
 # Maintainer: Tobias Brunner <tobias@tobru.ch>
 
 _npmname=cloudron
-_npmver=0.41.1
+_npmver=0.42.0
 pkgname=cloudron-cli # All lowercase
-pkgver=0.41.1
+pkgver=0.42.0
 pkgrel=1
 pkgdesc="Cloudron Commandline Tool"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(7dda00d91a13915e43a1cc1d4453a7bf17750020)
+sha1sums=(0b7d163f0b1d2577b41ad4b230bd88651796bf74)
 
 package() {
   cd $srcdir
