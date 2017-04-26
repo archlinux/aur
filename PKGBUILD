@@ -3,7 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=5.1.18
+pkgver=5.1.20
+_tarver=${pkgver}a
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
@@ -22,7 +23,7 @@ provides=("virtualbox=${pkgver}")
 replaces=('virtualbox-ose' 'virtualbox')
 conflicts=('virtualbox-ose' 'virtualbox')
 install=virtualbox.install
-source=("http://download.virtualbox.org/virtualbox/$pkgver/VirtualBox-$pkgver.tar.bz2"
+source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarver}.tar.bz2"
         'virtualbox.sysusers'
         '60-vboxdrv.rules'
         '60-vboxguest.rules'
@@ -38,7 +39,7 @@ source=("http://download.virtualbox.org/virtualbox/$pkgver/VirtualBox-$pkgver.ta
         '007-python2-path.patch'
         '008-no-vboxvideo.patch'
         )
-sha256sums=('7ed0959bbbd02826b86b3d5dc8348931ddfab267c31f8ed36ee53c12f5522cd9'
+sha256sums=('d264e8b62fa2e220383b0eb5db0b73b5d7055a2329e2e2416d5d4cc231bb769e'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
             '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
