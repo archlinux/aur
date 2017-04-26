@@ -2,14 +2,13 @@
 
 pkgname=gtk-theme-minwaita
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tweaked, more compact version of Adwaita."
 arch=(any)
 url="https://github.com/godlyranchdressing/Minwaita"
 license=('GPL')
-depends=('')
 source=("https://github.com/godlyranchdressing/Minwaita/raw/master/Minwaita-Latest.tar.gz")
-sha256sums=('9e80254eabdaf2b5ebefd0c171c27f6a06ee91e8902fe1aaf73f4ead8a04fc91')
+sha256sums=('c88250255fda4a0224e3a4dd5b427333ef64fa8a63549628110b6de1d7e3df46')
 
 package() {
   install -dm755 "$pkgdir/usr/share/themes"
