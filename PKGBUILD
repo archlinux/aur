@@ -9,7 +9,7 @@ pkgdesc="Music management and playback for GNOME"
 arch=('i686' 'x86_64')
 url="http://banshee.fm/"
 license=('MIT')
-depends=(libxxf86vm gst-plugins-base-libs mono-addins dbus-sharp-glib webkitgtk2 libsoup-gnome gdata-sharp taglib-sharp-git gudev-sharp gkeyfile-sharp gconf-sharp libmtp libgpod mono-zeroconf hicolor-icon-theme media-player-info gst-plugins-bad mono-upnp gst-plugins-good gvfs)
+depends=(libxxf86vm gst-plugins-base-libs mono-addins dbus-sharp-glib webkitgtk2 libsoup gdata-sharp taglib-sharp-git gudev-sharp gkeyfile-sharp gconf-sharp libmtp libgpod mono-zeroconf hicolor-icon-theme media-player-info gst-plugins-bad mono-upnp gst-plugins-good gvfs)
 makedepends=('intltool' 'gnome-doc-utils' 'gtk-sharp-beans' 'gnome-common')
 optdepends=('gst-plugins-ugly: Extra media codecs'
             'gst-libav: Extra media codecs'
