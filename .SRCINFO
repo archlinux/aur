@@ -1,0 +1,453 @@
+pkgbase = waterfox-slim-i18n
+	pkgdesc = Language pack for Waterfox
+	pkgver = 53.0
+	pkgrel = 1
+	url = http://waterfoxproject.org/
+	arch = x86_64
+	license = MPL-2.0
+	noextract = waterfox-slim-i18n-53.0-ach.xpi
+	noextract = waterfox-slim-i18n-53.0-af.xpi
+	noextract = waterfox-slim-i18n-53.0-an.xpi
+	noextract = waterfox-slim-i18n-53.0-ar.xpi
+	noextract = waterfox-slim-i18n-53.0-as.xpi
+	noextract = waterfox-slim-i18n-53.0-ast.xpi
+	noextract = waterfox-slim-i18n-53.0-az.xpi
+	noextract = waterfox-slim-i18n-53.0-bg.xpi
+	noextract = waterfox-slim-i18n-53.0-bn-BD.xpi
+	noextract = waterfox-slim-i18n-53.0-bn-IN.xpi
+	noextract = waterfox-slim-i18n-53.0-br.xpi
+	noextract = waterfox-slim-i18n-53.0-bs.xpi
+	noextract = waterfox-slim-i18n-53.0-ca.xpi
+	noextract = waterfox-slim-i18n-53.0-cak.xpi
+	noextract = waterfox-slim-i18n-53.0-cs.xpi
+	noextract = waterfox-slim-i18n-53.0-cy.xpi
+	noextract = waterfox-slim-i18n-53.0-da.xpi
+	noextract = waterfox-slim-i18n-53.0-de.xpi
+	noextract = waterfox-slim-i18n-53.0-dsb.xpi
+	noextract = waterfox-slim-i18n-53.0-el.xpi
+	noextract = waterfox-slim-i18n-53.0-en-GB.xpi
+	noextract = waterfox-slim-i18n-53.0-en-ZA.xpi
+	noextract = waterfox-slim-i18n-53.0-eo.xpi
+	noextract = waterfox-slim-i18n-53.0-es-AR.xpi
+	noextract = waterfox-slim-i18n-53.0-es-CL.xpi
+	noextract = waterfox-slim-i18n-53.0-es-ES.xpi
+	noextract = waterfox-slim-i18n-53.0-es-MX.xpi
+	noextract = waterfox-slim-i18n-53.0-et.xpi
+	noextract = waterfox-slim-i18n-53.0-eu.xpi
+	noextract = waterfox-slim-i18n-53.0-fa.xpi
+	noextract = waterfox-slim-i18n-53.0-ff.xpi
+	noextract = waterfox-slim-i18n-53.0-fi.xpi
+	noextract = waterfox-slim-i18n-53.0-fr.xpi
+	noextract = waterfox-slim-i18n-53.0-fy-NL.xpi
+	noextract = waterfox-slim-i18n-53.0-ga-IE.xpi
+	noextract = waterfox-slim-i18n-53.0-gd.xpi
+	noextract = waterfox-slim-i18n-53.0-gl.xpi
+	noextract = waterfox-slim-i18n-53.0-gn.xpi
+	noextract = waterfox-slim-i18n-53.0-gu-IN.xpi
+	noextract = waterfox-slim-i18n-53.0-he.xpi
+	noextract = waterfox-slim-i18n-53.0-hi-IN.xpi
+	noextract = waterfox-slim-i18n-53.0-hr.xpi
+	noextract = waterfox-slim-i18n-53.0-hsb.xpi
+	noextract = waterfox-slim-i18n-53.0-hu.xpi
+	noextract = waterfox-slim-i18n-53.0-hy-AM.xpi
+	noextract = waterfox-slim-i18n-53.0-id.xpi
+	noextract = waterfox-slim-i18n-53.0-is.xpi
+	noextract = waterfox-slim-i18n-53.0-it.xpi
+	noextract = waterfox-slim-i18n-53.0-ja.xpi
+	noextract = waterfox-slim-i18n-53.0-kk.xpi
+	noextract = waterfox-slim-i18n-53.0-km.xpi
+	noextract = waterfox-slim-i18n-53.0-kn.xpi
+	noextract = waterfox-slim-i18n-53.0-ko.xpi
+	noextract = waterfox-slim-i18n-53.0-lij.xpi
+	noextract = waterfox-slim-i18n-53.0-lt.xpi
+	noextract = waterfox-slim-i18n-53.0-lv.xpi
+	noextract = waterfox-slim-i18n-53.0-mai.xpi
+	noextract = waterfox-slim-i18n-53.0-mk.xpi
+	noextract = waterfox-slim-i18n-53.0-ml.xpi
+	noextract = waterfox-slim-i18n-53.0-mr.xpi
+	noextract = waterfox-slim-i18n-53.0-ms.xpi
+	noextract = waterfox-slim-i18n-53.0-nb-NO.xpi
+	noextract = waterfox-slim-i18n-53.0-nl.xpi
+	noextract = waterfox-slim-i18n-53.0-nn-NO.xpi
+	noextract = waterfox-slim-i18n-53.0-or.xpi
+	noextract = waterfox-slim-i18n-53.0-pa-IN.xpi
+	noextract = waterfox-slim-i18n-53.0-pl.xpi
+	noextract = waterfox-slim-i18n-53.0-pt-BR.xpi
+	noextract = waterfox-slim-i18n-53.0-pt-PT.xpi
+	noextract = waterfox-slim-i18n-53.0-rm.xpi
+	noextract = waterfox-slim-i18n-53.0-ro.xpi
+	noextract = waterfox-slim-i18n-53.0-ru.xpi
+	noextract = waterfox-slim-i18n-53.0-si.xpi
+	noextract = waterfox-slim-i18n-53.0-sk.xpi
+	noextract = waterfox-slim-i18n-53.0-sl.xpi
+	noextract = waterfox-slim-i18n-53.0-son.xpi
+	noextract = waterfox-slim-i18n-53.0-sq.xpi
+	noextract = waterfox-slim-i18n-53.0-sr.xpi
+	noextract = waterfox-slim-i18n-53.0-sv-SE.xpi
+	noextract = waterfox-slim-i18n-53.0-ta.xpi
+	noextract = waterfox-slim-i18n-53.0-te.xpi
+	noextract = waterfox-slim-i18n-53.0-th.xpi
+	noextract = waterfox-slim-i18n-53.0-tr.xpi
+	noextract = waterfox-slim-i18n-53.0-uk.xpi
+	noextract = waterfox-slim-i18n-53.0-uz.xpi
+	noextract = waterfox-slim-i18n-53.0-vi.xpi
+	noextract = waterfox-slim-i18n-53.0-xh.xpi
+	noextract = waterfox-slim-i18n-53.0-zh-CN.xpi
+	noextract = waterfox-slim-i18n-53.0-zh-TW.xpi
+	source = waterfox-slim-i18n-53.0-ach.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ach@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-af.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-af@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-an.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-an@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ar.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ar@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-as.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-as@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ast.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ast@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-az.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-az@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-bg.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-bg@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-bn-BD.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-bn-BD@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-bn-IN.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-bn-IN@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-br.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-br@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-bs.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-bs@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ca.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ca@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-cak.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-cak@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-cs.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-cs@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-cy.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-cy@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-da.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-da@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-de.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-de@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-dsb.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-dsb@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-el.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-el@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-en-GB.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-en-GB@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-en-ZA.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-en-ZA@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-eo.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-eo@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-es-AR.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-es-AR@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-es-CL.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-es-CL@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-es-ES.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-es-ES@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-es-MX.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-es-MX@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-et.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-et@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-eu.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-eu@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-fa.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-fa@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ff.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ff@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-fi.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-fi@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-fr.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-fr@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-fy-NL.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-fy-NL@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ga-IE.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ga-IE@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-gd.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-gd@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-gl.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-gl@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-gn.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-gn@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-gu-IN.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-gu-IN@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-he.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-he@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-hi-IN.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-hi-IN@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-hr.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-hr@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-hsb.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-hsb@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-hu.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-hu@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-hy-AM.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-hy-AM@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-id.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-id@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-is.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-is@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-it.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-it@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ja.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ja@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-kk.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-kk@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-km.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-km@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-kn.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-kn@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ko.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ko@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-lij.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-lij@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-lt.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-lt@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-lv.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-lv@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-mai.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-mai@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-mk.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-mk@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ml.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ml@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-mr.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-mr@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ms.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ms@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-nb-NO.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-nb-NO@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-nl.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-nl@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-nn-NO.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-nn-NO@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-or.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-or@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-pa-IN.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-pa-IN@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-pl.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-pl@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-pt-BR.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-pt-BR@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-pt-PT.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-pt-PT@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-rm.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-rm@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ro.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ro@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ru.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ru@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-si.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-si@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-sk.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-sk@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-sl.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-sl@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-son.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-son@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-sq.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-sq@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-sr.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-sr@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-sv-SE.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-sv-SE@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-ta.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-ta@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-te.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-te@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-th.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-th@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-tr.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-tr@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-uk.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-uk@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-uz.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-uz@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-vi.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-vi@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-xh.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-xh@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-zh-CN.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-zh-CN@firefox.mozilla.org.xpi
+	source = waterfox-slim-i18n-53.0-zh-TW.xpi::https://github.com/hawkeye116477/Waterfox/raw/53.0/browser/extensions/langpack-zh-TW@firefox.mozilla.org.xpi
+	sha256sums = 645073b3ff27b34c60671b5ecd5ffa5eec2cecbb4b345c15d8e70847be7ce10e
+	sha256sums = 4b07e56e5b3545e2441a851791812b06137dc97540d279e9632d1892e690f30c
+	sha256sums = 774acbfc79630ae9d2300a6c1ade171f2fd65d3bc379c63419bb0b7bcc6c3fe7
+	sha256sums = ac934e39cc3e4eff4149423104704f3f2524470ffadbca9066a9b0d4788e3172
+	sha256sums = 2d669fe3f574eef27d7b2cc8f116847693dce567a01676609a10e05f382999be
+	sha256sums = cde3da072b3abb4f246e44f4306009591bb43f75818dd36161d5f96b916b7fa2
+	sha256sums = 59541f66dbeaa47e25d2847c3727606cdcfc8f6d3ed5232c866d3c1e4fba3208
+	sha256sums = eabd71d29f686d2858ebcae4e2d167ef12dac5eab72b110d62bdd2e44d2f151c
+	sha256sums = ab8d44d4ac94ad2075ea1de2d0ff4aa8708b5f4ef0792491d7291643e0273bf4
+	sha256sums = 2a9740ead92dfad915b78691a4a6628f078eeb9a10b78bc9dfd28731b91235cf
+	sha256sums = 712fdf409ead6c5a792f49d7588bb2494faf4a5bdb3eb8643712664d7650e486
+	sha256sums = 41cc549c6d8be0ab4a61af87632d54308f21e4eb34368e14f39b571e96e8b28a
+	sha256sums = 80e1bf8710c28ae60891ffa2e8f1f8400e736a84e4b7908303f91aa3773e6bd3
+	sha256sums = 62ff63c8bf165b3304dc7e3e2953c25ae905727a4dbea26ea1513f77cdba4fd6
+	sha256sums = 129cdfe8a51c06d6343c4acd967452fb4d3b822ba882160b6a6ad36708942d3e
+	sha256sums = e074f1e47793468b0b6a9a5cd931a676e8773b80f700b9e1300b4ecc50ca71d8
+	sha256sums = 3a9ae507ac8394d8d55311ac3007d10157523ef49e8f7081eba773edda7ce25a
+	sha256sums = 9df592b77bd932afe8de24dd24d13c2d2f517ea7fb47cf518c23c2e5864f207b
+	sha256sums = 410171bec58eaf1a295366930ba0d3e4649d4425542b64b7118637a46cf8999b
+	sha256sums = dd94edc6a5ee10fac001e1ca2c64134b0f83df6bc8d9f49b3ecac5d3adcb3ad6
+	sha256sums = 20c7f727e7e661c4964c757660b336a6e0013d6f60306d64ee677edad3801364
+	sha256sums = 9208e557dbcb8dc457053a4ef1221846d497a81690b5b3bef7464a14a8f21ec9
+	sha256sums = fdd284b9e2e3edbf29f8fb8ca5c6ad843a135f514b5817f45cc2813a58f920a0
+	sha256sums = ebc7da5ea5abd4c6187e8f842d5570a034eb09a65128fc9c206cc1df1f09628b
+	sha256sums = 23cd472db9d5ebddaf11bfee3910c0eb3816d065afad6711db9d01b07a30eef6
+	sha256sums = fd529bc366f70e5cf167185da9451d9dc3572cfff95238a25ca38b00bcf57278
+	sha256sums = 2600bd56beb3959a1834eddb3fc7374f889c51c7dba553870af3a94cde7268d1
+	sha256sums = 0e91f2e387a26f5bf20b00dd1d5a1572f7febe51702e9239e6aaa98e19e7c8c4
+	sha256sums = 0f895bf5e56b53c649cdfb464637a8a78209691df478fba436a4f529df82132b
+	sha256sums = 574052d6db31a3131ffe6b94b7d02f92e80ced867a7691406dbe3f7f15b2ff08
+	sha256sums = aecae3b0989c7203bb41de98b41a56fd909cd5c1d974fc4fdcb2d914ade57ac6
+	sha256sums = df05cff178aef6a93d93603d67769598696f60e235d17d60972d4772aac31497
+	sha256sums = 98b16a740ae9397328c3b3d809d1011056caa70e703e2be5687ba5af3341dd1f
+	sha256sums = 9da1ceb85e85af0de37d53984537225b11e92351f1067168469aa212620fab7c
+	sha256sums = f4a27f0cf8d712a65f1641883347914f074286bcf3796feba7dc1cec2135e3f6
+	sha256sums = 2c3dc47110a838fd29507072eefc98b031a44e60c641ba2c5aa26e589fa03cb2
+	sha256sums = 68b0848a0dbebf5b5abbded39b2cceae3cb1c0c4d3cfbcea3b8135dab3616c5c
+	sha256sums = 59166e09e0b8611ec50055fbe4de8a9f8441eca5cdc16da45f7d18c4b7e8ee87
+	sha256sums = b27e92a7b92279cb397b92085d0c268a0c6825f8cdd105100fae8a3531ce44ab
+	sha256sums = d600d66d0df881f013e2b21c82e28553511b3c1d2b80c060e5e1993e411a4856
+	sha256sums = 92b863269d261cd02cd9258bea1d6b97caf201b700a48ca173080e48004f2bf5
+	sha256sums = 0fc7043d6e00a4ca18e20795e6ac5486e16e88bc823bd1ffaff13a1e026bbf06
+	sha256sums = 2b53b95e9725e4ff0390a43cea3354802a21fbdb33eb090ac3fe7f87d24c6f9d
+	sha256sums = 4f0da915446bf0046b8205d0a4b45ded1fcf00fa047a78fe13a0ca354c24d2e4
+	sha256sums = 9a94f34cc5d3db913e5df124fbc57c13074f9e385c491afc94d88394072c8795
+	sha256sums = f0bea100c24c27318f10914c2318fe6cb1b8cce492aa8116a124a0ce1abb85b6
+	sha256sums = 2bb5c6538e59648a74749e787addf38f6cd4fdc669d95022f13c90028adc95b6
+	sha256sums = 64f9a5303ad9058371825f2e76a6c0274796bd18dfd162bed86bdd59a0f7f37b
+	sha256sums = ad69cbfe5fd6024c06ddaba8644bc3ba27b8cabe1c80b455ea141a243f87602f
+	sha256sums = 7700bb9e8bc3e4c41c1238fe430da27ec1fc17f78c57e928e51b49f92b55e8fd
+	sha256sums = 93cd0bc6dcb15800a76b1d8d378543f4947ac2be85e7f1c5f284e22f592d5d5d
+	sha256sums = e07e5605393f265369990008874ff18cdb5603a6eacbecee9d35c1ef48a37263
+	sha256sums = a776bf47add2985c7390b2a05edb18bd743600cb121af2027555db69c7cf00ca
+	sha256sums = 2c9304947b1b7e6a218c592643209ab43950933a330e504715a7a01a3c1af5b4
+	sha256sums = ddfb87beaec0e8e88c27aaccf30c98e2914b51fb7e76d90d4d5c2d1dba2f94ca
+	sha256sums = 1b58d8f3aa2e18ade89bc6b15f62920cf8f2f5e6df4ee58dd10fb3d0a98e49fc
+	sha256sums = 25f2ae037317d3fa64d0400ada2edd7df73330e77a4ed4eede978b63df34a47f
+	sha256sums = 23f5264c78154162c37fa3790346c0e3b8593e009a339c9deb52368c914c9a2d
+	sha256sums = 631d6e7b3d99d562e2fc3fbfaed66759fc0bfaebe9d99a0d726e5c4c2dd4f59d
+	sha256sums = 5db36a21c1583c120328e05879be6a9a21d49e1ba410b5c577e1c3a05a240e4d
+	sha256sums = b07b30941d07cebed79913ea24721c9cc2f08617ce4557b517490792bbbbb9c4
+	sha256sums = b30f699f62d271b14ea6ca676e00607ba5bfdb64338490bd9e314ad6523f9033
+	sha256sums = a142bb4185bc4c564bde003e316064e0589a2a79ef5e1833810ba95f4201b4f1
+	sha256sums = fd5df447b8a24e893b3c63a75905870337177ffd7eb9f82021c197f0ea759518
+	sha256sums = 55e7bcf7dbe476c65d127a41dc190150bdac566f6951930e76686a25a23bf7a7
+	sha256sums = 6f6e51ceb9b4169aa576b58c7884dccfd002da00ce30cac6751b5ddde08eb498
+	sha256sums = 0d5ad5dffed1eccb9a7a5ccce082f56373b137d8e2c3fea5677de3990184b017
+	sha256sums = 6f1ff492ef42484e2e74ec6cd2029a8ec894d9a13637d052a0e950625d908e57
+	sha256sums = bfba96b2bb2ac8dfb81e4abaf7158f569af68472343c83db10fca71ed5d1daae
+	sha256sums = 7503df41a1f9dc6841e8ae468438ab9066e87f963861ffa47f870592721193de
+	sha256sums = b3be94891381f5e48204bb698231dec529e3aa7f515ca4dfb3af5b7a694dcdd3
+	sha256sums = 1b16e78887c7cc62e6f30da016c63b3fdede9fd2085eae50d1725067de7834b4
+	sha256sums = 9a63845baea6ca6f7bae132d78587868465a1945e183c6aab632a5fc705a1299
+	sha256sums = cfdf87304dadd23097c8c6cf88b929ee9b5fcf3b64ea7015df01229a52273bfd
+	sha256sums = 00c024bf8acbdf5f9974e4f666d16401738a2bab8b6c65b70fcfc3fcb0a97b5b
+	sha256sums = a67e34c5d405932a46626a6671b9c9a0a7df75b0d814ad5c9ad4463c50ccd8ed
+	sha256sums = a4271793ecc017df8f93604b4231c72a3600a7e91ed00c16fea00e804e06dd81
+	sha256sums = 84909e46e576bb903d9dcb77ca0223f26b7aa405f197d8b1536be67d84f82433
+	sha256sums = 0fa0ff9d518d05e8f7d3c591f5e4c98a908d36a3d9db613dbe9e091e06f789cd
+	sha256sums = ea5114882f9f24093ba7a2a9e815a1ce4a886a882a2b95950071308d207c5a24
+	sha256sums = 448b13d0b677e2d9b695ef50cbe72558233d63813c02c60ecb2ef5d8e888f173
+	sha256sums = d8b270dc1b06cc3f396068572bffb197af89a635926801bc1e066ff47de60668
+	sha256sums = d23d950ef61da20995e7f6dbe7bfeb65de7fefe6b261fe0f516c808ea43a9d6e
+	sha256sums = d18b345ea8805b0605ce631410963c6cc172e50421b0356e21997c40a510f266
+	sha256sums = d405248fce701be930a02ea22147441574ad53e2e7f231d6522e27c6ab103a9f
+	sha256sums = 389fbc32cbb2297407c6fe6e226dadc4d01e69c62adcd134155f558c60b74da3
+	sha256sums = fa02a1e1debb09036e905b4b868ee8186b54eb31811d045ad91d58a50a3fc1db
+	sha256sums = b86334c24f075115c5139ee65cb8b64132b63beba3d91a208e628ac099889df1
+	sha256sums = 40946f250cf0f31772e1d9232f80f80c9825814ec36f261738651893891c6e9d
+
+pkgname = waterfox-slim-i18n-ach
+
+pkgname = waterfox-slim-i18n-af
+
+pkgname = waterfox-slim-i18n-an
+
+pkgname = waterfox-slim-i18n-ar
+
+pkgname = waterfox-slim-i18n-as
+
+pkgname = waterfox-slim-i18n-ast
+
+pkgname = waterfox-slim-i18n-az
+
+pkgname = waterfox-slim-i18n-bg
+
+pkgname = waterfox-slim-i18n-bn-bd
+
+pkgname = waterfox-slim-i18n-bn-in
+
+pkgname = waterfox-slim-i18n-br
+
+pkgname = waterfox-slim-i18n-bs
+
+pkgname = waterfox-slim-i18n-ca
+
+pkgname = waterfox-slim-i18n-cak
+
+pkgname = waterfox-slim-i18n-cs
+
+pkgname = waterfox-slim-i18n-cy
+
+pkgname = waterfox-slim-i18n-da
+
+pkgname = waterfox-slim-i18n-de
+
+pkgname = waterfox-slim-i18n-dsb
+
+pkgname = waterfox-slim-i18n-el
+
+pkgname = waterfox-slim-i18n-en-gb
+
+pkgname = waterfox-slim-i18n-en-za
+
+pkgname = waterfox-slim-i18n-eo
+
+pkgname = waterfox-slim-i18n-es-ar
+
+pkgname = waterfox-slim-i18n-es-cl
+
+pkgname = waterfox-slim-i18n-es-es
+
+pkgname = waterfox-slim-i18n-es-mx
+
+pkgname = waterfox-slim-i18n-et
+
+pkgname = waterfox-slim-i18n-eu
+
+pkgname = waterfox-slim-i18n-fa
+
+pkgname = waterfox-slim-i18n-ff
+
+pkgname = waterfox-slim-i18n-fi
+
+pkgname = waterfox-slim-i18n-fr
+
+pkgname = waterfox-slim-i18n-fy-nl
+
+pkgname = waterfox-slim-i18n-ga-ie
+
+pkgname = waterfox-slim-i18n-gd
+
+pkgname = waterfox-slim-i18n-gl
+
+pkgname = waterfox-slim-i18n-gn
+
+pkgname = waterfox-slim-i18n-gu-in
+
+pkgname = waterfox-slim-i18n-he
+
+pkgname = waterfox-slim-i18n-hi-in
+
+pkgname = waterfox-slim-i18n-hr
+
+pkgname = waterfox-slim-i18n-hsb
+
+pkgname = waterfox-slim-i18n-hu
+
+pkgname = waterfox-slim-i18n-hy-am
+
+pkgname = waterfox-slim-i18n-id
+
+pkgname = waterfox-slim-i18n-is
+
+pkgname = waterfox-slim-i18n-it
+
+pkgname = waterfox-slim-i18n-ja
+
+pkgname = waterfox-slim-i18n-kk
+
+pkgname = waterfox-slim-i18n-km
+
+pkgname = waterfox-slim-i18n-kn
+
+pkgname = waterfox-slim-i18n-ko
+
+pkgname = waterfox-slim-i18n-lij
+
+pkgname = waterfox-slim-i18n-lt
+
+pkgname = waterfox-slim-i18n-lv
+
+pkgname = waterfox-slim-i18n-mai
+
+pkgname = waterfox-slim-i18n-mk
+
+pkgname = waterfox-slim-i18n-ml
+
+pkgname = waterfox-slim-i18n-mr
+
+pkgname = waterfox-slim-i18n-ms
+
+pkgname = waterfox-slim-i18n-nb-no
+
+pkgname = waterfox-slim-i18n-nl
+
+pkgname = waterfox-slim-i18n-nn-no
+
+pkgname = waterfox-slim-i18n-or
+
+pkgname = waterfox-slim-i18n-pa-in
+
+pkgname = waterfox-slim-i18n-pl
+
+pkgname = waterfox-slim-i18n-pt-br
+
+pkgname = waterfox-slim-i18n-pt-pt
+
+pkgname = waterfox-slim-i18n-rm
+
+pkgname = waterfox-slim-i18n-ro
+
+pkgname = waterfox-slim-i18n-ru
+
+pkgname = waterfox-slim-i18n-si
+
+pkgname = waterfox-slim-i18n-sk
+
+pkgname = waterfox-slim-i18n-sl
+
+pkgname = waterfox-slim-i18n-son
+
+pkgname = waterfox-slim-i18n-sq
+
+pkgname = waterfox-slim-i18n-sr
+
+pkgname = waterfox-slim-i18n-sv-se
+
+pkgname = waterfox-slim-i18n-ta
+
+pkgname = waterfox-slim-i18n-te
+
+pkgname = waterfox-slim-i18n-th
+
+pkgname = waterfox-slim-i18n-tr
+
+pkgname = waterfox-slim-i18n-uk
+
+pkgname = waterfox-slim-i18n-uz
+
+pkgname = waterfox-slim-i18n-vi
+
+pkgname = waterfox-slim-i18n-xh
+
+pkgname = waterfox-slim-i18n-zh-cn
+
+pkgname = waterfox-slim-i18n-zh-tw
+
