@@ -8,10 +8,9 @@ pkgdesc='A Sony PlayStation emulator based on the PCSX-df Project'
 arch=('i686' 'x86_64')
 url='http://pcsxr.codeplex.com/'
 license=('GPL')
-depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgl' 'libpulse' 'libx11'
-         'libxext' 'libxtst' 'libxv' 'libxxf86vm' 'sdl2' 'zlib'
-         'libarchive.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
-         'libm.so' 'libswresample.so')
+depends=('ffmpeg' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libarchive' 'libcdio'
+         'libgl' 'libpulse' 'libx11' 'libxext' 'libxtst' 'libxv' 'libxxf86vm'
+         'sdl2' 'zlib')
 makedepends=('cmake' 'git' 'intltool' 'mesa')
 [[ $CARCH == i686 ]] && makedepends+=('nasm')
 provides=('pcsxr')
