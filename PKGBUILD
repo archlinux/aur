@@ -1,17 +1,17 @@
 pkgname=nodejs-lts-argon
-pkgver=4.8.1
+pkgver=4.8.2
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript (LTS release: Argon)'
 arch=('any')
 url='https://nodejs.org/'
 license=('MIT')
-depends=('openssl' 'zlib' 'icu') # 'libuv' 'v8' 'c-ares')
+depends=('openssl-1.0' 'zlib' 'icu') # 'libuv' 'v8' 'c-ares')
 makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
 source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.xz")
-sha256sums=('bae63f7fb43890047e3d9b0d5d51b839302890f12fec4af233030427afa78a4d')
+sha256sums=('b961350b8490c791bdd3663925662ba0fbe01e004b43f1c2779baffcc816b930')
 
 prepare() {
   cd node-v$pkgver
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd node-v$pkgver
-
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   export PYTHON=python2
   ./configure \
     --prefix=/usr \
