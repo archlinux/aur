@@ -9,8 +9,10 @@ url="https://github.com/jopohl/urh"
 depends=('python>=3.4' 'python-pyqt5' 'python-numpy' 'python-psutil' 'python-pyzmq')
 makedepends=('gcc' 'python-setuptools')
 optdepends=(
+  'airspy: for native airspy backend'
   'hackrf: for native hackrf backend'
   'rtl-sdr: for native RTL-SDR backend'
+  'rfcat-hg: for rfcat plugin'
   'gnuradio: for USRP gnuradio backend'
   'gnuradio-osmosdr: for more gnuradio device backends (HackRF, FunCubeDongle, RTL-SDR)'
 )
