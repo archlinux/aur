@@ -2,7 +2,7 @@
 # Sun Mar  6 10:45:08 UTC 2016
 pkgbase = agedu
 	pkgdesc = Track down wasted disk space
-	pkgver = 20160302
+	pkgver = 20160920
 	pkgrel = 1
 	url = http://www.chiark.greenend.org.uk/~sgtatham/agedu/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = agedu
 	license = MIT
 	depends = glibc
 	source = http://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20160302.a05fca7.tar.gz
-	md5sums = SKIP
+	md5sums = 678f47a7f15357cb8c4c8550ca6416a0
 
 pkgname = agedu
 
