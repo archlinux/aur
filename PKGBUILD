@@ -1,8 +1,8 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public@gmail.com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=nufraw
 pkgver=0.39
-pkgrel=1
+pkgrel=2
 pkgdesc='A new version of the popular raw digital images manipulator ufraw.'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/nufraw'
@@ -17,7 +17,7 @@ nufraw.desktop
 )
 noextract=($pkgname-$pkgver.tar.gz)
 sha512sums=('43a82d5706ddce58d3499c4206955be4afb829c39701dd4d73150d7da51d34b2a9534eefc2ee627df71c85592275c417000725c6779fb109fe3826c851f1334d'
-            'ccd6318b5d731e60aef35505e2ce01dfc9469d46b8f14577f4fab722cb1fed0f408a3513ba3432ebb8938c9a1647320b4f6accbd1c30002865daac84f6578bbf')
+            'd906c384fe19ebda8e0e8a9207b193f2ca20fa5ef13ba70f6ecf4019babea6f20dbf3249bb766dd21db450db04bd6a41a8bbccb168ddb3a419cc6c27cd627688')
 prepare(){
   cd "$srcdir"
   tar zxf $pkgname-$pkgver.tar.gz \
