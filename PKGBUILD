@@ -9,8 +9,8 @@
 # Contributor: evr <evanroman at gmail>
 
 pkgname=agedu
-pkgver=20160302
-_pkghash=a05fca7
+pkgver=20160920
+_pkghash=853cea9
 pkgrel=1
 pkgdesc="Track down wasted disk space"
 arch=('i686' 'x86_64')
@@ -18,9 +18,7 @@ url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
 license=('MIT')
 depends=('glibc')
 source=("http://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.$_pkghash.tar.gz")
-# SKIP because the upstream server changes the file all the time.
-# That is a very strange behaviour... but I can't find anything suspect
-md5sums=('SKIP')
+md5sums=('678f47a7f15357cb8c4c8550ca6416a0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver.$_pkghash"
