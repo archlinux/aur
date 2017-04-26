@@ -3,8 +3,8 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=nrpe
-pkgver=3.0.1
-pkgrel=4
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,18 +13,8 @@ optdepends=("monitoring-plugins: common tools for monitoring using $pkgname")
 install=$pkgname.install
 backup=('etc/nrpe/nrpe.cfg' 'etc/xinetd.d/nrpe')
 url="https://github.com/NagiosEnterprises/nrpe"
-source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgver/$pkgname-$pkgver.tar.gz
-        nrpe-0010-opensslv110-strict.patch
-        nrpe-0011-opensslv110-nosslv2.patch)
-sha256sums=('8f56da2d74f6beca1a04fe04ead84427e582b9bb88611e04e290f59617ca3ea3'
-            '58ca691a11f5005631f4e940daa18c344b3d2f322184506d63cc1eb2633d30a3'
-            'e4383c8261b7097a46d8fe54c97391767a4ef0107d551f55d71940469f5e433f')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i ../nrpe-0010-opensslv110-strict.patch
-  patch -Np1 -i ../nrpe-0011-opensslv110-nosslv2.patch
-}
+source=(https://github.com/NagiosEnterprises/nrpe/releases/download/release-$pkgver/$pkgname-$pkgver.tar.gz)
+md5sums=('ad9208ef4938449986cb5c5ba094598e')
 
 build() {
   cd $pkgname-$pkgver
