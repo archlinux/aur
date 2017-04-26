@@ -12,8 +12,8 @@ _upstream="compiz"
 
 pkgbase=compiz-core-git
 pkgname=(compiz-core-git compiz-gtk-git)
-pkgver=0.8.12.3.r84.g20335d7d
-pkgrel=2
+pkgver=0.8.14.r3.gd9f455d4
+pkgrel=1
 pkgdesc="This is the latest git release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL' 'LGPL' 'MIT')
@@ -21,7 +21,6 @@ arch=('i686' 'x86_64')
 depends=('startup-notification' 'librsvg' 'dbus' 'glu' 'libxslt' 'libxrandr' 'libsm' 'libxcomposite' 'libxinerama')
 makedepends=('intltool' 'libice')
 options=(!libtool !emptydirs)
-provides=("compiz-core=$pkgver")
 source=(
 	"git+https://github.com/compiz-reloaded/${_upstream}.git"
 )
