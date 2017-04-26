@@ -12,8 +12,9 @@ arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
 depends=('vte3-notification' 'gsettings-desktop-schemas' 'dconf' 'gtk3' 'glib2')
-makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils'
-             'libnautilus-extension' 'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
+makedepends=('pkg-config' 'gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 
+             'desktop-file-utils' 'libnautilus-extension' 'appdata-tools' 'gnome-shell' 
+			 'gconf' 'vala' 'yelp-tools')
 optdepends=('gconf: for gnome-terminal-migration'
 			'libnautilus-extension: for "Open Terminal Here" in GNOME Files')
 provides=("${_pkgname}=${pkgver}")
