@@ -1,6 +1,6 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura-git
-pkgver=0.0.2755.g7768547
+pkgver=0.0.3171.g9100349d
 pkgrel=1
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends."
 arch=(i686 x86_64)
@@ -11,12 +11,21 @@ optdepends=('frogatto-git: the default game module'
             'box2d: box2d physics')
 makedepends=(git boost)
 source=('git+https://github.com/anura-engine/anura.git#branch=trunk'
+        'git+https://github.com/sweetkristas/imgui.git'
         anura.sh)
 md5sums=('SKIP'
+         'SKIP'
          '15f4c03c2404bcfd7618b8f9e0c850ba')
 install=anura.install
 
 _gitname=anura
+
+prepare() {
+  cd $_gitname
+  git submodule init
+  git config submodule.imgui.url "$srcdir/imgui"
+  git submodule update
+}
 
 pkgver() {
   cd $_gitname
@@ -34,7 +43,7 @@ build() {
   cd $_gitname
 
   # USE_CCACHE=no to honor makepkg's ccache setting.
-  make USE_CCACHE=no
+  make USE_CCACHE=no anura
 }
 
 package() {
