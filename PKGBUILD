@@ -11,12 +11,14 @@ url='http://cclive.sourceforge.net/'
 license=('AGPL3')
 depends=('boost-libs' 'pcre' 'curl' 'libquvi' 'glibmm')
 makedepends=('boost')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig}
         iostream.patch
         boost.m4) # https://github.com/tsuna/boost.m4
-md5sums=('c336f97e29327d92ead62765a0ef0b65'
-         'd5a2f6aee7832683bcffe2ea6b1561ad'
-         'c2ed0f4a18fa2da46706705cc6d37dbd')
+sha512sums=('0d8f6f870e24e2906542c1e02745009597fca2e879261bef7a81e07f8dec016ee200d8a4b37dd0f20b3ad27c12e2445fed1f6a9dc262a6c27e40222048bb5438'
+            'SKIP'
+            'dc6fb068d153e91c03533830e6d87bb292109e192b9fff7003a23fbe3ab5a786fee52a0f522788b5715511be0de55deed1b4a9b2369ac6d239074ec099e0e893'
+            'fe459153907224948888dd6cf6d04b780867595e5e70661d50e3fc2976149f716b807c71d5bfed61566b069bddc955838fdcf441ba5110bea9b2bbaac5b99c84')
+validpgpkeys=('E220FCFF9EADBA326FD6B23BBF1D59CCAD00BE50')  # Toni Gundogdu
 
 prepare() {
   cd $pkgname-$pkgver
