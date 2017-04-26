@@ -68,7 +68,7 @@ prepare(){
   patch "${srcdir}/${_pkgname}${pkgver}/src/bin/frontendlauncher" qt5-qpa.patch
 
   # Download all files with '--download-only' option
-  _build_command "${srcdir}" --download-only
+  _build_command --download-only
 }
 
 build() {
@@ -86,7 +86,7 @@ build() {
   fi
 
   # Now build everything
-  _build_command "${srcdir}" "--makeflags ${MAKEFLAGS}"
+  _build_command "--makeflags ${MAKEFLAGS}"
 
 }
 
@@ -113,13 +113,10 @@ package(){
 }
 
 _build_command(){
-  dir=${1}
-  opt=${2}
-
   echo yes | bash build_${_pkgname}${_pkgver} --console \
-    --installation-build-dir "${dir}/build" \
-    --thirdparty-path "${dir}/thirdparty" \
-    --tarball "${dir}/${_pkgname}${pkgver}.tar.gz" \
+    --installation-build-dir "${srcdir}/build" \
+    --thirdparty-path "${srcdir}/thirdparty" \
+    --tarball "${srcdir}/${_pkgname}${pkgver}.tar.gz" \
     --system-cmake --system-qt --system-python \
     --parallel-build --parallel \
     --cc gcc --cxx g++ --fortran \
@@ -134,7 +131,7 @@ _build_command(){
     --szip \
     --xdmf \
     --zlib \
-    ${opt}
+    ${1}
 }
 
 # vim:set ts=2 sw=2 et:
