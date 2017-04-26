@@ -1,14 +1,14 @@
 pkgbase = kdeplasma-wallpaperswitch
 	pkgdesc = A virtual desktop wallpaper switcher for KDE Plasma 5
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martenjj/wallpaperswitch
 	install = .install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
-	depends = plasma-desktop
+	depends = plasma-workspace
 	source = https://github.com/martenjj/wallpaperswitch/archive/4d468cba0364bcc540892b4a2dd612ec0133f7bd.zip
 	sha512sums = 34edab82caad9d1435c08698d6c3a62ff3174c6367f11b46f42f280256238d7630bc69e65ed4d92cc6f69c768baa3882f003a92e683fc27d891ec8190a137f19
 
