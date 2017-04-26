@@ -1,7 +1,8 @@
+# Maintainer: Jon Eyolfson <jon@eyl.io>
 # Contributor: listx <linusarver <at> gmail <dot> com>
 pkgname=emacs-undo-tree
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Replace Emacs' undo system with an intuitive tree-based system."
 arch=('any')
 url="http://www.dr-qubit.org/tags/computing-code-emacs.html"
@@ -19,8 +20,7 @@ build() {
 }
 
 package() {
-  # create destination path
+  cd "${srcdir}/${pkgname}"
   install -d $pkgdir/usr/share/emacs/site-lisp/undo-tree
-  # copy over file into path
-  cp "${srcdir}/${pkgname}/undo-tree."{el,elc} $pkgdir/usr/share/emacs/site-lisp/undo-tree
+  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/undo-tree"
 }
