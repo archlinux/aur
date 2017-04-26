@@ -2,7 +2,7 @@
 
 pkgname=('ccsh-git' 'ccsh-wrappers-core-git')
 groups=('ccsh-git')
-pkgver=r83.d0f0cf5
+pkgver=r126.a9a51db
 pkgrel=1
 pkgdesc='C++ shell'
 arch=('any')
@@ -20,19 +20,22 @@ pkgver() {
 
 package_ccsh-git() {
   cd "ccsh"
-  
+
   cmake . -DWITH_LIB=ON -DWITH_TEST=OFF -DWITH_CLING=OFF
   make
-  
+
   install -Dm644 "$srcdir/ccsh/lib/libccsh_lib.so" "$pkgdir/usr/lib/libccsh_lib.so"
-  
+
   install -dm755 "$pkgdir/usr/include/ccsh"
-  install -Dm644 $srcdir/ccsh/include/ccsh/* "$pkgdir/usr/include/ccsh"
+  install -Dm644 $srcdir/ccsh/include/ccsh/*.hpp "$pkgdir/usr/include/ccsh"
+
+  install -dm755 "$pkgdir/usr/include/ccsh/builtins"
+  install -Dm644 $srcdir/ccsh/include/ccsh/builtins/*.hpp "$pkgdir/usr/include/ccsh/builtins"
 }
 
 package_ccsh-wrappers-core-git() {
   depends=('ccsh-git')
-	
+
   cd "ccsh"
 
   install -Dm644 "$srcdir/ccsh/wrappers/ccsh/core.hpp" "$pkgdir/usr/include/ccsh/core.hpp"
