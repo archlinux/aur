@@ -14,4 +14,4 @@ package() {
   mkdir -p $pkgdir/usr/bin/
   install -m 755 $srcdir/batch_resolve $pkgdir/usr/bin/
 }
-md5sums=('8a38046d20988ec24ea7e92b7d7ca340')
+md5sums=('f303a5de9b8474e562982143d0414c6b' '8a38046d20988ec24ea7e92b7d7ca340' 'a5b35d18cf065b664247636bbc98fb14')
