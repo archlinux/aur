@@ -4,7 +4,7 @@
 # Contributor: Ray Powell <ray_al@xphoniexx.net>
 
 pkgname=mcomix-git
-pkgver=r1472.3156990
+pkgver=r1473.3b09686
 pkgrel=1
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
