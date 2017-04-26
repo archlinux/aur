@@ -1,7 +1,7 @@
 # Maintainer: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_2306_g46462cd
+pkgver=1.3.0_2318_g8f65051
 pkgrel=1
 pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('mumble')
 install=mumble.install
 source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig})
 validpgpkeys=('C4666C6767A26017CE68406988048D0D625297A0')
-sha256sums=('25940a0de739e2ae77fa8941aef2c486519be5eddcf725e20e9fb4175c65046f'
+sha256sums=('595bc900ca088cda77da708d2cc1008d67f0508bbd0f6e8ac0027a0c8941f2c9'
             'SKIP')
 
 build() {
@@ -23,7 +23,9 @@ build() {
 
     qmake-qt5 main.pro \
       CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update" \
-      DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
+      DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
+      INCLUDEPATH+="/usr/include/openssl-1.0" \
+      QMAKE_LFLAGS+="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
 
     make release
 }
