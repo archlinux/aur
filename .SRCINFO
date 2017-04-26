@@ -1,0 +1,17 @@
+pkgbase = elm-oracle
+	pkgdesc = Elm Oracle intends to be a standalone program that can be used by all editor plugins to query information about a project's source code
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/ElmCast/elm-oracle
+	arch = any
+	license = BSD3
+	makedepends = npm
+	depends = nodejs
+	noextract = elm-oracle-1.1.1.tgz
+	options = !strip
+	source = http://registry.npmjs.org/elm-oracle/-/elm-oracle-1.1.1.tgz
+	md5sums = 034451ea1a50d72bd4c96b28ef68279f
+	sha256sums = 627ea0ef226f02ffbb3079f0c7c7cef33dc837700faa0d2a8d61141094a323c6
+
+pkgname = elm-oracle
+
