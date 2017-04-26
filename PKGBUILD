@@ -2,7 +2,7 @@
 
 pkgname=waterfox-slim-bin
 pkgver=53.0
-pkgrel=1
+pkgrel=2
 pkgdesc="
 'Slim Edition' of the free, open and private browser. It doesn't contains language packs. They are as optional separate packages."
 arch=('x86_64')
@@ -14,8 +14,8 @@ optdepends=('waterfox-kde-bin: KDE Plasma integration features'
             'networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
-conflicts=("waterfox-bin}")
-provides=("waterfox-bin}")
+conflicts=("waterfox-bin")
+provides=("waterfox-bin")
 options=('!emptydirs' '!strip')
 source=("waterfox_${pkgver}_amd64.deb::https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox/waterfox_${pkgver}_amd64.deb")
 
