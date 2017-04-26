@@ -19,15 +19,16 @@ source=("${url}/${_pkgname}-public.zip"
         "${url}/cslinstall.html")
 
 package() {
+    cd "$srcdir"
     install -dm755 "$pkgdir/usr/local/share/texmf/tex/latex"
-    install -dm755 "$pkgdir/var/lib/texfm/arch/installedpkgs"
+    install -dm755 "$pkgdir/var/lib/texmf/arch/installedpkgs"
     install -Dm644 "$srcdir/doc/latex/csltex/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/doc/latex/csltex/csltex.pdf" "$pkgdir/usr/share/doc/$pkgname/csltex.pdf"
     install -Dm644 "$srcdir/primer.tex" "$pkgdir/usr/share/doc/$pkgname/primer.tex"
     install -Dm644 "$srcdir/primer.pdf" "$pkgdir/usr/share/doc/$pkgname/primer.pdf"
     install -Dm644 "$srcdir/sample2.pdf" "$pkgdir/usr/share/doc/$pkgname/advertising.pdf"
     install -Dm644 "$srcdir/cslinstall.html" "$pkgdir/usr/share/doc/$pkgname/cslinstall.html"
-    install -Dm644 "$srcdir/${pkgname}.maps" "$pkgdir/var/lib/texmf/arch/installedpkgs/"
+    install -m644 "$pkgname.maps" "$pkgdir/var/lib/texmf/arch/installedpkgs/"
     install -Dm644 "$srcdir/language-local.dat" "$pkgdir/usr/local/share/texmf/tex/generic/config/language-local.dat"
     install -Dm644 "$srcdir/language-local.def" "$pkgdir/usr/local/share/texmf/tex/generic/config/language-local.def"
     cp -rf "$srcdir/tex/latex/csltex" "$pkgdir/usr/local/share/texmf/tex/latex/"
