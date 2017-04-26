@@ -1,10 +1,10 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=argentum-age-git
-pkgver=0.0.1853.g5a4ccf1
+pkgver=0.0.2758.gbcec84e7
 pkgrel=1
 pkgdesc="A digital collectible card game with tactical elements."
 arch=(any)
-url='http://argentum-age.com/'
+url='http://argentumage.com/'
 license=('custom')
 depends=(anura-git)
 provides=(argentum-age anura-citadel-git)
