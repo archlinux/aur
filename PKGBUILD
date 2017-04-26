@@ -8,8 +8,8 @@ arch=('x86_64')
 url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm')
-source=("https://github.com/lbryio/lbry-app/releases/download/v0.10.0rc5/LBRY_0.10.0_amd64.deb")
-sha256sums=('eccb7b44c7b5f1e071c2380b4595c9b76ae4c4a9c6021134a44abbd7cef7d756')
+source=("https://github.com/lbryio/lbry-app/releases/download/v0.10.0rc6/LBRY_0.10.0-rc6_amd64.deb")
+sha256sums=('25050ac6b5f889ea2a55b9627edbe77d5c6b37d50726c2e78e1f1573216fade1')
 
 package() {
     tar -xvf "$srcdir/data.tar.xz" -C "$pkgdir"
