@@ -1,6 +1,6 @@
 pkgbase = uboot-imx53qsb
 	pkgdesc = U-Boot for i.MX53 Quick Start Board
-	pkgver = 2017.01
+	pkgver = 2017.03
 	pkgrel = 1
 	url = http://git.denx.de/u-boot.git/
 	install = uboot-imx53qsb.install
@@ -10,7 +10,7 @@ pkgbase = uboot-imx53qsb
 	makedepends = bc
 	backup = boot/boot.txt
 	backup = boot/boot.scr
-	source = ftp://ftp.denx.de/pub/u-boot/u-boot-2017.01.tar.bz2
+	source = ftp://ftp.denx.de/pub/u-boot/u-boot-2017.03.tar.bz2
 	source = 0001-arch-linux-arm-modifications.patch
 	source = boot.txt
 	source = mkscr

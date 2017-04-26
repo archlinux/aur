@@ -4,7 +4,7 @@
 buildarch=4
 
 pkgname=uboot-imx53qsb
-pkgver=2017.01
+pkgver=2017.03
 pkgrel=1
 pkgdesc="U-Boot for i.MX53 Quick Start Board"
 arch=('armv7h')
