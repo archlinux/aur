@@ -1,7 +1,7 @@
 pkgbase = mono-alpha
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler. Alpha version.
-	pkgver = 4.8.0
-	pkgrel = 4
+	pkgver = 5.0.0
+	pkgrel = 5
 	url = http://www.mono-project.com/
 	install = mono.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = mono-alpha
 	conflicts = monodoc
 	conflicts = mono
 	options = !makeflags
-	source = git://github.com/mono/mono.git#branch=mono-4.8.0-branch
+	source = git://github.com/mono/mono.git#branch=2017-02
 	source = mono.binfmt.d
 	md5sums = SKIP
 	md5sums = b9ef8a65fea497acf176cca16c1e2402
