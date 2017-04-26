@@ -26,5 +26,11 @@ package() {
   perl -i -pe 's#printcap\.local#printcap#g' $srcdir/mfc${model}/opt/brother/Printers/MFC${model^^}/inf/setupPrintcap || return 1
   cp -rf $srcdir/mfc${model}/usr/ $pkgdir/ || return 1
   cp -rf $srcdir/mfc${model}/opt/ $pkgdir/ || return 1
+
+  mkdir -p ${pkgdir}/usr/share/cups/model
+  mkdir -p ${pkgdir}/usr/lib/cups/filter
+
+  ln -sv /opt/brother/Printers/MFC${model^^}/cupswrapper/brother-MFC${model^^}-cups-en.ppd ${pkgdir}/usr/share/cups/model
+  ln -sv /opt/brother/Printers/MFC${model^^}/cupswrapper/brother_lpdwrapper_MFC${model^^} ${pkgdir}/usr/lib/cups/filter
 }
 
