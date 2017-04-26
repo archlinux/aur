@@ -25,7 +25,7 @@ index e58d744..eabfa6d 100644
 +		int fd = open(ctx->wp->tty, O_RDONLY);
 +		assert(tcgetattr(fd, &tio) == 0);
 +		close(fd);
-+		if (tio.c_lflag & ICANON && tio.c_iflag & IUTF8) {
++		if (tio.c_lflag & ICANON && tio.c_iflag & IUTF8 && ctx->wp->mode != &window_copy_mode) {
 +			gl = &s->grid->linedata[s->grid->hsize + s->cy];
 +			if (s->cx > 0 && s->cx-1 < gl->extdsize && gl->extddata[s->cx-1].data.width == 2)
 +				s->cx -= 2;
