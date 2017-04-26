@@ -16,7 +16,6 @@ pkgbase = streamlink-git
 	depends = python-requests
 	depends = rtmpdump
 	optdepends = ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+
-	optdepends = python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.
 	provides = streamlink
 	conflicts = streamlink
 	source = git+https://github.com/streamlink/streamlink.git

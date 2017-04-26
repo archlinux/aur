@@ -27,8 +27,7 @@ fi
 depends+=('python-requests' 'rtmpdump')
 checkdepends=("python-"{mock,pytest})
 makedepends=('git' "python-"{setuptools,sphinx})
-optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+'
-            'python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
+optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+')
 provides=('streamlink')
 conflicts+=('streamlink')
 source=('git+https://github.com/streamlink/streamlink.git')
