@@ -1,10 +1,10 @@
 pkgname=pmrp-git
-pkgver=r9.910741d
-pkgrel=1
+pkgver=r10.910741d
+pkgrel=2
 pkgdesc="Little Bash script for playing various internet radio stations"
 arch=('any')
-url="http://adaptagrams.sourceforge.net/"
-license=('Public Domain')
+url="https://github.com/hakerdefo/pmrp"
+license=('Creative Commons Zero')
 depends=('mpg123')
 makedepends=('git')
 source=($pkgname::git+https://github.com/hakerdefo/pmrp.git)
