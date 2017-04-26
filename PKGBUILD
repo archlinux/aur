@@ -2,12 +2,12 @@
 pkgname=texlive-csltex
 _pkgname=csltex
 pkgver=2007.0712
-pkgrel=9
+pkgrel=10
 pkgdesc="TeX Live - Package for typing of Church Slavonic texts in the standard HIP (HIP-9)"
 arch=('any')
 url="https://sites.google.com/site/csltex"
 license=('LPPL')
-depends=('texlive-core')
+depends=('texlive-core' 'texlive-langcyrillic')
 optdepends=('texlive-irmologion')
 source=("${url}/${_pkgname}-public.zip"
         "${pkgname}.maps"
