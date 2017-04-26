@@ -1,3 +1,9 @@
+## 1.13.0
+* naxsi-0.55.3
+* pushmodule -> nchan-1.1.4
+* auth_pam-1.5.1
+* pagespeed-1.12.34.2-beta
+
 ## 1.11.11
 * echo-nginx-module removed, "incompatible types when assigning to type ..."
 

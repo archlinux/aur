@@ -3,12 +3,11 @@
 
 pkgname=nginx-devel
 _pkgname=nginx
-pkgver=1.11.11
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
 arch=(i686 x86_64 armv6h)
-# a few global variables
 declare -A _modulesURL
 _configureOptions=()
 _add2source() {
@@ -18,28 +17,17 @@ _add2source() {
   fi
   _modulesURL+=([$key]="${url}")
 }
-#{{{1 Third party modules and patches
-
 # naxsi: Application firewall {{{2
-# @link http://code.google.com/p/naxsi/
 # @link https://github.com/nbs-system/naxsi/tags
-_naxsi_ver=0.55.1
+_naxsi_ver=0.55.3
 #_naxsi_url="http://naxsi.googlecode.com/files/naxsi-core-${_naxsi_ver}.tgz"
 _naxsi_url="naxsi-${_naxsi_ver}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
 _add2source naxsi $_naxsi_url
 
-# systemd socket activation support {{{2
-# @link http://trac.nginx.org/nginx/ticket/237
-# _add2source socket socket.patch::http://trac.nginx.org/nginx/raw-attachment/ticket/237/0001-Socket-activation-support-for-systemd.patch
-_systemd_socket_ver=1.9.13
-_add2source socket socket.patch::https://lynthium.com/systemd_socket_nginx_${_systemd_socket_ver}plus.patch
-
-# http push module: This module turns Nginx into an adept HTTP Push and Comet server {{{2
-# @link http://pushmodule.slact.net/
-_push_ver=0.731
-_push_url="https://github.com/slact/nginx_http_push_module/archive/v${_push_ver}.tar.gz"
-_push_url="https://codeload.github.com/slact/nchan/tar.gz/v${_push_ver}"
-_add2source push $_push_url
+# nchan: a scalable, flexible pub/sub server for the modern web, replacment for push module {{{2
+# @link: https://nchan.io/
+_nchan_ver=1.1.4
+_nchan_url="nchan-${_nchan_ver}.tar.gz::https://github.com/slact/nchan/archive/v${_nchan_ver}.tar.gz"
 
 # concat: concatenate files in a given context: CSS and JS files usually {{{2
 # @link http://wiki.nginx.org/HttpConcatModule
@@ -52,7 +40,7 @@ _add2source concat $_concat_url
 # @link http://nginx-sflow-module.googlecode.com/
 # @link https://github.com/m0zes/nginx-sflow-module
 _sflow_ver=0.9.10
-_sflow_url="https://github.com/m0zes/nginx-sflow-module/archive/release-${_sflow_ver}.tar.gz"
+_sflow_url="sflow-${_sflow_ver}.tar.gz::https://github.com/m0zes/nginx-sflow-module/archive/release-${_sflow_ver}.tar.gz"
 _add2source sflow $_sflow_url
 
 # NgxFancyIndex(git): Like the built-in autoindex module, but fancier {{{2
@@ -64,8 +52,8 @@ _add2source sflow $_sflow_url
 # ngx_http_auth_pam_module: HTTP Basic Authentication using PAM {{{2
 # @link http://web.iti.upv.es/~sto/nginx/
 # @link https://github.com/stogh/ngx_http_auth_pam_module/
-_http_auth_pam_ver=1.4
-http_auth_pam_url="https://github.com/stogh/ngx_http_auth_pam_module/archive/v${_http_auth_pam_ver}.tar.gz"
+_http_auth_pam_ver=1.5.1
+http_auth_pam_url="http_auth_pam-${_http_auth_pam_ver}.tar.gz::https://github.com/stogh/ngx_http_auth_pam_module/archive/v${_http_auth_pam_ver}.tar.gz"
 _add2source http_auth_pam $_http_auth_pam_url
 
 # ngx_headers_more: Set and clear input and output headers...more than "add"! {{{2
@@ -84,16 +72,15 @@ _add2source modsecurity $_modsecurity_url
 # PageSpeed {{{2
 # @link https://developers.google.com/speed/pagespeed/module/build_ngx_pagespeed_from_source
 # @link https://github.com/pagespeed/ngx_pagespeed/releases
-_psol_ver=1.12.34.1-beta
-_psol_url="https://github.com/pagespeed/ngx_pagespeed/archive/v${_psol_ver}.tar.gz"
+_psol_ver=1.12.34.2-beta
+_psol_url="psol-${_psol_ver}.tar.gz::https://github.com/pagespeed/ngx_pagespeed/archive/v${_psol_ver}.tar.gz"
 _add2source psol $_psol_url
 _psol_name="ngx_pagespeed-${_psol_ver}"
 
-# echo-nginx-module(git) {{{2
+# echo-nginx-module {{{2
 # @link https://github.com/openresty/echo-nginx-module
 
 #}}}2
-#}}}1
 depends=(
 gd
 geoip
@@ -153,18 +140,16 @@ ${_modulesURL[*]}
 )
 validpgpkeys=(
 )
-sha256sums=('5a7ac480248e28d26e68fd1ea3dbd8b05f69726d71528e79332839b171277262'
+sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
             '9174cfea524ed4839062dc267d1b561db9f512407682982be42979f98cbdfff7'
             '989b76a9157b7d24788f6b56027d1883d69a744e91d517bca290a88919864b63'
             'c6d9dab8ea1fc997031007e2e8f47cced01417e203cd88d53a9fe9f6ae138720'
-            '228dea08c44a9a1d9756b49c736cfeaaa99eae16f2d5afef7047f75c7eef8246'
-            '001d6592200acc23f0492e1386e7acd37c2977cb967c30320994ece1d30428de'
+            '600b33ffe3404fec319d119b231453fd45a06953a08edef0cde1360415aa2d89'
             '958cc5a7a7430f93fac0fd6f8b9aa92fc1801efce0cda797d6029d44080a9b24'
-            '45dd0df7a6b0b6aa9c64eb8c39a8e294d659d87fb18e192cf58f1402f3cdb0a8'
-            'dd0c893fcf5af90a4f3c76a5750df9c39cba486ecb93cf76624af29f809ec345'
+            '0b3c95d250772dc89ad8b49e47c1e024c5ae2c76c0cffa445e9fe05c4dd13495'
             '1b7d69a9210cf434804eb574618869fba2ddc95d3b0aea7c57205f7a15e920a4'
             '3b27e9eb0478cbba65ba0beb844c5361e2e2f9c21e5bee8803ea9e707f4bbb47')
 _addModule() {
@@ -208,7 +193,7 @@ _addGithubModule() {
 _addGitModule() {
   local module=$1
   local src=$2
-  local branch=$3
+  local branch=${3:-''}
 
   [ -d "./$module/.git" ] || git clone -q $src $module
   [ -n "$branch" ] && (cd $module && git checkout -q $branch)
@@ -230,23 +215,26 @@ _addSvnModule() {
   fi
 }
 #}}}
+prepare(){
+  if (( DEBUG )); then
+    set -o nounset
+  fi
 # nginx env, commons for build and package
-_cfgdir=/etc/nginx
-_tmpdir=/var/lib/nginx
-_logdir=/var/log/nginx
+  export _cfgdir=/etc/nginx
+  export _tmpdir=/var/lib/nginx
+  export _logdir=/var/log/nginx
 
+}
 build() {
-  # nginx env
   local _piddir=/run
   local _lockdir=/var/lock
-
   local _user=http
   local _group=http
+
   cd ${_pkgname}-$pkgver
 #   msg2 "Adding optional systemd socket activation support"
 #   patch -Np1 -i "$srcdir/socket.patch"
 
-  # build options
   _configureOptions=(
     --prefix=$_cfgdir
     --sbin-path=/usr/bin/nginx
@@ -333,10 +321,10 @@ build() {
   mkdir -p $_modulesdir
   cd $_modulesdir
 #   _addModule passenger /usr/lib/passenger/ext/nginx
-  _addModule naxsi-${_naxsi_ver} $srcdir/naxsi-core-${_naxsi_ver}/naxsi_src
-  _addModule nginx_http_push_module-${_push_ver} $srcdir/nginx_http_push_module-${_push_ver}
-  _addModule concat-${_concat_ver} $srcdir/nginx-http-concat-${_concat_ver}
-  _addModule ${_psol_name} $srcdir/$_psol_name}
+  _addModule   naxsi-${_naxsi_ver}     $srcdir/naxsi-core-${_naxsi_ver}/naxsi_src
+  _addModule   nchan-${_nchan_ver}     $srcdir/nchan-${_nchan_ver}
+  _addModule   concat-${_concat_ver}   $srcdir/nginx-http-concat-${_concat_ver}
+  _addModule   ${_psol_name}           $srcdir/$_psol_name}
   # symlink psol library to pagespeed
   if [ ! -L "$srcdir/$_psol_name/include" ]; then
     ln -s /usr/lib/psol/include $srcdir/$_psol_name/include
@@ -344,10 +332,11 @@ build() {
   _addModule sflowtool-${_sflow_ver}           $srcdir/nginx-sflow-module-${_sflow_ver}
   _addModule fancyindex-git                    git@github.com:aperezdc/ngx-fancyindex.git
   _addModule http_auth_digest-git              git://github.com/samizdatco/nginx-http-auth-digest
-  _addModule http_auth_pam-${_http_pam_ver}    $srcdir/ngx_http_auth_pam_module-${_http_auth_pam_ver}
+  _addModule http_auth_pam-${_http_auth_pam_ver}    $srcdir/ngx_http_auth_pam_module-${_http_auth_pam_ver}
   _addModule headers_more-${_headers_more_ver} $srcdir/headers-more-nginx-module-${_headers_more_ver}
   _addModule modsecurity-$_modsecurity_ver     modsecurity-apache_${_modsecurity_ver}/nginx/modsecurity
-#   _addModule echo-nginx-module-git             git://github.com/openresty/echo-nginx-module
+  _addModule echo-nginx-module-git             git://github.com/openresty/echo-nginx-module
+#   _addModule owasp-modsecurity-crs             git://github.com/SpiderLabs/owasp-modsecurity-crs.git
 
   cd "$srcdir"/${_pkgname}-$pkgver
   ./configure ${_configureOptions[*]}
