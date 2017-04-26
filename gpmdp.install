@@ -1,17 +1,16 @@
 post_install() {
-	echo -e "\e[31m********************************************"
-	echo -e "\e[31m* For Chromecast functionality:            *"
-	echo -e "\e[31m*                                          *"
-	echo -e "\e[31m* Verify avahi and nss-mdns are installed. *"
-	echo -e "\e[31m*                                          *"
-	echo -e "\e[31m* Append \"mdns4\" to the end of the \"hosts\" *"
-	echo -e "\e[31m* line in /etc/nsswitch.conf.              *"
-	echo -e "\e[31m*                                          *"
-	echo -e "\e[31m* Make sure both the avahi-daemon service  *"
-	echo -e "\e[31m* and socket are enabled and running.      *"
-	echo -e "\e[31m********************************************"
-	echo -e -n "\e[39m"
-	sleep 5
+	echo -e "********************************************"
+	echo -e "* For Chromecast functionality:            *"
+	echo -e "*                                          *"
+	echo -e "* Verify avahi and nss-mdns are installed. *"
+	echo -e "*                                          *"
+	echo -e "* Append \"mdns4\" to the end of the \"hosts\" *"
+	echo -e "* line in /etc/nsswitch.conf.              *"
+	echo -e "*                                          *"
+	echo -e "* Make sure both the avahi-daemon service  *"
+	echo -e "* and socket are enabled and running.      *"
+	echo -e "********************************************"
+	echo -e -n ""
 }
 
 post_upgrade() {
