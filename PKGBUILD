@@ -70,7 +70,7 @@ package() {
 	install -m644 ${srcdir}/$_pkgname/run/stats ${pkgdir}/usr/share/john/
 	install -m644 ${srcdir}/$_pkgname/run/*.chr \
 			${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/{best64,dumb16,dumb32,dynamic,dynamic_flat_sse_formats,korelogic,regex_alphabets,repeats16,repeats32}.conf \
+	install -m644 ${srcdir}/$_pkgname/run/{best64,dumb16,dumb32,dynamic,dynamic_flat_sse_formats,korelogic,regex_alphabets,repeats16,repeats32,hybrid}.conf \
 			${pkgdir}/usr/share/john/
 	install -d ${pkgdir}/usr/share/john/kernels/
 	install -m644 ${srcdir}/$_pkgname/run/kernels/* ${pkgdir}/usr/share/john/kernels/
