@@ -6,7 +6,7 @@
 
 pkgname=network-ups-tools
 pkgver=2.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.networkupstools.org/"
@@ -15,7 +15,7 @@ depends=('openssl' 'libusb-compat' 'libltdl' 'neon' 'net-snmp')
 makedepends=('asciidoc')
 backup=(etc/ups/{ups.conf,upsd.conf,upsd.users,upsmon.conf,upssched.conf})
 install=nut.install
-source=("http://www.networkupstools.org/source/2.7/nut-${pkgver}.tar.gz")
+source=("http://networkupstools.org/source/2.7/nut-${pkgver}.tar.gz")
 options=('!emptydirs' '!libtool')
 sha256sums=('980e82918c52d364605c0703a5dcf01f74ad2ef06e3d365949e43b7d406d25a7')
 
