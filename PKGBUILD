@@ -6,10 +6,11 @@ pkgbase=buildbot
 pkgname=('buildbot' 'python-buildbot-www' 'buildbot-worker' 'python-buildbot-waterfall-view' 'python-buildbot-console-view')
 _names=('buildbot' 'buildbot_www' 'buildbot_worker' 'buildbot_waterfall_view' 'buildbot_console_view')
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://buildbot.net"
 license=("GPL")
+makedepends=("python-pip")
 source=(
   "https://files.pythonhosted.org/packages/py2.py3/${_names[0]::1}/${_names[0]}/${_names[0]}-$pkgver-py2.py3-none-any.whl"
   "https://files.pythonhosted.org/packages/py2.py3/${_names[1]::1}/${_names[1]}/${_names[1]}-$pkgver-py2.py3-none-any.whl"

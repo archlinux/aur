@@ -1,9 +1,10 @@
 pkgbase = buildbot
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://buildbot.net
 	arch = any
 	license = GPL
+	makedepends = python-pip
 	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot/buildbot-0.9.5-py2.py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_www/buildbot_www-0.9.5-py2.py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_worker/buildbot_worker-0.9.5-py2.py3-none-any.whl
