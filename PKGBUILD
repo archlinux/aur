@@ -25,7 +25,7 @@ package_datagrip() {
   install -d -m 755 "${pkgdir}/usr/share/applications/"
   install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
 
-  rsync -rtl "${srcdir}/DataGrip-${pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre
+  rsync -rtl "${srcdir}/DataGrip-${pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre64
 
   ln -s "/opt/${pkgbase}/bin/${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
@@ -34,5 +34,5 @@ package_datagrip() {
 
 package_datagrip-jre() {
   install -d -m 755 "${pkgdir}/opt/${pkgbase}"
-  rsync -rtl "${srcdir}/DataGrip-${pkgver}/jre" "${pkgdir}/opt/${pkgbase}"
+  rsync -rtl "${srcdir}/DataGrip-${pkgver}/jre64" "${pkgdir}/opt/${pkgbase}"
 }
