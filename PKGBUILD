@@ -2,7 +2,7 @@
 
 pkgname='hopper'
 _pkgname='hopperv4'
-pkgver='4.1.3'
+pkgver='4.1.4'
 pkgrel='1'
 pkgdesc='Reverse engineering tool that lets you disassemble, decompile and debug your applications'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'libbsd' 'python2' 'qt5-base')
 provides=("${pkgname}" "${_pkgname}")
 conflicts=("${pkgname}" "${_pkgname}")
 source=("https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-${pkgver}-Linux.pkg.tar.xz")
-sha256sums=('d156ef88f31cdc51fa09b5f38ffd1f038433fac459571b572b3c0d44d08631b6')
+sha256sums=('e51a10d277146431768f8edf4f334c412d51cbcb55743f5cd1563ea42eba3a55')
 
 package() {
   # Copy package content
