@@ -1,16 +1,18 @@
 pkgbase = sac2c
 	pkgdesc = Provides the compiler of the Single-Assignment C programming language.
-	pkgver = 1.2BETA367
+	pkgver = 1.2BETA467
 	pkgrel = 1
 	url = http://www.sac-home.org/
 	arch = x86_64
 	license = custom:SAC
 	depends = gcc
 	depends = hwloc
-	source = sac2c.rpm::http://www.sac-home.org/lib/exe/fetch.php?media=download:sac2c:v1.2:sac2c-1.2-beta-blackforest-367-gfb6f0-omnibus.rpm
+	depends = libutil-linux
+	depends = cuda
+	source = sac2c.rpm::http://www.sac-home.org/packages/RPM/RHEL7/sac2c-1.2-beta-BlackForest-467-gce8d4-omnibus.rpm
 	source = LICENSE.txt
-	md5sums = a06cdf9b083caf4d92a7fdb712b354ac
-	md5sums = 7959e1a802cfaa1b6fde1d5e73eeef86
+	md5sums = 2f469bec80645b6d99c5d53a88788419
+	md5sums = 84e0ebe0672290c68bf47dbae66287a2
 
 pkgname = sac2c
 

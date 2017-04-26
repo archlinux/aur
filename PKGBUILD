@@ -2,20 +2,20 @@
 # Contributors: SaC Development Team <info@sac-home.org>
 pkgname=sac2c
 _version=1.2
-_changes=367
-_name=beta-blackforest
-_commit=gfb6f0
+_changes=467
+_name=beta-BlackForest
+_commit=gce8d4
 pkgver="${_version}BETA${_changes}"
 pkgrel=1
 pkgdesc='Provides the compiler of the Single-Assignment C programming language.'
 arch=('x86_64')
 url='http://www.sac-home.org/'
 license=('custom:SAC')
-depends=('gcc' 'hwloc')
-source=("sac2c.rpm::http://www.sac-home.org/lib/exe/fetch.php?media=download:${pkgname}:v${_version}:${pkgname}-${_version}-${_name}-${_changes}-${_commit}-omnibus.rpm"
+depends=('gcc' 'hwloc' 'libutil-linux' 'cuda')
+source=("sac2c.rpm::http://www.sac-home.org/packages/RPM/RHEL7/${pkgname}-${_version}-${_name}-${_changes}-${_commit}-omnibus.rpm"
         'LICENSE.txt')
-md5sums=('a06cdf9b083caf4d92a7fdb712b354ac'
-         '7959e1a802cfaa1b6fde1d5e73eeef86')
+md5sums=('2f469bec80645b6d99c5d53a88788419'
+         '84e0ebe0672290c68bf47dbae66287a2')
 
 package() {
 	cd "$pkgdir"
