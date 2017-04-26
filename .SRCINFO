@@ -1,0 +1,20 @@
+pkgbase = feedindicator
+	pkgdesc = RSS feed updates in the indicator/notification area
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://github.com/nicolas-raoul/Feedindicator
+	install = feedindicator.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = xdg-utils
+	depends = python2-feedparser
+	depends = python2-configobj
+	depends = python2-libappindicator
+	depends = python2-notify
+	depends = python2-gconf
+	source = git+https://github.com/nicolas-raoul/feedindicator.git
+	md5sums = SKIP
+
+pkgname = feedindicator
+
