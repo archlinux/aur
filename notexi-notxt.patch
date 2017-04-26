@@ -1,8 +1,8 @@
 diff --git a/doc/Makefile.am b/doc/Makefile.am
-index b60651f..d6974e0 100755
+index 0d0692f..fd26d3e 100755
 --- a/doc/Makefile.am
 +++ b/doc/Makefile.am
-@@ -60,19 +60,6 @@ $(builddir)/vice.txt:		$(srcdir)/vice.texi
+@@ -61,19 +61,6 @@ $(builddir)/vice.txt:		$(srcdir)/vice.texi
  	$(srcdir)/fixdox.sh txt <vicetmp.txt | sed 's/ \+$$//' >$(builddir)/vice.txt
  	rm -f vicetmp.txt
  
@@ -22,7 +22,7 @@ index b60651f..d6974e0 100755
  $(builddir)/vice.guide:	$(srcdir)/vice.texi
  if BUILD_AMIGAGUIDE
  	cp $(srcdir)/vice.texi tmp.texi
-@@ -134,6 +121,6 @@ $(builddir)/vice.info:	$(srcdir)/vice.texi
+@@ -135,6 +122,6 @@ $(builddir)/vice.info:	$(srcdir)/vice.texi
  	touch $(builddir)/vice.info
  	$(MAKEINFO) -D$(PLATFORM_DOX_FLAGS) -o $(builddir)/vice.info --no-split $(srcdir)/vice.texi
  

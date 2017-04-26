@@ -7,13 +7,13 @@
 
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://vice-emu.sourceforge.net'
-depends=('libpulse' 'giflib' 'vte' 'gtkglext' 'libpcap' 'mpg123' 'libieee1284' 'portaudio' 'pciutils')
+depends=('libpulse' 'giflib' 'vte' 'gtk3' 'libpcap' 'mpg123' 'libieee1284' 'portaudio' 'pciutils')
 makedepends=('dos2unix' 'xorg-bdftopcf' 'xorg-mkfontdir' 'autoconf')
 options=('!makeflags')
 install=$pkgname.install
@@ -35,13 +35,13 @@ source=(
 )
 
 sha512sums=(
-  '60d33e644d9977df81ffbdceff8c4feec750de9597cfa9f37c4aa236eabbf507373e6f936e2cc3b06f3e7298e0390d1e098242bfacd6435e628a13991a6a452b'
+  'bc02a3597a17dadb37c487e6942192c0e9dc1a7d4e440fbf0dc8a165dbb2dee60ddf157697a020d2780ddef56a0a67802768d5c6d117b9cf5cdc124de45bc579'
   '1433ed9e88f5eab34e53f89201df62c0c3a6aa4b61e6855823bb1ff833886a3058bdfeb9ea79c0f8658c2ec744314638524db6e0194783b4bf04d86824f19cdf'
   'dc96b8658fac1a6f605b8f0052c11a5abb653da4b9deb3401d8b8177b14a664c0b3a5ed9e7c5c3013b0bc18b831045244f2f9187de9ff8b25b90f0b1cfa0cd8a'
-  '076e684ecac402ccb014faebe5eaab5bb46e9e9caca9ba23374ddf94a1c83172b0874343e449c91186763114d0f388dac0060afd831bdc9eceffc6cf3529c58d'
-  '2706f179cdc6fb4f86198f532dccbe520dce2676238c69013af5303055f94ed44d6b8ec50cd55c47b0bf8b46f3af260767466db728f00fe409281232c8d0165e'
+  '849b4a42b331fcd3133e78d6116ea4416e2de45afd698f3ad0a8e94ef4117085e0b2bb756ed4720bfedbcb6b0ed72a8195b338e1fada0a9a105819a87e61cc5e'
+  '1a9f5dbfc0593a01ae64825fc13623fe601620fcb2cd3e98f7fdda73ff7e0dc22b20b8ce56aecd5bebf3da5121f0ee3ef1201d203edd8783ebda31a6f6ac1aac'
   'd37544313037fa75971bab198b37d3824571a3e82d4e87bbe23b01d8a847fcf3f6652a23e4bc58cec6ae43deccc9322db2f77d046641b521f275e368aca940dd'
-  'd7637b0604490f1792dde1083211d418b850ecbeaf688b3013913c5af7e752796fe8d45c8306b7a1593b62c028c9def7bf04e81bc0187d05cd464727f0c5645a'
+  '399b732462d5f0a1edef16c31d223ec9b99f428f1cd21ca2dd9548c9ffeab2aab6c3576c600b1da7499f78a69cb2077202c4d64fac6fd903966681e21db6692d'
 )
 
 prepare() {
@@ -68,7 +68,7 @@ prepare() {
 build() {
   # Build the project
   cd $_pkgname-$pkgver
-  ./configure --prefix=/usr --enable-fullscreen --enable-gnomeui --enable-ethernet --enable-memmap
+  ./configure --prefix=/usr --enable-fullscreen --enable-gnomeui3 --enable-ethernet
   make
 }
 
