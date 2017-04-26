@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.openwall.com/$_pkgname/"
 license=('GPL2' 'custom')
 depends=('openssl')
-makedepends=('git' 'libgsf' 'libxml2' 'nss')
+makedepends=('git' 'libgsf' 'libxml2' 'nss' 'opencl-headers')
 optdepends=("perl: for executing some of the scripts at /usr/share/john"
             "ruby: for executing some of the scripts at /usr/share/john"
             "python: for executing some of the scripts at /usr/share/john"
