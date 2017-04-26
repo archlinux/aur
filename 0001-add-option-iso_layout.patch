@@ -1,0 +1,125 @@
+From ece075810b575c144aff8996c5d703164ead7cd8 Mon Sep 17 00:00:00 2001
+From: Christoph Gysin <christoph.gysin@gmail.com>
+Date: Wed, 19 Apr 2017 17:29:57 +0300
+Subject: [PATCH] add option iso_layout
+
+fixes #12
+---
+ applespi.c | 64 +++++++++++++++++++++++++++++++++++++++++---------------------
+ 1 file changed, 42 insertions(+), 22 deletions(-)
+
+diff --git a/applespi.c b/applespi.c
+index b8fa4cf..d11f825 100644
+--- a/applespi.c
++++ b/applespi.c
+@@ -45,6 +45,10 @@
+ #define MAX_FINGERS		6
+ #define MAX_FINGER_ORIENTATION	16384
+ 
++static unsigned int iso_layout = 1;
++module_param(iso_layout, uint, 0644);
++MODULE_PARM_DESC(iso_layout, "Enable/Disable hardcoded ISO-layout of the keyboard. "
++		"(0 = disabled, [1] = enabled)");
+ 
+ struct keyboard_protocol {
+ 	u16		packet_type;
+@@ -172,11 +176,12 @@ static const unsigned char applespi_scancodes[] = {
+ 	KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0,
+ 	KEY_ENTER, KEY_ESC, KEY_BACKSPACE, KEY_TAB, KEY_SPACE, KEY_MINUS,
+ 	KEY_EQUAL, KEY_LEFTBRACE, KEY_RIGHTBRACE, KEY_BACKSLASH, 0,
+-	KEY_SEMICOLON, KEY_APOSTROPHE, KEY_GRAVE, KEY_COMMA, KEY_DOT, KEY_SLASH,
++	KEY_SEMICOLON, KEY_APOSTROPHE, KEY_102ND, KEY_COMMA, KEY_DOT, KEY_SLASH,
+ 	KEY_CAPSLOCK,
+ 	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9,
+ 	KEY_F10, KEY_F11, KEY_F12, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 	KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP,
++	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, KEY_GRAVE,
+ };
+ 
+ static const unsigned char applespi_controlcodes[] = {
+@@ -191,29 +196,35 @@ static const unsigned char applespi_controlcodes[] = {
+ };
+ 
+ struct applespi_key_translation {
+-	u8  from;
++	u16 from;
+ 	u16 to;
+ };
+ 
+ static const struct applespi_key_translation applespi_fn_codes[] = {
+-	{ 42,  KEY_DELETE },
+-	{ 40,  KEY_INSERT },
+-	{ 58,  KEY_BRIGHTNESSDOWN },
+-	{ 59,  KEY_BRIGHTNESSUP },
+-	{ 60,  KEY_SCALE },
+-	{ 61,  KEY_DASHBOARD },
+-	{ 62,  KEY_KBDILLUMDOWN },
+-	{ 63,  KEY_KBDILLUMUP },
+-	{ 64,  KEY_PREVIOUSSONG },
+-	{ 65,  KEY_PLAYPAUSE },
+-	{ 66,  KEY_NEXTSONG },
+-	{ 67,  KEY_MUTE },
+-	{ 68,  KEY_VOLUMEDOWN },
+-	{ 69,  KEY_VOLUMEUP },
+-	{ 82,  KEY_PAGEUP },
+-	{ 81,  KEY_PAGEDOWN },
+-	{ 80,  KEY_HOME },
+-	{ 79,  KEY_END },
++	{ KEY_BACKSPACE, KEY_DELETE },
++	{ KEY_ENTER,	KEY_INSERT },
++	{ KEY_F1,	KEY_BRIGHTNESSDOWN },
++	{ KEY_F2,	KEY_BRIGHTNESSUP },
++	{ KEY_F3,	KEY_SCALE },
++	{ KEY_F4,	KEY_DASHBOARD },
++	{ KEY_F5,	KEY_KBDILLUMDOWN },
++	{ KEY_F6,	KEY_KBDILLUMUP },
++	{ KEY_F7,	KEY_PREVIOUSSONG },
++	{ KEY_F8,	KEY_PLAYPAUSE },
++	{ KEY_F9,	KEY_NEXTSONG },
++	{ KEY_F10,	KEY_MUTE },
++	{ KEY_F11,	KEY_VOLUMEDOWN },
++	{ KEY_F12,	KEY_VOLUMEUP },
++	{ KEY_RIGHT,	KEY_END },
++	{ KEY_LEFT,	KEY_HOME },
++	{ KEY_DOWN,	KEY_PAGEDOWN },
++	{ KEY_UP,	KEY_PAGEUP },
++};
++
++static const struct applespi_key_translation apple_iso_keyboard[] = {
++	{ KEY_GRAVE,	KEY_102ND },
++	{ KEY_102ND,	KEY_GRAVE },
++	{ }
+ };
+ 
+ static u8 *acpi_dsm_uuid = "a0b5b7c6-1318-441c-b0c9-fe695eaf949b";
+@@ -684,16 +695,25 @@ static unsigned int
+ applespi_code_to_key(u8 code, int fn_pressed)
+ {
+ 	int i;
++	unsigned int key = applespi_scancodes[code];
+ 
+ 	if (fn_pressed) {
+ 		for (i=0; i<ARRAY_SIZE(applespi_fn_codes); i++) {
+-			if (applespi_fn_codes[i].from == code) {
++			if (applespi_fn_codes[i].from == key) {
+ 				return applespi_fn_codes[i].to;
+ 			}
+ 		}
+ 	}
+ 
+-	return applespi_scancodes[code];
++	if (iso_layout) {
++		for (i=0; i<ARRAY_SIZE(apple_iso_keyboard); i++) {
++			if (apple_iso_keyboard[i].from == key) {
++				return apple_iso_keyboard[i].to;
++			}
++		}
++	}
++
++	return key;
+ }
+ 
+ static void
+-- 
+2.12.2
+
