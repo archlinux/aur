@@ -2,7 +2,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=aladin
 pkgver=9.013
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive software sky atlas"
 arch=('any')
 url="http://aladin.u-strasbg.fr/aladin.gml"
@@ -11,7 +11,7 @@ license=('GPL3')
 noextract=('Aladin.jar')
 source=('http://aladin.u-strasbg.fr/java/download/Aladin.jar'
         'aladin.run' 'aladin.png' 'aladin.desktop')
-md5sums=('5026fbd769b0516948866a2ed720dcc6'
+md5sums=('16601215aee6771ba8519665d9fded1e'
          '8f5c34afe96b4a3034806ea1b70c8c77'
          'c79258b73b96c53c98779ae7c2003f31'
          '870c25beb85eaf25f78530f52f0fac62')
