@@ -25,7 +25,7 @@ declare -rgA _system_libs=(
 
 pkgname=chromium
 pkgver=58.0.3029.81
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
