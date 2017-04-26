@@ -6,7 +6,7 @@
 pkgname=davinci-resolve
 _pkgname=resolve
 pkgver=12.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -18,7 +18,7 @@ source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
 sha256sums=('d0235480f400f531729ceec2e5daf5334191d1a59d3c32c5e0d8b32c69f88b38')
 
 package() {
-	mkdir -p "${pkgdir}/opt/${_pkgname}/{bin,configs}"
+	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs}
 
 	msg2 "Extracting from bundle..."
 	cd "${srcdir}" || exit
