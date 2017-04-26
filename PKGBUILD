@@ -9,7 +9,7 @@ arch=('any')
 url="http://kde-look.org/content/show.php/Iceglass?content=121145"
 license=('GPL')
 options=(!strip)
-source=("https://dl.dropbox.com/u/4514366/AUR/${_realname}-${pkgver}.tar.xz")
+source=("${_realname}-${pkgver}.tar.xz::https://www.dropbox.com/s/go4e6z694q1ofzq/${_realname}-${pkgver}.tar.xz?dl=1")
 sha1sums=('09363cd8b6015d377a7f1b3bd4d0b46a76c4ea79')
 
 package() {
