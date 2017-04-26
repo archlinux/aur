@@ -7,14 +7,14 @@
 
 pkgname=hipchat
 pkgver=4.29.4.1662
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent group chat using XMPP"
 arch=('x86_64')
 url="https://www.hipchat.com/linux"
 license=('custom')
 depends=('fontconfig' 'libgl' 'libltdl' 'libxslt' 'hicolor-icon-theme'
          'libxcomposite' 'libxcursor' 'libxkbcommon' 'libxrandr' 'libxslt' 'libxss'
-         'libpulse' 'xcb-util-keysyms' 'nss')
+         'libpulse' 'xcb-util-keysyms' 'nss' 'openssl-1.0')
 source=("https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/pool/HipChat4-${pkgver}-Linux.deb" "license.html")
 sha1sums=('9a92f389b24bea827fae76d3310c360023d4a214'
           'd57436db297ab4313a5964bba05060e2c7e93e70')
@@ -32,4 +32,9 @@ package() {
   cp -R "${srcdir}/${pkgname}-${pkgver}"/{opt,usr} "${pkgdir}"
   mkdir -p "${pkgdir}/usr/bin"
   ln -nsf "/opt/HipChat4/bin/HipChat4" "${pkgdir}/usr/bin/hipchat4"
+
+  ln -nsf "/usr/lib/libssl.so.1.0.0" "${pkgdir}/opt/HipChat4/lib/"
+  ln -nsf libssl.so.1.0.0 "${pkgdir}/opt/HipChat4/lib/libssl.so"
+  ln -nsf "/usr/lib/libcrypto.so.1.0.0" "${pkgdir}/opt/HipChat4/lib/"
+  ln -nsf libcrypto.so.1.0.0 "${pkgdir}/opt/HipChat4/lib/libcrypto.so"
 }
