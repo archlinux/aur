@@ -13,6 +13,7 @@ pkgbase = whipper-git
 	depends = cdparanoia
 	depends = cdrdao
 	depends = libsndfile
+	depends = mutagen
 	depends = python2-musicbrainzngs
 	depends = python2-pycdio
 	depends = python2-setuptools
