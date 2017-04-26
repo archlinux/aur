@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=sigviewer
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A viewing application for biosignals"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://github.com/cbrnr/sigviewer/archive/v$pkgver.zip)
 noextract=()
-sha1sums=('97d11343b0aadd3218cd36ce8a624b9af78dd614')
+sha1sums=('264f3d01da215c7493a566509f05eb7f25e56ee0')
 
 build() {
   cd "$srcdir/sigviewer-$pkgver"
