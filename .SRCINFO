@@ -1,0 +1,18 @@
+pkgbase = menu-calc
+	pkgdesc = A calculator for Rofi/dmenu(2)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/sumnerevans/menu-calc
+	arch = any
+	license = MIT
+	depends = bc
+	depends = xclip
+	optdepends = dmenu: required if rofi is not installed
+	optdepends = rofi: required if dmenu is not installed
+	provides = =
+	conflicts = =
+	source = git+https://github.com/sumnerevans/menu-calc
+	md5sums = SKIP
+
+pkgname = menu-calc
+
