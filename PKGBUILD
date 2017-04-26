@@ -1,34 +1,35 @@
-# $Id: PKGBUILD 199904 2016-12-17 00:25:38Z foutrelis $
+# $Id: PKGBUILD 224939 2017-04-24 12:10:38Z jgc $
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=gdal-hdf4
 _pkgname=gdal
-pkgver=2.1.1
-pkgrel=4.1
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
 license=('custom')
-depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
-         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs' 'hdf4-nonetcdf')
+depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4-nonetcdf'
+         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs')
 makedepends=('perl' 'swig' 'chrpath' 'doxygen')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl:  perl binding support')
-options=('!emptydirs')
 provides=('gdal')
 conflicts=('gdal')
+options=('!emptydirs')
 changelog=$_pkgname.changelog
 source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz)
-sha256sums=('87ce516ce757ad1edf1e21f007fbe232ed2e932af422e9893f40199711c41f92')
+sha256sums=('b597f36bd29a2b4368998ddd32b28c8cdf3c8192237a81b99af83cc17d7fa374')
 
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
 
 # python2 fixes
   sed -i 's_python python1.5_python2 python python1.5_' configure
+  sed -i -e 's@uchar@unsigned char@' frmts/jpeg2000/jpeg2000_vsil_io.cpp
   for file in swig/python/{,osgeo/,samples/,scripts/}*.py; do
       sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
   done
@@ -45,15 +46,12 @@ build() {
   export LDFLAGS="$LDFLAGS -Wl,--as-needed" 
 
   ./configure --prefix=/usr --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
-              --with-mysql --with-python=/usr/bin/python2 --with-curl --with-hdf5 --with-hdf4 --with-perl --with-geos \
+              --with-mysql --with-python=/usr/bin/python2 --with-curl --with-hdf4 --with-hdf5 --with-perl --with-geos \
               --with-png --with-poppler --with-spatialite --with-openjpeg
 
 # workaround for bug #13646
   sed -i 's/PY_HAVE_SETUPTOOLS=1/PY_HAVE_SETUPTOOLS=/g' ./GDALmake.opt
   sed -i 's/EXE_DEP_LIBS/KILL_EXE_DEP_LIBS/' apps/GNUmakefile
-  
-# bug: http://osgeo-org.1560.x6.nabble.com/gdal-dev-jpeg2000-jasper-error-compiling-gdal-2-1-from-git-release-branch-td5299100.html
-  sed -i -e 's@uchar@unsigned char@' frmts/jpeg2000/jpeg2000_vsil_io.cpp
 
   make
   make man
