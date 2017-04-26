@@ -2,14 +2,14 @@
 
 pkgname=sslscan-git
 pkgver=413.1070b06
-pkgrel=1
+pkgrel=2
 pkgdesc="sslscan tests SSL/TLS enabled services to discover supported cipher suites"
 arch=('i686' 'x86_64')
 url="https://github.com/rbsec/sslscan"
 license=('GPL3')
 makedepends=('git' 'gcc' 'make')
 conflicts=('sslscan')
-source=("$pkgname"::'git://github.com/rbsec/sslscan.git')
+source=("$pkgname"::'git+https://github.com/rbsec/sslscan.git')
 sha1sums=('SKIP')
 
 pkgver() {
