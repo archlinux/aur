@@ -2,7 +2,7 @@
 
 pkgname=php56-oci8
 _extname=oci8
-pkgver=2.0.10
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="PHP extension for OCI8"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('PHP')
 depends=('php56' 'oracle-instantclient-sdk')
 backup=("etc/php56/conf.d/${_extname}.ini")
 source=("http://pecl.php.net/get/${_extname}-${pkgver}.tgz")
-md5sums=('57b493709b177f475eec19d80d6b47cc')
+md5sums=('1f189ebda749b403bc53c0bd0ddaf2c1')
 
 build() {
   cd "${_extname}-${pkgver}"
