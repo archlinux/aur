@@ -9,7 +9,7 @@
 
 pkgname=whipper-git
 pkgver=0.5.1.r0.g17b70ce
-pkgrel=1
+pkgrel=2
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
 url="https://github.com/JoeLametta/whipper"
