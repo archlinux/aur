@@ -2,7 +2,7 @@
 
 pkgname=zcash
 pkgver=1.0.8_1
-pkgrel=1
+pkgrel=2
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
@@ -33,7 +33,7 @@ build() {
     cd ${pkgname}-1.0.8-1
 
     cd depends
-    libs=('bdb' 'googletest' 'googlemock' 'librustzcash' 'libsnark' 'openssl')
+    libs=('bdb' 'googletest' 'googlemock' 'librustzcash' 'libsnark')
     for lib in "${libs[@]}"; do
         make ${lib}
     done
