@@ -5,7 +5,7 @@
 # Contributor: Richard Murri <admin@richardmurri.com>
 _pkgname=jython
 pkgname=$_pkgname-hg
-pkgver=r7962.91083509a11c
+pkgver=r8074.fc946dea9c0f
 pkgrel=1
 pkgdesc="An implementation of the Python language written in Java"
 arch=('any')
@@ -37,6 +37,12 @@ build() {
     # ANTLR 3 causes non-fatal errors with Java 8, so just try again
     # http://stackoverflow.com/a/22367682/3786245
     ant || ant
+}
+
+check() {
+    cd "$srcdir/$_pkgname"
+
+    ant test
 }
 
 package() {
