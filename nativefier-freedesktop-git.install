@@ -1,0 +1,5 @@
+post_install() {
+  echo "Remember to create the following directories:"
+  echo "mkdir -p ~/.local/share/icons"
+  echo "mkdir -p ~/.local/share/applications"
+}
