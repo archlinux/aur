@@ -10,7 +10,7 @@ pkgver=${_major}b${_build}
 #pkgver=${_major}u${_minor}.b${_build}
 pkgrel=1
 arch=('any')
-url="https://jdk$_major.java.net/"
+url="http://jdk.java.net/$_major/"
 license=('custom:Oracle BSD')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')

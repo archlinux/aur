@@ -1,7 +1,7 @@
 pkgbase = jdk-devel-docs
 	pkgver = 9b166
 	pkgrel = 1
-	url = https://jdk9.java.net/
+	url = http://jdk.java.net/9/
 	arch = any
 	license = custom:Oracle BSD
 	optdepends = java-environment>=9: Compile and run examples
