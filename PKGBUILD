@@ -2,7 +2,7 @@
 
 pkgname=wavebox-bin
 pkgver=3.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64' 'i686')
 url="https://wavebox.io/"
@@ -32,7 +32,10 @@ package() {
   mkdir -p "${pkgdir}/usr/share/wavebox"
   mkdir -p "${pkgdir}/usr/share/applications"
 
-  cp -R ./* "${pkgdir}/usr/share/wavebox"
-  cp "${srcdir}/wavebox.desktop" "${pkgdir}/usr/share/applications/wavebox.desktop"
+  cp --preserve=mode -R ./* "${pkgdir}/usr/share/wavebox"
+  install -m644 "${srcdir}/wavebox.desktop" "${pkgdir}/usr/share/applications/wavebox.desktop"
   ln -s "/usr/share/wavebox/Wavebox" "${pkgdir}/usr/bin/wavebox"
+
+  chmod 644 "${pkgdir}/usr/share/wavebox/icon.png"
+  chmod 644 "${pkgdir}/usr/share/wavebox/libnode.so"
 }
