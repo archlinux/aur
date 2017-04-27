@@ -4,7 +4,7 @@
 pkgbase=python-regex
 pkgname=('python-regex' 'python2-regex')
 pkgname=python-regex
-pkgver=2017.01.17
+pkgver=2017.04.23
 pkgrel=1
 pkgdesc="Alternative python regular expression module."
 arch=(any)
@@ -12,8 +12,8 @@ url="https://bitbucket.org/mrabarnett/mrab-regex"
 license=('Python')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/bd/e6/c2ce19ae370d1b4a597762606ef607e14cdca866699e2622ceb29cac90fe/regex-2017.01.17.tar.gz")
-sha256sums=('bc4308766b2473802842cd13b78dae4ccfb49b0cba6aa39f958ecfad4216d9a2')
+source=('https://pypi.python.org/packages/c1/8e/50066f0fe05841759327f3cfa40fec8b94da12eab022d480e7c56315dc2f/regex-2017.04.23.tar.gz')
+sha256sums=('ebac6140f097bec2dce310e08b21a46c60fd93a5e18ed31b32dbe5624fc3e6bd')
 
 package_python2-regex() {
   depends=('python2')
