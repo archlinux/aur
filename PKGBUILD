@@ -4,7 +4,7 @@
 # Contributor: Tom <reztho at archlinux dot org>
 
 pkgname=tuned
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('git')
 backup=('etc/tuned/active_profile')
 install="${pkgname}.install"
 source=("https://jskarvad.fedorapeople.org/${pkgname}/download/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('03333eda9f3744ec214b1c20d0f79528a6438dafd5c79ff459b411414491802d')
+sha256sums=('3da453af1d1f13ac46966499b1f1373cf3718bdb3207f82aca8b66e894e69bc7')
 
 package() {
 	cd "${pkgname}-${pkgver}"
