@@ -2,7 +2,7 @@
 
 pkgname=dispmanx_vnc
 pkgver=21fa4e9
-pkgrel=1
+pkgrel=2
 pkgdesc="VNC Server for Raspberry Pi using dispmanx"
 arch=('armv7h')
 url="https://github.com/hanzelpeter/dispmanx_vnc"
@@ -11,9 +11,6 @@ depends=('libvncserver')
 makedepends=('git')
 source=("git://github.com/hanzelpeter/dispmanx_vnc")
 md5sums=('SKIP')
-
-# Note the license is currently unknow pending a reply from upstream
-# https://github.com/hanzelpeter/dispmanx_vnc/issues/14
 
 pkgver() {
   cd "$pkgname"
