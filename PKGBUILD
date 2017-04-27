@@ -1,8 +1,8 @@
-# Maintainer: Marco Pompili <aur@emarcs.org>
+# Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
 
 _npmname=nightwatch
 pkgname=nodejs-$_npmname
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="Write End-to-End tests in Node.js quickly and effortlessly that run against a Selenium server."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('2b93e4b0fd96389963eed79e50b3930dfff1a036994f2a4ccb3b986ba1f56979')
+sha256sums=('089df5c4658cadca71a71b6fa26f3563fc84c6089fb56661a4a660d007be9bba')
 noextract=($_npmname-$pkgver.tgz)
 
 package() {
