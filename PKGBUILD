@@ -1,9 +1,9 @@
-# Maintainer: Marco Pompili <aur@emarcs.org>
+# Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=nodejs-ungit
 _npmname=ungit
-pkgver=1.1.14
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
@@ -24,3 +24,4 @@ package() {
   msg2 'Renaming binary from 0ungit-credentials-helper to ungit-credentials-helper'
   mv "$pkgdir/usr/bin/0ungit-credentials-helper" "$pkgdir/usr/bin/ungit-credentials-helper"
 }
+
