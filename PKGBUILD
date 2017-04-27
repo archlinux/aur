@@ -15,5 +15,5 @@ optdepends=('hdparm' 'smartmontools' 'inxi' 'pnputils')
 package() {
   cd "$srcdir"/hw-probe-$pkgver
   install -dm755 "$pkgdir"/usr
-  make install prefix="$pkgdir"/usr
+  DESTDIR="$pkgdir" make install prefix=/usr
 }
