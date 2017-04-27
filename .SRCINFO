@@ -11,7 +11,7 @@ pkgbase = nautilus-megasync
 	depends = megasync>=2.9.8
 	depends = qt4
 	provides = nautilus-megasync
-	source = https://mega.nz/linux/MEGAsync/Debian_8.0/nautilus-megasync_2.9.2.orig.tar.gz
+	source = https://mega.nz/linux/MEGAsync/Debian_8.0/nautilus-megasync_3.0.1.orig.tar.gz
 	sha256sums = b20f65224bdba0d74076a1e5c3e69eec60c1d91c7058409992deaf2f87f120a0
 
 pkgname = nautilus-megasync
