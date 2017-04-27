@@ -355,7 +355,7 @@ create_install_script() {
 package() {
   adjust_bin_dir
 
-  #create_install_script
+  create_install_script
 
   # cleanup
   rm -Rf ${pkgdir}

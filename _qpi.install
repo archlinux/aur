@@ -1,7 +1,3 @@
-_piver="libspiver"
-_qmakepath="libsqmakepath"
-_sysroot="libssysroot"
-
 _sdktool="/usr/libexec/qtcreator/sdktool"
 _devicefamily="raspberrypi"
 _devicename="${_devicefamily}${_piver}"
