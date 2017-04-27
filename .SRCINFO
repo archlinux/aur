@@ -1,0 +1,15 @@
+pkgbase = ruby-gnuplot
+	pkgdesc = Utility library to aid in interacting with gnuplot from ruby
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = http://github.com/rdp/ruby_gnuplot
+	arch = any
+	license = BSD3
+	makedepends = rubygems
+	depends = ruby
+	noextract = gnuplot-2.6.2.gem
+	source = https://rubygems.org/downloads/gnuplot-2.6.2.gem
+	sha256sums = d2c28d4a55867ef6f0a5725ce157581917b4d27417bc3767c7c643a828416bb3
+
+pkgname = ruby-gnuplot
+
