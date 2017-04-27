@@ -47,7 +47,7 @@ build() {
 
     sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
 
-    scons platform=x11 target=release_debug CXX=clang++ -j$(nproc) 
+    scons platform=x11 target=release_debug CXX=clang++ -j$(nproc) builtin_openssl=yes 
 }
 
 package() {
