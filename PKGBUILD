@@ -10,7 +10,7 @@ url="http://code.google.com/p/fcitx"
 license=('GPL')
 depends=('fcitx' 'anthy')
 makedepends=('cmake' 'intltool')
-source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
 sha512sums=('a4b1eeba813481cc40617e70bd5ee97d1921dc92bab15cf0bdc059d689c239e46caf9e8aba3403ff6374acfbdea565261a948444fe40fa18d5513797eccbd28d'
             'SKIP')
 validpgpkeys=('2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9')  # Weng Xuetian
