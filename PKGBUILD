@@ -2,7 +2,7 @@
 
 _gemname=hanami-mailer
 pkgname=ruby-$_gemname
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Mail for Ruby applications and Hanami mailers.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-hanami-utils ruby-mail ruby-tilt)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('94c2adb8ff1db6e5316d8ad0a16696c58e9522dbb652aa7d0d0155f187cc6fa0')
+sha256sums=('d3804db9464970866013547026bd2234ab1f278f835447fd71d5652f315674f1')
 
 package() {
   cd "$srcdir"
