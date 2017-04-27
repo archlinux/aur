@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name= jskycalc
+GenericName= jskycalc
+Comment=Tool for OPerations on Catalogues And Tables
+Exec=jskycalc
+Icon=jskycalc
+Terminal=false
+Type=Application
+Categories=Application;Sciences;Other;

@@ -1,0 +1,21 @@
+pkgbase = jskycalc
+	pkgdesc = A tool for observing preparation in java
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.dartmouth.edu/~physics/labs/skycalc/flyer.html
+	arch = any
+	license = custom
+	depends = java-environment
+	depends = sh
+	noextract = JSkyCalc.jar
+	source = http://www.dartmouth.edu/~physics/labs/skycalc/JSkyCalc.jar
+	source = jskycalc
+	source = jskycalc.desktop
+	source = jskycalc.png
+	sha1sums = 09f00cb1925f7b62a0237694007f18670857b32b
+	sha1sums = 126b4cd9b01821f5d735c29b0bef5703bfc411de
+	sha1sums = 1a8c532a74c689fcf7b10ba8ccbde03585899496
+	sha1sums = 8ea495aa3508822a2b939b6ff819e18b9a2d3803
+
+pkgname = jskycalc
+
