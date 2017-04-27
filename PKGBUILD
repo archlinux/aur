@@ -2,8 +2,8 @@
 
 pkgname='autodl-irssi-community'
 _pkgname='autodl-irssi'
-pkgver=1.62
-pkgrel=4
+pkgver=1.64
+pkgrel=1
 pkgdesc='Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.'
 arch=('any')
 url='https://github.com/autodl-community/autodl-irssi'
@@ -20,15 +20,14 @@ depends=('irssi'
          'perl-xml-libxslt')
 makedepends=('git')
 install="${pkgname}.install"
-optdepends=('rutorrent-autodl-irssi-community: Community autodl-irssi plugin for rutorrent.')
 provides=("${_pkgname}")
 replaces=("autodl-irssi-svn")
 conflicts=("autodl-irssi-svn")
-source=("https://github.com/autodl-community/autodl-irssi/releases/download/community-v${pkgver}/${pkgname}-v${pkgver}.zip")
-md5sums=('1fd5701578f69a293547fea7f697c6e1')
+source=("https://github.com/autodl-community/${_pkgname}/archive/community-v${pkgver}.tar.gz")
+md5sums=('6bc8c713949897b683a8811ed57ec40c')
 
 package() {
-  cd "$srcdir/"
+  cd "$srcdir/${pkgname}-v${pkgver}"
 
 	install -dm755 "$pkgdir/usr/share/$_pkgname"
 
@@ -41,4 +40,4 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/$_pkgname"
 }
 
-# vim:ts=2 sw=2 
+# vim:ts=2 sw=2 et:

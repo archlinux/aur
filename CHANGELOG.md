@@ -3,13 +3,39 @@
 Notable changes for the [autodl-irssi-community](https://github.com/autodl-community/autodl-irssi) project.
 
 
+## [community-v1.64](https://github.com/autodl-community/autodl-irssi/releases/tag/community-v1.64) (2017-03-18)
+
+[Commits](https://github.com/autodl-community/autodl-irssi/compare/community-v1.63...community-v1.64)
+
+### Added
+
+* Add HEVC/x265 constants.
+
+### Fixed
+
+* Fixed update callback references.
+
+
+## [community-v1.63](https://github.com/autodl-community/autodl-irssi/releases/tag/community-v1.63) (2017-03-09)
+
+[Commits](https://github.com/autodl-community/autodl-irssi/compare/community-v1.62...community-v1.63)
+
+### Changed
+
+* Add release to download history earlier in the process.
+
+### Fixed
+
+* Fix smart-episode logic.
+
+
 ## [community-v1.62](https://github.com/autodl-community/autodl-irssi/releases/tag/community-v1.62) (2016-03-14)
 
 [Commits](https://github.com/autodl-community/autodl-irssi/compare/community-v1.61...community-v1.62)
 
 ### Added
 
-* Add smart-episode filter option
+* Add smart-episode filter option.
 
 
 ## [community-v1.61](https://github.com/autodl-community/autodl-irssi/releases/tag/community-v1.61) (2016-01-25)
@@ -19,11 +45,11 @@ Notable changes for the [autodl-irssi-community](https://github.com/autodl-commu
 ### Added
 
 * Add priority filter option.
-* Add message for successful loading of configuration files
+* Add message for successful loading of configuration files.
 
 ### Changed
 
-* Changed method for matching release groups
+* Changed method for matching release groups.
 
 
 ## [community-v1.60](https://github.com/autodl-community/autodl-irssi/releases/tag/community-v1.60) (2015-10-01)
