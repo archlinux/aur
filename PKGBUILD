@@ -1,15 +1,16 @@
-# Maintainer: Valerio Pizzi (Pival81) <pival81@yahoo.com>
+# Maintainer: Joakim Nylen (jnylen) <me@jnylen.nu>
+# Contributor: Valerio Pizzi (Pival81) <pival81@yahoo.com>
 # Contributor: Ashley Whetter <(firstname) @ awhetter.co.uk> (for original spotify PKGBUILD)
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-_pkgver=1.0.52.717
-_another_pkgver=g2f08534a
-_yetanotherpkgrel64=47
-_yetanotherpkgrel32=47
+_pkgver=1.0.53.758
+_another_pkgver=gde3fc4b2
+_yetanotherpkgrel64=33
+_yetanotherpkgrel32=34
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}
 pkgrel=3
-pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify. Temp. using Owlinated's repo for player theme fix."
+pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify."
 makedepends=('imagemagick')
 arch=('x86_64' 'i686')
 license=('MIT')
@@ -23,15 +24,15 @@ source=('spotify'
 'spotify.protocol'
 'spotio-icons.zip'
 'spotio.desktop'
-'spotio.zip::https://github.com/Owlinated/spotio/archive/master.zip')
+'spotio.zip::https://github.com/devinhalladay/spotio/archive/master.zip')
 
 sha256sums=('989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34'
 	   'af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3'
 	   '3fdc1ebd9e64bae98cfd2bc9fc3199427bd7ec680254cd6361d9b0f4bb121134'
 	   'abab92b537b10c861023927db10d71c5cd6bcc0afc7ab7a5ffae7094cc3c6f46'
 	   'SKIP')
-sha256sums_x86_64=('475af745895030f9711260a13edd9f144e92df64776057985af527b3e4250df7')
-sha256sums_i686=('feef78eeffd714935515aa7a2a24cb025f9d91e52a3abc9b285a32ec6a9e7f01')
+sha256sums_x86_64=('6fac209d35828bc9a8bc5449320b92310462a2f78201e3ea620e743fc45e06ea')
+sha256sums_i686=('1c559e776481ae8b03d966bd931f788030d41ad9cd751c43fe99616494a7d84a')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel64}_amd64.deb")
 
