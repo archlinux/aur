@@ -1,7 +1,7 @@
 #Maintainer: Jan Koppe <post@jankoppe.de>
 pkgname=pyca
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="Python Capture Agent for Opencast"
 arch=('any')
 url="https://github.com/opencast/pyCA"
@@ -14,11 +14,11 @@ source=("https://github.com/opencast/pyCA/archive/v$pkgver.tar.gz"
         "pycaui.service"
         "pyca.target")
 install="pyca.install"
-md5sums=("f685b7a77934cc5faea6d53003b18ecf"
-         "d16c4e1a394f0cf356f65555e8cb0334"
-         "10481ad2e93cac66ed5086b82b7627af"
-         "8d7c9144827127d4bb7f65958dbd7683"
-         "d411287de5dcc0e1ff6d8de5350918eb")
+md5sums=('c48f246eff3e33a04310da39c01578bf'
+         'd16c4e1a394f0cf356f65555e8cb0334'
+         '10481ad2e93cac66ed5086b82b7627af'
+         '8d7c9144827127d4bb7f65958dbd7683'
+         'd411287de5dcc0e1ff6d8de5350918eb')
 
 prepare() {
   cd pyCA-"${pkgver}"
