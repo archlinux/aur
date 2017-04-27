@@ -15,7 +15,7 @@ _micro=""
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
 pkgver="${_pkgver}${_micro}"
-pkgrel=4
+pkgrel=5
 pkgdesc="This is the latest stable release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL' 'LGPL' 'MIT')
@@ -100,7 +100,7 @@ package_compiz-core() {
 package_compiz-gtk()
 {
   #separating libmarco-private would be nice, but this is a workaround for now
-  depends+=('compiz-core-git')
+  depends+=('compiz-core')
   #separating libmarco-private would be nice, but this is a workaround for now
   if (("${_use_marco}" == 1));then
     depends+=('marco')
