@@ -2,7 +2,7 @@
 
 _gemname=hanami-validations
 pkgname=ruby-$_gemname
-pkgver=0.7.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Validations mixin for Ruby objects and support for Hanami.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-dry-validation ruby-hanami-utils)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('f7fb9b52db28982ee342eef729c7ca10184e1490776d2a35bd42a4930d87e613')
+sha256sums=('5351a24c1fabe8da99c8d73bfbedc5fb6905ed3fc3bd08f08cc39730e4511a09')
 
 package() {
   cd "$srcdir"
