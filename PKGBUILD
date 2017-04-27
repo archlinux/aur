@@ -1,7 +1,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Maintainer: Alexander Boyko <brdcom@ya.ru>
 pkgname=activemq
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
@@ -36,8 +36,7 @@ package() {
     rm -rf "${pkgdir}/opt/activemq/bin/macosx"
 }
 
-md5sums=('dc4fd0485e8234f71ea1f48fdf2b8247'
+md5sums=('5350de685069ba79cb4e0d5bc1f07abd'
          '0a1b2ac8850b833a5926f393069eee72'
          '86a4b3f9117acb83ba653859b053f966'
          'c819c4a17a9db352ea24bd90ce032b59')
-
