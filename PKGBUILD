@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
 pkgver=4.1.0.110
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ prepare() {
 	rm -rf "$srcdir/installer"
 	devtool --dump "$srcdir/installer" "$srcdir/svp4-linux-64.run"
 	for f in "$srcdir/installer/metadata/"*/*.7z; do
-		7z x -o"$srcdir/extracted/" "$f"
+		7z -y x -o"$srcdir/extracted/" "$f"
 	done
 }
 
