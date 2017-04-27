@@ -12,7 +12,7 @@ depends=('glibc')
 optdepends=('pygmentize: syntax-highlight code snippets.')
 makedepends=('go' 'git' 'govendor')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/spf13/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('a1d9a5502b5bc24cce7fdee12d7f826bb09d9f97e887c1b87482630e61775ac84b8ac7b47c1e4bb16edae200026a50071cc2a0a06b2163524ae1c8cb279a88f5')
+sha512sums=('ffed313351b05be3b665121a27febe2b336d05e2ba6c43176a7e07a0e796736ec384ba6b6caf679faa2469e59ec7021303f1db034008abe08bd5444132ce6b01')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
