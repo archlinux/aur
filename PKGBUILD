@@ -3,7 +3,7 @@
 pkgname='autodl-irssi-community'
 _pkgname='autodl-irssi'
 pkgver=1.64
-pkgrel=1
+pkgrel=2
 pkgdesc='Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.'
 arch=('any')
 url='https://github.com/autodl-community/autodl-irssi'
@@ -18,7 +18,6 @@ depends=('irssi'
          'perl-json'
          'perl-json-xs'
          'perl-xml-libxslt')
-makedepends=('git')
 install="${pkgname}.install"
 provides=("${_pkgname}")
 replaces=("autodl-irssi-svn")
