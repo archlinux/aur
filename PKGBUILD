@@ -2,7 +2,7 @@
 
 _gemname=hanami-controller
 pkgname=ruby-$_gemname
-pkgver=0.8.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Complete, fast and testable actions for Rack.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-hanami-utils ruby-rack)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('c5a2224720fb8c72d39e721ea724870363a76c459aef79f94e7a8808d1a7cbc6')
+sha256sums=('501edc54d3f93716abe2c23d7176ae2f4008537d3b6fed6f3b27e2bb8c746833')
 
 package() {
   cd "$srcdir"
