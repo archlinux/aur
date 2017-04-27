@@ -1,0 +1,45 @@
+pkgbase = fme-desktop-2017
+	pkgdesc = An ETL tool with support for location data
+	pkgver = 2017.0.0.2.17280
+	pkgrel = 1
+	url = http://safe.com
+	arch = x86_64
+	license = custom:"Copyright (c) 2017 Safe Software Inc."
+	depends = glibc>=2.17
+	depends = expat>=2.0.1
+	depends = freetype2>=2.2.1
+	depends = gcc-libs>=4.2
+	depends = mesa
+	depends = glib2>=2.16.0
+	depends = gmp
+	depends = libtool>=2.4.6
+	depends = mpfr>=3.1.3
+	depends = unixodbc>=2.3.1
+	depends = libpng12>=1.2.13
+	depends = python2>=2.7
+	depends = python>=3.5
+	depends = qt5-base>=5.5.1
+	depends = qt5-svg>=5.0.2
+	depends = qt5-webkit>=5.2.0
+	depends = qt5-xmlpatterns
+	depends = sqlite>=3.7.15
+	depends = libssh2>=1.2.8
+	depends = libutil-linux>=2.16
+	depends = libx11
+	depends = libxml2>=2.7.4
+	depends = zlib>1:1.2.0
+	depends = python-matplotlib>=1.2.0
+	depends = python2-matplotlib>=1.2.0
+	depends = python-numpy>=1.8.0
+	depends = python2-numpy>=1.8.0
+	depends = java-runtime-headless=7
+	depends = lsb-release>=1.4-1
+	depends = graphviz>=2.30
+	provides = fme-desktop
+	options = !strip
+	options = !upx
+	source = https://downloads.safe.com/fme/2017/fme-desktop-2017_2017.0.0.2.17280~ubuntu.16.04_amd64.deb
+	sha256sums = f6efe59428021b799c832065f0e28440c86f27caa60e8bcd91d6861ce06ba237
+
+pkgname = fme-desktop-2017
+
