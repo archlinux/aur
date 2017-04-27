@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.7
-pkgrel=2
+pkgrel=3
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.12.0
+_nginxver=1.13.0
 
 pkgdesc='Lua script engine module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('b4222e26fdb620a8d3c3a3a8b955e08b713672e1bc5198d1e4f462308a795b30'
+sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
             'c21c8937dcdd6fc2b6a955f929e3f4d1388610f47180e60126e6dcab06786f77')
 
 build() {
