@@ -2,7 +2,7 @@
 
 pkgname=sandboxed-tor-browser
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 torbrowserver=7.0a3	# for easier source access
 epoch=
 pkgdesc="A sandboxed version of the Tor Browser, currently in alpha!"
@@ -11,7 +11,7 @@ url="https://trac.torproject.org/projects/tor/wiki/doc/TorBrowser/Sandbox/Linux"
 license=('AGPL3')
 groups=()
 depends=(bubblewrap gtk3 gnome-themes-standard)
-makedepends=(make gcc gb go libnotify)
+makedepends=(make gcc libnotify)
 checkdepends=()
 optdepends=(libnotify)
 provides=("${pkgname%}")
@@ -21,14 +21,15 @@ backup=()
 options=()
 install=
 changelog=
-source_x86_64=("https://www.torproject.org/dist/torbrowser/${torbrowserver}/sandbox-${pkgver}-linux64.zip")
+source_x86_64=("https://www.torproject.org/dist/torbrowser/${torbrowserver}/sandbox-${pkgver}-linux64.zip"{,.asc})
 source+=("${pkgname}.desktop"
         "${pkgname}.png")
 noextract=()
 md5sums=('49042133dbfad9f06df48c934dc123e6'
          '494afbfa60fb4ce21840244cc3f7208c')
-md5sums_x86_64=('f4b2dc8cbaf5cfc7cae0645d5e47c917')
-validpgpkeys=()
+md5sums_x86_64=('f4b2dc8cbaf5cfc7cae0645d5e47c917'
+                'SKIP')
+validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
 package() {
 	cd "$srcdir"
