@@ -2,14 +2,14 @@
 
 pkgname=madgraph-pythia-pgs
 pkgver=2.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Parton showering, hadronization and detector simulation."
 url="https://launchpad.net/pythia-pgs-for-mg"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('madgraph' 'tcsh')
 source=("http://madgraph.hep.uiuc.edu/Downloads/pythia-pgs_V${pkgver}.tar.gz")
-sha256sums=('cbe24abc976027eba9675d90b8080a2a5231205d55b9f7fbef5092c9ad2c69db')
+sha256sums=('96d2183d914ae5ad2af084fb90b69aca3ab10ca6adf1d915cb1d143317e387aa')
 
 prepare() {
     if [[ "$arch" -eq "i686" ]]; then
