@@ -1,0 +1,27 @@
+# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+
+pkgname=emacs-neotree
+pkgver=0.5.1
+pkgrel=1
+pkgdesc="Project Interaction Library for Emacs"
+arch=(any)
+url="https://github.com/jaypei/emacs-neotree"
+license=('GPL3')
+depends=('emacs' 'emacs-ag' 'emacs-helm')
+source=("https://github.com/jaypei/emacs-neotree/archive/${pkgver}.ta
+r.gz")                                                              
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/emacs-neotree-${pkgver}"
+  emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
+}
+
+package() {
+  cd "${srcdir}/emacs-neotree-${pkgver}"
+  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/neotree/icons/"
+  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/neotree
+/"                                                                  
+  install -m644 icons/*.xpm "${pkgdir}/usr/share/emacs/site-lisp/neot
+ree/icons/"                                                         
+}
