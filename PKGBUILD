@@ -2,7 +2,7 @@
 
 pkgname=ti99sim
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Texas Instruments TI-99/4A Home Computer Emulator'
 arch=('i686' 'x86_64')
 url='http://www.mrousseau.org/programs/ti99sim'
@@ -11,7 +11,7 @@ makedepends=('sdl')
 depends=('sdl')
 
 source=("${url}/archives/${pkgname}-${pkgver}.src.tar.xz"
-        "https://computerarchive.org/files/comp/files/Texas instruments ti-99/TIMRaD2.zip")
+        "https://computerarchive.org/files/comp/files/Texas%20instruments%20ti-99/TIMRaD2.zip")
 
 sha256sums=('deb74cf88956434ea3058f80bddb3eb3674d9773155f6d5aa1533feebb8ba88e'
             'bf01737f996a335f4be84d2b170d2e16704b8242bd8447c5b6debb5b4f959b55')
