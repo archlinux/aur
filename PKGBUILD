@@ -2,8 +2,8 @@
 
 _pkgname=cleanupdate
 pkgname=cleanupdate-git
-pkgver=0.6
-pkgrel=11
+pkgver=0.7
+pkgrel=0
 pkgdesc="A simple script to speed up updating and cleaning your system"
 arch=('any')
 url="https://github.com/cubanpit/$_pkgname"
@@ -17,6 +17,11 @@ optdepends=('yaourt: needed for AUR support (alternative to pacaur)'
 conflicts=()
 source=("git://github.com/cubanpit/$_pkgname")
 md5sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 package () {
 	cd "$srcdir"
