@@ -7,10 +7,10 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  [ffmpeg]=ffmpeg
+  #[ffmpeg]=ffmpeg     # https://bugs.archlinux.org/task/53796
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
-  #[icu]=icu
+  #[icu]=icu           # Enable again when upstream supports ICU 59
   [libjpeg]=libjpeg
   [libpng]=libpng
   #[libvpx]=libvpx     # https://bugs.gentoo.org/show_bug.cgi?id=611394
@@ -25,7 +25,7 @@ declare -rgA _system_libs=(
 
 pkgname=chromium
 pkgver=58.0.3029.81
-pkgrel=3
+pkgrel=4
 _launcher_ver=3
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
@@ -71,7 +71,7 @@ prepare() {
     patch -Np1
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
+  #patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
   patch -Np1 -i ../chromium-gn-bootstrap-r2.patch
 
   # Use Python 2
