@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sword-svn
-pkgver=3458
+pkgver=3459
 pkgrel=1
 pkgdesc="Libraries for Bible programs - svn-version"
 arch=('i686' 'x86_64')
