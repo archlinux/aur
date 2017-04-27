@@ -18,7 +18,7 @@ fi
 
 pkgname=junest-git
 pkgver=6.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
 url="http://fsquillace.github.io/junest-site/"
@@ -44,11 +44,11 @@ PKGVER_YAOURT='1.8.1'
 source=('junest::git+https://github.com/fsquillace/junest.git#branch=master' "https://github.com/archlinuxfr/$PKGNAME_YAOURT/releases/download/$PKGVER_YAOURT/$PKGNAME_YAOURT-$PKGVER_YAOURT.tar.xz" "$PROOT_LINK/proot-x86_64" "$PROOT_LINK/proot-x86" "$PROOT_LINK/proot-arm")
 source_x86_64=("${QEMU_LINK}/x86_64/qemu-x86_64-static-x86" "${QEMU_LINK}/x86_64/qemu-x86_64-static-arm")
 source_i686=("${QEMU_LINK}/x86/qemu-x86-static-x86_64" "${QEMU_LINK}/x86/qemu-x86_64-static-arm")
-source_arm=("${QEMU_LINK}/arm/qemu-arm-static-x86_64" "${QEMU_LINK}/arm/qemu-arm-static-x86")
+source_armv7l=("${QEMU_LINK}/arm/qemu-arm-static-x86_64" "${QEMU_LINK}/arm/qemu-arm-static-x86")
 md5sums=('SKIP' '0c20b1d7b9c582b896ede30a9d95766b' '14080705dd45a6bafa20e909a68072cb' 'b1c08236b56d121e04e9e29b197d0eeb' '8218c5f00e77e2e6e04c372ced27c7e7')
 md5sums_x86_64=('8a706d734f8c790743a8114dda4c344a' '3ced729c95d2514f35d4899e944a4582')
 md5sums_x86=('c28d5049193dbce75efa0c8655d71427' 'f75fd15722fcc2914e3de0b0a46eb982')
-md5sums_arm=('bd9de1927aae4eb26dc0e5615159a616' 'a7c2b6ca53fa166f0c06ec76cc5edd7d')
+md5sums_armv7l=('bd9de1927aae4eb26dc0e5615159a616' 'a7c2b6ca53fa166f0c06ec76cc5edd7d')
 noextract=()
 
 pkgver() {
