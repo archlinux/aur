@@ -2,7 +2,7 @@
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 
 pkgname=tensorflow
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -13,7 +13,7 @@ conflicts=('tensorflow' 'libtensorflow')
 makedepends=('git' 'bazel' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-_commit=e895d5ca395c2362df4f5c8f08b68501b41f8a98
+_commit=1ec6ed51182adf8f1b03a3188c16cd8a45ca6c85
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit")
 md5sums=('SKIP')
 
@@ -66,9 +66,9 @@ prepare() {
 build() {
   cd ${srcdir}/tensorflow
   ./configure
-  bazel build -c opt ${_build_opts} --copt=${CC_OPT_FLAGS} tensorflow:libtensorflow_c.so
+  bazel build -c opt ${_build_opts} --copt=${CC_OPT_FLAGS} tensorflow:libtensorflow.so
   # copy the built library out of the bazel directory
-  cp -f bazel-bin/tensorflow/libtensorflow_c.so .
+  cp -f bazel-bin/tensorflow/libtensorflow.so .
 }
 
 package() {
@@ -90,7 +90,7 @@ Requires:
 Libs: -L\${libdir} -ltensorflow -lstdc++
 Cflags: -I\${includedir}/tensorflow
 EOF
-  install -Dm644 libtensorflow_c.so ${pkgdir}/usr/lib/lib${pkgname}.so
+  install -Dm644 libtensorflow.so ${pkgdir}/usr/lib/lib${pkgname}.so
   install -Dm644 tensorflow.pc ${pkgdir}/usr/lib/pkgconfig/tensorflow.pc
   install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/${pkgname}/c_api.h
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
