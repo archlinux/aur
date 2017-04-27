@@ -8,7 +8,7 @@
 
 pkgname=curl-http2
 _pkgname=curl
-pkgver=7.53.1
+pkgver=7.54.0
 pkgrel=1
 pkgdesc="A URL retrieval utility and library (HTTP/2 enabled)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ conflicts=('curl' 'curl-git' 'curl-http2-git')
 options=('strip')
 source=("https://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"
         'curlbuild.h')
-sha512sums=('f4bd2bcbf0eca312be549d2552e453b9634bbe8f74a981c1d663c42efc79cc44b419d9f37da8f6fe2f315487e55a41078cbfcd0d82af4ec84885464b56b6d217'
+sha512sums=('57f73a4ffece65f4e12e30b1d4be4f54f434693ba64d32eca0da036830389854b699a6e0ad6c3d9e847eab73981de6d8ebdb1820cc8a40a5d163aec37ab554aa'
             '4e71366c3faaab76a6e438fcc484fb1ce16b2ae84eefa176879cf164e8fb0b04e4a355384e66a1137e9641e95041ee573553b43da98ec92820696d7256beb4f5')
 
 build() {
