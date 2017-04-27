@@ -1,11 +1,11 @@
 # Maintainer: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=centrifugo
-pkgver=1.6.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='Real-time messaging server for web applications'
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
-_vendor="github.com/centrifugal"
+_vendor='github.com/centrifugal'
 url=https://$_vendor/$pkgname
 license=('MIT')
 depends=('systemd')
