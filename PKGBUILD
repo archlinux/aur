@@ -6,7 +6,7 @@
 # Submitter: Bastien Traverse <firstname at lastname dot email>
 
 pkgname=hugo-bin
-pkgver=0.20.5
+pkgver=0.20.6
 pkgrel=1
 pkgdesc="A Fast and Flexible Static Site Generator built in Go - Precompiled binary from official repository"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -22,9 +22,9 @@ conflicts=('hugo')
 source_x86_64=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-64bit.tar.gz")
 source_i686=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-32bit.tar.gz")
 source_arm=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_linux_arm.tar.gz")
-sha256sums_x86_64=('c34a6b52137761ce931eb2acbb99eaa18d30ded471ae72a656d59207276e643c')
-sha256sums_i686=('26b3189aa66ff91c5dd00c038fad12a3d384c46b457d7e1dc829a1dcc588143e')
-sha256sums_arm=('0480b903db98534d7311d487d4f8479d75df9ee4035e128101fb7bb229678fb6')
+sha256sums_x86_64=('e251636d3c947ddbd826ee8bdd548e1a4bc7fbdae00909f2a3b24d0e3616d988')
+sha256sums_i686=('08eb63078f356315ce3cf5f273be0ab57aebb2c4a528badf1b2c0c0aeae8927d')
+sha256sums_arm=('e74b1c3ee9a8a3ff8e8ac9860a3b04a82513a23ecfc1ea511da809317542b280')
 
 case "$CARCH" in
   arm*) _pkgarch="arm"
