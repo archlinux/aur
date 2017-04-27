@@ -5,7 +5,7 @@
 _pkgname=utox
 _branch=develop
 pkgname=$_pkgname-git
-pkgver=0.14.0.r4.gf4fa1314
+pkgver=0.15.0.r17.g94bd175a
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -20,7 +20,7 @@ depends=('fontconfig'
          'openal'
          'toxcore'
          'v4l-utils')
-makedepends=('git')
+makedepends=('check' 'git')
 optdepends=('gtk3: GTK file picker')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
