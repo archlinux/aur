@@ -1,7 +1,8 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('kea')
 _srcname='kea'
 pkgver='1.1.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='DHCPv4/DHCPv6 server'
 arch=('i686' 'x86_64')
 url='http://kea.isc.org'
@@ -47,6 +48,7 @@ prepare() {
     cd "${srcdir}/${_srcname}"
 
     # /var/kea -> /var/lib/kea
+    # shellcheck disable=SC2016
     find . -path './.git' -prune -or -type f -exec sed --in-place  \
         --expression='s|/var/kea/kea-|/var/kea/|g' \
         --expression='s|/var/kea|/var/lib/kea|g' \
@@ -55,6 +57,7 @@ prepare() {
         '{}' '+'
 
     # /var/log -> /var/log/kea
+    # shellcheck disable=SC2016
     find . -path './.git' -prune -or -type f -exec sed --in-place  \
         --expression='s|/var/log/kea-|/var/log/|g' \
         --expression='s|/var/log|/var/log/kea|g' \
@@ -68,6 +71,7 @@ build() {
     cd "${srcdir}/${_srcname}"
 
     autoreconf --install --force --warnings='all'
+    # shellcheck disable=SC2016
     ./configure \
         --prefix='/usr' \
         --sbindir='${exec_prefix}/bin' \

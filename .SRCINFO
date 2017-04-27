@@ -1,7 +1,7 @@
 pkgbase = kea
 	pkgdesc = DHCPv4/DHCPv6 server
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kea.isc.org
 	arch = i686
 	arch = x86_64
