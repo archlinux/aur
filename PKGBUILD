@@ -1,14 +1,14 @@
-# Contributor: Chris Dunder <echo Y2R1bmRlckBnbWFpbC5jb20K | base64 -d>
-# Contributor: M Rawash <mrawash@gmail.com>
-# Contributor: olvar <beren dot olvar (at) gmail dot com>
-# Contributor: Andrew Antle <andrew dot antle at gmail dot com>
-# Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
-# Contributor: Jonathan Friedman <jonf@gojon.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Chris Dunder <echo Y2R1bmRlckBnbWFpbC5jb20K | base64
+# -d> Contributor: M Rawash <mrawash@gmail.com> Contributor: olvar
+# <beren dot olvar (at) gmail dot com> Contributor: Andrew Antle
+# <andrew dot antle at gmail dot com> Contributor: joyfulgirl
+# <joyfulgirl (at) archlinux.us> Contributor: Jonathan Friedman
+# <jonf@gojon.com> Maintainer: Stefan Husmann
+# <stefan-husmann@t-online.de>
 
 pkgname=stumpwm
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
@@ -31,7 +31,7 @@ optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
             'clx-truetype: for ttf-fonts.lisp (Xft fonts)')
 
 # Binary will not run other
-options=(!strip)  # Thanks to sidereus for pointing this out
+options=('!strip' '!makeflags')  # Thanks to sidereus for pointing this out
 
 build() {
   cd ${pkgname}-${pkgver}
