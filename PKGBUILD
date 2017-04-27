@@ -31,7 +31,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -39,7 +39,7 @@ url='http://php.net'
 makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'sqlite' 'unixodbc' 'net-snmp' 'libzip' 'enchant' 'file' 'freetds'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu'
-             'curl' 'libxslt' 'openssl' 'db' 'gmp' 'systemd')
+             'curl' 'libxslt' 'openssl-1.0' 'db' 'gmp' 'systemd')
 
 source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
@@ -152,6 +152,7 @@ build() {
 
 	export EXTENSION_DIR=/usr/lib/${pkgbase}/modules
 	export PEAR_INSTALLDIR=/usr/share/${pkgbase}/pear
+	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
 	cd ${srcdir}/${_pkgbase}-${pkgver}
 
