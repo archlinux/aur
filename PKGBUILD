@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python-apt' 'python-requests-oauthlib' 'python-ssoclient' 'python-progressbar'
          'python-requests-toolbelt' 'python-petname' 'python-jsonschema' 'python-yaml'
          'python-magic' 'python-docopt' 'python-tabulate' 'python-pymacaroons-pynacl'
-         'python-simplejson')
+         'python-simplejson' 'python-libarchive-c' 'python-debian')
 makedepends=('python-setuptools')
 optdepends=('lxd')
 options=(!emptydirs)
