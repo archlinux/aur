@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=0.85
+pkgver=0.86
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -18,8 +18,8 @@ source=('xnviewmp.desktop')
 source_x86_64=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz")
 source_i686=("XnViewMP-linux_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux.tgz")
 md5sums=('24f44d5a881b94daf48775213a57e4ec')
-md5sums_x86_64=('d38f9c051714342713750cbe818c4d93')
-md5sums_i686=('1681b4d2597895bf50a3c12c63fc0a38')
+md5sums_x86_64=('5a6ebf3495b8f333130f5e3f18c51433')
+md5sums_i686=('36e1b668e052d5a2b30a120a129cbc80')
 
 package() {
   install -d -m755 "${pkgdir}/opt/${_pkgname}"
@@ -39,10 +39,16 @@ package() {
   # Remove the bundled framework libs (Qt and icu).
   rm "${pkgdir}/opt/${_pkgname}/lib/"lib*
   # Since we are using system Qt libraries, we should also use the system Qt
-  # plugins. Remove the provided platform plugins and symlink the system ones
-  # instead.
-  rm -r "${pkgdir}/opt/${_pkgname}/lib/"platform{s,themes}
-  ln -s /usr/lib/qt/plugins/platform{s,themes} "${pkgdir}/opt/${_pkgname}/lib"
+  # plugins. Unfortunately using the system path doesn't quite work because of a
+  # bug when Qt's loader tries to use libqxcb-egl-integration.so, which is
+  # not provided by XnView.
+  # As a workaround, remove the provided plugin directories and symlink the
+  # system ones instead.
+  local dir
+  for dir in "${pkgdir}/opt/${_pkgname}/lib/"*; do
+    rm -r "${dir}"
+    ln -s "/usr/lib/qt/plugins/$(basename "${dir}")" "${dir}"
+  done
   # XnView MP does a weird font lookup with random results under certain
   # circumstances, when not using the bundled libs. It seems that forcing
   # QT_QPA_PLATFORMTHEME to be the shipped platform theme solves the issue.
