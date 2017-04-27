@@ -22,5 +22,5 @@ pkgver() {
 package() {
   cd "$srcdir/hw-probe"
   install -dm755 "$pkgdir"/usr
-  make install prefix="$pkgdir"/usr
+  DESTDIR="$pkgdir" make install prefix=/usr
 }
