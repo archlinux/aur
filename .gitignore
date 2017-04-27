@@ -1,0 +1,8 @@
+# Ignored folders
+src/
+pkg/
+salt-git/
+
+# Ignored files
+*.pkg.tar.xz
+

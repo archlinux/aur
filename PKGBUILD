@@ -1,73 +1,60 @@
-# Maintainer: Christer Edwards <christer.edwards@gmail.com>
+# Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
+# Contributor: Christer Edwards <christer.edwards@gmail.com>
+
 pkgname=salt-git
-_gitname="salt"
-pkgver=v0.14.0.573.ge6e0ad7
+pkgver=2017.5.r584.gf0a9767a96
 pkgrel=1
 pkgdesc="A remote execution and communication system built on zeromq"
-arch=('any')
 url="https://github.com/saltstack/salt"
+arch=('any')
 license=('APACHE')
-groups=()
+makedepends=('git' 'gcc')
 depends=('python2'
          'python2-yaml'
          'python2-jinja'
-         'python2-pyzmq'
-         'python2-crypto'
-         'python2-psutil'
+         'python2-tornado'
          'python2-msgpack'
-         'python2-m2crypto')
-
+         'python2-crypto'
+         'python2-m2crypto'
+         'python2-psutil'
+         'python2-pyzmq'
+         'python2-requests'
+         'python2-futures'
+         'python2-markupsafe'
+         'python2-apache-libcloud')
+optdepends=('python2-pysodium: Required for RAET transport method'
+            'python2-raet: Required for RAET transport method'
+            'python2-ioflo: Required for RAET transport method'
+            'python2-mako: Parser for salt states'
+            'python2-pygit2: gitfs support'
+            'virt-what: Improve results of the virtual grain'
+            'dmidecode: decode SMBIOS/DMI tables')
 backup=('etc/salt/master'
         'etc/salt/minion')
-
-makedepends=('git')
 conflicts=('salt')
 provides=('salt')
-
-# makepkg 4.1 knows about git and will pull main branch
-source=("git://github.com/saltstack/salt.git")
-
-# makepkg knows it's a git repo because the url starts with 'git'
-# it then knows to checkout the branch upon cloning, expediating versioning.
-#branch="develop"
-#source=("git://github.com/saltstack/salt.git#branch=$branch")
-
-# makepkg also knows about tags
-#tags="v0.14.1"
-#source=("git://github.com/saltstack/salt.git#tag=$tag")
-
-# because the sources are not static, skip checksums
+source=("${pkgname}::git://github.com/saltstack/salt.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  echo $(git describe --always | sed 's/-/./g')
-  # for git, if the repo has no tags, comment out the above and uncomment the next line:
-  #echo "0.$(git rev-list --count $branch).$(git describe --always)"
-  # This will give you a count of the total commits and the hash of the commit you are on.
-  # Useful if you're making a repository with git packages so that they can have sequential
-  # version numbers. (Else a pacman -Syu may not update the package)
+  cd ${pkgname}
+  # Remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-#build() {
-#  cd "${srcdir}/${_gitname}"
-#  python2 setup.py build 
-   # no need to build setup.py install will do this
-#}
-
 package() {
-  cd "${srcdir}/${_gitname}"
-  
-  python2 setup.py install --root=${pkgdir}/ --optimize=1
+  cd ${pkgname}
 
-  install -Dm644 ${srcdir}/salt/pkg/arch/salt-master.service ${pkgdir}/usr/lib/systemd/system/salt-master.service
-  install -Dm644 ${srcdir}/salt/pkg/arch/salt-syndic.service ${pkgdir}/usr/lib/systemd/system/salt-syndic.service
-  install -Dm644 ${srcdir}/salt/pkg/arch/salt-minion.service ${pkgdir}/usr/lib/systemd/system/salt-minion.service
+  python2 setup.py --salt-transport=both install --root=${pkgdir}/ --optimize=1
+
+  install -Dm644 ${srcdir}/${pkgname}/pkg/arch/salt-master.service ${pkgdir}/usr/lib/systemd/system/salt-master.service
+  install -Dm644 ${srcdir}/${pkgname}/pkg/arch/salt-syndic.service ${pkgdir}/usr/lib/systemd/system/salt-syndic.service
+  install -Dm644 ${srcdir}/${pkgname}/pkg/arch/salt-minion.service ${pkgdir}/usr/lib/systemd/system/salt-minion.service
 
   mkdir -p ${pkgdir}/etc/salt/
-  cp ${srcdir}/salt/conf/master ${pkgdir}/etc/salt/
-  cp ${srcdir}/salt/conf/minion ${pkgdir}/etc/salt/
+  cp ${srcdir}/${pkgname}/conf/master ${pkgdir}/etc/salt/
+  cp ${srcdir}/${pkgname}/conf/minion ${pkgdir}/etc/salt/
 
-  # remove vcs leftovers
+  # remove git leftovers
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
