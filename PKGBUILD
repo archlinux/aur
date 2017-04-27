@@ -2,7 +2,7 @@
 
 _gemname=hanami-utils
 pkgname=ruby-$_gemname
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Hanami utilities.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('5c3f71e4ef971654e6bef5c43cd94ea6e6fb041194eb234367a8df034f8d9b87')
+sha256sums=('89ee2aa857fbff3753c16fb666897acd49e158fca1343f86a548b1a77245079c')
 
 package() {
   cd "$srcdir"
