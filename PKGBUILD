@@ -26,8 +26,6 @@ prepare() {
   cd "$srcdir/WebGoat-Lessons"
   git checkout master
 
-  sed -i 's/7.1-SNAPSHOT/7.0.1/g' "$srcdir/WebGoat-Lessons/pom.xml"
-
   # Needed to fix issues with maven
   echo "<settings><localRepository>$srcdir</localRepository></settings>" > "$srcdir/maven-settings.xml"
 }
