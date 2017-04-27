@@ -2,11 +2,11 @@
 
 pkgname=nginx-mainline-mod-pagespeed
 pkgver=1.11.33.4
-pkgrel=2
+pkgrel=3
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 
-_nginxver=1.12.0
+_nginxver=1.13.0
 _pagespeedver=latest-stable
 
 pkgdesc="PageSpeed module for mainline nginx"
@@ -21,7 +21,7 @@ source=(
 	pagespeed-$pkgver.tar.gz::https://dl.google.com/dl/page-speed/psol/$pkgver.tar.gz
 )
 
-sha256sums=('b4222e26fdb620a8d3c3a3a8b955e08b713672e1bc5198d1e4f462308a795b30'
+sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
             '5b8bebc3124ba55388fcb97ee8f6009bd5d061c48bf274a04f6c99b7364e1f85'
             '97408b04bf7395ab34d7b5baed95ae3dc928746213ca02590773b66a7697a7dc')
 
