@@ -2,7 +2,7 @@
 
 pkgbase=snes9x-git
 pkgname=('snes9x-git' 'snes9x-gtk-git')
-pkgver=1.53.r415.g1aae8f9
+pkgver=1.53.r451.ge8da19d
 pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version). Includes Gtk version."
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url="http://www.snes9x.com/"
 license=('LGPL')
 makedepends=('git' 'intltool' 'nasm' 'mesa' 'libpulse'  'libpng' 'sdl' 'gtk2' 'libxv'
              'adwaita-icon-theme' 'autogen' 'minizip')
+depends=('minizip')
 source=("$pkgname"::'git://github.com/snes9xgit/snes9x.git')
 sha1sums=('SKIP')
 
