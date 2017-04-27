@@ -1,7 +1,7 @@
 pkgbase = whipper-git
 	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri
-	pkgver = 0.5.1.r0.g17b70ce
-	pkgrel = 2
+	pkgver = 0.5.1.r9.gfc3cdbf
+	pkgrel = 1
 	url = https://github.com/JoeLametta/whipper
 	arch = any
 	license = GPL3
@@ -20,7 +20,6 @@ pkgbase = whipper-git
 	depends = sox
 	provides = whipper
 	conflicts = whipper
-	conflicts = morituri
 	source = git+https://github.com/JoeLametta/whipper.git
 	md5sums = SKIP
 
