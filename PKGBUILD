@@ -2,12 +2,12 @@
 
 pkgname=gtk-theme-united-gnome
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Based on a Ubuntu 18.04 design concept Flat-Plat as a base."
 arch=(any)
 url="https://github.com/godlyranchdressing/United-GNOME"
-license=('GPL2')
+license=('GPL3')
 source=("https://github.com/godlyranchdressing/United-GNOME/releases/download/$pkgver/United-$pkgver.tar.gz")
 sha256sums=('b7a81681d2c9555724c2b020f2354e80a5e264814e34abc808f5114fed75a60e')
 
