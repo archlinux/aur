@@ -1,5 +1,5 @@
 pkgname=supertuxkart-git
-pkgver=14738+16316
+pkgver=17691+17013
 pkgrel=1
 pkgdesc="A kart racing game featuring Tux and his friends - development version"
 url="http://supertuxkart.sourceforge.net/"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 
 makedepends=("git" "subversion" "cmake" "bluez-libs")
 
-depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew")
+depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew" "libopenglrecorder")
 
 conflicts=("supertuxkart")
 replaces=("supertuxkart-cmakesvn" "supertuxkart-svn")
@@ -39,7 +39,7 @@ build()
     mkdir cmake_build && cd cmake_build
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-    # cmake -DUSE_WIIUSE=no -DCMAKE_INSTALL_PREFIX=/usr ..
+    # -DBUILD_RECORDER=off     - disable in-game recorder (then you can remove the dependency `libopenglrecorder`)
     make
 }
 
