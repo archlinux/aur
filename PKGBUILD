@@ -9,7 +9,7 @@
 pkgname=stumpwm-git
 _pkgname=stumpwm
 pkgver=1.0.0.92.gcc5ba9e
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
@@ -33,7 +33,7 @@ optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
             'clx-truetype: for ttf-fonts.lisp (Xft fonts)')
 
 # Binary will not run other
-options=(!strip)  # Thanks to sidereus for pointing this out
+options=('!strip' '!makeflags')  # Thanks to sidereus for pointing this out
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
