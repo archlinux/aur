@@ -8,10 +8,9 @@ arch=('any')
 url="https://github.com/linuxhw/hw-probe"
 license=('GPLv2')
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('SKIP')
+sha256sums=('71c6d58afd0ebca7f81c1c3b18c467f41478f3ee21304561cb2a757fb6b31a31')
 depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools')
 optdepends=('hdparm' 'smartmontools' 'inxi' 'pnputils')
-provides=('hw-probe')
 
 package() {
   cd "$srcdir"/hw-probe-$pkgver
