@@ -56,10 +56,6 @@ pkgname = compiz-gtk-git
 	depends = libxcomposite
 	depends = libxinerama
 	depends = compiz-core-git
-	depends = marco
-	depends = marco-gtk2
-	depends = libwnck3
-	depends = libwnck
 	provides = compiz-gtk=0.8.14.r3.gd9f455d4
 	conflicts = compiz-gtk
 
