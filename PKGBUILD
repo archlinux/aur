@@ -3,8 +3,8 @@
 pkgname=trustedqsl-git
 _pkgname=trustedqsl
 __pkgname=tqsl
-pkgver=2.3.1.beta.r3.gfcbc48c
-#.beta.r3.gfcbc48c
+pkgver=2.3.1.r0.ge165520
+#.r0.ge165520
 pkgrel=1
 pkgdesc="QSO log signing & upload - ARRL's Logbook of The World (LoTW) - GIT version"
 arch=('i686' 'x86_64')
@@ -64,9 +64,9 @@ package() {
 }
 md5sums=('SKIP'
          'bbdec5f6ae2d23bb2c74c84df07d2c70'
-         '8f401e02bfdefb486bbbeaba58522486'
+         'b52832f551af286f208a47154504cfba'
          '860b305f9cf6db8cc1c14dc88cef34fc')
 sha256sums=('SKIP'
             '84eb4f182e90d6996d687952e82c47c2cc7c8fcd95a4290ef7b8c77b4d7b6e4e'
-            '0adb97d5a65701465309b8fed0fe8fbc04400d3342102887f05fddf52d985f87'
+            '42998a3ace2fe998b1aa7c17be1eedde40a52fd8b1529f93f1bac8f8ca16699a'
             'cb638467e305f6f9426a22841dbbb4d656a30f48e4c1c27e87dd82890794c167')
