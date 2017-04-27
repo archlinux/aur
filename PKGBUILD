@@ -2,7 +2,7 @@
 
 _gemname=hanami-helpers
 pkgname=ruby-$_gemname
-pkgver=0.5.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='View helpers for Ruby applications.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-hanami-utils)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('64a7ab438d772a806a118d905b33fc6e3004460bd0338fbd1eeebe0fc5af9005')
+sha256sums=('c5e3a07335a1004540568b042c401e5f18b62ec8a9bd21bf372550a8c76f67ba')
 
 package() {
   cd "$srcdir"
