@@ -28,7 +28,6 @@ source=(ftp://alpha.gnu.org/gnu/grub/${_srcname}-${pkgver}.tar.gz
         grub-0.97-ldflags-objcopy-remove-build-id.patch
         automake-pkglib.patch)
 backup=('boot/grub/menu.lst')
-install=grub.install
 sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
           '33d43d48000b2027f9baec8fc99d33e0c4500c96'
           '60e8f7e4c113b85165fd5d9cd724e8413a337a12'

@@ -3,7 +3,6 @@ pkgbase = grub-legacy
 	pkgver = 0.97
 	pkgrel = 25
 	url = http://www.gnu.org/software/grub/
-	install = grub.install
 	arch = i686
 	arch = x86_64
 	license = GPL
