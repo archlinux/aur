@@ -1,4 +1,5 @@
-# Maintainer: Alexander Kuznecov <alexander@kuznetcov.me>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: Alexander Kuznecov <alexander@kuznetcov.me>
 
 _pkgname="nginx"
 _user="http"
@@ -16,45 +17,41 @@ _cachepurge_ver="2.3"
 _cachepurge_dirname="ngx_cachepurge"
 _slowfscache_ver="1.10"
 _slowfscache_dirname="ngx_slowfscache"
-_echo_ver="v0.58"
+_echo_ver="7740e11558b530b66b469c657576f5280b7cdb1b"
 _echo_dirname="ngx_echo"
-_headersmore_ver="v0.29"
+_headersmore_ver="v0.32"
 _headersmore_dirname="ngx_headersmore"
-_uploadprogress_ver="v0.9.1"
+_uploadprogress_ver="v0.9.2"
 _uploadprogress_dirname="ngx_uploadprogress"
-_upstreamfair_hash="a18b4099fbd458111983200e098b6f0c8efed4bc"
+_upstreamfair_hash="89f72d881ba123ddcc281f9ff2535b10e35555a1"
 _upstreamfair_dirname="ngx_upstreamfair"
-_fancyindex_ver="v0.3.6"
+_fancyindex_ver="v0.4.1"
 _fancyindex_dirname="ngx_fancyindex"
 _authpam_ver="1.5.1"
 _authpam_dirname="ngx_authpam"
-_pagespeed_ver="1.11.33.0"
+_pagespeed_ver="1.11.33.4"
 _pagespeed_dirname="ngx_pagespeed"
-_rtmp_ver="v1.1.7"
+_rtmp_ver="v1.1.11"
 _rtmp_dirname="ngx_rtmp"
 _davext_ver="v0.0.3"
 _davext_dirname="ngx_davext"
-_naxsi_ver="0.54"
+_naxsi_ver="0.55.3"
 _naxsi_dirname="ngx_naxsi"
-_accesskey_ver="2.0.3"
+_accesskey_ver="2.0.4"
 _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom
-pkgver=1.10.0
-pkgrel=1
-pkgdesc="lightweight HTTP server and IMAP/POP3 proxy server with standard, additional and 3d party modules"
+pkgver=1.12.0
+pkgrel=2
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server (with standard, additional and 3rd party modules)'
 arch=('i686' 'x86_64')
 
 depends=('pcre' 'zlib' 'openssl' 'pam' 'geoip' 'geoip-database' 'gd' 'libxslt')
-makedepends=(
-  'libxslt'
-  'gd'
-  'git'
-)
+makedepends=('libxslt' 'gd' 'git' 'hardening-wrapper')
 
-url="http://nginx.org"
+url='https://nginx.org'
 license=('custom')
-conflicts=('nginx' 'nginx-unstable' 'nginx-svn' 'nginx-devel' 'nginx-custom-dev' 'nginx-full') 
+conflicts=('nginx' 'nginx-unstable' 'nginx-svn' 'nginx-devel' 'nginx-custom-dev' 'nginx-full')
 provides=('nginx')
 backup=("${_conf_path}/nginx.conf"
   "${_conf_path}/koi-win"
@@ -70,56 +67,55 @@ _user=http
 _group=http
 
 source=("nginx.sh"
-    "nginx.conf"
-    "nginx.logrotate"
-    "nginx.service"
-    "http://nginx.org/download/nginx-$pkgver.tar.gz"
-    "${_fancyindex_dirname}.tar.gz::https://github.com/aperezdc/ngx-fancyindex/archive/${_fancyindex_ver}.tar.gz"
-    "${_cachepurge_dirname}.tar.gz::http://labs.frickle.com/files/ngx_cache_purge-${_cachepurge_ver}.tar.gz"
-    "${_slowfscache_dirname}.tar.gz::http://labs.frickle.com/files/ngx_slowfs_cache-${_slowfscache_ver}.tar.gz"
-    "${_uploadprogress_dirname}.source::https://github.com/masterzen/nginx-upload-progress-module/tarball/${_uploadprogress_ver}"
-    "${_headersmore_dirname}.source::https://github.com/agentzh/headers-more-nginx-module/tarball/${_headersmore_ver}"
-    "${_echo_dirname}.source::https://github.com/agentzh/echo-nginx-module/tarball/${_echo_ver}"
-    "${_upstreamfair_dirname}.source::https://github.com/gnosek/nginx-upstream-fair/tarball/${_upstreamfair_hash}"
-    "${_authpam_dirname}.tar.gz::https://github.com/stogh/ngx_http_auth_pam_module/archive/v${_authpam_ver}.tar.gz"
-    "${_pagespeed_dirname}.zip::https://github.com/pagespeed/ngx_pagespeed/archive/v${_pagespeed_ver}-beta.zip"
-    "psol.tar.gz::https://dl.google.com/dl/page-speed/psol/${_pagespeed_ver}.tar.gz"
-    "${_rtmp_dirname}.zip::https://github.com/arut/nginx-rtmp-module/archive/${_rtmp_ver}.zip"
-    "${_davext_dirname}.tar.gz::https://github.com/arut/nginx-dav-ext-module/archive/${_davext_ver}.tar.gz"
-    "${_naxsi_dirname}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
-    "${_accesskey_dirname}.tar.gz::https://ostube.googlecode.com/files/Nginx-accesskey-${_accesskey_ver}.tar.gz"
+        "nginx.conf"
+        "nginx.logrotate"
+        "nginx.service"
+        "https://nginx.org/download/nginx-$pkgver.tar.gz"{,.asc}
+        "${_fancyindex_dirname}.tar.gz::https://github.com/aperezdc/ngx-fancyindex/archive/${_fancyindex_ver}.tar.gz"
+        "${_cachepurge_dirname}.tar.gz::http://labs.frickle.com/files/ngx_cache_purge-${_cachepurge_ver}.tar.gz"
+        "${_slowfscache_dirname}.tar.gz::http://labs.frickle.com/files/ngx_slowfs_cache-${_slowfscache_ver}.tar.gz"
+        "${_uploadprogress_dirname}.source::https://github.com/masterzen/nginx-upload-progress-module/tarball/${_uploadprogress_ver}"
+        "${_headersmore_dirname}.source::https://github.com/agentzh/headers-more-nginx-module/tarball/${_headersmore_ver}"
+        "${_echo_dirname}.source::https://github.com/agentzh/echo-nginx-module/tarball/${_echo_ver}"
+        "${_upstreamfair_dirname}.source::https://github.com/unixfox/nginx-upstream-fair/tarball/${_upstreamfair_hash}"
+        "${_authpam_dirname}.tar.gz::https://github.com/stogh/ngx_http_auth_pam_module/archive/v${_authpam_ver}.tar.gz"
+        "${_pagespeed_dirname}.zip::https://github.com/pagespeed/ngx_pagespeed/archive/v${_pagespeed_ver}-beta.zip"
+        "psol.tar.gz::https://dl.google.com/dl/page-speed/psol/${_pagespeed_ver}.tar.gz"
+        "${_rtmp_dirname}.zip::https://github.com/arut/nginx-rtmp-module/archive/${_rtmp_ver}.zip"
+        "${_davext_dirname}.tar.gz::https://github.com/arut/nginx-dav-ext-module/archive/${_davext_ver}.tar.gz"
+        "${_naxsi_dirname}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
+        "${_accesskey_dirname}.tar.gz::https://github.com/Martchus/nginx-accesskey/archive/v${_accesskey_ver}.tar.gz"
 )
-
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '845cab784b50f1666bbf89d7435ac7af'
-         '79031b58828462dec53a9faed9ddb36a'
+         'b50a547d387c4af8e9b89a5e79d22fed'
          '6696dc228a567506bca3096b5197c9db'
-         'c184c873d2798c5ba92be95ed1209c02'
-         '76ac525432d459a4615a3a8638195ba9'
+         '995eb0a140455cf0cfc497e5bd7f94b3'
+         'SKIP'
+         'e1dd79f0ec82415bbf8a1cb938988955'
          '3d4ec04bbc16c3b555fa20392c1119d1'
          '68a1af12d5c1218fb2b3e05ed7ff6f0c'
-         'f7dee95dbe8ada5f4d8e9d59ca1f4797'
-         '838081f1398965fbf3037bc38d1c2208'
-         '6fe61c5b44b2e338c66e1e33ff7e95ab'
-         'ac5e7f485476af70e0ee1c52016cddaf'
+         '1f8ab14fa3dd171bf3b6c7b18783bc22'
+         'c9cdf7f9a27361159b282e1faa618094'
+         '1c2b08220f5118e3f16026fc530797cb'
+         '403e3c72c33ed275b203226ee1927e46'
          '1e0bbd4535386970d63f51064626bc9a'
-         '7756ea8925cefe8ed531b3d5b50ca9d2'
-         'c503b01cb92f95a5548cf86a2e7415e5'
-         'a81e63cd4cf28eaf0c87d27c44e4c44a'
+         '6bdd65c5929b35d06d6df9c7f2fa6360'
+         'd5ccb4cab81edc32ff99a2a46e8a9ffc'
+         'b471efc97b9602c5b4087756c9295496'
          '2cb502dbda335be4ebd5fed0b3182bae'
-         '1bc31058991268e4cfdb44e9b6d8b3b3'
-         '8862455846c4ce803ca15300ee08e19a')
+         'b50f6d41aa017cbfcab577ed70d7b3b7'
+         '838abf762055e489afd98940ef3bcba0')
 
-build() {
-  local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
-
+prepare() {
   mv ngx-fancyindex-* ${_fancyindex_dirname}
   mv ngx_cache_purge-* ${_cachepurge_dirname}
   mv ngx_slowfs_cache-* ${_slowfscache_dirname}
   mv openresty-headers-more-nginx-module-* ${_headersmore_dirname}
   mv openresty-echo-nginx-module-* ${_echo_dirname}
   mv masterzen-nginx-upload-progress-module-* ${_uploadprogress_dirname}
-  mv gnosek-nginx-upstream-fair-* ${_upstreamfair_dirname}
+  mv unixfox-nginx-upstream-fair-* ${_upstreamfair_dirname}
   mv ngx_http_auth_pam_module-${_authpam_ver} ${_authpam_dirname}
   mv ngx_pagespeed-* ${_pagespeed_dirname}
   mv psol ${_pagespeed_dirname}/
@@ -127,7 +123,10 @@ build() {
   mv nginx-rtmp-module* ${_rtmp_dirname}
   mv nginx-dav-ext-module* ${_davext_dirname}
   mv naxsi* ${_naxsi_dirname}
+}
 
+build() {
+  local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
   cd $_src_dir
 
   ./configure \
@@ -145,29 +144,41 @@ build() {
     --error-log-path=${_log_path}/error.log \
     --user=${_user} \
     --group=${_group} \
+    --with-compat \
     --with-debug \
     --with-ipv6 \
+    --with-pcre-jit \
+    --with-file-aio \
     --with-mail \
+    --with-mail_ssl_module \
+    --with-stream \
+    --with-stream_ssl_module \
     --with-threads \
     --add-module=../${_naxsi_dirname}/naxsi_src/ \
-    --with-imap_ssl_module \
     --with-http_ssl_module \
     --with-http_stub_status_module \
     --with-http_dav_module \
     --with-http_gzip_static_module \
     --with-http_realip_module \
     --with-http_addition_module \
+    --with-http_auth_request_module \
     --with-http_xslt_module \
     --with-http_image_filter_module \
     --with-http_sub_module \
+    --with-http_v2_module \
+    --with-mail \
+    --with-mail_ssl_module \
+    --with-stream \
+    --with-stream_ssl_module \
+    --with-threads \
     --with-http_flv_module \
     --with-http_mp4_module \
     --with-http_random_index_module \
     --with-http_secure_link_module \
+    --with-http_slice_module \
     --with-http_perl_module \
     --with-http_degradation_module \
     --with-http_geoip_module \
-    --with-http_v2_module \
     --with-http_gunzip_module \
     --with-http_auth_request_module \
     --add-module=../${_cachepurge_dirname} \
@@ -182,7 +193,6 @@ build() {
     --add-module=../${_accesskey_dirname} \
     --add-module=../${_rtmp_dirname} \
     --add-module=../${_davext_dirname}
-
   make
 }
 
@@ -209,6 +219,12 @@ package() {
   install -D -m644 "${srcdir}/nginx.conf" "${pkgdir}/etc/conf.d/${_pkgname}"
   install -D -m644 "${srcdir}/nginx.service" "${pkgdir}/usr/lib/systemd/system/nginx.service"
   install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -D -m644 "man/nginx.8" "${pkgdir}/usr/share/man/man8/nginx.8"
-}
 
+  install -d "$pkgdir"/usr/share/man/man8/
+  gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
+
+  for i in ftdetect indent syntax; do
+    install -Dm644 contrib/vim/${i}/nginx.vim \
+      "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
+  done
+}

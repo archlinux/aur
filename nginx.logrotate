@@ -3,6 +3,7 @@
 {
   daily
   missingok
+  notifempty
   create 640 http log
   compress
   postrotate
