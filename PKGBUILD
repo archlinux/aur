@@ -13,7 +13,7 @@
 
 pkgname=rstudio-desktop-bin
 pkgver=1.0.143
-pkgrel=1
+pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -39,7 +39,7 @@ case "$CARCH" in
 		md5sums=($_x64md5)
 		;;
 esac    
-source=("http://download1.rstudio.org/rstudio-${pkgver}-${_arch}.deb")
+source=("https://download1.rstudio.org/rstudio-${pkgver}-${_arch}.deb")
 install="$pkgname".install
 
 package() {
