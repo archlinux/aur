@@ -1,6 +1,6 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=libtensorflow-cpu
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=2
 epoch=
 pkgdesc="Assembled TenforFlow library for computation using data flow graphs on CPU."
@@ -20,7 +20,7 @@ install=
 changelog=
 
 source=("https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-${pkgver}.tar.gz")
-md5sums=('bc4ede14c8d247aa46656f6332b39934')
+md5sums=('54a164ab543c108149f9780c930bd7c5')
 
 validpgpkeys=()
 
