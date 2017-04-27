@@ -3,7 +3,7 @@
 pkgbase=python-certbot-plugins-git
 pkgname=("python-certbot-nginx-git" "python-certbot-apache-git")
 _reponame="certbot"
-pkgver=0.11.0.r166.gba0ac032
+pkgver=0.11.0.r186.g1611df41
 pkgrel=1
 pkgdesc="Plugins for Certbot"
 arch=('any')
@@ -32,6 +32,10 @@ prepare() {
 	# "Pin python-augeas version to avoid error with 1.0.0"
 	# augeas 1.x works fine on Arch
 	git revert --no-commit 1c51ae25887f2dc3168a38d1f0042363cd7ac1e3
+
+	# Arch Linux-specific settings for Apache
+	# https://github.com/certbot/certbot/pull/4466
+	git cherry-pick --no-commit 289a1265709dc00772c6b54b2957f22f5eb9c558
 }
 
 build_python-certbot-nginx-git() {
