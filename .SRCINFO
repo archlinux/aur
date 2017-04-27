@@ -1,0 +1,13 @@
+pkgbase = paccache-trim
+	pkgdesc = Run paccache weekly to keep pacman cache on check.
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/palopezv/package-trim/
+	arch = any
+	license = custom:UNLICENSE
+	options = !strip
+	source = paccache-trim-4.tar.gz::https://github.com/palopezv/paccache-trim/archive/4.tar.gz
+	sha384sums = fa00780b0f57aca60df5cc8128d33ecff45af888c845370c720949f5c98ba648aec9a7c031a2d7593c3525bd67e095bf
+
+pkgname = paccache-trim
+
