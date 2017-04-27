@@ -14,7 +14,7 @@ pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot (32-bit)"
 arch=('x86_64')
-url=https://jdk$_major.java.net/
+url=http://jdk.java.net/$_major/
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-environment-common' 'java32-runtime-common'
          'lib32-gcc-libs' 'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
