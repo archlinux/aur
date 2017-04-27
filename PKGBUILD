@@ -3,7 +3,7 @@
 
 pkgname=docker-bin
 pkgver=17.04.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -19,14 +19,14 @@ options=('!strip')
 install=$pkgname.install
 source=(
   "https://get.docker.com/builds/Linux/x86_64/docker-${pkgver}-ce.tgz"
-  "https://github.com/docker/docker/archive/v${pkgver}-ce.tar.gz"
+  "https://github.com/moby/moby/archive/v${pkgver}-ce.tar.gz"
   "docker.sysusers")
 md5sums=('b48684ab01ba2068ca44a21da92ce169'
-         '5c1deb593aee7f5b89a3be5d9c0cd755'
+         '1c794272d1e25c05cdd5b5706ea23658'
          '8cf9900ebada61f352a03465a088da34')
 
 build() {
-  cd docker-$pkgver-ce
+  cd moby-$pkgver-ce
   # man pages
   man/md2man-all.sh 2>/dev/null
 }
@@ -51,7 +51,7 @@ package() {
   install -Dm644 'completion/zsh/_docker' "$pkgdir/usr/share/zsh/site-functions/_docker"
   install -Dm644 'completion/fish/docker.fish' "$pkgdir/usr/share/fish/vendor_completions.d/docker.fish"
 
-  cd ../docker-$pkgver-ce
+  cd ../moby-$pkgver-ce
   # systemd
   install -Dm644 'contrib/init/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
   install -Dm644 'contrib/init/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
