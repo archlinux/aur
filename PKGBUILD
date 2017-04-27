@@ -2,7 +2,7 @@
 
 _gemname=hanami
 pkgname=ruby-$_gemname
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A web framework for ruby.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-bundler ruby-concurrent-ruby ruby-hanami-assets ruby-hanami-c
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('79657ca889eec321879829f1588c70e10676ba0efbb8e2edd21f52276c5d0262')
+sha256sums=('0ccb48d497a3da182d08ead6bc1c8ad61e468af80a720f52dbea5d8409e661da')
 
 package() {
   cd "$srcdir"
