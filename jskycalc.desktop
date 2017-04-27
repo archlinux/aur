@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name= jskycalc
 GenericName= jskycalc
-Comment=Tool for OPerations on Catalogues And Tables
+Comment=A tool for observing preparation in java
 Exec=jskycalc
 Icon=jskycalc
 Terminal=false
