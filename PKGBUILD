@@ -53,7 +53,7 @@ build() {
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared no-ssl3-method ${optflags} \
+		shared no-ssl3-method enable-tls1_3 ${optflags} \
 		"${openssltarget}" \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
