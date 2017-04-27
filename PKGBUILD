@@ -45,7 +45,6 @@ if [[ -f minimal ]]; then
   _skip_qtscript=true;
   _skip_web_engine=true;
   _skip_qt_widgets=true;
-  _debug=false;
   pkgname="${pkgname}-minimal"
 fi
 
