@@ -7,8 +7,8 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=11.1.0
-pkgrel=2
+pkgver=11.1.1
+pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
@@ -74,7 +74,7 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_LINUX.sh")
-sha256sums=('3a866cc1b49dc06ec11f7d7288051916b7aa1959ae2f32f96dd1780ad228ca4d')
+sha256sums=('80cb3a25337d809bf865e5405cf5975dccf1dcaa20874ee301c98d41011281ce')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -112,6 +112,8 @@ package() {
              -execdir=${pkgdir}/usr/bin \
              -targetdir=${pkgdir}/opt/Mathematica \
              -auto
+
+    exit 1
 
     msg2 "Fixing symbolic links"
     cd ${pkgdir}/usr/bin
