@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-git
-pkgver=r16.gfc845fc
+pkgver=r37.g9af8ab2
 pkgrel=1
 pkgdesc='Tiny Qt Babe Music Player'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'babe-qt')
 replaces=('babe-qt')
 source=('git+git://anongit.kde.org/babe.git' 'cmake.patch')
-sha256sums=('SKIP' '246133348fe676df5411bda7b1df8dd801f377d2dc7c6f3344997b81d2eb9ae2')
+sha256sums=('SKIP' '6cd25406e607d248ff00baf1b204a32ca0eca59d53465b1904795abf917b4cb9')
 
 pkgver() {
   cd babe

@@ -1,6 +1,6 @@
 pkgbase = babe-git
 	pkgdesc = Tiny Qt Babe Music Player
-	pkgver = r16.gfc845fc
+	pkgver = r37.g9af8ab2
 	pkgrel = 1
 	url = https://babe.kde.org/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = babe-git
 	source = git+git://anongit.kde.org/babe.git
 	source = cmake.patch
 	sha256sums = SKIP
-	sha256sums = 246133348fe676df5411bda7b1df8dd801f377d2dc7c6f3344997b81d2eb9ae2
+	sha256sums = 6cd25406e607d248ff00baf1b204a32ca0eca59d53465b1904795abf917b4cb9
 
 pkgname = babe-git
 
