@@ -3,7 +3,6 @@
 # Contributor: fnord0 < fnord0 AT riseup DOT net >
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: tuxayo < victor (replace by @) tuxayo DOT net >
-# Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=webgoat
 pkgver=7.1
 pkgrel=1
