@@ -13,7 +13,7 @@ source=("http://www.dartmouth.edu/~physics/labs/skycalc/JSkyCalc.jar"
         "jskycalc" "jskycalc.desktop" "jskycalc.png")
 sha1sums=('09f00cb1925f7b62a0237694007f18670857b32b'
 	'126b4cd9b01821f5d735c29b0bef5703bfc411de'
-	'1a8c532a74c689fcf7b10ba8ccbde03585899496'
+	'e7313755d61916d81415ff5adedf76d3f5385c1c'
 	'8ea495aa3508822a2b939b6ff819e18b9a2d3803')
 
 package() {
