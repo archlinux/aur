@@ -1,16 +1,16 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 pkgname=drumgizmo
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="an open source cross-platform drum plugin and stand-alone application (lv2)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.drumgizmo.org"
 license=('GPL')
 groups=('lv2-plugins')
-depends=('libx11' 'libsmf' 'jack' 'expat' 'zita-resampler')
+depends=('libsmf' 'libxext' 'expat' 'jack')
 makedepends=('lv2')
 source=("http://www.drumgizmo.org/releases/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('7e16c2ec62ae9eae102b074d262c95ca')
+md5sums=('706dbb2f1e46c23822ad3ea52e958380')
 
 build() {
 	cd "$pkgname-$pkgver"
