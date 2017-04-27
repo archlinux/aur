@@ -1,7 +1,7 @@
 # Maintainer: Kyle <kyle@gmx.ca>
 pkgname=espeak-ng-git
 _gitname=espeak-ng
-pkgver=0.0 # determined from git origin
+pkgver=1.49.1.490.g8f0dae6a # determined from git origin
 pkgrel=1
 pkgdesc="Next generation open source speech synthesizer based on Espeak (git version)"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -22,6 +22,8 @@ pkgver() {
 }
 
 build() {
+  # Espeak-ng doesn't yet support multi-threaded builds. Overriding MAKEFLAGS fixes this here for now.
+  MAKEFLAGS="-j 1"
   cd $_gitname
   ./autogen.sh
   ./configure --prefix=/usr
