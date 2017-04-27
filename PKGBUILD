@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsoup
 pkgver=2.58.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP client/server library (mingw-w64)"
 arch=(any)
 url="https://download.gnome.org/sources/libsoup"
@@ -21,7 +21,7 @@ build() {
     ${_arch}-configure \
       --without-gnome \
       --disable-more-warnings \
-      --disable-vala \ 
+      --disable-vala \
       --with-gssapi=no
     make
     popd
