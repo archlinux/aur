@@ -15,7 +15,7 @@ source=("git+$url.git#branch=dns-block"
         "${pkgname%-git}"
 	"${pkgname%-git}.desktop")
 sha512sums=('SKIP'
-            '31670a77b13d5a38dcfe96ccf5892996800b76d683071a46f27f647e353ad0e6adf95e3b2fbad9871f6296fc374fdb793d374d53cb5fd899949e694f5d579fab'
+            'e123b737cc4360eaf57f2fd75db733b735d61d4b738d32f93de93d94da246923b97c0c90541c6719593702292e0f746d2e60b8205ef45eacfd82901251dfae5c'
             '3a38a5634ef8fb82212f44b021b614bbad2682129ec21a5e90fd00fc60f66da025cb61a3960d7b16b12e7d54773bb3cc4f9c14b867febabb3e2cd232a7455686')
 
 pkgver() {
