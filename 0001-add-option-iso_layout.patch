@@ -1,15 +1,15 @@
-From ece075810b575c144aff8996c5d703164ead7cd8 Mon Sep 17 00:00:00 2001
+From a7a73f0dbd485318b0f71405cf350106a6f826c7 Mon Sep 17 00:00:00 2001
 From: Christoph Gysin <christoph.gysin@gmail.com>
 Date: Wed, 19 Apr 2017 17:29:57 +0300
 Subject: [PATCH] add option iso_layout
 
 fixes #12
 ---
- applespi.c | 64 +++++++++++++++++++++++++++++++++++++++++---------------------
- 1 file changed, 42 insertions(+), 22 deletions(-)
+ applespi.c | 61 ++++++++++++++++++++++++++++++++++++++++---------------------
+ 1 file changed, 40 insertions(+), 21 deletions(-)
 
 diff --git a/applespi.c b/applespi.c
-index b8fa4cf..d11f825 100644
+index b8fa4cf..e0fb2f7 100644
 --- a/applespi.c
 +++ b/applespi.c
 @@ -45,6 +45,10 @@
@@ -23,21 +23,15 @@ index b8fa4cf..d11f825 100644
  
  struct keyboard_protocol {
  	u16		packet_type;
-@@ -172,11 +176,12 @@ static const unsigned char applespi_scancodes[] = {
- 	KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0,
- 	KEY_ENTER, KEY_ESC, KEY_BACKSPACE, KEY_TAB, KEY_SPACE, KEY_MINUS,
- 	KEY_EQUAL, KEY_LEFTBRACE, KEY_RIGHTBRACE, KEY_BACKSLASH, 0,
--	KEY_SEMICOLON, KEY_APOSTROPHE, KEY_GRAVE, KEY_COMMA, KEY_DOT, KEY_SLASH,
-+	KEY_SEMICOLON, KEY_APOSTROPHE, KEY_102ND, KEY_COMMA, KEY_DOT, KEY_SLASH,
- 	KEY_CAPSLOCK,
+@@ -177,6 +181,7 @@ static const unsigned char applespi_scancodes[] = {
  	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9,
  	KEY_F10, KEY_F11, KEY_F12, 0, 0, 0, 0, 0, 0, 0, 0, 0,
  	KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP,
-+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, KEY_GRAVE,
++	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, KEY_102ND,
  };
  
  static const unsigned char applespi_controlcodes[] = {
-@@ -191,29 +196,35 @@ static const unsigned char applespi_controlcodes[] = {
+@@ -191,29 +196,34 @@ static const unsigned char applespi_controlcodes[] = {
  };
  
  struct applespi_key_translation {
@@ -88,11 +82,10 @@ index b8fa4cf..d11f825 100644
 +static const struct applespi_key_translation apple_iso_keyboard[] = {
 +	{ KEY_GRAVE,	KEY_102ND },
 +	{ KEY_102ND,	KEY_GRAVE },
-+	{ }
  };
  
  static u8 *acpi_dsm_uuid = "a0b5b7c6-1318-441c-b0c9-fe695eaf949b";
-@@ -684,16 +695,25 @@ static unsigned int
+@@ -684,16 +694,25 @@ static unsigned int
  applespi_code_to_key(u8 code, int fn_pressed)
  {
  	int i;

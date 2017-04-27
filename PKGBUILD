@@ -2,7 +2,7 @@
 _pkgbase=macbook12-spi-driver
 pkgname=(${_pkgbase}-dkms)
 pkgver=0+git.35
-pkgrel=1
+pkgrel=2
 pkgdesc="WIP input driver for the SPI touchpad / keyboard found in the 12\" MacBook"
 arch=('i686' 'x86_64')
 url="https://github.com/cb22/macbook12-spi-driver"
@@ -15,7 +15,7 @@ source=(git+https://github.com/cb22/macbook12-spi-driver.git
         0001-add-option-iso_layout.patch
         dkms.conf)
 sha256sums=('SKIP'
-            '0688c4b79408bd10cbcdefbb70d1ecce4b4a3bee725f74bcd066d332983e354a'
+            '81a95ad335d6e6cfb0c4b5e590be488cd241e039a4c913753e4f6096d57491ad'
             '72d908df93de0022dbd5e3cc458a3434105fe61125454a2738587727a42e21b7')
 
 pkgver() {
