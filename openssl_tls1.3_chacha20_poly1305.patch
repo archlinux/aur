@@ -1,0 +1,57 @@
+--- ssl/s3_lib.c.orig	2017-03-21 11:09:14.000000000 +0100
++++ ssl/s3_lib.c	2017-04-27 10:40:58.101876128 +0200
+@@ -3662,6 +3662,7 @@ const SSL_CIPHER *ssl3_choose_cipher(SSL
+     STACK_OF(SSL_CIPHER) *prio, *allow;
+     int i, ii, ok;
+     unsigned long alg_k = 0, alg_a = 0, mask_k, mask_a;
++    int use_chacha = 0;
+ 
+     /* Let's see which ciphers we can support */
+ 
+@@ -3686,13 +3687,20 @@ const SSL_CIPHER *ssl3_choose_cipher(SSL
+         fprintf(stderr, "%p:%s\n", (void *)c, c->name);
+     }
+ #endif
+-
++retry:
+     if (s->options & SSL_OP_CIPHER_SERVER_PREFERENCE || tls1_suiteb(s)) {
+         prio = srvr;
+         allow = clnt;
++        /* Use ChaCha20+Poly1305 if it's client's most preferred cipher suite */
++        if (sk_SSL_CIPHER_num(clnt) > 0) {
++            c = sk_SSL_CIPHER_value(clnt, 0);
++            if (c->algorithm_enc == SSL_CHACHA20POLY1305)
++                use_chacha = 1;
++        }
+     } else {
+         prio = clnt;
+         allow = srvr;
++        use_chacha = 1;
+     }
+ 
+     tls1_set_cert_validity(s);
+@@ -3709,6 +3717,9 @@ const SSL_CIPHER *ssl3_choose_cipher(SSL
+             (DTLS_VERSION_LT(s->version, c->min_dtls) ||
+              DTLS_VERSION_GT(s->version, c->max_dtls)))
+             continue;
++        /* Skip ChaCha unless top client priority */
++        if (c->algorithm_enc == SSL_CHACHA20POLY1305 && !use_chacha)
++            continue;
+         /*
+          * Since TLS 1.3 ciphersuites can be used with any auth or
+          * key exchange scheme skip tests.
+@@ -3768,6 +3779,14 @@ const SSL_CIPHER *ssl3_choose_cipher(SSL
+             break;
+         }
+     }
++
++    if (ret == NULL && !use_chacha) {
++        /* If no shared cipher was found due to some unusual preferences, try
++         * again with CHACHA enabled even if not top priority */
++        use_chacha = 1;
++        goto retry;
++    }
++
+     return (ret);
+ }
+ 
