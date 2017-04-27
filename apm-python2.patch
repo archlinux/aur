@@ -1,0 +1,11 @@
+--- a/share/atom-beta/resources/app/apm/bin/apm
++++ b/share/atom-beta/resources/app/apm/bin/apm
+@@ -2,6 +2,8 @@
+
+ set -e
+
++export PYTHON=python2
++
+ initialCwd=`pwd -P`
+
+ apmPath=$0

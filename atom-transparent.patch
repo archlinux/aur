@@ -1,0 +1,13 @@
+--- a/src/main-process/atom-window.coffee	2017-04-19 00:52:31.000000000 +0800
++++ b/src/main-process/atom-window.coffee	2017-04-26 22:45:43.885753242 +0800
+@@ -30,7 +30,9 @@
+       # transparent one) to prevent subpixel anti-aliasing from being disabled.
+       # We believe this is a regression introduced with Electron 0.37.3, and
+       # thus we should remove this as soon as a fix gets released.
+-      backgroundColor: "#fff"
++      # backgroundColor: "#fff"
++      frame: false
++      transparent: true
+       webPreferences:
+         # Prevent specs from throttling when the window is in the background:
+         # this should result in faster CI builds, and an improvement in the

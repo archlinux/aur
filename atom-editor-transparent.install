@@ -1,0 +1,19 @@
+post_install() {
+    cat << EOF
+Make sure to write this line to your custom stylesheet:
+
+    html, atom-workspace {background-color: transparent;}
+
+Because Atom has preset background-colors on elements.
+You may need to reset more elements' background according to
+specific UI theme you are using.
+
+If you use tia-ui theme then just that line is enough.
+
+To run directly with /usr/bin/atom-beta, use like this:
+
+    atom-beta --enable-transparent-visuals --disable-gpu
+
+append more option as you like.
+EOF
+}
