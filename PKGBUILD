@@ -1,4 +1,4 @@
-# Maintainer: Marco Pompili <aur@emarcs.org>
+# Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Danny Coates <dannycoates@gmail.com>
 # Contributor: Danny Coates <dannycoates@gmail.com>
@@ -30,7 +30,7 @@
 
 _npmname=node-inspector
 pkgname=nodejs-$_npmname
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Web Inspector based nodeJS debugger"
 arch=('any')
@@ -40,7 +40,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('2ff855e03ba7b445066fcd14d7488673059e2e5099c450e1c70db294d56c41c3')
+sha256sums=('615c5e41d515e0c661c306dc6df6a703dff0d1d24ef5d9fd045e37b0b94a267d')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
