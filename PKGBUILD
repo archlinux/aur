@@ -172,6 +172,7 @@ _arch_specific_configure_options="\
 
 # shouldn't be needed
 _core_configure_options="\
+                 -prefix ${_installprefix} \
                  -optimized-tools \
                  -optimized-qmake \
                  -confirm-license \
@@ -321,13 +322,12 @@ if $_target_host; then
   local _configure_line="${_srcdir}/configure \
                  -platform linux-clang \
                  -make tools \
-                 ${_arch_specific_configure_options} \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
+# ${_arch_specific_configure_options} \
 else
   local _configure_line="${_srcdir}/configure \
                  ${_core_configure_options} \
-                 -prefix ${_installprefix} \
                  -hostprefix ${_installprefix} \
                  -qtlibinfix "Pi${_piver}" \
                  -sysroot ${_sysroot} \
