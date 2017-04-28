@@ -6,7 +6,7 @@ arch=(i686 x86_64)
 url='https://gitlab.kode54.net/kode54/foo_input_hvl'
 license=(MIT)
 depends=(glibc)
-makedepends=('git' 'qtchooser')
+makedepends=('git' 'qt5-base')
 source=("${pkgname}::git+https://gitlab.kode54.net/kode54/foo_input_hvl.git")
 sha256sums=('SKIP')
 
