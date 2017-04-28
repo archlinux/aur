@@ -1,0 +1,6 @@
+src
+pkg
+v*.tar.gz
+tuna-lv2-*.src.tar.gz
+tuna-lv2-*.tar.xz
+.AURINFO
