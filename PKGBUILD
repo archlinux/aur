@@ -5,7 +5,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=16
+pkgrel=18
 pkgdesc="Enhanced PSX emulator (64-bit)"
 url="http://epsxe.com"
 arch=('x86_64')
@@ -13,15 +13,26 @@ arch=('x86_64')
 #depends_i686+=(gtk3 sdl_ttf libtinfo libcurl-compat)
 depends=(gtk3 libxt sdl_ttf libtinfo libcurl-compat libcanberra bash)
 #depends=(gtk3 sdl_ttf ilib32-libtinfo lib32-libcurl-compat)
+makedepends=(p7zip tar)
 license=('unknown')
 install=${pkgname}.install
 options=(!strip)
 source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh
-        "http://www.epsxe.com/files/${_pkgname}${pkgver//./}linux_x64.zip")
+        "http://www.epsxe.com/files/${_pkgname}${pkgver//./}linux_x64.zip"
+	"https://bitbucket.org/amagura/pub_rel/downloads/libcrypto.so.1.0.0")
 md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
          '8d47875ba4f51943cdb6e09c2f25e4b5'
-         '79fefeb4bff26bf1d374befb35b390df')
+         '79fefeb4bff26bf1d374befb35b390df'
+         'bfa2fd45f084ce8fd59760b156f727c9')
+
+#prepare()
+#{
+#  cd "$srcdir"
+#  7z x -y "libcrypto.tar.7z"
+#  tar -C "$srcdir" xf "libcrypto.tar"
+#}
+
 package()
 {
   #srcpath="${srcdir}/${_pkgname}${pkgver//./}linux"
@@ -46,10 +57,13 @@ package()
   install -Dm 755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "${srcdir}/epsxe.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm 644 "${srcdir}/epsxe.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -m 755 "${srcdir}/libcrypto.so.1.0.0" "${pkgdir}/opt/${pkgname}/libcrypto.so.1.0.0"
 
   ln -sf "$HOME/.${pkgname}rc" -T "${pkgdir}/opt/${pkgname}/.${pkgname}rc"
 
   # libtinfo and ncurses crap
   ln -s /usr/lib/libncursesw.so.6 "$pkgdir"/opt/"$pkgname"/libncurses.so.5
   ln -s /usr/lib/libtinfo.so.6 "$pkgdir"/opt/"$pkgname"/libtinfo.so.5
+  #ln -s /usr/lib/libcrypto.so.1.0.0 "$pkgdir"/opt/"$pkgname"/libcrypto.so.1.0.0
+  #ln -s /usr/lib/libssl.so.1.0.0 "$pkgdir"/opt/"$pkgname"/libssl.so.1.0.0
 }
