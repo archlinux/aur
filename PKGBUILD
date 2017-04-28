@@ -1,8 +1,8 @@
 # Maintainer: Thomas Gläßle <t_glaessleATgmxDOTnet>
 
 pkgname=madx-dev
-pkgver=5.02.13
-pkgrel=3
+pkgver=5.03.04
+pkgrel=1
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -12,20 +12,15 @@ provides=('madx')
 makedepends=('cmake')
 arch=('x86_64')
 
-
 tarball=madx-src.tgz
 extract=madx-${pkgver}
 
-source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}" madx_vim.diff pmass.diff)
-md5sums=('11307450b9a25a9d75c7bca42ae18c2c'
-         'befa90472e7b5725406c1dab5811102d'
-         '99a1f46963d8db5d933e2ac941a1fdcf')
+source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}")
+md5sums=('efd9df109045cb7937621ec647d86ec0')
 
 prepare() {
     cd ${srcdir}/${extract}
     find . -name '._*' -print0 | xargs -0 -r rm
-    patch -p0 < ${srcdir}/madx_vim.diff
-    patch -p0 < ${srcdir}/pmass.diff
 
     mkdir -p ${srcdir}/build
     cd ${srcdir}/build
@@ -50,6 +45,7 @@ build() {
 
 check() {
     cd ${srcdir}/build
+    # export GFORTRAN_UNBUFFERED_PRECONNECTED=y
     # ctest -E LONG
 }
 
