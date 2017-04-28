@@ -50,6 +50,8 @@ prepare() {
 }
 
 build() {
+    export CC=gcc
+    export CXX=g++
 	cd $srcdir/$_pkgname-$_ver
 
 	if [ "${CARCH}" == 'x86_64' ]; then
