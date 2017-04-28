@@ -1,23 +1,27 @@
 # Maintainer: Aleksandr Boyko <brdcom@yandex.ru>
 pkgname=texlive-irmologion
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="TeX Live - Additional fonts from the site irmologion.ru to typeset Church Slavonic text"
 arch=('any')
 url="http://irmologion.ru"
 license=('unknown')
 makedepends=("unrar")
-source=("${url}/fonts/slavucs8_t1.rar"
-        "${url}/fonts/psalucs8_t1.rar"
-        "${url}/fonts/zlatucs8_t1.rar")
-noextract=("psalucs8_t1.rar"
-           "slavucs8_t1.rar"
-           "zlatucs8_t1.rar")
+_font1=slavucs8_t1
+_font2=psalucs8_t1
+_font3=zlatucs8_t1
+source=("${url}/fonts/${_font1}.rar"
+        "${url}/fonts/${_font2}.rar"
+        "${url}/fonts/${_font3}.rar")
+noextract=("${_font1}.rar"
+           "${_font2}.rar"
+           "${_font3}.rar")
 
-prepare () {
-    unrar x psalucs8_t1.rar
-    unrar x slavucs8_t1.rar
-    unrar x zlatucs8_t1.rar
+build() {
+    cd "$srcdir"
+    for i in *.rar; do
+        unrar x $i
+    done
 }
 
 package() {
