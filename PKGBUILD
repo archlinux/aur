@@ -12,7 +12,7 @@ depends=('gtk2' 'libgnome-keyring' 'gnome-keyring' 'desktop-file-utils' 'python2
 conflicts=('nylas-mail' 'nylas-mail-git')
 source=(NylasMail-${pkgver}.deb::https://edgehill.s3.amazonaws.com/${pkgver}-${_pkgver}/linux-deb/x64/NylasMail.deb)
 install=${_pkgname}.install
-md5sums=('ce4f6e5f77dda67197c2fa83e6e28243')
+md5sums=('e1a744fa8ff91de05807f2aa4d63f297')
 package() {
     msg2 "Extracting data.tar.gz..."
     bsdtar -xf data.tar.gz -C "${pkgdir}/"
