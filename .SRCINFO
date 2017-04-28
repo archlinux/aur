@@ -1,0 +1,16 @@
+pkgbase = kshare-git
+	pkgdesc = Simple animated GIF screen recorder with an easy to use interface (latest development release)
+	pkgver = 1.1.r9.g4652759
+	pkgrel = 1
+	url = https://github.com/ArsenArsen/KShare
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = qt5-base
+	depends = qt5-x11extras
+	provides = kshare=${pkgver}
+	source = git+https://github.com/ArsenArsen/KShare.git
+	sha1sums = SKIP
+
+pkgname = kshare-git
+
