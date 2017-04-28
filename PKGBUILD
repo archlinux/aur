@@ -6,7 +6,7 @@ __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
 pkgver=12
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
 arch=('x86_64')
@@ -31,7 +31,7 @@ sha256sums=('d9364983ef91ab09dc231c8d979b413cfa36d4744830ba59f5d3e52b616048b0'
 # Change to path for your own certificate
 # The source package has a tool called "make-certs" that you can use
 # to make your own certificate(s)
-__certfile="/etc/efi/certs/pub.cer"
+__certfile="/etc/efi/certs/pub.crt"
 
 prepare() {
 	cd "${srcdir}/${__pkgname}-${pkgver}/"
