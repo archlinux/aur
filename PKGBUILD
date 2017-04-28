@@ -1,4 +1,4 @@
-# Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=nylas-mail-git
 _pkgname=nylas-mail
 pkgver=1.0.26.49.g52452d6d
