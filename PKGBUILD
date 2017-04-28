@@ -1,7 +1,7 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
 pkgname=giseditor
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A gis editor for .gpx .gdb and download maps source"
 arch=('any')
@@ -200,12 +200,12 @@ echo "--- src/GisEditor-0.21/src/util.py	2016-05-09 18:31:33.000000000 +0800
 	rm $srcdir/util.patch
 	mv $srcdir/GisEditor-$pkgver/conf/sample/sym_rule.conf.sample $srcdir/GisEditor-$pkgver/conf/sym_rule.conf
 }
-build() {
-	echo "TODO: pip install python package here"
-}
-check(){
-	echo "TODO: check gpxbabel path here"
-}
+#build() {
+	# TODO: pip install python package here"
+#}
+#check(){
+	# TODO: check gpxbabel path here"
+#}
 package() {
 	mkdir -p $pkgdir/opt/giseditor
 	cp -R $srcdir/GisEditor-$pkgver/conf $pkgdir/opt/giseditor
@@ -219,11 +219,10 @@ package() {
 	cp -R $srcdir/GisEditor-$pkgver/src $pkgdir/opt/giseditor
 	cp -R $srcdir/GisEditor-$pkgver/main.py $pkgdir/opt/giseditor
 	chmod +x $pkgdir/opt/giseditor/main.py 
-	echo 'python /opt/giseditor/main.py' > $pkgdir/opt/giseditor/giseditor.sh
-	chmod +x $pkgdir/opt/giseditor/giseditor.sh
 	mkdir -p $pkgdir/usr/bin
-	ln -s $pkgdir/opt/giseditor/giseditor.sh $pkgdir/usr/bin/giseditor
+	echo '#!/usr/bin/sh' > $pkgdir/usr/bin/giseditor
+	echo 'python /opt/giseditor/main.py' >> $pkgdir/usr/bin/giseditor
+	chmod +x $pkgdir/usr/bin/giseditor
 
-	echo "TODO: install .desktop here and update mime type for os"
+	# TODO: install .desktop here and update mime type for os"
 }
-
