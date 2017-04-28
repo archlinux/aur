@@ -19,13 +19,22 @@ conflicts=('fusion-icon0.9' 'fusion-icon')
 provides=('fusion-icon')
 depends=('compizconfig-python' 'hicolor-icon-theme' 'xorg-utils' 'mesa-demos')
 
+# presume that if compizconfig-python deps are met, it's against python2
+_python="python"
+_sitearch_check="from distutils import sysconfig; print(sysconfig.get_python_lib(plat_specific=1))"
+
+# do we have a python2 compizconfig-python?
+if [[ -f "$(python2 -c "${_sitearch_check}")/compizconfig.so" ]]; then
+	_python=python2
+fi
+
 # Note to anyone who builds this: Make sure you install the appropriate
 # dependencies for the user interfaces you want to use! Otherwise, it'll appear
 # like it's not working!
-# Change to python2 if using Compiz 0.9.x
+# Also - change these to python2 if you're using Compiz 0.9.x
 optdepends=(
-	'python-pyqt5: For the Qt Interface'
-	'python-gobject: For the GTK+ Interface'
+	"${_python}-pyqt5: For the Qt Interface"
+	"${_python}-gobject: For the GTK+ Interface"
 	'libappindicator-gtk3: For the GTK+ Interface'
 )
 
@@ -40,13 +49,13 @@ pkgver() {
 build() {
   cd "${srcdir}/${_upstream}"
   # Change to python2 if using Compiz 0.9.x
-  python ./setup.py build
+  "${_python}" ./setup.py build
 }
 
 package() {
   cd "${srcdir}/${_upstream}"
   # Change to python2 if using Compiz 0.9.x
-  python ./setup.py install --root="$pkgdir" --optimize=1
+  "${_python}" ./setup.py install --root="$pkgdir" --optimize=1
 }
 
 sha256sums=('SKIP')
