@@ -3,7 +3,7 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon
-pkgver=27.2.1
+pkgver=27.3.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ optdepends=('libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: various video and audio support')
-source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
+#source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
+source=(git+"https://github.com/MoonchildProductions/Pale-Moon#commit=f2695891c96250bfde630acdf2f5babe31c750f5" # upstream hasn't tagged 27.3 yet, so use verbump commit
         mozconfig.in)
 md5sums=('SKIP'
          '033551ecd40cc00580ed77fa00f31559')
