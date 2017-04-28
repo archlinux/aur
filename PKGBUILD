@@ -7,7 +7,7 @@
 
 pkgname=erlang-nox
 pkgver=19.3
-pkgrel=2
+pkgrel=3
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
@@ -26,16 +26,16 @@ source=("git+https://github.com/erlang/otp.git#tag=OTP-$pkgver"
         'epmd.socket'
         'epmd.conf'
         otp-0007-Fix-CVE-2016-10253.patch
-        disable-deprecated.patch
-        openssl-1.1.0.patch)
+        openssl-1.1.0.patch
+        openssl-1.1.0-fixup.patch)
 sha256sums=('SKIP'
             'f8192ffdd7367083c055695eeddf198155da43dcc221aed1d870d1e3871dd95c'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
             '998a759e4cea4527f9d9b241bf9f32527d7378d63ea40afa38443c6c3ceaea34'
             '78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2'
             'a1361b0fd7b32d8de061f1a985df31f5b37f433b42d46a6a03e2f19c9372b46e'
-            '6bb4501c1ed30df95db97ee2f6ff5cf52d166a6245b4fa67abe3a9402ab51b0d'
-            'dd315047f3ccdad8609a5eb881eb2f312222316e5fcc34ebec2a0b6328d5a7a5')
+            'dd315047f3ccdad8609a5eb881eb2f312222316e5fcc34ebec2a0b6328d5a7a5'
+            '3ca0a3b8426f1ad08b7bb2fb45a243cf17efa7d5db0ed20a934cd8cbf6178b53')
 
 prepare() {
   cd otp
@@ -43,8 +43,8 @@ prepare() {
   git cherry-pick -n e30294f44d02200c20a80f1a3a2bb075afc3747d
   git cherry-pick -n 78a5de9611c25a4e7b5248aa9828f949f3a5c131
   git cherry-pick -n 1cdaf0a6fd8dbbf08fe88dd148424df4da683f48
-  patch -Np1 -i ../disable-deprecated.patch
   patch -Np1 -i ../openssl-1.1.0.patch
+  patch -Np1 -i ../openssl-1.1.0-fixup.patch
 
   patch -Np1 -i ../otp-0007-Fix-CVE-2016-10253.patch
   ./otp_build autoconf
