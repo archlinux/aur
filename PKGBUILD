@@ -2,7 +2,7 @@
 
 pkgname=nutstore-experimental
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Nutstore experimental version.'
 arch=(x86_64 i686)
 url='https://jianguoyun.com/'
@@ -16,8 +16,8 @@ source_x86_64=("https://jianguoyun.com/static/exe/ex/$pkgver/nutstore_client-$pk
 source_i686=("https://jianguoyun.com/static/exe/ex/$pkgver/nutstore_client-$pkgver-linux-x86-public.tar.gz")
 sha256sums=('3091740b20ddd31ba4407b8daba1077c4677040cdc47bccfab2f7f3947676384'
             'f3d2861ff48f2d193a4eced23a02b4eba9fab4c1d3f727e934ed7c59f38f0f7e')
-sha256sums_x86_64=('91931fdb66c1a9f3ad9c82fa1f7f73a3c52e26da0767138b868e61c5fc8d49ba')
-sha256sums_i686=('64a46f7467d1eedbc23267022c8f3d10968be055610afbf07f8e6572e4d6f350')
+sha256sums_x86_64=('5376f79a009d1327e95ed07bd0ef7dc75de37af0a07b4cb7318727a462d77e43')
+sha256sums_i686=('38bd96aa4fb8c86e1b6fc73bbb79972ed4a211a402dfe6627b645ae19b6e2275')
 conflicts=(nutstore)
 provides=(nutstore)
 
