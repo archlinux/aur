@@ -8,8 +8,7 @@ arch=(any)
 url="https://github.com/jaypei/emacs-neotree"
 license=('GPL3')
 depends=('emacs' 'emacs-ag' 'emacs-helm')
-source=("https://github.com/jaypei/emacs-neotree/archive/${pkgver}.ta
-r.gz")                                                              
+source=("https://github.com/jaypei/emacs-neotree/archive/${pkgver}.tar.gz")                                                              
 sha256sums=('SKIP')
 
 build() {
