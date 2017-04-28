@@ -1,0 +1,14 @@
+pkgbase = sirocco
+	pkgdesc = C++ library that allows to compute piecewise linear approximations of the path followed by the root of a complex polynomial
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://iuma.unizar.es/es/investigacion/software/sirocco
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = mpfr
+	source = https://iuma.unizar.es/sites/default/files/software/libsirocco-2.0.tar_.gz
+	md5sums = e3e775144ae2bf66eed0066e98e167e9
+
+pkgname = sirocco
+
