@@ -1,4 +1,4 @@
-# Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=here-and-there-along-the-echo
 pkgver=1
 pkgrel=2
