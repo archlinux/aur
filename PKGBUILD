@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd "${srcdir}/KShare"
-  install ./KShare "$pkgbin/usr/bin/kshare"
+  make DESTDIR="$pkgdir" install/strip
 }
 
 pkgver() {
