@@ -2,13 +2,13 @@
 
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
-pkgver=r468.76be0e2
+pkgver=r493.7dc4a1b
 pkgrel=1
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
-makedepends=('cmake' 'git' 'glm' 'dbus-cpp' 'lxc' 'sdl2' 'protobuf' 'gmock' 'boost' 'properties-cpp')
+makedepends=('cmake' 'git' 'glm' 'dbus-cpp' 'lxc' 'sdl2' 'protobuf' 'boost' 'properties-cpp')
 source=("git+https://github.com/anbox/anbox.git"
 	'anbox-container-manager.service'
 	'anbox-session-manager.service'
@@ -38,6 +38,7 @@ prepare() {
   cd "$srcdir/${_pkgname}"
 
   # Don't build tests
+  truncate -s 0 cmake/FindGMock.cmake
   truncate -s 0 tests/CMakeLists.txt
 
   # Fix loading translators
