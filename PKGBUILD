@@ -9,7 +9,7 @@ _commit=HEAD
 _branch=feature-bind
 
 pkgname=rtorrent-pyro-git
-pkgver=20161225
+pkgver=20170421
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
@@ -33,27 +33,33 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 
 _url="https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches"
 source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
+        "${_url}/command_pyroscope.cc"
         "rtorrent.rc.sample"
         "${_url}/ps-fix-double-slash-319_all.patch"
         "${_url}/ps-info-pane-xb-sizes_all.patch"
         "${_url}/ps-item-stats-human-sizes_all.patch"
         "${_url}/ps-ui_pyroscope_all.patch"
+        "${_url}/ps-view-filter-by_all.patch"
+        "${_url}/ps-event-view_all.patch"
+        "${_url}/ps-fix-throttle-args_all.patch"
         "${_url}/pyroscope.patch"
-        "${_url}/command_pyroscope.cc"
         "${_url}/ui_pyroscope.patch"
         "${_url}/ui_pyroscope.cc"
         "${_url}/ui_pyroscope.h")
 
 md5sums=('SKIP'
+         'SKIP'
          '35e2c69152a3c2137c5958f9f27cb906'
          '22fae392c6e281dc438b39a5019e7e1b'
          'f1539d70c74e5c74d8a15d51675aa26c'
          '2d34e8c86c1c6ed1354b55ca21819886'
          '7a88f8ab5d41242fdf1428de0e2ca182'
+         '26faff00b306b6ef276a7d9e6d964994'
+         '56701bca42cc9b309637bf3f918ede12'
+         'ab490d1d1df9c27f3cf624966f7f03f6'
          'bd04a0699b80c8042e1cf63a7e0e4222'
-         'e84b904230ad860e383f48bfd0efeb6e'
          '0a2bbaf74c7160ba33876dcc2f050f14'
-         'a40c2da835b16e85452f34aaa0329355'
+         '21fd4b912ddabe32356eef0a4e87c681'
          '1258acfc82c50a8f452ace87fef0b416')
 
 pkgver() {
