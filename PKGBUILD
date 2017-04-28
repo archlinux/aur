@@ -1,0 +1,171 @@
+# Maintainer: Aleksandr Boyko <brdcom@yandex.ru>
+pkgname=fonts-irmologion
+pkgver=1.0
+pkgrel=1
+pkgdesc="TTF and Type1 fonts from the site irmologion.ru in UCS encoding to typeset Church Slavonic text"
+arch=('any')
+url="http://irmologion.ru"
+license=('unknown')
+makedepends=("unrar")
+_t1=akath_ucs8_t1
+_t2=akath_ucs8_ttf
+_t3=bukv_ucs8_t1
+_t4=bukv_ucs8_ttf
+_t5=evngucs
+_t6=feofanucs
+_t7=hirmucs8_t1
+_t8=hirmucs8_ttf
+_t9=inducs8_ttf
+_t10=inducs_t1
+_t11=irmucs8_t1
+_t12=irmucs8_ttf
+_t13=kath_ucs8_t1
+_t14=kath_ucs8_ttf
+_t15=oglucs8_t1
+_t16=oglucs8_ttf
+_t17=ostg_dol_ucs8_t1
+_t18=ostg_dol_ucs8_ttf
+_t19=ostg_ucs8_t1
+_t20=ostg_ucs8_ttf
+_t21=pochucs8_t1
+_t22=pochucs8_ttf
+_t23=pos_ucs8_t1
+_t24=pos_ucs8_ttf
+_t25=psalucs8_t1
+_t26=psalucs8_ttf
+_t27=slavucs8_t1
+_t28=slavucs8_ttf
+_t29=stusucs8_t1
+_t30=stusucs8_ttf
+_t31=triucs8_t1
+_t32=triucs8_ttf
+_t33=vertucs8_t1
+_t34=vertucs8_ttf
+_t35=zlatucs8_t1
+_t36=zlatucs8_ttf
+install=$pkgname.install
+source=("${url}/fonts/${_t1}.rar"
+        "${url}/fonts/${_t2}.rar"
+        "${url}/fonts/${_t3}.rar"
+        "${url}/fonts/${_t4}.rar"
+        "${url}/fonts/${_t5}.rar"
+        "${url}/fonts/${_t6}.rar"
+        "${url}/fonts/${_t7}.rar"
+        "${url}/fonts/${_t8}.rar"
+        "${url}/fonts/${_t9}.rar"
+        "${url}/fonts/${_t10}.rar"
+        "${url}/fonts/${_t11}.rar"
+        "${url}/fonts/${_t12}.rar"
+        "${url}/fonts/${_t13}.rar"
+        "${url}/fonts/${_t14}.rar"
+        "${url}/fonts/${_t15}.rar"
+        "${url}/fonts/${_t16}.rar"
+        "${url}/fonts/${_t17}.rar"
+        "${url}/fonts/${_t18}.rar"
+        "${url}/fonts/${_t19}.rar"
+        "${url}/fonts/${_t20}.rar"
+        "${url}/fonts/${_t21}.rar"
+        "${url}/fonts/${_t22}.rar"
+        "${url}/fonts/${_t23}.rar"
+        "${url}/fonts/${_t24}.rar"
+        "${url}/fonts/${_t25}.rar"
+        "${url}/fonts/${_t26}.rar"
+        "${url}/fonts/${_t27}.rar"
+        "${url}/fonts/${_t28}.rar"
+        "${url}/fonts/${_t29}.rar"
+        "${url}/fonts/${_t30}.rar"
+        "${url}/fonts/${_t31}.rar"
+        "${url}/fonts/${_t32}.rar"
+        "${url}/fonts/${_t33}.rar"
+        "${url}/fonts/${_t34}.rar"
+        "${url}/fonts/${_t35}.rar"
+        "${url}/fonts/${_t36}.rar")
+noextract=("${_t1}.rar"
+        "${_t2}.rar"
+        "${_t3}.rar"
+        "${_t4}.rar"
+        "${_t5}.rar"
+        "${_t6}.rar"
+        "${_t7}.rar"
+        "${_t8}.rar"
+        "${_t9}.rar"
+        "${_t10}.rar"
+        "${_t11}.rar"
+        "${_t12}.rar"
+        "${_t13}.rar"
+        "${_t14}.rar"
+        "${_t15}.rar"
+        "${_t16}.rar"
+        "${_t17}.rar"
+        "${_t18}.rar"
+        "${_t19}.rar"
+        "${_t20}.rar"
+        "${_t21}.rar"
+        "${_t22}.rar"
+        "${_t23}.rar"
+        "${_t24}.rar"
+        "${_t25}.rar"
+        "${_t26}.rar"
+        "${_t27}.rar"
+        "${_t28}.rar"
+        "${_t29}.rar"
+        "${_t30}.rar"
+        "${_t31}.rar"
+        "${_t32}.rar"
+        "${_t33}.rar"
+        "${_t34}.rar"
+        "${_t35}.rar"
+        "${_t36}.rar")
+
+build() {
+    cd "$srcdir"
+    for i in *.rar; do
+        unrar x -o+ $i
+    done
+}
+
+package() {
+    cd "$srcdir"
+    mkdir -p $pkgdir/usr/share/{fonts/TTF,fonts/Type1}/
+    install -Dm644 *.ttf "$pkgdir/usr/share/fonts/TTF/"
+    install -Dm644 *.afm "$pkgdir/usr/share/fonts/Type1/"
+    install -Dm644 *.pfb "$pkgdir/usr/share/fonts/Type1/"
+    install -Dm644 *.pfm "$pkgdir/usr/share/fonts/Type1/"
+}
+
+md5sums=('b3f37332a7c5b159c165e649c304f247'
+         'ef241a78121a3177cfc2beef6721e2e8'
+         '616ffacd963044ae3dc0a90c68d46956'
+         '0bcbe88599274df3d6da46daa8fe2f3d'
+         '6d3f343ca8780c58114ac58d42d10a06'
+         'aca3221b0fc50b6b2f18f5f17d18b94a'
+         '3373dbfb619af51d09639841d75ae5a8'
+         '1b15250d727f6ab77499ebf5fdde7415'
+         '02cd7053f3a2da16e135eda0962f8b60'
+         'b04bfb401ed5c2f4af7e6d8108247bbd'
+         '80107e4b6b8c8c8d82dac7a7eab6f345'
+         'ff10c5cd6ed063061904875546689f66'
+         'b9e54057f8e711cddcd3a2513662be18'
+         '78b645582459e34f764a3fb3e565b327'
+         'f166b38dc09750fdd9485679e127678e'
+         'c62fddcfabbcf685d15131df709f93a3'
+         '79ef5493a2c0d96343119b3c0758458d'
+         'b951534a167c95182ec6d96177e26f03'
+         '2e5cc199f7399a9173013aac4a438002'
+         '33d9bc8bce2d08e4a595c1ab20d4479c'
+         '6dec2febca5b7b38a8610d7863dda00b'
+         'ffa88f20d029c9865f5b5a39dca16163'
+         '39f793c6a68848a27bdb4b0f9d1da95d'
+         '3ac3e6eca9fcb71145df757c2150acda'
+         '24d0df891b96592f45278cfc7a320fe6'
+         '9e7f7c5bb63ab1b33a9f3008a1c78cbd'
+         'b0139708a9bdf6fe31d591e4079d91e2'
+         'a5af4dddbf378bf9acfed21c45506bba'
+         '7946a3ec7a0c5911b745a236658afac7'
+         '9bade4bc9048fee1184abcd81e677c61'
+         '2dd3989b201a5c14ecf8b17f71035205'
+         '19996ce0cba574265e32a97f7325a222'
+         'd04dca2ab6aaf2797eecf3a30a6c3458'
+         '42adaa21f309f41abe82f9bca8adf229'
+         '2e1b85eb791fd986c99e556890c3caae'
+         'fabbb565304c5d6006688a10404f181b')
