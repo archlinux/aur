@@ -2,7 +2,7 @@
 
 pkgname=flif
 _pkgname=FLIF
-pkgver=0.2.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Free Lossless Image Format"
 arch=("i686" "x86_64")
@@ -11,12 +11,13 @@ license=('GPL3')
 conflicts=('flif-git')
 depends=('zlib' 'libpng' 'sdl2')
 source=("https://github.com/FLIF-hub/FLIF/archive/v${pkgver//_/-}.tar.gz")
-md5sums=('a6be0a90cf3a90cdfcb1b4b0391237b9')
+md5sums=('0bc4d0a71d67b2c6e040e2d5a93dcd2d')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver//_/-}/src"
   make all
   make decoder
+  make viewflif
 }
 
 package() {
@@ -27,7 +28,9 @@ package() {
   install -dm755 "${pkgdir}/usr/include/${_pkgname}"
   install -m755 flif viewflif dflif "${pkgdir}/usr/bin"
   install -m755 libflif_dec.so "${pkgdir}/usr/lib/"
+  install -m755 libflif_dec.so.0 "${pkgdir}/usr/lib/"
   install -m755 libflif.so "${pkgdir}/usr/lib/"
+  install -m755 libflif.so.0 "${pkgdir}/usr/lib/"
   install -m 644 library/*.h "${pkgdir}/usr/include/${_pkgname}"
   install -m 644 ../doc/flif.1 "${pkgdir}/usr/share/man/man1"
   install -m 755 ../tools/gif2flif "${pkgdir}/usr/bin"
