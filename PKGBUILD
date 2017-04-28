@@ -1,8 +1,8 @@
-# Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=nylas-mail-bin
 _pkgname=nylas-mail
-pkgver=2.0.28
-_pkgver=37242ab
+pkgver=2.0.31
+_pkgver=e675deb
 pkgrel=1
 pkgdesc="Nylas Mail: A new mail client for Linux, Mac and Windows, built on the modern web and designed to be extended. (formerly N1, official binary version)"
 arch=('x86_64')
