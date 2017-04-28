@@ -1,6 +1,6 @@
 pkgbase = hledger
 	pkgdesc = Command-line and web-based accounting tool
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = http://hledger.org
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = hledger
 	conflicts = hledger-ui
 	conflicts = hledger-web
 	options = strip
-	source = https://github.com/simonmichael/hledger/archive/hledger-1.1.tar.gz
-	sha256sums = b47055fb218c7e8b254bc663c5a63398504d2dfa8daf80646b04983f4d488edb
+	source = https://github.com/simonmichael/hledger/archive/hledger-1.2.tar.gz
+	sha512sums = 2e30d03057bc440121d7f0340434639fef90fa1f19a75e80cde52920a2ec051cbe1b84dcdff2da2ff5e3b6685ed39c37eaa0b2b72bacc64c78c4dfa709a73d41
 
 pkgname = hledger
 

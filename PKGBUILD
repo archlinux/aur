@@ -1,7 +1,8 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=hledger
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Command-line and web-based accounting tool"
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ url="http://hledger.org"
 license=('GPL3')
 options=('strip')
 source=("https://github.com/simonmichael/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('b47055fb218c7e8b254bc663c5a63398504d2dfa8daf80646b04983f4d488edb')
+sha512sums=('2e30d03057bc440121d7f0340434639fef90fa1f19a75e80cde52920a2ec051cbe1b84dcdff2da2ff5e3b6685ed39c37eaa0b2b72bacc64c78c4dfa709a73d41')
 provides=('hledger' 'hledger-api' 'hledger-ui' 'hledger-web')
 conflicts=('hledger' 'hledger-api' 'hledger-ui' 'hledger-web')
 
