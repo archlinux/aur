@@ -1,5 +1,5 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
-# Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
+# Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/palopezv>
 pkgname=brave
 pkgver=0.15.0
 pkgrel=1
@@ -12,8 +12,7 @@ makedepends=('npm' 'git')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
-source=("https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz")
-sha512sums=('4eec1eed3632cc5772e236ab700fd4561f1be250f10fb2b98ee76c3f34c219a375e61476f534af9152d038d08f8a06a45688ee4791e070fdee1d667fbb808310')
+source=("browser-laptop-"$pkgver"dev.tar.gz::https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz")
 
 build() {
 	cd "$srcdir"/browser-laptop-"$pkgver"dev
