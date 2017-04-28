@@ -145,11 +145,6 @@ _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 
-if $_target_host; then
-  _baseprefix=/usr
-  _installprefix=${_baseprefix}
-fi
-
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
 url="http://chaos-reins.com/qpi/"
@@ -221,10 +216,6 @@ finish() {
       touch $install
     fi
 }
-
-if ! $_target_host; then
-  trap finish EXIT
-fi
 
 adjust_bin_dir() {
   if [[ -n ${_srcdir} ]]; then
@@ -379,10 +370,6 @@ package() {
   local _profiledfn=qpi.sh
 
   local _installed_dir="${pkgdir}/${_sysroot}/${_baseprefix}"
-
-if $_target_host; then
-  _installed_dir="${pkgdir}/${_baseprefix}"
-fi
 
   rm -Rf ${_libspkgdir} ${_libsdebugpkgdir}
   mkdir -p ${_libspkgdir} ${_libsdebugpkgdir}
