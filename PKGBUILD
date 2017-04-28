@@ -8,13 +8,13 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.0.beta3.r0.g2f5a28f235
+pkgver=8.0.beta4.r0.g7177ef5d46
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 python2-fpylll python2-psutil
+depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rpy2 python2-fpylll python2-psutil python2-cypari2
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future libgap flintqs lcalc lrcalc arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
@@ -29,16 +29,17 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
+  'sirocco: for computing the fundamental group of the complement of a plane curve'
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
-makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding
+makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch cython-sys-path.patch is-package-installed.patch package.patch latte-count.patch
         jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch ecm-7.patch r-no-readline.patch fes02.patch
-        create_extension.patch sagemath-pynac-0.7.6.patch)
+        create_extension.patch include_dirs_from_externs.patch)
 sha256sums=('SKIP'
             'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
-            'ff7e034d08ab084fdb193484f7fe3a659ebcd8ab33a2b7177237d65b26de7872'
+            '4a411b6253f54e610523440acf86526390a09b05ebff10ec0008fa046ee1ac66'
             '57349b0d1596a1719ba97f1c4d0cceb1ab0051a551c9904064145a5583c883f2'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
             'c6836783251d94c00f0229c1e671de86c58c6c6fb0f6959725317817abc64ca8'
@@ -49,7 +50,7 @@ sha256sums=('SKIP'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
             'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
             '362bd7603e14f729c87eebc9d3f56eb8a9ec94456038f0cb17591e81c459ef8e'
-            '42d6549d9a07bcea9fa79bb63961ebbfaaa4ca64e9c6a402ae90d559bb256c12')
+            '19603251870e308e824d130611d5211482bc5912579780a527748d7f8d2ef560')
 
 pkgver() {
   cd sage
@@ -84,8 +85,6 @@ prepare(){
   patch -p1 -i ../fes02.patch
 # replace is_package_installed usage http://trac.sagemath.org/ticket/20377
   patch -p1 -i ../is-package-installed.patch
-# port to pynac 0.7.6 https://trac.sagemath.org/ticket/22838
-  patch -p1 -i ../sagemath-pynac-0.7.6.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
@@ -99,6 +98,7 @@ prepare(){
   cp -r /usr/lib/python2.7/site-packages/{Cython,cython.*,pyximport} local-python
   cd local-python
   patch -p1 -i "$srcdir"/create_extension.patch
+  patch -p1 -i "$srcdir"/include_dirs_from_externs.patch
 }
 
 build() {
