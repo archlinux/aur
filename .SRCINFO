@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 1.1.55
+	pkgver = 1.1.215
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	install = rstudio-desktop-git.install
@@ -10,11 +10,10 @@ pkgbase = rstudio-desktop-git
 	makedepends = git
 	makedepends = cmake>=2.8
 	makedepends = boost>=1.5
-	makedepends = java-runtime=8
+	makedepends = java-environment
 	makedepends = apache-ant
 	makedepends = unzip
 	makedepends = openssl
-	makedepends = pango
 	makedepends = libcups
 	makedepends = pam
 	makedepends = wget
@@ -22,12 +21,18 @@ pkgbase = rstudio-desktop-git
 	depends = r>=2.11.1
 	depends = hicolor-icon-theme
 	depends = shared-mime-info
+	depends = pango
 	depends = hunspell-en
 	depends = mathjax
 	depends = pandoc
-	depends = qt5-webkit
-	depends = qt5-svg
 	depends = clang
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-location
+	depends = qt5-sensors
+	depends = qt5-svg
+	depends = qt5-webkit
+	depends = qt5-xmlpatterns
 	optdepends = git: for git support
 	optdepends = subversion: for subversion suuport
 	optdepends = openssh-askpass: for a git ssh access
@@ -40,9 +45,11 @@ pkgbase = rstudio-desktop-git
 	source = git+https://github.com/rstudio/rstudio.git
 	source = https://s3.amazonaws.com/rstudio-buildtools/gin-1.5.zip
 	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.7.0.zip
+	source = socketproxy-openssl.patch
 	md5sums = SKIP
 	md5sums = 2409168cc18bf5f341e107e6887fe359
 	md5sums = a8f3704a597b392910ea060284f21a03
+	md5sums = d571313f511ad4a17014c4aef6d01bbc
 
 pkgname = rstudio-desktop-git
 

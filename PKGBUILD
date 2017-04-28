@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.1.74
+pkgver=1.1.215
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.8.0
@@ -11,8 +11,8 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost-libs>=1.5' 'r>=2.11.1' 'hicolor-icon-theme' 'shared-mime-info' 'hunspell-en' 'mathjax' 'pandoc'  'qt5-webkit' 'qt5-svg' 'clang')
-makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime=8' 'apache-ant' 'unzip' 'openssl' 'pango' 'libcups' 'pam' 'wget')
+depends=('boost-libs>=1.5' 'r>=2.11.1' hicolor-icon-theme shared-mime-info pango hunspell-en mathjax pandoc clang qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webkit qt5-xmlpatterns)
+makedepends=(git 'cmake>=2.8' 'boost>=1.5' java-environment apache-ant unzip openssl libcups pam wget)
 optdepends=('git: for git support'
 	    'subversion: for subversion suuport'
 	    'openssh-askpass: for a git ssh access')
@@ -22,10 +22,12 @@ install="${pkgname}.install"
 
 source=("git+https://github.com/rstudio/rstudio.git"
         "https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
-        "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip")
+        "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
+        socketproxy-openssl.patch)
 md5sums=('SKIP'
          '2409168cc18bf5f341e107e6887fe359'
-         'a8f3704a597b392910ea060284f21a03')
+         'a8f3704a597b392910ea060284f21a03'
+         'd571313f511ad4a17014c4aef6d01bbc')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
@@ -33,7 +35,11 @@ pkgver() {
 }
 
 prepare() {
-    msg "Extracting dependencies"
+    msg "Apply socketproxy-openssl.patch..."
+    cd "${srcdir}/${_gitname}"
+    patch -p1 < ${srcdir}/socketproxy-openssl.patch
+
+    msg "Extracting dependencies..."
     cd "${srcdir}/${_gitname}/src/gwt"
     install -d lib/{gin,gwt}
     install -d lib/gin/${_ginver}
@@ -50,7 +56,7 @@ prepare() {
     ln -sfT "/usr/lib/libclang.so" libclang/3.5/libclang.so
     ln -sfT "/usr/lib/clang/$_clangver/include" libclang/builtin-headers/3.5
 
-    msg "Downloading and installing R packages"
+    msg "Downloading and installing R packages..."
     bash install-packages
 }
 
