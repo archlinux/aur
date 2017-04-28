@@ -2,35 +2,39 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.0.136
+pkgver=1.0.143
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.6.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source and enterprise-ready professional software for the R community"
 arch=('i686' 'x86_64')
 url="http://www.rstudio.com/"
 license=('AGPL')
 depends=(
-	'r>=2.11.1' 'boost-libs>=1.50'
+	'r>=2.11.1' 'boost-libs>=1.63'
 	pango shared-mime-info mathjax pandoc clang
 	qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webkit qt5-xmlpatterns
 )
-makedepends=('cmake>=2.8' 'boost>=1.50' java-environment apache-ant openssl pam)
+makedepends=('cmake>=2.8' 'boost>=1.63' java-environment apache-ant openssl pam)
 conflicts=('rstudio-desktop-bin' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
 install=rstudio-desktop.install
 source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
         "https://s3.amazonaws.com/rstudio-buildtools/gin-$_ginver.zip"
         "https://s3.amazonaws.com/rstudio-buildtools/gwt-$_gwtver.zip"
         "https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip"
-        "qdatastream.patch")
+        "rroutines-style.patch"
+        "socketproxy-openssl.patch"
+        )
 noextract=('core-dictionaries.zip'
            "gin-$_ginver.zip")
-sha256sums=('171fca1211582294b1c43be5cece1d67125f71dc34ea84f2db874d3611a49a83'
+sha256sums=('8d597da85b007e2cdbd5c5e7e0005907c7672c2f6dd87c8481c27032f6e57705'
             'f561f4eb5d5fe1cff95c881e6aed53a86e9f0de8a52863295a8600375f96ab94'
             'aa65061b73836190410720bea422eb8e787680d7bc0c2b244ae6c9a0d24747b3'
             '4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
-            '3147f02fe9fb557c7dee4d332db9626da4ac4b563ad3d00fc68c6f955afd0a41')
+            'b953527f46320d64425f7de257f774d7f354199b7c6a71f126ed467b6e6dd52b'
+            '65b9f9b1f159bbfbcb1544f444e210e58549c0d1c0c6421cf750ce3517088134'
+            )
 
 _pkgname=rstudio
 
@@ -40,6 +44,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname-$_pkgname-"*
+	
+	patch -p 1 -i "$srcdir/rroutines-style.patch"
+	# problem with openssl-1.1.0. fixed in rstudio-1.1.x:
+	# https://github.com/rstudio/rstudio/pull/1063/commits/e8c9a7783f3ff44dea2e2464b4bf2904325c72cd
+	# replicating upstream patch
+	patch -p 1 -i "$srcdir/socketproxy-openssl.patch"
 	
 	install -d src/gwt/lib/{gin/$_ginver,gwt/$_gwtver}
 	

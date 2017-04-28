@@ -1,0 +1,7 @@
+/src/
+/pkg/
+/*.pkg.tar.xz
+/rstudio-*.tar.gz
+/gin-*.zip
+/gwt-*.zip
+/core-dictionaries.zip
