@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -338,7 +338,7 @@ package_linux-pf() {
 	    'nvidia-beta-all: NVIDIA drivers for all installed kernels'
 	    'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
  #provides=(${pkgbase}=${_basekernel} 'aufs3')	# for $pkgname-optimized
- provides=(${pkgbase}=$pkgver 'aufs3')
+ provides=(${pkgbase}=$pkgver 'aufs3' 'linux-tomoyo')
  # below 'provides' is for when you have no other kernel (which is a bad idea anyway)
  # provides=(${pkgbase}=${_basekernel} 'linux=${pkgver}' 'aufs3')
  # If generic build, then conflict with all optimized ones
