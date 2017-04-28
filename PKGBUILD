@@ -5,7 +5,7 @@
 
 pkgname=xf86-input-evdev-debounce
 _pkgname=xf86-input-evdev
-pkgver=2.10.4
+pkgver=2.10.5
 pkgrel=1
 pkgdesc="X.org evdev input driver with DebounceDelay setting, it can save your mouse's broken left button from double clicking hell."
 arch=(i686 x86_64)
