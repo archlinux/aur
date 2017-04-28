@@ -3,24 +3,34 @@
 
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.18.0.2017.04.24
+pkgver=1.18.0.2017.04.26
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
 url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
-makedepends=('libffi' 'perl' 'python2' 'curl')
+makedepends=('libffi' 'perl' 'python2' 'curl' 'llvm')
 source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
-md5sums=('855d46c9a7adbddafcf1462eaf9f4003')
+md5sums=('734498847d1808777ae8f1b69e45484e')
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
 conflicts=('rust')
 provides=('rust')
 
 build() {
   cd rustc-nightly-src
-  ./configure --prefix=/usr --disable-rpath --enable-compiler-docs 
-  make dist
- }
+ ./configure \
+    --prefix=/usr \
+    --release-channel=stable \
+    --llvm-root=/usr \
+    --disable-codegen-tests \
+    --jemalloc-root=/usr/lib \
+    --disable-rpath \
+    --enable-compiler-docs 
+
+  export RUSTFLAGS="$RUSTFLAGS -C link-args=-lffi"
+
+  python2 ./x.py build --verbose 
+}
 
 package_rust-nightly() {
 	depends=('shared-mime-info')
