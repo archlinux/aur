@@ -1,4 +1,4 @@
-# Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=the-binding-of-isaac
 pkgver=20111101
