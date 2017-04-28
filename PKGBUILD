@@ -2,9 +2,9 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn
 pkgver=v4.20_9608
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 source=('http://www.softether-download.com/files/softether/v4.20-9608-rtm-2016.04.17-tree/Source_Code/softether-src-v4.20-9608-rtm.tar.gz'
         'disable_sslv3.patch'
         'softethervpn-bridge.service'
@@ -27,6 +27,8 @@ build(){
     cp src/makefiles/linux_32bit.mak Makefile
   elif [ "${CARCH}" == "x86_64" ]; then 
     cp src/makefiles/linux_64bit.mak Makefile
+  elif [ "${CARCH}" == "armv7h" ]; then
+    cp src/makefiles/linux_32bit.mak Makefile
   fi
 
   patch -Np1 --binary -i "${srcdir}/disable_sslv3.patch"
