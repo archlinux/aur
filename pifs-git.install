@@ -1,0 +1,5 @@
+post_install() {
+  echo "==> πfs is dead simple to use:"
+  echo "    πfs -o mdd=<metadata directory> <mountpoint>"
+}
+
