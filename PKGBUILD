@@ -1,7 +1,7 @@
 # Maintainer: K900 <me@0upti.me>
 # Patch by notfound4 <https://github.com/notfound4/Duelyst-Launcher>
 pkgname="duelyst"
-pkgver="1.83.0"
+pkgver="1.84.0"
 pkgrel=1
 
 pkgdesc="A collectible card game played on a grid-like board"
@@ -25,7 +25,7 @@ source=(
 )
 
 sha512sums=(
-	"3f770c0b5491156247bf6c4a1f6a25f024c7a262a8a51169a6ec3e4be92bb982f7353fbcc0609f7b8ac4f13c29d50ce388966db5a693f6a5587bed1c6ed95036"
+	"b49e6f4584bf98c3729aa4d196ac2602b7b7035848f79d5c492871d1993bafb9fdb0c28ecc78f4e4620ba8243c0c0b2542cee965d91c5db0a8e03367ee0391c7"
 	"9bb012e75b0702d3321c9677921014932500549b9cbff1cc3f9698987c1b22ba804cb094fe498050e2300681cab4639b6818a05241ce3425704c60bb0a2f57ca"
 	"a12e18b4ea8d61ea9002cc030dac648632a238ff4d411d1f201ffcb25fbec4ef292db03bbda408cbb397ea8a5fe5c425ae219ddfcaa43f8eae78e4b547283bd1"
 	"7999607a9aff7476c6dc2111e170bbcaa9d57c0c659afea27fa736e44904d5500047ecff6b1d3ff2dd2236dbd9c839732cb3da611d23df9861900417906e7261"
