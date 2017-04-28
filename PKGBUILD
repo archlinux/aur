@@ -1,17 +1,17 @@
 # Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
 _gemname=http-cookie
 pkgname=ruby-$_gemname
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A Ruby library to handle HTTP cookies in a way both compliant with RFCs and compatible with today's major browsers."
 arch=(any)
 url="https://github.com/sparklemotion/http-cookie"
 license=('MIT')
-depends=(ruby)
+depends=(ruby,ruby-domain_name)
 makedepends=(rubygems)
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('bcc1b18b5bc3e9302542c9c7f68f1ac0c3100a65dd2831786172e8676773e233')
+sha256sums=('2f11269d817bc52ab2af2721e89a377660a961078de2a3a55fc696d7897e8c00')
 
 package() {
   cd "$srcdir"
