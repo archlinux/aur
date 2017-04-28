@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 license=("unknown")
 depends=('perl-convert-bencode-xs')
 source=("https://raw.githubusercontent.com/rakshasa/rtorrent/master/doc/rtorrent_fast_resume.pl")
-sha256sums=('138525eb2a0e5761c90ac7e56ec723f028d8220c6696978d7c12f1656d25edb7')
+sha256sums=('0d64e441491328ed34bd708b3f95e2f49a6c96f5cf43e7ec132fc7f060106a95')
 
 package() {
   install -Dv rtorrent_fast_resume.pl "${pkgdir}"/usr/bin/rtorrent-fast-resume
