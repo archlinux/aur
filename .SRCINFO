@@ -13,7 +13,7 @@ pkgbase = kube
 	depends = kirigami
 	depends = qt5-quickcontrols2
 	source = https://download.kde.org/unstable/kube/0.2.0/src/kube-0.2.0.tar.xz
-	sha256sums = 5a2b39b4dfeac4d211946d54a25cc53dda154aa5c624c148fb3d6c511ad6fef6
+	sha256sums = 8040346cfce803f63aac75bf5bf1d97edbc8dcfb6f1ec8b09f5e9cb47c768055
 
 pkgname = kube
 

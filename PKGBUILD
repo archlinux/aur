@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(hicolor-icon-theme messagelib sink kirigami qt5-quickcontrols2)
 makedepends=(extra-cmake-modules)
 source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
-sha256sums=('5a2b39b4dfeac4d211946d54a25cc53dda154aa5c624c148fb3d6c511ad6fef6')
+sha256sums=('8040346cfce803f63aac75bf5bf1d97edbc8dcfb6f1ec8b09f5e9cb47c768055')
 
 prepare() {
   mkdir -p build
