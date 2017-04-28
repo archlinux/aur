@@ -4,11 +4,11 @@
 # Contributor: Matthew <pyther@pyther.net>
 
 pkgname=bacula-client
-pkgver=7.4.4
+pkgver=7.4.7
 pkgrel=1
 pkgdesc='A network backup tool for Linux, Unix, Mac and Windows - client edition'
 conflicts=('bacula')
-depends=('openssl')
+depends=('openssl-1.0')
 provides=("bacula-fd=${pkgver}")
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url='http://www.bacula.org/'
@@ -19,18 +19,18 @@ backup=('etc/bacula/bconsole.conf'
 #validpgpkeys=('2CA9F510CA5CCAF61AB529F59E98BF3210A792AD') # Bacula Distribution Verification Key (www.bacula.org)
 source=("http://downloads.sourceforge.net/project/bacula/bacula/${pkgver}/bacula-${pkgver}.tar.gz" #{,.sig}
 	'bacula-fd.service')
-sha256sums=('dd3bb3a33b9b107f1242c576a94724b9dc2d8486f0ea4611e4ad36a352c90b15'
+sha256sums=('6f6075c2ca90a63cdeeca39b0b82a3ea07ce9999dedc68951d88bed7fbc0be40'
             '37cdab95a99142a7e8494f0a49e54a5bfb1dca28561d0ce70ea64bf98e0c50fd')
 
 build() {
 	cd bacula-${pkgver}/
 
-	./configure \
+	CPPFLAGS=-I/usr/include/openssl-1.0/ ./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--enable-client-only \
 		--with-systemd=/usr/lib/systemd/system/ \
-		--with-openssl \
+		--with-openssl=/usr/lib/openssl-1.0/ \
 		--sysconfdir=/etc/bacula \
 		--with-scriptdir=/etc/bacula/scripts
 
