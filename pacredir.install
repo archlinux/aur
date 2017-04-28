@@ -1,0 +1,4 @@
+post_install() {
+	echo " > For instructions visit: https://github.com/eworm-de/pacredir#usage"
+}
+
