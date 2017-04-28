@@ -1,14 +1,14 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=iscore-git
-pkgver=1.0a30
+pkgver=1.0b9
 pkgrel=1
 pkgdesc="i-score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="http://www.i-score.org"
 license=('CeCILLv2')
 groups=()
-depends=('jamomacore' 'boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg')
-makedepends=('git' 'cmake' 'qt5-tools' 'ninja')
+depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative')
+makedepends=('git' 'cmake' 'qt5-tools')
 provides=('i-score')
 conflicts=()
 replaces=()
@@ -33,18 +33,13 @@ build() {
       git submodule update --recursive
     )
   else
-    git clone "$_gitroot" "$_gitname" 
-    (
-      cd "$_gitname"
-      git checkout master
-      git submodule update --init --recursive
-    )
+    git clone --recursive -j8 "$_gitroot" "$_gitname" 
   fi
 
   mkdir -p "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
-  cmake -GNinja -DCMAKE_PREFIX_PATH="/usr/jamoma/share/cmake/Jamoma" -DISCORE_STATIC_PLUGINS:Bool=True -DDEPLOYMENT_BUILD:Bool=True -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
-  ninja
+  cmake -Wno-dev -DISCORE_CONFIGURATION=static-release -DDEPLOYMENT_BUILD=1 -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$_gitname"
+  make all_unity
 }
 
 package() {
@@ -52,6 +47,6 @@ package() {
   install -D -m755 "i-score.sh" "${pkgdir}/usr/bin/i-score.sh"
 
   cd "$srcdir/$_gitname-build"
-  cmake --build . --target install --config DynamicRelease
+  cmake --build . --target install
   install -D -m644 "$srcdir/$_gitname/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
