@@ -1,8 +1,8 @@
 # Maintainer: Aleksandr Boyko <brdcom@yandex.ru>
 pkgname=fonts-irmologion
 pkgver=1.0
-pkgrel=1
-pkgdesc="TTF and Type1 fonts from the site irmologion.ru in UCS encoding to typeset Church Slavonic text"
+pkgrel=2
+pkgdesc="Collection of Church Slavonic fonts from the site of irmologion.ru in the UCS encoding"
 arch=('any')
 url="http://irmologion.ru"
 license=('unknown')
