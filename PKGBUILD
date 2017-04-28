@@ -1,15 +1,15 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 # Contributor: Francisco Magalhães <franmagneto gmail com>
 
-# Set this to 0 if you want to include only the open-source Visual Studio Code
-# components.  This will cause the extension manager to work in a local-only
-# mode (you'll have to download and install extensions manually).
-[[ -z "$VSCODE_NONFREE" ]] && VSCODE_NONFREE=1
+# Set this to 1 if you want to enable the proprietary Visual Studio Code
+# features.  Leaving this at 0 will cause the extension manager to work in
+# a local-only mode (you'll have to download and install extensions manually).
+[[ -z "$VSCODE_NONFREE" ]] && VSCODE_NONFREE=0
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 _commit=6eaebe3b9c70406d67c97779468c324a7a95db0e
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
@@ -25,7 +25,7 @@ source=("vscode::git+https://github.com/Microsoft/vscode#commit=${_commit}"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
             '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
-            'f853d7d998251223b0516928a2189e1e68a312bd732f18dc8d59892659beeae9')
+            'b788b1d8277a03e7935ab3aad7941339378f2ebdfd9b14ccd835e31ae131a132')
 
 if (( VSCODE_NONFREE )); then
     source+=('product_json.patch')
