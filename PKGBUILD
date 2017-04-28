@@ -6,7 +6,7 @@ arch=(i686 x86_64)
 url='https://gitlab.kode54.net/kode54/viogsf'
 license=(GPL2 LGPL2.1)
 depends=(glibc gcc-libs)
-makedepends=(git qtchooser)
+makedepends=(git qt5-base)
 source=(${pkgname}::git+https://gitlab.kode54.net/kode54/viogsf.git)
 sha256sums=('SKIP')
 
