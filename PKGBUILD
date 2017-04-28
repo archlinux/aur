@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mysqltuner-git
-pkgver=1.5.1.r38.g8d98ead
+pkgver=1.6.18.r138.ge2280c0
 pkgrel=1
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability - git checkout'
 arch=('any')
