@@ -1,7 +1,7 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/palopezv>
 
 pkgname=paccache-trim
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Run paccache weekly to keep pacman cache on check."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/palopezv/package-trim/"
 license=('custom:UNLICENSE')
 options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/palopezv/$pkgname/archive/$pkgver.tar.gz")
-sha384sums=('fa00780b0f57aca60df5cc8128d33ecff45af888c845370c720949f5c98ba648aec9a7c031a2d7593c3525bd67e095bf')
+sha384sums=('b56a19fa86fdb907674bbce7ec720f295059cbfd57cb6998ee609b03727fb303bf18f54ba8c9201e7f904f547c511672')
         
 package() {
 	_systemdpath=/usr/lib/systemd/system/
