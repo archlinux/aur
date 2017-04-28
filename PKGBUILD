@@ -1,6 +1,6 @@
 pkgbase=tmkernel-bfq       # Build kernel with a different name
 _srcname=linux-4.10
-pkgver=4.10.10
+pkgver=4.10.13
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -17,7 +17,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '200cb2b47d2b6316f4cc6ee90be581187d34f90390aef8fc07d4460be11cfeb2'
+            'b1a7a98aa97cc0917fcab0def68032d5bf61838c79177b2222cee2485015458f'
             'SKIP'
             'dfb53fb48bad4d9f61bbea5e364d5619137460e7224bdf0e7bde5e137bc512d5'
             '086891e5358e9077b8d1d5dd2351c688b64f3f26b1b671a5a4a73db494bd30e2'
@@ -36,10 +36,6 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
   
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
   cat "${srcdir}/config.${CARCH}" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
