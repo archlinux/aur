@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd "${srcdir}/KShare"
-  install ./KShare "${pkgdir}/kshare"
+  install ./KShare "/usr/bin/kshare"
 }
 
 pkgver() {
