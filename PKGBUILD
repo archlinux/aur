@@ -1,6 +1,6 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
 pkgname=astroid
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
@@ -23,20 +23,20 @@ install=$pkgname.install
 changelog=
 source=(https://github.com/astroidmail/astroid/archive/v${pkgver}.tar.gz)
 noextract=()
-sha256sums=('867346e745726173c7728a1396311ee7558ec13098f93ea8c58cb3e63d5064f2')
+sha256sums=('bb0bd5914af1f835393f101eff577ac5e0f35b67cc565ae0d6947a2d98ae9dd8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  scons --release="$pkgver" --prefix=/usr build
+  scons -j 8 --release="$pkgver" --prefix=/usr build
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  scons --release="$pkgver" --prefix=/usr test
+  scons -j 8 --release="$pkgver" --prefix=/usr test
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  scons --release="$pkgver" --install-sandbox="$pkgdir/" --prefix=/usr install
+  scons -j 8 --release="$pkgver" --install-sandbox="$pkgdir/" --prefix=/usr install
 }
 
