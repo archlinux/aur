@@ -2,7 +2,7 @@
 
 # Please note that while I am an employee of Safe Software, this PKGBUILD is
 # entirely unsupported, and I provide it as myself, and not as a representative
-# of Safe Software Inc.
+# of Safe Software.
 
 # THE PKGBUILD IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -78,4 +78,6 @@ package() {
   tar -xJf data.tar.xz -C "${pkgdir}"
 
   install -D -m644 "${pkgdir}/opt/fme-desktop-2017/EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  ln -s "/usr/lib/jvm/default" "${pkgdir}/usr/lib/jvm/default-java"
 }
