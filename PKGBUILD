@@ -12,22 +12,20 @@ optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave' 'brave-browser')
 conflicts=('brave')
-replaces=('brave-browser-bin')
-source=("$pkgname-$pkgver.tar.bz2::https://github.com/brave/browser-laptop/releases/download/"v$pkgver"dev/Brave.tar.bz2"
-        "brave.png::https://github.com/brave/browser-laptop/raw/master/res/app.png"
+source=("$pkgname-$pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$pkgver"dev/Brave.tar.bz2
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
 sha512sums=('ba083e64972bef5956a2e98499d77234fdffc9e8507be292d9489dc5db0da6d54b53e66ad744cc187cc5af6a167d32e836b72fac2092be1fbd3a249569008d49'
-            'f5d0a906dd91f5da6af88d8c31098a4fe0e38baf27e52c2e77ba8cf7a2d41ebddad5dbc543b14766fc2684ae27e7e2e5faf8cd9036dcde0a7d4b05943599ed41'
             'c1e3a0c8f5267fb5c0b65733bda037c62d914ed989bee0f510d8196b1029eec00d40f415ce1514a4996d420ba02d856d04db0915b64573ef4a36033cc5efb94e')
 
+_bdir=Brave-linux-x64
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir"
 
   install -d -m0755 "$pkgdir"/usr/lib
 
-  cp -a --reflink=auto Brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
+  cp -a --reflink=auto $_bdir "$pkgdir/usr/lib/$pkgname"
 
   _launcher="$pkgdir/usr/bin/$pkgname"
   install -Dm0755 /dev/stdin "$_launcher"<<END
@@ -156,7 +154,7 @@ Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 END
 
-  install -Dm0644 "$srcdir"/brave.png "$pkgdir"/usr/share/pixmaps/brave.png
+  install -Dm0644 "$srcdir"/$_bdir/resources/extensions/brave/img/braveAbout.png "$pkgdir"/usr/share/pixmaps/brave.png
 
   install -Dm0664 "$srcdir"/MPL2 "$pkgdir/usr/share/licenses/$pkgname/MPL2"
 
