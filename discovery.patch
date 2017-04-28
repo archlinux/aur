@@ -1,0 +1,13 @@
+diff --git a/pkg/discovery/local/local.go b/pkg/discovery/local/local.go
+index 761ef01..b787bcd 100644
+--- a/pkg/discovery/local/local.go
++++ b/pkg/discovery/local/local.go
+@@ -22,7 +22,7 @@ func Setup() error {
+ 	}
+ 	if !exists {
+ 		log.Warn("Creating directory", "dir", dir)
+-		err = fs.MkdirAll(dir, 0600)
++		err = fs.MkdirAll(dir, 0700)
+ 		if err != nil {
+ 			return err
+ 		}
