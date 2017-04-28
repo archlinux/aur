@@ -5,13 +5,13 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=network-ups-tools-git
-pkgver=v2.7.4.r158.gfc5f808
+pkgver=v2.7.4.r371.g30e04684
 pkgrel=1
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.networkupstools.org/"
 license=('GPL2')
-depends=('openssl' 'libusb-compat' 'libltdl' 'neon' 'net-snmp')
+depends=('openssl-1.0' 'libusb-compat' 'libltdl' 'neon' 'net-snmp')
 provides=('network-ups-tools')
 conflicts=('network-ups-tools')
 makedepends=('asciidoc' 'git')
@@ -32,6 +32,7 @@ prepare() {
 
 build() {
   cd "$srcdir/nut"
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   ./autogen.sh
   ./configure \
     --without-wrap \
