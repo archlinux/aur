@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.1.2.r3424.7c5678bd
+pkgver=2.1.2.r3431.aed681c4
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -65,12 +65,12 @@ md5sums=('SKIP'
          '056770a94f3c13799c09d3ece273154f')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.18.5
+nwjsver=0.22.0
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('1d5e9e25c36b7c3221e317baa7d94b64')
-md5sums_x86_64=('3c6391a30c74531e918c7434caa2730f')
+md5sums_i686=('080b6ef139c1ed6839fcfe20f73f66d8')
+md5sums_x86_64=('2e7e8dd7a5ad63e46e8cc15fe505e87e')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
