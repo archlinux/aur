@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sink
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An offline-caching, synchronization and indexing system for PIM data"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(curl kcontacts kasync kimap2 lmdb)
 makedepends=(extra-cmake-modules flatbuffers libgit2)
 source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
-sha256sums=('04aa9468c72a822fc050b89c13d78651a7a760afef44a3a27a872866842a4fb8')
+sha256sums=('b9e4d8a8f9cc3922da60d25366a6b2b29c5fab110724dedf7d47ccbc12080119')
 
 prepare() {
   mkdir -p build
