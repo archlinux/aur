@@ -3,7 +3,7 @@ pkgbase="python-delegator"
 pkgname=("python-delegator" "python2-delegator")
 pkgdesc="Subprocesses for Humans 2.0"
 url="https://github.com/kennethreitz/delegator.py"
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=2
 source=("https://github.com/kennethreitz/delegator.py/archive/v$pkgver.tar.gz")
 makedepends=('python-setuptools' 'python2-setuptools')
@@ -30,4 +30,4 @@ package_python2-delegator() {
     cd "$srcdir/$_pypiname-$pkgver-py2"
     python2 setup.py install --prefix="/usr" --root="$pkgdir" -O1
 }
-sha256sums=('01a3cfc42639d98c7c624e67dbfce2e51b38f23cb9cbcbadf66eca3e28563cc4')
+sha256sums=('a85e279ef306925590ab3ba0da1d4f4436771044de492c76b02332fb5aaf567f')
