@@ -5,7 +5,7 @@
 __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
@@ -24,8 +24,8 @@ install="${__pkgname}.install"
 changelog="${__pkgname}.changelog"
 source=("${url}/releases/download/${pkgver}/${__pkgname}-${pkgver}.tar.bz2"
 	${__pkgname}.patch)
-md5sums=('fc1163431582f1fd82215cd144236dec'
-         '90dc7ecd36b974440e1abb108d664ac2')
+sha256sums=('d9364983ef91ab09dc231c8d979b413cfa36d4744830ba59f5d3e52b616048b0'
+            'e2715a7aef5ee4d7c6f428d09ab387ce86bdf83969921e2b36eb92696752ebc0')
 
 prepare() {
 	cd "${srcdir}/${__pkgname}-${pkgver}/"
