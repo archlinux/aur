@@ -5,7 +5,7 @@
 
 pkgname=dofus
 pkgver=2.40
-pkgrel=4
+pkgrel=6
 pkgdesc='A manga inspired, Massively Multiplayer Online Role-playing Game (MMORPG) for Adobe AIR .'
 arch=('i686' 'x86_64')
 url='http://www.dofus.com/'
@@ -14,6 +14,7 @@ install='dofus.install'
 depends=('adobe-air-sdk')
 depends_x86_64+=('lib32-gtk2' 'lib32-alsa-lib' 'lib32-alsa-plugins')
 depends_i686+=('gtk2' 'alsa-lib' 'alsa-plugins')
+optdeppends=('pulseaudio-alsa: Required for the game to play sounds with PulseAudio')
 
 source=('dofus.desktop'
         'dofus.sh')
@@ -37,12 +38,16 @@ package() {
   msg2 'Installing launcher...'
   install -Dm755 "$srcdir/dofus.sh" "$pkgdir/usr/bin/dofus"
   install -Dm644 "$srcdir/dofus.desktop" "$pkgdir/usr/share/applications/dofus.desktop"
+
   msg2 'Installing icons...'
   for icon in "$srcdir/Dofus/share/updater_data/icons/game_icon_"*'.png'
   do
     size="$(basename "$icon" | grep -o '[0-9]\+x[0-9]\+')"
     install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$size/apps/dofus.png"
   done
+
+  msg2 'Installing link to bypass Adobe Air detection...'
+  ln -s '/opt/adobe-air-sdk/runtimes/air/linux/Adobe AIR/' "$pkgdir/opt/Adobe AIR"
 }
 
 # vim:set ts=2 sw=2 et:
