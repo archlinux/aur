@@ -1,7 +1,7 @@
 # Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
 #
 pkgname=osticket
-pkgver=1.9.14
+pkgver=1.10
 pkgrel=1
 pkgdesc='A widely-used open source support ticket system.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('php>=4.3.10' 'php-apache>=4.3.10' 'mysql>=4.4.0')
 makedepends=('unzip')
 install="${pkgname}.install"
 source=("http://osticket.com/sites/default/files/download/osTicket-v$pkgver.zip")
-md5sums=('558a949402f6db23560f63fd0334b2c0')
+sha256sums=('68ff411693802e154426d9ec9b2365ff524aad5f6e52ad9422f073ae48e3a46d')
 
 package() {
   install -d ${pkgdir}/srv/http/osticket
