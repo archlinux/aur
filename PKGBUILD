@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r12282.g1e9030d2f3
+pkgver=3.0.0.r12352.g6cd58e0e8e
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
