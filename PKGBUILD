@@ -59,30 +59,7 @@ build() {
 package() {
   export GOROOT="$GOPATH"
 
-  # Package go package files
-  for f in "$srcdir/build/go/pkg/"* "$srcdir/build/pkg/"*; do
-    # If it's a directory
-    if [ -d "$f" ]; then
-      cd "$f"
-      mkdir -p "$pkgdir/$GOROOT/pkg/`basename $f`"
-      for z in *; do
-        # Check if the directory name matches
-        if [ "$z" == `echo $_gourl | cut -d/ -f1` ]; then
-          cp -r $z "$pkgdir/$GOROOT/pkg/`basename $f`"
-        fi
-      done
-      cd ..
-    fi
-  done
-
-  # Package source files
-  if [ -d "$srcdir/build/src" ]; then
-    mkdir -p "$pkgdir/$GOROOT/src/pkg"
-    cp -r "$srcdir/build/src/"* "$pkgdir/$GOROOT/src/pkg/"
-    find "$pkgdir" -depth -type d -name .git -exec rm -r {} \;
-  fi
-
-  # Package license (if available)
+ # Package license (if available)
   for f in LICENSE COPYING; do
     if [ -e "$srcdir/build/src/$_gourl/$f" ]; then
       install -Dm644 "$srcdir/build/src/$_gourl/$f" \
