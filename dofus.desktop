@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dofus
+Exec=/usr/bin/dofus
+Icon=dofus
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;Roleplaying
