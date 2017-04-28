@@ -6,7 +6,7 @@ _mod_name=headers-more
 
 pkgname=nginx-mod-headers-more-git
 pkgver=0.32
-pkgrel=3
+pkgrel=4
 pkgdesc='Nginx module for setting and clearing input and output headers'
 arch=('i686' 'x86_64')
 url='https://github.com/openresty/headers-more-nginx-module'

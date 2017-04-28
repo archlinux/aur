@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-headers-more-git
 	pkgdesc = Nginx module for setting and clearing input and output headers
 	pkgver = 0.32
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/openresty/headers-more-nginx-module
 	arch = i686
 	arch = x86_64
