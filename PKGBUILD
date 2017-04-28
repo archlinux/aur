@@ -2,8 +2,8 @@
 
 pkgname=imagescan
 _pkgname=utsushi
-pkgver=3.29.0
-_pkgver=0.29.0
+pkgver=3.30.0
+_pkgver=0.30.0
 pkgrel=1
 _fedrel=25
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
@@ -16,7 +16,7 @@ optdepends=("tesseract: OCR support")
 source=("http://support.epson.net/linux/src/scanner/imagescanv3/fedora/${pkgname}-${pkgver}-1epson4fedora${_fedrel}.src.rpm"
         "utsushi.desktop"
         "utsushi.conf")
-md5sums=('33e18eb1d7ca453305543f2930b8232a'
+md5sums=('89a65516b87742532a78022fcd5a9a36'
          '34907cc33aa800c54ff83abb0eac3fc4'
          '65872f825a1787db89faa0a68611ed81')
 backup=("etc/utsushi/utsushi.conf")
