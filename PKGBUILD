@@ -23,7 +23,7 @@ build() {
   # We won't build the Audacious plugin so we don't need the libraries either.
   sed -i '/PKG_CHECK_MODULES(\(AUDACIOUS\|GTK\)/{N;N;d}' configure.in
   ./bootstrap
-  ./configure
+  CFLAGS="$CFLAGS -I../ext_includes -I../../ext_includes" ./configure
   cd src
   make -f Makefile.unix
   "${CC-cc}" "$CFLAGS" -lvorbisfile -lmpg123 -shared -o .libs/libvgmstream.so .libs/*.o */.libs/*.o
