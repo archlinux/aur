@@ -1,4 +1,4 @@
-# Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=netsniff-ng-git
 _gitname=netsniff-ng
 pkgver=v0.6.2.48.g88ec2ad3
