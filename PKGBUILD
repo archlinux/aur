@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kube
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A modern groupware client based on QtQuick and Sink"
 arch=(i686 x86_64)
 url="https://community.kde.org/KDE_PIM"
