@@ -1,13 +1,13 @@
 # Maintainer: dobragab <dobragab@gmail.com>
 
 pkgname=('ccsh-shell-git')
-pkgver=r83.d0f0cf5
+pkgver=r127.44f6458
 pkgrel=1
 pkgdesc='C++ shell'
 arch=('any')
 url='https://github.com/cpp-ftw/ccsh'
 license=('GPL3')
-depends=('boost' 'ccsh-git' 'cling-git')
+depends=('ccsh-git' 'cling-git')
 makedepends=('git' 'cmake' 'make')
 source=("git+https://github.com/cpp-ftw/ccsh.git")
 md5sums=(SKIP)
@@ -20,7 +20,7 @@ pkgver() {
 package() {
   cd "ccsh"
 
-  cmake . -DWITH_LIB=OFF -DWITH_TEST=OFF -DWITH_CLING=ON
+  cmake . -DWITH_LIB=OFF -DWITH_TEST=OFF -DWITH_COMPILER=OFF -DWITH_SAMPLE=OFF -DWITH_CLING=ON
   make
 
   install -Dm755 "$srcdir/ccsh/ccsh" "$pkgdir/usr/bin/ccsh"

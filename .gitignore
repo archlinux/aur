@@ -1,0 +1,6 @@
+# Ignore all
+*
+
+# Unignore PKG files
+!PKGBUILD
+!.SRCINFO
