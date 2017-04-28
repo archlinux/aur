@@ -1,5 +1,9 @@
 # Maintainer: GreenRaccoon23 <GreenRaccoon23 AT gmail DOT com>
 # Based on PKGBUILD from vertcoin-git maintained by Lothar_m <lothar_m AT riseup DOT net>
+# WARNING: Use the `dashcore` package instead of this one unless you know what
+# you are doing. The `dashcore` package provides the official, supported, tested,
+# stable, precompiled build. This package provides the development, unstable,
+# untested, and therefore possibly broken build. Use at your own risk.
 
 pkgname='dashcore-git'
 _gitname='dash'
@@ -11,7 +15,7 @@ url="https://www.dash.org/"
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'openssl')
 makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qrencode' 'automoc4' 'protobuf' 'qt5-tools')
 license=('MIT')
-pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)"
+pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool). WARNING: Unstable, development version."
 provides=('dashd' 'dash-qt' 'dash-cli')
 conflicts=('dashcore')
 source=("git://github.com/dashpay/dash.git")
