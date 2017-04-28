@@ -1,8 +1,8 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=1.1.r9.g4652759
+pkgver=git
 pkgrel=1
-pkgdesc="Simple animated GIF screen recorder with an easy to use interface (latest development release)"
+pkgdesc="A ShareX inspired cross platform utility written with Qt."
 arch=('i686' 'x86_64')
 url="https://github.com/ArsenArsen/KShare"
 license=('MIT')
