@@ -2,7 +2,7 @@
 
 pkgname=infrakit-git
 pkgver=v0.4.1.r77.gce06e23
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit for creating and managing declarative, self-healing infrastructure."
 arch=('x86_64')
 url="https://github.com/docker/infrakit"
