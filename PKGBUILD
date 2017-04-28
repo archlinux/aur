@@ -8,7 +8,7 @@
 pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
-pkgver=13279.56971f8da
+pkgver=13337.86525601d
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.dash.org/"
