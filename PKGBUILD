@@ -1,7 +1,7 @@
 # Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 pkgname=openstego
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Plugin based tool for steganography, with encrytion support."
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ url="http://openstego.sourceforge.net"
 license=('GPL2')
 depends=('java-environment' 'java-runtime' 'x-server')
 makedepends=('unzip')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.zip $pkgname.sh)
-md5sums=('86879a53207c78b0c2443df2538b4cf3'
-         '1208162b85c214fcc9c7b43e29dd604b')
+source=(https://github.com/syvaidya/openstego/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.zip $pkgname.sh)
+sha256sums=('6cf89b9441abe60d8e1bea6dabb8a86ff6c93007f5524678a1f50b3385574dc7'
+            'ca7876d874eef214d238d1b43809c1eb2bb5b327d7b5188198ecfc29a036061e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
