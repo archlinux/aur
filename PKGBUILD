@@ -1,13 +1,13 @@
 # Maintainer: Javier Torres <javier@javiertorres.eu>
 pkgname=carto-builder
-pkgver=4.0.0.r2730.b79f384fae
+pkgver=4.0.0.r5241.1b704c98d2
 pkgrel=1
 pkgdesc="Location Intelligence & Data Visualization tool"
 arch=('x86_64')
 url="https://github.com/CartoDB/cartodb"
 license=('BSD')
 groups=()
-depends=('ruby-bundler' 'postgis' 'redis' 'unp' 'python2')
+depends=('ruby-bundler' 'postgis' 'redis' 'python2')
 makedepends=('git' 'npm')
 provides=()
 conflicts=()
@@ -16,13 +16,11 @@ backup=('etc/carto/builder/config/app_config.yml' 'etc/carto/builder/config/data
 options=()
 install=
 source=('git+https://github.com/CartoDB/cartodb.git'
-        'disable_preflight.patch'
         'default_config.patch'
         'carto-builder.service'
         'carto-resque.service')
 noextract=()
 sha256sums=('SKIP'
-            '44bdb4e954fa891745257205ca72707f985a32d7023daa03146d6512338a0097'
             'fa05d876025e4174163a933671ca417c1978fd796f5274d3dbcb3be7e9b66ce9'
             '8cdc2866713b4ae0df5e007d672033b48992382186e53c8cb53d15a58755e8ae'
             '9dd127fc44c767fa6d7ba4f508680991006c5691466f9adc35a84e02a615aec7')
@@ -35,7 +33,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/cartodb"
   patch -p1 < "$srcdir/default_config.patch"
-  patch -p1 < "$srcdir/disable_preflight.patch"
 }
 
 build() {
@@ -43,13 +40,13 @@ build() {
   bundle install --path vendor/bundle
   npm install
   git submodule update --init
-  bundle exec node_modules/.bin/grunt
+  bundle exec node_modules/.bin/grunt --no-node-checker
 }
 
 package() {
   cd "$srcdir/cartodb"
   mkdir -p "$pkgdir/opt/carto/builder"
-  cp -ar app .bundle config config.ru db Gemfile Gemfile.lock lib package.json public Rakefile script services vendor "$pkgdir/opt/carto/builder"
+  cp -ar app gears .bundle config config.ru db Gemfile Gemfile.lock lib package.json public Rakefile script services vendor "$pkgdir/opt/carto/builder"
   rm "$pkgdir/opt/carto/builder/lib/tasks/random_data.rake"
   find "$pkgdir/opt/carto/builder" -name spec -type d -prune -exec rm -r {} \;
 
