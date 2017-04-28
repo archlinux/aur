@@ -43,7 +43,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.2.125447
+pkgver=25.2.125465
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 maintenance branch."
 arch=('i686' 'x86_64')
