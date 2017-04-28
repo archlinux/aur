@@ -16,7 +16,7 @@ optdepends=(
 	"hicolor-icon-theme: for hicolor theme hierarchy"
 )
 conflicts=("brackets-git" "brackets-bin")
-makedepends=('git' 'unzip' 'gtk2' 'python2')
+makedepends=('git' 'unzip' 'gtk2' 'python2' 'npm')
 install=${pkgname}.install
 source=("git+https://github.com/adobe/brackets-shell.git#branch=linux-1547"
 	#"brackets-shell::git+https://github.com/adobe/brackets-shell.git#tag=release-${pkgver}"
