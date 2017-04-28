@@ -5,7 +5,7 @@
 
 pkgname='scipoptsuite'
 pkgver='4.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolbox for generating and solving optimization problems."
 arch=('i686' 'x86_64')
 url='http://scip.zib.de'
@@ -14,18 +14,33 @@ depends=('zlib' 'gmp' 'readline')
 replaces=('ziboptsuite')
 makedepends=('chrpath' 'doxygen' 'graphviz')
 provides=('scip=4.0.0' 'soplex=3.0.0' 'zimpl=3.3.4' 'gcg=2.1.2' 'ug=0.8.3')
-options=(staticlibs)
 source=("http://scip.zib.de/download/release/${pkgname}-${pkgver}.tgz")
 sha256sums=('087535760eae3d633e2515d942a9b22e1f16332c022be8d093372bdc68e8a661')
 
-build() {
-    # Extract directory names from the $provides array.
-    local _scip="${provides[0]//=/-}"
-    local _soplex="${provides[1]//=/-}"
-    local _zimpl="${provides[2]//=/-}"
-    local _gcg="${provides[3]//=/-}"
-    local _ug="${provides[4]//=/-}"
+# Extract directory names from the $provides array.
+_scip="${provides[0]//=/-}"
+_soplex="${provides[1]//=/-}"
+_zimpl="${provides[2]//=/-}"
+_gcg="${provides[3]//=/-}"
+_ug="${provides[4]//=/-}"
 
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # Unpack and remove archives, otherwise patching wouldn't be possible
+    for _package in "${provides[@]}"; do
+        _archive="${_package//=/-}.tgz"
+
+        tar xzf "${_archive}"
+
+        rm "${_archive}"
+    done
+
+    # Fix ZIMPL linking
+    sed -i 's/LDFLAGS		+=	-static//g' ${_zimpl}/make/make.linux.*
+}
+
+build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     make SHARED=true scipoptlib
@@ -49,17 +64,11 @@ build() {
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+
     make test
 }
 
-package_scipoptsuite() {
-    # Extract directory names from the $provides array
-    local _scip="${provides[0]//=/-}"
-    local _soplex="${provides[1]//=/-}"
-    local _zimpl="${provides[2]//=/-}"
-    local _gcg="${provides[3]//=/-}"
-    local _ug="${provides[4]//=/-}"
-
+package() {
     # install everything manually (the install targets are still broken)
     cd "${srcdir}/${pkgname}-${pkgver}"
 
@@ -94,10 +103,10 @@ package_scipoptsuite() {
     # Libraries
     #
     mkdir -p "${pkgdir}/usr/lib/"
-    cp -d ${_scip}/lib/libscip*.a "${pkgdir}/usr/lib/"
-    cp -d ${_soplex}/lib/libsoplex*.a "${pkgdir}/usr/lib/"
+    cp -d ${_scip}/lib/shared/libscip*.so "${pkgdir}/usr/lib/"
+    cp -d ${_soplex}/lib/libsoplex*.so "${pkgdir}/usr/lib/"
     cp -d ${_zimpl}/lib/libzimpl*.a "${pkgdir}/usr/lib/"
-    cp -d lib/libscipopt*.so "${pkgdir}/usr/lib/libscipopt.so"
+    cp -d lib/libscipopt*.so "${pkgdir}/usr/lib/"
 
     # Repair "missing links"
     # @FIXME: I hope this is not necessary in future versions!
