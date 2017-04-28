@@ -19,8 +19,6 @@ build() {
 package() {
   cd "${srcdir}/emacs-neotree-${pkgver}"
   mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/neotree/icons/"
-  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/neotree
-/"                                                                  
-  install -m644 icons/*.xpm "${pkgdir}/usr/share/emacs/site-lisp/neot
-ree/icons/"                                                         
+  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/neotree/"
+  install -m644 icons/*.xpm "${pkgdir}/usr/share/emacs/site-lisp/neotree/icons/"
 }
