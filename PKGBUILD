@@ -113,8 +113,6 @@ package() {
              -targetdir=${pkgdir}/opt/Mathematica \
              -auto
 
-    exit 1
-
     msg2 "Fixing symbolic links"
     cd ${pkgdir}/usr/bin
     rm *
