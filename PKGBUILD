@@ -1,4 +1,4 @@
-# Maintainer Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer Can Celasun <can[at]dcc[dot]im>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Mathias Burén (fackamato) <mathias.buren@gmail.com>
 
