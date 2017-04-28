@@ -38,7 +38,8 @@ _deps=("http://downloads.sourceforge.net/project/sevenzip/LZMA%20SDK/4.65/lzma46
        "league-lzmajio-0.95-0-gd38bf5c.tar.gz::https://codeload.github.com/league/lzmajio/legacy.tar.gz/0.95"
        "http://downloads.sourceforge.net/project/bitcollider/jBitcollider%20%28Java%29/0.8/jBitcollider-0.8.zip"
        "https://www.spaceroots.org/software/mantissa/mantissa-7.2-src.zip"
-       "https://downloads.freenetproject.org/contrib/db4o-7.4-java.zip")
+       #"https://downloads.freenetproject.org/contrib/db4o-7.4-java.zip"
+       "https://github.com/skydrome/db4o-7.4-java/raw/master/db4o-7.4-java.zip")
 
 # ant will extract these
 noextract=('lzma465.tar.bz2'
@@ -56,9 +57,11 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-UPnP.git${_upnp}"
         "git+https://github.com/freenet/plugin-KeyUtils.git${_keyutils}"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
-        "https://downloads.freenetproject.org/alpha/opennet/seednodes.fref"
+        #"https://downloads.freenetproject.org/alpha/opennet/seednodes.fref"
+        "https://github.com/skydrome/db4o-7.4-java/raw/master/seednodes.fref"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
-        "https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar"
+        #"https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar"
+        "commons-compress.jar::http://central.maven.org/maven2/org/apache/commons/commons-compress/1.4.1/commons-compress-1.4.1.jar"
         "https://www.bouncycastle.org/download/bcprov-jdk15on-156.jar"
         "http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.bz2"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
@@ -72,9 +75,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            '16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d'
+            '7b375cbd2c715fd3d239985ae2a97021cfef8483c88ff57f6364016451e65c21'
+            'cd009175698272da2a35f340f27772a39406779d41a069c4167cde598caa697f'
+            '28a00d80716f073d644b9da76e94b5e8ff94de8e9323f06f558fba653fcf5f86'
             '963e1ee14f808ffb99897d848ddcdb28fa91ddda867eb18d303e82728f878349'
             '96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1'
             '1966a96a0733cb19b8172f03b3582141fea8f82abcc4b79800ba0a92a5c1122d'
@@ -90,7 +93,6 @@ sha256sums=('SKIP'
             'b36482ee9e919c669bb1797ff7e50f57edf505af67664e280fe1dff361861044'
             'e438135d69139ed4fa44400f416ea73935d16afe50dfe490b7bba0602ee89476'
             '73f307a8cbd114fdc0af8daa067994a2cdc364c4053e6734d16b8dd1d5a0469f')
-
 
 if [[ "$CARCH" = 'i686' ]]; then
      _arch=x86
