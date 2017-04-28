@@ -507,7 +507,7 @@ int render_columns(bool headers, rpc::target_type target,
             canvas->print(column, pos, " %s", u8_chop(text, header_len).c_str());
         }
 
-        // Advance posiiton
+        // Advance position
         column += header_len + 1;
         total += header_len + 1;
     }
