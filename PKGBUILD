@@ -25,7 +25,7 @@ pkgver() {
 }
 
 build() {
-  CXXFLAGS+=" -fPIE -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
+  CXXFLAGS+=" -fPIC -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
   cd "$srcdir/$_gitname"
   git checkout "$_gitbranch"
   git pull
