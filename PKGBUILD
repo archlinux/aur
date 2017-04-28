@@ -11,7 +11,7 @@ url="https://developer.android.com/sdk/index.html"
 license=('custom')
 depends=('android-sdk')
 options=('!strip')
-source=("https://dl-ssl.google.com/android/repository/google_m2repository_gms_v9_1_rc07_wear_2_0_1_rc3.zip "
+source=("https://dl-ssl.google.com/android/repository/google_m2repository_gms_v9_1_rc07_wear_2_0_1_rc3.zip"
 	"source.properties")
 
 sha1sums=('21ebb86d0943b3105eea6f2b29896df7a149b276'
