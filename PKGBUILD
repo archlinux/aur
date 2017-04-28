@@ -1,7 +1,7 @@
 # Maintainer: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=pvs-studio
-pkgver=6.14.21446.1
+pkgver=6.15.21741.1
 pkgrel=1
 pkgdesc='Static code analyzer for C, C++ and C#'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 install=$pkgname.install
 source=(http://files.viva64.com/$pkgname-$pkgver-${arch[1]}.tgz)
 source_i686=($pkgname.binfmt.d)
-sha256sums=('5cda6dbd91fbb682033b8ab3725717b546a57ead626b1d90d8855e22d7589922')
+sha256sums=('fe9b36c49f25f596a22b5e3d768cc44413a4bb3c186db506b473aeb27286959f')
 sha256sums_i686=('fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97')
 
 package() {
