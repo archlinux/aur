@@ -3,13 +3,13 @@
 
 pkgname=amsynth-git
 _pkgname=amsynth
-pkgver=1.6.1.r786.66fb7a7
+pkgver=1.7.1.r983.ff5cf50
 pkgrel=1
 pkgdesc="An analog modelling (a.k.a. virtual analog) synthesizer"
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/amsynth/"
+url="https://amsynth.github.io/"
 license=('GPL2')
-depends=('gtkmm' 'jack' 'lv2' 'desktop-file-utils')
+depends=('gtkmm' 'jack' 'lv2')
 makedepends=('git')
 optdepends=('liblo: DSSI plugin')
 provides=("${_pkgname}")
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
   ./autogen.sh
-  CXXFLAGS="-std=c++11 $CXXFLAGS" ./configure --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
