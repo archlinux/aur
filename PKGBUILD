@@ -1,8 +1,9 @@
 # Maintainer: Aleksandr Boyko <brdcom@yandex.ru>
 pkgname=texlive-csltex
 _pkgname=csltex
-pkgver=2007.0712
-pkgrel=11
+pkgver=2008.1116
+_revnr=${pkgver#2008.}
+pkgrel=1
 pkgdesc="TeX Live - Package for typing of Church Slavonic texts in the standard HIP (HIP-9)"
 arch=('any')
 url="https://sites.google.com/site/csltex"
@@ -29,6 +30,7 @@ package() {
     install -Dm644 "$srcdir/sample2.pdf" "$pkgdir/usr/share/doc/$pkgname/advertising.pdf"
     install -Dm644 "$srcdir/cslinstall.html" "$pkgdir/usr/share/doc/$pkgname/cslinstall.html"
     install -m644 "$pkgname.maps" "$pkgdir/var/lib/texmf/arch/installedpkgs/"
+    touch "$pkgdir/var/lib/texmf/arch/installedpkgs/${pkgname}_${_revnr}.pkgs"
     install -Dm644 "$srcdir/language-local.dat" "$pkgdir/usr/local/share/texmf/tex/generic/config/language-local.dat"
     install -Dm644 "$srcdir/language-local.def" "$pkgdir/usr/local/share/texmf/tex/generic/config/language-local.def"
     cp -rf "$srcdir/tex/latex/csltex" "$pkgdir/usr/local/share/texmf/tex/latex/"
