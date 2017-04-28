@@ -1,4 +1,4 @@
-# Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
+# Maintainer: Can Celasun <can[at]dcc[dot]im>
 
 pkgname=phpredis-git
 pkgrel=1
