@@ -1,6 +1,6 @@
 pkgbase = ccsh-git
 	pkgdesc = C++ shell
-	pkgver = r127.d70da8e
+	pkgver = r127.44f6458
 	pkgrel = 1
 	url = https://github.com/cpp-ftw/ccsh
 	arch = any
@@ -9,11 +9,13 @@ pkgbase = ccsh-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
-	depends = boost
 	source = git+https://github.com/cpp-ftw/ccsh.git
 	md5sums = SKIP
 
 pkgname = ccsh-git
+
+pkgname = ccsh-compiler-git
+	depends = ccsh-git
 
 pkgname = ccsh-wrappers-core-git
 	depends = ccsh-git

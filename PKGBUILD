@@ -1,14 +1,13 @@
 # Maintainer: dobragab <dobragab@gmail.com>
 
-pkgname=('ccsh-git' 'ccsh-wrappers-core-git')
+pkgname=('ccsh-git' 'ccsh-compiler-git' 'ccsh-wrappers-core-git')
 groups=('ccsh-git')
-pkgver=r126.a9a51db
+pkgver=r127.44f6458
 pkgrel=1
 pkgdesc='C++ shell'
 arch=('any')
 url='https://github.com/cpp-ftw/ccsh'
 license=('GPL3')
-depends=('boost')
 makedepends=('git' 'cmake' 'make')
 source=("git+https://github.com/cpp-ftw/ccsh.git")
 md5sums=(SKIP)
@@ -18,11 +17,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_ccsh-git() {
+build() {
   cd "ccsh"
 
-  cmake . -DWITH_LIB=ON -DWITH_TEST=OFF -DWITH_CLING=OFF
+  cmake . -DWITH_LIB=ON -DWITH_COMPILER=ON -DWITH_SAMPLE=OFF -DWITH_TEST=OFF -DWITH_CLING=OFF
   make
+}
+
+package_ccsh-git() {
 
   install -Dm644 "$srcdir/ccsh/lib/libccsh_lib.so" "$pkgdir/usr/lib/libccsh_lib.so"
 
@@ -33,10 +35,14 @@ package_ccsh-git() {
   install -Dm644 $srcdir/ccsh/include/ccsh/builtins/*.hpp "$pkgdir/usr/include/ccsh/builtins"
 }
 
-package_ccsh-wrappers-core-git() {
+package_ccsh-compiler-git() {
   depends=('ccsh-git')
 
-  cd "ccsh"
+  install -Dm755 "$srcdir/ccsh/cc/ccshc" "$pkgdir/usr/bin/ccshc"
+}
+
+package_ccsh-wrappers-core-git() {
+  depends=('ccsh-git')
 
   install -Dm644 "$srcdir/ccsh/wrappers/ccsh/core.hpp" "$pkgdir/usr/include/ccsh/core.hpp"
   install -dm755 "$pkgdir/usr/include/ccsh/core"
