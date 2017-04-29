@@ -40,12 +40,11 @@ sha1sums=('75076beddfd4a1b590cba9fbc78eea901c7f3ddb')
 installation_prefix=/usr
 
 build() {
-
   # Since deal.II relies on a relatively large number of packages that are
-  # installed in nonstandard places (i.e., the Trilinos AUR package is installed
-  # in /opt/trilinos/), source their environment variable scripts in the
-  # (likely) case that a user installed one of these packages without logging
-  # out and logging back in
+  # installed in nonstandard places (e.g., the PETSc AUR package is installed in
+  # /opt/petsc/), source their environment variable scripts in the (likely) case
+  # that a user installed one of these packages without logging out and logging
+  # back in
   for package in opencascade p4est-deal-ii petsc slepc trilinos
   do
       if pacman -Qs $package >/dev/null
@@ -97,28 +96,18 @@ build() {
       fi
   fi
 
-  # the deal.II GCC flags are already well-chosen for speed (and -O3 is known to
+  # the deal.II GCC flags are already well-chosen for speed (and O3 is known to
   # be slightly slower than O2), so do not use flags in /etc/makepkg.conf by
-  # default. If you want to edit this file to use other flags then pass cmake
-  # -DCMAKE_CXX_FLAGS=" flags-you-want".
-  #
-  # if you wish to disable specific optional packages, then pass (e.g., for
-  # Trilinos)
-  #
-  #     -DDEAL_II_WITH_TRILINOS=OFF
-  #
-  # to cmake.
+  # default. If you want to add more flags or disable specific packages, then
+  # refer to the deal.II manual.
   cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$installation_prefix  \
         -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
         -DDEAL_II_SHARE_RELDIR=share/${pkgname}/                                \
         -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/                    \
         -DDEAL_II_COMPONENT_DOCUMENTATION=OFF ../${_realname}-$pkgver
 
-  # if you do not have /etc/makepkg.conf configured, then add -jN (where N is
-  # the number of concurrent build jobs, usually 2 * number of physical cores)
-  # to this flag. deal.II needs about 2 GB/compilation process so use fewer jobs
-  # if your machine does not have the memory to support the maximum number.
-  # make $MAKEFLAGS
+  # deal.II needs about 2 GB/compilation process so use fewer jobs if your
+  # machine does not have the memory to support the maximum number.
   make $MAKEFLAGS
 
   cd "${srcdir}/build"
