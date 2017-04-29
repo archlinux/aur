@@ -2,12 +2,12 @@
 
 pkgname=xiphos-git
 pkgver=r3914
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bible study tool -- git version"
 arch=('i686' 'x86_64')
 url="http://xiphos.org"
 license=('GPL')
-depends=('webkitgtk' 'libgsf' 'gconf' 'sword' 'gtkhtml4' 'biblesync-git')
+depends=('webkit2gtk' 'libgsf' 'gconf' 'sword' 'gtkhtml4' 'biblesync-git')
 makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'git' 'python2')
 provides=('gnomesword' 'xiphos')
 conflicts=('gnomesword' 'xiphos')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  CXX=g++ python2 ./waf --prefix=/usr configure 
+  CXX=g++ python2 ./waf --prefix=/usr --enable-webkit2 configure 
   python2 ./waf --prefix=/usr --enable-webkit2 build 
 }
 
