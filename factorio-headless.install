@@ -1,15 +1,6 @@
 post_install() {
     systemd-sysusers factorio.conf
     [[ -d /var/lib/factorio ]] || install -dm 770 -o factorio -g games /var/lib/factorio
-
-    source /etc/conf.d/factorio
-    SAVE_FILE="/var/lib/factorio/${SAVE_NAME}.zip"
-
-    # create empty game
-    if [[ ! -f "$SAVE_FILE" ]]; then
-        echo "Generating initial save file: $SAVE_FILE"
-        su - factorio -s /bin/bash -c "mkdir -p ~/.factorio && factorio --create '$SAVE_FILE' &>/dev/null"
-    fi
 }
 
 post_upgrade() {
