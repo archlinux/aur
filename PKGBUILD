@@ -10,9 +10,8 @@ arch=('any')
 url='https://www.sonerezh.bzh'
 license=('GPL3')
 depends=('php' 'php-gd')
-optdepends=('mariadb: Database backend' 
-	    'libav-git-no-libs: Music transcoding' 
-	    'ffmpeg: Music transcoding')
+optdepends=('mariadb: Database backend'
+	    'libav-git-no-libs: Music transcoding') 
 options=('!strip')
 source=("git+https://github.com/Sonerezh/sonerezh.git"
         "example_nginx_vhost.conf")

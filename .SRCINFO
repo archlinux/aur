@@ -9,7 +9,6 @@ pkgbase = sonerezh-git
 	depends = php-gd
 	optdepends = mariadb: Database backend
 	optdepends = libav-git-no-libs: Music transcoding
-	optdepends = ffmpeg: Music transcoding
 	options = !strip
 	source = git+https://github.com/Sonerezh/sonerezh.git
 	source = example_nginx_vhost.conf
