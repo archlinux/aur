@@ -1,0 +1,11 @@
+[Unit]
+Description=Update China IP list
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/update_china_ip_list
+
+[Install]
+RequiredBy=multi-user.target
