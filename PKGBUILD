@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
-makedepends=('cmake' 'gnome-settings-daemon' 'vala')
+makedepends=('cmake' 'gnome-settings-daemon' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-power/loki/${pkgver}/+download/switchboard-plug-power-${pkgver}.tar.xz")
 sha256sums=('3f8309197b8362bfb9b2ae5e9f62f9f5c1cd5fa19a7655067653f00807842fbd')
 
