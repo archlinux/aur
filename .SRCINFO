@@ -1,6 +1,6 @@
 pkgbase = roficlip
 	pkgdesc = A simple shell script that surfaces clipboard history from clipster in Rofi
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/gilbertw1/roficlip
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = roficlip
 	depends = clipster
 	depends = gawk
 	depends = rofi
-	source = https://github.com/gilbertw1/roficlip/archive/0.1.1.tar.gz
-	sha256sums = 6d4a33e502f94a0c7861c4d98e4e51818ceaeb3cc4f43743784c8283b67d8d8c
+	source = https://github.com/gilbertw1/roficlip/archive/0.1.2.tar.gz
+	sha256sums = f72d81fddfe8823340d18d83ce2ca6f4492f024cbfa6dabb7961c38d69062ffd
 
 pkgname = roficlip
 
