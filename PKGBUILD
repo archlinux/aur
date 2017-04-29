@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala')
+makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala' 'wingpanel-bzr')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
 source=('bzr+lp:wingpanel-indicator-session')
