@@ -5,7 +5,7 @@
 
 pkgbase=linux-macbook
 _srcname=linux-4.10
-pkgver=4.10.12
+pkgver=4.10.13
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -33,7 +33,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            'ed919b49178bbda14b341058a92362322cbb09e9028229e860e6927553c8d037'
+            'b1a7a98aa97cc0917fcab0def68032d5bf61838c79177b2222cee2485015458f'
             'SKIP'
             '6957209a54486548de8fc217352bb50efe52986b85b7dc88c1d13ef9e8dc3e2a'
             '37a281f78616fee061aafa4b1189284c9e13d0eb52e40d7f446f1a50dfc99800'
