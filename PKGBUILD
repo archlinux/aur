@@ -44,7 +44,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/coreclr-${pkgver}"
-  ./build.sh x64 release
+  ./build.sh x64 release skiptests
 
   cd "${srcdir}/corefx-${pkgver}"
   ./src/Native/build-native.sh x64 release
