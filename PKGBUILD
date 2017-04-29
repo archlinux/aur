@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.0.9.r444.a809f3341
+pkgver=0.0.2.r86.b54ba4787
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -22,7 +22,8 @@ source=('git+https://github.com/RPCS3/rpcs3.git'
         'git+https://github.com/kobalicek/asmjit.git#commit=b0dad1a'
         'git+https://github.com/Microsoft/GSL.git#commit=fc5fce4'
         'git+https://github.com/KhronosGroup/glslang.git#commit=2921e0c'
-        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git#commit=64d375f')
+        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git#commit=64d375f'
+        'rpcs3.sh')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -31,7 +32,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '478abe078d3177f83a19100147a268a47a77b3fe23216a23706592532b5a9b45')
 
 pkgver() {
   cd rpcs3
@@ -80,8 +82,11 @@ build() {
 package() {
   cd rpcs3/build
 
+  install -dm 777 "${pkgdir}"/opt/rpcs3
+  install -m 755 bin/rpcs3 "${pkgdir}"/opt/rpcs3/
+
   install -dm 755 "${pkgdir}"/usr/bin
-  install -m 755 bin/rpcs3 "${pkgdir}"/usr/bin/
+  install -m 755 ../../rpcs3.sh "${pkgdir}"/usr/bin/rpcs3
 }
 
 # vim: ts=2 sw=2 et:
