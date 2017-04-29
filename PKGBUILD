@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-about/loki/${pkgver}/+download/switchboard-plug-about-${pkgver}.tar.xz"
         'about-archlinux.patch')
 sha256sums=('4ecaddd5f1ddf2e496f21bc91ca78b942e1973f7804c570b6648aa6d598ef19b'
