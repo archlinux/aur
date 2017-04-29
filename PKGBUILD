@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus' 'gtk3' 'json-glib'
          'libgee' 'libsoup' 'plank' 'zeitgeist'
          'libgranite.so' 'libswitchboard-2.0.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala' 'wingpanel')
 source=("https://launchpad.net/slingshot/loki/${pkgver}/+download/slingshot-launcher-${pkgver}.tar.xz")
 sha256sums=('1a9e6bba791fe0c4795cecfe4404971813ed6f3930af9be532493d3e1a35e435')
 
