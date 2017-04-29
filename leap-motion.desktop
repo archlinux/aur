@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Leap Motion Control Panel
+Comment=Leap Motion Control Panel
+Comment[zh_CN]=Leap Motion 控制面板
+Exec=LeapControlPanel
+Icon=leapmotion
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Development;Utility;
