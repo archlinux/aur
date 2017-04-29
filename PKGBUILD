@@ -1,6 +1,6 @@
 pkgname=pia-nm
 pkgver=24
-pkgrel=1
+pkgrel=2
 pkgdesc="Network manager configuration files for Private Internet Access VPN"
 url="https://www.privateinternetaccess.com"
 arch=('i686' 'x86_64')
