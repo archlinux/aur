@@ -1,0 +1,21 @@
+pkgbase = libusb-nosystemd
+	pkgdesc = Library that provides generic access to USB devices
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = http://libusb.info/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	depends = eudev
+	provides = libusbx=1.0.21
+	provides = libusb
+	conflicts = libusbx
+	conflicts = libusb
+	replaces = libusb1
+	replaces = libusbx
+	source = https://github.com/libusb/libusb/releases/download/v1.0.21/libusb-1.0.21.tar.bz2
+	md5sums = 1da9ea3c27b3858fa85c5f4466003e44
+
+pkgname = libusb-nosystemd
+
