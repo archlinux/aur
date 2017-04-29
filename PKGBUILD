@@ -7,8 +7,7 @@ pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
 license=('custom:webmin')
 url="http://www.webmin.com/"
-depends=('perl' 'perl-perl4-corelibs')
-makedepends=('perl-net-ssleay')
+depends=('perl' 'perl-net-ssleay')
 backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/config' \
 'etc/webmin/pacman/config' \
 'etc/webmin/at/config' \
