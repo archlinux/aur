@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: David P. <megver83@parabola.nu>
+# Contributor  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 _pkgname=libusb
