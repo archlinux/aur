@@ -2,7 +2,7 @@
 
 pkgname=paccache-trim
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Run paccache weekly to keep pacman cache on check."
 arch=('any')
 url="https://github.com/palopezv/package-trim/"
@@ -17,5 +17,5 @@ package() {
 	install -Dm 644 "$srcdir/$pkgname-$pkgver/$pkgname.service" "$pkgdir$_systemdpath$pkgname.service"
 	mkdir -p "$pkgdir$_systemdpath"/timers.target.wants
 	ln -sf "$pkgdir$_systemdpath$pkgname.timer" "$pkgdir$_systemdpath"/timers.target.wants/
-	install -Dm 644 "$srcdir/$pkgname-$pkgver"/LICENSE "$pkgdir/usr/share/licences/$pkgname"/UNLICENSE
+	install -Dm 644 "$srcdir/$pkgname-$pkgver"/LICENSE "$pkgdir/usr/share/licenses/$pkgname"/UNLICENSE
 }

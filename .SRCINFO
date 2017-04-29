@@ -1,7 +1,7 @@
 pkgbase = paccache-trim
 	pkgdesc = Run paccache weekly to keep pacman cache on check.
 	pkgver = 5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/palopezv/package-trim/
 	arch = any
 	license = custom:UNLICENSE
