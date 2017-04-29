@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libnm-glib'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'nm-connection-editor' 'vala')
+makedepends=('cmake' 'nm-connection-editor' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-network/loki/${pkgver}/+download/wingpanel-indicator-network-${pkgver}.tar.xz")
 sha256sums=('d3da96730882929ac81b056ca1c225b981ef346cae15291ed2e415885a71a4d6')
 
