@@ -4,7 +4,7 @@
 _pkgname=neon
 pkgname=lib32-${_pkgname}
 pkgver=0.30.2
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP and WebDAV client library with a C interface (32 bit)"
 arch=('x86_64')
 license=('GPL' 'LGPL')
