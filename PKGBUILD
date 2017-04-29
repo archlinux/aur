@@ -4,12 +4,12 @@
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
 pkgver=2.2.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Microsoft Azure Linux Guest Agent"
 arch=('any')
 url="https://github.com/Azure/WALinuxAgent"
 license=('Apache')
-depends=('python' 'openssh' 'parted' 'net-tools' 'shadow' 'iproute2')
+depends=('python' 'openssh' 'openssl' 'parted' 'net-tools')
 makedepends=('python-setuptools')
 checkdepends=()
 optdepends=()
@@ -26,4 +26,5 @@ sha256sums=(
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --prefix="/usr" --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
