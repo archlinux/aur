@@ -1,4 +1,4 @@
-# Maintainer: David P. <megver83@openmailbox.org>
+# Maintainer: David P. <megver83@parabola.nu>
 # Contributor: artoo <artoo@manjaro.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
@@ -6,11 +6,11 @@
 # Contributor: Link Dupont <link@subpop.net>
 
 _pkgname=dbus
-_commit=8b582cb10d7cf00af7a70496aec48af24edc542b  # tags/dbus-1.10.16^0
+_commit=73961ee58cf47315b14e30fbde6d0eea825c987b  # tags/dbus-1.10.18^0
 
 pkgname=dbus-elogind
-pkgver=1.10.16
-pkgrel=4.aur1
+pkgver=1.10.18
+pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
@@ -54,7 +54,7 @@ build() {
         --disable-systemd \
         --disable-user-session \
         --enable-x11-autolaunch
-        
+
     make
 }
 
