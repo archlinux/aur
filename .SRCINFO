@@ -1,0 +1,16 @@
+pkgbase = scorch-git
+	pkgdesc = discover silent corruption on a filesystem
+	pkgver = r16.301af6a
+	pkgrel = 1
+	url = https://github.com/trapexit/scorch
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = scorch=r16.301af6a
+	conflicts = scorch
+	source = git+https://github.com/trapexit/scorch.git
+	md5sums = SKIP
+
+pkgname = scorch-git
+
