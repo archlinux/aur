@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-security-privacy
-pkgver=0.1.1
+pkgver=0.1.1.1
 pkgrel=1
 pkgdesc='Security & Privacy plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ license=('GPL3')
 depends=('elementary-dpms-helper-bzr' 'glib2' 'glibc' 'gtk3' 'libgee'
          'light-locker' 'polkit' 'ufw' 'zeitgeist'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-security-privacy/loki/${pkgver}/+download/switchboard-plug-security-privacy-${pkgver}.tar.xz")
-sha256sums=('07ea2d582c89142ee5fc2d1f898ccaec9543247a705a276b39b4349d80e90d57')
+sha256sums=('cf022560d155ee3ac901138ef26fe29c7b14ec464c921b5a1aca17dd537ef9d8')
 
 prepare() {
   cd switchboard-plug-security-privacy-${pkgver}
