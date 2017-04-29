@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: David P. <megver83@parabola.nu>
+# Contributor Evangelos Foutras <evangelos@foutrelis.com>
 
 _pkgname=libgudev
 
