@@ -11,7 +11,7 @@ groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'nm-connection-editor'
          'polkit'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'switchbooard' 'vala')
 source=("https://launchpad.net/switchboard-plug-networking/loki/${pkgver}/+download/switchboard-plug-networking-${pkgver}.tar.xz")
 sha256sums=('9436cc3ae1aa014b48bc0aba01096b929f21ec8bd7a1374ea9cd4c1144c3af15')
 
