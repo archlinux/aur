@@ -36,26 +36,25 @@ _skip_web_engine=false
 _static_build=false
 _build_from_head=false
 _patching=true
+_minimal=true
 
 if [[ -z ${startdir} ]]; then
   _building=false;
 fi
 
-if [[ -f minimal ]]; then
+if [[ -f full-build ]]; then
+  _minimal = false
+fi
+
+if $_building && $_minimal; then
   _skip_qtscript=true;
   _skip_web_engine=true;
   _skip_qt_widgets=true;
   pkgname="${pkgname}-minimal"
 fi
 
-if [[ -f target_host ]]; then
-  _target_host=true;
-fi
-
 # Sanity check options
-if $_target_host; then
-  _piver=""
-elif $_building; then
+if $_building; then
   if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then _piver=$LOCAL_PI_VER; fi
   _sysroot=/mnt/pi${_piver}
   if [[ -z "${_piver}" ]]; then
@@ -67,6 +66,10 @@ elif $_building; then
     echo "You have to set a valid sysroot to proceed with the build"
     exit 1
   fi
+fi
+
+if [[ $_piver = "" ]]; then
+  _target_host=true
 fi
 
 # vars
