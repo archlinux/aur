@@ -1,21 +1,20 @@
-# Maintainer: Konstantin Shalygin <k0ste@cn.ru>
+# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 _qt='quicktext'
 pkgname="thunderbird-${_qt}"
-pkgver='0.9.11.6'
-pkgrel='2'
+pkgver='0.9.11.7'
+pkgrel='1'
 pkgdesc='Quicktext is an extension for Thunderbird that lets you create templates that can be easily inserted into your own emails'
 arch=('any')
-_url='http://extensions.hesslow.se/'
-url="${_url}extension/4/${_qt}"
+url="http://extensions.hesslow.se/extension/4/"
 license=('AGPL')
 depends=('thunderbird')
-source=("${_qt}-${pkgver}.xpi::${_url}download/26/${_qt}_${pkgver}.xpi")
-sha256sums=('31a5409d63a66299c4020b4e9eb5860a5f166fef9ab5a997d89b128f68ac82f1')
+source=("${_qt}-${pkgver}.xpi::https://addons.mozilla.org/thunderbird/downloads/latest/${_qt}/addon-640-latest.xpi?src=ss")
+sha256sums=('13fad549cc51913c1f37794c286f4a42958ed28cf08d82a5897684571d5bf387')
 noextract=(${source[@]%%::*})
 
 package() {
-  pushd "$srcdir"
-  install -Dm644 "${_qt}-${pkgver}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/{8845e3b3-e8fb-40e2-95e9-ec40294818c4}.xpi"
-  popd
+  cd "${srcdir}"
+  install -Dm0644 "${_qt}-${pkgver}.xpi" "$pkgdir/usr/lib/thunderbird/extensions/{8845E3B3-E8FB-40E2-95E9-EC40294818C4}.xpi"
 }
