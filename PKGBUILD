@@ -2,8 +2,8 @@
 
 pkgname=wechatircd-git
 _pkgname=wechatircd
-pkgver=r78.f09520a
-pkgrel=3
+pkgver=r85.bb8f354
+pkgrel=1
 pkgdesc="IRC server capable of controlling Web WeChat"
 arch=('i686' 'x86_64')
 url="https://github.com/MaskRay/wechatircd"

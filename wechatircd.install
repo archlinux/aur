@@ -1,15 +1,23 @@
 post_install() {
-  if [[ ! -f /etc/wechatircd/key.pem ]]; then
-    mkdir -p /etc/wechatircd
-    openssl req -x509 -newkey rsa:2048 -nodes -keyout /etc/wechatircd/key.pem -out /etc/wechatircd/cert.pem -subj '/CN=127.0.0.1' -days 9999
+  local d=/etc/wechatircd
+  if [[ ! -f $d/key.pem ]]; then
+    mkdir -p $d
+    # Create self-signed CA key/certificate
+    openssl req -x509 -newkey rsa:2048 -nodes -keyout $d/ca.key.pem -out $d/ca.cert.pem -days 9999 -subj '/CN=127.0.0.1'
+    # Create key/certificate request and sign the CSR with CA
+    openssl req -new -newkey rsa:2048 -nodes -keyout $d/key.pem -subj '/CN=127.0.0.1' |
+      openssl x509 -req -out $d/cert.pem -CAkey $d/ca.key.pem -CA $d/ca.cert.pem -set_serial 2 -days 9999 -extfile <(
+        printf "subjectAltName = IP:127.0.0.1, DNS:localhost")
+    # Should be readable for /usr/bin/wechatircd
+    chmod +r $d/key.pem
     cat <<NOTE
 NOTE:
 1. Install userscript https://github.com/MaskRay/wechatircd/raw/master/injector.user.js
-2. Import /etc/wechatircd/cert.pem to your browser.
+2. Import the CA certificate /etc/wechatircd/ca.cert.pem to your browser.
 
 Instructions for Chrome/Chromium:
   a. Visit chrome://settings/certificates
-  b. Import /etc/wechatircd/cert.pem
+  b. Import /etc/wechatircd/ca.cert.pem
   c. 'Authorities' tab page -> 'Untrusted 127.0.0.1' -> 'Edit...' -> 'Trust this certificate for identifying websites.'
 
 Instructions for Firefox:
@@ -23,10 +31,4 @@ NOTE
 
 post_upgrade() {
   post_install
-}
-
-post_remove() {
-  echo Removing /etc/wechatircd/
-  rm /etc/wechatircd/{cert,key}.pem
-  rmdir /etc/wechatircd
 }
