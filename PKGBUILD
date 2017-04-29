@@ -11,7 +11,7 @@ groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
          'plank'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
 replaces=('switchboard-plug-pantheon-shell-bzr')
 provides=('switchboard-plug-desktop' 'switchboard-plug-pantheon-shell')
 conflicts=('switchboard-plug-desktop' 'switchboard-plug-pantheon-shell')
