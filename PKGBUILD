@@ -21,7 +21,7 @@ _clang_completer=y
 _clang_completer_system_libclang=n
 
 pkgname=vim-youcompleteme-core-git
-pkgver=r1833.9968a43
+pkgver=r2066.5198fd9a
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
@@ -76,17 +76,16 @@ if [ "${_clang_completer}" == 'y' ]; then
 	if [ "${_clang_completer_system_libclang}" == 'y' ]; then
 		depends+=('clang')
 	else
-		clang_version='3.8.0'
-		if [[ "${CARCH}" == 'x86_64' ]]; then
+		clang_version='4.0.0'
+		if [[ "$(uname -m)" == 'x86_64' ]]; then
 			clang_filename="clang+llvm-${clang_version}-x86_64-linux-gnu-ubuntu-14.04.tar.xz"
-			sha256sums+=('3120c3055ea78bbbb6848510a2af70c68538b990cb0545bac8dad01df8ff69d7'
-									 '7cc55f1a1cc3e5478581e66c79ffa5ab4d7495076e6164b52d7b1a63816751a7')
+			sha256sums+=('1d15b6337ffc0876ed1a9827cae566e24639e0f5d7d186b2de04c38d762336b4'
+									 'd6fc09a4e1be562859f2ddd44fa19b2d29896fec7e420ce9d6a2fa915028b174')
 		else
-			clang_filename="clang+llvm-${clang_version}-i686-fedora23.tar.xz"
-			sha256sums+=('063a5430b1895a1565831ab0b840cdb14f22ee9fad38e82b9bb8be76e49f1a8b'
-									 '2628015b84703215ff0fea3d374fe1cd82cfcc38c304fec22fbab6b9abdc92f2')
+			echo 'Prebuild Clang for x86 is not available.'
+			exit 1
 		fi
-		source+=("http://llvm.org/releases/3.8.0/${clang_filename}"{,.sig})
+		source+=("http://llvm.org/releases/4.0.0/${clang_filename}"{,.sig})
 		noextract+=("${clang_filename}")
 		validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
 		unset clang_version
@@ -125,7 +124,7 @@ build() {
 	if [ "${_clang_completer}" == 'y' ]; then
 		cmake_flags+=' -DUSE_CLANG_COMPLETER=ON'
 		if [ "${_clang_completer_system_libclang}" == 'y' ]; then
-			cmake_flags+=" -DEXTERNAL_LIBCLANG_PATH='/usr/lib/libclang.so'"
+			cmake_flags+=' -DUSE_SYSTEM_LIBCLANG=ON'
 		fi
 	fi
 
@@ -139,7 +138,6 @@ package() {
 	mkdir -p "${pkg_ycmd_dir}"
 
 	cp -r "${srcdir}/YouCompleteMe/"{autoload,doc,plugin,python} "${pkgdir}/usr/share/vim/vimfiles"
-	cp -r "${srcdir}/YouCompleteMe/third_party/retries" "${pkgdir}/usr/share/vim/vimfiles/third_party"
 	cp -r "${src_ycmd_dir}/"{ycmd,ycm_core.so,CORE_VERSION} "${pkg_ycmd_dir}"
 	if [ "${_clang_completer}" == 'y' ]; then
 		if [ "${_clang_completer_system_libclang}" == 'y' ]; then
