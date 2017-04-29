@@ -12,15 +12,16 @@
 pkgname=anki20-bin
 _pkgname=anki
 pkgver=2.0.45
-pkgrel=2
+pkgrel=3
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
 arch=('i686' 'x86_64')
 provides=('anki20' 'anki')
 conflicts=('anki20' 'anki' 'gstreamer0.10')
-depends=('expat' 'glib2' 'sqlite' 'openssl' 'icu48')
-optdepends=('mplayer: sound playing')
+depends=('expat' 'glib2' 'sqlite' 'openssl')
+optdepends=('mplayer: For playing audio/video on cards'
+            'icu48: Enable additional UI languages')
 source=("anki")
 source_i686=("https://apps.ankiweb.net/downloads/current/${_pkgname}-${pkgver}-i386.tar.bz2")
 source_x86_64=("https://apps.ankiweb.net/downloads/current/${_pkgname}-${pkgver}-amd64.tar.bz2")
