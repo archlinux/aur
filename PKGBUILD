@@ -3,7 +3,7 @@
 # Contributor: Attila Bukor <r1pp3rj4ck@w4it.eu>
 
 pkgname=apache-cxf
-pkgver=3.1.7
+pkgver=3.1.11
 pkgrel=1
 pkgdesc='open source services framework'
 arch=('any')
@@ -37,5 +37,5 @@ package() {
   install -m 644  "${srcdir}/apache-cxf.sh" "${pkgdir}/etc/profile.d"
 }
 
-sha256sums=('a434f467d99a19d87b64e99788a6a168a7aa83c45fbcf7ecb8f459747e3426a3'
+sha256sums=('26e56b59da7d09fdaf44e13d6fdee64d588f81d3dddfd3916418e20c3db25428'
             'c52ba86604138776e50f6fc9506e21ad6f30064a54a0aaef3d5316245b14e668')
