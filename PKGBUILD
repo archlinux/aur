@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee'
          'libnotify' 'libpulse'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'gobject-introspection' 'gtk2' 'vala')
+makedepends=('cmake' 'gobject-introspection' 'gtk2' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-sound/loki/${pkgver}/+download/wingpanel-indicator-sound-${pkgver}.tar.xz")
 sha256sums=('064f1e831d6122144d7f1a66beb2f026cae6e4db531b0a5830ed545b553609f0')
 
