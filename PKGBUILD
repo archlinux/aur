@@ -4,27 +4,32 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-pylibacl
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A python extension module that allows you to manipulate the POSIX.1e ACLs. (Fixed for python 3)"
 arch=( 'i686' 'x86_64' )
 url="http://pylibacl.k1024.org/"
 license=( 'LGPL' )
 depends=( 'python' 'python2' )
 makedepends=( 'python-distribute' 'python2-distribute' 'python' 'python2' )
-_pkgname=python-pylibacl
-conflicts=( 'pkg''pkg')
+_pkgname=pylibacl
+conflicts=( 'pylibacl' )
 install=
 changelog=
 noextract=()
-source=("https://files.pythonhosted.org/packages/source/p/pylibacl/pylibacl-0.5.3.tar.gz"
-        "pylibacl-0.5.3.tar.gz.sig")
+source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+        "${_pkgname}-${pkgver}.tar.gz.sig")
 sha512sums=('7d58a3a64e939a8891333a0fb8aa6e12dcbbf09e4e829f86fd1bb41693dd4f734a4ab907770e8e341476594aa495b5308a26d495ebf251dcda308ee46e5392ad'
             'SKIP')
-build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+
+package_python-pylibacl() {
+	depends=('python')
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	python3 setup.py install --root="${pkgdir}" --optimize=1
 }
-package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+
+package_python2-pylibacl() {
+	depends=('python2')
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
+
