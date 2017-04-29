@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'gobject-introspection' 'vala')
+makedepends=('cmake' 'gobject-introspection' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-session/loki/${pkgver}/+download/wingpanel-indicator-session-${pkgver}.tar.xz")
 sha256sums=('687d12da4f9ba3bf3992672bca2e8fb9e02ffc205bd4a4e2b545d6b3e425fe0e')
 
