@@ -1,0 +1,11 @@
+--- a/UniversalIndentGUI.pro
++++ b/UniversalIndentGUI.pro
+@@ -23,7 +23,7 @@
+ ICON = resources/UniversalIndentGUI.icns
+ }
+ else {
+- LIBS += -lqscintilla2
++ LIBS += -lqscintilla2_qt4
+ }
+
+ CONFIG(release, debug|release) {

@@ -10,11 +10,11 @@ arch=('i686' 'x86_64')
 license=('GPL')
 provides=('universalindentgui')
 conflicts=('universalindentgui')
-depends=('qt4' 'qscintilla')
+depends=('qt4' 'qscintilla-qt4')
 makedepends=('subversion')
 optdepends=(
 	'astyle: a free, fast and small automatic formatter for C, C++, C# and Java',
-	'ident: the GNU pretty-printer',
+	'indent: the GNU pretty-printer',
 	'tidyhtml: a tool to tidy down your HTML code',
 	'uncrustify: source code beautifier for C-like languages'
 	'ruby: needed for some scripts'
@@ -28,13 +28,15 @@ source=("$_svnmod::svn://svn.code.sf.net/p/universalindent/code/trunk"
 	"universalindentgui.png"
 	"noupdatecheck.patch"
 	"fix_about_dialog.patch"
+	"qscintilla.patch"
 	)
 
 sha256sums=('SKIP'
             'e6ed8674345d76c1f3e5ab4d6f23b64bfa7ba77141436ff325d72a28cb672a06'
             'cc01fcc94cc2067e499b15189a2ac56a901562218951bd77650cf8f81bcf440d'
             'b5b4d6b5604fbaaa8578a97e3a59c709bb0e1861ffaae1add3ca4452c76b5686'
-            '254e237064e8422b4d219fadfaa8486a5a69b3561b8aa81df8faf3c13272e7c5')
+            '254e237064e8422b4d219fadfaa8486a5a69b3561b8aa81df8faf3c13272e7c5'
+            'a06a47f5a9abbb4dded6fc2977c257fa99eec348805cc27f9b93793d42fdd422')
 
 prepare() {
   cd ${srcdir}
@@ -46,6 +48,7 @@ prepare() {
   #patch -Np1 -i ../../no-strip.patch src/UniversalIndentGUI.pro #disable QT stripping
   patch -p1 -i ../noupdatecheck.patch
   patch -p1 -i ../fix_about_dialog.patch
+  patch -p1 -i ../qscintilla.patch
 }
 
 pkgver() {
