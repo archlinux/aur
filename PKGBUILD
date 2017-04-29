@@ -1,14 +1,14 @@
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 
 pkgname=powershell
-_pkgver=6.0.0-alpha.17
+_pkgver=6.0.0-alpha.18
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
-makedepends=('git' 'cmake' 'proot' 'dotnet-bin')
+makedepends=('git' 'cmake' 'proot' 'dotnet-sdk')
 depends=('bash' 'icu55')
 conflicts=('powershell-git')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
