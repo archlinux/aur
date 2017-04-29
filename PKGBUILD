@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-keyboard/loki/${pkgver}/+download/switchboard-plug-keyboard-${pkgver}.tar.xz")
 sha256sums=('c079fc650b566802c4d94df7535a387f25e55c1cd025b93801b50f60ef2728f4')
 
