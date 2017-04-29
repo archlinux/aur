@@ -4,7 +4,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=jhbuild
-pkgver=3.15.92+1108+g5b676bb6
+pkgver=3.15.92+1134+g595267a9
 pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
@@ -17,11 +17,11 @@ optdepends=('subversion: fetch subversion repositories'
             'bzr: fetch Bazaar repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
-_commit=5b676bb6
+_commit=595267a9
 source=("$pkgname::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
-            'd840b6b18650d77f1588c67532015aa1e8a9fc408418cce62e5f0bfcd4b47128')
+            '8146e4acf09541ffb307ca6cc57ef011d8ae42c1215d97d1a805f139d1097e25')
 
 pkgver() {
   cd $pkgname
@@ -33,11 +33,10 @@ prepare() {
   msg2 "Set parameters known to be required in Arch Linux"
   patch -p1 -i "$srcdir/module_args.patch"
   
-    # Set proper python binary according to the version
+    # Set the proper filename for python2 binary
     # (see jhbuild commit id=ffd00eea72bfdfac02846a46559904bd8fa09d57)
   sed -i jhbuild/modtypes/distutils.py \
-      -e "/os.environ.get('PYTHON'/s/'python'/'python2'/" \
-      -e "/os.environ.get('PYTHON3'/s/'python3'/'python'/"
+      -e "/os.environ.get('PYTHON'/s/'python'/'python2'/"
 }
 
 build() {
