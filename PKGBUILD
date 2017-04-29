@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=freebsd-docs-arch-handbook
 pkgver=49607
-pkgrel=3
+pkgrel=4
 pkgdesc="The FreeBSD Architecture Handbook from the FreeBSD Documentation Project."
 arch=(any)
 url="https://www.freebsd.org/docs.html"
 license=('BSD')
 source=("ftp://ftp.freebsd.org/pub/FreeBSD/doc/en_US.ISO8859-1/books/arch-handbook/book.html-split.tar.bz2")
-md5sums=('7985c5339bd26cb01f7bdb7bb83dff81')
+md5sums=('f8315334950eb8ea51cb1e56e37bb3e3')
 
 prepare() {
     rm $srcdir/book.html-split.tar.bz2
