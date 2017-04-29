@@ -1,6 +1,6 @@
 pkgbase = python-certbot-git
 	pkgdesc = A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free. (experimental Python3 variant)
-	pkgver = 0.11.0.r179.gb3116af5
+	pkgver = 0.11.0.r208.g5885b09e
 	pkgrel = 1
 	url = https://letsencrypt.org/
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = python-certbot-git
 	makedepends = git
 	depends = ca-certificates
 	depends = python-acme-git
-	depends = python-argparse
 	depends = python-configargparse
 	depends = python-configobj
 	depends = python-cryptography
@@ -26,9 +25,9 @@ pkgbase = python-certbot-git
 	optdepends = certbot-apache-git: Apache plugin for Let’s Encrypt client
 	optdepends = certbot-nginx-git: Nginx plugin for Let’s Encrypt client
 	optdepends = letshelp-certbot-git: Let's help Certbot client
-	provides = certbot=0.11.0.r179.gb3116af5
-	provides = python-certbot=0.11.0.r179.gb3116af5
-	provides = letsencrypt=0.11.0.r179.gb3116af5
+	provides = certbot=0.11.0.r208.g5885b09e
+	provides = python-certbot=0.11.0.r208.g5885b09e
+	provides = letsencrypt=0.11.0.r208.g5885b09e
 	conflicts = certbot
 	conflicts = letsencrypt
 	replaces = letsencrypt-git
