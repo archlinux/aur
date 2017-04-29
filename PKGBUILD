@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-pkgver=3.0.0r967.43f5b63
+pkgver=3.0.0r968.191a97f
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ build() {
   cd ${srcdir}/${pkgname%-git}
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3a
+	      --bigloolibdir=/usr/lib/bigloo/4.3b
   make
   make doc
 }
