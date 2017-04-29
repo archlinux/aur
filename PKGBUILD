@@ -2,7 +2,7 @@
 
 pkgname=phpredis-git
 pkgrel=1
-pkgver=3.0.0.rc1.r56.ga57d15e
+pkgver=3.1.1RC2.r74.g1528fea
 pkgdesc="A PHP extension for Redis"
 arch=('i686' 'x86_64')
 url="https://github.com/phpredis/phpredis"
@@ -14,7 +14,7 @@ _inifile="etc/php/conf.d/$_ininame"
 provides=("php-redis")
 conflicts=("php-redis")
 backup=("$_inifile")
-source=(git+https://github.com/phpredis/phpredis.git#branch=php7 ${_ininame})
+source=(git+https://github.com/phpredis/phpredis.git ${_ininame})
 
 md5sums=('SKIP'
          '1fc22a23c6b24a223dd235a15d5e194f')
