@@ -189,9 +189,6 @@ package() {
   sed -i 's:^pidfile=.*$:pidfile=/var/run/webmin.pid:' "$pkgdir"/etc/webmin/miniserv.conf
   find "$pkgdir"/etc/webmin -type f -exec sed -i "s:$pkgdir::g" {} \;
 
-  # make it only accessible by localhost
-  echo 'allow=127.0.0.1' >> "$pkgdir"/etc/webmin/miniserv.conf
-
   # install pacman menu
   cd "$srcdir"/webmin-pacman/config
   cp -rfp * "$pkgdir"/etc/webmin/pacman
