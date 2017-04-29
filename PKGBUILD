@@ -1,16 +1,16 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 
-pkgbase=linux-baytrail410 
+pkgbase=linux-baytrail410
 _srcname=linux-baytrail410
 _gitver=8d187a6230251eb0e09d20e17393b512df1f46d3
-pkgver=4.10.6
-pkgrel=2
-arch=('i686' 'x86_64')
+pkgver=4.10.13
+pkgrel=1
+arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("git+https://github.com/muhviehstah/linux-baytrail410.git#tag=4.10.6"
+source=("git+https://github.com/muhviehstah/linux-baytrail410.git#tag=4.10.13"
         'config' 'config.x86_64'
         'linux-baytrail410.preset'
         )
@@ -94,13 +94,13 @@ _package() {
     -i "${startdir}/${install}"
 
   # install firmware for RTL8723BS
-  install -D -m644 "${srcdir}/${_srcname}"/driver/net/wireless/realtek/rtl8723bs/rtl8723bs_ap_wowlan.bin" "${pkgdir}/lib/firmware/rtlwifi/rtl8723bs_ap_wowlan.bin"
-  install -D -m644 "${srcdir}/${_srcname}"/driver/net/wireless/realtek/rtl8723bs/rtl8723bs_bt.bin" "${pkgdir}/lib/firmware/rtlwifi/rtl8723bs_bt.bin"
-  install -D -m644 "${srcdir}/${_srcname}"/driver/net/wireless/realtek/rtl8723bs/rtl8723bs_nic.bin" "${pkgdir}/lib/firmware/rtlwifi/rtl8723bs_nic.bin"
-  install -D -m644 "${srcdir}/${_srcname}"/driver/net/wireless/realtek/rtl8723bs/rtl8723bs_wowlan.bin" "${pkgdir}/lib/firmware/rtlwifi/rtl8723bs_wowlan.bin"
+  install -D -m644 "${srcdir}"/"${_srcname}"/drivers/net/wireless/realtek/rtl8723bs/rtl8723bs_ap_wowlan.bin "${pkgdir}"/lib/firmware/rtlwifi/rtl8723bs_ap_wowlan.bin
+  install -D -m644 "${srcdir}"/"${_srcname}"/drivers/net/wireless/realtek/rtl8723bs/rtl8723bs_bt.bin "${pkgdir}"/lib/firmware/rtlwifi/rtl8723bs_bt.bin
+  install -D -m644 "${srcdir}"/"${_srcname}"/drivers/net/wireless/realtek/rtl8723bs/rtl8723bs_nic.bin "${pkgdir}"/lib/firmware/rtlwifi/rtl8723bs_nic.bin
+  install -D -m644 "${srcdir}"/"${_srcname}"/drivers/net/wireless/realtek/rtl8723bs/rtl8723bs_wowlan.bin "${pkgdir}"/lib/firmware/rtlwifi/rtl8723bs_wowlan.bin
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux-baytrail410.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}"/linux-baytrail410.preset "${pkgdir}"/etc/mkinitcpio.d/"${pkgbase}".preset
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -120,7 +120,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 _package-headers() {
@@ -224,7 +224,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -244,7 +244,7 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
-  
+
   # remove a files already in linux-docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"

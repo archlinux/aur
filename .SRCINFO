@@ -1,8 +1,7 @@
 pkgbase = linux-baytrail410
-	pkgver = 4.10.6
-	pkgrel = 2
+	pkgver = 4.10.13
+	pkgrel = 1
 	url = http://www.kernel.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -12,7 +11,7 @@ pkgbase = linux-baytrail410
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = git+https://github.com/muhviehstah/linux-baytrail410.git#tag=4.10.6
+	source = git+https://github.com/muhviehstah/linux-baytrail410.git#tag=4.10.13
 	source = config
 	source = config.x86_64
 	source = linux-baytrail410.preset
