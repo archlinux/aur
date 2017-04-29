@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=freebsd-docs-committers-guide
-pkgver=49872
+pkgver=49914
 pkgrel=1
 pkgdesc="The Committer's Guide from the FreeBSD Documentation Project."
 arch=(any)
 url="https://www.freebsd.org/docs.html"
 license=('BSD')
 source=("ftp://ftp.freebsd.org/pub/FreeBSD/doc/en_US.ISO8859-1/articles/committers-guide/article.html-split.tar.bz2")
-md5sums=('8fdd873759f5c5e9c911692d3c3ac52b')
+md5sums=('6f70438c4e247e88d670f68f89b14f53')
 
 prepare() {
     rm $srcdir/article.html-split.tar.bz2
