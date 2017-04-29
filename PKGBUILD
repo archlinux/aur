@@ -1,14 +1,14 @@
-# Maintainer: SY Zhang <lastavengers@archlinuxcn.org>
+# Maintainer: Shengyu Zhang <lastavengers at archlinuxcn dot org>
 
 pkgname=srain-dev
-pkgver=0.479.87b51ad
+pkgver=0.525.8eaacef
 pkgrel=1
-pkgdesc="It does not look like a irc client, develop branch"
+pkgdesc="Modern, beautiful IRC client written in GTK+ 3"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/SilverRainZ/srain"
 depends=('gtk3' 'python' 'curl' 'libnotify')
-makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'imagemagick' 'libnotify')
+makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'imagemagick')
 conflicts=('srain')
 provides=('srain')
 source=("git+https://github.com/SilverRainZ/srain.git#branch=dev")
