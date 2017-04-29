@@ -1,6 +1,6 @@
 pkgbase = yuview-git
 	pkgdesc = The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset
-	pkgver = ${new_version}
+	pkgver = r1122.45015e9
 	pkgrel = 1
 	url = https://github.com/IENT/YUView
 	install = YUView.install
