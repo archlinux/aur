@@ -1,6 +1,6 @@
 pkgbase = kcm-pointing-devices-git
 	pkgdesc = Mouse/touchpad configuration module for KDE
-	pkgver = r45.5989dd6
+	pkgver = r63.8d34a61
 	pkgrel = 1
 	url = https://github.com/amezin/pointing-devices-kcm
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = kcm-pointing-devices-git
 	depends = kded
 	depends = kcmutils
 	depends = kdeclarative
-	depends = libxcb-git
-	depends = xcb-proto-git
+	depends = libxcb
+	depends = xcb-proto
 	source = git://github.com/amezin/pointing-devices-kcm.git
 	md5sums = SKIP
 
