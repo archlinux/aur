@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=git
+pkgver=1.1.r14.g3c92607
 pkgrel=1
 pkgdesc="A ShareX inspired cross platform utility written with Qt."
 arch=('i686' 'x86_64')
@@ -20,7 +20,9 @@ build() {
 
 package() {
   cd "${srcdir}/KShare"
-  make DESTDIR="$pkgdir" install/strip
+  echo $pkgdir
+  mkdir -p "$pkgdir/usr/bin"
+  install ./KShare "$pkgdir/usr/bin"
 }
 
 pkgver() {
