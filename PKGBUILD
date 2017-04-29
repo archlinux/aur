@@ -3,13 +3,13 @@
 #
 pkgname=libtinfo
 pkgver=6
-pkgrel=21
+pkgrel=22
 pkgdesc="symlink to ncurses for use in cuda and other packages"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
 license=('MIT')
 #conflicts=('libtinfo-5')
-depends=('ncurses>=6.0')
+depends=('ncurses>=6.0' 'ncurses5-compat-libs')
 #optdepends=('libtinfo5: ncurses5-compat-libs')
 #_ncurses="$(pacman -Q ncurses | awk '{print $2}' | cut -c 1-3)"
 #_libtinfo5="$(pacman -Q ncurses5-compat-libs > /dev/null 2>&1; echo $?)"
