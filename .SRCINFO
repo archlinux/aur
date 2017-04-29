@@ -5,9 +5,12 @@ pkgbase = fstl
 	url = http://www.mattkeeter.com/projects/fstl/
 	arch = any
 	license = MIT
+	makedepends = icoutils
 	depends = qt5-base
 	source = https://github.com/mkeeter/fstl/archive/v0.9.3.tar.gz
+	source = fstl.desktop
 	sha256sums = a366861683eda9510b36b7c06068d9c314bef21b1f6aa43c5069e096347fbce2
+	sha256sums = 1b41e3cd75765738c7519b03579af00895bb4bff77370d3e774185aefba55996
 
 pkgname = fstl
 
