@@ -7,7 +7,7 @@
 
 * Test install
 
-```$ makepkg --install```
+```$ makepkg -si```
 
 * Update .SRCINFO 
 
