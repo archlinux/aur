@@ -21,7 +21,7 @@ license=('BSD')
 source=(
 	http://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/openresty/$_modname-nginx-module/archive/v$_setmiscver/$_modname-$_setmiscver.tar.gz
-	https://github.com/simpl/ngx_devel_kit/archive/$_ndkver/ngx_devel_kit-$_ndkver.tar.gz
+	https://github.com/simpl/ngx_devel_kit/archive/v$_ndkver/ngx_devel_kit-$_ndkver.tar.gz
 )
 
 sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
