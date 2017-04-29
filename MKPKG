@@ -1,4 +1,0 @@
-pkgname=('switchboard-plug-sharing')
-builddeps=('switchboard' 'wingpanel' 'wingpanel-indicator-bluetooth')
-
-# vim: ts=2 sw=2 et:

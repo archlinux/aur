@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('glib2' 'glibc' 'gnome-user-share' 'gtk3' 'libgee'
          'wingpanel-indicator-bluetooth'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-sharing/loki/${pkgver}/+download/switchboard-plug-sharing-${pkgver}.tar.xz")
 sha256sums=('c317f6ff9f674325d561271ccb24a9c6bafc628f4ada8bee3abd49ca29e0e268')
 
