@@ -1,7 +1,7 @@
 # Maintainer: Andrew Penkrat <contact.aldrog@gmail.com>
 
 pkgname=liri-text-git
-pkgver=20170416.8039993
+pkgver=20170428.23b1b3e
 pkgrel=1
 pkgdesc="Advanced text editor built in accordance with Material Design"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,8 +16,9 @@ groups=('liri-git')
 _gitroot="git://github.com/lirios/text.git"
 _gitbranch=develop
 _gitname=text
-source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
-md5sums=('SKIP')
+source=(${_gitname}::${_gitroot}#branch=${_gitbranch}
+        features::git+https://github.com/lirios/qmake-features.git)
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd ${srcdir}/${_gitname}
@@ -25,12 +26,17 @@ pkgver() {
 }
 
 prepare() {
+	cd ${_gitname}
+	git submodule init
+	git config --local submodule.features.url "$srcdir/features"
+	git submodule update
+	cd ..
 	mkdir -p build
 }
 
 build() {
 	cd build
-	qmake LIRI_INSTALL_PREFIX=/usr ../${_gitname}
+	qmake LIRI_INSTALL_PREFIX=/usr CONFIG+=use_qt_paths ../${_gitname}
 	make
 }
 
