@@ -4,7 +4,7 @@
 
 pkgname=i2pd-git
 _pkgname=i2pd
-pkgver=2.12.0.r49.ga8196d1f
+pkgver=2.13.0.r43.g55c14819
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv7h')
@@ -42,9 +42,9 @@ package(){
   install -Dm0644 $srcdir/i2pd.service $pkgdir/usr/lib/systemd/system/i2pd.service
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
 
-  install -Dm0644 $srcdir/${_pkgname}-$pkgver/docs/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
-  install -Dm0644 $srcdir/${_pkgname}-$pkgver/docs/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
-  install -Dm0644 $srcdir/${_pkgname}-$pkgver/docs/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
+  install -Dm0644 $srcdir/${_pkgname}-$pkgver/contrib/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
+  install -Dm0644 $srcdir/${_pkgname}-$pkgver/contrib/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
+  install -Dm0644 $srcdir/${_pkgname}-$pkgver/contrib/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
 
   install -d -m0750 $pkgdir/${_home_dest}
   ln -s /${_conf_dest}/i2pd.conf $pkgdir/${_home_dest}/i2pd.conf
@@ -63,9 +63,6 @@ package(){
   # docs
   _dest="$pkgdir/${_share_dest}/doc/${_pkgname}"
   install -Dm644 $srcdir/${_pkgname}/README.md "${_dest}/README.md"
-  install -Dm644 $srcdir/${_pkgname}/docs/configuration.md "${_dest}/configuration.md"
-  install -Dm644 $srcdir/${_pkgname}/docs/family.md "${_dest}/family.md"
-  install -Dm644 $srcdir/${_pkgname}/docs/config_opts_after_2.3.0.md "${_dest}/config_opts_after_2.3.0.md"
 
   # remove src folder and LICENSE
   rm -r $pkgdir/usr/{src,LICENSE}
