@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gnome-desktop' 'gtk3' 'libgee' 'libpwquality' 'polkit'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-useraccounts/loki/${pkgver}/+download/switchboard-plug-useraccounts-${pkgver}.tar.xz")
 sha256sums=('27a0502c28fbd196c481207d0c7201934910db39ba8c67059a4e62b2fa477c15')
 
