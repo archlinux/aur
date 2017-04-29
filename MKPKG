@@ -1,8 +1,0 @@
-pkgname=('gsignond-plugin-lastfm-bzr')
-builddeps=('gsignond' 'gsignond-plugin-oauth-git' 'gsignond-plugin-sasl-git'
-           'granite-bzr' 'switchboard-bzr' 'webkit2gtk2.4'
-           'switchboard-plug-online-accounts-bzr')
-
-check_bzr $packagedir/$pkgname/${pkgname%-*}
-
-# vim: ts=2 sw=2 et:
