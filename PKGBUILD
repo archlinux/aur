@@ -84,7 +84,7 @@ source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.t
         ftp://ftp.archlinux.org/other/webmin/webmin-config.tar.bz2
         ftp://ftp.archlinux.org/other/webmin/webmin-pacman.tar.bz2
         webmin.service)
-options=(!strip)
+options=(!strip !zipman)
 
 package() {
   # NOTE: USE --asroot build option to avoid fakeroot error!

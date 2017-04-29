@@ -12,20 +12,10 @@ Note:
 Setup:
 ==> Point your web browser to https://IPADDRESS:10000 to use webmin.
 EOF
-# fix man module
-  cd /opt/webmin/man
-  for i in $(find . -name '*.gz'); do
-  gzip -df $i
-  done
 }
 
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
   post_install $1
-}
-
-pre_remove() {
-  # uninstall unzipped files
-  rm -r /opt/webmin/man
 }
