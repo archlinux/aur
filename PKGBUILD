@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=freebsd-docs-pmake
 pkgver=44714
-pkgrel=2
+pkgrel=3
 pkgdesc="The PMake Tutorial from the FreeBSD Documentation Project."
 arch=(any)
 url="https://www.freebsd.org/docs.html"
 license=('BSD')
 source=("ftp://ftp.freebsd.org/pub/FreeBSD/doc/en_US.ISO8859-1/books/pmake/book.html-split.tar.bz2")
-md5sums=('063cb19e983812702dd3af284366b26d')
+md5sums=('967a70087f9b165ceabb4bd7dffd2fc4')
 
 prepare() {
     rm $srcdir/book.html-split.tar.bz2        
