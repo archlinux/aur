@@ -84,6 +84,7 @@ _mkspec="linux-rpi${_piver}-g++"
 _additional_configure_flags=""
 _profiled_gpu_fn=qpi-proprietary.sh
 
+__pkgconfigpath=${_sysroot}/usr/lib/pkgconfig
 __eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
 __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
