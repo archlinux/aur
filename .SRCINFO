@@ -1,7 +1,8 @@
 pkgbase = vokabeltrainer-git
 	pkgdesc = A small command-line vocable trainer that uses the Leitner box system.
-	pkgver = 2017_03_27
-	pkgrel = 2
+	pkgver = current
+	pkgrel = 1
+	epoch = 2
 	url = https://github.com/rusio/VokabelTrainer
 	arch = any
 	license = custom:MIT

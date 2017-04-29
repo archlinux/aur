@@ -1,8 +1,9 @@
 # Maintainer: ber532k <ber532k@gmx.de>
 pkgname=vokabeltrainer-git
 _pkgname=vokabeltrainer
-pkgver=`date +%Y_%m_%d`
-pkgrel=2
+pkgver=current
+pkgrel=1
+epoch=2
 pkgdesc="A small command-line vocable trainer that uses the Leitner box system."
 license=('custom:MIT')
 arch=('any')
@@ -11,6 +12,10 @@ depends=('groovy')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/rusio/VokabelTrainer")
 md5sums=('SKIP')
+
+pkgver() {
+	echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
 	mkdir -p $pkgdir/usr/bin
