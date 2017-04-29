@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('elementary-dpms-helper-bzr' 'glib2' 'glibc' 'gtk3' 'libgee'
          'light-locker' 'polkit' 'ufw' 'zeitgeist'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
 provides=('switchboard-plug-security-privacy')
 conflicts=('switchboard-plug-security-privacy')
 source=('bzr+lp:switchboard-plug-security-privacy')
