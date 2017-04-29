@@ -23,6 +23,11 @@ prepare() {
   patch <../../../arch.patch
 }
 
+pkgver() {
+  cd "$srcdir/sc-im/"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+}
+
 build() {
   cd "$srcdir/sc-im/src"
   make
