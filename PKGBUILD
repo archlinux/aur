@@ -14,7 +14,7 @@ license=('Proprietary')
 depends=('gksu' 'pulseaudio')
 depends_x86_64=('lib32-glib2' 'lib32-libpulse' 'lib32-libgl' 'lib32-libxml2' 'lib32-portaudio' 'lib32-zlib'
 'lib32-libpng12' 'lib32-libxrender' 'lib32-freetype2' 'lib32-fontconfig')
-depends_i686=('gksu' 'glib2' 'libgl' 'libxml2' 'portaudio' 'zlib' 'libxrender' 'freetype2' 'libpng12')
+depends_i686=('glib2' 'libgl' 'libxml2' 'portaudio' 'zlib' 'libxrender' 'freetype2' 'libpng12')
 makedepends=('binutils' 'tar')
 
 source=("gp6-full-linux-r$pkgver.deb::https://guitar-pro.com/download.php?idfile=gp6_linux"
