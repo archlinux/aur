@@ -14,7 +14,6 @@ optdepends=('mariadb: Database backend'
 	    'libav-git-no-libs: Music transcoding' 
 	    'ffmpeg: Music transcoding')
 options=('!strip')
-
 source=("git+https://github.com/Sonerezh/sonerezh.git"
         "example_nginx_vhost.conf")
 
