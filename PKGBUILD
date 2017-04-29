@@ -9,9 +9,8 @@
 ## -- Build options -- ##
 #########################
 
-_use_clang=0     # Use clang compiler (downloaded binaries from google). Results in faster build and smaller chromium.
+_use_clang=1     # Use clang compiler (downloaded binaries from google). Results in faster build and smaller chromium.
 _use_ccache=0    # Use ccache when build.
-_use_pax=0       # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment.
 _debug_mode=0    # Build in debug mode.
 _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some graphic cards, for example, NVIDIA
 
@@ -19,14 +18,14 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=59.0.3067.0
+pkgver=60.0.3080.5
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
 url='http://www.chromium.org'
 license=('BSD')
-depends=('jsoncpp'
+depends=(
 #          'libsrtp'
          'libxslt'
          'libxss'
@@ -48,10 +47,8 @@ depends=('jsoncpp'
          'gtk3'
          )
 makedepends=('libexif'
-             'elfutils'
              'gperf'
              'ninja'
-             'perl-json'
              'python2-beautifulsoup4'
              'python2-html5lib'
              'python2-simplejson'
@@ -76,7 +73,6 @@ optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
             #
             'kwalletmanager: Needed for storing passwords in KWallet'
             #
-            'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography'
             #
             'libappindicator-gtk3: Needed for show systray icon in the panel'
@@ -87,12 +83,12 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         'BUILD.gn'
         # Patch form Gentoo
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r5.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-dma-buf-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-dma-buf-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/skia-avx2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-libjpeg-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-icu-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r6.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r5.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-clang-r1.patch'
         # Misc Patches
 #         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
 #         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
@@ -107,12 +103,12 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
-            '735f718556cc2d4730ea5dcc01bece92ad25533605ab9a9336f14c79e9abfb10'
-            '44ad4232e5e7c6fcdf01492950805ac2c950c948dfcf9631af39f6230aaeb6be'
+            'ef06f5a6db1ce8fb7af63276d9d1e490acd3fadc8da62131c54acba658726047'
             'ffc664a90b68600de2d80a4064df25ec6f34fb4443e96ef2f0741ccb49d90a4b'
             'aa10f5797fe28858533ceeb0fa903f37e744ed4133c889eac60f5094e4b6a596'
-            'bdad1bcb1aec958083fd0b05db1a62c15a0a35f80eb2a50b81e1c8663c202c9a'
-            '99b568a00a8d7e19bb52e267a615ca47b1b4a0ca3524e58c488e792ac0c8b880'
+            '2fc21f48b95f9f2c2bd8576742fcf8028a8877c6b6e96c04d88184915982234e'
+            '5e327f41d0be88ee3b1fac727bc8de8bed3502f0df6e63c87f95997da7a39884'
+            'c584567f073d3eecdbcbaf49d797516f35ab33bdca3bbfe9afebf1810c5103c1'
             # Misc Patches
 #             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
 #             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
@@ -152,11 +148,6 @@ elif [ "${CARCH}" = "x86_64" ]; then
   _build_nacl=1
   _nacl="true"
   makedepends+=('ncurses5-compat-libs')
-fi
-
-# If use PaX environment.
-if [ "${_use_pax}" = "1" ]; then
-  makedepends+=('paxctl')
 fi
 
 # Need you use ccache?.
@@ -212,6 +203,7 @@ _keeplibs=(
   'third_party/catapult/tracing/third_party/gl-matrix'
   'third_party/catapult/tracing/third_party/jszip'
   'third_party/catapult/tracing/third_party/mannwhitneyu'
+  'third_party/catapult/tracing/third_party/oboe'
   'third_party/ced'
   'third_party/cld_2'
   'third_party/cld_3'
@@ -245,7 +237,7 @@ _keeplibs=(
   'third_party/libvpx/source/libvpx/third_party/x86inc'
   'third_party/libwebm'
   'third_party/libyuv'
-  'third_party/libxml/chromium'
+  'third_party/libxml'
   'third_party/lss'
   'third_party/lzma_sdk'
   'third_party/markupsafe'
@@ -276,6 +268,9 @@ _keeplibs=(
   'third_party/sfntly'
   'third_party/skia'
   'third_party/smhasher'
+  'third_party/swiftshader'
+  'third_party/swiftshader/third_party/pnacl-subzero'
+  'third_party/swiftshader/third_party/llvm-subzero'
   'third_party/sqlite'
   'third_party/tcmalloc'
   'third_party/usrsctp'
@@ -284,7 +279,6 @@ _keeplibs=(
   'third_party/webrtc'
   'third_party/widevine'
   'third_party/woff2'
-  'third_party/x86inc'
   'third_party/zlib/google'
   'url/third_party/mozilla'
   'v8/src/third_party/valgrind'
@@ -351,7 +345,7 @@ _use_system=(
   'libpng'
 #   'libvpx'
   'libwebp'
-  'libxml'
+#  'libxml' # https://bugs.gentoo.org/616818
   'libxslt'
   're2'
   'snappy'
@@ -401,12 +395,12 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
-  patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r5.patch"
-  patch -p1 -i "${srcdir}/chromium-dma-buf-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-dma-buf-r2.patch"
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE.patch"
   patch -p1 -i "${srcdir}/skia-avx2.patch"
-  patch -p1 -i "${srcdir}/chromium-system-libjpeg-r1.patch"
-  patch -p1 -i "${srcdir}/chromium-system-icu-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r6.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r5.patch"
+  patch -p1 -i "${srcdir}/chromium-clang-r1.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -519,19 +513,10 @@ build() {
   python2 tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${_flags[*]} ${_debug_flag}"
   out/Release/gn gen out/Release -v --args="${_flags[*]} ${_debug_flag}" --script-executable=/usr/bin/python2
 
-  # Build mksnapshot and pax-mark it.
-  if [ "${_use_pax}" = "1" ]; then
-    ninja -C out/Release -v mksnapshot
-    paxctl -cm out/Release/mksnapshot
-  fi
 
   # Build all with ninja.
   LC_ALL=C ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver widevinecdmadapter clearkeycdm
 
-  # Pax-mark again.
-  if [ "${_use_pax}" = "1" ]; then
-    paxctl -cm out/Release/chrome
-  fi
 }
 
 package() {
