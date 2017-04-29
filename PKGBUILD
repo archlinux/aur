@@ -3,8 +3,8 @@
 pkgname=g810-led-git
 _appname=g810-led
 _gitname=g810-led
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Linux led controller for Logitech G213, G410, G610, G810 and G910 Keyboards"
 arch=('i686' 'x86_64')
 url="https://github.com/MatMoul/g810-led"
