@@ -8,7 +8,7 @@ pkgbase = pdfbox
 	depends = java-runtime
 	noextract = pdfbox-app-2.0.5.jar
 	source = pdfbox
-	source = http://www.us.apache.org/dist/pdfbox/2.0.4/pdfbox-app-2.0.5.jar
+	source = http://www.us.apache.org/dist/pdfbox/2.0.5/pdfbox-app-2.0.5.jar
 	sha1sums = be3bd038b51d983c5f3ccb58f60b905cb5baab92
 	sha1sums = ac28691b7ef528742472ea706a88a7b47ca84aae
 
