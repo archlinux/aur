@@ -21,5 +21,6 @@ build() {
 package() {
   cd "${srcdir}/emacs-jedi-${pkgver}"
   install -d "${pkgdir}/usr/share/emacs/site-lisp/jedi"
-  install -m644 jedi*.{py,el{c,}} "${pkgdir}/usr/share/emacs/site-lisp/jedi/"
+  install -m644 jedi*.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/jedi/"
+  install -m755 jedi*.py "${pkgdir}/usr/share/emacs/site-lisp/jedi/"
 }
