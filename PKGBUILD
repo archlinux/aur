@@ -13,7 +13,7 @@ depends=('glib2' 'glibc' 'gsignond-extension-pantheon-bzr'
          'json-glib' 'libaccounts-glib' 'libgee' 'libgsignon-glib' 'rest'
          'webkit2gtk'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-onlineaccounts/loki/${pkgver}/+download/switchboard-plug-onlineaccounts-${pkgver}.tar.xz")
 sha256sums=('ac7fdaebdab65403fd7e2776d381a0e205bc131a5acf6d29420b2dbaae3680a9')
 
