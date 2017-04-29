@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=vagrant-libvirt
-pkgver=0.0.37
-pkgrel=2
+pkgver=0.0.40
+pkgrel=1
 _foglibvirtver=0.3.0
 _fogcorever=1.43.0
 _fogjsonver=1.0.2
@@ -14,7 +14,7 @@ pkgdesc="libvirt provider plugin for Vagrant"
 arch=(i686 x86_64)
 url="https://github.com/vagrant-libvirt/vagrant-libvirt"
 license=("MIT")
-depends=("vagrant" "libvirt")
+depends=("vagrant" "libvirt" "openssl-1.0")
 source=("https://rubygems.org/downloads/vagrant-libvirt-$pkgver.gem"
         "https://rubygems.org/downloads/ruby-libvirt-$_libvirtver.gem"
         "https://rubygems.org/downloads/fog-core-$_fogcorever.gem"
@@ -31,7 +31,7 @@ noextract=("formatador-$_formatadorver.gem"
            "fog-core-$_fogcorever.gem"
            "ruby-libvirt-$_libvirtver.gem"
            "vagrant-libvirt-$pkgver.gem")
-sha256sums=('51555842b73b075cbcb9264d7a2e121bf8920f7bf265c9db899d48960bc67fc8'
+sha256sums=('00f1d77aa110b82484a92710674ff07f227d2eeb3e41747f596ff1c326fb7b0f'
             '61f1261500dd18ea42452a7a69dce8606057e9c1143d1224201d8c29db0bc703'
             '866b816e7516d6787bc074fcec8bb530ebf196685fee03cf56a69ecd852e8229'
             '079bf3f4b03c6cde89d88256fed06c855680eba614ff8cf4674e033414031191'
@@ -43,7 +43,7 @@ sha256sums=('51555842b73b075cbcb9264d7a2e121bf8920f7bf265c9db899d48960bc67fc8'
 package() {
     cd "$srcdir"
 
-    export CONFIGURE_ARGS="with-ldflags=-L/opt/vagrant/embedded/lib with-libvirt-include=/usr/include/libvirt with-libvirt-lib=/opt/vagrant/not-existing-lib"
+    export CONFIGURE_ARGS="with-ldflags='-L/opt/vagrant/embedded/lib -l:libruby.so.2.2' with-libvirt-include=/usr/include with-libvirt-lib=/usr/lib"
     export GEM_HOME=/opt/vagrant/embedded/gems
     export GEM_PATH=$GEM_HOME
     export PATH=/opt/vagrant/embedded/bin:$PATH
