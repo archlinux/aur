@@ -1,0 +1,21 @@
+pkgbase = libgudev-nosystemd
+	pkgdesc = GObject bindings for libudev
+	pkgver = 231
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/libgudev
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = eudev
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = libeudev
+	depends = glib2
+	provides = libgudev-1.0.so
+	provides = libgudev
+	conflicts = libgudev
+	source = https://download.gnome.org/sources/libgudev/231/libgudev-231.tar.xz
+	sha256sums = 3b1ef99d4a8984c35044103d8ddfc3cc52c80035c36abab2bcc5e3532e063f96
+
+pkgname = libgudev-nosystemd
+
