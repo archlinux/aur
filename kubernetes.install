@@ -1,0 +1,14 @@
+post_install() {
+    getent group kube >/dev/null || groupadd -r kube
+    getent passwd kube >/dev/null || useradd -r -g kube -d / -s /sbin/nologin -c "Kubernetes user" kube
+    chown -R kube:kube /var/lib/kubelet
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    getent passwd kube >/dev/null && userdel kube
+    getent group kube >/dev/null && groupdel kube
+}
