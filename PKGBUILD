@@ -2,21 +2,21 @@
 
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
-pkgver=2.2.0
+pkgver=2.2.6
 pkgrel=1
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
 url='http://www.wireshark.org/'
 license=('GPL2')
 
-depends=('c-ares' 'geoip' 'krb5' 'libgcrypt' 'libcap' 'libpcap' 'bash' 'gnutls' 'glib2' 'lua52' 'portaudio' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme' 'libssh')
+depends=('c-ares' 'geoip' 'krb5' 'libgcrypt' 'libcap' 'libpcap' 'bash' 'gnutls' 'glib2' 'lua52' 'portaudio' 'gtk2' 'libssh')
 makedepends=('python')
 
 provides=('wireshark-cli' 'wireshark-gtk')
-conflicts=('wireshark-cli' 'wireshark-gtk')
+conflicts=('wireshark-cli' 'wireshark-common' 'wireshark-qt')
 install=wireshark-gtk2.install
 source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.bz2)
-sha1sums=('4b47bf8e2053073585318646e27d2aa9dc7c7238')
+sha256sums=('f627d51eda85f5ae5f5c8c9fc1f6539ffc2a270dd7500dc7f67490a8534ca849')
 
 build() {
 	cd ${_pkgbase}-${pkgver}
