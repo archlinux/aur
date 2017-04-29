@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gnome-settings-daemon' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
 provides=('switchboard-plug-power')
 conflicts=('switchboard-plug-power')
 source=('bzr+lp:switchboard-plug-power')
