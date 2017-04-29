@@ -10,7 +10,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=$_pkgbasever
@@ -29,7 +29,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 sha1sums=('d4659ab167ece2a296eb4712cb93d8aef402870e'
 	  'a7d368580fa3eaec826189097f4a98d281737071'
 	  '0c45c2e050a7642acd5c7dec6fd5b03f8b5cd658'
-	  '21fe74eeea0ec3238d9766d3a1a85baff1301cd0'
+	  '137290942bba7e0cfe2c092a2079163ff1820451'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 	  'f3febb8836f38320742a546c667106608d4c4395'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
