@@ -2,7 +2,7 @@
 
 pkgname='mcedit'
 reponame='MCEdit-Unified'
-pkgver='1.5.3.0'
+pkgver='1.5.6.0'
 pkgrel=1
 pkgdesc='Minecraft world editor'
 arch=('any')
@@ -70,5 +70,5 @@ package() {
 
 md5sums=('b08f609c8923067b13a9bd462999a6f4'
          '53fe3c41d58fd1f6429f90ba0b1831ac'
-         '34f209ecd6f0898f91fb5ddce02a0c4c'
-         '06055ce96c3091fd858eefde75228977')
+         '0c6d503c3a87cfb347564efd5b1b0fd5'
+         '8589c54a51b69e83ca6f36dd3db3be5f')

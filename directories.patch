@@ -39,14 +39,14 @@
      logfile = os.path.join(os.getcwdu(), logfile)
  fh = logging.FileHandler(logfile, mode="w")
 
---- splash.py.orig	2016-01-03 17:30:26.530655811 -0600
-+++ splash.py	2016-01-03 17:32:52.887326839 -0600
-@@ -26,7 +26,7 @@
-     screen.blit(splash, (0, 0))
- except IOError:
-     try:
--        font = pygame.font.Font(open(os.path.join(cur_dir, 'fonts', 'DejaVuSans-Bold.ttf'), 'rb'), 48)
-+        font = pygame.font.Font(open(os.path.join("/usr/share/fonts/TTF", 'DejaVuSans-Bold.ttf'), 'rb'), 48)
-         buf = font.render("MCEDit is loading...", True, (128, 128, 128))
-         screen = pygame.display.set_mode((buf.get_width() + 20, buf.get_height() + 20), pygame.NOFRAME)
-         screen.blit(buf, (10, 10))
+--- pymclevel/materials.py.orig 2017-04-29 16:14:25.212312952 -0600
++++ pymclevel/materials.py      2017-04-29 16:14:32.882313180 -0600
+@@ -66,7 +66,7 @@
+                 b.stringID = "air"
+             self.block_map[b.ID] = "minecraft:" + b.stringID
+         
+-        with open(os.path.join("pymclevel", definition_file)) as def_file:
++        with open(os.path.join("/usr/lib/mcedit/pymclevel", definition_file)) as def_file:
+             self.blockstates = json.load(def_file)
+             
+         self.material_map[self._mats] = self
