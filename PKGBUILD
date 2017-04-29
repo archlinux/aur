@@ -1,8 +1,9 @@
 # Maintainer: Allen Choong <allencch at hotmail dot com>
+# Contributor: Indeed <fengjared at gmail dot com>
 
 pkgname=cndrvcups-lb-bin
-pkgver=3.30
-pkgrel=2
+pkgver=3.31
+pkgrel=1
 pkgdesc="Canon UFR II/UFR II LT Printer Driver (including Canon imageCLASS MF4720w)"
 url="http://support-asia.canon-asia.com/contents/ASIA/EN/0100270810.html"
 arch=('i686' 'x86_64')
@@ -11,8 +12,8 @@ depends_x86_64=('lib32-libxml2' 'lib32-libcups' 'lib32-libpng12')
 replaces=('canon-ufr')
 conflicts=('cndrvcups-lb')
 license=('custom')
-source=("http://gdlp01.c-wss.com/gds/8/0100002708/15/Linux_UFRII_PrinterDriver_V${pkgver/./}_uk_EN.tar.gz")
-sha256sums=('df669767927a8e17faefe72b4a2c259cd944162b5ed046d44dedbbdb943cf756')
+source=("http://gdlp01.c-wss.com/gds/8/0100007658/03/linux-UFRII-drv-v${pkgver/./}-uken.tar.gz")
+sha256sums=('c1211cbe27034847284541fcc613b86ccfe99418a6a2cbb4589b99ffe1af4645')
 
 package() {
 	if [ "${CARCH}" = 'x86_64' ]; then
@@ -22,8 +23,8 @@ package() {
 	  dir=32-bit_Driver
 	  suffix=i386
 	fi
-	cd "${srcdir}/Linux_UFRII_PrinterDriver_V${pkgver/./}_uk_EN/${dir}/Debian/"
-	ar xv cndrvcups-common_3.70-1_${suffix}.deb
+	cd "${srcdir}/linux-UFRII-drv-v${pkgver/./}-uken/${dir}/Debian/"
+	ar xv cndrvcups-common_3.71-1_${suffix}.deb
 	tar xzf data.tar.gz
 	ar xv cndrvcups-ufr2-uk_${pkgver}-1_${suffix}.deb
 	tar xzf data.tar.gz
