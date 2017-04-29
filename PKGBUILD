@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('cairo' 'evolution-data-server' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libical'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-datetime/loki/${pkgver}/+download/wingpanel-indicator-datetime-${pkgver}.tar.xz")
 sha256sums=('87d996186ce2cf4ab09be7e8a5bea8f5f37608e98f0bdd7e22ac90280278d22b')
 
