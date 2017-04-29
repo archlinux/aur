@@ -4,7 +4,7 @@
 _pkgname=liblrdf
 pkgname=lib32-${_pkgname}
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for the manipulation of RDF file in LADSPA plugins (32 bit)"
 arch=('x86_64')
 url="https://github.com/swh/LRDF"
