@@ -1,11 +1,11 @@
 # Maintainer: Charles Wise <charles at charlesbwise dot com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
-pkgname=sonerezh-git
+pkgname=sonerezh-devel-git
 _pkgname=sonerezh
-pkgver=r230.519c0f8
+pkgver=r245.75b1ff6
 pkgrel=1
-pkgdesc='A self-hosted, web-based application for stream your music, everywhere'
+pkgdesc='A self-hosted, web-based application for stream your music, everywhere. Git development branch'
 arch=('any')
 url='https://www.sonerezh.bzh'
 license=('GPL3')
@@ -13,8 +13,10 @@ depends=('php' 'php-gd')
 optdepends=('mariadb: Database backend' 
 	    'libav-git-no-libs: Music transcoding' 
 	    'ffmpeg: Music transcoding')
+provides=('sonerezh-git')
+conflicts=('sonerezh-git')
 options=('!strip')
-source=("git+https://github.com/Sonerezh/sonerezh.git"
+source=("git+https://github.com/Sonerezh/sonerezh.git#branch=development"
         "example_nginx_vhost.conf")
 sha512sums=('SKIP'
 	    '806f9aca27da55cd33b814b283bf3e33c32687858258755a43eb2d4b18f62b4ccf81e82dbc8e78c0923e5b48281adb2b33ec7db9850b79fb1ba63b611bbe9ee0')
