@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-datetime/loki/${pkgver}/+download/switchboard-plug-datetime-${pkgver}.tar.xz")
 sha256sums=('f17ca0bc26ef8228ae50e165c2fcb26daa0f7091997e387e5130afa4ba66cf20')
 
