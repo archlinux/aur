@@ -1,0 +1,502 @@
+diff --git a/build.sh b/build.sh
+index f5cab1e..b0751c2 100755
+--- a/build.sh
++++ b/build.sh
+@@ -671,6 +671,11 @@ while :; do
+             __ClangMinorVersion=9
+             ;;
+ 
++        clang4.0)
++            __ClangMajorVersion=4
++            __ClangMinorVersion=0
++            ;;
++
+         ninja)
+             __UseNinja=1
+             ;;
+diff --git a/src/ToolBox/SOS/lldbplugin/CMakeLists.txt b/src/ToolBox/SOS/lldbplugin/CMakeLists.txt
+index 247c700..f0c2176 100644
+--- a/src/ToolBox/SOS/lldbplugin/CMakeLists.txt
++++ b/src/ToolBox/SOS/lldbplugin/CMakeLists.txt
+@@ -55,14 +55,15 @@ if(NOT ENABLE_LLDBPLUGIN)
+ endif()
+ 
+ # Check for LLDB library
+-find_library(LLDB NAMES LLDB lldb lldb-3.8 lldb-3.6 lldb-3.5 PATHS "${WITH_LLDB_LIBS}" PATH_SUFFIXES llvm NO_DEFAULT_PATH)
+-find_library(LLDB NAMES LLDB lldb lldb-3.8 lldb-3.6 lldb-3.5 PATH_SUFFIXES llvm)
++find_library(LLDB NAMES LLDB lldb lldb-4.0 lldb-3.9 lldb-3.8 lldb-3.7 lldb-3.6 lldb-3.5 PATHS "${WITH_LLDB_LIBS}" PATH_SUFFIXES llvm NO_DEFAULT_PATH)
++find_library(LLDB NAMES LLDB lldb lldb-4.0 lldb-3.8 lldb-3.7 lldb-3.6 lldb-3.5 PATH_SUFFIXES llvm)
+ if(LLDB STREQUAL LLDB-NOTFOUND)
+     if(REQUIRE_LLDBPLUGIN)
+-        message(FATAL_ERROR "Cannot find lldb-3.5, lldb-3.6 or lldb-3.8. Try installing lldb-3.6-dev (or the appropriate package for your platform)")
++        set(MESSAGE_MODE FATAL_ERROR)
+     else()
+-        message(WARNING "Cannot find lldb-3.5,lldb-3.6 or lldb-3.8. Try installing lldb-3.6-dev (or the appropriate package for your platform)")
++        set(MESSAGE_MODE WARNING)
+     endif()
++    message(${MESSAGE_MODE} "Cannot find lldb-3.5, lldb-3.6, lldb-3.8, lldb-3.9 or lldb-4.0. Try installing lldb-3.6-dev (or the appropriate package for your platform)")
+     return()
+ endif()
+ 
+diff --git a/src/debug/di/dbgtransportmanager.cpp b/src/debug/di/dbgtransportmanager.cpp
+index 77a3548..8c1079d 100644
+--- a/src/debug/di/dbgtransportmanager.cpp
++++ b/src/debug/di/dbgtransportmanager.cpp
+@@ -102,7 +102,7 @@ HRESULT DbgTransportTarget::GetTransportForProcess(DWORD                   dwPID
+     entry->m_cProcessRef++;
+     _ASSERTE(entry->m_cProcessRef > 0);
+     _ASSERTE(entry->m_transport != NULL);
+-    _ASSERTE(entry->m_hProcess > 0);
++    _ASSERTE((intptr_t)entry->m_hProcess > 0);
+     
+     *ppTransport = entry->m_transport;
+     if (!DuplicateHandle(GetCurrentProcess(), 
+@@ -139,7 +139,7 @@ void DbgTransportTarget::ReleaseTransport(DbgTransportSession *pTransport)
+ 
+         _ASSERTE(entry->m_cProcessRef > 0);
+         _ASSERTE(entry->m_transport != NULL);
+-        _ASSERTE(entry->m_hProcess > 0);
++        _ASSERTE((intptr_t)entry->m_hProcess > 0);
+ 
+         if (entry->m_transport == pTransport)
+         {
+diff --git a/src/gc/gc.cpp b/src/gc/gc.cpp
+index 745b24f..08de1fa 100644
+--- a/src/gc/gc.cpp
++++ b/src/gc/gc.cpp
+@@ -20356,7 +20356,7 @@ size_t gc_heap::update_brick_table (uint8_t* tree, size_t current_brick,
+     dprintf (3, ("tree: %Ix, current b: %Ix, x: %Ix, plug_end: %Ix",
+         tree, current_brick, x, plug_end));
+ 
+-    if (tree > 0)
++    if (tree != NULL)
+     {
+         dprintf (3, ("b- %Ix->%Ix pointing to tree %Ix", 
+             current_brick, (size_t)(tree - brick_address (current_brick)), tree));
+diff --git a/src/pal/inc/pal.h b/src/pal/inc/pal.h
+index 9e97edc..7d25940 100644
+--- a/src/pal/inc/pal.h
++++ b/src/pal/inc/pal.h
+@@ -5303,6 +5303,7 @@ inline WCHAR *PAL_wcsstr(WCHAR *_S, const WCHAR *_P)
+ }
+ #endif
+ 
++#if !__has_builtin(_rotl)
+ /*++
+ Function:
+ _rotl
+@@ -5320,12 +5321,15 @@ unsigned int __cdecl _rotl(unsigned int value, int shift)
+     retval = (value << shift) | (value >> (sizeof(int) * CHAR_BIT - shift));
+     return retval;
+ }
++#endif // !__has_builtin(_rotl)
+ 
+ // On 64 bit unix, make the long an int.
+ #ifdef BIT64
+ #define _lrotl _rotl
+ #endif // BIT64
+ 
++#if !__has_builtin(_rotr)
++
+ /*++
+ Function:
+ _rotr
+@@ -5344,6 +5348,8 @@ unsigned int __cdecl _rotr(unsigned int value, int shift)
+     return retval;
+ }
+ 
++#endif // !__has_builtin(_rotr)
++
+ PALIMPORT int __cdecl abs(int);
+ #ifndef PAL_STDCPP_COMPAT
+ PALIMPORT LONG __cdecl labs(LONG);
+diff --git a/src/pal/inc/pal_mstypes.h b/src/pal/inc/pal_mstypes.h
+index 0ca2871..0aa35ae 100644
+--- a/src/pal/inc/pal_mstypes.h
++++ b/src/pal/inc/pal_mstypes.h
+@@ -556,7 +556,7 @@ typedef LONG_PTR SSIZE_T, *PSSIZE_T;
+ #endif
+ 
+ #ifndef SSIZE_T_MIN
+-#define SSIZE_T_MIN I64(-9223372036854775808)
++#define SSIZE_T_MIN I64(0x8000000000000000)
+ #endif
+ 
+ #ifndef PAL_STDCPP_COMPAT
+diff --git a/src/vm/amd64/unixstubs.cpp b/src/vm/amd64/unixstubs.cpp
+index 2904149..76d3cf1 100644
+--- a/src/vm/amd64/unixstubs.cpp
++++ b/src/vm/amd64/unixstubs.cpp
+@@ -37,7 +37,7 @@ extern "C"
+               "  mov %%edx, 12(%[result])\n" \
+             : "=a"(eax) /*output in eax*/\
+             : "a"(arg), [result]"r"(result) /*inputs - arg in eax, result in any register*/\
+-            : "eax", "rbx", "ecx", "edx", "memory" /* registers that are clobbered, *result is clobbered */
++            : "rbx", "ecx", "edx", "memory" /* registers that are clobbered, *result is clobbered */
+           );
+         return eax;
+     }
+@@ -52,7 +52,7 @@ extern "C"
+               "  mov %%edx, 12(%[result])\n" \
+             : "=a"(eax) /*output in eax*/\
+             : "c"(arg1), "a"(arg2), [result]"r"(result) /*inputs - arg1 in ecx, arg2 in eax, result in any register*/\
+-            : "eax", "rbx", "ecx", "edx", "memory" /* registers that are clobbered, *result is clobbered */
++            : "rbx", "edx", "memory" /* registers that are clobbered, *result is clobbered */
+           );
+         return eax;
+     }
+@@ -63,7 +63,7 @@ extern "C"
+         __asm("  xgetbv\n" \
+             : "=a"(eax) /*output in eax*/\
+             : "c"(0) /*inputs - 0 in ecx*/\
+-            : "eax", "edx" /* registers that are clobbered*/
++            : "edx" /* registers that are clobbered*/
+           );
+         // check OS has enabled both XMM and YMM state support
+         return ((eax & 0x06) == 0x06) ? 1 : 0;
+--- a/src/pal/inc/rt/intsafe.h
++++ b/src/pal/inc/rt/intsafe.h
+@@ -18,26 +18,6 @@
+ 
+ #include <specstrings.h>    // for IN, etc.
+ 
+-
+-#if defined(_AMD64_)
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-#define UnsignedMultiply128 _umul128
+-ULONG64
+-UnsignedMultiply128 (
+-    IN ULONG64  Multiplier,
+-    IN ULONG64  Multiplicand,
+-    OUT ULONG64 *HighProduct
+-    );
+-#ifdef _MSC_VER
+-#pragma intrinsic(_umul128)
+-#endif // _MSC_VER
+-#ifdef __cplusplus
+-}
+-#endif
+-#endif // _AMD64_
+-
+ #ifndef FEATURE_PAL
+ 
+ #ifdef  _WIN64
+@@ -434,7 +414,7 @@
+     OUT ULONG* pulResult)
+ {
+     *pulResult = (ULONG)uOperand;
+-    
++
+     return S_OK;
+ }
+ 
+@@ -552,7 +532,7 @@
+     OUT UINT* puResult)
+ {
+     *puResult = (UINT)ulOperand;
+-    
++
+     return S_OK;
+ }
+ 
+@@ -673,13 +653,13 @@
+ {
+     HRESULT hr = INTSAFE_E_ARITHMETIC_OVERFLOW;
+     *pulResult = ULONG_ERROR;
+-    
++
+     if (ullOperand <= ULONG_MAX)
+     {
+         *pulResult = (ULONG)ullOperand;
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -727,13 +707,13 @@
+ {
+     HRESULT hr = INTSAFE_E_ARITHMETIC_OVERFLOW;
+     *puResult = UINT_ERROR;
+-    
++
+     if (ullOperand <= UINT_MAX)
+     {
+         *puResult = (UINT)ullOperand;
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1120,7 +1100,7 @@
+         *pusResult = (usAugend + usAddend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1147,7 +1127,7 @@
+         *puResult = (uAugend + uAddend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1174,7 +1154,7 @@
+         *pulResult = (ulAugend + ulAddend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1223,7 +1203,7 @@
+         *pResult = (Augend + Addend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1250,7 +1230,7 @@
+         *pullResult = (ullAugend + ullAddend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1272,7 +1252,7 @@
+         *pusResult = (usMinuend - usSubtrahend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1300,7 +1280,7 @@
+         *puResult = (uMinuend - uSubtrahend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1327,7 +1307,7 @@
+         *pulResult = (ulMinuend - ulSubtrahend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1377,7 +1357,7 @@
+         *pResult = (Minuend - Subtrahend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1404,7 +1384,7 @@
+         *pullResult = (ullMinuend - ullSubtrahend);
+         hr = S_OK;
+     }
+-    
++
+     return hr;
+ }
+ 
+@@ -1419,7 +1399,7 @@
+     OUT USHORT* pusResult)
+ {
+     ULONG ulResult = ((ULONG)usMultiplicand) * (ULONG)usMultiplier;
+-    
++
+     return ULongToUShort(ulResult, pusResult);
+ }
+ 
+@@ -1444,23 +1424,6 @@
+ }
+ 
+ //
+-// UINT_PTR multiplication
+-//
+-#ifdef _WIN64
+-#define UIntPtrMult     ULongLongMult
+-#else
+-__inline
+-HRESULT
+-UIntPtrMult(
+-    IN UINT_PTR ulMultiplicand,
+-    IN UINT_PTR ulMultiplier,
+-    OUT UINT_PTR* pulResult)
+-{
+-	return UIntMult((UINT)ulMultiplicand, (UINT)ulMultiplier, (UINT*)pulResult);
+-}
+-#endif // _WIN64
+-
+-//
+ // ULONG multiplication
+ //
+ __inline
+@@ -1471,27 +1434,9 @@
+     OUT ULONG* pulResult)
+ {
+     ULONGLONG ull64Result = UInt32x32To64(ulMultiplicand, ulMultiplier);
+-    
+-    return ULongLongToULong(ull64Result, pulResult);
+-}
+ 
+-//
+-// ULONG_PTR multiplication
+-//
+-#ifdef _WIN64
+-#define ULongPtrMult    ULongLongMult
+-#else
+-__inline
+-HRESULT
+-ULongPtrMult(
+-    IN ULONG_PTR ulMultiplicand,
+-    IN ULONG_PTR ulMultiplier,
+-    OUT ULONG_PTR* pulResult)
+-{
+-	return ULongMult((ULONG)ulMultiplicand, (ULONG)ulMultiplier, (ULONG*)pulResult);
++    return ULongLongToULong(ull64Result, pulResult);
+ }
+-#endif // _WIN64
+-
+ 
+ //
+ // DWORD multiplication
+@@ -1503,114 +1448,4 @@
+ //
+ #define DWordPtrMult	ULongPtrMult
+ 
+-//
+-// size_t multiplication
+-//
+-#define SizeTMult		UIntPtrMult
+-
+-//
+-// SIZE_T multiplication
+-//
+-#define SIZETMult		ULongPtrMult
+-
+-//
+-// ULONGLONG multiplication
+-//
+-__inline
+-HRESULT
+-ULongLongMult(
+-    IN ULONGLONG ullMultiplicand,
+-    IN ULONGLONG ullMultiplier,
+-    OUT ULONGLONG* pullResult)
+-{
+-    HRESULT hr = INTSAFE_E_ARITHMETIC_OVERFLOW;
+-#ifdef _AMD64_
+-    ULONGLONG u64ResultHigh;
+-    ULONGLONG u64ResultLow;
+-    
+-    *pullResult = ULONGLONG_ERROR;
+-    
+-    u64ResultLow = UnsignedMultiply128(ullMultiplicand, ullMultiplier, &u64ResultHigh);
+-    if (u64ResultHigh == 0)
+-    {
+-        *pullResult = u64ResultLow;
+-        hr = S_OK;
+-    }
+-#else
+-    // 64x64 into 128 is like 32.32 x 32.32.
+-    //
+-    // a.b * c.d = a*(c.d) + .b*(c.d) = a*c + a*.d + .b*c + .b*.d
+-    // back in non-decimal notation where A=a*2^32 and C=c*2^32:  
+-    // A*C + A*d + b*C + b*d
+-    // So there are four components to add together.
+-    //   result = (a*c*2^64) + (a*d*2^32) + (b*c*2^32) + (b*d)
+-    //
+-    // a * c must be 0 or there would be bits in the high 64-bits
+-    // a * d must be less than 2^32 or there would be bits in the high 64-bits
+-    // b * c must be less than 2^32 or there would be bits in the high 64-bits
+-    // then there must be no overflow of the resulting values summed up.
+-    
+-    ULONG dw_a;
+-    ULONG dw_b;
+-    ULONG dw_c;
+-    ULONG dw_d;
+-    ULONGLONG ad = 0;
+-    ULONGLONG bc = 0;
+-    ULONGLONG bd = 0;
+-    ULONGLONG ullResult = 0;
+-    
+-    *pullResult = ULONGLONG_ERROR;
+-
+-    dw_a = (ULONG)(ullMultiplicand >> 32);
+-    dw_c = (ULONG)(ullMultiplier >> 32);
+-
+-    // common case -- if high dwords are both zero, no chance for overflow
+-    if ((dw_a == 0) && (dw_c == 0))
+-    {
+-        dw_b = (DWORD)ullMultiplicand;
+-        dw_d = (DWORD)ullMultiplier;
+-
+-        *pullResult = (((ULONGLONG)dw_b) * (ULONGLONG)dw_d);
+-        hr = S_OK;
+-    }
+-    else
+-    {
+-        // a * c must be 0 or there would be bits set in the high 64-bits
+-        if ((dw_a == 0) ||
+-            (dw_c == 0))
+-        {
+-            dw_d = (DWORD)ullMultiplier;
+-
+-            // a * d must be less than 2^32 or there would be bits set in the high 64-bits
+-            ad = (((ULONGLONG)dw_a) * (ULONGLONG)dw_d);
+-            if ((ad & HIDWORD_MASK) == 0)
+-            {
+-                dw_b = (DWORD)ullMultiplicand;
+-
+-                // b * c must be less than 2^32 or there would be bits set in the high 64-bits
+-                bc = (((ULONGLONG)dw_b) * (ULONGLONG)dw_c);
+-                if ((bc & HIDWORD_MASK) == 0)
+-                {
+-                    // now sum them all up checking for overflow.
+-                    // shifting is safe because we already checked for overflow above
+-                    if (SUCCEEDED(ULongLongAdd(bc << 32, ad << 32, &ullResult)))                        
+-                    {
+-                        // b * d
+-                        bd = (((ULONGLONG)dw_b) * (ULONGLONG)dw_d);
+-                    
+-                        if (SUCCEEDED(ULongLongAdd(ullResult, bd, &ullResult)))
+-                        {
+-                            *pullResult = ullResult;
+-                            hr = S_OK;
+-                        }
+-                    }
+-                }
+-            }
+-        }
+-    }
+-#endif // _AMD64_  
+-    
+-    return hr;
+-}
+-
+ #endif // _INTSAFE_H_INCLUDED_
