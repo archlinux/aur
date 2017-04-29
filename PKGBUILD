@@ -1,5 +1,4 @@
 # Maintainer: Charles Wise <charles at charlesbwise dot com>
-# Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=sonerezh-devel-git
 _pkgname=sonerezh
