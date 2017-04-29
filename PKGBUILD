@@ -15,9 +15,12 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     mkdir -p build
-    cd build
+    pushd build
     qmake-qt5 PREFIX="/usr" ../qt/fstl.pro
     make
+    popd
+
+    sed -n '/(c) 2014 Matt Keeter/,/provided/p' README.md > LICENSE
 }
 
 package() {
@@ -25,9 +28,7 @@ package() {
     pushd "build"
     make INSTALL_ROOT="${pkgdir}" install
     install -Dm755 fstl "${pkgdir}/usr/bin/fstl"
-
     popd
-    sed -n '/(c) 2014 Matt Keeter/,/provided/p' README.md > LICENSE
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
