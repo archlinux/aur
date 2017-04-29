@@ -10,45 +10,56 @@ index a7a4813..48f203e 100644
 +CONFIG_PARTITION_UUIDS=y
 +CONFIG_IDENT_STRING="\nMX53loco Arch Linux ARM"
 diff --git a/include/configs/mx53loco.h b/include/configs/mx53loco.h
-index 7cd750c..984f24b 100644
+index 7cd750c..a2b3217 100644
 --- a/include/configs/mx53loco.h
 +++ b/include/configs/mx53loco.h
 @@ -92,14 +92,15 @@
-        "ip_dyn=yes\0" \
-        "mmcdev=0\0" \
-        "mmcpart=1\0" \
--       "mmcroot=/dev/mmcblk0p2 rw rootwait\0" \
-+       "bootdir=\0" \
-+       "mmcroot=/dev/mmcblk0p1 rw rootwait\0" \
-        "mmcargs=setenv bootargs console=ttymxc0,${baudrate} root=${mmcroot}\0" \
-        "loadbootscript=" \
--               "load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
-+               "load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}${script};\0" \
-        "bootscript=echo Running bootscript from mmc ...; " \
-                "source\0" \
--       "loadimage=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
--       "loadfdt=load mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
-+       "loadimage=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}${image}\0" \
-+       "loadfdt=load mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${bootdir}dtbs/${fdt_file}\0" \
-        "mmcboot=echo Booting from mmc ...; " \
-                "run mmcargs; " \
-                "if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
-@@ -148,7 +149,16 @@
-                "else " \
-                        "if run loadimage; then " \
-                                "run mmcboot; " \
--                       "else run netboot; " \
-+                       "else " \
-+                               "setenv bootdir /boot/; " \
-+                               "if run loadbootscript; then " \
-+                                       "run bootscript; " \
-+                               "else " \
-+                                       "if run loadimage; then " \
-+                                               "run mmcboot; " \
-+                                       "else run netboot; " \
-+                                       "fi; " \
-+                               "fi; " \
-                        "fi; " \
-                "fi; " \
-        "else run netboot; fi"
-
+ 	"ip_dyn=yes\0" \
+ 	"mmcdev=0\0" \
+ 	"mmcpart=1\0" \
+-	"mmcroot=/dev/mmcblk0p2 rw rootwait\0" \
++	"bootdir=/\0" \
++	"mmcroot=/dev/mmcblk0p1 rw rootwait\0" \
+ 	"mmcargs=setenv bootargs console=ttymxc0,${baudrate} root=${mmcroot}\0" \
+ 	"loadbootscript=" \
+-		"load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
++		"load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}${script};\0" \
+ 	"bootscript=echo Running bootscript from mmc ...; " \
+ 		"source\0" \
+-	"loadimage=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
+-	"loadfdt=load mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
++	"loadimage=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}${image}\0" \
++	"loadfdt=load mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${bootdir}dtbs/${fdt_file}\0" \
+ 	"mmcboot=echo Booting from mmc ...; " \
+ 		"run mmcargs; " \
+ 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
+@@ -143,12 +144,28 @@
+ 
+ #define CONFIG_BOOTCOMMAND \
+ 	"mmc dev ${mmcdev}; if mmc rescan; then " \
++		"setenv devtype mmc; " \
++		"setenv devnum ${mmcdev}; " \
++		"setenv part ${mmcpart}; " \
++		"setenv fdtfile ${fdt_file}; " \
++		"setenv kernel_addr_r ${loadaddr}; " \
++		"setenv fdt_addr_r ${fdt_addr}; " \
++		"setenv console ttymxc0,${baudrate}; " \
+ 		"if run loadbootscript; then " \
+ 			"run bootscript; " \
+ 		"else " \
+ 			"if run loadimage; then " \
+ 				"run mmcboot; " \
+-			"else run netboot; " \
++			"else " \
++				"setenv bootdir /boot/; " \
++				"if run loadbootscript; then " \
++					"run bootscript; " \
++				"else " \
++					"if run loadimage; then " \
++						"run mmcboot; " \
++					"else run netboot; " \
++					"fi; " \
++				"fi; " \
+ 			"fi; " \
+ 		"fi; " \
+ 	"else run netboot; fi"
