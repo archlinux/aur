@@ -25,7 +25,7 @@ source=("vscode::git+https://github.com/Microsoft/vscode#commit=${_commit}"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
             '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
-            'b788b1d8277a03e7935ab3aad7941339378f2ebdfd9b14ccd835e31ae131a132')
+            'f853d7d998251223b0516928a2189e1e68a312bd732f18dc8d59892659beeae9')
 
 if (( VSCODE_NONFREE )); then
     source+=('product_json.patch')
