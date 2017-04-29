@@ -4,22 +4,22 @@
 # Contributor: VuDu <vudu.curse@gmail.com>
 
 pkgname=opencryptoki
-pkgver=3.5
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="PKCS11 implementation for Linux"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/opencryptoki"
+url="https://sourceforge.net/projects/opencryptoki"
 license=('CPL' 'GPL')
 depends=('openssl' 'trousers')
 makedepends=('libtool' 'expect')
 install=${pkgname}.install
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/3.5/${pkgname}-${pkgver}.tgz
+source=(https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/3.7/${pkgname}-${pkgver}.tar.gz
         'opencryptoki.tmpfiles.conf')
-sha256sums=('2789e3135196828e2b904faba766aa4c7fd9d1e67664df79bd9a05381a771452'
+sha256sums=('a2d4c3a2393e9b805f5368628c7b328039c4cb0e5fd23c157f801e99070485cf'
             'e315fc996a1f416efd34f6f3e3149378118cded0da9f8a919e9501ea8db90fac')
 
 build() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname}-${pkgver}
   ./bootstrap.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
 	--with-systemd=/usr/lib/systemd/system/ \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR="$pkgdir/" install -i
   install -Dm644 "${srcdir}/opencryptoki.tmpfiles.conf" \
       "${pkgdir}/usr/lib/tmpfiles.d/opencryptoki.conf"
