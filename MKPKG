@@ -1,6 +1,0 @@
-pkgname=('wingpanel-bzr')
-builddeps=('granite-bzr' 'gala-bzr')
-
-check_bzr $packagedir/$pkgname/${pkgname%-*}
-
-# vim: ts=2 sw=2 et:
