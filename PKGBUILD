@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('dbus-glib' 'glib2' 'glibc' 'gtk3' 'libdbus' 'libwnck3'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-notifications/loki/${pkgver}/+download/wingpanel-indicator-notifications-${pkgver}.tar.xz")
 sha256sums=('bc6271573df2c563bd6d077a8aba5fc7574f5efcc3b4da235d86646cea1a6d55')
 
