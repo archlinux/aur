@@ -12,7 +12,7 @@ depends=('dkms')
 makedepends=('git')
 options=(!strip)
 install=install
-source=(git+https://github.com/Ri0n/rts_bpp.git
+source=(git+https://github.com/M0Rf30/rts_bpp.git
         'dkms.conf'
 	"81-udisks-udisks2-${_pkgname}.rules")
 
