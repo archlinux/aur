@@ -1,4 +1,0 @@
-pkgname=('slingshot-launcher')
-builddeps=('dee' 'gnome-menus2' 'libunity')
-
-# vim: ts=2 sw=2 et:
