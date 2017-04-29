@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-applications
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Applications plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ license=('GPL3')
 groups=('pantheon')
 depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-applications/loki/${pkgver}/+download/switchboard-plug-applications-${pkgver}.tar.xz")
-sha256sums=('f63c9abf493b0ed8d306a618f3997fa23c83b27beea80c66fec59c738203ae24')
+sha256sums=('d7bc53a01d31f0d00c2fc33cee93357d64065000cef7dd982784cf98efe997b4')
 
 prepare() {
   cd switchboard-plug-applications-${pkgver}
