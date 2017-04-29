@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lightdm-pantheon-greeter
-pkgver=3.0
-pkgrel=3
+pkgver=3.1.1
+pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-greeter'
@@ -13,7 +13,7 @@ depends=('cairo' 'clutter' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
 makedepends=('cmake' 'vala' 'wingpanel')
 source=("https://launchpad.net/pantheon-greeter/loki/${pkgver}/+download/pantheon-greeter-${pkgver}.tar.xz"
         'lightdm-pantheon-greeter-paths.patch')
-sha256sums=('6a0aeb22cceeedef3426d5670b9dae4e2b6794fcdc0c5f5b8bff3aa00f067351'
+sha256sums=('4aae117c5741ab889463ebdb8f260e4de977b6be14f04bf1d195e7311b9de2f0'
             '2f9dcb41971221f824a314dd935e8b37506e7eb47f58112031f08f1e35283fb1')
 
 prepare() {
