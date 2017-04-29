@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'wingpanel-indicator-bluetooth'
          'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'switchbooard' 'vala')
 source=("https://launchpad.net/switchboard-plug-bluetooth/loki/${pkgver}/+download/switchboard-plug-bluetooth-${pkgver}.tar.xz")
 sha256sums=('d8e63253ca62cd8d739ed5c3178ee51da68baa766358a80bbcc5bc0c8c201698')
 
