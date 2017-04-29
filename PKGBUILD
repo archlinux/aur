@@ -4,7 +4,7 @@
 # Contributor: Manolis Tzanidakis
 pkgname=e2guardian
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of dansguardian, an open source web content filter. It filters the actual content of pages based on many methods including phrase matching, request header and URL filtering, etc. It does not purely filter based on a banned list of sites."
 url="http://e2guardian.org"
 arch=('i686' 'x86_64' 'armv6h' 'arm' 'armv7h')
@@ -35,7 +35,7 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
-  rm -r {pkgdir}/var/run
+  rm -r ${pkgdir}/var/run
   install -d ${pkgdir}/usr/bin 
   install -D data/scripts/e2guardian ${pkgdir}/etc/logrotate.d/e2guardian
   install -D -m644 ${srcdir}/e2guardian.service ${pkgdir}/usr/lib/systemd/system/e2guardian.service
