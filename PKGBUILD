@@ -20,7 +20,7 @@ build() {
     make
     popd
 
-    sed -n '/(c) 2014 Matt Keeter/,/provided/p' README.md > LICENSE
+    sed -n '/Copyright/,/PROVIDED/p' README.md > LICENSE
 }
 
 package() {
