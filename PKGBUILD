@@ -1,14 +1,14 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Rick W. Chen <stuffcorpse@archlinux.us>
 pkgname=massif-visualizer-git
-pkgver=497.65d2fd5
+pkgver=526.6d169e1
 pkgrel=1
 pkgdesc="Massif data visualization tool"
 arch=('i686' 'x86_64')
 url="https://projects.kde.org/projects/extragear/sdk/massif-visualizer"
 license=('GPL2')
 depends=('qt5-base' 'qt5-svg' 'qt5-xmlpatterns' 'karchive' 'kconfig' \
-         'kcoreaddons' 'kparts' 'kio' 'ki18n' 'kdiagram-git')
+         'kcoreaddons' 'kparts' 'kio' 'ki18n' 'kdiagram')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
 provides=('massif-visualizer')
 conflicts=('massif-visualizer')
