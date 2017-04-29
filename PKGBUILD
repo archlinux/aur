@@ -1,7 +1,7 @@
 # Maintainer: Felipe Morales <hel.sheep@gmail.com>
 _pkgname=plotinus
 pkgname=$_pkgname-git
-pkgver=r12.975c69d
+pkgver=r16.04f7876
 pkgrel=1
 pkgdesc="A searchable command palette in every modern GTK+ application"
 arch=(any)
@@ -40,7 +40,10 @@ package() {
 
   cd "$_pkgname"
   mkdir -p "$pkgdir/usr/lib"
+  mkdir -p "$pkgdir/usr/share/glib-2.0/schemas/"
   install -m 644 libplotinus.so "$pkgdir/usr/lib"
+  install -m 644 data/com.worldwidemann.plotinus.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/"
+
 }
 
 # vim:set ts=2 sw=2 et:
