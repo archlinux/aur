@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-mouse-touchpad/loki/${pkgver}/+download/switchboard-plug-mouse-touchpad-${pkgver}.tar.xz")
 sha256sums=('a9477848a5f18d97bcea9723cb861a88c65d99f5b8154a863efd3c9fa9be2c24')
 
