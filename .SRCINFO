@@ -1,6 +1,6 @@
 pkgbase = openrc-accessible
 	pkgdesc = OpenRC init scripts
-	pkgver = 20170321
+	pkgver = 20170401
 	pkgrel = 1
 	url = https://github.com/manjaro/packages-openrc
 	arch = any
