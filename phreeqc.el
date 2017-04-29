@@ -57,6 +57,13 @@
 	:type 'string
 	:group 'phreeqc)
 
+(defcustom phreeqc-debug-buffer 0
+	"Name of the debug buffer. If 0 then process runs asychronously" 
+	:type 'string
+	:group 'phreeqc)
+
+
+
 (defcustom phreeqc-indent 4
   "*This variable gives the indentation in Phreeqc-Mode."
   :type 'integer
@@ -484,7 +491,7 @@ with no args, if that value is non-nil."
                 outfile "\n"
                 database "\n"))
 
-      (call-process phreeqc-compile-command ctrlfile "*phreeqc*" nil)
+      (call-process phreeqc-compile-command ctrlfile phreeqc-debug-buffer nil)
       (delete-file ctrlfile))))
 
 
