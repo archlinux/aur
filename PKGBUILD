@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('bluez' 'glib2' 'glibc' 'gtk3'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-bluetooth/loki/${pkgver}/+download/wingpanel-indicator-bluetooth-${pkgver}.tar.xz")
 sha256sums=('8d35b8604e0d397e3b6c9316764c83a1d17340aeb878011195e7e67350e3069d')
 
