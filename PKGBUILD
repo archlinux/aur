@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('cairo' 'clutter' 'clutter-gtk' 'glib2' 'glibc' 'gnome-desktop' 'gtk3'
          'libgee'
          'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-display/loki/${pkgver}/+download/switchboard-plug-display-${pkgver}.tar.xz")
 sha256sums=('0ca61460f3f058b5c68c1db6685244994aaa7cc2e0a25a2eb9af80b11d98add3')
 
