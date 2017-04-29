@@ -9,7 +9,7 @@ pkgbase = ingen-git
 	depends = lv2>=1.14.0
 	depends = glibmm>=2.14.0
 	depends = lilv>=0.21.5
-	depends = suil>=0.2.0
+	depends = suil-git
 	depends = raul-git
 	depends = ganv-git
 	depends = python2

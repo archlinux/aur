@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://drobilla.net/software/ingen/"
 license=('GPL')
 groups=()
-depends=('lv2>=1.14.0' 'glibmm>=2.14.0' 'lilv>=0.21.5' 'suil>=0.2.0' 'raul-git' 'ganv-git' 'python2')
+depends=('lv2>=1.14.0' 'glibmm>=2.14.0' 'lilv>=0.21.5' 'suil-git' 'raul-git' 'ganv-git' 'python2')
 makedepends=()
 checkdepends=()
 optdepends=()
