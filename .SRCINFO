@@ -1,0 +1,17 @@
+pkgbase = nct6775-ck-git
+	pkgdesc = New driver for Nuvoton NCT6775F, NCT6776F, NCT6779D
+	pkgver = r143.c3105f0
+	pkgrel = 1
+	url = http://roeck-us.net/linux/drivers/
+	install = nct6775-ck.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-ck-headers>=4.10
+	depends = linux-ck>=4.10
+	provides = nct6775
+	source = nct6775-ck::git://github.com/groeck/nct6775.git
+	sha256sums = SKIP
+
+pkgname = nct6775-ck-git
+
