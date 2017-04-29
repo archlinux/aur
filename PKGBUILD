@@ -78,6 +78,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/confi
 'etc/webmin/inittab/config' \
 'etc/webmin/change-user/config' \
 'etc/webmin/postfix/config' \
+'etc/webmin/sendmail/config' \
 'etc/webmin/proftpd/config' )
 install=webmin.install
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
@@ -102,7 +103,7 @@ package() {
   rm -f mount/macos-mounts*
 
   # remove modules we do not support
-  rm -rf {bacula-backup,ldap-useradmin,mon,sentry,frox,jabber,majordomo,qmail,sendmail,sarg,wuftpd,webalizer,inetd,ipsec,pap,pptp-client,pptp-server,shorewall,smart-status,vgetty,heartbeat,cfengine,cpan,sgiexports,hpuxexports,qmailadmin,bsdexports,dfsadmin}
+  rm -rf {bacula-backup,ldap-useradmin,mon,sentry,frox,jabber,majordomo,qmail,sarg,wuftpd,webalizer,inetd,ipsec,pap,pptp-client,pptp-server,shorewall,smart-status,vgetty,heartbeat,cfengine,cpan,sgiexports,hpuxexports,qmailadmin,bsdexports,dfsadmin}
 
   #remove config files from other distros
   rm -f $(find . ! -name 'config-generic-linux' ! -name 'config-\*-linux' ! -name 'config-lib.pl' -name 'config-*')
