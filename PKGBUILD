@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
          'plank'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-pantheon-shell/loki/${pkgver}/+download/switchboard-plug-pantheon-shell-${pkgver}.tar.xz")
 sha256sums=('41813ffe47f58d95236685e10d7f2ba2ec717c1227366e86a1cc42662c895761')
 
