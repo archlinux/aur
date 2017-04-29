@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3'
          'libwingpanel-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-keyboard/loki/${pkgver}/+download/wingpanel-indicator-keyboard-${pkgver}.tar.xz")
 sha256sums=('cca969cda9100a490de35bee4beb3da0fff8b0a35e2cf6b1d390c0b3d687f245')
 
