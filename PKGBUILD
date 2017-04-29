@@ -3,8 +3,7 @@
 # Contributor: Jose Valecillos <valecillosjg@gmail.com>
 
 pkgname=dosbox-sdl2
-_svn_rev=3925
-pkgver=0.74.$_svn_rev
+pkgver=0.74.4006
 pkgrel=1
 pkgdesc="Emulator with builtin DOS for running DOS Games (SDL2)"
 arch=("x86_64" "i686")
@@ -14,15 +13,13 @@ provides=("dosbox")
 conflicts=("dosbox")
 url="http://www.vogons.org/viewtopic.php?f=32&t=34770"
 license=("GPL")
-source=("$pkgname::svn+https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/trunk#revision=$_svn_rev"
-        "dosbox_sdl2_20150713.diff.gz"
+source=("$pkgname::git+https://github.com/duganchen/dosbox.git#branch=master"
         "dosbox-128.png"
         "dosbox-48.png"
         "dosbox-16.png"
         "dosbox-sdl2.desktop"
 )
 sha256sums=("SKIP"
-            "4a1f2b4de5aef0ac8fe234c843db9adcfd5465c20f0cad02136f4160b576f410"
             "228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81"
             "e71a3984170b3bf7af7d9cfbec0752187d70be76602721a1227b60980d7c380a"
             "e657254e56dd7d66cb1cefbf37f0f360e13a221bc60b1638c00dcda508f7fd56"
@@ -36,9 +33,6 @@ build() {
     export CPLUS_INCLUDE_PATH="$srcdir"
     
     cd $pkgname/
-    if [ ! -d "src/sdl_cdrom" ]; then
-        cat "$srcdir"/dosbox_sdl2_20150713.diff.gz | gunzip | patch -p0
-    fi
 
     sh autogen.sh
     ./configure --prefix=/usr --with-sdl=sdl2 --sysconfdir=/etc/dosbox
