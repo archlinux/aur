@@ -1,7 +1,7 @@
 pkgbase = webmin
 	pkgdesc = a web-based interface for system administration
 	pkgver = 1.831
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.webmin.com/
 	arch = i686
 	arch = x86_64

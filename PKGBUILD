@@ -2,7 +2,7 @@
 
 pkgname=webmin
 pkgver=1.831
-pkgrel=3
+pkgrel=4
 pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
 license=('custom:webmin')
@@ -88,22 +88,16 @@ source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.t
 options=(!strip !zipman)
 
 package() {
-  # NOTE: USE --asroot build option to avoid fakeroot error!
   cd "$srcdir"/$pkgname-$pkgver
-  # add patches from webmin.com
-  #for i in ../*.wbm
-  #do tar xvf $i
-  #done
-  #for i in ../*.wbt
-  #do tar xvf $i
-  #done
+
   # delete stuff that's not needed
   rm -f mount/freebsd-mounts*
+  rm -f mount/netbsd-mounts*
   rm -f mount/openbsd-mounts*
   rm -f mount/macos-mounts*
 
   # remove modules we do not support
-  rm -rf {bacula-backup,ldap-useradmin,mon,sentry,frox,jabber,majordomo,qmail,sarg,wuftpd,webalizer,inetd,ipsec,pap,pptp-client,pptp-server,shorewall,smart-status,vgetty,heartbeat,cfengine,cpan,sgiexports,hpuxexports,qmailadmin,bsdexports,dfsadmin}
+  rm -rf {bacula-backup,bsdexports,cpan,dfsadmin,heartbeat,hpuxexports,inetd,ipsec,jabber,ldap-useradmin,mon,pap,pptp-client,pptp-server,qmailadmin,sarg,sgiexports,shorewall,shorewall6,smart-status,vgetty,webalizer,wuftpd}
 
   #remove config files from other distros
   rm -f $(find . ! -name 'config-generic-linux' ! -name 'config-\*-linux' ! -name 'config-lib.pl' -name 'config-*')
@@ -118,13 +112,7 @@ package() {
 
   # remove update stuff to avoid problems with updating webmin,modules and themes without pacman
   rm -f webmin/{update.cgi,update.pl,update_sched.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
-  rm -f usermin/{upgrade.cgi,update.cgi,update.pl,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
-
-  # remove modules add because we don't want files installed without pacman control
-  rm -f webmin/{install_mod.cgi,delete_mod.cgi}
-
-  # setting perl path
-  (find . -name '*.cgi' ; find . -name '*.pl') | perl perlpath.pl /usr/bin/perl -
+  rm -f usermin/{update.cgi,update.pl,update_sched.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
 
   # create dirs
   mkdir -p "$pkgdir"/opt/webmin
@@ -135,8 +123,7 @@ package() {
   install -D -m 644 "$srcdir"/webmin.pam "$pkgdir"/etc/pam.d/webmin
 
   # remove other distros and add only Archlinux don't change next line else it will not work!
-  rm os_list.txt
-  echo 'Archlinux			Any version	generic-linux	*	-d "/etc/pacman.d"' >> os_list.txt
+  echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
 
   # Add rc.conf support to boot and shutdown menu and lock editing of this module
   cd init/
@@ -176,11 +163,10 @@ package() {
   nochown=1
   autothird=1
   nouninstall=1
-  noperlpath=1
   atbootyn=n
   tempdir="$pkgdir"/tmp
   pam=webmin
-  export config_dir var_dir perl autoos port tempdir login crypt ssl nochown autothird nouninstall nostart noperlpath atbootyn pam
+  export config_dir var_dir perl autoos port tempdir login crypt ssl nochown autothird nouninstall nostart atbootyn pam
 
   # Fix setup.sh
   sed -i -e 's:read atbootyn::g' -e 's:exit 13::g' "$pkgdir"/opt/webmin/setup.sh
