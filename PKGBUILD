@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'switchboard-bzr' 'vala')
 provides=('switchboard-plug-mouse-touchpad')
 conflicts=('switchboard-plug-mouse-touchpad')
 source=('bzr+lp:switchboard-plug-mouse-touchpad')
