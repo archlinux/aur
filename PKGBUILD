@@ -2,7 +2,7 @@
 
 pkgname=emacs-jedi
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python auto-completion for Emacs"
 url="https://github.com/tkf/emacs-jedi"
 arch=('any')
@@ -21,5 +21,5 @@ build() {
 package() {
   cd "${srcdir}/emacs-jedi-${pkgver}"
   install -d "${pkgdir}/usr/share/emacs/site-lisp/jedi"
-  install -m644 jedi*.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/jedi/"
+  install -m644 jedi*.{py,el{c,}} "${pkgdir}/usr/share/emacs/site-lisp/jedi/"
 }
