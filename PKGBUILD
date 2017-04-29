@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('bamf' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgtop'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-power/loki/${pkgver}/+download/wingpanel-indicator-power-${pkgver}.tar.xz")
 sha256sums=('0c401bdaa7921afbfdbdc336f4eb4909940f3550ab30918f585713afdcb96ed1')
 
