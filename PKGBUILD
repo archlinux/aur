@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-notifications/loki/${pkgver}/+download/switchboard-plug-notifications-${pkgver}.tar.xz")
 sha256sums=('752387e37611111540cf812d0737b0e675b0eb183639f8d530d3f1939e28e0dd')
 
