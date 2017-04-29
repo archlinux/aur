@@ -2,12 +2,12 @@
 
 pkgname=webmin
 pkgver=1.831
-pkgrel=2
+pkgrel=3
 pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
 license=('custom:webmin')
 url="http://www.webmin.com/"
-depends=('perl' 'perl-net-ssleay')
+depends=('perl' 'perl-net-ssleay' 'perl-authen-pam')
 backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/config' \
 'etc/webmin/pacman/config' \
 'etc/webmin/at/config' \
@@ -78,11 +78,12 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/confi
 'etc/webmin/change-user/config' \
 'etc/webmin/postfix/config' \
 'etc/webmin/sendmail/config' \
-'etc/webmin/proftpd/config' )
-install=webmin.install
+'etc/webmin/proftpd/config' \
+'etc/pam.d/webmin' )
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
         ftp://ftp.archlinux.org/other/webmin/webmin-config.tar.bz2
         ftp://ftp.archlinux.org/other/webmin/webmin-pacman.tar.bz2
+        webmin.pam
         webmin.service)
 options=(!strip !zipman)
 
@@ -131,7 +132,7 @@ package() {
   mkdir -p "$pkgdir"/etc/webmin
 
   # install pam stuff
-  install -D -m 644 webmin-pam "$pkgdir"/etc/pam.d/webmin
+  install -D -m 644 "$srcdir"/webmin.pam "$pkgdir"/etc/pam.d/webmin
 
   # remove other distros and add only Archlinux don't change next line else it will not work!
   rm os_list.txt
@@ -168,7 +169,7 @@ package() {
   autoos=1
   port=10000
   login=root
-  crypt="XXX"
+  crypt="x"
   ssl=1
   atboot=0
   nostart=1
@@ -178,7 +179,8 @@ package() {
   noperlpath=1
   atbootyn=n
   tempdir="$pkgdir"/tmp
-  export config_dir var_dir perl autoos port tempdir login crypt ssl nochown autothird nouninstall nostart noperlpath atbootyn
+  pam=webmin
+  export config_dir var_dir perl autoos port tempdir login crypt ssl nochown autothird nouninstall nostart noperlpath atbootyn pam
 
   # Fix setup.sh
   sed -i -e 's:read atbootyn::g' -e 's:exit 13::g' "$pkgdir"/opt/webmin/setup.sh
@@ -187,6 +189,9 @@ package() {
   # Fixup the config files to use their real locations
   sed -i 's:^pidfile=.*$:pidfile=/var/run/webmin.pid:' "$pkgdir"/etc/webmin/miniserv.conf
   find "$pkgdir"/etc/webmin -type f -exec sed -i "s:$pkgdir::g" {} \;
+
+  # Use pam
+  echo -e 'pam_only=1\npam_end=1\npam_conv=\nno_pam=0' >> "$pkgdir"/etc/webmin/miniserv.conf
 
   # install pacman menu
   cd "$srcdir"/webmin-pacman/config
@@ -207,4 +212,5 @@ package() {
 sha256sums=('b4cc63a369026e4e6d8f5af7501fe101dc122d9edbdd6bb20058f8f511694ce3'
             '52a512ae2aa2fdf4e8a2a26e6bedd5a9cf9aa3cb6ab3c13e6f37d0dc71fe22b3'
             '5f14a8396a3a9e920fae530b61d080e5d0c8bf57a7bd9e179c520a3b3a58ea38'
+            'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             'a1bdc68e3b0970a5c8e5063bd882b0469664ca782b34faecee22af5c6c30dd11')
