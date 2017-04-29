@@ -15,7 +15,7 @@ license=('BSD')
 
 source=(
 	http://nginx.org/download/nginx-$_nginxver.tar.gz
-	https://github.com/simpl/$_modname/archive/$pkgver/$_modname-$pkgver.tar.gz
+	https://github.com/simpl/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
 sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
