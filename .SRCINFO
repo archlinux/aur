@@ -1,12 +1,13 @@
 pkgbase = otf-montserrat
 	pkgdesc = Often compared to Proxima Nova for it's charming utility, Montserrat is a useful typeface, loved by many web and UI designers. Designed by Julieta Ulanovsky.
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.fontsquirrel.com/fonts/montserrat
 	arch = any
 	license = custom:SIL
 	provides = otf-montserrat
 	source = https://www.fontsquirrel.com/fonts/download/montserrat
+	source = sums
 	sha256sums = SKIP
 
 pkgname = otf-montserrat
