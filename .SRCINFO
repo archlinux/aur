@@ -6,7 +6,7 @@ pkgbase = thtk-git
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = git cmake
+	makedepends = (git cmake)
 	depends = libpng
 	provides = thtk=r305.21620f0
 	conflicts = thtk
