@@ -23,7 +23,7 @@ conflicts=(
   'masterpassword-cli-git'
 )
 
-source=("${pkgname%-git}::git+http://github.com/Lyndir/MasterPassword.git#branch=master")
+source=("${pkgname%-git}::git+https://github.com/Lyndir/MasterPassword.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
