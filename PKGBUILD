@@ -1,7 +1,7 @@
 # Maintainer: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 ## If you will be using mozc.el on Emacs, uncomment below.
-#_emacs_mozc="yes"
+_emacs_mozc="yes"
 
 ## If you will not be using ibus (only use uim), comment out below.
 _ibus_mozc="yes"
@@ -11,8 +11,8 @@ _ibus_mozc="yes"
 _zipcode="yes"
 
 ## Mozc compile option
-_bldtype=Release
-#_bldtype=Debug
+#_bldtype=Release
+_bldtype=Debug
 
 #*************************************************************
 # Upstreams:
@@ -27,7 +27,7 @@ _bldtype=Release
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201703
+_zipcoderel=201704
 _mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
 
 pkgbase=mozc
@@ -46,8 +46,8 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
 )
 sha1sums=('SKIP'
-          '238b182e553ade5a92cb6502f5f81e2ca34ecc26'
-          'd2ba37f4bd5d20c85c7e732a4a1d50704d384319')
+          'f87d901d3e9942671e74ef98b1ebfac79437ff0a'
+          '5ae7b86083250d1923d46d995f25a0b968e0f683')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
