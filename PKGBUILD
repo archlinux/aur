@@ -5,7 +5,7 @@
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
 pkgver=11384
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -31,7 +31,6 @@ build() {
   cd "$srcdir/oscam-mirror"
 
   make CONF_DIR=/var/lib/oscam \
-       USE_SSL=1 \
        USE_LIBUSB=1 \
        USE_PCSC=1 \
        OSCAM_BIN=oscam \
