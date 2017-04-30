@@ -1,7 +1,7 @@
 # Maintainer: jdn06 <jdn06.jdn06@outlook.fr>
 pkgname=aqualung-git
 _pkgname=aqualung
-pkgver=1.05g05dfcb7
+pkgver=1.07g72c1ab1
 pkgrel=1
 pkgdesc="High quality music player w/ gapless support"
 arch=('i686' 'x86_64')
@@ -40,6 +40,8 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
+	# Enlarge MAX_SAMPLERATE
+	sed -i 's/MAX_SAMPLERATE 96000/MAX_SAMPLERATE 192000/g' src/core.h
 	sh autogen.sh
 	./configure --prefix=/usr --without-mac --without-lavc --without-ladspa
 	make
