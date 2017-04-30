@@ -9,8 +9,6 @@ license=('MIT')
 depends=('bc' 'xclip')
 optdepends=('dmenu: required if rofi is not installed'
             'rofi: required if dmenu is not installed')
-provides=('=')
-conflicts=('=')
 source=("git+https://github.com/sumnerevans/menu-calc")
 md5sums=('SKIP')
 
