@@ -7,7 +7,6 @@ pkgbase = xca
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = linuxdoc-tools
 	depends = qt5-base
 	depends = libltdl
 	depends = shared-mime-info
