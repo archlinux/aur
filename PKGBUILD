@@ -9,8 +9,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.80.0.r85.gdbfe5c1427
-pkgrel=1
+pkgver=2.83.0.r73.g002bde26ea
+pkgrel=2
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
