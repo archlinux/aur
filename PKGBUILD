@@ -6,7 +6,7 @@
 pkgname=('mysql' 'libmysqlclient' 'mysql-clients')
 pkgbase=mysql
 pkgver=5.7.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast SQL database server, community edition"
 arch=('i686' 'x86_64')
 makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc')
@@ -16,16 +16,36 @@ url="https://www.mysql.com/products/community/"
 options=('!libtool')
 source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${pkgbase}-${pkgver}.tar.gz"
         "http://sourceforge.net/projects/boost/files/boost/${_boost_ver}/boost_${_boost_ver//./_}.tar.gz"
+        "bug_83814_my_aes_openssl.patch"::"https://bugs.mysql.com/file.php?id=25081&bug_id=83814"
+        "bug_83814_viosslfactories.patch"::"https://bugs.mysql.com/file.php?id=25082&bug_id=83814"
+        "bug_83814_xcom_ssl_transport.c.patch"::"https://bugs.mysql.com/file.php?id=25084&bug_id=83814"
+        "bug_83814_mysqld.cc.patch"::"https://bugs.mysql.com/file.php?id=25085&bug_id=83814"
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "my-default.cnf")
 sha256sums=('0b5d71ed608656cd8181d3bb0434d3e36bac192899038dbdddf5a7594aaea1a2'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
+            '1353162f5ae6e3dd4b0b8660738adbbc36c6d514d65331c013d9c45359665c52'
+            'ca49f11ed70d4673d14df700caff4380ae27b81d4d10c7a49297d5b56f0eb288'
+            '4d2333651b0727fbe182155b3c5b01e00a2769f4e0158d28a09fefc61ae5f198'
+            'a063a76ea1705423218e36a45417a3077643a0b673ce676294c864bcb4052ec2'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556'
             '3cc3ba4149fb2f9e823601b9a414ff5b28a2a52f20bc68c74cc0505cf2d1832d')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -p0 -i "${srcdir}/bug_83814_my_aes_openssl.patch" \
+    "mysys_ssl/my_aes_openssl.cc"
+  patch -p0 -i "${srcdir}/bug_83814_viosslfactories.patch" \
+    "vio/viosslfactories.c"
+  patch -p0 -i "${srcdir}/bug_83814_xcom_ssl_transport.c.patch" \
+    "rapid/plugin/group_replication/libmysqlgcs/src/bindings/xcom/xcom/xcom_ssl_transport.c"
+  patch -p0 -i "${srcdir}/bug_83814_mysqld.cc.patch" \
+    "sql/mysqld.cc"
+}
 
 build() {
   rm -rf build
@@ -95,7 +115,7 @@ package_libmysqlclient(){
 
 package_mysql-clients(){
   pkgdesc="MySQL client tools"
-  depends=('libmysqlclient' 'jemalloc' 'openssl' 'zlib')
+  depends=('libmysqlclient' 'jemalloc')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}")
 
@@ -124,7 +144,7 @@ package_mysql(){
   pkgdesc="Fast SQL database server, community edition"
   backup=('etc/mysql/my.cnf')
   install="${pkgbase}.install"
-  depends=('mysql-clients' 'libaio' 'jemalloc' 'openssl' 'zlib')
+  depends=('mysql-clients' 'libaio')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}")
   options=('emptydirs')
