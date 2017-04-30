@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.22.3
+pkgver=3.24.1+1+geb394f19d
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
@@ -34,14 +34,14 @@ conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
 options=('!emptydirs')
-_commit=afb4165262ac7b51229663fdf859aee2dcc4b4e8  # tags/3.22.3^0
+_commit=eb394f19d343a119cc3a887e4b2c563ddda8c5f4  # gnome-3-24
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
   "startup-notification.patch"
   "catalyst-workaround.patch"
   "catalyst mutter cogl.patch")
 sha256sums=('SKIP'
             '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
-            'cf6c54cf23dc5898ab105d8bde2d60fd3f6671b319ffef12b0584544bfb23655'
+            'b8b6aa7693cc847aaefc3ba4affe250827598b1914219920aaa68f038e60155e'
             '55079a9daddedc22d9fe4dcfe2e87607345dfafb370f8e7fb6a98c0acae3348a')
 
 pkgver() {
@@ -75,7 +75,8 @@ build() {
     --disable-static \
     --disable-schemas-compile \
     --enable-compile-warnings=minimum \
-    --enable-gtk-doc
+    --enable-gtk-doc \
+    --enable-egl-device
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
