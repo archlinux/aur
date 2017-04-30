@@ -1,0 +1,21 @@
+pkgbase = rustup-shell-completion-hook
+	pkgdesc = Pacman hook that generates/updates rustup bash/zsh/fish completion.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/rustup-shell-completion-hook
+	arch = any
+	license = MIT
+	depends = pacman
+	depends = rustup
+	optdepends = bash: The GNU Bourne Again shell
+	optdepends = zsh: A very advanced and programmable command interpreter (shell) for UNIX
+	optdepends = fish: Smart and user friendly shell intended mostly for interactive use
+	source = rustup-bash-completion.hook
+	source = rustup-zsh-completion.hook
+	source = rustup-fish-completion.hook
+	md5sums = 66fcc09ba400ea333212c5625fd81b01
+	md5sums = b3af5fdc4a342f7907506fee66cc48f0
+	md5sums = 56c9a080268eb21c6008cd5a1320874d
+
+pkgname = rustup-shell-completion-hook
+

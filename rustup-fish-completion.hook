@@ -1,0 +1,16 @@
+# Pacman hook that generates/updates rustup completion.
+# Installed by rustup-shell-completion-hook
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = rustup
+Target = fish
+Target = rustup-shell-completion-hook
+
+[Action]
+Description = Generating rustup fish completion if needed...
+When = PostTransaction
+Depends = rustup
+Exec = /usr/bin/env sh -c "[[ -d /usr/share/fish/completions ]] && rustup completions fish > /usr/share/fish/completions/rustup.fish"
