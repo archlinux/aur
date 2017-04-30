@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=8417.199b2a5e2
+pkgver=8631.01e1b8bfd
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('llvm-libs'
 # needed for sound2faust:
 	 'libsndfile'
-# needed for libfaustremote:
+# needed for libfaustremote and faustbench:
 #	 'jack2'
 # needed for libHTTPDFaust:
 	 'libmicrohttpd' 'openssl')
@@ -52,8 +52,8 @@ prepare() {
 build() {
   cd $srcdir/$pkgname
   make PREFIX=/usr world
-  # 'remote' is disabled right now since it requires jack2.
-  #make remote PREFIX=/usr
+  # 'remote' and 'benchmark' are disabled right now since they require jack2.
+  #make benchmark remote PREFIX=/usr
 }
 
 package() {
