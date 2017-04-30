@@ -1,6 +1,6 @@
 pkgbase = linux-galliumos-braswell
 	pkgver = 4.10.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = linux-galliumos-braswell
 	options = !strip
 	source = git+https://github.com/GalliumOS/linux.git#branch=v4.10.5
 	source = linux-galliumos-braswell.preset
+	source = dmi_product_family.diff
 	source = cherryview-pinctrl.diff
 	sha256sums = SKIP
 	sha256sums = 7f9b77e1ac3b59453f6bb3858d0549c3022e6ae93ca3978427d96ae23f87e451
+	sha256sums = 949990c191638f63f1906dbd7f4be8b82b40da94ef873b15af68c9e726b13c51
 	sha256sums = SKIP
 
 pkgname = linux-galliumos-braswell
