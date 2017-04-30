@@ -1,20 +1,31 @@
 pkgname=mingw-w64-libcroco
-pkgver=0.6.11
-pkgrel=2
+pkgver=0.6.12+4+g9ad7287
+pkgrel=1
 pkgdesc="GNOME CSS2 parsing and manipulation toolkit (mingw-w64)"
 arch=(any)
-url="http://www.gnome.org"
+url="http://www.gnome.org/browse/libcroco"
 license=("LGPL")
-makedepends=(mingw-w64-configure intltool)
+makedepends=(mingw-w64-configure intltool git)
 depends=(mingw-w64-glib2 mingw-w64-libxml2)
 options=(staticlibs !strip !buildflags)
-source=("http://ftp.gnome.org/pub/gnome/sources/libcroco/${pkgver%.*}/libcroco-$pkgver.tar.xz")
-sha256sums=('132b528a948586b0dfa05d7e9e059901bca5a3be675b6071a90a90b81ae5a056')
+_commit=9ad72875e9f08e4c519ef63d44cdbd94aa9504f7  # master
+source=("git+https://git.gnome.org/browse/libcroco#commit=$_commit")
+sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+pkgver() {
+  cd libcroco
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd libcroco
+  NOCONFIGURE=1 ./autogen.sh
+}
+
 build() {
-	cd libcroco-$pkgver
+	cd libcroco
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
 		${_arch}-configure
@@ -26,7 +37,7 @@ build() {
 package() {
 	mkdir -p "$pkgdir/usr/bin"
   for _arch in ${_architectures}; do
-    cd "${srcdir}/libcroco-${pkgver}/build-${_arch}"
+    cd "${srcdir}/libcroco/build-${_arch}"
     make DESTDIR="$pkgdir" install
     find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
