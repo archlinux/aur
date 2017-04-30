@@ -1,0 +1,19 @@
+pkgbase = embox
+	pkgdesc = Embedded development toolbox
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/githaff/embox
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = extopts
+	depends = glibc
+	provides = embox
+	conflicts = embox
+	source = git+https://github.com/githaff/embox.git#tag=v1.2.0
+	md5sums = SKIP
+
+pkgname = embox
+
