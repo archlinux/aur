@@ -2,13 +2,13 @@
 
 pkgname=budgie-calendar-applet-git
 pkgver=r6.6ad549a
-pkgrel=1
+pkgrel=2
 pkgdesc='Calendar applet for Budgie Desktop'
 arch=('i686' 'x86_64')
 url='https://github.com/danielpinto8zz6/budgie-calendar-applet'
 license=('GPL2')
 depends=('gtk3' 'glib2' 'libpeas' 'budgie-desktop')
-makedepends=('vala')
+makedepends=('git' 'vala')
 source=("$pkgname"::'git+https://github.com/danielpinto8zz6/budgie-calendar-applet.git')
 sha256sums=('SKIP')
 
