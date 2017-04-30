@@ -1,7 +1,7 @@
 pkgbase = sygnm-git
 	pkgdesc = Computer algebra system (currently alpha, install only if you know what you are doing)
 	pkgver = 1.0.0alpha1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sygnm.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = sygnm-git
 	makedepends = cmake
 	makedepends = swig
 	makedepends = python
+	makedepends = python-setuptools
 	depends = flint
 	depends = arb
 	depends = boost-libs
