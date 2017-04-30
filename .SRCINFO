@@ -1,18 +1,20 @@
 pkgbase = monkeysign-git
 	pkgdesc = OpenPGP Key Exchange for Humans
-	pkgver = 2.0.1.42.g461dbae
+	pkgver = 2.2.3.g37fabfe
 	pkgrel = 1
 	url = http://web.monkeysphere.info/monkeysign/
 	arch = any
 	license = GPL3
 	makedepends = python2-setuptools
 	makedepends = git
+	makedepends = python2-sphinx
 	depends = python2-qrencode
 	depends = gtk2
 	depends = pygtk
 	depends = zbar
 	depends = python2-imaging
-	source = git://git.monkeysphere.info/monkeysign
+	depends = python2-pysocks
+	source = git+https://0xacab.org/monkeysphere/monkeysign.git
 	sha1sums = SKIP
 
 pkgname = monkeysign-git
