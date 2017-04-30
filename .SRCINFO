@@ -12,6 +12,8 @@ pkgbase = gnome-encfs-manager-bin
 	depends = libsm
 	depends = libgnome-keyring
 	depends = libappindicator-gtk3
+	conflicts = gnome-encfs-manager-bzr
+	replaces = gnome-encfs-manager
 	source = http://download.opensuse.org/repositories/home:/moritzmolch:/gencfsm/Debian_8.0/amd64/gnome-encfs-manager_1.8.18_amd64.deb
 	sha256sums = 2899c5414bed90de2449ee9714898e8eba63d925faebcc1a9aa6f175581bbae3
 
