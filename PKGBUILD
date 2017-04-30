@@ -3,21 +3,18 @@
 
 pkgname=virtaal
 pkgver=0.7.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A tool to create program translations."
 url="http://translate.sourceforge.net/wiki/virtaal/index"
 arch=('any')
 license=('GPL')
 depends=('python2>2.5' 'gtk2>2.18' 'pygtk>2.12' 'python2-lxml>2.3.2'  'desktop-file-utils'
-    'translate-toolkit>1.9.0-2' 'python2-simplejson' 'python2-pycurl' 'python2-pysqlite' 'hicolor-icon-theme'
+    'python2-translate-toolkit-lib' 'python2-simplejson' 'python2-pycurl' 'python2-pysqlite' 'hicolor-icon-theme'
 )
 optdepends=('python2-gtkspell: to enable spell checking'
     'python2-pyenchant: to enable spell checking'
     'iso-codes: to display translated language names'
-    'libtranslate: to enable machine translation'
-    'psyco2-svn: to speedup the application'
     'python2-levenshtein: to speed up Levenshtein distance measures'
-    'psycopg2: for TinyTM plugin'
 )
 install=virtaal.install
 source=("http://downloads.sourceforge.net/translate/$pkgname-$pkgver.tar.bz2")
