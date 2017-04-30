@@ -1,0 +1,23 @@
+pkgbase = unpack-git
+	pkgdesc = Wrapper script for handling multiple archive formats
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/githaff/unpack
+	arch = any
+	license = BSD
+	depends = sh
+	optdepends = bzip2: bz2 support
+	optdepends = gzip: gz support
+	optdepends = xz: xz support
+	optdepends = lzop: lzo support
+	optdepends = rpm-org: rpm support
+	optdepends = unrar: rar support
+	optdepends = unzip: zip support
+	optdepends = p7zip: 7z support
+	provides = unpack-git
+	conflicts = unpack-git
+	source = git+https://github.com/githaff/unpack.git
+	md5sums = SKIP
+
+pkgname = unpack-git
+
