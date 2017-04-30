@@ -11,7 +11,7 @@ makedepends=(gpm python2 python ruby libxt desktop-file-utils gtk2 gtk3 lua gawk
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
         archlinux.vim)
-sha1sums=('ba62eaec8847892c8bb20fd9498ae0af05eda2ba'
+sha1sums=('0215480a10362cbfc1494b074742dc2399dd3d11'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
