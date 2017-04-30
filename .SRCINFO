@@ -1,0 +1,16 @@
+pkgbase = vibrancy-full-dark-blue
+	pkgdesc = Modern, clean and customizable flat icon theme [Full-Dark-Blue only version!]
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://www.ravefinity.com/p/vibrancy-colors-gtk-icon-theme.html
+	arch = any
+	license = CCPL:by-sa
+	license = GPL2
+	conflicts = vibrancy-blue
+	replaces = vibrancy-colors
+	options = !strip
+	source = https://launchpad.net/~ravefinity-project/+archive/ubuntu/ppa/+files/vibrancy-colors_2.7~xenial~Noobslab.com_all.deb
+	sha256sums = f02c514834e5ea9b8176c5b767eb6d1693123fd8403885ce61fa253b1623a204
+
+pkgname = vibrancy-full-dark-blue
+
