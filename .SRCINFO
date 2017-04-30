@@ -1,0 +1,29 @@
+pkgbase = sygnm-git
+	pkgdesc = Computer algebra system (currently alpha, install only if you know what you are doing)
+	pkgver = 1.0.0alpha1
+	pkgrel = 1
+	url = https://sygnm.org/
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = swig
+	makedepends = python
+	depends = flint
+	depends = arb
+	depends = boost-libs
+	depends = icu
+	depends = gmp
+	depends = qt5-base
+	depends = readline
+	depends = python
+	depends = sqlite
+	conflicts = sygnm
+	options = debug
+	options = !strip
+	source = sygnm-git::git+https://git.0x64.org/sygnmdev/sygnm.git
+	md5sums = SKIP
+
+pkgname = sygnm-git
+
