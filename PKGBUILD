@@ -11,7 +11,7 @@ changelog=ChangeLog
 source=('prelink.service'
         'prelink.timer'
         'https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt')
-sha256sums=('119d3c18dc401d6c1fd2c30a952b1d4078c7581fb9256c8acd5bf1db68d8e02f'
+sha256sums=('491b50f8d012cef1b4621239c7867545fe4c5e76b05c443720d0dc2be0f3ea0a'
             '8ea60ee2373e41fb999ee63ae23ba39d4e2cea5a49b1d4246fcc8eae9817407f'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 

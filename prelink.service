@@ -4,3 +4,15 @@ Description=Update prelinking
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/prelink --all --conserve-memory --random
+## Various options for sandboxing the process/service
+# See man:systemd.exec(5) for details
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# In far most cases, prelink will only operate in /usr and maybe /opt
+ProtectSystem=false
+ProtectHome=true
