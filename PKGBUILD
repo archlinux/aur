@@ -4,20 +4,26 @@
 
 pkgname=caffe-git
 pkgver=rc5.r14.gc0597b159
-pkgrel=3
+pkgrel=4
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
 license=('BSD')
-depends=( # binary repositories:
-          'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5' 'opencv' 'leveldb'
-          'lmdb' 'cuda' 'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
-          'python-matplotlib' 'ipython' 'python-h5py' 'python-networkx' 'python-nose'
-          'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
-          'python-yaml' 'python-pillow' 'python-six'
-          # AUR:
-          'openblas-lapack' 'cudnn' 'nccl' 'python-leveldb' 'python-scikit-image'
-          'python-pydot')
+depends=(
+    # binary repositories:
+        'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5' 'opencv' 'leveldb'
+        'lmdb' 'cuda' 'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
+        'python-matplotlib' 'ipython' 'python-h5py' 'python-networkx' 'python-nose'
+        'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
+        'python-yaml' 'python-pillow' 'python-six'
+    # AUR:
+        # required:
+            'openblas-lapack'
+        # not required but enabled in build:
+            'cudnn' 'nccl'
+        #python:
+            'python-leveldb' 'python-scikit-image' 'python-pydot'
+)
 makedepends=('git' 'doxygen' 'texlive-core')
 provides=('caffe')
 conflicts=('caffe' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git'
@@ -43,7 +49,7 @@ prepare() {
     sed -i '/USE_LMDB/s/^#[[:space:]]//;/USE_LMDB/s/0/1/'       Makefile.config
     sed -i '/OPENCV_VERSION/s/^#[[:space:]]//g'                 Makefile.config
     
-    # use gcc5 (gcc6 do not work)
+    # use gcc5 (CUDA code requires gcc5)
     sed -i '/CUSTOM_CXX/s/^#[[:space:]]//;/CUSTOM_CXX/s/$/-5/' Makefile.config
     
     # set CUDA directory
@@ -74,6 +80,7 @@ prepare() {
     #     - uncomment this block
     #     - comment the python3 block
     #     - change python3 dependencies to python2
+    #     - change python2 directories in package() to python3
     #     - NOTE: do not enable both python2 and python3 blocks. choose only one.
     #     - NOTE: python2 is the Caffe default but this package uses python3 by default
     # python2 settings
@@ -102,7 +109,6 @@ build() {
 }
 
 # uncomment this block if you want to run the checks/tests
-# (usually takes a lot of time; it will prevent package to be built in case of error)
 #check() {
 #    cd "$pkgname"
 #    msg2 "Building target 'test'..."
