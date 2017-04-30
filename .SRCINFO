@@ -1,0 +1,29 @@
+pkgbase = sygnm
+	pkgdesc = Computer algebra system (currently pre-alpha)
+	pkgver = 1.0.0alpha1
+	pkgrel = 1
+	url = https://sygnm.org/
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = swig
+	makedepends = python
+	depends = flint
+	depends = arb
+	depends = boost-libs
+	depends = icu
+	depends = gmp
+	depends = qt5-base
+	depends = readline
+	depends = python
+	depends = sqlite
+	conflicts = sygnm-git
+	options = debug
+	options = !strip
+	source = local://sygnm-1.0.0alpha1.tar.gz
+	md5sums = SKIP
+
+pkgname = sygnm
+
