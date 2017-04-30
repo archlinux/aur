@@ -5,3 +5,6 @@ Description=Daily prelinking updates
 OnCalendar=daily
 AccuracySec=2h
 Persistent=true
+
+[Install]
+WantedBy=timers.target
