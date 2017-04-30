@@ -2,7 +2,7 @@
 
 pkgname=tftpgui
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A TFTP server intended to run as a user initiated program, rather than a service daemon."
 arch=('any')
 url="https://code.google.com/p/tftpgui/"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('tk' 'python>=3.2' 'authbind')
 makedepends=('imagemagick')
 install=tftpgui.install
-source=("https://${pkgname}.googlecode.com/files/${pkgname}_3_1.tar"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}_3_1.tar"
         "tftpgui.sh"
         "tftpgui.cfg"
         "tftpgui.desktop")
