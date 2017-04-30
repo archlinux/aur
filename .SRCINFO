@@ -133,9 +133,9 @@ pkgbase = wine-starcraft-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=
-	provides = wine-wow64=
-	provides = wine-staging=
+	provides = wine=2.6
+	provides = wine-wow64=2.6
+	provides = wine-staging=2.6
 	provides = wine-git
 	conflicts = wine
 	conflicts = wine-wow64

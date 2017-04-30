@@ -87,17 +87,17 @@ if [ "$CARCH" = "i686" ]; then
 	makedepends=(${makedepends[@]/*-multilib*/})
 	optdepends=(${optdepends[@]/*32-*/})
 	provides=(
-	          "wine=$(echo ${pkgver} | grep -o '+.*' | cut -c7-)"
-	          "wine-staging=$(echo ${pkgver} | grep -o '.*+' | sed 's/.\{1\}$//')"
+	          "wine=$(echo ${pkgver})"
+	          "wine-staging=$(echo ${pkgver})"
 	          'wine-git'
 	          )
 	conflicts=('wine' 'wine-staging' 'wine-git')
 else
 	makedepends=(${makedepends[@]} ${_depends[@]})
 	provides=(
-	          "wine=$(echo ${pkgver} | grep -o '+.*' | cut -c7-)"
-	          "wine-wow64=$(echo ${pkgver} | grep -o '+.*' | cut -c7-)"
-	          "wine-staging=$(echo ${pkgver} | grep -o '.*+' | sed 's/.\{1\}$//')"
+	          "wine=$(echo ${pkgver})"
+	          "wine-wow64=$(echo ${pkgver})"
+	          "wine-staging=$(echo ${pkgver})"
 	          'wine-git'
 	          )
 	conflicts=('wine' 'wine-wow64' 'wine-staging' 'wine-git')
