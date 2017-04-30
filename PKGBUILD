@@ -2,7 +2,7 @@
 
 pkgname=frei0r-plugins-git
 pkgver=1.6.0.r5.gdfd4475
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalistic plugin API for video effects (git version)"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/frei0r/"
