@@ -2,7 +2,7 @@
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/palopezv>
 pkgname=brave
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
@@ -16,6 +16,15 @@ source=("browser-laptop-"$pkgver"dev.tar.gz::https://github.com/brave/browser-la
 
 build() {
 	cd "$srcdir"/browser-laptop-"$pkgver"dev
+
+	echo ""
+	echo ""
+	echo ""
+	echo "This upstream build is broken, please use brave-bin in the meantime."
+	echo ""
+	echo ""
+	echo ""
+	exit 1
 
 	npm install
 	CHANNEL=dev npm run build-package
