@@ -4,7 +4,7 @@
 
 pkgname=caffe-git
 pkgver=rc5.r14.gc0597b159
-pkgrel=2
+pkgrel=3
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -20,7 +20,8 @@ depends=( # binary repositories:
           'python-pydot')
 makedepends=('git' 'doxygen' 'texlive-core')
 provides=('caffe')
-conflicts=('caffe' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git')
+conflicts=('caffe' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git'
+           'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git')
 source=("${pkgname}"::"git+https://github.com/BVLC/caffe.git")
 sha256sums=('SKIP')
 
