@@ -11,7 +11,7 @@ license=("custom:OFL")
 depends=("fontconfig" "xorg-font-utils")
 source=("https://www.fontsquirrel.com/fonts/download/${_fontname}")
 install=${pkgname}.install
-md5sums=("3441d4a98191a147ac48f96bdafb94b3")
+md5sums=('SKIP')
 
 package() {
   find . -name 'Economica*.otf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;

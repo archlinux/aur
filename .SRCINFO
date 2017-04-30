@@ -9,7 +9,7 @@ pkgbase = otf-economica
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://www.fontsquirrel.com/fonts/download/economica
-	md5sums = 3441d4a98191a147ac48f96bdafb94b3
+	md5sums = SKIP
 
 pkgname = otf-economica
 
