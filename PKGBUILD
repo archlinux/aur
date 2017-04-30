@@ -4,7 +4,7 @@
 
 pkgname=caffe-git
 pkgver=rc5.r14.gc0597b159
-pkgrel=4
+pkgrel=5
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -124,18 +124,16 @@ package() {
     mkdir -p "${pkgdir}/usr/lib/python3.6/site-packages/caffe/"{imagenet,proto,test}
     mkdir -p "${pkgdir}/usr/share/"{caffe,doc/"${pkgname}"/search,licenses/"${pkgname}"}
     
-    cd "${pkgname}/distribute"
-    
     # binaries
-    cd bin
+    cd "${srcdir}/${pkgname}/distribute/bin"
     install -D -m755 * "${pkgdir}/usr/bin"
     
     # libraries
-    cd ../lib
+    cd "${srcdir}/${pkgname}/distribute/lib"
     install -D -m755 *.so "${pkgdir}/usr/lib"
     
     # includes
-    cd ../include/caffe
+    cd "${srcdir}/${pkgname}/distribute/include/caffe"
     install -D -m644 *.hpp "${pkgdir}/usr/include/caffe"
     for _dir in layers proto test util
     do
@@ -144,7 +142,7 @@ package() {
     done
     
     # python
-    cd ../../../python
+    cd "${srcdir}/${pkgname}/distribute/python"
     install -D -m755 *.py "${pkgdir}/usr/bin"
     rm -rf python # remove duplicated 'python' folder
     
@@ -167,11 +165,11 @@ package() {
     done
     
     # proto
-    cd ../../../proto
+    cd "${srcdir}/${pkgname}/distribute/proto"
     install -D -m644 * "${pkgdir}/usr/share/caffe"
     
     # docs
-    cd ../../doxygen/html
+    cd "${srcdir}/${pkgname}/doxygen/html"
     for _file in *
     do
         [ -d "$_file" ] && continue # skip directories
