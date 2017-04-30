@@ -3,8 +3,9 @@
 # Contributor: Jonathan Yantis
 
 pkgname=caffe-git
+_srcname=caffe
 pkgver=rc5.r14.gc0597b159
-pkgrel=6
+pkgrel=7
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -122,7 +123,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/include/caffe/"{layers,proto,test,util}
     mkdir -p "${pkgdir}/usr/lib/python3.6/site-packages/caffe/"{imagenet,proto,test}
-    mkdir -p "${pkgdir}/usr/share/"{caffe,doc/"${pkgname}"/search,licenses/"${pkgname}"}
+    mkdir -p "${pkgdir}/usr/share/"{caffe,doc/"${_srcname}"/search,licenses/"${pkgname}"}
     
     # binaries
     cd "${srcdir}/${pkgname}/distribute/bin"
@@ -156,7 +157,7 @@ package() {
     
     for _dir in imagenet proto test
     do
-        cd "${srcdir}/${pkgname}/distribute/python/caffe/$_dir"
+        cd "${srcdir}/${pkgname}/distribute/python/caffe/${_dir}"
         for _file in *
         do
             _mode="$(stat --format '%a' "$_file")"
@@ -173,10 +174,10 @@ package() {
     for _file in *
     do
         [ -d "$_file" ] && continue # skip directories
-        install -D -m644 "$_file" "${pkgdir}/usr/share/doc/${pkgname}"
+        install -D -m644 "$_file" "${pkgdir}/usr/share/doc/${_srcname}"
     done
     cd search
-    install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}/search"
+    install -D -m644 * "${pkgdir}/usr/share/doc/${_srcname}/search"
     
     # license
     cd "${srcdir}/${pkgname}"
