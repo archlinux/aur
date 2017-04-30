@@ -4,8 +4,8 @@
 
 pkgname=caffe-git
 _srcname=caffe
-pkgver=rc5.r14.gc0597b159
-pkgrel=7
+pkgver=1.0.r0.geeebdab16
+pkgrel=1
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -23,7 +23,10 @@ depends=(
         # not required but enabled in build:
             'cudnn' 'nccl'
         #python:
-            'python-leveldb' 'python-scikit-image' 'python-pydot'
+            'python-leveldb' 'python-scikit-image' 'python-pydotplus'
+    # NOTE:
+    # python-pydotplus (or python-pydot) is required by python executable draw_net.py
+    # https://github.com/BVLC/caffe/blob/eeebdab16155d34ff8f5f42137da7df4d1c7eab0/python/caffe/draw.py#L7-L22
 )
 makedepends=('git' 'gcc5' 'doxygen' 'texlive-core')
 provides=('caffe')
