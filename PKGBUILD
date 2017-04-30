@@ -7,7 +7,7 @@
 
 pkgname=perl-pdl
 _pkgname=PDL
-pkgver=2.017
+pkgver=2.017_01
 pkgrel=1
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ depends=(
 makedepends=(
 	'perl>=5.11.3' # To provide ExtUtils::MakeMaker 6.56
 	'fftw2'
-	'hdf4'
-	'perl-opengl>=0.6703'
+#	'hdf4'
+	'perl-opengl'
 	'plplot'
 	'perl-extutils-f77'
 	'proj'
@@ -32,11 +32,11 @@ checkdepends=(
 )
 optdepends=(
 	'fftw2: for PDL::FFTW support'
-	'hdf4: for HDF files support'
+#	'hdf4: for HDF files support'
 	'perl-astro-fits-header: improved FITS files support'
 #	'perl-convert-uu: for the case when something wrong with Unicode support'  # It is necessary on *BSD systems
 #	'perl-extutils-f77: for PDL::Slatec and PDL::Minuit support'               # It is not necessary at runtime
-	'perl-opengl>=0.6703: for PDL::Graphics::TriD support'
+	'perl-opengl: for PDL::Graphics::TriD support'
 	'plplot: for PDL::Graphics::PLplot support'
 	'proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support'
 )
@@ -44,7 +44,7 @@ optdepends=(
 source=(https://cpan.metacpan.org/authors/id/C/CH/CHM/${_pkgname}-${pkgver}.tar.gz perldl.conf Makefile.patch)
 changelog='ChangeLog'
 options=(!emptydirs)
-md5sums=('9966447f0afd61625e3ea871f731adf1'
+md5sums=('26189ee16129ba72ffc6407c1e50c25e'
          'ac56f2a88b89d359a0dc80063d31cf59'
          'e2b2dff48643a5051a8f7d1ee9dc4ea9')
 
