@@ -28,7 +28,7 @@ pkgbase = palemoon
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: various video and audio support
-	source = git+https://github.com/MoonchildProductions/Pale-Moon#commit=f2695891c96250bfde630acdf2f5babe31c750f5
+	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=27.3.0_Release
 	source = mozconfig.in
 	md5sums = SKIP
 	md5sums = 033551ecd40cc00580ed77fa00f31559
