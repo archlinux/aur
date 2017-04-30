@@ -1,5 +1,5 @@
 pkgbase = sygnm
-	pkgdesc = Computer algebra system (currently pre-alpha)
+	pkgdesc = Computer algebra system (currently alpha, install only if you know what you are doing)
 	pkgver = 1.0.0alpha1
 	pkgrel = 1
 	url = https://sygnm.org/
