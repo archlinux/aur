@@ -31,7 +31,8 @@ sha1sums+=('344ded68e188649c0d0347f8f675e006c36c03f1'
            'aa3f84762b5f0b39aea5e03befdb03c4f53e8078'
            '309aac05a0b0f022eda2f292fb572b523726409c')
 validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
-              'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
+              'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290'
+	      'A4300A6BC93C0877A4451486D1483FA6C3C07136')
 noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
 
