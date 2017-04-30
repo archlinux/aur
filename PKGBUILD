@@ -1,9 +1,9 @@
-# Maintainer: Matthew Ellison <matt+aur@arroyonetworks.com>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Matthew Ellison <matt+aur@arroyonetworks.com>
 
-_pkgname='pybind11'
-pkgname="${_pkgname}"
+pkgname=pybind11
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight header-only library to create Python bindings of existing C++ code.'
 arch=('any')
 url='http://pybind11.readthedocs.org/'
@@ -17,7 +17,7 @@ source=("https://github.com/pybind/pybind11/archive/v${pkgver}.tar.gz")
 sha256sums=('d18383097455cab02e9ff312eaf472e36ae26c3ff46e250b790ddc5ec336fa5c')
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py check
   mkdir build
   cd build
@@ -26,7 +26,7 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install_headers --install-dir "${pkgdir}/usr/include/${_pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install_headers --install-dir "${pkgdir}/usr/include/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
