@@ -1,6 +1,6 @@
 pkgbase = vim-clipboard
-	pkgver = 8.0.0427
-	pkgrel = 1
+	pkgver = 8.0.0586
+	pkgrel = 2
 	url = http://www.vim.org
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = vim-clipboard
 	makedepends = lua
 	makedepends = gawk
 	makedepends = tcl
-	source = vim-8.0.0427.tar.gz::http://github.com/vim/vim/archive/v8.0.0427.tar.gz
+	source = vim-8.0.0586.tar.gz::http://github.com/vim/vim/archive/v8.0.0586.tar.gz
 	source = vimrc
 	source = archlinux.vim
 	sha1sums = ba62eaec8847892c8bb20fd9498ae0af05eda2ba
@@ -25,7 +25,7 @@ pkgbase = vim-clipboard
 
 pkgname = vim-clipboard
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor with +clipboard enabled
-	depends = vim-runtime=8.0.0427-1
+	depends = vim-runtime=8.0.0586-2
 	depends = gpm
 	depends = acl
 	optdepends = python2: Python 2 language support
