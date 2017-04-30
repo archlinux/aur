@@ -1,4 +1,4 @@
-# Maintainer: Kyle Keen <mesmer@fisica.if.uff.br>
+# Maintainer: Mesmer  <mesmer@fisica.if.uff.br>
 
 pkgname=wine-overwatch-git
 pkgver=r117912.94ea5ad606
