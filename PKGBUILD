@@ -4,7 +4,7 @@
 
 _pkgname=powerlevel9k
 pkgname=zsh-theme-"${_pkgname}"
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Powerlevel9k theme for zsh'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bhilburn/powerlevel9k/archive/v${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/bhilburn/powerlevel9k/releases/download/v${pkgver}/powerlevel9k-${pkgver}.tar.gz.asc")
-sha512sums=('ca8e8282ec5eb066a1ab7a368d7fab4099b8662f4eefc06ce088e36f46320b601c9349a32b0b29cc7156aa4ab80223e0e584669a5493493005d0f50ec54f13e8'
+sha512sums=('2a3d9a4a64f8829c6f4d14196178674b75db6c11c75cdb4b05b1d0fa3389992963f2d42dad542a5c8ab66aa9bfa7e51181f7cda35246d988d3f18baeea71b91b'
             'SKIP')
 validpgpkeys=('C8D4D38F9ABB16BD3C6170F7ECD0D0410C149675')
 
