@@ -3,7 +3,7 @@
 
 pkgname=caffe
 pkgver=rc5
-pkgrel=2
+pkgrel=3
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -17,7 +17,8 @@ depends=( # binary repositories:
           # AUR:
           'openblas-lapack' 'python2-leveldb' 'python2-scikit-image')
 makedepends=('doxygen' 'texlive-core')
-conflicts=('caffe-git' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git')
+conflicts=('caffe-git' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git'
+           'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/BVLC/${pkgname}/archive/rc.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('7da46e2802c5d85e41aeda79bf27e907fc317fb1ecf96800403f4a57f1cd0dfb')
