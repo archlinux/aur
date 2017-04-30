@@ -10,6 +10,11 @@ provides=('otf-montserrat')
 source=('https://www.fontsquirrel.com/fonts/download/montserrat')
 sha256sums=('SKIP')
 
+prepare () {
+
+  sha256sum -c "${startdir}/sums"
+}
+
 package() {
 
   install -D -m644 "SIL Open Font License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
