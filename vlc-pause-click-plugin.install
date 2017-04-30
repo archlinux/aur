@@ -1,0 +1,10 @@
+post_install() {
+	cat << EOF
+
+You have to enable the plugin in VLC's advanced settings.
+
+Interface -> Control Interfaces -> Pause/Play video on mouse click
+Video -> Filters -> Pause/Play video on mouse click
+
+EOF
+}
