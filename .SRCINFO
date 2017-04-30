@@ -1,6 +1,6 @@
 pkgbase = prelink-systemd
 	pkgdesc = systemd units for prelink
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/Freso/PKGBUILDs
 	changelog = ChangeLog

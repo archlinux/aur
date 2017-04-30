@@ -1,6 +1,6 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 pkgname=prelink-systemd
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='systemd units for prelink'
 arch=('any')

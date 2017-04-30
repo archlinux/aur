@@ -1,3 +1,10 @@
+2017-04-30 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 2-1:
+	Tighten the service unit’s security using a number of systemd.exec options.
+	Add an [Install] section to the timer unit and install the timer unit
+	under timers.target instead of multi-user.target.
+
 2015-02-02 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 1-1:
