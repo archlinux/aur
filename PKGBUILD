@@ -15,3 +15,4 @@ package() {
   install -m 755 $srcdir/batch_resolve $pkgdir/usr/bin/
 }
 
+md5sums=('dd7d46d9ae61382edecbf88333510067' '172cd4b030379c5cefcacd3763ecc915' 'b953b1089ccf581f9066b4d16c41c7c7')
