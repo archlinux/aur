@@ -2,7 +2,7 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.6.8.r3383.cb463ea0
+pkgver=0.6.8.r3486.74ba5819
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
@@ -25,9 +25,10 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${_pkgname}/translations
-  for lang in `ls OpenOrienteering_*.ts | sed 's/OpenOrienteering_\(.*\)\.ts/\1/' | grep -v template`; do
+  for lang in `ls OpenOrienteering_*.ts | sed 's/OpenOrienteering_\(.*\)\.ts/\1/;/template/d;s/zh_CN/zh_Hans/'`; do
     curl -so OpenOrienteering_$lang.ts https://hosted.weblate.org/download/${_orgname}/${_pkgname}/$lang/
   done
+  rename Hans.ts CN.ts OpenOrienteering_zh_Hans.ts
 }
 
 build() {
