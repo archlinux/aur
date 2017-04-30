@@ -18,15 +18,19 @@ options=('!strip')
 source=("git+https://github.com/GalliumOS/linux.git#branch=v${pkgver}"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
+        "dmi_product_family.diff"
         "cherryview-pinctrl.diff")
 sha256sums=('SKIP'
             '7f9b77e1ac3b59453f6bb3858d0549c3022e6ae93ca3978427d96ae23f87e451'
+            '949990c191638f63f1906dbd7f4be8b82b40da94ef873b15af68c9e726b13c51'
             'SKIP')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${_srcname}"
+
+  patch -p1 < ${srcdir}/dmi_product_family.diff
 
   cp $srcdir/cherryview-pinctrl.diff galliumos/diffs/
   rm galliumos/diffs/increase-cherryview-num-irqs.diff

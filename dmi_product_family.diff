@@ -1,0 +1,44 @@
+diff --git a/drivers/firmware/dmi-id.c b/drivers/firmware/dmi-id.c
+index 44c01390d..dc269cb28 100644
+--- a/drivers/firmware/dmi-id.c
++++ b/drivers/firmware/dmi-id.c
+@@ -47,6 +47,7 @@ DEFINE_DMI_ATTR_WITH_SHOW(product_name,		0444, DMI_PRODUCT_NAME);
+ DEFINE_DMI_ATTR_WITH_SHOW(product_version,	0444, DMI_PRODUCT_VERSION);
+ DEFINE_DMI_ATTR_WITH_SHOW(product_serial,	0400, DMI_PRODUCT_SERIAL);
+ DEFINE_DMI_ATTR_WITH_SHOW(product_uuid,		0400, DMI_PRODUCT_UUID);
++DEFINE_DMI_ATTR_WITH_SHOW(product_family,	0400, DMI_PRODUCT_FAMILY);
+ DEFINE_DMI_ATTR_WITH_SHOW(board_vendor,		0444, DMI_BOARD_VENDOR);
+ DEFINE_DMI_ATTR_WITH_SHOW(board_name,		0444, DMI_BOARD_NAME);
+ DEFINE_DMI_ATTR_WITH_SHOW(board_version,	0444, DMI_BOARD_VERSION);
+@@ -191,6 +192,7 @@ static void __init dmi_id_init_attr_table(void)
+ 	ADD_DMI_ATTR(product_version,   DMI_PRODUCT_VERSION);
+ 	ADD_DMI_ATTR(product_serial,    DMI_PRODUCT_SERIAL);
+ 	ADD_DMI_ATTR(product_uuid,      DMI_PRODUCT_UUID);
++	ADD_DMI_ATTR(product_family,      DMI_PRODUCT_FAMILY);
+ 	ADD_DMI_ATTR(board_vendor,      DMI_BOARD_VENDOR);
+ 	ADD_DMI_ATTR(board_name,        DMI_BOARD_NAME);
+ 	ADD_DMI_ATTR(board_version,     DMI_BOARD_VERSION);
+diff --git a/drivers/firmware/dmi_scan.c b/drivers/firmware/dmi_scan.c
+index 54be60ead..93f7acdaa 100644
+--- a/drivers/firmware/dmi_scan.c
++++ b/drivers/firmware/dmi_scan.c
+@@ -430,6 +430,7 @@ static void __init dmi_decode(const struct dmi_header *dm, void *dummy)
+ 		dmi_save_ident(dm, DMI_PRODUCT_VERSION, 6);
+ 		dmi_save_ident(dm, DMI_PRODUCT_SERIAL, 7);
+ 		dmi_save_uuid(dm, DMI_PRODUCT_UUID, 8);
++		dmi_save_ident(dm, DMI_PRODUCT_FAMILY, 26);
+ 		break;
+ 	case 2:		/* Base Board Information */
+ 		dmi_save_ident(dm, DMI_BOARD_VENDOR, 4);
+diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
+index 8a57f0b12..909c0b0eb 100644
+--- a/include/linux/mod_devicetable.h
++++ b/include/linux/mod_devicetable.h
+@@ -457,6 +457,7 @@ enum dmi_field {
+ 	DMI_PRODUCT_VERSION,
+ 	DMI_PRODUCT_SERIAL,
+ 	DMI_PRODUCT_UUID,
++	DMI_PRODUCT_FAMILY,
+ 	DMI_BOARD_VENDOR,
+ 	DMI_BOARD_NAME,
+ 	DMI_BOARD_VERSION,
