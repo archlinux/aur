@@ -1,14 +1,15 @@
 # Maintainer: Geoffrey Frogeye <geoffrey@frogeye.fr>
 
 pkgname=sheepit-client-git
-pkgver=3.3.2r200.358ec13
-pkgrel=2
+pkgver=5.0.0r270.e2616a8
+pkgrel=1
 pkgdesc="Client for the free and distributed render farm"
 arch=('i686' 'x86_64')
 url="https://www.sheepit-renderfarm.com/"
 license=('GPL')
 depends=('java-runtime' 'freetype2' 'glew')
 makedepends=('git' 'apache-ant')
+optdepends=('cuda: CUDA GPU rendering (not in service mode)' 'blender: Create 3D scenes to render')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=sheepit-client.install
@@ -21,8 +22,8 @@ source=('git://github.com/laurent-clouet/sheepit-client.git#branch=master'
 md5sums=('SKIP'
          'a30b3ba1c40b2063ccab54b65a7b8e09'
          'ade86db2b906f3468e014b28ebdd36d6'
-         '7ffbac5dffd3ffcf04ffba3c0c1f5bd2'
-         '9ee9b4ddbac31567f63520beb4d5628f')
+         '30e9d9e679a8b22d9c5efbf64c14743c'
+         'e051e06111c73777914dffee61b43afc')
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"

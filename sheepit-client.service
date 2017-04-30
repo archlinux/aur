@@ -5,8 +5,8 @@ After=network.target
 
 [Service]
 User=sheepit-client
-ExecStart=/usr/bin/sheepit-client -config /etc/conf.d/sheepit-client
-RestartSec=10
+ExecStart=/usr/bin/sheepit-client -config /etc/conf.d/sheepit-client -ui text
+RestartSec=60
 Restart=on-failure
 
 [Install]
