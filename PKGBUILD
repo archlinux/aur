@@ -12,7 +12,7 @@ license=('GPL')
 url="http://www.gnu.org/software/grub/"
 depends=('ncurses' 'diffutils' 'sed')
 conflicts=('grub')
-[ "$CARCH" = 'x86_64' ] && makedepends=('gcc-multilib')
+makedepends_x86_64=('gcc-multilib')
 optdepends=('xfsprogs: freezing of xfs /boot in install-grub script')
 source=(ftp://alpha.gnu.org/gnu/grub/${_srcname}-${pkgver}.tar.gz
         menu.lst
