@@ -27,7 +27,7 @@ sha512sums=('78b85e37c63f1dbb60898da229f70f45810326a01244067d23b1317e2c2ae3326e4
 build() {
     cd $srcdir/$pkgname-$pkgver
 
-    CFLAGS=-fPIC ./configure \
+	./configure \
      --prefix=/usr \
      --includedir=/usr/include/cyrus --mandir=/usr/share/man \
      --docdir=/usr/share/doc/cyrus \
