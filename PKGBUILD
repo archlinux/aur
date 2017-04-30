@@ -1,7 +1,7 @@
 # Maintainer: chongli <kurto@mac.com>
 pkgname=otf-montserrat
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Often compared to Proxima Nova for it's charming utility, Montserrat is a useful typeface, loved by many web and UI designers. Designed by Julieta Ulanovsky."
 arch=('any')
 url="https://www.fontsquirrel.com/fonts/montserrat"
