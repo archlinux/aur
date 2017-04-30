@@ -1,7 +1,7 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
 	pkgver = 52.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = i686
 	arch = x86_64
@@ -49,14 +49,12 @@ pkgbase = firefox-esr
 	source = firefox.desktop
 	source = firefox-symbolic.svg
 	source = firefox-install-dir.patch
-	source = rust-i686.patch
 	source = fix-wifi-scanner.diff
 	validpgpkeys = 2B90598A745E992F315E22C58AB132963A06537A
 	sha256sums = da2ba9630b8b56c6f5d36d9f3da2d984ef7986dc8b4d804f6947fcea6c24637d
 	sha256sums = c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826
 	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
-	sha256sums = f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269
 	sha256sums = 9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8
 
 pkgname = firefox-esr
