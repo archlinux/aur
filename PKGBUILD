@@ -4,7 +4,7 @@
 
 pkgname=slime-git
 pkgver=2.19.12.g7dc97e11
-pkgrel=1
+pkgrel=2
 pkgdesc="The Superior Lisp Interaction Mode for Emacs - from git"
 arch=('any')
 url="http://common-lisp.net/project/slime"
@@ -16,20 +16,13 @@ optdepends=('awk: for recreating the documentation'
 provides=('slime')
 conflicts=('slime')
 install=slime.install
-source=("git://github.com/slime/slime" hyperdoc.patch)
-md5sums=('SKIP'
-         '54d14889a58ad2930861002b5a2c4741')
+source=("git://github.com/slime/slime")
+md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
   echo $(git describe --tags | sed 's|-|.|g'|cut -c2-)
 }
-
-prepare(){
-  cd ${pkgname%-git}/contrib
-  patch -Np0 < "$srcdir"/hyperdoc.patch || true
-}
-
 build() {
   cd ${pkgname%-git}
   make
