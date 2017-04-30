@@ -7,10 +7,10 @@ pkgname=('mysql56' 'libmysqlclient56' 'mysql-clients56')
 _pkgname=mysql
 pkgbase=mysql56
 pkgver=5.6.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast SQL database server, community edition v5.6"
 arch=('i686' 'x86_64')
-makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc')
+makedepends=('zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc')
 license=('GPL')
 url="https://www.mysql.com/products/community/"
 options=('!libtool')
@@ -57,7 +57,7 @@ build() {
     -DINSTALL_DOCDIR=share/mysql/docs \
     -DINSTALL_SHAREDIR=share/mysql \
     -DWITH_ZLIB=system \
-    -DWITH_SSL=system \
+    -DWITH_SSL=bundled \
     -DWITH_LIBWRAP=OFF \
     -DCMAKE_EXE_LINKER_FLAGS='-ljemalloc' \
     -DWITH_EXTRA_CHARSETS=complex \
@@ -76,7 +76,7 @@ build() {
 
 package_libmysqlclient56(){
   pkgdesc="MySQL client libraries, v5.6"
-  depends=('openssl' 'zlib')
+  depends=('zlib' 'bash')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}")
 
@@ -97,7 +97,7 @@ package_libmysqlclient56(){
 
 package_mysql-clients56(){
   pkgdesc="MySQL client tools, v5.6"
-  depends=('libmysqlclient56' 'jemalloc' 'zlib')
+  depends=('libmysqlclient56' 'jemalloc' 'ncurses')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}")
 
@@ -123,7 +123,7 @@ package_mysql56(){
   pkgdesc="Fast SQL database server, community edition v5.6"
   backup=('etc/mysql/my.cnf')
   install="${_pkgname}.install"
-  depends=('mysql-clients56' 'libaio' 'zlib')
+  depends=('mysql-clients56' 'libaio' 'perl')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}")
   options=('emptydirs')
