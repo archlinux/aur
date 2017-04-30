@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=pythonqt-svn
-pkgver=3.1.r445
-pkgrel=3
+pkgver=3.1.r448
+pkgrel=1
 pkgdesc='A dynamic Python binding for the Qt framework (SVN version)'
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
 	cd "${srcdir}/${pkgname}"
 	local _pyver="$(python --version 2>&1 | sed 's/^Python //;s/\.[^.]*$//')"
-	sed -i "s/unix\:PYTHON_VERSION=2\.7/unix\:PYTHON_VERSION=${_pyver}/" build/python.prf
+	sed -i "s/unix\:PYTHON_VERSION=.*/unix\:PYTHON_VERSION=${_pyver}/" build/python.prf
 }
 
 pkgver() {
