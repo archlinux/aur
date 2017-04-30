@@ -137,7 +137,7 @@ read -d '' bitcoin <<'EOF'
 ##                                                                    ##
 ##  To start bitcoin-core:                                            ##
 ##                                                                    ##
-##      # systemctl start bitcoin                                     ##
+##      # systemctl start bitcoind                                    ##
 ##                                                                    ##
 ##  To communicate with bitcoin-core as a normal user:                ##
 ##                                                                    ##
