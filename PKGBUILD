@@ -1,13 +1,13 @@
 # Maintainer: sygnmdev <sygnmdev at sygnm dot org>
 pkgname=sygnm
 pkgver=1.0.0alpha1
-pkgrel=1
+pkgrel=2
 pkgdesc="Computer algebra system (currently alpha, install only if you know what you are doing)"
 arch=('i686' 'x86_64')
 url="https://sygnm.org/"
 license=('AGPL3')
 depends=('flint' 'arb' 'boost-libs' 'icu' 'gmp' 'qt5-base' 'readline' 'python' 'sqlite')
-makedepends=('boost' 'cmake' 'swig' 'python')
+makedepends=('boost' 'cmake' 'swig' 'python' 'python-setuptools')
 source=("local://$pkgname-$pkgver.tar.gz")
 options=(debug !strip)
 conflicts=('sygnm-git')
