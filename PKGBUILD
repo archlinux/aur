@@ -1,7 +1,7 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
 pkgname=astroid
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
 arch=('x86_64' 'i686')
@@ -27,16 +27,16 @@ sha256sums=('bb0bd5914af1f835393f101eff577ac5e0f35b67cc565ae0d6947a2d98ae9dd8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  scons -j 8 --release="$pkgver" --prefix=/usr build
+  scons --release="$pkgver" --prefix=/usr build
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  scons -j 8 --release="$pkgver" --prefix=/usr test
+  scons --release="$pkgver" --prefix=/usr test
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  scons -j 8 --release="$pkgver" --install-sandbox="$pkgdir/" --prefix=/usr install
+  scons --release="$pkgver" --install-sandbox="$pkgdir/" --prefix=/usr install
 }
 
