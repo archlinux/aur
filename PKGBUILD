@@ -1,14 +1,14 @@
 # Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
 
 pkgname=firebird-nspire-git
-pkgver=1.2.r11.gb025aab
+pkgver=1.2.r81.g1f533db
 pkgrel=1
 pkgdesc='Community emulator of TI-Nspire calculators.'
 arch=('i686' 'x86_64')
 url='https://github.com/nspire-emus/firebird'
 conflicts=('nspire_emu' 'firebird-nspire')
 provides=('firebird-nspire')
-license=('GPL')
+license=('GPL3')
 depends=()
 makedepends=('qt5-declarative' 'git')
 source=("${pkgname%-git}"::'git+https://github.com/nspire-emus/firebird')
