@@ -1,21 +1,21 @@
 pkgname=nodejs-lts-boron
-pkgver=6.10.0
+pkgver=6.10.2
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript (LTS release: Boron)'
 arch=('i686' 'x86_64')
 url='https://nodejs.org/'
 license=('MIT')
-depends=('openssl' 'zlib' 'icu') # 'libuv' 'v8' 'c-ares')
+depends=('openssl-1.0' 'zlib' 'icu') # 'libuv' 'v8' 'c-ares')
 makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
 source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.xz")
-sha256sums=('f65d5d4b7253ee29f3ba4edabd3473845075e43569bceea4267e7bf3e00ebb96')
+sha256sums=('80aa11333da99813973a99646e2113c6be5b63f665c0731ed14ecb94cbe846b6')
 
 prepare() {
   cd node-v$pkgver
-
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   msg 'Fixing for python2 name'
   find -type f -exec sed \
     -e 's_^#!/usr/bin/env python$_&2_' \
