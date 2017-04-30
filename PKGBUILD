@@ -1,15 +1,15 @@
 # Maintainer: Dominic Meiser dosm dot mail at gmail
 
 pkgname=qtwebapp-cmake
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Fork of QtWebApp using CMake as build system. QtWepApp is a HTTP server library in C++, inspired by Java Servlets."
 arch=('x86_64' 'armv7h')
-url="https://github.com/msrd0/QtWebApp"
+url="https://gitlab.com/msrd0/QtWebApp"
 license=('LGPL')
 depends=('cmake' 'qt5-base')
 makedepends=('git')
-source=("qtwebapp::git+https://github.com/msrd0/qtwebapp.git#tag=v$pkgver")
+source=("qtwebapp::git+https://gitlab.com/msrd0/qtwebapp.git#tag=v$pkgver")
 sha512sums=('SKIP')
 
 prepare()
