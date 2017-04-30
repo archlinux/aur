@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lavnikevich <haff@midgard.by>
 
 pkgname=extopts
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Extended command line arguments parsing library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=('git+https://github.com/githaff/extopts.git#tag=v2.0.3')
+source=("git+https://github.com/githaff/extopts.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 
