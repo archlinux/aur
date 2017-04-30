@@ -1,0 +1,18 @@
+pkgbase = extopts
+	pkgdesc = Extended command line arguments parsing library
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/githaff/extopts
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = extopts
+	conflicts = extopts
+	source = git+https://github.com/githaff/extopts.git#tag=v2.0.3
+	md5sums = SKIP
+
+pkgname = extopts
+
