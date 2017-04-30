@@ -17,8 +17,8 @@ sha256sums=('119d3c18dc401d6c1fd2c30a952b1d4078c7581fb9256c8acd5bf1db68d8e02f'
 
 package() {
 	cd "$srcdir"
-	install -d -m755 "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants"
+	install -d -m755 "${pkgdir}/usr/lib/systemd/system/timers.target.wants"
 	install -m644 -t "${pkgdir}/usr/lib/systemd/system" prelink.service prelink.timer
-	ln -s ../prelink.timer "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants/prelink.timer"
+	ln -s ../prelink.timer "${pkgdir}/usr/lib/systemd/system/timers.target.wants/prelink.timer"
 	install -D -m644 legalcode.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
