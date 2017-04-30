@@ -7,7 +7,7 @@ pkgname=('mysql55' 'libmysqlclient55' 'mysql-clients55')
 _pkgname=mysql
 pkgbase=mysql55
 pkgver=5.5.55
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast SQL database server, community edition v5.5"
 arch=('i686' 'x86_64')
 makedepends=('zlib' 'cmake' 'systemd-tools' 'libaio')
@@ -67,7 +67,7 @@ build() {
 
 package_libmysqlclient55(){
   pkgdesc="MySQL client libraries, v5.5"
-  depends=('zlib')
+  depends=('zlib' 'bash')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}" "libmysqlclient=${pkgver}")
   
@@ -113,7 +113,7 @@ package_mysql55(){
   pkgdesc="Fast SQL database server, community edition v5.5"
   backup=('etc/mysql/my.cnf')
   install="${_pkgname}.install"
-  depends=('mysql-clients55' 'libaio')
+  depends=('mysql-clients55' 'libaio' 'perl')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}" "mysql=${pkgver}")
   options=('emptydirs')
