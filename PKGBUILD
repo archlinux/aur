@@ -7,10 +7,10 @@ pkgname=('mysql55' 'libmysqlclient55' 'mysql-clients55')
 _pkgname=mysql
 pkgbase=mysql55
 pkgver=5.5.55
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast SQL database server, community edition v5.5"
 arch=('i686' 'x86_64')
-makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio')
+makedepends=('zlib' 'cmake' 'systemd-tools' 'libaio')
 license=('GPL')
 url="https://www.mysql.com/products/community/"
 options=('!libtool')
@@ -49,7 +49,7 @@ build() {
     -DINSTALL_SHAREDIR=share/mysql \
     -DWITH_READLINE=ON \
     -DWITH_ZLIB=system \
-    -DWITH_SSL=system \
+    -DWITH_SSL=bundled \
     -DWITH_LIBWRAP=OFF \
     -DWITH_MYSQLD_LDFLAGS="${LDFLAGS}" \
     -DWITH_EXTRA_CHARSETS=complex \
@@ -67,7 +67,7 @@ build() {
 
 package_libmysqlclient55(){
   pkgdesc="MySQL client libraries, v5.5"
-  depends=('openssl' 'zlib')
+  depends=('zlib')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}" "libmysqlclient=${pkgver}")
   
@@ -88,7 +88,7 @@ package_libmysqlclient55(){
 
 package_mysql-clients55(){
   pkgdesc="MySQL client tools, v5.5"
-  depends=('libmysqlclient55' 'openssl' 'zlib')
+  depends=('libmysqlclient55' 'ncurses')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}" "mysql-clients=${pkgver}")
   
@@ -113,7 +113,7 @@ package_mysql55(){
   pkgdesc="Fast SQL database server, community edition v5.5"
   backup=('etc/mysql/my.cnf')
   install="${_pkgname}.install"
-  depends=('mysql-clients55' 'openssl' 'libaio' 'zlib')
+  depends=('mysql-clients55' 'libaio')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}" "mysql=${pkgver}")
   options=('emptydirs')
