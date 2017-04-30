@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=ultra_outliner
-pkgver=0.9.5b
+pkgver=0.9.6b
 pkgrel=1
 pkgdesc='Card-based outlining software for screenwriters, novelists and all story writers.'
 url='http://ultraoutliner.com'
@@ -9,13 +9,13 @@ license=('LGPL3')
 arch=('x86_64')
 depends=('libgl' 'libutil-linux' 'libxi')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::http://www.ultraoutliner.com/info/download_build?build=46&locale=en/ultra_outliner.ubuntu64.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::http://www.ultraoutliner.com/info/download_build?build=61&locale=en/ultra_outliner.ubuntu64.tar.gz"
   "${pkgname}.desktop"
   "${pkgname}.png"
   "${pkgname}.sh"
 )
 md5sums=(
-  '268e4cabc7fb47b5a3070a9c92bdcd6b'
+  '4f197b204a43e7ccf8297d17028861e2'
   'abd3a8d54712bde87cc044412f9da39e'
   '8bd89e964ec628dfb171f44484ae3c6a'
   '489d71fdc4e80fdf22c516638a61e3c7'
