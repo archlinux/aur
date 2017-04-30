@@ -8,8 +8,8 @@
 
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
-pkgver=52.0.1
-pkgrel=2
+pkgver=52.1.0
+pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -25,7 +25,7 @@ conflicts=("thunderbird")
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         thunderbird.desktop
         thunderbird-install-dir.patch fix-wifi-scanner.diff)
-sha256sums=('a1cede97e836c728d3157b9e043f3724f7aff83f92ba1f3796e9cc7299402cab'
+sha256sums=('c33ca35b6acd1a0dc0d0f4b1df16745a33144c5d3d3715fe05454a5e9eefd48b'
             'e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827'
             '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
