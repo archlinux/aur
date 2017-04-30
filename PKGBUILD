@@ -1,10 +1,9 @@
-# $Id: PKGBUILD 263841 2016-04-03 20:40:11Z anatolik $
 # Maintainer: mesmer <mesmer@fisica.if.uff.br>
 
 pkgname=(vim-clipboard)
-pkgver=8.0.0427
+pkgver=8.0.0586
 _versiondir=74
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=('custom:vim')
 url='http://www.vim.org'
