@@ -15,7 +15,6 @@ md5sums=('f9528164f46a78c7a2373778bc019c48')
 build ()
 {
 cd $srcdir/$pkgname-$pkgver
-#CFLAGS=-fPIC ./configure --prefix=/usr --sysconfdir=/etc
 PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
 OpenSSL_CFLAGS='-I/usr/include/openssl-1.0' OpenSSL_LIBS='-L/usr/lib/openssl-1.0 -lcrypto' \
 ./configure --prefix=/usr --sysconfdir=/etc --with-openssl
