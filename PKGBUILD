@@ -6,7 +6,7 @@
 
 _pkgname=get_iplayer
 pkgname=$_pkgname-git
-pkgver=2.98
+pkgver=3.00
 pkgrel=1
 pkgdesc="Download TV and radio programmes from BBC iPlayer"
 arch=('any')
@@ -15,7 +15,8 @@ license=('GPL3')
 
 # perl-libwww is the LWP module
 depends=('perl-libwww'
-         #'perl-lwp-protocol-https'
+         'perl-lwp-protocol-https'
+         'perl-mojolicious'
          'perl-xml-libxml'
          'perl-xml-simple')
 
@@ -24,9 +25,7 @@ depends=('perl-libwww'
 optdepends=(
   'atomicparsley: MP4 and M4A files metadata tagging'
   'atomicparsley-largefile-hg: MP4 and M4A files metadata tagging (preferred)'
-  'ffmpeg: FLV files to MP4, M4A, MP3 or AVI files'
-  'flvstreamer: Flash audio/video streams to FLV files. An "rtmpdump" alternative'
-  'rtmpdump: Flash audio/video streams to FLV files')
+  'ffmpeg: FLV files to MP4, M4A, MP3 or AVI files')
 
 makedepends=('git')
 conflicts=($_pkgname)
