@@ -4,7 +4,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=1.0.1.4.r944
+pkgver=1.0.1.4.r945.g6708db83b
+# ↓to be used in pkgver() where we need version without git revision
+upstream_release_version=1.0.1.4
 pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64' 'armv7h')
@@ -45,7 +47,7 @@ pkgver() {
   # The latest version was not tagged, so throw away the version we get
   # from the top-most tag, but keep, the commit hash
   # https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
-  git describe --long | sed "s/^v[^-]\+-\([0-9]\+\)/$pkgver/;s/-/./g"
+  git describe --long | sed "s/^v[^-]\+-\([0-9]\+\)/$upstream_release_version.r\1/;s/-/./g"
 }
 
 build() {
