@@ -36,12 +36,13 @@ _archstr=$([ $CARCH = 'x86_64' ] && echo "${_idstr64}" || echo "${_idstr32}")
 
 _localetor() {
 
-	#
-	# Checks if a `tor-browser` package exists for current locale; a different language can be
-	# chosen by giving a `TORBROWSER_PKGLANG` environment variable to `makepkg`, for instance:
-	#
-	#	TORBROWSER_PKGLANG='en-US' makepkg
-	#
+	msg 'Checks if a `tor-browser` package exists for current locale...'
+	msg ''
+	msg 'Note: A different language can be chosen by giving a `TORBROWSER_PKGLANG` '
+	msg '      environment variable to `makepkg`. For instance:'
+	msg ''
+	msg '          TORBROWSER_PKGLANG='en-US' makepkg'
+	msg ''
 
 	if [ -z "${TORBROWSER_PKGLANG}" ]; then
 
@@ -84,8 +85,8 @@ md5sums_i686=('SKIP'
 md5sums_x86_64=('SKIP'
 	'SKIP')
 
-noextract_x86_64=("${pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz")
-noextract_i686=("${pkgname}-${_idstr32}-${pkgver}_${_language}.tar.xz")
+noextract=("${pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz"
+	"${pkgname}-${_idstr32}-${pkgver}_${_language}.tar.xz")
 
 package() {
 
