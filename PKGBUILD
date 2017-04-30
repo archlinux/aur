@@ -1,25 +1,26 @@
-# Maintainer: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
+# Maintainer: Ľubomír 'The_K' Kučera <lubomir-dot-kucera-dot-jr-at-gmail-dot-com>
 
 pkgname=bully
-pkgver=1.0.22
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Retrieve WPA/WPA2 passphrase from a WPS enabled access point."
 arch=('i686' 'x86_64')
-url="https://github.com/bdpurcell/bully"
+url="https://github.com/aanarchyy/bully"
 license=('GPL3')
-depends=('libpcap' 'openssl')
+depends=('libpcap' 'openssl-1.0')
+optdepends=('pixiewps')
 makedepends=('make')
-source=('https://github.com/blshkv/bully/archive/v1.0-22.tar.gz')
-sha512sums=('7b25225afd55da87df33436d2192673731d9c6300bc146f8f55dcfddf03a2308db33161c3ca1c99b30b2275d9822ff44122298669fff0efd3752a2a0e6991dc3')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('aa379d7e73cdf2dc722d05aa8301754207e5a29bb11bab588c393194df17de48')
 
 build() {
-    cd "${srcdir}/${pkgname}-$(echo ${pkgver} | sed 's/\./-/2g')/src"
+    cd "${srcdir}/${pkgname}-${pkgver}/src"
 
-    make
+    CFLAGS=-I/usr/include/openssl-1.0 LDFLAGS="-l:libssl.so.1.0.0 -l:libcrypto.so.1.0.0" make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-$(echo ${pkgver} | sed 's/\./-/2g')/src"
+    cd "${srcdir}/${pkgname}-${pkgver}/src"
 
-    install -Dm755 "bully" "${pkgdir}/usr/bin/bully"
+    make install DESTDIR="${pkgdir}" prefix=/usr
 }
