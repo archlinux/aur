@@ -7,7 +7,7 @@ pkgbase = otf-montserrat
 	license = custom:SIL
 	provides = otf-montserrat
 	source = https://www.fontsquirrel.com/fonts/download/montserrat
-	sha256sums = 97fd7abc401f2716ce2dac4731dbf6c141abc8fb58702aeb93c599db7caa4e58
+	sha256sums = SKIP
 
 pkgname = otf-montserrat
 
