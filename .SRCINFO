@@ -1,0 +1,15 @@
+pkgbase = otf-economica
+	pkgdesc = A very condensed type. Accomplishes horizontal compression while keeping a strong personality.
+	pkgver = 20160430
+	pkgrel = 1
+	url = https://www.fontsquirrel.com/fonts/economica
+	install = otf-economica.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://www.fontsquirrel.com/fonts/download/economica
+	md5sums = 3441d4a98191a147ac48f96bdafb94b3
+
+pkgname = otf-economica
+
