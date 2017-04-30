@@ -1,15 +1,17 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+#
 # Contributor: btg <btgunes at gmail dot com>
 
 pkgname=hunspell-tr
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Turkish Dictionary for Hunspell"
 arch=('any')
 url="http://tr-spell.googlecode.com/"
 license=('LGPL' 'BSD')
 depends=('hunspell')
-source=(http://tr-spell.googlecode.com/files/Hunspell_tr_TR_v.0.1.zip)
-md5sums=('774eae07421f2823898a2a423245b472')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/tr-spell/Hunspell_tr_TR_v.${pkgver}.zip")
+sha256sums=('894d35f3242f47251ef729d4ea091f44364d8c5b0f237c0c5a8ac2b2148f1136')
 
 package() {
   cd $srcdir
