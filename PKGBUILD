@@ -6,11 +6,11 @@
 # Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
 # Contributor (Parabola): Luke R. <g4jc@openmailbox.org>
 
-# Based on linux package
+# Based on linux-zen package
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.10-gnu
-_pkgver=4.10.12-gnu
+_pkgver=4.10.13-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -60,9 +60,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0009-disable-USB3-port-on-ODROID-XU.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            'b0c542b4ae08fa3cdf7194cf6744e241162982b91ed31b01dfae03d879ebac7eba4e9434c065d500ca66e89a9f9f758c5854dc5aeecf667622932beabf80aa7c'
+            'ef0eb568775c55bde0f615237e827461aa8ee04cafb77783bc28fb6d040929f0802f53ad7c89b383342214fa080fc7e92b6f091cd7b695c5110615c0669ea3ea'
             'SKIP'
-            '5e8650ad66453e3c6f5e379321d31666303cbd5ee78fe9accc19a4801e840b06456747eb4e466e50c3583617f457c8739cca997f925c20b4339d66c47b10d914'
+            '990cd6c1a29d01bb77449b75de5d4aec4b3d3885e2fd17922e76a677f292f9ad3d6833c8b2efa3363710257c368e715204b58e6314035deb0c2c9f9f1c1efa9f'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
