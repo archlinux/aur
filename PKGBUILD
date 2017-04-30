@@ -41,7 +41,7 @@ _localetor() {
 	msg 'Note: A different language can be chosen by giving a `TORBROWSER_PKGLANG` '
 	msg '      environment variable to `makepkg`. For instance:'
 	msg ''
-	msg '          TORBROWSER_PKGLANG='en-US' makepkg'
+	msg "          TORBROWSER_PKGLANG='en-US' makepkg"
 	msg ''
 
 	if [ -z "${TORBROWSER_PKGLANG}" ]; then
