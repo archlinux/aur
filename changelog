@@ -1,3 +1,17 @@
+2017-04-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.3.1.2-1:
+    [!] ASF now requires Mono in version 4.8 or higher (Linux / OS X, ref: #529).
+    Added !bl, !bladd and !blrm commands (ref: #515).
+    !owns and !nickname commands in given bots versions can now make use of space character in query string.
+    Fixed !pause command not working when user had "only" Owner permission (ref: #512).
+    Fixed Steam wallet code redeem error that resulted in Timeout instead of resulting in proper error status.
+    Fixed potential STM logic exploit that could result in accepting non-neutral+ trades (ref: 4e1a032).
+    Lowered required permission for accepting a friend invite, from Operator to FamilySharing.
+    Improved compatibility of configs auto-reload with text editors that delete a file prior to writing to it (ref: #520).
+    Improved concurrent inventory calls (ref: 8c0a100).
+    Highly optimized function responsible for getting trade offers (ref: a6c4483).
+    Improved translation of various TimeSpan parts in many languages, which now is translated dynamically based on culture and resulting number.
+    Major code improvements, optimizations and bugfixes.
 2017-03-29 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.3.0.5-1:
     [!] Reworked permissions, this is a breaking change [1].
