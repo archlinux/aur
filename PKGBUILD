@@ -6,7 +6,7 @@
 _realname=mutter
 pkgname=$_realname-catalyst
 pkgver=3.24.1+1+geb394f19d
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
 arch=(i686 x86_64)
@@ -41,7 +41,7 @@ source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
   "catalyst mutter cogl.patch")
 sha256sums=('SKIP'
             '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
-            'b8b6aa7693cc847aaefc3ba4affe250827598b1914219920aaa68f038e60155e'
+            '754f21d4256128d3f49981fdf316f3345868969a87443e0795218043f1d1291b'
             '55079a9daddedc22d9fe4dcfe2e87607345dfafb370f8e7fb6a98c0acae3348a')
 
 pkgver() {
@@ -56,8 +56,8 @@ prepare() {
   patch -Np1 -i ../startup-notification.patch
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=741581
-  echo "Commenting out call to function with XRRChangeOutputProperty to fix issue with catalyst"
-  patch -Np1 < "${srcdir}/catalyst-workaround.patch"
+  echo "Skipping call to output_set_presentation_xrandr to fix issue with catalyst"
+  patch -Np1 -i "${srcdir}/catalyst-workaround.patch"
   # https://bugzilla.gnome.org/show_bug.cgi?id=756306
   echo "workaround compatibility shaders used in fw compat ctx in cogl"
   patch -Np1 -i "${srcdir}/catalyst mutter cogl.patch"

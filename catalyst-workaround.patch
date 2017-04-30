@@ -1,6 +1,8 @@
---- mutter/src/backends/x11/meta-monitor-manager-xrandr.c.orig	2017-04-24 21:56:35.531470289 +0200
-+++ mutter/src/backends/x11/meta-monitor-manager-xrandr.c	2017-04-30 01:50:55.593135688 +0200
-@@ -1060,6 +1060,41 @@
+diff --git a/src/backends/x11/meta-monitor-manager-xrandr.c b/src/backends/x11/meta-monitor-manager-xrandr.c
+index cc7a4440a..3bc1f0496 100644
+--- a/src/backends/x11/meta-monitor-manager-xrandr.c
++++ b/src/backends/x11/meta-monitor-manager-xrandr.c
+@@ -1060,6 +1060,41 @@ output_set_underscanning_xrandr (MetaMonitorManagerXrandr *manager_xrandr,
      }
  }
  
@@ -42,7 +44,7 @@
  static void
  apply_crtc_assignments (MetaMonitorManager *manager,
                          MetaCrtcInfo      **crtcs,
-@@ -1235,6 +1270,8 @@
+@@ -1235,6 +1270,8 @@ apply_crtc_assignments (MetaMonitorManager *manager,
          }
      }
  
@@ -51,7 +53,7 @@
    for (i = 0; i < n_outputs; i++)
      {
        MetaOutputInfo *output_info = outputs[i];
-@@ -1247,14 +1284,21 @@
+@@ -1247,9 +1284,13 @@ apply_crtc_assignments (MetaMonitorManager *manager,
                                 (XID)output_info->output->winsys_id);
          }
  
@@ -67,57 +69,4 @@
 +        }
  
        if (output_get_supports_underscanning_xrandr (manager_xrandr, output_info->output))
--        output_set_underscanning_xrandr (manager_xrandr,
--                                         output_info->output,
--                                         output_info->is_underscanning);
-+        if (fglrx_kernel_module_loaded != 1)
-+          {
-+            output_set_underscanning_xrandr (manager_xrandr,
-+                                             output_info->output,
-+                                             output_info->is_underscanning);
-+          }
- 
-       output->is_primary = output_info->is_primary;
-       output->is_presentation = output_info->is_presentation;
-@@ -1335,22 +1379,26 @@
- 					      MetaOutput         *output,
- 					      gint                value)
- {
--  MetaMonitorManagerXrandr *manager_xrandr = META_MONITOR_MANAGER_XRANDR (manager);
--  Atom atom;
--  int hw_value;
--
--  hw_value = round ((double)value / 100.0 * output->backlight_max + output->backlight_min);
--
--  atom = XInternAtom (manager_xrandr->xdisplay, "Backlight", False);
--
--  xcb_randr_change_output_property (XGetXCBConnection (manager_xrandr->xdisplay),
--                                    (XID)output->winsys_id,
--                                    atom, XCB_ATOM_INTEGER, 32,
--                                    XCB_PROP_MODE_REPLACE,
--                                    1, &hw_value);
-+  int fglrx_kernel_module_loaded = output_get_fglrx_kernel_module_loaded();
-+  if (fglrx_kernel_module_loaded != 1)
-+    {
-+      MetaMonitorManagerXrandr *manager_xrandr = META_MONITOR_MANAGER_XRANDR (manager);
-+      Atom atom;
-+      int hw_value;
-+
-+      hw_value = round ((double)value / 100.0 * output->backlight_max + output->backlight_min);
-+
-+      atom = XInternAtom (manager_xrandr->xdisplay, "Backlight", False);
-+
-+      xcb_randr_change_output_property (XGetXCBConnection (manager_xrandr->xdisplay),
-+                                        (XID)output->winsys_id,
-+                                        atom, XCB_ATOM_INTEGER, 32,
-+                                        XCB_PROP_MODE_REPLACE,
-+                                        1, &hw_value);
- 
--  /* We're not selecting for property notifies, so update the value immediately */
--  output->backlight = normalize_backlight (output, hw_value);
-+      /* We're not selecting for property notifies, so update the value immediately */
-+      output->backlight = normalize_backlight (output, hw_value);
-+    }
- }
- 
- static void
+         output_set_underscanning_xrandr (manager_xrandr,
