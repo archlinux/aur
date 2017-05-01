@@ -1,6 +1,6 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
 pkgname=gitdns
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Easy DNS via git"
