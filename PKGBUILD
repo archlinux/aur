@@ -1,23 +1,28 @@
-# Contributor: Francois Boulogne <fboulogne at april dot org>
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
-
 pkgname=python-bcolz
 _pkgname=bcolz
-pkgver=0.12.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="columnar and compressed data containers."
 arch=('any')
 url="https://bcolz.readthedocs.org/"
 license=('BSD')
-depends=('python' 'python-numpy')
+depends=('python' 'python-numpy' 'blosc')
 optdepends=('python-numexpr')
-makedepends=('python-setuptools')
-source=(https://pypi.python.org/packages/source/b/bcolz/bcolz-$pkgver.tar.gz)
-sha256sums=('a8dafa42cd4f3ca130ecb81f7e778204a12c2180c18fd570ef753de58ee7ddbd')
+makedepends=('python-setuptools' 'cython')
+source=("https://github.com/Blosc/bcolz/archive/$pkgver.tar.gz" "fix_version")
+sha256sums=('1d1acbeb25012d82ee3a81e61243ffd9923e43a18e241b376dfd1d28d189d372'
+            '8c4cd8d7c8787c3378fb5c22fe4e1295ff239ee882349f5ab9e572a3ce742342')
 
-package(){
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    patch -Np1 -i ../fix_version setup.py
+    python setup.py build
 }
+
+package() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    python setup.py install --root="$pkgdir" --blosc=/usr
+}
+
 
 # vim:ts=2:sw=2:et:
