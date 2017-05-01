@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=counterparty-cli
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Counterparty Protocol Command‐Line Interface"
 arch=('any')
@@ -22,16 +22,16 @@ groups=('counterparty')
 url="https://github.com/CounterpartyXCP/counterparty-cli"
 license=('MIT')
 options=(!emptydirs)
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/$pkgname/tar.gz/$pkgver)
-sha256sums=('f1eef35ca55d95de78d23348c245924a08314ffd4b139cc1d2424d41618abbc1')
-provides=('counterparty-cli' 'counterparty-client' 'counterparty-server')
-conflicts=('counterparty-client' 'counterparty-server')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/$pkgname/tar.gz/$pkgver
+        setup.py.patch)
+sha256sums=('a79bd99c94bc61340660bf94d33015b617caef9d5d1f48b4a2964a746aa1348b'
+            'd5cb63b282dc013c6f57a14891eadaf81cc9196fbcc916a9cee5a4a8dcdd1bf2')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Fixing setup.py...'
-  sed -i "/'setup_requires':.*/d" setup.py
+  patch -p1 < "$srcdir/setup.py.patch"
 }
 
 build() {
