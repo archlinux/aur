@@ -5,7 +5,7 @@ pkgbase=gtk4
 pkgname=(gtk4-update-icon-cache gtk4 gtk4-print-backends)
 pkgver=3.90.0
 pkgrel=1
-pkgdesc="GObject-based multi-platform GUI toolkit (needs [testing] enabled)"
+pkgdesc="GObject-based multi-platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
 license=('LGPL')
@@ -15,7 +15,7 @@ depends=('adwaita-icon-theme'
          'cairo'
          'dconf'
          'desktop-file-utils'
-         'glib2>=2.52.0'
+         'glib2'
          'gdk-pixbuf2'
          'json-glib'
          'libcups'
@@ -34,7 +34,7 @@ depends=('adwaita-icon-theme'
          'wayland'
          'wayland-protocols'
          'graphene')
-makedepends=('gobject-introspection>=1.52.0'
+makedepends=('gobject-introspection'
              'gtk-doc'
              'git'
              'colord'
