@@ -24,7 +24,7 @@ source=(v${pkgver}::git://github.com/go-gitea/gitea.git
         app.ini)
 sha512sums=('SKIP'
             '692ea79b3195f3222f69b485f8a7905223fa457dc5cb2b480edbac6f480ac4f74075accb04ae0c17b90e98e41f53224e661a85762310d7263921e763cb3fc257'
-            'dfeaad31e2a1286d4399627587b827096e5f79411423caecde16f07684b03b18b57023c8e2c4da1045a706098ed887ab4b43d2de197d910f585f7779f1efe500')
+            '2f263999f70d7b1fe3cf03ef47b7ecf0e61197e6722996d99463039587246d781eda1602d87efc84051cddc3bfa990b3028b2b67d90830880c792252afcfd15d')
 
 prepare() {
   mkdir -p "${srcdir}/src/code.gitea.io"
