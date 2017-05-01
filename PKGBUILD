@@ -8,9 +8,9 @@ arch=('i686' 'x86_64')
 url='https://github.com/elementary/switchboard'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
+depends=('clutter-gtk' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'granite-git' 'intltool' 'vala')
+makedepends=('cmake' 'git' 'granite-git' 'intltool' 'vala')
 optdepends=('switchboard-plug-about-bzr: About plug'
             'switchboard-plug-default-applications-bzr: Default applications plug'
             'switchboard-plug-elementary-tweaks-bzr: Elementary tweaks plug'
