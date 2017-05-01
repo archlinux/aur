@@ -85,7 +85,7 @@ package() {
   install -Dm 644 "${srcdir}/rstudio-server.service" "${pkgdir}/usr/lib//systemd/system/rstudio-server.service"
   install -d "${pkgdir}/etc/rstudio"
 # vars
-mkdir -p ${pkgdir}/run/rstudio-server ${pkgdir}/lock/rstudio-server ${pkgdir}/var/log/rstudio-server ${pkgdir}/var/lib/rstudio-server
+mkdir -p ${pkgdir}/run/rstudio-server ${pkgdir}/var/lock/rstudio-server ${pkgdir}/var/log/rstudio-server ${pkgdir}/var/lib/rstudio-server
 # lns
 mkdir -p $pkgdir/usr/bin
 ln -s /usr/lib/rstudio-server/bin/rserver $pkgdir/usr/bin/rserver
