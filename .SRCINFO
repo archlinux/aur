@@ -8,9 +8,9 @@ pkgbase = obs-linuxbrowser
 	license = GPL
 	makedepends = make
 	makedepends = cmake
-	makedepends = git
 	depends = obs-studio>=18.0.1
 	depends = cef-minimal
+	optdepends = pepper-flash: Flash support
 	source = https://github.com/bazukas/obs-linuxbrowser/archive/0.1.2.tar.gz
 	sha256sums = 2867ca780cab34a1a9396394c079854cb363a3e9a154e96948e272f096460514
 

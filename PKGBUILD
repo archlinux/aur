@@ -9,7 +9,8 @@ license=("GPL")
 depends=(
 	"obs-studio>=18.0.1" "cef-minimal"
 )
-makedepends=("make" "cmake" "git")
+makedepends=("make" "cmake")
+optdepends=("pepper-flash: Flash support")
 source=(
     "https://github.com/bazukas/$pkgname/archive/${pkgver}.tar.gz"
 )
