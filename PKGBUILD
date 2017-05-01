@@ -12,6 +12,7 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'pango')
 makedepends=('cmake' 'git' 'gobject-introspection' 'vala')
 provides=('granite' 'libgranite.so')
 conflicts=('granite')
+replaces=('granite-bzr')
 source=('git+https://github.com/elementary/granite.git')
 sha256sums=('SKIP')
 
