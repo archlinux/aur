@@ -1,10 +1,11 @@
-# Maintainer: ebiadsu
+# Contributor: ebiadsu
 # Previous Maintainer: holos
 # Contributor: Sebastien Duthil <duthils@free.fr>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-dash
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern list API for Emacs'
 arch=('any')
 url="https://github.com/magnars/dash.el"
@@ -26,6 +27,5 @@ package() {
 	  "$pkgdir"/usr/share/emacs/site-lisp/dash
   gzip "$pkgdir"/usr/share/emacs/site-lisp/dash/*.el
   install -Dm644 dash.info "$pkgdir"/usr/share/info/dash.info
-  gzip "$pkgdir"/usr/share/info/dash.info
 }
 
