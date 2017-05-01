@@ -46,6 +46,8 @@ package() {
 	install -m644 "${srcdir}/binaryninja.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
 	install -m644 "${srcdir}/binaryninja-personal.desktop" "${pkgdir}/usr/share/applications/"
 	install -m755 "${srcdir}/binaryninja-personal" "${pkgdir}/usr/bin"
+
+	# ln -s "/usr/lib/libpython2.7.so" "${pkgdir}"/opt/binaryninja-personal/libpython2.7.so.1
 }
 
 # vim:set et sw=2 sts=2 tw=80:
