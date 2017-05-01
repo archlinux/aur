@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
@@ -10,7 +10,7 @@ source=("$pkgname-v$pkgver.tar.gz::https://github.com/lah7/polychromatic/archive
 url='https://github.com/lah7/polychromatic'
 makedepends=('rsync')
 depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
-sha512sums=('ca1953ebbf3bce301453248a2d5b6d24abab75b7fd3b862fa6d21276996364997191915c2e0f4cc5f86cc6db8b7f54311dde72842af2570dc010d98b56947f10')
+sha512sums=('213a7f5e4ae419c8199d2bd3058ada133393b2af5c4b91d4341ee490d3859b004a29e8d56a5b4a83b0d7688afaa456a92a69c1e8ccd6660a7a0ff36a28f65766')
 
 package() {  
   _pythondir=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
@@ -42,7 +42,7 @@ package() {
   cp -r install/hicolor/* $pkgdir/usr/share/icons/hicolor/
 
   # Copy locales
-  rsync -rlpt --exclude="polychromatic-controller.pot" --exclude="polychromatic-tray-applet.pot" --exclude=*.po "locale/" $pkgdir/usr/share/locale
+  rsync -rlpt --exclude="polychromatic-controller.pot" --exclude="polychromatic-tray-applet.pot" --exclude="polychromatic-common.pot" --exclude=*.po "locale/" $pkgdir/usr/share/locale
 
   # Copy desktop launchers
   cp "install/polychromatic-controller.desktop" $pkgdir/usr/share/applications
