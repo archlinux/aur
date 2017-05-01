@@ -3,7 +3,7 @@
 
 pkgname=freetype2-infinality-ultimate
 pkgver=2.7.1
-pkgrel=3
+pkgrel=4
 _patchrel=2017.01.11
 pkgdesc="TrueType font rendering library with Infinality patches and custom settings by bohoomil"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}
   infinality-settings.sh
   xft-settings.sh)
 
-sha1sums=('4d08a9a6567c6332d58e9a5f9a7e9e3fbce66789'
+sha1sums=('c2d6a1734a6dd4cd63c520ccf6e912ce1228864b'
           'b31882ef5e8447e761acee1c4a44c0630cd4d465'
           '7a23342d5d56274ff8a05c67f64b96e85929f629'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f'

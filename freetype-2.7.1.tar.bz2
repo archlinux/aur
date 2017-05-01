@@ -1,0 +1,1590 @@
+<!doctype html>
+<!-- Server: sfs-consume-4 -->
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]>--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgQOV19AAQoJVlNT"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,n,e)])}catch(s){try{i("ierr",[s,c.now(),!0])}catch(u){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t){i("err",[t,c.now()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,n,e){u&&(d+=1)}),s.on("fn-err",function(t,n,e){u&&(this.thrown=!0,o(e))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(18)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(18)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(18)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(18)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(18)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];n.exports=u;var y=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(m,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}finally{c.emit("fn-end",[f.now()],e)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],16:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],17:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],18:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=h(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([g,e,r,a]),a}}function p(t,n){v[t]=h(t).concat(n)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var v={},y={},g={on:p,emit:e,get:m,listeners:h,context:n,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(15),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!x++){var t=b.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=l.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(15),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),c("mark",["firstbyte",s],null,"api");var x=0,E=t(17)},{}]},{},["loader",2,10,4,3]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"f516fac27e","agent":"","transactionName":"MVRXZBQHCBZRV0wIDAgec0UIBRIMX1oXEgVIUlpeFRMLAB5XVw8XFF5ZXAMUFUtUW08PDwlQUQoiCRELXFtZBSAJX0FCCQoKAEIaXAQFB0RZRA==","applicationID":"999221","errorBeacon":"bam.nr-data.net","applicationTime":46}</script>
+        
+        
+        
+        <script type='text/javascript'>
+            /*global unescape, window, SF*/
+            // Setup our namespace
+            if (!window.SF) { window.SF = {}; }
+            if (!window.net) { window.net = {}; }
+            if (!window.net.sf) { window.net.sf = {}; }
+            SF.Ads = {};
+            SF.cdn = '//a.fsdn.com/con';
+            SF.deploy_time = '1493311460';
+            
+            SF.Breakpoints = {
+              small: 0,
+              medium: 640,
+              leaderboard: 743,
+              billboard: 985,
+              large: 1053,
+              xlarge: 1295,
+              xxlarge: 1366
+            };
+            SF.initial_breakpoints_visible = {};
+            for (var bp in SF.Breakpoints) {
+                if (!SF.Breakpoints.hasOwnProperty(bp)) {
+                    continue;
+                }
+                SF.initial_breakpoints_visible[bp] = !window.matchMedia || window.matchMedia('(min-width: ' + SF.Breakpoints[bp] + 'px)').matches;
+            }
+        </script><script type='text/javascript'>
+            SF.Ads.prebidOptions = {
+                showIndicators: false,
+                analytics: true,
+                timeout: 650,
+                timeouts_by_bids: {500: 5, 650: 0},
+                };
+
+            SF.Ads.prebidUnits = [];
+            if (true) {
+                SF.Ads.prebidUnits.push({
+                    bids: [{'params': {'tagid': '364668'}, 'bidder': 'sovrn'},
+                            {'params': {'cp': 558092, 'cf': '728x90', 'ct': '472239'}, 'bidder': 'pulsepoint'},
+                            {'params': {'placementId': 8841129}, 'bidder': 'brealtime'},
+                            {'params': {'siteId': '103240', 'position': 'atf', 'sizes': [2], 'accountId': '15680', 'zoneId': '486002'}, 'bidder': 'rubicon'},
+                            {'params': {'placementId': 9265096}, 'bidder': 'appnexus'},
+                            {'params': {'placement': 4224517, 'network': '10676.1'}, 'bidder': 'aol'},
+                            {'params': {'siteID': '188671', 'id': '22'}, 'bidder': 'indexExchange'},
+                            ],
+                    code: 'div-gpt-ad-1392148432591-0',
+                    tag: 'SF_Temp5_728x90_A',
+                    
+                    sizes: [[728, 90], [970, 250]]
+                });
+            }
+            if (true) {
+                SF.Ads.prebidUnits.push({
+                    bids: [{'params': {'tagid': '364669'}, 'bidder': 'sovrn'},
+                            {'params': {'cp': 558092, 'cf': '728x90', 'ct': '472240'}, 'bidder': 'pulsepoint'},
+                            {'params': {'placementId': 8841130}, 'bidder': 'brealtime'},
+                            {'params': {'siteId': '103240', 'sizes': [2], 'accountId': '15680', 'zoneId': '486004'}, 'bidder': 'rubicon'},
+                            {'params': {'placementId': 9265097}, 'bidder': 'appnexus'},
+                            {'params': {'placement': 4225352, 'network': '10676.1'}, 'bidder': 'aol'},
+                            {'params': {'siteID': '188672', 'id': '23'}, 'bidder': 'indexExchange'},
+                            ],
+                    code: 'div-gpt-ad-1392148432592-0',
+                    tag: 'SF_Temp5_728x90_B',
+                    
+                    sizes: [728, 90]
+                });
+            }
+            if (true) {
+                SF.Ads.prebidUnits.push({
+                    bids: [{'params': {'tagid': '364665'}, 'bidder': 'sovrn'},
+                            {'params': {'cp': 558092, 'cf': '300x250', 'ct': '472236'}, 'bidder': 'pulsepoint'},
+                            {'params': {'placementId': 9319288}, 'bidder': 'brealtime'},
+                            {'params': {'siteId': '103240', 'position': 'atf', 'sizes': [15, 10], 'accountId': '15680', 'zoneId': '486002'}, 'bidder': 'rubicon'},
+                            {'params': {'placementId': 9265099}, 'bidder': 'appnexus'},
+                            {'params': {'placement': 4224515, 'network': '10676.1'}, 'bidder': 'aol'},
+                            {'params': {'siteID': '188668', 'id': '19'}, 'bidder': 'indexExchange'},
+                            ],
+                    code: 'div-gpt-ad-1392148432593-0',
+                    tag: 'SF_Temp5_300x250_A',
+                    
+                    sizes: [[300, 250], [300, 600]]
+                });
+            }
+            if (true) {
+                SF.Ads.prebidUnits.push({
+                    bids: [{'params': {'tagid': '364666'}, 'bidder': 'sovrn'},
+                            {'params': {'cp': 558092, 'cf': '300x250', 'ct': '472237'}, 'bidder': 'pulsepoint'},
+                            {'params': {'placementId': 8829487}, 'bidder': 'brealtime'},
+                            {'params': {'siteId': '103240', 'sizes': [15], 'accountId': '15680', 'zoneId': '486004'}, 'bidder': 'rubicon'},
+                            {'params': {'placementId': 9265101}, 'bidder': 'appnexus'},
+                            {'params': {'placement': 4224506, 'network': '10676.1'}, 'bidder': 'aol'},
+                            {'params': {'siteID': '188669', 'id': '20'}, 'bidder': 'indexExchange'},
+                            ],
+                    code: 'div-gpt-ad-1392148432594-0',
+                    tag: 'SF_Temp5_300x250_B',
+                    
+                    sizes: [300, 250]
+                });
+            }
+            if (true) {
+                SF.Ads.prebidUnits.push({
+                    bids: [{'params': {'tagid': '364667'}, 'bidder': 'sovrn'},
+                            {'params': {'cp': 558092, 'cf': '300x250', 'ct': '472238'}, 'bidder': 'pulsepoint'},
+                            {'params': {'placementId': 8829488}, 'bidder': 'brealtime'},
+                            {'params': {'siteId': '103240', 'sizes': [15], 'accountId': '15680', 'zoneId': '486004'}, 'bidder': 'rubicon'},
+                            {'params': {'placementId': 9265102}, 'bidder': 'appnexus'},
+                            {'params': {'placement': 4224516, 'network': '10676.1'}, 'bidder': 'aol'},
+                            {'params': {'siteID': '188670', 'id': '21'}, 'bidder': 'indexExchange'},
+                            ],
+                    code: 'div-gpt-ad-1392148432598-0',
+                    tag: 'SF_Temp5_300x250_C',
+                    
+                    sizes: [300, 250]
+                });
+            }
+            if (true) {
+                SF.Ads.prebidUnits.push({
+                    bids: [{'params': {'tagid': '382341', 'sizes': [728, 90]}, 'bidder': 'sovrn'},
+                            {'params': {'cp': 558092, 'cf': '728x90', 'ct': '490021'}, 'bidder': 'pulsepoint'},
+                            {'params': {'placementId': 9325860}, 'bidder': 'brealtime'},
+                            {'params': {'siteId': '103240', 'position': 'atf', 'sizes': [2, 15, 10], 'accountId': '15680', 'zoneId': '486002'}, 'bidder': 'rubicon'},
+                            {'params': {'placementId': 9317137}, 'bidder': 'appnexus'},
+                            {'params': {'placement': 4225239, 'network': '10676.1'}, 'bidder': 'aol'},
+                            {'params': {'siteID': '188673', 'id': '24'}, 'bidder': 'indexExchange'},
+                            ],
+                    code: 'div-gpt-ad-1392148432595-0',
+                    tag: 'SF_Temp5_multi_A',
+                    
+                    sizes: [[700, 500], [728, 90], [300, 250], [336, 280], [602, 147], [622, 147], [622, 297], [300, 600]]
+                });
+            }
+            if (true) {
+                SF.Ads.prebidUnits.push({
+                    bids: [{'params': {'tagid': '382342', 'sizes': [300, 250]}, 'bidder': 'sovrn'},
+                            {'params': {'cp': 558092, 'cf': '300x250', 'ct': '490015'}, 'bidder': 'pulsepoint'},
+                            {'params': {'placementId': 9325861}, 'bidder': 'brealtime'},
+                            {'params': {'siteId': '103240', 'sizes': [2, 15], 'accountId': '15680', 'zoneId': '486004'}, 'bidder': 'rubicon'},
+                            {'params': {'placementId': 9317140}, 'bidder': 'appnexus'},
+                            {'params': {'placement': 4225240, 'network': '10676.1'}, 'bidder': 'aol'},
+                            {'params': {'siteID': '188674', 'id': '25'}, 'bidder': 'indexExchange'},
+                            ],
+                    code: 'div-gpt-ad-1392148432596-0',
+                    tag: 'SF_Temp5_multi_B',
+                    
+                    sizes: [[700, 500], [728, 90], [300, 250], [336, 280], [602, 147], [622, 147], [622, 297]]
+                });
+            }
+            SF.Ads.prebidAdjustments = {"bidder_deflations": {"komoona": 0.92, "sovrn": 0.89, "aardvark": 0.99, "aol": 0.94, "brealtime": 0.84, "rubiconlite": 0.9, "appnexus": 0.86, "pulsepoint": 0.82, "rubicon": 0.96, "indexexchange": 0.93, "springserve": 0.001}, "inflation": 1.2, "floor": 0.02};
+        </script>
+        <script type="text/javascript" id="pbjs_script" data-dom="https://d3tglifpd8whs6.cloudfront.net"  src="//a.fsdn.com/con/js/sftheme/vendor/bizx-prebid.js?1493311460" ></script>
+        
+        <meta id="project_name" name="project_name" content="freetype">
+
+        
+        <meta name="description" content="A free, high-quality, and portable font engine">
+        <meta name="keywords" content="Graphics,  Open Source, Open Source Software, Development, Community, Source Code, Secure,  Downloads, Free Software">
+<noscript>
+    <meta http-equiv="refresh" content="5; url=https://downloads.sourceforge.net/project/freetype/freetype2/2.7.1/freetype-2.7.1.tar.bz2?r=http%3A%2F%2Fdownloads.sourceforge.net%2Fproject%2Ffreetype%2Ffreetype2%2F2.7.1%2Ffreetype-2.7.1.tar.bz2&amp;ts=1493608440&amp;use_mirror=cytranet">
+</noscript>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Download The FreeType Project from SourceForge.net</title>
+        <link rel="shortcut icon" href="//a.fsdn.com/con/img/sftheme/favicon.ico">
+    <link rel="canonical" href="https://sourceforge.net/projects/freetype/">
+        
+        <script type="text/javascript">
+            /*global unescape, window, console, jQuery, $, net, SF, DD_belatedPNG, ga */
+            if (!window.SF) {
+                window.SF = {};
+            }
+        </script>
+        
+<script src="//a.fsdn.com/con/js/sftheme/vendor/modernizr.3.3.1.custom.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/jquery-1.11.1.min.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/lib/jquery.core.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/bootstrap.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/sticky.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/shared_head.js?1493311460" type="text/javascript"></script>
+
+
+<!--[if lt IE 7 ]>
+  <script src="//a.fsdn.com/con/js/sftheme/vendor/dd_belatedpng.js"></script>
+  <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+<![endif]-->
+
+ 
+<link rel="stylesheet" href="//a.fsdn.com/con/css/download.css?1493311460" type="text/css">
+
+  
+
+    <style type="text/css" >.sfdl { width:150px;height:28px;padding:0;position:relative;font:bold 12px/1.17 sans-serif !important; border:1px solid #aaa;display:inline;float:left;text-decoration:none;-moz-box-shadow:rgba(255, 255, 255, 0.6) 0 1px 0 0;-webkit-box-shadow:rgba(255, 255, 255, 0.6) 0 1px 0 0;-o-box-shadow:rgba(255, 255, 255, 0.6) 0 1px 0 0;box-shadow:rgba(255, 255, 255, 0.6) 0 1px 0 0;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-khtml-border-radius:4px;border-radius:4px;background:no-repeat #e5e5e5 8px center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANFJREFUeNqcUosNgjAUbE0HcARGwAnqZxBxBCbQDXQE2UOkTIAj4AZsgPfMa1JeGqhecimU63HvvepxHFUq6mebY2nAdbi/Ur/hKg0IRv2H3WFvnX/Rj9qRcxH7A+BIjDK2eCYewQy8g2/WDJSk4w8xWDICz2ziUchyvMGLXIVJK9acE0+0VM53PIitE6bTcKJJT0wg6ESSHiwhHpbMDYszjhrDKcVkE5mO5dhZyrwNx72J2i9iGvMmODB372U/aCpV2NSlG0sGVbiBw2VM+BFgALYfPdL6UCEWAAAAAElFTkSuQmCC);background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANFJREFUeNqcUosNgjAUbE0HcARGwAnqZxBxBCbQDXQE2UOkTIAj4AZsgPfMa1JeGqhecimU63HvvepxHFUq6mebY2nAdbi/Ur/hKg0IRv2H3WFvnX/Rj9qRcxH7A+BIjDK2eCYewQy8g2/WDJSk4w8xWDICz2ziUchyvMGLXIVJK9acE0+0VM53PIitE6bTcKJJT0wg6ESSHiwhHpbMDYszjhrDKcVkE5mO5dhZyrwNx72J2i9iGvMmODB372U/aCpV2NSlG0sGVbiBw2VM+BFgALYfPdL6UCEWAAAAAElFTkSuQmCC), -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #fff), color-stop(100%, #ccc));background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANFJREFUeNqcUosNgjAUbE0HcARGwAnqZxBxBCbQDXQE2UOkTIAj4AZsgPfMa1JeGqhecimU63HvvepxHFUq6mebY2nAdbi/Ur/hKg0IRv2H3WFvnX/Rj9qRcxH7A+BIjDK2eCYewQy8g2/WDJSk4w8xWDICz2ziUchyvMGLXIVJK9acE0+0VM53PIitE6bTcKJJT0wg6ESSHiwhHpbMDYszjhrDKcVkE5mO5dhZyrwNx72J2i9iGvMmODB372U/aCpV2NSlG0sGVbiBw2VM+BFgALYfPdL6UCEWAAAAAElFTkSuQmCC), -moz-linear-gradient(top, #fff 0%, #ccc 100%);background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANFJREFUeNqcUosNgjAUbE0HcARGwAnqZxBxBCbQDXQE2UOkTIAj4AZsgPfMa1JeGqhecimU63HvvepxHFUq6mebY2nAdbi/Ur/hKg0IRv2H3WFvnX/Rj9qRcxH7A+BIjDK2eCYewQy8g2/WDJSk4w8xWDICz2ziUchyvMGLXIVJK9acE0+0VM53PIitE6bTcKJJT0wg6ESSHiwhHpbMDYszjhrDKcVkE5mO5dhZyrwNx72J2i9iGvMmODB372U/aCpV2NSlG0sGVbiBw2VM+BFgALYfPdL6UCEWAAAAAElFTkSuQmCC), linear-gradient(top, #fff 0%, #ccc 100%);background-position:8px center, 0 0;margin:0 10px 0px 0;overflow:hidden;color:#555 !important;}.sfdl:hover { cursor:pointer;text-decoration:none;background:8px center no-repeat #eee url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAANCAYAAABPeYUaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANFJREFUeNqcUosNgjAUbE0HcARGwAnqZxBxBCbQDXQE2UOkTIAj4AZsgPfMa1JeGqhecimU63HvvepxHFUq6mebY2nAdbi/Ur/hKg0IRv2H3WFvnX/Rj9qRcxH7A+BIjDK2eCYewQy8g2/WDJSk4w8xWDICz2ziUchyvMGLXIVJK9acE0+0VM53PIitE6bTcKJJT0wg6ESSHiwhHpbMDYszjhrDKcVkE5mO5dhZyrwNx72J2i9iGvMmODB372U/aCpV2NSlG0sGVbiBw2VM+BFgALYfPdL6UCEWAAAAAElFTkSuQmCC);}.sfdl-lite { background:0 center no-repeat #337733 none;color:white !important;height:auto;padding:0.5em 1em;text-align:center;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-khtml-border-radius:4px;border-radius:4px;background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #339933), color-stop(100%, #337733));background-image:-moz-linear-gradient(top, #339933 0%, #337733 100%);background-image:linear-gradient(top, #339933 0%, #337733 100%);}.sfdl-lite:hover { background:0 center no-repeat #339933;}.sfdl span { border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;display:block;margin:3px;margin-left:35px;padding:4px;text-align:left;color:#FFF;background:#363;background-image:-moz-linear-gradient(center top, #393 0%, #373 100%);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #393),color-stop(1, #373));background-image:linear-gradient(top, #393 0%, #373 100%);overflow:hidden;height:14px;}.sfdl b { display:block;line-height:7.0px;}.sfdl small { display:block;line-height:7.0px;color:#ADC2AD; font-weight:normal;white-space:nowrap;overflow:hidden;font-size:77%;}.info-circle{ right:10px;bottom:16px;}.direct-dl{ font-size:10px;text-align:right;display:inline-block;width:100%;}</style>
+
+
+        <style type="text/css">.oa4e583940907895818c195a726f80a0933b674f7 { display: none !important; }</style>
+    <link rel="alternate" type="application/rss+xml" title="The FreeType Project&#8230;Recent Activity" href="/p/freetype/activity/feed" />
+    
+
+
+        
+<script type="text/javascript">
+    SF.adblock = true;
+</script><script type='text/javascript'>
+       /*global Foundation */
+           /*global googletag, bizxPrebid */
+       var gptadslots=[];
+       var gptadHandlers={};
+       var gptadRenderers=[];
+       var gptadComplements={};
+
+       googletag.cmd.push(function() {
+           var leaderboard = googletag.sizeMapping()
+               .addSize([970, 200], [[970, 250], [728, 90]])
+               .addSize([728, 200], [[728, 90]])
+               .build();
+           var leaderboardInContent = googletag.sizeMapping()
+               .addSize([1280, 200], [[970, 250], [728, 90]])
+               .addSize([728, 200], [[728, 90]])
+               .build();
+
+            //prebid_log('GPT push define slots and targeting');
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_Temp5_728x90_A',[[728, 90], [970, 250]],'div-gpt-ad-1392148432591-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['freetype', 'c', 'multimedia', 'graphics'])
+                                                        .setTargeting('shortname', 'freetype')
+                                                        .setTargeting('aud', ['developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/freetype/files/freetype2/2.7.1/freetype-2.7.1.tar.bz2/download')
+                                                        .setTargeting('sz', '728x90,970x250')
+                                                        .setTargeting('page_type', 'pg_download'));
+            gptadHandlers['/41014381/Sourceforge/SF_Temp5_728x90_A'] = ["decorateSizeDelivered"];
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_Temp5_728x90_B',[728, 90],'div-gpt-ad-1392148432592-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['freetype', 'c', 'multimedia', 'graphics'])
+                                                        .setTargeting('shortname', 'freetype')
+                                                        .setTargeting('aud', ['developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/freetype/files/freetype2/2.7.1/freetype-2.7.1.tar.bz2/download')
+                                                        .setTargeting('sz', '728x90')
+                                                        .setTargeting('page_type', 'pg_download'));
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_Temp5_300x250_A',[[300, 250], [300, 600]],'div-gpt-ad-1392148432593-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['freetype', 'c', 'multimedia', 'graphics'])
+                                                        .setTargeting('shortname', 'freetype')
+                                                        .setTargeting('aud', ['developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/freetype/files/freetype2/2.7.1/freetype-2.7.1.tar.bz2/download')
+                                                        .setTargeting('sz', '300x250,300x600')
+                                                        .setTargeting('page_type', 'pg_download'));
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_Temp5_300x250_B',[300, 250],'div-gpt-ad-1392148432594-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['freetype', 'c', 'multimedia', 'graphics'])
+                                                        .setTargeting('shortname', 'freetype')
+                                                        .setTargeting('aud', ['developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/freetype/files/freetype2/2.7.1/freetype-2.7.1.tar.bz2/download')
+                                                        .setTargeting('sz', '300x250')
+                                                        .setTargeting('page_type', 'pg_download'));
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_Temp5_300x250_C',[300, 250],'div-gpt-ad-1392148432598-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['freetype', 'c', 'multimedia', 'graphics'])
+                                                        .setTargeting('shortname', 'freetype')
+                                                        .setTargeting('aud', ['developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/freetype/files/freetype2/2.7.1/freetype-2.7.1.tar.bz2/download')
+                                                        .setTargeting('sz', '300x250')
+                                                        .setTargeting('page_type', 'pg_download'));
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_Temp5_multi_A',[[700, 500], [728, 90], [300, 250], [336, 280], [602, 147], [622, 147], [622, 297], [300, 600]],'div-gpt-ad-1392148432595-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['freetype', 'c', 'multimedia', 'graphics'])
+                                                        .setTargeting('shortname', 'freetype')
+                                                        .setTargeting('aud', ['developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/freetype/files/freetype2/2.7.1/freetype-2.7.1.tar.bz2/download')
+                                                        .setTargeting('sz', '700x500,728x90,300x250,336x280,602x147,622x147,622x297,300x600')
+                                                        .setTargeting('page_type', 'pg_download'));
+            gptadHandlers['/41014381/Sourceforge/SF_Temp5_multi_A'] = ["checkDirectSoldForLeadForm", "decorateSizeDelivered"];
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_Temp5_multi_B',[[700, 500], [728, 90], [300, 250], [336, 280], [602, 147], [622, 147], [622, 297]],'div-gpt-ad-1392148432596-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['freetype', 'c', 'multimedia', 'graphics'])
+                                                        .setTargeting('shortname', 'freetype')
+                                                        .setTargeting('aud', ['developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/freetype/files/freetype2/2.7.1/freetype-2.7.1.tar.bz2/download')
+                                                        .setTargeting('sz', '700x500,728x90,300x250,336x280,602x147,622x147,622x297')
+                                                        .setTargeting('page_type', 'pg_download'));
+            gptadHandlers['/41014381/Sourceforge/SF_Temp5_multi_B'] = ["decorateSizeDelivered"];
+            
+
+            googletag.pubads().setTargeting('requestSource', 'GPT');
+            googletag.pubads().enableAsyncRendering();
+
+            googletag.pubads().collapseEmptyDivs();
+            googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                var unitName = event.slot.getName();
+                if ( unitName in gptadHandlers ) {
+                   for (var i = 0; i < gptadHandlers[unitName].length; i++) {
+                       try {
+                           SF.Ads.RenderHandlers[gptadHandlers[unitName][i]].call(this, event);
+                       } catch (e) {
+                       }
+                   }
+                }
+            });
+            googletag.pubads().addEventListener('impressionViewable', SF.Ads.RenderHandlers.viewabilityInstrumentation);
+            
+            googletag.pubads().addEventListener('slotRenderEnded', SF.Ads.listenerForBlockThis);
+            bizxPrebid.Ads.pushToGoogle();
+
+            googletag.enableServices();
+        });
+   </script> 
+
+        
+
+        
+<!-- CCM Tag -->
+<script type="text/javascript">
+  (function () {
+    /*global _ml:true, window */
+    _ml = window._ml || {};
+    _ml.eid = '771';
+
+    var s = document.getElementsByTagName('script')[0], cd = new Date(), mltag = document.createElement('script');
+    mltag.type = 'text/javascript'; mltag.async = true;
+    mltag.src = '//ml314.com/tag.aspx?' + cd.getDate() + cd.getMonth() + cd.getFullYear();
+    s.parentNode.insertBefore(mltag, s);
+  })();
+</script>
+<!-- End CCM Tag -->
+
+        
+        <script type="text/javascript" src="//a.fsdn.com/con/js/adframe.js?1493311460"></script>
+        <script type="text/javascript">
+
+            /*jshint ignore:start*/
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            /*jshint ignore:end*/
+
+            //var $ = jQuery.noConflict(); // jshint ignore:line
+        </script>
+        <script type="text/javascript">
+            SF.devicePixelRatio = Math.round(window.getDevicePixelRatio()*10)/10;
+                ga('create', 'UA-36130941-1', {
+                    'name': '1', 'sampleRate': 9});
+                ga('create', 'UA-36130941-1', 'auto', {   'sampleRate': 9});
+            if (typeof _ml !== 'undefined' && _ml.us) {
+                if (_ml.us.tp && _ml.us.tp.length > 0) {
+                    ga('set', 'dimension2', _ml.us.tp[0]);
+                }
+                if (_ml.us.pc && _ml.us.pc.length > 0) {
+                    ga('set', 'dimension7', _ml.us.pc[0]);
+                }
+                ga('set', 'dimension3', _ml.us.ind);
+                ga('set', 'dimension4', _ml.us.cr);
+                ga('set', 'dimension5', _ml.us.cs);
+                ga('set', 'dimension6', _ml.us.dm);
+                ga('set', 'dimension8', _ml.us.sn);
+            }
+
+            
+                ga('set', 'dimension9', 'freetype');
+                ga('set', 'dimension10', 'pg_dwnld');
+                ga('set', 'dimension11', '/freetype2/2.7.1/freetype-2.7.1.tar.bz2');
+                    
+                ga('set', 'dimension13', 'Logged Out');
+                ga('set', 'dimension14', 'No');  
+                ga('set', 'dimension15', 'desktop');
+                ga('set', 'dimension16', 'sync');
+                ga('set', 'dimension17', SF.devicePixelRatio);
+                ga('send', 'pageview');
+
+            
+        </script>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView', document.title, {
+                dimension1: 'freetype',
+            dimension2: 'pg_dwnld',
+            dimension3: SF.devicePixelRatio
+        }]);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//analytics.slashdotmedia.com/";
+            _paq.push(['setTrackerUrl', u+'sf.php']);
+            _paq.push(['setSiteId', 39]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'sf.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+<script type="text/javascript">
+
+    
+    SF.Ads.AdtemplateImpression = false;
+    
+
+    SF.Ads.WideLeadgenLayout = true;
+    SF.Ads.Template7 = false;
+    SF.ShowProgressBar = true;
+</script>
+
+
+<script type="text/javascript">
+/*global _taboola*/
+window._taboola = window._taboola || [];
+_taboola.push({ article:'auto'});
+(function (e, f, u) {
+    e.async = 1;
+    e.src = u;
+    f.parentNode.insertBefore(e, f);
+})(document.createElement('script'),
+    document.getElementsByTagName('script')[0],
+    '//cdn.taboola.com/libtrc/sourceforge/loader.js');
+</script>
+
+
+        <script type="text/javascript"> try{(function(){ var cb = new Date().getTime(); var s = document.createElement("script"); s.defer = true; s.src = "//tag.crsspxl.com/s1.js?d=2396&cb="+cb; var s0 = document.getElementsByTagName('script')[0]; s0.parentNode.insertBefore(s, s0); })();}catch(e){} </script>
+
+
+    </head>
+    <body id="pg_dwnld" class="bluesteel flatblack  anonymous ">
+        
+        
+
+        <div id="busy-spinner"></div>
+        
+
+<header id="site-header">
+    <div class="wrapper">
+        <a href="/" class="logo">
+            <span>SourceForge</span>
+        </a>
+        <form method="get" action="/directory/">
+            <input type="text" id="words" name="q" placeholder="Search">
+        </form>
+        <!--Switch to {language}-->
+        <nav id="nav-site">
+            <a href="/directory/" title="Browse our software.">Browse</a>
+            <a href="/directory/enterprise" title="Browse our Enterprise software.">Enterprise</a>
+            <a href="/blog/" title="Read the latest news from the SF HQ.">Blog</a>
+            <a href="//deals.sourceforge.net/?utm_source=sourceforge&amp;utm_medium=navbar&amp;utm_campaign=homepage" title="Discover and Save on the Best Gear, Gadgets, and Software" class="featured-link" target="_blank">Deals</a>
+            <a href="/support" title="Contact us for help and feedback.">Help</a>
+            <a href="/create"  class="featured-link blue" title="Create and publish Open Source software for free.">Create</a>
+        </nav>
+        <nav id="nav-account">
+            
+              <div class="logged_out">
+                  <a href="https://sourceforge.net/auth/">Log In</a>
+                <span>or</span>
+                <a href="https://sourceforge.net/user/registration">Join</a>
+              </div>
+            
+        </nav>
+    </div>
+</header>
+<header id="site-sec-header">
+    <div class="wrapper">
+        <nav id="nav-hubs">
+            <h4>Solution Centers</h4>
+        </nav>
+        <nav id="nav-collateral">
+            <a href="https://library.slashdotmedia.com/">Resources</a>
+            <a href="/user/newsletters?source=sfnet_header">Newsletters</a>
+
+            <a href="/cloud-storage-providers/?source=sfnet_header">Cloud Storage Providers</a>
+            <a href="/business-voip/?source=sfnet_header">Business VoIP Providers</a>
+            
+            <a href="/speedtest/?source=sfnet_header">Internet Speed Test</a>
+            
+            <a href="/call-center-providers/?source=sfnet_header">Call Center Providers</a>
+        </nav>
+    </div>
+</header>
+
+
+        
+<div id="banner-sterling" class="sterling">
+    
+
+
+ 
+    
+    
+
+
+<div class="sticky-anchor"></div>
+<div class="sticky">
+
+<div id="SF_Temp5_728x90_A_wrapped" class="draper multisize  decorateSizeDelivered"
+>
+<script type="text/javascript">
+/*global googletag */
+if (true) {
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148432591-0" ></div>');
+}());
+
+gptadRenderers['SF_Temp5_728x90_A'] = function(){  // jshint ignore:line
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148432591-0');
+    });
+};
+gptadRenderers['SF_Temp5_728x90_A']();  // jshint ignore:line
+}
+</script>
+</div>
+
+
+</div>
+<script type="text/javascript">
+    if (!SF.adblock) {
+        SF.Ads.stickyLeader = new SF.Stickify($('.sticky').eq(0));
+    }
+</script>
+</div>
+<header id="page-header">
+
+    <div class="wrapper">
+        
+
+
+<div id="downloading">
+    <div id="starting">
+        <div class="project-dl-info">
+            <h1>
+                <a href="/projects/freetype/">The FreeType Project</a>
+            </h1>
+
+
+            
+<p id="downloader" class="">
+    Your download will start shortly...
+</p>
+
+
+<div id="progressbar"><div class="progress-label"></div></div>
+
+
+<script id="redirect-template" type="text/x-handlebars-template">
+Learn more: check out <a href="/projects/freetype/postdownload">screenshots, reviews, and more</a>. We'll take you there in a few moments.
+</script>
+
+
+<p id="problems">
+
+
+    Problems with the download?  Please use this 
+    <a href="https://downloads.sourceforge.net/project/freetype/freetype2/2.7.1/freetype-2.7.1.tar.bz2?r=http%3A%2F%2Fdownloads.sourceforge.net%2Fproject%2Ffreetype%2Ffreetype2%2F2.7.1%2Ffreetype-2.7.1.tar.bz2&amp;ts=1493608440&amp;use_mirror=cytranet" class="direct-download">
+direct link</a>, or try another 
+    <a href="/settings/mirror_choices?projectname=freetype&amp;filename=freetype2/2.7.1/freetype-2.7.1.tar.bz2"
+        title="A mirror is an exact copy of a download available in multiple locations around the world.  Select the one closest to your location."
+        class="mirror" data-release-url="https://downloads.sourceforge.net/project/freetype/freetype2/2.7.1/freetype-2.7.1.tar.bz2?r=http%3A%2F%2Fdownloads.sourceforge.net%2Fproject%2Ffreetype%2Ffreetype2%2F2.7.1%2Ffreetype-2.7.1.tar.bz2&amp;ts=1493608440&amp;use_mirror=cytranet" rel="nofollow">
+mirror</a>.
+</p>
+        </div>
+
+    </div>
+    <div id="mirror">
+        Mirror provided by: 
+    
+      
+      
+        
+      
+      <a id="provider_top" href="http://www.cytranet.com/" title="Cytranet"><img class="mirror-logo" src="https://a.fsdn.com/mirrorimages/cytranet-small.png" alt="Cytranet" width="100" height="41"/></a>
+    
+
+    </div>
+
+    
+    
+        <div id="scanned_by">
+            Scanned by: <a href="http://www.bitdefender.com/business/"><img alt="Bitdefender" src="//a.fsdn.com/con/img/bitdefender.png" width="116" height="17"/></a>
+        </div>
+
+    
+
+</div>
+<div id="mirror-drawer"></div>
+
+    </div>
+</header>
+        
+<div id="messages">
+</div>
+
+
+
+        <div id="page-body">
+
+
+<div id="sterling-primary" class="content with-sidebar">
+    <div id="template5-container">
+
+        <div class="sterling template5 altered">
+
+            
+
+            
+
+<iframe width="700" height="0" scrolling="no" frameborder="0" name="1347646" id="1347646"
+    data-src-small="https://d1o5u7ifbz3swt.cloudfront.net/showcase/index.php?id=dynamic&lp=SF_IMM&country=US"
+    data-src-big="https://d1o5u7ifbz3swt.cloudfront.net/showcase/index.php?id=dynamic&lp=IMM&country=US">
+</iframe>
+<script>
+    if (SF.adblock) {
+        SF.Ads.RenderHandlers.checkDirectSoldForLeadForm({isEmpty: true});
+    }
+</script>
+            
+
+
+ 
+    
+    
+
+
+
+<div id="SF_Temp5_multi_A_wrapped" class="draper multisize  checkDirectSoldForLeadForm decorateSizeDelivered"
+>
+<script type="text/javascript">
+/*global googletag */
+if (true) {
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148432595-0" ></div>');
+}());
+
+gptadRenderers['SF_Temp5_multi_A'] = function(){  // jshint ignore:line
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148432595-0');
+    });
+};
+gptadRenderers['SF_Temp5_multi_A']();  // jshint ignore:line
+}
+</script>
+</div>
+
+
+            
+
+            
+            
+
+
+ 
+    
+    
+
+
+
+<div id="SF_Temp5_multi_B_wrapped" class="draper multisize  decorateSizeDelivered"
+>
+<script type="text/javascript">
+/*global googletag */
+if (true) {
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148432596-0" ></div>');
+}());
+
+gptadRenderers['SF_Temp5_multi_B'] = function(){  // jshint ignore:line
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148432596-0');
+    });
+};
+gptadRenderers['SF_Temp5_multi_B']();  // jshint ignore:line
+}
+</script>
+</div>
+
+
+            
+
+            
+            
+
+<div id="taboola-below-article-thumbnails"></div>
+<script type="text/javascript">
+/*global _taboola*/
+window._taboola = window._taboola || [];
+_taboola.push({
+    mode: 'thumbnails-b',
+    container: 'taboola-below-article-thumbnails',
+    placement: 'Below Article Thumbnails',
+    target_type: 'mix'
+});
+</script>
+
+            
+
+            
+    <div class="top3-widget">
+        <aside class="sidebar-widget">
+        <header>
+        <h3>Top 3 Projects in Graphics</h3>
+        </header>
+    <ul class="vertical">
+
+        
+
+            
+                <li class="item odd">
+                <a class="horiz-proj-icon" href="/projects/sweethome3d/?source=top3_dlp_t5"
+                        title="Sweet Home 3D"><img alt="Icon" 
+    src="//a.fsdn.com/allura/p/sweethome3d/icon?1487755148"
+    srcset="//a.fsdn.com/allura/p/sweethome3d/icon?1487755148?&amp;w=72 1.5x
+        ,
+            //a.fsdn.com/allura/p/sweethome3d/icon?1487755148?&amp;w=96 2x" /></a>
+                <div class="pinfo-content top3_dlp_t5">
+                <a class="project-name" href="/projects/sweethome3d/?source=top3_dlp_t5"
+                        title="Learn more about Sweet Home 3D ">Sweet Home 3D</a>
+                        <div class="top3-project-summary">
+                        An interior design application to draw house plans &amp; arrange furniture
+                        </div>
+                    </div>
+                    <div class="dl-content top3_dlp_t5">
+                        <a href="/projects/sweethome3d/files/latest/download?source=top3_dlp_t5" title="Sweet Home 3D" class="sfdl sfdl-lite">Download</a>
+                    </div>
+
+            </li>
+            
+                <li class="item even">
+                <a class="horiz-proj-icon" href="/projects/libjpeg-turbo/?source=top3_dlp_t5"
+                        title="libjpeg-turbo"><img alt="Icon" 
+    src="//a.fsdn.com/allura/p/libjpeg-turbo/icon?1478149362"
+     /></a>
+                <div class="pinfo-content top3_dlp_t5">
+                <a class="project-name" href="/projects/libjpeg-turbo/?source=top3_dlp_t5"
+                        title="Learn more about libjpeg-turbo ">libjpeg-turbo</a>
+                        <div class="top3-project-summary">
+                        SIMD-accelerated libjpeg-compatible JPEG codec library
+                        </div>
+                    </div>
+                    <div class="dl-content top3_dlp_t5">
+                        <a href="/projects/libjpeg-turbo/files/latest/download?source=top3_dlp_t5" title="libjpeg-turbo" class="sfdl sfdl-lite">Download</a>
+                    </div>
+
+            </li>
+            
+                <li class="item odd last">
+                <a class="horiz-proj-icon" href="/projects/windjview/?source=top3_dlp_t5"
+                        title="WinDjView"><img alt="Icon" 
+    src="//a.fsdn.com/allura/p/windjview/icon?1411005608"
+     /></a>
+                <div class="pinfo-content top3_dlp_t5">
+                <a class="project-name" href="/projects/windjview/?source=top3_dlp_t5"
+                        title="Learn more about WinDjView ">WinDjView</a>
+                        <div class="top3-project-summary">
+                        A fast, compact, and powerful DjVu viewer
+                        </div>
+                    </div>
+                    <div class="dl-content top3_dlp_t5">
+                        <a href="/projects/windjview/files/latest/download?source=top3_dlp_t5" title="WinDjView" class="sfdl sfdl-lite">Download</a>
+                    </div>
+
+            </li>
+            
+        
+    </ul>
+</aside>
+
+    </div>
+
+            
+     <div class="dlp_newsletter_subscribe">
+         <h3>Keep Me Updated</h3>
+         <span class="subscribe-tagline">Get project updates, sponsored content from our
+             <br/>select partners and more.</span>
+         
+
+<form action="/user/newsletters/subscribe?source=DLP_T5" method="post" class="newsletter-subscribe-form ">
+    <input type="hidden" name="XgwQ81PVbrWaGKT17KJ4JwN8udgQ" value="US">
+    <input type="hidden" name="XnAQ81PVbrWaGKT17KDehYEhvXvY" value="ip_address">
+    <input type="hidden" name="XiRQ81OlMuukChbAsBv:CyeB7b24" value="DLP_T5">
+
+    
+    <div class="subtext">
+        By clicking on "Follow" below, you are agreeing to the <a href="http://slashdotmedia.com/terms-of-use/">Terms of Use</a> and the <a href="http://slashdotmedia.com/privacy-statement/">Privacy Policy</a>.
+    </div>
+        <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="sitewide">
+        <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="research">
+        <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="events">
+        <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="thirdparty">
+        <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="all">
+        <input type="hidden" name="XjAw:1G30EP3qAcVPi7W0XcBdXlc" value="freetype">
+    
+
+
+    <div>
+        
+        <div class="nsw-error-container input-set">
+            <div class="error-message"><i>Invalid email address. Please try again.</i></div>
+            <input type="email" class="subscriber-email" name="XigI:wPJDKcQWqGFU2jgU0ltPwNM" placeholder="Enter your email address" value="" required>
+        </div>
+        
+        
+
+        <p class="subscriber-existing-email" style="display: none"> Sent to None.
+        
+        </p>
+
+        <button type="submit" class="subscriber-submit  right">
+            <span>
+                Follow
+            </span>
+        </button>
+    </div>
+    
+
+    
+  <input type="hidden" name="_visit_cookie" value=""/>
+    <input type='hidden' name='timestamp' value='1493608440'/>
+    <input type='hidden' name='spinner' value='Xj2dToZsv3x_ZSlIfTWjSDz0dPZM'/>
+    <p class='oa4e583940907895818c195a726f80a0933b674f7'><label for='XiA88z_5W7y8vkZ39fiNFX_vAW8E'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='XiA88z_5W7y8vkZ39fiNFX_vAW8E' name='XiQ88z_5W7:kChbAsBv:CyeB7b24' type=
+             'text'/></p>
+    <p class='oa4e583940907895818c195a726f80a0933b674f7'><label for='XiA88z_5W7y4vkZ39fiNFX_vAW8E'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='XiA88z_5W7y4vkZ39fiNFX_vAW8E' name='XiQ88z_5W7ukChbAsBv:CyeB7b24' type=
+             'text'/></p>
+</form>
+
+
+     </div>
+
+
+        </div>
+        
+        
+<div class="sidebar template5">
+    
+    
+
+
+ 
+    
+    
+
+
+
+<div id="SF_Temp5_300x250_A_wrapped" class="draper multisize  "
+>
+<script type="text/javascript">
+/*global googletag */
+if (true) {
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148432593-0" ></div>');
+}());
+
+gptadRenderers['SF_Temp5_300x250_A'] = function(){  // jshint ignore:line
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148432593-0');
+    });
+};
+gptadRenderers['SF_Temp5_300x250_A']();  // jshint ignore:line
+}
+</script>
+</div>
+
+<aside class="sidebar-widget clearfix">
+            
+<script type="text/javascript">
+$( document ).ready(function() {
+
+  var residential = "https://www.voipreview.org/residential_voip";
+  // Adwords tracking.
+  if (window.trkConv && $('.gad-submission').length) {
+      window.trkConv(0111);
+  }
+
+  // Home voiptype redirect.
+  $('#edit-voiptype-home').click(function() {
+    window.location.replace(residential);
+  });
+
+  // GAD extra leadform-landing-page class.
+  if ($('.leadform-landing-page #leadform').length) {
+    $('.leadform-landing-page').addClass('paged');
+  }
+  else if ($('.leadform-landing-page #block-leadform-leadform-gad-full').length) {
+    $('.leadform-landing-page').addClass('full');
+  }
+
+  // Add class to the block-leadform-leadform-simple div.
+  $('#leadform').addClass('leadform-step-1');
+  var step = 1;
+  $('#leadform-step-indicator').text(step);
+
+  // Show leadform call number.
+  var d = new Date();
+  var dayOfWeek = d.getDay();
+  var hour = d.getHours();
+  var call_text = "<div class='call-text'><span>Want Free buying advice?</span><label class='call-now'>Call us now at</label><span class='tollfree'><a href='tel:8883824669'><img src='/sites/all/modules/custom/leadform/images/voip-quote.png' alt='VoIP Quote'></a></span></div>";
+  // open hours Monday - Friday 7am - 9:pm = open
+  /*if (dayOfWeek >= 1 && dayOfWeek <= 5 && hour >= 7 && hour <= 19) {
+    $('#lead-callout').html(call_text);
+  }*/
+
+  // Npa npxx.
+  $('#edit-area-code, #edit-npanxx, #edit-npanxx2').keyup(function(e) {
+    if ($(this).val().length === $(this).attr('maxlength')) {
+      $(this).parent().next().children('input').focus();
+    }
+  });
+
+  // Disable button on load.
+  $('form.multi-form button.multi-next').prop('disabled', true);
+
+  // Step 1.
+  $('input[name="Desired_Users"]').change(function() {
+    if (typeof $('input[name="Desired_Users"]:checked').val() !== 'undefined') {
+      $('form.multi-form button.multi-next').prop('disabled', false);
+    }
+  });
+
+  // Step 2.
+  $('input[name="VoipType"]').change(function() {
+    if (typeof $('input[name="VoipType"]:checked').val() !== 'undefined') {
+      $('form.multi-form button.multi-next').prop('disabled', false);
+    }
+  });
+
+  // Step 3.
+  $('input[name="TimeFrame"]').change(function() {
+    if (typeof $('input[name="TimeFrame"]:checked').val() !== 'undefined') {
+      $('form.multi-form button.multi-next').prop('disabled', false);
+    }
+  });
+
+  // Step 4.
+  $('input[name="Type_Of_Data"]').change(function() {
+    if (typeof $('input[name="Type_Of_Data"]:checked').val() !== 'undefined') {
+      $('form.multi-form button.multi-next').prop('disabled', false);
+    }
+  });
+
+  // next step
+  $('form.multi-form button.multi-next').click(function() {
+    $('fieldset.active').removeClass('active').next('fieldset').addClass('active');
+    var cur_width = $('.meterbar span').attr('data-width');
+    var new_width = parseInt(cur_width) + 20;
+    var max_width = parseInt($('.meterbar span').attr('data-max-width'));
+    $('.meterbar span').css("width", new_width+'%');
+    $('.meterbar span').attr("data-width", new_width);
+    if (new_width === 100) {
+      $('.meterbar span').addClass('full-meterbar');
+    }
+    else {
+      $('.meterbar span').removeClass('full-meterbar');
+    }
+    // Canada rule checkbox and privacy policy / contact us link visibility.
+    $('#edit-step-5 #edit-country').change(function() {
+      var country = $(this).find('option:selected').val();
+      if (country === 'CA') {
+        $('.privacy-policy-contact').show();
+      }
+      else {
+        $('.privacy-policy-contact').hide();
+      }
+    });
+
+    // Disabling the next button.
+    if (max_width <= new_width) {
+      $(this).prop('disabled', true);
+      $('.meterbar span').attr("data-max-width", new_width);
+    }
+    // Increment step class.
+    $('#leadform').removeClass('leadform-step-' + step);
+    step++;
+    $('#leadform').addClass('leadform-step-' + step);
+    $('#leadform-step-indicator').text(step);
+
+
+  });
+
+  // Step back.
+  $('form.multi-form button.multi-prev').click(function() {
+    var cur_width = $('.meterbar span').attr('data-width');
+    var new_width = parseInt(cur_width) - 20;
+    $('.meterbar span').css("width", new_width + '%');
+    $('.meterbar span').attr("data-width", new_width);
+    if (new_width === 100) {
+      $('.meterbar span').addClass('full-meterbar');
+    }
+    else {
+      $('.meterbar span').removeClass('full-meterbar');
+    }
+    $('fieldset.active').removeClass('active')
+      .prev('fieldset').addClass('active');
+    $('form.multi-form button.multi-next').removeAttr('disabled');
+    // Decrement step class.
+    $('#leadform').removeClass('leadform-step-' + step);
+    step--;
+    $('#leadform').addClass('leadform-step-' + step);
+    $('#leadform-step-indicator').text(step);
+  });
+
+
+  // Tooltips.
+  $('#leadform .icon-info').hover(function () {
+    $('.tooltip.redirect').toggle();
+  });
+
+  $('#edit-country').change(function() {
+    if ($(this).find('option:selected').text() === 'Canada') {
+      $('.form-item-terms, .privacy-policy-contact').show();
+    }
+    else {
+      $('.form-item-terms, .privacy-policy-contact').hide();
+    }
+    //console.log(selected);
+  });
+
+  //submit form
+  $('#edit-submit').on('click', function(e) {
+        $(this).attr("disabled","disabled");
+        e.preventDefault();
+        $.ajax({
+        type : "POST",
+        url : 'https://lf.bizx.info/api/partner/voip',
+        dataType : 'json',
+        data : $('#leadform-simple-form').serialize(),
+        success : function(c) {
+            if(c.success === '1') {
+              $('#leadform-simple-form').remove();
+              $('#leadform').append('<p>' + c.msg + '</p>');
+            }
+            else {
+             $('.leadform-msg').html('<span class="text-error" id="error">'+ c.msg+'</span>');
+             $('#edit-submit').attr('disabled', false);
+            }
+        }
+     });
+  });
+  
+  $('form.multi-form button.multi-next').click(function(){
+		setTimeout(function(){			
+			if($("#edit-step-2").hasClass("active")) {	
+				$(".steps li").removeClass("currentStep");		
+				$(".steps li.steptop1").addClass("activeStep");
+				$(".steps li.steptop2").addClass("currentStep");
+			}
+			else if($("#edit-step-3").hasClass("active")) {
+				$(".steps li").removeClass("currentStep");
+				$(".steps li.steptop1, .steps li.steptop2").addClass("activeStep");
+				$(".steps li.steptop3").addClass("currentStep");
+			}
+			else if($("#edit-step-4").hasClass("active")) {
+				$(".steps li").removeClass("currentStep");
+				$(".steps li.steptop1, .steps li.steptop2, .steps li.steptop3").addClass("activeStep");
+				$(".steps li.steptop4").addClass("currentStep");
+			}
+			else if($("#edit-step-5").hasClass("active")) {
+				$(".steps li").removeClass("currentStep");
+				$(".steps li.steptop1, .steps li.steptop2, .steps li.steptop3, .steps li.steptop4").addClass("activeStep");
+				$(".steps li.steptop5").addClass("currentStep");
+			}
+			else {
+				$(".steps li").removeClass("currentStep activeStep");
+				$(".steps li.steptop1").addClass("activeStep");
+			}
+		}, 100);
+
+                // disable TYP direct if it's planned
+                if (SF.downloader && SF.downloader.cancelRedirect) {
+                    SF.downloader.cancelRedirect();
+                }
+	});
+	
+	$('#leadform .buttons .button.left').click(function(){
+		setTimeout(function(){			
+			if($("#edit-step-1").hasClass("active")) {	
+				$(".steps li").removeClass("currentStep activeStep");
+				$(".steps li.steptop1").addClass("activeStep");
+			}	
+			else if($("#edit-step-2").hasClass("active")) {	
+				$(".steps li.steptop3").removeClass("currentStep activeStep");
+				$(".steps li.steptop2").addClass("currentStep");
+			}	
+			else if($("#edit-step-3").hasClass("active")) {	
+				$(".steps li.steptop4").removeClass("currentStep activeStep");
+				$(".steps li.steptop3").addClass("currentStep");
+			}	
+			else if($("#edit-step-4").hasClass("active")) {	
+				$(".steps li.steptop5").removeClass("currentStep activeStep");
+				$(".steps li.steptop4").addClass("currentStep");
+			}			
+		}, 100);
+	});	
+});
+</script>
+
+ 
+
+<div id="leadform">
+<div class="form-header"><h2>Get a Free VoIP <strong>Quote</strong></h2><p class="steps-progress">Only a few simple steps. (Step <span id="leadform-step-indicator">1</span> of 5)</p><div class="form-text"></div></div>
+
+  <form class="multi-form" action="/" method="post" id="leadform-simple-form" accept-charset="UTF-8">
+    <div class="meterbar">
+      <span style="width: 20%;" data-width="20" data-max-width="20" class="full-meterbar"></span>
+    </div>
+    <div class="leadform-msg"></div>
+
+  <fieldset class="form-wrapper active" id="edit-step-1">
+    <div class="fieldset-wrapper">
+      <p class="step-header"></p>
+      <div class="form-item form-type-radios form-item-Desired-Users">
+      <label class="question">How many phones do you have? </label>
+      <div id="edit-desired-users" class="form-radios">
+        <div class="form-item form-type-radio form-item-Desired-Users">
+          <input type="radio" id="edit-desired-users-2" name="Desired_Users" value="2" class="form-radio">  <label for="edit-desired-users-2">1-2 </label>
+        </div>
+        <div class="form-item form-type-radio form-item-Desired-Users">
+          <input type="radio" id="edit-desired-users-5" name="Desired_Users" value="5" class="form-radio">  <label for="edit-desired-users-5">3-5 </label>
+        </div>
+        <div class="form-item form-type-radio form-item-Desired-Users">
+          <input type="radio" id="edit-desired-users-10" name="Desired_Users" value="10" class="form-radio">  <label for="edit-desired-users-10">6-10 </label>
+        </div>
+        <div class="form-item form-type-radio form-item-Desired-Users">
+          <input type="radio" id="edit-desired-users-20" name="Desired_Users" value="20" class="form-radio">  <label for="edit-desired-users-20">11-20 </label>
+        </div>
+        <div class="form-item form-type-radio form-item-Desired-Users">
+          <input type="radio" id="edit-desired-users-50" name="Desired_Users" value="50" class="form-radio">  <label for="edit-desired-users-50">21-50 </label>
+        </div>
+        <div class="form-item form-type-radio form-item-Desired-Users">
+          <input type="radio" id="edit-desired-users-51" name="Desired_Users" value="51" class="form-radio">  <label for="edit-desired-users-51">51+ </label>
+        </div>
+      </div>
+      </div>
+      <input type="hidden" name="landing_page" value="node/1">
+    </div>
+  </fieldset>
+
+  <fieldset class="form-wrapper" id="edit-step-2">
+    <div class="fieldset-wrapper">
+      <p class="step-header"></p>
+      <div class="form-item form-type-radios form-item-VoipType">
+        <label class="question">You're looking for a quote for? </label>
+        <div id="edit-voiptype" class="form-radios">
+          <div class="form-item form-type-radio form-item-VoipType">
+          <input type="radio" id="edit-voiptype-business" name="VoipType" value="Business" class="form-radio">  <label for="edit-voiptype-business">Business </label>
+          </div>
+          <div class="form-item form-type-radio form-item-VoipType">
+           <input type="radio" id="edit-voiptype-home-based-business" name="VoipType" value="Home-based Business" class="form-radio">  <label for="edit-voiptype-home-based-business">Home Business </label>
+          </div>
+          <div class="form-item form-type-radio form-item-VoipType">
+           <input type="radio" id="edit-voiptype-home" name="VoipType" value="Home" class="form-radio">  <label for="edit-voiptype-home">Home<span class="icon-info"><img src="//a.fsdn.com/con/img/marketing/icon-info.png" alt="info"/></span> </label>
+           <div class="tooltip redirect"><p>We currently don't offer quotes for residential based solutions.</p><p>By choosing this option you will be redirected to our residential VoIP page.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-wrapper" id="edit-step-3">
+    <div class="fieldset-wrapper">
+      <p class="step-header"></p>
+      <div class="form-item form-type-radios form-item-TimeFrame">
+        <label class="question">What is your buying time frame? </label>
+        <div id="edit-timeframe" class="form-radios">
+          <div class="form-item form-type-radio form-item-TimeFrame">
+            <input type="radio" id="edit-timeframe-asap" name="TimeFrame" value="ASAP" class="form-radio">  <label for="edit-timeframe-asap">ASAP </label>
+          </div>
+          <div class="form-item form-type-radio form-item-TimeFrame">
+           <input type="radio" id="edit-timeframe-1-3-months" name="TimeFrame" value="1 - 3 Months" class="form-radio">  <label for="edit-timeframe-1-3-months">1 - 3 Months </label>
+          </div>
+          <div class="form-item form-type-radio form-item-TimeFrame">
+           <input type="radio" id="edit-timeframe-3-6-months" name="TimeFrame" value="3 - 6 Months" class="form-radio">  <label for="edit-timeframe-3-6-months">3 - 6 Months </label>
+          </div>
+          <div class="form-item form-type-radio form-item-TimeFrame">
+           <input type="radio" id="edit-timeframe-more-than-6-months" name="TimeFrame" value="More Than 6 Months" class="form-radio">  <label for="edit-timeframe-more-than-6-months">6+ Months </label>
+          </div>
+      </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-wrapper" id="edit-step-4"><div class="fieldset-wrapper"><p class="step-header"></p><div class="form-item form-type-radios form-item-Type-Of-Data">
+    <label class="question">What is your data connection? </label>
+    <div id="edit-type-of-data" class="form-radios"><div class="form-item form-type-radio form-item-Type-Of-Data">
+    <input type="radio" id="edit-type-of-data-dsl" name="Type_Of_Data" value="DSL" class="form-radio">  <label for="edit-type-of-data-dsl">DSL </label>
+
+    </div>
+    <div class="form-item form-type-radio form-item-Type-Of-Data">
+     <input type="radio" id="edit-type-of-data-cable" name="Type_Of_Data" value="Cable" class="form-radio">  <label for="edit-type-of-data-cable">Cable </label>
+
+    </div>
+    <div class="form-item form-type-radio form-item-Type-Of-Data">
+     <input type="radio" id="edit-type-of-data-t1" name="Type_Of_Data" value="T1" class="form-radio">  <label for="edit-type-of-data-t1">T1 </label>
+
+    </div>
+    <div class="form-item form-type-radio form-item-Type-Of-Data">
+     <input type="radio" id="edit-type-of-data-fiber" name="Type_Of_Data" value="Fiber" class="form-radio">  <label for="edit-type-of-data-fiber">Fiber </label>
+
+    </div>
+    <div class="form-item form-type-radio form-item-Type-Of-Data">
+     <input type="radio" id="edit-type-of-data-need-new-connection" name="Type_Of_Data" value="Need New Connection" class="form-radio">  <label for="edit-type-of-data-need-new-connection">Need New Connection </label>
+
+    </div>
+    </div>
+    </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-wrapper" id="edit-step-5"><div class="fieldset-wrapper"><p class="step-header"></p><div class="name row"><div class="form-item form-type-textfield form-item-first-name form-required">
+    <label for="edit-first-name">First Name <span class="form-required" title="This field is required.">*</span></label>
+     <input type="text" id="edit-first-name" name="first_name" value="" size="30" maxlength="128" class="form-text required" required="">
+    </div>
+    <div class="form-item form-type-textfield form-item-last-name form-required">
+      <label for="edit-last-name">Last Name <span class="form-required" title="This field is required.">*</span></label>
+     <input type="text" id="edit-last-name" name="last_name" value="" size="30" maxlength="128" class="form-text required" required="">
+    </div>
+    </div><div class="additional row"><div class="form-item form-type-textfield form-item-company form-required">
+      <label for="edit-company">Company <span class="form-required" title="This field is required.">*</span></label>
+     <input type="text" id="edit-company" name="company" value="" size="30" maxlength="128" class="form-text required" required="">
+    </div>
+    <div class="form-item form-type-textfield form-item-email form-required">
+      <label for="edit-email">E-mail <span class="form-required" title="This field is required.">*</span></label>
+     <input type="text" id="edit-email" name="email" value="" size="30" maxlength="128" class="form-text required" required="">
+    </div>
+    </div><div class="country row"><div class="form-item form-type-select form-item-Country form-required">
+      <label for="edit-country">Country <span class="form-required" title="This field is required.">*</span></label>
+     <select id="edit-country" name="Country" class="form-select required">
+<option value="" selected="selected">- Select -</option><option value="United States">United States</option><option value="Canada">Canada</option><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="American Samoa">American Samoa</option><option value="Andorra">Andorra</option><option value="Angola">Angola</option><option value="Anguilla">Anguilla</option><option value="Antarctica">Antarctica</option><option value="Antigua and Barbuda">Antigua and Barbuda</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bermuda">Bermuda</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia and Herzegowina">Bosnia and Herzegowina</option><option value="Botswana">Botswana</option><option value="Bouvet Island">Bouvet Island</option><option value="Brazil">Brazil</option><option value="British Indian Ocean Territory">British Indian Ocean Territory</option><option value="Brunei Darussalam">Brunei Darussalam</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Cape Verde">Cape Verde</option><option value="Cayman Islands">Cayman Islands</option><option value="Central African Republic">Central African Republic</option><option value="Chad">Chad</option><option value="Chile">Chile</option><option value="China">China</option><option value="Christmas Island">Christmas Island</option><option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Congo">Congo</option><option value="Cook Islands">Cook Islands</option><option value="Costa Rica">Costa Rica</option><option value="Cote dIvoire">Cote dIvoire</option><option value="Croatia (Hrvatska)">Croatia (Hrvatska)</option><option value="Cuba">Cuba</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Djibouti">Djibouti</option><option value="Dominica">Dominica</option><option value="Dominican Republic">Dominican Republic</option><option value="DR">DR</option><option value="East Timor">East Timor</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Equatorial Guinea">Equatorial Guinea</option><option value="Eritrea">Eritrea</option><option value="Estonia">Estonia</option><option value="Ethiopia">Ethiopia</option><option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option><option value="Faroe Islands">Faroe Islands</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France">France</option><option value="France Metropolitan">France Metropolitan</option><option value="French Guiana">French Guiana</option><option value="French Polynesia">French Polynesia</option><option value="French Southern Territories">French Southern Territories</option><option value="Gabon">Gabon</option><option value="Gambia">Gambia</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Gibraltar">Gibraltar</option><option value="Greece">Greece</option><option value="Greenland">Greenland</option><option value="Grenada">Grenada</option><option value="Guadeloupe">Guadeloupe</option><option value="Guam">Guam</option><option value="Guatemala">Guatemala</option><option value="Guinea">Guinea</option><option value="Guinea-Bissau">Guinea-Bissau</option><option value="Guyana">Guyana</option><option value="Haiti">Haiti</option><option value="Heard and McDonald Islands">Heard and McDonald Islands</option><option value="Holy See (VC State)">Holy See (VC State)</option><option value="Hong Kong">Hong Kong</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Jamaica">Jamaica</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kiribati">Kiribati</option><option value="Korea DPR">Korea DPR</option><option value="Korea Republic of">Korea Republic of</option><option value="Kuwait">Kuwait</option><option value="Kyrgyzstan">Kyrgyzstan</option><option value="Lao Peoples DR">Lao Peoples DR</option><option value="Latvia">Latvia</option><option value="Lebanon">Lebanon</option><option value="Lesotho">Lesotho</option><option value="Liberia">Liberia</option><option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Macau">Macau</option><option value="Macedonia">Macedonia</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malta">Malta</option><option value="Marshall Islands">Marshall Islands</option><option value="Martinique">Martinique</option><option value="Mauritania">Mauritania</option><option value="Mauritius">Mauritius</option><option value="Mayotte">Mayotte</option><option value="Mexico">Mexico</option><option value="Micronesia Fed States of">Micronesia Fed States of</option><option value="Moldova">Moldova</option><option value="Monaco">Monaco</option><option value="Mongolia">Mongolia</option><option value="Montserrat">Montserrat</option><option value="Morocco">Morocco</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Namibia">Namibia</option><option value="Nauru">Nauru</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="Netherlands Antilles">Netherlands Antilles</option><option value="New Caledonia">New Caledonia</option><option value="New Zealand">New Zealand</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="Niue">Niue</option><option value="Norfolk Island">Norfolk Island</option><option value="Northern Mariana Islands">Northern Mariana Islands</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palau">Palau</option><option value="Panama">Panama</option><option value="Papua New Guinea">Papua New Guinea</option><option value="Paraguay">Paraguay</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Pitcairn">Pitcairn</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Puerto Rico">Puerto Rico</option><option value="Qatar">Qatar</option><option value="Reunion">Reunion</option><option value="Romania">Romania</option><option value="Russian Federation">Russian Federation</option><option value="Rwanda">Rwanda</option><option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option><option value="Saint Lucia">Saint Lucia</option><option value="Saint Vincent and Grenadines">Saint Vincent and Grenadines</option><option value="Samoa">Samoa</option><option value="San Marino">San Marino</option><option value="Sao Tome and Principe">Sao Tome and Principe</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Seychelles">Seychelles</option><option value="Sierra Leone">Sierra Leone</option><option value="Singapore">Singapore</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Solomon Islands">Solomon Islands</option><option value="Somalia">Somalia</option><option value="South Africa">South Africa</option><option value="South Georgia">South Georgia</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="St. Helena">St. Helena</option><option value="St. Pierre and Miquelon">St. Pierre and Miquelon</option><option value="Sudan">Sudan</option><option value="Suriname">Suriname</option><option value="Svalbard and Jan Mayen Islands">Svalbard and Jan Mayen Islands</option><option value="Swaziland">Swaziland</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syrian Arab Republic">Syrian Arab Republic</option><option value="Taiwan Province of China">Taiwan Province of China</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Togo">Togo</option><option value="Tokelau">Tokelau</option><option value="Tonga">Tonga</option><option value="Trinidad and Tobago">Trinidad and Tobago</option><option value="Tunisia">Tunisia</option><option value="Turkey">Turkey</option><option value="Turkmenistan">Turkmenistan</option><option value="Turks and Caicos Islands">Turks and Caicos Islands</option><option value="Tuvalu">Tuvalu</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="United Arab Emirates">United Arab Emirates</option><option value="United Kingdom">United Kingdom</option><option value="Uruguay">Uruguay</option><option value="US Minor Outlying Islands">US Minor Outlying Islands</option><option value="Uzbekistan">Uzbekistan</option><option value="Vanuatu">Vanuatu</option><option value="Venezuela">Venezuela</option><option value="Viet Nam">Viet Nam</option><option value="Virgin Islands (British)">Virgin Islands (British)</option><option value="Virgin Islands (U.S.)">Virgin Islands (U.S.)</option><option value="Wallis and Futuna Islands">Wallis and Futuna Islands</option><option value="Western Sahara">Western Sahara</option><option value="Yemen">Yemen</option><option value="Yugoslavia">Yugoslavia</option><option value="Zambia">Zambia</option><option value="Zimbabwe">Zimbabwe</option>
+</select>
+    </div>
+      <div class="phone-number form-item"><div class="form-item form-type-textfield form-item-area-code form-required">
+        <label for="edit-area-code">Phone <span class="form-required" title="This field is required.">*</span></label>
+        <input type="text" id="edit-area-code" name="area_code" value="" size="30" maxlength="3" class="form-text required" required="">
+        <input type="text" id="edit-npanxx" name="npanxx" value="" size="30" maxlength="3" class="form-text required" required="">
+        <input type="text" id="edit-npanxx2" name="npanxx2" value="" size="30" maxlength="4" class="form-text required" required="">
+      </div>
+
+    </div>
+    </div>
+    <div class="form-item form-type-textarea form-item-notes">
+      <label for="edit-notes">Notes </label>
+     <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea"><textarea id="edit-notes" name="notes" cols="60" rows="5" class="form-textarea"></textarea><div class="grippie"></div></div>
+    </div>
+    <div class="terms model"><p>You are requesting a quote and other information regarding your telecommunications needs.</p><div class="form-item form-type-checkbox form-item-terms" style="display: none;">
+     <input type="checkbox" id="edit-terms" name="terms" value="1" checked="checked" class="form-checkbox">  <label for="edit-terms">I agree to receive quotes, newsletters and other information from sourceforge.net and its partners regarding telecommunication services and products. I understand that I can withdraw my consent at anytime. </label>
+
+    </div>
+    <p class="privacy-policy-contact"></p></div></div>
+  </fieldset>
+  <div class="buttons">
+      <button type="button" class="button secondary multi-prev left">Prev</button>
+      <button type="button" class="button secondary multi-next right" disabled="">Next</button><input class="right submit form-submit" type="submit" id="edit-submit" name="op" value="Submit Request">
+  </div>
+  <div id="lead-callout"></div><input type="hidden" name="form_build_id" value="form-RV7DDlwBHdQmDGSjaX_klZI6SvN1rIAiArWcgN75whQ">
+  <input type="hidden" name="form_id" value="leadform_simple_form">
+  <input type="hidden" name="SRC" value="SourceForge" >
+  <input type="hidden" name="Landing_Page"  value="Download Page">
+</form>
+  <div class="form-footer">
+    <a href="https://slashdotmedia.com/privacy-statement" target="blank">Privacy Policy</a> <span class="dot">&middot;</span> <a href="https://slashdotmedia.com/contact" target="blank">Contact Us</a>
+  </div>
+</div>
+
+
+ 
+        </aside>
+
+
+ 
+    
+
+
+
+<div id="SF_Temp5_300x250_B_wrapped" class="draper medrec  "
+>
+<script type="text/javascript">
+/*global googletag */
+if (true) {
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148432594-0" ></div>');
+}());
+
+gptadRenderers['SF_Temp5_300x250_B'] = function(){  // jshint ignore:line
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148432594-0');
+    });
+};
+gptadRenderers['SF_Temp5_300x250_B']();  // jshint ignore:line
+}
+</script>
+</div>
+
+
+
+        
+
+
+ 
+    
+
+
+
+<div id="SF_Temp5_300x250_C_wrapped" class="draper medrec  "
+>
+<script type="text/javascript">
+/*global googletag */
+if (true) {
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148432598-0" ></div>');
+}());
+
+gptadRenderers['SF_Temp5_300x250_C'] = function(){  // jshint ignore:line
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148432598-0');
+    });
+};
+gptadRenderers['SF_Temp5_300x250_C']();  // jshint ignore:line
+}
+</script>
+</div>
+
+
+
+    
+    
+
+    
+</div>
+
+        
+
+        
+
+
+ 
+    
+
+
+
+<div id="SF_Temp5_728x90_B_wrapped" class="draper leaderboard  "
+>
+<script type="text/javascript">
+/*global googletag */
+if (true) {
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148432592-0" ></div>');
+}());
+
+gptadRenderers['SF_Temp5_728x90_B'] = function(){  // jshint ignore:line
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148432592-0');
+    });
+};
+gptadRenderers['SF_Temp5_728x90_B']();  // jshint ignore:line
+}
+</script>
+</div>
+
+
+        
+
+        
+
+    </div> 
+</div> 
+
+
+
+        </div>
+        
+
+        
+            
+    <div id="overlay-blockthis-wrapper">
+    <div id="overlay-blockthis">
+        <div class="instructions">
+            <h2>Thanks for helping keep SourceForge clean.</h2>
+            <p>
+            <u>Screenshot instructions:</u><br>
+            <a data-external target=_blank href="http://windows.microsoft.com/en-us/windows/take-screen-capture-print-screen#take-screen-capture-print-screen=windows-8">Windows</a><br>
+            <a data-external target=_blank href="https://support.apple.com/en-us/HT201361">Mac</a><br>
+            <a data-external target=_blank href="https://access.redhat.com/solutions/2178">Red Hat Linux</a> &nbsp;
+            <a data-external target=_blank href="https://help.ubuntu.com/stable/ubuntu-help/screen-shot-record.html">Ubuntu</a>
+            </p>
+            <p>
+                <u>Click URL instructions:</u><br>
+                Right-click on ad, choose "Copy Link", then paste here &rarr;<br>
+                (This may not be possible with some types of ads)
+            </p>
+            <a class="more-info" href="https://sourceforge.net/p/forge/documentation/Report%20a%20problem%20with%20Ad%20content/" target="_blank">More information about our ad policies</a>
+        </div>
+        <form class="dropzone" action="/api/instrumentation/gpt" id="blockthisForm" method="POST">
+            <a href="#" id="btn-blockthis-close">X</a>
+            
+  <input type="hidden" name="_visit_cookie" value=""/>
+                <input type='hidden' name='timestamp' value='1493608440'/>
+                <input type='hidden' name='spinner' value='Xj2dToZsv3x_ZSlIfTWjSDz0dPZM'/>
+                <p class='oa4e583940907895818c195a726f80a0933b674f7'><label for='XiA88z_5W7i8vkZ39fiNFX_vAW8E'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='XiA88z_5W7i8vkZ39fiNFX_vAW8E' name='XiQ88z_5W7:kChbAsBv:CyeB7b24' type=
+             'text'/></p>
+                <p class='oa4e583940907895818c195a726f80a0933b674f7'><label for='XiA88z_5W7i4vkZ39fiNFX_vAW8E'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='XiA88z_5W7i4vkZ39fiNFX_vAW8E' name='XiQ88z_5W7ukChbAsBv:CyeB7b24' type=
+             'text'/></p>
+            <p>Briefly describe the problem (required):
+            <input name="XhAM20vhdtm:tIz1xu7Md7Q5WqsM" type="text" required>
+            </p>
+
+            <div class="upload-text">Upload screenshot of ad (required):</div>
+            <div id='upload-it'>
+                <a href="#" onclick="return false">Select a file</a>, or drag & drop file here.
+            </div>
+            <div id="upload-it-placeholder"></div> 
+
+            <div class="dropzone-previews" style="display: none"></div>
+            <div class="dz-message" style="display: none"></div> 
+            
+            <div id="dropzone-preview-template" style="display: none">
+                <div class="dz-preview dz-file-preview">
+                    <img data-dz-thumbnail src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt=""/>
+                    <div class="dz-success-mark"><span>✔</span></div>
+                    <div class="dz-error-mark"><span>✘</span></div>
+                    <div class="dz-error-message"><span data-dz-errormessage></span></div>
+                </div>
+            </div>
+            <p></p>
+            <p>Please provide the ad click URL, if possible:
+            <input name="XhgQ_yPhEgGqrJqTEgorhRKpN:04" type="url">
+            </p>
+            <textarea id="gpt-info" name="XiwMy1frZBNA7eRmIHa4PaW_gffA"></textarea>
+            <input type="submit" id="btn-blockthis-submit" value="Submit Report">
+        </form>
+    </div>
+    </div>
+
+        
+
+        <script type="text/javascript" src="//ads.pro-market.net/ads/scripts/site-143572.js"></script>
+
+<footer id="site-footer">
+    <div class="wrapper">
+        <nav>
+            <h5>SourceForge</h5>
+            <a href="/about">About</a>
+            <a href="/blog/category/sitestatus/">Site Status</a>
+            <a href="http://twitter.com/sfnet_ops">@sfnet_ops</a>
+        </nav>
+        <nav>
+            <h5>Find and Develop Software</h5>
+            <a href="/create/">Create a Project</a>
+            <a href="/directory/">Software Directory</a>
+            <a href="/top">Top Downloaded Projects</a>
+        </nav>
+        <nav>
+            <h5>Community</h5>
+            <a href="/blog/">Blog</a>
+            <a href="http://twitter.com/sourceforge">@sourceforge</a>
+            <a href="https://library.slashdotmedia.com/">Resources</a>
+        </nav>
+        <nav>
+            <h5>Help</h5>
+            <a href="http://p.sf.net/sourceforge/docs">Site Documentation</a>
+            <a href="/support">Support Request</a>
+        </nav>
+    </div>
+</footer>
+<footer id="site-copyright-footer">
+    <div class="wrapper">
+        <div id="copyright">
+            &copy; 2017 Slashdot Media. All Rights Reserved.<br />
+        </div>
+        <nav>
+            <a href="https://slashdotmedia.com/terms-of-use/">Terms</a>
+            <a href="https://slashdotmedia.com/privacy-statement/">Privacy</a>
+            <span id='teconsent'></span>
+            <a href="https://slashdotmedia.com/opt-out-choices/">Opt Out Choices</a>
+            <a href="https://slashdotmedia.com">Advertise</a>
+        </nav>
+    </div>
+</footer>
+
+    <script type="text/javascript">
+        SF.pspRedirect = true;
+        SF.pdlpRedirect = true; //pdlp trafficking %us is active, and its US only
+
+        SF.downloadRedirectDelay = 40000;
+        SF.ios = false;
+
+        $.extend(SF, {"downloadDelay": 5000, "noCountDown": false, "shortname": "freetype"});
+            SF.Ads.enableLeadgenResize = true;
+    </script>
+
+    
+<script src="//a.fsdn.com/con/js/sftheme/vendor/dropzone-4.3.0.min.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/vendor/dragster.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/lib/jquery.cookie.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/lib/handlebars.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/jquery.notify.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/sftheme/shared.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/widgets.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/global.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/download-common.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/download.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/activity.js?1493311460" type="text/javascript"></script>
+<script src="//a.fsdn.com/con/js/madmen.js?1493311460" type="text/javascript"></script>
+
+
+
+    <script type="text/javascript">
+    SF.Ads.showContentForAdblock();
+    </script>
+
+
+        
+<div id="newsletter-floating" class="goth-form">
+    <h2>Get latest updates about Open Source Projects, Conferences and News.</h2>
+    <p>Sign up for the SourceForge newsletter:</p>
+    
+<form action="/user/newsletters/subscribe" method="post">
+    <div class="form">
+        <input type="email" name="XigI:wPJDKcQWqGFU2jgU0ltPwNM"  placeholder="email@address.com" value="">
+    <input type="submit" value="Subscribe" class="bt">
+    </div>
+    <div class="fielderror"></div>
+
+    <p class="details">
+    <span class="fielderror"></span>
+    <label>
+        <input type="checkbox" required name="XiAQ8z:hKsWsvkZ39fiNFX_vAW8E" value="true" checked>I agree to receive quotes, newsletters and other information from sourceforge.net and its partners regarding IT services and products. I understand that I can withdraw my consent at any time. Please refer to our <a href="https://slashdotmedia.com/privacy-statement/">Privacy Policy</a> or <a href="/support">Contact Us</a> for more details
+        <input type="hidden" name="Xggk2xP9cgHy2JCF6Ixwk1PL_Dtg" value="true">
+    </label>
+    </p>
+
+    <input type="hidden" name="source" value="floating">
+    <input type="hidden" name="XgwQ81PVbrWaGKT17KJ4JwN8udgQ" value="US">
+    <input type="hidden" name="XnAQ81PVbrWaGKT17KDehYEhvXvY" value="ip_address">
+    <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="sitewide">
+    <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="research">
+    <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="events">
+    <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="thirdparty">
+    <input type="hidden" name="XhAk21uhDumutLyBsu7Md7Q5WqsM" value="all">
+    <input type="hidden" name="XjAw:1G30EP3qAcVPi7W0XcBdXlc" value="">
+    
+  <input type="hidden" name="_visit_cookie" value=""/>
+    <input type='hidden' name='timestamp' value='1493608440'/>
+    <input type='hidden' name='spinner' value='Xj2dToZsv3x_ZSlIfTWjSDz0dPZM'/>
+    <p class='oa4e583940907895818c195a726f80a0933b674f7'><label for='XiA88z_5W7S8vkZ39fiNFX_vAW8E'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='XiA88z_5W7S8vkZ39fiNFX_vAW8E' name='XiQ88z_5W7:kChbAsBv:CyeB7b24' type=
+             'text'/></p>
+    <p class='oa4e583940907895818c195a726f80a0933b674f7'><label for='XiA88z_5W7S4vkZ39fiNFX_vAW8E'>You seem to have CSS turned off.
+             Please don't fill out this field.</label><input id='XiA88z_5W7S4vkZ39fiNFX_vAW8E' name='XiQ88z_5W7ukChbAsBv:CyeB7b24' type=
+             'text'/></p>
+</form>
+
+    <a id="btn-float-close">No, thanks</a>
+</div>
+
+        
+
+        
+            <script type="text/javascript" src="//consent-st.truste.com/get?name=notice.js&amp;domain=slashdot.org&amp;c=teconsent&amp;text=true"></script>
+            <noscript><p><img src="//analytics.slashdotmedia.com/sf.php?idsite=39" style="border:0;" alt="" /></p></noscript>
+    
+    
+
+<script type="text/javascript">
+/*global _taboola*/
+window._taboola = window._taboola || [];
+_taboola.push({flush: true});
+</script>
+
+
+        
+      </body>
+</html>
+
