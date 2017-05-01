@@ -4,13 +4,13 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.59.1.14.geee677c480
+pkgver=2.19.59.1.18.g6056347657
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
 license=('GPL')
-depends=('guile>=2.0.13' 'pango' 'python2')
+depends=('guile1.8' 'pango' 'python2')
 makedepends=('fontforge' 'git' 'gsfonts' 't1utils' 'ghostscript'
 	     'dblatex' 'texlive-langcyrillic' 'texi2html' 'netpbm')
 optdepends=('imagemagick: building HTML documentation'
@@ -37,12 +37,9 @@ prepare() {
     sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-
-  sed -i 's|GUILE_CFLAGS=.*|GUILE_CFLAGS="`pkg-config --cflags guile`"|' configure.ac
-  sed -i 's|GUILE_LDFLAGS=.*|GUILE_LDFLAGS="`pkg-config --libs guile`"|' configure.ac
-  
-  rm -rf python/out/
+sed -i 's+guile-config-1.8+guile-config1.8+' aclocal.m4
 }
+
 
 build() {
   cd lilypond/
@@ -52,7 +49,7 @@ build() {
   ./autogen.sh \
       --prefix=/usr \
       --disable-documentation \
-      --enable-guile2
+      --enable-guile2=no
   make all
 }
 
