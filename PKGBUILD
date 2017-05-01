@@ -1,8 +1,8 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-git
-pkgver=0.7.0.r121.gf46860e3
-pkgrel=2
+pkgver=0.7.0.r125.gc5b97191
+pkgrel=1
 pkgdesc="A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe2.ai/"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=(
     # binary repositories:
         # required:
-            'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf'
+            'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf' 'cuda'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'opencv' 'openmpi' 'snappy'
             'zeromq' 'hiredis'
@@ -29,7 +29,7 @@ depends=(
     # missing:
         # 'python2-nvd3'
 )
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'gcc5')
 provides=('caffe2')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2' 'caffe2-cpu' 'caffe2-cpu-git')
