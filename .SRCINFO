@@ -1,0 +1,16 @@
+pkgbase = mimipenguin-git
+	pkgdesc = A tool to dump the login password from the current linux user
+	pkgver = r102.d69cc00
+	pkgrel = 1
+	url = https://github.com/huntergregal/mimipenguin
+	arch = any
+	license = CCPL:by
+	makedepends = git
+	depends = python
+	provides = mimipenguin
+	conflicts = mimipenguin
+	source = git+https://github.com/huntergregal/mimipenguin
+	sha512sums = SKIP
+
+pkgname = mimipenguin-git
+
