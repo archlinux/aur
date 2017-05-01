@@ -32,7 +32,7 @@ sudo journalctl -u home-assistant -f &
 echo "Sleep 60sec to ensure everything is working good"
 
 sleep 60
-kill $(jobs -p)
+sudo kill $(jobs -p)
 sudo systemctl --no-pager status home-assistant
 
 echo "You simply have to commit+push the changes"
