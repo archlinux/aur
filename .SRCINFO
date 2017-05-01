@@ -1,0 +1,27 @@
+pkgbase = scrt-sfx
+	pkgdesc = Vandyke SecureCRT & SecureFX SSH Client
+	pkgver = 8.1.2
+	pkgrel = 1
+	url = http://www.vandyke.com
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = openssl
+	depends = glibc
+	depends = qt4
+	depends = libpng12
+	depends = libopenssl-1.0-compat
+	provides = scrt
+	provides = sfx
+	options = !strip
+	source = run_securecrt.sh
+	source = run_securefx.sh
+	md5sums = b322e49e8e8e276339a506ad0ef945ba
+	md5sums = 53135a35b42cccda0704f07ecddbb28a
+	source_x86_64 = scrt-sfx-8.1.2.1362.ubuntu16-64.tar.gz::file://scrt-sfx-8.1.2.1362.ubuntu16-64.tar.gz
+	md5sums_x86_64 = 03e0dce2d9f5846549ab3eb984485111
+	source_i686 = scrt-sfx-8.1.2.1362.ubuntu16.tar.gz::file://scrt-sfx-8.1.2.1362.ubuntu16.tar.gz
+	md5sums_i686 = 62b179388e49392a6757dbc85e316f7b
+
+pkgname = scrt-sfx
+
