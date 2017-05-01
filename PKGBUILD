@@ -1,8 +1,8 @@
 # Maintainer: ava1ar <mail@ava1ar.me>
 
 pkgname=aftershotpro3
-pkgver=3.2.0.205
-pkgrel=2
+pkgver=3.3.0.234
+pkgrel=1
 pkgdesc="Professional Workflow and RAW Conversion (3rd version)"
 url="http://www.aftershotpro.com/en/products/aftershot/pro"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('qt5-webkit' 'qt5-tools' 'qt5-svg' 'ocl-icd')
 optdepends=('opencl-nvidia' 'opencl-mesa' 'opencl-catalyst')
 source=(AfterShotPro_${pkgver}.rpm::http://dwnld.aftershotpro.com/trials/3/AfterShotPro3.rpm license.txt)
-sha1sums=('b2c06e24a96624864fb63d528621ee0680558e9f'
+sha1sums=('ad55e95805210919eb102e6fbef84ff19779a034'
           'f4b747625da3ad5d09536eb6e68107817826ec7b')
 
 package() {
