@@ -1,8 +1,8 @@
-# Maintainer: Ainola
+# Maintainer: Swix
 
 pkgname=gog-terraria
-pkgver=2.13.0.16
-pkgrel=3
+pkgver=2.17.0.20
+pkgrel=1
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
 license=('custom')
@@ -13,7 +13,7 @@ optdepends=('firejail: Automatically sandbox this application from your OS')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop"
         "$pkgname")
-sha256sums=('0ef29ce47158ecc55e680a7dc99458b599eabd45c99200437b19f2647b254c37'
+sha256sums=('60e076e51cf8792cfcfad0b3ef5017d90313df47edc7df4687031ed3a4bae863'
             '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093'
             '939f39e8b8cbb30ae95648d299008df030b6c6e8e583893da1916e024b493e5b')
 
