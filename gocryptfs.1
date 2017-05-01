@@ -13,22 +13,21 @@ gocryptfs \- mount an encrypted directory
 gocryptfs \-init [OPTIONS] CIPHERDIR
 .SS Mount
 .PP
-gocryptfs [OPTIONS] CIPHERDIR MOUNTPOINT [\-o COMMA\-SEPARATED\-OPTIONS]
+gocryptfs [OPTIONS] CIPHERDIR MOUNTPOINT \-o
+COMMA\-SEPARATED\-OPTIONS (#o-comma-separated-options)
 .SS Change password
 .PP
 gocryptfs \-passwd [OPTIONS] CIPHERDIR
 .SH DESCRIPTION
 .PP
-Options:
-.TP
-.B \f[B]\-aessiv\f[]
+Available options are listed below.
+.SS \-aessiv
+.PP
 Use the AES\-SIV encryption mode.
 This is slower than GCM but is secure with deterministic nonces as used
 in "\-reverse" mode.
-.RS
-.RE
-.TP
-.B \f[B]\-allow_other\f[]
+.SS \-allow_other
+.PP
 By default, the Linux kernel prevents any other user (even root) to
 access a mounted FUSE filesystem.
 Settings this option allows access for other users, subject to file
@@ -36,69 +35,70 @@ permission checking.
 Only works if user_allow_other is set in /etc/fuse.conf.
 This option is equivalent to "allow_other" plus "default_permissions"
 described in fuse(8).
-.RS
-.RE
-.TP
-.B \f[B]\-config string\f[]
+.SS \-config string
+.PP
 Use specified config file instead of CIPHERDIR/gocryptfs.conf
-.RS
-.RE
-.TP
-.B \f[B]\-cpuprofile string\f[]
+.SS \-cpuprofile string
+.PP
 Write cpu profile to specified file
-.RS
-.RE
-.TP
-.B \f[B]\-ctlsock string\f[]
+.SS \-ctlsock string
+.PP
 Create a control socket at the specified location.
 The socket can be used to decrypt and encrypt paths inside the
 filesystem.
 When using this option, make sure that the direcory you place the socket
 in is not world\-accessible.
 For example, \f[C]/run/user/UID/my.socket\f[] would be suitable.
-.RS
-.RE
-.TP
-.B \f[B]\-d, \-debug\f[]
+.SS \-d, \-debug
+.PP
 Enable debug output
-.RS
-.RE
-.TP
-.B \f[B]\-extpass string\f[]
+.SS \-extpass string
+.PP
 Use an external program (like ssh\-askpass) for the password prompt.
 The program should return the password on stdout, a trailing newline is
 stripped by gocryptfs.
 Using something like "cat /mypassword.txt" allows to mount the gocryptfs
 filesytem without user interaction.
-.RS
-.RE
-.TP
-.B \f[B]\-fg, \-f\f[]
+.SS \-fg, \-f
+.PP
 Stay in the foreground instead of forking away.
 Implies "\-nosyslog".
 For compatability, "\-f" is also accepted, but "\-fg" is preferred.
-.RS
-.RE
-.TP
-.B \f[B]\-fsname string\f[]
+.SS \-forcedecode
+.PP
+Force decode of encrypted files even if the integrity check fails,
+instead of failing with an IO error.
+Warning messages are still printed to syslog if corrupted files are
+encountered.
+It can be useful to recover files from disks with bad sectors or other
+corrupted media.
+It shall not be used if the origin of corruption is unknown, specially
+if you want to run executable files.
+.PP
+For corrupted media, note that you probably want to use dd_rescue(1)
+instead, which will recover all but the corrupted 4kB block.
+.PP
+This option makes no sense in reverse mode.
+It requires gocryptfs to be compiled with openssl support and implies
+\-openssl true.
+Because of this, it is not compatible with \-aessiv, that uses built\-in
+Go crypto.
+.PP
+Setting this option forces the filesystem to read\-only and noexec.
+.SS \-fsname string
+.PP
 Override the filesystem name (first column in df \-T).
 Can also be passed as "\-o fsname=" and is equivalent to libfuse\[aq]s
 option of the same name.
 By default, CIPHERDIR is used.
-.RS
-.RE
-.TP
-.B \f[B]\-fusedebug\f[]
+.SS \-fusedebug
+.PP
 Enable fuse library debug output
-.RS
-.RE
-.TP
-.B \f[B]\-init\f[]
+.SS \-init
+.PP
 Initialize encrypted directory
-.RS
-.RE
-.TP
-.B \f[B]\-ko\f[]
+.SS \-ko
+.PP
 Pass additonal mount options to the kernel (comma\-separated list).
 FUSE filesystems are mounted with "nodev,nosuid" by default.
 If gocryptfs runs as root, you can enable device files by passing the
@@ -108,18 +108,14 @@ pass "suid".
 interesting.
 For a complete list see the section
 \f[C]FILESYSTEM\-INDEPENDENT\ MOUNT\ OPTIONS\f[] in mount(8).
-.RS
-.RE
-.TP
-.B \f[B]\-longnames\f[]
+.SS \-longnames
+.PP
 Store names longer than 176 bytes in extra files (default true) This
 flag is useful when recovering old gocryptfs filesystems using
 "\-masterkey".
 It is ignored (stays at the default) otherwise.
-.RS
-.RE
-.TP
-.B \f[B]\-masterkey string\f[]
+.SS \-masterkey string
+.PP
 Use a explicit master key specified on the command line.
 This option can be used to mount a gocryptfs filesystem without a config
 file.
@@ -127,36 +123,29 @@ Note that the command line, and with it the master key, is visible to
 anybody on the machine who can execute "ps \-auxwww".
 This is meant as a recovery option for emergencies, such as if you have
 forgotten your password.
-.RS
 .PP
 Example master key:
 .PD 0
 .P
 .PD
 6f717d8b\-6b5f8e8a\-fd0aa206\-778ec093\-62c5669b\-abd229cd\-241e00cd\-b4d6713d
-.RE
-.TP
-.B \f[B]\-memprofile string\f[]
+.SS \-memprofile string
+.PP
 Write memory profile to the specified file.
 This is useful when debugging memory usage of gocryptfs.
-.RS
-.RE
-.TP
-.B \f[B]\-nonempty\f[]
+.SS \-nonempty
+.PP
 Allow mounting over non\-empty directories.
 FUSE by default disallows this to prevent accidential shadowing of
 files.
-.RS
-.RE
-.TP
-.B \f[B]\-noprealloc\f[]
+.SS \-noprealloc
+.PP
 Disable preallocation before writing.
 By default, gocryptfs preallocates the space the next write will take
 using fallocate(2) in mode FALLOC_FL_KEEP_SIZE.
 The preallocation makes sure it cannot run out of space in the middle of
 the write, which would cause the last 4kB block to be corrupt and
 unreadable.
-.RS
 .PP
 On ext4, preallocation is fast and does not cause a noticeable
 performance hit.
@@ -167,49 +156,37 @@ against out\-of\-space errors for a massive speedup.
 .PP
 For benchmarks and more details of the issue see
 https://github.com/rfjakob/gocryptfs/issues/63 .
-.RE
-.TP
-.B \f[B]\-nosyslog\f[]
+.SS \-nosyslog
+.PP
 Diagnostic messages are normally redirected to syslog once gocryptfs
 daemonizes.
 This option disables the redirection and messages will continue be
 printed to stdout and stderr.
-.RS
-.RE
-.TP
-.B \f[B]\-notifypid int\f[]
+.SS \-notifypid int
+.PP
 Send USR1 to the specified process after successful mount.
 This is used internally for daemonization.
-.RS
-.RE
-.TP
-.B \f[B]\-o COMMA\-SEPARATED\-OPTIONS\f[]
+.SS \-o COMMA\-SEPARATED\-OPTIONS
+.PP
 For compatibility with mount(1), options are also accepted as "\-o
 COMMA\-SEPARATED\-OPTIONS" at the end of the command line.
 For example, "\-o q,zerokey" is equivalent to passing "\-q \-zerokey".
-.RS
-.RE
-.TP
-.B \f[B]\-openssl bool/"auto"\f[]
+.SS \-openssl bool/"auto"
+.PP
 Use OpenSSL instead of built\-in Go crypto (default "auto").
 Using built\-in crypto is 4x slower unless your CPU has AES instructions
 and you are using Go 1.6+.
 In mode "auto", gocrypts chooses the faster option.
-.RS
-.RE
-.TP
-.B \f[B]\-passfile string\f[]
+.SS \-passfile string
+.PP
 Read password from the specified file.
 This is a shortcut for specifying \[aq]\-extpass="/bin/cat \-\-
 FILE"\[aq].
-.RS
-.RE
-.TP
-.B \f[B]\-passwd\f[]
+.SS \-passwd
+.PP
 Change the password.
 Will ask for the old password, check if it is correct, and ask for a new
 one.
-.RS
 .PP
 This can be used together with \f[C]\-masterkey\f[] if you forgot the
 password but know the master key.
@@ -219,80 +196,79 @@ It will, however, create a backup copy of the old config file as
 \f[C]gocryptfs.conf.bak\f[].
 Delete it after you have verified that you can access your files with
 the new password.
-.RE
-.TP
-.B \f[B]\-plaintextnames\f[]
+.SS \-plaintextnames
+.PP
 Do not encrypt file names and symlink targets
-.RS
-.RE
-.TP
-.B \f[B]\-q, \-quiet\f[]
+.SS \-q, \-quiet
+.PP
 Quiet \- silence informational messages
-.RS
-.RE
-.TP
-.B \f[B]\-raw64\f[]
+.SS \-raw64
+.PP
 Use unpadded base64 encoding for file names.
 This gets rid of the trailing "\\=\\=".
 A filesystem created with this option can only be mounted using
 gocryptfs v1.2 and higher.
-.RS
-.RE
-.TP
-.B \f[B]\-reverse\f[]
+.SS \-reverse
+.PP
 Reverse mode shows a read\-only encrypted view of a plaintext directory.
 Implies "\-aessiv".
-.RS
-.RE
-.TP
-.B \f[B]\-ro\f[]
+.SS \-ro
+.PP
 Mount the filesystem read\-only
-.RS
-.RE
-.TP
-.B \f[B]\-scryptn int\f[]
-scrypt cost parameter logN.
-Setting this to a lower value speeds up mounting but makes the password
-susceptible to brute\-force attacks (default 16)
-.RS
-.RE
-.TP
-.B \f[B]\-speed\f[]
+.SS \-scryptn int
+.PP
+scrypt cost parameter expressed as scryptn=log2(N).
+Possible values are 10 to 28, representing N=2^10 to N=2^28.
+.PP
+Setting this to a lower value speeds up mounting and reduces its memory
+needs, but makes the password susceptible to brute\-force attacks.
+The default is 16.
+.SS \-serialize_reads
+.PP
+The kernel usually submits multiple concurrent reads to service
+userspace requests and kernel readahead.
+gocryptfs serves them concurrently and in arbitrary order.
+On backing storage that performs poorly for concurrent or out\-of\-order
+reads (like Amazon Cloud Drive), this behavoir can cause very slow read
+speeds.
+.PP
+The \f[C]\-serialize_reads\f[] option does two things: (1) reads will be
+submitted one\-by\-one (no concurrency) and (2) gocryptfs tries to order
+the reads by file offset order.
+.PP
+The ordering requires gocryptfs to wait a certain time before submitting
+a read.
+The serialization introduces extra locking.
+These factors will limit throughput to below 70MB/s.
+.PP
+For more details visit https://github.com/rfjakob/gocryptfs/issues/92 .
+.SS \-speed
+.PP
 Run crypto speed test.
 Benchmark Go\[aq]s built\-in GCM against OpenSSL (if available).
 The library that will be selected on "\-openssl=auto" (the default) is
 marked as such.
-.RS
-.RE
-.TP
-.B \f[B]\-version\f[]
+.SS \-version
+.PP
 Print version and exit.
 The output contains three fields seperated by ";".
 Example: "gocryptfs v1.1.1\-5\-g75b776c; go\-fuse 6b801d3; 2016\-11\-01
 go1.7.3".
 Field 1 is the gocryptfs version, field 2 is the version of the go\-fuse
 library, field 3 is the compile date and the Go version that was used.
-.RS
-.RE
-.TP
-.B \f[B]\-wpanic\f[]
+.SS \-wpanic
+.PP
 When encountering a warning, panic and exit immediately.
 This is useful in regression testing.
-.RS
-.RE
-.TP
-.B \f[B]\-zerokey\f[]
+.SS \-zerokey
+.PP
 Use all\-zero dummy master key.
 This options is only intended for automated testing as it does not
 provide any security.
-.RS
-.RE
-.TP
-.B \f[B]\-\-\f[]
+.SS \-\-
+.PP
 Stop option parsing.
 Helpful when CIPHERDIR may start with a dash "\-".
-.RS
-.RE
 .SH EXAMPLES
 .PP
 Create an encrypted filesystem in directory "g1" and mount it on "g2":
