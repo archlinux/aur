@@ -1,4 +1,4 @@
-# Maintainer: Benoit Favre <benoit.favre@gmail.com>
+# Contributor: Benoit Favre <benoit.favre@gmail.com>
 
 pkgname=('mingw-w64-protobuf')
 _pkgname=protobuf
@@ -9,7 +9,7 @@ arch=('any')
 url='https://developers.google.com/protocol-buffers/'
 license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-zlib')
-makedepends=('mingw-w64-gcc' 'protobuf')
+makedepends=('mingw-w64-configure' 'protobuf')
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/google/protobuf/releases/download/v${pkgver}/protobuf-cpp-${pkgver}.tar.gz")
 md5sums=('46ab34b63ac77c02d4351961f6f85ded')
