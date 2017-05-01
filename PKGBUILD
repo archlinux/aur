@@ -10,9 +10,10 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('desktop-file-utils' 'glib2' 'glibc' 'gtk3' 'libnotify' 'pango' 'vte3'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'granite-git' 'intltool' 'vala')
+makedepends=('cmake' 'git' 'granite-git' 'intltool' 'vala')
 provides=('pantheon-terminal')
 conflicts=('pantheon-terminal')
+replaces=('pantheon-terminal-bzr')
 source=('pantheon-terminal::git+https://github.com/elementary/terminal.git')
 sha256sums=('SKIP')
 
