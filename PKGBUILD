@@ -1,35 +1,51 @@
-# Maintainer: Alex Palaistras <alex+archlinux@deuill.org>
+# Maintainer: David Manouchehri
+# Contributor: Alex Palaistras <alex+archlinux@deuill.org>
 
-pkgname=binaryninja-demo
-pkgver=1.0
-pkgrel=1
+_pkgname=binaryninja
+pkgname="${_pkgname}-personal"
+_branch=stable
 pkgdesc="Binary Ninja is a binary multi-tool and reversing platform"
-arch=('x86_64')
-license=('custom:Binary Ninja License Agreement')
 url="https://binary.ninja"
-source=(
-	"https://cdn.binary.ninja/installers/BinaryNinja-demo.zip"
-	"binaryninja-demo"
-	"binaryninja.png"
-	"binaryninja-demo.desktop"
-)
-sha1sums=(
-	'SKIP'
-	'de0caa6928230dc5eb0dda8b45b9f03d4db294a2'
-	'4d039660be12df5f13ab3b848f413fa9f2f41e87'
-	'b650efdf8b007b5c9245fed32dca304ddde07f65'
-)
-install='binaryninja-demo.install'
+license=('custom:Binary Ninja License Agreement')
+arch=('x86_64')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+
+# https://binary.ninja/recover/
+source=("file://BinaryNinja-personal.zip"
+		"binaryninja-personal"
+		"binaryninja.png"
+		"binaryninja-personal.desktop")
+
+# https://binary.ninja/js/hashes.js
+sha256sums=('53a72b4d5b1c2de542a19885b799f173c94c9f1902d87326116bdc76063d21f1'
+			'6e74aae25261e7a37f9d1982b3604bd201182c69b1985ea5d5c55befb56b476a'
+			'ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8'
+			'36aea5c3f72563703b937b98381195de01084fcddacd6e4a3ed4bc48ae75c9a2')
+
+# @TODO: Figure out what's really needed.
+depends=('libcurl-compat')
+makedepends=('git')
+pkgver=1.0.320
+pkgrel=1
+
+# pkgver() {
+# 	# @TODO: Use https://binary.ninja/js/changelog.js and
+# 	# https://binary.ninja/js/hashes.js to bump the version automatically. 
+# }
 
 package() {
-	mkdir ${pkgdir}/opt
-	mkdir -p ${pkgdir}/usr/share/icons/hicolor/128x128/apps
-	mkdir -p ${pkgdir}/usr/share/applications
-	mkdir -p ${pkgdir}/usr/bin
+	cd "${srcdir}/${_pkgname}"
+	mkdir "${pkgdir}/opt"
+	mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+	mkdir -p "${pkgdir}/usr/share/applications"
+	mkdir -p "${pkgdir}/usr/bin"
 
-	mv ${srcdir}/binaryninja ${pkgdir}/opt/binaryninja-demo
+	mv "${srcdir}/binaryninja" "${pkgdir}/opt/binaryninja-personal"
 
-	install -m644 ${srcdir}/binaryninja.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/
-	install -m644 ${srcdir}/binaryninja-demo.desktop ${pkgdir}/usr/share/applications/
-	install -m755 ${srcdir}/binaryninja-demo ${pkgdir}/usr/bin
+	install -m644 "${srcdir}/binaryninja.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
+	install -m644 "${srcdir}/binaryninja-personal.desktop" "${pkgdir}/usr/share/applications/"
+	install -m755 "${srcdir}/binaryninja-personal" "${pkgdir}/usr/bin"
 }
+
+# vim:set et sw=2 sts=2 tw=80:

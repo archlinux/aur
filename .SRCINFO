@@ -1,19 +1,22 @@
-pkgbase = binaryninja-demo
+pkgbase = binaryninja-personal
 	pkgdesc = Binary Ninja is a binary multi-tool and reversing platform
-	pkgver = 1.0
+	pkgver = 1.0.320
 	pkgrel = 1
 	url = https://binary.ninja
-	install = binaryninja-demo.install
 	arch = x86_64
 	license = custom:Binary Ninja License Agreement
-	source = https://cdn.binary.ninja/installers/BinaryNinja-demo.zip
-	source = binaryninja-demo
+	makedepends = git
+	depends = libcurl-compat
+	provides = binaryninja
+	conflicts = binaryninja
+	source = BinaryNinja-personal.zip
+	source = binaryninja-personal
 	source = binaryninja.png
-	source = binaryninja-demo.desktop
-	sha1sums = SKIP
-	sha1sums = de0caa6928230dc5eb0dda8b45b9f03d4db294a2
-	sha1sums = 4d039660be12df5f13ab3b848f413fa9f2f41e87
-	sha1sums = b650efdf8b007b5c9245fed32dca304ddde07f65
+	source = binaryninja-personal.desktop
+	sha256sums = 53a72b4d5b1c2de542a19885b799f173c94c9f1902d87326116bdc76063d21f1
+	sha256sums = 6e74aae25261e7a37f9d1982b3604bd201182c69b1985ea5d5c55befb56b476a
+	sha256sums = ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8
+	sha256sums = 36aea5c3f72563703b937b98381195de01084fcddacd6e4a3ed4bc48ae75c9a2
 
-pkgname = binaryninja-demo
+pkgname = binaryninja-personal
 
