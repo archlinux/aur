@@ -3,7 +3,7 @@
 
 pkgname=mattermost-desktop
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mattermost Desktop application for Linux (Beta)"
 arch=('i686' 'x86_64')
 
@@ -30,6 +30,9 @@ prepare() {
             sed -i 's/build --linux --x64 --ia32/build --linux --x64/g' package.json
             ;;
     esac
+
+    # Reduce build time by removing the creation of a .deb for Debian
+    sed -i -e '/^[[:space:]]*"target": \[/!b' -e '$!N;s/\n[[:space:]]*"deb",//' package.json
 
     # Generate a desktop entry
     # -f: forces and overrides the file if any
