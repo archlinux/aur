@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session-git
-pkgver=r
+pkgver=r204.2c0d101
 pkgrel=1
 pkgdesc='Session indicator for Wingpanel'
 arch=('i686' 'x86_64')
@@ -14,13 +14,14 @@ makedepends=('cmake' 'git' 'gobject-introspection' 'granite-git' 'vala'
              'wingpanel-git')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
+replaces=('wingpanel-indicator-session-bzr')
 source=('git+https://github.com/elementary/wingpanel-indicator-session.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd wingpanel-indicator-session
 
-  echo "r$(bzr revno)"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
