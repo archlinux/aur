@@ -1,14 +1,15 @@
 # Contributor: Calogero e Angelo Scarnà <info@codelinsoft.it>
-pkgname=fabariagest
+# Update and change name fabariagest to fabaria_gest
+pkgname=fabaria_gest
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Gestionale aziendale." 
 url="https://www.codelinsoft.it/sito/2013-11-17-17-56-34/fabariagest.html"
 arch=('i686' 'x86_64')
-depends=('qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-svg' 'qt5-tools'  'qt5-translations' 'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'mysql' 'cmake' 'curl' 'jansson' 'liboauth' 'zlib' 'nspr' 'lsb-release' )
+depends=('qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-svg' 'qt5-tools'  'qt5-translations' 'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'mysql' 'cmake' 'curl' 'jansson' 'liboauth' 'zlib' 'nspr' 'lsb-release' 'nss'  )
 license=(LGPL)
-source=('https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabariagest-1-1targz.gz')
-md5sums=("b6775fa951962162e610abfb9434defd")
+source=('https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabaria_gest-1-2.gz')
+md5sums=("d5bc60d4557d5607470fd470d1b110fa")
 
 
 
@@ -35,5 +36,4 @@ cp -rv  "${srcdir}/${pkgname}-${pkgver}/fabaria/images/logo4.png" "${pkgdir}/opt
 post_install() {
 sudo chmod 777 /usr/bin/fabaria
 }
-
 
