@@ -2,22 +2,28 @@
 
 pkgname=emacs-iedit
 pkgver=0.90
-pkgrel=1
+pkgrel=2
 pkgdesc="Edit multiple regions with the same content simultaneously"
 arch=(any)
 url="https://github.com/tsdh/iedit"
 license=('GPL3')
 depends=('emacs')
-source=("https://github.com/tsdh/iedit/archive/${pkgver}.tar.gz")                                                              
-sha256sums=('SKIP')
+source=("https://github.com/tsdh/iedit/archive/${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/tsdh/iedit/master/iedit-lib.el")
+sha256sums=('SKIP' 'SKIP')
 
 build() {
+  emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
+
   cd "${srcdir}/iedit-${pkgver}"
   emacs -q --no-splash -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
-  cd "${srcdir}/iedit-${pkgver}"
   mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/iedit/"
+
+  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/iedit/"
+
+  cd "${srcdir}/iedit-${pkgver}"
   install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/iedit/"
 }
