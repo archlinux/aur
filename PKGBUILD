@@ -7,7 +7,7 @@ pkgdesc="A library for configuring and customizing font access, optimized for fr
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
 pkgver=2.12.1
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 changelog=CHANGELOG
 groups=('infinality-bundle')
@@ -28,8 +28,9 @@ backup=('etc/fonts/fonts.conf'
         'etc/fonts/conf.avail.infinality/97-selective-rendering-custom.conf')
 install=fontconfig-ultimate.install
 source=(http://www.fontconfig.org/release/${_basename}-${pkgver}.tar.bz2
-        ${_basename}-ultimate-git.tar.bz2
-        fc-cache-ib.hook)
+        https://raw.githubusercontent.com/archfan/infinality_bundle/820e74be8345a0da2cdcff0a05bf5fa10fd85740/02_fontconfig-iu/fontconfig-ultimate-git.tar.bz2
+        fc-cache-ib.hook
+        0006-glibc-2.25-Avoid-conflicts-with-integer-width-macros-from-TS-18.patch)
 
 # a nice page to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
@@ -40,15 +41,14 @@ prepare() {
            02-configure.ac.patch
            03-Makefile.in.patch
            04-Makefile-20160818.conf.d.patch
-           05-Makefile.am.in.patch)
+           05-Makefile.am.in.patch
+          0006-glibc-2.25-Avoid-conflicts-with-integer-width-macros-from-TS-18.patch)
 
   # copy fontconfig-ib patches & stuff
   cd "${_basename}-ultimate-git"
-
+  cp -r ../0006-glibc-2.25-Avoid-conflicts-with-integer-width-macros-from-TS-18.patch "${srcdir}/${_basename}-${pkgver}" 
   cp -r conf.d.infinality "${srcdir}/${_basename}-${pkgver}"/conf.d.infinality
-  cp -r fontconfig_patches/*.patch "${srcdir}/${_basename}-${pkgver}"
-
-  # prepare src
+  cp -r fontconfig_patches/*.patch "${srcdir}/${_basename}-${pkgver}"   # prepare src
   cd "${srcdir}/${_basename}-${pkgver}"
 
   # infinality & post release fixes
@@ -113,6 +113,7 @@ package() {
 
   find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
 }
-md5sums=('b5af5a423ee3b5cfc34846838963c058'
-         'a02962475eb066f1bdb1ad3376c95d38'
-         'd7f4e07501c01f1dfff79c76aae5ce71')
+sha256sums=('b449a3e10c47e1d1c7a6ec6e2016cca73d3bd68fbbd4f0ae5cc6b573f7d6c7f3'
+            'b4977cfb0dc64167be3b58ae63022ffb2648e08519b0c061ee2ca43620d8b980'
+            '026971a9fac1ee4fb0ef74d5833ce5e12b4645de8ebdf1cadb3cb943cf46abd3'
+            '82982895a7be0be725e27a906e54b9d3da7bde237c6a59cf67def082c9b9e59a')
