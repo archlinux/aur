@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec911229..3d47b559 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,6 +11,8 @@ set(PROJECT_VERSION_PATCH "0")
+ set(PROJECT_VERSION_BUILD "")
+ set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}${PROJECT_VERSION_BUILD}")
+
++include_directories(/usr/include/qt/QtGui/5.8.0 /usr/include/qt/QtCore/5.8.0)
++
+ # Modules
+ include(RobomongoPrintUtils)
+ include(RobomongoCMakeDefaults)

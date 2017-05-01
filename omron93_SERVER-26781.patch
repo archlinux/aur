@@ -1,0 +1,79 @@
+diff --git a/src/mongo/crypto/crypto_openssl.cpp b/src/mongo/crypto/crypto_openssl.cpp
+index 4dc1e5d02c..8ff663b4ff 100644
+--- a/src/mongo/crypto/crypto_openssl.cpp
++++ b/src/mongo/crypto/crypto_openssl.cpp
+@@ -29,15 +29,35 @@
+ #include "mongo/platform/basic.h"
+
+ #include "mongo/config.h"
+-#include "mongo/util/scopeguard.h"
++#include "mongo/stdx/memory.h"
+
+ #ifndef MONGO_CONFIG_SSL
+ #error This file should only be included in SSL-enabled builds
+ #endif
+
++#include <cstring>
+ #include <openssl/sha.h>
+ #include <openssl/evp.h>
+ #include <openssl/hmac.h>
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++namespace {
++// Copies of OpenSSL after 1.1.0 define new EVP digest routines. We must
++// polyfill used definitions to interact with older OpenSSL versions.
++EVP_MD_CTX* EVP_MD_CTX_new() {
++    void* ret = OPENSSL_malloc(sizeof(EVP_MD_CTX));
++
++    if (ret != NULL) {
++        memset(ret, 0, sizeof(EVP_MD_CTX));
++    }
++    return static_cast<EVP_MD_CTX*>(ret);
++}
++
++void EVP_MD_CTX_free(EVP_MD_CTX* ctx) {
++    EVP_MD_CTX_cleanup(ctx);
++    OPENSSL_free(ctx);
++}
++}  // namespace
++#endif
+
+ namespace mongo {
+ namespace crypto {
+@@ -45,19 +65,18 @@ namespace crypto {
+  * Computes a SHA-1 hash of 'input'.
+  */
+ bool sha1(const unsigned char* input, const size_t inputLen, unsigned char* output) {
+-    EVP_MD_CTX digestCtx;
+-    EVP_MD_CTX_init(&digestCtx);
+-    ON_BLOCK_EXIT(EVP_MD_CTX_cleanup, &digestCtx);
++    std::unique_ptr<EVP_MD_CTX, decltype(&EVP_MD_CTX_free)> digestCtx(EVP_MD_CTX_new(),
++                                                                      EVP_MD_CTX_free);
+
+-    if (1 != EVP_DigestInit_ex(&digestCtx, EVP_sha1(), NULL)) {
++    if (1 != EVP_DigestInit_ex(digestCtx.get(), EVP_sha1(), NULL)) {
+         return false;
+     }
+
+-    if (1 != EVP_DigestUpdate(&digestCtx, input, inputLen)) {
++    if (1 != EVP_DigestUpdate(digestCtx.get(), input, inputLen)) {
+         return false;
+     }
+
+-    return (1 == EVP_DigestFinal_ex(&digestCtx, output, NULL));
++    return (1 == EVP_DigestFinal_ex(digestCtx.get(), output, NULL));
+ }
+
+ /*
+diff --git a/src/mongo/util/net/ssl_manager.cpp b/src/mongo/util/net/ssl_manager.cpp
+index e2b9041530..b3852a0538 100644
+--- a/src/mongo/util/net/ssl_manager.cpp
++++ b/src/mongo/util/net/ssl_manager.cpp
+@@ -714,7 +714,7 @@ unsigned long long SSLManager::_convertASN1ToMillis(ASN1_TIME* asn1time) {
+ bool SSLManager::_parseAndValidateCertificate(const std::string& keyFile,
+                                               std::string* subjectName,
+                                               Date_t* serverCertificateExpirationDate) {
+-    BIO* inBIO = BIO_new(BIO_s_file_internal());
++    BIO* inBIO = BIO_new(BIO_s_file());
+     if (inBIO == NULL) {
+         error() << "failed to allocate BIO object: " << getSSLErrorMessage(ERR_get_error());
+         return false;

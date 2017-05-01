@@ -2,10 +2,10 @@
 
 pkgname=robomongo
 pkgver=1.0.0
-_ref='0fefd6d44307ca371d2b0ad70455ff378b0f676e'
+_ref='1124ec22c6e35055da67579410d7f3630a1954be'
 _pkgname=$pkgname-${_ref}
-_opensslver=OpenSSL_1_0_2k
-pkgrel=1
+_opensslver=OpenSSL_1_1_0e
+pkgrel=2
 pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
 arch=('i686' 'x86_64')
 url="https://robomongo.org/"
@@ -16,12 +16,20 @@ conflicts=('robomongo-bin')
 source=('git+https://github.com/paralect/robomongo-shell.git#branch=roboshell-v3.2'
         "https://github.com/paralect/robomongo/archive/${_ref}.tar.gz"
         "https://github.com/openssl/openssl/archive/${_opensslver}.tar.gz"
-        'patch.diff'
+        'https://github.com/libssh2/libssh2/archive/libssh2-1.8.0.tar.gz'
+        'omron93_SERVER-26781.patch'
+        'CMakeLists.txt.patch'
+        'SettingsManager.cpp.patch'
+        'RobomongoInstall.cmake.patch'
         'robomongo.desktop')
 sha256sums=('SKIP'
-            '062a15f42fbb72ea2e05f57c5192b6e721ea110ba8ee8d5a4779a9630c65dd70'
-            '8173c6a6d6ab314e5e81e9cd1e1632f98586a14d7807697fd24155f162292229'
-            '18f36fcc10e1fa9efd4cc53e1274641e89489a6373d84b14c93db2933567d091'
+            'f772387708b7803ce8ad00ba5c2f9d8e093d1fdfb38cdefe6d8c5b570a5911aa'
+            'e703df4eca8b3687af0bec069ea2e7b9fefcb397701dd0d36620fd205cde82a5'
+            '973f63f98141d68b4a1bc85791ee29411eeab12a6230ae1aca9c368550ccafae'
+            '9e3d88e97bdf53484a93c736665248b5e5641441b3d86e7671f11b952e44c6a4'
+            'c33643dcb421cee0a9031576ef572b0faf31678856e77a2c46e6ed122b8dc0c2'
+            '0f49f15ec3e82cab86ca1f21609b6aadce3d57bd2129329b09ba2d55c50dd384'
+            '5930e71069cc2144d2fbacc535a48a1f148745579693776bcd1785532b6b8abf'
             'bdd63f5d4bd35dd865a0164f285d19555e4ecafb2d11d01f67bdb86bd730a13d')
 
 build() {
@@ -39,13 +47,20 @@ build() {
   cp libssl* libcrypto* lib/
 
   _mongodir=$srcdir/robomongo-shell
+  cd ${_mongodir} && git apply $srcdir/omron93_SERVER-26781.patch
   cd $srcdir
   scons mongo --directory=${_mongodir} --ssl CPPPATH=${_openssldir}/include LIBPATH=${_openssldir}/lib --disable-warnings-as-errors ${_shellopts}
 
   cd $srcdir/${_pkgname}
+  patch CMakeLists.txt $srcdir/CMakeLists.txt.patch
+  patch src/robomongo/core/settings/SettingsManager.cpp $srcdir/SettingsManager.cpp.patch
+  patch cmake/RobomongoInstall.cmake $srcdir/RobomongoInstall.cmake.patch
+
+  rm -r src/third-party/libssh2/sources/*
+  cp -r $srcdir/libssh2-libssh2-1.8.0/* src/third-party/libssh2/sources/
+
   mkdir -p ./target && cd ./target/
   cmake .. -DCMAKE_PREFIX_PATH="${_mongodir};${_openssldir}" -DCMAKE_BUILD_TYPE=Release
-  patch $srcdir/${_pkgname}/src/robomongo/gui/widgets/workarea/WelcomeTab.cpp $srcdir/patch.diff
   make
   make install
 }
