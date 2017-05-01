@@ -1,0 +1,14 @@
+post_install() {
+  DCONF_PROFILE='lightdm' dconf update
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+  rm -f /etc/dconf/db/lightdm
+}
+
+# vim: ts=2 sw=2 et:
