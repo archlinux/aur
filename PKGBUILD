@@ -3,7 +3,7 @@
 pkgbase=upp
 pkgname=(upp theide umk)
 pkgver=10804
-pkgrel=1
+pkgrel=2
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
@@ -18,7 +18,6 @@ options=(!makeflags emptydirs !strip)
 source=("http://downloads.sourceforge.net/project/upp/upp/2017.1/upp-x11-src-$pkgver.tar.gz"
         'GCC.bm'
         'license.txt'
-        'theide.install'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/theide.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/umk.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/mkfile')
@@ -26,7 +25,6 @@ noextract=()
 md5sums=('20f1f01c8b3238a3e02a89bcc76a7aac'
          'a1b57c2231b6b0fa8070941fa4accf72'
          'b214709f096e4f50d61f50988359241e'
-         '204e9ece27294b4b73cb3a31f0474d8d'
          'b21415926edc5f18efaec625f6135556'
          'b56d54a9d5d722bb32633a06675fbeb6'
          '9ad99eb6ead298341b6698e505067d7c')
@@ -67,7 +65,6 @@ package_theide(){
     optdepends=('sox: Enables notification sounds')
   fi
   options=(!makeflags emptydirs)
-  install='theide.install'
 
   # license
   install -D "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
