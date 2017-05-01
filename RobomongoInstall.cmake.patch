@@ -4,12 +4,13 @@ index e225467f..14780d1c 100644
 +++ b/cmake/RobomongoInstall.cmake
 @@ -73,9 +73,9 @@ elseif(SYSTEM_LINUX)
      install(
-         FILES
+         FILES 
          "${OpenSSL_DIR}/libssl.so"
--        "${OpenSSL_DIR}/libssl.so.1.0.0"
+-        "${OpenSSL_DIR}/libssl.so.1.0.0"        
 +        "${OpenSSL_DIR}/libssl.so.1.1"
-         "${OpenSSL_DIR}/libcrypto.so"
+         "${OpenSSL_DIR}/libcrypto.so"        
 -        "${OpenSSL_DIR}/libcrypto.so.1.0.0"
 +        "${OpenSSL_DIR}/libcrypto.so.1.1"
-         DESTINATION ${lib_dir})
+         DESTINATION ${lib_dir})         
  endif()
+ 

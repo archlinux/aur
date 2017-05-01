@@ -5,7 +5,7 @@ pkgver=1.0.0
 _ref='1124ec22c6e35055da67579410d7f3630a1954be'
 _pkgname=$pkgname-${_ref}
 _opensslver=OpenSSL_1_1_0e
-pkgrel=2
+pkgrel=3
 pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
 arch=('i686' 'x86_64')
 url="https://robomongo.org/"
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
             '9e3d88e97bdf53484a93c736665248b5e5641441b3d86e7671f11b952e44c6a4'
             'c33643dcb421cee0a9031576ef572b0faf31678856e77a2c46e6ed122b8dc0c2'
             '0f49f15ec3e82cab86ca1f21609b6aadce3d57bd2129329b09ba2d55c50dd384'
-            '5930e71069cc2144d2fbacc535a48a1f148745579693776bcd1785532b6b8abf'
+            '2e39a4e140e64e2aafb322f443bd9ee03c8011541f19609f21c5427f2eade293'
             'bdd63f5d4bd35dd865a0164f285d19555e4ecafb2d11d01f67bdb86bd730a13d')
 
 build() {
