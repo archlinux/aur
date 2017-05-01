@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic <josipponjavic@gmail.com>
 
 pkgname=gsignond
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='gSSO glib daemon'
 arch=('i686' 'x86_64')
@@ -10,27 +10,18 @@ url='https://01.org/gsso'
 license=('LGPL2.1')
 depends=('dbus' 'libgsignon-glib' 'sqlite')
 makedepends=('git' 'gobject-introspection' 'gtk-doc')
+provides=('libgsignond-common.so')
 backup=('etc/gsignond.conf')
-source=('git+https://gitlab.com/accounts-sso/gsignond.git#commit=deb5f757')
+_commit='3214aef8e7c84a9918d8b18fb258247d81be12e2'
+source=("git+https://gitlab.com/accounts-sso/gsignond.git#commit=${_commit}")
 sha256sums=('SKIP')
-
-prepare() {
-  cd gsignond
-
-  mkdir -p m4
-  gtkdocize
-  aclocal
-  autoheader
-  libtoolize --copy --force
-  autoconf
-  automake --add-missing --copy
-  autoreconf --install --force
-}
 
 build() {
   cd gsignond
 
-  ./configure \
+unset CPPFLAGS
+
+  ./autogen.sh \
     --prefix='/usr' \
     --sysconfdir='/etc' \
     --enable-dbus-type='session'
