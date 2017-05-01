@@ -1,0 +1,27 @@
+--- ./setup.py	2017-05-01 10:19:15.661074073 -0700
++++ ./setup.py	2017-05-01 10:21:23.465751763 -0700
+@@ -33,11 +33,11 @@
+         self.run_command('generate_configuration_files')
+ 
+ required_packages = [
+-    'appdirs==1.4.0',
+-    'prettytable==0.7.2',
+-    'colorlog==2.7.0',
+-    'python-dateutil==2.5.3',
+-    'requests==2.10.0',
++    'appdirs',
++    'prettytable',
++    'colorlog',
++    'python-dateutil',
++    'requests',
+     'counterparty-lib'
+ ]
+ 
+@@ -72,7 +72,6 @@
+     'packages': find_packages(),
+     'zip_safe': False,
+     'install_requires': required_packages,
+-    'setup_requires': required_packages,
+     'entry_points': {
+         'console_scripts': [
+             'counterparty-client = counterpartycli:client_main',
