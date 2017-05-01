@@ -3,7 +3,7 @@
 pkgname=emacs-auto-complete
 pkgver=1.5.1
 pkgrel=1
-pkgdesc="A auto-complete declaration for simplifying your .emacs"
+pkgdesc="An auto-complete declaration for simplifying your .emacs"
 url="https://github.com/auto-complete/auto-complete"
 arch=('any')
 license=('GPL3')
