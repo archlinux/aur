@@ -1,29 +1,24 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-git
-pkgver=r37.g9af8ab2
+pkgver=r41.g60913c8
 pkgrel=1
 pkgdesc='Tiny Qt Babe Music Player'
 arch=('i686' 'x86_64')
 url="https://babe.kde.org/"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'knotifications' 'ki18n' 'taglib')
+depends=('hicolor-icon-theme' 'ki18n' 'knotifications' 'taglib')
 makedepends=('extra-cmake-modules' 'git' 'python')
 optdepends=('youtube-dl: youtube support')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'babe-qt')
 replaces=('babe-qt')
-source=('git+git://anongit.kde.org/babe.git' 'cmake.patch')
-sha256sums=('SKIP' '6cd25406e607d248ff00baf1b204a32ca0eca59d53465b1904795abf917b4cb9')
+source=('git+git://anongit.kde.org/babe.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd babe
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd babe
-  patch -p1 < $srcdir/cmake.patch
 }
 
 build() {
@@ -33,5 +28,7 @@ build() {
 }
  
 package() {
-  make -C babe DESTDIR="${pkgdir}/" install
+  cd babe
+  make DESTDIR="${pkgdir}/" install
+  install -Dm755 data/babe.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/Babe.svg"
 }
