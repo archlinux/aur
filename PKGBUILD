@@ -2,7 +2,7 @@
 
 pkgname=python-sonnet-git
 pkgver=9d209830
-pkgrel=2
+pkgrel=3
 
 pkgdesc="TensorFlow-based neural network library."
 url="https://github.com/deepmind/sonnet"
@@ -17,12 +17,8 @@ makedepends=('git' 'python-pip' 'bazel')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
 source=("git+https://github.com/deepmind/sonnet"
-        "10.patch" # for py3
-        "6.patch" # fix compile time error
         )
-md5sums=('SKIP'
-         '59576111303e2ab99bf106fe0dcd5ff8'
-         '67cb9424d7c8e01f822de1a4d7787c98')
+md5sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/sonnet
@@ -32,9 +28,6 @@ pkgver() {
 
 prepare() {
    cd ${srcdir}/sonnet
-   
-   patch -Np1 -i $srcdir/6.patch # fix compile time error
-   patch -Np1 -i $srcdir/10.patch # for py3
    
    git submodule update --init --recursive
 }
