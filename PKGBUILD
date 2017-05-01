@@ -13,17 +13,18 @@ pkgver=1.16.0
 _cygrel=1
 epoch=1
 pkgrel=1
+pkgdesc="extra plugins for pluma text editor"
 arch=('i686' 'x86_64')
 url="http://mate-desktop.org/"
 license=('GPL')
-depends=('pluma-1.16>=1.16.0' 'mate-common')
+depends=('pluma-1.16<=1.16.9999' 'mate-common')
 conflicts=("${_pkgname}-gtk2")
 source=(${_pkgname}-${pkgver}-${_cygrel}.tar.gz::http://cygwin.cathedral-networks.org/x86/release/${_pkgname}/${_pkgname}-${pkgver}-${_cygrel}-src.tar.xz)
 sha256sums=('e4ae4684c074cae81b9f05cc2ea034195e3a1dadff64f2efcb7c362d780a8a1d')
 
 # gtk2 uncomment:
 #pkgname=${_pkgname}-gtk2
-#depends=('pluma-gtk2>=1.16.0' 'mate-common')
+#depends=('pluma-gtk2<=1.16.9999' 'mate-common')
 #conflicts=("${_pkgname}")
 
 prepare() {
