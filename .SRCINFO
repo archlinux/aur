@@ -27,8 +27,8 @@ pkgbase = fabariagest
 	depends = nspr
 	depends = lsb-release
 	depends = nss
-	source = https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabaria_gest-1-2.gz
-	md5sums = d5bc60d4557d5607470fd470d1b110fa
+	source = https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabariagest-1-1targz.gz
+	md5sums = 90a0eebb4455b56d20e063852a1026b3
 
 pkgname = fabariagest
 
