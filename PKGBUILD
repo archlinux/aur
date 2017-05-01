@@ -3,9 +3,12 @@
 # Contributor: p2k <Patrick.Schneider@uni-ulm.de>
 # Contributor: Schtroumpfette <fpeterschmitt@voila.fr>
 
+# 1: use adl to launch the game. Otherwise, use official game binaries directly.
+USE_ADL=1
+
 pkgname=dofus
-pkgver=2.40
-pkgrel=6
+pkgver=2.41
+pkgrel=1
 pkgdesc='A manga inspired, Massively Multiplayer Online Role-playing Game (MMORPG) for Adobe AIR .'
 arch=('i686' 'x86_64')
 url='http://www.dofus.com/'
@@ -17,13 +20,26 @@ depends_i686+=('gtk2' 'alsa-lib' 'alsa-plugins')
 optdeppends=('pulseaudio-alsa: Required for the game to play sounds with PulseAudio')
 
 source=('dofus.desktop'
-        'dofus.sh')
+        'dofus.sh'
+        'air-generic-launcher.sh'
+        'transition.conf.patch')
 source_i686=('http://dl.ak.ankama.com/games/installers/dofus-x86.tar.gz')
 source_x86_64=('http://dl.ak.ankama.com/games/installers/dofus-amd64.tar.gz')
 md5sums=('fcde25db66f15fe137d0412562d28a51'
-         '6aa8411d57ad0b3b6d3244f60a7f24e8')
+         '6aa8411d57ad0b3b6d3244f60a7f24e8'
+         'f179eaa5e6e6674b1853cf826fc33c3a'
+         'f81ccb681ae63b4a28e1cc3023f8d84a')
 md5sums_i686=('c885019d953b751d2e2177d6386cbce2')
 md5sums_x86_64=('877c5c9fdad16fb7386726a745f500fc')
+
+prepare() {
+  if [ "$USE_ADL" -eq "1" ]
+  then
+    cd "$srcidr"
+    msg2 'Modifying transition configuration to use adl-based launchers'
+    patch -p0 < transition.conf.patch
+  fi
+}
 
 package() {
   msg2 'Installing main applications...'
@@ -46,8 +62,15 @@ package() {
     install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$size/apps/dofus.png"
   done
 
-  msg2 'Installing link to bypass Adobe Air detection...'
-  ln -s '/opt/adobe-air-sdk/runtimes/air/linux/Adobe AIR/' "$pkgdir/opt/Adobe AIR"
+  if [ "$USE_ADL" -eq "1" ]
+  then
+    msg2 'Installing adl based launchers...'
+    install -Dm755 'air-generic-launcher.sh' "$pkgdir/$installdir/bin/air-generic-launcher.sh"
+    install -Dm755 'air-generic-launcher.sh' "$pkgdir/$installdir/share/reg/bin/air-generic-launcher.sh"
+  else
+    msg2 'Installing link to bypass Adobe Air detection...'
+    ln -s '/opt/adobe-air-sdk/runtimes/air/linux/Adobe AIR/' "$pkgdir/opt/Adobe AIR"
+  fi
 }
 
 # vim:set ts=2 sw=2 et:

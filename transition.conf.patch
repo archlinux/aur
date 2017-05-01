@@ -1,0 +1,12 @@
+--- Dofus/transition.conf	2014-12-04 05:27:44.000000000 -0500
++++ Dofus/transition.conf	2017-04-30 20:33:46.417694334 -0400
+@@ -21,3 +21,9 @@
+ update.projects *= "transition"
+ update.projects *= "game"
+ 
++bypass_air_installation = true
++dofus.reg.path = "${root}/share/reg/bin/air-generic-launcher.sh"
++
++launcher.command = """
++"${root}/bin/air-generic-launcher.sh" --lang=${i18n.lang} --update-server-port=${service_port} --updater_version=v2
++"""
