@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OSPKit
+Comment=Webkit based html browser for printing.
+GenericName=
+Exec=/usr/bin/ospkit
+Icon=ospkit
+Type=Application
+StartupNotify=true
+Categories=Graphisme;
+MimeType=text/plain;
