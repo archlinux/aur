@@ -8,12 +8,12 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('i686' 'x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'gperftools' 'geoip')
+depends=('pcre' 'zlib' 'openssl-1.0' 'gperftools' 'geoip')
 makedepends=('hardening-wrapper' 'lua51')
 backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/fastcgi_params'
@@ -36,7 +36,7 @@ source=($url/download/tengine-$pkgver.tar.gz
         logrotate)
 sha256sums=('af09cf35e5f978521c27a2fee8a2d5251f425cba2e39f6c6ea285541c5be6009'
             '7abffe0f1ba1ea4d6bd316350a03257cc840a9fbb2e1b640c11e0eb9351a9044'
-            '4e2a1835d1e65e6c18b0c76699ff76f8c905124143e66bb686e4795f6b770a8c')
+            '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97')
 
 prepare() {
     cd "$srcdir"
@@ -65,6 +65,8 @@ build() {
         --dso-tool-path=/usr/bin/dso_tool \
         --pid-path=/run/tengine.pid \
         --lock-path=/run/lock/tengine.lock \
+        --with-cc-opt="-I/usr/include/openssl-1.0" \
+        --with-ld-opt="-L/usr/lib/openssl-1.0" \
         --user=http \
         --group=http \
         --http-log-path=/var/log/tengine/access.log \
@@ -124,8 +126,8 @@ package() {
     install -d "$pkgdir"/var/lib/tengine
     install -dm700 "$pkgdir"/var/lib/tengine/proxy
 
-    chmod 750 "$pkgdir"/var/log/tengine
-    chown http:log "$pkgdir"/var/log/tengine
+    chmod 755 "$pkgdir"/var/log/tengine
+    chown root:root "$pkgdir"/var/log/tengine
 
     install -d "$pkgdir"/usr/share/tengine
     mv "$pkgdir"/etc/tengine/html/ "$pkgdir"/usr/share/tengine
