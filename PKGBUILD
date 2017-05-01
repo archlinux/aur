@@ -3,7 +3,7 @@
 pkgname=switchboard-plug-notifications-git
 pkgver=r267.433459c
 pkgrel=1
-pkgdesc=' Switchboard Notifications Plug'
+pkgdesc='Switchboard Notifications Plug'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/switchboard-plug-notifications'
 license=('GPL3')
