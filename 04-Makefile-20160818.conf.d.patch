@@ -1,0 +1,116 @@
+diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.am fontconfig-2.12.1/conf.d/Makefile.am
+--- fontconfig-2.12.1-orig/conf.d/Makefile.am	2016-08-18 17:43:18.134614854 +0200
++++ fontconfig-2.12.1/conf.d/Makefile.am	2016-08-18 17:46:34.272609706 +0200
+@@ -21,27 +21,9 @@
+ #  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ #  PERFORMANCE OF THIS SOFTWARE.
+ 
+-BUILT_SOURCES = README
+-DOC_SOURCES = README.in
+ DOC_FILES = $(DOC_SOURCES:.in=)
+ 
+-CONF_LINKS = \
+-	10-hinting-$(PREFERRED_HINTING).conf	\
+-	10-scale-bitmap-fonts.conf \
+-	20-unhint-small-vera.conf \
+-	30-urw-aliases.conf \
+-	30-metric-aliases.conf \
+-	40-nonlatin.conf \
+-	45-latin.conf \
+-	49-sansserif.conf \
+-	50-user.conf \
+-	51-local.conf \
+-	60-latin.conf \
+-	65-fonts-persian.conf \
+-	65-nonlatin.conf \
+-	69-unifont.conf \
+-	80-delicious.conf \
+-	90-synthetic.conf
++CONF_LINKS = 
+ 
+ EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
+ CLEANFILES = $(DOC_FILES)
+@@ -85,24 +67,4 @@
+ 	80-delicious.conf		\
+ 	90-synthetic.conf
+ 
+-README: $(srcdir)/README.in
+-	sed "s|\@TEMPLATEDIR\@|$(templatedir)|" $< > $@
+-
+-install-data-hook:
+-	mkdir -p $(DESTDIR)$(configdir)
+-	@(echo cd $(DESTDIR)$(configdir);			\
+-	  cd $(DESTDIR)$(configdir);				\
+-	  for i in $(CONF_LINKS); do				\
+-	    echo $(RM) $$i";" ln -s $(templatedir)/$$i .;	\
+-	    $(RM) $$i;						\
+-	    ln -s $(templatedir)/$$i .;				\
+-	  done)
+-uninstall-local:
+-	@(echo cd $(DESTDIR)$(configdir);			\
+-	  cd $(DESTDIR)$(configdir);				\
+-	  for i in $(CONF_LINKS); do				\
+-	    echo $(RM) $$i;					\
+-	    $(RM) $$i;						\
+-	  done)
+-
+ -include $(top_srcdir)/git.mk
+diff -ruN fontconfig-2.12.1-orig/conf.d/Makefile.in fontconfig-2.12.1/conf.d/Makefile.in
+--- fontconfig-2.12.1-orig/conf.d/Makefile.in	2016-08-18 17:43:18.129614854 +0200
++++ fontconfig-2.12.1/conf.d/Makefile.in	2016-08-18 17:47:23.998608401 +0200
+@@ -173,7 +173,7 @@
+     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
+          $(am__cd) "$$dir" && rm -f $$files; }; \
+   }
+-am__installdirs = "$(DESTDIR)$(configdir)" "$(DESTDIR)$(templatedir)"
++am__installdirs = "$(DESTDIR)$(templatedir)"
+ DATA = $(config_DATA) $(template_DATA)
+ am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
+ am__DIST_COMMON = $(srcdir)/Makefile.in README
+@@ -346,26 +346,8 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-BUILT_SOURCES = README
+-DOC_SOURCES = README.in
+ DOC_FILES = $(DOC_SOURCES:.in=)
+-CONF_LINKS = \
+-	10-hinting-$(PREFERRED_HINTING).conf	\
+-	10-scale-bitmap-fonts.conf \
+-	20-unhint-small-vera.conf \
+-	30-urw-aliases.conf \
+-	30-metric-aliases.conf \
+-	40-nonlatin.conf \
+-	45-latin.conf \
+-	49-sansserif.conf \
+-	50-user.conf \
+-	51-local.conf \
+-	60-latin.conf \
+-	65-fonts-persian.conf \
+-	65-nonlatin.conf \
+-	69-unifont.conf \
+-	80-delicious.conf \
+-	90-synthetic.conf
++CONF_LINKS = 
+ 
+ EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
+ CLEANFILES = $(DOC_FILES)
+@@ -530,7 +512,7 @@
+ 	$(MAKE) $(AM_MAKEFLAGS) check-am
+ all-am: Makefile $(DATA)
+ installdirs:
+-	for dir in "$(DESTDIR)$(configdir)" "$(DESTDIR)$(templatedir)"; do \
++	for dir in "$(DESTDIR)$(templatedir)"; do \
+ 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+ 	done
+ install: $(BUILT_SOURCES)
+@@ -653,9 +635,6 @@
+ .PRECIOUS: Makefile
+ 
+ 
+-README: $(srcdir)/README.in
+-	sed "s|\@TEMPLATEDIR\@|$(templatedir)|" $< > $@
+-
+ install-data-hook:
+ 	mkdir -p $(DESTDIR)$(configdir)
+ 	@(echo cd $(DESTDIR)$(configdir);			\
