@@ -2,7 +2,7 @@
 
 pkgname=caffe2-git
 pkgver=0.7.0.r121.gf46860e3
-pkgrel=1
+pkgrel=2
 pkgdesc="A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe2.ai/"
@@ -18,13 +18,14 @@ depends=(
             'python2-pydot' 'python2-flask' 'graphviz' 'python2-hypothesis'
             'python2-jupyter_core' 'python2-matplotlib' 'python2-yaml' 'python2-requests'
             'python2-scipy' 'python2-setuptools' 'python2-tornado' 'python2-pyzmq'
+            'python2-gflags'
     # AUR:
         # required:
             'cudnn'
         # not required but enabled in build:
             'nccl'
         # python2:
-            'python2-scikit-image' 'python2-leveldb' 'python2-lmdb'
+            'python2-scikit-image' 'python2-leveldb' 'python2-lmdb' 'python2-glog'
     # missing:
         # 'python2-nvd3'
 )
