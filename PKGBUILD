@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-knock
 _pkgbasever=4.9-gnu
-_pkgver=4.9.24-gnu
+_pkgver=4.9.25-gnu
 _knockpatchver=4.9_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -45,7 +45,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
@@ -64,7 +64,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            'be50b9b7c607bd61571a2d2451dec26a6451be403905758d0635dd8a580d6c79dc45c9a37fe96ad8e72a04f0be9495a65b166857c4b13af69fb89ac5170525f3'
+            '620ecbc7ae985acd8fe8d4940dd8a51b0438e0404526b3472f95112e58a1e81b319c33fc3d6a4061dfad316604e1b47b01f7e0f927dd6c46e7c230d96f61b126'
             'SKIP'
             'a00e9fc0b930021242b231dfdd15160eaefbfad4aaa0ba0426bb9a25dd14acc1825cbb1bc9c680a6d43baca797591dc219e232862f566457752ff378e03600a3'
             'SKIP'
@@ -237,8 +237,8 @@ _package() {
   fi
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
