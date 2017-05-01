@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
 depends=('r>=2.11.1' 'boost-libs>=1.5' 'util-linux' 'gcc-libs' 'openssl-1.0')
-makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime' 'apache-ant' 'unzip' 'openssl' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
+makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
 source=('git://github.com/rstudio/rstudio.git'
