@@ -11,7 +11,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
          'libgala.so' 'libgranite.so')
-makedepends=('bzr' 'cmake' 'gala-bzr' 'granite-git' 'vala')
+makedepends=('cmake' 'gala-bzr' 'git' 'granite-git' 'vala')
 provides=('wingpanel' 'libwingpanel-2.0.so')
 conflicts=('wingpanel')
 replaces=('wingpanel-bzr')
