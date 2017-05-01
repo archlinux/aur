@@ -7,10 +7,10 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  [ffmpeg]=ffmpeg
+  #[ffmpeg]=ffmpeg
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
-  [icu]=icu
+  #[icu]=icu
   [libjpeg]=libjpeg
   [libpng]=libpng
   #[libvpx]=libvpx
@@ -25,7 +25,7 @@ declare -rgA _system_libs=(
 
 pkgname=iridium
 pkgver=58.0
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
 arch=('i686' 'x86_64')
@@ -76,7 +76,7 @@ prepare() {
   patch -Np0 -i ../sandbox-linux-build.patch
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
+  #patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
