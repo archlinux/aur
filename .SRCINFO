@@ -1,14 +1,14 @@
 pkgbase = plasma5-applets-eventcalendar
 	pkgdesc = Plasmoid for Plasma 5. An extended calendar with daily weather forecasts and events from Google Calendar.
-	pkgver = 44
+	pkgver = 46
 	pkgrel = 1
 	url = https://www.kde-look.org/p/998901/
 	arch = any
 	license = GPL
 	depends = plasma-workspace
 	depends = qt5-graphicaleffects
-	source = https://github.com/Zren/plasma-applets/archive/eventcalendar-44.tar.gz
-	md5sums = 15305f1fb836e8e93d8a28512628f383
+	source = https://github.com/Zren/plasma-applets/archive/eventcalendar-46.tar.gz
+	md5sums = 6918b3b880f5730bee20fe6b48c9e1ca
 
 pkgname = plasma5-applets-eventcalendar
 
