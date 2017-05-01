@@ -1,8 +1,7 @@
-# Maintainer: Jonathan Sumner Evans <sumner.evans98@gmail.com>
 _npmname=mstdn
-_npmver=0.2.3
+_npmver=0.2.4
 pkgname=mstdn # All lowercase
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Tiny web-based mastodon client for your desktop"
 arch=(any)
@@ -11,7 +10,7 @@ license=()
 depends=('nodejs' 'npm' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(0b9cde893f61bd91e105918959a9abfed7979479)
+sha1sums=(653d96d275e82430517aa872fcc3b6a2f9cea24c)
 
 package() {
   cd $srcdir
