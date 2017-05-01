@@ -14,6 +14,7 @@ depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
 makedepends=('bzr' 'cmake' 'gala-bzr' 'granite-git' 'vala')
 provides=('wingpanel' 'libwingpanel-2.0.so')
 conflicts=('wingpanel')
+replaces=('wingpanel-bzr')
 source=('git+https://github.com/elementary/wingpanel.git')
 sha256sums=('SKIP')
 
