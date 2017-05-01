@@ -1,6 +1,6 @@
 pkgname=c9.core
 _pkgname=core
-pkgver=3.0
+pkgver=3.0.4edb9102
 pkgrel=1
 pkgdesc="Cloud9 Core - Part of the Cloud9 SDK for Plugin Development https://c9.io"
 url="http://c9.io/"
@@ -26,12 +26,12 @@ md5sums=('SKIP'
          'fad2be0e1cf10d29ad98727739353626'
          '373c0a4e2b8278fd315940dd61b3a952'
          '8fbf927e0cb9af22bf15666fd993a5e1'
-         '67158ed4cec5bd4d7298890d57a214f4'
+         'e5bd6988f4d1e76dd999c6478115af8d'
 )
 
 pkgver() {
   cd "$pkgname"
-  git describe | sed 's/^v//;s/-/./g' || echo $pkgver
+  echo 3.0.$(git rev-parse --short HEAD)
 }
 
 build() {

@@ -26,24 +26,12 @@ post_upgrade() {
 		  echo "Stop all processes running under the cloud9 user and reinstall cloud9"
 		  echo "or change the uid manually. (usermod -u 419 cloud9)"
 	  fi
-	  chown -R cloud9:cloud9 /opt/cloud9
+	  chown -R 419:419 /opt/cloud9
   fi
 }
 
 post_remove() {
   getent passwd cloud9 > /dev/null 2>&1 && userdel cloud9
   getent group cloud9 > /dev/null 2>&1 && groupdel cloud9
-}
-
-
-
-
-function post_install {
-    echo "Notes:"
-    echo "------"
-    echo "* The default workspace is the working directory."
-    echo "* Call 'cloud9 -w <workspace>' to switch to a different workspace."
-    echo "* To listen on a different port you can use the '-p' switch." 
-    echo "* See 'cloud9 --help' for more information."
 }
 
