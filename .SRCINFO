@@ -1,0 +1,16 @@
+pkgbase = gitkv
+	pkgdesc = Easy key-value storage via git
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aureooms/gitkv
+	arch = any
+	license = AGPL-3.0
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = git
+	source = https://github.com/aureooms/gitkv/archive/v1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = gitkv
+
