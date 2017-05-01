@@ -1,6 +1,6 @@
 # Contributor: Calogero e Angelo Scarnà <info@codelinsoft.it>
 # Update and change name fabariagest to fabaria_gest
-pkgname=fabaria_gest
+pkgname=fabariagest
 pkgver=1.2
 pkgrel=3
 pkgdesc="Gestionale aziendale." 
