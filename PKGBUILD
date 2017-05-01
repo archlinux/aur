@@ -17,19 +17,19 @@ makedepends=('libx11')
 provides=("freetype2=$pkgver" 'freetype2-infinality' 'libfreetype.so')
 conflicts=('freetype2' 'freetype2-infinality')
 install=freetype2.install
-source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2
+source=(https://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2
         0001-Enable-table-validation-modules.patch
 	0002-infinality-${pkgver}-${_patchrel}.patch
 	freetype2.sh
   infinality-settings.sh
   xft-settings.sh)
 
-sha1sums=('c2d6a1734a6dd4cd63c520ccf6e912ce1228864b'
-          'b31882ef5e8447e761acee1c4a44c0630cd4d465'
-          '7a23342d5d56274ff8a05c67f64b96e85929f629'
-          'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f'
-          '4e3c69a2161e6becaab6e57edeebbedc8a264939'
-          'a1859f2eacae2046a9ef705ac2bcc4bdf4fd9717')
+sha256sums=('3a3bb2c4e15ffb433f2032f50a5b5a92558206822e22bfe8cbe339af4aa82f88'
+            '6d273254fd925d284e5f66e3861eaef69a4393f34872398b2c93af0d5e15d34e'
+            '5ac6329d4ffd6d94d9dd76b178fa13ab2fcfadbf2ddaa7ad60bf0bb7632afd69'
+            'f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467'
+            '2041947007b27d58101b5aebdf225d79d2c6d64cf8ac07a71c225d9e027578a0'
+            'a4b3db6882de85304c5e4099fca5832a598607f90e582bcd030df0e9b526cd0b')
 
 prepare() {
   mv freetype-${pkgver} freetype2
