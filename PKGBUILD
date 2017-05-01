@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-counterparty-lib
-pkgver=9.55.1
+pkgver=9.55.2
 pkgrel=1
 pkgdesc="Counterparty Protocol Reference Implementation"
 arch=('any')
@@ -17,6 +17,8 @@ depends=('python'
          'python-json-rpc'
          'python-pycoin'
          'python-pysha3'
+         'python-pytest'
+         'python-pytest-cov'
          'python-python-bitcoinlib'
          'python-requests'
          'python-tendo'
@@ -32,8 +34,8 @@ license=('MIT')
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-lib/tar.gz/$pkgver
         setup.py.patch)
-sha256sums=('bf7593ed161f278b274b11cb17f93e5d050d22e37a6f48400a98878c5a1f0d76'
-            'e1b5edabf31ed909d08a9e9e6aa97445a6e6b9a27854020e53ddae1ff9f9d102')
+sha256sums=('14889f1beae3055b98e88157a4e5c906632cf3ddd20357b28f6298001c8d9e57'
+            '7cccdbf298c2d454c835e4f97009a4df583895709b872a1b4d5c0efd30251123')
 
 prepare() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
