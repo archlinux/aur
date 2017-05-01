@@ -1,6 +1,6 @@
 pkgbase = myip
 	pkgdesc = Print your public or private IP address
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/aureooms/myip
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = myip
 	depends = grep
 	depends = bind-tools
 	depends = iproute2
-	source = https://github.com/aureooms/myip/archive/v1.0.0.tar.gz
+	source = https://github.com/aureooms/myip/archive/v1.0.1.tar.gz
 	md5sums = SKIP
 
 pkgname = myip
