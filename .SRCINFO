@@ -1,4 +1,4 @@
-pkgbase = iscore-git
+pkgbase = i-score
 	pkgdesc = i-score, an interactive sequencer for the intermedia arts
 	pkgver = 1.0.0b9
 	pkgrel = 1
@@ -18,5 +18,5 @@ pkgbase = iscore-git
 	depends = qt5-declarative
 	provides = i-score
 
-pkgname = iscore-git
+pkgname = i-score
 
