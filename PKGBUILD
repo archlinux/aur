@@ -1,33 +1,59 @@
-# Maintainer: Matt Harrison <matt@mistbyte.com>
-# Contributor: Sergey Mamonov <mrqwer88@gmail.com>
-
 pkgname=maldet
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
-pkgdesc="Linux Malware Detect"
+pkgdesc="linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
-arch=('x86_64' 'i686')
-license=('GPL')
+license=('GPL2')
+arch=('any')
 depends=('perl')
 depends_x86_64=('lib32-glibc')
+source=("http://www.rfxn.com/downloads/maldetect-${pkgver}.tar.gz")
+        
+md5sums=('d9f404196928bebefd0fd14c07ddcebd')
 
-source=("http://www.rfxn.com/downloads/maldetect-$pkgver.tar.gz")
-sha256sums=('1cb9e971aad4652349d81609dd66b6a2d51e415f410ea34e0d62fd402be1ffe7')
+## TODO upstream setup tries to overwrite clamav's rfxn.* and lmd.user.* files
+#  seems to run with root-privs, so check for overwrites anywhere (best in a VM)
+#  file system privileges - depends on root/user
 
-package() {
-    echo "Warning! This package does not comply to the Arch packaging standarts"
-    echo "Usage strongly discouraged, use at own risk!"
-    false
-    cd "${srcdir}/${pkgname}ect-${pkgver}"
-    mkdir -p ${pkgdir}/usr/local/sbin
-    mkdir -p ${pkgdir}/usr/lib
-    mkdir -p ${pkgdir}/etc/cron.daily
-    sed -i "s|/usr/|${pkgdir}/usr/|g" install.sh
-    sed -i "s|/etc/|${pkgdir}/etc/|g" install.sh
-    sed -i 's|$inspath/maldet --update|#$inspath/maldet --update|' install.sh
-    sed -i 's|ln -fs $inspath/maldet|#ln -fs $inspath/maldet|' install.sh
-    sh install.sh
-    cd "${pkgdir}/usr/local/sbin/"
-    ln -fs ../maldetect/maldet maldet
-    ln -fs ../maldetect/maldet lmd
+package(){
+    cd "$srcdir/maldetect-$pkgver"
+    dest="$pkgdir/usr/share/maldet"
+    mkdir -p "$dest"
+    cp -r files/* "$dest"
+    mkdir -p "$pkgdir/usr/bin/"
+    mv "$dest"/maldet "$pkgdir/usr/bin"
+    sed -i "s|^inspath='/usr/local/maldetect'|inspath='/usr/share/maldet'|" "$pkgdir/usr/bin/maldet"
+    sed -i 's|^intcnf="\$inspath/internals/internals.conf"|intcnf="/etc/maldet/internals.conf"|' "$pkgdir/usr/bin/maldet"
+
+    mkdir -p "$pkgdir/usr/lib/systemd/system/"
+    sed "s|/usr/local/maldetect/maldet|/usr/bin/maldet|" "$dest/service/maldet.service" \
+      | sed "s|--monitor /usr/local/maldetect/monitor_paths|--monitor /etc/maldet/monitor_paths|" \
+      | sed "s|^PIDFile=.*|PIDFILE=/var/run/maldet.pid|" \
+      > "$pkgdir/usr/lib/systemd/system/maldet.service"
+    rm -r "$dest/service"
+
+    mkdir -p "$pkgdir/var/lib/maldet"
+    mkdir -p "$pkgdir/var/lib/maldet/"{quarantine,sess,sigs,clean,tmp,pub}
+    mv "$dest/sigs" "$pkgdir/var/lib/maldet/"
+    mkdir -p "$pkgdir/var/log/maldet"
+    mkdir -p "$pkgdir/etc/maldet"
+    mv "$dest/conf.maldet" "$pkgdir/etc/maldet/maldet.conf"
+    sed 's|^logdir="\$inspath/logs"|logdir="/var/log/maldet"|' "$dest/internals/internals.conf" \
+      | sed 's|^inspath=/usr/local/maldetect|inspath="/usr/share/maldetect"|' \
+      | sed 's|^intcnf="$inspath/internals/internals.conf"|intcnf="/etc/maldet/internals.conf"|' \
+      | sed 's|^confpath="\$inspath"|confpath="/etc/maldet"|' \
+      | sed 's|^cnffile="conf.maldet"|cnffile="maldet.conf"|' \
+      | sed 's|^varlibpath="\$inspath"|varlibpath="/var/lib/maldet"|' \
+      | sed 's|^tmpdir="\$inspath/tmp"|tmpdir="$varlibpath/tmp"|' \
+      > "$pkgdir/etc/maldet/internals.conf"
+    mv "$dest"/ignore_{inotify,paths,file_ext,sigs} "$pkgdir/etc/maldet/" 
+    mv "$dest/monitor_paths" "$pkgdir/etc/maldet/" 
+
+    mkdir -p "$pkgdir/usr/share/man/man1/"
+    gzip -9 "$dest/maldet.1"
+    mv "$dest/maldet.1.gz" "$pkgdir/usr/share/man/man1/" 
+    mkdir -p "$pkgdir/usr/share/doc/maldet/"
+    cp CHANGELOG COPYING.GPL README "$pkgdir/usr/share/doc/maldet/"
+    rm -r "$dest/cron"
+    rm "$dest/uninstall.sh"
 }
