@@ -5,6 +5,10 @@ pkgbase = chisel-tunnel
 	url = https://github.com/jpillora/chisel
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	source = https://raw.githubusercontent.com/jpillora/chisel/1.2.2/README.md
 	source = https://raw.githubusercontent.com/jpillora/chisel/1.2.2/example/users.json
@@ -14,6 +18,14 @@ pkgbase = chisel-tunnel
 	md5sums_i686 = 588094f95dd8a4022280bbb38c6a5d1a
 	source_x86_64 = chisel_x86_64.gz::https://github.com/jpillora/chisel/releases/download/1.2.2/chisel_linux_amd64.gz
 	md5sums_x86_64 = 69e4a6c7322038beea821749568cc2f3
+	source_arm = chisel_arm.gz::https://github.com/jpillora/chisel/releases/download/1.2.2/chisel_linux_arm.gz
+	md5sums_arm = 1e7fb78655febc1c5ddabdd6d4fc4a12
+	source_armv6h = chisel_armv6h.gz::https://github.com/jpillora/chisel/releases/download/1.2.2/chisel_linux_arm.gz
+	md5sums_armv6h = 1e7fb78655febc1c5ddabdd6d4fc4a12
+	source_armv7h = chisel_armv7h.gz::https://github.com/jpillora/chisel/releases/download/1.2.2/chisel_linux_arm.gz
+	md5sums_armv7h = 1e7fb78655febc1c5ddabdd6d4fc4a12
+	source_aarch64 = chisel_aarch64.gz::https://github.com/jpillora/chisel/releases/download/1.2.2/chisel_linux_arm.gz
+	md5sums_aarch64 = 1e7fb78655febc1c5ddabdd6d4fc4a12
 
 pkgname = chisel-tunnel
 
