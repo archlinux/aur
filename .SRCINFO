@@ -1,0 +1,21 @@
+pkgbase = war1gus-git
+	pkgdesc = Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine (git version)
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/Wargus/war1gus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = stratagus
+	depends = ffmpeg2theora
+	depends = cdparanoia
+	depends = timidity++
+	depends = gtk2
+	provides = war1gus=2.4.1
+	conflicts = war1gus
+	replaces = war1gus
+	source = war1gus::git://github.com/Wargus/war1gus.git
+	md5sums = SKIP
+
+pkgname = war1gus-git
+
