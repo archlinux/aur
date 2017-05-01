@@ -109,4 +109,3 @@ pkgname = lib32-opencl-nvidia-full-beta
 	provides = lib32-opencl-nvidia=381.09
 	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia
-
