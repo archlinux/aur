@@ -1,8 +1,6 @@
-diff --git a/setup.py b/setup.py
-index f0724c6..ebc3714 100644
---- a/setup.py
-+++ b/setup.py
-@@ -199,22 +199,20 @@ class bdist_egg(_bdist_egg):
+--- ./setup.py	2017-05-01 10:04:13.760210632 -0700
++++ ./setup.py	2017-05-01 10:04:57.488264752 -0700
+@@ -202,22 +202,22 @@
          self.execute(post_install, (self, False), msg="Running post install tasks")
  
  required_packages = [
@@ -12,12 +10,12 @@ index f0724c6..ebc3714 100644
 -    'appdirs==1.4.0',
 -    'colorlog==2.7.0',
 -    'json-rpc==1.10.3',
--    'pycoin==0.62',
+-    'pycoin==0.77',
 -    'pycrypto==2.6.1',
 -    'pysha3==0.3',
--    'pytest==2.9.1',
+-    'pytest==2.9.2',
 -    'pytest-cov==2.2.1',
--    'python-bitcoinlib==0.5.1',
+-    'python-bitcoinlib>=0.7.0,<0.7.1',
 -    'requests==2.10.0',
 -    'tendo==0.2.8',
 -    'xmltodict==0.10.1',
@@ -31,6 +29,8 @@ index f0724c6..ebc3714 100644
 +    'pycoin',
 +    'pycrypto',
 +    'pysha3',
++    'pytest',
++    'pytest-cov',
 +    'python-bitcoinlib',
 +    'requests',
 +    'tendo',
@@ -39,7 +39,7 @@ index f0724c6..ebc3714 100644
  ]
  
  setup_options = {
-@@ -245,15 +243,8 @@ setup_options = {
+@@ -248,15 +248,8 @@
      'provides': ['counterpartylib'],
      'packages': find_packages(),
      'zip_safe': False,

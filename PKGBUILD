@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-counterparty-lib-git
-pkgver=20161202
+pkgver=20170501
 pkgrel=1
 pkgdesc="Counterparty Protocol Reference Implementation"
 arch=('any')
@@ -17,6 +17,8 @@ depends=('python'
          'python-json-rpc'
          'python-pycoin'
          'python-pysha3'
+         'python-pytest'
+         'python-pytest-cov'
          'python-python-bitcoinlib'
          'python-requests'
          'python-tendo'
@@ -33,7 +35,7 @@ options=('!emptydirs')
 source=(${pkgname%-git}::git+https://github.com/CounterpartyXCP/counterparty-lib
         setup.py.patch)
 sha256sums=('SKIP'
-            'e1b5edabf31ed909d08a9e9e6aa97445a6e6b9a27854020e53ddae1ff9f9d102')
+            '7cccdbf298c2d454c835e4f97009a4df583895709b872a1b4d5c0efd30251123')
 provides=('python-counterparty-lib')
 conflicts=('python-counterparty-lib')
 
