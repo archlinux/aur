@@ -1,0 +1,16 @@
+pkgbase = python-cachey
+	pkgdesc = Caching based on computation time and storage space
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dask/cachey
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git+https://github.com/dask/cachey.git#commit=6d4aca7
+	sha256sums = SKIP
+
+pkgname = python-cachey
+
