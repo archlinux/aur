@@ -1,0 +1,112 @@
+diff -ur NVIDIA-Linux-x86_64-381.09/kernel/nvidia-drm/nvidia-drm-drv.c NVIDIA-Linux-x86_64-381.09.patched/kernel/nvidia-drm/nvidia-drm-drv.c
+--- NVIDIA-Linux-x86_64-381.09/kernel/nvidia-drm/nvidia-drm-drv.c	2017-03-31 03:42:21.000000000 +0200
++++ NVIDIA-Linux-x86_64-381.09.patched/kernel/nvidia-drm/nvidia-drm-drv.c	2017-04-06 23:53:14.273356795 +0200
+@@ -48,6 +48,8 @@
+ #include <drm/drm_auth.h>
+ #endif
+ 
++#include <linux/version.h>
++
+ static struct nvidia_drm_device *dev_list = NULL;
+ 
+ #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
+@@ -398,7 +400,11 @@
+     return 0;
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+ static int nvidia_drm_unload(struct drm_device *dev)
++#else
++static void nvidia_drm_unload(struct drm_device *dev)
++#endif
+ {
+ #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
+     struct NvKmsKapiDevice *pDevice = NULL;
+@@ -412,7 +418,11 @@
+ 
+     if (!nvidia_drm_modeset_enabled(dev))
+     {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+         return 0;
++#else
++        return;
++#endif
+     }
+ 
+     mutex_lock(&nv_dev->lock);
+@@ -445,7 +455,11 @@
+ 
+ #endif /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+     return 0;
++#else
++    return;
++#endif
+ }
+ 
+ #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
+@@ -542,7 +556,6 @@
+                                             void *data,
+                                             struct drm_file *file_priv)
+ {
+-    struct nvidia_drm_device *nv_dev = dev->dev_private;
+     struct drm_nvidia_get_client_capability_params *params = data;
+ 
+     switch (params->capability)
+diff -ur NVIDIA-Linux-x86_64-381.09/kernel/nvidia-drm/nvidia-drm-gem.c NVIDIA-Linux-x86_64-381.09.patched/kernel/nvidia-drm/nvidia-drm-gem.c
+--- NVIDIA-Linux-x86_64-381.09/kernel/nvidia-drm/nvidia-drm-gem.c	2017-03-31 03:42:21.000000000 +0200
++++ NVIDIA-Linux-x86_64-381.09.patched/kernel/nvidia-drm/nvidia-drm-gem.c	2017-04-06 23:54:19.624353181 +0200
+@@ -31,6 +31,8 @@
+ 
+ #include "nv-mm.h"
+ 
++#include <linux/version.h>
++
+ static struct nvidia_drm_gem_object *nvidia_drm_gem_new
+ (
+     struct drm_file *file_priv,
+@@ -511,11 +513,19 @@
+  * Note that nvidia_drm_vma_fault() can be called for different or same
+  * ranges of the same drm_gem_object simultaneously.
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+ static int nvidia_drm_vma_fault(struct vm_area_struct *vma,
+                                 struct vm_fault *vmf)
++#else
++static int nvidia_drm_vma_fault(struct vm_fault *vmf)
++#endif
+ {
+     unsigned long address = nv_page_fault_va(vmf);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+     struct drm_gem_object *gem = vma->vm_private_data;
++#else
++    struct drm_gem_object *gem = vmf->vma->vm_private_data;
++#endif
+     struct nvidia_drm_gem_object *nv_gem =
+                     DRM_GEM_OBJECT_TO_NV_GEM_OBJECT(gem);
+     unsigned long page_offset, pfn;
+@@ -526,7 +536,11 @@
+ 
+     page_offset = vmf->pgoff - drm_vma_node_start(&gem->vma_node);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+     ret = vm_insert_pfn(vma, address, pfn + page_offset);
++#else
++    ret = vm_insert_pfn(vmf->vma, address, pfn + page_offset);
++#endif
+ 
+     switch (ret) {
+         case 0:
+diff -ur NVIDIA-Linux-x86_64-381.09/kernel/nvidia-drm/nvidia-drm-linux.c NVIDIA-Linux-x86_64-381.09.patched/kernel/nvidia-drm/nvidia-drm-linux.c
+--- NVIDIA-Linux-x86_64-381.09/kernel/nvidia-drm/nvidia-drm-linux.c	2017-03-31 03:42:21.000000000 +0200
++++ NVIDIA-Linux-x86_64-381.09.patched/kernel/nvidia-drm/nvidia-drm-linux.c	2017-04-06 23:53:14.273356795 +0200
+@@ -185,7 +185,7 @@
+ module_exit(nv_linux_drm_exit);
+ 
+ #if defined(MODULE_LICENSE)
+-  MODULE_LICENSE("MIT");
++  MODULE_LICENSE("Dual MIT/GPL");
+ #endif
+ #if defined(MODULE_INFO)
+   MODULE_INFO(supported, "external");

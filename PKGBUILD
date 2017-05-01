@@ -23,10 +23,10 @@ case "$CARCH" in
 esac
 
 # Source
-#source=('linux-4.10.patch')
+source=('linux-4.11.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-#md5sums=('e81769b830b7a1e60c635e3bbe559f59')
+md5sums=('897d9775dc484ab37934e7b102c5b325')
 md5sums_i686=('aa16257e2ab1c28724479165afc187cc')
 md5sums_x86_64=('fe66660415e3919681e61bfc4e95cba4')
 
