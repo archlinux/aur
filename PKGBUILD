@@ -7,8 +7,7 @@ pkgdesc='Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service i
 arch=('any')
 url='http://gitea.io'
 license=('MIT')
-depends=('go')
-makedepends=('git' 'go-bindata')
+makedepends=('go' 'git' 'go-bindata')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
