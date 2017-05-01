@@ -1,7 +1,9 @@
 # $Id$
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Allen Zhong <moeallenz@gmail.com>
+# Contributor: Yishen Miao <mys721tx@gmail.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-_pkgname=openssl
+_pkgname=openssl-1.0
 pkgname=${_pkgname}-chacha20
 _ver=1.0.2k
 # use a pacman compatible version scheme
@@ -16,73 +18,92 @@ depends=('perl')
 optdepends=('ca-certificates')
 options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
-conflicts=('openssl')
-provides=("openssl=${pkgver}")
-source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
-	"https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
-	'no-rpath.patch'
-	'ssl3-test-failure.patch'
-	'ca-dir.patch'
-	'openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch')
+conflicts=('openssl-1.0')
+provides=("openssl-1.0=${pkgver}")
+source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
+        "https://www.openssl.org/source/openssl-${_ver}.tar.gz.asc"
+        'no-rpath.patch'
+        'ssl3-test-failure.patch'
+        'ca-dir.patch'
+        'openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch')
 sha256sums=('6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0'
-	'SKIP'
-	'754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
-	'c54ae87c602eaa1530a336ab7c6e22e12898e1941012349c153e52553df64a13'
-	'9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4'
-	'd6f9427d5cb63c7299563c201cd8708c7166e0f8c98b57a1fee69767362bf0f7')
+            'SKIP'
+            '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
+            'c54ae87c602eaa1530a336ab7c6e22e12898e1941012349c153e52553df64a13'
+            '9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4'
+            'd6f9427d5cb63c7299563c201cd8708c7166e0f8c98b57a1fee69767362bf0f7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
-	cd $srcdir/$_pkgname-$_ver
+    cd $srcdir/openssl-$_ver
 
-	# remove rpath: http://bugs.archlinux.org/task/14367
-	patch -p0 -i $srcdir/no-rpath.patch
+    # remove rpath: http://bugs.archlinux.org/task/14367
+    patch -p0 -i $srcdir/no-rpath.patch
 
-	# disable a test that fails when ssl3 is disabled
-	patch -p1 -i $srcdir/ssl3-test-failure.patch
+    # disable a test that fails when ssl3 is disabled
+    patch -p1 -i $srcdir/ssl3-test-failure.patch
 
-	# set ca dir to /etc/ssl by default
-	patch -p0 -i $srcdir/ca-dir.patch
+    # add symbol versioning to prevent conflicts with openssl 1.1 symbols (Debian)
+    #patch -p1 -i "$srcdir"/openssl-1.0-versioned-symbols.patch
 
-	# Cloudflare patch
-	# https://github.com/cloudflare/sslconfig/blob/master/patches/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch 
-	patch -p1 -i $srcdir/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch
+    # set ca dir to /etc/ssl by default
+    patch -p0 -i $srcdir/ca-dir.patch
+
+    # Cloudflare patch
+    # https://github.com/cloudflare/sslconfig/blob/master/patches/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch
+    patch -p1 -i $srcdir/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch
 }
 
 build() {
+    cd "$srcdir/openssl-$_ver"
+
     export CC=gcc
     export CXX=g++
-	cd $srcdir/$_pkgname-$_ver
+    if [ "${CARCH}" == 'x86_64' ]; then
+        openssltarget='linux-x86_64'
+        optflags='enable-ec_nistp_64_gcc_128'
+    elif [ "${CARCH}" == 'i686' ]; then
+        openssltarget='linux-elf'
+        optflags=''
+    fi
 
-	if [ "${CARCH}" == 'x86_64' ]; then
-		openssltarget='linux-x86_64'
-		optflags='enable-ec_nistp_64_gcc_128'
-	elif [ "${CARCH}" == 'i686' ]; then
-		openssltarget='linux-elf'
-		optflags=''
-	fi
+    # mark stack as non-executable: http://bugs.archlinux.org/task/12434
+    ./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib/openssl-1.0 \
+        shared no-ssl3-method ${optflags} \
+        "${openssltarget}" \
+        "-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
-	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
-	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared no-ssl3-method ${optflags} \
-		"${openssltarget}" \
-		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
-
-	make depend
-	make
+    make depend
+    make
 }
 
 check() {
-	cd $srcdir/$_pkgname-$_ver
-	# the test fails due to missing write permissions in /etc/ssl
-	# revert this patch for make test
-	patch -p0 -R -i $srcdir/ca-dir.patch
-	make test
-	patch -p0 -i $srcdir/ca-dir.patch
+    cd "$srcdir/openssl-$_ver"
+    # the test fails due to missing write permissions in /etc/ssl
+    # revert this patch for make test
+    patch -p0 -R -i $srcdir/ca-dir.patch
+    make test
+    patch -p0 -i $srcdir/ca-dir.patch
 }
 
 package() {
-	cd $srcdir/$_pkgname-$_ver
-	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install
-	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+    cd "$srcdir/openssl-$_ver"
+
+    make INSTALL_PREFIX="$pkgdir" install_sw
+
+    # Move some files around
+    install -m755 -d "$pkgdir/usr/include/openssl-1.0"
+    mv "$pkgdir/usr/include/openssl" "$pkgdir/usr/include/openssl-1.0/"
+    mv "$pkgdir/usr/lib/openssl-1.0/libcrypto.so.1.0.0" "$pkgdir/usr/lib/"
+    mv "$pkgdir/usr/lib/openssl-1.0/libssl.so.1.0.0" "$pkgdir/usr/lib/"
+    ln -sf ../libssl.so.1.0.0 "$pkgdir/usr/lib/openssl-1.0/libssl.so"
+        ln -sf ../libcrypto.so.1.0.0 "$pkgdir/usr/lib/openssl-1.0/libcrypto.so"
+    mv "$pkgdir/usr/bin/openssl" "$pkgdir/usr/bin/openssl-1.0"
+
+    # Update includedir in .pc files
+    sed -e 's|/include$|/include/openssl-1.0|' -i "$pkgdir"/usr/lib/openssl-1.0/pkgconfig/*.pc
+
+    rm -rf "$pkgdir"/{etc,usr/bin/c_rehash}
+
+    install -D -m644 LICENSE $pkgdir/usr/share/licenses/${_pkgname}/LICENSE
 }
