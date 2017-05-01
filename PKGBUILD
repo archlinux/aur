@@ -6,7 +6,7 @@ arch=('any')
 url="http://epub2pdf.com"
 license=('GPL3')
 depends=('java-runtime>=6')
-source=("$url/files/epub2pdf-0.5.zip"
+source=("http://download.openpkg.org/components/cache/epub2pdf/epub2pdf-0.5.zip"
 "epub2pdf.sh")
 md5sums=('7189ee61628a72dfdb89120aa9e86a89'
 'SKIP')
