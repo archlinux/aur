@@ -2,7 +2,7 @@
 
 pkgname=arangodb
 pkgver=3.1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64")
 url="https://www.arangodb.com/"
@@ -51,6 +51,9 @@ package() {
   cp -R $srcdir/ArangoDB-$pkgver/build/bin/* $pkgdir/usr/bin/
   mkdir -p $pkgdir/usr/share/arangodb3/js
   mkdir -p $pkgdir/usr/share/man
+  mkdir -p $pkgdir/var/lib/arangodb3
+  mkdir -p $pkgdir/var/lib/arangodb3-apps
+  mkdir -p $pkgdir/var/log/arangodb3
   cp -R $srcdir/ArangoDB-$pkgver/js/* $pkgdir/usr/share/arangodb3/js
   cp -R $srcdir/ArangoDB-$pkgver/Documentation/man/* $pkgdir/usr/share/man
 
