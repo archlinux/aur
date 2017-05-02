@@ -1,7 +1,7 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 
 pkgname=tflint
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A linter for Terraform code"
 arch=('i686' 'x86_64')
