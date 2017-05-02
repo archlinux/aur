@@ -5,7 +5,7 @@ pkgbase = collate-notes
 	url = https://collatenotes.com
 	arch = x86_64
 	license = Commercial
-	source = https://s3.us-east-2.amazonaws.com/collate-latest/Collate_0.3.0_amd64.deb
+	source = https://s3.us-east-2.amazonaws.com/collate-releases/0.3.0/linux/Collate_0.3.0_amd64.deb
 	sha256sums = fc6e1e8f9deee8e02c0b3ba88901817c881ee373e064fc4a8d1842813beef90e
 
 pkgname = collate-notes
