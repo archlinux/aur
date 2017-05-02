@@ -19,10 +19,13 @@ pkgbase = heasoft
 	sha1sums = c1d4940d1aa599bf3b8b61b3471ebf057869b517
 
 pkgname = heasoft-base
+	pkgdesc = Base libraries for heasoft software
 
 pkgname = xspec
+	pkgdesc = X-ray spectral fitting software
 	depends = heasoft-base
 
 pkgname = ftools
+	pkgdesc = A General Package of Software to Manipulate FITS Files
 	depends = heasoft-base
 
