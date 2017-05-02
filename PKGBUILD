@@ -127,49 +127,44 @@ source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.t
 options=(!strip !zipman)
 
 prepare() {
-  cd "$srcdir"/$pkgname-$pkgver
+    cd "$srcdir"/$pkgname-$pkgver
 
-  # remove modules that we do not support
-  rm -r {bsdexports,bsdfdisk,cpan,dfsadmin,format,grub,hpuxexports,inetd,ipfilter,ipfw,package-updates,rbac,sgiexports,smf,software,syslog-ng,zones}
+    # remove modules that we do not support and stuff that is not needed
+    rm -r {bsdexports,bsdfdisk,cpan,dfsadmin,format,grub,hpuxexports,inetd,ipfilter,ipfw,package-updates,rbac,sgiexports,smf,software,syslog-ng,zones}
+    rm mount/freebsd-mounts* mount/netbsd-mounts* mount/openbsd-mounts* mount/macos-mounts*
+    rm webmin-gentoo-init webmin-init webmin-daemon
 
-  # delete stuff that is not needed
-  rm mount/freebsd-mounts* mount/netbsd-mounts* mount/openbsd-mounts* mount/macos-mounts*
-  rm webmin-gentoo-init webmin-init webmin-daemon
+    # dont allow webmin to update itself, must update via pacman
+    rm {webmin,usermin}/{update.cgi,update.pl,update_sched.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
 
-  # remove config files for other distros, add only Arch linux
-  find . ! -name 'config-generic-linux' ! -name 'config-\*-linux' ! -name 'config-lib.pl' -name 'config-*' -exec rm '{}' \+
-  echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
+    # remove config files for other distros, make Arch linux related additions
+    find . ! -name 'config-generic-linux' ! -name 'config-\*-linux' ! -name 'config-lib.pl' -name 'config-*' -exec rm '{}' \+
+    echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
+    cp -rp "$srcdir"/webmin-config/* "$srcdir"/$pkgname-$pkgver/
+    install -m 700 "$srcdir"/setup-{pre,post}.sh "$srcdir"/$pkgname-$pkgver/
 
-  # remove update stuff to avoid problems with updating webmin, modules and themes without pacman
-  rm {webmin,usermin}/{update.cgi,update.pl,update_sched.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
-
-  # copy Arch linux related files
-  cp -rp "$srcdir"/webmin-config/* "$srcdir"/$pkgname-$pkgver/
-  install -m 700 "$srcdir"/setup-{pre,post}.sh "$srcdir"/$pkgname-$pkgver/
-
-  # Fix setup.sh
-  sed -i -e 's:exit 13::g' "$srcdir"/$pkgname-$pkgver/setup.sh
+    # Fix setup.sh
+    sed -i -e 's:exit 13::g' "$srcdir"/$pkgname-$pkgver/setup.sh
 }
 
 package() {
-  # create basic dirs
-  mkdir -p "$pkgdir"/{etc,opt,var/log}
+    # create basic dirs
+    mkdir -p "$pkgdir"/{etc,opt,var/log}
 
-  archpkgdir="$pkgdir"
-  export archpkgdir
-  cd "$srcdir"/$pkgname-$pkgver
-  "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
+    export archpkgdir="$pkgdir"
+    cd "$srcdir"/$pkgname-$pkgver
+    "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
 
-  # Fixup the config files to use their real locations
-  find "$pkgdir"/etc/webmin -type f -exec sed -i "s:$pkgdir::g" {} \+
+    # Fixup the config files to use their real locations
+    find "$pkgdir"/etc/webmin -type f -exec sed -i "s:$pkgdir::g" {} \+
 
-  # install sources
-  install -D -m 644 $srcdir/webmin.service $pkgdir/usr/lib/systemd/system/webmin.service
-  install -D -m 644 "$srcdir"/webmin.pam "$pkgdir"/etc/pam.d/webmin
-  install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/webmin/LICENCE
+    # install sources
+    install -D -m 644 $srcdir/webmin.service $pkgdir/usr/lib/systemd/system/webmin.service
+    install -D -m 644 "$srcdir"/webmin.pam "$pkgdir"/etc/pam.d/webmin
+    install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/webmin/LICENCE
 
-  # delete temp dir
-  rm -r "$pkgdir"/tmp
+    # delete temp dir
+    rm -r "$pkgdir"/tmp
 }
 
 
