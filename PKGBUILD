@@ -2,17 +2,17 @@
 
 pkgname=switchboard-plug-applications
 pkgver=0.1.2
-pkgrel=1
-pkgdesc='Applications plug for Switchboard'
+pkgrel=2
+pkgdesc='Switchboard Applications Plug'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/switchboard-plug-applications'
+url='https://github.com/elementary/switchboard-plug-applications'
 license=('GPL3')
 groups=('pantheon')
-depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
-         'libswitchboard-2.0.so')
+depends=('glib2' 'glibc' 'gtk3' 'libgee'
+         'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'switchboard' 'vala')
-source=("https://launchpad.net/switchboard-plug-applications/loki/${pkgver}/+download/switchboard-plug-applications-${pkgver}.tar.xz")
-sha256sums=('d7bc53a01d31f0d00c2fc33cee93357d64065000cef7dd982784cf98efe997b4')
+source=("switchboard-plug-applications-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-applications/archive/${pkgver}.tar.gz")
+sha256sums=('ce6f3b32cebf11f95a7c59196392a9d578aa126f02e8ff3fbff00251bf58bb7f')
 
 prepare() {
   cd switchboard-plug-applications-${pkgver}
