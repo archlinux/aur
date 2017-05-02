@@ -5,13 +5,13 @@ pkgname=('confu-git' 'confu2-git')
 _srcname=confu
 _srcname2=confu2
 pkgver=r26.5d28d6e
-pkgrel=2
+pkgrel=3
 _commondesc="Cross-platform C/C++ configuration system (git version, uses python"
 arch=('any')
 url="https://github.com/Maratyszcza/confu/"
 license=('MIT')
 makedepends=('git' 'python' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme'
-                   'python2 ''python2-setuptools' 'python2-sphinx' 'python2-sphinx_rtd_theme')
+                   'python2' 'python2-setuptools' 'python2-sphinx' 'python2-sphinx_rtd_theme')
 source=("$pkgname"::"git+https://github.com/Maratyszcza/confu.git")
 sha256sums=('SKIP')
 
