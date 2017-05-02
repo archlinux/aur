@@ -3,21 +3,29 @@
 
 pkgname=free42
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
 url="http://thomasokken.com/free42/"
 license=('GPL')
 depends=('libxmu' 'gtk2')
 optdepends=('free42-skins: Additional skins')
-source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz")
-md5sums=('c8faee5a430c86da2698acfb8abf9c82')
+source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
+        "0001_makefile.patch"
+        "0002_system-skins.patch")
+md5sums=('c8faee5a430c86da2698acfb8abf9c82'
+         'd3edd7b3b03991e451d513c353885775'
+         '8c0522e3efa3c7fd54985af456b689b7')
 
 prepare() {
-  cd "$srcdir/$pkgname-nologo-$pkgver/gtk"
+  cd "$srcdir/$pkgname-nologo-$pkgver/"
 
-  echo 'LIBS := ${LIBS} -lX11' >> Makefile
-  sed -i 's/Wno-write-strings \\/&\n\t -Wno-narrowing \\/' Makefile
+  # Fix Makefile to compile under Arch Linux
+  patch -Np1 -i "$srcdir/0001_makefile.patch"
+
+  # Read skins from system-wide directory (see package "free42-skins")
+  # This patch can be removed if you want the original upstream version
+  patch -Np1 -i "$srcdir/0002_system-skins.patch"
 }
 
 build() {
@@ -25,9 +33,9 @@ build() {
 
   # build both bin and dec version
   make cleaner
-  make
+  make SKIN_SYS_DIR="/usr/share/free42/skins"
   make clean
-  make BCD_MATH=1
+  make BCD_MATH=1 SKIN_SYS_DIR="/usr/share/free42/skins"
 }
 
 package() {
@@ -42,7 +50,7 @@ package() {
   ln -s /usr/bin/free42dec "$pkgdir/usr/bin/free42"
 
   cd ../skins
-  for _f in *; do
+  for _f in Ehrling42sl.* Standard.* README.txt; do
     install -Dm644 $_f "$pkgdir/usr/share/$pkgname/skins/$_f"
   done
 }
