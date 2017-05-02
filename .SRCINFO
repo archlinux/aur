@@ -1,11 +1,12 @@
 pkgbase = python-sentry
 	pkgdesc = Python monitoring tool
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dopsi/sentry
 	arch = any
 	license = MIT
 	depends = python-colored
+	depends = python-twilio
 	source = python-sentry-v1.0.3.tar.gz::https://github.com/dopsi/sentry/archive/v1.0.3.tar.gz
 	sha256sums = f00a417de962301d05235f3743275ec9306f3f53bdc2f0374b721669140828b0
 
