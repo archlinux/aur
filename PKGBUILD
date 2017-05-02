@@ -74,7 +74,7 @@ build() {
   fi
 
   # See if PETSc was configured to use 64 bit indices:
-  if pacman -Qs petsc >/dev/null
+  if [ -n "${PETSC_DIR+x}" ]
   then
       if grep '^#define PETSC_USE_64BIT_INDICES 1' $PETSC_DIR/include/petscconf.h >/dev/null
       then
