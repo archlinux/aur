@@ -1,7 +1,7 @@
 # Maintainer: Daniel Lima <danielm@nanohub.tk>
 
 pkgname=luajit-2.1
-pkgver=2.1.0.beta2.r143.g8e5d7be
+pkgver=2.1.0.beta3
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua (v2.1 branch)'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 pkgver() {
   cd $srcdir/luajit-2.0
   git checkout -q v2.1
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() { 
