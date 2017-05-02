@@ -4,8 +4,8 @@
 
 _name=async-timeout
 pkgname=python-async-timeout
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='asyncio-compatible timeout class'
 arch=('any')
 url="https://github.com/aio-libs/${_name}"
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('0652d108c0156ae5ac94d99f53a6bdd039b0c076346ff8f58c9a1551fac17a19')
+sha256sums=('380e9bfd4c009a14931ffe487499b0906b00b3378bb743542cfd9fbb6d8e4657')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
