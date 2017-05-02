@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=bdsync
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast block device synchronizing tool"
 arch=("i686" "x86_64")
 url="https://github.com/TargetHolding/bdsync"
