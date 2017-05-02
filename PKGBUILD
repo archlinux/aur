@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-explorer
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ url="https://github.com/libbitcoin/libbitcoin-explorer"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver
         git+https://github.com/libbitcoin/libbitcoin-explorer.wiki)
-sha256sums=('df71be9cbcf0806e09dbe609650d764bf2808e312a85048ed4d6cad0809f9ecb'
+sha256sums=('3b54435d42f3e2768d9e29955dfe9cb5f581176ef4b472e8df4c3c3baff5ab6c'
             'SKIP')
 
 build() {
