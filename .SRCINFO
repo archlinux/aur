@@ -10,10 +10,10 @@ pkgbase = python-pre-commit
 	md5sums = 85f444618d40ca18b5f5aeb9cbc52114
 
 pkgname = python-pre-commit
-	pkgdesc = Python 3 client for importanize
+	pkgdesc = Python 3 client for pre-commit
 	depends = python
 
 pkgname = python2-pre-commit
-	pkgdesc = Python 2 client for importanize
+	pkgdesc = Python 2 client for pre-commit
 	depends = python2
 

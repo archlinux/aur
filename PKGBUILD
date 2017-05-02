@@ -26,7 +26,7 @@ build() {
 }
 
 package_python-pre-commit() {
-  pkgdesc='Python 3 client for importanize'
+  pkgdesc='Python 3 client for pre-commit'
   depends=('python')
 
   cd "${srcdir}/${pypi_name}-${pkgver}"
@@ -34,7 +34,7 @@ package_python-pre-commit() {
 }
 
 package_python2-pre-commit() {
-  pkgdesc='Python 2 client for importanize'
+  pkgdesc='Python 2 client for pre-commit'
   depends=('python2')
 
   cd "${srcdir}/${pypi_name}-${pkgver}-python2"
