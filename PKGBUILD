@@ -9,7 +9,7 @@ set -u
 _pkgname=lynx
 pkgname="${_pkgname}-current"
 _basever='2.8.9'
-pkgver="${_basever}dev.11"
+pkgver="${_basever}dev.13"
 pkgrel='1'
 pkgdesc='A text browser for the World Wide Web (current development version)'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ _verwatch=("http://invisible-mirror.net/archives/lynx/tarballs/?C=M;O=D" "${_pkg
 #_srcdir="lynx${_basever//./-}"
 _srcdir="lynx${pkgver}"
 source=("http://invisible-mirror.net/archives/lynx/tarballs/${_pkgname}${pkgver}.tar.bz2") #{,.asc})
-sha256sums=('2a1092f2cde76f109e4f1df1760c1d2a8792ba7018ab7ff3cc2b01d14e0c15b3')
+sha256sums=('c72e17b226c2397096eb4e736811634b83764e560fa99844b60d281da141541c')
 #validpgpkeys=('0AFD1FFEEA2EA063B959ACDA5DDF8FB7688E31A6')
 
 prepare() {
@@ -38,14 +38,14 @@ prepare() {
     --enable-ipv6 \
     --enable-default-colors \
     --mandir='/usr/share/man'
-  sed -i -e 's:/usr/sbin/:/usr/bin/:g' 'lynx.cfg'
+  sed -e 's:/usr/sbin/:/usr/bin/:g' -i 'lynx.cfg'
   set +u
 }
 
 build() {
   set -u
   cd "${_srcdir}"
-  make -s # -j "$(nproc)" # not compatible with threaded make
+  make -s -j1 # -j "$(nproc)" # not compatible with threaded make
   set +u
 }
 
@@ -55,12 +55,11 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # FS#20404 - points to local help
-  sed -i -e 's|^HELPFILE.*$|HELPFILE:file:///usr/share/doc/lynx/lynx_help/lynx_help_main.html|' "${pkgdir}/etc/lynx.cfg"
+  sed -e 's|^HELPFILE.*$|HELPFILE:file:///usr/share/doc/lynx/lynx_help/lynx_help_main.html|' -i "${pkgdir}/etc/lynx.cfg"
 
   install -d "${pkgdir}/usr/share/doc/lynx"
   cp -rf 'lynx_help' "${pkgdir}/usr/share/doc/lynx"
   set +u
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
   # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
   ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
   ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
