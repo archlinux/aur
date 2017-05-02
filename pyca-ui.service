@@ -2,7 +2,6 @@
 Description=Python Capture Agent UI instance
 Documentation=https://github.com/opencast/pyCA
 Wants=network.target
-PartOf=pyca.target
 
 [Service]
 Type=simple
@@ -12,4 +11,4 @@ Restart=always
 RestartSec=10
 
 [Install]
-WantedBy=pyca.target
+WantedBy=multi-user.target
