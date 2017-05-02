@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-protocol
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Bitcoin Blockchain Query Protocol"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-protocol"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('94e406f54152cf570d94e5b2407feac15d4c26492e4c87907bbe0c55f6c155ac')
+sha256sums=('506f7ca608c91ccefd467f2a34d36ed5c671a1b7b1dc6bca8f0ebacd887f7837')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
