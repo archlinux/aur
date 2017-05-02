@@ -1,15 +1,16 @@
 pkgbase = python-azure-cli-find
 	pkgdesc = Microsoft Azure Command-Line Tools Find Command Module
-	pkgver = 0.0.1b1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python-azure-cli-command-modules-nspkg
 	depends = python-azure-cli-core
 	depends = python-whoosh
-	source = https://files.pythonhosted.org/packages/source/a/azure-cli-find/azure-cli-find-0.0.1b1.tar.gz
-	md5sums = 825c34507615738f44af59d99fcca12d
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-find/azure-cli-find-0.2.1.tar.gz
+	md5sums = 2c3bc3dde4d13ab52609be60d001de6c
 
 pkgname = python-azure-cli-find
 
