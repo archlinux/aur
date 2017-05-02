@@ -1,7 +1,8 @@
-# Maintainer: Philipp Schmitt <philipp@schmitt.co>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Philipp Schmitt <philipp@schmitt.co>
 
 pkgname=advanced-ssh-config
-pkgver=2.4.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config'
 arch=('x86_64' 'i686')
@@ -13,6 +14,9 @@ options=('!strip' '!emptydirs')
 _gourl=github.com/moul/advanced-ssh-config/cmd/assh
 
 build() {
+  GOPATH="$srcdir" go get -d ${_gourl}
+  cd "${srcdir}/src/github.com/moul/${pkgname}/"
+  git checkout "tags/v${pkgver}"
   GOPATH="$srcdir" go get -fix -v -x ${_gourl}
 }
 
@@ -26,3 +30,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
