@@ -4,7 +4,7 @@
 pkgname=ccs-tools
 _timestamp=20170102
 pkgver=1.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc='TOMOYO Linux 1.8.x userspace tools'
 arch=('any')
 url='http://akari.osdn.jp/'
@@ -12,13 +12,16 @@ license=('GPL')
 depends=('ncurses')
 conflicts=('tomoyo-tools')
 install=ccs-tools.install
-source=("http://sourceforge.jp/frs/redir.php?f=/tomoyo/49693/${pkgname}-${pkgver}-${_timestamp}.tar.gz"
+source=("http://osdn.jp/frs/redir.php?f=/tomoyo/49693/${pkgname}-${pkgver}-${_timestamp}.tar.gz"
+        "http://osdn.jp/frs/redir.php?f=/tomoyo/49693/${pkgname}-${pkgver}-${_timestamp}.tar.gz.asc"
         "ccs-auditd.service"
         "tomoyo.logrotate")
 sha256sums=('06628d95debe97dd65d7412f9ab288d7368751056537cec0a08701db29c4443b'
+            'SKIP'
             'ea447aaaed7fdc9ed6b08d5c256237cd8f2ea74a6f157829613af5b3a3b18bfa'
             'd88cdc21bb68a7e2abf0512f10dc56e57db7ca172e179d0fb50998ccf3caf648')
-            
+validpgpkeys=('43C83369623D7AD3A96C2FC7425F128D0C64F52A')
+
 build() {
   cd "${srcdir}/ccs-tools"
   make
