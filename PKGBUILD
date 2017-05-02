@@ -3,7 +3,7 @@
 _pkgname=sqlcipher
 pkgname=mingw-w64-sqlcipher
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SQLite extension that provides transparent 256-bit AES encryption of database files (mingw-w64)"
 arch=('any')
 url="https://www.zetetic.net/sqlcipher/"
