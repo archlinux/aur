@@ -1,12 +1,12 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=xandikos-git
-pkgver=0.0.3.r2.ge3928ee
+pkgver=0.0.4.r12.gcabb18d
 pkgrel=1
 pkgdesc='CardDAV/CalDAV server that backs onto a Git repository (Git version)'
 arch=('any')
 url=https://jelmer.uk/code/xandikos/
-license=('LGPL')
+license=('GPL3')
 depends=('python-defusedxml' 'python-dulwich' 'python-icalendar' 'python-jinja')
 makedepends=('git' 'python-setuptools')
 provides=('xandikos')
