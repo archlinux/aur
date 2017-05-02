@@ -1,11 +1,12 @@
 pkgbase = python-azure-cli
 	pkgdesc = Microsoft Azure Command-Line Tools
-	pkgver = 2.0.1
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python-azure-cli-acr
 	depends = python-azure-cli-acs
 	depends = python-azure-cli-appservice
 	depends = python-azure-cli-batch
@@ -17,6 +18,8 @@ pkgbase = python-azure-cli
 	depends = python-azure-cli-find
 	depends = python-azure-cli-iot
 	depends = python-azure-cli-keyvault
+	depends = python-azure-cli-lab
+	depends = python-azure-cli-monitor
 	depends = python-azure-cli-network
 	depends = python-azure-cli-profile
 	depends = python-azure-cli-redis
@@ -25,8 +28,8 @@ pkgbase = python-azure-cli
 	depends = python-azure-cli-sql
 	depends = python-azure-cli-storage
 	depends = python-azure-cli-vm
-	source = https://files.pythonhosted.org/packages/source/a/azure-cli/azure-cli-2.0.1.tar.gz
-	md5sums = f1eb3c2a9f6ac008d2741c6e37b066c4
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli/azure-cli-2.0.4.tar.gz
+	md5sums = b0274bbc4f05bfdcfbcbec6bbeb98210
 
 pkgname = python-azure-cli
 
