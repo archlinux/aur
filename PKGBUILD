@@ -8,7 +8,7 @@ pkgver=1.1.2
 _luaname=lua
 _luaver='5.3.4'
 _majorver=${_luaver%.*}
-pkgrel=2
+pkgrel=4
 pkgdesc='Heavy Duty Persistence for Lua 5.3'
 arch=('any')
 url='https://github.com/fnuecke/eris'
@@ -45,10 +45,9 @@ package() {
     TO_LIB="liblua.a liblua.so liblua.so.$_majorver liblua.so.$_luaver" \
     INSTALL_DATA='cp -d' \
     INSTALL_TOP="$pkgdir"/usr \
+    INSTALL_INC="$pkgdir"/usr/include/$pkgname \
     INSTALL_MAN="$pkgdir"/usr/share/man/man1 \
     install
-  mv "$pkgdir"/usr/bin/lua "$pkgdir"/usr/bin/eris
-  mv "$pkgdir"/usr/bin/luac "$pkgdir"/usr/bin/erisc
   
   ln -sf /usr/bin/$pkgname "$pkgdir"/usr/bin/$pkgname$_majorver
   ln -sf /usr/bin/"$pkgname"c "$pkgdir"/usr/bin/"$pkgname"c$_majorver
@@ -56,6 +55,18 @@ package() {
   install -Dm644 lua.pc "$pkgdir"/usr/lib/pkgconfig/${pkgname}53.pc
   ln -sf /usr/lib/pkgconfig/${pkgname}53.pc "$pkgdir"/usr/lib/pkgconfig/$pkgname.pc
 
-  install -d "$pkgdir"/usr/share/doc/$pkgname
+  mv "$pkgdir"/usr/bin/lua "$pkgdir"/usr/bin/$pkgname
+  mv "$pkgdir"/usr/bin/luac "$pkgdir"/usr/bin/"$pkgname"c
+
+  mv "$pkgdir"/usr/lib/liblua.so \
+     "$pkgdir"/usr/lib/liblua-"$pkgname".so
+  mv "$pkgdir"/usr/lib/liblua.so."$_majorver" \
+     "$pkgdir"/usr/lib/liblua-"$pkgname$_majorver".so
+  mv "$pkgdir"/usr/lib/liblua.so."$_luaver" \
+     "$pkgdir"/usr/lib/liblua-eris.so."$_luaver"
+  mv "$pkgdir"/usr/lib/liblua.a \
+     "$pkgdir"/usr/lib/liblua-eris.a
+
+  #install -d "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
