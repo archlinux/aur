@@ -9,7 +9,6 @@ license=('custom:webmin')
 url="http://www.webmin.com/"
 depends=('perl' 'perl-net-ssleay' 'perl-authen-pam')
 backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/config' \
-'etc/webmin/pacman/config' \
 'etc/webmin/at/config' \
 'etc/webmin/acl/config' \
 'etc/webmin/lvm/config' \
@@ -81,8 +80,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/confi
 'etc/webmin/proftpd/config' \
 'etc/pam.d/webmin' )
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
-        ftp://ftp.archlinux.org/other/webmin/webmin-config.tar.bz2
-        ftp://ftp.archlinux.org/other/webmin/webmin-pacman.tar.bz2
+        webmin-config.tar.bz2
         webmin.pam
         webmin.service)
 options=(!strip !zipman)
@@ -133,16 +131,6 @@ package() {
   sed -i -e 's:^index_script=.*:index_script=Archlinux RC.LOCAL:g' lang/*
   sed -i -e 's:^noconfig=0:noconfig=1:g'  defaultacl
 
-  # Add pacman menu
-  cd "$srcdir"/$pkgname-$pkgver
-  cp -rf custom/ pacman
-  sed -i -e 's:^noconfig=0:noconfig=1:g' -e 's:^edit=1:edit=0:g' pacman/defaultacl
-  sed -i -e '/desc/d' -e '/longdesc/d' pacman/module.info
-  sed -i -e 's:^name=Custom:name=Pacman:g' pacman/module.info
-  echo 'category=system' >> pacman/module.info
-  echo 'desc=Pacman' >> pacman/module.info
-  sed -i -e 's:^index_title=.*:index_title=Pacman:g' pacman/lang/*
-
   # copy stuff to right dirs
   cd "$srcdir"/$pkgname-$pkgver
   cp -rp * "$pkgdir"/opt/webmin
@@ -179,10 +167,6 @@ package() {
   # Use pam
   echo -e 'pam_only=1\npam_end=1\npam_conv=\nno_pam=0' >> "$pkgdir"/etc/webmin/miniserv.conf
 
-  # install pacman menu
-  cd "$srcdir"/webmin-pacman/config
-  cp -rfp * "$pkgdir"/etc/webmin/pacman
-
   # install systemd files
   install -D -m 644 $srcdir/webmin.service $pkgdir/usr/lib/systemd/system/webmin.service
 
@@ -197,6 +181,5 @@ package() {
 
 sha256sums=('b4cc63a369026e4e6d8f5af7501fe101dc122d9edbdd6bb20058f8f511694ce3'
             '52a512ae2aa2fdf4e8a2a26e6bedd5a9cf9aa3cb6ab3c13e6f37d0dc71fe22b3'
-            '5f14a8396a3a9e920fae530b61d080e5d0c8bf57a7bd9e179c520a3b3a58ea38'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             'a1bdc68e3b0970a5c8e5063bd882b0469664ca782b34faecee22af5c6c30dd11')
