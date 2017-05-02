@@ -5,7 +5,7 @@
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=3.2.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -36,11 +36,7 @@ backup=('etc/sogo/sogo.conf'
         'etc/httpd/conf/extra/SOGo.conf'
         'etc/conf.d/sogo')
 install=sogo.install
-replaces=('sogo-activesync'
-          'sogo2'
-          'sogo2-activesync')
-conflicts=('sogo-openchange'
-           'sogo2-openchange')
+
 source=(
   http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz
   sogo_configure.patch
