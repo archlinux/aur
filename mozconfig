@@ -2,7 +2,8 @@
 ac_add_options --disable-necko-wifi
 
 # Disable webrtc, dangerous, leaks internal IP address (and external on Win)
-ac_add_options --disable-webrtc
+# This option no longer works on version >= 52.1.0
+#ac_add_options --disable-webrtc
 
 # Disable safe browsing, prevent sending visited URLs to other parties
 ac_add_options --disable-safe-browsing

@@ -107,7 +107,25 @@
  
  // maximum number of dated backups to keep at any time
  pref("browser.bookmarks.max_backups",       5);
-@@ -1527,7 +1527,7 @@
+@@ -441,7 +441,7 @@
+ #ifdef MOZ_WIDGET_GONK
+ pref("media.navigator.video.default_width", 320);
+ pref("media.navigator.video.default_height", 240);
+-pref("media.peerconnection.enabled", true);
++pref("media.peerconnection.enabled", false);
+ pref("media.peerconnection.video.enabled", true);
+ pref("media.navigator.video.max_fs", 1200); // 640x480 == 1200mb
+ pref("media.navigator.video.max_fr", 30);
+@@ -454,7 +454,7 @@
+ #else
+ pref("media.navigator.video.default_width",0);  // adaptive default
+ pref("media.navigator.video.default_height",0); // adaptive default
+-pref("media.peerconnection.enabled", true);
++pref("media.peerconnection.enabled", false);
+ pref("media.peerconnection.video.enabled", true);
+ pref("media.navigator.video.max_fs", 12288); // Enough for 2048x1536
+ pref("media.navigator.video.max_fr", 60);
+@@ -1523,7 +1523,7 @@
  
  // The maximum number of current global half open sockets allowable
  // when starting a new speculative connection.
@@ -116,7 +134,7 @@
  
  // Whether or not to block requests for non head js/css items (e.g. media)
  // while those elements load.
-@@ -1863,7 +1863,7 @@
+@@ -1859,7 +1859,7 @@
  pref("network.dir.format", 2);
  
  // enables the prefetch service (i.e., prefetching of <link rel="next"> URLs).
@@ -125,7 +143,7 @@
  
  // enables the predictive service
  pref("network.predictor.enabled", true);
-@@ -2183,7 +2183,7 @@
+@@ -2179,7 +2179,7 @@
  pref("services.settings.server", "https://firefox.settings.services.mozilla.com/v1");
  
  // Blocklist preferences
@@ -134,7 +152,7 @@
  // OneCRL freshness checking depends on this value, so if you change it,
  // please also update security.onecrl.maximum_staleness_in_seconds.
  pref("extensions.blocklist.interval", 86400);
-@@ -3916,7 +3916,7 @@
+@@ -3912,7 +3912,7 @@
  
  // Middle-mouse handling
  pref("middlemouse.paste", true);
@@ -143,7 +161,7 @@
  pref("middlemouse.openNewWindow", true);
  pref("middlemouse.scrollbarPosition", true);
  
-@@ -3979,7 +3979,7 @@
+@@ -3975,7 +3975,7 @@
  
  // Middle-mouse handling
  pref("middlemouse.paste", true);
@@ -152,7 +170,7 @@
  pref("middlemouse.openNewWindow", true);
  pref("middlemouse.scrollbarPosition", true);
  
-@@ -4375,7 +4375,7 @@
+@@ -4371,7 +4371,7 @@
  
  // Satchel (Form Manager) prefs
  pref("browser.formfill.debug",            false);
@@ -161,7 +179,7 @@
  pref("browser.formfill.expire_days",      180);
  pref("browser.formfill.saveHttpsForms",   true);
  pref("browser.formfill.agedWeight",       2);
-@@ -5065,18 +5065,18 @@
+@@ -5061,18 +5061,18 @@
  pref("dom.mapped_arraybuffer.enabled", true);
  
  // The tables used for Safebrowsing phishing and malware checks.
@@ -184,7 +202,7 @@
  
  #ifdef XP_WIN
   // Only download the whitelist on Windows, since the whitelist is
-@@ -5110,48 +5110,48 @@
+@@ -5106,48 +5106,48 @@
  pref("urlclassifier.alternate_error_page", "blocked");
  
  // Enable phishing protection
