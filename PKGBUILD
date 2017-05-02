@@ -2,14 +2,14 @@
 
 pkgname=gtk-theme-minwaita
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tweaked, more compact version of Adwaita."
 arch=(any)
 url="https://github.com/godlyranchdressing/Minwaita"
 license=('GPL')
-source=("https://github.com/godlyranchdressing/Minwaita/releases/download/V$pkgver/Minwaita.tar.gz"
-        "https://github.com/godlyranchdressing/Minwaita/releases/download/V$pkgver/Minwaita-OSX.tar.gz"
-        "https://github.com/godlyranchdressing/Minwaita/releases/download/V$pkgver/Minwaita-Vanilla.tar.gz")
+source=("Minwaita-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/Minwaita/releases/download/V$pkgver/Minwaita.tar.gz"
+        "Minwaita-OSX-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/Minwaita/releases/download/V$pkgver/Minwaita-OSX.tar.gz"
+        "Minwaita-Vanilla-$pkgver.tar.gz"::"https://github.com/godlyranchdressing/Minwaita/releases/download/V$pkgver/Minwaita-Vanilla.tar.gz")
 sha256sums=('56287e321787dbb8e1a7c25dabc2cce864ee144e81075bec46e52de9e298aab8'
             '2f5dc5006359cb022f2b2e0c7735b19e73d46fdff521e8b5f798e3b66a11f72b'
             'bc424b7eb2e6a7bdcb241eb2ccdb4bf9831daf5d888fccc2e4bef03c1fe65a90')
