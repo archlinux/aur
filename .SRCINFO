@@ -1,15 +1,16 @@
 pkgbase = python-azure-cli-documentdb
 	pkgdesc = Microsoft Azure Command-Line Tools DocumentDB Command Module
-	pkgver = 0.1.1b2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-azure
+	depends = python-azure-cli-command-modules-nspkg
 	depends = python-azure-cli-core
-	source = https://files.pythonhosted.org/packages/source/a/azure-cli-documentdb/azure-cli-documentdb-0.1.1b2.tar.gz
-	md5sums = 51e9aa265bc644a07c5a985271d41323
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-documentdb/azure-cli-documentdb-0.1.4.tar.gz
+	md5sums = 631dea6d9f3af82e00846dcea884cb58
 
 pkgname = python-azure-cli-documentdb
 
