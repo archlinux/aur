@@ -3,7 +3,7 @@
 pkgname=wine-starcraft-git
 pkgver=2.6
 pkgrel=1
-pkgdesc="Wine Staging 2.6 with extra patches for Starcraft 1.18.x"
+pkgdesc="Wine Staging 2.6 with extra patches for StarCraft 1.18.x"
 arch=('i686' 'x86_64')
 url="https://github.com/awesie/wine-starcraft/"
 license=('LGPL')
@@ -86,38 +86,15 @@ if [ "$CARCH" = "i686" ]; then
 	makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
 	makedepends=(${makedepends[@]/*-multilib*/})
 	optdepends=(${optdepends[@]/*32-*/})
-	provides=(
-	          "wine=$(echo ${pkgver})"
-	          "wine-staging=$(echo ${pkgver})"
-	          'wine-git'
-	          )
-	conflicts=('wine' 'wine-staging' 'wine-git')
+	provides=("wine-starcraft-git=$(echo ${pkgver})")
+	conflicts=()
 else
 	makedepends=(${makedepends[@]} ${_depends[@]})
-	provides=(
-	          "wine=$(echo ${pkgver})"
-	          "wine-wow64=$(echo ${pkgver})"
-	          "wine-staging=$(echo ${pkgver})"
-	          'wine-git'
-	          )
-	conflicts=('wine' 'wine-wow64' 'wine-staging' 'wine-git')
+	provides=("wine-starcraft-git=$(echo ${pkgver})")
+	conflicts=()
 fi
 
 
-prepare() {
-	cd "$srcdir"
-	
-	# msg2 "Cleaning the wine source code tree..."
-	
-	# Restore the wine tree to its git origin state, without wine-staging patches
-	# +(necessary for reapllying wine-staging patches in succedent builds,
-	# +otherwise the patches will fail to be reapplied)
-	# git reset --hard HEAD      # Restore tracked files
-	# git clean -d -x -f         # Delete untracked files
-	
-	# Change back to the wine upstream commit that this version of wine-staging is based in
-	# git checkout $(../"$pkgname"/patches/patchinstall.sh --upstream-commit)
-}
 
 build() {
 	cd "${srcdir}"
@@ -137,8 +114,8 @@ build() {
 	    cd  "$pkgname"-64-build
 	    
 	    ../$pkgname/configure \
-	                    --prefix=/usr \
-	                    --libdir=/usr/lib \
+	                    --prefix=/opt/$pkgname \
+	                    --libdir=/opt/$pkgname/lib \
 	                    --with-x \
 	                    --with-gstreamer \
 	                    --enable-win64 \
@@ -147,7 +124,7 @@ build() {
 	    make
 	    
 	    _wine32opts=(
-	            --libdir=/usr/lib32
+	            --libdir=/opt/$pkgname/lib32
 	            --with-wine64="${srcdir}/${pkgname}-64-build"
 	            )
 	    
@@ -163,7 +140,7 @@ build() {
 	cd "$srcdir"/"$pkgname"-32-build
 	
 	../$pkgname/configure \
-	                --prefix=/usr \
+	                --prefix=/opt/$pkgname \
 	                --with-x \
 	                --with-gstreamer \
 	                --with-xattr \
@@ -185,13 +162,13 @@ package() {
 	
 	if [ "$CARCH" = "i686" ]; then
 	
-	    make prefix="$pkgdir/usr" install
+	    make prefix="$pkgdir/opt/${pkgname}" install
 	    
 	else
 	
-	    make prefix="${pkgdir}/usr" \
-	         libdir="${pkgdir}/usr/lib32" \
-	         dlldir="${pkgdir}/usr/lib32/wine" install
+	    make prefix="${pkgdir}/opt/${pkgname}" \
+	         libdir="${pkgdir}/opt/${pkgname}/lib32" \
+	         dlldir="${pkgdir}/opt/${pkgname}/lib32/wine" install
 	         
 	
 	    # Package wine 64-bit
@@ -200,16 +177,8 @@ package() {
 	    
 	    cd "$srcdir"/"$pkgname"-64-build
 	    
-	    make prefix="${pkgdir}/usr" \
-	         libdir="${pkgdir}/usr/lib" \
-	         dlldir="${pkgdir}/usr/lib/wine" install
-	         
+	    make prefix="${pkgdir}/opt/${pkgname}" \
+	         libdir="${pkgdir}/opt/${pkgname}/lib" \
+	         dlldir="${pkgdir}/opt/${pkgname}/lib/wine" install       
 	fi
-	
-	
-	# Font aliasing settings for Win32 applications
-	
-	# install -d "$pkgdir"/etc/fonts/conf.{avail,d}
-	# install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.avail"
-	# ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
 }

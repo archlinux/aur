@@ -1,5 +1,5 @@
 pkgbase = wine-starcraft-git
-	pkgdesc = Wine Staging 2.6 with extra patches for Starcraft 1.18.x
+	pkgdesc = Wine Staging 2.6 with extra patches for StarCraft 1.18.x
 	pkgver = 2.6
 	pkgrel = 1
 	url = https://github.com/awesie/wine-starcraft/
@@ -133,14 +133,7 @@ pkgbase = wine-starcraft-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=2.6
-	provides = wine-wow64=2.6
-	provides = wine-staging=2.6
-	provides = wine-git
-	conflicts = wine
-	conflicts = wine-wow64
-	conflicts = wine-staging
-	conflicts = wine-git
+	provides = wine-starcraft-git=2.6
 	options = staticlibs
 	source = wine-starcraft-git::git+https://github.com/awesie/wine-starcraft.git
 	sha256sums = SKIP
