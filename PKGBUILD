@@ -1,5 +1,5 @@
 pkgname=dnf
-_pkgver=2.3.0
+_pkgver=2.4.0
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -15,7 +15,7 @@ checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('10a1be8ecc24a96ff4ca59225f953da2')
+md5sums=('a1d2da8fe7e7dfc122a9429c9569d4db')
 
 prepare() {
 	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
@@ -45,7 +45,7 @@ package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
 
-	rm "$pkgdir/"usr/bin/yum "$pkgdir/usr/share/man/man8/yum.8"
+	rm "$pkgdir/"usr/bin/yum-3 "$pkgdir/usr/share/man/man8/yum.8"
 	ln -s $pkgname-3 "$pkgdir/usr/bin/$pkgname"
 	ln -s $pkgname-automatic-3 "$pkgdir/usr/bin/$pkgname-automatic"
 
