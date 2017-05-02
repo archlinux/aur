@@ -2,7 +2,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-custom-git
 pkgver=r886.2477121
-pkgrel=1
+pkgrel=2
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -55,11 +55,17 @@ package() {
 # letter m:
 #     v-m-longleg : m with long middle leg (default).
 #     v-m-shortleg : m with shorter middle leg.
-# letter 0:
+# letter t:
+#     v-t-standard : Standard t shape (default).
+#     v-t-cross : Futura-like t shape.
+# letter Q:
+#     v-q-taily : Q with a curly tail (default).
+#     v-q-straight : Q with a straight tail in the old versions.
+# zero (0):
 #     v-zero-slashed : Slashed Zero 0 (default).
 #     v-zero-dotted : Dotted Zero 0.
 #     v-zero-unslashed : O-like 0.
-# ASCII tilde (~), asterisk (*), paragaraph(¶), and ASCII Caret (^):
+# ASCII tilde (~), asterisk (*), paragaraph(¶), underscore (_) and ASCII Caret (^):
 #     v-tilde-high : Higher tilde ~.
 #     v-tilde-low : Lower tilde ~ (default).
 #     v-asterisk-high : Higher asterisk * (default).
@@ -68,6 +74,8 @@ package() {
 #     v-paragraph-low : Lower paragraph symbol ¶.
 #     v-caret-high : Higher circumflex ^ (default).
 #     v-caret-low : Lower circumflex ^.
+#     v-underscore-high : Higher underscore _ (default).
+#     v-underscore-low : Lower underscore _.
 # At (@):
 #     v-at-long : The long, three-fold At symbol in Iosevka 1.7.x.
 #     v-at-fourfold : The traditional, four-fold At symbol.
