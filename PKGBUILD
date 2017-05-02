@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
 
 pkgname=python-tensorflow
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 
 pkgdesc="Computation using data flow graphs for scalable machine learning."
@@ -18,7 +18,7 @@ makedepends=('python-wheel' 'python-pip' 'bazel')
 
 source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.zip"
         'python-tensorflow.sh')
-md5sums=('89cf1058b501cff4d33fe1de280305f0'
+md5sums=('300b96bf02a905435f6e84c0370800c3'
          '0c9dae7ad2ef6ea234b6aa178a688d7b')
 
 prepare() {
