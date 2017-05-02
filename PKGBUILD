@@ -2,17 +2,18 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='mailfromd'
-pkgver='7.99.95'
+pkgver='8.1'
 pkgrel='1'
 pkgdesc='General-Purpose Mail Filter'
 arch=('any')
 url="http://puszcza.gnu.org.ua/software/${pkgname}"
 depends=('smtp-server' 'gdbm' 'mailutils' 'geoip')
+makedepends=('mailutils')
 license=('GPL')
 source=("${pkgname}.service"
-	"ftp://download.gnu.org.ua/pub/alpha/${pkgname}/${pkgname}-${pkgver}.tar.xz")
+	"ftp://download.gnu.org.ua/release/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('26a380c1bfe964c1aaaf351f85504c72ca7be5dca199e7cd79252c83382a9ce0'
-            'e843448fd3670a0a3d1116a2f0d389ed717e0375152b61cada13c23059619697')
+            '6d83038a17e9d9009da2545a76898ba62a386d0d0b9f558be76765eeabeaf5c2')
 backup=('etc/mailfromd.mf')
 
 prepare() {
@@ -33,17 +34,17 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
 
 check() {
-  cd "${pkgname}-${pkgver}/tests"
+  cd "${srcdir}/${pkgname}-${pkgver}/tests"
   ./testsuite -e --color=always
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -dm770 -o 8 -g 12 "${pkgdir}/var/lib/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
