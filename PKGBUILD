@@ -6,7 +6,7 @@
 pkgname=davinci-resolve
 _pkgname=resolve
 pkgver=12.5.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -55,10 +55,10 @@ package() {
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
-	ln -s /usr/lib/libcrypto.so libs/libcrypto.so.10
-	ln -s /usr/lib/libssl.so    libs/libssl.so.10
-	ln -s /usr/lib/libgstbase-1.0.so   libs/libgstbase-0.10.so.0
-	ln -s /usr/lib/libgstreamer-1.0.so libs/libgstreamer-0.10.so.0
+	ln -s /usr/lib/libcrypto-compat.so.1.0.0 libs/libcrypto.so.10
+	ln -s /usr/lib/libssl-compat.so.1.0.0    libs/libssl.so.10
+	ln -s /usr/lib/libgstbase-1.0.so         libs/libgstbase-0.10.so.0
+	ln -s /usr/lib/libgstreamer-1.0.so       libs/libgstreamer-0.10.so.0
 
 	msg2 "Creating launchers..."
 	cd "${srcdir}" || exit
