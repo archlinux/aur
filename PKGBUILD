@@ -69,7 +69,7 @@ _clean_conflict () {
 package_xspec(){
 
   _crntpkg='xspec'
-  pkgdesc='X-ray spectral fitting software '
+  pkgdesc='An X-ray spectral fitting software '
   pkgver=12.9.1
   depends=('heasoft-base')
 

@@ -22,7 +22,7 @@ pkgname = heasoft-base
 	pkgdesc = Base libraries for heasoft software
 
 pkgname = xspec
-	pkgdesc = X-ray spectral fitting software
+	pkgdesc = An X-ray spectral fitting software
 	depends = heasoft-base
 
 pkgname = ftools
