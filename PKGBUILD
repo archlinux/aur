@@ -2,7 +2,7 @@
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=python2-carbon
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Backend data caching and persistence daemon for Graphite'
 arch=('any')
 url='https://github.com/graphite-project/carbon'

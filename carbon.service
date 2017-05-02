@@ -3,7 +3,8 @@ Description=Graphite/Carbon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/carbon-cache.py --nodaemon --config=/etc/carbon/carbon.conf start
+Type=forking
+ExecStart=/usr/bin/carbon-cache.py --config=/etc/carbon/carbon.conf start
 
 [Install]
 WantedBy=multi-user.target

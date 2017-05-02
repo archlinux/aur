@@ -1,7 +1,7 @@
 pkgbase = python2-carbon
 	pkgdesc = Backend data caching and persistence daemon for Graphite
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graphite-project/carbon
 	arch = any
 	license = Apache
