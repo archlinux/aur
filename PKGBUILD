@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=restbed-latest
-pkgver=4.0.r98.ga98d431
+pkgver=4.5.RC1.r0.g2cd6f2e
 pkgrel=1
 epoch=1
 pkgdesc="A framework for asynchronous RESTful functionality in C++11 applications"
@@ -11,7 +11,7 @@ depends=('openssl')
 conflicts=('restbed')
 provides=('restbed')
 makedepends=('git' 'cmake' 'kashmir' 'asio-latest')
-source=("git+https://github.com/Corvusoft/restbed#commit=a98d431dd6c0bc0f5774c830c3df3356553b0add")
+source=("git+https://github.com/Corvusoft/restbed#commit=2cd6f2e376483e82776dc010100d6e2d97042a9d")
 md5sums=('SKIP')
 
 pkgver() {
