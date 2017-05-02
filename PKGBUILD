@@ -20,7 +20,7 @@ source=("https://github.com/fnuecke/eris/archive/v${pkgver}-lua5.3.tar.gz"
         lua.pc
         LICENSE)
 sha1sums=('77e2f1a5d5bfcdd8d829efdbe29f82680a8d3463'
-          '9ff75085e476fa91bf5b528c9962908de80ba25a'
+          'b0131dc43d52e3fde2be7963ad928bc94f3e597b'
           '1aee8d1a219639d0efc534e483ffa1ee236fb393'
           '05f5f3b7bef0258bd617c505b8992de639af4551')
 
