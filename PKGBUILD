@@ -1,31 +1,34 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-desktop
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
-pkgdesc='Desktop plug for Switchboard'
+pkgdesc='Switchboard Desktop Plug'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/switchboard-plug-desktop'
+url='https://github.com/elementary/switchboard-plug-pantheon-shell'
 license=('GPL3')
 groups=('pantheon')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
-         'plank'
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee' 'plank'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'switchboard' 'vala')
-source=("https://launchpad.net/switchboard-plug-pantheon-shell/loki/${pkgver}/+download/switchboard-plug-pantheon-shell-${pkgver}.tar.xz")
-sha256sums=('41813ffe47f58d95236685e10d7f2ba2ec717c1227366e86a1cc42662c895761')
+source=("switchboard-plug-desktop-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-pantheon-shell/archive/switchboard-plug-pantheon-shell-${pkgver}.tar.gz"
+        'https://github.com/elementary/switchboard-plug-pantheon-shell/commit/c6dfa4307cc6f91728f8eaa74597ff16825aa551.patch')
+sha256sums=('0deb16bd1e2a548e8cbc78d083e0cbab613cfa6c0a3be3c51b0519e489d71762'
+            'd1bd5360f8559a7b32328999ac4ad6970bba68fd8caa820c4d19f8783dbe2656')
 
 prepare() {
-  cd switchboard-plug-pantheon-shell-${pkgver}
+  cd switchboard-plug-pantheon-shell-switchboard-plug-pantheon-shell-${pkgver}
 
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
+
+  patch -Np1 -i ../c6dfa4307cc6f91728f8eaa74597ff16825aa551.patch
 }
 
 build() {
-  cd switchboard-plug-pantheon-shell-${pkgver}/build
+  cd switchboard-plug-pantheon-shell-switchboard-plug-pantheon-shell-${pkgver}/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
@@ -35,7 +38,7 @@ build() {
 }
 
 package() {
-  cd switchboard-plug-pantheon-shell-${pkgver}/build
+  cd switchboard-plug-pantheon-shell-switchboard-plug-pantheon-shell-${pkgver}/build
 
   make DESTDIR="${pkgdir}" install
 }
