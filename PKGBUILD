@@ -2,7 +2,7 @@
 pkgname=iscore-git
 pkgver=1.0.0b10
 release_tag=v1.0.0-b10
-pkgrel=1
+pkgrel=2
 pkgdesc="i-score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="http://www.i-score.org"
@@ -44,9 +44,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/.."
-  install -D -m755 "i-score.sh" "${pkgdir}/usr/bin/i-score.sh"
-
   cd "$srcdir/i-score-build"
   cmake --build . --target install
   install -D -m644 "$srcdir/$_gitname/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
