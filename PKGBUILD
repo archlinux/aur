@@ -1,5 +1,5 @@
 pkgname=caddy
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='A configurable, general-purpose HTTP/2 web server for any platform'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
