@@ -11,7 +11,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('gst-plugins-base-libs' 'libwnck3'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'granite-bzr' 'vala')
+makedepends=('bzr' 'cmake' 'granite-git' 'vala')
 provides=('eidete')
 conflicts=('eidete')
 install='eidete.install'
