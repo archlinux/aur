@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kirigami2
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(LGPL)
 depends=(qt5-quickcontrols2)
 makedepends=(extra-cmake-modules qt5-tools plasma-framework)
 source=("http://download.kde.org/stable/kirigami/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('e744ff974ef100d23feda68f3fdb465aa56bf8da6992ab7e3f3fed2f4180e934'
+sha256sums=('ea3796058f302dabf21b7c58a05e543da5d7407414a9001d26d4318962a872ad'
             'SKIP')
 validpgpkeys=('1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
