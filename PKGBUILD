@@ -7,7 +7,7 @@ pkgver=1.3.1
 pkgrel=1
 pkgdesc='PyGraphviz is a Python interface to the Graphviz graph layout and visualization package.'
 makedepends=('python3' 'python2' 'graphviz')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('LGPL')
 url="https://networkx.lanl.gov/pygraphviz"
 
