@@ -1,6 +1,6 @@
 # Maintainer: Shameempk <mailtoshameempk@gmail.com>
 pkgname=writefull
-pkgver=3.0.0_beta17
+pkgver=3.0.0_beta19
 pkgrel=1
 pkgdesc="Writefull is an app that gives feedback on your writing by checking your text against databases of correct language."
 arch=('i686' 'x86_64')
@@ -8,8 +8,8 @@ url="http://writefullapp.com/"
 license=('custom')
 source_i686=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_ia32.zip")
 source_x86_64=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_amd64.zip")
-md5sums_i686=("33a3928a0ad6641eb1e649c81994f7ed")
-md5sums_x86_64=("fbb17bc14751523bc751d1ed6cb598b7")
+md5sums_i686=("56a2f9d719aa7620e3870572ef098b3a")
+md5sums_x86_64=("1a829007378ce002e2c44a4e19995508")
 noextract=("${pkgname}_${pkgver//_/-}_ia32.zip" "${pkgname}_${pkgver//_/-}_amd64.zip")
 if [ "$(uname -m)" = "x86_64" ]; then
         _arch=amd64
