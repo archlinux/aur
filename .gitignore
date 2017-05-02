@@ -1,0 +1,4 @@
+pkg/*
+src/*
+*.tar.xz
+m17n-im-shortname-unicode-emoji/*
