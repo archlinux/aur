@@ -5,7 +5,7 @@
 pkgname=aacskeys
 pkgver="0.4.0e"
 _dmover="dmo7"
-pkgrel=7.2
+pkgrel=7.3
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://forum.doom9.org/showthread.php?t=123311"
@@ -20,7 +20,7 @@ sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
 prepare() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i ../${pkgname}_${pkgver}-${_dmover}.diff
+  patch -Np1 -i "${srcdir}/${pkgname}_${pkgver}-${_dmover}.diff"
 
   # Paranoia: remove binaries, make sure they aren't used
   rm -rf bin lib
@@ -42,17 +42,20 @@ prepare() {
   sed -i 's|/usr/local/ssl/lib|/usr/lib|' premake.lua
   sed -i 's|/usr/lib/jvm/java-6-sun/include|$JAVA_HOME/include|' premake.lua
 
+  # Can't build with openssl 1.1 so use openssl-1.0 instead... patch welcome
   sed -i 's|OPENSSL_INCLUDE = "/usr/include"|OPENSSL_INCLUDE = "/usr/include/openssl-1.0"|' premake.lua
   sed -i 's|OPENSSL_LIB = "/usr/lib"|OPENSSL_LIB = "/usr/lib/openssl-1.0"|' premake.lua
   sed -i 's|/usr/local/ssl/include|/usr/include/openssl-1.0|' *.make
   sed -i 's|/usr/local/ssl/lib|/usr/lib/openssl-1.0|' *.make
 
+  # Can run with modern premake
   sed -i 's|@premake|@premake4|' Makefile
 }
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
+  
+  # Ensure that openssl-1.0 is really used
   CPPFLAGS+=" -I/usr/include/openssl-1.0" \
   LDFLAGS+=" -L/usr/lib/openssl-1.0" \
 
@@ -63,15 +66,15 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Install lib
-  mkdir -p ${pkgdir}/usr/lib
-  cp lib/linux/*.so ${pkgdir}/usr/lib/
+  mkdir -p "${pkgdir}/usr/lib"
+  cp lib/linux/*.so "${pkgdir}/usr/lib/"
 
   # Install program
-  mkdir -p ${pkgdir}/usr/bin
-  cp bin/linux/aacskeys ${pkgdir}/usr/bin
+  mkdir -p "${pkgdir}/usr/bin"
+  cp bin/linux/aacskeys "${pkgdir}/usr/bin"
 
   # Install resources
-  mkdir -p ${pkgdir}/usr/share/${pkgname}
-  cp ./debian/HostKeyCertificate_PS3.txt ${pkgdir}/usr/share/${pkgname}/HostKeyCertificate.txt
-  cp ./debian/ProcessingDeviceKeysSimple.txt ${pkgdir}/usr/share/${pkgname}/
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  cp ./debian/HostKeyCertificate_PS3.txt "${pkgdir}/usr/share/${pkgname}/HostKeyCertificate.txt"
+  cp ./debian/ProcessingDeviceKeysSimple.txt "${pkgdir}/usr/share/${pkgname}/"
 }
