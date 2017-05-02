@@ -69,8 +69,8 @@ _clean_conflict () {
 package_xspec(){
 
   _crntpkg='xspec'
-  pkgdesc='An X-ray spectral fitting software '
-  pkgver=12.9.1
+  pkgdesc='An Xray spectral fitting software '
+  pkgver=6.2.1
   depends=('heasoft-base')
 
   cd $srcdir/$pkgbase-${_mainver}/BUILD_DIR
