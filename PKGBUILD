@@ -4,10 +4,10 @@
 pkgname=ccs-tools
 _timestamp=20170102
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='TOMOYO Linux 1.8.x userspace tools'
 arch=('any')
-url='http://tomoyo.sourceforge.jp/'
+url='http://akari.osdn.jp/'
 license=('GPL')
 depends=('ncurses')
 conflicts=('tomoyo-tools')
