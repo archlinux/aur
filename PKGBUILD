@@ -1,18 +1,18 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-power
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
-pkgdesc='Power indicator for Wingpanel'
+pkgdesc='Wingpanel Power Indicator'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/wingpanel-indicator-power'
+url='https://github.com/elementary/wingpanel-indicator-power'
 license=('GPL3')
 groups=('pantheon')
 depends=('bamf' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgtop'
-         'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'vala' 'wingpanel')
-source=("https://launchpad.net/wingpanel-indicator-power/loki/${pkgver}/+download/wingpanel-indicator-power-${pkgver}.tar.xz")
-sha256sums=('0c401bdaa7921afbfdbdc336f4eb4909940f3550ab30918f585713afdcb96ed1')
+         'libgranite.so' 'libudev.so' 'libwingpanel-2.0.so')
+makedepends=('cmake' 'intltool' 'vala' 'wingpanel')
+source=("wingpanel-indicator-power-${pkgver}.tar.gz::https://github.com/elementary/wingpanel-indicator-power/archive/${pkgver}.tar.gz")
+sha256sums=('8305cb61f3468859271775f2ef105b8729e1e05695f3bd98fc1c9fb144592b39')
 
 prepare() {
   cd wingpanel-indicator-power-${pkgver}
@@ -30,7 +30,7 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='FALSE'
+    -DGSETTINGS_COMPILE='OFF'
   make
 }
 
