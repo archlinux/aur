@@ -36,8 +36,10 @@ options=('!strip')
 source=('docker::git+https://github.com/docker/docker.git'
         'containerd::git+https://github.com/docker/containerd.git#commit=78fb8f45890a601e0fd9051cf9f9f74923e950fd'
         'runc::git+https://github.com/docker/runc.git#commit=51371867a01c467f08af739783b8beafc154c4d7'
+        'libnetwork::git+https://github.com/docker/libnetwork.git#commit=0f534354b813003a754606689722fe253101bc4e'
         'docker.install')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          '1a8e60447794b3c4f87a2272cc9f144f')
@@ -60,6 +62,9 @@ prepare() {
   popd
   pushd "$srcdir/containerd"
     git checkout -q "$CONTAINERD_COMMIT"
+  popd
+  pushd "$srcdir/libnetwork"
+    git checkout -q "$CONTAINERDLIBNETWORK_COMMIT"
   popd
 
   # apply any patches for runc
@@ -88,6 +93,12 @@ build() {
   ln -svf "$srcdir/containerd" "$GOPATH/src/github.com/docker/"
   pushd "$GOPATH/src/github.com/docker/containerd"
     LDFLAGS= make
+  popd
+
+  # docker-proxy (from libnetwork)
+  ln -svf "$srcdir/libnetwork" "$GOPATH/src/github.com/docker/"
+  pushd "$GOPATH/src/github.com/docker/libnetwork"
+    go build -ldflags="$PROXY_LDFLAGS" -o ./bin/docker-proxy 'github.com/docker/libnetwork/cmd/proxy'
   popd
 
   # docker
@@ -120,6 +131,9 @@ package() {
       install -Dm755 "$file" "$pkgdir/usr/bin/$file"
     done
   popd
+
+  # docker-proxy binary (from libnetwork)
+  install -Dm755 "$GOPATH/src/github.com/docker/libnetwork/bin/docker-proxy" "$pkgdir/usr/bin/docker-proxy"
 
   cd docker
   _dockerver="$(cat VERSION)"
