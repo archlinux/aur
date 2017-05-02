@@ -2,7 +2,7 @@
 
 pkgname="adwaita-dark-darose"
 pkgver=3.22.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Adwaita theme hacked to use my custom color scheme.  (Dark blues instead of greys.)"
 url="none"
 license=('GPL')
@@ -25,7 +25,7 @@ build() {
     echo '@import url("gtk-contained-dark.css");' > gtk-3.0/gtk-dark.css
 
     sed -i 's|#33393b|#181c28|' gtk-3.0/gtk-contained-dark.css
-#    sed -i 's|#232729|#00001b|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#232729|#00001b|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|#ffffff|#c3c3c3|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|white|#c3c3c3|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|#262b2d|#1a1e2c|' gtk-3.0/gtk-contained-dark.css
@@ -35,6 +35,8 @@ build() {
     sed -i 's|#272c2e|#00001b|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|#2c3234|#181c28|' gtk-3.0/gtk-contained-dark.css
     sed -i 's|#252a2c|#00001b|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2b3032|#181c28|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#272c2d|#171b27|' gtk-3.0/gtk-contained-dark.css
 
     # dark gradient
     sed -i 's|#2e3436|#293045|' gtk-3.0/gtk-contained-dark.css
