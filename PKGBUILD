@@ -4,7 +4,7 @@
 
 pkgname=webmin
 pkgver=1.831
-pkgrel=4
+pkgrel=5
 pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
 license=('custom:webmin')
