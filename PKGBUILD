@@ -40,15 +40,18 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver-lua5.3"
-
+  
   make \
     TO_LIB="liblua.a liblua.so liblua.so.$_majorver liblua.so.$_luaver" \
     INSTALL_DATA='cp -d' \
     INSTALL_TOP="$pkgdir"/usr \
     INSTALL_MAN="$pkgdir"/usr/share/man/man1 \
     install
-  ln -sf /usr/bin/lua "$pkgdir"/usr/bin/lua$_majorver
-  ln -sf /usr/bin/luac "$pkgdir"/usr/bin/luac$_majorver
+  mv "$pkgdir"/usr/bin/lua "$pkgdir"/usr/bin/eris
+  mv "$pkgdir"/usr/bin/luac "$pkgdir"/usr/bin/erisc
+  
+  ln -sf /usr/bin/$pkgname "$pkgdir"/usr/bin/$pkgname$_majorver
+  ln -sf /usr/bin/"$pkgname"c "$pkgdir"/usr/bin/"$pkgname"c$_majorver
 
   install -Dm644 lua.pc "$pkgdir"/usr/lib/pkgconfig/${pkgname}53.pc
   ln -sf /usr/lib/pkgconfig/${pkgname}53.pc "$pkgdir"/usr/lib/pkgconfig/$pkgname.pc
