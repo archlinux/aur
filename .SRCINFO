@@ -1,0 +1,16 @@
+pkgbase = python-azure-cli-lab
+	pkgdesc = Microsoft Azure Command-Line Tools DevTestLabs Command Module
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure
+	depends = python-azure-cli-command-modules-nspkg
+	depends = python-azure-cli-core
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-lab/azure-cli-lab-0.0.3.tar.gz
+	md5sums = 5c8157a8e6333a0cc6377c932dd4db37
+
+pkgname = python-azure-cli-lab
+
