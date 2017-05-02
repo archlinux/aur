@@ -18,7 +18,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=17.04.0.dev.31005.cf449cf69c
+pkgver=17.06.0.dev.32170.73abe0c682
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
