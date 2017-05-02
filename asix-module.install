@@ -1,5 +1,5 @@
 rebuild_module_dependencies() {
-	EXTRAMODULES='extramodules-4.8-ARCH'
+	EXTRAMODULES='extramodules-4.10-ARCH'
 	depmod $(cat /lib/modules/$EXTRAMODULES/version)
 }
 
