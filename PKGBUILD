@@ -12,7 +12,7 @@
 
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=4.1.9.21719
+pkgver=4.2.0.22302
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.scootersoftware.com"
@@ -22,8 +22,8 @@ depends=('qt4' 'fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxra
 makedepends=('sed')
 source_x86_64=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 source_i686=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_i686=('49d106b5b6c17d2dcbdfad83ae07c93240418ca7104b0841efb7611c7592ae57')
-sha256sums_x86_64=('52583e5bf8f6f6151d300dcbb5e4f0dec983ef3ed3c7eb0d8a917356d37cdcd1')
+sha256sums_i686=('adeec65d72beb05562493c359f419cc015b804723c5ce40cae5d29e70d323219')
+sha256sums_x86_64=('4825bb344036d33bb489593bed6d26420ec7f4dfd2feef357b76ee71a916248f')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
