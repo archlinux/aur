@@ -6,14 +6,14 @@
 #Packager Henrik Juul Pedersen <henrikjuul AT gmail>
 
 pkgname=libiec61850
-pkgver=0.9.2.1
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="libIEC61850 provides a server and client library for IEC 61850"
 arch=('x86_64' 'i686')
 url="http://libiec61850.com/"
 license=('GPLv3')
-source=("http://libiec61850.com/libiec61850/wp-content/uploads/2016/06/$pkgname-$pkgver.tgz")
-sha256sums=('85132b12f65282ea14ede46b90b9ee0f68566bb08564d04e3cf157e16df09bb0')
+source=("http://libiec61850.com/libiec61850/wp-content/uploads/2017/03/$pkgname-$pkgver.tgz")
+sha256sums=('9769059f5e9640f497b45610873695fd202116565b827a5d503ff9923d198b78')
 
 build() {
 	cd $pkgname-$pkgver
