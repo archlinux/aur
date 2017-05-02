@@ -13,7 +13,7 @@ depends=('atk' 'cairo' 'dbus-glib' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2'
          'glibc' 'gtk3' 'libcanberra' 'libgee' 'libnotify' 'pango' 'plank'
          'sqlite' 'zeitgeist'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'gnome-common' 'granite-bzr' 'vala')
+makedepends=('bzr' 'cmake' 'gnome-common' 'granite-git' 'vala')
 optdepends=('contractor-bzr: Various context menu entries'
             'tumbler: Thumbnails generation')
 provides=('pantheon-files')
