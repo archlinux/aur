@@ -1,6 +1,6 @@
 # Maintainer: Pete Alexandrou (ozmartian) <pete@ozmartians.com>
 pkgname=tvlinker
-pkgver=3.6.5
+pkgver=3.8.0
 pkgrel=3
 pkgdesc="TV show link scraper + downloader for tv-release.pw incl. debrid and dl manager services"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-pyqt5' 'python-beautifulsoup4' 'python-lxml')
 makedepends=('python-setuptools')
 provides=()
 conflicts=()
-md5sums=('74efdfafe9e4ab832823195773fbc21a')
+md5sums=('b03966c7d41986347e6d082fb86f37a2')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
