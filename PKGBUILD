@@ -1,8 +1,8 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.4
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='Lightweight web server written in Go with support for HTTP/2, Markdown, Pongo2 and Lua'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
@@ -68,4 +68,4 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
