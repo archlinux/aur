@@ -1,6 +1,6 @@
 pkgbase = iscore-git
 	pkgdesc = i-score, an interactive sequencer for the intermedia arts
-	pkgver = 1.0b9
+	pkgver = 1.0b10
 	pkgrel = 1
 	url = http://www.i-score.org
 	arch = x86_64

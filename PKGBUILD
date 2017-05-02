@@ -1,6 +1,6 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=iscore-git
-pkgver=1.0b9
+pkgver=1.0b10
 pkgrel=1
 pkgdesc="i-score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
@@ -43,9 +43,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/.."
-  install -D -m755 "i-score.sh" "${pkgdir}/usr/bin/i-score.sh"
-
   cd "$srcdir/$_gitname-build"
   cmake --build . --target install
   install -D -m644 "$srcdir/$_gitname/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
