@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-node
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname
         bn.logrotate
         bn-init.service
         bn.service)
-sha256sums=('2b8f28e67de49b30ae496463ca0ec842a1d5144bc9569a60e2f6d6250ffaa1e4'
+sha256sums=('88db4142afc33aea8909039ec8efa8ec6fefc6bcd9610dc015090769f163fe71'
             'SKIP'
             'f291f3b70b430657e92fd165d6a0ebded28681ce57ab1fdb20e9324d4c68da8e'
             'b1da043ad40e0d80519b32a8b01a66d0fb47a6d2b19e2b7ad3f1b14b6d689bdd'
