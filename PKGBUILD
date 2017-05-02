@@ -28,7 +28,7 @@ sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
             'ab67c31cd6ef6ad2477f1e7daa534f73972ef69e1b39932bd8fa1e35e01bf98b'
             'b85c31d17bdce596a6d3b33b8f72954e5719ac54b071a8af82702ac5d35fac6c'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
-            'f576b320438fafd3449a95aff7ee538049dc5943ac5e61d87fb931e85bda09bb')
+            '9f475aff0ca37925651d7dcef64e187f3926b6c4bbbf579ae87d2eb0cbf9e9f8')
 
 
 # no modifications needed, the executable looks for:
