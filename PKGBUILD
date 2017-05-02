@@ -18,7 +18,7 @@ optdepends=('sqlite: SQLite support'
 conflicts=('gitea-git' 'gitea-git-dev')
 install=gitea.install
 backup=('etc/gitea/app.ini')
-source=(v${pkgver}::git://github.com/go-gitea/gitea.git
+source=(git://github.com/go-gitea/gitea.git#tag=v${pkgver}
         gitea.service
         app.ini)
 sha512sums=('SKIP'
@@ -27,7 +27,7 @@ sha512sums=('SKIP'
 
 prepare() {
   mkdir -p "${srcdir}/src/code.gitea.io"
-  ln -s "${srcdir}/v${pkgver}" "${srcdir}/src/code.gitea.io/gitea"
+  ln -s "${srcdir}/${pkgname}" "${srcdir}/src/code.gitea.io/gitea"
 }
 
 build() {
