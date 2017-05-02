@@ -1,21 +1,15 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Andrew Rabert <arabert@nullsum.net>
 
-# Build without fmodex:
-_fmodex=
-# Build with fmodex:
-#_fmodex=fmodex
-
 _name=zdoom
 pkgname=${_name}
 pkgver=2.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Advanced Doom source port'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
-depends=(${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
-         'gtk2'
+depends=('gtk2'
          'libgme'
          'libsndfile'
          'mpg123'
@@ -25,8 +19,7 @@ makedepends=('cmake'
              'fluidsynth'
              'imagemagick'
              'openal'
-             'p7zip'
-             'xdg-utils')
+             'p7zip')
 makedepends_i686=('nasm')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -41,14 +34,14 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'kdialog: crash dialog (KDE)'
-            'openal: OpenAL sound backend'
+            'openal: in-game sound'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 source=("http://zdoom.org/files/${_name}/${pkgver%.${pkgver#*.*.}}/${_name}-${pkgver}-src.7z"
-        'launcher.desktop'
+        "${_name}.desktop"
         '0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch')
 noextract=("${source[0]##*/}")
 sha256sums=('782179d4667d2e56e26e21d7a0872523f8e4262ed176072fef00d0043376a310'
@@ -66,17 +59,8 @@ prepare() {
 build() {
     cd $_name
 
-    local _nofmod _fmodincdir _fmodlib
-
-    if [[ -n "${_fmodex}" ]]; then
-        _nofmod=OFF
-        _fmodincdir=$(LC_ALL=C pacman -Ql $_fmodex | grep -Eo '/usr/include/fmodex[^/]*/$')
-        _fmodlib=$(LC_ALL=C pacman -Ql $_fmodex | grep -Eo '/usr/lib/libfmodex-[^/]*\.so$')
-    else
-        _nofmod=ON
-    fi
-
-    cmake -DNO_FMOD=${_nofmod} \
+    cmake -DCMAKE_BUILD_TYPE=Release \
+          -DNO_FMOD=ON \
           -DGME_INCLUDE_DIR='/usr/include/gme' \
           -DFMOD_INCLUDE_DIR="${_fmodincdir}" \
           -DFMOD_LIBRARY="${_fmodlib}" \
@@ -87,55 +71,25 @@ build() {
           .
     make
 
-    cat >"${_name}.sh" <<EOF
-#!/bin/sh
-exec /usr/lib/${_name}/${_name} "\$@"
-EOF
+    sed -n '/\*\*-/,/\*\*-/p' src/version.h >bsd.txt
 
-    sed -n '/\*\*-/,/\*\*-/p' 'src/version.h' >'bsd.txt'
-
-    cp "${srcdir}/launcher.desktop" "${_name}.desktop"
-
-    mkdir -p 'icons'
-    convert 'src/win32/icon1.ico[2]' 'icons/48.png'
-    convert 'src/win32/icon1.ico[3]' 'icons/32.png'
-    convert 'src/win32/icon1.ico[4]' 'icons/16.png'
+    convert 'src/win32/icon1.ico[2]' ${_name}.xpm
 }
 
 package() {
     cd $_name
 
-    install -D "${_name}.sh" "${pkgdir}/usr/bin/${_name}"
+    install -D $_name "$pkgdir"/usr/bin/$_name
+    install -D -m644 ${_name}.pk3 "$pkgdir"/usr/share/$_name/${_name}.pk3
 
-    mkdir -p "${pkgdir}/usr/lib/${_name}"
-    install "${_name}" "${pkgdir}/usr/lib/${_name}/"
-    install -m644 "${_name}.pk3" "${pkgdir}/usr/lib/${_name}/"
-    if [[ -n "${_fmodex}" ]]; then
-        install 'liboutput_sdl.so' "${pkgdir}/usr/lib/${_name}/"
-    fi
+    desktop-file-install --dir="$pkgdir"/usr/share/applications \
+                         "$srcdir"/${_name}.desktop
+    install -D -m644 ${_name}.xpm \
+            "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${_name}.xpm
 
-    mkdir -p "${pkgdir}/usr/share/${_name}"
-
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m644 'bsd.txt' "${pkgdir}/usr/share/licenses/${pkgname}/bsd.txt"
-    install -m644 'docs/BUILDLIC.TXT' "${pkgdir}/usr/share/licenses/${pkgname}/buildlic.txt"
-    install -m644 'docs/doomlic.txt' "${pkgdir}/usr/share/licenses/${pkgname}/doomlic.txt"
-    install -m644 'dumb/licence.txt' "${pkgdir}/usr/share/licenses/${pkgname}/dumb.txt"
-
-    desktop-file-install --dir="${pkgdir}/usr/share/applications" "${_name}.desktop"
-
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor"
-    (
-        cd 'icons'
-        export XDG_DATA_DIRS="${pkgdir}/usr/share"
-
-        local _file
-        for _file in *.png; do
-            xdg-icon-resource install --noupdate \
-                                      --novendor \
-                                      --size "${_file%.png}" \
-                                      "${_file}" \
-                                      "${_name}"
-        done
-    )
+    install -d "$pkgdir"/usr/share/licenses/$pkgname
+    install -m644 bsd.txt "$pkgdir"/usr/share/licenses/$pkgname/bsd.txt
+    install -m644 docs/BUILDLIC.TXT "$pkgdir"/usr/share/licenses/$pkgname/buildlic.txt
+    install -m644 docs/doomlic.txt "$pkgdir"/usr/share/licenses/$pkgname/doomlic.txt
+    install -m644 dumb/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/dumb.txt
 }
