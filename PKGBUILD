@@ -2,16 +2,16 @@
 
 _name=azure-cli-container
 pkgname=python-$_name
-pkgver=0.1.1b4
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Microsoft Azure Command-Line Tools container Command Module"
 arch=('any')
 url="https://github.com/Azure/azure-cli"
 license=('MIT')
-depends=('python-azure-cli-core')
+depends=('python-azure-cli-command-modules-nspkg' 'python-azure-cli-core')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('c79d4a37228dc14b6f630d3a239e950e')
+md5sums=('1f87a583fa4b7a9d0b8a99fd4776d1cb')
 
 build() {
   cd "$_name-$pkgver"
@@ -21,4 +21,13 @@ build() {
 package() {
   cd "$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
+
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__init__.py
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__pycache__/__init__.*
+  
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/cli/__init__.py
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/cli/__pycache__/__init__.*
+
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/cli/command_modules/__init__.py
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/cli/command_modules/__pycache__/__init__.*
 }
