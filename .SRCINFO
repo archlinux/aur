@@ -1,0 +1,13 @@
+pkgbase = python-zgitignore
+	pkgdesc = Check if a file is ignored by a .zgitignore file, compatible with .gitignore syntax
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/zb3/zgitignore
+	arch = any
+	license = MIT
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/z/zgitignore/zgitignore-0.7.tar.gz
+	md5sums = SKIP
+
+pkgname = python-zgitignore
+
