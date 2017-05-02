@@ -1,4 +1,5 @@
 src
 pkg
+webmin-config
 *x86_64.pkg.tar.xz
 webmin-*.tar.gz
