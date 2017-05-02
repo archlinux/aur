@@ -41,7 +41,6 @@ package_heasoft-base(){
 
   _crntpkg='heasoft-base'
   pkgdesc='Base libraries for heasoft software'
-  pkgver=6.21
 
   cd $srcdir/$pkgbase-${_mainver}/BUILD_DIR
   ./configure --prefix=$pkgdir/opt/$pkgbase-${_mainver}
@@ -69,8 +68,8 @@ _clean_conflict () {
 package_xspec(){
 
   _crntpkg='xspec'
-  pkgdesc='An Xray spectral fitting software '
-  pkgver=6.2.1
+  _pkgver=12.9.1
+  pkgdesc="An Xray spectral fitting software $_pkgver"
   depends=('heasoft-base')
 
   cd $srcdir/$pkgbase-${_mainver}/BUILD_DIR
@@ -85,7 +84,6 @@ package_ftools(){
 
   _crntpkg='ftools'
   pkgdesc='A General Package of Software to Manipulate FITS Files'
-  pkgver=6.21
   depends=('heasoft-base')
 
   cd $srcdir/$pkgbase-${_mainver}/BUILD_DIR
