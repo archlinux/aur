@@ -80,7 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        )
+        '0005-BFQ-update-to-v8r11.patch')
 
 _kernelname=${pkgbase#linux} 
 
@@ -93,7 +93,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4,5}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -435,7 +435,8 @@ sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab
             '1f0a8695b7c106d7946d67eaa8ebcf4e0bccd2cae01b0cd5621af04aa42f7e9a1b379764fb9bd9917f85ff719ec28e081eeb7c143a682f6d179e2bd1d7d15d7e'
             '6afb164bc7a38fea08a49c70690afafb209d1245588e1ecf57998926f5b43fe85d39a1ab1a133900b82bc1d3d97538330bf5c646b62e782653d69b6139d72200'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '554c5a9b3ed415f42f8ba0e25e6d0449b378ab10933e7628ce1fad07bcfcffe3a2319df05360aed4761ac3388e8f05b36e237e2ff1847128672e3461c99fe2c7')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
