@@ -2,11 +2,11 @@
 
 pkgname=xandikos
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='CardDAV/CalDAV server that backs onto a Git repository'
 arch=('any')
 url=https://jelmer.uk/code/xandikos/
-license=('LGPL')
+license=('GPL3')
 depends=('python-defusedxml' 'python-dulwich' 'python-icalendar' 'python-jinja')
 makedepends=('python-setuptools')
 source=("xandikos-$pkgver.tar.gz::${url}tarball/v$pkgver")
