@@ -6,6 +6,7 @@ pkgbase = liquidsky
 	install = liquidsky.install
 	arch = x86_64
 	arch = i686
+	makedepends = wget
 	depends = wine
 	depends = wine_gecko
 	depends = wine-mono

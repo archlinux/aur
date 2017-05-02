@@ -7,6 +7,7 @@ pkgdesc="LiquidSky lets you instantly own and stream a powerful gaming computer 
 arch=('x86_64' 'i686')
 url='https://liquidsky.tv/'
 depends=('wine' 'wine_gecko' 'wine-mono' 'winetricks')
+makedepends=('wget')
 install=liquidsky.install
 source=(
     'https://cdn.liquidsky.com/assets/LiquidSkyClient.exe'
