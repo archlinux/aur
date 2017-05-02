@@ -3,7 +3,7 @@
 
 pkgname=octoprint-venv
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The snappy snappy web interface for your 3D printer! (virtualenv installation type)"
 arch=('any')
 url="http://octoprint.org/"
@@ -25,7 +25,7 @@ package() {
     
     virtualenv2 ${pkgdir}/opt/$pkgname
     ${pkgdir}/opt/$pkgname/bin/python2 setup.py install --optimize=1
-    virtualenv2 --relocatable ${pkgdir}/opt/$pkgname
+    sed -i "s|${pkgdir}/opt/$pkgname|/opt/$pkgname|g" ${pkgdir}/opt/$pkgname/bin/*
     
     install -D -m644 ${srcdir}/octoprint.service ${pkgdir}/usr/lib/systemd/system/octoprint.service
     install -d ${pkgdir}/usr/bin/
