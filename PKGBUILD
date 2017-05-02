@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
-pkgver=r444.8f26d07
+pkgver=r447.eb90d83
 pkgrel=1
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn and neatrefer)."
