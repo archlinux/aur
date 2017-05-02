@@ -4,8 +4,8 @@
 
 _gemname=rugged
 pkgname=ruby-$_gemname
-pkgver=0.24.0
-pkgrel=3
+pkgver=0.26.0b5
+pkgrel=1
 pkgdesc='Rugged is a Ruby binding to the libgit2 linkable library'
 arch=(i686 x86_64)
 url='https://github.com/libgit2/rugged'
@@ -15,7 +15,7 @@ makedepends=(cmake)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('c86727976ba274d901433ef64d3a8b9645822841')
+sha1sums=('6ece967214a56be9bd414076b639309a6dde097b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
