@@ -1,21 +1,18 @@
 pkgbase = file-roller-tmp
 	pkgdesc = The file-roller with an additional patch to put temporary files in /tmp instead of ~/.cache (and thus to reduce the amount of writes to SSDs).
-	pkgver = 3.16.4
+	pkgver = 3.24.1
 	pkgrel = 1
-	url = http://www.gnome.org
-	install = file-roller.install
 	arch = i686
 	arch = x86_64
 	groups = gnome-extra
 	license = GPL
 	makedepends = intltool
-	makedepends = pkg-config
-	makedepends = libnautilus-extension
 	makedepends = itstool
 	makedepends = docbook-xsl
-	depends = desktop-file-utils
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = libnautilus-extension
 	depends = gtk3
-	depends = hicolor-icon-theme
 	depends = dconf
 	depends = libarchive
 	depends = file
@@ -27,14 +24,12 @@ pkgbase = file-roller-tmp
 	optdepends = unrar: better RAR archive support
 	optdepends = unace: ACE archive support
 	optdepends = lrzip: lrzip archive support
-	optdepends = cdrkit: ISO image support
 	provides = file-roller
 	conflicts = file-roller
-	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/file-roller/3.16/file-roller-3.16.4.tar.xz
+	source = git+https://git.gnome.org/browse/file-roller#commit=e6ef6fa43a6d5d6e1509f122a206870adc113563
 	source = tmp-as-temp.patch
-	sha256sums = 5455980b2c9c7eb063d2d65560ae7ab2e7f01b208ea3947e151680231c7a4185
-	sha256sums = 9556742b38c06f131f7d56eb72522e38402a85ec99904be73ccae228f5b9572f
+	sha256sums = SKIP
+	sha256sums = 753c6ee41772677b115f4178fe6384c21d8aa5d489a6074f659d5305736acf57
 
 pkgname = file-roller-tmp
 

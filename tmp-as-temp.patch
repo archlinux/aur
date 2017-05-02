@@ -1,11 +1,10 @@
-diff --git a/src/file-utils.c b/src/file-utils.c
-index 62a240e..35f23d9 100644
---- a/src/file-utils.c
-+++ b/src/file-utils.c
-@@ -52,26 +52,6 @@
+--- src/file-utils.c	2017-05-02 14:13:27.327758724 +0200
++++ src/file-utils.c	2017-05-02 14:26:07.501244763 +0200
+@@ -51,27 +51,6 @@
+ 
  /* path */
  
- 
+-
 -static const char *try_folder[] = { "cache", "~", "tmp", NULL };
 -
 -
@@ -29,10 +28,11 @@ index 62a240e..35f23d9 100644
  char *
  _g_path_get_temp_work_dir (const char *parent_folder)
  {
-@@ -82,24 +62,7 @@ _g_path_get_temp_work_dir (const char *parent_folder)
+@@ -81,28 +60,7 @@
+         char    *template;
          char    *result = NULL;
  
-         if (parent_folder == NULL) {
+-        if (parent_folder == NULL) {
 -                /* find the folder with more free space. */
 -
 -                for (i = 0; try_folder[i] != NULL; i++) {
@@ -51,13 +51,16 @@ index 62a240e..35f23d9 100644
 -                                best_folder = g_strdup (folder);
 -                        }
 -                }
-+                best_folder = g_strdup (g_get_tmp_dir ());
-         }
-         else
-                 best_folder = g_strdup (parent_folder);
-@@ -576,15 +539,13 @@ _g_file_is_temp_work_dir (GFile *file)
- 	if (path[0] != '/')
+-        }
+-        else
+-                best_folder = g_strdup (parent_folder);
++        best_folder = g_strdup (g_get_tmp_dir ());
+ 
+         if (best_folder == NULL)
+                 return NULL;
+@@ -578,17 +536,15 @@
  		return FALSE;
+ 	}
  
 -	for (i = 0; try_folder[i] != NULL; i++) {
 -		const char *folder;
@@ -75,5 +78,8 @@ index 62a240e..35f23d9 100644
 +		if (strncmp (path + strlen (folder), "/.fr-", 5) == 0) {
 +			result = TRUE;
  		}
- 	}
+-	}
++	}	
+ 
+ 	g_free (path);
  
