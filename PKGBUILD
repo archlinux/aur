@@ -1,7 +1,7 @@
 pkgname=python-bcolz
 _pkgname=bcolz
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="columnar and compressed data containers."
 arch=('any')
 url="https://bcolz.readthedocs.org/"
@@ -16,6 +16,7 @@ sha256sums=('1d1acbeb25012d82ee3a81e61243ffd9923e43a18e241b376dfd1d28d189d372'
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
     patch -Np1 -i ../fix_version setup.py
+    echo "version='$pkgver'" > bcolz/version.py
     python setup.py build
 }
 
