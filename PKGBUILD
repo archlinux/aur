@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=0.10.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -8,17 +8,13 @@ license=('GPL2')
 depends=('dnf>=2.0.0' 'python')
 makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
-optdepends=('createrepo_c: for local plugin'
-            'snapper: for snapper plugin'
+optdepends=('snapper: for snapper plugin'
             'tracer:  for tracer plugin')
-backup=('etc/dnf/plugins/local.conf'
-        'etc/dnf/plugins/rpmconf.conf'
-        'etc/dnf/plugins/torproxy.conf'
-        'etc/dnf/plugins/versionlock.conf'
-        'etc/dnf/plugins/versionlock.list')
+backup=('etc/dnf/plugins/rpmconf.conf'
+        'etc/dnf/plugins/torproxy.conf')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('e8582383dd7fa7c7cfaa0703fd89000f')
+md5sums=('c789492b6e768a399da51bb26db94ff4')
 
 prepare() {
 	cd "$pkgname-$pkgver"
