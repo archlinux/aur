@@ -14,7 +14,7 @@ depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop'
          'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxtst'
          'mesa' 'mutter' 'pango' 'plank' 'wayland'
          'libgranite.so')
-makedepends=('bzr' 'gnome-common' 'granite-bzr' 'intltool' 'vala')
+makedepends=('bzr' 'gnome-common' 'granite-git' 'intltool' 'vala')
 provides=('gala' 'libgala.so')
 conflicts=('gala')
 source=('bzr+lp:gala')
