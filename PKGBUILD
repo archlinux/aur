@@ -82,19 +82,8 @@ build() {
       fi
   fi
 
-  # deal.II does not compile with OpenMP: if we use Trilinos and some Epetra
-  # headers have OpenMP pragmas enabled then skip unknown pragma warnings.
-  extra_warning_flags=""
-  if pacman -Qs trilinos >/dev/null
-  then
-      if [ -f $TRILINOS_DIR/include/Epetra_config.h ]
-      then
-          if grep '^#define EPETRA_HAVE_OMP$' $TRILINOS_DIR/include/Epetra_config.h >/dev/null
-          then
-             extra_warning_flags+=" -Wno-unknown-pragmas"
-          fi
-      fi
-  fi
+  # Skip some warnings that appear if Trilinos uses OpenMP pragmas in headers:
+  extra_warning_flags=" -Wno-unknown-pragmas"
 
   # the deal.II GCC flags are already well-chosen for speed (and O3 is known to
   # be slightly slower than O2), so do not use flags in /etc/makepkg.conf by
