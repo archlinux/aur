@@ -1,16 +1,15 @@
 [Unit]
-Description=Python Capture Agent %i worker
+Description=Python Capture Agent capture service
 Documentation=https://github.com/opencast/pyCA
 Wants=network.target
-PartOf=pyca.target
 
 [Service]
 Type=simple
 User=pyca
-ExecStart=/usr/bin/pyca %i
+ExecStart=/usr/bin/pyca capture
 Restart=always
 RestartSec=10
 TimeoutSec=300
 
 [Install]
-WantedBy=pyca.target
+WantedBy=multi-user.target
