@@ -1,9 +1,4 @@
-zdoom
-
-/*.tar.gz
-/*.tar.bz2
-/*.tar.xz
-/*.zip
-/*.7z
+/zdoom
 /pkg/
 /src/
+/*.pkg.tar.*
