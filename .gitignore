@@ -1,0 +1,9 @@
+# Ignore downloaded sources and keys
+*.xz
+*.tar
+*.tar.*
+*.sign
+
+# ignore src and pkg directories
+pkg/*
+src/*
