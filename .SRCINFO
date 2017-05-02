@@ -1,6 +1,6 @@
 pkgbase = telive
 	pkgdesc = application for monitoring and listening to TETRA voice channels
-	pkgver = d865b46
+	pkgver = r114.64d614a
 	pkgrel = 1
 	epoch = 3
 	url = https://github.com/sq5bpf/telive
@@ -14,6 +14,7 @@ pkgbase = telive
 	depends = alsa-utils
 	depends = vorbis-tools
 	depends = sox
+	depends = icu58
 	optdepends = google-earth: view SIP location reports on a map
 	optdepends = osmo-tetra-sq5bpf-git: gnuradio based TETRA receiver
 	source = telive::git+https://github.com/sq5bpf/telive
