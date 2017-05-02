@@ -1,0 +1,28 @@
+pkgbase = heasoft
+	pkgver = 6.21
+	pkgrel = 1
+	url = https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/
+	arch = x86_64
+	license = NASA
+	license = GPL
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = gcc-fortran
+	makedepends = perl
+	depends = ncurses
+	depends = libtinfo
+	depends = readline
+	depends = libxpm
+	source = http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/release/heasoft-6.21src_no_xspec_modeldata.tar.gz
+	source = heasoft-6.21_nolynx.patch
+	sha1sums = 3a315e28f55df904b66a268dfc51b8d5f2c2a0b3
+	sha1sums = c1d4940d1aa599bf3b8b61b3471ebf057869b517
+
+pkgname = heasoft-base
+
+pkgname = xspec
+	depends = heasoft-base
+
+pkgname = ftools
+	depends = heasoft-base
+
