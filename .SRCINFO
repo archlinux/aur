@@ -1,15 +1,16 @@
 pkgbase = python-azure-cli-redis
 	pkgdesc = Microsoft Azure Command-Line Tools Redis Command Module
-	pkgver = 0.1.1b3
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-azure
+	depends = python-azure-cli-command-modules-nspkg
 	depends = python-azure-cli-core
-	source = https://files.pythonhosted.org/packages/source/a/azure-cli-redis/azure-cli-redis-0.1.1b3.tar.gz
-	md5sums = 2b621d453059d70c8d2c5f0fb5ff1357
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-redis/azure-cli-redis-0.2.1.tar.gz
+	md5sums = 0eabb018fcd204cfcaaacd42beb695ad
 
 pkgname = python-azure-cli-redis
 
