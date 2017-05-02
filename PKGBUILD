@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-wm-git
-pkgver=r116.1e3114c
-pkgrel=3
+pkgver=r3.b0ca904
+pkgrel=1
 pkgdesc="Windowmanagement environment for guile"
 arch=('any')
 url="http://www.markwitmer.com/guile-xcb/guile-wm.html"
@@ -16,8 +16,12 @@ options=('!makeflags')
 _gitname="guile-wm"
 
 pkgver() {
-  cd "$_gitname"
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd "$_gitname"
+  sed -i 's+2.0 2.2+2.2+' configure.ac
 }
 
 build() {
