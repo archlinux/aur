@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=1.0.1.4.r945.g6708db83b
+pkgver=1.0.1.4.r947.g54d1009b2
 # ↓to be used in pkgver() where we need version without git revision
 upstream_release_version=1.0.1.4
 pkgrel=1
