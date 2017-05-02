@@ -2,12 +2,13 @@
 _pkgname=onedrived
 pkgname=${_pkgname}-dev
 pkgver=r164.62ceee1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Microsoft OneDrive client for Linux, written in Python3"
 arch=('any')
 url="https://github.com/xybu/onedrived-dev"
 license=('MIT')
-depends=('python' 'ngrok' 'python-setuptools')
+makedepends=('python-setuptools')
+depends=('python' 'ngrok')
 provides=('onedrived')
 conflicts=('onedrived')
 replaces=('onedrive-d')
