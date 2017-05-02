@@ -4,7 +4,7 @@
 _name=gzdoom
 pkgname=${_name}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -15,10 +15,10 @@ depends=('hicolor-icon-theme'
          'libgme'
          'sdl2')
 makedepends=('cmake'
+             'desktop-file-utils'
              'fluidsynth'
              'git'
-             'gtk3'
-             'xdg-utils')
+             'gtk3')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
@@ -69,17 +69,10 @@ package() {
 
     install -D "$srcdir"/${_name}.sh "$pkgdir"/usr/bin/$_name
 
-    install -d "$pkgdir"/usr/share/icons/hicolor
-    (
-        export XDG_DATA_DIRS="$pkgdir"/usr/share
-        xdg-desktop-icon install --novendor \
-                                 "$srcdir"/${_name}.desktop
-        xdg-icon-resource install --noupdate \
-                                  --novendor \
-                                  --size 48 \
-                                  src/posix/zdoom.xpm \
-                                  $_name
-    )
+    desktop-file-install --dir="$pkgdir"/usr/share/applications \
+                         "$srcdir"/${_name}.desktop
+    install -D -m644 src/posix/zdoom.xpm \
+            "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${_name}.xpm
 
     install -d "$pkgdir"/usr/share/licenses
     ln -s /usr/share/doc/$_name/licenses "$pkgdir"/usr/share/licenses/$pkgname
