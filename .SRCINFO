@@ -1,0 +1,16 @@
+pkgbase = python-azure-cli-acr
+	pkgdesc = Microsoft Azure Command-Line Tools ACR Command Module
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure-cli-core
+	depends = python-azure
+	depends = python-azure-cli-command-modules-nspkg
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-acr/azure-cli-acr-2.0.2.tar.gz
+	md5sums = 96b6bf6b8fc11cd258fe653148c8b4fd
+
+pkgname = python-azure-cli-acr
+
