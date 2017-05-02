@@ -4,7 +4,7 @@
 
 pkgname=webmin
 pkgver=1.831
-pkgrel=5
+pkgrel=6
 pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
 license=('custom:webmin')
@@ -119,6 +119,8 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/confi
 'etc/webmin/xinetd/config' \
 'etc/pam.d/webmin' )
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
+        setup-pre.sh
+        setup-post.sh
         webmin-config.tar.bz2
         webmin.pam
         webmin.service)
@@ -141,8 +143,9 @@ prepare() {
   # remove update stuff to avoid problems with updating webmin, modules and themes without pacman
   rm {webmin,usermin}/{update.cgi,update.pl,update_sched.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
 
-  # copy Arch linux config files
+  # copy Arch linux related files
   cp -rp "$srcdir"/webmin-config/* "$srcdir"/$pkgname-$pkgver/
+  install -m 700 "$srcdir"/setup-{pre,post}.sh "$srcdir"/$pkgname-$pkgver/
 
   # Fix setup.sh
   sed -i -e 's:exit 13::g' "$srcdir"/$pkgname-$pkgver/setup.sh
@@ -152,39 +155,13 @@ package() {
   # create basic dirs
   mkdir -p "$pkgdir"/{etc,opt,var/log}
 
-#  # copy stuff to right dirs
-#  cp -rp "$srcdir"/$pkgname-$pkgver/* "$pkgdir"/opt/webmin
-
-  # define parameters for setup.sh
-  config_dir="$pkgdir"/etc/webmin
-  var_dir="$pkgdir"/var/log/webmin
-  perl=/usr/bin/perl
-  autoos=1
-  port=10000
-  login=root
-  crypt="x"
-  ssl=1
-  atboot=0
-  nostart=1
-  nochown=1
-  autothird=1
-  nouninstall=1
-  atbootyn=n
-  tempdir="$pkgdir"/tmp
-  pam=webmin
-  export config_dir var_dir perl autoos port login crypt ssl atboot nostart nochown autothird nouninstall atbootyn tempdir pam
+  archpkgdir="$pkgdir"
+  export archpkgdir
   cd "$srcdir"/$pkgname-$pkgver
   "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
 
-  # more logging and other config changes
-  echo -e 'logfiles=1\nlogfullfiles=1\ngotoone=1\nnoremember=1' >> "$pkgdir"/etc/webmin/config
-
   # Fixup the config files to use their real locations
-  sed -i 's:^pidfile=.*$:pidfile=/run/webmin.pid:' "$pkgdir"/etc/webmin/miniserv.conf
   find "$pkgdir"/etc/webmin -type f -exec sed -i "s:$pkgdir::g" {} \+
-
-  # Use pam
-  echo -e 'pam_only=1\npam_end=1\npam_conv=\nno_pam=0\nlogouttime=10' >> "$pkgdir"/etc/webmin/miniserv.conf
 
   # install sources
   install -D -m 644 $srcdir/webmin.service $pkgdir/usr/lib/systemd/system/webmin.service
@@ -197,6 +174,8 @@ package() {
 
 
 sha256sums=('b4cc63a369026e4e6d8f5af7501fe101dc122d9edbdd6bb20058f8f511694ce3'
+            '2978aef42ca2dc6147c44328e25e7f8dc8174ef80afb5e9f23e06401f8cdbf73'
+            'eff8a55e1abd28afd6d29bf281f18ac781820207fe9048ebecf90be0d4bfff79'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             'a1bdc68e3b0970a5c8e5063bd882b0469664ca782b34faecee22af5c6c30dd11')
