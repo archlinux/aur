@@ -1,17 +1,17 @@
-diff --git a/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java b/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
-index 62ab929..6f055b2 100644
---- a/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
-+++ b/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
-@@ -72,9 +72,9 @@ public class ExternalTestRunnerIntegrationTest {
-     result.assertSuccess();
-     assertThat(
+diff --git i/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java w/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
+index 5c3f0208b..f8da1f41d 100644
+--- i/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
++++ w/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
+@@ -65,9 +65,9 @@ public class ExternalTestRunnerIntegrationTest {
          result.getStdout(),
--        is(equalTo("[[0.0, [u'dir/simple.py']], " +
--            "[0.75, [u'dir/also_simple.py', u'dir/simple.py']], " +
--            "[1.0, [u'dir/also_simple.py']]]\n")));
-+        is(equalTo("[[0.0, ['dir/simple.py']], " +
-+            "[0.75, ['dir/also_simple.py', 'dir/simple.py']], " +
-+            "[1.0, ['dir/also_simple.py']]]\n")));
+         is(
+             equalTo(
+-                "[[0.0, [u'dir/simple.py']], "
+-                    + "[0.75, [u'dir/also_simple.py', u'dir/simple.py']], "
+-                    + "[1.0, [u'dir/also_simple.py']]]\n")));
++                "[[0.0, ['dir/simple.py']], "
++                    + "[0.75, ['dir/also_simple.py', 'dir/simple.py']], "
++                    + "[1.0, ['dir/also_simple.py']]]\n")));
    }
  
    @Test

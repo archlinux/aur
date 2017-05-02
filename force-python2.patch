@@ -10,10 +10,10 @@ index dc13ec0cc..d5604f6b1 100755
 +PYTHON=$(command -v python2 python | head -1)
 +PYTHONPATH="$BUCK_DIR"/../third-party/nailgun exec $PYTHON "$BUCK_DIR"/../programs/buckd.py "$@"
 diff --git i/build.xml w/build.xml
-index e58a9014c..fd5603d9d 100644
+index 989975d9e..2796a3e91 100644
 --- i/build.xml
 +++ w/build.xml
-@@ -209,7 +209,7 @@
+@@ -211,7 +211,7 @@
    </target>
  
    <target name="python-get-prefix">
@@ -22,7 +22,7 @@ index e58a9014c..fd5603d9d 100644
        <arg value="-c" />
        <arg value="import distutils.sysconfig; print(distutils.sysconfig.PREFIX)" />
      </exec>
-@@ -681,7 +681,7 @@
+@@ -667,7 +667,7 @@
    <target name="py-test" description="runs the Python tests" depends="buck-py-test, class-loader-py-test, log-rotation-py-test, pathlib-py-test, zip-munger-py-test, buck-tool-py-test" />
  
    <target name="buck-py-test" description="tests the BUCK parser">
@@ -31,7 +31,7 @@ index e58a9014c..fd5603d9d 100644
        <!-- The py folder is actually a python package, so use module import style here. -->
        <env key="PYTHONPATH" path="${buck.pythonpath}" />
        <arg value="-m" />
-@@ -693,21 +693,21 @@
+@@ -679,21 +679,21 @@
    </target>
  
    <target name="class-loader-py-test" description="tests BUCK's class loader setup">
@@ -56,7 +56,7 @@ index e58a9014c..fd5603d9d 100644
        <!-- Needed on Python 2.6. -->
        <env key="PYTHONPATH" path="${unittest2.dir}" />
        <arg value="test_pathlib.py" />
-@@ -715,14 +715,14 @@
+@@ -701,14 +701,14 @@
    </target>
  
    <target name="zip-munger-py-test" description="tests munger.py">
@@ -73,7 +73,7 @@ index e58a9014c..fd5603d9d 100644
        <env key="PYTHONPATH" path="${buck.pythonpath}" />
        <arg value="programs/test_buck_tool.py" />
      </exec>
-@@ -848,7 +848,7 @@
+@@ -777,7 +777,7 @@
    </target>
  
    <target name="missing-test-files-check">
@@ -83,12 +83,12 @@ index e58a9014c..fd5603d9d 100644
      </exec>
    </target>
 diff --git i/docs/presentations/droidcon-nyc-2014/images/create_images.py w/docs/presentations/droidcon-nyc-2014/images/create_images.py
-index cd6f6b985..4bee79074 100755
+index cd6f6b985..27e02c574 100755
 --- i/docs/presentations/droidcon-nyc-2014/images/create_images.py
 +++ w/docs/presentations/droidcon-nyc-2014/images/create_images.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
-+#!/usr/bin/env python22
++#!/usr/bin/env python2
  """
  This exports a bunch of images from the base-dependency-diagram.graffle file
  using py-appscript:
@@ -152,18 +152,8 @@ index 60270135d..02adbdab2 100644
  
  import errno
  import glob
-diff --git i/scripts/artificialproject/__main__.py w/scripts/artificialproject/__main__.py
-index ffbac6ffa..f8a7fcb52 100755
---- i/scripts/artificialproject/__main__.py
-+++ w/scripts/artificialproject/__main__.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/env python23
- 
- import argparse
- import collections
 diff --git i/scripts/assert_code_coverage.py w/scripts/assert_code_coverage.py
-index 8f6a77234..3d68ab70f 100644
+index 8f7542a03..7137b037b 100644
 --- i/scripts/assert_code_coverage.py
 +++ w/scripts/assert_code_coverage.py
 @@ -1,4 +1,4 @@
@@ -172,16 +162,6 @@ index 8f6a77234..3d68ab70f 100644
  
  import xml.etree.ElementTree as ElementTree
  import os
-diff --git i/scripts/autofix_lint.py w/scripts/autofix_lint.py
-index e7d5a62e8..ea127e38e 100755
---- i/scripts/autofix_lint.py
-+++ w/scripts/autofix_lint.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- import argparse
- import re
 diff --git i/scripts/intellij/generate_grammar_kit.py w/scripts/intellij/generate_grammar_kit.py
 index afb908a0d..b49607bc8 100644
 --- i/scripts/intellij/generate_grammar_kit.py
@@ -193,7 +173,7 @@ index afb908a0d..b49607bc8 100644
  import subprocess
  import os
 diff --git i/scripts/perf_test_hg.py w/scripts/perf_test_hg.py
-index 6296f0914..7ae686dfa 100755
+index ef1d6e669..0310e63fa 100755
 --- i/scripts/perf_test_hg.py
 +++ w/scripts/perf_test_hg.py
 @@ -1,4 +1,4 @@
@@ -222,32 +202,6 @@ index e9ee453cf..d91826c8b 100644
  """
  Enforce that Java files which look like they contain JUnit test cases
  are referenced by a test BUCK target. In other words: find tests that
-diff --git i/src/com/facebook/buck/apple/project_generator/build-with-buck.st w/src/com/facebook/buck/apple/project_generator/build-with-buck.st
-index f596c6d60..2ba6c7cc1 100644
---- i/src/com/facebook/buck/apple/project_generator/build-with-buck.st
-+++ w/src/com/facebook/buck/apple/project_generator/build-with-buck.st
-@@ -1,7 +1,7 @@
- set -e
- cd <repo_root>
- 
--BUILD_WITH_BUCK_COMMAND=`python <path_to_build_with_buck_py> <repo_root> <path_to_buck> -- "<build_flags>" <escaped_build_target> <buck_dwarf_flavor> <buck_dsym_flavor>`
-+BUILD_WITH_BUCK_COMMAND=`python2 <path_to_build_with_buck_py> <repo_root> <path_to_buck> -- "<build_flags>" <escaped_build_target> <buck_dwarf_flavor> <buck_dsym_flavor>`
- echo $BUILD_WITH_BUCK_COMMAND
- 
- BUCK_BUNDLE_OUTPUT_PATH=`eval $BUILD_WITH_BUCK_COMMAND | awk 'NR>1 {print $2}'`
-@@ -22,9 +22,9 @@ if [ "$DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym" ] || [ "<force_dsym>" == "t
-     export LC_ALL=C
-     sed -i '' 's|<comp_dir>|<padded_source_dir>|g' <resolved_dsym_destination>/Contents/Resources/DWARF/<binary_name>
- 
--    python <path_to_fix_uuid_script> --verbose <resolved_bundle_destination> <resolved_dsym_destination> <binary_name>
-+    python2 <path_to_fix_uuid_script> --verbose <resolved_bundle_destination> <resolved_dsym_destination> <binary_name>
- else
-     echo "DWARF MODE"
-     echo "Absolutifying object file paths in binary: $BUCK_BUNDLE_OUTPUT_PATH/<binary_name>"
-     <path_to_buck> machoutils absolutify_object_paths --binary $BUCK_BUNDLE_OUTPUT_PATH/<binary_name> --output <resolved_bundle_destination>/<binary_name> --old_compdir "<comp_dir>" --new_compdir "<new_comp_dir>"
--fi
-\ No newline at end of file
-+fi
 diff --git i/src/com/facebook/buck/python/make_pex.py w/src/com/facebook/buck/python/make_pex.py
 index 0359eef2a..ff54c34ce 100755
 --- i/src/com/facebook/buck/python/make_pex.py
@@ -268,10 +222,10 @@ index 84276d444..15239c607 100755
  import sys
  import os
  import zipfile
-diff --git i/test/com/facebook/buck/rage/testdata/interactive_report/extra.py w/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
+diff --git i/test/com/facebook/buck/rage/testdata/report/extra.py w/test/com/facebook/buck/rage/testdata/report/extra.py
 index f899a7e24..69e4bc8cf 100755
---- i/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
-+++ w/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
+--- i/test/com/facebook/buck/rage/testdata/report/extra.py
++++ w/test/com/facebook/buck/rage/testdata/report/extra.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
@@ -299,7 +253,7 @@ index d65d2f5b4..87e7dc901 100755
  import sys
  
 diff --git i/third-party/nailgun/pynailgun/ng.py w/third-party/nailgun/pynailgun/ng.py
-index 45dc09e27..5717b02a8 100755
+index 4ac4ad8f4..a1a05c30a 100755
 --- i/third-party/nailgun/pynailgun/ng.py
 +++ w/third-party/nailgun/pynailgun/ng.py
 @@ -1,4 +1,4 @@
@@ -308,41 +262,8 @@ index 45dc09e27..5717b02a8 100755
  #
  # Copyright 2004-2015, Martian Software, Inc.
  #
-diff --git i/third-party/py/pathlib/docs/conf.py w/third-party/py/pathlib/docs/conf.py
-index 9b9797c8f..18175861e 100644
---- i/third-party/py/pathlib/docs/conf.py
-+++ w/third-party/py/pathlib/docs/conf.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/env python23
- # -*- coding: utf-8 -*-
- #
- # pathlib documentation build configuration file, created by
-diff --git i/third-party/py/pathlib/setup.py w/third-party/py/pathlib/setup.py
-index 269022956..a027f38e8 100755
---- i/third-party/py/pathlib/setup.py
-+++ w/third-party/py/pathlib/setup.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/env python23
- import sys
- from distutils.core import setup
- 
-diff --git i/third-party/py/pex/pex/testing.py w/third-party/py/pex/pex/testing.py
-index cded62c0a..aacf1e2f2 100644
---- i/third-party/py/pex/pex/testing.py
-+++ w/third-party/py/pex/pex/testing.py
-@@ -80,7 +80,7 @@ PROJECT_CONTENT = {
-           install_requires=%(install_requires)r,
-       )
-   '''),
--  'scripts/hello_world': '#!/usr/bin/env python\nprint("hello world!")\n',
-+  'scripts/hello_world': '#!/usr/bin/env python2\nprint("hello world!")\n',
-   'scripts/shell_script': '#!/usr/bin/env bash\necho hello world\n',
-   'my_package/__init__.py': 0,
-   'my_package/my_module.py': 'def do_something():\n  print("hello world!")\n',
 diff --git i/third-party/py/pywatchman/setup.py w/third-party/py/pywatchman/setup.py
-index 243e83f77..4c4d27788 100755
+index ebac891ea..9ed020ad1 100755
 --- i/third-party/py/pywatchman/setup.py
 +++ w/third-party/py/pywatchman/setup.py
 @@ -1,4 +1,4 @@
