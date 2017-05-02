@@ -123,14 +123,6 @@ package() {
   # remove other distros and add only Archlinux don't change next line else it will not work!
   echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
 
-  # Add rc.conf support to boot and shutdown menu and lock editing of this module
-  cd init/
-  sed -i -e 's:^local_down=.*:local_down=Archlinux RC.CONF,3,None:g' $(find . ! -name 'config.info.pl' -name 'config.info*')
-  sed -i -e 's:^local_script=.*:local_script=Archlinux RC.LOCAL,3,None:g' $(find . ! -name 'config.info.pl' -name 'config.info*')
-  sed -i -e 's:^index_downscript=.*:index_downscript=Archlinux RC.CONF:g' lang/*
-  sed -i -e 's:^index_script=.*:index_script=Archlinux RC.LOCAL:g' lang/*
-  sed -i -e 's:^noconfig=0:noconfig=1:g'  defaultacl
-
   # copy stuff to right dirs
   cd "$srcdir"/$pkgname-$pkgver
   cp -rp * "$pkgdir"/opt/webmin
