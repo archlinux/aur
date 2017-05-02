@@ -2,11 +2,12 @@
 
 pkgname="adwaita-dark-darose"
 pkgver=3.22.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Adwaita theme hacked to use my custom color scheme.  (Dark blues instead of greys.)"
 url="none"
 license=('GPL')
 arch=('any')
+makedepends=('glib2' 'gtk3')
 depends=('gnome-themes-standard')
 source=('no-source.txt')
 md5sums=('SKIP')
