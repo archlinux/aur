@@ -1,7 +1,7 @@
 # Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
 
 pkgname=budgetcalendar
-pkgver=1.9.979
+pkgver=1.9.1266
 pkgrel=1
 pkgdesc='Calendar-based budgeting software written in Java'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
 	'budgetcalendar'
 )
 sha256sums=(
-	'd1a3f7e79da0790db63a2d1a7534de521d174741ff039f1ad8f2165b2f562b46'
+	'09b9fc4177ffd603b3e181c2aaf536eeb9f2f93f600094c9fa91b2cdee4a853c'
 	'df39c154a1d1815a688e76235eb6823afcaeb03848959b94927d29b646da8124'
 )
 
