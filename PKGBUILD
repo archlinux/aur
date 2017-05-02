@@ -13,9 +13,9 @@ optdepends=('consolekit-openrc: consolekit openrc initscript'
 makedepends=('xmlto' 'docbook-xsl')
 options=('libtool')
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2"
-		'consolekit.tmpfiles.conf'
-		'25-consolekit.rules'
-		'consolekit.pamd')
+        'consolekit.tmpfiles.conf'
+        '25-consolekit.rules'
+        'consolekit.pamd')
 sha256sums=('a2f7697f1e081b68839b85e375a1b8fcda55c2ca76fa4d9118674c5d0e50e800'
             '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1'
             'c5159d9fe8fdd52ad0d6a84af7ba00bac09edaae965896ab0d099a4df1c5ea6b'
@@ -28,21 +28,21 @@ prepare(){
 build(){
 	cd $srcdir/$_pkgname-$pkgver
 
-	./configure  \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--sbindir=/usr/bin \
-		--with-rundir=/run \
-		--libexecdir=/usr/lib/ConsoleKit \
-		--localstatedir=/var \
-		--enable-polkit \
-		--enable-pam-module \
-		--enable-udev-acl \
-		--enable-docbook-docs \
-		--with-dbus-services=/usr/share/dbus-1/services \
-		--with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
-		--with-pam-module-dir=/usr/lib/security \
-		--without-systemdsystemunitdir \
+    ./configure  \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --sbindir=/usr/bin \
+        --with-rundir=/run \
+        --libexecdir=/usr/lib/ConsoleKit \
+        --localstatedir=/var \
+        --enable-polkit \
+        --enable-pam-module \
+        --enable-udev-acl \
+        --enable-docbook-docs \
+        --with-dbus-services=/usr/share/dbus-1/services \
+        --with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
+        --with-pam-module-dir=/usr/lib/security \
+        --without-systemdsystemunitdir \
         --disable-cgroups
 
 		make
@@ -62,3 +62,5 @@ package() {
 	install -dm755 $pkgdir/etc/pam.d/
 	install -Dm755 ${srcdir}/consolekit.pamd $pkgdir/etc/pam.d/consolekit
 }
+
+# vim: ts=4 sts=4 et
