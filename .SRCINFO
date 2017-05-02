@@ -1,16 +1,17 @@
 pkgbase = python-azure-cli-iot
 	pkgdesc = Microsoft Azure Command-Line Tools IoT Command Module
-	pkgver = 0.1.1b3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-azure
+	depends = python-azure-cli-command-modules-nspkg
 	depends = python-azure-cli-core
 	depends = python-pyopenssl
-	source = https://files.pythonhosted.org/packages/source/a/azure-cli-iot/azure-cli-iot-0.1.1b3.tar.gz
-	md5sums = 1ce7925852e995f4b7d953f6838a3389
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-iot/azure-cli-iot-0.1.4.tar.gz
+	md5sums = 5fc371063542d49ac7382a65fd429955
 
 pkgname = python-azure-cli-iot
 
