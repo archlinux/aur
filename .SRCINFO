@@ -1,0 +1,16 @@
+pkgbase = kurly
+	pkgdesc = Kurly is an alternative to the widely popular curl program written in go.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/davidjpeacock/kurly
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = APACHE
+	makedepends = go
+	depends = glibc
+	source = kurly-1.0.0.tar.gz::https://github.com/davidjpeacock/kurly/archive/v1.0.0.tar.gz
+	sha512sums = 6b850a5e8c57d8b4d179e2e306653bb31b8d45c88b827bcef976aa510c0b094e111b0a6dfbd8cc4201e1e948c5938c27537a8d03123622e7914adb31425692d8
+
+pkgname = kurly
+
