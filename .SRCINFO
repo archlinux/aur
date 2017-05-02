@@ -1,6 +1,7 @@
 pkgbase = heasoft
+	pkgdesc = NASA high energy astrophysics library
 	pkgver = 6.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/
 	arch = x86_64
 	license = NASA
@@ -13,19 +14,11 @@ pkgbase = heasoft
 	depends = libtinfo
 	depends = readline
 	depends = libxpm
+	optdepends = lynx
 	source = http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/release/heasoft-6.21src_no_xspec_modeldata.tar.gz
 	source = heasoft-6.21_nolynx.patch
 	sha1sums = 3c55645feae3ddffc86d6c1b3c1b989e8a7d5d1b
 	sha1sums = c1d4940d1aa599bf3b8b61b3471ebf057869b517
 
-pkgname = heasoft-base
-	pkgdesc = Base libraries for heasoft software
-
-pkgname = xspec
-	pkgdesc = An Xray spectral fitting software
-	depends = heasoft-base
-
-pkgname = ftools
-	pkgdesc = A General Package of Software to Manipulate FITS Files
-	depends = heasoft-base
+pkgname = heasoft
 
