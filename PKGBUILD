@@ -11,7 +11,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('sqlheavy'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'granite-bzr' 'vala')
+makedepends=('bzr' 'cmake' 'granite-git' 'vala')
 provides=('footnote')
 conflicts=('footnote')
 install='footnote.install'
