@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-aniso8601
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A library for parsing ISO 8601 strings"
 arch=('any')
@@ -10,9 +10,9 @@ makedepends=('python-setuptools')
 url="https://bitbucket.org/nielsenb/aniso8601"
 license=('BSD')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/5b/fb/251a0dd2f4710e60664ddd8bd3485bd8362530f47af9e88f4061fe589ebf/aniso8601-1.2.0.tar.gz)
-md5sums=('bb678d20e4b2c701d7c38a7fc4b7cff5')
-sha256sums=('502400f82574afa804cc915d83f15c67533d364dcd594f8a6b9d2053f3404dd4')
+source=(https://pypi.python.org/packages/61/f3/74a5a8affb192863f5f6aa3dfb0059a97442ff683d44fcc842b509758129/aniso8601-1.2.1.tar.gz)
+md5sums=('e3990c8207f8baee045c29a0ad114fdb')
+sha256sums=('e7ba4f42d3aea75909c79b1f4c4614768b4f13fbb98fc658a7b6061ddb0be47c')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
