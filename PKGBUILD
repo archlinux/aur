@@ -5,7 +5,7 @@ pkgname=('python-opcodes-git' 'python2-opcodes-git')
 _srcname=python-opcodes
 _srcname2=python2-opcodes
 pkgver=r169.27adeaf
-pkgrel=1
+pkgrel=2
 _commondesc="module for instruction sets documentation in a format convenient for tools development (git version)"
 arch=('any')
 url="https://github.com/Maratyszcza/Opcodes/"
@@ -35,12 +35,12 @@ build() {
     msg2 "Building for Python3..."
     cd "${pkgbase}"
     python setup.py build
-    python setup.py build_sphinx --all-files --source-dir="${srcdir}/${pkgname}/sphinx"
+    python setup.py build_sphinx --all-files --source-dir="${srcdir}/${pkgbase}/sphinx"
     
     msg2 "Building for Python2..."
     cd "${srcdir}/${pkgbase}-py2"
     python2 setup.py build
-    python2 setup.py build_sphinx --all-files --source-dir="${srcdir}/${pkgname}/sphinx"
+    python2 setup.py build_sphinx --all-files --source-dir="${srcdir}/${pkgbase}-py2/sphinx"
 }
 
 package_python-opcodes-git() {
