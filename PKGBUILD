@@ -2,13 +2,13 @@
 
 pkgname=oce
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Open CASCADE Community Edition: patches/improvements/experiments contributed by users over the official Open CASCADE library."
 url="https://github.com/tpaviot/oce"
 arch=('i686' 'x86_64')
 license=('GPLv2.1')
 makedepends=('cmake')
-depends=('intel-tbb' 'gl2ps' 'freeimage' 'tk')
+depends=('intel-tbb' 'gl2ps' 'freeimage' 'tk' 'glu')
 source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz 99_oce.sh 99_oce.conf)
 md5sums=('3f78b67d252449b5eb8155b491bcaabd'
          '606e400a97d9947459e4de2eca65f04c'
