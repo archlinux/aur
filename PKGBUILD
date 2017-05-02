@@ -1,6 +1,6 @@
-# Maintainer: valvetime <valvetimepackages@gmail.com>
+# Maintainer: denvit <denys@denv.it>
 pkgname=telive
-pkgver=d865b46
+pkgver=r114.64d614a
 pkgrel=1
 epoch=3
 pkgdesc="application for monitoring and listening to TETRA voice channels"
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/sq5bpf/telive"
 license=('GPL')
 groups=()
-depends=('gnuradio' 'gnuradio-companion' 'python2' 'alsa-utils' 'vorbis-tools' 'sox')
+depends=('gnuradio' 'gnuradio-companion' 'python2' 'alsa-utils' 'vorbis-tools' 'sox' 'icu58')
 makedepends=('git' 'patch')
 optdepends=('google-earth: view SIP location reports on a map'
 'osmo-tetra-sq5bpf-git: gnuradio based TETRA receiver')
