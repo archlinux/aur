@@ -1,0 +1,18 @@
+pkgbase = python-pyipopt
+	pkgdesc = A Python connector to IPOPT
+	pkgver = r122.ab61f90
+	pkgrel = 1
+	url = https://github.com/xuy/pyipopt
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = coin-or-ipopt
+	depends = python-numpy
+	depends = gcc
+	provides = python-pyipopt
+	source = git+http://github.com/xuy/pyipopt.git
+	md5sums = SKIP
+
+pkgname = python-pyipopt
+
