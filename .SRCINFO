@@ -1,13 +1,13 @@
 pkgbase = python-sentry
 	pkgdesc = Python monitoring tool
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/dopsi/sentry
 	arch = any
 	license = MIT
 	depends = python-colored
-	source = python-sentry-v1.0.2.tar.gz::https://github.com/dopsi/sentry/archive/v1.0.2.tar.gz
-	sha256sums = d450f5406cb522f1e066d34355b9d685714bee074d2b5f3045da975ea0b92d8b
+	source = python-sentry-v1.0.3.tar.gz::https://github.com/dopsi/sentry/archive/v1.0.3.tar.gz
+	sha256sums = f00a417de962301d05235f3743275ec9306f3f53bdc2f0374b721669140828b0
 
 pkgname = python-sentry
 
