@@ -13,7 +13,7 @@ url="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"
 arch=('x86_64')
 license=('NASA' 'GPL')
 source=(http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/release/${pkgbase}-${pkgver}src_no_xspec_modeldata.tar.gz ${pkgbase}-${pkgver}_nolynx.patch)
-sha1sums=('3a315e28f55df904b66a268dfc51b8d5f2c2a0b3'
+sha1sums=('3c55645feae3ddffc86d6c1b3c1b989e8a7d5d1b'
 	'c1d4940d1aa599bf3b8b61b3471ebf057869b517')
 
 prepare() {
@@ -69,7 +69,7 @@ package_xspec(){
 
   _crntpkg='xspec'
   _pkgver=12.9.1
-  pkgdesc="An Xray spectral fitting software $_pkgver"
+  pkgdesc="An Xray spectral fitting software ${_pkgver}"
   depends=('heasoft-base')
 
   cd $srcdir/$pkgbase-${_mainver}/BUILD_DIR
