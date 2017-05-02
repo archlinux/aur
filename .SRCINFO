@@ -1,7 +1,7 @@
 pkgbase = qzdoom
 	pkgdesc = Advanced Doom source port with true color renderer
 	pkgver = 1.3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,7 @@ pkgbase = qzdoom
 	makedepends = fluidsynth
 	makedepends = git
 	makedepends = gtk3
-	makedepends = imagemagick
-	makedepends = llvm
 	makedepends = openal
-	makedepends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libjpeg
@@ -40,14 +37,14 @@ pkgbase = qzdoom
 	optdepends = heretic1-wad: Heretic shareware game data
 	optdepends = hexen1-wad: Hexen demo game data
 	optdepends = kdialog: crash dialog (KDE)
-	optdepends = openal: OpenAL sound backend
+	optdepends = openal: in-game sound
 	optdepends = strife0-wad: Strife shareware game data
 	optdepends = square1-wad: The Adventures of Square, Episode 1 game data
 	optdepends = timidity++: Timidity MIDI device
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
 	source = qzdoom::git://github.com/raa-eruanna/qzdoom.git#tag=q1.3.0.1
-	source = launcher.desktop
+	source = qzdoom.desktop
 	sha256sums = SKIP
 	sha256sums = 0b3bcbe2cdebda2fed887b796f4ff0fa51f3d544e80cab16b3b1cbd7813b7e04
 

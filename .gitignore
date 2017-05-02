@@ -1,9 +1,4 @@
-qzdoom
-
-/*.tar.gz
-/*.tar.bz2
-/*.tar.xz
-/*.zip
-/*.7z
+/qzdoom
 /pkg/
 /src/
+/*.pkg.tar.*
