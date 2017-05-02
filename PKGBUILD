@@ -127,14 +127,14 @@ options=(!strip !zipman)
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
 
-  # remove modules we do not support
+  # remove modules that we do not support
   rm -r {bsdexports,bsdfdisk,cpan,dfsadmin,format,grub,hpuxexports,inetd,ipfilter,ipfw,package-updates,rbac,sgiexports,smf,software,syslog-ng,zones}
 
-  # delete stuff that's not needed
+  # delete stuff that is not needed
   rm mount/freebsd-mounts* mount/netbsd-mounts* mount/openbsd-mounts* mount/macos-mounts*
   rm webmin-gentoo-init webmin-init webmin-daemon
 
-  # remove config files from other distros add only Arch linux
+  # remove config files for other distros, add only Arch linux
   find . ! -name 'config-generic-linux' ! -name 'config-\*-linux' ! -name 'config-lib.pl' -name 'config-*' -exec rm '{}' \+
   echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
 
@@ -143,16 +143,17 @@ prepare() {
 
   # copy Arch linux config files
   cp -rp "$srcdir"/webmin-config/* "$srcdir"/$pkgname-$pkgver/
+
+  # Fix setup.sh
+  sed -i -e 's:exit 13::g' "$srcdir"/$pkgname-$pkgver/setup.sh
 }
 
 package() {
-  # create dirs
-  mkdir -p "$pkgdir"/opt/webmin
-  mkdir -p "$pkgdir"/var/log/webmin
-  mkdir -p "$pkgdir"/etc/webmin
+  # create basic dirs
+  mkdir -p "$pkgdir"/{etc,opt,var/log}
 
-  # copy stuff to right dirs
-  cp -rp "$srcdir"/$pkgname-$pkgver/* "$pkgdir"/opt/webmin
+#  # copy stuff to right dirs
+#  cp -rp "$srcdir"/$pkgname-$pkgver/* "$pkgdir"/opt/webmin
 
   # define parameters for setup.sh
   config_dir="$pkgdir"/etc/webmin
@@ -171,11 +172,9 @@ package() {
   atbootyn=n
   tempdir="$pkgdir"/tmp
   pam=webmin
-  export config_dir var_dir perl autoos port tempdir login crypt ssl nochown autothird nouninstall nostart atbootyn pam
-
-  # Fix setup.sh
-  sed -i -e 's:read atbootyn::g' -e 's:exit 13::g' "$pkgdir"/opt/webmin/setup.sh
-  "$pkgdir"/opt/webmin/setup.sh
+  export config_dir var_dir perl autoos port login crypt ssl atboot nostart nochown autothird nouninstall atbootyn tempdir pam
+  cd "$srcdir"/$pkgname-$pkgver
+  "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
 
   # more logging and other config changes
   echo -e 'logfiles=1\nlogfullfiles=1\ngotoone=1\nnoremember=1' >> "$pkgdir"/etc/webmin/config
@@ -187,13 +186,9 @@ package() {
   # Use pam
   echo -e 'pam_only=1\npam_end=1\npam_conv=\nno_pam=0\nlogouttime=10' >> "$pkgdir"/etc/webmin/miniserv.conf
 
-  # install systemd files
+  # install sources
   install -D -m 644 $srcdir/webmin.service $pkgdir/usr/lib/systemd/system/webmin.service
-
-  # install pam stuff
   install -D -m 644 "$srcdir"/webmin.pam "$pkgdir"/etc/pam.d/webmin
-
-  # install license
   install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/webmin/LICENCE
 
   # delete temp dir
