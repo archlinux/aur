@@ -1,19 +1,19 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-sound
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
-pkgdesc='Sound indicator for Wingpanel'
+pkgdesc='Wingpanel Sound Indicator'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/wingpanel-indicator-sound'
+url='https://github.com/elementary/wingpanel-indicator-sound'
 license=('GPL3')
 groups=('pantheon')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee'
          'libnotify' 'libpulse'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('cmake' 'gobject-introspection' 'gtk2' 'vala' 'wingpanel')
-source=("https://launchpad.net/wingpanel-indicator-sound/loki/${pkgver}/+download/wingpanel-indicator-sound-${pkgver}.tar.xz")
-sha256sums=('064f1e831d6122144d7f1a66beb2f026cae6e4db531b0a5830ed545b553609f0')
+makedepends=('cmake' 'intltool' 'vala' 'wingpanel')
+source=("wingpanel-indicator-sound-${pkgver}.tar.gz::https://github.com/elementary/wingpanel-indicator-sound/archive/${pkgver}.tar.gz")
+sha256sums=('0419476e767c9e01fbc639f307b54ba443a4fe9d8e18bb980b9454dcc4458e93')
 
 prepare() {
   cd wingpanel-indicator-sound-${pkgver}
@@ -31,7 +31,7 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DGSETTINGS_COMPILE='FALSE'
+    -DGSETTINGS_COMPILE='OFF'
   make
 }
 
