@@ -1,8 +1,8 @@
 pkgbase = ccs-tools
 	pkgdesc = TOMOYO Linux 1.8.x userspace tools
 	pkgver = 1.8.5
-	pkgrel = 1
-	url = http://tomoyo.sourceforge.jp/
+	pkgrel = 2
+	url = http://akari.osdn.jp/
 	install = ccs-tools.install
 	arch = any
 	license = GPL
