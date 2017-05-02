@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna kyle[at]kylemanna[d0t]com
 
 pkgname=mynewt-newt
-pkgver=0.9.0
+pkgver=1.0.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 epoch=
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 makedepends=('go')
 source=("https://github.com/apache/incubator-mynewt-newt/archive/mynewt_${_pkgver}_tag.tar.gz")
-sha512sums=('b849032a982ad74e9e9c97101613c745a268571681c44ab0559d2f948da6cea78f89542bb41bf0a0be51d5b56d04e4617e399cf832c9c548e63aa1a18749356f')
+sha512sums=('e7ddb99440dae0c073ac8da4bccf356e7ef07af5b0e52eeee7aa12bb0ac17e284f3f5e094c36aaa62b36235132f7f70400742c20b07fbc64f59d210c4faf2e13')
 
 build() {
 	cd "${srcdir}/incubator-mynewt-newt-mynewt_${_pkgver}_tag"
