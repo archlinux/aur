@@ -1,15 +1,16 @@
 pkgbase = python-azure-cli-vm
 	pkgdesc = Microsoft Azure Command-Line Tools VM Command Module
-	pkgver = 2.0.1
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-azure
+	depends = python-azure-cli-command-modules-nspkg
 	depends = python-azure-cli-core
-	source = https://files.pythonhosted.org/packages/source/a/azure-cli-vm/azure-cli-vm-2.0.1.tar.gz
-	md5sums = fad9ff2f74466826cb40c1e50f0601f1
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-vm/azure-cli-vm-2.0.4.tar.gz
+	md5sums = 8ec6528f9466c18638b92f8ac9ed341b
 
 pkgname = python-azure-cli-vm
 
