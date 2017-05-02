@@ -143,19 +143,19 @@ prepare() {
     cp -rp "$srcdir"/webmin-config/* "$srcdir"/$pkgname-$pkgver/
     install -m 700 "$srcdir"/setup-{pre,post}.sh "$srcdir"/$pkgname-$pkgver/
 
-    # Fix setup.sh
+    # fix setup.sh
     sed -i -e 's:exit 13::g' "$srcdir"/$pkgname-$pkgver/setup.sh
 }
 
 package() {
-    # create basic dirs
+    # create basic directories
     mkdir -p "$pkgdir"/{etc,opt,var/log}
 
     export archpkgdir="$pkgdir"
     cd "$srcdir"/$pkgname-$pkgver
     "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
 
-    # Fixup the config files to use their real locations
+    # fix the config files to use their real locations
     find "$pkgdir"/etc/webmin -type f -exec sed -i "s:$pkgdir::g" {} \+
 
     # install sources
