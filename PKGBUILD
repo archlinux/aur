@@ -3,14 +3,13 @@ _author=typiconman
 _perlmod=Lingua-Cu
 pkgname=perl-lingua-cu
 pkgver=980ffb3
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl Module Lingua::Cu"
 arch=('any')
 url="https://github.com/$_author/Perl-$_perlmod"
 license=('GPL' 'PerlArtistic')
 makedepends=('git')
-depends=('perl' 'perl-tie-ixhash' 'perl-unicode-collate')
-optdepends=('perl-unicode-normalize')
+depends=('perl' 'perl-tie-ixhash')
 options=(!emptydirs)
 source=("git+$url.git#commit=$pkgver")
 md5sums=('SKIP')
