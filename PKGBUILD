@@ -1,6 +1,6 @@
 # Maintainer: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc=".NET development platform based on on Roslyn workspaces."
 arch=('x86_64')
@@ -21,5 +21,5 @@ package() {
 #license
 	  install -D -m644 $srcdir/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('cd1634097057a0c6d1051148006a1acc'
+md5sums=('10beeba3ae2f462570f8f1964d2cc8a8'
          '19a620e118d664537fb9dac578810f8d')
