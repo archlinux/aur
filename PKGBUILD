@@ -4,7 +4,7 @@ pkgbase=libhybris-ext-git
 pkgname=('libhybris-ext-git' 'libhybris-ext-libgl-git' 'libhybris-ext-wayland-egl-git')
 _pkgbase=libhybris
 pkgver=775.4cd30c8
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="https://github.com/mickybart/libhybris_ext"
 license=('Apache')
@@ -39,7 +39,7 @@ build() {
 
 package_libhybris-ext-git() {
   pkgdesc="hybris allows to use bionic-based HW adaptations in glibc systems (ext version)"
-  depends=('hybris-device')
+  depends=('hybris-android-headers')
   provides=('libhybris')
   conflicts=('libhybris')
 
