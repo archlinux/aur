@@ -1,7 +1,10 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
+
+# All my PKGBUILDs are managed at https://github.com/tmn505/AUR
+
 pkgname='minisatip-git'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)"
-pkgver=0.7.4_g3f62a80
+pkgver=0.7.4_gdf73793
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://minisatip.org"
@@ -9,11 +12,11 @@ license=('GPL2')
 provides=('minisatip')
 conflicts=('minisatip')
 makedepends=('git')
-depends=('libdvbcsa' 'linuxtv-dvb-apps' 'openssl')
+depends=('libdvbcsa' 'linuxtv-dvb-apps')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
-source=("git+https://github.com/catalinii/minisatip#branch=0.7"
+source=("git+https://github.com/catalinii/minisatip"
         'minisatip.service'
         'minisatip.sysuser'
         'minisatip.conf')
