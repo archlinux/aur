@@ -1,6 +1,6 @@
 pkgbase = prospector
 	pkgdesc = A roguelike in space.
-	pkgver = R197
+	pkgver = R201
 	pkgrel = 1
 	url = http://prospector.at/
 	arch = i686
@@ -14,11 +14,11 @@ pkgbase = prospector
 	depends = libogg
 	depends = libvorbis
 	depends = libtinfo
-	noextract = R197prospector_linux.zip
-	source = http://www.prospector.at/forum/dm_eds/files/linux/R197prospector_l.zip
+	noextract = download.php?id=86
+	source = http://www.prospector.at/forum/dm_eds/download.php?id=86
 	source = prospector.sh
-	md5sums = acfc8b25d2169e861377517848e28b8f
-	md5sums = c94de740aafaca4e77d06d91717fec06
+	sha256sums = c5450d647c30bd66ffcb9504ca92c19a73e01bbc207c55d1dbf2e086a945d821
+	sha256sums = fe98b315007af211d58df579b269b6b6b0ab3ae45bf302d7e522100a590220f1
 
 pkgname = prospector
 
