@@ -2,25 +2,29 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail>
 
 pkgname=cellprofiler-analyst-git
-pkgver=2.0.4.r464.g3a8646d
+pkgver=2.2.0.r0.gf45d68a
 pkgrel=1
 pkgdesc="Analysis software for cellular images"
 arch=('i686' 'x86_64')
 url="http://www.cellprofiler.org/"
 license=('GPLv2')
 depends=(
-    'wxpython2.8'
+    'wxpython'
+    'python2-pytz'
     'python2-numpy'
     'python2-scipy'
     'python2-matplotlib'
     'python2-imaging'
-    'python2-pytz'
+    # 'python2-mock'
+    'python2-scikit-learn'
+    'python2-pandas'
     'python2-verlib'
+    'python2-seaborn'
     'python2-javabridge'
     'python2-bioformats')
 optdepends=('cellprofiler: prepare data for CPA')
 provides=('cellprofiler-analyst')
-source=("$pkgname::git+https://github.com/CellProfiler/CellProfiler-Analyst#commit=3a8646d"
+source=("$pkgname::git+https://github.com/CellProfiler/CellProfiler-Analyst#tag=2.2.0"
         "cellprofiler-analyst.desktop")
 sha256sums=('SKIP'
             'SKIP')
@@ -38,21 +42,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  # force selection of wxpython2.8 (xargs helps handle spaces)
-  find . -name '*.py' -print0 | xargs -0 sed -i -e "s/^\(.*\)import wx$/\1import wxversion\n\1wxversion.select(\"2.8\")\n\1import wx/g"
-
-  # python2 setup.py build  # Unusable build system (only for Mac now)
-  python2 -m compileall cpa
+    cd "$srcdir/$pkgname"
+    # python2 setup.py build  # Unusable build system (only for Mac now)
+    python2 -m compileall cpa
 }
 
-# check() {
-#   cd "$srcdir/CellProfiler-Analyst"
-#   python2 setup.py test  # Only for Mac now
-# }
-
 package() {
-  # python2 setup.py install --root="$pkgdir"/ --optimize=1  # Only for Mac now
+  # python2 setup.py install --root="$pkgdir" --optimize=1  # Unusable build system (only for Mac now)
   pydir=`python2 -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"`
   mkdir -p "$pkgdir/$pydir"
 
