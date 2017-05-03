@@ -14,7 +14,7 @@ depends=(
   'python-click' 
   'python-libtmux>=0.7.1' 
   'python-kaptan' 
-  'python-colorama==0.3.9'
+  'python-colorama=0.3.9'
 )
 options=(!emptydirs)
 source=("https://github.com/tony/tmuxp/archive/${gitpkgver}.tar.gz")
