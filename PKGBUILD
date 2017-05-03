@@ -1,16 +1,12 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=rf24-network
-pkgver='1.0.7.r1.g53e1a44'
-pkgver() {
-  cd RF24Network
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+pkgver='1.0.8'
 pkgrel=1
 pkgdesc='Networking with RF24 radio modules'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://tmrh20.github.io/RF24Network/'
-license=('MIT')
+license=('GPL2')
 depends=('rf24')
 source=('git://github.com/TMRh20/RF24Network')
 md5sums=('SKIP')
