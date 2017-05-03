@@ -18,6 +18,7 @@ depends=(
     'qt5-websockets'
     'qt5-x11extras'
     'mlt-git'
+    'movit'
     'ffmpeg'
     'libx264'
     'libvpx'
