@@ -1,0 +1,37 @@
+pkgbase = bitcoin-infinity
+	pkgdesc = A patch with the minimal changes necessary to make Bitcoin Core accept blocks of any size
+	pkgver = v0.14.0.0.g7b3d9c92
+	pkgrel = 1
+	epoch = 1493790571
+	url = https://github.com/whitslack/bitcoin-infinity
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = desktop-file-utils
+	depends = openssl
+	depends = db4.8
+	depends = boost
+	depends = boost-libs
+	depends = libevent
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qrencode
+	depends = miniupnpc
+	depends = protobuf
+	depends = zeromq
+	provides = bitcoin-infinity
+	provides = bitcoin-daemon
+	provides = bitcoin-cli
+	provides = bitcoin-qt
+	provides = bitcoin-tx
+	conflicts = bitcoin-infinity
+	conflicts = bitcoin
+	conflicts = bitcoin-daemon
+	conflicts = bitcoin-cli
+	conflicts = bitcoin-qt
+	conflicts = bitcoin-tx
+	source = https://github.com/whitslack/bitcoin-infinity/archive/7b3d9c9290abbcc2dfaefeb4760ef7b4e9eff490.zip
+	sha256sums = b9c4c147ad6967181d66acfb3d90f072e96f5d8792fe824ca5436a91fded4036
+
+pkgname = bitcoin-infinity
+
