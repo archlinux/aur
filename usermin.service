@@ -1,0 +1,11 @@
+[Unit]
+Description=Usermin
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/etc/usermin/start
+ExecStop=/etc/usermin/stop
+
+[Install]
+WantedBy=multi-user.target
