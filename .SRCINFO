@@ -16,6 +16,7 @@ pkgbase = consolekit
 	depends = zlib
 	optdepends = consolekit-openrc: consolekit openrc initscript
 	optdepends = pm-utils: suspend/hibernate support
+	provides = consolekit2
 	options = libtool
 	source = https://github.com/ConsoleKit2/ConsoleKit2/releases/download/1.0.2/ConsoleKit2-1.0.2.tar.bz2
 	source = consolekit.tmpfiles.conf
