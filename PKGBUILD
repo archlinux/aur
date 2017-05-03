@@ -2,12 +2,12 @@
 
 pkgname=emacs-all-the-icons
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility package to collect various Icon Fonts and propertize them within Emacs."
 url="https://github.com/domtronn/all-the-icons.el"
 arch=('any')
 license=('MIT')
-depends=('emacs' 'emacs-font-lock-plus')
+depends=('emacs' 'emacs-font-lock-plus' 'ttf-font-awesome' 'ttf-material-design-icons' 'ttf-weather-icons' 'ttf-octicons' 'ttf-atom-file-icons' 'ttf-all-the-icons')
 makedepends=('git')
 provides=('emacs-all-the-icons')
 source=("https://github.com/domtronn/all-the-icons.el/archive/${pkgver}.tar.gz")
@@ -25,10 +25,8 @@ package() {
   install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/all-the-icons/"
 
   mkdir ${pkgdir}/usr/share/emacs/site-lisp/all-the-icons/data/
-  mkdir ${pkgdir}/usr/share/emacs/site-lisp/all-the-icons/fonts/
 
   install -D -m644 data/* "${pkgdir}/usr/share/emacs/site-lisp/all-the-icons/data/"
-  install -D -m644 fonts/* "${pkgdir}/usr/share/emacs/site-lisp/all-the-icons/fonts/"
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
