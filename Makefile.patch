@@ -1,0 +1,22 @@
+--- Makefile.orig	2017-05-03 13:39:02.814350690 +1100
++++ Makefile	2017-05-03 14:22:10.844650739 +1100
+@@ -1,11 +1,13 @@
+-INSTALL = /usr/bin/install -m 644
+-DEST = /usr/share/m17n
+-ICONDEST = /usr/share/m17n/icons
++INSTALL = /usr/bin/install
++DEST = $(DESTDIR)/usr/share/m17n
++ICONDEST = $(DESTDIR)/usr/share/m17n/icons
+ 
+ install:
+-	$(INSTALL) *.mim $(DEST)
+-	$(INSTALL) *.lnm $(DEST)
+-	$(INSTALL) icons/*.png $(ICONDEST)
++	$(INSTALL) -dm755 $(DEST)
++	$(INSTALL) -dm755 $(ICONDEST)
++	$(INSTALL) -Dm644 *.mim $(DEST)
++	$(INSTALL) -Dm644 *.lnm $(DEST)
++	$(INSTALL) -Dm644 icons/*.png $(ICONDEST)
+ 
+ uninstall:
+ 	rm -f $(ICONDEST)/cu-kbd.png
