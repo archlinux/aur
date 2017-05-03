@@ -2,8 +2,8 @@
 # Original script by: M0Rf30
 
 pkgname='virtualbox-bin-5.0'
-pkgver=5.0.34
-_build=113845
+pkgver=5.0.40
+_build=115130
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ source=(
 )
 
 
-md5sums=('4988ae94c2a61dfc2eb8318911ecf8d0'
+md5sums=('49d32326e9d1b04e14580c02d8463fcd'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
