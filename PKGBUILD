@@ -2,7 +2,7 @@
 # Contributor: dumblob <dumblob@gmail.com>
 
 pkgname=packer-git
-pkgver=302.e8ebd42
+pkgver=322.5348c19
 pkgrel=1
 pkgdesc='Bash wrapper for pacman and aur'
 url="https://github.com/gavinhungry/packer"
