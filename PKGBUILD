@@ -2,14 +2,14 @@
 
 pkgbase=cheroot
 pkgname=(python-${pkgbase} python2-${pkgbase})
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Highly-optimized, pure-python HTTP server"
 arch=('any')
 url="https://github.com/cherrypy/cheroot"
 license=('BSD')
-source=(https://pypi.python.org/packages/57/6e/f2dd0b84e7430381316ee7f513a289a870a6a6a70d0dbf80f50f6b4ffcd8/cheroot-5.4.0.tar.gz)
-md5sums=('2cb426173029c2704477a7bee451dc61')
+source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
+md5sums=('e5503b0e67bdba29c6585965e7f42099')
 
 prepare() {
   cp -a "$srcdir/$pkgbase-$pkgver"{,-py2}
