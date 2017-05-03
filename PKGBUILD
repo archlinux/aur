@@ -15,14 +15,15 @@ build() {
   cd "$srcdir/RF24Network"
   sed 's/@ldconfig//' Makefile > Makefile.copy
   mv Makefile.copy Makefile
-  make
+  make -j1
 }
 
 package() {
   cd "$srcdir/RF24Network"
-  make PREFIX="$pkgdir/usr" install 
+  make -j1 PREFIX="$pkgdir/usr" install
   cd "$pkgdir/usr/lib"
-  rm librf24network.so
+  rm librf24network.so librf24network.so.1
   ln -s librf24network.so.1.0 librf24network.so
+  ln -s librf24network.so.1.0 librf24network.so.1
 }
 
