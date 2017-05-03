@@ -1,7 +1,7 @@
 # Maintainer: Chris Oelmueller <chris.oelmueller@gmail.com>
 
 pkgname=python-typed-ast
-pkgver=1.0.0
+pkgver=1.0.3
 _pythonname="typed-ast"
 _foldername="${_pythonname}-${pkgver}"
 pkgrel=1
@@ -18,5 +18,5 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('c0bd77e8ad703973f553c5330abdceca')
-sha256sums=('2a5b738efcfbd0da5bd87ce998a31810c58a66a933f554c074fa96ec5f10a1cc')
+md5sums=('fd8e49d798dab5de30b03fcf4a97c30d')
+sha256sums=('67184179697ea9128fa8fec1d3b4e26b41d6a2eceab4674c6e3da4b024309862')
