@@ -1,6 +1,6 @@
 pkgname=vgmstream-kode54-git
 pkgver=r1020.r557.gd2fac79
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for playback of various streamed audio formats used in video games (kode54's fork)"
 arch=(i686 x86_64)
 url='https://gitlab.kode54.net/kode54/vgmstream'
@@ -39,7 +39,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -D -m644 -t "$pkgdir/usr/include/vgmstream" src/{vgmstream,stream{file,types},util}.h
+  install -D -m644 -t "$pkgdir/usr/include/vgmstream" src/{vgmstream,stream{file,types},util}.h ext_includes/clHCA.h
   install -D -m644 -t "$pkgdir/usr/include/vgmstream/coding" src/coding/{{acm,nwa}_decoder,g72x_state}.h
   install -D -m644 -t "$pkgdir/usr/lib" src/.libs/libvgmstream.{a,so}
   install -D -m644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
