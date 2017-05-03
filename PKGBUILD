@@ -1,23 +1,23 @@
 # Maintainer: doragasu <doragasu (yawn) hotmail (roll) com>
+# Contributor: David Manouchehri
 
-pkgname=lattice-diamond
-pkgver=3.7
-pkgrel=1
+pkgname="lattice-diamond"
 pkgdesc="Lattice Diamond design software"
-arch=('x86_64')
-url="http://www.latticesemi.com/latticediamond"
+url="http://www.latticesemi.com/"
 license=('custom')
-options=('!strip')
-provides=('lattice-diamond')
-conflicts=('lattice-diamond')
-source=(http://files.latticesemi.com/Diamond/3.7/diamond_3_7-base_x64-96-1-x86_64-linux.rpm
-		synp-plat-check.patch
-		lattice-diamond.png
-		lattice-diamond.desktop)
-md5sums=('162ab905a552a72763aa62dc3efe0ef7'
-		 'b03c61ceb13d196d651a6ed26f61c796'
-		 'd04fb58bdb5f67e44b5058e14f3aacf9'
-		 'fbba8b33146178b861871aabdc779fbd')
+pkgver=3.9
+_revision="99-2"
+pkgrel=1
+arch=('x86_64')
+source=("http://files.latticesemi.com/Diamond/${pkgver}/diamond_${pkgver/"."/"_"}-base_x64-${_revision}-${arch}-linux.rpm"
+		"lattice-diamond.png"
+		"lattice-diamond.desktop")
+makedepends=('rpmextract')
+sha512sums=('ee4ef401f7e6db6b54061e612224666ee0f3218499653f82b66a2865a0fdf3e6c8986c7a70d6c92da7d1276b6e21081866603d544d6fdc0c60fcccbcfa7b683a'
+			'772fa260bb1a4ed7c4e328a99b3cd16b625e8880d7731abbe0cd59dbe4d743265e169a26ceba7b619a87c1cb9638a268a5501d3358863171ee808e59b2d3b0ac'
+			'376ff8219222f4cecec686356ccbbd19ee5e721ab991d4ec335a32248431e4a26433d29476cd900fb3dee7e441a875eaacbf2b197273482d7b39bff76c8db70c')
+options=('!strip' '!upx')
+#PKGEXT=".pkg.tar" # The package is over 3 GB, uncomment this line if you prefer not compressing it
 
 prepare() {
 	# Extract all the packages
@@ -45,12 +45,6 @@ prepare() {
 	cd ${srcdir}/usr/local/diamond/${pkgver}_x64/tcltk
 	tar -xzf tcltk.tar.gz
 	rm tcltk.tar.gz
-}
-
-build() {
-	# Patch to skip platform check, allowing Synplify Pro to run on non
-	# officially supported platforms
-	patch -p1 < synp-plat-check.patch
 }
 
 package() {
