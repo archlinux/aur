@@ -1,25 +1,21 @@
 pkgbase = python-aspy-yaml
 	pkgdesc = A few extensions to pyyaml
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = http://pre-commit.com/
+	url = https://github.com/asottile/aspy.yaml
 	arch = any
 	license = MIT
 	depends = python
-	source = https://pypi.io/packages/source/a/aspy.yaml/aspy.yaml-0.2.1.tar.gz
+	source = https://pypi.io/packages/source/a/aspy.yaml/aspy.yaml-0.3.0.tar.gz
 	md5sums = ac9b562a77492ac6eaf196f305c3a17d
 
 pkgname = python-aspy-yaml
 	pkgdesc = Python 3 extensions to pyyaml
 	depends = python
 	depends = python-yaml
-	depends = python-nodenev
-	depends = python-aspy-yaml
 
 pkgname = python2-aspy-yaml
 	pkgdesc = Python 2 extensions to pyyaml
 	depends = python2
 	depends = python-yaml
-	depends = python2-nodenev
-	depends = python2-aspy-yaml
 
