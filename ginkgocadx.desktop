@@ -3,7 +3,7 @@ Encoding=UTF-8
 Name=Ginkgo CADx
 GenericName=DICOM viewer
 Comment=Complete DICOM viewer solution
-Exec=LD_PRELOAD=libcurl-openssl-1.0.so:/usr/lib/openssl-1.0-compat/libssl.so:/usr/lib/openssl-1.0-compat/libcrypto.so /opt/ginkgocadx-bin/ginkgocadx
+Exec=env LD_PRELOAD="libcurl-openssl-1.0.so:/usr/lib/openssl-1.0-compat/libssl.so:/usr/lib/openssl-1.0-compat/libcrypto.so" /opt/ginkgocadx-bin/ginkgocadx
 Icon=ginkgocadx
 Terminal=false
 Type=Application
