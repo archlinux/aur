@@ -15,6 +15,7 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('woff2-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
 sha256sums=('SKIP')
+install=$pkgname.install
 
 build() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}/fonts/"
