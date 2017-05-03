@@ -3,7 +3,7 @@
 # Contributor: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 # Contributor: Kristof Marussy <kris7topher@gmail.com>
 pkgname=liblinear-multicore
-pkgver=2.11_1
+pkgver=2.11_2
 pkgrel=1
 pkgdesc="A Library for Large Linear Classification (multi-core)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ options=()
 install=
 source=("https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/$pkgname-${pkgver//_/-}.zip")
 noextract=()
-md5sums=('76def2413f05ef2de6e041b097ee2976')
+md5sums=('c7e1ece451ba098afb8e8eba3a116f6e')
 
 build() {
     cd "$srcdir/$pkgname-${pkgver//_/-}"

@@ -1,6 +1,6 @@
 pkgbase = liblinear-multicore
 	pkgdesc = A Library for Large Linear Classification (multi-core)
-	pkgver = 2.11_1
+	pkgver = 2.11_2
 	pkgrel = 1
 	url = http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = liblinear-multicore
 	optdepends = gcc-libs
 	provides = liblinear
 	conflicts = liblinear
-	source = https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/liblinear-multicore-2.11-1.zip
-	md5sums = 76def2413f05ef2de6e041b097ee2976
+	source = https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/liblinear-multicore-2.11-2.zip
+	md5sums = c7e1ece451ba098afb8e8eba3a116f6e
 
 pkgname = liblinear-multicore
 
