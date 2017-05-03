@@ -7,7 +7,7 @@
 
 pkgname=lib32-qt4
 pkgver=4.8.7
-pkgrel=11
+pkgrel=12
 pkgdesc='A cross-platform application and UI framework (32-bit)'
 arch=('x86_64')
 url='http://www.qt.io'
@@ -34,7 +34,8 @@ source=("http://download.qt.io/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar
         'l-qclipboard_fix_recursive.patch'
         'l-qclipboard_delay.patch'
         'qt4-gcc6.patch'
-        'qt4-glibc-2.25.patch')
+        'qt4-glibc-2.25.patch'
+        'qt4-icu59.patch')
 sha512sums=('f9f81a2e7205e1fd05c8d923dc73244f29aa33f951fa6b7c5c8193449328b37084796b9b71ad0c317e4e6fd00017c10ea5d67b1b2032551cde00548522218125'
             '4a8f828c79bde81ab1e39c9eaba4ef553582d85b62d6d182dda02820c4c8e046de6a25cc77d228955ed37fbc5b55f697a0a464af0bb3e171849851639e9ef4ee'
             'b4eced1fe34f09baa987be59fd21a02f4209551f491ae113c9d1cc3c44b00494a909808e22db306bcae0ee4c4f996097ce2c23994b2ac067cf9f599da5a5fc71'
@@ -45,7 +46,8 @@ sha512sums=('f9f81a2e7205e1fd05c8d923dc73244f29aa33f951fa6b7c5c8193449328b370847
             'bd63961bcb695beebe8686142b84bff7702db4d85d737f5c2da927252b931700d03602f80048223cbbb05d85a5ddb9cb818321d756577f84843690b318f0c413'
             '0215f81fd0ed3483d1f79f46a53d9378f7462901410f4bc3f235325974c155454b0e75cba5222180e5ca62099cba7b80419b5fab86380ac6d951b9ae12714444'
             'efe8e1842882b784a14ba137bc6a8a579d5133e579f98c61674f5d3d9b79ff8e895775a79fcf757f7726377cd221396a678d181fa069416b0760a5241d39845a'
-            'a19e76d64bbbf148b088e3531135dc3ababd63ea8e71147dcf7d2966802abb2d83b839766882040e5c9efdea2e364d48bc38aa712dd35b850383c7747ffa9745')
+            'a19e76d64bbbf148b088e3531135dc3ababd63ea8e71147dcf7d2966802abb2d83b839766882040e5c9efdea2e364d48bc38aa712dd35b850383c7747ffa9745'
+            '483b382da8ad57f9792df1ad0c85948992d8293819c2774a381544235d9b6a7498b12beb3f9d7d06c4a814f8ded514973453314d71381368148d2fcbbf854e65')
 
 prepare() {
   cd ${_pkgfqn}
@@ -94,6 +96,9 @@ prepare() {
 
   # Fix build of Qt4 applications with glibc 2.25 (Fedora)
   patch -p1 -i "$srcdir"/qt4-glibc-2.25.patch
+
+  # Fix build with ICU 59 (pld-linux)
+  patch -p1 -i "$srcdir"/qt4-icu59.patch
 }
 
 build() {
