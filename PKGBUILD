@@ -2,14 +2,14 @@
 
 pkgname=fastrpc-git
 _gitname=fastrpc
-pkgver=v8.0.5.r13.g1036b89
+pkgver=v8.0.5.r16.gd685a12
 pkgrel=1
 pkgdesc="FastRPC library"
 url="https://github.com/seznam/fastrpc"
 arch=('any')
 license=('GPL')
 provides=('fastrpc')
-depends=('python')
+depends=('python' 'libxml2')
 makedepends=('python-setuptools' 'python-debian')
 source=("git://github.com/seznam/$_gitname.git")
 sha256sums=('SKIP')
