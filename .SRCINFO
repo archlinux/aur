@@ -12,12 +12,12 @@ pkgbase = python-pre-commit
 pkgname = python-pre-commit
 	pkgdesc = Python 3 client for pre-commit
 	depends = python
-	depends = python-nodenenv
+	depends = python-nodeenv
 	depends = python-aspy-yaml
 
 pkgname = python2-pre-commit
 	pkgdesc = Python 2 client for pre-commit
 	depends = python2
-	depends = python2-nodenenv
+	depends = python2-nodeenv
 	depends = python2-aspy-yaml
 

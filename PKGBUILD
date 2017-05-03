@@ -27,7 +27,7 @@ build() {
 
 package_python-pre-commit() {
   pkgdesc='Python 3 client for pre-commit'
-  depends=('python' 'python-nodenenv' 'python-aspy-yaml')
+  depends=('python' 'python-nodeenv' 'python-aspy-yaml')
 
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
@@ -35,7 +35,7 @@ package_python-pre-commit() {
 
 package_python2-pre-commit() {
   pkgdesc='Python 2 client for pre-commit'
-  depends=('python2' 'python2-nodenenv' 'python2-aspy-yaml')
+  depends=('python2' 'python2-nodeenv' 'python2-aspy-yaml')
 
   cd "${srcdir}/${pypi_name}-${pkgver}-python2"
   python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
