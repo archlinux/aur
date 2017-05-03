@@ -1,7 +1,7 @@
 pkgname=pacutils-git
 pkgdesc='alpm front-end tools'
 url='https://github.com/andrewgregory/pacutils'
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 arch=('i686' 'x86_64')
 depends=('pacman>=5.0')
@@ -11,8 +11,9 @@ provides=("pacutils=$pkgver")
 license=('MIT')
 source=("$pkgname::git://github.com/andrewgregory/pacutils.git"
         "mini.c::git://github.com/andrewgregory/mINI.c.git"
+        "globdir.c::git://github.com/andrewgregory/globdir.c.git"
         "tap.c::git://github.com/andrewgregory/tap.c.git")
-sha1sums=('SKIP' 'SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -23,6 +24,7 @@ prepare() {
     cd "$srcdir/$pkgname"
     git submodule init
     git config submodule.ext/mini.c.url "$srcdir/mini.c"
+    git config submodule.ext/globdir.c.url "$srcdir/globdir.c"
     git config submodule.t/tap.c.url "$srcdir/tap.c"
     git submodule update
 }
