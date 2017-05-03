@@ -3,7 +3,7 @@
 
 pkgname=orfeo-toolbox
 pkgver=5.10.1
-_pkgver=5.10.1
+_pkgver=5.10
 minorver=1
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
@@ -44,10 +44,10 @@ build() {
   msg "Extracting archive..." 
   msg "starting make..."
   
-  if  [ -d "$srcdir/build/" ]; then
-    rm -rf $srcdir/build/
-  fi
-  mkdir $srcdir/build/
+ # if  [ -d "$srcdir/build/" ]; then
+ #   rm -rf $srcdir/build/
+ # fi
+ # mkdir $srcdir/build/
 
 cd $srcdir/build
 
@@ -90,7 +90,10 @@ package() {
   # Install an ldconfig conf for Orfeo libs to be visible on the
   # system. Arch runs `ldconfig' after install automatically:
   echo "/usr/lib/otb  /usr/lib/otb/applications" > "${srcdir}/${pkgname}.conf"
+  echo "export OTB_APPLICATION_PATH=/usr/lib/otb/applications/" > "${srcdir}/${pkgname}.sh"
+  
   install -D -m644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
+  install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
   
   cd "$srcdir/"build
   make DESTDIR="$pkgdir" install
