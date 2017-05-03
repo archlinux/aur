@@ -4,13 +4,14 @@
 
 pkgname=webmin
 pkgver=1.831
-pkgrel=6
-pkgdesc="a web-based interface for system administration"
+pkgrel=7
+pkgdesc="A web-based interface for system administration"
 arch=(i686 x86_64)
 license=('custom:webmin')
 url="http://www.webmin.com/"
 depends=('perl' 'perl-net-ssleay' 'perl-authen-pam')
-backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/config' \
+backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
+'etc/webmin/config' 'etc/webmin/webmin.acl' \
 'etc/webmin/acl/config' \
 'etc/webmin/adsl-client/config' \
 'etc/webmin/ajaxterm/config' \
@@ -156,10 +157,10 @@ package() {
     "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
 
     # fix the config files to use their real locations
-    find "$pkgdir"/etc/webmin -type f -exec sed -i "s:$pkgdir::g" {} \+
+    find "$pkgdir"/etc/webmin -type f -exec sed -i -e "s:$pkgdir::g" {} \+
 
     # install sources
-    install -D -m 644 $srcdir/webmin.service $pkgdir/usr/lib/systemd/system/webmin.service
+    install -D -m 644 "$srcdir"/webmin.service "$pkgdir"/usr/lib/systemd/system/webmin.service
     install -D -m 644 "$srcdir"/webmin.pam "$pkgdir"/etc/pam.d/webmin
     install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/webmin/LICENCE
 
@@ -170,7 +171,7 @@ package() {
 
 sha256sums=('b4cc63a369026e4e6d8f5af7501fe101dc122d9edbdd6bb20058f8f511694ce3'
             '2978aef42ca2dc6147c44328e25e7f8dc8174ef80afb5e9f23e06401f8cdbf73'
-            'eff8a55e1abd28afd6d29bf281f18ac781820207fe9048ebecf90be0d4bfff79'
+            '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             'a1bdc68e3b0970a5c8e5063bd882b0469664ca782b34faecee22af5c6c30dd11')
