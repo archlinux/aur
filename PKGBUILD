@@ -1,6 +1,8 @@
+# Maintainer: Michael Hansen <zrax0111 gmail com>
+
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-09-11-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2017-04-24-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -8,9 +10,11 @@ arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
-         'sqlite' 'ncurses' 'libkqueue')
+         'sqlite' 'ncurses' 'libkqueue' 'libblocksruntime')
 makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
-             'python2-sphinx')
+             'python2-sphinx' 'python2-requests' 'rsync')
+
+_libpwq_ref=18437d2be372f4422b207ec6442c8caf7974025d
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
@@ -23,20 +27,24 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch"
+    "libpwq-${_libpwq_ref}.tar.gz::https://github.com/mheily/libpwq/archive/${_libpwq_ref}.tar.gz"
+    "sourcekit_link_order.patch"
+    "icu59.patch"
 )
-sha256sums=('58199b8609ccacef040ff7e59d35c7a0b8654a645f174af7e2c0d261cadcd5e7'
-            '12cbf808dc2dd5e9a6e2e7d240fd5801ca8cfe34e29ca45bae7580f09151aee2'
-            'ad7049aa2605a89979bd8b2b8d6351ed4404ed333321afc57e48809e65cb8d82'
-            '9bf136b61a96da54ae17711e8f795114db5366167f31f4f351db29c19303c957'
-            'ff563d8a7b9dc637c0d2112f3d15880a3d9e1773bf0636a0ac2ea15938246d32'
-            '8db094fb8d2060e18691ceac256810f7d25ad466db74022523532769716dcf0a'
-            '02809c30b4ff55b349e52b6c4371a28fdb9732a9e6151480b3fb091de0148a15'
-            '0af3adcd3a503aefb6f94d75ca5d77bc8bfa5a9f25575c4546b4cbff5b5f8c85'
-            '91126e3bdf3fc9650b874af99ad7e89a8b6fda1f3185201d51feeff35393ee8e'
-            'fa0820028b5eb4376b6555d0ab6b7fce29fc32509a7a501b81d9f4e7459f8295'
-            'c63e5493b70e494c9998f7c657b6ba7314f583134c420f35d019b9d5e5ebdf0a'
-            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
+sha256sums=('494d69f05d711e8df08cc7a7183e3f9735e091bc12bda7000ba5d6108c1c3275'
+            '30dd5dbe9fa2247bc02a2150fdd4bc874d98f5cf15f179a7134bff664cc05667'
+            '2e4379158a6170c8602aab69efe21553a6847cb06747dc20ebea8028d9512ace'
+            'e488bf6a9fe4d2b5813ca9263134a198341aa50c5f92be1117d96bd4421aedc2'
+            'eb1cdc5d8b6192cc3b77356c30c203c6f7d60202e91af3920fa4c087f5ba38d4'
+            '6909e33f2de65967b8b378d49c85169338db0b360c954ed490ea167920c3d8f7'
+            'fc815e12e435eba96dab858596403bc1d0e5a069471da4a8dfc1a99de374785f'
+            '812be01ed103624a49a9cc722b77ecd0c237b61412604de881dabe47abbe984a'
+            '4cffca269ab81ce725143c1c630de1b4ab385b79f49dd8c1c9bf41cd31f7bb6b'
+            '38fe4ec76f99477f4ed3e1a769e3d5fd9671b3daa9f5a4005d6252845b8a5b5f'
+            '392055443e04515a5c94a1ab736d6959ce2354ac2ee8418c8bf3dc2124240969'
+            'd6290d649d25230813cd27dbad49ea0b68bb9302df76c3fdd0f24ebc8b1b5b00'
+            'c9aa6e167a57ed31002471204d39bf24bb4ebecc38322571515ac73f02b237b6'
+            '3fedb626b375f6ad8b4601abd336f4560718a9c9134716f0c3a4e823b8c12857')
 
 prepare() {
     # Use python2 where appropriate
@@ -49,7 +57,8 @@ prepare() {
     sed -i '/^cmake_minimum_required/a set(Python_ADDITIONAL_VERSIONS 2.7)' \
          "$srcdir/swift-lldb-swift-${_swiftver}/CMakeLists.txt"
     sed -i 's/\<python\>/&2/' \
-         "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl"
+         "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl" \
+         "$srcdir/swift-swift-${_swiftver}/test/sil-passpipeline-dump/basic.test-sh"
 
     # Use directory names which build-script expects
     for sdir in llvm clang lldb cmark llbuild; do
@@ -63,20 +72,46 @@ prepare() {
     ln -sf swift-swift-${_swiftver} swift
     ln -sf swift-package-manager-swift-${_swiftver} swiftpm
 
-    # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
-    # syntax highlighting language (like "swift").
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-sphinx2.patch" )
+    # Put libpwq in the right submodule location
+    rmdir swift-corelibs-libdispatch/libpwq
+    mv libpwq-${_libpwq_ref} swift-corelibs-libdispatch/libpwq
+
+    # Fix library link order for sourcekitd-test
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/sourcekit_link_order.patch" )
+
+    # ICU 59 changed the type of UChar to char16_t
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/icu59.patch" )
 }
+
+_common_build_params=(
+    --install-prefix=/usr
+    --lldb
+    --llbuild
+    --swiftpm
+    --xctest
+    --foundation
+    --libdispatch
+)
 
 build() {
     cd "$srcdir/swift"
 
     export SWIFT_SOURCE_ROOT="$srcdir"
-    export LDFLAGS='-ldl -lpthread'
     export PATH="$PATH:/usr/bin/core_perl"
-    utils/build-script -R \
-        --lldb --llbuild --swiftpm --xctest --foundation --libdispatch \
-        -j "$(lscpu --parse=CPU | grep -v '^#' | wc -l)"
+    utils/build-script -R "${_common_build_params[@]}"
+
+    # Run the build a second time, this time with SourceKit enabled
+    # This is required because SourceKit depends on libdispatch, which
+    # in turn depends on swift, where SourceKit is located
+    utils/build-script -R "${_common_build_params[@]}" \
+        --extra-cmake-options="-DSWIFT_BUILD_SOURCEKIT=TRUE" \
+        --reconfigure
+
+    # Fix the lldb swig binding's import path (matches Arch LLDB package)
+    # Need to do this before check(), since the test suite uses the lldb
+    # python bindings directly from the build dir
+    sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
+        "${srcdir}/build/Ninja-ReleaseAssert/lldb-linux-${CARCH}/lib/python2.7/site-packages/lldb/__init__.py"
 }
 
 check() {
@@ -92,18 +127,24 @@ package_swift-development() {
     conflicts=('swift-language-git' 'swift-git' 'swift-bin' 'swift')
     optdepends=('swift-lldb: Swift REPL and debugger')
 
+    cd "$srcdir/swift"
+
+    export SWIFT_SOURCE_ROOT="$srcdir"
+    utils/build-script -R "${_common_build_params[@]}" \
+        --install-destdir="$pkgdir" \
+        --install-llbuild --install-swiftpm --install-xctest \
+        --install-foundation
+
     cd "$srcdir/build/Ninja-ReleaseAssert"
 
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/lib/swift"
-
-    # Swift's components don't provide an install target :(
-    # These are based roughly on what's included in the binary release packages
+    # Some projects' install targets don't work correctly :(
     (
         cd swift-linux-$CARCH
         install -m755 bin/swift bin/swift-{demangle,ide-test} "$pkgdir/usr/bin"
         ln -s swift "$pkgdir/usr/bin/swiftc"
         ln -s swift "$pkgdir/usr/bin/swift-autolink-extract"
+
+        install -m644 lib/libsourcekitdInProc.so "$pkgdir/usr/lib"
 
         install -dm755 "$pkgdir/usr/share/man/man1"
         install -m644 docs/tools/swift.1 "$pkgdir/usr/share/man/man1"
@@ -112,36 +153,13 @@ package_swift-development() {
         cp -rL lib/swift/{clang,linux,shims} "$pkgdir/usr/lib/swift/"
     )
     (
-        cd llbuild-linux-$CARCH
-        install -m755 bin/swift-build-tool "$pkgdir/usr/bin"
-    )
-    (
-        cd swiftpm-linux-$CARCH
-        install -m755 debug/swift-{build,test,package} "$pkgdir/usr/bin"
-
-        install -dm755 "$pkgdir/usr/lib/swift/pm"
-        install -m755 lib/swift/pm/libPackageDescription.so "$pkgdir/usr/lib/swift/pm"
-        install -m644 lib/swift/pm/PackageDescription.swiftmodule "$pkgdir/usr/lib/swift/pm"
-    )
-    (
-        cd xctest-linux-$CARCH
-        install -m755 libXCTest.so "$pkgdir/usr/lib/swift/linux/"
-        install -m644 XCTest.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
-        install -m644 XCTest.swiftmodule "$pkgdir/usr/lib/swift/linux/$CARCH"
-    )
-    (
-        cd foundation-linux-$CARCH
-        install -m755 Foundation/libFoundation.so "$pkgdir/usr/lib/swift/linux/"
-        install -m644 Foundation/Foundation.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
-        install -m644 Foundation/Foundation.swiftmodule "$pkgdir/usr/lib/swift/linux/$CARCH"
-
-        umask 0022
-        cp -r Foundation/usr/lib/swift/CoreFoundation "$pkgdir/usr/lib/swift/"
-    )
-    (
         cd libdispatch-linux-$CARCH
         make install DESTDIR="$pkgdir"
     )
+
+    # Some install targets provide an empty /usr/local/include
+    rmdir "$pkgdir/usr/local/include"
+    rmdir "$pkgdir/usr/local"
 
     # License file
     install -dm755 "$pkgdir/usr/share/licenses/swift"
@@ -150,19 +168,19 @@ package_swift-development() {
 
 package_swift-lldb-development() {
     pkgdesc='The Swift programming language debugger (LLDB) and REPL - development snapshot'
-    depends=('swift-language' 'python2-six')
+    depends=('swift-development' 'python2-six')
     provides=('lldb' 'swift-lldb')
     conflicts=('lldb' 'swift-lldb')
     options=('!strip')  # Don't strip repl_swift -- we need its symbols
 
-    cd "$srcdir/build/Ninja-ReleaseAssert"
+    cd "$srcdir/swift"
 
-    # Install swift-capable lldb
-    (
-        cd lldb-linux-$CARCH
-        DESTDIR="$pkgdir" ninja install
-    )
+    export SWIFT_SOURCE_ROOT="$srcdir"
+    utils/build-script -R "${_common_build_params[@]}" \
+        --install-destdir="$pkgdir" \
+        --install-lldb
 
     # This should be provided from python2-six
     rm "$pkgdir/usr/lib/python2.7/site-packages/six.py"
+    rm "$pkgdir/usr/lib/python2.7/site-packages/six.pyc"
 }
