@@ -3,12 +3,12 @@
 
 
 pkgname=bitcoinec
-pkgver=v0.14.0.1.g15436fd
-pkgrel=2
+pkgver=v0.14.0.0.g15436fd2
+pkgrel=3
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1492432225
+epoch=1493794014
 
 _commit=15436fd2bf1af29523c2ea44156c1c24aec7385f
 _commitziphash=286e73c516f10f431aaaf77cb920650c83c501e222b81052da58faa38700be73
@@ -41,10 +41,12 @@ package() {
     install -Dm644 "share/pixmaps/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
     install -Dm644 "doc/man/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
     install -Dm755 "src/bitcoind" "$pkgdir/usr/bin/bitcoind"
-    install -Dm644 "contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
+    install -Dm644 "contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/bitcoin/examples/bitcoin.conf"
     install -Dm644 "doc/man/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
     install -Dm755 "src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
     install -Dm644 "doc/man/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
     install -Dm755 "src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 "doc/man/bitcoin-tx.1" "$pkgdir/usr/share/man/man1/bitcoin-tx.1"
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/bitcoin/COPYING"
 }
+

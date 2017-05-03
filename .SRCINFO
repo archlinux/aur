@@ -1,8 +1,8 @@
 pkgbase = bitcoinec
 	pkgdesc = A minimal patchset on top of Bitcoin Core to provide a stable implementation of Emergent Consensus
-	pkgver = v0.14.0.1.g15436fd
-	pkgrel = 2
-	epoch = 1492432225
+	pkgver = v0.14.0.0.g15436fd2
+	pkgrel = 3
+	epoch = 1493794014
 	url = https://bitcoinec.info
 	arch = i686
 	arch = x86_64
