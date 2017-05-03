@@ -52,14 +52,14 @@ pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.10
 pkgver=4.10.13
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqver=v8r10
+_bfqver=v8r11
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.10.0-${_bfqver}"
 #_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.10.0-${_bfqver}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
@@ -80,7 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-update-to-v8r11.patch')
+        )
 
 _kernelname=${pkgbase#linux} 
 
@@ -430,13 +430,12 @@ sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab
             '03f4d45c0b3ac20baea9eaa92591e1749499e084cbca104f55a3ec4cfeda0e6c7fe6766b0eea0bb5bb4cf7f2371992e7a6002aaec09a08386fe2431c9cf0a3a8'
             'c4161e2ff79647b8e8212681c0294b6f160c135728f48adfe61b1089d6242f925584afe4d2ebf0ef9cb650ae45c057d5c7119ce0264d3aeda008bb359b2b2582'
             '3147c29a542342eb2b60c4247edbffce0a35356e3b67a5471ed0e7555d3b9ec1b985e1090dc0b646bab129306962d094d7632e82b72fdbec3582b7461818e664'
-            '9ad09ef8a7c89d0b6632b315ed2c89d353cce60c1da66bcbc8039b9bd7ca0f49555a0308e8e330dd24a5e71b66b24bfbb1e012fe560a0645489ad2d77d9d3938'
+            'ca1b3bcc36e4c61206f4c6fbfbda12eff5996353a3f0f82e972046cec35ff953abb1941ba7ee554db5e012cb61d981f7605b0cbbaad8c09ea9950fa9a3321773'
             '77d80d50d8c4323ed36fd2097ba9f6b49bb8d7cae59d32ffa76b309758a7e9f972d26fedd77046d88ce2691bb01a07909f8bdc34ba214414be3bc030ee31994d'
             '1f0a8695b7c106d7946d67eaa8ebcf4e0bccd2cae01b0cd5621af04aa42f7e9a1b379764fb9bd9917f85ff719ec28e081eeb7c143a682f6d179e2bd1d7d15d7e'
             '6afb164bc7a38fea08a49c70690afafb209d1245588e1ecf57998926f5b43fe85d39a1ab1a133900b82bc1d3d97538330bf5c646b62e782653d69b6139d72200'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '554c5a9b3ed415f42f8ba0e25e6d0449b378ab10933e7628ce1fad07bcfcffe3a2319df05360aed4761ac3388e8f05b36e237e2ff1847128672e3461c99fe2c7')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
