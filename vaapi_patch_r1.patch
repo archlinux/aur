@@ -2,13 +2,13 @@
 +++ b/chrome/browser/about_flags.cc
 @@ -1044,7 +1044,7 @@ const FeatureEntry kFeatureEntries[] = {
          "disable-accelerated-video-decode",
-         IDS_FLAGS_ACCELERATED_VIDEO_DECODE_NAME,
-         IDS_FLAGS_ACCELERATED_VIDEO_DECODE_DESCRIPTION,
+         flag_descriptions::kAcceleratedVideoDecodeName,
+         flag_descriptions::kAcceleratedVideoDecodeDescription,
 -        kOsMac | kOsWin | kOsCrOS | kOsAndroid,
 +        kOsAll,
          SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedVideoDecode),
      },
- #if defined(USE_ASH)
+ #if defined(OS_WIN)
 --- a/content/common/BUILD.gn
 +++ b/content/common/BUILD.gn
 @@ -13,6 +13,49 @@ if (is_mac) {
@@ -21,15 +21,15 @@
 +
 +    script = "../../tools/generate_stubs/generate_stubs.py"
 +    sources = [
-+      "../../media/gpu/va.sigs",
++      "../../media/gpu/vaapi/va.sigs",
 +    ]
 +    inputs = [
 +      extra_header,
 +    ]
-+    sources += [ "../../media/gpu/va_x11.sigs" ]
++    sources += [ "../../media/gpu/vaapi/va_x11.sigs" ]
 +    if (use_ozone) {
 +      sources += [
-+        "../../media/gpu/va_drm.sigs",
++        "../../media/gpu/vaapi/va_drm.sigs",
 +        "va_wayland.sigs",
 +      ]
 +    }
@@ -343,8 +343,8 @@
  CONTENT_EXPORT extern const char kDisableVaapiAcceleratedVideoEncode[];
  #endif
  
---- a/gpu/config/software_rendering_list_json.cc
-+++ b/gpu/config/software_rendering_list_json.cc
+--- a/gpu/config/software_rendering_list.json
++++ b/gpu/config/software_rendering_list.json
 @@ -395,17 +395,6 @@ const char kSoftwareRenderingListJson[] = LONG_STRING_CONST(
        ]
      },
@@ -413,14 +413,14 @@
        "vp8_decoder.cc",
        "vp8_decoder.h",
 @@ -259,7 +259,7 @@ component("gpu") {
+         "EGL",
          "GLESv2",
        ]
-     }
--    if (current_cpu == "arm") {
-+    if (current_cpu == "arm" && is_chromeos) {
-       sources += [
-         "tegra_v4l2_device.cc",
-         "tegra_v4l2_device.h",
+-      if (current_cpu == "arm") {
++      if (current_cpu == "arm" && is_chromeos) {
+         sources += [
+           "tegra_v4l2_device.cc",
+           "tegra_v4l2_device.h",
 --- a/media/gpu/gpu_video_decode_accelerator_factory.cc
 +++ b/media/gpu/gpu_video_decode_accelerator_factory.cc
 @@ -16,7 +16,7 @@
