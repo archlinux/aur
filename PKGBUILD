@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python2-numpy' 'libtiff')
 makedepends=('python2-setuptools' 'git')
 provides=('python2-libtiff' 'python2-pylibtiff')
-conflicts=('python2-libtiff-svn')
+replaces=('python2-libtiff-svn')
 source=("${pkgname%-git}::git+https://github.com/pearu/pylibtiff.git")
 sha256sums=('SKIP')
 
