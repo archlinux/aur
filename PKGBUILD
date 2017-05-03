@@ -2,17 +2,17 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=5.10.0
-_pkgver=5.10
+pkgver=5.10.1
+_pkgver=5.10.1
 minorver=1
-pkgrel=2
+pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
 depends=('cmake' 'gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python2' 'openthreads' 
-		'hdf5'  'insight-toolkit' 'libkml' 'ossim' 'libsvm' 'mapnik')
+		'hdf5'  'insight-toolkit' 'libkml' 'ossim' 'libsvm' 'mapnik' 'qwt5')
 makedepends=('boost' 'swig')
 optdepends=()
 provides=()
@@ -27,7 +27,7 @@ source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
-md5sums=('7004b52be82bb734beb435eeeece2397'
+md5sums=('9aee4ee9cda5fc1390cc5613607281b3'
          'SKIP')
 
 
