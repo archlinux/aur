@@ -3,7 +3,7 @@
 pkgbase=libhybris-git
 pkgname=('libhybris-git' 'libhybris-libgl-git' 'libhybris-wayland-egl-git')
 _pkgbase=libhybris
-pkgver=767.342b9c5
+pkgver=1237.cfd9823
 pkgrel=1
 arch=('armv7h')
 url="https://github.com/libhybris/libhybris"
@@ -39,7 +39,7 @@ build() {
 
 package_libhybris-git() {
   pkgdesc="hybris allows to use bionic-based HW adaptations in glibc systems"
-  depends=('hybris-device')
+  depends=('hybris-android-headers')
   provides=('libhybris')
   conflicts=('libhybris')
 

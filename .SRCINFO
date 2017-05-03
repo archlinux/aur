@@ -1,5 +1,5 @@
 pkgbase = libhybris-git
-	pkgver = 767.342b9c5
+	pkgver = 1237.cfd9823
 	pkgrel = 1
 	url = https://github.com/libhybris/libhybris
 	arch = armv7h
@@ -10,7 +10,7 @@ pkgbase = libhybris-git
 
 pkgname = libhybris-git
 	pkgdesc = hybris allows to use bionic-based HW adaptations in glibc systems
-	depends = hybris-device
+	depends = hybris-android-headers
 	provides = libhybris
 	conflicts = libhybris
 
