@@ -1,0 +1,10 @@
+# sources
+*.tar.gz
+
+# build logs
+*-build.log
+*-namcap.log
+*-package*.log
+
+# packages
+*.pkg.tar.xz
