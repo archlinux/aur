@@ -1,62 +1,62 @@
-From ba90fff6d92aa169404e01760b42006e1a14b7a3 Mon Sep 17 00:00:00 2001
+From 973070c9e42ef34f8797e1dfc2cab2979007a699 Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
-Date: Fri, 17 Mar 2017 14:12:54 -0500
+Date: Fri, 17 Mar 2017 14:53:05 -0500
 Subject: [PATCH] adjust imports
 
 ---
- SickBeard.py                          | 4 ++--
- lib/tmdb_api/tmdb_api.py              | 2 +-
- sickbeard/__init__.py                 | 2 +-
- sickbeard/clients/deluge.py           | 2 +-
- sickbeard/clients/generic.py          | 2 +-
- sickbeard/event_queue.py              | 2 +-
- sickbeard/indexermapper.py            | 2 +-
- sickbeard/network_timezones.py        | 2 +-
- sickbeard/notifiers/emby.py           | 2 +-
- sickbeard/notifiers/prowl.py          | 2 +-
- sickbeard/notifiers/pushalot.py       | 2 +-
- sickbeard/notifiers/pushbullet.py     | 2 +-
- sickbeard/notifiers/tweet.py          | 2 +-
- sickbeard/nzbget.py                   | 2 +-
- sickbeard/providers/alpharatio.py     | 2 +-
- sickbeard/providers/beyondhd.py       | 2 +-
- sickbeard/providers/bithdtv.py        | 2 +-
- sickbeard/providers/bitmetv.py        | 2 +-
- sickbeard/providers/btn.py            | 2 +-
- sickbeard/providers/btscene.py        | 2 +-
- sickbeard/providers/dh.py             | 2 +-
- sickbeard/providers/extratorrent.py   | 2 +-
- sickbeard/providers/fano.py           | 2 +-
- sickbeard/providers/filelist.py       | 2 +-
- sickbeard/providers/freshontv.py      | 2 +-
- sickbeard/providers/funfile.py        | 2 +-
- sickbeard/providers/gftracker.py      | 2 +-
- sickbeard/providers/grabtheinfo.py    | 2 +-
- sickbeard/providers/hdspace.py        | 2 +-
- sickbeard/providers/hdtorrents.py     | 2 +-
- sickbeard/providers/iptorrents.py     | 2 +-
- sickbeard/providers/limetorrents.py   | 2 +-
- sickbeard/providers/morethan.py       | 2 +-
- sickbeard/providers/ncore.py          | 2 +-
- sickbeard/providers/pisexy.py         | 2 +-
- sickbeard/providers/pretome.py        | 2 +-
- sickbeard/providers/privatehd.py      | 2 +-
- sickbeard/providers/ptf.py            | 2 +-
- sickbeard/providers/revtt.py          | 2 +-
- sickbeard/providers/scc.py            | 2 +-
- sickbeard/providers/scenetime.py      | 2 +-
- sickbeard/providers/shazbat.py        | 2 +-
- sickbeard/providers/thepiratebay.py   | 2 +-
- sickbeard/providers/torlock.py        | 2 +-
- sickbeard/providers/torrentbytes.py   | 2 +-
- sickbeard/providers/torrenting.py     | 2 +-
- sickbeard/providers/torrentleech.py   | 2 +-
- sickbeard/providers/torrentz2.py      | 2 +-
- sickbeard/providers/transmithe_net.py | 2 +-
- sickbeard/providers/tvchaosuk.py      | 2 +-
- sickbeard/providers/zooqle.py         | 2 +-
- sickbeard/rssfeeds.py                 | 2 +-
- sickbeard/webapi.py                   | 2 +-
+ SickBeard.py                        | 4 ++--
+ lib/tmdb_api/tmdb_api.py            | 2 +-
+ sickbeard/__init__.py               | 2 +-
+ sickbeard/clients/deluge.py         | 2 +-
+ sickbeard/clients/generic.py        | 2 +-
+ sickbeard/event_queue.py            | 2 +-
+ sickbeard/indexermapper.py          | 2 +-
+ sickbeard/network_timezones.py      | 2 +-
+ sickbeard/notifiers/emby.py         | 2 +-
+ sickbeard/notifiers/prowl.py        | 2 +-
+ sickbeard/notifiers/pushalot.py     | 2 +-
+ sickbeard/notifiers/pushbullet.py   | 2 +-
+ sickbeard/notifiers/tweet.py        | 2 +-
+ sickbeard/nzbget.py                 | 2 +-
+ sickbeard/providers/alpharatio.py   | 2 +-
+ sickbeard/providers/beyondhd.py     | 2 +-
+ sickbeard/providers/bithdtv.py      | 2 +-
+ sickbeard/providers/bitmetv.py      | 2 +-
+ sickbeard/providers/btn.py          | 2 +-
+ sickbeard/providers/btscene.py      | 2 +-
+ sickbeard/providers/dh.py           | 2 +-
+ sickbeard/providers/extratorrent.py | 2 +-
+ sickbeard/providers/fano.py         | 2 +-
+ sickbeard/providers/filelist.py     | 2 +-
+ sickbeard/providers/freshontv.py    | 2 +-
+ sickbeard/providers/funfile.py      | 2 +-
+ sickbeard/providers/gftracker.py    | 2 +-
+ sickbeard/providers/grabtheinfo.py  | 2 +-
+ sickbeard/providers/hdspace.py      | 2 +-
+ sickbeard/providers/hdtorrents.py   | 2 +-
+ sickbeard/providers/iptorrents.py   | 2 +-
+ sickbeard/providers/limetorrents.py | 2 +-
+ sickbeard/providers/morethan.py     | 2 +-
+ sickbeard/providers/ncore.py        | 2 +-
+ sickbeard/providers/nebulance.py    | 2 +-
+ sickbeard/providers/pisexy.py       | 2 +-
+ sickbeard/providers/pretome.py      | 2 +-
+ sickbeard/providers/privatehd.py    | 2 +-
+ sickbeard/providers/ptf.py          | 2 +-
+ sickbeard/providers/revtt.py        | 2 +-
+ sickbeard/providers/scc.py          | 2 +-
+ sickbeard/providers/scenetime.py    | 2 +-
+ sickbeard/providers/shazbat.py      | 2 +-
+ sickbeard/providers/thepiratebay.py | 2 +-
+ sickbeard/providers/torlock.py      | 2 +-
+ sickbeard/providers/torrentbytes.py | 2 +-
+ sickbeard/providers/torrenting.py   | 2 +-
+ sickbeard/providers/torrentleech.py | 2 +-
+ sickbeard/providers/torrentz2.py    | 2 +-
+ sickbeard/providers/tvchaosuk.py    | 2 +-
+ sickbeard/providers/zooqle.py       | 2 +-
+ sickbeard/rssfeeds.py               | 2 +-
+ sickbeard/webapi.py                 | 2 +-
  53 files changed, 54 insertions(+), 54 deletions(-)
 
 diff --git a/SickBeard.py b/SickBeard.py
@@ -95,7 +95,7 @@ index a7eab0da..404b23e4 100644
  class TMDB:
      def __init__(self, api_key, version=3):
 diff --git a/sickbeard/__init__.py b/sickbeard/__init__.py
-index 14a102cc..76dc3bd8 100755
+index 71c6bb5b..9fad486e 100755
 --- a/sickbeard/__init__.py
 +++ b/sickbeard/__init__.py
 @@ -48,7 +48,7 @@ from indexers.indexer_api import indexerApi
@@ -507,6 +507,19 @@ index 0316fce0..6c99ad72 100644
  
  
  class NcoreProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/nebulance.py b/sickbeard/providers/nebulance.py
+index 5273d147..40c3e61b 100644
+--- a/sickbeard/providers/nebulance.py
++++ b/sickbeard/providers/nebulance.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import common, helpers, logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class NebulanceProvider(generic.TorrentProvider):
 diff --git a/sickbeard/providers/pisexy.py b/sickbeard/providers/pisexy.py
 index 248adf74..151535e3 100644
 --- a/sickbeard/providers/pisexy.py
@@ -689,21 +702,8 @@ index 5b140d29..b0995d84 100644
  
  
  class Torrentz2Provider(generic.TorrentProvider):
-diff --git a/sickbeard/providers/transmithe_net.py b/sickbeard/providers/transmithe_net.py
-index 8bd9ecd4..717d28d3 100644
---- a/sickbeard/providers/transmithe_net.py
-+++ b/sickbeard/providers/transmithe_net.py
-@@ -22,7 +22,7 @@ from . import generic
- from sickbeard import common, helpers, logger
- from sickbeard.bs4_parser import BS4Parser
- from sickbeard.helpers import tryInt
--from lib.unidecode import unidecode
-+from unidecode import unidecode
- 
- 
- class TransmithenetProvider(generic.TorrentProvider):
 diff --git a/sickbeard/providers/tvchaosuk.py b/sickbeard/providers/tvchaosuk.py
-index 6ad9a224..c0dbf74e 100644
+index d4cfcb31..76f53a4e 100644
 --- a/sickbeard/providers/tvchaosuk.py
 +++ b/sickbeard/providers/tvchaosuk.py
 @@ -24,7 +24,7 @@ from sickbeard.bs4_parser import BS4Parser
@@ -755,5 +755,5 @@ index 3e5635d0..acf61a25 100644
              _call_dispatcher = profile(_call_dispatcher, immediate=True)
              del kwargs["profile"]
 -- 
-2.12.0
+2.12.2
 
