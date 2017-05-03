@@ -1,5 +1,5 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
-pkgname=twemoji-color-font
+pkgname=ttf-twemoji-color
 pkgver=1.2
 pkgrel=1
 pkgdesc="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
@@ -7,10 +7,14 @@ arch=('any')
 url="https://github.com/eosrei/twemoji-color-font"
 license=('custom:CCPL:by-4.0' 'MIT')
 
-# ttf-bitstream-vera is required for bug-free font fallback with the provided fontconfig.
-# Please don't complain about it. See: https://github.com/eosrei/emojione-color-font#why-bitstream-vera
+# ttf-bitstream-vera is default font for bug-free font fallback with the provided fontconfig.
+# See: https://github.com/eosrei/emojione-color-font#why-bitstream-vera
 depends=(fontconfig)
 optdepends=('ttf-bitstream-vera: default fallback font used for configuration')
+
+replaces=('twemoji-color-font')
+conflicts=('twemoji-color-font')
+provides=('twemoji-color-font')
 
 _pkgver=${pkgver//_/-}
 _archive=TwitterColorEmoji-SVGinOT-Linux-${_pkgver}

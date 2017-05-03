@@ -1,9 +1,8 @@
-config=56-twemoji-color-font.conf
+config=56-ttf-twemoji-color.conf
 
 post_install() {
   echo "To finish installation, update the default font in /etc/fonts/conf.avail/${config} to your system font,"
   echo "and then execute 'sudo ln -s /etc/fonts/conf.avail/${config} /etc/fonts/conf.d'"
-  echo "And then 'sudo fc-cache -s'"
   echo
   echo "SVG in OpenType (colour) fonts are currently only supported by Mozilla software. Other software will fallback to B&W glyphs."
 }
@@ -15,5 +14,4 @@ post_upgrade() {
 
 post_remove() {
   echo "To complete uninstallation, you should run 'sudo rm /etc/fonts/conf.avail/${config}'"
-  echo "And then run 'sudo fc-cache -s'"
 }
