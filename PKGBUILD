@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python2-javabridge')
 
 source=("https://github.com/CellProfiler/python-bioformats/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('57e873553280b29aa73bfdba79e2cc88f3ee791546009ad9cdf42679a5a32246')
 
 build() {
   cd "$srcdir/python-bioformats-$pkgver"
