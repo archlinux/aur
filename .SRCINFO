@@ -1,0 +1,21 @@
+pkgbase = thrift-static
+	pkgdesc = Scalable cross-language services framework for IPC/RPC
+	pkgver = 0.10.0
+	pkgrel = 2
+	url = http://thrift.apache.org/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = boost
+	makedepends = libevent
+	makedepends = emacs
+	depends = gcc-libs
+	depends = openssl
+	provides = thrift
+	conflicts = thrift
+	options = staticlibs
+	source = thrift-0.10.0.zip::https://github.com/apache/thrift/archive/0.10.0.zip
+	sha1sums = 461cad8da7e73dab11c036760ce76c39b65cd59a
+
+pkgname = thrift-static
+
