@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=aegisub-git
-pkgver=3.2.2.r293.0e8bc44
+pkgver=3.2.2.r303.3594ade71
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=('i686' 'x86_64')
@@ -18,9 +18,11 @@ optdepends=('libpulse: Pulseaudio backend'
 provides=('aegisub')
 conflicts=('aegisub')
 source=('aegisub::git+https://github.com/Aegisub/Aegisub.git'
-        'git+https://github.com/Aegisub/assdraw.git')
+        'git+https://github.com/Aegisub/assdraw.git'
+        'aegisub-icu59.1.patch::https://github.com/alucryd/Aegisub/commit/d8c69f57f7fbcea47e61381a14987856eefb5fbd.patch')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '1e54d36f6be86d45f13b43f9823786ed7274bb2ff7e71cc0d9270de082757df3')
 
 pkgver() {
   cd aegisub
@@ -32,6 +34,8 @@ pkgver() {
 
 prepare() {
   cd aegisub
+
+  patch -Np1 -i ../aegisub-icu59.1.patch
 
   sed 's/$(LIBS_BOOST) $(LIBS_ICU)/$(LIBS_BOOST) $(LIBS_ICU) -pthread/' -i tools/Makefile
   ./autogen.sh
