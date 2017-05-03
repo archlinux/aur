@@ -1,14 +1,16 @@
 pkgname=vgmstream-kode54-git
 pkgver=r1020.r557.gd2fac79
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for playback of various streamed audio formats used in video games (kode54's fork)"
 arch=(i686 x86_64)
 url='https://gitlab.kode54.net/kode54/vgmstream'
 license=(BSD)
 depends=(glibc libogg libvorbis mpg123)
 makedepends=(git)
-source=(${pkgname}::git+https://gitlab.kode54.net/kode54/vgmstream.git)
-sha256sums=('SKIP')
+source=(${pkgname}::git+https://gitlab.kode54.net/kode54/vgmstream.git
+        libcoding-utils.patch)
+sha256sums=('SKIP'
+            '3ae17fca859443b8d75dde83fa511111dee016e5bf2c5cb86c6786929ee30da3')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -18,10 +20,16 @@ pkgver() {
   )
 }
 
-build() {
+prepare() {
   cd "$srcdir/$pkgname"
+  patch -Np0 -i "$srcdir/libcoding-utils.patch"
+
   # We won't build the Audacious plugin so we don't need the libraries either.
   sed -i '/PKG_CHECK_MODULES(\(AUDACIOUS\|GTK\)/{N;N;d}' configure.in
+}
+
+build() {
+  cd "$srcdir/$pkgname"
   ./bootstrap
   CFLAGS="$CFLAGS -I../ext_includes -I../../ext_includes" ./configure
   cd src
