@@ -11,7 +11,7 @@ pkgname=emacs-${_pkgdestdirname}
 arch=(any)
 url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('MIT')
-depends=('emacs')
+depends=('emacs' 'emacs-spaceline' 'emacs-all-the-icons')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
