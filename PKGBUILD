@@ -34,7 +34,7 @@ optdepends=('bzr: support for bzr repositories'
             'vcsh: support for vcsh')
 url="http://myrepos.branchable.com"
 license=('GPL2')
-source=("${pkgname%-git}::git+https://github.com/joeyh/${pkgname%-git}")
+source=("${pkgname%-git}::git+git://myrepos.branchable.com/")
 sha256sums=('SKIP')
 provides=('mr' 'myrepos' 'webcheckout')
 conflicts=('mr' 'myrepos' 'webcheckout')
