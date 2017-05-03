@@ -1,7 +1,7 @@
 # $Id$
 
-# Maintainer: Ido Rosen <ido@kernel.org>
-# Co-maintainer: Chris Fordham <chris [at] fordham-nagy [dot] [id] [dot] [au]> aka flaccid
+# Maintainer: Chris Fordham <chris [at] fordham-nagy [dot] [id] [dot] [au]> aka flaccid
+# Contributor: Ido Rosen <ido@kernel.org>
 # Contributor: Sébastien "Seblu" Luttringer
 # Contributor: Marcel Wysocki <maci@satgnu.net>
 # Contributor: Daniel YC Lin <dlin.tw@gmail>
