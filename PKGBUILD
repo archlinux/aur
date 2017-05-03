@@ -20,7 +20,7 @@ _pkgver=${pkgver//_/-}
 _archive=TwitterColorEmoji-SVGinOT-Linux-${_pkgver}
 
 source=(
-  "https://github.com/eosrei/$pkgname/releases/download/v${_pkgver}/${_archive}.tar.gz"
+  "${url}/releases/download/v${_pkgver}/${_archive}.tar.gz"
 )
 install=$pkgname.install
 
