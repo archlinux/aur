@@ -1,13 +1,13 @@
 pkgbase = rf24
 	pkgdesc = Linux support for RF24 radio modules
-	pkgver = 1.1.7.r8.gc94f877
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://tmrh20.github.io/RF24/
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = MIT
+	license = GPL2
 	source = git://github.com/TMRh20/RF24
 	md5sums = SKIP
 
