@@ -5,20 +5,32 @@
 # AUR Category: devel
 
 pkgname=tortoisehg
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
+_pkgchangeset=169d552db075
 pkgdesc="Graphical tools for Mercurial"
 url="https://tortoisehg.bitbucket.io"
 license=("GPL")
-depends=('python2' 'mercurial>=4.0' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
+depends=('python2' 'mercurial>=4.1' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
 builddepends=(python2)
 arch=('any')
 optdepends=('python2-pygments: syntax highlighting'
-	    'python2-nautilus: Python binding for Nautilus components')
-source=("http://bitbucket.org/tortoisehg/targz/downloads/${pkgname}-${pkgver}.tar.gz")
+            'python2-nautilus: Python binding for Nautilus components')
+
+if [ -z ${_pkgchangeset+x} ];
+then
+	source=("http://bitbucket.org/tortoisehg/targz/downloads/${pkgname}-${pkgver}.tar.gz")
+else
+	source=("$pkgname-$pkgver-${_pkgchangeset}.tar.gz::https://bitbucket.org/tortoisehg/thg/get/${_pkgchangeset}.tar.gz")
+fi
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	if [ -z ${_pkgchangeset+x} ];
+	then
+		cd "${srcdir}/${pkgname}-${pkgver}"
+	else
+		cd "${srcdir}/tortoisehg-thg-${_pkgchangeset}"
+	fi
 
 	python2 setup.py install --prefix=/usr --root="${pkgdir}"
 	install -Dm 644 "contrib/mergetools.rc" "${pkgdir}/etc/mercurial/hgrc.d/thgmergetools.rc"
@@ -30,4 +42,4 @@ package() {
 	rm "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('1e1dbee323acd9046cf940d74f909f815fd07191b64b9ed1576b973af23d7feb')
+sha256sums=('798c4526a6afd48246e83f7b97fb61ebad2a52ac4ff800355383d91729b179ee')
