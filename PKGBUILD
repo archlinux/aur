@@ -2,11 +2,12 @@
 
 pkgname=('quickfm-git')
 pkgver=v0.3.1.r3.g61f5b74
-pkgrel=1
+pkgrel=2
 pkgdesc="A file manager implemented via QtQuick."
 arch=(x86_64)
 url="https://github.com/canatan/quickfm"
 license=('GPL2')
+depends=('qt5-base' 'qt5-declarative')
 source=("git://github.com/canatan/quickfm.git")
 sha256sums=("SKIP")
 
