@@ -2,7 +2,7 @@
 # http://packages.gentoo.org/package/sci-visualization/gwyddion
 
 pkgname=gwyddion
-pkgver=2.47
+pkgver=2.48
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 #A modular program for SPM (scanning probe microscopy) and other 2D (height field) data visualization and analysis"
@@ -24,7 +24,7 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files'
             'cfitsio: import of Flexible Image Transport System (FITS) files')
 source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
-sha256sums=('e948abb3d281d49d3684e4c15d88c424dde11c71647bdbbba0a1d9fce74fa656')
+sha256sums=('9d3fa861bad2b3df43383e2ca3deacf5111bf2a9484ba31523960ba650e13185')
 
 prepare() {
   cd $pkgname-$pkgver
