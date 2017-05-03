@@ -44,6 +44,11 @@ case $command in
     start)
         service=$(get_service)
         test -z "$service" || $0 stop
+        if [[ -x /etc/openvpn/vpnfailsafe.sh ]]; then
+            ln -fs /etc/openvpn/vpnfailsafe.sh /etc/openvpn/client/nordvpn/updown
+        else
+            ln -fs /etc/openvpn/update-resolv-conf /etc/openvpn/client/nordvpn/updown
+        fi
         systemctl $command openvpn-client@nordvpn_${1}
         ;;
     stop|restart)
