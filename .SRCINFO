@@ -1,6 +1,6 @@
 pkgbase = python2-pysam
 	pkgdesc = Python interface for the SAM/BAM sequence alignment and mapping format
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/pysam-developers/pysam
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = python2-pysam
 	depends = python2
 	provides = python2-pysam
 	options = !emptydirs
-	source = https://github.com/pysam-developers/pysam/archive/v0.11.0.tar.gz
-	md5sums = 175644901ed5404348a85b4c026d53b2
+	source = https://github.com/pysam-developers/pysam/archive/v0.11.1.tar.gz
+	md5sums = c7be17b970984fe39f1fd6cbaec03812
 
 pkgname = python2-pysam
 
