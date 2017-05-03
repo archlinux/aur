@@ -93,7 +93,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
