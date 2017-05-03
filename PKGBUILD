@@ -2,7 +2,7 @@
 
 pkgname=game_music_emu-kode54-git
 pkgver=r191.b757c4a
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-purpose console music emulator and player library (a.k.a. libgme) (kode54's fork)"
 arch=(i686 x86_64)
 url='https://gitlab.kode54.net/kode54/Game_Music_Emu'
@@ -37,12 +37,12 @@ prepare() {
    # Don't request a static lib, it prevents a dynamic one from being built.
    sed -i '/^CONFIG /s/staticlib //' Game_Music_Emu.pro
 
-   # Install the header file too.
+   # Install the header file too, and fix linking.
    cat >> Game_Music_Emu.pro <<EOF
 headers.path = /usr/include/gme
 headers.files += ../../gme/gme.h
 INSTALLS += headers
-QMAKE_LFLAGS += -Wl,--allow-multiple-definition
+QMAKE_LFLAGS += -Wl,--allow-multiple-definition -lz
 EOF
 }
 
