@@ -7,10 +7,10 @@ pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('i686' 'x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('arrow' 'jemalloc')
+depends=('arrow' 'jemalloc' 'parquet-cpp')
 checkdepends=('python-pytest')
 optdepends=()
-makedepends=('arrow' 'cmake' 'cython' 'jemalloc')
+makedepends=('cmake' 'cython')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver-rc1.tar.gz")
 sha256sums=('2351698826e01b3f758998844177e3ea8bfffdafeb8b532273d7d19d0373b3a9')
 

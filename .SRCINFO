@@ -7,12 +7,11 @@ pkgbase = python-pyarrow
 	arch = x86_64
 	license = Apache
 	checkdepends = python-pytest
-	makedepends = arrow
 	makedepends = cmake
 	makedepends = cython
-	makedepends = jemalloc
 	depends = arrow
 	depends = jemalloc
+	depends = parquet-cpp
 	source = https://github.com/apache/arrow/archive/apache-arrow-0.3.0-rc1.tar.gz
 	sha256sums = 2351698826e01b3f758998844177e3ea8bfffdafeb8b532273d7d19d0373b3a9
 
