@@ -1,7 +1,7 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
 _pkgname=vidcutter
-pkgver=3.2.0rc7.r22.g3a35632
+pkgver=3.2.0rc7.r32.ga3174b2
 pkgrel=1
 pkgdesc="The simplest & sexiest tool for cutting and joining your videos without the need for re-encoding or a diploma in multimedia."
 arch=('any')
@@ -9,7 +9,6 @@ license=('GPL3')
 url="http://vidcutter.ozmartians.com"
 source=(vidcutter-git::git+https://github.com/ozmartian/vidcutter.git)
 depends=('python-pyqt5' 'mpv' 'ffmpeg' 'mediainfo')
-optdepends=('ffmpeg2.8')
 makedepends=('python-setuptools')
 install=${pkgname}.install
 provides=('vidcutter-git')
