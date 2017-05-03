@@ -9,6 +9,7 @@ arch=('x86_64')
 url="http://www.unigine.com"
 license=('custom:UNIGINE Engine')
 depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig' 'qt5-declarative' 'libxkbcommon-x11' 'openssl-1.0')
+makedepends=('imagemagick')
 optdepends=('openal: sound support')
 options=("!strip")
 source=("https://assets.unigine.com/d/${_pkgname}-${pkgver}.run" "Superposition.desktop")
@@ -42,6 +43,5 @@ here
     do
         convert -resize ${RES}x${RES} Superposition.png Superposition_${RES}.png
         install -Dm644 Superposition_${RES}.png "${pkgdir}/usr/share/icons/hicolor/${RES}x${RES}/apps/Superposition_${RES}.png"
-
     done
 }
