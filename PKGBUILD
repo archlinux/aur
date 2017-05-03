@@ -38,7 +38,7 @@ build() {
 
 package(){
 
-  cd $srcdir/${pkgname}-${pkgdir}/BUILD_DIR
+  cd $srcdir/${pkgname}-${pkgver}/BUILD_DIR
   make install
 
 }
