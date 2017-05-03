@@ -2,7 +2,7 @@
 # Contributor: dongfengweixiao ( dongfengweixiao [at] hotmail [dot] com  )
 
 pkgname=ttf-inziu-iosevka
-pkgver=1.21.5
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="A composite of Iosevka, M+ and Source Han Sans. It is fully hinted and optimized for screen display on every device, and every resolution."
 arch=('any')
