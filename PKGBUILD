@@ -2,7 +2,7 @@
 
 pkgname=smb4k-kf5
 _pkgname=smb4k
-pkgver=1.9.80
+pkgver=1.9.90
 pkgrel=1
 pkgdesc="A KDE program that browses samba shares (beta release of the upcoming KF5-based Smb4K 2.0)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('extra-cmake-modules'
 conflicts=('smb4k')
 replaces=('smb4k')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/Development/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('ec3fe3d3840cb46f66c6812a4369d7b4')
+md5sums=('4bfd740d770809a81222137336a28670')
 
 build() {
   cd ${_pkgname}-${pkgver}
