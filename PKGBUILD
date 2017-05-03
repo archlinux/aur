@@ -2,59 +2,62 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail>
 
 pkgname=cellprofiler-git
-pkgver=2.1.2.SNAPSHOT.r367.g7f8ba1d
+pkgver=2.2.0.r0.gac0529ec5
 pkgrel=1
 pkgdesc="Analysis software for cellular images"
 arch=('i686' 'x86_64')
 url="http://www.cellprofiler.org/"
 license=('GPL')
 depends=(
-    'python2-numpy'
+    'python2-appdirs'
+    'python2-decorator'
+    'python2-pytz'
+    'python2-pyzmq'
     'python2-scipy'
     'python2-matplotlib'
-    'python2-decorator'
+    'python2-h5py'
     'python2-imaging'
+    'python2-scikit-image'
+    'python2-pylibtiff-git'
+    'python2-pandas'
     'mysql-python'
+    'wxpython'
+    # 'pythoh2-cellh5'
+    'python2-hmmlearn-git'
+    'python2-pywavelets'
     'python2-javabridge'
     'python2-bioformats'
-    'wxpython2.8'
-    'python2-libtiff-svn')
-makedepends=('cython2' 'python2-pytz' 'python2-nose' 'python2-h5py')
+    'python2-prokaryote')
+makedepends=('python2-pip' 'cython2' 'python2-pytest')
 optdepends=(
     'cellprofiler-analyst: analyze imaging datasets'
     'ilastik: interactive segmentation')
 provides=('cellprofiler')
-source=("$pkgname::git+https://github.com/CellProfiler/CellProfiler.git#commit=7f8ba1d"
-        "cellprofiler.sh"
+source=("cellprofiler::git+https://github.com/CellProfiler/CellProfiler.git#tag=2.2.0"
         "cellprofiler.desktop")
-
-md5sums=('SKIP'
-         '006f8305fd90dd9658727d2c9fb82e18'
-         'SKIP')
+sha256sums=('SKIP'
+           '039350ce852b1efb8e9e11db94ca0ab01a34f32cc5aaf2acf524e19e2fa04d6f')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd cellprofiler
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  # force selection of wxpython 2.8
-  sed -e "s/^\(.*\)import wx$/\1import wxversion\n\1wxversion.select(\"2.8\")\n\1import wx/g" -i $(find . -name '*.py')
+    cd "$srcdir/cellprofiler"
+    export PYTHONPATH="${srcdir}/pkg/lib/python2.7/site-packages"
 
-  # External dependencies will be fetched into src directory by CellProfiler.py
-  python2 CellProfiler.py --build-and-exit
+    # Non-AUR or official repo dependencies will be fetched into $srcdir directory by pip
+    # No write permission to $pkgdir in `build()` funtion, so we are using `$srcdir/pkg` for pip
+    # MUST be run on machine without installed CellProfiler or dependencides won't be fetched
+    PIP_CONFIG_FILE=/dev/null pip2 install --prefix="$srcdir/pkg" .
 }
 
 package() {
-  pydir=`python2 -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"`
-  mkdir -p "$pkgdir/$pydir"
-  cp -r "$srcdir/$pkgname" "$pkgdir/$pydir/cellprofiler"
-
-  install -Dm755 "$srcdir/cellprofiler.sh" "$pkgdir/usr/bin/cellprofiler"
-  install -Dm644 "$srcdir/cellprofiler.desktop" "$pkgdir/usr/share/applications/cellprofiler.desktop"
-
-  cd "$pkgdir/$pydir/cellprofiler"
-  rm -rf `find "$pkgdir" -name "tests" -type d` windows_setup.py .git
-  python2 -m compileall -x tutorial "$pkgdir/$pydir/cellprofiler/"
+    cd "$srcdir/cellprofiler"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cellprofiler/LICENSE"
+    install -Dm644 artwork/CellProfilerIcon.png "$pkgdir/usr/share/pixmaps/cellprofiler.png"
+    install -Dm644 "$srcdir/cellprofiler.desktop" "$pkgdir/usr/share/applications/cellprofiler.desktop"
+    cp -r "$srcdir/pkg/." "$pkgdir/usr"
+    # TODO: install to /opt to prevent potential conflict with pacman packages in future
 }
