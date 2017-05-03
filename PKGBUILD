@@ -11,7 +11,7 @@ pkgname=emacs-${_pkgdestdirname}
 arch=(any)
 url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL2')
-depends=('emacs')
+depends=('emacs' 'wireshark-cli')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/master.zip")
 sha256sums=('SKIP')
 
