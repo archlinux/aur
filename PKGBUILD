@@ -3,7 +3,7 @@
 
 pkgname=cellprofiler-git
 pkgver=2.2.0.r0.gac0529ec5
-pkgrel=1
+pkgrel=2
 pkgdesc="Analysis software for cellular images"
 arch=('i686' 'x86_64')
 url="http://www.cellprofiler.org/"
@@ -27,7 +27,8 @@ depends=(
     'python2-pywavelets'
     'python2-javabridge'
     'python2-bioformats'
-    'python2-prokaryote')
+    'python2-prokaryote'
+    'python2-centrosome')
 makedepends=('python2-pip' 'cython2' 'python2-pytest')
 optdepends=(
     'cellprofiler-analyst: analyze imaging datasets'
