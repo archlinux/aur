@@ -10,6 +10,7 @@ pkgbase = opensnitch-git
 	depends = python2
 	depends = python2-pyqt5
 	depends = python2-netfilterqueue-git
+	depends = python2-dpkt
 	depends = libnetfilter_queue
 	depends = scapy
 	provides = opensnitch
