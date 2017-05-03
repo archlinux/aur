@@ -3,17 +3,17 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=rlite-git
-pkgver=r1985.6522969
+pkgver=r2054.355cd86
 pkgrel=1
 pkgdesc="Recursive InterNetwork Architecture (RINA) user/kernel prototype written in C/C++"
 arch=('any')
 license=('GPL' 'LGPL')
 depends=('linux' 'protobuf' 'python')
-makedepends=('git' 'linux-headers' 'fakeroot')
+makedepends=('git' 'linux-headers' 'fakeroot' 'cmake')
 install="rlite.install"
 source=("rlite.install" "rlite.conf" "rlite.service" "git+https://github.com/vmaffione/rlite.git")
 noextract=()
-md5sums=("047aa5adec4c52ddbf86d12dbf300f71" "4bc1bc1402aeaca56fd22ab59dfa9fb6" "78bd22e673a5d3a5a0e62536758fce24" "SKIP")
+md5sums=("047aa5adec4c52ddbf86d12dbf300f71" "4bc1bc1402aeaca56fd22ab59dfa9fb6" "bd1009012a3a30cd9cb2df2c82d44ade" "SKIP")
 
 _gitname="rlite"
 
