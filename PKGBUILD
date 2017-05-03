@@ -5,8 +5,8 @@ _module="$_name"
 #_check=1
 
 pkgname=("python-$_module" "python2-$_module")
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
 url="https://falconframework.org"
@@ -14,18 +14,24 @@ license=("Apache")
 makedepends=("cython" "python-setuptools" "cython2" "python2-setuptools")
 if [[ -v _check ]]; then
     checkdepends=("python-ddt"
-                  "python-pytest"
+                  "python-mimeparse>=1.5.2"
+                  "python-pytest>=3.0.1"
+                  "python-pytest-xdist"
                   "python-requests"
+                  "python-six>=1.4.0"
                   "python-testtools"
                   "python-yaml"
                   "python2-ddt"
-                  "python2-pytest"
+                  "python2-mimeparse>=1.5.2"
+                  "python2-pytest>=3.0.1"
+                  "python2-pytest-xdist"
                   "python2-requests"
+                  "python2-six>=1.4.0"
                   "python2-testtools"
                   "python2-yaml")
 fi
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a68c5685459427cc2129c7b9e3aa19ed5adc73b6adff8ca69fe09f6666885ae7')
+sha256sums=('53bb5119d2513613eef6868c829ad47606615ff619590e05f7068a955867173d')
 
 build() {
     cd "$_name-$pkgver"
@@ -36,8 +42,8 @@ build() {
 check() {
     if [[ -v _check ]]; then
         cd "$_name-$pkgver"
-        python setup.py test
-        python2 setup.py test
+        pytest tests
+        pytest2 tests
     else
         echo "skipping check()"
     fi
