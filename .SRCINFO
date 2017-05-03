@@ -1,6 +1,6 @@
 pkgbase = python-rf24-network
 	pkgdesc = Python bindings for networking with RF24 radio modules
-	pkgver = 1.0.7.r1.g53e1a44
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = http://tmrh20.github.io/RF24Network/
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = python-rf24-network
 	arch = armv7h
 	license = MIT
 	makedepends = boost
+	makedepends = python-setuptools
+	depends = boost-libs
 	depends = rf24-network
 	depends = python
 	depends = python-rf24
