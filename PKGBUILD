@@ -14,7 +14,7 @@ source=("http://ufpr.dl.sourceforge.net/project/ginkgocadx/${pkgver::5}/Ginkgo_C
         "ginkgocadx.desktop"
         "ginkgocadx.png")
 md5sums=('11726c3f9c6d93f7480bbaac8685403f'         
-         '4a56f1e675b3d95da48cc8d5758150ea'
+         '48d54bd45e5e36529dce9e6a6e8fbf46'
          '1de087126d5e72ecdacc2e215601827f')
 
 package() {
