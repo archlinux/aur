@@ -2,12 +2,12 @@
 # Maintainer: Kresimir Pripuzic <kpripuzic@gmail.com>
 pkgname=ginkgocadx-bin
 pkgver=3.7.1.1573.46
-pkgrel=4
+pkgrel=5
 pkgdesc="Complete DICOM viewer solution."
 arch=('i686' 'x86_64')
 url="http://ginkgo-cadx.com/"
 license=('LGPL3')
-depends=('libjpeg6-turbo' 'libpng12')
+depends=('libjpeg6-turbo' 'libpng12' 'libopenssl-1.0-compat' 'libcurl-openssl-1.0')
 install="${pkgname}.install"
 options=('!strip')
 source=("http://ufpr.dl.sourceforge.net/project/ginkgocadx/${pkgver::5}/Ginkgo_CADx-${pkgver}_linux_x86_64.tgz"        
