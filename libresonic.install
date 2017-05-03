@@ -1,5 +1,5 @@
 _homedir=/var/lib/libresonic
-_playlistdir=/var/playlists
+_playlistdir=${_homedir}/playlists
 
 post_install() {
 

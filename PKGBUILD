@@ -2,7 +2,7 @@
 
 pkgname=libresonic
 pkgver=6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="https://github.com/Libresonic/libresonic/"

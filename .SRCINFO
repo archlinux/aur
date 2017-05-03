@@ -1,7 +1,7 @@
 pkgbase = libresonic
 	pkgdesc = A free, web-based media streamer and jukebox.
 	pkgver = 6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Libresonic/libresonic/
 	install = libresonic.install
 	arch = any

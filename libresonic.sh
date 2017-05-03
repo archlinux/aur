@@ -1,21 +1,15 @@
 #!/bin/sh
 
-###################################################################################
-# Shell script for starting Libresonic.  See http://libresonic.org.
-#
-# Author: Sindre Mehus
-###################################################################################
-
-LIBRESONIC_HOME=/var/libresonic
+LIBRESONIC_HOME=/var/lib/libresonic
 LIBRESONIC_HOST=0.0.0.0
-LIBRESONIC_PORT=4040
+LIBRESONIC_PORT=8080
 LIBRESONIC_HTTPS_PORT=0
 LIBRESONIC_CONTEXT_PATH=/
-LIBRESONIC_MAX_MEMORY=150
-LIBRESONIC_PIDFILE=
-LIBRESONIC_DEFAULT_MUSIC_FOLDER=/var/music
-LIBRESONIC_DEFAULT_PODCAST_FOLDER=/var/music/Podcast
-LIBRESONIC_DEFAULT_PLAYLIST_FOLDER=/var/playlists
+LIBRESONIC_MAX_MEMORY=256
+LIBRESONIC_PIDFILE=libresonic.pid
+LIBRESONIC_DEFAULT_MUSIC_FOLDER=/var/lib/libresonic/music
+LIBRESONIC_DEFAULT_PODCAST_FOLDER=/var/lib/libresonic/podcast
+LIBRESONIC_DEFAULT_PLAYLIST_FOLDER=/var/lib/libresonic/playlists
 
 quiet=0
 
@@ -23,13 +17,13 @@ usage() {
     echo "Usage: libresonic.sh [options]"
     echo "  --help               This small usage guide."
     echo "  --home=DIR           The directory where Libresonic will create files."
-    echo "                       Make sure it is writable. Default: /var/libresonic"
+    echo "                       Make sure it is writable. Default: /var/lib/libresonic"
     echo "  --host=HOST          The host name or IP address on which to bind Libresonic."
     echo "                       Only relevant if you have multiple network interfaces and want"
     echo "                       to make Libresonic available on only one of them. The default value"
     echo "                       will bind Libresonic to all available network interfaces. Default: 0.0.0.0"
     echo "  --port=PORT          The port on which Libresonic will listen for"
-    echo "                       incoming HTTP traffic. Default: 4040"
+    echo "                       incoming HTTP traffic. Default: 8080"
     echo "  --https-port=PORT    The port on which Libresonic will listen for"
     echo "                       incoming HTTPS traffic. Default: 0 (disabled)"
     echo "  --context-path=PATH  The context path, i.e., the last part of the Libresonic"
@@ -39,11 +33,11 @@ usage() {
     echo "  --pidfile=PIDFILE    Write PID to this file. Default not created."
     echo "  --quiet              Don't print anything to standard out. Default false."
     echo "  --default-music-folder=DIR    Configure Libresonic to use this folder for music.  This option "
-    echo "                                only has effect the first time Libresonic is started. Default '/var/music'"
+    echo "                                only has effect the first time Libresonic is started. Default '/var/lib/libresonic/music'"
     echo "  --default-podcast-folder=DIR  Configure Libresonic to use this folder for Podcasts.  This option "
-    echo "                                only has effect the first time Libresonic is started. Default '/var/music/Podcast'"
+    echo "                                only has effect the first time Libresonic is started. Default '/var/lib/libresonic/podcast'"
     echo "  --default-playlist-folder=DIR Configure Libresonic to use this folder for playlists.  This option "
-    echo "                                only has effect the first time Libresonic is started. Default '/var/playlists'"
+    echo "                                only has effect the first time Libresonic is started. Default '/var/lib/libresonic/playlists'"
     exit 1
 }
 
@@ -111,17 +105,16 @@ if [ -L $0 ] && ([ -e /bin/readlink ] || [ -e /usr/bin/readlink ]); then
 fi
 
 ${JAVA} -Xmx${LIBRESONIC_MAX_MEMORY}m \
+  -Dserver.address=${LIBRESONIC_HOST} \
+  -Dserver.port=${LIBRESONIC_PORT} \
+  -Dserver.httpsPort=${LIBRESONIC_HTTPS_PORT} \
+  -Dserver.contextPath=${LIBRESONIC_CONTEXT_PATH} \
   -Dlibresonic.home=${LIBRESONIC_HOME} \
-  -Dlibresonic.host=${LIBRESONIC_HOST} \
-  -Dlibresonic.port=${LIBRESONIC_PORT} \
-  -Dlibresonic.httpsPort=${LIBRESONIC_HTTPS_PORT} \
-  -Dlibresonic.contextPath=${LIBRESONIC_CONTEXT_PATH} \
   -Dlibresonic.defaultMusicFolder=${LIBRESONIC_DEFAULT_MUSIC_FOLDER} \
   -Dlibresonic.defaultPodcastFolder=${LIBRESONIC_DEFAULT_PODCAST_FOLDER} \
   -Dlibresonic.defaultPlaylistFolder=${LIBRESONIC_DEFAULT_PLAYLIST_FOLDER} \
   -Djava.awt.headless=true \
-  -verbose:gc \
-  -jar libresonic-booter-jar-with-dependencies.jar > ${LOG} 2>&1 &
+  -jar libresonic.war > ${LOG} 2>&1 &
 
 # Write pid to pidfile if it is defined.
 if [ $LIBRESONIC_PIDFILE ]; then
