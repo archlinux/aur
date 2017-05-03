@@ -1,0 +1,22 @@
+pkgbase = nvidia-tesla-lts
+	pkgdesc = NVIDIA Tesla drivers for linux-lts
+	pkgver = 375.51
+	pkgrel = 2
+	url = http://www.nvidia.com/
+	install = nvidia-lts.install
+	arch = x86_64
+	license = custom
+	makedepends = nvidia-utils=375.51
+	makedepends = linux-lts>=4.9.25
+	makedepends = linux-lts-headers>=4.9.25
+	provides = nvidia-lts
+	conflicts = nvidia-lts
+	options = !strip
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/375.51/NVIDIA-Linux-x86_64-375.51.run
+	sha512sums_x86_64 = d08f1f2599381b84147ba861a817a9b657276e23b0668c5c5c2f072a77250a31f891f96fef79a3688ca621f576c9e806d21b2b403df8ce8bc16fa0316e1c6b32
+
+pkgname = nvidia-tesla-lts
+	depends = linux-lts>=4.9.24
+	depends = nvidia-utils=375.51
+	depends = libgl
+
