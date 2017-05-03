@@ -1,6 +1,6 @@
 pkgbase = gog-stardew-valley
 	pkgdesc = You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life." url="http://stardewvalley.net/
-	pkgver = 2.3.0.4
+	pkgver = 2.4.0.5
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = gog-stardew-valley
 	source = gog-stardew-valley
 	source = gog-stardew-valley.desktop
 	source = gog-stardew-valley.profile
-	source = gog://gog_stardew_valley_2.3.0.4.sh
+	source = gog://gog_stardew_valley_2.4.0.5.sh
 	sha256sums = 7e03458fab2b426cce514a42663e56efd33d072bd319f513a5c8bdf7f4e09905
 	sha256sums = ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff
-	sha256sums = 380fac814e9076e4a886e85a2f48f1245434099340d622459cd51413b908a0cd
-	sha256sums = 88e1fae7226c7bfa91cb28c137c24867e12b1a0b6e824e6ffe73e1eefc166aac
+	sha256sums = ce77054c463d2ce47c480a6ede84d8410cbcdc12c45518f530b84aaed042eddf
+	sha256sums = e639fda040a54b1778e5956ebfb3506b36a2db29988ec7e2d9710176144f9f67
 
 pkgname = gog-stardew-valley
 
