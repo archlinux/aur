@@ -1,15 +1,16 @@
 pkgbase = zuki-themes
 	pkgdesc = A selection of themes for GNOME, Xfce and more (includes Zukitwo and Zukitre).
-	pkgver = 3.22.1
+	pkgver = 3.22.2
 	pkgrel = 1
 	url = https://github.com/lassekongo83/zuki-themes
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = ttf-roboto
-	source = zuki-themes-3.22-1.tar.gz::https://github.com/lassekongo83/zuki-themes/archive/v3.22-1.tar.gz
-	md5sums = f8450a20c46360aef5b820db2f1f50ea
+	source = zuki-themes::git+https://github.com/lassekongo83/zuki-themes#tag=v3.22-2
+	md5sums = SKIP
 
 pkgname = zuki-themes
 
