@@ -11,8 +11,8 @@ pkgname=('jre8-openjdk-jetbrains-headless' 'jre8-openjdk-jetbrains' 'jdk8-openjd
 pkgbase=java8-openjdk-jetbrains
 _java_ver=8
 # Found @ https://github.com/JetBrains/jdk8u/releases
-_jdk_update=112
-_jdk_build=783.1
+_jdk_update=152
+_jdk_build=837.4
 pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
@@ -29,18 +29,16 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         jaxws-${_repo_ver}.tar.gz::${_url_src}_jaxws/archive/${_repo_ver}.tar.gz
         jaxp-${_repo_ver}.tar.gz::${_url_src}_jaxp/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}_langtools/archive/${_repo_ver}.tar.gz
-        nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz
-        build_with_gcc6.patch)
+        nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz)
 
-sha256sums=('5fcc4d3a831a6581a0e21ff1845f1320cabbc8bd3000a87d1fa3ce8c37829b3a'
-            'f1f9b894c60b7ad80f37a7bcd7c167830492664d907866725ff57565ec89923d'
-            '935247c52032e0cbadd0ab12e99d4e1357e385f0f4a78088250b85ccb592a13f'
-            '979deeeb96c442244a2d32398632156fd03ccacd0aa63e6c49f90ef84380bd5d'
-            '2a218a3dea15ae10a1817e0707f4110d5b74a9709f8ab654cb003a680d4d7514'
-            'a8a0b8c758a33d37bbfd61c7765d1899ad675294d2b3924e1fad71bf611233d0'
-            'b3db2f0d24254b2622f85846743bfd04cdc41c0791f8d744733148eac765421e'
-            '0a73cf5105ea530beafa78bc209f5a8b22ea5e5d461c2d9e39f933b1e52a6161'
-            '7b954b746178c8613660e71fa7b1b968d892e1850f3603301436836a62e244c8')
+sha256sums=('eb20181f342d1dda91dc47911484a9617fe67d47cd5d1ba750e68d5622c74828'
+            '586fe36a9633dacfabd916b7ff99c299d7d05a934d801d2dd98c27d8cd2cbd3a'
+            '8630df33bf8f0df3175ca3033dbc21d83da330fc1618ed5eff9278b48d4982c5'
+            '28a079aeb4965e2d98c1bc6d274e68318ca0c363d6d78a2f865c240e5f49c489'
+            '77c88c71c39611af5a82ef9b865872cab076e979eac00a14677f002bf6bef74b'
+            'fedb9ce4af610e8480b02a9231d335ddd91a0bd0fc5cfc333ee4890b64c84bd1'
+            '8d3398de8a26f5ecb140d21697dc75a7c2d448e13d010c013fb47adae6a403cf'
+            '21a9b64edb4f9753dd02087941c57fe64618e77bca4b17256874b519c854fee7')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -63,8 +61,6 @@ prepare() {
   do
     ln -sf ../jdk8u_${subrepo}-${_repo_ver} ${subrepo}
   done
-
-  patch -p1 < ../build_with_gcc6.patch
 }
 
 build() {
