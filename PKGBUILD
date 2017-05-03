@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-git
-pkgver=3.7.0a0.r98682.f15fa87e5a
+pkgver=3.7.0a0.r99150.a5c62a8e9f
 pkgrel=1
 _pybasever=3.7
 _pkgname=cpython
@@ -9,16 +9,12 @@ pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
-replaces=('python-hg')
-conflicts=('python-hg')
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'git')
 optdepends=('tk: for tkinter' 'sqlite')
 options=(debug !strip !makeflags)
-source=("git+https://github.com/python/cpython#branch=master"
-        'boot-flag.patch')
-sha256sums=('SKIP'
-            '940202895732185da4548b6a1fb01ad080cd188c21a149359eb178fdcfb613f9')
+source=("git+https://github.com/python/cpython#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -39,9 +35,6 @@ prepare() {
   rm -rf Modules/expat
   rm -rf Modules/zlib
   rm -rf Modules/_ctypes/{darwin,libffi}*
-
-  # http://bugs.python.org/issue23404
-  patch -p1 -i ../boot-flag.patch
 }
 
 build() {
@@ -57,17 +50,13 @@ build() {
               --with-dbmliborder=gdbm:ndbm \
               --with-system-ffi
 
-  # http://bugs.python.org/issue26662
-  # `make touch` does not work with git clones: http://bugs.python.org/issue23404
-  # make touch
-
-  make BOOT='#'
+  make
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
   # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
-  make BOOT='#' DESTDIR="${pkgdir}" altinstall maninstall
+  make DESTDIR="${pkgdir}" altinstall maninstall
 
   # Work around a conflict with 3.4 the 'python' package.
   rm "${pkgdir}/usr/lib/libpython3.so"
