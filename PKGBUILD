@@ -3,7 +3,7 @@
 pkgname=simg-tools
 pkgver=7.1.2_r11
 pkgrel=1
-pkgdesc="Tools to handle/convert Android sparse image file (simg2img, append2simg img2simg simg2simg)"
+pkgdesc="Tools to handle/convert Android sparse image file (simg2img, append2simg, img2simg, simg2simg)"
 arch=('i686' 'x86_64')
 url="https://android.googlesource.com/platform/system/core"
 license=('Apache')
