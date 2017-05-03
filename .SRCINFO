@@ -1,0 +1,13 @@
+pkgbase = hybris-android-headers
+	pkgdesc = hybris - Android Headers from AOSP
+	pkgver = 5.1.1_30
+	pkgrel = 1
+	arch = armv7h
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = gls-common::git+https://github.com/mickybart/gnulinux_support-common
+	md5sums = SKIP
+
+pkgname = hybris-android-headers
+
