@@ -4,7 +4,7 @@ pkgbase=python-pre-commit
 pkgname=(python-pre-commit python2-pre-commit)
 pypi_name=pre_commit
 pkgver=0.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for managing and maintaining multi-language pre-commit hooks."
 arch=('any')
 license=('MIT')
@@ -27,7 +27,7 @@ build() {
 
 package_python-pre-commit() {
   pkgdesc='Python 3 client for pre-commit'
-  depends=('python')
+  depends=('python' 'python-nodenev' 'python-aspy-yaml')
 
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
@@ -35,7 +35,7 @@ package_python-pre-commit() {
 
 package_python2-pre-commit() {
   pkgdesc='Python 2 client for pre-commit'
-  depends=('python2')
+  depends=('python2' 'python2-nodenev' 'python2-aspy-yaml')
 
   cd "${srcdir}/${pypi_name}-${pkgver}-python2"
   python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
