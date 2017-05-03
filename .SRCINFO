@@ -1,0 +1,18 @@
+pkgbase = arrow
+	pkgdesc = A columnar in-memory analytics layer for big data.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://arrow.apache.org
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = flatbuffers
+	makedepends = rapidjson
+	depends = flatbuffers
+	depends = rapidjson
+	source = https://github.com/apache/arrow/archive/apache-arrow-0.3.0-rc1.tar.gz
+	sha256sums = 2351698826e01b3f758998844177e3ea8bfffdafeb8b532273d7d19d0373b3a9
+
+pkgname = arrow
+
