@@ -2,10 +2,10 @@
 pkgname=openvpn-xor-git
 _pkgname=openvpn
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)'
 arch=('i686' 'x86_64')
-url='https://github.com/Tunnelblick/Tunnelblick/tree/master/third_party/sources/openvpn'
+url='https://github.com/openvpn/openvpn'
 depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 optdepends=('easy-rsa')
 makedepends=('git' 'systemd')
