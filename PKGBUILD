@@ -3,12 +3,12 @@
 pkgname=vice-sdl-devel
 _pkgname=vice
 pkgver=2.4.33
-pkgrel=1
+pkgrel=2
 pkgdesc='The Versatile Commodore 8-bit Emulator (development release using SDL)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://vice-emu.sourceforge.net'
-depends=('sdl' 'libpulse' 'portaudio' 'mpg123' 'mesa' 'pciutils' 'giflib' 'libpng' 'libjpeg-turbo')
+depends=('sdl' 'libpulse' 'portaudio' 'mpg123' 'mesa' 'pciutils' 'giflib' 'libpng' 'libpcap' 'libjpeg-turbo')
 makedepends=('xorg-font-utils')
 provides=('vice')
 conflicts=('vice' 'vice-gtk' 'vice-sdl' 'vice-gtkglext' 'vice-gnomeui-devel')
