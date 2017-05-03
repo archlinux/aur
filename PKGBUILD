@@ -3,7 +3,7 @@
 # Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
 
 pkgname=python-tensorflow-git
-pkgver=1.1.0+rc0+462+g89082724cf
+pkgver=1.1.0+rc2+600+g53a60aedd3
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -71,6 +71,8 @@ prepare() {
   export CC_OPT_FLAGS="-march=native"
   # use nvcc instead of clang to build CUDA
   export TF_CUDA_CLANG=0
+  # disable VERBS support
+  export TF_NEED_VERBS=0
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
