@@ -1,25 +1,19 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=drumgizmo
 pkgname=$_pkgname-git
-pkgver=0.9.11.r0.g8c294df
+pkgver=0.9.13.r12.g33639dd
 pkgrel=1
 pkgdesc="an open source cross-platform drum plugin and stand-alone application (lv2)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.drumgizmo.org"
 license=('GPL')
 groups=('lv2-plugins')
-depends=('libx11' 'jack' 'libsmf' 'expat' 'zita-resampler')
-makedepends=('git' 'lv2' 'alsa-utils')
+depends=('libsmf' 'libxext' 'expat' 'jack')
+makedepends=('git' 'lv2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+http://git.drumgizmo.org/drumgizmo.git"
-        'plugingizmo::git+http://git.drumgizmo.org/plugingizmo.git'
-        'lodepng::git+https://github.com/lvandeve/lodepng'
-        'hugin::git+http://git.oftal.dk/hugin.git')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+source=("$_pkgname::git+http://git.drumgizmo.org/drumgizmo.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -29,9 +23,6 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   git submodule init
-  git config submodule.hugin.git.oftal.dk "$srcdir/hugin"
-  git config submodule.plugingizmo.git.drumgizmo.org "$srcdir/plugin/plugingizmo"
-  git config submodule.lodepng.git.lodev.org "$srcdir/plugingui/lodepng"
   git submodule update
   ./autogen.sh
 }
