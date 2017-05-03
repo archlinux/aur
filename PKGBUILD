@@ -3,7 +3,7 @@
 pkgbase=upp
 pkgname=(upp theide umk)
 pkgver=10804
-pkgrel=2
+pkgrel=3
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
@@ -25,8 +25,8 @@ noextract=()
 md5sums=('20f1f01c8b3238a3e02a89bcc76a7aac'
          'a1b57c2231b6b0fa8070941fa4accf72'
          'b214709f096e4f50d61f50988359241e'
-         'b21415926edc5f18efaec625f6135556'
-         'b56d54a9d5d722bb32633a06675fbeb6'
+         'e60222794f4421da5917192df7045e42'
+         '574815e7f273e2653ea46b07395244be'
          '9ad99eb6ead298341b6698e505067d7c')
 
 # uncomment this to true to build theide with simpler GUI (with no GTK dependecies)
