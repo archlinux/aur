@@ -3,19 +3,20 @@
 pkgname=kde-thumbnailer-odf
 _pkgname=kde-odf-thumbnail
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Thumbnailer to show ODF (OpenDocument Format) previews in KDE file managers."
 arch=('x86_64' 'i686')
 url="http://kde-apps.org/content/show.php?content=110864"
 license=('LGPL3')
 depends=('kio')
 makedepends=('extra-cmake-modules')
-source=("http://kenai.com/projects/${_pkgname}/downloads/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+source=("http://mirror.rosalab.ru/rosa/rosa2016.1/repository/SRPMS/contrib/release/${_pkgname}-$pkgver-7.src.rpm"
         'port-to-kf5.patch')
-sha512sums=('569f36a13981d87d7f21081de26b5329ebd3aaa4b85a75094e192935ca2e780c39005693eb0f237409859a02bcb547835f97cff92b55b5e99d19f3a3d3428fd4'
+sha512sums=('e7facf6ccdaebc21aea6554c3ca8967f79ed47d9b2cbeca410b2870b3bd424eac2199a9663af865b724b5adb401b59095950e78c5c67744d7cdfa4a245e1ef58'
             '825b6286ec9f14db1539ca4d424d480d5518e3176eb7ec0d5af2d379bfc15eb68cf6b0cb88535eeaedbdedeb879194c1ec5339f5e8d9de2291bf5b20c769feec')
 
 prepare() {
+  bsdtar -zxvf $_pkgname-$pkgver.tar.gz
   cd "${_pkgname}-${pkgver}"
   patch -p1 -i ../port-to-kf5.patch
 }
