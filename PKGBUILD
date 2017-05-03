@@ -1,6 +1,6 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=etcher
-realver=1.0.0-rc.4
+realver=1.0.0-rc.5
 pkgver=${realver//-/_}
 pkgrel=1
 pkgdesc="Burn images to SD cards & USB drives, safe & easy"
@@ -21,8 +21,8 @@ options=("!strip")
 md5sums=('45deb94dca8036000f4c03a1634929ee'
          'bba3a3ed1d8ea4d3a9d1ad642dad3225'
          '7bd70ef05c6293e36938240be2558091')
-md5sums_i686=('90aa89060584b4d4403e51b464097fdd')
-md5sums_x86_64=('b0b310b08ffc4f70f0c7a69b03c51127')
+md5sums_i686=('a918ed02b65678e65ddca80e8c2d2056')
+md5sums_x86_64=('b90c4587a56f303a58f9668cb356f5fc')
 
 build() {
     local a=x86
