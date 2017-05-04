@@ -1,8 +1,8 @@
 pkgbase = plasma-browser-integration-git
-	pkgdesc = Google Now alternative for the Plasma Desktop
+	pkgdesc = Components necessary to integrate browsers into the Plasma Desktop
 	pkgver = r124.08a78f1
 	pkgrel = 1
-	url = http://www.kde.org
+	url = https://www.kde.org/plasma-desktop
 	arch = i686
 	arch = x86_64
 	license = GPL
