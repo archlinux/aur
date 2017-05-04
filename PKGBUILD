@@ -1,4 +1,5 @@
 # Maintainer: Aleksandr <orthodox dot tk at gmail dot com>
+
 pkgname=ponomar
 pkgver=0.80.0d8052d
 pkgrel=2
