@@ -1,4 +1,5 @@
-# Maintainer: Aleksandr <orthodox dot tk at gmail dot com>
+# Maintainer: 4leks4ndr <orthodox dot tk at gmail dot com>
+
 pkgname=m17n-cu
 pkgver=c6eb89e
 pkgrel=1
