@@ -1,0 +1,19 @@
+pkgbase = plasma-browser-integration-git
+	pkgdesc = Google Now alternative for the Plasma Desktop
+	pkgver = r124.08a78f1
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = krunner
+	provides = plasma-browser-integration
+	conflicts = plasma-browser-integration
+	source = git://git.kde.org/plasma-browser-integration.git
+	sha256sums = SKIP
+
+pkgname = plasma-browser-integration-git
+
