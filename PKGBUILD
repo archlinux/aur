@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('MIT')
 makedepends=('unzip')
 backup=()
-depends=('libnotify')
+depends=('libnotify' 'gconf')
 install=''
 source=(
     "${url}/releases/download/${_pkgver}/Whatsapp-linux-x64.zip"
