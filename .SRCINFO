@@ -1,15 +1,23 @@
 pkgbase = scanpy-git
-	pkgver = 0.1+8.gb275545
+	pkgdesc = Efficient tools for analyzing and simulating large-scale single-cell data
+	pkgver = 0.1+9.g8607c60
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = GPL3
+	depends = cython
 	depends = python-matplotlib
 	depends = python-pandas
 	depends = python-scipy
+	depends = python-seaborn
+	depends = python-psutil
 	depends = python-xlrd
 	depends = python-h5py
 	depends = python-scikit-learn
+	depends = python-statsmodels
+	depends = python-natsort
+	depends = python-joblib
+	depends = python-profilehooks
 	source = scanpy::git://github.com/theislab/scanpy.git
 	md5sums = SKIP
 

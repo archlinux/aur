@@ -2,21 +2,28 @@
 
 _pkgname=scanpy
 pkgname=$_pkgname-git
-pkgver=0.1+8.gb275545
+pkgver=0.1+9.g8607c60
 pkgrel=1
-pkgdesc=''
-arch=('any')
+pkgdesc='Efficient tools for analyzing and simulating large-scale single-cell data'
+arch=(any)
 url='https://github.com/theislab/scanpy'
 license=('GPL3')
 depends=(
-	'python-matplotlib'
-	'python-pandas'
-	'python-scipy'
-	'python-xlrd'
-	'python-h5py'
-	'python-scikit-learn')
+	cython
+	python-matplotlib
+	python-pandas
+	python-scipy
+	python-seaborn
+	python-psutil
+	python-xlrd
+	python-h5py
+	python-scikit-learn
+	python-statsmodels
+	python-natsort
+	python-joblib
+	python-profilehooks)
 source=($_pkgname::git://github.com/theislab/scanpy.git)
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
 	cd "$srcdir/$_pkgname/$_pkgname"
