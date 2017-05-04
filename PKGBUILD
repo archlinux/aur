@@ -1,19 +1,20 @@
 arch=(any)
 conflicts=(sph-dg)
-depends=(guile sph-lib liblmdb)
+depends=(liblmdb)
 license=(gpl3+)
 makedepends=(git gcc sph-sc)
 md5sums=(SKIP)
-pkgdesc='generic graph database for guile'
+pkgdesc='key/value/relations/graph database as a shared library'
 pkgname=sph-dg-git
+_gitname=sph-dg
 pkgrel=1
-pkgver=41
+pkgver=25
 provides=(sph-dg)
 source=("$pkgname::git://git.sph.mn/sph-dg#branch=stable")
 url="http://sph.mn/content/2faf"
 
 pkgver() {
-  cd $pkgname
+  cd "$pkgname"
   git rev-list --count HEAD
 }
 
