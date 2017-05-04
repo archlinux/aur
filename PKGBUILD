@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
 groups=()
-depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'openssl' 'curl')
+depends=('lldb' 'libunwind' 'icu58' 'lttng-ust' 'openssl' 'curl')
 makedepends=('cmake' 'make' 'clang' 'llvm' 'gettext')
 provides=('dotnet=1.1.1')
 conflicts=('dotnet-bin')
