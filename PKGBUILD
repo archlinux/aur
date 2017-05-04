@@ -2,7 +2,7 @@
 
 pkgname=heasoft
 pkgver=6.21
-pkgrel=2
+pkgrel=3
 pkgdesc="NASA high energy astrophysics library"
 makedepends=("gcc" "glibc" "gcc-fortran" "perl")
 depends=("ncurses" "libtinfo" "readline" "libxpm" )
@@ -18,7 +18,8 @@ prepare() {
   # lynx conflict with ncurses and openssl. For now left it out.
   # lynx can be installed from official repo.
   cd $srcdir/${pkgname}-${pkgver}
-  patch -Np1 -i ../${pkgname}-${pkgver}_nolynx.patch 
+  patch -Np1 -i ../${pkgname}-${pkgver}_nolynx.patch
+  echo
 }
 
 
@@ -41,5 +42,31 @@ package(){
   cd $srcdir/${pkgname}-${pkgver}/BUILD_DIR
   make install
 
+  _glibcver=$(pacman -Q glibc | cut -c7-10)
+
+  mkdir -p $pkgdir/opt/${pkgname}-${pkgver}/x86_64-unknown-linux-gnu-libc${_glibcver}/bin/
+
+  echo
+  echo "***********************************************************************"
+  echo
+
+  if [ -e /usr/bin/lynx ]
+  then
+     echo "Checking if lynx is installed... yes"
+     echo "Linking lynx to heasoft"
+     ln -s /usr/bin/lynx $pkgdir/opt/${pkgname}-${pkgver}/x86_64-unknown-linux-gnu-libc${_glibcver}/bin/lynx 
+     
+  else
+     echo "Checking if lynx is installed... no"
+  fi
+
+
+  printf "\n\nAdd following lines to your ~/.bashrc to initialize the software\n\n   export HEADAS=/opt/%s-%s/x86_64-unknown-linux-gnu-libc%s\n   alias heainit='source \$HEADAS/headas-init.sh\n\nThen load heasoft by the command:\n\n   >heainit\n\n" ${pkgname} ${pkgver} ${_glibcver}
+
+  echo "Install complete..."
+  echo
+  echo "***********************************************************************"
+  echo
+ 
 }
 
