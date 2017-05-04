@@ -2,12 +2,12 @@
 
 pkgname=switchboard-plug-network
 pkgver=0.1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Network plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-networking'
 license=('GPL3')
-groups=('pantheon-unstable')
+groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'nm-connection-editor'
          'polkit'
          'libgranite.so' 'libswitchboard-2.0.so')
