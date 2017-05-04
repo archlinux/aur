@@ -1,0 +1,691 @@
+From 2c9259cea74bd7848c7eabc791a303f7ca7747d5 Mon Sep 17 00:00:00 2001
+From: Marco Nilsson <denravonska@gmail.com>
+Date: Sat, 8 Apr 2017 13:52:22 +0200
+Subject: [PATCH] Openssl 1.1.0 (#185)
+
+* Add support for OpenSSL-1.1.0.
+
+This adds build support for both OpenSSL-1.1.0 and 1.0.2 to be able to compile in Debian testing.
+Note that Boost Asio did not get support for OpenSSL-1.1.0 until boost-1.62.0.
+
+This closes #164.
+---
+ src/bignum.h    | 138 ++++++++++++++++++++++++++++++--------------------------
+ src/crypter.cpp | 104 +++++++++++++++++++++++-------------------
+ src/key.cpp     |  68 +++++++++++++++++++++++-----
+ 3 files changed, 188 insertions(+), 122 deletions(-)
+
+diff --git a/src/bignum.h b/src/bignum.h
+index 2352e7b..cee71b1 100644
+--- a/src/bignum.h
++++ b/src/bignum.h
+@@ -52,54 +52,61 @@ public:
+     bool operator!() { return (pctx == NULL); }
+ };
+ 
++/* RAII wrapper for BIGNUM instance */
++class CBigNumBase
++{
++protected:
++    BIGNUM* pbn;
++
++public:
++    CBigNumBase()
++        : pbn(BN_new())
++    {
++        if (pbn == NULL)
++            throw bignum_error("CBigNum : BN_new() returned NULL");
++    }
++
++    ~CBigNumBase()
++    {
++        BN_clear_free(pbn);
++    }
++};
+ 
+ /** C++ wrapper for BIGNUM (OpenSSL bignum) */
+-class CBigNum : public BIGNUM
++class CBigNum : public CBigNumBase
+ {
+ public:
+     CBigNum()
+-    {
+-        BN_init(this);
+-    }
++    {}
+ 
+     CBigNum(const CBigNum& b)
+     {
+-        BN_init(this);
+-        if (!BN_copy(this, &b))
+-        {
+-            BN_clear_free(this);
++        if (!BN_copy(pbn, &b))
+             throw bignum_error("CBigNum::CBigNum(const CBigNum&) : BN_copy failed");
+-        }
+     }
+ 
+     CBigNum& operator=(const CBigNum& b)
+     {
+-        if (!BN_copy(this, &b))
++        if (!BN_copy(pbn, &b))
+             throw bignum_error("CBigNum::operator= : BN_copy failed");
+         return (*this);
+     }
+ 
+-    ~CBigNum()
+-    {
+-        BN_clear_free(this);
+-    }
+-
+     //CBigNum(char n) is not portable.  Use 'signed char' or 'unsigned char'.
+-    CBigNum(signed char n)        { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
+-    CBigNum(short n)              { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
+-    CBigNum(int n)                { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
+-    CBigNum(long n)               { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
+-    CBigNum(long long n)          { BN_init(this); setint64(n); }
+-    CBigNum(unsigned char n)      { BN_init(this); setulong(n); }
+-    CBigNum(unsigned short n)     { BN_init(this); setulong(n); }
+-    CBigNum(unsigned int n)       { BN_init(this); setulong(n); }
+-    CBigNum(unsigned long n)      { BN_init(this); setulong(n); }
+-    CBigNum(unsigned long long n) { BN_init(this); setuint64(n); }
+-    explicit CBigNum(uint256 n)   { BN_init(this); setuint256(n); }
++    CBigNum(signed char n)        { if (n >= 0) setulong(n); else setint64(n); }
++    CBigNum(short n)              { if (n >= 0) setulong(n); else setint64(n); }
++    CBigNum(int n)                { if (n >= 0) setulong(n); else setint64(n); }
++    CBigNum(long n)               { if (n >= 0) setulong(n); else setint64(n); }
++    CBigNum(long long n)          { setint64(n); }
++    CBigNum(unsigned char n)      { setulong(n); }
++    CBigNum(unsigned short n)     { setulong(n); }
++    CBigNum(unsigned int n)       { setulong(n); }
++    CBigNum(unsigned long n)      { setulong(n); }
++    CBigNum(unsigned long long n) { setuint64(n); }
++    explicit CBigNum(uint256 n)   { setuint256(n); }
+ 
+     explicit CBigNum(const std::vector<unsigned char>& vch)
+     {
+-        BN_init(this);
+         setvch(vch);
+     }
+ 
+@@ -133,30 +140,30 @@ public:
+      * @return the size
+      */
+     int bitSize() const{
+-        return  BN_num_bits(this);
++        return  BN_num_bits(pbn);
+     }
+ 
+ 
+     void setulong(unsigned long n)
+     {
+-        if (!BN_set_word(this, n))
++        if (!BN_set_word(pbn, n))
+             throw bignum_error("CBigNum conversion from unsigned long : BN_set_word failed");
+     }
+ 
+     unsigned long getulong() const
+     {
+-        return BN_get_word(this);
++        return BN_get_word(pbn);
+     }
+ 
+     unsigned int getuint() const
+     {
+-        return BN_get_word(this);
++        return BN_get_word(pbn);
+     }
+ 
+     int getint() const
+     {
+-        unsigned long n = BN_get_word(this);
+-        if (!BN_is_negative(this))
++        unsigned long n = BN_get_word(pbn);
++        if (!BN_is_negative(pbn))
+             return (n > (unsigned long)std::numeric_limits<int>::max() ? std::numeric_limits<int>::max() : n);
+         else
+             return (n > (unsigned long)std::numeric_limits<int>::max() ? std::numeric_limits<int>::min() : -(int)n);
+@@ -202,16 +209,16 @@ public:
+         pch[1] = (nSize >> 16) & 0xff;
+         pch[2] = (nSize >> 8) & 0xff;
+         pch[3] = (nSize) & 0xff;
+-        BN_mpi2bn(pch, p - pch, this);
++        BN_mpi2bn(pch, p - pch, pbn);
+     }
+ 
+     uint64_t getuint64()
+     {
+-        unsigned int nSize = BN_bn2mpi(this, NULL);
++        unsigned int nSize = BN_bn2mpi(pbn, NULL);
+         if (nSize < 4)
+             return 0;
+         std::vector<unsigned char> vch(nSize);
+-        BN_bn2mpi(this, &vch[0]);
++        BN_bn2mpi(pbn, &vch[0]);
+         if (vch.size() > 4)
+             vch[4] &= 0x7f;
+         uint64_t n = 0;
+@@ -244,7 +251,7 @@ public:
+         pch[1] = (nSize >> 16) & 0xff;
+         pch[2] = (nSize >> 8) & 0xff;
+         pch[3] = (nSize) & 0xff;
+-        BN_mpi2bn(pch, p - pch, this);
++        BN_mpi2bn(pch, p - pch, pbn);
+     }
+ 
+     void setuint256(uint256 n)
+@@ -272,16 +279,16 @@ public:
+         pch[1] = (nSize >> 16) & 0xff;
+         pch[2] = (nSize >> 8) & 0xff;
+         pch[3] = (nSize >> 0) & 0xff;
+-        BN_mpi2bn(pch, p - pch, this);
++        BN_mpi2bn(pch, p - pch, pbn);
+     }
+ 
+     uint256 getuint256() const
+     {
+-        unsigned int nSize = BN_bn2mpi(this, NULL);
++        unsigned int nSize = BN_bn2mpi(pbn, NULL);
+         if (nSize < 4)
+             return 0;
+         std::vector<unsigned char> vch(nSize);
+-        BN_bn2mpi(this, &vch[0]);
++        BN_bn2mpi(pbn, &vch[0]);
+         if (vch.size() > 4)
+             vch[4] &= 0x7f;
+         uint256 n = 0;
+@@ -303,16 +310,16 @@ public:
+         vch2[3] = (nSize >> 0) & 0xff;
+         // swap data to big endian
+         reverse_copy(vch.begin(), vch.end(), vch2.begin() + 4);
+-        BN_mpi2bn(&vch2[0], vch2.size(), this);
++        BN_mpi2bn(&vch2[0], vch2.size(), pbn);
+     }
+ 
+     std::vector<unsigned char> getvch() const
+     {
+-        unsigned int nSize = BN_bn2mpi(this, NULL);
++        unsigned int nSize = BN_bn2mpi(pbn, NULL);
+         if (nSize <= 4)
+             return std::vector<unsigned char>();
+         std::vector<unsigned char> vch(nSize);
+-        BN_bn2mpi(this, &vch[0]);
++        BN_bn2mpi(pbn, &vch[0]);
+         vch.erase(vch.begin(), vch.begin() + 4);
+         reverse(vch.begin(), vch.end());
+         return vch;
+@@ -326,16 +333,16 @@ public:
+         if (nSize >= 1) vch[4] = (nCompact >> 16) & 0xff;
+         if (nSize >= 2) vch[5] = (nCompact >> 8) & 0xff;
+         if (nSize >= 3) vch[6] = (nCompact >> 0) & 0xff;
+-        BN_mpi2bn(&vch[0], vch.size(), this);
++        BN_mpi2bn(&vch[0], vch.size(), pbn);
+         return *this;
+     }
+ 
+     unsigned int GetCompact() const
+     {
+-        unsigned int nSize = BN_bn2mpi(this, NULL);
++        unsigned int nSize = BN_bn2mpi(pbn, NULL);
+         std::vector<unsigned char> vch(nSize);
+         nSize -= 4;
+-        BN_bn2mpi(this, &vch[0]);
++        BN_bn2mpi(pbn, &vch[0]);
+         unsigned int nCompact = nSize << 24;
+         if (nSize >= 1) nCompact |= (vch[4] << 16);
+         if (nSize >= 2) nCompact |= (vch[5] << 8);
+@@ -393,7 +400,7 @@ public:
+             unsigned int c = rem.getulong();
+             str += "0123456789abcdef"[c];
+         }
+-        if (BN_is_negative(this))
++        if (BN_is_negative(pbn))
+             str += "-";
+         reverse(str.begin(), str.end());
+         return str;
+@@ -440,7 +447,7 @@ public:
+     CBigNum pow(const CBigNum& e) const {
+         CAutoBN_CTX pctx;
+         CBigNum ret;
+-        if (!BN_exp(&ret, this, &e, pctx))
++        if (!BN_exp(&ret, pbn, &e, pctx))
+             throw bignum_error("CBigNum::pow : BN_exp failed");
+         return ret;
+     }
+@@ -453,7 +460,7 @@ public:
+     CBigNum mul_mod(const CBigNum& b, const CBigNum& m) const {
+         CAutoBN_CTX pctx;
+         CBigNum ret;
+-        if (!BN_mod_mul(&ret, this, &b, &m, pctx))
++        if (!BN_mod_mul(&ret, pbn, &b, &m, pctx))
+             throw bignum_error("CBigNum::mul_mod : BN_mod_mul failed");
+         
+         return ret;
+@@ -474,7 +481,7 @@ public:
+             if (!BN_mod_exp(&ret, &inv, &posE, &m, pctx))
+                 throw bignum_error("CBigNum::pow_mod: BN_mod_exp failed on negative exponent");
+         }else
+-            if (!BN_mod_exp(&ret, this, &e, &m, pctx))
++            if (!BN_mod_exp(&ret, pbn, &e, &m, pctx))
+                 throw bignum_error("CBigNum::pow_mod : BN_mod_exp failed");
+ 
+         return ret;
+@@ -489,7 +496,7 @@ public:
+     CBigNum inverse(const CBigNum& m) const {
+         CAutoBN_CTX pctx;
+         CBigNum ret;
+-        if (!BN_mod_inverse(&ret, this, &m, pctx))
++        if (!BN_mod_inverse(&ret, pbn, &m, pctx))
+             throw bignum_error("CBigNum::inverse*= :BN_mod_inverse");
+         return ret;
+     }
+@@ -515,7 +522,7 @@ public:
+     CBigNum gcd( const CBigNum& b) const{
+         CAutoBN_CTX pctx;
+         CBigNum ret;
+-        if (!BN_gcd(&ret, this, &b, pctx))
++        if (!BN_gcd(&ret, pbn, &b, pctx))
+             throw bignum_error("CBigNum::gcd*= :BN_gcd");
+         return ret;
+     }
+@@ -528,26 +535,27 @@ public:
+     */
+     bool isPrime(const int checks=BN_prime_checks) const {
+         CAutoBN_CTX pctx;
+-        int ret = BN_is_prime(this, checks, NULL, pctx, NULL);
++        int ret = BN_is_prime_ex(pbn, checks, pctx, NULL);
+         if(ret < 0){
+-            throw bignum_error("CBigNum::isPrime :BN_is_prime");
++            throw bignum_error("CBigNum::isPrime :BN_is_prime_ex");
+         }
+         return ret;
+     }
+ 
+-    bool isOne() const {
+-        return BN_is_one(this);
++    bool isOne() const
++    {
++        return BN_is_one(pbn);
+     }
+ 
+ 
+     bool operator!() const
+     {
+-        return BN_is_zero(this);
++        return BN_is_zero(pbn);
+     }
+ 
+     CBigNum& operator+=(const CBigNum& b)
+     {
+-        if (!BN_add(this, this, &b))
++        if (!BN_add(pbn, pbn, &b))
+             throw bignum_error("CBigNum::operator+= : BN_add failed");
+         return *this;
+     }
+@@ -561,7 +569,7 @@ public:
+     CBigNum& operator*=(const CBigNum& b)
+     {
+         CAutoBN_CTX pctx;
+-        if (!BN_mul(this, this, &b, pctx))
++        if (!BN_mul(pbn, pbn, &b, pctx))
+             throw bignum_error("CBigNum::operator*= : BN_mul failed");
+         return *this;
+     }
+@@ -580,7 +588,7 @@ public:
+ 
+     CBigNum& operator<<=(unsigned int shift)
+     {
+-        if (!BN_lshift(this, this, shift))
++        if (!BN_lshift(pbn, pbn, shift))
+             throw bignum_error("CBigNum:operator<<= : BN_lshift failed");
+         return *this;
+     }
+@@ -591,13 +599,13 @@ public:
+         //   if built on ubuntu 9.04 or 9.10, probably depends on version of OpenSSL
+         CBigNum a = 1;
+         a <<= shift;
+-        if (BN_cmp(&a, this) > 0)
++        if (BN_cmp(&a, pbn) > 0)
+         {
+             *this = 0;
+             return *this;
+         }
+ 
+-        if (!BN_rshift(this, this, shift))
++        if (!BN_rshift(pbn, pbn, shift))
+             throw bignum_error("CBigNum:operator>>= : BN_rshift failed");
+         return *this;
+     }
+@@ -606,7 +614,7 @@ public:
+     CBigNum& operator++()
+     {
+         // prefix operator
+-        if (!BN_add(this, this, BN_value_one()))
++        if (!BN_add(pbn, pbn, BN_value_one()))
+             throw bignum_error("CBigNum::operator++ : BN_add failed");
+         return *this;
+     }
+@@ -623,7 +631,7 @@ public:
+     {
+         // prefix operator
+         CBigNum r;
+-        if (!BN_sub(&r, this, BN_value_one()))
++        if (!BN_sub(&r, pbn, BN_value_one()))
+             throw bignum_error("CBigNum::operator-- : BN_sub failed");
+         *this = r;
+         return *this;
+@@ -637,6 +645,8 @@ public:
+         return ret;
+     }
+ 
++    BIGNUM* operator&() { return pbn; }
++    const BIGNUM* operator&() const { return pbn; }
+ 
+     friend inline const CBigNum operator-(const CBigNum& a, const CBigNum& b);
+     friend inline const CBigNum operator/(const CBigNum& a, const CBigNum& b);
+diff --git a/src/crypter.cpp b/src/crypter.cpp
+index 00dac10..b7a1f50 100644
+--- a/src/crypter.cpp
++++ b/src/crypter.cpp
+@@ -77,15 +77,16 @@ bool CCrypter::Encrypt(const CKeyingMaterial& vchPlaintext, std::vector<unsigned
+     int nCLen = nLen + AES_BLOCK_SIZE, nFLen = 0;
+     vchCiphertext = std::vector<unsigned char> (nCLen);
+ 
+-    EVP_CIPHER_CTX ctx;
+-
+     bool fOk = true;
+ 
+-    EVP_CIPHER_CTX_init(&ctx);
+-    if (fOk) fOk = EVP_EncryptInit_ex(&ctx, EVP_aes_256_cbc(), NULL, chKey, chIV);
+-    if (fOk) fOk = EVP_EncryptUpdate(&ctx, &vchCiphertext[0], &nCLen, &vchPlaintext[0], nLen);
+-    if (fOk) fOk = EVP_EncryptFinal_ex(&ctx, (&vchCiphertext[0])+nCLen, &nFLen);
+-    EVP_CIPHER_CTX_cleanup(&ctx);
++    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
++    if(!ctx)
++        throw std::runtime_error("Error allocating cipher context");
++
++    if (fOk) fOk = EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, chKey, chIV);
++    if (fOk) fOk = EVP_EncryptUpdate(ctx, &vchCiphertext[0], &nCLen, &vchPlaintext[0], nLen);
++    if (fOk) fOk = EVP_EncryptFinal_ex(ctx, (&vchCiphertext[0])+nCLen, &nFLen);
++    EVP_CIPHER_CTX_free(ctx);
+ 
+     if (!fOk) return false;
+ 
+@@ -104,15 +105,16 @@ bool CCrypter::Decrypt(const std::vector<unsigned char>& vchCiphertext, CKeyingM
+ 
+     vchPlaintext = CKeyingMaterial(nPLen);
+ 
+-    EVP_CIPHER_CTX ctx;
+-
+     bool fOk = true;
+ 
+-    EVP_CIPHER_CTX_init(&ctx);
+-    if (fOk) fOk = EVP_DecryptInit_ex(&ctx, EVP_aes_256_cbc(), NULL, chKey, chIV);
+-    if (fOk) fOk = EVP_DecryptUpdate(&ctx, &vchPlaintext[0], &nPLen, &vchCiphertext[0], nLen);
+-    if (fOk) fOk = EVP_DecryptFinal_ex(&ctx, (&vchPlaintext[0])+nPLen, &nFLen);
+-    EVP_CIPHER_CTX_cleanup(&ctx);
++    EVP_CIPHER_CTX *ctx= EVP_CIPHER_CTX_new();
++    if(!ctx)
++        throw std::runtime_error("Error allocating cipher context");
++ 
++    if (fOk) fOk = EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, chKey, chIV);
++    if (fOk) fOk = EVP_DecryptUpdate(ctx, &vchPlaintext[0], &nPLen, &vchCiphertext[0], nLen);
++    if (fOk) fOk = EVP_DecryptFinal_ex(ctx, (&vchPlaintext[0])+nPLen, &nFLen);
++    EVP_CIPHER_CTX_free(ctx);
+ 
+     if (!fOk) return false;
+ 
+@@ -150,9 +152,9 @@ bool DecryptSecret(const CKeyingMaterial& vMasterKey, const std::vector<unsigned
+ 
+ bool LoadGridKey(std::string gridkey, std::string salt)
+ {
+-	const char* chGridKey = gridkey.c_str();
+-	const char* chSalt = salt.c_str();
+-	OPENSSL_cleanse(chKeyGridcoin, sizeof(chKeyGridcoin));
++    const char* chGridKey = gridkey.c_str();
++    const char* chSalt = salt.c_str();
++    OPENSSL_cleanse(chKeyGridcoin, sizeof(chKeyGridcoin));
+     OPENSSL_cleanse(chIVGridcoin, sizeof(chIVGridcoin));
+     EVP_BytesToKey(EVP_aes_256_cbc(), EVP_sha512(),(unsigned char *)chSalt,
+ 		(unsigned char *)chGridKey, 
+@@ -170,17 +172,19 @@ bool LoadGridKey(std::string gridkey, std::string salt)
+ 
+ bool GridEncrypt(std::vector<unsigned char> vchPlaintext, std::vector<unsigned char> &vchCiphertext)
+ {
+-	LoadGridKey("gridcoin","cqiuehEJ2Tqdov");
++    LoadGridKey("gridcoin","cqiuehEJ2Tqdov");
+     int nLen = vchPlaintext.size();
+     int nCLen = nLen + AES_BLOCK_SIZE, nFLen = 0;
+     vchCiphertext = std::vector<unsigned char> (nCLen);
+-    EVP_CIPHER_CTX ctx;
+     bool fOk = true;
+-    EVP_CIPHER_CTX_init(&ctx);
+-    if (fOk) fOk = EVP_EncryptInit_ex(&ctx, EVP_aes_256_cbc(), NULL, chKeyGridcoin, chIVGridcoin);
+-    if (fOk) fOk = EVP_EncryptUpdate(&ctx, &vchCiphertext[0], &nCLen, &vchPlaintext[0], nLen);
+-    if (fOk) fOk = EVP_EncryptFinal_ex(&ctx, (&vchCiphertext[0])+nCLen, &nFLen);
+-    EVP_CIPHER_CTX_cleanup(&ctx);
++    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
++    if(!ctx)
++        throw std::runtime_error("Error allocating cipher context");
++
++    if (fOk) fOk = EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, chKeyGridcoin, chIVGridcoin);
++    if (fOk) fOk = EVP_EncryptUpdate(ctx, &vchCiphertext[0], &nCLen, &vchPlaintext[0], nLen);
++    if (fOk) fOk = EVP_EncryptFinal_ex(ctx, (&vchCiphertext[0])+nCLen, &nFLen);
++    EVP_CIPHER_CTX_free(ctx);
+     if (!fOk) return false;
+     vchCiphertext.resize(nCLen + nFLen);
+     return true;
+@@ -189,16 +193,18 @@ bool GridEncrypt(std::vector<unsigned char> vchPlaintext, std::vector<unsigned c
+ 
+ bool GridDecrypt(const std::vector<unsigned char>& vchCiphertext,std::vector<unsigned char>& vchPlaintext)
+ {
+-	LoadGridKey("gridcoin","cqiuehEJ2Tqdov");
+-	int nLen = vchCiphertext.size();
++    LoadGridKey("gridcoin","cqiuehEJ2Tqdov");
++    int nLen = vchCiphertext.size();
+     int nPLen = nLen, nFLen = 0;
+-    EVP_CIPHER_CTX ctx;
+     bool fOk = true;
+-    EVP_CIPHER_CTX_init(&ctx);
+-    if (fOk) fOk = EVP_DecryptInit_ex(&ctx, EVP_aes_256_cbc(), NULL, chKeyGridcoin, chIVGridcoin);
+-    if (fOk) fOk = EVP_DecryptUpdate(&ctx, &vchPlaintext[0], &nPLen, &vchCiphertext[0], nLen);
+-    if (fOk) fOk = EVP_DecryptFinal_ex(&ctx, (&vchPlaintext[0])+nPLen, &nFLen);
+-    EVP_CIPHER_CTX_cleanup(&ctx);
++    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
++    if(!ctx)
++        throw std::runtime_error("Error allocating cipher context");
++
++    if (fOk) fOk = EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, chKeyGridcoin, chIVGridcoin);
++    if (fOk) fOk = EVP_DecryptUpdate(ctx, &vchPlaintext[0], &nPLen, &vchCiphertext[0], nLen);
++    if (fOk) fOk = EVP_DecryptFinal_ex(ctx, (&vchPlaintext[0])+nPLen, &nFLen);
++    EVP_CIPHER_CTX_free(ctx);
+     if (!fOk) return false;
+     vchPlaintext.resize(nPLen + nFLen);
+     return true;
+@@ -210,17 +216,19 @@ bool GridDecrypt(const std::vector<unsigned char>& vchCiphertext,std::vector<uns
+ 
+ bool GridEncryptWithSalt(std::vector<unsigned char> vchPlaintext, std::vector<unsigned char> &vchCiphertext, std::string salt)
+ {
+-	LoadGridKey("gridcoin",salt);
++    LoadGridKey("gridcoin",salt);
+     int nLen = vchPlaintext.size();
+     int nCLen = nLen + AES_BLOCK_SIZE, nFLen = 0;
+     vchCiphertext = std::vector<unsigned char> (nCLen);
+-    EVP_CIPHER_CTX ctx;
+     bool fOk = true;
+-    EVP_CIPHER_CTX_init(&ctx);
+-    if (fOk) fOk = EVP_EncryptInit_ex(&ctx, EVP_aes_256_cbc(), NULL, chKeyGridcoin, chIVGridcoin);
+-    if (fOk) fOk = EVP_EncryptUpdate(&ctx, &vchCiphertext[0], &nCLen, &vchPlaintext[0], nLen);
+-    if (fOk) fOk = EVP_EncryptFinal_ex(&ctx, (&vchCiphertext[0])+nCLen, &nFLen);
+-    EVP_CIPHER_CTX_cleanup(&ctx);
++    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
++    if(!ctx)
++        throw std::runtime_error("Error allocating cipher context");
++   
++    if (fOk) fOk = EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, chKeyGridcoin, chIVGridcoin);
++    if (fOk) fOk = EVP_EncryptUpdate(ctx, &vchCiphertext[0], &nCLen, &vchPlaintext[0], nLen);
++    if (fOk) fOk = EVP_EncryptFinal_ex(ctx, (&vchCiphertext[0])+nCLen, &nFLen);
++    EVP_CIPHER_CTX_free(ctx);
+     if (!fOk) return false;
+     vchCiphertext.resize(nCLen + nFLen);
+     return true;
+@@ -229,16 +237,18 @@ bool GridEncryptWithSalt(std::vector<unsigned char> vchPlaintext, std::vector<un
+ 
+ bool GridDecryptWithSalt(const std::vector<unsigned char>& vchCiphertext,std::vector<unsigned char>& vchPlaintext, std::string salt)
+ {
+-	LoadGridKey("gridcoin",salt);
+-	int nLen = vchCiphertext.size();
++    LoadGridKey("gridcoin",salt);
++    int nLen = vchCiphertext.size();
+     int nPLen = nLen, nFLen = 0;
+-    EVP_CIPHER_CTX ctx;
+     bool fOk = true;
+-    EVP_CIPHER_CTX_init(&ctx);
+-    if (fOk) fOk = EVP_DecryptInit_ex(&ctx, EVP_aes_256_cbc(), NULL, chKeyGridcoin, chIVGridcoin);
+-    if (fOk) fOk = EVP_DecryptUpdate(&ctx, &vchPlaintext[0], &nPLen, &vchCiphertext[0], nLen);
+-    if (fOk) fOk = EVP_DecryptFinal_ex(&ctx, (&vchPlaintext[0])+nPLen, &nFLen);
+-    EVP_CIPHER_CTX_cleanup(&ctx);
++    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
++    if(!ctx)
++        throw std::runtime_error("Error allocating cipher context");
++
++    if (fOk) fOk = EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, chKeyGridcoin, chIVGridcoin);
++    if (fOk) fOk = EVP_DecryptUpdate(ctx, &vchPlaintext[0], &nPLen, &vchCiphertext[0], nLen);
++    if (fOk) fOk = EVP_DecryptFinal_ex(ctx, (&vchPlaintext[0])+nPLen, &nFLen);
++    EVP_CIPHER_CTX_free(ctx);
+     if (!fOk) return false;
+     vchPlaintext.resize(nPLen + nFLen);
+     return true;
+diff --git a/src/key.cpp b/src/key.cpp
+index adfd03f..c8dcc8c 100644
+--- a/src/key.cpp
++++ b/src/key.cpp
+@@ -9,6 +9,31 @@
+ 
+ #include "key.h"
+ 
++// OpenSLL 1.1.0 changed EVP data structures to be opaque. In order to preserve
++// usage consistency the OpenSLL wiki suggests that the missing functions are
++// implemented manually when building for <1.1.0. See:
++// https://wiki.openssl.org/index.php/1.1_API_Changes
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++int ECDSA_SIG_set0(ECDSA_SIG *sig, BIGNUM *r, BIGNUM *s)
++{
++    if (r == NULL || s == NULL)
++        return 0;
++    BN_clear_free(sig->r);
++    BN_clear_free(sig->s);
++    sig->r = r;
++    sig->s = s;
++    return 1;
++}
++
++void ECDSA_SIG_get0(const ECDSA_SIG *sig, const BIGNUM **pr, const BIGNUM **ps)
++{
++    if (pr != NULL)
++        *pr = sig->r;
++    if (ps != NULL)
++        *ps = sig->s;
++}
++#endif
++
+ // Generate a private key from just the secret parameter
+ int EC_KEY_regenerate_key(EC_KEY *eckey, BIGNUM *priv_key)
+ {
+@@ -70,6 +95,8 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY *eckey, ECDSA_SIG *ecsig, const unsigned ch
+     int n = 0;
+     int i = recid / 2;
+ 
++    const BIGNUM *pr, *ps;
++    ECDSA_SIG_get0(ecsig, &pr, &ps);
+     const EC_GROUP *group = EC_KEY_get0_group(eckey);
+     if ((ctx = BN_CTX_new()) == NULL) { ret = -1; goto err; }
+     BN_CTX_start(ctx);
+@@ -78,7 +105,7 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY *eckey, ECDSA_SIG *ecsig, const unsigned ch
+     x = BN_CTX_get(ctx);
+     if (!BN_copy(x, order)) { ret=-1; goto err; }
+     if (!BN_mul_word(x, i)) { ret=-1; goto err; }
+-    if (!BN_add(x, x, ecsig->r)) { ret=-1; goto err; }
++    if (!BN_add(x, x, pr)) { ret=-1; goto err; }
+     field = BN_CTX_get(ctx);
+     if (!EC_GROUP_get_curve_GFp(group, field, NULL, NULL, ctx)) { ret=-2; goto err; }
+     if (BN_cmp(x, field) >= 0) { ret=0; goto err; }
+@@ -99,9 +126,9 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY *eckey, ECDSA_SIG *ecsig, const unsigned ch
+     if (!BN_zero(zero)) { ret=-1; goto err; }
+     if (!BN_mod_sub(e, zero, e, order, ctx)) { ret=-1; goto err; }
+     rr = BN_CTX_get(ctx);
+-    if (!BN_mod_inverse(rr, ecsig->r, order, ctx)) { ret=-1; goto err; }
++    if (!BN_mod_inverse(rr, pr, order, ctx)) { ret=-1; goto err; }
+     sor = BN_CTX_get(ctx);
+-    if (!BN_mod_mul(sor, ecsig->s, rr, order, ctx)) { ret=-1; goto err; }
++    if (!BN_mod_mul(sor, ps, rr, order, ctx)) { ret=-1; goto err; }
+     eor = BN_CTX_get(ctx);
+     if (!BN_mod_mul(eor, e, rr, order, ctx)) { ret=-1; goto err; }
+     if (!EC_POINT_mul(group, Q, eor, R, sor, ctx)) { ret=-2; goto err; }
+@@ -344,9 +371,23 @@ bool CKey::Sign(uint256 hash, std::vector<unsigned char>& vchSig)
+     BIGNUM *halforder = BN_CTX_get(ctx);
+     EC_GROUP_get_order(group, order, ctx);
+     BN_rshift1(halforder, order);
+-    if (BN_cmp(sig->s, halforder) > 0) {
++
++    const BIGNUM *pr, *ps;
++    ECDSA_SIG_get0(sig, &pr, &ps);
++    if (BN_cmp(ps, halforder) > 0) {
+         // enforce low S values, by negating the value (modulo the order) if above order/2.
+-        BN_sub(sig->s, order, sig->s);
++        BIGNUM *nps = BN_dup(ps);
++        if(!nps)
++            throw std::runtime_error("CKey : BN_dup() returned NULL"); 
++        BIGNUM *npr = BN_dup(pr);
++        if(!npr)
++        {
++            BN_free(nps);
++            throw std::runtime_error("CKey : BN_dup() returned NULL"); 
++        }
++
++        BN_sub(nps, order, nps);
++        ECDSA_SIG_set0(sig, npr, nps);	
+     }
+     BN_CTX_end(ctx);
+     BN_CTX_free(ctx);
+@@ -371,8 +412,10 @@ bool CKey::SignCompact(uint256 hash, std::vector<unsigned char>& vchSig)
+         return false;
+     vchSig.clear();
+     vchSig.resize(65,0);
+-    int nBitsR = BN_num_bits(sig->r);
+-    int nBitsS = BN_num_bits(sig->s);
++    const BIGNUM *pr, *ps;
++    ECDSA_SIG_get0(sig, &pr, &ps);
++    int nBitsR = BN_num_bits(pr);
++    int nBitsS = BN_num_bits(ps);
+     if (nBitsR <= 256 && nBitsS <= 256)
+     {
+         int nRecId = -1;
+@@ -397,8 +440,9 @@ bool CKey::SignCompact(uint256 hash, std::vector<unsigned char>& vchSig)
+         }
+ 
+         vchSig[0] = nRecId+27+(fCompressedPubKey ? 4 : 0);
+-        BN_bn2bin(sig->r,&vchSig[33-(nBitsR+7)/8]);
+-        BN_bn2bin(sig->s,&vchSig[65-(nBitsS+7)/8]);
++        ECDSA_SIG_get0(sig, &pr, &ps);
++        BN_bn2bin(pr,&vchSig[33-(nBitsR+7)/8]);
++        BN_bn2bin(ps,&vchSig[65-(nBitsS+7)/8]);
+         fOk = true;
+     }
+     ECDSA_SIG_free(sig);
+@@ -446,8 +490,10 @@ bool CKey::SetCompactSignature(uint256 hash, const std::vector<unsigned char>& v
+     if (nV<27 || nV>=35)
+         return false;
+     ECDSA_SIG *sig = ECDSA_SIG_new();
+-    BN_bin2bn(&vchSig[1],32,sig->r);
+-    BN_bin2bn(&vchSig[33],32,sig->s);
++    ECDSA_SIG_set0(
++        sig,
++        BN_bin2bn(&vchSig[1],32,NULL),
++        BN_bin2bn(&vchSig[33],32,NULL));
+ 
+     EC_KEY_free(pkey);
+     pkey = EC_KEY_new_by_curve_name(NID_secp256k1);
+-- 
+2.12.2
+
