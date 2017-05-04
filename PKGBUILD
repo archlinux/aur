@@ -5,10 +5,10 @@
 pkgname=ganttproject
 pkgver=2.8.4
 _build=r2134
-pkgrel=1
+pkgrel=2
 pkgdesc="A project scheduling application featuring gantt chart, resource management, calendaring."
 arch=('i686' 'x86_64')
-url="http://ganttproject.sourceforge.net/"
+url="http://www.ganttproject.biz/"
 license=("GPL")
 depends=('java-runtime')
 makedepends=('unzip')
