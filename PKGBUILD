@@ -11,7 +11,7 @@ license=("custom:vim")
 depends=("gtk2" "hicolor-icon-theme" "gtk-update-icon-cache" "desktop-file-utils")
 optdepends=("lua: Lua interpreter" "perl: Perl interpreter" "python: Python 3 interpreter"
             "python2: Python 2 interpreter" "ruby: Ruby interpreter")
-makedepends=("git" "lua" "python" "python2" "ruby")
+makedepends=("git" "libxt" "lua" "python" "python2" "ruby")
 provides=("gvim=$pkgver" "xxd" "vim-runtime=$pkgver" "vim=$pkgver")
 conflicts=("vim-minimal-git" "vim-git" "vim-runtime" "vim-runtime-git"
            "vim-minimal" "vim" "vim-python3" "gvim" "gvim-gtk3" "gvim-python3" "gvim-git")
