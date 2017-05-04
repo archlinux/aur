@@ -21,8 +21,8 @@ source=(mms.cfg)
 source_i686=("flash_player_npapi_linux_${pkgver}_i386.tar.gz"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux32/flash_player_npapi_linux.i386.tar.gz)
 source_x86_64=("flash_player_npapi_linux_${pkgver}_x86_64.tar.gz"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux64/flash_player_npapi_linux.x86_64.tar.gz)
 md5sums=('f34aae6279b40e0bd2abfb0d9963d7b8')
-md5sums_i686=('dfd3088dc0a4f75b8f2e4fc155cbeba9')
-md5sums_x86_64=('039bfbce80409056e6c1980fc35b33e7')
+md5sums_i686=('8a8f8e34d757842ffde47a5ef2ea87dc')
+md5sums_x86_64=('3bd2be455bf510e634847ecc63bb8168') 
 
 
 prepare () {
