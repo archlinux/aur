@@ -2,26 +2,26 @@
 
 pkgbase=python-importanize
 pkgname=(python-importanize python2-importanize)
-_realname=importanize
-pkgver=0.4.1
+pypi_name=importanize
+pkgver=0.5
 pkgrel=1
 pkgdesc="Utility for organizing Python imports using PEP8 or custom rules"
 arch=('any')
 license=('MIT')
 url="https://pypi.python.org/pypi/importanize/"
 depends=('python')
-source=("https://pypi.python.org/packages/source/i/importanize/importanize-${pkgver}.tar.gz")
-md5sums=('84eb9e9087c17676f8b2e5cb2668b2dd')
+source=("https://pypi.io/packages/source/i/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
+md5sums=('50507754fea611bc057511f93664720b')
 
 prepare() {
-  cp -a ${_realname}-${pkgver}{,-python2}
+  cp -a ${pypi_name}-${pkgver}{,-python2}
 }
 
 build() {
-  cd "${srcdir}/${_realname}-${pkgver}"
+  cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${_realname}-${pkgver}-python2"
+  cd "${srcdir}/${pypi_name}-${pkgver}-python2"
   python2 setup.py build
 }
 
@@ -29,7 +29,7 @@ package_python-importanize() {
   pkgdesc='Python 3 client for importanize'
   depends=('python')
 
-  cd "${srcdir}/${_realname}-${pkgver}"
+  cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
 }
 
@@ -37,7 +37,7 @@ package_python2-importanize() {
   pkgdesc='Python 2 client for importanize'
   depends=('python2')
 
-  cd "${srcdir}/${_realname}-${pkgver}-python2"
+  cd "${srcdir}/${pypi_name}-${pkgver}-python2"
   python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
   mv ${pkgdir}/usr/bin/importanize ${pkgdir}/usr/bin/importanize2
 }
