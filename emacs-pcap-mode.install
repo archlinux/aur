@@ -3,10 +3,13 @@ post_install () {
 cat << EOF
 
 ==> Add this code to your .emacs file to use the mode:
+
 (require 'pcap-mode)
 
-==> Or:
+==> Or, with use-package:
+
 (use-package pcap-mode)
+
 EOF
 }
 
