@@ -1,8 +1,9 @@
-# Maintainer: Troy Engel <troyengel+arch@gmail.com>
+# Maintainer: Dónal Murray <dmurray654@gmail.com>
+# Contributor: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=vidyodesktop
 pkgver=3.6.3.017
-pkgrel=2
+pkgrel=3
 pkgdesc="VidyoDesktop(TM) video conferencing client"
 arch=('i686' 'x86_64')
 url="http://www.vidyo.com"
