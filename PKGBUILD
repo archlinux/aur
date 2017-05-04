@@ -2,7 +2,7 @@
 
 pkgname=('conan')
 pkgver=0.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -19,16 +19,16 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.6.0'
          'python-bottle>=0.12.8' 'python-bottle<0.13'
          'python-distro>=1.0.2' 'python-distro<1.1.0'
          'python-pluginbase>=0.5' 'python-pluginbase<1.0'
-         'python-pylint>=1.6.4' 'python-pylint<1.6.6'
+         'python-pylint>=1.6.5'
          'python-future=0.16.0')
-source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "pylint-1.6.4.patch" "pyjwt-1.5.0.patch")
+source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "pylint-1.7.1.patch" "pyjwt-1.5.0.patch")
 sha512sums=('7b111845c7b9c84f97b6749ab691476e78987875c2f84025c8e0aba85e99468830ff0bfcab8e0f714c533126fc9260248dce02c7a712bca037dfc888157962eb'
-            '2d4ccf533f3d6efb478cdcecc6b1e320fa1dcfe8328c7f288bfc735c99a5ae5741446a1df69cd8dbb166fd84f801bb473d1f15026ca8773f73f7640475a40aa6'
+            '5ceee883e35f6b9c9f74c18fd6d2f6881f5550e0d1a2d0b14fa1066949b436e725566f3f8db71799c2e120ae554f99db52029ec22abf1cab6a80c30303842af8'
             'ff7d7561ffab07db03c062fccf9862415e1286e256ccba1b4200dc62a4adbea3eead16bca4ae2236a90fbc6ce1b431eac9490793643176a2e81c1997590bb2ba')
 
 prepare() {
  cd $pkgname-$pkgver
- patch -Np1 -i "${srcdir}/pylint-1.6.4.patch"
+ patch -Np1 -i "${srcdir}/pylint-1.7.1.patch"
  patch -Np1 -i "${srcdir}/pyjwt-1.5.0.patch"
 }
 
