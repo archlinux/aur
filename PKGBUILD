@@ -36,4 +36,6 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
+
+  mv "$pkgdir"/usr/share/{chromium-browser,chromium}
 }
