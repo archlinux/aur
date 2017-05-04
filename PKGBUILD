@@ -2,7 +2,7 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Blackmagic DeckLink SDK"
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
@@ -34,6 +34,11 @@ _reqjson="{
     \"terms\": true,
     \"product\": \"Desktop Video ${pkgver} SDK\"
 }"
+
+_exit_makepkg() {
+    printf "%s\n" "error: failed to ${1} ${_srcfile}"
+    exit 1
+}
 
 prepare() {
     # check if decklink sdk zip file was already downloaded
