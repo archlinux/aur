@@ -5,4 +5,4 @@ Exec=electron --app=/usr/lib/mancy
 Icon=/usr/lib/mancy/icons/mancy.png
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;ComputerScience;
+Categories=GTK;ComputerScience;

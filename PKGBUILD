@@ -1,11 +1,11 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=mancy
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='A GUI REPL for Javascript & more…'
 arch=('i686' 'x86_64')
-url='https://github.com/princejwesley/Mancy'
+url='http://mancy-re.pl/'
 license=('MIT')
 depends=('electron' 'nodejs')
 makedepends=('git' 'gulp' 'npm')
@@ -13,8 +13,8 @@ options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/princejwesley/Mancy/archive/v${pkgver}.tar.gz"
         'mancy.desktop'
         'mancy.sh')
-sha256sums=('94c2a9596b801222716fe82eb7942bf73fb9768b5b08848550719885d69c44af'
-            '42d2698429a80e95efb3bd95c9071b242af6657e530cf374a319fab53d653931'
+sha256sums=('7029f8ba85785088d0dfd67f94b386b79876ea38b828759f4bfee6955d96c5ee'
+            '0bfeedeb0e4517802e9a1734ba55a9fe00917930a8315d5bf48163522ca8b4f1'
             'ff225cc9d548c338b61621e4b877a3694f92c4c1fc04cfde4f0a652cb9715958')
 
 prepare() {
