@@ -11,7 +11,8 @@ depends=('emacs' 'emacs-font-lock-plus' 'ttf-font-awesome' 'ttf-material-design-
 makedepends=('git')
 provides=('emacs-all-the-icons')
 source=("https://github.com/domtronn/all-the-icons.el/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9d8c96b316a0e4ba04f474e6bf1a567a2b92ef696d3872192d26abce1aa187bc')
+install=${pkgname}.install
 
 build() {
   cd "${srcdir}/all-the-icons.el-${pkgver}"
