@@ -2,26 +2,37 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=vsxu-git
-pkgver=0.5.1.r50.g4a34b08e
+pkgver=0.6.0.r18.g73b9e4ca
 pkgrel=1
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('desktop-file-utils' 'glew' 'glfw' 'libpng' 'opencv' 'xdg-utils')
+depends=('desktop-file-utils' 'glew' 'opencv' 'xdg-utils')
 makedepends=('alsa-lib' 'cmake' 'git' 'jack' 'pulseaudio')
 optdepends=(
   'alsa-lib: ALSA support.'
   'jack: JACK support'
-  'pulseaudio: PulseAudio support'
-)
+  'pulseaudio: PulseAudio support')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname}::git+https://github.com/vovoid/vsxu.git"
-        "cal3d::git+https://github.com/vovoid/cal3d.git")
+        "dependencies::git+https://github.com/vovoid/vsxu-dependencies.git"
+        "cal3d::git+https://github.com/vovoid/cal3d.git"
+        "freetype2::git+https://github.com/vovoid/freetype2.git"
+        "ftgl::git+https://github.com/vovoid/ftgl.git"
+        "lodepng::git+https://github.com/vovoid/lodepng.git"
+        "lzham-sdk::git+https://github.com/vovoid/lzham_codec.git"
+        "lzma-sdk::git+https://github.com/vovoid/LZMA-SDK.git")
 sha512sums=('SKIP'
+            'SKIP'	
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
-_branch=glfw3
+_branch=master
 
 prepare() {
   cd "${pkgname}"
@@ -29,15 +40,18 @@ prepare() {
   git checkout ${_branch}
   git pull
   git submodule init
+  git config submodule.dependencies.url "${srcdir}/dependencies"
+  git config submodule.lib/compression/thirdparty/lzma-sdk.url "${srcdir}/lzma-sdk"
+  git config submodule.lib/compression/thirdparty/lzham-sdk.url "${srcdir}/lzham-sdk"
+  git config submodule.lib/engine_graphics/thirdparty/freetype2.url "${srcdir}/freetype2"
+  git config submodule.lib/engine_graphics/thirdparty/ftgl.url "${srcdir}/ftgl"
+  git config submodule.lib/engine_graphics/thirdparty/lodepng.url "${srcdir}/lodepng"
   git config submodule.plugins/src/mesh.importers/cal3d.url "${srcdir}/cal3d"
-  git submodule update plugins/src/mesh.importers/cal3d
-  # Patch CAL3D to build against GCC 6.1.1
-  sed -i -e "s/return false/return 0/" "${srcdir}/vsxu-git/plugins/src/mesh.importers/cal3d/cal3d/src/cal3d/loader.cpp"
-  sed -i -e "s/return false/return 0/" "${srcdir}/vsxu-git/plugins/src/mesh.importers/cal3d/cal3d/src/cal3d/xmlformat.cpp"
+  git submodule update dependencies lib/compression/thirdparty/lzham-sdk lib/compression/thirdparty/lzma-sdk lib/engine_graphics/thirdparty/freetype2 lib/engine_graphics/thirdparty/ftgl lib/engine_graphics/thirdparty/lodepng plugins/src/mesh.importers/cal3d
 }
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
