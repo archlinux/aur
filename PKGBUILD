@@ -6,7 +6,7 @@
 set -u
 _pkgname='inetutils'
 pkgname="${_pkgname}-git"
-pkgver=1.9.4.r11.g050928b
+pkgver=1.9.4.r25.g3d64a8c7
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='A collection of common network programs'
@@ -20,14 +20,14 @@ provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 backup=('etc/xinetd.d'/{telnet,talk,rlogin,rsh}
         'etc/pam.d'/{rlogin,rsh})
-options=('!emptydirs')
+options=('!emptydirs' '!strip')
 install="${_pkgname}.install"
-_verurl='http://ftp.gnu.org/gnu/inetutils/'
-_versed='inetutils-\([0-9\.]\+\)\.tar\.gz'
-_veropt='l'
+_verwatch=('http://ftp.gnu.org/gnu/inetutils/' 'inetutils-\([0-9\.]\+\)\.tar\.gz' 'l')
+source=(
+  "git://git.savannah.gnu.org/${_pkgname}.git#commit=3d64a8c7280e7d218c4b607aa25352be1d6c4ded"
+  'git://git.sv.gnu.org/gnulib'
+) # This link must be the same as the one in bootstrap
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
-source=("git://git.savannah.gnu.org/${_pkgname}.git"
-        'git://git.sv.gnu.org/gnulib') # This link must be the same as the one in bootstrap
 _archsource=(
         'ftpd.service'
         'rlogin'{.pam,@.service,.socket,.xinetd}
@@ -59,30 +59,16 @@ sha256sums=('SKIP'
 #validpgpkeys=('4FBD67621082C4C502448E3B180551BAD95A3C35')
 
 pkgver() {
+  set -u
   cd "${_srcdir}"
   git describe --long | sed -e "s:^${_pkgname}-::g" -e 's:_:.:g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  set +u
 }
 
 prepare() {
   set -u
   cd "${_srcdir}"
   ln -sf '../gnulib'
-  ./bootstrap
-  ./configure --prefix='/usr' --libexec='/usr/bin' \
-    --localstatedir='/var' --sysconfdir='/etc' \
-    --without-wrap --with-pam \
-    --enable-ftp --enable-ftpd \
-    --enable-telnet --enable-telnetd \
-    --enable-talk --enable-talkd \
-    --enable-rlogin --enable-rlogind \
-    --enable-rsh --enable-rshd \
-    --enable-rcp --enable-hostname --enable-dnsdomainname \
-    --disable-rexec --disable-rexecd \
-    --disable-tftp --disable-tftpd \
-    --disable-ping --disable-ping6 \
-    --disable-logger --disable-syslogd \
-    --disable-inetd --disable-whois \
-    --disable-uucpd --disable-ifconfig --disable-traceroute
   # telnetd disconnects without banner on 90% of connections
   # http://lists.gnu.org/archive/html/bug-inetutils/2015-07/msg00006.html
   # http://lists.gnu.org/archive/html/bug-inetutils/2015-08/index.html
@@ -90,24 +76,55 @@ prepare() {
   set +u
 }
 
-build() {
+_configure() {
   set -u
   cd "${_srcdir}"
-  make -s -j $(nproc)
+
+  if [ ! -s 'configure' ]; then
+    ./bootstrap
+    CFLAGS="${CFLAGS} -g -rdynamic" \
+    CXXFLAGS="${CXXFLAGS} -g -rdynamic" \
+    ./configure --prefix='/usr' --libexec='/usr/bin' \
+      --localstatedir='/var' --sysconfdir='/etc' \
+      --without-wrap --with-pam \
+      --enable-ftp --enable-ftpd \
+      --enable-telnet --enable-telnetd \
+      --enable-talk --enable-talkd \
+      --enable-rlogin --enable-rlogind \
+      --enable-rsh --enable-rshd \
+      --enable-rcp --enable-hostname --enable-dnsdomainname \
+      --disable-rexec --disable-rexecd \
+      --disable-tftp --disable-tftpd \
+      --disable-ping --disable-ping6 \
+      --disable-logger --disable-syslogd \
+      --disable-inetd --disable-whois \
+      --disable-uucpd --disable-ifconfig --disable-traceroute
+    sed -i -e '/INSTALL_STRIP_PROGRAM/ s: -s::g' 'Makefile'
+  fi
+  cd "${srcdir}"
+  set +u
+}
+
+build() {
+  _configure
+  set -u
+  cd "${_srcdir}"
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -j "${_nproc}"
   set +u
 }
 
 check() {
   set -u
   cd "${_srcdir}"
-  make -s check
+  nice make -s -j1 check
   set +u
 }
 
 package() {
   set -u
   cd "${_srcdir}"
-  make -s DESTDIR="${pkgdir}" install
+  make -s -j1 DESTDIR="${pkgdir}" install
 
   chmod -s "${pkgdir}/usr/bin"/{rcp,rlogin,rsh}
 
@@ -120,19 +137,5 @@ package() {
     esac
   done
   set +u
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
-  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  # Only found in help files
-  #! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
-  # Only found in help files
-  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  # Only found in help files
-  #! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 set +u
