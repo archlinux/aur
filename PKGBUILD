@@ -6,8 +6,8 @@
 _pkgbasename=freetype2
 _origpkgname=lib32-$_pkgbasename
 pkgname=$_origpkgname-old-hinting
-pkgver=2.7
-pkgrel=2
+pkgver=2.7.1
+pkgrel=2.1
 pkgdesc="TrueType font rendering library (including old hinting engine; 32-bit)"
 arch=(x86_64)
 license=('GPL')
@@ -18,11 +18,11 @@ depends=('lib32-zlib' 'lib32-bzip2' 'lib32-libpng' 'lib32-harfbuzz' $_pkgbasenam
 makedepends=('gcc-multilib')
 provides=('libfreetype.so' $_origpkgname=$pkgver-$pkgrel)
 conflicts=($_origpkgname)
-source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
+source=(https://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch)
-sha1sums=('f251029d5ab542a96dd4531605fe577185077560'
+sha1sums=('4d08a9a6567c6332d58e9a5f9a7e9e3fbce66789'
           'SKIP'
           'b31882ef5e8447e761acee1c4a44c0630cd4d465'
           'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
