@@ -1,7 +1,7 @@
 pkgbase = t200ta-bluetooth
-	pkgdesc = Bluetooth service and lib for ASUS T200TA (and possibly other Bay Trail devices)
+	pkgdesc = Bluetooth service and lib for ASUS T200TA (and possibly other BayTrail devices)
 	pkgver = r1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DX37/T200TA
 	install = t200ta-bluetooth.install
 	arch = any
