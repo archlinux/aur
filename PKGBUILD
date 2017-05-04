@@ -1,8 +1,8 @@
 #Maintainer: Kirill Gagarski <kirill.gagarski [at] gmail.com>
 pkgname=gi
 
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Git wrapper to perform Mercurial-like short unique abbreviation searching for commands"
 arch=('any')
 url="https://bitbucket.org/gagarski/gi"
