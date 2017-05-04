@@ -1,8 +1,8 @@
 # Maintainer: Romain Bazile <gromain.baz at gmail>
 pkgname=lhc-dashboard-desktop
 pkgver=1.6.6
-pkgrel=1
-pkgdesc="LHC Dashboard for desktop. Uses Electron, v1.6.6"
+pkgrel=2
+pkgdesc="CERN's LHC Dashboard for desktop. Uses Electron, v1.6.6"
 arch=('i686' 'x86_64')
 url="https://lhcdashboard.web.cern.ch/"
 license=('unknown')
