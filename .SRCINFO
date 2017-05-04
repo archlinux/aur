@@ -1,0 +1,21 @@
+pkgbase = libatasmart-nosystemd
+	pkgdesc = ATA S.M.A.R.T. Reading and Parsing Library
+	pkgver = 0.19
+	pkgrel = 2
+	url = http://0pointer.de/blog/projects/being-smart.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = eudev
+	depends = libeudev
+	provides = libatasmart=0.19
+	conflicts = libatasmart
+	source = http://0pointer.de/public/libatasmart-0.19.tar.xz
+	source = 0001-Dont-test-undefined-bits.patch
+	source = 0002-Drop-our-own-many-bad-sectors-heuristic.patch
+	md5sums = 53afe2b155c36f658e121fe6def33e77
+	md5sums = eb5d0468b0d47d099e5164372a21f9da
+	md5sums = cebd1fbed0b05d0458177d6d3ad4ea3f
+
+pkgname = libatasmart-nosystemd
+

@@ -1,0 +1,93 @@
+From 6846b7c2431dbeaddd9f931c609b522c04e55732 Mon Sep 17 00:00:00 2001
+From: Martin Pitt <martin.pitt@ubuntu.com>
+Date: Fri, 19 Mar 2010 14:56:06 +0100
+Subject: [PATCH 2/2] Drop our own "many bad sectors" heuristic
+
+This currently causes a lot of false positives, because in many cases our
+threshold is either overly pessimistically low, or the raw value is implausibly
+high. Just use the normalized values vs. threshold for now.
+
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=25772
+Bug-Ubuntu: https://launchpad.net/bugs/438136
+---
+ atasmart.c |   33 +++++++++++----------------------
+ 1 files changed, 11 insertions(+), 22 deletions(-)
+
+Index: libatasmart/atasmart.c
+===================================================================
+--- libatasmart.orig/atasmart.c	2012-05-23 08:34:14.007836753 +0200
++++ libatasmart/atasmart.c	2012-05-23 08:34:43.903835695 +0200
+@@ -130,6 +130,8 @@
+         SkBool current_pending_sector_found:1;
+         uint64_t reallocated_sector_count;
+         uint64_t current_pending_sector;
++        SkBool reallocated_sector_count_bad:1;
++        SkBool current_pending_sector_bad:1;
+ 
+         void *blob;
+ };
+@@ -2190,16 +2192,23 @@
+         if (a->pretty_unit != SK_SMART_ATTRIBUTE_UNIT_SECTORS)
+                 return;
+ 
++        if (!a->current_value_valid)
++                return;
++
+         if (!strcmp(a->name, "reallocated-sector-count")) {
+                 if (a->pretty_value > d->reallocated_sector_count)
+                         d->reallocated_sector_count = a->pretty_value;
+                 d->reallocated_sector_count_found = TRUE;
++                if (a->good_now_valid && !a->good_now)
++                        d->reallocated_sector_count_bad = TRUE;
+         }
+ 
+         if (!strcmp(a->name, "current-pending-sector")) {
+                 if (a->pretty_value > d->current_pending_sector)
+                         d->current_pending_sector = a->pretty_value;
+                 d->current_pending_sector_found = TRUE;
++                if (a->good_now_valid && !a->good_now)
++                        d->current_pending_sector_bad = TRUE;
+         }
+ }
+ 
+@@ -2255,24 +2264,9 @@
+         return _P(map[overall]);
+ }
+ 
+-static uint64_t u64log2(uint64_t n) {
+-        unsigned r;
+-
+-        if (n <= 1)
+-                return 0;
+-
+-        r = 0;
+-        for (;;) {
+-                n = n >> 1;
+-                if (!n)
+-                        return r;
+-                r++;
+-        }
+-}
+-
+ int sk_disk_smart_get_overall(SkDisk *d, SkSmartOverall *overall) {
+         SkBool good;
+-        uint64_t sectors, sector_threshold;
++        uint64_t sectors;
+ 
+         assert(d);
+         assert(overall);
+@@ -2293,13 +2287,7 @@
+                         return -1;
+                 sectors = 0;
+         } else {
+-
+-                /* We use log2(n_sectors)*1024 as a threshold here. We
+-                 * had to pick something, and this makes a bit of
+-                 * sense, or doesn't it? */
+-                sector_threshold = u64log2(d->size/512) * 1024;
+-
+-                if (sectors >= sector_threshold) {
++                if (d->reallocated_sector_count_bad || d->current_pending_sector_bad) {
+                         *overall = SK_SMART_OVERALL_BAD_SECTOR_MANY;
+                         return 0;
+                 }
