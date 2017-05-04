@@ -7,12 +7,12 @@
 
 pkgname=cfengine
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('lmdb' 'pcre' 'libxml2' 'pam' 'libyaml' 'curl')
+depends=('lmdb' 'pcre' 'libxml2' 'pam' 'libyaml' 'curl' 'openssl-1.0')
 makedepends=('which')
 optdepends=('libvirt' 'postgresql-libs' 'libmariadbclient' 'acl')
 install=${pkgname}.install
@@ -33,6 +33,8 @@ md5sums=('ae7e2dc8b20faa89089002c9b9fd4e0a'
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
+  export CFLAGS=-I/usr/include/openssl-1.0
+  export LDFLAGS=-L/usr/lib/openssl-1.0
   ./configure \
     --prefix=/usr \
     --with-workdir=/var/${pkgname} \
