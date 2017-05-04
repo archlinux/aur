@@ -1,0 +1,20 @@
+pkgbase = lumo-git
+	pkgdesc = Fast, cross-platform, standalone ClojureScript REPL
+	pkgver = 1.4.1.r23.g72f396d
+	pkgrel = 1
+	url = https://github.com/anmonteiro/lumo
+	arch = i686
+	arch = x86_64
+	license = EPL-1.0
+	makedepends = python2
+	makedepends = git
+	makedepends = boot
+	makedepends = yarn
+	provides = lumo
+	conflicts = lumo
+	options = !makeflags
+	source = lumo::git+https://github.com/anmonteiro/lumo
+	sha256sums = SKIP
+
+pkgname = lumo-git
+
