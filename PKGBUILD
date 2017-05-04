@@ -1,4 +1,4 @@
-# Maintainer: David P. <megver83@openmailbox.org>
+# Maintainer: David P. <megver83@parabola.nu>
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
