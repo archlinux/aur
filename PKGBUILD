@@ -2,7 +2,7 @@
 
 pkgname=ponomar
 pkgver=0.80.0d8052d
-pkgrel=4
+pkgrel=5
 pkgdesc="Ponomar: a liturgics suite for the Orthodox Church http://www.ponomar.net/"
 arch=('any')
 url="http://www.ponomar.net/"
@@ -39,6 +39,8 @@ package() {
   install -Dm755 $pkgname.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm755 $pkgname.sh "$pkgdir/opt/$pkgname/$pkgname.sh"
   install -Dm755 profile.sh "$pkgdir/etc/profile.d/$pkgname.sh"
+  # Fix permissions
+  chmod 666 "$pkgdir/opt/$pkgname/Ponomar/languages/xml/$pkgname.config"
 }
 
 # vim:set ts=2 sw=2 et:
