@@ -7,7 +7,7 @@ pkgver=2.21
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Apache licensed PINE mail user agent"
-url="http://patches.freeiz.com/alpine/"
+url="http://alpine.freeiz.com"
 license=("APACHE")
 depends=("libldap" "krb5" "gettext")
 optdepends=("aspell: for spell-checking support"
@@ -17,9 +17,9 @@ provides=("pine")
 conflicts=("pine" "re-alpine")
 replaces=("pine")
 options=("!makeflags")
-source=(http://patches.freeiz.com/${pkgname}/release/src/${pkgname}-${pkgver}.tar.xz
+source=(http://alpine.freeiz.com/${pkgname}/release/src/${pkgname}-${pkgver}.tar.xz
         #ftp://ftp.cac.washington.edu/${pkgname}/${pkgname}.tar.bz2
-        http://patches.freeiz.com/${pkgname}/patches/${pkgname}-${pkgver}/all.patch.gz)
+        http://alpine.freeiz.com/${pkgname}/patches/${pkgname}-${pkgver}/all.patch.gz)
         #topal-1.patch
         #topal-2.patch)
 md5sums=("02dad85c1be80ce020206f222ecf5ac8"
