@@ -8,7 +8,10 @@ pkgdesc="Formalized music score control. Package for Python"
 arch=('any')
 url="https://github.com/Abjad/abjad"
 license=('GPL 3')
-optdepends=('graphviz: to create rhythm-trees graphs and other tree structures')
+depends=('lilypond')
+optdepends=('graphviz: to create rhythm-trees graphs and other tree structures'
+						'timidity: to play generated MIDI files'
+						'jupyter: browser-based interactive notebook for programming')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('c8ba4ea9707ba87e9a2ede40c97d14d6b6c701ae884667dcd44c828a50c97cb0')
 
@@ -17,8 +20,11 @@ prepare() {
 }
 
 package_python-abjad() {
-	depends=('python' 'lilypond' 'python-ply')
+	depends+=('python' 'python-ply' 'python-six')
 	makedepends=('python-setuptools')
+	optdepends+=('ipython: an enhanced Python console'
+							'python-ipywidgets: IPython widgets for Jupyter notebook'
+							'python-pypdf2: PDF toolkit')
 	pkgdesc+=" 3"
 
 	cd $srcdir/abjad-$pkgver
@@ -29,8 +35,12 @@ package_python-abjad() {
 }
 
 package_python2-abjad() {
-	depends=('python2' 'lilypond' 'python2-ply')
+	depends+=('python2' 'python2-ply' 'python2-six')
 	makedepends=('python2-setuptools')
+	optdepends+=('ipython2: an enhanced Python 2 console'
+							'python2-ipykernel: Python 2 support for Jupyter'
+							'python2-ipywidgets: IPython2 widgets for Jupyter notebook'
+							'python2-pypdf2: PDF toolkit')
 	pkgdesc+=" 2"
 
 	cd $srcdir/abjad-$pkgver-python2
