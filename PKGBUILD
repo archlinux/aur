@@ -4,10 +4,10 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=udisks2-elogind
-pkgver=2.1.8
-pkgrel=2
+pkgver=2.6.4
+pkgrel=1
 pkgdesc="Disk Management Service, version 2"
-arch=('i686' 'x86_64')
+arch=('armv7h' 'i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/udisks"
 license=('GPL2')
 groups=('elogind-nosystemd')
