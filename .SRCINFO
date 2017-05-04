@@ -1,5 +1,5 @@
 pkgbase = scanpy-git
-	pkgver = 0.1_104.0f1981e
+	pkgver = 0.1+8.gb275545
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any

@@ -2,7 +2,7 @@
 
 _pkgname=scanpy
 pkgname=$_pkgname-git
-pkgver=0.1_104.0f1981e
+pkgver=0.1+8.gb275545
 pkgrel=1
 pkgdesc=''
 arch=('any')
@@ -19,17 +19,17 @@ source=($_pkgname::git://github.com/theislab/scanpy.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	printf "0.1_%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	#git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/$_pkgname/$_pkgname"
+	python -c 'import _version; print(_version.get_versions()["version"])'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  python setup.py build
+	cd "$srcdir/$_pkgname"
+	python setup.py build_ext
+	python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+	cd "$srcdir/$_pkgname"
+	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
