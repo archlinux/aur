@@ -1,0 +1,15 @@
+pkgbase = ruby-foreman
+	pkgdesc = Process manager for Procfile based applications
+	pkgver = 0.84.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/foreman
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-thor
+	noextract = foreman-0.84.0.gem
+	source = https://rubygems.org/downloads/foreman-0.84.0.gem
+	sha256sums = 806b1e86a9359d2e60d528e48ec05a965110514b4d414e7f5f27b07a691ab81a
+
+pkgname = ruby-foreman
+
