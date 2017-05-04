@@ -34,6 +34,7 @@ build() {
 check() {
   cd "${pkgname%-git}"
   # run the generated program to build html-docs, also a good test
+  export GUILE_AUTO_COMPILE=0
   ./${pkgname%-git} index
   ./${pkgname%-git} index
 }
