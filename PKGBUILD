@@ -3,7 +3,7 @@ _basever=0.2
 _timestamp=20170417
 pkgver=${_basever}_${_timestamp}
 _kernver=$(uname -r)
-pkgrel=1
+pkgrel=2
 pkgdesc='CaitSith LKM-based LSM version'
 arch=('i686' 'x86_64')
 url='http://caitsith.osdn.jp/'
@@ -27,8 +27,8 @@ build() {
 }
 
 package() {
-  install -D -m644 "${srcdir}/build/caitsith/caitsith.ko" "${pkgdir}/usr/lib/modules/${_kernver}/kernel/extra/caitsith.ko"
-  install -D -m644 "${srcdir}/build/caitsith/caitsith_test.ko" "${pkgdir}/usr/lib/modules/${_kernver}/kernel/extra/caitsith_test.ko"
+  install -D -m644 "${srcdir}/build/caitsith/caitsith.ko" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules/caitsith.ko"
+  install -D -m644 "${srcdir}/build/caitsith/caitsith_test.ko" "${pkgdir}/usr/lib/modules/${_kernver}/extramodules/caitsith_test.ko"
 
   sed -i -e "s/KERNEL_VERSION='.*'/KERNEL_VERSION='${_kernver}'/" "${startdir}/caitsith-lkm.install" || return 1
 }
