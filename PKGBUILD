@@ -31,7 +31,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.30
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -232,7 +232,7 @@ build() {
 
 package_php56() {
 	pkgdesc='An HTML-embedded scripting language'
-	depends=('pcre' 'libxml2' 'curl' 'libzip')
+	depends=('pcre' 'libxml2' 'curl' 'libzip' 'openssl-1.0')
 	backup=("etc/${pkgbase}/php.ini")
 	provides=("${_pkgbase}=$pkgver")
 
