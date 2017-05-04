@@ -2,7 +2,7 @@
 
 pkgname=resin-cli
 pkgdesc='Resin.io command line interface'
-pkgver=5.8.1
+pkgver=5.9.1
 pkgrel=1
 arch=('any')
 url='https://resin.io/'
@@ -11,7 +11,7 @@ depends=('nodejs>=6.0.0')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-sha256sums=('af5fa866aecde25d87035ef7f31ed9f952c9d7a52dd73ab73cc7581f75b3326b')
+sha256sums=('55872839303cd352ca9339df309f667e66af351053ab18b67c4964c8c54ac266')
 
 package() {
   npm install --global --only=production --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
