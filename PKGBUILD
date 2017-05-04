@@ -7,7 +7,7 @@ pkgdesc='Bitcoin Classic with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
-depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode')
+depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'openssl-1.0' 'miniupnpc' 'zeromq' 'qrencode')
 makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
@@ -22,7 +22,9 @@ sha256sums=('900218eb2cd40c96a357a601e17fc6eacc91970f369761462de5a695c20701d5'
 
 build() {
   cd "bitcoinclassic-$pkgver"
-
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
+  export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5 --enable-hardening \
         --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode
