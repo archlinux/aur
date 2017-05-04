@@ -1,4 +1,5 @@
-# Maintainer: Aleksandr <orthodox dot tk at gmail dot com>
+# Maintainer: 4leks4ndr <orthodox dot tk at gmail dot com>
+
 _author=typiconman
 _perlmod=Lingua-Cu
 pkgname=perl-lingua-cu
