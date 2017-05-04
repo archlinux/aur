@@ -5,7 +5,7 @@ _pkgname=libatasmart
 
 pkgname=libatasmart-nosystemd
 pkgver=0.19
-pkgrel=2
+pkgrel=2.aur1
 pkgdesc="ATA S.M.A.R.T. Reading and Parsing Library"
 arch=('i686' 'x86_64')
 license=('LGPL')

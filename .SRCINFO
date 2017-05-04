@@ -1,7 +1,7 @@
 pkgbase = libatasmart-nosystemd
 	pkgdesc = ATA S.M.A.R.T. Reading and Parsing Library
 	pkgver = 0.19
-	pkgrel = 2
+	pkgrel = 2.aur1
 	url = http://0pointer.de/blog/projects/being-smart.html
 	arch = i686
 	arch = x86_64
