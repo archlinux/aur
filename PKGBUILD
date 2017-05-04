@@ -6,14 +6,14 @@
 _pkgbase=lgi
 pkgbase=lua-lgi-git
 pkgname=$pkgbase
-pkgver=0.9.0.r30.g2c5e63d
+pkgver=0.9.1.r26.g93eab44
 pkgrel=1
 pkgdesc='Lua bindings for gnome/gobject using gobject-introspection library'
 arch=(i686 x86_64)
 url='https://github.com/pavouk/lgi'
 license=('custom:MIT')
 depends=('glibc' 'glib2' 'libffi' 'lua' 'gobject-introspection-runtime')
-makedepends=('gobject-introspection')
+makedepends=('git gobject-introspection')
 replaces=('lgi' 'lua-lgi')
 conflicts=('lgi' 'lua-lgi')
 provides=('lua-lgi')
