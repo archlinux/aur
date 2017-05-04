@@ -1,0 +1,17 @@
+diff -ura openhab2.orig/runtime/bin/oh2_dir_layout openhab2.new/runtime/bin/oh2_dir_layout
+--- openhab2.orig/runtime/bin/oh2_dir_layout	2017-01-21 12:35:42.000000000 +0100
++++ openhab2.new/runtime/bin/oh2_dir_layout	2017-05-04 17:53:51.790080596 +0200
+@@ -4,10 +4,10 @@
+ (unset CDPATH) >/dev/null 2>&1 && unset CDPATH
+ 
+ export OPENHAB_HOME=`cd "$DIRNAME/../.."; pwd`
+-export OPENHAB_CONF="${OPENHAB_HOME}/conf"
++export OPENHAB_CONF="/etc/openhab2"
+ export OPENHAB_RUNTIME="${OPENHAB_HOME}/runtime"
+-export OPENHAB_USERDATA="${OPENHAB_HOME}/userdata"
+-export OPENHAB_LOGDIR="${OPENHAB_USERDATA}/logs"
++export OPENHAB_USERDATA="/var/lib/openhab2"
++export OPENHAB_LOGDIR="/var/log/openhab2"
+ 
+ export KARAF_HOME="${OPENHAB_RUNTIME}"
+ export KARAF_DATA="${OPENHAB_USERDATA}"
