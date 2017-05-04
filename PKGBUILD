@@ -13,7 +13,7 @@ depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'nm-connection-editor'
 makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
 provides=('switchboard-plug-network')
 conflicts=('switchboard-plug-network')
-conflicts=('switchboard-plug-network-bzr')
+replaces=('switchboard-plug-network-bzr')
 source=('switchboard-plug-network::git+https://github.com/elementary/switchboard-plug-networking.git')
 sha256sums=('SKIP')
 
