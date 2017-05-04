@@ -1,0 +1,14 @@
+#!/bin/sh
+
+post_install() {
+    echo " You may add"
+    echo " -session   optional   pam_ck_connector.so  nox11"
+    echo " to /etc/pam.d/system-login"
+    echo " to register tty sessions with ConsoleKit daemon."
+}
+
+post_upgrade() {
+    post_install
+}
+
+# vim:set ts=4 sts=4 sw=4 et:
