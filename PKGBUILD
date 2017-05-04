@@ -13,7 +13,8 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('1c3a0b56bcae9775cd2d1b4242634d21826d7c7c543d226d4f255a5959130447')
+install=${pkgname}.install
 
 build() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"
