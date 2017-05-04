@@ -1,13 +1,14 @@
 # Maintainer: Aleksandr <orthodox dot tk at gmail dot com>
 pkgname=ponomar
 pkgver=0.80.0d8052d
-pkgrel=1
+pkgrel=2
 pkgdesc="Ponomar: a liturgics suite for the Orthodox Church http://www.ponomar.net/"
 arch=('any')
 url="http://www.ponomar.net/"
 license=('GPL')
 groups=()
 depends=('java-runtime' 'texinfo')
+optdepends=('fonts-churchslavonic')
 install=$pkgname.install
 source=("https://github.com/typiconman/ponomar/archive/master.zip"
         "$pkgname.desktop"
