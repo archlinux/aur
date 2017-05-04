@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Bukowski <bbukowski@posteo.de>
 pkgname=firebird-superserver
 pkgver=2.5.7.27050
-pkgrel=3
+pkgrel=4
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -16,13 +16,23 @@ source=("http://downloads.sourceforge.net/firebird/Firebird-$pkgver-0.tar.bz2"
         'default.password'
         'firebird-tmpfiles.conf'
         'firebird-sysusers.conf'
-        'firebird.service')
+        'firebird.service'
+        'firebird-c++11.patch'
+        'firebird-c++14.patch')
 
 md5sums=('fb34241e96f9707604bf6cd78357d5a2'
          'ee601f52f1ba2481fe1f05b25d000bb8'
          '79a1416e307e4dfb99640311b8defe07'
          'a43ab472f4d95e48ac21910bb33a5e86'
-         'bd75e6d2afcbc000e3593b1a66ea4ef7')
+         'bd75e6d2afcbc000e3593b1a66ea4ef7'
+         '5094347a8298143ca147edd49b552fe9'
+         'a02710203cee81b4f48b7bdca3b1b33f')
+
+prepare() {
+  cd $srcdir/Firebird-$pkgver-0
+  patch -Np1 -i ../firebird-c++11.patch
+  patch -Np0 -i ../firebird-c++14.patch
+}
 
 build() {
   cd $srcdir/Firebird-$pkgver-0
@@ -38,7 +48,7 @@ build() {
     --with-fblib=/usr/lib \
     --with-fblock=/run/firebird \
     --with-fblog=/var/log/ \
-    --with-fbmsg=/var/lib/firebird/system \
+    --with-fbmsg=/usr/lib/firebird/msg \
     --with-fbplugins=/usr/lib/firebird/plugins \
     --with-fbsbin=/usr/lib/firebird/bin \
     --with-fbudf=/usr/lib/firebird/UDF \
@@ -51,7 +61,7 @@ build() {
     --with-system-icu \
     --with-system-editline
 
-  CXXFLAGS+=' -std=gnu++98 -flifetime-dse=1' make
+  CXXFLAGS+=' -flifetime-dse=1' make
 }
 
 package() {
@@ -79,8 +89,7 @@ package() {
   mv $pkgdir/usr/bin/isql{,-fb}
 
   chmod -R ugo-w $pkgdir/usr/share/doc/firebird
-  chmod 755 $pkgdir/var/lib/firebird{,/system}
-  chmod 444 $pkgdir/var/lib/firebird/system/*.msg
+  chmod -R o= $pkgdir/var/lib/firebird
   chown -R 184:184 $pkgdir/var/lib/firebird
 }
 
