@@ -1,8 +1,9 @@
 pkgbase = consolekit-git
 	pkgdesc = A framework for defining and tracking users, login sessions, and seats
-	pkgver = r711.f420678
+	pkgver = r720.54552ec
 	pkgrel = 1
 	url = https://github.com/ConsoleKit2/ConsoleKit2
+	install = consolekit.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -24,13 +25,9 @@ pkgbase = consolekit-git
 	replaces = consolekit
 	options = libtool
 	source = git://github.com/ConsoleKit2/ConsoleKit2
-	source = 25-consolekit.rules
-	source = consolekit.pamd
 	source = consolekit.tmpfiles.conf
 	validpgpkeys = 6DD4217456569BA711566AC7F06E8FDE7B45DAAC
 	sha256sums = SKIP
-	sha256sums = c5159d9fe8fdd52ad0d6a84af7ba00bac09edaae965896ab0d099a4df1c5ea6b
-	sha256sums = f7b88e87f447e2d37c12886f57d932c385f19a8fef238e0f1de7a1746d8be69e
 	sha256sums = 778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1
 
 pkgname = consolekit-git

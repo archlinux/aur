@@ -1,6 +1,6 @@
 _pkgname=ConsoleKit2
 pkgname=consolekit-git
-pkgver=r711.f420678
+pkgver=r720.54552ec
 pkgrel=1
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64')
@@ -14,13 +14,10 @@ optdepends=('consolekit-openrc: consolekit openrc initscript'
             'pm-utils: suspend/hibernate support')
 makedepends=('git' 'python' 'xmlto' 'docbook-xsl')
 options=('libtool')
+install=consolekit.install
 source=("git://github.com/ConsoleKit2/ConsoleKit2"
-		'25-consolekit.rules'
-		'consolekit.pamd'
         'consolekit.tmpfiles.conf')
 sha256sums=('SKIP'
-            'c5159d9fe8fdd52ad0d6a84af7ba00bac09edaae965896ab0d099a4df1c5ea6b'
-            'f7b88e87f447e2d37c12886f57d932c385f19a8fef238e0f1de7a1746d8be69e'
             '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
