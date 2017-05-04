@@ -2,7 +2,7 @@
 
 pkgname=ponomar
 pkgver=0.80.0d8052d
-pkgrel=2
+pkgrel=3
 pkgdesc="Ponomar: a liturgics suite for the Orthodox Church http://www.ponomar.net/"
 arch=('any')
 url="http://www.ponomar.net/"
@@ -18,7 +18,7 @@ source=("https://github.com/typiconman/ponomar/archive/master.zip"
         "profile.sh")
 md5sums=('b2f8b00fdb4aa884f72c575fb6528967'
          'e58c1c7420ac16aee3022187e77d4bd2'
-         'ace315ef0155455422ee60fb5de3d428'
+         '8968b56483a1fb7c6fb2ca903807d567'
          'd8b4f7dd400cd7240ec63c8bcaddaec6'
          'ec1af1f47c6770f55d23c74880a9d437')
 
