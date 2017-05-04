@@ -3,13 +3,10 @@
 # Contributor: Duncan Bain <duncanjbain@gmail.com>
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
-# Use a snapshot build, matching http://overviewer.org/downloads until
-# a proper release is made.  This snapshot suports Minecraft 1.11.2
-
 _pkgname=Minecraft-Overviewer
 pkgname=(${_pkgname,,} ${_pkgname,,}-docs)
-pkgver=0.12.158
-_gitcommit=2add96132cf6eed4b31c34e72fcad7c13f96ffd6
+pkgver=0.12.187
+_gitcommit=412c8231b7a19f63af3166b6bed57b85b153a94d
 pkgrel=1
 pkgdec="Render a Minecraft map with a Google Maps interface"
 arch=('x86_64' 'i686')
@@ -18,7 +15,7 @@ license=('GPL')
 depends=('python2' 'python2-pillow' 'python2-numpy')
 makedepends=('python2-sphinx')
 source=("$url/archive/$_gitcommit.tar.gz")
-sha512sums=('0ce8f22bd1dbac3a37976c27dfe45c2f842499828c593b604e1ec4421ea8eb1d8f7bb602657f1962aec6c4cdb98ec0074757d90b45d19def6b25af372d237edd')
+sha512sums=('b1de73dd00541c7d79288eb614d38001f1a4052dce37a29012180f62dc838e9da7894a8383c35311795f038f5089b473eec0568141bb64a426889fdad0d37ea0')
 
 build() {
 	cd "${_pkgname}-$_gitcommit"
