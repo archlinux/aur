@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libcroco
 pkgver=0.6.12+4+g9ad7287
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME CSS2 parsing and manipulation toolkit (mingw-w64)"
 arch=(any)
 url="http://www.gnome.org/browse/libcroco"
@@ -28,7 +28,8 @@ build() {
 	cd libcroco
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
-		${_arch}-configure
+		${_arch}-configure \
+      --disable-gtk-doc-html
 		make
 		popd
 	done
