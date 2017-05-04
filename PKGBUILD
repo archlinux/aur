@@ -8,7 +8,7 @@ build_kernel_modules=false
 # Furthermore it is possible to build the package from a specific git commit by uncommenting the variable "_commit" and setting it to a valid commit. pkgrel should be bumped up too then.
 
 pkgbase=razer-drivers
-pkgname=('python-razer' 'razer-daemon' 'razer-driver-dkms')
+pkgname=('python-razer' 'razer-daemon' 'razer-driver-dkms' 'openrazer-meta')
 if $build_kernel_modules; then
     # For kernel update: Update the two variables and the .install file!
     _linux_current=4.10
@@ -34,7 +34,7 @@ fi
 sha256sums=('d5daf1a6522c4738628ebcfd8cd8984caf3259de0ad99b1fdd4d92bfbba26f7d')
 
 package_python-razer() {
-  pkgdesc="A python library for controlling razer-daemon"
+  pkgdesc="Python library for accessing the Razer daemon from Python."
   depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
   optdepends=('polychromatic: gtk frontend'
               'razercommander-git: gtk frontend')
@@ -47,7 +47,7 @@ package_python-razer() {
 }
 
 package_razer-daemon() {
-  pkgdesc="A daemon for controlling razer-driver"
+  pkgdesc="Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use."
   depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3')
   # gtk3 for "gi.require_version('Gdk', '3.0')"
 
@@ -60,10 +60,10 @@ package_razer-daemon() {
 }
 
 package_razer-driver-dkms() {
-  pkgdesc="An entirely open source driver for managing Razer peripherals on Linux. (DKMS)"
+  pkgdesc="Kernel driver for Razer devices (DKMS-variant)"
   depends=('dkms' 'udev')
-  provides=('RAZER-DRIVERS-MODULES')
-  conflicts=('RAZER-DRIVERS-MODULES')
+  provides=('OPENRAZER-MODULES')
+  conflicts=('OPENRAZER-MODULES')
   install=razer-driver-dkms.install
   
   if [ -z $_commit ]; then
@@ -73,6 +73,11 @@ package_razer-driver-dkms() {
   fi
   make DESTDIR=$pkgdir setup_dkms udev_install
 }
+
+package_openrazer-meta() {
+   pkgdesc="Meta package for installing all required openrazer packages."
+   depends=('razer-driver-dkms' 'razer-daemon' 'python-razer')
+ }
 
 if $build_kernel_modules; then
 _extramodules=extramodules-$_linux_current-ARCH
@@ -90,11 +95,11 @@ build() {
 }
 
 package_razer-driver-arch() {
-  pkgdesc="An entirely open source driver for managing Razer peripherals on Linux. (for stock 'linux' kernel)"
+  pkgdesc="Kernel driver for Razer devices (for stock 'linux' kernel)"
   depends=('udev')
   depends=("linux>=$_linux_current" "linux<$_linux_next")
-  provides=('RAZER-DRIVERS-MODULES')
-  conflicts=('RAZER-DRIVERS-MODULES')
+  provides=('OPENRAZER-MODULES' 'razer-driver-dkms')
+  conflicts=('OPENRAZER-MODULES' 'razer-driver-dkms')
   install=razer-driver-arch.install
 
   if [ -z $_commit ]; then
