@@ -20,6 +20,7 @@ then
 fi
 
 source=(OMNeT++.desktop
+	ver.h
 	config.status
 	Makefile.inc
 	qtenv.pri
@@ -28,6 +29,7 @@ source=(OMNeT++.desktop
 	omnetpp-5.1-src-linux.tgz::https://omnetpp.org/omnetpp/send/30-omnet-releases/2309-omnetpp-5-1-linux)
 
 sha512sums=('a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8'
+	'a1d41e71e2ec1a35ac6e3879eb21b2c7891a762f782fbaa425c8a423815672226c116fae8a934c3bf8a665c96fdfc61083ab5a390b277fcb6ed115da3c314a76'
 	'021d93c3dd606f3d8ed7df0fa77142108cc5a6e43929d6db729ad74948decaccda4f33f271f6714e23c566ed377f8cf0f18c244c549e20a9617eb852fc41c510'
 	'd52d6cfa2f156f8262a88364932a4b3429e51962e6707ea6330b179fd21e70a6a2afa4805bc2f40c34192ac6e47237f07f1db1ca46b3f5243b4c99a51107b256'
 	'799d9aa8ae5d9804706188ff237f9e662e678fd88fb2da45023fe04f71e67e87243f1df4b6a33e9e3c6fd6e6f1309f779b3c3ad7c6d8ff34f9ceb49116ab3558'
@@ -40,6 +42,7 @@ build() {
 	cp config.status ${srcdir}/${_pkgname}-${pkgver}/
 	cp Makefile.inc  ${srcdir}/${_pkgname}-${pkgver}/
 	cp qtenv.pri ${srcdir}/${_pkgname}-${pkgver}/src/qtenv/
+	cp ver.h ${srcdir}/${_pkgname}-${pkgver}/src/common/
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	PATH=${srcdir}/${_pkgname}-${pkgver}/bin:$PATH
 	LD_LIBRARY_PATH=${srcdir}/${_pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
