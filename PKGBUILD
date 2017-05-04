@@ -7,7 +7,7 @@ pkgdesc="Centralized management system for Ubiquiti UniFi Surveillance Cameras"
 arch=('x86_64')
 url="https://www.ubnt.com/"
 license=('custom')
-depends=('mongodb' 'java-runtime' 'java-jsvc' 'lsb-release')
+depends=('mongodb' 'java-runtime=8' 'java-jsvc' 'lsb-release')
 conflicts=('unifi-video-beta')
 install=unifi-video.install
 source=("http://dl.ubnt.com/firmwares/unifi-video/${pkgver}/unifi-video_${pkgver}~Ubuntu16.04_amd64.deb"
