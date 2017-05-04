@@ -1,4 +1,5 @@
-# Maintainer: Aleksandr Boyko <brdcom@yandex.ru>
+# Maintainer: 4leks4ndr <orthodox dot tk at gmail dot com>
+
 pkgname=texlive-csltex
 _pkgname=csltex
 pkgver=2008.1116
