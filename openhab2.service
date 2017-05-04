@@ -1,11 +1,21 @@
 [Unit]
-Description=OpenHAB2 home automation software
+Description=openHAB 2 - empowering the smart home
+Documentation=http://docs.openhab.org
+Documentation=https://community.openhab.org
 After=syslog.target network.target
 
 [Service]
-Type=simple
-ExecStart=/opt/openhab2/start.sh
-ExecReload=/usr/bin/kill -HUP $MAINPID
+EnvironmentFile=/etc/default/openhab2
+User=openhab
+Group=openhab
+WorkingDirectory=/usr/share/openhab2
+#PermissionsStartOnly=true
+#ExecStartPre=/usr/share/openhab/bin/setpermissions.sh
+ExecStart=/usr/share/openhab2/start.sh server
+ExecStop=/usr/share/openhab2/runtime/bin/stop
+# Shutdown delay in seconds, before process is tried to be killed with KILL (if configured)
+TimeoutStopSec=120
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
