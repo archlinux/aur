@@ -1,80 +1,59 @@
-# Maintainer: FadeMind <fademind@gmail.com>
-# Contributor: speps <speps at aur dot archlinux dot org>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Yichao Yu <yyc1992@gmail.com>
 
-_pkgbase=qtcurve
-pkgbase=qtcurve-git
-pkgname=('qtcurve-utils-git' 'qtcurve-gtk2-git' 'qtcurve-qt4-git' 'qtcurve-qt5-git')
-pkgver=r4139.330bfa5
+pkgname=qtcurve-git
+_realver=1.8.18
+pkgver=1.8.18.293.ga249871e
 pkgrel=1
-pkgdesc="The QtCurve style engine ready for Plasma 5"
+pkgdesc='A configurable set of widget styles for KDE and Gtk.'
 arch=('i686' 'x86_64')
-url="https://github.com/QtCurve/${_pkgbase}"
-license=('LGPL')
+url="https://github.com/QtCurve/qtcurve"
+license=('GPL')
 groups=('qtcurve')
-makedepends=('automoc4'
-	'cmake'
-	'extra-cmake-modules'
-	'git'
-	'gtk2'
-	'kconfigwidgets'
-	'kdebase-runtime'
-	'kdelibs4support'
-	'kdoctools'
-	'kxmlgui'
-	'qt4'
-	'qt5-svg'
-	'qt5-x11extras')
-source=("${_pkgbase}::git://anongit.kde.org/${_pkgbase}.git")
-md5sums=('SKIP')
+depends=('qt5-base' 'qt5-svg' 'libxcb' 'qt5-x11extras'
+  'gtk2' 'libx11' 'gcc-libs')
+makedepends=('cmake' 'automoc4' 'git')
+provides=(
+  "qtcurve-utils=${_realver}"
+  "qtcurve-gtk2=${_realver}"
+  "qtcurve-kde4=${_realver}"
+  "qtcurve-qt4=${_realver}"
+  "qtcurve-qt5=${_realver}"
+  "qtcurve-utils-git"
+  "qtcurve-gtk2-git"
+  "qtcurve-kde4-git"
+  "qtcurve-qt4-git"
+  "qtcurve-qt5-git")
+conflicts=("qtcurve-kde4" "qtcurve-qt4"
+  "qtcurve-qt5" "qtcurve-gtk2" "qtcurve-utils")
+options=('!debug' 'strip')
+source=(git://anongit.kde.org/qtcurve.git)
+_gitname=qtcurve
 
 pkgver() {
-    cd ${_pkgbase}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+
+  git describe | sed -e 's/-/./g'
 }
 
 build() {
-    cd ${_pkgbase}
-    rm -rf build
-    mkdir build
-    cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release \
-             -DCMAKE_INSTALL_PREFIX=/usr
-    make
+  cd "$srcdir/$_gitname"
+  rm -rf build
+  mkdir build
+  cd build
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DQTC_KDE4_PREFIX=/usr \
+   -DQTC_QT4_ENABLE_KDE:BOOL="0" \
+   -DQTC_QT4_STYLE_SUPPORT:BOOL="0" 
+  make
 }
 
-package_qtcurve-utils-git() {
-    depends=('libx11')
-    conflicts="qtcurve-utils qtcurve-kde4"
-    provides="qtcurve-utils"
-    cd ${_pkgbase}/build/lib/utils
-    make DESTDIR="$pkgdir" install
-}
+package() {
+  cd "$srcdir/$_gitname/build"
 
-package_qtcurve-gtk2-git() {
-    depends=('qtcurve-utils-git' 'gtk2')
-    conflicts="qtcurve-gtk2"
-    provides="qtcurve-gtk2"
-    cd ${_pkgbase}/build/gtk2
-    make DESTDIR="$pkgdir" install
-    cd ../lib/cairo
-    make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir/" install
 }
-
-package_qtcurve-qt4-git() {
-    depends=('qtcurve-utils-git' 'qt4')
-    conflicts="qtcurve-qt4"
-    provides="qtcurve-qt4"
-    cd ${_pkgbase}/build/qt4
-    make DESTDIR="$pkgdir" install
-}
-
-package_qtcurve-qt5-git() {
-    depends=('qtcurve-utils-git' 'qt5-svg' 'qt5-x11extras')
-    conflicts="qtcurve-qt5"
-    provides="qtcurve-qt5"
-    cd ${_pkgbase}/build/qt5
-    make DESTDIR="$pkgdir" install
-}
+sha512sums=('SKIP')
