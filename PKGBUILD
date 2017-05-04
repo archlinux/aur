@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 prepare() {
   cd "${pkgname}"
   [[ -d build ]] || mkdir build
-  git submodule update --init --recursive
+  git submodule update --init
 }
 
 build() {
