@@ -34,31 +34,31 @@ prepare(){
 build(){
 	cd $srcdir/$_pkgname
 
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--sbindir=/usr/bin \
-		--with-rundir=/run \
-		--libexecdir=/usr/lib/consolekit \
-		--localstatedir=/var \
-		--enable-polkit \
-		--enable-pam-module \
-		--enable-udev-acl \
-		--enable-docbook-docs \
-		--with-dbus-services=/usr/share/dbus-1/services \
-		--with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
-		--with-pam-module-dir=/usr/lib/security \
-		--without-systemdsystemunitdir \
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --sbindir=/usr/bin \
+        --with-rundir=/run \
+        --libexecdir=/usr/lib/consolekit \
+        --localstatedir=/var \
+        --enable-polkit \
+        --enable-pam-module \
+        --enable-udev-acl \
+        --enable-docbook-docs \
+        --with-dbus-services=/usr/share/dbus-1/services \
+        --with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
+        --with-pam-module-dir=/usr/lib/security \
+        --without-systemdsystemunitdir \
         --disable-cgroups
 
-	make
+    make
 }
 
 package() {
-	cd $srcdir/$_pkgname
-	make DESTDIR="$pkgdir" install
+    cd $srcdir/$_pkgname
+    make DESTDIR="$pkgdir" install
 
-	rm -rf "${pkgdir}"/run
+    rm -rf "${pkgdir}"/run
 	
     install -D -m644 "$srcdir/consolekit.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/consolekit.conf"
 }
