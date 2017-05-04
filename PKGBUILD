@@ -2,7 +2,7 @@
 # Contributor: oozyslug <oozyslug at gmail dot com>
 
 pkgname=neovim-plug
-pkgver=0.7.2
+pkgver=0.9.1
 pkgrel=2
 pkgdesc="A Neovim plugin manager"
 arch=('any')
@@ -13,7 +13,7 @@ groups=('neovim-plugins')
 source=("${url}/archive/$pkgver.tar.gz"
         "$pkgname.init.vim")
 
-sha512sums=('c9d2954ad8501390e5c72ddefa4b2ff75843b850a5f330580c347ff9186e3e30c0bcd42bedd1381cf4ea55532a08e4d757b7a89d61726f9e1d38729631c24e78'
+sha512sums=('87a205ff5c102489041c07df3922634b8552fdaa58155481216c0fe8f9d177ac4ad03ce2936bfd9d6e81695ec2978b1d51e84d72c9b636423791ca9e80c417cc'
             '8e15c2074d0ce36daa0568167bcbcaf1038b8f65edcab661c9d41a9a18714b27accab28f5065408852329827ff4c84c03102c17bd542962cde1f057e88c4044c')
 install=neovim-plug.install
 
