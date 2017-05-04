@@ -1,23 +1,23 @@
 pkgbase = cbmc
 	pkgdesc = Bounded Model Checking for ANSI-C
-	pkgver = 5.6
+	pkgver = 5.7
 	pkgrel = 1
 	url = http://www.cprover.org/cbmc/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = patch
+	makedepends = subversion
+	makedepends = flex
+	makedepends = bison
 	makedepends = make
+	makedepends = patch
 	makedepends = perl-libwww
-	makedepends = perl-lwp-protocol-https
-	depends = flex
-	depends = bison
 	provides = cbmc
 	conflicts = cbmc
 	conflicts = cbmc-git
 	conflicts = cbmc-bin
-	source = https://github.com/diffblue/cbmc/archive/cbmc-5.6.tar.gz
-	sha256sums = c6bef63ec42816d0add995ea3b2a5344845cc31f0a6b9e4b8a18df8bb8ad904f
+	source = https://github.com/diffblue/cbmc/archive/cbmc-5.7.tar.gz
+	sha256sums = 4f98cdce609532d3fc2587299ee4a6544f63aff5cf42e89d2baaa3d3562edf3e
 
 pkgname = cbmc
 
