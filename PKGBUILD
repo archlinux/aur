@@ -48,7 +48,7 @@ package_python-razer() {
 
 package_razer-daemon() {
   pkgdesc="A daemon for controlling razer-driver"
-  depends=('RAZER-DRIVERS-MODULES' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3')
+  depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3')
   # gtk3 for "gi.require_version('Gdk', '3.0')"
 
   if [ -z $_commit ]; then
