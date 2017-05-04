@@ -1,42 +1,32 @@
-# Maintainer: M4rQu1Nh0S <zonadomarquinhos@gmail.com>
+# Maintainer: boosterdev@linuxmail.org
 
 pkgname=xdman
-pkgver=5.0.47
-pkgrel=2
+pkgver=6.2
+pkgrel=1
 pkgdesc="Xtreme Download Manager is a powerful tool to increase download speed up-to 500%, save videos from video sharing sites and integration with ANY browser."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://xdman.sourceforge.net/"
 depends=('java-runtime')
+makedepends=('p7zip')
 license=('GPL')
-
-if [ "$CARCH" = "i686" ]; then
-source=("http://sourceforge.net/projects/xdman/files/xdm-jre-32bit.tar.xz"
+source=("xdm-setup-x64.tar.xz::https://sourceforge.net/projects/xdman/files/xdm-setup-x64.tar.xz/download"
         "xdman.desktop"
         "xdman"
         "xdman.png")
-md5sums=('1db7d588dddc7f6e4c7a4f1d4a8e73e3'
-         '1b2a4cb985ab317c7a95fbcf92b333a0'
-         '6a37eb4ad749601161fec5e706a990a7'
-         'b4f527e7b9f5a884cdffd4d38612170b')
+sha256sums=('28085c3a365e39258a57fd7ef8ee3b80dcdd3c97c0fdfc3bd150feece7aaf49d'
+            'ee312ace7f1c7a5b70b69c3681097259dd6e5e2abe7f9d19d85861a2074120a6'
+            'befc67049b2c2771c51e7c78b9518550c9a0be00f5f687440402927a22660b35'
+            'b9e9ee05cc2b5d4ded7696a0b5bb6f99ba6a67839528482dc29b6e07e592e415')
 
-elif [ "$CARCH" = "x86_64" ]; then
-source=("http://sourceforge.net/projects/xdman/files/xdm-jre-64bit.tar.xz"
-        "xdman.desktop"
-        "xdman"
-        "xdman.png")
-md5sums=('00096f8c8a50f93c9f4d02687474e9b0'
-         '1b2a4cb985ab317c7a95fbcf92b333a0'
-         '6a37eb4ad749601161fec5e706a990a7'
-         'b4f527e7b9f5a884cdffd4d38612170b')
-fi
-
-build() {
-rm -f "$srcdir/xdm/jre" --recursive
+prepare () {
+  cd xdm-setup
+  7z x install.sh
 }
 
 package() {
-install -D -m644 "../xdman.desktop" "$pkgdir/usr/share/applications/xdman.desktop"
-install -D -m775 "../xdman" "$pkgdir/usr/bin/xdman"
-install -D -m644 "../xdman.png" "$pkgdir/usr/share/pixmaps/xdman.png"
-install -D -m644 "$srcdir/xdm/xdm.jar" "$pkgdir/usr/share/java/xdm/xdman.jar"
+  install -d -m755 "$pkgdir"/opt/xdman
+  install -D -m644 "$srcdir"/xdman.desktop "$pkgdir"/usr/share/applications/xdman.desktop
+  install -D -m775 "$srcdir"/xdman "$pkgdir"/opt/xdman
+  install -D -m644 "$srcdir"/xdman.png "$pkgdir"/usr/share/pixmaps/xdman.png
+  install -D -m644 "$srcdir"/xdm-setup/xdman.jar "$pkgdir"/opt/xdman/xdman.jar
 }
