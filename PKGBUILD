@@ -7,7 +7,7 @@ pkgdesc="An mpc-like cli tool for mpv which connects to existing mpv instances t
 arch=('i686' 'x86_64')
 url="https://github.com/freijon/mpvipc"
 license=('GPL3')
-depends=('mpv' 'socat')
+depends=('mpv')
 makedepends=('cargo')
 source=(
 	"${pkgname}::git+https://github.com/freijon/mpvipc.git"
