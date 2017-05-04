@@ -20,7 +20,7 @@ optdepends=('parted: partition management'
 provides=("udisks2=${pkgver}")
 conflicts=('udisks2')
 options=(libtool strip)
-source=(http://udisks.freedesktop.org/releases/udisks-${pkgver}.tar.bz2
+source=('https://github.com/storaged-project/udisks/releases/download/udisks-${pkgver}/udisks-${pkgver}.tar.bz2'
         'udisks-enable-elogind.patch')
 sha256sums=('da416914812a77e5f4d82b81deb8c25799fd3228d27d52f7bf89a501b1857dda'
             '52e9157cdf2a1ecc02664205491c9015951213309d08fe18a32f62f54ed93095')
