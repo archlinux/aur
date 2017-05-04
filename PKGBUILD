@@ -172,8 +172,8 @@ if [ "${_opt_ConvertTTC}" -ne 0 ]; then
 fi
 provides=('ttf-font' 'ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts')
 conflicts=('ttf-ms-fonts' 'ttf-tahoma' 'ttf-vista-fonts' 'ttf-ms-win8' 'ttf-win7-fonts-autodownload')
-install="${pkgbase}.install"
-_sfpath="http://downloads.sourceforge.net/corefonts"
+#install="${pkgbase}.install"
+_sfpath="https://downloads.sourceforge.net/corefonts"
 source=('license.rtf' 'FONTVER.pl' "20-${_pkgbase}-"{latin,japanese,korean,zh_cn,zh_tw}'.conf')
 source+=("${_sfpath}/andale32.exe") # "${_sfpath}/arialb32.exe")
 unset _sfpath
