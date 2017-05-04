@@ -2,7 +2,7 @@
 
 _basename=mhchem
 pkgname=texlive-mhchem-bundle
-pkgver=4.05
+pkgver=4.06
 pkgrel=1
 pkgdesc="Typeset chemical formulae/equations and Risk and Safety phrases in LaTeX."
 arch=('any')
@@ -12,7 +12,6 @@ provides=(texlive-"$_basename" texlive-rsphrase)
 conflicts=(texlive-"$_basename" texlive-rsphrase)
 license=('LPPL')
 source=(http://mirror.ctan.org/macros/latex/contrib/"$_basename".zip)
-install=$pkgname.install
 
 package() {
   cd -- "$srcdir/$_basename"
@@ -27,4 +26,4 @@ package() {
   done
 }
 
-sha256sums=('6fc304cd5788aae3c1b2a0fd78574458e2079afdd43c0cf0b228563374d9651f')
+sha256sums=('7e5fb27a0639dc4da18a6e669bf1e480b7b2fbc81091c9fc9a51c0e55a304327')
