@@ -3,7 +3,7 @@
 
 pkgname=khal-git
 _gitname=khal
-pkgver=0.7.0
+pkgver=0.9.6.dev2+g119d44c
 pkgrel=1
 pkgdesc="Command line CalDav client"
 license=("MIT")
@@ -44,6 +44,8 @@ package() {
   install -D -m644 AUTHORS.txt "${pkgdir}/usr/share/licenses/${_gitname}/AUTHORS"
 
   install -D -m644 doc/build/man/khal.1 "${pkgdir}/usr/share/man/man1/khal.1"
+  install -Dm 755 "bin/khal" "$pkgdir/usr/bin/khal"
+  install -Dm 755 "bin/ikhal" "$pkgdir/usr/bin/ikhal"
 
   # You can comment the following to disable zsh completion (if you do
   # not plan to use zsh for example)
