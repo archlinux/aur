@@ -1,6 +1,8 @@
 # Maintainer: Frederic Van Assche <frederic at fredericva.com>
+# Contributor: Eugene Dvoretsky <radioxoma at gmail dot com>
+
 pkgname=python-pylibtiff-git
-pkgver=r125.e56519a
+pkgver=r138.33735eb
 pkgrel=1
 pkgdesc="A python wrapper of the C libtiff library"
 arch=('any')
