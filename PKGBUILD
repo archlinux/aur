@@ -2,7 +2,7 @@
 # Maintainer: max-k <max-k AT post DOT com>
 
 pkgname=hubicfuse
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A fuse filesystem to access HubiC cloud storage"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('fuse' 'libxml2' 'json-c')
 makedepends=('gcc' 'libxml2' 'pkg-config' 'make')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('27fa97d3320446facec4a7c387be7f12190a2852190b1de796a7c05f679790b3')
+sha256sums=('6c4687b07e7e3b184ad30f1d3c66932867ee6e5a38e5d153fbf408ca06d0533e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
