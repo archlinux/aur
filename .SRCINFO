@@ -1,0 +1,17 @@
+pkgbase = fig2ps
+	pkgdesc = Perl script designed to convert Xfig files to postscript or PDF files, processing text using LaTeX
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://fig2ps.sourceforge.net
+	arch = any
+	license = GPL
+	depends = texlive-core
+	depends = ghostscript
+	depends = fig2dev
+	provides = fig2ps
+	conflicts = fig2eps
+	source = https://downloads.sourceforge.net/project/fig2ps/fig2ps-1.5.tar.bz2
+	md5sums = 22ea30b5d0f36dfec7b462449b0fc82b
+
+pkgname = fig2ps
+
