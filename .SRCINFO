@@ -1,5 +1,5 @@
 pkgbase = python-abjad
-	pkgdesc = Formalized music score control. Package for Python
+	pkgdesc = Tool for formalized music score control. Package for Python
 	pkgver = 2.20
 	pkgrel = 2
 	url = https://github.com/Abjad/abjad
@@ -13,7 +13,7 @@ pkgbase = python-abjad
 	sha256sums = c8ba4ea9707ba87e9a2ede40c97d14d6b6c701ae884667dcd44c828a50c97cb0
 
 pkgname = python-abjad
-	pkgdesc = Formalized music score control. Package for Python 3
+	pkgdesc = Tool for formalized music score control. Package for Python 3
 	depends = lilypond
 	depends = python
 	depends = python-ply
@@ -26,7 +26,7 @@ pkgname = python-abjad
 	optdepends = python-pypdf2: PDF toolkit
 
 pkgname = python2-abjad
-	pkgdesc = Formalized music score control. Package for Python 2
+	pkgdesc = Tool for formalized music score control. Package for Python 2
 	depends = lilypond
 	depends = python2
 	depends = python2-ply
