@@ -1,16 +1,17 @@
 pkgbase = caitsith-tools
 	pkgdesc = CaitSith Linux userspace tools
-	pkgver = 0.1_20150723
+	pkgver = 0.2_20161229
 	pkgrel = 1
-	url = http://caitsith.sourceforge.jp/
+	url = http://caitsith.osdn.jp/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ncurses
-	source = http://sourceforge.jp/frs/redir.php?m=jaist&f=/caitsith/55465/caitsith-tools-0.1-20150723.tar.gz
-	source = http://sourceforge.jp/frs/redir.php?m=jaist&f=/caitsith/55465/caitsith-tools-0.1-20150723.tar.gz.asc
-	sha256sums = f92fb4d9df35295d302f5440558e78672f0625ce77c2f37e0f2e1c6df39d4589
-	sha256sums = 6c432de52ab84bda276a8d082de484f48ede959f4e8eebceda4f8a2886a9bb87
+	source = http://jaist.dl.osdn.jp/caitsith/66538/caitsith-tools-0.2-20161229.tar.gz
+	source = http://jaist.dl.osdn.jp/caitsith/66538/caitsith-tools-0.2-20161229.tar.gz.asc
+	validpgpkeys = 43C83369623D7AD3A96C2FC7425F128D0C64F52A
+	sha256sums = b5d791c87975765b9e8b5c7ade62fa3b34822870978adcb11744f90bcadce9ea
+	sha256sums = 26047ed0d59b52f98e57d5728c80e347a9d10529eebe9a476e479e93df557f53
 
 pkgname = caitsith-tools
 
