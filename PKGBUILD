@@ -3,7 +3,7 @@
 pkgname=('python-apt' 'python2-apt')
 _pkgname=python-apt
 _pkgname2=python2-apt
-pkgver=1.4.0~beta2
+pkgver=1.4.0~beta3
 pkgrel=1
 pkgdesc="Python binding of libapt-pkg"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=()
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver.tar.xz
 fix-pydebug.patch)
-sha256sums=('ac521853d7d675f49af81a58c9824521d48f74058b26ef5abbdc44dff4d79343'
+sha256sums=('ee5d237a3ab91292e44dc9edf593e906bd5ca67953f828c3aa19b921b42f8485'
             '8a652b45fc4cdb27d672c355858813678908a8b6ab6a8dde8b843193eb960646')
 
 prepare() {
