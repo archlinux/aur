@@ -1,3 +1,27 @@
+1.0.0beta
+----------
+This is a major minor update to 0.9.9.3. It fixed several critical bugs when facing some extreme conditions.
+
+The update blog is below:
+
+    Use the new singleton application class instead of using shared memory.
+    Update the bass to the latest version.
+    Reduce the file find signal number. Using the patch list to compress the signal.
+    Fixed the error which might delete all the files under the running directory bug.
+    Fixed the genre images folder get from root bug.
+
+The graduation thesis took far more time than I expected. The update progress could be slow, but I will do my best to upgrade the application. Currently I am working on the following parts.
+
+    Configuration Panels: In 1.0 final release, we will provide custom settings.
+    Format Converting: In 1.0 final release, we will bundle FFMPEG as one part of Mu and providing file format converting function.
+    Spliting: In 1.0 final release, we will provide the CUE file spliting function.
+    Perhaps new backends: It is time to change the backend from two to one. Previously I was trying to use GStreamer to unified the backend. One of our user suggesting me to use the libmpv. To tell the truth, I was trying to add one MPV backend before, however due to my personal skill, I didn't realize it. Some new information gives me hope. This feature may not appear in 1.0 release, but must be appeared in the future release.
+
+Hope you can enjoy the new version μ!
+
+〜μ'sic Forever♪♪♪♪♪♪♪♪♪〜
+
+
 0.9.9.3
 ----------
 

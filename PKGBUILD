@@ -1,7 +1,8 @@
 # Maintainer: Frantic1048 <archer@frantic1048.com>
 
 pkgname=kreogist-mu
-pkgver='0.9.9.3'
+pkgver='1.0.0beta'
+_git_tag='1.0-beta'
 pkgrel=1
 epoch=1
 pkgdesc="Fantastic cross-platform music manager.based on Qt5"
@@ -14,7 +15,7 @@ depends=(
   'ffmpeg'
   'phonon-qt5'
   'gst-libav'
-  'gstreamer0.10-ffmpeg'
+  'ffmpeg'
   'desktop-file-utils'
   'hicolor-icon-theme'
 )
@@ -32,22 +33,26 @@ makedepends=(
 )
 
 source=(
-  "https://github.com/Kreogist/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname-resource.tar.gz"
-  "https://codeload.github.com/Kreogist/Mu/tar.gz/$pkgver"
+#  "https://github.com/Kreogist/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname-resource.tar.gz"
+  "https://codeload.github.com/Kreogist/Mu/tar.gz/$_git_tag"
+  "kreogist-mu.desktop"
 )
 
-sha224sums=('481526da5c0e5d53f7a95f2d7630a3b4c698fd44853f86dc2347bfc0' '8767ac3acf1cd85fcab2bdac78208b1ad20bf1173b6705bca0d58391')
+sha224sums=('9e13147a2cd7cf8a65f19153e13d1b3d6fe7add31df6c7b70d0f3227'
+            '2f35e3f154fed55638827811b7ea3d0a34e3f7c39107bb7257a8a5f8')
 
 build() {
   mkdir -p $srcdir/Mu-build
   cd $srcdir/Mu-build
-  qmake "CONFIG+=release" $srcdir/Mu-$pkgver/mu.pro
+  qmake "CONFIG+=release" $srcdir/Mu-$_git_tag/mu.pro
   make
 }
 
 package() {
-  # excecutable
+  # rename excecutable to kreogist-mu
+  # to avoid conflicting with
   mv $srcdir/Mu-build/bin/mu $srcdir/Mu-build/bin/kreogist-mu
+
   install -d $pkgdir/usr/bin/
   install -m775 $srcdir/Mu-build/bin/kreogist-mu $pkgdir/usr/bin/
 
@@ -64,7 +69,9 @@ package() {
 
   # static resource
   install -d $pkgdir/usr/share/icons/hicolor/512x512/apps/
-  install -m664 $srcdir/$pkgname-resource/$pkgname.png $pkgdir/usr/share/icons/hicolor/512x512/apps/
+  install -m664 $srcdir/Mu-$_git_tag/src/resource/icon/mu.png \
+                $pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png
+
   install -d $pkgdir/usr/share/applications/
-  install -m664 $srcdir/$pkgname-resource/$pkgname.desktop $pkgdir/usr/share/applications/
+  install -m664 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/
 }
