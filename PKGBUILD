@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='http://code.google.com/p/json-simple'
 license=('APACHE')
 depends=('java-runtime')
-source=("http://json-simple.googlecode.com/files/${pkgname}-${pkgver}.jar")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.jar")
 sha1sums=('5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5')
 
 package() {
