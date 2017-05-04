@@ -114,7 +114,7 @@ if [ "${_opt_IncludeWin7Fonts}" -eq 0 ]; then
 else
   conflicts=('ttf-vista-fonts' 'ttf-win7-fonts' 'ttf-ms-win8')
 fi
-install="${pkgname}.install"
+#install="${pkgname}.install"
 source=('license.rtf' 'FONTVER.pl'
   #'arialn.ttf=62e15117f7d314900949fe60b62c2e908c3921d0425cf26a9cf606d46ab96b16=2008-08-14 21:25:08-04:00=patch'
   #'arialnb.ttf=dc7f1542fca0f52bdf53e24a49dbb6e9a733c6beeb5ccb27dd0215713d126233=2008-08-14 21:25:08-04:00=patch'
