@@ -2,13 +2,13 @@
 
 pkgname=black-screen
 pkgver=0.2.142
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
 url='https://github.com/shockone/black-screen'
 license=('MIT')
 depends=('electron')
-makedepends=('apm' 'npm')
+makedepends=('apm' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'black-screen.desktop'
         'black-screen.js')
