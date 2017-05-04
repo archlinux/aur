@@ -1,28 +1,36 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
-pkgbase=naemon
-pkgname=('naemon-core' 'naemon-livestatus' 'naemon-thruk')
-pkgver=1.0.4
+pkgname=naemon
+pkgver=1.0.6
 pkgrel=1
+pkgdesc="System and network monitoring application"
 arch=('i686' 'x86_64')
 url="http://naemon.org"
 license=('GPL2')
-makedepends=('gperf' 'rsync' 'gd' 'mariadb-clients' 'help2man')
-source=(http://labs.consol.de/naemon/release/v$pkgver/src/$pkgbase-$pkgver.tar.gz
-        $pkgbase.service)
-md5sums=('f0d5b8ce43debf78e82994c7ad995d57'
+depends=('bash' 'icu')
+optdepends=('logrotate'
+            'thruk: Web interface for Naemon'
+            'monitoring-plugins')
+makedepends=('gperf' 'help2man')
+provides=('naemon-core' 'naemon-livestatus')
+conflicts=('naemon-core' 'naemon-livestatus')
+replaces=('naemon-core' 'naemon-livestatus')
+source=(http://labs.consol.de/naemon/release/v$pkgver/src/$pkgname-$pkgver.tar.gz
+        $pkgname.service)
+md5sums=('6c9b95a737a8f232e114f4cff200ff92'
          'd6a77534e612e8f65ff3360336faec77')
-
-prepare() {
-  cd $pkgbase-$pkgver
-
-  # Break up the install process so we can package the separate components
-  sed -i '51iinstall-livestatus:' Makefile
-  sed -i '53iinstall-thruk:' Makefile
-}
+backup=('etc/logrotate.d/naemon' 'etc/naemon/conf.d/commands.cfg'
+  'etc/naemon/conf.d/contacts.cfg' 'etc/naemon/conf.d/localhost.cfg'
+  'etc/naemon/conf.d/printer.cfg' 'etc/naemon/conf.d/switch.cfg'
+  'etc/naemon/conf.d/templates/contacts.cfg'
+  'etc/naemon/conf.d/templates/hosts.cfg'
+  'etc/naemon/conf.d/templates/services.cfg'
+  'etc/naemon/conf.d/timeperiods.cfg' 'etc/naemon/conf.d/windows.cfg'
+  'etc/naemon/naemon.cfg' 'etc/naemon/resource.cfg')
+install=$pkgname.install
 
 build() {
-  cd $pkgbase-$pkgver
+  cd $pkgname-$pkgver
 
   ./configure --prefix=/usr \
               --bindir=/usr/bin \
@@ -54,67 +62,26 @@ build() {
 }
 
 check() {
-  cd $pkgbase-$pkgver/naemon-core
+  cd $pkgname-$pkgver/naemon-core
 
   make check
 }
 
-package_naemon-core() {
-pkgdesc="System and network monitoring application"
-depends=('bash')
-optdepends=('logrotate'
-            'monitoring-plugins')
-backup=('etc/logrotate.d/naemon' 'etc/naemon/conf.d/commands.cfg'
-  'etc/naemon/conf.d/contacts.cfg' 'etc/naemon/conf.d/localhost.cfg'
-  'etc/naemon/conf.d/printer.cfg' 'etc/naemon/conf.d/switch.cfg'
-  'etc/naemon/conf.d/templates/contacts.cfg'
-  'etc/naemon/conf.d/templates/hosts.cfg'
-  'etc/naemon/conf.d/templates/services.cfg'
-  'etc/naemon/conf.d/timeperiods.cfg' 'etc/naemon/conf.d/windows.cfg'
-  'etc/naemon/naemon.cfg' 'etc/naemon/resource.cfg')
-install=$pkgbase.install
-
-  cd $pkgbase-$pkgver
+package() {
+  cd $pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
 
-  chown -R 44:44 "$pkgdir"/var/{cache,log}/$pkgbase
-  chmod -R 770 "$pkgdir"/var/{cache,log}/$pkgbase
+  install -d "$pkgdir"/etc/naemon/module-conf.d
+  install -d "$pkgdir"/var/lib/naemon
 
-  install -Dm644 "$srcdir"/$pkgbase.service \
-    "$pkgdir"/usr/lib/systemd/system/$pkgbase.service
+  chown -R 44:44 "$pkgdir"/var/{cache,lib,log}/$pkgname
+  chmod -R 770 "$pkgdir"/var/{cache,lib,log}/$pkgname
 
-  # Remove init script
+  install -Dm644 "$srcdir"/$pkgname.service \
+    "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+
+  # Remove non-Arch directories
   rm -rf "$pkgdir"/etc/init.d
-}
-
-package_naemon-livestatus() {
-pkgdesc="Standard API for Naemon"
-depends=('icu')
-
-  cd $pkgbase-$pkgver
-
-  make DESTDIR="$pkgdir" install-livestatus
-}
-
-package_naemon-thruk() {
-pkgdesc="Monitoring Webinterface for Naemon"
-depends=('gd' 'mariadb-clients' 'apache' 'mod_fcgid')
-backup=('etc/naemon/cgi.cfg' 'etc/naemon/htpasswd'
-  'etc/naemon/log4perl.conf' 'etc/naemon/menu_local.conf'
-  'etc/naemon/naglint.conf' 'etc/httpd/conf/extra/thruk.conf'
-  'etc/httpd/conf/extra/thruk_cookie_auth_vhost.conf'
-  'etc/naemon/thruk_local.conf' 'etc/naemon/thruk.conf'
-  'etc/naemon/conf.d/thruk_bp_generated.cfg'
-  'etc/naemon/conf.d/thruk_templates.cfg' 'etc/logrotate.d/thruk')
-
-  cd $pkgbase-$pkgver
-
-  make DESTDIR="$pkgdir" install-thruk
-
-  chown -R 44:44 "$pkgdir"/var/{cache,lib,log}/$pkgbase
-  chmod -R 770 "$pkgdir"/var/{cache,lib,log}/$pkgbase
-
-  # Remove init script
-  rm -rf "$pkgdir"/etc/init.d
+  rm -rf "$pkgdir"/etc/apache2
 }
