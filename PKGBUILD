@@ -13,7 +13,8 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('MIT')
 depends=('emacs' 'emacs-spaceline' 'emacs-all-the-icons')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9ce4dc7bdbf54134879245427de21ccc81f05e9263b81b82811dcaed5cd7ebee')
+install=${pkgname}.install
 
 build() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"
