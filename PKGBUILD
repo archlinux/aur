@@ -3,15 +3,15 @@
 
 pkgname=python-pylibtiff-git
 pkgver=r138.33735eb
-pkgrel=1
+pkgrel=2
 pkgdesc="A python wrapper of the C libtiff library"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/pearu/pylibtiff"
-license=('custom')
+license=('BSD')
 depends=('python-numpy' 'libtiff')
 makedepends=('python-setuptools' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=('python-libtiff' 'python-pylibtiff')
+replaces=('python-libtiff-svn')
 source=("${pkgname%-git}::git+https://github.com/pearu/pylibtiff.git")
 sha256sums=('SKIP')
 
@@ -21,11 +21,14 @@ pkgver() {
 }
 
 build() {
-    cd $srcdir/pylibtiff
-    python setup.py build
+	cd $srcdir/python-pylibtiff
+	python setup.py build
+
+	# Don't care about "ImportError: No module named tif_lzw"
+	python -c "from libtiff import TIFF" || true
 }
 
 package() {
-    cd $srcdir/pylibtiff
-    python setup.py install --root="$pkgdir" --optimize=1 
+	cd $srcdir/python-pylibtiff
+	python setup.py install --root="$pkgdir" --optimize=1
 }
