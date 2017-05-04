@@ -4,7 +4,7 @@ _author=mattlaw
 _authorUP=MATTLAW
 _perlmod=File-BOM
 pkgname=perl-file-bom
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc='Utilities for handling Byte Order Marks'
 arch=('any')
@@ -19,7 +19,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://search.cpan.org/CPAN/authors/id/M/MA/$_authorUP/$_perlmod-$pkgver.tar.gz")
-md5sums=('e55642294d8ab369b4dda4e9d57c8e41')
+md5sums=('992c47349a20c5529f1e817e32a761f9')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
