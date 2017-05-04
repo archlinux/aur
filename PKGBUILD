@@ -24,7 +24,8 @@ optdepends=("emacs-persp-mode: Show current workspace name"
 makedepends=('git')
 provides=('emacs-spaceline')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheBB/spaceline/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b060d63b3e3b71b65d0406d5c6e730efb6a7fa95cacc21d0e53f705e44559314')
+install=${pkgname}.install
 
 build() {
   cd "${srcdir}/spaceline-${pkgver}"

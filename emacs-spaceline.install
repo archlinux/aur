@@ -1,0 +1,44 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'spaceline-config)
+(setq powerline-default-separator 'utf-8)
+(spaceline-compile)
+(spaceline-spacemacs-theme)
+
+==> The compile step is included to keep it up-to-date when reloading 
+    your .emacs, and can be omitted if desired.
+
+==> Also note that spaceline must be initialized *after* any of its
+    optional dependencies!
+
+==> To do the above with use-package (and a few optional dependencies):
+
+(use-package spaceline-config
+  :after powerline anzu winum ;And any other optional dependencies
+  :config
+  (setq powerline-default-separator 'utf-8)
+  (spaceline-compile)
+  (spaceline-spacemacs-theme))
+
+==> You could also try the emacs theme instead: 
+
+(spaceline-emacs-theme)
+
+==> But I highly, highly recommend the "spaceline-all-the-icons" theme
+    as it looks so much better than what you'll get by default here. That
+    package is also on the AUR for you to try. 
+
+==> Seriously, it's beautiful.
+    
+==> Go try it.
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
