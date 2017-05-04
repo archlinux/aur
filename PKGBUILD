@@ -2,8 +2,8 @@
 
 pkgname=t200ta-wifi
 pkgver=r1
-pkgrel=1
-pkgdesc="Wi-Fi lib for ASUS T200TA (and possibly other Bay Trail devices)"
+pkgrel=2
+pkgdesc="Wi-Fi lib for ASUS T200TA (and possibly other BayTrail devices)"
 arch=('any')
 url="https://github.com/DX37/T200TA"
 license=('GPL')
