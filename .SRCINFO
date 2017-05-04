@@ -1,13 +1,13 @@
 pkgbase = python-abjad
 	pkgdesc = Formalized music score control. Package for Python
-	pkgver = 2.19
+	pkgver = 2.20
 	pkgrel = 1
 	url = https://github.com/Abjad/abjad
 	arch = any
 	license = GPL 3
-	optdepends = graphviz
-	source = https://github.com/Abjad/abjad/archive/v2.19.tar.gz
-	sha256sums = e6c24f854cec74752d0dd3383f90535d8401368737640dd1695f4780f803a2a3
+	optdepends = graphviz: to create rhythm-trees graphs and other tree structures
+	source = https://github.com/Abjad/abjad/archive/v2.20.tar.gz
+	sha256sums = c8ba4ea9707ba87e9a2ede40c97d14d6b6c701ae884667dcd44c828a50c97cb0
 
 pkgname = python-abjad
 	pkgdesc = Formalized music score control. Package for Python 3
