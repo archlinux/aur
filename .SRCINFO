@@ -1,7 +1,7 @@
 pkgbase = mcuxpresso-ide
 	pkgdesc = An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP.
 	pkgver = 10.0.0_344
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nxp.com/MCUXPresso
 	arch = x86_64
 	license = custom:"NXP"

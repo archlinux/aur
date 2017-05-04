@@ -2,7 +2,7 @@
 
 pkgname=mcuxpresso-ide
 pkgver=10.0.0_344
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
 arch=('x86_64')
@@ -18,13 +18,18 @@ options=('!strip')
 prepare() {
     chmod +x mcuxpressoide-${pkgver}.${arch}.deb.bin
     ./mcuxpressoide-${pkgver}.${arch}.deb.bin --noexec --keep --target ${srcdir}
+    rm mcuxpressoide-${pkgver}.${arch}.deb.bin
     cd ${srcdir}/
     mkdir mcuxpressoide
     bsdtar -x -f mcuxpressoide-${pkgver}.${arch}.deb -C mcuxpressoide/
+    rm mcuxpressoide-${pkgver}.${arch}.deb
     bsdtar -x -f mcuxpressoide/data.tar.gz -C mcuxpressoide/
+    rm mcuxpressoide/data.tar.gz
     mkdir JLink_Linux_x86_64
     bsdtar -x -f JLink_Linux_x86_64.deb -C JLink_Linux_x86_64/
+    rm JLink_Linux_x86_64.deb
     bsdtar -x -f JLink_Linux_x86_64/data.tar.gz -C JLink_Linux_x86_64/
+    rm JLink_Linux_x86_64/data.tar.gz
 }
 
 
