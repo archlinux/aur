@@ -1,6 +1,6 @@
 pkgbase = nvidia-tesla-utils
 	pkgver = 375.51
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
