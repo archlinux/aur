@@ -8,9 +8,9 @@ _milestone=54.0a2
 
 _release_year=2017
 _release_month=05
-_release_day=03
-_release_time=$_release_year-$_release_month-$_release_day-00-40-06
-_buildid=20170503004006
+_release_day=04
+_release_time=$_release_year-$_release_month-$_release_day-00-40-22
+_buildid=20170504004022
 
 
 pkgver=54.0a2.$_buildid
@@ -34,8 +34,8 @@ source_i686=("$_base_url/thunderbird-54.0a2.en-US.linux-i686.tar.bz2")
 source_x86_64=("$_base_url/thunderbird-54.0a2.en-US.linux-x86_64.tar.bz2")
 
 sha512sums=('a36bb5710b9cd6637cf6f538808e2fba8c99fdd1d486446ff9ee8094ca30b5592c17b3e808cae1da7ff2b28123f54902ed4ee1501585a8dcfc54d581588638d3')
-sha512sums_i686=('89bde66efbeb4ab2db094607ace7f46dc5ba969e01561f3d0b6bfa5cb961752eb888dd513725ae39cd12d33ae190df6734e31bd0f0db536e49962adca84a44f7')
-sha512sums_x86_64=('c7baf36e26bd3a1b086b7d42c71b9be9da1a0aa298c3a8450bb7c413da5fb996f148d852c6a39ae5aed1633fff2b00f8a6240c290d140625cd36f12528ffb51a')
+sha512sums_i686=('1a64258fe753ca2f423c225d72f9065ddf37e1a991de2b98dcf535f317daba21b3fcb145f148cb29e8fccfc24f0cf78d490a93ba1c6a65ab13ecbeaa380e39a5')
+sha512sums_x86_64=('da6dfd6d283aa96f0d1a1d9a8604770d873d86c91811d5ddde4ef11006fabaa813c483c2c615dd68998830874862469f2687e867b865de79a38f7145702dd403')
 
 pkgver() {
     cd "${_name}"
