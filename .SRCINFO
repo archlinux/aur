@@ -1,7 +1,7 @@
 pkgbase = python-abjad
 	pkgdesc = Formalized music score control. Package for Python
 	pkgver = 2.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Abjad/abjad
 	arch = any
 	license = GPL 3
@@ -13,9 +13,11 @@ pkgname = python-abjad
 	pkgdesc = Formalized music score control. Package for Python 3
 	depends = python
 	depends = lilypond
+	depends = python-ply
 
 pkgname = python2-abjad
 	pkgdesc = Formalized music score control. Package for Python 2
 	depends = python2
 	depends = lilypond
+	depends = python2-ply
 

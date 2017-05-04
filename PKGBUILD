@@ -3,7 +3,7 @@
 pkgbase=python-abjad
 pkgname=(python-abjad python2-abjad)
 pkgver=2.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Formalized music score control. Package for Python"
 arch=('any')
 url="https://github.com/Abjad/abjad"
@@ -17,7 +17,7 @@ prepare() {
 }
 
 package_python-abjad() {
-	depends=('python' 'lilypond')
+	depends=('python' 'lilypond' 'python-ply')
 	makedepends=('python-setuptools')
 	pkgdesc+=" 3"
 
@@ -29,7 +29,7 @@ package_python-abjad() {
 }
 
 package_python2-abjad() {
-	depends=('python2' 'lilypond')
+	depends=('python2' 'lilypond' 'python2-ply')
 	makedepends=('python2-setuptools')
 	pkgdesc+=" 2"
 
