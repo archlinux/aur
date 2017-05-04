@@ -3,7 +3,9 @@
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 
 pkgname=armory-goatpig-git
-pkgver=v0.95.1.r2.gcc9eccf6
+_name=${pkgname%-*-*}
+_py2ver=$(pacman -Qi python2 | sed -n 's/\(.*Version *: \)\(.*\..*\)\(\..*\)/\2/p')
+pkgver=v0.96.r0.ga3d01aa7
 pkgrel=1
 pkgdesc="Armory Bitcoin wallet, built from new, official github repo w/auto selection of current python2 version"
 arch=('i686' 'x86_64')
@@ -12,26 +14,58 @@ license=('AGPL3')
 depends=('crypto++' 'swig' 'python2' 'twisted' 'qt4' 'python2-pyqt4' 'python2-bsddb' 'python2-psutil' 'rsync')
 makedepends=('git' 'gcc' 'make')
 optdepends=('bitcoin-daemon: Communicate with the Bitcoin network')
-install="${pkgname%-*-*}.install"
+install="${_name}.install"
 provides=('armory')
 conflicts=('armory' 'armory-git')
-source=("${pkgname%-*-*}::git+${url}.git")
+source=("${_name}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-*-*}"
-    git describe --tags --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$srcdir/$_name"
+  git describe --tags --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_name"
+  git submodule update --init
+  PYTHON_VERSION="$_py2ver" "$srcdir/$_name/autogen.sh"
 }
 
 build() {
-    ## Get Python2 Version
-    _py2ver=$(pacman -Qi python2 | grep "Version" | sed 's/^Version\s*:\s//')
-    cd "$srcdir/${pkgname%-*-*}"
-    ## Build using current python2 version
-    make -j"${nproc}" PYVER="python${_py2ver%.*}"
+  cd "$srcdir/$_name"
+  "$srcdir/$_name/configure" PYTHON_VERSION="$_py2ver"
+  PYTHON_VERSION="$_py2ver" make -j"${nproc}"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-*-*}"
-  make install DESTDIR="$pkgdir"
+  cd "$srcdir/$_name"
+  make DESTDIR="$pkgdir/" install
+
+  find "$pkgdir/usr/local" -depth -mindepth 1 -maxdepth 1 \
+  -execdir bash -c 'mv "'"$pkgdir"'/usr/local/$1" "'"$pkgdir"'/usr/$1"' _ {} \;
+  rm -d "$pkgdir/usr/local"
+
+  mkdir -p "$pkgdir/usr/share/pixmaps"
+  icotool -x -w 256 "$pkgdir/usr/share/armory/img/armory256x256.ico" \
+                 -o "$pkgdir/usr/share/pixmaps/armory.png"
+  cp "$pkgdir/usr/share/armory/img/armory_icon_green_64x64.png" \
+     "$pkgdir/usr/share/pixmaps/armory_green.png"
+
+  desktop-file-install -m 644 \
+  --set-key="Exec" --set-value="/usr/bin/armory" \
+  --set-icon="/usr/share/pixmaps/armory.png" \
+  --dir="$pkgdir/usr/share/applications/" \
+  "$srcdir/$_name/dpkgfiles/armory.desktop"
+
+  desktop-file-install -m 644 \
+  --set-key="Exec" --set-value="/usr/bin/armory --offline" \
+  --set-icon="/usr/share/pixmaps/armory.png" \
+  --dir="$pkgdir/usr/share/applications/" \
+  "$srcdir/$_name/dpkgfiles/armoryoffline.desktop"
+
+  desktop-file-install -m 644 \
+  --set-key="Exec" --set-value="/usr/bin/armory --testnet" \
+  --set-icon="/usr/share/pixmaps/armory_green.png" \
+  --dir="$pkgdir/usr/share/applications/" \
+  "$srcdir/$_name/dpkgfiles/armorytestnet.desktop"
 }
