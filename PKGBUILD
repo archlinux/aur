@@ -1,17 +1,17 @@
 # Maintainer: Pete Alexandrou (ozmartian) <pete@ozmartians.com>
 pkgname=tvlinker
-pkgver=3.8.0
-pkgrel=3
+pkgver=3.8.5
+pkgrel=1
 pkgdesc="TV show link scraper + downloader for tv-release.pw incl. debrid and dl manager services"
 arch=('any')
 license=('GPL3')
 url="http://tvlinker.ozmartians.com"
 source=(https://github.com/ozmartian/${pkgname}/archive/${pkgver}.tar.gz)
-depends=('python-pyqt5' 'python-beautifulsoup4' 'python-lxml')
+depends=('python-pyqt5' 'python-beautifulsoup4' 'python-lxml' 'python-requests')
 makedepends=('python-setuptools')
 provides=()
 conflicts=()
-md5sums=('b03966c7d41986347e6d082fb86f37a2')
+md5sums=('36f3282b42fb9527b078410f9952149a')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
