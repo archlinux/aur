@@ -12,7 +12,8 @@ makedepends=()
 provides=('minishift')
 
 source=(https://github.com/minishift/minishift/releases/download/v${minishift_version}/minishift-${minishift_version}-linux-amd64.tgz)
-sha256sums=('961a62c04db126709a181138a89757f3d37fd8669dc7693da13d9dfd7e538294')
+sha256sums=('269954ea2c309113ab62f4fbebfb1a29183824414e017d493d45bb80928f8161')
+
 
 prepare() {
     tar -xf minishift-${minishift_version}-linux-amd64.tgz
