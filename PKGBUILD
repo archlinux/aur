@@ -4,7 +4,7 @@
 pkgname=nginx-devel
 _pkgname=nginx
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
 arch=(i686 x86_64 armv6h)
@@ -215,16 +215,13 @@ _addSvnModule() {
   fi
 }
 #}}}
-prepare(){
-  if (( DEBUG )); then
-    set -o nounset
-  fi
+if (( DEBUG )); then
+  set -o nounset
+fi
 # nginx env, commons for build and package
-  export _cfgdir=/etc/nginx
-  export _tmpdir=/var/lib/nginx
-  export _logdir=/var/log/nginx
-
-}
+_cfgdir=/etc/nginx
+_tmpdir=/var/lib/nginx
+_logdir=/var/log/nginx
 build() {
   local _piddir=/run
   local _lockdir=/var/lock
