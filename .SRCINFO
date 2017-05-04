@@ -1,7 +1,7 @@
 pkgbase = xgraph-bin
 	pkgdesc = XGRAPH is a general purpose x-y data plotter with interactive buttons for panning, zooming, printing, and selecting display options.
 	pkgver = 4.30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.xgraph.org/
 	arch = i686
 	arch = x86_64

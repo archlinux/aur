@@ -3,7 +3,7 @@
 
 pkgname=xgraph-bin
 pkgver=4.30
-pkgrel=2
+pkgrel=3
 pkgdesc="XGRAPH is a general purpose x-y data plotter with interactive buttons for panning, zooming, printing, and selecting display options."
 arch=('i686' 'x86_64')
 url="http://www.xgraph.org/"
@@ -20,7 +20,7 @@ package() {
 	if test "$CARCH" == x86_64; then
 		_folder="XGraph4.30_linux64"
 	elif test "$CARCH" == i686; then
-		_folder="XGraph4.30_linux64"
+		_folder="XGraph4.30_linux32"
 	fi
 	cd $srcdir/${_folder}
 	install -Dm755 ./bin/xgraph "$pkgdir/usr/bin/xgraph"
