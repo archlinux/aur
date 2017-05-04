@@ -2,7 +2,7 @@
 
 _py="python"
 pkgname=netzob
-pkgver=1.0.1
+pkgver=1.0.2
 _release_name=${pkgname}-Release-${pkgname}-${pkgver}
 pkgrel=1
 HOLDVER=1
@@ -10,17 +10,17 @@ pkgdesc="Netzob is an opensource tool which supports the expert in its operation
 arch=('i686' 'x86_64')
 url="http://netzob.org"
 license=('GPL3')
-depends=("impacket"  "${_py}" "${_py}-jsonpickle" "${_py}-colorama" "${_py}-numpy" "${_py}-sphinx" "${_py}-pcapy" "${_py}-bitarray" "${_py}-babel" "${_py}-netaddr" "${_py}-bintrees" "${_py}-minepy")
+depends=("impacket"  "${_py}" "${_py}-jsonpickle" "${_py}-colorama" "${_py}-numpy" "${_py}-sphinx" "${_py}-pcapy" "${_py}-bitarray" "${_py}-babel" "${_py}-netaddr" "${_py}-bintrees" "${_py}-minepy" "${_py}-arpreq" "${_py}-pylstar")
 makedepends=("${_py}-setuptools" "${_py}-mock")
 conflicts=('netzob-git')
 options=(!emptydirs)
 install=
 source=(${_release_name}.tar.gz::https://github.com/netzob/netzob/archive/Release/${pkgname}-${pkgver}.tar.gz)
 provides=('netzob')
-sha256sums=('c1b8ed99ba631c567ff09759af0e0624546b6e3a142d458a6763e11a5a4b5931')
+sha256sums=('6a8350aac2859e03890f78e9d2135240fa69f05544d346d21c78c0c58ca1c4ae')
 
 build() {
-    cd "${srcdir}/${_release_name}"
+    cd "${srcdir}/${_release_name}/netzob"
 
     msg "Starting build."
     ${_py} setup.py build
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_release_name}"
+    cd "${srcdir}/${_release_name}/netzob"
 
     msg "Starting install."
     ${_py} setup.py install --root="$pkgdir" || return 1
