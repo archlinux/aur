@@ -60,13 +60,7 @@ package() {
 
 	rm -rf "${pkgdir}"/run
 	
-	install -dm 750 "${pkgdir}"/usr/share/polkit-1/rules.d
-	install -m 644 ${srcdir}/25-consolekit.rules $pkgdir/usr/share/polkit-1/rules.d/75-consolekit.rules
-
-	install -dm755 $pkgdir/etc/pam.d/
-	install -Dm644 ${srcdir}/consolekit.pamd $pkgdir/etc/pam.d/consolekit
-
     install -D -m644 "$srcdir/consolekit.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/consolekit.conf"
 }
 
-# vim: ts=4 sw=4 sts=4 et
+# vim:set ts=4 sw=4 sts=4 et:
