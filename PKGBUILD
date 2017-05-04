@@ -1,8 +1,8 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 
 pkgname=pokemon-revolution-online-bin
-pkgver=0.97.super.fearow.20170416
-pkgrel=2
+pkgver=0.97.2.raging.gyarados
+pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="https://pokemon-revolution-online.net"
@@ -14,7 +14,7 @@ conflicts=('pokemon-revolution-online')
 install="INSTALL"
 source=('net.pokemon-revolution-online.desktop' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
 sha256sums=('8cd4510ef3c788984b5c6ce97c64d850a57ab2bf4a5133c212a77a84c1913e7e'
-            '90fd58143a8a201ec8708eda00bb332f57c0fc751c2da68aa633540a15ecf270'
+            '4f3964f11bf6379df123eae488948c0d93f8432a6e546318b6c609085226c4e2'
             'df736901de54dce3b191bd9744732f7b9970ab3cbdece8d7fbd7122e69ce32d5'
             '54b5f40a5385eba58385c49b7ba6a4485d531acdb6289c3cb97dcf6825750956')
 
@@ -28,8 +28,8 @@ package() {
 
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="https://tiny.cc/PROLinux" ##download link
-    __DDLFN="PROLinux.zip" ##filename
-    __DDLFSHA256="c4eb575628be8b38be33c6f7ee9a7d0af242eae70bf751dc7969beebf430e56a" #sha256sum
+    __DDLFN="PROLinuxRage.zip" ##filename
+    __DDLFSHA256="67bb1363d18018ba318c6ee0c82527addfcf1591d736a4e5bb5f39383d7b81b1" #sha256sum
 
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
