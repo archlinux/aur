@@ -10,7 +10,7 @@ license=('Apache')
 depends=('flatbuffers' 'rapidjson')
 checkdepends=()
 optdepends=()
-makedepends=('cmake' 'flatbuffers' 'rapidjson')
+makedepends=('cmake')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver-rc1.tar.gz")
 sha256sums=('2351698826e01b3f758998844177e3ea8bfffdafeb8b532273d7d19d0373b3a9')
 
