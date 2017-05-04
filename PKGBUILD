@@ -2,7 +2,7 @@
 pkgname=bloonix-core
 #_pkgname=
 provides=('bloonix-core')
-pkgver=0.41
+pkgver=0.43
 pkgrel=1
 pkgdesc='Core Package from Bloonix Monitoring'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('9ceeaa9291c58f1f667e3e9ef53ae01e'
+md5sums=('7c2c244ec963690bfc82f5260203ada8'
          '2d15c4dfeec7e7af271428baa067b23c')
-sha1sums=('04ec465633085ce2dffd574366848f3234f67545'
+sha1sums=('eda6e96c18400a87b8c077ad99a37098cb29a25f'
           'a7ca673a60fe969efdf2179bffcdfebb60807d60')
