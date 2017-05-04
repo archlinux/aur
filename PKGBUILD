@@ -3,7 +3,7 @@
 pkgname=mpvipc-git
 pkgver=0.0.1
 pkgrel=0
-pkgdesc="An mpc-like command line interface which uses sockets to control mpv, written in Rust"
+pkgdesc="An mpc-like command line interface (cli) which uses sockets to control mpv, written in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/freijon/mpvipc"
 license=('GPL3')
