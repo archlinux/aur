@@ -1,0 +1,18 @@
+pkgbase = kinetis-expert-configuration-tools
+	pkgdesc = Integrated suite of configuration tools for NXP's microcontrollers. From RPM package distributed by NXP.
+	pkgver = 2
+	pkgrel = 1
+	url = http://www.nxp.com/products/software-and-tools/hardware-development-tools/freedom-development-boards/software-development-kit-for-kinetis-mcus:KINETIS-SDK
+	arch = x86_64
+	license = custom:"NXP"
+	depends = java-environment
+	options = !strip
+	source = https://cache.nxp.com/secured/KDS/Kinetis_Expert_Configuration_Tools_v2-1.x86_64_offline_b161010.rpm?__gda__=1493899506_49403d1881c089a209ac327fc73698dd&fileExt=.rpm
+	source = LICENSE
+	source = kinetis-expert-configuration-tools.install
+	sha1sums = adf924bcf482b926decf29f05241be26e7f379b7
+	sha1sums = 93deb1322e1de4c835cee5f18ce1547b3e1c3ce6
+	sha1sums = f5eb1ce42d50fce84f86e3e8d309b7e621743549
+
+pkgname = kinetis-expert-configuration-tools
+
