@@ -13,7 +13,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL2')
 depends=('emacs' 'wireshark-cli')
 source=("$pkgname-$pkgver.zip::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/master.zip")
-md5sums=('7159de23bbb98b9f101ba4452ff456aa')
+sha256sums=('96efc7e9fd5889f9f9a209d136b2a0bd896cab7a4be6b48952660d1147df33f9')
 install=${pkgname}.install
 
 build() {
