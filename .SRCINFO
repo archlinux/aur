@@ -1,6 +1,6 @@
 pkgbase = opmsg-git
 	pkgdesc = opmsg message encryption
-	pkgver = r132.fe68e4e
+	pkgver = r135.6833287
 	pkgrel = 1
 	url = https://github.com/stealth/opmsg
 	arch = x86_64
