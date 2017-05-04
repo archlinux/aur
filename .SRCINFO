@@ -1,0 +1,16 @@
+pkgbase = mpvipc-git
+	pkgdesc = An mpc-like control interface which uses sockets to control mpv, written in Rust
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://github.com/freijon/mpvipc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = mpv
+	depends = socat
+	source = mpvipc-git::git+https://github.com/freijon/mpvipc.git
+	sha512sums = SKIP
+
+pkgname = mpvipc-git
+
