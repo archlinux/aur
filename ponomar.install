@@ -1,0 +1,10 @@
+# arg 1:  the new package version
+post_install() {
+  echo
+  echo
+  echo ":: NOTE"
+  echo ":: After the install you must relog."
+  echo
+  echo
+}
+
