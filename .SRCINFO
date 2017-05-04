@@ -1,0 +1,14 @@
+pkgbase = spim-keepstats-git
+	pkgver = r11.9d7acf2
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = spim-keepstats
+	conflicts = spim-keepstats
+	source = git+https://github.com/ostrichjockey/spim-keepstats
+	md5sums = SKIP
+
+pkgname = spim-keepstats-git
+
