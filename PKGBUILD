@@ -1,3 +1,4 @@
+# Maintainer: 4leks4ndr <orthodox dot tk at gmail dot com>
 pkgname=fonts-churchslavonic
 pkgver=1.1
 pkgrel=1
