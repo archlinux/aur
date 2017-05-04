@@ -10,7 +10,7 @@ url="https://github.com/Abjad/abjad"
 license=('GPL 3')
 depends=('lilypond')
 optdepends=('graphviz: to create rhythm-trees graphs and other tree structures'
-						'timidity: to play generated MIDI files'
+						'timidity++: to play generated MIDI files'
 						'jupyter: browser-based interactive notebook for programming')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('c8ba4ea9707ba87e9a2ede40c97d14d6b6c701ae884667dcd44c828a50c97cb0')
