@@ -1,38 +1,53 @@
-# Mantainer: sxe <sxxe@gmx.de>
- 
+# Mantainer: epitron <chris@ill-logic.com>
+# Contributor: sxe <sxxe@gmx.de>
+
 pkgname=qupzilla-git
 _pkgname=qupzilla
-pkgver=v2.0.0.r14.g90c2ad6
+pkgver=2.1.2.r85.g54949f94
 pkgrel=1
-pkgdesc="A new and very fast open source browser based on WebKit core, written in Qt Framework."
+pkgdesc="A fast and flexible browser based on QtWebEngine (Chromium's browser engine), with extra plugins."
 arch=('i686' 'x86_64')
 url="http://www.qupzilla.com"
 license=('GPL')
-depends=( 'qt5-base' 'qt5-script' 'qt5-tools' 'qt5-webengine' 'qt5-x11extras')
-makedepends=('git')
-provides=('qupzilla')
-conflicts=('qupzilla' 'qupzilla-qt5-git')
-source=("git://github.com/$_pkgname/$_pkgname.git")
-md5sums=('SKIP')
- 
+depends=('qt5-webengine' 'qt5-x11extras' 'qt5-svg' 'hicolor-icon-theme')
+makedepends=('git' 'qt5-tools' 'kwallet' 'libgnome-keyring')
+provides=('qupzilla' 'qupzilla-qt5')
+conflicts=('qupzilla' 'qupzilla-qt5' 'qupzilla-qt5-git')
+optdepends=(
+  'bash-completion: bash completion support'
+  'kwallet: kf5 kwallet integration'
+  'libgnome-keyring: gnome keyring integration'
+  )
+source=(
+  "git+https://github.com/QupZilla/qupzilla.git"
+  "git+https://github.com/QupZilla/qupzilla-plugins.git"
+  )
+sha256sums=(SKIP SKIP)
+
 pkgver() {
-    cd "$_pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
 
-    export USE_WEBGL="true"
-    export KDE_INTEGRATION="true"
-    export QUPZILLA_PREFIX="/usr/"
+  export QUPZILLA_PREFIX="/usr/"
+  export QUPZILLA_PLUGINS_SRCDIR="$srcdir/qupzilla-plugins/plugins"
+  export QUPZILLA_SRCDIR="$srcdir/qupzilla"
 
-    qmake-qt5
-    make clean
-    make
+  export USE_WEBGL=true
+  export KDE_INTEGRATION=true
+  export GNOME_INTEGRATION=true
+
+  qmake
+  make
 }
- 
+
 package() {
-    cd "$srcdir/$_pkgname"
-    make INSTALL_ROOT="${pkgdir}" install
-} 
+  cd "$_pkgname"
+  make INSTALL_ROOT="$pkgdir/" install
+
+  # zsh completion
+  install -Dm644 linux/completion/_qupzilla "$pkgdir/usr/share/zsh/site-functions/_qupzilla"
+}
