@@ -35,8 +35,6 @@ package_python-razer-git() {
   depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
   provides=('python-razer')
   conflicts=('python-razer')
-  optdepends=('polychromatic: gtk frontend'
-              'razercommander-git: gtk frontend')
 
   cd $srcdir/$pkgbase
   make DESTDIR=$pkgdir python_library_install
@@ -67,6 +65,9 @@ package_razer-driver-dkms-git() {
 package_openrazer-meta-git() {
   pkgdesc="Meta package for installing all required openrazer packages. (Git version)"
   depends=('razer-driver-dkms' 'razer-daemon' 'python-razer')
+  optdepends=('polychromatic: frontend'
+              'razergenie: qt frontend'
+              'razercommander: gtk frontend')
   provides=('openrazer-meta')
   conflicts=('openrazer-meta')
 }
