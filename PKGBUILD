@@ -31,6 +31,7 @@ check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   export PYTHONPATH=$(pwd)
+  export TZ=UTC
   sed -i '/addopts/d' "$srcdir"/"$pkgname-$pkgver"/setup.cfg
   py.test
 }
