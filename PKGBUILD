@@ -7,6 +7,7 @@ pkgdesc='Pantheon extension for the GSignond daemon'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/gsignond-extension-pantheon'
 license=('GPL3')
+groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'libsecret'
          'libgsignond-common.so')
 depends=('gsignond' 'libsecret')
