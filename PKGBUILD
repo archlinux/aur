@@ -21,7 +21,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${_gitname}"
-	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
