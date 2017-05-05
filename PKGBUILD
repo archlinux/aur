@@ -1,9 +1,10 @@
 pkgname=gogs
 gitver="v0.11.4"
 pkgver="0.11.4"
-pkgrel=1
+pkgrel=2
+epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://gogs.io/"
 license=('MIT')
 depends=('git' 'sqlite')
