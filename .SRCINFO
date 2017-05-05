@@ -1,4 +1,4 @@
-pkgbase = dotnet
+pkgbase = dotnet-fixed
 	pkgdesc = Provides the .NET core shared framework, i.e. coreclr and corefx.
 	pkgver = 1.1.1
 	pkgrel = 3
@@ -18,10 +18,11 @@ pkgbase = dotnet
 	depends = curl
 	provides = dotnet=1.1.1
 	conflicts = dotnet-bin
+	conflicts = dotnet
 	options = staticlibs
 	source = coreclr-1.1.1.tar.gz::https://github.com/dotnet/coreclr/archive/v1.1.1.tar.gz
 	source = corefx-1.1.1.tar.gz::https://github.com/dotnet/corefx/archive/v1.1.1.tar.gz
-	source = dotnet-1.1.1.tar.gz::https://go.microsoft.com/fwlink/?LinkID=843446
+	source = dotnet-fixed-1.1.1.tar.gz::https://go.microsoft.com/fwlink/?LinkID=843446
 	source = llvm-39-github-pull-8311.patch
 	source = llvm-39-move.patch
 	source = lttng-uts-40.patch
@@ -36,5 +37,5 @@ pkgbase = dotnet
 	sha256sums = 2b884b4cd850027f95cba5deda32226e27ceaa962f0ab2879adc5180cf37c32a
 	sha256sums = b1d3aa07a17bd7d21bc456bf5bf9c612ff97a24980de1b93bb3fffde6584c643
 
-pkgname = dotnet
+pkgname = dotnet-fixed
 

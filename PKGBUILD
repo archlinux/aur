@@ -1,6 +1,6 @@
 # Maintainer: Max Liebkies <mail at maxliebkies dot de>
 
-pkgname=dotnet
+pkgname=dotnet-fixed
 pkgver=1.1.1
 pkgrel=3
 pkgdesc="Provides the .NET core shared framework, i.e. coreclr and corefx."
@@ -11,7 +11,7 @@ groups=()
 depends=('lldb' 'libunwind' 'icu58' 'lttng-ust' 'openssl' 'curl')
 makedepends=('cmake' 'make' 'clang' 'llvm' 'gettext')
 provides=('dotnet=1.1.1')
-conflicts=('dotnet-bin')
+conflicts=('dotnet-bin' 'dotnet')
 replaces=()
 backup=()
 options=(staticlibs)
