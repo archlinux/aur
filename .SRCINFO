@@ -1,8 +1,9 @@
 pkgbase = pascalcoin
 	pkgdesc = PascalCoin Wallet and Daemon
-	pkgver = 1.5.5
-	pkgrel = 2
+	pkgver = 1.5.6
+	pkgrel = 1
 	url = https://github.com/PascalCoin/PascalCoin
+	install = pascalcoin.install
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -12,15 +13,13 @@ pkgbase = pascalcoin
 	depends = qt4
 	depends = qt4pas
 	source = git+https://github.com/PascalCoin/PascalCoin.git
-	source = https://www.openssl.org/source/openssl-1.1.0e.tar.gz
 	source = pascalcoinwallet.desktop
 	source = pascalcoin.service
 	source = pascalcoin.install
 	sha256sums = SKIP
-	sha256sums = 57be8618979d80c910728cfc99369bf97b2a1abd8f366ab6ebdee8975ad3874c
 	sha256sums = 547801a11497ee52220e4dc6cb6d2c43aeb6e94d989697cb0a54d26e4a4cad58
 	sha256sums = 74713e3702cbd13a8847de340029f6c3608f1dbae536e58cfa53c5035101d060
-	sha256sums = 56f6556490db1f4d3723faef3df09467295342de1d8e45618ddded179c42220c
+	sha256sums = 5b308a22ea19b9b71b67cc5178b03bbcf1c90cc5d0abe42592e26b701649231a
 
 pkgname = pascalcoin
 

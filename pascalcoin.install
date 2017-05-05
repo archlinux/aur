@@ -1,4 +1,6 @@
 post_install() {
+echo "Creating symlink to libcrypto"
+ln -s /usr/lib/libcrypto.so.1.1 /opt/pascalcoin/libcrypto.so.1.1
 echo "Adding user pascal, pascalcoin-daemon runs as this user."
 useradd -m pascal
 echo "Enable and start pascalcoin.service if desired."
