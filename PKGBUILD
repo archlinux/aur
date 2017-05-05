@@ -46,6 +46,8 @@ backup=('etc/usermin/miniserv.conf' 'etc/usermin/miniserv.users' \
 'etc/usermin/usermount/config' \
 'etc/pam.d/usermin' )
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
+        setup-pre.sh
+        setup-post.sh
         usermin-config.tar.bz2
         usermin.pam
         usermin.service)
@@ -109,6 +111,8 @@ package() {
 
 
 sha256sums=('93a1be3cee975dd3d4e64d27b09cf252750949eaad7b62f5d5bb88d4edb2da28'
+            '366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c'
+            '17102b3583190f64fae039ca5270ae823cae90ed60fdb2dd49aba95496bff559'
             'a05c4d471977282736ac89f4d4d379a91b70678348b1a1b91ce23ebff3c8bfce'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             'ade1b28a8f65512c8878ecabf6c8bc5a2d8ce3fd88dc3bffc1a9e14f3fd1ec47')
