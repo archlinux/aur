@@ -4,12 +4,12 @@
 pkgname=qupzilla-git
 _pkgname=qupzilla
 pkgver=2.1.2.r85.g54949f94
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and flexible browser (inspired by Opera Classic). Based on QtWebEngine (Chromium's browser engine), with extra plugins."
 arch=('i686' 'x86_64')
 url="http://www.qupzilla.com"
 license=('GPL')
-depends=('qt5-webengine' 'qt5-x11extras' 'qt5-svg' 'hicolor-icon-theme')
+depends=('qt5-webengine' 'qt5-x11extras' 'qt5-svg' 'hicolor-icon-theme' 'openssl>=1.1.0')
 makedepends=('git' 'qt5-tools' 'kwallet' 'libgnome-keyring')
 provides=('qupzilla' 'qupzilla-qt5')
 conflicts=('qupzilla' 'qupzilla-qt5' 'qupzilla-qt5-git')

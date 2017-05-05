@@ -1,7 +1,7 @@
 pkgbase = qupzilla-git
 	pkgdesc = A fast and flexible browser (inspired by Opera Classic). Based on QtWebEngine (Chromium's browser engine), with extra plugins.
 	pkgver = 2.1.2.r85.g54949f94
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qupzilla.com
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = qupzilla-git
 	depends = qt5-x11extras
 	depends = qt5-svg
 	depends = hicolor-icon-theme
+	depends = openssl>=1.1.0
 	optdepends = bash-completion: bash completion support
 	optdepends = kwallet: kf5 kwallet integration
 	optdepends = libgnome-keyring: gnome keyring integration
