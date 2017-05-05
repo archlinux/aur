@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org> 
+# Maintainer: Aimilius <aimilius at protonmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org> 
 
 pkgname=discover-git
 pkgver=r4327.f537e89
