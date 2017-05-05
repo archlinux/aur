@@ -1,6 +1,6 @@
 # Maintainer: Romain Bazile <gromain dot baz at gmail dot com>
 
-pkgname=amap
+pkgname=amap-bin
 pkgver=0.28
 pkgrel=1
 epoch=
