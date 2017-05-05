@@ -3,7 +3,7 @@
 # Contributor: kaptoxic dragos240
 
 pkgname=rescuetime
-pkgver=2.9.11.1296
+pkgver=2.9.11.1297
 pkgrel=1
 pkgdesc="Application time-tracking for Linux. Stable version"
 arch=('i686' 'x86_64')
