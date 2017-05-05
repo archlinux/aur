@@ -5,7 +5,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=aif
 pkgver=0.01
 _pkgver=${pkgver}-BETA # currently at beta release
-pkgrel=2
+#_pkgver=${pkgver} # currently at stable release
+pkgrel=3
 pkgdesc="An XML and python-driven rebirth of the AIF (Arch Installation Framework) project."
 arch=( 'i686' 'x86_64' )
 url="https://aif.square-r00t.net/"
@@ -19,14 +20,17 @@ changelog=
 noextract=()
 source=("${pkgname}-${pkgver}.tar.xz::https://git.square-r00t.net/${_pkgname}/snapshot/${_pkgname}-${_pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.sig")
-sha512sums=('ed98f77116f80a06405a0be9efeecb2d0f78ff702577d0f7f8f407210c50316106a602cef28f3bbd11989a62c53062874d1c292fc7f713450a11289559ec5885'
+sha512sums=('209636b1b014fb5b05b0cdf5c514c897bf96acd2d7a1745d9bb64701344f912b1515e84a38210425931ffd530c047ebdefd1a5a2d43fe99c6126c421c631cd9b'
             'SKIP')
 package() {
         install -D -m0755 ${srcdir}/${_pkgname}-${_pkgver}/${pkgname}client.py ${pkgdir}/usr/bin/${pkgname}
         install -D -m0755 ${srcdir}/${_pkgname}-${_pkgver}/${pkgname}verify.py ${pkgdir}/usr/bin/${pkgname}-verify
         install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/${pkgname}.xml ${pkgdir}/usr/share/doc/${pkgname}/${pkgname}.xml
         install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/${pkgname}.xsd ${pkgdir}/usr/share/doc/${pkgname}/${pkgname}.xsd
-        install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/HOWTO ${pkgdir}/usr/share/doc/${pkgname}/HOWTO
-        install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/TODO ${pkgdir}/usr/share/doc/${pkgname}/TODO
+        install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/docs/TODO ${pkgdir}/usr/share/doc/${pkgname}/TODO
+        install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/extras/systemd.unit ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
+        install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/extras/mkinitcpio.hook ${pkgdir}/usr/lib/initcpio/hooks/${pkgname}
+        install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/extras/mkinitcpio.install ${pkgdir}/usr/lib/initcpio/install/${pkgname}
+	curl -s -o ${pkgdir}/usr/share/doc/${pkgname}/README.html https://aif.square-r00t.net/
 	# TODO: xml linter, script samples. and docs, when i write them.
 }
