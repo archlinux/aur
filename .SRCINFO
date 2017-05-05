@@ -13,7 +13,6 @@ pkgbase = lutris
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-yaml
-	depends = xdg-user-dirs
 	depends = python-evdev
 	optdepends = python-pyinotify: Enhanced Steam integration.
 	source = https://lutris.net/releases/lutris_0.4.9.tar.xz
