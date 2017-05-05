@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-wm-git
-pkgver=r3.b0ca904
+pkgver=r5.f5923c0
 pkgrel=1
 pkgdesc="Windowmanagement environment for guile"
 arch=('any')
