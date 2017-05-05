@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r129006
+pkgver=26.0.50.r129127
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.gnu.org/software/emacs/"
 license=('GPL')
 depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'm17n-lib'
 	 'libxrandr' 'libxinerama' 'imagemagick' 'librsvg'
-	 'gnutls' 'xaw3d' 'libdbus' 'libxfixes' 'mailutils')
+	 'gnutls' 'xaw3d' 'libdbus' 'libxfixes')
 makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs' '!makeflags')
@@ -41,8 +41,6 @@ build() {
     --pdfdir=/usr/share/doc/emacs \
     --with-sound \
     --without-gconf \
-    --without-pop \
-    --with-mailutils \
     --with-xft \
     --without-xwidgets \
     --with-gameuser=:games 
