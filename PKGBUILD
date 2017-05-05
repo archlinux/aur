@@ -1,75 +1,57 @@
-# Maintainer: Gereon Schomber <Gereon underscore Schomber at fastmail dot fm>
-# Contributor: dryes <joswiseman@gmail>
-# Contributor: Revelation60, Lucky <https://aur.archlinux.org/packages.php?ID=13691>
-# Contributor: Gordin <9ordin @t gmail dot com>
-pkgname="sabnzbd-git"
-_gitname='sabnzbd'
-pkgver=0.7.0.r1013.g56a89ce
+
+# Maintainer: boosterdev@linuxmail.org
+# Contributer: Ben Ruijl <benruyl@gmail.com> (sabnzbd)
+
+_pkgname=sabnzbd
+pkgname=sabnzbd-git
+pkgver=2.0.r5789
 pkgrel=1
-pkgdesc='A web-interface based binary newsgrabber with NZB file support.'
-arch=('any')
-url='http://www.sabnzbd.org/'
-license=('GPL')
-depends=("curl" "par2cmdline"
-         "python2" "python2-cheetah" "python2-yenc"
-         "sqlite" "unrar" "unzip")
+pkgdesc="A web-interface based binary newsgrabber with NZB file support"
+url="http://www.sabnzbd.org"
+arch=("any")
+license=("GPL")
+depends=("curl" "par2cmdline" "python2" "python2-cheetah" "python2-sabyenc" "sqlite" "unrar" "unzip")
+optdepends=("xdg-utils: registration of .nzb files" "python2-feedparser: rss support" "python2-pyopenssl: ssl support" "par2cmdline-tbb: par2 multi-threading")
 makedepends=('git')
-optdepends=("xdg-utils: registration of .nzb files" 
-            "python2-feedparser: rss support"
-            "python2-pyopenssl: ssl support")
-source=("git+https://github.com/sabnzbd/sabnzbd.git"
-        'sabnzbd.sh'
-        'sabnzbd.init'
-        'sabnzbd.confd'
-        'sabnzbd.desktop'
-        'addnzb.sh'
-        'nzb-2.png'
-        'sab2_64.png'
-        'x-nzb.xml'
-        'sabnzbd.service'
-        )
-backup=('etc/conf.d/sabnzbd')
-install=sabnzbd.install
-conflicts=('sabnzbd' 'sabnzbd-bzr' 'sabnzbd-develop-git')
-
-package() {
-  mkdir -p "${pkgdir}/opt/${_gitname}"
-  touch "${pkgdir}/opt/${_gitname}/${_gitname}.ini"
-  cp -r "${srcdir}/${_gitname}/"* "${pkgdir}/opt/${_gitname}"
-
-  # remove Windows and OS X files
-  rm -r "${pkgdir}/opt/${_gitname}/win"
-  rm -r "${pkgdir}/opt/${_gitname}/osx"
-
-  # Fix for issues with Python 3
-  find "${pkgdir}/opt/${_gitname}" -type f -exec sed -i 's/python/python2/g' {} \;
-  find "${pkgdir}/opt/${_gitname}" -type d -exec chmod 755 {} \;
-  find "${pkgdir}/opt/${_gitname}" -type f -exec chmod 644 {} \;
-  chmod 755 "${pkgdir}/opt/${_gitname}/SABnzbd.py"
-
-  install -Dm755 "${srcdir}/${_gitname}.sh" "${pkgdir}/usr/bin/${_gitname}"
-  install -Dm644 "${srcdir}/${_gitname}.confd" "${pkgdir}/etc/conf.d/${_gitname}"
-  install -Dm644 "${srcdir}/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
-  install -Dm755 "${srcdir}/${_gitname}.desktop" \
-    "${pkgdir}/usr/share/applications/${_gitname}.desktop"
-  install -Dm755 "${srcdir}/addnzb.sh"    "${pkgdir}/opt/${_gitname}/addnzb.sh"
-  install -Dm644 "${srcdir}/nzb-2.png"    "${pkgdir}/opt/${_gitname}/nzb-2.png"
-  install -Dm644 "${srcdir}/sab2_64.png"  "${pkgdir}/opt/${_gitname}/sab2_64.png"
-  install -Dm770 "${srcdir}/x-nzb.xml"    "${pkgdir}/opt/${_gitname}/x-nzb.xml"
-}
+conflicts=('sabnzbd')
+install="sabnzbd.install"
+backup=("etc/conf.d/sabnzbd" "opt/sabnzbd/sabnzbd.ini")
+source=("git://github.com/sabnzbd/sabnzbd.git"
+        "$_pkgname-shell" "sabnzbd.desktop" "addnzb.sh" "nzb.png" "sabnzbd.png" "x-nzb.xml" "sabnzbd.service" "sabnzbd.confd")
+sha256sums=('SKIP'
+            '82630edfc767a383843ffaae9d716e99010dad9e93bdee08d541faa74e694a65'
+            '887f93942b78c0475009b1ce84b502c28e273c222451a4736cd4c37ff5454f04'
+            '30ffff8b9c00e91358cd6c5dca89f9d9f8f12843e7b3c44c6d5b0f09b0ea424a'
+            'ef8f4fb1a3a0750c74b7addd302ab8733187ad370b5d27336afb2677d7154571'
+            'fce3e065d017ce3bc4548a766f25c95f982af4f6085263c72f3000f49d810409'
+            'f53261d7578c67fb9fd6a639df94cd53604bcf37b9b03a926cb03e5214b496fe'
+            '3de9c07d7731a9756a60691c56897b1cb0c802c5eb510a7bb68b9e1c82d7102c'
+            '8462203454d488b5d4f7beb85e61da2efa42d3dffa465f3bf16a95abe0bc7c0a')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  echo -n "2.0.r"
+  git rev-list --count HEAD
 }
 
-sha256sums=('SKIP'
-            '411738ad4dcd761daeda3a97aedfbe39c71f70d7f91c29765f85fb2a5942522d'
-            '35c7ec1bdaadeb1db3c0794254f99e8e44323ef1665d5f4ae2832d5367bd937c'
-            '29190e47cf3140053b000b1bbc9a1f8f5a20e30db19fa065c03576bb5f8e15eb'
-            '6ffe460bebea63faea39e1131131711fdfa3f744fee129f0cc2b3dffff261289'
-            'baea3351a40551a63b90b4a4c32719d4c27b5fff596e74e4a91f289964960eb6'
-            '7fec4494a04ffd6a94644c8ef499ec1c92998a613b1fde5c3a46f38c53dfbc43'
-            '099d625d6efc9e69e7c6a2833221928fb19e9e356e3aa8341c36ffdc281e567d'
-            'f53261d7578c67fb9fd6a639df94cd53604bcf37b9b03a926cb03e5214b496fe'
-            '29e83913b7f66cb5ade8ab6682754c975323fc9905451a1e7147e04dc6ddcc12')
+package() {
+  cd "$_pkgname"
+  install -d -m755 "${pkgdir}/opt/${_pkgname}"
+  touch "${pkgdir}/opt/${_pkgname}/${_pkgname}.ini"
+  cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}/opt/${_pkgname}"
+
+  # Fix for issues with Python 3
+  find "${pkgdir}/opt/${_pkgname}" -type f -exec sed -i 's/python/python2/g' {} \;
+  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod 755 {} \;
+  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod 644 {} \;
+  chmod 755 "${pkgdir}/opt/${_pkgname}/SABnzbd.py"
+
+  install -Dm755 "${srcdir}/${_pkgname}-shell"       "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${srcdir}/${_pkgname}.confd" "${pkgdir}/etc/conf.d/${_pkgname}"
+  install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm755 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm755 "${srcdir}/addnzb.sh"    "${pkgdir}/opt/${_pkgname}/addnzb.sh"
+  install -Dm644 "${srcdir}/nzb.png"    "${pkgdir}/opt/${_pkgname}/nzb.png"
+  install -Dm644 "${srcdir}/sabnzbd.png"  "${pkgdir}/opt/${_pkgname}/sabnzbd.png"
+  install -Dm644 "${srcdir}/x-nzb.xml"    "${pkgdir}/opt/${_pkgname}/x-nzb.xml"
+}

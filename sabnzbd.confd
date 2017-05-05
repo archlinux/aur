@@ -1,18 +1,8 @@
-# Set to the protocol, IP and port
-SABNZBD_PROTOCOL="http"
-SABNZBD_IP="127.0.0.1"
-SABNZBD_PORT="8080"
+# This file is used to make association of .nzb files with SABnzbd possible.
+# If you do not want this feature, you do no have to fill in these settings.
 
-# Set your default user/group, startarguments and your configfile
-SABNZBD_USER="sabnzbd"
-SABNZBD_GROUP="sabnzbd"
-SABNZBD_CONF="/usr/share/sabnzbd/sabnzbd.ini"
-SABNZBD_ARGS="-f ${SABNZBD_CONF} -s ${SABNZBD_IP}:${SABNZBD_PORT} -d"
+# The SABnzbd url. Make sure to add a username and password if required
+URL="http://127.0.0.1:8080"
 
-# Put the session keys from Config > General here
-SABNZBD_KEY=""
-NZB_KEY=""
-
-# If you use a username and password, change the following variable to
-# "user:pass@"
-SABNZBD_USPW=""
+# Put the API key from Config > General here
+API_KEY=""
