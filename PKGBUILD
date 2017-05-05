@@ -2,7 +2,7 @@
 
 pkgname=bit-babbler
 pkgver=0.6
-pkgrel=1
+pkgrel=3
 pkgdesc='BitBabbler hardware TRNG and kernel entropy source support'
 arch=('i686' 'x86_64')
 license=('GPL2')
