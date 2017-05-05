@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ossec-local
-pkgver=2.8.3
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Open Source Host-based Intrusion Detection System"
 arch=('i686' 'x86_64')
@@ -10,13 +10,12 @@ depends=('openssl')
 backup=('var/ossec/etc/ossec.conf')
 install=ossec.install
 options=('emptydirs')
-source=(https://bintray.com/artifact/download/ossec/ossec-hids/ossec-hids-$pkgver.tar.gz \
-        ossec.service config)
-sha256sums=('917989e23330d18b0d900e8722392cdbe4f17364a547508742c0fd005a1df7dd'
-            'be5f6fe7e10603a0897c2502e0e6913fbb544a66f59674aaaef87d0f31d09eb9'
+source=(ossec-hids-$pkgver.tar.gz::https://github.com/ossec/ossec-hids/archive/$pkgver.tar.gz
+        config)
+sha256sums=('626d9b8d6dbddee8d99f4622d54a28849ef2014aa96e14c9d183a7a8dde1d9f2'
             '10d1cd8589d7aca030ea391b6cca312b91d5aa31f56e60a20b6a56652906db5c')
 
-_instdir=/var/ossec
+_instdir="/var/ossec"
 
 _preparevars() {
   export USER_NO_STOP=yes
@@ -24,50 +23,62 @@ _preparevars() {
   export USER_INSTALL_TYPE=local
   export USER_DIR=$_instdir
   export USER_BINARYINSTALL=x
+
+  # Makefile variables
+  # change user names and groups to the existing ones to make sure the installation works
+  # the ownership is later changed id's for which appropriate users are created by the ossec.install
+  export OSSEC_GROUP=nobody
+  export OSSEC_USER=nobody
+  export OSSEC_USER_MAIL=mail
+  export OSSEC_USER_REM=daemon
+}
+
+prepare() {
+  cd "$srcdir/ossec-hids-$pkgver"
+
+  _preparevars
+
+  # fix placement of ossec-init.conf for building
+#  sed -i "s|^OSSEC_INIT.*|OSSEC_INIT=\"$srcdir/ossec-init.conf\"|" "src/init/shared.sh"
+
+  # generate ossec-init.conf
+  OSSEC_INIT="$srcdir/ossec-init.conf"
+  INSTALLDIR=$_instdir
+  INSTYPE=$USER_INSTALL_TYPE
+  VERSION_FILE="./src/VERSION"
+  VERSION=`cat ${VERSION_FILE}`
+  echo "DIRECTORY=\"${INSTALLDIR}\"" > ${OSSEC_INIT}
+  echo "VERSION=\"${VERSION}\"" >> ${OSSEC_INIT}
+  echo "DATE=\"`date`\"" >> ${OSSEC_INIT}
+  echo "TYPE=\"${INSTYPE}\"" >> ${OSSEC_INIT}
 }
 
 build() {
   cd "$srcdir/ossec-hids-$pkgver"
 
+  # prepare build and load configuration
   _preparevars
-  . "$srcdir/config" # load configuration
-
-  # fix placement of ossec-init.conf
-  sed -i "s|^OSSEC_INIT.*|OSSEC_INIT=\"$pkgdir/etc/ossec-init.conf\"|" src/init/shared.sh
-  # change the install location
-  sed -i "s|^DIR=.*|DIR=$pkgdir/$_instdir|" src/InstallServer.sh
-
-  # change user names to existing users to make sure the installation works
-  # the users are later changed to id's for which appropriate users are created by the ossec.install
-  sed -i -e 's|^USER=.*|USER=nobody|' -e 's|^USER_MAIL=.*|USER_MAIL=mail|' \
-    -e 's|^USER_REM=.*|USER_REM=daemon|' src/InstallServer.sh
-  # change group name to nobody, group is created by ossec.install
-  # this ensures install will work perfectly, the we will change the group later
-  sed -i 's|^GROUP=.*|GROUP=nobody|' src/InstallServer.sh
+  . "$srcdir/config"
 
   cd src
-  make setlocal
-  make all
-  make build
+  make TARGET=$USER_INSTALL_TYPE
 }
 
 package() {
   cd "$srcdir/ossec-hids-$pkgver"
 
+  # prepare build and load configuration
   _preparevars
-  . "$srcdir/config" # load configuration
+  . "$srcdir/config"
 
-  mkdir -p $pkgdir/etc
+  # install
+  cd src
+  make TARGET=$USER_INSTALL_TYPE PREFIX="$pkgdir/$_instdir" install
+  install -D -m640 "$srcdir/ossec-init.conf" "$pkgdir/etc/ossec-init.conf"
 
-  ./install.sh
-
-  # install systemd service
-  install -Dm0644 "$srcdir"/ossec.service "$pkgdir"/usr/lib/systemd/system/ossec.service
-
-  # change the users
-  find "$pkgdir" -user nobody -exec chown 524 '{}' ';'
-  find "$pkgdir" -user mail -exec chown 525 '{}' ';'
-  find "$pkgdir" -user daemon -exec chown 526 '{}' ';'
-  # change the groups
-  find "$pkgdir" -group nobody -exec chgrp 525 '{}' ';'
+  # install systemd stuff
+  cd systemd/server/
+  for service in * ; do
+    install -D -m644 "$service" "$pkgdir/usr/lib/systemd/system/$service"
+  done
 }
