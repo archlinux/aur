@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-    sudo pip3 install -r requirements.txt -r test-requirements.txt --exists-action ignore
+    sudo pip3 install -r requirements.txt -r test-requirements.txt --exists-action i
     python3 setup.py build
 }
 
