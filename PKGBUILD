@@ -5,7 +5,7 @@ pkgname=qupzilla-git
 _pkgname=qupzilla
 pkgver=2.1.2.r85.g54949f94
 pkgrel=1
-pkgdesc="A fast and flexible browser based on QtWebEngine (Chromium's browser engine), with extra plugins."
+pkgdesc="A fast and flexible browser (inspired by Opera Classic). Based on QtWebEngine (Chromium's browser engine), with extra plugins."
 arch=('i686' 'x86_64')
 url="http://www.qupzilla.com"
 license=('GPL')
@@ -26,7 +26,7 @@ sha256sums=(SKIP SKIP)
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
