@@ -2,29 +2,27 @@
 
 _libname=bluemsx_libretro
 _gitname=blueMSX-libretro
-
 pkgname=libretro-bluemsx-git
-pkgver=114.e9b81fd
+pkgver=r129.dc61b35
 pkgrel=1
-pkgdesc="Libretro implementation of BlueMSX (Microsoft MSX)."
+pkgdesc="BlueMSX libretro core (Microsoft MSX)."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/blueMSX-libretro"
 license=('BSD')
+groups=('libretro')
 depends=('zlib')
 makedepends=('git')
 groups=('libretro')
-source=("git+https://github.com/libretro/${_gitname}.git"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
+source=("git+https://github.com/libretro/${_gitname}.git" "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${_gitname}"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "${_gitname}"
-	mv Makefile.libretro Makefile
 	make
 }
 

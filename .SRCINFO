@@ -1,6 +1,6 @@
 pkgbase = libretro-bluemsx-git
-	pkgdesc = Libretro implementation of BlueMSX (Microsoft MSX).
-	pkgver = 114.e9b81fd
+	pkgdesc = BlueMSX libretro core (Microsoft MSX).
+	pkgver = r129.dc61b35
 	pkgrel = 1
 	url = https://github.com/libretro/blueMSX-libretro
 	arch = i686
