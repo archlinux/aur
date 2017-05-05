@@ -7,8 +7,8 @@ pkgdesc='A very simple and lightweight indicator applet to synchronize with Goog
 arch=('any')
 url='https://github.com/LyzardKing/grive-indicator'
 license=('GPL')
-depends=('grive' 'libappindicator-gtk3' 'python2-libappindicator')
-makedepends=('git' 'python')
+depends=('grive' 'libappindicator-gtk3' 'python' 'python2-libappindicator')
+makedepends=('git')
 source=('grive-indicator::git+https://github.com/LyzardKing/grive-indicator.git')
 md5sums=('SKIP')
 
