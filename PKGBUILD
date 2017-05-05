@@ -1,29 +1,30 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=pix
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('desktop-file-utils' 'gconf' 'librsvg'
+depends=('desktop-file-utils' 'gconf' 'librsvg' 'clutter-gtk'
         'gst-plugins-base-libs' 'gsettings-desktop-schemas' 'libwebp' 'webkit2gtk')
-makedepends=('gnome-common' 'intltool' 'itstool' 'librsvg'
-        'liboauth')
+makedepends=('gnome-common' 'intltool' 'itstool'
+        'liboauth' 'libchamplain' 'libopenraw' 'exiv2')
 optdepends=('gstreamer: Video support'
     'exiv2: Embedded metadata support'
     'libjpeg-turbo: Jpeg writing support'
     'libtiff: Tiff writing support'
     'libopenraw: Support for RAW photos'
     'brasero: Burn discs'
-    'liboauth: Web albums')
+    'liboauth: Web albums'
+    'libchamplain: Map Viewer')
 provides=($_pkgname)
 conflicts=('pix-git')
 url='https://github.com/linuxmint/pix'
 install=pix.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('a109c357b498548cb431e5a46421e408')
+md5sums=('cb8ab866f1236ccd8e3eb6b5a105473e')
 
 
 build() {
