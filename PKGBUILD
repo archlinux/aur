@@ -8,7 +8,8 @@ pkgdesc='KDE and Plasma resources management GUI'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/discover'
 license=(LGPL)
-depends=(knewstuff appstream-qt archlinux-appstream-data hicolor-icon-theme)
+depends=(knewstuff kdeclarative kitemmodels qt5-graphicaleffects appstream-qt archlinux-appstream-data
+         hicolor-icon-theme kirigami2)
 makedepends=(extra-cmake-modules-git git python plasma-framework)
 optdepends=('packagekit-qt5: To install packages from Arch repositories')
 conflicts=(muon discover muon-git)
