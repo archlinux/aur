@@ -28,6 +28,7 @@ package() {
         chmod 755 $pkgdir/usr/share/applications
 
         mkdir -p "$pkgdir/usr/bin"
+	chmod +x /opt/openwmail/openWMail
         ln -s /opt/openwmail/openWMail ${pkgdir}/usr/bin
 }
 
