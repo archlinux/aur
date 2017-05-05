@@ -1,14 +1,14 @@
 pkgbase = git-extras-git
 	pkgdesc = GIT utilities -- repo summary, repl, changelog population, author commit percentages and more
-	pkgver = 4.2.0.r1.g805d438
+	pkgver = 4.3.0.r0.g88ee400
 	pkgrel = 1
 	url = https://github.com/tj/git-extras
 	arch = any
-	license = custom:MIT
+	license = MIT
 	depends = git
 	provides = git-extras
 	conflicts = git-extras
-	source = git://github.com/tj/git-extras.git
+	source = git+https://github.com/tj/git-extras.git
 	md5sums = SKIP
 
 pkgname = git-extras-git

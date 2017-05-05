@@ -5,16 +5,16 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=git-extras-git
-pkgver=4.2.0.r1.g805d438
+pkgver=4.3.0.r0.g88ee400
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, repl, changelog population, author commit percentages and more"
 arch=('any')
 url="https://github.com/tj/${pkgname%-git}"
-license=('custom:MIT')
+license=('MIT')
 depends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git://github.com/tj/${pkgname%-git}.git")
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
