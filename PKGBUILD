@@ -11,11 +11,11 @@ license=('Apache')
 depends=('java-runtime' 'hicolor-icon-theme' 'xorg-xrandr' 'ttf-dejavu' 'libzip')
 makedepends=('libicns')
 source=("$pkgname"
-	"http://ftb.cursecdn.com/FTB2/launcher/FTB_Launcher.jar"
+	"${pkgname}-$pkgver.jar"::"http://ftb.cursecdn.com/FTB2/maven/net/ftb/FTB_Launcher/${pkgver/_/-}/FTB_Launcher-${pkgver/_/-}.jar"
         "${pkgname}.desktop")
 noextract=("${pkgname}-$pkgver.jar")
 sha256sums=('35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0'
-            'c4c3c4d1792bde1bb77e2aff84959c1762f971298ff3c2621ed94e47f0f653d4'
+            'SKIP'
             '4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d')
 
 package() {
