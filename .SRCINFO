@@ -1,7 +1,7 @@
 pkgbase = sws
 	pkgdesc = A collection of features that seamlessly integrate into REAPER
 	pkgver = 2.9.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sws-extension.org/
 	arch = x86_64
 	license = MIT
@@ -9,13 +9,15 @@ pkgbase = sws
 	makedepends = gcc
 	makedepends = make
 	makedepends = php
-	depends = reaper
+	depends = reaper>=5.409
 	provides = sws
 	conflicts = sws
 	source = git://github.com/reaper-oss/sws.git
 	source = git://github.com/justinfrankel/WDL
-	md5sums = SKIP
-	md5sums = SKIP
+	source = https://swsaur.000webhostapp.com/files/reaper_plugin_functions.tar.xz
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = cb035263433a8ae0aaa269702a439e6bb0fc4d756d3d6daaac12af7a01169eb5
 
 pkgname = sws
 
