@@ -6,27 +6,37 @@
 
 pkgname=packettracer62
 pkgver=6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
-arch=( 'i686' 'x86_64' )
-depends_x86_64=('lib32-openssl' 'lib32-qt4' 'lib32-libpng') && makedepends_x86_64=('gcc-multilib')
-depends_i686=('qtwebkit' 'libpng')
+arch=('i686' 'x86_64')
+depends=('perl') # openssl-1.0 dep
+depends_x86_64=('lib32-glibc' 'lib32-libpng')
+makedepends_x86_64=('gcc-multilib')
+depends_i686=('libpng')
 conflicts=('packettracer')
 replaces=('packettracer')
 url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
+_openssl_ver=1.0.2k
 source=(
     # Requires Netacad Username/Password to download
-    'local://Cisco Packet Tracer 6.2 for Linux - Ubuntu installation - Student version.tar.gz'
-    'packettracer'
-    'linguist'
-    'packettracer.sh'
+    "local://Cisco Packet Tracer 6.2 for Linux - Ubuntu installation - Student version.tar.gz"
+    "packettracer"
+    "linguist"
+    "packettracer.sh"
+    
+    # openssl-1.0
+    "https://www.openssl.org/source/openssl-${_openssl_ver}.tar.gz"
+    "openssl-no-rpath.patch"
 )
 sha256sums=(
     'bad40dc41e7c2989f96f28b13db871a94a9de35913db2ea15afb1001f6c80082'
-    'b91c9109f23b4b953b17c76ac4c237966748f3141d96e8f9ac46f57f81990f95'
+    'db71b82fa89364df9695773f730fba59aa4796cf330b638b30548d6b437f1ea0'
     'bfc0c4bc7e4c835d47cfdf82da3a5ff48a9e5cb5071c440fb4bf901ab623e567'
     'ec49170ce2f1d1feea972ce259ad344184cd3fefa13a3df0dac142a8845b4c78'
+    
+    '6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0'
+    '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
 )
 
 # We don't want to strip anything from the static libraries
@@ -34,7 +44,40 @@ sha256sums=(
 options=(!strip)
 install=pt.install
 
+prepare() {
+    # prepare openssl-1.0
+    cd "$srcdir/openssl-$_openssl_ver"
+    
+    # remove rpath: https://bugs.archlinux.org/task/14367
+    patch -p0 -i "$srcdir/openssl-no-rpath.patch"
+    
+    # do not include symbol versioning patch
+}
+
+build() {
+    # build openssl-1.0
+    cd "$srcdir/openssl-$_openssl_ver"
+    
+    if [ "${CARCH}" == 'x86_64' ]; then
+        # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
+        export CC='gcc -m32'
+        export CXX='g++ -m32'
+        export LDFLAGS="-m32 ${LDFLAGS}"
+        export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+    fi
+    
+    # mark stack as non-executable: https://bugs.archlinux.org/task/12434
+    ./Configure --prefix=/ --openssldir=/etc/ssl --libdir=lib \
+        shared no-ssl3-method ${optflags} \
+        linux-elf \
+        "-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+    
+    make MAKEDEPPROG="${CC}" depend
+    make
+}
+
 package() {
+    # install packettracer files
     cd "${srcdir}/PacketTracer62Student"
     
     local install_dir="${pkgdir}/usr/share/packettracer"
@@ -89,4 +132,14 @@ package() {
     install -D -m644 ./bin/Cisco-PacketTracer.desktop "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
     sed 's,/usr/local/PacketTracer6,/usr/share/packettracer,' -i "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
     rm "${install_dir}/bin/Cisco-PacketTracer.desktop"
+    
+    
+    # install openssl-1.0 files
+    mkdir -p "$srcdir/openssl-tmp"
+    
+    cd "$srcdir/openssl-$_openssl_ver"
+    make INSTALL_PREFIX="$srcdir/openssl-tmp" install_sw
+    
+    mv "$srcdir/openssl-tmp/lib/libcrypto.so.1.0.0" "$install_dir/lib/"
+    mv "$srcdir/openssl-tmp/lib/libssl.so.1.0.0" "$install_dir/lib/"
 }
