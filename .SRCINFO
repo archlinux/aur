@@ -1,7 +1,7 @@
 pkgbase = lastpass
 	pkgdesc = The Universal LastPass installer for Firefox, Chrome, and Opera
 	pkgver = 4.1.44
-	pkgrel = 5
+	pkgrel = 6
 	url = https://lastpass.com
 	install = lastpass.install
 	arch = i686
@@ -23,13 +23,13 @@ pkgbase = lastpass
 	optdepends = opera-beta: for Opera Beta (AUR)
 	optdepends = opera-developer: for Opera Developer (AUR)
 	noextract = lpchrome_4.1.45.crx
-	noextract = lpfirefox_4.1.47a.xpi
+	noextract = lpfirefox_4.1.49a.xpi
 	source = lplinux_4.1.44.tar.bz2::https://lastpass.com/lplinux.tar.bz2
 	source = lpchrome_4.1.45.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc
 	source = lpchrome_lib_4.1.23.crx::https://lastpass.com/lpchrome_linux.crx
 	source = com.lastpass.nplastpass.json
 	source = lastpass_policy.json
-	source = lpfirefox_4.1.47a.xpi::https://lastpass.com/lastpassffx/xpi.php
+	source = lpfirefox_4.1.49a.xpi::https://lastpass.com/lastpassffx/xpi.php
 	source = profiles.ini
 	md5sums = 5a9bb6e274c8d5102400fa03a3cab776
 	md5sums = 0783421c93205618d9e55924907b92ec
