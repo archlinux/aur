@@ -1,0 +1,7 @@
+post_install() {
+    echo -e "\e[32m\e[1m============================\e[0m"
+    echo -e "\e[32mTo enable SSH through kr, please run the following command:\e[0m"
+    echo -e "\e[94m"
+    echo "echo -e '\\n# Added by Kryptonite\\nHost *\\n\\tPKCS11Provider /usr/lib/kr-pkcs11.so\\n\\tProxyCommand /usr/bin/krssh %h %p\\n\\tIdentityFile ~/.ssh/id_kryptonite\\n\\tIdentityFile ~/.ssh/id_ed25519\\n\\tIdentityFile ~/.ssh/id_rsa\\n\\tIdentityFile ~/.ssh/id_ecdsa\\n\\tIdentityFile ~/.ssh/id_dsa' >> ~/.ssh/config"
+    echo -e "\e[0m\e[32m\e[1m============================\e[0m"
+}
