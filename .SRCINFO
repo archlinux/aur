@@ -1,7 +1,7 @@
 pkgbase = koel
 	pkgdesc = A personal music streaming server that works.
 	pkgver = 3.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://koel.phanan.net/
 	install = koel.install
 	arch = any
@@ -9,14 +9,13 @@ pkgbase = koel
 	makedepends = php-composer
 	depends = php
 	depends = python3
-	optdepends = php-mysql: to use the MySQL database backend
 	optdepends = php-pgsql: to use the PostGreSQL database backend
 	optdepends = php-sqlsrv: to use the Microsoft SQL database backend
 	optdepends = mariadb: to use the MySQL database backend
 	optdepends = postgresql: to use the PostGreSQL database backend
 	backup = usr/share/webapps/koel/.env
-	source = https://github.com/phanan/koel/archive/v3.5.5.tar.gz
-	sha256sums = efd30b73a2df1fa8f97ef29eaadfdc2b5ba0f08a8aaf0a91826751e03eaed3bf
+	source = https://github.com/phanan/koel/archive/v3.6.2.tar.gz
+	sha256sums = 7fddfa7014b0da2c6bc14f0ce83982dfb23991834dd6c453b07922104687b333
 
 pkgname = koel
 
