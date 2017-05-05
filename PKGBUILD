@@ -3,7 +3,7 @@
 _author=typiconman
 _perlmod=Lingua-Cu
 pkgname=perl-lingua-cu
-pkgver=980ffb3
+pkgver=84bdd02
 pkgrel=2
 pkgdesc="Perl Module Lingua::Cu"
 arch=('any')
