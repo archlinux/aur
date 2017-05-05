@@ -1,0 +1,15 @@
+pkgbase = env-modules-tcl
+	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile (tcl-only-version).
+	pkgver = 1.832
+	pkgrel = 3
+	url = https://sourceforge.net/projects/modules/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	checkdepends = dejagnu
+	depends = tcl>=7.4
+	source = https://sourceforge.net/projects/modules/files/Modules-Tcl/modules-tcl-1.832.tar.gz
+	md5sums = 3a40bf6177cc438481672ce028544828
+
+pkgname = env-modules-tcl
+
