@@ -6,7 +6,7 @@ cat << EOF
 
 (require 'linum-off)
 
-==> If you want to add term-mode to the list of disabled linum modes:
+==> If you want to add, say, term-mode to the list of disabled linum modes:
 
 (add-to-list 'linum-disabled-modes-list 'term-mode)
 
