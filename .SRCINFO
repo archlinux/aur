@@ -1,9 +1,8 @@
 pkgbase = discover-git
 	pkgdesc = KDE and Plasma resources management GUI
-	pkgver = r4327.f537e89
-	pkgrel = 2
+	pkgver = r5530.7aeec871
+	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/workspace/discover
-	install = discover-git.install
 	arch = i686
 	arch = x86_64
 	groups = plasma

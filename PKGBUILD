@@ -2,8 +2,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org> 
 
 pkgname=discover-git
-pkgver=r4327.f537e89
-pkgrel=2
+pkgver=r5530.7aeec871
+pkgrel=1
 pkgdesc='KDE and Plasma resources management GUI'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/discover'
@@ -18,7 +18,6 @@ replaces=(muon-git)
 source=('git://anongit.kde.org/discover.git')
 groups=(plasma)
 md5sums=('SKIP')
-install=$pkgname.install
 
 pkgver() {
   cd discover
