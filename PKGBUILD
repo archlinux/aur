@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.25.1+9+gc53ee0634
+pkgver=3.25.1+11+gf4e0ae2cd
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="http://www.gnome.org/projects/epiphany/"
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
   git submodule init
-  git config --local libgd.url "${srcdir}/libgd"
+  git config --local gvdb.url "${srcdir}/gvdb/gvdb"
   git submodule update
 }
 
