@@ -1,8 +1,8 @@
 # Maintainers: Mike Cooper <mythmon at elem.us>, Mikko <mikko at 5x.fi>
 
 pkgname=terraria-server
-pkgver=1.3.5.2
-pkgrel=20
+pkgver=1.3.5.3
+pkgrel=21
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -18,15 +18,15 @@ source=("http://terraria.org/server/${pkgname}-${_pkgver}.zip"
         'config.txt'
         'terraria-server@.service')
 
-sha256sums=('5a37f56c0cc59ba82d4cd07cea16e2b215a2e78ca75294411749897434844c59'
-            '100b68ee3b88e7b095d23cd9d56e9480b21788b5165ebbf752c16b19693299f7'
+sha256sums=('588c9e80d4e6539bbacbb8b59822a14c1e6624c3bd377bdd3a301e932427452c'
+            '6250009dabc3351692eea3a7df3b1e6fa7b144a8149ffc08827f37c034cc230f'
             '6a87f9f758811528913fa4828667b200ab7dcb6623734475ecbd8f8dab337b2f'
-            '24478cfa6e4e21066454ab47a7748c49d6a07d644bfb740d9c284275d6428e3a')
+            'b2cfeb15b6e5bf97d1b7a0b0bdbec9289a842d37c52414c5b57aadda66b1b6a6')
 
 package() {
     unzip -o "${pkgname}-${_pkgver}.zip"
-    cd 'Linux'
-    dest="${pkgdir}/etc/terraria-server"
+    cd "${_pkgver}/Linux"
+    dest="${pkgdir}/opt/terraria-server"
     install -o 697 -g 697  -d "${dest}"
 
     install -m644 FNA.dll "${dest}/"
@@ -66,7 +66,6 @@ package() {
     install -m755 config.txt "${dest}/"
 
     install -o 697 -g 697 -d "${pkgdir}/srv/terraria"
-    install -o 697 -g 697 -d "${pkgdir}/var/lib/terraria-server/"
 
     install -d "${pkgdir}/usr/lib/"
     ln -s "/usr/lib/libmonosgen-2.0.so.1.0.0" "${pkgdir}/usr/lib/libmonosgen-2.0.so.0"

@@ -6,7 +6,7 @@ After=network.target
 User=terraria
 Type=simple
 # Screen is used, because the terraria server binary crashes if called on its own.
-ExecStart=/usr/bin/screen -DmS terraria-server-%i /usr/bin/terraria-server -config /etc/terraria-server/%i.conf
+ExecStart=/usr/bin/screen -DmS terraria-server-%i /usr/bin/terraria-server -config /opt/terraria-server/%i.conf
 # Send a warning message to all players and the exit command through screen to let the program terminate itself gracefully
 ExecStop=/usr/bin/screen -S terraria-server-%i -X stuff "say Server shutting down. Saving world.\015"
 ExecStop=/usr/bin/screen -S terraria-server-%i -X stuff "exit\015"

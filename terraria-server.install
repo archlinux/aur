@@ -4,7 +4,7 @@ post_install() {
     fi
 
     if ! getent passwd terraria &>/dev/null; then
-        useradd -r -u 697 -g terraria -d /var/lib/terraria-server/ \
+        useradd -r -u 697 -g terraria -d /opt/terraria-server/ \
             -s /bin/bash terraria >/dev/null
     fi
 }

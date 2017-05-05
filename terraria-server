@@ -10,4 +10,4 @@ do
                 args[$i]=$(realpath ${args[$i]});
         fi
 done
-/etc/terraria-server/TerrariaServer.bin.${arch} "${args[@]}"
+/opt/terraria-server/TerrariaServer.bin.${arch} "${args[@]}"
