@@ -1,0 +1,17 @@
+pkgbase = f2bgl-git
+	pkgdesc = Open source reimplementation of the Fade to Black engine.
+	pkgver = r174.d488ad8
+	pkgrel = 1
+	url = https://github.com/cyxx/f2bgl
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = make
+	makedepends = git
+	provides = f2bgl
+	conflicts = f2bgl
+	source = f2bgl::git+https://github.com/cyxx/f2bgl.git
+	sha256sums = SKIP
+
+pkgname = f2bgl-git
+
