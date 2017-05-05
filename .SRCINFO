@@ -6,6 +6,7 @@ pkgbase = guile-wm-git
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = guile
 	depends = guile-xcb
 	provides = guile-wm
 	conflicts = guile-wm
