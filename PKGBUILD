@@ -2,7 +2,7 @@
 
 pkgbase=linux-lts-max98090
 _srcname=linux-4.9
-pkgver=4.9.25
+pkgver=4.9.26
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -24,10 +24,10 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 	# https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '1ae6b863b87c7dd67ce075e1e1d56b8b3fd30c26243c0cd2f1ecc64cbe0ad219'
+            'f0e2654ffb568cadfa7792f5825830b357acc8c7877bd5a58ef676b191d08c33'
             'SKIP'
-            '2071cd8033d7e6cddbc4669ce53fe9b05c88f319e2352a59c5a6521f9e608f33'
-            '5bfe800ea5d395ff30a453f03d53e4140b2e7e5ddb772b61b424596b5ee6d14d'
+            '09d0acac5ca3d5c98077785bbc763111a78a5af72d486fcec5d9aa9100cd9a64'
+            '95e554660267fa55291c16fcbe5eb4c456d6236d6caccd0137c6233deb90e00e'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
@@ -274,7 +274,7 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
- 
+  
   # remove files already in linux-docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
