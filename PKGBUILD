@@ -8,7 +8,7 @@ _GPU_TARGET=sm50
 ##### End
 
 pkgname=magma-atlas
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A dense linear algebra library, similar to LAPACK, for doing caluclations on GPUs and CPUs simultaneously (built against CUDA and atlas-lapack)"
 arch=("i686" "x86_64")
@@ -18,7 +18,7 @@ conflicts=('magma')
 license=(custom)
 depends=("cuda>=5.5.0" "gcc-libs-multilib" "gsl" "python" "cblas" "atlas-lapack")
 options=('staticlibs')
-sha256sums=('ba0373fc80b078001a5e048b245185adadf591c451490de53e62ed7e1a167571')
+sha256sums=('df5d4ace417e5bf52694eae0d91490c6bde4cde1b0da98e8d400c5c3a70d83a2')
 source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
 
 build() {
@@ -26,7 +26,8 @@ build() {
 
 	# Fix Makefile
 	# cp make.inc.openblas make.inc
-	cp make.inc.atlas make.inc
+
+	cp make.inc-examples/make.inc.atlas make.inc
 	sed -i "/#GPU_TARGET ?=/c GPU_TARGET = ${_GPU_TARGET}" make.inc
 	sed -i '/#LAPACKDIR ?=/c LAPACKDIR ?= /usr' make.inc
 	sed -i '/#CUDADIR/c CUDADIR   = /opt/cuda' make.inc
@@ -52,7 +53,7 @@ package() {
 	#mkdir -p ${pkgdir}/opt/magma/testing
 	#cp -ru ${srcdir}/magma-${pkgver}/testing/* ${pkgdir}/opt/magma/testing/
 
-	rm -rf ${pkgdir}/opt/magma/lib/pkgconfig	
+	rm -rf ${pkgdir}/opt/magma/lib/pkgconfig
 	mkdir -p ${pkgdir}/usr/share/licenses/magma
 	cp ${srcdir}/magma-${pkgver}/COPYRIGHT ${pkgdir}/usr/share/licenses/magma/LICENSE
 }

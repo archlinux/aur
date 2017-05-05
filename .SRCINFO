@@ -1,6 +1,6 @@
 pkgbase = magma-atlas
 	pkgdesc = A dense linear algebra library, similar to LAPACK, for doing caluclations on GPUs and CPUs simultaneously (built against CUDA and atlas-lapack)
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://icl.cs.utk.edu/magma/
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = magma-atlas
 	provides = magma
 	conflicts = magma
 	options = staticlibs
-	source = http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-2.1.0.tar.gz
-	sha256sums = ba0373fc80b078001a5e048b245185adadf591c451490de53e62ed7e1a167571
+	source = http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-2.2.0.tar.gz
+	sha256sums = df5d4ace417e5bf52694eae0d91490c6bde4cde1b0da98e8d400c5c3a70d83a2
 
 pkgname = magma-atlas
 
