@@ -35,6 +35,7 @@ build() {
 
 package_xtreemfs-server() {
     depends=('java-environment' 'util-linux')
+    pkgdesc="A fault-tolerant distributed file system for all storage needs (server)"
     install=xtreemfs-server.install
 
     cd "$_pkgname-$pkgver"
@@ -62,6 +63,8 @@ package_xtreemfs-server() {
 
 package_xtreemfs-client() {
     depends=('attr' 'openssl' 'fuse' 'boost-libs')
+    pkgdesc="A fault-tolerant distributed file system for all storage needs (client)"
+
     cd "$_pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install-client
 
