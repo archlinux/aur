@@ -1,7 +1,7 @@
 # Maintainer: Adhityaa Chandrasekar <c.adhityaa@gmail.com>
 pkgname=coala
 pkgver=0.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A unified command-line interface for linting and fixing all your code, regardless of the programming languages you use."
 arch=('any')
 url="https://coala.io/"
@@ -12,7 +12,10 @@ depends=(
             'python-appdirs'
             'python-requests'
         )
-makedepends=('python-setuptools')
+makedepends=(
+                'python-setuptools'
+                'python-pip'
+            )
 provides=('coala')
 source=('https://pypi.io/packages/source/c/coala/coala-0.10.0.tar.gz')
 sha256sums=('5ecc4981ce7e5e5020fe207bf0cdc7ea3b7c307916ea247d18a58edc48ea822f')
