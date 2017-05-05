@@ -1,7 +1,7 @@
 pkgbase = dotnet-fixed
 	pkgdesc = Provides the .NET core shared framework, i.e. coreclr and corefx.
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=dotnet-fixed
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Provides the .NET core shared framework, i.e. coreclr and corefx."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
