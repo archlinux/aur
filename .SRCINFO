@@ -1,0 +1,32 @@
+pkgbase = pacman-reproducible
+	pkgdesc = A library-based package manager with dependency support. reproducible builds version.
+	pkgver = 5.0.1.166.g9a7ac7be
+	pkgrel = 1
+	url = https://www.archlinux.org/pacman/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	checkdepends = python2
+	checkdepends = fakechroot
+	makedepends = git
+	makedepends = asciidoc
+	depends = bash
+	depends = curl
+	depends = gpgme
+	depends = libarchive
+	depends = pacman-mirrorlist
+	optdepends = fakeroot: for makepkg usage as normal user
+	provides = pacman=5.0.1.166.g9a7ac7be
+	provides = pacman-contrib
+	provides = libalpm.so
+	conflicts = pacman
+	conflicts = pacman-contrib
+	options = !libtool
+	options = !strip
+	backup = etc/pacman.conf
+	backup = etc/makepkg.conf
+	source = pacman-reproducible::git+https://github.com/anthraxx/pacman#branch=wip/reproducible
+	sha1sums = SKIP
+
+pkgname = pacman-reproducible
+
