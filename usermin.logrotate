@@ -1,0 +1,8 @@
+/var/log/usermin/miniserv.error /var/log/usermin/*.log {
+   missingok
+   notifempty
+   sharedscripts
+   postrotate
+      /usr/bin/systemctl reload usermin.service 2>/dev/null || true
+   endscript
+}

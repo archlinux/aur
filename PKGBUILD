@@ -2,7 +2,7 @@
 
 pkgname=usermin
 pkgver=1.701
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based interface for users"
 arch=(i686 x86_64)
 license=('custom:webmin')
@@ -50,6 +50,7 @@ source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.t
         setup-post.sh
         usermin-config.tar.bz2
         usermin.pam
+        usermin.logrotate
         usermin.service)
 options=(!strip !zipman)
 
@@ -63,6 +64,7 @@ prepare() {
     find . ! -name 'config-generic-linux' ! -name 'config-\*-linux' ! -name 'config-lib.pl' -name 'config-*' -exec rm '{}' \+
     echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
     cp -rp "$srcdir"/usermin-config/* "$srcdir"/$pkgname-$pkgver/
+    install -m 700 "$srcdir"/setup-{pre,post}.sh "$srcdir"/$pkgname-$pkgver/
 
     # fix setup.sh
     sed -i -e 's:exit 13::g' "$srcdir"/$pkgname-$pkgver/setup.sh
@@ -102,6 +104,7 @@ package() {
     # install sources
     install -D -m 644 "$srcdir"/usermin.service "$pkgdir"/usr/lib/systemd/system/usermin.service
     install -D -m 644 "$srcdir"/usermin.pam "$pkgdir"/etc/pam.d/usermin
+    install -D -m 644 "$srcdir"/usermin.logrotate "$pkgdir"/etc/logrotate.d/usermin
     install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/usermin/LICENCE
     mv "$pkgdir"/opt/usermin/user.acl "$pkgdir"/etc/usermin/
 
@@ -115,4 +118,5 @@ sha256sums=('93a1be3cee975dd3d4e64d27b09cf252750949eaad7b62f5d5bb88d4edb2da28'
             '17102b3583190f64fae039ca5270ae823cae90ed60fdb2dd49aba95496bff559'
             'a05c4d471977282736ac89f4d4d379a91b70678348b1a1b91ce23ebff3c8bfce'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
-            'ade1b28a8f65512c8878ecabf6c8bc5a2d8ce3fd88dc3bffc1a9e14f3fd1ec47')
+            '73b47189419d107e3be2cce131123c73e4d1c954c14f53c223f332da0348681c'
+            '6f40dfcd8f1530639b7a8db2cd5401be74d1416ce1116b8f36b0542a85c8d3cf')
