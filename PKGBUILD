@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.59.1.18.g6056347657
+pkgver=2.19.59.1.20.g6f29160471
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ prepare() {
     sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
-sed -i 's+guile-config-1.8+guile-config1.8+' aclocal.m4
+  sed -i 's+guile-config-1.8+guile-config1.8+' aclocal.m4
 }
 
 
@@ -56,6 +56,5 @@ build() {
 package() {
   cd lilypond/
   make DESTDIR="$pkgdir/" vimdir="/usr/share/vim/vimfiles" install
-  sed -i '1s+guile1.8+guile+' $pkgdir/usr/bin/lilypond-invoke-editor
   rm -rf "$pkgdir/usr/share/man"
 }
