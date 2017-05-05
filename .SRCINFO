@@ -1,7 +1,7 @@
 pkgbase = caret-bin
 	pkgdesc = Premium Markdown Editor http://caret.io
 	pkgver = 2.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/careteditor/caret
 	arch = x86_64
 	license = unknown

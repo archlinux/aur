@@ -1,7 +1,7 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 pkgname=caret-bin
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Premium Markdown Editor http://caret.io"
 arch=('x86_64')
 url="https://github.com/careteditor/caret"
@@ -12,7 +12,7 @@ source=("https://github.com/careteditor/caret/releases/download/$pkgver/Caret.de
 prepare() {
     cat > "Caret" << EOF
 #!/usr/bin/env sh
-/opt/caret/Caret
+/opt/caret/Caret \$@
 EOF
 
     chmod +x Caret
