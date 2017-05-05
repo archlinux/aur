@@ -1,14 +1,14 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=secure-boot
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="secure-boot tool"
 arch=(any)
 url="https://github.com/gdamjan/secure-boot"
 license=('GPL')
 groups=()
-depends=('sbsigntools' 'make' 'efibootmgr' 'util-linux' 'binutils' 'systemd')
+depends=('efitools' 'sbsigntools' 'make' 'efibootmgr' 'util-linux' 'binutils' 'systemd')
 makedepends=()
 checkdepends=()
 optdepends=()
