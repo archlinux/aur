@@ -1,7 +1,7 @@
 # Maintainer: Fahad Hossain <8bit.demoncoder AT gmail.com>
 pkgname=mpv-url
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Handle mpv:// URLs and open them using mpv."
 arch=('any')
 url="https://github.com/fa7ad/${pkgname}"
@@ -11,16 +11,18 @@ depends=(
   'mpv'
   'desktop-file-utils'
   'xdg-utils'
+  'rsync'
 )
 source=("https://github.com/fa7ad/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('446ab34c79d54b2d9925b7c0b0af6702')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
-  cp src/ "${pkgdir}/" -R
+  rsync -a src/ "${pkgdir}/"
 }
 
 post_install() {
   update-desktop-database
   xdg-mime default mpv-url.desktop x-scheme-handler/mpv
 }
+
