@@ -17,7 +17,7 @@ mkdir -p $pkgdir/usr/bin $pkgdir/usr/share/eboard
 cp timeseal.Linux-i386\?format=raw $pkgdir/usr/bin/timeseal
 echo "#!/bin/bash
 if [ -a /usr/bin/xboard ];then
-xboard -ics -icshost 69.36.243.188 -telnet -telnetProgram timeseal
+xboard -ics -icshost 167.114.65.195 -telnet -telnetProgram timeseal
 echo 
 echo 
 echo Connection to freechess.org lost\!
