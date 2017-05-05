@@ -1,13 +1,13 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good-git
-pkgver=1.11.1.r49.19c9600ea
+pkgver=1.12.0.r1.3f07947ca
 pkgrel=1
 _gitname=gst-plugins-good
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer-git' 'mingw-w64-orc')
+depends=('mingw-w64-gstreamer-git' 'mingw-w64-orc')
 makedepends=('git' 'mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-good')
@@ -36,7 +36,8 @@ build() {
     ${_arch}-configure \
       --with-package-name="GStreamer Good Plugins (Arch Linux)" \
       --with-package-origin="http://www.archlinux.org/" \
-      --disable-examples \
+      --disable-examples --disable-oss4 --disable-oss --disable-dv1394 \
+      --disable-aalib --disable-libcaca --disable-jack --disable-shout2 
 
     # https://bugzilla.gnome.org/show_bug.cgi?id=655517
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
