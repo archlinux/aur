@@ -1,7 +1,7 @@
 # Maintainer: Jacob Juric <jacobjuric1@gmail.com>
 
 pkgname=gwen-web
-pkgver=2.3.4
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A web automation engine for the Gwen interpreter."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime=8')
 optdepends=('chromedriver: Google Chrome support (AUR)'
             'geckodriver: Firefox support')
 source=("https://github.com/gwen-interpreter/gwen-web/releases/download/v$pkgver/$pkgname-$pkgver.zip")
-sha256sums=('f1c2d78c00d126a75b2163883c3bd03c74aedde7b0187d2cf57b7bd99f294308')
+sha256sums=('bdec8fc1dd1f737c0e8f94d69727e70d11def8707688b595e74ac58cfebb854c')
 
 package() {
 	cd "$pkgname-$pkgver"
