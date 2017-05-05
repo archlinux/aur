@@ -1,13 +1,13 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-libav-git
-pkgver=1.11.1.r2.e94fcc2
+pkgver=1.12.0.r1.57c7a1f
 pkgrel=1
 _gitname=gst-libav
 pkgdesc="GStreamer Multimedia Framework ffmpeg Plugin (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-gstreamer-git' 'mingw-w64-gst-plugins-base-git')
+depends=('mingw-w64-gst-plugins-base-git')
 makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-libav')
