@@ -2,8 +2,8 @@
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=minio
-pkgver=2017.04.29
-_pkgver="${pkgver//./-}T00-40-27Z"
+pkgver=2017.05.05
+_pkgver="${pkgver//./-}T01-14-51Z"
 pkgrel=1
 pkgdesc='Object storage server compatible with Amazon S3'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ install=minio.install
 source=(https://github.com/minio/minio/archive/RELEASE.${_pkgver}.tar.gz
         minio.conf
         minio.service)
-sha512sums=('a50e371b98dafb3c1eb1259215c3f7d4c674849075da3320eee1caf77f47166740403b3ee6a82e72aad26400dfe013a464ad45395303c0d6b1758722090134fe'
+sha512sums=('bd2e8f18da7d78d9dfebfa528017dddd396bacf33f7935b0a9115854430e8764ddf0537a4b2d152b154fdf2a666a22f8107158dd9ba9bc2de4ea161502eb0fc0'
             '630a5d109409074b67be71b663a43ad09104121cca3637bb0542df19e375023bff7d7e2cbf39e52cc3cd060d41c363a90bd4ff7734aed1a5ca43a600f6d6d275'
             '36dbd6b9d27d66b3e7dfb4f6b20fc1939dc42286b5c0ffc399760e5bebffee08548834a0a780d45b815c7c78ca6c738bf0da61ec734131fcc704e65874e04486')
 
