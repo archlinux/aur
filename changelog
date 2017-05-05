@@ -1,3 +1,7 @@
+2017-05-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.3.1.3-1:
+    Fixed a small regression introduced in version 2.3.0.9 that could cause !redeem failures to be always displayed as Fail.
+    Improved !redeem statuses by adding extra internal Steam network result on top of existing purchase result. OK/NoDetail looks much better than NoDetail alone 🙂.
 2017-04-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.3.1.2-1:
     [!] ASF now requires Mono in version 4.8 or higher (Linux / OS X, ref: #529).
