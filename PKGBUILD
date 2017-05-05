@@ -1,8 +1,8 @@
 # Maintainer: Elimpfor <aur@s403.33mail.com>
 pkgname=opmsg
 pkgver=1.76s
-_pkgver=rel-"${pkgver}"-newskey2
-pkgrel=1
+_pkgver=rel-"${pkgver}"
+pkgrel=2
 epoch=
 pkgdesc="opmsg message encryption"
 arch=('x86_64' 'i686' 'armv7h')
