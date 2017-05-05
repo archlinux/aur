@@ -2,7 +2,7 @@
 
 pkgname=xplayer-git
 _pkgbasename=xplayer
-pkgver=1.2.0.r0.g4898649
+pkgver=1.4.0.r1.gc5d85cd
 pkgrel=1
 pkgdesc="Simple media player. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('clutter-gtk' 'clutter-gst' 'xplayer-plparser-git'
     'desktop-file-utils' 'iso-codes' 'yelp-xsl'
     'libpeas' 'gsettings-desktop-schemas' 'dbus-glib'
     'python2-gobject' 'gst-plugins-base' 'gst-plugins-good'
-    'xapps-git')
+    'xapps')
 makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection' 'vala')
 optdepends=('gst-libav: Extra media codec support')
 provides=($_pkgname)
