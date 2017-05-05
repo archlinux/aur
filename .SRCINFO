@@ -1,7 +1,7 @@
 pkgbase = coala
 	pkgdesc = A unified command-line interface for linting and fixing all your code, regardless of the programming languages you use.
 	pkgver = 0.10.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://coala.io/
 	arch = any
 	license = AGPL-3.0
