@@ -6,6 +6,7 @@ Type=oneshot
 RemainAfterExit=yes
 ExecStart=/etc/webmin/start
 ExecStop=/etc/webmin/stop
+ExecReload=/etc/webmin/reload
 
 [Install]
 WantedBy=multi-user.target
