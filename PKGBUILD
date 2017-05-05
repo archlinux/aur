@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('desktop-file-utils' 'gconf' 'librsvg'
+depends=('desktop-file-utils' 'gconf' 'librsvg' 'clutter-gtk'
         'gst-plugins-base-libs' 'gsettings-desktop-schemas' 'libwebp' 'webkit2gtk')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool'
         'liboauth' 'libchamplain' 'libopenraw' 'exiv2' )
