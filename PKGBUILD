@@ -3,7 +3,7 @@
 pkgname=z88dk
 pkgver=1.99B
 #_pkgver=1.99A
-pkgrel=1
+pkgrel=2
 pkgdesc="A small C compiler for the Zilog Z80."
 arch=('i686' 'x86_64')
 url="http://z88dk.org"
@@ -14,7 +14,7 @@ source=(http://downloads.sourceforge.net/project/z88dk/z88dk/${pkgver}/${pkgname
         fix-build.patch
         z88dk.sh)
 md5sums=('6412a730d1b38a8ecf393683981a33ae'
-         '78871c2414844d5fc812d8994a2e2121'
+         '187b8002f426323f603f654cfe47307d'
          'a7d56837ef0cc9fbb05d2e21ddcc335c')
 
 prepare() {

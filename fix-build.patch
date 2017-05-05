@@ -1,19 +1,19 @@
 diff -Naur z88dk.old/build.sh z88dk/build.sh
---- z88dk.old/build.sh	2013-11-20 04:00:16.000000000 +0100
-+++ z88dk/build.sh	2016-08-21 15:37:40.462354542 +0200
-@@ -32,7 +32,7 @@
-    INSTALL="ginstall"
- fi
+--- z88dk.old/build.sh	2017-01-02 20:00:20.000000000 +0100
++++ z88dk/build.sh	2017-05-06 00:15:52.089731837 +0200
+@@ -49,7 +49,7 @@
+ 
+ export INSTALL
  
 -$MAKE -e
 +$MAKE
  $MAKE -C `pwd`/libsrc
  $MAKE -C `pwd`/libsrc install
- 
+ $MAKE -C `pwd`/libsrc/_DEVELOPMENT
 diff -Naur z88dk.old/Makefile z88dk/Makefile
---- z88dk.old/Makefile	2015-02-05 17:11:42.000000000 +0100
-+++ z88dk/Makefile	2016-08-21 15:39:13.704352445 +0200
-@@ -73,12 +73,12 @@
+--- z88dk.old/Makefile	2016-09-09 20:00:16.000000000 +0200
++++ z88dk/Makefile	2017-05-06 00:20:51.113124076 +0200
+@@ -78,12 +78,12 @@
  	cd libsrc ; $(MAKE) install
  
  install-libs:
@@ -32,3 +32,16 @@ diff -Naur z88dk.old/Makefile z88dk/Makefile
  
  install:
  	mkdir -p -m 755 $(DESTDIR)/$(prefix)/bin $(DESTDIR)/$(prefix_share)/z88dk
+@@ -95,7 +95,12 @@
+ 	cd src/cpp ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
+ 	cd src/sccz80 ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
+ 	cd src/z80asm ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
++	cd src/z80nm ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
+ 	cd src/zcc ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
++	cd src/scanner ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
++	cd src/zx7 ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
++	cd src/ticks ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
++	cd support/graphics ; $(MAKE) PREFIX=$(DESTDIR)/$(prefix) install
+ 	./config.sh $(prefix_share)/z88dk/ $(DEFAULT)
+ 	cp -R -p include $(DESTDIR)/$(prefix_share)/z88dk
+ 	cp -R -p lib $(DESTDIR)/$(prefix_share)/z88dk
