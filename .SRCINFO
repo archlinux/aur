@@ -1,13 +1,15 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework
 	pkgver = 6.0.0.alpha.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PowerShell/PowerShell
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = proot
+	makedepends = dotnet
+	makedepends = dotnet-cli
 	makedepends = dotnet-sdk
 	depends = bash
 	depends = icu55

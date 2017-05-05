@@ -3,12 +3,12 @@
 pkgname=powershell
 _pkgver=6.0.0-alpha.18
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
-makedepends=('git' 'cmake' 'proot' 'dotnet-sdk')
+makedepends=('git' 'cmake' 'proot' 'dotnet' 'dotnet-cli' 'dotnet-sdk')
 depends=('bash' 'icu55')
 conflicts=('powershell-git')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
