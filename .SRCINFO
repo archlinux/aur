@@ -1,14 +1,14 @@
 pkgbase = python2-validictory
 	pkgdesc = General purpose python data validator
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/jamesturk/validictory
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://github.com/jamesturk/validictory/archive/1.1.0.tar.gz
-	md5sums = 1662ca12b0fa906d2bdd501dfafaa2fc
+	source = python2-validictory-1.1.1.tar.gz::https://github.com/jamesturk/validictory/archive/1.1.1.tar.gz
+	sha256sums = 39e07c1040f0d3adb73d0ffc93d65c38c72fad810c76789850475072335e7fb0
 
 pkgname = python2-validictory
 
