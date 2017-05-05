@@ -1,7 +1,7 @@
 # Maintainer: 4leks4ndr <orthodox dot tk at gmail dot com>
 
 pkgname=m17n-cu
-pkgver=c6eb89e
+pkgver=4b70741
 pkgrel=1
 pkgdesc='Church Slavic data for m17n database'
 arch=('any')
@@ -10,13 +10,12 @@ license=('GPL')
 depends=('ibus-m17n')
 #install=$pkgname.install
 source=("git+$url.git#commit=$pkgver"
-        "Makefile.patch"
         "http://www.ponomar.net/files/docen.pdf")
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  patch -p0 -i "$srcdir/Makefile.patch"
-}
+#prepare() {
+#  cd "${srcdir}/${pkgname}"
+#  patch -p0 -i "$srcdir/Makefile.patch"
+#}
 
 package() {
   cd "${srcdir}/${pkgname}"
@@ -31,5 +30,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         'fd5bd027cf49fdd067e33cf90751d0ef'
          '8f704e96e09efdb5ef604952d290c43d')
