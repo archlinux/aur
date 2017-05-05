@@ -48,7 +48,7 @@ package_python-razer() {
 
 package_razer-daemon() {
   pkgdesc="Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use."
-  depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3')
+  depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3' 'dbus-glib')
   # gtk3 for "gi.require_version('Gdk', '3.0')"
 
   if [ -z $_commit ]; then
@@ -75,8 +75,8 @@ package_razer-driver-dkms() {
 }
 
 package_openrazer-meta() {
-   pkgdesc="Meta package for installing all required openrazer packages."
-   depends=('razer-driver-dkms' 'razer-daemon' 'python-razer')
+  pkgdesc="Meta package for installing all required openrazer packages."
+  depends=('razer-driver-dkms' 'razer-daemon' 'python-razer')
  }
 
 if $build_kernel_modules; then
