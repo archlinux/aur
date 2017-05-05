@@ -1,16 +1,17 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgbase=mingw-w64-gst-rtsp-server-git
 pkgname=('mingw-w64-gst-rtsp-server-git' 'mingw-w64-gst-rtsp-server-git-vslib')
-pkgver=1.11.1.r5.cd4e675
+pkgver=1.12.0.r1.51cd530
 pkgrel=1
 _gitname=gst-rtsp-server
 pkgdesc="RTSP server library based on GStreamer (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-gstreamer-git' 'mingw-w64-gst-plugins-base-git')
+depends=('mingw-w64-gst-plugins-base-git')
 options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-configure' 'mingw-w64-tools' 'git')
+optdepends=('mingw-w64-gst-rtsp-server-git-vslib: Visual Studio import lib')
 conflicts=('mingw-w64-gst-rtsp-server')
 
 source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
