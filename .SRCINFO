@@ -1,0 +1,16 @@
+pkgbase = apw-git
+	pkgdesc = Watch repo changes
+	pkgver = 20170506.7c36821
+	pkgrel = 1
+	url = https://www.github.com/Xinkai/ArchPackageWatcher
+	install = apw.install
+	arch = any
+	license = GPL
+	makedepends = npm
+	depends = nodejs
+	depends = expac
+	source = apw::git+https://github.com/Xinkai/ArchPackageWatcher.git
+	md5sums = SKIP
+
+pkgname = apw-git
+

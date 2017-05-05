@@ -1,0 +1,9 @@
+post_install() {
+    echo "==== apw Recommended Setup ===="
+    echo "1. Run 'apw init'"
+    echo "2. Add the following to your .bashrc or .zshrc file:"
+    echo $"   if [[ \$- == *i* ]]"
+    echo $"   then"
+    echo $"       apw"
+    echo $"   fi"
+}
