@@ -12,6 +12,7 @@ conflicts=('pycharm' 'pycharm-community')
 provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
+backup=(opt/$pkgname/bin/pycharm.vmoptions opt/$pkgname/bin/pycharm64.vmoptions)
 # for no-jdk:
 # depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
 depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
