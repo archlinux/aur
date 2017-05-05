@@ -14,10 +14,10 @@ pkgbase = lutris
 	depends = python-gobject
 	depends = python-yaml
 	depends = xdg-user-dirs
-	optdepends = python-evdev: Detecting connected joypads.
+	depends = python-evdev
 	optdepends = python-pyinotify: Enhanced Steam integration.
-	source = https://lutris.net/releases/lutris_0.4.8.tar.xz
-	sha256sums = 5e25d9d07269042abed8b18be83764bbd51541322d448bc372e8b25248b8a1b0
+	source = https://lutris.net/releases/lutris_0.4.9.tar.xz
+	sha256sums = 635e1b34084d9b2419575fd25097e36689e0f59c50bff89a4a3494e644fa4be9
 
 pkgname = lutris
 
