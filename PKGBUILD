@@ -9,13 +9,14 @@ devices."
 arch=('any')
 url="http://mkchromecast.com"
 license=('MIT')
-depends=('mutagen' 'pavucontrol' 'pulseaudio' 'python' 'python-flask' 'python-netifaces' 'python-psutil' 'python-pychromecast-git' 'python-requests' 'python-setuptools' 'python-pyqt5' 'python-yaml' 'sox' 'lame' 'flac' 'faac')
+depends=('gi' 'mutagen' 'pavucontrol' 'pulseaudio' 'python' 'python-flask' 'python-netifaces' 'python-psutil' 'python-pychromecast-git' 'python-requests' 'python-setuptools' 'python-pyqt5' 'python-yaml' 'sox' 'lame' 'flac' 'faac')
 makedepends=('git' 'python-setuptools' 'python-pip')
 optdepends=('ffmpeg'
             'python-pyqt5: system tray menu support'
-            'youtube-dl: youtube URLs casting support')
+            'youtube-dl: youtube URLs casting support'
+            'socos: cast to Sonos speakers')
 options=('!emptydirs')
-source=("git+https://github.com/muammar/${_gitname}.git#branch=devel" 
+source=("git+https://github.com/muammar/${_gitname}.git#branch=devel"
 "mkchromecast.sh" "mkchromecast.desktop" "mkchromecast.png")
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
