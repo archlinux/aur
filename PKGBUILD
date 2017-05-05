@@ -1,7 +1,7 @@
 # Maintainer: scorici <scorici AT yahoo DOT com>
 pkgname=fics-timeseal
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Timeseal support for eboard, xboard, scid and maybe others for playing chess on FICS"
 arch=(any)
 url="http://www.freechess.org/"
