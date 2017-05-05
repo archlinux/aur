@@ -1,0 +1,24 @@
+pkgbase = sakia
+	pkgdesc = A Python/Qt client for Duniter network
+	pkgver = 0.32.0RC1
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = qt5-tools>=5.5
+	makedepends = python-pyqt5
+	depends = qt5-base>=5.5
+	depends = qt5-svg>=5.5
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl-1.0
+	depends = libffi
+	depends = zlib
+	depends = sqlite
+	optdepends = gtk3
+	source = https://github.com/duniter/sakia/archive/0.32.0RC1.tar.gz
+	sha256sums = 06df285af8bf58cc1b5dc48a15bb1074a4850dffb68b9cea666f61820fd9c701
+
+pkgname = sakia
+
