@@ -1,7 +1,7 @@
 # Maintainer: Adhityaa Chandrasekar <c.adhityaa@gmail.com>
 pkgname=coala
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A unified command-line interface for linting and fixing all your code, regardless of the programming languages you use."
 arch=('any')
 url="https://coala.io/"
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-    sudo pip3 install -r requirements.txt -r test-requirements.txt
+    sudo pip3 install -r requirements.txt -r test-requirements.txt --exists-action ignore
     python3 setup.py build
 }
 
