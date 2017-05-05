@@ -1,5 +1,5 @@
 pkgname=pdftag
-pkgver=20170208+2+g967e24d
+pkgver=0+3+g8c572e9
 pkgrel=1
 pkgdesc="A simple metadata editor for PDFs"
 arch=(i686 x86_64)
@@ -12,10 +12,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  _date=$(git show --format="%cd" --date=format:"%Y%m%d" --no-patch)
   _count=$(git rev-list --count HEAD)
   _commit=$(git rev-parse --short HEAD)
-  echo $_date+$_count+g$_commit
+  echo 0+$_count+g$_commit
 }
 
 build() {
