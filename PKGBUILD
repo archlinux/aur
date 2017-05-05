@@ -1,7 +1,7 @@
 
 # Maintainer: David Mazieres
 pkgname=muchsync
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="synchronize notmuch mail across machines"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="http://www.muchsync.org/"
 license=('GPL')
 depends=(notmuch sqlite3 openssl openssh)
 source=("http://www.$pkgname.org/src/$pkgname-$pkgver.tar.gz")
-md5sums=('7aa42de3c473fa6eea4f6b2d7e12e5de')
+md5sums=('8586459c2fed77de1b5b46d0fbf31b02')
 
 prepare() {
 	cd "$pkgname-$pkgver"
