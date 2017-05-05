@@ -1,8 +1,8 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/palopezv>
 pkgname=brave
-pkgver=0.15.1
-pkgrel=3
+pkgver=0.15.2
+pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
@@ -17,7 +17,7 @@ source=("browser-laptop-"$pkgver"dev.tar.gz::https://github.com/brave/browser-la
 build() {
 	cd "$srcdir"/browser-laptop-"$pkgver"dev
 
-	npm install extract-zip@1.6.0
+	#npm install extract-zip@1.6.0
 
 	npm install
 	CHANNEL=dev npm run build-package
@@ -165,4 +165,4 @@ END
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
-md5sums=('fa225de64a360d0efd3e7745b4252ba1')
+md5sums=('4813bcfcf4353acf7fe1e06de0e7ef30')
