@@ -1,7 +1,7 @@
 # Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 _pkgname=grive-indicator
 pkgname=$_pkgname-git
-pkgver=55.d4eaaa8
+pkgver=62.46d6aec
 pkgrel=1
 pkgdesc='A very simple and lightweight indicator applet to synchronize with Google Drive using grive'
 arch=('any')
