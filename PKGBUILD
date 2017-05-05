@@ -1,15 +1,16 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgbase=mingw-w64-gst-plugins-base-git
 pkgname=('mingw-w64-gst-plugins-base-git' 'mingw-w64-gst-plugins-base-git-vslib')
-pkgver=1.11.1.r24.6b5617c2a
+pkgver=1.12.0.r2.60e962986
 pkgrel=1
 _gitname=gst-plugins-base
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer-git' 'mingw-w64-orc')
+depends=('mingw-w64-gstreamer-git' 'mingw-w64-orc')
 makedepends=('git' 'mingw-w64-configure' 'mingw-w64-tools' 'mingw-w64-opus' 'mingw-w64-libvorbis' 'mingw-w64-pango' 'mingw-w64-libtheora' 'mingw-w64-libvisual')
+optdepends=('mingw-w64-gst-plugins-base-git-vslib: Visual Studio import lib')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-base')
 
