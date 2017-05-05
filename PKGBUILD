@@ -1,13 +1,13 @@
 # Maintainer: Severus <severus@theslinux.org>
 
 pkgname=jmeter
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 arch=('any')
 pkgdesc="A Java desktop application designed to load test functional behavior and measure performance"
 url="http://jmeter.apache.org/"
 license=("apache")
-depends=("java-environment>=6")
+depends=("java-environment>=8")
 options=('!strip')
 
 source=("http://www.us.apache.org/dist//jmeter/binaries/apache-${pkgname}-${pkgver}.tgz"{,.asc})
