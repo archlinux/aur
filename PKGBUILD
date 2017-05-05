@@ -1,21 +1,23 @@
 # Maintainer: Charlie Li <vishwin AT vishwin POINT info>
 
 pkgname=cockroachdb
-pkgver=20170420
+_basever=1.0
+pkgver=${_basever}rc2
 pkgrel=1
+epoch=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
 url="https://www.cockroachlabs.com/"
 license=('Apache')
 depends=('gcc-libs>=6.0')
 makedepends=('gcc>=6.0' 'git>=1.8' 'go' 'make' 'cmake')
-source=("${pkgname}::git+https://github.com/cockroachdb/cockroach.git#tag=beta-${pkgver}")
+source=("git+https://github.com/cockroachdb/cockroach.git#tag=v${_basever}-rc.2")
 sha256sums=('SKIP')
 
 prepare() {
 	export GOPATH=$(pwd)/go
 	mkdir -p ${GOPATH}/src/github.com/cockroachdb
-	cp -r ${pkgname} ${GOPATH}/src/github.com/cockroachdb/cockroach
+	cp -r cockroach ${GOPATH}/src/github.com/cockroachdb
 }
 
 build() {
