@@ -4,17 +4,18 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=git-extras
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, commit counting, repl, changelog population and more"
-arch=(any)
+arch=('any')
 url="https://github.com/tj/${pkgname}"
-license=('custom:MIT')
+license=('MIT')
 depends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('53668af26c58e7866addbd2b14b29f63ee39029bdcee5f48957c4a958bdb225f')
+sha256sums=('25e608ba17b49d38e1f1f9938cceb9a7406f4e2a5e9488898c193e82ac42e3be')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" PREFIX=/usr SYSCONFDIR=/etc install
+    cd "$srcdir/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" PREFIX=/usr SYSCONFDIR=/etc install
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
