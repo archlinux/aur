@@ -7,7 +7,7 @@ _pkgname=doublecmd
 pkgver=0.8.0.svn.r7524
 _pkgver=0.8.0~0+svn7524-0
 pkgrel=1
-pkgdesc="Double Commander is a cross platform open source file manager with two panels side by side. It is inspired by Total Commander and features some new ideas."
+pkgdesc="A file manager with two panels side by side"
 arch=('i686' 'x86_64')
 url='http://doublecmd.sourceforge.net'
 # https://launchpad.net/~alexx2000/+archive/doublecmd-svn
