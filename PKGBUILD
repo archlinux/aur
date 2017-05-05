@@ -1,19 +1,18 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-display
-pkgver=0.1.2.1
+pkgver=0.1.3
 pkgrel=1
-pkgdesc='Display plug for Switchboard'
+pkgdesc='Switchboard Display Plug'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/switchboard-plug-display'
+url='https://github.com/elementary/switchboard-plug-display'
 license=('GPL3')
 groups=('pantheon')
-depends=('cairo' 'clutter' 'clutter-gtk' 'glib2' 'glibc' 'gnome-desktop' 'gtk3'
-         'libgee'
+depends=('glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
 makedepends=('cmake' 'switchboard' 'vala')
-source=("https://launchpad.net/switchboard-plug-display/loki/${pkgver}/+download/switchboard-plug-display-${pkgver}.tar.xz")
-sha256sums=('0ca61460f3f058b5c68c1db6685244994aaa7cc2e0a25a2eb9af80b11d98add3')
+source=("switchboard-plug-display-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-display/archive/${pkgver}.tar.gz")
+sha256sums=('70e2568d2665952741fb08f79ebb18adac0c7ce7b42abb847cddb1657563d97e')
 
 prepare() {
   cd switchboard-plug-display-${pkgver}
