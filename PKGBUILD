@@ -1,14 +1,14 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgbase=mingw-w64-gst-plugins-bad-git
 pkgname=('mingw-w64-gst-plugins-bad-git' 'mingw-w64-gst-plugins-bad-git-vslib')
-pkgver=1.11.1.r66.9b778f726
-pkgrel=2
+pkgver=1.12.0.r6.b63fb59a1
+pkgrel=1
 _gitname=gst-plugins-bad
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer-git' 'mingw-w64-orc')
+depends=('mingw-w64-gstreamer-git' 'mingw-w64-orc')
 makedepends=('git' 'mingw-w64-configure' 'mingw-w64-tools' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0')
 optdepends=('mingw-w64-gst-plugins-bad-git-vslib: Visual Studio import lib')
 options=('!strip' '!buildflags' 'staticlibs')
@@ -38,7 +38,15 @@ build() {
     ${_arch}-configure \
       --with-package-name="GStreamer Bad Plugins (Arch Linux)" \
       --with-package-origin="http://www.archlinux.org/" \
-      --disable-examples \
+      --disable-examples --disable-examples --disable-videomaxrate --disable-festival \
+      --disable-celt -disable-directfb --disable-dirac --disable-flite \
+      --disable-gme --disable-ladspa --disable-lv2 --disable-mimic \
+      --disable-modplug --disable-mpeg2enc --disable-mplex \
+      --disable-musepack --disable-mythtv --disable-neon --disable-ofa \
+      --disable-openal --disable-pvr --disable-sdl --disable-sndfile \
+      --disable-teletextdec --disable-timidity --disable-vdpau \
+      --disable-voamrwbenc --disable-wildmidi --disable-xvid \
+      --disable-zbar --disable-sdi --disable-qt
 
     # https://bugzilla.gnome.org/show_bug.cgi?id=655517
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
