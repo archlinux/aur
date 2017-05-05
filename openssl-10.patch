@@ -1,0 +1,14 @@
+--- old/src/Native/Unix/System.Security.Cryptography.Native/CMakeLists.txt      2017-02-22 11:42:11.000000000 -0500
++++ new/src/Native/Unix/System.Security.Cryptography.Native/CMakeLists.txt      2017-05-02 10:21:51.509451435 -0400
+@@ -17,6 +17,11 @@
+ 
+ find_package(OpenSSL REQUIRED)
+ 
++include_directories(
++  SYSTEM
++  ${OPENSSL_INCLUDE_DIR}
++)
++
+ set(NATIVECRYPTO_SOURCES
+     openssl.c
+     pal_asn1.cpp

@@ -2,7 +2,7 @@
 
 pkgname=dotnet
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides the .NET core shared framework, i.e. coreclr and corefx."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -25,6 +25,7 @@ source=(
   'llvm-39-move.patch'
   'lttng-uts-40.patch'
   'clang-4-patchset.patch'
+  'openssl-10.patch'
 )
 sha256sums=('450ffcc9a68eef2e157419d4cc354deb618f80d3f1816fd0c8c99460718dbd85'
             '83c37233ebe4d37f7c7ff5c7a91c8242704a6526c27c4c59a4967ad67e634c2e'
@@ -32,7 +33,8 @@ sha256sums=('450ffcc9a68eef2e157419d4cc354deb618f80d3f1816fd0c8c99460718dbd85'
             '581d6484626bbae820feb19d0613955fea333c025fb06d43a731a3db776686f7'
             '84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d'
             'd7c6bbc24e8464dcfb4fd86cb76fa3a55f4822f5e8196e41a2c39650432aa401'
-            '2b884b4cd850027f95cba5deda32226e27ceaa962f0ab2879adc5180cf37c32a')
+            '2b884b4cd850027f95cba5deda32226e27ceaa962f0ab2879adc5180cf37c32a'
+            'b1d3aa07a17bd7d21bc456bf5bf9c612ff97a24980de1b93bb3fffde6584c643')
 
 prepare() {
   cd "${srcdir}/coreclr-${pkgver}"
@@ -40,9 +42,15 @@ prepare() {
   patch -p1 < "${srcdir}/llvm-39-move.patch"
   patch -p0 < "${srcdir}/lttng-uts-40.patch"
   patch -p1 < "${srcdir}/clang-4-patchset.patch"
+  cd "${srcdir}/corefx-${pkgver}"                                                                                                                                                                                      
+  patch -p1 < "${srcdir}/openssl-10.patch"
 }
 
 build() {
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+  export _OPENSSL_INCLUDEDIR=/usr/include/openssl-1.0/
+  export _OPENSSL_LIBDIR=/usr/lib/openssl-1.0/
+
   cd "${srcdir}/coreclr-${pkgver}"
   ./build.sh x64 release skiptests
 
