@@ -22,11 +22,11 @@ sha256sums=('5ecc4981ce7e5e5020fe207bf0cdc7ea3b7c307916ea247d18a58edc48ea822f')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
+    sudo pip3 install -r requirements.txt -r test-requirements.txt --exists-action i
 }
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-    sudo pip3 install -r requirements.txt -r test-requirements.txt --exists-action i
     python3 setup.py build
 }
 
