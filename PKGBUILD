@@ -1,6 +1,6 @@
 # Maintainer: Elimpfor <aur@s403.33mail.com>
 pkgname=opmsg
-pkgver=1.75s
+pkgver=1.76s
 _pkgver=rel-"${pkgver}"-newskey2
 pkgrel=1
 epoch=
@@ -10,7 +10,7 @@ url="https://github.com/stealth/opmsg"
 license=('GPL3')
 depends=('openssl')
 source=("https://github.com/stealth/${pkgname}/archive/${_pkgver}.tar.gz")
-sha1sums=('9959faa3b3f07d55abd769d1ad5427be331893e6')
+sha1sums=('5117551e26f9b9dbbccca62049589c53dbf17053')
 conflicts=('opmsg-git')
 
 build() {
