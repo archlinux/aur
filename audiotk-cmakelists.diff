@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f273543..c698cdc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -158,7 +158,7 @@ else(WIN32)
+   else(COMPILER_SUPPORTS_ftpz)
+     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} doesn't support -fdenormal-fp-math=positive-zero.")
+   endif(COMPILER_SUPPORTS_ftpz)
+-  
++
+   CHECK_CXX_COMPILER_FLAG("-ftree-vectorize -ftree-vectorizer-verbose=2" COMPILER_SUPPORTS_ftree_vectorize)
+   if(COMPILER_SUPPORTS_ftree_vectorize)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftree-vectorize -ftree-vectorizer-verbose=2")
+@@ -334,7 +334,7 @@ endif(ENABLE_PYTHON)
+ 
+ IF (BUILD_DOC)
+ 
+-  FIND_PACKAGE(Doxygen Required)
++  FIND_PACKAGE(Doxygen REQUIRED)
+ 
+   SET(DOXYGEN_INPUT Doxyfile)
+   SET(DOXYGEN_OUTPUT Doxygen)

@@ -2,7 +2,7 @@
 
 _pkgname=audiotk
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r808.0af35fc
+pkgver=2.0.2.r1502.305ee21
 pkgrel=1
 pkgdesc="A C++ library plus Python 3 bindings with a set of audio filters (git version)"
 arch=('i686' 'x86_64')
@@ -10,17 +10,19 @@ license=('BSD')
 url='https://github.com/mbrucher/AudioTK'
 depends=('fftw' 'libsndfile' 'python')
 makedepends=('git' 'cmake')
-source=("${_pkgname}::git+https://github.com/mbrucher/AudioTK.git")
+source=("${_pkgname}::git+https://github.com/mbrucher/AudioTK.git"
+        'audiotk-cmakelists.diff')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '9ba195731f5d64b58e668639b7e0bfe8')
 
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  version="$(git describe --tags | sed -e 's/^[^-]*-//;s/-.*//')"
-  revision=$(git rev-list --count HEAD)
-  hash=$(git rev-parse --short HEAD)
+  local version="$(grep ^PROJECT_NUMBER Doxyfile | awk '{ print $3 }')"
+  local revision=$(git rev-list --count HEAD)
+  local hash=$(git rev-parse --short HEAD)
   echo $version.r$revision.$hash
 }
 
@@ -33,6 +35,7 @@ prepare() {
 
   mkdir build
   git checkout develop
+  patch -p1 -i "${srcdir}/audiotk-cmakelists.diff"
 }
 
 build() {
@@ -45,8 +48,15 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_PYTHON=1 \
     -DPYTHON_INSTALL_FOLDER=/usr/lib/python${py_ver} \
-    -DENABLE_TESTS=1
-  make DESTDIR="${pkgdir}"
+    -DENABLE_TESTS=1 \
+    -DBUILD_DOC=1
+  make
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}/build"
+
+  make test
 }
 
 package() {
