@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-sound
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Wingpanel Sound Indicator'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('cmake' 'intltool' 'vala' 'wingpanel')
 source=("wingpanel-indicator-sound-${pkgver}.tar.gz::https://github.com/elementary/wingpanel-indicator-sound/archive/${pkgver}.tar.gz")
-sha256sums=('0419476e767c9e01fbc639f307b54ba443a4fe9d8e18bb980b9454dcc4458e93')
+sha256sums=('680617e07ec4fc6b0c21f028b12a7cd4a2cb6fcc387f67c5ac73bb8545fd0f80')
 
 prepare() {
   cd wingpanel-indicator-sound-${pkgver}
