@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/src/code.gitea.io/${pkgname}
-  GOPATH="${srcdir}" make DESTDIR="${pkgdir}" clean generate build
+  GOPATH="${srcdir}" make DESTDIR="${pkgdir}" TAGS="sqlite tidb pam" clean generate build
 }
 
 package() {
