@@ -1,12 +1,13 @@
 # Maintainer: Super Bo <supernbo@gmail.com>
 pkgname=nerd-fonts-complete
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="collection of over 20 patched fonts (complete variant) for powerline, devicons, and vim-devicons: includes Droid Sans, Meslo, AnonymousPro, ProFont, Inconsolta, and many more"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
+makedepends=('wget')
 conflicts=(nerd-fonts-git)
 install=$pkgname.install
 source=("$pkgname.links"
@@ -23,10 +24,10 @@ prepare() {
 }
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/OTF
-    install -d ${pkgdir}/usr/share/fonts/TTF
-    install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -Dm644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/OTF
-    install -Dm644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF
-    install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
+	install -d ${pkgdir}/usr/share/fonts/OTF
+	install -d ${pkgdir}/usr/share/fonts/TTF
+	install -d ${pkgdir}/usr/share/licenses/${pkgname}
+	install -Dm644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/OTF
+	install -Dm644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF
+	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 }
