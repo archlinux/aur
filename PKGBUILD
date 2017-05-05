@@ -1,6 +1,6 @@
 # Contributor: Florian Ziegler <zieglerflorian fastmail fm>
 pkgname=grml2usb
-pkgver=0.14.13
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Installs one or multiple grml ISOs on an USB device - contains grml2iso"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('python2' 'bash')
 optdepends=('cdrkit: creating multiboot ISOs with grml2iso')
 source=(deb_package_${pkgver}_${pkgrel}_amd64.deb::http://deb.grml.org/pool/main/g/grml2usb/${pkgname}_${pkgver}_amd64.deb)
 noextract=(deb_package_${pkgver}_${pkgrel}_amd64.deb deb_package_${pkgver}_${pkgrel}_amd64.deb)
-md5sums=('4681f99b4ca432c30e2fec9935724441')
+md5sums=('49a5d6893dbcd2627a4200dc9d9a31d4')
 
 package() {
   cd "$srcdir"
