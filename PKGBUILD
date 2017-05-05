@@ -1,7 +1,7 @@
 # Maintainer: Adhityaa Chandrasekar <c.adhityaa@gmail.com>
 pkgname=coala
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A unified command-line interface for linting and fixing all your code, regardless of the programming languages you use."
 arch=('any')
 url="https://coala.io/"

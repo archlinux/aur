@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+makepkg --printsrcinfo > .SRCINFO
+git add -A
+git commit -m "Update"
+git push aur
