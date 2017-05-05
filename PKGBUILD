@@ -1,4 +1,4 @@
-# Maintainer: Max Liebkies <mail at maxliebkies dot de>
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 
 pkgname=dotnet-fixed
 pkgver=1.1.1
