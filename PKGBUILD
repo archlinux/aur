@@ -12,7 +12,7 @@
 pkgname=lwks
 lwksver=14.0.0
 pkgver=$lwksver
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 options=('!strip')
@@ -25,11 +25,13 @@ conflicts=('lightworks', 'lwks-beta')
 source=(
     "http://downloads.lwks.com/v14/lwks-$lwksver-amd64.deb"
     "http://pep20.net/static/portaudio-19_20140130-3-x86_64.pkg.tar.xz"
+    "wayland_and_openssl.patch"
     )
 
 sha256sums=(
     '66eb9f9678d979db76199f1c99a71df0ddc017bb47dfda976b508849ab305033'
     '1c6722888cf4ab5cbf4bdfd6272b7d524f0ee547f443a98cf554d6fa8ae5c1ca'
+    'ad6cb0cc7bd2e7d11dc5a898a5af10615e6d2d797aade46f0cdbea89321a395f'
     )
 
 package() {
@@ -43,6 +45,9 @@ package() {
     msg2 "Moving udev folder from /lib to /usr/lib"
     mv "$pkgdir"/lib/udev "$pkgdir"/usr/lib
     rmdir "$pkgdir"/lib
+
+    msg2 "Applying Wayland & OpenSSL 1.0 patch"
+    patch -Np3 -d "$pkgdir" -i "$srcdir/wayland_and_openssl.patch"
 
     msg2 "Copying copyright file and creating a license dir"
     install -Dm644 "$pkgdir"/usr/share/doc/lightworks/copyright \
