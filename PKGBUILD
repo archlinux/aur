@@ -12,7 +12,7 @@ if $build_kernel_modules; then
     _linux_next=4.11
     pkgname+=('razer-driver-arch-git')
 fi
-pkgver=1.1.12.r0.ga8f97b9
+pkgver=1.1.12.r2.ge6a2531
 pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux. (Git version)"
 arch=('any')
@@ -44,7 +44,7 @@ package_python-razer-git() {
 
 package_razer-daemon-git() {
   pkgdesc="Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use. (Git version)"
-  depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3')
+  depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3' 'dbus-glib')
   # gtk3 for "gi.require_version('Gdk', '3.0')"
   provides=('razer-daemon')
   conflicts=('razer-daemon')
