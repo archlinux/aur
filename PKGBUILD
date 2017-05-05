@@ -2,13 +2,14 @@
 
 pkgname=xed-git
 _pkgbasename=xed
-pkgver=1.0.6.r0.g41fb3ba
+pkgver=1.4.0.r3.gcca4b0b
 pkgrel=1
 pkgdesc="A small and lightweight text editor. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gtksourceview3' 'enchant' 'desktop-file-utils' 'libsm')
-makedepends=('git' 'gnome-common' 'iso-codes')
+depends=('gtksourceview3' 'enchant' 'desktop-file-utils' 'libsm'
+        'libpeas')
+makedepends=('git' 'gnome-common' 'iso-codes' 'gobject-introspection')
 provides=($_pkgname)
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/xed'
