@@ -1,0 +1,27 @@
+--- a/cpp/src/rpc/client.cpp	2015-03-12 13:43:08.000000000 +0100
++++ b/cpp/src/rpc/client.cpp	2017-05-05 11:51:09.300379804 +0200
+@@ -357,19 +357,20 @@
+   }
+ 
+   bool override = false;
+-  if (sctx->error != 0) {
++  int err = X509_STORE_CTX_get_error(sctx);
++  if (err != 0) {
+     if (Logging::log->loggingActive(LEVEL_DEBUG)) {
+       Logging::log->getLog(LEVEL_DEBUG) << "OpenSSL verify error: "
+-          << sctx->error << endl;
++          << err << endl;
+     }
+     
+     // Ignore error if verification is turned off in general or the error has
+     // been disabled specifically.
+     if (!ssl_options->verify_certificates() ||
+-        ssl_options->ignore_verify_error(sctx->error)) {
++        ssl_options->ignore_verify_error(err)) {
+       if (Logging::log->loggingActive(LEVEL_WARN)) {
+         Logging::log->getLog(LEVEL_WARN) << "Ignoring OpenSSL verify error: "
+-            << sctx->error << " because of user settings." << endl;
++            << err << " because of user settings." << endl;
+       }
+       override = true;
+     }

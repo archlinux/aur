@@ -1,0 +1,20 @@
+XTREEMFS_GENERATE_UUID_SCRIPT="/etc/xos/xtreemfs/generate_uuid"
+
+post_install() {
+  if ! getent passwd xtreemfs >/dev/null
+  then
+    useradd -r -U -d /var/lib/xtreemfs -s /sbin/nologin xtreemfs
+  fi
+
+  chown -R xtreemfs:xtreemfs /var/lib/xtreemfs
+  chown -R xtreemfs:xtreemfs /var/log/xtreemfs
+  chown -R :xtreemfs /etc/xos/xtreemfs
+
+  if [ -x "$XTREEMFS_GENERATE_UUID_SCRIPT" ]; then
+      for conf in /etc/xos/xtreemfs/*.properties; do
+          "$XTREEMFS_GENERATE_UUID_SCRIPT" "$conf"
+      done
+  else
+      echo "UUID can't be generated automatically. Please enter a correct UUID in each config file of an XtreemFS service."
+  fi
+}

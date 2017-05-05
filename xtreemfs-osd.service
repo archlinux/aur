@@ -1,0 +1,14 @@
+[Unit]
+Description=XtreemFS Object Storage Device (OSD) service
+Requires=network.target
+After=network.target local-fs.target
+
+[Service]
+Type=simple
+Environment=CLASSPATH=/usr/share/java/XtreemFS.jar:/usr/share/java/BabuDB.jar:/usr/share/java/Flease.jar:/usr/share/java/protobuf-java-2.5.0.jar:/usr/share/java/Foundation.jar:/usr/share/java/jdmkrt.jar:/usr/share/java/jdmktk.jar:/usr/share/java/commons-codec-1.3.jar
+ExecStart=/usr/bin/java -ea org.xtreemfs.osd.OSD /etc/xos/xtreemfs/osdconfig.properties
+User=xtreemfs
+Group=xtreemfs
+
+[Install]
+WantedBy=multi-user.target
