@@ -7,3 +7,4 @@ Comment=Test automation server for web applications
 Exec=java -jar /usr/share/selenium-server/selenium-server-standalone.jar
 X-GNOME-Autostart-enabled=true
 X-KDE-autostart-after=panel
+Hidden=true
