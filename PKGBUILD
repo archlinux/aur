@@ -36,8 +36,6 @@ sha256sums=('d5daf1a6522c4738628ebcfd8cd8984caf3259de0ad99b1fdd4d92bfbba26f7d')
 package_python-razer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
   depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
-  optdepends=('polychromatic: gtk frontend'
-              'razercommander-git: gtk frontend')
   if [ -z $_commit ]; then
     cd $srcdir/$pkgbase-$pkgver
   else
@@ -77,6 +75,9 @@ package_razer-driver-dkms() {
 package_openrazer-meta() {
   pkgdesc="Meta package for installing all required openrazer packages."
   depends=('razer-driver-dkms' 'razer-daemon' 'python-razer')
+  optdepends=('polychromatic: frontend'
+              'razergenie: qt frontend'
+              'razercommander: gtk frontend')
  }
 
 if $build_kernel_modules; then
