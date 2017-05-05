@@ -2,11 +2,11 @@
 
 pkgname=bit-babbler
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='BitBabbler hardware TRNG and kernel entropy source support'
 arch=('i686' 'x86_64')
 license=('GPL2')
-url='http://www.bitbabbler.org'
+url='http://www.bitbabbler.org/what.html'
 depends=('libusb>=1.0')
 optdepends=('munin: monitoring support')
 source=("${url}/downloads/${pkgname}_${pkgver}.tar.gz"
