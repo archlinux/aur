@@ -3,16 +3,18 @@
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python2-pytorch")
 _pkgname="pytorch"
-pkgver=0.1.10
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="http://pytorch.org"
 license=('BSD')
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools' 'gcc5' 'cmake')
+makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools'
+             'python-yaml' 'python2-yaml' 'python-numpy' 'python2-numpy'
+             'gcc5' 'cmake')
 depends=('cuda' 'cudnn')
 source=("https://github.com/pytorch/pytorch/archive/v${pkgver}.tar.gz")
-sha256sums=('8ca58a7ab55b65bce804bf7acd55369412b6fcdc08daa4bafafb4e10c403202e')
+sha256sums=('ace32cc277c2f59b1e496e326bf504d800061edde9b6c2af29bbb2f08728ca30')
 
 
 prepare() {
