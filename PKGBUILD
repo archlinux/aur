@@ -10,7 +10,7 @@ url='https://projects.kde.org/projects/kde/workspace/discover'
 license=(LGPL)
 depends=(knewstuff kdeclarative kitemmodels qt5-graphicaleffects appstream-qt archlinux-appstream-data
          hicolor-icon-theme kirigami2)
-makedepends=(extra-cmake-modules-git git python plasma-framework)
+makedepends=(extra-cmake-modules-git git python plasma-framework packagekit-qt5)
 optdepends=('packagekit-qt5: To install packages from Arch repositories')
 conflicts=(muon discover muon-git)
 provides=(discover)

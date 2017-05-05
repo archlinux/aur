@@ -11,6 +11,7 @@ pkgbase = discover-git
 	makedepends = git
 	makedepends = python
 	makedepends = plasma-framework
+	makedepends = packagekit-qt5
 	depends = knewstuff
 	depends = kdeclarative
 	depends = kitemmodels
