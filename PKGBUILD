@@ -12,7 +12,6 @@ depends=(
         )
 makedepends=(
                 'python-setuptools'
-                'python-pip'
             )
 source=("https://pypi.io/packages/source/u/unidiff/unidiff-$pkgver.tar.gz")
 sha256sums=('79b4be3e5479dfc6d77747d23ec98200559ca6a842fad1f92c2a7eb56b99195b')
