@@ -3,7 +3,7 @@
 
 pkgname=radeontop
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Radeon cards monitoring utility"
 arch=('i686' 'x86_64')
 url="https://github.com/clbr/radeontop"
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make
+	amdgpu=1 make
 }
 
 package() {
