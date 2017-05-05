@@ -15,7 +15,7 @@ source=("$pkgname"
         "${pkgname}.desktop")
 noextract=("${pkgname}-$pkgver.jar")
 sha256sums=('35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0'
-            'SKIP'
+            '59817d8140907cd29dbedfbfba2b9dd39cf1726e58c019b5eed04951621a0b5e'
             '4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d')
 
 package() {
