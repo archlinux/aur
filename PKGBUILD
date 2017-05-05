@@ -1,18 +1,18 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-keyboard
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
-pkgdesc='Keyboard indicator for Wingpanel'
+pkgdesc='Wingpanel Keyboard Indicator'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/wingpanel-indicator-keyboard'
+url='https://github.com/elementary/wingpanel-indicator-keyboard'
 license=('GPL3')
 groups=('pantheon')
-depends=('glib2' 'glibc' 'gtk3'
+depends=('glib2' 'glibc' 'gtk3' 'libxml2'
          'libwingpanel-2.0.so')
 makedepends=('cmake' 'vala' 'wingpanel')
-source=("https://launchpad.net/wingpanel-indicator-keyboard/loki/${pkgver}/+download/wingpanel-indicator-keyboard-${pkgver}.tar.xz")
-sha256sums=('cca969cda9100a490de35bee4beb3da0fff8b0a35e2cf6b1d390c0b3d687f245')
+source=("wingpanel-indicator-keyboard-${pkgver}.tar.gz::https://github.com/elementary/wingpanel-indicator-keyboard/archive/${pkgver}.tar.gz")
+sha256sums=('c42b8a27326ff3034b2d852eba422f8c6ca21b131a98e43a66ef04ce7d40e868')
 
 prepare() {
   cd wingpanel-indicator-keyboard-${pkgver}
