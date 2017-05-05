@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgbase=mingw-w64-gstreamer-git
 pkgname=('mingw-w64-gstreamer-git' 'mingw-w64-gstreamer-git-vslib') 
-pkgver=1.11.1.r17.ef42e3811
+pkgver=1.12.0.r10.c8f8395f4
 pkgrel=1
 _gitname=gstreamer
 pkgdesc="GStreamer Multimedia Framework (mingw-w64)"
