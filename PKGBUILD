@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-editing-services-git
-pkgver=1.11.1.r6.7ba2c22c
+pkgver=1.12.0.r1.7d5b3ca7
 pkgrel=1
 _gitname=gst-editing-services
 pkgdesc="GStreamer editing services (mingw-w64)"
