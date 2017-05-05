@@ -33,8 +33,8 @@ build() {
   cd "$_pkgname"
 
   export QUPZILLA_PREFIX="/usr/"
-  export QUPZILLA_PLUGINS_SRCDIR="$srcdir/qupzilla-plugins/plugins"
   export QUPZILLA_SRCDIR="$srcdir/qupzilla"
+  export QUPZILLA_PLUGINS_SRCDIR="$srcdir/qupzilla-plugins/plugins"
 
   export USE_WEBGL=true
   export KDE_INTEGRATION=true
