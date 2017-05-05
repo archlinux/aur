@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-keyboard-git
-pkgver=r97.07682cb
+pkgver=r99.7e9d9ee
 pkgrel=1
 pkgdesc='Keyboard indicator for Wingpanel'
 arch=('i686' 'x86_64')
@@ -11,6 +11,8 @@ groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libxml2'
          'libwingpanel-2.0.so')
 makedepends=('cmake' 'git' 'granite-git' 'vala' 'wingpanel-git')
+provides=('wingpanel-indicator-keyboard')
+conflicts=('wingpanel-indicator-keyboard')
 source=("git+https://github.com/elementary/wingpanel-indicator-keyboard.git")
 sha256sums=('SKIP')
 
