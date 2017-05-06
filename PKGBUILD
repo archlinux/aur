@@ -28,8 +28,6 @@ sha256sums_i686=('771195d2cd48a56ee70b2826fa1c008fed8925ad29dddd46fff155e6d474e7
 sha256sums_x86_64=('e1f77f5c1eaa479395a62106db0ec4b3aa0df45d428ebe790982159ec6f55283')
 
 prepare() {
-  cd "$srcdir"
-
   case $CARCH in
     i686)
       bsdtar -xf Gemalto_Middleware_Ubuntu_32bit_${pkgver/_/-}.deb;;
@@ -41,9 +39,16 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/Gemalto_Middleware_Ubuntu_64bit_7.0.0-b08"
+  case $CARCH in
+    i686)
+      cd Gemalto_Middleware_Ubuntu_32bit_${pkgver/_/-};;
+    x86_64)
+      cd Gemalto_Middleware_Ubuntu_64bit_${pkgver/_/-};;
+  esac
 
   cp -a etc usr "$pkgdir"/
+
+  # now clean up the mess
 
   cd "$pkgdir"
 
