@@ -3,7 +3,7 @@
 
 pkgname=nx3-all
 pkgver=3.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="NoMachine nxclient, nxnode, and nxserver in one package (version 3.x which includes virtual desktop support)"
 arch=('i686' 'x86_64')
 url="https://www.nomachine.com/"
@@ -28,7 +28,7 @@ source_i686=("http://url.muflone.com/nxclient-3.5.0-7.i386.tar.gz"
 source_x86_64=("http://url.muflone.com/nxclient-3.5.0-7.x86_64.tar.gz"
                "http://url.muflone.com/nxnode-3.5.0-9.x86_64.tar.gz"
                "http://url.muflone.com/nxserver-3.5.0-11.x86_64.tar.gz")
-sha256sums=('5a0e12259c0634b9445804e6a19dfc92fa67e5fc0cf22805e4d0778413fd16e8'
+sha256sums=('SKIP'
             '5ffb4b9981b305ed1dbd2cc24589607d585ece95f8739d84026e05c6909e9a7a'
             '7e284776f876b5a65a478b7dca5e056284c6dcf31d070a970e2898de94df1100'
             'e32ff6b79c5bace2faf63bf9e333f66b3c283e5641c08abaf55ffef5be83a997'
