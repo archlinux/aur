@@ -2,7 +2,7 @@
 # Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-next-git
-pkgver=0.2.7.r100.gc9afda4
+pkgver=0.2.7.r164.g22036ae
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver"
@@ -33,14 +33,11 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-VCS}"
 
-  install -dm755 "$pkgdir/opt/ckb/ckb-animations"
-  install -Dm755 bin/ckb{,-daemon} "$pkgdir/opt/ckb/"
-  install -D bin/ckb-animations/* "$pkgdir/opt/ckb/ckb-animations/"
-
   install -dm755 "$pkgdir/usr/bin"
-  ln -s /opt/ckb/ckb "$pkgdir/usr/bin/"
-  ln -s /opt/ckb/ckb-daemon "$pkgdir/usr/bin/"
-  
+  install -dm755 "$pkgdir/usr/lib/ckb-animations"
+  install -Dm755 bin/ckb{,-daemon} "$pkgdir/usr/bin/"
+  install -D bin/ckb-animations/* "$pkgdir/usr/lib/ckb-animations/"
+
   install -Dm644 usr/ckb.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ckb.png"
   install -Dm644 usr/ckb.desktop "${pkgdir}/usr/share/applications/ckb.desktop"
 
