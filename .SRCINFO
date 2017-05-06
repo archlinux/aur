@@ -1,7 +1,7 @@
 pkgbase = bareos-x11
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
 	pkgver = 16.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = bareos-x11
 	source = git+https://github.com/bareos/bareos.git#tag=Release/16.2.4
 	source = PKGBUILD.common
 	sha256sums = SKIP
-	sha256sums = b8c2f27f4cb6c49dc63f6998188ee3a307f3ad7a7dc633c4890404da2890d665
+	sha256sums = fad5eef1cf2fd6b9802f082bce2803b3b3a0eadb58b5da9afea2484a068e134c
 
 pkgname = bareos-traymonitor
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Tray Monitor (QT)
