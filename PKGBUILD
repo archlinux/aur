@@ -1,0 +1,36 @@
+# Maintainer: Breizh <breizh.craft.98@openmailbox.org>
+pkgname=zest-writer
+pkgver=1.7.1
+pkgrel=1
+pkgdesc="An offline editor for Zeste de Savoir"
+arch=('i686' 'x86_64')
+url="https://github.com/firm1/zest-writer"
+license=('GPL3')
+groups=()
+depends=('gtk2' 'ffmpeg' 'libxslt')
+makedepends=('jdk8-openjdk java-openjfx')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/firm1/${pkgname}/archive/${pkgver}.tar.gz")
+noextract=()
+md5sums=('d0ac7d0b67cbb54f52d2606eba810177')
+validpgpkeys=()
+
+build() {
+        cd "$pkgname-$pkgver"
+        ./gradlew assemble
+}
+
+package() {
+        mkdir -p "$pkgdir/opt"
+        mkdir -p "$pkgdir/usr/bin"
+        cp -a "$pkgname-$pkgver/build/distributions/ZestWriter" "$pkgdir/opt/"
+        ln -s "/opt/ZestWriter/ZestWriter" "$pkgdir/usr/bin/"
+}
