@@ -3,9 +3,9 @@
 _srcname=screencast
 pkgname=screencast-git
 pkgver=1.0.0.r0.g4e6a153
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface to record a X11 desktop (Git version)"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/bermond/screencast/"
 license=('GPL2')
 depends=('ffmpeg')
