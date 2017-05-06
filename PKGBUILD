@@ -7,8 +7,8 @@
 
 pkgbase=linux-xanmod-git
 _srcname=linux
-pkgver=4.10.14
-_tag=${pkgver}-xanmod16
+pkgver=4.11.0
+_tag=${pkgver}-xanmod1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
@@ -23,7 +23,7 @@ source=("git+https://github.com/xanmod/linux.git"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            'c7571fd6962a7e7085d65221b3dfce234cfbbed9fde666665cb1f48b734b4c26'
+            '5111ccd0a71b591c2e86fb49607035be1e09cc90c9b6472e31bf43e7dc2c7b7b'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 

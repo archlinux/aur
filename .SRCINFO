@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod-git
-	pkgver = 4.10.14
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = linux-xanmod-git
 	source = 99-linux.hook
 	source = linux-xanmod-git.preset
 	sha256sums = SKIP
-	sha256sums = c7571fd6962a7e7085d65221b3dfce234cfbbed9fde666665cb1f48b734b4c26
+	sha256sums = 5111ccd0a71b591c2e86fb49607035be1e09cc90c9b6472e31bf43e7dc2c7b7b
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
