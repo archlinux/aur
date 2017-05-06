@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("s=${pkgver}")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7dba775f7fdf6c8dc28ace8795e8f57c0b7dd6148f14fe4b17c5a4eb46b675ec')
+sha256sums=('8a5ba823d02f495dd1bb150882ddccd2bb082efff4c996b9b43e4cd5599d3df2')
 _gourl="github.com/zquestz/${pkgname}"
 
 build() {
