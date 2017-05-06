@@ -1,6 +1,6 @@
 pkgbase = schroot-hybris
 	pkgver = 1.6.10
-	pkgrel = 11
+	pkgrel = 14
 	url = http://packages.qa.debian.org/s/schroot.html
 	arch = i686
 	arch = x86_64

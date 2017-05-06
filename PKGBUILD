@@ -7,7 +7,7 @@ pkgbase=schroot-hybris
 _pkgbase=schroot
 pkgname=('schroot-hybris' 'schroot-droid')
 pkgver=1.6.10
-pkgrel=11
+pkgrel=14
 url="http://packages.qa.debian.org/s/schroot.html"
 license=('GPL3')
 makedepends=('boost' 'cppunit')
@@ -37,11 +37,11 @@ md5sums=('f8ec667831487f4b12e094bc0dc9bbe3'
 
 prepare() {
 	cd ${_pkgbase}-${pkgver}
-	patch -p1 -i ${srcdir}/fix-bash-completion.patch
-	cat $srcdir/debian/patches/series | while read p; do
-		patch -p1 -i $srcdir/debian/patches/$p
+	patch -p1 -i "${srcdir}"/fix-bash-completion.patch
+	cat "$srcdir"/debian/patches/series | while read p; do
+		patch -p1 -i "$srcdir"/debian/patches/$p
 	done
-	patch -p1 -i ${srcdir}/android-environment-schroot.patch
+	patch -p1 -i "${srcdir}"/android-environment-schroot.patch
 	./bootstrap
 }
 
@@ -84,25 +84,25 @@ package_schroot-hybris() {
 		'etc/schroot/arch32/nssdatabases')
 
 	cd ${_pkgbase}-${pkgver}
-	make DESTDIR=$pkgdir install
-	install -dm 755 ${pkgdir}/etc/schroot/arch32
-	install -m 644 ${srcdir}/arch32-{config,mount,copyfiles,nssdatabases} ${pkgdir}/etc/schroot/arch32
-	rename 'arch32-' '' ${pkgdir}/etc/schroot/arch32/*
-	install -m 644 ${srcdir}/arch32-example ${pkgdir}/etc/schroot/chroot.d/arch32.conf.example
-	patch -i ${srcdir}/pam.d.schroot.patch ${pkgdir}/etc/pam.d/schroot
+	make DESTDIR="$pkgdir" install
+	install -dm 755 "${pkgdir}"/etc/schroot/arch32
+	install -m 644 "${srcdir}"/arch32-{config,mount,copyfiles,nssdatabases} "${pkgdir}"/etc/schroot/arch32
+	rename 'arch32-' '' "${pkgdir}"/etc/schroot/arch32/*
+	install -m 644 "${srcdir}"/arch32-example "${pkgdir}"/etc/schroot/chroot.d/arch32.conf.example
+	patch -i "${srcdir}"/pam.d.schroot.patch "${pkgdir}"/etc/pam.d/schroot
 
-	install -dm 755 ${pkgdir}/usr/share/schroot/examples/
-	cp -a ${srcdir}/gls-common/schroot/android-example ${pkgdir}/usr/share/schroot/examples/android
+	install -dm 755 "${pkgdir}"/usr/share/schroot/examples/
+	cp -a "${srcdir}"/gls-common/schroot/android-example "${pkgdir}"/usr/share/schroot/examples/android
 }
 
 package_schroot-droid() {
 	pkgdesc="Allow user to interact with Android chroot easily"
 	depends=('schroot-hybris')
 
-	install -d ${pkgdir}/usr/bin
-	install -m 755 ${srcdir}/gls-common/schroot/sdroid ${pkgdir}/usr/bin/
+	install -d "${pkgdir}"/usr/bin
+	install -m 755 "${srcdir}"/gls-common/schroot/sdroid "${pkgdir}"/usr/bin/
 
-	install -d ${pkgdir}/usr/lib/tmpfiles.d/
-	install -m 644 ${srcdir}/gls-common/schroot/config/tmpfiles.d.schroot-droid.conf ${pkgdir}/usr/lib/tmpfiles.d/schroot-droid.conf
+	install -d "${pkgdir}"/usr/lib/tmpfiles.d/
+	install -m 644 "${srcdir}"/gls-common/schroot/config/tmpfiles.d.schroot-droid.conf "${pkgdir}"/usr/lib/tmpfiles.d/schroot-droid.conf
 
 }
