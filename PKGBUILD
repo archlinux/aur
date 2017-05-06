@@ -10,7 +10,7 @@ pkgver=7.0
 pkgrel=3
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=( 'i686' 'x86_64' )
-depends_x86_64=('libopenssl-1.0-compat') && makedepends_x86_64=('gcc-multilib')
+depends_x86_64=('libopenssl-1.0-compat')
 depends_i686=('qtwebkit' 'libpng' 'lib32-libopenssl-1.0-compat')
 url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
