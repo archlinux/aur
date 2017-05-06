@@ -43,7 +43,7 @@ md5sums=('5a9bb6e274c8d5102400fa03a3cab776'  # Universal
          'bd7678de722909acd89ba768edf0d5d5'  # Chrome with Lib
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
-         'b23fd3803a2b31b7652301d6844c9db0'  # Firefox
+         'e7c5b80b4c72743ef344e260d450e923'  # Firefox
          'd0f555a644484baccf649f7969794ece')
 
 # 64-bit?
