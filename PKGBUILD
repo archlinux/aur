@@ -1,14 +1,15 @@
+# Contributor: kaptoxic (at) yahoo (dot) com
 # Contributor: Chris Chapman chris(dot)chapman(at)aggiemail(dot)usu(dot)edu
 pkgname=eclipse-plantuml
-pkgver=1.0.6.4860
+pkgver=1.1.18.201704180954
 pkgrel=1
 pkgdesc="PlantUML integration into Eclipse"
 arch=('i686' 'x86_64')
 url="http://plantuml.sourceforge.net/eclipse.html"
 license=('EPL')
 depends=("graphviz" "eclipse>=3.2")
-source=("http://hivelocity.dl.sourceforge.net/project/plantuml/net.sourceforge.plantuml.eclipse_${pkgver}.jar")
-md5sums=('d8851e4af502a0440d70e8c12a7d382f')
+source=("http://files.idi.ntnu.no/publish/plantuml/repository/plugins/net.sourceforge.plantuml.eclipse_${pkgver}.jar")
+md5sums=('f12c5b23aabce943fb98f1e8574b0a67')
 
 package() {
 
