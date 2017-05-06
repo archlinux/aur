@@ -1,6 +1,6 @@
 # Maintainer: Wojciech Kluczka <wojciech.kluczka@gmail.com>
 pkgname=perceptia
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Dynamic window manager with support for Wayland'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MPL-2.0' 'MIT')
 depends=('dbus' 'libdrm' 'libgl' 'libegl' 'udev' 'libxkbcommon')
 makedepends=('rust' 'cargo')
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('31bcb6c37122eee595fb128143c2a061')
+md5sums=('938f448d9326c2464b09f986d24162fa')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
