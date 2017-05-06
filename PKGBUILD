@@ -17,12 +17,12 @@ _pkgname=thunderbird
 pkgname=icedove
 epoch=1
 pkgver=$_debver.$_debrel
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A libre version of Debian Icedove, the standalone mail and news reader based on Mozilla Thunderbird."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
-depends=(alsa-lib dbus-glib gtk2 hunspell icu=58.2 libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
+depends=(alsa-lib dbus-glib gtk2 hunspell icu=59.1 libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
 makedepends=(autoconf2.13 diffutils gconf imake inetutils libpulse mesa mozilla-searchplugins pkg-config python2 quilt unzip yasm zip)
 options=(!emptydirs !makeflags)
 optdepends=('libcanberra: for sound support')
