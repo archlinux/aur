@@ -12,9 +12,11 @@ makedepends=('git' 'cmake' 'pkg-config' 'llvm35')
 provides=('dale')
 source=(
   "git+https://github.com/tomhrr/${_gitname}.git"
+  'pkg-config.patch'
 )
 sha512sums=(
   'SKIP'
+  '718a22bd9386d6ba6daf1ea30dd4d18df3a1adc5e9b0cb65cc254aea23f3cb051648010738e589952f794df67cf15e2fa3555005372f96bfffb9fea01cd1b8a7'
 )
 
 pkgver() {
@@ -22,11 +24,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$_gitname"
+  patch -Np1 -i "${srcdir}/pkg-config.patch"
+}
+
 build() {
   mkdir -p build
   cd build
-  # for some reason cmake can't find libffi... this is probably a problem with CMakeLists.txt, but for now I'm working around it:
-  cmake ../$_gitname -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MANDIR=/usr/share/man -DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -b3-)
+  cmake ../$_gitname -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MANDIR=/usr/share/man
   make
 }
 

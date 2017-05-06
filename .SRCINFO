@@ -16,7 +16,9 @@ pkgbase = dale-git
 	depends = ncurses
 	provides = dale
 	source = git+https://github.com/tomhrr/dale.git
+	source = pkg-config.patch
 	sha512sums = SKIP
+	sha512sums = 718a22bd9386d6ba6daf1ea30dd4d18df3a1adc5e9b0cb65cc254aea23f3cb051648010738e589952f794df67cf15e2fa3555005372f96bfffb9fea01cd1b8a7
 
 pkgname = dale-git
 
