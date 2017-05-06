@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=bdisk
 pkgver=3.03
-pkgrel=2
+pkgrel=3
 _pkgver=${pkgver}
 #_pkgver=${pkgver}-BETA
 pkgdesc="An easy liveCD creator built in python. Supports hybrid ISOs/USB, iPXE, and UEFI."
@@ -38,7 +38,7 @@ optdepends=('rsync: for rsync syncing'
 	'syslinux: for ipxe support')
 source=("https://git.square-r00t.net/${_pkgname}/snapshot/${_pkgname}-${_pkgver}.tar.xz"
         "${_pkgname}-${_pkgver}.tar.xz.sig")
-sha512sums=('7d1505d88166538e377f86c4c5e3c431fb23325c1a88b91dd20c57faef6ab192d5ff86f76fc50a3493fe9892ea677350e8a4e722d17f910f5e439b14cd0c507c'
+sha512sums=('4a0ac57c17cf2d877a928569d77e9e63c385a769e3525f214f31075a5562b8fa750909e630aaa8e205fac71863ed1e0f28cccad0db1a2aa83347bd01a86713b0'
             'SKIP')
 package() {
 
