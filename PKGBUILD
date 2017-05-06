@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.5.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -16,8 +16,10 @@ sha256sums=('8a5ba823d02f495dd1bb150882ddccd2bb082efff4c996b9b43e4cd5599d3df2')
 build() {
   cd "$pkgname-$pkgver"
 
+  export GOPATH=~/go
+
   go get -u github.com/FiloSottile/gvt
-  gvt restore
+  ~/go/bin/gvt restore
 
   go build .
 }
