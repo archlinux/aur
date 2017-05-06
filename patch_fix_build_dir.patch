@@ -1,0 +1,11 @@
+diff -ura shadow-1.11.2.orig/setup shadow-1.11.2.new/setup
+--- shadow-1.11.2.orig/setup	2016-09-19 16:29:30.000000000 +0200
++++ shadow-1.11.2.new/setup	2017-05-06 13:24:41.106253464 +0200
+@@ -126,7 +126,6 @@
+     
+     # create directories
+     if not os.path.exists(builddir): os.makedirs(builddir)
+-    if not os.path.exists(installdir): os.makedirs(installdir)
+         
+     # build up args string for the cmake command
+     cmake_cmd = "cmake " + rootdir + " -DCMAKE_INSTALL_PREFIX=" + installdir

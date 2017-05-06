@@ -1,0 +1,19 @@
+diff -ura shadow-1.11.2.orig/src/plugin/llvm-hoist-pass/CMakeLists.txt shadow-1.11.2.new/src/plugin/llvm-hoist-pass/CMakeLists.txt
+--- shadow-1.11.2.orig/src/plugin/llvm-hoist-pass/CMakeLists.txt	2016-09-19 16:29:30.000000000 +0200
++++ shadow-1.11.2.new/src/plugin/llvm-hoist-pass/CMakeLists.txt	2017-05-06 01:05:46.468807662 +0200
+@@ -23,6 +23,10 @@
+ set(LLVM_RUNTIME_OUTPUT_INTDIR ${CMAKE_BINARY_DIR}/${CMAKE_CFG_INTDIR}/bin)
+ set(LLVM_LIBRARY_OUTPUT_INTDIR ${CMAKE_BINARY_DIR}/${CMAKE_CFG_INTDIR}/lib)
+ set(LLVM_PLUGIN_EXT ".so")
++
++cmake_policy(PUSH)
++# needed by AddLLVM
++cmake_policy(SET CMP0057 NEW)
+ include(AddLLVM)
+ 
+ #message(STATUS "Found components for LLVM")
+@@ -42,3 +46,4 @@
+ ## The LLVM plugin to hoist out static and global variables
+ ## adds a 'LLVMHoistGlobals' target
+ add_llvm_loadable_module(LLVMHoistGlobals HoistGlobals.cpp)
++cmake_policy(POP)
