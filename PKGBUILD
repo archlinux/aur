@@ -3,7 +3,7 @@
 _pkgname=airgeddon
 pkgname=$_pkgname-git
 pkgver=6.2
-pkgrel=6
+pkgrel=7
 pkgdesc='This is a multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
@@ -42,7 +42,6 @@ optdepends=(
   'sslstrip'
   'usbutils'
   'wget'
-  'wpaclean'
   'xorg-xdpyinfo'
 )
 makedepends=('binutils' 'coreutils' 'git')
