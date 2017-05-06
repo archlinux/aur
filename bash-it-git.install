@@ -7,7 +7,3 @@ post_remove() {
   msg2 'Note: To complete removal, restore your' \
     'original `~/.bashrc` file from `~/.bashrc.bak`.'
 }
-
-post_upgrade() {
-  :
-}

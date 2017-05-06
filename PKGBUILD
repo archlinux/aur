@@ -1,4 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor:
+#
+# PKGBUILD reference: https://wiki.archlinux.org/index.php/PKGBUILD
 
 pkgname=bash-it-git
 pkgver=master
@@ -8,17 +11,12 @@ arch=('any')
 url='https://github.com/Bash-it/bash-it'
 license=('custom:undecided')
 depends=('bash')
-makedepends=()
-checkdepends=()
 optdepends=(
   'ruby: ruby integration'
   'rbenv: rbenv integration'
 )
 conflicts=('bash-it')
-backup=()
-options=()
 install="${pkgname}.install"
-changelog=
 source=(
   'https://github.com/Bash-it/bash-it/tarball/master'
   'LICENSE'
@@ -29,7 +27,7 @@ sha512sums=(
 )
 noextract=("${pkgname}.tar.gz")
 
-build() {
+prepare() {
   tar -x \
     -f "${srcdir}/${pkgname}.tar.gz" -z \
     --no-anchored --wildcards -C "${srcdir}" \
@@ -38,8 +36,6 @@ build() {
     '.editorconfig' 'aliases' 'completion' 'custom' \
     'lib' 'plugins' 'template' 'themes' \
     'CONTRIBUTING.md' 'README.md' '*.sh'
-
-  rm "${srcdir}/${pkgname}.tar.gz"
 }
 
 package() {
