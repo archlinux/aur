@@ -3,7 +3,7 @@
 # Contributor: max-k <max-k AT post DOT com>
 
 pkgname=reprepro-git
-pkgver=4.17.1.1.r0.g0c9f0f4
+pkgver=5.1.1.1.r1.gaf6b285
 pkgrel=1
 pkgdesc="A tool to handle local repositories of Debian packages (Git latest)"
 arch=('i686' 'x86_64')
