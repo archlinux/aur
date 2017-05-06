@@ -2,7 +2,7 @@
 
 pkgname='python-xapp'
 pkgver='1.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python Xapp Library'
 arch=(any)
 url="http://packages.linuxmint.com/pool/main/p/${pkgname}"
@@ -12,7 +12,9 @@ depends=('python-psutil')
 makedepends=('python-distutils-extra')
 optdepends=("mate-polkit: PolicyKit integration for the MATE desktop"
             "polkit-gnome: PolicyKit integration for the GNOME desktop and derivatives like Cinnamon or Xfce"
-            "polkit-kde-agent: PolicyKit integration for the KDE desktop")
+            "polkit-kde-agent: PolicyKit integration for the KDE desktop"
+            "gksu: Fallback authentication method for the GNOME desktop and derivatives"
+            "kdesu: Fallback authentication method for the KDE desktop")
 sha256sums=('3caee253dc636972522e152f1be905c6fe91369cca9bde3eb42a856a64af54ab')
 
 prepare() {
