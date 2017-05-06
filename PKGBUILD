@@ -1,10 +1,10 @@
-# Maintainer: André Silva <emulatorman@parabola.nu>
+# Maintainer: André Silva <emulatorman@riseup.net>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 # Based on linux-manpages package
 
 pkgname=linux-libre-manpages
-_pkgver=4.6-gnu
+_pkgver=4.10-gnu
 
 _srcname=linux-${_pkgver%-*}
 _archpkgver=${_pkgver%-*}
@@ -20,7 +20,7 @@ conflicts=('linux-manpages')
 provides=("linux-manpages=${_archpkgver}")
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz.sign")
-sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
+sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
