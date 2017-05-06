@@ -7,15 +7,17 @@ pkgbase = ike
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	depends = openssl
+	depends = openssl-1.0
 	depends = qt4
 	depends = libedit
 	optdepends = openldap
 	backup = etc/iked.conf
 	source = http://www.shrew.net/download/ike/ike-2.2.1-release.tgz
 	source = iked.service
+	source = fix-openssl.patch
 	md5sums = 3dac18a2da5809ccb38c50cd4a455897
 	md5sums = 3cb3ff3b663805f76be1efd527ae436c
+	md5sums = c1f793c174db5d7f5c11c8009a967a4d
 
 pkgname = ike
 
