@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=2.8.3pre.git20170424
+pkgver=2.8.3pre.git20170505
 pkgrel=1
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
@@ -21,14 +21,14 @@ depends=(python2-btchip
          python2-requests
          zbar)
 makedepends=(gettext python2-pycurl)
-_commit=abcb4e3
+_commit=2c728e9
 source=($pkgname-$_commit.tar.gz::https://codeload.github.com/pooler/$pkgname/tar.gz/$_commit)
-sha256sums=(f109642d27914587441a41ba660020269576ebe27be4b307cdeaa626d27f5b49)
+sha256sums=(9b443218284cf4d00ce07be23fe6a21ac477707f5123f3e40275c088f25bdcb5)
 
 prepare() {
   cd $pkgname-$_commit/
 
-  find . -type f -exec sed -i '/#!/s/python$/&2/' {} +
+  find ./ -type f -exec sed -i '/#!/s/python$/&2/' {} +
 
   for i in icons/{electrum_{dark,light}_icon,unpaid}.png
   do convert $i $i
@@ -54,9 +54,8 @@ package() {
   ./setup.py install -O1 --root=$pkgdir
 
   mkdir -p $pkgdir/usr/share/doc/$pkgname/
-  cp AUTHORS LICENCE README.rst RELEASE-NOTES electrum-ltc.conf.sample \
-    $pkgdir/usr/share/doc/$pkgname/
+  cp AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample $pkgdir/usr/share/doc/$pkgname/
 
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-  ln -rs $pkgdir/usr/share/doc/$pkgname/LICENCE $pkgdir/usr/share/licenses/$pkgname/
+  cp LICENCE $pkgdir/usr/share/licenses/$pkgname/
 }
