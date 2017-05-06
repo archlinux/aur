@@ -46,7 +46,7 @@ fi
 pkgbase=xen
 pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=6
+pkgrel=7
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -110,6 +110,8 @@ source=(
 	'https://xenbits.xen.org/xsa/xsa211-qemut.patch'
 	'https://xenbits.xen.org/xsa/xsa211-qemuu-4.8.patch'
 	'https://xenbits.xen.org/xsa/xsa212.patch'
+	'https://xenbits.xen.org/xsa/xsa213-4.8.patch'
+	'https://xenbits.xen.org/xsa/xsa214.patch'
 
 	# Files
 	'grub-mkconfig-helper'
@@ -151,6 +153,8 @@ sha256sums=(
 	'9d0cf413dcc9654ee95f6b04fa9c5714f36775cbc9ab0390a3041ec4a68845ab'
 	'bea7cf4065bd9d0085f4dfc3395e59c3ca9d4de9d786a3018c8dc7fd9f3d8b6e'
 	'be1255bcda06158cdb86eb5297e8a271e05318e88cd21035c58a67f9ada6ccba'
+	'20c12810ac73809ba74cfde811d420b1b544a07f759c393380afde1a09eb5274'
+	'1c038c3927d08e6abdf3ce320bb8b0b68a106e6ac86b4e8194035dc5e4726d64'
 	# PKGBUILD files
 	'06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
@@ -205,6 +209,8 @@ prepare() {
 	patch -Np1 -i "${srcdir}/xsa207.patch"
 	patch -Np1 -i "${srcdir}/xsa210.patch"
 	patch -Np1 -i "${srcdir}/xsa212.patch"
+	patch -Np1 -i "${srcdir}/xsa213-4.8.patch"
+	patch -Np1 -i "${srcdir}/xsa214.patch"
 	# qemu-xen-traditional
 	pushd 'tools/qemu-xen-traditional'
 	patch -Np1 -i "${srcdir}/xsa208-qemut.patch"

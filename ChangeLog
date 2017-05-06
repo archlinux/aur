@@ -1,3 +1,7 @@
+2017-05-06 Janne Heß
+	* 4.8.0-7
+	Apply XSA patches: 213 214
+
 2017-04-07 Janne Heß
 	* 4.8.0-6
 	Remove last pieces of OVMF and SeaBIOS
