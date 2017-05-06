@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.5.9
-pkgrel=0
+pkgrel=1
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -26,4 +26,6 @@ package() {
     "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/autocomplete/s-completion.bash" \
+    "${pkgdir}/usr/share/bash-completion/completions/s"
 }
