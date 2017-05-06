@@ -2,9 +2,9 @@
 
 pkgname=screencast
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface to record a X11 desktop"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/bermond/screencast/"
 license=('GPL2')
 depends=('ffmpeg')
