@@ -9,7 +9,7 @@ pkgbase=oss-nonfree
 pkgname=oss-nonfree
 true && pkgname=(oss-nonfree libflashsupport-oss-nonfree)
 pkgver=4.2_2017
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="http://www.opensound.com/oss.html"
 license=('custom:4Front Commercial License')
@@ -32,9 +32,9 @@ sha512sums=('73f101e99aebc715232a5b85c70b9d48b0532e49d50a14a07d2e226783818ff2118
             '64e6d9d8eb5320f737d3a0698a245da2b2d141b68cfb2f02e448144d1c610aa8b8a6c38b56fcca364d63171a49afe93161a00545cdb90086b5328997b3096690'
             '5b91a4f3477db1bdbc40c891aaa8bc384f5a690e8290bc4db7bdb4a715a858b2f42780bfeb14281560a0e1a73d1cd4022ed738f01b74c26456dcf0b9952981b5')
 if [[ "$CARCH" == i686 ]]; then
-    sha512sums[0]=SKIP
+    sha512sums[0]='1bba0bbee9b7cbdcc5bf07f2c5a1b3863e3057908099bebb2f4347735e8183341e2ac71ac06a633d1f6300b9d9f7dac64dc7397b226168e346b4be47cb6313d3'
 else
-    sha512sums[0]=73f101e99aebc715232a5b85c70b9d48b0532e49d50a14a07d2e226783818ff2118663308f663735cd69ceb4a85120bcd09ee96a0d295733283df29d68ce72db
+    sha512sums[0]='73f101e99aebc715232a5b85c70b9d48b0532e49d50a14a07d2e226783818ff2118663308f663735cd69ceb4a85120bcd09ee96a0d295733283df29d68ce72db'
 fi
 
 build() {

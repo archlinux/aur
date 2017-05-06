@@ -1,6 +1,6 @@
 pkgbase = oss-nonfree
 	pkgver = 4.2_2017
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opensound.com/oss.html
 	arch = i686
 	arch = x86_64
