@@ -1,6 +1,6 @@
 pkgbase = caddy
 	pkgdesc = A configurable, general-purpose HTTP/2 web server for any platform
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://caddyserver.com
 	install = caddy.install
@@ -14,7 +14,7 @@ pkgbase = caddy
 	conflicts = caddy-all-features
 	conflicts = caddy-git
 	conflicts = caddy-full-bin
-	source = git+https://github.com/mholt/caddy#tag=v0.10.1
+	source = git+https://github.com/mholt/caddy#tag=v0.10.2
 	source = systemd-unit-file.patch
 	md5sums = SKIP
 	md5sums = 07575b06cc76cf5e0287d6c28f05eb05
