@@ -12,8 +12,21 @@ url='https://github.com/Bash-it/bash-it'
 license=('custom:undecided')
 depends=('bash' 'curl' 'p7zip')
 optdepends=(
-  'ruby: ruby integration'
-  'rbenv: rbenv integration'
+  'autojump: plugin'
+  'base-devel: `makefile` completion'
+  'docker: plugin'
+  'git: theme integration, multiple alias/completion/plugin modules'
+  'hub: completion, plugin'
+  'irssi: integration'
+  'java-environment-common: plugin'
+  'python: plugin'
+  'python3: plugin, `django` completion, `proxy` plugin'
+  'packer: completion'
+  'ruby: theme integration, plugin'
+  'ruby-bundler: alias, completion'
+  'rbenv: plugin'
+  'thefuck: aliases'
+  'wget: `browser` plugin'
 )
 conflicts=('bash-it')
 install="${pkgname}.install"
