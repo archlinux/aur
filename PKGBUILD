@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=pix
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ url='https://github.com/linuxmint/pix'
 install=pix.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('cb8ab866f1236ccd8e3eb6b5a105473e')
+md5sums=('16d378c609e3a284d4333860b68c1d31')
 
 
 build() {
