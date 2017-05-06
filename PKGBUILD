@@ -1,7 +1,7 @@
 # Maintainer: Alim Gokkaya <alimgokkaya at gmail dot com>
 
 pkgname=librdkafka-git
-pkgver=r2083.d2ad558
+pkgver=r2092.4d2aea3
 pkgrel=1
 pkgdesc='Apache Kafka C driver library'
 url="https://github.com/edenhill/librdkafka"
@@ -10,7 +10,7 @@ source=(git+https://github.com/edenhill/librdkafka)
 arch=(i686 x86_64 armv7h)
 depends=(glibc zlib)
 optdepends=(openssl libsasl lz4)
-makedepends=(git python2)
+makedepends=(git python)
 sha256sums=('SKIP')
 
 pkgver() {
