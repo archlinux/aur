@@ -1,7 +1,7 @@
 pkgbase = gogs
 	pkgdesc = Self Hosted Git Service written in Go
 	pkgver = 0.11.4
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://gogs.io/
 	install = gogs.install
@@ -27,10 +27,10 @@ pkgbase = gogs
 	backup = etc/gogs/app.ini
 	source = gogs-0.11.4::https://github.com/gogits/gogs/archive/v0.11.4.tar.gz
 	source = 0001-Adjust-config-for-Arch-Linux-package.patch
-	source = gogs.service
+	source = 0002-Adjust-service-file-for-Arch-Linux-package.patch
 	sha512sums = e262cdd2409dd846a1473993c222a7b9692c694ac9620a5dcd576a17714bfee76212935dcfbf0ad83b7b95623c075f1622613524f347d24d7530732e966c733f
 	sha512sums = 1df73da8962605369bbefcf6ad2b2cf1594b628b182f9ef591089da9324d134b352a0cd3999748bf52b42a260421f08f128a8b61c9f89f70ef11c6c3bc92786c
-	sha512sums = a63ffa27e5a4a9123f42647a44cb99d203ae11837243e07178dc4a402a1af47fe99e6e854a8021f493a41e2e64d6fc961264ef4fb9723e740891aec993866c29
+	sha512sums = 9a869febcdd74e7cb81c4fb5f23d23e6ec70c94e88849fefe6e9c34902de380e5dd3aabced302a5c6b1eab061252b046aa3878caa69893a6240ae14984a0341c
 
 pkgname = gogs
 
