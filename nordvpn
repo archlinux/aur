@@ -12,6 +12,38 @@ run_ping() {
     $bin -c 4 -A $remote | tail -n 1 | cut -d / -f 5
 }
 
+print_usage() {
+    echo "usage: $(basename $0) [options] command [args]"
+    echo "Available options:"
+    echo "    -v  be verbose, show commands and variables"
+    echo "    -h  print this help and exit"
+    echo "Available commands:"
+    echo "    list [server_name_pattern]"
+    echo "        List available servers."
+    echo "    ping server_name"
+    echo "        Show round trip latency"
+    echo "    rank [server_name_pattern]"
+    echo "        Ping all servers matching pattern and rank them"
+    echo "    status"
+    echo "        Show current systemd service status, if any."
+    echo "    start|stop|restart server_name"
+    echo "        Start, stop or restart systemd service for specified server."
+}
+
+while getopts "vh" opt
+do
+    case $opt in
+        v)
+            set -x
+            shift
+            ;;
+        *)
+            print_usage
+            exit $(test $opt == "h")
+            ;;
+    esac
+done
+
 command=$1
 shift
 
@@ -51,18 +83,7 @@ case $command in
         test -z "$service" || systemctl $command $service
         ;;
     *)
-        echo "usage: $(basename $0) command [options]"
-        echo
-        echo "Available commands:"
-        echo "    list [server_name_pattern]"
-        echo "        List available servers."
-        echo "    ping server_name"
-        echo "        Show round trip latency"
-        echo "    rank [server_name_pattern]"
-        echo "        Ping all servers matching pattern and rank them"
-        echo "    status"
-        echo "        Show current systemd service status, if any."
-        echo "    start|stop|restart server_name"
-        echo "        Start, stop or restart systemd service for specified server."
+        print_usage
+        exit 1
         ;;
 esac
