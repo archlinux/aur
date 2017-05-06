@@ -1,14 +1,14 @@
-# Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
+# Maintainer: Adam Hose <adis@blad.is>
 
 _pkgbase=python-netfilterqueue
-pkgname=python2-netfilterqueue-git
-pkgver=r24.53a55fd
+pkgname=python-netfilterqueue-git
+pkgver=r66.3fa8a38
 pkgrel=1
-pkgdesc="Python 2.x for libnetfilter_queue."
+pkgdesc="Python 3.x for libnetfilter_queue."
 arch=('any')
 url="https://github.com/kti/python-netfilterqueue"
 license=("GPL2")
-depends=('python2' 'libnetfilter_queue')
+depends=('python' 'libnetfilter_queue')
 source=("${_pkgbase}::git+https://github.com/kti/python-netfilterqueue")
 sha256sums=('SKIP')
 
@@ -22,6 +22,5 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_pkgbase}"
-	python2 setup.py install -O1 --root="$pkgdir"
+	python setup.py install -O1 --root="$pkgdir"
 }
-
