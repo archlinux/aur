@@ -3,7 +3,7 @@
 _pkgname=airgeddon
 pkgname=$_pkgname-git
 pkgver=6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='This is a multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
@@ -48,15 +48,32 @@ pkgver() {
   echo "${pkgver}"
 }
 
+prepare() {
+  cd "$srcdir/${_pkgname}"
+
+  sed -i 's|auto_update=1|auto_update=0|' airgeddon.sh
+}
+
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  install -d "$pkgdir/usr/local/bin"
-  install -Dm755 airgeddon.sh "$pkgdir/usr/local/bin/airgeddon"
-  install -Dm755 language_strings.sh "$pkgdir/usr/local/bin/language_strings.sh"
-  install -Dm755 known_pins.db "$pkgdir/usr/local/bin/known_pins.db"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/airgeddon"
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/airgeddon/" README.md CHANGELOG.md
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/airgeddon/LICENSE.md"
+
+  #rm -rf *.md .git* binaries imgs Dockerfile pindb_checksum.txt
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/airgeddon"
+
+  cat > "$pkgdir/usr/bin/airgeddon" << EOF
+#!/bin/sh
+cd /usr/share/airgeddon
+exec bash airgeddon.sh "\${@}"
+EOF
+
+  chmod a+x "$pkgdir/usr/bin/airgeddon"
 }
 
 # vim: ts=2 sw=2 et:
