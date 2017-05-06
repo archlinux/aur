@@ -1,0 +1,12 @@
+pkgbase = i3-battery-popup-git
+	pkgdesc = A script that shows messages to the user when the battery is almost empty.
+	pkgver = r46.2370600
+	pkgrel = 1
+	url = https://github.com/rjekker/i3-battery-popup
+	arch = any
+	license = GPL
+	source = i3-battery-popup-git::git+https://github.com/rjekker/i3-battery-popup.git#branch=master
+	md5sums = SKIP
+
+pkgname = i3-battery-popup-git
+
