@@ -8,7 +8,7 @@ post_install() {
 !!! In 2017, ACM released a new Master template which supersedes any previous
 !!! classes (sig-alternate, sigproc, sigplan, ...).
 !!! While this package should allow you to build any existing paper, you should
-!!! consider using the new latex-template-acmart package for any new work.
+!!! consider using the new texlive-publishers package for any new work.
 EOF
 	echo -e "\033[0m"
 }
