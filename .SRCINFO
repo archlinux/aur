@@ -1,7 +1,7 @@
 pkgbase = lwks
 	pkgdesc = Lightworks is a professional video editing suite
 	pkgver = 14.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.lwks.com/
 	arch = x86_64
 	license = custom
@@ -22,6 +22,7 @@ pkgbase = lwks
 	depends = libedit
 	depends = nvidia-cg-toolkit
 	depends = libopenssl-1.0-compat
+	depends = libcurl-openssl-1.0
 	optdepends = nvidia-utils: only for nVidia users
 	provides = lightworks
 	conflicts = lightworks,

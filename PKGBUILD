@@ -12,13 +12,13 @@
 pkgname=lwks
 lwksver=14.0.0
 pkgver=$lwksver
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 options=('!strip')
 url="http://www.lwks.com/"
 license=('custom')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit' 'libopenssl-1.0-compat')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit' 'libopenssl-1.0-compat' 'libcurl-openssl-1.0')
 optdepends=('nvidia-utils: only for nVidia users')
 provides=('lightworks')
 conflicts=('lightworks', 'lwks-beta')
