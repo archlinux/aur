@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=nlohmann_json-git
-pkgver=2.0.7.r1206.bc28942
+pkgver=2.1.1.r1791.56ac7908
 pkgrel=1
 pkgdesc="JSON for Modern C++"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd json
-  echo "2.0.7.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "2.1.1.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -33,5 +33,5 @@ build() {
 
 package() {
   make -C build DESTDIR=${pkgdir} install
-  install -Dm644 json/LICENSE.MIT ${pkgdir}/usr/share/licenses/nlohmann_json/LICENSE
+  install -Dm644 json/LICENSE.MIT ${pkgdir}/usr/share/licenses/nlohmann_json-git/LICENSE
 }
