@@ -30,21 +30,14 @@ sha512sums=(
 noextract=("${pkgname}.tar.gz")
 
 build() {
-  tar -xz -C "${srcdir}" \
-    -f "${srcdir}/${pkgname}.tar.gz" \
-    --include '*/.editorconfig' \
-    --include '*/aliases' \
-    --include '*/completion' \
-    --include '*/custom' \
-    --include '*/lib' \
-    --include '*/plugins' \
-    --include '*/template' \
-    --exclude '*/test/*' \
-    --include '*/themes' \
-    --include '*/CONTRIBUTING.md' \
-    --include '*/README.md' \
-    --include '*.sh' \
-    --strip-components 1
+  tar -x \
+    -f "${srcdir}/${pkgname}.tar.gz" -z \
+    --no-anchored --wildcards -C "${srcdir}" \
+    --exclude='test' \
+    --strip-components=1 \
+    '.editorconfig' 'aliases' 'completion' 'custom' \
+    'lib' 'plugins' 'template' 'themes' \
+    'CONTRIBUTING.md' 'README.md' '*.sh'
 
   rm "${srcdir}/${pkgname}.tar.gz"
 }
