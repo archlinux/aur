@@ -1,4 +1,4 @@
-pkgbase = fabariagest
+pkgbase = fabaria
 	pkgdesc = Gestionale aziendale.
 	pkgver = 1.2
 	pkgrel = 3
@@ -30,5 +30,5 @@ pkgbase = fabariagest
 	source = https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabariagest-1-1targz.gz
 	md5sums = 90a0eebb4455b56d20e063852a1026b3
 
-pkgname = fabariagest
+pkgname = fabaria
 
