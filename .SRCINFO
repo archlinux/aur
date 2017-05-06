@@ -1,0 +1,22 @@
+pkgbase = libcurl-openssl-1.0-fixed
+	pkgdesc = An URL retrieval library (build against openssl-1.0)
+	pkgver = 7.54.0
+	pkgrel = 2
+	url = https://curl.haxx.se
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = glibc
+	depends = krb5
+	depends = openssl-1.0
+	depends = libpsl
+	depends = zlib
+	depends = libssh2.so
+	conflicts = libcurl-openssl-1.0
+	options = strip
+	source = https://curl.haxx.se/download/curl-7.54.0.tar.gz
+	sha256sums = a84b635941c74e26cce69dd817489bec687eb1f230e7d1897fc5b5f108b59adf
+
+pkgname = libcurl-openssl-1.0-fixed
+
