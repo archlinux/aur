@@ -1,6 +1,6 @@
 # Maintainer: inso <insomniak.fr@gmail.com>
 pkgname=sakia
-pkgver=0.32.0RC1
+pkgver=0.32.0RC2
 pkgrel=1
 epoch=
 pkgdesc="A Python/Qt client for Duniter network"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/duniter/sakia/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=("06df285af8bf58cc1b5dc48a15bb1074a4850dffb68b9cea666f61820fd9c701")
+sha256sums=("1924536faf36855b47455b7a56277811c0bf0db483d3ae36fc66b35c5964aee5")
 validpgpkeys=()
 
 PYENV_PYTHON_VERSION=3.5.2
@@ -67,5 +67,7 @@ package() {
 	mkdir -p "$pkgdir/opt/"
 	mkdir -p "$pkgdir/usr/bin/"
 	cp -r dist/sakia "$pkgdir/opt/sakia"
+	cp $srcdir/$pkgname-$pkgver/sakia.png $pkgdir/opt/sakia/
+	cp -r "$srcdir/$pkgname-$pkgver/res/linux/usr" "$pkgdir"
 	ln -s /opt/sakia/sakia.bin $pkgdir/usr/bin/sakia
 }
