@@ -19,8 +19,7 @@ source=("https://download.kde.org/stable/plasma/$pkgver/oxygen-fonts-$pkgver.tar
 sha256sums=('a02f6580e9a53cb16694a99adbb6dbf76f17584f3e97f469a22286299507838c')
 
 prepare() {
-  [[ -d build ]] && rm -rf build
-  mkdir build
+  mkdir -p build
 }
 
 build() {
@@ -45,6 +44,6 @@ package() {
     "$pkgdir"/usr/share/fonts/TTF/
 
   install -d "$pkgdir"/usr/share/licenses/$pkgname
-  install -m644 "$srcdir"/oxygen-fonts-$pkgver/COPYING-{GPL+FE.txt,OFL} \
+  install -m644 ../oxygen-fonts-$pkgver/COPYING-{GPL+FE.txt,OFL} \
     "$pkgdir"/usr/share/licenses/$pkgname
 }
