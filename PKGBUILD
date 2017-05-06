@@ -1,40 +1,49 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
-
 pkgname=libclassicclient
-pkgver=7.0.0_b08
-pkgrel=2
-pkgdesc="Gemalto & LuxTrust PKCS#11 middleware"
+_luxver=1.1.0
+pkgver=7.2.0_b04
+pkgrel=1
+pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(i686 x86_64)
 depends=(
   gcc-libs
   gdk-pixbuf2
-  gtk2
+  gtk2 # for CCChangePinTool
   libusb-compat
-  openssl
+  #openssl-1.0
+  libopenssl-1.0-compat
+  # JUST FIX https://bugs.archlinux.org/task/53836 ALREADY
   pcsclite
+  qt5-base # for SecureFooDialog
 )
-source_i686=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.0.1_Ubuntu_32bit.tar.gz")
-source_x86_64=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.0.1_Ubuntu_64bit.tar.gz")
-sha256sums_i686=('e00fb014dd9f67a936b9b79b9237b988e70c7ad20d6c5325aac01761e25ef6f6')
-sha256sums_x86_64=('543683acb108ab38681a7ff54aab34c5a10da844e771e0dadca64e0e27789a8d')
+optdepends=(
+  "luxtrust-middleware: LuxTrust software for web authentication"
+)
+source=("https://www.luxtrust.lu/downloads/middleware/eula.pdf")
+source_i686=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_32bit.tar.gz")
+source_x86_64=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_64bit.tar.gz")
+sha256sums=('4c9b71b596900700cdbf8f1515df44d9383fd5f336114e38cebfffc30d74f564')
+sha256sums_i686=('771195d2cd48a56ee70b2826fa1c008fed8925ad29dddd46fff155e6d474e775')
+sha256sums_x86_64=('e1f77f5c1eaa479395a62106db0ec4b3aa0df45d428ebe790982159ec6f55283')
 
 prepare() {
   cd "$srcdir"
 
-  for _deb in *.deb; do
-    msg2 "Extracting $_deb with bsdtar"
-    _dir=${_deb%.deb}
-    rm -rf "$_dir" && mkdir "$_dir"
-    (cd "$_dir" && bsdtar xf "../$_deb")
-    (cd "$_dir" && bsdtar xf data.tar.*)
-  done
+  case $CARCH in
+    i686)
+      bsdtar -xf Gemalto_Middleware_Ubuntu_32bit_${pkgver/_/-}.deb;;
+    x86_64)
+      bsdtar -xf Gemalto_Middleware_Ubuntu_64bit_${pkgver/_/-}.deb;;
+  esac
+
+  bsdtar -xf data.tar.xz
 }
 
 package() {
   cd "$srcdir/Gemalto_Middleware_Ubuntu_64bit_7.0.0-b08"
 
-  cp -a etc usr "$pkgdir/"
+  cp -a etc usr "$pkgdir"/
 
   cd "$pkgdir"
 
@@ -45,7 +54,10 @@ package() {
   mv etc/udev/rules.d/* usr/lib/udev/rules.d/
 
   mkdir -p usr/share/p11-kit/modules
-  echo "module: libgclib.so" > usr/share/p11-kit/modules/$pkgname.module
+  # XXX: remove after arojas fixes the openssl 1.0 mess
+  { echo "module: libgclib.so";
+    echo "remote: |env LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat /usr/lib/pkcs11/libgclib.so"
+  } > usr/share/p11-kit/modules/$pkgname.module
 }
 
 # vim: ft=sh:ts=2:sw=2:et:nowrap
