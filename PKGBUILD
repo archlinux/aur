@@ -2,13 +2,14 @@
 
 pkgname=openvpn-nordvpn
 pkgver=17.5.5
-pkgrel=7
+pkgrel=8
 pkgdesc="OpenVPN configuration files and helper for nordvpn.com"
 arch=(any)
 url="http://www.nordvpn.com"
 license=('MIT')
 depends=('openvpn' 'systemd' 'openvpn-update-resolv-conf-git')
-optdepends=('iputils: run ping and rank functions')
+optdepends=('iputils: run ping and rank functions'
+            'vpnfailsafe-git: use instead of update-resolv-conf if available')
 makedepends=('unzip' 'coreutils')
 provides=('nordvpn')
 source=('https://nordvpn.com/api/files/zip')
@@ -26,10 +27,9 @@ build() {
     for f in $(find conf -name '*udp1194.ovpn'); do
         sed 's/^auth-user-pass.*$/auth-user-pass \/etc\/openvpn\/client\/nordvpn\/credentials.conf/g' -i $f
         echo "" >> $f
-        echo "# This updates the resolvconf with dns settings" >> $f
         echo "script-security 2" >> $f
-        echo "up /etc/openvpn/update-resolv-conf" >> $f
-        echo "down /etc/openvpn/update-resolv-conf" >> $f
+        echo "up /etc/openvpn/client/nordvpn/updown" >> $f
+        echo "down /etc/openvpn/client/nordvpn/updown" >> $f
     done
 }
 
