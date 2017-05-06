@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.5.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -24,9 +24,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-
-  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -Dm 775 "$pkgname-$pkgver" \
     "${pkgdir}/usr/bin/${pkgname}"
