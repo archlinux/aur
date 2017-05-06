@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.5.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -15,17 +15,21 @@ sha256sums=('8a5ba823d02f495dd1bb150882ddccd2bb082efff4c996b9b43e4cd5599d3df2')
 _gourl="github.com/zquestz/${pkgname}"
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  export GOPATH="${srcdir}"
-  export GOBIN="${srcdir}/bin"
-  go get -v ${_gourl}
+  cd "$pkgname-$pkgver"
+
+  go build .
 }
 
 package() {
-  install -Dm 775 "${srcdir}/bin/${pkgname}" \
+  cd "$pkgname-$pkgver"
+
+  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm 775 "$pkgname-$pkgver" \
     "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
+  install -Dm 644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/autocomplete/s-completion.bash" \
+  install -Dm 644 "autocomplete/s-completion.bash" \
     "${pkgdir}/usr/share/bash-completion/completions/s"
 }
