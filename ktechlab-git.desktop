@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Ktechlab
+Comment=Design an electronic circuit
+Comment[fr]=Concevoir un circuit électronique
+GenericName=Ktechlab
+Icon=ktechlab-git-icon
+Type=Application
+Categories=Development;Electronics;
+Encoding=UTF-8
+Exec=ktechlab
+Terminal=false
+MultipleArgs=false
+StartupNotify=true
