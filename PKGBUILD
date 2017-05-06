@@ -2,13 +2,14 @@
 
 pkgname=m17n-im-shortname-unicode-emoji-git
 pkgver=r9.d69fc3a
-pkgrel=1
+pkgrel=2
 pkgdesc="Input method for Unicode Emoji using shortnames "
 arch=('i686' 'x86_64')
 url="https://github.com/EmptyStackExn/m17n-im-shortname-unicode-emoji"
 license=()
 depends=('ibus-m17n' 'ttf-symbola')
 makedepends=('git' 'make' ) # 'bzr', 'git', 'mercurial' or 'subversion'
+optdepends=('ibus-m17n-git: (from AUR) to allow non-US layouts when typing')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
