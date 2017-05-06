@@ -1,0 +1,24 @@
+pkgbase = dale-git
+	pkgdesc = Lisp-flavoured C
+	pkgver = r1036.933e671
+	pkgrel = 1
+	url = https://github.com/tomhrr/dale/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = llvm35
+	depends = libffi
+	depends = zlib
+	depends = gcc-libs-multilib
+	depends = ncurses
+	provides = dale
+	source = git+https://github.com/tomhrr/dale.git
+	source = cmake-mandir.patch
+	sha512sums = SKIP
+	sha512sums = dedff6224c9b19d821dc47b8ecf55e2444cf160320b9bcdc8343699575cf6ec4da402ee7d2a9341c491e62b9f179d458c1d01efad226fc09e283f3c2a6fac2a2
+
+pkgname = dale-git
+
