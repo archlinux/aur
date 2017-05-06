@@ -2,7 +2,7 @@
 
 pkgbase=dcos-cli
 pkgname=(dcos-cli python-dcos)
-pkgver=0.4.16
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="DC/OS Command Line Interface"
 arch=(any)
@@ -40,4 +40,4 @@ package_python-dcos() {
     python setup.py install -O1 --skip-build --root="$pkgdir"
 }
 
-sha256sums=('2ced7c51a16f9693fee371ea6b8f5cc3a02a8fb380aeff41e8eed1a2448409c3')
+sha256sums=('48bf816eae521429b3563e8eb442365fe623fda483169dff0dd6c663e592ab95')
