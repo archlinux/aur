@@ -2,7 +2,7 @@
 
 _hkgname=megaparsec
 pkgname=haskell-megaparsec
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="This is industrial-strength monadic parser combinator library. Megaparsec is a fork of Parsec library originally written by Daan Leijen."
 arch=('i686' 'x86_64')
@@ -14,9 +14,11 @@ depends=('ghc>=8.0.1'
          'haskell-quickcheck>=2.7'
          'haskell-scientific>=0.3.1'
          'haskell-text>=0.2'
-         'haskell-transformers-base>=0.4')
+         'haskell-transformers-base>=0.4'
+         'haskell-semigroups>=0.18'
+         'haskell-tagged>=0.8')
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('c250a7ae2365e96df8f1061d28c7d04e5a1695395ea87055f36e3f3a57e90408')
+sha256sums=('3a9bbaae592120f94148777e4e08e23cb279128f3d43b1200b2d7a4a841bee52')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
