@@ -1,17 +1,17 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=snap-telemetry
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An open telemetry framework designed to simplify the collection, processing and publishing of system data through a single API."
 arch=('x86_64')
 url="https://github.com/intelsdi-x/snap"
 license=('Apache')
 provides=('snaptel' 'snapteld')
-source=("http://linux.tar.dl.snap-telemetry.io")
-md5sums=('94c4266f94e730bac9c301ebb5f9df97')
+source=("https://github.com/intelsdi-x/snap/releases/download/$pkgver/snap-$pkgver-linux-amd64.tar.gz")
+md5sums=('6d5a30bcbdb98b3d8c41264905961bfc')
 
 build() {
-	tar xf linux.tar.dl.snap-telemetry.io
+	tar xf snap-$pkgver-linux-amd64.tar.gz
 	cat <<EOF > "$srcdir/snap-telemetry.service"
 [Unit]
 Description=Snap telemetry daemon
