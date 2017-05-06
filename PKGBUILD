@@ -2,7 +2,7 @@
 # Contributor: shimi <shimi.chen@gmail.com>
 # Contributor: Gustavo Castro <gustawho at gmail dot com>
 pkgname=indicator-kdeconnect
-pkgver=0.8.1.r0.gc8f6cd4
+pkgver=0.8.2.r0.g0a58844
 pkgrel=1
 _gitname=indicator-kdeconnect
 pkgdesc="Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)"
