@@ -1,5 +1,5 @@
 pkgname=rar2fs
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="Fuse file system for reading Rar archives"
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ makedepends=("libunrar")
 
 source=(    "https://github.com/hasse69/rar2fs/releases/download/v$pkgver/rar2fs-$pkgver.tar.gz"
             "http://www.rarlab.com/rar/unrarsrc-5.4.5.tar.gz")
-sha256sums=('5d702847071fbbc6fe25d14b544f390f7e65ad3d13c14a619dbf7c290e65edae'
+sha256sums=('1961417e4e3c7afb5dec48d13ddfdc89e402389396cc21d4da06745f2ea9e417'
             'e470c584332422893fb52e049f2cbd99e24dc6c6da971008b4e2ae4284f8796c')
             
 build() {
