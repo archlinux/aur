@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Symon <jtsymon@gmail.com>
 pkgname=dale-git
 _gitname=dale
-pkgver=r1036.933e671
+pkgver=r1038.760bb29
 pkgrel=1
 pkgdesc='Lisp-flavoured C'
 url='https://github.com/tomhrr/dale/'
@@ -12,21 +12,14 @@ makedepends=('git' 'cmake' 'pkg-config' 'llvm35')
 provides=('dale')
 source=(
   "git+https://github.com/tomhrr/${_gitname}.git"
-  "cmake-mandir.patch"
 )
 sha512sums=(
   'SKIP'
-  'dedff6224c9b19d821dc47b8ecf55e2444cf160320b9bcdc8343699575cf6ec4da402ee7d2a9341c491e62b9f179d458c1d01efad226fc09e283f3c2a6fac2a2'
 )
 
 pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$_gitname"
-  patch -Np1 -i "${srcdir}/cmake-mandir.patch"
 }
 
 build() {
