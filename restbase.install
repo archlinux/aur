@@ -1,0 +1,37 @@
+# Colored makepkg-like functions
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+_update() {
+    if ! getent passwd restbase &>/dev/null; then
+        msg_blue "Adding user 'restbase'"
+        useradd -m -r -U -d /usr/share/webapps/restbase -s /bin/false restbase &>/dev/null
+        chown -R restbase /usr/share/webapps/restbase
+	chgrp -R restbase /usr/share/webapps/restbase
+    fi
+}
+
+post_install() {
+    _update
+    echo ">> Before run restbase, modify /usr/share/webapps/restbase/config.yaml ."
+    echo ">> Reference comments in this file for help ."
+}
+
+
+post_remove() {
+    if getent passwd restbase &>/dev/null; then
+        msg_blue "Removing user 'restbase'"
+        userdel -rf restbase &>/dev/null
+    fi
+}
+
