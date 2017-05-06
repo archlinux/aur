@@ -17,6 +17,9 @@ _gourl="github.com/zquestz/${pkgname}"
 build() {
   cd "$pkgname-$pkgver"
 
+  go get -u github.com/FiloSottile/gvt
+  gvt restore
+
   go build .
 }
 
