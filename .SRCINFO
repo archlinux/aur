@@ -8,8 +8,10 @@ pkgbase = ccpkip11
 	depends = pcsclite
 	source = ccs_2.01-00161.amd64.deb::http://download.cryptotech.com.pl/?key=standardlinuxccs64&mode=2
 	source = LICENSE
+	source = ccpkip11.module
 	sha256sums = 0c15e51d685fa53031915cdc7be45cc41493fecc08720f4d116b7ecbb7ff2309
 	sha256sums = ad4dc75fa4f544278f51d9e444db3459a6a362dc264f5c81a9725745d96ca087
+	sha256sums = 40d59f898853a0389b75f22701278d39e116acb8ee0d7d95380cec201640b268
 
 pkgname = ccpkip11
 
