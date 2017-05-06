@@ -1,0 +1,20 @@
+pkgbase = ibus-m17n-git
+	pkgdesc = M17N engine for IBus from git master
+	pkgver = 1.3.4.r16.791efdd
+	pkgrel = 1
+	url = http://code.google.com/p/ibus/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = python2-pyenchant
+	depends = ibus
+	depends = m17n-db
+	depends = m17n-lib
+	provides = ibus-m17n
+	conflicts = ibus-m17n
+	source = ibus-m17n-git::git+https://github.com/ibus/ibus-m17n/
+	md5sums = SKIP
+
+pkgname = ibus-m17n-git
+
