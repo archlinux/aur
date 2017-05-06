@@ -30,11 +30,11 @@ _pkgname=firefox
 pkgname=iceweasel
 epoch=1
 pkgver=$_debver.$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="A libre version of Debian Iceweasel, the standalone web browser based on Mozilla Firefox."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
-depends=(alsa-lib dbus-glib ffmpeg gtk2 gtk3 hunspell icu=58.2 libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
+depends=(alsa-lib dbus-glib ffmpeg gtk2 gtk3 hunspell icu=59.1 libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
 makedepends=(autoconf2.13 diffutils gconf imagemagick imake inetutils libidl2 libpulse librsvg-stable libxslt mesa mozilla-searchplugins pkg-config python2 quilt unzip yasm zip)
 makedepends_i686=(cargo)
 makedepends_x86_64=("${makedepends_i686[@]}")
@@ -61,6 +61,7 @@ source=("$_debrepo/`debfile $_debname`_$_debver.is.$_debver.orig.tar.xz"
         $pkgname.desktop
         $pkgname-install-dir.patch
         vendor.js
+        0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         fix-wifi-scanner.diff
         enable-object-directory-paths.patch
         mozilla-1253216.patch
@@ -77,6 +78,7 @@ sha256sums=('e77dbd8a4681481a5c9ab8ed3a5ac6c19caec8e25dc80f8b56461cfdf52d047a'
             '250f7aaa3c1362f9d2bb2211cd605eab93a5e806e8540f184979d41acf46142a'
             '3aea6676f1e53a09673b6ae219d281fc28054beb6002b09973611c02f827651d'
             '90bdede15c2e85e5d081e2b822884a6354a116868ba7d9e19a2484a4e2528aaf'
+            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
             'e260e555b261aabab1e48786dd514eeea056e4402af7cfd4dfd1d32858441484'
             'fbb6011501a74a8ea6d01c041870fcefb7ef2859c134aedc676e5f6452833f65'
@@ -128,6 +130,9 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../fix-wifi-scanner.diff
+
+  # https://bugs.archlinux.org/task/53890
+  patch -Np1 -i ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
 
   mkdir "$srcdir/path"
   ln -s /usr/bin/python2 "$srcdir/path/python"
