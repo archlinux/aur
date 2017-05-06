@@ -1,4 +1,3 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=ttf-dosega
