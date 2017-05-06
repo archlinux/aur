@@ -7,22 +7,16 @@ pkgrel=1
 arch=('any')
 pkgdesc='A media scheduler mpv'
 license=('MIT')
-depends=('mpv')
+depends=('mpv' 'youtube-dl' 'python-mpv-git')
 conflicts=('mediaqbot')
 makedepends=('git' 'python-setuptools')
 provides=('mediaqbot')
 url='https://github.com/raffomania/mediaqbot'
-source=(
-    "git+https://github.com/raffomania/mediaqbot.git"
-    "git+https://github.com/hatzel/python-mpv.git"
-)
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/raffomania/mediaqbot.git")
+sha256sums=('SKIP')
 
 prepare() {
     cd "${_gitname}"
-
-    git submodule init
-    git config submodule."client/mediaqclient/mpv".url ${srcdir}/mpv
 }
 
 package() {
