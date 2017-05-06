@@ -4,15 +4,14 @@ pkgname=httraqt
 name=HTTraQt
 pkgver=1.4.8
 pkgrel=1
-pkgdesc="Is the clone from WinHTTrack tool. GUI is based on Qt4 libriaries."
+pkgdesc="Is the clone from WinHTTrack tool. GUI is based on Qt5 libriaries."
 arch=('i686' 'x86_64')
 url="http://httraqt.sourceforge.net/"
-depends=('qt5-base' 'httrack>=3')
+depends=('qt5-multimedia' 'httrack>=3')
 makedepends=('cmake' 'automoc4' 'gcc')
 source=("http://freefr.dl.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
 #options=('!strip')
 license=('GPL')
-install=${pkgname}.install
 
 prepare() {
   sed 's|USE_QT_VERSION 4|USE_QT_VERSION 5|g' -i "${pkgname}/CMakeLists.txt"
