@@ -1,7 +1,7 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=apart-gtk
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux GUI for cloning/restoring partitions to/from compressed image files"
 arch=('any')
 url="https://github.com/alexheretic/apart-gtk"
@@ -12,6 +12,7 @@ depends=('python'
          'pigz'
          'partclone'
          'zeromq')
+optdepends=('polkit: to run apart directly from menu')
 makedepends=('python-pip'
              'python-wheel'
              'rustup'
