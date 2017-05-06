@@ -1,7 +1,7 @@
 pkgbase = gogs
-	pkgdesc = Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language.
+	pkgdesc = Self Hosted Git Service written in Go
 	pkgver = 0.11.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://gogs.io/
 	install = gogs.install
@@ -10,26 +10,27 @@ pkgbase = gogs
 	arch = armv6h
 	arch = armv7h
 	license = MIT
-	makedepends = go
-	makedepends = go-bindata-git
-	makedepends = nodejs-less
-	depends = git
-	depends = sqlite
+	makedepends = go>=1.3
+	depends = git>=1.7.1
+	optdepends = sqlite: SQLite support
+	optdepends = mariadb: MariaDB support
+	optdepends = postgresql: PostgreSQL support
+	optdepends = redis: Redis support
+	optdepends = memcached: MemCached support
+	optdepends = openssh: GIT over SSH support
 	provides = gogs
-	conflicts = gogs
+	conflicts = gogs-bin
 	conflicts = gogs-git
-	replaces = gogs-master-git
-	options = !buildflags
-	source = gogs::git+https://github.com/gogits/gogs#tag=v0.11.4
+	conflicts = gogs-git-dev
+	options = !strip
+	options = !emptydirs
+	backup = etc/gogs/app.ini
+	source = gogs-0.11.4::https://github.com/gogits/gogs/archive/v0.11.4.tar.gz
+	source = 0001-Adjust-config-for-Arch-Linux-package.patch
 	source = gogs.service
-	source = gogs.sysusers
-	source = gogs.tmpfiles
-	source = gogs.install
-	sha256sums = SKIP
-	sha256sums = f9f56b4946ad58f6c38ca4bda68f80ee02706d322986b5ffec2280accc83b55e
-	sha256sums = a51f93aefe8724aad67e8cacaaaa1f140c930cffcdb1f5dd951272a340c59650
-	sha256sums = e761cd82ad26d732bbeaac73307a032674612d30be98f9a9c8c769340139605c
-	sha256sums = c120a3458ad295815020441c940e81ee0dbd9d0322a2bd585b7c3d56da0e9dea
+	sha512sums = e262cdd2409dd846a1473993c222a7b9692c694ac9620a5dcd576a17714bfee76212935dcfbf0ad83b7b95623c075f1622613524f347d24d7530732e966c733f
+	sha512sums = 1df73da8962605369bbefcf6ad2b2cf1594b628b182f9ef591089da9324d134b352a0cd3999748bf52b42a260421f08f128a8b61c9f89f70ef11c6c3bc92786c
+	sha512sums = a63ffa27e5a4a9123f42647a44cb99d203ae11837243e07178dc4a402a1af47fe99e6e854a8021f493a41e2e64d6fc961264ef4fb9723e740891aec993866c29
 
 pkgname = gogs
 
