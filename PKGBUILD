@@ -8,11 +8,11 @@ epoch=1
 _brandingver=2.39
 _brandingrel=3
 pkgver=2.46
-pkgrel=3
+pkgrel=4
 pkgdesc="A libre version of Debian Iceape, the internet suite based on SeaMonkey."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
-depends=(alsa-lib dbus-glib desktop-file-utils gtk2 gtk3 hunspell libevent libnotify libvpx libxt mime-types mozilla-common mozilla-searchplugins nss sqlite startup-notification libpulse icu=58.2 gconf)
+depends=(alsa-lib dbus-glib desktop-file-utils gtk2 gtk3 hunspell libevent libnotify libvpx libxt mime-types mozilla-common mozilla-searchplugins nss sqlite startup-notification libpulse icu=59.1 gconf)
 makedepends=(unzip zip pkg-config python2 librsvg-stable wireless_tools yasm mesa autoconf2.13 quilt imake python3 gst-plugins-base)
 optdepends=('gst-plugins-base: vorbis decoding, ogg demuxing'
             'gst-plugins-bad: aac, vp8 and opus decoding'
