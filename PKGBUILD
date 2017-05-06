@@ -2,15 +2,15 @@
 
 _hkgname=ghc-exactprint
 pkgname=haskell-ghc-exactprint
-pkgver=0.5.3.0
-pkgrel=2
+pkgver=0.5.3.1
+pkgrel=1
 pkgdesc="GHC version of haskell-src-exts exactPrint"
 arch=('i686' 'x86_64')
 url="https://hackage.haskell.org/package/${_hkgname}"
 license=("custom:BSD3")
-depends=("ghc>=7.10.2" "haskell-ghc-paths>=0.1" "haskell-mtl>=2.2.1" "haskell-syb>=0.5" "haskell-free>=4.12")
+depends=("ghc>=7.10.2" "haskell-ghc-paths>=0.1" "haskell-mtl>=2.2.1" "haskell-syb>=0.5" "haskell-free>=4.12" "haskell-text>=1.2.2" "haskell-turtle>=1.3.0")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('90e088b04a5b72d7c502049a201180bd593912d831d48b605582882dc9bc332d')
+sha256sums=('54f2b83a8643e25654e4dfaf236938021e37c82e22d589d45ffb43aef2483772')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
