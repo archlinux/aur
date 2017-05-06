@@ -1,6 +1,6 @@
 pkgbase = consolekit-git
 	pkgdesc = A framework for defining and tracking users, login sessions, and seats
-	pkgver = r720.54552ec
+	pkgver = r726.29b7384
 	pkgrel = 1
 	url = https://github.com/ConsoleKit2/ConsoleKit2
 	install = consolekit.install
@@ -11,6 +11,7 @@ pkgbase = consolekit-git
 	makedepends = python
 	makedepends = xmlto
 	makedepends = docbook-xsl
+	depends = acl
 	depends = dbus
 	depends = glib2
 	depends = libx11
