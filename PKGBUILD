@@ -2,21 +2,21 @@
 pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
-pkgver=1.1.8.64.ga471796a0
-pkgrel=5
+pkgver=1.1.8.69.gc04a4acaa
+pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
 license=('AGPL3')
-depends=()
+depends=('binutils')
 makedepends=('doxygen' 'gcc-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'gnupg' 'gnuplot' 'imagemagick' 'latex2html' 'linux'
 	     'linux-headers' 'linux-lts' 'linux-lts-headers' 'lsof'
 	     'net-snmp' 'openssl' 'swig' 'systemd' 'tcl' 'texlive-bin'
 	     'texlive-core' 'transfig' 'gawk' 'java-environment' 'lm_sensors'
-             'popt' 'git' 'ccache')
+             'popt' 'zip' 'git')
 conflicts=("$_pkgbase" 'strigi')
-options=('!emptydirs' 'ccache' '!distcc' '!makeflags')
+options=('!emptydirs' '!distcc' '!makeflags')
 #source=("$pkgbase::git+file:///u2/git/monavacon.git")
 source=("$pkgbase::git+https://github.com/openss7/openss7.git")
 md5sums=('SKIP')
