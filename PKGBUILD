@@ -7,8 +7,8 @@ pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64')
 url="https://mumble.info"
 license=('BSD')
-depends=()
-makedepends=()
+depends=('qt5-base' 'protobuf')
+makedepends=('python' 'boost')
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
 sha512sums=('ac8b08e8bf1265913d44b298bedb36bd6dab40e00b87fad8a594f742b2e4e596b0edceb9b91517cab33703386516764473e082935273f0c7e859eaa9d629233e')
 
@@ -16,7 +16,7 @@ build() {
   cd $srcdir/mumble-${pkgver//_/\~}~snapshot
 
   qmake-qt5 main.pro \
-    CONFIG+="no-client no-ice optimize" \
+    CONFIG+="no-client no-bonjour no-ice optimize" \
     INCLUDEPATH+="/usr/include/openssl-1.0" \
     QMAKE_LFLAGS+="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
 
