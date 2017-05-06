@@ -12,7 +12,7 @@ _sigproc_url="http://www.acm.org/sigs/publications"
 _sigplan_url="http://drupal.sigplan.org/sites/default/files"
 license=('')
 depends=('texlive-latex3')
-optdepends=('latex-template-acmart: Official 2016 ACM Master template, for use with any new work')
+optdepends=('latex-template-acmart: Official 2017 ACM Master template, for use with any new work')
 install=texlive.install
 source=(${_sigproc_url}/sigproc-sp.pdf
 ${_sigproc_url}/acm_proc_article-sp.cls
