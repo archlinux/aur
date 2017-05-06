@@ -2,7 +2,7 @@
 
 _gitname=akonadi-ews
 pkgname=$_gitname-git
-pkgver=r306.2b86eca
+pkgver=r316.854ca8c
 pkgrel=1
 pkgdesc="Resource agent for Microsoft Exchange using Exchange Web Services (EWS) protocol"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('kcalcore' 'akonadi-mime' 'hicolor-icon-theme' 'kcontacts')
 makedepends=('extra-cmake-modules' 'boost' 'kdesignerplugin')
 conflicts=("$_gitname")
 provides=("$_gitname")
-source=("git://github.com/KrissN/$_gitname.git")
+source=("git+https://github.com/KrissN/$_gitname.git")
 sha256sums=('SKIP')
 
 pkgver() {
