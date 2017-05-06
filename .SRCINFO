@@ -1,0 +1,13 @@
+pkgbase = latex-template-acmart
+	pkgdesc = Official 2017 ACM Master article template, consolidating 8 individual ACM journal and ACM Proceedings
+	pkgver = 1.35
+	pkgrel = 1
+	url = http://www.acm.org/publications/authors/submissions
+	install = texlive.install
+	arch = any
+	depends = texlive-latex3
+	source = http://mirrors.ctan.org/macros/latex/contrib/acmart.zip
+	md5sums = 51e1b2e57e567d7e6abe4cd3a37c040d
+
+pkgname = latex-template-acmart
+
