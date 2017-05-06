@@ -2,7 +2,7 @@
 
 pkgname=s
 pkgver=0.5.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -14,20 +14,23 @@ source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('8a5ba823d02f495dd1bb150882ddccd2bb082efff4c996b9b43e4cd5599d3df2')
 
 build() {
-  cd "$pkgname-$pkgver"
+  mkdir -p "${srcdir}/go/src/github.com/zquestz"
+  export GOPATH="${srcdir}/go"
+  export GOBIN="$GOPATH/bin"
 
-  export GOPATH=~/go
+  mv "$pkgname-$pkgver" "$GOPATH/src/github.com/zquestz/s"
+  cd "$GOPATH/src/github.com/zquestz/s"
 
   go get -u github.com/FiloSottile/gvt
-  ~/go/bin/gvt restore
+  $GOBIN/gvt restore
 
   go build .
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/go/src/github.com/zquestz/s"
 
-  install -Dm 775 "$pkgname-$pkgver" \
+  install -Dm 775 "s" \
     "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
