@@ -10,6 +10,7 @@ pkgbase = nerd-fonts-complete
 	depends = fontconfig
 	depends = xorg-font-utils
 	conflicts = nerd-fonts-git
+	conflicts = nerd-fonts-complete-mono-glyphs
 	source = nerd-fonts-complete.links
 	source = https://github.com/ryanoasis/nerd-fonts/raw/v1.0.0/LICENSE
 	sha256sums = 36916f6d9ce60a7fba173710127752f123cbbed484f07919d8ea3cf4e8b72da6

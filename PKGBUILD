@@ -8,7 +8,7 @@ url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('wget')
-conflicts=(nerd-fonts-git)
+conflicts=(nerd-fonts-git nerd-fonts-complete-mono-glyphs)
 install=$pkgname.install
 source=("$pkgname.links"
 	"https://github.com/ryanoasis/nerd-fonts/raw/v1.0.0/LICENSE")
