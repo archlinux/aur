@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-wm-git
-pkgver=r8.b36f95a
+pkgver=20170506.8b0b220
 pkgrel=1
 pkgdesc="Windowmanagement environment for guile"
 arch=('any')
@@ -16,7 +16,7 @@ options=('!makeflags')
 _gitname="guile-wm"
 
 pkgver() {
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 prepare() {
