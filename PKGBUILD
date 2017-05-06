@@ -12,8 +12,8 @@ license=('custom')
 depends=('pcsclite')
 source=(ccs_$_version-$_build.amd64.deb::"http://download.cryptotech.com.pl/?key=standardlinuxccs64&mode=2"
         'LICENSE')
-md5sums=('9e334b3451e1e24c3de8697ea502b316'
-         '4573b427fb59055e9e6b8db84d9e1d00')
+sha256sums=('0c15e51d685fa53031915cdc7be45cc41493fecc08720f4d116b7ecbb7ff2309'
+            'ad4dc75fa4f544278f51d9e444db3459a6a362dc264f5c81a9725745d96ca087')
 
 package() {
   ar xf "ccs_$_version-$_build.amd64.deb"
