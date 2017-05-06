@@ -1,0 +1,14 @@
+pkgbase = rustsym
+	pkgdesc = Tool to query symbols from rust code for use in IDEs
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/trixnz/rustsym
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = rustsym-0.3.1.tar.gz::https://crates.io/api/v1/crates/rustsym/0.3.1/download
+	sha256sums = 9ff315a51ca2ea8926ed6595b04f1fbf1bd4689ce0fc4dde75e8dbabf1d587f9
+
+pkgname = rustsym
+
