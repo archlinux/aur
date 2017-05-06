@@ -10,7 +10,7 @@ pkgdesc='A community Bash framework'
 arch=('any')
 url='https://github.com/Bash-it/bash-it'
 license=('custom:undecided')
-depends=('bash' 'curl' 'p7zip')
+depends=('bash' 'coreutils' 'curl' 'p7zip')
 optdepends=(
   'autojump: plugin'
   'base-devel: `makefile` completion'
@@ -34,8 +34,10 @@ source=(
   'https://github.com/Bash-it/bash-it/tarball/master'
   'LICENSE'
   'custom.bash'
+  'install-bash-it'
 )
 sha512sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -57,6 +59,7 @@ prepare() {
 
 package() {
   # All upstream-provided files go into the /usr hierarchy
+  mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
@@ -65,6 +68,10 @@ package() {
   cp --preserve=mode -t \
     "${pkgdir}/usr/share/licenses/${pkgname}" \
     "${srcdir}/LICENSE"
+
+  cp --preserve=mode -t \
+    "${pkgdir}/usr/bin" \
+    "${srcdir}/install-bash-it"
 
   cp -r --preserve=mode -t "${pkgdir}/usr/lib/${pkgname}" \
     "${srcdir}"/{bash_it,install,uninstall}.sh \
@@ -135,17 +142,14 @@ package() {
 
   # Create symlink to `custom/example.bash`
   ln -fs \
-    "${pkgdir}/usr/lib/${pkgname}/custom/example.bash" \
+    "/usr/lib/${pkgname}/custom/example.bash" \
     "${_factorydir}/custom/"
 
   # Create symlinks to remaining files
   ln -fs \
     "/usr/lib/${pkgname}"/{bash_it,install,uninstall}.sh \
-    "/usr/lib/${pkgname}"/{lib,template,themes} \
-    "/usr/share/${pkgname}"/.editorconfig \
+    "/usr/lib/${pkgname}"/{lib,themes} \
+    "/usr/share/${pkgname}"/{.editorconfig,template} \
     "/usr/share/doc/${pkgname}"/{CONTRIBUTING,README}.md \
     "${_factorydir}/"
-
-  # The user who installed the package gets a copy on the house
-  cp -r --preserve=mode -t ~/ "${_factorydir}"
 }

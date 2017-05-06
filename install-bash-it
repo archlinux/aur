@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+if [[ "$(whoami)" != "$(logname)" ]]; then
+  echo >&2 'This command will install files into your' \
+    'home directory. It must be run without sudo.'
+  exit 1
+fi
+
+echo >&2 'Installing files into ~/.bash_it'
+
+cp -irvP --preserve=mode,links -t ~/ \
+  "/usr/share/bash-it-git/home_factory/.bash_it"
+
+echo >&2 'To complete the installation, run: ~/.bash_it/install.sh'
+~/.bash_it/install.sh --help >&2

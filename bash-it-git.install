@@ -1,9 +1,9 @@
 post_install() {
-  msg2 'Note: To enable bash-it, run: ~/.bash_it/install.sh'
-  ~/.bash_it/install.sh --help >&2
+  echo >&2 'Note: To install bash-it for the logged-in user,' \
+    'run: install-bash-it'
 }
 
 post_remove() {
-  msg2 'Note: To complete removal, restore your' \
+  echo >&2 'Note: To complete removal, restore your' \
     'original `~/.bashrc` file from `~/.bashrc.bak`.'
 }
