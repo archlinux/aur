@@ -4,7 +4,7 @@
 #pkgbase=linux-lts
 pkgbase=linux-lts-surface4
 _srcname=linux-4.9
-pkgver=4.9.20
+pkgver=4.9.26
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -22,20 +22,22 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         change-default-console-loglevel.patch
         '0002-surface4-type-cover.patch'
         '0003-add-ipts.patch'
-        '0004-i2c-hid-fix.patch')
+        '0004-i2c-hid-fix.patch'
+        '0005-ipts-fix-NULL-pointer-dereference.patch')
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'fb856acd9195e7d83ef9971ec7be55eca0d6fdf0fbfbe9a8f3bb04590d44b51f'
+            'f0e2654ffb568cadfa7792f5825830b357acc8c7877bd5a58ef676b191d08c33'
             'SKIP'
             '53f57faf59621f1db6d97ef5d2e5141ab47278c34ae0308ca7196ad4021149a4'
             '93f63b05fb6792c16ffda86ce99ab488223347a4a46ea61f9a28523a0289e357'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '814f395fb39b5da77699ec5480d8176f6e9eefd5dd50c157945ceba6169a0658'
+            'fd4e049d03302d0f1c1429f63916e706322bb93cda355b86c5016a183938eb37'
             'c6c6645a1a0e58ed32daf283f3cebafb5c195a2b4091bd1208eda073692ca383'
-            'e0337e929f2eb3689332ada9ee0766a9cb06b0cf6ba3dd16416e72009ec91eb9')
+            'e0337e929f2eb3689332ada9ee0766a9cb06b0cf6ba3dd16416e72009ec91eb9'
+            '58f0d86935377ec094a80c9f8793f0378fc5672de87c4bed834e2e80a37330a1')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -55,6 +57,7 @@ prepare() {
   patch -p1 -i "${srcdir}/0002-surface4-type-cover.patch"
   patch -p1 -i "${srcdir}/0003-add-ipts.patch"
   patch -p1 -i "${srcdir}/0004-i2c-hid-fix.patch"
+  patch -p1 -i "${srcdir}/0005-ipts-fix-NULL-pointer-dereference.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream

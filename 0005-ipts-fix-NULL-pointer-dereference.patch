@@ -1,0 +1,31 @@
+From bab1e5b308acfa7572906e70ae959d8db5080b3e Mon Sep 17 00:00:00 2001
+From: Anton Vorontsov <anton@enomsg.org>
+Date: Thu, 29 Dec 2016 15:15:38 -0800
+Subject: [PATCH] misc: ipts: Fix NULL pointer dereference in
+ ipts_hid_release()
+
+If we failed to add a hid device (e.g. firmware failed to load),
+ipts_hid_release() will still be called (by mei_cl_device_remove()) on
+shutdown, which in turn will cause ipts->hid to be dereferenced.
+
+Signed-off-by: Anton Vorontsov <anton@enomsg.org>
+---
+ drivers/misc/ipts/ipts-hid.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/misc/ipts/ipts-hid.c b/drivers/misc/ipts/ipts-hid.c
+index cc3ad0d..afa740f 100644
+--- a/drivers/misc/ipts/ipts-hid.c
++++ b/drivers/misc/ipts/ipts-hid.c
+@@ -286,8 +286,9 @@ int ipts_hid_init(ipts_info_t *ipts)
+ 
+ void ipts_hid_release(ipts_info_t *ipts)
+ {
+-	struct hid_device *hid = ipts->hid;
+-	hid_destroy_device(hid);
++	if (!ipts->hid)
++		return;
++	hid_destroy_device(ipts->hid);
+ }
+ 
+ int ipts_handle_hid_data(ipts_info_t *ipts,
