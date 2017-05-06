@@ -1,7 +1,7 @@
 # Maintainer: Alex Talker < alextalker at openmailbox dot org >
 # pulsemixer-git code by Jeff Parent <jecxjo@sdf.lonestar.org>
 pkgname=pulsemixer
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="cli and curses mixer for pulseaudio"
 arch=(any)
@@ -11,7 +11,11 @@ depends=('python' 'pulseaudio')
 conflicts=("$pkgname-git")
 replaces=("$pkgname-git")
 source=("https://github.com/GeorgeFilipkin/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('7bc9b34c23771eaf947e1be21e805304d65b1e70e8c93ec0db237bb7f0f707ee')
+sha256sums=('765901b0ce28720dbe89e635b695a577df475eb5be4f0e8be97ca36c91a14744')
+
+prepare(){
+  cd "$srcdir/$pkgname-$pkgver"
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
