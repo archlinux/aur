@@ -1,4 +1,7 @@
 #!/bin/sh
-APPBASE="/usr/share/greenfoot"
-CP="$APPBASE/lib/bluej.jar:$JAVA_HOME/lib/tools.jar"
-"$JAVA_HOME/bin/java" -cp "$CP" bluej.Boot -greenfoot=true -bluej.compiler.showunchecked=false "$@"
+CP=/usr/share/java/greenfoot/bluej.jar:$JAVAPATH/lib/tools.jar
+java -Dawt.useSystemAAFontSettings=on -cp "$CP" bluej.Boot \
+    -greenfoot=true \
+    -bluej.compiler.showunchecked=false \
+    -greenfoot.url.javadoc=file:///usr/share/greenfoot/API \
+    "$@"

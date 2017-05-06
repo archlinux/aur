@@ -1,28 +1,38 @@
-# Maintainer: Seishinryohosha <seishinryohosha @ googlemail . com>
-# Contributor: even
+# Maintainer: chet <chetgurevitch @ protonmail . com>
+# COntributor: fheday <fheday @ gmail . com>
+# Contributor: seishinryohosha <seishinryohosha @ zoho . com>
+# Contributor: even <kessiapinheiro @ gmail . com>
+
 pkgname=greenfoot
-pkgver=3.0.3
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Allows easy development of two-dimensional graphical applications, such as simulations and interactive games."
 arch=('any')
 url="http://www.greenfoot.org"
-license=('GPL2' 'BSD')
-depends=('sh' 'java-runtime' 'java-environment')
+license=('GPL2')
+depends=('sh' 'java-runtime' 'java-environment' 'java-openjfx')
 makedepends=('libarchive')
-source=(http://www.greenfoot.org/download/files/Greenfoot-generic-${pkgver//.}.jar
-        greenfoot
-        greenfoot.desktop)
-sha256sums=('8a4f067fd1f011353cdd68ff9933fac2a6bb232a2aec80552c3ecc2ffab25bf9'
-            '3cd41fd670bc6b2c0dfe0159979ee9162b980154bf43f65289e474e06765d9a0'
-            'd302cfba475646f7030c8353be8637e1601b1ec512a07cbdf936793ff67338d8')
+source=(http://www.greenfoot.org/download/files/Greenfoot-linux-${pkgver//.}.deb
+        greenfoot)
+sha256sums=('edf1e727386217a299e9fcd57a6d5c60a724a811d90d7ddec5fa05cc28631695'
+            'fdca5b8433e10ca99cf91c2ab863f86e740bd08a82532e01a49ba8110a15481e')
 
 package() {
-  cd "$srcdir"
-  bsdtar -x -f "greenfoot-dist.jar"
-  mkdir -p "$pkgdir"/usr/share/{java,greenfoot}
-  cp -r lib "$pkgdir/usr/share/greenfoot/"
-  cp -r scenarios "$pkgdir/usr/share/greenfoot/"
-  cp -r doc "$pkgdir/usr/share/greenfoot/"
-  install -Dm644 greenfoot.desktop "$pkgdir/usr/share/applications/greenfoot.desktop"
-  install -Dm755 greenfoot "$pkgdir/usr/bin/greenfoot"
+cd "$srcdir"
+ar p Greenfoot-linux-${pkgver//.}.deb data.tar.xz | tar xJ
+
+mkdir -p "${pkgdir}/usr/share/${pkgname}"
+mkdir -p "${pkgdir}/usr/share/java/${pkgname}"
+mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+
+cp -r usr/share/icons "${pkgdir}/usr/share"
+cp -r usr/share/greenfoot "${pkgdir}/usr/share/java"
+cp -r usr/share/doc/Greenfoot/API "${pkgdir}/usr/share/${pkgname}"
+cp -r usr/share/doc/Greenfoot/scenarios "${pkgdir}/usr/share/doc/${pkgname}"
+install -Dm644 usr/share/doc/Greenfoot/README.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
+install -Dm644 usr/share/doc/Greenfoot/GREENFOOT_LICENSES.txt "${pkgdir}/usr/share/licenses/${pkgname}/GREENFOOT_LICENSES"
+install -Dm644 usr/share/doc/Greenfoot/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+install -Dm644 usr/share/doc/Greenfoot/THIRDPARTYLICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/THIRDPARTYLICENSE"
+install -Dm644 usr/share/applications/greenfoot.desktop "${pkgdir}/usr/share/applications/greenfoot.desktop"
+install -Dm755 greenfoot "${pkgdir}/usr/bin/greenfoot"
 }
