@@ -2,14 +2,14 @@
 
 pkgname=dotnet-fixed
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Provides the .NET core shared framework, i.e. coreclr and corefx."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
 groups=()
 depends=('lldb' 'libunwind' 'icu58' 'lttng-ust' 'openssl' 'curl')
-makedepends=('cmake' 'make' 'clang' 'llvm' 'gettext')
+makedepends=('cmake' 'make' 'clang' 'llvm' 'gettext' 'libcurl-openssl-1.0-fixed')
 provides=('dotnet=1.1.1')
 conflicts=('dotnet-bin' 'dotnet')
 replaces=()
@@ -55,7 +55,7 @@ build() {
   ./build.sh x64 release skiptests
 
   cd "${srcdir}/corefx-${pkgver}"
-  ./src/Native/build-native.sh x64 release
+  CPLUS_INCLUDE_PATH=/usr/include/openssl-1.0 C_INCLUDE_PATH=/usr/include/openssl-1.0 ./src/Native/build-native.sh x64 release cmakeargs -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 cmakeargs -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so cmakeargs -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so cmakeargs -DCURL_LIBRARIES=/usr/lib/openssl-1.0/libcurl.so
 }
 
 _coreclr_files=(
