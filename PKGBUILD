@@ -1,24 +1,32 @@
 # $Id$
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Contributor: Olivier Mehani <shtrom-arch@ssji.net>
+# Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Lonfucius <Lonfucius@gmail.com>
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
-pkgname=ibus-m17n
-pkgver=1.3.4
-pkgrel=4
-pkgdesc='M17N engine for IBus'
+pkgname=ibus-m17n-git
+pkgver=1.3.4.r16.791efdd
+pkgrel=1
+pkgdesc='M17N engine for IBus from git master'
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/ibus/'
 license=('LGPL')
+makedepends=('git')
 depends=('python2-pyenchant' 'ibus' 'm17n-db' 'm17n-lib')
-source=("http://ibus.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('068de56caa87c002adeae0de9e908f47e3f9fde9')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/ibus/ibus-m17n/")
+
+pkgver() {
+	cd "$srcdir/${pkgname%-VCS}"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
 
-  ./configure  \
+  ./autogen.sh \
     --prefix=/usr \
     --libexecdir=/usr/lib/ibus
 
@@ -26,7 +34,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
 
   make DESTDIR="${pkgdir}" install
 }
+
+md5sums=('SKIP')

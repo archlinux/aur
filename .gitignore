@@ -1,0 +1,4 @@
+ibus-m17n-git*.pkg.tar.xz
+ibus-m17n-git/
+pkg/*
+src/*
