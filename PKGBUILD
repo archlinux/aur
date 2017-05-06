@@ -2,7 +2,7 @@
 
 pkgname=tflint
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A linter for Terraform code"
 arch=('i686' 'x86_64')
 _vendor="github.com/wata727/${pkgname}"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("https://${_vendor}/releases/download/v${pkgver}/tflint_linux_386.zip")
-md5sums=('d3cb496b7f05a8a7ff6b4c897bb2c9c9')
+md5sums=('6d63cbb7facc874ebc4fc34640ca0dfd')
 
 _vendorpath="gopath/src/$_vendor"
 
