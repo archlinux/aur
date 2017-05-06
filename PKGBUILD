@@ -1,9 +1,9 @@
-# Maintainer: Marco Pompili <marcs.pompili@gmail.com>
+# Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
 # Contributor: Dennis Kempin <mail@dennis-kempin.de>
 
 pkgname=boost-build
-pkgver=1.60
-pkgrel=3
+pkgver=1.63
+pkgrel=1
 pkgdesc="Boost.Build makes it easy to build C++ projects, everywhere."
 arch=('any')
 url="http://www.boost.org/build/"
@@ -12,8 +12,8 @@ depends=('gcc' 'boost' 'python')
 conflicts=('boost-build-nightly')
 source=("https://github.com/boostorg/build/archive/boost-${pkgver}.0.tar.gz"
         "http://www.boost.org/LICENSE_1_0.txt")
-md5sums=('987767d1e22e34e5b90e54ff6b526f40'
-         'e4224ccaecb14d942c71d31bef20d78c')
+sha256sums=('f15afc1a2636aa7876dd22122a13c4d1c8ce30317f9fcaebf93e64c8d42ffcad'
+            'c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566')
 
 prepare() {
   cd ${srcdir}/build-boost-${pkgver}.0/
