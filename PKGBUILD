@@ -3,7 +3,7 @@
 
 _pkgname=blind
 pkgname=${_pkgname}-git
-pkgver=r176.da24af3
+pkgver=1.1.r0.gda24af3
 pkgrel=1
 pkgdesc="Suckless command line video editor"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
