@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=blind
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Suckless command line video editor"
 arch=(x86_64 i686)
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(ffmpeg)
 optdepends=('imagemagick: support for other images formats than farbfeld and PAM')
 source=(http://dl.suckless.org/tools/blind-${pkgver}.tar.gz)
-sha1sums=(ae944dfa9d9824e93e4a6bf2d865e50fb4bc7f31)
+sha1sums=(ce4f24d208dedf04c1fbdca2d027175b3585a7e2)
 
 
 build() {
