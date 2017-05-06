@@ -15,15 +15,15 @@
 pkgbase=systemd-legacy
 _pkgbase=systemd
 pkgname=('systemd-legacy' 'systemd-legacy-libsystemd' 'systemd-legacy-sysvcompat')
-pkgver=229
-pkgrel=3
+pkgver=232
+pkgrel=8
 arch=('i686' 'x86_64' 'armv7h')
-url="http://www.freedesktop.org/wiki/Software/systemd"
+url="https://www.github.com/systemd/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'git')
-options=('strip' 'debug')
+options=('strip')
 source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         'initcpio-hook-udev'
         'initcpio-install-systemd'
@@ -31,30 +31,92 @@ source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         'arch.conf'
         'loader.conf'
         'splash-arch.bmp'
+        'systemd-user.pam'
+        'systemd-hwdb.hook'
+        'systemd-sysusers.hook'
+        'systemd-tmpfiles.hook'
+        'systemd-update.hook'
+        '0001-disable-RestrictAddressFamilies-on-i686.patch'
+        '0001-Revert-nspawn-try-to-bind-mount-resolved-s-resolv.co.patch'
+        '0001-nspawn-don-t-hide-bind-tmp-mounts.patch'
         'userspace-firmware-loading-support.patch')
-md5sums=('SKIP'
-         '90ea67a7bb237502094914622a39e281'
-         '976c5511b6493715e381f43f16cdb151'
-         '1b3aa3a0551b08af9305d33f85b5c2fc'
-         '20ead378f5d6df4b2a3e670301510a7d'
-         'ddaef54f68f6c86c6c07835fc668f62a'
-         'd41d8cd98f00b204e9800998ecf8427e'
-         '1997f9e2825f08e4894e3622b62cf797')
+sha512sums=('SKIP'
+            'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
+            '52af734947a768758d5eb3f18e31a1cfec6699eca6fa10e40b90c7f11991509186c0a696e3490af3eaba80064ea4cb93e041579abf05addf072d294300aa4b28'
+            'fec639de0d99967ed3e67289eff5ff78fff0c5829d350e73bed536a8391f1daa1d118d72dbdc1f480ffd33fc22b72f4817d0973bd09ec7f182fd26ad87b24355'
+            '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
+            'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
+            'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
+            'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
+            '2c1f765e7cefc50f07ad994634ea25d9396e6b9c0de46e58f18377e642a471517a0dbf5eb547070a38c6ecf84ec8e030f650a6cee010871cd7a466a32534adda'
+            '9d27d97f172a503f5b7044480a0b9ccc0c4ed5dbb2eb3b2b1aa929332c3bcfe38ef0c0310b6566f23b34f9c05b77035221164a7ab7677784c4a54664f12fca22'
+            '0f4efddd25256e09c42b953caeee4b93eb49ecc6eaebf02e616b4dcbfdac9860c3d8a3d1a106325b2ebc4dbc6e08ac46702abcb67a06737227ccb052aaa2a067'
+            '10190fba9f39a8f4b620a0829e0ba8ed63bb4dbeca712966011ee7807880d01ab2abff1a80baafeb6674db70526a473fe585db8190e864f318fc4d6068552618'
+            '89f9b2d3918c679ce4f76c2b10dc7fcb7e04f1925a5f92542f06891de2a123a91df7eb67fd4ce71506a8132f5440b3560b7bb667e1c1813944b115c1dfe35e3f'
+            'b993a42c5534582631f7b379d54f6abc37e3aaa56ecf869a6d86ff14ae5a52628f4e447b6a30751bc1c14c30cec63a5c6d0aa268362d235ed477b639cac3a219'
+            '68478403433aafc91a03fda5d83813d2ed1dfc6ab7416b2927a803314ecf826edcb6c659587e74df65de3ccb1edf958522f56ff9ac461a1f696b6dede1d4dd35'
+            '32c36fe093d3ebc5c780b483cae3026ed6cba6b1f142158953ff1e4104a0b8eafb37b7a514b013ac579ce27ae280ddb885f7fb4cbe555892ffdb71bbfde92274')
+validpgpkeys=(
+  '63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering
+)
+
+_backports=(
+  '843d5baf6aad6c53fc00ea8d95d83209a4f92de1'  # core: don't use the unified hierarchy for the systemd cgroup yet (#4628)
+  'abd67ce74858491565cde157c7b08fda43d3279c'  # basic/virt: fix userns check on CONFIG_USER_NS=n kernel (#4651)
+  '4318abe8d26e969ebdb97744a63ab900233a0185'  # build-sys: do not install ctrl-alt-del.target symlink twice
+  'd112eae7da77899be245ab52aa1747d4675549f1'  # device: Avoid calling unit_free(NULL) in device setup logic (#4748)
+  'cfed63f60dd7412c199652825ed172c319b02b3c'  # nspawn: fix exit code for --help and --version (#4609)
+  '3099caf2b5bb9498b1d0227c40926435ca81f26f'  # journal: make sure to initially populate the space info cache (#4807)
+  '3d4cf7de48a74726694abbaa09f9804b845ff3ba'  # build-sys: check for lz4 in the old and new numbering scheme (#4717)
+)
+
+_validate_tag() {
+  local success fingerprint trusted status tag=v$pkgver
+
+  parse_gpg_statusfile /dev/stdin < <(git verify-tag --raw "$tag" 2>&1)
+
+  if (( ! success )); then
+    error 'failed to validate tag %s\n' "$tag"
+    return 1
+  fi
+
+  if ! in_array "$fingerprint" "${validpgpkeys[@]}" && (( ! trusted )); then
+    error 'unknown or untrusted public key: %s\n' "$fingerprint"
+    return 1
+  fi
+
+  case $status in
+    'expired')
+      warning 'the signature has expired'
+      ;;
+    'expiredkey')
+      warning 'the key has expired'
+      ;;
+  esac
+
+  return 0
+}
 
 prepare() {
   cd "$_pkgbase"
 
-  # networkd: FIONREAD is not reliable on some sockets
-  git cherry-pick -n 4edc2c9b6b5b921873eb82e58719ed4d9e0d69bf
+  #_validate_tag || return
 
-  # fix assertion failure in src/core/timer.c on bootup (FS#48197)
-  git cherry-pick -n 3f51aec8647fe13f4b1e46b2f75ff635403adf91
+  if (( ${#_backports[*]} > 0 )); then
+    git cherry-pick -n "${_backports[@]}"
+  fi
 
-  # fix udevd error checking from cg_unified() (FS#48188)
-  git cherry-pick -n 6d2353394fc33e923d1ab464c8f88df2a5105ffb
+  # https://github.com/systemd/systemd/issues/4789
+  patch -Np1 <../0001-nspawn-don-t-hide-bind-tmp-mounts.patch
 
-  # revert "core: resolve specifier in config_parse_exec()"
-  git cherry-pick -n bd1b973fb326e9b7587494fd6108e5ded46e9163
+  # these patches aren't upstream, but they make v232 more useable.
+
+  # https://github.com/systemd/systemd/issues/4575
+  patch -Np1 <../0001-disable-RestrictAddressFamilies-on-i686.patch
+
+  # https://github.com/systemd/systemd/issues/4595
+  # https://github.com/systemd/systemd/issues/3826
+  patch -Np1 <../0001-Revert-nspawn-try-to-bind-mount-resolved-s-resolv.co.patch
 
   # legacy: userspace firmware loading support
   git apply "$srcdir/userspace-firmware-loading-support.patch"
@@ -71,17 +133,25 @@ build() {
   CFLAGS+=" -fno-lto"
   CXXFLAGS+=" -fno-lto"
 
-  ./configure \
-      --libexecdir=/usr/lib \
-      --localstatedir=/var \
-      --sysconfdir=/etc \
-      --enable-lz4 \
-      --disable-audit \
-      --disable-ima \
-      --with-sysvinit-path= \
-      --with-sysvrcnd-path= \
-      --with-ntp-servers="${timeservers[*]}" \
-      --with-firmware-path=/usr/lib/firmware
+  local configure_options=(
+    --libexecdir=/usr/lib
+    --localstatedir=/var
+    --sysconfdir=/etc
+
+    --enable-lz4
+    --disable-audit
+    --disable-ima
+
+    --with-sysvinit-path=
+    --with-sysvrcnd-path=
+    --with-ntp-servers="${timeservers[*]}"
+    --with-default-dnssec=no
+    --with-dbuspolicydir=/usr/share/dbus-1/system.d
+    --without-kill-user-processes
+    --with-firmware-path=/usr/lib/firmware
+  )
+
+  ./configure "${configure_options[@]}"
 
   make
 }
@@ -89,7 +159,7 @@ build() {
 package_systemd-legacy() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'dbus' 'glib2' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'systemd-legacy-libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
   provides=('systemd' 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
@@ -100,16 +170,7 @@ package_systemd-legacy() {
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user')
-  backup=(etc/dbus-1/system.d/org.freedesktop.systemd1.conf
-          etc/dbus-1/system.d/org.freedesktop.hostname1.conf
-          etc/dbus-1/system.d/org.freedesktop.login1.conf
-          etc/dbus-1/system.d/org.freedesktop.locale1.conf
-          etc/dbus-1/system.d/org.freedesktop.machine1.conf
-          etc/dbus-1/system.d/org.freedesktop.timedate1.conf
-          etc/dbus-1/system.d/org.freedesktop.import1.conf
-          etc/dbus-1/system.d/org.freedesktop.network1.conf
-          etc/pam.d/systemd-user
-          etc/systemd/bootchart.conf
+  backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/journald.conf
           etc/systemd/journal-remote.conf
@@ -154,9 +215,6 @@ package_systemd-legacy() {
   # we'll create this on installation
   rmdir "$pkgdir/var/log/journal/remote"
 
-  # fix pam file
-  sed 's|system-auth|system-login|g' -i "$pkgdir/etc/pam.d/systemd-user"
-
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 
@@ -170,6 +228,14 @@ package_systemd-legacy() {
   install -Dm644 "$srcdir/arch.conf" "$pkgdir"/usr/share/systemd/bootctl/arch.conf
   install -Dm644 "$srcdir/loader.conf" "$pkgdir"/usr/share/systemd/bootctl/loader.conf
   install -Dm644 "$srcdir/splash-arch.bmp" "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+
+  install -Dm644 "$srcdir/systemd-hwdb.hook" "$pkgdir/usr/share/libalpm/hooks/systemd-hwdb.hook"
+  install -Dm644 "$srcdir/systemd-sysusers.hook" "$pkgdir/usr/share/libalpm/hooks/systemd-sysusers.hook"
+  install -Dm644 "$srcdir/systemd-tmpfiles.hook" "$pkgdir/usr/share/libalpm/hooks/systemd-tmpfiles.hook"
+  install -Dm644 "$srcdir/systemd-update.hook" "$pkgdir/usr/share/libalpm/hooks/systemd-update.hook"
+
+  # overwrite the systemd-user PAM configuration with our own
+  install -Dm644 systemd-user.pam "$pkgdir/etc/pam.d/systemd-user"
 }
 
 package_systemd-legacy-libsystemd() {
@@ -180,14 +246,14 @@ package_systemd-legacy-libsystemd() {
   replaces=('libsystemd')
   conflicts=('libsystemd')
 
-  make -C "$_pkgbase" DESTDIR="$pkgdir" install-libLTLIBRARIES
+  make -C "$_pkgbase" DESTDIR="$pkgdir" install-rootlibLTLIBRARIES
 }
 
 package_systemd-legacy-sysvcompat() {
   pkgdesc="sysvinit compat for systemd"
   license=('GPL2')
   groups=('base')
-  conflicts=('sysvinit' 'systemd-sysvcompat')
+  conflicts=('systemd-sysvcompat' 'sysvinit')
   replaces=('systemd-sysvcompat')
   depends=('systemd-legacy')
 
