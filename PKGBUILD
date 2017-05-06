@@ -1,12 +1,12 @@
 pkgname=rtmpdump-ksv-git
 _gitname=rtmpdump
 pkgver=r507.3a69b31
-pkgrel=1
+pkgrel=2
 pkgdesc="A version of rtmpdump-git including numerous patches released by KSV."
 arch=('i686' 'x86_64')
 url="http://stream-recorder.com/forum/-t16103.html"
 license=('GPL2' 'LGPL2.1')
-depends=('openssl')
+depends=('gnutls')
 conflicts=('rtmpdump' 'rtmpdump-svn' 'rtmpdump-git' 'rtmpdump-ksv')
 provides=('rtmpdump' 'rtmpdump-git')
 source=('git://git.ffmpeg.org/rtmpdump#commit=3a69b31' 'Patch.diff')
@@ -21,6 +21,8 @@ pkgver() {
 prepare(){
   cd "$srcdir/$_gitname"
     patch -p0 -i "$srcdir/Patch.diff"
+    sed -e 's/^CRYPTO=OPENSSL/#CRYPTO=OPENSSL/' -e 's/#CRYPTO=GNUTLS/CRYPTO=GNUTLS/' -i Makefile -i librtmp/Makefile
+    sed -e 's/VERSION=v2.4/VERSION=v2.4.KSV/' -i Makefile -i librtmp/Makefile
 }
 
 build() {
