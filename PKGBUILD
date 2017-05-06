@@ -3,13 +3,14 @@
 _pkgname=airgeddon
 pkgname=$_pkgname-git
 pkgver=6.2
-pkgrel=3
+pkgrel=4
 pkgdesc='This is a multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
 source=('git://github.com/v1s1t0r1sh3r3/airgeddon.git')
 depends=(
   'aircrack-ng'
+  'bash>=4.2'
   'coreutils'
   'gawk'
   'iw'
@@ -19,15 +20,32 @@ depends=(
   'xterm'
 )
 optdepends=(
-  'curl:  for self-updating and for checking internet connection'
-  'ethtool: for chipset detection'
-  'pciutils:  for chipset detection'
-  'rfkill:  for unblocking wireless devices'
-  'usbutils:  for usb devices detection'
-  'wget:  for checking internet connection'
-  'xorg-xdpyinfo:  for getting the screen resolution'
+  'beef'
+  'bettercap'
+  'bully'
+  'crunch'
+  'curl'
+  'dhcp'
+  'dsniff'
+  'ethtool'
+  'ettercap'
+  'expect'
+  'hashcat'
+  'hostapd'
+  'iptables'
+  'lighttpd'
+  'mdk3'
+  'pciutils' 
+  'pixiewps'
+  'reaver'
+  'rfkill'
+  'sslstrip'
+  'usbutils'
+  'wget'
+  'wpaclean'
+  'xorg-xdpyinfo'
 )
-makedepends=('git' 'coreutils' 'binutils')
+makedepends=('binutils' 'coreutils' 'git')
 conflicts=('airgeddon-git')
 provides=('airgeddon-git')
 sha256sums=('SKIP')
@@ -44,7 +62,18 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  
+
+  echo "   .-""""-."
+  echo "  /        \\"
+  echo " /_        _\\"
+  echo "// \\      / \\\\"
+  echo "|\\__\\    /__/|"
+  echo " \\    ||    /"
+  echo "  \\        /"
+  echo "   \\  __  /"
+  echo "    '.__.'"
+  echo "     |  |"
+  echo "     |  |"
   echo "${pkgver}"
 }
 
@@ -63,7 +92,7 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/doc/airgeddon/" README.md CHANGELOG.md
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/airgeddon/LICENSE.md"
 
-  #rm -rf *.md .git* binaries imgs Dockerfile pindb_checksum.txt
+  rm -rf *.md .git* binaries imgs Dockerfile pindb_checksum.txt
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/airgeddon"
 
