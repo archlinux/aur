@@ -1,13 +1,13 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=gr-gsm-git
-pkgver=56b0a67
+pkgver=8f121c1
 pkgrel=1
 pkgdesc="Gnuradio blocks and tools for receiving GSM transmissions"
 arch=('any')
 url="https://github.com/ptrkrysik/gr-gsm"
 license=(unknown)
-depends=('gnuradio' 'libosmocore' 'boost' 'swig' 'log4cpp' 'python2-scipy')
+depends=('gnuradio' 'libosmocore' 'boost' 'swig' 'log4cpp' 'python2-scipy' 'qwt5' 'gnuradio-companion' 'python2-pyqt4')
 makedepends=('cmake')
 provides=('gr-gsm')
 source=('git+https://github.com/ptrkrysik/gr-gsm') 
