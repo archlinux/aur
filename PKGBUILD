@@ -2,8 +2,8 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=17.04.0
-pkgrel=2
+pkgver=17.05.0
+pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -23,8 +23,8 @@ source=(
   "git+https://github.com/cpuguy83/go-md2man.git"
   "docker.sysusers"
 )
-md5sums=('b48684ab01ba2068ca44a21da92ce169'
-         '1c794272d1e25c05cdd5b5706ea23658'
+md5sums=('1058a7eb3f05833475fcc29fc4b11011'
+         '98db409f71d8b1531f94a1cf95f676e0'
          'SKIP'
          'SKIP'
          '9a8b2744db23b14ca3cd350fdf73c179')
