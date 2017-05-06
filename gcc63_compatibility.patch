@@ -1,0 +1,11 @@
+--- src/checksumverifier.cpp	2015-11-23 21:42:50.589190493 -0500
++++ src/checksumverifier.cpp.new	2017-05-06 19:03:50.415889997 -0400
+@@ -64,7 +64,7 @@
+ 
+ void ChecksumVerifierThread::checkSFV(const QString &sfvfile, const QString &fileToCheck)
+ {
+-  QString fileDir = KUrl(sfvfile).directory(false);
++  QString fileDir = KUrl(sfvfile).directory();
+   QDir fileSystem;
+   QFile file(sfvfile);
+   if (!file.open(QIODevice::ReadOnly)) {

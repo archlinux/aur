@@ -3,7 +3,7 @@
 
 _pkgname=kftpgrabber
 pkgname=kftpgrabber-svn
-pkgver=r1445187    
+pkgver=r1488814    
 pkgrel=1
 pkgdesc="A graphical FTP client for KDE"
 url="http://kftp.org"
@@ -14,9 +14,11 @@ provides=('kftpgrabber')
 depends=('kdelibs' 'libssh2')
 makedepends=('subversion' 'cmake' 'automoc4')
 source=('svn://anonsvn.kde.org/home/kde/trunk/extragear/network/kftpgrabber'
-        'FindLibSSH2.patch')
+        'FindLibSSH2.patch'
+        'gcc63_compatibility.patch')
 sha256sums=('SKIP'
-            '0cca5a3fd92633210fa4ae297be437db7a6ebd6e58b9f01af553a761fa49cace')
+            '0cca5a3fd92633210fa4ae297be437db7a6ebd6e58b9f01af553a761fa49cace'
+            'SKIP')
 
 
 pkgver() {
@@ -25,10 +27,15 @@ pkgver() {
 	printf "r%s" "${ver//[[:alpha:]]}"
 }
 
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	patch -Np1 -i ${srcdir}/FindLibSSH2.patch
+	patch -p0 -i ${srcdir}/gcc63_compatibility.patch
+}
+
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	patch -Np1 -i ${srcdir}/FindLibSSH2.patch
 	cmake . \
 		-DQT_QMAKE_EXECUTABLE=qmake-qt4 \
 		-DCMAKE_INSTALL_PREFIX=$(kde4-config --prefix) \
