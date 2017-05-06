@@ -10,7 +10,7 @@ pkgdesc='A community Bash framework'
 arch=('any')
 url='https://github.com/Bash-it/bash-it'
 license=('custom:undecided')
-depends=('bash')
+depends=('bash' 'curl' 'p7zip')
 optdepends=(
   'ruby: ruby integration'
   'rbenv: rbenv integration'
