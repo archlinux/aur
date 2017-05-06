@@ -1,6 +1,6 @@
 # Maintainer: Wojciech Kluczka <wojciech.kluczka@gmail.com>
 pkgname=perceptia-git
-pkgver=0.2.0.r18.gabba632
+pkgver=0.3.0.r0.g0c34f50
 pkgrel=1
 pkgdesc='Dynamic window manager with support for Wayland'
 arch=('i686' 'x86_64')
