@@ -4,7 +4,7 @@ _build=00161
 
 pkgname=ccpkip11
 pkgver="$_version.$_build"
-pkgrel=1
+pkgrel=2
 pkgdesc="PKCS #11 driver for CryptoTech smart cards"
 arch=('x86_64')
 url="http://www.cryptotech.com.pl/Produkty/CryptoCard_Suite_Pobieranie,content.html"
@@ -22,4 +22,8 @@ prepare() {
 package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m755 "usr/lib/ccs/libccpkip11.so.$pkgver" "${pkgdir}/usr/lib/libccpkip11.so"
+
+  # Add to default module search path for various programs
+  install -d "${pkgdir}/usr/lib/pkcs11"
+  ln -s ../libccpkip11.so "${pkgdir}/usr/lib/pkcs11/libccpkip11.so"
 }
