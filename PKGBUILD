@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=screencast
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Command line interface to record a X11 desktop"
 arch=('any')
-url="https://github.com/bermond/screencast/"
-license=('GPL2')
-depends=('ffmpeg')
+url="https://github.com/dbermond/screencast/"
+license=('GPL')
+depends=('ffmpeg' 'xorg-xdpyinfo')
 optdepends=('bc: fade effect support'
             'imagemagick: watermark effect support'
             'libnotify: desktop notification support'
@@ -20,7 +20,7 @@ optdepends=('bc: fade effect support'
             'littleutils-full: png (watermark) optimization support')
 conflicts=('screencast-git')
 source=("$pkgname"-"$pkgver".tar.gz::"https://github.com/bermond/screencast/archive/v${pkgver}.tar.gz")
-sha256sums=('6f93975a4f7903d7d7a95bba7f3f9861a2c7292ccfd16bc4ff132d9715feca77')
+sha256sums=('9591137ad53698c742d10d72308ef268cc8214d7ec75df22dd2b418181b1f3eb')
 
 package() {
 	cd "$pkgname"-"$pkgver"
