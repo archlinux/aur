@@ -1,6 +1,6 @@
 pkgbase = gr-gsm-git
 	pkgdesc = Gnuradio blocks and tools for receiving GSM transmissions
-	pkgver = 56b0a67
+	pkgver = 8f121c1
 	pkgrel = 1
 	url = https://github.com/ptrkrysik/gr-gsm
 	arch = any
@@ -12,6 +12,9 @@ pkgbase = gr-gsm-git
 	depends = swig
 	depends = log4cpp
 	depends = python2-scipy
+        depends = python2-pyqt4
+        depends = gnuradio-companion
+        depends = qwt5
 	provides = gr-gsm
 	source = git+https://github.com/ptrkrysik/gr-gsm
 	sha1sums = SKIP
