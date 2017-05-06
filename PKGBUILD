@@ -3,7 +3,7 @@
 
 pkgname=latex-template-acm
 pkgver=201505
-pkgrel=1
+pkgrel=2
 pkgdesc="ACM SIG Proceedings Format style for LaTeX (acm_proc_article-sp v3.2SP, sig-alternate v2.8, sigplanconf v2.5 and the unofficial sigplan-proc-varsize v1.4)"
 arch=('any')
 url="http://www.acm.org/sigs/publications/proceedings-templates, http://sigplan.acm.org/authorInformation.htm, http://www.isi.edu/~johnh/SOFTWARE/LATEX/"
@@ -11,15 +11,8 @@ _sigproc_new_url="http://www.acm.org/binaries/content/assets/publications/articl
 _sigproc_url="http://www.acm.org/sigs/publications"
 _sigplan_url="http://drupal.sigplan.org/sites/default/files"
 license=('')
-groups=()
 depends=('texlive-latex3')
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
+optdepends=('latex-template-acmart: Official 2016 ACM Master template, for use with any new work')
 install=texlive.install
 source=(${_sigproc_url}/sigproc-sp.pdf
 ${_sigproc_url}/acm_proc_article-sp.cls
