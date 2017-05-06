@@ -3,7 +3,7 @@
 
 pkgver=16.2.5
 _pkgver=16.2.5
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
