@@ -11,7 +11,7 @@ license=('Apache')
 provides=('docker' 'docker-ce')
 conflicts=('docker' 'docker-ce' 'docker-git')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd' 'libseccomp')
-makedepends=('go-md2man')
+makedepends=('git' 'go' 'go-md2man')
 optdepends=('btrfs-progs: btrfs backend support'
             'lxc: lxc backend support')
 # don't strip binaries! A sha1 is used to check binary consistency.
@@ -19,14 +19,33 @@ options=('!strip')
 source=(
   "https://get.docker.com/builds/Linux/x86_64/docker-${pkgver}-ce.tgz"
   "https://github.com/moby/moby/archive/v${pkgver}-ce.tar.gz"
-  "docker.sysusers")
+  "git+https://github.com/spf13/cobra.git"
+  "git+https://github.com/cpuguy83/go-md2man.git"
+  "docker.sysusers"
+)
 md5sums=('b48684ab01ba2068ca44a21da92ce169'
          '1c794272d1e25c05cdd5b5706ea23658'
+         'SKIP'
+         'SKIP'
+         '9a8b2744db23b14ca3cd350fdf73c179')
 
 build() {
-  cd moby-$pkgver-ce
-  # man pages
-  man/md2man-all.sh 2>/dev/null
+  ### go magics
+  export GOPATH="$srcdir"
+  export PATH="$GOPATH/bin:$PATH"
+
+  # mock go packages so we can generate the man pages
+  mkdir -p src/github.com/docker
+  ln -rsfT moby-$pkgver-ce src/github.com/docker/docker
+  mkdir -p src/github.com/cpuguy83
+  ln -rsf go-md2man src/github.com/cpuguy83
+  mkdir -p src/github.com/spf13
+  ln -rsf cobra src/github.com/spf13
+
+  msg2 'Building man pages'
+  pushd src/github.com/docker/docker >/dev/null
+  man/generate.sh 2>/dev/null
+  popd >/dev/null
 }
 
 package() {
@@ -60,7 +79,7 @@ package() {
   install -Dm644 'contrib/syntax/vim/ftdetect/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/ftdetect/dockerfile.vim"
   # man
   install -dm755 "$pkgdir/usr/share/man"
-  mv man/man* "$pkgdir/usr/share/man"
+  cp -r man/man* "$pkgdir/usr/share/man"
 }
 
 # vim:set ts=2 sw=2 et:
