@@ -1,0 +1,34 @@
+pkgbase = fabariagest
+	pkgdesc = Gestionale aziendale.
+	pkgver = 1.2
+	pkgrel = 3
+	url = https://www.codelinsoft.it/sito/2013-11-17-17-56-34/fabariagest.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = qt5-base
+	depends = qt5-connectivity
+	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-translations
+	depends = qt5-webkit
+	depends = qt5-websockets
+	depends = qt5-x11extras
+	depends = qt5-xmlpatterns
+	depends = mysql
+	depends = cmake
+	depends = curl
+	depends = jansson
+	depends = liboauth
+	depends = zlib
+	depends = nspr
+	depends = lsb-release
+	depends = nss
+	source = https://www.codelinsoft.it/sito/download/categoria-linux/categoria-linux-fabariagest/fabariagest-1-1targz.gz
+	md5sums = 90a0eebb4455b56d20e063852a1026b3
+
+pkgname = fabariagest
+
