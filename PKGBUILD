@@ -2,7 +2,7 @@
 pkgname=openvpn-xor-git
 _pkgname=openvpn
 pkgver=2.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc='OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)'
 arch=('i686' 'x86_64')
 url='https://github.com/openvpn/openvpn'
@@ -95,8 +95,8 @@ package() {
     done
 
     # enable scheduling priority changes (nice)
-    sed -i '14s/$/ CAP_SYS_NICE/' ${pkgdir}/usr/lib/systemd/system/${_pkgname}-client@.service
-    sed -i '15s/$/ CAP_SYS_NICE/' ${pkgdir}/usr/lib/systemd/system/${_pkgname}-server@.service
+    sed -i '14s/$/ CAP_SYS_NICE/' "distro/systemd/${_pkgname}-client@.service"
+    sed -i '15s/$/ CAP_SYS_NICE/' "distro/systemd/${_pkgname}-server@.service"
 
     # Install systemd files
     install -D -m0644 distro/systemd/${_pkgname}-client@.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}-client@.service
