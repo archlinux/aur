@@ -2,7 +2,7 @@
 
 _pkgname=cathook
 pkgname=cathook-git
-pkgver=r511.5096a26
+pkgver=r515.4587895
 pkgrel=1
 pkgdesc="Open source internal hack for Team Fortress 2"
 arch=("any")
@@ -17,10 +17,7 @@ sha256sums=('SKIP'
 
 source=("${_pkgname}::git+${url}.git" "cathook-attach" "cathook-attach-backtrace" "cathook-detach")
 
-pkgver() {
-	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
 	cd "${_pkgname}"
