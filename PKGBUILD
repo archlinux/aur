@@ -4,7 +4,7 @@ pkgbase=xtreemfs
 pkgname=(xtreemfs-server xtreemfs-client)
 _pkgname=XtreemFS
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fault-tolerant distributed file system for all storage needs"
 arch=(x86_64)
 url="http://www.xtreemfs.org"
@@ -37,6 +37,11 @@ package_xtreemfs-server() {
     depends=('java-environment' 'util-linux')
     pkgdesc="A fault-tolerant distributed file system for all storage needs (server)"
     install=xtreemfs-server.install
+    backup=("etc/xos/xtreemfs/dirconfig.properties" 
+            "etc/xos/xtreemfs/mrcconfig.properties" 
+            "etc/xos/xtreemfs/osdconfig.properties"
+            "etc/xos/xtreemfs/server-repl-plugin/dir.properties"
+            "etc/xos/xtreemfs/server-repl-plugin/mrc.properties")
 
     cd "$_pkgname-$pkgver"
     install -d -m 0750 "$pkgdir/etc/xos/xtreemfs"
@@ -64,6 +69,7 @@ package_xtreemfs-server() {
 package_xtreemfs-client() {
     depends=('attr' 'openssl' 'fuse' 'boost-libs')
     pkgdesc="A fault-tolerant distributed file system for all storage needs (client)"
+    backup=("etc/xos/xtreemfs/default_dir")
 
     cd "$_pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install-client
