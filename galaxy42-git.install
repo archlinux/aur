@@ -1,0 +1,16 @@
+post_install() {
+	groupadd galaxy42
+	chown root:galaxy42 usr/bin/tunserver.elf
+	echo 'If you want to use tunserver.elf without sudo add yourself to galaxy42 group and run:'
+	echo 'sudo setcap cap_net_admin+ep /usr/bin/tunserver.elf'
+}
+post_upgrade() {
+	chown root:galaxy42 usr/bin/tunserver.elf
+	echo 'If you want to use tunserver.elf without sudo add yourself to galaxy42 group and run:'
+	echo 'sudo setcap cap_net_admin+ep /usr/bin/tunserver.elf'
+}
+post_remove() {
+	groupdel galaxy42
+}
+
+
