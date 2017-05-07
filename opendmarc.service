@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenDMARC
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/opendmarc -c /etc/opendmarc/opendmarc.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
