@@ -2,12 +2,12 @@
 
 pkgname=tiny-dnn-git
 pkgver=1.0.0a3.r140.g77901b97
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++11 implementation of deep learning for limited computational resource, embedded systems and IoT devices (git version)"
 arch=('any')
 url="https://github.com/tiny-dnn/tiny-dnn"
 license=('BSD')
-makedepends=('git' 'cmake' 'protobuf' 'intel-tbb' 'opencl-icd-loader' 'opencl-headers')
+makedepends=('git' 'cmake')
 provides=('tiny-dnn')
 conflicts=('tiny-dnn')
 source=("${pkgname}"::"git+https://github.com/tiny-dnn/tiny-dnn.git")
