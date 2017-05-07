@@ -1,0 +1,23 @@
+pkgbase = cathook-git
+	pkgdesc = Open source internal hack for Team Fortress 2
+	pkgver = r511.5096a26
+	pkgrel = 1
+	url = https://github.com/nullifiedcat/cathook
+	arch = any
+	license = GPL3
+	depends = gdb
+	depends = sudo
+	depends = git
+	depends = gcc-multilib
+	optdepends = steam: To install Team Fortess 2
+	source = cathook::git+https://github.com/nullifiedcat/cathook.git
+	source = cathook-attach
+	source = cathook-attach-backtrace
+	source = cathook-detach
+	sha256sums = SKIP
+	sha256sums = 0742c77763c354819254032d162df7f5d22e30fa5c28e7733b3f38ec6124e7fc
+	sha256sums = 078a3e71b5a74e57d2939456f95dcee33a2650f5431f452298943ab856bb6dcf
+	sha256sums = 041dc783351a0115215604f40a8a1d8e40fab749005217edcb81fac65ec47349
+
+pkgname = cathook-git
+

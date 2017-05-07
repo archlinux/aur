@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+line=$(pidof hl2_linux)
+arr=($line)
+inst=$1
+
+# Make sure only root can run our script
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+if [ $# == 0 ]; then
+  inst=0
+fi
+
+if [ ${#arr[@]} == 0 ]; then
+  echo "TF2 isn't running, launch TF2 and try again."
+  exit 1
+fi
+
+if [ $inst -gt ${#arr[@]} ] || [ $inst == ${#arr[@]} ]; then
+  echo "Wrong index!"
+  exit 1
+fi
+
+proc=${arr[$inst]}
+
+echo "Running instances: ${arr[*]}"
+echo "Attaching to $proc"
+
+if grep -q /usr/lib/cathook.so /proc/"$proc"/maps; then
+  echo "Cathook is already loaded!"
+  exit 1
+fi
+
+echo "loading /usr/lib/libcathook.so to $proc"
+input="$(
+gdb -n -q -batch \
+  -ex "attach $proc" \
+  -ex "set \$dlopen = (void*(*)(char*, int)) dlopen" \
+  -ex "call \$dlopen(\"/usr/lib/libcathook.so\", 1)" \
+  -ex "call dlerror()" \
+  -ex 'print (char *) $2' \
+  -ex "detach" \
+  -ex "quit"
+)"
+
+last_line="${input##*$'\n'}"
+
+if [ "$last_line" == "\$3 = 0x0" ]; then
+    /bin/echo -e "\e[32mSuccessfully injected cathook!\e[0m"
+else
+    /bin/echo -e "\e[31mInjection failed, make sure you've compiled...\e[0m"
+fi

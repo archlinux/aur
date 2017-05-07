@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+line=$(pidof hl2_linux)
+arr=($line)
+inst=$1
+
+if [ $# == 0 ]; then
+  inst=0
+fi
+
+if [ ${#arr[@]} == 0 ]; then
+  echo "TF2 isn't running, launch TF2 and try again."
+  exit 1
+fi
+
+if [ $inst -gt ${#arr[@]} ] || [ $inst == ${#arr[@]} ]; then
+  echo "Wrong index!"
+  exit 1
+fi
+
+proc=${arr[$inst]}
+
+echo "Running instances: ${arr[*]}"
+echo "Attaching to $proc"
+
+sudo ./detach $inst /usr/lib/libcathook.so
+
+if grep -q "/usr/lib/libcathook.so" /proc/"$proc"/maps; then
+  echo "Cathook is already injected!"
+  exit 1
+fi
+
+echo loading "/usr/lib/libcathook.so" to "$proc"
+gdb -n -q -batch \
+  -ex "attach $proc" \
+  -ex "set \$dlopen = (void*(*)(char*, int)) dlopen" \
+  -ex "call \$dlopen(\"/usr/lib/libcathook.so\", 1)" \
+  -ex "call dlerror()" \
+  -ex 'print (char *) $2' \
+  -ex "catch syscall exit exit_group" \
+  -ex "continue" \
+  -ex "backtrace"

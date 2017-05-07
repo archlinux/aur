@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+line=$(pidof hl2_linux)
+arr=($line)
+inst=$1
+
+# Make sure only root can run our script
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+if [ $# == 0 ]; then
+  inst=0
+fi
+
+if [ ${#arr[@]} == 0 ]; then
+  echo "TF2 isn't running, launch TF2 and try again."
+  exit 1
+fi
+
+if [ $inst -gt ${#arr[@]} ] || [ $inst == ${#arr[@]} ]; then
+  echo "Wrong index!"
+  exit 1
+fi
+
+echo "Running instances: ${arr[@]}"
+echo "Detaching from ${arr[$1]}"
+
+if grep -q /usr/lib/libcathook.so /proc/"${arr[$1]}"/maps; then
+  gdb -n -q -batch \
+    -ex "attach  ${arr[$1]}" \
+    -ex "set \$dlopen = (void*(*)(char*, int)) dlopen" \
+    -ex "set \$dlclose = (int(*)(void*)) dlclose" \
+    -ex "set \$library = \$dlopen(\"/usr/lib/libcathook.so)\", 6)" \
+    -ex "print \$library" \
+    -ex "sharedlibrary ." \
+    -ex "call \$dlclose(\$library)" \
+    -ex "call \$dlclose(\$library)" \
+    -ex "detach"
+  echo "Detached!"
+else
+  echo "Cathook isn't running, nothing to detach."
+fi
