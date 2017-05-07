@@ -5,8 +5,8 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-reproducible
-pkgver=5.0.1.166.g9a7ac7be
-pkgrel=1
+pkgver=5.0.1.166.g877b58d4
+pkgrel=2
 pkgdesc="A library-based package manager with dependency support. reproducible builds version."
 arch=('i686' 'x86_64')
 url="https://www.archlinux.org/pacman/"
