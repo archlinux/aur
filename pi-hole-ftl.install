@@ -1,0 +1,14 @@
+post_install() {
+  systemd-tmpfiles --create pi-hole-ftl.conf
+
+  systemctl daemon-reload > /dev/null
+  systemctl is-active pi-hole-ftl.service 2>&1 >/dev/null || systemctl start pi-hole-ftl.service
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  userdel -f pihole
+}

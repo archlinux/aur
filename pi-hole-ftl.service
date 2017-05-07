@@ -1,0 +1,10 @@
+[Unit]
+Description=Pi-hole FTL engine
+
+[Service]
+User=pihole
+Group=pihole
+ExecStart=/usr/bin/pihole-FTL
+     
+[Install]
+WantedBy=multi-user.target
