@@ -1,8 +1,8 @@
 # Maintainer: xsmile <sascha_r at gmx dot de>
 _gitbranch='master'
-_tools=('UEFIExtract' 'UEFIFind' 'UEFIPatch')
+_tools=('UEFIExtract' 'UEFIFind' 'UEFIPatch' 'UEFIReplace')
 pkgname=uefitool-git
-pkgver=r167.8cfd93c
+pkgver=r171.75225ec
 pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor, UEFIExtract, UEFIFind and UEFIPatch'
 arch=('any')
