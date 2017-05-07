@@ -51,5 +51,5 @@ last_line="${input##*$'\n'}"
 if [ "$last_line" == "\$3 = 0x0" ]; then
     /bin/echo -e "\e[32mSuccessfully injected cathook!\e[0m"
 else
-    /bin/echo -e "\e[31mInjection failed, make sure you've compiled...\e[0m"
+    /bin/echo -e "\e[31mInjection failed...\e[0m"
 fi
