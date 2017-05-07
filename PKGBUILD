@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
@@ -24,13 +24,13 @@ source=("http://d3kbcqa49mib13.cloudfront.net/spark-${pkgver}-bin-without-hadoop
         'spark-daemon-run.sh'
         'run-master.sh'
         'run-slave.sh')
-md5sums=('21d4471e78250775b1fa7c0e6c3a1326'
-         '9ffe1f9c4bb2ea4e5a75ab6469fe76d4'
-         '8d34bd4cc946f46625597ca606da8ab6'
-         'f8cc449543df418b8adfcc36a3afb384'
-         '8ff953f0436209b6190add59703a34f0'
-         '028472b82e9def7d5d409f008d064fe2'
-         '99115eedc453c9b8ca04cca2e32e4537')
+sha1sums=('f06ab5276efa77224ae320a032e909309fc7f1b6'
+          'ac71d12070a9a10323e8ec5aed4346b1dd7f21c6'
+          'a191e4f8f7f8bbc596f4fadfb3c592c3efbc4fc0'
+          '05372135ef26de3c75231731d1a56a11431f5496'
+          '08557d2d5328d5c99e533e16366fd893fffaad78'
+          '323445b8d64aea0534a2213d2600d438f406855b'
+          '65b1bc5fce63d1fa7a1b90f2d54a09acf62012a4')
 backup=('etc/apache-spark/spark-env.sh')
 
 PKGEXT=${PKGEXT:-'.pkg.tar.xz'}
