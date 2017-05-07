@@ -1,6 +1,6 @@
 pkgbase = drupalconsole
 	pkgdesc = The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation.
-	pkgver = 1.0.0_rc17
+	pkgver = 1.0.0_rc18
 	pkgrel = 1
 	url = http://drupalconsole.com/
 	install = drupalconsole.install
@@ -10,8 +10,8 @@ pkgbase = drupalconsole
 	makedepends = php-composer
 	makedepends = git
 	depends = php
-	source = drupalconsole-1.0.0-rc17::https://github.com/hechoendrupal/drupal-console-launcher/archive/1.0.0-rc17.tar.gz
-	sha512sums = 08a52e398f381509a2157adc2abccd54de121ff722aead85276cfb7f95580005db4f7f3e44cc2c1e411541425c9a6867aed842dd43dd2bafd71a99f997b99c98
+	source = drupalconsole-1.0.0-rc18::https://github.com/hechoendrupal/drupal-console-launcher/archive/1.0.0-rc18.tar.gz
+	sha512sums = d4b79498d9c9668044731b9fa6559ac1103b6d94d95b944ec481cb8bf95f1d19e45d467bbd21d89cabf98cd9f14de724d2b5d3d3cc6e6054c6297ecdcc29564d
 
 pkgname = drupalconsole
 
