@@ -2,9 +2,11 @@
 Description=Pi-hole FTL engine
 
 [Service]
+Type=forking
 User=pihole
 Group=pihole
 ExecStart=/usr/bin/pihole-FTL
+Restart=on-failure
      
 [Install]
 WantedBy=multi-user.target

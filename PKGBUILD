@@ -3,7 +3,7 @@
 pkgname=pi-hole-ftl
 _pkgname=FTL
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -16,8 +16,8 @@ source=("git+https://github.com/pi-hole/FTL.git"
 	"$pkgname.service"
 	"$pkgname.sysuser")
 md5sums=('SKIP'
-         '4618b78f9d52c9101636735c064acce1'
-         'b1cffd783b0301656355f3c0987b45d3'
+         'a10e77e81c900819dfe78e1484e1e226'
+         'c1309009f8dc435a89e05c9bbba1d5c9'
          '68e78907dc2a0c89421d02377e76d353')
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
   # setting up logs paths
   sed -i "s|/var/log/pihole-FTL.log|/run/log/pihole-ftl/pihole-FTL.log|w $_ssc" "$srcdir"/$_pkgname/structs.c
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up logs paths 1" && return 1 ; fi
-  sed -i "s|/var/run/pihole-FTL|/run/log/pihole-ftl/pihole-FTL|w $_ssc" "$srcdir"/$_pkgname/structs.c
+  sed -i "s|/var/run/pihole-FTL|/run/pihole-ftl/pihole-FTL|w $_ssc" "$srcdir"/$_pkgname/structs.c
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up logs paths 2" && return 1 ; fi
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname/structs.c
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up logs paths 3" && return 1 ; fi

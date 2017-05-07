@@ -1,7 +1,7 @@
 pkgbase = pi-hole-ftl
 	pkgdesc = The Pi-hole FTL engine
 	pkgver = 2.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pi-hole/FTL
 	install = pi-hole-ftl.install
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = pi-hole-ftl
 	source = pi-hole-ftl.service
 	source = pi-hole-ftl.sysuser
 	md5sums = SKIP
-	md5sums = 4618b78f9d52c9101636735c064acce1
-	md5sums = b1cffd783b0301656355f3c0987b45d3
+	md5sums = a10e77e81c900819dfe78e1484e1e226
+	md5sums = c1309009f8dc435a89e05c9bbba1d5c9
 	md5sums = 68e78907dc2a0c89421d02377e76d353
 
 pkgname = pi-hole-ftl

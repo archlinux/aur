@@ -2,7 +2,7 @@ post_install() {
   systemd-tmpfiles --create pi-hole-ftl.conf
 
   systemctl daemon-reload > /dev/null
-  systemctl is-active pi-hole-ftl.service 2>&1 >/dev/null || systemctl start pi-hole-ftl.service
+  systemctl is-active pi-hole-ftl.service 2>&1 >/dev/null || systemctl restart pi-hole-ftl.service
 }
 
 post_upgrade() {
