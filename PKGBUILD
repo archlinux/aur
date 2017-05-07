@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-launch
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A command line XDG compliant launcher"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glib2' 'libxinerama' 'libxrandr')
 optdepends=('dmenu: to use dmenu_launch script')
 makedepends=('pkgconfig')
 source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('e7ebceb52b866352041abf4258741cf4')
+md5sums=('f0edc9c14c379b625e6b6ab9dc423a4d')
 
 build() {
   cd ${pkgname}-${pkgver}
