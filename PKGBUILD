@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.0.beta4.r0.g7177ef5d46
+pkgver=8.0.beta5.r0.g46a728ae82
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -102,9 +102,12 @@ prepare(){
 }
 
 build() {
-  cd sage/src
+  cd sage
+  autoreconf -vi
+  ./configure --prefix=/usr || true
 
-  export SAGE_LOCAL=/usr
+  cd src
+  export SAGE_LOCAL="/usr"
   export SAGE_ROOT="$PWD"
   export SAGE_SRC="$PWD"
   export CC=gcc
@@ -125,13 +128,13 @@ package_sagemath-git() {
   export SAGE_LOCAL="/usr"
   export JUPYTER_PATH="$pkgdir"/usr/share/jupyter
 
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/sage "$pkgdir"/usr/bin
-  for _i in arch-env banner cachegrind callgrind cleaner coverage coverageall cython env eval grep grepdoc inline-fortran ipython \
-    massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2ipynb rst2sws rst2txt run run-cython \
-    runtests startuptime.py sws2rst valgrind version.sh
+  for _i in arch-env banner cachegrind callgrind cleaner coverage coverageall cython env env-config eval grep grepdoc inline-fortran \
+    ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2ipynb rst2sws rst2txt run \
+    run-cython runtests startuptime.py sws2rst valgrind version.sh
   do
     cp bin/sage-$_i "$pkgdir"/usr/bin
   done
