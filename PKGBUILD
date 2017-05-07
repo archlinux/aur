@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/elementary/switchboard-plug-power'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' 'libgee' 'polkit'
+depends=('glib2' 'glibc' 'gnome-settings-daemon' 'gtk3' 'libgee' 'polkit'
          'libswitchboard-2.0.so')
 makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
 provides=('switchboard-plug-power')
