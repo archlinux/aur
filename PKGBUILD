@@ -3,18 +3,18 @@
 pkgname=g810-led-git
 _appname=g810-led
 _gitname=g810-led
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Linux led controller for Logitech G213, G410, G610, G810 and G910 Keyboards"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/MatMoul/g810-led"
 license=('GPL3')
 depends=('hidapi')
 makedepends=('git' 'gcc' 'make')
-optdepends=('libusb: old implementation, use only if you have problem with hidapi')
+optdepends=('libusb: old implementation, for developpers')
 install=${pkgname}.install
 provides=("g213-led=${pkgver}" "g410-led=${pkgver}" "g610-led=${pkgver}" "g810-led=${pkgver}" "g910-led=${pkgver}")
-backup=("etc/${_appname}/profile" "etc/${_appname}/reboot")
+backup=("etc/${_appname}/profile" "etc/${_appname}/reboot" "etc/udev/rules.d/${_appname}.rules")
 options=(!emptydirs)
 source=("git://github.com/MatMoul/${_appname}.git")
 md5sums=('SKIP')
@@ -23,10 +23,10 @@ build() {
 	cd ${_gitname}
 	
 	# build with hidapi :
-	make
+	make bin
 	
 	# build with libusb :
-	# make LIB=libusb
+	# make bin LIB=libusb
 }
 
 package() {
