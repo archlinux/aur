@@ -1,12 +1,12 @@
 # Maintainer: artoo <artoo@manjaro.org>
 
 _pkgname=elogind
-_commit=b486765f115ebbae41117ea493c748491872c4e0
+_commit=5814139990daf10155b4fb0951ee456ac9c97a4b
 
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
-pkgver=226
-pkgrel=5
+pkgver=227.4
+pkgrel=1
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('i686' 'x86_64')
 url="https://github.com/elogind/elogind"
@@ -15,7 +15,7 @@ makedepends=('intltool' 'libtool' 'gperf' 'gtk-doc' 'dbus-x11' 'git' 'libcap')
 options=('!libtool')
 source=("elogind-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "elogind-docs.patch")
-sha256sums=('a0270a1c97d485347be9a91d9e116c5d7c895222f5c57dab62cd528e38468113'
+sha256sums=('43cd1ad357fe6bfa2369a4003e2737ec994a53471745679c97e09a7dcbd9d04a'
             '25643e563250b0d322f817288cbe999f1cc2e4804c875725bb92fe5094a902b4')
 
 prepare() {
