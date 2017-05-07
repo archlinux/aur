@@ -1,8 +1,10 @@
-# Maintainer: Filip Hendrik <stoatally@gmail.com>
+# Maintainer: Robin Visser <rxvisser@gmail.com>
+# Contributor: Filip Hendrik <stoatally@gmail.com>
+# Contributor: Rowan Lewis <rl@nbsp.io>
 
 rplname=gnome-settings-daemon
 pkgname=gnome-settings-daemon-volume-step-patch
-pkgver=3.20.1
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with an additional patch to allow configuration of volume steps"
 arch=('i686' 'x86_64')
@@ -25,8 +27,8 @@ source=(
 	https://download.gnome.org/sources/$rplname/${pkgver:0:4}/$rplname-$pkgver.tar.xz
 	volume-step.patch
 )
-sha256sums=('e84a075d895ca3baeefb8508e0a901027b66f7d5a7ee8c966e31d301b38e78e7'
-            'bb1ac714e05d6b7b2c3e8a03180a580f9d8e65356a3fd70c3e8f5ba1d15bbb03')
+sha256sums=('1b14ddc63e4cee616b73d048112878f6f4ac606f877778db882d270db904750b'
+            '754b89fbb2fd1da0f431e53b9aeaab511734234031c57c62d4747cfafeef2438')
 
 prepare() {
 	cd $rplname-$pkgver
