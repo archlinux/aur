@@ -1,7 +1,7 @@
 pkgdesc="Takari Extensions for Apache Maven"
 pkgname="maven-team"
 pkgver=1
-pkgrel=2
+pkgrel=3
 url="http://takari.io/book/30-team-maven.html"
 arch=('any')
 license=('Apache')
@@ -12,7 +12,7 @@ conflicts=('maven-team-git')
 mavenCentralURL=http://repo1.maven.org/maven2
 #
 versionFileManager=0.8.3
-versionSmartBuilder=0.4.1
+versionSmartBuilder=0.5.0
 versionLocalRepository=0.11.2
 #
 artifactFileManager="takari-filemanager-$versionFileManager.jar"
