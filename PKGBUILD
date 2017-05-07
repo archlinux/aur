@@ -19,7 +19,7 @@ depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow nauty python2-rp
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
 optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cython code'
-  'jmol: 3D plots' 'sage-notebook: Browser-based (flask) notebook interface'
+  'jmol: 3D plots' 'sage-notebook: Flask notebook interface (deprecated)'
   'sagemath-doc: Documentation and inline help' 'python2-igraph: igraph backend for graph theory'
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
