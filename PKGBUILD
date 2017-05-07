@@ -29,6 +29,7 @@ optdepends=(
   'wget: `browser` plugin'
 )
 conflicts=('bash-it')
+options=('libtool' 'staticlibs' '!strip')
 install="${pkgname}.install"
 source=(
   'https://github.com/Bash-it/bash-it/tarball/master'
