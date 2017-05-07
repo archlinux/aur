@@ -1,9 +1,9 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
 _pkgname=vidcutter
-pkgver=3.2.0rc7.r32.ga3174b2
+pkgver=3.2.0rc7.r43.g3a921bf
 pkgrel=1
-pkgdesc="The simplest & sexiest tool for cutting and joining your videos without the need for re-encoding or a diploma in multimedia."
+pkgdesc="The simplest + fastest video cut & merge tool"
 arch=('any')
 license=('GPL3')
 url="http://vidcutter.ozmartians.com"
