@@ -11,7 +11,8 @@ groups=('pantheon-unstable')
 depends=('accountsservice' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gnome-desktop' 'gtk3' 'libgee' 'libpwquality' 'polkit'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('cmake' 'git' 'gobject-introspection' 'granite-git'
+             'switchboard-git' 'vala')
 source=("switchboard-plug-user-accounts::git+https://github.com/elementary/switchboard-plug-useraccounts.git")
 sha256sums=('SKIP')
 
