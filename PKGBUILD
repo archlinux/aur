@@ -1,22 +1,22 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=synthpod
 pkgname="${_pkgname}-git"
-pkgver=0.1.1651
+pkgver=0.1.4903
 pkgrel=1
 pkgdesc="Lightweight non-linear plugin host"
 arch=('i686' 'x86_64')
 url="http://open-music-kontrollers.ch/lv2/synthpod"
 license=('Artistic2.0')
 groups=('lv2-plugins' 'lv2-hosts')
-depends=('lilv' 'jack' 'zita-alsa-pcmi' 'efl' 'nanomsg' 'sratom' 'gtk2' 'gtk3' 'qt4' 'qt5-base')
+depends=('lilv' 'libuv' 'jack' 'zita-alsa-pcmi' 'gtk2' 'gtk3' 'qt4' 'qt5-base')
 makedepends=('git' 'cmake' 'lv2')
-optdepends=('moony-lv2' 'sherlock-lv2' 'eteroj-lv2')
+optdepends=('moony-lv2' 'sherlock-lv2' 'eteroj-lv2' 'vm-lv2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=()
 backup=()
 options=()
-source=("$_pkgname::git+https://github.com/OpenMusicKontrollers/synthpod.git")
+source=("$_pkgname::git+https://gitlab.com/OpenMusicKontrollers/synthpod.git")
 noextract=()
 md5sums=('SKIP')
 
@@ -41,15 +41,14 @@ build() {
     -DBUILD_JACK=1 \
     -DBUILD_ALSA=1 \
     -DBUILD_DUMMY=1 \
-    -DBUILD_SANDBOX_LIB=1 \
+    -DBUILD_UI=1 \
     -DBUILD_SANDBOX_X11=1 \
     -DBUILD_SANDBOX_GTK2=1 \
     -DBUILD_SANDBOX_GTK3=1 \
     -DBUILD_SANDBOX_QT4=1 \
     -DBUILD_SANDBOX_QT5=1 \
-    -DBUILD_SANDBOX_EFL=1 \
-    -DBUILD_SANDBOX_SHOW=0 \
-    -DBUILD_SANDBOX_KX=0 \
+    -DBUILD_SANDBOX_SHOW=1 \
+    -DBUILD_SANDBOX_KX=1 \
 		..
   make
 }
