@@ -1,0 +1,22 @@
+pkgbase = openmpi-cuda
+	pkgdesc = High performance message passing library (MPI) with CUDA support
+	pkgver = 1.10.6
+	pkgrel = 1
+	url = http://www.open-mpi.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = inetutils
+	makedepends = valgrind
+	makedepends = gcc-fortran
+	depends = libltdl
+	depends = hwloc
+	optdepends = gcc-fortran: fortran support
+	provides = openmpi
+	conflicts = openmpi
+	options = staticlibs
+	source = http://www.open-mpi.org/software/ompi/v1.10/downloads/openmpi-1.10.6.tar.bz2
+	sha256sums = 65606184a084a0eda6102b01e5a36a8f02d3195d15e91eabbb63e898bd110354
+
+pkgname = openmpi-cuda
+
