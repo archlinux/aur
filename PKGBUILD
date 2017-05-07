@@ -9,7 +9,7 @@ arch=(any)
 url=" http://github.com/django/asgi_redis/"
 license=('BSD')
 makedepends=('python-setuptools')
-depends=('python' 'python-redis')
+depends=('python' 'python-redis' 'python-msgpack' 'python-asgiref')
 source=("https://pypi.io/packages/source/a/asgi_redis/asgi_redis-${pkgver}.tar.gz")
 md5sums=('0053239980ed0bf4b773434fcc4c552e')
 
