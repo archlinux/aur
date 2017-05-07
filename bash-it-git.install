@@ -1,6 +1,6 @@
 post_install() {
   echo >&2 'Note: To install bash-it for the logged-in user,' \
-    'run: install-bash-it'
+    'run: /usr/share/bash-it-git/install'
 }
 
 post_remove() {

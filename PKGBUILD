@@ -33,8 +33,8 @@ install="${pkgname}.install"
 source=(
   'https://github.com/Bash-it/bash-it/tarball/master'
   'LICENSE'
-  'custom.bash'
-  'install-bash-it'
+  'custom.lib.bash.shim'
+  'install.sh.wrapper'
 )
 sha512sums=(
   'SKIP'
@@ -59,7 +59,6 @@ prepare() {
 
 package() {
   # All upstream-provided files go into the /usr hierarchy
-  mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
@@ -69,23 +68,26 @@ package() {
     "${pkgdir}/usr/share/licenses/${pkgname}" \
     "${srcdir}/LICENSE"
 
-  cp --preserve=mode -t \
-    "${pkgdir}/usr/bin" \
-    "${srcdir}/install-bash-it"
-
   cp -r --preserve=mode -t "${pkgdir}/usr/lib/${pkgname}" \
     "${srcdir}"/{bash_it,install,uninstall}.sh \
     "${srcdir}"/{aliases,completion,custom,lib} \
     "${srcdir}"/{plugins,themes}
 
   # Copy warning shim to `lib/custom.bash`
-  cp --preserve=mode -t "${pkgdir}/usr/lib/${pkgname}/lib" \
-    "${srcdir}/custom.bash"
+  cp --preserve=mode \
+    "${srcdir}/custom.lib.bash.shim" \
+    "${pkgdir}/usr/lib/${pkgname}/lib/custom.bash"
 
   # `.editorconfig` it not meant to be user-editable
   cp -r --preserve=mode -t "${pkgdir}/usr/share/${pkgname}" \
     "${srcdir}/.editorconfig" \
+    "${srcdir}/install.sh" \
     "${srcdir}/template"
+
+  # Copy wrapper for `install.sh`
+  cp --preserve=mode \
+    "${srcdir}/install.sh.wrapper" \
+    "${pkgdir}/usr/share/${pkgname}/install.sh"
 
   cp --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
     "${srcdir}"/*.md
