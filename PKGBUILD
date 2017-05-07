@@ -4,12 +4,12 @@
 
 pkgname=pam_ssh
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='PAM module providing single sign-on behavior for SSH.'
 arch=('i686' 'x86_64')
 url='http://pam-ssh.sourceforge.net/'
 license=('custom')
-depends=('pam' 'openssl' 'openssh')
+depends=('pam' 'openssl-1.0' 'openssh')
 options=('!libtool')
 install="$pkgname.install"
 source=(
@@ -25,12 +25,12 @@ validpgpkeys=(
 
 build () {
 	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr --with-pam-dir=/usr/lib/security
+	CPPFLAGS+=' -I /usr/include/openssl-1.0' ./configure --prefix=/usr --with-pam-dir=/usr/lib/security --with-ssl-dir=/usr/lib/openssl-1.0
 	make
 }
 
 package () {
 	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+	CPPFLAGS+=' -I /usr/include/openssl-1.0' make DESTDIR="$pkgdir" install
 	install -m 644 -D COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
