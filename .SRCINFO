@@ -1,0 +1,18 @@
+pkgbase = python-stackapi-git
+	pkgdesc = A python wrapper for the StackOverflow and StackExchange API
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/AWegnerGitHub/stackapi
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-docutils
+	depends = python-requests
+	provides = python-stackapi
+	conflicts = python-stackapi
+	source = python-stackapi-git::git://github.com/AWegnerGitHub/stackapi.git
+	md5sums = SKIP
+
+pkgname = python-stackapi-git
+
