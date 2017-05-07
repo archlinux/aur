@@ -2,13 +2,13 @@
 # Contributor: Guo Yunhe <guoyunhebrave@gmail.com>
 pkgname=fontweak
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI front-end of fontconfig"
 arch=(any)
 url="https://github.com/guoyunhe/fontweak"
 license=('GPL3')
 groups=()
-depends=('sh' 'java-runtime')
+depends=('java-runtime')
 makedepends=('java-environment' 'apache-ant')
 optdepends=()
 provides=()
