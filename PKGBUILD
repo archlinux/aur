@@ -1,34 +1,48 @@
-# Maintainer: Karol Babioch <karol@babioch.de>
+# Maintainer: Thore Bödecker <me at foxxx0 dot de>
+# Contributor: Karol Babioch <karol@babioch.de>
 
-pkgname=('amavisd-milter')
+pkgname=amavisd-milter
 pkgver=1.6.1
-pkgrel=1
-pkgdesc='amavisd-milter is a sendmail milter (mail filter) for amavisd-new and sendmail which uses the new AM.PDP protocol.'
+pkgrel=2
+pkgdesc="sendmail milter for amavisd-new using the AM.PDP protocol"
 arch=('i686' 'x86_64')
-url='http://amavisd-milter.sourceforge.net'
+url="http://amavisd-milter.sourceforge.net/"
 license=('BSD')
 depends=('amavisd-new')
 makedepends=('libmilter')
-source=("https://downloads.sourceforge.net/project/amavisd-milter/amavisd-milter/amavisd-milter-$pkgver/amavisd-milter-$pkgver.tar.gz"
-        "amavisd-milter.service")
+source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz/download"
+        'amavisd-milter.service')
 sha256sums=('d470be72ddef4cf38b93fb4b2f02dfca4f826f95137b56ebf281a7feec6cf282'
-            'f3e9cac39d76f78ac95700c69fed812e45724a863abd874c56ed9ff29426e4b3')
+            '9ba5aa9be3d7de63dac6d52a921bf6cbf2503752ddf874b4a99576e92ea35ef6')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    # change upstream default paths (must match those of amavisd-new)
+    sed -i 's|/var/amavis|/var/spool/amavis|g' "${pkgname}/amavisd-milter.8"
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./configure \
+        --prefix=/usr \
+        --bindir=/usr/bin \
+        --sbindir=/usr/bin \
+        --sysconfdir=/etc/amavis \
+        --localstatedir=/var/spool/amavis \
+        --sharedstatedir=/usr/share
+    make
+}
 
-  ./configure \
-    --prefix=/usr \
-    --sbindir=/usr/bin
-    
-  make
+check() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  install -Dm 644 "$srcdir"/amavisd-milter.service "$pkgdir/usr/lib/systemd/system/amavisd-milter.service"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
+    # license
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # systemd unit
+    install -D -m644 "${srcdir}/amavisd-milter.service" "${pkgdir}/usr/lib/systemd/system/amavisd-milter.service"
 }
-
