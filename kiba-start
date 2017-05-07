@@ -1,4 +1,0 @@
-#!/usr/bin/sh
-
-mkdir -p ~/.kiba-dock/profiles
-/usr/bin/kiba-systray.py
