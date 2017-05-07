@@ -11,12 +11,12 @@
 +function _module_completion () {
 +    local _module_path_prefix
 +    local -a _module_search_path _module_type_d _module_type_f
-+    _module_path_prefix=$(echo ${words[$CURRENT]} | sed -ne 's#\(.*/\).*#\1#p')
++    _module_path_prefix=$(echo ${(q)words[$CURRENT]} | sed -ne 's#\(.*/\).*#\1#p')
 +    _module_search_paths=(${^${(@s/:/)MODULEPATH}}/$_module_path_prefix)
 +
 +    _module_type_d=()
 +    _module_type_f=()
-+    eval $(find $_module_search_paths -mindepth 1 -maxdepth 1 -not -name '.modulerc' -not -name '.version' -printf "_module_type_%Y+=${_module_path_prefix}%P\n" 2> /dev/null)
++    eval $(find $_module_search_paths -mindepth 1 -maxdepth 1 -not -name '.modulerc' -not -name '.version' -printf "_module_type_%Y+=${(q)_module_path_prefix}%P\n" 2> /dev/null)
 +
 +    if [[ "$@" != "dir" ]]; then
 +        compadd -q -S / ${_module_type_d}
