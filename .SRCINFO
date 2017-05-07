@@ -1,0 +1,30 @@
+pkgbase = nvidia-llb-dkms
+	pkgdesc = NVIDIA kernel module sources (DKMS) - long lived branch
+	pkgver = 375.66
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	install = nvidia-llb-dkms.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom:NVIDIA
+	depends = dkms
+	depends = linux>=3.7
+	depends = linux<4.11
+	depends = nvidia-utils-llb>=375.66
+	depends = libgl
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+	provides = nvidia=375.66
+	provides = nvidia-dkms
+	conflicts = nvidia
+	options = !strip
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/375.66/NVIDIA-Linux-x86-375.66.run
+	md5sums_i686 = 47dddb796fe39497cf6ae374591f6eb9
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/375.66/NVIDIA-Linux-x86_64-375.66-no-compat32.run
+	md5sums_x86_64 = 361843d4b714a9876b3599fd8dca2412
+	source_armv7h = http://us.download.nvidia.com/XFree86/Linux-x86-ARM/375.66/NVIDIA-Linux-armv7l-gnueabihf-375.66.run
+	md5sums_armv7h = d8f8bee37b237f76c533eb0c4dae9bbc
+
+pkgname = nvidia-llb-dkms
+
