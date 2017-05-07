@@ -5,7 +5,7 @@
 pkgname=ethereum-genoil-git
 pkgver=.20170506.8d36c4c92
 pkgrel=1
-pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, cpp-ethereum including ethminer and eth, latest unstable git version)"
+pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, cpp-ethereum including ethminer and eth, Genoil's version)"
 arch=('i686' 'x86_64')
 depends=(
   'boost'
