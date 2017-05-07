@@ -36,8 +36,8 @@ build() {
               --sbindir=/usr/bin \
               --sysconfdir=/etc/${_pkgbase} \
               --with-spf \
-			  --with-spf2-include=/usr/include/spf2 \
-			  --with-spf2-lib=/usr/lib/
+              --with-spf2-include=/usr/include/spf2 \
+              --with-spf2-lib=/usr/lib/
   make
 }
 
