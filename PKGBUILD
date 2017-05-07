@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.2.r86.b54ba4787
+pkgver=0.0.2.r197.b1e8eefad
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
@@ -15,8 +15,9 @@ makedepends=('boost' 'cereal' 'cmake' 'git' 'llvm')
 provides=('rpcs3')
 conflicts=('rpcs3')
 source=('git+https://github.com/RPCS3/rpcs3.git'
-        'git+https://github.com/RPCS3/common.git'
-        'git+https://github.com/RPCS3/pugixml.git#commit=f205aaf'
+        'rpcs3-common::git+https://github.com/RPCS3/common.git'
+        'rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git#commit=c095a22'
+        'rpcs3-pugixml::git+https://github.com/RPCS3/pugixml.git#commit=f205aaf'
         'git+https://github.com/RPCS3/rsx-debugger.git#commit=3b11b96'
         'git+https://github.com/RPCS3/rsx_program_decompiler.git#commit=de3b205'
         'git+https://github.com/kobalicek/asmjit.git#commit=b0dad1a'
@@ -25,6 +26,7 @@ source=('git+https://github.com/RPCS3/rpcs3.git'
         'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git#commit=64d375f'
         'rpcs3.sh')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -45,20 +47,21 @@ prepare() {
   cd rsx_program_decompiler
 
   git submodule init common
-  git config submodule.common.url ../common
+  git config submodule.common.url ../rpcs3-common
   git submodule update common
 
   cd ../rpcs3
 
-  git submodule init 3rdparty/{GSL,pugixml} asmjit rsx{-debugger,_program_decompiler} Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
+  git submodule init 3rdparty/{GSL,hidapi,pugixml} asmjit rsx{-debugger,_program_decompiler} Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
   git config submodule.asmjit.url ../asmjit
+  git config submodule.hidapi.url ../rpcs3-hidapi
   git config submodule.GSL.url ../GSL
-  git config submodule.pugixml.url ../pugixml
+  git config submodule.pugixml.url ../rpcs3-pugixml
   git config submodule.rsx-debugger.url ../rsx-debugger
   git config submodule.rsx_program_decompiler.url ../rsx_program_decompiler
   git config submodule.glslang.url ../glslang
   git config submodule.Vulkan-LoaderAndValidationLayers ../Vulkan-LoaderAndValidationLayers
-  git submodule update 3rdparty/{GSL,pugixml} asmjit rsx_program_decompiler Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
+  git submodule update 3rdparty/{GSL,hidapi,pugixml} asmjit rsx_program_decompiler Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
 
   if [[ -d build ]]; then
     rm -rf build
