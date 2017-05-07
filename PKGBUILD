@@ -3,10 +3,10 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=aif
-pkgver=0.01
-_pkgver=${pkgver}-BETA # currently at beta release
-#_pkgver=${pkgver} # currently at stable release
-pkgrel=3
+pkgver=1.00
+#_pkgver=${pkgver}-BETA # currently at beta release
+_pkgver=${pkgver} # currently at stable release
+pkgrel=1
 pkgdesc="An XML and python-driven rebirth of the AIF (Arch Installation Framework) project."
 arch=( 'i686' 'x86_64' )
 url="https://aif.square-r00t.net/"
@@ -20,7 +20,7 @@ changelog=
 noextract=()
 source=("${pkgname}-${pkgver}.tar.xz::https://git.square-r00t.net/${_pkgname}/snapshot/${_pkgname}-${_pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.sig")
-sha512sums=('209636b1b014fb5b05b0cdf5c514c897bf96acd2d7a1745d9bb64701344f912b1515e84a38210425931ffd530c047ebdefd1a5a2d43fe99c6126c421c631cd9b'
+sha512sums=('5456429d6a265d160903b2171e9dfe5f86a1554bdc725b841992c4bd9ad9157bf7444ca70eafd22a0dccee4d8d723cb1074332f2af1c3e08f61a239f8b581b78'
             'SKIP')
 package() {
         install -D -m0755 ${srcdir}/${_pkgname}-${_pkgver}/${pkgname}client.py ${pkgdir}/usr/bin/${pkgname}
