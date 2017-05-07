@@ -1,7 +1,7 @@
 pkgbase = openvpn-nordvpn
 	pkgdesc = OpenVPN configuration files and helper for nordvpn.com
 	pkgver = 17.5.5
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.nordvpn.com
 	install = openvpn-nordvpn.install
 	arch = any

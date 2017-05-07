@@ -81,6 +81,10 @@ case $command in
         else
             ln -fs /etc/openvpn/update-resolv-conf /etc/openvpn/client/nordvpn/updown
         fi
+        if [[ ! -f /etc/openvpn/client/nordvpn_${1}.conf ]]; then
+            echo "${1} is not a valid nordvpn server. Exiting."
+            exit 1
+        fi
         systemctl $command openvpn-client@nordvpn_${1}
         ;;
     stop|restart)
