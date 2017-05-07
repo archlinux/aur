@@ -2,21 +2,21 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.13.2
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=2.5.2
+_wwwpkgver=3.0.1a
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
-license=('GPL2')
+license=('EUPL-1.1')
 url="https://github.com/pi-hole/pi-hole"
-depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'perl' 'net-tools')
+depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'perl' 'net-tools' 'logrotate' 'pi-hole-ftl')
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
 
-source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
-	https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
+source=(pihole.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
+	admin.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
 	configuration
 	dnsmasq.main
 	dnsmasq.include
@@ -31,13 +31,13 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('4fdf2df146e87920dd427f4a93bbc6c3'
-         'af36a7b3e6e09ebf2cf8f34a4afe0c1f'
+md5sums=('e68ea77830554afe11c71055cec33dca'
+         '74fe2ed6fd9c917437f149ebaf5ceddf'
          '3acf27ca01d931db363634dbfc95a061'
          '3f1aeea43af0b192edb36b9e5484ff87'
          'f39fa3e607ff7346e93febfa2d0e565e'
          '2d10140f19f54015e6ab2807267e8aaf'
-         '9aa8a5c34b02d8d77b1d436b54695d2e'
+         'a8a64dc2ff89bb87d534c83189447abc'
          '990b8abd0bfbba23a7ce82c59f2e3d64'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
@@ -93,13 +93,17 @@ prepare() {
 
 # -----------------
 
-  # arch useless
+  # setup gravity.sh
   sed -n "/#ensure \/etc\/dnsmasq\.d\//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless 1" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 1" && return 1 ; fi
   sed -i '/#ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  sed -n "/#Overwrite /w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless 2" && return 1 ; fi
-  sed -i '/#Overwrite /,+1d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+#  sed -n "/#Overwrite /w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+#  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 2" && return 1 ; fi
+#  sed -i '/#Overwrite /,+1d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s|/usr/local/bin/pihole|/usr/bin/pihole|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 2" && return 1 ; fi
+  sed -i "s|/etc/.pihole|/etc/pihole|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setup gravity.sh 3" && return 1 ; fi
 
 # -----------------
 
@@ -141,6 +145,13 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface 1" && return 1 ; fi
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/settings.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface 2" && return 1 ; fi
+
+  sed -i "s|/var/run/pihole-FTL.port|/run/pihole-ftl/pihole-FTL.port|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/FTL.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface 3" && return 1 ; fi
+  sed -i "s|/var/log/pihole-FTL.log|/run/log/pihole-ftl/pihole-FTL.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/tailLog.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface 4" && return 1 ; fi
+  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/tailLog.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface 5" && return 1 ; fi
 
 # -----------------
 
@@ -245,7 +256,7 @@ package() {
   install -dm777 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/etc/pihole/configs
   install -Dm644 ./$_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default || return 1
-  install -Dm644 ./$_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/pihole/logrotate || return 1
+  install -Dm644 ./$_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/logrotate.d/logrotate || return 1
   install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt || return 1
   install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt || return 1
 
