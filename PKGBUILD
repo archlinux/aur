@@ -2,7 +2,7 @@
 # Contributor: hagabaka
 
 pkgname='peazip-gtk2-build'
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc='Free GTK2 cross-platform file archiver (compiles from source)'
 license=('GPL3')
@@ -17,9 +17,9 @@ options=('!strip')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip"
         "http://www.peazip.org/downloads/additional/peazip_optional_formats_plugin-1.LINUX.INST.tar.gz")
-sha256sums=('e54e29c703ab18beadf3cc27242a8b2f25c411c7aee5da2a51594a4beab83608'
+sha256sums=('6be126675c83df95b020da6221cf5063aed83510783d55254f4923c29a5245d0'
             '7f3fc1ea200d482500360eadda9298c4d5900ca822d21b5a0e11ff9de4d499ff')
-sha512sums=('4fabf64a69d379cc697bc30fc870d446e13c155479cf7a9c407192ef53bac63ec64e806ff06aa4a9a791e55424062b2fdec07af25baa9e453bc85520e932e906'
+sha512sums=('c77c9f21f037e76448076c23a3d2643ae6ee2cdd4db42bdbf05353adee35eb00198a99fa9c6dfdcc0178578b62e2eb7db211ee972b0ed090e4c786c2a55201ba'
             '8b308510a2c81ad2704cef19ed3fb2baf1dde0e123cf3e4c96e5e42a330e23002f3443c9fce009120492afc82b0ab063344c8029fe6fe851a4bea4814bacdaa8')
 
 build() {
