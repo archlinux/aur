@@ -2,14 +2,14 @@
 
 pkgname=libconfini
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
 url="https://madmurphy.github.io/libconfini/"
 license=("GPL")
 makedepends=('intltool')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}-${pkgrel}.tar.gz")
-md5sums=('bb7480b0d1ecfc89d159248b0bd90c55')
+md5sums=('1dcbec019dbb4360eda869113a400301')
 
 prepare() {
 
