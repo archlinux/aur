@@ -2,16 +2,16 @@ _pkgname=ConsoleKit2
 
 pkgname=consolekit
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64')
 url="https://github.com/ConsoleKit2/ConsoleKit2"
 license=('GPL')
 provides=('consolekit2')
-depends=('acl' 'dbus' 'glib2' 'libx11' 'polkit-consolekit' 'udev' 'zlib')
+depends=('dbus' 'glib2' 'libx11' 'polkit-consolekit' 'udev' 'zlib')
 optdepends=('consolekit-openrc: consolekit openrc initscript'
             'pm-utils: suspend/hibernate support')
-makedepends=('xmlto' 'docbook-xsl')
+makedepends=('acl' 'xmlto' 'docbook-xsl')
 options=('libtool')
 install=consolekit.install
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2"
