@@ -2,12 +2,12 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r18.23c7204
-pkgrel=12
+pkgver=r632.b735052
+pkgrel=1
 pkgdesc='This is a multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
-source=('git://github.com/v1s1t0r1sh3r3/airgeddon.git')
+source=('git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master')
 depends=(
   'aircrack-ng'
   'bash>=4.2'
