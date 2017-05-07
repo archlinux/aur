@@ -3,7 +3,7 @@
 pkgname=openwmail
 pkgver=1.0.0
 pkgverdash=1-0-0
-pkgrel=2
+pkgrel=3
 pkgdesc="openwmail"
 arch=('x86_64')
 license=('MLP-2.0')
