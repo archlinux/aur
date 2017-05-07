@@ -2,13 +2,14 @@
 
 pkgname=ygopro-bin
 pkgver=1.033.D
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels."
 arch=('x86_64')
 url='https://github.com/cromerc/ygopro'
 license=('GPL2')
 depends=('openal' 'openssl' 'freetype2' 'libevent' 'sfml' 'libgit2')
+makedepends=('git')
 backup=(opt/ygopro/system.conf)
 source=("https://github.com/cromerc/ygopro/archive/${pkgver}-${_pkgrel}.tar.gz"
         ygopro.sh)
@@ -32,6 +33,19 @@ package() {
 	cd "$pkgdir/usr/lib"
 	ln -s libsfml-audio.so.2.4 libsfml-audio.so.2.3
 	ln -s libsfml-system.so.2.4 libsfml-system.so.2.3
+	ln -s libgit2.so.25 libgit2.so.24
 
-    install -DTm755 ${srcdir}/ygopro.sh ${pkgdir}/usr/bin/ygopro
+	mkdir -p "$pkgdir/opt/ygopro/expansions/live2017"
+	cd "$pkgdir/opt/ygopro/expansions/live2017"
+	git init
+	git remote add origin https://github.com/Ygoproco/Live2017
+	git pull origin master
+
+	mkdir -p "$pkgname/opt/ygopro/expansions/liveanime"
+	cd "$pkgname/opt/ygopro/expansions/liveanime"
+	git init
+	git remote add origin https://github.com/Ygoproco/Liveanime
+	git pull origin master
+
+	install -DTm755 ${srcdir}/ygopro.sh ${pkgdir}/usr/bin/ygopro
 }
