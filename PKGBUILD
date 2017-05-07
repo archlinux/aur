@@ -4,7 +4,7 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
@@ -23,15 +23,18 @@ provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mitmproxy/mitmproxy/archive/v$pkgver.tar.gz"
-        fix-test.patch)
-sha256sums=('b0ccc49924762ea78290d62c463be8c041f1837f9005f583ad09c47122547e9d'
-            'f9fc3e3732ba1867b3a0befc7c15c52ddd6b32723fc348c42c1eae546d021f1f')
+        fix-test.patch kaitai-0.7.patch)
+sha512sums=('8a38340b3b1dd73c99c9e9b06a59bff78a23b2a851e1032ee0b7354ac46c834a3d005a67dc5238030570719eb5f842cb2a8ce64ffc7c5a01cbfa9a9511c08e66'
+            '7cd8f430779df708e0a923bba43c29fcd94b1dc4e40b2cd7a5f878475911e12917e1cb130ffabc2d1f4a1dfe9883dfe6d9c2ff9cdcd5210a8a0480830d33b5a6'
+            'a0fa449ddec32478123966845863f11e9dc3589e08be21e8fa6f5b89765a01fb03de689b84c82d5d44f84ad72ba7766587273fb4413a09950f06e388d57fb45d')
 
 prepare() {
   cd mitmproxy-$pkgver
 
   # https://github.com/mitmproxy/mitmproxy/pull/2170
   patch -p1 -i ../fix-test.patch
+
+  patch -p1 -i ../kaitai-0.7.patch
 
   # Let's remove all the upper bounds and use system certificate store
   sed -e '/certifi/d' \
