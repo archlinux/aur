@@ -2,8 +2,8 @@
 
 _pkgname=Doom64EX
 pkgname=doom64ex-git
-pkgver=r128.8ee9313
-pkgrel=1
+pkgver=r261.c2619d1
+pkgrel=2
 pkgdesc="Doom64EX is a reverse-engineering project aimed to recreate Doom64 as close as possible with additional modding features."
 arch=('i686' 'x86_64')
 url="https://github.com/svkaiser/Doom64EX"
@@ -20,15 +20,15 @@ pkgver() {
 }
 
 build() {
-  mkdir "${srcdir}/${_pkgname}/temp"
-  cd "${srcdir}/${_pkgname}/temp"
+  cd "${srcdir}/${_pkgname}"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+          -DENABLE_SYSTEM_FLUIDSYNTH=ON
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/temp"
+  cd "${srcdir}/${_pkgname}"
 
   make DESTDIR="$pkgdir" libdir="$pkgdir/usr/lib" install
 }

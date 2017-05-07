@@ -1,7 +1,7 @@
 pkgbase = doom64ex-git
 	pkgdesc = Doom64EX is a reverse-engineering project aimed to recreate Doom64 as close as possible with additional modding features.
-	pkgver = r128.8ee9313
-	pkgrel = 1
+	pkgver = r261.c2619d1
+	pkgrel = 2
 	url = https://github.com/svkaiser/Doom64EX
 	arch = i686
 	arch = x86_64
