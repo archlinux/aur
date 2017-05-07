@@ -2,7 +2,7 @@
 
 pkgname=hdf-eos-common
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Common headers files for HDF-EOS2 and HDF-EOS5"
 url="http://www.hdfeos.org/software/library.php"
 license=('GPL')
