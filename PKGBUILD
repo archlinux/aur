@@ -1,31 +1,42 @@
-# Original Author: Grigorii Horos <horosgrisa@gmail.com>
-# Maintainer: Will Price <will.price94@gmail.com>
+# Maintainer: Tomasz Hamerla <tomasz.hamerla@outlook.com>
 
 pkgname=powershell-bin
-pkgver=6.0.0.alpha.9
-pkgrel=2
-pkgdesc="PowerShell"
-arch=('any')
-url="https://github.com/PowerShell/PowerShell"
+_pkgver=6.0.0-alpha.18
+pkgver=${_pkgver/-/.}
+pkgrel=1
+pkgdesc="A cross-platform automation and configuration tool/framework (binary package)"
+arch=('x86_64')
+url="https://github.com/Powershell/Powershell"
 license=('MIT')
-depends=('libunwind' 'icu')
-makedepends=('')
-options=('!strip')
-source=("${pkgname}-${pkgver}.rpm::https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-alpha.9/powershell-6.0.0_alpha.9-1.el7.centos.x86_64.rpm")
-md5sums=('daabe5b2dabf11d849a95b0d703075f9')
+provides=('powershell' 'powershell-bin' 'powershell-git')
+options=(staticlibs !strip)
+depends=('libunwind' 'icu55' 'libopenssl-1.0-compat' 'libcurl-openssl-1.0')
+makedepends=('rsync')
 conflicts=('powershell' 'powershell-git')
-provides=('powershell')
+
+md5sums=('7b9b04b002f66c14c4ae70b5d1b1a9a6')
+
+source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell_${_pkgver}-1ubuntu1.16.04.1_amd64.deb")
 
 package() {
-    echo "WARNING: DOES NOT CURRENTLY WORK"
-    mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/usr/share/powershell"
+    bsdtar xf data.tar.gz
 
-    cp -r usr/local/share \
-          "${pkgdir}/usr"
-    cp -r opt/microsoft/powershell/6.0.0-alpha.9/* \
-          "${pkgdir}/usr/share/powershell"
+    mv usr "${pkgdir}"
+    mv opt "${pkgdir}"
 
-    ln -fs /usr/share/powershell/powershell \
-          "${pkgdir}/usr/bin/powershell"
+    # Fix man path
+    cd "${pkgdir}"
+    rsync --recursive usr/local/share usr
+    rm -rf usr/local
+
+    # Force powershell to load appropriate libs
+    cd usr/bin
+    mv powershell lnbin.powershell
+    cat > powershell <<EOF
+#!/bin/sh
+LD_PRELOAD='/usr/lib/libcurl-openssl-1.0.so /usr/lib/openssl-1.0-compat/libssl.so /usr/lib/openssl-1.0-compat/libcrypto.so' exec lnbin.powershell "\$@" 2>/dev/null
+EOF
+    # Fix script permissions
+    chmod 755 powershell
+
 }

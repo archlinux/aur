@@ -1,2 +1,4 @@
-*.deb
-*.part
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
