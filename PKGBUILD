@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-bzr
-pkgver=r15667
+pkgver=r15672
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from bzr trunk"
 url="https://launchpad.net/inkscape"
