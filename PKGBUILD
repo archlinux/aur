@@ -2,7 +2,7 @@
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
 pkgname="home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
-pkgver=0.43.2
+pkgver=0.44
 pkgrel=1
 url="https://home-assistant.io/"
 license=('MIT')
@@ -10,13 +10,13 @@ arch=('any')
 replaces=('python-home-assistant')
 makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
-depends=('python>=3.4' 'python-pip' 'python-requests' 'python-yaml' 'python-pytz>=2017.2' 'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.9.3' 'python-netifaces' 'python-webcolors' 'python-async-timeout>=1.2.0' 'python-aiohttp>=2.0.3' 'python-jinja>=2.9.5' 'python-yarl>=0.10.0' 'python-chardet>=2.3.0')
+depends=('python>=3.4' 'python-pip' 'python-requests' 'python-yaml' 'python-pytz>=2017.2' 'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.9.3' 'python-netifaces' 'python-webcolors' 'python-async-timeout>=1.2.1' 'python-aiohttp>=2.0.3' 'python-jinja>=2.9.5' 'python-yarl>=0.10.0' 'python-chardet>=2.3.0')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 conflicts=('python-home-assistant' 'python-home-assistant-git')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 "home-assistant.service")
-sha256sums=('812907e09a44dcc7a0cde180cf2788e988f92030655b68c58037047f5502fe78'
+sha256sums=('b356aae0540e8b2e0f0be1aa8452c8d7e6d34a5c90e2036eff048ef766ffa6ed'
             '2a87a3b529a1eeddfae0c02c415bed13586b002b9580226bdc749a27bbe83af5')
 backup=('var/lib/hass/configuration.yaml')
 install='hass.install'
@@ -28,9 +28,13 @@ prepare() {
   # typing package is a backport of standard library < 3.5
   replace 'typing>=3,<4' '' setup.py
 
-  replace 'aiohttp==2.0.7' 'aiohttp==2.0.3' setup.py
+  replace 'aiohttp==2.0.7' 'aiohttp>=2.0.3' setup.py
 
-  replace 'chardet==3.0.2' 'chardet==2.3.0' setup.py
+  replace 'chardet==3.0.2' 'chardet>=2.3.0' setup.py
+
+  replace 'async_timeout==1.2.0' 'async_timeout>=1.2.1' setup.py
+
+  replace 'voluptuous==0.10.5' 'voluptuous>=0.9.3' setup.py
 }
 
 replace() {
