@@ -10,8 +10,8 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'libsecret'
          'libgsignond-common.so')
-depends=('gsignond' 'libsecret')
-makedepends=('cmake' 'git' 'gsignond' 'vala')
+makedepends=('cmake' 'git' 'gsignond' 'libaccounts-glib' 'libgsignon-glib'
+             'vala')
 provides=('gsignond-extension-pantheon')
 conflicts=('gsignond-extension-pantheon')
 replaces=('gsignond-extension-pantheon-bzr')
