@@ -4,7 +4,7 @@
 _pkgname=freetype2
 pkgname=${_pkgname}-v35
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType font rendering library with v35 bytecode interpreter only"
 arch=(i686 x86_64)
 license=('GPL')
@@ -21,6 +21,8 @@ source=(https://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.t
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
         0003-Enable-v35-subpixel-hinting.patch
+        CVE-2017-8105.patch
+        CVE-2017-8287.patch
         freetype2.sh)
 sha1sums=('4d08a9a6567c6332d58e9a5f9a7e9e3fbce66789'
           'SKIP'
@@ -29,6 +31,8 @@ sha1sums=('4d08a9a6567c6332d58e9a5f9a7e9e3fbce66789'
           'b31882ef5e8447e761acee1c4a44c0630cd4d465'
           'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
           '5237bd234d7bb359dadb28e804115f07bbbdfb13'
+          '9ff76b0d0a079872279a62300af7806b15b6a51a'
+          '049ed3cb4471596396660896a8ccd95288001d8f'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -40,6 +44,9 @@ prepare() {
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-v35-subpixel-hinting.patch
+
+  patch -Np1 -i ../CVE-2017-8105.patch
+  patch -Np1 -i ../CVE-2017-8287.patch
 }
 
 build() {
