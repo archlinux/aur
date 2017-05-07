@@ -29,6 +29,6 @@ package() {
 
         mkdir -p "$pkgdir/usr/bin"
 	chmod +x /opt/openwmail/openWMail
-        ln -s /opt/openwmail/openWMail ${pkgdir}/usr/bin
+        ln -s $pkgdir/opt/openwmail/openWMail ${pkgdir}/usr/bin
 }
 
