@@ -1,4 +1,5 @@
 Source: https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch
+Upated to work with CVS (focus reporting)
 --- src/command.C	2014-12-13 13:22:09.000000000 +0100
 +++ src/command.C	2016-01-13 04:50:39.161862513 +0100
 @@ -1280,6 +1280,8 @@
@@ -68,6 +69,7 @@ Source: https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e
                    { 1002, PrivMode_MouseBtnEvent },
                    { 1003, PrivMode_MouseAnyEvent },
  #if ENABLE_FRILLS
+                   { 1004, PrivMode_FocusEvent },
                    { 1005, PrivMode_ExtModeMouse },
 +                  { 1006, PrivMode_ExtMouseSgr },
  #endif
@@ -85,7 +87,8 @@ Source: https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e
  #define PrivMode_ExtModeMouse   (1UL<<23) // xterm pseudo-utf-8 hack
  #define PrivMode_ExtMouseRight  (1UL<<24) // xterm pseudo-utf-8, but works in non-utf-8-locales
  #define PrivMode_BlinkingCursor (1UL<<25)
-+#define PrivMode_ExtMouseSgr    (1UL<<26) // sgr mouse extension
+ #define PrivMode_FocusEvent     (1UL<<26)
++#define PrivMode_ExtMouseSgr    (1UL<<27) // sgr mouse extension
  
  #define PrivMode_mouse_report   (PrivMode_MouseX10|PrivMode_MouseX11|PrivMode_MouseBtnEvent|PrivMode_MouseAnyEvent)
  
