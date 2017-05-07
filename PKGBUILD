@@ -10,6 +10,7 @@ url='https://github.com/rakshasa/libtorrent'
 license=('GPL')
 arch=('any')
 depends=('openssl')
+makedepends=('cppunit')
 provides=('libtorrent')
 conflicts=('libtorrent' 'libtorrent-git' 'libtorrent-ipv6' 'libtorrent-ps-git' 'libtorrent-pyro' 'libtorrent-pyro-git')
 source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
