@@ -9,10 +9,10 @@ license=('GPL')
 provides=('consolekit' 'consolekit2')
 replaces=('consolekit')
 conflicts=('consolekit')
-depends=('acl' 'dbus' 'glib2' 'libx11' 'polkit-consolekit' 'udev' 'zlib')
+depends=('dbus' 'glib2' 'libx11' 'polkit-consolekit' 'udev' 'zlib')
 optdepends=('consolekit-openrc: consolekit openrc initscript'
             'pm-utils: suspend/hibernate support')
-makedepends=('git' 'python' 'xmlto' 'docbook-xsl')
+makedepends=('acl' 'git' 'python' 'xmlto' 'docbook-xsl')
 options=('libtool')
 install=consolekit.install
 source=("git://github.com/ConsoleKit2/ConsoleKit2"
