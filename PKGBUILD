@@ -6,7 +6,7 @@
 pkgbase=mesa-noglvnd
 pkgname=('opencl-mesa-noglvnd' 'vulkan-intel-noglvnd' 'vulkan-radeon-noglvnd' 'libva-mesa-driver-noglvnd' 'mesa-vdpau-noglvnd' 'mesa-noglvnd' 'mesa-libgl-noglvnd')
 pkgver=17.0.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
@@ -159,7 +159,7 @@ package_mesa-noglvnd() {
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-noglvnd: for accelerated video playback'
               'libva-mesa-driver-noglvnd: for accelerated video playback')
-  provides=('ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa') #'mesa-libgl' 'opengl-driver')
+  provides=('ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa' 'opengl-driver') #'mesa-libgl')
   conflicts=('ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa' 'mesa-git') #'mesa-libgl')
   replaces=('ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa' 'mesa-git') #'mesa-libgl')
 

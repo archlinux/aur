@@ -1,6 +1,6 @@
 pkgbase = mesa-noglvnd
 	pkgver = 17.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mesa3d.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -120,6 +120,7 @@ pkgname = mesa-noglvnd
 	provides = svga-dri
 	provides = mesa-dri
 	provides = mesa
+	provides = opengl-driver
 	conflicts = ati-dri
 	conflicts = intel-dri
 	conflicts = nouveau-dri
