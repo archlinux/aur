@@ -7,13 +7,13 @@ pkgbase=schroot-hybris
 _pkgbase=schroot
 pkgname=('schroot-hybris' 'schroot-droid')
 pkgver=1.6.10
-pkgrel=14
+pkgrel=15
 url="http://packages.qa.debian.org/s/schroot.html"
 license=('GPL3')
 makedepends=('boost' 'cppunit')
 arch=('i686' 'x86_64' 'armv7h')
 source=("http://ftp.debian.org/debian/pool/main/s/$_pkgbase/${_pkgbase}_${pkgver}.orig.tar.xz"
-	"http://http.debian.net/debian/pool/main/s/schroot/schroot_$pkgver-2.debian.tar.xz"
+	"http://http.debian.net/debian/pool/main/s/schroot/schroot_$pkgver-2~bpo8+1.debian.tar.xz"
 	'arch32-example'
 	'arch32-config'
 	'arch32-copyfiles'
@@ -24,7 +24,7 @@ source=("http://ftp.debian.org/debian/pool/main/s/$_pkgbase/${_pkgbase}_${pkgver
 	'android-environment-schroot.patch'
 	'gls-common::git+https://github.com/mickybart/gnulinux_support-common')
 md5sums=('f8ec667831487f4b12e094bc0dc9bbe3'
-         '44c9913952e62738e244dda412f3d819'
+         '7ec5bf0d455a803b2885041754c3a3aa'
          '54239847f89b9a4772910415bde6276a'
          '5a3f7b839c7e0b8933748da7c5b6385b'
          'ddb2f09c02b24dab777110f9808472e1'
