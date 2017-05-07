@@ -24,14 +24,14 @@ source=('urxvt.desktop'
         'urxvt-tabbed.desktop'
         'font-width-fix.patch'
         'line-spacing-fix.patch'
-        'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
+        'sgr-mouse-mode.patch'
         'enable-wide-glyphs.patch')
 sha1sums=('b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
           '01ee8f212add79a158dcd4ed78d0ea1324bdc59b'
           'b7fde1c46af45e831828738874f14b092b1e795f'
-          'a1937c4f84bcdddb125ad397b6cd90a87b34cd01'
+          '2452b1e80df60747fc0c176157b2da64ddf337ec'
           'b2f3dd43851106dfadead7566d7d0e1339281e43')
 
 prepare() {
