@@ -1,0 +1,56 @@
+pkgbase = nvidia-utils-llb
+	pkgver = 375.66
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = i686
+	arch = x86_64
+	license = custom:NVIDIA
+	options = !strip
+	source = 10-nvidia-drm-outputclass.conf
+	source = 20-nvidia.conf
+	md5sums = 4f5562ee8f3171769e4638b35396c55d
+	md5sums = 2640eac092c220073f0668a7aaff61f7
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/375.66/NVIDIA-Linux-x86-375.66.run
+	md5sums_i686 = 47dddb796fe39497cf6ae374591f6eb9
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/375.66/NVIDIA-Linux-x86_64-375.66-no-compat32.run
+	md5sums_x86_64 = 361843d4b714a9876b3599fd8dca2412
+
+pkgname = nvidia-utils-llb
+	pkgdesc = NVIDIA driver utilities and libraries (long lived branch)
+	install = nvidia-utils-llb.install
+	depends = xorg-server
+	depends = mesa>=17.0.2-2
+	optdepends = gtk2: nvidia-settings (GTK+ v2)
+	optdepends = gtk3: nvidia-settings (GTK+ v3)
+	optdepends = opencl-nvidia-llb: OpenCL support
+	optdepends = xorg-server-devel: nvidia-xconfig
+	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)
+	provides = nvidia-utils=375.66
+	provides = nvidia-settings=375.66
+	provides = libglvnd
+	provides = vulkan-driver
+	conflicts = nvidia-utils
+	conflicts = nvidia-settings
+	conflicts = libglvnd
+	backup = etc/X11/xorg.conf.d/20-nvidia.conf
+
+pkgname = nvidia-libgl-llb
+	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-llb'
+	depends = nvidia-utils-llb
+	provides = nvidia-libgl=375.66
+	provides = libgl
+	provides = libegl
+	provides = libgles
+	conflicts = nvidia-libgl
+	conflicts = libgl
+	conflicts = libegl
+	conflicts = libgles
+
+pkgname = opencl-nvidia-llb
+	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-llb'
+	depends = zlib
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = opencl-nvidia=375.66
+	provides = opencl-driver
+	conflicts = opencl-nvidia
+
