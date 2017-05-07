@@ -7,7 +7,7 @@
 pkgname=gearhead
 _reponame=gearhead-1
 pkgver=1.302
-pkgrel=3
+pkgrel=4
 pkgdesc="A rougelike mecha role playing game"
 arch=(i686 x86_64)
 url="http://www.gearheadrpg.com/"
@@ -19,14 +19,18 @@ source=("https://github.com/jwvhewitt/${_reponame}/archive/v${pkgver}.tar.gz"
 		${pkgname}.desktop
 		${pkgname}.png)
 md5sums=('6699f67d4f28bc81cb23181bbba58b58'
-         'cd699f36df6275bdb6b345cb5ac8f8f1'
-         '93f2e09a403ed309a69569b827350e2d'
+         '72108dac70046280a6d98cab518c8c0e'
+         '825e9199b54a7c73f974de6b79fee470'
          '19f59e008bbe3fdcf39363818d3a5cf1')
 
 build() {
 	cd "${_reponame}-${pkgver}"
 
-	fpc -dSDLMODE gharena
+	fpc gharena
+	# Clear object files so we can build the sdl ones.
+	rm *.ppu *.o
+	fpc -dSDLMODE -ogharena-sdl gharena
+	rm *.ppu *.o
 }
 
 package() {
@@ -35,10 +39,12 @@ package() {
 	install -d "${pkgdir}/opt/${pkgname}"
 	cp -ar -t "${pkgdir}/opt/${pkgname}" Image Design GameData Series doc
 	install -Dm755 gharena "${pkgdir}/opt/${pkgname}"
+	install -Dm755 gharena-sdl "${pkgdir}/opt/${pkgname}"
 
 	# Install the command line and desktop runners.
 	cd "${srcdir}"
 	install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
+	ln -s ${pkgname} "${pkgdir}/usr/bin/${pkgname}-sdl"
 	# The .desktop file was adapted from Debian's gearhead package.
 	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"

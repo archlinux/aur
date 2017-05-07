@@ -1,7 +1,7 @@
 pkgbase = gearhead
 	pkgdesc = A rougelike mecha role playing game
 	pkgver = 1.302
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gearheadrpg.com/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = gearhead
 	source = gearhead.desktop
 	source = gearhead.png
 	md5sums = 6699f67d4f28bc81cb23181bbba58b58
-	md5sums = cd699f36df6275bdb6b345cb5ac8f8f1
-	md5sums = 93f2e09a403ed309a69569b827350e2d
+	md5sums = 72108dac70046280a6d98cab518c8c0e
+	md5sums = 825e9199b54a7c73f974de6b79fee470
 	md5sums = 19f59e008bbe3fdcf39363818d3a5cf1
 
 pkgname = gearhead

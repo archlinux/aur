@@ -3,6 +3,6 @@ Version=1.1
 Type=Application
 Name=Gearhead
 GenericName=Roguelike Game
-Exec=gearhead
+Exec=gearhead-sdl
 Icon=gearhead
 Categories=Game;RolePlaying
