@@ -1,0 +1,16 @@
+[Unit]
+Description=Amavis Milter Interface amavisd-milter
+Requires=amavisd.service
+After=amavisd.service
+
+[Service]
+User=amavis
+Group=amavis
+Type=forking
+PIDFile=/run/amavis/amavisd-milter.pid
+ExecStart=/usr/sbin/amavisd-milter -B -p /run/amavis/amavisd-milter.pid -w /var/spool/amavis -s /run/amavis/amavisd-milter.sock -S /var/run/amavis/sock -m 2
+
+
+[Install]
+WantedBy=multi-user.target
+

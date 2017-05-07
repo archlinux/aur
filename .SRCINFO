@@ -1,0 +1,17 @@
+pkgbase = amavisd-milter
+	pkgdesc = amavisd-milter is a sendmail milter (mail filter) for amavisd-new and sendmail which uses the new AM.PDP protocol.
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://amavisd-milter.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = libmilter
+	depends = amavisd-new
+	source = https://downloads.sourceforge.net/project/amavisd-milter/amavisd-milter/amavisd-milter-1.6.1/amavisd-milter-1.6.1.tar.gz
+	source = amavisd-milter.service
+	sha256sums = d470be72ddef4cf38b93fb4b2f02dfca4f826f95137b56ebf281a7feec6cf282
+	sha256sums = f3e9cac39d76f78ac95700c69fed812e45724a863abd874c56ed9ff29426e4b3
+
+pkgname = amavisd-milter
+
