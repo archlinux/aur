@@ -1,0 +1,11 @@
+post_upgrade() {
+  if (( $(vercmp $2 3.00) < 0 )); then
+    echo 'You should consider doing a full cache rebuild:'
+    echo
+    echo '   get_iplayer --cache-rebuild --type=tv,radio'
+    echo
+    echo '   This may take 15 minutes or more. You can reduce this by filtering'
+    echo '   the channels that get_iplayer caches. See the get_iplayer'
+    echo '   documentation for more information.'
+  fi
+}
