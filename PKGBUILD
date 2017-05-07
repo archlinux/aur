@@ -98,29 +98,14 @@ package() {
   # both user-customizable and upstream-provided scripts
   # share the same directories.
   #
-  # The customizable files are:
-  # - aliases/custom.aliases.bash
-  # - completion/custom.completion.bash
-  # - lib/custom.bash
-  # - plugins/custom.plugins.bash
+  # This was a deliberate design decision on bash-it's end;
+  # however, this design reaches its limits when we use
+  # a package manager.
   #
-  # Additionally, the following directories are reserved
-  # for user-specific settings:
-  # - aliases/enabled
-  # - completion/enabled
-  # - custom (with the exception of custom/example.bash)
-  # - custom/themes/*
-  # - plugins/enabled
+  # We're going to apply a bit of symlink trickery so
+  # Bash-it plays nice with makepkg/pacman while
+  # staying true to the following goals:
   #
-  # This was a deliberate design decision on bash-it's end,
-  # which makes perfect sense in combination with .gitignore
-  # and the "upgrade-by-git-pull" workflow.
-  # However, using a system-wide package manager stretches
-  # this design to its limits.
-  #
-  # We are now going to apply a bit of symlink trickery
-  # in order to make bash-it play nice with makepkg/pacman
-  # while staying true to the following goals:
   # 1. Protect custom user files when upgrading
   # 2. Still allow multiple users to have their own
   #    custom scripts under /home
@@ -130,16 +115,15 @@ package() {
   # which will serve as a template for ~/.bash_it later on
   _factorydir="${pkgdir}/usr/share/${pkgname}/home_factory/.bash_it"
 
-  # Create symlinks to the three `*/available` directories
+  # For aliases, completions, and plugins, create symlinks
+  # to the respective `available` directories
   for _file_type in aliases completion plugins; do
     mkdir -p "${_factorydir}/${_file_type}"
     ln -fns "/usr/lib/${pkgname}/${_file_type}/available" \
       "${_factorydir}/${_file_type}/"
   done
 
-  # Replacement for `lib/custom.bash` (which is at risk
-  # to be overwritten by the package manager, thus
-  # not a good place for custom libraries)
+  # Create replacement for `lib/custom.bash`
   mkdir -p "${_factorydir}/custom/lib"
 
   # Create symlink to `custom/example.bash`
