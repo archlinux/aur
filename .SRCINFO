@@ -1,0 +1,47 @@
+pkgbase = lib32-nvidia-utils-llb
+	pkgver = 375.66
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom:NVIDIA
+	makedepends = nvidia-libgl-llb
+	options = !strip
+	source = http://us.download.nvidia.com/XFree86/Linux-x86/375.66/NVIDIA-Linux-x86-375.66.run
+	md5sums = 47dddb796fe39497cf6ae374591f6eb9
+
+pkgname = lib32-nvidia-utils-llb
+	pkgdesc = NVIDIA driver utilities and libraries (long lived branch) (32-bit)
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = nvidia-utils-llb
+	depends = lib32-mesa>=17.0.2-1
+	optdepends = lib32-opencl-nvidia-llb: OpenCL support
+	provides = lib32-nvidia-utils=375.66
+	provides = lib32-libglvnd
+	provides = lib32-vulkan-driver
+	conflicts = lib32-nvidia-utils
+	conflicts = lib32-libglvnd
+
+pkgname = lib32-nvidia-libgl-llb
+	pkgdesc = NVIDIA driver library symlinks for 'lib32-nvidia-utils-llb'
+	depends = lib32-nvidia-utils-llb
+	depends = nvidia-libgl-llb
+	provides = lib32-nvidia-libgl=375.66
+	provides = lib32-libgl
+	provides = lib32-libegl
+	provides = lib32-libgles
+	conflicts = lib32-nvidia-libgl
+	conflicts = lib32-libgl
+	conflicts = lib32-libegl
+	conflicts = lib32-libgles
+	replaces = lib32-nvidia-utils<=313.26-1
+
+pkgname = lib32-opencl-nvidia-llb
+	pkgdesc = NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-llb'
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = lib32-opencl-nvidia=375.66
+	provides = lib32-opencl-driver
+	conflicts = lib32-opencl-nvidia
+
