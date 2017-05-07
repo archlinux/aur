@@ -1,0 +1,10 @@
+post_install() {
+    echo --------------------------------------------------------
+    echo After install, reboot or run redshiftautostart manually
+    echo to start using the plasmoid.
+    echo --------------------------------------------------------
+}
+
+post_upgrade () {
+    post_install
+}

@@ -1,0 +1,17 @@
+pkgbase = plasma5-applets-redshift-git
+	pkgdesc = Redshift plasmoid provides a configuration interface and allows to start/stop Redshift daemon either manually or automatically based on the current activity. Plasma5 development version.
+	pkgver = r188.3dc240e
+	pkgrel = 1
+	url = http://simgunz.org/projects/redshift-plasmoid/
+	install = redshift.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = redshift
+	source = git+https://github.com/simgunz/redshift-plasmoid.git
+	md5sums = SKIP
+
+pkgname = plasma5-applets-redshift-git
+
