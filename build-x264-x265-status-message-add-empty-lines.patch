@@ -53,15 +53,3 @@ index 06c0314..5346f4b 100644
  	ENDIF (NOT X265_CHECKED)
  
  	APPEND_SUMMARY_LIST("Video Encoder" "x265" "${USE_X265}")
-diff --git a/cmake/ve_settings_plugin.cmake b/cmake/ve_settings_plugin.cmake
-index d6a1d58..1a0f1bd 100644
---- a/cmake/ve_settings_plugin.cmake
-+++ b/cmake/ve_settings_plugin.cmake
-@@ -11,6 +11,7 @@ MACRO(INSTALL_VIDEO_ENCODER_SETTINGS PLUGIN)
-                         ${ARGN})   
-     MESSAGE(STATUS "Will install plugin ${PLUGIN} version ${SETTINGS_VERSION}") 
-     MESSAGE(STATUS "Will install ${SETTINGS_FILES} ") 
-+    MESSAGE("")
-     INSTALL(FILES ${SETTINGS_FILES} 
-                 DESTINATION "${VE_SETTINGS_DIR}/${PLUGIN}/${SETTINGS_VERSION}/"
-                 COMPONENT   settings

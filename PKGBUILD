@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.6.18.170109.036d6686
+pkgver=2.7.0.170507.509571b14
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('i686' 'x86_64')
@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             'c5b5d3d7bcdf4c588a780c12fdac7791ddb0527db438c85b4c1c078507da2f0b'
             '0b66d6813c0ae190239d62eb2440bf479e0603c4c0f36433dafe6e7e9a325de8'
             'ae6d2c93163b7b760591688c7811dfdd4a952ed9074d8cbdf4953b701f0fa7db'
-            'a6541c04d693b8a42c4b8c6371eebb79cf2ba36a37d6558b80f5e27d2c1d93fc'
+            'eb911280ef2d0c9f27e6464512933b43f57242a8c09168e273367f2a4e6ea32c'
             )
 
 pkgver() {
@@ -82,7 +82,7 @@ prepare() {
 
   patch --binary -p1 -i "${srcdir}/opus_check.patch"
 
-  patch -p1 -i "${srcdir}/build-x264-x265-status-message-add-empty-lines.patch"
+  patch --binary -p1 -i "${srcdir}/build-x264-x265-status-message-add-empty-lines.patch"
 }
 
 build() {
@@ -170,6 +170,10 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr  \
     -DPLUGIN_UI=SETTINGS \
+    -DUSE_EXTERNAL_LIBA52=ON \
+    -DUSE_EXTERNAL_LIBASS=ON \
+    -DUSE_EXTERNAL_LIBMAD=ON \
+    -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
   make
