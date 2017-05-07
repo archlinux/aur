@@ -2,7 +2,7 @@
 
 pkgname=hdf-eos2
 pkgver=2.19
-pkgrel=4
+pkgrel=5
 pkgdesc="The HDF-EOS2 is a software library designed built on HDF4 to support EOS-specific data structures, namely Grid, Point, and Swath."
 url="http://www.hdfeos.org/software/library.php"
 license=('GPL')
