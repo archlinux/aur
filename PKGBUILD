@@ -5,7 +5,7 @@
 
 pkgbase=lib32-mesa-noglvnd
 pkgname=('lib32-vulkan-intel-noglvnd' 'lib32-vulkan-radeon-noglvnd' 'lib32-mesa-vdpau-noglvnd' 'lib32-mesa-noglvnd' 'lib32-mesa-libgl-noglvnd')
-pkgver=17.0.2
+pkgver=17.0.5
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
@@ -16,7 +16,7 @@ license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
 	LICENSE
         remove-libpthread-stubs.patch)
-sha256sums=('f8f191f909e01e65de38d5bdea5fb057f21649a3aed20948be02348e77a689d4'
+sha256sums=('668efa445d2f57a26e5c096b1965a685733a3b57d9c736f9d6460263847f9bfe'
             'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
             '75ab53ad44b95204c788a2988e97a5cb963bdbf6072a5466949a2afb79821c8f')
