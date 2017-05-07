@@ -11,18 +11,23 @@ license=("GPL3")
 depends=("gdb" "sudo" "git" "gcc-multilib")
 optdepends=('steam: To install Team Fortess 2')
 sha256sums=('SKIP'
+            'SKIP'
             '0742c77763c354819254032d162df7f5d22e30fa5c28e7733b3f38ec6124e7fc'
             '078a3e71b5a74e57d2939456f95dcee33a2650f5431f452298943ab856bb6dcf'
             '041dc783351a0115215604f40a8a1d8e40fab749005217edcb81fac65ec47349')
 
-source=("${_pkgname}::git+${url}.git" "cathook-attach" "cathook-attach-backtrace" "cathook-detach")
+source=("${_pkgname}::git+${url}.git" "git://github.com/ValveSoftware/source-sdk-2013.git"
+"cathook-attach" "cathook-attach-backtrace" "cathook-detach")
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare() {
+	cd "${_pkgname}"
+	git submodule init
+	git config submodule.source-sdk-2013.url $srcdir/source-sdk-2013
+	git submodule update
+}
 
 build() {
 	cd "${_pkgname}"
-	git submodule init
-	git submodule update
 	make -j$(grep "^processor" /proc/cpuinfo | wc -l) "$@"
 }
 
