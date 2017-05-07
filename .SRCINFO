@@ -1,6 +1,6 @@
 pkgbase = xdg-launch-git
 	pkgdesc = A command line XDG compliant launcher
-	pkgver = 1.4.r1.g657d52e
+	pkgver = 1.5.r0.gb901654
 	pkgrel = 1
 	url = http://github.com/bbidulock/xdg-launch
 	arch = i686
