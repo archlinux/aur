@@ -47,7 +47,7 @@ package_xtreemfs-server() {
     make DESTDIR="$pkgdir/" install-server install-tools
 
     rm -rf "$pkgdir/etc/init.d"
-    rm -f "$pkgdir/etc/xos/xtreemfs/"{generate_uuid,postinstall_setup.sh}
+    rm -f "$pkgdir/etc/xos/xtreemfs/postinstall_setup.sh"
 
     install -d -m 0755 "$pkgdir/usr/lib/systemd/system/"
     install -m 0644 "$srcdir/xtreemfs-dir.service" "$pkgdir/usr/lib/systemd/system/"
