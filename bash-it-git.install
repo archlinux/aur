@@ -1,9 +1,26 @@
 post_install() {
-  echo >&2 'Note: To install bash-it for the logged-in user,' \
-    'run: /usr/share/bash-it-git/install'
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## To install bash-it for the logged-in user,       ##
+    ## run: /usr/share/bash-it-git/install.sh           ##
+    ##                                                  ##
+
+EOF
 }
 
 post_remove() {
-  echo >&2 'Note: To complete removal, restore your' \
-    'original `~/.bashrc` file from `~/.bashrc.bak`.'
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## To entirely remove user-side effects of bash-it: ##
+    ##                                                  ##
+    ## 1. Re-install bash-it-git                        ##
+    ## 2. For each user, run: ~/.bash_it/uninstall.sh   ##
+    ##    (this also restores their original .bashrc)   ##
+    ## 3. Remove the `~/.bash_it`directory (optional)   ##
+    ## 4. Uninstall bash-it-git                         ##
+    ##                                                  ##
+
+EOF
 }
