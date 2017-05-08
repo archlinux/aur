@@ -1,0 +1,15 @@
+pkgbase = tina
+	pkgdesc = tina is a personal information manager with a curses interface. It allows the user to categorize short text items and to display the items in a particular category.
+	pkgver = 0.1.12
+	pkgrel = 0
+	url = http://devel.ringlet.net/misc/tina/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://devel.ringlet.net/files/misc/tina/tina-0.1.12.tar.gz
+	md5sums = c0121de5f9c414b56512408879ba5d35
+
+pkgname = tina
+
