@@ -4,11 +4,11 @@ pkgbase=libhybris-git
 pkgname=('libhybris-git' 'libhybris-libgl-git' 'libhybris-wayland-egl-git')
 _pkgbase=libhybris
 pkgver=1237.cfd9823
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="https://github.com/libhybris/libhybris"
 license=('Apache')
-makedepends=('wayland')
+makedepends=('wayland' 'hybris-android-headers')
 source=("libhybris::git+https://github.com/libhybris/libhybris")
 md5sums=('SKIP')
 
