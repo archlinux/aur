@@ -8,7 +8,7 @@ pkgbase = kshare-git
 	license = MIT
 	depends = qt5-base
 	depends = qt5-x11extras
-	provides = kshare=${pkgver}
+	provides = kshare=$pkgver
 	source = git+https://github.com/ArsenArsen/KShare.git
 	sha1sums = SKIP
 

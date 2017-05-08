@@ -6,7 +6,7 @@ pkgdesc="A ShareX inspired cross platform utility written with Qt."
 arch=('i686' 'x86_64')
 url="https://github.com/ArsenArsen/KShare"
 license=('MIT')
-provides=('kshare=${pkgver}')
+provides=('kshare=$pkgver')
 depends=(qt5-base qt5-x11extras)
 source=(git+https://github.com/ArsenArsen/KShare.git)
 sha1sums=('SKIP')
