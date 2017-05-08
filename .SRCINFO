@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-cpufreq-git
+	pkgdesc = Gnome Shell CPU Frequency Monitor and Governor Manager.
+	pkgver = 87.75fa137
+	pkgrel = 0
+	url = https://github.com/konkor/cpufreq
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gnome-shell
+	source = git://github.com/konkor/cpufreq.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-cpufreq-git
+
