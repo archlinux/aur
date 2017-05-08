@@ -1,5 +1,5 @@
 pkgbase = tremc-git
-	pkgdesc = Curses interface for transmission - fork of transmission-remote-cli
+	pkgdesc = Curses interface for transmission - python3 fork of transmission-remote-cli
 	pkgver = r660.401f230
 	pkgrel = 1
 	url = https://github.com/louipc/tremc
