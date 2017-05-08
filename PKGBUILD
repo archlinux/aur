@@ -13,6 +13,6 @@ sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}/ShutdownTimer"
-
+  mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions/"
   cp -af "ShutdownTimer@neumann" "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
