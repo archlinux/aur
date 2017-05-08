@@ -1,8 +1,8 @@
-# Maintainer: ross <prwarren8@gmail.com>
+# Maintainer: ross <prwarren8 at gmail dot com>
 
 pkgname=gabedit
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical user interface to computational chemistry packages"
 arch=('i686' 'x86_64')
 url="http://gabedit.sourceforge.net/"
@@ -13,9 +13,9 @@ provides=('')
 conflicts=('')
 replaces=('')
 _pkgver="${pkgver//\./}"
-source=("http://prdownloads.sourceforge.net/gabedit/GabeditSrc$_pkgver.tar.gz")
+source=("http://prdownloads.sourceforge.net/gabedit/GabeditSrc$_pkgver.tar.gz" "gabedit.desktop")
 
-md5sums=('dd8c9b90b6afe5407b0248f024236f2e')
+md5sums=('dd8c9b90b6afe5407b0248f024236f2e' '0f887c9ce4b937fa42fba2dce7e95648') 
 
 build() {	
   cd "$srcdir/GabeditSrc$_pkgver/"
@@ -27,14 +27,15 @@ package(){
 
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/licenses/gabedit"
-#  mkdir -p "$pkgdir/usr/share/applications/"
+  mkdir -p "$pkgdir/usr/share/applications/"
 
   install -D -m655 "$srcdir/GabeditSrc$_pkgver/gabedit" \
     "$pkgdir/usr/bin/"
   install -D -m644 "$srcdir/GabeditSrc$_pkgver/License" \
     "$pkgdir/usr/share/licenses/gabedit"
-#  install -D -m644 "$srcdir/../gabedit.desktop" \
-#    "$pkgdir/usr/share/applications/"
-#  install -D -m644 "$srcdir/GabeditSrc$_pkgver/icons/Gabedit48.png" \
-#    "$pkgdir/usr/share/pixmaps/gabedit.png"
+  # install .desktop file
+  install -D -m644 "$srcdir/gabedit.desktop" \
+    "$pkgdir/usr/share/applications/"
+  install -D -m644 "$srcdir/GabeditSrc$_pkgver/icons/Gabedit48.png" \
+    "$pkgdir/usr/share/pixmaps/gabedit.png"
 }
