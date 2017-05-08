@@ -2,16 +2,16 @@
 
 pkgname=cockroachdb
 _basever=1.0
-pkgver=${_basever}rc2
+pkgver=${_basever}rc3
 pkgrel=1
 epoch=1
-pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
+pkgdesc="A scalable, survivable, strongly-consistent SQL database"
 arch=('x86_64')
 url="https://www.cockroachlabs.com/"
 license=('Apache')
 depends=('gcc-libs>=6.0')
 makedepends=('gcc>=6.0' 'git>=1.8' 'go' 'make' 'cmake')
-source=("git+https://github.com/cockroachdb/cockroach.git#tag=v${_basever}-rc.2")
+source=("git+https://github.com/cockroachdb/cockroach.git#tag=v${_basever}-rc.3")
 sha256sums=('SKIP')
 
 prepare() {
