@@ -60,7 +60,7 @@ pkgbase=xfce4-sntray-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://github.com/rilian-la-te/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
@@ -92,6 +92,7 @@ package_xfce4-panel-sntray(){
 	rm -rf "${pkgdir}/usr/lib/mate-panel"
 	rm -rf "${pkgdir}/usr/lib/budgie-desktop"
 	rm -rf "${pkgdir}/usr/share/glib-2.0"
+	rm -rf "${pkgdir}/usr/share/dbus-1"
 }
 
 package_mate-panel-sntray(){
@@ -135,6 +136,7 @@ package_vala-panel-sntray(){
 	rm -rf "${pkgdir}/usr/lib/mate-panel"
 	rm -rf "${pkgdir}/usr/lib/budgie-desktop"
 	rm -rf "${pkgdir}/usr/share/glib-2.0"
+	rm -rf "${pkgdir}/usr/share/dbus-1"
 }
 
 package_budgie-sntray(){
@@ -157,6 +159,7 @@ package_budgie-sntray(){
 	rm -rf "${pkgdir}/usr/lib/mate-panel"
 	rm -rf "${pkgdir}/usr/lib/vala-panel"
 	rm -rf "${pkgdir}/usr/share/glib-2.0"
+	rm -rf "${pkgdir}/usr/share/dbus-1"
 }
 
 package_sntray-plugin-translations(){
@@ -169,4 +172,5 @@ package_sntray-plugin-translations(){
 	rm -rf "${pkgdir}/usr/share/xfce4"
 	rm -rf "${pkgdir}/usr/share/mate-panel"
 	rm -rf "${pkgdir}/usr/lib/"
+	rm -rf "${pkgdir}/usr/share/dbus-1"
 }
