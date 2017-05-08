@@ -15,14 +15,13 @@ optdepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=()
+backup=("${config_path:1}/$moduledir/init/modulerc")
 options=()
-install=
+install="env-modules-tcl.install"
 changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules-Tcl/modules-tcl-$pkgver.tar.gz" "zshcomp.patch")
 noextract=()
 validpgpkeys=()
-install="env-modules-tcl.install"
 md5sums=('3a40bf6177cc438481672ce028544828'
          '2e1bee23178b74872fd1c78c1cac8053')
 
@@ -31,7 +30,6 @@ moduledir=modules-tcl
 install_prefix=/usr
 config_path=/etc
 
-backup=("${config_path:1}/$moduledir/init/modulerc")
 
 build() {
     cd modules-tcl-$pkgver
