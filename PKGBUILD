@@ -33,7 +33,7 @@ md5sums=('361e75eb76c94d19f6f4f330d8ee626b'
 prepare() {
 	cd $_pkgname-$pkgver
 
-	patch -p1 -i "${srcdir}"/mimeo-detection.diff
+	patch -p1 -i "${srcdir}"/mimeo-detection.patch
 }
 
 build() {
