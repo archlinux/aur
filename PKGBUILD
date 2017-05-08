@@ -7,7 +7,7 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=openssh-selinux
-pkgver=7.4p1
+pkgver=7.5p1
 pkgrel=2
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
 url='https://www.openssh.org/portable.html'
@@ -23,21 +23,30 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
 groups=('selinux')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
 source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
+        'openssl-1.1.0.patch'
         'sshdgenkeys.service'
         'sshd@.service'
         'sshd.service'
         'sshd.socket'
         'sshd.conf'
         'sshd.pam')
-sha1sums=('2330bbf82ed08cf3ac70e0acf00186ef3eeb97e0' 'SKIP'
-          'caaa801da59a5d14c0c29c43e9de5fef281ea03e'
-          '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
-          'ec49c6beba923e201505f5669cea48cad29014db'
-          'e12fa910b26a5634e5a6ac39ce1399a132cf6796'
-          'c9b2e4ce259cd62ddb00364d3ee6f00a8bf2d05f'
-          'd93dca5ebda4610ff7647187f8928a3de28703f3')
+sha256sums=('9846e3c5fab9f0547400b4d2c017992f914222b3fd1f8eee6c7dc6bc5e59f9f0'
+            'SKIP'
+            'b895b5f8e9f7d3a60286bf0a5b313d0b2ae2891ee1358e4862f1a0f1ad0ddc7d'
+            '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
+            '69cc2abaaae0aa8071b8eac338b2df725f60ce73381843179b74eaac78ba7f1d'
+            'c5ed9fa629f8f8dbf3bae4edbad4441c36df535088553fe82695c52d7bde30aa'
+            'de14363e9d4ed92848e524036d9e6b57b2d35cc77d377b7247c38111d2a3defd'
+            '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
+            '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
 
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
+
+prepare() {
+	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+	# OpenSSL 1.1.0 patch from http://vega.pgw.jp/~kabe/vsd/patch/openssh-7.4p1-openssl-1.1.0c.patch.html
+	patch -Np1 -i ../openssl-1.1.0.patch
+}
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
