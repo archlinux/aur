@@ -44,11 +44,11 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  # fix paths
-  find -type f -exec sed -i "s%/etc/davical/%/${_etcdir}/%g" {} \;
-  find dba -name '*.sql' -exec sed -i "s/'SQL'/'sql'/g; s/'PlPgSQL'/'plpgsql'/g" {} \;
-  make all
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    # fix paths
+    find -type f -exec sed -i "s%/etc/davical/%/${_etcdir}/%g" {} \;
+    find dba -name '*.sql' -exec sed -i "s/'SQL'/'sql'/g; s/'PlPgSQL'/'plpgsql'/g" {} \;
+    make all
 }
 
 check() {
@@ -57,15 +57,15 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -D -d -m755 "${pkgdir}/${_instdir}"
-  cp -ra config dba htdocs inc locale po scripts testing zonedb "${pkgdir}/${_instdir}"
+    install -D -d -m755 "${pkgdir}/${_instdir}"
+    cp -ra config dba htdocs inc locale po scripts testing zonedb "${pkgdir}/${_instdir}"
 
-  install -D -d -m755 "${pkgdir}/${_docdir}"
-  cp -ra docs/* "${pkgdir}/${_docdir}"
+    install -D -d -m755 "${pkgdir}/${_docdir}"
+    cp -ra docs/* "${pkgdir}/${_docdir}"
 
-  install -D -m 0644 "config/example-config.php" "${pkgdir}/${_etcdir}/localhost-conf.php"
-  install -D -m 0644 "${srcdir}/README.archlinux" "${pkgdir}/${_docdir}/README.archlinux"
-  install -D -m 0644 "${srcdir}/httpd-davical.conf" "${pkgdir}/${_docdir}/httpd-davical.conf"
+    install -D -m 0644 "config/example-config.php" "${pkgdir}/${_etcdir}/localhost-conf.php"
+    install -D -m 0644 "${srcdir}/README.archlinux" "${pkgdir}/${_docdir}/README.archlinux"
+    install -D -m 0644 "${srcdir}/httpd-davical.conf" "${pkgdir}/${_docdir}/httpd-davical.conf"
 }
