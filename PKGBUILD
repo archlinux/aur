@@ -2,14 +2,14 @@ pkgname=terasology
 _version=1.4.0
 _version_postfix=alpha7
 pkgver=${_version}${_version_postfix}
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft!"
 arch=('x86_64' 'i686')
 license=('Apache')
 url="http://terasology.org"
 options=('!strip')
-depends=('java-environment-openjdk=8' 'openal')
+depends=('java-environment-openjdk=8' 'openal' 'libxcursor' 'libxxf86vm' 'libxrandr')
 makedepends=('unzip')
 source=(
     "$pkgname"
@@ -44,6 +44,12 @@ package() {
     #remove files/dirs for other operating systems
     rm run_macosx.command Terasology.{x86,x64}.exe
     rm -r natives/{macosx,windows}
+    rm natives/linux/libopenal*
+    if [[ "$CARCH" == 'x86_64' ]]; then
+        rm natives/linux/lib{jinput-linux,lwjgl}.so
+    elif [[ "$CARCH" == 'i686' ]]; then
+        rm natives/linux/lib{jinput-linux,lwjgl}64.so
+    fi
 
     cp -ra "$srcdir" "${pkgdir}/usr/share/${pkgname}"
 }
