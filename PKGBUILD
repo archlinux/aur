@@ -3,7 +3,7 @@
 
 _pkgname=nemo-seahorse
 pkgname="${_pkgname}-nonautilus"
-pkgver=3.2.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="An extension for Nemo which allows encryption and decryption of OpenPGP files using GnuPG. (without nautilus dependency)"
 arch=('i686' 'x86_64')
@@ -15,11 +15,10 @@ groups=('nemo-extensions')
 conflicts=('nemo-seahorse' 'seahorse-nautilus' 'nemo-seahorse-git')
 optdepends=('seahorse: For seahorse support')
 provides=('nemo-seahorse')
-install=${pkgname}.install
 options=('!libtool' '!emptydirs')
 
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-md5sums=('623ef221f7a59e17d6eb4360a65c1bc7')
+md5sums=('b8aff74acc98be098fe46a54dcb5c35f')
 
 
 prepare() {
@@ -29,7 +28,7 @@ prepare() {
   find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 
   msg2 "Adding support for gpg newer than version 2.0"
-  sed -i "s/1.2 1.4 2.0/1.2 1.4 2.0 2.1/" configure.ac
+  sed -i "s/1.2 1.4 2.0/1.2 1.4 2.0 2.1 2.2/" configure.ac
 }
 
 build() {
@@ -50,4 +49,3 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 }
-
