@@ -9,6 +9,7 @@ _disable_unity_gtk_module=o
 _opts=(
 	-DCMAKE_INSTALL_PREFIX=/usr
 	-DCMAKE_INSTALL_LIBDIR=lib
+	-DCMAKE_INSTALL_LIBEXECDIR=lib
 )
 
 pkgname=(
@@ -67,8 +68,8 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.4.4.r0.ga36f49d
-pkgrel=1
+pkgver=0.4.4
+pkgrel=2
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
 arch=('i686' 'x86_64')
