@@ -37,7 +37,7 @@ package() {
   cd "$srcdir/$pkgname"
   make PREFIX=/usr INSTALL_ROOT="$pkgdir" install
   cat >> "$_ininame" <<EOF
-;zend_extension=uopz.so
+;extension=uopz.so
 ;uopz.overloads = 1
 EOF
 
