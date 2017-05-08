@@ -5,32 +5,43 @@
 
 pkgname='awl'
 pkgver='0.57'
-pkgrel=2
+pkgrel=3
 pkgdesc="Andrew's php Web Libraries"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/davical-project/awl/"
 license=('GPL2')
 depends=('php')
-makedepends=('make' 'apigen' 'php-sqlite')
+makedepends=('apigen' 'php-sqlite')
 install="${pkgname}.install"
-source=("awl-0.57.tar.bz2::https://gitlab.com/davical-project/awl/repository/archive.tar.bz2?ref=r0.57"
-        "${pkgname}.install")
-sha256sums=('42e5bfc5cf1c011c3896eece13002da5be09e701a3161a6109fe5888eba5e5bc'
-            '483f89aa1f30db4e6b64a90f486ab543985d68a712996f0deec58d354e4fb4c7')
+source=("awl-${pkgver}.tar.bz2::https://gitlab.com/davical-project/awl/repository/archive.tar.bz2?ref=r${pkgver}")
+sha256sums=('42e5bfc5cf1c011c3896eece13002da5be09e701a3161a6109fe5888eba5e5bc')
 
 prepare() {
     cd "${srcdir}"
-    msg "renaming source dir"
-    mv awl-r${pkgver}-* "awl-${pkgver}"
-    msg "stripping Debian build files from source dir"
+    # rename source dir
+    mv ${pkgname}-r${pkgver}-* "${pkgname}-${pkgver}"
+    # strip debian build files from source dir
     rm -rf "${srcdir}/${pkgname}-${pkgver}/debian"
-    msg "enabling pdo_sqlite.so php extensions in the Makefile regardless of php.ini setting"
+    # enable pdo_sqlite php extension for apigen
     sed -i 's|apigen generate|php -d "extension=pdo_sqlite.so" /usr/bin/apigen generate|g' "${srcdir}/${pkgname}-${pkgver}/Makefile"
+    # enable inconv php extension for make test
+    sed -i 's|; do php -l \$\${PHP}|; do php -d "extension=iconv.so" -l \$\${PHP}|g' "${srcdir}/${pkgname}-${pkgver}/Makefile"
+    # enable inconv php extension for phpunit
+    sed -i 's|#!/usr/bin/env php$|#!/usr/bin/env php -d "extension=iconv.so"|1' "${srcdir}/${pkgname}-${pkgver}/vendor/phpunit/phpunit/composer/bin/phpunit"
 }
+
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make
 }
+
+# phpunit simply runs in an endless loop for >90min without any result...
+# seems to be an upstream bug
+#check() {
+#    cd "${srcdir}/${pkgname}-${pkgver}"
+#    make test
+#}
+
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -D -d m755 "${pkgdir}/usr/share/${pkgname}"
