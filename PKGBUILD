@@ -1,12 +1,12 @@
 #Maintainer: Geoffrey Frogeye <geoffrey@frogeye.fr>
 pkgname=magiclauncher
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom minecraft launcher"
 arch=(any)
 license=('custom')
 url="http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-tools/1262884-launcher-magic-launcher-1-3-4-mods-options"
-depends=('java-runtime' 'xorg-server-utils' 'openal')
+depends=('java-runtime' 'openal' 'xorg-xrandr' 'ttf-font' 'libxtst')
 noextract=("MagicLauncher_$pkgver.jar")
 source=('magiclauncher' 
 	'magiclauncher.desktop'
