@@ -2,7 +2,7 @@
 
 pkgname=mooltipass-udev
 pkgver=2017021102
-pkgrel=4
+pkgrel=5
 pkgdesc="Udev rules to connect Mooltipass devices"
 arch=('any')
 url="https://github.com/bobsaintcool/${pkgname}"
@@ -11,7 +11,6 @@ license=('GPL3')
 depends=('libusb'
          'udev')
 
-# https://web.bourgeois.eu/static/pgp/3486CBAC7F116CA71351B0D7F7181B2010660E6F.asc
 validpgpkeys=('3486CBAC7F116CA71351B0D7F7181B2010660E6F')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
