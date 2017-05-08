@@ -1,10 +1,10 @@
-# mkspiffs - Tool to build and unpack SPIFFS images
+# mkspiffs - Tool to build and unpack SPIFFS images for the ESP8266
 # Maintainer: Christian Hammacher <bmasterc@gmail.com>
 
 pkgname=mkspiffs-git
-pkgver=0.1.2.r0.b7ff183
+pkgver=0.1.2.r4.4c41760
 pkgrel=1
-pkgdesc="Tool to build and unpack SPIFFS images"
+pkgdesc="Tool to build and unpack SPIFFS images for the ESP8266"
 arch=('x86' 'x86_64')
 url="https://github.com/igrr/mkspiffs"
 license=('MIT')
