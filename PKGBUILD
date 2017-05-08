@@ -12,7 +12,7 @@ source=("git+https://github.com/neumann89/ShutdownTimer.git")
 sha256sums=('SKIP')
 
 package() {
-  cd "${srcdir}/ShutdownTimer-${pkgver}"
+  cd "${srcdir}/ShutdownTimer-master"
 
   cp -af "ShutdownTimer@neumann" "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
