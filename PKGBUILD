@@ -1,6 +1,6 @@
 
 pkgname=sway
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="i3 compatible window manager for Wayland"
 arch=("i686" "x86_64")
@@ -24,7 +24,7 @@ source=(
 )
 install="$pkgname.install"
 sha256sums=(
-	"134387d4da1b912f31c0b23f75722d3896cd2560ef5a37775f75e7057cd4a010"
+	"56a20c9d28d92777bf99381edd09078f72bf39b8ac586242950d514456a77f7d"
 	"SKIP"
 )
 validpgpkeys=(
@@ -38,7 +38,8 @@ build() {
 	cmake "$srcdir/$pkgname-$pkgver" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
-		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DVERSION="$pkgver"
 	make
 }
 
