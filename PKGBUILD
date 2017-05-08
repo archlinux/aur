@@ -1,13 +1,13 @@
 # Maintainer: Alexey Korobtsov <korobcoff@gmail.com>
 
 pkgname=psi-l10n-git
-pkgver=0.16_translations_20141111
+pkgver=0.16_translations_20170508
 pkgrel=1
 pkgdesc="Language packs for Psi-git"
 arch=('any')
 url="http://psi.im"
 license=('GPL2')
-makedepends=('qt4')
+makedepends=('git' 'qt5-base')
 depends=('psi-git')
 options=('!strip' '!zipman')
 source=('git://github.com/psi-im/psi-translations.git')
@@ -21,7 +21,7 @@ build() {
 
 	cd $srcdir/psi-translations
 	for langfile in $(ls */*.ts); do
-		lrelease-qt4 "$langfile"
+		lrelease-qt5 "$langfile"
 	done
 }
 
