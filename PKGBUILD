@@ -26,16 +26,21 @@ install="env-modules-tcl.install"
 md5sums=('3a40bf6177cc438481672ce028544828'
          'da8f7f9fc4e462b0ec0a6fab5257d8e0')
 
+moduledir=modules-tcl
+
 install_prefix=/usr
+config_path=/etc
+
+backup=("${config_path:1}/$moduledir/init/modulerc")
 
 build() {
     cd modules-tcl-$pkgver
     patch -p1 < ../zshcomp.patch
-    ./configure                                                  \
-        --prefix=$install_prefix                                 \
-        --docdir=$install_prefix/doc/modules-tcl                 \
-        --initdir=$install_prefix/env-modules/init               \
-        --modulefilesdir=$install_prefix/env-modules/modulefiles \
+    ./configure                                              \
+        --prefix=$install_prefix                             \
+        --docdir=$install_prefix/doc/$moduledir              \
+        --initdir=$config_path/$moduledir/init               \
+        --modulefilesdir=$config_path/$moduledir/modulefiles \
         --disable-set-binpath --disable-set-manpath
 
     make
@@ -47,6 +52,6 @@ package() {
 
   _profiled="$pkgdir/etc/profile.d/"
   mkdir -p "$_profiled"
-  ln -s $install_prefix/env-modules/init/profile.csh $_profiled/env-modules-tcl.csh
-  ln -s $install_prefix/env-modules/init/profile.sh $_profiled/env-modules-tcl.sh
+  ln -s $config_path/$moduledir/init/profile.csh $_profiled/env-modules-tcl.csh
+  ln -s $config_path/$moduledir/init/profile.sh  $_profiled/env-modules-tcl.sh
 }

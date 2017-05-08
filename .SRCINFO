@@ -9,10 +9,11 @@ pkgbase = env-modules-tcl
 	license = GPLv2
 	checkdepends = dejagnu
 	depends = tcl>=7.4
+	backup = etc/modules-tcl/init/modulerc
 	source = https://sourceforge.net/projects/modules/files/Modules-Tcl/modules-tcl-1.832.tar.gz
 	source = zshcomp.patch
 	md5sums = 3a40bf6177cc438481672ce028544828
-	md5sums = 4b7a5d66a1668fac5b3837723edceea4
+	md5sums = da8f7f9fc4e462b0ec0a6fab5257d8e0
 
 pkgname = env-modules-tcl
 
