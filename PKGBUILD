@@ -15,7 +15,7 @@ prepare() {
         cd "${pkgname}-${pkgver}"
         mkdir -p build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr -DCMAKE_INSTALL_LIBDIR="${pkgdir}"/usr/lib ..
+        cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
 }
 
 build() {
@@ -25,10 +25,6 @@ build() {
 
 package() {
         cd "${pkgname}-${pkgver}"/build
-        make install
-        # The following is a nasty workaround for the package author having to
-        # comply with Fedora packaging requirements.
-        mv "${pkgdir}"/usr/lib/hidviz/* "${pkgdir}"/usr/lib
-        rmdir "${pkgdir}"/usr/lib/hidviz
+        make DESTDIR="${pkgdir}" install
 }
 
