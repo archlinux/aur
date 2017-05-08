@@ -1,7 +1,7 @@
 pkgbase = encryptpad
 	pkgdesc = Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format
 	pkgver = 0.3.2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/evpo/encryptpad
 	arch = i686
 	arch = x86_64
