@@ -2,13 +2,13 @@
 
 pkgname=lzfse
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LZFSE compression library and command line tool"
 arch=("i686" "x86_64")
 url="https://github.com/lzfse/lzfse"
 license=("BSD")
 depends=()
-makedepends=("git")
+makedepends=()
 optdepends=()
 provides=("lzfse")
 conficts=("lzfse-git")
