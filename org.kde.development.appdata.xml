@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<component type="generic">
+    <id>org.kde.development</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-2.0+</project_license>
+    <name>KDE Development</name>
+    <icon type="stock">applications-development</icon>
+    <summary>A development environment for Qt and KDE Applications</summary>
+    <description>
+        <p>Install everything you need for a full KDE development system for developing your own software or extending existing one.</p>
+        <p>It will install all required dependencies for compiling most KDE software (Qt, KDE Frameworks, etc) and will offer to install the tools we've created to help the KDE development.</p>
+    </description>
+
+    <screenshots>
+        <screenshot type="default">
+            <image>https://www.kdevelop.org/sites/www.kdevelop.org/files/inline-images/kdevelop5-breeze_2.png</image>
+        </screenshot>
+        <screenshot>
+            <image>https://vizzzion.org/blog/wp-content/uploads/2015/02/cuttlefish.png</image>
+        </screenshot>
+    </screenshots>
+
+    <suggests>
+        <id>org.kde.kate.desktop</id>
+        <id>org.kde.kdevelop.desktop</id>
+        <id>org.kde.plasma.themeexplorer.desktop</id>
+        <id>org.kde.plasma.lookandfeelexplorer.desktop</id>
+    </suggests>
+
+    <url type="help">https://techbase.kde.org/Development/Tutorials</url>
+    <project_group>KDE</project_group>
+</component>
