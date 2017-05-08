@@ -8,7 +8,7 @@
 # SELinux Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
 
 pkgname=coreutils-selinux
-pkgver=8.26
+pkgver=8.27
 pkgrel=1
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('i686' 'x86_64')
@@ -19,12 +19,10 @@ depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl' 'libselinux')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-source=("https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig}
-        '0001-tests-support-non-MLS-enabled-SELinux-systems.patch')
+source=("https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig})
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
-md5sums=('d5aa2072f662d4118b9f4c63b94601a6'
-         'SKIP'
-         '9c1011aaf8c9109d5e7de1cea087befa')
+md5sums=('502795792c212932365e077946d353ae'
+         'SKIP')
 
 prepare() {
   cd ${pkgname/-selinux}-$pkgver
