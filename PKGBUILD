@@ -7,9 +7,9 @@ pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('x86_64')
 license=('MIT')
-pkgver='1.1.0'
+pkgver='1.2.0'
 source=("https://github.com/giodamelio/little_boxes/archive/$pkgver.zip")
-sha1sums=("b2522e46b690e17a2712641c492f3def996053d3")
+sha1sums=("3df199ad04da0148957b23cfe05300a0709751c3")
 
 build(){
     unzip -o $pkgver.zip
