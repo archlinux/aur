@@ -3,7 +3,7 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
 pkgname='nemo-image-converter'
-pkgver=3.2.0
+pkgver=3.4.0
 _mintrel='betsy'
 pkgrel=1
 pkgdesc="Resize and rotate images directly in Nemo"
@@ -13,18 +13,21 @@ url="https://github.com/linuxmint/nemo-extensions"
 depends=('nemo' 'imagemagick')
 makedepends=('gnome-common')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
-sha256sums=('3bdda1a6275341828e1c0d52cc51d5edf0f8e8aaba5998f813201fec51f9d1cf')
+#source=("${pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.gz")
+source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
+sha256sums=('68dadce98c17321c3c22e596452a1b7aa0842c5faa05688734430857e037b3f2')
 
 build() {
-  cd ${pkgname}-${pkgver}+${_mintrel}
+  #cd ${pkgname}-${pkgver}+${_mintrel}
+  cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
 
   ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}+${_mintrel}
+  #cd ${pkgname}-${pkgver}+${_mintrel}
+  cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
 
   make DESTDIR="${pkgdir}" install
 }
