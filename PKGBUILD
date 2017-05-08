@@ -2,7 +2,7 @@
 
 pkgbase=hybris-ready
 pkgname=('hybris-ready' 'hybris-ready-bootanim' 'hybris-ready-qt5-qpa-meta' 'hybris-ready-plasma-support-meta')
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 arch=('armv7h')
 url="https://github.com/mickybart/"
@@ -11,7 +11,7 @@ makedepends=()
 source=('hybris-ready.install'
 	'gls-common::git+https://github.com/mickybart/gnulinux_support-common'
 	'bootanim::git+https://github.com/mickybart/hybris-ready-bootanim')
-md5sums=('9c7d863fd54b8651fb016b40a11173fb'
+md5sums=('81c15ce7b501b7806057a92605757578'
 	 'SKIP'
          'SKIP')
 
@@ -22,10 +22,11 @@ build() {
 
 package_hybris-ready() {
   pkgdesc="hybris ready permit to fully support GNU/Linux and Android Hardware"
-  depends=('hybris-device' 'hybris-usb'
+  depends=('hybris-usb'
 	   'libhybris' 'libgl' 'libwayland-egl'
 	   'inotify-tools')
-  optdepends=('hybris-ready-bootanim: required to display a pretty boot animation')
+  optdepends=('hybris-device: required to support an android device'
+              'hybris-ready-bootanim: required to display a pretty boot animation')
   install='hybris-ready.install'
 
   cd ${srcdir}
@@ -67,14 +68,14 @@ package_hybris-ready-bootanim() {
 
 package_hybris-ready-qt5-qpa-meta() {
   pkgdesc="Qt QPA Platform for hybris"
-  depends=('hybris-ready'
+  depends=('hybris-ready' 'qt5-wayland-hybris'
 	   'qt5-qpa-hwcomposer-plugin' 'qt5-qpa-surfaceflinger-plugin')
 
 }
 
 package_hybris-ready-plasma-support-meta() {
   pkgdesc="plasma support for hybris system"
-  depends=('hybris-ready' 'qt5-wayland-compositor' 'kwin-hybris')
+  depends=('hybris-ready' 'qt5-wayland-hybris' 'kwin-hybris')
 
 }
 
