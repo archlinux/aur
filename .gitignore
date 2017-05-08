@@ -1,0 +1,6 @@
+
+*.tar.xz
+/pkg
+/src
+*.tar.gz
+/update
