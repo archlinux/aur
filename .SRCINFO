@@ -1,8 +1,8 @@
 pkgbase = xfce4-finder
 	pkgdesc = Smart and intuitive application finder, complete with theme and customization support.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
-	url = https://github.com/godlikemouse/xfce4-finder/archive/1.0.2.tar.gz
+	url = https://github.com/godlikemouse/xfce4-finder/archive/1.0.3.tar.gz
 	arch = any
 	groups = xfce4
 	license = MIT
