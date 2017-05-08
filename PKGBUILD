@@ -4,7 +4,7 @@ pkgbase=libhybris-ext-git
 pkgname=('libhybris-ext-git' 'libhybris-ext-libgl-git' 'libhybris-ext-wayland-egl-git')
 _pkgbase=libhybris
 pkgver=1245.a1f2e5d
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="https://github.com/mickybart/libhybris_ext"
 license=('Apache')
@@ -67,7 +67,7 @@ package_libhybris-ext-libgl-git() {
   depends=('libhybris' 'libhybris-ext-wayland-egl-git' 'mesa-hybris')
   provides=('libgl')
   replaces=('libgl')
-  conflicts=('libgl' 'libglvnd')
+  conflicts=('libgl')
 
   install -m755 -d ${pkgdir}/usr/lib/pkgconfig
   cp -av ${srcdir}/fakeinstall/opt/android/hybris/lib/pkgconfig/{egl,glesv1_cm,glesv2}.pc ${pkgdir}/usr/lib/pkgconfig/

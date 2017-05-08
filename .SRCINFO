@@ -1,6 +1,6 @@
 pkgbase = libhybris-ext-git
 	pkgver = 1245.a1f2e5d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mickybart/libhybris_ext
 	arch = armv7h
 	license = Apache
@@ -22,7 +22,6 @@ pkgname = libhybris-ext-libgl-git
 	depends = mesa-hybris
 	provides = libgl
 	conflicts = libgl
-	conflicts = libglvnd
 	replaces = libgl
 
 pkgname = libhybris-ext-wayland-egl-git
