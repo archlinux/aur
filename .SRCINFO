@@ -1,7 +1,7 @@
 pkgbase = hidviz
 	pkgdesc = Tool for in-depth analysis of USB HID devices communication
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ondrejbudai/hidviz
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton at craftyguy dot net>
 pkgname=hidviz
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for in-depth analysis of USB HID devices communication"
 arch=('i686' 'x86_64')
 url="https://github.com/ondrejbudai/hidviz"
