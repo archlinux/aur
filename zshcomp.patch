@@ -9,6 +9,7 @@
 +#  - support for symlinks
 +#  - directory-wise completion
 +function _module_completion () {
++    emulate -L zsh
 +    local _module_path_prefix
 +    local -a _module_search_path _module_type_d _module_type_f
 +    _module_path_prefix=$(echo ${(q)words[$CURRENT]} | sed -ne 's#\(.*/\).*#\1#p')
