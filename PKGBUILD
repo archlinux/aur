@@ -8,14 +8,13 @@ pkgname=webalizer
 _geodbver=20170501
 pkgver=2.23.08.${_geodbver}
 _pkgver=2.23-08
-pkgrel=1
+pkgrel=2
 pkgdesc="A web server log file analysis program producing HTML reports"
 arch=('i686' 'x86_64')
 url="http://www.webalizer.com/"
 license=('GPL')
 depends=('db' 'gd' 'geoip')
 install="${pkgname}.install"
-backup=("etc/${pkgname}.conf")
 source=(
   "ftp://ftp.mrunix.net/pub/${pkgname}/${pkgname}-${_pkgver}-src.tgz"
   "ftp://ftp.mrunix.net/pub/${pkgname}/geodb/${pkgname}-geodb-${_geodbver}.tgz"
@@ -41,12 +40,10 @@ package() {
     cd "${srcdir}/${pkgname}-${_pkgver}"
     make DESTDIR="${pkgdir}" install
     # install geolocation database (GeoDB)
-    install -m755 -d "${pkgdir}/usr/share/GeoDB"
-    install -m644 "${srcdir}/GeoDB.dat" "${pkgdir}/usr/share/GeoDB/GeoDB.dat"
+    install -D -m644 "${srcdir}/GeoDB.dat" "${pkgdir}/usr/share/GeoDB/GeoDB.dat"
     # install flags
     cd "${srcdir}/flags"
-    install -m755 -d "${pkgdir}/usr/share/${pkgname}/flags"
     for _i in *.png; do
-        install -m644 "${_i}" "${pkgdir}/usr/share/${pkgname}/flags/${_i}"
+        install -D -m644 "${_i}" "${pkgdir}/usr/share/${pkgname}/flags/${_i}"
     done
 }
