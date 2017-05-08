@@ -14,7 +14,7 @@ sha256sums=('a08d66a7960093bf62a82a5f7b663f88b67650bd628b34c72967e6f7aa996839')
 build() {
   cd $srcdir/$pkgname-$pkgver
   ./autogen.sh
-  ./configure --prefix=/usr
+  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
   make
   make docs
 }
@@ -22,7 +22,7 @@ build() {
 check() {
   cd "$srcdir"/$pkgname-$pkgver
   export GUILE_LOAD_PATH=$GUILE_LOAD_PATH:.
-  guile -c '(display (@ (artdd if=haiku-nightly-anyboot.image of=/dev/sdeanis artanis) artanis-version))'
+  guile -c '(display (@ (artanis artanis) artanis-version))'
 }
 
 package() {
