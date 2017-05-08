@@ -7,12 +7,12 @@
 
 pkgname=nvidia-sdk
 pkgver=7.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs) (needs registration at upstream URL and manual download)"
 arch=('i686' 'x86_64')
 url="https://developer.nvidia.com/nvidia-video-codec-sdk/"
 license=('custom')
-options=('!strip')
+options=('!strip' 'staticlibs')
 source=("file://Video_Codec_SDK_${pkgver}.zip"
         'LICENSE')
 sha256sums=('6b1a3d822317bf7f075df404181cd770ae7bf414b27e069f74f4e914a8702710'
