@@ -3,7 +3,7 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=logrotate-selinux
-pkgver=3.11.0
+pkgver=3.12.1
 pkgrel=1
 pkgdesc="Rotates system logs automatically with SELinux support"
 arch=('i686' 'x86_64')
@@ -16,27 +16,22 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=('etc/logrotate.conf')
 source=("https://github.com/logrotate/logrotate/releases/download/${pkgver}/${pkgname/-selinux}-${pkgver}.tar.xz"{,.asc}
-        'paths.patch'
-        'logrotate.conf'
-        logrotate.{timer,service})
-md5sums=('3a9280e4caeb837427a2d54518fbcdac'
+        'logrotate.conf')
+md5sums=('9c3d4c55220497a5530179c1c5e5b6eb'
          'SKIP'
-         'e76526bcd6fc33c9d921e1cb1eff1ffb'
-         '94dae4d3eded2fab9ae879533d3680db'
-         '287c2ad9b074cb5478db7692f385827c'
-         '85560be5272ed68a88bb77a0a2293369')
+         '94dae4d3eded2fab9ae879533d3680db')
 validpgpkeys=('992A96E075056E79CD8214F9873DB37572A37B36')
 
 build() {
 	cd "$srcdir/${pkgname/-selinux}-${pkgver}"
 
-	patch -p0 -i "$srcdir/paths.patch"
-
-	./autogen.sh
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--mandir=/usr/share/man \
+		--with-compress-command=/usr/bin/gzip \
+		--with-uncompress-command=/usr/bin/gunzip \
+		--with-default-mail-command=/usr/bin/mail \
 		--with-acl \
 		--with-selinux
 	make
@@ -55,8 +50,8 @@ package() {
 	install -dm755 "$pkgdir/etc/logrotate.d"
 	install -Dm644 "$srcdir/logrotate.conf" "$pkgdir/etc/logrotate.conf"
 
-	install -D -m644 ${srcdir}/logrotate.timer ${pkgdir}/usr/lib/systemd/system/logrotate.timer
-	install -D -m644 ${srcdir}/logrotate.service ${pkgdir}/usr/lib/systemd/system/logrotate.service
-	install -d -m755 ${pkgdir}/usr/lib/systemd/system/multi-user.target.wants
-	ln -s ../logrotate.timer ${pkgdir}//usr/lib/systemd/system/multi-user.target.wants/logrotate.timer
+	install -D -m644 examples/logrotate.timer ${pkgdir}/usr/lib/systemd/system/logrotate.timer
+	install -D -m644 examples/logrotate.service ${pkgdir}/usr/lib/systemd/system/logrotate.service
+	install -d -m755 $pkgdir/usr/lib/systemd/system/timers.target.wants
+	ln -s ../logrotate.timer $pkgdir/usr/lib/systemd/system/timers.target.wants/logrotate.timer
 }
