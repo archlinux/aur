@@ -25,7 +25,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz{,.asc}
         support_for_KDE_Frameworks_5.6.diff
-        mimeo-detection.diff)
+        mimeo-detection.patch)
 md5sums=('2d0aec6037769a5f138ff404b1bb4b15'
          'SKIP'
          'fc0a612362e00cc091d2c1ebbfbfc500'
