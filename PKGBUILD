@@ -2,7 +2,7 @@
 
 pkgname=ygopro-bin
 pkgver=1.033.D
-pkgrel=2
+pkgrel=3
 _pkgrel=1
 pkgdesc="YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels."
 arch=('x86_64')
@@ -41,8 +41,8 @@ package() {
 	git remote add origin https://github.com/Ygoproco/Live2017
 	git pull origin master
 
-	mkdir -p "$pkgname/opt/ygopro/expansions/liveanime"
-	cd "$pkgname/opt/ygopro/expansions/liveanime"
+	mkdir -p "$pkgdir/opt/ygopro/expansions/liveanime"
+	cd "$pkgdir/opt/ygopro/expansions/liveanime"
 	git init
 	git remote add origin https://github.com/Ygoproco/Liveanime
 	git pull origin master
