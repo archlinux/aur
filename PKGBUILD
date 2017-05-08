@@ -4,13 +4,13 @@
 pkgname=libpqxx-git
 _gitname=libpqxx
 pkgver=5.0.1.r1.80a9d538
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ client API for PostgreSQL"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://github.com/jtv/libpqxx"
 depends=('postgresql-libs>=9.1')
-makedepends=('python2')
+makedepends=('python2' 'doxygen' 'xmlto')
 provides=('libpqxx')
 conflicts=('libpqxx')
 source=("git+https://github.com/jtv/libpqxx.git")
