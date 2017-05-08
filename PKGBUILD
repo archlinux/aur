@@ -1,7 +1,7 @@
 # Maintainer: Jonas Frei <freijon@gmail.com>
 
 pkgname=mpvipc-git
-pkgver=0.0.1
+pkgver=0.1.1
 pkgrel=0
 pkgdesc="An mpc-like cli tool for mpv which connects to existing mpv instances through sockets, written in Rust"
 arch=('i686' 'x86_64')

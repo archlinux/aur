@@ -1,6 +1,6 @@
 pkgbase = mpvipc-git
 	pkgdesc = An mpc-like cli tool for mpv which connects to existing mpv instances through sockets, written in Rust
-	pkgver = 0.0.1
+	pkgver = 0.1.1
 	pkgrel = 0
 	url = https://github.com/freijon/mpvipc
 	arch = i686
