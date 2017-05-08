@@ -14,18 +14,20 @@ MRuby::Build.new do |conf|
   conf.gem github: 'ksss/mruby-file-stat', checksum_hash: '2d3ea9b5d59d2b41133228a71c110b75cb30a31e' # Latest
   conf.gem github: 'k0kubun/mruby-hashie', checksum_hash: 'bfdbb8aebc8786bc9e88469dae87a8dfe8ec4300' # Specified by mitamae
   conf.gem github: 'mattn/mruby-http', checksum_hash: '22d4fccd820705f6bef8e8f4989bdb4cf435f576' # Latest
-  conf.gem github: 'matsumotory/mruby-httprequest', checksum_hash: '9a0b6a0a2e5918b60501af412163000e3db83c58' # Latest
+  conf.gem github: 'matsumotory/mruby-httprequest', checksum_hash: 'ab6bacc8a7e92fe541d01d9d9b1515a888b0bce3' # Latest
   conf.gem github: 'iij/mruby-iijson', checksum_hash: '2472d063fce158249862b43bf51a84aec63336c7' # Latest
   conf.gem github: 'iij/mruby-io', checksum_hash: '86d58a2d3727f556e6e6ce10d170b6170911a263' # Specified by mitamae
-  conf.gem github: 'mattn/mruby-onig-regexp', checksum_hash: '12f573cb327aa50834c3a549f62995f44edd3172' # Latest
+  conf.gem github: 'iij/mruby-mtest', checksum_hash: '8e942541a94944ab2bdfad7c960756f6ecbe14ee' # Latest
+  conf.gem github: 'mattn/mruby-onig-regexp', checksum_hash: 'c269089a5db1046481a1bbbe7adb713350a73f6c' # Latest
   conf.gem github: 'k0kubun/mruby-open3', checksum_hash: 'b7480b6300a81d0e5fac469a36a383518e3dfc78' # Specified by mitamae
   conf.gem github: 'fastly/mruby-optparse', checksum_hash: 'e6397a090d1efe04d5dab57c63897f0d79bbad89' # Latest
-  conf.gem github: 'iij/mruby-pack', checksum_hash: '88a7fedea413568a1ff0410e109ff55a03b63a5f' # Latest
+  conf.gem github: 'iij/mruby-pack', checksum_hash: '7e014efe45ac7c8f5a0418b6f180634d33e0a9dd' # Latest
+  conf.gem github: 'luisbebop/mruby-polarssl', checksum_hash: '8b0865024255bf1cf325db3b8c93b46984a7e4f5' # Latest
   conf.gem github: 'iij/mruby-process', checksum_hash: '7308e8f4737cb33e3a3d92e60169983a6ebddd08' # Latest
   conf.gem github: 'k0kubun/mruby-shellwords', checksum_hash: '2a284d99b2121615e43d6accdb0e4cde1868a0d8' # Specified by mitamae
-  conf.gem github: 'matsumotory/mruby-simplehttp', checksum_hash: '4b90c1de9b80d6229f48e4af6967d2f38c31094b' # Latest
+  conf.gem github: 'matsumotory/mruby-simplehttp', checksum_hash: 'f1c3ae60f728944af58f29d5d2eb48ab40f11738' # Latest
   conf.gem github: 'iij/mruby-socket', checksum_hash: '3dad125a1cd93e70a1762e9c6a1d5e01554ad71c' # Latest
-  conf.gem github: 'k0kubun/mruby-specinfra', checksum_hash: '4132571dec892ba4962f98766ee891e8466e3a47' # Specified by mitamae
-  conf.gem github: 'iij/mruby-tempfile', checksum_hash: '48073012c932f540dc3773b2dc6b079caf71a70d' # Latest
+  conf.gem github: 'k0kubun/mruby-specinfra', checksum_hash: '22a54436fe53afd310ad4473d28edd03dd960a24' # Specified by mitamae
+  conf.gem github: 'iij/mruby-tempfile', checksum_hash: 'c21fc7303336ccbf0cbed70afe75e43bbf00a83b' # Latest
   conf.gem github: 'hone/mruby-yaml', checksum_hash: 'dd34566926a6f90667983052efc40143427fea49' # Latest
 end
