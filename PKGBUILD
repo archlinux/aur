@@ -2,7 +2,7 @@
 # Contributor: moeb, https://github.com/moeb
 
 pkgname=freecad-cadquery-git
-pkgver=0.1.8.r25.g56dcfe2
+pkgver=1.0.0.1.r5.g456f520
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="CadQuery module for freecad"
@@ -13,7 +13,7 @@ makedepends=('git')
 license=('LGPL3')
 source=('git+https://github.com/jmwright/cadquery-freecad-module.git')
 md5sums=('SKIP')
-_moddir=usr/share/freecad/Mod/
+_moddir=usr/lib/freecad/Mod/CadQuery
 _pkgname=cadquery-freecad-module
 
 pkgver() {
@@ -24,5 +24,5 @@ pkgver() {
 package() {
     cd $srcdir/${_pkgname}
     mkdir -p $pkgdir/$_moddir
-    cp -r CadQuery $pkgdir/$_moddir
+    cp -r . $pkgdir/$_moddir
 }

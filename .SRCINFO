@@ -1,6 +1,6 @@
 pkgbase = freecad-cadquery-git
 	pkgdesc = CadQuery module for freecad
-	pkgver = 0.1.8.r25.g56dcfe2
+	pkgver = 1.0.0.1.r5.g456f520
 	pkgrel = 1
 	url = https://github.com/jmwright/cadquery-freecad-module
 	arch = i686
