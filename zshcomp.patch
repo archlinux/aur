@@ -1,0 +1,55 @@
+diff -aur modules-3.2.10/init/zsh.in modules-3.2.10-patched/init/zsh.in
+--- modules-3.2.10/init/zsh.in	2012-10-25 21:33:34.000000000 +0200
++++ modules-3.2.10-patched/init/zsh.in	2017-05-08 10:17:42.693291314 +0200
+@@ -22,3 +22,51 @@
+   MODULEPATH=`sed -n 's/[ 	#].*$//; /./H; $ { x; s/^\n//; s/\n/:/g; p; }' ${MODULESHOME}/init/.modulespath`
+   export MODULEPATH
+ fi
++
++# zsh-completion function, improves the standard zsh-completion (_module):
++#  - support for symlinks
++#  - directory-wise completion
++function _module_completion () {
++    emulate -L zsh
++    local _module_path_prefix
++    local -a _module_search_path _module_type_d _module_type_f
++    _module_path_prefix=$(echo ${(q)words[$CURRENT]} | sed -ne 's#\(.*/\).*#\1#p')
++    _module_search_paths=(${^${(@s/:/)MODULEPATH}}/$_module_path_prefix)
++
++    _module_type_d=()
++    _module_type_f=()
++    eval $(find $_module_search_paths -mindepth 1 -maxdepth 1 -not -name '.modulerc' -not -name '.version' -printf "_module_type_%Y+=${(q)_module_path_prefix}%P\n" 2> /dev/null)
++
++    if [[ "$@" != "dir" ]]; then
++        compadd -q -S / ${_module_type_d}
++        compadd ${_module_type_f}
++    else
++        compadd ${_module_type_d}
++    fi
++}
++
++# module avail should only complete directories
++function _module_avail {
++    _module_completion dir
++}
++
++# all the other use the full completion:
++local -a _module_complete_functions=( \
++        _module_help \
++        _module_load \
++        _module_switch \
++        _module_display \
++        _module_whatis \
++        _module_initadd \
++        _module_initprepend \
++        _module_initrm \
++        _module_initswitch \
++)
++
++for _module_complete_function in $_module_complete_functions ; do
++    $_module_complete_function () {
++        _module_completion
++    }
++done
++
++# vim: syntax=zsh
