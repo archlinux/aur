@@ -2,7 +2,7 @@
 
 pkgname=artanis
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
