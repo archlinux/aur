@@ -53,7 +53,8 @@ package() {
 	make DESTDIR="$pkgdir/" install
 
 	install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
+	mv "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin"
+	rmdir "$pkgdir/usr/sbin/"
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "bindings/ruby/html/" "$pkgdir/usr/share/doc/$pkgname/rdoc"
 
