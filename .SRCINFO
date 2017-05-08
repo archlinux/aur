@@ -1,0 +1,18 @@
+pkgbase = watchman-make
+	pkgdesc = An inotify-based file watching and job triggering command line utility
+	pkgver = 4.7.0
+	pkgrel = 0
+	url = https://facebook.github.io/watchman/
+	install = watchman-make.install
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = glibc
+	depends = pcre
+	source = watchman-make-4.7.0.tar.gz::https://github.com/facebook/watchman/archive/v4.7.0.tar.gz
+	source = watchman-make.tmpfiles
+	sha256sums = 77c7174c59d6be5e17382e414db4907a298ca187747c7fcb2ceb44da3962c6bf
+	sha256sums = 2b061865e10578a0477b9c7991a00594bc839c846b98896e93c75743dbf6a379
+
+pkgname = watchman-make
+
