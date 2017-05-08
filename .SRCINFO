@@ -1,0 +1,14 @@
+pkgbase = kontemplate-git
+	pkgdesc = Simple Kubernetes resource templating
+	pkgver = master_1e3ecad
+	pkgrel = 1
+	url = https://github.com/tazjin/kontemplate
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	optdepends = pass: Template secrets into resources
+	source = kontemplate-git::git+https://github.com/tazjin/kontemplate.git
+	md5sums = SKIP
+
+pkgname = kontemplate-git
+
