@@ -6,7 +6,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.4.1+66+g50ef5a0e
+pkgver=3.4.1+74+g24ac42b1
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
@@ -27,7 +27,6 @@ optdepends=('gst-plugins-ugly: Extra media codecs'
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 options=(!emptydirs)
-install=$_pkgname.install
 source=($pkgname::git+https://git.gnome.org/browse/$_pkgname)
 sha256sums=('SKIP')
 
