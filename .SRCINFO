@@ -1,6 +1,6 @@
 pkgbase = qt5-qpa-surfaceflinger-plugin
 	pkgdesc = Qt QPA plugin for Android SurfaceFlinger
-	pkgver = 5.7.0
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = https://github.com/mickybart/qt5-qpa-surfaceflinger-plugin
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = qt5-qpa-surfaceflinger-plugin
 	license = LGPL
 	license = custom
 	depends = qt5-base
-	depends = qt5-wayland-compositor
+	depends = qt5-wayland-hybris
 	depends = hybris-android-headers
 	depends = libhybris
 	conflicts = qt
-	source = qt5-qpa-surfaceflinger-plugin::git+http://github.com/mickybart/qt5-qpa-surfaceflinger-plugin.git#tag=v5.7.0
+	source = qt5-qpa-surfaceflinger-plugin::git+http://github.com/mickybart/qt5-qpa-surfaceflinger-plugin.git#tag=v5.8.0
 	md5sums = SKIP
 
 pkgname = qt5-qpa-surfaceflinger-plugin
