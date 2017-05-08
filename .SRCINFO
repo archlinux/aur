@@ -1,0 +1,17 @@
+pkgbase = glmviz-git
+	pkgdesc = High framerate, dB correct OpenGL music visualizer with FiFo buffers and PulseAudio input support
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/hannesha/GLMViz
+	arch = x86_64
+	license = GPL3
+	depends = glm
+	depends = fftw
+	depends = glfw-x11
+	depends = libconfig
+	optdepends = pulseaudio
+	source = git+https://github.com/hannesha/GLMViz.git
+	md5sums = SKIP
+
+pkgname = glmviz-git
+
