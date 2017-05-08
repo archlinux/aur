@@ -26,7 +26,7 @@ build() {
   mkdir build
   cd build
   cmake -DIQTREE_FLAGS=omp ..
-  make -j4
+  make
 }
 
 
