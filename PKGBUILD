@@ -2,8 +2,8 @@
 pkgname=('shotcut')
 _srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='17.04'
-_commit='8de07dafef1d3685f902f6298d00bc5f746e12f6'
+pkgver='17.05'
+_commit='12525edcb3795a90d00047a2c96777b7784649e2'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.shotcut.org/'
