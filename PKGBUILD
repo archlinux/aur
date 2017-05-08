@@ -3,21 +3,21 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.2.5
-_gitrev=606
-_gitver=0b42eb77
+pkgver=1.3.0
+_gitrev=642
+_gitver=70f80570
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 url='https://github.com/plexinc/plex-media-player'
-depends=('mpv' 'qt5-webengine>=5.6' 'libcec3' 'sdl2' 'qt5-x11extras' 'qt5-quickcontrols' 'p8-platform' 'protobuf')
+depends=('mpv' 'qt5-webengine>=5.6' 'libcec' 'sdl2' 'qt5-x11extras' 'qt5-quickcontrols' 'p8-platform' 'protobuf')
 makedepends=('cmake' 'conan')
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}.${_gitrev}-${_gitver}.tar.gz"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha512sums=('c8af7681e57f0d90d3714e72d463d5154c9deb3943ede73b6367aefa0e8157bbe33e396266938924b6f7a4e1eb9bb20ecef0da085bace5988e33459ce126cae3'
+sha512sums=('cc82adda0648177c52fd14c7186e9084fee17327a8c24fdb2aa4b461c261798fe4a10e1df7f11e72af2bd283a44c59480bb7bcc5e03f55aec6d2ced29f2f9ea8'
             'f24d70646babc2d248d6159442e3b9d5518276e7d8e33004f13d260953ebcd741067c507a47de25c24842e4391f4c403cdb46dc989b52fa1dde38a7312382db1')
 
 prepare() {
@@ -27,9 +27,6 @@ prepare() {
 	sed -i 's|include(GetGitRevisionDescription)||
 	        s|get_git_head_revision(REFSPEC FULL_GIT_REVISION)||' \
 	       CMakeModules/VersionConfiguration.cmake
-
-    sed -i 's|#include <libcec/|#include <libcec3/|' \
-           src/input/InputCEC.h
 
     conan_remote="https://conan.plex.tv"
     msg2 "Checking for plex conan remote"
@@ -49,8 +46,7 @@ build() {
 	cd "$_fullname/build"
 
 	cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE='Release' -DCMAKE_SKIP_RPATH=1 \
-	      -DFULL_GIT_REVISION="$_gitver" -DQTROOT='/usr/share/qt' -DCEC_INCLUDE_DIR=/usr/include/libcec3 \
-          -DCEC_LIBRARY=/usr/lib/libcec.so.3 ..
+	      -DFULL_GIT_REVISION="$_gitver" -DQTROOT='/usr/share/qt' ..
 	make
 }
 
