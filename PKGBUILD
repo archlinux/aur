@@ -4,11 +4,11 @@
 
 pkgname=nrpe
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('openssl')
+depends=('openssl-1.0')
 optdepends=("monitoring-plugins: common tools for monitoring using $pkgname")
 install=$pkgname.install
 backup=('etc/nrpe/nrpe.cfg' 'etc/xinetd.d/nrpe')
@@ -19,6 +19,10 @@ md5sums=('ad9208ef4938449986cb5c5ba094598e')
 build() {
   cd $pkgname-$pkgver
 
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+  export sslbin=/usr/bin/openssl-1.0
+  export ssl_inc_dir=/usr/include/openssl-1.0/openssl
+
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/nrpe \
@@ -27,7 +31,7 @@ build() {
     --with-nrpe-user=31 --with-nrpe-group=31 \
     --with-nagios-user=31 --with-nagios-group=31 \
     --with-piddir=/run/nrpe
-  
+
   make all
 }
 
