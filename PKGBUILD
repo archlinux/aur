@@ -9,7 +9,7 @@ url="https://github.com/DaveGamble/cJSON"
 license=('MIT')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DaveGamble/cJSON/archive/v$pkgver.tar.gz")
-sha512sums=('51bfbea90c005e75f759114d987fd4feb2cbf40fabd6f7319d221772c10c65fcf4b7d982b1f5b9b27ac0955b550ac97251f0b09b0c25d40984e045d985b7ab0f')
+sha512sums=('7717eedf0555980adee55562a549f7b32249a900ad6e8d49e912b69dcf67388880379ba098a669f71cb5e009440a95cce8343f95692438f1f63478a8def633ee')
 
 build() {
 	cd "$srcdir/cJSON-$pkgver" || return 1
