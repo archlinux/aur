@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=binaryen-git
-pkgver=20160527
+pkgver=20170508
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly, in C++"
 arch=(i686 x86_64)
@@ -19,7 +19,9 @@ build() {
   rm -rf build && mkdir build
   cd build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
 
