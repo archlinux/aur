@@ -1,11 +1,11 @@
 pkgname=openwsman
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Opensource Implementation of WS-Management"
 arch=('i686' 'x86_64')
 url="https://$pkgname.github.io/"
 license=('BSD')
-depends=('libxml2' 'sblim-sfcc')
+depends=('libxml2' 'openssl-1.0' 'sblim-sfcc')
 makedepends=('cmake' 'swig'
              'perl'
              'python2'
@@ -30,7 +30,9 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"/build
+	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig/
 	cmake -DCMAKE_BUILD_TYPE=Release           \
+	      -DCMAKE_C_FLAGS=-I/usr/include/openssl-1.0 \
 	      -DCMAKE_INSTALL_PREFIX=/usr          \
 	      -DPACKAGE_ARCHITECTURE=$CARCH        \
 	      -DLIB=lib                            \

@@ -1,7 +1,7 @@
 pkgbase = openwsman
 	pkgdesc = Opensource Implementation of WS-Management
 	pkgver = 2.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openwsman.github.io/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = openwsman
 	makedepends = ruby
 	makedepends = ruby-docs
 	depends = libxml2
+	depends = openssl-1.0
 	depends = sblim-sfcc
 	optdepends = perl: for perl bindings
 	optdepends = python2: for python bindings
