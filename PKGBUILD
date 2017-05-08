@@ -4,16 +4,16 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=lib32-jansson
-pkgver=2.9
+pkgver=2.10
 pkgrel=1
 pkgdesc='C library for encoding, decoding and manipulating JSON data'
 arch=('x86_64')
-url='https://www.digip.org/jansson/'
+url='http://www.digip.org/jansson/'
 depends=('jansson' 'lib32-glibc')
 makedepends=('gcc-multilib')
 license=('MIT')
-source=("https://www.digip.org/jansson/releases/jansson-${pkgver}.tar.bz2")
-sha256sums=('77094fc1e113da0e2e65479488a0719f859b8f5bde3a6a0da88a1c73a88b5698')
+source=("http://www.digip.org/jansson/releases/jansson-${pkgver}.tar.bz2")
+sha256sums=('241125a55f739cd713808c4e0089986b8c3da746da8b384952912ad659fa2f5a')
 
 build() {
   cd jansson-${pkgver}
