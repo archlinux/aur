@@ -24,7 +24,7 @@ noextract=()
 validpgpkeys=()
 install="env-modules-tcl.install"
 md5sums=('3a40bf6177cc438481672ce028544828'
-         '1291b8c3433ccd5272615d2a16b551b5')
+         '2e1bee23178b74872fd1c78c1cac8053')
 
 moduledir=modules-tcl
 

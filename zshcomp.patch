@@ -1,6 +1,6 @@
 --- modules-tcl-1.832/init/zsh.in	2017-04-29 08:23:22.000000000 +0200
 +++ modules-tcl-1.832-patched/init/zsh.in	2017-05-07 18:41:21.812267826 +0200
-@@ -83,3 +83,48 @@
+@@ -83,3 +83,51 @@
  if [ -r @initdir@/modulerc -a "$MODULEPATH" = '' -a "$LOADEDMODULES" = '' ]; then
     source @initdir@/modulerc
  fi
