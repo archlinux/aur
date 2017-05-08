@@ -3,7 +3,7 @@
 pkgname=mastodon-git
 pkgver=1.2.2_22_ga0ed88a9
 _branch=master
-pkgrel=0.2
+pkgrel=0.3
 pkgdesc="A GNU Social-compatible microblogging server"
 arch=('i686' 'x86_64')
 url="https://mastodon.social"
@@ -49,6 +49,7 @@ pkgver() {
 }
 
 prepare() {
+  cd "${pkgname%-git}"
   bundle install --deployment --without development test
   yarn install
 }
