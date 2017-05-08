@@ -1,15 +1,15 @@
-commit 4e5075542e5247c14c329821d011a711982479b2
-Author: Narrat
-Date:   Thu Oct 8 02:45:32 2015 +0200
+commit 9535ad85e547f437e1fc2ff7ee68a859c144e38d
+Author: Narrat <autumn-wind@web.de>
+Date:   Mon May 8 21:12:37 2017 +0200
 
     Add support for mimeo
 
 diff --git a/scripts/xdg-email.in b/scripts/xdg-email.in
-index 2819e28..d95e938 100644
+index 3614776..046bd39 100644
 --- a/scripts/xdg-email.in
 +++ b/scripts/xdg-email.in
-@@ -213,6 +213,18 @@ open_envvar()
-     exit_failure_operation_failed
+@@ -234,6 +234,18 @@ open_flatpak()
+     fi
  }
  
 +open_mimeo()
@@ -27,22 +27,22 @@ index 2819e28..d95e938 100644
  open_generic()
  {
      local client
-@@ -459,6 +471,10 @@ case "$DE" in
-     open_xfce "${mailto}"
+@@ -484,6 +496,10 @@ case "$DE" in
+     open_flatpak "$url"
      ;;
  
 +    mimeo)
 +    open_mimeo "${mailto}"
 +    ;;
 +
-     generic)
+     generic|lxqt|enlightenment)
      open_generic "${mailto}"
      ;;
 diff --git a/scripts/xdg-mime.in b/scripts/xdg-mime.in
-index 074256c..da57bb0 100644
+index b67581c..04aa038 100644
 --- a/scripts/xdg-mime.in
 +++ b/scripts/xdg-mime.in
-@@ -90,6 +90,16 @@ info_gnome()
+@@ -93,6 +93,16 @@ info_gnome()
      fi
  }
  
@@ -59,7 +59,7 @@ index 074256c..da57bb0 100644
  info_generic()
  {
      if mimetype --version >/dev/null 2>&1; then
-@@ -590,6 +600,10 @@ if [ "$action" = "info" ]; then
+@@ -598,6 +608,10 @@ if [ "$action" = "info" ]; then
          info_gnome "$filename"
          ;;
  
@@ -71,10 +71,10 @@ index 074256c..da57bb0 100644
          info_generic "$filename"
          ;;
 diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
-index 0fbd63d..1ed4385 100644
+index 9817c5f..6c95a11 100644
 --- a/scripts/xdg-open.in
 +++ b/scripts/xdg-open.in
-@@ -211,6 +211,17 @@ open_enlightenment()
+@@ -246,6 +246,17 @@ open_flatpak()
      fi
  }
  
@@ -92,8 +92,8 @@ index 0fbd63d..1ed4385 100644
  #-----------------------------------------
  # Recursively search .desktop file
  
-@@ -492,6 +503,10 @@ case "$DE" in
-     open_darwin "$url"
+@@ -531,6 +542,10 @@ case "$DE" in
+     open_flatpak "$url"
      ;;
  
 +    mimeo)
@@ -104,10 +104,10 @@ index 0fbd63d..1ed4385 100644
      open_generic "$url"
      ;;
 diff --git a/scripts/xdg-screensaver.in b/scripts/xdg-screensaver.in
-index 1dd7bf7..96c1e3d 100644
+index aecd8e3..c22909d 100644
 --- a/scripts/xdg-screensaver.in
 +++ b/scripts/xdg-screensaver.in
-@@ -114,7 +114,7 @@ perform_action()
+@@ -118,7 +118,7 @@ perform_action()
        [ -n "$DISPLAY" ] && screensaver_xserver "$1"
        ;;
  
@@ -117,7 +117,7 @@ index 1dd7bf7..96c1e3d 100644
        ;;
    esac
 diff --git a/scripts/xdg-settings.in b/scripts/xdg-settings.in
-index 3d03507..7585d1c 100644
+index b65e659..304bd94 100644
 --- a/scripts/xdg-settings.in
 +++ b/scripts/xdg-settings.in
 @@ -463,6 +463,42 @@ set_browser_xfce()
@@ -196,17 +196,17 @@ index 3d03507..7585d1c 100644
 +    dispatch_specific mimeo "$@"
 +    ;;
 +
-     generic)
+     generic|lxqt|enlightenment)
      dispatch_specific generic "$@"
      ;;
 diff --git a/scripts/xdg-utils-common.in b/scripts/xdg-utils-common.in
-index f920799..1ac95bc 100644
+index 8b85883..817effe 100644
 --- a/scripts/xdg-utils-common.in
 +++ b/scripts/xdg-utils-common.in
-@@ -294,6 +294,7 @@ detectDE()
-       elif xprop -root _DT_SAVE_MODE 2> /dev/null | grep ' = \"xfce4\"$' >/dev/null 2>&1; then DE=xfce;
+@@ -316,6 +316,7 @@ detectDE()
        elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
        elif echo $DESKTOP | grep -q '^Enlightenment'; then DE=enlightenment;
+       elif [ x"$LXQT_SESSION_CONFIG" != x"" ]; then DE=lxqt;
 +      elif which mimeo > /dev/null; then DE=mimeo;
        fi
      fi

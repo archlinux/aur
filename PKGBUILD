@@ -5,8 +5,8 @@
 
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
-pkgver=1.1.1
-pkgrel=5
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
 url="https://wiki.freedesktop.org/www/Software/xdg-utils/"
@@ -23,23 +23,15 @@ optdepends=('kde-cli-tools: for KDE Plasma5 support in xdg-open'
             'perl-x11-protocol: Perl X11 protocol used in xdg-screensaver')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz{,.asc}
-        support_for_KDE_Frameworks_5.6.diff
+source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz #{,.asc}
         mimeo-detection.patch)
-md5sums=('2d0aec6037769a5f138ff404b1bb4b15'
-         'SKIP'
-         'fc0a612362e00cc091d2c1ebbfbfc500'
-         '0783dbeb478b91bbfc467be167a7145d')
-validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
+md5sums=('361e75eb76c94d19f6f4f330d8ee626b'
+         '81b8920bf164863ddeb6ac999cd0d046')
+#validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
 
 
 prepare() {
 	cd $_pkgname-$pkgver
-	# fix wrong hardcoded chromium binary name - FS#50184
-	sed -i "s:chromium-browser:chromium:" scripts/xdg-open.in
-
-	# fix KDE support, FS#48668
-	patch -Np1 -i $srcdir/support_for_KDE_Frameworks_5.6.diff
 
 	patch -p1 -i "${srcdir}"/mimeo-detection.diff
 }
