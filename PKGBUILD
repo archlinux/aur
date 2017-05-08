@@ -36,7 +36,7 @@ package() {
   install -m 644 "../${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
   cd "${srcdir}/${_pkgname}-${pkgver}/python"
-  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+  python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
