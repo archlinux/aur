@@ -15,7 +15,6 @@ optdepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=("${config_path:1}/$moduledir/init/modulerc")
 options=()
 install="env-modules-tcl.install"
 changelog=
@@ -30,6 +29,7 @@ moduledir=modules-tcl
 install_prefix=/usr
 config_path=/etc
 
+backup=("${config_path:1}/$moduledir/init/modulerc")
 
 build() {
     cd modules-tcl-$pkgver

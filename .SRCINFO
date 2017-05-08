@@ -13,7 +13,7 @@ pkgbase = env-modules-tcl
 	source = https://sourceforge.net/projects/modules/files/Modules-Tcl/modules-tcl-1.832.tar.gz
 	source = zshcomp.patch
 	md5sums = 3a40bf6177cc438481672ce028544828
-	md5sums = 1291b8c3433ccd5272615d2a16b551b5
+	md5sums = 2e1bee23178b74872fd1c78c1cac8053
 
 pkgname = env-modules-tcl
 
