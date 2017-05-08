@@ -13,7 +13,7 @@
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.25.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
