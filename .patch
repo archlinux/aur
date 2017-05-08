@@ -1,0 +1,9 @@
+--- metadata.json	2015-05-24 20:44:26.000000000 +0000
++++ metadata.json	2017-05-08 13:16:30.490450786 +0000
+@@ -1,5 +1,5 @@
+ {
+-"shell-version": ["3.10","3.12","3.14","3.16"], 
++"shell-version": ["3.10","3.12","3.14","3.16","3.18","3.20","3.22","3.24"], 
+ "uuid": "ShutdownTimer@neumann", 
+ "name": "ShutdownTimer", 
+ "gettext-domain": "ShutdownTimer", 
