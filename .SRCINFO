@@ -1,11 +1,12 @@
 pkgbase = libhybris-ext-git
-	pkgver = 775.4cd30c8
-	pkgrel = 2
+	pkgver = 1245.a1f2e5d
+	pkgrel = 1
 	url = https://github.com/mickybart/libhybris_ext
 	arch = armv7h
 	license = Apache
 	makedepends = wayland
-	source = libhybris::git+https://github.com/mickybart/libhybris_ext
+	makedepends = hybris-android-headers
+	source = libhybris::git+https://github.com/mickybart/libhybris_ext#branch=master-next
 	md5sums = SKIP
 
 pkgname = libhybris-ext-git
@@ -21,6 +22,7 @@ pkgname = libhybris-ext-libgl-git
 	depends = mesa-hybris
 	provides = libgl
 	conflicts = libgl
+	conflicts = libglvnd
 	replaces = libgl
 
 pkgname = libhybris-ext-wayland-egl-git
