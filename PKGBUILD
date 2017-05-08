@@ -1,7 +1,7 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=keepassx-dark-git
-pkgver=2.0.3.r78.g2448ea9
+pkgver=2.0.3.r79.g7cdddb2
 pkgrel=1
 pkgdesc="It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_VERBOSE_MAKEFILE=OFF \
     -DWITH_GUI_TESTS=ON \
+    -DLIBQDARK_INCLUDE_DIR=/usr/include/libqdark \
     -DCMAKE_BUILD_TYPE=Release ..
   make
 }
