@@ -5,7 +5,7 @@
 
 pkgname='awl'
 pkgver='0.57'
-pkgrel=3
+pkgrel=4
 pkgdesc="Andrew's php Web Libraries"
 arch=('any')
 url="https://gitlab.com/davical-project/awl/"
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('php')
 makedepends=('apigen' 'php-sqlite')
 install="${pkgname}.install"
-source=("awl-${pkgver}.tar.bz2::https://gitlab.com/davical-project/awl/repository/archive.tar.bz2?ref=r${pkgver}")
+source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgname}/repository/archive.tar.bz2?ref=r${pkgver}")
 sha256sums=('42e5bfc5cf1c011c3896eece13002da5be09e701a3161a6109fe5888eba5e5bc')
 
 prepare() {
