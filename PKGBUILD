@@ -1,6 +1,6 @@
 # Maintainer: wilga <wilga at cat3 dot de>
 pkgname=bwsyncandshare
-pkgver=11.2.313
+pkgver=11.3.417
 pkgrel=1
 pkgdesc="file sync and share client"
 arch=('any')
@@ -18,7 +18,7 @@ source=("https://download.bwsyncandshare.kit.edu/clients/$_tarball"
         "$pkgname-$pkgver.patch")
 noextract=("$_tarball")
 
-sha256sums=('820ca1ca02f2be6e94592e270fbdd94307c66efa883c1cb4988de88606056faf'
+sha256sums=('7405eeeb668555e6a0ca46effbd691dc9db936d4deac4f59ec95c212a9bcd08b'
             'ebe8be90d0364090744b80609cdc5a71e360fc7f3e3188b2a534c7c4921e6c50')
 
 prepare() {
