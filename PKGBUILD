@@ -7,7 +7,7 @@ pkgdesc="Bitcoin Classic versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
-depends=('boost-libs' 'libevent' 'openssl-1.0' 'miniupnpc' 'zeromq')
+depends=('boost-libs' 'libevent' 'openssl' 'miniupnpc' 'zeromq')
 makedepends=('boost')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-tx')
@@ -27,9 +27,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/bitcoinclassic"
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
-  export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
 
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=no --enable-hardening \
