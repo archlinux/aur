@@ -13,7 +13,7 @@ md5sums=('4ac2cd9d945d69896440ed5e5630d421')
 arch=('i686' 'x86_64')
 makedepends=('cmake' 'gcc-fortran')
 depends=('openblas-lapack-for-flexiblas' 'atlas-lapack-for-flexiblas')
-conflicts=('blas' 'lapack' 'cblas' 'lapacke' 'openblas' 'opeblas-lapack' 'atlas' 'atlas-lapack')
+conflicts=('blas' 'lapack' 'cblas' 'lapacke' 'openblas' 'openblas-lapack' 'atlas' 'atlas-lapack')
 provides=("blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapackver}" "lapacke=${_lapackver}")
 
 build() {
