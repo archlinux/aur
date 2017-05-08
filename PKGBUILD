@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=env-modules-tcl
 pkgver=1.832
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile (tcl-only-version)."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ noextract=()
 validpgpkeys=()
 install="env-modules-tcl.install"
 md5sums=('3a40bf6177cc438481672ce028544828'
-         'da8f7f9fc4e462b0ec0a6fab5257d8e0')
+         '1291b8c3433ccd5272615d2a16b551b5')
 
 moduledir=modules-tcl
 
