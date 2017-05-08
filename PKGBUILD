@@ -5,7 +5,7 @@
 
 pkgname='awl'
 pkgver='0.57'
-pkgrel=4
+pkgrel=5
 pkgdesc="Andrew's php Web Libraries"
 arch=('any')
 url="https://gitlab.com/davical-project/awl/"
@@ -45,5 +45,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -D -d m755 "${pkgdir}/usr/share/${pkgname}"
-    cp -rf docs inc scripts tests vendor "${pkgdir}/usr/share/${pkgname}/"
+    cp -ra inc scripts tests vendor "${pkgdir}/usr/share/${pkgname}/"
+    install -D -d m755 "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -ra docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
 }
