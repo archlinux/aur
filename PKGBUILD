@@ -3,8 +3,8 @@
 
 _pypi_name=mypy
 pkgname=${_pypi_name}
-pkgver=0.501
-pkgrel=2
+pkgver=0.510
+pkgrel=1
 pkgdesc='Optional static typing for Python 2 and 3'
 url="https://github.com/python/mypy"
 arch=('any')
@@ -23,5 +23,5 @@ package() {
     cd "${srcdir}/${_pypi_name}-${pkgver}"
     python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
 }
-sha256sums=('1098ba0bc55b4f6cebdf35f1303be31107f2ae5a753f9aec28aaff2d701b8f98'
+sha256sums=('e7205a266b7fb8d5351cafe6fa406ee71d8f55630afacb5e579ca56bc6842efd'
             '7b4fa59b4ecaaa5fe29d75802394b5c5ccfea2c52a6cb7693bd8512f7117e691')
