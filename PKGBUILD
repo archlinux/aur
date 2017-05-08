@@ -8,12 +8,12 @@
 
 pkgname=nvidia-llb-dkms
 pkgver=375.66
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA kernel module sources (DKMS) - long lived branch"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('dkms' 'linux>=3.7' 'linux<4.11' "nvidia-utils-llb>=${pkgver}" 'libgl')
+depends=('dkms' 'linux>=3.7' 'linux<4.12' "nvidia-utils-llb>=${pkgver}" 'libgl')
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
 provides=("nvidia=${pkgver}" 'nvidia-dkms')
@@ -23,9 +23,11 @@ install=${pkgname}.install
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 source_armv7h=("http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run")
+source=('kernel_4.11.patch')
 # http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run.md5
 # http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run.md5
 # http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run.md5
+md5sums=('a8f4a6736f77d06112111cedc98ceea5')
 md5sums_i686=('47dddb796fe39497cf6ae374591f6eb9')
 md5sums_x86_64=('361843d4b714a9876b3599fd8dca2412')
 md5sums_armv7h=('d8f8bee37b237f76c533eb0c4dae9bbc')
@@ -44,6 +46,8 @@ prepare() {
   sh ${_pkg}.run --extract-only
   cd ${_pkg}/kernel
   # patches here
+  # Patch for licensing issue on 4.11
+  patch -p1 -i "${srcdir}/kernel_4.11.patch"
 
   # Update dkms.conf
   sed -e "s/__VERSION_STRING/${pkgver}/" \
