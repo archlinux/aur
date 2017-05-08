@@ -1,0 +1,29 @@
+pkgbase = qt5-wayland-hybris
+	pkgdesc = Provides APIs for Wayland
+	pkgver = 5.8.0
+	pkgrel = 2
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = qt
+	groups = qt5
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt5-declarative
+	depends = libxcomposite
+	provides = qt5-wayland
+	conflicts = qt5-wayland
+	source = http://download.qt.io/official_releases/qt/5.8/5.8.0/submodules/qtwayland-opensource-src-5.8.0.tar.xz
+	source = revert-5b807802.patch
+	source = pkgconfig_hybris-egl-platform.patch
+	source = display.patch
+	md5sums = 0a40bd721bd5e1630601beab660c6ea9
+	md5sums = 95e986e9c0ab5ebe03c85efb69ee751a
+	md5sums = e7d940fe0c8f0da0a9a872c5def51ac2
+	md5sums = d49b26a6e43ce2bbaeeb6ea354960503
+
+pkgname = qt5-wayland-hybris
+

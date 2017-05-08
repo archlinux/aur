@@ -1,0 +1,542 @@
+From 5b807802866c8df00cb3340d4f9bcc343be5973a Mon Sep 17 00:00:00 2001
+From: Giulio Camuffo <giulio.camuffo@kdab.com>
+Date: Sat, 2 Jul 2016 10:46:58 +0200
+Subject: [PATCH] Create and destroy the shell surface when showing and hiding
+
+This changes the shell surface handling for windows, and instead of
+creating the shell surface at initialization time, and then attaching
+a null buffer to hide it, it creates the shell surface on setVisible(true),
+and destroys it on setVisible(false).
+This fixes hiding when using xdg_shell, as that interface defines that
+attaching a null buffer to an xdg_surface is an error.
+Also this should help with bugged EGL drivers which attach a buffer
+after eglSwapBuffers() returns, which used to cause a newly hidden
+window to get a new valid buffer after we attached a null one, showing
+it again.
+
+Task-number: QTBUG-47902
+Change-Id: I8e0a0442319a98cc1361803ea7be1d079b36fc8c
+Reviewed-by: Johan Helsing <johan.helsing@qt.io>
+Reviewed-by: Paul Olav Tvete <paul.tvete@qt.io>
+---
+ src/client/qwaylandshellsurface_p.h                |  5 +-
+ src/client/qwaylandshmbackingstore.cpp             |  8 +-
+ src/client/qwaylandwindow.cpp                      | 90 +++++++++++-----------
+ src/client/qwaylandwindow_p.h                      |  2 +
+ src/client/qwaylandwlshellsurface.cpp              | 10 +++
+ src/client/qwaylandwlshellsurface_p.h              |  6 +-
+ src/client/qwaylandxdgpopup.cpp                    |  6 ++
+ src/client/qwaylandxdgpopup_p.h                    |  2 +
+ src/client/qwaylandxdgsurface.cpp                  | 19 ++---
+ src/client/qwaylandxdgsurface_p.h                  |  5 +-
+ .../client/wayland-egl/qwaylandeglwindow.cpp       | 10 +++
+ .../client/wayland-egl/qwaylandeglwindow.h         |  4 +
+ .../qwaylandxcompositeeglcontext.cpp               |  4 +-
+ .../qwaylandxcompositeglxcontext.cpp               |  4 +-
+ .../ivi-shell/qwaylandivisurface.cpp               |  7 ++
+ .../ivi-shell/qwaylandivisurface_p.h               |  2 +
+ tests/auto/client/client/tst_client.cpp            |  4 +-
+ 17 files changed, 110 insertions(+), 78 deletions(-)
+
+diff --git a/src/client/qwaylandshellsurface_p.h b/src/client/qwaylandshellsurface_p.h
+index 63b77ab..b51c252 100644
+--- a/src/client/qwaylandshellsurface_p.h
++++ b/src/client/qwaylandshellsurface_p.h
+@@ -94,15 +94,14 @@ class Q_WAYLAND_CLIENT_EXPORT QWaylandShellSurface : public QObject
+ 
+     inline QWaylandWindow *window() { return m_window; }
+ 
++    virtual void setType(Qt::WindowType type, QWaylandWindow *transientParent) = 0;
++
+ protected:
+     virtual void setMaximized() {}
+     virtual void setFullscreen() {}
+     virtual void setNormal() {}
+     virtual void setMinimized() {}
+ 
+-    virtual void setTopLevel() {}
+-    virtual void updateTransientParent(QWindow * /*parent*/) {}
+-
+ private:
+     QWaylandWindow *m_window;
+     friend class QWaylandWindow;
+diff --git a/src/client/qwaylandshmbackingstore.cpp b/src/client/qwaylandshmbackingstore.cpp
+index 5f8336c..d0d6cfd 100644
+--- a/src/client/qwaylandshmbackingstore.cpp
++++ b/src/client/qwaylandshmbackingstore.cpp
+@@ -211,13 +211,7 @@ void QWaylandShmBackingStore::flush(QWindow *window, const QRegion &region, cons
+ 
+     QMargins margins = windowDecorationMargins();
+ 
+-    waylandWindow()->attachOffset(mFrontBuffer);
+-    mFrontBuffer->setBusy();
+-
+-    QVector<QRect> rects = region.rects();
+-    foreach (const QRect &rect, rects)
+-        waylandWindow()->damage(rect.translated(margins.left(), margins.top()));
+-    waylandWindow()->commit();
++    waylandWindow()->commit(mFrontBuffer, region.translated(margins.left(), margins.top()));
+ }
+ 
+ void QWaylandShmBackingStore::resize(const QSize &size, const QRegion &)
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index 6c3647d..1ff6686 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -96,8 +96,6 @@ QWaylandWindow::QWaylandWindow(QWindow *window)
+ {
+     static WId id = 1;
+     mWindowId = id++;
+-    if (window->type() != Qt::Desktop)
+-        initWindow();
+ }
+ 
+ QWaylandWindow::~QWaylandWindow()
+@@ -126,18 +124,28 @@ QWaylandWindow::~QWaylandWindow()
+ 
+ void QWaylandWindow::initWindow()
+ {
+-    init(mDisplay->createSurface(static_cast<QtWayland::wl_surface *>(this)));
++    if (window()->type() == Qt::Desktop)
++        return;
++
++    if (!isInitialized())
++        init(mDisplay->createSurface(static_cast<QtWayland::wl_surface *>(this)));
+ 
+     if (shouldCreateSubSurface()) {
++        Q_ASSERT(!mSubSurfaceWindow);
++
+         QWaylandWindow *p = static_cast<QWaylandWindow *>(QPlatformWindow::parent());
+         if (::wl_subsurface *ss = mDisplay->createSubSurface(this, p)) {
+             mSubSurfaceWindow = new QWaylandSubSurface(this, p, ss);
+         }
+     } else if (shouldCreateShellSurface()) {
++        Q_ASSERT(!mShellSurface);
++
+         mShellSurface = mDisplay->createShellSurface(this);
+-    }
++        if (!mShellSurface)
++            qFatal("Could not create a shell surface object.");
++
++        mShellSurface->setType(window()->type(), transientParent());
+ 
+-    if (mShellSurface) {
+         // Set initial surface title
+         setWindowTitle(window()->title());
+ 
+@@ -171,17 +179,6 @@ void QWaylandWindow::initWindow()
+         }
+     }
+ 
+-    if (mShellSurface) {
+-        if (window()->transientParent()) {
+-            if (window()->type() != Qt::Popup) {
+-                mShellSurface->updateTransientParent(window()->transientParent());
+-            }
+-        } else {
+-            if (window()->type() != Qt::ToolTip)
+-                mShellSurface->setTopLevel();
+-        }
+-    }
+-
+     // Enable high-dpi rendering. Scale() returns the screen scale factor and will
+     // typically be integer 1 (normal-dpi) or 2 (high-dpi). Call set_buffer_scale()
+     // to inform the compositor that high-resolution buffers will be provided.
+@@ -244,6 +241,9 @@ WId QWaylandWindow::winId() const
+ 
+ void QWaylandWindow::setParent(const QPlatformWindow *parent)
+ {
++    if (!window()->isVisible())
++        return;
++
+     QWaylandWindow *oldparent = mSubSurfaceWindow ? mSubSurfaceWindow->parent() : 0;
+     if (oldparent == parent)
+         return;
+@@ -287,8 +287,7 @@ void QWaylandWindow::setGeometry_helper(const QRect &rect)
+         QMargins m = QPlatformWindow::parent()->frameMargins();
+         mSubSurfaceWindow->set_position(rect.x() + m.left(), rect.y() + m.top());
+         mSubSurfaceWindow->parent()->window()->requestUpdate();
+-    } else if (shellSurface() && window()->transientParent() && window()->type() != Qt::Popup)
+-        shellSurface()->updateTransientParent(window()->transientParent());
++    }
+ }
+ 
+ void QWaylandWindow::setGeometry(const QRect &rect)
+@@ -313,20 +312,8 @@ void QWaylandWindow::setGeometry(const QRect &rect)
+ void QWaylandWindow::setVisible(bool visible)
+ {
+     if (visible) {
+-        if (mShellSurface) {
+-            if (window()->type() == Qt::Popup) {
+-                QWaylandWindow *parent = transientParent();
+-                if (parent) {
+-                    QWaylandWlShellSurface *wlshellSurface = qobject_cast<QWaylandWlShellSurface*>(mShellSurface);
+-                    if (wlshellSurface)
+-                        wlshellSurface->setPopup(parent, mDisplay->lastInputDevice(), mDisplay->lastInputSerial());
+-                }
+-            } else if (window()->type() == Qt::ToolTip) {
+-                if (QWaylandWindow *parent = transientParent()) {
+-                    mShellSurface->updateTransientParent(parent->window());
+-                }
+-            }
+-        }
++        initWindow();
++        mDisplay->flushRequests();
+ 
+         setGeometry(window()->geometry());
+         // Don't flush the events here, or else the newly visible window may start drawing, but since
+@@ -338,10 +325,8 @@ void QWaylandWindow::setVisible(bool visible)
+         // case 'this' will be deleted. When that happens, we must abort right away.
+         QPointer<QWaylandWindow> deleteGuard(this);
+         QWindowSystemInterface::flushWindowSystemEvents();
+-        if (!deleteGuard.isNull()) {
+-            attach(static_cast<QWaylandBuffer *>(0), 0, 0);
+-            commit();
+-        }
++        if (!deleteGuard.isNull())
++            reset();
+     }
+ }
+ 
+@@ -374,7 +359,7 @@ void QWaylandWindow::setMask(const QRegion &mask)
+         wl_region_destroy(region);
+     }
+ 
+-    commit();
++    wl_surface::commit();
+ }
+ 
+ void QWaylandWindow::configure(uint32_t edges, int32_t width, int32_t height)
+@@ -461,6 +446,7 @@ void QWaylandWindow::attach(QWaylandBuffer *buffer, int x, int y)
+         wl_callback_add_listener(callback, &QWaylandWindow::callbackListener, this);
+         mFrameCallback = callback;
+         mWaitingForFrameSync = true;
++        buffer->setBusy();
+ 
+         attach(buffer->buffer(), x, y);
+     } else {
+@@ -479,6 +465,18 @@ void QWaylandWindow::damage(const QRect &rect)
+     damage(rect.x(), rect.y(), rect.width(), rect.height());
+ }
+ 
++void QWaylandWindow::commit(QWaylandBuffer *buffer, const QRegion &damage)
++{
++    if (!isInitialized())
++        return;
++
++    attachOffset(buffer);
++    const QVector<QRect> rects = damage.rects();
++    for (const QRect &rect: rects)
++        wl_surface::damage(rect.x(), rect.y(), rect.width(), rect.height());
++    wl_surface::commit();
++}
++
+ const wl_callback_listener QWaylandWindow::callbackListener = {
+     QWaylandWindow::frameCallback
+ };
+@@ -555,7 +553,7 @@ void QWaylandWindow::handleContentOrientationChange(Qt::ScreenOrientation orient
+     }
+     set_buffer_transform(transform);
+     // set_buffer_transform is double buffered, we need to commit.
+-    commit();
++    wl_surface::commit();
+ }
+ 
+ void QWaylandWindow::setOrientationMask(Qt::ScreenOrientations mask)
+@@ -681,15 +679,13 @@ static QWindow *topLevelWindow(QWindow *window)
+ 
+ QWaylandWindow *QWaylandWindow::transientParent() const
+ {
+-    if (window()->transientParent()) {
+-        // Take the top level window here, since the transient parent may be a QWidgetWindow
+-        // or some other window without a shell surface, which is then not able to get mouse
+-        // events.
+-        return static_cast<QWaylandWindow *>(topLevelWindow(window()->transientParent())->handle());
+-    }
+-    // Try with the current focus window. It should be the right one and anyway
+-    // better than having no parent at all.
+-    return mDisplay->lastInputWindow();
++    // Take the top level window here, since the transient parent may be a QWidgetWindow
++    // or some other window without a shell surface, which is then not able to get mouse
++    // events.
++    if (auto transientParent = window()->transientParent())
++        return static_cast<QWaylandWindow *>(topLevelWindow(transientParent)->handle());
++
++    return nullptr;
+ }
+ 
+ void QWaylandWindow::handleMouse(QWaylandInputDevice *inputDevice, const QWaylandPointerEvent &e)
+diff --git a/src/client/qwaylandwindow_p.h b/src/client/qwaylandwindow_p.h
+index 442fe9a..7e7078f 100644
+--- a/src/client/qwaylandwindow_p.h
++++ b/src/client/qwaylandwindow_p.h
+@@ -132,6 +132,8 @@ class Q_WAYLAND_CLIENT_EXPORT QWaylandWindow : public QObject, public QPlatformW
+     using QtWayland::wl_surface::damage;
+     void damage(const QRect &rect);
+ 
++    void commit(QWaylandBuffer *buffer, const QRegion &damage);
++
+     void waitForFrameSync();
+ 
+     QMargins frameMargins() const Q_DECL_OVERRIDE;
+diff --git a/src/client/qwaylandwlshellsurface.cpp b/src/client/qwaylandwlshellsurface.cpp
+index 3527015..77434e9 100644
+--- a/src/client/qwaylandwlshellsurface.cpp
++++ b/src/client/qwaylandwlshellsurface.cpp
+@@ -215,6 +215,16 @@ void QWaylandWlShellSurface::setPopup(QWaylandWindow *parent, QWaylandInputDevic
+               transientPos.x(), transientPos.y(), 0);
+ }
+ 
++void QWaylandWlShellSurface::setType(Qt::WindowType type, QWaylandWindow *transientParent)
++{
++    if (type == Qt::Popup && transientParent)
++        setPopup(transientParent, m_window->display()->lastInputDevice(), m_window->display()->lastInputSerial());
++    else if (transientParent)
++        updateTransientParent(transientParent->window());
++    else
++        setTopLevel();
++}
++
+ void QWaylandWlShellSurface::shell_surface_ping(uint32_t serial)
+ {
+     pong(serial);
+diff --git a/src/client/qwaylandwlshellsurface_p.h b/src/client/qwaylandwlshellsurface_p.h
+index ef732ef..af86276 100644
+--- a/src/client/qwaylandwlshellsurface_p.h
++++ b/src/client/qwaylandwlshellsurface_p.h
+@@ -92,14 +92,16 @@ class Q_WAYLAND_CLIENT_EXPORT QWaylandWlShellSurface : public QWaylandShellSurfa
+     void setWindowFlags(Qt::WindowFlags flags) Q_DECL_OVERRIDE;
+     void sendProperty(const QString &name, const QVariant &value) Q_DECL_OVERRIDE;
+ 
++    void setType(Qt::WindowType type, QWaylandWindow *transientParent) override;
++
+ private:
+     void setMaximized() Q_DECL_OVERRIDE;
+     void setFullscreen() Q_DECL_OVERRIDE;
+     void setNormal() Q_DECL_OVERRIDE;
+     void setMinimized() Q_DECL_OVERRIDE;
+ 
+-    void setTopLevel() Q_DECL_OVERRIDE;
+-    void updateTransientParent(QWindow *parent) Q_DECL_OVERRIDE;
++    void setTopLevel();
++    void updateTransientParent(QWindow *parent);
+     void setPopup(QWaylandWindow *parent, QWaylandInputDevice *device, int serial);
+ 
+     QWaylandWindow *m_window;
+diff --git a/src/client/qwaylandxdgpopup.cpp b/src/client/qwaylandxdgpopup.cpp
+index abc2527..57800f1 100644
+--- a/src/client/qwaylandxdgpopup.cpp
++++ b/src/client/qwaylandxdgpopup.cpp
+@@ -56,6 +56,12 @@ QWaylandXdgPopup::~QWaylandXdgPopup()
+     delete m_extendedWindow;
+ }
+ 
++void QWaylandXdgPopup::setType(Qt::WindowType type, QWaylandWindow *transientParent)
++{
++    Q_UNUSED(type);
++    Q_UNUSED(transientParent);
++}
++
+ void QWaylandXdgPopup::xdg_popup_popup_done()
+ {
+     m_window->window()->close();
+diff --git a/src/client/qwaylandxdgpopup_p.h b/src/client/qwaylandxdgpopup_p.h
+index ff58041..64bb4d9 100644
+--- a/src/client/qwaylandxdgpopup_p.h
++++ b/src/client/qwaylandxdgpopup_p.h
+@@ -68,6 +68,8 @@ class Q_WAYLAND_CLIENT_EXPORT QWaylandXdgPopup : public QWaylandShellSurface
+     QWaylandXdgPopup(struct ::xdg_popup *popup, QWaylandWindow *window);
+     virtual ~QWaylandXdgPopup();
+ 
++    void setType(Qt::WindowType type, QWaylandWindow *transientParent) override;
++
+ protected:
+     void xdg_popup_popup_done() override;
+ 
+diff --git a/src/client/qwaylandxdgsurface.cpp b/src/client/qwaylandxdgsurface.cpp
+index a3bbb06..fe8761e 100644
+--- a/src/client/qwaylandxdgsurface.cpp
++++ b/src/client/qwaylandxdgsurface.cpp
+@@ -128,17 +128,11 @@ void QWaylandXdgSurface::setMinimized()
+     set_minimized();
+ }
+ 
+-void QWaylandXdgSurface::setTopLevel()
++void QWaylandXdgSurface::updateTransientParent(QWaylandWindow *parent)
+ {
+-    // There's no xdg_shell_surface API for this, ignoring
+-}
+-
+-void QWaylandXdgSurface::updateTransientParent(QWindow *parent)
+-{
+-    QWaylandWindow *parent_wayland_window = static_cast<QWaylandWindow *>(parent->handle());
+-    if (!parent_wayland_window)
++    if (!parent)
+         return;
+-    auto parentXdgSurface = qobject_cast<QWaylandXdgSurface *>(parent_wayland_window->shellSurface());
++    auto parentXdgSurface = qobject_cast<QWaylandXdgSurface *>(parent->shellSurface());
+     Q_ASSERT(parentXdgSurface);
+     set_parent(parentXdgSurface->object());
+ }
+@@ -183,6 +177,13 @@ void QWaylandXdgSurface::sendProperty(const QString &name, const QVariant &value
+         m_extendedWindow->updateGenericProperty(name, value);
+ }
+ 
++void QWaylandXdgSurface::setType(Qt::WindowType type, QWaylandWindow *transientParent)
++{
++    Q_UNUSED(type)
++    if (transientParent)
++        updateTransientParent(transientParent);
++}
++
+ void QWaylandXdgSurface::xdg_surface_configure(int32_t width, int32_t height, struct wl_array *states,uint32_t serial)
+ {
+     uint32_t *state = reinterpret_cast<uint32_t*>(states->data);
+diff --git a/src/client/qwaylandxdgsurface_p.h b/src/client/qwaylandxdgsurface_p.h
+index 1a5eeed..265d3ba 100644
+--- a/src/client/qwaylandxdgsurface_p.h
++++ b/src/client/qwaylandxdgsurface_p.h
+@@ -99,14 +99,15 @@ class Q_WAYLAND_CLIENT_EXPORT QWaylandXdgSurface : public QWaylandShellSurface
+     bool isFullscreen() const { return m_fullscreen; }
+     bool isMaximized() const { return m_maximized; }
+ 
++    void setType(Qt::WindowType type, QWaylandWindow *transientParent) override;
++
+ private:
+     void setMaximized() Q_DECL_OVERRIDE;
+     void setFullscreen() Q_DECL_OVERRIDE;
+     void setNormal() Q_DECL_OVERRIDE;
+     void setMinimized() Q_DECL_OVERRIDE;
+ 
+-    void setTopLevel() Q_DECL_OVERRIDE;
+-    void updateTransientParent(QWindow *parent) Q_DECL_OVERRIDE;
++    void updateTransientParent(QWaylandWindow *parent);
+ 
+ private:
+     QWaylandWindow *m_window;
+diff --git a/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp b/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp
+index 236218e..6b5c532 100644
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.cpp
+@@ -159,6 +159,12 @@ void QWaylandEglWindow::setVisible(bool visible)
+ {
+     QWaylandWindow::setVisible(visible);
+     if (!visible)
++        QMetaObject::invokeMethod(this, "doInvalidateSurface", Qt::QueuedConnection);
++}
++
++void QWaylandEglWindow::doInvalidateSurface()
++{
++    if (!window()->isVisible())
+         invalidateSurface();
+ }
+ 
+@@ -168,6 +174,10 @@ void QWaylandEglWindow::invalidateSurface()
+         eglDestroySurface(m_clientBufferIntegration->eglDisplay(), m_eglSurface);
+         m_eglSurface = 0;
+     }
++    if (m_waylandEglWindow) {
++        wl_egl_window_destroy(m_waylandEglWindow);
++        m_waylandEglWindow = nullptr;
++    }
+ }
+ 
+ EGLSurface QWaylandEglWindow::eglSurface() const
+diff --git a/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.h b/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.h
+index 556ed68..bf65668 100644
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.h
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandeglwindow.h
+@@ -54,6 +54,7 @@ class QWaylandGLContext;
+ 
+ class QWaylandEglWindow : public QWaylandWindow
+ {
++    Q_OBJECT
+ public:
+     QWaylandEglWindow(QWindow *window);
+     ~QWaylandEglWindow();
+@@ -75,6 +76,9 @@ class QWaylandEglWindow : public QWaylandWindow
+     void invalidateSurface() Q_DECL_OVERRIDE;
+     void setVisible(bool visible) Q_DECL_OVERRIDE;
+ 
++private Q_SLOTS:
++    void doInvalidateSurface();
++
+ private:
+     QWaylandEglClientBufferIntegration *m_clientBufferIntegration;
+     struct wl_egl_window *m_waylandEglWindow;
+diff --git a/src/hardwareintegration/client/xcomposite-egl/qwaylandxcompositeeglcontext.cpp b/src/hardwareintegration/client/xcomposite-egl/qwaylandxcompositeeglcontext.cpp
+index e2e2f55..c07ad53 100644
+--- a/src/hardwareintegration/client/xcomposite-egl/qwaylandxcompositeeglcontext.cpp
++++ b/src/hardwareintegration/client/xcomposite-egl/qwaylandxcompositeeglcontext.cpp
+@@ -64,9 +64,7 @@ void QWaylandXCompositeEGLContext::swapBuffers(QPlatformSurface *surface)
+ 
+     QSize size = w->geometry().size();
+ 
+-    w->attach(w->buffer(), 0, 0);
+-    w->damage(QRect(QPoint(), size));
+-    w->commit();
++    w->commit(w->buffer(), QRegion(0, 0, size.width(), size.height()));
+     w->waitForFrameSync();
+ }
+ 
+diff --git a/src/hardwareintegration/client/xcomposite-glx/qwaylandxcompositeglxcontext.cpp b/src/hardwareintegration/client/xcomposite-glx/qwaylandxcompositeglxcontext.cpp
+index bc6e94f..439acc0 100644
+--- a/src/hardwareintegration/client/xcomposite-glx/qwaylandxcompositeglxcontext.cpp
++++ b/src/hardwareintegration/client/xcomposite-glx/qwaylandxcompositeglxcontext.cpp
+@@ -90,9 +90,7 @@ void QWaylandXCompositeGLXContext::swapBuffers(QPlatformSurface *surface)
+ 
+     glXSwapBuffers(m_display, w->xWindow());
+ 
+-    w->attach(w->buffer(), 0, 0);
+-    w->damage(QRect(QPoint(), size));
+-    w->commit();
++    w->commit(w->buffer(), QRegion(0, 0, size.width(), size.height()));
+     w->waitForFrameSync();
+ }
+ 
+diff --git a/src/plugins/shellintegration/ivi-shell/qwaylandivisurface.cpp b/src/plugins/shellintegration/ivi-shell/qwaylandivisurface.cpp
+index f8871fa..ecc47e0 100644
+--- a/src/plugins/shellintegration/ivi-shell/qwaylandivisurface.cpp
++++ b/src/plugins/shellintegration/ivi-shell/qwaylandivisurface.cpp
+@@ -71,6 +71,13 @@ QWaylandIviSurface::~QWaylandIviSurface()
+     delete m_extendedWindow;
+ }
+ 
++void QWaylandIviSurface::setType(Qt::WindowType type, QWaylandWindow *transientParent)
++{
++
++    Q_UNUSED(type)
++    Q_UNUSED(transientParent)
++}
++
+ void QWaylandIviSurface::createExtendedSurface(QWaylandWindow *window)
+ {
+     if (window->display()->windowExtension())
+diff --git a/src/plugins/shellintegration/ivi-shell/qwaylandivisurface_p.h b/src/plugins/shellintegration/ivi-shell/qwaylandivisurface_p.h
+index 96978e2..9ac81ad 100644
+--- a/src/plugins/shellintegration/ivi-shell/qwaylandivisurface_p.h
++++ b/src/plugins/shellintegration/ivi-shell/qwaylandivisurface_p.h
+@@ -56,6 +56,8 @@ class Q_WAYLAND_CLIENT_EXPORT QWaylandIviSurface : public QtWayland::ivi_surface
+                        struct ::ivi_controller_surface *iviControllerSurface);
+     virtual ~QWaylandIviSurface();
+ 
++    void setType(Qt::WindowType type, QWaylandWindow *transientParent) override;
++
+ private:
+     void createExtendedSurface(QWaylandWindow *window);
+     virtual void ivi_surface_configure(int32_t width, int32_t height) Q_DECL_OVERRIDE;
+diff --git a/tests/auto/client/client/tst_client.cpp b/tests/auto/client/client/tst_client.cpp
+index 74363ef..6aad25b 100644
+--- a/tests/auto/client/client/tst_client.cpp
++++ b/tests/auto/client/client/tst_client.cpp
+@@ -248,8 +248,8 @@ void tst_WaylandClient::backingStore()
+ 
+     window.hide();
+ 
+-    // hiding the window should detach the buffer
+-    QTRY_VERIFY(surface->image.isNull());
++    // hiding the window should destroy the surface
++    QTRY_VERIFY(!compositor->surface());
+ }
+ 
+ class DndWindow : public QWindow

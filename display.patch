@@ -1,0 +1,13 @@
+diff --git a/src/hardwareintegration/compositor/libhybris-egl-server/libhybriseglserverbufferintegration.cpp b/src/hardwareintegration/compositor/libhybris-egl-server/libhybriseglserverbufferintegration.cpp
+index cc56694..37cde72 100644
+--- a/src/hardwareintegration/compositor/libhybris-egl-server/libhybriseglserverbufferintegration.cpp
++++ b/src/hardwareintegration/compositor/libhybris-egl-server/libhybriseglserverbufferintegration.cpp
+@@ -169,7 +169,7 @@ void LibHybrisEglServerBufferIntegration::initializeHardware(QWaylandCompositor
+         return;
+     }
+ 
+-    QtWaylandServer::qt_libhybris_egl_server_buffer::init(compositor->waylandDisplay(), 1);
++    QtWaylandServer::qt_libhybris_egl_server_buffer::init(compositor->display(), 1);
+ }
+ 
+ bool LibHybrisEglServerBufferIntegration::supportsFormat(QtWayland::ServerBuffer::Format format) const

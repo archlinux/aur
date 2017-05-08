@@ -1,0 +1,32 @@
+diff --git a/config.tests/libhybris_egl_server/libhybris_egl_server.pro b/config.tests/libhybris_egl_server/libhybris_egl_server.pro
+index 28dcadc..8aa8e0b 100644
+--- a/config.tests/libhybris_egl_server/libhybris_egl_server.pro
++++ b/config.tests/libhybris_egl_server/libhybris_egl_server.pro
+@@ -1 +1,3 @@
+ SOURCES += main.cpp
++CONFIG += link_pkgconfig
++PKGCONFIG += hybris-egl-platform
+diff --git a/src/hardwareintegration/client/libhybris-egl-server/libhybris-egl-server.pri b/src/hardwareintegration/client/libhybris-egl-server/libhybris-egl-server.pri
+index bc82157..a98bc0d 100644
+--- a/src/hardwareintegration/client/libhybris-egl-server/libhybris-egl-server.pri
++++ b/src/hardwareintegration/client/libhybris-egl-server/libhybris-egl-server.pri
+@@ -8,5 +8,6 @@ SOURCES += \
+ HEADERS += \
+         $$PWD/libhybriseglserverbufferintegration.h
+ 
+-CONFIG += wayland-scanner
++CONFIG += wayland-scanner link_pkgconfig
++PKGCONFIG += hybris-egl-platform
+ WAYLANDCLIENTSOURCES += $$PWD/../../../extensions/libhybris-egl-server-buffer.xml
+diff --git a/src/hardwareintegration/compositor/libhybris-egl-server/libhybris-egl-server.pri b/src/hardwareintegration/compositor/libhybris-egl-server/libhybris-egl-server.pri
+index 125be9c..89e9e25 100644
+--- a/src/hardwareintegration/compositor/libhybris-egl-server/libhybris-egl-server.pri
++++ b/src/hardwareintegration/compositor/libhybris-egl-server/libhybris-egl-server.pri
+@@ -9,5 +9,6 @@ SOURCES += \
+ HEADERS += \
+     $$PWD/libhybriseglserverbufferintegration.h
+ 
+-CONFIG += wayland-scanner
++CONFIG += wayland-scanner link_pkgconfig
++PKGCONFIG += hybris-egl-platform
+ WAYLANDSERVERSOURCES += $$PWD/../../../extensions/libhybris-egl-server-buffer.xml
