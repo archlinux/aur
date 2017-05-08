@@ -11,7 +11,7 @@
 # x86_64: all from i686 and ffmpeg-full-git
 
 pkgname=mpv-full-git
-pkgver=0.25.0.r21.gb5b3aadf40
+pkgver=0.25.0.r50.g04df16bfd3
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
