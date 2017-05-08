@@ -1,0 +1,20 @@
+pkgbase = python-llvmcpy
+	pkgdesc = Python bindings for LLVM auto-generated from the LLVM-C API
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://rev.ng/llvmcpy
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-cffi
+	depends = python-pycparser
+	depends = llvm
+	provides = python-llvmcpy
+	conflicts = python-llvmcpy-git
+	replaces = python-llvmcpy-git
+	source = https://github.com/revng/llvmcpy/archive/v0.1.1.tar.gz
+	sha512sums = 6c03aa54180246eb6da87ea23ee11fbcf072becd9dfe263cbc61292156bd26d907ed65591922e96bc5c1bc20a4cb70491b938c0b47489fbd28fabfabeff3eabc
+
+pkgname = python-llvmcpy
+
