@@ -2,14 +2,14 @@ pkgname=terasology
 _version=1.4.0
 _version_postfix=alpha7
 pkgver=${_version}${_version_postfix}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft!"
 arch=('x86_64' 'i686')
 license=('Apache')
 url="http://terasology.org"
 options=('!strip')
-depends=('java-environment-openjdk=8' 'xorg-server-utils' 'openal')
+depends=('java-environment-openjdk=8' 'openal')
 makedepends=('unzip')
 source=(
     "$pkgname"
