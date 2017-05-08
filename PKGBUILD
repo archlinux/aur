@@ -1,0 +1,63 @@
+# Maintainer: Felix Schindler <aur at felixschindler dot net>
+# Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
+# Contributor: Jiaxi Hu <sftrytry _AT_ gmail _DOT_ com>
+# Contributor: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
+
+pkgname=openblas-lapack-for-flexiblas
+_PkgName=OpenBLAS
+_pkgname=openblas
+pkgver=0.2.19
+# grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README | tail -n 1 | cut -d ' ' -f 2
+_lapackver=3.6.0
+pkgrel=1
+pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas for flexiblas)"
+arch=('any')
+url="http://www.openblas.net/"
+license=('BSD')
+depends=('gcc-libs')
+makedepends=('perl' 'gcc-fortran')
+options=(!emptydirs)
+source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
+sha256sums=('9c40b5e4970f27c5f6911cb0a28aa26b6c83f17418b69f8e5a116bb983ca8557')
+
+# Add the following line to the _config variable if you want to set the number of make jobs
+#  MAKE_NB_JOBS=2 \
+_config="FC=gfortran USE_OPENMP=0 USE_THREAD=1 \
+  NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1"
+
+build(){
+  cd "${srcdir}/${_PkgName}-${pkgver}"
+
+  make ${_config} libs netlib shared
+}
+
+check(){
+  cd "${srcdir}/${_PkgName}-${pkgver}"
+
+  make ${_config} tests
+}
+
+package(){
+  cd "${srcdir}/${_PkgName}-${pkgver}"
+
+  make ${_config} PREFIX=/opt/${pkgname} DESTDIR="${pkgdir}" install
+
+  # Install license
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+ # Symlink to provide blas, cblas, lapack and lapacke
+ cd "${pkgdir}/opt/${pkgname}/lib/"
+ # BLAS
+ ln -sf libopenblas.so libblas.so
+ ln -sf libopenblas.so libblas.so.${_lapackver:0:1}
+ ln -sf libopenblas.so libblas.so.${_lapackver}
+ # CBLAS
+ ln -sf libopenblas.so libcblas.so
+ # LAPACK
+ ln -sf libopenblas.so liblapack.so
+ ln -sf libopenblas.so liblapack.so.${_lapackver:0:1}
+ ln -sf libopenblas.so liblapack.so.${_lapackver}
+ # LAPACKE
+ ln -sf libopenblas.so liblapacke.so
+}
+# vim:set ts=2 sw=2 et:
