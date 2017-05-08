@@ -19,7 +19,6 @@ pkgver() {
 }
 
 package() {
-  cd $_gitname
   _extid='cpufreq@konkor'
   mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions/"
   cp -af "${_gitname}" "${pkgdir}/usr/share/gnome-shell/extensions/"
