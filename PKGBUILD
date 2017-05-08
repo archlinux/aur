@@ -3,7 +3,7 @@
 pkgname=watchman-make
 _pkgname=watchman
 pkgver=4.7.0
-pkgrel=0
+pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=('x86_64' 'i686')

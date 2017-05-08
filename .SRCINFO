@@ -1,7 +1,7 @@
 pkgbase = watchman-make
 	pkgdesc = An inotify-based file watching and job triggering command line utility
 	pkgver = 4.7.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://facebook.github.io/watchman/
 	install = watchman-make.install
 	arch = x86_64
