@@ -2,13 +2,13 @@
 
 pkgname=gnome-shell-extension-kimpanel-git
 pkgver=20170329
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE's kimpanel implementation for GNOME Shell, now support fcitx"
 arch=("i686" "x86_64")
 license=('GPL')
 url="http://code.google.com/p/fcitx"
 depends=('fcitx' 'dbus' 'gnome-shell>=3.12' 'zip' 'unzip')
-makedepends=('fcitx' 'dbus' 'gnome-shell>=3.12' 'zip' 'unzip' 'cmake')
+makedepends=('cmake')
 
 _extensionname="kimpanel@kde.org"
 _gitname="kimpanel-for-gnome-shell"
