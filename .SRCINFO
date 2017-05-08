@@ -1,11 +1,10 @@
 pkgbase = ttf-lastresort
 	pkgdesc = Unicode last resort fallback font.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.unicode.org/policies/lastresortfont_eula.html
 	arch = any
 	license = custom
-	makedepends = unzip
 	source = http://www.unicode.org/cgi-bin/LastResortDownload.zip
 	source = LICENSE
 	sha256sums = 79038e1374c335538b595e0f16f82f255f053cbd48cb1fb53578888ca3c3072e
