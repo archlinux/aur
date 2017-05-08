@@ -2,19 +2,21 @@
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname=grass
-pkgver=7.2.0
+pkgver=7.2.1
 pkgrel=1
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
 url='http://grass.osgeo.org/'
 license=('GPL')
-depends=('cairo' 'fftw' 'fontconfig' 'freetype2' 'gcc-libs' 'gdal' 'geos' 'glibc' 'glu' 'libpng' 'libtiff' 'libx11' 'libgl' 'netcdf' 'proj' 'python2-pillow' 'readline' 'subversion' 'wxpython' 'zlib')
+depends=('cairo' 'fftw' 'fontconfig' 'freetype2' 'gcc-libs' 'gdal' 'geos' 'glibc' 'glu' 'libpng'
+         'libtiff' 'libx11' 'libgl' 'netcdf' 'proj' 'python2-pillow' 'readline' 'subversion'
+         'wxpython' 'zlib')
 makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface'
             'sqlite: SQLite database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
-md5sums=('9ba295bbf2d8d84ad46fced1597814df')
+md5sums=('5c858c718d40a4f3e82741e60c9f7b97')
 
 prepare() {
   cd $pkgname-$pkgver
