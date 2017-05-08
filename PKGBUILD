@@ -3,7 +3,7 @@
 pkgname=switchboard-plug-a11y-git
 pkgver=r158.f7621ec
 pkgrel=1
-pkgdesc=' Switchboard Universal Access Plug'
+pkgdesc='Switchboard Universal Access Plug'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/switchboard-plug-a11y'
 license=('GPL3')
