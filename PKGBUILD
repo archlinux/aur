@@ -1,7 +1,7 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=python2-pwntools
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The CTF framework used by Gallopsled in every CTF'
 arch=('any')
 url='https://pwntools.com/'
@@ -40,5 +40,5 @@ package() {
   cd ${srcdir}/${_repodir}
   python2 setup.py install --root=${pkgdir}/ --optimize=1 --only-use-pwn-command
   install -D -m 644 LICENSE-pwntools.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  rm ${pkgdir}/usr/lib/python*/site-packages/LICENSE-pwntools.txt
+  rm ${pkgdir}/usr/lib/python*/site-packages/LICENSE-pwntools.txt ${pkgdir}/usr/lib/python*/site-packages/requirements.txt
 }
