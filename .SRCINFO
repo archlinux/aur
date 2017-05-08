@@ -1,0 +1,15 @@
+pkgbase = cayley
+	pkgdesc = Cayley is an open-source graph inspired by the graph database behind Freebase and Google's Knowledge Graph.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://cayley.io/
+	arch = i686
+	arch = x86_64
+	license = APACHE-2.0
+	source_i686 = https://github.com/cayleygraph/cayley/releases/download/v0.6.1/cayley_v0.6.1_linux_386.tar.gz
+	md5sums_i686 = b583dac7345345fe7c7e55bedb9c26c0
+	source_x86_64 = https://github.com/cayleygraph/cayley/releases/download/v0.6.1/cayley_v0.6.1_linux_amd64.tar.gz
+	md5sums_x86_64 = 481b02529eaae96d99b9b7133c58500a
+
+pkgname = cayley
+
