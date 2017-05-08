@@ -4,7 +4,7 @@
 #
 
 pkgname=hgsubversion
-_dirname=durin42-hgsubversion-49d324e11856
+_dirname=durin42-hgsubversion-051a517b473b
 pkgver=1.8.7
 pkgrel=1
 pkgdesc="extension for Mercurial that allows using Mercurial as a Subversion client"
