@@ -1,6 +1,6 @@
 pkgbase = bitcoin-unlimited
 	pkgdesc = Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet
-	pkgver = 1.0.1.3
+	pkgver = 1.0.1.4
 	pkgrel = 1
 	url = http://www.bitcoinunlimited.info
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = bitcoin-unlimited
 	depends = qrencode
 	depends = openssl
 	depends = miniupnpc
+	depends = openssl-1.0
 	provides = bitcoin-unlimited-git
 	provides = bitcoin-daemon
 	provides = bitcoin-cli

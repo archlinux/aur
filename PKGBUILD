@@ -4,13 +4,13 @@
 
 pkgname=bitcoin-unlimited
 _pkgbase=BitcoinUnlimited
-pkgver=1.0.1.3
+pkgver=1.0.1.4
 pkgrel=1
 pkgdesc='Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bitcoinunlimited.info"
 license=('MIT')
-depends=('boost-libs' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'qrencode' 'openssl' 'miniupnpc')
+depends=('boost-libs' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'qrencode' 'openssl' 'miniupnpc' 'openssl-1.0')
 makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
 provides=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
@@ -22,11 +22,19 @@ pkgver() {
 
   # version based on last tag
   # avoid rebuilding (same version) if last tag hasn't changed
-  git describe --long --tags | sed "s/^\([^-]\+\).*-\([^-]\+\)$/\1/"
+  git describe --long --tags | sed "s/^[^0-9]*\([0-9][^-]\+\).*$/\1/"
 }
 
 build() {
   cd "$srcdir/$_pkgbase"
+  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
+  export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl -lcrypto"
+
+  export SSL_CFLAGS="-I/usr/include/openssl-1.0"
+  export SSL_LIBS="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
+
+  export CRYPTO_CFLAGS="-I/usr/include/openssl-1.0"
+  export CRYPTO_LIBS="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
 
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5
