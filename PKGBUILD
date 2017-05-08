@@ -4,7 +4,7 @@
 # Contributor: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=lib32-flex
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc='A tool for generating text-scanning programs'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='http://flex.sourceforge.net'
 license=('custom')
 depends=('flex' 'lib32-glibc')
 source=("https://github.com/westes/flex/releases/download/v${pkgver}/flex-${pkgver}.tar.gz")
-sha256sums=('68b2742233e747c462f781462a2a1e299dc6207401dac8f0bbb316f48565c2aa')
+sha256sums=('e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995')
 
 build() {
   cd flex-${pkgver}
