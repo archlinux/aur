@@ -2,20 +2,20 @@
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 
 pkgname=nemo-dropbox
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('custom:CC-BY-ND-3' 'GPL')
-depends=('nemo>=3.2' 'dropbox' 'python2-pygpgme')
+depends=('nemo>=3.2' 'dropbox' 'pygtk' 'python2-pygpgme')
 makedepends=('python2-docutils' 'python2' 'pygtk' 'glib2')
 conflicts=('nautilus-dropbox' 'caja-dropbox')
 install=${pkgname}.install
 options=('!libtool' '!emptydirs')
 
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-md5sums=('623ef221f7a59e17d6eb4360a65c1bc7')
+md5sums=('b8aff74acc98be098fe46a54dcb5c35f')
 
 build() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
