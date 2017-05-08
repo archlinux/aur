@@ -3,22 +3,21 @@
 
 pkgname=latex-tuddesign-thesis
 pkgver=0.0.20140703
-pkgrel=1
-pkgdesc="Corporate-design for LaTeX from Technische Universität Darmstadt"
+pkgrel=2
+pkgdesc='Corporate-design for LaTeX from Technische Universität Darmstadt'
 arch=('any')
-url="http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/"
-license=('GPL-3')
+url='http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/'
+license=('custom')
 depends=('texlive-core' 'latex-tuddesign' 'latex-tuddesign-fonts')
-install=$pkgname.install
-source=(http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/latex/latex-tuddesign-thesis/$pkgname\_$pkgver.zip)
-md5sums=('ecd9d6b70d6af04e337820dc3b081ca9')
+source=(http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/latex/latex-tuddesign-thesis/${pkgname}\_${pkgver}.zip)
+sha512sums=('d7685ace3e512ac048e23ccb768b9bd6b26e0bc1c0bee5a1cfea6e4510c5b47180b5f93c5655ddfefa1d60fb32a3fd3d5be04ca13612b3866a7993796ae3eb9b')
 
 package() {
     cd texmf
     install -dm755 "${pkgdir}/usr/share/texmf/"
-    
+
     for subdir in doc tex; do
-        cp -r $subdir "${pkgdir}/usr/share/texmf/"
+        cp -r ${subdir} "${pkgdir}/usr/share/texmf/"
     done
 
     cd "${pkgdir}/usr/share/texmf"
