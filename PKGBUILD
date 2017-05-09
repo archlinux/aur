@@ -1,8 +1,9 @@
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
-# Maintainer: Emiliano Vavassori <syntaxerrormmm(at)gmail.com>
+
 pkgname=ruby-hoe
 _gemname=hoe
-pkgver=3.13.1
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="Hoe is a rake/rubygems helper for project Rakefiles"
 arch=(any)
@@ -12,7 +13,7 @@ depends=('ruby')
 makedepends=('rubygems')
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-md5sums=('739d4ede50ba5bf9fabb03cef59c3737')
+md5sums=('4de91b1389248423f32d42cb27e97379')
 
 package() {
   cd "${srcdir}"
