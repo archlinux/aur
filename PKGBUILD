@@ -2,8 +2,8 @@
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=tiddlywiki
-pkgver=5.1.9
-pkgrel=2
+pkgver=5.1.14
+pkgrel=1
 pkgdesc='Personal wiki where everything is in one html-file'
 arch=('i686' 'x86_64')
 url='http://www.tiddlywiki.com/'
@@ -11,11 +11,11 @@ license=('BSD')
 depends=('xdg-utils')
 source=('http://www.tiddlywiki.com/empty.html'
         'tiddlywiki.py')
-sha256sums=('358a86bba47deec636142ceaa0a6a3231bd8f250a96d90435617dccb05bd13c9'
+sha256sums=('8f588e103c5c605fbcd54046a3a8301599f294ab09531beaafe81f97cfe11bb2'
             'de87f833dec4d1bf7c352b89bbab55d6974ea69026cb42269d59fec65e727625')
 
 build() {
-  cat empty.html | head -39 | tail -29 > COPYING
+  cat empty.html | head -45 | tail -28 > COPYING
 }
 
 package() {
