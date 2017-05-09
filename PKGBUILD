@@ -17,7 +17,7 @@ url="http://www.compiz.org/"
 license=('GPL')
 conflicts=('fusion-icon0.9' 'fusion-icon')
 provides=('fusion-icon')
-depends=('compizconfig-python' 'hicolor-icon-theme' 'xorg-utils' 'mesa-demos')
+depends=('compizconfig-python' 'hicolor-icon-theme' 'xorg-xvinfo' 'mesa-demos')
 
 # presume that if compizconfig-python deps are met, it's against python2
 _python="python"
