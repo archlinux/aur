@@ -1,14 +1,14 @@
 pkgbase = pijul
 	pkgdesc = Patch-based distributed version control system
-	pkgver = 0.5.5
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://pijul.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
-	source = pijul-0.5.5.tar.gz::https://crates.io/api/v1/crates/pijul/0.5.5/download
-	sha256sums = 09389abbad0244288da3b18759ae5c892fdcfaca2f6a337c9ae686ef797be409
+	source = pijul-0.5.7.tar.gz::https://crates.io/api/v1/crates/pijul/0.5.7/download
+	sha256sums = f9c12cfe12ab21c47d7da0202cab7d0327471e4e680722eafdabbbfc28b347be
 
 pkgname = pijul
 
