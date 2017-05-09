@@ -3,7 +3,7 @@
 pkgname=gilbert
 pkgver=1.002
 pkgrel=1
-desc="Font made in tribute of Gilbert Baker, creator of the Rainbow Flag. Two .otf files are available, only one is available here because it is compatible system-wide."
+desc="Font made in tribute of Gilbert Baker, creator of the Rainbow Flag. Only one of the two version of this font is available because this one is compatible system-wide."
 url="https://www.typewithpride.com/"
 arch=(any)
 license=(custom)
