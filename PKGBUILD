@@ -13,7 +13,7 @@ arch=('any')
 url="http://www.compiz.org/"
 license=('GPL')
 conflicts=('fusion-icon0.9')
-depends=('compizconfig-python' 'hicolor-icon-theme' 'xorg-utils' 'mesa-demos')
+depends=('compizconfig-python' 'hicolor-icon-theme' 'xorg-xvinfo' 'mesa-demos')
 install="$pkgname.install"
 source=("https://github.com/compiz-reloaded/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 
