@@ -6,6 +6,7 @@ pkgbase = pythia
 	arch = x86_64
 	license = unknown
 	makedepends = gcc-fortran
+	noextract = ${pkgbase}-${pkgmajor}.${pkgver}.f.gz
 	options = emptydirs
 	options = strip
 	options = staticlibs

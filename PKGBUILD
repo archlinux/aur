@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://root.cern.ch/download/${pkgname}.tar.gz"
 	"http://www.hepforge.org/archive/${pkgname}/${pkgbase}-${pkgmajor}.${pkgver}.f.gz")
-noextract=()
+noextract=('${pkgbase}-${pkgmajor}.${pkgver}.f.gz')
 md5sums=('c88014d8380a77c81556d3887dc0b739'
          'c90168f925fc6677fa56c6535be5d9c1')
 
