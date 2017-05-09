@@ -7,7 +7,7 @@ pkgbase=linux-xanmod
 _srcname=linux
 pkgver=4.11.0
 _pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -18,10 +18,11 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${_pkgver}.tar.g
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset")
+        "${pkgbase}.preset" "config.x86_64")
 sha256sums=('02d6774695c96298896398e2791ea3e4f962c7cf60ee800292c01028eb4aef97'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
+            '9d44a7a4cdfc730044475ab8675af86e6a1313edbbe37610df665fb0e21c607f'
+            '5111ccd0a71b591c2e86fb49607035be1e09cc90c9b6472e31bf43e7dc2c7b7b')
 
 _kernelname=${pkgbase#linux}
 
@@ -30,6 +31,19 @@ prepare() {
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  if [ "${CARCH}" = "x86_64" ]; then
+    msg2 "What config you want?"
+    echo -en "     1. upstream Xanmod\n     2. merged Archlinux stock plus Xanmod\n     Selection: "
+    read answer
+    case $answer in
+      1) true ;;
+      2) cat "${srcdir}/config.x86_64" > ./.config ;;
+      *) echo "Please choose 1 or 2"; exit 1 ;;
+    esac
+#  else
+#    cat "${srcdir}/config" > ./.config
+  fi
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -95,7 +109,7 @@ _package() {
   true && install=${install}.pkg
 
   # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/${pkgbase}.preset" |
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
