@@ -4,7 +4,7 @@
 
 pkgname=perl-alien-wxwidgets
 _cpan_name=Alien-wxWidgets
-pkgver=0.68
+pkgver=0.69
 pkgrel=1
 pkgdesc="building, finding and using wxWidgets binaries"
 arch=('any')
@@ -17,7 +17,7 @@ source=("http://www.cpan.org/modules/by-module/${_cpan_name%%-*}/${_cpan_name}-$
 #        'https://rt.cpan.org/Ticket/Attachment/1400329/743429/wx-config-version-and-env.patch'
 #        'https://rt.cpan.org/Ticket/Attachment/1239555/655334/Alien-wxWidgets-0.64-returnor.patch'
        )
-md5sums=('8771befe9e2421e355a7fa3e56651842'
+sha256sums=('53224e4bbbefff4cf7b63ed9a62963893b9ffd4965d70d96710348f8676de249'
 #        '1d21142e0a60bec1a4fab11dc545f955'
 #         '0011e91d60a7a669426341687cb6a5e2'
        )
