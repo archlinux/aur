@@ -3,11 +3,11 @@
 
 _pkgname=evolution-on
 pkgname="$_pkgname-git"
-pkgver=v3.12.3.r1.g9a914c9
+pkgver=v3.24.2.r0.g4794055
 pkgrel=1
 pkgdesc='Plugin to put evolution in system tray.'
 arch=('i686' 'x86_64')
-url="https://github.com/KostadinAtanasov/$_pkgname"
+url="https://github.com/acidrain42/$_pkgname"
 license=('GPL')
 depends=('evolution>=2.30' 'gconf' 'libnotify')
 makedepends=('git' 'autoconf>=2.53' 'automake>=1.8''libtool>=1.4.3' 'glib2>=2.2.0' 'pkgconfig>=0.14.0' 'intltool>=0.25' 'gnome-common>=2.3.0')
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" 'evolution-tray' 'evolution-tray-arch')
 replaces=('evolution-tray' 'evolution-tray-arch')
 install="$pkgname.install"
-source=("$_pkgname"::"git+https://github.com/KostadinAtanasov/$_pkgname.git")
+source=("$_pkgname"::"git+https://github.com/acidrain42/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
