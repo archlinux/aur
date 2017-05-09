@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
