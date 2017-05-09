@@ -13,7 +13,7 @@ arch=(i686 x86_64)
 license=(GPL)
 url="http://www.gnome.org"
 depends=('plymouth' 'gnome-shell>=3.24.1' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-server-xwayland' 'xorg-xhost')
-makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'git')
+makedepends=('intltool' 'yelp-tools' 'gobject-introspection')
 checkdepends=('check')
 source=("https://git.gnome.org/browse/gdm/snapshot/${_pkgbase}-${pkgver}.tar.xz"
 	"0002-Xsession-Don-t-start-ssh-agent-by-default.patch")
