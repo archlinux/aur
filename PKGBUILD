@@ -1,11 +1,12 @@
-# Maintainer: Justin R. St-Amant <jstamant24 at gmail dot com>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Contributor: Justin R. St-Amant <jstamant24 at gmail dot com>
 
 pkgname=draftsight
-pkgver=2017SP1
+pkgver=2017SP02
 pkgrel=1
-pkgdesc="Freeware CAD software for your DWG/DXF files."
+pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
-url="http://www.3ds.com/products/draftsight/"
+url="http://www.3ds.com/products/$pkgname/"
 license=('custom')
 depends=('alsa-lib'
          'desktop-file-utils'
@@ -28,38 +29,37 @@ depends=('alsa-lib'
          'qt5-base'
          'qt5-x11extras'
          'zlib')
-source=("http://www.draftsight.com/download-linux-fedora"
-        "draftsight.desktop")
-md5sums=('0aaf21b56544c754d87aad4be2edabc1'
+source=("http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
+        "$pkgname.desktop")
+md5sums=('edbec9b17df96e14a59ce7955bba49c3'
          '19b26d423cae7ec0e1e6c6d78c94915d')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
 
-package()
-{
+package() {
   mkdir -p $pkgdir/usr/bin
-  echo "#!/bin/sh" > \
-       $pkgdir/usr/bin/draftsight
-  echo "env vblank_mode=0 /${_pkgprefix}/Linux/DraftSight" >> \
-       $pkgdir/usr/bin/draftsight
-  chmod 755 $pkgdir/usr/bin/draftsight
+  echo "#!/bin/sh" > $pkgdir/usr/bin/$pkgname
+  echo "env vblank_mode=0 /$_pkgprefix/Linux/DraftSight" >> $pkgdir/usr/bin/$pkgname
+  chmod 755 $pkgdir/usr/bin/$pkgname
 
   mkdir -p $pkgdir/$_pkgprefix
   cd $srcdir/$_pkgprefix
-  install -Dm644 Eula/english/eula.htm $pkgdir/usr/share/licenses/draftsight/LICENSE
+  install -Dm644 Eula/english/eula.htm $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
   for size in "16x16" "32x32" "48x48" "64x64" "128x128"
   do
-    install -Dm644 Resources/pixmaps/$size/program.png $pkgdir/usr/share/icons/hicolor/$size/apps/draftsight.png
+    install -Dm644 Resources/pixmaps/$size/program.png $pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png
     install -Dm644 Resources/pixmaps/$size/file-dwg.png $pkgdir/usr/share/icons/hicolor/$size/mimetypes/file-dwg.png
     install -Dm644 Resources/pixmaps/$size/file-dxf.png $pkgdir/usr/share/icons/hicolor/$size/mimetypes/file-dxf.png
     install -Dm644 Resources/pixmaps/$size/file-dwt.png $pkgdir/usr/share/icons/hicolor/$size/mimetypes/file-dwt.png
   done
-  install -Dm644 Resources/dassault-systemes_draftsight-dwg.xml $pkgdir/usr/share/mime/application/dassault-systemes_draftsight-dwg.xml
-  install -Dm644 Resources/dassault-systemes_draftsight-dxf.xml $pkgdir/usr/share/mime/application/dassault-systemes_draftsight-dxf.xml
-  install -Dm644 Resources/dassault-systemes_draftsight-dwt.xml $pkgdir/usr/share/mime/application/dassault-systemes_draftsight-dwt.xml
 
-  install -Dm644 $srcdir/draftsight.desktop $pkgdir/usr/share/applications/draftsight.desktop
+  install -Dm644 Resources/dassault-systemes_$pkgname-dwg.xml $pkgdir/usr/share/mime/application/dassault-systemes_$pkgname-dwg.xml
+  install -Dm644 Resources/dassault-systemes_$pkgname-dxf.xml $pkgdir/usr/share/mime/application/dassault-systemes_$pkgname-dxf.xml
+  install -Dm644 Resources/dassault-systemes_$pkgname-dwt.xml $pkgdir/usr/share/mime/application/dassault-systemes_$pkgname-dwt.xml
 
-  #Install Draftsight's program files
+  install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+
+  # Install Draftsight's program files
   cp -pr $srcdir/$_pkgprefix/* $pkgdir/$_pkgprefix/
 }
