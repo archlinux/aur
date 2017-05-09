@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-statusicon-plugin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Tomate plugin that shows the session progress in notification area"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('gtk-update-icon-cache'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('a8a6069170535002cefe05feb126c842')
+md5sums=('8920043958386523390af579e4af5a77')
 install=tomate-statusicon-plugin.install
 
 package() {
