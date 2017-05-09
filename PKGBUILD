@@ -2,13 +2,14 @@
 
 pkgname=('ccsh-git' 'ccsh-compiler-git' 'ccsh-wrappers-core-git')
 groups=('ccsh-git')
-pkgver=r127.44f6458
+pkgver=r154.7c8b4cd
 pkgrel=1
 pkgdesc='C++ shell'
 arch=('any')
 url='https://github.com/cpp-ftw/ccsh'
 license=('GPL3')
 makedepends=('git' 'cmake' 'make')
+optdepends=('pkg-config: specify compilation flags easier')
 source=("git+https://github.com/cpp-ftw/ccsh.git")
 md5sums=(SKIP)
 
@@ -33,6 +34,9 @@ package_ccsh-git() {
 
   install -dm755 "$pkgdir/usr/include/ccsh/builtins"
   install -Dm644 $srcdir/ccsh/include/ccsh/builtins/*.hpp "$pkgdir/usr/include/ccsh/builtins"
+
+  install -dm755 "$pkgdir/usr/lib/pkgconfig"
+  install -Dm644 $srcdir/ccsh/ccsh.pc "$pkgdir/usr/lib/pkgconfig"
 }
 
 package_ccsh-compiler-git() {
