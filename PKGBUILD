@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname=plotinus
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A searchable command palette in every modern GTK+ application'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('vala>=0.26' 'cmake>=2.8' 'gtk3>=3.16')
 source=("https://github.com/p-e-w/plotinus/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         "plotinus.sh")
-sha256sums=('a87a0da53e3c048fb2fbb20d2b9358058b2428f0b7609930e62f63927cb04a60'
+sha256sums=('6d814d19e6868f3d52ecd923ad6da465c632bb5dfcdc97c5245ad107e582c33b'
             '96fad14ace388edf164b5158adb507765b2bd1fe5c9435c41081ffa8ac2cec11')
 
 build() {
