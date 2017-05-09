@@ -1,0 +1,19 @@
+--- a/OpenBoard.pro	2017-02-26 00:44:23.000000000 +0100
++++ b/OpenBoard.pro	2017-05-09 15:58:37.448502744 +0200
+@@ -44,6 +44,7 @@
+ QT += core
+ 
+ INCLUDEPATH += src
++INCLUDEPATH = "/usr/include/openssl-1.0" + $${INCLUDEPATH}
+ 
+ include($$THIRD_PARTY_PATH/libs.pri)
+ include(src/adaptors/adaptors.pri)
+@@ -400,7 +401,7 @@
+ 
+ linux-g++* {
+     CONFIG += link_prl
+-    LIBS += -lcrypto
++    LIBS += -l:libcrypto.so.1.0.0
+     #LIBS += -lprofiler
+     LIBS += -lX11
+     QMAKE_CFLAGS += -fopenmp
