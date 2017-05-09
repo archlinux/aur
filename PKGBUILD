@@ -3,12 +3,12 @@
 pkgname=aria-ng-deploy
 _pkgname=AriaNg-DailyBuild
 pkgver=20170509
-pkgrel=1
+pkgrel=2
 pkgdesc="AriaNg, A Better Web Frontend for aria2 (out of box version)"
 arch=('any')
 url="https://github.com/mayswind/AriaNg-DailyBuild"
 license=('MIT')
-depends=('aria2')
+depends=('aria2' 'apache')
 makedepends=('git')
 conflicts=('aria-ng-git')
 source=("git://github.com/mayswind/AriaNg-DailyBuild.git")
