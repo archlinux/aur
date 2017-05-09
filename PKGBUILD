@@ -2,7 +2,7 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.6.8.r3486.74ba5819
+pkgver=0.7.0.RC2.r3528.8e25c8b9
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  RELEASE="$(git describe --tags $(git rev-list --tags --max-count=1))"
+  RELEASE="$(git describe --tags $(git rev-list --tags --max-count=1) | tr '-' '.')"
   REVISION="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   printf "%s.r%s" "${RELEASE#?}" "${REVISION}"
 }
