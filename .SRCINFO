@@ -1,13 +1,13 @@
 pkgbase = jotasync
 	pkgdesc = rsync GUI with integrated scheduler
 	pkgver = 0.2.9
-	pkgrel = 1
-	url = http://jotasync.trixon.se/
+	pkgrel = 2
+	url = https://trixon.se/projects/jotasync
 	arch = any
 	license = Apache
 	makedepends = desktop-file-utils
 	depends = java-runtime=8
-	source = http://jotasync.trixon.se/files/jotasync-0.2.9-bin.zip
+	source = https://trixon.se/files/jotasync-0.2.9-bin.zip
 	source = jotaclient.sh
 	source = jotaserver.sh
 	source = jotasync.sh
