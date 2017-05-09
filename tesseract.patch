@@ -1,6 +1,6 @@
-diff -aur tesseract-3.04.01/api/Makefile.am tesseract-3.04.01.new/api/Makefile.am
---- tesseract-3.04.01/api/Makefile.am	2016-02-16 18:27:01.000000000 -0300
-+++ tesseract-3.04.01.new/api/Makefile.am	2016-03-20 22:04:24.928955673 -0300
+diff -aur tesseract-3.05.00/api/Makefile.am tesseract-3.05.00.new/api/Makefile.am
+--- tesseract-3.05.00/api/Makefile.am	2017-02-16 14:59:48.000000000 -0300
++++ tesseract-3.05.00.new/api/Makefile.am	2017-05-07 08:17:45.387021158 -0300
 @@ -42,7 +42,7 @@
  if VISIBILITY
  libtesseract_api_la_CPPFLAGS += -DTESS_EXPORTS

@@ -1,0 +1,12 @@
+diff -aur mupdf-1.10a-source/Makefile mupdf-1.10a-source.new/Makefile
+--- mupdf-1.10a-source/Makefile	2016-11-28 10:34:04.000000000 -0300
++++ mupdf-1.10a-source.new/Makefile	2017-05-08 21:29:22.913691598 -0300
+@@ -78,7 +78,7 @@
+ ALL_DIR += $(OUT)/platform/gl
+ ALL_DIR += $(OUT)/fonts
+ 
+-FITZ_HDR := include/mupdf/fitz.h $(wildcard include/mupdf/fitz/*.h)
++FITZ_HDR := include/mupdf/fitz.h include/mupdf/pdf.h $(wildcard include/mupdf/fitz/*.h)
+ PDF_HDR := include/mupdf/pdf.h $(wildcard include/mupdf/pdf/*.h)
+ SVG_HDR := include/mupdf/svg.h
+ HTML_HDR := include/mupdf/html.h
