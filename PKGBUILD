@@ -19,7 +19,7 @@ makedepends=('boost' 'cmake' 'java-environment' 'doxygen' 'gnuplot'
              'tk' 'wget'
              'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn'
              'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' 'gl2ps'
-             'ffmpeg' 'lesstif' 'qt5-webkit' 'jsoncpp')
+             'ffmpeg' 'lesstif' 'qt5-webkit' 'qt5-tools' 'jsoncpp')
 optdepends=('python2: python bindings'
             'java-runtime: java bindings'
             'tk: tcl bindings'
