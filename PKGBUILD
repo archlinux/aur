@@ -15,7 +15,9 @@ arch=(i686 x86_64)
 url="https://github.com/vagrant-libvirt/vagrant-libvirt"
 license=("MIT")
 depends=("vagrant" "libvirt" "openssl-1.0")
-source=("https://rubygems.org/downloads/vagrant-libvirt-$pkgver.gem"
+# "https://rubygems.org/downloads/vagrant-libvirt-$pkgver.gem"
+source=("https://github.com/vagrant-libvirt/vagrant-libvirt/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+        "nokogiri-version.patch"
         "https://rubygems.org/downloads/ruby-libvirt-$_libvirtver.gem"
         "https://rubygems.org/downloads/fog-core-$_fogcorever.gem"
         "https://rubygems.org/downloads/fog-libvirt-$_foglibvirtver.gem"
@@ -31,7 +33,8 @@ noextract=("formatador-$_formatadorver.gem"
            "fog-core-$_fogcorever.gem"
            "ruby-libvirt-$_libvirtver.gem"
            "vagrant-libvirt-$pkgver.gem")
-sha256sums=('00f1d77aa110b82484a92710674ff07f227d2eeb3e41747f596ff1c326fb7b0f'
+sha256sums=('9baba0c338c89acd9d0e594467ba9c8eef1d07039bb6da4a11e432e934b288a3'
+            '6fde2ec924f84ad5d3b8846d54d9dfd66215d1a10a7383672ee34d5dd78ed8f5'
             '61f1261500dd18ea42452a7a69dce8606057e9c1143d1224201d8c29db0bc703'
             '866b816e7516d6787bc074fcec8bb530ebf196685fee03cf56a69ecd852e8229'
             '079bf3f4b03c6cde89d88256fed06c855680eba614ff8cf4674e033414031191'
@@ -40,8 +43,19 @@ sha256sums=('00f1d77aa110b82484a92710674ff07f227d2eeb3e41747f596ff1c326fb7b0f'
             'a32d6e509dd99b9b201c4d3a50b08e4ea7279dfc99bc05332799a00d92368b48'
             '80821869ddacb79e72870ff4bb1531efacd278c04f2df26bc6b4529ee13582bd')
 
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    patch -p1 -i "$srcdir/nokogiri-version.patch"
+}
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    /opt/vagrant/embedded/bin/gem build vagrant-libvirt.gemspec
+}
+
 package() {
     cd "$srcdir"
+    mv $pkgname-$pkgver/$pkgname-$pkgver.gem .
 
     export CONFIGURE_ARGS="with-ldflags='-L/opt/vagrant/embedded/lib -l:libruby.so.2.2' with-libvirt-include=/usr/include with-libvirt-lib=/usr/lib"
     export GEM_HOME=/opt/vagrant/embedded/gems
