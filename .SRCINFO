@@ -1,0 +1,14 @@
+pkgbase = lib32-bcunit
+	pkgdesc = Lightweight system for writing, administering, and running unit tests in C
+	pkgver = 3.0
+	pkgrel = 2
+	url = https://github.com/BelledonneCommunications/bcunit
+	arch = x86_64
+	license = LGPL2.1
+	depends = lib32-glibc
+	options = !libtool
+	source = bcunit-3.0.tar.gz::https://github.com/BelledonneCommunications/bcunit/archive/29c556fa8ac1ab21fba1291231ffa8dea43cf32a.zip
+	sha256sums = e255f062249b75bfeb6a1c02943b602709f1f10738144075b036b3231aa4d590
+
+pkgname = lib32-bcunit
+
