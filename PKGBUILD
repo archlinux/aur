@@ -15,16 +15,32 @@ sha512sums=(
 	'SKIP'
 )
 validpgpkeys=('42748B9E76D899799E1FBE14B3A7CF0C801886CF') # Salvo 'LtWorf' Tomaselli (many e-mail addresses)
-makedepends=(python-pyqt5)
+makedepends=()
+
+for _pkg in "${pkgname[@]}"; do case "$_pkg" in
+
+qweborf*)
+	makedepends+=(python-pyqt5)
+;;
+
+esac; done
 
 build() {
 	cd "$srcdir/weborf-${pkgver}"
-	./configure --prefix=/usr --sysconfdir=/etc
-	make
 
-	# build qweborf
-	pyuic5 qweborf/main.ui > qweborf/main.py
-	python qweborf.setup.py build
+	for _pkg in "${pkgname[@]}"; do case "$_pkg" in
+
+	weborf*)
+		./configure --prefix=/usr --sysconfdir=/etc
+		make
+	;;
+
+	qweborf*)
+		pyuic5 qweborf/main.ui > qweborf/main.py
+		python qweborf.setup.py build
+	;;
+
+	esac; done
 }
 
 package_weborf() {
