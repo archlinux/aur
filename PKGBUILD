@@ -4,14 +4,14 @@
 
 pkgname=lib32-libdrm-git
 _pkgname=libdrm
-pkgver=2.4.77.r5.g0010d312
+pkgver=2.4.80.r11.ga2fa2e08
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(i686 x86_64)
 license=('custom')
 depends=('libdrm-git' 'lib32-libpciaccess')
 makedepends=('gcc-multilib' 'valgrind-multilib' 'xorg-util-macros')
-checkdepends=('lib32-cairo' 'lib32-cunit')
+checkdepends=('lib32-cairo' 'lib32-bcunit' 'bcunit-cunit-compat')
 url="http://dri.freedesktop.org/"
 provides=('lib32-libdrm')
 replaces=('lib32-libdrm')
