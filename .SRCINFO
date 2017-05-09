@@ -1,0 +1,14 @@
+pkgbase = vertrux-icon-theme
+	pkgdesc = Squared icon set for Linux - Light and Dark
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/satriani-vai/vertrux-icon-theme
+	arch = any
+	license = unknow
+	depends = librsvg
+	options = !strip
+	source = https://github.com/satriani-vai/vertrux-icon-theme/archive/0.1.tar.gz
+	sha256sums = b915e1dfa9d08ef67de546170d44b007d2168e3fc221f8e8d8035ab6ce2fb0b7
+
+pkgname = vertrux-icon-theme
+
