@@ -216,7 +216,7 @@ END
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
-md5sums=('73175f850d4ff6068c6af674df20477c'
+md5sums=('bf4643f9a95f13adf8336532490ea3d2'
          '36b41345f62ec209e8ef7179649325c4'
          '14e0f6237a79b85e60256f4808163160'
          'dbf14588e85812ee769bd735823a0146'
