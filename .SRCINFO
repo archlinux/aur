@@ -1,0 +1,15 @@
+pkgbase = metabat
+	pkgdesc = An Efficient Tool for Accurately Reconstructing Single Genomes from Complex Microbial Communities.
+	pkgver = 0.32.4
+	pkgrel = 1
+	url = https://bitbucket.org/berkeleylab/metabat
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = boost>=1.55
+	options = !emptydirs
+	source = https://bitbucket.org/berkeleylab/metabat/downloads/metabat-static-binary-linux-x64_v0.32.4.tar.gz
+	md5sums = 66d61662ed0fd9a289210e9fb04ed745
+
+pkgname = metabat
+
