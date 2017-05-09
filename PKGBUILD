@@ -3,7 +3,7 @@
 _npmname=carto
 
 pkgname=nodejs-carto
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="Mapnik Stylesheet Compiler"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-md5sums=('a3757ce73b5885a2fe3bd9e735de91c1')
+sha256sums=('0982baab13dcc9a8943d2db7ab31024b993cdd2d64f065b7442198d0c618d74a')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
