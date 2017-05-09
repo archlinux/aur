@@ -2,7 +2,7 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=3.0pre+101+g43fc5633a
+pkgver=3.0pre+144+gc6a516089
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support  (git version)'
 arch=('i686' 'x86_64')
@@ -43,10 +43,8 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}::git://github.com/coelckers/${_name}.git"
-        "${_name}.sh"
         "${_name}.desktop")
 sha256sums=('SKIP'
-            'e8b3e33972524b08460b68c5920ac5f2bff5cfb377f74a556a562b1c84cc2851'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d')
 
 pkgver() {
@@ -63,7 +61,7 @@ build() {
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DINSTALL_PATH=lib/$_name \
+          -DINSTALL_PATH=bin \
           -DINSTALL_PK3_PATH=share/$_name \
           .
     make
@@ -73,8 +71,6 @@ package() {
     cd $_name
 
     make install DESTDIR="$pkgdir"
-
-    install -D "$srcdir"/${_name}.sh "$pkgdir"/usr/bin/$_name
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
