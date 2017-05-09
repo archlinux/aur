@@ -1,7 +1,7 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
-pkgbase=pythia
+pkg_name=pythia
 pkgmajor=6
-pkgname=${pkgbase}${pkgmajor}
+pkgname=${pkg_name}${pkgmajor}
 pkgver=4.28
 pkgrel=2
 pkgdesc="The Lund Monte Carlo"
@@ -19,7 +19,7 @@ options=('emptydirs' 'strip' 'staticlibs' 'libtool')
 install=
 changelog=
 source=("https://root.cern.ch/download/${pkgname}.tar.gz"
-	"http://www.hepforge.org/archive/${pkgname}/${pkgbase}-${pkgmajor}.${pkgver}.f.gz")
+	"http://www.hepforge.org/archive/${pkgname}/${pkg_name}-${pkgmajor}.${pkgver}.f.gz")
 noextract=()
 md5sums=('c88014d8380a77c81556d3887dc0b739'
          'c90168f925fc6677fa56c6535be5d9c1')
