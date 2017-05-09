@@ -4,7 +4,7 @@ pkgname=php56-xdebug
 _pkgbase="${pkgname#php56-}"
 pkgver=2.5.3
 _pkgver="$(echo "${pkgver}" | tr '[:lower:]' '[:upper:]')"
-pkgrel=1
+pkgrel=2
 pkgdesc="php56 debugging extension"
 arch=('x86_64')
 url="http://www.xdebug.org"
@@ -40,8 +40,9 @@ build() {
 
 check() {
     cd "${srcdir}/${_pkgbase}-${_pkgver}"
-    export NO_INTERACTION=1
-    make test
+    local ret=0
+    make test NO_INTERACTION=1 REPORT_EXIT_STATUS=1 || ret=1
+    return $ret
 }
 
 package() {
