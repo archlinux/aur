@@ -2,7 +2,7 @@
 
 pkgname=vagrant-libvirt
 pkgver=0.0.40
-pkgrel=2
+pkgrel=3
 _foglibvirtver=0.3.0
 _fogcorever=1.43.0
 _fogjsonver=1.0.2
@@ -15,6 +15,7 @@ arch=(i686 x86_64)
 url="https://github.com/vagrant-libvirt/vagrant-libvirt"
 license=("MIT")
 depends=("vagrant" "libvirt" "openssl-1.0")
+makedepends=("git")
 # "https://rubygems.org/downloads/vagrant-libvirt-$pkgver.gem"
 source=("https://github.com/vagrant-libvirt/vagrant-libvirt/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "nokogiri-version.patch"
@@ -46,6 +47,8 @@ sha256sums=('9baba0c338c89acd9d0e594467ba9c8eef1d07039bb6da4a11e432e934b288a3'
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     patch -p1 -i "$srcdir/nokogiri-version.patch"
+    git init
+    git add .
 }
 
 build() {
@@ -57,12 +60,13 @@ package() {
     cd "$srcdir"
     mv $pkgname-$pkgver/$pkgname-$pkgver.gem .
 
-    export CONFIGURE_ARGS="with-ldflags='-L/opt/vagrant/embedded/lib -l:libruby.so.2.2' with-libvirt-include=/usr/include with-libvirt-lib=/usr/lib"
-    export GEM_HOME=/opt/vagrant/embedded/gems
-    export GEM_PATH=$GEM_HOME
-    export PATH=/opt/vagrant/embedded/bin:$PATH
+    local GEM_HOME=/opt/vagrant/embedded/gems
 
     for gem in ${noextract[@]}; do
-        /opt/vagrant/embedded/bin/gem install --ignore-dependencies --no-user-install -i "$pkgdir$GEM_HOME" $gem
+        CONFIGURE_ARGS="with-ldflags='-L/opt/vagrant/embedded/lib -l:libruby.so.2.2' with-libvirt-include=/usr/include with-libvirt-lib=/usr/lib" \
+        GEM_HOME=$GEM_HOME \
+        GEM_PATH=$GEM_HOME \
+        PATH=/opt/vagrant/embedded/bin:$PATH \
+        /opt/vagrant/embedded/bin/gem install --ignore-dependencies --no-user-install -N -i "$pkgdir$GEM_HOME" $gem
     done
 }
