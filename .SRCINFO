@@ -1,7 +1,7 @@
 pkgbase = nodejs-carto
 	pkgdesc = Mapnik Stylesheet Compiler
 	pkgver = 0.17.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mapbox/carto
 	arch = any
 	license = Apache-2.0
