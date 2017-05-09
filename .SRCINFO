@@ -1,0 +1,16 @@
+pkgbase = digitsvst-git
+	pkgver = r7.f5ee4aa
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	provides = digitsvst
+	conflicts = digitsvst
+	source = digitsvst::git://github.com/LouisGorenfeld/DigitsVst
+	source = http://www.steinberg.net/sdk_downloads/vstsdk367_03_03_2017_build_352.zip
+	md5sums = SKIP
+	md5sums = b4ed4f4f4be77b267f1821fc1413ea36
+
+pkgname = digitsvst-git
+
