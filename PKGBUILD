@@ -2,7 +2,7 @@
 pkgname='geant4'
 pkgver=10.3.1
 _pkgver=10.03.p01
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=2.8.2'
          'xerces-c'
@@ -62,6 +62,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DGEANT4_BUILD_MULTITHREADED=ON \
+    -DGEANT4_BUILD_CXXSTD=14 \
     -DGEANT4_INSTALL_DATA=OFF \
     -DGEANT4_USE_GDML=ON \
     -DGEANT4_USE_G3TOG4=ON \
