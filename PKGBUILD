@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-mlpack
-pkgver=2.1.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='a scalable c++ machine learning library (mingw-w64)'
 arch=('any')
@@ -10,9 +10,15 @@ depends=('mingw-w64-armadillo' 'mingw-w64-boost' 'mingw-w64-lapack' 'mingw-w64-l
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://www.mlpack.org/files/mlpack-${pkgver}.tar.gz")
-sha1sums=('bbc58d34d3d818c5d3055a4d9811457a7bdc19d7')
+sha1sums=('b49bbd28c1fa30ca0ef47d748b4c9bd70f69cda6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/mlpack-${pkgver}"
+  # hack: load.cpp:22:114: error: duplicate explicit instantiation...
+  sed -i "22d" src/mlpack/core/data/load.cpp
+}
 
 build() {
   cd "${srcdir}/mlpack-${pkgver}"
