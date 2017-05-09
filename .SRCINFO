@@ -1,7 +1,7 @@
 pkgbase = otf-solbera-dnd-5e
 	pkgdesc = A collection of unrestricted DND5e-compatible typefaces
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonathonf/solbera-dnd-fonts
 	arch = any
 	license = Custom: CC-BY-SA-4.0

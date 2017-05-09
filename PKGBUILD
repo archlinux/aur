@@ -2,7 +2,7 @@
 pkgname=otf-solbera-dnd-5e
 _gitname=solbera-dnd-fonts
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 license=('Custom: CC-BY-SA-4.0')
 pkgdesc='A collection of unrestricted DND5e-compatible typefaces'
 arch=('any')
@@ -29,8 +29,6 @@ _fontnames=(
 
 package() {
 	cd "${_gitname}-${pkgver}"
-	for font in "${_fontnames[@]}"; do
-		find . -iname '*.otf' -execdir install -Dm 644 {} ${pkgdir}/usr/share/fonts/OTF/{} \;
-	done
+	find . -iname '*.otf' -execdir install -Dm 644 {} ${pkgdir}/usr/share/fonts/OTF/{} \;
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
