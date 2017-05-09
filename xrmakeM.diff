@@ -1,0 +1,521 @@
+diff -rupN a/.hgignore b/.hgignore
+--- a/.hgignore	2016-11-08 22:33:46.000000000 +0100
++++ b/.hgignore	2017-05-09 14:37:59.612733843 +0200
+@@ -1,8 +1,8 @@
+ (^|/)Makefile$
+ 
+-^xpi/chatzilla-.*\.xpi$
++^xpi/chatzilla-.*(\.xpi|\.mar|\.zip|\.xulapp|\.tar\.bz2|\.dmg|\.txt|\.msi)$
++^xpi/runtimes$
+ ^xpi/jar-tree$
+-^xpi/xpi-tree$
+-^xpi/xpi-tree-.*
++^xpi/(xpi|xr)-tree(-.*)?$
+ 
+-.*\.pyc
+\ No newline at end of file
++.*\.pyc
+diff -rupN a/jar.mn b/jar.mn
+--- a/jar.mn	2016-11-08 22:33:46.000000000 +0100
++++ b/jar.mn	2017-05-09 14:40:26.824492921 +0200
+@@ -19,6 +19,7 @@ chatzilla.jar:
+ %       overlay chrome://communicator/content/pref/pref-appearance.xul chrome://chatzilla/content/prefsOverlay.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+ %       style   chrome://browser/content/browser.xul chrome://chatzilla/skin/browserOverlay.css
+ %       style   chrome://global/content/customizeToolbar.xul chrome://chatzilla/skin/browserOverlay.css
++	content/chatzilla/xr/overlay.xul             (xul/content/xr/overlay.xul)
+ 	content/chatzilla/lib/js/utils.js            (js/lib/utils.js)
+ 	content/chatzilla/lib/js/events.js           (js/lib/events.js)
+ 	content/chatzilla/lib/js/connection-xpcom.js (js/lib/connection-xpcom.js)
+diff -rupN a/locales/en-US/chrome/chatzilla.properties b/locales/en-US/chrome/chatzilla.properties
+--- a/locales/en-US/chrome/chatzilla.properties	2016-11-08 22:33:46.000000000 +0100
++++ b/locales/en-US/chrome/chatzilla.properties	2017-05-09 14:37:59.612733843 +0200
+@@ -80,6 +80,15 @@ msg.confirm = Confirm
+ #
+ ### End of notes ###
+ 
++cmd.add-ons.label       = Add-ons
++cmd.add-ons.help        =
++cmd.jsconsole.label     = JavaScript Console
++cmd.jsconsole.help      =
++cmd.about-config.label  = Advanced Configuration
++cmd.about-config.help   =
++cmd.update.label        = Update...
++cmd.update.help         =
++
+ cmd.about.label = About ChatZilla
+ cmd.about.help  = Display information about this version of ChatZilla.
+ 
+@@ -921,7 +930,7 @@ msg.cmdmatch          = Commands matchin
+ msg.default.alias.help = This command is an alias for |%1$S|.
+ msg.extra.params      = Extra parameters ``%1$S'' ignored.
+ msg.version.reply     = ChatZilla %S [%S]
+-msg.source.reply      = http://chatzilla.hacksrus.com/
++msg.source.reply      = http://chatzilla.rdmsoft.com/xulrunner/
+ msg.nothing.to.cancel = No connection or /list in progress, nothing to cancel.
+ msg.cancelling        = Cancelling connection to ``%S''…
+ msg.cancelling.list   = Cancelling /list request…
+diff -rupN a/xpi/makexpi.py b/xpi/makexpi.py
+--- a/xpi/makexpi.py	2016-11-08 22:33:46.000000000 +0100
++++ b/xpi/makexpi.py	2017-05-09 14:49:30.604315821 +0200
+@@ -14,10 +14,12 @@ the original shell script
+ import os
+ import os.path
+ import sys
++import time
+ import shutil
+ import re
+ import zipfile
+ from os.path import join as joinpath
++from subprocess import call, PIPE
+ 
+ # Set up settings and paths for finding files.
+ pwd = os.path.dirname(__file__)
+@@ -89,6 +91,7 @@ def rm(path):
+     except WindowsError, ex:
+         if ex.errno != 2:
+             raise
++
+ def mkdir(dir):
+     """
+     acts like mkdir -p
+@@ -104,6 +107,13 @@ def copy(src, dst):
+     """
+     shutil.copy(src, dst)
+ 
++def copytree(src, dst):
++    """
++    copy directory
++    """
++    shutil.rmtree(dst)
++    shutil.copytree(src, dst)
++
+ def move(src, dst):
+     """
+     move file
+@@ -178,6 +188,7 @@ def version(fedir):
+ fedir     = getenv('FEDIR',     joinpath(pwd, '..'), dir=True, check=True)
+ xpifiles  = getenv('XPIFILES',  joinpath(pwd, 'resources'), dir=True, check=True)
+ xpiroot   = getenv('XPIROOT',   joinpath(pwd, 'xpi-tree'), dir=True)
++xrroot    = getenv('XRROOT',    joinpath(pwd, 'xr-tree'), dir=True)
+ jarroot   = getenv('JARROOT',   joinpath(pwd, 'jar-tree'), dir=True)
+ localedir = getenv('LOCALEDIR', joinpath(fedir, 'locales'), dir=True, check=True)
+ locale    = locale()
+@@ -189,11 +200,14 @@ else:
+ 
+ version = version(fedir)
+ xpiname = None
++buildid = time.strftime("%Y%m%d%H%M%S")
++theme_guid = '{972ce4c6-7e08-4474-a285-3208198ce6fd}'
+ 
+ if debug > 0:
+     print 'FEDIR     = %s' % fedir
+     print 'XPIFILES  = %s' % xpifiles
+     print 'XPIROOT   = %s' % xpiroot
++    print 'XRROOT    = %s' % xrroot
+     print 'JARROOT   = %s' % jarroot
+     print 'LOCALEDIR = %s' % localedir
+     print 'LOCALE    = %s' % locale
+@@ -302,6 +316,15 @@ def progress_sed(infile, outfile, patter
+     sed_infile.close()
+     sed_outfile.close()
+ 
++def sed_version_buildid(inpath, outpath):
++    echo('.')
++    infile = joinpath(*inpath)
++    tempfile = joinpath(*outpath) + ".tmp"
++    outfile = joinpath(*outpath)
++    sed(("@REVISION@", version), open(infile), open(tempfile, "w"))
++    sed(("@BUILDID@", buildid), open(tempfile), open(outfile, "w"))
++    rm(tempfile)
++
+ def progress_zip(indir, outfile):
+     if debug > 1:
+         print '    zip %s %s' % (indir, outfile)
+@@ -321,11 +344,16 @@ def do_clean():
+     rm(xpiroot)
+     echo('.')
+     rm(jarroot)
++    echo('.')
++    rm(xrroot)
+     print('. done.')
+ 
+ def do_build_base():
+     print 'Beginning build of ChatZilla %s...' % version
+-    xpiname = check_xpiname('chatzilla-%s.xpi' % version)
++    basename = 'chatzilla-%s' % version
++    if "dev" in sys.argv:
++        basename += "-%s" % buildid
++    xpiname = check_xpiname('%s.xpi' % basename)
+ 
+     progress_echo('  Checking XPI structure')
+     progress_mkdir(xpiroot)
+@@ -335,6 +363,16 @@ def do_build_base():
+     progress_mkdir(joinpath(xpiroot, 'components'))
+     print '            done'
+ 
++    progress_echo('  Checking XULRunner structure')
++    progress_mkdir(xrroot)
++    progress_mkdir(joinpath(xrroot, 'chrome', 'branding'))
++    progress_mkdir(joinpath(xrroot, 'chrome', 'icons', 'default'))
++    progress_mkdir(joinpath(xrroot, 'components'))
++    progress_mkdir(joinpath(xrroot, 'defaults', 'preferences'))
++    progress_mkdir(joinpath(xrroot, 'extensions', theme_guid))
++    progress_mkdir(joinpath(xrroot, 'icons'))
++    print '    done'
++
+     progress_echo('  Checking JAR structure')
+     progress_mkdir(jarroot)
+     print '                done'
+@@ -351,12 +389,13 @@ def do_build_base():
+     progress_jarmaker_make(jm, joinpath(fedir, 'jar.mn'), fedir)
+     progress_jarmaker_make(jm, joinpath(fedir, 'sm', 'jar.mn'), joinpath(fedir, 'sm'))
+     progress_jarmaker_make(jm, joinpath(fedir, 'ff', 'jar.mn'), joinpath(fedir, 'ff'))
++    progress_jarmaker_make(jm, joinpath(fedir, 'xr', 'jar.mn'), joinpath(fedir, 'xr'))
+     progress_preprocess(joinpath(localedir, 'jar.mn'), joinpath(localedir, 'jar.mn.pp'), {'AB_CD': 'en-US'})
+     # Define a preprocessor var for the next call to makeJar
+     jm.pp.context['AB_CD'] = 'en-US'
+     progress_jarmaker_make(jm, joinpath(localedir, 'jar.mn.pp'), localedir, [joinpath(localedir, 'en-US')])
+     progress_rm(joinpath(localedir, 'jar.mn.pp'))
+-    print '        done'
++    print '       done'
+ 
+     progress_echo('  Constructing XPI package')
+     progress_copy(joinpath(jarroot, 'chatzilla.jar'), joinpath(xpiroot, 'chrome'))
+@@ -367,6 +406,35 @@ def do_build_base():
+     progress_zip(xpiroot, joinpath(pwd, xpiname))
+     print '         done'
+ 
++    progress_echo('  Packaging XULRunner app')
++    progress_copy(joinpath(jarroot, 'chatzilla.jar'), joinpath(xrroot, 'chrome'))
++    progress_copy(joinpath(fedir, 'js', 'lib', 'chatzilla-service.js'), joinpath(xrroot, 'components'))
++    progress_copy(joinpath(xpiroot, 'chrome.manifest'), joinpath(xrroot, 'chrome.manifest'))
++    progress_chmod(joinpath(xrroot, 'chrome', 'chatzilla.jar'), 0664)
++    progress_chmod(joinpath(xrroot, 'components', 'chatzilla-service.js'), 0664)
++
++    if "updates" in sys.argv:
++        sed_version_buildid((xpifiles, "update-prefs.xr.js"), (xrroot, "defaults", "preferences", "update-prefs.xr.js"))
++        channel = "dev" if "dev" in sys.argv else "release"
++        open(joinpath(xrroot, "defaults", "preferences", "channel-prefs.js"), "w").write("pref(\"app.update.channel\", \"%s\");" % channel)
++    else:
++        echo('.')
++
++    sed_version_buildid((xpifiles, "chatzilla-prefs.xr.js"), (xrroot, "defaults", "preferences", "chatzilla-prefs.xr.js"))
++    sed_version_buildid((xpifiles, "themeinstall.rdf"), (xrroot, "extensions", theme_guid, "install.rdf"))
++    sed_version_buildid((xpifiles, "brand.dtd"), (xrroot, "chrome", "branding", "brand.dtd"))
++    sed_version_buildid((xpifiles, "brand.properties"), (xrroot, "chrome", "branding", "brand.properties"))
++    sed_version_buildid((xpifiles, "application.ini"), (xrroot, "application.ini"))
++
++    progress_copy(joinpath(xpifiles, "chatzilla-window.ico"), joinpath(xrroot, "chrome", "icons", "default", "chatzilla-window.ico"))
++    progress_copy(joinpath(xpifiles, "chatzilla-window.xpm"), joinpath(xrroot, "chrome", "icons", "default", "chatzilla-window.xpm"))
++    progress_copy(joinpath(xpifiles, "chatzilla-window16.xpm"), joinpath(xrroot, "chrome", "icons", "default", "chatzilla-window16.xpm"))
++    open(joinpath(xrroot, "icons", "updater.png"), "w").close()
++
++    xrname = '%s.en-US.xulapp' % basename
++    progress_zip(xrroot, joinpath(pwd, xrname))
++
++    print ' done'
+     print 'Build of ChatZilla %s... ALL DONE' % version
+ 
+ 
+diff -rupN a/xpi/resources/application.ini b/xpi/resources/application.ini
+--- a/xpi/resources/application.ini	1970-01-01 01:00:00.000000000 +0100
++++ b/xpi/resources/application.ini	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,12 @@
++[App]
++Name=ChatZilla
++Version=@REVISION@
++BuildID=@BUILDID@
++ID={59c81df5-4b7a-477b-912d-4e0fdf64e5f2}
++
++[Gecko]
++MinVersion=17.0
++MaxVersion=25.*
++
++[XRE]
++EnableExtensionManager=Truly, yes.
+diff -rupN a/xpi/resources/brand.dtd b/xpi/resources/brand.dtd
+--- a/xpi/resources/brand.dtd	1970-01-01 01:00:00.000000000 +0100
++++ b/xpi/resources/brand.dtd	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,5 @@
++<!ENTITY  brandShortName        "ChatZilla">
++<!ENTITY  brandFullName         "ChatZilla @REVISION@">
++<!ENTITY  vendorShortName       "">
++<!ENTITY  logoTrademark         "">
++<!ENTITY  releaseURL            "http://chatzilla.rdmsoft.com/">
+diff -rupN a/xpi/resources/brand.properties b/xpi/resources/brand.properties
+--- a/xpi/resources/brand.properties	1970-01-01 01:00:00.000000000 +0100
++++ b/xpi/resources/brand.properties	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,3 @@
++brandShortName=ChatZilla
++brandFullName=ChatZilla @REVISION@
++vendorShortName=
+diff -rupN a/xpi/resources/chatzilla-prefs.xr.js b/xpi/resources/chatzilla-prefs.xr.js
+--- a/xpi/resources/chatzilla-prefs.xr.js	1970-01-01 01:00:00.000000000 +0100
++++ b/xpi/resources/chatzilla-prefs.xr.js	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,37 @@
++// ChatZilla for XULRunner
++// Default Prefs
++
++// This is needed to start ChatZilla.
++pref("toolkit.defaultChromeURI", "chrome://chatzilla/content/chatzilla.xul");
++
++// Enable the extension manager...
++pref("xpinstall.dialog.confirm", "chrome://mozapps/content/xpinstall/xpinstallConfirm.xul");
++pref("xpinstall.dialog.progress.skin", "chrome://mozapps/content/extensions/extensions.xul?type=themes");
++pref("xpinstall.dialog.progress.chrome", "chrome://mozapps/content/extensions/extensions.xul?type=extensions");
++pref("xpinstall.dialog.progress.type.skin", "Extension:Manager-themes");
++pref("xpinstall.dialog.progress.type.chrome", "Extension:Manager-extensions");
++pref("extensions.update.enabled", true);
++pref("extensions.update.interval", 86400);
++pref("extensions.dss.enabled", false);
++pref("extensions.dss.switchPending", false);
++pref("extensions.ignoreMTimeChanges", false);
++pref("extensions.logging.enabled", false);
++pref("general.skins.selectedSkin", "classic/1.0");
++pref("extensions.checkUpdateSecurity", false);
++pref("extensions.getAddons.cache.enabled", true);
++
++// This means nothing because AMO doesn't host ChatZilla extensions,
++// but I have to put something or the extension manager pukes.
++pref("extensions.update.url", "chrome://mozapps/locale/extensions/extensions.properties");
++pref("extensions.getMoreExtensionsURL", "chrome://mozapps/locale/extensions/extensions.properties");
++pref("extensions.getMoreThemesURL", "chrome://mozapps/locale/extensions/extensions.properties");
++
++pref("extensions.getAddons.showPane", false);
++
++// make the external protocol service happy
++pref("network.protocol-handler.expose-all", false);
++pref("network.protocol-handler.expose.irc", true);
++pref("network.protocol-handler.expose.ircs", true);
++pref("security.dialog_enable_delay", 0);
++
++pref("general.useragent.extra.chatzilla", "ChatZilla/@REVISION@");
+diff -rupN a/xpi/resources/chrome.xr.manifest b/xpi/resources/chrome.xr.manifest
+--- a/xpi/resources/chrome.xr.manifest	1970-01-01 01:00:00.000000000 +0100
++++ b/xpi/resources/chrome.xr.manifest	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,5 @@
++content chatzilla       jar:chatzilla.jar!/content/chatzilla/ xpcnativewrappers=yes
++overlay	chrome://chatzilla/content/chatzilla.xul chrome://chatzilla/content/xr/overlay.xul
++skin 	chatzilla classic/1.0 jar:chatzilla.jar!/skin/modern/chatzilla/
++locale  chatzilla       en-US   jar:chatzilla.jar!/locale/en-US/chatzilla/
++locale branding en-US branding/
+diff -rupN a/xpi/resources/Info.plist b/xpi/resources/Info.plist
+--- a/xpi/resources/Info.plist	1970-01-01 01:00:00.000000000 +0100
++++ b/xpi/resources/Info.plist	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,24 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++<key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
++           <key>CFBundleIdentifier</key><string>com.rdmsoft.chatzilla</string>
++          <key>CFBundlePackageType</key><string>APPL</string>
++           <key>CFBundleExecutable</key><string>xulrunner</string>
++         <key>NSAppleScriptEnabled</key><true/>
++                 <key>CFBundleName</key><string>ChatZilla</string>
++          <key>CFBundleDisplayName</key><string>ChatZilla</string>
++        <key>CFBundleGetInfoString</key><string>ChatZilla @REVISION@</string>
++   <key>CFBundleShortVersionString</key><string>@REVISION@</string>
++              <key>CFBundleVersion</key><string>@REVISION@.@BUILDID@</string>
++         <!--<key>CFBundleIconFile</key><string>TODO</string>-->
++         <!--<key>CFBundleURLTypes</key>
++      <array><dict>
++             <key>CFBundleTypeRole</key><string>Shell</string>
++          <key>CFBundleURLIconFile</key><string>TODO</string>
++              <key>CFBundleURLName</key><string>Internet Relay Chat</string>
++           <key>CFBundleURLSchemes</key><array><string>irc</string><string>ircs</string></array>
++      </dict></array>-->
++</dict>
++</plist>
+\ No newline at end of file
+diff -rupN a/xpi/resources/themeinstall.rdf b/xpi/resources/themeinstall.rdf
+--- a/xpi/resources/themeinstall.rdf	1970-01-01 01:00:00.000000000 +0100
++++ b/xpi/resources/themeinstall.rdf	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,22 @@
++<r:RDF xmlns="http://www.mozilla.org/2004/em-rdf#" xmlns:r="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
++<r:Description r:about="urn:mozilla:install-manifest">
++
++ <id>{972ce4c6-7e08-4474-a285-3208198ce6fd}</id>
++ <version>1</version>
++ <name>ChatZilla</name>
++
++ <targetApplication><r:Description>
++  <id>{59c81df5-4b7a-477b-912d-4e0fdf64e5f2}</id>
++  <minVersion>0</minVersion>
++  <maxVersion>*</maxVersion>
++ </r:Description></targetApplication>
++
++ <description>The Default Theme</description>
++ <creator>ChatZilla Contributors</creator>
++ <internalName>modern/1.0</internalName>
++ <appManaged>true</appManaged>
++ <locked>true</locked>
++
++</r:Description>
++</r:RDF>
++
+diff -rupN a/xpi/resources/update-prefs.xr.js b/xpi/resources/update-prefs.xr.js
+--- a/xpi/resources/update-prefs.xr.js	1970-01-01 01:00:00.000000000 +0100
++++ b/xpi/resources/update-prefs.xr.js	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,19 @@
++// Always prompt by default.
++pref("app.update.enabled", true);
++pref("app.update.auto", false);
++pref("app.update.silent", false);
++pref("app.update.mode", 0);
++pref("app.update.incompatible.mode", 0);
++
++pref("app.update.url", "http://chatzilla.rdmsoft.com/xulrunner/update/2/%CHANNEL%?v=%VERSION%&b=%BUILD_ID%&o=%BUILD_TARGET%&ov=%OS_VERSION%&pv=%PLATFORM_VERSION%&");
++pref("app.update.url.manual", "http://chatzilla.rdmsoft.com/xulrunner/");
++pref("app.update.url.details", "http://chatzilla.rdmsoft.com/xulrunner/");
++
++// Check every day, if download or install is deferred ask again each day.
++pref("app.update.interval", 86400);
++pref("app.update.nagTimer.download", 86400);
++pref("app.update.nagTimer.restart", 86400);
++pref("app.update.timer", 600000);
++
++// Seems to be broken, and nothing else uses it.
++pref("app.update.showInstalledUI", false);
+diff -rupN a/xr/jar.mn b/xr/jar.mn
+--- a/xr/jar.mn	1970-01-01 01:00:00.000000000 +0100
++++ b/xr/jar.mn	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,11 @@
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this
++# file, You can obtain one at http://mozilla.org/MPL/2.0/.
++
++# The registration of the overlays specific to Firefox below should match
++# the ../xul/content/ff/contents.rdf file.
++chatzilla.jar:
++% content chatzilla-xr %content/chatzilla/xr/
++% overlay chrome://chatzilla/content/chatzilla.xul chrome://chatzilla/content/xr/overlay.xul application={59c81df5-4b7a-477b-912d-4e0fdf64e5f2}
++% locale branding en-US chrome/branding/ application={59c81df5-4b7a-477b-912d-4e0fdf64e5f2}
++	content/chatzilla/xr/overlay.xul             (../xul/content/xr/overlay.xul)
+diff -rupN a/xr/Makefile.in b/xr/Makefile.in
+--- a/xr/Makefile.in	1970-01-01 01:00:00.000000000 +0100
++++ b/xr/Makefile.in	2017-05-09 14:37:59.616067216 +0200
+@@ -0,0 +1,20 @@
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this
++# file, You can obtain one at http://mozilla.org/MPL/2.0/.
++
++DEPTH		= ../../..
++topsrcdir	= @top_srcdir@
++srcdir		= @srcdir@
++VPATH		= @srcdir@
++
++include $(DEPTH)/config/autoconf.mk
++
++CHATZILLA_VERSION=$(shell grep "const __cz_version" "$(srcdir)/../xul/content/static.js" | sed "s|.*\"\([^\"]\{1,\}\)\".*|\1|")
++
++XPI_NAME               = chatzilla
++USE_EXTENSION_MANIFEST = 1
++NO_JAR_AUTO_REG        = 1
++INSTALL_EXTENSION_ID   = {59c81df5-4b7a-477b-912d-4e0fdf64e5f2}
++XPI_PKGNAME            = chatzilla-$(CHATZILLA_VERSION)
++
++include $(topsrcdir)/config/rules.mk
+diff -rupN a/xul/content/commands.js b/xul/content/commands.js
+--- a/xul/content/commands.js	2016-11-08 22:33:46.000000000 +0100
++++ b/xul/content/commands.js	2017-05-09 14:37:59.616067216 +0200
+@@ -223,6 +223,11 @@ function initCommands()
+          ["statusbar",        "toggle-ui status",                  CMD_CONSOLE],
+          ["header",           "toggle-ui header",                  CMD_CONSOLE],
+ 
++         ["add-ons",           cmdAddons,                                    0],
++         ["jsconsole",         cmdJSConsole,                                 0],
++         ["about-config",      cmdAboutConfig,                               0],
++         ["update",            cmdUpdate,                                    0],
++
+          // text-direction aliases
+          ["rtl",              "text-direction rtl",                CMD_CONSOLE],
+          ["ltr",              "text-direction ltr",                CMD_CONSOLE],
+@@ -4707,3 +4712,49 @@ function cmdWebSearch(e)
+     }
+     dispatch(client.prefs["messages.click"], {url: searchURL});
+ }
++
++function cmdAddons(e)
++{
++    var winType = "Extension:Manager";
++    var url = "chrome://mozapps/content/extensions/extensions.xul"
++    toOpenWindowByType(winType, url);
++}
++
++function toOpenWindowByType(inType, url, features)
++{
++    var wm = getService("@mozilla.org/appshell/window-mediator;1",
++                        "nsIWindowMediator");
++    var topWindow = wm.getMostRecentWindow(inType);
++
++    if(typeof features == "undefined")
++        features = "chrome,extrachrome,menubar,resizable," +
++                   "scrollbars,status,toolbar";
++
++    if (topWindow)
++        topWindow.focus();
++    else
++        window.open(url, "_blank", features);
++}
++
++function cmdJSConsole(e)
++{
++    toOpenWindowByType("global:console", "chrome://global/content/console.xul");
++}
++
++function cmdAboutConfig(e)
++{
++    openDialog("chrome://global/content/config.xul");
++}
++
++function cmdUpdate(e)
++{
++    var um = getService("@mozilla.org/updates/update-manager;1",
++                        "nsIUpdateManager");
++    var prompter = newObject("@mozilla.org/updates/update-prompt;1",
++                             "nsIUpdatePrompt");
++
++    if (um.activeUpdate && um.activeUpdate.state == "pending")
++        prompter.showUpdateDownloaded(um.activeUpdate);
++    else
++        prompter.checkForUpdates();
++}
+diff -rupN a/xul/content/menus.js b/xul/content/menus.js
+--- a/xul/content/menus.js	2016-11-08 22:33:46.000000000 +0100
++++ b/xul/content/menus.js	2017-05-09 14:37:59.619400589 +0200
+@@ -114,6 +114,10 @@ function initMenus()
+          ["-"],
+          ["print"],
+          ["save"],
++         ["-",                 {visibleif: XULRunner}],
++         ["add-ons",           {visibleif: XULRunner}],
++         ["jsconsole",         {visibleif: XULRunner}],
++         ["about-config",      {visibleif: XULRunner}],
+          ["-",           {visibleif: NotMac}],
+          ["exit",        {visibleif: Win}],
+          ["quit",        {visibleif: NotMac + " and " + NotWin}]
+diff -rupN a/xul/content/static.js b/xul/content/static.js
+--- a/xul/content/static.js	2016-11-08 22:33:46.000000000 +0100
++++ b/xul/content/static.js	2017-05-09 14:37:59.619400589 +0200
+@@ -6,7 +6,7 @@
+ 
+ const __cz_version   = "0.9.93";
+ const __cz_condition = "green";
+-const __cz_suffix    = "";
++const __cz_suffix    = "rdmsoft";
+ const __cz_guid      = "59c81df5-4b7a-477b-912d-4e0fdf64e5f2";
+ const __cz_locale    = "0.9.92";
+ 
+diff -rupN a/xul/content/xr/overlay.xul b/xul/content/xr/overlay.xul
+--- a/xul/content/xr/overlay.xul	1970-01-01 01:00:00.000000000 +0100
++++ b/xul/content/xr/overlay.xul	2017-05-09 14:37:59.619400589 +0200
+@@ -0,0 +1,8 @@
++<?xml version="1.0"?>
++
++<overlay id="ChatzillaXROverlay"
++         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
++
++<script type="application/x-javascript" src="chrome://global/content/findUtils.js"/>
++
++</overlay>
