@@ -2,7 +2,7 @@
 
 pkgname=suitesparse-mkl
 pkgver=4.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of sparse matrix libraries (compiled with the Intel MKL lib)"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 arch=('i686' 'x86_64')
@@ -40,7 +40,8 @@ package() {
    source /opt/intel/mkl/bin/mklvars.sh intel64 
    source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
    export BLAS="-L/opt/intel/mkl/lib/intel64 -lmkl_rt"
-
+   export LAPACK="-L/opt/intel/mkl/lib/intel64 -lmkl_rt"
+   
    TBB=-ltbb SPQR_CONFIG=-DHAVE_TBB MY_METIS_LIB=/usr/lib/libmetis.so \
      make INSTALL_LIB="${pkgdir}"/usr/lib INSTALL_INCLUDE="${pkgdir}"/usr/include install
 
