@@ -4,7 +4,7 @@
 
 pkgname=waveform-bundle
 pkgver=8.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary Digital Audio Workstation (DAW) by Tracktion with bundled DAW Essentials, BioTek, and Collective plugins"
 arch=('x86_64')
 url="http://www.tracktion.com/"
@@ -25,7 +25,7 @@ package() {
     tar -x -f 'DAW Essentials Collection.tar.gz'
     tar -x --lzma -f data.tar.lzma -C "${pkgdir}"
     plugin_dir="DAW Essentials Collection"
-    # install all the plugin files
+    # install all the DAW Essentials Collection plugin files
     for file in "$plugin_dir"/*.so
     do
         install -D -m 644 "$file" "$pkgdir/usr/lib/vst/$file"
@@ -38,15 +38,33 @@ package() {
     # install the biotek and collective pugins, put other files in
     # /opt to be copied to the home directory
     install -D -m 644 "BioTek/BioTek.so" "$pkgdir/usr/lib/vst/BioTek.so"
-    mkdir -p "$pkgdir/opt/$pkgname/BioTek/Documentation"
-    cp -r BioTek/Instruments BioTek/Samples "$pkgdir/opt/$pkgname/BioTek"
-    cp -r "BioTek/Biotek Manual.pdf" "$pkgdir/opt/$pkgname/BioTek/Documentation"
     install -D -m 644 "Collective/Collective.so" "$pkgdir/usr/lib/vst/Collective.so"
+
+    plugin_dir="BioTek/Instruments"
+    for file in "$plugin_dir"/*.biotekinstrument
+    do
+        install -D -m 644 "$file" "$pkgdir/opt/$pkgname/$file"
+    done
     
-    mkdir -p "$pkgdir/opt/$pkgname/Collective/Documentation"
-    cp -r Collective/Instruments Collective/Samples "$pkgdir/opt/$pkgname/Collective"
-    cp -r "Collective/Collective Manual.pdf" "$pkgdir/opt/$pkgname/Collective/Documentation"
-    chmod -R 644 "$pkgdir/opt/$pkgname"
+    plugin_dir="BioTek/Samples"
+    for file in "$plugin_dir"/*.acktionsample
+    do
+        install -D -m 644 "$file" "$pkgdir/opt/$pkgname/$file"
+    done
+    
+    plugin_dir="Collective/Instruments"
+    for file in "$plugin_dir"/*.collinst "$plugin_dir"/**/*.collinst
+    do
+        echo "$file"
+        install -D -m 644 "$file" "$pkgdir/opt/$pkgname/$file"
+    done
+
+    plugin_dir="Collective/Samples"
+    for file in "$plugin_dir"/*.collsample "$plugin_dir"/*/*/*.collsample
+    do
+        echo "$file"
+        install -D -m 644 "$file" "$pkgdir/opt/$pkgname/$file"
+    done
     
     install -D -m 644 "$startdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
