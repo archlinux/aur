@@ -1,19 +1,30 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openboard-develop
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'libpaper' 'bzip2')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'libpaper' 'bzip2' 'openssl-1.0')
 source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
-        "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip")
+        "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip"
+        ssl10.patch
+        qchar.patch
+        qtmultimediadefs.patch)
 md5sums=('d3ff4e88b5c8f1913c12a7686ef86329'
-         'fa1ff089f0bcc15d2a510bb90cdd3002')
+         'fa1ff089f0bcc15d2a510bb90cdd3002'
+         '9dbccb56e4079b75c606dc40c3e77f00'
+         'bf2c524f3897cfcfb4315bcd92d4206e'
+         '0d18be8088442762c2a3d5e6e1f1a911')
 
 prepare() {
   mv "$srcdir/OpenBoard-ThirdParty-master" "$srcdir/OpenBoard-ThirdParty"
+
+  cd $srcdir/OpenBoard-$pkgver
+  patch -p1 < $srcdir/ssl10.patch
+  patch -p1 < $srcdir/qchar.patch
+  patch -p1 < $srcdir/qtmultimediadefs.patch
 }
 
 build() {
