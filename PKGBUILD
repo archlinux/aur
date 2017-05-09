@@ -1,6 +1,6 @@
 # Maintainer: Erik Zenker <erikzenker at posteo dot de>
 pkgname=benchmark-git
-pkgver=v1.0.0.r240.g4f8bfea
+pkgver=v1.1.0.r102.gcb8a0cc
 pkgrel=1
 pkgdesc="A microbenchmark support library, by Google"
 arch=('i686' 'x86_64')
