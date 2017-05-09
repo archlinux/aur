@@ -1,0 +1,4 @@
+typings*.tgz
+/src
+/pkg
+nodejs-typings-*-any.pkg.tar.xz
