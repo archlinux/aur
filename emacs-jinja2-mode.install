@@ -1,0 +1,24 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'jinja2-mode)
+
+==> If your jinja2 files have the ".j2" extension, you'll need to add:
+
+(add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
+
+==> Or do the above with use-package:
+
+(use-package jinja2-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))) ; For the .j2 extension
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
