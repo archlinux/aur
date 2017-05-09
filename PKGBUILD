@@ -2,7 +2,7 @@
 
 pkgname=the-ultimate-oldschool-pc-fonts
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="World's biggest collection of classic text mode fonts, system fonts and BIOS fonts from DOS-era IBM PCs and compatibles"
 arch=('any')
 url="http://int10h.org/oldschool-pc-fonts/"
@@ -16,8 +16,6 @@ md5sums=('24acf70a302419895544e32757cfe4c8')
 package() {
     cd "${srcdir}"
 
-    install -d "${pkgdir}/usr/share/fonts/oldschool-pc-Bm437/"
-    cp "Bm437 (Windows bitmap)"/* "${pkgdir}/usr/share/fonts/oldschool-pc-Bm437/"
     install -d "${pkgdir}/usr/share/fonts/oldschool-pc-Px437/"
     cp "Px437 (TrueType - DOS charset)"/* "${pkgdir}/usr/share/fonts/oldschool-pc-Px437/"
     install -d "${pkgdir}/usr/share/fonts/oldschool-pc-PxPlus/"
