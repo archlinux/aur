@@ -1,0 +1,10 @@
+--- cmake/Geant3BuildLibrary.cmake
++++ cmake/Geant3BuildLibrary.cmake
+@@ -26,6 +26,7 @@ include_directories(
+   ${PROJECT_SOURCE_DIR}
+   ${PROJECT_SOURCE_DIR}/minicern
+   ${PROJECT_SOURCE_DIR}/TGeant3 
++  ${CMAKE_INSTALL_PREFIX}/include/TGeant3
+   ${CMAKE_CURRENT_BINARY_DIR})
+ 
+ #-------------------------------------------------------------------------------

@@ -1,0 +1,26 @@
+--- cmake/Geant3BuildLibrary.cmake	2015-01-21 09:02:50.000000000 +0100
++++ cmake/Geant3BuildLibrary.cmake	2015-01-21 09:10:08.000000000 +0100
+@@ -52,7 +52,7 @@
+ set(directories
+     added gbase gcons geocad ggeom gheisha ghits ghrout ghutils giface giopa
+     gkine gparal gphys gscan gstrag gtrak matx55 miface miguti neutron peanut
+-    fiface cgpack fluka block comad erdecks erpremc minicern gdraw)
++    fiface cgpack fluka block comad erdecks erpremc minicern gdraw gcalor)
+ 
+ # Fortran sources
+ set(fortran_sources gcinit.F)
+--- cmake/Geant3BuildProject.cmake
++++ cmake/Geant3BuildProject.cmake
+@@ -40,6 +40,12 @@ install(DIRECTORY
+   COMPONENT Development
+ )
+ 
++# Install the data directory which is needed at runtime
++install(DIRECTORY
++  ${PROJECT_SOURCE_DIR}/data
++  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/geant3
++)
++
+ #
+ # Install the Geant3Config, Geant3ConfigVersion
+ #

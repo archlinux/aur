@@ -1,0 +1,34 @@
+pkgbase = geant3
+	pkgdesc = Monte Carlo GEometry ANd Tracking Version 3
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://root.cern.ch/download-vmc
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = root
+	options = emptydirs
+	options = strip
+	options = staticlibs
+	options = libtool
+	source = geant3::git+http://root.cern.ch/git/geant3.git#tag=v2-1
+	source = gcalor.F.gz
+	source = gdalet.F.gz
+	source = gdalitzcbm.F.gz
+	source = gdecay.F.gz
+	source = geant3_geane.patch
+	source = geant3_root6.patch
+	source = geant3_structs.patch
+	source = Geant3_CMake.patch
+	md5sums = SKIP
+	md5sums = 1d424f336f14f7b956b4ff88b6609ad6
+	md5sums = 780850d26765e43733e1f1451bd24d16
+	md5sums = 79441f41a967cb484e1470777067caa7
+	md5sums = d22549981df7d18a015f9913602eeb72
+	md5sums = f0df4447afd26fba12213732f1a3784f
+	md5sums = 856d3a197ddf34d1d9e1a3b64fdb3bf1
+	md5sums = a88e74f73ebc85c51256fba99d7551cd
+	md5sums = c7dec3af4c0b3cd1d1522f99be432525
+
+pkgname = geant3
+

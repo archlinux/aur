@@ -1,0 +1,20 @@
+--- TGeant3/geant3LinkDef.h
++++ TGeant3/geant3LinkDef.h
+@@ -13,9 +13,6 @@
+ #pragma link C++ class  TGeant3f77+;
+ #pragma link C++ class  TG3Application+;
+ 
+-/*
+-// Unused class rule
+-// (generate warning with Root6 cling)
+ #pragma link C++ class Quest_t+;
+ #pragma link C++ class Gconst_t+;
+ #pragma link C++ class Gconsx_t+;
+@@ -48,7 +45,6 @@
+ #pragma link C++ class Eropts_t+;
+ #pragma link C++ class Eroptc_t+;
+ #pragma link C++ class Erwork_t+;
+-*/
+ 
+ #pragma link C++ class  G3Material+;
+ #pragma link C++ class  G3Medium-;

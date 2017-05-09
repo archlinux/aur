@@ -1,0 +1,42 @@
+--- erdecks/eustep.F_old	2012-05-29 14:55:38.490000649 +0200
++++ erdecks/eustep.F	2012-05-29 15:02:38.744000650 +0200
+@@ -167,6 +167,8 @@
+                CALL UCOPY(P3,P2,3)
+                CALL UCOPY(VECT,P3,3)
+                ICONT = 0
++               ISTOP = 1
++               ICLOSE = 0
+             ENDIF
+          ENDIF
+          
+@@ -204,6 +206,8 @@
+                CALL UCOPY(P3,P2,3)
+                CALL UCOPY(VECT,P3,3)
+                ICONT = 0
++               ISTOP = 1
++               ICLOSE = 0
+             ENDIF
+          ENDIF
+       ENDIF
+--- TGeant3/TGeant3gu.cxx_old	2012-05-29 14:55:39.038000648 +0200
++++ TGeant3/TGeant3gu.cxx	2012-05-29 14:59:00.198000645 +0200
+@@ -696,7 +696,9 @@
+             for(Int_t i=0; i<3; i++)geant3->Gcmore()->p2[i] = geant3->Gcmore()->p3[i];  //call ucopy(p3,p2,3)
+             for(Int_t i=0; i<3; i++)geant3->Gcmore()->p3[i] = geant3->Gctrak()->vect[i]; //call ucopy(vect,p3,3)
+             icont = 0;
+-         }
++       	    geant3->StopTrack();
++	    geant3->Gcmore()->iclose = 0;
++	 }
+       }
+    }else if(cflag==2) {
+    //   printf("geant3->Gconst()->big = %F" ,geant3->Gconst());
+@@ -745,6 +747,8 @@
+             for(Int_t i=0; i<3; i++)geant3->Gcmore()->p2[i] = geant3->Gcmore()->p3[i];  //call ucopy(p3,p2,3)
+             for(Int_t i=0; i<3; i++)geant3->Gcmore()->p3[i] = geant3->Gctrak()->vect[i]; //call ucopy(vect,p3,3)
+             icont = 0;
++ 	    geant3->StopTrack();
++	    geant3->Gcmore()->iclose = 0;
+          }
+       }
+    }
