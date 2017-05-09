@@ -1,34 +1,26 @@
 # Maintainer: NexAdn
 pkgname=obs-linuxbrowser
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit."
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://github.com/bazukas/obs-linuxbrowser"
 license=("GPL")
 depends=(
-	"obs-studio>=18.0.1" "cef-minimal"
+	"obs-studio>=18.0.1"
+	"gconf" "nss" "libxss" "pango" "atk" "libxrandr" "libxcomposite"
 )
-makedepends=("make" "cmake")
 optdepends=("pepper-flash: Flash support")
 source=(
-    "https://github.com/bazukas/$pkgname/archive/${pkgver}.tar.gz"
+    "https://github.com/bazukas/${pkgname}/releases/download/${pkgver}/linuxbrowser${pkgver}-obs18.0.1-64bit.tgz"
 )
 sha256sums=(
-    "2867ca780cab34a1a9396394c079854cb363a3e9a154e96948e272f096460514"
+    "45a2f2ded502b753c20aa4ac00bf9fcfdf91c6b1065231a67edd45c455bfb914"
 )
-build() {
-    cd "$srcdir"/${pkgname}-${pkgver}
-    mkdir -p ./build
-    cd ./build
-    cmake -D CEF_DIR="/opt/cef-minimal" ..
-    make clean
-    make -j4
-}
 package() {
-    mkdir -p "$pkgdir"/usr/lib/obs-plugins/
-	mkdir -p "$pkgdir"/usr/share/obs/obs-plugins/$pkgname
-	cp -R "$srcdir"/$pkgname-${pkgver}/build/build/$pkgname/bin/64bit/* "$pkgdir"/usr/lib/obs-plugins/
-	mv "$pkgdir"/usr/lib/obs-plugins/libobs-linuxbrowser.so "$pkgdir"/usr/lib/obs-plugins/obs-linuxbrowser.so
-	cp -R "$srcdir"/$pkgname-$pkgver/build/build/$pkgname/data/* "$pkgdir"/usr/share/obs/obs-plugins/$pkgname
+    cd ${srcdir}/${pkgname}
+    install -d ${pkgdir}/usr/lib/obs-plugins/
+    install -d ${pkgdir}/usr/share/obs/obs-plugins/${pkgname}/
+    install -Dm755 ./bin/64bit/* ${pkgdir}/usr/lib/obs-plugins/
+    cp -R ./data/* ${pkgdir}/usr/share/obs/obs-plugins/${pkgname}/
 }
