@@ -14,15 +14,9 @@ pkgdesc="Digits is an advanced phase distortion synthesizer"
 arch=('x86_64' 'i686')
 url="https://github.com/LouisGorenfeld/DigitsVst"
 license=('GPL')
-groups=()
-depends=()
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=(
     "${pkgname%-git}::git://github.com/LouisGorenfeld/DigitsVst"
     "http://www.steinberg.net/sdk_downloads/vstsdk367_03_03_2017_build_352.zip"
