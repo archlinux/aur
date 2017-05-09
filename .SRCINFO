@@ -6,6 +6,12 @@ pkgbase = batch_resolve
 	arch = x86_64
 	license = MIT
 	depends = openssl
+	source = https://github.com/mersinvald/batch_resolve/releases/download/0.3.5/batch-resolve_0.3.5_amd64.deb
+	source = https://github.com/mersinvald/batch_resolve/releases/download/0.3.5/batch_resolve
+	source = https://github.com/mersinvald/batch_resolve/releases/download/0.3.5/batch_resolve-0.3.5-1.x86_64.rpm
+	md5sums = c1886fb865d43eaddffffa3d9fb4c048
+	md5sums = 53228d6e7e83d2f3a8402d3578f02fb0
+	md5sums = 02454428fdb5ef2a122249b9e6bb30ff
 
 pkgname = batch_resolve
 
