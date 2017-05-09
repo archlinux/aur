@@ -10,7 +10,7 @@ license=('GPL')
 install=autoupdate.install
 source=(autoupdate.service
         autoupdate.timer)
-md5sums=('315777ea88d1ca6be7a934844a48c399'
+md5sums=('3d9f8d9a766ed6d6b997f61ced458127'
          '129db06fab0fd9478ef3a4cf6a5baa96')
 
 package() {
