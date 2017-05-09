@@ -32,7 +32,7 @@ PKGEXT='.pkg.tar.gz'
 prepare() {
 	cd "${pkgname}"
 	rm ${pkgname}*.f
-	mv ../*.f.gz .
+	mv ../*.f .
 }
 
 build() {
