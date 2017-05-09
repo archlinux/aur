@@ -4,14 +4,15 @@
 
 pkgname=mythes-sv
 pkgver=20101106
-pkgrel=8
+_pkgver=1.3
+pkgrel=9
 pkgdesc="Swedish thesaurus"
 arch=('i686' 'x86_64')
 url="http://lexin2.nada.kth.se/synlex.html"
 license=('custom')
 depends=('libmythes')
-source=('http://extensions.libreoffice.org/extension-center/swedish-thesaurus-based-on-synlex/releases/1.3/swedishthesaurus.oxt')
-md5sums=('e1cc53b9a74f31307e342e88c341202b')
+source=("https://extensions.libreoffice.org/extensions/swedish-thesaurus-based-on-synlex/$_pkgver/@@download/file/swedishthesaurus.oxt")
+sha256sums=('58de0797f5dca60b7dd5e2355c381eb4ced72aff7a726861a2512ebc2e97ad55')
 
 package() {
   cd $srcdir/dictionaries
