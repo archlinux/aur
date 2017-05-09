@@ -1,6 +1,6 @@
 diff -aur k2_old/k2pdfopt_v2.41/willuslib/array.c k2_new/k2pdfopt_v2.41/willuslib/array.c
 --- k2_old/k2pdfopt_v2.41/willuslib/array.c	2014-12-01 13:24:26.000000000 -0300
-+++ k2_new/k2pdfopt_v2.41/willuslib/array.c	2017-05-08 21:14:43.290333379 -0300
++++ k2_new/k2pdfopt_v2.41/willuslib/array.c	2017-05-08 23:15:48.847205604 -0300
 @@ -1072,7 +1072,7 @@
  void arrayf_sort(float *a,int n)
  
@@ -12,7 +12,7 @@ diff -aur k2_old/k2pdfopt_v2.41/willuslib/array.c k2_new/k2pdfopt_v2.41/willusli
  
 diff -aur k2_old/k2pdfopt_v2.41/willuslib/math.c k2_new/k2pdfopt_v2.41/willuslib/math.c
 --- k2_old/k2pdfopt_v2.41/willuslib/math.c	2013-08-15 20:33:50.000000000 -0300
-+++ k2_new/k2pdfopt_v2.41/willuslib/math.c	2017-05-08 21:14:43.297000046 -0300
++++ k2_new/k2pdfopt_v2.41/willuslib/math.c	2017-05-08 23:15:48.870538937 -0300
 @@ -532,7 +532,7 @@
  
  
@@ -24,12 +24,12 @@ diff -aur k2_old/k2pdfopt_v2.41/willuslib/math.c k2_new/k2pdfopt_v2.41/willuslib
      int top,n1;
 diff -aur k2_old/k2pdfopt_v2.41/willuslib/ocrgocr.c k2_new/k2pdfopt_v2.41/willuslib/ocrgocr.c
 --- k2_old/k2pdfopt_v2.41/willuslib/ocrgocr.c	2016-10-29 15:12:25.000000000 -0300
-+++ k2_new/k2pdfopt_v2.41/willuslib/ocrgocr.c	2017-05-08 21:14:43.313666712 -0300
++++ k2_new/k2pdfopt_v2.41/willuslib/ocrgocr.c	2017-05-08 23:15:48.913872272 -0300
 @@ -29,6 +29,8 @@
  #ifdef HAVE_GOCR_LIB
  #include <gocr.h>
  
-+job_t *JOB;
++job_t *OCR_JOB;
 +
  /*
  ** bmp8 must be grayscale
@@ -38,13 +38,13 @@ diff -aur k2_old/k2pdfopt_v2.41/willuslib/ocrgocr.c k2_new/k2pdfopt_v2.41/willus
      h=y2-y1+1;
      dh=h+bw*2;
      job=&_job;
-+    JOB=job;
++    OCR_JOB=job;
      job_init(job);
      job_init_image(job);
      // willus_mem_alloc_warn((void **)&job->src.p.p,w*h,funcname,10);
 diff -aur k2_old/k2pdfopt_v2.41/willuslib/string.c k2_new/k2pdfopt_v2.41/willuslib/string.c
 --- k2_old/k2pdfopt_v2.41/willuslib/string.c	2016-03-19 13:19:33.000000000 -0300
-+++ k2_new/k2pdfopt_v2.41/willuslib/string.c	2017-05-08 21:14:43.303666713 -0300
++++ k2_new/k2pdfopt_v2.41/willuslib/string.c	2017-05-08 23:15:48.890538938 -0300
 @@ -81,7 +81,7 @@
  ** Returns NULL if EOF, otherwise returns pointer to the string.
  **
@@ -56,7 +56,7 @@ diff -aur k2_old/k2pdfopt_v2.41/willuslib/string.c k2_new/k2pdfopt_v2.41/willusl
      int     i;
 diff -aur k2_old/k2pdfopt_v2.41/willuslib/willus.h k2_new/k2pdfopt_v2.41/willuslib/willus.h
 --- k2_old/k2pdfopt_v2.41/willuslib/willus.h	2017-02-25 05:26:34.000000000 -0300
-+++ k2_new/k2pdfopt_v2.41/willuslib/willus.h	2017-05-08 21:14:43.283666712 -0300
++++ k2_new/k2pdfopt_v2.41/willuslib/willus.h	2017-05-08 23:15:48.830538936 -0300
 @@ -227,9 +227,6 @@
  ** CMAKE handles the defines, not this source
  ** (Mod from Dirk Thierbach, 31-Dec-2013)

@@ -2,12 +2,12 @@
 
 _mupdf_version=1.10a
 _tesseract_version=3.05.00
-_gocr_version=0.49
+_gocr_version=0.50
 _openjpeg_version=2.1.0
 
 pkgname=k2pdfopt
 pkgver=2.41
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that optimizes PDF files for viewing on mobile readers"
 arch=('i686' 'x86_64')
 url="http://www.willus.com/k2pdfopt/"
@@ -29,9 +29,9 @@ source=("http://www.willus.com/k2pdfopt/src/${pkgname}_v${pkgver}_src.zip"
 md5sums=('549644b44b560b26ae1e634fcb2bbe59'
          'f80fbba2524d1d52f6ed09237d382411'
          '478ba26e8e7ea8f6f466d4dfc2332d34'
-         '4e527bc4bdd97c2be15fdd818857507f'
+         '553ea40c2b3a1a0b03a30675d0e0aba1'
          'f6419fcc233df84f9a81eb36633c6db6'
-         'e33be836fe4fa9957db7079121b1840d'
+         'b9fa8483bbb76f2a58e1145c252eef9a'
          '3db9d9cd3b7745af036c968dfe0ba376'
          'eb18b03abd7376a3de75824c31bd7f1a'
          'db04c31970a3f35492253f0f0e339a2f')
