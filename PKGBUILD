@@ -1,47 +1,46 @@
-# Maintainer: Yoshi2889 <rick.2889 at gmail.com>
-# To update: change version and tag
-
-# Based upon linux-git PKGBUILD. Original comments below:
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Contributor: Yoshi2889 <rick.2889 at gmail dot com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
-# Contributor: Jonathan Chan <jyc@fastmail.fm>
-# Contributor: misc <tastky@gmail.com>
-# Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
 
 pkgbase=linux-xanmod
 _srcname=linux
-_tag=4.10.8-xanmod10
-pkgver=4.10.8
-pkgrel=10
-arch=('x86_64')
+pkgver=4.11.0
+_pkgver=1
+pkgrel=1
+arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'linux-firmware' 'mkinitcpio')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("git+https://github.com/xanmod/linux.git#tag=$_tag"
-        # the main kernel config files
-        'config.x86_64'
+source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${_pkgver}.tar.gz
+        # standard config files for mkinitcpio ramdisk
+        # pacman hook for initramfs regeneration
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
-sha256sums=('SKIP'
-            '965f77959483e21a04d51c94d0336873d3c46cb74d52b93964d611d49a8909f1'
+sha256sums=('02d6774695c96298896398e2791ea3e4f962c7cf60ee800292c01028eb4aef97'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${_srcname}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
+  # add upstream patch
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # add latest fixes from stable queue, if needed
+  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  if [ "${_kernelname}" != "" ]; then
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
+    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-  # set localversion to git commit
-  sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
-  sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
+  # set extraversion to pkgrel
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -55,25 +54,29 @@ prepare() {
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
-  make olddefconfig # old config from previous kernel, defaults for new options
   # ... or manually edit .config
+
+  # rewrite configuration
+  yes "" | make config >/dev/null
 }
 
 build() {
-  cd "${_srcname}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Xanmod patches (git version)"
+  pkgdesc="The Linux kernel and modules with Xanmod patches"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('linux')
+  provides=('linux' 'linux-xanmod-git')
+  replaces=('linux-xanmod-git')
+  conflicts=('linux-xanmod-git')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${_srcname}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
 
   KARCH=x86
 
@@ -87,21 +90,17 @@ _package() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -121,19 +120,18 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
-
-  # add System.map
-  install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Linux kernel (git version)"
-  provides=('linux-headers')
+  provides=('linux-headers' 'linux-xanmod-git-headers')
+  replaces=('linux-xanmod-git-headers')
+  conflicts=('linux-xanmod-git-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${_srcname}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
@@ -144,7 +142,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -226,12 +224,11 @@ _package-headers() {
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
 
-  # Fix file conflict with -doc package
-  rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
-
-  # Add objtool for CONFIG_STACK_VALIDATION
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
-  cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
@@ -250,13 +247,18 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
   provides=('linux-docs')
 
-  cd "${_srcname}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
