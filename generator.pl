@@ -14,7 +14,7 @@ use constant {
 };
 
 sub _find_max {
-    my ($tree, $filter) = @_;
+    my ($tree, $filter, $pos) = @_;
 
     my @values =  map { $_->as_text } $tree->find('a');
     @values    = grep { $_ ~~ $filter } @values if defined $filter;
@@ -24,7 +24,7 @@ sub _find_max {
     }
     @values = sort @values;
 
-    return $values[-1];
+    return $values[$pos // -1];
 }
 
 sub _get_tree {
@@ -68,7 +68,7 @@ sub _get_data {
     $month =~ s:/::;
     $data->{month} = $month;
 
-    my $release = _get_part($ua, $uri, qr(aurora-l10n/$));
+    my $release = _get_part($ua, $uri, qr(aurora-l10n/$), -3);
     say "Release: $release";
     say "$uri/$release";
     $uri .= $release;
