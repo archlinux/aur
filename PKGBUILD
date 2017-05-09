@@ -2,9 +2,8 @@
 
 pkgname=php56-xdebug
 _pkgbase="${pkgname#php56-}"
-_phpbase="${pkgname#-xdebug}"
-pkgver=2.5.0
-_PKGVER="$(echo "${pkgver}" | tr '[:lower:]' '[:upper:]')"
+pkgver=2.5.3
+_pkgver="$(echo "${pkgver}" | tr '[:lower:]' '[:upper:]')"
 pkgrel=1
 pkgdesc="php56 debugging extension"
 arch=('x86_64')
@@ -16,29 +15,39 @@ backup=('etc/php56/conf.d/xdebug.ini')
 provides=("${_pkgbase}=${pkgver}-${pkgrel}" "php-${_pkgbase}=${pkgver}-${pkgrel}")
 source=("http://www.xdebug.org/files/${_pkgbase}-${pkgver}.tgz"
         "xdebug.ini")
-md5sums=('5306da5948e195c2e4585c9abd7741f9'
-         '0e601dfb867b248f28d6a647611e4400')
+sha256sums=('4cce3d495243e92cd2e1d764a33188d60c85f0d2087d94d4203c354ea03530f4'
+            '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 
 build() {
-  cd "$srcdir/${_pkgbase}-${_PKGVER}"
-  phpize56
-  ./configure --prefix=/usr --enable-xdebug
-  make
+    cd "${srcdir}/${_pkgbase}-${_pkgver}"
+    phpize56
+    ./configure \
+        --config-cache \
+        --sysconfdir=/etc/php56 \
+        --with-php-config=/usr/bin/php-config56 \
+        --localstatedir=/var
+    make
 
-  cd "$srcdir/${_pkgbase}-${_PKGVER}/debugclient"
-  ./buildconf
-  ./configure --prefix=/usr
-  make
+    cd "${srcdir}/${_pkgbase}-${_pkgver}/debugclient"
+    ./buildconf
+    ./configure \
+        --config-cache \
+        --sysconfdir=/etc/php56 \
+        --with-php-config=/usr/bin/php-config56 \
+        --localstatedir=/var
+    make
+}
+
+check() {
+    cd "${srcdir}/${_pkgbase}-${_pkgver}"
+    export NO_INTERACTION=1
+    make test
 }
 
 package() {
-  cd "$srcdir/${_pkgbase}-${_PKGVER}/debugclient"
-  make DESTDIR=$pkgdir install
+    cd "${srcdir}/${_pkgbase}-${_pkgver}"
+    make INSTALL_ROOT="$pkgdir" install
+    install -D -m644 "${srcdir}/xdebug.ini" "${pkgdir}/etc/php56/conf.d/xdebug.ini"
 
-  cd "$srcdir/${_pkgbase}-${_PKGVER}"
-  make INSTALL_ROOT=$pkgdir install
-  install -D -m 644 $srcdir/xdebug.ini $pkgdir/etc/php56/conf.d/xdebug.ini
-
-  # rename binary
-  mv "$pkgdir/usr/bin/debugclient" "$pkgdir/usr/bin/debugclient56"
+    install -D -m755 "./debugclient/debugclient" "${pkgdir}/usr/bin/debugclient56"
 }
