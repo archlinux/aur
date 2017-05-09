@@ -27,9 +27,9 @@ build() {
 
 check() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
-    # prompts user for 'Y|n|s' to send a report
-    echo 'n' | make test
-    echo ''
+    # disable prompt to send test report
+    export NO_INTERACTION=1
+    make test
 }
 
 package() {
