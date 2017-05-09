@@ -8,7 +8,6 @@ pkgdesc="The Ion Shell. Compatible with Redox and Linux."
 arch=("x86_64" "i686")
 url="https://github.com/redox-os/ion"
 license=('MIT')
-#depends=('')
 makedepends=('cargo')
 source=("https://github.com/redox-os/ion/archive/$_commit.tar.gz")
 sha512sums=('0f37107635a9998f72f7b256107dd30058ef4445e019153cdb0a6bbac09b7926c54d1a26ebbf835a0b9f403224a566767aac5189e4de20bed00c4db6edb7641e')
