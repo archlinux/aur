@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild"
 license=('GPL')
 
-depends=('gcc-ada' 'gcc-libs')
+depends=('gcc-ada' 'gcc-libs' 'prepare_gnat_util')
 makedepends=('git' 'gcc-ada' 'gprbuild')
 
 source=()
