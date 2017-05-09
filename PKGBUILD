@@ -1,6 +1,6 @@
 # Maintainer: farwayer <farwayer @t gmail dot com>
 
-pkgname=android-sdk-build-tools
+pkgname=android-sdk-build-tools-25.0.1
 _ver=25.0.1
 pkgver=r$_ver
 pkgrel=1

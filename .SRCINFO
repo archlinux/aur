@@ -1,4 +1,4 @@
-pkgbase = android-sdk-build-tools
+pkgbase = android-sdk-build-tools-25.0.1
 	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
 	pkgver = r25.0.1
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = android-sdk-build-tools
 	depends_i686 = gcc-libs
 	depends_i686 = zlib
 
-pkgname = android-sdk-build-tools
+pkgname = android-sdk-build-tools-25.0.1
 
