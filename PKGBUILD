@@ -30,7 +30,7 @@ _pkgname=firefox
 pkgname=iceweasel
 epoch=1
 pkgver=$_debver.$_debrel
-pkgrel=2
+pkgrel=3
 pkgdesc="A libre version of Debian Iceweasel, the standalone web browser based on Mozilla Firefox."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
@@ -64,25 +64,23 @@ source=("$_debrepo/`debfile $_debname`_$_debver.is.$_debver.orig.tar.xz"
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         fix-wifi-scanner.diff
         enable-object-directory-paths.patch
-        mozilla-1253216.patch
-        mozilla-build-arm.patch)
-sha256sums=('e77dbd8a4681481a5c9ab8ed3a5ac6c19caec8e25dc80f8b56461cfdf52d047a'
-            'bc8ef2662c571ee90b6b196372146a63c1895c56967dac2a4f7ec0b45802426b'
-            'b428ca162860cd8543fc1df8da6b21d4b52772ed69f4b9c1a49295f6986bb698'
+        mozilla-1335250.patch)
+sha512sums=('54bdb53f65c10e43db5df12aaf1302926e2b66997c0aeeeac0834a0943ca244ec9d847900e90fd75bee4474b97988cb87d0b51e745299db8160a22ca45ffedc6'
+            'ba68ee4c2846d52d7d223d57c815db0b81e41f2e1c1f3cb3b6f74fd523826be8848f630f53179b9d5d7eb1b312a07bcd3d3df7d2c462bb85d4cb31c60182be0a'
+            '08d5980b532cdbef651355baf5e971df6d641e5b6a74fd2ad4f84837b00f2fa0732069af74c76cd635cf9437fd139b8572ff7b0c86911be7c8a251b4f57a2a25'
             'SKIP'
-            'd17c6506c1755c89a48a9b26be28e3413c43eda6931a8e6eca2b44b99430f304'
-            '9de91fdefb330e68af1765d7528e13b0d769cfef797e374b6f50e83ba17d40d6'
-            '32f1fe3ad4f80d0ae419064db2abe49b97cd7cb18c35d68be1a2befb60172a2a'
-            '93e3001ce152e1d142619e215a9ef07dd429943b99d21726c25da9ceb31e31cd'
-            '56eba484179c7f498076f8dc603d8795e99dce8c6ea1da9736318c59d666bff6'
-            '250f7aaa3c1362f9d2bb2211cd605eab93a5e806e8540f184979d41acf46142a'
-            '3aea6676f1e53a09673b6ae219d281fc28054beb6002b09973611c02f827651d'
-            '90bdede15c2e85e5d081e2b822884a6354a116868ba7d9e19a2484a4e2528aaf'
-            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
-            'e260e555b261aabab1e48786dd514eeea056e4402af7cfd4dfd1d32858441484'
-            'fbb6011501a74a8ea6d01c041870fcefb7ef2859c134aedc676e5f6452833f65'
-            '56eecee8162c138c442773d66483886f1242c8dd2b16eed5711ae5e63d9b0e3a')
+            '0a096d98a927292f172141a52e302e951d9d0dcb30600470c19d7ac162f6dc7c6171822eb1f8cb480844e655f899b7b7f26f1571eb84335957ec320d24ea9356'
+            '8ec7ec087b72d8f8de6d8dd8fb2f6e361e47141814e632e05d6277a67701be00aeae054cea2d2ddabfc149f12230296f0085f17bc83ba35a880b7be300a75ccd'
+            '6b76f61db3036d15aacac4af767814665398243a2ad55cc11c4d58e3f2ce1740c5c4706559b919f823405f69aa89d92486ed94e0caca72b52abb703f68f5b43a'
+            '76ac01f250975688439a31206f60d3ee05aa74a9cff7922ba9eab3fb3906bba176bab6dcff1791c19ca6acffed5167af841ab077d49ba1889020e5f827d34a60'
+            'ac68873be1c76fd166f7a26fd2475540065b9b2d841185a346cbe3bd92645904f35f1c2a4ffc9153b638aaa419182ad2a7dea7efde91267d9eee38a312dce0cb'
+            '90bf76e04036fd8b3a496802ea291c30345b9133026ab931690084c1bbb8eb0eb7ffc5b388f84144933db3c751f3593e5a566696e6a6de2c40da87af4d7f7bad'
+            'cddffc04032686644b61509ea696cd36333327015e3a52f99afd23c74f18d82bec34619759f7acb053e10a7288d2d658d87350f5b4fc9e56ff2337c38aa4b5c6'
+            'bac731584c3615073904b2cf0a643678458344aa6f2d82dab86226b0e443a55a391d4927f220ba566c6bcf5bb3affab05c220db3b63b7575e7ba86a67d4f9464'
+            '9a02d89603ad2928e38d7350d5d71ec904815958c65cc13323f5d4cd9392b823264fae812ea658d83728839372b412fd185653ef65b7ab8dd0595158b3bdc2e2'
+            '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
+            'f60f59b5d11b9ce5ad4c01eedae78f27131f17b07720e5ac35441d43e95987d81b9b2680e7258d73b1a8092fe3ae554072d07a41d6b337af82742886196bc375'
+            '3ea15f1c2e0146388687cfbb100e5d8c553fa4276c9c2c61eaccb4fe88e4dbd6697f6266eb0255546997997ca34085d0cf211701fa63d8ab2df94f5291131d7e')
 validpgpkeys=(
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
@@ -142,24 +140,49 @@ prepare() {
   cp -av /usr/lib/mozilla/searchplugins browser/locales
 
   # Disable various components at the source level
-  sed -i 's|[;]1|;0|' toolkit/components/telemetry/TelemetryStartup.manifest || die "failed break telemetry startup"
-  sed -i 's|[;]1|;0|' browser/experiments/Experiments.manifest || die "failed to break ExperimentsService"
-  sed -i '/pocket/d' browser/extensions/moz.build || die "failed to wipe pocket"
+  sed -i 's|1|0|' toolkit/components/telemetry/TelemetryStartup.manifest || die "failed break telemetry startup"
+  sed -i 's|1|0|' toolkit/components/remotebrowserutils/remotebrowserutils.manifest || die "failed break remotebrowsing at startup"
+  sed -i 's|1|0|' toolkit/components/captivedetect/CaptivePortalDetectComponents.manifest || die "failed to break captiveportaldetection at startup"
+  sed -i 's|1|0|' toolkit/components/terminator/terminator.manifest || die "failed to break terminator at startup"
+  sed -i 's|1|0|' toolkit/components/securityreporter/SecurityReporter.manifest || die "failed to break securityReporter"
+  sed -i 's|1|0|' toolkit/components/crashes/CrashService.manifest || die "failed to break CrashService"
+  sed -i 's|1|0|' toolkit/components/crashmonitor/crashmonitor.manifest || die "failed to break CrashMonitor"
+  sed -i 's|1|0|' browser/experiments/Experiments.manifest || die "failed to break ExperimentsService"
+  #echo "" > dom/flyweb/moz.build || die "failed to break FlyWeb"
+  echo "" > toolkit/crashreporter/moz.build || die "Failed to dsiable CrashReporter"
+  echo "Disabling intrusive Balrog backdoor... please wait."
+  echo "" > testing/moz.build || die "failed to disable testing directory (contains Balrog/WebRTC/etc)"
+  #grep -rl "aus4.mozilla.org"  | xargs sed -i 's/aus4.mozilla.org/0.0.0.0/' || die "Failed to delete aus4 Barlog servers"
+  #grep -rl "aus5.mozilla.org"  | xargs sed -i 's/aus5.mozilla.org/0.0.0.0/' || die "Failed to delete aus5 Barlog servers"
+  echo "" > browser/extensions/moz.build || die "failed to disable bundled extensions"
+  echo "" > browser/app/blocklist.xml || die "failed to clear pre-loaded blocklist"
+  #echo "" > services/common/moz.build || die "failed to disable KintoStorage/Blocklist updater"
+  echo "" > services/cloudsync/moz.build || die "failed to disable CloudSync"
+  echo "" > services/fxaccounts/moz.build || die "failed to disable FxAccounts"
+  echo "" > modules/libmar/moz.build || die "failed to disable libmar (custom file format used for unattended mozilla updates)"
+  echo "" > netwerk/wifi/moz.build || die "failed to disable wifi"
+  echo "" > media/sphinxbase/moz.build || die "failed to disable SphinxBase voice recognition"
+  echo "" > media/pocketsphinx/moz.build || die "failed to disable PocketSpinx voice recognition"
+  echo "" > b2g/moz.build || die "failed to disable B2G"
+  #echo "" > ipc/chromium/moz.build || die "failed to disable IPC"
+  #sed -i -e '/marketplace-/d' -e '/manifest-/d' -e '/xpcshell/d' -e '/privileged/d' -e '/stage/d' security/apps/moz.build || die "failed to disable unused certs"
+  echo "origin	install	1	https://addons.mozilla.org" > browser/app/permissions  || die "failed disable remote login whitelist"
 
   # ARM-specific changes:
   if [[ "$CARCH" == arm* ]]; then
       echo "ac_add_options --disable-ion" >> .mozconfig
       echo "ac_add_options --disable-elf-hack" >> .mozconfig
       echo "ac_add_options --disable-webrtc" >> .mozconfig
+      echo "ac_add_options --disable-rust" >> .mozconfig
+      sed -i '/ac_add_options --enable-pie/d' .mozconfig
 
       # Disable gold linker, reduce memory consumption at link time
       sed -i '/ac_add_options --enable-gold/d' .mozconfig
-      LDFLAGS+=" -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+      echo 'ac_add_options --enable-optimize="-g -O2 -fno-schedule-insns"' >> .mozconfig
       echo "ac_add_options --disable-tests" >> .mozconfig
       echo "ac_add_options --disable-debug" >> .mozconfig
 
-      patch -p1 -i ../mozilla-1253216.patch
-      patch -p1 -i ../mozilla-build-arm.patch
+      patch -p1 -i ../mozilla-1335250.patch
   fi
 }
 
