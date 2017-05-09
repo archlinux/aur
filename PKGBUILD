@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-gtk
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A timer for the Pomodoro Technique"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('desktop-file-utils'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('2734c91a1e59dd91618e760e87aca86c')
+md5sums=('346355d34811d386e417b6e913125ad7')
 install=tomate-gtk.install
 
 package() {
