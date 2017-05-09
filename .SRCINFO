@@ -1,15 +1,15 @@
 pkgbase = nodejs-typings
 	pkgdesc = TypeScript Definition manager for DefinitelyTyped
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/typings/typings
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = typings-2.1.0.tgz
-	source = http://registry.npmjs.org/typings/-/typings-2.1.0.tgz
-	sha1sums = 9cdbe0cd1626ab61b379e06ba4a3910d1d791006
+	noextract = typings-2.1.1.tgz
+	source = http://registry.npmjs.org/typings/-/typings-2.1.1.tgz
+	sha256sums = ddd2a6fe3c6fec39c46d1cad0062aee4fd36b05fe6a75449cbe09a2d79a879d9
 
 pkgname = nodejs-typings
 
