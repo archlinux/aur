@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=aerc-git
-pkgver=r183.fef5146
+pkgver=r273.2432dd9
 pkgrel=1
 epoch=
 pkgdesc="Asynchronous email client for your terminal"
@@ -10,7 +10,7 @@ license=('MIT')
 categories=()
 groups=()
 depends=('termbox' 'openssl')
-makedepends=('git')
+makedepends=('git' 'cmake')
 optdepends=()
 checkdepends=()
 provides=()
