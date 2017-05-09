@@ -3,7 +3,7 @@
 pkgname=php56-apcu
 _pkgbase="${pkgname#php56-}"
 pkgver=4.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A userland caching module for php56"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/APCu"
@@ -27,9 +27,9 @@ build() {
 
 check() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
-    # disable prompt to send test report
-    export NO_INTERACTION=1
-    make test
+    local ret=0
+    make test NO_INTERACTION=1 REPORT_EXIT_STATUS=1 || ret=1
+    return $ret
 }
 
 package() {
