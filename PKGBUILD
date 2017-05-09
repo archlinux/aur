@@ -3,8 +3,8 @@
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -42,10 +42,8 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 source=("${_name}::git://github.com/coelckers/${_name}.git#tag=g${pkgver}"
-        "${_name}.sh"
         "${_name}.desktop")
 sha256sums=('SKIP'
-            'e8b3e33972524b08460b68c5920ac5f2bff5cfb377f74a556a562b1c84cc2851'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d')
 
 build() {
@@ -56,7 +54,7 @@ build() {
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DINSTALL_PATH=lib/$_name \
+          -DINSTALL_PATH=bin \
           -DINSTALL_PK3_PATH=share/$_name \
           .
     make
@@ -66,8 +64,6 @@ package() {
     cd $_name
 
     make install DESTDIR="$pkgdir"
-
-    install -D "$srcdir"/${_name}.sh "$pkgdir"/usr/bin/$_name
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
