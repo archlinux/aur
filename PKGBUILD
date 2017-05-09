@@ -10,17 +10,18 @@
 pkgbase=python-kivy-git
 pkgname=('python-kivy-git' 'python2-kivy-git')
 _gitname=kivy
-pkgver=1.9.1.r1497.g75cf7bf7b
+pkgver=1.10.0.r8.gb36ddd52e
 pkgrel=1
 pkgdesc="A software library for rapid development of hardware-accelerated multitouch applications."
 arch=('i686' 'x86_64')
-url="http://kivy.org/"
+url="https://kivy.org/"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'cython' 'cython2' 'gstreamer' 'sdl2_ttf'
              'sdl2_mixer' 'sdl2_image' 'git')
 checkdepends=('python-nose' 'python2-nose' 'python2-mock' 'python-coverage' 'python2-coverage'
-              'python-dbus' 'python2-dbus' 'python-gobject' 'python2-gobject' 'xorg-server-xvfb'
-              'git' 'mtdev' 'xclip' 'xsel' 'gst-plugins-base' 'gst-plugins-good')
+              'python-gobject' 'python2-gobject' 'xorg-server-xvfb' 'opencv' 'python-pyenchant'
+              'python2-pyenchant' 'git' 'mtdev' 'xclip' 'xsel' 'gtk3' 'gst-plugins-base'
+              'gst-plugins-good' 'python-dbus' 'python2-dbus')
 source=("${_gitname}::git+https://github.com/kivy/kivy.git")
 sha512sums=('SKIP')
 
@@ -49,10 +50,10 @@ build() {
 
 check() {
   cd "${srcdir}"/${_gitname}
-  PYTHONPATH="$PWD:$PYTHONPATH" xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" make test
+  xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" nosetests3 kivy/tests
 
   cd "${srcdir}"/${_gitname}-py2
-  PYTHONPATH="$PWD:$PYTHONPATH" xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" make PYTHON=python2 test
+  xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" nosetests2 kivy/tests
 }
 
 package_python-kivy-git() {
