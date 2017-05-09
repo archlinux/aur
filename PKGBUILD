@@ -62,8 +62,6 @@ build() {
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DNO_FMOD=ON \
           -DGME_INCLUDE_DIR='/usr/include/gme' \
-          -DFMOD_INCLUDE_DIR="${_fmodincdir}" \
-          -DFMOD_LIBRARY="${_fmodlib}" \
           -DFORCE_INTERNAL_GME=OFF \
           -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
