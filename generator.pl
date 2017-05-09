@@ -69,6 +69,7 @@ sub _get_data {
 
     my $release = _get_part($ua, $uri, qr(aurora-l10n/$));
     say "Release: $release";
+    say "$uri/$release";
     $uri .= $release;
     $release =~ /^\d{4}-\d{2}-(?<day>\d+)-(?<hour>\d+)-(?<minute>\d+)-(?<second>\d+)/;
     $data = { %$data, %+ };
