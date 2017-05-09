@@ -2,7 +2,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname='kawa'
-pkgver='2.3'
+pkgver='2.4'
 pkgrel=1
 pkgdesc='A Scheme implementation and framework targeted the JVM.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://www.gnu.org/software/kawa/index.html'
 license=('X11/MIT')
 depends=('java-environment')
 source=("http://ftp.gnu.org/pub/gnu/kawa/$pkgname-$pkgver.tar.gz")
-sha256sums=('ecddb2b149e41f7c1614c3009138556b954e8cc6a3135a953eb97e7e86dc47fe')
+sha256sums=('14c08be81631a1eb8b8926ca235198ca165156c0c179ecbe6e838d3f4b47635d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
