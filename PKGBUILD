@@ -3,7 +3,7 @@
 pkgname=openwmail
 pkgver=1.0.0
 pkgverdash=1-0-0
-pkgrel=3
+pkgrel=4
 pkgdesc="openwmail"
 arch=('x86_64')
 license=('MLP-2.0')
@@ -28,7 +28,7 @@ package() {
         chmod 755 $pkgdir/usr/share/applications
 
         mkdir -p "$pkgdir/usr/bin"
-	chmod +x /opt/openwmail/openWMail
+	chmod +x $pkgdir/opt/openwmail/openWMail
         ln -s $pkgdir/opt/openwmail/openWMail ${pkgdir}/usr/bin
 }
 

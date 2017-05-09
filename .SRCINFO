@@ -1,7 +1,7 @@
 pkgbase = openwmail
 	pkgdesc = openwmail
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/openwmail/openwmail
 	arch = x86_64
 	license = MLP-2.0
