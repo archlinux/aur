@@ -1,0 +1,19 @@
+pkgbase = pythia
+	pkgdesc = The Lund Monte Carlo
+	pkgver = 4.28
+	pkgrel = 1
+	url = http://pythia6.hepforge.org
+	arch = x86_64
+	license = unknown
+	makedepends = gcc-fortran
+	options = emptydirs
+	options = strip
+	options = staticlibs
+	options = libtool
+	source = https://root.cern.ch/download/pythia6.tar.gz
+	source = http://www.hepforge.org/archive/pythia6/pythia-6.4.28.f.gz
+	md5sums = c88014d8380a77c81556d3887dc0b739
+	md5sums = c90168f925fc6677fa56c6535be5d9c1
+
+pkgname = pythia6
+
