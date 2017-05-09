@@ -1,6 +1,6 @@
 pkgbase = qzdoom-git
 	pkgdesc = Advanced Doom source port with true color renderer (git version)
-	pkgver = 1.4.0.2pre.229.gcdb68f159
+	pkgver = 1.4.0.2pre+229+gcdb68f159
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
