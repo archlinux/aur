@@ -6,28 +6,22 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
 license=(GPL)
 url="http://www.gnome.org"
-depends=('plymouth' 'gnome-shell>=3.22.0' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-server-xwayland' 'xorg-xhost')
+depends=('plymouth' 'gnome-shell>=3.24.1' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-server-xwayland' 'xorg-xhost')
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'git')
 checkdepends=('check')
-#_commit=4eb6575fdbd0e0dda9b209f6b4731edf990fde98   # tag=3.22.1
-source=("git://git.gnome.org/gdm#tag=$pkgver"
+source=("https://git.gnome.org/browse/gdm/snapshot/${_pkgbase}-${pkgver}.tar.xz"
 	"0002-Xsession-Don-t-start-ssh-agent-by-default.patch")
-sha256sums=('SKIP'
+sha256sums=('0d7b70a0e937356925d0b1d5e595e60711b71418e78bb5078b92edf616aa1557'
             '63f99db7623f078e390bf755350e5793db8b2c4e06622caf42eddc63cd39ecca')
 
-#pkgver() {
-#  cd $_pkgbase
-#  git describe --tags | sed 's/-/+/g'
-#}
-
 prepare() {
-  cd $_pkgbase
+  cd $_pkgbase-${pkgver}
 
   patch -Np1 -i ../0002-Xsession-Don-t-start-ssh-agent-by-default.patch
 
@@ -35,7 +29,7 @@ prepare() {
 }
 
 build() {
-  cd $_pkgbase
+  cd $_pkgbase-${pkgver}
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -62,7 +56,7 @@ build() {
 }
 
 check() {
-  cd $_pkgbase
+  cd $_pkgbase-${pkgver}
   make check
 }
 
@@ -77,7 +71,7 @@ package_gdm-plymouth() {
   groups=(gnome)
   install=gdm-plymouth.install
 
-  cd $_pkgbase
+  cd $_pkgbase-${pkgver}
   make DESTDIR="$pkgdir" install
 
   rm -r "$pkgdir/var/run"
@@ -93,9 +87,8 @@ package_libgdm-plymouth() {
   provides=("libgdm")
   conflicts=("libgdm")
 
-  cd $_pkgbase
+  cd $_pkgbase-${pkgver}
   make -C libgdm DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/org.gnome.login-screen.gschema.xml" \
     "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.login-screen.gschema.xml"
 }
-
