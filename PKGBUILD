@@ -10,9 +10,9 @@
 pkgname=digitsvst-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r7.f5ee4aa
 pkgrel=1
-pkgdesc=""
+pkgdesc="Digits is an advanced phase distortion synthesizer"
 arch=('x86_64' 'i686')
-url=""
+url="https://github.com/LouisGorenfeld/DigitsVst"
 license=('GPL')
 groups=()
 depends=()
