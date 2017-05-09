@@ -7,7 +7,7 @@ _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
 pkgver=3.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
 license=(GPL)
@@ -43,11 +43,8 @@ build() {
     --with-plymouth \
     --with-at-spi-registryd-directory=/usr/lib/at-spi2-core \
     --with-check-accelerated-directory=/usr/lib/gnome-session \
-    --with-authentication-agent-directory=/usr/lib/polkit-gnome \
     --with-gnome-settings-daemon-directory=/usr/lib/gnome-settings-daemon \
-    --without-consolekit \
     --without-tcp-wrappers \
-    --with-systemd \
     --with-default-pam-config=arch
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
