@@ -2,8 +2,8 @@
 
 pkgname=php56-geoip
 _pkgbase="${pkgname#php56-}"
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="GeoIP module for php56"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/geoip"
@@ -12,7 +12,7 @@ provides=("php-geoip=${pkgver}-${pkgrel}")
 depends=('php56>=5.6.17-3' 'geoip')
 backup=('etc/php56/conf.d/geoip.ini')
 source=("https://pecl.php.net/get/geoip-${pkgver}.tgz")
-sha256sums=('82c6deb7264d2ff7c4d6c45a7d27cff7ab097be965795e317e04a9c5b7be98b9')
+sha256sums=('b2d05c03019d46135c249b5a7fa0dbd43ca5ee98aea8ed807bc7aa90ac8c0f06')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
