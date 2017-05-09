@@ -1,7 +1,7 @@
 pkgbase = waveform-bundle
 	pkgdesc = Proprietary Digital Audio Workstation (DAW) by Tracktion with bundled DAW Essentials, BioTek, and Collective plugins
 	pkgver = 8.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.tracktion.com/
 	install = waveform.install
 	arch = x86_64
