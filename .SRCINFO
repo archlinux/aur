@@ -1,7 +1,7 @@
 pkgbase = pythia
 	pkgdesc = The Lund Monte Carlo
 	pkgver = 4.28
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pythia6.hepforge.org
 	arch = x86_64
 	license = unknown

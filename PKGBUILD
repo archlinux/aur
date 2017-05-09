@@ -3,7 +3,7 @@ pkgbase=pythia
 pkgmajor=6
 pkgname=${pkgbase}${pkgmajor}
 pkgver=4.28
-pkgrel=1
+pkgrel=2
 pkgdesc="The Lund Monte Carlo"
 arch=('x86_64')
 url="http://pythia6.hepforge.org"
@@ -30,19 +30,19 @@ md5sums=('c88014d8380a77c81556d3887dc0b739'
 PKGEXT='.pkg.tar.gz'
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}"
 	rm ${pkgname}*.f
 	mv ../*.f.gz .
 	gunzip *.f.gz
 }
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}"
 	./makePythia6.linuxx8664
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}"
 
 	installdir=${pkgdir}/usr/lib
 	mkdir -p ${installdir}
