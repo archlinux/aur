@@ -1,6 +1,6 @@
 pkgbase = otf-solbera-dnd-5e-git
 	pkgdesc = A collection of unrestricted DND5e-compatible typefaces
-	pkgver = r1.92850bf
+	pkgver = r2.f1dd786
 	pkgrel = 1
 	url = https://github.com/jonathonf/solbera-dnd-fonts
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = otf-solbera-dnd-5e-git
 	provides = otf-mr-eaves
 	provides = otf-nodesto-caps-condensed
 	provides = otf-scaly-sans
+	provides = otf-scaly-sans-caps
 	provides = otf-solbera-imitation
 	provides = otf-zatanna-misdirection
 	conflicts = otf-solbera-dnd-5e

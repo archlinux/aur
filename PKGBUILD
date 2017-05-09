@@ -1,7 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 pkgname=otf-solbera-dnd-5e-git
 _gitname=solbera-dnd-fonts
-pkgver=r1.92850bf
+pkgver=r2.f1dd786
 pkgrel=1
 license=('Custom: CC-BY-SA-4.0')
 makedepends=('git')
@@ -12,6 +12,7 @@ provides=(
 	'otf-mr-eaves'
 	'otf-nodesto-caps-condensed'
 	'otf-scaly-sans'
+    'otf-scaly-sans-caps'
 	'otf-solbera-imitation'
 	'otf-zatanna-misdirection'
 )
@@ -34,9 +35,7 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/${_gitname}"
-	for font in "${_fontnames[@]}"; do
-		find . -iname '*.otf' -execdir install -Dm 644 {} ${pkgdir}/usr/share/fonts/OTF/{} \;
-	done
+	cd "${_gitname}"
+	find . -iname '*.otf' -execdir install -Dm 644 {} ${pkgdir}/usr/share/fonts/OTF/{} \;
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
