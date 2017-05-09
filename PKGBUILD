@@ -1,5 +1,5 @@
 # Maintainer: Hyacinthe Cartiauw <hyacinthe.cartiaux@free.fr>
-# Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
+# Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-converter
 pkgver=1.3.0
