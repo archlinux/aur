@@ -1,8 +1,8 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 # Contributor: Veeti Paananen <veeti.paananen@rojekti.fi>
 pkgname=armory-bin
-pkgver=0.95.1
-_binver=0.95.1
+pkgver=0.96
+_binver=0.96
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application (official binary)"
 arch=('x86_64')
@@ -13,9 +13,9 @@ conflicts=('armory' 'armory-git')
 
 # Don't blindly trust a random AUR package with your coins! Signed hashes available at
 # https://github.com/goatpig/BitcoinArmory/releases with GPG ID 8C5211764922589A
-_signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.asc"
-source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${_binver}_amd64.deb")
-sha256sums=('4d692a60afc114f4ccb230d11006c69af12ee37a0b7964b03caff90b6619b75c')
+_signatures="https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/sha256sum.txt.asc"
+source=("https://github.com/goatpig/BitcoinArmory/releases/download/v${pkgver}/armory_${_binver}-gcc5.4_amd64.deb")
+sha256sums=('987d1a262cb92a9bb70ce85ec75b15a4ef20f90c9ac322c00e7908fe086f2bf2')
 
 check() {
   msg 'Validating GPG signature...'
@@ -27,7 +27,7 @@ check() {
   msg2 'GPG signature is valid.'
 
   msg 'Validating signed checksum of downloaded binary...'
-  grep 'amd64.deb' 'sha256sum.txt.asc' | tr -d '\r' | sha256sum -c -
+  grep 'gcc5\.4_amd64.deb' 'sha256sum.txt.asc' | tr -d '\r' | sha256sum -c -
   msg2 'Checksum valid.'
 }
 
