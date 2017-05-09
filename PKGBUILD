@@ -10,8 +10,8 @@ _lang=ru
 _release_year=2017
 _release_month=05
 _release_day=09
-_release_time=$_release_year-$_release_month-$_release_day-00-40-16
-_buildid=20170509004016
+_release_time=$_release_year-$_release_month-$_release_day-07-47-37
+_buildid=20170509074737
 
 pkgname="${_name}-${_channel}-${_lang}"
 _pkgname="${_name}-${_channel}"
