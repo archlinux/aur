@@ -1,0 +1,11 @@
+pkgbase = gilbert
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://www.typewithpride.com/
+	arch = any
+	license = custom
+	source = https://github.com/Fontself/TypeWithPride/archive/1.002.tar.gz
+	sha256sums = 5b8d048de3afefa135bb8048b9f8c735c61727f4ec16a1bd477663e4342c13ae
+
+pkgname = gilbert
+
