@@ -1,6 +1,6 @@
 # Maintainer: Edison Ibañez <edison@opmbx.org>
 pkgname=camunda-modeler
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="An integrated modeling solution for BPMN and DMN based on bpmn.io"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ md5sums=('9580e90224bd893ea6e070e399b25b01'
          'bc08d6679ab052bd7c936954f0a8d97c'
          '2d041c2f1a6cafa0d0079d207eb635fd'
          '22f05a8460e7b0d823dc65a2ee3f5a0e')
-md5sums_i686=('07b9a34157902fb62b37bf0899687c41')
-md5sums_x86_64=('40575fcfcfd9968e7d96c489a7ae3e0a')
+md5sums_i686=('9df6d081605c7962583572a448fd6368')
+md5sums_x86_64=('e29d71deec808eda5b4045a085e34efd')
 
 
 depends=('libnotify')
