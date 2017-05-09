@@ -2,7 +2,7 @@
 
 pkgname=vagrant-libvirt
 pkgver=0.0.40
-pkgrel=1
+pkgrel=2
 _foglibvirtver=0.3.0
 _fogcorever=1.43.0
 _fogjsonver=1.0.2
