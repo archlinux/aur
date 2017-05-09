@@ -1,6 +1,6 @@
 pkgbase = truffle
 	pkgdesc = A development framework for Ethereum
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/ConsenSys/truffle
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = truffle
 	optdepends = geth: contract deployment
 	provides = truffle
 	conflicts = truffle-git
-	source = https://github.com/ConsenSys/truffle/archive/v3.2.1.tar.gz
+	source = https://github.com/ConsenSys/truffle/archive/v3.2.2.tar.gz
 	md5sums = e968dc5ae17c009fde3331f48869a2bd
 
 pkgname = truffle

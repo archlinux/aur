@@ -1,6 +1,6 @@
 # Maintainer: TrekDev <trekdev0 at gmail dot com>
 pkgname=truffle
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc='A development framework for Ethereum'
 url='https://github.com/ConsenSys/truffle'
@@ -10,7 +10,7 @@ source=("https://github.com/ConsenSys/truffle/archive/v${pkgver}.tar.gz")
 makedepends=('npm')
 depends=('nodejs')
 conflicts=('truffle-git')
-md5sums=('e968dc5ae17c009fde3331f48869a2bd')
+md5sums=('a7dbc8bc497ae9ebddca478b04f9fd66')
 provides=('truffle')
 optdepends=('mocha: testing support'
             'testrpc: contract deployment'
