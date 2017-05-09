@@ -2,12 +2,12 @@
 
 pkgname=adobe-base-14-fonts
 pkgver=3.01
-pkgrel=2
+pkgrel=3
 pkgdesc="Adobe base 14 fonts (Courier, Helvetica, Times, Symbol, ZapfDingbats with Type1)"
 url="ftp://ftp://ftp.adobe.com/pub/adobe/acrobatreader/unix/3.x/"
 license=('custom')
 arch=('any')
-makedepends=('t1utils')
+makedepends=('t1utils' 't1lib')
 install=ttf.install
 source=("ftp://ftp.adobe.com/pub/adobe/acrobatreader/unix/3.x/acroread_linux_301.tar.gz")
 md5sums=('3c168eab471aef91f1436c57ba7963b2')
