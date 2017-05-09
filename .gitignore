@@ -4,7 +4,7 @@
 # build logs
 *-build.log
 *-namcap.log
-*-package.log
+*-package*.log
 *-prepare.log
 
 # packages
