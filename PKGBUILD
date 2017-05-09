@@ -33,7 +33,7 @@ prepare() {
 	cd "${pkgname}"
 	rm ${pkgname}*.f
 	mv ../*.f.gz .
-	gunzip *.f.gz
+	gunzip ${pkgbase}-${pkgmajor}.${pkgver}.f.gz
 }
 
 build() {
