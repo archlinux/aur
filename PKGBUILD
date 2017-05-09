@@ -4,7 +4,7 @@
 
 pkgname=waveform-bundle
 pkgver=8.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary Digital Audio Workstation (DAW) by Tracktion with bundled DAW Essentials, BioTek, and Collective plugins"
 arch=('x86_64')
 url="http://www.tracktion.com/"
@@ -28,17 +28,17 @@ package() {
     # install all the DAW Essentials Collection plugin files
     for file in "$plugin_dir"/*.so
     do
-        install -D -m 644 "$file" "$pkgdir/usr/lib/vst/$file"
+        install -D -m 755 "$file" "$pkgdir/usr/lib/vst/$file"
     done
     # install docs for plugins
     for file in "$plugin_dir"/*.pdf
     do
-        install -D -m 644 "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
+        install -D -m 755 "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
     done
     # install the biotek and collective pugins, put other files in
     # /opt to be copied to the home directory
-    install -D -m 644 "BioTek/BioTek.so" "$pkgdir/usr/lib/vst/BioTek.so"
-    install -D -m 644 "Collective/Collective.so" "$pkgdir/usr/lib/vst/Collective.so"
+    install -D -m 755 "BioTek/BioTek.so" "$pkgdir/usr/lib/vst/BioTek.so"
+    install -D -m 755 "Collective/Collective.so" "$pkgdir/usr/lib/vst/Collective.so"
 
     plugin_dir="BioTek/Instruments"
     for file in "$plugin_dir"/*.biotekinstrument
@@ -55,14 +55,12 @@ package() {
     plugin_dir="Collective/Instruments"
     for file in "$plugin_dir"/*.collinst "$plugin_dir"/**/*.collinst
     do
-        echo "$file"
         install -D -m 644 "$file" "$pkgdir/opt/$pkgname/$file"
     done
 
     plugin_dir="Collective/Samples"
     for file in "$plugin_dir"/*.collsample "$plugin_dir"/*/*/*.collsample
     do
-        echo "$file"
         install -D -m 644 "$file" "$pkgdir/opt/$pkgname/$file"
     done
     
