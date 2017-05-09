@@ -1,0 +1,20 @@
+pkgbase = php56-ssh
+	pkgdesc = An SSH2 extension for PHP
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://pecl.php.net/package/ssh2
+	install = php56-ssh.install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = php56
+	makedepends = git
+	depends = php56
+	depends = openssh
+	provides = php56-ssh
+	conflicts = php56-ssh
+	source = http://pecl.php.net/get/ssh2-0.13.tgz
+	sha512sums = c031e22853bf5cf8ee59dc5b99d9e7e60af1507a22e7d0a9e2f54b8f1758a03a6cea91c539e0f667d48ec66185fdc8a28c47e5a1e10a72220c0cb16b3948e1d0
+
+pkgname = php56-ssh
+
