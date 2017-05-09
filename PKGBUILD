@@ -1,7 +1,7 @@
 # Maintainer: Perry Hung <perry@leaflabs.com>
 
 pkgname=decklink
-_dvver=10.8.6a2 # DesktopVideo
+_dvver=10.9a7 # DesktopVideo
 _mever=3.5.3a1 # MediaExpress
 pkgver=${_dvver}
 pkgrel=1
@@ -17,13 +17,22 @@ install='decklink.install'
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-pkgsrc_url="https://www.blackmagicdesign.com/api/register/en/download/16a91518cfe84cc0a00b3ef1a5719ef3"
-pkgsrc_file=$pkgname-${_dvver}.tar.gz
-pkgsrc_sha256sum="6afc335764c5b5b320e614845f4ab24af3e07cb7c5ed194b0acc94acd2851fe9"
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/46d65f46d6434b16bd69482b0ca7dba3"
+#pkgsrc_file=$pkgname-${_dvver}.tar.gz
+pkgsrc_file="/tmp/Blackmagic_Desktop_Video_Linux_10.9.tar"
+pkgsrc_sha256sum="6a883936e877ee3985dea55027662cf58782a5e19081f1dce668761879159581"
 
 prepare() {
-  temp_url=`curl --data '{country":"us","platform":"Linux"}' $pkgsrc_url`
-  curl -o $pkgsrc_file $temp_url
+  if [ -f $pkgsrc_file ]; then
+    echo "File $pkgsrc_file found, skipping download"
+  else
+    echo "Download the Desktop video 10.9 update from https://www.blackmagicdesign.com/support/family/capture-and-playback to $pkgsrc_file and reinstall this package"
+    # broken since recent download protection on bmd website
+    #echo "curl -H 'Content-Length: 35' --data '{country\":\"us\",\"platform\":\"Linux\"}' $pkgsrc_url"
+    #temp_url=`curl -H 'Content-Length: 35' --data '{country":"us","platform":"Linux"}' $pkgsrc_url`
+    #curl -o $pkgsrc_file $temp_url
+    exit 1
+  fi
   shasum=`sha256sum $pkgsrc_file | cut -d " " -f1`
   [ "${shasum}" != "${pkgsrc_sha256sum}" ] && ( echo "Integrity check failed."; exit 1 )
   tar xf ${pkgsrc_file}
