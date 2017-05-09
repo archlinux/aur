@@ -1,0 +1,18 @@
+pkgbase = android-sdk-build-tools
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r25.0.1
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lib32-gcc-libs
+	depends = lib32-zlib
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/build-tools_r25.0.1-linux.zip
+	sha1sums = ff063d252ab750d339f5947d06ff782836f22bac
+	depends_i686 = gcc-libs
+	depends_i686 = zlib
+
+pkgname = android-sdk-build-tools
+
