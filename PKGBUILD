@@ -5,7 +5,7 @@
 # Contributor: Alessio Sergi <asergi@archlinux.us>
 
 pkgname=lib32-libsodium
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='P(ortable|ackageable) NaCl-based crypto library'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom:ISC')
 depends=('lib32-glibc' 'libsodium')
 source=("https://download.libsodium.org/libsodium/releases/libsodium-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('54A2B8892CC3D6A597B92B6C210627AABA709FE1') # Frank Denis
-sha256sums=('a14549db3c49f6ae2170cbbf4664bd48ace50681045e8dbea7c8d9fb96f9c765'
+sha256sums=('b8648f1bb3a54b0251cf4ffa4f0d76ded13977d4fa7517d988f4c902dd8e2f95'
             'SKIP')
 
 build() {
