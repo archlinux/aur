@@ -1,16 +1,13 @@
 pkgbase = authconfig
 	pkgdesc = Command line tool for setting up authentication from network services
-	pkgver = 6.2.10
+	pkgver = 7.0.0
 	pkgrel = 1
-	url = https://fedorahosted.org/authconfig/
+	url = https://pagure.io/authconfig
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = desktop-file-utils
 	makedepends = intltool
-	makedepends = perl-xml-parser
-	makedepends = python2
-	depends = libnewt
+	makedepends = python
 	depends = libpwquality
 	depends = openssl
 	depends = pam>=0.99.10.0
@@ -19,29 +16,15 @@ pkgbase = authconfig
 	conflicts = nss_ldap<254
 	conflicts = pam-krb5<1.49
 	conflicts = samba<3.0
+	replaces = authconfig-gtk
+	options = emptydirs
 	backup = etc/conf.d/authconfig
 	backup = etc/pam.d/system-auth-ac
 	backup = etc/pam.d/system-login-ac
-	source = https://fedorahosted.org/releases/a/u/authconfig/authconfig-6.2.10.tar.bz2
+	source = https://releases.pagure.org/authconfig/authconfig-7.0.0.tar.bz2
 	source = 0001-Adapt-to-Arch-Linux.patch
-	sha256sums = b9897f526825107287687084bd414c565a42b23e1669df0bf1a82cc460d3b78f
-	sha256sums = bbecf678693b96489239b37236846ba1a8058285fdf68f47d674b534137ee119
+	sha256sums = 60dfec18ba18bae38dc84aa2f8a2a7e5ca6b4eaf59a01c9acfbdfe66ca5a883f
+	sha256sums = e29e810aea0bdaaafde7350399c12018bb5a316f1258fe264e8db6ef57155602
 
 pkgname = authconfig
-
-pkgname = authconfig-gtk
-	pkgdesc = Graphical tool for setting up authentication from network services
-	depends = =6.2.10-1
-	depends = hicolor-icon-theme
-	depends = pygtk>=2.14.0
-	depends = python2-dbus
-	depends = usermode
-	backup = etc/pam.d/authconfig
-	backup = etc/pam.d/authconfig-gtk
-	backup = etc/pam.d/authconfig-tui
-	backup = etc/pam.d/system-config-authentication
-	backup = etc/security/console.apps/authconfig
-	backup = etc/security/console.apps/authconfig-gtk
-	backup = etc/security/console.apps/authconfig-tui
-	backup = etc/security/console.apps/system-config-authentication
 

@@ -1,35 +1,36 @@
-From f18cee1f17886ef4d54ea44e4ecc34f45df6abb6 Mon Sep 17 00:00:00 2001
+From d8f2ad281d0790f2ad8ccc4265c711c68bd2f9c8 Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jcholast@redhat.com>
 Date: Thu, 28 Jul 2016 11:04:36 +0200
 Subject: [PATCH] Adapt to Arch Linux
 
 ---
- Makefile.am              |  2 +-
- authinfo.py              | 51 +++++++++++-------------------------------------
- man/en/Makefile.am       |  2 +-
- man/en/authconfig.8      |  8 ++++----
- man/en/postlogin-ac.5    |  1 -
- man/en/system-auth-ac.5  | 20 +++----------------
- man/en/system-login-ac.5 |  1 +
- 7 files changed, 21 insertions(+), 64 deletions(-)
- delete mode 100644 man/en/postlogin-ac.5
- create mode 100644 man/en/system-login-ac.5
+ Makefile.am                                  |  5 +--
+ authinfo.py                                  | 51 ++++++----------------------
+ man/en/Makefile.am                           |  2 +-
+ man/en/authconfig.8                          |  8 ++---
+ man/en/system-auth-ac.5                      | 20 ++---------
+ man/en/{postlogin-ac.5 => system-login-ac.5} |  0
+ 6 files changed, 20 insertions(+), 66 deletions(-)
+ rename man/en/{postlogin-ac.5 => system-login-ac.5} (100%)
 
 diff --git a/Makefile.am b/Makefile.am
-index 0bc08a8..ca066eb 100644
+index e12373a697e822c22a738dcd7b1a6be46fa0289d..f1339da39055c7206b88070ad14627848619a7ad 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -51,7 +51,7 @@ install-data-local: authconfig.desktop
- 	touch $(DESTDIR)/$(pamdir)/password-auth-ac
- 	touch $(DESTDIR)/$(pamdir)/fingerprint-auth-ac
- 	touch $(DESTDIR)/$(pamdir)/smartcard-auth-ac
+@@ -25,10 +25,7 @@ install-data-local:
+ 	mkdir -p $(DESTDIR)/$(backupdir)
+ 	touch $(DESTDIR)/$(sysconfigdir)/authconfig
+ 	touch $(DESTDIR)/$(pamdir)/system-auth-ac
+-	touch $(DESTDIR)/$(pamdir)/password-auth-ac
+-	touch $(DESTDIR)/$(pamdir)/fingerprint-auth-ac
+-	touch $(DESTDIR)/$(pamdir)/smartcard-auth-ac
 -	touch $(DESTDIR)/$(pamdir)/postlogin-ac
 +	touch $(DESTDIR)/$(pamdir)/system-login-ac
- 	mkdir -p $(DESTDIR)/$(datadir)/applications
- 	desktop-file-install \
- 		--dir=$(DESTDIR)/$(datadir)/applications \
+ 
+ uninstall-local:
+ 	$(RM) $(DESTDIR)/$(bindir)/authconfig
 diff --git a/authinfo.py b/authinfo.py
-index 4e05a95..0a875a4 100644
+index 1203a71114d0b700ff57802ece89b4a3e5351572..36e38418213c5c074178b8398ede8ade106d4c09 100644
 --- a/authinfo.py
 +++ b/authinfo.py
 @@ -60,8 +60,8 @@ SYSCONFDIR = "/etc"
@@ -52,7 +53,7 @@ index 4e05a95..0a875a4 100644
  else:
  	LIBDIR = "/lib"	
  
-@@ -1055,9 +1055,6 @@ class SafeFile:
+@@ -994,9 +994,6 @@ class SafeFile:
  		self.file.flush()
  		os.fsync(self.file.fileno())
  		os.rename(self.file.name, self.filename)
@@ -62,7 +63,7 @@ index 4e05a95..0a875a4 100644
  
  	def close(self):
  		# we may have renamed the temp file, need to catch OSError
-@@ -1147,13 +1144,6 @@ class FileBackup:
+@@ -1086,13 +1083,6 @@ class FileBackup:
  		if rv and os.path.isfile(backuppath):
  			rv = self.safeCopy(backuppath, self.origPath)
  
@@ -76,18 +77,18 @@ index 4e05a95..0a875a4 100644
  		return rv
  
  def readCache():
-@@ -1224,8 +1214,8 @@ class CacheBackup(FileBackup):
+@@ -1163,8 +1153,8 @@ class CacheBackup(FileBackup):
  # indexes for the configs
- (CFG_HESIOD, CFG_YP, CFG_LDAP, CFG_NSSLDAP, CFG_PAMLDAP, CFG_NSLCD, CFG_OPENLDAP, CFG_KRB5,
+ (CFG_YP, CFG_NSSLDAP, CFG_PAMLDAP, CFG_NSLCD, CFG_OPENLDAP, CFG_KRB5,
  	CFG_KRB, CFG_PAM_PKCS11, CFG_SMB, CFG_NSSWITCH, CFG_CACHE,
 -	CFG_PAM, CFG_POSTLOGIN_PAM, CFG_PASSWORD_PAM, CFG_FINGERPRINT_PAM, CFG_SMARTCARD_PAM, CFG_AUTHCONFIG, CFG_NETWORK, CFG_LIBUSER, CFG_PWQUALITY,
--	CFG_LOGIN_DEFS, CFG_SSSD, CFG_SHADOW, CFG_PASSWD, CFG_GSHADOW, CFG_GROUP, CFG_DCONF, CFG_DCONF_LOCKS) = list(range(0, 30))
+-	CFG_LOGIN_DEFS, CFG_SSSD, CFG_SHADOW, CFG_PASSWD, CFG_GSHADOW, CFG_GROUP, CFG_DCONF, CFG_DCONF_LOCKS) = list(range(0, 28))
 +	CFG_PAM, CFG_POSTLOGIN_PAM, CFG_AUTHCONFIG, CFG_NETWORK, CFG_LIBUSER, CFG_PWQUALITY,
-+	CFG_LOGIN_DEFS, CFG_SSSD, CFG_SHADOW, CFG_PASSWD, CFG_GSHADOW, CFG_GROUP, CFG_DCONF, CFG_DCONF_LOCKS) = list(range(0, 27))
++	CFG_LOGIN_DEFS, CFG_SSSD, CFG_SHADOW, CFG_PASSWD, CFG_GSHADOW, CFG_GROUP, CFG_DCONF, CFG_DCONF_LOCKS) = list(range(0, 25))
  all_configs = [
- 	FileBackup("hesiod.conf", SYSCONFDIR+"/hesiod.conf"),
  	FileBackup("yp.conf", SYSCONFDIR+"/yp.conf"),
-@@ -1241,12 +1231,9 @@ all_configs = [
+ 	FileBackup("nss_ldap.conf", SYSCONFDIR+"/nss_ldap.conf"),
+@@ -1178,12 +1168,9 @@ all_configs = [
  	FileBackup("nsswitch.conf", SYSCONFDIR+"/nsswitch.conf"),
  	CacheBackup("cacheenabled.conf", ""),
  	FileBackup("system-auth-ac", SYSCONFDIR+"/pam.d/"+AUTH_PAM_SERVICE_AC),
@@ -103,7 +104,7 @@ index 4e05a95..0a875a4 100644
  	FileBackup("libuser.conf", SYSCONFDIR+"/libuser.conf"),
  	FileBackup("pwquality.conf", SYSCONFDIR+"/security/pwquality.conf"),
  	FileBackup("login.defs", SYSCONFDIR+"/login.defs"),
-@@ -2436,7 +2423,7 @@ class AuthInfo:
+@@ -2263,7 +2250,7 @@ class AuthInfo:
  		except IOError:
  			return False
  
@@ -112,7 +113,7 @@ index 4e05a95..0a875a4 100644
  		if tmp:
  			self.nisLocalDomain = tmp
  
-@@ -3881,8 +3868,7 @@ class AuthInfo:
+@@ -3661,8 +3648,7 @@ class AuthInfo:
  				pass
  
  	def checkPAMLinked(self):
@@ -122,7 +123,7 @@ index 4e05a95..0a875a4 100644
  			dest = SYSCONFDIR + "/pam.d/" + dest
  			f = os.path.isfile(dest)
  			l = os.path.islink(dest)
-@@ -3967,9 +3953,6 @@ class AuthInfo:
+@@ -3745,9 +3731,6 @@ class AuthInfo:
  		self.module_missing = {}
  		self.writePAMService(STANDARD, CFG_PAM, AUTH_PAM_SERVICE_AC, AUTH_PAM_SERVICE)
  		self.writePAMService(POSTLOGIN, CFG_POSTLOGIN_PAM, POSTLOGIN_PAM_SERVICE_AC, POSTLOGIN_PAM_SERVICE)
@@ -132,7 +133,7 @@ index 4e05a95..0a875a4 100644
  		return True
  
  	def writeSysconfig(self):
-@@ -4024,7 +4007,7 @@ class AuthInfo:
+@@ -3794,7 +3777,7 @@ class AuthInfo:
  		except IOError:
  			return False
  
@@ -141,7 +142,7 @@ index 4e05a95..0a875a4 100644
  
  		shv.write(0o644)
  		shv.close()
-@@ -4364,7 +4347,6 @@ class AuthInfo:
+@@ -4056,7 +4039,6 @@ class AuthInfo:
  			if not nostart:
  				os.system("/bin/domainname " + self.nisDomain)
  			try:
@@ -149,7 +150,7 @@ index 4e05a95..0a875a4 100644
  				os.stat(PATH_RPCBIND)
  				Service.enable("rpcbind")
  				if not nostart:
-@@ -4383,7 +4365,6 @@ class AuthInfo:
+@@ -4075,7 +4057,6 @@ class AuthInfo:
  			if not nostart:
  				os.system("/bin/domainname \"(none)\"")
  			try:
@@ -157,7 +158,7 @@ index 4e05a95..0a875a4 100644
  				os.stat(PATH_YPBIND)
  				if not nostart:
  					try:
-@@ -4400,16 +4381,6 @@ class AuthInfo:
+@@ -4092,16 +4073,6 @@ class AuthInfo:
  			not self.implicitSSSD,
  			PATH_NSLCD,
  			"nslcd", nostart)
@@ -175,17 +176,16 @@ index 4e05a95..0a875a4 100644
  
  	def toggleWinbindService(self, nostart):
 diff --git a/man/en/Makefile.am b/man/en/Makefile.am
-index f8139af..5445e78 100644
+index c4fa4408b68f3df2faf49ad9553d4edc6c66ae02..473afcac11af95fed1ae30dbf91b098f37d186a9 100644
 --- a/man/en/Makefile.am
 +++ b/man/en/Makefile.am
-@@ -1,4 +1,4 @@
- man8_MANS = authconfig.8 authconfig-tui.8 authconfig-gtk.8 system-config-authentication.8 \
-  cacertdir_rehash.8
+@@ -1,3 +1,3 @@
+ man8_MANS = authconfig.8 cacertdir_rehash.8
 -man5_MANS = system-auth-ac.5 fingerprint-auth-ac.5 password-auth-ac.5 smartcard-auth-ac.5 postlogin-ac.5
-+man5_MANS = system-auth-ac.5 fingerprint-auth-ac.5 password-auth-ac.5 smartcard-auth-ac.5 system-login-ac.5
++man5_MANS = system-auth-ac.5 system-login-ac.5
  EXTRA_DIST = $(man8_MANS) $(man5_MANS)
 diff --git a/man/en/authconfig.8 b/man/en/authconfig.8
-index 45e6f2b..d38a731 100644
+index 7338dc8d12de3484982cc3dfc29fd841be6d9890..ae93aa5b4f2fda383c3d9aa5c41a4a3868883af5 100644
 --- a/man/en/authconfig.8
 +++ b/man/en/authconfig.8
 @@ -11,7 +11,7 @@ authconfig, authconfig-tui \- an interface for configuring system authentication
@@ -206,7 +206,7 @@ index 45e6f2b..d38a731 100644
  
  The list of options mentioned here in the manual page is not exhaustive, please
  refer to \fBauthconfig --help\fR for the complete list of the options.
-@@ -129,7 +129,7 @@ return the same codes as \fBauthconfig\fR.
+@@ -109,7 +109,7 @@ fails on \fB--update\fR action, 7 if Winbind domain join fails.
  .PD 0
  .TP
  .TP
@@ -214,8 +214,8 @@ index 45e6f2b..d38a731 100644
 +.FN /etc/conf.d/authconfig
  Used to track whether or not particular authentication mechanisms are enabled.
  Currently includes variables named USESHADOW, USEMD5, USEKERBEROS, USELDAPAUTH,
- USESMBAUTH, USEWINBIND, USEWINBINDAUTH, USEHESIOD, USENIS, USELDAP, and others.
-@@ -142,7 +142,7 @@ Used for shadow password support.
+ USEWINBIND, USEWINBINDAUTH, USENIS, USELDAP, and others.
+@@ -122,7 +122,7 @@ Used for shadow password support.
  .FN /etc/yp.conf
  Configuration file for NIS support.
  .TP
@@ -224,15 +224,8 @@ index 45e6f2b..d38a731 100644
  Another configuration file for NIS support.
  .TP
  .FN /etc/ldap.conf
-diff --git a/man/en/postlogin-ac.5 b/man/en/postlogin-ac.5
-deleted file mode 100644
-index 3550f54..0000000
---- a/man/en/postlogin-ac.5
-+++ /dev/null
-@@ -1 +0,0 @@
--.so man5/system-auth-ac.5
 diff --git a/man/en/system-auth-ac.5 b/man/en/system-auth-ac.5
-index 8c55e19..c1b7aaf 100644
+index 8c55e1956afaade9e8317ae73839c0d522cb3ee1..c1b7aaf981d8c3529e0cd8973d90ca7d9ac5c5e1 100644
 --- a/man/en/system-auth-ac.5
 +++ b/man/en/system-auth-ac.5
 @@ -1,8 +1,7 @@
@@ -276,13 +269,10 @@ index 8c55e19..c1b7aaf 100644
  .SH "SEE ALSO"
 -authconfig(8), authconfig-gtk(8), pam(8), system-auth(5)
 +authconfig(8), authconfig-gtk(8), pam(8)
-diff --git a/man/en/system-login-ac.5 b/man/en/system-login-ac.5
-new file mode 100644
-index 0000000..3550f54
---- /dev/null
-+++ b/man/en/system-login-ac.5
-@@ -0,0 +1 @@
-+.so man5/system-auth-ac.5
+diff --git a/man/en/postlogin-ac.5 b/man/en/system-login-ac.5
+similarity index 100%
+rename from man/en/postlogin-ac.5
+rename to man/en/system-login-ac.5
 -- 
-2.7.4
+2.9.3
 
