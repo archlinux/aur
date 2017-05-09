@@ -11,7 +11,7 @@ url='http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/'
 license=('custom')
 depends=('texlive-core' 'texlive-fontsextra')
 source=("http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/latex/tudfonts-tex/tudfonts-tex_${pkgver}.zip"
-        latex-tuddesign-fonts.maps)
+        ${pkgname}.maps)
 sha512sums=('a963bac1e5c13a7152102b563b87cabf3e80e0809cd4c44ba63a63ab1825bb9b0b9adb3f28f72607407974ae7eb040037e07e3bc79a0ba9efa85f92b677dbc4f'
             '66bcf0beaf45cc9adf00ce2dc6a9ced32b943b43062276ded679100f108858c61aa1f7f8f84be3a33b1e2c9c8436ef5eda8e6ff4448ff3122b880b32a28a73fd')
 
@@ -27,5 +27,5 @@ package() {
     find . -type d -exec chmod 755 {} \;
     find . -type f -exec chmod 644 {} \;
 
-    install -Dm644 "${srcdir}/latex-tuddesign-fonts.maps" "${pkgdir}/var/lib/texmf/arch/installedpkgs/latex-tuddesign-fonts.maps"
+    install -Dm644 "${srcdir}/${pkgname}.maps" "${pkgdir}/var/lib/texmf/arch/installedpkgs/${pkgname}.maps"
 }
