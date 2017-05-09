@@ -6,8 +6,8 @@
 pkgbase=python-django-debug-toolbar
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-django-debug-toolbar python2-django-debug-toolbar)
-pkgver=1.7
-pkgrel=2
+pkgver=1.8
+pkgrel=1
 pkgdesc='A configurable set of panels that display various debug information about the current request/response.'
 arch=(any)
 url='https://github.com/jazzband/django-debug-toolbar'
