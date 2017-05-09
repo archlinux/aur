@@ -22,8 +22,9 @@ sub _find_max {
     unless(@values) {
         die "No values can be extracted.";
     }
+    @values = sort @values;
 
-    return maxstr @values;
+    return $values[-1];
 }
 
 sub _get_tree {
@@ -43,9 +44,9 @@ sub _get_tree {
 }
 
 sub _get_part {
-    my ($ua, $uri, $filter) = @_;
+    my ($ua, $uri, $filter, $pos) = @_;
 
-    return _find_max(_get_tree($ua, $uri), $filter);
+    return _find_max(_get_tree($ua, $uri), $filter, $pos);
 }
 
 sub _get_data {
