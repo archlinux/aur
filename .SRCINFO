@@ -15,6 +15,7 @@ pkgbase = google-chrome
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
+	optdepends = libunity: download progress on KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs (CRBug #369991)
 	optdepends = xdg-utils
 	options = !emptydirs
