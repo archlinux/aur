@@ -1,5 +1,5 @@
 pkgbase = weborf-git
-	pkgver = 0.13+61+g8d173c2
+	pkgver = 0.13+102+g5bc736e
 	pkgrel = 1
 	url = https://ltworf.github.io/weborf/
 	arch = i686

