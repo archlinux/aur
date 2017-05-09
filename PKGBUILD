@@ -3,7 +3,7 @@
 pkgname='omnetpp-qt'
 pkgver=5.1
 _pkgver=5-1
-pkgrel=1
+pkgrel=2
 _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: QT version'
 url='http://www.omnetpp.org'
