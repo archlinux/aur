@@ -1,6 +1,6 @@
 pkgbase = systemd-legacy
 	pkgver = 232
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.github.com/systemd/systemd
 	arch = i686
 	arch = x86_64

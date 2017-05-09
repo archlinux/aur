@@ -16,7 +16,7 @@ pkgbase=systemd-legacy
 _pkgbase=systemd
 pkgname=('systemd-legacy' 'systemd-legacy-libsystemd' 'systemd-legacy-sysvcompat')
 pkgver=232
-pkgrel=8
+pkgrel=9
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.github.com/systemd/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -98,7 +98,7 @@ _validate_tag() {
 }
 
 prepare() {
-  cd "$_pkgbase"
+  cd "$srcdir/$_pkgbase"
 
   #_validate_tag || return
 
@@ -125,7 +125,7 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgbase"
+  cd "$srcdir/$_pkgbase"
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
@@ -183,7 +183,7 @@ package_systemd-legacy() {
           etc/udev/udev.conf)
   install="systemd.install"
 
-  make -C "$_pkgbase" DESTDIR="$pkgdir" install
+  make -C "$srcdir/$_pkgbase" DESTDIR="$pkgdir" install
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
@@ -193,7 +193,7 @@ package_systemd-legacy() {
   rm -r "$pkgdir/usr/lib/rpm"
 
   # add back tmpfiles.d/legacy.conf
-  install -m644 "$_pkgbase/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
+  install -m644 "$srcdir/$_pkgbase/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
 
   # Replace dialout/tape/cdrom group in rules with uucp/storage/optical group
   sed -i 's#GROUP="dialout"#GROUP="uucp"#g;
@@ -235,7 +235,7 @@ package_systemd-legacy() {
   install -Dm644 "$srcdir/systemd-update.hook" "$pkgdir/usr/share/libalpm/hooks/systemd-update.hook"
 
   # overwrite the systemd-user PAM configuration with our own
-  install -Dm644 systemd-user.pam "$pkgdir/etc/pam.d/systemd-user"
+  install -Dm644 "$srcdir/systemd-user.pam" "$pkgdir/etc/pam.d/systemd-user"
 }
 
 package_systemd-legacy-libsystemd() {
@@ -246,7 +246,7 @@ package_systemd-legacy-libsystemd() {
   replaces=('libsystemd')
   conflicts=('libsystemd')
 
-  make -C "$_pkgbase" DESTDIR="$pkgdir" install-rootlibLTLIBRARIES
+  make -C "$srcdir/$_pkgbase" DESTDIR="$pkgdir" install-rootlibLTLIBRARIES
 }
 
 package_systemd-legacy-sysvcompat() {
@@ -259,7 +259,7 @@ package_systemd-legacy-sysvcompat() {
 
   install -dm755 "$pkgdir"/usr/share/man/man8
   cp -d --no-preserve=ownership,timestamp \
-    "$_pkgbase"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
+    "$srcdir/$_pkgbase"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
     "$pkgdir"/usr/share/man/man8
 
   install -dm755 "$pkgdir/usr/bin"
