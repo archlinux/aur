@@ -1,0 +1,45 @@
+diff -ura xdg-utils-1.1.1/scripts/xdg-screensaver.in xdg-utils-1.1.1.new/scripts/xdg-screensaver.in
+--- xdg-utils-1.1.1/scripts/xdg-screensaver.in	2015-10-05 21:59:19.000000000 +0300
++++ xdg-utils-1.1.1.new/scripts/xdg-screensaver.in	2017-05-09 06:03:28.554966637 +0300
+@@ -102,6 +102,10 @@
+       screensaver_mate_screensaver "$1"
+       ;;
+ 
++    slock_screensaver)
++      screensaver_slock "$1"
++      ;;
++
+     xscreensaver)
+       screensaver_xscreensaver "$1"
+       ;;
+@@ -372,6 +376,21 @@
+     esac
+ }
+ 
++screensaver_slock()
++{
++    case "$1" in
++        lock)
++        slock > /dev/null
++        result=$?
++        ;;
++
++        *)
++        echo "ERROR: Unknown command '$1'" >&2
++        return 1
++        ;;
++    esac
++}
++
+ screensaver_xserver()
+ {
+     case "$1" in
+@@ -790,6 +809,8 @@
+ dbus-send --print-reply --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.GetNameOwner string:org.mate.ScreenSaver > /dev/null 2>&1 && DE="mate_screensaver"
+ # Consider "xautolock" a separate DE
+ xautolock -enable > /dev/null 2>&1 && DE="xautolock_screensaver"
++# Consider "slock" a separate DE
++slock -v > /dev/null 2>&1 && DE="slock_screensaver"
+ 
+ if [ "$action" = "resume" ] ; then
+     do_resume
