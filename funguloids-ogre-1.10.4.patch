@@ -1,0 +1,111 @@
+From: Nicolas Iooss
+Date: Wed, 10 May 2017 20:09:34 +0200
+Subject: Fix compilation issues with OGRE 1.10.4
+
+* Ogre::Rectangle2D now needs to be explicitly included
+* Ogre::Archive requires some pure virtual methods to be const
+---
+ include/mpakogre.h   | 10 +++++-----
+ src/bground.cpp      |  1 +
+ src/mpakogre.cpp     | 12 ++++++------
+ src/scriptsystem.cpp |  2 +-
+ 4 files changed, 13 insertions(+), 12 deletions(-)
+
+diff --git a/include/mpakogre.h b/include/mpakogre.h
+index a3700db4e98d..e46b0a9ee68a 100644
+--- a/include/mpakogre.h
++++ b/include/mpakogre.h
+@@ -50,15 +50,15 @@ public:
+ 
+ 	DataStreamPtr open(const String &filename) const;
+ 	DataStreamPtr open(const String &filename, bool) const { return open(filename); };
+-	StringVectorPtr list(bool recursive = true, bool dirs = false);
+-	FileInfoListPtr listFileInfo(bool recursive = true, bool dirs = false);
++	StringVectorPtr list(bool recursive = true, bool dirs = false) const;
++	FileInfoListPtr listFileInfo(bool recursive = true, bool dirs = false) const;
+ 
+-	StringVectorPtr find(const String &pattern, bool recursive = true, bool dirs = false);
++	StringVectorPtr find(const String &pattern, bool recursive = true, bool dirs = false) const;
+ 	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false) const;
+ 
+-	bool exists(const String &filename);
++	bool exists(const String &filename) const;
+ 
+-	time_t getModifiedTime(const String& filename)
++	time_t getModifiedTime(const String& filename) const
+ 	{
+ 		struct stat tagStat;
+ 		bool ret = (stat(mName.c_str(), &tagStat) == 0);
+diff --git a/src/bground.cpp b/src/bground.cpp
+index 333c0259d7b0..901aa448f09b 100644
+--- a/src/bground.cpp
++++ b/src/bground.cpp
+@@ -23,6 +23,7 @@
+ //
+ //***************************************************************************/
+ 
++#include <OgreRectangle2D.h>
+ #include "bground.h"
+ #include "game.h"
+ #include "scriptsystem.h"
+diff --git a/src/mpakogre.cpp b/src/mpakogre.cpp
+index ab2959e3fd12..e8453c6e4b05 100644
+--- a/src/mpakogre.cpp
++++ b/src/mpakogre.cpp
+@@ -144,10 +144,10 @@ DataStreamPtr MPakArchive::open(const String &filename) const {
+ }
+ 
+ 
+-StringVectorPtr MPakArchive::list(bool recursive, bool dirs) {
++StringVectorPtr MPakArchive::list(bool recursive, bool dirs) const {
+ 	StringVectorPtr ret = StringVectorPtr(new StringVector());
+ 
+-	FileInfoList::iterator i, iend;
++	FileInfoList::const_iterator i, iend;
+ 	iend = mFileList.end();
+ 	for(i = mFileList.begin(); i != iend; ++i) {
+ 		ret->push_back(i->filename);
+@@ -156,7 +156,7 @@ StringVectorPtr MPakArchive::list(bool recursive, bool dirs) {
+ 	return ret;
+ }
+ 
+-FileInfoListPtr MPakArchive::listFileInfo(bool recursive, bool dirs) {
++FileInfoListPtr MPakArchive::listFileInfo(bool recursive, bool dirs) const {
+ 	FileInfoList *fil = new FileInfoList();
+ 	FileInfoList::const_iterator i, iend;
+ 	iend = mFileList.end();
+@@ -167,10 +167,10 @@ FileInfoListPtr MPakArchive::listFileInfo(bool recursive, bool dirs) {
+ 	return FileInfoListPtr(fil);
+ }
+ 
+-StringVectorPtr MPakArchive::find(const String &pattern, bool recursive, bool dirs) {
++StringVectorPtr MPakArchive::find(const String &pattern, bool recursive, bool dirs) const {
+ 	StringVectorPtr ret = StringVectorPtr(new StringVector());
+ 
+-	FileInfoList::iterator i, iend;
++	FileInfoList::const_iterator i, iend;
+ 	iend = mFileList.end();
+ 	for(i = mFileList.begin(); i != iend; ++i) {
+ 		if(StringUtil::match(i->filename, pattern, true))
+@@ -193,7 +193,7 @@ FileInfoListPtr MPakArchive::findFileInfo(const String &pattern, bool recursive,
+ 	return ret;
+ }
+ 
+-bool MPakArchive::exists(const String &filename) {
++bool MPakArchive::exists(const String &filename) const {
+ 	int i = mPakFile->find_file(filename.c_str());
+ 	return (i != -1);
+ }
+diff --git a/src/scriptsystem.cpp b/src/scriptsystem.cpp
+index 8a2521afe4cb..f7eba11debc2 100644
+--- a/src/scriptsystem.cpp
++++ b/src/scriptsystem.cpp
+@@ -540,7 +540,7 @@ bool ScriptSystem::executeScript(const char *file) {
+ 	
+ 	// Load it as a string
+ 	DataStreamPtr dat = arch->open(String(file));
+-	if(dat.isNull()) {
++	if(!dat) {
+ 		OGRE_EXCEPT(Exception::ERR_FILE_NOT_FOUND, "ScriptSystem error: Could not find " + fil, "ScriptSystem::executeScript()");
+ 		return false;
+ 	}
