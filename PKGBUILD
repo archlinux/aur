@@ -2,7 +2,7 @@
 
 pkgname=xandikos
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='CardDAV/CalDAV server that backs onto a Git repository'
 arch=('any')
 url=https://jelmer.uk/code/xandikos/
@@ -22,6 +22,7 @@ build() {
 
 package() {
   python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 xandikos.1 "$pkgdir"/usr/share/man/man1/xandikos.1
 }
 
 # vim:set ts=2 sw=2 et:
