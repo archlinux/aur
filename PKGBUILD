@@ -2,7 +2,7 @@
 # Contributor: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname=git-ftp
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Git powered FTP client written as shell script'
 url='https://github.com/git-ftp/git-ftp'
@@ -10,8 +10,8 @@ arch=('any')
 license=('GPL')
 depends=('curl' 'git')
 makedepends=('ruby-ronn')
-source=("https://github.com/git-ftp/git-ftp/archive/${pkgver}.tar.gz")
-sha256sums=('a86e2437e60ab4314874a2da71fe330f0a892ed1c9b038b97f755c4b68d60dd1')
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/git-ftp/git-ftp/archive/${pkgver}.tar.gz")
+sha256sums=('4e36ef178b498f273dc2e9b7685d28dea69b939dcf3602fdda69d1f525e24f31')
 
 build() {
   cd $pkgname-$pkgver/man
