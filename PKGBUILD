@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL-2.0')
 makedepends=('git' 'cmake' 'gettext' 'boost')
-depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'desktop-file-utils' 'poppler-glib')
+depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'desktop-file-utils')
 provides=("xournal=${pkgver}" "xournal-dmgerman=${pkgver} xournalpp=${pkgver}")
 conflicts=('xournalpp')
 install="xournalpp.install"
