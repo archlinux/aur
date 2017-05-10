@@ -5,6 +5,7 @@ pkgname=(
 	pcf-unifont
 	bdf-unifont
 	psf-unifont
+	hex-unifont
 	unifont-utils
 )
 pkgver=9.0.06
@@ -93,6 +94,11 @@ build() {
 		make -j1 ttf csurttf upperttf -o distclean
 	;;
 
+	hex-unifont)
+		msg2 "Building the hex version"
+		make -j1 hex -o distclean
+	;;
+
 	esac; done
 }
 
@@ -162,6 +168,21 @@ package_psf-unifont() {
 	cd "$srcdir/unifont-${pkgver}/font/compiled"
 	install -D -m0644 "Unifont-APL8x16-${pkgver}.psf.gz" \
 		"${pkgdir}/usr/share/kbd/consolefonts/Unifont-APL8x16.psf.gz"
+}
+
+package_hex-unifont() {
+	pkgdesc="A free bitmap font with wide Unicode support (hex version)"
+	arch=(any)
+
+	_hexdir=/usr/share/unifont
+
+	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
+	install -D -m0644 "unifont-${pkgver}.hex" \
+		"${pkgdir}${_hexdir}/unifont.hex"
+	install -D -m0644 "unifont_upper-${pkgver}.hex" \
+		"${pkgdir}${_hexdir}/unifont_csur.hex"
+	install -D -m0644 "unifont_upper-${pkgver}.hex" \
+		"${pkgdir}${_hexdir}/unifont_upper.hex"
 }
 
 package_unifont-utils() {
