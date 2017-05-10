@@ -36,9 +36,7 @@ build() {
 
 check() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
-    local ret=0
-    make test NO_INTERACTION=1 REPORT_EXIT_STATUS=1 || ret=1
-    return $ret
+    make test NO_INTERACTION=1 REPORT_EXIT_STATUS=1
 }
 
 package() {
