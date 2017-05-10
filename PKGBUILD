@@ -3,7 +3,7 @@
 # Contributor: kaptoxic dragos240
 
 pkgname=rescuetime
-pkgver=2.9.11.1297
+pkgver=2.9.11.1300
 pkgrel=1
 pkgdesc="Application time-tracking for Linux. Stable version"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ install=$pkgname.install
 changelog=$pkgname.changelog
 source_i686=("$url/installers/${pkgname}_current_i386.deb")
 source_x86_64=("$url/installers/${pkgname}_current_amd64.deb")
-sha256sums_i686=('41063f2bd2bc86d170874474707339ac5f01b0e3317f56a633c7d825c0132e1a')
-sha256sums_x86_64=('d02492c721d51a3cffb9205a233218e74ef4261124c7fb59b826f111bf580cc9')
+sha256sums_i686=('cfc5ee42e8565f3ce5119f68dd6051d2d7645f1a44824cd737f82e4126c43261')
+sha256sums_x86_64=('85d9b2d2109da56fbb430f18887885a03e0d9a67507562d048174d99dfca2a98')
 
 pkgver() {
   grep Version control | cut --fields=2 -d' '
