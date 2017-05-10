@@ -1,4 +1,4 @@
-# Maintainer: Thore Bödecker <me at foxxx0 dot de>
+# Maintainer: Thore Bödecker <me [at] foxxx0 [dot] de>
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 # Contributor: Arthur Țițeică arthur.titeica/gmail/com
 # Contributor: Hao Zhang <theivorytower [at] gmail [dot] com>
@@ -13,7 +13,7 @@ url="http://www.trusteddomain.org/opendmarc/"
 license=('custom')
 conflicts=('opendmarc')
 provides=("opendmarc=$pkgver")
-depends=('smtp-server' 'libspf2')
+depends=('smtp-server' 'libspf2' 'libbsd' 'libidn')
 makedepends=('libmilter')
 optdepends=('opendbx: acts as a middleware layer between OpenDMARC and a SQL backend of choice'
             'python: run opendmarc scripts at /usr/share/doc/opendmarc'
@@ -22,7 +22,6 @@ optdepends=('opendbx: acts as a middleware layer between OpenDMARC and a SQL bac
             'perl-dbd-mysql: generate DMARC reports'
             'perl-libwww: generate DMARC reports')
 install=${_pkgbase}.install
-backup=(etc/opendmarc/opendmarc.conf)
 source=(https://downloads.sourceforge.net/project/${_pkgbase}/${_pkgbase}-$pkgver.tar.gz #{,.asc}
         opendmarc.service)
 sha256sums=('213c4b01a9ff5dcdf331f7bd1dd6a382077abbf8ee9111852f2101ec917c2ffb'
@@ -43,7 +42,7 @@ build() {
 
 check() {
   cd "$srcdir/${_pkgbase}-$pkgver"
-  make -k check
+  make check
 }
 
 package() {
@@ -51,8 +50,8 @@ package() {
   make DESTDIR="$pkgdir/" install
   # sample config
   install -D -m644 "$srcdir"/${_pkgbase}-$pkgver/${_pkgbase}/opendmarc.conf.sample "$pkgdir"/etc/${_pkgbase}/opendmarc.conf.sample
-  # License
-  install -D -m644 "$srcdir"/${_pkgbase}-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/${_pkgbase}/LICENSE
+  # license
+  install -D -m644 "$srcdir"/${_pkgbase}-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
   rm "$pkgdir"/usr/share/doc/${_pkgbase}/LICENSE
   # systemd service
   install -D -m644 "$srcdir/${_pkgbase}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
