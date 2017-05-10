@@ -3,7 +3,6 @@ pkgbase = fman
 	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://fman.io
-	install = fman.install
 	arch = x86_64
 	license = custom
 	depends = qt5-base

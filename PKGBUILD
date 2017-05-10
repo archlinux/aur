@@ -10,7 +10,6 @@ url="https://fman.io"
 license=('custom')
 depends=('qt5-base' 'openssl')
 optdepends=('qt5-svg')
-install=fman.install
 
 source=('https://fman.io/updates/arch/fman-0.4.3.pkg.tar.xz')
 
