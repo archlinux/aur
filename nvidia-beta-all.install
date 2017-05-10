@@ -1,5 +1,6 @@
 _depmod() {
-    _extramodules='extramodules-3.17-ARCH'
+    # This gets auto-updated during build
+    _extramodules='extramodules-4.11-ARCH'
 
     # Update module dependencies for all kernels
     for _kernel in $(cat /usr/lib/modules/extramodules-*/version); do
@@ -29,6 +30,8 @@ post_install() {
     if pidof Xorg >/dev/null; then
         echo ":: Please reboot or exit X to unload the current module."
     fi
+
+    warning "The 381.22 seems incompatible with GTX 960: https://devtalk.nvidia.com/default/topic/1007992/"
 }
 
 post_upgrade() {
@@ -38,6 +41,8 @@ post_upgrade() {
     if (( $(vercmp $1 $2) != 0 )); then
         _rmmod
     fi
+
+    warning "The 381.22 seems incompatible with GTX 960: https://devtalk.nvidia.com/default/topic/1007992/"
 }
 
 post_remove() {
