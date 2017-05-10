@@ -24,4 +24,4 @@ package() {
   chmod +x $pkgdir/usr/bin/batch_resolve
   chmod -x $pkgdir/etc/batch_resolve.toml
 }
-md5sums=('c1886fb865d43eaddffffa3d9fb4c048')
+md5sums=('0840cfb4d7ad400aab0d10fb3e50b17f')
