@@ -1,7 +1,7 @@
 pkgbase = gnomekiss
 	pkgdesc = KiSS Doll viewer for GNOME
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://devel.tlrmx.org/kiss/
 	arch = i686
 	arch = x86_64
