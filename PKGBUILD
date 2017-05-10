@@ -34,7 +34,7 @@ optdepends=(
 	"ttf-fira-sans: Recommended font for window titles and interface"
 	"ttf-fira-mono: Recommended monospace font"
 	"ttf-roboto-slab: Recommended font for documents"
-	"pop-icon-theme: Recommended icon theme"
+	"pop-icon-theme-git: Recommended icon theme"
 	"plank: Elegant, simple, clean dock"
 )
 provides=("${_pkgname}")
