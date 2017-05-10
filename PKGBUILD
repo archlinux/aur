@@ -1,40 +1,33 @@
 # Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
-# Contributor: kuina <kuinanein at gmail dot com>
 pkgname=man-pages-ja
-pkgver=20151216
+pkgver=20170415
 pkgrel=1
 pkgdesc="Man pages for Japanese"
 arch=('any')
-url="http://osdn.jp/projects/linuxjm/"
+url="https://linuxjm.osdn.jp"
 license=('custom')
-makedepends=('git' 'expect')
-provides=('man-pages-ja-git')
+makedepends=('perl')
 conflicts=('man-pages-ja-git')
-source=('git+http://scm.osdn.jp/gitroot/linuxjm/jm.git'
-        'mkconfig.expect'
-        'README.en')
-md5sums=('SKIP'
-         'd9ef996a4bb92abd7dfc7bb19013ce95'
-         'eb138d945bba86fbc8c83768581178c8')
+install="${pkgname}.install"
+source=("https://linuxjm.osdn.jp/man-pages-ja-${pkgver}.tar.gz")
+md5sums=('6ec32f9f2c70ea39e945dac06d0ca582')
 
 prepare() {
-  cp $srcdir/jm/JM.rules $srcdir/jm/JM.rules.orig
-  sed -e "s!JMHOME\=.*\$!JMHOME\=$srcdir/jm/pkgbuild!g" \
-    -e "s!POD2MAN\=.*\$!POD2MAN=$(which pod2man)!g" \
-    $srcdir/jm/JM.rules.orig > $srcdir/jm/JM.rules
+    cd ${srcdir}/${pkgname}-${pkgver}
+    sed -i '/until/i$ans = "y";' script/configure.perl
+    sed -i "/usr[/]share[/]man[/]/s@/@${pkgdir}/@1" script/configure.perl
 }
 
 build() {
-  cd $srcdir/jm
-  make tarball
+    cd ${srcdir}/${pkgname}-${pkgver}
+    yes '' | make config
 }
 
 package() {
-  install -D -m644 $srcdir/README.en "${pkgdir}/usr/share/licenses/${pkgname}/README.en"
-  install -D -m644 $srcdir/jm/dist/README "${pkgdir}/usr/share/licenses/${pkgname}/README"
-  cd $srcdir/jm/pkgbuild/tmp
-  cd $(ls | egrep "man-pages-ja-[0-9]+$")
-  cp $srcdir/mkconfig.expect ./
-  env PKGDIR="$pkgdir" ./mkconfig.expect
-  make install
+    mkdir -p ${pkgdir}/usr/share/man/${LANG}
+    cd ${srcdir}/${pkgname}-${pkgver}
+    make install
+
+#    makewhatis
+#    mandb
 }
