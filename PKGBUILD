@@ -7,18 +7,13 @@
 # Contributor: Daniel YC Lin <dlin.tw@gmail>
 # Contributor: Joerg <joerg@higgsboson.tk>
 # Contributor: Vincent Aranega <vincent.aranega@gmail.com>
-#
-# NOTE: To request changes to this package, please submit a pull request
-#       to the GitHub repository at https://github.com/ido/packages-archlinux
-#       Otherwise, open a GitHub issue.  Thank you! -Ido
-#
 
 # Important upstream docs:
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=17.06.0.dev.32170.73abe0c682
+pkgver=17.06.0.dev.32275.c68612de0c
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -33,38 +28,51 @@ replaces=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
 install='docker.install'
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip')
-source=('docker::git+https://github.com/docker/docker.git'
-        'containerd::git+https://github.com/docker/containerd.git#commit=78fb8f45890a601e0fd9051cf9f9f74923e950fd'
-        'runc::git+https://github.com/docker/runc.git#commit=51371867a01c467f08af739783b8beafc154c4d7'
-        'libnetwork::git+https://github.com/docker/libnetwork.git#commit=0f534354b813003a754606689722fe253101bc4e'
+source=('moby::git+https://github.com/moby/moby.git'
+        'cli::git+https://github.com/docker/cli.git'
+        'containerd::git+https://github.com/containerd/containerd.git'
+        'runc::git+https://github.com/docker/runc.git'
+        'libnetwork::git+https://github.com/docker/libnetwork.git'
         'docker.install')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          '1a8e60447794b3c4f87a2272cc9f144f')
 
 pkgver() {
-  cd "${srcdir}/docker"
-  _dockerver="$(cat VERSION)"
-  printf "%s.%s.%s" "${_dockerver//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  pushd "$srcdir/moby" > /dev/null
+    _dockerver="$(cat VERSION)"
+    printf "%s.%s.%s" "${_dockerver//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  popd > /dev/null
 }
 
 prepare() {
   mkdir -p "$srcdir/go/src/github.com/docker"
+  mkdir -p "$srcdir/go/src/github.com/moby"
+  mkdir -p "$srcdir/go/src/github.com/containerd"
   export GOPATH="$srcdir/go"
 
   # update specific commits used
   # https://github.com/docker/docker/blob/master/hack/dockerfile/binaries-commits
-  . "$srcdir/docker/hack/dockerfile/binaries-commits"
+  . "$srcdir/moby/hack/dockerfile/binaries-commits"
+
   pushd "$srcdir/runc"
-    git checkout -q "$RUNC_COMMIT"
+    echo 'yeah'
+    git checkout -q master
   popd
+
   pushd "$srcdir/containerd"
     git checkout -q "$CONTAINERD_COMMIT"
   popd
+
   pushd "$srcdir/libnetwork"
-    git checkout -q "$CONTAINERDLIBNETWORK_COMMIT"
+    git checkout -q "$LIBNETWORK_COMMIT"
+  popd
+
+  pushd "$srcdir/cli"
+    git checkout -q "$DOCKERCLI_COMMIT"
   popd
 
   # apply any patches for runc
@@ -83,6 +91,7 @@ prepare() {
 
 build() {
   # runc
+  msg 'building runc'
   ln -svf "$srcdir/runc" "$GOPATH/src/github.com/docker/"
   pushd "$GOPATH/src/github.com/docker/runc"
     make BUILDTAGS=""
@@ -90,19 +99,29 @@ build() {
   popd
 
   # containerd
-  ln -svf "$srcdir/containerd" "$GOPATH/src/github.com/docker/"
-  pushd "$GOPATH/src/github.com/docker/containerd"
+  msg 'building containerd'
+  ln -svf "$srcdir/containerd" "$GOPATH/src/github.com/containerd/"
+  pushd "$GOPATH/src/github.com/containerd/containerd"
     LDFLAGS= make
   popd
 
   # docker-proxy (from libnetwork)
+  msg 'building docker-proxy'
   ln -svf "$srcdir/libnetwork" "$GOPATH/src/github.com/docker/"
   pushd "$GOPATH/src/github.com/docker/libnetwork"
     go build -ldflags="$PROXY_LDFLAGS" -o ./bin/docker-proxy 'github.com/docker/libnetwork/cmd/proxy'
   popd
 
-  # docker
-  pushd docker
+  # docker cli
+  msg 'building docker cli'
+  ln -svf "$srcdir/cli" "$GOPATH/src/github.com/docker/"
+  pushd cli
+    make build
+  popd
+
+  # dockerd
+  msg 'building dockerd'
+  pushd moby
     export AUTO_GOPATH=1
     ./hack/make.sh dynbinary
     for i in man/*.md; do
@@ -126,7 +145,7 @@ package() {
   popd
 
   # containerd binaries
-  pushd "$GOPATH/src/github.com/docker/containerd/bin"
+  pushd "$GOPATH/src/github.com/containerd/containerd/bin"
     for file in $(find . -type f -print); do
       install -Dm755 "$file" "$pkgdir/usr/bin/$file"
     done
@@ -135,10 +154,13 @@ package() {
   # docker-proxy binary (from libnetwork)
   install -Dm755 "$GOPATH/src/github.com/docker/libnetwork/bin/docker-proxy" "$pkgdir/usr/bin/docker-proxy"
 
-  cd docker
+  # dockerd
+  cd moby
   _dockerver="$(cat VERSION)"
-  install -Dm755 "bundles/$_dockerver/dynbinary-client/docker-$_dockerver" "$pkgdir/usr/bin/docker"
   install -Dm755 "bundles/$_dockerver/dynbinary-daemon/dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
+
+  # docker cli
+  install -Dm755 "$GOPATH/src/github.com/docker/cli/build/docker" "$pkgdir/usr/bin/docker"
 
   # symlink containerd/run (nice integration...)
   ln -s containerd "$pkgdir/usr/bin/docker-containerd"

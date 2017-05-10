@@ -1,6 +1,8 @@
-/docker/
+/cli/
 /runc/
 /containerd/
+/libnetwork/
+/moby/
 /pkg/
 /src/
 *.pkg.tar.xz
