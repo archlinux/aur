@@ -13,7 +13,6 @@ license=('custom:microsoft')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('libarchive>=3.0.2')
 provides=('ttf-font')
-install=$pkgname.install
 _sfpath="http://downloads.sourceforge.net/corefonts"
 source=($_sfpath/andale32.exe $_sfpath/arial32.exe  $_sfpath/arialb32.exe
         $_sfpath/comic32.exe  $_sfpath/courie32.exe $_sfpath/georgi32.exe

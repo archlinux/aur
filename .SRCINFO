@@ -3,7 +3,6 @@ pkgbase = ttf-ms-fonts
 	pkgver = 2.0
 	pkgrel = 10
 	url = http://corefonts.sourceforge.net/
-	install = ttf-ms-fonts.install
 	arch = any
 	license = custom:microsoft
 	makedepends = libarchive>=3.0.2
