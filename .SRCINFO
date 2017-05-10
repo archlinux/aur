@@ -1,0 +1,15 @@
+pkgbase = skeleton
+	pkgdesc = Skeleton project manager
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/ntzwrk/skeleton
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = skeleton
+
