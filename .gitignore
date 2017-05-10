@@ -1,0 +1,6 @@
+src/
+pkg/
+helio-workstation/
+*.tar
+*~
+JUCE/
