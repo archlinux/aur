@@ -27,13 +27,13 @@ fi
 
 # Source
 source=('10-nvidia-drm-outputclass.conf'
-        '20-nvidia.conf')
-#        'linux-4.11.patch')
+        '20-nvidia.conf'
+        'linux-4.11.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
 md5sums=('4f5562ee8f3171769e4638b35396c55d'
-         '2640eac092c220073f0668a7aaff61f7')
-#         '897d9775dc484ab37934e7b102c5b325')
+         '2640eac092c220073f0668a7aaff61f7'
+         'cc8941b6898d9daa0fb67371f57a56b6')
 md5sums_i686=('8825cec1640739521689bd80121d1425')
 md5sums_x86_64=('0e9590d48703c8baa034b6f0f8bbf1e5')
 [[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('1b74150e84fd99cc1207a51b9327112c')
