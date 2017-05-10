@@ -45,14 +45,14 @@ source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
-md5sums=('68753955a8964ae49064c6424f81eb3e'
-         'SKIP'
-         'c893cdf2599f68a7844cd4c91e66a18b'
-         'dec2cbaad64e3abf4f0ec70e1de4e8e9'
-         '2d0e98c423a9dc57e923f31d63117106'
-         'bc1006ba3308c0b641726944874da315'
-         'c1cc15d2123931f883f75f231ae44f60'
-         '12392414f768281ae96f292d0aa9669c')
+sha512sums=('fdf503925c236a79cc09bc9e5c06ce5afa7497ccf20ab486389b818a7d84db1b84ac119523b35586f64fff7d198b6c20164910fbf33254b35ec2f41015d9feef'
+            'SKIP'
+            'e742d6e3e43bce75e11b4646cdbf06c5661c66cc22d5615caff1e293ed35e95973290940c93d6abeec2d43f02761baabf24e6954720d7df8f2bd7de2c3f9ba0d'
+            'a20711e301648c0e7080688d2a2522f8b6a94d35dc4a09169795618f7b09613490b46ae1805ffffca63bc29f3f4b1d36705dec1bcc55e293fc51a31a6c346d8c'
+            '5e65a0cda2b873bf4f4f502ec6aef57c8c0a1c77c60a1d2c352da8871bcf213bc28b005f5517a806ee909b958c986601eb7381c6f7296f42cf3dbd3af0619035'
+            'a398e9cde4ba57d243abb5b394152d87bc1fddc2d5fc934569e1f912a5a80eba3ae14720fe99fcda50722bedc5d65abcbde2822f5075091c4a83a2f6bb22c122'
+            'c6b74e1b39224e79d33915a0d32fe2d08114d1dcec93035017af783b8b73b6475779e3e649abb35b73ea2fd6553120696c48ebb0894531282fbc9e1b36da9f3b'
+            '9cc548c9395f0765e6ebf54604dc8e71da38ffbc10eba50ba9b7e2f91690c53056f62efa2060fc8670de94e0642027c6eaa6c2820ba99e2b489695d1e320fcf3')
 validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3'
               '0BD78B5F97500D450838F95DFE857D9A90D90EC1')
 
