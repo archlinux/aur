@@ -3,7 +3,7 @@
 pkgname=poi
 _pkgname=poi
 pkgver=7.7.0.beta.1.0.g35b19926
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable KanColle browser and tool"
 arch=('any')
 url="https://github.com/poooi/poi/"
@@ -18,6 +18,7 @@ source=("git+https://github.com/poooi/poi.git"
 sha256sums=('SKIP'
           '24f89c538a189a5db96be3e3228aba6e4e7d332c5a368b15dacb6e97ee6f7586'
           '1d49f43801fcc28d1a2a75407422a6445314fbf815e004382fc2cb5b956ac530')
+options=('!strip') # nothing to strip
 
 
 prepare() {
@@ -38,7 +39,7 @@ build() {
     npm install --save eachr # workaround
     # prevent infinite loop...
     timeout 5m npm run deploy
-    npm prune --productive
+    npm prune --production
 }
 
 package() {
