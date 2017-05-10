@@ -9,7 +9,6 @@ url="http://openbazaar.org"
 license=('MIT')
 depends=(
 	gnupg
-	python2-autobahn
 	python2-bitcointools
 	python2-bleach
 	python2-certifi
@@ -17,15 +16,11 @@ depends=(
 	python2-libbitcoinclient
 	python2-miniupnpc
 	python2-protobuf
-	python2-pyelliptic
 	python2-pynacl
 	python2-pystun
 	python2-python-bitcoinlib
-	python2-requests
 	python2-service-identity
 	python2-twisted
-	python2-txaio
-	python2-txjson-rpc
 	python2-txrestapi
 	python2-txrudp
 	python2-txws
