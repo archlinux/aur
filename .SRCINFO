@@ -13,7 +13,9 @@ pkgbase = gnomekiss
 	depends = glib2
 	depends = libgnomeui
 	source = http://devel.tlrmx.org/kiss/source/gnomekiss-2.0.tar.gz
+	source = gnomekiss-2.0.patch
 	sha1sums = 1c0c2082c5331387f420329ada66e0c31202fcbb
+	sha1sums = d16a8612c8cb97ca9af0c184d5f882434f97259a
 
 pkgname = gnomekiss
 
