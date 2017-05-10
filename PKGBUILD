@@ -1,13 +1,13 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=man-pages-samba-ja
-pkgver=4.1.8
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="Japanese man pages for the Samba4"
 arch=("any")
 url="http://wiki.samba.gr.jp/"
 license=("GPL3" "custom")
-source=("http://osdn.jp/frs/redir.php?m=jaist&f=%2Fsamba-jp%2F61467%2Fsamba-ja-docs-manpages-${pkgver}-1.tar.gz")
-md5sums=('bf873a17313148a5aeddd7a139d5d803')
+source=("https://ja.osdn.net/frs/redir.php?m=ymu&f=%2Fsamba-jp%2F66610%2Fsamba-ja-docs-${pkgver}.tar.gz")
+md5sums=('afba7311689944ca15bfa34e7c842b72')
 
 package() {
   install -D -m644 ${srcdir}/docs-xml/README  "${pkgdir}/usr/share/doc/${pkgname}/README"
