@@ -12,7 +12,7 @@ depends=('php56>=5.6.27')
 provides=("php-${_pkgbase}=${pkgver}-${pkgrel}")
 backup=("etc/php56/conf.d/apcu.ini")
 source=("https://pecl.php.net/get/${_pkgbase}-${pkgver}.tgz")
-sha256sums=('454f302ec13a6047ca4c39e081217ce5a61bbea815aec9c1091fb849e70b4d00')
+sha512sums=('e3b97066240e33850419e96f0fd9df0e66ee3b0fa238c418e07ac639d07439e9edfa1696e56a620e33f1ffc0993c57bde585b0c170b22995e7d5c0ae550b7899')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
