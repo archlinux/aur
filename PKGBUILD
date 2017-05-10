@@ -26,4 +26,4 @@ source=("git+https://github.com/bareos/bareos.git#tag=Release/16.2.5"
         "PKGBUILD.common")
 
 sha256sums=('SKIP'
-            'fad5eef1cf2fd6b9802f082bce2803b3b3a0eadb58b5da9afea2484a068e134c')
+            'c81ae41baccc3b0762506da2539640e66b26e9cb4b9eb0fbe1b21257381b1490')
