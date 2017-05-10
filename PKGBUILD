@@ -9,7 +9,7 @@ url="http://valentina-project.org/"
 license=('GPL3')
 source=('https://bitbucket.org/dismine/valentina/get/v0.4.5.zip')
 depends=('qt5-svg')
-makedepends=('qt5-tools' 'unzip' 'sed')
+makedepends=('qt5-tools' 'unzip' 'awk')
 md5sums=('49d3c7db3526e3cb84dffdf705d613f2')
 
 build() {
