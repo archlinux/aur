@@ -11,7 +11,7 @@ pkgver=17.02
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=17.02.072116
 _pkgverpostfix=""
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -27,12 +27,14 @@ source=("https://github.com/senshu/Sozi/archive/${pkgver}${_pkgverpostfix}.tar.g
   "sozi-package-json.patch"
   "sozi.png"
   "sozi.desktop"
+  "player.html.patch"
   "texts2paths.patch")
 sha1sums=('2554484cfa63dcafd29fde01e533ae7ec7419ee3'
   '265b6cc7b7cea7bcfb74eec52bc9c0e44f039740'
   'a10b5cad0c35caa7cfa412f95b58d81f6150173a'
   '230b60efe9de03b2418c8a10c040491bf7899f43'
   '04adcecb5bfc696ed7e9d5b8c111017725bd62b1'
+  '75bd3f6f4f4c0064a55b43b50cfc2024b132fc80'
   'ebaf4c68d77391a701b3acfc21282eb78d8077fd')
 
 source_i686=('https://github.com/electron/electron/releases/download/v1.2.0/electron-v1.2.0-linux-ia32.zip'
@@ -55,11 +57,12 @@ prepare() {
   sed -i "s/grunt.template.today(\"yy.mm.ddHHMM\")/\"${_buildver}\"/" Gruntfile.js
   if [ ! -f package.original.json ]; then
     cp package.json package.original.json
-    # To avoid the no-effect git pull requests to the versions which
-    # we already fixed (*.zip dependencies), the package.json should be
-    # patched to remove those git mentions...
-    patch package.json "${srcdir}/sozi-package-json.patch"
   fi
+  # To avoid the no-effect git pull requests to the versions which
+  # we already fixed (*.zip dependencies), the package.json should be
+  # patched to remove those git mentions...
+  cp package.original.json package.json
+  patch package.json "${srcdir}/sozi-package-json.patch"
 
   install -D -m644 "${srcdir}/DroidSans.ttf" "vendor/DroidSans/DroidSans.ttf"
   install -D -m644 "${srcdir}/DroidSans-Bold.ttf" "vendor/DroidSans/DroidSans-Bold.ttf"
@@ -75,6 +78,7 @@ prepare() {
   fi
 
   patch -p1 < "${srcdir}/texts2paths.patch"
+  patch -p1 < "${srcdir}/player.html.patch"
 }
 
 bestmatch() {
@@ -231,6 +235,16 @@ npminstallationphase() {
 
   patchallhardlinks "${srcdir}/build/grunt-install-dependencies-senshu/tasks/" 's/"npm install"/"npm install --no-registry --no-optional"/' install-dependencies.js
   patchallhardlinks "${srcdir}/build/electron-download-4.0.0/lib" 's/return this.opts.cache.*$/return this.opts.cache || ".\/cache"/' index.js
+
+  cd "${srcdir}/build/grunt-jspot-senshu/"
+  if [ ! -d "node_modules/grunt" ]; then
+    if [ -f "${srcdir}/build/grunt-1.0.1/.is-completely-installed" ]; then
+      cp -a -l "${srcdir}/build/grunt-1.0.1" "node_modules/grunt"
+    else
+      echo "Error: peer dependency of grunt-jspot cannot be satisfied!"
+      exit -4;
+    fi
+  fi
 
   cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
   rm -rf "build"
