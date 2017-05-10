@@ -1,7 +1,7 @@
 # Maintainer: osfans <waxaca@163.com>
 _pkgname=uchardet
 pkgname=mingw-w64-${_pkgname}-git
-pkgver=r34.016eb18
+pkgver=r191.e6be228
 pkgrel=1
 pkgdesc="Encoding detector library ported from Mozilla (mingw-w64)"
 arch=(any)
@@ -22,19 +22,15 @@ build() {
   #unset LDFLAGS
   cd "$srcdir/$_pkgname"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-      ${_arch}-cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/${_arch} ..
-      make
-    popd
+    ${_arch}-cmake -Bbuild-${_arch} -H.
+    make -Cbuild-${_arch}
   done
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   for _arch in ${_architectures}; do
-    pushd build-${_arch}
-      make DESTDIR="$pkgdir" install
-    popd
+    make -Cbuild-${_arch} DESTDIR="$pkgdir" install
     ln -s libuchardet.dll $pkgdir/usr/${_arch}/bin/uchardet.dll
   done
 }
