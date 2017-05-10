@@ -13,7 +13,7 @@ provides=("php-memcached=${pkgver}-${pkgrel}")
 depends=('php56>=5.6.17-3' 'libmemcached')
 backup=('etc/php56/conf.d/memcached.ini')
 source=("https://pecl.php.net/get/memcached-${pkgver}.tgz")
-sha256sums=('17b9600f6d4c807f23a3f5c45fcd8775ca2e61d6eda70370af2bef4c6e159f58')
+sha512sums=('61207d3f8c11b0620dbcb20fb2ebb6d1fc10159a7e879ee91556a303c3dcdf3d2571e8dda5efcbed77ff779f5c9b226aa48800630b9e7781cd964126b848c356')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
