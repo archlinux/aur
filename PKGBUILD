@@ -31,7 +31,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.30
-pkgrel=3
+pkgrel=4
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -165,6 +165,7 @@ build() {
 		--with-readline \
 		--enable-pcntl \
 		${_phpextensions}
+	sed -i '/^IMAP_SHARED_LIBADD =/ s#-lssl -lcrypto#-Wl,/usr/lib/libssl.so -Wl,/usr/lib/libcrypto.so#' Makefile
 	make
 
 	# cgi and fcgi
