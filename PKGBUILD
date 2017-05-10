@@ -32,24 +32,33 @@ sha512sums=(
 )
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <com dot unifoundry at unifoundry>
 
-# _use_precompiled=1
-
 ### build instructions
 
-_compiled="${_use_precompiled:+pre}compiled"
+for _pkg in "${pkgname[@]}"; do case "$_pkg" in
 
-_wanted() {
-	for _item in "${pkgname[@]}"; do
-		[[ "$_item" = "$1" ]] && return 0
-	done
-	return 1
+pcf-unifont)
+	makedepends+=(xorg-bdftopcf)
+;;
+
+ttf-unifont)
+	makedepends+=(fontforge)
+;;
+
+psf-unifont)
+	makedepends+=(bdf2psf)
+;;
+
+esac; done
+
+prepare() {
+	cat <<EOMSG
+ * * * * *
+ * This package's download size is far larger than it needs to be.
+ * Please make sure the maintainer is aware of this.
+ * <https://savannah.gnu.org/bugs/index.php?48397>
+ * * * * *
+EOMSG
 }
-
-if [[ -z "$_use_precompiled" ]]; then
-	_wanted pcf-unifont && makedepends+=(xorg-bdftopcf)
-	_wanted ttf-unifont && makedepends+=(fontforge)
-	_wanted psf-unifont && makedepends+=(bdf2psf)
-fi
 
 build() {
 	cd "$srcdir/unifont-${pkgver}"
@@ -61,24 +70,30 @@ build() {
 	make -j1
 
 	cd "$srcdir/unifont-${pkgver}/font"
-	if [[ -z "$_use_precompiled" ]]; then
-		if _wanted bdf-unifont; then
-			msg2 "Building the BDF version"
-			make -j1 bdf -o distclean
-		fi
-		if _wanted psf-unifont; then
-			msg2 "Building the PSF version"
-			make -j1 psf -o distclean
-		fi
-		if _wanted pcf-unifont; then
-			msg2 "Building the PCF version"
-			make -j1 pcf -o distclean
-		fi
-		if _wanted ttf-unifont; then
-			msg2 "Building the TTF version"
-			make -j1 ttf csurttf upperttf -o distclean
-		fi
-	fi
+
+	for _pkg in "${pkgname[@]}"; do case "$_pkg" in
+
+	bdf-unifont)
+		msg2 "Building the BDF version"
+		make -j1 bdf -o distclean
+	;;
+
+	psf-unifont)
+		msg2 "Building the PSF version"
+		make -j1 psf -o distclean
+	;;
+
+	pcf-unifont)
+		msg2 "Building the PCF version"
+		make -j1 pcf -o distclean
+	;;
+
+	ttf-unifont)
+		msg2 "Building the TTF version"
+		make -j1 ttf csurttf upperttf -o distclean
+	;;
+
+	esac; done
 }
 
 # warning: below i pretty much bypass the whole build system,
@@ -93,7 +108,7 @@ package_ttf-unifont() {
 
 	_ttfdir=/usr/share/fonts/TTF
 
-	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/compiled"
 	install -D -m0644 "unifont-${pkgver}.ttf" \
 		"${pkgdir}${_ttfdir}/unifont.ttf"
 	install -D -m0644 "unifont_csur-${pkgver}.ttf" \
@@ -116,7 +131,7 @@ package_pcf-unifont() {
 
 	_pcfdir=/usr/share/fonts/misc
 
-	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/compiled"
 	install -D -m0644 "unifont-${pkgver}.pcf.gz" \
 		"${pkgdir}${_pcfdir}/unifont.pcf.gz"
 	install -D -m0644 "unifont_csur-${pkgver}.pcf.gz" \
@@ -131,7 +146,7 @@ package_bdf-unifont() {
 
 	_bdfdir=/usr/share/fonts/misc
 
-	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/compiled"
 	install -D -m0644 "unifont-${pkgver}.bdf.gz" \
 		"${pkgdir}${_bdfdir}/unifont.bdf.gz"
 	install -D -m0644 "unifont_csur-${pkgver}.bdf.gz" \
@@ -144,7 +159,7 @@ package_psf-unifont() {
 	pkgdesc="A free bitmap font with wide Unicode support (PSF version, for APL)"
 	arch=(any)
 
-	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/compiled"
 	install -D -m0644 "Unifont-APL8x16-${pkgver}.psf.gz" \
 		"${pkgdir}/usr/share/kbd/consolefonts/Unifont-APL8x16.psf.gz"
 }
