@@ -22,10 +22,11 @@ optdepends=('opendbx: acts as a middleware layer between OpenDMARC and a SQL bac
             'perl-dbd-mysql: generate DMARC reports'
             'perl-libwww: generate DMARC reports')
 install=${_pkgbase}.install
-source=(https://downloads.sourceforge.net/project/${_pkgbase}/${_pkgbase}-$pkgver.tar.gz #{,.asc}
+# unfortunately the gpg key (2D55C45B89CFFD42), that is used for signing, is not public
+source=("https://downloads.sourceforge.net/project/${_pkgbase}/${_pkgbase}-$pkgver.tar.gz"  #{,.asc}
         opendmarc.service)
-sha256sums=('213c4b01a9ff5dcdf331f7bd1dd6a382077abbf8ee9111852f2101ec917c2ffb'
-            'dc16a2bb66df7473a0288fc0c33db731922ff2ea9fdcd59d86da8dc908ca4a14')
+sha512sums=('6045fb7d2be8f0ffdeca07324857d92908a41c6792749017c2fcc1058f05f55317b1919c67c780827dd7094ec8fff2e1fa4aeb5bab7ff7461537957af2652748'
+            '68078748a307479b72a7a0906534945e8613692d34e640bc7fefb55b36649f1461ec606808dc6dfb95028c5520a6232bb9ab79481d15520033fa3c3911d3e52f')
 
 build() {
   export LDFLAGS="${LDFLAGS//,--as-needed}"
