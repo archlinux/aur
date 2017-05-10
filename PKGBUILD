@@ -4,7 +4,7 @@
 
 pkgname=libcurl-openssl-1.0
 pkgver=7.54.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An URL retrieval library (build against openssl-1.0)'
 arch=('i686' 'x86_64')
 url='https://curl.haxx.se'
@@ -44,6 +44,11 @@ package() {
   mv "${pkgdir}"/usr/lib/libcurl{,-openssl-1.0}.so.4.4.0
   rm "${pkgdir}"/usr/lib/libcurl.{a,so}*
   ln -s libcurl-openssl-1.0.so.4.4.0 "${pkgdir}"/usr/lib/libcurl-openssl-1.0.so
+
+  install -d "${pkgdir}"/usr/lib/libcurl-openssl-1.0
+  for _i in so so.4 so.4.4.0; do
+    ln -s ../libcurl-openssl-1.0.so.4.4.0 "${pkgdir}"/usr/lib/libcurl-openssl-1.0/libcurl.${_i}
+  done
 
   install -dm 755 "${pkgdir}"/usr/share/licenses
   ln -s curl "${pkgdir}"/usr/share/licenses/${pkgname}
