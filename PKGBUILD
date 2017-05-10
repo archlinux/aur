@@ -1,7 +1,7 @@
 # Maintainer: Vincent <vinszent@vinszent.com>
 
 pkgname=gnome-twitch
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Enjoy Twitch on your GNU/Linux desktop"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'meson')
 depends=('gtk3' 'libsoup' 'json-glib' 'webkit2gtk' 'libpeas' 'gobject-introspection')
 conflicts=('gnome-twitch-git')
 source=("https://github.com/vinszent/gnome-twitch/archive/v${pkgver}.tar.gz")
-md5sums=('42abec672144865828a9eb4764037a3a')
+md5sums=('452609cf714ef98153c64949ba7ba130')
 
 build()
 {
