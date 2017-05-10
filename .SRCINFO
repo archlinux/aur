@@ -1,6 +1,6 @@
 pkgbase = jelly-git
 	pkgdesc = An esoratic programming language
-	pkgver = r226.6136ca6
+	pkgver = r244.4f93f63
 	pkgrel = 1
 	url = http://github.com/DennisMitchell/jelly
 	arch = any
