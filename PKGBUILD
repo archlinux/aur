@@ -41,8 +41,8 @@ makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu'
              'curl' 'libxslt' 'openssl-1.0' 'db' 'gmp' 'systemd')
 
-source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
-        "http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
+source=("https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
+        "https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
 sha512sums=('fdf503925c236a79cc09bc9e5c06ce5afa7497ccf20ab486389b818a7d84db1b84ac119523b35586f64fff7d198b6c20164910fbf33254b35ec2f41015d9feef'
