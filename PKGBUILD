@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-ffmpeg-codecs
-pkgver=57.0.2987.133
+pkgver=58.0.3029.81
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera"
 arch=('i686' 'x86_64')
@@ -16,9 +16,11 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r2.patch'
 )
-sha256sums=('70011770a7e522c92826a3af48d3fd28a46bf8042897d072d20c748cbf828cf7'
-            'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e')
+sha256sums=('5ab61b7025a5143fa1b21713479b316ec7a98e262e79e84f9c9a9656179217cb'
+            'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e'
+            '64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de')
 
 
 prepare() {
@@ -37,6 +39,7 @@ prepare() {
   touch chrome/test/data/webui/i18n_process_css_test.html
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
+  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r2.patch"
 }
 
 build() {
