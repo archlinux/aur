@@ -1,0 +1,16 @@
+pkgbase = sawyer-git
+	pkgdesc = Sawyer is a background changer
+	pkgver = v0.0.1.r0.g7d842d5
+	pkgrel = 1
+	url = https://github.com/txomon/sawyer/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	conflicts = sawyer-bin
+	source = sawyer-git::git+https://github.com/txomon/sawyer.git#branch=master
+	sha256sums = SKIP
+
+pkgname = sawyer-git
+

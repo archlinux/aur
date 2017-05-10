@@ -1,0 +1,7 @@
+{
+    "cache_dir": "./cache",
+    "change_interval": "30",
+    "providers": [
+        { "type": "imgur", "album": "3UU8q" }
+    ]
+}
