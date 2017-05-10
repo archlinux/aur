@@ -2,7 +2,7 @@
 
 pkgname=thruk
 pkgver=2.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
 url="http://thruk.org"
@@ -16,7 +16,7 @@ replaces=('naemon-thruk')
 backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
         'etc/thruk/log4perl.conf' 'etc/thruk/menu_local.conf'
         'etc/thruk/naglint.conf' 'etc/httpd/conf/extra/thruk.conf'
-        'etc/thruk/thruk_local.conf' 'etc/thruk/thruk.conf')
+        'etc/thruk/thruk_local.conf')
 source=(http://download.thruk.org/pkg/v$pkgver/src/$pkgname-$pkgver.tar.gz)
 md5sums=('ac36a64794e6f44fe34d03473b616875')
 
@@ -46,6 +46,7 @@ package() {
   make DESTDIR="$pkgdir"/ install
 
   install -Dm644 support/apache_fcgid.conf "$pkgdir"/etc/httpd/conf/extra/$pkgname.conf
+  install -dm755 "$pkgdir"/etc/thruk/panorama
 
-  chown -R 33:33 "$pkgdir"/var/lib/thruk/ "$pkgdir"/var/log/thruk/
+  chown -R 33:33 "$pkgdir"/var/{lib,log}/thruk/ "$pkgdir"/etc/thruk/panorama/
 }
