@@ -16,16 +16,16 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 subdir=OpenCC-ver.$pkgver
 build() {
     cd "$srcdir/$subdir"
-    #sed -i "s/set(CMAKE_S/#set(CMAKE_S/" CMakeLists.txt
+    sed -i "s/^void ConvertDictionary/OPENCC_EXPORT void ConvertDictionary/" src/DictConverter.hpp
     sed -i "s/ \${OPENCC_DICT_BIN}/ \${CMAKE_CROSSCOMPILING_EMULATOR} ..\/src\/tools\/opencc_dict.exe/" data/CMakeLists.txt
     for _arch in ${_architectures}; do
         mkdir -p "build-${_arch}-static" && pushd "build-${_arch}-static"
         ${_arch}-cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_BUILD_TYPE=Release ..
-        make -j8
+        make -j8 libopencc
         popd
         mkdir -p "build-${_arch}" && pushd "build-${_arch}"
         ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release ..
-        make -j8 libopencc
+        make -j8
         popd
     done
 }
@@ -33,10 +33,10 @@ build() {
 package() {
     for _arch in ${_architectures}; do
         cd "$srcdir/$subdir"
-        pushd "build-${_arch}-static"
+        pushd "build-${_arch}"
             make DESTDIR="${pkgdir}" install
         popd
         cp build-${_arch}/src/libopencc.dll ${pkgdir}/usr/${_arch}/bin/
-        cp build-${_arch}/src/libopencc.dll.a ${pkgdir}/usr/${_arch}/lib/
+        cp build-${_arch}-static/src/libopencc.a ${pkgdir}/usr/${_arch}/lib/
     done
 }
