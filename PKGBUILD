@@ -14,7 +14,7 @@ depends=('php')
 makedepends=('apigen' 'php-sqlite')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgname}/repository/archive.tar.bz2?ref=r${pkgver}")
-sha256sums=('42e5bfc5cf1c011c3896eece13002da5be09e701a3161a6109fe5888eba5e5bc')
+sha512sums=('7db59244c0af706d8679bcaeb57e4e496867a2cb934f976d85fa6db6d4377c5d639a7d8d85b7f0cd67523c49a5a953864510fe8283e4f1b38f6cdb2799a1d4e4')
 
 prepare() {
     cd "${srcdir}"
