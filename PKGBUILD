@@ -25,5 +25,5 @@ pkgname=("${pkgbase}-common"
 source=("git+https://github.com/bareos/bareos.git#tag=Release/16.2.5"
         "PKGBUILD.common")
 
-sha256sums=('SKIP'
-            'c81ae41baccc3b0762506da2539640e66b26e9cb4b9eb0fbe1b21257381b1490')
+md5sums=('SKIP'
+         '2a416eabe98767f1da9d2ffc3aa65424')

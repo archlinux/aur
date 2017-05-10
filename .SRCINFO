@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
 	pkgver = 16.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = bareos
 	optdepends = openssl: network encryption between daemons
 	source = git+https://github.com/bareos/bareos.git#tag=Release/16.2.5
 	source = PKGBUILD.common
-	sha256sums = SKIP
-	sha256sums = c81ae41baccc3b0762506da2539640e66b26e9cb4b9eb0fbe1b21257381b1490
+	md5sums = SKIP
+	md5sums = 2a416eabe98767f1da9d2ffc3aa65424
 
 pkgname = bareos-common
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Common files

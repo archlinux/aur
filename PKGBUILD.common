@@ -3,7 +3,7 @@
 
 pkgver=16.2.5
 _pkgver=16.2.5
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -91,11 +91,6 @@ _install_files() {
       # Skip example files. they don't exist
       if [[ $file == *".conf.example" ]]; then
         continue 
-      fi
-
-      #TODO: BUG 16.5 seems to have this in an install dir but doesn't build them
-      if [[ $file == *"ndmp"*.so ]]; then
-        continue
       fi
 
       if [[ $second == "" ]]; then
