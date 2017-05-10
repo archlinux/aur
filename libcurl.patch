@@ -1,0 +1,23 @@
+*** src/Native/Unix/System.Net.Http.Native/CMakeLists.txt.orig	2017-05-04 21:14:29.817439384 -0700
+--- src/Native/Unix/System.Net.Http.Native/CMakeLists.txt	2017-05-04 21:14:43.417017513 -0700
+***************
+*** 1,9 ****
+  project(System.Net.Http.Native)
+  
+! find_package(CURL)
+! if(NOT CURL_FOUND)
+!     message(FATAL_ERROR "!!! Cannot find libcurl and System.Net.Http.Native cannot build without it. Try installing libcurl4-openssl-dev (or the appropriate package for your platform) !!!")
+! endif(NOT CURL_FOUND)
+  
+  if(CMAKE_STATIC_LIB_LINK)
+      find_library(CURL_STATIC_LIB NAMES libcurl.a)
+--- 1,9 ----
+  project(System.Net.Http.Native)
+  
+! #find_package(CURL)
+! #if(NOT CURL_FOUND)
+! #    message(FATAL_ERROR "!!! Cannot find libcurl and System.Net.Http.Native cannot build without it. Try installing libcurl4-openssl-dev (or the appropriate package for your platform) !!!")
+! #endif(NOT CURL_FOUND)
+  
+  if(CMAKE_STATIC_LIB_LINK)
+      find_library(CURL_STATIC_LIB NAMES libcurl.a)
