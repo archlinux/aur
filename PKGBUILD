@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=xandikos-git
-pkgver=0.0.4.r12.gcabb18d
+pkgver=0.0.4.r28.gb31f3ff
 pkgrel=1
 pkgdesc='CardDAV/CalDAV server that backs onto a Git repository (Git version)'
 arch=('any')
@@ -32,6 +32,7 @@ build() {
 package() {
   cd xandikos
   python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 xandikos.1 "$pkgdir"/usr/share/man/man1/xandikos.1
 }
 
 # vim:set ts=2 sw=2 et:
