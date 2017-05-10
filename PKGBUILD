@@ -9,6 +9,7 @@ pkgdesc="3D game about collecting mushrooms in outerspace"
 arch=('i686' 'x86_64')
 url="http://funguloids.sourceforge.net/"
 license=('GPL')
+makedepends=('python')
 depends=('boost' 'ogre' 'ois' 'freealut' 'lua51' 'libogg' 'libvorbis' 'libmad')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-linux-${_realver}.tar.bz2
         funguloids.desktop
