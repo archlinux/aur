@@ -1,0 +1,12 @@
+pkgbase = kubernetes-helm-bin
+	pkgdesc = The Kubernetes Package Manager
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/kubernetes/helm
+	arch = x86_64
+	license = Apache
+	source = https://storage.googleapis.com/kubernetes-helm/helm-v2.4.1-linux-amd64.tar.gz
+	sha256sums = 221bdef7efd53e3502f5a576ed236eed0429a845052ff6197b73f3df6964536e
+
+pkgname = kubernetes-helm-bin
+
