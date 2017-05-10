@@ -1,0 +1,18 @@
+diff -ura gnomekiss-2.0.old/gnomekiss.desktop gnomekiss-2.0/gnomekiss.desktop
+--- gnomekiss-2.0.old/gnomekiss.desktop	2017-05-10 16:20:11.967026672 -0300
++++ gnomekiss-2.0/gnomekiss.desktop	2017-05-10 16:18:18.104586701 -0300
+@@ -1,11 +1,10 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Categories=Application;Game
+ Name=GnomeKiSS
+ Name[es]=GnomeKiSS
+ Comment=Gnome's KiSSekae dolls viewer
+-Comment[es]=EL visor de muñecas KiSSekae de Gnome
+-Icon=gnomekiss/besito_sinfondo.png
++Comment[es]=EL visor de muÃ±ecas KiSSekae de Gnome
++Icon=/usr/local/share/pixmaps/gnomekiss/besito_sinfondo.png
+ Exec=gnomekiss
+-Terminal=0
++Terminal=false
+ Type=Application
