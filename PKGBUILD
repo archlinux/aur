@@ -20,9 +20,9 @@ source=(
   "ftp://ftp.mrunix.net/pub/${pkgname}/geodb/${pkgname}-geodb-${_geodbver}.tgz"
   "ftp://ftp.mrunix.net/pub/${pkgname}/${pkgname}-flags.tgz"
 )
-sha256sums=('edaddb5aa41cc4a081a1500e3fa96615d4b41bc12086bcedf9938018ce79ed8d'
-            '0f0b75089243832a6deadcbd0161795e18c73cdc1a8b710b02675b28e3688b39'
-            'df9961fec7da2c16ed3faefb763f912c2db5ddce6a24e4f46647d7e64b8ab29a')
+sha512sums=('219cae51d2e938e2d9327ce52c9c814e7436c821b05cb528dc88f548bdfbd7a6ad69c235b078d6af194c3a1d38029fde7dde9e8b81ad6fd93c236ca76a49811b'
+            'fd6d3a2ab333806762af7600c8d043fb02a13089c43bb96e8afb1269e92c749329005b8f64d6439113b79d3ad080b1c2f70d54c42d72eb60cb08962d6ad86958'
+            'bb23d68fed2f130c8a752d1b219974e44e3f32dd40ecf6b236cdbede58d4bfbb15a8901e5ee76fbfae1ce1bd3d3664b28d0bd79b85e15949ff420ec262be21c1')
 
 build() {
     cd "${srcdir}/${pkgname}-${_pkgver}"
