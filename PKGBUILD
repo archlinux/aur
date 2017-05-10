@@ -23,9 +23,9 @@ install="$pkgname.install"
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgname}/repository/archive.tar.bz2?ref=r${pkgver}"
         httpd-davical.conf
         README.archlinux)
-sha256sums=('4032c5fbf1bdc63878a5b2faab8289bb6cbeaa43d6fcb6dd84472ac334d31f20'
-            'cbcfee6967549baafa313de96f94b61b44c80e0e0eaa3d7309523ff721645db8'
-            '619dce9a16e5dffa650954f78d793f93cf8034f51a6d3936d513fa8d78da5778')
+sha512sums=('c1f6995c40513bb5051260bebf24a306ff3c29a61602389e5d7364d5a48ddd4337ee2746d3d8829b6028eaa66056119234a3b3611f7379d4b0dd8608485b63fa'
+            'b4466049d9ba116cdbe3951a7a4cf004a423b59f197f78765151c656cf4f16f30a2bcc302bd643be0548818a67611654f95deb95113fa7f581394af78cb17109'
+            'd7ffe40a87e4752f1cd148bcc0a39285d81d9a717357207a114c1fc8384431ac07e673c84fd152865d47a1291b2c00dfd95237a973f3b6069a97ba5d0940ca84')
 
 _instdir="usr/share/webapps/davical"
 _docdir="usr/share/doc/davical"
