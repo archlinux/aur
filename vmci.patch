@@ -99,11 +99,14 @@ diff --git a/vmci/linux/vmciKernelIf.c b/vmci/linux/vmciKernelIf.c
 index 3fba8b6..1836442 100644
 --- a/vmci/linux/vmciKernelIf.c
 +++ b/vmci/linux/vmciKernelIf.c
-@@ -40,6 +40,7 @@
+@@ -40,6 +40,10 @@
  #include <linux/socket.h>       /* For memcpy_{to,from}iovec(). */
  #include <linux/vmalloc.h>
  #include <linux/wait.h>
 +#include <linux/skbuff.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 10, 99)
++#include <linux/sched/signal.h>
++#endif
  
  #include "compat_highmem.h"
  #include "compat_interrupt.h"

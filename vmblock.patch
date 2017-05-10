@@ -262,10 +262,18 @@ index d7ac1f6..c5e6604 100644
     .release = FileOpRelease,
  };
 diff --git a/vmblock/linux/inode.c b/vmblock/linux/inode.c
-index 098c94c..bd2bf01 100644
+index 098c94c..7aed6e7 100644
 --- a/vmblock/linux/inode.c
 +++ b/vmblock/linux/inode.c
-@@ -35,13 +35,24 @@
+@@ -28,20 +28,32 @@
+ #include <linux/fs.h>
+ #include <linux/time.h>
+ #include <linux/namei.h>
++#include <linux/cred.h>
+ 
+ #include "vmblockInt.h"
+ #include "filesystem.h"
+ #include "block.h"
  
  
  /* Inode operations */
@@ -334,7 +342,7 @@ index 098c94c..bd2bf01 100644
     inode->i_op = &LinkInodeOps;
  
     d_add(dentry, inode);
-@@ -176,8 +200,13 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+@@ -176,8 +200,15 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
     if (!iinfo) {
        return -EINVAL;
     }
@@ -343,13 +351,15 @@ index 098c94c..bd2bf01 100644
     return vfs_readlink(dentry, buffer, buflen, iinfo->name);
 +#elif LINUX_VERSION_CODE <= KERNEL_VERSION(4, 6, 99)
 +   return readlink_copy(buffer, buflen, iinfo->name);
++#elif LINUX_VERSION_CODE <= KERNEL_VERSION(4, 9, 99)
++   return generic_readlink(dentry, buffer, buflen);
 +#else
 +   return vfs_readlink(dentry, buffer, buflen);
 +#endif
  }
  
  
-@@ -198,30 +227,58 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+@@ -198,30 +229,58 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
   *----------------------------------------------------------------------------
   */
  

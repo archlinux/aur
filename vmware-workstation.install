@@ -1,0 +1,8 @@
+post_install() {
+  cat << EOF
+
+Before using VMware, you will need to enable some services.
+For example: systemctl enable --now vmware-hostd.service vmware-networks.service vmware-usbarbitrator.service
+
+EOF
+}

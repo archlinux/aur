@@ -32,6 +32,28 @@ diff --git a/vsock/linux/af_vsock.c b/vsock/linux/af_vsock.c
 index bde1497..9f8f843 100644
 --- a/vsock/linux/af_vsock.c
 +++ b/vsock/linux/af_vsock.c
+@@ -113,6 +113,9 @@
+ asmlinkage __attribute__((weak)) long
+ sys_ioctl(unsigned int fd, unsigned int cmd, unsigned long arg);
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 10, 99)
++#include <linux/sched/signal.h>
++#endif
+ 
+ #include "compat_cred.h"
+ #include "compat_module.h"
+@@ -212,7 +215,11 @@
+                                  struct sockaddr *addr, int addrLen, int flags);
+ static int VSockVmciStreamConnect(struct socket *sock,
+                                   struct sockaddr *addr, int addrLen, int flags);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+ static int VSockVmciAccept(struct socket *sock, struct socket *newsock, int flags);
++#else
++static int VSockVmciAccept(struct socket *sock, struct socket *newsock, int flags, bool kern);
++#endif
+ static int VSockVmciGetname(struct socket *sock,
+                             struct sockaddr *addr, int *addrLen, int peer);
+ static unsigned int VSockVmciPoll(struct file *file,
 @@ -232,13 +232,29 @@ static int VSockVmciStreamSetsockopt(struct socket *sock, int level, int optname
  static int VSockVmciStreamGetsockopt(struct socket *sock, int level, int optname,
                                       char __user *optval, int __user * optlen);
@@ -83,6 +105,19 @@ index bde1497..9f8f843 100644
     sk = sk_alloc(vsockVmciFamilyOps.family, priority,
                   vsockVmciProto.slab_obj_size, vsockVmciProto.slab);
  #elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 24)
+@@ -3775,7 +3805,12 @@
+ static int
+ VSockVmciAccept(struct socket *sock,     // IN
+                 struct socket *newsock,  // IN/OUT
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+                 int flags)               // IN
++#else
++                int flags,               // IN
++                bool kern)
++#endif
+ {
+    struct sock *listener;
+    int err;
 @@ -4210,7 +4233,11 @@ VSockVmciShutdown(struct socket *sock,  // IN
   */
  
