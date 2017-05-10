@@ -16,7 +16,7 @@ checkdepends=('memcached')
 backup=('etc/php56/conf.d/memcache.ini')
 #source=(https://pecl.php.net/get/memcache-${pkgver}.tgz)
 source=("git+https://github.com/websupport-sk/pecl-memcache.git#commit=$_commit")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 CFLAGS+=' -std=gnu89'
 
