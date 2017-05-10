@@ -8,7 +8,7 @@
 
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=8.0.0.r153683.896d130e4dc
+pkgver=8.0.0.r153878.495cd7fe2dc
 _pkgver_base=8.0.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
@@ -38,6 +38,11 @@ pkgver() {
 _libdir="usr/lib/gcc/$_CHOST/$_pkgver_base"
 
 prepare() {
+	if [ $(cat ${srcdir}/gcc/gcc/BASE-VER) != $_pkgver_base ]; then
+	    error "\`_pkgver_base\` needs to be updated to $(cat ${srcdir}/gcc/gcc/BASE-VER)"
+	    return 1
+	fi
+
         cd ${srcdir}/${_basedir}
 
         # link isl/cloog for in-tree builds
