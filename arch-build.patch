@@ -305,3 +305,31 @@ diff -ruN tomahawk-0.8.4.orig/src/libtomahawk/utils/TomahawkUtils.cpp tomahawk-0
  
  // We need this for the version info (if available)
  #include <taglib/taglib.h>
+diff -ruN tomahawk-0.8.4.orig/CMakeLists.txt tomahawk-0.8.4/CMakeLists.txt
+--- tomahawk-0.8.4.orig/CMakeLists.txt	2017-05-10 13:41:09.541994743 +0300
++++ tomahawk-0.8.4/CMakeLists.txt	2017-05-10 13:41:41.130929717 +0300
+@@ -321,6 +321,7 @@
+ if( NOT APPLE )
+ if( TOMAHAWK_QT5 )
+     macro_optional_find_package(Qt5Keychain 0.1.0)
++    set(QTKEYCHAIN_FOUND ${Qt5Keychain_FOUND})
+ else()
+     macro_optional_find_package(QtKeychain 0.1.0)
+ endif()
+diff -ruN tomahawk-0.8.4.orig/CMakeModules/MacroLogFeature.cmake tomahawk-0.8.4/CMakeModules/MacroLogFeature.cmake
+--- tomahawk-0.8.4.orig/CMakeModules/MacroLogFeature.cmake	2017-05-10 13:41:09.565327281 +0300
++++ tomahawk-0.8.4/CMakeModules/MacroLogFeature.cmake	2017-05-10 13:41:24.831476376 +0300
+@@ -92,9 +92,10 @@
+ 
+    FILE(APPEND "${_LOGFILENAME}" "${_logtext}\n")
+ 
+-   IF(COMMAND SET_PACKAGE_INFO)  # in FeatureSummary.cmake since CMake 2.8.3
+-     SET_PACKAGE_INFO("${_package}" "\"${_description}\"" "${_url}" "\"${_comments}\"")
+-   ENDIF(COMMAND SET_PACKAGE_INFO)
++   set_package_properties("${_package}" PROPERTIES
++                               URL "${_url}"
++                               DESCRIPTION "\"${_description}\""
++                               PURPOSE "\"${_comments}\"")
+ 
+ ENDMACRO(MACRO_LOG_FEATURE)
+ 

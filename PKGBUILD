@@ -7,7 +7,7 @@ pkgver=0.8.4
 pkgrel=4
 pkgdesc="A Music Player App written in C++/Qt5"
 arch=('i686' 'x86_64')
-url='http://tomahawk-player.org/'
+url='https://tomahawk-player.org/'
 license=('GPL3')
 depends=('attica-qt5' 'gnutls' 'libechonest-qt5' 'liblastfm-qt5' 'lucene++'
          'phonon-qt5' 'qca-qt5' 'qt5-svg' 'qt5-webkit' 'qtkeychain-qt5' 'quazip-qt5'
@@ -19,8 +19,8 @@ conflicts=('tomahawk')
 install="${_pkgname}.install"
 source=("http://download.tomahawk-player.org/${_pkgname}-${pkgver}.tar.bz2"
         "arch-build.patch")
-md5sums=('04832abe1786edcc55805875b5882445'
-         '7d17c93e6d9959253498eddc3ffc046f')
+sha512sums=('5b312f593eac39d06de05e24d4ce429122d0777a9d52d6db8c65309ac283d7ae560c2fc189b186f0f8b1a7bbe1135ed0d59e1d850de6a93655e53efe4f5317c7'
+            '305c355fa583a5420df5523f9fad0334e7feb7ed814ba277dc42d9e20edb3837304f1755f252ddf6fa2bb09d204fccaffc5e8c03e3f76faaf51359a8a40a499b')
 
 prepare() {
   rm -rf "build"
@@ -38,6 +38,7 @@ build() {
         -DBUILD_WITH_QT4=OFF \
         -DBUILD_HATCHET=OFF \
         -DTAGLIB_MIN_VERSION=1.10 \
+        -Wno-dev \
         "../${_pkgname}-${pkgver}"
   make
 }
