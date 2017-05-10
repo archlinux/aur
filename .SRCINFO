@@ -1,0 +1,14 @@
+pkgbase = prodigal
+	pkgdesc = Fast, reliable protein-coding gene prediction for prokaryotic genomes.
+	pkgver = 2.6.3
+	pkgrel = 1
+	url = https://github.com/hyattpd/Prodigal
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	options = !emptydirs
+	source = https://github.com/hyattpd/Prodigal/releases/download/v2.6.3/prodigal.linux
+	md5sums = af50e3d4a65150a2eb6e3171a669dacf
+
+pkgname = prodigal
+
