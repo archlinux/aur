@@ -4,7 +4,7 @@
 
 rplname=gnome-settings-daemon
 pkgname=gnome-settings-daemon-volume-step-patch
-pkgver=3.24.1
+pkgver=3.24.2
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with an additional patch to allow configuration of volume steps"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ source=(
 	https://download.gnome.org/sources/$rplname/${pkgver:0:4}/$rplname-$pkgver.tar.xz
 	volume-step.patch
 )
-sha256sums=('1b14ddc63e4cee616b73d048112878f6f4ac606f877778db882d270db904750b'
+sha256sums=('4aa9d72644e3ee8a30096a38986b0e9543fca92f586c561f6c8a11fb8148dcca'
             '754b89fbb2fd1da0f431e53b9aeaab511734234031c57c62d4747cfafeef2438')
 
 prepare() {
