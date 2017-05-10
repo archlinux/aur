@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=signal-muon-git
-pkgver=0.1.0_3_g4ba515f
+pkgver=0.2.0_0_gf14d195
 pkgrel=1
 license=("MPL-2.0")
 pkgdesc="Signal Private Messenger for the Desktop using Muon instead of Chrome"
