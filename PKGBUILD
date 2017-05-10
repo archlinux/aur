@@ -1,4 +1,4 @@
-# Maintainer: Thore Bödecker <me at foxxx0 dot de>
+# Maintainer: Thore Bödecker <me [at] foxxx0 [dot] de>
 # Contributor: Karol Babioch <karol@babioch.de>
 
 pkgname=amavisd-milter
