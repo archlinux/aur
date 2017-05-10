@@ -65,8 +65,8 @@ set_product_name
 if [[ $ver != 13.* ]]; then
     for script in vmware vmplayer vmware-netcfg; do
         if [[ -f /usr/bin/$script ]]; then
-            if ! grep -q "libcurl" /usr/bin/$script; then
-                sed '/export PRODUCT_NAME/aexport LD_LIBRARY_PATH=/usr/lib/vmware/lib/libcurl.so.4:$LD_LIBRARY_PATH' \
+            if ! grep -q "VMWARE_USE_SHIPPED_LIBS" /usr/bin/$script; then
+                sed '/export PRODUCT_NAME/aexport VMWARE_USE_SHIPPED_LIBS=yes' \
                     -i /usr/bin/$script
             fi
         fi
