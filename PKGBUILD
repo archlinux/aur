@@ -3,7 +3,7 @@
 
 pkgname=mdm-display-manager
 _pkgname=mdm
-pkgver=2.0.17
+pkgver=2.0.18
 pkgrel=1
 pkgdesc="The MDM Display Manager"
 arch=('i686' 'x86_64')
@@ -18,14 +18,14 @@ options=('!libtool')
 install='mdm-display-manager.install'
 backup=('etc/mdm/custom.conf' 'etc/pam.d/mdm' 'etc/pam.d/mdm-autologin')
 noextract=()
-source=("https://github.com/linuxmint/${_pkgname}/archive/${pkgver}.tar.gz"
-    	'mdm.pam'
-    	'mdm.service'
-    	'mdm-autologin.pam'
-    	'defaults.conf'
-    	'org.cinnamon.pkexec.mdmsetup.policy'
-    	'mdm-plymouth.service')
-sha256sums=('60a6e5b82be42320dda06c397f61d3768f599d344c2c5f357c4a8066e91c4f49'
+source=("${_pkgname}-v${pkgver}.tar.gz::https://github.com/linuxmint/${_pkgname}/archive/${pkgver}.tar.gz"
+        'mdm.pam'
+        'mdm.service'
+        'mdm-autologin.pam'
+        'defaults.conf'
+        'org.cinnamon.pkexec.mdmsetup.policy'
+        'mdm-plymouth.service')
+sha256sums=('7fbe402c7abfea1c71a2929f1d3f48ec6969f102f077b63cad6e8dab3b656fc3'
             '8663192f02fbbcaf9b84a37a44d47af7381c18d4327c576ca7924baca2cc163b'
             'd3dd582eb25bb31f012167069c869d3ce89c1dbd9b5aa7396350d8cf609994a5'
             '479e8fd4d5ef353fec5af776ad05e4f414a92d6f374f9b8f5deef77b9e301bc7'
@@ -53,12 +53,12 @@ build() {
     --enable-compile-warnings=no --sbindir=/usr/bin \
     LDFLAGS="-lXau -lm"
     sed -i -e 's|${prefix}|/usr|' config.h
-    make DESTDIR=${pkgdir}
+    make DESTDIR="${pkgdir}"
 }
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    make DESTDIR=${pkgdir} install
+    make DESTDIR="${pkgdir}" install
 
     msg2 'Adding PAM rules'
     #PAM, we use our own, not LinuxMint stuff, problem?...
@@ -90,7 +90,7 @@ package() {
     #Fix mdm files conflict with gnome-control-center (usr/share/pixmaps/faces/*)
     install -m755 -d "${pkgdir}/usr/share/pixmaps/faces/"
 
-    make DESTDIR=${pkgdir} install -C gui/faces
+    make DESTDIR="${pkgdir}" install -C gui/faces
 
     msg2 'Adding applications'
     #Fix gdmsetup.desktop
@@ -99,7 +99,7 @@ package() {
 
     #Fix erroneous path for certain applications
     install -m755 -d "${pkgdir}/usr/share/applications"
-    mv -f ${pkgdir}/usr/share/mdm/applications/*.* "${pkgdir}/usr/share/applications"
-    chmod 755 ${pkgdir}/usr/share/applications/*.*
+    mv -f "${pkgdir}"/usr/share/mdm/applications/*.* "${pkgdir}/usr/share/applications"
+    chmod 755 "${pkgdir}"/usr/share/applications/*.*
     rmdir "${pkgdir}/usr/share/mdm/applications"
 }
