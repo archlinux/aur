@@ -1,0 +1,32 @@
+This file is a partial *UNOFFICIAL* translation
+by the AUR package mainteiner
+on 2013-06-19.
+----
+
+Linux Japanes man pages
+Jun 19, 2013
+JM Project <linuxjm-discuss@lists.sourceforge.jp>
+http://linuxjm.sourceforge.jp/
+----
+
+6. Copyright and Distribution
+
+   Each man page has different licenses and distribution terms.
+   Please refer to comments in the roff files of the man pages.
+
+   Just for reference: most of the man pages are allowed to be distributed
+   in nroff format, but cannot be distributed as cat pages
+   without the roff files. Basically, JM Project does not add
+   additional restrictions besides the original terms.
+
+   JM project owns the compilation copyright of this package.
+   You can distribute this freely as long as you follow the above instructions.
+
+
+7. Contributed Man Pages
+
+   This archive includes manual pages translated by third parties.
+   More specifically, in "translation_list" files, the contributed pages
+   are marked with something along the lines of "C" or "c".
+   The "translation_list" files are placed in directories of packages
+   under "manual/". The copyrihts of those pages belong to the contributors.
