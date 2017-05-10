@@ -1,6 +1,6 @@
 # Maintainer: Franek Madej <franek.madej@gmail.com>
 pkgname=yadm-git
-pkgver=1.07.r1.ga78fe20
+pkgver=1.09.r0.g246eab8
 pkgrel=1
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
