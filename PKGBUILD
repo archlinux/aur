@@ -3,7 +3,7 @@
 
 _pkgname=libarchive
 pkgname=lib32-${_pkgname}
-pkgver=3.2.1
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="library that can create and read several streaming archive formats (32 bit)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('lib32-acl' 'lib32-bzip2' 'lib32-expat' 'lib32-lzo' 'lib32-openssl' 'lib32-xz' "${_pkgname}")
 makedepends=('gcc-multilib' 'lib32-zlib')
 source=("http://libarchive.org/downloads/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('afa257047d1941a565216edbf0171e72')
+md5sums=('d2af45480aa5b0db5b5f3919cd0ea65e')
 
 build() {
   export CC="gcc -m32"
@@ -30,6 +30,5 @@ package() {
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 
-  install -dm755 "${pkgdir}"/usr/share/licenses
-  ln -s ${_pkgname} "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
