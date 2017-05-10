@@ -1,17 +1,15 @@
 # Maintainer: Moritz Kiefer <moritz.kiefer@purelyfunctional.org>
 pkgname=helio-workstation-git
 pkgver=v1.7.r16.43d4dc6
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc='Free and open source music sequencer'
 arch=('x86_64')
-url=""
-license=('GPL')
-groups=()
+url='https://helioworkstation.com/'
+license=('GPL3')
 depends=('alsa-lib' 'curl' 'webkit2gtk')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=
 source=("${pkgname%-git}::git+https://github.com/peterrudenko/helio-workstation.git"
        	"JUCE::git+https://github.com/WeAreROLI/JUCE.git")
 md5sums=('SKIP'
