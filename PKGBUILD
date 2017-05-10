@@ -18,7 +18,7 @@ sha512sums=(
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <com dot unifoundry at unifoundry>
 
 package() {
-  cd $srcdir
-  install -d $pkgdir/usr/share/fonts/TTF/
-  install -m644 unifont_csur-$pkgver.ttf $pkgdir/usr/share/fonts/TTF/Unifont_CSUR.ttf
+	cd "$srcdir"
+	install -Dm644 "unifont_csur-$pkgver.ttf" \
+		"$pkgdir/usr/share/fonts/TTF/Unifont_CSUR.ttf"
 }
