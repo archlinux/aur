@@ -83,7 +83,7 @@ package () {
 		sed -i "s|$srcdir|/opt|g" $i
 	done
 
-	echo "export OPENFST=$(find tools -type d -name 'openfst*')" >> tools/env.sh
+	echo "export OPENFST=/opt/kaldi/$(find tools -type d -name 'openfst*')" >> tools/env.sh
 	echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-}:${OPENFST}/lib' >> tools/env.sh
 
 	mkdir -p $pkgdir/opt/$pkgname
