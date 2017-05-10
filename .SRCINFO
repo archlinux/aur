@@ -1,6 +1,6 @@
 pkgbase = light-git
 	pkgdesc = Program to easily change brightness on backlight-controllers.
-	pkgver = 1.0.r0.g9681c72
+	pkgver = 1.0.r6.g674ada0
 	pkgrel = 1
 	url = https://github.com/haikarainen/light
 	arch = i686

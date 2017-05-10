@@ -2,7 +2,7 @@
 # Contributor: Fredrik Haikarainen <fredrik.haikarainen@gmail.com>
 
 pkgname=light-git
-pkgver=1.0.r0.g9681c72
+pkgver=1.0.r6.g674ada0
 pkgrel=1
 pkgdesc='Program to easily change brightness on backlight-controllers.'
 arch=('i686' 'x86_64')
