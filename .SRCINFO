@@ -14,13 +14,14 @@ pkgbase = meshlab
 	depends = desktop-file-utils
 	depends = glu
 	depends = mpir
-	depends = openssl
+	depends = openssl-1.0
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-script
 	provides = meshlab
 	source = git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12
 	source = git+https://github.com/cnr-isti-vclab/vcglib.git#tag=v1.0.1
+	source = ssynth.patch
 	source = screened_poisson.patch
 	source = plugin_dir.patch
 	source = shaders_dir.patch
@@ -37,6 +38,7 @@ pkgbase = meshlab
 	source = meshlab.desktop
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = fcf9148ad21706f4fef558a254bee4e2
 	md5sums = d9c9e9160ee16694a225819ee4598be4
 	md5sums = f13d58ca07fa74b3d7c8f7f9d4ee6a93
 	md5sums = 753dd4753081ddb428f4db8eaefe9009

@@ -7,11 +7,13 @@ arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
 provides=('meshlab')
 license=('GPL2')
-depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'desktop-file-utils' 'glu' 'mpir' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script')
+depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'desktop-file-utils' 'glu' 'mpir' 'openssl-1.0' 'qt5-base' 'qt5-declarative' 'qt5-script')
+makedepends=('git')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 install="${pkgname}.install"
 source=("git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#tag=v1.0.1"
+        "ssynth.patch"
         "screened_poisson.patch"
         "plugin_dir.patch"
         "shaders_dir.patch"
@@ -28,6 +30,7 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12"
         "meshlab.desktop")
 md5sums=('SKIP'
          'SKIP'
+         'fcf9148ad21706f4fef558a254bee4e2'
          'd9c9e9160ee16694a225819ee4598be4'
          'f13d58ca07fa74b3d7c8f7f9d4ee6a93'
          '753dd4753081ddb428f4db8eaefe9009'
@@ -44,39 +47,41 @@ md5sums=('SKIP'
          '18aed0a21276a22325bf8c32166fb110')
 
 prepare() {
-  cd "${srcdir}"
+  cd ${srcdir}/${pkgname}
 
   # remove bundled headers and libraries
-  rm -fr meshlab/src/external/{inc,lib}
+  rm -fr src/external/{inc,lib}
 
   msg "truncate external lib"
-  patch -Np0 -i external.patch
+  patch -Np1 -i ../external.patch
   msg "fix rpath"
-  patch -Np0 -i rpath.patch
+  patch -Np1 -i ../rpath.patch
   msg "fix meshlab/src/plugins_experimental/io_TXT/ case sensitive path"
-  mv meshlab/src/plugins_experimental/io_TXT/io_txt.pro meshlab/src/plugins_experimental/io_TXT/io_TXT.pro
+  mv src/plugins_experimental/io_TXT/io_txt.pro src/plugins_experimental/io_TXT/io_TXT.pro
   msg "fix meshalbserver missing -lGLU"
-  patch -Np0 -i meshlabserver_GLU.patch
+  patch -Np1 -i ../meshlabserver_GLU.patch
   msg "fix cpp11 abs()"
-  patch -Np0 -i cpp11_abs.patch
+  patch -Np1 -i ../cpp11_abs.patch
   msg "fix decimal separator problem"
-  patch -Np0 -i fix_locale.patch
+  patch -Np1 -i ../fix_locale.patch
   msg "using system mpir lib"
-  patch -Np0 -i mpir.patch
+  patch -Np1 -i ../mpir.patch
   msg "using system bzip2 lib"
-  patch -Np0 -i bzip2.patch
+  patch -Np1 -i ../bzip2.patch
   msg "using system muparser lib"
-  patch -Np0 -i muparser.patch
+  patch -Np1 -i ../muparser.patch
   msg "using system levmar lib"
-  patch -Np0 -i levmar.patch
+  patch -Np1 -i ../levmar.patch
   msg "using system 3ds lib"
-  patch -Np0 -i 3ds.patch
+  patch -Np1 -i ../3ds.patch
   msg "move plugins to /usr/lib/plugins"
-  patch -Np0 -i plugin_dir.patch
+  patch -Np1 -i ../plugin_dir.patch
   msg "move shaders to /usr/share/meshlab/shaders"
-  patch -Np0 -i shaders_dir.patch
+  patch -Np1 -i ../shaders_dir.patch
   msg "fix screened poisson linux compilation"
-  patch -Np0 -i screened_poisson.patch
+  patch -Np1 -i ../screened_poisson.patch
+  msg "compile ssynth with -fopenmp flag"
+  patch -Np1 -i ../ssynth.patch
 }
 
 build() {
