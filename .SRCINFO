@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-direct_menu
 	pkgdesc = Provide easy access to all apps in the header for NextCloud
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/juliushaertl/direct_menu/
 	arch = any
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-direct_menu-0.10.1.tar.gz::https://github.com/juliushaertl/direct_menu/releases/download/v0.10.1/direct_menu.tar.gz
-	sha512sums = e70994cd59b7100df587787fd68be98163c87aa745ae857d32eca2b5f9b1aca5e059e74f58c037fd7c38819067aa96f3ca2b8b6899cd3edd4fddbb055628ff65
+	source = nextcloud-app-direct_menu-0.10.2.tar.gz::https://github.com/juliushaertl/direct_menu/releases/download/v0.10.2/direct_menu.tar.gz
+	sha512sums = 48ab0c792f07c87efb5d737e4e98e9999dc6c9c00ea15e373fc17aa15e88b3566f96b7a70d0a3d2d3cb94efdbc419432911cecc5d4b3ed2aad1f889075896742
 
 pkgname = nextcloud-app-direct_menu
 
