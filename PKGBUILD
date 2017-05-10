@@ -2,12 +2,13 @@
 
 pkgname=nbtexplorer
 pkgver=2.7.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft NBT Editor for editing player and world files."
 arch=('i686' 'x86_64')
 url="https://github.com/jaquadro/NBTExplorer"
 license=('unknown')
-depends=('mono' 'unzip')
+depends=('mono')
+makedepends=('unzip')
 provides=('nbtexplorer')
 
 source=(https://github.com/jaquadro/NBTExplorer/releases/download/v{$pkgver}.-win/NBTExplorer-${pkgver}.zip nbtexplorer nbtexplorer.png nbtexplorer.desktop)
