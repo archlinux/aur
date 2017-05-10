@@ -1,0 +1,24 @@
+pkgbase = pop-icon-theme-git
+	pkgdesc = A free and open source SVG icon theme for Linux, based on Paper Icon Set and Papirus.
+	pkgver = r1002.2b96014fb
+	pkgrel = 1
+	url = https://github.com/system76/pop-icon-theme
+	arch = any
+	license = GPL2
+	license = CCPL
+	makedepends = git
+	optdepends = gnome-shell>=3.18.3
+	optdepends = gnome-flashback>=3.18.2
+	optdepends = budgie-desktop>=10.2.7
+	optdepends = xfce4-session>=4.12.2
+	optdepends = mate-desktop>=1.14.0
+	optdepends = mate-desktop>=1.14.0
+	optdepends = lxde-common>=0.99.1
+	optdepends = pop-gtk-theme-git: Recommended gtk theme
+	provides = pop-icon-theme
+	conflicts = pop-icon-theme
+	source = git+https://github.com/system76/pop-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = pop-icon-theme-git
+
