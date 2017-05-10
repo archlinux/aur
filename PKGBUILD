@@ -69,7 +69,7 @@ sha512sums=('54bdb53f65c10e43db5df12aaf1302926e2b66997c0aeeeac0834a0943ca244ec9d
             'ba68ee4c2846d52d7d223d57c815db0b81e41f2e1c1f3cb3b6f74fd523826be8848f630f53179b9d5d7eb1b312a07bcd3d3df7d2c462bb85d4cb31c60182be0a'
             '08d5980b532cdbef651355baf5e971df6d641e5b6a74fd2ad4f84837b00f2fa0732069af74c76cd635cf9437fd139b8572ff7b0c86911be7c8a251b4f57a2a25'
             'SKIP'
-            '0a096d98a927292f172141a52e302e951d9d0dcb30600470c19d7ac162f6dc7c6171822eb1f8cb480844e655f899b7b7f26f1571eb84335957ec320d24ea9356'
+            '510f8f2d6fdc1d457f450dd59226d6212ca170f2cc7f068960d8353ec3ad994056d19ffbe55fd2a9aa642e72c2ca08eeff45084c6fd2d4a3b3b2fd0b6d34ba04'
             '8ec7ec087b72d8f8de6d8dd8fb2f6e361e47141814e632e05d6277a67701be00aeae054cea2d2ddabfc149f12230296f0085f17bc83ba35a880b7be300a75ccd'
             '6b76f61db3036d15aacac4af767814665398243a2ad55cc11c4d58e3f2ce1740c5c4706559b919f823405f69aa89d92486ed94e0caca72b52abb703f68f5b43a'
             '76ac01f250975688439a31206f60d3ee05aa74a9cff7922ba9eab3fb3906bba176bab6dcff1791c19ca6acffed5167af841ab077d49ba1889020e5f827d34a60'
@@ -167,6 +167,7 @@ prepare() {
   #echo "" > ipc/chromium/moz.build || die "failed to disable IPC"
   #sed -i -e '/marketplace-/d' -e '/manifest-/d' -e '/xpcshell/d' -e '/privileged/d' -e '/stage/d' security/apps/moz.build || die "failed to disable unused certs"
   echo "origin	install	1	https://addons.mozilla.org" > browser/app/permissions  || die "failed disable remote login whitelist"
+  sed -i -e '/FxAccountsComponents/d' -e '/FxAccountsPush/d' -e '/pdfjs/d' -e '/features/d' browser/installer/package-manifest.in || die "failed to remove references in package-manifest"
 
   # ARM-specific changes:
   if [[ "$CARCH" == arm* ]]; then

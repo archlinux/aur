@@ -22,6 +22,7 @@ ac_add_options --disable-b2g-bt
 ac_add_options --disable-gamepad
 ac_add_options --disable-tests
 ac_add_options --disable-maintenance-service
+ac_add_options --disable-necko-wifi
 
 # System libraries
 ac_add_options --with-system-nspr
