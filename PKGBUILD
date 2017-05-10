@@ -1,7 +1,7 @@
 # Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 pkgname=man-pages-ja
 pkgver=20170415
-pkgrel=1
+pkgrel=2
 pkgdesc="Man pages for Japanese"
 arch=('any')
 url="https://linuxjm.osdn.jp"
@@ -14,8 +14,11 @@ md5sums=('6ec32f9f2c70ea39e945dac06d0ca582')
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
-    sed -i '/until/i$ans = "y";' script/configure.perl
-    sed -i "/usr[/]share[/]man[/]/s@/@${pkgdir}/@1" script/configure.perl
+    cp script/configure.perl script/configure.perl.org
+
+    cat script/configure.perl.org                |
+    sed '/until/i$ans = "y";'                    |
+    sed "/usr[/]share[/]man[/]/s@/@${pkgdir}/@1" > script/configure.perl
 }
 
 build() {
@@ -27,7 +30,4 @@ package() {
     mkdir -p ${pkgdir}/usr/share/man/${LANG}
     cd ${srcdir}/${pkgname}-${pkgver}
     make install
-
-#    makewhatis
-#    mandb
 }
