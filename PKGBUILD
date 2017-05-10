@@ -7,7 +7,7 @@ pkgdesc="A fork of the E17 window manager used by Bodhi Linux."
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
-depends=('desktop-file-utils' 'e_dbus' 'efl>1.18')
+depends=('desktop-file-utils' 'e_dbus' 'efl>1.18' 'xcb-util-keysyms')
 optdepends=('acpid: power events on laptop lid close'
             'bc: calculator in everything module'
             'connman: network module'
