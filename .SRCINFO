@@ -1,0 +1,15 @@
+pkgbase = epeg-git
+	pkgdesc = An IMMENSELY FAST JPEG thumbnailer library API.
+	pkgver = r38.248ae9f
+	pkgrel = 1
+	url = https://github.com/mattes/epeg
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = libjpeg
+	depends = libexif
+	provides = epeg
+	conflicts = epeg
+
+pkgname = epeg-git
+
