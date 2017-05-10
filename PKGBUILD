@@ -1,18 +1,20 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r680.c87ad2f
-pkgrel=3
+pkgver=r785.ab24037
+pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('i686' 'x86_64')
 license=('GPL2')
 source=('git+https://github.com/elfmz/far2l'
-        'far2l_install.patch')
+        'git+https://github.com/cycleg/far-gvfs'
+        'far2l.patch')
 sha256sums=('SKIP'
-            '22ed1b899a2855afd4adb8e1cb81703dd56ade20e6449f893181232999b4cab4')
+            'SKIP'
+            '068b54cccc807c90a3874ac0c4cbf6891a8f4e53ea384a566b9f4cba358c2a52')
 makedepends=('git' 'cmake')
-depends=('wxgtk')
+depends=('wxgtk' 'gtkmm3' 'openssl-1.0')
 
 pkgver() {
   cd "$srcdir"/far2l
@@ -22,16 +24,17 @@ pkgver() {
 prepare() {
   cd "$srcdir"/far2l
 
-  patch -p1 -i "$srcdir"/far2l_install.patch
+  patch -p1 -i "$srcdir"/far2l.patch
 }
 
 package() {
 
   cd "$srcdir"/far2l
-  cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr -DCMAKE_BUILD_TYPE=Release
-  cmake --build .
+  rm -rf far-gvfs
+  mv "$srcdir"/far-gvfs ./
 
-  make install
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr -DCMAKE_BUILD_TYPE=Release
+  cmake --build . --target install
 
   ln -sf ../../bin/far2l "$pkgdir"/usr/lib/far2l/far2l_askpass
   ln -sf ../../bin/far2l "$pkgdir"/usr/lib/far2l/far2l_sudoapp
