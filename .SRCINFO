@@ -1,7 +1,7 @@
 pkgbase = netbox
 	pkgdesc = IP address management (IPAM) and data center infrastructure management (DCIM) tool.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/digitalocean/netbox
 	install = netbox.install
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = netbox
 	depends = python-crypto
 	depends = python-cryptography
 	depends = python-django
+	depends = python-django-cors-headers
 	depends = python-django-debug-toolbar
 	depends = python-django-filter
 	depends = python-django-mptt
