@@ -2,9 +2,9 @@
 
 pkgname=python3-kitchen
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful snippets of python code"
-url="https://fedorahosted.org/kitchen"
+url="https://github.com/fedora-infra/kitchen"
 depends=('python' )
 makedepends=('python')
 license=('LGPLv2+')
