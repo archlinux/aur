@@ -7,8 +7,7 @@ pkgdesc="TrueType part of the GNU Unifont containing Michael Everson's ConScript
 url="http://unifoundry.com/unifont.html"
 arch=('any')
 license=('GPL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils' 'ttf-unifont')
-install=ttf.install
+depends=('ttf-unifont')
 source=(
 	"http://unifoundry.com/pub/unifont-$pkgver/font-builds/unifont_csur-$pkgver.ttf"{,.sig}
 )
