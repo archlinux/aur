@@ -13,11 +13,12 @@ license=('PHP')
 provides=("php-memcache=${pkgver}-${pkgrel}")
 depends=('php56>=5.6.17-3')
 checkdepends=('memcached')
-CFLAGS+=' -std=gnu89'
 backup=('etc/php56/conf.d/memcache.ini')
 #source=(https://pecl.php.net/get/memcache-${pkgver}.tgz)
 source=("git+https://github.com/websupport-sk/pecl-memcache.git#commit=$_commit")
 sha256sums=('SKIP')
+
+CFLAGS+=' -std=gnu89'
 
 prepare() {
   cd "${srcdir}/pecl-memcache"
