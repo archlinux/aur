@@ -1,7 +1,7 @@
 pkgbase = python34
 	pkgdesc = Major release 3.4 of the Python high-level programming language
 	pkgver = 3.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python34
 	depends = expat
 	depends = bzip2
 	depends = gdbm
-	depends = openssl
+	depends = openssl-1.0
 	depends = libffi
 	depends = zlib
 	optdepends = tk: for tkinter

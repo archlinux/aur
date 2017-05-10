@@ -1,13 +1,13 @@
 pkgname=python34
 pkgver=3.4.6
-pkgrel=1
+pkgrel=2
 _pybasever=3.4
 _pymajver=3
 pkgdesc="Major release 3.4 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
+depends=('expat' 'bzip2' 'gdbm' 'openssl-1.0' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'hardening-wrapper')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
-  CFLAGS=-DOPENSSL_NO_SSL2 ./configure --prefix=/usr \
+  CFLAGS="-DOPENSSL_NO_SSL2 -I/usr/include/openssl-1.0" LDFLAGS=-L/usr/lib/openssl-1.0 ./configure --prefix=/usr \
               --enable-shared \
               --with-threads \
               --with-computed-gotos \
