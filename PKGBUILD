@@ -3,16 +3,16 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.333.g38d235d
+pkgver=1.0.0.338.g3a86f9f
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal"
 arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
-license=('GPL3')
+license=('GPL-2.0')
 makedepends=('git' 'cmake' 'gettext' 'boost')
-depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'desktop-file-utils')
+depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'desktop-file-utils' 'poppler-glib')
 provides=("xournal=${pkgver}" "xournal-dmgerman=${pkgver} xournalpp=${pkgver}")
-conflicts=('xournal' 'xournalpp' 'xournal-dmgerman' 'xournal-image-patched' 'xournalpp-svn')
+conflicts=('xournalpp')
 install="xournalpp.install"
 source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git")
 sha256sums=('SKIP')
@@ -25,8 +25,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}/"
 
-	rm -rf "${srcdir}/${_pkgname}/build" || true
-	mkdir -p "${srcdir}/${_pkgname}/build"
+	test -e "${srcdir}/${_pkgname}/build" || mkdir -p "${srcdir}/${_pkgname}/build"
 	cd "${srcdir}/${_pkgname}/build"
 
 	cmake -DENABLE_OS="OFF" -DENABLE_MATHTEX="OFF" -DCMAKE_INSTALL_PREFIX="/usr/" ..
@@ -35,7 +34,6 @@ prepare() {
 build() {
 	cd "${srcdir}/${_pkgname}/build"
 	make
-	echo
 }
 
 package() {
@@ -43,7 +41,6 @@ package() {
 
 	# sed 's|/usr/local|/usr|g' -i "${srcdir}/${_pkgname}/build/cmake_install.cmake" || true
 	make DESTDIR="${pkgdir}/" install
-	echo
 
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes"
