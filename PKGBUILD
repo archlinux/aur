@@ -9,9 +9,14 @@ arch=('any')
 license=('GPL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils' 'ttf-unifont')
 install=ttf.install
-source=( http://unifoundry.com/pub/unifont-$pkgver/font-builds/unifont_csur-$pkgver.ttf
+source=(
+	"http://unifoundry.com/pub/unifont-$pkgver/font-builds/unifont_csur-$pkgver.ttf"{,.sig}
 )
-sha512sums=('aec803cb9ebf63b36e2c19c50460c4ba62bd720d18a87e1696e4f3a97b62f28c21c14c6262c5c8b9389804eef8b1d95f7fe57480fea63fc6cefeec1af3737b73')
+sha512sums=(
+	'aec803cb9ebf63b36e2c19c50460c4ba62bd720d18a87e1696e4f3a97b62f28c21c14c6262c5c8b9389804eef8b1d95f7fe57480fea63fc6cefeec1af3737b73'
+	'SKIP'
+)
+validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <com dot unifoundry at unifoundry>
 
 package() {
   cd $srcdir
