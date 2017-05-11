@@ -1,7 +1,7 @@
 # Maintainer: Tom Nguyen <tom81094@gmail.com>
 
 pkgname=masterpassword-cli-c-git
-pkgver=20170508.r1181.fcbb9376
+pkgver=20170511.r1182.d361ae23
 pkgrel=1
 pkgdesc="CLI version of Master Password. (git-version)"
 
