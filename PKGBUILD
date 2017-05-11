@@ -3,7 +3,7 @@
 # Contributor: Teteros <teteros -at- opmbx -dot- org>
 
 pkgname=radium
-pkgver=4.8.0
+pkgver=4.8.1
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -23,16 +23,13 @@ depends=(
     'libxinerama'
     'libxcursor'
     'hicolor-icon-theme'
-    # Maintenance note: The code depending on LLVM 3.9 is part of FAUST.
-    # When the release notes mention a FAUST update or similar, try compiling
-    # with the regular LLVM version again (i.e. llvm and llvm-libs).
-    'llvm39-libs'
+    'llvm-libs'
 )
 optdepends=('calf-ladspa' 'ladspa-plugins')
 makedepends=(
     'cmake'
     'boost'
-    'llvm39'
+    'llvm'
     'qt5-tools'
     'libxrandr'
     'steinberg-vst36'
@@ -42,7 +39,7 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "dont-empty-qt-library-paths.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-md5sums=('53d3c7e615fda6eee480bf4f2c98cdef'
+md5sums=('6efeffce3b44e0f1d5b1e55229f86057'
          'd63cea387564fa21dee775e764206a45'
          'd798d5655e2899dc1b54f797d9b2bda3'
          'd068d4bc99360cd4ec933c57ab9f5159')
