@@ -1,0 +1,13 @@
+pkgbase = xf86bigfontproto
+	pkgdesc = XF86BigFontProto protocol headers
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/xorg/proto/xf86bigfontproto
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source = http://xorg.freedesktop.org/releases/individual/proto/xf86bigfontproto-1.2.0.tar.bz2
+	sha256sums = ba9220e2c4475f5ed2ddaa7287426b30089e4d29bd58d35fad57ba5ea43e1648
+
+pkgname = xf86bigfontproto
+
