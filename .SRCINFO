@@ -1,14 +1,14 @@
 pkgbase = simpleid
 	pkgdesc = Simple, personal OpenID provider written in PHP
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://simpleid.koinic.net/
 	arch = any
 	license = GPL2
 	depends = php
 	backup = etc/webapps/simpleid/config.php
-	source = http://downloads.sourceforge.net/simpleid/simpleid-1.0.1.tar.gz
-	md5sums = 0a7bed3447556d19d8a551365dbc16af
+	source = http://downloads.sourceforge.net/simpleid/simpleid-1.0.2.tar.gz
+	md5sums = 5a7d58498f425162a5a4c57db38e6b40
 
 pkgname = simpleid
 

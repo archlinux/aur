@@ -2,7 +2,7 @@
 # Contributor: Sébastien Luttringer <seblu@aur.archlinux.org>
 
 pkgname=simpleid
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Simple, personal OpenID provider written in PHP'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL2')
 backup=("etc/webapps/$pkgname/config.php")
 depends=('php')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('0a7bed3447556d19d8a551365dbc16af')
+md5sums=('5a7d58498f425162a5a4c57db38e6b40')
 
 package() {
   cd $pkgname
