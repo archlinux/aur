@@ -1,7 +1,7 @@
 # Maintainer: muzhed <chustokes@126.com>
 
 pkgname=din
-pkgver=26
+pkgver=27a
 pkgrel=1
 pkgdesc="A sound synthesizer and musical instrument."
 arch=("i686" "x86_64")
@@ -10,26 +10,24 @@ license=('GPL2')
 depends=('jack' 'libgl' 'sdl' 'tcl')
 makedepends=('boost' 'subversion')
 install=$pkgname.install
-source=('svn+svn://jagernot.xyz/home/svn/din/trunk'
-        din.patch
+source=('svn+svn://jagernot.xyz/home/svn/din/tags/27a'
         din.png
         din.desktop)
 md5sums=('SKIP'
-         '1135196ec010ddcb26b4539d19ae26e8'
          '50ca4dc107eaa0d5b6a1efe21c469bd7'
          'e38840354b0f197079e6bbeda03c8613')
 
 
 build() {
-  cd "$srcdir"/trunk
+  cd "$srcdir"/27a
 
-  patch -p1 < ../din.patch
+  autoreconf -fvi
   ./configure CXXFLAGS=-O3 CFLAGS=-O3
   make
 }
 
 package() {
-  cd "$srcdir"/trunk
+  cd "$srcdir"/27a
   install -Dm755 src/din "$pkgdir/usr/lib/din/din"
   cp -r "src/factory" "$pkgdir/usr/lib/din"
   ln -s "/usr/lib/din/factory" "$pkgdir/usr/lib/din/user"
