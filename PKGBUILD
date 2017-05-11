@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=60.0.3080.5
+pkgver=60.0.3088.3
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -38,7 +38,7 @@ depends=(
          'xdg-utils'
          'libcups'
          'harfbuzz-icu'
-#          'opus'
+         'opus'
 #          'protobuf'
 #          'libevent'
          'ffmpeg'
@@ -82,12 +82,11 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         'BUILD.gn'
         # Patch form Gentoo
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-dma-buf-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/skia-avx2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r6.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r5.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-clang-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r6.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-opus-r1.patch'
         # Misc Patches
 #         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
 #         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
@@ -102,12 +101,11 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
-            'ef06f5a6db1ce8fb7af63276d9d1e490acd3fadc8da62131c54acba658726047'
             'ffc664a90b68600de2d80a4064df25ec6f34fb4443e96ef2f0741ccb49d90a4b'
             'aa10f5797fe28858533ceeb0fa903f37e744ed4133c889eac60f5094e4b6a596'
             '2fc21f48b95f9f2c2bd8576742fcf8028a8877c6b6e96c04d88184915982234e'
-            '5e327f41d0be88ee3b1fac727bc8de8bed3502f0df6e63c87f95997da7a39884'
-            'c584567f073d3eecdbcbaf49d797516f35ab33bdca3bbfe9afebf1810c5103c1'
+            'f53e07db39cc6e7b5a30b6606b347a2bd43098df28681c813aa0128bc8c492d0'
+            'ee7947cf63064d108c10f92db9b8dc772283757f27d7030b34520e9884c9ea67'
             # Misc Patches
 #             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
 #             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
@@ -213,6 +211,7 @@ _keeplibs=(
   'third_party/flatbuffers'
   'third_party/flot'
   'third_party/freetype'
+  'third_party/glslang-angle'
   'third_party/google_input_tools'
   'third_party/google_input_tools/third_party/closure_library'
   'third_party/google_input_tools/third_party/closure_library/third_party/closure'
@@ -247,7 +246,6 @@ _keeplibs=(
   'third_party/node/node_modules/vulcanize/third_party/UglifyJS2'
   'third_party/openh264'
   'third_party/openmax_dl'
-  'third_party/opus'
   'third_party/ots'
   'third_party/pdfium'
   'third_party/pdfium/third_party/agg23'
@@ -266,13 +264,18 @@ _keeplibs=(
   'third_party/qcms'
   'third_party/sfntly'
   'third_party/skia'
+  'third_party/skia/third_party/vulkan'
   'third_party/smhasher'
+  'third_party/spirv-headers'
+  'third_party/spirv-tools-angle'
   'third_party/swiftshader'
   'third_party/swiftshader/third_party/pnacl-subzero'
   'third_party/swiftshader/third_party/llvm-subzero'
   'third_party/sqlite'
   'third_party/tcmalloc'
   'third_party/usrsctp'
+  'third_party/vulkan'
+  'third_party/vulkan-validation-layers'
   'third_party/web-animations-js'
   'third_party/webdriver'
   'third_party/webrtc'
@@ -325,29 +328,29 @@ _flags=(
 
 # Set the bundled/external components.
 # TODO: need ported to GN as GYP doing before. see status page: https://crbug.com/551343
-# hunspell
-# libusb
-# opus
-# sqlite
-# ssl
-# libsrtp
-# protobuf
 
 _use_system=(
   'ffmpeg'
   'flac'
   'harfbuzz-ng'
+#  'hunspell' # need ustream changes
 #  'icu' # https://crbug.com/678661
   'libdrm'
-#   'libevent' # Get segfaults and other problems https://bugs.gentoo.org/593458
+#  'libevent' # Get segfaults and other problems https://bugs.gentoo.org/593458
   'libjpeg'
   'libpng'
-#   'libvpx'
+#  'libsrtp' # https://bugs.gentoo.org/459932
+#  'libusb' # https://crbug.com/266149
+#  'libvpx'
   'libwebp'
 #  'libxml' # https://bugs.gentoo.org/616818
   'libxslt'
+  'opus'
+#  'protobuf' # https://bugs.gentoo.org/525560
   're2'
+#  'sqlite' # https://crbug.com/58087
   'snappy'
+#   'ssl' # https://crbug.com/22208
   'yasm'
   'zlib'
 )
@@ -394,12 +397,11 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
-  patch -p1 -i "${srcdir}/chromium-dma-buf-r2.patch"
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE.patch"
   patch -p1 -i "${srcdir}/skia-avx2.patch"
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r6.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r5.patch"
-  patch -p1 -i "${srcdir}/chromium-clang-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r6.patch"
+  patch -p1 -i "${srcdir}/chromium-system-opus-r1.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -542,6 +544,8 @@ package() {
   install -Dm755 libwidevinecdmadapter.so "${pkgdir}/usr/lib/chromium-dev/libwidevinecdmadapter.so"
   install -Dm644 natives_blob.bin "${pkgdir}/usr/lib/chromium-dev/natives_blob.bin"
   install -Dm644 snapshot_blob.bin "${pkgdir}/usr/lib/chromium-dev/snapshot_blob.bin"
+  install -Dm644 swiftshader/libEGL.so "${pkgdir}/usr/lib/chromium-dev/swiftshader/libEGL.so"
+  install -Dm644 swiftshader/libGLESv2.so "${pkgdir}/usr/lib/chromium-dev/swiftshader/libGLESv2.so"
 
   # Install Resources.
   _resources=(
