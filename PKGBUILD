@@ -3,14 +3,14 @@
 
 pkgname='testssl.sh'
 pkgver=2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Testing TLS/SSL encryption"
 arch=('any')
 url="https://github.com/drwetter/testssl.sh"
 license=("GPL")
 depends=('bash' 'coreutils' 'util-linux' 'openssl')
 source=("testssl-${pkgver}.sh::${url}/raw/v${pkgver}/testssl.sh")
-sha256sums=('aa5b9de55f7560a1a1c3ce174d40afd70878b2061aea889dfc9dc28f8883745e')
+sha256sums=('9ce3282289ca4ec1d0afa9964d8232d44e69ddb3ff767bfad6c148cf7e279d4d')
 
 package() {
   cd "${srcdir}"
