@@ -5,12 +5,12 @@ MOZJS_DEBUG=
 
 pkgname=js52
 pkgver=52.1.1esr
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript interpreter and libraries"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 license=(MPL)
-depends=(nspr gcc-libs readline zlib icu)
+depends=(nspr gcc-libs readline zlib)
 makedepends=(python2 zip autoconf2.13)
 options=(!staticlibs)
 [[ -z "$MOZJS_DEBUG" ]] || options+=(!strip)
@@ -34,15 +34,16 @@ prepare() {
 build() {
   [[ -z "$MOZJS_DEBUG" ]] || DBG_OPTIONS='--enable-debug --disable-optimize'
   cd firefox-$pkgver/js/src
+  # spidermonkey is broken with ICU 59 and it won't be fix on FF52
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1353650
   ./configure --prefix=/usr --with-system-nspr \
-     --enable-readline --with-system-icu $DBG_OPTIONS
+     --enable-readline $DBG_OPTIONS
   make
 }
 
 check() {
   cd "$srcdir/firefox-$pkgver/js/src/tests"
-  # ICU tests broken; see https://bugzilla.mozilla.org/show_bug.cgi?id=1360131
-  python2 jstests.py ../js/src/js || true
+  python2 jstests.py ../js/src/js
 
   cd "$srcdir/firefox-$pkgver/js/src/jit-test"
   python2 jit_test.py ../js/src/js
