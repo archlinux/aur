@@ -2,7 +2,7 @@
 
 pkgname=backup-testing-git
 _gitname=backup
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='A simple tar based incremental daily backup script based on systemd (Now with email support!)'
 arch=('x86_64')

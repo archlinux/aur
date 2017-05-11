@@ -1,6 +1,6 @@
 pkgbase = backup-testing-git
 	pkgdesc = A simple tar based incremental daily backup script based on systemd (Now with email support!)
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/dhtseany/backup.git
 	install = backup-testing-git.install
