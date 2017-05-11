@@ -5,21 +5,22 @@
 
 pkgname=greenfoot
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows easy development of two-dimensional graphical applications, such as simulations and interactive games."
 arch=('any')
 url="http://www.greenfoot.org"
 license=('GPL2')
 depends=('sh' 'java-runtime' 'java-environment' 'java-openjfx')
 makedepends=('libarchive')
-source=(http://www.greenfoot.org/download/files/Greenfoot-linux-${pkgver//.}.deb
-        greenfoot)
+source=("http://www.greenfoot.org/download/files/Greenfoot-linux-${pkgver//.}.deb"
+        'greenfoot')
+noextract=("Greenfoot-linux-${pkgver//.}.deb")
 sha256sums=('edf1e727386217a299e9fcd57a6d5c60a724a811d90d7ddec5fa05cc28631695'
             'fdca5b8433e10ca99cf91c2ab863f86e740bd08a82532e01a49ba8110a15481e')
 
 package() {
-cd "$srcdir"
-ar p Greenfoot-linux-${pkgver//.}.deb data.tar.xz | tar xJ
+cd "${srcdir}"
+ar p "Greenfoot-linux-${pkgver//.}.deb" data.tar.xz | tar xJ
 
 mkdir -p "${pkgdir}/usr/share/${pkgname}"
 mkdir -p "${pkgdir}/usr/share/java/${pkgname}"
