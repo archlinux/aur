@@ -2,7 +2,7 @@
 
 pkgname='recap-git'
 pkgdesc="System status reporting"
-pkgver=0.9.14.r23.gae007a9
+pkgver=0.9.14.r34.gc31ca3f
 pkgrel=1
 arch=('any')
 url="https://github.com/rackerlabs/${pkgname%-*}"
