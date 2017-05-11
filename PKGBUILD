@@ -1,10 +1,11 @@
 # Maintainer Denis Demidov <dennis.demidov@gmail.com>
 pkgname=oclgrind-git
-pkgver=20170502
-pkgrel=3
+pkgver=20170511
+pkgrel=1
 pkgdesc="A SPIR interpreter and virtual OpenCL device simulator."
 arch=("any")
 url="https://github.com/jrprice/Oclgrind"
+makedepends=("cmake")
 depends=("clang" "llvm")
 license=("BSD")
 
