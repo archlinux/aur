@@ -1,0 +1,7 @@
+post_install() {
+	plymouth-set-default-theme -R nostromo
+}
+
+post_upgrade() {
+	post_install $1
+}
