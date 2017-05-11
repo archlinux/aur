@@ -2,7 +2,7 @@
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
 pkgver=1.5.7
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
@@ -85,7 +85,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/arc
 sha256sums=('73d18b129a072e35c74c9a440abdd0985fa15696d308a5e23736ec007432fd70'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
-            '3bc8d5668cd1a28f53055ca7d46becb0e0e3121b95b4b9c6bea24e884ce7a310')
+            '0a85965f7d168d84d62e8cca74c4b5e54ef51c1096550057b1f40a32d3568b29')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
