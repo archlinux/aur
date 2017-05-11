@@ -1,0 +1,31 @@
+generate_index() {
+    if [[ ! -f usr/share/applications/bamf.index ]]; then
+        echo 'Generating initial BAMF index'
+        usr/lib/bamf/update-bamf-index.sh
+    fi
+}
+
+disable_service() {
+    systemctl stop bamfwatcher &>/dev/null || :
+    systemctl disable bamfwatcher &>/dev/null || :
+}
+
+post_install() {
+    generate_index
+}
+
+post_upgrade() {
+    generate_index
+}
+
+pre_upgrade() {
+    disable_service
+}
+
+pre_remove() {
+    disable_service
+}
+
+post_remove() {
+    rm -f usr/share/applications/bamf.index
+}
