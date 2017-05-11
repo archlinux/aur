@@ -1,23 +1,19 @@
 pkgbase = docker-cloud
 	pkgdesc = CLI for Docker Cloud
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = http://cloud.docker.com/
 	arch = any
 	license = Apache v2
+	makedepends = python2-distribute
 	makedepends = python2
 	depends = python2
-	depends = python2-ago
-	depends = python2-dockercloud
-	depends = python2-yaml
 	depends = python2-future
-	depends = python2-dateutil
 	depends = python2-requests
 	depends = python2-six
-	depends = python2-tabulate
 	depends = python2-websocket-client
-	source = https://pypi.python.org/packages/0b/37/5dab4fa0559b0402736d5f23a2ef0b3252baccde45f1d571583cadd6e50b/docker-cloud-1.0.7.tar.gz
-	md5sums = b03867a0a6a0a845c469df84b34488fd
+	source = https://pypi.python.org/packages/28/32/19981b368bd9c64f45217e007dbd42990b1cf108ade46cd68e3687c07d41/docker-cloud-1.0.8.tar.gz
+	md5sums = 39198193ccea4c708978f04870deaf50
 
 pkgname = docker-cloud
 
