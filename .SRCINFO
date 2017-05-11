@@ -1,6 +1,6 @@
 pkgbase = waterfox-kde-bin
 	pkgdesc = 'KDE Plasma Edition' of the free, open and private browser. It contains KDE patches (which contains KDE file dialogs, file associations, protocol handlers and other KDE Plasma integration features) and other useful patches.
-	pkgver = 53.0
+	pkgver = 53.0.1
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	arch = x86_64
@@ -19,14 +19,10 @@ pkgbase = waterfox-kde-bin
 	optdepends = speech-dispatcher: Text-to-Speech
 	conflicts = waterfox-bin
 	conflicts = waterfox-git
-	noextract = waterfox-kde_53.0_amd64.deb
-	noextract = waterfox-locales-53.0.7z
 	options = !emptydirs
 	options = !strip
-	source = waterfox-kde_53.0_amd64.deb::https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox-kde/waterfox-kde_53.0_amd64.deb
-	source = waterfox-locales-53.0.7z::https://github.com/hawkeye116477/waterfox-deb/raw/aur/waterfox-locales-53.0.7z
-	sha256sums = 13cd27da05ed7acffb174382d9cc0cd133c37e7fccef8ed2fd7234f10f1ddfb1
-	sha256sums = 00802e3e70dd679c5574bc1bc8b1a73a2f49101d4f20cbf25a7bb3148aae7212
+	source = waterfox-kde_53.0.1_amd64.deb::https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox-kde/waterfox-kde_53.0.1_amd64.deb
+	sha256sums = b2214254603af23fbf40704457977769d9f7e63f087083660e139f85f5f0e444
 
 pkgname = waterfox-kde-bin
 
