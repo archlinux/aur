@@ -2,8 +2,8 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.0.RC2.r3528.8e25c8b9
-pkgrel=2
+pkgver=0.7.0.RC3.r3535.3fbc09a5
+pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
 url="http://openorienteering.github.io/apps/mapper/"
