@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!config.i686
+!config.x86_64
+!90-linux.hook
+!linux.install
+!linux.preset
