@@ -1,6 +1,6 @@
 # Maintainer: Moritz Kiefer <moritz.kiefer@purelyfunctional.org>
 pkgname=libcbor
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A C library for parsing and generating CBOR, the general-purpose schema-less binary data format."
 arch=('i686' 'x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/PJK/libcbor"
 license=('GPL')
 depends=()
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PJK/libcbor/archive/v0.4.0.tar.gz")
-sha256sums=('1b61e6eba2b5b18b5ec1a29161ad7037689464e77a4ad6cc1c084f888b531acf')
+source=("${pkgname}-${pkgver}.zip::https://github.com/PJK/libcbor/archive/v${pkgver}.zip")
+sha256sums=('2b9ead7d7b4b9213b30cc43f1da8e4006276b640e82321e37590aae3d7a9aa9b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/libcbor-c-support/build"
 
   make DESTDIR="${pkgdir}/" install
 }
