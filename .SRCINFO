@@ -1,6 +1,6 @@
 pkgbase = python-dask
 	pkgdesc = Minimal task scheduling abstraction
-	pkgver = 0.14.1
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://github.com/dask/dask
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = python-dask
 	optdepends = python-fastparquet
 	optdepends = python-bokeh
 	optdepends = python-psutil
-	source = https://github.com/dask/dask/archive/0.14.1.tar.gz
-	sha256sums = 98b989e90aa017f87adc05f9c1dcdcd57e2869c3a09a1d73bb1d7f526968d456
+	source = https://github.com/dask/dask/archive/0.14.3.tar.gz
+	sha256sums = 121f7e44200954c13e30d9f53056f73fee48ed6eb72da5faf9684450adf9e353
 
 pkgname = python-dask
 
