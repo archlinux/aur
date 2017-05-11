@@ -2,7 +2,7 @@
 pkgname=xcowsay
 pkgver=1.3
 pkgrel=1
-pkgdesc="xcowsay displays a cute cow and message on your desktop. Inspired by the original cowsay."
+pkgdesc="a program based on cowsay that displays a cute cow and message on your desktop"
 arch=(i686 x86_64)
 url="http://www.doof.me.uk/xcowsay"
 license=('GPL')
@@ -18,7 +18,6 @@ build() {
 
   ./configure --prefix=/usr --enable-dbus
   make || return 1
-
 }
 
 package() {
