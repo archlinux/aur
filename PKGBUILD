@@ -9,13 +9,13 @@ url='https://github.com/git-ftp/git-ftp'
 arch=('any')
 license=('GPL')
 depends=('curl' 'git')
-makedepends=('ruby-ronn')
+makedepends=('pandoc')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/git-ftp/git-ftp/archive/${pkgver}.tar.gz")
 sha256sums=('4e36ef178b498f273dc2e9b7685d28dea69b939dcf3602fdda69d1f525e24f31')
 
 build() {
   cd $pkgname-$pkgver/man
-  make man-ronn
+  make man
 }
 
 package() {
