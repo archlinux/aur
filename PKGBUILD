@@ -4,7 +4,7 @@
 # Contributor: GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname=teampass
-pkgver=2.1.26.13
+pkgver=2.1.27.3
 pkgrel=1
 pkgdesc="A Collaborative Passwords Manager"
 arch=('any')
@@ -12,8 +12,8 @@ url="http://www.teampass.net/"
 license=('AGPL3')
 depends=('mysql' 'php' 'php-mcrypt')
 optdepends=('php-ldap: if using LDAP identification')
-source=("https://github.com/nilsteampassnet/TeamPass/archive/${pkgver}.tar.gz")
-sha256sums=('47c0496a733a71c6bda4610889095d190a88609b032c41a2958a1a1a0407723f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nilsteampassnet/TeamPass/archive/${pkgver}.tar.gz")
+sha256sums=('08ac143e40b263526a2894692a1b3c2b92fe7b98adf157d64aeefe14643aaaa3')
 
 package() {
   cd "${srcdir}"
