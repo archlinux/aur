@@ -1,3 +1,7 @@
+2017-05-11 Pierre Choffet <peuc@wanadoo.fr>
+	* 0.8.1.r3017.bf9fcc60-5 :
+	Add missing runtime dependency
+
 2017-03-12 Pierre Choffet <peuc@wanadoo.fr>
 	* 0.8.1.r3017.bf9fcc60-4 :
 	Fix copy of rttr.sh launch script
