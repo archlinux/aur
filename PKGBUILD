@@ -3,13 +3,13 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.831
-pkgrel=8
-pkgdesc="A web-based interface for system administration"
+pkgver=1.840
+pkgrel=1
+pkgdesc="A web-based administration interface for Unix systems"
 arch=(i686 x86_64)
 license=('custom:webmin')
 url="http://www.webmin.com/"
-depends=('perl' 'perl-net-ssleay' 'perl-authen-pam')
+depends=('perl' 'perl-net-ssleay' 'perl-authen-pam' 'perl-encode-detect' 'openssl')
 backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/config' 'etc/webmin/webmin.acl' \
 'etc/webmin/acl/config' \
@@ -118,6 +118,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/webminlog/config' \
 'etc/webmin/wuftpd/config' \
 'etc/webmin/xinetd/config' \
+'etc/logrotate.d/webmin' \
 'etc/pam.d/webmin' )
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
         setup-pre.sh
@@ -140,18 +141,15 @@ prepare() {
     rm {webmin,usermin}/{update.cgi,update.pl,update_sched.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
 
     # remove config files for other distros, make Arch linux related additions
-    find . ! -name 'config-generic-linux' ! -name 'config-\*-linux' ! -name 'config-lib.pl' -name 'config-*' -exec rm '{}' \+
+    find . ! -name 'config-generic-linux' ! -name 'config-ALL-linux' ! -name 'config-lib.pl' -name 'config-*' -exec rm '{}' \+
     echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
     cp -rp "$srcdir"/webmin-config/* "$srcdir"/$pkgname-$pkgver/
     install -m 700 "$srcdir"/setup-{pre,post}.sh "$srcdir"/$pkgname-$pkgver/
-
-    # fix setup.sh
-    sed -i -e 's:exit 13::g' "$srcdir"/$pkgname-$pkgver/setup.sh
 }
 
 package() {
     # create basic directories
-    mkdir -p "$pkgdir"/{etc/logrotate.d,opt,var/log}
+    mkdir -p "$pkgdir"/{etc,opt,var/log}
 
     export archpkgdir="$pkgdir"
     cd "$srcdir"/$pkgname-$pkgver
@@ -162,8 +160,8 @@ package() {
 
     # install sources
     install -D -m 644 "$srcdir"/webmin.service "$pkgdir"/usr/lib/systemd/system/webmin.service
-    install -D -m 644 "$srcdir"/webmin.logrotate "$pkgdir"/etc/logrotate.d/webmin
     install -D -m 644 "$srcdir"/webmin.pam "$pkgdir"/etc/pam.d/webmin
+    install -D -m 644 "$srcdir"/webmin.logrotate "$pkgdir"/etc/logrotate.d/webmin
     install -D -m 644 "$srcdir"/$pkgname-$pkgver/LICENCE "$pkgdir"/usr/share/licenses/webmin/LICENCE
 
     # delete temp dir
@@ -171,7 +169,7 @@ package() {
 }
 
 
-sha256sums=('b4cc63a369026e4e6d8f5af7501fe101dc122d9edbdd6bb20058f8f511694ce3'
+sha256sums=('50cf46850db9c69962d21ef4b935729215044f9ba9de3f2edc40df5ab3bdf201'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
