@@ -6,8 +6,8 @@
 
 pkgbase=nvidia-tesla-utils
 pkgname=('nvidia-tesla-utils' 'nvidia-tesla-libgl' 'opencl-nvidia-tesla')
-pkgver=375.51
-pkgrel=3
+pkgver=375.66
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -15,7 +15,7 @@ options=('!strip')
 source=('nvidia-drm-outputclass.conf')
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}.run")
 sha512sums=('bf7e27b2f3c815f5e21ba3b17cb9f4e76360bb2c41b30face591834d82d786fee93546a469e30ebcb89f64a17a7e79e0b7ed6fd9f26438dfaa48899fce3ddf33')
-sha512sums_x86_64=('d08f1f2599381b84147ba861a817a9b657276e23b0668c5c5c2f072a77250a31f891f96fef79a3688ca621f576c9e806d21b2b403df8ce8bc16fa0316e1c6b32')
+sha512sums_x86_64=('518534816da3e20e9b539e19b0e93340b6141aebe76989139aa130883106a68da74f9ef3692419e0b3c111a7c50ceb20e45ecdde53af78c7c709b4d51acb5164')
 
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 
