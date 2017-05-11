@@ -1,7 +1,8 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/palopezv>
 pkgname=brave
-pkgver=0.15.301
+pkgver=0.15.3.0.1
+_pkgver=0.15.301
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
@@ -12,10 +13,10 @@ makedepends=('npm' 'git')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
-source=("browser-laptop-"$pkgver"dev.tar.gz::https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz")
+source=("browser-laptop-"$_pkgver"dev.tar.gz::https://github.com/brave/browser-laptop/archive/v"$_pkgver"dev.tar.gz")
 
 build() {
-	cd "$srcdir"/browser-laptop-"$pkgver"dev
+	cd "$srcdir"/browser-laptop-"$_pkgver"dev
 
 	#npm install extract-zip@1.6.0
 
@@ -24,7 +25,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/browser-laptop-"$pkgver"dev
+	cd "$srcdir"/browser-laptop-"$_pkgver"dev
 
 	install -dm0755 "$pkgdir"/usr/lib
 
