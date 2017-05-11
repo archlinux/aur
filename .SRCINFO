@@ -1,0 +1,12 @@
+pkgbase = breeze-cursors-lh
+	pkgdesc = Breeze cursor themes for lefties
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://store.kde.org/p/999680/
+	arch = any
+	license = CCPL:by-nc
+	source = https://ptpb.pw/~breeze-cursors-lh
+	md5sums = 459b3ea099bc7099b7eb31fb3f94b044
+
+pkgname = breeze-cursors-lh
+
