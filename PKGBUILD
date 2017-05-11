@@ -7,7 +7,7 @@
 
 _pkgbase=violetland
 pkgname=$_pkgbase-git
-pkgver=0.5.r142.g3a1748c
+pkgver=0.5.r145.ga0c91d1
 pkgrel=1
 pkgdesc='Open source cross platform game where a girl, Violet, struggles with hordes of monsters (clone of "crimsonland").'
 arch=('i686' 'x86_64')
