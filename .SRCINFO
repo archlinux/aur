@@ -1,0 +1,20 @@
+pkgbase = plasma-vault
+	pkgdesc = Plasma applet and services for creating encrypted vaults
+	pkgver = 5.9.95
+	pkgrel = 1
+	url = https://www.kde.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = python
+	depends = plasma-framework
+	depends = libksysguard
+	source = https://download.kde.org/unstable/plasma-vault/plasma-vault-5.9.95.tar.xz
+	source = https://download.kde.org/unstable/plasma-vault/plasma-vault-5.9.95.tar.xz.sig
+	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
+	sha256sums = 26c6152e9f9cc1b1d112417b4a8f27972bf9203e4a4c62831197f30688fdd017
+	sha256sums = SKIP
+
+pkgname = plasma-vault
+
