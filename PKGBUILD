@@ -3,25 +3,22 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-genoil-git
-pkgver=.20170506.8d36c4c92
+pkgver=1.1.7.20170511.8d36c4c92
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, cpp-ethereum including ethminer and eth, Genoil's version)"
 arch=('i686' 'x86_64')
 depends=(
   'boost'
   'crypto++'
+  'cuda'
   'leveldb'
   'ocl-icd'
   'libmicrohttpd'
   'miniupnpc'
-  'opencl-headers'
   'libjson-rpc-cpp-git'
 )
 makedepends=(
-  'autoconf'
-  'automake'
-  'gcc'
-  'libtool'
+  'gcc5'
   'cmake'
   'git'
 )
@@ -32,18 +29,13 @@ groups=('ethereum')
 url="https://github.com/Genoil/cpp-ethereum"
 license=('GPL')
 source=(
-  "${pkgname%-git}::git+https://github.com/Genoil/cpp-ethereum"
+  "$pkgname::git+https://github.com/Genoil/cpp-ethereum"
 )
 sha256sums=(
   "SKIP"
 )
 provides=(
-  'bench'
-  'eth'
-  'ethkey'
   'ethminer'
-  'ethvm'
-  'rlp'
 )
 conflicts=(
   'ethereum'
@@ -52,24 +44,28 @@ conflicts=(
 )
 
 pkgver() {
-  cd ${pkgname%-git}
-  echo "`grep -m1 "cpp\-ethereum\ VERSION" CMakeLists.txt | tr -cd '[[:digit:]].'`.`date +%Y%m%d`.`git log --pretty=format:%h -n 1`"
+  cd "$pkgname"
+  echo "`grep -m1 "GENOIL_VERSION" CMakeLists.txt | tr -cd '[[:digit:]].'`.`date +%Y%m%d`.`git log --pretty=format:%h -n 1`"
 }
 
 build() {
   msg 'Updating...'
-  cd ${pkgname%-git}
+  cd "$pkgname"
   git submodule update --init --recursive
 
   msg 'Building...'
   mkdir -p build && pushd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUNDLE=miner
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUNDLE=cudaminer \
+      -DCMAKE_C_COMPILER=/usr/bin/gcc-5 \
+      -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 \
+      -DCMAKE_RANLIB=/usr/bin/gcc-ranlib-5 \
+      -DCMAKE_AR=/usr/bin/gcc-ar-5
   make
   popd
 }
 
 package() {
-  cd ${pkgname%-git}
+  cd "$pkgname"
 
   msg 'Installing...'
   make DESTDIR="$pkgdir" install -C build
