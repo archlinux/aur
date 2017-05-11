@@ -2,7 +2,7 @@
 # Maintainer: raininja <raijin@rai.ninja>
 
 pkgname=slimjet
-pkgver=14.0.5.0
+pkgver=14.0.6.0
 pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ options=('!emptydirs' '!strip')
 _channel=release
 source_i686=("${pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/${_channel}/${pkgname}_amd64.deb")
-md5sums_i686=('37d13699f148345537fdce07852c9030')
-md5sums_x86_64=('d30ffc97412a9b784d9f8c077f0a6b3e')
+md5sums_i686=('094cc349f870208aecccbd26f48f3887')
+md5sums_x86_64=('56d250f46ecc5f82d9585af93262c596')
 
 package() {
     msg2 "Extracting the data.tar.lzma..."
