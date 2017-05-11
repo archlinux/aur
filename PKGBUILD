@@ -2,7 +2,7 @@
 
 pkgname=breeze-cursors-lh
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Breeze cursor themes for lefties"
 arch=(any)
 url="https://store.kde.org/p/999680/"
