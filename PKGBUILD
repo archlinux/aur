@@ -1,12 +1,12 @@
 # Maintainer: Moritz Kiefer <moritz.kiefer@purelyfunctional.org>
 pkgname=helio-workstation-git
 pkgver=v1.7.r16.43d4dc6
-pkgrel=2
+pkgrel=3
 pkgdesc='Free and open source music sequencer'
 arch=('x86_64')
 url='https://helioworkstation.com/'
 license=('GPL3')
-depends=('alsa-lib' 'curl' 'webkit2gtk')
+depends=('alsa-lib' 'curl')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,6 +21,9 @@ prepare() {
   git submodule init
   git config submodule.ThirdParty/JUCE.url $srcdir/JUCE
   git submodule update
+  cd "$srcdir/${pkgname%-git}/ThirdParty/JUCE/extras/Projucer/Builds/LinuxMakefile"
+  sed -i 's/\/\/#define\ JUCE_WEB_BROWSER/#define\ JUCE_WEB_BROWSER 0/g' ../../JuceLibraryCode/AppConfig.h
+  sed -i 's/webkit2gtk-4.0//g' Makefile
 }
 
 pkgver() {
