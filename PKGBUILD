@@ -5,7 +5,7 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.24.1
+pkgver=3.24.2
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
@@ -24,25 +24,26 @@ groups=('gnome')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git'
 _frepobranch='f26'
+_fcommit='2744f1268183790484a978702ff19c57a67dc5fe'
 _fpatchfile1='0001-build-Don-t-treat-warnings-as-errors.patch'
 _fpatchfile2='gnome-terminal-notify-open-title-transparency.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
-	"${_fpatchfile1}::${_frepourl}/plain/${_fpatchfile1}?h=${_frepobranch}"
-	"${_fpatchfile2}::${_frepourl}/plain/${_fpatchfile2}?h=${_frepobranch}"
-	"${_fgsoverridefile}::${_frepourl}/plain/${_fgsoverridefile}?h=${_frepobranch}"
+	"${_fpatchfile1}-${_fcommit}::${_frepourl}/plain/${_fpatchfile1}?h=${_frepobranch}&id=${_fcommit}"
+	"${_fpatchfile2}-${_fcommit}::${_frepourl}/plain/${_fpatchfile2}?h=${_frepobranch}&id=${_fcommit}"
+	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/plain/${_fgsoverridefile}?h=${_frepobranch}&id=${_fcommit}"
 )
-sha256sums=('a7bf26e6fcc335ca7b8fb94e13262f44357961c0f38ca3f2e0066426e91a60e0'
+sha256sums=('281edac30a07ca45beaaaf0a13fe2219cf8b87ece5e55dccbfc49ef769dfec0f'
             '83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-            'd1ca6bdd1489aab8626d168f5a641c216bceefd88f48d53b2a213dbf8328a2b5'
+            '913fb47ae222478fa40a8d162bef8b07d7f2a88c43fb254029df6844b58aaf64'
             '5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e')
 
 prepare () {
 	cd "${_pkgname}-${pkgver}"
 
-	patch -p1 -i "../${_fpatchfile1}"
-	patch -p1 -i "../${_fpatchfile2}"
+	patch -p1 -i "../${_fpatchfile1}-${_fcommit}"
+	patch -p1 -i "../${_fpatchfile2}-${_fcommit}"
 
 	autoreconf -fvi
 }
@@ -68,6 +69,6 @@ package() {
 	cd "${_pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
-	install -Dm644 "../${_fgsoverridefile}" \
+	install -Dm644 "../${_fgsoverridefile}-${_fcommit}" \
 		"${pkgdir}/usr/share/glib-2.0/schemas/${_fgsoverridefile}"
 }
