@@ -2,8 +2,8 @@
 
 _pkgname=xlunch
 pkgname=xlunch-git
-pkgver=2.4.1.r1.g0468acc
-pkgrel=3
+pkgver=2.4.2.r10.g6232b65
+pkgrel=2
 pkgdesc="Graphical app launcher for X with little dependencies"
 arch=('i686' 'x86_64')
 url="http://xlunch.org/"
@@ -18,10 +18,10 @@ source=('git+https://github.com/Tomas-M/xlunch.git'
         'xlunch-conf-install.hook'
         'xlunch-conf-remove.hook')
 md5sums=('SKIP'
-         'ebf49f8a249a0ff0f4f19a713064fb5c'
+         '58a813e6c232489f887a32966addde8a'
          '5cedcafe1ba39961a84f1634958ca478'
-         'b3e91a3ded90c24d56a42df84124df29'
-         'aa9654e2adae39523d5d56abd4cbca92')
+         'ccaf7547b8ceeb11badb2a08b3c592f7'
+         '832317d10246dd7b2ac17c599b19f441')
 
 pkgver() {
     cd "$_pkgname"
@@ -39,6 +39,8 @@ package() {
 	install -Dm755 extra/genconf "$pkgdir"/usr/bin/xlunch-genconf
 	install -Dm755 extra/sample_config.cfg "$pkgdir"/etc/xlunch/icons.conf
 	install -Dm755 ../xlunch-create-entry "$pkgdir"/usr/bin/xlunch-create-entry
+
+	install -Dm644 extra/ghost.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/xlunch_ghost.png
 	install -Dm644 ../xlunch-conf-gen.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-gen.hook
 	install -Dm644 ../xlunch-conf-install.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-install.hook
 	install -Dm644 ../xlunch-conf-remove.hook "$pkgdir"/usr/share/libalpm/hooks/xlunch-conf-remove.hook
