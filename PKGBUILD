@@ -31,7 +31,7 @@ build() {
 package() {
   cd "$pkgname/build"
   make DESTDIR="$pkgdir/" install
-  install -dm644 "${pkgdir}"/etc/xdg/autostart/ ../etc/xdg/autostart/
+  install -dm755 "${pkgdir}"/etc/xdg/autostart/ ../etc/xdg/autostart/
   install -m644 ../etc/xdg/autostart/tbrnd.desktop \
                 "${pkgdir}"/etc/xdg/autostart/tbrnd.desktop
 }
