@@ -32,7 +32,7 @@ check() {
 }
 
 package() {
-  tar xvf "$srcdir/data.tar.gz"
+  tar xJf "$srcdir/data.tar.xz"
 
   find usr/lib/ -type f -exec sed -i 's|/usr/bin/python|/usr/bin/python2|g' {} \;
   find usr/lib/ -type f -exec sed -i 's|/usr/bin/env python|/usr/bin/env python2|g' {} \;
