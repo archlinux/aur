@@ -1,25 +1,32 @@
 # Maintainer: Eshin Kunishima <ek at esh dot ink>
 pkgname=cpustat
-pkgver=20160427
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="High Frequency Performance Measurements for Linux"
 arch=('x86_64' 'i686')
 url="https://github.com/uber-common/cpustat"
 license=('MIT')
-depends=('linux')
-makedepends=('go' 'git')
+depends=('glibc')
+makedepends=('go')
 options=('!strip' '!emptydirs')
-_gourl=github.com/uber-common/cpustat
+source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/uber-common/cpustat/tar.gz/$pkgver")
+sha256sums=('c3fc86c206ab4d6b2274d888638e59a05d4ef9bd7817581c781368d13f7440cc')
 
-build() {
-  GOPATH="$srcdir" go get -v -x ${_gourl}/...
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  GOPATH="$srcdir" go get -v -x -d
 }
 
-check() {
-  GOPATH="$srcdir" go test -v -x ${_gourl}/...
+build() {
+  cd "$pkgname-$pkgver"
+
+  GOPATH="$srcdir" go build -v -x
 }
 
 package() {
-  install -p -Dm755 "$srcdir/bin/cpustat" "$pkgdir/usr/sbin/cpustat"
-  install -p -Dm644 "$srcdir/src/$_gourl/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$pkgname-$pkgver"
+  
+  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
