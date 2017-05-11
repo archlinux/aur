@@ -7,7 +7,7 @@
 # Contributor: freedom
 
 pkgname=freetype2-cleartype
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="TrueType font rendering library with ClearType patch"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=("http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver
         '0003-enable-spr.patch'
         '0004-enable-valid.patch'
         '0005-memcpy-fix.patch')
-md5sums=('be4601619827b7935e1d861745923a68'
+md5sums=('b3230110e0cab777e0df7631837ac36e'
          '7d44826389c2ef5c8b3b1e0f2d315f00'
          'fd6b679327c5aa57fffba2bd51af208b'
          '618d7265f93a59b78550bb2c0ced7976'
