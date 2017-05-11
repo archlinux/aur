@@ -1,0 +1,22 @@
+pkgbase = gixy-git
+	pkgdesc = Nginx configuration static analyzer
+	pkgver = v0.1.3.r1.ga21d887
+	pkgrel = 1
+	url = https://github.com/yandex/gixy
+	arch = any
+	license = MPL
+	depends = python
+	depends = python-six
+	depends = python-pyparsing
+	depends = python-cached-property
+	depends = python-argparse
+	depends = python-jinja
+	depends = python-configargparse
+	provides = gixy
+	conflicts = gixy
+	options = !emptydirs
+	source = gixy-git::git+https://github.com/yandex/gixy
+	sha256sums = SKIP
+
+pkgname = gixy-git
+
