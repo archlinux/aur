@@ -1,0 +1,13 @@
+pkgbase = udisks2-openrc
+	pkgdesc = OpenRC udisks2 init script
+	pkgver = 20170511
+	pkgrel = 1
+	url = https://www.parabola.nu
+	arch = any
+	license = GPL2
+	depends = udisks2
+	source = udisks2.initd
+	md5sums = 9add7dad78d93cbe2fcf4582cc7ce069
+
+pkgname = udisks2-openrc
+

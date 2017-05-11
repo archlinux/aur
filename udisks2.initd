@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# 
+# This is an unofficial udisks2 OpenRC init script made by Megver83
+
+description="Disk Manager"
+command=/usr/lib/udisks2/udisksd
+pidfile=/run/udisks2.pid
