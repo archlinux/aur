@@ -2,14 +2,14 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=sophia
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Modern embeddable transactional key-value storage"
 arch=('any')
 url="https://github.com/pmwkaa/sophia"
 license=('BSD2')
-source=("https://github.com/pmwkaa/sophia/archive/version_${pkgver}.tar.gz")
-md5sums=('b09f69b022c1e95caf7b1775de051df3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pmwkaa/sophia/archive/version_${pkgver}.tar.gz")
+md5sums=('53575db21af38bf8247f2b41d7172d2f')
 options=('staticlibs')
 conflicts=('sophia-git')
 
