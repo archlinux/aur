@@ -1,15 +1,15 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
 pkgname='php-trace'
-pkgver='0.3.0'
+pkgver='1.0.1beta'
 pkgrel='1'
 pkgdesc='Extension for the tracing and troubleshooting tool for PHP scripts'
 arch=('i686' 'x86_64')
 url='https://pecl.php.net/package/trace'
 license=('Apache')
-depends=('php>=5.1')
+depends=('php>=5.2')
 source=("http://pecl.php.net/get/trace-$pkgver.tgz")
-sha256sums=('aa5f6a91a77ef11f4102b542847b32fce03ea7777081ebb86a812228526b38f7')
+sha256sums=('82d50603cd8bc1142e42e3baa9a2f75253ef157fed170d543e7be4ad214aa4e6')
 
 build() {
     pushd "$srcdir/trace-$pkgver/extension"
