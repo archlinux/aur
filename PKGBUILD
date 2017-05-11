@@ -3,7 +3,7 @@
 # Contributer: auk
 
 pkgname=hyper
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
@@ -12,7 +12,7 @@ url="https://hyper.is/"
 license=('MIT')
 groups=()
 depends=('nodejs' 'electron' 'gconf')
-makedepends=('npm' 'python2')
+makedepends=('npm' 'yarn' 'python2')
 checkdepends=()
 optdepends=()
 provides=()
@@ -29,43 +29,32 @@ source=(
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('ac14ce7ef3bc79aab1c6ed4e03ea1e10'
+md5sums=('385c0d909f82f492aeaa158a0164e9ef'
          'f3481e14cba331160339b3b5ab78872b'
          '74cb7ba38e37332aa8300e4b6ba9c61c')
 validpgpkeys=()
 
-## This function uses yarn if it installed, otherwise npm as the default.
-npm_or_yarn() {
-    if hash yarn 2>/dev/null; then
-        yarn "$@"
-    else
-        npm "$@"
-    fi
-}
-
 prepare() {
     cd "$pkgname-$pkgver"
 
-    # # calls yarn if available, else npm
-    # npm_or_yarn install
-
-    # for now use just npm since errors have been reported
-    npm install
-
-    # Also hacky but need to explicitly install webpack at the correct version
-    # or the app won't run. See https://github.com/zeit/hyper/issues/1418.
-    # Hopefully this can be removed asap
-    #npm install webpack@2.2.0-rc.3
+    # yarn is a build-dep according to the README
+    yarn install
 }
 
 build() {
     cd "$pkgname-$pkgver"
 
-    npm run build
+    # node modules path => "nmp"
+    nmp="./node_modules/.bin"
 
-    # this is hacky, but otherwise the package.json dist rule tries to build
-    # for debian, rpm, etc.
-    ./node_modules/.bin/build --linux dir
+    # This build command is the same as the one defined in package.json via
+    # npm run dist except that it doesn't build for debian, rpm, etc.
+    npm run build &&
+    $nmp/cross-env BABEL_ENV=production babel \
+        --out-file app/dist/bundle.js \
+        --no-comments \
+        --minified app/dist/bundle.js &&
+    $nmp/build --linux --dir
 }
 
 package() {
