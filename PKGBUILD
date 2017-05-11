@@ -12,7 +12,7 @@ license=('GPL')
 backup=('etc/xdg/qtchooser/default.conf')
 depends=('gcc-libs')
 makedepends=('git')
-source=("git://code.qt.io/qt/${pkgname}.git#commit=d20fdc63"
+source=("git://code.qt.io/qtsdk/qtchooser.git"
         {4,5}.conf)
 md5sums=('SKIP'
          'aa4d49b269e1b806f5eea170801f0aa6'
