@@ -1,13 +1,13 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=symengine-git
 _pkgname=symengine
-pkgver=r4181.5d123c0
+pkgver=r4606.97fd5253
 pkgrel=1
 pkgdesc="Fast symbolic manipulation library, written in C++"
 url="http://sympy.org/"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('gmp' 'arb' 'gperftools') # boost-libs
+depends=('gmp' 'gperftools' 'boost-libs') # arb
 makedepends=('cmake' 'git' 'boost')
 optdepends=('python2')
 replaces=('csympy-git')
@@ -31,8 +31,8 @@ build() {
         -DWITH_TCMALLOC:BOOL=ON \
         -DWITH_PTHREAD:BOOL=ON \
         -DWITH_SYMENGINE_THREAD_SAFE:BOOL=ON \
-        -DWITH_ARB:BOOL=ON #\
-#        -DWITH_BOOST:BOOL=ON \
+        -DWITH_ARB:BOOL=OFF \
+        -DWITH_BOOST:BOOL=ON #\
 #        -DBoost_NO_BOOST_CMAKE=TRUE \
 #        -DBoost_NO_SYSTEM_PATHS=TRUE \
 #        -DBOOST_ROOT:PATHNAME=/usr \
