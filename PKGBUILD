@@ -1,6 +1,6 @@
 # Contributor: MeMi69 <MetalMilitia@gmx.net>
 pkgname=xcowsay
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="a program based on cowsay that displays a cute cow and message on your desktop"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=('dbus' 'dbus-glib' 'cairo' 'gtk2')
 install=
 source=(http://www.nickg.me.uk/files/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('ffcad22a9002d2a5c37d9d302b9614d1')
+md5sums=('1e9933c6f48f1e8fffbeaeb6ba0e2bc8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
