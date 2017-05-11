@@ -1,6 +1,6 @@
 # Maintainer: Leonhard Rose <kolonigulus@gmail.com>
 pkgname=storjshare-daemon
-pkgver=2.5.1
+pkgver=2.5.3
 pkgrel=1
 epoch=
 pkgdesc="A CLI Client for running a farming node"

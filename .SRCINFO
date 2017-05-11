@@ -1,6 +1,6 @@
 pkgbase = storjshare-daemon
 	pkgdesc = A CLI Client for running a farming node
-	pkgver = 2.5.1
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/Storj/storjshare-daemon
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = storjshare-daemon
 	depends = nodejs>=6.9
 	depends = python2>=2.7.0
 	replaces = storjshare-cli
-	noextract = v2.5.1.tar.gz
-	source = https://github.com/Storj/storjshare-daemon/archive/v2.5.1.tar.gz
-	md5sums = SKIP
+	noextract = v2.5.3.tar.gz
+	source = https://github.com/Storj/storjshare-daemon/archive/v2.5.3.tar.gz
+	md5sums = 4eec46d433643fc6214c209eb939477a
 
 pkgname = storjshare-daemon
 
