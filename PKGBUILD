@@ -17,7 +17,7 @@ get_version() {
    printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/v\1-beta/'
 }
 pkgrel=1
-pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository"
+pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository - PKGBUILD downloads the latest dev release when built."
 arch=('x86_64')
 url="https://github.com/atom/atom"
 license=('MIT')
