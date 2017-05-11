@@ -8,7 +8,7 @@ arch=(any)
 url="https://store.kde.org/p/999680/"
 license=('CCPL:by-nc')
 source=("https://ptpb.pw/~breeze-cursors-lh")
-md5sums=('459b3ea099bc7099b7eb31fb3f94b044')
+md5sums=('8f4bf5c748817c55e826536d59606f0d')
 
 package() {
 	mkdir -p ${pkgdir}/usr/share/icons
