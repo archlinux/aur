@@ -1,0 +1,12 @@
+diff -Naur nyacc-0.78.1.orig/Makefile.in nyacc-0.78.1.new/Makefile.in
+--- nyacc-0.78.1.orig/Makefile.in	2017-05-07 16:08:56.000000000 +0200
++++ nyacc-0.78.1.new/Makefile.in	2017-05-11 21:13:04.927748623 +0200
+@@ -18,7 +18,7 @@
+ 	(cd module; \
+ 	 make -f Makefile.nyacc GUILE=$(GUILE) \
+ 		 SITE_SCM_DIR=$(SITE_SCM_DIR) \
+-		 SITE_SCM_GO_DIR=$(SITE_SCM_GO_DIR)
++		 SITE_SCM_GO_DIR=$(SITE_SCM_GO_DIR) \
+ 		 install)
+ 
+ install-srcs:
