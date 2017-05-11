@@ -3,20 +3,20 @@
 # Contributor: Ner0
 
 pkgname=gpaste-daemon
-pkgver=3.20
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="A clipboard management daemon"
 arch=('i686' 'x86_64')
 url="http://www.imagination-land.org/tags/GPaste.html"
 license=('GPL3')
-depends=('gtk3' 'systemd' 'xcb-util-keysyms' 'appstream-glib')
+depends=('systemd' 'xcb-util-keysyms' 'appstream-glib')
 makedepends=('gobject-introspection' 'intltool')
 conflicts=('cinnamon-extension-gpaste' 'gpaste')
 provides=('gpaste')
 options=('!emptydirs' '!libtool')
 install=$pkgname.install
 source=("http://www.imagination-land.org/files/gpaste/gpaste-$pkgver.tar.xz")
-md5sums=('ae4bc3b07cc943d3640108687050900a')
+md5sums=('f26284590bb88ef10fa69e16658d67b5')
 
 build () {
     cd ${pkgname%-*}-${pkgver}

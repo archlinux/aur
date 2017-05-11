@@ -1,6 +1,6 @@
 pkgbase = gpaste-daemon
 	pkgdesc = A clipboard management daemon
-	pkgver = 3.20
+	pkgver = 3.24.1
 	pkgrel = 1
 	url = http://www.imagination-land.org/tags/GPaste.html
 	install = gpaste-daemon.install
@@ -9,7 +9,6 @@ pkgbase = gpaste-daemon
 	license = GPL3
 	makedepends = gobject-introspection
 	makedepends = intltool
-	depends = gtk3
 	depends = systemd
 	depends = xcb-util-keysyms
 	depends = appstream-glib
@@ -18,8 +17,8 @@ pkgbase = gpaste-daemon
 	conflicts = gpaste
 	options = !emptydirs
 	options = !libtool
-	source = http://www.imagination-land.org/files/gpaste/gpaste-3.20.tar.xz
-	md5sums = ae4bc3b07cc943d3640108687050900a
+	source = http://www.imagination-land.org/files/gpaste/gpaste-3.24.1.tar.xz
+	md5sums = f26284590bb88ef10fa69e16658d67b5
 
 pkgname = gpaste-daemon
 
