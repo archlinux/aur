@@ -1,14 +1,14 @@
 # Maintainer: Jose Riha <jose 1711 gmail com>
 
 pkgname=swet
-pkgver=1.4.63
+pkgver=1.5.16
 pkgrel=1
 pkgdesc="cpu/ram benchmark tool"
 arch=('i686' 'x86_64')
 url="http://swet.sourceforge.net/"
 license=('GPL')
 source=(http://sourceforge.net/projects/swet/files/swet-${pkgver}-src.tar.gz)
-md5sums=('f5b1c36f087cf290bef8738530f24acb')
+md5sums=('3643e0f222fd96082926615d4200a11d')
 
 build() { 
   cd ${srcdir}/${pkgname}1
