@@ -2,9 +2,9 @@
 
 pkgbase='vte3-tilix'
 pkgname=("${pkgbase}" 'vte-tilix-common')
-_vtever=0.48.2
+_vtever=0.48.3
 _tilixver=1.5.6
-pkgver=0.48.2+2+g837cce9c+1.5.6
+pkgver=0.48.3+1.5.6
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches'
 arch=('x86_64')
@@ -13,20 +13,30 @@ license=('LGPL')
 depends=('gtk3' 'pcre2' 'gnutls')
 makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade' 'git')
 options=('!emptydirs')
+
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 _frepourl='http://pkgs.fedoraproject.org/cgit/rpms/vte291.git'
 _frepobranch='f26'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
-_vtecommit=837cce9ced6bfe317cb97aeca171001da92cb3a1
+_fcommit='d8ae8b98633dc0bbe18946b55ac89414bda09938'
+
+# VTE source ref
+#_vtecommit='837cce9ced6bfe317cb97aeca171001da92cb3a1'
+_vtetag=${_vtever}
+
+_tilixpatchfile1='alternate-screen.patch'
+_tilixpatchfile2='disable-bg-draw.patch'
+
 source=(
-	"git+https://git.gnome.org/browse/vte#commit=$_vtecommit"
-	"${_fpatchfile}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}"
+	#"git+https://git.gnome.org/browse/vte#commit=$_vtecommit"
+	"git+https://git.gnome.org/browse/vte#tag=$_vtetag"
+	"${_fpatchfile}-${_fcommit}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}&id=${_fcommit}"
 	'add-zsh-notfication-support.patch'
-	"https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/alternate-screen.patch"
-	"https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/disable-bg-draw.patch"
+	"${_tilixpatchfile1}-${_tilixver}::https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/${_tilixpatchfile1}"
+	"${_tilixpatchfile2}-${_tilixver}::https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/${_tilixpatchfile2}"
 )
 sha256sums=('SKIP'
-            'd32201c04d9f688195725bf76d7c618ae24178a2578da01c507d8216f082cf8e'
+            'e03c3ddaa240c9c997d89b8fac03ab5f0fa2d3160cf51a7a14c08a4e9e4df47c'
             '150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
             '980b6bc75a30ec56fe70387784083b5c7ded79715b7a0611e1d4358ee27c4720'
             'aa56313332850becb0b02aba1e05888ed978f7d8c006147679e2544cc0ca40cf')
@@ -42,15 +52,15 @@ prepare() {
 	echo '-> Making the patch-sets compatible'
 	sed -r -e 's/(\-\s*gpointer padding\[)16/\115/g' \
     	-e 's/(\+\s*gpointer padding\[)15/\114/g' \
-		-i "../alternate-screen.patch"
+		-i "../${_tilixpatchfile1}-${_tilixver}"
 
 	echo '-> Applying Fedora patches'
-	patch -p1 -i "../${_fpatchfile}"
+	patch -p1 -i "../${_fpatchfile}-${_fcommit}"
 	patch -p1 -i '../add-zsh-notfication-support.patch'
 
 	echo '-> Applying terminix patches'
-	patch -p1 -i '../alternate-screen.patch'
-	patch -p1 -i '../disable-bg-draw.patch'
+	patch -p1 -i "../${_tilixpatchfile1}-${_tilixver}"
+	patch -p1 -i "../${_tilixpatchfile2}-${_tilixver}"
 
 	NOCONFIGURE=1 ./autogen.sh
 }
