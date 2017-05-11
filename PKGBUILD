@@ -1,7 +1,7 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openboard-develop
 pkgver=1.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -11,14 +11,17 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip"
         ssl10.patch
         qchar.patch
-        qtmultimediadefs.patch)
+        qtmultimediadefs.patch
+        openboard.desktop)
 md5sums=('d3ff4e88b5c8f1913c12a7686ef86329'
          'fa1ff089f0bcc15d2a510bb90cdd3002'
          '9dbccb56e4079b75c606dc40c3e77f00'
          'bf2c524f3897cfcfb4315bcd92d4206e'
-         '0d18be8088442762c2a3d5e6e1f1a911')
+         '0d18be8088442762c2a3d5e6e1f1a911'
+         '21d1749400802f8fc0669feaf77de683')
 
 prepare() {
+  rm -rf $srcdir/OpenBoard-ThirdParty
   mv "$srcdir/OpenBoard-ThirdParty-master" "$srcdir/OpenBoard-ThirdParty"
 
   cd $srcdir/OpenBoard-$pkgver
@@ -54,6 +57,19 @@ build() {
 
 package() {
   cd "$srcdir/OpenBoard-$pkgver"
+
+  mkdir -p $pkgdir/opt/openboard
+
+  for i in customizations etc i18n library; do
+    cp -rp $srcdir/OpenBoard-$pkgver/resources/$i $pkgdir/opt/openboard;
+  done
+
+  cp -rp $srcdir/OpenBoard-$pkgver/resources/images/OpenBoard.png $pkgdir/opt/openboard/
+  cp -rp build/linux/release/product/OpenBoard $pkgdir/opt/openboard/
+
+  mkdir -p $pkgdir/usr/share/applications
+  cp -rp $srcdir/openboard.desktop $pkgdir/usr/share/applications
+
   mkdir -p $pkgdir/usr/bin
-  cp -rp build/linux/release/product/OpenBoard $pkgdir/usr/bin/
+  ln -s /opt/openboard/OpenBoard $pkgdir/usr/bin/openboard
 }
