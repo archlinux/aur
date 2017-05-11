@@ -3,16 +3,16 @@
 pkgname=istodo
 pkgver=1.3.0
 pkgrel=1
-_refcommit=f4434216b659
+_refcommit=adec47e4f41e
 pkgdesc="Crossplatform Qt5 based organizer for students"
 arch=('i686' 'x86_64')
 url="http://istodo.ru/"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'qt5-base')
 makedepends=('desktop-file-utils')
-source=("http://dev.istodo.ru/istodo-desktop/get/v${pkgver}.tar.gz")
+source=("https://bitbucket.org/istodo/istodo-desktop/get/v${pkgver}.tar.gz")
 install=${pkgname}.install
-md5sums=('61dc7ec57c9429942eb1e1bbfbb31b0f')
+md5sums=('db724cb13039ab3b0ad80191ac10fac1')
 
 build() {
   cd "${pkgname}-${pkgname}-desktop-${_refcommit}"
