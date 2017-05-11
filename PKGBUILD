@@ -7,7 +7,7 @@ pkgdesc="OpenRC udisks2 init script"
 arch=(any)
 url="https://www.parabola.nu"
 license=('GPL2')
-depends=(udisks2)
+depends=('udisks2' 'openrc')
 source=("udisks2.initd")
 md5sums=('9add7dad78d93cbe2fcf4582cc7ce069')
 
