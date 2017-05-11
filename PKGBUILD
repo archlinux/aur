@@ -3,20 +3,20 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=nvidia-tesla-lts
-pkgver=375.51
+pkgver=375.66
 _extramodules=extramodules-4.9-lts
-pkgrel=2
+pkgrel=1
 pkgdesc="NVIDIA Tesla drivers for linux-lts"
 arch=('x86_64')
 url="http://www.nvidia.com/"
-makedepends=("nvidia-utils=$pkgver" 'linux-lts>=4.9.25' 'linux-lts-headers>=4.9.25')
+makedepends=("nvidia-utils=$pkgver" 'linux-lts>=4.9.27' 'linux-lts-headers>=4.9.27')
 conflicts=('nvidia-lts')
 provides=('nvidia-lts')
 license=('custom')
 install=nvidia-lts.install
 options=('!strip')
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}.run")
-sha512sums_x86_64=('d08f1f2599381b84147ba861a817a9b657276e23b0668c5c5c2f072a77250a31f891f96fef79a3688ca621f576c9e806d21b2b403df8ce8bc16fa0316e1c6b32')
+sha512sums_x86_64=('518534816da3e20e9b539e19b0e93340b6141aebe76989139aa130883106a68da74f9ef3692419e0b3c111a7c50ceb20e45ecdde53af78c7c709b4d51acb5164')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}"
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    depends=('linux-lts>=4.9.24' "nvidia-utils=$pkgver" 'libgl')
+    depends=('linux-lts>=4.9.27' "nvidia-utils=$pkgver" 'libgl')
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
       "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia.ko"
