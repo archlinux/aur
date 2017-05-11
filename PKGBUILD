@@ -1,6 +1,6 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=backly
-pkgver=1.20
+pkgver=1.30
 pkgrel=1
 pkgdesc="A simple directory cloner"
 url="http://git.bradleylaboon.com/backly.git"
