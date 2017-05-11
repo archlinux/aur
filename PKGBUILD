@@ -1,7 +1,7 @@
 # Maintainer:
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Justin van der Weshuizen <justin@giftsinc.co.za>
+# Contributor: Justin van der Westhuizen <justin@giftsinc.co.za>
 
 pkgname=qtchooser
 pkgver=53
