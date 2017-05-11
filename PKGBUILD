@@ -353,6 +353,9 @@ fi
 
   _create_database_file
 
+  # use system font rendering
+  ln -sf /usr/lib/libfreetype.so.6 "$pkgdir/usr/lib/vmware/lib/libfreetype.so.6/"
+
   # to solve bugs with incompatibles library versions:
   ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
   # if there is not a better solution, define environment variable VMWARE_USE_SHIPPED_LIBS
