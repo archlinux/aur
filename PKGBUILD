@@ -3,7 +3,8 @@ pkgname=rseye-git
 _pkgname=rseye
 pkgver=0.1
 pkgrel=1
-pkgdesc="Freeze screen regularly to help prevent RSI and protect the eyes."
+pkgdesc="Freeze screen regularly to help prevent Repetitive Strain
+Injury (RSI) and protect the eyes."
 arch=('i686' 'x86_64')
 url="https://github.com/hoangngan82/$_pkgname"
 license=('MIT')
