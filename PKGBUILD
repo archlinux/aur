@@ -1,11 +1,11 @@
 # Maintainer: chet <chetgurevitch @ protonmail . com>
-# COntributor: fheday <fheday @ gmail . com>
-# Contributor: seishinryohosha <seishinryohosha @ zoho . com>
+# Contributor: fheday <fheday @ gmail . com>
+# Contributor: seishinryohosha <seishinryohosha @ gmail . com>
 # Contributor: even <kessiapinheiro @ gmail . com>
 
 pkgname=greenfoot
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows easy development of two-dimensional graphical applications, such as simulations and interactive games."
 arch=('any')
 url="http://www.greenfoot.org"
