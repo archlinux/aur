@@ -7,10 +7,10 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  [ffmpeg]=ffmpeg
+  #[ffmpeg]=ffmpeg     # https://bugs.archlinux.org/task/53796
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
-  #[icu]=icu
+  #[icu]=icu           # Enable again when upstream supports ICU 59
   [libjpeg]=libjpeg
   [libpng]=libpng
   #[libvpx]=libvpx     # https://bugs.gentoo.org/show_bug.cgi?id=611394
@@ -25,14 +25,14 @@ declare -rgA _system_libs=(
 
 pkgname=chromium-gtk3
 _pkgname=chromium
-pkgver=58.0.3029.81
+pkgver=58.0.3029.110
 pkgrel=1
 _launcher_ver=3
 pkgdesc="A web browser built for speed, simplicity, and security (GTK3 version)"
 arch=('i686' 'x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
-depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
          'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
@@ -49,7 +49,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-system-ffmpeg-r4.patch
         chromium-gn-bootstrap-r2.patch
         chromium-widevine.patch)
-sha256sums=('5ab61b7025a5143fa1b21713479b316ec7a98e262e79e84f9c9a9656179217cb'
+sha256sums=('f24cef3dd2acf9dd5ccdeeca47fea42d1c1ddff32b7375dc9e0cd35a4e8d78ff'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
@@ -74,7 +74,7 @@ prepare() {
     patch -Np1
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
+  #patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
   patch -Np1 -i ../chromium-gn-bootstrap-r2.patch
 
   # Use Python 2
