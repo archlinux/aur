@@ -1,8 +1,8 @@
 _pkgname=ConsoleKit2
 
 pkgname=consolekit
-pkgver=1.0.2
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64')
 url="https://github.com/ConsoleKit2/ConsoleKit2"
@@ -16,7 +16,7 @@ options=('libtool')
 install=consolekit.install
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2"
         'consolekit.tmpfiles.conf')
-sha256sums=('a2f7697f1e081b68839b85e375a1b8fcda55c2ca76fa4d9118674c5d0e50e800'
+sha256sums=('795b2cfb766bdffb9187ef7f8beb8d8298e4c38df4a69377115297a0dee3b0d0'
             '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1')
 
 prepare(){
