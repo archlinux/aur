@@ -1,5 +1,5 @@
 pkgname=soundconverter-git
-pkgver=3.0.0+alpha1+38+gb101a83
+pkgver=3.0.0+beta1
 pkgrel=1
 pkgdesc="A simple sound converter application for GNOME"
 arch=('any')
