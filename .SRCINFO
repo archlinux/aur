@@ -7,6 +7,7 @@ pkgbase = nheqminer-cuda-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = gcc5
 	depends = boost
 	depends = cuda
 	optdepends = zcash: zcash node and tools

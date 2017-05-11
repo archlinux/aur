@@ -1,5 +1,5 @@
 # NiceHash equihash miner. Tromp GPU/CUDAsolver build
-# Maintainer: Sebastian Stammler <echo c2ViQGhkZG4uc3BhY2UK|base64 -d>
+# Maintainer: Sebastian Stammler <base64 -d<<<c2ViQGhkZG4uc3BhY2UK>
 _flavour="cuda"
 pkgname="nheqminer-${_flavour}-git"
 pkgver=0.5c.r1.gb9900ff
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/nicehash/nheqminer/"
 license=('MIT')
 depends=('boost' 'cuda')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'gcc5')
 optdepends=('zcash: zcash node and tools')
 source=("${pkgname}::git+https://github.com/nicehash/nheqminer.git")
 md5sums=('SKIP')
