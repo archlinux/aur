@@ -14,6 +14,7 @@ pkgbase = green-recorder-git
 	depends = gawk
 	depends = python2-urllib3
 	depends = python2-pydbus
+	depends = xorg-xdpyinfo
 	provides = green-recorder
 	conflicts = green-recorder
 	options = !emptydirs
