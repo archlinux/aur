@@ -14,6 +14,8 @@ pkgbase = clight-git
 	depends = libconfig
 	depends = clightd-git
 	optdepends = geoclue2: to retrieve user location through geoclue2.
+	optdepends = upower: to save energy by increasing timeouts between captures while on battery.
+	backup = etc/default/clight.conf
 	source = git://github.com/FedeDP/Clight.git
 	sha256sums = SKIP
 
