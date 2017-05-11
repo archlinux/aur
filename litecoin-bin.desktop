@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Litecoin (binary release)
+Comment=Litecoin P2P Cryptocurrency
+Comment[de]=Verbinde mit dem Litecoin peer-to-peer Netzwerk
+Comment[fr]=Litecoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Litecoin, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/litecoin-qt
+Terminal=false
+Type=Application
+Icon=/opt/litecoin-bin/litecoin128.png
+MimeType=x-scheme-handler/litecoin;
+Categories=Office;Finance;

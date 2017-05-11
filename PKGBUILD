@@ -1,10 +1,11 @@
 pkgname=litecoin-bin
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
 pkgdesc="Peer-to-peer digital currency, official binary release (includes litecoin-qt and litecoind)"
+install=litecoin-bin.install
 
 if [ ${CARCH} == 'x86_64' ]; then
   _pkg_arch=x86_64
@@ -14,7 +15,17 @@ else
   sha256sums=(b96830643e8df764c6569249fa860bc5ecefcfac312530e1bb79d367e74e88a7)
 fi
 
-source=(https://download.litecoin.org/litecoin-$pkgver/linux/litecoin-$pkgver-$_pkg_arch-linux-gnu.tar.gz)
+source=(
+  https://download.litecoin.org/litecoin-$pkgver/linux/litecoin-$pkgver-$_pkg_arch-linux-gnu.tar.gz
+  litecoin-bin.desktop
+  litecoin128.png
+)
+
+sha256sums+=(
+  'addc85926f530590de2e3b2611503a9a8ba0d0614977ce8559ef115d5750e320'
+  'fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94'
+)
+
 
 options=('!strip')
 depends=(
@@ -43,11 +54,15 @@ depends=(
 package() {
   cd "$srcdir/litecoin-$pkgver/bin"
 
-  mkdir -p "$pkgdir/opt/$pkgname"
-  cp * "$pkgdir/opt/$pkgname"
-  # chmod -R 755 "$pkgdir/opt/$pkgname"
+  destdir="$pkgdir/opt/$pkgname"
+
+  mkdir -p "$destdir"
+  cp * "$destdir"
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/litecoin-qt" "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/litecoind" "$pkgdir/usr/bin"
+
+  install -Dm644 "$srcdir"/litecoin-bin.desktop "$pkgdir"/usr/share/applications/litecoin-bin.desktop
+  install -Dm644 "$srcdir"/litecoin128.png "$destdir"/litecoin128.png
 }

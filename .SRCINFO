@@ -1,8 +1,9 @@
 pkgbase = litecoin-bin
 	pkgdesc = Peer-to-peer digital currency, official binary release (includes litecoin-qt and litecoind)
 	pkgver = 0.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.litecoin.org/
+	install = litecoin-bin.install
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -28,7 +29,11 @@ pkgbase = litecoin-bin
 	depends = zlib
 	options = !strip
 	source = https://download.litecoin.org/litecoin-0.13.2/linux/litecoin-0.13.2-x86_64-linux-gnu.tar.gz
+	source = litecoin-bin.desktop
+	source = litecoin128.png
 	sha256sums = 63c82a4d0d526b1d058c74e7da12186ae47dd86616ce95b195263e1fda2ee230
+	sha256sums = addc85926f530590de2e3b2611503a9a8ba0d0614977ce8559ef115d5750e320
+	sha256sums = fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94
 
 pkgname = litecoin-bin
 
