@@ -3,13 +3,13 @@
 
 pkgname=fhs-manpages
 pkgver=2.2
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="A manpage for the Filesystem Hierarchy Standard."
 arch=('any')
 url="https://github.com/alyptik/fhs-manpages"
 license=('GPL')
 options=('zipman')
-source=("https://github.com/alyptik/${pkgname}/raw/master/fhs.5")
+source=("https://github.com/alyptik/${pkgname}/raw/master/${pkgname%%-*}.5")
 #source=("https://github.com/alyptik/${pkgname}/raw/master/fhs.mm")
 sha256sums=('8efaf26cb09e258cafc7b9554bddf3b70c8e4be601509abbd7193863572314e2')
 #sha256sums=('')

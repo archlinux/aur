@@ -1,7 +1,7 @@
 pkgbase = fhs-manpages
 	pkgdesc = A manpage for the Filesystem Hierarchy Standard.
 	pkgver = 2.2
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://github.com/alyptik/fhs-manpages
 	arch = any
 	license = GPL
