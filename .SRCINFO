@@ -1,0 +1,15 @@
+pkgbase = intel-decimalfp
+	pkgdesc = Software implementation of the IEEE 754-2008 Decimal Floating-Point Arithmetic specification
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://software.intel.com/en-us/articles/intel-decimal-floating-point-math-library
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = gcc
+	source = https://software.intel.com/sites/default/files/m/d/4/1/d/8/IntelRDFPMathLib20U1.tar.gz
+	sha1sums = 324a4ae8c220f760b354338dd5df49a8045182f7
+
+pkgname = intel-decimalfp
+
