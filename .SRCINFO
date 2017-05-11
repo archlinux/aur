@@ -1,7 +1,7 @@
 pkgbase = kwin-hybris
 	pkgdesc = KDE Window manager
 	pkgver = 5.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.kde.org/projects/kde/workspace/kwin
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = kwin-hybris
 	depends = kcmutils
 	depends = breeze
 	depends = libhybris
+	depends = xorg-server-xwayland
 	optdepends = qt5-virtualkeyboard: virtual keyboard support for kwin-wayland
 	provides = kwin
 	conflicts = kdebase-workspace

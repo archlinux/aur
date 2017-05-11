@@ -6,12 +6,12 @@
 pkgname=kwin-hybris
 _pkgname=kwin
 pkgver=5.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Window manager'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://projects.kde.org/projects/kde/workspace/kwin'
 license=('LGPL')
-depends=('kscreenlocker' 'xcb-util-cursor' 'hicolor-icon-theme' 'plasma-framework' 'kcmutils' 'breeze' 'libhybris')
+depends=('kscreenlocker' 'xcb-util-cursor' 'hicolor-icon-theme' 'plasma-framework' 'kcmutils' 'breeze' 'libhybris' 'xorg-server-xwayland')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'kdoctools' 'python')
 optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 groups=('plasma')
