@@ -6,7 +6,7 @@ _pkgname=jre
 pkgname=bin32-jre-devel
 _major=9
 #_minor=1
-_build=168
+_build=169
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -43,7 +43,7 @@ install=$pkgname.install
 source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz"
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-sha256sums=('43c63c3339a0dfc8e21dfbfbbd73afc09f407f0527503f53ab5c3f4cb0eae7ea'
+sha256sums=('8c513c33f05a64d7e0c0d1e6b32d0d1aa863045f54471b9b8120caf62d40fa66'
             '753adf70afa227029299d37b147c6368e3aa310523e673588d09f4f2ac756097'
             '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
 
