@@ -1,0 +1,21 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'evil-visualstar)
+(global-evil-visualstar-mode 1)
+
+==> Or, with use-package:
+
+(use-package evil-visualstar
+  :config
+  (global-evil-visualstar-mode 1))
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
