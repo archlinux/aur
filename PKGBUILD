@@ -1,7 +1,7 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=netsniff-ng
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A high performance Linux network sniffer for packet inspection.'
 arch=('i686' 'x86_64')
 url='http://netsniff-ng.org/'
@@ -12,7 +12,7 @@ source=(http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${pkgver}.tar.gz
         netsniff-ng-${pkgver}.tar.gz.sig::http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${pkgver}.tar.gz.sign)
 md5sums=('231fd9292f764c0cc8ed5f9541c46f53'
          'SKIP')
-
+validpgpkeys=('C3DE742283C246F2D7887AB4236B0FE9B5510F47')  # Tobias Klauser <tklauser@distanz.ch>
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   NACL_INC_DIR=/usr/include/sodium NACL_LIB=sodium ./configure --prefix=/usr
