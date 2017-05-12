@@ -6,7 +6,7 @@ pkgname=fldigi-docs
 _pkgname=FLDigi
 __pkgname=fldigi
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Documentation/help when using FLDIGI w/out i-net access"
 arch=('any')
 url="http://w1hkj.com/Fldigi.html"
@@ -19,5 +19,5 @@ package() {
 
 	install -Dm644 ${__pkgname}_${pkgver}_help.pdf $pkgdir/usr/share/fldigi/docs/fldigi-help.pdf
 }
-md5sums=('0810666b9347e1e7d99172d1a3fb4b3d')
-sha256sums=('89853495a570b191125d9adfb42b3ac9ae1277ab6825ae7543e43f8c0ab8f0ef')
+md5sums=('72c790b7c755d1b5b91fb3020a8e4ffb')
+sha256sums=('e00bdb2865cd8a4c477cfa5bc5508981a44db6e9c8d392734855e574b3a8a167')
