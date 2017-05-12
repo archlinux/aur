@@ -3,9 +3,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc
-_srcname=linux-4.10
-_stable=4.10.15
-_patchver=4.10.16
+_srcname=linux-4.11
+_stable=4.11
+_patchver=4.11.1
 _rcver=1
 pkgver=${_patchver}rc${_rcver}
 _rcpatch=patch-${_patchver}-rc${_rcver}
@@ -29,14 +29,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         )
 
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'a15ed4c0b74e72f8b09cb4a57899707c68b7834136404d96f4e05add84a05e46'
+            '0e65eee0893968c94cb6b62ff071bc3877d6c9a85413406526dbcc764811bec5'
             'SKIP'
-            '8d5093732a9fad25a24add5a3f25001631a0b0ce11a2583005ae87b247750dc7'
+            '23f7ef66b84c02b72b6abec57e4c87af55ae721fbeac10fdfe9cdbfaf22b3d1e'
             'SKIP'
-            '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
-            '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
+            'e4e928488d35ba2b4049bd224dee87be9eb574ed3c1882f22c8fd5d8674c9abd'
+            '2e38528bd2f1be712f5a274b66882c41d2a9cf996b3a05b4a772c8ba7309b261'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -51,7 +51,7 @@ prepare() {
 
   # add upstream patch
   # ONLY comment out for initial rc (ie 4.10 --> 4.10.1rc1) -- needed for all others
-  patch -p1 -i "${srcdir}/patch-${_stable}"
+  #patch -p1 -i "${srcdir}/patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "${srcdir}/$_rcpatch"
