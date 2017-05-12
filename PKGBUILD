@@ -12,7 +12,7 @@ arch=('any')
 depends=('openssl')
 makedepends=('cppunit')
 provides=('libtorrent')
-conflicts=('libtorrent' 'libtorrent-git' 'libtorrent-ipv6' 'libtorrent-ps-git' 'libtorrent-pyro' 'libtorrent-pyro-git')
+conflicts=('libtorrent')
 source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
         'lt-ps-honor_system_file_allocate_all.patch'
         'lt-ps-log_open_file-reopen_all.patch'
