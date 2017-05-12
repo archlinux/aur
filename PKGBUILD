@@ -13,7 +13,7 @@ license=('GPL')
 install=${pkgname}.install
 makedepends=('linux' 'linux-headers')
 source=(
-    "https://sourceforge.net/projects/scst/files/scst-${version}.tar.bz2/download"
+    "scst-${pkgver}.tar.bz2::https://sourceforge.net/projects/scst/files/scst-${pkgver}.tar.bz2/download"
     "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${kversion}.tar.xz"
     'queue.patch'
 )
@@ -24,18 +24,19 @@ md5sums=(
 )
 
 _base() {
+  cd $(find "$srcdir" -maxdepth 1 -type d -name 'scst*')
+
   # Fix problem with scstadmin
   unset PERL_MM_OPT
 
   export KVER=$(uname -r)
   export KVERSION=$(uname -r)
   export PREFIX="/usr"
-  export MANDIR=/usr/man
+  export MANDIR=/usr/share/man
 }
 
 _package_module() {
   msg "Package module $1..."
-	cd "$srcdir"/scst*
 
   _base
   export DESTDIR="$pkgdir"
@@ -67,14 +68,13 @@ _package_module() {
 }
 
 prepare() {
-    cd "$srcdir"/scst*
+    cd $(find "$srcdir" -maxdepth 1 -type d -name 'scst*')
 
     patch -Np0 -i "$srcdir/queue.patch"
 }
 
 build() {
     msg "Build package..."
-    cd "$srcdir"/scst*
 
     _base
 
@@ -122,14 +122,13 @@ package_scstadmin() {
     depends=('perl')
 
     msg "Package scstadmin util..."
-    cd "$srcdir"/scst*
 
     _base
     export DESTDIR="$pkgdir"
 
     # Resolve path to install man pages
     # and move script from sbin to bin
-    export MANDIR="$pkgdir"/usr/man
+    export MANDIR="$pkgdir"/usr/share/man
 
     make -C scstadmin install_vendor
     mkdir -p "$pkgdir"/usr/bin
