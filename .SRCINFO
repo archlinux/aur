@@ -3,7 +3,7 @@
 pkgbase = goatee
 	pkgdesc = lightwieght gtk2 text/hex editor written on Go
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sg3des/goatee
 	arch = i686
 	arch = x86_64

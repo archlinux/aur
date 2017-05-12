@@ -2,7 +2,7 @@
 
 pkgname=goatee
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='lightwieght gtk2 text/hex editor written on Go'
 arch=('i686' 'x86_64')
 url='https://github.com/sg3des/goatee'
@@ -21,4 +21,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
 	install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
