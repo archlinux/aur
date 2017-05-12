@@ -1,28 +1,50 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Lubosz Sarnecki <lubosz [at] gmail [dot] com>
 
-pkgname=vulkan-caps-viewer
-pkgver=1.2
-pkgrel=2
+pkgname=vulkan-caps-viewer-git
+pkgver=1.3.73.13b1de0
+pkgrel=1
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
 license=('GPL2')
-source=('vulkan-caps-viewer.desktop'
-        'android_icon_256.png')
-sha1sums=('7ccdb4b4487b43bb428c32994092c00ca14f594a'
-          '96c802c82c45626f3b6bdbb846d0f1f7e67ab28e')
-source_x86_64=("http://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver//./_}_linux64.tar.gz")
-sha1sums_x86_64=('89cf1dd968c69c5369c597cb59c0c29767cfcd09')
+source=('vulkan-caps-viewer.desktop' 'fix-build.patch')
+sha1sums=('7ccdb4b4487b43bb428c32994092c00ca14f594a' 'cdb85183b579f1665f2853eaf6957492f84a7109')
+source_x86_64=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git")
+sha1sums_x86_64=('SKIP')
 depends=('vulkan-icd-loader' 'qt5-base' 'qt5-x11extras')
+conflicts=('vulkan-caps-viewer')
+provides=('vulkan-caps-viewer')
+
+pkgver() {
+  cd $srcdir/VulkanCapsViewer
+  
+  version=$(grep "vulkanCapsViewer::version" vulkancapsviewer.cpp | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
+  hash=$(git log --pretty=format:'%h' -n 1)
+  revision=$(git rev-list --count HEAD)
+  
+  echo $version.$revision.$hash  
+}
+
+
+prepare() {
+  cd $srcdir/VulkanCapsViewer
+  patch -p1 < ../fix-build.patch
+}
+
+build() {
+  cd $srcdir/VulkanCapsViewer
+  qmake
+  make
+}
 
 package() {
-  cd "${srcdir}"/vulkancapsviewer
+  cd $srcdir/VulkanCapsViewer
 
   # App
   install -dm755 "${pkgdir}"/usr/bin
-  install -m755 vulkanCapsViewer "${pkgdir}"/usr/bin
+  install -m755 "${srcdir}"/VulkanCapsViewer/Win32/Release/vulkanCapsViewer "${pkgdir}"/usr/bin
 
   # Desktop shortcut
   install -Dm644 "${srcdir}"/vulkan-caps-viewer.desktop "${pkgdir}"/usr/share/applications/vulkan-caps-viewer.desktop
-  install -Dm644 "${srcdir}"/android_icon_256.png "${pkgdir}"/usr/share/icons/vulkan-caps-viewer.png
+  install -Dm644 "${srcdir}"/VulkanCapsViewer/gfx/android_icon_256.png "${pkgdir}"/usr/share/icons/vulkan-caps-viewer.png
 }
