@@ -1,12 +1,12 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openboard-develop
 pkgver=1.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'libpaper' 'bzip2' 'openssl-1.0')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-tools' 'libpaper' 'bzip2' 'openssl-1.0')
 source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip"
         ssl10.patch
