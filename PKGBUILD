@@ -24,7 +24,7 @@ package_gogland-eap() {
   install -d -m 755 "${pkgdir}/usr/share/applications/"
   install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
 
-  rsync -rtl "${srcdir}/Gogland-${pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre
+  rsync -rtl "${srcdir}/Gogland-${pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre64
 
   ln -s "/opt/${pkgbase}/bin/${_pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
@@ -33,5 +33,5 @@ package_gogland-eap() {
 
 package_gogland-eap-jre() {
   install -d -m 755 "${pkgdir}/opt/${pkgbase}"
-  rsync -rtl "${srcdir}/Gogland-${pkgver}/jre" "${pkgdir}/opt/${pkgbase}"
+  rsync -rtl "${srcdir}/Gogland-${pkgver}/jre64" "${pkgdir}/opt/${pkgbase}"
 }
