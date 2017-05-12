@@ -1,6 +1,6 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 pkgname=caret-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Premium Markdown Editor http://caret.io"
 arch=('x86_64')
@@ -36,4 +36,4 @@ package() {
     rm ${pkgdir}/opt/caret/after-install.tpl
     rm ${pkgdir}/opt/caret/after-remove.tpl 
 }
-md5sums=('9c814868f18805368d498f1c27c767c6')
+md5sums=('ea57181f8d00cc67472a6d1a82ab210f')
