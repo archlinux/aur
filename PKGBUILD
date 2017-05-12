@@ -2,8 +2,8 @@
 
 pkgname=goonies
 pkgver=1.4.1528
-pkgrel=2
-pkgdesc="Unofficial remake of Konami's The Goonies for the MSX"
+pkgrel=3
+pkgdesc="Remake of Konami's The Goonies for the MSX"
 arch=('i686' 'x86_64')
 license=('unknown')
 url="http://www.braingames.getput.com/goonies"
@@ -18,6 +18,9 @@ prepare() {
 
   # fix compile errors and bin path
   patch -p0 < ../goonies.patch
+
+  # use Arch's CFLAGS
+  sed -i "s/-g3 -O3/$CFLAGS/" build/linux/Makefile
 }
 
 build() {
