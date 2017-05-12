@@ -8,8 +8,8 @@
 pkgname=qtcreator-prerelease
 _pkgvermajmin=4.3
 pkgver=${_pkgvermajmin}.0
-_verpostfix="-beta1"
-pkgrel=1
+_verpostfix="-rc1"
+pkgrel=2
 _pkgver=${pkgver}${_verpostfix}
 _filename=qt-creator-opensource-src-${_pkgver}
 _urlbase="https://download.qt.io/official_releases"
@@ -22,7 +22,7 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator')
-depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'qbs')
+depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'qbs' 'llvm')
 optdepends=('qt5-doc: integrated Qt documentation'
             'qt5-examples: welcome page examples'
             'qt5-translations: for other languages'
@@ -35,7 +35,7 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'valgrind: analyze support')
 makedepends=('clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('9f5e28747281a2e75e5f875d37fad9422ee264357b2e752c450dad5b568229e2')
+sha256sums=('d40cd61f444076bda73cb2eb7d1b8a6e8ce221ad474c66c1dde15ec0dfd04309')
 
 _qmake_cmd=qmake
 _qt_sdk_dir=/opt/qt-sdk
