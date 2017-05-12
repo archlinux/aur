@@ -17,7 +17,7 @@
 # https://cdn.safe.com/resources/fme/SLA-FME.pdf
 
 pkgname=fme-desktop-2017
-pkgver=2017.0.0.2.17288
+pkgver=2017.0.1.0.17288
 pkgrel=1
 _orig_distro=ubuntu.16.04
 pkgdesc="An ETL tool with support for location data"

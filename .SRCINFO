@@ -1,6 +1,6 @@
 pkgbase = fme-desktop-2017
 	pkgdesc = An ETL tool with support for location data
-	pkgver = 2017.0.0.2.17288
+	pkgver = 2017.0.1.0.17288
 	pkgrel = 1
 	url = http://safe.com
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = fme-desktop-2017
 	provides = fme-desktop
 	options = !strip
 	options = !upx
-	source = https://downloads.safe.com/fme/2017/fme-desktop-2017_2017.0.0.2.17288~ubuntu.16.04_amd64.deb
+	source = https://downloads.safe.com/fme/2017/fme-desktop-2017_2017.0.1.0.17288~ubuntu.16.04_amd64.deb
 	sha256sums = e92f215815e9349bb40609a5b278241c0f2e7601973aa209f6d388a1bed32536
 
 pkgname = fme-desktop-2017
