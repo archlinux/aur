@@ -7,7 +7,7 @@
 
 pkgname=murmur-snapshot-ice
 pkgver=1.3.0_2380_g97c34f4
-pkgrel=1
+pkgrel=2
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.mumble.info/wiki/"
@@ -18,6 +18,7 @@ makedepends=('boost' 'python')
 conflicts=('murmur' 'murmur-static' 'murmur-ice' 'murmur-snapshot-noice')
 provides=('murmur')
 backup=("etc/murmur.ini")
+install="murmur.install"
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
         "https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz.sig")
 sha256sums=('ece9f42cc11b63b9380fcb03847e4543d91a42b11241b1f8827c127ac3ce5c5a'
@@ -39,11 +40,11 @@ package() {
       -e "s|database=|database=/var/lib/murmur/murmur.sqlite|" \
       -e "s|;logfile=murmur.log|logfile=|" \
       -e "s|;uname=|uname=murmur|" \
+      -e "s|;pidfile=|pidfile=/run/murmur/murmur.pid|" \
       -i scripts/murmur.ini
 
     sed -e "s|<policy user=\"mumble-server\">|<policy user=\"murmur\">|" -i scripts/murmur.conf
 
-    install -dm755 -o 122 -g 122 ${pkgdir}/var/lib/murmur    
     install -Dm755 release/murmurd ${pkgdir}/usr/bin/murmurd
     install -Dm644 scripts/murmur.ini ${pkgdir}/etc/murmur.ini
     install -Dm644 scripts/murmur.conf ${pkgdir}/etc/dbus-1/system.d/murmur.conf

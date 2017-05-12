@@ -1,0 +1,15 @@
+post_install () {
+  # Check user/group murmur exists
+  getent group murmur >/dev/null || groupadd --system murmur
+  getent passwd murmur >/dev/null || \
+	  useradd --system -c "Murmur voice server" -g murmur -s /bin/false -d /var/lib/murmur murmur
+  post_upgrade
+}
+
+post_upgrade() {
+  # Ensure directories exist
+  mkdir -p /var/lib/murmur /run/murmur
+  # Fix permissions on necessary directories
+  chown murmur.murmur /var/lib/murmur /run/murmur
+}
+
