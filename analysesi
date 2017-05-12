@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ANALYSE_JAR="/usr/share/analysesi/analyseSI-${ANALYSE_VER}.jar"
+ANALYSE_JAR="/usr/share/analysesi/AnalyseSI-${ANALYSE_VER}.jar"
 
 if [ $# -gt 1 ]
 then
