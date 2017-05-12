@@ -1,6 +1,6 @@
 # Maintainer: Tablet Mode <tablet-mode@monochromatic.cc>
 pkgname=py3status-modules
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Collection of modules for py3status"
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ optdepends=(
 )
 conflicts=("$pkgname")
 source=(https://github.com/tablet-mode/$pkgname/archive/$pkgver.tar.gz)
-sha512sums=('54847cb944ae0dc8e24e1c5f8844a775fddd524c68c40064c508f6a1ff91733fdf5cb7969bf496f88d2a9a1c0b671f7b3bc3079746202b43ff4fbead8f9e4127')
-sha256sums=('677824f39384204436af45dfa294d9f23b5f83ecc956dff3f335e5fd9321b76b')
-md5sums=('ffc9dcc24578372fd593eaf6507c334f')
+md5sums=('1379189f3688dab41802fde6a7d1fed1')
+sha256sums=('2cb34d4483fdd915d25dbbc286b95bd732c83f86ab2bb8b57caa3c43cc0d569e')
+sha512sums=('48a651bee8be41c85d1407dc3b327867d4d7ff2acb405b27ddda2c101fa54ab42e58a54ca9690ebefd4684c428ee539832017d74e113ed1922c916ca9aeba714')
 
 package() {
   cd py3status-modules-$pkgver
