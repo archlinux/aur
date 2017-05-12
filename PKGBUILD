@@ -17,7 +17,7 @@
 # https://cdn.safe.com/resources/fme/SLA-FME.pdf
 
 pkgname=fme-desktop-2017
-pkgver=2017.0.0.2.17280
+pkgver=2017.0.0.2.17288
 pkgrel=1
 _orig_distro=ubuntu.16.04
 pkgdesc="An ETL tool with support for location data"
@@ -69,7 +69,7 @@ source=(
   "https://downloads.safe.com/fme/2017/${pkgname}_${pkgver}~${_orig_distro}_amd64.deb"
 )
 sha256sums=(
-  'f6efe59428021b799c832065f0e28440c86f27caa60e8bcd91d6861ce06ba237'
+  'e92f215815e9349bb40609a5b278241c0f2e7601973aa209f6d388a1bed32536'
 )
 
 package() {
@@ -79,5 +79,6 @@ package() {
 
   install -D -m644 "${pkgdir}/opt/fme-desktop-2017/EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
+  mkdir -p "${pkgdir}/usr/lib/jvm"
   ln -s "/usr/lib/jvm/default" "${pkgdir}/usr/lib/jvm/default-java"
 }
