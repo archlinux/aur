@@ -16,7 +16,7 @@ pkgbase = mopidy-spotmop
 	depends = python2-pylast
 	optdepends = mopidy-local-sqlite: local library support
 	source = https://github.com/jaedb/spotmop/archive/2.10.1.tar.gz
-	md5sums = 8b0b2a0e707f26caadd811165b5a0da8
+	sha256sums = 49304b30fc45f37845f11b4c655f0aee00bc58023dda205dcb837f9b6ce2cbc1
 
 pkgname = mopidy-spotmop
 

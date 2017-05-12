@@ -13,7 +13,7 @@ depends=('python2' 'mopidy>=0.19' 'mopidy-spotify' 'python2-configobj' 'mopidy-l
 makedepends=('python2' 'python2-setuptools')
 optdepends=('mopidy-local-sqlite: local library support')
 source=("https://github.com/jaedb/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('8b0b2a0e707f26caadd811165b5a0da8')
+sha256sums=('49304b30fc45f37845f11b4c655f0aee00bc58023dda205dcb837f9b6ce2cbc1')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
