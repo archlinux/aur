@@ -1,0 +1,21 @@
+pkgbase = python-hypergan
+	pkgdesc = A customizable generative adversarial network with good defaults. Build your own content generator.
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = https://github.com/255BITS/HyperGAN
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-flask
+	depends = python-flask-cors
+	depends = python-hyperchamber
+	depends = python-tensorflow-gpu
+	depends = python-scipy
+	depends = python-pillow
+	options = !emptydirs
+	source = https://pypi.io/packages/source/h/hypergan/hypergan-0.8.8.tar.gz
+	sha256sums = c4ba7c509f9fe72d6a99dbe4f2ce409e46aa5f7b6ca464e7c09933d24dca81a4
+
+pkgname = python-hypergan
+
