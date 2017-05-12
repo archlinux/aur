@@ -17,7 +17,7 @@ depends+=('raspberrypi-firmware')
 else
 depends+=('libgl')
 fi
-source=('git://github.com/Herdinger/EmulationStation.git'
+source=('git://github.com/RetroPie/EmulationStation.git'
        'psp_scapper.patch')
 md5sums=('SKIP'
          '3a5732b192e6c25ec655bc4bffa0a0c6')
