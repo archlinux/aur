@@ -12,7 +12,7 @@ arch=('any')
 depends=('curl>=7.15.4' 'libtorrent-ps>=1.0' 'ncurses' 'xmlrpc-c')
 makedepends=('cppunit')
 provides=('rtorrent')
-conflicts=('rtorrent' 'rtorrent-cdl' 'rtorrent-color' 'rtorrent-git' 'rtorrent-ipv6' 'rtorrent-ps-git' 'rtorrent-pyro-git' 'rtorrent-vi-color')
+conflicts=('rtorrent')
 source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
         'command_pyroscope.cc'
         'ps-event-view_all.patch'
