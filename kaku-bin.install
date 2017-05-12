@@ -1,0 +1,13 @@
+post_install() {
+  chgrp -R audio /usr/share/kaku-bin
+  chmod -R 775 /usr/share/kaku-bin
+  cat <<END
+The files are installed under group "audio". Please add your user
+to this group with "usermod -a -G audio", otherwise you couldn't use
+the autoupdater.
+END
+}
+
+post_upgrade() {
+  post_install
+}

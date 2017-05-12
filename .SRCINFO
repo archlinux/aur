@@ -1,8 +1,9 @@
 pkgbase = kaku-bin
 	pkgdesc = The next generation music client.
 	pkgver = 1.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kaku.rocks
+	install = kaku-bin.install
 	arch = x86_64
 	arch = i686
 	license = MIT
