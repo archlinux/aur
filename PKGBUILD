@@ -2,8 +2,8 @@
 # Contributor: Tom Kuther <gimpel@sonnenkinder.org>
 
 pkgname=snapper
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('i686' 'x86_64')
 url="http://snapper.io"
@@ -60,4 +60,4 @@ package() {
     "$pkgdir"/etc/conf.d/snapper
 }
 
-sha256sums=('db9cce7f61ed1197d2663dfca444d313b05d7fb2d50af5ab468c7bdba6dd660f')
+sha256sums=('8876b6fa946dc46df5dcbaf747bb11ac4c5a3418dd59c5ba09c47910cbad1835')
