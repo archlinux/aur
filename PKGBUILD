@@ -51,11 +51,11 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.9
-_pkgver=4.9.20
-_rtver=16
+_pkgver=4.9.27
+_rtver=17
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -462,9 +462,9 @@ done
 
 sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a'
             'SKIP'
-            'ef99fc84764bfec00ce33f717150956f95de5294d097f1e20276badfa87b4dc90c42061ccba4b0134448c43eeeca816045ab37e47136532e14dfc62949841e37'
+            'e7a9302d284e77c4a961f6cbfe5c702bbb2db5046a35e4c850d0549808ac8278d550239d7af72f2dd7d1b7940416dfacb6cc83be9b948ffe012428bd8d0fe367'
             'SKIP'
-            'b3061fc975c24cb9ff5320f3d72534de322336fbdc669558069ebca12607f9f45d905eb7e752569140fcd56127e64870eac2b24126a77090f117d4c77dc6a45a'
+            '2aa0601f6ff645170b9df70f912783a444bf3f0a386460a7fe025fb5480501ef07a41fc30e093c9a23046511c941a508dfaa92d58fba41492be118b9a7f8e78f'
             'SKIP'
             '5709ec16030f372309c06020ab0cc23940cad320204ce12426b8b10b3bdbd9be25c8a7bae247ce341429e8a33d0097700a88149d54b29ff44a61d1d4aff66763'
             '953566f2b74415cd5113882352c8518234c399e0e0a6cc118ddfa259c65d6fc30de00f25b605489d53e0b1f948bc7b3ebf8f20b970538f5bf7de5a7f33a0f641'
