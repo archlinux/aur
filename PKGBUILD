@@ -1,8 +1,9 @@
 # Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
 
 pkgname=thruk
-pkgver=2.14
-pkgrel=5
+_pkgver=2.14-2
+pkgver=${_pkgver/-/.}
+pkgrel=1
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
 url="http://thruk.org"
@@ -17,11 +18,11 @@ backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
         'etc/thruk/log4perl.conf' 'etc/thruk/menu_local.conf'
         'etc/thruk/naglint.conf' 'etc/httpd/conf/extra/thruk.conf'
         'etc/thruk/thruk_local.conf')
-source=(http://download.thruk.org/pkg/v$pkgver/src/$pkgname-$pkgver.tar.gz)
-md5sums=('ac36a64794e6f44fe34d03473b616875')
+source=(http://download.thruk.org/pkg/v$_pkgver/src/$pkgname-$_pkgver.tar.gz)
+md5sums=('d15292905a702e9819467e94c22b505a')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$_pkgver
 
   ./configure --prefix=/usr \
     --exec-prefix=/bin \
@@ -41,7 +42,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname-$_pkgver
 
   make DESTDIR="$pkgdir"/ install
 
@@ -49,4 +50,5 @@ package() {
   install -dm755 "$pkgdir"/etc/thruk/panorama
 
   chown -R 33:33 "$pkgdir"/var/{lib,log}/thruk/ "$pkgdir"/etc/thruk/panorama/
+  chmod 770 "$pkgdir"/var/lib/thruk/
 }
