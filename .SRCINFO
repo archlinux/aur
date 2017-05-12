@@ -17,7 +17,7 @@ pkgbase = guayadeque
 	optdepends = gst-plugins-ugly: Support for additional file formats
 	optdepends = gst-libav: Support for additional file formats
 	optdepends = gvfs: Support for external devices
-	source = https://github.com/anonbeat/guayadeque/archive/v0.4.5.tar.gz
+	source = guayadeque-0.4.5.tar.gz::https://github.com/anonbeat/guayadeque/archive/v0.4.5.tar.gz
 	sha256sums = a0c4eb9f0eb42e701880a1d196e847d68a3b443716a6240389fbfafef3f5d19c
 
 pkgname = guayadeque

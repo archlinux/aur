@@ -19,7 +19,7 @@ optdepends=('gst-plugins-good: Support for PulseAudio and additional file format
             'gst-plugins-ugly: Support for additional file formats'
             'gst-libav: Support for additional file formats'
             'gvfs: Support for external devices')
-source=("https://github.com/anonbeat/guayadeque/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anonbeat/guayadeque/archive/v${pkgver}.tar.gz")
 sha256sums=('a0c4eb9f0eb42e701880a1d196e847d68a3b443716a6240389fbfafef3f5d19c')
 
 _BUILDFLDR='localbuild'
