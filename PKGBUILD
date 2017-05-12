@@ -4,7 +4,7 @@
 # Credit: Aaron Brodersen <aaron at abrodersen dot com>
 
 pkgname=dotnet-cli
-pkgver="1.0.1"
+pkgver="1.0.4"
 pkgrel=1
 epoch=1
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
@@ -16,9 +16,9 @@ optdepends=('dotnet-sdk: enable building applications')
 conflicts=('dotnet-bin')
 options=('staticlibs')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://go.microsoft.com/fwlink/?LinkID=843436")
+source=("${pkgname}-${pkgver}.tar.gz::https://download.microsoft.com/download/D/7/A/D7A9E4E9-5D25-4F0C-B071-210CB8267943/dotnet-ubuntu.16.10-x64.1.1.2.tar.gz")
 
-sha256sums=('d2d439fd7e544e120db4fb7246ec99cad199ad8d827a78e3e4157f8e331aa066')
+sha256sums=('0a4d4061931e0154c9186446dbc8d4c3e69ba49537699be98185d55fc24a1b56')
 
 package() {
   mkdir -p "${pkgdir}/opt/dotnet/"
