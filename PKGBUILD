@@ -1,7 +1,7 @@
 # Maintainer: Nick Burrett <nick@sqrt.co.uk>
 pkgname=comskip
 pkgver=0.81.095
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Comskip is a free MPEG commercial break detector'.
 _gitname='comskip'
@@ -33,6 +33,7 @@ build() {
 package() {
   mkdir -p "$pkgdir/usr/bin"
   install -m755 "${srcdir}/${_gitname}/comskip" "$pkgdir/usr/bin/comskip"
+  install -m755 "${srcdir}/${_gitname}/comskip-gui" "$pkgdir/usr/bin/comskip-gui"
 }
 
 # vim:set ts=2 sw=2 et:
