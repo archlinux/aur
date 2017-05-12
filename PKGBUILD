@@ -22,8 +22,9 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator')
-depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'qbs' 'llvm')
-optdepends=('qt5-doc: integrated Qt documentation'
+depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'llvm')
+optdepends=('qbs'
+            'qt5-doc: integrated Qt documentation'
             'qt5-examples: welcome page examples'
             'qt5-translations: for other languages'
             'gdb: debugger'
