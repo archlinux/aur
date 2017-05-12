@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=papirus-filezilla-themes-git
-pkgver=20170120
+pkgver=20170310
 pkgrel=1
 pkgdesc="Papirus theme for Filezilla (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
