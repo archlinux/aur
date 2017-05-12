@@ -14,7 +14,7 @@ makedepends=('doxygen' 'boost' 'cmake')
 checkdepends=('gtest')
 optdepends=()
 conflicts=(davix-git)
-source=("https://github.com/cern-it-sdc-id/${pkgname}/archive/${_pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cern-it-sdc-id/${pkgname}/archive/${_pkgver}.tar.gz")
 sha256sums=('9e5a35796e8129438e0caee95bd54146162f8336c5a7cdf5e257aa48de6d03fa')
 
 build() {

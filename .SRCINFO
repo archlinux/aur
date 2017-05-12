@@ -14,7 +14,7 @@ pkgbase = davix
 	depends = libxml2
 	depends = boost-libs
 	conflicts = davix-git
-	source = https://github.com/cern-it-sdc-id/davix/archive/R_0_6_4.tar.gz
+	source = davix-0.6.4.tar.gz::https://github.com/cern-it-sdc-id/davix/archive/R_0_6_4.tar.gz
 	sha256sums = 9e5a35796e8129438e0caee95bd54146162f8336c5a7cdf5e257aa48de6d03fa
 
 pkgname = davix
