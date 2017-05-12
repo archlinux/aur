@@ -4,8 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=3.60
-_mplabcomm_version=3.23.00
+pkgver=3.61
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -28,14 +27,13 @@ install="${pkgname}.install"
 _mplabx_dir="/opt/microchip/mplabx/v${pkgver}"
 _mplabx_installer="MPLABX-v${pkgver}-linux-installer"
 
-_mplabcomm_installer="MPLABCOMM-v${_mplabcomm_version}-linux-installer"
-_mplabcomm_dir="/opt/microchip/mplabcomm/v${_mplabcomm_version}"
+_mplabcomm_dir="/opt/microchip/mplabcomm"
 
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.tar"
         "LICENSE")
 source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
-md5sums=('f6a47bc797390d0c9be77680f8072e88'
+md5sums=('fb17488efa1f82826ba7987e47ffdef2'
          'a34a85b2600a26f1c558bcd14c2444bd')
 md5sums_x86_64=('a12f5c06479f3cd0678e705e08b95233')
 
@@ -108,13 +106,13 @@ EOF
   ln -sf "${_mplabx_dir}/mplab_ide/bin/mdb.sh" "${pkgdir}/usr/bin/mdb"
   ln -sf "${_mplabx_dir}/mplab_ide/bin/prjMakefilesGenerator.sh" "${pkgdir}/usr/bin/prjMakefilesGenerator"
   ln -sf "${_mplabx_dir}/mplab_ipe/mplab_ipe" "${pkgdir}/usr/bin/"
-  ln -sf "${_mplabcomm_dir}/lib/mchplinusbdevice" "${pkgdir}/etc/.mplab_ide/"
+  ln -sf "${_mplabcomm_dir}"/v*/lib/mchplinusbdevice "${pkgdir}/etc/.mplab_ide/"
 
   # Symlink libs from MPLABCOMM
   local lib
-  for lib in "${pkgdir}${_mplabcomm_dir}"/lib/*.so{,.*}; do
+  for lib in "${pkgdir}${_mplabcomm_dir}"/v*/lib/*.so{,.*}; do
     local bname=$(basename "$lib")
-    ln -sf "${_mplabcomm_dir}/lib/${bname}"  "${pkgdir}/usr/lib/"
+    ln -sf "${_mplabcomm_dir}"/v*/lib/"${bname}"  "${pkgdir}/usr/lib/"
   done
 
   # Correctly link .so.* -> .so for all libs
@@ -124,18 +122,21 @@ EOF
     ln -sf ${bname} "${pkgdir}/usr/lib/${soname}.so"
   done
 
+  # Fix hardcoded /usr/local/lib reference in libjlinkpic32.so
+  sed -i 's#/usr/local/lib/libjlinkpic32.so#/usr/lib/libjlinkpic32.so\x00\x00\x00\x00\x00\x00#' "${pkgdir}/usr/lib/libSEGGERAccessLink.so"
+
   # Tweak .desktop files for better desktop integration
   echo "StartupWMClass=MPLAB X IDE v${pkgver}" >> "${pkgdir}/usr/share/applications/mplab.desktop"
   echo "StartupWMClass=com-microchip-ipe-ui-ProdProgrammerApp" >> "${pkgdir}/usr/share/applications/mplab_ipe.desktop"
 
   # Install license files
   install -Dm 644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 "${pkgdir}${_mplabcomm_dir}/MPLABCOMMLicense.txt" "${pkgdir}/usr/share/licenses/${pkgname}/MPLABCOMMLicense.txt"
+  install -Dm 644 "${pkgdir}${_mplabcomm_dir}"/v*/MPLABCOMMLicense.txt "${pkgdir}/usr/share/licenses/${pkgname}/MPLABCOMMLicense.txt"
 
   # Cleanup
   rm "${pkgdir}"/{bin,etc/{group,passwd}}
   rm -r "${pkgdir}/tmp"
   # wtf
-  rm -f "${pkgdir}${_mplabcomm_dir}/${_mplabcomm_installer}.run"
+  rm -f "${pkgdir}${_mplabcomm_dir}"/v*/MPLABCOMM-*.run
 }
 
