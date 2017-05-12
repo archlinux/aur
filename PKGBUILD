@@ -2,7 +2,7 @@
 # Maintainer: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-lts-old-upgrade
-pkgver=9.3.16
+pkgver=9.3.17
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc="PostgreSQL build for migrating between major versions with pg_upgrade"
@@ -14,7 +14,7 @@ makedepends=('krb5' 'python2' 'perl' 'tcl>=8.6.0')
 provides=("postgresql-old-upgrade=${_majorver}")
 conflicts=('postgresql-old-upgrade')
 source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2)
-sha256sums=('845f5e4ac8cf026b6a77c5a180a2fe869f51e9d06acf8d0365b05505a2c66873')
+sha256sums=('9c03e5f280cfe9bd202fa01af773eb146abd8ab3065f7279d574c568f6948dbe')
 
 build() {
   cd "${srcdir}/postgresql-${pkgver}"
@@ -50,4 +50,3 @@ package() {
   # clean up unneeded installed items
   rm -rf "${pkgdir}/opt/pgsql-${_majorver}/include/"
 }
-
