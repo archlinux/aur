@@ -18,8 +18,8 @@ license=('GPL3')
 source=("${pkgname}-${_simver}-${_simrel}.tar.gz::https://github.com/simulationcraft/simc/archive/release-${_simver}-${_simrel}.tar.gz"
         'SimulationCraft.desktop')
 
-md5sums=('67f8ae2caa043f0c5111ca724bf348e1'
-         '9e52edb48f39888bc13a0b9bd5f8d758')
+sha256sums=('b9af98186976676bc317a56568011639a4595b01ccaf5d559cfb0361dd6aa861'
+            '12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-release-${_simver}-${_simrel}"
