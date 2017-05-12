@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd
-pkgver=0.22.0
+pkgver=0.23.0
 _pkgdir=${pkgname}-${pkgver}
 pkgrel=2
 pkgdesc="A small daemon to act on remote or local events"
@@ -46,7 +46,7 @@ source=(
     https://www.eventd.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz
 )
 sha256sums=(
-    c643dde927f1e938898a0196021f3e0f3c6cc369bd133c8ab9d70b333ecc2fa4
+    fe4905d79c8312686c11db28783364b84216289fd1a7fa58db3137135047dc9e
 )
 
 build() {
