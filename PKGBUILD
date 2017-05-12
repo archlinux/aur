@@ -2,7 +2,7 @@
 
 pkgname=lib32-tslib
 _pkgname=tslib
-pkgver=1.8
+pkgver=1.10
 pkgrel=1
 pkgdesc="Touchscreen Access Library (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('lib32-glibc')
 makedepends=()
 source=("https://github.com/kergoth/tslib/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha256sums=('be00af1ad643e3535b1958e4e48fea9905888489d7f1480a957c9e3d1cbaeac5')
+sha256sums=('26ce1df4647dc8d16f6247062f30a8a03c34165dd19e042d0b2df8860da265b2')
 
 build() {
   cd $_pkgname-$pkgver
