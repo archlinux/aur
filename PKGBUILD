@@ -8,7 +8,7 @@
 pkgname='qemu-minimal'
 #pkgdesc="A generic and open source machine emulator and virtualizer"
 pkgdesc="A generic and open source machine emulator and virtualizer. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server."
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
@@ -26,10 +26,10 @@ source=("$url/download/${pkgname:0:-8}-${pkgver}.tar.bz2"{,.sig}
         qemu.sysusers
         qemu-ga.service
         65-kvm.rules)
-sha256sums=('dafd5d7f649907b6b617b822692f4c82e60cf29bc0fc58bc2036219b591e5e62'
+sha256sums=('00bfb217b1bb03c7a6c3261b819cfccbfb5a58e3e2ceff546327d271773c6c14'
             'SKIP'
             'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
-            '0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1'
+            'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
             '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
@@ -242,6 +242,7 @@ package_qemu-guest-agent() {
 
   install -D build-full/qemu-ga "$pkgdir/usr/bin/qemu-ga"
   install -Dm644 qemu-ga.service "$pkgdir/usr/lib/systemd/system/qemu-ga.service"
+  install -Dm755 "$srcdir/qemu-$pkgver/scripts/qemu-guest-agent/fsfreeze-hook" "$pkgdir/etc/qemu/fsfreeze-hook"
 }
 
 # vim:set ts=2 sw=2 et:
