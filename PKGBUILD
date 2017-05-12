@@ -1,14 +1,14 @@
 # Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
 
-pkgname=buck
-pkgver="2017.05.02.01"
+pkgname='buck'
+pkgver='2017.05.09.01'
 pkgrel=1
-pkgdesc="A fast build system that encourages the creation of small, reusable modules over a variety of platforms and languages."
+pkgdesc='A fast build system that encourages the creation of small, reusable modules over a variety of platforms and languages.'
 arch=('i686' 'x86_64')
 depends=('java-runtime-headless>=7' 'python2')
 makedepends=('java-environment>=7' 'apache-ant')
 optdepends=('watchman: prevent Buck from parsing all of your build files every time')
-url="https://buckbuild.com"
+url='https://buckbuild.com'
 license=('Apache')
 source=(
 		"https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
@@ -16,7 +16,7 @@ source=(
 		'force-python2.patch'
 )
 sha256sums=(
-		'7ae5c178291c2a42b2f821889b3ec2be742bbbeea390c8e51806029c6e03d061'
+		'09c4f944edad3ebb85edf1c8cd526da9033a13019597a85c87f435ef74b6a48b'
 		'e65ce876291984af91fd6fadfc588c5bded4e43205f312e0b2f2a5c7cf86329e'
 		'f2cfad85402cd75d2a7d809fe6aadd8dc72d592b05e74f4dbe1cf6806f26e749'
 )
