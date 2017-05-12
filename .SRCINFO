@@ -18,7 +18,7 @@ pkgbase = gpaste-daemon
 	options = !emptydirs
 	options = !libtool
 	source = http://www.imagination-land.org/files/gpaste/gpaste-3.24.1.tar.xz
-	md5sums = f26284590bb88ef10fa69e16658d67b5
+	sha256sums = 0238252a8e2ad92ffb0dd797952dd28086901cdfe9d4010a07c33401403351e3
 
 pkgname = gpaste-daemon
 

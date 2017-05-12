@@ -16,7 +16,7 @@ provides=('gpaste')
 options=('!emptydirs' '!libtool')
 install=$pkgname.install
 source=("http://www.imagination-land.org/files/gpaste/gpaste-$pkgver.tar.xz")
-md5sums=('f26284590bb88ef10fa69e16658d67b5')
+sha256sums=('0238252a8e2ad92ffb0dd797952dd28086901cdfe9d4010a07c33401403351e3')
 
 build () {
     cd ${pkgname%-*}-${pkgver}
