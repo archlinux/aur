@@ -12,7 +12,7 @@
 
 _name=opencv
 pkgname="${_name}-git"
-pkgver=3.2.0.r516.ga740a4ca3
+pkgver=3.2.0.r576.g2055bcc80
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library"
 url="http://opencv.org/"
@@ -58,19 +58,15 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${_name}"
-
     cmake ${_cmakeopts[@]} \
-      -DOPENCV_EXTRA_MODULES_PATH="${srcdir}/opencv_contrib/modules" \
-      .
+          -DOPENCV_EXTRA_MODULES_PATH="${srcdir}/opencv_contrib/modules" \
+          ${_name}
 
     make
 }
 
 package() {
     options=('staticlibs')
-
-    cd "${srcdir}/${_name}"
 
     make DESTDIR="${pkgdir}" install
 
