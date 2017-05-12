@@ -9,7 +9,7 @@ url="http://inadyn-mt.sourceforge.net"
 license=('GPL3')
 depends=('libao')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname.v.$pkgver.tar.gz)
-md5sums=('96d193759d61ee620d059799119dd982')
+sha256sums=('f69bea12d96b66f9f662a8df0730c60457b24f5fb5308b109936880ebf7be5ca')
 
 build() {
   cd "$pkgname.v.$pkgver"

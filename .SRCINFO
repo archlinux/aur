@@ -8,7 +8,7 @@ pkgbase = inadyn-mt
 	license = GPL3
 	depends = libao
 	source = http://downloads.sourceforge.net/inadyn-mt/inadyn-mt.v.02.28.10.tar.gz
-	md5sums = 96d193759d61ee620d059799119dd982
+	sha256sums = f69bea12d96b66f9f662a8df0730c60457b24f5fb5308b109936880ebf7be5ca
 
 pkgname = inadyn-mt
 
