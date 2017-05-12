@@ -1,5 +1,5 @@
 pkgname=gtk3-optional-csd
-pkgver=3.22.14
+pkgver=3.22.15
 pkgrel=1
 
 pkgdesc='gobject-based gui toolkit with optionally enabled csd'
@@ -23,7 +23,7 @@ source=("https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.
         'gtk-update-icon-cache.hook'
         'gtk-update-icon-cache.script')
 
-sha256sums=('d6120e4fd64e432b74a61e8abd972b1948cf54e4dc4f0e081c05ab625f087131'
+sha256sums=('c8a012c2a99132629ab043f764a2b7cb6388483a015cd15c7a4288bec3590fdb'
             '77f9c7b9260af85b4185bfaef8e556cc1b16db4cc7a7942fc54d5114d338ebcf'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
             '496064a9dd6214bd58f689dd817dbdc4d7f17d42a8c9940a87018c3f829ce308'
