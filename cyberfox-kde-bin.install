@@ -1,0 +1,6 @@
+post_remove() 
+{
+    if [ -d "/opt/cyberfox/browser/features" ]; then 
+        rm -rf /opt/cyberfox/browser/features/
+    fi
+}
