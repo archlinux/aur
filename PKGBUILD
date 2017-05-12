@@ -1,6 +1,7 @@
-# Maintainer: Kazuo Teramoto <kaz.rag at gmail.com>
+# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Contributor: Kazuo Teramoto <kaz.rag at gmail.com>
 pkgname=afew-git
-pkgver=0.237.162d9fa
+pkgver=1.0.0.r21.g6f4244e
 pkgrel=1
 epoch=1
 pkgdesc="afew is an initial tagging script for notmuch mail"
@@ -16,7 +17,7 @@ md5sums=('295b245540aa61538f9a3556c4be846c'
 pkgver() {
   cd "$srcdir/afew"
 
-  echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
