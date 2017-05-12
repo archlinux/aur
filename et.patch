@@ -1,0 +1,28 @@
+--- launcher/et.orig	2017-05-11 16:59:25.932590508 -0700
++++ launcher/et	2017-05-11 17:00:03.592508439 -0700
+@@ -23,10 +23,6 @@
+             USER="${i#*=}"
+             shift
+             ;;
+-        -l=*|--logdir=*)
+-            LOG_DIR="${i#*=}"
+-            shift
+-            ;;
+         -v)
+             VERBOSITY="--v=9"
+             shift
+@@ -39,7 +35,6 @@
+ -s Special ssh command if necessary, otherwise set to user@hostname:22
+ -p Port for etserver to run on.  Don't set to the same port as ssh.  Default: 2022
+ -u Username to connect to ssh & ET
+--l Directory where log files will go
+ -v verbose log files
+ "
+             exit 0
+@@ -110,5 +105,5 @@
+     echo "${PASSKEY}" > "${TMPFILE}"
+     PASSKEY=""
+     SSH_OUTPUT=""
+-    $CLIENT_BINARY --idpasskeyfile="$TMPFILE" $VERBOSITY --host="$HOSTNAME" --port="$PORT" --log_dir="$LOG_DIR" 2> /tmp/etclient_err
++    $CLIENT_BINARY --idpasskeyfile="$TMPFILE" $VERBOSITY --host="$HOSTNAME" --port="$PORT" 2> /tmp/etclient_err
+ fi
