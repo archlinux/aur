@@ -1,8 +1,8 @@
 # Maintainer: Max Liebkies <mail at maxliebkies dot de>
 
 pkgname=dotnet
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Provides the .NET core shared framework, i.e. coreclr and corefx."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -20,16 +20,16 @@ install=
 source=(
   "coreclr-${pkgver}.tar.gz::https://github.com/dotnet/coreclr/archive/v${pkgver}.tar.gz"
   "corefx-${pkgver}.tar.gz::https://github.com/dotnet/corefx/archive/v${pkgver}.tar.gz"
-  "${pkgname}-${pkgver}.tar.gz::https://go.microsoft.com/fwlink/?LinkID=843446"
+  "${pkgname}-${pkgver}.tar.gz::https://download.microsoft.com/download/D/7/A/D7A9E4E9-5D25-4F0C-B071-210CB8267943/dotnet-ubuntu.16.10-x64.1.1.2.tar.gz"
   'llvm-39-github-pull-8311.patch'
   'llvm-39-move.patch'
   'lttng-uts-40.patch'
   'clang-4-patchset.patch'
   'libcurl.patch')
 
-sha256sums=('450ffcc9a68eef2e157419d4cc354deb618f80d3f1816fd0c8c99460718dbd85'
-            '83c37233ebe4d37f7c7ff5c7a91c8242704a6526c27c4c59a4967ad67e634c2e'
-            '828af612b3e691f27d93153c3c7fd561e041535e907e9823f206ccab51030ecf'
+sha256sums=('3dcc98d981b85008b44c994c2805bdbe30a650bfe7ef665a21ce6e36da807435'
+            '6d7c4598433843129a48ab106b029f5d9f9572c283cbc522114d8fbe3bff04ea'
+            '0a4d4061931e0154c9186446dbc8d4c3e69ba49537699be98185d55fc24a1b56'
             '581d6484626bbae820feb19d0613955fea333c025fb06d43a731a3db776686f7'
             '84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d'
             'd7c6bbc24e8464dcfb4fd86cb76fa3a55f4822f5e8196e41a2c39650432aa401'
@@ -52,7 +52,7 @@ build() {
   ./build.sh x64 release skiptests
 
   cd "${srcdir}/corefx-${pkgver}"
-  CPLUS_INCLUDE_PATH=/usr/include/openssl-1.0 C_INCLUDE_PATH=/usr/include/openssl-1.0 ./src/Native/build-native.sh x64 release cmakeargs -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 cmakeargs -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so cmakeargs -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so cmakeargs -DCURL_LIBRARIES=/usr/lib/openssl-1.0/libcurl.so
+  CPLUS_INCLUDE_PATH=/usr/include/openssl-1.0 C_INCLUDE_PATH=/usr/include/openssl-1.0 ./src/Native/build-native.sh x64 release cmakeargs -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 cmakeargs -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so cmakeargs -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so cmakeargs -DCURL_LIBRARIES=/usr/lib/libcurl-openssl-1.0/libcurl.so
 }
 
 _coreclr_files=(
