@@ -2,7 +2,7 @@
 
 pkgname=roadfighter
 pkgver=1.0.1269
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial remake of Konami's Road Fighter for the MSX"
 arch=('i686' 'x86_64')
 license=('unknown')
@@ -18,6 +18,9 @@ prepare() {
 
   # fix compile errors and bin path
   patch -p0 < ../roadfighter.patch
+
+  # use Arch's CFLAGS
+  sed -i "s/-g3 -O3/$CFLAGS/" build/linux/Makefile
 }
 
 build() {
