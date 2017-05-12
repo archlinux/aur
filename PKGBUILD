@@ -2,7 +2,7 @@
 #Contributor: Martin Villagra <mvillagra0@gmail.com>
 
 pkgname=qbittorrent-nogui-git
-pkgver=.7189
+pkgver=.7653
 pkgrel=1
 pkgdesc="Bittorrent client based on libtorrent-rasterbar (without X support)"
 arch=('i686' 'x86_64')
@@ -13,12 +13,10 @@ makedepends=('boost' 'qt5-tools')
 conflicts=('qbittorrent-nogui')
 source=("git://github.com/qbittorrent/qBittorrent.git"
         "qbittorrent.service"
-        "qbittorrent@.service"
-        "qbittorrent-libtorrent-1.1.1.patch")
+        "qbittorrent@.service")
 md5sums=('SKIP'
          '98ac5dd1f2a5ab78ece106ac2df1ec1c'
-         '375b80818026e6cdd586fca37379b0ab'
-         '1da24b5e84f642a2f2790a77e36d496c')
+         '375b80818026e6cdd586fca37379b0ab')
         
 pkgver() {
   cd ${srcdir}/qBittorrent
@@ -35,7 +33,6 @@ if [[ -d ${srcdir}/build ]]; then
 
 build() {
   cd ${srcdir}/build
-  patch -Np1 -i "$srcdir/qbittorrent-libtorrent-1.1.1.patch"
   ./configure --prefix=/usr --disable-gui
   make
 }

@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-nogui-git
 	pkgdesc = Bittorrent client based on libtorrent-rasterbar (without X support)
-	pkgver = .7189
+	pkgver = .7653
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
 	arch = i686
@@ -14,11 +14,9 @@ pkgbase = qbittorrent-nogui-git
 	source = git://github.com/qbittorrent/qBittorrent.git
 	source = qbittorrent.service
 	source = qbittorrent@.service
-	source = qbittorrent-libtorrent-1.1.1.patch
 	md5sums = SKIP
 	md5sums = 98ac5dd1f2a5ab78ece106ac2df1ec1c
 	md5sums = 375b80818026e6cdd586fca37379b0ab
-	md5sums = 1da24b5e84f642a2f2790a77e36d496c
 
 pkgname = qbittorrent-nogui-git
 
