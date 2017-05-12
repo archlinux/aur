@@ -1,18 +1,19 @@
 # Maintainer: sekret
 _pkgname=surf
 pkgname=$_pkgname-git
-pkgver=0.6.81.g9b6998e
+pkgver=2.0.r40.gf5be376
 pkgrel=1
 pkgdesc="a WebKit based browser"
 arch=('i686' 'x86_64')
 url="http://surf.suckless.org/"
 license=('custom:MIT/X')
-depends=('webkitgtk2' 'xorg-xprop')
+depends=('webkit2gtk' 'gcr' 'xorg-xprop')
 makedepends=('git')
 optdepends=('dmenu: url bar and search'
-'ca-certificates: SSL verification'
-'st: default terminal for the download handler'
-'curl: default download handler')
+            'ca-certificates: SSL verification'
+            'st: default terminal for the download handler'
+            'curl: default download handler'
+            'mpv: default video player')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+http://git.suckless.org/surf"
@@ -22,7 +23,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags | sed 's/-/\./g'
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
