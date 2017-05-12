@@ -1,7 +1,7 @@
 pkgbase = thonny-git
 	pkgdesc = Python IDE for beginners.
 	pkgver = r1403.40455c1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://thonny.org/
 	arch = any
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = thonny-git
 	depends = python-jedi
 	depends = tcl
 	depends = tk
+	provides = thonny
+	conflicts = thonny
 	source = git+https://bitbucket.org/plas/thonny.git
 	sha256sums = SKIP
 

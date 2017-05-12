@@ -1,10 +1,12 @@
 pkgname=thonny-git
 pkgver=r1403.40455c1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for beginners."
 arch=('any')
 url="http://thonny.org/"
 license=('MIT')
+conflicts=("thonny")
+provides=("thonny")
 depends=('openssl' 'python' 'python-beautifulsoup4' 'python-jedi' 'tcl' 'tk')
 source=("git+https://bitbucket.org/plas/thonny.git")
 sha256sums=('SKIP')
