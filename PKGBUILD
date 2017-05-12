@@ -242,6 +242,7 @@ package_llvm-svn() {
     fi
 
     # Clean up documentation
+    # TODO: This may not be needed any more.
     rm -rf "${pkgdir}/usr/share/doc/"{llvm,lld}"/html/_sources"
 
     _install_python_bindings "${srcdir}/llvm/bindings/python/llvm"
@@ -378,7 +379,8 @@ package_clang-svn() {
         "${pkgdir}/usr/share/scan-view"
 
     # Clean up documentation
-    rm -r "${pkgdir}/usr/share/doc/clang/html/_sources"
+    # TODO: This may not be needed any more.
+    rm -rf "${pkgdir}/usr/share/doc/clang/html/_sources"
 
     _fix_python_exec_path \
         "${pkgdir}/usr/bin/git-clang-format" \
