@@ -9,7 +9,7 @@ pkgbase = verilator
 	makedepends = gcc
 	depends = gcc-libs
 	source = http://www.veripool.org/ftp/verilator-3.902.tgz
-	md5sums = ddcde569983ef2ee815be804ad7f26a9
+	sha256sums = ae01dd4f4a9b42631688a03d80e1c7d8d9b7c7187e236790267c96f926cbd962
 
 pkgname = verilator
 
