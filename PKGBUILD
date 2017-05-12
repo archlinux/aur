@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/pmwkaa/sophia"
 license=('BSD2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pmwkaa/sophia/archive/version_${pkgver}.tar.gz")
-md5sums=('53575db21af38bf8247f2b41d7172d2f')
+sha256sums=('a1d4f08e5407b47a44b7f12a3e21ca24b7d93c26c100265cb9e0556e7491252d')
 options=('staticlibs')
 conflicts=('sophia-git')
 
