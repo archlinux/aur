@@ -8,7 +8,7 @@ pkgbase = gnome-shell-theme-super-flat-remix-git
 	license = CCPL:cc-by-nc-sa-3.0
 	depends = gnome-shell
 	source = gnome-shell-theme-super-flat-remix::git+https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-theme-super-flat-remix-git
 

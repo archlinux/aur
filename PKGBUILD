@@ -12,7 +12,7 @@ groups=('gnome-shell-extensions')
 license=('CCPL:cc-by-nc-sa-3.0')
 depends=('gnome-shell')
 source=("${_pkgname}::git+https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
