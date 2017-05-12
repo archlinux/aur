@@ -16,12 +16,12 @@ pkgbase = freetype2-cleartype
 	source = 0003-enable-spr.patch
 	source = 0004-enable-valid.patch
 	source = 0005-memcpy-fix.patch
-	md5sums = b3230110e0cab777e0df7631837ac36e
-	md5sums = 7d44826389c2ef5c8b3b1e0f2d315f00
-	md5sums = fd6b679327c5aa57fffba2bd51af208b
-	md5sums = 618d7265f93a59b78550bb2c0ced7976
-	md5sums = cef23c05395eb7ead5050b4ffc6616c1
-	md5sums = 029bf39a0f9995f8adf86a2ddf215761
+	sha256sums = 3a3bb2c4e15ffb433f2032f50a5b5a92558206822e22bfe8cbe339af4aa82f88
+	sha256sums = 6fee15517ec5546ea4f1694b4c16e7454807ab9f735b8d9f2f6dc1ffe5184702
+	sha256sums = 22ec7e84a5bf37cfa18f697900c6e844e95f16f22b713d02bdfb1a0423bc7f89
+	sha256sums = a373c71d4c85373c45a21570dd332fb47aef6f164b6715778223caa20210113f
+	sha256sums = 8bea2d81e7ae475154faf4d751e994aeea4e10d8a19b6e032454fa4eb7896bd3
+	sha256sums = 892aa091baa7ba4d00802b0c489ab52a879f9ee281f74ae121b9be2d77fe6a92
 
 pkgname = freetype2-cleartype
 
