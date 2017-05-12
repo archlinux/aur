@@ -1,7 +1,7 @@
 # Maintainer: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-9.3
-pkgver=9.3.16
+pkgver=9.3.17
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
@@ -20,7 +20,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
         postgresql.service postgresql.tmpfiles.conf postgresql-check-db-dir)
-sha256sums=('845f5e4ac8cf026b6a77c5a180a2fe869f51e9d06acf8d0365b05505a2c66873'
+sha256sums=('9c03e5f280cfe9bd202fa01af773eb146abd8ab3065f7279d574c568f6948dbe'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
@@ -32,11 +32,6 @@ build() {
   cd "${srcdir}/postgresql-${pkgver}"
 
   patch -Np1 < ../postgresql-run-socket.patch
-
-	#build with OpenSSL 1.0 for now
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  CFLAGS+=" -I/usr/include/openssl-1.0"
-  LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
 
   ./configure --prefix=/usr \
   --mandir=/usr/share/man \
