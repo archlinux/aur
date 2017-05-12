@@ -28,11 +28,6 @@ build() {
 
   patch -Np1 < ../postgresql-run-socket.patch
 
-  #build with OpenSSL 1.0 for now
-  #PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  #CFLAGS+=" -I/usr/include/openssl-1.0"
-  #LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
-
   ./configure \
     --prefix=/usr --mandir=/usr/share/man \
     --datadir=/usr/share/postgresql --sysconfdir=/etc --with-gssapi \
