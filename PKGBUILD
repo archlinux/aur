@@ -1,6 +1,7 @@
 # Maintainer: Jakub "Kubuxu" Sztandera  <kubuxu@protonmail.ch>
+# Contributor: Kacper "KocproZ" Stasiuk <kocproz@protonmail.com>
 pkgname=teamspeak3-pluginsdk
-pkgver=3.0.18.1
+pkgver=3.1.1.1
 pkgrel=1
 pkgdesc="Headers for TeamSpeak3 PluginSDK"
 arch=('any')
@@ -9,7 +10,7 @@ license=('custom')
 makedepends=('unzip')
 source=("http://dl.4players.de/ts/client/pluginsdk/pluginsdk_$pkgver.zip")
 noextract=("pluginsdk_$pkgver.zip")
-md5sums=('dc4744e8df949b7109d8d3633a79f259')
+sha256sums=('ee788e81dc7d515a538175cda92f68ba114b503e226fe726689f3e5264abdcaf')
 
 prepare() {
   unzip -o "pluginsdk_$pkgver.zip"
