@@ -14,9 +14,9 @@ makedepends=('gawk' 'plib>=1.8.4' 'gcc5')
 source=("${pkgname}.desktop"
         "${pkgname}.png"
         "http://sourceforge.net/projects/crrcsim/files/crrcsim/crrcsim-${pkgver}/crrcsim-${pkgver}.tar.gz")
-md5sums=('130b2a0661e96dce8b27dc3531c87474'
-         '1cba5f3c8d3439e56866880429694a5c'
-         'fbb66c148389e998afe149a34a88abeb')
+sha256sums=('2af239b7dc1d74967b1ec86665c7a7c28c9564306d7d299533235eacb8bf02de'
+            '37d71a1be23afea19ad41179223eda997a3af103e2b2879784fd352de70a5696'
+            'abe59b35ebb4322f3c48e6aca57dbf27074282d4928d66c0caa40d7a97391698')
 
 prepare() {
   mkdir -p "${srcdir}/gcc-bin-override"
