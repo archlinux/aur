@@ -12,9 +12,9 @@ noextract=("RSBot-${pkgver}.jar")
 source=("http://powerbot-dequeue.netdna-ssl.com/rsbot/releases/RSBot-${pkgver}.jar"
         'icon.png'
         'rsbot.desktop')
-md5sums=('8704173da67b7483246a7891e95f6e13'
-         '8cb7793ff1e3ab3057bb9e1218d71a87'
-         '7a78455bf7f06bdac59b8699eeab362d')
+sha256sums=('b03d1067a2841726b3ba26abccad3efd5f08d894ea9574ad976233a3cb48adde'
+            'f120b8935e7e1cb8b5991198c95a65f401cb0ca434f1461c7c58a39ec04ae6fc'
+            '44467f5336d0806985c0972ac7710bbcdb4c5858f16716ab9ceccc45353a4240')
 
 package() {
   cd "${srcdir}"
