@@ -11,7 +11,7 @@ license=('GPL2')
 backup=("etc/webapps/$pkgname/config.php")
 depends=('php')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('5a7d58498f425162a5a4c57db38e6b40')
+sha256sums=('81d9b9cd0da17583787d9a1d0651deebbbafd20a3f54323f8f7452bd43b4befe')
 
 package() {
   cd $pkgname
