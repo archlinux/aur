@@ -6,7 +6,7 @@
 
 _pkgname=qbs
 pkgname=${_pkgname}-git
-pkgver=v1.4.4
+pkgver=v1.7.2.r297.g512704a5
 pkgrel=1
 pkgdesc='Qt Build Suite: Build tool that helps simplify the build process for developing projects across multiple platforms.'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ provides=('qbs')
 conflicts=('qtcreator' 'qbs')
 depends=('qt5-base' 'qt5-script')
 makedepends=('gcc' 'git')
-source=("git://code.qt.io/qt-labs/qbs.git")
+source=("git://code.qt.io/qt-labs/qbs.git#commit=512704a")
 sha256sums=('SKIP')
 
 pkgver() {
