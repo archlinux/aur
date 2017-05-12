@@ -13,7 +13,7 @@ depends=('python' 'python-setuptools')
 optdepends=('python-colorama: for colored output')
 provides=("pirate-get")
 conflicts=("pirate-get-git")
-source=('https://github.com/vikstrous/pirate-get/archive/v'${pkgver}'.tar.gz')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vikstrous/pirate-get/archive/v${pkgver}.tar.gz")
 sha256sums=('d7b76bba4d34c0366c05773a2548367061bd9371fa8713f2ac2b39d347872c81')
 
 build() {
