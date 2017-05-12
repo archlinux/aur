@@ -19,7 +19,7 @@ pkgbase = nanoc
 	conflicts = ruby-nanoc
 	noextract = nanoc-4.7.9.gem
 	options = !emptydirs
-	source = https://github.com/nanoc/nanoc/archive/4.7.9.tar.gz
+	source = nanoc-4.7.9.tar.gz::https://github.com/nanoc/nanoc/archive/4.7.9.tar.gz
 	sha256sums = 875d1d50be8546f5c465fb5d8daf0bba523923aaa5d105b671c865e82ea11139
 
 pkgname = nanoc

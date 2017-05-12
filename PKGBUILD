@@ -23,7 +23,7 @@ optdepends=(
 provides=(ruby-nanoc3 ruby-nanoc)
 conflicts=(ruby-nanoc3 ruby-nanoc)
 options=(!emptydirs)
-source=("https://github.com/nanoc/nanoc/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nanoc/nanoc/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.gem")
 sha256sums=('875d1d50be8546f5c465fb5d8daf0bba523923aaa5d105b671c865e82ea11139')
 
