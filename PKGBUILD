@@ -2,14 +2,15 @@
 
 pkgname=radiotray-ng
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ebruck/radiotray-ng"
 license=('GPL')
 depends=('boost-libs' 'curl' 'gstreamer' 'jsoncpp' 'libappindicator-gtk2'
-         'libbsd' 'libnotify' 'libxdg-basedir' 'python2-lxml')
+         'libbsd' 'libnotify' 'libxdg-basedir')
 makedepends=('cmake' 'boost')
+optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
 source=("${pkgname}.tar.gz::https://github.com/ebruck/radiotray-ng/archive/v${pkgver}.tar.gz")
 sha256sums=('8610c18d1cfad3510d7377a7d963486bf9b82c469f6184231f61d04e46eaae46')
