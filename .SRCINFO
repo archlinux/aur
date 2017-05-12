@@ -11,7 +11,7 @@ pkgbase = light-git
 	provides = light
 	conflicts = light
 	source = git+https://github.com/haikarainen/light.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = light-git
 

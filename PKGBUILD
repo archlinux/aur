@@ -12,7 +12,7 @@ makedepends=('git' 'help2man')
 conflicts=('light')
 provides=('light')
 source=('git+https://github.com/haikarainen/light.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/light"
