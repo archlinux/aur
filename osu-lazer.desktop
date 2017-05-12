@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=osu!lazer
+Icon=osu-lazer
+MimeType=application/x-osu-lazer-beatmap;
+Comment=Rythm is only a click away!
+Comment[fr]=Le rythme n'est qu'à un clic!
+Comment[zh]=节奏只是点击一下！
+Comment[ja]=リズムはクリックするだけです！
+Path=/usr/lib/osu-lazer
+Exec=mono osu!.exe
+Terminal=false
+X-Desktop-File-Install-Version=0.23
