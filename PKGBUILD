@@ -20,9 +20,11 @@ pkgver() {
 }
 
 build() {
+  : ${IOSEVKA_DESIGN='v-l-tailed v-i-hooky v-g-opendoublestorey v-m-shortleg v-zero-dotted'}
+  [[ $IOSEVKA_DESIGN = *term* ]] && design="$IOSEVKA_DESIGN" || design="term $IOSEVKA_DESIGN"
   cd Iosevka
   npm install
-  make custom-config design='term v-l-tailed v-i-hooky v-g-opendoublestorey v-m-shortleg v-zero-dotted'
+  make custom-config design="$design"
   make custom
 }
 
