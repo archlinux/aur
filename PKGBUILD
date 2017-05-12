@@ -3,7 +3,7 @@
 
 pkgname=openvpn-openssl-1.0
 _pkgname=openvpn
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) (build against openssl-1.0)'
 arch=('i686' 'x86_64')
@@ -13,10 +13,12 @@ conflicts=('openvpn')
 provides=('openvpn')
 optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('systemd')
+validpgpkeys=('6D04F8F1B0173111F499795E29584D9F40864578'  # Samuli Seppänen <samuli@openvpn.net>
+              '7ACD56B74144925C6214329757DB9DAB613B8DA1') # David Sommerseth (OpenVPN Technologies, Inc) <davids@openvpn.net>
 license=('custom')
-install=openvpn-openssl-1.0.install
-source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz")
-sha256sums=('fde9e22c6df7a335d2d58c6a4d5967be76df173c766a5c51ece57fd044c76ee5')
+source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc})
+sha256sums=('df5c4f384b7df6b08a2f6fa8a84b9fd382baf59c2cef1836f82e2a7f62f1bff9'
+            'SKIP')
 
 
 build() {
