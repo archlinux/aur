@@ -3,7 +3,7 @@
 # Contributor: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=pyfa
-pkgver=1.29.0
+pkgver=1.29.1
 pkgrel=1
 everelname="yc119.5"
 everelver=1.0
@@ -30,6 +30,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('b0471a89ff64e4967158faf9ea28930f'
-         'ae7b387706d84673191f269895ca44f1'
+md5sums=('3987cf1e01f8789d38e25275e51edd92'
+         '5f6e49e9934558c6c73bd7888598a451'
          '9937192cfce7f5e16e9cf26086f1899c')
