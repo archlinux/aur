@@ -3,7 +3,7 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
@@ -16,10 +16,10 @@ depends=('mlt-python-bindings' 'sdl' 'librsvg' 'mplayer'
 optdepends=('frei0r-plugins: effects'
 	    'libquicktime' 'libavc1394' 'faac' 'jack' 'jack-rack')
 makedepends=('python-setuptools')
-source=("https://launchpad.net/openshot/${pkgver%.*}/$pkgver/+download/openshot-qt-$pkgver.tar.gz")
-sha256sums=('f3bcfb82b66cd58409acbef8b58445ae0034b07fa3593353653d1d306adf7b88')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v$pkgver.tar.gz")
+sha256sums=('f4032cc89fac222d9f5d315841e8a50d2d1c2386f4fe54a19e7102a1d5db33fd')
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir"/openshot-qt-$pkgver
   python setup.py install --root="$pkgdir/" --optimize=1
 }
