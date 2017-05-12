@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-sdk-cpp-git
-pkgver=1.0.103.r0.gfa85768d7
+pkgver=1.0.117.r0.g9a0c471c3
 pkgrel=1
 epoch=
 pkgdesc="AWS SDK for C++"
@@ -41,7 +41,7 @@ build() {
                -DMINIMIZE_SIZE=ON -DBUILD_SHARED_LIBS=OFF"
     cmake $CMAKE_FLAGS .
 
-	make -j $(nproc)
+	make ${MAKEFLAGS}
 }
 
 package() {
