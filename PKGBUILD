@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=60.0.3088.3
+pkgver=60.0.3095.5
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -85,7 +85,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/skia-avx2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r6.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r6.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-opus-r1.patch'
         # Misc Patches
 #         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
@@ -104,7 +103,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'ffc664a90b68600de2d80a4064df25ec6f34fb4443e96ef2f0741ccb49d90a4b'
             'aa10f5797fe28858533ceeb0fa903f37e744ed4133c889eac60f5094e4b6a596'
             '2fc21f48b95f9f2c2bd8576742fcf8028a8877c6b6e96c04d88184915982234e'
-            'f53e07db39cc6e7b5a30b6606b347a2bd43098df28681c813aa0128bc8c492d0'
             'ee7947cf63064d108c10f92db9b8dc772283757f27d7030b34520e9884c9ea67'
             # Misc Patches
 #             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
@@ -215,6 +213,7 @@ _keeplibs=(
   'third_party/google_input_tools'
   'third_party/google_input_tools/third_party/closure_library'
   'third_party/google_input_tools/third_party/closure_library/third_party/closure'
+  'third_party/googletest'
   'third_party/hunspell'
   'third_party/iccjpeg'
   'third_party/inspector_protocol'
@@ -269,8 +268,9 @@ _keeplibs=(
   'third_party/spirv-headers'
   'third_party/spirv-tools-angle'
   'third_party/swiftshader'
-  'third_party/swiftshader/third_party/pnacl-subzero'
   'third_party/swiftshader/third_party/llvm-subzero'
+  'third_party/swiftshader/third_party/pnacl-subzero'
+  'third_party/swiftshader/third_party/subzero'
   'third_party/sqlite'
   'third_party/tcmalloc'
   'third_party/usrsctp'
@@ -400,7 +400,6 @@ prepare() {
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE.patch"
   patch -p1 -i "${srcdir}/skia-avx2.patch"
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r6.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r6.patch"
   patch -p1 -i "${srcdir}/chromium-system-opus-r1.patch"
 
   # Misc Patches:
