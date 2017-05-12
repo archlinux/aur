@@ -2,7 +2,7 @@
 
 pkgname=rmmagent
 pkgver=1.0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Remote Monitoring Agent for GFI Languard Dashboard'
 arch=('i686' 'x86_64')
 url='http://languard.gfi.com/'
@@ -10,6 +10,7 @@ license=('custom')
 options=('!strip')
 provides=('rmmagent')
 depends_x86_64=(
+	'libopenssl-1.0-compat'
 	'ethtool'
 	'smartmontools'
 	'gcc-libs'
