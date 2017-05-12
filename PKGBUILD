@@ -2,12 +2,12 @@
 
 pkgname=naemon
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="System and network monitoring application"
 arch=('i686' 'x86_64')
 url="http://naemon.org"
 license=('GPL2')
-depends=('bash' 'icu')
+depends=('icu' 'glib2')
 optdepends=('logrotate'
             'thruk: Web interface for Naemon'
             'monitoring-plugins')
@@ -19,14 +19,9 @@ source=(http://labs.consol.de/naemon/release/v$pkgver/src/$pkgname-$pkgver.tar.g
         $pkgname.service)
 md5sums=('6c9b95a737a8f232e114f4cff200ff92'
          'd6a77534e612e8f65ff3360336faec77')
-backup=('etc/logrotate.d/naemon' 'etc/naemon/conf.d/commands.cfg'
-  'etc/naemon/conf.d/contacts.cfg' 'etc/naemon/conf.d/localhost.cfg'
-  'etc/naemon/conf.d/printer.cfg' 'etc/naemon/conf.d/switch.cfg'
-  'etc/naemon/conf.d/templates/contacts.cfg'
-  'etc/naemon/conf.d/templates/hosts.cfg'
-  'etc/naemon/conf.d/templates/services.cfg'
-  'etc/naemon/conf.d/timeperiods.cfg' 'etc/naemon/conf.d/windows.cfg'
-  'etc/naemon/naemon.cfg' 'etc/naemon/resource.cfg')
+backup=('etc/logrotate.d/naemon'
+        'etc/naemon/naemon.cfg'
+        'etc/naemon/resource.cfg')
 install=$pkgname.install
 
 build() {
@@ -73,13 +68,18 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -d "$pkgdir"/etc/naemon/module-conf.d
-  install -d "$pkgdir"/var/lib/naemon
+  install -d "$pkgdir"/var/lib/naemon/spool/checkresults
 
   chown -R 44:44 "$pkgdir"/var/{cache,lib,log}/$pkgname
+  chown -R 44:44 "$pkgdir"/etc/naemon
   chmod -R 770 "$pkgdir"/var/{cache,lib,log}/$pkgname
 
   install -Dm644 "$srcdir"/$pkgname.service \
     "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+
+  # Move sample config files
+  mv "$pkgdir"/etc/naemon/conf.d "$pkgdir"/etc/naemon/examples
+  install -d "$pkgdir"/etc/naemon/conf.d/templates
 
   # Remove non-Arch directories
   rm -rf "$pkgdir"/etc/init.d
