@@ -1,0 +1,18 @@
+diff --git a/src/tools/get-tools b/src/tools/get-tools
+index 59755189fb..267d766f89 100755
+--- a/src/tools/get-tools
++++ b/src/tools/get-tools
+@@ -76,13 +76,6 @@ if [ ${#TOOLSVN} -eq 0 ] ; then
+   echo "Giving up and hoping for the best..."
+   exit 0
+ fi
+-svn log ./get-tools 2>&1 > /dev/null
+-stat=$?
+-if [ $stat -ne 0 ] ; then
+-  echo "No access to repository!"
+-  echo "Giving up and hoping for the best..."
+-  exit 0
+-fi
+ 
+ 
+ # Update the autotools build of GA.
