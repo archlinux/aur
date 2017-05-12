@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=mega-sdk
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Official mega.nz SDK"
 arch=('i686' 'x86_64')
@@ -17,20 +17,13 @@ depends=('c-ares'
          'openssl'
          'sqlite'
          'zlib')
-source=("https://github.com/meganz/sdk/archive/v$pkgver.tar.gz"
-        'libuv.patch')
-md5sums=('0765cc618b80d5f7982cb8252150d863'
-         '714997fd02c35c7ec68a8bc753e824bd')
-
-prepare() {
-  cd "sdk-$pkgver"
-  patch -p1 -i ../libuv.patch
-}
+source=("https://github.com/meganz/sdk/archive/V$pkgver.tar.gz")
+md5sums=('4a5091c7a30787039d45de6c0e457bb5')
 
 build() {
   cd "sdk-$pkgver"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --with-libuv --prefix=/usr
   make
 }
 
