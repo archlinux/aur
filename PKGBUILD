@@ -3,13 +3,13 @@
 
 pkgname=dnscrypt-proxy-git
 _pkgname=dnscrypt-proxy
-pkgver=1.9.4.2384.c2dfc1e
+pkgver=1.9.5.2424.366d3b8
 pkgrel=1
 pkgdesc="Is a protocol for securing communications between a client and a DNS resolver"
 arch=('i686' 'x86_64')
 url="http://dnscrypt.org/"
 license=('custom:ISC')
-depends=('libsodium' 'systemd' 'libtool' 'ldns')
+depends=('libsodium' 'systemd' 'libtool' 'ldns' 'git')
 options=(libtool)
 conflicts=('dnscrypt-proxy')
 backup=('etc/dnscrypt-proxy.conf')
