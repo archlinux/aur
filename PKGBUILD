@@ -4,7 +4,7 @@ pkgname=decklink
 _dvver=10.9a7 # DesktopVideo
 _mever=3.5.3a1 # MediaExpress
 pkgver=${_dvver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
 url="http://www.blackmagic-design.com/products/"
@@ -18,20 +18,16 @@ install='decklink.install'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
 pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/46d65f46d6434b16bd69482b0ca7dba3"
-#pkgsrc_file=$pkgname-${_dvver}.tar.gz
-pkgsrc_file="/tmp/Blackmagic_Desktop_Video_Linux_10.9.tar"
+pkgsrc_file=$pkgname-${_dvver}.tar.gz
 pkgsrc_sha256sum="6a883936e877ee3985dea55027662cf58782a5e19081f1dce668761879159581"
 
 prepare() {
   if [ -f $pkgsrc_file ]; then
     echo "File $pkgsrc_file found, skipping download"
   else
-    echo "Download the Desktop video 10.9 update from https://www.blackmagicdesign.com/support/family/capture-and-playback to $pkgsrc_file and reinstall this package"
-    # broken since recent download protection on bmd website
-    #echo "curl -H 'Content-Length: 35' --data '{country\":\"us\",\"platform\":\"Linux\"}' $pkgsrc_url"
-    #temp_url=`curl -H 'Content-Length: 35' --data '{country":"us","platform":"Linux"}' $pkgsrc_url`
-    #curl -o $pkgsrc_file $temp_url
-    exit 1
+    echo "Downloading package"
+    temp_url=`curl $pkgsrc_url -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0' -H 'Content-Type: application/json;charset=utf-8' --data '{"country":"us","platform":"Linux"}'`
+    curl -o $pkgsrc_file $temp_url
   fi
   shasum=`sha256sum $pkgsrc_file | cut -d " " -f1`
   [ "${shasum}" != "${pkgsrc_sha256sum}" ] && ( echo "Integrity check failed."; exit 1 )
