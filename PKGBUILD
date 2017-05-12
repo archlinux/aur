@@ -42,7 +42,7 @@ pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
 pkgver=4.11
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -55,6 +55,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         "https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/4.11-bfq-mq.patch"
+        "https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/default-mq-elevator.patch"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -67,9 +68,10 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             '0e65eee0893968c94cb6b62ff071bc3877d6c9a85413406526dbcc764811bec5'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            '18cef1f27c524c8e26d6d97490f0960c68df18524e04a1e5b79dd7a569f639e4' 
-            'd0fb9f05857124246b613505934da979990f6080631eedec615236d8dad6f06e'
-            'c8df5b77b43c426d34fd8a9e690df1632f2f0efbbbedfc8e98337b74c7cc1c40'
+            '83ab5e305e09b74fec9ec1de8824726edd1cc1b020e015604c9e7cb1521e723c' 
+            'ad89bbd04039c662f0b72030199e410ed348f2c33fb0c1324bc3034cac20b37f'
+            '3aaea3ffc472b81da35bc968c2793ba896118c876f70fd45c306d5b83f45b175'
+            'c9882b34c4385c3aecc83a3a666b75631fa937954a319d92aeb0def984a1bd8c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -86,6 +88,7 @@ prepare() {
   #patch -Np1 -i "${srcdir}/patch-${pkgver}"
 
   patch -Np1 -i "${srcdir}/4.11-bfq-mq.patch"
+  patch -Np1 -i "${srcdir}/default-mq-elevator.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
