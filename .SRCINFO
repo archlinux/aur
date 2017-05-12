@@ -1,0 +1,14 @@
+pkgbase = python-hyperchamber
+	pkgdesc = Optimize your hyperparameters
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/255BITS/hyperchamber
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = https://pypi.io/packages/source/h/hyperchamber/hyperchamber-0.2.8.tar.gz
+	sha256sums = 991988e76a818c2836e9a8306bcaa12e0eca62d5bf26486f1be8b3007d0efa5a
+
+pkgname = python-hyperchamber
+
