@@ -1,7 +1,7 @@
 # Maintainer: Max Liebkies <mail at maxliebkies dot de>
 
 pkgname=dotnet-sdk
-pkgver="1.0.1"
+pkgver="1.0.4"
 pkgrel=1
 pkgdesc="Provides the .NET core software development kit (sdk)."
 arch=(x86_64)
@@ -13,9 +13,9 @@ conflicts=('dotnet-bin')
 options=('staticlibs')
 install=
 
-source=("${pkgname}-${pkgver}.tar.gz::https://go.microsoft.com/fwlink/?LinkID=843446")
+source=("${pkgname}-${pkgver}.tar.gz::https://download.microsoft.com/download/E/7/8/E782433E-7737-4E6C-BFBF-290A0A81C3D7/dotnet-dev-ubuntu.16.10-x64.1.0.4.tar.gz")
 
-sha256sums=('828af612b3e691f27d93153c3c7fd561e041535e907e9823f206ccab51030ecf')
+sha256sums=('9e784b554a9cb68df9ce541cc220dafcb71b185837e05420c182e4a496b68f47')
 
 package() {
   mkdir -p "${pkgdir}/opt/dotnet/"
