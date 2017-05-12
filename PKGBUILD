@@ -9,10 +9,10 @@ url="https://github.com/rundeck/rundeck/"
 license=('APACHE')
 depends=('java-runtime')
 makedepends=('java-environment')
-source=("https://github.com/rundeck/rundeck/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rundeck/rundeck/archive/v${pkgver}.tar.gz"
         'start.sh')
-md5sums=('838d1492a4d09d818db62936b19a3b74'
-         '520c429435ea55c694b66dfa969f98ca')
+sha256sums=('36beea56c322d7c37469395b32b4d755b7d47fef3582887364b1bdff3f028578'
+            '02f7b0b770e44c182e9aa79f4381e0ded19b538dc6248708638dc3dfd01d64b9')
 
 build() {
   cd "${srcdir}/rundeck-${pkgver}"
