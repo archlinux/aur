@@ -1,0 +1,53 @@
+_SUNRAY_CONF_PATH="/etc/opt/SUNWut/utadmin.conf"
+_SUNRAY_LICPOOL_DIR="/var/cache/osgd"
+
+post_install() {
+	# Perform the necessary steps for enabling the sharing of Windows client licenses with the Sun Ray Windows Connector.
+	
+	# Check for the presence of the SunRay conf file.
+	if [ -f "${_SUNRAY_CONF_PATH}" ]; then
+		# Share licenses with Windows connector.
+
+		#  Parse Sun Ray conf file, and extract the value of admin.srwc.groupname.
+		local awk_prog='$1 == "admin.srwc.groupname" {print $3}'
+		local admin_groupname=$(awk "${awk_prog}" "${_SUNRAY_CONF_PATH}")
+
+		#  Change the group ownership of the installed tcc to the group obtained above
+		chgrp "${admin_groupname}" "/usr/bin/ttatcc"
+		if [ $? -ne 0 ]; then
+			# We don't want to set GID the binary if we haven't changed the group!
+			return
+		fi
+
+		# Set the group ID bit in the tcc binary permissions
+		chmod g+s "/usr/bin/ttatcc"
+		if [ $? -ne 0 ]; then
+			echo "Error setting group permissions on ttatcc."
+		fi
+	else
+		# Create the license pool directory used for sharing Windows client licenses between users.
+		if [ ! -d "${_SUNRAY_LICPOOL_DIR}" ]; then
+			mkdir -p "${_SUNRAY_LICPOOL_DIR}"> /dev/null 2>&1
+			if [ $? -ne 0 ]; then
+				# Creation failed. Abort.
+				return
+			fi
+		fi
+
+		#  Set it to be world readable, writeable and executable
+		chmod 777 "${_SUNRAY_LICPOOL_DIR}"
+		if [ $? -ne 0 ]; then
+			echo "Error setting permissions on the pool directory."
+		fi
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	rm -rf "${_SUNRAY_LICPOOL_DIR}"
+	
+	echo "Delete the folder ~/.tarantella if you want to clear your user data."
+}

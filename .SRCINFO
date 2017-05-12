@@ -1,0 +1,29 @@
+pkgbase = oracle-sgdc-bin
+	pkgdesc = The Oracle Secure Global Desktop Client allows you to connect to an Oracle Secure Global Desktop server.
+	pkgver = 5.20.921
+	pkgrel = 1
+	url = http://www.oracle.com/us/technologies/virtualization/secure-global-desktop/overview/index.html
+	install = oracle-sgdc.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = gendesk
+	depends = lib32-libxpm
+	depends = lib32-libxinerama
+	depends = lib32-libxcursor
+	depends = lib32-libxkbfile
+	depends = lib32-openmotif
+	provides = oracle-sgdc
+	conflicts = oracle-sgdc
+	source = osgdc.png
+	source = sgdcfile://sgdci3li.tar
+	sha256sums = 866e0a618b330ba28d70fbdd3ad43d25e182587f50f88dbbe28543aa28a09378
+	sha256sums = SKIP
+	depends_i686 = libxpm
+	depends_i686 = libxinerama
+	depends_i686 = libxcursor
+	depends_i686 = libxkbfile
+	depends_i686 = openmotif
+
+pkgname = oracle-sgdc-bin
+
