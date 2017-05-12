@@ -1,7 +1,7 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 PN="pcloud"
 pkgname="pcloud-drive"
 pkgdesc="pCloud drive. Electron edition.
@@ -30,7 +30,7 @@ package() {
 }
 
 _get_source() {
-  source_x86_64=("http://$(curl "${_api_url}${_api_code}" 2> /dev/null | jq -r '.hosts[0] + .path')")
+  source_x86_64=("${pkgname}-${pkgver}-${pkgrel}::http://$(curl "${_api_url}${_api_code}" 2> /dev/null | jq -r '.hosts[0] + .path')")
 }
 
 jq --version &>/dev/null && _get_source || true
