@@ -7,12 +7,12 @@ pkgver=${_release}
 pkgrel=1
 pkgdesc='PGI compilers and tools (Community Edition)'
 arch=('x86_64')
-url="http://www.pgroup.com/products/community.htm"
+url="https://www.pgroup.com/products/community.htm"
 license=('custom')
 depends=('gtk2')
 makedepends=('bash')
 source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86_64.tar.gz"
-        "http://www.pgroup.com/doc/LICENSE.txt"
+        "https://www.pgroup.com/doc/LICENSE.txt"
         "pgi-compilers.sh")
 sha256sums=('115c212d526695fc116fe44f1e722793e60b6f7d1b341cd7e77a95da8e7f6c34'
             '78abb626ddb93482b9169e2b6da205067702c8da40a201f9b1a557c261c47270'
