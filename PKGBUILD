@@ -30,7 +30,7 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  export PYTHONPATH=$(pwd)
+  export PYTHONPATH="${PYTHONPATH%:}:${PWD}"
   export TZ=UTC
   sed -i '/addopts/d' "$srcdir"/"$pkgname-$pkgver"/setup.cfg
   py.test
