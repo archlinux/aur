@@ -6,7 +6,7 @@ pkgver=0.6.8
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
-url="http://openorienteering.github.io/apps/mapper/"
+url="http://www.openorienteering.org/apps/mapper/"
 license=('GPL3')
 depends=('qt5-base>=5.3' 'polyclipping>=6.1.3a' 'proj>=4.9.2')
 makedepends=('cmake>=3.1' 'qt5-tools>=5.3' 'doxygen' 'libcups')
