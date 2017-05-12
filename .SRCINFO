@@ -1,0 +1,18 @@
+pkgbase = thonny-git
+	pkgdesc = Python IDE for beginners.
+	pkgver = r1403.40455c1
+	pkgrel = 1
+	url = http://thonny.org/
+	arch = any
+	license = MIT
+	depends = openssl
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-jedi
+	depends = tcl
+	depends = tk
+	source = git+https://bitbucket.org/plas/thonny.git
+	sha256sums = SKIP
+
+pkgname = thonny-git
+
