@@ -12,15 +12,9 @@ install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nurupo/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('fa0e29aaae8088c0d5d1cec499f997cd3f076bcf5efd48b0f0470027563b10d6')
 
-prepare() {
-  cd $pkgname-$pkgver/vlc-2.2.x+
-  # Use Arch's CFLAGS
-  sed -i "s/CFLAGS = -g -O2/CFLAGS = $CFLAGS/" Makefile
-}
-
 build() {
   cd $pkgname-$pkgver/vlc-2.2.x+
-  make
+  make CFLAGS="$CFLAGS"
 }
 
 package() {
