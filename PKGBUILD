@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('zlib')
 source=("ftp://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('9e8340c96626b469a603c15c9d843727')
+sha256sums=('6297433ee120b11b4b0a1c8f3512d7d73501753142ab9e2daa13c5a3edd32a72')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
