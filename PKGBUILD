@@ -2,7 +2,7 @@
 
 pkgname=thruk
 pkgver=2.14
-pkgrel=4
+pkgrel=5
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
 url="http://thruk.org"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('perl' 'apache' 'mod_fcgid' 'perl-plack' 'perl-json-xs'
          'perl-date-calc' 'perl-file-slurp' 'perl-log-log4perl'
          'perl-log-dispatch' 'perl-fcgi' 'perl-uri' 'perl-html-parser'
-         'perl-template-toolkit' 'perl-mime-lite')
+         'perl-template-toolkit' 'perl-mime-lite' 'perl-gd')
 conflicts=('naemon-thruk')
 replaces=('naemon-thruk')
 backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
