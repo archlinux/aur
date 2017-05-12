@@ -1,0 +1,15 @@
+pkgbase = vim-signature-git
+	pkgdesc = Plugin to toggle, display and navigate marks for vim
+	pkgver = 1479704793
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	source = vim-signature::git+https://github.com/kshenoy/vim-signature.git
+	source = vim-signature.install
+	md5sums = SKIP
+	md5sums = db2324de860f43a5b639d6ec9f1f87bf
+
+pkgname = vim-signature-git
+
