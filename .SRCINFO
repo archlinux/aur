@@ -1,6 +1,6 @@
 pkgbase = mozilla-extension-gnotifier
 	pkgdesc = Add-on for Firefox and Thunderbird. Replaces built-in notifications with the OS native notifications. It
-	pkgver = 1.9.8
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://addons.mozilla.org/mozilla/addon/gnotifier/
 	arch = any
@@ -11,19 +11,19 @@ pkgbase = mozilla-extension-gnotifier
 	noextract = mozilla-extension-gnotifier.zip
 	source = mozilla-extension-gnotifier.zip::https://addons.mozilla.org/firefox/downloads/latest/gnotifier/platform:2/
 	source = .version::https://services.addons.mozilla.org/firefox/api/1.5/addon/gnotifier
-	md5sums = 26d2c330045fa99b8983360197c03445
+	md5sums = f9806209b4626055c2944bb1c2ce830b
 	md5sums = SKIP
 
 pkgname = mozilla-extension-gnotifier
 
 pkgname = firefox-extension-gnotifier
-	depends = mozilla-extension-gnotifier=1.9.8
+	depends = mozilla-extension-gnotifier=1.10.0
 	depends = firefox
 	provides = 
 	conflicts = 
 
 pkgname = thunderbird-extension-gnotifier
-	depends = mozilla-extension-gnotifier=1.9.8
+	depends = mozilla-extension-gnotifier=1.10.0
 	depends = thunderbird
 	provides = 
 	conflicts = 
