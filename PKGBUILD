@@ -10,7 +10,7 @@ makedepends=("doxygen" "splint")
 license=("LGPL2.1")
 options=(!libtool)
 url="https://github.com/ClusterLabs/${pkgname}"
-source=("https://github.com/ClusterLabs/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ClusterLabs/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('70b9b8361dbb93694a2db97b7db0644ebfe2b45ba7f9caf3e04a7c5b10aaa22ee9177f3491af55723010b8b3d3ce75bda79f1771df5cb63b562156edff9ce1e8')
 
 build() {
