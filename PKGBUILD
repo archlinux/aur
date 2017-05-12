@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 _vendorname=CLIQZ
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser"
 arch=('i686' 'x86_64')
@@ -12,13 +12,12 @@ depends=('alsa-lib' 'dbus-glib' 'ffmpeg' 'gtk2' 'gtk3' 'hunspell'
          'icu' 'libevent' 'libvpx' 'libxt' 'mime-types'
          'mozilla-common' 'nss' 'sqlite' 'startup-notification'
          'ttf-font')
-makedepends=('python2' 'zip' 'autoconf2.13' 'yasm' 'libidl2' 'linux-api-headers')
+makedepends=('python2' 'zip' 'autoconf2.13' 'yasm' 'libidl2'
+             'linux-api-headers' 'rust' 'cargo')
 conflicts=('cliqz-bin')
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
-        "rust-i686.patch"
         "fix-wifi-scanner.diff")
-sha256sums=('638bd90a95d88dfde27916dd423e5e0b62a53de9442e91b2222e4f574648e4d6'
-            'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
+sha256sums=('4325c471d215a39c309abe78e3e02b876e1c87f65704daa56fe0c8e3949afa04'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 options=(!emptydirs !makeflags !strip)
 
@@ -30,9 +29,6 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i $srcdir/fix-wifi-scanner.diff
-
-  # Build with the rust targets we actually ship
-  patch -Np1 -i $srcdir/rust-i686.patch
 
   # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
   # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -84,7 +80,7 @@ build() {
 
   # Hardening is currently deactivated as it hangs on my current machine
   # Hardening
-  #LDFLAGS+=" -Wl,-z,now"
+  LDFLAGS+=" -Wl,-z,now"
 
   ./magic_build_and_package.sh
 }
