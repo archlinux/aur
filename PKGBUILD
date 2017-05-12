@@ -3,13 +3,13 @@
 
 pkgname=isl
 pkgver=0.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints"
 arch=('i686' 'x86_64')
 url="http://isl.gforge.inria.fr/"
 depends=('gmp')
 license=('MIT')
-conflicts=('isl-git','isl15','isl14')
+conflicts=('isl-git' 'isl15' 'isl14')
 source=("http://isl.gforge.inria.fr/$pkgname-${pkgver}.tar.xz")
 sha256sums=('0f35051cc030b87c673ac1f187de40e386a1482a0cfdf2c552dd6031b307ddc4')
 
