@@ -1,16 +1,16 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=peruse-git
-pkgver=1.1.r26.g1551df4
+pkgver=1.2.r7.g4cdb7eb
 pkgrel=1
 pkgdesc="A comic book viewer based on Frameworks 5, for use on multiple form factors."
 url="http://peruse.kde.org/"
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
-depends=('baloo' 'kconfig' 'kfilemetadata' 'kiconthemes' 'kio-extras' 'kirigami'
-         'plasma-framework' 'qt5-quickcontrols' 'qt5-svg')
+depends=('baloo' 'kconfig' 'kiconthemes' 'kio-extras' 'kirigami'
+         'plasma-framework' 'qt5-graphicaleffects')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools')
-optdepends=('okular-frameworks-git: for cbr, cb*, pdf, deja-vu, epub file support')
+optdepends=('okular: for cbr, cb*, pdf, deja-vu, epub file support')
 provides=('peruse')
 conflicts=('peruse')
 source=("git://anongit.kde.org/peruse.git")
