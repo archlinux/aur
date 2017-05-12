@@ -182,7 +182,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase^} kernel and modules - stable longtime supported kernel package suitable for servers with AppArmor support"
+  pkgdesc="The ${pkgbase^} kernel and modules with AppArmor support"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
   depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
