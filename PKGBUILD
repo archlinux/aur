@@ -1,7 +1,7 @@
 # Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
 
 pkgname=android-emulator
-pkgver=26.0.2
+pkgver=26.0.3
 pkgrel=1
 pkgdesc='Google Android Emulator'
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ url='https://developer.android.com/studio/releases/emulator.html'
 license=('custom')
 depends=('android-sdk')
 install="${pkgname}.install"
-source=('https://dl.google.com/android/repository/emulator-linux-3938741.zip'
+source=('https://dl.google.com/android/repository/emulator-linux-3965150.zip'
         "${pkgname}.sh"
         "${pkgname}.csh")
-sha1sums=('62153dd047f7efe2946dc4692d105340840808fd'
+sha1sums=('35e895df749b90f5f3cc219cc694cb3799d75c50'
           '4537a7ce30bedf87cedafc2020822219ad58310d'
           '2fb371b5774b67143f0610dfbec4963a4e2f11cc')
 
