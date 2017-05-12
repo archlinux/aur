@@ -10,7 +10,7 @@ pkgbase = pidgin-gpg-git
 	depends = pidgin
 	depends = gpgme
 	source = pidgin-gpg-git::git+https://git@github.com/segler-alex/Pidgin-GPG.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pidgin-gpg-git
 

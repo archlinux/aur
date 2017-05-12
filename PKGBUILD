@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('pidgin' 'gpgme')
 makedepends=('git')
 source=("$pkgname::git+https://git@github.com/segler-alex/Pidgin-GPG.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
