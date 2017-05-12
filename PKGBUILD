@@ -1,7 +1,7 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=etcher
 realver=1.0.0
-pkgver=${realver//-/_}
+pkgver=${realver//-/_}_1
 pkgrel=1
 pkgdesc="Burn images to SD cards & USB drives, safe & easy"
 arch=('i686' 'x86_64')
