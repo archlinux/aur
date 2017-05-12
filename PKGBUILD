@@ -13,8 +13,8 @@ depends=('sdl_image' 'sdl_mixer' 'sdl_ttf' 'lua51' 'fontconfig')
 source=("http://onscripter.sourceforge.jp/${pkgname}-${pkgver}.tar.gz"
         'avifile.patch')
 
-md5sums=('2522dda88855c07533022ab37d3ae070'
-         '9eec223b2bb76e8e83ef4e67de87b2ae')
+sha256sums=('e9a39b1c45cc47c363eb15773a9944da7a29eff74261ccb656ff5ce4b5fdd5d8'
+            '871831f04857ac7eafb3a52ab9ea648669f893ac2087f04d14e08e7f78829446')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
