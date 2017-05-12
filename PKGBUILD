@@ -4,13 +4,13 @@
 _name=exchangecalendar
 pkgname=thunderbird-${_name}
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)'
 url='https://github.com/Ericsson/exchangecalendar'
 arch=('any')
 groups=('office')
 license=('GPL3')
-depends=('thunderbird' 'thunderbird-lightning-bin')
+depends=('thunderbird>=52')
 makedepends=('zip')
 options=('!strip' '!libtool' '!staticlibs' '!docs')
 conflicts=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar-beta')
