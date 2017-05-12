@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 depends=('ffmpeg' 'qt5-webkit' 'qt5-script')
 makedepends=('sed' 'qt5-tools')
 optdepends=('flvstreamer: for downloading flv files.')
-source=("https://github.com/xVST/xVideoServiceThief/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xVST/xVideoServiceThief/archive/${pkgver}.tar.gz"
         'qdatastream.patch::https://github.com/xVST/xVideoServiceThief/commit/86abff9767e7fed9b8a78681a40ad688fea393d6.patch'
         'xvst.desktop'
         'beeg.patch'
