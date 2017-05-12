@@ -5,7 +5,7 @@
 pkgname=emulationstation-git
 _gitname=EmulationStation
 pkgrel=1
-pkgver=820.54a3c3e
+pkgver=899.268e6c8
 pkgdesc="A graphical front-end for emulators with controller navigation. Developed for the Raspbery Pi, but runs on most Linux systems."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
@@ -18,9 +18,9 @@ else
 depends+=('libgl')
 fi
 source=('git://github.com/RetroPie/EmulationStation.git'
-       'psp_scapper.patch')
+        'git://github.com/zeux/pugixml.git')
 md5sums=('SKIP'
-         '3a5732b192e6c25ec655bc4bffa0a0c6')
+         'SKIP')
 provides=('emulationstation')
 
 pkgver() {
@@ -28,9 +28,15 @@ pkgver() {
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"  
 }
 
+prepare() {
+	cd "$srcdir/$_gitname"
+	git submodule init
+	git config submodule.external/pugixml.url $srcdir/pugixml
+	git submodule update
+}
+
 build() {
     cd "$srcdir/$_gitname"
-    patch -Np1 -i "$srcdir"/psp_scapper.patch
     mkdir -p "$srcdir/$_gitname/build"
     cd "$srcdir/$_gitname/build"
     cmake ..
