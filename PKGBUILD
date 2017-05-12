@@ -29,8 +29,6 @@ package_gogland-eap() {
   ln -s "/opt/${pkgbase}/bin/${_pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
   install -D -m 644 "${pkgdir}/opt/${pkgbase}/bin/${_pkgbase}.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
-
-  chmod +x "${pkgdir}/opt/${pkgbase}/bin/dlv"
 }
 
 package_gogland-eap-jre() {
