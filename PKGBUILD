@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-custom-git
-pkgver=r990.63c33ea
+pkgver=r991.79a6f89
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 makedepends=('git' 'nodejs' 'npm' 'ttfautohint' 'otfcc')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-iosevka-hooky' 'ttf-iosevka-zshaped' 'ttf-iosevka')
+conflicts=(ttf-iosevka{,-hooky,-zshaped,-slab})
 provides=('ttf-iosevka')
 source=("git+https://github.com/be5invis/Iosevka")
 md5sums=('SKIP')
@@ -20,9 +20,10 @@ pkgver() {
 }
 
 build() {
+  : ${IOSEVKA_DESIGN='v-l-tailed v-i-hooky v-g-opendoublestorey v-m-shortleg v-zero-dotted'}
   cd Iosevka
   npm install
-  make custom-config design='v-l-tailed v-i-hooky v-g-opendoublestorey v-m-shortleg v-zero-dotted'
+  make custom-config design="$IOSEVKA_DESIGN"
   make custom
 }
 
