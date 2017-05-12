@@ -3,7 +3,7 @@
 pkgname=mint-y-theme
 pkgver=1.1.6
 pkgrel=1
-pkgdesc="New theme from LinuxMint 18"
+pkgdesc="Linux Mint 18 theme"
 arch=('any')
 url="https://github.com/linuxmint/mint-y-theme"
 license=('GPL3')
