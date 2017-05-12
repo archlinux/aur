@@ -25,16 +25,16 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xVST/xVideoServiceThief
         'myvideo.patch'
         'sunporno.patch'
         'wat.tv.patch')
-md5sums=('917d32b75585eec0e0ff5245253f33ed'
-         'b879f911cc6d9d0e22b1f0b4d9b5cafc'
-         '9d4d4d4841b497fe64705d36e7955174'
-         '417c1a8cec359835e25ba8ed89cb86c6'
-         'd9bf2659bba5c99f885e9febdb3d4d2e'
-         '5be6ae62f4f3976e112df3b5d03e11c9'
-         '8f32559bd10b8eddddb11a827e847b37'
-         '4bbe5133ca5b71ae19039c28cfbaad2d'
-         'e353efa41a386887cf3f76c0bf9350af'
-         '29adc4b5a9326202478dd41fc3d3c199')
+sha256sums=('412d0489a56837cfa74e6c71ddb5972fc782d91e0d50095f61980a9edc0bab69'
+            'ba5e2646c9cd8b0c23c243175de11bc2fe72635affc4318e623799bf7cf5316c'
+            '0a1344c9bd969c2fd608e071426c562386691e8815a13097c0f71c3b82876b18'
+            '9a6e19b8b68721eaed36e3721be859b148f2bca9c1dfc17d7beabc01aeb203ac'
+            'fbf3e0b4a0f827685a0f23c2b6d64e18f8ce0b4bb4a639ca4b57b2f05dc08461'
+            'cea0379535ae99f19a1d8b3f1abfdd8a6f9ff4ee9dd2853061c6f42ba0fcde1c'
+            'ae4af13b96095f8a0d491bab6865c2f75175b9f71762cba868b70aedc6890c73'
+            'f5d395343cce45597c879e6836761aa481a51e07e7bc26c885ec9e0ac16f5272'
+            'fc20e4f71f78fc4168843702ba6eaa584f12a2984c13e314bed719d4b20a740f'
+            '32276bbba698c6de0e739550a0f03cc63545a5c2dc1fe5d39ac52874f069f8d3')
 
 prepare() {
 	cd ${_pkgname}-${pkgver}
