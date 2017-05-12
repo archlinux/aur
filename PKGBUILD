@@ -9,7 +9,7 @@ url="http://packages.linuxmint.com/pool/main/l/${pkgname}"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'lightdm' 'lightdm-slick-greeter' 'lsb-release' 'python-setproctitle'  'python-xapp')
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('b0ebfd63606d14d4a85571cda7a793a5390971bb8bad43afb7f42226b55ef9f2')
+sha256sums=('c9df3ac1a1bf6b3f020e43077589b7b2e772dbd5dd961e1877858cde7147d077')
 
 prepare() {
   cd ${pkgname}
