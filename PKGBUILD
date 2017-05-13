@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=emulationstation-autoscraper
-pkgver=241.f132e6a
+pkgver=246.7bce4f9
 pkgrel=1
 pkgdesc="An auto-scraper for EmulationStation written in Go using hashes"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -23,10 +23,8 @@ package() {
   strip "${srcdir}/scraper"
   install -Dm755 "${srcdir}/scraper" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/src/github.com/sselph/scraper/LICENSE"		"${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-  install -Dm644 "${srcdir}/src/github.com/nfnt/resize/LICENSE"			"${pkgdir}/usr/share/licenses/${pkgname}/license-resize.txt"
-  install -Dm644 "${srcdir}/src/github.com/golang/snappy/LICENSE"		"${pkgdir}/usr/share/licenses/${pkgname}/license-snappy.txt"
-  install -Dm644 "${srcdir}/src/github.com/syndtr/goleveldb/LICENSE"		"${pkgdir}/usr/share/licenses/${pkgname}/license-goleveldb.txt"
-  install -Dm644 "${srcdir}/src/github.com/hashicorp/golang-lru/LICENSE"	"${pkgdir}/usr/share/licenses/${pkgname}/license-golang-lru.txt"
-  install -Dm644 "${srcdir}/src/github.com/mitchellh/go-homedir/LICENSE"	"${pkgdir}/usr/share/licenses/${pkgname}/license-go-homedir.txt"
-  install -Dm644 "${srcdir}/src/github.com/kr/fs/LICENSE"			"${pkgdir}/usr/share/licenses/${pkgname}/license-fs.txt"
+  for LIC in $(find ./src/github.com/sselph/scraper/vendor/github.com -name LICENSE); do
+    PKGNAME="$(echo ${LIC} | awk -F "/" '{print $(NF-1)}')"
+    install -Dm644 "${srcdir}/${LIC}" "${pkgdir}/usr/share/licenses/${pkgname}/license.${PKGNAME}"
+  done
 }
