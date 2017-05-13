@@ -1,4 +1,4 @@
-From 224a57a9987972ebc8601bc0e3fb429fe05aa795 Mon Sep 17 00:00:00 2001
+From a73d915e0df7d3010494255de251368b631170e8 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 01/14] Restore transparency
@@ -228,7 +228,7 @@ index 2921c025596c..c41a73231bf4 100644
 2.12.2
 
 
-From bba0dffcd74aa2a21996a0bc66dc2efba13d1346 Mon Sep 17 00:00:00 2001
+From a48b1ea301b01a00311718b21ab1fdd51207c6ec Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 02/14] window: Make the drawing robust across all themes
@@ -290,7 +290,7 @@ index c41a73231bf4..fb64fa89b3cc 100644
 2.12.2
 
 
-From e5f19e9557fa6af1835b1d181ce04fefe0a8c0b4 Mon Sep 17 00:00:00 2001
+From 45ecb5a45a66ca9ab372eb7b5e638e8b165aa0db Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 03/14] screen, window: Extra padding around transparent
@@ -417,7 +417,7 @@ index fb64fa89b3cc..f1b1c7d1038d 100644
 2.12.2
 
 
-From bf012328565cf15bd57b0fb887a3fa69e778427d Mon Sep 17 00:00:00 2001
+From 6d1ee8b03a9ed32ba2c3463a505a58a33ea655f9 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 11/14] Restore translations for setting a title and
@@ -767,16 +767,16 @@ index 586c1e4d827b..08fbdb7b78e7 100644
  #: ../src/terminal-window.c:986
  msgid "Set _Character Encoding"
 diff --git a/po/be.po b/po/be.po
-index 1e45906547be..cd3fe0b7b6b2 100644
+index d5ea39c55af4..16fdbb5e51d7 100644
 --- a/po/be.po
 +++ b/po/be.po
-@@ -2015,3 +2015,6 @@ msgstr ""
- msgid "C_lose Window"
- msgstr "_Закрыць акно"
+@@ -2365,3 +2365,6 @@ msgstr "_Закрыць акно"
  
+ #~ msgid "_Set Title…"
+ #~ msgstr "Прызначыць _загаловак..."
++
 +msgid "Transparent background"
 +msgstr "Празрысты фон"
-+
 diff --git a/po/be@latin.po b/po/be@latin.po
 index 82ef0664ae1e..27e9877f96e8 100644
 --- a/po/be@latin.po
@@ -3104,10 +3104,10 @@ index 158f6cb167cc..a3494fb70bd6 100644
  #: ../src/gnome-terminal.glade2.h:86
  msgid "_Update login records when command is launched"
 diff --git a/po/sr.po b/po/sr.po
-index a64522bc0178..05721742b3d6 100644
+index 58f21ac8c7d8..05cee5fd05b3 100644
 --- a/po/sr.po
 +++ b/po/sr.po
-@@ -2378,10 +2378,9 @@ msgstr "_Затвори прозор"
+@@ -2307,10 +2307,9 @@ msgstr "_Затвори прозор"
  #~ msgid "GNOME Terminal Client"
  #~ msgstr "Клијент Гномовог терминала"
  
@@ -3121,7 +3121,7 @@ index a64522bc0178..05721742b3d6 100644
  
  #~ msgid "Title for terminal"
  #~ msgstr "Наслов за терминал"
-@@ -2427,11 +2426,11 @@ msgstr "_Затвори прозор"
+@@ -2356,11 +2355,11 @@ msgstr "_Затвори прозор"
  #~ msgid "Default size:"
  #~ msgstr "Основна величина:"
  
@@ -3137,7 +3137,7 @@ index a64522bc0178..05721742b3d6 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "Наслов и наредба"
-@@ -2439,14 +2438,14 @@ msgstr "_Затвори прозор"
+@@ -2368,14 +2367,14 @@ msgstr "_Затвори прозор"
  #~ msgid "_Unlimited"
  #~ msgstr "_Неограничено"
  
@@ -3156,7 +3156,7 @@ index a64522bc0178..05721742b3d6 100644
  
  #~ msgid "Always visible"
  #~ msgstr "Увек видљив"
-@@ -2468,3 +2467,6 @@ msgstr "_Затвори прозор"
+@@ -2397,3 +2396,6 @@ msgstr "_Затвори прозор"
  
  #~ msgid "Close Window"
  #~ msgstr "Затвори прозор"
