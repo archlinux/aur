@@ -1,0 +1,28 @@
+pkgbase = multimc-git
+	pkgdesc = Free, open source launcher and instance manager for Minecraft.
+	pkgver = 0.5.1.r96.gd70c783d
+	pkgrel = 1
+	url = http://multimc.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = qt5-x11extras
+	makedepends = java-environment
+	depends = zlib
+	depends = libgl
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = java-runtime
+	depends = qt5-svg
+	conflicts = multimc
+	conflicts = multimc5
+	conflicts = multimc5-git
+	replaces = multimc5-git
+	source = multimc-git::git://github.com/MultiMC/MultiMC5.git
+	sha512sums = SKIP
+
+pkgname = multimc-git
+

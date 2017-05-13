@@ -1,0 +1,7 @@
+*.tar
+*.tar.*
+
+src/*
+pkg/*
+multimc5-git/*
+*kdev4*
