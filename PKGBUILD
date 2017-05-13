@@ -178,8 +178,8 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules with Xen guest support"
-  [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
-  depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
+  [ "${pkgbase}" = "linux" ] && groups=('base')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "kernel=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
