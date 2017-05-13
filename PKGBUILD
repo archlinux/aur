@@ -4,13 +4,13 @@
 pkgname=cairo-dfb
 _pkgname=cairo
 pkgver=1.14.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Cairo vector graphics library with directfb backend"
 arch=(i686 x86_64 armv7h)
 license=('LGPL' 'MPL')
 url="https://cairographics.org/"
 # requires libGL + libEGL - all libgl variants (mesa, nvidia-xxx-libgl/nvidia-utils) provide libEGL
-depends=('directfb' 'libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman' 'glib2' 'libgl' 'lzo2')
+depends=('directfb' 'libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman' 'glib2' 'libgl' 'lzo')
 makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'valgrind' 'git')
              # for the test suite:
 #             'ttf-dejavu' 'gsfonts' 'xorg-server-xvfb' ) # 'libdrm')
@@ -37,10 +37,10 @@ build() {
 	--enable-pdf \
 	--enable-gobject \
 	--enable-directfb #\
-	# --enable-gtk-doc
+	#--enable-gtk-doc
 	
 	#--disable-xlib-xcb \
-	# --enable-test-surfaces \ takes ages
+	#--enable-test-surfaces \ takes ages
 	#--enable-drm # breaks build
 	
   make
