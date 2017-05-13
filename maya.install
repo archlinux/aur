@@ -7,10 +7,9 @@ post_install() {
 ## In order to activate Maya, you need to run its registration setup file and
 ## enter your registration information.
 
-## Find the folder where your Maya package was built, go into the folder maya-setup,
-## and run:
+## Run:
 
-$ sudo ./setup
+$ sudo /opt/maya-setup/setup
 
 ## When it asks for your registration information,
 ## go to http://www.autodesk.com/education/free-software/maya

@@ -38,10 +38,10 @@ package() {
     mkdir "$pkgdir"/usr/tmp/
     chmod 777 "$pkgdir"/usr/tmp/
     
-    mkdir -p "$pkgdir"/usr/lib/
-    chmod 755 "$pkgdir"/usr/lib/
-    cp "$pkgdir"/opt/Autodesk/Adlm/R12/lib64/libadlmPIT.so.12  "$pkgdir"/usr/lib/libadlmPIT.so.12
-    cp "$pkgdir"/opt/Autodesk/Adlm/R12/lib64/libadlmutil.so.12 "$pkgdir"/usr/lib/libadlmutil.so.12
+#    mkdir -p "$pkgdir"/usr/lib/
+#    chmod 755 "$pkgdir"/usr/lib/
+#    cp "$pkgdir"/opt/Autodesk/Adlm/R12/lib64/libadlmPIT.so.12  "$pkgdir"/usr/lib/libadlmPIT.so.12
+#    cp "$pkgdir"/opt/Autodesk/Adlm/R12/lib64/libadlmutil.so.12 "$pkgdir"/usr/lib/libadlmutil.so.12
     
     ln -s /usr/lib/libssl.so.1.0.0 "$pkgdir"/usr/autodesk/maya2017/lib/libssl.so.10
     ln -s /usr/lib/libcrypto.so.1.0.0 "$pkgdir"/usr/autodesk/maya2017/lib/libcrypto.so.10
@@ -55,4 +55,8 @@ package() {
     mkdir -p "$pkgdir"/usr/share/applications/
     chmod 755 "$pkgdir"/usr/share/applications/
     install -Dm644 ../../maya-setup/maya.desktop "$pkgdir"/usr/share/applications/maya.desktop
+
+    mkdir -p "$pkgdir"/opt/maya-setup/
+    chmod 755 "$pkgdir"/opt/maya-setup/
+    cp ../../maya-setup/setup{,.xml} "$pkgdir"/opt/maya-setup/
 }
