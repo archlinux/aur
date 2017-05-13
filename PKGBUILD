@@ -1,26 +1,26 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=nyacc  
-pkgver=0.78.1
+pkgname=nyacc 
+pkgver=0.78.2
 pkgrel=1
 pkgdesc="Not Yet Another Compiler Compiler"
 url="http://www.nongnu.org/nyacc"
 arch=('any')
-license=('GPL' 'LGPL' 'GFDL')
+license=('GPL' 'LGPL' 'FDL')
 depends=('guile')
 makedepends=()
 source=(https://download.savannah.gnu.org/releases/nyacc/$pkgname-$pkgver.tar.gz package.patch)
-sha256sums=('be37f850857e1b68cc9065afe9949755d6c04445fdf1cdd5fa5b25f5c9a0f905'
+sha256sums=('e6fb9de2234486587607d9be32cc79a0913ce8641ee50ee0c7e76d7a3d96b743'
             '90c25cd1f901c89e128dd1bab17aae5fae6b17e44198884a7a2450dff1dbe0c0')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 < "$srcdir"/package.patch
+  patch -Np1 < "$srcdir"/package.patch || true
 }
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --site_scm_dir=/usr/share/guile/2.2/ --site_scm_go_dir=/usr/lib/guile/2.2/ccache
+  ./configure --site_scm_dir=/usr/share/guile/2.2 --site_scm_go_dir=/usr/lib/guile/2.2/ccache
   make
   cd doc/$pkgname
 }
