@@ -1,7 +1,7 @@
 # Maintainer: Elrondo46 directed by ERA Energie Assistance IT Departement <elrond94@hotmail.com>
 
 pkgname=openconcerto-beta
-pkgver=1.5b3
+pkgver=1.5b4
 pkgrel=1
 pkgdesc="ERP ILM Openconcerto beta channel client multi and mono"
 arch=('any')
@@ -15,7 +15,7 @@ source=("http://www.openconcerto.org/fr/telechargement/betas/${pkgver}/openconce
         "OpenConcerto-Configuration.desktop"
         "OpenConcerto.desktop")
 
-sha256sums=('8a7603c9461b42c584d8898b7b8f769aa3b5284f26010e914411845cc9f4997b'
+sha256sums=('8db28cb7020a1173c4085da7985aa97ba676569e822e7afe2a8d2a15368c2948'
             '904b7a2837c4d2dc4242fb43d41150f8a4e5d9d06d9ea7ede811950f680e05ff'
             '95c53e1494e7424d8a37fea79e3b9b29c3efb0da95bce72867086c067657917d'
             '8c1cbf1a4bc1ec002802e4bea84374b133c721a0faf2240b70c2701c52a7a1cb')
