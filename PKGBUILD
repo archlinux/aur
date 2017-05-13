@@ -3,7 +3,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=clutter
-pkgver=1.26.0+35+g9c4330b6d
+pkgver=1.26.2
 pkgrel=1
 pkgdesc="A toolkit for creating fast, portable, compelling dynamic UIs"
 url="https://blogs.gnome.org/clutter/"
@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 license=(LGPL)
 depends=(gtk3 cogl libinput)
 makedepends=(gobject-introspection gtk-doc git)
-_commit=9c4330b6ddbae230de8b25610e59af143e38b2ab  # master
+_commit=2faa83baf3ce9b9c94635311ad79944ab2a73c84  # tags/1.26.2^0
 source=("git+https://git.gnome.org/browse/clutter#commit=$_commit")
 sha256sums=('SKIP')
 
