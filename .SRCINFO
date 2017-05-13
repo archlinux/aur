@@ -12,6 +12,7 @@ pkgbase = clight-git
 	depends = libxcb
 	depends = popt
 	depends = libconfig
+	depends = gsl
 	depends = clightd-git
 	optdepends = geoclue2: to retrieve user location through geoclue2.
 	optdepends = upower: to save energy by increasing timeouts between captures while on battery.
