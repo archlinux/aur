@@ -3,7 +3,7 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=3.2.8
+pkgver=3.2.9
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 url='http://grails.org/'
@@ -16,8 +16,8 @@ options=('!emptydirs')
 noextract=("${pkgname[1]}-${pkgver}.zip")
 source=(${pkgname[0]}-${pkgver}.zip::https://github.com/grails/grails-core/releases/download/v${pkgver}/grails-${pkgver}.zip
         ${pkgname[1]}-${pkgver}.zip::https://github.com/grails/grails-doc/releases/download/v${pkgver}/grails-docs-${pkgver}.zip)
-sha512sums=('96f9eff3745b975d3778759421540148f89a6972fba9a7bfbf4654fbeb20a76e9d6e07fc727a3ecb7515f8be70560a63aae5c87567dec7c777d98fb1f2e9c3a9'
-            'a7d661e1894c24f2e806016ba3e3b2ff6f56a82385acc70ad7bbe673f24a0691c1c27c5d8aac404beabb14eabc7e3f2e13f5be861cb7425675d8f70558d01c60')
+sha512sums=('28c90a583dcd87f810a7210e6c713f190a680bec3ab58b69311f9be3dc3ca3eb957e2944b22b093d7a58af79eed4c3a70d4250448f2f7ac6fe75e4be1fd44b04'
+            '63e618a7e42f35828153253525d9203f4be17158bb1362d59c06be7505653eb5beab981d3d89c464da761ab7c2dd8c8fcdc0f9ba9ebce9080e4ec9b3a7b28667')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
