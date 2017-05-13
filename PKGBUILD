@@ -5,8 +5,8 @@
 # PKGBUILD based on extra\deluge's PKGBUILD, adapted for -git version by Berseker
 
 pkgname=deluge-git
-pkgver=2.0.0.dev979.ga727ee67b
-pkgrel=2
+pkgver=2.0.0.dev983.g0353b82c0
+pkgrel=1
 pkgdesc="A bittorrent client written with python and pygtk (git version, 'develop' branch)"
 arch=('any')
 url="http://deluge-torrent.org/"
@@ -15,12 +15,9 @@ provides=('deluge')
 conflicts=('deluge' 'deluge-stable-git')
 install='deluge.install'
 depends=(
-    # binary repositories:
-        'desktop-file-utils' 'hicolor-icon-theme' #'libtorrent-rasterbar=1.1.2'
+        'desktop-file-utils' 'hicolor-icon-theme' 'libtorrent-rasterbar'
         'python2-service-identity' 'python2-chardet' 'python2-pyopenssl'
         'python2-xdg' 'python2-twisted' 'xdg-utils'
-    # AUR:
-        'libtorrent-rasterbar-git=1.1.2.r0.ga42d4390c'
 )
 makedepends=(
     # binary repositories:
