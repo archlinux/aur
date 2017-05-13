@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
 license=('MIT')
 makedepends=('git' 'boost' 'freetype2' 'eigen' 'cmake' 'mesa' 'libsm')
-depends=('alsa-lib' 'sdl2' 'boost-libs' 'freeimage' 'ttf-dejavu' 'glu')
+depends=('alsa-lib' 'sdl2' 'boost-libs' 'freeimage' 'ttf-dejavu' 'glu' 'vlc')
 if [ "$CARCH" = "armv6h" ]; then
 depends+=('raspberrypi-firmware')
 else

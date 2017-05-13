@@ -21,6 +21,7 @@ pkgbase = emulationstation-git
 	depends = freeimage
 	depends = ttf-dejavu
 	depends = glu
+	depends = vlc
 	depends = libgl
 	provides = emulationstation
 	source = git://github.com/RetroPie/EmulationStation.git
