@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=habitat
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
