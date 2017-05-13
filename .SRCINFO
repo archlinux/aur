@@ -1,5 +1,5 @@
 pkgbase = mp3diags
-	pkgdesc = Fix and identify issues with MP3 files and make other changes
+	pkgdesc = Fix and identify issues with MP3 files
 	pkgver = 1.2.03
 	pkgrel = 3
 	url = http://mp3diags.sourceforge.net/
