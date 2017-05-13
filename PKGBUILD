@@ -1,24 +1,31 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 _name="asyncpg"
-pkgname="python-${_name}"
-pkgver="0.10.1"
+pkgname="python-$_name"
+pkgver="0.11.0"
 pkgrel="1"
 pkgdesc="An asyncio PosgtreSQL driver"
 arch=("i686" "x86_64")
-url="https://github.com/MagicStack/${_name}"
+url="https://github.com/MagicStack/$_name"
 license=("Apache")
 makedepends=("python-setuptools" "cython")
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4e9d3c3abdfb7e2bb46ea23d232622a9a2488320c5e8ef49a53c732118f549fa')
+source=("$url/archive/v$pkgver.tar.gz"
+        remove-package-data.patch)
+sha256sums=('01da0c5e4f4f93b45fceccb7764928ed2fe1770c540a246d8414f34532de7cc3'
+            '8ffcda406cd5f92743bfb57b7213ed976876e2d9ecbf5d7e439313de90bd22ad')
+
+prepare() {
+    cd "$_name-$pkgver"
+    patch -p1 -i ../remove-package-data.patch
+}
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "$_name-$pkgver"
     python setup.py build
 }
 
 package() {
     depends=("python")
-    cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    cd "$_name-$pkgver"
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1
 }

@@ -1,0 +1,14 @@
+diff -Naurp a/setup.py b/setup.py
+--- a/setup.py	2017-05-11 15:50:10.000000000 -0500
++++ b/setup.py	2017-05-13 14:13:26.535829162 -0500
+@@ -202,9 +202,8 @@ setuptools.setup(
+     author_email='hello@magic.io',
+     url='https://github.com/MagicStack/asyncpg',
+     license='Apache License, Version 2.0',
+-    packages=['asyncpg'],
++    packages=setuptools.find_packages(),
+     provides=['asyncpg'],
+-    include_package_data=True,
+     ext_modules=[
+         setuptools.Extension(
+             "asyncpg.protocol.protocol",
