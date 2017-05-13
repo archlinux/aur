@@ -7,7 +7,7 @@ pkgname=zabbix-agent-2.4
 pkgver=2.4.8
 pkgrel=1
 pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.zabbix.com"
 license=('GPL')
 backup=('etc/zabbix/zabbix_agent.conf'
@@ -19,6 +19,9 @@ source=("http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stabl
 		"zabbix-agentd.service"
 		"zabbix-agentd.tmpfiles"
 		)
+provides=(zabbix-agent)
+replaces=(zabbix-agent)
+conflicts=(zabbix-agent)
 
 sha512sums=('bf0816279f771448076bd8d8f1efe65651e24964b402ba128aace3d5afc0333f808a9d48b5763e334a05bc9f53fa934d81cc1b90072a0e9ba74b29205ab2b300'
             '2a918643877e102a1e7055b423efa800ab45c5566b0329bddeeae019aed8d8cd3989b7303640e5d28b37c49e612a4287ab7f8745771dd7ebcaac2f1abf2e0645'
