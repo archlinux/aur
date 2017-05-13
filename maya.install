@@ -7,10 +7,9 @@ post_install() {
 ## In order to activate Maya, you need to run its registration setup file and
 ## enter your registration information.
 
-## Find the folder where your Maya package was built, look under maya-setup,
+## Find the folder where your Maya package was built, go into the folder maya-setup,
 ## and run:
 
-$ export LD_LIBRARY_PATH=/opt/Autodesk/Adlm/R12/lib64/
 $ sudo ./setup
 
 ## When it asks for your registration information,
@@ -23,7 +22,7 @@ $ sudo ./setup
     
 ## Next, run Maya to activate the licence.
 
-$ maya
+$ maya2017
 
 ## Maya uses the Alt key to move around, so if your window manager uses
 ## pure Alt for moving the window around, change it to Meta or something.
