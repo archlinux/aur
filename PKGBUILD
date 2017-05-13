@@ -25,6 +25,6 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
   
   ln -s "/opt/MQTTfx/MQTTfx" "${pkgdir}/usr/bin/mqttfx"
-  ln -s "/opt/MQTTfx/MQTTfx.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/mqttfx.png"
-  install -D -m644 "mqttfx.desktop" "${pkgdir}/usr/share/applications/mqttfx.desktop"
+  ln -s "/opt/MQTTfx/MQTTfx.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/MQTTfx.png"
+  install -D -m644 "mqttfx.desktop" "${pkgdir}/usr/share/applications/MQTTfx.desktop"
 }
