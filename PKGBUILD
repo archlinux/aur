@@ -8,11 +8,11 @@ pkgdesc="GTK+ clipboard manager"
 arch=('any')
 url="https://launchpad.net/diodon"
 license=('GPL2')
-depends=('dconf' 'desktop-file-utils' 'gconf' 'libappindicator3' 'libgee' 'libpeas' 'libunique' 'libxtst' 'xorg-server-xvfb' 'zeitgeist')
+depends=('dconf' 'desktop-file-utils' 'gconf' 'gtk-update-icon-cache' 'libappindicator3'
+         'libgee' 'libpeas' 'libunique' 'libxtst' 'xorg-server-xvfb' 'zeitgeist')
 makedepends=('bzr' 'gobject-introspection' 'intltool' 'libpeas' 'vala')
 provides=($_pkgname)
 conflicts=($_pkgname)
-install=$pkgname.install
 source=($pkgname::bzr+https://code.launchpad.net/diodon/trunk)
 md5sums=('SKIP')
 
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  python2 ./waf configure --prefix=/usr
+  python2 ./waf configure --prefix=/usr    # --disable-indicator-plugin
   python2 ./waf build
 }
 
