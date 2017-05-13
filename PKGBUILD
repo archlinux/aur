@@ -3,7 +3,7 @@
 pkgname=mojibar
 pkgver=2.4.0
 pkgrel=1
-pkgdesc="🍊 Emoji searcher but as a menubar app."
+pkgdesc="Emoji searcher but as a menubar app."
 arch=('x86_64')
 url='https://github.com/muan/mojibar'
 license=('MIT')
@@ -16,7 +16,7 @@ package() {
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -d "${pkgdir}/opt/${pkgname}"
 	install -d "${pkgdir}/usr/bin"
-	install -d "${pkgdir}/usr/share/icons" 
+	install -d "${pkgdir}/usr/share/icons"
 
 	install -m644 "${srcdir}/${_pkg}/resources/app/license.md" "${pkgdir}/usr/share/licenses/${pkgname}/license.md"
 	install -m644 "${srcdir}/${_pkg}/resources/app/mojibar.png" "${pkgdir}/usr/share/icons/${pkgname}.png"

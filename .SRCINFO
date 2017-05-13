@@ -1,5 +1,5 @@
 pkgbase = mojibar
-	pkgdesc = 🍊 Emoji searcher but as a menubar app.
+	pkgdesc = Emoji searcher but as a menubar app.
 	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/muan/mojibar
