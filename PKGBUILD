@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/255BITS/HyperGAN"
 license=('MIT')
 depends=('python' 'python-flask' 'python-flask-cors' 'python-hyperchamber' 'python-tensorflow-gpu' 'python-scipy' 'python-pillow')
+optdepends=('gperftools: Increase memory performance')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/h/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('c4ba7c509f9fe72d6a99dbe4f2ce409e46aa5f7b6ca464e7c09933d24dca81a4')
