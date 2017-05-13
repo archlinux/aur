@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
@@ -12,16 +12,28 @@ provides=('albert')
 conflicts=('albert-git')
 source=(https://github.com/ManuelSchneid3r/albert/archive/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('730ce21015116708a9314ee2fd50f78d')
+md5sums=('7de4f5a062a8fc1bb91f5cf8a2f2f72a')
+
+# If you want a debug build, change CMAKE_BUILD_TYPE to 'Debug'
+#_build_type="Debug"
+_build_type="Release"
 
 build() {
-  echo -e "\e[41;20;1mIf you plan to report bugs please modify the PKGBUILD to build the debug version.\e[0m"
+  cat << EOD
+
+   ╭──────────────────────────────────────────────╮
+   │                                              │
+   │   If you plan to report bugs please modify   │
+   │   the PKGBUILD to build the debug version.   │
+   │                                              │
+   ╰──────────────────────────────────────────────╯
+
+EOD
 
   [[ -d "${pkgname}-${pkgver}/build" ]] || mkdir -p "${pkgname}-${pkgver}/build"
   cd "${pkgname}-${pkgver}/build"
 
-  # If you want a debug build, change CMAKE_BUILD_TYPE to 'Debug'
-  cmake ".." -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake ".." -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=${_build_type}
   make
 }
 
