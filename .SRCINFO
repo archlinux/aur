@@ -1,0 +1,21 @@
+pkgbase = pf_ring-userland-git
+	pkgdesc = High-speed packet processing framework (dev branch) - userland tools
+	pkgver = v6.0.3.r1094.g9e72191
+	pkgrel = 1
+	url = https://github.com/ntop/PF_RING
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = parallel
+	depends = pf_ring-kernel-git
+	provides = libpfring-git
+	conflicts = libpfring-git
+	source = git://github.com/ntop/PF_RING#branch=dev
+	sha512sums = SKIP
+
+pkgname = pf_ring-userland-git
+
