@@ -1,7 +1,7 @@
 pkgbase = cyberfox-kde-bin
 	pkgdesc = 'KDE Plasma Edition' of the fast, stable & reliable x64-bit web browser. It contains KDE patches, which contains KDE file dialogs, file associations, protocol handlers and other KDE Plasma integration features.
 	pkgver = 52.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cyberfox.8pecxstudios.com/
 	install = cyberfox-kde-bin.install
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = cyberfox-kde-bin
 	options = !emptydirs
 	options = !strip
 	source = cyberfox-kde_52.1.2_amd64.deb::https://hawkeye116477.github.io/cyberfox-deb/pool/main/c/cyberfox-kde/cyberfox-kde_52.1.2_amd64.deb
-	sha256sums = 01b2ea1a3efc166b993fa4fb3aa08340afc2eb20369b20e11d1b1345f64ce204
+	sha256sums = 6944f99ec1543c1f27f58b68278a81fbfe21e718d3f9d8ebfbefe0ca56476848
 
 pkgname = cyberfox-kde-bin
 
