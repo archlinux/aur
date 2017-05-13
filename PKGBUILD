@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail.com>
 
 pkgname=faustlive-git
-pkgver=780.284ddb0
+pkgver=783.c84e4a5
 pkgrel=1
 pkgdesc="A graphical frontend to the Faust compiler."
 arch=('i686' 'x86_64')
