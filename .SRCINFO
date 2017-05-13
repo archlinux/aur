@@ -1,6 +1,6 @@
 pkgbase = electrum-ltc
 	pkgdesc = Lightweight Litecoin client
-	pkgver = 2.8.3pre.git20170510
+	pkgver = 2.8.3.2
 	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
@@ -22,8 +22,11 @@ pkgbase = electrum-ltc
 	depends = python2-qrcode
 	depends = python2-requests
 	depends = zbar
-	source = electrum-ltc-9c86d29.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/9c86d29
-	sha256sums = 152b50ca5a70913bc44c11d0d94bc6bb18d9f8a44eda7b386f7cc778d303f011
+	source = https://electrum-ltc.org/download/Electrum-LTC-2.8.3.2.tar.gz
+	source = https://electrum-ltc.org/download/Electrum-LTC-2.8.3.2.tar.gz.asc
+	validpgpkeys = CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA
+	sha256sums = e3000130dc9e64a70d8ecacf604e2ebd36501e34ab8d53d7084e5be7c03126b2
+	sha256sums = SKIP
 
 pkgname = electrum-ltc
 
