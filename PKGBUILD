@@ -3,7 +3,7 @@
 # Contributer: auk
 
 pkgname=hyper
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
@@ -29,7 +29,7 @@ source=(
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('385c0d909f82f492aeaa158a0164e9ef'
+md5sums=('53a85a4e9b8950226df5c192a31be242'
          'f3481e14cba331160339b3b5ab78872b'
          '74cb7ba38e37332aa8300e4b6ba9c61c')
 validpgpkeys=()
@@ -44,17 +44,23 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
 
-    # node modules path => "nmp"
-    nmp="./node_modules/.bin"
-
     # This build command is the same as the one defined in package.json via
-    # npm run dist except that it doesn't build for debian, rpm, etc.
+    # npm run dist except that it doesn't build for debian, rpm, etc. and
+    # doesn't require some other dependencies
+
+    # add node_modules binaries to PATH
+    oldpath=$PATH
+    PATH=$(pwd)/node_modules/.bin:$PATH
+
     npm run build &&
-    $nmp/cross-env BABEL_ENV=production babel \
+    cross-env BABEL_ENV=production babel \
         --out-file app/dist/bundle.js \
         --no-comments \
         --minified app/dist/bundle.js &&
-    $nmp/build --linux --dir
+    command build --linux --dir             # need to use command because the
+                                            # function name is build
+
+    PATH=$oldpath
 }
 
 package() {
