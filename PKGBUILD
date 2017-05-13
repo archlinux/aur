@@ -4,12 +4,12 @@ pkgbase=python-importanize
 pkgname=(python-importanize python2-importanize)
 pypi_name=importanize
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for organizing Python imports using PEP8 or custom rules"
 arch=('any')
 license=('MIT')
 url="https://pypi.python.org/pypi/importanize/"
-depends=('python')
+makedepends=('python' 'python2' 'python-pathlib2' 'python2-pathlib2')
 source=("https://pypi.io/packages/source/i/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
 md5sums=('67dd7938fa3801435b242bf0ba7fae69')
 
@@ -27,7 +27,7 @@ build() {
 
 package_python-importanize() {
   pkgdesc='Python 3 client for importanize'
-  depends=('python')
+  depends=('python' 'python-pathlib2')
 
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
@@ -35,7 +35,7 @@ package_python-importanize() {
 
 package_python2-importanize() {
   pkgdesc='Python 2 client for importanize'
-  depends=('python2')
+  depends=('python2' 'python2-pathlib2')
 
   cd "${srcdir}/${pypi_name}-${pkgver}-python2"
   python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
