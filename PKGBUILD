@@ -8,7 +8,7 @@ url="http://mqttfx.org"
 license=('Apache')
 options=('!strip' '!upx')
 source=(
-  "http://www.jensd.de/apps/mqttfx/1.3.1/mqttfx-${pkgver}-64bit.deb"
+  "http://www.jensd.de/apps/mqttfx/${pkgver}/mqttfx-${pkgver}-64bit.deb"
   "mqttfx.desktop")
 md5sums=(
   "4429b9d5c8e10eaeb1f7784047f36502"
