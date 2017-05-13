@@ -1,0 +1,19 @@
+pkgbase = qt5ct-svn
+	pkgdesc = Qt5 Configuration Tool - svn version.
+	pkgver = 0.32.r406
+	pkgrel = 1
+	url = http://qt-apps.org/content/show.php/Qt5+Configuration+Tool?content=168066
+	install = qt5ct.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = qt5-tools
+	makedepends = subversion
+	depends = qt5-svg
+	provides = qt5ct
+	conflicts = qt5ct
+	source = qt5ct::svn://svn.code.sf.net/p/qt5ct/code/trunk/qt5ct
+	md5sums = SKIP
+
+pkgname = qt5ct-svn
+
