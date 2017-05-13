@@ -2,13 +2,13 @@
 
 pkgname=cyberfox-kde-bin
 pkgver=52.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="
 'KDE Plasma Edition' of the fast, stable & reliable x64-bit web browser. It contains KDE patches, which contains KDE file dialogs, file associations, protocol handlers and other KDE Plasma integration features."
 arch=('x86_64')
 url="https://cyberfox.8pecxstudios.com/"
 license=('MPL' 'GPL')
-depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kyberfoxhelper')
+depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kcyberfoxhelper')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
