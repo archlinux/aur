@@ -1,0 +1,18 @@
+pkgbase = purple-battlenet-hg
+	pkgdesc = A plugin to login and send whispers to Battle.net v2 users.
+	pkgver = r34.f57c99dd7396
+	pkgrel = 1
+	url = https://bitbucket.org/EionRobb/purple-battlenet/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libpurple
+	makedepends = glib2
+	makedepends = protobuf-c
+	makedepends = mercurial
+	depends = pidgin
+	source = purple-battlenet::hg+https://bitbucket.org/EionRobb/purple-battlenet/
+	md5sums = SKIP
+
+pkgname = purple-battlenet-hg
+
