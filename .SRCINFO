@@ -1,14 +1,15 @@
 pkgbase = python-xbee
 	pkgdesc = Python tools for working with XBee radios
-	pkgver = 2.2.3
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/XBee
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pyserial
-	source = https://pypi.python.org/packages/source/X/XBee/XBee-2.2.3.tar.gz
-	md5sums = f9a103c8b2f4d8384c9d0ee25f7b2efc
+	source = https://pypi.io/packages/source/X/XBee/XBee-2.2.5.tar.gz
+	md5sums = c79cbe315abcafe23a2e0980adf29254
 
 pkgname = python-xbee
 
