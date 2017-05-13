@@ -1,0 +1,12 @@
+[Unit]
+Description=template rendering, notifier, and supervisor for HashiCorp Consul and Vault data
+Documentation=https://github.com/hashicorp/consul-template
+After=vault.service consul.service
+
+[Service]
+ExecStart=/usr/bin/consul-template -config /etc/consul-template/config.hcl
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
