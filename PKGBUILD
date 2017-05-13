@@ -5,7 +5,7 @@
 pkgname=mp3diags
 pkgver=1.2.03
 pkgrel=3
-pkgdesc="Identify issues with your MP3 files, fix those issues and make other changes"
+pkgdesc="Fix and identify issues with MP3 files"
 url="http://mp3diags.sourceforge.net/"
 license=("GPL")
 arch=("i686" "x86_64")
@@ -43,6 +43,5 @@ package() {
 
 	cd "${srcdir}/MP3Diags-${pkgver}/src/translations"
 	install -m755 -d "${pkgdir}/usr/share/mp3diags/translations"
-	install -m644 -t "${pkgdir}/usr/share/mp3diags/translations" \
-	                 *.qm
+	install -m644 -t "${pkgdir}/usr/share/mp3diags/translations" *.qm
 }
