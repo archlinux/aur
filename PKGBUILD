@@ -5,7 +5,7 @@ pkgver=0.32.r406
 pkgrel=1
 pkgdesc="Qt5 Configuration Tool - svn version."
 arch=('i686' 'x86_64')
-url="http://qt-apps.org/content/show.php/Qt5+Configuration+Tool?content=168066"
+url="https://sourceforge.net/projects/qt5ct/"
 license=('BSD')
 depends=('qt5-svg')
 makedepends=('qt5-tools' 'subversion')
