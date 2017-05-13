@@ -1,6 +1,6 @@
 pkgbase = ratbagd-git
 	pkgdesc = ratbagd is a system daemon to introspect and modify configurable mice
-	pkgver = r69.d6116e0
+	pkgver = r130.178b08c
 	pkgrel = 1
 	url = https://github.com/libratbag/ratbagd
 	arch = i686
@@ -8,6 +8,8 @@ pkgbase = ratbagd-git
 	license = MIT
 	makedepends = git
 	makedepends = systemd>=227
+	makedepends = meson
+	makedepends = check
 	depends = glibc
 	depends = libevdev
 	depends = libudev.so
