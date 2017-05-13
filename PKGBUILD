@@ -7,14 +7,14 @@
 
 pkgname=lib32-qt4
 pkgver=4.8.7
-pkgrel=12
+pkgrel=13
 pkgdesc='A cross-platform application and UI framework (32-bit)'
 arch=('x86_64')
 url='http://www.qt.io'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 depends=("${pkgname#lib32-}" 'lib32-alsa-lib' 'lib32-dbus' 'lib32-fontconfig' 'lib32-glib2'
          'lib32-libgl' 'lib32-libmng' 'lib32-libpng' 'lib32-libsm' 'lib32-libtiff'
-         'lib32-libxi' 'lib32-libxrandr' 'lib32-libxv' 'lib32-openssl-1.0' 'lib32-sqlite')
+         'lib32-libxi' 'lib32-libxrandr' 'lib32-libxv' 'lib32-openssl' 'lib32-sqlite')
 makedepends=('cups' 'gcc-multilib'  'lib32-gtk2' 'lib32-libcups' 'lib32-libxfixes' 'lib32-mesa')
 optdepends=('lib32-libxcursor: Xcursor support'
             'lib32-libxfixes: Xfixes support'
@@ -35,7 +35,8 @@ source=("http://download.qt.io/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar
         'l-qclipboard_delay.patch'
         'qt4-gcc6.patch'
         'qt4-glibc-2.25.patch'
-        'qt4-icu59.patch')
+        'qt4-icu59.patch'
+        'qt4-openssl-1.1.patch')
 sha512sums=('f9f81a2e7205e1fd05c8d923dc73244f29aa33f951fa6b7c5c8193449328b37084796b9b71ad0c317e4e6fd00017c10ea5d67b1b2032551cde00548522218125'
             '4a8f828c79bde81ab1e39c9eaba4ef553582d85b62d6d182dda02820c4c8e046de6a25cc77d228955ed37fbc5b55f697a0a464af0bb3e171849851639e9ef4ee'
             'b4eced1fe34f09baa987be59fd21a02f4209551f491ae113c9d1cc3c44b00494a909808e22db306bcae0ee4c4f996097ce2c23994b2ac067cf9f599da5a5fc71'
@@ -47,7 +48,8 @@ sha512sums=('f9f81a2e7205e1fd05c8d923dc73244f29aa33f951fa6b7c5c8193449328b370847
             '0215f81fd0ed3483d1f79f46a53d9378f7462901410f4bc3f235325974c155454b0e75cba5222180e5ca62099cba7b80419b5fab86380ac6d951b9ae12714444'
             'efe8e1842882b784a14ba137bc6a8a579d5133e579f98c61674f5d3d9b79ff8e895775a79fcf757f7726377cd221396a678d181fa069416b0760a5241d39845a'
             'a19e76d64bbbf148b088e3531135dc3ababd63ea8e71147dcf7d2966802abb2d83b839766882040e5c9efdea2e364d48bc38aa712dd35b850383c7747ffa9745'
-            '483b382da8ad57f9792df1ad0c85948992d8293819c2774a381544235d9b6a7498b12beb3f9d7d06c4a814f8ded514973453314d71381368148d2fcbbf854e65')
+            '483b382da8ad57f9792df1ad0c85948992d8293819c2774a381544235d9b6a7498b12beb3f9d7d06c4a814f8ded514973453314d71381368148d2fcbbf854e65'
+            'ce9bb1c9657660e7b6181271f4264d3f6e22788f13113dd6f97b73c7172d7dcea1d7daf5fe13d147643e89d50aaca23da70657ec217d616144aa79045524db5c')
 
 prepare() {
   cd ${_pkgfqn}
@@ -99,6 +101,9 @@ prepare() {
 
   # Fix build with ICU 59 (pld-linux)
   patch -p1 -i "$srcdir"/qt4-icu59.patch
+
+  # Fix build with OpenSSL 1.1 (Debian + OpenMandriva)
+  patch -p1 -i "$srcdir"/qt4-openssl-1.1.patch
 }
 
 build() {
@@ -107,11 +112,9 @@ build() {
   export CXXFLAGS+=" -std=gnu++98" # Fix build with GCC 6
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 #  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
-  export OPENSSL_LIBS='-L/usr/lib32/openssl-1.0 -lssl -lcrypto'
-  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
 
   cd ${_pkgfqn}
-  ./configure -confirm-license -opensource \
+  ./configure -confirm-license -opensource -platform linux-g++-32\
     -prefix /usr \
     -bindir /usr/lib/qt4/bin \
     -headerdir /usr/include/qt4 \
