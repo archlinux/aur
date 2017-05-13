@@ -1,17 +1,17 @@
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
+# Maintainer: Jeanbon 
 # Contributor: tritonas00 <tritonas00@gmail.com>
 
 _pkgname=rigsofrods
 _gitname=rigs-of-rods
 
 pkgname=$_pkgname-git
-pkgver=0.4.5.1.r1447.g53e43cb
+pkgver=0.4.7.0.r95.g5cf716d5
 pkgrel=1
 pkgdesc="An open source vehicle simulator based on soft-body physics"
 arch=('i686' 'x86_64')
 url="http://rigsofrods.org"
 license=('GPL')
-depends=('openal' 'wxgtk' 'ogre>=1.8.0' 'ogre<2.0.0' 'caelum-git' 'mygui' 'ogre-pagedgeometry-git' 'socketw' 'angelscript-2.22.1' 'jsoncpp')
+depends=('openal' 'wxgtk' 'ogre-1.8' 'caelum-ogre1.8' 'mygui-ogre1.8' 'ogre-1.8-pagedgeometry' 'socketw' 'angelscript-2.22.1' 'jsoncpp')
 optdepends=('sh: for being able to run the commands rigsofrods and rigsofrods-config instead of /opt/rigsofrods/RoR and /opt/rigsofrods/RoRConfig')
 makedepends=('cmake' 'git')
 conflicts=('rigsofrods' 'rigsofrods-hg' 'rigsofrods-noangelscript-git')
@@ -39,8 +39,8 @@ pkgver() {
 build() {
     cd "$srcdir/$_gitname"
 
-    # export PKG_CONFIG_PATH="/opt/OGRE-1.8/lib/pkgconfig:/opt/MyGUI-OGRE1.8/lib/pkgconfig:/opt/Caelum-OGRE1.8/lib/pkgconfig:/opt/PagedGeometry-OGRE1.8/lib/pkgconfig:$PKG_CONFIG_PATH"
-    # export LD_LIBRARY_PATH="/opt/OGRE-1.8/lib:/opt/MyGUI-OGRE1.8/lib:/opt/Caelum-OGRE1.8/lib:/opt/PagedGeometry-OGRE1.8/lib:$LD_LIBRARY_PATH"
+    export PKG_CONFIG_PATH="/opt/OGRE-1.8/lib/pkgconfig:/opt/MyGUI-OGRE1.8/lib/pkgconfig:/opt/Caelum-OGRE1.8/lib/pkgconfig:/opt/PagedGeometry-OGRE1.8/lib/pkgconfig:$PKG_CONFIG_PATH"
+    export LD_LIBRARY_PATH="/opt/OGRE-1.8/lib:/opt/MyGUI-OGRE1.8/lib:/opt/Caelum-OGRE1.8/lib:/opt/PagedGeometry-OGRE1.8/lib:$LD_LIBRARY_PATH"
 
     # get a clean build dir
     [[ -d build ]] && rm -rf build && find ./bin -type f -maxdepth 1 ! -name resources -delete
@@ -53,8 +53,9 @@ build() {
     -DROR_USE_PAGED="TRUE" \
     -DROR_USE_CAELUM="TRUE" \
     -DROR_USE_ANGELSCRIPT="TRUE" \
-    -DCMAKE_BUILD_TYPE=RELEASE
-
+    -DCMAKE_BUILD_TYPE=RELEASE \
+    -DMYGUI_OGRE_PLATFORM="/opt/MyGUI-OGRE1.8/lib/"
+    
     make
 }
 
