@@ -14,7 +14,6 @@ md5sums=(
   "4429b9d5c8e10eaeb1f7784047f36502"
   "0ce12491a9910a9c889356b04922f0f9"
 )
-depends=()
 
 package() {
   cd "${srcdir}"
