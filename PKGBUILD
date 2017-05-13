@@ -16,8 +16,8 @@ depends=('mpg123' 'glew' 'glfw' 'curl')
 makedepends=('cmake' 'ninja' 'vim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sasq64/$pkgname/archive/v$pkgver.tar.gz"
         "apone.tar.gz::https://github.com/sasq64/apone/archive/$_aponecommit.tar.gz"
-        "two-missing-std-specifiers.patch::https://github.com/sasq64/$pkgname/commit/$_patchcommit1.patch"
-        "fixed-against-latest-apone.patch::https://github.com/sasq64/$pkgname/commit/$_patchcommit2.patch")
+        "$pkgname-two-missing-std-specifiers.patch::https://github.com/sasq64/$pkgname/commit/$_patchcommit1.patch"
+        "$pkgname-fixed-against-latest-apone.patch::https://github.com/sasq64/$pkgname/commit/$_patchcommit2.patch")
 sha256sums=('fe83080035a6ba23917a79b9133e29b2b934e7711fb21e8039eff3a9411fd354'
             'fc9e60c3b57065ec0b65dff649aa4bd4212e3ec8c496326be63d9cf5fe427499'
             '7dc76d37e016a5109efb471b30b3c46246ea231ad3cd6e45bd8a6a438cccfd44'
@@ -27,10 +27,10 @@ prepare() {
   cd $pkgname-$pkgver
 
   # https://github.com/sasq64/chipmachine/commit/3118146
-  patch -p1 -i ../two-missing-std-specifiers.patch
+  patch -p1 -i ../chipmachine-two-missing-std-specifiers.patch
 
   # https://github.com/sasq64/chipmachine/commit/44ed091
-  patch -p1 -i ../fixed-against-latest-apone.patch
+  patch -p1 -i ../chipmachine-fixed-against-latest-apone.patch
 
   ln -s "$srcdir"/apone-$_aponecommit ../apone
   mkdir ../build
