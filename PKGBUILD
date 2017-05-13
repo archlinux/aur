@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libtorrent-rasterbar-git
-pkgver=1.1.2.r975.g09274842f
+pkgver=1.1.3.r1021.ge870852c6
 pkgrel=1
 pkgdesc="A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)"
 url="http://www.rasterbar.com/products/libtorrent/"
@@ -14,8 +14,6 @@ optdepends=('python2: for python2 bindings'
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
 source=("$pkgname"::"git+https://github.com/arvidn/libtorrent.git")
-# use this source line to build deluge-git AUR package:
-# source=("$pkgname"::"git+https://github.com/arvidn/libtorrent.git#commit=a42d4390c")
 sha256sums=('SKIP')
 
 pkgver() {
