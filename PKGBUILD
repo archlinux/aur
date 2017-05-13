@@ -4,7 +4,7 @@
 _pkgname=tuple
 pkgname=ruby-$_pkgname
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Tuple serialization functions.'
 arch=(i686 x86_64)
 url="http://github.com/topac/$_pkgname"
@@ -12,14 +12,14 @@ license=(MIT)
 depends=(ruby)
 options=(!emptydirs)
 source=("$_pkgname"::"git+https://github.com/topac/$_pkgname.git"
-        ruby-2.3.x.patch)
+        ruby-2.x.patch)
 md5sums=('SKIP'
-         '02ccd33d02bedc16612ef5be9aec4c44')
+         '136ab235fc7b6513b86f48a35953dcab')
 
 prepare() {
     cd "$_pkgname"
 
-    patch -p1 -i ../ruby-2.3.x.patch
+    patch -p1 -i ../ruby-2.x.patch
 }
 
 build () {

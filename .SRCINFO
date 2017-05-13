@@ -1,7 +1,7 @@
 pkgbase = ruby-tuple
 	pkgdesc = Tuple serialization functions.
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/topac/tuple
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ruby-tuple
 	depends = ruby
 	options = !emptydirs
 	source = tuple::git+https://github.com/topac/tuple.git
-	source = ruby-2.3.x.patch
+	source = ruby-2.x.patch
 	md5sums = SKIP
-	md5sums = 02ccd33d02bedc16612ef5be9aec4c44
+	md5sums = 136ab235fc7b6513b86f48a35953dcab
 
 pkgname = ruby-tuple
 

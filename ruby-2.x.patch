@@ -1,4 +1,4 @@
-diff --git a/ext/tuple/extconf.rb b/ext/tuple/extconf.rb
+ diff --git a/ext/tuple/extconf.rb b/ext/tuple/extconf.rb
 index ce4e688..3b2b1ac 100644
 --- a/ext/tuple/extconf.rb
 +++ b/ext/tuple/extconf.rb
@@ -7,7 +7,7 @@ index ce4e688..3b2b1ac 100644
    $CFLAGS += ' -DRUBY_2_x_x'
    $CFLAGS += ' -DRUBY_2_1_x'
 -when /\A2\.2/
-+when /\A2\.2/, /\A2\.3/
++when /\A2\.(2|3|4)/
    $CFLAGS += ' -DRUBY_2_x_x'
    $CFLAGS += ' -DRUBY_2_2_x'
  else
