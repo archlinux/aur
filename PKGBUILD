@@ -1,8 +1,8 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=nylas-mail-git
 _pkgname=nylas-mail
-pkgver=1.0.26.49.g52452d6d
-pkgrel=2
+pkgver=1.0.26.1389.g6d2c2b2af
+pkgrel=1
 epoch=1 # Versions numbers went from 2.x to 1.x during the N1 -> Mail switch, so this is necessary
 pkgdesc="Nylas Mail: A new mail client for Linux, Mac and Windows, built on the modern web and designed to be extended. (formerly N1, git version)"
 arch=('x86_64')
@@ -31,9 +31,10 @@ build() {
     nvm use --delete-prefix v6.9.1
 
     cd "${srcdir}/${_pkgname}"
-    ./script/bootstrap
-    npm install grunt
-    ./script/grunt build
+    INSTALL_TARGET=client npm install
+    sed -i '/create-deb-installer/d' packages/client-app/build/Gruntfile.js
+    sed -i '/create-rpm-installer/d' packages/client-app/build/Gruntfile.js
+    npm run build-client
 }
 package() {
     mkdir -p "${pkgdir}"/usr/share/${_pkgname}
@@ -44,7 +45,7 @@ package() {
 
     cp "${srcdir}"/${_pkgname}.png "${pkgdir}"/usr/share/pixmaps
     cp "${srcdir}"/${_pkgname}.desktop "${pkgdir}"/usr/share/applications
-    cp "${srcdir}"/${_pkgname}/dist/nylas-linux-x64/* "${pkgdir}"/usr/share/${_pkgname} -R
+    cp "${srcdir}"/${_pkgname}/packages/client-app/dist/nylas-linux-x64/* "${pkgdir}"/usr/share/${_pkgname} -R
 
     # Remove references to $srcdir from generated package.json files
     # This doesn't remove all references, but still better than nothing.
