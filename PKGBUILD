@@ -7,7 +7,7 @@
 
 pkgname=murmur-snapshot-ice
 pkgver=1.3.0_2380_g97c34f4
-pkgrel=2
+pkgrel=3
 pkgdesc="The voice chat application server for Mumble (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.mumble.info/wiki/"
@@ -45,6 +45,7 @@ package() {
 
     sed -e "s|<policy user=\"mumble-server\">|<policy user=\"murmur\">|" -i scripts/murmur.conf
 
+    install -dm755 ${pkgdir}/var/lib/murmur
     install -Dm755 release/murmurd ${pkgdir}/usr/bin/murmurd
     install -Dm644 scripts/murmur.ini ${pkgdir}/etc/murmur.ini
     install -Dm644 scripts/murmur.conf ${pkgdir}/etc/dbus-1/system.d/murmur.conf
