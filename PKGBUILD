@@ -3,10 +3,10 @@
 pkgname=lastpass
 pkgver=4.1.44
 _universal=$pkgver    # Version of the universal installer: https://lastpass.com/misc_download2.php
-_chromver=4.1.51      # The actual extensions' versions
+_chromver=4.1.52      # The actual extensions' versions
 _chromver_lib=4.1.23
 _ffver=4.1.49a
-pkgrel=7
+pkgrel=8
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
@@ -39,7 +39,7 @@ source=(# Universal
 noextract=("lpchrome_$_chromver.crx"
            "lpfirefox_$_ffver.xpi")
 md5sums=('5a9bb6e274c8d5102400fa03a3cab776'  # Universal
-         'd27b4ecc6eae673b2b747267570250b3'  # Chrome
+         '2f1632b33cae35a4dfa8099851f243de'  # Chrome
          'bd7678de722909acd89ba768edf0d5d5'  # Chrome with Lib
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
