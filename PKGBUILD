@@ -1,5 +1,5 @@
 # Based on original katawa-shoujo PKGBUILD (but use native renpy instead of bundled one) written by Anton Larionov <diffident dot cat at gmail dot com>
-# Maintainer: Cravix < dr dot neemous at gmail dot com >
+# Maintainer: emersion < contact at emersion dot fr >
 
 pkgname=ks-summersclover
 pkgver=1.2
