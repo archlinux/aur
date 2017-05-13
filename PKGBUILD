@@ -6,7 +6,7 @@
 
 pkgname=deluge-git
 pkgver=2.0.0.dev979.ga727ee67b
-pkgrel=1
+pkgrel=2
 pkgdesc="A bittorrent client written with python and pygtk (git version, 'develop' branch)"
 arch=('any')
 url="http://deluge-torrent.org/"
@@ -14,28 +14,20 @@ license=('GPL3')
 provides=('deluge')
 conflicts=('deluge' 'deluge-stable-git')
 install='deluge.install'
-depends=( # binary repositories:
-          'desktop-file-utils'
-          'hicolor-icon-theme'
-          #'libtorrent-rasterbar=1.1.2'
-          'python2-service-identity'
-          'python2-chardet'
-          'python2-pyopenssl'
-          'python2-xdg'
-          'python2-twisted'
-          'xdg-utils'
-          # AUR:
-          'libtorrent-rasterbar-git=1.1.2.r0.ga42d4390c')
-makedepends=( # binary repositories:
-              'intltool'
-              'librsvg'
-              'pygtk'
-              'python2-mako'
-              'python2-setuptools'
-              'git'
-              # AUR:
-              'python2-jsmin'
-              'slimit2')
+depends=(
+    # binary repositories:
+        'desktop-file-utils' 'hicolor-icon-theme' #'libtorrent-rasterbar=1.1.2'
+        'python2-service-identity' 'python2-chardet' 'python2-pyopenssl'
+        'python2-xdg' 'python2-twisted' 'xdg-utils'
+    # AUR:
+        'libtorrent-rasterbar-git=1.1.2.r0.ga42d4390c'
+)
+makedepends=(
+    # binary repositories:
+        'git' 'intltool' 'librsvg' 'pygtk' 'python2-mako' 'python2-setuptools'
+    # AUR:
+        'python2-jsmin' 'slimit2'
+)
 optdepends=('python2-pillow'
             'librsvg: needed for gtk ui'
             'pygtk: needed for gtk ui'
@@ -51,7 +43,7 @@ sha256sums=('SKIP'
             'c3f2d6ad5bc9de5ffd9973d92badbe04a9ecf12c0c575e13d505a96add03275a')
 
 prepare() {
-    cd "$pkgname/deluge/ui/data/icons"
+    cd "${pkgname}/deluge/ui/data/icons"
     ln -sf hicolor/scalable scalable
 }
 
@@ -76,9 +68,9 @@ package() {
     cd "$pkgname"
     python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-    install -d     "$pkgdir/srv"
-    install -dm664 "$pkgdir/srv/deluge"
-    install -Dm644 "deluge/ui/data/pixmaps/deluge.svg" "$pkgdir/usr/share/pixmaps/deluge.svg"
-    install -Dm644 "$srcdir/deluged.service"           "$pkgdir/usr/lib/systemd/system/deluged.service"
-    install -Dm644 "$srcdir/deluge-web.service"        "$pkgdir/usr/lib/systemd/system/deluge-web.service"
+    install -d     "${pkgdir}/srv"
+    install -dm664 "${pkgdir}/srv/deluge"
+    install -Dm644 "deluge/ui/data/pixmaps/deluge.svg" "${pkgdir}/usr/share/pixmaps/deluge.svg"
+    install -Dm644 "${srcdir}/deluged.service"         "${pkgdir}/usr/lib/systemd/system/deluged.service"
+    install -Dm644 "${srcdir}/deluge-web.service"      "${pkgdir}/usr/lib/systemd/system/deluge-web.service"
 }
