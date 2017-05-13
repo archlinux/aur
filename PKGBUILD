@@ -3,12 +3,12 @@
 
 pkgname=freetype2-git
 epoch=1
-pkgver=2.7+p0+gd2d5968
+pkgver=2.7.1+p206+g538d571a
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
 license=('GPL')
-url="http://www.freetype.org/"
+url="https://www.freetype.org/"
 # adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz')
