@@ -7,15 +7,15 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  [ffmpeg]=ffmpeg
+  #[ffmpeg]=ffmpeg
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
-  [icu]=icu
+  #[icu]=icu
   [libjpeg]=libjpeg
   [libpng]=libpng
-  [libvpx]=libvpx
+  #[libvpx]=libvpx
   [libwebp]=libwebp
-  #[libxml]=libxml2    # https://bugs.archlinux.org/task/29939
+  [libxml]=libxml2
   [libxslt]=libxslt
   [re2]=re2
   [snappy]=snappy
@@ -24,20 +24,18 @@ declare -rgA _system_libs=(
 )
 
 pkgname=inox
-pkgver=57.0.2987.133
+pkgver=58.0.3029.110
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/Home"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'ffmpeg' 'icu' 'libevent'
-         'libxss' 'libexif' 'libjpeg' 'libpng' 'libgcrypt' 'ttf-font' 'systemd'
-         'dbus' 'flac' 'snappy' 'libwebp' 'libxslt' 're2' 'minizip'
-         'pciutils' 'libpulse' 'harfbuzz-icu' 'libsecret' 'libvpx'
-         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('gtk3' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
-makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
+         'pciutils' 'desktop-file-utils' 'hicolor-icon-theme'
+         'flac' 'harfbuzz-icu' 'libjpeg' 'libpng' 'libwebp' 'libxml2' 'libxslt' 'snappy' 'minizip')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
@@ -45,7 +43,7 @@ install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/inox.desktop
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-system-ffmpeg-r4.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-gn-bootstrap-r2.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0019-disable-battery-status-service.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0003-disable-autofill-download-manager.patch
@@ -68,17 +66,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0001-fix-building-without-safebrowsing.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png)
 
-sha256sums=('70011770a7e522c92826a3af48d3fd28a46bf8042897d072d20c748cbf828cf7'
+sha256sums=('f24cef3dd2acf9dd5ccdeeca47fea42d1c1ddff32b7375dc9e0cd35a4e8d78ff'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
-            'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
+            '64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             '9a887b1462b0e1f68af917ade70f6738eafcf385da2925796deda46c59c353e3'
             '335ca90982a9b718e6ab778d65f15c0cc69bb590b022af3e1bdedc77bc35f2d1'
             '8737bbdc2e58c6b0c95bdb2600883986ea01738a0b0e1d26f17f8028f01b48a7'
             'be5e4bd2ae2d6dcb1311fa153a479639966951197f4004bbbdf7d1b7f8ef760b'
-            'ce83ba869d5c94c12f9913f8202094d7309c0be6e308fdd26c4029c2f0c7fd22'
-            '48bbfc19d013e852a6e3bdbb5396104d96c9c37488f8979fe45344c23da1a862'
+            '7c77916fddbe40a3eaf41b64958d35be90cd27c662f7253ceba1d0baa382e511'
+            'd75399b800d0e94c507412a4e7819fa81e1171f6a9dc4ad2928e3ae3571f378e'
             '2a6e7853e40c0d71d38aea7b70032e538569e576de7896d722048c4ef5a758b2'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'f294fb136ab128d8b5dc866a858d061ff2a1aea593c4081ed7a5fdb0e85553bc'
@@ -87,11 +85,11 @@ sha256sums=('70011770a7e522c92826a3af48d3fd28a46bf8042897d072d20c748cbf828cf7'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
             'f33a013ad9101e0b79fb4002cef0210699957e6bd7a023615f96f42aee441c9f'
-            'd67b64de6a7234c5fa0866ce9849a1b37bacd6b70c31cc8dd7e3ca4ecf3b570d'
+            'd47347bcaeeb59e336fcaf4f2fd3a7c6950c01958cce29e969721069aa5276ad'
             '6d1d6d801cf80c1df2b4ce5f0d6a25190f4117d581ef7ba0e25a99ec765ecdd7'
             '888902c17b7de23eb6c979af2a262f7552c197fd96feb0e7e23e9160fc877741'
-            '6b583891134ca3dacf0d158c9441fa8bb90d518c5804f743a6e6f6cbad6da107'
-            'cfe73e714e7189dee2858f37b27fbfcbbd835cd88aa03b25a5dd102e8aa1265d'
+            '0741daedb1e999990414c83450d7e2e9c3e4abea250c648215b262cfaf2a71c2'
+            '857baa11f128275d66fca9aaeca55eb9fa310be94f8e57da6bd95bcdbcecbed3'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
             '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
             '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
@@ -104,9 +102,6 @@ sha256sums=('70011770a7e522c92826a3af48d3fd28a46bf8042897d072d20c748cbf828cf7'
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
-  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
-  touch chrome/test/data/webui/i18n_process_css_test.html
-
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
@@ -117,7 +112,7 @@ prepare() {
   echo > "flapper_version.h"
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
+  patch -Np1 -i ../chromium-gn-bootstrap-r2.patch
 
   # Apply patches to fix building
   patch -Np1 -i ../0001-fix-building-without-safebrowsing.patch
@@ -141,17 +136,14 @@ prepare() {
   patch -Np1 -i ../0018-disable-first-run-behaviour.patch
   patch -Np1 -i ../0019-disable-battery-status-service.patch
 
-  # Work around bug in blink in which GCC 6 optimizes away null pointer checks
-  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=833524
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68853#c2
-  sed -i '/config("compiler")/ a cflags_cc = [ "-fno-delete-null-pointer-checks" ]' \
-    build/config/linux/BUILD.gn
-
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
   # There are still a lot of relative calls which need a workaround
   mkdir -p "$srcdir/python2-path"
   ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
+
+  mkdir -p third_party/node/linux/node-linux-x64/bin
+  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -241,10 +233,11 @@ package() {
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/$pkgname/inoxdriver"
 
-  cp -a out/Release/{*.pak,*.bin,libwidevinecdmadapter.so} \
-    "$pkgdir/usr/lib/$pkgname/"
-
-  cp -a out/Release/locales "$pkgdir/usr/lib/$pkgname/"
+  cp -a \
+    out/Release/{chrome_{100,200}_percent,resources}.pak \
+    out/Release/{*.bin,libwidevinecdmadapter.so} \
+    out/Release/icudtl.dat \
+    out/Release/locales "$pkgdir/usr/lib/$pkgname/"
 
   install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 
