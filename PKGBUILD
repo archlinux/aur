@@ -1,7 +1,7 @@
 # Maintainer: Reihar <reihar@necronomicon.fr>
 pkgname=python-gol
-pkgver=0.78.r0.g8ad3a64
-pkgrel=3
+pkgver=1.0.2.r3.g288bc87
+pkgrel=1
 pkgdesc="A python implementation of Conway's Game of Life using the curses module with a small evolutionary twist."
 arch=('i686' 'x86_64')
 url="https://github.com/iiSeymour/game-of-life"
