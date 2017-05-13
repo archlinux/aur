@@ -2,7 +2,7 @@
 # Contributor: Xianwen Chen <xianwen.chen@gmail.com>
 
 pkgname=biogeme
-pkgver=2.5
+pkgver="2.6a"
 pkgrel=1
 pkgdesc="an open source freeware designed for the estimation of discrete choice models"
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,7 +17,7 @@ makedepends=()
 source=(
     "http://biogeme.epfl.ch/distrib/biogeme-${pkgver}.tar.gz"
 )
-sha256sums=('88548e99f4f83c24bf7ddb8e0de07588adc2bec515569c56e816ed5b20a624b3')
+sha256sums=('f6de0ea12f83ed183f31a41b9a56d1ec7226d2305549fb89ea7b1de8273ede49')
 
 build() {
   cd biogeme-${pkgver}
