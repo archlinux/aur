@@ -4,17 +4,17 @@
 
 pkgname=geeqie-lirc
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight image browser and viewer with remote support (LIRC)"
 _cpkgname="geeqie-1.3"
 arch=('i686' 'x86_64')
 url="http://www.geeqie.org/"
 license=('GPL2')
-depends=('exiv2' 'gtk2' 'lcms' 'lirc' 'desktop-file-utils')
-makedepends=('intltool' 'doxygen' 'gnome-doc-utils' 'git')
+depends=('exiv2' 'gtk3' 'lcms2' 'lirc')
+makedepends=('intltool' 'doxygen' 'gnome-doc-utils')
 optdepends=('librsvg: SVG rendering'
-	    'fbida: for jpeg rotation'
-	    'exiv2: for tiff and png rotation')
+	'fbida: for jpeg rotation'
+	'exiv2: for tiff and png rotation')
 conflicts=('geeqie' 'geeqie-git')
 provides=('geeqie')
 source=(http://www.geeqie.org/${_cpkgname}.tar.xz)
