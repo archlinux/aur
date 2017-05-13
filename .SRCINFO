@@ -1,0 +1,13 @@
+pkgbase = mojibar
+	pkgdesc = 🍊 Emoji searcher but as a menubar app.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/muan/mojibar
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = mojibar-2.4.0.zip::https://github.com/muan/mojibar/releases/download/2.4.0/mojibar-linux.zip
+	sha512sums = 5ddd29a4fa1226fd86bca3bf4fffdcf2eaa81fd415140ea5fd88bf0b1b78a3484f266f5531984d27e2ffbe8ca4e9568a13b0e261ee93ca3163d542e42d761c11
+
+pkgname = mojibar
+
