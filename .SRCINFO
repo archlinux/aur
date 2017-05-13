@@ -1,22 +1,31 @@
-pkgbase = pfring-kmod-dev-git
-	pkgdesc = High-speed packet processing framework (dev branch)
-	pkgver = v6.4.0.r192.g08749c2
+pkgbase = pf_ring-kernel-git
+	pkgdesc = High-speed packet processing framework (dev branch) - kernel module
+	pkgver = v6.0.3.r1094.g9e72191
 	pkgrel = 1
-	url = http://www.ntop.org
-	arch = x86_64
+	url = https://github.com/ntop/PF_RING
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
 	arch = i686
-	license = GPL
-	makedepends = linux-headers
+	arch = x86_64
+	license = LGPL
+	makedepends = linux-lts-headers
 	makedepends = make
 	makedepends = binutils
 	makedepends = flex
 	makedepends = bison
 	makedepends = git
+	depends = linux-lts
 	depends = numactl
+	optdepends = pf_ring-userland-git: userland tools
+	provides = pfring-kmod-dev-git
+	provides = pfring-kmod-git
 	provides = pfring-kmod
+	conflicts = pfring-kmod-dev-git
+	conflicts = pfring-kmod-git
 	conflicts = pfring-kmod
-	source = git+https://github.com/ntop/PF_RING.git#branch=dev
-	md5sums = SKIP
+	source = git://github.com/ntop/PF_RING#branch=dev
+	sha512sums = SKIP
 
-pkgname = pfring-kmod-dev-git
+pkgname = pf_ring-kernel-git
 
