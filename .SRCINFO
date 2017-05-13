@@ -1,0 +1,18 @@
+pkgbase = ks-summersclover
+	pkgdesc = Katawa Shoujo: Summer's Clover
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/stanriders/ks-summersclover
+	arch = any
+	depends = renpy
+	source = https://github.com/stanriders/ks-summersclover/releases/download/v1.2/ks-summersclover-v12-release.zip
+	source = ks-summersclover
+	source = ks-summersclover.desktop
+	source = ks-summersclover.png
+	md5sums = 204b90bad52a3ab344448ac5c3ad055e
+	md5sums = a290d47ed9403fd0ee10bcc54c590631
+	md5sums = abe7dfe73761d3880b0167c23daa4ac8
+	md5sums = 6d70e339e33d7c13a8ab03a5d3498c4f
+
+pkgname = ks-summersclover
+

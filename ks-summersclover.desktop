@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.2
+Name=Katawa Shoujo: Summer's Clover
+Icon=ks-summersclover.png
+Exec=/usr/bin/ks-summersclover
+Terminal=false
+Categories=Application;Game;
