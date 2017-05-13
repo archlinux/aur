@@ -1,31 +1,34 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
-arch=('any')
+arch=('x86_64')
 license=('GPL')
-source=(http://alpha.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('a08d66a7960093bf62a82a5f7b663f88b67650bd628b34c72967e6f7aa996839')
+source=("$pkgname-$pkgver::git+https://gitlab.com/NalaGinrut/artanis.git#commit=188a7fb10435d2df53cd2253f5b4c34ec1f74f2c")
+md5sums=('SKIP')
+options=('!strip')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  ./autogen.sh
+  cd $pkgname-$pkgver 
   GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
   make
   make docs
 }
 
 check() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   export GUILE_LOAD_PATH=$GUILE_LOAD_PATH:.
   guile -c '(display (@ (artanis artanis) artanis-version))'
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR=$pkgdir install
+  # repair
+  cp -r $pkgdir/{share,bin} $pkgdir/usr
+  rm -r $pkgdir/{share,bin}
 }
