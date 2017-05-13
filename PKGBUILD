@@ -2,14 +2,14 @@
 
 _pkgname=diodon
 pkgname=$_pkgname-bzr
-pkgver=r520
+pkgver=r534
 pkgrel=1
 pkgdesc="GTK+ clipboard manager"
 arch=('any')
 url="https://launchpad.net/diodon"
 license=('GPL2')
-depends=('dconf' 'desktop-file-utils' 'gconf' 'libappindicator3' 'libgee' 'libpeas' 'libunique3' 'libxtst' 'xorg-server-xvfb' 'zeitgeist')
-makedepends=('bzr' 'intltool' 'vala')
+depends=('dconf' 'desktop-file-utils' 'gconf' 'libappindicator3' 'libgee' 'libpeas' 'libunique' 'libxtst' 'xorg-server-xvfb' 'zeitgeist')
+makedepends=('bzr' 'gobject-introspection' 'intltool' 'libpeas' 'vala')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$pkgname.install
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  # Comment the following to enable the tests
+  # Comment out the following lines to enable the build tests
   rm -rf tests/*
   touch tests/wscript_build
 }
