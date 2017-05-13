@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=linadblock-git
-pkgver=0.1.r0.g513c496
+pkgver=0.2.r0.ge113c07
 pkgrel=1
 pkgdesc="linadblock ad blocker uses hosts"
 arch=('any')
