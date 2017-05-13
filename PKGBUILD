@@ -2,7 +2,7 @@
 
 pkgname=flif-git
 _pkgname=FLIF
-pkgver=r777.770442c
+pkgver=r792.98e68a8
 pkgrel=1
 pkgdesc="Free Lossless Image Format"
 arch=("i686" "x86_64")
@@ -26,6 +26,7 @@ build() {
   make all
   make decoder
   make viewflif
+  make pixbufloader
 }
 
 package() {
@@ -34,11 +35,13 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/"
   install -dm755 "${pkgdir}/usr/share/man/man1/"
   install -dm755 "${pkgdir}/usr/include/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
   install -m755 flif viewflif dflif "${pkgdir}/usr/bin"
   install -m755 libflif_dec.so "${pkgdir}/usr/lib/"
   install -m755 libflif_dec.so.0 "${pkgdir}/usr/lib/"
   install -m755 libflif.so "${pkgdir}/usr/lib/"
   install -m755 libflif.so.0 "${pkgdir}/usr/lib/"
+  install -m755 libpixbufloader-flif.so "${pkgdir}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/"
   install -m 644 library/*.h "${pkgdir}/usr/include/${_pkgname}"
   install -m 644 ../doc/flif.1 "${pkgdir}/usr/share/man/man1"
   install -m 755 ../tools/gif2flif "${pkgdir}/usr/bin"
