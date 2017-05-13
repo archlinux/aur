@@ -1,4 +1,14 @@
+#!/bin/sh
+
 post_install() {
 	echo " > For instructions visit: https://github.com/eworm-de/pacredir#usage"
 }
 
+post_upgrade() {
+	# return if old package version greater 0.2.3...
+	(( $(vercmp $2 '0.2.3') > 0 )) && return
+
+	# upgrade from pre-0.2.3 version, avahi service names changed
+	echo " > This upgrade from pacredir $2 to pacredir $1 changes avahi service"
+	echo " > names. Make sure to update all your installations for compatibility."
+}
