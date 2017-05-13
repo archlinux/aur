@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.1.rc2
+pkgver=0.7.1.rc3
 pkgrel=1
 pkgdesc='Screenwriting software, which developed in Russia.'
 url='https://kitscenarist.ru'
@@ -22,8 +22,12 @@ md5sums=(
 )
 
 prepare() {
+  cd "${pkgname}"
+
+  git submodule update --init
+
   # [GCC] error: ‘isnan’ was not declared in this scope
-  sed -i 's/isnan(/std::isnan(/' "${pkgname}/src/bin/scenarist-desktop/UserInterfaceLayer/Statistics/StatisticsView.cpp"
+  sed -i 's/isnan(/std::isnan(/' 'src/bin/scenarist-desktop/UserInterfaceLayer/Statistics/StatisticsView.cpp'
 }
 
 build() {
