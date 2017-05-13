@@ -2,7 +2,7 @@
 
 _pkgname=fuzzywuzzy
 pkgname=python-${_pkgname}
-pkgver=0.12.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Fuzzy string matching like a boss"
 arch=("any")
@@ -13,9 +13,9 @@ optdepends=('python-levenshtein: provides a 4-10x speedup in string matching')
 makedepends=("python-setuptools")  
 conflicts=("${pkgname}" "${pkgname}-git")
 # install=$pkgname.install
-source=("https://pypi.python.org/packages/96/37/4455ea41f1faf01ab39cdf0b2052bc222b627336be64349b2ef043bae57d/fuzzywuzzy-0.12.0.tar.gz"
+source=("https://pypi.python.org/packages/fc/03/052c31efd8016e58f498fb05ea3717a120108a379548dabe18a3890d48b0/fuzzywuzzy-0.15.0.tar.gz"
         "LICENSE")
-md5sums=('e8f9d9d8b09ce68f7c0bac5857bcb76f'
+md5sums=('97cbc62d3c4c220b7c566a0e72ef651e'
          'afa01d831fdc3c0b681836e711f60f88')
 
 build() {
