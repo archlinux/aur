@@ -8,7 +8,7 @@
 
 pkgname=lxc-selinux
 epoch=1
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Linux Containers"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ source=("https://linuxcontainers.org/downloads/lxc/${pkgname/-selinux}-${pkgver}
 	"lxc.tmpfiles.d"
 	"lxc.service"
 	"lxc-auto.service")
-sha256sums=('1c09c075f06ec029f86fa6370c7d379494ff4c66a129eda17af7b7b41e055f5d'
+sha256sums=('0d8e34b302cfe4c40c6c9ae5097096aa5cc2c1dfceea3f0f22e3e16c4a4e8494'
             'SKIP'
             '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
             '711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88'
