@@ -1,19 +1,19 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=r862.c616685
+pkgver=r1124.c61f4e1
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
-arch=('any')
+arch=('x86_64')
 url="http://web-artanis.com/"
 license=('GPL')
 depends=('guile')
 makedepends=('git')
 provides=('artanis')
 conflicts=('artanis')
-source=("git+https://gitlab.com/NalaGinrut/artanis.git#commit=c616685a8df3c9dad32289aea14ad78c3f788de7")
+source=("git+https://gitlab.com/NalaGinrut/artanis.git")
 md5sums=('SKIP')
-options=('!makeflags')
+options=('!strip')
 _gitname="artanis"
 
 pkgver() {
@@ -22,9 +22,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
-  ./autogen.sh
-  ./configure --prefix=/usr
+  cd "$_gitname"
+  ./autogen.sh 
+  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr \
+			 --bindir=/usr/bin \
+			 --datarootdir=/usr/share \
+			 --infodir=/usr/share/info 
   make
   make docs
 }
@@ -38,4 +41,7 @@ check() {
 package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir/" install
+  # repair
+  cp -r $pkgdir/{share,bin} $pkgdir/usr
+  rm -r $pkgdir/{share,bin}
 }
