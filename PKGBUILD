@@ -18,7 +18,7 @@ makedepends=()
 backup=()
 install=''
 source=(
-    "https://release.gitkraken.com/linux/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://release.gitkraken.com/linux/v${pkgver}.tar.gz"
     "GitKraken.desktop"
     "gitkraken.png"
     "eula.html"
