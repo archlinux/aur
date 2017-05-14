@@ -25,7 +25,7 @@ declare -rgA _system_libs=(
 
 pkgname=inox
 pkgver=58.0.3029.110
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
          'pciutils' 'desktop-file-utils' 'hicolor-icon-theme'
-         'flac' 'harfbuzz-icu' 'libjpeg' 'libpng' 'libwebp' 'libxml2' 'libxslt' 'snappy' 'minizip')
+         'flac' 'harfbuzz-icu' 'libjpeg' 'libpng' 'libwebp' 'libxml2' 'libxslt' 'snappy' 'minizip' 're2')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
