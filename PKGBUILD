@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-wallpapers
 pkgver=1.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Wallpapers for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Wallpapers"
@@ -13,7 +13,8 @@ source=('archlabs-wallpapers::git+https://github.com/ARCHLabs/Archlabs-Wallpaper
 sha256sums=('SKIP')
 package() {
 	mkdir -p "${pkgdir}/usr/share/backgrounds/"
+	mkdir -p "${pkgdir}/usr/share/backgrounds/archlabs"
 	rm -f "${srcdir}/archlabs-wallpapers/"README.md
 	rm -f "${srcdir}/archlabs-wallpapers/"git-v*
-	cp -rf "${srcdir}/archlabs-wallpapers/"*.* "${pkgdir}/usr/share/backgrounds/"
+	cp -rf "${srcdir}/archlabs-wallpapers/"*.* "${pkgdir}/usr/share/backgrounds/archlabs"
 }
