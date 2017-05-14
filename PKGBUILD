@@ -5,21 +5,21 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.11.0
-_pkgver=2
-pkgrel=4
+pkgver=4.11.1
+xanmod=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${_pkgver}.tar.gz
+source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         # standard config files for mkinitcpio ramdisk
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset" "config.x86_64")
-sha256sums=('3f51d030123abc8d98b69d53ccb72c071735d5127d1f747bc076868a12bc279d'
+sha256sums=('501d63b6a65ea76fbe106432dd52b54083a3949945ab0ccb5a699ea0e2d0c752'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '5111ccd0a71b591c2e86fb49607035be1e09cc90c9b6472e31bf43e7dc2c7b7b')
@@ -27,7 +27,7 @@ sha256sums=('3f51d030123abc8d98b69d53ccb72c071735d5127d1f747bc076868a12bc279d'
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
@@ -75,7 +75,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -90,7 +90,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
   KARCH=x86
 
@@ -145,7 +145,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
@@ -272,7 +272,7 @@ _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
   provides=('linux-docs')
 
-  cd "${srcdir}/linux-${pkgver}-xanmod${_pkgver}"
+  cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
