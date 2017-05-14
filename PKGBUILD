@@ -13,18 +13,18 @@ source=('purple-battlenet::hg+https://bitbucket.org/EionRobb/purple-battlenet/')
 md5sums=('SKIP')
 
 pkgver() {
- 	cd $srcdir/$srcname
+ 	cd $srcdir/$_srcname
  	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
  }
 
 build() {
-    cd $srcdir/$srcname
+    cd $srcdir/$_srcname
     make "CFLAGS += -DBATTLENET_PLUGIN_VERSION='\"\$(PLUGIN_VERSION)\"'"
 }
 
 
 package() {
-  cd "${srcdir}/${srcname}"
+  cd "${srcdir}/${_srcname}"
   make DESTDIR="$pkgdir" install
 }
 
