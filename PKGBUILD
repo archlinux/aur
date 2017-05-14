@@ -27,7 +27,7 @@ prepare() {
   patch -p1 < ${srcdir}/minorSOname.patch
   patch -p1 < ${srcdir}/no-nested-deprecated-warnings.patch
 
-  mkdir ${srcdir}/gcc-build
+  mkdir -p ${srcdir}/gcc-build
 }
 
 build() {
