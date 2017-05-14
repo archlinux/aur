@@ -3,7 +3,7 @@
 
 pkgname=python-partd
 _pkgname=partd
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Appendable key-value storage"
 arch=('any')
@@ -13,8 +13,8 @@ depends=('python' 'python-locket' 'python-toolz')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 optdepends=('python-pyzmq' 'python-numpy' 'python-pandas' 'python-blosc')
-source=("https://github.com/dask/partd/archive/$pkgver.tar.gz")
-sha256sums=('6fd2145330a6d35adbb3785628b4247db8cf1acca42b9618a4b0bff46d15c656')
+source=("https://pypi.python.org/packages/e7/0c/b257648852230acf169c60283e59475727b156ee1a0a3a6b5527af745f15/partd-0.3.8.tar.gz")
+sha256sums=('67291f1c4827cde3e0148b3be5d69af64b6d6169feb9ba88f0a6cfe77089400f')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
