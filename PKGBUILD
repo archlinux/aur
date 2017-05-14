@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kolor-manager-git
-pkgver=v1.0.2.30.g7f951b2
+pkgver=1.1.0.21.g246e3f1
 pkgrel=1
 pkgdesc="Oyranos CMS cross desktop settings for the KDE system settings panel. (GIT version)"
 arch=('i686' 'x86_64')
