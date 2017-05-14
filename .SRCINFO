@@ -1,0 +1,15 @@
+pkgbase = sword25
+	pkgdesc = "Broken Sword 2.5: The Return of the Templars" is a graphical point-and-click adventure game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.brokensword25.com/
+	arch = any
+	license = custom
+	depends = scummvm
+	source = http://downloads.sourceforge.net/scummvm/sword25-v1.0.zip
+	source = sword25.sh
+	md5sums = cd1957e836e66279ad4b7ba799f022a9
+	md5sums = a4d9d1d1e11ee27ecf4642685af6447b
+
+pkgname = sword25
+
