@@ -1,5 +1,5 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
-pkgname=archlabs-wallpapers
+pkgname=archlabs-wallpapers-git
 pkgver=1.1
 pkgrel=11
 pkgdesc="Wallpapers for ARCHLabs"
