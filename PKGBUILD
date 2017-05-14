@@ -2,7 +2,7 @@
 _pkgname=pjproject
 pkgname=${_pkgname}-savoirfairelinux
 pkgver=2.5.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Open source SIP stack and media stack, built with patches from SavoirFaire Linux (mostly GnuTLS support)"
 arch=('i686' 'x86_64')
 url="http://www.pjsip.org/"
@@ -14,6 +14,7 @@ source=("http://www.pjsip.org/release/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
         endianness.patch
         gnutls.patch
         notestsapps.patch
+        fix_base64.patch
         ipv6.patch
         ice_config.patch
         multiple_listeners.patch
@@ -25,6 +26,7 @@ sha256sums=('ab39207b761d3485199cd881410afeb2d171dff7c2bf75e8caae91c6dca508f3'
             '294d9fba18a8c903979de2c9b531a3ca32a28f90658bf0613a32ebfa7d5e3a69'
             'b95ff95dc52ebcbd21863991ebe68660ab51a3321d13e075613af14ce6bc265c'
             'f88f3e73d2f62ae60d93e84e08f98da7d5febe93f1f390286cafa106178c4f27'
+            '25c808206aa5028f29f66ea5364b93be94d0d5feac7d97165cd4ba3493aae6ec'
             'fdf64f3260aecbbc5433ae784e12dde462f1a15361f14c5cd0f7be0a3d13f802'
             'b15829c960bf7b58b4b7660e5ce98f59c72b71fce714602bca479b58891621db'
             '7aabc43556456085ca1bb9e17ef11ae5f4701dd392028335a65c06fd2bc1f6f8'
@@ -35,10 +37,10 @@ sha256sums=('ab39207b761d3485199cd881410afeb2d171dff7c2bf75e8caae91c6dca508f3'
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  for patch in endianness.patch gnutls.patch notestsapps.patch ipv6.patch \
-               ice_config.patch multiple_listeners.patch pj_ice_sess.patch \
-               fix_turn_fallback.patch fix_ioqueue_ipv6_sendto.patch \
-               add_dtls_transport.patch
+  for patch in endianness.patch gnutls.patch notestsapps.patch fix_base64.patch \
+               ipv6.patch ice_config.patch multiple_listeners.patch \
+               pj_ice_sess.patch fix_turn_fallback.patch \
+               fix_ioqueue_ipv6_sendto.patch add_dtls_transport.patch
   do
     msg2 "Applying patch $patch"
     patch -p1 < ../"$patch"
