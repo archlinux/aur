@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=argon2
 pkgver=20161029
-pkgrel=1
+pkgrel=2
 pkgdesc="A password-hashing function (reference C implementation)"
 arch=("x86_64" "i686")
 url="https://github.com/P-H-C/phc-winner-argon2"
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd "$srcdir/phc-winner-$pkgname-$pkgver"
-  make
+  make argon2 libs
 }
 
 check() {
