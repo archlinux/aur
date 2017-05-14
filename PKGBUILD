@@ -1,51 +1,58 @@
-# Maintainer: Sergey Khorev <sergey.khorev@gmail.com>
-_hkgname=cabal-install
-pkgname=cabal-install-git
-pkgver=20130901
+pkgname="cabal-install-git"
+pkgver=Cabal.1.20.0.0.release.r3843.g0f41001bd
 pkgrel=1
-pkgdesc="The command-line interface for Cabal and Hackage (a standalone version, not clobbering standard cabal-install)"
-url="http://hackage.haskell.org/package/${_hkgname}"
-license=('custom:BSD3')
-arch=('i686' 'x86_64')
-makedepends=('ghc' 'haskell-cabal' 'haskell-http' 'haskell-array' 'haskell-bytestring' 'haskell-containers' 'haskell-directory' 'haskell-filepath' 'haskell-mtl' 'haskell-network' 'haskell-pretty' 'haskell-process' 'haskell-random' 'haskell-stm' 'haskell-time' 'haskell-unix' 'haskell-zlib' 'haskell-array' 'haskell-deepseq')
-depends=('git' 'gmp')
-options=('strip')
-groups=('devel')
 
-_gitroot=https://github.com/haskell/cabal.git
-_gitname=cabal
+pkgdesc="The command-line interface for Cabal and Hackage."
+arch=('i686' 'x86_64')
+url="https://hackage.haskell.org/package/cabal-install"
+license=('custom:BSD3')
+depends=('gmp' 'zlib' 'libffi')
+makedepends=('ghc' 'git' 'cabal-install')
+provides=('cabal-install')
+conflicts=('cabal-install')
+
+source=('git://github.com/haskell/cabal')
+md5sums=('SKIP')
+
+SANDBOX="--package-db=../.cabal-sandbox/$(uname -m)-linux-$(readlink $(which ghc))-packages.conf.d"
+
+pkgver() {
+	cd "cabal"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+	CONFIGF="${srcdir}/cabal/.cabal/config"
+	SANDCONFIG="--sandbox-config-file=${srcdir}/cabal/cabal.sandbox.config"
+	CCONFIG="--config=${CONFIGF}"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
+	mkdir -p "${srcdir}/cabal/.cabal/"
+	cd "${srcdir}/cabal"
+	cabal "${CCONFIG}" sandbox init
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
+	# We need to update the package list, but do it locally
+	TMP="${srcdir}/cabal/.cabal/package"
+	# So we tell cabal to use a local package cache
+	PPATH=${TMP//\//\\\/}
 
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+	#The sandbox init also creates the default config file for us
+	sed "s/\\/\\/.cabal\\/packages/${PPATH}/" -i "${CONFIGF}"
 
-  cd "$srcdir/$_gitname-build/Cabal"
-  ghc-pkg init ../local-package-db
-  runhaskell Setup configure --package-db=../local-package-db
-  runhaskell Setup build
-  runhaskell Setup register --inplace
+	cd "./Cabal"
+	cabal "${CCONFIG}" "${SANDCONFIG}" install
 
-  cd "$srcdir/$_gitname-build/$_hkgname"
-  runhaskell Setup configure --package-db=../local-package-db
-  runhaskell Setup build
+	cd "../cabal-install"
+	cabal "${CCONFIG}" "${SANDCONFIG}" update
+	cabal "${CCONFIG}" "${SANDCONFIG}" install --dependencies-only
+
+	runhaskell Setup.hs configure -O "${SANDBOX}" --prefix=/usr --docdir="/usr/share/doc/${pkgname}"
+	runhaskell Setup.hs build
 }
 
 package() {
-  cd "$srcdir/$_gitname-build/$_hkgname"
-  install -D dist/build/cabal/cabal  $pkgdir/usr/bin/cabal-git
-  install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	cd "${srcdir}/cabal"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/cabal-install/LICENSE"
+
+	cd "${srcdir}/cabal/cabal-install"
+	runhaskell Setup.hs copy --destdir="${pkgdir}"
 }
-# vim:set ts=2 sw=2 et:
