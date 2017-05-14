@@ -4,7 +4,7 @@
 
 pkgname=wings3d
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='3D modeling program'
 arch=('x86_64' 'i686')
 url='http://www.wings3d.com/'
@@ -28,6 +28,8 @@ prepare() {
   ln -s "$srcdir/${pkgname%3d}-$pkgver" \
     "${pkgname%3d}-$pkgver/plugins_src/import_export/wings"
   ln -s "$srcdir/${pkgname%3d}-$pkgver" "$srcdir/wings"
+
+  sed -i 's/-Werror//' ${pkgname%3d}-$pkgver/{src,e3d,plugins_src/import_export}/Makefile
 }
 
 build() {
