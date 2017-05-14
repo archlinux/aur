@@ -1,13 +1,13 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-browser-git
-pkgver=20161207.1af8536
+pkgver=20170507.c7a9463
 pkgrel=1
 pkgdesc="Liri Browser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
-depends=('fluid-git' 'slime-engine-git')
+depends=('qt5-webengine' 'fluid-git')
 makedepends=('git')
 conflicts=('liri-browser')
 replaces=('liri-browser')
@@ -26,16 +26,17 @@ pkgver() {
 }
 
 prepare() {
-	mkdir -p build
+	cd ${srcdir}/${_gitname}
+	git submodule update --init
 }
 
 build() {
-	cd build
-	PREFIX=/usr qmake CONFIG+=QTWEBENGINE_ENABLED ../${_gitname}
+	cd ${srcdir}/${_gitname}
+	qmake LIRI_INSTALL_PREFIX=/usr CONFIG+=use_qt_paths -r liri-browser.pro
 	make
 }
 
 package() {
-	cd build
+	cd ${srcdir}/${_gitname}
 	make INSTALL_ROOT="${pkgdir}" install
 }
