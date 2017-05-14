@@ -41,8 +41,8 @@ _use_current=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
-pkgver=4.11
-pkgrel=3
+pkgver=4.11.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -54,7 +54,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
-        "https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/4.11-bfq-mq.patch"
+        "https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/4.11-bfq-mq-2.patch"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -67,7 +67,7 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             '0e65eee0893968c94cb6b62ff071bc3877d6c9a85413406526dbcc764811bec5'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            '83ab5e305e09b74fec9ec1de8824726edd1cc1b020e015604c9e7cb1521e723c' 
+            '046330bf8659ef73dd7c425f7a44a8b1dea2394b7eadad65a3b54d6bf25d0b7e'
             'd0fb9f05857124246b613505934da979990f6080631eedec615236d8dad6f06e'
             'c8df5b77b43c426d34fd8a9e690df1632f2f0efbbbedfc8e98337b74c7cc1c40'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
@@ -83,9 +83,9 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -Np1 -i "${srcdir}/patch-${pkgver}"
+  patch -Np1 -i "${srcdir}/patch-${pkgver}"
 
-  patch -Np1 -i "${srcdir}/4.11-bfq-mq.patch"
+  patch -Np1 -i "${srcdir}/4.11-bfq-mq-2.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
