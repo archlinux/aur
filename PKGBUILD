@@ -2,7 +2,7 @@
 
 pkgname=instagram-scraper
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Scrapes and downloads an instagram user's photos and videos"
 arch=('any')
 url=https://github.com/rarcega/instagram-scraper
@@ -15,11 +15,6 @@ sha512sums=('4ec41590421fe4b63e7b8ccf96282ce2a6996abbebf4eced9bad4768114cac016b7
 check() {
   cd $pkgname-$pkgver
   python setup.py test
-}
-
-build() {
-  cd $pkgname-$pkgver
-  python setup.py build
 }
 
 package() {
