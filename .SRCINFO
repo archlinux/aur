@@ -1,0 +1,16 @@
+pkgbase = mcstatus
+	pkgdesc = A Minecraft server status probing library
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/MoeLeak/mcstatus
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = cmake
+	depends = boost
+	depends = clang
+	source = mcstatus::git+https://github.com/MoeLeak/mcstatus.git
+	md5sums = SKIP
+
+pkgname = mcstatus
+
