@@ -8,9 +8,9 @@ post_install() {
 	>> for zsh:
 	source /usr/share/doc/find-the-command/ftc.zsh
 	>> You can also append 'su' option to use su instead of sudo
-	>> for root access or 'noprompt' to disable installation
-	>> prompt at all, e.g.:
-	source /usr/share/doc/find-the-command/ftc.zsh noprompt
+	>> for root access, 'noprompt' to disable installation
+	>> prompt at all, or 'quite' to decrease verbosity, e.g.:
+	source /usr/share/doc/find-the-command/ftc.zsh noprompt quite
 
 	>> It is necessary to create pacman files database, run
 	# pacman -Fy
