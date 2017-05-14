@@ -8,7 +8,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://liri.io"
 license=('GPL3')
 depends=('qt5-tools' 'qt5-gstreamer' 'qt5-quickcontrols2' 'liri-wayland-git' 'glib2' 'dconf'
-         'paper-icon-theme-git' 'liri-wallpapers-git' 'ttf-dejavu' 'ttf-droid' 'noto-fonts')
+         'paper-icon-theme-git' 'liri-platformtheme-git' 'liri-wallpapers-git'
+         'ttf-dejavu' 'ttf-droid' 'ttf-roboto' 'noto-fonts')
 makedepends=('git' 'qbs' 'boost')
 conflicts=('hawaii-workspace-git' 'liri-workspace')
 replaces=('hawaii-workspace-git' 'liri-workspace')
