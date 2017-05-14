@@ -1,19 +1,20 @@
+# Maintainer:  Konstantinos Tampouris <ktamp@chem.uoa.gr>
 # Contributor: FJ <joostef@gmail.com>
 # Contributor: Zaplanincan <zaplanincan@gmail.com>
-# Maintainer: yugrotavele <yugrotavele at archlinux dot us>
+# Contributor: yugrotavele <yugrotavele at archlinux dot us>
 
 pkgname=dosage
 pkgver=2.15
 pkgrel=1
-pkgdesc="A comic downloader and archiver"
-url="http://wummel.github.io/dosage"
-license=("GPL")
+pkgdesc='A comic downloader and archiver.'
 arch=('any')
-depends=('python-requests')
-source=("https://pypi.python.org/packages/source/d/dosage/$pkgname-$pkgver.tar.gz")
-md5sums=('dcc33a7095bd1090421fc73e2ef06cc5')
+url='http://dosage.rocks'
+license=('GPL')
+depends=('python' 'python-requests')
+source=("https://github.com/webcomics/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('fc685c521478a95a9b667e05faa99d10')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/"  --optimize=1
+  cd $srcdir/$pkgname-$pkgver
+  python setup.py install --root=$pkgdir/ --optimize=1
 }
