@@ -2,7 +2,7 @@
 # Contributor: Markus Heuser <markus.heuser@web.de>
 
 pkgname=samtools
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
@@ -57,4 +57,4 @@ package() {
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-md5sums=('8cbd7d2a0ec16d834babcd6c6d85d691')
+md5sums=('60186f7817813baf99abc4b802f61138')
