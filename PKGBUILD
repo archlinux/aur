@@ -2,7 +2,7 @@
 # Contributors: Igor Duarte Cardoso, haagch, Olivier Médoc
 
 pkgname=vmware-patch
-pkgver=12.5.5
+pkgver=12.5.6
 pkgrel=1
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
@@ -12,6 +12,10 @@ depends=('fuse' 'gtkmm' 'linux-headers' 'ncurses5-compat-libs')
 options=('!emptydirs')
 install=$pkgname.install
 source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.service' 'vmware-usbarbitrator.service' 'vmware-workstation.service'
+        # Workstation Pro/Player 12.5.6
+        # Workstation Pro/Player 12.5.5
+        'vmnet-12.5.5-4.11.patch'
+        'vmmon-12.5.5-4.11.patch'
         # Workstation Pro/Player 12.5.2
         'vmmon-12.5.2-4.9.patch'
         'vmnet-12.5.2-4.9.patch'
@@ -66,6 +70,8 @@ md5sums=('1c6481197401d02c6096bcf107861119'
          'c12e765985b324585a548718a6ac9b43'
          'ea3817fb7952932707bfedcf33a70697'
          '56f7f642683e54250372bb57faaf4e95'
+         'c7af1159c95d847966162ea544dd824f'
+         'aa41a5d813a2cc1cf598f0575c655565'
          '7acdc91c88c64d55bd775d2fcdc1b242'
          '5eb0567825f0dea3d7c9f21038463de9'
          '133f3ba5c19ceb00a4ae8f44dc08352a'
