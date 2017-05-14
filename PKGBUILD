@@ -1,14 +1,14 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-settings-git
-pkgver=20161009.341e340
+pkgver=20170515.4784cc0
 pkgrel=1
 pkgdesc="Settings application and modules for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('vibe-git' 'liri-wayland-git' 'libqtxdg' 'qt5-accountsservice-git' 'polkit-qt5' 'xkeyboard-config')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('git' 'qbs')
 conflicts=('liri-settings')
 replaces=('liri-settings')
 provides=('liri-settings')
@@ -26,20 +26,19 @@ pkgver() {
 }
 
 prepare() {
-	mkdir -p build
+	cd ${srcdir}/${_gitname}
+	git submodule update --init
 }
 
 build() {
-	cd build
-	cmake ../${_gitname} \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DKDE_INSTALL_LIBDIR=lib \
-		-DKDE_INSTALL_LIBEXECDIR=lib
-	make
+	cd ${srcdir}/${_gitname}
+	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+	qbs setup-qt /usr/bin/qmake-qt5 qt5
+	qbs config profiles.qt5.baseProfile gcc
+	qbs build --no-install -d build profile:qt5 qbs.installRoot:/usr lirideployment.qmlDir:lib/qt/qml
 }
 
 package() {
-	cd build
-	make DESTDIR="${pkgdir}" install
+	cd ${srcdir}/${_gitname}
+	qbs install -d build --no-build -v --install-root $pkgdir/usr profile:qt5
 }
