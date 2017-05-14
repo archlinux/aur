@@ -16,5 +16,5 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/backgrounds/archlabs"
 	rm -f "${srcdir}/archlabs-wallpapers/"README.md
 	rm -f "${srcdir}/archlabs-wallpapers/"git-v*
-	cp -rf "${srcdir}/archlabs-wallpapers/"*.* "${pkgdir}/usr/share/backgrounds/archlabs"
+	cp -rf "${srcdir}/archlabs-wallpapers/"*.* "${pkgdir}/usr/share/backgrounds/archlabs/"
 }
