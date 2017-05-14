@@ -3,7 +3,7 @@
 pkgname='python2-fretwork-git'
 _gitname='fretwork'
 pkgver=0.2.0.r1.8d110d7
-pkgrel=1
+pkgrel=3
 pkgdesc=" Shared code for FoFiX and FoF:R"
 arch=('any')
 url="https://github.com/fofix/$_gitname.git"
