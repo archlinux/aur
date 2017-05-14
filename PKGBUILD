@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stinus <nicolas.stinus@gmail.com>
 
 pkgname=openvpn-nordvpn
-pkgver=17.5.5
+pkgver=17.5.15
 pkgrel=9
 pkgdesc="OpenVPN configuration files and helper for nordvpn.com"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=('unzip' 'coreutils')
 provides=('nordvpn')
 source=('https://nordvpn.com/api/files/zip')
 noextract=(zip)
-sha256sums=('f6c3b777ef5d391697138db41a34a8d3b1952c695391137b8835085931083295')
+sha256sums=('df42b5558d80640bea63e809bcd8be4f9cbac532551b55eec01d9ea522a7f25f')
 install=${pkgname}.install
 
 prepare() {
