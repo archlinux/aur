@@ -1,9 +1,9 @@
 # Maintainer: Patrik Karlsson <pata.karlsson@gmail.com>
 
 pkgname=filebydate
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="organize files depending on their file or exif dates"
+pkgdesc="date based file organizer"
 arch=('any')
 url="http://trixon.se/projects/java/filebydate/"
 license=('Apache')
@@ -15,7 +15,7 @@ source=(
 	'filebydate.desktop'
 )
 sha256sums=(
-	'43fcac94322b8c6683608936963821a52b2d966f164b8d460bb9d7e1126771fb'
+	'38fccc7b09caf89d4abafa2852e1750573531d2d4c0df044537ae502388a1974'
 	'c2597c42471798834798ddee7f9dcef7a0811b181b2f335699f131f2ccafeca0'
 	'3fc348ada388e3dcb265a83837d3f264ff1ff1cc07973c42384d8cf928c2f2fd'
 )
