@@ -1,7 +1,7 @@
 pkgbase = igv
 	pkgdesc = High-performance visualization tool for interactive exploration of large, integrated genomic datasets.
 	pkgver = 2.3.93
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.broadinstitute.org/software/igv/home
 	arch = any
 	license = LGPL
@@ -11,10 +11,10 @@ pkgbase = igv
 	source = http://www.broadinstitute.org/software/igv/sites/cancerinformatics.org.igv/files/images/tools.png
 	source = igv.sh
 	source = igv.desktop
-	md5sums = e48a33ee2ced68ac85075c1a920f3471
-	md5sums = 1ddfce893f771898089feb7c0d7ac43e
-	md5sums = aadbfd7b2e4bb2cea2ddd6025ec42688
-	md5sums = 5cee93f9e85a7a37d8b5afdedbe12f14
+	sha512sums = f4aa1fb4791a67d1e5498fd522a26ab6452ce39e0229077fd0935524217a9001f28b8070c3908d833585820ecc5b3a39ada723a51cf1973d6284e07e7b13992c
+	sha512sums = e71a0dc70c717b3db00268632500b5723b8cddb1ecfbd8ce48b77ffad59bf93a8d275cc5ebd18b9eb1025200438ac55ec348def343b1b5f72a2c982b5dc4cc90
+	sha512sums = bfda39fac975ce8112a0060b28e7e5bfd5bb4db9481f091c0da487dd3b974803de000bea3b6d4d6378cee04f7cd45955b648c6fb62779044703fb18ba0eced30
+	sha512sums = 32249be8c636570a9f2a9700cbd8a43613c3837e81df4bd9baa2b6ec9cf70b45bd28c0f597e5fc899a6fad22a66b0e8f8baf01952efae2e84ca986e1232163d0
 
 pkgname = igv
 
