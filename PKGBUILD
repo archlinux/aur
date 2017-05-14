@@ -7,9 +7,9 @@ pkgdesc="Liri workspace, programs and plugins"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://liri.io"
 license=('GPL3')
-depends=('qt5-tools' 'qt5-gstreamer' 'liri-wayland-git' 'vibe-git' 'glib2' 'dconf'
+depends=('qt5-tools' 'qt5-gstreamer' 'qt5-quickcontrols2' 'liri-wayland-git' 'glib2' 'dconf'
          'paper-icon-theme-git' 'liri-wallpapers-git' 'ttf-dejavu' 'ttf-droid' 'noto-fonts')
-makedepends=('git' 'extra-cmake-modules' 'boost')
+makedepends=('git' 'qbs' 'boost')
 conflicts=('hawaii-workspace-git' 'liri-workspace')
 replaces=('hawaii-workspace-git' 'liri-workspace')
 provides=('liri-workspace')
@@ -28,20 +28,19 @@ pkgver() {
 }
 
 prepare() {
-	mkdir -p build
+	cd ${srcdir}/${_gitname}
+	git submodule update --init
 }
 
 build() {
-	cd build
-	cmake ../${_gitname} \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DKDE_INSTALL_LIBDIR=lib \
-		-DKDE_INSTALL_LIBEXECDIR=lib
-	make
+	cd ${srcdir}/${_gitname}
+	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+	qbs setup-qt /usr/bin/qmake-qt5 qt5
+	qbs config profiles.qt5.baseProfile gcc
+	qbs build --no-install -d build profile:qt5 qbs.installRoot:/usr lirideployment.qmlDir:lib/qt/qml
 }
 
 package() {
-	cd build
-	make DESTDIR="${pkgdir}" install
+	cd ${srcdir}/${_gitname}
+	qbs install -d build --no-build -v --install-root $pkgdir/usr profile:qt5
 }
