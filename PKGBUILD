@@ -1,7 +1,7 @@
 # Maintainer: jackarc
 pkgname=purple-battlenet-hg
-srcname=purple-battlenet
-pkgver=r34.f57c99dd7396
+_srcname=purple-battlenet
+pkgver=r35.9e01c8ef9b3e
 pkgrel=1
 pkgdesc="A plugin to login and send whispers to Battle.net v2 users."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd $srcdir/$_srcname
-    make "CFLAGS += -DBATTLENET_PLUGIN_VERSION='\"\$(PLUGIN_VERSION)\"'"
+    make 
 }
 
 
