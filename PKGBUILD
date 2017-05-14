@@ -5,7 +5,7 @@
 
 _pkgname=kio-extras
 pkgname=${_pkgname}-light
-pkgver=17.04.0
+pkgver=17.04.1
 pkgrel=1
 pkgdesc="Additional components to increase the functionality of KIO, without SMB/Samba support"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 groups=('kde-applications' 'kdenetwork')
 source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('29eaece2047390e0582040e86e26b455d6c0e2f1cb6c5cf4d5f4a3f470806acf' 'SKIP')
+sha256sums=('b8655413dd49f4b9d6a7ce2c630a113c327b351a3fed262fe2f4b0053337fc91' 'SKIP')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
 
 prepare() {
