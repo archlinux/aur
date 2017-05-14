@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-libepoxy
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A library for handling OpenGL function pointer management for you (mingw-w64)"
 arch=(any)
@@ -15,14 +15,13 @@ makedepends=(
 depends=(
   'mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
-source=("libepoxy-${pkgver}.tar.gz::https://github.com/anholt/libepoxy/archive/${pkgver}.tar.gz")
-sha256sums=('da8f42c355b62c2c3ff6bc534c2a24099707b249c2af6eaf8db54b94c364a504')
+source=("https://github.com/anholt/libepoxy/releases/download/${pkgver}/libepoxy-${pkgver}.tar.xz")
+sha256sums=('bea6fdec3d10939954495da898d872ee836b75c35699074cbf02a64fcb80d5b3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/libepoxy-${pkgver}"
-  NOCONFIGURE=1 ./autogen.sh
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
