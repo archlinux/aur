@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.0.1a
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -256,7 +256,7 @@ package() {
   install -dm777 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/etc/pihole/configs
   install -Dm644 ./$_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default || return 1
-  install -Dm644 ./$_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/logrotate.d/logrotate || return 1
+  install -Dm644 ./$_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/pihole/logrotate || return 1
   install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt || return 1
   install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt || return 1
 
