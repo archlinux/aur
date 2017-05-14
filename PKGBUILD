@@ -1,3 +1,5 @@
+# Maintainer: Yves G. <theYinYeti@yalis.fr>
+
 pkgname=prosody-mod-auto-accept-subscriptions-hg
 pkgver=tip
 pkgrel=1
