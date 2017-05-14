@@ -1,0 +1,15 @@
+pkgbase = dreamweb
+	pkgdesc = A top-down adventure game set in a gritty futuristic dystopian city
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/DreamWeb
+	arch = any
+	license = custom
+	depends = scummvm
+	source = http://downloads.sourceforge.net/scummvm/dreamweb-cd-uk-1.1.zip
+	source = dreamweb.sh
+	md5sums = 06ae54319977446a895753b226368830
+	md5sums = 77dc4ba335a63e14324186d73cca0ffe
+
+pkgname = dreamweb
+
