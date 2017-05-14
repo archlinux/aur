@@ -4,12 +4,12 @@
 pkgname=vtun
 pkgver=3.0.3.2013.d
 _pkgver=3.0.3
-pkgrel=8
+pkgrel=9
 pkgdesc="The easiest way to create Virtual Tunnels over TCP/IP networks with traffic shaping, compression, encryption and IPv6 support."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://vtun.sourceforge.net/"
 license=('GPL')
-depends=('openssl' 'zlib' 'lzo')
+depends=('openssl-1.0' 'zlib' 'lzo')
 backup=('etc/vtund.conf' 'etc/tun-cfg.conf')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
 "https://gist.githubusercontent.com/Mic92/f2d0980682a3ad2247b7/raw/9c2045facaa1f82420b84c581aeeef9ba96fd0c7/0001-fix-bison-compile-error.patch"
@@ -35,7 +35,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
+  export CFLAGS="$CFLASG -I/usr/include/openssl-1.0"
+  export LDFLAGS="$LDFLAGS -L/usr/lib/openssl-1.0"
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   ./configure \
+    --with-ssl-headers=/usr/include/openssl-1.0/openssl \
+    --with-blowfish-headers=/usr/include/openssl-1.0/openssl \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
