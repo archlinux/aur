@@ -1,19 +1,20 @@
+# Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=oyranos-git
-pkgver=0.9.5.1244.ge4f9616
+pkgver=0.9.6.215.g5acb5b8c
 pkgrel=1
 pkgdesc="A Colour Management System (CMS) on operating system level. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.oyranos.org'
 license=('BSD')
-
 depends=('libxcm-git'
          'libxrandr'
          'elektra-git'
          'fltk'
          'cairo'
+         'yajl'
          )
-makedepends+=('git'
+makedepends=('git'
              'cmake'
              'qt5-tools'
              'doxygen'
@@ -58,6 +59,7 @@ build() {
   cd build
   cmake ../oyranos \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release
 
   make
