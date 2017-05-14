@@ -1,6 +1,6 @@
 pkgbase = colorui-themes
 	pkgdesc = Package contains 3 version of gtk3,gtk2,metacity,unity,xfwm4 and openbox theme.
-	pkgver = 1.5.1.rpf2.b19
+	pkgver = r22.52d038e
 	pkgrel = 1
 	url = https://github.com/UserContributer/Color-UI-theme-project
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = colorui-themes
 	depends = gnome-themes-standard
 	depends = gtk-engine-murrine
 	depends = gdk-pixbuf2
-	source = colorui-themes-1.5.1.rpf2.b19.tar.gz::https://github.com/UserContributer/Color-UI-theme-project/archive/c6cf24f4d3618298c6a22cb4b5ccbab93b610adb.tar.gz
-	sha256sums = ce969373b9c94170eeda90f7ceafd1d349a99892120e04e3e516a7b253f75343
+	source = colorui-themes::git+https://github.com/UserContributer/Color-UI-theme-project.git
+	sha256sums = SKIP
 
 pkgname = colorui-themes
 
