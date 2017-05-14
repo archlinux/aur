@@ -1,0 +1,13 @@
+pkgbase = mei-amt-check-git
+	pkgdesc = Check whether AMT is enabled and provisioned under Linux
+	pkgver = r8.a4d8fca
+	pkgrel = 1
+	url = https://github.com/mjg59/mei-amt-check
+	arch = any
+	license = GPL2
+	makedepends = git
+	source = mei-amt-check-git::git+https://github.com/mjg59/mei-amt-check.git
+	sha256sums = SKIP
+
+pkgname = mei-amt-check-git
+
