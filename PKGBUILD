@@ -25,6 +25,6 @@ pkgver() {
 
 package() {
   cd $srcdir/$_pkgname
-  python setup.py install --root=$pkgdir/
-  install -D ../../dosage.1.gz $pkgdir/usr/share/man/man1/dosage.1.gz --optimize=1
+  python setup.py install --root=$pkgdir/ --optimize=1
+  install -D ../../dosage.1.gz $pkgdir/usr/share/man/man1/dosage.1.gz
 }
