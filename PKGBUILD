@@ -1,10 +1,6 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
-# Before you complain about unverifiable signature, please read Allan's post:
-# http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/
-# TL;DR: gpg --keyserver pgp.mit.edu --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
-
 _name=firefox
 _channel=nightly
 _lang=en-US
@@ -12,25 +8,26 @@ pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=55.0a1
-pkgver=55.0a1.20170414
+pkgver=55.0a1.20170514
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types' 'startup-notification')
+depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types')
 optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation'
             'libnotify: notification integration'
             'networkmanager: location detection via available WiFi networks'
-            'speech-dispatcher: text-to-speech')
+            'speech-dispatcher: text-to-speech'
+            'startup-notification: support for FreeDesktop Startup Notification')
 _url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
 _src="${_name}-${_version}.${_lang}.linux"
 source=("${pkgname}.desktop" 'vendor.js')
 source_i686=("${_url}/${_src}-i686.tar.bz2"{,.asc} "${_url}/${_src}-i686.txt")
 source_x86_64=("${_url}/${_src}-x86_64.tar.bz2"{,.asc} "${_url}/${_src}-x86_64.txt")
 sha512sums=(
-    '4543e20c1c27f6defcdb0a9755f8e664554cff8f89ff3c8902c26a3a309427d958695cebe754ffd2d7e7d1fafd94a6c02e698c93c3128ac74397dc44410cee18'
+    'b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
     'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
 )
 sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
