@@ -1,6 +1,6 @@
 pkgbase = spectacle-light
 	pkgdesc = KDE screenshot capture utility, without purpose
-	pkgver = 17.04.0
+	pkgver = 17.04.1
 	pkgrel = 1
 	url = https://www.kde.org/applications/graphics/
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = spectacle-light
 	depends = kdeclarative
 	provides = spectacle
 	conflicts = spectacle
-	source = https://download.kde.org/stable/applications/17.04.0/src/spectacle-17.04.0.tar.xz
-	source = https://download.kde.org/stable/applications/17.04.0/src/spectacle-17.04.0.tar.xz.sig
+	source = https://download.kde.org/stable/applications/17.04.1/src/spectacle-17.04.1.tar.xz
+	source = https://download.kde.org/stable/applications/17.04.1/src/spectacle-17.04.1.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-	sha256sums = 1e7cc028fc1d3845f0cf03aadbd4423393b14c562d0d97c84bd2b9a8d7f6b56e
+	sha256sums = 5cea11dcb8c6b17e23944801b81634cd838627cb36a0e11442b75eda8761ec4b
 	sha256sums = SKIP
 
 pkgname = spectacle-light
