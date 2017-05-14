@@ -11,6 +11,7 @@ pkgbase = python-dask
 	checkdepends = python-graphviz
 	checkdepends = python-scikit-learn
 	checkdepends = python-scikit-image
+	checkdepends = python-sparse
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
@@ -18,12 +19,13 @@ pkgbase = python-dask
 	depends = python-pandas
 	depends = python-toolz
 	depends = python-cloudpickle
-	depends = python-partd
+	depends = python-partd>=0.3.8
 	optdepends = python-bcolz
 	optdepends = python-cachey
 	optdepends = python-fastparquet
 	optdepends = python-bokeh
 	optdepends = python-psutil
+	optdepends = python-sparse
 	source = https://github.com/dask/dask/archive/0.14.3.tar.gz
 	sha256sums = 121f7e44200954c13e30d9f53056f73fee48ed6eb72da5faf9684450adf9e353
 

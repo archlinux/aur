@@ -10,9 +10,9 @@ pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://github.com/dask/dask"
 license=('BSD')
-depends=('python' 'python-numpy' 'python-scipy' 'python-pandas' 'python-toolz' 'python-cloudpickle' 'python-partd' )
-checkdepends=('python-bcolz' 'python-bokeh' 'python-cachey' 'python-graphviz' 'python-scikit-learn' 'python-scikit-image')
-optdepends=('python-bcolz' 'python-cachey' 'python-fastparquet' 'python-bokeh' 'python-psutil')
+depends=('python' 'python-numpy' 'python-scipy' 'python-pandas' 'python-toolz' 'python-cloudpickle' 'python-partd>=0.3.8' )
+checkdepends=('python-bcolz' 'python-bokeh' 'python-cachey' 'python-graphviz' 'python-scikit-learn' 'python-scikit-image' 'python-sparse')
+optdepends=('python-bcolz' 'python-cachey' 'python-fastparquet' 'python-bokeh' 'python-psutil' 'python-sparse')
 makedepends=('python-setuptools')
 source=("https://github.com/dask/dask/archive/$pkgver.tar.gz")
 sha256sums=('121f7e44200954c13e30d9f53056f73fee48ed6eb72da5faf9684450adf9e353')
