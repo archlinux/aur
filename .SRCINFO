@@ -1,6 +1,6 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl
-	pkgver = 2017.17.0.1.3.191
+	pkgver = 2017.17.0.4.4.196
 	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = intel-parallel-studio-xe
 	options = strip
 	options = libtool
 	options = staticlibs
-	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/11464/parallel_studio_xe_2017_update3_composer_edition.tgz
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/11537/parallel_studio_xe_2017_update4.tgz
 	source = intel_compilers.sh
 	source = intel_vtune-amplifier-xe.sh
 	source = intel_advisor.sh
@@ -32,7 +32,7 @@ pkgbase = intel-parallel-studio-xe
 	source = intel-mkl-th.conf
 	source = intel-tbb.install
 	source = EULA.txt
-	sha256sums = 3648578d7bba993ebb1da37c173979bfcfb47f26e7f4e17f257e78dea8fd96ab
+	sha256sums = 27d34625adfc635d767c136b5417a372f322fabe6701b651d858a8fe06d07f2d
 	sha256sums = 75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5
 	sha256sums = 278f9545d14c1fbec737bbfbcafb1b9090d35aab0dfeddc99d4c6e296b56057b
 	sha256sums = e3103fb1c5e2ec9f0cc4090abb7e273563e735d88e185f527c66b2aebd52e733
@@ -52,11 +52,11 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = 228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5
 
 pkgname = intel-compiler-base
-	pkgdesc = Intel C/C++ 17.0.1
+	pkgdesc = Intel C/C++ 17.0.4
 	install = intel-composer.install
 
 pkgname = intel-fortran-compiler
-	pkgdesc = Intel Fortran compiler 17.0.1
+	pkgdesc = Intel Fortran compiler 17.0.4
 	install = intel-composer.install
 	depends = intel-compiler-base
 
