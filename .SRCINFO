@@ -1,0 +1,10 @@
+pkgbase = ms17-010
+	pkgdesc = Lol nope. Just want to remind that you are using Glorious Linux. You won't ever need this thing :\) \(This joke package does nothing\)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+	arch = i686
+	arch = x86_64
+
+pkgname = ms17-010
+
