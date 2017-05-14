@@ -1,8 +1,8 @@
 pkgbase = xf86-input-mtrack
 	pkgdesc = An Xorg driver for multitouch trackpads and clickpads
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
-	url = http://github.com/BlueDragonX/xf86-input-mtrack
+	url = https://github.com/p2rkw/xf86-input-mtrack
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -13,9 +13,9 @@ pkgbase = xf86-input-mtrack
 	depends = libxss
 	backup = etc/X11/xorg.conf.d/10-mtrack.conf
 	source = 10-mtrack.conf
-	source = http://github.com/BlueDragonX/xf86-input-mtrack/archive/v0.3.1.tar.gz
+	source = https://github.com/p2rkw/xf86-input-mtrack/archive/v0.4.1.tar.gz
 	md5sums = ffb540330d92957e0da28af5a005136e
-	md5sums = cc99ea395ec588a790d2145815f48fa2
+	md5sums = 25b886ca93021f729ff374a76f029a7a
 
 pkgname = xf86-input-mtrack
 
