@@ -4,7 +4,7 @@
  all: $(PROG) $(TEST_PROG)
  
  # Adjust $(HTSDIR) to point to your top-level htslib directory
--HTSDIR = htslib-1.4
+-HTSDIR = htslib-1.4.1
 -include $(HTSDIR)/htslib.mk
 -include $(HTSDIR)/htslib_static.mk
 -HTSLIB = $(HTSDIR)/libhts.a
