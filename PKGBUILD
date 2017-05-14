@@ -2,7 +2,7 @@
 
 pkgname=pvim2
 _pkgname=pvim
-pkgver=2.1.3.gd26f92f
+pkgver=2.2
 pkgrel=1
 pkgdesc="pvim python version, better than pvim"
 url="https://github.com/Sherlock-Holo/pvim"
