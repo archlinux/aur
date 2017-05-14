@@ -1,7 +1,7 @@
 pkgname=argon2-git
 _gitname="phc-winner-argon2"
 pkgdesc="The password hash Argon2, winner of PHC"
-pkgver=20161029.r31.g6f5427f
+pkgver=20161029.r39.g30c78a1
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=("argon2")
@@ -18,6 +18,13 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
+prepare() {
+	cd $_gitname
+	sed -i "/^#/d;s/\/@HOST_MULTIARCH@//g;s/@UPSTREAM_VER@/$pkgver/g" libargon2.pc
+	sed -i '1d' libargon2.pc
+}
+
 build() {
 	cd $_gitname
 	make
@@ -31,4 +38,5 @@ check() {
 package() {
 	cd $_gitname
 	make DESTDIR="$pkgdir" install
+	install -Dm644 libargon2.pc $pkgdir/usr/lib/pkgconfig/libargon2.pc
 }
