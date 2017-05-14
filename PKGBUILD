@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-git
-pkgver=16.0.0.r3.g12f2c5fc
+pkgver=16.0.0.r6.gc85faa30
 pkgrel=1
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ build() {
   automake --add-missing
   autoconf
 
-  CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr --disable-enumpoly
+  CXXFLAGS+=" -std=c++11" ./configure --prefix=/usr --disable-enumpoly
   make 
 }
 
