@@ -1,7 +1,7 @@
 pkgbase = varuna
 	pkgdesc = Compiler for the WIP programming language
-	pkgver = vv0.1.0.r0.g8ad4e7e
-	pkgrel = 1
+	pkgver = v0.1.0
+	pkgrel = 2
 	url = https://github.com/varuna-lang/varuna
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = varuna
 	makedepends = git
 	depends = llvm-libs>=4.0.0
 	depends = libutil-linux
-	source = git+https://github.com/varuna-lang/varuna.git#tag=vv0.1.0.r0.g8ad4e7e
+	source = git+https://github.com/varuna-lang/varuna.git#tag=v0.1.0
 	source = git+https://github.com/gabime/spdlog.git
 	source = git+https://github.com/USCiLab/cereal.git
 	source = git+https://github.com/onqtam/doctest.git
