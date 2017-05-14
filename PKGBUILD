@@ -1,7 +1,7 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=ffx264
-pkgver=3.3.8
+pkgver=3.3.9
 pkgrel=1
 pkgdesc='a small yet quite capable shell script for encoding video files to the H.264 video format using ffmpeg and libx264.'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://sourceforge.net/projects/ffx264/'
 license=(GPL2)
 depends=(ffmpeg)
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('d3443b087d09882a12345c65dded1375beb5a506ea6e8f3af56e498600d80758')
+sha256sums=('92a44057dd49d726bfdbca3439d690a2e5e82a85a8b7d40d8456158322467df5')
 
 package()
 {
