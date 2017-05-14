@@ -2,12 +2,13 @@
 
 pkgname=srain
 pkgver=0.05.1
-pkgrel=2
+pkgrel=3
 pkgdesc="It does not look like a irc client"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/SilverRainZ/srain"
 depends=('gtk3' 'python' 'libircclient' 'curl' 'libnotify')
+optdepends=('python-urllib3' 'python-request')
 makedepends=('make' 'gcc' 'pkg-config' 'gettext' 'imagemagick')
 conflicts=('srain-git')
 provides=('srain')
