@@ -42,7 +42,7 @@ pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
 pkgver=4.11.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -64,7 +64,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '0e65eee0893968c94cb6b62ff071bc3877d6c9a85413406526dbcc764811bec5'
+            '0d96845b0f1bbe47a62659f48367948c4e747f995694927aa309e0e5e1556949'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '046330bf8659ef73dd7c425f7a44a8b1dea2394b7eadad65a3b54d6bf25d0b7e'
