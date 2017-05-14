@@ -1,5 +1,5 @@
 # Maintainer: Anthony25 <anthony.ruhier @ gmail.com>
-# Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani @ gmail.com>
+# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani @ gmail.com>
 # Thanks to @xenom, contributor of firefox-nightly
 
 _name=firefox
@@ -9,34 +9,36 @@ _pkgname=${_name}-${_channel}
 pkgname=${_pkgname}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version='55.0a1'
-pkgver=55.0a1.20170414
+_version=55.0a1
+pkgver=55.0a1.20170514
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types' 'startup-notification')
+depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types')
 optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation'
             'libnotify: notification integration'
             'networkmanager: location detection via available WiFi networks'
-            'speech-dispatcher: text-to-speech')
+            'speech-dispatcher: text-to-speech'
+            'startup-notification: support for FreeDesktop Startup Notification')
 _url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
-_src="${_url}-l10n/${_name}-${_version}.${_lang}.linux"
+_src="${_name}-${_version}.${_lang}.linux"
+_srcen="${_name}-${_version}.en-US.linux"
 source=("${_pkgname}.desktop" 'vendor.js')
-source_i686=("${_src}-i686.tar.bz2"{,.asc})
-source_x86_64=("${_src}-x86_64.tar.bz2"{,.asc})
+source_i686=("${_url}-l10n/${_src}-i686.tar.bz2"{,.asc} "${_url}/${_srcen}-i686.txt")
+source_x86_64=("${_url}-l10n/${_src}-x86_64.tar.bz2"{,.asc} "${_url}/${_srcen}-x86_64.txt")
 sha512sums=(
-    'a8c616cb3ccca1a4140d559b32d413f10949318d64541badb5d1f1adf70a2819a7783596623082fd7da939ecab322b0b39917c0009858ed0a6cee3b3ec4fe754'
+    '25d59b6a64b3885bbc11361bdc3817150b1e168c759760c8521934a90df016272ec0946252dccdbb7e11c65932b27dc8d6f56e76be0aad5aa5e8ce1138f747ad'
     'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
 )
-sha512sums_i686=('SKIP' 'SKIP')
-sha512sums_x86_64=('SKIP' 'SKIP')
+sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
+sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 pkgver() {
-  echo "${_version}.$(curl -s ${_url}/${_name}-${_version}.en-US.linux-${CARCH}.txt | head -n1 | cut -c -8)"
+  echo "${_version}.$(head -n1 ${_srcen}-${CARCH}.txt | cut -c-8)"
 }
 
 package() {
