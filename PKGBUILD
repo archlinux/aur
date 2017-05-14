@@ -5,7 +5,7 @@
 
 pkgname=davinci-resolve-beta
 _pkgname=resolve
-pkgver=14.0b1
+pkgver=14.0b2
 pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('glu' 'gtk2' 'gstreamer' 'ocl-icd' 'libopenssl-1.0-compat' 'libpng12' '
 options=('!strip')
 conflicts=('davinci-resolve')
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('e5b85e380394e90f27148437453e175906cff014e34a386c1bca9d29bac91823')
+sha256sums=('fe0b068cccf86d5df55c1d48c6c4e3fc3fb2c4769b89b064e4052ff7e012f461')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs}
