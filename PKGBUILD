@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -26,15 +26,28 @@ backup=('etc/syslog-ng/scl.conf'
         'etc/conf.d/initscripts/syslog-ng'
         'etc/logrotate.d/syslog-ng')
 source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver/syslog-ng-$pkgver.tar.gz
+        https://github.com/balabit/syslog-ng/commit/2251fa7a.patch
         syslog-ng.conf
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
 sha1sums=('1ca437393d8895654452bef8ac0b996fe73284f8'
+          '0959825af29e21e60c11ef21823dd166353c7491'
           '273990d01e1f044dc090bba8098161dc12dd24ea'
           'eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd'
           '949128fe3d7f77a7aab99048061f885bc758000c'
           '38bf100961fb1858b1c42d3851ffdf92afb74db6')
+
+prepare() {
+  cd "syslog-ng-$pkgver"
+
+  # Fix segfault in X509_STORE_CTX_get_app_data(ctx) https://github.com/balabit/syslog-ng/issues/1310
+  patch -p1 -i ../2251fa7a.patch
+
+  # Fix test failure
+  sed -e "s|'invalid_length_specification'|\“invalid_length_specification\”|" \
+    -i modules/cryptofuncs/tests/test_cryptofuncs.c
+}
 
 build() {
   cd "syslog-ng-$pkgver"
