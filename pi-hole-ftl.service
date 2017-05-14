@@ -2,10 +2,10 @@
 Description=Pi-hole FTL engine
 
 [Service]
-Type=forking
 User=pihole
 Group=pihole
-ExecStart=/usr/bin/pihole-FTL
+PIDFile=/run/pihole-ftl/pihole-FTL.pid
+ExecStart=/usr/bin/pihole-FTL no-daemon
 Restart=on-failure
      
 [Install]
