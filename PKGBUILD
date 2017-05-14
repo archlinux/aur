@@ -2,7 +2,7 @@
 
 pkgname=rink
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Unit conversion tool and library written in rust'
 arch=('x86_64')
 url=https://github.com/tiffany352/rink-rs
@@ -14,6 +14,11 @@ sha512sums=('78510545d58961f0df35be25bb47aaecac7e173dc7dcb8ceea29975a4ab6a4e1c8f
 build() {
   cd rink-rs-$pkgver
   cargo build --release
+}
+
+check() {
+  cd rink-rs-$pkgver
+  cargo test
 }
 
 package() {
