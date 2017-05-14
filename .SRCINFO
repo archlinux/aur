@@ -1,7 +1,7 @@
 pkgbase = dosage-git
 	pkgdesc = A comic downloader and archiver.
 	pkgver = 1403
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dosage.rocks
 	arch = any
 	license = GPL

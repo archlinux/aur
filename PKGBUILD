@@ -6,7 +6,7 @@
 pkgname=dosage-git
 _pkgname=dosage
 pkgver=1403
-pkgrel=1
+pkgrel=2
 pkgdesc='A comic downloader and archiver.'
 arch=('any')
 url='http://dosage.rocks'
