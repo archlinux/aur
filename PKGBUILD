@@ -4,7 +4,7 @@
 pkgbase=freetype2-git
 pkgname=('freetype2-git' 'freetype2-demos-git')
 pkgver=2.8+p0+ga12a3445
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Font rasterization library (from git)"
 arch=(i686 x86_64)
@@ -98,6 +98,8 @@ package_freetype2-git() {
 package_freetype2-demos-git() {
   pkgdesc="Freetype tools and demos (from git)"
   depends=('freetype2-git' 'libx11')
+  provides=("freetype2-demos=$pkgver")
+  conflicts=('freetype2-demos')
 
   cd freetype2-demos
   install -d "${pkgdir}/usr/bin"
