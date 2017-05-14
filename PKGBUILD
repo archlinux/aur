@@ -8,13 +8,13 @@ pkgver=20140816.23
 pkgrel=1
 pkgdesc='Lightweight clipboard manager for X'
 arch=('i686' 'x86_64')
-url='https://github.com/Cloudef/xcmenu'
+url='https://github.com/dindon-sournois/xcmenu'
 license=('WTFPL')
 depends=('libxcb' 'zlib')
 optdepends=('dmenu')
 makedepends=('gcc')
 replaces=('loliclip')
-source=(git://github.com/Cloudef/xcmenu)
+source=(git://github.com/dindon-sournois/xcmenu)
 md5sums=(SKIP)
 
 pkgver() {

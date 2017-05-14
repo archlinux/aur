@@ -2,7 +2,7 @@ pkgbase = xcmenu-git
 	pkgdesc = Lightweight clipboard manager for X
 	pkgver = 20140816.23
 	pkgrel = 1
-	url = https://github.com/Cloudef/xcmenu
+	url = https://github.com/dindon-sournois/xcmenu
 	arch = i686
 	arch = x86_64
 	license = WTFPL
@@ -11,7 +11,7 @@ pkgbase = xcmenu-git
 	depends = zlib
 	optdepends = dmenu
 	replaces = loliclip
-	source = git://github.com/Cloudef/xcmenu
+	source = git://github.com/dindon-sournois/xcmenu
 	md5sums = SKIP
 
 pkgname = xcmenu-git
