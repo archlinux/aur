@@ -37,6 +37,7 @@ package() {
             make DESTDIR="${pkgdir}" install
         popd
         cp build-${_arch}/src/libopencc.dll ${pkgdir}/usr/${_arch}/bin/
+        ln -s ${pkgdir}/usr/${_arch}/bin/libopencc.dll ${pkgdir}/usr/${_arch}/bin/opencc.dll
         cp build-${_arch}-static/src/libopencc.a ${pkgdir}/usr/${_arch}/lib/
     done
 }
