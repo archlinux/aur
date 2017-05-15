@@ -3,7 +3,7 @@
 pkgname=lib32-munt-git
 _pkgname=munt
 pkgdesc="Software synthesiser emulating pre-GM MIDI devices, such as the Roland MT-32"
-pkgver=1788.50594f5
+pkgver=1849.08e52e8
 pkgrel=1
 arch=(x86_64)
 url="http://munt.sourceforge.net"
@@ -29,7 +29,7 @@ build() {
 }
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -D -m755 mt32emu/libmt32emu.so.2.0.1 "$pkgdir"/usr/lib32/libmt32emu.so.2.0.1
-  ln -s /usr/lib32/libmt32emu.so.2.0.1 "$pkgdir"/usr/lib32/libmt32emu.so.2
+  install -D -m755 mt32emu/libmt32emu.so.2.1.0 "$pkgdir"/usr/lib32/libmt32emu.so.2.1.0
+  ln -s /usr/lib32/libmt32emu.so.2.1.0 "$pkgdir"/usr/lib32/libmt32emu.so.2
   ln -s /usr/lib32/libmt32emu.so.2 "$pkgdir"/usr/lib32/libmt32emu.so
 }
