@@ -30,7 +30,7 @@ _pkgname=firefox
 pkgname=iceweasel
 epoch=1
 pkgver=$_debver.$_debrel
-pkgrel=3
+pkgrel=4
 pkgdesc="A libre version of Debian Iceweasel, the standalone web browser based on Mozilla Firefox."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
@@ -47,8 +47,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
 url="https://wiki.parabola.nu/$pkgname"
-replaces=("$pkgname-libre" "$_pkgname")
-conflicts=("$pkgname-libre")
 source=("$_debrepo/`debfile $_debname`_$_debver.is.$_debver.orig.tar.xz"
         "$_debrepo/`debfile $_debname`_$_debver.is.$_debver-${_debrel#deb}.debian.tar.xz"
         "$_coadderepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz"
@@ -64,7 +62,8 @@ source=("$_debrepo/`debfile $_debname`_$_debver.is.$_debver.orig.tar.xz"
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         fix-wifi-scanner.diff
         enable-object-directory-paths.patch
-        mozilla-1335250.patch)
+        mozilla-1335250.patch
+        $pkgname-disabled-components.patch)
 sha512sums=('54bdb53f65c10e43db5df12aaf1302926e2b66997c0aeeeac0834a0943ca244ec9d847900e90fd75bee4474b97988cb87d0b51e745299db8160a22ca45ffedc6'
             'ba68ee4c2846d52d7d223d57c815db0b81e41f2e1c1f3cb3b6f74fd523826be8848f630f53179b9d5d7eb1b312a07bcd3d3df7d2c462bb85d4cb31c60182be0a'
             '08d5980b532cdbef651355baf5e971df6d641e5b6a74fd2ad4f84837b00f2fa0732069af74c76cd635cf9437fd139b8572ff7b0c86911be7c8a251b4f57a2a25'
@@ -80,7 +79,8 @@ sha512sums=('54bdb53f65c10e43db5df12aaf1302926e2b66997c0aeeeac0834a0943ca244ec9d
             '9a02d89603ad2928e38d7350d5d71ec904815958c65cc13323f5d4cd9392b823264fae812ea658d83728839372b412fd185653ef65b7ab8dd0595158b3bdc2e2'
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
             'f60f59b5d11b9ce5ad4c01eedae78f27131f17b07720e5ac35441d43e95987d81b9b2680e7258d73b1a8092fe3ae554072d07a41d6b337af82742886196bc375'
-            '3ea15f1c2e0146388687cfbb100e5d8c553fa4276c9c2c61eaccb4fe88e4dbd6697f6266eb0255546997997ca34085d0cf211701fa63d8ab2df94f5291131d7e')
+            '3ea15f1c2e0146388687cfbb100e5d8c553fa4276c9c2c61eaccb4fe88e4dbd6697f6266eb0255546997997ca34085d0cf211701fa63d8ab2df94f5291131d7e'
+            '89849831a9bc2b912baf15ca930055b31232c7bd9941aaf0605403e3a80474368c578c6244c9656bcf854cfabf87a73ebb9af5256bb52fdd5fdfe3b9dbc3e35c')
 validpgpkeys=(
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
@@ -140,6 +140,7 @@ prepare() {
   cp -av /usr/lib/mozilla/searchplugins browser/locales
 
   # Disable various components at the source level
+  patch -Np1 -i "$srcdir/$pkgname-disabled-components.patch"
   sed -i 's|1|0|' toolkit/components/telemetry/TelemetryStartup.manifest || die "failed break telemetry startup"
   sed -i 's|1|0|' toolkit/components/remotebrowserutils/remotebrowserutils.manifest || die "failed break remotebrowsing at startup"
   sed -i 's|1|0|' toolkit/components/captivedetect/CaptivePortalDetectComponents.manifest || die "failed to break captiveportaldetection at startup"
@@ -147,27 +148,24 @@ prepare() {
   sed -i 's|1|0|' toolkit/components/securityreporter/SecurityReporter.manifest || die "failed to break securityReporter"
   sed -i 's|1|0|' toolkit/components/crashes/CrashService.manifest || die "failed to break CrashService"
   sed -i 's|1|0|' toolkit/components/crashmonitor/crashmonitor.manifest || die "failed to break CrashMonitor"
+  sed -i '/gmp-clearkey/d' toolkit/toolkit.mozbuild || die "failed to remove ClearKey DRM"
   sed -i 's|1|0|' browser/experiments/Experiments.manifest || die "failed to break ExperimentsService"
   #echo "" > dom/flyweb/moz.build || die "failed to break FlyWeb"
   echo "" > toolkit/crashreporter/moz.build || die "Failed to dsiable CrashReporter"
   echo "Disabling intrusive Balrog backdoor... please wait."
   echo "" > testing/moz.build || die "failed to disable testing directory (contains Balrog/WebRTC/etc)"
-  #grep -rl "aus4.mozilla.org"  | xargs sed -i 's/aus4.mozilla.org/0.0.0.0/' || die "Failed to delete aus4 Barlog servers"
-  #grep -rl "aus5.mozilla.org"  | xargs sed -i 's/aus5.mozilla.org/0.0.0.0/' || die "Failed to delete aus5 Barlog servers"
+  grep -rl "aus4.mozilla.org"  | xargs sed -i 's/aus4.mozilla.org/0.0.0.0/' || die "Failed to delete aus4 Barlog servers"
+  grep -rl "aus5.mozilla.org"  | xargs sed -i 's/aus5.mozilla.org/0.0.0.0/' || die "Failed to delete aus5 Barlog servers"
   echo "" > browser/extensions/moz.build || die "failed to disable bundled extensions"
   echo "" > browser/app/blocklist.xml || die "failed to clear pre-loaded blocklist"
-  #echo "" > services/common/moz.build || die "failed to disable KintoStorage/Blocklist updater"
   echo "" > services/cloudsync/moz.build || die "failed to disable CloudSync"
   echo "" > services/fxaccounts/moz.build || die "failed to disable FxAccounts"
   echo "" > modules/libmar/moz.build || die "failed to disable libmar (custom file format used for unattended mozilla updates)"
   echo "" > netwerk/wifi/moz.build || die "failed to disable wifi"
   echo "" > media/sphinxbase/moz.build || die "failed to disable SphinxBase voice recognition"
   echo "" > media/pocketsphinx/moz.build || die "failed to disable PocketSpinx voice recognition"
-  echo "" > b2g/moz.build || die "failed to disable B2G"
-  #echo "" > ipc/chromium/moz.build || die "failed to disable IPC"
-  #sed -i -e '/marketplace-/d' -e '/manifest-/d' -e '/xpcshell/d' -e '/privileged/d' -e '/stage/d' security/apps/moz.build || die "failed to disable unused certs"
+  #echo "" > b2g/moz.build || die "failed to disable B2G"
   echo "origin	install	1	https://addons.mozilla.org" > browser/app/permissions  || die "failed disable remote login whitelist"
-  sed -i -e '/FxAccountsComponents/d' -e '/FxAccountsPush/d' -e '/pdfjs/d' -e '/features/d' browser/installer/package-manifest.in || die "failed to remove references in package-manifest"
 
   # ARM-specific changes:
   if [[ "$CARCH" == arm* ]]; then

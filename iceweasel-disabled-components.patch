@@ -1,0 +1,117 @@
+--- browser/installer/package-manifest.in	2017-04-11 00:15:16.000000000 -0400
++++ browser/installer/package-manifest.in3	2017-05-14 20:17:52.661752482 -0400
+@@ -279,16 +279,10 @@
+ @RESPATH@/components/necko_strconv.xpt
+ @RESPATH@/components/necko_viewsource.xpt
+ @RESPATH@/components/necko_websocket.xpt
+-#ifdef NECKO_WIFI
+-@RESPATH@/components/necko_wifi.xpt
+-#endif
+ @RESPATH@/components/necko_wyciwyg.xpt
+ @RESPATH@/components/necko.xpt
+ @RESPATH@/components/loginmgr.xpt
+ @RESPATH@/components/parentalcontrols.xpt
+-#ifdef MOZ_WEBRTC
+-@RESPATH@/components/peerconnection.xpt
+-#endif
+ @RESPATH@/components/places.xpt
+ @RESPATH@/components/plugin.xpt
+ @RESPATH@/components/pref.xpt
+@@ -301,7 +295,6 @@
+ @RESPATH@/components/saxparser.xpt
+ @RESPATH@/browser/components/sessionstore.xpt
+ @RESPATH@/components/services-crypto-component.xpt
+-@RESPATH@/components/captivedetect.xpt
+ @RESPATH@/browser/components/shellservice.xpt
+ @RESPATH@/components/shistory.xpt
+ @RESPATH@/components/spellchecker.xpt
+@@ -315,9 +308,6 @@
+ @RESPATH@/components/toolkit_perfmonitoring.xpt
+ @RESPATH@/components/toolkit_xulstore.xpt
+ @RESPATH@/components/toolkitprofile.xpt
+-#ifdef MOZ_ENABLE_XREMOTE
+-@RESPATH@/components/toolkitremote.xpt
+-#endif
+ @RESPATH@/components/txtsvc.xpt
+ @RESPATH@/components/txmgr.xpt
+ @RESPATH@/components/uconv.xpt
+@@ -375,8 +365,6 @@
+ @RESPATH@/browser/components/devtools-startup.js
+ @RESPATH@/browser/components/webideCli.js
+ @RESPATH@/browser/components/webideComponents.manifest
+-@RESPATH@/browser/components/Experiments.manifest
+-@RESPATH@/browser/components/ExperimentsService.js
+ @RESPATH@/browser/components/browser-newtab.xpt
+ @RESPATH@/browser/components/aboutNewTabService.js
+ @RESPATH@/browser/components/NewTabComponents.manifest
+@@ -408,8 +396,6 @@
+ #endif
+ @RESPATH@/components/nsHelperAppDlg.manifest
+ @RESPATH@/components/nsHelperAppDlg.js
+-@RESPATH@/components/NetworkGeolocationProvider.manifest
+-@RESPATH@/components/NetworkGeolocationProvider.js
+ @RESPATH@/components/extensions.manifest
+ @RESPATH@/components/EditorUtils.manifest
+ @RESPATH@/components/EditorUtils.js
+@@ -420,9 +406,6 @@
+ @RESPATH@/components/nsBlocklistService.js
+ @RESPATH@/components/nsBlocklistServiceContent.js
+ #ifdef MOZ_UPDATER
+-@RESPATH@/components/nsUpdateService.manifest
+-@RESPATH@/components/nsUpdateService.js
+-@RESPATH@/components/nsUpdateServiceStub.js
+ #endif
+ @RESPATH@/components/nsUpdateTimerManager.manifest
+ @RESPATH@/components/nsUpdateTimerManager.js
+@@ -495,12 +478,6 @@
+ @RESPATH@/browser/components/SelfSupportService.manifest
+ @RESPATH@/browser/components/SelfSupportService.js
+ #endif
+-@RESPATH@/components/SyncComponents.manifest
+-@RESPATH@/components/Weave.js
+-@RESPATH@/components/FxAccountsComponents.manifest
+-@RESPATH@/components/FxAccountsPush.js
+-@RESPATH@/components/CaptivePortalDetectComponents.manifest
+-@RESPATH@/components/captivedetect.js
+ @RESPATH@/components/servicesComponents.manifest
+ @RESPATH@/components/cryptoComponents.manifest
+ @RESPATH@/components/TelemetryStartup.js
+@@ -520,26 +497,10 @@
+ @RESPATH@/components/Push.manifest
+ @RESPATH@/components/PushComponents.js
+ 
+-@RESPATH@/components/remotebrowserutils.manifest
+-@RESPATH@/components/RemoteWebNavigation.js
+ 
+ @RESPATH@/components/SlowScriptDebug.manifest
+ @RESPATH@/components/SlowScriptDebug.js
+ 
+-#ifdef MOZ_WEBRTC
+-@RESPATH@/components/PeerConnection.js
+-@RESPATH@/components/PeerConnection.manifest
+-#endif
+-
+-@RESPATH@/chrome/marionette@JAREXT@
+-@RESPATH@/chrome/marionette.manifest
+-@RESPATH@/components/marionette.manifest
+-@RESPATH@/components/marionette.js
+-
+-#ifdef MOZ_WEBSPEECH
+-@RESPATH@/components/dom_webspeechsynth.xpt
+-#endif
+-
+ @RESPATH@/components/nsAsyncShutdown.manifest
+ @RESPATH@/components/nsAsyncShutdown.js
+ 
+@@ -800,11 +761,6 @@
+ @BINPATH@/clang_rt.asan_dynamic-*.dll
+ #endif
+ 
+-
+-; media
+-@RESPATH@/gmp-clearkey/0.1/@DLL_PREFIX@clearkey@DLL_SUFFIX@
+-@RESPATH@/gmp-clearkey/0.1/manifest.json
+-
+ ; gfx
+ #ifdef XP_WIN
+ @RESPATH@/components/GfxSanityTest.manifest
