@@ -11,10 +11,10 @@ Type = forking
 PIDFile=/opt/couchbase/var/lib/couchbase/couchbase-server.pid
 WorkingDirectory = /opt/couchbase/var/lib/couchbase
 LimitNOFILE = 40960
-LimitCORE = unlimited
-LimitMEMLOCK = unlimited
-ExecStart = /opt/couchbase/bin/couchbase-server -noinput -detached > /opt/couchbase/var/lib/couchbase/logs/start.log 2>&1
-ExecStop = /opt/couchbase/bin/couchbase-server -k
+LimitCORE = infinity
+LimitMEMLOCK = infinity
+ExecStart = /opt/couchbase/bin/couchbase-server -- -noinput -detached > /opt/couchbase/var/lib/couchbase/logs/start.log 2>&1
+ExecStop = /opt/couchbase/bin/couchbase-server -- -k
 
 [Install]
 WantedBy = multi-user.target
