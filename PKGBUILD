@@ -5,7 +5,7 @@
 
 pkgname=iup
 pkgver=3.21
-pkgrel=1
+pkgrel=2
 pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"
@@ -25,14 +25,16 @@ build() {
   cd "$pkgname"
   # iupview not built due to needing static libraries
   # iuplua5 and iupconsole not built due to libcd package not installing libcdlua53
-  make iup iupgtk iupmot \
+  make iup \
+    iupgtk \
+    iupmot \
     iupcd \
     iupcontrols \
     iupmatrixex \
+    iupgl \
     iup_plot \
     iup_mglplot \
     iup_scintilla \
-    iupgl \
     iupglcontrols \
     iupim \
     iupole \
