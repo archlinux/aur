@@ -1,6 +1,6 @@
 pkgname=perl-vcg
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 _author="T/TE/TEEJAY"
 _perlmod="VCG"
 pkgdesc="Interface to the VCG graphing tool"
@@ -12,10 +12,8 @@ makedepends=(perl-ipc-run)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
 sha256sums=('c5095c203744e2b73ba15e24a3a4daef9a5c08f0ef92dcdaf80e9c961f1082bf')
-prepare(){
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
-}
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
