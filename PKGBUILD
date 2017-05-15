@@ -8,13 +8,13 @@
 _emoji_res_commit="db4c66e311a160b3f849d6c76890932c50701bf8"
 pkgname=telegram-desktop-systemqt-notoemoji
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental build of Telegram Desktop (using system Qt, emojis replaced with those from Noto Color Emoji)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats')
-makedepends=('cmake' 'libappindicator-gtk2' 'dee' 'git' 'gyp-git' 'libexif' 'libva' 'libwebp' 'mtdev' 'python' 'python2')
+makedepends=('cmake' 'libappindicator-gtk2' 'dee' 'git' 'gtk3' 'gyp-git' 'libexif' 'libva' 'libwebp' 'mtdev' 'python' 'python2')
 optdepends=(
     'libappindicator-gtk3: AppIndicator tray icon'
     'libappindicator-gtk2: AppIndicator tray icon'
