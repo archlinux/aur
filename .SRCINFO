@@ -1,6 +1,6 @@
 pkgbase = powershell-git
 	pkgdesc = A cross-platform automation and configuration tool/framework
-	pkgver = 6.0.0.alpha.17.17.g3f274aad
+	pkgver = 6.0.0.beta.1.10.g2d06c170
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	arch = x86_64
@@ -8,21 +8,18 @@ pkgbase = powershell-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = proot
-	makedepends = dotnet
+	makedepends = dotnet>=2.0
 	depends = bash
-	depends = icu55
+	depends = icu
 	provides = powershell
-	conflicts = powershell
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git
 	source = pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
 	source = googletest::git+https://github.com/google/googletest.git
 	source = os-release
-	source = build.sh
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = f5841baa62b1322c07f9394940cec818
-	md5sums = d20378ea8504200919c65de6592f0b24
 
 pkgname = powershell-git
 

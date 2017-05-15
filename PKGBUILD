@@ -2,26 +2,23 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.17.17.g3f274aad
+pkgver=6.0.0.beta.1.10.g2d06c170
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
-makedepends=('git' 'cmake' 'proot' 'dotnet')
-depends=('bash' 'icu55')
-conflicts=('powershell')
+makedepends=('git' 'cmake' 'proot' 'dotnet>=2.0')
+depends=('bash' 'icu')
 provides=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
         'pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop'
         'googletest::git+https://github.com/google/googletest.git'
-        'os-release'
-        'build.sh')
+        'os-release')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         'f5841baa62b1322c07f9394940cec818'
-         'd20378ea8504200919c65de6592f0b24')
+         'f5841baa62b1322c07f9394940cec818')
 
 pkgver() {
   cd $_pkgname
@@ -49,7 +46,7 @@ build() {
   popd
 
   PROOT_NO_SECCOMP=1 \
-  proot -b "$srcdir"/os-release:/etc/os-release "$srcdir"/build.sh
+  proot -b "$srcdir"/os-release:/etc/os-release "$srcdir"/powershell/build.sh
 }
 
 check() {
@@ -62,14 +59,15 @@ check() {
 
 
 package() {
-  cd $_pkgname/src/powershell-unix
+  cd $pkgname/src/powershell-unix
 
-  mkdir -p "$pkgdir"/usr/lib/$_pkgname
-  cp -a bin/Linux/netcoreapp*/ubuntu.16.04-x64 "$pkgdir"/usr/lib/$_pkgname
+  mkdir -p "$pkgdir"/usr/lib/$pkgname
+  cp -a bin/Linux/netcoreapp*/ubuntu.16.04-x64 "$pkgdir"/usr/lib/$pkgname
+  chmod +x "$pkgdir"/usr/lib/$pkgname
 
-  mkdir -p "$pkgdir"/usr/share/licenses/$_pkgname
-  cp ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
+  cp ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   mkdir -p "$pkgdir"/usr/bin
-  ln -s /usr/lib/$_pkgname/ubuntu.16.04-x64/powershell "$pkgdir"/usr/bin/powershell
+  ln -s "$pkgdir"/usr/lib/$pkgname/ubuntu.16.04-x64/powershell "$pkgdir"/usr/bin/powershell
 }
