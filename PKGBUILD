@@ -14,8 +14,8 @@ url="http://jdk.java.net/$_major/"
 license=('custom:Oracle BSD')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
-source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"
-        "http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/javafx-${_pkgver}_doc.zip"
+source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"
+        "http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/javafx-${_pkgver}_doc.zip"
         'LICENSE')
 sha256sums=('3d543051daf1c610a1075fbf783a911022b53934eb468c2daf2063850c9fd40b'
             'e088af1ef852234fb768a6d4c9058de5ae5ed1e72ac2fd6b90436db31a33254a'
