@@ -14,7 +14,7 @@ depends=(
     glew1.10
     libcurl-compat
     libpng12
-    gst-plugins-base
+    libvorbis
     sdl2
     webkitgtk2
 )
