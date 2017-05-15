@@ -1,6 +1,6 @@
 pkgname=great-little-radio-player
 pkgver=1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A robust internet radio station streamer"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/site/glrpgreatlittleradioplayer"
