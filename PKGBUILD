@@ -1,8 +1,8 @@
 pkgname=nodejs-lts-argon
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript (LTS release: Argon)'
-arch=('any')
+arch=('i686' 'x86_64')
 url='https://nodejs.org/'
 license=('MIT')
 depends=('openssl-1.0' 'zlib' 'icu') # 'libuv' 'v8' 'c-ares')
@@ -10,8 +10,9 @@ makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
-source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.xz")
-sha256sums=('b961350b8490c791bdd3663925662ba0fbe01e004b43f1c2779baffcc816b930')
+source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.xz" "icu59.patch")
+sha256sums=('d84e7544c2e31a2d0825b4f8b093d169bf8bdb1881ee8cf75ff937918e59e9cb'
+            'cbc1395c4d0cd66dd8757529f0fe1262a7c3534ed29b1c1e4de0d7b502237179')
 
 prepare() {
   cd node-v$pkgver
@@ -25,6 +26,8 @@ prepare() {
     -e 's_^\(.*\)python\( \+-c \+.*\)$_\1python2\2_'\
     -e "s_'python'_'python2'_" -i {} \;
   find test/ -type f -exec sed 's_python _python2 _' -i {} \;
+
+  patch -p 1 -i ../icu59.patch
 }
 
 build() {
