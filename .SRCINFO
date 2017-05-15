@@ -1,0 +1,17 @@
+pkgbase = libclipboard-git
+	pkgdesc = Lightweight cross-platform C clipboard library
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/czipperz/libclipboard
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = libxcb
+	provides = libclipboard
+	source = git://github.com/czipperz/libclipboard
+	sha256sums = SKIP
+
+pkgname = libclipboard-git
+
