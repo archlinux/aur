@@ -1,7 +1,7 @@
 # Maintainer: osfans <waxaca@163.com>
 _pkgname=opencc-gui
 pkgname=$_pkgname-git
-pkgver=r36.f10480b
+pkgver=r38.47b0e26
 pkgrel=1
 pkgdesc="Gui in Qt5 of Library for Open Chinese Convert"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://code.google.com/p/opencc/"
 license=('Apache License 2.0')
 depends=('opencc' 'qt5-base')
 makedepends=('git' 'qt5-tools')
-optdepends=('uchardet-git')
+optdepends=('uchardet')
 source=('opencc-gui::git+https://github.com/BYVoid/opencc-gui.git')
 md5sums=('SKIP')
 
@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
 	cd $srcdir/$_pkgname
+	sed -i "s/0.0.0//" src/charsetdetector.cpp
 	./build.sh
 }
 
