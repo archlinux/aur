@@ -1,7 +1,7 @@
 # Maintainer:  trashstar <trash@ps3zone.org>
 
 pkgname=xsdm-git
-pkgver=0.1.3.beta.r20.g26f280e
+pkgver=1.0.0.r1.g552b5e1
 pkgrel=1
 pkgdesc="Open-source unpacker for Dreamspark's SDC format."
 arch=('i686' 'x86_64')
