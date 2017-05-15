@@ -1,11 +1,6 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 # Thanks to: Ainola for the base PKGBUILD (gog-undertale)
 
-# All dependencies are included with the gog_owlboy_$version.sh file.
-# For good measure I was able to track all but 2 down:
-#   libCSteamworks - ??? Not entirely sure what this provides...
-#   libsteam_api - ??? Not entirely sure what this provides...
-
 pkgname='gog-stardew-valley'
 pkgver=2.6.0.7
 pkgrel=1
