@@ -18,7 +18,6 @@ _branch=master
 prepare() {
   cd "${pkgname}"
   git checkout ${_branch}
-  git pull
   
   # Fix missing /externals/
   [[ -f ${srcdir}/${pkgname}/src/RtAudio.h ]] || ln -s ${srcdir}/${pkgname}/externals/rtaudio-4.1.1/RtAudio.h ${srcdir}/${pkgname}/src/RtAudio.h
