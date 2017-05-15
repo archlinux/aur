@@ -6,7 +6,7 @@
 pkgname=davinci-resolve-beta
 _pkgname=resolve
 pkgver=14.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -86,10 +86,10 @@ EOF
 
 	msg2 "Making sure file ownership is correct..."
 	chown -R root:root "${pkgdir}/opt"
-	chmod 755 "${pkgdir}/opt/${_pkgname}/logs"
+	chmod a+w "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Any final tweaks..."
-	ln -s /tmp "${pkgdir}/opt/${_pkgname}/Media"
+	ln -s /tmp "${pkgdir}/opt/${_pkgname}/logs"
 
 	msg2 "Done!"
 }
