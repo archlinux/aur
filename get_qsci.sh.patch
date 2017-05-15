@@ -1,11 +1,35 @@
---- get_qsci.sh.old	2011-03-22 15:20:40.000000000 +0300
-+++ get_qsci.sh	2013-09-17 01:46:11.755695009 +0400
-@@ -6,7 +6,7 @@
+diff -ruN qscite-orig/get_qsci.sh qscite/get_qsci.sh
+--- qscite-orig/get_qsci.sh	2017-05-15 12:25:23.375996790 +0300
++++ qscite/get_qsci.sh	2017-05-15 12:29:36.973168032 +0300
+@@ -6,8 +6,8 @@
      /snapshot/ {next}
      /tar\.gz/ { print $2 }
    ' )
 -_download_link="http://www.riverbankcomputing.co.uk$_download_path"
-+_download_link=`echo $_download_path | sed "s#http://#http://optimate.dl.#" | sed "s#projects/pyqt/files#project/pyqt#"`
- _archive_filename=$( basename "$_download_path" )
+-_archive_filename=$( basename "$_download_path" )
++_download_link="https://downloads.sourceforge.net/project/pyqt/QScintilla2/QScintilla-2.10/QScintilla_gpl-2.10.tar.gz"
++_archive_filename=$( basename "$_download_link" )
  _archive_dir=$( echo "$_archive_filename" | sed 's/.tar.gz//' )
  _archive_size=$(
+   curl -sI "$_download_link" 2>/dev/null | awk '
+@@ -18,17 +18,17 @@
+ 
+ if [ -f "$_archive_filename" ]; then
+   _local_size=$( ls -l "$_archive_filename" | awk '{ print $5 }' )
+-  
++
+   if [ "$_local_size" != "$_archive_size" ]; then
+     rm -f "$_archive_filename"
+     echo "Downloading QScintilla2..."
+-    curl "$_download_link" -o "$_archive_filename"
++    wget "$_download_link"
+   else
+     echo "QScintilla2 already downloaded." > /dev/stderr
+   fi
+ else
+   echo "Downloading QScintilla2..."
+-  curl "$_download_link" -o "$_archive_filename"
++  wget "$_download_link"
+ fi
+ 
+ if [ -d "$_archive_dir" ]; then

@@ -1,5 +1,6 @@
---- qscite.pro.old	2011-03-22 15:20:40.000000000 +0300
-+++ qscite.pro	2013-09-17 02:36:51.998947959 +0400
+diff -ruN qscite-orig/qscite.pro qscite/qscite.pro
+--- qscite-orig/qscite.pro	2017-05-15 12:41:47.254988860 +0300
++++ qscite/qscite.pro	2017-05-15 12:43:45.165172448 +0300
 @@ -13,14 +13,14 @@
  }
  
@@ -14,7 +15,7 @@
    qsci_lib.commands += $(QMAKE) -after \"CONFIG += static\" qscintilla.pro &&
    qsci_lib.commands += $(MAKE) &&
 -  qsci_lib.commands += cd ../.. && cp QScintilla2/Qt4/libqscintilla2.a $(OBJECTS_DIR)
-+  qsci_lib.commands += cd ../.. && cp QScintilla2/Qt4Qt5/libqscintilla2.a $(OBJECTS_DIR)
++  qsci_lib.commands += cd ../.. && cp QScintilla2/Qt4Qt5/libqscintilla2_qt4.a $(OBJECTS_DIR)
    qsci_lib.depends = qsci_project
  
    QMAKE_EXTRA_TARGETS += qsci_project qsci_lib
@@ -23,8 +24,9 @@
    HEADERS += qterminal_pty.h
    SOURCES += qterminal_pty.cpp
 -  INCLUDEPATH += QScintilla2/Qt4
+-  LIBS    += build/libqscintilla2.a
 +  INCLUDEPATH += QScintilla2/Qt4Qt5
-   LIBS    += build/libqscintilla2.a
++  LIBS    += build/libqscintilla2_qt4.a
    !macx {
      LIBS    += -lutil
      DEFINES += QSCITE_MONO_FAMILY='\\"Monospace\\"'

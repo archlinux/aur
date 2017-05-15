@@ -9,20 +9,20 @@ arch=('i686' 'x86_64')
 url="http://qscite.googlecode.com/"
 license=('GPL')
 depends=('qt4')
-source=(http://qscite.googlecode.com/files/${pkgname}-r${_pkgrev}.tar.gz
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-r${_pkgrev}.tar.gz"
         get_qsci.sh.patch
         qscite.pro.patch)
 md5sums=('2ce7a915e5560725d897816688a4bef7'
-         '0bb49a6179912d6d0b674c5623a45a34'
-         'c13cc624b2ed1ce7a980afbb2d2bbc15')
+         '4720cc18cf7140b57b0aa4fb40cc6ee3'
+         '9dc1e5684571e8a30c71f2752a511dc3')
 
 prepare()
 {
   cd "${srcdir}/${pkgname}"
   # fix scintilla2 download path
-  patch -p0 < "${srcdir}/get_qsci.sh.patch"
+  patch -p1 -i "${srcdir}/get_qsci.sh.patch"
   # add install section and fix filepath
-  patch -p0 < "${srcdir}/qscite.pro.patch"
+  patch -p1 -i "${srcdir}/qscite.pro.patch"
   # fix version
   sed -i "s#0.5-svn190#${pkgver//_/-}#" qscite.desktop
 }
