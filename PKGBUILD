@@ -1,8 +1,8 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.com>
 
 pkgname=indicator-sensors-git
-pkgver=0.8.r28.gd267b5c
-pkgrel=3
+pkgver=0.8.r32.g6bfed17
+pkgrel=1
 pkgdesc="Small application to provide hardware sensor readings using the AppIndicator framework (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/alexmurray/indicator-sensors"
