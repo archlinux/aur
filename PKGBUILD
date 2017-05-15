@@ -5,7 +5,7 @@ pkgdesc="GLR parser"
 pkgrel=1
 url="https://tech.yandex.ru/tomita/"
 arch=("x86_64" "i686")
-license=("MLP-2.0")
+license=("MPL-2.0")
 depends=("libmystem")
 makedepends=("gcc>=4.81" "cmake>=2.8" "lua>=5.2")
 source=("git+https://github.com/yandex/tomita-parser.git")
