@@ -19,7 +19,6 @@ _branch=master
 prepare() {
   cd "${pkgname}"
   git checkout ${_branch}
-  git pull
   sed -i "s|env python|&2|" ladish_control
   sed -i "s|\(RELEASE = \).*|\1True|" wscript
 }
