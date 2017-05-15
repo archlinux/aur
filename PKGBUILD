@@ -9,13 +9,13 @@
 
 pkgname=lighttable
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="New interactive IDE that lets you modify running programs and embed anything from websites to games."
 url="http://www.lighttable.com/"
 license=('MIT')
-depends=("nss" "alsa-lib" "desktop-file-utils" "gconf" "libudev.so.0" "gtk2")
+depends=("nss" "alsa-lib" "desktop-file-utils" "gconf" "libudev0-shim" "gtk2")
 options=(!strip !emptydirs)
-arch=('i686' 'x86_64')
+arch=('x86_64')
 install=$pkgname.install
 
 source=(lighttable
