@@ -16,7 +16,6 @@ depends=(
     libpng12
     libvorbis
     sdl2
-    webkitgtk2
 )
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
