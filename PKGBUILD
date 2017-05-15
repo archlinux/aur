@@ -33,7 +33,7 @@ package() {
   install -Dm644 {${srcdir},${pkgdir}/usr/share/dbus-1/services}/org.gnome.ScreenSaver.service
 
   #Gconf Schemas (for dependencies)
-  install -Dm644 {${srcdir},${pkgdir}usr/share/glib-2.0/schemas}/apps.light-locker.gschema.xml
+  install -Dm644 {${srcdir},${pkgdir}/usr/share/glib-2.0/schemas}/apps.light-locker.gschema.xml
 
   # Redirect stray calls to xscreensaver-command
   install -Ddm755 "${pkgdir}/usr/bin/"
