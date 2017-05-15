@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hp-smh-templates
-pkgver=10.4.0_1455.24
+pkgver=10.5.0_1462.26
 pkgrel=1
 pkgdesc="HP System Management Homepage Templates"
 arch=(any)
@@ -11,7 +11,7 @@ groups=(hpproliant)
 license=("CUSTOM")
 
 source=("http://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/${pkgname}-${pkgver//_/-}.noarch.rpm")
-sha256sums=('7d479a66b6a5d7395cf0dac4f94a0cb3c551f6c5759b0207b24a783d478464d5')
+sha256sums=('749bd870f82c18bc312c8cd21cfa90550d49aa115032f704de7dbf3ee3db79b8')
 
 package() {
 	cp -a "$srcdir/"{opt,usr} "$pkgdir"
