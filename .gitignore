@@ -4,3 +4,4 @@ src/*
 *.deb
 *.tar.*
 sieve/*
+*.xpi
