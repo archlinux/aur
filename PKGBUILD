@@ -5,7 +5,7 @@
 
 pkgname=global
 pkgver=6.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A source code tag system"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/global/"
@@ -14,7 +14,7 @@ depends=('libltdl' 'bash' 'perl' 'sqlite')
 optdepends=('idutils' 'ctags' 'python-pygments' 'emacs' 'vim')
 makedepends=('python')
 options=(!emptydirs !libtool)
-source=("ftp://ftp.gnu.org/pub/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://ftp.gnu.org/pub/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('122f9afa69a8daa0f64c12db7f02981fe573f51a163fa3829ed4f832cd281505')
 
 prepare() {

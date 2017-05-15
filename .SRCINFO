@@ -18,7 +18,7 @@ pkgbase = global
 	optdepends = vim
 	options = !emptydirs
 	options = !libtool
-	source = ftp://ftp.gnu.org/pub/gnu/global/global-6.5.6.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/global/global-6.5.6.tar.gz
 	sha256sums = 122f9afa69a8daa0f64c12db7f02981fe573f51a163fa3829ed4f832cd281505
 
 pkgname = global
