@@ -3,7 +3,7 @@
 # Contributor: mareex <marcus dot behrendt dot 86 at gmail dot com>
 
 pkgname=gnome-shell-extension-lockkeys-git
-pkgver=r89.626b88f
+pkgver=r90.a6e0de0
 pkgrel=1
 pkgdesc="Lock key state indicator for GNOME Shell."
 arch=('any')
@@ -21,7 +21,6 @@ _branch=master
 prepare() {
   cd "${pkgname%-*}"
   git checkout ${_branch}
-  git pull
 }
 
 pkgver() {
