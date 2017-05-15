@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/hoangngan82/$_pkgname"
 license=('MIT')
 depends=(libxrender)
-optdepents=('awk: find and kill running instances')
 makedepends=(git)
 source=("git+https://github.com/hoangngan82/$_pkgname.git")
 md5sums=('SKIP')
