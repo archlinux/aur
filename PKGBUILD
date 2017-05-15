@@ -23,7 +23,6 @@ _branch=master
 prepare() {
   cd "${pkgname}"
   git checkout ${_branch}
-  git pull
 }
 
 pkgver() {
