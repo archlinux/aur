@@ -20,6 +20,7 @@ sha256sums=('fe0b068cccf86d5df55c1d48c6c4e3fc3fb2c4769b89b064e4052ff7e012f461')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs}
+	mkdir -p "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Extracting from bundle..."
 	cd "${srcdir}" || exit
@@ -85,9 +86,10 @@ EOF
 
 	msg2 "Making sure file ownership is correct..."
 	chown -R root:root "${pkgdir}/opt"
+	chmod 755 "${pkgdir}/opt/${_pkgname}/logs"
 
 	msg2 "Any final tweaks..."
-	ln -s /tmp "${pkgdir}/opt/${_pkgname}/logs"
+	ln -s /tmp "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Done!"
 }
