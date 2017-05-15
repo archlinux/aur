@@ -90,10 +90,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char    *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char     *termcmd[] = { "tmuxattach.sh", NULL };
+static const char     *termcmd[] = { "termite", NULL };
 static const char *mostusedcmd[] = { "mostused", NULL };
 static const char     *lockcmd[] = { "slock", NULL };
-static const char     *passcmd[] = { "keepass", "--auto-type", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -101,7 +100,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_v,      spawn,          {.v = mostusedcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
-	{ ControlMask|Mod1Mask,         XK_a,      spawn,          {.v = passcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
