@@ -4,7 +4,7 @@
 
 pkgname=pantheon-workarounds
 pkgver=5
-pkgrel=3
+pkgrel=4
 pkgdesc='Workarounds for modular and minimal Pantheon Desktop Environments'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/gala'
@@ -12,9 +12,9 @@ license=('GPL3')
 groups=('pantheon-qq')
 depends=('gconf' gnome-{keyring,settings-daemon-{elementary,compat},session}
          'polkit-gnome' 'xdg-user-dirs-gtk')
-optdepends=("pantheon-default-settings: Pantheon configuration and themeing"
-            "contractor-bzr: Service for sharing data between apps"
-            "pantheon-print-bzr: Print settings dialog"
+optdepends=("pantheon-default-settings-bzr: Pantheon configuration and themeing"
+            "contractor-git: Service for sharing data between apps"
+            "pantheon-print-git: Print settings dialog"
             "pantheon-agent-polkit-bzr: Polkit Authentication Agent")
 makedepends=('bzr' 'intltool')
 conflicts=(pantheon-session{,-bzr} gala{,-bzr})
