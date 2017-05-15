@@ -1,0 +1,14 @@
+pkgbase = nodejs-have-it
+	pkgdesc = The fastest NPM install does nothing because you already have it
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://github.com/bahmutov/have-it
+	arch = any
+	license = MIT
+	depends = npm
+	noextract = have-it-1.11.1.tgz
+	source = http://registry.npmjs.org/have-it/-/have-it-1.11.1.tgz
+	sha256sums = 840a1585960dfc2d4a18b1fed437929cd18111075b23fcbfa00822a6279edae9
+
+pkgname = nodejs-have-it
+
