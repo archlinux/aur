@@ -20,7 +20,7 @@ install=
 changelog=
 source=(git+https://github.com/mephux/i3-gnome.git)
 noextract=()
-md5sums=("SKIP")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgbase"
