@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('nuget'
 			 'git')
 depends=('ffmpeg'
-		 'libglvnd'
+		 'libgl'
 		 'mono')
 optdepends=()
 options=()
