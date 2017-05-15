@@ -46,7 +46,7 @@ _use_current=
 
 pkgbase=linux-lts-ck
 _srcname=linux-4.9
-pkgver=4.9.27
+pkgver=4.9.28
 pkgrel=1
 _ckpatchversion=1
 arch=('i686' 'x86_64')
@@ -72,7 +72,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '098948ea0680836413c604c20f2cd83220ef6aba0280c50ac43821f6536bf8c4'
+            '8e332a60444ccc4f32d05867f1fa75ffd8d958b1e9afea707fb60246bc93d57c'
             'SKIP'
             '5b9d8f4ef73f87e8595de66ccc38bad86e290fd9453bd536b9cc950f5344b82d'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
