@@ -1,5 +1,5 @@
 [Match]
-Name=anboxbr0
+Name=anbox0
 Driver=bridge
 
 [Network]

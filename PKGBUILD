@@ -2,7 +2,7 @@
 
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
-pkgver=r554.a21233c
+pkgver=r559.52f4a7e
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -23,8 +23,8 @@ sha256sums=('SKIP'
             '210eb93342228168f7bb632c8b93d9bfda6f53f62459a6b74987fa1e17530475'
             '3e07dc524a827c1651857cce28a06c1565bc5188101c140ed213bbafedc5abff'
             '7332d09865be553a259a53819cebddd21f661c7a251d78c2f46acd75c66676b6'
-            '3710ed32fee1a01ed43b0a42248f33eab1d20737167e543cfc325e68f8f02287'
-            '7577fab18c78de99827afdf9cb12876cc5d4194064554bf740adcdcc200b7f8c')
+            '44899328725667041e6e84912da81c1d0147b708006eb2c2bb6503f271629ff0'
+            '559190df4d6d595480b30d8b13b862081fc4aac52790e33eb24cf7fbcb8003b8')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
