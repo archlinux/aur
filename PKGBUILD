@@ -2,7 +2,7 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=vsxu-git
-pkgver=0.6.0.r18.g73b9e4ca
+pkgver=0.6.0.r19.g47dae803
 pkgrel=1
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
@@ -38,7 +38,6 @@ prepare() {
   cd "${pkgname}"
   [[ -d build ]] || mkdir build
   git checkout ${_branch}
-  git pull
   git submodule init
   git config submodule.dependencies.url "${srcdir}/dependencies"
   git config submodule.lib/compression/thirdparty/lzma-sdk.url "${srcdir}/lzma-sdk"
