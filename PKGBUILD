@@ -5,8 +5,8 @@ pkgdesc="A robust internet radio station streamer"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/site/glrpgreatlittleradioplayer"
 license=('GPL3')
-depends=('qt4' 'phonon' 'freetype2')
-optdepends=('phonon-gstreamer')
+depends=('qt4' 'phonon-qt4' 'freetype2')
+optdepends=('phonon-qt4-gstreamer')
 source=(https://www.dropbox.com/s/3skkc58a9egi3bm/greatlittleradioplayer_1.4.7.tar.gz)
 sha1sums=('2cf142b38130de51471cb451e9b88f14ce6ebb0f')
 
