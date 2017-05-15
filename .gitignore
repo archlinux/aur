@@ -1,6 +1,9 @@
 /*.tar.gz
 /*.tar.xz
 /tdesktop
+/GSL
+/variant
+/libtgvoip
 /gyp
 /pkg
 /src
