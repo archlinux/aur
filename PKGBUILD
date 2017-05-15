@@ -1,8 +1,8 @@
 # Maintainer: Dustin Willis Webber <dustin.webber@gmail.com>
 pkgname=i3-gnome-git
 _pkgbase=i3-gnome
-pkgver=5.1.r2.g55ea56b
-pkgrel=2
+pkgver=5.2
+pkgrel=1
 pkgdesc="Starts i3 inside a gnome session."
 arch=("any")
 url="https://github.com/mephux/i3-gnome"
