@@ -1,0 +1,22 @@
+pkgbase = ros-kinetic-libmavconn
+	pkgdesc = ROS - MAVLink communication library.
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = http://wiki.ros.org/mavros
+	arch = any
+	license = GPLv3, LGPLv3, BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-mavlink
+	makedepends = ros-kinetic-catkin
+	makedepends = boost
+	makedepends = console-bridge
+	depends = ros-kinetic-mavlink
+	depends = boost
+	depends = console-bridge
+	source = libmavconn::git+https://github.com/mavlink/mavros-release.git#tag=release/kinetic/libmavconn/0.19.0-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-libmavconn
+
