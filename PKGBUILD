@@ -5,11 +5,11 @@
 _author='R/RS/RSCHUPP'
 _perlmod=PAR
 pkgname=perl-par
-pkgver=1.014
-pkgrel=2
+pkgver=1.015
+pkgrel=1
 pkgdesc="Perl Archive Toolkit"
 arch=('any')
-url="http://search.cpan.org/~rschupp/PAR"
+url="http://search.cpan.org/search/PAR"
 license=('GPL' 'PerlArtistic')
 depends=('perl-archive-zip' 'perl-par-dist')
 provides=(
@@ -19,11 +19,9 @@ perl-par-setuptemp
 )
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('a8a6ebb9130e0466fce4eec9db7e666531d25a6eb818eff83963dc685942ed4b')
-prepare(){
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
-}
+sha256sums=('7d47e4b229739601f013b3043a680501cb9da48d8887d8d5d622a862a2115f46')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
   perl Makefile.PL
