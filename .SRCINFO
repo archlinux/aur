@@ -36,9 +36,9 @@ pkgbase = jre-devel
 	source = OTN-Early-Adopter-License-Terms.txt
 	sha256sums = 82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e
 	sha256sums = 5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370
-	source_i686 = http://www.java.net/download/java/jdk9/archive/169/binaries/jre-9-ea+169_linux-x86_bin.tar.gz
+	source_i686 = http://download.java.net/java/jdk9/archive/169/binaries/jre-9-ea+169_linux-x86_bin.tar.gz
 	sha256sums_i686 = 8c513c33f05a64d7e0c0d1e6b32d0d1aa863045f54471b9b8120caf62d40fa66
-	source_x86_64 = http://www.java.net/download/java/jdk9/archive/169/binaries/jre-9-ea+169_linux-x64_bin.tar.gz
+	source_x86_64 = http://download.java.net/java/jdk9/archive/169/binaries/jre-9-ea+169_linux-x64_bin.tar.gz
 	sha256sums_x86_64 = 4103e0cfd894aa634a6e01c275a22a19ad63c602c0f3652450c30201a871415d
 
 pkgname = jre-devel
