@@ -1,6 +1,6 @@
 pkgbase = ktextwidgets-light
 	pkgdesc = Advanced text editing widgets, light version without Text-to-Speech
-	pkgver = 5.33.0
+	pkgver = 5.34.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = ktextwidgets-light
 	depends = sonnet
 	provides = ktextwidgets
 	conflicts = ktextwidgets
-	source = https://download.kde.org/stable/frameworks/5.33/ktextwidgets-5.33.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.33/ktextwidgets-5.33.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.34/ktextwidgets-5.34.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.34/ktextwidgets-5.34.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 5e66c9cc636f851d3f9aeb412e056dbe672e4fd572f1aae5e37fdd52ccc83227
+	sha256sums = fc15f146da7f7fb1b758cb8213e62d609e53ad881493b05fe17c8d33161931c3
 	sha256sums = SKIP
 
 pkgname = ktextwidgets-light
