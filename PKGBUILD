@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=zynaddsubfx-git
-pkgver=3.0.1.r15.gf671cf5b
+pkgver=3.0.1.r33.g1b465614
 pkgrel=1
 pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
@@ -36,7 +36,6 @@ prepare() {
   cd "${pkgname}"
   [ -d build ] || mkdir build
   git checkout ${_branch}
-  git pull
   git submodule init
   git config submodule.DPF.url "${srcdir}/DPF"
   git config submodule.instruments.url "${srcdir}/instruments"
