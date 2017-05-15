@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname='pop-gtk-theme'
-pkgver=1.0.8
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='System76 Pop GTK+ Theme (GNOME, Budgie, XFCE, MATE)'
 arch=('any')
@@ -20,14 +20,11 @@ makedepends=(
     'sassc>=3.3.2'
     'parallel'
 )
-source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+files/system76-pop-gtk-theme_$pkgver.tar.xz"
-        'fix-chrome-nokto-install.patch')
-sha256sums=('8d38e1b64bbe3668103e5abced61135f2c4955848b0cd3df1da52464e6cc3932'
-            '11d334221e2fb8edb36d6e5ca50dd0083c12695394a66f61aa7846da5dbfa71c')
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('1b637fc557362943507210d5bc1f6af3baefed87828d2ad47013fd823c906784')
 
 prepare() {
-    patch -p0 -i fix-chrome-nokto-install.patch
-    cd gtk-theme
+    cd "$pkgname-$pkgver"
     ./autogen.sh \
         --disable-flashback \
         --disable-unity \
@@ -39,7 +36,7 @@ prepare() {
 }
 
 build() {
-    cd gtk-theme
+    cd "$pkgname-$pkgver"
     make
 }
 
@@ -56,6 +53,6 @@ package() {
         'xfdesktop>=4.12.2: XFCE desktop'
         'mate-desktop>=1.14.0: MATE desktop'
     )
-    cd gtk-theme
+    cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
 }
