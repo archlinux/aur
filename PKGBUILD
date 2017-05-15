@@ -2,7 +2,7 @@
 
 _pkgname=HaveIBeenPwned
 pkgname=keepass-plugin-haveibeenpwned
-pkgver=0.2.9.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='KeePass plugin to check all entries with URLs against the "Have I Been Pwned?" and Cloudbleed breach list'
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('keepass')
 arch=('any')
 url="https://github.com/andrew-schofield/keepass2-haveibeenpwned"
 source=("https://github.com/andrew-schofield/keepass2-haveibeenpwned/releases/download/v${pkgver}/${_pkgname}.plgx")
-sha512sums=('ce7dbc07422e2d23b1cc2f9d11c9d09b3989d0be10c2afdb400dc07dfd7937963318df65a9d89d733545f89c1d57489ce0905407886e8cb91cb13fba4bb3d948')
+sha512sums=('33ee4bfefa1d2685707e1df32945f6bdd65149e7eac8f1963a422d210f901d2ce3d97965abee0977db3ff684af35b68dc7ffa87c1bb356d5bd0f3dda6c36f3df')
 
 package() {
     install -Dm644 "${srcdir}"/${_pkgname}.plgx "${pkgdir}"/usr/share/keepass/plugins/${_pkgname}.plgx
