@@ -3,8 +3,8 @@
 # Contributor: Alexander Vynnyk <cosmonaut@mail.ua>
 
 pkgname=skychart
-pkgver=3.10
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -19,14 +19,13 @@ i686)
 ;;
 x86_64)
        _real_arch=x86_64
-       sha1sums=('d88b26fc04968e88c58c3ab21990af93f985813f')
+       sha1sums=('95af60ead022b3b92c5892c5e59bea7e442ebc17')
 ;;
 esac
 
-source=(http://sourceforge.net/projects/skychart/files/1-software/version_3.10/skychart-3.10-2854-linux_"${_real_arch}".tar.xz)
+source=(http://sourceforge.net/projects/skychart/files/1-software/version_${pkgver}/skychart-${pkgver}-3575-linux_"${_real_arch}".tar.xz)
 
 package() {
 mkdir "${pkgdir}"/usr/
-tar -xf "${srcdir}"/skychart-"$pkgver"-2854-linux_"${_real_arch}".tar.xz --strip 1 -C "${pkgdir}/usr/"
+tar -xf "${srcdir}"/skychart-"$pkgver"-3575-linux_"${_real_arch}".tar.xz --strip 1 -C "${pkgdir}/usr/"
 }
-
