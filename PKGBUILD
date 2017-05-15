@@ -1,5 +1,5 @@
 pkgname=nodejs-lts-boron
-pkgver=6.10.2
+pkgver=6.10.3
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript (LTS release: Boron)'
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
-source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.xz")
-sha256sums=('80aa11333da99813973a99646e2113c6be5b63f665c0731ed14ecb94cbe846b6')
+source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.xz" 'icu59.patch')
+sha256sums=('82262a703e61164e09170a14d88b1726720651b0c7ee87a277654247b21b5388' 'cbc1395c4d0cd66dd8757529f0fe1262a7c3534ed29b1c1e4de0d7b502237179')
 
 prepare() {
   cd node-v$pkgver
@@ -25,6 +25,7 @@ prepare() {
     -e 's_^\(.*\)python\( \+-c \+.*\)$_\1python2\2_'\
     -e "s_'python'_'python2'_" -i {} \;
   find test/ -type f -exec sed 's_python _python2 _' -i {} \;
+  patch -Np1 < ../icu59.patch
 }
 
 build() {
