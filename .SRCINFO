@@ -1,6 +1,6 @@
 pkgbase = networkmanager-noscan
 	pkgdesc = Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless cards)
-	pkgver = 1.6.2
+	pkgver = 1.8.0
 	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = i686
@@ -32,20 +32,19 @@ pkgbase = networkmanager-noscan
 	makedepends = perl-yaml
 	makedepends = python-gobject
 	makedepends = git
-	makedepends = vala
 	makedepends = jansson
 	makedepends = bluez-libs
 	makedepends = glib2-docs
 	provides = networkmanager
 	conflicts = networkmanager
 	replaces = networkmanager
-	source = git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=037a12f96eff09aa48481fda7ea602a3388afc74
+	source = git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=9c3df9caa3296a55fe54e6aa02fe8a11b27deaba
 	source = NetworkManager.conf
 	source = 20-connectivity.conf
 	source = disable_wifi_scan_when_connected.patch
 	sha256sums = SKIP
 	sha256sums = dd2d3a9c8a08ce961e263e1847453890f1b24c72a806d8c83a5b69b227a5ccec
-	sha256sums = 1961f50c8ed2668052bb543a29a11ccf8a5a1226473234a915aa139ceb32d472
+	sha256sums = 477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6
 	sha256sums = 3dfabdccd97074c948c924ece87935576e64675bdfef478e800a6da882861c2d
 
 pkgname = networkmanager-noscan
@@ -58,6 +57,7 @@ pkgname = networkmanager-noscan
 	depends = libnewt
 	depends = libndp
 	depends = libteam
+	depends = curl
 	depends = bluez-libs
 	optdepends = dnsmasq: connection sharing
 	optdepends = bluez: Bluetooth support

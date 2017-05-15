@@ -6,7 +6,7 @@ pkgname=networkmanager-noscan
 provides=('networkmanager')
 replaces=('networkmanager')
 conflicts=('networkmanager')
-pkgver=1.6.2
+pkgver=1.8.0
 pkgrel=2
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless
 cards)"
@@ -16,16 +16,16 @@ url="https://wiki.gnome.org/Projects/NetworkManager"
 _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
              dbus-glib iproute2 nss polkit wpa_supplicant libsoup systemd libgudev libmm-glib
-             libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
+             libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
              glib2-docs)
 checkdepends=(libx11 python-dbus)
-_commit=037a12f96eff09aa48481fda7ea602a3388afc74  # tags/1.6.2^0
+_commit=9c3df9caa3296a55fe54e6aa02fe8a11b27deaba  # tags/1.8.0^0
 source=("git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf 20-connectivity.conf
         disable_wifi_scan_when_connected.patch)
 sha256sums=('SKIP'
             'dd2d3a9c8a08ce961e263e1847453890f1b24c72a806d8c83a5b69b227a5ccec'
-            '1961f50c8ed2668052bb543a29a11ccf8a5a1226473234a915aa139ceb32d472'
+            '477d609aefd991c48aca93dc7ea5a77ebebf46e0481184530cceda4c0d8d72c6'
             '3dfabdccd97074c948c924ece87935576e64675bdfef478e800a6da882861c2d')
 
 prepare() {
@@ -38,7 +38,7 @@ prepare() {
 
 pkgver() {
   cd NetworkManager
-  git describe | sed 's/-dev/dev/;s/-/+/g'
+  git describe | sed 's/-dev/dev/;s/-rc/rc/;s/-/+/g'
 }
 
 build() {
@@ -110,8 +110,7 @@ build() {
 }
 
 package() {
-  depends=(libnm-glib iproute2 polkit wpa_supplicant libsoup libmm-glib libnewt libndp libteam
-           bluez-libs)
+  depends=(libnm-glib iproute2 polkit wpa_supplicant libsoup libmm-glib libnewt libndp libteam	curl bluez-libs)
   optdepends=('dnsmasq: connection sharing'
               'bluez: Bluetooth support'
               'openresolv: resolvconf support'
