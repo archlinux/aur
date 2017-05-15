@@ -1,37 +1,43 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
-# Contributor: flamelab <panosfilip@gmail.com>
 
-pkgname=wingpanel-standalone-bzr
-pkgver=r172
+pkgname=wingpanel-standalone-git
+pkgver=r283.54cd1fe
 pkgrel=1
-pkgdesc='The Pantheon Panel (without Gala dependencies)'
+pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/wingpanel'
+url='https://github.com/elementary/wingpanel'
 license=('GPL3')
-groups=('pantheon-qq')
-depends=('clutter' 'cogl' 'glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
-         'libgranite.so' 'slingshot-launcher-standalone-bzr')
-makedepends=('bzr' 'cmake' 'vala')
-optdepends=("indicator-powersave: On the fly power savings and performance toggles"
-            wingpanel-indicator-{ayatana,bluetooth,datetime,network,power,sound}-bzr": Tray applet")
-provides=(wingpanel{,-bzr} 'libwingpanel-2.0.so')
-conflicts=(wingpanel{,-bzr})
-install='wingpanel.install'
-source=('wingpanel::bzr+lp:wingpanel'
+groups=('pantheon-unstable' 'pantheon-qq')
+depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
+         'libgranite.so')
+makedepends=('cmake' 'git' 'granite-git' 'vala')
+optdepends=("slingshot-launcher-standalone-bzr: Application launcher (without Gala dependencies)"
+            wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sound}-git": Tray applet"
+            "wingpanel-indicator-ayatana-bzr: Unity 7 Tray applets"
+            "indicator-powersave: On the fly power savings and performance toggles"
+            "glippy-indicator: Excellent clipboard manager applet"
+            "indicator-sensors: Sensors readout applet")
+provides=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
+conflicts=('wingpanel')
+replaces=('wingpanel-standalone-bzr')
+source=('git+https://github.com/elementary/wingpanel.git'
         'minus-backgroundmanager.patch'
         'minus-galaplugin.patch'
-        'disable-expanded.patch')
+        'minus-gala-cmake.patch'
+        'y-is-broken-cogl.patch'
+        'autohide.patch')
 sha256sums=('SKIP'
             '0fd440cdb4b9871c5ee8812866b365e4a45b29813800345556db74429bacca3e'
             '1f50f34a7d36fc8331c1080c42c38f8208e35f4551eed97705919d304d410c95'
-            '383e96233c95335d2ef4390e15c7c3cff1c146b6736390e90e96e5e59ea43f3e')
+            '910130e7033db8874ed8d5e1734c6eb0ce75eed7ddf2620400c2a129cf05755d'
+            'df03ebb7fe08da77d51e6b96ab033b5c712530727d9fa2dd61420d2c7923fced'
+            '2705bd49c38debd20ad2759fa880238661530abdd8962a5373d0b431cd7cf084')
 
 pkgver() {
   cd wingpanel
 
-  echo "r$(bzr revno)"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -43,17 +49,27 @@ prepare() {
   mkdir build
 
   #Standalone patches
+  msg2 "minus bgm"
   patch -Np2 < ../minus-backgroundmanager.patch
+  msg2 "minus gpg"
   patch -Np2 < ../minus-galaplugin.patch
+  msg2 "minus gcm"
+  patch -Np2 < ../minus-gala-cmake.patch
 
-  #fix focus stealing
-  patch -Np2 < ../disable-expanded.patch
+  #autohide
+  #msg2 "autohide"
+  #patch -Np2 < ../autohide.patch
+
+  #Cogl can't be found, although it is installed. Arch-specific? .so bump?
+  msg2 "minus cgl"
+  patch -Np2 < ../y-is-broken-cogl.patch
 }
 
 build() {
   cd wingpanel/build
 
   cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
     -DGSETTINGS_COMPILE='FALSE'

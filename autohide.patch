@@ -1,0 +1,46 @@
+--- src/wingpanel/src/PanelWindow.vala	2017-05-14 21:30:04.493149180 +0900
++++ src/wingpanel/src/PanelWindow.vala.new	2017-05-14 21:34:12.288040769 +0900
+@@ -65,7 +65,9 @@
+         panel = new Widgets.Panel (popover_manager);
+         panel.realize.connect (on_realize);
+ 
++        panel.connect ("enter_notify_event", on_realize);
++        panel.connect ("leave_notify_event", on_idle);
+         this.add (panel);
+ 
+         this.set_size_request (monitor_width, -1);
+         this.resize (monitor_width, 1);
+@@ -83,12 +84,32 @@
+         return true;
+     }
+ 
++    private bool animation_unstep () {
++        if (panel_displacement == -1) {
++            return false;
++        }
++
++        panel_displacement++;
++
++        update_panel_dimensions ();
++
++        return true;
++    }
++
+     private void on_realize () {
+         update_panel_dimensions ();
+ 
+         //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
+ 
+-        Timeout.add (300 / panel_height, animation_step);
++        Timeout.add (250 / panel_height, animation_step);
++    }
++
++    private void on_idle () {
++        update_panel_dimensions ();
++
++        //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
++
++        Timeout.add (250 / panel_height, animation_unstep);
+     }
+ 
+     private void update_panel_dimensions () {
