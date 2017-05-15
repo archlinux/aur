@@ -3,6 +3,7 @@ Description=Radarr Service
 After=syslog.target network.target
 
 [Service]
+Environment=MONO_TLS_PROVIDER=legacy
 User=radarr
 Group=radarr
 ExecStart=/usr/bin/mono --debug /usr/lib/radarr/Radarr.exe -nobrowser -data=/var/lib/radarr
