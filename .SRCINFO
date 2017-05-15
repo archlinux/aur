@@ -1,0 +1,22 @@
+pkgbase = ros-kinetic-mavros-msgs
+	pkgdesc = ROS - mavros_msgs defines messages for MAVROS.
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = http://wiki.ros.org/mavros_msgs
+	arch = any
+	license = GPLv3, LGPLv3, BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-geometry-msgs
+	makedepends = ros-kinetic-std-msgs
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-geometry-msgs
+	source = mavros_msgs::git+https://github.com/mavlink/mavros-release.git#tag=release/kinetic/mavros_msgs/0.19.0-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-mavros-msgs
+
