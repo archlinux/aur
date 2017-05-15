@@ -1,19 +1,5 @@
 pkgbase = rust-bindgen-git
 	pkgdesc = Binding generator for rust language
-	pkgver = 0.14.0.ba150d9
-	pkgrel = 1
-	url = https://github.com/crabtw/rust-bindgen
-	arch = i686
-	arch = x86_64
-	license = BSD
-	makedepends = rust
-	source = git://github.com/crabtw/rust-bindgen.git
-	sha512sums = SKIP
-
-pkgname = rust-bindgen-git
-
-pkgbase = rust-bindgen-git
-	pkgdesc = Binding generator for rust language
 	pkgver = 0.25.0.18b7e62
 	pkgrel = 1
 	url = https://github.com/servo/rust-bindgen
