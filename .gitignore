@@ -6,3 +6,4 @@ tdesktop
 *.webp_*
 GSL
 variant
+libtgvoip
