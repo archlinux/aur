@@ -2,7 +2,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=php-pdo_sqlsrv
-pkgver=4.1.8
+pkgver=4.1.9
 pkgrel=1
 pkgdesc="Microsoft Drivers for PHP for SQL Server"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://pecl.php.net/package/pdo_sqlsrv"
 license=('MIT')
 depends=('php' 'msodbcsql')
 source=("https://pecl.php.net/get/pdo_sqlsrv-${pkgver}preview.tgz")
-sha256sums=('f2fe70bc17de9207fb0ee232e830243c994ad64e625e90740dcbf68694f6cd27')
+sha256sums=('b8bb76cd2b36ad99143fb4373f4811f68c27261ea037c704ba5fa7715380cd75')
 backup=('etc/php/conf.d/pdo_sqlsrv.ini')
 
 build() {
