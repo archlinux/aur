@@ -1,0 +1,37 @@
+pkgbase = ros-kinetic-mavros-extras
+	pkgdesc = ROS - Extra nodes and plugins for MAVROS.
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = http://wiki.ros.org/mavros_extras
+	arch = any
+	license = GPLv3, LGPLv3, BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-mavros
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-geometry-msgs
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-cv-bridge
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-image-transport
+	makedepends = ros-kinetic-mavros-msgs
+	makedepends = ros-kinetic-sensor-msgs
+	makedepends = ros-kinetic-cmake-modules
+	makedepends = ros-kinetic-urdf
+	makedepends = ros-kinetic-visualization-msgs
+	depends = ros-kinetic-mavros
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-cv-bridge
+	depends = ros-kinetic-image-transport
+	depends = ros-kinetic-mavros-msgs
+	depends = ros-kinetic-sensor-msgs
+	depends = ros-kinetic-urdf
+	depends = ros-kinetic-visualization-msgs
+	source = mavros_extras::git+https://github.com/mavlink/mavros-release.git#tag=release/kinetic/mavros_extras/0.19.0-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-mavros-extras
+
