@@ -1,7 +1,7 @@
 pkgbase = tasksh
 	pkgdesc = A shell command that wraps Taskwarrior commands
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tasktools.org/projects/tasksh.html
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tasksh
 	license = MIT
 	makedepends = cmake
 	depends = task
-	source = http://taskwarrior.org/download/tasksh-latest.tar.gz
+	source = http://taskwarrior.org/download/tasksh-1.2.0.tar.gz
 	sha512sums = 0c0a678a1cf48d1b7fcc123da5152d74bbb4334520252788ad38e3cb9bd2a5189902c066d7dbc848a23f6c7c25e53a8e1dc240dd6e57dbbdc993079a3e9fc417
 
 pkgname = tasksh
