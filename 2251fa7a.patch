@@ -1,0 +1,64 @@
+From 2251fa7a2239abeb6c5087fcee71a5d8869d9f6f Mon Sep 17 00:00:00 2001
+From: Balazs Scheidler <balazs.scheidler@balabit.com>
+Date: Mon, 6 Feb 2017 19:50:18 +0100
+Subject: [PATCH] tlscontext: fix segfault in X509_STORE_CTX_get_app_data(ctx)
+
+This patch fixes a potential segfault during X.509 certificate validation.
+What happens is that X509_STORE_CTX contains "application data", e.g.
+the application is able to associate a series of pointers with the validation.
+
+This uses an "id" to identify the user of the specific pointer.
+
+This mechanism is used by the SSL library (still in openssl) to store the
+pointer to the SSL session. The ID for this data is normally 0, however
+if libssl.so is unloaded while libcrypto.so is not, it might happen
+that this ID gets remapped to a non-zero value.
+
+Then what leads to the crash is that libssl starts to use ID 1
+to manage its SSL* pointer, while we in the validation code still
+use ID 0, causing a NULL deref.
+
+The exact reasons why this ID change happens is unclear, some apache
+related information can be found here:
+
+https://bz.apache.org/bugzilla/show_bug.cgi?id=32529
+
+You can also find more information in github issue #1310.
+
+Signed-off-by: Peter Gervai <grin@grin.hu>
+Signed-off-by: Balazs Scheidler <balazs.scheidler@balabit.com>
+---
+ lib/tlscontext.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/tlscontext.c b/lib/tlscontext.c
+index ff8e8df..95331f2 100644
+--- a/lib/tlscontext.c
++++ b/lib/tlscontext.c
+@@ -54,7 +54,7 @@ tls_get_x509_digest(X509 *x, GString *hash_string)
+ int
+ tls_session_verify_fingerprint(X509_STORE_CTX *ctx)
+ {
+-  SSL *ssl = X509_STORE_CTX_get_app_data(ctx);
++  SSL *ssl = (SSL *)X509_STORE_CTX_get_ex_data(ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
+   TLSSession *self = SSL_get_app_data(ssl);
+   GList *current_fingerprint = self->ctx->trusted_fingerpint_list;
+   GString *hash;
+@@ -106,7 +106,7 @@ tls_x509_format_dn(X509_NAME *name, GString *dn)
+ int
+ tls_session_verify_dn(X509_STORE_CTX *ctx)
+ {
+-  SSL *ssl = X509_STORE_CTX_get_app_data(ctx);
++  SSL *ssl = (SSL *)X509_STORE_CTX_get_ex_data(ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
+   TLSSession *self = SSL_get_app_data(ssl);
+   gboolean match = FALSE;
+   GList *current_dn = self->ctx->trusted_dn_list;
+@@ -179,7 +179,7 @@ tls_session_verify(TLSSession *self, int ok, X509_STORE_CTX *ctx)
+ int
+ tls_session_verify_callback(int ok, X509_STORE_CTX *ctx)
+ {
+-  SSL *ssl = X509_STORE_CTX_get_app_data(ctx);
++  SSL *ssl = (SSL *)X509_STORE_CTX_get_ex_data(ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
+   TLSSession *self = SSL_get_app_data(ssl);
+   /* NOTE: Sometimes libssl calls this function
+      with no current_cert. This happens when
