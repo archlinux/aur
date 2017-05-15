@@ -9,8 +9,8 @@
 pkgname='gog-stardew-valley'
 pkgver=2.6.0.7
 pkgrel=1
-pkgdesc='You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life."
-url="http://stardewvalley.net/'
+pkgdesc="You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life."
+url='http://stardewvalley.net/'
 license=('custom')
 arch=('i686' 'x86_64')
 optdepends=(
