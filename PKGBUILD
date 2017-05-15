@@ -1,8 +1,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=pamac-aur
-pkgver=4.3.4
-_pkgver=4.3.4
+pkgver=4.3.5
+_pkgver=4.3.5
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
@@ -21,14 +21,12 @@ options=(!emptydirs)
 install=pamac.install
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('4befca2d0f93665bfa6ddf4551fefc1f2e7f9f1ce446411e4555569752ee5d0b')
+sha256sums=('8e9347fcc236789e433c93aa5acab784acf7943e3ee5edc1957ee1f75811194b')
   
 prepare() {
   # adjust version string
   cd "$srcdir/pamac-$_pkgver"
   sed -i -e "s|\"$pkgver\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala
-  # error with vala 0.36 
-  sed -i -e "s|ignorepkgs_liststore.remove (iter);|ignorepkgs_liststore.remove (ref iter);|g" src/preferences_dialog.vala
   # patches here
 }
 
