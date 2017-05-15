@@ -16,7 +16,7 @@ source=("http://www.ullrich-online.cc/fingerprint/download/${pkgname}-${pkgver}.
 install="${pkgname}.install"
 md5sums=('699fbdb53d652cabd3c5fdd91078da58'
          '603612909a3d8b06d5ce4d59ebde4944'
-         '244a769249f2b25b8613798fc063f494')
+         '280400756a30b4ca2907e1e58c062875')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
