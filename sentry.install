@@ -1,8 +1,8 @@
 post_install(){
 
-    /usr/sbin/useradd -s /bin/false -d /opt/sentry -r sentry
-
     /usr/bin/mkdir -p /opt/sentry/celery
+    # Restart systemd-sysusers so it picks up our user account.
+    /usr/bin/systemd-sysusers /usr/lib/sysusers.d/sentry.conf
 
     # Generate a new configuration.
     if [ ! -e "/etc/sentry/sentry.conf.py" ] || [ ! -e "/etc/sentry/config.yml" ] ; then
@@ -173,6 +173,15 @@ will cause problems if you use something that requires dsym support, but it's
 presently the easiest way to install Sentry on a target host without LLVM
 installed.
 
+EOF
+
+}
+
+post_remove(){
+
+cat << EOF
+Sentry has been removed. If this is a permanent decision, you'll need to
+remove Sentry's system account manually (userdel sentry).
 EOF
 
 }

@@ -35,14 +35,16 @@ source=(
     "sentry.service"
     "sentry-web.service"
     "sentry.target"
+    "sentry-sysusers.conf"
 )
 sha256sums=(
-    496d5b1a26a259070f2714446f903b2eee00affcfb4ba94ca67ca54b9aae29d5 # sentry.install
+    53d337263403ff17e490e1e8d5ce0c1163968d0947fd4ebac8b3d07dfa6c50e4 # sentry.install
     d60b097721ec4acbc5b1232a0f29ef9d21d60228d17db655848a8e2a5c9a5281 # sentry-celery.service
     d22b9bde7c39d9d0f031ba1b01c955c9dbe4ffe3f3f083875fe557f75f0050f7 # sentry-cron.service
     3c471417a279ac6605d3bb82b7377eaab0e24efe9cf582a11eef0d9e4c89428e # sentry.service
     0fe0062a77f78b01ab3729f0217a9d6b448cbfb7521c4a04c79d6e3062b4c635 # sentry-web.service
     94121159756f7ac863e2b1149b530ea633efa2f3eeef57cc332e1f4cba724e2d # sentry.target
+    682917f4da89a526949fec71c1afa5849a3a73453b812c8edd945e2f8b146926 # sentry-sysusers.conf
 )
 
 package() {
@@ -78,5 +80,6 @@ package() {
     install -Dm0644 "${srcdir}/sentry-web.service" "${pkgdir}/usr/lib/systemd/system/sentry-web.service"
     install -Dm0644 "${srcdir}/sentry.service" "${pkgdir}/usr/lib/systemd/system/sentry.service"
     install -Dm0644 "${srcdir}/sentry.target" "${pkgdir}/usr/lib/systemd/system/sentry.target"
+    install -Dm0644 "${srcdir}/sentry-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/sentry.conf"
 
 }
