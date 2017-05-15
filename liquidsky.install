@@ -1,6 +1,6 @@
 post_install() {
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-    winetricks allfonts || 1
+    winetricks allfonts
 }
 
 post_upgrade() {
