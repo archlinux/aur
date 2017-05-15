@@ -5,8 +5,8 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.24.1+1+geb394f19d
-pkgrel=2
+pkgver=3.24.2
+pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
 arch=(i686 x86_64)
@@ -34,7 +34,7 @@ conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
 options=('!emptydirs')
-_commit=eb394f19d343a119cc3a887e4b2c563ddda8c5f4  # gnome-3-24
+_commit=01b6e32e8796a96298ea388a557ab0c1df329d37  # gnome-3-24
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
   "startup-notification.patch"
   "catalyst-workaround.patch"
