@@ -1,7 +1,7 @@
 pkgbase = ruby2.2
 	pkgdesc = An object-oriented language for quick and easy programming
 	pkgver = 2.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ruby-lang.org/en/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ruby2.2
 	makedepends = ttf-dejavu
 	makedepends = tk
 	depends = gdbm
-	depends = openssl
+	depends = openssl-1.0
 	depends = libffi
 	depends = libyaml
 	depends = gmp

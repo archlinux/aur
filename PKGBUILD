@@ -7,11 +7,11 @@
 pkgname=ruby2.2
 pkgver=2.2.7
 pkgdesc='An object-oriented language for quick and easy programming'
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url='http://www.ruby-lang.org/en/'
 license=(BSD custom)
-depends=(gdbm openssl libffi libyaml gmp zlib)
+depends=(gdbm openssl-1.0 libffi libyaml gmp zlib)
 optdepends=('tk: for Ruby/TK')
 makedepends=(gdbm openssl libffi doxygen graphviz libyaml ttf-dejavu tk)
 options=(!emptydirs)
@@ -20,6 +20,7 @@ source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz
 build() {
   cd ruby-${pkgver}
 
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   PKG_CONFIG=/usr/bin/pkg-config ./configure \
     --prefix=/opt/ruby2.2 \
     --program-suffix=-2.2 \
