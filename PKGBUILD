@@ -3,14 +3,14 @@
 
 pkgname=otf2bdf
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line OpenType to BDF font converter"
 arch=('i686' 'x86_64')
 url="http://sofia.nmsu.edu/~mleisher/Software/otf2bdf/"
 license=('custom')
 depends=('freetype2')
-source=("http://sofia.nmsu.edu/~mleisher/Software/otf2bdf/${pkgname}-${pkgver}.tbz2")
-md5sums=('6af09173615f1dd5ae294bbf67ac52c8')
+source=("https://github.com/mtorromeo/otf2bdf/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('5842a6c604a8aa747f9f49838e3a91ce587c8568681300bc70418aeebd7ecc43')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
