@@ -1,7 +1,7 @@
 # Maintainer: Hoang-Ngan Nguyen zhoangngan@gmail.com
 pkgname=rseye-git
 _pkgname=rseye
-pkgver=0.1
+pkgver=VERSION
 pkgrel=1
 pkgdesc="Freeze screen regularly to help prevent Repetitive Strain
 Injury (RSI) and protect the eyes."
