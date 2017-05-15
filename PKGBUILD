@@ -30,7 +30,7 @@ _pkgname=firefox
 pkgname=iceweasel
 epoch=1
 pkgver=$_debver.$_debrel
-pkgrel=4
+pkgrel=5
 pkgdesc="A libre version of Debian Iceweasel, the standalone web browser based on Mozilla Firefox."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
@@ -80,7 +80,7 @@ sha512sums=('54bdb53f65c10e43db5df12aaf1302926e2b66997c0aeeeac0834a0943ca244ec9d
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
             'f60f59b5d11b9ce5ad4c01eedae78f27131f17b07720e5ac35441d43e95987d81b9b2680e7258d73b1a8092fe3ae554072d07a41d6b337af82742886196bc375'
             '3ea15f1c2e0146388687cfbb100e5d8c553fa4276c9c2c61eaccb4fe88e4dbd6697f6266eb0255546997997ca34085d0cf211701fa63d8ab2df94f5291131d7e'
-            '89849831a9bc2b912baf15ca930055b31232c7bd9941aaf0605403e3a80474368c578c6244c9656bcf854cfabf87a73ebb9af5256bb52fdd5fdfe3b9dbc3e35c')
+            '504a5f1e1fbb9fb0a210052946e2057018a093dda48e5a0f4ca032793ab0c310b6560426c8061fc7fb9056d8a1c87c4cb0b036f769f1803c4f167df80cb2e5e2')
 validpgpkeys=(
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
