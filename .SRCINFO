@@ -9,7 +9,6 @@ pkgbase = clight-git
 	license = GPL
 	makedepends = git
 	depends = systemd
-	depends = libxcb
 	depends = popt
 	depends = libconfig
 	depends = gsl
