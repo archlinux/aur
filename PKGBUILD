@@ -6,7 +6,7 @@
 
 pkgname=tortoisehg
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 #_pkgchangeset=169d552db075
 pkgdesc="Graphical tools for Mercurial"
 url="https://tortoisehg.bitbucket.io"
@@ -19,7 +19,7 @@ optdepends=('python2-pygments: syntax highlighting'
 
 if [ -z ${_pkgchangeset+x} ];
 then
-	source=("http://bitbucket.org/tortoisehg/targz/downloads/${pkgname}-${pkgver}.tar.gz")
+	source=("http://bitbucket.org/tortoisehg/targz/downloads/${pkgname}-${pkgver}.tar.gz" "52d403239f00200f49e6258965508ab8692fae8a.patch")
 else
 	source=("$pkgname-$pkgver-${_pkgchangeset}.tar.gz::https://bitbucket.org/tortoisehg/thg/get/${_pkgchangeset}.tar.gz")
 fi
@@ -32,6 +32,8 @@ package() {
 		cd "${srcdir}/tortoisehg-thg-${_pkgchangeset}"
 	fi
 
+	patch -p1 -i "$srcdir/52d403239f00200f49e6258965508ab8692fae8a.patch"
+
 	python2 setup.py install --prefix=/usr --root="${pkgdir}"
 	install -Dm 644 "contrib/mergetools.rc" "${pkgdir}/etc/mercurial/hgrc.d/thgmergetools.rc"
 	install -Dm 644 "contrib/thg.desktop" "${pkgdir}/usr/share/applications/thg.desktop"
@@ -42,4 +44,5 @@ package() {
 	rm "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('4f3463ebb58a83aa7266c3bdc7e03de9c5e8c39d6793a56b76fd9cdfc29abd11')
+sha256sums=('4f3463ebb58a83aa7266c3bdc7e03de9c5e8c39d6793a56b76fd9cdfc29abd11'
+            '64f8817d72f870f5ab8b9dda727c60755d95fff2230983aec893527e9bb0e54f')

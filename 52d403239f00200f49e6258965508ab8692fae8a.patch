@@ -1,0 +1,101 @@
+# HG changeset patch
+# User Yuya Nishihara <yuya@tcha.org>
+# Date 1494243230 -32400
+# Branch stable
+# Node ID 52d403239f00200f49e6258965508ab8692fae8a
+# Parent  9d3acfb55d3d98f4817c2ae2aabb1cded1d01864
+compat: wrap scmutil.userrcpath() for hg 4.2 (fixes #4744)
+
+diff --git a/tortoisehg/hgqt/commit.py b/tortoisehg/hgqt/commit.py
+--- a/tortoisehg/hgqt/commit.py
++++ b/tortoisehg/hgqt/commit.py
+@@ -10,7 +10,7 @@
+ import tempfile
+ import time
+ 
+-from mercurial import util, error, scmutil, phases
++from mercurial import util, error, phases
+ from mercurial import obsolete  # delete if obsolete becomes enabled by default
+ 
+ from tortoisehg.util import hglib, i18n, shlib, wconfig
+@@ -1244,7 +1244,7 @@
+         self.saveToPath([fn])
+ 
+     def saveGlobal(self):
+-        self.saveToPath(scmutil.userrcpath())
++        self.saveToPath(hglib.userrcpath())
+ 
+     def saveToPath(self, path):
+         fn, cfg = hgrcutil.loadIniFile(path, self)
+diff --git a/tortoisehg/hgqt/settings.py b/tortoisehg/hgqt/settings.py
+--- a/tortoisehg/hgqt/settings.py
++++ b/tortoisehg/hgqt/settings.py
+@@ -7,7 +7,7 @@
+ 
+ import os
+ 
+-from mercurial import util, error, extensions, scmutil, phases
++from mercurial import util, error, extensions, phases
+ 
+ from tortoisehg.util import hglib, paths, wconfig, i18n, editor
+ from tortoisehg.util import terminal, gpg
+@@ -1224,7 +1224,7 @@
+         layout.addWidget(self.conftabs)
+         if qtlib.IS_RETINA:
+             self.conftabs.setIconSize(qtlib.barRetinaIconSize())
+-        utab = SettingsForm(rcpath=scmutil.userrcpath(), focus=focus)
++        utab = SettingsForm(rcpath=hglib.userrcpath(), focus=focus)
+         self.conftabs.addTab(utab, qtlib.geticon('thg-userconfig'),
+                              _("%s's global settings") % username())
+         utab.restartRequested.connect(self._pushRestartRequest)
+@@ -1562,9 +1562,9 @@
+                 func = e.values
+                 w = func(opts)
+             if e.globalonly:
+-                w.setEnabled(self.rcpath == scmutil.userrcpath())
++                w.setEnabled(self.rcpath == hglib.userrcpath())
+             elif e.noglobal:
+-                w.setEnabled(self.rcpath != scmutil.userrcpath())
++                w.setEnabled(self.rcpath != hglib.userrcpath())
+             lbl = QLabel(e.label)
+             lbl.setToolTip(e.tooltip)
+             widgets.append(w)
+diff --git a/tortoisehg/hgqt/sync.py b/tortoisehg/hgqt/sync.py
+--- a/tortoisehg/hgqt/sync.py
++++ b/tortoisehg/hgqt/sync.py
+@@ -12,7 +12,7 @@
+ from PyQt4.QtCore import *
+ from PyQt4.QtGui import *
+ 
+-from mercurial import hg, util, scmutil, httpconnection
++from mercurial import hg, util, httpconnection
+ 
+ from tortoisehg.util import hglib, paths, wconfig
+ from tortoisehg.util.i18n import _
+@@ -1441,7 +1441,7 @@
+             e.setText(n)
+ 
+     def accept(self):
+-        path = scmutil.userrcpath()
++        path = hglib.userrcpath()
+         fn, cfg = hgrcutil.loadIniFile(path, self)
+         if not hasattr(cfg, 'write'):
+             qtlib.WarningMsgBox(_('Unable to save authentication'),
+diff --git a/tortoisehg/util/hglib.py b/tortoisehg/util/hglib.py
+--- a/tortoisehg/util/hglib.py
++++ b/tortoisehg/util/hglib.py
+@@ -61,6 +61,14 @@
+     _parserevspec = revsetmod.parse
+     tokenizerevspec = revsetmod.tokenize
+ 
++try:
++    from mercurial import rcutil
++    userrcpath = rcutil.userrcpath
++except (ImportError, AttributeError):
++    # hg<4.2 (0f8ba0bc1154)
++    from mercurial import scmutil
++    userrcpath = scmutil.userrcpath
++
+ # TODO: use unicode version globally
+ def _(message, context=''):
+     return _gettext(message, context).encode('utf-8')
