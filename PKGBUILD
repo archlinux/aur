@@ -1,6 +1,6 @@
 pkgname=stacer
 _gitname=Stacer
-pkgver=v1.0.4.r2.gb54bc50
+pkgver=v1.0.6.r6.gc22c273
 pkgrel=1
 pkgdesc="Ubuntu System Optimizer"
 url="https://github.com/oguzhaninan/Stacer"
@@ -20,6 +20,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
   npm install
+  npm run build
 }
 
 package() {
@@ -27,7 +28,7 @@ package() {
   install -d "$pkgdir/opt/$pkgname"
   install -D "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   cp -R ./* "$pkgdir/opt/$pkgname"
-  install -D assets/img/icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -D assets/img/icons/icon256x256.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -D -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
