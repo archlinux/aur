@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="light-locker">
+
+  <schema path="/apps/light-locker/" id="apps.light-locker">
+
+    <key type="b" name="lock-on-suspend">
+      <default>true</default>
+      <summary>Lock on Suspend</summary>
+      <description>Lock the screen when the computer is suspended.</description>
+    </key>
+
+    <key type="b" name="late-locking">
+      <default>false</default>
+      <summary>Lock after screensaver ends</summary>
+      <description>Lock after screensaver has ended.</description>
+    </key>
+
+    <key type="u" name="lock-after-screensaver">
+      <range min="0" max="3600"/>
+      <default>5</default>
+      <summary>Seconds after screensaver to lock</summary>
+      <description>Lock the screen after the screensaver has been active for
+      this number of seconds. If 0, locking after the screensaver is
+      disabled.</description>
+    </key>
+
+    <key type="b" name="lock-on-lid">
+      <default>false</default>
+      <summary>Lock on lid close</summary>
+      <description>Lock the screen when lid of the computer is closed.</description>
+    </key>
+
+    <key type="b" name="idle-hint">
+      <default>false</default>
+      <summary>Set idle hint during screensaver</summary>
+      <description>Set the session idle hint while the screensaver is active.
+      </description>
+    </key>
+
+
+  </schema>
+</schemalist>
