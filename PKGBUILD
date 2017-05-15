@@ -6,6 +6,7 @@ pkgrel=1
 url="https://tech.yandex.ru/tomita/"
 arch=("x86_64" "i686")
 license=("MLP-2.0")
+depends=("libmystem")
 makedepends=("gcc>=4.81" "cmake>=2.8" "lua>=5.2")
 source=("git+https://github.com/yandex/tomita-parser.git")
 md5sums=('SKIP')
@@ -13,6 +14,7 @@ build(){
         cd "${srcdir}/${pkgname}"
         mkdir -p build
         cd build
+        sed -i 's/libmystem_c_binding.so/\/usr\/lib\/libmystem_c_binding.so/g' "${srcdir}/${pkgname}/src/FactExtract/Parser/lemmerlib/extlemmer.cpp"
         cmake ../src/ -DCMAKE_BUILD_TYPE=Release
         make
 }
