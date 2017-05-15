@@ -1,13 +1,13 @@
 pkgbase = filebydate
 	pkgdesc = date based file organizer
 	pkgver = 1.0.2
-	pkgrel = 1
-	url = http://trixon.se/projects/java/filebydate/
+	pkgrel = 2
+	url = https://trixon.se/projects/java/filebydate/
 	arch = any
 	license = Apache
 	makedepends = desktop-file-utils
 	depends = java-runtime=8
-	source = http://trixon.se/files/filebydate-1.0.2-bin.zip
+	source = https://trixon.se/files/filebydate-1.0.2-bin.zip
 	source = filebydate.sh
 	source = filebydate.desktop
 	sha256sums = 38fccc7b09caf89d4abafa2852e1750573531d2d4c0df044537ae502388a1974
