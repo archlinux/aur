@@ -14,7 +14,7 @@ build(){
         cd "${srcdir}/${pkgname}"
         mkdir -p build
         cd build
-        sed -i 's/libmystem_c_binding.so/\/usr\/lib\/libmystem_c_binding.so/g' "${srcdir}/${pkgname}/src/FactExtract/Parser/lemmerlib/extlemmer.cpp"
+        sed -i 's|libPath += Stroka("libmystem_c_binding.so");|libPath = Stroka("/usr/lib/libmystem_c_binding.so");|g' "${srcdir}/${pkgname}/src/FactExtract/Parser/lemmerlib/extlemmer.cpp"
         cmake ../src/ -DCMAKE_BUILD_TYPE=Release
         make
 }
