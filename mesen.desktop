@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mesen
+Version=
+Type=Application
+Exec="/opt/Mesen/Mesen" %f
+Icon=/opt/Mesen/Mesen.png
+Comment=A cross-platform NES/Famicom emulator.
+Categories=Game
+Terminal=false
+StartupNotify=true
