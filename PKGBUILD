@@ -1,7 +1,5 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
-# All dependencies are included with the gog_owlboy_$version.sh file.
-
 pkgname='gog-owlboy'
 pkgver=2.0.0.1
 pkgrel=1
@@ -31,21 +29,22 @@ package(){
     install -d "${pkgdir}/opt/${pkgname}/"
     install -d "${pkgdir}/opt/${pkgname}/support"
     install -d "${pkgdir}/usr/bin/"
-    cp -r "data/noarch/game/" "${pkgdir}/opt/${pkgname}/"
     
+    cp -r "data/noarch/game/" "${pkgdir}/opt/${pkgname}/"
     find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
+
     install -Dm755 "data/noarch/start.sh"               \
         "${pkgdir}/opt/${pkgname}/"
     install -Dm755 data/noarch/support/*.{sh,shlib} -t  \
         "${pkgdir}/opt/${pkgname}/support"
 
     # Desktop integration
-    install -Dm 644 "data/noarch/support/icon.png" \
+    install -Dm 644 "data/noarch/support/icon.png"                      \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "data/noarch/docs/End User License Agreement.txt" \
+    install -Dm644 "data/noarch/docs/End User License Agreement.txt"    \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${pkgname}.desktop" \
+    install -Dm 644 "${srcdir}/${pkgname}.desktop"                      \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "${srcdir}/${pkgname}" \
+    install -Dm755 "${srcdir}/${pkgname}"                               \
         "${pkgdir}/usr/bin/${pkgname}"
 }
