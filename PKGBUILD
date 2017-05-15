@@ -2,12 +2,12 @@
 
 pkgname=prosody-mod-lib-ldap-hg
 pkgver=tip
-pkgrel=1
+pkgrel=2
 pkgdesc="LDAP helper for other Prosody modules"
 arch=('any')
 url="https://modules.prosody.im/mod_lib_ldap.html"
 license=('MIT')
-depends=('prosody')
+depends=('prosody' 'lualdap-devurandom-git')
 makedepends=('mercurial')
 source=("hg+https://hg.prosody.im/prosody-modules/")
 sha1sums=('SKIP')
