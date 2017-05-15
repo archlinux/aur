@@ -9,6 +9,8 @@ url='https://github.com/KrumpetPirate/AAXtoMP3'
 license=('custom')
 depends=('ffmpeg' 'lame')
 makedepends=('git')
+provides=('aaxtomp3')
+conflicts=('aaxtomp3')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -20,7 +22,8 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
 
-    install -Dm 755 AAXtoMP3.sh "$pkgdir/usr/bin/AAXtoMP3.sh"
+    install -Dm 755 AAXtoMP3 "$pkgdir/usr/bin/AAXtoMP3"
+    install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
