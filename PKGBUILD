@@ -28,15 +28,17 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=7.0.18
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
 license=('PHP')
 
 
 url='http://www.php.net'
-makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'freetds' 'pcre' 'c-client')
+makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu' 
+			'openssl-1.0' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp' 
+			'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 
+			'libtool' 'freetds' 'pcre' 'c-client')
 
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
@@ -135,8 +137,20 @@ build() {
 		--with-xmlrpc=shared \
 		--with-xsl=shared \
 		--with-zlib \
-		--enable-pcntl 
+		--enable-pcntl \
 		"
+
+	# PHP 7.0 is unlikely to become compatible with openssl >= 1.1
+	# changed build environment
+	local _sav_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
+	local _sav_CFLAGS=$CFLAGS
+	local _sav_LDFLAGS=$LDFLAGS
+
+	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+	CFLAGS+=" -I/usr/include/openssl-1.0"
+	LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
+	export CFLAGS
+	export LDFLAGS
 
 	EXTENSION_DIR=/usr/lib/${pkgbase}/modules
 	export EXTENSION_DIR
@@ -145,6 +159,7 @@ build() {
 	mkdir ${_build}
 	cd ${_build}
 	ln -s ../${_pkgbase}-${pkgver}/configure
+
 	./configure ${_phpconfig} \
 		--enable-cgi \
 		--enable-fpm \
@@ -160,6 +175,7 @@ build() {
 	# reuse the previous run; this will save us a lot of time
 	cp -a ${_build} ${srcdir}/build-apache
 	cd ${srcdir}/build-apache
+
 	./configure ${_phpconfig} \
 		--with-apxs2 \
 		${_phpextensions}
@@ -168,17 +184,22 @@ build() {
 	# phpdbg
 	cp -a ${_build} ${srcdir}/build-phpdbg
 	cd ${srcdir}/build-phpdbg
+
 	./configure ${_phpconfig} \
 		--enable-phpdbg \
 		${_phpextensions}
 	make
 	cd ../../
+
+	export PKG_CONFIG_PATH=$_sav_PKG_CONFIG_PATH
+	export CFLAGS=$_sav_CFLAGS
+	export LDFLAGS=$_sav_LDFLAGS
 }
 
 
 package_php70() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development'
-	depends=('libxml2' 'curl' 'libzip' 'pcre')
+	depends=('libxml2' 'curl' 'libzip' 'pcre' 'openssl-1.0')
 	replaces=('php70-ldap')
 	conflicts=('php70-ldap')
 	provides=("${_pkgbase}=$pkgver")

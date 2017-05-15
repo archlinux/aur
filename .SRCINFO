@@ -1,7 +1,7 @@
 pkgbase = php70
 	pkgdesc = PHP scripting language package for stable release of 7.0 series
 	pkgver = 7.0.18
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = php70
 	makedepends = gd
 	makedepends = gmp
 	makedepends = icu
+	makedepends = openssl-1.0
 	makedepends = libmcrypt
 	makedepends = libxslt
 	makedepends = libzip
@@ -50,6 +51,7 @@ pkgname = php70
 	depends = curl
 	depends = libzip
 	depends = pcre
+	depends = openssl-1.0
 	provides = php=7.0.18
 	conflicts = php70-ldap
 	replaces = php70-ldap
