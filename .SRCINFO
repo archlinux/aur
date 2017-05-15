@@ -1,6 +1,6 @@
 pkgbase = ghostwriter-l10n-git
 	pkgdesc = A cross-platform, aesthetic, distraction-free Markdown editor
-	pkgver = v1.4.2.r125.gda5650c
+	pkgver = v1.5.0.r0.g4fae783
 	pkgrel = 1
 	url = https://wereturtle.github.io/ghostwriter/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ghostwriter-l10n-git
 	provides = ghostwriter
 	conflicts = ghostwriter
 	conflicts = ghostwriter-git
-	source = ghostwriter::git+https://github.com/wereturtle/ghostwriter.git#commit=da5650c
+	source = ghostwriter::git+https://github.com/wereturtle/ghostwriter.git#commit=4fae783
 	sha256sums = SKIP
 
 pkgname = ghostwriter-l10n-git
