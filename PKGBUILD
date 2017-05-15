@@ -7,7 +7,7 @@
 #   libsteam_api - ??? Not entirely sure what this provides...
 
 pkgname='gog-stardew-valley'
-pkgver=2.4.0.5
+pkgver=2.6.0.7
 pkgrel=1
 pkgdesc='You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life."
 url="http://stardewvalley.net/'
@@ -26,7 +26,7 @@ sha256sums=(
     '7e03458fab2b426cce514a42663e56efd33d072bd319f513a5c8bdf7f4e09905'
     'ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff'
     'ce77054c463d2ce47c480a6ede84d8410cbcdc12c45518f530b84aaed042eddf'
-    'e639fda040a54b1778e5956ebfb3506b36a2db29988ec7e2d9710176144f9f67'
+    '4c0ea4455430f18d159f745103f24512d53624ba65745a394be31c2624c49ec9'
 )
 DLAGENTS+=(
     "gog::/usr/bin/echo %u Download the GOG file to ${PWD} or set up a gog:// DLAGENT."
