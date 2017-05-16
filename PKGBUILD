@@ -2,7 +2,7 @@
 
 pkgname=cyberfox-kde-bin
 pkgver=52.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="
 'KDE Plasma Edition' of the fast, stable & reliable x64-bit web browser. It contains KDE patches, which contains KDE file dialogs, file associations, protocol handlers and other KDE Plasma integration features."
 arch=('x86_64')
@@ -47,17 +47,17 @@ echo -e "Available languages:
   (zh-hans) Chinese (Simplified); (zh-hant) Chinese (Traditional)
 "
 printf "Type language code of language you wish to download and install (for example: en or pl): "
-read chosenlang
-if [ "$chosenlang" == "pl" ]; then
+read _chosenlang
+if [ "$_chosenlang" == "pl" ]; then
 	printf "\nWITAJCIE RODACY :)\n";
-	wget -O $srcdir/cyberfox-locale-${chosenlang}_${pkgver}_amd64.deb https://hawkeye116477.github.io/cyberfox-deb/pool/main/c/cyberfox/cyberfox-locale-${chosenlang}_${pkgver}_amd64.deb;
-	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/cyberfox-locale-${chosenlang}_${pkgver}_amd64.deb
+	wget -O $srcdir/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb https://hawkeye116477.github.io/cyberfox-deb/pool/main/c/cyberfox/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb;
+	msg2 "Wypakowywanie polskiego języka..."
+    bsdtar -xf $srcdir/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
 else
-    wget -O $srcdir/cyberfox-locale-${chosenlang}_${pkgver}_amd64.deb https://hawkeye116477.github.io/cyberfox-deb/pool/main/c/cyberfox/cyberfox-locale-${chosenlang}_${pkgver}_amd64.deb;
+    wget -O $srcdir/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb https://hawkeye116477.github.io/cyberfox-deb/pool/main/c/cyberfox/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/cyberfox-locale-${chosenlang}_${pkgver}_amd64.deb
+    bsdtar -xf $srcdir/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
 fi;
                     break;;
@@ -96,4 +96,4 @@ bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
   msg2 "Creating symlink to hyphen..."
   ln -Ts /usr/share/hyphen "$pkgdir/opt/cyberfox/hyphenation"
 }
-sha256sums=('6944f99ec1543c1f27f58b68278a81fbfe21e718d3f9d8ebfbefe0ca56476848')
+sha256sums=('51ba269769fb29448047ec1ef6270eb684a440dc2de4688a4e60557643721bd1')
