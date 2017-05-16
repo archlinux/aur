@@ -1,0 +1,19 @@
+pkgbase = rtpproxy
+	pkgdesc = High-performance software proxy for RTP streams / announcements
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.rtpproxy.org/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = libsndfile
+	depends = libsystemd
+	optdepends = systemd: systemd support
+	backup = etc/default/rtpproxy
+	source = https://github.com/sippy/rtpproxy/archive/v2.0.0.tar.gz
+	source = unix_socket.patch
+	sha256sums = b52bf2a302a8f08c269217e5d507f3c3ba38f4b627bb7029c8dac8ec268b23c6
+	sha256sums = 4fa74dbab3b2e813a679384aaa85b1c965861e085d0f9616851e28e64f0aada9
+
+pkgname = rtpproxy
+
