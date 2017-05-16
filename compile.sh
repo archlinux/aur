@@ -5,3 +5,5 @@ rm -rf src/
 [[ "$(hostname)" == "uh-lin" ]] && cp config.def.h.work config.def.h
 updpkgsums
 makepkg -fi --noconfirm
+rm -rf dwm/
+rm config.def.h

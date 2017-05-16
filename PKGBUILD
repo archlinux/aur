@@ -27,9 +27,9 @@ source=("$_pkgname::git+http://git.suckless.org/dwm"
         dwm-6.1-center.diff)
 
 md5sums=('SKIP'
-         'e26bc804475cd257bb9e5253a97cdecd'
+         '39759b61b32f3525e8961b835bec8e33'
          '948dad346b57a0bdcc8eec5329597a41'
-         '8d309c744a149e807b66139978301c9b'
+         'e471095f822539e533aafcb4a80cf0ef'
          '5f6f840c692f43f7e349bb87e895ff26')
 
 prepare() {
