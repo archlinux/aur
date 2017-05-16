@@ -1,6 +1,6 @@
 # Maintainer: Elias Kosunen <elias dot kosunen at gmail dot com>
 pkgname=varuna
-pkgver=v0.1.0
+pkgver=v0.1.1
 pkgrel=2
 pkgdesc="Compiler for the WIP programming language"
 arch=('i686' 'x86_64')
