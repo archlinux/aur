@@ -4,7 +4,7 @@ pkgname=gridcoinresearch-qt
 pkgver=3.5.8.9
 pkgrel=1
 pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
-depends=('boost-libs' 'qrencode' 'qt5-base' 'libzip' 'miniupnpc' 'curl' 'boinc')
+depends=('boost-libs' 'qrencode' 'qt5-base' 'qt5-charts' 'libzip' 'miniupnpc' 'curl' 'boinc')
 makedepends=('boost' 'qt5-tools' 'qrencode' 'db')
 
 arch=('i686' 'x86_64' 'armv7h')
