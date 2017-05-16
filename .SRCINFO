@@ -1,12 +1,14 @@
 pkgbase = laz-perf-git
 	pkgdesc = Alternative LAZ implementation for C++ and JavaScript
 	pkgver = 20170516
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hobu/laz-perf
 	arch = any
 	license = LGPL
 	makedepends = cmake
 	makedepends = git
+	provides = laz-perf
+	conflicts = laz-perf
 	source = git://github.com/hobu/laz-perf.git
 	sha512sums = SKIP
 
