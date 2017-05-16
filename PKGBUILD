@@ -26,19 +26,12 @@ prepare() {
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
   export CC_OPT_FLAGS="-march=native"
-  # enable jemalloc support
   export TF_NEED_JEMALLOC=1
-  # disable Google Cloud Platform support
   export TF_NEED_GCP=0
-  # disable Hadoop File System support
   export TF_NEED_HDFS=0
-  # enable XLA JIT compiler
   export TF_ENABLE_XLA=1
-  # disable VERBS support
   export TF_NEED_VERBS=0
-  # disable OpenCL support
   export TF_NEED_OPENCL=0
-  # disable MKL support
   export TF_NEED_MKL=0
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
@@ -58,7 +51,6 @@ build() {
   cd ${srcdir}/tensorflow-cuda
   export TF_NEED_CUDA=1
   export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
-  # For next version instead of the gcc-5 stuff:
   export TF_CUDA_CLANG=0
   export CLANG_CUDA_COMPILER_PATH=/usr/bin/clang
   export CUDA_TOOLKIT_PATH=/opt/cuda
