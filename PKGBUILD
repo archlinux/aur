@@ -6,7 +6,7 @@
 pkgname=xtensa-unknown-elf-binutils
 _pkgver=2.28
 pkgver=2.28.0
-_pkgverpatch=$pkgver
+_pkgverpatch=2.27
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=('i686' 'x86_64' 'armv7h')
