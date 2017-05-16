@@ -1,0 +1,15 @@
+pkgbase = threelayout
+	pkgdesc = Keyboard layout designed by Jack Rosenthal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jackrosenthal/threelayout
+	install = threelayout.install
+	arch = any
+	license = GPL
+	makedepends = ckbcomp
+	makedepends = coreutils
+	source = https://raw.githubusercontent.com/jackrosenthal/threelayout/master/linux/xkb/symbols/3l
+	sha256sums = e56a4cda872d7c20c4ad6e544217f19095c9dfaf519b8abbba5fdf27957b0c76
+
+pkgname = threelayout
+

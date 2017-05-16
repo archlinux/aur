@@ -1,0 +1,11 @@
+post_install() {
+    echo "Threelayout Setup"
+    echo "-------------------------"
+    echo "To use in X; if using systemd, run 'localectl set-keymap 3l'."
+    echo "else run 'setxkbmap 3l'"
+    echo "-------------------------"
+    echo "To use the layout at a virtual terminal/console, run \'loadkeys 3l\'."
+    echo "To change the default console layout,"
+    echo "edit /etc/vconsole.conf and change KEYMAP to '3l'"
+}
+
