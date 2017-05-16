@@ -5,14 +5,14 @@
 
 _pkgname=vocal
 pkgname=$_pkgname-git
-pkgver=2.0.13.beta.r13.gbced2e2
+pkgver=2.0.15.r0.g86d0456
 pkgrel=1
 pkgdesc="Podcast Client for the Modern Desktop"
 arch=('i686' 'x86_64')
 url="http://www.vocalproject.net"
 license=('GPL3')
-depends=('libnotify' 'libxml2' 'granite' 'gtk3' 'gstreamer' 'sqlite' 'clutter-gtk' 'clutter-gst' 'webkit2gtk')
-makedepends=('git' 'vala' 'cmake')
+depends=('clutter-gst' 'clutter-gtk' 'dconf' 'desktop-file-utils' 'granite' 'gstreamer' 'gtk-update-icon-cache' 'gtk3' 'libnotify' 'libxml2' 'sqlite' 'webkit2gtk')
+makedepends=('cmake' 'git' 'vala')
 provides=($_pkgname)
 conflicts=($_pkgname)
 #source=($_pkgname::git://github.com/needle-and-thread/vocal.git)
@@ -35,12 +35,17 @@ build() {
   cd $_pkgname
   rm -rf build
   mkdir build
+
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr    # -DGSETTINGS_LOCALINSTALL=1 -DGSETTINGS_COMPILE=1
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=0   # -DGSETTINGS_LOCALINSTALL=1
   make
 }
 
 package() {
+  # Patch
+  mv $_pkgname/build/com.github.needle-and-thread.vocal.desktop{.in,}
+  mv $_pkgname/data/com.github.needle-and-thread.vocal.appdata.xml.in $_pkgname/build/com.github.needle-and-thread.vocal.appdata.xml
+
   cd $_pkgname/build
   make DESTDIR="$pkgdir/" install
 }
