@@ -25,7 +25,7 @@ prepare() {
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
-  export CC_OPT_FLAGS="-march=x86-64"
+  export CC_OPT_FLAGS="-march=native"
   # enable jemalloc support
   export TF_NEED_JEMALLOC=1
   # disable Google Cloud Platform support
