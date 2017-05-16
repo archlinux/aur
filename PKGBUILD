@@ -5,7 +5,7 @@
 # Contributor: strata <strata@dropswitch.net>
 pkgname=lua51-sql-sqlite
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.keplerproject.org/luasql/'
 license=('MIT')
