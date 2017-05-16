@@ -13,6 +13,8 @@ pkgbase = deezer-desktop-linux-git
 	makedepends = gcc-libs
 	makedepends = lib32-gcc-libs
 	makedepends = pepper-flash
+	source = deezer-desktop-linux.sh
+	md5sums = 2f48f029c76a6633a1c0bb50cde7a800
 
 pkgname = deezer-desktop-linux-git
 
