@@ -1,8 +1,8 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_srcname=linux-4.10
-pkgver=4.10.14
+_srcname=linux-4.11
+pkgver=4.11.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/snoonan/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -21,15 +21,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-xhci-demote-annoying-warning.patch'
         )
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '23943754227405d3e2beacbd20e9a73c27fc2b22eb7345e9c185f0dfc0c1fc1a'
+            '0d96845b0f1bbe47a62659f48367948c4e747f995694927aa309e0e5e1556949'
             'SKIP'
             'SKIP'
             'SKIP'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
-            '4fc90b07eb212f00132cdde0a5318b1c89c51c97c0af3dcc32c494f4b06000f3')
+            'f4ee2c2aed01b984b7ede924cbabefaccedc854b338901568d03a45320ea8056')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
