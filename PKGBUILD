@@ -2,7 +2,7 @@
 
 pkgname=naemon
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="System and network monitoring application"
 arch=('i686' 'x86_64')
 url="http://naemon.org"
@@ -72,7 +72,7 @@ package() {
 
   chown -R 44:44 "$pkgdir"/var/{cache,lib,log}/$pkgname
   chown -R 44:44 "$pkgdir"/etc/naemon
-  chmod -R 770 "$pkgdir"/var/{cache,lib,log}/$pkgname
+  chmod -R 750 "$pkgdir"/var/{cache,lib,log}/$pkgname
 
   install -Dm644 "$srcdir"/$pkgname.service \
     "$pkgdir"/usr/lib/systemd/system/$pkgname.service
