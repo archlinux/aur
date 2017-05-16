@@ -20,8 +20,8 @@ pkgdesc='Qt Creator prerelease/latest'
 arch=('x86_64')
 url='http://qt.io/ide'
 license=('GPL')
-provides=('qtcreator')
-conflicts=('qtcreator')
+provides=('qtcreator' 'qbs')
+conflicts=('qtcreator' 'qbs')
 depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'llvm')
 optdepends=('qbs'
             'qt5-doc: integrated Qt documentation'
@@ -50,7 +50,7 @@ build() {
   [[ -d build ]] && rm -r build
   mkdir build && cd build
 
-  QMAKESPEC=linux-clang QTC_PREFIX=/usr LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr ${_qmake_cmd} QMAKE_CFLAGS_ISYSTEM=-I CONFIG+=journald -r ../${_filename}/qtcreator.pro
+  QMAKESPEC=linux-clang QTC_PREFIX=/usr LLVM_INSTALL_DIR=/usr ${_qmake_cmd} QMAKE_CFLAGS_ISYSTEM=-I CONFIG+=journald -r ../${_filename}/qtcreator.pro
   make
   make docs -j1
 }
