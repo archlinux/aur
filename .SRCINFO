@@ -1,0 +1,11 @@
+pkgbase = display-mode-switcher
+	pkgdesc = The simple application to switch the display with one click between single and dual mode
+	pkgver = 0.1
+	pkgrel = 0
+	url = http://aur.archlinux.org/packages/display-mode-switcher/
+	arch = any
+	license = BSD
+	depends = gnome-shell
+
+pkgname = display-mode-switcher
+
