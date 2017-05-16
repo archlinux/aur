@@ -1,0 +1,18 @@
+pkgbase = rappel-git
+	pkgdesc = A pretty janky assembly REPL
+	pkgver = r26.a969940
+	pkgrel = 1
+	url = https://github.com/yrp604/rappel
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	depends = libedit
+	depends = nasm
+	depends = binutils
+	depends = gcc
+	source = rappel::git+https://github.com/yrp604/rappel
+	md5sums = SKIP
+
+pkgname = rappel-git
+
