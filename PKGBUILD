@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="6.0.322.0"
+pkgver="6.0.322.3"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -14,10 +14,10 @@ _x64file="EditorV6.x64.msi"
 _installdir="/usr/lib"
 
  source_x86_64+=($_downloadsource/$_x64file)
- sha256sums_x86_64+=('a0aad75f6e6d3aa4c968ee93e64738c3c70dee1afb5dbb9bc862229cd2d8ccba')
+ sha256sums_x86_64+=('d35e1c87b60406f4fc0824bfa2336c49d28ba6f46bf334b23e60b65c03e7ef28')
 
  source_i686+=($_downloadsource/$_x86file)
- sha256sums_i686+=('a68992b4e921ad95c87920f24e9c861afbb2f7765dc70f7ade00121bc667b356')
+ sha256sums_i686+=('35728e25c20b75ca10a6f3d8fc760b3194943144fcd9c594ba34b7bb7188de83')
 
 prepare()
 {
@@ -262,8 +262,7 @@ package()
  icotool -x "$srcdir/Icon.AppIco" -o "$srcdir"
 
  _num=1 
- for _size in 256 128 64 48 32 24 16; do
- 	#install -Dm644 "$srcdir/out-${_num}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
+ for _size in 256 128 64 48 32 24 16; do 	
 	install -Dm644 "$srcdir/Icon.AppIco_${_num}_${_size}x${_size}x32.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
         _num=$((_num + 1))
  done
