@@ -36,7 +36,7 @@ url='http://php.net'
 makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'sqlite' 'unixodbc' 'net-snmp' 'libzip' 'enchant' 'file' 'freetds'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'libpng' 'libjpeg' 'freetype2' 'icu'
-             'curl' 'libxslt' 'openssl' 'db' 'gmp' 'systemd')
+             'curl' 'libxslt' 'openssl-1.0' 'db' 'gmp' 'systemd')
 
 source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "http://download.suhosin.org/suhosin-patch-${_suhosinver}.patch.gz"
