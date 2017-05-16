@@ -15,7 +15,7 @@
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
 pkgver=12.5.5_5234757
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -46,50 +46,52 @@ backup=('etc/vmware/config')
 source=(
   "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${pkgver/_/-}.x86_64.bundle"
 
-  bootstrap
-  config
+  'bootstrap'
+  'config'
 
-  config.xml
-  datastores.xml
-  environments.xml
-  proxy.xml
+  'config.xml'
+  'datastores.xml'
+  'environments.xml'
+  'proxy.xml'
 
-  vmware-hostd-certificates.service
-  vmware-hostd.service
-  vmware-networks-configuration.service
-  vmware-networks.service
-  vmware-usbarbitrator.service
+  'vmware-hostd-certificates.service'
+  'vmware-hostd.service'
+  'vmware-networks-configuration.service'
+  'vmware-networks.service'
+  'vmware-usbarbitrator.service'
 
-  dkms.conf
-  vmblock.patch
-  vmci.patch
-  vmmon.patch
-  vmnet.patch
-  vsock.patch
+  'dkms.conf'
+  'Makefile'
+  'vmblock.patch'
+  'vmci.patch'
+  'vmmon.patch'
+  'vmnet.patch'
+  'vsock.patch'
 )
-sha1sums=(
-  85082ae7d79ae42b5debe4be1dc210ec5ea69bae
+sha256sums=(
+  '60635d69b765dd50b38189bcb0842b6d3cddd20cf429b4d2238f6e6b5eb19bdc'
 
-  a91b3d711846dafe10f45d89c531dab703bfb113
-  e57f7715c092d9b1fb74a7baadc07ef214cfb4cd
+  '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
+  'caa37259dec46da46c37e840368445dbe53a82ba9985c6a5ec987efca7813886'
 
-  4bea74ce942e73bf25a8e5fdb0027493d3f114b9
-  dfad83699f7546aeb85a38551a33666dbb14535f
-  a7e4a6fe33dc6ca95b469ec6f88de21e5b16a95b
-  80c5626984ffcdea6fa655d248c731e7c9c657fa
+  'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
+  '04375658fed0cad4a18d5da1589d4dc1e5171753891ecaadd05f3c3e50c8156f'
+  '25c5aa39489d14a60f9cb30bdd7b21d36399c3355daee8bf5fbebcb62fe9f45f'
+  '3c802523606184a5e8ebbe931d9c6c70d83ff8c6833b9f48aa264f0bd5a18a88'
 
-  e9855dfdc07a8261336b13fcf4831f0696e94303
-  3ee361c861eee5e462716c3aeb22425193e2e1b6
-  d90c687250c16fc5586938de5dc7539a58500adc
-  529556a0db5564dc8237ee327a2ee176bcf2c02d
-  c1dbfbad3473d12e9c82b75c5f1faf795f3cc217
+  'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
+  'b8027d87f2b2fed37edbbf781da9ae6963d788a655e72c1bb281b27eb1a09872'
+  'e3812b78158672c7d96b6a58877681462f3fbdfe99a948b32c80c755c8682450'
+  'f9297948eba55fbaa6c9d1846b92070f27fda17afe78b41ed0e4c2eaa452b56c'
+  'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
-  91907f53492e3cfdabffd00b6c56e6a435fc9749
-  f4af25095e51d8f12bfde89282261dbc0f0faa10
-  73a78bbeac0625d50756da786a59e1e1e5df95f3
-  c183c6a5be9ecf834381832e63d7f39edf147678
-  c5109127f746cb6672f871331bab9bd368d990ac
-  3ca42f0e86986782827f221cbbd3ed66e7330b73
+  '71339774bf2b962735013e8683d80591a7cf073607cc992f94b75207f3337485'
+  'b9818230242a42a1bc4debc556febb7650cfcb95f9ac04dec051bd4ea8f12dc1'
+  '7a321d06f9caeb69015bb1fe6cbc8c7113365589b64f18344b12f92fa21e7ebd'
+  '5ffe492526293ca8fa1b573f54c96ca4d62f5d03ba79b8bc3dddfe33bd0ff6c3'
+  '68d8e118625abc0f7f5b6504d86895f21a16b2cb1a46f0d32870fc304a89983c'
+  'd0be44504a5bb2f0ad7c64702ede0086367bf04ebf6860ee01e4227a00570e5a'
+  'd7e6b21fef94b4d3fe655a68c20a9556a718a252826a899fb46c4f2475046954'
 )
 options=(!strip emptydirs)
 
@@ -109,12 +111,12 @@ makedepends+=(
 source+=(
   "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
   "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
-  unlocker.py
+  'unlocker.py'
 )
-sha1sums+=(
-  de76483a5c58c4fbdec8dc1e339808497aa2afbb
-  3dca561a996bea5f356ea47a62f7a0e995b5e7ce
-  18773b64c403621a9c286797ba3c0ea618b58af6
+sha256sums+=(
+  'fbd92d82c505d3353d26625d6567b7ec1a41e876a56a1ce1765c8fb7855d6c2c'
+  '9c13500ec9dcf578927e7bb2e44e69ada334d99f266d4a80d6578dde452b6fc1'
+  '2ad5c0e7a31d7c2009e449fe16acfd5a9036b9d69258be82004cbd0ee41b42cf'
 )
 
 _fusion_isoimages=(darwin darwinPre15)
@@ -327,6 +329,7 @@ package() {
 
   dkms_dir="$pkgdir/usr/src/$pkgname-$pkgver"
 
+  install -Dm 644 "$srcdir/Makefile" "$dkms_dir/Makefile"
   install -Dm 644 "$srcdir/dkms.conf" "$dkms_dir/dkms.conf"
 
   sed \
@@ -335,6 +338,7 @@ package() {
     -i "$dkms_dir/dkms.conf"
 
   find vmware-vmx/lib/modules/source -mindepth 1 -exec bsdtar -xf {} -C "$dkms_dir" \;
+  rm -r "$pkgdir/usr/lib/vmware/modules/source"
 
   for module in vmblock vmci vmmon vmnet vsock; do
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
