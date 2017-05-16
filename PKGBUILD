@@ -1,7 +1,7 @@
 # Maintainer: Elvis Angelaccio <elvis.angelaccio@kde.org>
 
 pkgname=hashcat-utils
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="A set of small utilities that are useful in advanced password cracking."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('perl')
 makedepends=('binutils' 'make')
 conflicts=('hashcat-utils-git')
 source=("https://github.com/hashcat/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e5369011f4489ff861c1a2a445f3c35efdb95e425398b60798cafcf75a39452e')
+sha256sums=('c57f2ff1c43e65972fd9dde31322f4b9178d65a28cca3adc235ae41a5982f11c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"/src
