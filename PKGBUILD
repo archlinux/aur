@@ -1,6 +1,6 @@
 # Maintainer: Elias Kosunen <elias dot kosunen at gmail dot com>
 pkgname=varuna-git
-pkgver=v0.1.0.rc2.r1.gc367dca
+pkgver=v0.1.1.393.b0d2ad8
 pkgrel=1
 pkgdesc="Compiler for the language"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "%s.%s.%s" $(git describe 2>&1|head -1|cut -d " " -f6-6|tr -d \') $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
