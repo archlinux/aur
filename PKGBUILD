@@ -59,9 +59,8 @@ package() {
   
   # symlink one or other of the startup scripts for GTK2 or GTK3(default)
   if [ $_gtkver == 'gtk3' ]; then
-    #ln -s "${prefix}/DocFetcher-GTK3.sh" "${prefix}/DocFetcher.sh"
     ln -s "/usr/share/${pkgname}/DocFetcher-GTK3.sh" "${prefix}/DocFetcher.sh"
   elif [ $_gtkver == 'gtk2' ]; then
-    ln -s "${prefix}/DocFetcher-GTK2.sh" "${prefix}/DocFetcher.sh"
+    ln -s "/usr/share/${pkgname}/DocFetcher-GTK2.sh" "${prefix}/DocFetcher.sh"
   fi
 }
