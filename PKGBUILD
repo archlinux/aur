@@ -2,7 +2,7 @@
 _pkgname=heketi
 pkgname=${_pkgname}-client-bin
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="client for heketi, the RESTful based volume management framework for GlusterFS"
 arch=('x86_64')
 url="https://github.com/heketi/heketi"
