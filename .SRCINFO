@@ -1,7 +1,7 @@
 pkgbase = docfetcher
 	pkgdesc = A java open source desktop search application
 	pkgver = 1.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docfetcher.sourceforge.net/
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgname=docfetcher
 _name=DocFetcher
 pkgver=1.1.19
-pkgrel=1
+pkgrel=2
 _gtkver=gtk3 # variable that controls whether GTK2 or 3(default) is to be used.
 pkgdesc="A java open source desktop search application"
 arch=('i686' 'x86_64')
@@ -59,7 +59,8 @@ package() {
   
   # symlink one or other of the startup scripts for GTK2 or GTK3(default)
   if [ $_gtkver == 'gtk3' ]; then
-    ln -s "${prefix}/DocFetcher-GTK3.sh" "${prefix}/DocFetcher.sh"
+    #ln -s "${prefix}/DocFetcher-GTK3.sh" "${prefix}/DocFetcher.sh"
+    ln -s "/usr/share/${pkgname}/DocFetcher-GTK3.sh" "${prefix}/DocFetcher.sh"
   elif [ $_gtkver == 'gtk2' ]; then
     ln -s "${prefix}/DocFetcher-GTK2.sh" "${prefix}/DocFetcher.sh"
   fi
