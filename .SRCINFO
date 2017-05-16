@@ -89,6 +89,7 @@ pkgname = php53
 	depends = libxml2
 	depends = curl
 	depends = libzip
+	depends = openssl-1.0
 	provides = php=5.3.29
 	backup = etc/php53/php.ini
 

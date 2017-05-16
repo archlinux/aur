@@ -208,6 +208,7 @@ build() {
 
 	export EXTENSION_DIR=/usr/lib/${pkgbase}/modules
 	export PEAR_INSTALLDIR=/usr/share/${pkgbase}/pear
+	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
 	cd ${srcdir}/${_pkgbase}-${pkgver}
 
@@ -281,7 +282,7 @@ build() {
 
 package_php53() {
 	pkgdesc='An HTML-embedded scripting language - Legacy 5.3 version'
-	depends=('pcre' 'libxml2' 'curl' 'libzip')
+	depends=('pcre' 'libxml2' 'curl' 'libzip' 'openssl-1.0')
 	backup=("etc/${pkgbase}/php.ini")
 	provides=("${_pkgbase}=$pkgver")
 
