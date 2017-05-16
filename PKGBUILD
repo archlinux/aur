@@ -1,55 +1,126 @@
-# Maintainer: Pieter Robyns <pieter.robyns@uhasselt.be>
-# Upstream URL: https://github.com/tensorflow/tensorflow
+# Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
-pkgname=tensorflow-git
-pkgver=0.5.0.r17.ga9ca517
+pkgbase=tensorflow-git
+pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
+pkgver=1.1.0+rc2+1084+gc03d5cc664
 pkgrel=1
-pkgdesc="Open source software library for numerical computation using data flow graphs."
-arch=('i686' 'x86_64')
+pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
 license=('Apache2')
-provides=('tensorflow')
-conflicts=('tensorflow' 'python2-tensorflow')
-depends=('python2-numpy' 'swig' 'python2-wheel')
-makedepends=('git' 'python2-pip' 'bazel')
-source=("git+https://github.com/tensorflow/tensorflow"
-        "git+https://github.com/google/protobuf")
-md5sums=('SKIP' 'SKIP')
+arch=('x86_64')
+makedepends=('git' 'bazel' 'python-numpy' 'gcc5' 'cuda' 'cudnn' 'python-pip' 'python-wheel' 'python-setuptools')
+optdepends=('cuda: GPU support'
+            'cudnn: GPU support')
+source=("git+https://github.com/tensorflow/tensorflow")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/tensorflow"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  cd ${srcdir}/tensorflow
+  git describe --tags | sed 's/-/+/g;s/v//;'
 }
 
 prepare() {
-  # Config submodules
-  cd "$srcdir/tensorflow"
-  git submodule init
-  git config submodule.google/protobuf.url $srcdir/protobuf
-  git submodule update
+  cp -r tensorflow tensorflow-cuda
+  # These environment variables influence the behavior of the configure call below.
+  export PYTHON_BIN_PATH=/usr/bin/python
+  export USE_DEFAULT_PYTHON_LIB_PATH=1
+  export CC_OPT_FLAGS="-march=x86-64"
+  # enable jemalloc support
+  export TF_NEED_JEMALLOC=1
+  # disable Google Cloud Platform support
+  export TF_NEED_GCP=0
+  # disable Hadoop File System support
+  export TF_NEED_HDFS=0
+  # enable XLA JIT compiler
+  export TF_ENABLE_XLA=1
+  # disable VERBS support
+  export TF_NEED_VERBS=0
+  # disable OpenCL support
+  export TF_NEED_OPENCL=0
+  # disable MKL support
+  export TF_NEED_MKL=0
 
-  # Set up some things for building
-  export PYTHON=python2
-  mkdir -p "$srcdir/tmp"
+  # make sure the proxy variables are in all caps, otherwise bazel ignores them
+  export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
+  export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
 }
 
 build() {
-  echo "Make sure your .bazelrc points to the correct workspace, e.g. %workspace%:/opt/bazel/base_workspace."
+  cd ${srcdir}/tensorflow
 
-  # Build tensorflow
-  cd "$srcdir/tensorflow"
+  export TF_NEED_CUDA=0
 
   ./configure
-  bazel build --jobs 2 -c opt //tensorflow/tools/pip_package:build_pip_package
+  bazel build --config=opt //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package
+  bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
 
-  sed -i 's/python$/python2/g' tools/python_bin_path.sh
-  bazel-bin/tensorflow/tools/pip_package/build_pip_package $srcdir/tmp
+  cd ${srcdir}/tensorflow-cuda
+  export TF_NEED_CUDA=1
+  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
+  # For next version instead of the gcc-5 stuff:
+  export TF_CUDA_CLANG=0
+  export CLANG_CUDA_COMPILER_PATH=/usr/bin/clang
+  export CUDA_TOOLKIT_PATH=/opt/cuda
+  export TF_CUDA_VERSION=$($CUDA_TOOLKIT_PATH/bin/nvcc --version | sed -n 's/^.*release \(.*\),.*/\1/p')
+  export CUDNN_INSTALL_PATH=/opt/cuda
+  export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' $CUDNN_INSTALL_PATH/include/cudnn.h)
+  export TF_CUDA_COMPUTE_CAPABILITIES=3.0,3.5,5.2,6.1
+  ./configure
+  bazel build --config=opt --config=cuda //tensorflow:libtensorflow.so //tensorflow/tools/pip_package:build_pip_package
+  bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmpcuda
 }
 
-package() {
-  cd "$srcdir/tensorflow"
+package_tensorflow-git() {
+  conflicts=('tensorflow')
+  provides=('tensorflow')
 
-  TMP_PKG=`find $srcdir/tmp -name "tensor*.whl"`
-  pip2 install --ignore-installed --upgrade --root $pkgdir/ $TMP_PKG --no-dependencies
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${srcdir}/tensorflow
+
+  install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/lib${pkgname/-git/}.so
+  install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/tensorflow/c_api.h
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE
 }
+
+package_tensorflow-cuda-git() {
+  depends=(cuda cudnn)
+  conflicts=(tensorflow)
+  provides=(tensorflow)
+
+  cd ${srcdir}/tensorflow-cuda
+
+  install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/lib${pkgname}.so
+  install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/${pkgname}/c_api.h
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
+
+package_python-tensorflow-git() {
+  depends=(python python-protobuf)
+  conflicts=('python-tensorflow')
+  provides=('python-tensorflow')
+  optdepends=('python-werkzeug: for using tensorboard')
+
+  cd ${srcdir}/tensorflow
+
+  WHEEL_PACKAGE=$(find ${srcdir}/tmp -name "tensor*.whl")
+  pip install --ignore-installed --upgrade --root $pkgdir/ $WHEEL_PACKAGE --no-dependencies
+  find ${pkgdir} -name __pycache__ -exec rm -r {} +
+
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE
+}
+
+package_python-tensorflow-cuda-git() {
+  depends=(python cuda cudnn python-pycuda python-protobuf)
+  conflicts=('python-tensorflow')
+  provides=('python-tensorflow')
+  optdepends=('python-werkzeug: for using tensorboard')
+
+  cd ${srcdir}/tensorflow-cuda
+
+  WHEEL_PACKAGE=$(find ${srcdir}/tmpcuda -name "tensor*.whl")
+  pip install --ignore-installed --upgrade --root $pkgdir/ $WHEEL_PACKAGE --no-dependencies
+  find ${pkgdir} -name __pycache__ -exec rm -r {} +
+
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE
+}
+# vim:set ts=2 sw=2 et:
