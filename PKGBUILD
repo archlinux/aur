@@ -13,13 +13,12 @@ replaces=()
 source=(${pkgname}::git+https://github.com/nana-4/Flat-Plat.git)
 sha256sums=('SKIP')
 
-pkgver=r278.87c093b
+pkgver=r381.97235ec
 pkgver() {
   cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
-
 package() {
   cd "$srcdir/${pkgname}"
   destdir="${pkgdir}" ./install.sh
