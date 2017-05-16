@@ -1,9 +1,9 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=laz-perf-git
-pkgver=1
+pkgver=20170516
 pkgrel=1
 pkgdesc="Alternative LAZ implementation for C++ and JavaScript"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/hobu/laz-perf"
 license=(LGPL)
 makedepends=(cmake git)
