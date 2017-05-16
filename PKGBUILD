@@ -45,7 +45,7 @@ pre_install() {
 	useradd -r -U "${pkgname}" -m "/var/run/${pkgname}"
 }
 
-post_install() {
+post_remove() {
 	userdel -r "${pkgname}"
 	groupdel "${pkgname}"
 }
