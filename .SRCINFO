@@ -1,6 +1,6 @@
 pkgbase = julia-mkl
 	pkgdesc = High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://julialang.org/
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = julia-mkl
 	conflicts = julia
 	options = !emptydirs
 	options = staticlibs
-	source = https://github.com/JuliaLang/julia/releases/download/v0.5.1/julia-0.5.1.tar.gz
-	md5sums = 4354b5a347cacab0c81c47c8988596f2
+	source = https://github.com/JuliaLang/julia/releases/download/v0.5.2/julia-0.5.2.tar.gz
+	md5sums = 9a80cd43a07790bde8f159e8ce79187b
 
 pkgname = julia-mkl
 	install = sysfix.install
