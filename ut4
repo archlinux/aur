@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /opt/unrealtournament4/LinuxNoEditor/Engine/Binaries/Linux
-./UE4-Linux-Shipping UnrealTournament
+./UE4-Linux-Shipping UnrealTournament -opengl4 -SaveToUserDir
