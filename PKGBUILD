@@ -18,6 +18,12 @@ build() {
   make
 }
 
+check() {
+  cd laz-perf/build
+
+  make test
+}
+
 package() {
   cd laz-perf/build
 
