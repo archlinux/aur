@@ -2,13 +2,13 @@
 
 pkgname=suitesparse-mkl
 pkgver=4.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of sparse matrix libraries (compiled with the Intel MKL lib)"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 arch=('i686' 'x86_64')
-conflicts=('umfpack')
-provides=('umfpack')
-replaces=('umfpack')
+conflicts=('umfpack', 'suitesparse')
+provides=('umfpack', 'suitesparse=${pkgver}')
+replaces=('umfpack', 'suitesparse')
 depends=('metis' 'intel-mkl' 'intel-tbb')
 makedepends=('intel-compiler-base' 'intel-fortran-compiler' 'cmake' 'chrpath')
 license=('GPL')
