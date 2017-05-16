@@ -3,7 +3,7 @@
 pkgname=thruk
 _pkgver=2.14-2
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
 url="http://thruk.org"
@@ -51,4 +51,5 @@ package() {
 
   chown -R 33:33 "$pkgdir"/var/{lib,log}/thruk/ "$pkgdir"/etc/thruk/panorama/
   chmod 770 "$pkgdir"/var/lib/thruk/
+  chmod 750 "$pkgdir"/var/log/thruk/
 }
