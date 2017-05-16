@@ -39,7 +39,6 @@ makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'curl' 'libxslt' 'openssl' 'db' 'gmp' 'systemd')
 
 source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
-        "http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         "http://download.suhosin.org/suhosin-patch-${_suhosinver}.patch.gz"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles'
@@ -51,7 +50,6 @@ source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         'CVE-2015-2783.patch' 'CVE-2015-2787.patch' 'CVE-2015-3330.patch'
         'CVE-2015-3329.patch')
 sha1sums=('8772d7419511f9f066fb17929194b5492680ec9b'
-          'SKIP'
           '7b9ef5c3e0831154df0d6290aba0989ca90138ed'
           'b42a385359f5d033748d4d8f44a9f7a0469f628a'
           '82776db01f70b9186ba455de22eb06fe193f1d30'
