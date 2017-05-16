@@ -3,7 +3,7 @@
 pkgname=display-mode-switcher
 _pkgname=dispswitch
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="The simple application to switch the display with one click between single and dual mode"
 arch=('any')
 url="http://aur.archlinux.org/packages/display-mode-switcher/"
@@ -27,7 +27,7 @@ EOF
   install -Dm644 Display\ mode\ switcher.desktop "${pkgdir}/usr/share/applications/Display mode switcher.desktop"
 
   msg2 "Creating application..."
-  cat > "${srcdir}/${_pkgname}" << EOF
+  cat > "${srcdir}/${_pkgname}" << 'EOF'
 #!/bin/sh
 
 prim_disp=$(xrandr | grep '\<connected primary\>' | awk 'NR==1 { print $1 }')
