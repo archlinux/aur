@@ -1,20 +1,19 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidolib-git
-pkgver=2543.520b5ea6
+pkgver=2805.5d64194b
 pkgrel=1
 pkgdesc="engine for the graphic rendering of music scores, based on the Guido Music Notation format (git version)"
 arch=('x86_64' 'i686')
 url="http://guidolib.sourceforge.net/"
 license=('MPL')
 depends=('qt5-base' 'qt5-tools' 'cairo' 'midisharelight-git')
-# Currently this needs clang to build (gcc compiler bug, see below).
-makedepends=('cmake' 'clang')
+makedepends=('cmake')
 provides=('guidolib')
 conflicts=('guidolib')
 install="$pkgname.install"
 source=("$pkgname::git+git://git.code.sf.net/p/guidolib/code#branch=dev"
-	"guidolib-clang.patch")
-md5sums=('SKIP' '20594ce66db1146c545ff532e0e38d48')
+	"guidolib-stringh.patch")
+md5sums=('SKIP' '8ddf69ed89e4e5c05e2ecf5655ef3544')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -23,11 +22,7 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
-  # At present there seems to be a bug in gcc 6.1+ which prevents it from
-  # compiling guidolib. So for the time being we patch up the main Makefile to
-  # use clang instead, it compiles guidolib just fine. This can go once gcc
-  # gets fixed.
-  patch -Np1 < $srcdir/guidolib-clang.patch
+  patch -Np1 < $srcdir/guidolib-stringh.patch
 }
 
 build() {

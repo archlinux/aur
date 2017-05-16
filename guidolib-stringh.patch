@@ -1,0 +1,13 @@
+diff --git a/src/engine/graphic/GRInstrument.cpp b/src/engine/graphic/GRInstrument.cpp
+index f873fc98..e72e6394 100644
+--- a/src/engine/graphic/GRInstrument.cpp
++++ b/src/engine/graphic/GRInstrument.cpp
+@@ -12,7 +12,7 @@
+ 
+ */
+ 
+-#include <string>
++#include <string.h>
+ 
+ #include "GRInstrument.h"
+ #include "GRDefine.h"
