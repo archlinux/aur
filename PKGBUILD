@@ -3,7 +3,7 @@
 _pkgbase=julia-mkl
 pkgbase=${_pkgbase}-git
 pkgname=('julia-mkl-git' 'julia-mkl-git-docs')
-pkgver=0.6.0.pre.beta.r36543.gdc907c760f
+pkgver=0.7.0.DEV.r36924.g83b5261d45
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)'
 arch=('x86_64')
