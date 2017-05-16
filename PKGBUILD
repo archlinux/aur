@@ -6,13 +6,17 @@ pkgname=aif
 pkgver=1.10
 #_pkgver=${pkgver}-BETA # currently at beta release
 _pkgver=${pkgver} # currently at stable release
-pkgrel=4
+pkgrel=5
 pkgdesc="An XML and python-driven rebirth of the AIF (Arch Installation Framework) project."
 arch=( 'i686' 'x86_64' )
 url="https://aif.square-r00t.net/"
 license=( 'GPL3' )
 depends=( 'python' 'arch-install-scripts' 'parted' 'gptfdisk' )
-optdepends=( 'python-lxml: better XML handling' )
+optdepends=( 'python-lxml: better xml handling, configuration file validation'
+	     'expect: for generating an automated test of "aif-config create"'
+	     'python-yaml: for /usr/share/aif/txttojson.py'
+	     'libxml2: for /usr/share/aif/xmllint.sh'
+	     'bdisk: for generating a compatible live installer' )
 _pkgname=AIF-NG
 conflicts=( 'aif-git' )
 install=
