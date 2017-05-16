@@ -1,7 +1,7 @@
 pkgbase = stacer
 	pkgdesc = Ubuntu System Optimizer
-	pkgver = v1.0.6
-	pkgrel = 1
+	pkgver = 1.0.6
+	pkgrel = 2
 	url = https://github.com/oguzhaninan/Stacer
 	arch = any
 	license = MIT
