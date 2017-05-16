@@ -9,7 +9,8 @@ license=('MIT')
 arch=('x86_64' 'i686')
 source=('git://midipix.org/slibtool')
 sha256sums=('SKIP')
-provides=('slibtool')
+provides=("slibtool=${pkgver%+*}")
+conflicts=('slibtool')
 
 pkgver() {
 	cd "$srcdir"/slibtool

@@ -6,7 +6,8 @@ pkgbase = slibtool-git
 	arch = x86_64
 	arch = i686
 	license = MIT
-	provides = slibtool
+	provides = slibtool=0.5.13
+	conflicts = slibtool
 	source = git://midipix.org/slibtool
 	sha256sums = SKIP
 
