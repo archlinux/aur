@@ -2,7 +2,7 @@
 
 pkgname=cyberfox-kde-bin
 pkgver=52.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="
 'KDE Plasma Edition' of the fast, stable & reliable x64-bit web browser. It contains KDE patches, which contains KDE file dialogs, file associations, protocol handlers and other KDE Plasma integration features."
 arch=('x86_64')
@@ -96,4 +96,4 @@ bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
   msg2 "Creating symlink to hyphen..."
   ln -Ts /usr/share/hyphen "$pkgdir/opt/cyberfox/hyphenation"
 }
-sha256sums=('51ba269769fb29448047ec1ef6270eb684a440dc2de4688a4e60557643721bd1')
+sha256sums=('abfa7109334fb192f6c2b58e5f893c07e5aa3d60ae4c02e2089ee0fd1b09585e')
