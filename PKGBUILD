@@ -7,8 +7,10 @@ pkgdesc='deezer desktop from git'
 arch=('any')
 url='https://github.com/baptistedonaux/deezer-desktop-linux'
 license=('MIT')
-source=()
+source=('deezer-desktop-linux.sh')
 install=pos.install
+md5sums=('2f48f029c76a6633a1c0bb50cde7a800')
+
 name=deezer-desktop-linux
 
 _depends=(
@@ -32,7 +34,7 @@ else
   makedepends=(${makedepends[@]} ${_depends[@]})
 fi
 prepare(){
-    rm $name -RvIf 
+    rm $name -Rvif 
     git clone https://github.com/baptistedonaux/$name.git 
 }
 
@@ -49,6 +51,7 @@ pkgver() {
 package(){
     mkdir $pkgdir/opt -p
     mv $srcdir/$name $pkgdir/opt/
+    install -Dm 755 deezer-desktop-linux.sh $pkgdir/usr/bin/deezer-desktop-linux
     
 }
 
