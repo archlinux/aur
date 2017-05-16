@@ -1,11 +1,13 @@
-# Maintainer: Elias Kosunen <elias dot kosunen at gmail dot com>
+# Contributor: Elias Kosunen <elias dot kosunen at gmail dot com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=varuna-git
 pkgver=v0.1.1.393.b0d2ad8
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiler for the language"
 arch=('i686' 'x86_64')
 url="https://varuna-lang.github.io"
-license=('BSD')
+license=('custom:BSD')
 depends=('llvm-libs>=4.0.0' 'libutil-linux')
 makedepends=('cmake>=3.2.3' 'git')
 source=("git+https://github.com/varuna-lang/${pkgname%-git}.git"
@@ -43,13 +45,12 @@ prepare() {
 build() {
     mkdir -p "$srcdir/${pkgname%-git}/build"
     cd "$srcdir/${pkgname%-git}/build"
-
     cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-	make
+    make
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}/build"
-	make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" install
     install -D -m644 "../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,11 +1,11 @@
 pkgbase = varuna-git
 	pkgdesc = Compiler for the language
 	pkgver = v0.1.1.393.b0d2ad8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://varuna-lang.github.io
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:BSD
 	makedepends = cmake>=3.2.3
 	makedepends = git
 	depends = llvm-libs>=4.0.0
