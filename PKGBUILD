@@ -4,11 +4,11 @@
 
 pkgname=skychart
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gtk2' 'xplanet')
+depends=('gtk2' 'xplanet' 'libpasastro')
 url="http://www.ap-i.net/skychart/start"
 install=skychart.install
 
