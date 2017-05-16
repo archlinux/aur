@@ -2,8 +2,8 @@ ETCD_DATA_DIR="/var/lib/etcd"
 
 pre_upgrade() {
 cat << EOF
-	To upgrade an existing v2 etcd deployment to 3.0 you must be running 2.3
-	And you should read the docs: /usr/share/doc/etcd/upgrades/
+	To upgrade an existing etcd deployment please read the docs located at:
+	  /usr/share/doc/etcd/upgrades/
 EOF
 }
 
