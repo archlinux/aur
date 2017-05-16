@@ -1,0 +1,13 @@
+pkgbase = heketi-client-bin
+	pkgdesc = client for heketi, the RESTful based volume management framework for GlusterFS
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/heketi/heketi
+	arch = x86_64
+	license = GPL
+	depends = go
+	source_x86_64 = https://github.com/heketi/heketi/releases/download/v4.0.0/heketi-client-v4.0.0.linux.amd64.tar.gz
+	sha512sums_x86_64 = c1ade07205e40a7b0311698fa99d063e35a1072c2d026cdf19afb860d4428e48a41ea5c70714e44c3b98789a28bc3cd160b9fb056cd3db2de58c128fe7ae3351
+
+pkgname = heketi-client-bin
+
