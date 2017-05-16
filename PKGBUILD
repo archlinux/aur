@@ -2,7 +2,7 @@
 
 pkgname=gush-git
 pkgver=0.1.0.1.g755f5b4
-pkgrel=3
+pkgrel=4
 pkgdesc="Genetic programming / stack based language on top of Guile"
 arch=('any')
 url="https://gitlab.com/dustyweb/gush"
@@ -13,6 +13,7 @@ provides=('gush')
 conflicts=('gush')
 source=("git+https://gitlab.com/dustyweb/gush.git")
 md5sums=('SKIP')
+options=('!makeflags')
 
 pkgver() {
   cd "${pkgname%-git}"

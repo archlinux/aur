@@ -1,7 +1,7 @@
 pkgbase = gush-git
 	pkgdesc = Genetic programming / stack based language on top of Guile
 	pkgver = 0.1.0.1.g755f5b4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/dustyweb/gush
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = gush-git
 	depends = guile
 	provides = gush
 	conflicts = gush
+	options = !makeflags
 	source = git+https://gitlab.com/dustyweb/gush.git
 	md5sums = SKIP
 
