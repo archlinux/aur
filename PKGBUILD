@@ -6,8 +6,8 @@ _version=beta
 
 # Versions
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=5
-_pkgver=1.17.0
+_pkgrel=0
+_pkgver=1.18.0
 pkgver="${_pkgver}.beta${_pkgrel}"
 _ver=$_pkgver-beta${_pkgrel}
 pkgrel=1
@@ -22,7 +22,7 @@ conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch')
 install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop")
-sha256sums=('b66b6fd87f39fc308f52ef5123b15d41c490a2cd76a8a57ae342aba17dc777b2'
+sha256sums=('SKIP'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6')
 
 prepare() {
