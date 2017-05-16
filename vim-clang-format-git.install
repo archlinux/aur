@@ -1,0 +1,36 @@
+update_helptags() {
+    printf "Updating vim help tags..."
+    vim -e -s -c "helptags /usr/share/vim/vimfiles/doc/" -c "quit"
+    printf "done\n"
+}
+
+post_install() {
+    update_helptags
+    echo "==> ------------------------------------------------------------------------------------------------------------------------------"
+    echo
+    echo "==> add something like the following to your vimrc:"
+    echo
+    echo "\" map to <Leader>cf in C++ code"
+    echo "autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>"
+    echo "autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>"
+    echo "\" if you install vim-operator-user"
+    echo "autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)"
+    echo "\" Toggle auto formatting:"
+    echo "nmap <Leader>C :ClangFormatAutoToggle<CR>"
+    echo
+    echo "==> ------------------------------------------------------------------------------------------------------------------------------"
+}
+
+
+post_upgrade() {
+    update_helptags
+}
+
+post_remove() {
+    update_helptags
+    echo "==> ------------------------------------------------------------------------------------------------------------------------------"
+    echo
+    echo "==> Remember to remove ClangFormat from your vimrc"
+    echo
+    echo "==> ------------------------------------------------------------------------------------------------------------------------------"
+}
