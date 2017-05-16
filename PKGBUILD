@@ -11,7 +11,7 @@ pkgver=17.02
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=17.02.072116
 _pkgverpostfix=""
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -298,7 +298,7 @@ build() {
   if [[ $CARCH == "x86_64" ]]; then
     mv "Sozi-linux-x64" "Sozi-${_buildver}-linux-x64"
   else
-    cd "Sozi-linux-ia32" "Sozi-${_buildver}-linux-ia32"
+    mv "Sozi-linux-ia32" "Sozi-${_buildver}-linux-ia32"
   fi
 }
 
