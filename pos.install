@@ -12,5 +12,5 @@ post_install() {
  }
 
  post_remove(){
-    rm /opt/deezer-deezer-linux -RvIf
+    rm /opt/deezer-deezer-linux -Rvif
 } 
