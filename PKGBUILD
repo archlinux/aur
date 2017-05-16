@@ -3,9 +3,9 @@
 
 _gemname=terminal-notifier
 pkgname=ruby-$_gemname
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
-pkgdesc='Send User Notifications on Mac OS X 10.8 or higher.'
+pkgdesc='Send User Notifications on Mac OS X 10.10 or higher.'
 arch=(any)
 url='https://github.com/alloy/terminal-notifier'
 license=(MIT)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('b96a3d1cf36976edebaed11a1ae76e665f8c1081')
+sha1sums=('6189c0cde3bfc7de547bb622b30c69f7941f9403')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
