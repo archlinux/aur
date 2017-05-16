@@ -2,7 +2,7 @@
 # Contributor: strata <strata@dropswitch.net>
 pkgname=luazip5.1
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="reading files inside zip files"
 arch=('i686' 'x86_64')
 url="http://www.keplerproject.org/luazip/"
