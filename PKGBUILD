@@ -1,12 +1,12 @@
 # Maintainer: Jon Gjengset
 pkgname=what-git
-pkgver=r8.589ce22
+pkgver=r10.7ccdaed
 pkgrel=1
 pkgdesc="An improved version of w that shows all processes associated with a TTY"
 arch=('any')
 url="https://github.com/mit-pdos/what"
 license=('MIT')
-depends=('python2')
+depends=('python')
 makedepends=('git')
 provides=("")
 conflicts=("")
