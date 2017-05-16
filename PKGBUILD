@@ -1,9 +1,9 @@
-# Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=thruk
 _pkgver=2.14-2
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
 url="http://thruk.org"
@@ -51,5 +51,8 @@ package() {
 
   chown -R 33:33 "$pkgdir"/var/{lib,log}/thruk/ "$pkgdir"/etc/thruk/panorama/
   chmod 770 "$pkgdir"/var/lib/thruk/
-  chmod 750 "$pkgdir"/var/log/thruk/
+
+  # Exclude /var/lib/thruk as logrotate doesn't like the permissions there
+  # and there are no logs
+  sed -i 's_^/.* _/var/log/thruk/*.log _' "$pkgdir"/etc/logrotate.d/thruk-base
 }
