@@ -13,12 +13,12 @@ url='https://github.com/google/glog'
 makedepends=('make' 'mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
 source=("glog-$pkgver.tar.gz::https://github.com/google/glog/archive/v$pkgver.tar.gz")
-sha512sums=('68b42ef42d57c9ede697c1423f8490deada06c9e9cb11a5e0ce53368e7e452c087d0e23bea50f51e1634b03eb4105e657c91318b6423c4e2a9c147b7334eb3f3')
+sha512sums=('SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  unset LDFLAGS
-  cd $_pkgname
+  #unset LDFLAGS
+  cd $_pkgname-$pkgver
   sed -i "s/BaseTsd/basetsd/" src/logging.cc
   for _arch in ${_architectures}; do
     mkdir -p build-$_arch
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   for _arch in ${_architectures}; do
     pushd build-$_arch
     make DESTDIR="$pkgdir" install
@@ -46,6 +46,8 @@ package() {
     # Lazy way of dealing with conflicting man and info pages...
     rm -rf "${pkgdir}/usr/${_arch}/share"
     install -D -m644 COPYING "$pkgdir"/usr/${_arch}/share/licenses/$_pkgname/COPYING
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
 
