@@ -4,8 +4,8 @@
 
 pkgname=spideroak-one
 _PkgName=SpiderOakONE
-pkgver=6.2.0
-pkgrel=1
+pkgver=6.1.9
+pkgrel=2
 pkgdesc="Secure file backup, sync and sharing client. This provides the client for SpiderOakONE."
 arch=('i686' 'x86_64')
 url="https://spideroak.com/"
@@ -20,9 +20,9 @@ install=${pkgname}.install
 source=(terms.txt)
 sha256sums=('ee0d1c8c41e95ba2a11de4fe5cf0d89e2b237afc86dc411f58f3b388db8198e9')
 source_x86_64=("spideroakone_${pkgver}_amd64.deb::https://spideroak.com/getbuild?platform=ubuntu&arch=x86_64")
-sha256sums_x86_64=('00c933370115324c9fe2874b1d439fdbefc47c46081af511fb7ee1d021b08037')
+sha256sums_x86_64=('afb9903925807950a2359cd709ac62733bb678f745ca25ec3426adca783a80b8')
 source_i686=("spideroakone_${pkgver}_i386.deb::https://spideroak.com/getbuild?platform=ubuntu&arch=i386")
-sha256sums_i686=('5a398f19cedc4d18b22c299667fcd7b30180a1e363ae7df1c1b7789479281230')
+sha256sums_i686=('6d924327182c72289ed16290dba8e3559284a9f5d8c58b32f8d76364cc970b9f')
 
 package() {
 tar -zxf "${srcdir}"/data.tar.gz -C "$pkgdir"/
