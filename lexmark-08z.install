@@ -1,0 +1,4 @@
+post_install() {
+  echo "  Please remember to review the license agreement (license.txt)"
+  echo "  at /usr/lexinkjet/08zero/docs/ before using this software."
+}
