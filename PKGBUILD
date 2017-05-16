@@ -1,30 +1,41 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 pkgname=webcamoid
-pkgver=7.2.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
-depends=('qt5-quickcontrols' 'qt5-svg' 'libpulse' 'v4l-utils' 'ffmpeg')
-# Enable this lines if you want to use GStreamer instead of FFmpeg.
-# WARNING: GStreamer support is experimental.
-#depends=('qt5-quickcontrols' 'qt5-svg' 'libpulse' 'v4l-utils' 'gst-plugins-base-libs')
-optdepends=('v4l2loopback-dkms: Virtual camera support')
-#optdepends=('v4l2loopback-dkms: Virtual camera support'
-#            'gst-plugins-base'
-#            'gst-plugins-good'
-#            'gst-plugins-bad'
-#            'gst-plugins-ugly')
-makedepends=('qt5-tools')
+depends=('qt5-quickcontrols'
+         'qt5-svg')
+optdepends=('v4l-utils: Extra formats support for webcams'
+            'v4l2loopback-dkms: Virtual camera support'
+            'ffmpeg: Video playing/recording/conversion (Recommended)'
+            'gst-plugins-base: Video playing/recording/conversion'
+            'gst-plugins-good: Video playing/recording/conversion'
+            'gst-plugins-bad: Video playing/recording/conversion'
+            'gst-plugins-ugly: Video playing/recording/conversion'
+            'libpulse: Audio playback (Recommended)'
+            'alsa-lib: Audio playback'
+            'jack: Audio playback'
+            'kde-cli-tools: Root privileges for virtual camera module (Recommended)'
+            'gksu: Root privileges for virtual camera module')
+makedepends=('v4l-utils'
+             'qt5-tools'
+             'ffmpeg'
+             'gst-plugins-base-libs'
+             'libpulse'
+             'alsa-lib'
+             'jack')
 provides=('webcamoid')
+install="${pkgname}.install"
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d6fc13352a0e5f5ab4f910f69a7f4e3bedf0655193f833e3443a0ae6b0142a3d')
+sha256sums=('85a30805f969b76ec78b47fa1f6901c4f1d0f2c5ca8ecf406dca91c0bede0df1')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    qmake-qt5 Webcamoid.pro #USE_GSTREAMER=1
+    qmake-qt5 Webcamoid.pro
     make
 }
 
