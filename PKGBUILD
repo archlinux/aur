@@ -4,14 +4,14 @@
 _gemname=terminal-table
 pkgname=ruby-$_gemname
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, feature rich ascii table generation library'
 arch=(any)
 url='https://github.com/tj/terminal-table'
 license=(MIT)
 depends=(
   ruby
-  'ruby-unicode-display_width<1.2' 'ruby-unicode-display_width>=1.1.1'
+  'ruby-unicode-display_width<2' 'ruby-unicode-display_width>=1.1.1'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
