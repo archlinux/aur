@@ -24,7 +24,7 @@ optdepends=('aria2: download utility'
             'gst-libav: HTML5 H264 videos support')
 provides=('midori')
 conflicts=('midori' 'midori-gtk2-git' 'midori-git' 'midori-gtk2-bzr')
-options=('!emptydirs')
+options=('!emptydirs' '!makeflags')
 install='midori.install'
 source=("midori::bzr+http://bazaar.launchpad.net/~midori/midori/trunk/")
 md5sums=('SKIP')
@@ -32,6 +32,17 @@ md5sums=('SKIP')
 pkgver() {
   cd midori
   printf "r%s" "$(bzr revno)"
+}
+
+prepare() {
+  cd midori
+
+  # The latest release of vala is a bit stricter than the previous one
+  sed 's/protected Tally/public Tally/g' -i midori/midori-notebook.vala
+  sed 's/%d other files/%u other files/g' -i extensions/transfers.vala
+  for f in transfers adblock/widgets apps history-list notes; do
+      sed 's/.remove (iter/.remove (ref iter/g' -i "extensions/$f.vala"
+  done
 }
 
 build() {
