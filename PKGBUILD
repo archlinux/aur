@@ -9,8 +9,8 @@ license=('MIT')
 depends=('pass')
 makedepends=()
 optdepends=()
-source=("https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-linux64.zip")
-md5sums=('SKIP')
+source=("browserpass-$pkgver.zip::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-linux64.zip")
+md5sums=('3a4146f43c420acd7bfe397a1256072a')
 
 package() {
 	cd "$srcdir"

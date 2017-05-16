@@ -6,8 +6,8 @@ pkgbase = browserpass
 	arch = x86_64
 	license = MIT
 	depends = pass
-	source = https://github.com/dannyvankooten/browserpass/releases/download/1.0.4/browserpass-linux64.zip
-	md5sums = SKIP
+	source = browserpass-1.0.4.zip::https://github.com/dannyvankooten/browserpass/releases/download/1.0.4/browserpass-linux64.zip
+	md5sums = 3a4146f43c420acd7bfe397a1256072a
 
 pkgname = browserpass
 
