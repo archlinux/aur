@@ -3,7 +3,7 @@
 
 pkgname=rtpproxy
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance software proxy for RTP streams / announcements"
 url="http://www.rtpproxy.org/"
 license=('BSD')

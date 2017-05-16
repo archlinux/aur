@@ -1,7 +1,7 @@
 pkgbase = rtpproxy
 	pkgdesc = High-performance software proxy for RTP streams / announcements
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rtpproxy.org/
 	arch = x86_64
 	arch = i686
