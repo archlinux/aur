@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-js2-mode-git
-pkgver=20170504
+pkgver=20170516
 pkgrel=1
 pkgdesc="An improved JavaScript mode for GNU Emacs"
 arch=('any')
