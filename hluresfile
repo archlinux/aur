@@ -27,12 +27,22 @@
 ! Use ':' to get the pre-V6.1.0 default.
 *TextFuncCode               : ~     
  
-! Make default X11 window larger (the default is 500x500)
-*wkWidth                     : 800
-*wkHeight                    : 800
+! Make default X11 window larger (the default is 512x512)
+!*windowWorkstationClass*wkWidth  : 1000
+!*windowWorkstationClass*wkHeight : 1000
 
-! Increase the default (16mb) contour memory
+! Make default PNG window larger (the default is 1024x1024)
+!*imageWorkstationClass*wkWidth   : 2500
+!*imageWorkstationClass*wkHeight  : 2500
+
+! Note, if you just set wkWidth/wkHeight, this will affect both
+! X11 window AND PNG image size
+!*wkWidth   : 1500
+!*wkHeight  : 1500
+
+! Increase the default (16mb) contour memory.
+! The default is 100000000.
 ! For example, if you have gridded data that
 ! is larger than 500 x 500, you may need this.
-*wsMaximumSize: 32556688
+! *wsMaximumSize: 300000000
 !==========================================
