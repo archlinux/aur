@@ -2,12 +2,12 @@
 
 pkgname="bups"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI for Bup, a very efficient backup system."
 arch=("any")
 url="https://github.com/emersion/bups"
 license=("MIT")
-depends=("bup" "gtk3" "gobject-introspection")
+depends=("bup" "gtk3" "gobject-introspection" "python2-gobject")
 optdepends=("cifs-utils: samba filesystems support"
             "encfs: encryption support"
             "x11-ssh-askpass: encryption support"
