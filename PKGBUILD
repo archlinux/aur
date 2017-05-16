@@ -1,7 +1,7 @@
 # Maintainer: strata <strata@dropswitch.net>
 pkgname=lrexlib-pcre5.1
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PCRE Library for Lua 5.1"
 arch=('i686' 'x86_64')
 url="http://rrthomas.github.com/lrexlib/"
