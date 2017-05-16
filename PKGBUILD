@@ -101,6 +101,19 @@ package() {
   # https://david.dw-perspective.org.uk/da/index.php/computer-resources/getting-a-dell-v305-and-others-printer-to-work-with-linux-fedora/
   # https://oper.io/?p=Dell_V305_Printer_on_Linux
   cd "${pkgdir}${RPM_INSTALL_PREFIX}/08zero/etc/"
+  # Install the helper script that debugged the lib32 problem. I'm ready to test libraries even though it turned out not to be a lib problem.
+  if ! :; then
+    (
+      cd '../bin'
+      mv 'printdriver' 'printdriver.arch'
+      install -m755 <(cat << EOF
+#!/bin/bash
+
+LD_LIBRARY_PATH='/usr/lexinkjet/08zero/bin/' strace -o '/tmp/strace.txt' '/usr/lexinkjet/08zero/bin/printdriver.arch' "\$@"
+EOF
+      ) 'printdriver'
+    )
+  fi
   sed -e '2iATTRS{idVendor}=="413c", ATTRS{idProduct}=="5305", MODE="666"' -i '99-lexmark-08z.rules'
   (
     #declare -A _arch=([i686]='lib' [x86_64]='lib32')
