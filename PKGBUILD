@@ -2,13 +2,13 @@
 _pkgname=drumgizmo
 pkgname=$_pkgname-git
 pkgver=0.9.13.r12.g33639dd
-pkgrel=1
+pkgrel=2
 pkgdesc="an open source cross-platform drum plugin and stand-alone application (lv2)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.drumgizmo.org"
 license=('GPL')
 groups=('lv2-plugins')
-depends=('libsmf' 'libxext' 'expat' 'jack')
+depends=('libsmf' 'libxext' 'expat' 'jack' 'zita-resampler')
 makedepends=('git' 'lv2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
