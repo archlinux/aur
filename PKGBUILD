@@ -3,7 +3,7 @@
 
 _pkgname=iris
 pkgname=mopidy-${_pkgname}
-pkgver=2.13.17
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='A Mopidy Web client that utilizes the Spotify and EchoNest frameworks. (Formerly Spotmop)'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python2' 'mopidy' 'mopidy-spotify' 'python2-configobj'
 makedepends=('python2' 'python2-setuptools' 'python2-pip')
 optdepends=('mopidy-local-sqlite: local library support')
 source=("https://files.pythonhosted.org/packages/source/M/Mopidy-Iris/Mopidy-Iris-${pkgver}.tar.gz")
-sha256sums=('2cd011e79e9f34325257071add161f602da09f7fc9d508839a4f931fdb2aa5cb')
+sha256sums=('0db1344d41830cf7d76d1cb91c2547b85bab9463fefd5c722def8a37eca79526')
 
 package() {
   cd "${srcdir}/Mopidy-Iris-${pkgver}"
