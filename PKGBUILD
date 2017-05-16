@@ -3,7 +3,7 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 pkgver=6.0.0.beta.1.10.g2d06c170
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
@@ -63,11 +63,11 @@ package() {
 
   mkdir -p "$pkgdir"/usr/lib/$pkgname
   cp -a bin/Linux/netcoreapp*/ubuntu.16.04-x64 "$pkgdir"/usr/lib/$pkgname
-  chmod +x "$pkgdir"/usr/lib/$pkgname
+  chmod 755 "$pkgdir"/usr/lib/$pkgname
 
   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
   cp ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   mkdir -p "$pkgdir"/usr/bin
-  ln -s "$pkgdir"/usr/lib/$pkgname/ubuntu.16.04-x64/powershell "$pkgdir"/usr/bin/powershell
+  ln -s /usr/lib/$pkgname/ubuntu.16.04-x64/powershell "$pkgdir"/usr/bin/powershell
 }
