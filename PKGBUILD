@@ -6,7 +6,7 @@ pkgname=aif
 pkgver=1.10
 #_pkgver=${pkgver}-BETA # currently at beta release
 _pkgver=${pkgver} # currently at stable release
-pkgrel=2
+pkgrel=4
 pkgdesc="An XML and python-driven rebirth of the AIF (Arch Installation Framework) project."
 arch=( 'i686' 'x86_64' )
 url="https://aif.square-r00t.net/"
@@ -29,11 +29,15 @@ package() {
 	install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/docs/examples/${pkgname}-secure.xml ${pkgdir}/usr/share/doc/${pkgname}/examples/${pkgname}-alternate.xml
         install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/${pkgname}.xsd ${pkgdir}/usr/share/doc/${pkgname}/${pkgname}.xsd
         install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/docs/TODO ${pkgdir}/usr/share/doc/${pkgname}/TODO
+	install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/docs/images/fig1.1.png ${pkgdir}/usr/share/doc/${pkgname}/images/fig1.1.png
+	install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/extras/bdisk.build.ini ${pkgdir}/usr/share/${pkgname}/bdisk.build.ini
+	install -D -m0755 ${srcdir}/${_pkgname}-${_pkgver}/extras/createtest.expect ${pkgdir}/usr/share/${pkgname}/createtest.exp
+	install -D -m0755 ${srcdir}/${_pkgname}-${_pkgver}/extras/txttojson.py ${pkgdir}/usr/share/${pkgname}/txttojson.py
+	install -D -m0755 ${srcdir}/${_pkgname}-${_pkgver}/extras/xmllint.sh ${pkgdir}/usr/share/${pkgname}/xmllint.sh
         install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/docs/README.adoc ${pkgdir}/usr/share/doc/${pkgname}/README.adoc
 	install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/docs/images/fig1.1.png ${pkgdir}/usr/share/doc/${pkgname}/images/fig1.1.png
         install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/extras/systemd.unit ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
         install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/extras/mkinitcpio.hook ${pkgdir}/usr/lib/initcpio/hooks/${pkgname}
         install -D -m0644 ${srcdir}/${_pkgname}-${_pkgver}/extras/mkinitcpio.install ${pkgdir}/usr/lib/initcpio/install/${pkgname}
 	curl -s -o ${pkgdir}/usr/share/doc/${pkgname}/README.html https://aif.square-r00t.net/
-	# TODO: xml linter, script samples. and docs, when i write them.
 }
