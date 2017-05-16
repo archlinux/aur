@@ -21,6 +21,7 @@ makedepends=(
   'gcc5'
   'cmake'
   'git'
+  'opencl-headers'
 )
 optdepends=(
   'solidity: The Solidity Contract-Oriented Programming Language'
