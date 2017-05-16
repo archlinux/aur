@@ -20,11 +20,6 @@ source=("git+https://github.com/varuna-lang/${pkgname}.git#tag=${pkgver}"
     "git+https://github.com/varuna-lang/llvm-binutils.git")
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-pkgver() {
-    cd "${pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
     cd "$srcdir/${pkgname}"
     git submodule init
