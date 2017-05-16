@@ -1,6 +1,6 @@
 pkgbase = network-manager-applet-indicator
 	pkgdesc = Applet for managing network connections, with AppIndicator
-	pkgver = 1.4.6
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager/
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = network-manager-applet-indicator
 
 pkgname = nm-connection-editor-indicator
 	pkgdesc = NetworkManager GUI connection editor and widgets, with AppIndicator
-	provides = libnm-gtk=1.4.6-1
-	provides = libnma=1.4.6-1
+	provides = libnm-gtk=1.8.0-1
+	provides = libnma=1.8.0-1
 	conflicts = libnm-gtk
 	replaces = libnm-gtk
 
@@ -36,6 +36,6 @@ pkgname = network-manager-applet-indicator
 	depends = libnotify
 	depends = libsecret
 	depends = libappindicator-gtk3
-	provides = network-manager-applet=1.4.6-1
+	provides = network-manager-applet=1.8.0-1
 	conflicts = network-manager-applet
 

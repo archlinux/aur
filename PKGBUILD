@@ -11,7 +11,7 @@ pkgbase=network-manager-applet-indicator
 pkgname=(nm-connection-editor-indicator network-manager-applet-indicator)
 pkgdesc="Applet for managing network connections, with AppIndicator"
 url="https://wiki.gnome.org/Projects/NetworkManager/"
-pkgver=1.4.6
+pkgver=1.8.0
 pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
@@ -50,7 +50,8 @@ build() {
     --enable-ld-gc \
     --with-team \
     --with-wwan \
-    --with-appindicator
+    --with-appindicator \
+    --without-selinux
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
