@@ -3,7 +3,7 @@
 pkgname=docfetcher
 _name=DocFetcher
 pkgver=1.1.19
-pkgrel=1
+pkgrel=2
 _gtkver=gtk3 # variable that controls whether GTK2 or 3(default) is to be used.
 pkgdesc="A java open source desktop search application"
 arch=('i686' 'x86_64')
@@ -46,21 +46,21 @@ package() {
   rm "Readme.txt"
 
   # Copy files to destination
-  prefix="${pkgdir}/usr/share/${pkgname}"
-  install -d "${prefix}"
+  #prefix="${pkgdir}/usr/share/${pkgname}"
+  install -d "${pkgdir}/usr/share/${pkgname}"
   for file in *; do
-    cp -a "${file}" "${prefix}/${file}"
+    cp -a "${file}" "${pkgdir}/usr/share/${pkgname}/${file}"
   done
-  find "${prefix}" -type d -exec chmod 0755 {} \;
-  find "${prefix}" -type f -exec chmod 0644 {} \;
+  find "${pkgdir}/usr/share/${pkgname}" -type d -exec chmod 0755 {} \;
+  find "${pkgdir}/usr/share/${pkgname}" -type f -exec chmod 0644 {} \;
   
   # make start scripts executable
-  chmod +x ${prefix}/DocFetcher-GTK*.sh
+  chmod +x ${pkgdir}/usr/share/${pkgname}/DocFetcher-GTK*.sh
   
   # symlink one or other of the startup scripts for GTK2 or GTK3(default)
   if [ $_gtkver == 'gtk3' ]; then
-    ln -s "${prefix}/DocFetcher-GTK3.sh" "${prefix}/DocFetcher.sh"
+    ln -s "${pkgdir}/usr/share/${pkgname}/DocFetcher-GTK3.sh" "${pkgdir}/usr/share/${pkgname}/DocFetcher.sh"
   elif [ $_gtkver == 'gtk2' ]; then
-    ln -s "${prefix}/DocFetcher-GTK2.sh" "${prefix}/DocFetcher.sh"
+    ln -s "${pkgdir}/usr/share/${pkgname}/DocFetcher-GTK2.sh" "${pkgdir}/usr/share/${pkgname}/DocFetcher.sh"
   fi
 }
