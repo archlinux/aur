@@ -2,7 +2,7 @@
 
 _pkgname=pwsafe
 pkgname=passwordsafe
-_pkgver=1.01
+_pkgver=1.02
 pkgver="$_pkgver"BETA
 pkgrel=1
 pkgdesc="Simple & Secure Password Management"
@@ -16,8 +16,8 @@ optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe-git' 'pwsafe' 'pwsafe-gui')
 source=(https://github.com/pwsafe/pwsafe/archive/$pkgver.tar.gz
 	https://github.com/pwsafe/pwsafe/releases/download/$pkgver/$pkgver.tar.gz.sig)
-validpgpkeys=('A703C1328EABC7B201753BA3919464515CCF8BB3')  #Rony Shapiro
-sha1sums=('46e8c172de272f733c4703adf7bc04ad1a7943f4'
+validpgpkeys=('C8876BE69A8EC6414C8C8729B131423D7F2F1BB9')  # http://pgp.mit.edu/pks/lookup?op=vindex&search=0xB131423D7F2F1BB9
+sha1sums=('e2e4b31684b0eee39953cf8abbe88262932e09a8'
           'SKIP')
 
 prepare() {
@@ -45,11 +45,13 @@ package() {
 		install -Dm 644 "$doc" "$pkgdir"/usr/share/doc/passwordsafe/"$doc"
 	done
 	
-	install -Dm 644 help/helpEN.zip "$pkgdir"/usr/share/doc/passwordsafe/help/helpEN.zip
+	install -dm 755 "$pkgdir"/usr/share/doc/passwordsafe/help/
+	install -Dm 644 help/help*.zip "$pkgdir"/usr/share/doc/passwordsafe/help/
+
 	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 	install -Dm 644 docs/pwsafe.1 "$pkgdir"/usr/share/man/man1/pwsafe.1
 
-	install -d 755 "$pkgdir"/usr/share/pwsafe/xml
+	install -dm 755 "$pkgdir"/usr/share/pwsafe/xml
 	install -m 644 xml/* "$pkgdir"/usr/share/pwsafe/xml
 
 	cd src/ui/wxWidgets/I18N/mos/
