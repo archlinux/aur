@@ -8,14 +8,17 @@ _build_voip=true
 # Set this to 'true' to enable auto login
 #_autologin='true'
 
-# set this to 'true' to use clang for compiling (experimental)
+# Set this to 'true' to use clang for compiling (experimental)
 #_clang='true'
+
+# Unofficial plugins
+#_plugin_lua4rs='true'
 
 ### Nothing to be changed below this line ###
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.2.r0.g733b1143b
+pkgver=v0.6.2.r348.g86118d9de
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -43,6 +46,13 @@ _optAutol=''
 [[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
 [[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
 
+# Handle unofficial plugins
+if [[ "$_plugin_lua4rs" == 'true' ]] ; then
+	depends=(${depends[@]} 'lua')
+	source=(${source[@]} 'Lua4RS::git+https://github.com/RetroShare/Lua4RS.git')
+	sha256sums=(${sha256sums[@]} 'SKIP')
+fi
+
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -50,6 +60,13 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+
+	# Handle unofficial plugins
+	if [[ "$_plugin_lua4rs" == 'true' ]] ; then
+		[[ -d 'plugins/Lua4RS' ]] &&  rm -r plugins//Lua4RS
+		cp -r -l "${srcdir}/Lua4RS" plugins/
+		sed -i -e 's/SUBDIRS += \\/SUBDIRS += \\\n\t\tLua4RS \\/g' plugins/plugins.pro
+	fi
 
 	# remove unwanted plugins
 	[[ "$_build_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
