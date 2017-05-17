@@ -2,11 +2,11 @@
 #Contributor: Mihails Strasuns <public@dicebot.lv>
 
 pkgname=('dcd-git')
-pkgver=r664.69d195f
+pkgver=r824.0ebef7b
 pkgrel=1
 pkgdesc="D Completion Daemon: auto-complete for the D programming language"
 arch=('i686' 'x86_64')
-url="https://github.com/Hackerpilot/DCD"
+url="https://github.com/dlang-community/DCD"
 license=("GPL3")
 groups=('dlang')
 makedepends=('dmd' 'git')
@@ -16,7 +16,7 @@ conflicts=('dcd')
 options=('!strip')
 
 source=(
-	"git+https://github.com/Hackerpilot/DCD"
+	"git+https://github.com/dlang-community/DCD"
 	"dcd.service"
 	"dcd.conf"
 )
