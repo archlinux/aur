@@ -1,4 +1,4 @@
-pkgbase = ccid
+pkgbase = ccid-git
 	pkgdesc = A generic USB Chip/Smart Card Interface Devices driver (git version)
 	pkgver = ccid.1.4.26.r35.g582f882
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = ccid
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = ccid
+pkgname = ccid-git
 

@@ -1,6 +1,6 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 
-pkgname=ccid
+pkgname=ccid-git
 pkgver=ccid.1.4.26.r35.g582f882
 pkgrel=1
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver (git version)"
