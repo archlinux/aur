@@ -1,16 +1,18 @@
 pkgname=mingw-w64-kcodecs
-pkgver=5.33.0
+pkgver=5.34.0
 pkgrel=1
 arch=(any)
 pkgdesc="Provide a collection of methods to manipulate strings using various encodings (mingw-w64)"
 license=("LGPL")
 depends=(mingw-w64-qt5-base)
 groups=(mingw-w64-kf5)
-makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
+makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
-url="https://projects.kde.org/projects/frameworks/kcodecs"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kcodecs-${pkgver}.tar.xz")
-md5sums=('a02b693f662defc2eb89d7f28f00187c')
+url="https://community.kde.org/Frameworks"
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kcodecs-${pkgver}.tar.xz"{,.sig})
+sha256sums=('50ab884a0ec9ee535ea5354323645858fe9969f93af3e1503478024731d1a14c'
+            'SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -35,6 +37,5 @@ package() {
     make DESTDIR="$pkgdir" install
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }
