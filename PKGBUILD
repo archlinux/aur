@@ -1,11 +1,11 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=('dscanner-git')
-pkgver=r881.6fcb102
+pkgver=r1052.e844a98
 pkgrel=1
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
-url="https://github.com/Hackerpilot/Dscanner"
+url="https://github.com/dlang-community/D-Scanner"
 license=("BSL")
 groups=('dlang')
 makedepends=('dmd' 'git')
@@ -15,29 +15,29 @@ conflicts=('dscanner')
 options=('!strip')
 
 source=(
-	"git+https://github.com/Hackerpilot/Dscanner"
+	"git+https://github.com/dlang-community/D-Scanner"
 )
 sha256sums=(
 	'SKIP'
 )
 
 pkgver() {
-	cd $srcdir/Dscanner
+	cd $srcdir/D-Scanner
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd $srcdir/Dscanner
+	cd $srcdir/D-Scanner
 	git submodule update --init --recursive
 }
 
 build() {
-	cd $srcdir/Dscanner
+	cd $srcdir/D-Scanner
 	make
 }
 
 package(){
-	cd $srcdir/Dscanner
+	cd $srcdir/D-Scanner
 
 	# binaries
 	mkdir -p $pkgdir/usr/bin
