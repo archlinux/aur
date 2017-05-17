@@ -44,8 +44,8 @@ if [[ -z ${startdir} ]]; then
 fi
 
 if [[ -f full-build ]]; then
-  _minimal = false
-  _debug = false
+  _minimal=false
+  _debug=false
 fi
 
 if $_building && $_minimal; then
