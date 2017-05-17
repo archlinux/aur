@@ -1,8 +1,8 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=vm.lv2
-_pkgcommit=f678fcf0c6061a639b1bad1dec1a546f04213034
+_pkgcommit=a17c7c46dd0b5446284394c6c3d2a4f189c3a9b7
 pkgname=vm-lv2
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A virtual machine LV2 plugin bundle"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ options=()
 install=
 source=("https://gitlab.com/OpenMusicKontrollers/$_pkgname/repository/archive.tar.bz2?ref=$pkgver")
 noextract=()
-md5sums=('55cf8f62bfdea11ad5ede8c5267fc180')
+md5sums=('fcf2745c059035eb10bb56604af96c31')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver-$_pkgcommit"

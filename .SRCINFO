@@ -1,6 +1,6 @@
 pkgbase = vm-lv2
 	pkgdesc = A virtual machine LV2 plugin bundle
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://open-music-kontrollers.ch/lv2/vm
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = vm-lv2
 	makedepends = lv2
 	depends = libxext
 	depends = libgl
-	source = https://gitlab.com/OpenMusicKontrollers/vm.lv2/repository/archive.tar.bz2?ref=0.2.0
-	md5sums = 55cf8f62bfdea11ad5ede8c5267fc180
+	source = https://gitlab.com/OpenMusicKontrollers/vm.lv2/repository/archive.tar.bz2?ref=0.4.0
+	md5sums = fcf2745c059035eb10bb56604af96c31
 
 pkgname = vm-lv2
 
