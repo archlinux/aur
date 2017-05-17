@@ -167,7 +167,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/$chromium-$pkgver"
+  cd "$srcdir/chromium-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
