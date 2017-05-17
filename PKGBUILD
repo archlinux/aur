@@ -7,13 +7,14 @@
 pkgname=opencv-java
 _pkgbase=opencv
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=('i686' 'x86_64')
 license=('BSD')
 url="http://opencv.org/"
 depends=(
 	"opencv>=$pkgver"
+	'java-runtime'
 	)
 makedepends=(
 	'cmake'
@@ -24,15 +25,17 @@ makedepends=(
 	# Needed for the Java binding
 	'apache-ant'
 	'java-environment'
-	)
+)
 optdepends=(
 	'opencv-samples'
-	)
+)
 # Sources and checksums section
 source=(
 	"${_pkgbase}-${pkgver}.tar.gz::https://github.com/Itseez/opencv/archive/$pkgver.tar.gz"
-	)
-md5sums=('a43b65488124ba33dde195fea9041b70')
+	"opencv_contrib-$pkgver.tar.gz::https://github.com/Itseez/opencv_contrib/archive/$pkgver.tar.gz"
+)
+sha256sums=('b9d62dfffb8130d59d587627703d5f3e6252dce4a94c1955784998da7a39dd35'
+            '1e2bb6c9a41c602904cc7df3f8fb8f98363a88ea564f2a087240483426bf8cbe')
 
 # CMake flags
 _cmakeopts=('-D WITH_OPENCL=ON'
@@ -70,7 +73,9 @@ build() {
 	mkdir -p "$srcdir/build"
 	cd "$srcdir/build"
 
-	cmake ${_cmakeopts[@]} "$srcdir/$_pkgbase-$pkgver"
+	cmake ${_cmakeopts[@]} \
+		-DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
+		"$srcdir/$_pkgbase-$pkgver"
 
 	# Build everything, we will fix things in package step
 	make
