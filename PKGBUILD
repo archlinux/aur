@@ -4,7 +4,7 @@
 # Contributor: cute.tec@gmail.com
 
 pkgname=xfwm4-git
-pkgver=4.12.0+237+g03c4b509
+pkgver=4.13.0+14+g940cfef1
 pkgrel=1
 pkgdesc="Xfce window manager (git version)"
 arch=('i686' 'x86_64')
@@ -21,13 +21,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd xfwm4
   git describe --long | sed 's/xfwm4-//;s/-/+/g'
-}
-
-prepare() {
-  cd xfwm4
-
-  # https://bugzilla.xfce.org/show_bug.cgi?id=12534
-  git revert --no-commit 0dfb55407a830572f03297b3c118fac1f3c5b80d
 }
 
 build() {
