@@ -1,0 +1,18 @@
+pkgbase = lolidns-git
+	pkgdesc = DNS proxy for losers
+	pkgver = 0.1.r1.a94592d
+	pkgrel = 1
+	url = https://github.com/Akaricchi/lolidns
+	arch = any
+	license = WTFPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dnslib
+	provides = lolidns
+	conflicts = lolidns
+	source = pkgbuild-lolidns::git+https://github.com/Akaricchi/lolidns
+	md5sums = SKIP
+
+pkgname = lolidns-git
+
