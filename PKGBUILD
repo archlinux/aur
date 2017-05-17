@@ -6,9 +6,10 @@ _branchname="pygi-migration"
 _pkgver=0.92
 pkgver=626.fd33e48
 pkgrel=1
-pkgdesc="DockBarX GTK3 port. (Currently only works as standalone dock - dockx)"
+pkgdesc="DockBarX GTK3 port. (Standalone panel and mate applet)"
 arch=('i686' 'x86_64')
-url="https://github.com/M7S/dockbarx"
+#url="https://github.com/M7S/dockbarx"
+url="https://github.com/amper128/dockbarx"
 license=('GPL3')
 depends=('libkeybinder3' 'python2-cairo' 'python2-dbus' 'python2-gobject' 'python2-pillow'
          'python2-xlib' 'python2-xdg' 'python2-xcffib')
