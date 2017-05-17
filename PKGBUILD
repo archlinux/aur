@@ -1,7 +1,7 @@
 # Maintainer: Okashi <okashi@fourchin.net>
 pkgname=owo-cli
-pkgver=0.0.17
-pkgrel=2
+pkgver=0.0.18
+pkgrel=1
 epoch=
 pkgdesc="A bash based file uploader and URL shortener for owo.whats-th.is"
 arch=('x86_64')
@@ -10,15 +10,22 @@ license=('MIT')
 groups=()
 depends=('curl' 'xclip' 'maim' 'slop' 'grep' 'libnotify')
 changelog=
-source=("https://github.com/whats-this/owo.sh/raw/master/dist_pkgs/owo-cli-0.0.17.tar.gz")
+source=("https://github.com/whats-this/owo.sh/raw/master/dist_pkgs/owo-cli-0.0.18.tar.gz")
 noextract=()
-sha256sums=('b857cd11732bd04fb5a7d8d11a561d2de69dc2883a45a914d4b574383d4738d4')
-validpgpkeys=('E7C0305DCEED5E9988AE9E5ADE754D221AD4051A') # Okashi
+sha256sums=('5b4554aa85a4b6c42193c571dfa0e09c423af84dbbf85b66b5b02796dbcefb2a')
+validpgpkeys=('AB52DA8BF01D9D5C0614376243A450B5185ADAA2') # Okashi
 
 package() {
         tar zxf $pkgname-$pkgver.tar.gz
 	cd "$pkgname-$pkgver"
         mkdir -p ~/.config/owo
+        if [ -f ~/.config/owo/conf.cfg ]; then
+    		cp ~/.config/owo/conf.cfg conf.cfg.bak
+	fi
         cp ./* ~/.config/owo/
+        cp ~/.config/owo/conf.cfg.bak ~/.config/owo/conf.cfg 2>/dev/null
+        if [ -f /usr/local/bin/owo ]; then
+		sudo rm /usr/local/bin/owo
+	fi
         sudo ln -s ~/.config/owo/script.sh /usr/local/bin/owo
 }
