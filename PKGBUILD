@@ -4,7 +4,7 @@
 
 pkgname=telegram-desktop-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org"
@@ -67,8 +67,8 @@ package() {
 	chrpath --delete "$pkgdir/usr/bin/telegram-desktop"
 
 	# Desktop launcher
-	install -Dm755 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/telegram.png"
-	install -Dm755 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
+	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/telegram.png"
+	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
 
 	# KDE4 protocol file
 	install -d "$pkgdir/usr/share/kde4/services"
