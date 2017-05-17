@@ -8,7 +8,7 @@ pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
-makedepends=('git' 'cmake' 'proot' 'dotnet>=2.0')
+makedepends=('git' 'cmake' 'proot' 'dotnet>=2.0' 'dotnet-sdk')
 depends=('bash' 'icu')
 provides=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'

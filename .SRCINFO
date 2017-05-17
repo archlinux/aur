@@ -9,6 +9,7 @@ pkgbase = powershell-git
 	makedepends = cmake
 	makedepends = proot
 	makedepends = dotnet>=2.0
+	makedepends = dotnet-sdk
 	depends = bash
 	depends = icu
 	provides = powershell
