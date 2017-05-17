@@ -40,7 +40,7 @@ source=("atom-amd64-$(get_version).deb::https://npm.taobao.org/mirrors/atom/$(ge
          startupwmclass.patch)
 
 package() {
-  bsdtar xf data.tar.gz
+  tar xf data.tar.xz
   patch -p1 < "${srcdir}"/atom-python.patch
   patch -p1 < "${srcdir}"/startupwmclass.patch
   sed -i 's|env PYTHON=python2 GTK_IM_MODULE= QT_IM_MODULE= XMODIFIERS= /usr/share/atom-beta/atom|/usr/bin/atom-beta|' usr/share/applications/atom-beta.desktop
