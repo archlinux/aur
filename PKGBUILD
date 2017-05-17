@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=zef
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Perl6 Module Management"
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/ugexe/zef"
 license=('PerlArtistic')
 options=('!purge')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ugexe/$pkgname/tar.gz/v$pkgver)
-sha256sums=('eed0e7119a1b550278ea9cba46e8865915e39751742e9474b2bf979a4265aa6b')
+sha256sums=('871d449c261275683edf51e6775d2979014c3a7b52168f1d299f50763fb8bab3')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
