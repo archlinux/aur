@@ -2,5 +2,6 @@ pkg/
 src/
 *.log
 *.part
+*.sig
 *.tar
 *.xz

@@ -1,5 +1,5 @@
 pkgname=mingw-w64-extra-cmake-modules
-pkgver=5.33.0
+pkgver=5.34.0
 pkgrel=1
 arch=(any)
 pkgdesc="Extra modules and scripts for CMake (mingw-w64)"
@@ -8,17 +8,20 @@ license=("LGPL")
 depends=(mingw-w64-cmake)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/extra-cmake-modules-${pkgver}.tar.xz"
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/extra-cmake-modules-${pkgver}.tar.xz"{,.sig}
 "set-AUTOSTATICPLUGINS.patch"
 "05aa27dc0e14dab407379a4d22f895e9eff13cc0.patch")
-md5sums=('6ab20f30d39c9d92ac581cd8120aa102'
-         '0d249754247382f3b8dda80d6833aac4'
-         '5dff00f63909b8aaf717d7e07bdff80d')
+sha256sums=('05da02a2db64d20a7a92be6dc642df39da39f957dea8fba9bcb99fb3f3f66de4'
+            'SKIP'
+            '30bdcedab402c69ea0db3460f5a23cbd226a5cd1e12b13926b8a65df773e14a0'
+            '7e44cf56a8274c8166eaf02e60c2d34e5048992a7e3c8309b998b762a394e909')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd extra-cmake-modules-$pkgver
+	sed -e 's|/usr/bin/env python|/usr/bin/env python2|' -i find-modules/*.py
 	patch -p1 -i "${srcdir}"/set-AUTOSTATICPLUGINS.patch
 	patch -p1 -i "$srcdir"/05aa27dc0e14dab407379a4d22f895e9eff13cc0.patch
 }
