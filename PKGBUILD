@@ -8,8 +8,7 @@ arch=('any')
 url='https://github.com/baptistedonaux/deezer-desktop-linux'
 license=('MIT')
 source=('deezer-desktop-linux.sh')
-install=pos.install
-md5sums=('2f48f029c76a6633a1c0bb50cde7a800')
+md5sums=('eee6a71bebc74dddc4b422fdf51c7598')
 
 name=deezer-desktop-linux
 
@@ -21,6 +20,7 @@ _depends=(
 makedepends=(
   'gcc>=4.5.0-2'  'gcc-multilib>=4.5.0-2'
   git   npm
+  readline
 )
 
 
@@ -36,10 +36,12 @@ fi
 prepare(){
     rm $name -Rvif 
     git clone https://github.com/baptistedonaux/$name.git 
+    printf "need to symlink readline.so.6, so need a sudo, dont worry \n"
+    sudo ln -sf /usr/lib/libreadline.so.7.0  /usr/lib/libreadline.so.6
 }
 
 pkgver() {
-  cd "$name"
+  cd "$srcdir/$name"
   ( 
     set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -47,10 +49,20 @@ pkgver() {
   )
 }
 
+build(){
+cd $srcdir/$name                                                                                                         
+npm install
+cd app 
+npm install 
+cd ..
+npm run build
+npm run dist
 
+
+}
 package(){
-    mkdir $pkgdir/opt -p
-    mv $srcdir/$name $pkgdir/opt/
+    mkdir -p $pkgdir/opt/
+    mv $srcdir/$name/$name-linux-x64 $pkgdir/opt/
     install -Dm 755 deezer-desktop-linux.sh $pkgdir/usr/bin/deezer-desktop-linux
     
 }
