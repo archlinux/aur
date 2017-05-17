@@ -2,7 +2,7 @@ post_install() {
     update-mime-database -n /usr/share/mime
     update-desktop-database -q
     echo "This will run as a demo unless you have an unlock key"
-    echo "To install the BioTek and Collective plugin data files, copy them from /opt/waveform8-bundle to ~/Tracktion after the first run"
+    echo "To install the BioTek and Collective plugin data files, copy them from /opt/waveform8-bundle to ~/.config/Tracktion after the first run"
 }
 
 post_upgrade() {
