@@ -1,13 +1,12 @@
 # Maintainer: Christoph Reiter <reiter.christoph@gmail.com>
 
 pkgname=quodlibet-git
-_srcname=quodlibet
-pkgver=r7848.84a0f2e
-pkgrel=3
+pkgver=r9120.37e477f1e
+pkgrel=1
 pkgdesc="An audio library tagger, manager and player"
 arch=('any')
 license=('GPL2')
-url="https://github.com/quodlibet/quodlibet"
+url="https://quodlibet.readthedocs.io"
 depends=('gtk3' 'python2-gobject' 'python2-dbus' 'python2-cairo' 'mutagen' 
          'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 
          'desktop-file-utils' 'python2-futures' 'python2-feedparser'
@@ -25,9 +24,13 @@ provides=('quodlibet-plugins' 'quodlibet')
 conflicts=('quodlibet-plugins' 'quodlibet')
 replaces=('quodlibet-plugins')
 options=('!makeflags')
-install=${pkgname}.install
 source=(${pkgname}::git+https://github.com/quodlibet/quodlibet.git)
 sha1sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd ${pkgname}/quodlibet
@@ -36,10 +39,5 @@ build() {
 
 package() {
   cd ${pkgname}/quodlibet
-  python2 setup.py install --root="${pkgdir}"
-}
-
-pkgver() {
-  cd ${pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
 }

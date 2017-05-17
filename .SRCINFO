@@ -1,9 +1,8 @@
 pkgbase = quodlibet-git
 	pkgdesc = An audio library tagger, manager and player
-	pkgver = r7848.84a0f2e
-	pkgrel = 3
-	url = https://github.com/quodlibet/quodlibet
-	install = quodlibet-git.install
+	pkgver = r9120.37e477f1e
+	pkgrel = 1
+	url = https://quodlibet.readthedocs.io
 	arch = any
 	license = GPL2
 	makedepends = intltool
