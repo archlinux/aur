@@ -1,18 +1,18 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=black-screen
-pkgver=0.2.144
+pkgver=0.2.146
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
-url='https://github.com/shockone/black-screen'
+url='https://github.com/railsware/black-screen'
 license=('MIT')
 depends=('electron')
 makedepends=('apm' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'black-screen.desktop'
         'black-screen.js')
-sha256sums=('65d57f9986eedb2ee3e690c8ad43dbfe800d1fff00f972dc98cef56a43143d31'
+sha256sums=('3076727b5b093988a5d63297d41ebbd10b5c1cf87307c5045a31793c2c0977c4'
             'd23e2d0254139efb0dfdd14814cee758bf7345834c5cc92dfd740c0fae0b586e'
             'd13c04e3a0c9855fd00faaf4a7ec1cef39a276744ff49a3c9b6cbbf0f83513fb')
 
