@@ -5,12 +5,12 @@
 
 pkgname=clipgrab
 pkgver=3.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ...'
 arch=('i686' 'x86_64')
 url='http://clipgrab.org'
 license=('GPL3')
-depends=('qt5-webkit-ng')
+depends=('qtwebkit')
 optdepends=('ffmpeg: for the conversion functionality')
 source=(https://download.clipgrab.org/$pkgname-$pkgver.tar.gz
         $pkgname.desktop)
