@@ -2,7 +2,7 @@
 
 pkgname=python-progressbar2
 _pkgname=python-progressbar
-pkgver=3.12.0
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Progressbar library to provide visual (yet text based) progress to long running operations"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 provides=('python-progressbar')
 conflicts=('python-progressbar')
 source=("https://github.com/WoLpH/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('13561586ee64d68816779f2d938768d46350237d10058d18a32db1ad260bf465')
+sha256sums=('4edb0d57e0eb2cc580a4ed73b1052d2f3359e06d28a83abcbbf8b0d31ee9ddf7')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
