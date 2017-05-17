@@ -2,12 +2,11 @@
 pkgname=rancher-cli-git
 pkgver=r164.9ca7983
 pkgrel=1
-pkgdesc="The Rancher Command Line Interface (CLI)is a unified tool to manage your Rancher server. "
+pkgdesc="The Rancher Command Line Interface (CLI) is a unified tool to manage your Rancher server."
 arch=('any')
 url="https://github.com/rancher/cli"
 license=('Apache')
-depends=()
-makedepends=('git docker') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git docker')
 provides=("${pkgname%-git}")
 source=('git://github.com/rancher/cli.git')
 md5sums=('SKIP')
