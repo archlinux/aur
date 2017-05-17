@@ -1,0 +1,20 @@
+pkgbase = cpupower-gui-git
+	pkgdesc = A GUI utility to set CPU frequency limits
+	pkgver = 0.5.0.r1.g854bffe
+	pkgrel = 1
+	url = https://gitlab.com/vagnum08/cpupower-gui
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = python
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = polkit
+	provides = cpupower-gui
+	conflicts = cpupower-gui
+	source = cpupower-gui::git+https://gitlab.com/vagnum08/cpupower-gui.git
+	md5sums = SKIP
+
+pkgname = cpupower-gui-git
+
