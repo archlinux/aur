@@ -4,7 +4,7 @@ _ghname='EternalTCP'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='3.0.2'
+pkgver='3.0.4'
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -22,7 +22,7 @@ source=(
 		'et.patch'
 )
 sha256sums=(
-		'31741be1c8adfea7e43703a01e6a2ca91dac514869d49d855140c4abac8c3cb4'
+		'e53580e49f9e99c073ddc7d7e7ca3ee380cfea449fa779e267160603137ec1c3'
 		'0f1ee8020f422254a97ed5cbbbdfd87a95b2ad74c729b42796b820e40af5f0fd'
 )
 
