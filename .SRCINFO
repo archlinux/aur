@@ -1,7 +1,7 @@
 pkgbase = waveform-bundle
 	pkgdesc = Proprietary Digital Audio Workstation (DAW) by Tracktion with bundled DAW Essentials, BioTek, and Collective plugins
 	pkgver = 8.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.tracktion.com/
 	install = waveform.install
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = waveform-bundle
 	depends = libxinerama
 	depends = freetype2
 	depends = libcurl-gnutls
+	depends = webkitgtk
 	optdepends = jack: A low-latency audio server
 	optdepends = ladspa-plugins: A set of ladspa plugins
 	source = https://s3-us-west-2.amazonaws.com/tracktion-marketplace-public/archive/waveform/812/Waveform-bundle-linux-8.1.2.zip
