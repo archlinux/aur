@@ -1,11 +1,11 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=('dfmt-git')
-pkgver=r314.8035bee
+pkgver=r409.a93efb6
 pkgrel=1
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
-url="https://github.com/Hackerpilot/dfmt"
+url="https://github.com/dlang-community/dfmt"
 license=("BSL")
 groups=('dlang')
 makedepends=('dmd' 'git')
@@ -15,7 +15,7 @@ conflicts=('dfmt')
 options=('!strip')
 
 source=(
-	"git+https://github.com/Hackerpilot/dfmt"
+	"git+https://github.com/dlang-community/dfmt"
 )
 sha256sums=(
 	'SKIP'
