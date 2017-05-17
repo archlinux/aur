@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=sirikali
 _name=SiriKali
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('libsecret: support for Gnome libsecret password storage'
             'ecryptfs-simple: for eCryptfs support')
 conflicts=("sirikali-git")
 source=("${_name}-${pkgver}.tar.xz::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz")
-sha256sums=('72c55aaf72da5e6d3c922e7a93d48f9d4f81c26c472c35d4d59a084c596f873e')
+sha256sums=('7d2cece25bf9bbb5d7104d645ef1334bce815446f182284627ec008c0656276f')
 
 prepare() {
   cd "$srcdir/${_name}-${pkgver}"
