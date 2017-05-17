@@ -2,10 +2,10 @@
 
 pkgname=('dfmt')
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
-url="https://github.com/Hackerpilot/dfmt"
+url="https://github.com/dlang-community/dfmt"
 license=("BSL")
 groups=('dlang')
 makedepends=('dmd' 'git')
@@ -15,7 +15,7 @@ conflicts=('dfmt')
 options=('!strip')
 
 source=(
-	"git+https://github.com/Hackerpilot/dfmt#tag=v${pkgver}"
+	"git+https://github.com/dlang-community/dfmt#tag=v${pkgver}"
 )
 sha256sums=(
 	'SKIP'
