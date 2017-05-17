@@ -11,7 +11,8 @@ arch=('any')
 url="https://github.com/TresysTechnology/refpolicy/wiki"
 license=('GPL')
 groups=('selinux' 'selinux-policies')
-depends=('linux-selinux')
+optdepends=('linux-hardened: Linux kernel with SELinux support'
+            'linux-selinux: Linux kernel with SELinux support')
 makedepends=('checkpolicy>=2.1.8' 'policycoreutils>=2.1.10'
              'libsepol>=2.1.4' 'libsemanage>=2.0.29')
 source=("https://raw.githubusercontent.com/wiki/TresysTechnology/${_origname}/files/${_origname}-2.${pkgver}.tar.bz2")

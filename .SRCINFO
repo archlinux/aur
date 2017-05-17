@@ -11,7 +11,8 @@ pkgbase = selinux-refpolicy-src
 	makedepends = policycoreutils>=2.1.10
 	makedepends = libsepol>=2.1.4
 	makedepends = libsemanage>=2.0.29
-	depends = linux-selinux
+	optdepends = linux-hardened: Linux kernel with SELinux support
+	optdepends = linux-selinux: Linux kernel with SELinux support
 	source = https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20170204.tar.bz2
 	sha256sums = 5e4daee61d89dfdc8c7bf369f81c99845931e337916dc6401e301c5de57ea336
 
