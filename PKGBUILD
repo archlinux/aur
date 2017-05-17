@@ -1,5 +1,5 @@
-# Contributor: Alexej Grigorjew <alexg91 at gmx dot de>
-# Maintainer: Alexej Grigorjew <alexg91 at gmx dot de>
+# Contributor: Alexej Grigorjew <alexg91@gmx.de>
+# Maintainer: Alexej Grigorjew <alexg91@gmx.de>
 
 pkgname=python2-pptx
 pkgver=0.6.5
