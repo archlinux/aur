@@ -8,20 +8,23 @@ pkgdesc="an emacs library that enhances minibuffer completion"
 arch=('any')
 url="http://www.emacswiki.org/emacs/Icicles"
 license=('GPL')
+source=("icicles.zip::https://github.com/emacsmirror/icicles/archive/master.zip")
+md5sums=('e674331f00557429e5f093f4993d0695')
 makedepends=(wget)
 install=icicles.install
 
 pkgver() {
-  [ -d icicles ] && rm -r icicles
-  mkdir icicles
-  cd icicles
-  wget http://www.emacswiki.org/emacs/download/icicles{,-chg,-cmd1,-cmd2,-doc1,-doc2,-face,-fn,-mac,-mcmd,-mode,-opt,-var}.el
-  
-  echo $(awk '/Update #:/ {print $4}' icicles.el) 
+  cd icicles-master
+  echo $(awk '/Update #:/ {print $4}' icicles.el)
+}
+
+build() {
+  cd icicles-master
   emacs -Q -batch -L . -f batch-byte-compile *.el || true
 }
 
 package() {
   install -d  "$pkgdir"/usr/share/emacs/site-lisp/icicles
-  cp -r "$srcdir"/icicles/* "$pkgdir"/usr/share/emacs/site-lisp/icicles
+  cp -r "$srcdir"/icicles-master/* "$pkgdir"/usr/share/emacs/site-lisp/icicles
 }
+
