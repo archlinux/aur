@@ -1,6 +1,6 @@
 pkgbase = sherlock-lv2
 	pkgdesc = An investigative LV2 plugin bundle
-	pkgver = 0.12.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = http://open-music-kontrollers.ch/lv2/sherlock
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = sherlock-lv2
 	depends = libxext
 	depends = libgl
 	depends = sratom
-	source = https://github.com/OpenMusicKontrollers/sherlock.lv2/archive/0.12.0.tar.gz
-	md5sums = 2759dfeadd433fbeaac720dbbbcf1870
+	source = https://github.com/OpenMusicKontrollers/sherlock.lv2/archive/0.14.0.tar.gz
+	md5sums = 9efb09aab563ab16a968a258c041d5f0
 
 pkgname = sherlock-lv2
 
