@@ -1,0 +1,20 @@
+pkgbase = pcsclite-git
+	pkgdesc = PC/SC Architecture smartcard middleware library
+	pkgver = pcsc.1.8.20.r58.gfd1e32d
+	pkgrel = 1
+	url = https://alioth.debian.org/projects/pcsclite/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = pkg-config
+	depends = python2
+	depends = systemd
+	provides = pcsclite
+	conflicts = pcsclite
+	options = !docs
+	source = git+https://alioth.debian.org/anonscm/git/pcsclite/PCSC.git
+	validpgpkeys = F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E
+	md5sums = SKIP
+
+pkgname = pcsclite-git
+
