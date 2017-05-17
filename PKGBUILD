@@ -31,6 +31,7 @@ _piver=""
 _use_mesa=false
 _float=false
 _shadow_build=true
+# automatically disabled if you are building webengine
 _debug=true
 _skip_web_engine=false
 _static_build=false
@@ -44,6 +45,7 @@ fi
 
 if [[ -f full-build ]]; then
   _minimal = false
+  _debug = false
 fi
 
 if $_building && $_minimal; then
