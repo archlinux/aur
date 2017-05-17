@@ -1,6 +1,6 @@
 pkgbase = eteroj-lv2
 	pkgdesc = OSC injection/ejection from/to UDP/TCP/Serial for LV2
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = http://open-music-kontrollers.ch/lv2/eteroj
 	arch = i686
@@ -10,9 +10,8 @@ pkgbase = eteroj-lv2
 	makedepends = cmake
 	makedepends = lv2
 	depends = libuv
-	depends = sratom
-	source = https://github.com/OpenMusicKontrollers/eteroj.lv2/archive/0.2.0.tar.gz
-	md5sums = fd59694be0d5ce4e7f4d77a4855da663
+	source = https://github.com/OpenMusicKontrollers/eteroj.lv2/archive/0.4.0.tar.gz
+	md5sums = c48ee78f3e63013beb5443b5bd0c0520
 
 pkgname = eteroj-lv2
 

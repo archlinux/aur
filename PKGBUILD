@@ -1,14 +1,14 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=eteroj.lv2
 pkgname=eteroj-lv2
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="OSC injection/ejection from/to UDP/TCP/Serial for LV2"
 arch=('i686' 'x86_64')
 url='http://open-music-kontrollers.ch/lv2/eteroj'
 license=('Artistic2.0')
 groups=('lv2-plugins')
-depends=('libuv' 'sratom')
+depends=('libuv')
 makedepends=('cmake' 'lv2')
 provides=()
 conflicts=()
@@ -18,7 +18,7 @@ options=()
 install=
 source=("https://github.com/OpenMusicKontrollers/$_pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('fd59694be0d5ce4e7f4d77a4855da663')
+md5sums=('c48ee78f3e63013beb5443b5bd0c0520')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
