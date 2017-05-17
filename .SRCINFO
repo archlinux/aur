@@ -1,14 +1,14 @@
 pkgbase = artanis
 	pkgdesc = A fast monolithic web-framework of Scheme
-	pkgver = 0.2
+	pkgver = 0.2.12_f39e_dirty
 	pkgrel = 1
 	url = http://web-artanis.com/
 	arch = x86_64
 	license = GPL
 	depends = guile
 	options = !strip
-	source = artanis-0.2::git+https://gitlab.com/NalaGinrut/artanis.git#commit=188a7fb10435d2df53cd2253f5b4c34ec1f74f2c
-	md5sums = SKIP
+	source = http://ftp.gnu.org/gnu/artanis/artanis-0.2.12-f39e-dirty.tar.bz2
+	md5sums = b2306e4ae14c75d5bb9ee829d58d0612
 
 pkgname = artanis
 
