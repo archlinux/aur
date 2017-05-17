@@ -12,7 +12,7 @@ depends=('curl' 'xclip' 'maim' 'slop' 'grep' 'libnotify')
 changelog=
 source=("https://github.com/whats-this/owo.sh/raw/master/dist_pkgs/owo-cli-0.0.18.tar.gz")
 noextract=()
-sha256sums=('5b4554aa85a4b6c42193c571dfa0e09c423af84dbbf85b66b5b02796dbcefb2a')
+sha256sums=('261c6ff4cde7b0d8dfd924e73e417c282c1f74bea9e2b5349694df7676de373c')
 validpgpkeys=('AB52DA8BF01D9D5C0614376243A450B5185ADAA2') # Okashi
 
 package() {
