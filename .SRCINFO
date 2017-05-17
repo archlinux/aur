@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-bettervolume-git
+	pkgdesc = Allow better interaction with the volume indicator, via mouse scroll/middle-button.
+	pkgver = r38.1a66fab
+	pkgrel = 1
+	url = https://github.com/Tudmotu/gnome-shell-extension-bettervolume
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/Tudmotu/gnome-shell-extension-bettervolume
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-bettervolume-git
+
