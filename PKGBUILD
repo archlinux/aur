@@ -171,7 +171,8 @@ _arch_specific_configure_options="\
     -examplesdir /usr/share/doc/qt/examples \
     -no-rpath"
 
-# shouldn't be needed
+# Seems to be creating a large amount of breakage
+# -openssl-linked \
 _core_configure_options="\
                  -prefix ${_installprefix} \
                  -optimized-tools \
@@ -186,7 +187,6 @@ _core_configure_options="\
                  -system-freetype \
                  -system-harfbuzz \
                  -dbus-linked \
-                 -openssl-linked \
                  -pch \
                  -opengl es2 \
                  -egl \
