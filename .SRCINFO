@@ -37,6 +37,7 @@ pkgbase = ncl
 	depends = libjpeg
 	depends = libpng
 	depends = jasper
+	depends = szip
 	depends = libxaw
 	depends = tcsh
 	depends = flex
