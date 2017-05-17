@@ -2,7 +2,7 @@
 
 pkgname=pcsclite-git
 pkgver=pcsc.1.8.20.r58.gfd1e32d
-pkgrel=1
+pkgrel=2
 pkgdesc="PC/SC Architecture smartcard middleware library"
 arch=('i686' 'x86_64')
 url="https://alioth.debian.org/projects/pcsclite/"
@@ -25,6 +25,7 @@ build() {
   cd "${srcdir}/PCSC"
 
   sed -i -e "s:python:python2:g" src/spy/pcsc-spy
+  sed -i "/^AC\_INIT/ { s,]),-git]), }" configure.ac
   ./bootstrap
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
