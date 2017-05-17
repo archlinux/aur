@@ -32,5 +32,6 @@ package() {
     cp *.dll $pkgdir/usr/${_arch}/bin/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    git clean -fd
   done
 }
