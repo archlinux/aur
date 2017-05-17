@@ -5,15 +5,28 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.16.12
-pkgrel=2
+pkgver=2.17.5
+pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://packages.qa.debian.org/d/devscripts.html"
 license=('GPL2')
 depends=('dpkg' 'wget' 'sed' 'perl' 'debianutils' 'debhelper' 'perl-timedate')
 optdepends=('sensible-utils: for sensible alternative selection')
-makedepends=('git' 'po4a' 'perl-timedate' 'perl-libwww' 'docbook-xsl' 'perl-file-desktopentry' 'perl-file-basedir' 'perl-parse-debcontrol' 'python-setuptools' 'bash-completion')
+makedepends=(
+    'docbook-xsl'
+    'bash-completion'
+    'git'
+    'perl-file-desktopentry'
+    'perl-file-basedir'
+    'perl-git-wrapper'
+    'perl-libwww'
+    'perl-list-compare'
+    'perl-parse-debcontrol'
+    'perl-timedate'
+    'po4a'
+    'python-setuptools'
+)
 options=('!makeflags')
 source=(
 	#http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
@@ -22,11 +35,11 @@ source=(
 )
 install='devscripts.install'
 md5sums=('SKIP'
-         '110857b0eb4a9dbf57a8b562d992ab33')
+         'de3998900102b9e490fdb7f6d8e6f9dd')
 
 build() {
   cd "$pkgname-$pkgver"
-  patch -p0 -i "$srcdir/fixes.patch"
+  patch -p1 -i "$srcdir/fixes.patch"
   make
 }
 

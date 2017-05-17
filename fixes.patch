@@ -1,6 +1,8 @@
---- po4a/Makefile	2013-09-17 11:58:14.177059023 +0100
-+++ po4a/Makefile	2013-09-17 11:57:31.943725986 +0100
-@@ -25,7 +25,7 @@
+diff --git a/po4a/Makefile b/po4a/Makefile
+index f19b24df..0c0dcd35 100644
+--- a/po4a/Makefile
++++ b/po4a/Makefile
+@@ -28,7 +28,7 @@ de/%.de.1: de/%.de.pod translate
  	pod2man --utf8 --center=" " --release="Debian-Hilfswerkzeuge" $< > $@
  de/%.de.1: de/%.de.dbk translate
  	xsltproc --nonet -o $@ \
@@ -9,7 +11,7 @@
  # xsltproc writes out to foo.1 even if you tell it to do otherwise, so we have
  # to rename the file after it's generated
  	mv de/$*.1 $@
-@@ -35,7 +35,7 @@
+@@ -41,7 +41,7 @@ fr/%.fr.1: fr/%.fr.pod translate
  	pod2man --utf8 --center=" " --release="Utilitaires Debian" $< > $@
  fr/%.fr.1: fr/%.fr.dbk translate
  	xsltproc --nonet -o $@ \
@@ -18,9 +20,11 @@
  # xsltproc writes out to foo.1 even if you tell it to do otherwise, so we have
  # to rename the file after it's generated
  	mv fr/$*.1 $@
---- scripts/Makefile	2011-02-09 08:39:18.000000000 +0100
-+++ scripts/Makefile	2011-02-13 17:50:50.393333338 +0100
-@@ -61,7 +61,7 @@
+diff --git a/scripts/Makefile b/scripts/Makefile
+index 931143a5..4696472c 100644
+--- a/scripts/Makefile
++++ b/scripts/Makefile
+@@ -63,7 +63,7 @@ endif
  	pod2man --utf8 --center=" " --release="Debian Utilities" $< > $@
  %.1: %.dbk
  	xsltproc --nonet -o $@ \
@@ -29,7 +33,7 @@
  
  # There is a slight chance this gets called twice, once here from here and once
  # from ../po4a/Makefile. Treat files with care.
-@@ -89,7 +89,7 @@
+@@ -92,7 +92,7 @@ test:
  	$(foreach python,$(shell py3versions -r ../debian/control),$(python) setup.py test$(\n))
  
  install: all
