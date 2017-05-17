@@ -2,8 +2,8 @@
 # Contributor: Jan Was <janek dot jan at gmail dot com>
 
 pkgname=mattermost-desktop
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Mattermost Desktop application for Linux (Beta)"
 arch=('i686' 'x86_64')
 
@@ -15,7 +15,7 @@ depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'nspr' 'alsa-lib')
 optdepends=()
 
 source=("https://github.com/mattermost/desktop/archive/v${pkgver}.tar.gz")
-sha512sums=('ef781d4d9823642b767705c4182a38414e457978f775c3042ab72a9cf71c82c7c557193e333d18bdfc69cdcc647c39d0a52a666d72aabfbb848940af2d400710')
+sha512sums=('3abcd3078adf74922bd31e6e975afd66f2f335f73017f3153cabd6cb38d8a36d9e9a01a1d572f34d123f4e68ed47280901fa3490e90ca04bbd2002cefb912f2f')
 
 prepare() {
     cd "${srcdir}/desktop-${pkgver}"
@@ -32,7 +32,7 @@ prepare() {
     esac
 
     # Reduce build time by removing the creation of a .deb for Debian
-    sed -i -e '/^[[:space:]]*"target": \[/!b' -e '$!N;s/\n[[:space:]]*"deb",//' package.json
+    sed -i -e '/^[[:space:]]*"target": \[/!b' -e '$!N;s/\n[[:space:]]*"deb",//' electron-builder.json
 
     # Generate a desktop entry
     # -f: forces and overrides the file if any
@@ -50,6 +50,7 @@ prepare() {
 build() {
     cd "${srcdir}/desktop-${pkgver}"
     npm install
+    npm run build
     npm run package:linux
 }
 
@@ -71,7 +72,7 @@ package() {
     install -d -m 755 "$pkgdir/usr/bin"
     ln -s /usr/lib/mattermost/mattermost-desktop "$pkgdir/usr/bin/mattermost-desktop"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dm644 "$pkgdir/usr/lib/mattermost/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
