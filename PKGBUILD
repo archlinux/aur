@@ -2,7 +2,7 @@
 # Based on PKGBUILD firefox-extension-useragentswitcher
 
 _plugin_name=tree_style_tab
-_plugin_version=0.18.2016111701
+_plugin_version=0.19.2017031101
 _plugin_ext="-fx"
 pkgdesc="Firefox extension to show tabs like a tree"
 license=('MPL 1.1' 'GPL 2.0' 'LGPL 2.1')
