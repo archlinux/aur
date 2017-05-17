@@ -1,7 +1,7 @@
 pkgbase = varuna
 	pkgdesc = Compiler for the WIP programming language
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/varuna-lang/varuna
 	arch = i686
 	arch = x86_64
