@@ -1,0 +1,17 @@
+pkgbase = pdiff-git
+	pkgdesc = Find differences between PDF documents
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/kisonecat/pdiff/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/kisonecat/pdiff.git
+	md5sums = SKIP
+
+pkgname = pdiff-git
+
