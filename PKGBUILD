@@ -1,28 +1,34 @@
 pkgbase=mingw-w64-harfbuzz
 pkgname=(mingw-w64-harfbuzz mingw-w64-harfbuzz-icu)
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
+_commit=141b33de9a141248e2f034d55f48460159536cb9  # tags/1.4.6^0
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=(any)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=("MIT")
-makedepends=(mingw-w64-configure mingw-w64-cairo mingw-w64-icu mingw-w64-graphite mingw-w64-freetype2)
+makedepends=(mingw-w64-configure mingw-w64-cairo mingw-w64-icu mingw-w64-graphite mingw-w64-freetype2 ragel)
 options=(!strip !buildflags staticlibs)
-source=("http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-${pkgver}.tar.bz2")
-sha256sums=('d0e05438165884f21658154c709075feaf98c93ee5c694b951533ac425a9a711')
+source=("git+https://anongit.freedesktop.org/git/harfbuzz#commit=$_commit")
+sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+pkgver() {
+  cd harfbuzz
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
-  cd harfbuzz-${pkgver}
+  cd harfbuzz
   # disable tests (thanks to chenxiaolong)
   sed -i '/SUBDIRS/s/test//' Makefile.am
-  autoreconf -fi
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 
 build() {
-	cd harfbuzz-$pkgver
+	cd harfbuzz
 	unset LDFLAGS
 	for _arch in ${_architectures}; do
 		# Build static and shared libs separately due to necessity of defining DGRAPHITE2_STATIC
@@ -60,9 +66,9 @@ build() {
 package_mingw-w64-harfbuzz() {
 	depends=(mingw-w64-freetype2 mingw-w64-glib2 mingw-w64-graphite)
   for _arch in ${_architectures}; do
-    cd "${srcdir}/harfbuzz-${pkgver}/build-${_arch}-static"
+    cd "${srcdir}/harfbuzz/build-${_arch}-static"
     make DESTDIR="${pkgdir}" install
-    cd "${srcdir}/harfbuzz-${pkgver}/build-${_arch}-shared"
+    cd "${srcdir}/harfbuzz/build-${_arch}-shared"
     make DESTDIR="${pkgdir}" install
     find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
@@ -80,7 +86,7 @@ package_mingw-w64-harfbuzz-icu() {
 	pkgdesc="OpenType text shaping engine (ICU integration) (mingw-w64)"
 	depends=(mingw-w64-harfbuzz mingw-w64-icu)
 	for _arch in ${_architectures}; do
-		cd "${srcdir}/harfbuzz-${pkgver}/build-${_arch}-shared"
+		cd "${srcdir}/harfbuzz/build-${_arch}-shared"
 		mkdir -p "$pkgdir/usr/${_arch}"
 		mv hb-icu/usr/${_arch}/* "$pkgdir/usr/${_arch}"
 	done
