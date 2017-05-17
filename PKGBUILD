@@ -1,12 +1,13 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=jiri-git
-pkgver=r1172
+pkgver=r1243
 pkgrel=1
 pkgdesc='A tool for multi-repo development similar to Android repo'
 arch=(i686 x86_64)
 url='https://fuchsia.googlesource.com/jiri'
 license=(MIT)
+depends=(libgit2)
 makedepends=(git go)
 source=(git+https://fuchsia.googlesource.com/jiri)
 sha1sums=('SKIP')
@@ -23,24 +24,12 @@ prepare() {
   mkdir -p .gopath/src/fuchsia.googlesource.com/
   ln -sf "$PWD" .gopath/src/fuchsia.googlesource.com/jiri
   export GOPATH="$PWD/.gopath"
+
+  go get -d github.com/libgit2/git2go
 }
 
 build() {
   cd jiri
-
-  go get -d github.com/libgit2/git2go
-  mkdir -p "${GOPATH}/src/github.com/libgit2/git2go/vendor/libgit2/build"
-  pushd "${GOPATH}/src/github.com/libgit2/git2go/vendor/libgit2/build"
-  cmake -GNinja \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_C_FLAGS=-fPIC \
-    -DTHREADSAFE=ON \
-    -DBUILD_CLAR=OFF \
-    -DBUILD_SHARED_LIBS=OFF \
-    ..
-  ninja
-  popd
-
   go build -o build/jiri fuchsia.googlesource.com/jiri/cmd/jiri # -gccgoflags "$CFLAGS $LDFLAGS"
 }
 
