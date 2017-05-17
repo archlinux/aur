@@ -20,7 +20,7 @@ md5sums=('dd513633d733f4769120e5127586776c'
 build() {
   cd $pkgname-$pkgver
 
-  qmake clipgrab.pro
+  qmake-qt4 clipgrab.pro
   make
 }
 
