@@ -1,0 +1,16 @@
+pkgbase = mmenu
+	pkgdesc = A dmenu wrapper which works like dmenu_run, but evaluates math you give it too
+	pkgver = r7.81130ed
+	pkgrel = 1
+	url = https://github.com/mortie/mmenu
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = dmenu
+	depends = python
+	depends = xsel
+	source = git://github.com/mortie/mmenu.git
+	sha256sums = SKIP
+
+pkgname = mmenu
+
