@@ -1,7 +1,7 @@
 # Maintainer: vagnum08 <vagnum08@gmail.com>
 
 pkgname=cpupower-gui-git
-pkgver=0.5.0.r1.g854bffe
+pkgver=0.5.0.r2.ge14a09c
 pkgrel=1
 pkgdesc="A GUI utility to set CPU frequency limits"
 arch=(any)
