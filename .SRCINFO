@@ -1,6 +1,6 @@
 pkgbase = python-pydirl
 	pkgdesc = simple static webserver and directory listing
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/ael-code/pydirl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pydirl
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/ael-code/pydirl/archive/v0.3.1.tar.gz
+	source = https://github.com/ael-code/pydirl/archive/v0.3.2.tar.gz
 	md5sums = 24040519acce329c793f6bf5d1fd2242
 	sha1sums = 151397d0fb5e2b44171bb4e846ee25477bddc2cc
 	sha256sums = 66fe375e85c407fc3f61f595ede78c64a0131841dbfc94c8d26a920b2bfe6fec

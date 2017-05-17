@@ -2,7 +2,7 @@
 
 pkgbase='python-pydirl'
 pkgname=('python-pydirl' 'python2-pydirl')
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="simple static webserver and directory listing"
 arch=('any')
@@ -11,9 +11,14 @@ license=('GPL3')
 options=(!emptydirs)
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('24040519acce329c793f6bf5d1fd2242')
-sha1sums=('151397d0fb5e2b44171bb4e846ee25477bddc2cc')
-sha256sums=('66fe375e85c407fc3f61f595ede78c64a0131841dbfc94c8d26a920b2bfe6fec')
+md5sums=('28be1c6d7adf8285c5446fad0ff640e4')
+sha1sums=('a555eacb64893daeaa9936e7b80f55a5e23d8015')
+sha256sums=('2f6733bcbcc7e1bc33c03e1a5453fb61260a3288449b14664f6c4a288214e5df')
+
+prepare(){
+    cp -a "$srcdir/pydirl-${pkgver}"{,-python2}
+}
+
 
 package_python-pydirl() {
     depends=('python'
@@ -35,7 +40,7 @@ package_python2-pydirl() {
              'python2-zipstream'
              'python2-flask-bootstrap')
 
-    cd "$srcdir/pydirl-${pkgver}"
+    cd "$srcdir/pydirl-${pkgver}-python2"
     python2 setup.py install --root="$pkgdir/" --optimize=1
   }
 
