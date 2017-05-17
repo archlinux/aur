@@ -14,9 +14,10 @@ arch=('any')
 url="http://oss.tresys.com/projects/refpolicy"
 license=('GPL')
 groups=('selinux')
-depends=('linux-selinux')
 makedepends=('checkpolicy>=2.1.8' 'policycoreutils>=2.1.10'
              'libsepol>=2.1.4' 'libsemanage>=2.0.29')
+optdepends=('linux-hardened: Linux kernel with SELinux support'
+            'linux-selinux: Linux kernel with SELinux support')
 backup=(etc/selinux/config)
 install=${pkgname}.install
 source=("https://raw.githubusercontent.com/wiki/TresysTechnology/${_origname}/files/${_origname}-2.${_origver}.tar.bz2"
