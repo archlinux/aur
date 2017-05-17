@@ -1,14 +1,14 @@
 # Maintainer: Elias Kosunen <elias dot kosunen at gmail dot com>
 pkgname=varuna
-pkgver=v0.1.1
-pkgrel=2
+pkgver=0.1.1
+pkgrel=3
 pkgdesc="Compiler for the WIP programming language"
 arch=('i686' 'x86_64')
 url="https://github.com/varuna-lang/varuna"
 license=('BSD')
 depends=('llvm-libs>=4.0.0' 'libutil-linux')
 makedepends=('cmake>=3.2.3' 'git')
-source=("git+https://github.com/varuna-lang/${pkgname}.git#tag=${pkgver}"
+source=("git+https://github.com/varuna-lang/${pkgname}.git#tag=v${pkgver}"
     "git+https://github.com/gabime/spdlog.git"
     "git+https://github.com/USCiLab/cereal.git"
     "git+https://github.com/onqtam/doctest.git"
