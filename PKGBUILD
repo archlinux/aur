@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 _vendorname=CLIQZ
-pkgver=1.13.2
+pkgver=1.13.4
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('python2' 'zip' 'autoconf2.13' 'yasm' 'libidl2'
 conflicts=('cliqz-bin')
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         "fix-wifi-scanner.diff")
-sha256sums=('49ac62f102710fe83f8dfd0e6be039bf9a5029a8d108cff23bde4a8045deae40'
+sha256sums=('356458042a839912ef3d02f71cce047984442f84fae9d38db2e76a865cc39132'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 options=(!emptydirs !makeflags !strip)
 
