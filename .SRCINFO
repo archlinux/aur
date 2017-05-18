@@ -1,7 +1,7 @@
 pkgbase = xake-git
 	pkgdesc = A build system for Ximera documents
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 2
+	pkgrel = 2
 	url = https://github.com/XimeraProject/xake/
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = xake-git
 	makedepends = git
 	depends = mupdf-tools
 	depends = texlive-htmlxml
+	depends = gpg
 	options = !strip
 	options = !emptydirs
 	source = git+https://github.com/XimeraProject/xake.git
