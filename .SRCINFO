@@ -1,0 +1,25 @@
+pkgbase = csync2-git
+	pkgdesc = Asynchronous cluster syncronisation tool based on librsync and inspired by Unison
+	pkgver = 2.0.r8.g175a01c
+	pkgrel = 1
+	url = http://oss.linbit.com/csync2/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = texlive-bin
+	makedepends = sqlite
+	makedepends = git
+	depends = librsync
+	depends = gnutls
+	optdepends = sqlite: for sqlite backend
+	source = csync2-git::git://git.linbit.com/csync2.git
+	source = csync2.socket
+	source = csync2@.service
+	source = csync2-rm-ssl-cert
+	md5sums = SKIP
+	md5sums = 276efe22ab32b540fbdd6ada3479f154
+	md5sums = 0b5c64016805a451ca440b679b3674b6
+	md5sums = abadf30dbc4695a1686814937e2cd829
+
+pkgname = csync2-git
+

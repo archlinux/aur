@@ -1,0 +1,46 @@
+#!/bin/bash
+
+if [ $# -eq 0 -o "$1" = "-h" ]; then
+	cat <<END
+
+Remove a peer's SSL certificate from csync2's local database.  Use this after
+replacing a peer node (or regenerating its SSL certificate).
+
+Usage: $0 [-h] <hostname>
+
+Options:
+    -h          Display this usage information
+
+END
+	exit 0
+fi
+
+DBFILE=/var/lib/csync2/$(hostname).db3
+if [ ! -f "$DBFILE" ]; then
+	echo "Local csync2 database ($DBFILE) not found."
+	exit 1
+fi
+
+# Strip double and single quotes from hostname so they can't interfere with the SQL
+PEERNAME=$(echo $1 | sed -e "s/['\"]//g")
+
+certcount()
+{
+	echo "SELECT COUNT(peername) FROM x509_cert WHERE peername='$1';" | sqlite3 $DBFILE
+}
+
+if [ $(certcount "$PEERNAME") -eq 0 ]; then
+	echo "Certificate for '$PEERNAME' not in local database."
+	exit 0
+fi
+
+echo "DELETE FROM x509_cert WHERE peername='$PEERNAME';" | sqlite3 $DBFILE
+
+if [ $(certcount "$PEERNAME") -ne 0 ]; then
+	echo "Error removing certificate for '$PEERNAME' from local database."
+	exit 1
+fi
+
+echo "Certificate for '$PEERNAME' removed from local database."
+
+
