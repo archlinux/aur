@@ -12,7 +12,7 @@ provides=('corosync=2.4.2')
 conflicts=('corosync1')
 source=("http://build.clusterlabs.org/corosync/releases/corosync-$pkgver.tar.gz"
 	"corosync.service")
-md5sums=('7e9b72c21817bb6630c9bfaaa4076420'
+md5sums=('547fa78704da53aa35912be58d31035f'
          '93d77bf4963852cf842497d5da92dc82')
 
 build() {
