@@ -1,6 +1,6 @@
 pkgbase = openshift-origin-bin
 	pkgdesc = OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin.
-	pkgver = v1.5.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/openshift/origin
 	arch = x86_64
