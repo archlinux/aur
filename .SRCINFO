@@ -1,0 +1,22 @@
+pkgbase = native-hdfs-fuse-git
+	pkgdesc = C HDFS FUSE implementation, no libhdfs
+	pkgver = r38.60a5f6e
+	pkgrel = 1
+	url = https://github.com/remis-thoughts/native-hdfs-fuse
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = fuse2
+	makedepends = protobuf-c
+	makedepends = uncrustify
+	depends = fuse2
+	depends = protobuf-c
+	depends = uncrustify
+	provides = native-hdfs-fuse
+	conflicts = native-hdfs-fuse
+	source = git+https://github.com/remis-thoughts/native-hdfs-fuse
+	md5sums = SKIP
+
+pkgname = native-hdfs-fuse-git
+
