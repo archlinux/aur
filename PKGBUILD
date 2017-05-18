@@ -12,7 +12,7 @@ depends=('libcap' 'mbedtls' 'libev' 'libsodium'
          'udns' 'pcre' 'libcorkipset' 'libbloom')
 makedepends=('git' 'asciidoc' 'binutils' 'gcc' 'libtool' 'autoconf' 'automake' 'bison' 'fakeroot' 'flex' 'openssl' 'make')
 options=('docs' '!strip')
-source=('https://github.com/shadowsocksr/shadowsocksr-libev.git')
+source=('git+https://github.com/shadowsocksr/shadowsocksr-libev.git')
 sha1sums=('SKIP')
 
 _gitname='shadowsocksr-ibev'
