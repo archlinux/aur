@@ -1,0 +1,26 @@
+Index: include/utf8scsu.h
+===================================================================
+--- include/utf8scsu.h	(Revision 3463)
++++ include/utf8scsu.h	(Arbeitskopie)
+@@ -28,6 +28,7 @@
+ #include <unicode/utypes.h>
+ #include <unicode/ucnv.h>
+ #include <unicode/uchar.h>
++#include <unicode/unistr.h>
+ 
+ SWORD_NAMESPACE_START
+ 
+Index: src/modules/filters/scsuutf8.cpp
+===================================================================
+--- src/modules/filters/scsuutf8.cpp	(Revision 3463)
++++ src/modules/filters/scsuutf8.cpp	(Arbeitskopie)
+@@ -31,8 +31,8 @@
+ 
+ #include <scsuutf8.h>
+ #include <swbuf.h>
++#include <unicode/unistr.h>
+ 
+-
+ SWORD_NAMESPACE_START
+ 
+ 
