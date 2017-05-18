@@ -1,6 +1,6 @@
 pkgname=spotifyd
-pkgver=30.3e5fce8
-pkgrel=1
+pkgver=40.a238bd8
+pkgrel=2
 arch=('x86_64')
 depends=('pulseaudio' 'flac' 'libogg' 'libpulse' 'libsndfile' 'libvorbis')
 makedepends=('git' 'cargo')
