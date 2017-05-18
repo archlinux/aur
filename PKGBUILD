@@ -3,8 +3,9 @@
 # Contributor: Bernardo Barros
 
 pkgname=csound
+# 6.08.1 is a bugfix release for Windows only.
 pkgver=6.08.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('i686' 'x86_64')
 url="http://csound.github.io"
@@ -15,6 +16,8 @@ optdepends=('csound-doc: The Canonical Csound Reference Manual'
             'csoundqt: Qt frontend'
             'java-environment: Java Wrapper'
             'vim-csound: Syntax Highlighting and Bindings for Vim')
+# Both Libextractor and Csound install /usr/bin/extractor
+conflicts=('libextractor')
 source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
         "Custom.cmake"
         "csound.sh")
