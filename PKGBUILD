@@ -1,6 +1,6 @@
 # Maintainer: tildearrow <acc12345acc at gmail dot com>
 pkgname=taebron-git
-pkgver=aur.r6.ge69caf9
+pkgver=aur.r24.ge06738d
 pkgrel=1
 pkgdesc="Razer device daemon and configuration tool, from git"
 arch=('any')
@@ -32,13 +32,10 @@ build() {
 package() {
   cd "$pkgname/build"
   make DESTDIR="$pkgdir/" install
-  install -dm755 "${pkgdir}"/etc/xdg/autostart/ ../etc/xdg/autostart/
-  install -m644 ../etc/xdg/autostart/tbrnd.desktop \
-                "${pkgdir}"/etc/xdg/autostart/tbrnd.desktop
   install -dm755 "${pkgdir}"/etc/rc.d/ ../etc/rc.d/
-  install -m755 ../etc/rc.d/tbrn-uinput \
-                "${pkgdir}"/etc/rc.d/tbrn-uinput
+  install -m755 ../etc/rc.d/taebron \
+                "${pkgdir}"/etc/rc.d/taebron
   install -dm755 "${pkgdir}"/usr/lib/systemd/system ../lib/systemd/system/
-  install -m644 ../lib/systemd/system/tbrn-uinput.service \
-                "${pkgdir}"/usr/lib/systemd/system/tbrn-uinput.service
+  install -m644 ../lib/systemd/system/taebron.service \
+                "${pkgdir}"/usr/lib/systemd/system/taebron.service
 }

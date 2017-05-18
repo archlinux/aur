@@ -1,6 +1,5 @@
 #!/bin/bash
 
 post_install() {
-  echo "taebron makes use of uinput. therefore enable tbrn-uinput.service"
-  echo "or /etc/rc.d/tbrn-uinput if you want taebron to work."
+  echo "make sure to enable taebron.service or /etc/rc.d/taebron."
 }
