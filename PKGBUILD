@@ -2,7 +2,7 @@
 
 pkgname=carl
 pkgver=17.04.r0.g59185e46
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source C++ Library for Computer Arithmetic and Logic"
 arch=("i686" "x86_64")
 url="https://github.com/smtrat/carl"

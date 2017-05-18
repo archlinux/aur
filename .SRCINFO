@@ -1,7 +1,7 @@
 pkgbase = carl
 	pkgdesc = An Open Source C++ Library for Computer Arithmetic and Logic
 	pkgver = 17.04.r0.g59185e46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smtrat/carl
 	arch = i686
 	arch = x86_64
