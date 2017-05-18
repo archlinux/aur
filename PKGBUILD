@@ -1,5 +1,5 @@
 pkgname=windows-gaming-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r40.6b86b19
+pkgver=r48.899632f
 pkgrel=1
 pkgdesc="Windows gaming utils"
 arch=('x86_64')
@@ -32,6 +32,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
+	sed -i 's/$(DESTDIR)\/lib/$(DESTDIR)\/usr\/lib/' Makefile
 }
 
 build() {
