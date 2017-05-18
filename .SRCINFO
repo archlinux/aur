@@ -1,13 +1,14 @@
 pkgbase = fzu-git
 	pkgdesc = A fuzzy text selector menu for the terminal
 	pkgver = r310.eda33da
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ohjames/fzu
 	arch = i686
 	arch = x86_64
 	license = custom:MIT
 	makedepends = git
 	depends = glibc
+	depends = libconfig
 	provides = fzu
 	conflicts = fzu
 	source = git+https://github.com/ohjames/fzu.git
