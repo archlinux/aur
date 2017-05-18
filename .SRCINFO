@@ -1,7 +1,7 @@
 pkgbase = csync2
 	pkgdesc = Asynchronous cluster syncronisation tool based on librsync and inspired by Unison
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://oss.linbit.com/csync2/
 	arch = i686
 	arch = x86_64

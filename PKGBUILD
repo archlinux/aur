@@ -2,11 +2,12 @@
 
 pkgname=csync2
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="Asynchronous cluster syncronisation tool based on librsync and inspired by Unison"
 url="http://oss.linbit.com/csync2/"
 license=('GPL')
+makedepnds=('sqlite')
 depends=('librsync' 'gnutls')
 optdepends=('sqlite: for sqlite backend')
 source=(http://oss.linbit.com/csync2/${pkgname}-${pkgver}.tar.gz)
