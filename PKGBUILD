@@ -1,4 +1,5 @@
-# Maintainer: yaroslav <proninyaroslav@mail.ru>
+# Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
+# Contributor: yaroslav <proninyaroslav@mail.ru>
 # Contributor: V0K3 <v0k3@inventati.org>
 
 pkgname=sasm
