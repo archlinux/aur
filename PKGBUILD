@@ -11,7 +11,7 @@ license=('MIT')
 depends=('mupdf-tools' 'texlive-htmlxml')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
-_gourl=github.com/XimeraProject/pdiff
+_gourl=github.com/XimeraProject/xake
 source=("git+https://github.com/XimeraProject/xake.git")
 md5sums=('SKIP')
 
