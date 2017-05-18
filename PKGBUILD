@@ -3,7 +3,7 @@
 
 pkgname=nitrokey-app
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 _libnitrokeyver=06c0deb7935a9390a67bc02d6c323e64c785a026
 _hidapiver=324dc7c0d125f57a06e1107e90e49eb4377bd03c
 _cppcodecver=61d9b044d6644293f99fb87dfadc15dcab951bd9
@@ -24,7 +24,10 @@ sha256sums=('7501af813721b22c6f859600fd42c7269be60f2da5d0f33cf90e68c19e3f1893'
 prepare() {
   cd $pkgname-$pkgver
 
-  sed -i 's|DESTINATION\ etc/bash_completion.d|DESTINATION\ usr/share/bash-completion/completions|' \
+  sed -i 's|DESTINATION ${BASH_COMPLETION_DIR}|DESTINATION share/bash-completion/completions|' \
+      CMakeLists.txt
+
+  sed -i 's|DESTINATION ${UDEV_MAIN_DIR}|DESTINATION lib/udev/rules.d|' \
       CMakeLists.txt
 
   rmdir libnitrokey
