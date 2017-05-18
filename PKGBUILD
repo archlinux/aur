@@ -4,7 +4,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=jhbuild
-pkgver=3.15.92+1159+gdcca0fc7
+pkgver=3.15.92+1180+g19a3a0f3
 pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
@@ -17,11 +17,11 @@ optdepends=('subversion: fetch subversion repositories'
             'bzr: fetch Bazaar repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
-_commit=dcca0fc7
+_commit=19a3a0f3
 source=("$pkgname::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
-            '8146e4acf09541ffb307ca6cc57ef011d8ae42c1215d97d1a805f139d1097e25')
+            'ff7c90c43c7380c2ea4d2390e75b405bec625892b25e678df09d506117bf9b99')
 
 pkgver() {
   cd $pkgname
