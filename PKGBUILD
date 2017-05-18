@@ -3,14 +3,14 @@
 
 _pkgname=gpac
 pkgname=$_pkgname-git
-pkgver=0.5.2.r2397.gc77fdae
+pkgver=0.5.2.r2867.g278ba386a
 pkgrel=1
 epoch=1
 pkgdesc="A multimedia framework based on the MPEG-4 Systems standard (git version)"
 arch=('i686' 'x86_64')
 url="http://gpac.sourceforge.net"
 license=('LGPL')
-depends=('ffmpeg' 'glu' 'libxv')
+depends=('ffmpeg' 'glu' 'libxv' 'openssl')
 makedepends=('git' 'jack' 'a52dec' 'freetype2' 'faad2' 'libmad' 'mesa' 'sdl2')
 optdepends=('jack: for jack support'
 	    'a52dec: for A52 support'
@@ -22,9 +22,11 @@ conflicts=('gpac')
 source=(
     git://github.com/gpac/gpac.git
     'ssl3.patch'
+    'openssl-1.1.patch'
 )
 sha256sums=('SKIP'
-            'f5391273c9b77283469362f02a31e65f8ce8c80343d80c5b0b0c019068831a41')
+            'f5391273c9b77283469362f02a31e65f8ce8c80343d80c5b0b0c019068831a41'
+            '6048e519aebd9cb6293059042fb48a9d8531fc1aa70c2214892686877a6f594d')
 
 pkgver() {
   cd "$_pkgname"
@@ -38,6 +40,7 @@ prepare() {
   cd ${_pkgname}
 
   patch -i ../ssl3.patch -Np1
+  patch -i ../openssl-1.1.patch -Np1
 }
 
 build() {
