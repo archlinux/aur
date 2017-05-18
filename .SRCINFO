@@ -1,0 +1,12 @@
+pkgbase = create-elm-app
+	pkgdesc = Create Elm apps with zero configuration
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/halfzebra/create-elm-app
+	arch = any
+	depends = nodejs
+	depends = npm
+	options = !strip
+
+pkgname = create-elm-app
+
