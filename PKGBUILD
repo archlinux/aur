@@ -2,7 +2,7 @@
 
 pkgname=firefox-esr-zh-cn
 _pkgname=firefox-esr
-pkgver=52.1.1esr
+pkgver=52.1.2esr
 pkgrel=1
 pkgdesc="Chinese Simplified For Firefox ESR"
 arch=('i686' 'x86_64')
