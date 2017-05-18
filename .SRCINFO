@@ -1,0 +1,18 @@
+pkgbase = purple-rocketchat
+	pkgdesc = A purple (pidgin, finch, ...) plugin for RocketChat services
+	pkgver = 1
+	pkgrel = 1
+	url = https://bitbucket.org/EionRobb/purple-rocketchat
+	arch = i686
+	arch = x86_64
+	license = GNU
+	depends = libpurple
+	depends = json-glib zlib
+	depends = discount>=2.1.7
+	provides = purple-rocketchat
+	conflicts = purple-rocketchat
+	source = https://bitbucket.org/EionRobb/purple-rocketchat/get/22b606290368.zip
+	md5sums = SKIP
+
+pkgname = purple-rocketchat
+
