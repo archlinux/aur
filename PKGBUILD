@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/isoft-linux/kjieba"
 license=('GPL2')
 depends=('gcc' 'qt5-base' 'krunner')
-makedepends=('git' 'make' 'extra-cmake-modules')
+makedepends=('git' 'make' 'extra-cmake-modules' 'extra-cmake-modules' 'ki18n' 'kdbusaddons' 'kservice' 'kactivities' 'kactivities-stats' 'kio' 'python')
 source=("$pkgname::git+https://github.com/isoft-linux/kjieba"
         "libcppjieba::git+https://github.com/yanyiwu/libcppjieba")
 md5sums=('SKIP'
