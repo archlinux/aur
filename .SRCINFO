@@ -11,7 +11,7 @@ pkgbase = carl
 	depends = gmp>=5.1
 	depends = eigen>=3.2
 	depends = boost>=1.55
-	source = carl::git+https://github.com/smtrat/carl.git#17.04
+	source = carl::git+https://github.com/smtrat/carl.git#tag=17.04
 	md5sums = SKIP
 
 pkgname = carl

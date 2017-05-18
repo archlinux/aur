@@ -12,7 +12,7 @@ makedepends=("make" "cmake>=3.0")
 conflicts=()
 replaces=()
 backup=()
-source=("$pkgname::git+https://github.com/smtrat/carl.git#17.04")
+source=("$pkgname::git+https://github.com/smtrat/carl.git#tag=17.04")
 md5sums=('SKIP')
 
 prepare() {
