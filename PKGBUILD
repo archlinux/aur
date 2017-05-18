@@ -172,7 +172,6 @@ _arch_specific_configure_options="\
     -no-rpath"
 
 # Seems to be creating a large amount of breakage
-# -openssl-linked \
 _core_configure_options="\
                  -prefix ${_installprefix} \
                  -optimized-tools \
@@ -187,6 +186,7 @@ _core_configure_options="\
                  -system-freetype \
                  -system-harfbuzz \
                  -dbus-linked \
+                 -openssl-linked \
                  -pch \
                  -opengl es2 \
                  -egl \
@@ -265,10 +265,10 @@ build() {
 
   cd ${_srcdir}
 
-if $_target_host; then
-  echo "INCLUDEPATH += /usr/include/openssl-1.0" >> ${_basedir}/src/network/network.pro
-  export OPENSSL_LIBS='-L/usr/lib/openssl-1.0 -lssl -lcrypto'
-else
+  echo "INCLUDEPATH += ${_sysroot}/usr/include/openssl-1.0" >> ${_basedir}/src/network/network.pro
+  export OPENSSL_LIBS="-L${_sysroot}/usr/lib/openssl-1.0 -lssl -lcrypto"
+
+if ! $_target_host; then
   # Get our mkspec
   rm -Rf $_mkspec_dir
   cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
