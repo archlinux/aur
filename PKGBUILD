@@ -23,5 +23,4 @@ prepare()
 
 package() {
   install -Dm644 ${srcdir}/*-MediaInfoKDE.desktop.OK ${pkgdir}/usr/share/kservices5/ServiceMenus/getmediainfo.desktop
-  install -Dm644 ${srcdir}/*-MediaInfoKDE.desktop.OK ${pkgdir}/usr/share/kde4/services/ServiceMenus/getmediainfo.desktop
 }
