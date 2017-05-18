@@ -1,0 +1,23 @@
+pkgbase = guacamole-client-git
+	pkgdesc = Java and Maven components of Guacamole
+	pkgver = 0.9.12.incubating.r89.g1c197ae4
+	pkgrel = 1
+	url = http://guacamole.sourceforge.net/
+	install = guacamole-client.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = maven
+	depends = java-runtime
+	depends = tomcat7
+	provides = guacamole
+	conflicts = guacamole-git
+	backup = usr/share/tomcat7/.guacamole/guacamole.properties
+	backup = usr/share/tomcat7/.guacamole/user-mapping.xml
+	source = guacamole-client::git+https://github.com/apache/incubator-guacamole-client
+	source = guacamole.properties
+	md5sums = SKIP
+	md5sums = 1f3ec0a32cc3c6b4f7aeb8a3b2e7531b
+
+pkgname = guacamole-client-git
+
