@@ -1,6 +1,6 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation
-pkgver=17.01.1
+pkgver=17.05
 pkgrel=1
 pkgdesc="Open source clone of the FRC Driver Station"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ backup=()
 options=()
 source=("https://github.com/FRC-Utilities/QDriverStation/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('07a9c12cb95e8fa7639ee464f768cb40')
+md5sums=('48a87be455e835907e224d5b07d9bd06')
 
 _extractdir="QDriverStation-${pkgver}"
 
