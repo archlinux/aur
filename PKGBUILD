@@ -12,6 +12,8 @@ provides=('corosync=2.4.2')
 conflicts=('corosync1')
 source=("http://build.clusterlabs.org/corosync/releases/corosync-$pkgver.tar.gz"
 	"corosync.service")
+md5sums=('7e9b72c21817bb6630c9bfaaa4076420'
+         '93d77bf4963852cf842497d5da92dc82')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -42,4 +44,3 @@ package() {
 }
 
 
-md5sums=(SKIP)

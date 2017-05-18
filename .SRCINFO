@@ -15,7 +15,8 @@ pkgbase = corosync
 	conflicts = corosync1
 	source = http://build.clusterlabs.org/corosync/releases/corosync-2.4.2.tar.gz
 	source = corosync.service
-	md5sums = SKIP
+	md5sums = 7e9b72c21817bb6630c9bfaaa4076420
+	md5sums = 93d77bf4963852cf842497d5da92dc82
 
 pkgname = corosync
 
