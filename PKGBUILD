@@ -15,7 +15,7 @@ options=('docs' '!strip')
 source=('git+https://github.com/shadowsocksr/shadowsocksr-libev.git')
 sha1sums=('SKIP')
 
-_gitname='shadowsocksr-ibev'
+_gitname='shadowsocksr-libev'
 
 pkgver() {
   cd "$srcdir/$_gitname.git"
