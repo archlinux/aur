@@ -9,7 +9,7 @@ pkgbase = carl
 	makedepends = make
 	makedepends = cmake>=3.0
 	depends = gmp>=5.1
-	depends = eigen3>=3.2
+	depends = eigen>=3.2
 	depends = boost>=1.55
 	source = carl::git+https://github.com/smtrat/carl.git#17.04
 	md5sums = SKIP
