@@ -1,14 +1,15 @@
 pkgbase = pcs
 	pkgdesc = pacemaker corosync shell utility for cluster configuration
-	pkgver = 0.9.155
-	pkgrel = 3
+	pkgver = 0.9.157
+	pkgrel = 1
 	url = http://clusterlabs.org/
 	arch = any
 	license = GPL2
+	makedepends = ruby-bundler
 	depends = python
 	depends = python-lxml
-	source = https://github.com/ClusterLabs/pcs/archive/0.9.155.tar.gz
-	md5sums = 5c36c47c7f2199c93716e2b4e641e919
+	source = https://github.com/ClusterLabs/pcs/archive/0.9.157.tar.gz
+	md5sums = 9e235349882b3090d4a9f09ffdd4656b
 
 pkgname = pcs
 
