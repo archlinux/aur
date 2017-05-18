@@ -1,7 +1,7 @@
 # Maintainer: Felix Singer
 
 pkgname=murmur-snapshot-noice
-pkgver=1.3.0_2318_g8f65051
+pkgver=1.3.0_2389_gdde8173
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('qt5-base' 'protobuf')
 makedepends=('python' 'boost')
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha512sums=('ac8b08e8bf1265913d44b298bedb36bd6dab40e00b87fad8a594f742b2e4e596b0edceb9b91517cab33703386516764473e082935273f0c7e859eaa9d629233e')
+sha512sums=('18d0c2e8d0caeed1306429a367a2756260280a3bcc7ed8bac7c3a6e8b8938e6f13b65c83271f1411b948c50d20d7426aebaf14f271109df8c62209108157e374')
 
 build() {
   cd $srcdir/mumble-${pkgver//_/\~}~snapshot
@@ -24,7 +24,14 @@ build() {
 }
 
 package() {
-  echo test
+  cd "${srcdir}/mumble-${pkgver//_/\~}~snapshot"
+
+  cat release/murmurd release/libmumble_proto.a > "release/murmurd_new"
+
+  install -m755 -D "./release/murmurd_new" "${pkgdir}/usr/bin/murmurd"
+  install -m755 -d "${pkgdir}/usr/share/man/man1"
+  install -m644 -D "./man/murmurd.1" "${pkgdir}/usr/share/man/man1/"
+  install -m644 -D "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: sw=2:ts=2 et:
