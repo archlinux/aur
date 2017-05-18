@@ -8,8 +8,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-    systemctl --quiet --no-reload disable sickgear.service
-    systemctl --quiet stop sickgear.service
+    systemctl --quiet --no-reload disable --now sickgear.service
 }
 
 post_remove() {
