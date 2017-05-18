@@ -3,13 +3,13 @@
 pkgname=crmsh-git
 _pkgname=crmsh
 pkgver=3.0.0.r22.g19533ef4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
 url="https://github.com/ClusterLabs/${_pkgname}/"
 license=('GPL2')
 makedepends=('git' 'asciidoc')
-depends=('python' 'gawk')
+depends=('python2' 'gawk')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git")
@@ -27,7 +27,8 @@ prepare() {
 
 build() {
   cd ${pkgname}
-  ./configure --prefix=/usr \
+  ./configure PYTHON=python2 \
+              --prefix=/usr \
               --libdir=/usr/lib \
               --sbindir=/usr/bin \
               --sysconfdir=/etc \
