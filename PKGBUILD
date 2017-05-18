@@ -1,8 +1,8 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=iscore-git
-pkgver=1.0.0b10
-release_tag=v1.0.0-b10
-pkgrel=2
+pkgver=1.0.0b16
+release_tag=v1.0.0-b16
+pkgrel=1
 pkgdesc="i-score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="http://www.i-score.org"
