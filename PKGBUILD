@@ -10,7 +10,7 @@ license=('LGPL3')
 url='https://github.com/udalov/kotlin-vim'
 depends=('vim')
 makedepends=('git')
-source=("${pkgname}::https://github.com/udalov/kotlin-vim.git#branch=master")
+source=("git+https://github.com/udalov/kotlin-vim.git#branch=master")
 sha256sums=(SKIP)
 
 pkgver() {
