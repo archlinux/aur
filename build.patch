@@ -1,0 +1,28 @@
+diff --git a/Makefile b/Makefile
+index 35191af..1d4492b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -34,8 +34,9 @@ version.c
+ TARGETS=socklab
+ OBJS	= $(SOURCES:.c=.o)
+ 
+-LDFLAGS	= -lreadline -lhistory
+-CFLAGS	= -Wall
++# Let packagers define LDFLAGS and CFLAGS if they want to
++LDFLAGS := -lreadline -lhistory $(LDFLAGS)
++CFLAGS  := -Wall $(CFLAGS)
+ 
+ # Adaptation a Darwin / MacOS X
+ ifeq ($(shell uname), Darwin)
+@@ -51,11 +52,6 @@ LDFLAGS	= -lreadline
+ endif
+ endif
+ 
+-# Adaptation a Linux
+-ifeq ($(shell uname), Linux)
+-LDFLAGS	+= -ltermcap
+-endif
+-
+ # Adaptation a FreeBSD
+ # Attention : il faut utiliser gmake...
+ ifeq ($(shell uname),FreeBSD)
