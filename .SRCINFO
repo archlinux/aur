@@ -9,8 +9,12 @@ pkgbase = corosync
 	depends = libstatgrab
 	depends = net-snmp
 	depends = libdbus
-	source = corosync-2.4.2.tar.gz::https://github.com/corosync/corosync/archive/v2.4.2.tar.gz
-	md5sums = 7e9b72c21817bb6630c9bfaaa4076420
+	depends = libqb
+	provides = corosync=2.4.2
+	conflicts = corosync1
+	source = http://build.clusterlabs.org/corosync/releases/corosync-2.4.2.tar.gz
+	source = corosync.service
+	md5sums = SKIP
 
 pkgname = corosync
 

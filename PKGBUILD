@@ -7,15 +7,13 @@ pkgdesc="Cluster engine for nodal communication systems with additional features
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
 license=('BSD')
-depends=('libstatgrab' 'net-snmp' 'libdbus')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/corosync/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('7e9b72c21817bb6630c9bfaaa4076420')
+makedepends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb')
+depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb')
+provides=('corosync=2.4.2')
+conflicts=('corosync1')
+source=("http://build.clusterlabs.org/corosync/releases/corosync-$pkgver.tar.gz"
+	"corosync.service")
 
-prepare() {
-  cd ${pkgname}-${pkgver}
-  echo ${pkgver} >.tarball-version
-  GIT_DIR=`pwd`/.git ./autogen.sh
-}
 build() {
   cd ${pkgname}-${pkgver}
   GIT_DIR=`pwd`/.git ./configure --sbindir=/usr/bin \
@@ -44,4 +42,5 @@ package() {
     >"${pkgdir}/usr/lib/tmpfiles.d/corosync.conf"
 }
 
-# vim: set sw=2 et:
+
+md5sums=(SKIP)
