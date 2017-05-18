@@ -8,7 +8,7 @@ license=('GPL')
 conflicts=('shadowsocks-libev')
 depends=('libcap' 'mbedtls' 'libev' 'libsodium'
          'udns' 'pcre' 'libcorkipset' 'libbloom')
-makedepends=('git' 'asciidoc' 'binutils' 'gcc' 'libtool' 'autoconf' 'automake' 'bison' 'fakeroot' 'flex' 'openssl' 'make')
+makedepends=('git' 'gcc' 'autoconf' 'libtool' 'automake' 'make' 'zlib' 'openssl' 'asciidoc' 'xmlto')
 options=('docs' '!strip')
 source=('git+https://github.com/shadowsocksr/shadowsocksr-libev.git')
 sha1sums=('SKIP')
