@@ -1,6 +1,6 @@
 # Maintainer Denis Demidov <dennis.demidov@gmail.com>
 pkgname=oclgrind-git
-pkgver=20170511
+pkgver=20170518
 pkgrel=1
 pkgdesc="A SPIR interpreter and virtual OpenCL device simulator."
 arch=("any")
@@ -28,6 +28,8 @@ build() {
 
 package() {
     cd "${srcdir}/Oclgrind-master/build"
-    DESTDIR=${pkgdir} make install
+    VERBOSE=1 DESTDIR=${pkgdir} make install
+    install -m755 -d ${pkgdir}/etc/OpenCL/vendors
+    install -m644 oclgrind.icd ${pkgdir}/etc/OpenCL/vendors
 }
 
