@@ -4,7 +4,7 @@
 
 _pkgname=nss
 pkgname=nss-hg
-pkgver=r13193.4b721b25ba05
+pkgver=r13365.209329be2d0c
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
@@ -36,7 +36,7 @@ prepare() {
 build() {
   ln -s /usr/bin/python2 python
   cd nss
-  PATH=$PATH:$PWD/../python-env/bin/:$PWD/../ ./build.sh --opt --system-sqlite --system-nspr
+  PATH=$PWD/../python-env/bin/:$PWD/../:$PATH ./build.sh --opt --system-sqlite --system-nspr
 }
 
 package() {
