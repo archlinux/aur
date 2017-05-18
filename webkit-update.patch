@@ -1,0 +1,11 @@
+--- src/epiphany-3.18.5/embed/web-extension/ephy-web-overview.c	2016-03-15 08:21:57.000000000 +0900
++++ src/epiphany-3.18.5/embed/web-extension/ephy-web-overview.c.new	2017-05-19 00:22:44.197874032 +0900
+@@ -144,7 +144,7 @@
+       item->url = g_strdup (url->url);
+ 
+       class_list = webkit_dom_element_get_class_list (webkit_dom_node_get_parent_element (WEBKIT_DOM_NODE (item->anchor)));
+-      if (class_list && webkit_dom_dom_token_list_contains (class_list, "overview-removed", NULL))
++      if (class_list && webkit_dom_dom_token_list_contains (class_list, "overview-removed"))
+         webkit_dom_dom_token_list_remove (class_list, "overview-removed", NULL);
+ 
+       webkit_dom_element_set_attribute (item->anchor, "href", url->url, NULL);
