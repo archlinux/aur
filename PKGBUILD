@@ -92,7 +92,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
 #         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
 #         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
         'minizip.patch'
-        'vaapi_patch_r1.patch'
+        'vaapi_patch_r2.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
         )
@@ -113,7 +113,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
 #             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
 #             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
-            '8123da80906d2150fd7e0da84d3fa5928b0c05c1c1c7b8f5dca30615f105405f'
+            '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
             )
@@ -411,7 +411,7 @@ prepare() {
   if [ "${_enable_vaapi}" = 1 ]; then
 #     patch -p1 -i "${srcdir}/enable_vaapi_on_linux_${pkgver}.diff"
 #     patch -p1 -i "${srcdir}/specify-max-resolution_${pkgver}.patch"
-    patch -p1 -i "${srcdir}/vaapi_patch_r1.patch"
+    patch -p1 -i "${srcdir}/vaapi_patch_r2.patch"
   fi
 
   # Fix paths.

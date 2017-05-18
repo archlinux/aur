@@ -7,4 +7,4 @@
 !chromium-widevine-r1.patch
 !BUILD.gn
 !minizip.patch
-!vaapi_patch_r1.patch
+!vaapi_patch_r2.patch
