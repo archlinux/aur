@@ -1,40 +1,53 @@
+_provider=github
+_tld=com
+_project=mholt
+_repo=caddy
+_import="$_provider.$_tld/$_project/$_repo"
+
 pkgname=caddy
 pkgver=0.10.2
-pkgrel=1
-pkgdesc='A configurable, general-purpose HTTP/2 web server for any platform'
+pkgrel=2
+pkgdesc='HTTP/2 web server with automatic HTTPS'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
 license=('Apache')
+backup=('etc/caddy/Caddyfile')
 install='caddy.install'
 makedepends=('go>=1.8.1' 'git')
-conflicts=('caddy-all-features' 'caddy-git' 'caddy-full-bin')
-
-gopkgname='github.com/mholt/caddy'
-source=("git+https://github.com/mholt/caddy#tag=v$pkgver"
-        "systemd-unit-file.patch")
-md5sums=('SKIP'
-         '07575b06cc76cf5e0287d6c28f05eb05')
+source=("https://$_import/archive/v$pkgver/$_repo-$pkgver.tar.gz"
+        'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
+        'index.html'
+        'caddy.service'
+        'caddy.tmpfiles'
+        'Caddyfile'
+        'enable-dnsproviders.patch')
+sha256sums=('f7040977df1570274a98f1d58581f8efe63b346822312719913f7c8dbcf59184'
+            'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
+            '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
+            'c1d4d1f295177f0963583b7ad29e04afdf9f39f9e916be6135868a327fb37ef4'
+            'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
+            '4e30255be85d3b4f138860f61264aea3960d8873955d3a96eb8e39f1baf9aa65'
+            '158c9a0f4327384c244846badc5295eab2a4cf16c354a3669fc0cce1c34e4a91')
 
 prepare() {
-    cd $srcdir
-    patch -Np1 < systemd-unit-file.patch
-    export GOPATH="$srcdir/build"
-    rm -rf "$GOPATH/src/$gopkgname"
-    mkdir -p "$GOPATH/src/$gopkgname"
-    mv -Tv "$srcdir/caddy" "$GOPATH/src/$gopkgname"
-    echo 'download dependencies'
-    go get -d $gopkgname/...
+    cd $_repo-$pkgver
+    patch -p1 < ../enable-dnsproviders.patch
+    mkdir -p src/$_provider.$_tld/$_project
+    ln -s ../../.. src/$_import
 }
 
 build() {
-    export GOPATH="$srcdir/build"
-    cd $srcdir/build/src/$gopkgname/caddy
-    echo 'compile'
-    bash build.bash
+    cd $_repo-$pkgver
+    export GOPATH=$(pwd)
+    go get -v -d ./src/$_import/...
+    go build -v -o ../caddy -ldflags "-X $_import/caddy/caddymain.gitTag=v$pkgver" $_import/caddy
 }
 
 package() {
-    builddir="$srcdir/build/src/github.com/mholt/caddy"
-    install -Dm755 "$builddir/caddy/caddy" "${pkgdir}/usr/bin/caddy"
-    install -Dm644 "$builddir/dist/init/linux-systemd/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
+    install --verbose -D --mode 0755 caddy "$pkgdir/usr/bin/caddy"
+    install --verbose -D --mode 0644 caddy.service "$pkgdir/usr/lib/systemd/system/caddy.service"
+    install --verbose -D --mode 0644 caddy.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/caddy.conf"
+    install --verbose -D --mode 0644 Caddyfile "$pkgdir/etc/caddy/Caddyfile"
+    install --verbose -D --mode 0644 index.html "$pkgdir/usr/share/caddy/index.html"
+    install --verbose -D --mode 0644 caddy-at-your-service-white.svg "$pkgdir/usr/share/caddy/caddy-at-your-service-white.svg"
 }
