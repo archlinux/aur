@@ -9,7 +9,7 @@ license=('The MIT License (MIT)')
 url="https://rocket.chat"
 options=()
 
-source_x86_64=("https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${pkgver}/rocketchat-desktop_${pkgver}_amd64.deb")
+source_x86_64=("https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${pkgver}/rocketchat_${pkgver}_amd64.deb")
 md5sums_x86_64=('89bb39139e3acb5dfafc6d49edec44ab')
 
 depends=('libnotify' 'gconf')

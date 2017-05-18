@@ -7,7 +7,7 @@ pkgbase = rocketchat-client
 	license = The MIT License (MIT)
 	depends = libnotify
 	depends = gconf
-	source_x86_64 = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/2.8.0/rocketchat-desktop_2.8.0_amd64.deb
+	source_x86_64 = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/2.8.0/rocketchat_2.8.0_amd64.deb
 	md5sums_x86_64 = 89bb39139e3acb5dfafc6d49edec44ab
 
 pkgname = rocketchat-client
