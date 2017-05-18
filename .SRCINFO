@@ -1,0 +1,15 @@
+pkgbase = python-plac-git
+	pkgdesc = A tool to write command-line interfaces for Python applications
+	pkgver = 20170202
+	pkgrel = 1
+	url = https://github.com/micheles/plac
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = git+https://github.com/micheles/plac.git
+	md5sums = SKIP
+
+pkgname = python-plac-git
+
