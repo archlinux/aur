@@ -9,7 +9,9 @@ url='https://github.com/GNS3/iouyap'
 license=('GPL3')
 groups=('gns3')
 # makedepends=('iniparser')
-depends=('bison', 'flex', 'iniparser')
+depends=('bison'
+        'flex'
+        'iniparser')
 optdepends=()
 md5sums=('d874e11fd32c3348c1d5f92d60274f72')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz")
