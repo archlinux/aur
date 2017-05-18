@@ -1,8 +1,8 @@
 # Maintainer: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 pkgname=slepc
-pkgver=3.7.3
-pkgrel=2
+pkgver=3.7.4
+pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://www.grycap.upv.es/slepc"
@@ -10,8 +10,8 @@ license=('GNUv3')
 depends=('python2' 'gcc' 'gcc-fortran' 'petsc>=3.7.0')
 install=slepc.install
 source=(http://www.grycap.upv.es/slepc/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-md5sums=('c7edcb13e0b19e2cf263301962b38f75')
-sha256sums=('3ef9bcc645a10c1779d56b3500472ceb66df692e389d635087d30e7c46424df9')
+md5sums=('cc1244d656e8c37bbdd3e4e897d0e391')
+sha256sums=('2fb782844e3bc265a8d181c3c3e2632a4ca073111c874c654f1365d33ca2eb8a')
 
 export MAKEFLAGS="-j1"
 
