@@ -19,7 +19,7 @@ build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
 
     qmake-qt5 main.pro \
-      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update no-speechd no-overlay" \
+      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update no-speechd no-overlay no-bonjour" \
       DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
       INCLUDEPATH+="/usr/include/openssl-1.0" \
       QMAKE_LFLAGS+="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
