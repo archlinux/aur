@@ -4,12 +4,14 @@
 pkgname=csync2-git
 _pkgname=csync2
 pkgver=2.0.r8.g175a01c
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Asynchronous cluster syncronisation tool based on librsync and inspired by Unison"
 url="http://oss.linbit.com/csync2/"
 license=('GPL')
-makedepends=('texlive-bin' 'sqlite' 'git')
+provides=("$_pkgname=2.0")
+conflicts=("$_pkgname")
+makedepends=('texlive-latexextra' 'sqlite' 'git')
 depends=('librsync' 'gnutls')
 optdepends=('sqlite: for sqlite backend')
 source=("$pkgname::git://git.linbit.com/csync2.git"
