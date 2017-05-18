@@ -9,10 +9,10 @@ run_hook() {
         if [ -f "${SPLASH_IMAGE}" ]; then
             dd if="${SPLASH_IMAGE}" of="${FBDEV}" 2> /dev/null
         else
-            echo "Cannot find ${SPLASH_IMAGE}."
-            echo "Did you include it in the \"FILES=...\" of your /etc/mkinitcpio.conf?"
+            echo "Cannot find ${SPLASH_IMAGE}." >&2
+            echo "Did you include it in the \"FILES=...\" of your /etc/mkinitcpio.conf?" >&2
         fi
     else
-        echo "Framebuffer device \"${FBDEV}\" is not present."
+        echo "Framebuffer device \"${FBDEV}\" is not present." >&2
     fi
 }
