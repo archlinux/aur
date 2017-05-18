@@ -1,0 +1,18 @@
+pkgbase = ibus-unikey-git
+	pkgdesc = IBus module for Vietnamese Keyboard from git master
+	pkgver = 0.6.1.r21.6021e70
+	pkgrel = 1
+	url = https://github.com/Ubuntu-VN/ibus-unikey
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = intltool
+	depends = ibus
+	provides = ibus-unikey
+	conflicts = ibus-unikey
+	source = ibus-unikey-git::git+https://github.com/Ubuntu-VN/ibus-unikey/
+	md5sums = SKIP
+
+pkgname = ibus-unikey-git
+
