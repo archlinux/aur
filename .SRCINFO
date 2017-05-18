@@ -1,7 +1,7 @@
 pkgbase = guacamole-server-git
 	pkgdesc = Guacamole proxy daemon
 	pkgver = 0.9.12.incubating.r68.g04205a9b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://guacamole.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,8 @@ pkgbase = guacamole-server-git
 	optdepends = freerdp: for rdp protocol support
 	optdepends = libpulse: for pulseaudio support
 	optdepends = libtelnet: for telnet protocol support
+	provides = guacamole-sever
+	conflicts = guacamole-sever
 	replaces = guacd
 	replaces = libguac
 	replaces = libguac-client-ssh

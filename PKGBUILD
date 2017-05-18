@@ -3,11 +3,13 @@
 pkgname=guacamole-server-git
 _gitname=guacamole-server
 pkgver=0.9.12.incubating.r68.g04205a9b
-pkgrel=1
+pkgrel=2
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64')
 url="http://guacamole.sourceforge.net/"
 license=('GPL3')
+conflicts=('guacamole-sever')
+provides=('guacamole-sever')
 replaces=('guacd' 'libguac' 'libguac-client-ssh' 'libguac-client-vnc' 'libguac-client-rdp')
 depends=('pango' 'openssl' 'libvorbis' 'uuid' 'libwebp')
 makedepends=('git' 'libpulse' 'libvorbis' 'openssl-1.0' 'libssh' 'libvncserver' 'pango' 'libtelnet')
