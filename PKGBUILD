@@ -20,10 +20,15 @@ pkgver() {
   printf "%s" $(git describe --tags|cut -c2-|tr - .)
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  sed -i '71s+pre-inst-env.in+./pre-inst-env+' Makefile.am
+  sed -i '72s+boot+./boot+' Makefile.am
+}
+
 build() {
   cd "${pkgname%-git}"
-  chmod u+x pre-inst-env.in
-  ./bootstrap.sh
+  autoreconf -vif
   ./configure --prefix=/usr
   make
 }
