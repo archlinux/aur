@@ -8,7 +8,6 @@ arch=('i686' 'x86_64')
 url='https://github.com/shadowsocksr/shadowsocksr-libev'
 license=('GPL')
 conflicts=('shadowsocks-libev')
-groups=('i3-vcs')
 depends=('libcap' 'mbedtls' 'libev' 'libsodium'
          'udns' 'pcre' 'libcorkipset' 'libbloom')
 makedepends=('git' 'asciidoc' 'binutils' 'gcc' 'libtool' 'autoconf' 'automake' 'bison' 'fakeroot' 'flex' 'openssl' 'make')
