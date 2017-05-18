@@ -1,11 +1,11 @@
 pkgbase = msbuild-15-bin
 	pkgdesc = Xamarin implementation of the Microsoft build system
 	pkgver = 15.2_xamarinxplat.2017.05.04.00.44_0xamarin3_ubuntu1404b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mono/msbuild
 	arch = x86_64
 	license = MIT
-	depends = mono>=4.0.0
+	depends = mono>=5.0.0
 	provides = msbuild
 	conflicts = msbuild
 	source = msbuild-amd64-v15.2+xamarinxplat.2017.05.04.00.44-0xamarin3+ubuntu1404b1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_15.2+xamarinxplat.2017.05.04.00.44-0xamarin3+ubuntu1404b1_all.deb
