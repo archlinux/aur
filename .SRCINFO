@@ -1,6 +1,6 @@
 pkgbase = nss-hg
 	pkgdesc = Mozilla Network Security Services
-	pkgver = r13193.4b721b25ba05
+	pkgver = r13365.209329be2d0c
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
 	arch = i686
