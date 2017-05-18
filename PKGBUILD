@@ -1,5 +1,3 @@
-# Maintainer: Ingo Bürk <admin at airblader dot de>
-
 pkgname=shadowsocksr-libev
 pkgver=4.3.1
 pkgrel=1
@@ -29,13 +27,9 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-
   make DESTDIR="$pkgdir/" install
-
-  #install -Dm644 ../LICENSE \
-    #"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+
 
 
