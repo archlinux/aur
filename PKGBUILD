@@ -18,7 +18,7 @@ sha1sums=('SKIP')
 _gitname='shadowsocksr-libev'
 
 pkgver() {
-  cd "$srcdir/$_gitname.git"
+  cd "$_gitname"
   git describe --tags | sed 's/-/./g'
 }
 
