@@ -7,7 +7,7 @@ pkgdesc="An Open Source C++ Library for Computer Arithmetic and Logic"
 arch=("i686" "x86_64")
 url="https://github.com/smtrat/carl"
 license=('MIT')
-depends=("gmp>=5.1" "eigen3>=3.2" "boost>=1.55")
+depends=("gmp>=5.1" "eigen>=3.2" "boost>=1.55")
 makedepends=("make" "cmake>=3.0")
 conflicts=()
 replaces=()
