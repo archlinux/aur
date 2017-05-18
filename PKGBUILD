@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-knock
 _pkgbasever=4.10-gnu
-_pkgver=4.10.13-gnu
+_pkgver=4.10.16-gnu
 _knockpatchver=4.10_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-rcnrel=armv7-x1
+rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://gnunet.org/knock"
 license=('GPL2')
@@ -64,7 +64,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0009-disable-USB3-port-on-ODROID-XU.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            'ef0eb568775c55bde0f615237e827461aa8ee04cafb77783bc28fb6d040929f0802f53ad7c89b383342214fa080fc7e92b6f091cd7b695c5110615c0669ea3ea'
+            '83b92415a071baf8064fe4d6f2a100d3201236fcf46c689b2391a4fecbc4be0005fe8b8e4c73266f968e79a1da0f789a8c482db3ca22013967353d8c52d84697'
             'SKIP'
             '61b12333aaaeec86fc51feff8a46dc3e8e89b49530de66a389a3ed6ce974912772b8126d6a4bbc71b2d7b133974432141b896924db0e46df50537499447c0a95'
             'SKIP'
@@ -81,7 +81,7 @@ sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf58
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'cf967533f4dffa8f403d67efeb83e8e33fd01b5b3bbc1c8ca1e416756eea6a27881a2b0d0347e6a660b480afa7a2a43d81f654d8729174556c68274de75ac31d'
+            'd58a65532e0e9bfad4099e5650d2391d28d135e17c779de3766137f31b5dae925db78005187015914a66279d68bf701b50da0e29b20ac052596916262eb2662f'
             'SKIP'
             '1d550ee87d3c35b4022c23feb771f9a40c34bead6eb8dc5e92cd767417723b32bcb7e0608419aa2b8a4f3306c183447d9ae713d33df68102b1c2df4e267cee39'
             'cca509462861ac85e6229bd2bf5f5e0e4d2d2db182cf1d562f765862eb192ade5917a9e0306375642c1090143fae6826129fd531435658d906e6a8f88982ddef'
