@@ -1,13 +1,14 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-tint2-themes-git
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tint2 Themes for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Tint2-Themes"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
-provides=('archlabs-wallpapers-git')
+depends=('tint2')
+provides=('archlabs-tint2-themes-git')
 options=(!strip !emptydirs)
 source=('git+https://github.com/ARCHLabs/Archlabs-Tint2-Themes.git')
 sha256sums=('SKIP')
