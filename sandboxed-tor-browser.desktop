@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sandboxed Tor Browser
+Exec=/usr/bin/sandboxed-tor-browser
+Icon=/usr/share/pixmaps/sandboxed-tor-browser.png
+Categories=Network;
+Comment="Sandboxed Tor Browser"
+Name[de_DE]=Sandboxed Tor Browser
