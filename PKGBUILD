@@ -3,13 +3,13 @@
 pkgname=crmsh-git
 _pkgname=crmsh
 pkgver=3.0.0.r22.g19533ef4
-pkgrel=3
+pkgrel=4
 pkgdesc="Command-line interface for high-availability cluster management on GNU/Linux systems"
 arch=('any')
 url="https://github.com/ClusterLabs/${_pkgname}/"
 license=('GPL2')
-makedepends=('git' 'asciidoc')
-depends=('python2' 'gawk' 'csync2')
+makedepends=('git' 'asciidoc' 'python2-setuptools')
+depends=('python2' 'gawk' 'csync2-git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git")
