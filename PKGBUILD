@@ -39,10 +39,10 @@ build() {
   make 
 }
 
-check() {
-  cd "$srcdir/ff++"
-  make check || true
-}
+#check() {
+#  cd "$srcdir/ff++"
+#  make check || true
+#}
 
 package() {
   cd "$srcdir/ff++"
