@@ -2,7 +2,7 @@
 # Contributor: Profpatsch <mail AT [nickname] DOT de>
 
 pkgname=gnome-keysign
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="An easier way to sign OpenPGP keys over the local network."
 arch=('any')
