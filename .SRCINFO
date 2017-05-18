@@ -1,14 +1,14 @@
 pkgbase = pass-tomb
 	pkgdesc = A pass extension that helps you to keep the whole tree of password encrypted inside a tomb.
-	pkgver = 0.5
-	pkgrel = 3
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/roddhjav/pass-tomb
 	arch = any
 	license = GPL3
 	depends = pass
 	depends = tomb
-	source = https://github.com/roddhjav/pass-tomb/archive/v0.5.tar.gz
-	sha512sums = bde548496884cfb3f24284a6f9b17e743a42446cd4472e7dbc86eaa9fb62fd94b9362f952b27ad7bd0e3e9a4ca2e38380e32ce35770013dbf6709527dbc9b9f0
+	source = https://github.com/roddhjav/pass-tomb/archive/v1.0.tar.gz
+	sha512sums = 37366f59c213181a27b8644807e4252aa7f63a542b94deab0262c8e0652a400fcc4def7a15aa0ab60faf4bda465c1e82d1ae9d4d4d22391680f0e87fc6c71653
 
 pkgname = pass-tomb
 
