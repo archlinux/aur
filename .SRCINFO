@@ -1,12 +1,12 @@
 pkgbase = crmsh
 	pkgdesc = Command-line interface for high-availability cluster management on GNU/Linux systems
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ClusterLabs/crmsh/
 	arch = any
 	license = GPL2
 	makedepends = asciidoc
-	depends = python
+	depends = python2
 	depends = gawk
 	source = crmsh-3.0.0.tar.gz::https://github.com/ClusterLabs/crmsh/archive/3.0.0.tar.gz
 	md5sums = ff41cc2f4abf4498ea55fe033eb854f3
