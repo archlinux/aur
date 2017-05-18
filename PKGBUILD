@@ -2,7 +2,7 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 pkgname=kjieba
 pkgver=20161217
-pkgrel=1
+pkgrel=2
 pkgdesc="DBus interface of libcppjieba && Chinese2Pinyin for KDE5"
 arch=('any')
 url="https://github.com/isoft-linux/kjieba"

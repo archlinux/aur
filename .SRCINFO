@@ -1,7 +1,7 @@
 pkgbase = kjieba
 	pkgdesc = DBus interface of libcppjieba && Chinese2Pinyin for KDE5
 	pkgver = 20161217
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isoft-linux/kjieba
 	arch = any
 	license = GPL2
