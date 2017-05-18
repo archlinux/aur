@@ -10,9 +10,9 @@ specific UI theme you are using.
 
 If you use tia-ui theme then just that line is enough.
 
-To run directly with /usr/bin/atom-beta, use like this:
+To run directly with /usr/bin/atom, use like this:
 
-    atom-beta --enable-transparent-visuals --disable-gpu
+    atom --enable-transparent-visuals --disable-gpu
 
 append more option as you like.
 EOF

@@ -1,5 +1,5 @@
---- a/share/atom-beta/resources/app/apm/bin/apm
-+++ b/share/atom-beta/resources/app/apm/bin/apm
+--- a/share/atom/resources/app/apm/bin/apm
++++ b/share/atom/resources/app/apm/bin/apm
 @@ -2,6 +2,8 @@
 
  set -e

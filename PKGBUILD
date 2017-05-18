@@ -2,9 +2,8 @@
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-transparent
-_pkgverprefix=1.17.0
-_pkgverpostfix=beta3
-pkgver=$_pkgverprefix.$_pkgverpostfix
+_atomver=1.17.0
+pkgver=1.17.0.0
 pkgrel=1
 pkgdesc="Atom is a hackable text editor for the 21st century built on Electron - with transparent background support"
 arch=('x86_64')
@@ -18,10 +17,11 @@ optdepends=('gvfs: file deletion support')
 conflicts=('atom' 'atom-editor' 'atom-editor-bin' 'atom-editor-git' 'atom-editor-git-tagged' 'apm' 'atom-notracking')
 install=$pkgname.install
 
-sha384sums=('fe31f6cad10d2e688189e4ca8ddb90f77cd70ccdae28cc0e866e30512ccf85495c35b299fab92eb9037c21cc1fcc73a3'
+sha384sums=('abc4154731856bd52dc86d29fb80894a6aaf791016441fde40bfd7be505b08c3b751644658f7e1d1321893c282a9e4b2'
             '614d682bdca79ca91d6753eef0fccfe4f5b322688c9d82adcd95e5dd07e33052e703f1fa7335828a4c8af74540966dba'
-            'e31e665a85bdc289153350e98b4bbe3ef42aa0e35a5c7d3d14abd0d32ee7bd117effc2d1593a2d118aeac4f4fbfec958')
-source=("https://github.com/atom/atom/archive/v${_pkgverprefix}-${_pkgverpostfix}.tar.gz"
+            '7b28df309d5aae71a71edca781537b808c507ca156f6e7c559f6f8482fc450eb3c8c9e15b10ac9570302c652666cbc2f')
+
+source=("https://github.com/atom/atom/archive/v${_atomver}.tar.gz"
         "atom-transparent.patch"
         "apm-python2.patch")
 
@@ -36,24 +36,24 @@ prepare() {
     export PATH=$(realpath _bin/):$PATH
 
     # pre-build patches
-    cd ${srcdir}/atom-${_pkgverprefix}-${_pkgverpostfix}
+    cd ${srcdir}/atom-${_atomver}
     echo "applying atom-transparent.patch"
     patch -p1 < "${srcdir}"/atom-transparent.patch
 }
-
+# https://github.com/atom/atom/archive/v1.17.0.tar.gz
 build() {
-    cd ${srcdir}/atom-${_pkgverprefix}-${_pkgverpostfix}
+    cd ${srcdir}/atom-${_atomver}
     mkdir -p ${srcdir}/install
     ./script/build --install=${srcdir}/install
 
     cd ${srcdir}/install
 
-    echo "patching atom-beta.destkop..."
+    echo "patching atom.destkop..."
     sed -i \
-        -e 's/Exec=.*/Exec=env PYTHON=python2 \/usr\/share\/atom-beta\/atom --enable-transparent-visuals --disable-gpu %U/' \
+        -e 's/Exec=.*/Exec=env PYTHON=python2 \/usr\/share\/atom\/atom --enable-transparent-visuals --disable-gpu %U/' \
         -e 's/Icon=.*/Icon=atom/' \
         -e '/StartupNotify/ a StartupWMClass=Atom' \
-        share/applications/atom-beta.desktop
+        share/applications/atom.desktop
 
     echo "applying apm-python2.patch"
     patch -p1 < "${srcdir}"/apm-python2.patch
