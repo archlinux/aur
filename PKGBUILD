@@ -5,7 +5,7 @@
 
 pkgname=jhbuild
 pkgver=3.15.92+1180+g19a3a0f3
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'

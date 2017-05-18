@@ -2,12 +2,13 @@ Arguments needed to smoothly build modules without needing specific user config
 
 Some of the bug reports related to this patch:
 * gnome-software: https://bugzilla.gnome.org/show_bug.cgi?id=781198
+* appstream-glib: https://github.com/hughsie/appstream-glib/issues/169
 
 diff --git a/jhbuild/defaults.jhbuildrc b/jhbuild/defaults.jhbuildrc
 index f6e01308..cf583107 100644
 --- a/jhbuild/defaults.jhbuildrc
 +++ b/jhbuild/defaults.jhbuildrc
-@@ -90,9 +90,14 @@ repos = {}
+@@ -90,9 +90,15 @@ repos = {}
  cvsroots = {}
  svnroots = {}
  branches = {}
@@ -19,7 +20,8 @@ index f6e01308..cf583107 100644
  module_cmakeargs = {}
 -module_mesonargs = {}
 +module_mesonargs = {
-+     'gnome-software': '-Denable-rpm=false -Denable-ostree=false'
++     'gnome-software': '-Denable-rpm=false -Denable-ostree=false',
++     'appstream-glib': '-Denable-rpm=false'
 +}
  module_makeargs = {}
  module_extra_env = {}
