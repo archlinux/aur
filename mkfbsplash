@@ -68,7 +68,6 @@ if [ ${EUID} -ne 0 ]; then
 fi
 
 TEMP=$(mktemp)
-clear
 /usr/bin/fbv -c -i -d 1 "${IMAGE}"
 /usr/bin/cp "${FB_DEV}" "${TEMP}"
 /usr/bin/mv -i "${TEMP}" "${OUT_FILE}"
