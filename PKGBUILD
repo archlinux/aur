@@ -19,5 +19,7 @@ depends_i686=('libcups')
 package() {
     cd ${srcdir}
     mkdir -p "$pkgdir/usr/share/ppd/xerox/"
-    find -name '*3025*.ppd' -execdir install -Dm644 {} "$pkgdir/usr/share/ppd/xerox/" \;
+    mkdir -p "$pkgdir/usr/lib/cups/filter/"
+    find -name '*3025.ppd' -execdir install -Dm644 {} "$pkgdir/usr/share/ppd/xerox/" \;
+    install -m755 uld/x86_64/rastertospl "$pkgdir/usr/lib/cups/filter/"
 }
