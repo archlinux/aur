@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-stage
 	pkgdesc = ROS - Mobile robot simulator http://rtv.github.com/Stage.
-	pkgver = 4.1.1
+	pkgver = 4.3.0
 	pkgrel = 10
 	url = http://rtv.github.com/Stage
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = ros-kinetic-stage
 	depends = mesa
 	depends = fltk
 	depends = gtk2
-	source = stage::git+https://github.com/majorx234/stage.git
+	source = stage::git+https://github.com/rtv/Stage.git
 	md5sums = SKIP
 
 pkgname = ros-kinetic-stage
