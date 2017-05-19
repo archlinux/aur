@@ -1,5 +1,0 @@
-d /var/lib/pacemaker          0750 hacluster haclient
-d /var/lib/pacemaker/blackbox 0750 hacluster haclient
-d /var/lib/pacemaker/cib      0750 hacluster haclient
-d /var/lib/pacemaker/cores    0750 hacluster haclient
-d /var/lib/pacemaker/pengine  0750 hacluster haclient

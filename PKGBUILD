@@ -6,22 +6,20 @@
 pkgname=pacemaker-git
 _pkgname=pacemaker
 pkgver=1.1.17.rc1.r20.g49eb595ab
-pkgrel=2
+pkgrel=3
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${_pkgname}/"
 license=('GPL2')
-makedepends=('git' 'libxml2' 'inkscape')
-depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'corosync-git' 'libesmtp' 'libqb-git')
+makedepends=('git' 'libxml2' 'inkscape' 'help2man' 'asciidoc')
+depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'libesmtp'
+         'corosync-git' 'libqb-git' 'resource-agents-git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
+install=${_pkgname}.install
 source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git"
-        'pacemaker.sysusers'
-        'pacemaker.tmpfiles'
         'crm_report.in')
 md5sums=('SKIP'
-         'f21b93a2bb62d54b69b9bd4427201707'
-         '3339ef9d5124e722800b0aeda16f464c'
          '07f26ba3fff0749cc5bc5b4da154611d')
 
 pkgver() {
@@ -72,8 +70,20 @@ package() {
   make DESTDIR="${pkgdir}" install
   cd "$srcdir"
   install -dm755 "$pkgdir"/usr/lib/{tmpfiles.d,sysusers.d}
-  install -Dm644 $_pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
-  install -Dm644 $_pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+  cat>"$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"<<-EOF
+		D /var/lib/pacemaker          0770 hacluster haclient
+		d /var/lib/pacemaker/blackbox 0770 hacluster haclient
+		d /var/lib/pacemaker/cib      0770 hacluster haclient
+		d /var/lib/pacemaker/cores    0770 hacluster haclient
+		d /var/lib/pacemaker/pengine  0770 hacluster haclient
+	EOF
+# install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+# cat>"$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"<<-EOF
+#		u hacluster 189 "Cluster User"
+#		g haclient 189 -
+#		m hacluster haclient
+#	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
   find "$pkgdir" -name '*.xml' -type f -print0 | xargs -0 chmod a-x
@@ -84,4 +94,4 @@ package() {
   install -Dm755 crm_report.in "$pkgdir/usr/bin/crm_report"
 }
 
-# vim: set sw=2 et:
+# vim: set sw=2 et ts=2:
