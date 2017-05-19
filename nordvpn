@@ -12,6 +12,65 @@ run_ping() {
     $bin -c 4 -A $remote | tail -n 1 | cut -d / -f 5
 }
 
+progress_bar()
+{
+    pct=$(echo "${1} / ${2}" | bc -l)
+    hashes=$(printf "%0.s#" $(seq $(echo "$pct * 73 + 1" | bc )))
+    spaces=$(printf "%0.s " $(seq $(echo "(1 - $pct) * 73" | bc)))
+    printf "\r%s%s %5.1f%%" "$hashes" "$spaces" "$(echo "$pct * 100" | bc)"
+}
+
+end_progress_bar()
+{
+    hashes=$(printf "%0.s#" $(seq 73))
+    printf "\r%s 100.0%%\n" "$hashes"
+}
+
+update_files()
+{
+    local targetdir=/etc/openvpn/client/nordvpn
+    mkdir -p $targetdir
+    local tmpdir=$(mktemp -d)
+    cd $tmpdir
+
+    echo "Downloading nordvpn config files..."
+    curl --progress-bar -o nordvpn.zip https://nordvpn.com/api/files/zip || exit 1
+    # cp ~nicolas/abs/openvpn-nordvpn/zip nordvpn.zip || exit 1
+    mkdir conf
+    unzip -q nordvpn.zip -d conf || exit 2
+
+    echo "Patching and installing files..."
+    test -f $targetdir/credentials.conf && cp $targetdir/credentials.conf .
+    find /etc/openvpn/client -name 'nordvpn_*.conf' | xargs -r rm
+    rm -rf $targetdir/conf && mkdir -p $targetdir/conf
+
+    nb_files=$(find conf -name '*udp1194.ovpn' | wc -l)
+    idx=0
+    for f in $(find conf -name '*udp1194.ovpn'); do
+        progress_bar $idx $nb_files
+        sed 's/^auth-user-pass.*$/auth-user-pass \/etc\/openvpn\/client\/nordvpn\/credentials.conf/g' -i $f
+        echo "" >> $f
+        echo "script-security 2" >> $f
+        echo "up /etc/openvpn/client/nordvpn/updown" >> $f
+        echo "down /etc/openvpn/client/nordvpn/updown" >> $f
+        install -D -m 444 $f $targetdir/conf/$(basename $f)
+        ln -s $targetdir/conf/$(basename $f) /etc/openvpn/client/nordvpn_$(echo $(basename $f) | cut -d '.' -f 1).conf
+        idx=$(( $idx + 1 ))
+    done
+    end_progress_bar
+
+    if [ -f credentials.conf ]; then
+        cp credentials.conf /etc/openvpn/client/nordvpn/credentials.conf
+    else
+        echo "login" > /etc/openvpn/client/nordvpn/credentials.conf
+        echo "password" >> /etc/openvpn/client/nordvpn/credentials.conf
+        chmod 400 /etc/openvpn/client/nordvpn/credentials.conf
+        echo "Please update /etc/openvpn/client/nordvpn/credentials.conf"
+    fi
+
+    rm -rf $tmpdir
+}
+
 print_usage() {
     echo "usage: $(basename $0) [options] command [args]"
     echo "Available options:"
@@ -28,6 +87,8 @@ print_usage() {
     echo "        Show current systemd service status, if any."
     echo "    start|stop|restart server_name"
     echo "        Start, stop or restart systemd service for specified server."
+    echo "    update"
+    echo "        Download and install nordvpn config files."
 }
 
 while getopts "vh" opt
@@ -90,6 +151,9 @@ case $command in
     stop|restart)
         service=$(get_service)
         test -z "$service" || systemctl $command $service
+        ;;
+    update)
+        update_files
         ;;
     *)
         print_usage
