@@ -1,6 +1,6 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 pkgname=('python-telegram-bot-git')
-pkgver=5.3.1.r1447.9720f59
+pkgver=5.3.1.r1451.e2a651a
 _pkgver=5.3.1
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
