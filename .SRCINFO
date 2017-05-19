@@ -1,0 +1,13 @@
+pkgbase = meilix-systemlock
+	pkgdesc = Melix System Lock
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/fossasia/meilix-systemlock
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = https://github.com/xeon-zolt/meilix-systemlock/archive/1.tar.gz
+	sha256sums = 83e8d4074ec502f5e5dbc7468414e4152604db2d6c35dde8cfd63c54db56c991
+
+pkgname = meilix-systemlock
+
