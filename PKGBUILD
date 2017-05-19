@@ -1,9 +1,9 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('kea')
 _srcname='kea'
-pkgver='1.1.0'
-_commit='de41bf1dd503a644496ff208b7a0d5503e12d235'
-pkgrel='2'
+pkgver='1.2.0'
+_commit='8db8de0e102a46bc194d0da73dc1d8083de57bff'
+pkgrel='1'
 pkgdesc='DHCPv4/DHCPv6 server'
 arch=('i686' 'x86_64')
 url='http://kea.isc.org'
@@ -42,19 +42,11 @@ makedepends=(
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
-source=(
-    "${_srcname}::git+https://github.com/isc-projects/kea.git#commit=${_commit}"
-    'openssl1_1.patch'
-)
-sha512sums=(
-    'SKIP'
-    'a556f44db589f533725de5ea4ed21ff13802ec080f6a24f2d11851a75fcca97f0f4319b6e3cacf94d268bf3d8d2f7160688d842f5b1371fc630d8c337f2e77a9'
-)
+source=("${_srcname}::git+https://github.com/isc-projects/kea.git#commit=${_commit}")
+sha512sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${_srcname}"
-
-    git apply "${srcdir}/openssl1_1.patch"
 
     # /var/kea -> /var/lib/kea
     # shellcheck disable=SC2016
