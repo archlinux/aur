@@ -5,7 +5,7 @@
 _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
 pkgname=openresty
-pkgver=1.11.2.2
+pkgver=1.11.2.3
 pkgrel=1
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
@@ -13,17 +13,26 @@ url="http://openresty.org/"
 license=('BSD')
 depends=('perl>=5.6.1' 'readline' 'pcre' 'openssl')
 install=$pkgname.install
+validgpgkeys=('iQEcBAEBAgAGBQJY+EzlAAoJELVQ4J6g6YBmKyoH/3ExFtvtdkEis6s6tAmjheJv
+Jrtgt8ecjYi7XmmtkwltU2eoqOOZI+zo6TZ+V0Pn6TbAy95onnLIzmtJxI9QNRyM
+gewKi2q86ccxZaT6uzzFPLNzaIRQN1Rv6Rw/8ZA0dpG/j9sCM+NKlXBPJ0ymppEu
+jVcyT32YJy/yKbTKcczBbMf+lcRsMhhgg1jelp/GrY1ZXJIZk3VJas/18cJFjL8E
+ByhB2SPe8iJNIFYXi3KM5BvzL+tUDymu0hpEe16ZAFOmoQyRcjAWAsuN+hMyLT34
+DAlvVBIbMI+7Esp0T6L0azoq6Hp1S/sSGAfgXlR88aiDUMCWoyG136/271W0U1U=
+=It8U')
 source=(https://openresty.org/download/$pkgname-$pkgver.tar.gz{,.asc}
         service
         $pkgname.logrotate
-        $pkgname.install)
+        $pkgname.install
+        https://www.openssl.org/source/openssl-1.0.2k.tar.gz
+        )
 noextract=()
-validpgpkeys=('25451EB088460026195BD62CB550E09EA0E98066')
-sha256sums=('7f9ca62cfa1e4aedf29df9169aed0395fd1b90de254139996e554367db4d5a01'
+sha256sums=('7a0a8570fd3eb193913eb2287f7c926b47e363f376e80c7aa332c35d0fccde69'
             'SKIP'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
             '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23'
-            'f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6')
+            'f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6'
+            '6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0')
 backup=(${_cfgdir:1}/fastcgi.conf
         ${_cfgdir:1}/fastcgi_params
         ${_cfgdir:1}/koi-win
@@ -42,6 +51,7 @@ build() {
     --prefix=/opt/openresty \
     --conf-path=$_cfgdir/nginx.conf \
     --user=http --group=http \
+    --with-openssl=$srcdir/openssl-1.0.2k \
     --with-file-aio \
     --with-http_dav_module \
     --with-http_gzip_static_module \
