@@ -1,7 +1,7 @@
 # Maintainer: David Z. Kil <dave at thekilempire dot com>
 
 pkgname=packer-io-git
-pkgver=0.10.1.r168.g6eedd4d
+pkgver=0.12.3.r317.g932c4715e
 pkgver() {
   cd "$srcdir/packer"
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -13,17 +13,17 @@ arch=('x86_64' 'i686')
 license=('MPL2')
 conflicts=('packer-io')
 makedepends=('mercurial' 'go' 'bzr')
-source=('packer::git+http://github.com/mitchellh/packer')
+source=('packer::git+http://github.com/hashicorp/packer')
 md5sums=('SKIP')
 
 prepare() {
   export GOPATH=$srcdir
-  go get -u github.com/mitchellh/packer
+  go get -u github.com/hashicorp/packer
 }
 
 build() {
   export GOPATH=$srcdir
-  cd "$srcdir/src/github.com/mitchellh/packer"
+  cd "$srcdir/src/github.com/hashicorp/packer"
   PATH="$PATH:$srcdir/bin" make
 }
 
