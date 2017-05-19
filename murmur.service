@@ -8,7 +8,6 @@ PIDFile=/run/murmur/murmur.pid
 ExecStart=/usr/bin/murmurd -ini /etc/murmur/murmur.ini
 User=murmur
 Group=murmur
-Restart=always
 PrivateDevices=true
 PrivateTmp=true
 ProtectSystem=full
