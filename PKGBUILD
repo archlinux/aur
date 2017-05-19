@@ -2,7 +2,7 @@
 
 pkgname=corosync
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
