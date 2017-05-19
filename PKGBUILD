@@ -1,7 +1,7 @@
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=artifactory-oss
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc='Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers'
 arch=('any')
@@ -11,9 +11,11 @@ depends=('java-runtime-headless' 'net-tools' 'bash')
 install="$pkgname.install"
 source=("jfrog-artifactory-oss-${pkgver}.zip::https://bintray.com/jfrog/artifactory/download_file?file_path=jfrog-artifactory-oss-${pkgver}.zip"
         'artifactory.service'
+		'artifactory.conf'
         'artifactory.default')
-sha256sums=('6d6323f06b53d2760d25c0afab1b42bb1fed9adca48b6931b07f0df33cb7a38b'
+sha256sums=('7ede1581dde6d45bd766eec9881e9b2927bf084ca4ae9804352a2fa9d95e08bd'
             '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
+            '48bc1cddf9fa64f0d62a519470a490719398d67b6baeef6a3e647b737d6484df'
             '54617cc75624db3a03dbed62898b2f438cb8145983a034d72f12ca259c8218a4')
 options=('!strip')
 PKGEXT='.pkg.tar'
@@ -31,7 +33,8 @@ package() {
   
   install -d "$pkgdir$artDist"
   cp -r "$pkgname-$pkgver"/* "$pkgdir$artDist"
-  install -Dm755 "$srcdir/artifactory.default" "$pkgdir$artDist/bin"
-  install -Dm755 "$srcdir/artifactory.service" "$pkgdir/usr/lib/systemd/system/artifactory.service"
-  install -d "$pkgdir/opt/artifactory/run"
+  install -Dm644 "$srcdir/artifactory.conf" "$pkgdir/usr/lib/systemd/sysusers.d/artifactory.conf"
+  install -Dm644 "$srcdir/artifactory.default" "$pkgdir$artDist/bin"
+  install -Dm644 "$srcdir/artifactory.service" "$pkgdir/usr/lib/systemd/system/artifactory.service"
+  install -d "$pkgdir$artDist/run"
 }

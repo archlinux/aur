@@ -1,7 +1,5 @@
 post_install() {
-  echo "Creating user and group artifactory..."
-  getent group artifactory &>/dev/null || groupadd -r artifactory &>/dev/null
-  getent passwd artifactory &>/dev/null || useradd -r -g artifactory -d /opt/artifactory artifactory &>/dev/null
+  systemd-sysusers artifactory.conf
   chown -R artifactory /opt/artifactory
 
   echo
@@ -38,11 +36,4 @@ post_upgrade() {
     echo "Removing Artifactory's PID file"
     rm -f /opt/artifactory/run/artifactory.pid
   fi
-}
-
-post_remove() {
-  post_upgrade
-  echo "Removing artifactory user and group..."
-  getent passwd artifactory &>/dev/null && userdel artifactory &>/dev/null
-  getent group artifactory &>/dev/null && groupdel artifactory &>/dev/null
 }
