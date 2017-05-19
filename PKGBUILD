@@ -1,4 +1,4 @@
-# Maintainer: Michał Lisowski <lisu87@gmail.com>
+# Maintainer: Michał Lisowski <lisu@riseup.net>
 pkgname=manageyum-bin
 pkgver=2.0.0
 pkgrel=1
