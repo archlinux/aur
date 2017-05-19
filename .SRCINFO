@@ -1,13 +1,13 @@
 pkgbase = shaarli
 	pkgdesc = The personal, minimalist, super-fast, no-database delicious clone - community repo
-	pkgver = 0.8.4
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/shaarli/Shaarli
 	arch = any
 	license = ZLIB
 	depends = php
-	source = https://github.com/shaarli/Shaarli/releases/download/v0.8.4/shaarli-v0.8.4-full.tar.gz
-	sha256sums = 67d91dca24f1ea469bb8693a36a1e0ce6d6d2d32307c158e25e7a28da8a4dedc
+	source = https://github.com/shaarli/Shaarli/releases/download/v0.9.0/shaarli-v0.9.0-full.tar.gz
+	sha256sums = ace8cf8b6dee74fc2485b5e91ad0bf061822b7ced4c20d119439616684521cd1
 
 pkgname = shaarli
 
