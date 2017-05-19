@@ -1,3 +1,5 @@
+# Maintainer: Carl George < arch at cgtx dot us >
+
 _provider=github
 _tld=com
 _project=mholt
@@ -5,8 +7,8 @@ _repo=caddy
 _import="$_provider.$_tld/$_project/$_repo"
 
 pkgname=caddy
-pkgver=0.10.2
-pkgrel=2
+pkgver=0.10.3
+pkgrel=1
 pkgdesc='HTTP/2 web server with automatic HTTPS'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -21,7 +23,7 @@ source=("https://$_import/archive/v$pkgver/$_repo-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'Caddyfile'
         'enable-dnsproviders.patch')
-sha256sums=('f7040977df1570274a98f1d58581f8efe63b346822312719913f7c8dbcf59184'
+sha256sums=('fbbecb2eed383fd9deb9177f899ba8c8ebf15f767f4fefa0cc558f07ed337260'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             'c1d4d1f295177f0963583b7ad29e04afdf9f39f9e916be6135868a327fb37ef4'
