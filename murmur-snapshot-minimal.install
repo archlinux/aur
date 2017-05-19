@@ -8,3 +8,9 @@ post_install() {
 	chmod 750 /var/lib/murmur /var/log/murmur
 	chmod 755 /run/murmur
 }
+
+post_remove() {
+	if [ -d /run/murmur ]; then
+		rm -r /run/murmur
+	fi
+}
