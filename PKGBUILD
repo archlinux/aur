@@ -28,18 +28,20 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/mumble-${pkgver//_/\~}~snapshot"
+  murmur="${srcdir}/mumble-${pkgver//_/\~}~snapshot"
 
-  cat release/murmurd release/libmumble_proto.a > "release/murmurd_new"
+  cat ${murmur}/release/murmurd ${murmur}/release/libmumble_proto.a > "${murmur}/release/murmurd_new"
 
   install -m750 -d "${pkgdir}/etc/murmur"
-  install -m640 -D "./scripts/murmur.ini" "${pkgdir}/etc/murmur/murmur.ini"
+  install -m640 -D "${murmur}/scripts/murmur.ini" "${pkgdir}/etc/murmur/murmur.ini"
 
-  install -m755 -D "./release/murmurd_new" "${pkgdir}/usr/bin/murmurd"
+  install -m755 -D "${murmur}/release/murmurd_new" "${pkgdir}/usr/bin/murmurd" 
+
+  install -m644 -D "murmur.service" "${pkgdir}/usr/lib/systemd/system/murmur.service"
 
   install -m755 -d "${pkgdir}/usr/share/man/man1"
-  install -m644 -D "./man/murmurd.1" "${pkgdir}/usr/share/man/man1/"
-  install -m644 -D "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 -D "${murmur}/man/murmurd.1" "${pkgdir}/usr/share/man/man1/"
+  install -m644 -D "${murmur}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   sed -e "s|database=|database=/var/lib/murmur/murmur.sqlite|" \
       -e "s|;logfile=murmur.log|logfile=/var/log/murmur/murmur.log|" \
