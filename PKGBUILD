@@ -29,7 +29,7 @@ depends=(${ros_depends[@]}
 
 _tag=release/kinetic/stage/${pkgver}-${_pkgver_patch}
 _dir=stage
-source=("${_dir}"::"git+https://github.com/majorx234/stage.git")
+source=("${_dir}"::"git+https://github.com/rtv/Stage.git")
 md5sums=('SKIP')
 
 #prepare() {
@@ -60,8 +60,7 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DROSBUILD:BOOL=true
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
 
