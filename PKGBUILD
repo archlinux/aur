@@ -3,7 +3,7 @@
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.1.0+rc2+1084+gc03d5cc664
+pkgver=1.1.0+rc2+1217+g0b52c33427
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -21,7 +21,8 @@ pkgver() {
 }
 
 prepare() {
-  cp -r tensorflow tensorflow-cuda
+  [ -d ${srcdir}/tensoflow-cuda ] && rm -rf ${srcdir}/tensorflflow-cuda
+  cp -r ${srcdir}/tensorflow ${srcdir}/tensorflow-cuda
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
