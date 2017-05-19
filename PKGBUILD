@@ -4,8 +4,8 @@ pkgdesc="ROS - Mobile robot simulator http://rtv.github.com/Stage."
 url='http://rtv.github.com/Stage'
 
 pkgname='ros-kinetic-stage'
-pkgver='4.1.1'
-_pkgver_patch=8
+pkgver='4.3.0'
+_pkgver_patch=0
 arch=('any')
 pkgrel=10
 license=('GPL')
