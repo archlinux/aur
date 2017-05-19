@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-git
-pkgver=r280.345fa60
+pkgver=r286.89956c5
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
          'libgala.so' 'libgranite.so')
-makedepends=('cmake' 'gala-bzr' 'git' 'granite-git' 'vala')
+makedepends=('cmake' 'gala-git' 'git' 'granite-git' 'vala')
 provides=('wingpanel' 'libwingpanel-2.0.so')
 conflicts=('wingpanel')
 replaces=('wingpanel-bzr')
