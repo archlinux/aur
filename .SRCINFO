@@ -1,0 +1,20 @@
+pkgbase = avhttp-git
+	pkgdesc = Concurrent http downloader
+	pkgver = r887.f9d6e36
+	pkgrel = 1
+	url = http://avplayer.org/avhttp.html
+	arch = any
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	optdepends = zlib: gzip support
+	optdepends = openssl: https support
+	provides = avhttp
+	conflicts = avhttp
+	source = git+https://github.com/avplayer/avhttp.git
+	sha256sums = SKIP
+
+pkgname = avhttp-git
+
