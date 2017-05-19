@@ -3,7 +3,7 @@ pkgname=meilix-systemlock
 pkgver=1
 pkgrel=1
 
-pkgdesc="Melix System Lock"
+pkgdesc="Meilix System Lock"
 arch=('i686' 'x86_64')
 url="https://github.com/fossasia/meilix-systemlock"
 license=('GPLv3')
