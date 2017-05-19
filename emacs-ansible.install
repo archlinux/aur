@@ -1,0 +1,31 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'ansible)
+(add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
+
+==> Set the path to your vault password file ("~/vault_pass" by default):
+
+(setq ansible::vault-password-file "path/to/pwd/file")
+
+==> Optionally, use the following to auto decrypt/encrypt vault files:
+
+(add-hook 'ansible-hook 'ansible::auto-decrypt-encrypt)
+
+==> Or do the above with use-package:
+
+(use-package ansible
+  :config
+  (add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
+  (setq ansible::vault-password-file "path/to/pwd/file") ; If not in the default location
+(add-hook 'ansible-hook 'ansible::auto-decrypt-encrypt)) ; For auto de/encryption
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
