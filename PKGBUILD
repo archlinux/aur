@@ -5,7 +5,7 @@
 
 set -u
 pkgname='pmacct'
-pkgver='1.6.1'
+pkgver='1.6.2'
 pkgrel='1'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("${url}${pkgname}-${pkgver}.tar.gz"
         'nfacctd.rc.d' \
         'sfacctd.rc.d' \
         'uacctd.rc.d')
-sha256sums=('eb332a6812d1e02134900a1d115a24f315de7c861a9b63093c1226753486cbe7'
+sha256sums=('e6ede7f500fb1771b5cdfb63dfa016e34c19b8aa2d2f672bd4c63016a5d6bbe2'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
@@ -26,22 +26,22 @@ sha256sums=('eb332a6812d1e02134900a1d115a24f315de7c861a9b63093c1226753486cbe7'
 
 prepare() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix='/usr' --mandir='/usr/share/man' --sbindir='/usr/bin' --enable-ipv6 --enable-mysql --enable-pgsql --enable-sqlite3 --enable-64bit --enable-threads
   set +u
 }
 
 build() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}"
   set +u
 }
 
 package() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   mkdir -p "${pkgdir}/etc/pmacct/examples" "${pkgdir}/usr/share/pmacct"/{mysql,pgsql,sqlite3,sh} "${pkgdir}/usr/share/doc/pmacct"
