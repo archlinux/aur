@@ -1,0 +1,18 @@
+post_install()
+{
+  _alert
+}
+
+post_upgrade()
+{
+  _alert
+}
+
+_alert()
+{
+fold -s - << EOF
+To execute bashblog, run /usr/bin/bb
+The documentation is located in:
+/usr/share/bashblog/README.md
+EOF
+}
