@@ -3,37 +3,21 @@
 
 pkgname=mingw-w64-wxmsw
 epoch=1
-pkgver=3.0.2
-pkgrel=4
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="Win32 implementation of wxWidgets API for GUI (mingw-w64)"
 arch=(any)
-url="http://wxwidgets.org"
+url="https://wxwidgets.org"
 license=("custom:wxWindows")
 makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-expat mingw-w64-libpng mingw-w64-libjpeg-turbo mingw-w64-libtiff)
 options=(staticlibs !strip !buildflags)
 conflicts=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 provides=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
-source=(
-  "http://downloads.sourceforge.net/wxwindows/wxWidgets-${pkgver}.tar.bz2"
-  'PR222.patch' # https://github.com/wxWidgets/wxWidgets/pull/222
-  'wxWidgets-3.0.2-msw-dc-orientation-fix.patch'
-)
-sha256sums=('346879dc554f3ab8d6da2704f651ecb504a22e9d31c17ef5449b129ed711585d'
-            'aa13c5ce05e9cadea464d09c7a49de51f66db6c3f1871edc533230a51948ee0f'
-            '12f9f474aceb39e5e978e5abbd4288a0ab62d1bcd2ea4a1899c0641fbee8abe1')
+source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
+sha256sums=('08c8033f48ec1b23520f036cde37b5ae925a6a65f137ded665633ca159b9307b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "${srcdir}/wxWidgets-${pkgver}/"
-
-  # fix errors with GCC 6
-  patch -p1 -i "${srcdir}/PR222.patch"
-
-  # fix wxDC orientation (#16908)
-  patch -p1 -i "${srcdir}/wxWidgets-3.0.2-msw-dc-orientation-fix.patch"
-}
 
 build() {
   local _build_flags="\
