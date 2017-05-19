@@ -1,6 +1,6 @@
 pkgbase = google-chrome-beta
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Beta Channel)
-	pkgver = 59.0.3071.47
+	pkgver = 59.0.3071.61
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome-beta.install
@@ -21,10 +21,10 @@ pkgbase = google-chrome-beta
 	provides = google-chrome
 	options = !emptydirs
 	options = !strip
-	source = google-chrome-beta_59.0.3071.47_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
+	source = google-chrome-beta_59.0.3071.61_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
 	source = https://www.google.com/chrome/browser/privacy/eula_text.html
 	source = google-chrome-beta.sh
-	md5sums = 248b0eb90801454824f05d3b03dc0ccf
+	md5sums = fc3fb6b6bc1625983fe5a4519a9f9e90
 	md5sums = SKIP
 	md5sums = ca16d5162eed85b1ba4e6b9fc37f9e35
 
