@@ -5,7 +5,7 @@
 
 set -u
 pkgname='shc'
-pkgver='3.9.3'
+pkgver='3.9.4'
 pkgrel='1'
 pkgdesc='Converts shell script to C source code, and then compiles it. Do NOT use this to encrypt your scripts as it is not meant to be used for that.'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz"
   'disableencryption.diff'
 )
-sha256sums=('b7120f66177a35af7dc42763a55e7ade3a80043c0188739e57bcc648a5ac4bb3'
+sha256sums=('6012301d8708c80702976930988b36c40a2d2194bf6a0398762dd080372f7fec'
             '08f9ae1e3fdb2b2f86f9d96257930158fbaa302d3e0d71eadbc5e246fc01150d')
 
 if [ "$(vercmp "${pkgver}" '3.9.0')" -lt 0 ]; then
@@ -51,7 +51,7 @@ else
 # diff -c3 src/shc.c.orig src/shc.c > ../../disableencryption.diff
 prepare() {
   cd "${pkgname}-${pkgver}"
-  # patch -p0 -c < '../disableencryption.diff'
+  patch -p0 -c < '../disableencryption.diff'
   ./configure --prefix='/usr/'
 }
 
