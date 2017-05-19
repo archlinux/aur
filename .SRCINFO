@@ -1,0 +1,18 @@
+pkgbase = ttf-ddc-uchen
+	pkgdesc = DDC Uchen is a font designed by Chris Fynn for the Dzongkha Development Commission.
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://sites.google.com/site/chrisfynn2/home/fonts/ddc-uchen
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	provides = ttf-ddc-uchen-ib
+	source = http://www.dzongkha.gov.bt/IT/download/fonts/DDC_Uchen.ttf
+	source = 40-ddc-uchen.conf
+	source = 90-tt-ddc-uchen.conf
+	sha1sums = 82b6129f846419503a69e969fbd442949fa949ba
+	sha1sums = 0d6041afb31037dc71bb4085c58cb0e30ce6da3e
+	sha1sums = 0baa6a003a18c67305e06757587faa17dabfa997
+
+pkgname = ttf-ddc-uchen
+
