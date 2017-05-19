@@ -4,13 +4,13 @@
 pkgname=corosync-git
 _pkgname=corosync
 pkgver=2.4.2.r27.gd87bc9d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
 license=('BSD')
 makedepends=('git')
-depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb')
+depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb-git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("$pkgname::git+https://github.com/corosync/${_pkgname}.git#branch=needle")
