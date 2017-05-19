@@ -1,36 +1,35 @@
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: Konstantinos Foutzopoulos <mail@konfou.xyz>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
-pkgname=jumanji-git
-pkgver=r466.de4c6c3
+_pkgname=jumanji
+pkgname=${_pkgname}-git
+pkgver=r468.6f45380
 pkgrel=1
-pkgdesc="a web browser"
-arch=('i686' 'x86_64')
-url="http://pwmt.org/projects/jumanji"
+pkgdesc="A highly customizable and functional web browser."
+arch=('x86_64' 'i686')
+url="https://pwmt.org/projects/jumanji"
 license=('custom')
-depends=('girara' 'webkitgtk' 'libsoup>=2.36.1' 'sqlite3')
+depends=('girara' 'webkitgtk')
 makedepends=('git')
-conflicts=('jumanji')
-provides=('jumanji')
-source=('jumanji::git+https://git.pwmt.org/pwmt/jumanji.git#branch=develop')
-md5sums=('SKIP')
-_repo=jumanji
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://git.pwmt.org/pwmt/${_pkgname}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir/$_repo"
-
+  cd ${_pkgname}
   CFLAGS+=" -O0" make
 }
 
 package() {
-  cd "$srcdir/$_repo"
-
-  make DESTDIR="$pkgdir/" install
-  install -D -m664 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-pkgver() {
-  cd "$srcdir/$_repo"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_pkgname}
+  make DESTDIR="${pkgdir}" install
+  install -Dm664 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
