@@ -16,6 +16,7 @@ build() {
 	cd "$srcdir/VTK"
 	sed -i '/^.*VERSION_GREATER 4\.2\.0 AND BUILD_SHARED_LIBS/{:b;$!N;/endif\(\)/!bb;s/.*/  set(VTK_ABI_CXX_FLAGS "-fvisibility=hidden -fvisibility-inlines-hidden")/}' CMake/vtkCompilerExtras.cmake
 	sed -i 's/self->RW = ckalloc/self->RW = (char *) ckalloc/g' Rendering/vtkTkRenderWidget.cxx
+	sed -i 's/"Linux-.*"/"Linux"/g' Utilities/vtkhdf5/ConfigureChecks.cmake
 	mkdir -p build
 	cd build
 	cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON -DVTK_WRAP_PYTHON=ON -DVTK_USE_QT=ON -DCMAKE_CXX_FLAGS="-DGLX_GLXEXT_LEGACY -std=c++98 -w" ..
