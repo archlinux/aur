@@ -43,8 +43,8 @@ _use_current=
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcname=linux-4.10
-pkgver=4.10.16
+_srcname=linux-4.11
+pkgver=4.11.1
 pkgrel=1
 _ckpatchversion=1
 arch=('i686' 'x86_64')
@@ -52,13 +52,13 @@ url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchname="patch-4.10-ck${_ckpatchversion}"
+_ckpatchname="patch-4.11-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "http://ck.kolivas.org/patches/4.0/4.10/4.10-ck${_ckpatchversion}/${_ckpatchname}.xz"
+        "http://ck.kolivas.org/patches/4.0/4.11/4.11-ck${_ckpatchversion}/${_ckpatchname}.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
         'config.i686' 'config.x86_64'
@@ -67,14 +67,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         )
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '3bbd1da3133e544983caa269887c3515e19229b2ea4990d75695b5ca16d46c59'
+            '0d96845b0f1bbe47a62659f48367948c4e747f995694927aa309e0e5e1556949'
             'SKIP'
-            '1913eeb921bbef3733b53f4004a3013289fa85a26409610bb14fcff3bbd7ef72'
+            'd5903ed77b33984720e2178d34f8db287f6c274b7f1a30b4f28306b71a0bc3f1'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            'e8a261e73c85fc63e21d05c61f869c01828d70d3d9cf8c8af6085cc48763a402'
-            '717357d8517aa0b5447c93ac97f44fc70ef41c17510b1441cf848389882f53aa'
+            '8ca27ec108db63cbd8f8f90d6213587b7273fe0d75dbdbc27c13f3235162d5fb'
+            '87f076ed5a18ec584ae5f55c3c2f8c44af8672e4396858dd6ab190517bcb69b0'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -189,8 +189,8 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.152"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.152"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.155"
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.155"
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
