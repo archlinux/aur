@@ -10,7 +10,6 @@ depends=('python2')
 optdepends=('python2-lxml: faster result processing')
 conflicts=('nzbhydra-git')
 install='nzbhydra.install'
-provides=('nzbhydra')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theotherp/nzbhydra/archive/$pkgver.tar.gz"
         'nzbhydra.sh'
         'nzbhydra.service'
