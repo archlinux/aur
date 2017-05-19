@@ -7,7 +7,7 @@
 
 pkgbase=ppsspp-git
 pkgname=('ppsspp-git' 'ppsspp-headless-git' 'ppsspp-qt-git')
-pkgver=1.4.r48.f66e54c4c
+pkgver=1.4.r255.66dc0ea62
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
@@ -35,9 +35,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '873d63c6ef9acdf7121f4bcc4cb849bb8a006abc508c403786c24ebd500e0eec'
-            '5c168ae19d19059095101e5ff587d5b107b16d070721541f765d002e15d89ed4'
-            'e14964ec3a931d10ed71a88316735f4c47ac7fd62f346973e0c9a0d0a2ff6cab'
+            '2c2d1ee6d1ce5c2acec372d58b8079885f6d5d674633cfea489cd550252a5426'
+            '1236ce000bb670ee2c0e0645c3d55f4d8c8e74dbc35a1af0962a3bdd7608f1c5'
+            '828b06aacc56672a4d953d77342717c5be414a68261025f74e466abd084b8e6b'
             '1c332702d0aeced07df7e12ba8530bc3f19a52bc76c355f6c84c141becfd46d8'
             'b3b1fb9e0ecd3c4472b51f27d028a69514b1a3823c26e33da6ffaebfb1522b7f'
             '6694643d96dae673f01555637139468eb277f3379afbcceccad3f7e0ae670278')
