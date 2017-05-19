@@ -3,14 +3,16 @@
 _pkgname=dingo
 pkgname=${_pkgname}-git
 pkgver=0.13.r2.g42078d5
-pkgrel=1
+pkgrel=2
 pkgdesc='A DNS client in Go that supports Google DNS over HTTPS'
+provides=('dingo')
+conflicts=('dingo')
 arch=('i686' 'x86_64')
 license=('unknown')
 makedepends=('go' 'git')
 url='https://github.com/pforemski/dingo'
 _gopkg=github.com/pforemski
-source=(${_pkgname}::"git+https://${_gopkg}/${_pkgname}.git#branch=master"
+source=("git+https://${_gopkg}/${_pkgname}.git#branch=master"
        dingo.config
        dingo.service)
 sha256sums=('SKIP'
