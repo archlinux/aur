@@ -1,0 +1,16 @@
+pkgbase = manageyum-bin
+	pkgdesc = Desktop application that enables you to use your online services from one app
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://manageyum.com/
+	arch = x86_64
+	license = custom
+	source = manageyum-bin.desktop
+	source = manageyum-bin.png
+	md5sums = cb79fc22fb1a5feb03ed3cc0d07e1697
+	md5sums = 1f479cf1fa50475e1f3611cef73d0a4c
+	source_x86_64 = https://github.com/sivaramsi/manageyum/releases/download/v2.0/manageyum-2.0.0-linux-x64.tar.gz
+	md5sums_x86_64 = 2f0600fb4f7d9b3b4e5fd647ada41974
+
+pkgname = manageyum-bin
+

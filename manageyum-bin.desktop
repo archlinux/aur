@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=Desktop application that enables you to use your online services from one app
+Name=Manageyum
+Exec=/opt/manageyum-bin/Manageyum %F
+Icon=manageyum-bin
+StartupNotify=false
+Terminal=false
+Categories=Network;
+Type=Application
+
