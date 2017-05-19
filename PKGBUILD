@@ -20,16 +20,9 @@ sha512sums=('c927c66d3aba0bf25942d5531eff08da1eaf24907d7695ff2329929b2074b002eea
 
 package() {
   cd "$srcdir"
-
   install -d -m 755 "${pkgdir}/var/lib/ubooquity"
-
-  msg2 "Install ubooquity in /usr/lib"
   install -d -m 755 "${pkgdir}/usr/lib/ubooquity"
   cp -dpr --no-preserve=ownership "${srcdir}/Ubooquity.jar" "${pkgdir}/usr/lib/ubooquity"
-
-  msg2 "Install ubooquity.service"
   install -D -m 644 "${srcdir}/ubooquity.service" "${pkgdir}/usr/lib/systemd/system/ubooquity.service"
-
-  msg2 "Install ubooquity sysusers.d"
   install -Dm644 "$srcdir/ubooquity.sysusers" "$pkgdir/usr/lib/sysusers.d/ubooquity.conf"
 }
