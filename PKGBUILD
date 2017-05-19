@@ -1,7 +1,7 @@
 # Maintainer: Kyle Fuller <kyle@fuller.li>
 
 pkgname=drafter
-pkgver=3.1.3
+pkgver=3.2.6
 pkgrel=1
 pkgdesc='API Blueprint Parser'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gcc-libs')
 makedepends=('python2')
 source=("https://github.com/apiaryio/drafter/releases/download/v$pkgver/drafter-v$pkgver.tar.gz")
-sha1sums=('4e8b7d9af5e701dbd5b1875d9acbf8887f58b79d')
+sha1sums=('28b39a73627f0ea934cc9229a8abc3c80fadfe13')
 
 build() {
   cd "${srcdir}/drafter-v${pkgver}"
