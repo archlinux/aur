@@ -24,37 +24,26 @@ sha256sums=('2e37248acf0ca15fb864ce71081c22b9ff323414163acc9039da5417c42d1cc9'
 
 check() {
     if ! [[ -x $( which java ) ]]; then
-        msg2 "Could not find java, please use archlinux-java to select a default."
+        echo "Could not find java, please use archlinux-java to select a default."
         exit 1
     fi
 }
 
 package() {
-    msg2 "Extracting unifi-video..."
     tar xf "${srcdir}/data.tar.gz" -C "${pkgdir}"/
-
-    msg2 "Removing unwanted /etc with init.d script and sudoers file..."
     rm -r "${pkgdir}/etc"
-
-    msg2 "Moving /usr/sbin -> /usr/bin..."
     mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
-
-    msg2 "Making files executable..."
     chmod +x ${pkgdir}/usr/bin/unifi-video ${pkgdir}/usr/lib/unifi-video/bin/ubnt.* ${pkgdir}/usr/lib/unifi-video/bin/evo*
 
-    msg2 "Patching out ulimit..."
     cd "${pkgdir}/usr/bin"
     patch -N < "${srcdir}/unifi-video.patch"
 
-    msg2 "Patching off compression..."
     cd "${pkgdir}/usr/lib/unifi-video/conf"
     patch -N < "${srcdir}/server.xml.patch"
 
-    msg2 "Installing systemd files..."
     install -D -m 644 "${srcdir}/unifi-video.service" "${pkgdir}/usr/lib/systemd/system/unifi-video.service"
     install -D -m 644 "${srcdir}/unifi-video.sysusers" "${pkgdir}/usr/lib/sysusers.d/unifi-video.conf"
 
-    msg2 "Creating directories..."
     mkdir -p "${pkgdir}/usr/lib/unifi-video/logs" "${pkgdir}/usr/lib/unifi-video/work"
 }
 
