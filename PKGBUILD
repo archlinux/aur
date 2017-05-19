@@ -11,7 +11,7 @@ depends=('java-runtime-headless' 'net-tools' 'bash')
 install="$pkgname.install"
 source=("jfrog-artifactory-oss-${pkgver}.zip::https://bintray.com/jfrog/artifactory/download_file?file_path=jfrog-artifactory-oss-${pkgver}.zip"
         'artifactory.service'
-		'artifactory.conf'
+        'artifactory.conf'
         'artifactory.default')
 sha256sums=('7ede1581dde6d45bd766eec9881e9b2927bf084ca4ae9804352a2fa9d95e08bd'
             '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
