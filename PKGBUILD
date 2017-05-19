@@ -1,16 +1,18 @@
 pkgname=mingw-w64-kwindowsystem
-pkgver=5.33.0
+pkgver=5.34.0
 pkgrel=1
 arch=(any)
 pkgdesc="Access to the windowing system (mingw-w64)"
 license=("LGPL")
 depends=(mingw-w64-qt5-winextras)
 groups=(mingw-w64-kf5)
-makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
+makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
-url="https://projects.kde.org/projects/frameworks/kwindowsystem"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kwindowsystem-${pkgver}.tar.xz")
-md5sums=('3ebf401edb58802e0aa8c045d8423371')
+url="https://community.kde.org/Frameworks"
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kwindowsystem-${pkgver}.tar.xz"{,.sig})
+sha256sums=('035190f599d7ff5718b2254dd9cb4100a22f69cd1e8bdb60dd2970e8d4e9e2ea'
+            'SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
