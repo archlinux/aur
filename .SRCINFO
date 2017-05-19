@@ -1,0 +1,22 @@
+pkgbase = dingo
+	pkgdesc = A DNS client in Go that supports Google DNS over HTTPS
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://github.com/pforemski/dingo
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	makedepends = git
+	provides = dingo
+	conflicts = dingo-git
+	backup = etc/dingo
+	source = git://github.com/pforemski/dingo.git#tag=0.13
+	source = dingo.config
+	source = dingo.service
+	sha256sums = SKIP
+	sha256sums = b550726b87687f0dc659d0d3eb2eb1e2448d0bf556743992d853de572675fefd
+	sha256sums = c84e727bb76af4c7a8d88014de5992e6a6bf056aa5be4654d96b1229df55984c
+
+pkgname = dingo
+

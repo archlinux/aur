@@ -1,0 +1,11 @@
+[Unit]
+Description=dingo
+Wants=network.target
+Before=network.target
+
+[Service]
+EnvironmentFile=/etc/dingo
+ExecStart=/usr/bin/dingo $ARGS
+
+[Install]
+WantedBy=multi-user.target
