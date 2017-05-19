@@ -1,14 +1,14 @@
 # Maintainer: Tom Moore <t.moore01@gmail.com>
 # Contributor: ReNoM <renom@list.ru>
 
-# If you need the bundle, google VMware-ClientIntegrationPlugin-6.0.0.x86_64.bundle
+# If you need the bundle, google VMware-ClientIntegrationPlugin-6.2.0.x86_64.bundle
 #
 # PS - This is suck a hack
 
 pkgname=vmware-vsphere-web-client-plugin
-pkgver=6.0.0
-pkgrel=2
-pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client. For make package, place VMware-ClientIntegrationPlugin-6.0.0.{your_arch}.bundle to PKGBUILD directory."
+pkgver=6.2.0
+pkgrel=1
+pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client. For make package, place VMware-ClientIntegrationPlugin-6.2.0.{your_arch}.bundle to PKGBUILD directory."
 arch=('i686' 'x86_64')
 url="http://www.vmware.com/"
 license=('custom:vmware')
@@ -18,7 +18,7 @@ optdepends=(
 'freshplayerplugin-git: for Mozilla Firefox PPAPI based Flash Player support'
 'flash'
 )
-majverf=6.0.0
+majverf=6.2.0
 majver=60
 majverdot=6.0
 minvmrcver=1886719
@@ -61,14 +61,14 @@ package ()
         mkdir -p etc/vmware-vmrc/${vmrcver}
         echo "libdir = \"/usr/lib/vmware-vmrc/${vmrcver}\"" > etc/vmware-vmrc/${vmrcver}/config
         # install cip
-        install ${srcdir}/files/vmware-cip-60/npVMwareClientSupportPlugin-6-0-0.so "usr/lib/vmware-cip/${majverdot}/"
+        install ${srcdir}/files/vmware-cip-60/npVMwareClientSupportPlugin-6-2-0.so "usr/lib/vmware-cip/${majverdot}/"
         mv "$srcdir/files/vmware-cip-${majver}/artwork" "usr/lib/vmware-cip/${majverdot}/"
         mv "$srcdir/files/vmware-cip-${majver}/filetransfer" "usr/lib/vmware-cip/${majverdot}/"
         chmod +x "usr/lib/vmware-cip/${majverdot}/filetransfer/fileTransfer"
         mv "$srcdir/files/vmware-cip-${majver}/ovftool" "usr/lib/vmware-cip/${majverdot}/"
         chmod +x "usr/lib/vmware-cip/${majverdot}/ovftool/ovftool"
         chmod +x "usr/lib/vmware-cip/${majverdot}/ovftool/ovftool.bin"
-        ln -s "/usr/lib/vmware-cip/${majverdot}/npVMwareClientSupportPlugin-6-0-0.so" "usr/lib/mozilla/plugins/npVMwareClientSupportPlugin-6-0-0.so"
+        ln -s "/usr/lib/vmware-cip/${majverdot}/npVMwareClientSupportPlugin-6-2-0.so" "usr/lib/mozilla/plugins/npVMwareClientSupportPlugin-6-2-0.so"
         # install vmrc
         install "$srcdir/files/vmware-vmrc-${vmrcver}/np-vmware-vmrc-${vmrcverdot}-${minvmrcver}-32.so" "usr/lib/vmware-vmrc/${vmrcver}/"
         install "$srcdir/files/vmware-vmrc-${vmrcver}/np-vmware-vmrc-${vmrcverdot}-${minvmrcver}-64.so" "usr/lib/vmware-vmrc/${vmrcver}/"
@@ -90,4 +90,4 @@ package ()
         ln -s /usr/lib/vmware-vmrc/${vmrcver}/bin/vmware-vmrc usr/lib/vmware-vmrc/${vmrcver}/vmware-vmrc
         ln -s /usr/lib/vmware-vmrc/${vmrcver}/bin/vmware-vmrc-daemon usr/lib/vmware-vmrc/${vmrcver}/vmware-vmrc-daemon
 }
-sha256sums=('7ebec5d79aa9006c1aacf5413dce96ffb61154823b4700e132f044a80fc374c8')
+sha256sums=('548e54f2caa085906125eab6908a1900dd6f96dad6674f0a8a37d6b0f405005b')
