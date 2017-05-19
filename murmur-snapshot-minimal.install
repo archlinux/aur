@@ -1,0 +1,16 @@
+post_install() {
+	getent group murmur > /dev/null || groupadd murmur
+	getent passwd murmur > /dev/null || useradd -g murmur -s /bin/false -d /nonexistent murmur
+
+	mkdir -p /var/lib/murmur /var/log/murmur /run/murmur
+	chown murmur:murmur /var/lib/murmur /var/log/murmur /run/murmur
+	chown -R root:murmur /etc/murmur
+	chmod 750 /var/lib/murmur /var/log/murmur
+	chmod 755 /run/murmur
+}
+
+post_remove() {
+	if [ -d /run/murmur ]; then
+		rm -r /run/murmur
+	fi
+}

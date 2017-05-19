@@ -1,0 +1,17 @@
+[Unit]
+Description=Mumble Daemon
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/murmur/murmur.pid
+ExecStart=/usr/bin/murmurd -ini /etc/murmur/murmur.ini
+User=murmur
+Group=murmur
+PrivateDevices=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
