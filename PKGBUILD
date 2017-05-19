@@ -7,9 +7,9 @@
 
 pkgname=vmware-vsphere-web-client-plugin
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client. For make package, place VMware-ClientIntegrationPlugin-6.2.0.{your_arch}.bundle to PKGBUILD directory."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.vmware.com/"
 license=('custom:vmware')
 depends=(mozilla-common)
@@ -21,14 +21,13 @@ optdepends=(
 majverf=6.2.0
 majver=60
 majverdot=6.0
-minvmrcver=1886719
+minvmrcver=3698060
 vmrcver=5.5
-vmrcverdot=5.5.0
+vmrcverdot=5.5.1
+bundle_arch=x86_64 
+larch=64
+source=("http://vsphereclient.vmware.com/vsphereclient/4/2/7/4/6/6/6/VMware-ClientIntegrationPlugin-6.2.0.x86_64.bundle")
 
-[ "$CARCH" == "i686" ] && source=(VMware-ClientIntegrationPlugin-${majverf}.i386.bundle) && bundle_arch=i386 && larch=32
-[ "$CARCH" == "x86_64" ] && source=(VMware-ClientIntegrationPlugin-${majverf}.x86_64.bundle) && bundle_arch=x86_64 && larch=64
-
-[ "$CARCH" == "i686" ] && sha256sums=('a174a1c7a3e0c46d92c44e3aa23a232d44cacdfd2201bd96876a8972824fb095')
 [ "$CARCH" == "x86_64" ] && sha256sums=('6f09173699c2e4ba30d101df55e8cfb89b9f73fff4e942b25fe5801f4778ed93')
 
 build() {
@@ -61,14 +60,12 @@ package ()
         mkdir -p etc/vmware-vmrc/${vmrcver}
         echo "libdir = \"/usr/lib/vmware-vmrc/${vmrcver}\"" > etc/vmware-vmrc/${vmrcver}/config
         # install cip
-        install ${srcdir}/files/vmware-cip-60/npVMwareClientSupportPlugin-6-2-0.so "usr/lib/vmware-cip/${majverdot}/"
+        install ${srcdir}/files/vmware-cip-60/npVMwareClientSupportPlugin-6-0-0.so "usr/lib/vmware-cip/${majverdot}/"
         mv "$srcdir/files/vmware-cip-${majver}/artwork" "usr/lib/vmware-cip/${majverdot}/"
-        mv "$srcdir/files/vmware-cip-${majver}/filetransfer" "usr/lib/vmware-cip/${majverdot}/"
-        chmod +x "usr/lib/vmware-cip/${majverdot}/filetransfer/fileTransfer"
         mv "$srcdir/files/vmware-cip-${majver}/ovftool" "usr/lib/vmware-cip/${majverdot}/"
         chmod +x "usr/lib/vmware-cip/${majverdot}/ovftool/ovftool"
         chmod +x "usr/lib/vmware-cip/${majverdot}/ovftool/ovftool.bin"
-        ln -s "/usr/lib/vmware-cip/${majverdot}/npVMwareClientSupportPlugin-6-2-0.so" "usr/lib/mozilla/plugins/npVMwareClientSupportPlugin-6-2-0.so"
+        ln -s "/usr/lib/vmware-cip/${majverdot}/npVMwareClientSupportPlugin-6-0-0.so" "usr/lib/mozilla/plugins/npVMwareClientSupportPlugin-6-0-0.so"
         # install vmrc
         install "$srcdir/files/vmware-vmrc-${vmrcver}/np-vmware-vmrc-${vmrcverdot}-${minvmrcver}-32.so" "usr/lib/vmware-vmrc/${vmrcver}/"
         install "$srcdir/files/vmware-vmrc-${vmrcver}/np-vmware-vmrc-${vmrcverdot}-${minvmrcver}-64.so" "usr/lib/vmware-vmrc/${vmrcver}/"
