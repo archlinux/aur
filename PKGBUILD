@@ -31,17 +31,11 @@ package() {
   cd "$srcdir"
 
   install -d -m 755 "${pkgdir}/var/lib/radarr"
-
-  msg2 "Install Radarr in /usr/lib"
   install -d -m 755 "${pkgdir}/usr/lib/radarr"
   cp -dpr --no-preserve=ownership "${srcdir}/Radarr/"* "${pkgdir}/usr/lib/radarr"
 
-  msg2 "Fixing permissions in /usr/lib/radarr/"
   find "${pkgdir}/usr/lib/radarr" -type f -exec chmod 644 '{}' ';'
 
-  msg2 "Install radarr.service"
   install -D -m 644 "${srcdir}/radarr.service" "${pkgdir}/usr/lib/systemd/system/radarr.service"
-
-  msg2 "Install radarr sysusers.d"
   install -Dm644 "$srcdir/radarr.sysusers" "$pkgdir/usr/lib/sysusers.d/radarr.conf"
 }
