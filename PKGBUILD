@@ -7,8 +7,8 @@
 
 pkgname=vmware-vsphere-web-client-plugin
 pkgver=6.2.0
-pkgrel=2
-pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client. For make package, place VMware-ClientIntegrationPlugin-6.2.0.{your_arch}.bundle to PKGBUILD directory."
+pkgrel=3
+pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client."
 arch=('x86_64')
 url="http://www.vmware.com/"
 license=('custom:vmware')
