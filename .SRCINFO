@@ -1,9 +1,10 @@
 pkgbase = kjieba
 	pkgdesc = DBus interface of libcppjieba && Chinese2Pinyin for KDE5
-	pkgver = 20161217
-	pkgrel = 2
+	pkgver = 20170519
+	pkgrel = 1
 	url = https://github.com/isoft-linux/kjieba
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = make
