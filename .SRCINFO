@@ -7,6 +7,7 @@ pkgbase = ksmoothdock
 	arch = x86_64
 	license = N/A
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = python
 	depends = qt5-base
 	depends = plasma-framework
