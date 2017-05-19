@@ -1,0 +1,18 @@
+pkgbase = gog-crawl
+	pkgdesc = The dungeon crawler where your friends control the monsters
+	pkgver = 2.1.0.2
+	pkgrel = 1
+	url = http://www.gog.com/game/crawl
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom:commercial
+	source = gog://gog_crawl_2.1.0.2.sh
+	source = gog-crawl.desktop
+	source = gog-crawl
+	sha512sums = 0d8ed03bcb4910d7af17d617323c34f586ffbc7995460c501f94afb042647e287f829685db428dabcde3a6b93f4a6b6afa417704d2029a832769a188affc2191
+	sha512sums = 869d0390da9a9f4b08aa6c80504183f4718d40c3c5906169e05bad05fb369a501fdbbfacfcb751ca3e8f19575993b55c07f6b2465c1616073d30e2b7a3125f7e
+	sha512sums = c2a442c2b39a1a44b248858ca6d8cdbb012a0a0b77d2e8d32d040abb7572faada797ed76a302a7fd40d0e9eac47cc0b045263a3f7dfe7c4b4660fb7ba686d283
+
+pkgname = gog-crawl
+

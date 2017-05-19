@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Crawl
+GenericName=Crawl
+Comment=The dungeon crawler where your friends control the monsters!
+Exec=gog-crawl
+Icon=gog-crawl
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
