@@ -1,0 +1,19 @@
+pkgbase = libbladerf-git
+	pkgdesc = Driver and userspace for the bladeRF SDR.
+	pkgver = 2016.06.r18.gc3eccc6d
+	pkgrel = 1
+	url = https://github.com/Nuand/bladeRF
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = help2man
+	makedepends = doxygen
+	depends = libusb
+	provides = bladerf
+	conflicts = bladerf
+	source = git+https://github.com/Nuand/bladeRF
+	md5sums = SKIP
+
+pkgname = libbladerf-git
+
