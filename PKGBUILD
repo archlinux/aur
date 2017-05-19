@@ -24,8 +24,6 @@ build() {
       INCLUDEPATH+="/usr/include/openssl-1.0" \
       QMAKE_LFLAGS+="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
 
-	exit 1
-
     make release
 }
 
