@@ -6,7 +6,7 @@
 pkgname=davinci-resolve
 _pkgname=resolve
 pkgver=12.5.5
-pkgrel=6
+pkgrel=7
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -84,10 +84,12 @@ EOF
 
 	msg2 "Making sure file ownership is 'correct'..."
 	chown -R root:root "${pkgdir}/opt"
-    chmod 0777 "${pkgdir}/opt/${_pkgname}/Media"
+	chmod 0777 "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Any final tweaks..."
 	ln -s /tmp "${pkgdir}/opt/${_pkgname}/logs"
 
 	msg2 "Done!"
 }
+
+# vim: fileencoding=utf-8 sts=4 sw=4 noet
