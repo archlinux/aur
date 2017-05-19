@@ -6,5 +6,6 @@
 !ChangeLog
 !*.diff
 !*.patch
+<<<<<<< HEAD
 !*.desktop
 !*.xml
