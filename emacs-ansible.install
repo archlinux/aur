@@ -20,8 +20,8 @@ cat << EOF
 (use-package ansible
   :config
   (add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
-  (setq ansible::vault-password-file "path/to/pwd/file") ; If not in the default location
-(add-hook 'ansible-hook 'ansible::auto-decrypt-encrypt)) ; For auto de/encryption
+  (setq ansible::vault-password-file "path/to/pwd/file")   ; If not in the default location
+  (add-hook 'ansible-hook 'ansible::auto-decrypt-encrypt)) ; For auto de/encryption
 
 EOF
 }
