@@ -7,7 +7,7 @@ pkgdesc='Bluetooth indicator for Wingpanel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-bluetooth'
 license=('GPL3')
-groups=('pantheon-unstable')
+groups=('pantheon')
 depends=('bluez' 'glib2' 'glibc' 'gtk3'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('bzr' 'cmake' 'vala' 'wingpanel')
