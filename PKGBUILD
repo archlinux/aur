@@ -5,7 +5,7 @@
 
 pkgname=pacemaker
 pkgver=1.1.16
-pkgrel=6
+pkgrel=7
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
@@ -13,6 +13,7 @@ license=('GPL2')
 makedepends=('libxml2' 'inkscape' 'help2man' 'asciidoc')
 depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'libesmtp'
          'corosync' 'libqb' 'resource-agents')
+install=${pkgname}.install
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
         'crm_report.in')
 md5sums=('a3b9d075bc9114ff698966e57e50bb12'
@@ -63,18 +64,18 @@ package() {
   install -dm755 "$pkgdir"/usr/lib/{tmpfiles.d,sysusers.d}
   install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   cat>"$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"<<-EOF
-		d /var/lib/pacemaker          0770 hacluster haclient
+		D /var/lib/pacemaker          0770 hacluster haclient
 		d /var/lib/pacemaker/blackbox 0770 hacluster haclient
 		d /var/lib/pacemaker/cib      0770 hacluster haclient
 		d /var/lib/pacemaker/cores    0770 hacluster haclient
 		d /var/lib/pacemaker/pengine  0770 hacluster haclient
 	EOF
-  install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF
-		u hacluster 389 "Cluster User"
-		g haclient - -
-		m hacluster haclient
-	EOF
+# install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+# cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF
+#		u hacluster 189 "Cluster User"
+#		g haclient 189 -
+#		m hacluster haclient
+#	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
   find "$pkgdir" -name '*.xml' -type f -print0 | xargs -0 chmod a-x
