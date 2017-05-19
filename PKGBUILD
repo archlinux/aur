@@ -2,32 +2,45 @@
 
 pkgname=libqb-git
 _pkgname=libqb
-pkgver=1.0.1.17.g75345a0
+pkgver=1.0.2.r0.g608de6d
 pkgrel=1
 pkgdesc='Library with the primary purpose of providing high performance client server reusable features'
-arch=("i686" "x86_64")
-depends=("glibc")
-makedepends=("git" "doxygen" "splint")
-license=('LGPL2.1')
-url=https://github.com/ClusterLabs/$_pkgname
-source=("${_pkgname}::git+https://github.com/ClusterLabs/libqb.git")
-sha256sums=('SKIP')
+arch=('i686' 'x86_64')
 provides=('libqb')
 conflicts=('libqb')
+depends=('glibc')
+makedepends=('git' 'doxygen' 'splint')
+license=('LGPL2.1')
+url="https://github.com/ClusterLabs/${_pkgname}"
+source=("${pkgname}::git+https://github.com/ClusterLabs/libqb.git")
+md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-  git describe --tags | sed -e 's:v::' -e 's/-/./g'
+  cd ${pkgname}
+  git describe --long --tags | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${pkgname}
+  echo "$pkgver"|sed 's,\.r,.,;s,\.g.*,,' >.tarball-version
+  mkdir -p m4
+  autoreconf -fiv
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  ./autogen.sh
-  ./configure --prefix=/usr --sbindir=/usr/bin --libdir=/usr/lib
-  make
+  cd ${pkgname}
+  ./configure \
+    --prefix=/usr \
+    --disable-fatal-warnings \
+    --disable-static \
+    --libdir=/usr/lib \
+    --sbindir=/usr/bin
+  make V=0
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir/" install
+  cd ${pkgname}
+  make DESTDIR="${pkgdir}" install
 }
+
+# vim: set et sw=2:
