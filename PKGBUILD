@@ -18,7 +18,7 @@ pkgver() {
 }
 
 
-depends=( "libpurple" "json-glib zlib" "discount>=2.1.7")
+depends=( "libpurple" "json-glib" "zlib" "discount>=2.1.7")
 
 build() {
    cd EionRobb-purple-rocketchat-22b606290368
