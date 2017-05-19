@@ -1,14 +1,14 @@
 pkgbase = hfsprescue-bin
 	pkgdesc = A program to recover hfs+ file systems
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://www.plop.at/en/hfsprescue/full.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = https://download.plop.at/hfsprescue/hfsprescue-3.2-precompiled.tar.gz
+	source = https://download.plop.at/hfsprescue/hfsprescue-3.3-precompiled.tar.gz
 	source = LICENSE
-	sha256sums = 83269af382db8ef7880f6c8aa4c3d1f960ea0a2d05571d1c8f182389cf6e6501
+	sha256sums = e59087d60800c683343179b2b53880f4a9987da59ea1f527436ec71b0793c9db
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
 
 pkgname = hfsprescue-bin

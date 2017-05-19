@@ -2,7 +2,7 @@
 
 pkgname=hfsprescue-bin
 _pkgname=hfsprescue
-pkgver="3.2"
+pkgver="3.3"
 pkgrel=1
 pkgdesc="A program to recover hfs+ file systems"
 url="https://www.plop.at/en/hfsprescue/full.html"
@@ -13,7 +13,7 @@ source=(
 "LICENSE"
 )
 sha256sums=(
-'83269af382db8ef7880f6c8aa4c3d1f960ea0a2d05571d1c8f182389cf6e6501'
+'e59087d60800c683343179b2b53880f4a9987da59ea1f527436ec71b0793c9db'
 '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
 )
 
