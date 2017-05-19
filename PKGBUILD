@@ -22,13 +22,6 @@ sha256sums=('cc30544cc7a9e690921c7964acbcb9b2a16b1abc8d0c028855c7c92cbe403066'
             '903c8def2668124570986f113fabf7ef03a1c94cde3a42dbf530ad6a19f139e7'
             '0636452a8e45a64f0adf108afbb5823921fb013b427eaf644d9bae0d97c27b93')
 
-check() {
-    if ! [[ -x $( which java ) ]]; then
-        echo "Could not find java, please use archlinux-java to select a default."
-        exit 1
-    fi
-}
-
 package() {
     tar xf "${srcdir}/data.tar.gz" -C "${pkgdir}"/
     rm -r "${pkgdir}/etc"
