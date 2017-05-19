@@ -1,6 +1,6 @@
---- unifi-video.orig	2017-01-23 10:36:51.077626710 -0800
-+++ unifi-video	2017-01-23 10:37:33.537399593 -0800
-@@ -251,7 +251,7 @@
+--- unifi-video.orig	2017-05-17 12:52:47.000000000 -0700
++++ unifi-video	2017-05-17 14:32:42.546545175 -0700
+@@ -260,7 +260,7 @@
  		 -Dcom.sun.management.jmxremote.authenticate=false \
  		 -Dcom.sun.management.jmxremote.port=${JVM_JMXREMOTE_PORT}"
  	[ -z "${JVM_JMXREMOTE_HOST}" ] && \
@@ -9,15 +9,15 @@
  	[ -z "${JVM_JMXREMOTE_HOST}" ] || \
  		JVM_OPTS="${JVM_OPTS} -Djava.rmi.server.hostname=${JVM_JMXREMOTE_HOST}"
  
-@@ -274,7 +274,6 @@
- case $ACTION in
+@@ -284,7 +284,6 @@
  	start)
- 		require_root
+ 	require_root
+     update_limits
 -        ulimit -H -c 200
          echo 0x10 > /proc/self/coredump_filter
  		if is_service_running "${PIDFILE}" >/dev/null; then
  			log_verbose "${NAME} is already running..."
-@@ -291,7 +290,6 @@
+@@ -303,7 +302,6 @@
  		;;
  	stop)
  		require_root
