@@ -1,0 +1,25 @@
+pre_install() {
+}
+
+post_install() {
+	getent group murmur > /dev/null || groupadd murmur
+	getent passwd murmur > /dev/null || useradd -g murmur -s /bin/false -d /nonexistent murmur
+
+	mkdir -p /var/lib/murmur /var/log/murmur /run/murmur
+	chown murmur:murmur /var/lib/murmur /var/log/murmur /run/murmur
+	chmod 750 /var/lib/murmur /var/log/murmur
+	chmod 755 /run/murmur
+}
+
+pre_upgrade() {
+}
+
+post_upgrade() {
+}
+
+pre_remove() {
+}
+
+post_remove() {
+}
+
