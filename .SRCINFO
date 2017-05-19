@@ -8,7 +8,7 @@ pkgbase = vpnoverdns-client
 	depends = perl-net-dns
 	provides = vpnoverdns-client
 	conflicts = vpnoverdns-client
-	source = https://www.vpnoverdns.com/vpnoverdns-client.pl
+	source = https://www.vpnoverdns.com/vpnoverdns.pl
 	sha256sums = 2f8c329cc200127dfefcc6fdf13bbb21e63a7f2e851ed1fe3219e76ab32fd909
 
 pkgname = vpnoverdns-client
