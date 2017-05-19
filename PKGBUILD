@@ -2,13 +2,13 @@
 
 pkgname=fsql-git
 pkgver=r45.db57e29
-pkgrel=1
+pkgrel=2
 pkgdesc='Search through your filesystem with SQL-esque queries'
 arch=('i686' 'x86_64')
 url='https://github.com/kshvmdn/fsql'
 license=('MIT')
 depends=(glibc)
-makedepends=(git)
+makedepends=(git go)
 source=('git+https://github.com/kshvmdn/fsql.git')
 _gitname='fsql'
 md5sums=(SKIP)
