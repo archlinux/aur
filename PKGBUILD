@@ -5,7 +5,7 @@
 
 pkgname=pacemaker
 pkgver=1.1.16
-pkgrel=3
+pkgrel=4
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
@@ -30,6 +30,7 @@ prepare() {
 build() {
   cd ${pkgname}-Pacemaker-${pkgver}
   ./configure \
+    CPPFLAGS= \
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --libdir=/usr/lib \
