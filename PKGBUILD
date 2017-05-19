@@ -17,7 +17,6 @@ optdepends=('sabnzbd: usenet downloader'
             'rtorrent: torrent downloader'
             'jackett: torrent indexer proxy')
 install='radarr.install'
-provides=('radarr')
 source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}/Radarr.develop.${pkgver}.linux.tar.gz"
         "radarr.service"
         "radarr.sysusers")
