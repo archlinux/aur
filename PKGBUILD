@@ -1,18 +1,20 @@
 pkgname=mingw-w64-sonnet
-pkgver=5.33.0
+pkgver=5.34.0
 pkgrel=1
 arch=(any)
 pkgdesc="Spelling framework for Qt5 (mingw-w64)"
 license=("LGPL")
 depends=(mingw-w64-qt5-base)
 groups=(mingw-w64-kf5)
-makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules mingw-w64-qt5-tools mingw-w64-aspell mingw-w64-hunspell "sonnet>=5.22.0")
+makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools mingw-w64-aspell mingw-w64-hunspell "sonnet>=5.22.0")
 optdepends=("mingw-w64-aspell: spell checking via aspell"
 "mingw-w64-hunspell: spell checking via hunspell")
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/sonnet-${pkgver}.tar.xz")
-md5sums=('9e93fb9e6072fdb8738d8618e1cbcd4f')
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/sonnet-${pkgver}.tar.xz"{,.sig})
+sha256sums=('7aa7342dddc351ee7c46a874498cb89fd96679a5b095d9f16cbe9c9511ccfd19'
+            'SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
