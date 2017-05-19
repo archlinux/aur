@@ -5,7 +5,7 @@
 
 pkgname=caddy-full-bin
 _realname=caddy
-pkgver=0.10.2
+pkgver=0.10.3
 ghpkgrel=''
 pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
@@ -16,15 +16,15 @@ provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 depends=('systemd>=229')
 makedepends=('patch')
-md5sums_i686=('9f131cd32f5b16259f72e877c107f3b4'
+md5sums_i686=('42fdd8ea44d81f81241df0feb092aba7'
               'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_x86_64=('36e9e01d0672cce987363d6c9fe3aa93'
+md5sums_x86_64=('e08e1d409e0fd7e2cb89bc4a9d01f42f'
                 'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_armv7h=('dd0353cedf76e186729e12b95bc4a0f4'
+md5sums_armv7h=('ffe827064025dd14f7a4d446edb44596'
                 'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_aarch64=('dd0353cedf76e186729e12b95bc4a0f4'
+md5sums_aarch64=('ffe827064025dd14f7a4d446edb44596'
                  'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_armv6h=('e0837ce6581b16e33d84bcaba91a6bfb'
+md5sums_armv6h=('d88e21777efdef2469c006e68542ea77'
                 'ce5f9e54ab24ce0598da6c909995be9a')
 install='caddy-full-bin.install'
 
