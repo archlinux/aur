@@ -7,8 +7,7 @@ pkgrel=1
 pkgdesc='OpenSCAD utility functions'
 url='https://github.com/openscad/scad-utils'
 license=(
- 'LGPL3+'
- 'CC0'
+ 'MIT'
 )
 source=(
  "git+https://github.com/openscad/scad-utils.git"
