@@ -1,0 +1,20 @@
+pkgbase = 0cc-famitracker
+	pkgdesc = Backward-compatible extension of FamiTracker that includes various bug fixes and new features.
+	pkgver = 0.3.14.5
+	pkgrel = 1
+	url = http://hertzdevil.info/programs/
+	arch = any
+	license = GPL
+	makedepends = p7zip
+	depends = wine
+	source = http://hertzdevil.info/programs/0CCft_v0314r5.7z
+	source = 0cc-famitracker
+	source = 0cc-famitracker.desktop
+	source = 0cc-famitracker.png
+	md5sums = 497d3c6507e71e02f21d642fe5bd94ba
+	md5sums = 3bc7f74aaf38ca5fa62ab08e524d3c3f
+	md5sums = a335ee1099cc35ae830954f548daf6fe
+	md5sums = f68aef841cc2692f1d6b47dae40da447
+
+pkgname = 0cc-famitracker
+

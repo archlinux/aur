@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=0CC-FamiTracker
+Comment=Backward-compatible extension of FamiTracker that includes various bug fixes and new features.
+Exec=0cc-famitracker
+Icon=0cc-famitracker
+Terminal=false
+StartupNotify=false
+Categories=Wine;AudioVideo;Audio;

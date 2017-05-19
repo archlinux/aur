@@ -1,0 +1,3 @@
+#!/bin/bash
+
+WINEDEBUG=-all wine /usr/share/0cc-famitracker/0CC-FamiTracker.exe "$@"
