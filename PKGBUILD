@@ -14,8 +14,10 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 install=murmur-snapshot-minimal.install
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
-        "murmur.service")
+        "murmur.service"
+        "murmur.logrotate")
 sha512sums=('18d0c2e8d0caeed1306429a367a2756260280a3bcc7ed8bac7c3a6e8b8938e6f13b65c83271f1411b948c50d20d7426aebaf14f271109df8c62209108157e374'
+            'SKIP'
             'SKIP')
 
 build() {
@@ -39,6 +41,7 @@ package() {
 
   install -m755 -D "${murmur}/release/murmurd_new" "${pkgdir}/usr/bin/murmurd" 
 
+  install -m644 -D "murmur.logrotate" "${pkgdir}/etc/logrotate.d/murmur"
   install -m644 -D "murmur.service" "${pkgdir}/usr/lib/systemd/system/murmur.service"
 
   install -m755 -d "${pkgdir}/usr/share/man/man1"
