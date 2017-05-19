@@ -34,6 +34,7 @@ depends=(
   dkms
   # needed to replace internal libs:
   fontconfig
+  freetype2
   zlib
 )
 optdepends=(
@@ -42,12 +43,20 @@ optdepends=(
 makedepends=(
   sqlite
 )
-backup=('etc/vmware/config')
+backup=(
+  'etc/vmware/config'
+  'etc/pam.d/vmware-authd'
+  'etc/vmware/hostd/config.xml'
+  'etc/vmware/hostd/datastores.xml'
+  'etc/vmware/hostd/environments.xml'
+  'etc/vmware/hostd/proxy.xml'
+)
 source=(
   "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${pkgver/_/-}.x86_64.bundle"
 
   'bootstrap'
   'config'
+  'pam.d-vmware-authd'
 
   'config.xml'
   'datastores.xml'
@@ -71,8 +80,9 @@ source=(
 sha256sums=(
   '60635d69b765dd50b38189bcb0842b6d3cddd20cf429b4d2238f6e6b5eb19bdc'
 
-  '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
-  'caa37259dec46da46c37e840368445dbe53a82ba9985c6a5ec987efca7813886'
+  '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
+  '5f640c641e72e0d1aedfbf0a82ae61d19ac1672cfa7078c36df51bccb84b26e3'
+  'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
 
   'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
   '04375658fed0cad4a18d5da1589d4dc1e5171753891ecaadd05f3c3e50c8156f'
@@ -80,7 +90,7 @@ sha256sums=(
   '3c802523606184a5e8ebbe931d9c6c70d83ff8c6833b9f48aa264f0bd5a18a88'
 
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
-  'b8027d87f2b2fed37edbbf781da9ae6963d788a655e72c1bb281b27eb1a09872'
+  'd1f9d6dccafee7a8fbc0bf9584e30babec1ddefca4b89973fb634276a8bd407f'
   'e3812b78158672c7d96b6a58877681462f3fbdfe99a948b32c80c755c8682450'
   'f9297948eba55fbaa6c9d1846b92070f27fda17afe78b41ed0e4c2eaa452b56c'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
@@ -189,7 +199,7 @@ package() {
 
   cp -r \
     vmware-workstation/bin/* \
-    vmware-vmx/bin/* \
+    vmware-vmx/{,s}bin/* \
     vmware-vix-core/bin/* \
     vmware-workstation-server/{vmware-hostd,vmware-vim-cmd,vmware-wssc-adminTool} \
     vmware-network-editor-ui/bin/* \
@@ -234,8 +244,6 @@ package() {
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 
-  mv "$pkgdir/usr/lib/vmware/licenses"/* "$pkgdir/usr/share/licenses/$pkgname"
-  rmdir "$pkgdir/usr/lib/vmware/licenses"
   mv "$pkgdir/usr/share/doc"/{EULA,*open_source_licenses.txt} "$pkgdir/usr/share/licenses/$pkgname"
 
   install -Dm 644 vmware-player-app/lib/isoimages/tools-key.pub "$pkgdir/usr/lib/vmware/isoimages/tools-key.pub"
@@ -246,6 +254,11 @@ package() {
   for hostd_file in config datastores environments proxy; do
     install -Dm 644 "$srcdir/$hostd_file.xml" "$pkgdir/etc/vmware/hostd/$hostd_file.xml"
   done
+
+  install -Dm 644 "$srcdir/pam.d-vmware-authd" "$pkgdir/etc/pam.d/vmware-authd"
+
+  mkdir -p "$pkgdir/usr/lib/modules-load.d"
+  echo -e "vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
 
   for service_file in \
     vmware-hostd-certificates.service \

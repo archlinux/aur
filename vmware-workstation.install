@@ -1,8 +1,18 @@
 post_install() {
   cat << EOF
 
-Before using VMware, you will need to enable some services.
-For example: systemctl enable --now vmware-hostd.service vmware-networks.service vmware-usbarbitrator.service
+==> Before using VMware, you may need to enable some services:
+- vmware-networks.service: to have network access in VMs
+- vmware-usbarbitrator.service: to use USB devices inside VMs
+- vmware-hostd.service: to start VMware as a server
+
+EOF
+}
+
+post_remove() {
+  cat << EOF
+
+==> To uninstall your VMware settings, remove /etc/vmware and /etc/vmware-installer directories.
 
 EOF
 }
