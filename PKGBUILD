@@ -5,20 +5,17 @@
 
 pkgname=pacemaker
 pkgver=1.1.16
-pkgrel=4
+pkgrel=6
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
 license=('GPL2')
-makedepends=('libxml2' 'inkscape')
-depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'corosync' 'libesmtp' 'libqb')
+makedepends=('libxml2' 'inkscape' 'help2man' 'asciidoc')
+depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'libesmtp'
+         'corosync' 'libqb' 'resource-agents')
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz"
-        'pacemaker.sysusers'
-        'pacemaker.tmpfiles'
         'crm_report.in')
 md5sums=('a3b9d075bc9114ff698966e57e50bb12'
-         'f21b93a2bb62d54b69b9bd4427201707'
-         '3339ef9d5124e722800b0aeda16f464c'
          '07f26ba3fff0749cc5bc5b4da154611d')
 
 prepare() {
@@ -64,8 +61,20 @@ package() {
   make DESTDIR="${pkgdir}" install
   cd "$srcdir"
   install -dm755 "$pkgdir"/usr/lib/{tmpfiles.d,sysusers.d}
-  install -Dm644 $pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  cat>"$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"<<-EOF
+		d /var/lib/pacemaker          0770 hacluster haclient
+		d /var/lib/pacemaker/blackbox 0770 hacluster haclient
+		d /var/lib/pacemaker/cib      0770 hacluster haclient
+		d /var/lib/pacemaker/cores    0770 hacluster haclient
+		d /var/lib/pacemaker/pengine  0770 hacluster haclient
+	EOF
+  install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF
+		u hacluster 389 "Cluster User"
+		g haclient - -
+		m hacluster haclient
+	EOF
   rm -fr "$pkgdir/var"
   chmod a+x "$pkgdir/usr/share/pacemaker/tests/cts/CTSlab.py"
   find "$pkgdir" -name '*.xml' -type f -print0 | xargs -0 chmod a-x
@@ -76,4 +85,4 @@ package() {
   install -Dm755 crm_report.in "$pkgdir/usr/bin/crm_report"
 }
 
-# vim: set sw=2 et:
+# vim: set sw=2 et ts=2:
