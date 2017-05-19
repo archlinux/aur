@@ -15,9 +15,15 @@ replaces=()
 backup=('etc/openfortivpn/config')
 options=()
 install=
-source=("git+https://github.com/adrienverge/$pkgname.git#tag=v$pkgver")
+source=("git+https://github.com/adrienverge/$pkgname.git#tag=v$pkgver" "allow-no-unused-functions.patch")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '4ce932a43c5b6e7241fb3e7ccc7a199f')
+
+prepare() {
+ cd "$srcdir/$pkgname"
+ patch -Np0 -i "${srcdir}/allow-no-unused-functions.patch"
+}
 
 build() {
 	cd "$srcdir/$pkgname"

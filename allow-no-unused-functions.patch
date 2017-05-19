@@ -1,0 +1,11 @@
+--- Makefile.am	2017-05-19 15:17:40.131425922 +0200
++++ Makefile.am.new	2017-05-19 15:17:34.131583469 +0200
+@@ -6,7 +6,7 @@
+ 		       src/ipv4.h src/log.c src/log.h src/tunnel.c \
+ 		       src/tunnel.h src/main.c src/ssl.h src/xml.c \
+ 		       src/xml.h src/userinput.c src/userinput.h
+-openfortivpn_CFLAGS = -Wall -Werror --pedantic -std=gnu99
++openfortivpn_CFLAGS = -Wall -Werror --pedantic -std=gnu99 -Wno-unused-function
+ 
+ confdir=$(sysconfdir)/openfortivpn
+ conf_DATA = etc/openfortivpn/config
