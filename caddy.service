@@ -7,6 +7,7 @@ After=network.target
 User=http
 Group=http
 Environment=CADDYPATH=/var/lib/caddy
+EnvironmentFile=-/etc/caddy/Envfile
 ExecStart=/usr/bin/caddy -log stdout -agree -conf /etc/caddy/Caddyfile -root /tmp
 ExecReload=/usr/bin/kill -USR1 $MAINPID
 LimitNOFILE=1048576

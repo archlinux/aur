@@ -8,8 +8,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-    systemctl --quiet --no-reload disable caddy.service
-    systemctl --quiet stop caddy.service
+    systemctl --quiet --no-reload disable --now caddy.service
 }
 
 post_remove() {
