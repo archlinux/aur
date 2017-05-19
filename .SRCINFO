@@ -2,7 +2,7 @@
 # Sat Mar  4 15:04:50 UTC 2017
 pkgbase = ulauncher-git
 	pkgdesc = Application launcher for Linux
-	pkgver = 2.0.14.r0.gbdf867f
+      	pkgver = 3.0.0    
 	pkgrel = 1
 	url = http://ulauncher.io
 	arch = any
