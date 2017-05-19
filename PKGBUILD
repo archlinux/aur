@@ -29,7 +29,6 @@ package() {
     install -d -m 755 "${pkgdir}/usr/lib/nzbhydra"
     cp -dpr --no-preserve=ownership "${srcdir}/nzbhydra-${pkgver}/"* "${pkgdir}/usr/lib/nzbhydra"
 
-    msg2 "Precompiling python files"
     python2 -m compileall -q "${pkgdir}/usr/lib/nzbhydra"
 
     install -D -m 755 "${srcdir}/nzbhydra.sh" "${pkgdir}/usr/bin/nzbhydra"
