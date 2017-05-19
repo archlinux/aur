@@ -2,7 +2,7 @@
 
 pkgname=libqb-git
 _pkgname=libqb
-pkgver=1.0.1.17.g75345a0
+pkgver=1.0.2.r0.g608de6d
 pkgrel=1
 pkgdesc='Library with the primary purpose of providing high performance client server reusable features'
 arch=("i686" "x86_64")
@@ -16,8 +16,8 @@ provides=('libqb')
 conflicts=('libqb')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-  git describe --tags | sed -e 's:v::' -e 's/-/./g'
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
