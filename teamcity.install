@@ -1,9 +1,6 @@
 post_install() {
-  echo "Creating user and group teamcity..."
-  getent group teamcity >/dev/null || groupadd -r teamcity >/dev/null
-  getent passwd teamcity >/dev/null || useradd -r -g teamcity -d /var/lib/teamcity -s /bin/bash teamcity >/dev/null
-  chown -R teamcity /opt/teamcity
-  chown -R teamcity /var/lib/teamcity
+  systemd-sysusers teamcity.conf
+  chown -R teamcity /opt/teamcity /var/lib/teamcity
   echo "If you want to use a different Java, set it in /etc/conf.d/teamcity"
   echo
   echo "To start Teamcity instance:"
@@ -11,14 +8,4 @@ post_install() {
   echo "  systemctl start teamcity-agent"
   echo
   echo "Default TeamCity port is 8111."
-}
-
-post_upgrade() {
-  true
-}
-
-post_remove() {
-  echo "Removing teamcity user and group..."
-  getent passwd teamcity >/dev/null && userdel teamcity >/dev/null
-  getent group teamcity >/dev/null && groupdel teamcity >/dev/null
 }
