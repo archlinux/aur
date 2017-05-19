@@ -7,7 +7,7 @@
 
 pkgname=vmware-vsphere-web-client-plugin
 pkgver=6.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client."
 arch=('x86_64')
 url="http://www.vmware.com/"
@@ -32,7 +32,7 @@ source=("http://vsphereclient.vmware.com/vsphereclient/4/2/7/4/6/6/6/VMware-Clie
 
 build() {
   cd "$srcdir"
-  sh ../VMware-ClientIntegrationPlugin-${majverf}.${bundle_arch}.bundle -x files
+  export GTK_PATH=/usr/lib/gtk-2.0; sh ../VMware-ClientIntegrationPlugin-${majverf}.${bundle_arch}.bundle -x files
 
   ##### Ported from files/vmware-installer/.installer/2.1.0/vmware-installer.py around line 186
   ### Thanks vmware for not updating vmrc to 6.0
