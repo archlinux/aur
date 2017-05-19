@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-cvs
-pkgver=5.1r20170515
+pkgver=5.1r20170518
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
@@ -14,15 +14,10 @@ makedepends=('cvs' 'emacs' 'texlive-core' 'texlive-latexextra' 'qt5-base' 'qt5-t
 options=('!makeflags')
 conflicts=('gnuplot')
 provides=('gnuplot=5.1')
+source=('docs.patch')
+md5sums=('bae9bd4ee96f75b64760a97786735120')
 _cvsmod="gnuplot"
 _cvsroot=":pserver:anonymous:@gnuplot.cvs.sourceforge.net:/cvsroot/$_cvsmod"
-
-prepare() {
-  if [ -d $_cvsmod/CVS ]; then
-      cd "$srcdir/$_cvsmod"
-      sed -i 's+-fPIE+-fPIC+' configure.ac
-  fi
-}
 
 pkgver() {
   cd $srcdir
@@ -38,6 +33,13 @@ pkgver() {
   msg2 "Checkout up to date"
 
   printf "5.1r%s" "$(head -1 ChangeLog |awk '{print $1}' |sed s+-++g)"
+}
+
+prepare() {
+  if [ -d $_cvsmod/CVS ]; then
+      cd "$srcdir/$_cvsmod"
+      sed -i 's+-fPIE+-fPIC+' configure.ac
+  fi
 }
 
 build() {
@@ -58,11 +60,13 @@ build() {
 	 --libexecdir=/usr/bin \
 	 --with-gihdir=/usr/share/gnuplot \
 	 --with-readline=gnu \
-	 --disable-wxwidgets --with-qt=qt5 
+	 --disable-wxwidgets \
+	 --with-qt=qt5 
 
   LANG=C make pkglibexecdir=/usr/bin
+  patch -Np1 < $srcdir/docs.patch
   cd docs
-  make info
+  LANG=C make info
 }
 
 package() {
