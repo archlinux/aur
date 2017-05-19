@@ -3,12 +3,12 @@
 _pkgname=rc
 pkgname=${_pkgname}-rakitzis-git
 pkgver=r511.250c8ad
-pkgrel=1
+pkgrel=2
 pkgdesc="Independent re-implementation for Unix of the Plan 9 shell."
 arch=('x86_64' 'i686')
 url="https://github.com/rakitzis/rc"
 license=('Custom:ISC')
-#depends=('')
+depends=('glibc')
 makedepends=('git')
 provides=("${_pkgname}")
 source=("git+https://github.com/rakitzis/${_pkgname}.git")
@@ -22,14 +22,13 @@ pkgver() {
 build() {
   cd ${_pkgname}
   autoreconf -i
-  #automake --add-missing
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd ${_pkgname}
-  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}-rakitzis"
+  install -D -m644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   make DESTDIR=${pkgdir} install
 }
 

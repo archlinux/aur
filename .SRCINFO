@@ -1,12 +1,13 @@
 pkgbase = rc-rakitzis-git
 	pkgdesc = Independent re-implementation for Unix of the Plan 9 shell.
 	pkgver = r511.250c8ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rakitzis/rc
 	arch = x86_64
 	arch = i686
 	license = Custom:ISC
 	makedepends = git
+	depends = glibc
 	provides = rc
 	source = git+https://github.com/rakitzis/rc.git
 	sha256sums = SKIP
