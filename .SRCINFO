@@ -1,0 +1,15 @@
+pkgbase = vpnoverdns-client
+	pkgdesc = VPN-over-DNS perl client
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.vpnoverdns.com/perl.html
+	arch = any
+	license = BSD
+	depends = perl-net-dns
+	provides = vpnoverdns-client
+	conflicts = vpnoverdns-client
+	source = https://www.vpnoverdns.com/vpnoverdns-client.pl
+	sha256sums = 2f8c329cc200127dfefcc6fdf13bbb21e63a7f2e851ed1fe3219e76ab32fd909
+
+pkgname = vpnoverdns-client
+
