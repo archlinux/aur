@@ -3,12 +3,12 @@
 _pkgname=demlo
 pkgname=$_pkgname
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
 url="http://ambrevar.bitbucket.io/demlo/"
 license=("MIT")
-depends=("ffmpeg" "lua51" "taglib")
+depends=("ffmpeg" "lua" "taglib")
 makedepends=("go" "git")
 optdepends=("chromaprint: Internet tagging")
 source=("$_pkgname-$pkgver.tar.gz::https://bitbucket.org/ambrevar/$_pkgname/get/v$pkgver.tar.gz")
@@ -29,7 +29,12 @@ build() {
 	i686) GOARCH=386 ;;
 	esac
 
-	GOPATH="$srcdir" go get -v -x -ldflags "-X main.version=$pkgver" "$_gourl"
+	export GOPATH="$srcdir"
+	go get -v -x -d github.com/aarzilli/golua/lua
+	cd "$srcdir"/src/github.com/aarzilli/golua/lua
+	git checkout lua5.3
+	go install -v -x -tags llua
+	go get -v -x -ldflags "-X main.version=$pkgver" "$_gourl"
 }
 
 check() {
