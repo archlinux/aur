@@ -1,0 +1,17 @@
+pkgbase = haskell-http-media
+	pkgdesc = Processing HTTP Content-Type and Accept headers
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/zmthy/http-media
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ghc
+	depends = haskell-case-insensitive
+	options = strip
+	options = staticlibs
+	source = https://hackage.haskell.org/packages/archive/http-media/0.6.4/http-media-0.6.4.tar.gz
+	sha256sums = ef762cf50854250e4247b744decbebe4d3d188dbc19bfd90aa344ed3c61cc9d3
+
+pkgname = haskell-http-media
+
