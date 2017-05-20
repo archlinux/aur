@@ -12,6 +12,7 @@ pkgbase = emby-server-beta
 	depends = mono
 	depends = sqlite
 	depends = mono-pcl
+	depends = referenceassemblies-pcl
 	provides = emby-server
 	conflicts = emby-server
 	conflicts = emby-server-beta-git
