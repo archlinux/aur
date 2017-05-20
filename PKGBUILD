@@ -9,7 +9,8 @@ url="https://github.com/embotech/ecos-python"
 depends=('python'
     'python-numpy'
     'python-scipy'
-    'ecos')
+    'ecos'
+    'suitesparse')
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('i686' 'x86_64')

@@ -11,6 +11,7 @@ pkgbase = python-ecos
 	depends = python-numpy
 	depends = python-scipy
 	depends = ecos
+	depends = suitesparse
 	source = https://github.com/embotech/ecos-python/archive/v2.0.4.tar.gz
 	source = use_external_ecos.patch
 	sha256sums = d16907b0e9f41bbe7f43c37562e0d361db1f4d2e5fc7e91125899b4fdd062790
