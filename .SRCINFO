@@ -1,7 +1,7 @@
 pkgbase = qnapi
 	pkgdesc = Qt5 client for downloading movie subtitles from NapiProjekt, OpenSubtitles, Napisy24
-	pkgver = 0.2.2
-	pkgrel = 3
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/QNapi/qnapi
 	changelog = ChangeLog
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = qnapi
 	depends = qt5-base
 	depends = libmediainfo
 	depends = p7zip
-	source = qnapi-0.2.2.tar.gz::https://github.com/QNapi/qnapi/releases/download/0.2.2/qnapi-0.2.2.tar.gz
-	sha256sums = d189150944b2524e06bec3215caf4aa8503ee4f2597954cba5c2568e4a3b8a92
+	source = qnapi-0.2.3.tar.gz::https://github.com/QNapi/qnapi/releases/download/0.2.3/qnapi-0.2.3.tar.gz
+	sha256sums = 8debb6862e96e52e4060131b314d9b887051a646a4a57c87c0287f2655357046
 
 pkgname = qnapi
 

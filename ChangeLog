@@ -1,6 +1,14 @@
 QNapi ChangeLog:
 ================
 
+2017-05-19 v0.2.3:
+ * mozliwosc wyboru jezyka interfejsu uzytkownika (angielski/polski/włoski) - (thx Fincer, luigino)
+ * przebudowany podsystem konfiguracji aplikacji
+ * podzial aplikacji na biblioteke (libqnapi) i interfejs uzytkownika (gui)
+ * wybor docelowego formatu/rozszerzenia napisow przez argument wiersza polecen - #65
+ * naprawiony problem z utrata informacji o kolorze napisow podczas konwersji - #100
+ * binarna wersja na Linuksa x86_64 dostepna jako AppImage
+
 2016-10-22 v0.2.2:
  * odswiezona ikona aplikacji
  * wyswietlanie jezyka pobranych napisow w oknie podsumowania - #53 (thx andrewpros)
