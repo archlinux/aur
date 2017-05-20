@@ -1,19 +1,19 @@
 # Maintainer: emersion <contact@emersion.fr>
 
 pkgname=openvpn-protonvpn
-pkgver=0.1
-pkgrel=2
+pkgver=20170520
+pkgrel=1
 pkgdesc="OpenVPN configuration files and helper for protonvpn.com"
 arch=(any)
 url="https://protonvpn.com/"
 license=('MIT')
-depends=('openvpn' 'systemd')
+depends=('openvpn')
 optdepends=()
 makedepends=('unzip' 'coreutils')
 provides=('protonvpn')
 source=('https://protonvpn.com/download/ProtonVPN_config.zip')
 noextract=(zip)
-sha256sums=('0ba91f4da8b54833afd9bd69204afb0075cdb170afa88947e4d55be4e090eb84')
+sha256sums=('f2e1829101f57e0ff900e5c36b22dae8915d8fbacd798d7bba3bfb85dde489fc')
 
 prepare() {
     test -d conf && rm -rf conf
