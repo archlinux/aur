@@ -4,7 +4,7 @@
 # Maintainer: Corey Richardson <corey@octayn.net>
 
 pkgname=krita-git
-pkgver=3.0.91.1366.gdc2c6aaddc-1
+pkgver=3.0.91.1366.gdc2c6aaddc
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom! (GIT Version)"
 arch=('i686' 'x86_64')
