@@ -1,5 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-pipemenus-git
+_pkgname=archlabs-pipemenus
+_destname="/usr/bin/"
 pkgver=1.1
 pkgrel=2
 pkgdesc="Plank themes for ARCHLabs"
@@ -12,9 +14,9 @@ options=(!strip !emptydirs)
 source=('archlabs-pipemenus::git+https://github.com/ARCHLabs/Archlabs-pipemenus.git')
 sha256sums=('SKIP')
 package() {
-	rm -f "${srcdir}/archlabs-pipemenus/"README.md
-	rm -f "${srcdir}/archlabs-pipemenus/"git-v*
-	rm -f "${srcdir}/archlabs-pipemenus/"cleanup.sh
-	mkdir -p "${pkgdir}/usr/bin/"
-	cp -r "${srcdir}/archlabs-pipemenus/"* "${pkgdir}/usr/bin/"
+	rm -f "${srcdir}/${_pkgname}/"README.md
+	rm -f "${srcdir}/${_pkgname}/"git-v*
+	rm -f "${srcdir}/${_pkgname}/"cleanup.sh
+	mkdir -p "${pkgdir}${_destname}"
+	cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}${_destname}"
 }
