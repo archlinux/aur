@@ -15,4 +15,6 @@ post_remove() {
 	if [ -d /run/murmur ]; then
 		rm -r /run/murmur
 	fi
+
+	systemctl daemon-reload
 }
