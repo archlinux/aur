@@ -18,3 +18,6 @@ https://github.com/blueyed/rxvt-unicode/pull/1 turned out to be too fragile:
    requests on the socket then anymore).
 2. using OSC terminal escape sequences also does not work with tmux (server),
    and other applications that have no tty attached.
+
+
+Included in Arch's user repository (AUR): https://aur.archlinux.org/packages/rxvt-unicode-cvs-patched-wideglyphs/
