@@ -3,7 +3,7 @@
 pkgname=eventd
 pkgver=0.23.0
 _pkgdir=${pkgname}-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="A small daemon to act on remote or local events"
 arch=(
     i686
@@ -29,6 +29,7 @@ depends=(
 )
 makedepends=(
     'meson>=0.39.1'
+    pkg-config
     ninja
     libxslt
     docbook-xsl
