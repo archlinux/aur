@@ -36,7 +36,7 @@ post_install() {
   set -u
   _start_systemd
   avantfaxsetup.sh 1 'build' 'pre' 'post'
-  _opt_SOURCEONLY=1; . 'avantfaxsetup.sh'; unset _opt_SOURCEONLY
+  local _opt_SOURCEONLY=1; . 'avantfaxsetup.sh'; unset _opt_SOURCEONLY
   _httpinclude="Include conf/extra/httpd-${_opt_AVANTFAX_SERVERNAME}.conf"
   _httpconf='/etc/httpd/conf/httpd.conf'
   if ! grep "${_httpinclude}"'$' "${_httpconf}" &>/dev/null; then
@@ -57,7 +57,7 @@ pre_remove() {
   systemctl disable 'avantfax.phb.timer'
   systemctl stop 'avantfax.cron.timer'
   systemctl disable 'avantfax.cron.timer'
-  _opt_SOURCEONLY=1; . 'avantfaxsetup.sh'; unset _opt_SOURCEONLY
+  local _opt_SOURCEONLY=1; . 'avantfaxsetup.sh'; unset _opt_SOURCEONLY
   _httpinclude="Include conf/extra/httpd-${_opt_AVANTFAX_SERVERNAME}.conf"
   _httpconf='/etc/httpd/conf/httpd.conf'
   _conftemp='/tmp/avantfax.httpd.conf'
@@ -77,7 +77,7 @@ post_remove() {
   set -u
   systemctl daemon-reload
   /tmp/avantfaxsetup.sh 0 'postun'
-  _opt_SOURCEONLY=1; . '/tmp/avantfaxsetup.sh'; unset _opt_SOURCEONLY
+  local _opt_SOURCEONLY=1; . '/tmp/avantfaxsetup.sh'; unset _opt_SOURCEONLY
   # This completely removes your config. Not everyone may want this.
   rm -rf "/usr/share/webapps/${_opt_AVANTFAX_SERVERNAME}" '/root/avantfaxbackup'
   rm -f '/tmp/avantfaxsetup.sh'{,.password} '/usr/bin/avantfaxsetup.sh.password'

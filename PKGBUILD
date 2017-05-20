@@ -14,7 +14,7 @@
 # TODO: Less destructive remove or better cleanup.
 # TODO: Even safer password storage (the current method is pretty safe)
 # TODO: SendEmail or smtp-cli.pl support instead of sendmail
-# TODO: We can't use hard links. They won't update as the system updates.
+# TODO: We should stop using hard links. They won't update as the system updates.
 # See avantfaxsetup.sh for more todo
 
 # VERIFIED: Upon remove (and cleanup) 'avantfax' isn't found in /etc /var/spool/hylafax
@@ -26,8 +26,7 @@
 _opt_AUTO_START_HTTP=1 # 1 to automatically enable avantfax and restart apache, 0=manual
 _opt_DEBUG_PHP=0       # 1 to show php debug messages, 0 for production
 _opt_pagesize='letter' # a4, letter
-
-# Recommended build command: makepkg -scCfi
+_opt_phpver='php56'    # php56 for now, php when avantfax is php7 compatible
 
 # With a non set up MySQL or a root password the install will fail.
 
@@ -40,24 +39,25 @@ _opt_pagesize='letter' # a4, letter
 # Check settings in /usr/share/webapps/avantfax/includes/local_config.php
 
 # Cleanup: sudo rm -rf /usr/share/webapps/avantfax /root/avantfaxbackup
-# Note: Removing the avantfax package is very destructive. It destroys all 
+# Note: Removing the avantfax package is very destructive. It destroys all
 # avantfax files and tables.
 
 set -u
 pkgname='avantfax'
 _pkgnick="${pkgname}" # 'ArchFAX' # Changing this for an upgrade leaves cruft in many files.
 pkgver='3.3.5'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='a web-based application for managing faxes on HylaFAX fax servers'
 arch=('any') #('i686' 'x86_64')
 url='http://www.avantfax.com/'
 license=('GPLv2')
-depends=('hylafax' 'sudo' 'ghostscript' 'gsfonts' 'dash'
-         'php<6.0' 'apache' 'php-apache<6.0' 'php-pear'
-         'pear-mail-mime' 'pear-mail-mime-decode' 'pear-net-smtp'
-         'pear-mdb2>=2.5.0b5-1' 'pear-mdb2-mysql>=1.5.0b4-1' 'html2ps' # AUR in May 2015
-         'mariadb' 'psutils' 'libtiff' 'libpng' 'imagemagick' 'netpbm' 'giflib'
-         )
+depends=(
+  'hylafax' 'sudo' 'ghostscript' 'gsfonts' 'dash'
+  'apache' "${_opt_phpver}" "${_opt_phpver}-apache" "${_opt_phpver}-pear"
+  'pear-mail-mime' 'pear-mail-mime-decode' 'pear-net-smtp'
+  'pear-mdb2>=2.5.0b5-1' 'pear-mdb2-mysql>=1.5.0b4-1' 'html2ps' # AUR in May 2015
+  'mariadb' 'psutils' 'libtiff' 'libpng' 'imagemagick' 'netpbm' 'giflib'
+)
 optdepends=('tesseract: OCR incoming faxes for document keyword searches' # not enabled in local-config, might already work
 #            'AvantFAX-support: iFax Solutions can help configure your fax system'
 )
@@ -70,7 +70,7 @@ optdepends=('tesseract: OCR incoming faxes for document keyword searches' # not 
 # 'vixie-cron'   # replaced with systemd timers. I use cronie.
 # 'rsync'        # used only in the manual upgrade scripts. rsync is not used in the package.
 #makedepends=('smtp-server') # sendmail isn't required. It can be used on another server.
-install='avantfax.install'
+install="${pkgname}.install"
 _verwatch=("${url}/changelog.php" 'AvantFAX\s\([0-9\.]\+\)\s*' 'f')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tgz"
         'avantfaxsetup.sh'
@@ -88,7 +88,7 @@ sha256sums=('7dc6cfbaea9e27d6ef696611dad79f50cbaa61be6e3b59ce25fa124af0cf1269'
 
 prepare() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   # chmod 755 *.sh
   # All of the .php files marked as executable need to be executable.
   # find avantfax -executable -type f -name "*.php" -exec chmod 644 {} \;
@@ -96,11 +96,11 @@ prepare() {
   if [ "$(vercmp "${pkgver}" '3.3.4')" -le 0 ]; then
     # http://forum.joomla.org/viewtopic.php?t=618315
     # Strict Standards patch, remove & from =&
-    sed -i -e 's|^\(\s\+$this->db =\)&\( MDB2::singleton\)|\1\2|g' \
-           -e 's|^\(\s\+$res =\)&\( $this->db->query\)|\1\2|g' \
-           -e 's|^\(\s\+$this->result =\)&\( $this->db->query\)|\1\2|g' \
-           -e 's|^\(\s\+$aff =\)&\( $this->db->exec\)|\1\2|g' \
-      "${pkgname}/includes/SQL.php"
+    sed -e 's|^\(\s\+$this->db =\)&\( MDB2::singleton\)|\1\2|g' \
+        -e 's|^\(\s\+$res =\)&\( $this->db->query\)|\1\2|g' \
+        -e 's|^\(\s\+$this->result =\)&\( $this->db->query\)|\1\2|g' \
+        -e 's|^\(\s\+$aff =\)&\( $this->db->exec\)|\1\2|g' \
+      -i "${pkgname}/includes/SQL.php"
     #exit 1
   fi
 
@@ -109,23 +109,28 @@ prepare() {
     # http://sourceforge.net/p/avantfax/discussion/542402/thread/bfe70151/?limit=25
     local _file
     for _file in 'AFUserAccount.php' 'FormRules.php'; do
-      sed -i -e 's:^\(\s\+\)private \(function __unset.\+\)$:\1public \2:g' \
-             -e 's:^\(\s\+\)private \(function __isset.\+\)$:\1public \2:g' \
-             -e 's:^\(\s\+\)private \(function __get.\+\)$:\1public \2:g' \
-             -e 's:^\(\s\+\)private \(function __set.\+\)$:\1public \2:g' \
-        "${pkgname}/includes/${_file}"
+      sed -e 's:^\(\s\+\)private \(function __unset.\+\)$:\1public \2:g' \
+          -e 's:^\(\s\+\)private \(function __isset.\+\)$:\1public \2:g' \
+          -e 's:^\(\s\+\)private \(function __get.\+\)$:\1public \2:g' \
+          -e 's:^\(\s\+\)private \(function __set.\+\)$:\1public \2:g' \
+        -i "${pkgname}/includes/${_file}"
     done
 
     # This PEAR bug will never be fixed but is also unlikely to be deprecated so we'll supress it.
     # http://pear.php.net/bugs/bug.php?id=17987
     for _file in 'SQL.php' 'MDBO.php'; do
-      sed -i -e 's|(\(PEAR::isError\)|(@\1|g' \
-        "${pkgname}/includes/${_file}"
+      sed -e 's|(\(PEAR::isError\)|(@\1|g' \
+        -i "${pkgname}/includes/${_file}"
     done
 
-    # I don't see a fast way to fix this one so I'll just supress the warning for now.
-    sed -i -e 's|\(^\s\+$source_content = \)\(preg_replace\)|\1@\2|g' \
-      "${pkgname}/includes/Smarty/Smarty_Compiler.class.php"
+    # I don't see a fast way to fix this one so I'll just suppress the warning for now.
+    sed -e 's|\(^\s\+$source_content = \)\(preg_replace\)|\1@\2|g' \
+      -i "${pkgname}/includes/Smarty/Smarty_Compiler.class.php"
+  fi
+
+  # All executables run under the special version of php
+  if [ "${_opt_phpver}" != 'php' ]; then
+    sed -e "s:/usr/bin/php:/usr/bin/${_opt_phpver}:g" -i $(grep --include='*.php' -lr -e '#!/usr/bin')
   fi
   set +u
 }
@@ -134,67 +139,69 @@ package () {
   set -u
   local _httpdir='/usr/share/webapps'
 
-  cd "${srcdir}"
   # systemd timer (from the HylaFAX PKGBUILD). No need to install cron.
-  install -d -m755 "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants"
+  #install -dm755 "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants"
+  local _i
   for _i in avantfax*.{timer,service}; do
-    install -D -m644 "${_i}" "${pkgdir}/usr/lib/systemd/system/${_i}"
+    install -Dm644 "${_i}" "${pkgdir}/usr/lib/systemd/system/${_i}"
     case "${_i}" in
     # If you're going to do this, it's better to systemctl enable in the install.
     #*.timer) ln -s "../${_i}" "${pkgdir}/usr/lib/systemd/system/multi-user.target.wants/${_i}";;
-    *.service) sed -i -e "s:/var/www/avantfax:${_httpdir}/${_pkgnick}:g" "${pkgdir}/usr/lib/systemd/system/${_i}";;
+    *.service) sed -e "s:/var/www/avantfax:${_httpdir}/${_pkgnick}:g" -i "${pkgdir}/usr/lib/systemd/system/${_i}";;
     esac
   done
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   # Install the main advantfax folder
-  install -d -m755 "${pkgdir}${_httpdir}"
-  cp -pr "avantfax" "${pkgdir}${_httpdir}/${_pkgnick}"
-  install -d -m755 "${pkgdir}${_httpdir}/${_pkgnick}/tmp"
+  install -dm755 "${pkgdir}${_httpdir}"
+  cp -pr 'avantfax' "${pkgdir}${_httpdir}/${_pkgnick}"
+  install -dm755 "${pkgdir}${_httpdir}/${_pkgnick}/tmp"
 
   # Install the SQL scripts
-  install -d -m755 "${pkgdir}/usr/lib/${_pkgnick}"
-  install -D -m644 *.sql "${pkgdir}/usr/lib/${_pkgnick}"
+  install -dm755 "${pkgdir}/usr/lib/${_pkgnick}"
+  install -Dm644 *.sql -t "${pkgdir}/usr/lib/${_pkgnick}/"
 
   # Branding. Too bad this can't be better.
-  sed -i -e 's/\(:: AvantFAX LOGIN\) \(::\)/\1 for Arch Linux \2/g' \
-    "${pkgdir}${_httpdir}/${_pkgnick}/includes/templates/main_theme/templates/index.tpl"
+  sed -e 's/\(:: AvantFAX LOGIN\) \(::\)/\1 for Arch Linux \2/g' \
+    -i "${pkgdir}${_httpdir}/${_pkgnick}/includes/templates/main_theme/templates/index.tpl"
 
   # Create our bin dir so we can adhere to open_basedir restrictions
   # The installer will place hard links in here.
   local _bindir="${_httpdir}/${_pkgnick}-bin"
-  install -d -m755 "${pkgdir}${_bindir}"
+  install -dm755 "${pkgdir}${_bindir}"
 
   # Enable debug
   if [ "${_opt_DEBUG_PHP}" -ne 0 ]; then
-    sed -i -e "s:^\(\s\+\)\(//\s\+DATABASE\sSETTINGS\$\):\1ini_set('display_errors', true); \2:g" \
-      "${pkgdir}${_httpdir}/${_pkgnick}/includes/local_config-example.php"
-    sed -i -e "s:^\(\s\+\)\(require_once '\.\./includes/classes\.php';\)\$:\1ini_set('display_errors', true);\n\1\2:g" \
-      "${pkgdir}${_httpdir}/${_pkgnick}/index.php"
-    sed -i -e "s:^\(\s\+\)\(require_once '\.\./includes/classes\.php';\)\$:\1ini_set('display_errors', true);\n\1\2:g" \
-      "${pkgdir}${_httpdir}/${_pkgnick}/admin/index.php"
+    sed -e "s:^\(\s\+\)\(//\s\+DATABASE\sSETTINGS\$\):\1ini_set('display_errors', true); \2:g" \
+      -i "${pkgdir}${_httpdir}/${_pkgnick}/includes/local_config-example.php"
+    sed -e "s:^\(\s\+\)\(require_once '\.\./includes/classes\.php';\)\$:\1ini_set('display_errors', true);\n\1\2:g" \
+      -i "${pkgdir}${_httpdir}/${_pkgnick}/index.php"
+    sed -e "s:^\(\s\+\)\(require_once '\.\./includes/classes\.php';\)\$:\1ini_set('display_errors', true);\n\1\2:g" \
+      -i "${pkgdir}${_httpdir}/${_pkgnick}/admin/index.php"
   fi
 
   # patch php scripts with our bin dir to comply with php open_basedir
   # Set page size
-  sed -i -e 's:/usr/local/bin/:'"${_bindir}/:g" \
-         -e 's:/usr/bin:'"${_bindir}:g" \
-         -e "s:^\(\s\+\$HYLAFAX_PREFIX\s*=\s*'\)[^']\+\(';\):\1${_bindir}\2:g" \
-         -e "s:^\(\s\+\$PAPERSIZE\s*=\s*'\)[^']\+\(';\):\1${_opt_pagesize}\2:g" \
-    "${pkgdir}${_httpdir}/${_pkgnick}/includes/local_config-example.php"
-  #exit 1
+  sed -e 's:/usr/local/bin/:'"${_bindir}/:g" \
+      -e 's:/usr/bin:'"${_bindir}:g" \
+      -e "s:^\(\s\+\$HYLAFAX_PREFIX\s*=\s*'\)[^']\+\(';\):\1${_bindir}\2:g" \
+      -e "s:^\(\s\+\$PAPERSIZE\s*=\s*'\)[^']\+\(';\):\1${_opt_pagesize}\2:g" \
+    -i "${pkgdir}${_httpdir}/${_pkgnick}/includes/local_config-example.php"
 
   # The original technique for HYLA being in bin and sbin is hostile to our bin folder
   # Besides, sbin must go
-#         -e 's:^\(\s\+error_reporting(E_ALL\)\();\)$:\1 \& ~E_DEPRECATED\2:g' 
-  sed -i -e "s:'sbin':'bin':g" \
-         -e 's:\($HYLAFAX_PREFIX.DIRECTORY_SEPARATOR.\)'"'bin'.DIRECTORY_SEPARATOR.:\1:g" \
-    "${pkgdir}${_httpdir}/${_pkgnick}/includes/config.php"
+  sed -e "s:'sbin':'bin':g" \
+      -e 's:\($HYLAFAX_PREFIX.DIRECTORY_SEPARATOR.\)'"'bin'.DIRECTORY_SEPARATOR.:\1:g" \
+      -e '#s:^\(\s\+error_reporting(E_ALL\)\();\)$:\1 \& ~E_DEPRECATED\2:g' \
+    -i "${pkgdir}${_httpdir}/${_pkgnick}/includes/config.php"
 
   # Install Apache vhosts file. It's similar to phpMyAdmin and Adminer.
-  install -d -m755 "${pkgdir}/etc/webapps/${_pkgnick}"
-  cat > "${pkgdir}/etc/webapps/${_pkgnick}/apache.example.conf" <<EOF
+  local _phpxpath=''
+  if [ "${_opt_phpver}" != 'php' ]; then
+    _phpxpath=":/usr/share/${_opt_phpver}/pear/"
+  fi
+  install -Dm644 <(cat <<EOF
 # Installed by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
 # http://aur.archlinux.org/
 Alias /${_pkgnick} "${_httpdir}/${_pkgnick}"
@@ -202,53 +209,50 @@ Alias /${_pkgnick} "${_httpdir}/${_pkgnick}"
   AllowOverride All
   Options FollowSymlinks
   Require all granted
-    php_admin_value open_basedir "/tmp/:/usr/share/pear/:${_httpdir}/${_pkgnick}/:${_httpdir}/${_pkgnick}-bin/"
+    php_admin_value open_basedir "/tmp/${_phpxpath}:/usr/share/pear/:${_httpdir}/${_pkgnick}/:${_httpdir}/${_pkgnick}-bin/"
 # The AvantFAX installer avantfaxsetup.sh will tack the HylaFAX+ spool folder onto the end
 </Directory>
 EOF
-  install -d -m755 "${pkgdir}/etc/httpd/conf/extra"
-  cp -p "${pkgdir}/etc/webapps/${_pkgnick}/apache.example.conf" "${pkgdir}/etc/httpd/conf/extra/httpd-${_pkgnick}.conf"
+  ) "${pkgdir}/etc/webapps/${_pkgnick}/apache.example.conf"
+  install -Dpm644 "${pkgdir}/etc/webapps/${_pkgnick}/apache.example.conf" "${pkgdir}/etc/httpd/conf/extra/httpd-${_pkgnick}.conf"
 
   # Install, patch, source, and run our setup script
   local _shellfile="${pkgdir}/usr/bin/avantfaxsetup.sh"
-  install -d -m755 "${pkgdir}/usr/bin"
-  install -D -m755 "${srcdir}/avantfaxsetup.sh" "${_shellfile}"
+  install -d "${pkgdir}/usr/bin"
+  install -Dpm755 "${srcdir}/avantfaxsetup.sh" "${_shellfile}"
   # Arch Linux uses bash as sh which allows bashishms through. For strict POSIX shell compliance we use dash.
-  sed -i -e 's:^\(_opt_HTTP_DIR\)=.*$'":\1='${_httpdir}':g" \
-         -e 's:^\(_opt_VHOSTS\)=.*$'":\1=0:g" \
-         -e 's:^\(_opt_AUTO_START_HTTP\)=.*$'":\1=${_opt_AUTO_START_HTTP}:g" \
-         -e 's:^\(_opt_AVANTFAX_SERVERNAME\)=.*$'":\1='${_pkgnick}':g" \
-         -e 's:^#!/bin/sh$:#!/usr/bin/dash:g' \
-    "${_shellfile}"
+  sed -e 's:^\(_opt_HTTP_DIR\)=.*$'":\1='${_httpdir}':g" \
+      -e 's:^\(_opt_VHOSTS\)=.*$'":\1=0:g" \
+      -e 's:^\(_opt_AUTO_START_HTTP\)=.*$'":\1=${_opt_AUTO_START_HTTP}:g" \
+      -e 's:^\(_opt_AVANTFAX_SERVERNAME\)=.*$'":\1='${_pkgnick}':g" \
+      -e 's:^#!/bin/sh$:#!/usr/bin/dash:g' \
+    -i "${_shellfile}"
 
   # Install php mysql extension
-  _opt_SOURCEONLY=1; . "${_shellfile}"; unset _opt_SOURCEONLY
-  install -d -m755 "${pkgdir}/etc/php/conf.d"
-  cat >> "${pkgdir}/etc/php/conf.d/${_pkgnick}.ini" << EOF
+  local _opt_SOURCEONLY=1; . "${_shellfile}"; unset _opt_SOURCEONLY
+  install -Dm644 <(cat << EOF
 ; Installed by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
 ; http://aur.archlinux.org/
 extension=mysql.so
 EOF
-  chmod 755 "${pkgdir}/etc/php/conf.d"
+  ) "${pkgdir}/etc/${_opt_phpver}/conf.d/${_pkgnick}.ini"
 
   # Fix timers to run as user
-  local _i
-  for _i in "${pkgdir}/usr/lib/systemd/system/"*.service; do
-    sed -i -e 's:^#\(User\)=.*$'":\1=${_opt_WWWUSER}:g" \
-           -e 's:^#\(Group\)=.*$'":\1=${_opt_WWWGROUP}:g" \
-      "${_i}"
-  done
+  sed -e 's:^#\(User\)=.*$'":\1=${_opt_WWWUSER}:g" \
+      -e 's:^#\(Group\)=.*$'":\1=${_opt_WWWGROUP}:g" \
+    -i "${pkgdir}/usr/lib/systemd/system/"*.service
 
   # Install sudo config
-  install -d -m750 "${pkgdir}/etc/sudoers.d"
-  cat >> "${pkgdir}/etc/sudoers.d/${_pkgnick}.sudo" << EOF
+  install -dm750 "${pkgdir}/etc/sudoers.d"
+  install -Dm644 <(cat << EOF
 # Installed by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
 # http://aur.archlinux.org/
 ${_opt_SUDO_LINE} -u * -p * *  ${_opt_AVANT_CMTTAG}
 EOF
+  ) "${pkgdir}/etc/sudoers.d/${_pkgnick}.sudo"
 
-  # We run the *modified* shell script
-  export _opt_DESTDIR="${pkgdir}"
+  # We run the shell script modified with pkgdir
+  _opt_DESTDIR="${pkgdir}" \
   "${_shellfile}" 0 'package' # package ignores the flag
   set +u
 }
