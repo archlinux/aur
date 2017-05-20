@@ -2,7 +2,7 @@
 # Maintainer: masutu <masutu dot arch at gmail dot com>
 pkgname=ezthumb
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A video thumbnail generator based on ffmpeg.'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/ezthumb/'
