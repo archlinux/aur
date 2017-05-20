@@ -8,14 +8,13 @@ _gtestver=1.8.0
 _ncclver=1.3.4-1
 _protover=3.2.0
 _pybindver=2.1.1
-_pthrpver=0.1
 _gitver=gitmaster
 _gitwebver=master
 
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A new lightweight, modular, and scalable deep learning framework (cpu only)"
 arch=('i686' 'x86_64')
 url="http://caffe2.ai/"
@@ -62,7 +61,7 @@ source=(
         "thirdparty-FP16-${_gitver}.zip"::"https://github.com/Maratyszcza/FP16/archive/${_gitwebver}.zip"
         "thirdparty-FXdiv-${_gitver}.zip"::"https://github.com/Maratyszcza/FXdiv/archive/${_gitwebver}.zip"
         "thirdparty-psimd-${_gitver}.zip"::"https://github.com/Maratyszcza/psimd/archive/${_gitwebver}.zip"
-        "thirdparty-pthreadpool-${_pthrpver}.tar.gz"::"https://github.com/Maratyszcza/pthreadpool/archive/${_pthrpver}.tar.gz"
+        "thirdparty-pthreadpool-${_gitver}.zip"::"https://github.com/Maratyszcza/pthreadpool/archive/${_gitwebver}.zip"
 )
 noextract=("thirdparty-android-cmake-${_gitver}.zip"
            "thirdparty-benchmark-${_benchver}.tar.gz"
@@ -80,7 +79,7 @@ noextract=("thirdparty-android-cmake-${_gitver}.zip"
            "thirdparty-FP16-${_gitver}.zip"
            "thirdparty-FXdiv-${_gitver}.zip"
            "thirdparty-psimd-${_gitver}.zip"
-           "thirdparty-pthreadpool-${_pthrpver}.tar.gz"
+           "thirdparty-pthreadpool-${_gitver}.zip"
 )
 sha256sums=('b8f266ed283efc172fa96c06c878ed7f125755f89cde480580b754c1f03c0bab'
             'SKIP'
@@ -99,7 +98,7 @@ sha256sums=('b8f266ed283efc172fa96c06c878ed7f125755f89cde480580b754c1f03c0bab'
             'SKIP'
             'SKIP'
             'SKIP'
-            '05d3f79647b7f54ed3be7c2e1fa0accc1d9e0f26e3dca9ab22c211a039ed2539'
+            'SKIP'
 )
 
 prepare() {
