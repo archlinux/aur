@@ -11,7 +11,9 @@ pkgbase = openfortivpn
 	depends = ppp
 	backup = etc/openfortivpn/config
 	source = git+https://github.com/adrienverge/openfortivpn.git#tag=v1.3.0
+	source = allow-no-unused-functions.patch
 	md5sums = SKIP
+	md5sums = 4ce932a43c5b6e7241fb3e7ccc7a199f
 
 pkgname = openfortivpn
 
