@@ -1,16 +1,15 @@
 # Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
 
 pkgname='gnome-osx-ii-gtk-theme'
-pkgver=2.5.1
-pkgrel=3
+pkgver=2.6
+pkgrel=1
 pkgdesc='Gnome-OSX 2.0 GTK Theme'
 arch=('any')
 url='https://www.gnome-look.org/p/1171688/'
-depends=('gnome-shell>=3.20'
-         'gnome-themes-standard'
+depends=('gnome-themes-standard'
          'gtk-engine-murrine')
-source=('https://dl.opendesktop.org/api/files/download/id/1489657686/Gnome-OSX-II-2-5-1.tar.xz')
-md5sums=('e08f67a874188644aace5bf802ae9275')
+source=('https://dl.opendesktop.org/api/files/download/id/1494791931/Gnome-OSX-II-2-6.tar.gz')
+md5sums=('b1b89017a0d6efc8c744075e697527ba')
 
 _name='Gnome-OSX-II'
 _version=${pkgver//./-}
