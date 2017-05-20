@@ -1,0 +1,25 @@
+pkgbase = murmur-stable-minimal
+	pkgdesc = The voice chat application server for Mumble
+	pkgver = 1.2.19
+	pkgrel = 1
+	url = https://mumble.info
+	install = murmur-stable-minimal.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = python
+	makedepends = boost
+	depends = qt4
+	depends = protobuf
+	provides = murmur=1.2.19
+	conflicts = murmur
+	source = https://github.com/mumble-voip/mumble/releases/download/1.2.19/mumble-1.2.19.tar.gz
+	source = murmur.service
+	source = murmur.logrotate
+	sha512sums = f91111194a899149b500a94afcf7cc5b9691c7ce8669f07fca2c66adbb3916ddb863bf703d04fb8387133fb75f3c8edb52974d1acf3febfafa1f73da19946de4
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = murmur-stable-minimal
+

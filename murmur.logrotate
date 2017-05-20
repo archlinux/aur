@@ -1,0 +1,10 @@
+/var/log/murmur/murmur.log {
+	weekly
+	rotate 7
+	compress
+	delaycompress
+	missingok
+	postrotate
+		systemctl restart murmur.service
+	endscript
+}
