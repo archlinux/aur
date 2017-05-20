@@ -1,19 +1,21 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-wallpapers-git
-pkgver=1.1
-pkgrel=12
+_pkgname=archlabs-wallpapers
+_destname="/usr/share/background/archlabs/"
+pkgver=1.2
+pkgrel=1
 pkgdesc="Wallpapers for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Wallpapers"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
-provides=('archlabs-wallpapers-git')
+provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=('archlabs-wallpapers::git+https://github.com/ARCHLabs/Archlabs-Wallpapers.git')
+source=(${_pkgname}::"git+https://github.com/ARCHLabs/${_pkgname}.git")
 sha256sums=('SKIP')
 package() {
-	rm -f "${srcdir}/archlabs-wallpapers/"README.md
-	rm -f "${srcdir}/archlabs-wallpapers/"git-v*
-	mkdir -p "${pkgdir}/usr/share/backgrounds/archlabs/"
-	cp -r "${srcdir}/archlabs-wallpapers/"* "${pkgdir}/usr/share/backgrounds/archlabs/"
+	rm -f "${srcdir}/${_pkgname}/"README.md
+	rm -f "${srcdir}/${_pkgname}/"git-v*
+	mkdir -p "${pkgdir}${_destname}"
+	cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}${_destname}"
 }
