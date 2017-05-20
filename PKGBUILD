@@ -15,8 +15,10 @@ conflicts=("${_pkgname}")
 install=murmur-stable-minimal.install
 source=("https://github.com/mumble-voip/mumble/releases/download/${pkgver}/mumble-${pkgver}.tar.gz"
         "murmur.service"
-        "murmur.logrotate")
+        "murmur.logrotate"
+        "murmur.conf.dbus")
 sha512sums=('f91111194a899149b500a94afcf7cc5b9691c7ce8669f07fca2c66adbb3916ddb863bf703d04fb8387133fb75f3c8edb52974d1acf3febfafa1f73da19946de4'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -39,6 +41,7 @@ package() {
 
   install -m644 -D "murmur.logrotate" "${pkgdir}/etc/logrotate.d/murmur"
   install -m644 -D "murmur.service" "${pkgdir}/usr/lib/systemd/system/murmur.service"
+  install -m644 -D "murmur.conf.dbus" "${pkgdir}/etc/dbus-1/system.d/murmur.conf"
 
   install -m755 -d "${pkgdir}/usr/share/man/man1"
   install -m644 -D "${murmur}/man/murmurd.1" "${pkgdir}/usr/share/man/man1/"
