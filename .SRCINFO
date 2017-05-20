@@ -1,0 +1,21 @@
+pkgbase = telepad
+	pkgdesc = Telepad desktop application. This software communicates with the Telepad mobile application in order to use a mobile/tablet as a remote mouse and keyboard.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = bluez-libs
+	depends = libx11
+	depends = libxext
+	depends = libxtst
+	depends = jre8-openjdk
+	provides = telepad
+	provides = telepad-app
+	options = !emptydirs
+	source = https://launchpad.net/~pelle-vincent-n/+archive/ubuntu/telepad-ppa/+files/telepad_1.0.7.orig.tar.xz
+	md5sums = 9bd69e4f4757ff61683d17da044c2453
+
+pkgname = telepad
+
