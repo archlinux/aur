@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=nfs2se-git
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
 arch=('i686' 'x86_64' 'armv7' 'armv7h')
