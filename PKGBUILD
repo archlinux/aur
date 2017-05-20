@@ -2,7 +2,7 @@
 pkgname=libclassicclient
 _luxver=1.1.0
 pkgver=7.2.0_b04
-pkgrel=1
+pkgrel=2
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(i686 x86_64)
@@ -11,9 +11,7 @@ depends=(
   gdk-pixbuf2
   gtk2 # for CCChangePinTool
   libusb-compat
-  #openssl-1.0
-  libopenssl-1.0-compat
-  # JUST FIX https://bugs.archlinux.org/task/53836 ALREADY
+  openssl-1.0'>=1.0.2.k-4'
   pcsclite
   qt5-base # for SecureFooDialog
 )
