@@ -3,7 +3,7 @@
 
 pkgname=caffe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
