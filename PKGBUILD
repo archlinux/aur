@@ -42,5 +42,6 @@ check() {
 
 package() {
     cd wayland-protocols/build
-    make DESTDIR="${pkgdir}" install
+    make DESTDIR="$pkgdir" install
+    install -Dm644 COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/COPYING
 }
