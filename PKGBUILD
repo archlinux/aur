@@ -1,21 +1,21 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
 pkgver=2.9.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="http://www.sws-extension.org/"
 license=('MIT')
-depends=('reaper>=5.409' 'reaper<5.412' )
+depends=('reaper>=5.409')
 makedepends=('git' 'gcc' 'make' 'php')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("git://github.com/reaper-oss/sws.git"
 	"git://github.com/justinfrankel/WDL"
-	"https://swsaur.000webhostapp.com/files/rpf_4509_to_5411.tar.xz")
+	"https://swsaur.000webhostapp.com/files/rpf_4509_to_5412.tar.xz")
 sha256sums=('SKIP'
 	    'SKIP'
-	    '8e36dca60dd241beccdc916da96edd361ecb218e00464b8ca743704db360d5a2')
+            '27ce6d555c5a8390c3446842631f1f16467ff430f77293d59d4289c419ee13b3')
 
 pkgver() {
 	cd "$pkgname"
@@ -24,8 +24,14 @@ pkgver() {
 
 prepare() {
 	REAPERVERSION="$(pacman -Q reaper | cut -d' ' -f2 | cut -d'-' -f1)"
-	cp "reaper_plugin_functions/$REAPERVERSION/reaper_plugin_functions.h" \
-           "$srcdir/$pkgname"
+        if [-e reaper_plugin_functions/$REAPERVERSION/reaper_plugin_functions.h]
+        then
+	  cp "reaper_plugin_functions/$REAPERVERSION/reaper_plugin_functions.h"\
+             "$srcdir/$pkgname"
+        else
+          cp "reaper_plugin_functions/5.412/reaper_plugin_functions.h"\
+             "$srcdir/$pkgname"
+        fi
 }
 
 
