@@ -1,0 +1,24 @@
+pkgbase = chigraph
+	pkgdesc = A visual programming language
+	pkgver = 0.0.1a
+	pkgrel = 1
+	url = https://github.com/chigraph/chigraph
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	makedepends = boost
+	makedepends = llvm
+	makedepends = tar
+	makedepends = coreutils
+	makedepends = gzip
+	depends = libgit2
+	depends = llvm-libs
+	depends = lldb
+	depends = clang
+	depends = boost-libs
+	conflicts = chigraph-git
+	source = https://github.com/chigraph/chigraph/archive/v0.0.1a.tar.gz
+	sha256sums = SKIP
+
+pkgname = chigraph
+
