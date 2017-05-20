@@ -2,14 +2,16 @@
 
 pkgname=chigraph-git
 pkgver=244c0d0a512158d6f126713fc0ca0e2a3b532989
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 
 pkgdesc="A visual programming language"
 url='https://github.com/chigraph/chigraph'
 
-depends=('libgit2' 'llvm' 'clang' 'lldb' 'boost-libs')
-makedepends=('cmake' 'git' 'boost')
+conflicts=("chigraph-git")
+
+depends=('libgit2' 'llvm-libs' 'lldb' 'boost-libs')
+makedepends=('cmake' 'boost' 'llvm' 'clang')
 
 source=("chigraph::git+https://github.com/chigraph/chigraph")
 md5sums=('SKIP')
