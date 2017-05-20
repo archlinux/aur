@@ -14,7 +14,7 @@ _gitwebver=master
 
 pkgname=caffe2
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A new lightweight, modular, and scalable deep learning framework (gpu enabled)"
 arch=('x86_64')
 url="http://caffe2.ai/"
@@ -23,6 +23,7 @@ depends=(
     # binary repositories:
         # required:
             'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf' 'cuda'
+            'cudnn'
         # not required but enabled in build:
             'gflags' 'gtest' 'openmp' 'leveldb' 'lmdb' 'opencv' 'openmpi' 'snappy'
             'zeromq' 'hiredis'
@@ -32,8 +33,6 @@ depends=(
             'python2-scipy' 'python2-setuptools' 'python2-tornado' 'python2-pyzmq'
             'python2-gflags'
     # AUR:
-        # required:
-            'cudnn'
         # not required but enabled in build:
             'nccl'
         # python2:
