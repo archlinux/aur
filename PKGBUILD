@@ -37,13 +37,6 @@ prepare() {
 }
 
 package() {
-  case $CARCH in
-    i686)
-      cd Gemalto_Middleware_Ubuntu_32bit_${pkgver/_/-};;
-    x86_64)
-      cd Gemalto_Middleware_Ubuntu_64bit_${pkgver/_/-};;
-  esac
-
   cp -a etc usr "$pkgdir"/
 
   # now clean up the mess
