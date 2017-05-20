@@ -2,8 +2,10 @@
 
 pkgname=chigraph-gui-git
 pkgver=02decd6f2bf7286bfd95ff779aa97b1535ccf016
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
+
+conflicts=("chigraph-gui")
 
 pkgdesc="The GUI for chigraph, a visual programming language"
 url='https://github.com/chigraph/chigraph'
