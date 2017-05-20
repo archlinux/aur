@@ -2,7 +2,7 @@
 
 pkgname=fsql-git
 pkgver=r45.db57e29
-pkgrel=2
+pkgrel=3
 pkgdesc='Search through your filesystem with SQL-esque queries'
 arch=('i686' 'x86_64')
 url='https://github.com/kshvmdn/fsql'
@@ -21,13 +21,21 @@ pkgver(){
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
   fi
 }
+prepare(){
+  if [ ! -h "$srcdir"/src/github.com/kshvmdn/fsql ]; then
+    mkdir -p "$srcdir"/src/github.com/kshvmdn
+    cd "$srcdir"/src/github.com/kshvmdn
+    ln -s "$srcdir"/fsql
+  fi
+}
 build(){
+  export GOPATH="$srcdir"
   cd "$srcdir"/$_gitname
-  go build
+  go build -v
 }
 check(){
   cd "$srcdir"/$_gitname
-  go test
+  go test -v
 }
 package(){
   cd "$srcdir"/$_gitname
