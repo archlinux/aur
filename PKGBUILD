@@ -1,46 +1,22 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Corey Richardson <corey@octayn.net>
 
 pkgname=krita-git
-pkgver=3.0.91.965.g17175edc89
+pkgver=3.0.91.1366.gdc2c6aaddc-1
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom! (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://www.krita.org'
-license=('GPL2')
-depends=('kio'
-         'fftw'
-         'gsl'
-         'libraw'
-         'opencolorio'
-         'boost-libs'
-         'exiv2'
-         'openexr'
-         'poppler-qt5'
-         'hicolor-icon-theme'
-	 'curl'
-	 'libpng'
-	 'qt5-multimedia'
-         )
-
-makedepends=('extra-cmake-modules'
-             'git'
-             'boost'
-             'vc'
-             'python'
-             'eigen'
-             'kitemmodels'
-             'ki18n'
-             'kitemviews'
-             'kwindowsystem'
-             'pngcrush'
-             )
+license=('GPL3')
+depends=(kio kitemmodels gsl libraw exiv2 openexr python fftw curl boost-libs hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools boost eigen vc poppler-qt5 opencolorio)
+optdepends=('poppler-qt5: PDF filter' 'ffmpeg: to save animation' 'opencolorio: for the LUT docker')
 provides=('krita' 'calligra-krita')
 conflicts=('krita' 'calligra-krita')
 source=('git+https://github.com/KDE/krita.git')
 sha1sums=('SKIP')
-options=('!makeflags')
 
 pkgver() {
   cd krita
@@ -49,26 +25,20 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  msg2 "Stripping PNG's"
-  export IFS=$'\n'
-  for i in $(find . -name '*.png' -type f); do
-    pngcrush -e "${i}" &> /dev/null
-  done
-  export IFS=' '
 }
 
 build() {
   cd build
-  CXXFLAGS=' -std=c++11' cmake ../krita \
+  cmake ../krita \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF 
+    -DBUILD_TESTING=OFF \
+    -DPACKAGERS_BUILD=ON
   make
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  cd build
+  make DESTDIR="${pkgdir}" install
 }
