@@ -1,0 +1,18 @@
+pkgbase = haskell-string-conversions
+	pkgdesc = Simplifies dealing with different types for strings
+	pkgver = 0.4.0.1
+	pkgrel = 2
+	url = https://github.com/soenkehahn/string-conversions
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-text
+	depends = haskell-utf8-string
+	options = strip
+	options = staticlibs
+	source = https://hackage.haskell.org/packages/archive/string-conversions/0.4.0.1/string-conversions-0.4.0.1.tar.gz
+	sha256sums = 46bcce6d9ce62c558b7658a75d9c6a62f7259d6b0473d011d8078234ad6a1994
+
+pkgname = haskell-string-conversions
+
