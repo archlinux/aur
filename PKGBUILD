@@ -1,8 +1,8 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-git
-pkgver=0.7.0.r174.g9ef196be
-pkgrel=2
+pkgver=0.7.0.r252.ge6c6b859
+pkgrel=1
 pkgdesc="A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe2.ai/"
