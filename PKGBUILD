@@ -1,6 +1,6 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=pac
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Small wrapper around pacaur to mimic yaourts search feature"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python>=3.6.0'
 source=("https://github.com/XenGi/pac/archive/v${pkgver}.tar.gz"
         "https://github.com/XenGi/pac/releases/download/v${pkgver}/v${pkgver}.tar.gz.sig")
 validpgpkeys=('872CE014D895F3266E2354F91A9D657D06B5820E')  # Ricardo band
-sha256sums=('79ff4aa63166d698c64affd9e198cfaae5e993f760b21ff5fea61104c1fafd96'
+sha256sums=('c6dc01a09906e66937f397a15c54d70aa63d65670cdaf04aebd60c302519f5ee'
             'SKIP')
 
 package() {
