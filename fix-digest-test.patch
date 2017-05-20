@@ -1,0 +1,21 @@
+
+# HG changeset patch
+# User Todd C. Miller <Todd.Miller@courtesan.com>
+# Date 1494502099 21600
+# Node ID 7968686742e232fd20804df8da44e3a18c39bace
+# Parent  24244a02c93f7aa1307e3ec7b0df2cad75d85e08
+Fix "make check" when openssl or gcrypt is used.  Bug #787
+
+diff -r 24244a02c93f -r 7968686742e2 plugins/sudoers/Makefile.in
+--- a/plugins/sudoers/Makefile.in	Wed May 10 09:22:07 2017 -0600
++++ b/plugins/sudoers/Makefile.in	Thu May 11 05:28:19 2017 -0600
+@@ -175,7 +175,7 @@
+ 
+ CHECK_BASE64_OBJS = check_base64.o base64.o sudoers_debug.o
+ 
+-CHECK_DIGEST_OBJS = check_digest.o filedigest.o digestname.o sudoers_debug.o
++CHECK_DIGEST_OBJS = check_digest.o @FILEDIGEST@ digestname.o sudoers_debug.o
+ 
+ CHECK_FILL_OBJS = check_fill.o hexchar.o toke_util.o sudoers_debug.o
+ 
+

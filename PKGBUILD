@@ -7,7 +7,7 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=sudo-selinux
-_sudover=1.8.19p2
+_sudover=1.8.20
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -15,18 +15,25 @@ arch=('i686' 'x86_64')
 url="https://www.sudo.ws/sudo/"
 license=('custom')
 groups=('selinux')
-depends=('glibc' 'pam-selinux' 'libldap' 'libselinux')
+depends=('glibc' 'libgcrypt' 'pam-selinux' 'libldap' 'libselinux')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=('etc/sudoers' 'etc/pam.d/sudo')
 install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
+        fix-digest-test.patch
         sudo.pam)
-sha256sums=('237e18e67c2ad59ecacfa4b7707198b09fcf84914621585a9bc670dcc31a52e0'
+sha256sums=('9e97b8da859c6cc1b5b8c31db93002b750eae16af1bbda9140f8dd85b970e0e0'
             'SKIP'
+            'e22cb4ea8afb7d019406e7ee31f6790772a933745d6f1592e203e4f526289e61'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 validpgpkeys=('CCB24BE9E9481B15D34159535A89DFA27EE470C4')
+
+prepare() {
+  cd "$srcdir/${pkgname/-selinux}-$_sudover"
+  patch -Np1 -i ../fix-digest-test.patch
+}
 
 build() {
   cd "$srcdir/${pkgname/-selinux}-$_sudover"
@@ -38,6 +45,7 @@ build() {
     --with-rundir=/run/sudo \
     --with-vardir=/var/db/sudo \
     --with-logfac=auth \
+    --enable-gcrypt \
     --enable-tmpfiles.d \
     --with-pam \
     --with-sssd \
@@ -58,6 +66,9 @@ check() {
 package() {
   cd "$srcdir/${pkgname/-selinux}-$_sudover"
   make DESTDIR="$pkgdir" install
+
+  # Remove sudoers.dist; not needed since pacman manages updates to sudoers
+  rm "$pkgdir/etc/sudoers.dist"
 
   # Remove /run/sudo directory; we create it using systemd-tmpfiles
   rmdir "$pkgdir/run/sudo"
