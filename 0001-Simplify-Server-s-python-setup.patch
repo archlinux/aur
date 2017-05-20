@@ -1,4 +1,4 @@
-From b557ee36dd245af7270e65bacad0fe824fc4252d Mon Sep 17 00:00:00 2001
+From a5a1c332e23a094e0c2a1c9513fb9f6b05cbbf05 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sat, 28 Jan 2017 01:19:06 +0100
 Subject: [PATCH] Simplify Server's python setup
@@ -13,10 +13,10 @@ Subject: [PATCH] Simplify Server's python setup
  7 files changed, 149 insertions(+), 271 deletions(-)
 
 diff --git a/runtime/BrowserWindow.cpp b/runtime/BrowserWindow.cpp
-index 12dabd4f145b136c..3a43fbaf01ef82f1 100644
+index 516b8689818bddc9..a2ee4895f5351565 100644
 --- a/runtime/BrowserWindow.cpp
 +++ b/runtime/BrowserWindow.cpp
-@@ -1174,17 +1174,17 @@ void BrowserWindow::preferences()
+@@ -1286,17 +1286,17 @@ void BrowserWindow::preferences()
  
      ConfigWindow *dlg = new ConfigWindow();
      dlg->setWindowTitle(QWidget::tr("Configuration"));
@@ -41,7 +41,7 @@ diff --git a/runtime/ConfigWindow.cpp b/runtime/ConfigWindow.cpp
 index 3fb1a2738eb89ec0..c31345bf08d06d88 100644
 --- a/runtime/ConfigWindow.cpp
 +++ b/runtime/ConfigWindow.cpp
-@@ -17,6 +17,14 @@ ConfigWindow::ConfigWindow(QWidget *parent) :
+@@ -17,37 +17,45 @@ ConfigWindow::ConfigWindow(QWidget *parent) :
      ui(new Ui::ConfigWindow)
  {
      ui->setupUi(this);
@@ -56,7 +56,17 @@ index 3fb1a2738eb89ec0..c31345bf08d06d88 100644
  }
  
  ConfigWindow::~ConfigWindow()
-@@ -34,9 +42,9 @@ void ConfigWindow::on_buttonBox_rejected()
+ {
+     delete ui;
+ }
+ 
+ void ConfigWindow::on_buttonBox_accepted()
+ {
+     this->close();
+ }
+ 
+ void ConfigWindow::on_buttonBox_rejected()
+ {
      this->close();
  }
  
@@ -68,7 +78,8 @@ index 3fb1a2738eb89ec0..c31345bf08d06d88 100644
  }
  
  QString ConfigWindow::getApplicationPath()
-@@ -45,9 +53,9 @@ QString ConfigWindow::getApplicationPath()
+ {
+     return ui->applicationPathLineEdit->text();
  }
  
  
@@ -84,7 +95,7 @@ diff --git a/runtime/ConfigWindow.h b/runtime/ConfigWindow.h
 index 0027a742aca7b762..c4487fcc6e97f354 100644
 --- a/runtime/ConfigWindow.h
 +++ b/runtime/ConfigWindow.h
-@@ -26,10 +26,10 @@ public:
+@@ -26,19 +26,19 @@ public:
      explicit ConfigWindow(QWidget *parent = 0);
      ~ConfigWindow();
  
@@ -97,7 +108,8 @@ index 0027a742aca7b762..c4487fcc6e97f354 100644
      void setApplicationPath(QString path);
  
  private slots:
-@@ -38,7 +38,7 @@ private slots:
+     void on_buttonBox_accepted();
+     void on_buttonBox_rejected();
  
  private:
      Ui::ConfigWindow *ui;
@@ -110,7 +122,7 @@ diff --git a/runtime/ConfigWindow.ui b/runtime/ConfigWindow.ui
 index 40d87be43803204a..8b379052a1da8cd0 100644
 --- a/runtime/ConfigWindow.ui
 +++ b/runtime/ConfigWindow.ui
-@@ -29,14 +29,24 @@
+@@ -29,24 +29,38 @@
        <enum>QFormLayout::ExpandingFieldsGrow</enum>
       </property>
       <item row="0" column="0">
@@ -138,7 +150,9 @@ index 40d87be43803204a..8b379052a1da8cd0 100644
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="applicationPathLabel">
-@@ -46,7 +56,11 @@
+        <property name="text">
+         <string>Application Path</string>
+        </property>
        </widget>
       </item>
       <item row="1" column="1">
@@ -409,7 +423,7 @@ index 33b43583480440b7..83bcdeedb09197c8 100644
  }
  
  bool Server::Init()
-@@ -264,7 +148,8 @@ bool Server::Init()
+@@ -264,52 +148,29 @@ bool Server::Init()
  void Server::run()
  {
      // Open the application code and run it.
@@ -419,7 +433,11 @@ index 33b43583480440b7..83bcdeedb09197c8 100644
      if (!cp)
      {
          setError(QString(tr("Failed to open the application file: %1, server thread exiting.")).arg(m_appfile));
-@@ -276,40 +161,16 @@ void Server::run()
+         return;
+     }
+ 
+     // Set the port number
+     PyRun_SimpleString(QString("PGADMIN_PORT = %1").arg(m_port).toLatin1());
      PyRun_SimpleString(QString("PGADMIN_KEY = '%1'").arg(m_key).toLatin1());
  
      // Run the app!
@@ -611,5 +629,5 @@ index a2dbe7451557befc..ebcb4ff4d4899aaf 100644
  
  
 -- 
-2.12.2
+2.13.0
 
