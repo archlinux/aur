@@ -1,4 +1,6 @@
 # Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
+# Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Special thanks to jonathon https://aur.archlinux.org/account/jonathon
 
 # You'll need to download the package archive from
 # https://www.blackmagicdesign.com/products/davinciresolve
@@ -6,21 +8,20 @@
 pkgname=davinci-resolve-beta
 _pkgname=resolve
 pkgver=14.0b2
-pkgrel=2
+pkgrel=3
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
 license=('Commercial')
 depends=('glu' 'gtk2' 'gstreamer' 'ocl-icd' 'libopenssl-1.0-compat' 'libpng12' 'log4cxx'
-         'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
+         'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 options=('!strip')
 conflicts=('davinci-resolve')
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
 sha256sums=('fe0b068cccf86d5df55c1d48c6c4e3fc3fb2c4769b89b064e4052ff7e012f461')
 
 package() {
-	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs}
-	mkdir -p "${pkgdir}/opt/${_pkgname}/Media"
+	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs,Media}
 
 	msg2 "Extracting from bundle..."
 	cd "${srcdir}" || exit
@@ -86,7 +87,7 @@ EOF
 
 	msg2 "Making sure file ownership is correct..."
 	chown -R root:root "${pkgdir}/opt"
-	chmod a+w "${pkgdir}/opt/${_pkgname}/Media"
+	chmod 0777 "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Any final tweaks..."
 	ln -s /tmp "${pkgdir}/opt/${_pkgname}/logs"
