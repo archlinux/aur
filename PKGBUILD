@@ -20,7 +20,7 @@ build() {
 
   qmake-qt4 main.pro \
     CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server \
-              no-embed-qt-translations no-update packaged no-speechd no-overlay optimize" \
+              no-embed-qt-translations no-update packaged no-speechd no-overlay" \
     DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
 
   make release
