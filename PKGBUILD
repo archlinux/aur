@@ -1,6 +1,6 @@
 # Maintainer: Jacob Jenner Rasmussen <jacob at jener.dk>
 pkgname=dartium
-pkgver=1.22.1
+pkgver=1.23.0
 pkgrel=2
 _branch=stable
 pkgdesc="Dartium is a special build of Chromium that includes the Dart VM"
@@ -10,10 +10,10 @@ license=('custom')
 optdepends=('dart: for development')
 options=('!strip')
 source=("LICENSE")
-sha256sums=("7a209dd1b94cabdb5ea9c6f9164b9546ffa5daaa671e7767d49510db055f5c51")
+sha256sums=('7a209dd1b94cabdb5ea9c6f9164b9546ffa5daaa671e7767d49510db055f5c51')
 source_x86_64+=("$pkgname-$pkgver.zip::https://storage.googleapis.com/dart-archive/channels/${_branch}/release/${pkgver}/dartium/dartium-linux-x64-release.zip")
 #source_i686+=("$pkgname-$pkgver.zip::https://storage.googleapis.com/dart-archive/channels/${_branch}/release/${pkgver}/dartium/dartium-linux-ia32-release.zip")
-sha256sums_x86_64+=("5472e4eb1aac7f6810c3700e0a0fad514bf081364c5e7b02c8da9d44f1713ff4")
+sha256sums_x86_64=('11b5ce6d36a981374bf6180407b6d9ee09754716108a4d4f59f5687068497817')
 #sha256sums_i686+=("MISSING")
 
 package() {
