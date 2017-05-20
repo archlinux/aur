@@ -6,7 +6,7 @@ _cubver=1.6.4
 _eigenver=3.3.3
 _gtestver=1.8.0
 _ncclver=1.3.4-1
-_protover=3.2.0
+_protover=3.3.1
 _pybindver=2.1.1
 _gitver=gitmaster
 _gitwebver=master
@@ -14,7 +14,7 @@ _gitwebver=master
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A new lightweight, modular, and scalable deep learning framework (cpu only)"
 arch=('i686' 'x86_64')
 url="http://caffe2.ai/"
@@ -93,7 +93,7 @@ sha256sums=('b8f266ed283efc172fa96c06c878ed7f125755f89cde480580b754c1f03c0bab'
             '11e4eb44555bb28b9cbad973dacb4640b82710c9769e719afc2013b63ffaf884'
             'SKIP'
             'SKIP'
-            '2a25c2b71c707c5552ec9afdfb22532a93a339e1ca5d38f163fe4107af08c54c'
+            '30f23a45c6f4515598702a6d19c4295ba92c4a635d7ad8d331a4db9fccff392d'
             'f2c6874f1ea5b4ad4ffffe352413f7d2cd1a49f9050940805c2a082348621540'
             'SKIP'
             'SKIP'
