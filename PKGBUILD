@@ -1,6 +1,6 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theterminal
-pkgver=1.1
+pkgver=2.0
 pkgrel=0
 pkgdesc="Simple Terminal Emulator"
 arch=("x86_64")
@@ -23,4 +23,5 @@ package() {
 	cp "$pkgname-$pkgver/theterminal" "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/applications"
 	cp "$pkgname-$pkgver/theterminal.desktop" "$pkgdir/usr/share/applications"
+	cp "$pkgname-$pkgver/theterminaldd.desktop" "$pkgdir/usr/share/applications"
 }
