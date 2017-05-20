@@ -3,15 +3,15 @@
 pkgbase=python-importanize
 pkgname=(python-importanize python2-importanize)
 pypi_name=importanize
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Utility for organizing Python imports using PEP8 or custom rules"
 arch=('any')
 license=('MIT')
 url="https://pypi.python.org/pypi/importanize/"
 makedepends=('python' 'python2' 'python-pathlib2' 'python2-pathlib2')
 source=("https://pypi.io/packages/source/i/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('67dd7938fa3801435b242bf0ba7fae69')
+md5sums=('93d0212941f9cd734a088742ec1122a0')
 
 prepare() {
   cp -a ${pypi_name}-${pkgver}{,-python2}
