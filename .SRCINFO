@@ -1,14 +1,13 @@
 pkgbase = gnome-osx-ii-nt-gtk-theme
 	pkgdesc = Gnome-OSX 2.0 with No Transparent sidebar GTK Theme
-	pkgver = 2.5.1
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1171688/
 	arch = any
-	depends = gnome-shell>=3.20
 	depends = gnome-themes-standard
 	depends = gtk-engine-murrine
-	source = https://dl.opendesktop.org/api/files/download/id/1489658553/Gnome-OSX-II-NT-2-5-1.tar.xz
-	md5sums = 2b83b51880766cd58848136eba49127e
+	source = https://dl.opendesktop.org/api/files/download/id/1494791955/Gnome-OSX-II-2-6-NT.tar.gz
+	md5sums = ce48ad774476794b7beedaebc7de5f7f
 
 pkgname = gnome-osx-ii-nt-gtk-theme
 
