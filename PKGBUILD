@@ -3,7 +3,7 @@
 PN=Cyberfox
 pkgname=cyberfox
 pkgver=52.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and privacy oriented fork of Mozilla Firefox"
 arch=('x86_64')
 url="https://8pecxstudios.com/"
@@ -19,9 +19,8 @@ validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
 package() {
     install -d "$pkgdir"/{usr/bin,opt}
-    mv "${pkgname}" "${PN}"
-    mv "${PN}" "${pkgdir}/opt/${pkgname}"
-    ln -s "/opt/${pkgname}/${PN}" "${pkgdir}/usr/bin/${pkgname}"
+    mv "${pkgname}" "${pkgdir}/opt/${pkgname}"
+    ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${pkgdir}/opt/${pkgname}/browser/icons/mozicon128.png" \
                    "${pkgdir}/usr/share/pixmaps/${pkgname}-icon.png"
