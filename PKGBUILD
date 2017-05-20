@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-plank-themes-git
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plank themes for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Plank-Themes"
