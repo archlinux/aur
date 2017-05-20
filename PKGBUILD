@@ -3,7 +3,7 @@
 
 pkgname=samtools
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
 url="http://www.htslib.org/"
@@ -57,4 +57,4 @@ package() {
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-md5sums=('60186f7817813baf99abc4b802f61138')
+md5sums=('4860d6a8f85c6965a7e82fb11afbde13')
