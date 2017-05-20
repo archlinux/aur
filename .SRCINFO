@@ -1,8 +1,8 @@
 pkgbase = epdfview-git
 	pkgdesc = Lightweight PDF document viewer
-	pkgver = 0.1.8.r43
+	pkgver = 0.1.8.r49
 	pkgrel = 1
-	url = https://github.com/shimmerproject/Greybird
+	url = http://freecode.com/projects/epdfview
 	arch = i686
 	arch = x86_64
 	license = GPL2
