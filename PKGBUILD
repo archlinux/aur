@@ -181,11 +181,12 @@ package() {
   # Make directories and copy files.
 
   mkdir -p \
+    "$pkgdir/etc"/{cups,vmware} \
     "$pkgdir/usr"/{share,bin} \
-    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/2.1.0} \
-    "$pkgdir/var/lib/vmware/Shared VMs" \
-    "$pkgdir/etc/vmware" \
-    "$pkgdir/usr/share/licenses/$pkgname"
+    "$pkgdir/usr/include/vmware-vix" \
+    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/2.1.0,cups/filter} \
+    "$pkgdir/usr/share/licenses/$pkgname" \
+    "$pkgdir/var/lib/vmware/Shared VMs"
 
   cd "$srcdir/extracted"
 
@@ -201,6 +202,7 @@ package() {
     vmware-workstation/bin/* \
     vmware-vmx/{,s}bin/* \
     vmware-vix-core/bin/* \
+    vmware-vprobe/bin/* \
     vmware-workstation-server/{vmware-hostd,vmware-vim-cmd,vmware-wssc-adminTool} \
     vmware-network-editor-ui/bin/* \
     vmware-player-app/bin/* \
@@ -210,6 +212,7 @@ package() {
     vmware-workstation/lib/* \
     vmware-player-app/lib/* \
     vmware-vmx/lib/* \
+    vmware-vprobe/lib/bin/* \
     vmware-workstation-server/{bin,lib,hostd} \
     vmware-usbarbitrator/bin \
     vmware-network-editor/lib \
@@ -237,6 +240,18 @@ package() {
   cp -r \
     vmware-installer/{python,sopython,vmis,vmis-launcher,vmware-installer,vmware-installer.py} \
     "$pkgdir/usr/lib/vmware-installer/2.1.0"
+
+  cp -r \
+    vmware-player-app/etc/cups/* \
+    "$pkgdir/etc/cups"
+
+  cp -r \
+    vmware-player-app/extras/thnucups \
+    "$pkgdir/usr/lib/cups/filter"
+
+  cp -r \
+    vmware-vix-core/include/* \
+    "$pkgdir/usr/include/vmware-vix"
 
   for isoimage in ${_isoimages[@]}
   do
@@ -281,10 +296,13 @@ package() {
     "$pkgdir/usr/lib/vmware/setup/vmware-config" \
     "$pkgdir/usr/lib/vmware/lib"/{wrapper-gtk24.sh,libgksu2.so.0/gksu-run-helper} \
     "$pkgdir/usr/lib/vmware-ovftool"/{ovftool,ovftool.bin} \
-    "$pkgdir/usr/lib/vmware-installer/2.1.0"/{vmware-installer,vmis-launcher}
+    "$pkgdir/usr/lib/vmware-installer/2.1.0"/{vmware-installer,vmis-launcher} \
+    "$pkgdir/usr/lib/cups/filter/thnucups"
 
   chmod -R 600 "$pkgdir/etc/vmware/ssl"
-  chmod +s "$pkgdir/usr/lib/vmware/bin/vmware-vmx"
+  chmod +s \
+    "$pkgdir/usr/bin"/{vmware-authd,vmware-mount} \
+    "$pkgdir/usr/lib/vmware/bin"/{vmware-vmx,vmware-vmx-debug,vmware-vmx-stats}
 
 
   # Add symlinks the installer would create.
