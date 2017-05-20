@@ -6,13 +6,14 @@ _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
 pkgname=openresty
 pkgver=1.11.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
 license=('BSD')
 depends=('perl>=5.6.1' 'readline' 'pcre' 'openssl')
 install=$pkgname.install
+options=(!purge)
 validgpgkeys=('iQEcBAEBAgAGBQJY+EzlAAoJELVQ4J6g6YBmKyoH/3ExFtvtdkEis6s6tAmjheJv
 Jrtgt8ecjYi7XmmtkwltU2eoqOOZI+zo6TZ+V0Pn6TbAy95onnLIzmtJxI9QNRyM
 gewKi2q86ccxZaT6uzzFPLNzaIRQN1Rv6Rw/8ZA0dpG/j9sCM+NKlXBPJ0ymppEu
