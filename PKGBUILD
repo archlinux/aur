@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-tint2-themes-git
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tint2 Themes for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Tint2-Themes"
