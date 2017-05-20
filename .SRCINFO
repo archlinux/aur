@@ -6,7 +6,6 @@ pkgbase = ecos
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = suitesparse
 	source = https://github.com/embotech/ecos/archive/v2.0.5.tar.gz
 	sha256sums = 14c6ef81dfe9dad6af353e3499ad3a7a0eb1ebd289a995b038e3bc67c6101151
 
