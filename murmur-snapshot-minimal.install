@@ -7,6 +7,8 @@ post_install() {
 	chown -R root:murmur /etc/murmur
 	chmod 750 /var/lib/murmur /var/log/murmur
 	chmod 755 /run/murmur
+
+	systemctl daemon-reload
 }
 
 post_remove() {
