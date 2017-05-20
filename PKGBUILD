@@ -1,10 +1,10 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
-_pkgnamefmt=LibreOffice
+_pkgnamefmt=LibreOfficeDev
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
-_LOver=5.3.3.2
-pkgver=5.3.3.2
+_LOver=5.4.0.0.beta1
+pkgver=5.4.0.0.beta1
 _basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 pkgrel=1
 arch=('i686' 'x86_64')
