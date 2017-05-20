@@ -50,10 +50,7 @@ package() {
   mv etc/udev/rules.d/* usr/lib/udev/rules.d/
 
   mkdir -p usr/share/p11-kit/modules
-  # XXX: remove after arojas fixes the openssl 1.0 mess
-  { echo "module: libgclib.so";
-    echo "remote: |env LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat /usr/lib/pkcs11/libgclib.so"
-  } > usr/share/p11-kit/modules/$pkgname.module
+  echo "module: libgclib.so" > usr/share/p11-kit/modules/$pkgname.module
 }
 
 # vim: ft=sh:ts=2:sw=2:et:nowrap
