@@ -2,7 +2,7 @@
 
 PN=Cyberfox
 pkgname=cyberfox
-pkgver=52.1.2
+pkgver=52.1.3
 pkgrel=1
 pkgdesc="Fast and privacy oriented fork of Mozilla Firefox"
 arch=('x86_64')
@@ -13,12 +13,13 @@ source=("${pkgname}.desktop"
         "http://downloads.sourceforge.net/project/cyberfox/Zipped%20Format/${PN}-$pkgver.en-US.linux-${arch}.tar.bz2")
 
 md5sums=('66568212abb7563bf390db5762924815'
-         '2d9815616b829546a9ab54fab5559b86')
+         '9f0e38f3056f32dadba94d2b517af79d')
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
 package() {
     install -d "$pkgdir"/{usr/bin,opt}
+    mv "${pkgname}" "${PN}"
     mv "${PN}" "${pkgdir}/opt/${pkgname}"
     ln -s "/opt/${pkgname}/${PN}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
