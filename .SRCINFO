@@ -1,17 +1,17 @@
 pkgbase = ruby-terminal-table
 	pkgdesc = Simple, feature rich ascii table generation library
-	pkgver = 1.7.3
-	pkgrel = 4
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://github.com/tj/terminal-table
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-unicode-display_width<2
 	depends = ruby-unicode-display_width>=1.1.1
-	noextract = terminal-table-1.7.3.gem
+	noextract = terminal-table-1.8.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/terminal-table-1.7.3.gem
-	sha1sums = f1c4f71bcfc43d5b65016383403205b3bac9291e
+	source = https://rubygems.org/downloads/terminal-table-1.8.0.gem
+	sha1sums = e5d8ae048471029bd8991152c7e8c20aafb8b935
 
 pkgname = ruby-terminal-table
 
