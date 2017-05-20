@@ -1,0 +1,22 @@
+pkgbase = chigraph-gui
+	pkgdesc = The GUI for chigraph, a visual programming language
+	pkgver = 1.0.0a
+	pkgrel = 1
+	url = https://github.com/chigraph/chigraph
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = tar
+	makedepends = gzip
+	depends = chigraph
+	depends = kxmlgui
+	depends = ktexteditor
+	conflicts = chigraph-gui-git
+	source = https://github.com/russelltg/nodeeditor/archive/v1.0.0a.tar.gz:nodeeditor-1.0.0a.tar.gz
+	source = https://github.com/chigraph/chigraph-gui/archive/v1.0.0a.tar.gz:chigraph-gui-1.0.0a.tar.gz
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = chigraph-gui
+
