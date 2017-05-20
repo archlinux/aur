@@ -16,6 +16,6 @@ _version=${pkgver//./-}-NT
 
 package() {
     cd "$srcdir"
-    mv "$_name-$_version" "$_name"
+    mv "$_name-$_version" "$_name-NT"
     find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
 }
