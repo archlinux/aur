@@ -1,18 +1,19 @@
 pkgbase = chigraph-git
 	pkgdesc = A visual programming language
 	pkgver = 244c0d0a512158d6f126713fc0ca0e2a3b532989
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chigraph/chigraph
 	arch = i686
 	arch = x86_64
 	makedepends = cmake
-	makedepends = git
 	makedepends = boost
+	makedepends = llvm
+	makedepends = clang
 	depends = libgit2
-	depends = llvm
-	depends = clang
+	depends = llvm-libs
 	depends = lldb
 	depends = boost-libs
+	conflicts = chigraph-git
 	source = chigraph::git+https://github.com/chigraph/chigraph
 	md5sums = SKIP
 
