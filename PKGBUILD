@@ -3,7 +3,7 @@
 # Contributor: Libernux <dutchman55@gmx.com>
 pkgname="brother-hl3040cn"
 pkgver="1.1.2"
-pkgrel=3
+pkgrel=4
 pkgdesc="LPR and CUPS driver for the Brother HL3040cn"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
@@ -56,7 +56,11 @@ prepare() {
 }
 package() {
 	cp -R $srcdir/usr $pkgdir
-	if [ -d $srcdir/opt ]; then cp -R $srcdir/opt $pkgdir; fi
+	if [ -d $srcdir/opt ]; then
+	   	cp -R $srcdir/opt $pkgdir
+		chown root:lp $srcdir/opt/brother/Printers/hl3040cn/inf/
+		chmod g+w $srcdir/opt/brother/Printers/hl3040cn/inf/
+	fi
 	install -m 644 -D cupswrapper-license.txt  $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt
 	install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt
 }
