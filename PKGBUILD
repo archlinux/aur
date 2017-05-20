@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Gil Peyrot <emmanuel.peyrot@collabora.com>
 
 pkgname=wayland-protocols-git
-pkgver=1.0.41.0b05b70
+pkgver=1.7.119.a4e1280
 pkgrel=1
 pkgdesc='Wayland protocols that add functionalities not available in the core protocol'
 arch=('any')
@@ -32,6 +32,12 @@ build() {
     cd wayland-protocols/build
     ../autogen.sh --prefix=/usr
     make
+}
+
+check() {
+    cd wayland-protocols/build
+    rm -r stable unstable test-suite.log
+    make test-suite.log
 }
 
 package() {
