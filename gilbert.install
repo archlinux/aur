@@ -1,0 +1,12 @@
+post_install() {
+    fc-cache
+}
+
+pre_upgrade() {
+    rm -r /usr/share/fonts/gilbert/
+    fc-cache
+}
+
+post_upgrade() {
+    fc-cache
+}
