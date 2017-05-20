@@ -3,15 +3,16 @@ pkgname=archlabs-pipemenus-git
 _pkgname=archlabs-pipemenus
 _destname="/usr/bin/"
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Plank themes for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-pipemenus"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
-provides=('archlabs-pipemenus-git')
+depends=()
+provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=('archlabs-pipemenus::git+https://github.com/ARCHLabs/Archlabs-pipemenus.git')
+source=(${_pkgname}::"git+https://github.com/ARCHLabs/${_pkgname}.git")
 sha256sums=('SKIP')
 package() {
 	rm -f "${srcdir}/${_pkgname}/"README.md
