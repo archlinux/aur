@@ -1,6 +1,6 @@
 pkgbase = webissues-client
 	pkgdesc = An open source, multi-platform system for issue tracking and team collaboration.
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = http://webissues.mimec.org/
 	arch = any
@@ -8,12 +8,8 @@ pkgbase = webissues-client
 	depends = qt5-base>=5.6.2
 	provides = webissues
 	conflicts = webissues
-	source = http://downloads.sourceforge.net/webissues/webissues-1.1.4.tar.bz2
-	source = compiler-includes.patch
-	source = qt-5.6.patch
+	source = http://downloads.sourceforge.net/webissues/webissues-1.1.5.tar.bz2
 	md5sums = 798ec55cb123f00daa3a8ed0f9509dda
-	md5sums = f3f6f39b75c33c98764e45ad91eca706
-	md5sums = 60d63e4aedc2d8b74315e2ef1bb7ab04
 
 pkgname = webissues-client
 
