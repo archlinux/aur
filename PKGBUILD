@@ -4,8 +4,8 @@
 MOZJS_DEBUG=
 
 pkgname=js52
-pkgver=52.1.1esr
-pkgrel=2
+pkgver=52.1.2esr
+pkgrel=1
 pkgdesc="JavaScript interpreter and libraries"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
@@ -16,7 +16,7 @@ options=(!staticlibs)
 [[ -z "$MOZJS_DEBUG" ]] || options+=(!strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         link-mozglue.patch)
-md5sums=('e3913665423e4c4d60576d363124b89b'
+md5sums=('cf3e1f554836056bbe6a6b78b61fe68a'
          '31bf0b1a043169bd1c651331ef9c9dd8')
 
 prepare() {
