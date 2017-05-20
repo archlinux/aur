@@ -7,7 +7,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.3.1.r312.gf7eea6c50
+pkgver=1.3.1.r334.gf8f6feff3
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 url='http://www.clementine-player.org/'
@@ -24,6 +24,8 @@ optdepends=('gst-plugins-base: "Base" plugin libraries'
             'gst-plugins-ugly: "Ugly" plugin libraries'
             'gst-libav: Libav plugin'
             'gvfs: Various devices support')
+conflicts=('clementine')
+provides=('clementine')
 source=("git+https://github.com/clementine-player/Clementine.git")
 sha256sums=('SKIP')
 
