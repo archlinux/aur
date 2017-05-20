@@ -1,7 +1,7 @@
 # Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
-################################################################################
+############################################################################
 # Patch VMware Workstation to enable macOS guests support
 # Uncomment the line below to enable it
 
@@ -10,12 +10,12 @@
 # CAUTION: Run macOS on a non Apple computer may be forbidden in your country.
 # Source of the patch: https://github.com/DrDonk/unlocker
 # Forum: http://www.insanelymac.com/forum/topic/303311-workstation-1112-player-712-fusion-78-and-esxi-6-mac-os-x-unlocker-2
-################################################################################
+############################################################################
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
 pkgver=12.5.6_5528349
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -46,11 +46,16 @@ makedepends=(
 )
 backup=(
   'etc/vmware/config'
-  'etc/pam.d/vmware-authd'
+  'etc/vmware/hostd/authorization.xml'
   'etc/vmware/hostd/config.xml'
   'etc/vmware/hostd/datastores.xml'
+  'etc/vmware/hostd/dispatcher.xml'
   'etc/vmware/hostd/environments.xml'
   'etc/vmware/hostd/proxy.xml'
+  'etc/vmware/hostd/tagExtractor.xml'
+  'etc/vmware/netmap.conf'
+  'etc/vmware/ssl/hostd.ssl.config'
+  'etc/pam.d/vmware-authd'
 )
 source=(
   "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${pkgver/_/-}.x86_64.bundle"
@@ -184,7 +189,7 @@ package() {
   # Make directories and copy files.
 
   mkdir -p \
-    "$pkgdir/etc"/{cups,pam.d,modprobe.d,profile.d,vmware} \
+    "$pkgdir/etc"/{cups,pam.d,modprobe.d,profile.d,thnuclnt,vmware} \
     "$pkgdir/usr"/{share,bin} \
     "$pkgdir/usr/include/vmware-vix" \
     "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/2.1.0,cups/filter,modules-load.d} \
@@ -307,11 +312,12 @@ package() {
   chmod +x \
     "$pkgdir/usr/bin"/* \
     "$pkgdir/usr/lib/vmware/bin"/* \
-    "$pkgdir/usr/lib/vmware/setup/vmware-config" \
+    "$pkgdir/usr/lib/vmware/setup"/* \
     "$pkgdir/usr/lib/vmware/lib"/{wrapper-gtk24.sh,libgksu2.so.0/gksu-run-helper} \
     "$pkgdir/usr/lib/vmware-ovftool"/{ovftool,ovftool.bin} \
     "$pkgdir/usr/lib/vmware-installer/2.1.0"/{vmware-installer,vmis-launcher} \
-    "$pkgdir/usr/lib/cups/filter/thnucups"
+    "$pkgdir/usr/lib/cups/filter"/* \
+    "$pkgdir/usr/lib/vmware-vix/setup"/*
 
   chmod -R 600 "$pkgdir/etc/vmware/ssl"
   chmod +s \
@@ -343,6 +349,7 @@ package() {
 
   ln -s /usr/lib/vmware/icu "$pkgdir/etc/vmware/icu"
   ln -s /usr/lib/vmware-ovftool/ovftool "$pkgdir/usr/bin/ovftool"
+  ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/etc/thnuclnt/.thnumod"
 
 
   # Replace placeholder "variables" with real paths.
