@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=wxmaxima-git
-pkgver=r4506.14b060a4
+pkgver=r4516.5d6eddc9
 pkgrel=1
 pkgdesc="A document based interface for the computer algebra system Maxima."
 arch=('i686' 'x86_64')
@@ -10,13 +10,9 @@ depends=('maxima' 'wxgtk')
 makedepends=('git' 'texi2html')
 conflicts=('wxmaxima')
 provides=('wxmaxima')
-source=("git+https://github.com/andrejv/wxmaxima.git#commit=14b060a4b50e4aa74e2fca22d5f51824bc17069b")
+source=("git+https://github.com/andrejv/wxmaxima.git")
 sha256sums=('SKIP')
 options=('!makeflags')
-
-prepare() {
-  cp /usr/share/aclocal/wxwin.m4 "$srcdir/wxmaxima/acinclude.m4"
-}
 
 pkgver() {
   cd "$srcdir/wxmaxima"
@@ -27,6 +23,7 @@ build() {
   cd "$srcdir/wxmaxima"
   export WX_CONFIG_PATH=/usr/bin/wx-config
   export CXXFLAGS+=" -fno-delete-null-pointer-checks"
+  LANG=C
   ./bootstrap
   ./configure --with-wx-config=/usr/bin/wx-config --prefix=/usr
   make
