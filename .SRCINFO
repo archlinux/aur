@@ -1,0 +1,37 @@
+pkgbase = haskell-servant-client
+	pkgdesc = automatical derivation of querying functions for servant webservices
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://haskell-servant.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-aeson
+	depends = haskell-attoparsec
+	depends = haskell-base-compat
+	depends = haskell-base64-bytestring
+	depends = haskell-exceptions
+	depends = haskell-generics-sop
+	depends = haskell-http-api-data
+	depends = haskell-http-client
+	depends = haskell-http-client-tls
+	depends = haskell-http-media
+	depends = haskell-http-types
+	depends = haskell-monad-control
+	depends = haskell-mtl
+	depends = haskell-network-uri
+	depends = haskell-safe
+	depends = haskell-semigroupoids
+	depends = haskell-servant
+	depends = haskell-string-conversions
+	depends = haskell-text
+	depends = haskell-transformers-base
+	depends = haskell-transformers-compat
+	options = strip
+	options = staticlibs
+	source = https://hackage.haskell.org/packages/archive/servant-client/0.10/servant-client-0.10.tar.gz
+	sha256sums = 55e411ac7e38a5c1b77d8d3c2320369be36a7b7181e27bb5ac4fba308ef93eaa
+
+pkgname = haskell-servant-client
+
