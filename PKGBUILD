@@ -1,8 +1,8 @@
 # Maintainer: Jörg Behrmann <behrmann@physik.fu-berlin.de>
 # Contributor: Max Schlemmer <max.schlemmer@gmail.com>
 pkgname=python-kwant
-pkgver=1.2.2
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Python package for numerical calculations on tight-binding models with a strong focus on quantum transport"
 arch=('any')
 url="http://kwant-project.org/"
@@ -17,7 +17,7 @@ source=(
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz
 	http://downloads.kwant-project.org/kwant/kwant-$pkgver.tar.gz.asc
 )
-sha1sums=('7a2aa07492c3aee8930fd7de402e62fea84f3eca'
+sha1sums=('29aaee9effdc8ef2a8b80a97e34dda8bcc664bf6'
           'SKIP')
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
@@ -26,7 +26,6 @@ validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 # serious calculations can be done in a reasonable time.
 prepare() {
     cp "../build.conf" "$srcdir/kwant-$pkgver/build.conf"
-    cp "../setup.py" "$srcdir/kwant-$pkgver/setup.py"
 }
 
 build() {
