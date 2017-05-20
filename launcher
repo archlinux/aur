@@ -1,7 +1,32 @@
 #!/bin/bash
+
+if [ ! -d "$HOME"/pxtone ] ; then
+	# the project/material folders don't exist
+	echo "Creating user data directory at $HOME/pxtone..."
+	mkdir -p "$HOME"/pxtone
+
+	# if the data folder exists AND the data folders aren't symlinks, copy everything over
+	# this will happen when updating from an older package
+	if [ -d "$HOME"/.pxtone ] && [ ! -L "$HOME"/.pxtone/my_material ] ; then
+		echo "Moving data from its old location ($HOME/.pxtone)..."
+		mv "$HOME"/.pxtone/my_material "$HOME"/pxtone/material
+		ln -s "$HOME"/pxtone/material "$HOME"/.pxtone/my_material
+		mv "$HOME"/.pxtone/my_project "$HOME"/pxtone/project
+		ln -s "$HOME"/pxtone/project "$HOME"/.pxtone/my_project
+	else
+		echo "Copying factory files..."
+		# copy the factory files
+		cp -r /usr/share/pxtone/my_material "$HOME"/pxtone/material
+		cp -r /usr/share/pxtone/my_project "$HOME"/pxtone/project
+	fi
+fi
+
 if [ ! -d "$HOME"/.pxtone ] ; then
+	# symlink everything
+	echo "Linking pxtone to $HOME/.pxtone..."
 	mkdir -p "$HOME"/.pxtone
-	cp -r /usr/share/pxtone/{my_material,my_project} "$HOME"/.pxtone
+	ln -s "$HOME"/pxtone/material "$HOME"/.pxtone/my_material
+	ln -s "$HOME"/pxtone/project "$HOME"/.pxtone/my_project
 	ln -s /usr/share/pxtone/pt{Collage,Noise,Voice,Player}.exe "$HOME"/.pxtone
 	ln -s /usr/share/pxtone/{sample,pxtone_include} "$HOME"/.pxtone
 	ln -s /usr/share/pxtone/pxtone{Tool,Win32}.dll "$HOME"/.pxtone

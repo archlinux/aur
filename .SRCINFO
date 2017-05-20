@@ -1,7 +1,7 @@
 pkgbase = pxtone-collage
 	pkgdesc = A set of tools for creating or playing pxtone files and other pxtone-related formats.
 	pkgver = 0925
-	pkgrel = 2
+	pkgrel = 3
 	url = http://studiopixel.sakura.ne.jp/pxtone/index.html
 	arch = any
 	license = BSD
@@ -26,7 +26,7 @@ pkgbase = pxtone-collage
 	md5sums = fbea9e51af9a97aadcac46480fc3f5c5
 	md5sums = a2959cd6ebbddbde0ff676e5b298f175
 	md5sums = 24b5fbce51f0f2017e21aeedefd2802d
-	md5sums = f8df510bd8562648bd328172994e768b
+	md5sums = 081483b5183d8d2b7408177269669716
 
 pkgname = pxtone-collage
 

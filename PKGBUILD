@@ -1,22 +1,13 @@
-# Maintainer: Josh Mandle <difarem@gmail.com>
+# Maintainer: Difarem <difarem@gmail.com>
 pkgname=pxtone-collage
 pkgver=0925
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of tools for creating or playing pxtone files and other pxtone-related formats."
 arch=(any)
 url="http://studiopixel.sakura.ne.jp/pxtone/index.html"
 license=('BSD')
 depends=(wine)
 makedepends=(gendesk)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(http://studiopixel.sakura.ne.jp/binaries/pxtone_$pkgver.zip
 		pxtone-collage.png pxtone-noise.png pxtone-voice.png pxtone-player.png
 		pxtone-collage pxtone-noise pxtone-voice pxtone-player launcher)
@@ -30,7 +21,7 @@ md5sums=('caa267b0255e2c10f62dbea236c317f3'
          'fbea9e51af9a97aadcac46480fc3f5c5'
          'a2959cd6ebbddbde0ff676e5b298f175'
          '24b5fbce51f0f2017e21aeedefd2802d'
-         'f8df510bd8562648bd328172994e768b')
+         '081483b5183d8d2b7408177269669716')
 validpgpkeys=()
 
 prepare() {
@@ -86,4 +77,7 @@ package() {
 	cp -ra pxtone/* $pkgdir/usr/share/pxtone
 	find $pkgdir/usr/share/pxtone -type d -exec chmod 755 "{}" \;
 	find $pkgdir/usr/share/pxtone -type f -exec chmod 644 "{}" \;
+	rmdir $pkgdir/usr/share/pxtone/my_project # empty directory, namcap complains
+	
+	install -Dm644 pxtone/readme.txt $pkgdir/usr/share/licenses/pxtone-collage/readme.txt # license
 }
