@@ -52,6 +52,7 @@ package() {
       -e "s|;logfile=murmur.log|logfile=/var/log/murmur/murmur.log|" \
       -e "s|;pidfile=|pidfile=/run/murmur/murmur.pid|" \
       -e "s|;uname=|uname=murmur|" \
+      -e "s|;sendversion=True|sendversion=False|" \
       -i "${pkgdir}/etc/murmur/murmur.ini"
 }
 
