@@ -1,6 +1,6 @@
 pkgbase = gnome-osx-ii-gtk-theme
 	pkgdesc = Gnome-OSX 2.0 GTK Theme
-	pkgver = 2.6.0
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1171688/
 	arch = any
