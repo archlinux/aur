@@ -1,7 +1,9 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-tint2-themes-git
+_pkgname=archlabs-tint2-themes
+_destname="/usr/share/tint2/"
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Tint2 Themes for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Tint2-Themes"
@@ -13,6 +15,6 @@ options=(!strip !emptydirs)
 source=('git+https://github.com/ARCHLabs/Archlabs-Tint2-Themes.git')
 sha256sums=('SKIP')
 package() {
-	mkdir -p "${pkgdir}/usr/share/tint2/"
-	cp -r "${srcdir}/Archlabs-Tint2-Themes/"*.tint2rc "${pkgdir}/usr/share/tint2/"
+	mkdir -p "${pkgdir}${_destname}"
+	cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}${_destname}"
 }
