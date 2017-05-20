@@ -1,0 +1,58 @@
+# Maintainer: Egor Kovetskiy <e.kovetskiy@office.ngs.ru>
+_pkgname="man-win32"
+pkgname=${_pkgname}-git
+pkgver=20170520.1_a3ea8b4
+pkgrel=1
+pkgdesc="The missing man-like tool for Windows API"
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=(
+    'elinks'
+    'opts-bash'
+    'less'
+    'bash'
+)
+makedepends=(
+    'git'
+    'chmlib'
+)
+
+source=(
+    "${_pkgname}::git://github.com/kovetskiy/${_pkgname}.git#branch=${BRANCH:-master}"
+    "http://laurencejackson.com/win32/Win32.chm"
+)
+
+md5sums=(
+    'SKIP'
+    'ce7e972cfdb2868e2549b4c262a80a49'
+)
+
+backup=(
+)
+
+pkgver() {
+    if [[ "$PKGVER" ]]; then
+        echo "$PKGVER"
+        return
+    fi
+
+    cd "$srcdir/${_pkgname}"
+    local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
+    local count=$(git rev-list --count HEAD)
+    local commit=$(git rev-parse --short HEAD)
+    echo "$date.${count}_$commit"
+}
+
+build() {
+    cd "$srcdir"
+
+    extract_chmLib Win32.chm chm
+}
+
+package() {
+    mkdir -p "${pkgdir}/usr/bin/"
+    cp "${srcdir}/${_pkgname}/man-win32" "${pkgdir}/usr/bin/man-win32"
+
+    mkdir -p "${pkgdir}/usr/share/man-win32/"
+    cp -r "${srcdir}/chm/" "${pkgdir}/usr/share/man-win32/chm/"
+}
