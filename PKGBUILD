@@ -1,14 +1,14 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=cyberfox-kde-bin
-pkgver=52.1.2
-pkgrel=6
+pkgver=52.1.3
+pkgrel=1
 pkgdesc="
 'KDE Plasma Edition' of the fast, stable & reliable x64-bit web browser. It contains KDE patches, which contains KDE file dialogs, file associations, protocol handlers and other KDE Plasma integration features."
 arch=('x86_64')
 url="https://cyberfox.8pecxstudios.com/"
 license=('MPL' 'GPL')
-depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kcyberfoxhelper')
+depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kcyberfoxhelper' 'nspr' 'ffmpeg' 'libvpx' 'libevent' 'sqlite' 'icu')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
@@ -96,4 +96,4 @@ bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
   msg2 "Creating symlink to hyphen..."
   ln -Ts /usr/share/hyphen "$pkgdir/opt/cyberfox/hyphenation"
 }
-sha256sums=('abfa7109334fb192f6c2b58e5f893c07e5aa3d60ae4c02e2089ee0fd1b09585e')
+sha256sums=('cfa65914cd32a245ad36d6d7ddbc85385c1f70a88b59ba04c981d6cb985eafcc')
