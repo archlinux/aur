@@ -12,9 +12,11 @@ makedepends=('git')
 depends=('tint2')
 provides=('archlabs-tint2-themes-git')
 options=(!strip !emptydirs)
-source=('git+https://github.com/ARCHLabs/Archlabs-Tint2-Themes.git')
+source=('git+https://github.com/ARCHLabs/archlabs-tint2-themes.git')
 sha256sums=('SKIP')
 package() {
+	rm -f "${srcdir}/${_pkgname}/"README.md
+	rm -f "${srcdir}/${_pkgname}/"git-v*
 	mkdir -p "${pkgdir}${_destname}"
 	cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}${_destname}"
 }
