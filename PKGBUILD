@@ -7,7 +7,7 @@ pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=(any)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=("MIT")
-makedepends=(mingw-w64-configure mingw-w64-cairo mingw-w64-icu mingw-w64-graphite mingw-w64-freetype2 ragel)
+makedepends=(mingw-w64-configure mingw-w64-cairo mingw-w64-icu mingw-w64-graphite mingw-w64-freetype2 ragel git)
 options=(!strip !buildflags staticlibs)
 source=("git+https://anongit.freedesktop.org/git/harfbuzz#commit=$_commit")
 sha256sums=('SKIP')
