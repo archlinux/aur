@@ -1,0 +1,30 @@
+pkgbase = haskell-servant
+	pkgdesc = A family of combinators for defining webservices APIs
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://haskell-servant.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-aeson
+	depends = haskell-attoparsec
+	depends = haskell-base-compat
+	depends = haskell-case-insensitive
+	depends = haskell-http-api-data
+	depends = haskell-http-media
+	depends = haskell-http-types
+	depends = haskell-mmorph
+	depends = haskell-mtl
+	depends = haskell-natural-transformation
+	depends = haskell-network-uri
+	depends = haskell-string-conversions
+	depends = haskell-text
+	depends = haskell-vault
+	options = strip
+	options = staticlibs
+	source = https://hackage.haskell.org/packages/archive/servant/0.10/servant-0.10.tar.gz
+	sha256sums = e1daa9ba2b759615341345a17a95833729ae3200af12dacec07507a95a4b331e
+
+pkgname = haskell-servant
+
