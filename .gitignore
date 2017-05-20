@@ -3,3 +3,4 @@
 *.tar.gz.asc
 pkg/
 src/
+kwant-*/
