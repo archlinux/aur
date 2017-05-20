@@ -59,14 +59,14 @@ msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]
 pkgbase=xfce4-sntray-plugin
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://github.com/rilian-la-te/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
 license=('LGPL')
 source=("https://github.com/rilian-la-te/xfce4-sntray-plugin/releases/download/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('7b0044d0688c37074dd92706503512142024e6dc613bb865904d8b1015ac007b')
+sha256sums=('9d220e6d7754b6911dac6c50e4e54f3b789dd00f2f7e374a1b9a51b2bcf2b476')
 
 build(){
 	cd "${srcdir}/${pkgbase}-${pkgver}"
