@@ -3,7 +3,7 @@
 # Contributor: Krzysztof Malinowski <boromil@gmail.com>
 
 pkgname=alarm-clock
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Alarm clock to schedule your tasks"
 depends=('gtk2' 'gstreamer' 'libunique' 'libnotify')
@@ -13,7 +13,7 @@ license=('GPL2')
 source=("https://github.com/shaggytwodope/alarm-clock/archive/v$pkgver.tar.gz")
 options=('!libtool')
 url="https://github.com/shaggytwodope/alarm-clock"
-md5sums=('f34f7024c7883890c105c7f01fb6cc50')
+md5sums=('e8576f68a915639967b06b95f9d90068')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
