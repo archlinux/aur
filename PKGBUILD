@@ -20,6 +20,6 @@ pkgver() {
 package() {
 	cd "$srcdir/${_pkgname}"
 	python setup.py install --root="$pkgdir" --optimize=1
-    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
-    cp LICENSE "$pkgdir/usr/share/licenses/${pkgname}/"
+	mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+	cp LICENSE "$pkgdir/usr/share/licenses/${pkgname}/"
 }
