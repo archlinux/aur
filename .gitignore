@@ -1,2 +1,4 @@
-# (release) archives
+# common
+src/
+pkg/
 *.tar*

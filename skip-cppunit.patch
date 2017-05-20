@@ -1,0 +1,10 @@
+--- a/configure.ac	2017-05-20 15:41:43.053441103 +0000
++++ b/configure.ac	2017-05-20 15:42:02.103400529 +0000
+@@ -19,7 +19,6 @@
+ 
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS(config.h)
+-AM_PATH_CPPUNIT(1.9.6)
+ 
+ AC_PROG_CXX
+ 
