@@ -4,7 +4,7 @@
 pkgname=firefox-unbranded-bin
 _pkgname=firefox-unbranded
 _name=firefox
-pkgver=53.0.3.1494533065
+pkgver=53.0.4.1495206500
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version (binary)"
 arch=('x86_64')
@@ -36,7 +36,8 @@ sha512sums=('88849a4d75ed528e21272364461c70a968fc92b661d1dd5007ff54aff11080d2555
 sha512sums_x86_64=("${_sha512sum}")
 
 pkgver() {
-	echo "${_pkgver}.${_lasttmstmp}"
+  # need to append major version with ".0" to make dot release upgrades work
+  echo "$(sed 's@\.0$@&.0@' <<< $_pkgver).${_lasttmstmp}"
 }
 
 package() {
