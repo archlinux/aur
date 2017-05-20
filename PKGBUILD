@@ -4,7 +4,7 @@
 pkgname=nvidia-340xx-ck
 pkgver=340.102
 _extramodules=extramodules-4.11-ck
-pkgrel=8
+pkgrel=9
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -34,7 +34,7 @@ prepare() {
   cd "${_pkg}"
   
   # patches here
-  patch -Np1 -i "${srcdir}"/unfuck.patch
+  patch -Np1 -i "${srcdir}"/unfuck_4.11_for_340xx.patch
   patch -Np0 < "${srcdir}"/fs52243.patch
   patch -Np1 < "${srcdir}"/4.10.0_kernel.patch
 
