@@ -1,17 +1,22 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-plank-themes-git
+_pkgname=archlabs-plank-themes
+_destname="/usr/share/plank/themes/"
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Plank themes for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Plank-Themes"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
-provides=('archlabs-plank-themes-git')
+depends=()
+provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=('archlabs-plank-themes::git+https://github.com/ARCHLabs/Archlabs-Plank-Themes.git')
 sha256sums=('SKIP')
 package() {
-	mkdir -p "${pkgdir}/usr/share/plank/themes/"
-	cp -r "${srcdir}/archlabs-plank-themes/themes/"* "${pkgdir}/usr/share/plank/themes/"
+	rm -f "${srcdir}/${_pkgname}/"README.md
+	rm -f "${srcdir}/${_pkgname}/"git-v*
+	mkdir -p "${pkgdir}${_destname}"
+	cp -r "${srcdir}/${_pkgname}/themes/"* "${pkgdir}${_destname}"
 }
