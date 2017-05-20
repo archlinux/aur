@@ -3,7 +3,7 @@
 pkgname=g810-led-git
 _appname=g810-led
 _gitname=g810-led
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Linux led controller for Logitech G213, G410, G610, G810, G910 and GPRO Keyboards"
 arch=('any')
@@ -17,6 +17,7 @@ provides=("g213-led=${pkgver}" "g410-led=${pkgver}" "g610-led=${pkgver}" "g810-l
 backup=("etc/${_appname}/profile" "etc/${_appname}/reboot" "etc/udev/rules.d/${_appname}.rules")
 options=(!emptydirs)
 source=("git://github.com/MatMoul/${_appname}.git")
+#source=("git://github.com/MatMoul/${_appname}.git#branch=")
 md5sums=('SKIP')
 
 build() {
