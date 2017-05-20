@@ -19,5 +19,5 @@ package() {
   install -Dm755 "$srcdir/$_gitname-$pkgver/database.csv" "$pkgdir/opt/$_gitname/database.csv"
   install -d "$pkgdir/opt/$_gitname"
   install -d "$pkgdir/usr/bin"
-  ln -sf "$pkgdir/opt/$_gitname/fix" "$pkgdir/usr/bin/$_gitname"
+  ln -sf "/opt/$_gitname/fix" "$pkgdir/usr/bin/$_gitname"
 }
