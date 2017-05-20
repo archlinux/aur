@@ -1,13 +1,13 @@
 # Maintainer: Danilo <aur ät dbrgn döt ch>
 pkgname=kr-git
-pkgver=r494.f3b43c9
+pkgver=r512.598fd9c
 pkgrel=1
 pkgdesc="SSH using a key stored in Kryptonite"
 arch=('i686' 'x86_64')
 url="https://github.com/kryptco/kr"
 license=('custom')
 groups=()
-depends=()
+depends=('gcc-libs-multilib')
 makedepends=('rust' 'cargo' 'go')
 checkdepends=()
 optdepends=()
@@ -44,6 +44,7 @@ check() {
 
 package() {
 	cd "${srcdir}/src/github.com/kryptco/kr"
+    install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/kr-git/LICENSE"
     install -D -m 755 "bin/kr" "${pkgdir}/usr/bin/kr"
     install -D -m 755 "bin/krd" "${pkgdir}/usr/bin/krd"
     install -D -m 755 "bin/krssh" "${pkgdir}/usr/bin/krssh"
