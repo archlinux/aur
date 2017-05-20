@@ -3,8 +3,8 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=17.10.1
-_umsver=17.10.3
+pkgver=17.10.2
+_umsver=17.10.6
 pkgrel=1
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
@@ -20,17 +20,13 @@ optdepends=('mate-applet-dock: for Mutiny panel layout'
             'tilda: to enable pull-down terminal'
             'topmenu-gtk: for Mutiny panel layout')
 source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/ubuntu-mate/$pkgname/get/$pkgver.tar.gz"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz"
-        "fix-mutiny-fresh.patch")
-sha256sums=('5d1004587116ebb7b5d59b20c466d217db973c84472dc561aae33c967d7ecb6a'
-            'f175a2dd16dbc946fc3b274819b638278e074dd031c33053c93573d5f2fb2c92'
-            'ac2ade84a532486c50245a176d370f0815330f13df07fd62e133afe0383db5fc')
+        "https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz")
+sha256sums=('bdd676636039170b8ae13c4fa5065e48f95bcc433a8c6888bc928139141a1b03'
+            'c2ee4d26517672bb5c1628390fbb04998b6563777f0b4eea30b3b8abe0b7d606')
 
 prepare() {
   cd ubuntu-mate-$pkgname-*
   sed -i 's|/usr/lib/mate-applets/topmenu-mate-panel-applet|/usr/lib/topmenu-gtk/topmenu-mate-panel-applet|' mate-tweak
-  cd ../ubuntu-mate-settings
-  patch -Np1 -i ../fix-mutiny-fresh.patch
 }
 
 package() {
