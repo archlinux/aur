@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Gil Peyrot <emmanuel.peyrot@collabora.com>
 
 pkgname=wayland-protocols-git
-pkgver=1.7.119.a4e1280
+pkgver=1.7.119.c438cbe
 pkgrel=1
 pkgdesc='Wayland protocols that add functionalities not available in the core protocol'
 arch=('any')
@@ -36,7 +36,7 @@ build() {
 
 check() {
     cd wayland-protocols/build
-    rm -r stable unstable test-suite.log
+    rm -rf stable unstable test-suite.log
     make test-suite.log
 }
 
