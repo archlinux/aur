@@ -1,15 +1,15 @@
 pkgbase = startupwmclassfixer
 	pkgdesc = Fix unrecognized, ugly or double icons in Linux.
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/bil-elmoussaoui/StartupWMClassFixer
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0
 	depends = wget
 	provides = startupwmclassfixer
-	source = https://github.com/bil-elmoussaoui/StartupWMClassFixer/archive/v0.1.tar.gz
-	sha256sums = 2a9da8d1c9e73a25b51a6ebe86d979680ed273d9adc22adfa9d2fe63f2b3af74
+	source = https://github.com/bil-elmoussaoui/StartupWMClassFixer/archive/v0.1.1.tar.gz
+	sha256sums = eecbfc49db3eac8346166c530d7d548de6cb22f4bebaf0a16f829bd39ffc3741
 
 pkgname = startupwmclassfixer
 
