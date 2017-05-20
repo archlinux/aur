@@ -32,6 +32,7 @@ provides=(
 )
 depends=(
   dkms
+  hicolor-icon-theme
   # needed to replace internal libs:
   fontconfig
   freetype2
@@ -57,6 +58,7 @@ source=(
   'bootstrap'
   'config'
   'pam.d-vmware-authd'
+  'configure-initscript.sh'
 
   'config.xml'
   'datastores.xml'
@@ -83,6 +85,7 @@ sha256sums=(
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   '55af509a4328fa88518e7008c65ff5598e6007e99ca2b4421a8f9b26126f6ff3'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
+  '33a090e101b807f9496d2a3c8705301f913f7190c78f6c1e7bc45773f1810305'
 
   'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
@@ -181,18 +184,17 @@ package() {
   # Make directories and copy files.
 
   mkdir -p \
-    "$pkgdir/etc"/{cups,vmware} \
+    "$pkgdir/etc"/{cups,pam.d,modprobe.d,profile.d,vmware} \
     "$pkgdir/usr"/{share,bin} \
     "$pkgdir/usr/include/vmware-vix" \
-    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/2.1.0,cups/filter} \
-    "$pkgdir/usr/share/licenses/$pkgname" \
+    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/2.1.0,cups/filter,modules-load.d} \
+    "$pkgdir/usr/share"/{doc/vmware-vix,licenses/"$pkgname"} \
     "$pkgdir/var/lib/vmware/Shared VMs"
 
   cd "$srcdir/extracted"
 
   cp -r \
     vmware-workstation/share/* \
-    vmware-workstation/doc \
     vmware-workstation/man \
     vmware-network-editor-ui/share/* \
     vmware-player-app/share/* \
@@ -212,7 +214,7 @@ package() {
     vmware-workstation/lib/* \
     vmware-player-app/lib/* \
     vmware-vmx/lib/* \
-    vmware-vprobe/lib/bin/* \
+    vmware-vprobe/lib/* \
     vmware-workstation-server/{bin,lib,hostd} \
     vmware-usbarbitrator/bin \
     vmware-network-editor/lib \
@@ -230,8 +232,13 @@ package() {
 
   cp -r \
     vmware-vix-lib-Workstation1200/lib/Workstation-12.0.0 \
-    vmware-vix-core/vixwrapper-config.txt \
+    vmware-vix-core/{lib/*,vixwrapper-config.txt} \
     "$pkgdir/usr/lib/vmware-vix"
+  cp vmware-vix-core/vix-perl.tar.nogz "$pkgdir/usr/lib/vmware-vix/vix-perl.tar.gz"
+
+  cp -r \
+    vmware-vix-core/doc/* \
+    "$pkgdir/usr/share/doc/vmware-vix"
 
   cp -r \
     vmware-ovftool/* \
@@ -259,7 +266,15 @@ package() {
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 
-  mv "$pkgdir/usr/share/doc"/{EULA,*open_source_licenses.txt} "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "vmware-player-app/doc/LearnMore.txt" "$pkgdir/usr/share/licenses/$pkgname/LearnMore.txt"
+  install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
+  install -Dm 644 "vmware-workstation/doc"/*open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname"
+  mv "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool component for Linux - EULA.txt"
+  rm "$pkgdir/usr/lib/vmware-ovftool"/{vmware-eula.rtf,open_source_licenses.txt,manifest.xml}
+
+  install -Dm 755 "$srcdir/configure-initscript.sh" "$pkgdir/usr/lib/vmware-installer/2.1.0/bin/configure-initscript.sh"
+
+  install -Dm 644 "vmware-vmx/etc/modprobe.d/modprobe-vmware-fuse.conf" "$pkgdir/etc/modprobe.d/vmware-fuse.conf"
 
   install -Dm 644 vmware-player-app/lib/isoimages/tools-key.pub "$pkgdir/usr/lib/vmware/isoimages/tools-key.pub"
 
@@ -272,7 +287,6 @@ package() {
 
   install -Dm 644 "$srcdir/pam.d-vmware-authd" "$pkgdir/etc/pam.d/vmware-authd"
 
-  install -dm755 "$pkgdir/usr/lib/modules-load.d"
   echo -e "vmci\nvmmon" > "$pkgdir/usr/lib/modules-load.d/vmware.conf"
 
   for service_file in \
@@ -378,7 +392,7 @@ package() {
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware for macOS guest support"
-  python2 "$srcdir/unlocker.py"
+  python2 "$srcdir/unlocker.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
@@ -395,7 +409,6 @@ fi
   # to solve bugs with incompatibles library versions:
   ln -sf /usr/lib/libz.so.1 "$pkgdir/usr/lib/vmware/lib/libz.so.1/"
   # if there is not a better solution, define environment variable VMWARE_USE_SHIPPED_LIBS
-  install -dm755 "$pkgdir/etc/profile.d"
   echo -e "#export VMWARE_USE_SHIPPED_LIBS=yes" > "$pkgdir/etc/profile.d/vmware.sh"
   chmod 755 "$pkgdir/etc/profile.d/vmware.sh"
   ln -sf /usr/lib/libfontconfig.so.1 "$pkgdir/usr/lib/vmware/lib/libfontconfig.so.1/" # avoid a conflict with fontconfig when VMWARE_USE_SHIPPED_LIBS is defined
