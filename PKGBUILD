@@ -10,29 +10,17 @@
 # Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor-js
-pkgver=1.4.4.1
+pkgver=1.4.4.3
 pkgrel=1
-pkgdesc="Meteor is a full-stack JavaScript platform for developing modern web and mobile applications"
+pkgdesc="Full-stack JavaScript platform for developing modern web and mobile applications"
 arch=('i686' 'x86_64')
 url="https://www.meteor.com"
 license=('MIT')
 depends=('nodejs' 'mongodb')
-options=('!strip')
-source_i686=("https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz")
-source_x86_64=("https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz")
-sha256sums_i686=('ef8d7dd068b485d5ffc8155d4d8e757e13cb94011fd2a00148802b88fd289437')
-sha256sums_x86_64=('028f2ff188c6cae7b98654ef60c17a873fd213b62ef044fee124539de1e5ea9f')
+source=(meteor)
+sha256sums=('68b1a97b86292389e36f18ed9b5af98d8018b3d1fc83d58b86b6ec10c31d4641')
 
 package() {
-  PREFIX="/usr/local"
-  mkdir -p "$pkgdir$PREFIX/bin"
-  mkdir -p "$pkgdir$HOME/.meteor"
-  mv .meteor "$pkgdir$HOME"
-  chown -R $USER "$pkgdir$HOME/.meteor/"
-  chmod -R 755 "$pkgdir$HOME/.meteor/"
-
-  METEOR_SYMLINK_TARGET="$(readlink "$pkgdir$HOME/.meteor/meteor")"
-  METEOR_TOOL_DIRECTORY="$(dirname "$METEOR_SYMLINK_TARGET")"
-  LAUNCHER="$HOME/.meteor/$METEOR_TOOL_DIRECTORY/scripts/admin/launch-meteor"
-  ln -s "$LAUNCHER" "$pkgdir$PREFIX/bin/meteor"
+  mkdir -p "${pkgdir}/usr/bin"
+  install -Dm 0755 "${srcdir}/meteor" "${pkgdir}/usr/bin/meteor"
 }
