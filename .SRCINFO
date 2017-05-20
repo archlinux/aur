@@ -9,6 +9,7 @@ pkgbase = eventd-git
 	license = LGPL3
 	license = MIT
 	makedepends = meson>=0.39.1
+	makedepends = pkg-config
 	makedepends = ninja
 	makedepends = libxslt
 	makedepends = docbook-xsl

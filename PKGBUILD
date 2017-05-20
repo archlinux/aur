@@ -30,6 +30,7 @@ depends=(
 )
 makedepends=(
     'meson>=0.39.1'
+    pkg-config
     ninja
     libxslt
     docbook-xsl
