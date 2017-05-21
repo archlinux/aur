@@ -16,17 +16,10 @@ license=('custom:gridcoin')
 _sourcename="${pkgname%-qt-staging}"
 
 source=('gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git#branch=staging'
-        'gridcoinresearch-qt.desktop'
-        '0001-Openssl-1.1.0-185.patch')
+        'gridcoinresearch-qt.desktop')
 
 sha256sums=('SKIP'
-          '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053'
-          '6aec7fc3612444cdf5b837c82177268f29aba4f9b6bb4a8c47a7d6fca831b42c')
-
-prepare() {
-  cd "$srcdir/$_sourcename"
-  patch -Np1 -i "$srcdir/0001-Openssl-1.1.0-185.patch"
-}
+            '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
 
 pkgver() {
   cd "$srcdir/$_sourcename"
