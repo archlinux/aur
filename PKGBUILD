@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.10.14
+pkgver=2.10.48
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -29,7 +29,7 @@ depends=('python2'
          'python2-dateutil'
          'python2-jsonschema'
          'python2-path' #AUR#
-         'python2-guessit<=2.0.4'
+         'python2-guessit>=2.1.2'
          'python2-apscheduler>=3.2.0' #AUR#
          'python2-terminaltables'
          'python2-colorclass'
@@ -57,19 +57,23 @@ makedepends=('python2-paver'
 source=("https://github.com/Flexget/Flexget/archive/${pkgver}.tar.gz"
         'flexget.service'
         "http://download.flexget.com/ChangeLog"
+        "fix_guessit_2.1.2.patch"
         )
 
 changelog=ChangeLog
 
-sha256sums=('2ff30ea9ca68b51bcfb16c943603daed3aa23e9fa350724419d50925d946e236'
+sha256sums=('fe7024b516030f869189ff87afcaee09b31c34516c44346514715bf41e988f6f'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
+            'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6'
+            '8246a4cbdb902d41379c8c4e6045da349c98428adefaf682aff0413b8b8969f7')
 
 prepare() {
   cd "${_pkgname}"-"${pkgver}"
 
   msg "Patching shebangs to point to python2"
   sed -i 's/\(python\)/\12/' flexget{,/ui}/__init__.py
+
+  patch -p0 < ${srcdir}/fix_guessit_2.1.2.patch
 
 }
 

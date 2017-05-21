@@ -1,0 +1,11 @@
+--- requirements.txt	2016-06-14 08:12:16.000000000 +0200
++++ requirements.txt.new	2017-05-21 11:24:39.718303562 +0200
+@@ -17,7 +17,7 @@
+ jsonschema>=2.0
+ path.py>=8.1.1
+ pathlib>=1.0
+-guessit<=2.0.4
++guessit>=2.1.2
+ apscheduler>=3.2.0
+ # WebUI Requirements
+ cherrypy>=3.7.0
