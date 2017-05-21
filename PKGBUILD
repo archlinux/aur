@@ -4,7 +4,7 @@
 # Advance features cannot be registered or activated under KVM/QEMU/OVMF
 _wacomEnabled=yes
 pkgname=hgsreceiver-bin
-pkgver=7.2.3
+pkgver=7.3.2
 pkgrel=1
 pkgdesc="HP remote RGS receiver"
 arch=('x86_64')
@@ -13,8 +13,8 @@ license=('custom:"HP"')
 depends=('libudev.so.0' 'lib32-glu')
 makedepends=('')
 options=('emptydirs')
-source=("file://RGS_Linux_64_Receiver_v7.2.3_Z7550-01890.tar.gz")
-md5sums=('f6b335e7ff929af51bfc7d840b56dd8d')
+source=("file://RGS_Linux_64_Receiver_v7.3.2_Z7550-01910.tar.gz")
+md5sums=('a84037489d2339dbd48fd6178a8a9619')
 
 prepare() {
 bsdtar xf lin64/receiver/*.rpm
@@ -26,8 +26,15 @@ cd "${srcdir}"
 # install licence
 install -m644 -D lin64/receiver/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-# Security hole needed to register advance features 
-# N.B. rgsmbiosreader does not work under KVM/QEMU/OVMF bios
+# hack needed to register advance features 
+# N.B. rgsmbiosreader does not work under KVM/QEMU/OVMF bios, nor kernel greater than 4.4.44
+# next 4 lines replace rgsmbioreader
+mkdir opt/hpremote/registration
+sudo dmidecode -t 1 | grep UUID | tr A-z a-z | tr -d - | cut -c8-80 > opt/hpremote/registration/H264
+mv opt/hpremote/rgreceiver/rgsmbiosreader opt/hpremote/rgreceiver/rgsmbiosreader.old
+echo '#!/bin/sh' > opt/hpremote/rgreceiver/rgsmbiosreader
+echo 'cat /opt/hpremote/registration/H264' >> opt/hpremote/rgreceiver/rgsmbiosreader
+
 chmod 6755 opt/hpremote/rgreceiver/rgsmbiosreader
 chmod a+w etc/opt
 chmod a+w etc/opt/hpremote
@@ -41,14 +48,14 @@ echo opt/hpremote/rgreceiver/lib64 > etc/ld.so.conf.d/hpremote.conf
 if [[ $_wacomEnabled != "no" ]]
 then
     install -d -m644 etc/udev/rules.d
-    cp -u opt/hpremote/rgreceiver/rules/rgs-pen-tablet.rules etc/udev/rules.d/
+    cp -uf opt/hpremote/rgreceiver/rules/rgs-pen-tablet.rules etc/udev/rules.d/
 fi
 
 # copy the directories
-cp -rp ./opt/ $pkgdir
-cp -rp ./etc/ $pkgdir
-cp -rp ./usr/ $pkgdir
-cp -rp ./source/ $pkgdir
+cp -rpf ./opt/ $pkgdir
+cp -rpf ./etc/ $pkgdir
+cp -rpf ./usr/ $pkgdir
+cp -rpf ./source/ $pkgdir
 
 }
 
