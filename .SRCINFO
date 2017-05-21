@@ -1,6 +1,6 @@
 pkgbase = awesome-luajit-git
 	pkgdesc = awesome window manager built with luajit
-	pkgver = 4.0.138.g90bbcf19
+	pkgver = 4.1.93.gb6e6a048
 	pkgrel = 1
 	url = http://awesome.naquadah.org/
 	arch = i686
