@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/share/java/jgit/org.eclipse.jgit.pgm-4.6.1.201703071140-r.sh "$@"
+/usr/share/java/jgit/org.eclipse.jgit.pgm-4.7.0.201704051617-r.sh "$@"
