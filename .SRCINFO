@@ -1,0 +1,14 @@
+pkgbase = sharp-mx-182to232d-ps
+	pkgdesc = PPD files for Sharp PostScript Printers(MX-182 to MX-232D)
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.sharp.co.uk/gb
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = lib32-glibc
+	source = http://www.sharp.co.uk/cps/rde/xbcr/documents/documents/Service_Information/Drivers/sharp-1.1-sh-l01-ps.zip
+	sha512sums = bf2f338ab99caeb45ee77e5d95579d15dedf2c6892b275a7a928a32ddd4a03e45d36f764de85f5a835a7c7af3ff117155bd1ce4d823882f2534c32193013d5ac
+
+pkgname = sharp-mx-182to232d-ps
