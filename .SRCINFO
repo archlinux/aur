@@ -1,14 +1,14 @@
 pkgbase = pydocstyle
 	pkgdesc = PEP 257 docstring style checker.
-	pkgver = 1.1.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/PyCQA/pydocstyle
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/PyCQA/pydocstyle/archive/1.1.1.tar.gz
-	sha1sums = 71236b3a8d7e2639617b9ba8e00327334ed45085
+	source = https://github.com/PyCQA/pydocstyle/archive/2.0.0.tar.gz
+	sha1sums = 70d0eacaaa0ada832027335fead6aba5374c3e97
 
 pkgname = pydocstyle
 

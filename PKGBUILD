@@ -1,6 +1,6 @@
 # Maintainer: Marco Scopesi <marco.scopesi@gmail.com>
 pkgname=pydocstyle
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="PEP 257 docstring style checker."
 arch=(any)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/PyCQA/pydocstyle/archive/${pkgver}.tar.gz")
-sha1sums=('71236b3a8d7e2639617b9ba8e00327334ed45085')
+sha1sums=('70d0eacaaa0ada832027335fead6aba5374c3e97')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
