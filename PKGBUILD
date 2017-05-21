@@ -1,7 +1,7 @@
 # Maintainer: David P. <megver83@parabola.nu>
 
 pkgname=udisks2-openrc
-pkgver=20170511
+pkgver=20170521
 pkgrel=1
 pkgdesc="OpenRC udisks2 init script"
 arch=(any)

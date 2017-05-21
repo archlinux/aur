@@ -1,6 +1,6 @@
 pkgbase = udisks2-openrc
 	pkgdesc = OpenRC udisks2 init script
-	pkgver = 20170511
+	pkgver = 20170521
 	pkgrel = 1
 	url = https://www.parabola.nu
 	arch = any
