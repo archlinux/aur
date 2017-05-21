@@ -2,8 +2,8 @@
 Description=Throttle Cut
 
 [Service]
-Type=oneshot
-RemainAfterExit=no
+Type=simple
+RemainAfterExit=yes
 ExecStart=/usr/bin/throttle cut
 StandardOutput=null
 StandardError=journal
