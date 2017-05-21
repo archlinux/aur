@@ -4,4 +4,4 @@ resource_path=/usr/share/postal-git
 
 # change to same dir as ini
 cd $resource_path
-./postal1-bin
+./postal1-x86
