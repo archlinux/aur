@@ -1,0 +1,19 @@
+pkgbase = libwacom-nosystemd
+	pkgdesc = Library to identify Wacom tablets and their features
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://sourceforge.net/apps/mediawiki/linuxwacom/index.php?title=Libwacom
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glib2
+	depends = eudev
+	depends = libgudev-nosystemd
+	provides = libwacom
+	conflicts = libwacom
+	source = https://sourceforge.net/projects/linuxwacom/files/libwacom/libwacom-0.24.tar.bz2
+	sha1sums = 74d38e416fc7b91bbf3e163d40fe6ff688e6da51
+	sha256sums = 2905a0ee5cc85eceb9f5bd06109e66a051b0ed18102c3e6798717c259c8d66c3
+
+pkgname = libwacom-nosystemd
+
