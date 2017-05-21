@@ -1,0 +1,12 @@
+diff -Nur original/include/freetype/config/ftoption.h modified/include/freetype/config/ftoption.h
+--- original/include/freetype/config/ftoption.h	2017-05-21 15:51:51.464188000 +0100
++++ modified/include/freetype/config/ftoption.h	2017-05-21 15:52:50.587608121 +0100
+@@ -925,7 +925,7 @@
+   /*                                                                       */
+   /* This problematic commit is now reverted (more or less).               */
+   /*                                                                       */
+-/* #define AF_CONFIG_OPTION_TT_SIZE_METRICS */
++#define AF_CONFIG_OPTION_TT_SIZE_METRICS
+ 
+   /* */
+ 

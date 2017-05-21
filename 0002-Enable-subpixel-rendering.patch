@@ -1,0 +1,25 @@
+From a8f7f3068a8a5f94adfc77f4ddf03bf08da38f9b Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 23 Jun 2015 08:43:07 +0200
+Subject: [PATCH 2/4] Enable subpixel rendering
+
+---
+ include/freetype/config/ftoption.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
+index 1bf6e8f534ff0734..1126716626b570df 100644
+--- a/include/freetype/config/ftoption.h
++++ b/include/freetype/config/ftoption.h
+@@ -122,7 +122,7 @@ FT_BEGIN_HEADER
+   /* This is done to allow FreeType clients to run unmodified, forcing     */
+   /* them to display normal gray-level anti-aliased glyphs.                */
+   /*                                                                       */
+-/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
++#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+ 
+ 
+   /*************************************************************************/
+-- 
+2.13.0
+
