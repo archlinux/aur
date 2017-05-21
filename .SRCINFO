@@ -1,7 +1,7 @@
 pkgbase = teamsql
 	pkgdesc = Multi-Platform SQL Client
 	pkgver = 0.9.93
-	pkgrel = 2
+	pkgrel = 3
 	install = teamsql.install
 	arch = x86_64
 	depends = libappindicator
