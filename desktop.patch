@@ -1,0 +1,13 @@
+--- jumpnbump-menu.desktop.orig	2017-05-21 20:14:40.172306054 +0200
++++ jumpnbump-menu.desktop	2017-05-21 20:15:00.565445873 +0200
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Name=Jump 'n Bump Menu
+-Comment=Level selection and config menu for the Jump 'n Bump game
++Comment=Jump on your opponents to make them explode
+ GenericName=Launcher for Jump 'n Bump
+ Exec=jumpnbump-menu
+ Icon=jumpnbump
+ Terminal=false
+ Type=Application
+ Categories=Game;ArcadeGame;

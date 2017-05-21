@@ -1,0 +1,31 @@
+--- jumpnbump_menu.py.pre.orig	2017-05-21 20:06:53.393232483 +0200
++++ jumpnbump_menu.py.pre	2017-05-21 20:10:36.387911904 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Author: Martin Willemoes Hansen
+ # License: Gnu GPL
+@@ -147,11 +147,8 @@
+ 
+ def get_level():
+     level = []
+-    if (mirror.get_active()):
+-        level.append('-mirror')
+-    else:
+-        level.append('-dat')
+-        level.append(choosen_level)
++    level.append('-dat')
++    level.append(choosen_level)
+ 
+     return level
+ 
+@@ -224,6 +221,8 @@
+     noflies = gui.get_widget('noflies')
+     withmusic = gui.get_widget('withmusic')
+     image = gui.get_widget('image')
++    mainwindow = gui.get_widget('main')
++    mainwindow.set_icon_from_file('/usr/share/icons/jumpnbump.png')
+ 
+     gui.signal_autoconnect({'standalone_mode': standalone_mode,
+                             'client_mode': client_mode,
