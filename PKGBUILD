@@ -2,11 +2,11 @@
 
 pkgname=teamsql
 pkgver=0.9.93
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Platform SQL Client"
 arch=('x86_64')
 license=()
-depends=()
+depends=("libappindicator-gtk2", "libnotify")
 optdepends=()
 options=()
 install=$pkgname.install

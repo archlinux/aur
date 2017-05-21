@@ -13,6 +13,7 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
+	note "Command for running is teamsql"
 }
 
 post_upgrade() {
