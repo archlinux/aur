@@ -3,7 +3,7 @@
 _upstream=RazerGenie
 _pkgname=razergenie
 pkgname=razergenie-git
-pkgver=0.1.r0.ge60d5de
+pkgver=0.2.r0.g5ed45e6
 pkgrel=1
 pkgdesc="Standalone Qt application for configuring your Razer devices under GNU/Linux."
 arch=("x86_64" "i686")
@@ -21,14 +21,17 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  mkdir -p build
+}
+
 build() {
-  cd $srcdir/$_upstream
-  mkdir -p build && cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib
+  cd build
+  cmake ../$_upstream -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib
   make
 }
 
 package() {
-  cd $srcdir/$_upstream/build
+  cd build
   make DESTDIR="$pkgdir/" install
 }
