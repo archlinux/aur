@@ -1,0 +1,20 @@
+post_install() {
+    pkgname=searchnewdoconaidop
+
+    # Fixing membership
+    chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
+
+    true
+}
+
+post_upgrade() {
+	chown http: /var/log/$pkgname
+  chown -R http: /etc/$pkgname
+
+	true
+}
+
+pre_remove() {
+	true
+}
