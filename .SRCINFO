@@ -1,6 +1,6 @@
 pkgbase = tibia
 	pkgdesc = A fast-paced free massively multiplayer online role-playing game.
-	pkgver = 11.30.4952
+	pkgver = 11.30.5036
 	pkgrel = 1
 	url = http://www.tibia.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = tibia
 	depends = pcre
 	depends = qt5-base
 	depends = qt5-declarative
-	source = tibia-11.30.4952.tar.gz::http://static.tibia.com/download/tibia.x64.tar.gz
+	source = tibia-11.30.5036.tar.gz::http://static.tibia.com/download/tibia.x64.tar.gz
 	source = tibia-agreement.php::http://www.tibia.com/support/agreement.php
 	source = tibia-starter.patch
 	sha256sums = b001a552ce68cb58be69ddf72ef63eabe0e690465b23f9e08a710e0992775630
