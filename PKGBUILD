@@ -2,9 +2,9 @@
 
 pkgname=pkgcacheclean
 pkgver=1.8.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Application to clean the pacman cache"
-arch=('i686' 'x86_64' 'armv5' 'armv6' 'armv7')
+arch=('any')
 url='https://bbs.archlinux.org/viewtopic.php?pid=841774'
 license=('GPL')
 depends=('pacman>=5')
