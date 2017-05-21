@@ -1,0 +1,21 @@
+pkgbase = grestful-git
+	pkgdesc = A simple RESTful API client written in GTK 3.
+	pkgver = 20170119.0b56614
+	pkgrel = 1
+	url = https://gitlab.com/Gert-dev/grestful
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = dub
+	makedepends = dmd
+	makedepends = git
+	makedepends = gtk3
+	makedepends = gtksourceview3
+	depends = curl
+	provides = grestful
+	conflicts = grestful
+	source = grestful::git+https://gitlab.com/Gert-dev/grestful.git
+	sha1sums = SKIP
+
+pkgname = grestful-git
+
