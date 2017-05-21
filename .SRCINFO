@@ -1,0 +1,24 @@
+pkgbase = libinput-nosystemd
+	pkgdesc = Input device management and event handling library
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/libinput/
+	arch = i686
+	arch = x86_64
+	license = custom:X11
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = gtk3
+	depends = mtdev
+	depends = dbus-elogind
+	depends = libevdev
+	depends = libwacom-nosystemd
+	depends = libusb-nosystemd
+	provides = libinput=1.7.0
+	provides = libinput
+	conflicts = libinput
+	source = https://freedesktop.org/software/libinput/libinput-1.7.0.tar.xz
+	sha256sums = 12a670f63d01e9e9c98ad0b31aef22160aac52187b4ee8f068a6902181c1a8a8
+
+pkgname = libinput-nosystemd
+
