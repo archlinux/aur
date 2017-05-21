@@ -4,15 +4,15 @@
 
 pkgname=jss-redhat
 pkgver=4.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Security Services for Java (JSS) is a Java interface to NSS (Red Hat version)"
 arch=('x86_64' 'i686')
 url="https://developer.mozilla.org/En/JSS"
 license=(GPL)
 depends=('java-runtime' 'nspr' 'nss')
 makedepends=('java-environment=7')
-source=('https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/j/jss-4.2.6-42.fc26.src.rpm')
-sha256sums=('f2c4ca43ac75805d343651c0255655fed3aaa8aa8c4822014813bc0c64efa1aa')
+source=('https://archives.fedoraproject.org/pub/fedora/linux/development/26/Everything/source/tree/Packages/j/jss-4.2.6-44.fc26.src.rpm')
+sha256sums=('e602d24e47821b6307c3fedf757c19e55cc1c3b689aed084f3d6bdea12d5d373')
 
 prepare() {
   cd "${srcdir}"
