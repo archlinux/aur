@@ -3,16 +3,16 @@ pkgname=archlabs-tint2-themes-git
 _pkgname=archlabs-tint2-themes
 _destname="/usr/share/tint2/"
 pkgver=1.1
-pkgrel=6
-pkgdesc="Tint2 Themes for ARCHLabs"
+pkgrel=8
+pkgdesc="Tint2 Themes created for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Tint2-Themes"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
 depends=('tint2')
-provides=('archlabs-tint2-themes-git')
+provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=('git+https://github.com/ARCHLabs/archlabs-tint2-themes.git')
+source=(${_pkgname}::"git+https://github.com/ARCHLabs/${_pkgname}.git")
 sha256sums=('SKIP')
 package() {
 	rm -f "${srcdir}/${_pkgname}/"README.md
