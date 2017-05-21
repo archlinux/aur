@@ -1,33 +1,32 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=you-get
-pkgver=0.4.715
+pkgver=0.4.750
 pkgrel=1
 pkgdesc="A YouTube/Youku/Niconico video downloader written in Python 3."
 url="http://www.soimort.org/you-get/"
 arch=('any')
 license=('MIT')
 depends=('python-setuptools')
-makedepends=('git')
-source=("git+https://github.com/soimort/you-get.git#tag=v$pkgver")
-sha512sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/soimort/you-get/archive/v$pkgver.tar.gz")
+sha512sums=('5d28e6f699c4dea515108255526c49d203f93bde5da38745f6aaee50da6118f21e70252c7f9a33e3a7cbcc471017d996c59692fecbb785ad48b189a7c1366096')
 
 build() {
-  cd you-get
+  cd you-get-$pkgver
   python setup.py build
 }
 
 check() {
-  cd you-get
+  cd you-get-$pkgver
   LC_CTYPE=en_US.UTF-8 python setup.py test
 }
 
 package() {
-  cd you-get
+  cd you-get-$pkgver
   python setup.py install --root="$pkgdir"
 
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
-  install -Dm644 contrib/completion/_you-get "$pkgdir/usr/share/zsh/site-functions/_you-get"
-  install -Dm644 contrib/completion/you-get-completion.bash "$pkgdir/usr/share/bash-completion/completions/you-get"
-  install -Dm644 contrib/completion/you-get.fish "$pkgdir/usr/share/fish/completions/you-get.fish"
+  install -Dm644 contrib/completion/_you-get "$pkgdir"/usr/share/zsh/site-functions/_you-get
+  install -Dm644 contrib/completion/you-get-completion.bash "$pkgdir"/usr/share/bash-completion/completions/you-get
+  install -Dm644 contrib/completion/you-get.fish "$pkgdir"/usr/share/fish/completions/you-get.fish
 }
