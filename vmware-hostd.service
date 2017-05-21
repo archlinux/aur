@@ -4,6 +4,7 @@ Wants=vmware-hostd-certificates.service
 After=vmware-hostd-certificates.service
 
 [Service]
+ExecStartPre=/usr/bin/mkdir -p /var/run/vmware
 ExecStart=/usr/bin/vmware-hostd -a /etc/vmware/hostd/config.xml
 
 [Install]

@@ -19,13 +19,15 @@ esac
 
 addService() {
    if [ "$serviceName" != "vmware" ]; then
-      systemctl enable --now $serviceName.service
+      systemctl start $serviceName.service
+      systemctl enable $serviceName.service
    fi
 }
 
 removeService() {
    if [ "$serviceName" != "vmware" ]; then
-      systemctl disable --now $serviceName.service
+      systemctl stop $serviceName.service
+      systemctl disable $serviceName.service
    fi
 }
 

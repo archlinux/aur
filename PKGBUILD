@@ -90,7 +90,7 @@ sha256sums=(
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   '55af509a4328fa88518e7008c65ff5598e6007e99ca2b4421a8f9b26126f6ff3'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
-  '33a090e101b807f9496d2a3c8705301f913f7190c78f6c1e7bc45773f1810305'
+  '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
 
   'd0806b6cb99af04232585def7b8043df3104b9b17470ea70abbd5bedc1e7ca16'
   '434cd4aa440d36b75ee20e0b588aaad874bb0d796173990bc4046667c66f5099'
@@ -98,7 +98,7 @@ sha256sums=(
   '3c802523606184a5e8ebbe931d9c6c70d83ff8c6833b9f48aa264f0bd5a18a88'
 
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
-  'd1f9d6dccafee7a8fbc0bf9584e30babec1ddefca4b89973fb634276a8bd407f'
+  '70301aa4eff4f42d7d39b276445dc7d8f44b8a0e184775e8a9e3055bb9d8590a'
   'e3812b78158672c7d96b6a58877681462f3fbdfe99a948b32c80c755c8682450'
   'f9297948eba55fbaa6c9d1846b92070f27fda17afe78b41ed0e4c2eaa452b56c'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
@@ -271,7 +271,7 @@ package() {
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
   done
 
-  install -Dm 644 "vmware-player-app/doc/LearnMore.txt" "$pkgdir/usr/share/licenses/$pkgname/LearnMore.txt"
+  install -Dm 644 "vmware-player-app/doc/LearnMore.txt" "$pkgdir/usr/share/licenses/$pkgname/Privacy.txt"
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
   install -Dm 644 "vmware-workstation/doc"/*open_source_licenses.txt "$pkgdir/usr/share/licenses/$pkgname"
   mv "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool component for Linux - EULA.txt"
