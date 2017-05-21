@@ -1,17 +1,31 @@
 #! /usr/bin/make -f
 
-BOOTDIR   := /boot/Efi/Secure
-KEYSDIR   := /etc/secure-boot
-SIGNER    := ArchSecureBoot
+# configuration:
 
-SUFFIX    :=
-KERNEL    := /boot/vmlinuz-linux${SUFFIX}
-INITRAMFS := /boot/initramfs-linux${SUFFIX}.img
+ESP       := /boot
+EFIDIR    := /EFI/Secure
+EFIBOOTDEVICE :=
+
+SIGNER    := ArchSecureBoot
+SUFFIX    := linux
+KERNEL    := /boot/vmlinuz-${SUFFIX}
+INITRAMFS := /boot/initramfs-${SUFFIX}.img
 EFISTUB   := /usr/lib/systemd/boot/efi/linuxx64.efi.stub
 UCODE     := /boot/intel-ucode.img
 CMDLINE   := /etc/kernel/cmdline
+DESTFILE  := secure-boot-${SUFFIX}.efi
+EFIBOOTMGR := efibootmgr
 
-BUILDDIR  := $(shell mktemp -d)
+-include /etc/secure-boot/config.mk
+
+KEYSDIR   := /etc/secure-boot
+BOOTDIR   := $(ESP)$(EFIDIR)
+EFIDIRFAT := $(subst /,\,$(EFIDIR))
+BUILDDIR  := $(shell mktemp -d /tmp/secure-boot.XXXXXX)
+
+ifdef EFIBOOTDEVICE
+EFIBOOTMGR += -d $(EFIBOOTDEVICE)
+endif
 
 default:
 	@echo Make targets: keys, install, update
@@ -19,11 +33,11 @@ default:
 clean:
 	rm -rf $(BUILDDIR)
 
-update:  $(BOOTDIR)/combined-boot-signed${SUFFIX}.efi
+update:  $(BOOTDIR)/${DESTFILE}
 install: update
-	efibootmgr -c -l '\Efi\Secure\combined-boot-signed${SUFFIX}.efi' -L 'SecureBoot linux${SUFFIX}'
+	$(EFIBOOTMGR) -c -l '${EFIDIRFAT}\${DESTFILE}' -L 'SecureBoot ${SUFFIX}'
 
-$(BOOTDIR)/combined-boot-signed${SUFFIX}.efi: $(BUILDDIR)/combined-boot-signed.efi
+$(BOOTDIR)/${DESTFILE}: $(BUILDDIR)/combined-boot-signed.efi
 	@mkdir -p $(BOOTDIR)
 	cp $< $@
 
@@ -32,7 +46,7 @@ $(BUILDDIR)/cmdline.txt:
 	@mkdir -p $(BUILDDIR)
 	[ -f ${CMDLINE} ] && \
 	    cp ${CMDLINE} $@ || \
-	    cp /proc/cmdline $@
+	    echo -n `</proc/cmdline` > $@
 
 $(BUILDDIR)/initramfs.img: $(UCODE) $(INITRAMFS)
 	@mkdir -p $(BUILDDIR)

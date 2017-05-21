@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=secure-boot
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 epoch=
 pkgdesc="secure-boot tool"
 arch=(any)
