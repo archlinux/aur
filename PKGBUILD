@@ -3,7 +3,7 @@
 # Contributor: Jimmy Tang <jtang@tchpc.tcd.ie>
 
 pkgname=pristine-tar
-pkgver=1.37
+pkgver=1.38
 pkgrel=1
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}
         0002-Use-posix-tar-format-by-default.patch
         0003-Mangle-PAX-headers-when-using-posix-tar-format.patch
         0004-HACK-workaround-for-some-broken-pristine-tar-branche.patch)
-sha256sums=('8f417b9d8ea9c204d87e9d07ee9f2eaa9cbaca1de92696842df159c9ee2c4253'
+sha256sums=('cc7e1a35bfb7ce19a0acd5c7e9a041b007f28509f495db8cc52e385ac12106f2'
             '09b7e2fba6f53ad1ac85d6000393835aedb8785ddcfd176f043f6301e267c614'
             'd470d888fba8c32c20602a2e90219893d15074cf447c5920b37fa57fe5d38692'
             '0d2cbbeeb8c5fbba193b4ac39a33de800515811f6858e26a8874ed3bce6f394c')
@@ -26,11 +26,12 @@ prepare() {
   # patches used in the Tizen tools package
   # (improvements for POSIX tar support)
   # available in the pristine-tar package at download.tizen.org/tools
-  patch -p1 < ../0002-Use-posix-tar-format-by-default.patch
-  patch -p1 < ../0003-Mangle-PAX-headers-when-using-posix-tar-format.patch
+  # DISABLED/broken because pristine-tar was fully re-indented..
+  #patch -p1 < ../0002-Use-posix-tar-format-by-default.patch
+  #patch -p1 < ../0003-Mangle-PAX-headers-when-using-posix-tar-format.patch
 
   # extra patch for Tizen compat
-  patch -p1 < ../0004-HACK-workaround-for-some-broken-pristine-tar-branche.patch
+  #patch -p1 < ../0004-HACK-workaround-for-some-broken-pristine-tar-branche.patch
 }
 
 build() {
