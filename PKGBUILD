@@ -3,10 +3,10 @@
 _pyname=mbed-cli
 pkgname=python-${_pyname}
 pkgver=1.1.1
-pkgrel=1
-pkgdesc="mbed CLI tools"
+pkgrel=2
+pkgdesc="ARM mbed Command Line Interface"
 arch=('any')
-url="http://mbed.org"
+url="https://developer.mbed.org"
 license=('Apache')
 depends=('python2')
 options=(!emptydirs)
