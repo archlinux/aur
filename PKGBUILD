@@ -2,8 +2,8 @@
 # Contributor: Fraser P. Newton <fpnewton90 [at] gmail [dot] com>
 
 pkgname=gcp-cups-connector
-pkgver=v1.1.r0.g481ad13
-pkgrel=2
+pkgver=v1.11.r2.gcd1943f
+pkgrel=1
 pkgdesc="The Google Cloud Print (aka GCP) CUPS Connector shares CUPS printers with users of Google Cloud Print."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/google/cups-connector"
