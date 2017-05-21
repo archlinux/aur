@@ -2,22 +2,26 @@
 
 pkgname=xperia-flashtool
 _realname=flashtool
-pkgver=0.9.23.1
-pkgrel=2
+pkgver=0.9.23.2
+_pkg_main_ver=0.9.23.1
+pkgrel=1
 pkgdesc="A S1 protocol flashing software for Sony Xperia phones"
 arch=('i686' 'x86_64')
 url="http://www.flashtool.net/"
 license=('unknown')
 depends=('libselinux' 'libsystemd' 'glib2')
 makedepends=('p7zip')
-source=("http://url.muflone.com/${pkgname}-${pkgver}-linux.tar.7z"
+source=("http://url.muflone.com/${pkgname}-${_pkg_main_ver}-linux.tar.7z"
+        "${pkgname}-${pkgver}-x10flasher.jar"::"http://www.flashtool.net/torrents/patches/linux/x10flasher.jar"
         "${pkgname}.sh")
 sha256sums=('254ed7e992b5a3617c95b00d539251f5eb1476d5bd5e16cd03eaf092249b042c'
+            '2869fb391c556c8e6633dac46aa939fa50fd70068b7ef77913265880c08c64d7'
             'b6b91cec623461e7b31bc3250045071350237962388ecd6df46bb437bc536803')
 options=('!strip')
 
 build() {
-  tar xf "${_realname}-${pkgver}-linux.tar"
+  tar xf "${_realname}-${_pkg_main_ver}-linux.tar"
+  install -m 644 "${srcdir}/${pkgname}-${pkgver}-x10flasher.jar" "FlashTool/x10flasher.jar"
 }
 
 package() {
