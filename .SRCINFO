@@ -1,0 +1,16 @@
+pkgbase = americas-army-2.5
+	pkgdesc = A GUI client application for Downloading Installing and Playing Americas Army 2.5
+	pkgver = 8.21
+	pkgrel = 0
+	url = http://aao25.com/
+	arch = any
+	groups = games
+	license = EULA - ARMY GAME LICENSING AGREEMENT
+	depends = mesa
+	source = https://downloads.sourceforge.net/project/aa25assist/Binaries/25Assist-Linux.zip
+	source = https://www.americasarmy.com/images/logos/aapg-logo-small.svg
+	sha256sums = 7dfadbb114af300491a5e55b12b84cc53fff10f7d59eab61090eadb09961b0be
+	sha256sums = bfa2c3dcb3f0e0d1ec242792b0e4232cffef86df4540435a01b28de12741eed4
+
+pkgname = americas-army-2.5
+
