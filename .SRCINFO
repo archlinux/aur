@@ -1,0 +1,14 @@
+pkgbase = otf-powerline-extra-symbols-git
+	pkgdesc = Extra glyphs for powerline separators
+	pkgver = r37.4eae6e8
+	pkgrel = 1
+	url = https://github.com/ryanoasis/powerline-extra-symbols
+	install = powerline-extra-symbols.install
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/ryanoasis/powerline-extra-symbols.git
+	sha256sums = SKIP
+
+pkgname = otf-powerline-extra-symbols-git
+
