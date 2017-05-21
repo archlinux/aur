@@ -3,13 +3,14 @@
 
 pkgname=gboggle
 pkgver=1.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple version of the classic game Boggle."
 arch=("i686" "x86_64")
 url="http://gboggle.sourceforge.net"
 license=('GPL')
 depends=('gconf' 'gtk2' 'hicolor-icon-theme' 'desktop-file-utils')
 source=("http://downloads.sourceforge.net/project/${pkgname}/$pkgver/${pkgname}-${pkgver}.tar.gz")
+source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz/download")
 md5sums=('4eef546c2f851deb6991848646d6d322')
 install=$pkgname.install
 
