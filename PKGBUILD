@@ -3,8 +3,8 @@
 
 pkgname=elasticdump2
 _pkgname=elasticdump
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 pkgdesc="Import and export tools for Elasticsearch < 5"
 arch=(any)
 url="https://www.npmjs.com/package/elasticdump"
@@ -12,7 +12,7 @@ license=("Apache")
 depends=('nodejs')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-sha256sums=('e344d622ef2cc4f6cfbd9e9901b6713ddd3b45d55062ce4c11ab04632efc37de')
+sha256sums=('a579d818b0475e9f99d5429a652e34f89c8d4f246bb9c649cb0748009ce6720c')
 noextract=("$_pkgname-$pkgver.tgz")
 
 package() {
