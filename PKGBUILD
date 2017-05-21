@@ -21,17 +21,20 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_gitname"
-    mkdir build
+    mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir" \
         -DRAPIDJSON_HAS_STDSTRING=ON \
         -DCMAKE_VERBOSE_MAKEFILE=ON \
-        -DCMAKE_BUILD_TYPE=release \
+        -DRAPIDJSON_BUILD_EXAMPLES=OFF \
+        -DRAPIDJSON_BUILD_TESTS=OFF \
+        -DRAPIDJSON_BUILD_THIRDPARTY_GTEST=OFF \
+        -DCMAKE_BUILD_TYPE=Release \
         ..
     make
 }
 
 package() {
     cd "$srcdir/$_gitname/build"
-    make DESTDIR="$pkgdir" install
+    make install
 }
