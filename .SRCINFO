@@ -1,0 +1,16 @@
+pkgbase = perl-audio-cuefile-parser
+	pkgdesc = This packages the Audio-Cuefile-Parser distribution, containing the Audio::Cuefile::Parser module!
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/Audio-Cuefile-Parser
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MATTK/Audio-Cuefile-Parser-0.02.tar.gz
+	md5sums = 2cd3e55708c25f0ddecce29a39e604ef
+
+pkgname = perl-audio-cuefile-parser
+
