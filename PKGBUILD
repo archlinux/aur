@@ -1,8 +1,8 @@
 # Maintainer: Chipster Julien <julien dot chipster @ archlinux dot fr>
 
-pkgname=searchNewDocOnAidop
+pkgname=searchnewdoconaidop
 pkgver=0.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Program that searches for new files"
 arch=('any')
 url="https://github.com/Chipsterjulien/searchNewDocOnAidop"
@@ -59,4 +59,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('18264533ea758104b5daddd13923586255768addbc710b3bc88492d083e69332672dcb1e252ca244c082c1779bad8348e01b9f4d59d95f0cad15be9ac1cda988')
+sha512sums=('b5db4453e3f12dd5f6db2eee4b8a9231699321be3539dd0a0179597f19c032c97eb29d8c37cfccb91ea412bba5c48c5b8e520a5670dd490183efb611d4882a66')
