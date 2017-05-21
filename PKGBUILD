@@ -31,11 +31,11 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
-__basekernel=4.10
-_minor=16
+__basekernel=4.11
+_minor=2
 pkgver=${__basekernel}.${_minor}
-pkgrel=1
-lqxrel=1
+pkgrel=3
+lqxrel=3
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _lqxpatchname="${pkgver}-${lqxrel}.patch"
@@ -60,12 +60,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.
         "linux.preset"
         "90-linux.hook")
 
-sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab4636302b3742aedf1e3ba9ce0fea53fe8c7d48e37865d8ee5db3565220d90'
+sha512sums=('6610eed97ffb7207c71771198c36179b8244ace7222bebb109507720e26c5f17d918079a56d5febdd8605844d67fb2df0ebe910fa2f2f53690daf6e2a8ad09c3'
             'SKIP'
-            'a0fb4458a7888a4ce455f56706c02959748c6fc63d39f7ef34758350c7c798461f756098571f4e1feb82143ec0b79b5590b75cf35f663784700764f276f5e603'
-            '58c0336b340d581c3982e1cf7f1d73a049d6f555e09aab51411a9d9ce4f0dc44150545dd9bfcfecbf2d05a490c3fe0f065189870e36ee42f3d83e7b181c5015a'
-            '4f76ea46963a364024b403440fdf1849f4359e818b379494fe514495586b614b91e532f14a97fc2838da4d29905551fe14f5a89c23e7aca12d6c9743bf2286a3'
-            'df90b6ecc1e19ac775578471453592a8a35021a3167a2ba49a05ed1a05994ad1a7f2ed9f5f235fa4abcb0beaac68cfe830575af6d07b2552e6ac10731bd41eb5'
+            '9cd4c60b10d5ca84a8596aeba5b1bbecf81be0577ef033a29792254de2f6ef6a647c0d7430165a57bebedaf013e8a682695cac96d57c8a589142a43afdf4e553'
+            'b0210e7c4d95c5f8418e527ae7c6f082b5ebb93f130da2306617ff908cb4168adadc15c9a250d08d609975df67606d5e069a06b8468f22864a14e3c9a1bea9a8'
+            '7d060bd52b37c4efc91539ed95588f1bed5610f4c336678dbd446681deb69d432cf648579a1efc404d4d1dffeb043bef4b58c86937f0270a7a3192cd5bece1f9'
+            'c52b07b842fe026f98c1b82eae987fe7a545b497323145611a2f627102737a39712fe9e2e2fbbb3d5b533f48cae213f6d212348b5d6ad761ba4fe9d5b9173c7d'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22')
             
