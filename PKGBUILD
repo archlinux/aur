@@ -1,8 +1,8 @@
 # Contributor: Médéric Boquien <mboquien@free.fr>
 # Maintainer: Médéric Boquien <mboquien@free.fr>
 pkgname=python-astropy
-pkgver=1.3
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="A community python library for astronomy"
 arch=('i686' 'x86_64')
 url="http://www.astropy.org/"
@@ -11,7 +11,7 @@ depends=('python>=3.3' 'python-numpy>=1.6' 'python-scipy' 'python-h5py' 'cfitsio
 conflicts=('python-pyfits' 'python-vo')
 makedepends=('cython')
 source=("https://files.pythonhosted.org/packages/source/a/astropy/astropy-${pkgver}.tar.gz")
-md5sums=('bf4c8a033a7085fbc9ec604eebbdbdc5')
+md5sums=('c597c68e4392a82f90a9cb22c3b28628')
 
 build() {
   cd ${srcdir}/astropy-${pkgver}
