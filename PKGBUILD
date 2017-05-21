@@ -16,10 +16,12 @@ sha256sums=('7dfadbb114af300491a5e55b12b84cc53fff10f7d59eab61090eadb09961b0be'
 	    'bfa2c3dcb3f0e0d1ec242792b0e4232cffef86df4540435a01b28de12741eed4')
 
 package() {
-	msg2 "Extracting library archives..."
-	cd "${pkgdir}" || exit
-	unzip $_pkgname-Linux.zip -d "${pkgdir}/opt/${_pkgname}"
-	cp aapg-logo-small.svg "${pkgdir}/opt/${_pkgname}/$_pkgname.svg"
+        mkdir -p "${pkgdir}/opt/${_pkgname}"
+
+        msg2 "Extracting library archives..."
+        cd "${pkgdir}" || exit
+        unzip "${srcdir}/$_pkgname-Linux.zip" -d "${pkgdir}/opt/${_pkgname}"
+	cp "${srcdir}/aapg-logo-small.svg" "${pkgdir}/opt/${_pkgname}/$_pkgname.svg"
 
 	msg2 "Creating launchers..."
 	cd "${srcdir}" || exit
@@ -35,7 +37,6 @@ Categories=Game
 EOF
 
 	install -Dm644 "${srcdir}/Americas Army.desktop" "${pkgdir}/usr/share/applications/Americas Army.desktop"
-	install -D -m644 $_pkgname.svg "${pkgdir}/opt/${_pkgname}.png"
 
 	msg2 "Done!"
 }
