@@ -1,0 +1,9 @@
+image: registry.maisonneuve.io/vivien/docker-archlinux-makepkg:latest
+
+build:
+  stage: build
+  script: makepkg -s --noconfirm --needed
+  artifacts:
+    paths:
+    - '*.pkg.tar.xz'
+    expire_in: 1 week
