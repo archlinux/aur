@@ -1,9 +1,11 @@
 pkgbase = teamsql
 	pkgdesc = Multi-Platform SQL Client
 	pkgver = 0.9.93
-	pkgrel = 1
+	pkgrel = 2
 	install = teamsql.install
 	arch = x86_64
+	depends = libappindicator-gtk2,
+	depends = libnotify
 	source = TeamSQL-0.9.93.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/0.9.93/TeamSQL-0.9.93.deb
 	source = teamsql.sh
 	md5sums = e1229936c734acf83b3ccf2821149fbe
