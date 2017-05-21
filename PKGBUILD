@@ -15,7 +15,7 @@ sha512sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    s=`git 2>/dev/null describe --long --tags`
+    s=`git 2>/dev/null describe --long --tags | sed 's/^fastimport-//'`
     if [ $? -eq 0 ]
     then
         printf '%s' "$s" | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
@@ -26,6 +26,6 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/python-fastimport"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    cd "$srcdir/$pkgname"
+    python2 setup.py install --root="$pkgdir" --optimize=1
 }
