@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Leduc <sebastien@sleduc.fr>
 pkgname=('python-redmine' 'python2-redmine')
 pkgbase='python-redmine'
-pkgver=1.5.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Python library for communicating with a Redmine project management application"
 arch=("any")
@@ -9,8 +9,8 @@ url="http://python-redmine.readthedocs.org/"
 license=('Apache')
 makedepends=('python' 'python2')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/p/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-md5sums=('c34bf0f83da7bd47dc6292ab9728e69c')
+source=("https://pypi.python.org/packages/d6/6f/529c13202e2cd166c01f9984fc79ae1c28749782084b77ef5632f8385be3/${pkgbase}-${pkgver}.tar.gz")
+md5sums=('14ec968d04ae427b449d8c5ab15d174e')
 
 prepare() {
   cp -a "${srcdir}/${pkgbase}-${pkgver}"{,-python2}
