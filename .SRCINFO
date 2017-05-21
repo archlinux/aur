@@ -1,6 +1,6 @@
 pkgbase = reaper
 	pkgdesc = digital audio workstation
-	pkgver = 5.410
+	pkgver = 5.412
 	pkgrel = 1
 	url = http://www.reaper.fm
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = reaper
 	depends = gdk-pixbuf2
 	depends = gtk3
 	depends = jack
-	source = http://www.landoleet.org/dev/reaper_5410_developer_linux_x86_64.tar.xz
+	source = http://www.landoleet.org/dev/reaper_5412_developer_linux_x86_64.tar.xz
 	source = git+http://www-dev.cockos.com/wdl/WDL.git
-	md5sums = 1b9290ea1c711b9e5d7c85b4545d1cda
+	md5sums = 3a6004b9bfd80a7fb614cd073394561a
 	md5sums = SKIP
 
 pkgname = reaper
