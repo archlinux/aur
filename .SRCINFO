@@ -1,0 +1,21 @@
+pkgbase = brother-mfc-9335cdw
+	pkgdesc = LPR, scanner and CUPS drivers for the Brother MFC-9335CDW
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-mfc-9335cdw.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = unknown
+	depends = perl
+	depends = a2ps
+	depends = lib32-libcups
+	depends = brscan4
+	source = http://download.brother.com/welcome/dlf102677/mfc9335cdwlpr-1.1.3-0.i386.deb
+	source = http://download.brother.com/welcome/dlf102678/mfc9335cdwcupswrapper-1.1.4-0.i386.deb
+	md5sums = f993eb5322df2c9519a86ac0afcbb197
+	md5sums = f3afb684911c55a131532bb8cfdbc672
+
+pkgname = brother-mfc-9335cdw
+
