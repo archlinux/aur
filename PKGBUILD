@@ -1,6 +1,6 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=python-telegram-bot
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 url="https://github.com/python-telegram-bot/python-telegram-bot"
@@ -8,8 +8,8 @@ depends=('python' 'python-future' 'python-certifi' 'python-urllib3' 'python-setu
 makedepends=('python3' )
 license=('LGPLv3')
 arch=('any')
-source=("https://pypi.python.org/packages/6f/7f/887a46bee86e16967f624479c4b7d7fd7c24765cada8f1c490ff5c9f6551/${pkgname}-${pkgver}.tar.gz#md5=5c0833a7d749ec3e20825e13e8d56cba")
-md5sums=('5c0833a7d749ec3e20825e13e8d56cba')
+source=("https://pypi.python.org/packages/b3/86/0ce63db69006343f3b5f1cc90cf6fee2fc0d1ddf21949bd591daefedeff7/${pkgname}-${pkgver}.tar.gz#md5=e6eb6d7e71a658415ebd8885f99d0945")
+md5sums=("e6eb6d7e71a658415ebd8885f99d0945")
 
 build() {
     cd $srcdir/python-telegram-bot-$pkgver
