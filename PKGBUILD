@@ -3,12 +3,12 @@
 pkgname=xperia-flashtool
 _realname=flashtool
 pkgver=0.9.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A S1 protocol flashing software for Sony Xperia phones"
 arch=('i686' 'x86_64')
 url="http://www.flashtool.net/"
 license=('unknown')
-depends=('libselinux')
+depends=('libselinux' 'libsystemd' 'glib2')
 makedepends=('p7zip')
 source=("http://url.muflone.com/${pkgname}-${pkgver}-linux.tar.7z"
         "${pkgname}.sh")
@@ -23,12 +23,12 @@ build() {
 package() {
   # Remove useless files for the selected architecture
   pushd "FlashTool/x10flasher_lib" > /dev/null
-  if [ "$CARCH"=="x86_64" ]; then
-    rm -rf "adb.linux.x86" "fastboot.linux.x86" "unyaffs.linux.x86" \
-      "linjre32" "linux/lib32" "swtlin/swt32.jar"
+  if [ "$CARCH" == "x86_64" ]; then
+    rm -r "adb.linux.32" "fastboot.linux.32" "unyaffs.linux.32" \
+      "linjre32" "linux/lib32" "swtlin/x86"
   else
-    rm -rf "adb.linux.x64" "fastboot.linux.x64" "unyaffs.linux.x64" \
-      "linjre64" "linux/lib64" "swtlin/swt64.jar"
+    rm -r "adb.linux.64" "fastboot.linux.64" "unyaffs.linux.64" \
+      "linjre64" "linux/lib64" "swtlin/x86_64"
   fi
   popd > /dev/null
   # Install all the program files
