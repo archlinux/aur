@@ -16,11 +16,9 @@ license=('custom:gridcoin')
 
 _sourcename="${pkgname%d-staging}"
 
-source=('gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git#branch=staging'
-        '0001-Openssl-1.1.0-185.patch')
+source=('gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git#branch=staging')
 
-sha256sums=('SKIP'
-          '6aec7fc3612444cdf5b837c82177268f29aba4f9b6bb4a8c47a7d6fca831b42c')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_sourcename"
@@ -34,9 +32,6 @@ prepare() {
   mkdir -p "$srcdir/$_sourcename/src/obj"
 
   chmod 755 "$srcdir/$_sourcename/src/leveldb/build_detect_platform"
-
-  cd "$srcdir/$_sourcename"
-  patch -Np1 -i "$srcdir/0001-Openssl-1.1.0-185.patch"
 }
 
 build() {
