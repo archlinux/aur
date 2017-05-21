@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=nfs2se-git
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
 arch=('i686' 'x86_64' 'armv7' 'armv7h')
@@ -15,35 +15,35 @@ md5sums=('SKIP'
 
 machine=$(uname -m)
 
-NFS_DIR="NFSIISE"
-NFS_DATA_DIR="$NFS_DIR/Need For Speed II SE"
-OTHER_CPU=0
-
 if [ $machine == "x86_64" ]; then
 	depends=('lib32-sdl2' 'lib32-libgl')
 	makedepends=('gcc-multilib' 'yasm')
 	optdepends=('lib32-libpulse: Required for PulseAudio')
+	SUBMODULE=src/Asm
 elif [ $machine == "i686" ]; then
 	depends=('sdl2' 'libgl')
 	makedepends=('gcc' 'yasm')
+	SUBMODULE=src/Asm
 else
 	depends=('sdl2' 'libgl')
 	makedepends=('gcc')
-	source[0]=${source[0]}"-CPP"
-
-	NFS_DIR="$NFS_DIR-CPP"
-	NFS_DATA_DIR="$NFS_DIR/NFSIISE/Need For Speed II SE"
-	OTHER_CPU=1
+	COMPILE_ARG=cpp
+	SUBMODULE=src/Cpp
 fi
 
 install=nfs2se-git.install
 
+prepare()
+{
+	cd $srcdir/NFSIISE
+	git submodule init
+	git submodule update $SUBMODULE
+}
+
 build()
 {
-	cd $srcdir/$NFS_DIR
-	git submodule init
-	git submodule update
-	./compile_nfs
+	cd $srcdir/NFSIISE
+	./compile_nfs $COMPILE_ARG
 }
 
 package()
@@ -52,11 +52,8 @@ package()
 	cp $srcdir/nfs2se $pkgdir/usr/bin
 
 	mkdir $pkgdir/opt
-	cp -r "$srcdir/$NFS_DATA_DIR" $pkgdir/opt/nfs2se
+	cp -r "$srcdir/NFSIISE/Need For Speed II SE" $pkgdir/opt/nfs2se
 	rm -f $pkgdir/opt/nfs2se/open_config.bat
-	if [ $OTHER_CPU != 0 ]; then
-		cp $srcdir/$NFS_DIR/nfs2se $pkgdir/opt/nfs2se
-	fi
 
 	mkdir -p $pkgdir/usr/share/applications
 	mv $pkgdir/opt/nfs2se/nfs2se.desktop $pkgdir/usr/share/applications
