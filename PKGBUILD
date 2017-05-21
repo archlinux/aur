@@ -9,17 +9,17 @@ pkgver=0.1
 pkgrel=1
 pkgdesc='Postal: quirky FPS shooter'
 arch=('x86' 'x86_64' 'arm')
-url='https://github.com/iammeat/POSTAL-1-Open-Source'
+url='http://runningwithscissors.com/'
 license=('GPL')
 depends=('sdl2')
-makedepends=('gcc' 'patch')
-source=("git+https://github.com/iammeat/POSTAL-1-Open-Source")
+makedepends=('mercurial' 'gcc' 'patch')
+source=("hg+https://bitbucket.org/gopostal/postal-1-open-source")
 sha256sums=('SKIP')
-_repo_name="POSTAL-1-Open-Source"
+_repo_name="postal-1-open-source"
 
 build() {
   cd "$srcdir/$_repo_name"
-  patch -p1 < ${startdir}/0001-Use-the-system-SDL2.patch
+  #patch -p1 < ${startdir}/0001-Use-the-system-SDL2.patch
   make linux_x86=1
 }
 
