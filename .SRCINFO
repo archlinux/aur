@@ -1,0 +1,13 @@
+pkgbase = xcursor-comix-lh
+	pkgdesc = Comix X Cursor Theme for lefties
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://gitlab.com/limitland/comixcursors
+	arch = any
+	license = GPL
+	depends = libxcursor
+	source = https://ptpb.pw/~ComixCursors-LH
+	md5sums = 1058c81b7afed502d0e67b64272b57e8
+
+pkgname = xcursor-comix-lh
+
