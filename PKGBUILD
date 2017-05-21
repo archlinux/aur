@@ -21,6 +21,9 @@ pkgver() {
 }
 
 prepare() {
+  msg2 "Generating pkg-config file"
+  ${srcdir}/tensorflow/tensorflow/c/generate-pc.sh --prefix=/usr --version=${pkgver:0:5}
+
   [ -d ${srcdir}/tensoflow-cuda ] && rm -rf ${srcdir}/tensorflflow-cuda
   cp -r ${srcdir}/tensorflow ${srcdir}/tensorflow-cuda
   # These environment variables influence the behavior of the configure call below.
@@ -73,6 +76,7 @@ package_tensorflow-git() {
   install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/lib${pkgname/-git/}.so
   install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/tensorflow/c_api.h
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE
+  install -Dm644 ../tensorflow.pc ${pkgdir} /usr/lib/pkgconfig/tensorflow.pc
 }
 
 package_tensorflow-cuda-git() {
@@ -85,6 +89,7 @@ package_tensorflow-cuda-git() {
   install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/lib${pkgname}.so
   install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/${pkgname}/c_api.h
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ../tensorflow.pc ${pkgdir} /usr/lib/pkgconfig/tensorflow.pc
 }
 
 package_python-tensorflow-git() {
