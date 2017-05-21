@@ -10,7 +10,7 @@ url="http://code.google.com/p/gmpy/"
 license=('LGPL2.1')
 depends=('python2' 'gmp')
 options=(!emptydirs)
-source=("http://gmpy.googlecode.com/files/gmpy-${pkgver}.zip")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gmpy/gmpy-${pkgver}.zip")
 md5sums=('2bf419076b06e107167e219f60ac6d27')
 
 package() {
