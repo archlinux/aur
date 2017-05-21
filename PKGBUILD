@@ -1,8 +1,8 @@
 # Maintainer: Chipster Julien <julien dot chipster @ archlinux dot fr>
 
-pkgname=searchnewdoconaidop
+pkgname=searchNewDocOnAidop
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Program that searches for new files"
 arch=('any')
 url="https://github.com/Chipsterjulien/searchNewDocOnAidop"
