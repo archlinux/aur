@@ -24,8 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_repo_name"
-  #patch -p1 < ${startdir}/0001-Use-the-system-SDL2.patch
-  make linux_x86=1
+  make
 }
 
 package() {
@@ -38,6 +37,7 @@ package() {
   mkdir -p $_bin_dir
 
   cp ${startdir}/postal-git $_bin_dir
-  cp bin/postal1-x86 $_data_dir
+  cp bin/postal1-* $_data_dir
+  ls bin/postal1-* | sed 's/bin/./g' >> ${_bin_dir}/postal-git
   cp DefaultPostal.ini $_data_dir/POSTAL.INI
 }
