@@ -3,20 +3,22 @@
 #
 # Contributor: uastasi <uastasi at archlinux dot us>
 
-pkgname=frogr
-pkgver=1.2
+pkgname="frogr"
+pkgver=1.3
 pkgrel=1
 pkgdesc="A flickr remote organizer for GNOME"
 url="https://wiki.gnome.org/Apps/Frogr"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('gtk3' 'libexif' 'hicolor-icon-theme' 'json-glib' 'desktop-file-utils' 'libsoup' 'gstreamer')
+depends=('gtk3' 'libexif' 'hicolor-icon-theme' 'json-glib' \
+		 'desktop-file-utils' 'libsoup' 'gstreamer'
+)
 makedepends=('gnome-common' 'intltool' 'yelp-tools')
 optdepends=('gst-libav: To support common video formats like .3gp and .MP4 ')
 conflicts=("${pkgname}-git")
 provides=("${pkgname}")
 source=("http://download.gnome.org/sources/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('6cd491f2a723201bac3cb9f68e015c534d561b75c4a4b32b2e1b37477d2e82f8')
+sha256sums=('94cc6a7ab2553e00cc8e0c2435a1c2610de0fc59ce51e78fe0d758f34d5c7a36')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
