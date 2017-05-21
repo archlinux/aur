@@ -1,0 +1,33 @@
+pkgbase = dolphin-hau-git
+	pkgdesc = A Wii/GameCube Emulator (Melee/Project M)
+	pkgver = 5.0_hau.1
+	pkgrel = 1
+	url = http://github.com/HannesMann/dolphin-hau
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = bluez-libs
+	depends = enet
+	depends = ffmpeg
+	depends = libao
+	depends = libevdev
+	depends = mbedtls
+	depends = miniupnpc
+	depends = openal
+	depends = portaudio
+	depends = soundtouch
+	depends = xdg-utils
+	depends = wxgtk
+	optdepends = pulseaudio: PulseAudio backend
+	options = !emptydirs
+	source = dolphin-hau::git+https://github.com/HannesMann/dolphin-hau.git
+	sha256sums = SKIP
+
+pkgname = dolphin-hau-git
+	provides = dolphin-hau
+	conflicts = dolphin-hau
+
+pkgname = dolphin-hau-cli-git
+	depends = dolphin-hau-git
+
