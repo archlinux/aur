@@ -3,7 +3,7 @@
 
 pkgname=darkmod
 pkgver=2.05
-pkgrel=1
+pkgrel=2
 pkgdesc="DOOM III standalone mod based on the Thief series by Looking Glass Studios"
 arch=('i686' 'x86_64')
 url="http://www.thedarkmod.com/"
@@ -19,7 +19,7 @@ source=(http://www.fidcal.com/darkuser/tdm_update_linux.zip
         "$pkgname".png
         "$pkgname".sh)
 
-md5sums=('3e39c23cc754f2ac55e05b5a5b56023c'
+md5sums=('ec81603a288ff6d10fb0d5999ee2652c'
          'bc6537224b60c4ccfd04a51d80e340c1'
          '5309e528ce22f28ecc0e9781e43379e0'
          '7230f47d04072a7473f823d6925af947')
