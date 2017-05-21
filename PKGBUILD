@@ -10,7 +10,7 @@ pkgdesc="HP remote RGS receiver"
 arch=('x86_64')
 url="https://h30670.www3.hp.com/portal/swdepot/displayProductInfo.do?productNumber=RGS-LR"
 license=('custom:"HP"')
-depends=('lib32-libudev.so.0' 'lib32-glu')
+depends=('lib32-libudev.so.0' 'lib32-glu' 'dmidecode')
 makedepends=('')
 options=('emptydirs')
 source=("file://RGS_Linux_64_Receiver_v7.3.2_Z7550-01910.tar.gz")

@@ -7,6 +7,7 @@ pkgbase = hgsreceiver-bin
 	license = custom:"HP"
 	depends = lib32-libudev.so.0
 	depends = lib32-glu
+	depends = dmidecode
 	options = emptydirs
 	source = file://RGS_Linux_64_Receiver_v7.3.2_Z7550-01910.tar.gz")
 	md5sums = a84037489d2339dbd48fd6178a8a9619
