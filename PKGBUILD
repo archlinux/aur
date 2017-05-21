@@ -4,7 +4,7 @@
 pkgname=elasticdump2
 _pkgname=elasticdump
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Import and export tools for Elasticsearch < 5"
 arch=(any)
 url="https://www.npmjs.com/package/elasticdump"
@@ -18,4 +18,8 @@ noextract=("$_pkgname-$pkgver.tgz")
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
   rm -r "$pkgdir/usr/etc"
+
+  mv "$pkgdir/usr/lib/node_modules/$_pkgname" "$pkgdir/usr/lib/node_modules/$pkgname"
+  mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/$pkgname"
+  mv "$pkgdir/usr/bin/multi$_pkgname" "$pkgdir/usr/bin/multi$pkgname"
 }
