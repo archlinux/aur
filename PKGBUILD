@@ -1,7 +1,7 @@
 # Maintainer: Hoang-Ngan Nguyen zhoangngan@gmail.com
 pkgname=rseye-git
 _pkgname=rseye
-pkgver=r35.95537fe
+pkgver=r39.0babe11
 pkgrel=1
 pkgdesc="Freeze screen regularly to help prevent Repetitive Strain
 Injury (RSI) and protect the eyes."
@@ -27,5 +27,4 @@ package() {
   install -D "$srcdir/$_pkgname/rseye" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$srcdir/$_pkgname/rseye.1.gz" "$pkgdir/usr/share/man/man1/rseye.1.gz"
   install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/$_pkgname/rseyerc.sample" "$pkgdir/etc/rseyerc.sample"
 }

@@ -1,6 +1,6 @@
 pkgbase = rseye-git
 	pkgdesc = Freeze screen regularly to help prevent Repetitive Strain Injury (RSI) and protect the eyes.
-	pkgver = r35.95537fe
+	pkgver = r39.0babe11
 	pkgrel = 1
 	url = https://github.com/hoangngan82/rseye
 	arch = i686
