@@ -5,7 +5,7 @@ pkgbase = hgsreceiver-bin
 	url = https://h30670.www3.hp.com/portal/swdepot/displayProductInfo.do?productNumber=RGS-LR
 	arch = x86_64
 	license = custom:"HP"
-	depends = libudev.so.0
+	depends = lib32-libudev.so.0
 	depends = lib32-glu
 	options = emptydirs
 	source = file://RGS_Linux_64_Receiver_v7.3.2_Z7550-01910.tar.gz")
