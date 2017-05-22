@@ -2,7 +2,7 @@
 
 pkgname=resin-cli-git
 pkgdesc='Resin.io command line interface, development version'
-pkgver=5.9.1.r22.g1d06bc1
+pkgver=5.10.0.r0.g5b651c7
 pkgrel=1
 arch=('any')
 url='https://resin.io/'
@@ -12,7 +12,7 @@ makedepends=('npm' 'git')
 source=('git+https://github.com/resin-io/resin-cli.git')
 provides=('resin-cli')
 conflicts=('resin-cli')
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
