@@ -1,0 +1,16 @@
+pkgbase = otf-zilla-slab
+	pkgdesc = Mozilla's Zilla Slab Type Family
+	pkgver = 1
+	pkgrel = 1
+	install = otf-zilla-slab.install
+	arch = any
+	license = custom: SIL Open Font License
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = otf-zilla-slab.tar.gz::https://github.com/mozilla/zilla-slab/archive/master.zip
+	sha256sums = 113c450d524a29cf5bfae01d4cdad4d2c04424c54d2e14d4bfb6564f2ec71142
+
+pkgname = otf-zilla-slab
+
+pkgname = ttf-zilla-slab
+
