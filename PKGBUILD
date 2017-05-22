@@ -1,19 +1,20 @@
 pkgname=pb-git
-pkgver=r311.529e8fc
+pkgver=r357.dc04f7f
 pkgrel=1
 pkgdesc="My attempt at a light pastebin"
 arch=('any')
 url="https://github.com/ptpb/pb"
 license=('GPLv3')
 
-depends=('python' 'python-werkzeug' 'python-flask-git' 'python-yaml'
+depends=('python' 'python-werkzeug' 'python-flask' 'python-yaml'
          'python-requests' 'python-docutils' 'python-xdg'
          'python-pymongo' 'python-markdown' 'python-dateutil'
          'uwsgi' 'uwsgi-plugin-python'
          'python-click' 'python-pygments' 'python-pytz')
 
-makedepends=('python-setuptools' 'git' 'graphicsmagick' 'npm')
+makedepends=('python-setuptools' 'git')
 #checkdepends=('tox' 'python-pytest' 'python-pytest-cov')
+optdepends=('pbs-git: pb styles and static resources')
 
 provides=('pb')
 backup=('etc/xdg/pb/config.yaml' 'etc/uwsgi/pb.ini')
@@ -24,21 +25,6 @@ md5sums=('SKIP')
 pkgver() {
   cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $pkgname
-
-  npm install
-  npm install grunt-cli
-
-  # npm and grunt are retarded pieces of shit
-  (
-    cd node_modules/pbs
-    npm install
-  )
-
-  node_modules/grunt-cli/bin/grunt
 }
 
 build() {
