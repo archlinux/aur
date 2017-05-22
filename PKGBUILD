@@ -28,7 +28,7 @@ build() {
 package() {
   cd $pkgname
 
-  for resource in css images; do
+  for resource in css images js; do
     install -D -m755 -d "${pkgdir}/usr/share/$pkgname/${resource}"
     install -D -m644 dist/$resource/* "${pkgdir}/usr/share/$pkgname/${resource}"
   done
