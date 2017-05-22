@@ -10,30 +10,39 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-git
-pkgname=('mesa-git' 'mesa-libgl-git')
+pkgname=('mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.2.0_devel.92207.4eb0411ed7
+pkgver=17.2.0_devel.92208.30dc56bb5b
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 'libxshmfence' 
              'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'libomxil-bellagio'
-             'libtxc_dxtn' 'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'libunwind')
+             'libtxc_dxtn' 'ocl-icd' 'vulkan-icd-loader' 'libgcrypt' 'libunwind' 'libglvnd')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-# source=('mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git'
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
+        '0001-Fix-linkage-against-shared-glapi.patch'
+        'glvnd-fix-gl-dot-pc.patch'
 )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-)
+            'fdf973f0387997cee16936bc978f52d60719a1a8610fa96768e2cec42ad790da31f72c00783246f047fc496de01f9e22aec0d46577ded9c2353dd6e6193b4294'
+            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028')
 
-# prepare() {
-#    cd mesa
-    # pthread-stubs is useless on linux
-#    patch -Np1 -i "$srcdir"/disable-pthread-stubs-on-linux.patch
-#}
+prepare() {
+  cd ${srcdir}/mesa
+
+  # glvnd support patches - from Fedora
+  # non-upstreamed ones
+  patch -Np1 -i ../glvnd-fix-gl-dot-pc.patch
+  patch -Np1 -i ../0001-Fix-linkage-against-shared-glapi.patch
+
+#  patch -Np1 -i ../0001-glxglvnddispatch-Add-missing-dispatch-for-GetDriverC.patch
+#  upstreamed, see https://cgit.freedesktop.org/mesa/mesa/commit/?id=84f764a7591715104b28c035c837ce9fd86157ad
+
+}
 
 pkgver() {
     cd mesa
@@ -60,7 +69,8 @@ build () {
                --enable-omx \
                --enable-opencl \
                --enable-opencl-icd \
-               --enable-glx-tls
+               --enable-glx-tls \
+               --enable-libglvnd
 
 
 # Used configure settings
@@ -99,6 +109,8 @@ build () {
 #                                   [default=disabled]
 # --enable-glx-tls                  enable TLS support in GLX
 #                                   [default=disabled]
+# --enable-libglvnd                 Build GLX and EGL for libglvnd 
+#                                   [default=disabled]
 
   make
 
@@ -110,49 +122,25 @@ package_mesa-git () {
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
            'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn' 'libunwind')
   optdepends=('opengl-man-pages: for the OpenGL API man pages')
-  provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver')
-  replaces=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
-  conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
+  provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver' 'mesa-libgl' 'opengl-driver')
+  replaces=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl')
+  conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'mesa-libgl')
 
   cd mesa
   make DESTDIR="$pkgdir" install
   # remove vulkan headers as they are provided by vulkan-headers package
   rm -rf "$pkgdir"/usr/include/vulkan/vk_platform.h "$pkgdir"/usr/include/vulkan/vulkan.h
 
-  install -m755 -d ${pkgdir}/usr/lib/mesa
-  # move libgl/EGL/glesv*.so to not conflict with blobs ?
-  mv -v "$pkgdir"/usr/lib/libGL.so*    "$pkgdir"/usr/lib/mesa/
-  mv -v "$pkgdir"/usr/lib/libEGL.so*   "$pkgdir"/usr/lib/mesa/
-  mv -v "$pkgdir"/usr/lib/libGLES*.so* "$pkgdir"/usr/lib/mesa/
+  # remove files present in libglvnd
+  rm $pkgdir/usr/lib/libGLESv1_CM.so
+  rm $pkgdir/usr/lib/libGLESv1_CM.so.1
+  rm $pkgdir/usr/lib/libGLESv2.so
+  rm $pkgdir/usr/lib/libGLESv2.so.2
+  rm $pkgdir/usr/lib/libGLESv2.so.2.0.0
+
+  # indirect rendering
+  ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
 
   install -m755 -d "$pkgdir"/usr/share/licenses/$pkgbase
   install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgbase/
-}
-
-package_mesa-libgl-git () {
-  pkgdesc="Mesa 3-D graphics library"
-  depends=('mesa-git')
-  provides=('mesa-libgl' 'libgl' 'libgles' 'libegl' 'opengl-provider')
-  replaces=('mesa-libgl' 'libgles' 'libegl')
-  conflicts=('mesa-libgl' 'libgles' 'libegl')
-
-  install -m755 -d "$pkgdir"/usr/lib/
-  ln -s /usr/lib/mesa/libGL.so.1.2.0 "$pkgdir"/usr/lib/libGL.so.1.2.0
-  ln -s libGL.so.1.2.0               "$pkgdir"/usr/lib/libGL.so.1
-  ln -s libGL.so.1.2.0               "$pkgdir"/usr/lib/libGL.so
-
-  ln -s /usr/lib/mesa/libEGL.so.1.0.0 "$pkgdir"/usr/lib/libEGL.so.1.0.0
-  ln -s libEGL.so.1.0.0               "$pkgdir"/usr/lib/libEGL.so.1
-  ln -s libEGL.so.1.0.0               "$pkgdir"/usr/lib/libEGL.so
-
-  ln -s /usr/lib/mesa/libGLESv1_CM.so.1.1.0 "$pkgdir"/usr/lib/libGLESv1_CM.so.1.1.0
-  ln -s libGLESv1_CM.so.1.1.0               "$pkgdir"/usr/lib/libGLESv1_CM.so.1
-  ln -s libGLESv1_CM.so.1.1.0               "$pkgdir"/usr/lib/libGLESv1_CM.so
-
-  ln -s /usr/lib/mesa/libGLESv2.so.2.0.0 "$pkgdir"/usr/lib/libGLESv2.so.2.0.0
-  ln -s libGLESv2.so.2.0.0               "$pkgdir"/usr/lib/libGLESv2.so.2
-  ln -s libGLESv2.so.2.0.0               "$pkgdir"/usr/lib/libGLESv2.so
-
-  install -m755 -d "$pkgdir"/usr/share/licenses/mesa-libgl-git
-  install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/mesa-libgl-git/
 }
