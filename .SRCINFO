@@ -1,0 +1,13 @@
+pkgbase = sia-daemon
+	pkgdesc = Blockchain-based marketplace for file storage
+	pkgver = v1.2.2
+	pkgrel = 1
+	url = https://sia.tech
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://github.com/NebulousLabs/Sia/releases/download/v1.2.2/Sia-v1.2.2-linux-amd64.zip
+	sha256sums = b11e4535510b3affe0820059226507d68463ddc8cf2c5f59fbe2ff9f8931055c
+
+pkgname = sia-daemon
+
