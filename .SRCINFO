@@ -1,0 +1,24 @@
+pkgbase = tinyos
+	pkgdesc = Small operating system for sensor motes, embedded devices
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://www.tinyos.net/
+	arch = any
+	license = GPL
+	depends = glibc
+	depends = nesc
+	optdepends = jdk: for building java tools for tinyos applications
+	optdepends = jre: for using java tools
+	optdepends = avr-libc-tinyos: to build for atmel based platforms
+	optdepends = avrdude: to installing for atmel based platform (which is not supported by uisp, like iris)
+	optdepends = binutils-msp430: to build for msp430 based platforms
+	optdepends = gcc-msp430: to build for msp430 based platforms
+	optdepends = msp430-libc: to build for msp430 based platforms
+	options = !libtool
+	source = http://tinyos.stanford.edu/tinyos/dists/source/tinyos-2.1.2.tar.gz
+	source = tinyos.profile
+	md5sums = 58c894214a353866a4a11774c3372dae
+	md5sums = 242f5d337860fd4f5c713bf39a5e5c1d
+
+pkgname = tinyos
+
