@@ -1,0 +1,21 @@
+pkgbase = rto-proxy
+	pkgdesc = RuTracker proxy app based at electron + angularjs
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://rutracker.cr/forum/viewtopic.php?t=5403116
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libxtst
+	depends = lib32-nss
+	depends = libxss
+	options = !strip
+	source = https://github.com/RutrackerOrg/rutracker-proxy/releases/download/v0.1.3/rto-proxy_0.1.3_amd64.deb
+	validpgpkeys = BC02894E554D22A62D381930300E89650A716A5A
+	md5sums = ccf210b40983f8811e9b39ff1b8fe82e
+	sha256sums = 2e87ef606068a32397b36f1e39c9f53780f9c30eb2e503520a957b058104c119
+
+pkgname = rto-proxy
+
