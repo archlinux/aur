@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=menutray
-pkgver=0.47
+pkgver=0.48
 pkgrel=1
 
 pkgdesc="An application menu through a GTK+ tray status icon."
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('perl>=5.14.0' 'gtk2-perl' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08')
 optdepends=('perl-gtk3: for Gtk3 support (--gtk3)')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('99cd610b37f7465070033b8c56392661be8681f7055a910638fa248dc8c92cee')
+sha256sums=('afe0637e725bed1574704677bcc1c665bdd9233c3d4606d1bfee1b101366c6ed')
 install='readme.install'
 
 package() {
