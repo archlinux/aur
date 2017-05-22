@@ -15,13 +15,13 @@ fi
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
 conflicts=('pi-launcher')
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
 url='https://github.com/sirspudd/artriculate'
 license=('GPL3')
-depends=('qt5-declarative' 'qml-box2d')
+depends=('qt-sdk-raspberry-pi-target-libs')
 source=("git://github.com/sirspudd/artriculate#tag=${pkgver}")
 sha256sums=('SKIP')
 options=('!strip')
