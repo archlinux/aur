@@ -3,9 +3,10 @@
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-prboom-git
-pkgver=157.2bfa6c7
+pkgver=299.e09831c
 pkgrel=1
 pkgdesc="libretro implementation of PrBoom. (Doom)"
+groups=('libretro')
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url="https://github.com/libretro/libretro-prboom"
 license=('GPL')
