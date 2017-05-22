@@ -3,10 +3,11 @@
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-genesis-plus-gx-git
-pkgver=1052.40c9782
+pkgver=1145.365a28c
 pkgrel=1
 pkgdesc="libretro implementation of Genesis Plus GX. (Sega Master System/Sega Game Gear/Sega Mega Drive/Sega Genesis/Sega CD)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+groups=('libretro')
 url="https://github.com/libretro/Genesis-Plus-GX"
 license=('custom')
 conflicts=('libretro-genplus-git')
