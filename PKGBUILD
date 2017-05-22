@@ -3,9 +3,10 @@
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-vba-next-git
-pkgver=479.dbdf841
+pkgver=681.e773475
 pkgrel=1
 pkgdesc="libretro implementation of VBA Next. (Game Boy Advance)"
+groups=('libretro')
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url="https://github.com/libretro/vba-next"
 license=('GPL')
