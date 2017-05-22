@@ -1,0 +1,19 @@
+pkgbase = pbs-git
+	pkgdesc = less styles for pb
+	pkgver = r12.f229c1b
+	pkgrel = 1
+	url = https://github.com/ptpb/pbs
+	arch = any
+	license = GPLv3
+	makedepends = strace
+	makedepends = libxml2
+	makedepends = git
+	makedepends = npm
+	makedepends = grunt-cli
+	makedepends = graphicsmagick
+	provides = pbs
+	source = pbs-git::git+https://github.com/ptpb/pbs.git
+	md5sums = SKIP
+
+pkgname = pbs-git
+
