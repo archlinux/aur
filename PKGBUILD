@@ -48,13 +48,6 @@ if [[ -f full-build ]]; then
   _debug=false
 fi
 
-if $_building && $_minimal; then
-  _skip_qtscript=true;
-  _skip_web_engine=true;
-  _skip_qt_widgets=true;
-  pkgname="${pkgname}-minimal"
-fi
-
 # Sanity check options
 if $_building; then
   if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then _piver=$LOCAL_PI_VER; fi
@@ -96,7 +89,8 @@ __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 case ${_piver} in
 1)
   _toolchain_name=armv6-rpi-linux-gnueabihf
-  _skip_web_engine=true
+  _minimal=true
+  _float=true
 ;;
 2)
   _toolchain_name=armv7-rpi2-linux-gnueabihf
@@ -104,9 +98,15 @@ case ${_piver} in
 3)
   _toolchain_name=aarch64-rpi3-linux-gnueabi
   _use_mesa=true
-  _float=false
 ;;
 esac
+
+if $_building && $_minimal; then
+  _skip_qtscript=true;
+  _skip_web_engine=true;
+  _skip_qt_widgets=true;
+  pkgname="${pkgname}-minimal"
+fi
 
 if $_target_host; then
   _use_mesa=true
