@@ -8,10 +8,10 @@ pkgbase = perl-authen-cas-client
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-mockobject>=0
-	depends = perl-uri>=0
-	depends = perl-xml-libxml>=0
-	depends = perl-libwww>=0
+	checkdepends = perl-test-mockobject
+	depends = perl-uri
+	depends = perl-xml-libxml
+	depends = perl-libwww
 	depends = perl>=5.6.1
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/P/PR/PRAVUS/Authen-CAS-Client-0.08.tar.gz
