@@ -1,0 +1,17 @@
+pkgbase = msp430-libc
+	pkgdesc = C runtime library for the MSP430 family of microcontrollers
+	pkgver = 20120224
+	pkgrel = 1
+	url = http://mspgcc4.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-msp430
+	options = !strip
+	source = https://sourceforge.net/projects/mspgcc/files/msp430-libc/msp430-libc-20120224.tar.bz2
+	source = msp430-libc-20120224-sf3522752.patch::http://sourceforge.net/projects/mspgcc/files/Patches/LTS/20120406/msp430-libc-20120224-sf3522752.patch/download
+	sha1sums = d01cf0db41bff1a0ab50644cbb11bc5a1d5be172
+	sha1sums = 2ca4aea9b8dcd6a199303373a8a97c7a2dd4eef6
+
+pkgname = msp430-libc
+

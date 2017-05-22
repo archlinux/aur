@@ -1,0 +1,60 @@
+From bfac1504acb7a292812b725b30fe0cb4fdb512a9 Mon Sep 17 00:00:00 2001
+From: "Peter A. Bigot" <pabigot@users.sourceforge.net>
+Date: Tue, 1 May 2012 11:43:19 -0500
+Subject: [PATCH] SF 3522752 malloc return null problem
+
+Use __noinit_end which follows __bss_end.  Use the symbol reference rather
+than taking its address.  Also give up if we're about to write into the
+stack.
+---
+ src/stdlib/malloc.c |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/stdlib/malloc.c b/src/stdlib/malloc.c
+index 5363ae9..5d27468 100644
+--- a/src/stdlib/malloc.c
++++ b/src/stdlib/malloc.c
+@@ -17,20 +17,18 @@
+  * Author, copyright, and license unknown. */
+ 
+ #include <stdlib.h>
++#include <sys/crtld.h>
+ 
+ #define XSIZE(x) ((*x)>>1)
+ #define FREE_P(x) (!((*x)&1))
+ #define MARK_BUSY(x) ((*x)|=1)
+ #define MARK_FREE(x) ((*x)&=0xfffe)
+ 
+-extern size_t __bss_end;
+-#define GET_HEAP_BOTTOM(__x)  __asm__ __volatile__("mov	r1, %0": "=r" ((uint16_t)__x) :)
+-
+ void *malloc (size_t size)
+ {
+     static char once = 0;
+     size_t * heap_bottom;
+-    size_t kk = (size_t) (&__bss_end);		/* this will possibly introduce */
++    size_t kk = (size_t) __noinit_end;		/* this will possibly introduce */
+     size_t * heap_top = (size_t *)((kk+1)&~1);	/* 1 byte hole between .bss and heap */
+     char f = 0;
+ 
+@@ -39,7 +37,7 @@ void *malloc (size_t size)
+         once = 1;
+         *heap_top = 0xFFFE;
+     }
+-    GET_HEAP_BOTTOM (heap_bottom);
++    heap_bottom = __read_stack_pointer();
+     heap_bottom -= 20;
+     size = (size+1) >> 1;	/* round to 2 */
+     do
+@@ -65,6 +63,8 @@ void *malloc (size_t size)
+             }
+             if (xsize >= size)
+             {
++                if (heap_top + size + 1 > heap_bottom)
++                    break;
+                 if (f)
+                     heap_top[size + 1] = 0xfffe;
+                 else if (xsize != size)
+-- 
+1.7.7.6
+
