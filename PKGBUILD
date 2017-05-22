@@ -4,7 +4,7 @@
 
 pkgname=qt5.6-webkit
 pkgver=5.6.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -13,8 +13,10 @@ depends=('qt5.6' 'libwebp' 'libxslt' 'libxcomposite' 'gst-plugins-base')
 makedepends=('ruby' 'gperf' 'python2')
 optdepends=('gst-plugins-good: Webm codec support')
 _tarname="qtwebkit-opensource-src-${pkgver}"
-source=("http://download.qt.io/community_releases/${pkgver%.*}/${pkgver}/${_tarname}.tar.xz")
-md5sums=('5196f47b75e2d6cc9663c89cf9902ef0')
+source=("http://download.qt.io/community_releases/${pkgver%.*}/${pkgver}/${_tarname}.tar.xz"
+"qt5-webkit-icu59.patch")
+md5sums=('5196f47b75e2d6cc9663c89cf9902ef0'
+         'f6c74b0196a698cc1c5a34c695b22715')
 
 _qmake="/opt/qt${pkgver%.*}/bin/qmake"
 
@@ -25,6 +27,8 @@ prepare() {
     mkdir -p "${srcdir}"/python2-path
     ln -sf /usr/bin/python2 "${srcdir}"/python2-path/python
     export PATH="${srcdir}/python2-path:$PATH"
+
+    patch -Np1 < "${srcdir}/qt5-webkit-icu59.patch"
 }
 
 build() {
