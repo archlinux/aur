@@ -3,7 +3,7 @@
 # Contributor: Arthur D'Andréa Alemar
 
 pkgname=prometheus
-pkgver=1.6.0
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ install="$pkgname.install"
 backup=("etc/$pkgname/$pkgname.yml")
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "${pkgname}.service")
-sha256sums=('eba5e1d58ee58c1c87e34eb89487c22876782071ee7f7711ac206c9abb00b1e5'
+sha256sums=('1c2d01f3a44b53be3b672cbdb1843fbe8fc135020bbfb6c71b0a10b141a474e6'
             '2d689efe588302346b7065fef1b05be812e4a91df1a8d8845830c0b2397b2ac3')
 
 prepare() {
