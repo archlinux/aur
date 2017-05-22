@@ -1,7 +1,7 @@
 # Maintainer: Felipe Barriga Richards < felipe at felipebarriga DOT cl >
 pkgname=fuse_xattrs
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=3
 pkgdesc='A filesystem that provides xattr support using sidecar files.'
 arch=('i686' 'x86_64')
 url='https://github.com/fbarriga/fuse_xattrs'
