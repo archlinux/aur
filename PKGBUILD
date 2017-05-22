@@ -8,8 +8,8 @@
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
-_patchname=patch-4.12-rc1
-pkgver=4.12rc1
+_patchname=patch-4.12-rc2
+pkgver=4.12rc2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
