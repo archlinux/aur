@@ -2,7 +2,7 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 pkgname=python-telegram-bot
 pkgver=6.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A Python wrapper around the Telegram Bot API"
 url="https://github.com/python-telegram-bot/python-telegram-bot"
 depends=('python' 'python-future' 'python-certifi' 'python-setuptools')
@@ -16,7 +16,12 @@ prepare(){
     bsdtar -xf $pkgname-$pkgver.tar.gz
 }
 
-package() {
+build(){
+    cd $srcdir/$pkgname-$pkgver
+    python setup.py build
+}
+
+package(){
     cd $srcdir/$pkgname-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1 
 }
