@@ -2,7 +2,7 @@
 
 _pkgname=cleanupdate
 pkgname=cleanupdate-git
-pkgver=r86.689f834
+pkgver=r89.4bb715b
 pkgrel=0
 pkgdesc="A simple script to speed up updating and cleaning your system"
 arch=('any')
@@ -27,4 +27,5 @@ package () {
 	cd "$srcdir"
 	install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	install -Dm644 "$srcdir/$_pkgname/$_pkgname.png" "$pkgdir/usr/share/icons/$_pkgname.png"
 }
