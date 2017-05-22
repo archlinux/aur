@@ -3,7 +3,7 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=3.2.0.r4.g5dc6f4a
+pkgver=3.4.1.r35.gd8f6d611
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
@@ -20,8 +20,7 @@ depends=('cinnamon-desktop'
     'libnotify'
     'libxml2'
     'python')
-makedepends=('autoconf-archive'
-    'git'
+makedepends=('git'
     'gnome-common'
     'gobject-introspection'
     'gtk-doc'
@@ -58,7 +57,7 @@ build() {
       --disable-tracker \
       --disable-gtk-doc-html \
       --disable-schemas-compile \
-      --enable-compile-warnings=yes
+      --enable-selinux=no
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=656231
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -68,7 +67,6 @@ build() {
 
 package() {
   cd $srcdir/nemo
-
   make DESTDIR="$pkgdir" install
   
   # Remove D-Bus activation file to avoid conflict with nautilus-desktop
