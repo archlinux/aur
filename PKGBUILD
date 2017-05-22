@@ -4,7 +4,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A line-oriented editor, browser and mail client."
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ sha256sums=('f1ab7a113ea9465ef19c3ffa10e0b0466032c42acb55875243f5b859779d3b64')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make all
+  make CFLAGS="-I/usr/include/tidy" all
 }
 
 package() {
