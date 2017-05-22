@@ -1,0 +1,25 @@
+pkgbase = chiantipy-git
+	pkgdesc = A python package to calculate the radiative properties of astrophysical plasmas based on the CHIANTI atomic database
+	pkgver = 0.7.dev
+	pkgrel = 1
+	url = https://github.com/chianti-atomic/ChiantiPy
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = ipython-ipyparallel
+	optdepends = ipython: interactive terminal
+	optdepends = python-pyqt4: GUI
+	optdepends = wxpython: GUI alternative
+	provides = chiantipy
+	conflicts = chiantipy
+	options = !emptydirs
+	source = git+https://github.com/chianti-atomic/ChiantiPy.git
+	md5sums = SKIP
+
+pkgname = chiantipy-git
+
