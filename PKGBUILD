@@ -8,9 +8,9 @@ pkgdesc="Provides an easy-to-use interface for authentication using JA-SIG's Cen
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-uri>=0' 'perl-xml-libxml>=0' 'perl-libwww>=0' 'perl>=5.6.1')
+depends=('perl-uri' 'perl-xml-libxml' 'perl-libwww' 'perl>=5.6.1')
 makedepends=()
-checkdepends=('perl-test-mockobject>=0')
+checkdepends=('perl-test-mockobject')
 url='https://metacpan.org/release/Authen-CAS-Client'
 source=('http://search.cpan.org/CPAN/authors/id/P/PR/PRAVUS/Authen-CAS-Client-0.08.tar.gz')
 md5sums=('2f741fb2eb26a653ca50569c4048ce08')
