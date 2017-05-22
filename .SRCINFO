@@ -1,0 +1,33 @@
+pkgbase = gcc-msp430
+	pkgdesc = GNU toolchain for the TI MSP430 processor
+	pkgver = 4.6.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/mspgcc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = binutils-msp430
+	depends = elfutils
+	depends = libmpc
+	options = !strip
+	options = !emptydirs
+	options = !libtool
+	source = http://sourceforge.net/projects/mspgcc/files/mspgcc/mspgcc-20120406.tar.bz2
+	source = http://ftpmirror.gnu.org/gcc/gcc-4.6.3/gcc-4.6.3.tar.bz2
+	source = msp430-gcc-4.6.3-20120406-sf3540953.patch::http://sourceforge.net/projects/mspgcc/files/Patches/LTS/20120406/msp430-gcc-4.6.3-20120406-sf3540953.patch/download
+	source = msp430-gcc-4.6.3-20120406-sf3559978.patch::http://sourceforge.net/projects/mspgcc/files/Patches/LTS/20120406/msp430-gcc-4.6.3-20120406-sf3559978.patch/download
+	source = 0001_gcc-doc-texinfo-5.0.patch
+	source = patch-gcc_cp_cfns.h
+	source = patch-gcc46-texi.diff
+	source = ira-int.h-segmentation-fault.patch
+	sha1sums = cc96a7233f0b1d2c106eff7db6fc00e4ed9039a8
+	sha1sums = ce317ca5c8185b58bc9300182b534608c578637f
+	sha1sums = 9de4e74d8ceb2005409e03bf671e619f2e060082
+	sha1sums = 3721d13fd9a19df60fe356e082e6cea4ea637dbc
+	sha1sums = 0f5e63dc6a689976014c6cc87d5be28eb4ee922b
+	sha1sums = 007b353cf1bb10f11759169027ad49259527e607
+	sha1sums = 3372d92b1b422f64ce53fe0c73883513ea3478d1
+	sha1sums = 4d59f1a5b9a0c76393fb4709196d579f0aa40812
+
+pkgname = gcc-msp430
+

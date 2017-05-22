@@ -1,0 +1,68 @@
+From 44f96cdfe3c2afed8b2d386ceda2665e0f28cb9c Mon Sep 17 00:00:00 2001
+From: "Peter A. Bigot" <pabigot@users.sourceforge.net>
+Date: Mon, 10 Sep 2012 17:08:04 -0500
+Subject: [PATCH] SF 3559978 broken volatile peephole optimization
+
+Pattern improperly passed arbitrary operand where indirect read was intended
+---
+ gcc/config/msp430/peephole.md               |   12 ++++++------
+ gcc/testsuite/gcc.target/msp430/sf3559978.c |   15 +++++++++++++++
+ 2 files changed, 21 insertions(+), 6 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/msp430/sf3559978.c
+
+diff --git a/gcc/config/msp430/peephole.md b/gcc/config/msp430/peephole.md
+index 907c615..60b8302 100644
+--- a/gcc/config/msp430/peephole.md
++++ b/gcc/config/msp430/peephole.md
+@@ -79,21 +79,21 @@
+   "")
+ 
+ ;; Assignment to volatile memory through a cast constant pointer
+-;; mov #c1, r0; mov &m3, r2; op4 g5, r2; mov r2, @r0 => op g4, &c1 [r0 dead, r2 dead]
+-; see testsuite vwa4.c
++;; mov #c1, r0; mov @r0, r2; op3 g4, r2; mov r2, @r0 => op3 g4, &c1 [r0 dead, r2 dead]
++; see testsuite vwa4.c, sf3559978.c
+ (define_peephole2
+   [(set (match_operand 0 "pmode_register_operand" "") 
+ 	(match_operand 1 "immediate_operand" ""))
+    (set (match_operand:INTRegModes 2 "register_operand" "") 
+-	(match_operand:<MODE> 3 "nonimmediate_operand" ""))
++	(mem:<MODE> (match_dup 0)))
+    (set (match_dup 2) 
+-	(match_operator:<MODE> 4 "msp430_rmw_operator"
++	(match_operator:<MODE> 3 "msp430_rmw_operator"
+ 			       [(match_dup 2)
+-				(match_operand:<MODE> 5 "general_operand" "")]))
++				(match_operand:<MODE> 4 "general_operand" "")]))
+    (set (mem:<MODE> (match_dup 0)) (match_dup 2))]
+   "peep2_reg_dead_p (4, operands[0]) && peep2_reg_dead_p (4, operands[2])"
+   [(set (mem:<MODE> (match_dup 1))
+-	(match_op_dup 4 [(mem:<MODE> (match_dup 1)) (match_dup 5)]))]
++	(match_op_dup 3 [(mem:<MODE> (match_dup 1)) (match_dup 4)]))]
+   "")
+ 
+ 
+diff --git a/gcc/testsuite/gcc.target/msp430/sf3559978.c b/gcc/testsuite/gcc.target/msp430/sf3559978.c
+new file mode 100644
+index 0000000..8801ddc
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/msp430/sf3559978.c
+@@ -0,0 +1,15 @@
++/* { dg-do compile } */
++/* { dg-options "-Os" } */
++
++static volatile struct sTransmitBuffer {
++  volatile char * head;
++  volatile char * tail;
++  char buffer[256];
++  unsigned int wake_when_available;
++} txBuffer;
++
++void initialize ()
++{
++  txBuffer.tail = txBuffer.buffer; /* { dg-final { scan-assembler "mov\t#txBuffer\\+2, r15\n\tmov\tr15, r14\n\tadd\t#2, r14\n\tmov\tr14, @r15\n" } } */
++}
++
+-- 
+1.7.7.6
+

@@ -1,0 +1,80 @@
+From 6d30e786948e4edee30cc10d0233a0b47a5f7d9b Mon Sep 17 00:00:00 2001
+From: "Peter A. Bigot" <pabigot@users.sourceforge.net>
+Date: Thu, 12 Jul 2012 14:32:16 -0500
+Subject: [PATCH] SF 3540953 fram applications overwrite bsl/jtag passwords
+
+No MSP430 chip has more than 25 valid interrupts, and they are assigned from
+the top down.  The FRAM chips use lower words in the interrupt vector to
+hold BSL and JTAG passwords, and having real addresses in those locations
+has been shown to result in problems accessing BSL and JTAG.  Leave the low
+32 words erased; this matches as-delivered MSP430FR5739 content for those
+addresses.
+---
+ gcc/config/msp430/crt0ivtbl.S |   44 +++++++++++++++++++++++++++++++++++++++-
+ 1 files changed, 42 insertions(+), 2 deletions(-)
+
+diff --git a/gcc/config/msp430/crt0ivtbl.S b/gcc/config/msp430/crt0ivtbl.S
+index 696f6aa..bd1931c 100644
+--- a/gcc/config/msp430/crt0ivtbl.S
++++ b/gcc/config/msp430/crt0ivtbl.S
+@@ -32,6 +32,7 @@ __br_unexpected_:
+ 	
+ DEFINE_IVTABLE INTERRUPT_VECTOR_COUNT
+ 	
++#if 32 >= INTERRUPT_VECTOR_COUNT
+ 	INITIALIZE_ISR_SLOT 0
+ 	INITIALIZE_ISR_SLOT 1
+ 	INITIALIZE_ISR_SLOT 2
+@@ -65,8 +66,47 @@ DEFINE_IVTABLE INTERRUPT_VECTOR_COUNT
+ 	INITIALIZE_ISR_SLOT 29
+ 	INITIALIZE_ISR_SLOT 30
+ #endif /* 16 < INTERRUPT_VECTOR_COUNT */
+-#if 32 < INTERRUPT_VECTOR_COUNT
+-	INITIALIZE_ISR_SLOT 31
++#else /* 32 >= INTERRUPT_VECTOR_COUNT */
++/* SF 3540953 fram applications overwrite bsl/jtag passwords
++ * 
++ * No MSP430 chip has more than 25 valid interrupts, and they are assigned from
++ * the top down.  The FRAM chips use lower words in the interrupt vector to
++ * hold BSL and JTAG passwords, and having real addresses in those locations
++ * has been shown to result in problems accessing BSL and JTAG.  Leave the low
++ * 32 words erased; this matches as-delivered MSP430FR5739 content for those
++ * addresses. */
++	.word	0xffff		; 0
++	.word	0xffff		; 1
++	.word	0xffff		; 2
++	.word	0xffff		; 3
++	.word	0xffff		; 4
++	.word	0xffff		; 5
++	.word	0xffff		; 6
++	.word	0xffff		; 7
++	.word	0xffff		; 8
++	.word	0xffff		; 9
++	.word	0xffff		; 10
++	.word	0xffff		; 11
++	.word	0xffff		; 12
++	.word	0xffff		; 13
++	.word	0xffff		; 14
++	.word	0xffff		; 15
++	.word	0xffff		; 16
++	.word	0xffff		; 17
++	.word	0xffff		; 18
++	.word	0xffff		; 19
++	.word	0xffff		; 20
++	.word	0xffff		; 21
++	.word	0xffff		; 22
++	.word	0xffff		; 23
++	.word	0xffff		; 24
++	.word	0xffff		; 25
++	.word	0xffff		; 26
++	.word	0xffff		; 27
++	.word	0xffff		; 28
++	.word	0xffff		; 29
++	.word	0xffff		; 30
++	.word	0xffff		; 31
+ 	INITIALIZE_ISR_SLOT 32
+ 	INITIALIZE_ISR_SLOT 33
+ 	INITIALIZE_ISR_SLOT 34
+-- 
+1.7.7.6
+
