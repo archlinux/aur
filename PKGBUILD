@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=bitchx-git
-pkgver=1.2.1.r118.gdc17b05
+pkgver=1.2.1.r221.g790ba5b
 pkgrel=1
 pkgdesc="An IRC (Internet Relay Chat) client."
 arch=('i686' 'x86_64')
@@ -22,6 +22,12 @@ md5sums=('SKIP')
 pkgver () {
   cd "$srcdir/$pkgname"
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^bitchx\.//'
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  sed -i '1s/^/#include "irc_std.h"\n#include "irc.h"\n/' include/struct.h
+  sed -i '1s/^/#include "ircaux.h"\n/' dll/qbx/qbx.c
 }
 
 build() {
