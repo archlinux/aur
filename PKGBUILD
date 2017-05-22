@@ -1,7 +1,7 @@
 # Maintainer: heliary <rydesun@gmail.com>
 
 pkgname=fcitx-table-flypy
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='XiaoHe shuangpin table for fcitx, also known as flypy or xhup.'
 arch=('any')
