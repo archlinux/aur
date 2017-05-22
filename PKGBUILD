@@ -2,7 +2,7 @@
 
 pkgname=openvpn-protonvpn
 pkgver=20170520
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenVPN configuration files and helper for protonvpn.com"
 arch=(any)
 url="https://protonvpn.com/"
@@ -11,14 +11,14 @@ depends=('openvpn')
 optdepends=()
 makedepends=('unzip' 'coreutils')
 provides=('protonvpn')
-source=('https://protonvpn.com/download/ProtonVPN_config.zip')
+source=("${pkgname}-${pkgver}.zip::https://protonvpn.com/download/ProtonVPN_config.zip")
 noextract=(zip)
 sha256sums=('f2e1829101f57e0ff900e5c36b22dae8915d8fbacd798d7bba3bfb85dde489fc')
 
 prepare() {
     test -d conf && rm -rf conf
     mkdir conf
-    unzip -q ProtonVPN_config.zip -d conf
+    unzip -q "${pkgname}-${pkgver}.zip" -d conf
 }
 
 package() {
