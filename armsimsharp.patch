@@ -1,6 +1,0 @@
---- ARMSim.exe.config
-+++ ARMSim.exe.config
-16c16
-<     <add key="DockingWindowStyle" value="DockingWindows2"></add>
----
->     <add key="DockingWindowStyle" value="StaticWindows"></add>
