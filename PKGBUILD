@@ -7,14 +7,14 @@
 
 pkgname=perl-pdl
 _pkgname=PDL
-pkgver=2.017_02
+pkgver=2.018
 pkgrel=1
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
 license=('PerlArtistic' 'GPL')
 depends=(
-	'perl>=5.8.9'
+	'perl>=5.10'
 	'perl-inline>=0.43'
 	'gsl'
 )
@@ -26,6 +26,7 @@ makedepends=(
 	'plplot'
 	'perl-extutils-f77'
 	'proj'
+        'perl-extutils-parsexs>=3.01'
 )
 checkdepends=(
 	'perl-test-warn'
@@ -44,7 +45,7 @@ optdepends=(
 source=(https://cpan.metacpan.org/authors/id/C/CH/CHM/${_pkgname}-${pkgver}.tar.gz perldl.conf Makefile.patch)
 changelog='ChangeLog'
 options=(!emptydirs)
-md5sums=('905643f95b4bd866305dcde43bc6760a'
+md5sums=('4974da8767f635806c9c18d9849e61b8'
          'ac56f2a88b89d359a0dc80063d31cf59'
          'e2b2dff48643a5051a8f7d1ee9dc4ea9')
 
