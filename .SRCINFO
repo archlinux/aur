@@ -1,0 +1,15 @@
+pkgbase = q-git
+	pkgdesc = A platform-independent promise library for C++, implementing asynchronous continuations
+	pkgver = r405.ad0d31b
+	pkgrel = 1
+	url = https://github.com/google/benchmark}
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = gcc-libs
+	source = q-git::git+https://github.com/grantila/q.git
+	sha256sums = SKIP
+
+pkgname = q-git
+
