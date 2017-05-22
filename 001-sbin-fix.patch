@@ -1,0 +1,10 @@
+diff -ura a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-05-21 17:04:54.989927392 -0700
++++ b/CMakeLists.txt	2017-05-21 17:07:42.506842792 -0700
+@@ -18,5 +18,5 @@
+ TARGET_LINK_LIBRARIES(umbim ${LIBS})
+ 
+ INSTALL(TARGETS umbim
+-	RUNTIME DESTINATION sbin
++	RUNTIME DESTINATION bin
+ )
