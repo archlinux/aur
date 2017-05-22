@@ -5,6 +5,7 @@ pkgname=('otf-zilla-slab' 'ttf-zilla-slab')
 pkgver=1
 pkgrel=1
 pkgdesc="Mozilla's Zilla Slab Type Family"
+url=https://github.com/mozilla/zilla-slab
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
 source=($pkgname.tar.gz::https://github.com/mozilla/zilla-slab/archive/master.zip)
