@@ -3,9 +3,10 @@
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 
 pkgname=libretro-fceumm-git
-pkgver=89.4ec659e
+pkgver=333.45f773a
 pkgrel=1
 pkgdesc="libretro implementation of FCEUmm. (Nintendo Entertainment System)"
+groups=('libretro')
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url="https://github.com/libretro/libretro-fceumm"
 license=('GPL')
