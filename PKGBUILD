@@ -4,7 +4,7 @@
 
 pkgname=transgui-gtk2-git
 _pkgname=transgui
-pkgver=35069a6
+pkgver=8b2a878
 pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=(i686 x86_64)
