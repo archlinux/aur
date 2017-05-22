@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nmh-git
-pkgver=1.6+dev.r2742
+pkgver=1.6+dev.r3793
 pkgrel=1
 epoch=
 pkgdesc="Powerful electronic mail handling system, based on a set of command-line utilities."
