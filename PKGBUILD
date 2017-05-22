@@ -1,14 +1,14 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-terminal-git
-pkgver=20161106.bd4257d
+pkgver=20170519.69fcf3e
 pkgrel=1
 pkgdesc="Terminal application and modules for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('vibe-git' 'glib2' 'dconf')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('git' 'qbs')
 conflicts=('hawaii-terminal-git' 'papyros-terminal-git' 'papyros-qmltermwidget-git' 'liri-terminal')
 replaces=('hawaii-terminal-git' 'papyros-terminal-git' 'papyros-qmltermwidget-git' 'liri-terminal')
 provides=('liri-terminal')
@@ -18,9 +18,8 @@ install=$pkgname.install
 _gitroot="git://github.com/lirios/terminal.git"
 _gitbranch=develop
 _gitname=terminal
-source=(${_gitname}::${_gitroot}#branch=${_gitbranch}
-        qmltermwidget::git://github.com/lirios/qmltermwidget#branch=master)
-md5sums=('SKIP' 'SKIP')
+source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
+md5sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/${_gitname}
@@ -28,29 +27,19 @@ pkgver() {
 }
 
 prepare() {
-	mkdir -p build
+	cd ${srcdir}/${_gitname}
+	git submodule update --init
 }
 
 build() {
-	cd ${srcdir}/qmltermwidget
-	qmake
-	make
-	cd -
-
-	cd build
-	cmake ../${_gitname} \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DKDE_INSTALL_LIBDIR=lib \
-		-DKDE_INSTALL_LIBEXECDIR=lib
-	make
+	cd ${srcdir}/${_gitname}
+	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+	qbs setup-qt /usr/bin/qmake-qt5 qt5
+	qbs config profiles.qt5.baseProfile gcc
+	qbs build --no-install -d build profile:qt5 qbs.installRoot:/usr lirideployment.qmlDir:lib/qt/qml
 }
 
 package() {
-	cd ${srcdir}/qmltermwidget
-	make INSTALL_ROOT="${pkgdir}" install
-	cd -
-
-	cd build
-	make DESTDIR="${pkgdir}" install
+	cd ${srcdir}/${_gitname}
+	qbs install -d build --no-build -v --install-root $pkgdir/usr profile:qt5
 }
