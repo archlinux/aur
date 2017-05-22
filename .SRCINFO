@@ -1,13 +1,13 @@
 pkgbase = fonts-meta-extended
 	pkgdesc = infinality-bundle-fonts extended collection meta package
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bohoomil/fontconfig-ultimate
 	arch = any
 	license = GPL
 	depends = fonts-meta-extended-lt
 	depends = ttf-ddc-uchen
-	depends = ttf-lohit-font
+	depends = lohit-fonts
 	depends = noto-fonts-cjk
 	provides = ibfonts-meta-extended
 	conflicts = ibfonts-meta-extended

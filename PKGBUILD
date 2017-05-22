@@ -3,7 +3,7 @@
 
 pkgname=fonts-meta-extended
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/bohoomil/fontconfig-ultimate"
 license=('GPL')
@@ -12,5 +12,5 @@ conflicts=('ibfonts-meta-extended')
 pkgdesc="infinality-bundle-fonts extended collection meta package"
 depends=('fonts-meta-extended-lt'
          'ttf-ddc-uchen'
-         'ttf-lohit-font'
+         'lohit-fonts'
          'noto-fonts-cjk')
