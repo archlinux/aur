@@ -3,13 +3,13 @@
 
 pkgbase=tensorflow-git
 pkgname=(tensorflow-git tensorflow-cuda-git python-tensorflow-git python-tensorflow-cuda-git)
-pkgver=1.1.0+rc2+1217+g0b52c33427
+pkgver=1.2.0+rc0+172+g9e25de318b
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
 license=('Apache2')
 arch=('x86_64')
-makedepends=('git' 'bazel' 'python-numpy' 'gcc5' 'cuda' 'cudnn' 'python-pip' 'python-wheel' 'python-setuptools')
+makedepends=(git bazel python-numpy gcc5 cuda cudnn python-pip python-wheel python-setuptools)
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
 source=("git+https://github.com/tensorflow/tensorflow")
@@ -21,10 +21,7 @@ pkgver() {
 }
 
 prepare() {
-  msg2 "Generating pkg-config file"
-  ${srcdir}/tensorflow/tensorflow/c/generate-pc.sh --prefix=/usr --version=${pkgver:0:5}
-
-  [ -d ${srcdir}/tensoflow-cuda ] && rm -rf ${srcdir}/tensorflflow-cuda
+  [ -d ${srcdir}/tensorflow-cuda ] && rm -rf ${srcdir}/tensorflow-cuda
   cp -r ${srcdir}/tensorflow ${srcdir}/tensorflow-cuda
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
@@ -68,15 +65,16 @@ build() {
 }
 
 package_tensorflow-git() {
-  conflicts=('tensorflow')
-  provides=('tensorflow')
+  conflicts=(tensorflow)
+  provides=(tensorflow)
 
   cd ${srcdir}/tensorflow
 
-  install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/lib${pkgname/-git/}.so
-  install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/tensorflow/c_api.h
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE
-  install -Dm644 ../tensorflow.pc ${pkgdir} /usr/lib/pkgconfig/tensorflow.pc
+  ${srcdir}/tensorflow/tensorflow/c/generate-pc.sh --prefix=/usr --version=${pkgver:0:5}
+  install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/libtensorflow.so
+  install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/tensorflow/c/c_api.h
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/tensorflow/LICENSE
+  install -Dm644 tensorflow.pc ${pkgdir}/usr/lib/pkgconfig/tensorflow.pc
 }
 
 package_tensorflow-cuda-git() {
@@ -86,39 +84,40 @@ package_tensorflow-cuda-git() {
 
   cd ${srcdir}/tensorflow-cuda
 
-  install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/lib${pkgname}.so
-  install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/${pkgname}/c_api.h
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 ../tensorflow.pc ${pkgdir} /usr/lib/pkgconfig/tensorflow.pc
+  ${srcdir}/tensorflow/tensorflow/c/generate-pc.sh --prefix=/usr --version=${pkgver:0:5}
+  install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/libtensorflow.so
+  install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/tensorflow/c/c_api.h
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/tensorflow/LICENSE
+  install -Dm644 tensorflow.pc ${pkgdir}/usr/lib/pkgconfig/tensorflow.pc
 }
 
 package_python-tensorflow-git() {
   depends=(python python-protobuf)
-  conflicts=('python-tensorflow')
-  provides=('python-tensorflow')
+  conflicts=(python-tensorflow)
+  provides=(python-tensorflow)
   optdepends=('python-werkzeug: for using tensorboard')
 
   cd ${srcdir}/tensorflow
 
-  WHEEL_PACKAGE=$(find ${srcdir}/tmp -name "tensor*.whl")
+  WHEEL_PACKAGE=$(find ${srcdir}/tmpcuda -name "tensorflow-${pkgver:0:5}*.whl")
   pip install --ignore-installed --upgrade --root $pkgdir/ $WHEEL_PACKAGE --no-dependencies
   find ${pkgdir} -name __pycache__ -exec rm -r {} +
 
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/python-tensorflow/LICENSE
 }
 
 package_python-tensorflow-cuda-git() {
   depends=(python cuda cudnn python-pycuda python-protobuf)
-  conflicts=('python-tensorflow')
-  provides=('python-tensorflow')
+  conflicts=(python-tensorflow)
+  provides=(python-tensorflow)
   optdepends=('python-werkzeug: for using tensorboard')
 
   cd ${srcdir}/tensorflow-cuda
 
-  WHEEL_PACKAGE=$(find ${srcdir}/tmpcuda -name "tensor*.whl")
+  WHEEL_PACKAGE=$(find ${srcdir}/tmpcuda -name "tensorflow-${pkgver:0:5}*.whl")
   pip install --ignore-installed --upgrade --root $pkgdir/ $WHEEL_PACKAGE --no-dependencies
   find ${pkgdir} -name __pycache__ -exec rm -r {} +
 
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/python-tensorflow/LICENSE
 }
 # vim:set ts=2 sw=2 et:
