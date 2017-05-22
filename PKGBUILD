@@ -1,8 +1,8 @@
 # Maintainer: Amiad Bareli <amiad@hatul.info>
 
 pkgname=ravkavonline
-pkgver="1.0.0"
-pkgrel=2
+pkgver="1.2.0"
+pkgrel=1
 pkgdesc="Ravkav Online client - unofficial package"
 arch=('x86_64')
 url="https://ravkavonline.co.il/"
@@ -10,7 +10,7 @@ license=('custom' 'MIT')
 depends=(pcsclite)
 
 source=("https://ravkavonline.co.il/releases/linux/${pkgname}_${pkgver}_amd64.deb" $pkgname.install)
-sha256sums=('b0929e8d65317383b5c91f379417ee289ba0bfca47e9385a815c99ede3ff1d6d'
+sha256sums=('0d7de54f6da72ecd5dced9e702179ed00dabe3837c605e4ac36b0206e8fdede0'
 		'91373cde0ef5a269db942aaabe53bb553748306e9d7ef5aedf05183bd42f8447')
 install=$pkgname.install
 
