@@ -1,5 +1,5 @@
 pkgbase = python-sphinx
-	pkgver = 1.5.5
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
@@ -24,6 +24,8 @@ pkgbase = python-sphinx
 	checkdepends = python2-pytest
 	checkdepends = python-pytest
 	checkdepends = python2-enum34
+	checkdepends = python-sphinxcontrib-websupport
+	checkdepends = python2-sphinxcontrib-websupport
 	makedepends = python-setuptools
 	makedepends = python-docutils
 	makedepends = python-jinja
@@ -36,8 +38,8 @@ pkgbase = python-sphinx
 	makedepends = python2-pygments
 	makedepends = python2-six
 	makedepends = python2-imagesize
-	source = https://pypi.org/packages/source/S/Sphinx/Sphinx-1.5.5.tar.gz
-	md5sums = f9581b3556df9722143c47290273bcf8
+	source = https://pypi.org/packages/source/S/Sphinx/Sphinx-1.6.1.tar.gz
+	md5sums = 26cb1cdca7aa4afc8c925d926b6268e7
 
 pkgname = python-sphinx
 	pkgdesc = Python3 documentation generator
@@ -52,6 +54,7 @@ pkgname = python-sphinx
 	depends = python-imagesize
 	depends = python-requests
 	optdepends = texlive-latexextra: for generation of PDF documentation
+	optdepends = python-sphinxcontrib-websupport: Python API to easily integrate Sphinx documentation into Web applications
 
 pkgname = python2-sphinx
 	pkgdesc = Python2 documentation generator
@@ -66,4 +69,5 @@ pkgname = python2-sphinx
 	depends = python2-imagesize
 	depends = python2-requests
 	optdepends = texlive-latexextra: for generation of PDF documentation
+	optdepends = python2-sphinxcontrib-websupport: Python API to easily integrate Sphinx documentation into Web applications
 
