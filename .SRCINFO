@@ -1,6 +1,6 @@
 pkgbase = git-phab-git
 	pkgdesc = Git subcommand to integrate with phabricator
-	pkgver = r163.b59c888
+	pkgver = r186.937fb36
 	pkgrel = 1
 	url = https://phabricator.freedesktop.org/project/profile/60/
 	arch = any
