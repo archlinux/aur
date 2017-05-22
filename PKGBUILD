@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=secure-boot
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="secure-boot tool"
 arch=(any)
@@ -29,5 +29,5 @@ package() {
     install -Dm644 secure-boot.hook ${pkgdir}/etc/pacman.d/hooks/secure-boot.hook
 }
 
-md5sums=('ad7d694cb141f5437eec509a781f4b3d'
+md5sums=('97e13f4798bed1d4bd3d7f409198e570'
          '1313074db7ddeac0c115e44c7b16f218')
