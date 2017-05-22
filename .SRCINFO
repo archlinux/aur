@@ -1,0 +1,14 @@
+pkgbase = rapydscript-ng-git
+	pkgdesc = Pythonic JavaScript that doesn't suck
+	pkgver = 0.7.14.r3.g5fadb13
+	pkgrel = 1
+	url = https://github.com/kovidgoyal/rapydscript-ng
+	arch = any
+	license = BSD
+	depends = nodejs
+	provides = rapydscript-ng
+	source = git+https://github.com/kovidgoyal/rapydscript-ng.git
+	sha256sums = SKIP
+
+pkgname = rapydscript-ng-git
+
