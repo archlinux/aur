@@ -1,15 +1,15 @@
 pkgbase = wxmacmolplt
-	pkgdesc = A moder graphics program for plotting 3-D molecular structures and normal modes
-	pkgver = 7.6
+	pkgdesc = An open-source gui for preparing, submitting and visualizing input and output for the GAMESS quantum chemistry package.
+	pkgver = 7.7
 	pkgrel = 1
-	url = http://www.scl.ameslab.gov/MacMolPlt/
+	url = https://brettbode.github.io/wxmacmolplt/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = wxgtk
 	depends = glew
-	source = https://bintray.com/artifact/download/brettbode/generic/wxmacmolplt-7.6.tar.gz
-	sha1sums = 9794f294736c8f61cf3c73c2fb7bfb56dae040d9
+	source = https://uofi.box.com/shared/static/7pzccnku3uv0mmf6il6yiqghf4b34lc7.gz
+	sha1sums = dfcfaf2285f43d03e41349a566d501bcea582a75
 
 pkgname = wxmacmolplt
 
