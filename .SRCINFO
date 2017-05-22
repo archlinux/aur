@@ -1,0 +1,17 @@
+pkgbase = msp430mcu
+	pkgdesc = C headers and binutils linker scripts for microcontrollers in the MSP430 family
+	pkgver = 20120406
+	pkgrel = 1
+	url = http://mspgcc4.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = python2
+	depends = glibc
+	options = !strip
+	source = http://sourceforge.net/projects/mspgcc/files/msp430mcu/msp430mcu-20120406.tar.bz2
+	source = msp430mcu-20120406-sf3522088.patch::http://sourceforge.net/projects/mspgcc/files/Patches/LTS/20120406/msp430mcu-20120406-sf3522088.patch/download
+	sha1sums = c096eec84f0f287c45db713a550ec50c518fa065
+	sha1sums = 83d408fd08a1fd0b1d8ab2a300d6124423952ac4
+
+pkgname = msp430mcu
+

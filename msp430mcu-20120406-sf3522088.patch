@@ -1,0 +1,25 @@
+From 9d8ff420b11fc00b1c410348218a5b72faf72d64 Mon Sep 17 00:00:00 2001
+From: "Peter A. Bigot" <pabigot@users.sourceforge.net>
+Date: Fri, 27 Apr 2012 14:38:31 -0500
+Subject: [PATCH] SF 3522088 msp430mcu install.sh misses a mkdir
+
+---
+ scripts/install.sh |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/scripts/install.sh b/scripts/install.sh
+index 74851f1..38dcd42 100755
+--- a/scripts/install.sh
++++ b/scripts/install.sh
+@@ -15,7 +15,7 @@ BINPATH=${PREFIX}/bin
+ INCPATH=${PREFIX}/msp430/include
+ LIBPATH=${PREFIX}/msp430/lib
+ 
+-mkdir -p ${INCPATH} ${LIBPATH}
++mkdir -p ${INCPATH} ${LIBPATH} ${BINPATH}
+ 
+ # Upstream headers
+ install -p -m 0644 ${UPSTREAM}/*.h ${INCPATH}
+-- 
+1.7.7.6
+
