@@ -1,0 +1,16 @@
+pkgbase = msp430-jtag
+	pkgdesc = Hardware access tools for the MSP430 processor including BSL, JTAG
+	pkgver = 2.4
+	pkgrel = 1
+	url = http://mspgcc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom:python
+	makedepends = cvs
+	makedepends = msp430mcu
+	depends = python2
+	depends = msp430-libc
+	options = !emptydirs
+
+pkgname = msp430-jtag
+
