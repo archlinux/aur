@@ -1,7 +1,7 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=teleprompter-git
-pkgver=r104.9fe966d
+pkgver=r122.36db364
 pkgrel=1
 pkgdesc="Professional-grade, multi-platform, free software teleprompter, installed through npm"
 arch=('any')
