@@ -90,7 +90,8 @@ case ${_piver} in
 1)
   _toolchain_name=armv6-rpi-linux-gnueabihf
   _minimal=true
-  _float=true
+  # too problematic for me to care about
+  #_float=true
 ;;
 2)
   _toolchain_name=armv7-rpi2-linux-gnueabihf
@@ -288,6 +289,7 @@ if $_patching; then
 
   cd ${_declarativedir}
   #patch -p1 < ${startdir}/0001-Fix-crash-in-QQuickPixmapReader-friends.patch
+  #patch -p1 < ${startdir}/0001-Fix-build-with-qreal-as-float.patch
 
   cd ${_waylanddir}
   #patch -p1 < ${startdir}/0001-Fix-brcm-egl-build-by-correcting-commit-usage.patch
@@ -297,7 +299,7 @@ if $_patching; then
   patch -p1 < ${startdir}/0001-Revert-Fully-qualify-libEGL.so.1-libEGLESv2.so.2-lib.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
-  # sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
+  sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
 fi
 
   rm -Rf ${_bindir}
