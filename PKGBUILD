@@ -2,7 +2,7 @@
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse-git
-pkgver=3.6.2.r40.g9d868ba
+pkgver=3.6.3.r3.g64d54f6
 pkgrel=1
 pkgdesc="A line-oriented editor, browser and mail client."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make all
+  make CFLAGS="-I/usr/include/tidy" all
 }
 
 package() {
