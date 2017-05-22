@@ -5,7 +5,7 @@
 
 pkgname=texworks
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A TeX IDE inspired by TeXShop.'
 arch=('i686' 'x86_64')
 url='http://tug.org/texworks'
@@ -18,7 +18,7 @@ makedepends=('cmake' 'hardening-wrapper' 'lua' 'python' 'qt5-tools')
 provides=('texworks')
 conflicts=('texworks-svn')
 source=("https://github.com/TeXworks/${pkgname}/archive/release-${pkgver}.tar.gz")
-sha256sums=('71ca285374e7b497a09930d68d5c2dbd29ffa215b188ab92e7277cdf6b56ad3d')
+sha256sums=('22885c11d92654b0cba1f4808fc9aa3c2fdd3e5435fd89dff9aa1e67658a6339')
 
 build() {
     cd "$pkgname-release-$pkgver"
