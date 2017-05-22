@@ -1,7 +1,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=system76-driver
-pkgver=16.10.19
+pkgver=16.10.20
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -17,11 +17,10 @@ optdepends=(
 	'polkit: runnning System76 Driver GUI from  application menu'
 	'pulseaudio: To apply microphone fix')
 source=("https://launchpad.net/~system76-dev/+archive/stable/+files/${pkgname}_${pkgver}.tar.gz"
-	'system76.service' 'galu1.patch' 'grub.patch' 'gtk.patch' 'cli.patch')
-sha1sums=('bd07cbe639fc90848e889862016baee3e71546e0'
+	'system76.service' 'galu1.patch' 'gtk.patch' 'cli.patch')
+sha1sums=('e685e83b943178fc40be73dc06a53527d7664fa0'
           'cf763432441c3da0563eee041145a02109f2bb3a'
           'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
-          'b60a6f1554d806340f1f24bd3543561f8b4abf57'
           'bf0c37a6226858c768e8ce2c9c3c3801aef14c0e'
           '92f0de2acea6ac69c36378c7139fb84a7eaf7842')
 
@@ -50,7 +49,7 @@ package() {
 	# galu1 model-specific patch
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/galu1.patch 
 	# making grub optional - do not fail if /etc/default/grub file not found
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/grub.patch 
+	#patch --no-backup-if-mismatch -Np1 -i ${srcdir}/grub.patch 
 	# enabling "Restore System" button if all changes applied
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/gtk.patch 
 
