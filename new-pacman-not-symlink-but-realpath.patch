@@ -1,0 +1,10 @@
+--- tools/tinyos/misc/tos-locate-jre	2012-03-29 16:19:30.000000000 +0200
++++ tools/tinyos/misc/tos-locate-jre.new	2017-04-25 09:01:43.968079000 +0200
+@@ -32,6 +32,7 @@
+     while [ -n "$javapath" -a -h "$javapath" ]; do
+ 	javapath=`readlink -q $javapath`
+     done
++    javapath=`realpath $javapath`
+     test -n "$javapath"
+ }
+ 

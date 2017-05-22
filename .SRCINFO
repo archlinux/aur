@@ -1,0 +1,23 @@
+pkgbase = tinyos-tools
+	pkgdesc = Development-tools for TinyOS
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://www.tinyos.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = which
+	depends = python2
+	depends = perl
+	depends = bash
+	depends = nesc
+	depends = java-runtime
+	depends = tinyos
+	options = !libtool
+	source = http://tinyos.stanford.edu/tinyos/dists/source/tinyos-tools-1.4.2.tar.gz
+	source = new-pacman-not-symlink-but-realpath.patch
+	md5sums = 8dddae18128ce26258090c01cea46c0b
+	md5sums = a30efc6f2215e6b0878b7c4ecfca501e
+
+pkgname = tinyos-tools
+
