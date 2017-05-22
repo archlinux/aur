@@ -1,12 +1,13 @@
 pkgname=get_flash_videos
 _pkgname=get-flash-videos
 pkgver=1.25.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Download flash videos from a web page"
 arch=('any')
 url="https://github.com/monsieurvideo/$_pkgname"
 license=('Apache')
 depends=('perl-crypt-blowfish_pp'
+         'perl-html-tree'
          'perl-lwp-protocol-https'
          'perl-module-find'
          'perl-term-progressbar'
