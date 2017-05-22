@@ -1,8 +1,8 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=('dfmt')
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
 url="https://github.com/dlang-community/dfmt"
