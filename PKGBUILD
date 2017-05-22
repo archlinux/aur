@@ -1,19 +1,20 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Maintainer : Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=python2-pygrib
+_gitname=pygrib
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module for reading and writing GRIB (editions 1 and 2) files."
 arch=('i686' 'x86_64')
 url="https://github.com/jswhit/pygrib"
 license=('MIT')
 depends=('python2-pyproj' 'jasper' 'python2-numpy' 'eccodes')
-source=(https://pypi.python.org/packages/source/p/pygrib/pygrib-${pkgver}.tar.gz setup.cfg)
-md5sums=('e9ae04cb987992691b388b16be53214a'
+source=(git://github.com/jswhit/$_gitname setup.cfg)
+md5sums=('SKIP'
          'd5a6f196213d2a53c280c7be1cb1bb03')
 
 build() {
-  cd "${srcdir}/pygrib-${pkgver}"
+  cd "${srcdir}/$_gitname"
   export JASPER_DIR=/usr
   export PNG_DIR=/usr
   export ZLIB_DIR=/usr
@@ -25,7 +26,7 @@ build() {
 }
 
 package() {
- cd "${srcdir}/pygrib-${pkgver}"
+ cd "${srcdir}/$_gitname"
  python2 setup.py install --prefix=/usr \
    --root="${pkgdir}" --skip-build --optimize=1
  install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
