@@ -3,13 +3,13 @@
 # if you want 32 bit, 1.2.10 was the last version supported
 
 pkgname=saleae-logic
-pkgver=1.2.11
+pkgver=1.2.14
 pkgrel=1
 pkgdesc="High speed USB logic analyzer."
 arch=('x86_64')
 url="http://www.saleae.com/"
 license=('unknown')  # closed source, none given
-depends=('gcc-libs' 'gtk2' 'libice')
+depends=('gcc-libs' 'gtk2' 'libice' 'libdbusmenu-qt5' 'openssl-1.0')
 
 #source_i686=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(32-bit).zip"
 #             "http://downloads.saleae.com/Logic%20Guide.pdf"
@@ -23,11 +23,10 @@ source_x86_64=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(64-
 #              '836db7ec757b1e6453602ed4831d4765'
 #              '96aac500508492509d8e47645a826af8'
 #              '120198dc1ce881e4959da215dc1ab8f5')
-md5sums_x86_64=('1050b80e3fa32233b8ebd51ff16cd7b5'
+md5sums_x86_64=('96d049c3f68e73b329f3c20eb1af3033'
                 '836db7ec757b1e6453602ed4831d4765'
                 '96aac500508492509d8e47645a826af8'
                 '120198dc1ce881e4959da215dc1ab8f5')
-
 
 case $CARCH in
   'i686')
@@ -59,8 +58,9 @@ package() {
   # launch script
   install -d "$pkgdir/usr/bin"
   touch "$pkgdir/usr/bin/logic"
-  echo -e "#!/bin/sh\nexec /opt/saleae-logic/Logic > /dev/null 2>&1" > "$pkgdir/usr/bin/logic"
+  echo -e "#!/bin/sh\nLD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat exec /opt/saleae-logic/Logic &>/dev/null" > "$pkgdir/usr/bin/logic"
   chmod +x "$pkgdir/usr/bin/logic"
+  # QT_DEBUG_PLUGINS=1 ./Logic
 }
 
 
