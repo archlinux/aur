@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sia
+Exec=sia-ui %f
+Icon=sia
+Comment=Blockchain-based marketplace for file storage
+Categories=Utility;
+Terminal=false
+StartupNotify=true
