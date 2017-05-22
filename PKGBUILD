@@ -7,14 +7,14 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.12.38.39940.9672759
+pkgver=4.14.21.42428.ec2ce6e473
 pkgrel=1
 epoch=1
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
 url='http://www.metasploit.com/'
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'git')
+depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'git' 'clang')
 optdepends=('ruby-pg: database support')
 provides=('metasploit')
 conflicts=('metasploit')
@@ -38,6 +38,8 @@ prepare() {
 
 build() {
   cd ${pkgname}
+  export CC=clang
+  export CXX=clang++
   bundle install -j"$(nproc)" --no-cache --deployment
   find vendor/bundle/ruby -exec chmod o+r '{}' \;
 }
