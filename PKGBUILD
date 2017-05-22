@@ -2,7 +2,7 @@
 # Contributor: mitsuse <mitsuset - gmail>
 
 pkgname=maltparser
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="a data-driven parser generator for dependency parsing"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
         "http://maltparser.org/dist/maltparser-$pkgver.tar.gz"
         "maltparser.install"
         "maltparser.sh")
-sha1sums=('4451cb6d2da68b818b2e26d55fee1f1fb0717a42'
+sha1sums=('922b1d887419bab939a163d13eb864578f9ddb73'
           '42f22d7ec89db686d7eb491b30061f892046fada'
           '73bfa1c9ff4f216a66088adba221843033a6b2bc')
 
