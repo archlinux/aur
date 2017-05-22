@@ -1,5 +1,5 @@
 pkgname=grads
-pkgver=2.1.0
+pkgver=2.1.1.b0
 pkgrel=1
 pkgdesc="The Grid Analysis and Display System (GrADS) is an interactive \
 desktop tool that is used for easy access, manipulation, and visualization \
@@ -7,13 +7,13 @@ of earth science data. The format of the data may be either binary, GRIB, \
 NetCDF, or HDF-SDS (Scientific Data Sets)."
 url="http://cola.gmu.edu/grads/grads.php"
 license=("GPL")
-depends=(netcdf udunits cairo libdap jasper libgeotiff hdf4-nonetcdf)
-makedepends=(shapelib g2clib gadap)
+depends=(netcdf udunits cairo libdap jasper libgeotiff hdf4-nonetcdf shapelib gd)
+makedepends=(g2clib gadap)
 arch=(i686 x86_64)
 provides=(grads)
 conflicts=(grads)
 source=(ftp://cola.gmu.edu/grads/2.1/${pkgname}-${pkgver}-src.tar.gz time_unit.patch)
-md5sums=('4393a23e23e10a495a299c76088c5699'
+md5sums=('b6bbb606a3f18e15f3e286d2868dc48f'
          '8b6559bdff9605a1bfce506cd0315b57')
 
 build() {
