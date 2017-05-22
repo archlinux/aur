@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm home-assistant-*pkg.tar.xz
+rm home-assistant-*pkg.tar.*
 
 set -e
 LAST_VERSION=$(ruby -r "net/http" -r "uri" -r "json" -e 'uri = URI.parse("https://api.github.com/repos/home-assistant/home-assistant/releases"); response = Net::HTTP.get_response(uri); if response.code.to_i != 200 then puts response.code.inspect; exit(1); end; puts JSON.parse(response.body).first["name"]')
