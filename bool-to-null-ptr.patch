@@ -1,0 +1,13 @@
+diff --git a/IndexSearch/ModuleFactory.cpp b/IndexSearch/ModuleFactory.cpp
+index 01cad8b7..fb5f08d2 100644
+--- a/IndexSearch/ModuleFactory.cpp
++++ b/IndexSearch/ModuleFactory.cpp
+@@ -132,7 +132,7 @@ IndexInterface *ModuleFactory::getLibraryIndex(const string &type, const string
+ 		(typeIter->second.m_canIndex == false))
+ 	{
+ 		// We don't know about this type, or doesn't support indexes
+-		return false;
++		return NULL;
+ 	}
+ 
+ 	void *pHandle = typeIter->second.m_pHandle;

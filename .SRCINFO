@@ -1,0 +1,44 @@
+pkgbase = pinot-search-git
+	pkgdesc = Personal search and metasearch for the Free Desktop
+	pkgver = 1.09.r2.g1fcd6eb
+	pkgrel = 1
+	url = https://code.google.com/p/pinot-search
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = git
+	depends = boost-libs
+	depends = chmlib
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = exiv2
+	depends = gmime
+	depends = gsoap
+	depends = gtkmm
+	depends = libexttextcat
+	depends = libxml++2.6
+	depends = openssh-askpass
+	depends = openssl-1.0
+	depends = shared-mime-info
+	depends = sqlite
+	depends = taglib
+	depends = xapian-core
+	optdepends = antiword: index MS Word documents
+	optdepends = catdvi: index DVI TeX documents
+	optdepends = catppt: index PowerPoint presentations
+	optdepends = djvutxt: index DjVu documents
+	optdepends = pdftotext: index PDF documents
+	optdepends = rst2html: index reStructuredText documentation
+	optdepends = unrtf: index RTF documents
+	optdepends = unzip: index OpenDocument/StarOffice files
+	optdepends = xls2csv: index MS Excel spreadsheets
+	provides = pinot-search=1.09.r2.g1fcd6eb
+	conflicts = pinot-search
+	source = pinot-search::git+https://github.com/kendling/pinot-search.git
+	source = bool-to-null-ptr.patch
+	md5sums = SKIP
+	md5sums = 29b84f8e0704d78a641cad8db733df45
+
+pkgname = pinot-search-git
+
