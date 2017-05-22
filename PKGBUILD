@@ -2,27 +2,21 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 pkgname=python-telegram-bot
 pkgver=6.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python wrapper around the Telegram Bot API"
 url="https://github.com/python-telegram-bot/python-telegram-bot"
 depends=('python' 'python-future' 'python-certifi' 'python-setuptools')
-#makedepends=('python3' )
 license=('LGPLv3')
 arch=('any')
-source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
-        "https://github.com/python-telegram-bot/urllib3/archive/4b076eedffc1afabf0215ced3820603de73d1ce7.zip")
-md5sums=('b5b9b612b138839f739ef524f127b162'
-         '3425796ecf8b71a17e5cca7a8a2c8e25')
+source=("https://pypi.python.org/packages/74/60/93967d945b6f4310086433bb3f632311a91fff93957ce5f059ff9736142a/python-telegram-bot-6.1b0.tar.gz")
+md5sums=('1247a2b5238280ad6cc228125e326122')
 
 prepare(){
     cd $srcdir
-    bsdtar -xf v$pkgver.tar.gz
-    bsdtar -xf 4b076eedffc1afabf0215ced3820603de73d1ce7.zip
-    mv urllib3-4b076eedffc1afabf0215ced3820603de73d1ce7/*  $srcdir/$pkgname-$pkgver/telegram/vendor/urllib3/
+    bsdtar -xf $pkgname-6.1b0.tar.gz
 }
 
 package() {
-    bsdtar -xf v$pkgver.tar.gz
-    cd $srcdir/$pkgname-$pkgver
+    cd $srcdir/$pkgname-6.1b0
     python setup.py install --root="$pkgdir" --optimize=1 
 }
