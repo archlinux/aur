@@ -1,37 +1,51 @@
 # $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Philipp A. <flying-sheep@web.de>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Micha Alt <micha.tucker at gmail dot com>
 
 pkgname=gulp-cli
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='The streaming build system'
-arch=('any')
-url="http://gulpjs.com/"
-license=('MIT')
-depends=('nodejs' 'semver')
-makedepends=('npm')
-replaces=('gulp')
-provides=('gulp')
-conflicts=('gulp')
+arch=(any)
+url='http://gulpjs.com/'
+license=(MIT)
+depends=(nodejs semver)
+makedepends=(yarn)
+replaces=(gulp)
+provides=(gulp)
+conflicts=(gulp)
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=($pkgname-$pkgver.tgz)
-md5sums=('663b2dde0bed198271c4e1d33babdd5a')
+md5sums=('72001f2744a153467229292d5d564185')
+
+build() {
+	cd "$srcdir/package"
+	yarn --ignore-scripts --production  # ignore prepublish
+}
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
-  rm -r "$pkgdir"/usr/etc
-
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "../../../lib/node_modules/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
-
-  # Fix permissions
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-
-  # Experimental dedup
-  cd "$pkgdir"/usr/lib/node_modules/$pkgname/node_modules
-  for dep in semver; do
-    rm -r $dep;
-    npm link $dep;
-  done
+	cd "$srcdir/package"
+	
+	install -d "$pkgdir/usr/lib/node_modules/gulp-cli"
+	for f in bin lib node_modules CHANGELOG.md index.js package.json README.md; do
+		cp -rt "$pkgdir/usr/lib/node_modules/gulp-cli" "$f"
+	done
+	
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 gulp.1 "$pkgdir/usr/share/man/man1/gulp.1"
+	install -d "$pkgdir/usr/bin"
+	ln -s "$pkgdir/usr/lib/node_modules/gulp-cli/bin/gulp.js" "$pkgdir/usr/bin/gulp"
+	
+	install -Dm644 completion/bash "$pkgdir/usr/share/bash-completion/completions/gulp"
+	install -Dm644 completion/fish "$pkgdir/usr/share/fish/completions/gulp.fish"
+	sed -i 's|#!/bin/zsh|#compdef gulp|; s/compdef \(_gulp_completion\) gulp/\1 "$@"/' completion/zsh
+	install -Dm644 completion/zsh "$pkgdir/usr/share/zsh/site-functions/_gulp"
+	#TODO powershell completions
+	
+	# dedup
+	cd "$pkgdir/usr/lib/node_modules/gulp-cli/node_modules"
+	for dep in semver; do
+		rm -r $dep
+		npm link $dep
+	done
 }
