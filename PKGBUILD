@@ -1,14 +1,13 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname='perl-module-install'
 _perlmod=Module-Install
 _author='E/ET/ETHER'
-pkgver=1.16
+pkgver=1.18
 pkgrel=1
 pkgdesc="Module::Install - Standalone, extensible Perl module installer"
 arch=('any')
-url='http://search.cpan.org/dist/Module-Install'
+url='http://serch.cpan.org/dist/Module-Install'
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=(
@@ -21,37 +20,15 @@ perl-yaml-tiny
 )
 makedepends=(perl-yaml-tiny)
 source=(http://search.cpan.org/CPAN/authors/id/${_author}/${_perlmod}-${pkgver}.tar.gz)
-sha256sums=('afac1264255f4d822d44f84df1aa9affad207f9ae805e803d93c845fa120025e')
+sha256sums=('29068ac33502cec959844c206516c09cc4a847cb57327d41015f605153ca645e')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    /usr/bin/perl Makefile.PL
-    make
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    /usr/bin/perl Build.PL
-    perl Build
-  fi
+  /usr/bin/perl Makefile.PL
+  make
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    make install
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build install
-  fi
-
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
