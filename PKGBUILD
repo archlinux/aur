@@ -2,7 +2,7 @@
 
 _pkgname='git-phab'
 pkgname='git-phab-git'
-pkgver=r163.b59c888
+pkgver=r186.937fb36
 pkgrel=1
 pkgdesc='Git subcommand to integrate with phabricator'
 arch=('any')
