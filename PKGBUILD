@@ -11,7 +11,7 @@ depends=(netcdf)
 source=(http://prdownloads.sourceforge.net/nccmp/${pkgname}-${pkgver}.tar.gz isnan.patch)
 md5sums=('81e6286d4413825aec4327e61a28a580'
          '12643e14abdf802fabd227e3a2cadfad')
-
+ 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   patch -p0 -i ${srcdir}/isnan.patch
