@@ -1,15 +1,15 @@
 pkgbase = ruby1.9-bundler
 	pkgdesc = Manages an application's dependencies through its entire life, across many machines, systematically and repeatably.
-	pkgver = 1.14.6
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://bundler.io
 	arch = any
 	license = MIT
 	depends = ruby1.9
-	noextract = bundler-1.14.6.gem
+	noextract = bundler-1.15.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/bundler-1.14.6.gem
-	sha256sums = f431206d5e89e803b7cf0dd232683eaec769ec168707e9b3d8297dba35137d40
+	source = https://rubygems.org/downloads/bundler-1.15.0.gem
+	sha256sums = 2d22a3fa26b00a62a19fc29f805a6cdccedaf0e4a7ca55816c27e644b2fc04cd
 
 pkgname = ruby1.9-bundler
 
