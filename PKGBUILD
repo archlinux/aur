@@ -1,7 +1,7 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=gctpc
 pkgver=20a
-pkgrel=1
+pkgrel=3
 pkgdesc="Software library for geolocation written by the USGS"
 arch=("i686" "x86_64")
 url="https://www.ngs.noaa.gov/PUBS_LIB/GeneralCartographicTransformationPackage_v2_TR_NOS124_CGS9.pdf"
