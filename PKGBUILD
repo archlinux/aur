@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=52.0.2+7eeed7053d
+pkgver=53.0.1+7feae7fecbd0
 _realpkgver=49.0b10
 _rcbuild=1
 pkgrel=1
@@ -26,21 +26,21 @@ source=(git://github.com/MrAlex94/Waterfox
         firefox-install-dir.patch
         rhbz-966424.patch
         clang-profile.patch
-        vendor.js)
+        vendor.js
+        webgl-nowebrtc-fix.patch::https://bug1335515.bmoattachments.org/attachment.cgi?id=8832179)
 sha512sums=('SKIP'
-            'b6b9dc4bc6861de7bd6ecf8b28c6ee1ac096542020a1a0aecefee9761eb8f67e596278696d6f23659347f0acabf08dffaccf829afcaa544bd3447899ec8c549d'
+            'dad95521ed25ea525b19ad16f2092947aa24271db870e19713368183dde40b086f63d8ea050c32c70459387998bbe9a16fcf0e29a57aff5d76e82d2ab2bcc1b5'
             '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
             '0d69183bbfdceee89b3059c913c95e316c03b14b6b302675e16a03c32b74f30b7058344d8c6f2f5a4cfd33db9c7e6f52bf0f52d1c047a224b75e1745d0711c07'
             'c17dceeefd58447917e27a33d6688a28158b919c41867909b11478d8be7f155b61ae8fda2e0381c14210583f1c6ecf678dfb469c4826f34e24b8ee0b96a8aaa5'
-            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
-_CORES=1
-
+            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
+            '8072035ad22d73d6abc9f98bf15b5d3c7104ab5499b6288c46f02035a546729a2130093fc518e7a91033144303cda56fe86478f35818894f23972855ed696734') 
 # don't compress the package - we're just going to uncompress during install in a moment
 PKGEXT='.pkg.tar'   
 
 # use pgo?
-_pgo=0 # even with my patch this results in "error: Could not read profile /media/disk/Linux/makepkg/waterfox-git/src/Waterfox/obj-x86_64-pc-linux-gnu/default.profdata: Invalid instrumentation profile data (bad magic)"      
+# _pgo=0 # even with my patch this results in "error: Could not read profile /media/disk/Linux/makepkg/waterfox-git/src/Waterfox/obj-x86_64-pc-linux-gnu/default.profdata: Invalid instrumentation profile data (bad magic)"      
            
 pkgver() {
 	cd Waterfox
@@ -48,12 +48,6 @@ pkgver() {
 }
 
 prepare() {
-  # Number of CPU Cores
-  _CORES=$(cat /proc/cpuinfo|grep processor|wc -l)
-  if [ $_CORES -lt 1 ]; then
-  	_CORES=2
-  fi
-	
   cd Waterfox
 
   cp ../mozconfig .mozconfig
@@ -64,12 +58,15 @@ prepare() {
   # fix addon update issue - happens in arch and redhat, at the least
   patch -Np0 -i ../rhbz-966424.patch
   
+  # fix error that arises when building with webrtc disabled
+  patch -Np1 -i ../webgl-nowebrtc-fix.patch
+  
   # these fix PGO
-  patch -Np1 -i ../clang-profile.patch
+  # patch -Np1 -i ../clang-profile.patch
 
-  if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
-    echo "mk_add_options PROFILE_GEN_SCRIPT='EXTRA_TEST_ARGS=10 \$(MAKE) -C \$(MOZ_OBJDIR) pgo-profile-run'" >>.mozconfig 
-  fi
+  #if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
+  #  echo "mk_add_options PROFILE_GEN_SCRIPT='EXTRA_TEST_ARGS=10 \$(MAKE) -C \$(MOZ_OBJDIR) pgo-profile-run'" >>.mozconfig 
+  #fi
 
   mkdir -p "$srcdir/path"
 }
@@ -83,10 +80,10 @@ build() {
   if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
     msg2 'PGO build is selected'
     xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-    make -j $_CORES -f client.mk profiledbuild
+    make -j -f client.mk profiledbuild
   else
     msg2 'Non-PGO build is selected or your architecture is not x86_64'
-    make -j $_CORES -f client.mk build
+    make -j -f client.mk build
   fi
 }
 
