@@ -10,14 +10,14 @@ pkgbase=linux-mainline               # Build stock -ARCH kernel
 _srcname=linux-4.11
 _patchname=patch-4.12-rc2
 pkgver=4.12rc2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "${_patchname}::https://git.kernel.org/torvalds/p/v4.12-rc1/v4.11"
+        "${_patchname}::https://git.kernel.org/torvalds/p/v4.12-rc2/v4.11"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         # the main kernel config files
         'config.i686' 'config.x86_64'
@@ -28,7 +28,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
-            '516dc994c0d1872f27bb83e07f6d2dd506594ae0bc88e5a11e5637dc2b446f2f'
+            '76e32580cc6fa58e016453856267d61e2b2c464d3bf6808f26c32de9729023fa'
             'e4e928488d35ba2b4049bd224dee87be9eb574ed3c1882f22c8fd5d8674c9abd'
             '2e38528bd2f1be712f5a274b66882c41d2a9cf996b3a05b4a772c8ba7309b261'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
