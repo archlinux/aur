@@ -1,27 +1,30 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=gctpc
-pkgver=20
-pkgrel=2
-pkgdesc="GCTPC is a software library for geolocation written by the USGS"
+pkgver=20a
+pkgrel=1
+pkgdesc="Software library for geolocation written by the USGS"
 arch=("i686" "x86_64")
-url="http://www.nco.ncep.noaa.gov/pmb/codes/nwprod/util/sorc/wgrib2.cd/grib2/gctpc/announce.txt"
-depends=('libdap')
+url="https://www.ngs.noaa.gov/PUBS_LIB/GeneralCartographicTransformationPackage_v2_TR_NOS124_CGS9.pdf"
 options=('staticlibs')
-license=('public_domain')
-source=(http://www.nco.ncep.noaa.gov/pmb/codes/nwprod/util/sorc/wgrib2.cd/grib2/${pkgname}${pkgver}.tar.Z
+license=('custom')
+source=(http://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2.tgz.v2.0.6c
         Makefile)
-md5sums=('89c24014a35288a7e1707dbc4b0a9f80'
+md5sums=('a6c5a71b9a5b3837b0c9d82ae965b274'
          'baa2859f793a797b6e22525b0a74091c')
 
 build() {
-  cd ${srcdir}/${pkgname}/source
+  cd ${srcdir}/grib2
+  tar zxvf gctpc20a.tgz
+  cd ${pkgname}/source
   CC=gcc make -f ${srcdir}/Makefile
 }
 
 package() {
-  cd ${srcdir}/${pkgname}/source
-  mkdir -p ${pkgdir}/usr/{lib,include/gctpc}
-  install -Dm644 ${srcdir}/${pkgname}/source/proj.h ${pkgdir}/usr/include/gctpc
-  install -Dm644 ${srcdir}/${pkgname}/source/cproj.h ${pkgdir}/usr/include/gctpc
-  install -Dm644 ${srcdir}/${pkgname}/source/libgeo.a ${pkgdir}/usr/lib
+  cd ${srcdir}/grib2/${pkgname}/source
+  mkdir -p ${pkgdir}/usr/{lib,include/gctpc,share/licenses/gctpc}
+  base=${srcdir}/grib2/${pkgname}
+  install -Dm644 ${base}/source/proj.h ${pkgdir}/usr/include/gctpc
+  install -Dm644 ${base}/source/cproj.h ${pkgdir}/usr/include/gctpc
+  install -Dm644 ${base}/source/libgeo.a ${pkgdir}/usr/lib
+  install -Dm644 ${base}/announce.txt ${pkgdir}/usr/share/licenses/gctpc/licence
 }
