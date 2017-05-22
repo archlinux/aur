@@ -12,7 +12,7 @@ pkgname=('qemu-git'
          'qemu-block-rbd-git'
          'qemu-block-gluster-git'
          'qemu-guest-agent-git')
-pkgver=2.8.0.r50638.a9e404600a
+pkgver=2.9.0.r45576.56821559f0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
