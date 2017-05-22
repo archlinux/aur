@@ -12,13 +12,13 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git' 'lib32-mesa-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.89867.7751ed39e4
+pkgver=17.2.0_devel.92207.4eb0411ed7
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'lib32-libxshmfence' 'lib32-libxxf86vm'  'lib32-libxdamage' 'gcc-multilib' 'lib32-libvdpau' 'lib32-wayland' 'lib32-libelf' 'lib32-llvm-svn'
               'git' 'lib32-libtxc_dxtn' 'lib32-libgcrypt' 'lib32-systemd'
-              'mesa-git' 'lib32-llvm-libs-svn')
+              'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libunwind')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
@@ -48,7 +48,7 @@ build () {
                --with-dri-driverdir=/usr/lib32/xorg/modules/dri \
                --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-               --with-egl-platforms=x11,drm,wayland \
+               --with-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
                --enable-texture-float \
                --enable-gallium-osmesa \
@@ -104,7 +104,7 @@ build () {
 package_lib32-mesa-git () {
   pkgdesc="an open-source implementation of the OpenGL specification, git version"
   depends=('mesa-git' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
-           'lib32-libtxc_dxtn' 'lib32-llvm-libs-svn')
+           'lib32-libtxc_dxtn' 'lib32-llvm-libs-svn' 'lib32-libunwind')
   optdepends=('opengl-man-pages: for the OpenGL API man pages')
   provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
   replaces=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
@@ -112,10 +112,8 @@ package_lib32-mesa-git () {
 
   cd mesa
   make DESTDIR="$pkgdir" install
-  # remove vulkan headers as they are provided by vulkan-headers package
-  rm -rf "$pkgdir"/usr/include/vulkan/vk_platform.h "$pkgdir"/usr/include/vulkan/vulkan.h
-  
-  # remove files provided by mesa-test-git
+
+  # remove files provided by mesa-git
   rm -rf "$pkgdir"/etc
   rm -rf "$pkgdir"/usr/include
 
