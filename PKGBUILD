@@ -1,14 +1,14 @@
 _cranname=animation
 pkgname=r-cran-$_cranname
-pkgver=2.4
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 pkgdesc="Provides functions for animations in statistics"
 url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
 arch=('any')
 depends=('r')
 license=('LGPL3')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${pkgver}.tar.gz")
-md5sums=('619aebb7cad045e3dd694b32ffa5b4f4')
+md5sums=('80ce6a5bddc99b44add704398eff304b')
  
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
