@@ -1,6 +1,6 @@
 pkgname=caitsith-tools
 _basever=0.2
-_timestamp=20161229
+_timestamp=20170515
 pkgver=${_basever}_${_timestamp}
 pkgrel=1
 pkgdesc='CaitSith Linux userspace tools'
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('ncurses')
 source=("http://jaist.dl.osdn.jp/caitsith/66538/caitsith-tools-${_basever}-${_timestamp}.tar.gz"
 	"http://jaist.dl.osdn.jp/caitsith/66538/caitsith-tools-${_basever}-${_timestamp}.tar.gz.asc")
-sha256sums=('b5d791c87975765b9e8b5c7ade62fa3b34822870978adcb11744f90bcadce9ea'
-	'26047ed0d59b52f98e57d5728c80e347a9d10529eebe9a476e479e93df557f53')
+sha256sums=('542cbfb60089d0c8410b773e30f19e487d418dd701b64b7b60fcb661aca0f6fb'
+	'f058d61d874f450efe0ca9fc81c530b967e355800f079ed1bf82d3aaeecc24d3')
 validpgpkeys=('43C83369623D7AD3A96C2FC7425F128D0C64F52A') # http://I-love.SAKURA.ne.jp/kumaneko-key
 
 build() {
