@@ -4,7 +4,7 @@
 
 pkgname=qt5.6
 pkgver=5.6.2
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -14,7 +14,7 @@ depends=('libjpeg-turbo' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-image'
 	 'libwebp' 'libpulse' 'openal' 'libxcomposite' 'pciutils'  'libxss'
 	 'libvpx' 'opus' 'libevent' 'jsoncpp' 'snappy' 'nss' 'libxslt'
 	 'gst-plugins-base-libs' 'libxrandr' 'libsrtp' 'protobuf' 'libxdamage'
-	 'minizip' 'ffmpeg')
+	 'minizip' 'ffmpeg' 'openssl-1.0')
 makedepends=('mtdev' 'libfbclient' 'libmariadbclient' 'unixodbc' 'alsa-lib' 
              'postgresql-libs' 'gtk2' 'cups' 'freetds' 'bluez-libs' 'python2'
 	     'libxcursor' 'git' 'gperf' 'python')
@@ -46,6 +46,9 @@ prepare() {
 build() {
     cd ${_tarname}
     local qt5_src="/opt/qt5.6"
+
+    echo "INCLUDEPATH += /usr/include/openssl-1.0" >> qtbase/src/network/network.pro
+    export OPENSSL_LIBS='-L/usr/lib/openssl-1.0 -lssl -lcrypto'
 
     PYTHON=/usr/bin/python2 ./configure -confirm-license -opensource \
         -prefix /opt/qt5.6 \
