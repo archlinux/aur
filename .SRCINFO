@@ -1,0 +1,24 @@
+pkgbase = binutils-msp430
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the MSP430 architecture
+	pkgver = 2.21.1a
+	pkgrel = 1
+	url = http://sourceforge.net/projects/mspgcc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	options = !emptydirs
+	options = !libtool
+	source = http://sourceforge.net/projects/mspgcc/files/mspgcc/mspgcc-20120406.tar.bz2
+	source = http://ftpmirror.gnu.org/binutils/binutils-2.21.1a.tar.bz2
+	source = 0001_ld_makefile_libdir.patch
+	source = 0002_binutils-texinfo-5.0-gas-doc.patch
+	source = 0003-binutils-texinfo-5.0.patch
+	sha1sums = cc96a7233f0b1d2c106eff7db6fc00e4ed9039a8
+	sha1sums = 525255ca6874b872540c9967a1d26acfbc7c8230
+	sha1sums = 7a5d78fd94fd99dd544816db75a14c326c494e68
+	sha1sums = b92aba28a090f214a650102ad0f0862c37b45e58
+	sha1sums = 417b1cdb35c41a08d3ca967c165c0d79588986e9
+
+pkgname = binutils-msp430
+
