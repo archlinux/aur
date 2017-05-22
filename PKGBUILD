@@ -1,9 +1,9 @@
-# Maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
+# Maintainer: Dan Pluth <pluthd@gmail.com>
 pkgname=onetime
 pkgver=1.81
 pkgrel=2
 epoch=
-pkgdesc="an open source encrpyiont program that uses the one-time pad method."
+pkgdesc="an open source encryption program that uses the one-time pad method."
 arch=(any)
 url="http://red-bean.com/onetime/"
 license=('MIT')

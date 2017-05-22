@@ -1,5 +1,5 @@
 pkgbase = onetime
-	pkgdesc = an open source encrpyiont program that uses the one-time pad method.
+	pkgdesc = an open source encryption program that uses the one-time pad method.
 	pkgver = 1.81
 	pkgrel = 2
 	url = http://red-bean.com/onetime/
