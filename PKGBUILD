@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=aerc-git
-pkgver=r273.2432dd9
+pkgver=r345.b2e5fa5
 pkgrel=1
 epoch=
 pkgdesc="Asynchronous email client for your terminal"
@@ -9,7 +9,7 @@ url="https://github.com/SirCmpwn/aerc"
 license=('MIT')
 categories=()
 groups=()
-depends=('termbox' 'openssl')
+depends=('termbox' 'openssl' 'libtsm')
 makedepends=('git' 'cmake')
 optdepends=()
 checkdepends=()
@@ -33,7 +33,9 @@ build() {
   cd "$srcdir/$pkgname"
   mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc ..
   make
 }
 
