@@ -3,10 +3,10 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=3.2.17.7
+pkgver=3.2.17.10
 pkgrel=2
 pkgdesc='Bring together your videos, music, photos, and live television'
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64')
 url='http://emby.media'
 license=('GPL2')
 depends=('ffmpeg' 'imagemagick' 'mono' 'sqlite')
