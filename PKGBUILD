@@ -9,8 +9,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.83.0.r73.g002bde26ea
-pkgrel=2
+pkgver=2.85.1.r434.gd2ed90f043
+pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
@@ -18,11 +18,11 @@ url="https://calibre-ebook.com/"
 license=('GPL3')
 depends=('python2-dateutil' 'python2-cssutils' 'python2-mechanize' 'mtdev'
          'podofo' 'poppler' 'libwmf' 'chmlib' 'python2-lxml'
-         'libusbx' 'python2-pillow' 'python2-dnspython'
+         'libusbx' 'python2-pillow' 'python2-dnspython' 'python2-msgpack'
          'python2-pyqt5' 'python2-psutil' 'icu' 'libmtp' 'python2-dbus'
          'python2-netifaces' 'python2-cssselect' 'python2-apsw'
          'qt5-webkit' 'qt5-svg' 'python2-pygments' 'optipng')
-makedepends=('git' 'qt5-x11extras' 'xdg-utils')
+makedepends=('git' 'qt5-x11extras' 'xdg-utils' 'rapydscript-ng')
 optdepends=('ipython2: to use calibre-debug')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -94,6 +94,6 @@ package() {
       "${pkgdir}/usr/lib/calibre/calibre/constants.py"
 
   # Compiling bytecode FS#33392
-  python2 -m compileall "${pkgdir}/usr/lib/calibre/"
-  python2 -O -m compileall "${pkgdir}/usr/lib/calibre/"
+  python2 -m compileall -d '/' "${pkgdir}/"
+  python2 -O -m compileall -d '/' "${pkgdir}/"
 }
