@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mit-scheme-git
-pkgver=9.2.0.1139.g172084bf5
+pkgver=9.2.0.1140.g302172125
 pkgrel=1
 pkgdesc="MIT/GNU Scheme from git"
 arch=('i686' 'x86_64')
