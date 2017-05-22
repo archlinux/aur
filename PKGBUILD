@@ -5,7 +5,7 @@ _gitname=pyspectral
 
 pkgname=python2-pyspectral
 pkgrel=1
-pkgver=v0.3.3.11.g5518cae
+pkgver=v0.4.0
 pkgdesc="Passive sensor on a meteorological satellite relative spectral response"
 arch=('any')
 url="https://pyspectral.readthedocs.org/"
