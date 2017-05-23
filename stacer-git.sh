@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-cd /opt/stacer; npm start
+cd /opt/stacer-git; npm start
 
