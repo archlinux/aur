@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=masterpassword-gui
-pkgver=2.3
-pkgrel=3
+pkgver=2.4
+pkgrel=1
 pkgdesc='Java GUI for Master Password'
 arch=('any')
 url='http://masterpasswordapp.com/'
