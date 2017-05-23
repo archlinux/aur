@@ -1,0 +1,37 @@
+pkgbase = binutils-avr-tinyos
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the avr architecture, with TinyOS patches
+	pkgver = 2.17
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = glibc>=2.12-5
+	depends = zlib
+	provides = binutils-avr
+	options = staticlibs
+	options = !libtool
+	options = !distcc
+	options = !ccache
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.17.tar.bz2
+	source = 30-binutils-2.17-avr-size.patch
+	source = 31-binutils-2.17-avr-coff.patch
+	source = 50-binutils-2.17-atmega256x.patch
+	source = 51-binutils-2.17-newdevices.patch
+	source = dollarsign.patch
+	source = makeinfo411.patch
+	source = rfa1-newdevice.patch
+	source = rfa1-size.patch
+	sha1sums = 0f5c10d155d7ef67c5eb1261f84e70e2b92293fa
+	sha1sums = 2b5d2e59f69062e12cfcdec05c7a7c1605548b8d
+	sha1sums = 9c7428e902e5064540e0ed51c4c4d39e7516232c
+	sha1sums = a44eb430bc0209b9f1e4d97353de6b3db12748bd
+	sha1sums = 5718008fd59182f828b65fde20d78559a700c5f5
+	sha1sums = cf6f21fc4fc99c5b3ca5a065145619a3ed85960c
+	sha1sums = 04f713709af32d149b77216b6e1419289f57c971
+	sha1sums = 99a0e9ad9206c98b02602bc23dce78238e67399b
+	sha1sums = 87d2de4f04199a8dcd1c10cd3f31a7d8ddfd058b
+
+pkgname = binutils-avr-tinyos
+
