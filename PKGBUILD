@@ -9,8 +9,7 @@ license=('GPL2')
 # http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwODM5ODAx&cmp=ABR&lang=EN
 #scanner
 #http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwODQwMTAx&cmp=ABR&lang=EN
-arch=('x86_64')
-depends_x86_64=('cups') 
+depends=('cups') 
 sha256sums=('559acc98851ecf86000724ee268b473818b395c6b87524dc0d82ead6263a6ab5'
             'da7fddf03d95b487b55795812c9a27a00aa027a8f3bbcc76ead54ce07108976b'
             )
@@ -21,12 +20,12 @@ source=("cnijfilter2-5.40-1-rpm.tar.gz::http://gdlp01.c-wss.com/gds/8/0100008398
 
 prepare() {
         echo `pwd`
-        cp cnijfilter2-5.40-1-rpm/packages/cnijfilter2-5.40-1.x86_64.rpm ./.
-        bsdtar -xvf cnijfilter2-5.40-1.x86_64.rpm
-        cp scangearmp2-3.40-1-rpm/packages/scangearmp2-3.40-1.x86_64.rpm ./.
-        bsdtar -xvf scangearmp2-3.40-1.x86_64.rpm
-        rm -rf cnijfilter2-5.40-1.x86_64.rpm
-        rm -rf scangearmp2-3.40-1.x86_64.rpm
+        cp cnijfilter2-5.40-1-rpm/packages/cnijfilter2-5.40-1.$CARCH.rpm ./.
+        bsdtar -xvf cnijfilter2-5.40-1.$CARCH.rpm
+        cp scangearmp2-3.40-1-rpm/packages/scangearmp2-3.40-1.$CARCH.rpm ./.
+        bsdtar -xvf scangearmp2-3.40-1.$CARCH.rpm
+        rm -rf cnijfilter2-5.40-1.$CARCH.rpm
+        rm -rf scangearmp2-3.40-1.$CARCH.rpm
 }
 
 package() {
