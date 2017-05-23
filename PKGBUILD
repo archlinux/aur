@@ -2,10 +2,10 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 pkgname=python-telegram-bot
 pkgver=6.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Python wrapper around the Telegram Bot API"
 url="https://github.com/python-telegram-bot/python-telegram-bot"
-depends=('python' 'python-future' 'python-certifi' 'python-setuptools')
+depends=('python' 'python-future' 'python-setuptools')
 license=('LGPLv3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/b3/86/0ce63db69006343f3b5f1cc90cf6fee2fc0d1ddf21949bd591daefedeff7/python-telegram-bot-6.0.1.tar.gz")
