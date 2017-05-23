@@ -1,6 +1,6 @@
 # Maintainer: Nikita Puzyryov <nekit1234007@gmail.com>
 pkgname=gixy-git
-pkgver=v0.1.3.r1.ga21d887
+pkgver=v0.1.5
 pkgrel=1
 pkgdesc="Nginx configuration static analyzer"
 arch=(any)
