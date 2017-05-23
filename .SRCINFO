@@ -1,0 +1,17 @@
+pkgbase = epfl-menu
+	pkgdesc = Pretty-print the lunch and supper menus at the EPFL
+	pkgver = r10.9b4a45c
+	pkgrel = 1
+	url = https://github.com/gcmalloc/epfl-menu
+	arch = any
+	license = custom:Beerware
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = git+https://github.com/gcmalloc/epfl-menu
+	md5sums = SKIP
+
+pkgname = epfl-menu
+	depends = python2
+	depends = python2-beautifulsoup3
+	depends = python2-urllib3
+
