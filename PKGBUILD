@@ -4,7 +4,7 @@
 _pkgbase=hardcode-tray-git
 _gitname=Hardcode-Tray
 pkgname=$_pkgbase
-pkgver=3.6.5
+pkgver=3.8
 pkgrel=1
 pkgdesc="Fixes Hardcoded Tray Icons"
 arch=('i686' 'x86_64')
@@ -28,9 +28,9 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_gitname/script.py" "$pkgdir/opt/$_gitname/script.py"
-  install -Dm755 "$srcdir/$_gitname/hardcode-tray" "$pkgdir/usr/bin/hardcode-tray"
+  install -Dm755 "$srcdir/$_gitname-$pkgver/hardcode-tray.py" "$pkgdir/opt/$_gitname/hardcode-tray.py"
+  install -Dm755 "$srcdir/$_gitname-$pkgver/hardcode-tray" "$pkgdir/usr/bin/hardcode-tray"
   install -d "$pkgdir/opt/$_gitname"
-  cp -r -f "$srcdir/$_gitname/database" "$pkgdir/opt/$_gitname"
-  cp -r -f "$srcdir/$_gitname/modules" "$pkgdir/opt/$_gitname"
+  cp -r -f "$srcdir/$_gitname-$pkgver/src" "$pkgdir/opt/$_gitname"
+  cp -r -f "$srcdir/$_gitname-$pkgver/data" "$pkgdir/opt/$_gitname"
 }
