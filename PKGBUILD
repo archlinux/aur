@@ -13,7 +13,8 @@ pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
-_headlessdeps=(gnutls libpng libaio numactl jemalloc xfsprogs libnfs                lzo snappy curl vde2 libcap-ng spice usbredir)
+_headlessdeps=(gnutls libpng libaio numactl jemalloc xfsprogs libnfs
+               lzo snappy curl vde2 libcap-ng spice usbredir)
 depends=(seabios dtc virglrenderer sdl2 vte3 brltty "${_headlessdeps[@]}")
 makedepends=(spice-protocol python2 ceph libiscsi glusterfs git)
 source=(git://git.qemu.org/qemu.git
@@ -33,7 +34,7 @@ esac
 pkgver() {
   cd "${srcdir}/${_gitname}"
   echo "$(git describe | sed 's/^v//' | cut -c -5).r$(git rev-list --count master).$(git log -1 --format=%h)"
- #Todo : find a way to provide a cleaner revision number.
+
 }
 
 prepare() {
