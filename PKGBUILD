@@ -5,7 +5,7 @@
 
 pkgname=virt-backup
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic backups for Libvirt"
 arch=(any)
 url="https://github.com/Anthony25/virt-backup"
@@ -31,7 +31,7 @@ package() {
   cd "${srcdir}/virt-backup-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 
-	install -D -m644 virt-backup-clean.service "$pkgdir/usr/lib/systemd/system/virt-backup-clean.service"
+	install -D -m644 example/virt-backup-clean.service "$pkgdir/usr/lib/systemd/system/virt-backup-clean.service"
 }
 
 # vim:set ts=2 sw=2 et:
