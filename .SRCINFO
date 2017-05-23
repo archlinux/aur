@@ -1,0 +1,40 @@
+pkgbase = cegui
+	pkgdesc = A free library providing windowing and widgets for graphics APIs/engines
+	pkgver = 0.8.7
+	pkgrel = 8
+	url = http://cegui.org.uk
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = python2
+	makedepends = doxygen
+	makedepends = ogre
+	makedepends = gtk2
+	makedepends = boost
+	makedepends = graphviz
+	makedepends = irrlicht
+	makedepends = glm
+	makedepends = mesa
+	makedepends = tolua++
+	makedepends = mercurial
+	makedepends = ois
+	depends = pcre
+	depends = glew
+	depends = expat
+	depends = freetype2
+	depends = libxml2
+	depends = devil
+	depends = freeglut
+	depends = lua51
+	depends = silly
+	optdepends = ogre: ogre module
+	optdepends = python2: python bindings
+	optdepends = ois: running samples
+	optdepends = gtk2: gtk2 module
+	optdepends = irrlicht: irrlicht module
+	source = hg+https://bitbucket.org/cegui/cegui#tag=v0-8-7
+	md5sums = SKIP
+
+pkgname = cegui
+
