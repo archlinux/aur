@@ -27,23 +27,14 @@ makedepends=('binutils'
 						 'coreutils'
 					   'git')
 
-prepare() {
-  if [ -d "$srcdir/$pkgname" ]; then
-    rm -rf "$srcdir/$pkgname"
-  fi
-
-  mkdir -p "$srcdir/$pkgname"
-  cd "$srcdir/$pkgname"
-}
-
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
 
 	echo
 	echo "   ▄▄▄▄▄    ▄  █ ▄█ █ ▄▄"
@@ -56,13 +47,13 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
 
-  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "${pkgdir}/usr/bin"
 
 	install -Dm755 ship.sh "${pkgdir}/usr/bin/ship"
-  install -Dm644 -t "$pkgdir/usr/share/doc/ship/" README.md CHANGELOG.md
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/ship/LICENSE.md"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/ship/" README.md CHANGELOG.md
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/ship/LICENSE.md"
 }
 
 # vim: ts=2 sw=2 et:
