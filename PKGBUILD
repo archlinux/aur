@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-bluetooth
-pkgver=2.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Bluetooth indicator for Wingpanel'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('bluez' 'glib2' 'glibc' 'gtk3'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('bzr' 'cmake' 'vala' 'wingpanel')
 source=("https://launchpad.net/wingpanel-indicator-bluetooth/loki/${pkgver}/+download/wingpanel-indicator-bluetooth-${pkgver}.tar.xz")
-sha256sums=('8d35b8604e0d397e3b6c9316764c83a1d17340aeb878011195e7e67350e3069d')
+sha256sums=('453934a0999e19cded3c4f894cc30ca160485d06a62b992cd22c16a3e126135a')
 
 prepare() {
   cd wingpanel-indicator-bluetooth-${pkgver}
