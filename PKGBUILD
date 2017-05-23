@@ -15,11 +15,11 @@
 # archzfs github page.
 #
 pkgname="spl-linux-git"
-pkgver=0.7.0_rc3_r8_g481762f_4.10.13_1
+pkgver=0.7.0_rc4_r1_g8f87971_4.11.2_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
-depends=("spl-utils-linux-git" "kmod" "linux=4.10.13-1")
-makedepends=("linux-headers=4.10.13-1" "git")
+depends=("spl-utils-linux-git" "kmod" "linux=4.11.2-1")
+makedepends=("linux-headers=4.11.2-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
@@ -29,14 +29,13 @@ license=("GPL")
 install=spl.install
 provides=("spl")
 conflicts=('spl-utils-linux' 'spl-utils-linux-lts')
-replaces=("spl-git")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.10.13-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.10.13-1-ARCH/build \
+                --with-linux=/usr/lib/modules/4.11.2-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.11.2-1-ARCH/build \
                 --with-config=kernel
     make
 }
@@ -46,5 +45,5 @@ package() {
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.10.13-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.11.2-1-ARCH/Module.symvers
 }
