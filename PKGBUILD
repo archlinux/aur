@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxsession-git
-pkgver=0.5.3.r1013.20170514
+pkgver=0.5.3.r1017.20170523
 pkgrel=1
 epoch=1
 pkgdesc='Lightweight X11 session manager for LXDE'
