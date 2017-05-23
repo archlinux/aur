@@ -14,7 +14,6 @@ arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
 _headlessdeps=(gnutls libpng libaio numactl jemalloc xfsprogs libnfs
-
                lzo snappy curl vde2 libcap-ng spice usbredir)
 depends=(seabios dtc virglrenderer sdl2 vte3 brltty "${_headlessdeps[@]}")
 makedepends=(spice-protocol python2 ceph libiscsi glusterfs git)
