@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="spl-utils-linux-git"
-pkgver=0.7.0_rc3_r8_g481762f_4.10.13_1
+pkgver=0.7.0_rc4_r1_g8f87971_4.11.2_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
@@ -25,9 +25,8 @@ sha256sums=("SKIP")
 groups=("archzfs-linux-git")
 license=("GPL")
 provides=("spl-utils")
-makedepends=("linux-headers=4.10.13-1" "git")
+makedepends=("linux-headers=4.11.2-1" "git")
 conflicts=('spl-utils-linux' 'spl-utils-linux-lts')
-replaces=("spl-utils-git")
 
 build() {
     cd "${srcdir}/spl"
