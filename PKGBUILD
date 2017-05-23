@@ -1,35 +1,34 @@
+# Maintainer: Martchus <martchus@gmx.net>
+
 pkgname=mingw-w64-gnutls
-pkgver=3.4.17
+pkgver=3.5.12
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (mingw-w64)"
 arch=(any)
 url="http://www.gnu.org/software/gnutls"
-license=("GPL3, LGPL2.1")
+license=('GPL3', 'LGPL2.1')
 makedepends=(mingw-w64-configure)
-depends=(mingw-w64-crt mingw-w64-libtasn1 mingw-w64-readline mingw-w64-zlib mingw-w64-nettle mingw-w64-p11-kit)
+depends=(mingw-w64-crt mingw-w64-libtasn1 mingw-w64-readline mingw-w64-zlib mingw-w64-nettle mingw-w64-p11-kit mingw-w64-libunistring)
 options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
-source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.4/gnutls-${pkgver}.tar.xz{,.sig}
+source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.5/${pkgname#mingw-w64-}-${pkgver}.tar.xz{,.sig}
         'gnutls-3.2.7-rpath.patch'
-        'gnutls-3.1.11-nosrp.patch'
-        'gnutls-3.3.6-default-policy.patch'
         'gnutls-fix-external-libtasn1-detection.patch')
-md5sums=('03ea7575a43f58964635a5064cce4dc0'
-         'SKIP'
-         '291612225516234ede7e60f8b367dd8b'
-         'c3a2abfe08f47d9b07f770689b0c1b39'
-         'e0dba6bfe81b965a352f965b1398bcad'
-         'f90a0f01eb0f2a6b7afcc25a836eb67e')
-validpgpkeys=('1F42418905D8206AA754CCDC29EE58B996865171')
+sha256sums=('63cb39a5eaa029381df2e49a74cfb7be89fc4a592445191818ffe1e66bde57cb'
+            'SKIP'
+            '9e18e03c8f736f49a46b911920e87ea52e3bb2b35044b1fc5ac0e45fd528935a'
+            '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
+validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
+              '1F42418905D8206AA754CCDC29EE58B996865171')
+               # "Simon Josefsson <simon@josefsson.org>"
+               # "Nikos Mavrogiannopoulos <nmav@gnutls.org>
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 prepare() {
   cd "${srcdir}/gnutls-${pkgver}"
   patch -p0 -i ../gnutls-fix-external-libtasn1-detection.patch
   patch -p1 -i ../gnutls-3.2.7-rpath.patch
-  patch -p1 -i ../gnutls-3.1.11-nosrp.patch
-  #patch -p1 -i ../gnutls-3.3.6-default-policy.patch
   sed 's/gnutls_srp.c//g' -i lib/Makefile.in
   sed 's/gnutls_srp.lo//g' -i lib/Makefile.in
   rm -f lib/minitasn1/*.c lib/minitasn1/*.h
@@ -57,8 +56,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/gnutls-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
-    rm "$pkgdir"/usr/${_arch}/bin/*.def
+    ${_arch}-strip --strip-all "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
