@@ -2,7 +2,7 @@
 
 pkgname=ncl
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Ncar Command Language, is an interpreted language designed specifically for scientific data analysis and visualization'
 url='http://www.ncl.ucar.edu'
 license=('custom:NCL Source Code License')
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('libxext' 'cairo' 'pixman' 'fontconfig' 'expat' 'bzip2' 'zlib' 'netcdf' 'hdf5-cpp-fortran' 
          'triangle' 'hdf4-nonetcdf' 'netcdf-fortran' 'libxt' 'libxaw' 'libxext' 'libxpm' 'udunits'
          'libx11' 'imake' 'g2clib' 'gdal' 'lesstif' 'glibc' 'libjpeg' 'libpng' 'jasper' 'szip'
-         'libxaw' 'tcsh' 'flex' 'gsl')
+         'libxaw' 'tcsh' 'flex' 'gsl' 'hdf-eos2' 'hdf-eos5')
 makedepends=('gcc' 'gcc-fortran' 'tcsh' 'byacc')
 provides=('ncl')
 install=${pkgname}.install
@@ -24,7 +24,7 @@ source=("ncl_ncarg-$pkgver.tar.gz::https://www.earthsystemgrid.org/download/file
 optdepends=("ncl-highres: High-resolution coastlines (RANGS and GSHHS)")
 md5sums=('a981848ddcaf1c263279648265f24766'
          '10aff8d7950f5e0e2fb6dd2e340be2c9'
-         '5faadb8224427194311240726c18aad2'
+         '86851c0e0a36a5dc23dbe1425cb5907c'
          '33fd270a3ea1b4beb770b3e89ada4f59'
          'c18b84591221cf956f3c626cf8766f41'
          '913322ce7d4ca5efed7674693e8a3124'
