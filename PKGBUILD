@@ -28,7 +28,7 @@ sha1sums=('ab1945fd36b30f445eb5c83f199b011d42525612')
 build()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr --enable-man-pages
+    ./configure --prefix=/usr --sysconfdir=/etc --enable-man-pages
     make
 }
 
