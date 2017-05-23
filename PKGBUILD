@@ -2,7 +2,7 @@
 
 
 pkgname=dnscrypt-proxy-gui
-pkgver=1.6.8
+pkgver=1.9.8
 pkgrel=1
 pkgdesc='Qt/KF5 GUI wrapper over dnscrypt-proxy'
 arch=('i686' 'x86_64')
@@ -11,12 +11,12 @@ license=('GPL')
 depends=('qt5-base' 'kauth' 'knotifications' 'polkit' 'hicolor-icon-theme' 'dnscrypt-proxy' 'systemd')
 makedepends=('cmake' 'extra-cmake-modules' 'desktop-file-utils')
 conflicts=('dnscrypt-proxy-gui-git')
-source=("https://github.com/F1ash/dnscrypt-proxy-gui/archive/1.6.8.tar.gz")
-sha256sums=('2080ba1403e210efca391dbdf2735cc6bd00304cd7cc023c366180f8aa749955')
+source=("https://github.com/F1ash/dnscrypt-proxy-gui/archive/1.9.8.tar.gz")
+sha256sums=('971dedb3b40f1e8efe09ddc336ff47da8f52c01296e6204f59cd1156d565f40a')
 
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
 
   mkdir build && cd build
 
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver/build
+  cd "$srcdir/$pkgname-$pkgver/build"
 
   make DESTDIR="$pkgdir" install
 }
