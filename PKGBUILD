@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gala-git
-pkgver=r1018.66b5d4a
+pkgver=0.3.0.r96.66b5d4a
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd gala
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/-/.r/; s/-g/./'
 }
 
 build() {
