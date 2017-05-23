@@ -1,7 +1,7 @@
 pkgbase = memoink
 	pkgdesc = A OneNote-like application with a nice GUI.
 	pkgver = 13.578.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://doui.cc/product/memoink
 	install = memoink.install
 	arch = x86_64
