@@ -2,20 +2,20 @@
 
 pkgname=rtl8192su-git
 _pkgname=rtl8192su
-pkgver=c00112c
-pkgrel=3
+pkgver=1f09c7a
+pkgrel=1
 pkgdesc="Kernel module for Realtek RTL8188SU/RTL8191SU/RTL8192SU devices"
 arch=('x86_64' 'i686')
 # https://wireless.wiki.kernel.org/en/users/Drivers/rtl819x
 # pointed to this github repo --> https://github.com/chunkeey/rtl8192su
 url="https://github.com/chunkeey/rtl8192su"
 license=('GPL')
-depends=('linux>=4.10' 'linux<4.11')
-makedepends=('linux-headers>=4.10' 'git')
+_extramodules="extramodules-4.11-ARCH"
+depends=('linux>=4.11' 'linux<4.12')
+makedepends=('linux-headers>=4.12' 'git')
 source=("git://github.com/chunkeey/$_pkgname.git")
 sha256sums=('SKIP')
 install=readme.install
-_extramodules="extramodules-4.10-ARCH"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 pkgver() {
