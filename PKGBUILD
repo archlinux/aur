@@ -10,23 +10,37 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-git
-pkgname=('lib32-mesa-git' 'lib32-mesa-libgl-git')
+pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.2.0_devel.92207.4eb0411ed7
+pkgver=17.2.0_devel.92238.1db28fbbea
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'lib32-libxshmfence' 'lib32-libxxf86vm'  'lib32-libxdamage' 'gcc-multilib' 'lib32-libvdpau' 'lib32-wayland' 'lib32-libelf' 'lib32-llvm-svn'
               'git' 'lib32-libtxc_dxtn' 'lib32-libgcrypt' 'lib32-systemd'
-              'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libunwind')
+              'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libunwind' 'lib32-libglvnd')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
+        '0001-Fix-linkage-against-shared-glapi.patch'
+        'glvnd-fix-gl-dot-pc.patch'
 )
+
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
+            'fdf973f0387997cee16936bc978f52d60719a1a8610fa96768e2cec42ad790da31f72c00783246f047fc496de01f9e22aec0d46577ded9c2353dd6e6193b4294'
+            '75849eca72ca9d01c648d5ea4f6371f1b8737ca35b14be179e14c73cc51dca0739c333343cdc228a6d464135f4791bcdc21734e2debecd29d57023c8c088b028'
 )
+
+prepare() {
+  cd ${srcdir}/mesa
+
+  # non-upstreamed ones
+  patch -Np1 -i ../glvnd-fix-gl-dot-pc.patch
+  patch -Np1 -i ../0001-Fix-linkage-against-shared-glapi.patch
+
+}
 
 pkgver() {
     cd mesa
@@ -58,6 +72,7 @@ build () {
                --enable-vdpau \
                --enable-glx-tls \
                --with-va-libdir=/usr/lib32/dri \
+               --enable-libglvnd
 
 
 # Used configure settings
@@ -95,6 +110,8 @@ build () {
 #                                   [default=disabled]
 # --enable-glx-tls                  enable TLS support in GLX
 #                                   [default=disabled]
+# --enable-libglvnd                 Build GLX and EGL for libglvnd 
+#                                   [default=disabled]
 
   make
 
@@ -106,9 +123,9 @@ package_lib32-mesa-git () {
   depends=('mesa-git' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
            'lib32-libtxc_dxtn' 'lib32-llvm-libs-svn' 'lib32-libunwind')
   optdepends=('opengl-man-pages: for the OpenGL API man pages')
-  provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
-  replaces=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
-  conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
+  provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-provider')
+  replaces=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl')
+  conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl')
 
   cd mesa
   make DESTDIR="$pkgdir" install
@@ -116,41 +133,15 @@ package_lib32-mesa-git () {
   # remove files provided by mesa-git
   rm -rf "$pkgdir"/etc
   rm -rf "$pkgdir"/usr/include
+  rm "$pkgdir"/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
-  install -m755 -d ${pkgdir}/usr/lib32/mesa
-  # move libgl/EGL/glesv*.so to not conflict with blobs ?
-  mv -v "$pkgdir"/usr/lib32/libGL.so*    "$pkgdir"/usr/lib32/mesa/
-  mv -v "$pkgdir"/usr/lib32/libEGL.so*   "$pkgdir"/usr/lib32/mesa/
-  mv -v "$pkgdir"/usr/lib32/libGLES*.so* "$pkgdir"/usr/lib32/mesa/
+  # remove files present in lib32-libglvnd
+  rm "$pkgdir"/usr/lib32/libGLESv1_CM.so
+  rm "$pkgdir"/usr/lib32/libGLESv1_CM.so.1
+  rm "$pkgdir"/usr/lib32/libGLESv2.so
+  rm "$pkgdir"/usr/lib32/libGLESv2.so.2
+  rm "$pkgdir"/usr/lib32/libGLESv2.so.2.0.0
 
   install -m755 -d "$pkgdir"/usr/share/licenses/$pkgbase
   install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgbase/
-}
-
-package_lib32-mesa-libgl-git () {
-  pkgdesc="Mesa 3-D graphics library"
-  depends=('lib32-mesa-git')
-  provides=('lib32-mesa-libgl' 'lib32-libgl' 'lib32-libgles' 'lib32-libegl' 'lib32-opengl-provider')
-  replaces=('lib32-mesa-libgl' 'lib32-libgles' 'lib32-libegl')
-  conflicts=('lib32-mesa-libgl' 'lib32-libgles' 'lib32-libegl')
-
-  install -m755 -d "$pkgdir"/usr/lib32
-  ln -s /usr/lib32/mesa/libGL.so.1.2.0 "$pkgdir"/usr/lib32/libGL.so.1.2.0
-  ln -s libGL.so.1.2.0               "$pkgdir"/usr/lib32/libGL.so.1
-  ln -s libGL.so.1.2.0               "$pkgdir"/usr/lib32/libGL.so
-
-  ln -s /usr/lib32/mesa/libEGL.so.1.0.0 "$pkgdir"/usr/lib32/libEGL.so.1.0.0
-  ln -s libEGL.so.1.0.0               "$pkgdir"/usr/lib32/libEGL.so.1
-  ln -s libEGL.so.1.0.0               "$pkgdir"/usr/lib32/libEGL.so
-
-  ln -s /usr/lib32/mesa/libGLESv1_CM.so.1.1.0 "$pkgdir"/usr/lib32/libGLESv1_CM.so.1.1.0
-  ln -s libGLESv1_CM.so.1.1.0               "$pkgdir"/usr/lib32/libGLESv1_CM.so.1
-  ln -s libGLESv1_CM.so.1.1.0               "$pkgdir"/usr/lib32/libGLESv1_CM.so
-
-  ln -s /usr/lib32/mesa/libGLESv2.so.2.0.0 "$pkgdir"/usr/lib32/libGLESv2.so.2.0.0
-  ln -s libGLESv2.so.2.0.0               "$pkgdir"/usr/lib32/libGLESv2.so.2
-  ln -s libGLESv2.so.2.0.0               "$pkgdir"/usr/lib32/libGLESv2.so
-
-  install -m755 -d "$pkgdir"/usr/share/licenses/lib32-mesa-libgl-git
-  install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/lib32-mesa-libgl-git/
 }
