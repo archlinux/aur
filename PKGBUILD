@@ -9,6 +9,7 @@ license=('GPL2')
 # http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwODM5ODAx&cmp=ABR&lang=EN
 #scanner
 #http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwODQwMTAx&cmp=ABR&lang=EN
+arch=('x86_64')
 depends=('cups') 
 sha256sums=('559acc98851ecf86000724ee268b473818b395c6b87524dc0d82ead6263a6ab5'
             'da7fddf03d95b487b55795812c9a27a00aa027a8f3bbcc76ead54ce07108976b'
