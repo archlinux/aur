@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz> 
 pkgname=python-err
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin based chatbot designed to be easily deployable, extensible and maintainable."
 arch=('any')
 url="http://errbot.net"
@@ -23,6 +23,10 @@ optdepends=('python-sleekxmpp: XMPP backend'
             'python-pyasn1: XMPP backend'
             'python-pyasn1-modules: XMPP backend'
             'python-dnspython: XMPP backend'
+            'python-pytest-xdist: XMPP backend'
+            'python-nose: XMPP backend'
+            'python-mock: XMPP backend'
+            'python-pygments-markdown-lexer: XMPP backend'
             'python-tox: TOX backend'
             'python-irc: IRC backend')
 options=(!emptydirs)
