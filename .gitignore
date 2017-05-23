@@ -1,0 +1,6 @@
+NVIDIA-Linux-x86-*.run
+NVIDIA-Linux-x86_64-*-no-compat32.run
+nvidia-zen-*-x86_64.pkg.tar.xz
+nvidia-zen-dkms-*-x86_64.pkg.tar.xz
+pkg
+src
