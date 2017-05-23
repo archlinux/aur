@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Felix Schindler <aur at felixschindler dot net>
+# Maintainer: Felix Schindler <aut at felixschindler dot net>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Sebastian Nowicki <sebnow@gmail.com>
@@ -10,18 +10,16 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
-# pkgname=('llvm38' 'llvm-libs38' 'llvm-ocaml38' 'lldb38' 'clang38' 'clang-tools-extra38')
-pkgname=('llvm38' 'llvm-libs38' 'lldb38' 'clang38' 'clang-tools-extra38')
-_pkgname=clang38
+pkgname=('llvm38' 'llvm-libs38' 'llvm-ocaml38' 'lldb38' 'clang38' 'clang-tools-extra38')
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 #_ocaml_ver=4.02.3
+_ocaml_ver=4.04.1
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-# makedepends=('cmake' 'libffi' 'python2' "ocaml=$_ocaml_ver" 'python-sphinx'
-makedepends=('cmake' 'libffi' 'python2' 'python-sphinx'
-             'libedit' 'swig')
+makedepends=('cmake' 'libffi' 'python2' "ocaml=$_ocaml_ver" 'python-sphinx'
+             'ocaml-ctypes' 'ocaml-findlib' 'libedit' 'swig')
 # Use gcc-multilib to build 32-bit compiler-rt libraries on x86_64 (FS#41911)
 makedepends_x86_64=('gcc-multilib')
 options=('staticlibs')
@@ -74,7 +72,7 @@ build() {
 
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/opt/$_pkgname \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_DYLIB_EXPORT_ALL=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
@@ -87,11 +85,10 @@ build() {
     -DSPHINX_WARNINGS_AS_ERRORS=OFF \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include \
-    -DLLVM_APPEND_VC_REV=ON \
     ..
 
   make
-  # make ocaml_doc
+  make ocaml_doc
 
   # Disable automatic installation of components that go into subpackages
   sed -i '/\(clang\|lldb\)\/cmake_install.cmake/d' tools/cmake_install.cmake
@@ -106,31 +103,36 @@ check() {
 }
 
 package_llvm38() {
+  _pkgname=llvm
   pkgdesc="Low Level Virtual Machine"
   depends=("llvm-libs38=$pkgver-$pkgrel" 'perl')
+  provides=("llvm=$pkgver-$pkgrel")
+  conflicts=('llvm')
+  replaces=('llvm')
 
   cd "$srcdir/llvm-$pkgver.src"
 
   make -C build DESTDIR="$pkgdir" install
 
   # Remove documentation sources
-  rm -rf "$pkgdir"/opt/$_pkgname/share/doc/$pkgname/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"/usr/share/doc/$_pkgname/html/{_sources,.buildinfo}
 
   # The runtime libraries go into llvm-libs
-  mv -f "$pkgdir"/opt/$_pkgname/lib/lib{LLVM,LTO}*.so "$srcdir"
-  mv -f "$pkgdir"/opt/$_pkgname/lib/LLVMgold.so "$srcdir"
+  mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so "$srcdir"
+  mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
 
   # OCaml bindings go to a separate package
   rm -rf "$srcdir"/ocaml.{lib,doc}
-  rm -rf "$pkgdir/opt/$_pkgname/lib/ocaml"
-  rm -rf "$pkgdir/opt/$_pkgname/docs"
+  mv "$pkgdir/usr/lib/ocaml" "$srcdir/ocaml.lib"
+  mv "$pkgdir/usr/docs/ocaml/html" "$srcdir/ocaml.doc"
+  rm -r "$pkgdir/usr/docs"
 
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
     # Header stub is taken from Fedora
-    mv "$pkgdir/opt/$_pkgname/include/llvm/Config/llvm-config"{,-64}.h
+    mv "$pkgdir/usr/include/llvm/Config/llvm-config"{,-64}.h
     cp "$srcdir/llvm-Config-llvm-config.h" \
-      "$pkgdir/opt/$_pkgname/include/llvm/Config/llvm-config.h"
+      "$pkgdir/usr/include/llvm/Config/llvm-config.h"
   fi
 
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -139,63 +141,74 @@ package_llvm38() {
 package_llvm-libs38() {
   pkgdesc="Low Level Virtual Machine (runtime libraries)"
   depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses')
+  provides=("llvm-libs=$pkgver-$pkgrel")
+  conflicts=('llvm-libs')
+  replaces=('llvm-libs')
 
-  install -d "$pkgdir/opt/$_pkgname/lib"
+  install -d "$pkgdir/usr/lib"
   cp -P \
     "$srcdir"/lib{LLVM,LTO}*.so \
     "$srcdir"/LLVMgold.so \
-    "$pkgdir/opt/$_pkgname/lib/"
+    "$pkgdir/usr/lib/"
 
   # Symlink LLVMgold.so from /usr/lib/bfd-plugins
   # https://bugs.archlinux.org/task/28479
-  install -d "$pkgdir/opt/$_pkgname/lib/bfd-plugins"
-  ln -s ../LLVMgold.so "$pkgdir/opt/$_pkgname/lib/bfd-plugins/LLVMgold.so"
+  install -d "$pkgdir/usr/lib/bfd-plugins"
+  ln -s ../LLVMgold.so "$pkgdir/usr/lib/bfd-plugins/LLVMgold.so"
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-#package_llvm-ocaml38() {
-#  pkgdesc="OCaml bindings for LLVM"
-#  depends=("llvm38=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
-#
-#  cd "$srcdir/llvm-$pkgver.src"
-#
-#  install -d "$pkgdir"/{usr/lib,usr/share/doc}
-#  cp -a "$srcdir/ocaml.lib" "$pkgdir/usr/lib/ocaml"
-#  cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$pkgname"
-#
-#  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-#}
+package_llvm-ocaml38() {
+  _pkgname=llvm-ocaml
+  pkgdesc="OCaml bindings for LLVM"
+  depends=("llvm38=$pkgver-$pkgrel" "ocaml=$_ocaml_ver" 'ocaml-ctypes')
+  provides=("llvm-ocaml=$pkgver-$pkgrel")
+  conflicts=('llvm-ocaml')
+  replaces=('llvm-ocaml')
+
+  cd "$srcdir/llvm-$pkgver.src"
+
+  install -d "$pkgdir"/{usr/lib,usr/share/doc}
+  cp -a "$srcdir/ocaml.lib" "$pkgdir/usr/lib/ocaml"
+  cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$_pkgname"
+
+  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
 
 package_lldb38() {
   pkgdesc="Next generation, high-performance debugger"
   url="http://lldb.llvm.org/"
   depends=('libedit' 'libxml2' 'python2' 'python2-six')
+  provides=("lldb=$pkgver-$pkgrel")
+  conflicts=('lldb')
+  replaces=('lldb')
 
   cd "$srcdir/llvm-$pkgver.src"
 
   make -C build/tools/lldb DESTDIR="$pkgdir" install
 
   # Remove bundled six library
-  rm -f "$pkgdir/opt/$_pkgname/lib/python2.7/site-packages/six.py"
+  rm "$pkgdir/usr/lib/python2.7/site-packages/six.py"
 
   # Compile Python scripts
-  python2 -m compileall "$pkgdir/opt/$_pkgname/lib/python2.7/site-packages/lldb"
-  python2 -O -m compileall "$pkgdir/opt/$_pkgname/lib/python2.7/site-packages/lldb"
+  python2 -m compileall "$pkgdir/usr/lib/python2.7/site-packages/lldb"
+  python2 -O -m compileall "$pkgdir/usr/lib/python2.7/site-packages/lldb"
 
   install -Dm644 tools/lldb/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_clang38() {
+  _pkgname=clang
   pkgdesc="C language family frontend for LLVM"
   url="http://clang.llvm.org/"
   depends=("llvm-libs38=$pkgver-$pkgrel" 'gcc' 'libxml2')
   optdepends=('openmp: OpenMP support in clang with -fopenmp'
               'python2: for scan-view and git-clang-format')
-  provides=("clang-analyzer38=$pkgver")
-  conflicts=('clang-analyzer38')
-  replaces=('clang-analyzer38')
+  provides=("clang=$pkgver-$pkgrel" "clang-analyzer=$pkgver")
+  conflicts=('clang' 'clang-analyzer')
+  replaces=('clang' 'clang-analyzer')
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -203,40 +216,38 @@ package_clang38() {
   make -C build/projects/compiler-rt DESTDIR="$pkgdir" install
 
   # Remove documentation sources
-  rm -rf "$pkgdir"/opt/$_pkgname/share/doc/$pkgname/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"/usr/share/doc/$_pkgname/html/{_sources,.buildinfo}
 
   # Move analyzer scripts out of /usr/libexec
-  mv "$pkgdir"/opt/$_pkgname/libexec/{ccc,c++}-analyzer "$pkgdir/opt/$_pkgname/lib/clang/"
-  rmdir "$pkgdir/opt/$_pkgname/libexec"
-  sed -i 's|libexec|lib/clang|' "$pkgdir/opt/$_pkgname/bin/scan-build"
+  mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir/usr/lib/clang/"
+  rmdir "$pkgdir/usr/libexec"
+  sed -i 's|libexec|lib/clang|' "$pkgdir/usr/bin/scan-build"
 
   # Install Python bindings
-  install -d "$pkgdir/opt/$_pkgname/lib/python2.7/site-packages"
-  cp -a tools/clang/bindings/python/clang "$pkgdir/opt/$_pkgname/lib/python2.7/site-packages/"
+  install -d "$pkgdir/usr/lib/python2.7/site-packages"
+  cp -a tools/clang/bindings/python/clang "$pkgdir/usr/lib/python2.7/site-packages/"
 
   # Use Python 2
   sed -i 's|/usr/bin/env python|&2|' \
-    "$pkgdir/opt/$_pkgname/bin/scan-view" \
-    "$pkgdir/opt/$_pkgname/bin/git-clang-format" \
-    "$pkgdir/opt/$_pkgname/share/clang/clang-format-diff.py"
+    "$pkgdir/usr/bin/scan-view" \
+    "$pkgdir/usr/bin/git-clang-format" \
+    "$pkgdir/usr/share/$_pkgname/clang-format-diff.py"
 
   # Compile Python scripts
   python2 -m compileall "$pkgdir"
   python2 -O -m compileall "$pkgdir"
 
   install -Dm644 tools/clang/LICENSE.TXT \
-    "$pkgdir/opt/$_pkgname/share/licenses/$pkgname/LICENSE"
-
-  mkdir -p $pkgdir/usr/bin
-  cd $pkgdir/usr/bin
-  ln -s /opt/clang38/bin/clang clang-3.8
-  ln -s /opt/clang38/bin/clang-format clang-format-3.8
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_clang-tools-extra38() {
   pkgdesc="Extra tools built using clang's tooling APIs"
   url="http://clang.llvm.org/"
   depends=("clang38=$pkgver-$pkgrel")
+  provides=("clang-tools-extra=$pkgver-$pkgrel")
+  conflicts=('clang-tools-extra')
+  replaces=('clang-tools-extra')
 
   cd "$srcdir/llvm-$pkgver.src"
 
@@ -246,10 +257,10 @@ package_clang-tools-extra38() {
   sed -i \
     -e 's|env python$|&2|' \
     -e 's|/usr/bin/python$|&2|' \
-    "$pkgdir"/opt/$_pkgname/share/clang/{clang-tidy-diff,run-clang-tidy}.py
+    "$pkgdir"/usr/share/clang/{clang-tidy-diff,run-clang-tidy}.py
 
   install -Dm644 tools/clang/tools/extra/LICENSE.TXT \
-    "$pkgdir/opt/$_pkgname/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
