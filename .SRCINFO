@@ -9,6 +9,7 @@ pkgbase = hdf-eos5
 	depends = szip
 	depends = hdf5-cpp-fortran
 	depends = gdal
+	depends = hdf-eos-common
 	options = libtool
 	options = staticlibs
 	source = ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.1.15.tar.Z
