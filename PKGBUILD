@@ -35,6 +35,9 @@ package() {
   find . -type d -exec chmod 755 {} \; 
   find . -type f -exec chmod 644 {} \;
 
+  # Fix internal update check by changing the javascript version to 'testing'
+  sed -i -e "s/var VERSION = \"${pkgver}\"/var VERSION = \"testing\"/g" "${srcdir}/js/globals.js"
+
   install -dm755 "${pkgdir}/opt/${pkgname}/"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share"
