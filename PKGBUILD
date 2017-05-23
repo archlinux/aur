@@ -2,7 +2,7 @@
 
 _target=msp430-elf
 pkgname=${_target}-newlib
-pkgver=2.5.0.20170421
+pkgver=2.5.0.20170519
 pkgrel=1
 pkgdesc="C library for bare metal systems for the ${_target} target."
 arch=(any)
@@ -10,9 +10,9 @@ url="https://sourceware.org/newlib/"
 license=('BSD')
 groups=(devel)
 depends=("${_target}-gcc-stage1" "${_target}-binutils")
-options=('!makeflags' '!strip' 'staticlibs')
+options=('!makeflags' '!strip' 'staticlibs' '!libtool')
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
-sha256sums=('714599a373c4e60da628533cc0cb281446d2e3baf75fabceb14c5919c5809618')
+sha256sums=('7aa7e266436e970c9427bacd26524d06ec5c30e366050a685e85c05b5f1e5625')
 
 prepare() {
   cd "${srcdir}/newlib-${pkgver}"
