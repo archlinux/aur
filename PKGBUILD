@@ -34,6 +34,8 @@ pkgver() {
 }
 
 prepare() {
+	mkdir -p "${srcdir}/${pkgname}"
+	
   cd "${srcdir}/${pkgname}"
 
 	echo
