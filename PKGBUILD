@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20170327.07ee7fb2c3
+pkgver=v0.25.0.87.g25a4d10c8e
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -77,7 +77,7 @@ fi
 
 pkgver() {
   cd mpv
-  echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
