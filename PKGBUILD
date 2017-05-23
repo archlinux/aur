@@ -1,9 +1,9 @@
 # Maintainer: Bryce Chidester <bryce@cobryce.com>
 pkgname=purple-matrix-git
-pkgver=r91.119dd68
-pkgrel=2
+pkgver=r113.aa005c1
+pkgrel=1
 pkgdesc="Libpurple protocol plugin for matrix."
-arch=('x86' 'x86_64')
+arch=('any')
 url="https://github.com/matrix-org/purple-matrix"
 license=('GPL2')
 depends=('libpurple' 'http-parser' 'glib2' 'json-glib')
