@@ -1,16 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-session-bzr
-pkgver=r77
+pkgver=r82
 pkgrel=1
 pkgdesc='The Pantheon Session Handler'
 arch=('any')
 url='https://code.launchpad.net/~elementary-os/elementaryos/pantheon-xsession-settings'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('cerbere-bzr' 'gala-bzr' 'gconf' 'gnome-keyring' 'gnome-session'
-         'gnome-settings-daemon' 'gnome-user-share' 'slingshot-launcher'
-         'wingpanel' 'xdg-user-dirs-gtk')
+depends=('cerbere' 'gala-git' 'gconf' 'gnome-keyring' 'gnome-session'
+         'gnome-settings-daemon' 'gnome-user-share'
+         'pantheon-applications-menu' 'wingpanel' 'xdg-user-dirs-gtk')
 makedepends=('bzr')
 optdepends=('pantheon-default-settings-bzr')
 source=('pantheon-session::bzr+lp:~elementary-os/elementaryos/pantheon-xsession-settings')
