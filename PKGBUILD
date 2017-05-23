@@ -21,6 +21,3 @@ package() {
   install -Dm0644 usr/share/doc/scaleft-client-tools/LICENSE.txt \
                   ${pkgdir}/share/doc/scaleft-client-tools/LICENSE.txt
 }
-
-# deb: curl -s https://pkg.scaleft.com/deb/pool/linux/main/s/scaleft-client-tools/ | grep -Po 'scale[\w-\d.]*' | sort -V | tail -1
-# rpm: curl -s https://pkg.scaleft.com/rpm/ | grep -Po 'scaleft-client-tools[\w-\d.]*' | sort -V | tail -1
