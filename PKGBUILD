@@ -27,35 +27,38 @@ makedepends=('binutils'
 						 'coreutils'
 					   'git')
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
-	mkdir -p "${srcdir}/${pkgname}"
-	
-  cd "${srcdir}/${pkgname}"
+  if [ -d "${srcdir}/${pkgname}" ]; then
+    rm -rf "${srcdir}/${pkgname}"
+  fi
 
-	echo
+  echo
 	echo "   ▄▄▄▄▄    ▄  █ ▄█ █ ▄▄"
 	echo "  █     ▀▄ █   █ ██ █   █"
 	echo "▄  ▀▀▀▀▄   ██▀▀█ ██ █▀▀▀"
 	echo " ▀▄▄▄▄▀    █   █ ▐█ █"
 	echo "              █   ▐  █"
-	echo "             ▀        ▀    $(git describe --tags | sed 's/v//g')"
+	echo "             ▀        ▀"
 	echo
+
+  mkdir -p "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
+}
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
 
-  mkdir -p "${pkgdir}/usr/bin"
-
-	install -Dm755 ship.sh "${pkgdir}/usr/bin/ship"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/ship/" README.md CHANGELOG.md
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/ship/LICENSE.md"
+  install -d "${pkgdir}/usr/bin"
+  install -Dm755 ship.sh "${pkgdir}/usr/bin/ship"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
+  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/$pkgname/CHANGELOG.md"
 }
 
 # vim: ts=2 sw=2 et:
