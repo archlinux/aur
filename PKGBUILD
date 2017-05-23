@@ -1,7 +1,7 @@
 # Maintainer: Jason Pollitt  <snostormjp+aur @ gmail.com>
 pkgname="canon-ts9020"
 pkgver="2.5.40"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Canon TS9020 MFC cups and scanner Drivers"
 url="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/inkjet-multifunction/ts-series-inkjet/ts9020-white?tab=drivers#Z7_MQH8HIC0L88RB0AMD0F1Q42K25"
 license=('GPL2')
@@ -34,5 +34,6 @@ package() {
 	cp -rf */ ${pkgdir}/
         cd "$pkgdir"/usr
         # mv manufacture lib64 to lib so it works with arch filesystem
-        mv lib64 lib
-}
+        cp -rf lib64/* lib/.
+        rm -rf lib64
+} 

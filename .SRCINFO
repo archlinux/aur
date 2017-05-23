@@ -1,7 +1,7 @@
 pkgbase = canon-ts9020
 	pkgdesc = Canon TS9020 MFC cups and scanner Drivers
 	pkgver = 2.5.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.usa.canon.com/internet/portal/us/home/support/details/printers/inkjet-multifunction/ts-series-inkjet/ts9020-white?tab=drivers#Z7_MQH8HIC0L88RB0AMD0F1Q42K25
 	arch = x86_64
 	license = GPL2
