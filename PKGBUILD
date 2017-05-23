@@ -1,3 +1,6 @@
+# Maintainer: Hakim Zulkufli (acrox999)
+# Contributor: Maarten de Boer (ventieldopje)
+
 pkgname="gnome-shell-theme-ciliora-tertia-git"
 _gitname="ciliora-tertia-shell"
 pkgver=r26.f3d1a84
@@ -23,5 +26,5 @@ package() {
 	install -d -m 755 ${pkgdir}/usr/share/themes
 	cp -r "Ciliora-Tertia" ${pkgdir}/usr/share/themes
 	install -D -m 644 "README.md" "$pkgdir/usr/share/themes/Ciliora-Tertia/README.md"
-	install -D -m 644 "LICENSE.md" "$pkgdir/usr/share/themes/Ciliora-Tertia/LICENSE.md"
+	install -D -m 644 "LICENSE" "$pkgdir/usr/share/themes/Ciliora-Tertia/LICENSE.md"
 }
