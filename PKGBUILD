@@ -2,7 +2,7 @@
 
 pkgname=zcash
 pkgver=1.0.8_1
-pkgrel=2
+pkgrel=3
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zcash/zcash/archive/v1.
         "boost-no-mt-suffix.patch"
         "use-system-libraries.patch"
         "use-system-rust.patch")
-sha256sums=('dce487b2f31e25952c7663c8ebc4379fd7ecfc5c88ebadc7137f6365360e8270'
+sha256sums=('d0210c93b7baddf55274ba7a3372dbe195ca5d2429e54d36289b97354bb83065'
             'c318e12a9d48a50cf254d2a58c24dd0cbbf1dc969e3afeecadd0756425ea5b07'
             'ef8ab26635bb2608f03ddf991da3581060670161938171fa2e413758fa4bad3f'
             '065cd418ca7be72018c7fdada3012872bd079a254a95560312514594381b8028')
