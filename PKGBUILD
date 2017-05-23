@@ -4,8 +4,8 @@ pkgname=ship
 pkgver=2.6
 pkgrel=1
 pkgdesc='Simple, handy network addressing multitool with plenty of utilities'
-source=('git://github.com/xtonousou/ship.git#branch=master')
-url='https://github.com/xtonousou/shIP'
+source=('git+https://github.com/xtonousou/shIP.git')
+url='https://github.com/xtonousou/shIP.git'
 provides=('ship')
 conflicts=('ship')
 replaces=('ship')
