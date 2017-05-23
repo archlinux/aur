@@ -1,17 +1,18 @@
 pkgbase = zig-git
-	pkgdesc = System programming language intended to replace C
-	pkgver = 0.0.0r747.2ed949a
+	pkgdesc = a programming language prioritizing robustness, optimality, and clarity
+	pkgver = 0.0.0r1377.1c8fe44
 	pkgrel = 1
-	url = http://ziglang.org/
+	url = http://ziglang.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = llvm
 	depends = clang
+	depends = lld
 	provides = zig
 	conflicts = zig
-	source = zig::git+git://github.com/andrewrk/zig.git#branch=master
+	source = git://github.com/andrewrk/zig.git#branch=master
 	md5sums = SKIP
 
 pkgname = zig-git
