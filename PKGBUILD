@@ -1,6 +1,6 @@
 # Maintainer: Daniel Milde <daniel@milde.cz> 
 pkgname=python-err
-pkgver=4.3.7
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="A plugin based chatbot designed to be easily deployable, extensible and maintainable."
 arch=('any')
@@ -15,7 +15,9 @@ depends=('python'
          'python-pip'
          'python-jinja'
          'python-yapsy'
-         'python-webtest')
+         'python-webtest'
+         'python-pyopenssl'
+         'python-requests')
 makedepends=('python-setuptools')
 optdepends=('python-sleekxmpp: XMPP backend'
             'python-pyasn1: XMPP backend'
@@ -27,7 +29,7 @@ options=(!emptydirs)
 install=
 #source=("https://pypi.python.org/packages/f3/d1/87eaa3de23234de49a35ceed8461694429c7d2499c68d84de1de3f5e163a/errbot-4.3.3.tar.gz#md5=82914b7f18d7fa2360d8397696601438")
 source=("https://pypi.io/packages/source/e/errbot/errbot-$pkgver.tar.gz")
-sha256sums=('0c9258404eb64c808f7049d951364f7761646b94fe80af994b2d034a0499e16e')
+sha256sums=('7e5b1f634a3e19bc49a95c0feb5b00650d9e76d5b39e0acfed9d11821ce37a9a')
 
 package() {
   cd "$srcdir/errbot-$pkgver"
