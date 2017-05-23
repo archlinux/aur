@@ -1,7 +1,7 @@
 # Maintainer: Tinu Weber <martin.weber@epfl.ch>
 
 pkgname=epfl-menu
-pkgver=r15.9ac9496
+pkgver=r16.2406823
 pkgrel=1
 pkgdesc='Pretty-print the lunch and supper menus at the EPFL'
 arch=('any')
