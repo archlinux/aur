@@ -1,0 +1,17 @@
+pkgbase = tisp-git
+	pkgdesc = Time is Space: Functional, async-by-default programming language built with Go
+	pkgver = r711.5d0d87d
+	pkgrel = 1
+	url = https://github.com/raviqqe/tisp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = tisp
+	conflicts = tisp
+	source = tisp::git+https://github.com/raviqqe/tisp.git
+	sha256sums = SKIP
+
+pkgname = tisp-git
+
