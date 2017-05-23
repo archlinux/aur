@@ -1,10 +1,9 @@
 pkgbase = purple-matrix-git
 	pkgdesc = Libpurple protocol plugin for matrix.
-	pkgver = r91.119dd68
-	pkgrel = 2
+	pkgver = r113.aa005c1
+	pkgrel = 1
 	url = https://github.com/matrix-org/purple-matrix
-	arch = x86
-	arch = x86_64
+	arch = any
 	license = GPL2
 	makedepends = git
 	depends = libpurple
