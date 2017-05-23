@@ -39,7 +39,7 @@ prepare() {
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  printf "%s" "$(git describe --tags | sed 's/v//g')" # expects something like v2.6 => 2.6
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
