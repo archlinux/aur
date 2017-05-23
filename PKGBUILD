@@ -3,7 +3,7 @@
 pkgname=thruk
 _pkgver=2.14-2
 pkgver=${_pkgver/-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
 url="http://thruk.org"
@@ -17,7 +17,7 @@ replaces=('naemon-thruk')
 backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
         'etc/thruk/log4perl.conf' 'etc/thruk/menu_local.conf'
         'etc/thruk/naglint.conf' 'etc/httpd/conf/extra/thruk.conf'
-        'etc/thruk/thruk_local.conf')
+        'etc/thruk/thruk_local.conf' 'etc/logrotate.d/thruk-base')
 source=(http://download.thruk.org/pkg/v$_pkgver/src/$pkgname-$_pkgver.tar.gz)
 md5sums=('d15292905a702e9819467e94c22b505a')
 
@@ -55,4 +55,6 @@ package() {
   # Exclude /var/lib/thruk as logrotate doesn't like the permissions there
   # and there are no logs
   sed -i 's_^/.* _/var/log/thruk/*.log _' "$pkgdir"/etc/logrotate.d/thruk-base
+  # Set log owner to http rather than build user
+  sed -i 's/644.*/644 http http/' "$pkgdir"/etc/logrotate.d/thruk-base
 }
