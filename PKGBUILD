@@ -1,6 +1,6 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=bossa
-pkgver=1.7.0
+pkgver=1.8
 pkgrel=1
 pkgdesc="Flash programming utility for Atmel's SAM family of flash-based ARM microcontrollers"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/shumatech/BOSSA"
 license=('BSD')
 depends=('readline' 'wxgtk')
 source=("https://github.com/shumatech/BOSSA/archive/$pkgver.tar.gz")
-sha256sums=('758ddaa70163561de9877d2f0f61dd64b51616273ac8709278d7e67ab90a6af3')
+sha256sums=('ddfdb6a76cda61ccc372773ec63bd6b4e8b3a39824984c711346a52f27fbffea')
 
 build() {
   cd "$srcdir/BOSSA-$pkgver"
