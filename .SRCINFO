@@ -1,6 +1,6 @@
 pkgbase = qt5-webengine-widevine
 	pkgdesc = A browser plugin designed for the viewing of premium video content
-	pkgver = 1.4.8.962
+	pkgver = 58.0.3029.110
 	pkgrel = 1
 	epoch = 1
 	url = http://www.google.com/chrome
