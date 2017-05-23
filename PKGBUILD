@@ -2,12 +2,12 @@
 
 pkgname=hdf-eos2
 pkgver=2.19
-pkgrel=5
-pkgdesc="The HDF-EOS2 is a software library designed built on HDF4 to support EOS-specific data structures, namely Grid, Point, and Swath."
+pkgrel=6
+pkgdesc="The HDF-EOS v2 is a software library designed built on HDF4 to support EOS-specific data structures, namely Grid, Point, and Swath."
 url="http://www.hdfeos.org/software/library.php"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('szip' 'hdf5_18' 'hdf4-nonetcdf' 'gdal' 'hdf-eos-common')
+depends=('szip' 'hdf5-cpp-fortran' 'hdf4-nonetcdf' 'gdal' 'hdf-eos-common')
 options=('libtool' 'staticlibs')
 source=(ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos/latest_release/HDF-EOS${pkgver}v1.00.tar.Z)
 md5sums=('b8648484fc78a2db7073dd603f3fb251')
