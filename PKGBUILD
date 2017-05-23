@@ -1,8 +1,8 @@
 # Maintainer: Jason Pollitt  <snostormjp+aur @ gmail.com>
-pkgname="cannon-ts9020"
+pkgname="canon-ts9020"
 pkgver="2.5.40"
 pkgrel="1"
-pkgdesc="Cannon TS9020 MFC cups and scanner Drivers"
+pkgdesc="Canon TS9020 MFC cups and scanner Drivers"
 url="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/inkjet-multifunction/ts-series-inkjet/ts9020-white?tab=drivers#Z7_MQH8HIC0L88RB0AMD0F1Q42K25"
 license=('GPL2')
 #cnj
