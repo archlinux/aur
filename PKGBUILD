@@ -1,21 +1,24 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=pencil
-pkgver=2.0.21
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Sketching and GUI prototyping/wireframing tool"
 arch=('any')
 license=('GPL2')
-url="http://github.com/prikhi/pencil"
-install='pencil.install'
-
-source=("https://github.com/prikhi/pencil/releases/download/v$pkgver/Pencil-$pkgver-linux-pkg.tar.gz")
-sha256sums=('788e46b0c08d445da77a3f83bcd40e13e3f30bc5ade3935270ff1d8f3f7b0377')
-depends=('xulrunner')
+url="http://github.com/evolus/pencil"
+source=("https://github.com/evolus/pencil/archive/v$pkgver.tar.gz")
+sha256sums=('afcbd3809e0ff4ca03579d8cc5123e4bedccf759a76e6f8d2187c62e1e97a6dc')
+depends=('nodejs' 'npm')
 optdepends=('pencil-android-lollipop-stencils-git: Android UI'
             'pencil-material-icons-git: Material Design Icons')
 
 package() {
-    cp -dr "$srcdir/evolus-pencil/usr" "$pkgdir"
-    # fix permissions of directories
-    chmod -R a+rX "$pkgdir"/*
+    cd "$srcdir/$pkgname-$pkgver"
+
+    npm install
+    node_modules/.bin/build --linux dir
+
+    install -d "$pkgdir/usr/share/$pkgname/" "$pkgdir/usr/bin"
+    cp -r dist/linux-unpacked/* "$pkgdir/usr/share/$pkgname/"
+    ln -s "$pkgdir/usr/share/$pkgname/pencil" "$pkgdir/usr/bin"
 }
