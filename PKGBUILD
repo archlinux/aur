@@ -7,7 +7,7 @@
 
 _basename=wine
 pkgname=wine-ivb
-pkgver=2.1
+pkgver=2.6
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -18,17 +18,17 @@ source=(${pkgname}-${pkgver}.tar.xz::https://dl.winehq.org/wine/source/2.x/$_bas
         0001-winhlp32-Workaround-a-bug-in-Flex.patch
         patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
-sha1sums=('6b84f820c36a2d9313b840bd06f8c519a013a68e'
+sha1sums=('76ce349e2809b30fae989616d5d9a7f155e1cc79'
           'SKIP'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '6ab256347d41e63694528db9e093c0abe8ca4bc1'
-          '561603ff0044a2d9e13b531562e7a31f316b2c86'
+          '792e97592b3a391b985c4990a966ee826bef53ab'
           '3f94ad1c60213eac5d7e68c959423d0f18ed0b5f')
-sha512sums=('03d678ee6e89c2804813f2827255fcf59e96ca9a45b7d8ac441cfc84f835e5e5689c70a79a41a04c631e1add7807fa4a5758acef3bd7aadfb2e92e68958c6ef6'
+sha512sums=('2aa55413ac090e011725566d004e42ee46323cd4c6961b9faa63e3de422ba60bb657bf224a4d7e8aa712a8e26e11977d07acb7c088ffeef8c37310e8cc698970'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'a6c099fced12271f6ba14f3f93b322f50bc2ecf5cb0b8b7ed0cc1884269569fdd084fe8531dff8db71484f80e62cbd5b69a1a2d04100e9d7485de5b53b9a4bb5'
-            '40f2e87d26133ad3b5baa98fc9394314e28b28ece09822bd337e56290c392860916b4fc3f36b102b7bc038cfe149419d5d4bc8a1944f98349566bc96c58d77ed'
+            '3caf6fb7ad80f2b6cf6eba16570ac68a07cd8e5bed4af59c21e7509301014a76d27d714fd148f35cb04b085236469f08d7df4ab7e9d82173879c91dab2cbfb2b'
             '54e7927ea07137f2383734f65147ae18366a65a17c1970af06b13d5597f501ade3b2b435311bfae1759070895473f09382d75676e8b774c52ce540bc06cf5461')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
