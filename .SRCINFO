@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-faster-melee
 	pkgdesc = The FasterMelee NetPlay build of the Dolphin Emulator
-	pkgver = 4.4
-	pkgrel = 4
+	pkgver = 5.0.3
+	pkgrel = 1
 	url = http://fastermelee.net
 	install = faster-melee.install
 	arch = x86_64
@@ -22,15 +22,13 @@ pkgbase = dolphin-emu-faster-melee
 	optdepends = pulseaudio: PulseAudio backend
 	provides = dolphin-emu
 	options = !emptydirs
-	source = dolphin-emu-faster-melee::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9
-	source = 0001-Fix-RasterFont.cpp-compile-error.patch
+	source = dolphin-emu-faster-melee::git+https://github.com/Tinob/Ishiiruka.git#commit=d462ca38724db65d7f92f3edbd16b6657291e420
 	source = GALE01r2.ini
 	source = GALE01.ini
 	source = MNCE02.ini
 	source = NMNB01.ini
 	source = PALE02.ini
 	sha256sums = SKIP
-	sha256sums = 7a512b04f1d067e7ba59f4b0c7b3720018eccfd6bb63cd5c47ac84ee82b3ccfa
 	sha256sums = eae12be9d008453d09bf1379315a2299eca9c76cc093727f8f41926193981c50
 	sha256sums = 62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f
 	sha256sums = 4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c

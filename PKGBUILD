@@ -8,9 +8,9 @@
 
 pkgname=dolphin-emu-faster-melee
 # shellcheck disable=SC2034
-pkgver=4.4
+pkgver=5.0.3
 # shellcheck disable=SC2034
-pkgrel=4
+pkgrel=1
 # shellcheck disable=SC2034
 pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
 # shellcheck disable=SC2034
@@ -32,8 +32,7 @@ optdepends=('pulseaudio: PulseAudio backend')
 options=('!emptydirs')
 # The commit for FasterMelee 4.3 (unchanged for FasterMelee 4.4)
 # shellcheck disable=SC2034
-source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9"
-        "0001-Fix-RasterFont.cpp-compile-error.patch"
+source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=d462ca38724db65d7f92f3edbd16b6657291e420"
         "GALE01r2.ini"
         "GALE01.ini"
         "MNCE02.ini"
@@ -42,7 +41,6 @@ source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f62
        )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
-            '7a512b04f1d067e7ba59f4b0c7b3720018eccfd6bb63cd5c47ac84ee82b3ccfa'
             'eae12be9d008453d09bf1379315a2299eca9c76cc093727f8f41926193981c50'
             '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f'
             '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c'
@@ -57,11 +55,6 @@ prepare() {
   # shellcheck disable=SC2154
   cd "${srcdir}/${pkgname}" || {
         msg "Failed to cd into ${srcdir}/${pkgname}"
-        return 1
-   }
-
-   patch -p1 < ../0001-Fix-RasterFont.cpp-compile-error.patch || {
-        msg "Failed to apply patch file"
         return 1
    }
 }
