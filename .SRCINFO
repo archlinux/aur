@@ -1,0 +1,24 @@
+pkgbase = vcash-electron
+	pkgdesc = Vcash GUI bundled with the Vcash wallet.
+	pkgver = 0.31.3
+	pkgrel = 1
+	url = https://github.com/whphhg/vcash-electron
+	arch = x86_64
+	license = GPL3
+	license = AGPL3
+	depends = nodejs
+	depends = npm
+	provides = vcash=0.63.0
+	conflicts = vcash
+	backup = ~/.Vcash/data/backups/
+	backup = ~/.Vcash/data/blockchain/peer/
+	backup = ~/.Vcash/data/config.dat
+	backup = ~/.Vcash/data/wallet.dat
+	backup = ~/.Vcash/data/peers.dat
+	source = https://github.com/whphhg/vcash-electron/releases/download/v0.31.3/Vcash-Electron-GUI-0.31.3-linux64.zip
+	source = https://vcash.info/images/icon.png
+	sha256sums = d7b90bd349fe6be1e08d34d28b170c2c60a6e468c2c36ecfc44da7d3f6705453
+	sha256sums = 01193e677c3440c53b638d0ff92b6b5d208fe56a1024f2f1e850ea4941ffc1e4
+
+pkgname = vcash-electron
+
