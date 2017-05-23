@@ -1,0 +1,15 @@
+pkgbase = cannon-ts9020
+	pkgdesc = Cannon TS9020 MFC cups and scanner Drivers
+	pkgver = 2.5.40
+	pkgrel = 1
+	url = https://www.usa.canon.com/internet/portal/us/home/support/details/printers/inkjet-multifunction/ts-series-inkjet/ts9020-white?tab=drivers#Z7_MQH8HIC0L88RB0AMD0F1Q42K25
+	arch = x86_64
+	license = GPL2
+	depends = cups
+	source = cnijfilter2-5.40-1-rpm.tar.gz::http://gdlp01.c-wss.com/gds/8/0100008398/01/cnijfilter2-5.40-1-rpm.tar.gz
+	source = scangearmp2-3.40-1-rpm.tar.gz::http://gdlp01.c-wss.com/gds/1/0100008401/01/scangearmp2-3.40-1-rpm.tar.gz
+	sha256sums = 559acc98851ecf86000724ee268b473818b395c6b87524dc0d82ead6263a6ab5
+	sha256sums = da7fddf03d95b487b55795812c9a27a00aa027a8f3bbcc76ead54ce07108976b
+
+pkgname = cannon-ts9020
+
