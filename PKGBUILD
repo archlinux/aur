@@ -1,7 +1,7 @@
 # Maintainer: archlinux@carstenfeuls.de
 
 pkgname=kde-services
-pkgver="3.0.0"
+pkgver="3.0.1"
 pkgrel=1
 pkgdesc="kde-service multifunction"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('kdebase-runtime' 'dmidecode' 'festival' 'poppler' 'ffmpeg' 'transcode'
 source=("http://downloads.sourceforge.net/project/kde-services/Source-Code/$pkgname-$pkgver.tar.bz2" 
 	"System-Tools_addtoservicemenu.desktop")
 install=${pkgname}.install
-sha512sums=('7e8f0af503ab5ebb49aed2cc6cdb79fce41a730840a12916aee6ef0f37f6e48b9968e696c5cc13003b75447bf5c8783cfffc6d5f398110b2b393f2dca262a4ce'
+sha512sums=('86c05957c3873d736b1f30477e35190245f167328c97588fa0d70d780a706d08eb09079e5b1232f0819ef77e1703e9bf3adfec00bcc35ac2b1343e8e1774ab68'
             '170b89e91dad38340424911f3a1daad69b4a3bc7aa6813ffd74e53c4b34c2555f68c05334b0d2a7fa17d1f0f778369e7cfe3e0590e18e8e0bf006ec1685a59f2')
 
 package() {
