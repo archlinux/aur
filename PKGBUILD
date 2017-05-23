@@ -3,14 +3,14 @@
 _target=arm-frc-linux-gnueabi
 pkgname=$_target-gdb
 pkgver=7.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger (${_target})"
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
 groups=('frc-2017')
-depends=(xz ncurses expat python2 guile)
-makedepends=(texinfo)
+depends=(ncurses expat xz gdb-common=$pkgver)
+makedepends=(texinfo python guile2.0 xz)
 optdepends=('openocd: for debugging JTAG targets'
             'stlink: for debugging over STLINK')
 options=(!emptydirs)
@@ -22,13 +22,11 @@ build() {
 
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-  ./configure --target=${_target} \
-              --prefix=/usr \
-              --with-pkgversion='GDB for FRC' \
+  ./configure --prefix=/usr \
+              --target=${_target} \
               --disable-nls \
-              --with-libexpat \
-              --datadir=/usr/share/frc \
-              --with-system-gdbinit=/usr/share/frc/gdb/gdbinit \
+              --with-python=/usr/bin/python3 \
+              --with-guile=guile-2.0 \
               --with-sysroot=/usr/${_target} \
               --enable-lto
   make
@@ -39,9 +37,10 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  # Following files conflict with 'gdb' package
-  rm -r "$pkgdir"/usr/share/info
-  # TOTHINK: we remove python module used for debugging. It means arm-*-gdb alone will not be able to debug and 'gdb' package
-  # should be installed. File a bug upstream - ask a separate python module folder for cross tools.
-  rm -r "$pkgdir"/usr/include/gdb
+  # fix conflicts with gdb
+  rm -r $pkgdir/usr/include/gdb
+  rm -r $pkgdir/usr/share/info
+
+  # comes from gdb-common
+  rm -r $pkgdir/usr/share/gdb
 }
