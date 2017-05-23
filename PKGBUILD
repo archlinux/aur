@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-icon-theme-git
-pkgver=r1968.c27c0112
+pkgver=r1980.b9521515
 pkgrel=1
 pkgdesc='Named, vector icons for elementary OS'
 arch=('any')
@@ -13,7 +13,6 @@ makedepends=('git')
 provides=('elementary-icon-theme')
 conflicts=('elementary-icon-theme')
 options=('!emptydirs')
-install='elementary-icon-theme.install'
 source=('elementary-icon-theme::git+https://github.com/elementary/icons.git')
 sha256sums=('SKIP')
 
