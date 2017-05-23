@@ -1,0 +1,14 @@
+ILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp~ SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp
+--- SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp~    2006-06-19 00:42:12.000000000 +0200
++++ SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp 2011-12-06 14:38:31.738251526 +0100
+@@ -64,10 +64,7 @@ void PNG_error_function(png_structp png_
+                         png_const_charp error)
+ {
+     //  printf("PNG Error: %s\n", error);
+-    // copied from libpng's pngerror.cpp
+-    jmp_buf buf;
+-    memcpy(buf, png_ptr->jmpbuf, sizeof(jmp_buf));
+-    longjmp(buf, 1);
++    png_longjmp(png_ptr, 1);
+ }
+
