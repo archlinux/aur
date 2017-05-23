@@ -1,0 +1,16 @@
+pkgbase = avr-libc-tinyos
+	pkgdesc = The C runtime library for the AVR family of microcontrollers, with TinyOS patches
+	pkgver = 1.6.7
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/avr-libc/
+	arch = any
+	license = custom
+	depends = gcc-avr-tinyos
+	provides = avr-libc
+	options = staticlibs
+	options = !strip
+	source = http://download.savannah.gnu.org/releases/avr-libc/old-releases/avr-libc-1.6.7.tar.bz2
+	md5sums = 1ccf8078e583d527392f079082f816b0
+
+pkgname = avr-libc-tinyos
+
