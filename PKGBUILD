@@ -4,13 +4,13 @@
 pkgbase=python-sounddevice
 pkgname=(python-sounddevice python2-sounddevice)
 pkgver=0.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Play and Record Sound with Python'
 url='http://python-sounddevice.rtfd.io/'
 license=('MIT')
 arch=('any')
 depends=('portaudio' 'python' 'python-cffi')
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools')
 optdepends=('python-numpy: to play back and record NumPy arrays')
 source=("https://files.pythonhosted.org/packages/source/s/sounddevice/sounddevice-$pkgver.tar.gz")
 md5sums=('4ddf1fa878de3131c52331c56dab8d4f')
