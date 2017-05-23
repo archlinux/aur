@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.5.7
-pkgrel=3
+pkgver=1.5.8
+pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
@@ -79,19 +79,11 @@ install="rspamd.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/archive/${pkgver}.tar.gz"
 		"${pkgname}.tmpfile"
 		"${pkgname}.sysuser"
-		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('73d18b129a072e35c74c9a440abdd0985fa15696d308a5e23736ec007432fd70'
+sha256sums=('1c414396e02df52b3a31914cad51a4ca8f9947af619db7221b98c9aa04907668'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
-            '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
-            '0a85965f7d168d84d62e8cca74c4b5e54ef51c1096550057b1f40a32d3568b29')
-
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	patch -Np1 <../fixes-${pkgver}.diff
-}
+            '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
