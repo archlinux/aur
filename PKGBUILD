@@ -14,6 +14,8 @@ sha256sums=('b628ba1e5488f6d5c69b0e7cf3cd370f9bad8fce24385922d80791f91f04282e')
 
 prepare() {
 	rpmextract.sh ${pkgname}-${pkgver}-${pkgrel}.noarch.rpm
+  # patch code to force it to use python2.7
+  sed -i 's/python$/python2.7/' usr/bin/scaleft-url-handler
 }
 
 package() {
