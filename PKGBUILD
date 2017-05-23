@@ -37,13 +37,13 @@ prepare() {
 }
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
 
 	echo
 	echo "   ▄▄▄▄▄    ▄  █ ▄█ █ ▄▄"
@@ -51,23 +51,18 @@ prepare() {
 	echo "▄  ▀▀▀▀▄   ██▀▀█ ██ █▀▀▀"
 	echo " ▀▄▄▄▄▀    █   █ ▐█ █"
 	echo "              █   ▐  █"
-	echo "             ▀        ▀"
+	echo "             ▀        ▀    $(git describe --tags | sed 's/v//g')"
 	echo
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
 
   mkdir -p "$pkgdir/usr/bin"
 
+	install -Dm755 ship.sh "${pkgdir}/usr/bin/ship"
   install -Dm644 -t "$pkgdir/usr/share/doc/ship/" README.md CHANGELOG.md
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/ship/LICENSE.md"
-
-  rm -rf *.md .git* imgs
-
-	cp -a --no-preserve=ownership ship.sh "$pkgdir/usr/bin/ship"
-
-  chmod a+x "$pkgdir/usr/bin/ship"
 }
 
 # vim: ts=2 sw=2 et:
