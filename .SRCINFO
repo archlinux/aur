@@ -1,0 +1,11 @@
+pkgbase = coredns
+	pkgdesc = CoreDNS is a DNS server that chains middleware
+	pkgver = 007
+	pkgrel = 1
+	url = https://github.com/coredns/coredns
+	arch = x86_64
+	source = https://github.com/coredns/coredns/releases/download/v007/coredns_007_linux_x86_64.tgz
+	md5sums = f687dab79c8c4451fbb36873895a50da
+
+pkgname = coredns
+
