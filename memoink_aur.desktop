@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MemoInk
+Name[zh_CN]=忆墨笔记
+Comment=忆墨笔记
+Exec=memoink
+Icon=notepad
+Terminal=false
+Type=Application
+Categories=TextEditor;Utility;

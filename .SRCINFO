@@ -1,0 +1,16 @@
+pkgbase = memoink
+	pkgdesc = A OneNote-like application with a nice GUI.
+	pkgver = 13.578.0
+	pkgrel = 1
+	url = https://doui.cc/product/memoink
+	install = memoink.install
+	arch = x86_64
+	license = unknown
+	depends = gconf>=3.2.0
+	source = http://dl.cdn.doui.cc/apps/memoink-13.578-Linux.deb
+	source = memoink_aur.desktop
+	md5sums = 93a6ffe860c6e2634eab803737dd4e72
+	md5sums = 12b87b6002dae47227f2d60ecb772e18
+
+pkgname = memoink
+

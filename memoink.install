@@ -1,0 +1,15 @@
+post_install() {
+	cd /opt/memoink/
+	ar -x memoink-13.578-Linux.deb
+	tar -xvf data.tar.xz -C /
+	rm data.tar.xz debian-binary control.tar.gz
+	ln -s /opt/memoink/memoink /usr/local/bin/memoink
+	desktop-file-install /opt/memoink/memoink_aur.desktop
+}
+
+post_remove() {
+	rm -f /usr/local/bin/memoink
+	rm -f /usr/share/applications/memoink_aur.desktop
+	rm -f /usr/share/icons/hicolor/scalable/apps/memoink.svg
+	rm -rf /opt/memoink
+}
