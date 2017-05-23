@@ -6,14 +6,13 @@ _buildver=171.4424.56
 _veryear=2017
 _verrelease=1.3
 pkgver=${_veryear}.${_verrelease}
-pkgrel=1
+pkgrel=2
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
 arch=('any')
 options=(!strip)
 url="http://www.jetbrains.com/idea/"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst')
-makedepends=('wget')
 source=("https://download.jetbrains.com/idea/ideaIC-${pkgver}.tar.gz")
 
 package() {
