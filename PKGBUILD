@@ -2,22 +2,23 @@
 # Contributor: Michal Bozon <michal.bozon__at__gmail.com>
 
 pkgname=inchi
-pkgver=1.04
-pkgrel=2
+pkgver=1.05
+_pkgver=105
+pkgrel=1
 pkgdesc="IUPAC InChI utility"
 arch=('i686' 'x86_64')
 url="http://www.iupac.org/inchi/"
 license=('LGPL')
 makedepends=('gcc' 'make')
-source=('http://www.inchi-trust.org/wp/wp-content/uploads/2014/06/INCHI-1-'{API,DOC}'.zip')
+source=("http://www.inchi-trust.org/download/${_pkgver}/INCHI-1-"{SRC,DOC}".zip")
 
 build() {
-  cd "$srcdir/INCHI-1-API/INCHI/gcc/inchi-1"
+  cd "$srcdir/INCHI-1-SRC/INCHI_EXE/inchi-1/gcc/"
   make
 }
 
 package() {
-  install -Dm755 "$srcdir/INCHI-1-API/INCHI/gcc/inchi-1/inchi-1" "$pkgdir/usr/bin/inchi-1"
+  install -Dm755 "$srcdir/INCHI-1-SRC/INCHI_EXE/bin/Linux/inchi-1" "$pkgdir/usr/bin/inchi-1"
 
   cd "$srcdir/INCHI-1-DOC"
   for pdf in *.pdf; do
@@ -25,5 +26,5 @@ package() {
   done
 }
 
-md5sums=('8447bf108af12fe66eecba41bbc89918'
-         '4b438cc7da7472577307a2063414c973')
+sha512sums=('10c496ef3a1b91c74fd7e450a5af5b84083d93648ad1517a175ad16af324fa5e6ce61e90b1421c5c2f3f8724e0312060bc57c27012c86edcf02f896249852066'
+            'ff35affb642f3122b9d9ade9d5ada4af9a8dab2941b79970f92284e8bb9a60728dfbec4851ccf041e52de53067861887b0f6496471327f48ebbe8be0eb37e462')
