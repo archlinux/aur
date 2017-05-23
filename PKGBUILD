@@ -7,7 +7,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-ivb
-pkgver=1.9.20
+pkgver=2.6
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -16,9 +16,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wine-compholio/wine-pat
         30-win32-aliases.conf
         patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
-sha512sums=('4fb7c18f4c1451c94eb9ea7239da45b40781f4e044266b651bf3079ee0605dc27599fab72cf9259e31c59c89f161596c6d65513165125f560a50800e3f946a72'
+sha1sums=('d4659ab167ece2a296eb4712cb93d8aef402870e'
+          '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
+          '792e97592b3a391b985c4990a966ee826bef53ab'
+          '3f94ad1c60213eac5d7e68c959423d0f18ed0b5f')
+sha512sums=('05c9edb47c85778c1a44de80c1a477d4677a6cc11f6dfbf78201fb1c09145ab7aa309ca82c30061dabe7ae97430acde55e322a7fc368154a9f8c371c5b8dec2a'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            '42af4c34688119e38df40802d1450a7623749ea268ea25400ad6acddba11c55c4a3efc3a658bfcf071595e3ac7d45b9885b7efbd0eaebd22cb7ac1f7cc601529'
+            '3caf6fb7ad80f2b6cf6eba16570ac68a07cd8e5bed4af59c21e7509301014a76d27d714fd148f35cb04b085236469f08d7df4ab7e9d82173879c91dab2cbfb2b'
             '54e7927ea07137f2383734f65147ae18366a65a17c1970af06b13d5597f501ade3b2b435311bfae1759070895473f09382d75676e8b774c52ce540bc06cf5461')
 
 pkgdesc="A compatibility layer for running Windows programs - Staging branch: indexed vertex blending - https://bugs.winehq.org/show_bug.cgi?id=39057"
@@ -62,7 +66,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   libxcomposite         lib32-libxcomposite
   mesa                  lib32-mesa
   mesa-libgl            lib32-mesa-libgl
-  libcl                 lib32-libcl
+  opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   libpulse              lib32-libpulse
   libva                 lib32-libva
@@ -87,7 +91,7 @@ optdepends=(
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
   ncurses               lib32-ncurses
-  libcl                 lib32-libcl
+  opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   libva                 lib32-libva
   gtk3                  lib32-gtk3
