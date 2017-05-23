@@ -3,7 +3,7 @@
 _pkgbase='python-fire'
 pkgbase='python-fire'
 pkgname=('python-fire' 'python2-fire')
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel=1
 pkgdesc='Python Fire is a library for automatically generating command line interfaces (CLIs) from
 absolutely any Python object.'
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 depends=('python')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/google/python-fire/archive/v${pkgver}.tar.gz")
-sha256sums=('e938da9594dd7b468af19f6268f23060a4cf9a3186ecb0d48f25d2036365d896')
+sha256sums=('8a0adccd9e8ac82b592f3b62d77d0c55e5e4c098b9deca433e254cca02627d84')
 
 package_python-fire() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
