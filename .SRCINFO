@@ -1,11 +1,12 @@
 pkgbase = dummy-opengl-driver-git
 	pkgdesc = Transactional package to build mesa-git against libglvnd
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://mesa3d.sourceforge.net
 	arch = any
-	license = unknown
+	license = none
 	provides = opengl-driver
+	provides = lib32-opengl-driver
 
 pkgname = dummy-opengl-driver-git
 
