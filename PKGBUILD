@@ -7,35 +7,34 @@
 # Contributor: Bob Finch <w9ya@arrl.net>
 
 pkgname=dosemu-git
-pkgver=1.4.0.8.753.g18f6f5c
-pkgrel=2
-epoch=1
+pkgver=1.4.0.8.r753.18f6f5cd
+pkgrel=1
+epoch=2
 pkgdesc="DOS emulator"
 arch=('i686' 'x86_64')
 url="http://www.dosemu.org/"
 license=('GPL' 'custom')
-depends=('gpm' 'slang' 'sdl' 'libxxf86vm' 'libsndfile' 'sh' 'xorg-mkfontdir' 'xorg-bdftopcf')
-makedepends=('subversion')
+depends=('gpm' 'slang' 'sdl' 'libsndfile' 'libxxf86vm')
+makedepends=('git' 'xorg-mkfontdir' 'xorg-bdftopcf')
 conflicts=('dosemu')
 provides=('dosemu')
 backup=('etc/dosemu/dosemu.conf'
         'etc/dosemu/dosemu.users'
         'etc/dosemu/global.conf')
 source=('dosemu::git://git.code.sf.net/p/dosemu/code#branch=devel'
-        https://chungy.keybase.pub/dosemu/dosemu-freedos-1.1-bin.tgz
+        https://chungy.keybase.pub/dosemu/dosemu-freedos-1.2-bin.tgz
         debianize.patch
         xdosemu.desktop)
-sha256sums=('SKIP'
-            '0891a8346ee58f8468ab17f93315d6f23fe68348d297be39c1faad5bd6e59613'
-            '63471aa2c47a52319665c1f3a706d21665edd41df07797c3f558db348b477ba0'
-            'ae737e26165c016242d5a8603a5c887c313570e1525091b30f9e8d23d1a9faab')
-noextract=('dosemu-freedos-1.1-bin.tgz')
+sha512sums=('SKIP'
+            '742343992ac32e2196fef56472f8734ff1314b930938d8ac2f916c612dc0046d1f9d4d3ede82e5a5513a6d2071a88a3803a91ea2789d67dc920b445c0e37a3ce'
+            '173525b8c622315dfe3860c9fda62e48c19603bad84f16cbc4db723a2a4c80adc85069fc6a8696229253adc03d29ea35c79fdaf1ca911c4d8d96e5de9c38ff39'
+            'ff3ccaebb84eca622484f98750f360de5470f169271eed7500b713dcfb705c32618af239494741ea3396c5e1d9d97f374aa4e6346bf171f158d645d10ba24de7')
+noextract=('dosemu-freedos-1.2-bin.tgz')
 
 pkgver() {
   cd "dosemu"
-  local ver="$(git describe --long)"
-  local ver="${ver/dosemu-/}"
-  echo "${ver//-/.}"
+
+  printf %s "$(git describe --long | sed 's/^dosemu-//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -50,7 +49,7 @@ prepare() {
 build() {
   cd "dosemu"
 
-  ./configure --prefix=/usr --with-fdtarball="$srcdir/dosemu-freedos-1.1-bin.tgz" --mandir=/usr/share/man
+  ./configure --prefix=/usr --with-fdtarball="$srcdir/dosemu-freedos-1.2-bin.tgz" --mandir=/usr/share/man
   make
 }
 
