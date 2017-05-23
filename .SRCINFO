@@ -1,6 +1,6 @@
 pkgbase = vocal-git
 	pkgdesc = Podcast Client for the Modern Desktop
-	pkgver = r181.7cd6765
+	pkgver = 2.0.19.r182.18487dd
 	pkgrel = 1
 	url = http://www.vocalproject.net
 	arch = i686

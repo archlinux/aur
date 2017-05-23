@@ -5,7 +5,7 @@
 
 _pkgname=vocal
 pkgname=$_pkgname-git
-pkgver=r181.7cd6765
+pkgver=2.0.19.r182.18487dd
 pkgrel=1
 pkgdesc="Podcast Client for the Modern Desktop"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 pkgver() {
   cd $_pkgname
   #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git tag --sort=-version:refname | head -1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
