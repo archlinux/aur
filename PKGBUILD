@@ -1,31 +1,34 @@
 # Maintainer: Mathieu OTHACEHE <m.othacehe@gmail.com>
 
 pkgname=sencha-cmd-6
-pkgver=6.2.2
+pkgver=6.5.0
 pkgrel=1
-pkgdesc="Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks"
-url="https://www.sencha.com/products/extjs/cmd-download/"
-arch=('i686' 'x86_64')
-license=('GPL')
-depends=('java-runtime' 'ttf-dejavu')
-provides=('sencha-cmd')
-conflicts=('sencha-cmd' 'sencha-cmd-5')
+pkgdesc='Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks'
+url='https://www.sencha.com/products/extjs/cmd-download/'
+arch=(i686 x86_64)
+license=(GPL)
+depends=(java-runtime ttf-font)
+provides=(sencha-cmd)
+conflicts=(sencha-cmd sencha-cmd-5)
 source_i686=("http://cdn.sencha.com/cmd/$pkgver/no-jre/SenchaCmd-$pkgver-linux-i386.sh.zip")
 source_x86_64=("http://cdn.sencha.com/cmd/$pkgver/no-jre/SenchaCmd-$pkgver-linux-amd64.sh.zip")
-sha512sums_i686=('cfe3e22929103e9d6e6fccd1bc3a176f5b55a2ebfd3b2f35da24daefc0c71aa79f4bd017906f84f827a15c941fff9704d8acf60f7756a795b3726bffbf686ad3')
-sha512sums_x86_64=('ea567038bb8d4a576f12bce9afb2b9192a531709a9c949f2705acad2924d348e4cff9c787608ab46af8ebbee0a308c27c2b360701cbaf37b3b34174351021867')
+sha512sums_i686=('139b099b2f6e9882fc6f167c68b439bc918312851397e25fcb88018e50a4c54d6921d6e9ae5106330884812d9bb582ae86d62a115f7d90482406ff130e0b4ef8')
+sha512sums_x86_64=('9170a22be6c97b30785a30519e62d65930bb870e94eaae869eaaf2c5b366b3a377701d5f67890f27b3f56e9f98e64ac55fb2dc7c3e14078383fc1ad076a2f30b')
 
 build() {
-    find "$srcdir" -name "*.sh" -exec {} -q -dir "$srcdir/$pkgname-$pkgver" \;
+	bash SenchaCmd-$pkgver.*-linux-amd64.sh -q \
+		-Dall=true \
+		-VaddToPath=No \
+		-dir "$srcdir/$pkgname-$pkgver"
 }
 
 package() {
-    install -d "$pkgdir/opt"
-    mv "$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
-
-    cd "$pkgdir"
-    mkdir -p etc/profile.d
-    echo 'export PATH=$PATH:/opt/'$pkgname > "etc/profile.d/${pkgname}.sh"
-    echo 'setenv PATH ${PATH}:/opt/'$pkgname > "etc/profile.d/${pkgname}.csh"
-    chmod 755 "etc/profile.d/${pkgname}".{csh,sh}
+	install -d "$pkgdir/opt/Sencha"
+	mv "$pkgname-$pkgver" "$pkgdir/opt/Sencha/Cmd"
+	
+	install -dm777 "$pkgdir/var/cache/sencha-repo"
+	ln -s /var/cache/sencha-repo "$pkgdir/opt/Sencha/repo"
+	
+	install -d "$pkgdir/usr/bin/"
+	ln -s /opt/Sencha/Cmd/sencha "$pkgdir/usr/bin/sencha"
 }
