@@ -7,7 +7,7 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -32,6 +32,7 @@ makedepends=(
   'python2-sphinxcontrib-websupport'
   'python2-sqlalchemy'
   'python2-whoosh'
+  'python2-typing'
 )
 
 checkdepends=(
@@ -50,11 +51,19 @@ checkdepends=(
   'imagemagick' 'librsvg'
 )
 
-source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
+source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"
+        "typing-module-py35+.patch"
+        "fix-broken-latex-testcase.patch")
 
-md5sums=('26cb1cdca7aa4afc8c925d926b6268e7')
+md5sums=('26cb1cdca7aa4afc8c925d926b6268e7'
+         '7e9371d2bbae0a790cb2ba9200979803'
+         '7ec2270be8902c2351f9f4a8c9a33f26')
 
 prepare() {
+  (cd Sphinx-$pkgver
+  patch -p1 <"$srcdir"/fix-broken-latex-testcase.patch
+  patch -p1 <"$srcdir"/typing-module-py35+.patch)
+
   # souce duplication is required because makefile modify source code
   # setyp.py --build tricks don't works well
   cp -a Sphinx-$pkgver Sphinx-${pkgver}2
@@ -77,15 +86,15 @@ build() {
 }
 
 check() {
-#  msg2 'Python 3 version'
-#  cd "$srcdir"/Sphinx-$pkgver
-#  LC_ALL="en_US.UTF-8" make PYTHON=python3 test
-#  rm -r tests
-#
+  msg2 'Python 3 version'
+  cd "$srcdir"/Sphinx-$pkgver
+  LC_ALL="en_US.UTF-8" make PYTHON=python3 test
+  rm -r tests
+
   msg2 'Python 2 version'
-#  cd "$srcdir"/Sphinx-${pkgver}2
-#  LC_ALL="en_US.UTF-8" make PYTHON=python2 test
-#  rm -r tests
+  cd "$srcdir"/Sphinx-${pkgver}2
+  LC_ALL="en_US.UTF-8" make PYTHON=python2 test
+  rm -r tests
 }
 
 package_python-sphinx() {
@@ -130,6 +139,7 @@ package_python2-sphinx() {
     'python2-sphinxcontrib-websupport'
     'python2-sqlalchemy'
     'python2-whoosh'
+    'python2-typing'
   )
   optdepends=('texlive-latexextra: for generation of PDF documentation'
               'imagemagick: ext.imageconverter')
