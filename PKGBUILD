@@ -5,7 +5,7 @@
 pkgname=tor-browser-dev-en
 pkgver=7.0a4
 _language='en-US'
-pkgrel=1
+pkgrel=2
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
 arch=('i686' 'x86_64')
 url="https://www.torproject.org/projects/torbrowser.html.en"
@@ -33,7 +33,8 @@ sha1sums+=('344ded68e188649c0d0347f8f675e006c36c03f1'
            '309aac05a0b0f022eda2f292fb572b523726409c')
 validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
               'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290'
-	      'A4300A6BC93C0877A4451486D1483FA6C3C07136')
+	      'A4300A6BC93C0877A4451486D1483FA6C3C07136'
+	      'D1483FA6C3C07136')
 noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
 
