@@ -1,13 +1,13 @@
 # Maintainer: Tinu Weber <martin.weber@epfl.ch>
 
 pkgname=epfl-menu
-pkgver=r10.9b4a45c
+pkgver=r15.9ac9496
 pkgrel=1
 pkgdesc='Pretty-print the lunch and supper menus at the EPFL'
 arch=('any')
 url='https://github.com/gcmalloc/epfl-menu'
 license=('custom:Beerware')
-makedepends=('python2' 'python2-setuptools')
+makedepends=('python-setuptools')
 source=('git+https://github.com/gcmalloc/epfl-menu')
 md5sums=('SKIP')
 
@@ -18,13 +18,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  python2 setup.py build
+  python3 setup.py build
 }
 
 package() {
-  depends=('python2' 'python2-beautifulsoup3' 'python2-urllib3')
+  depends=('python-beautifulsoup4' 'python-urllib3')
   cd "$srcdir/$pkgname"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python3 setup.py install --root="$pkgdir" --optimize=1
   mv "$pkgdir"/usr/bin/menu "$pkgdir"/usr/bin/epfl-menu
   mkdir -p "$pkgdir"/usr/share/licenses/epfl-menu
   head -n 8 epfl/menu.py > "$pkgdir"/usr/share/licenses/epfl-menu/LICENSE
