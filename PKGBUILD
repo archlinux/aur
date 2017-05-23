@@ -1,6 +1,6 @@
-pkgname=cargo-git
+pkgname=cargo-standalone-git
 _gitname=cargo
-pkgver=0.19.0.r4078.3cac8941
+pkgver=0.20.0.r4277.9fcdbb44
 pkgrel=1
 pkgdesc='Rust package manager'
 url='http://crates.io/'
