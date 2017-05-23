@@ -1,173 +1,245 @@
-# Maintainer: ajs124 < aur at ajs124 dot de>
+# Maintainer: Frederic Bezies <fredbezies@gmail.com>
+# Contributor: ajs124 < aur at ajs124 dot de>
 # Contributor: Devin Cofer <ranguvar{AT]archlinux[DOT}us>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Frederic Bezies <fredbezies@gmail.com>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
 pkgbase=qemu-git
 _gitname=qemu
-pkgname=('qemu-git'
-         'qemu-arch-extra-git'
-         'qemu-block-iscsi-git'
-         'qemu-block-rbd-git'
-         'qemu-block-gluster-git'
-         'qemu-guest-agent-git')
-pkgver=2.9.0.r45576.56821559f0
+pkgbase=qemu
+pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
+pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
+pkgver=2.9.0.r53387.9964e96dc9
 pkgrel=1
-arch=('i686' 'x86_64')
-license=('GPL2' 'LGPL2.1')
-url='http://wiki.qemu.org/'
-makedepends=('pixman' 'libjpeg' 'libpng' 'sdl' 'alsa-lib' 'nss' 'glib2'
-             'gnutls' 'bluez-libs' 'vde2' 'util-linux' 'curl' 'libsasl'
-             'libgl' 'libpulse' 'libcap-ng' 'libaio' 'libseccomp'
-             'libiscsi' 'python2' 'virglrenderer'
-             'usbredir' 'ceph' 'glusterfs' 'libssh2' 'lzo' 'snappy'
-             'dtc' 'libepoxy' 'git' 'texi2html' 'perl' 'numactl')
+arch=(i686 x86_64)
+license=(GPL2 LGPL2.1)
+url="http://wiki.qemu.org/"
+_headlessdeps=(gnutls libpng libaio numactl jemalloc xfsprogs libnfs
+               lzo snappy curl vde2 libcap-ng spice usbredir)
+depends=(seabios dtc virglrenderer sdl2 vte3 brltty "${_headlessdeps[@]}")
+makedepends=(spice-protocol python2 ceph libiscsi glusterfs git)
 source=(git://git.qemu.org/qemu.git
         qemu.sysusers
         qemu-ga.service
-        65-kvm.rules
-        qemu.install)
+        65-kvm.rules)
 sha256sums=('SKIP'
             'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
             '0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1'
-            '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7'
-            '0df69a77645c9a05f98635773666b6212084525d7801ef8382242b06baebe5aa')
+           '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7')
 
-_extra_arches=(aarch64 alpha arm armeb cris lm32 m68k microblaze microblazeel mips
-mips64 mips64el mipsel mipsn32 mipsn32el or32 ppc ppc64 ppc64abi32 ppc64le s390x
-sh4 sh4eb sparc sparc32plus sparc64 moxie ppcemb tricore unicore32 xtensa xtensaeb)
-_extra_blob=(QEMU,cgthree.bin QEMU,tcx.bin bamboo.dtb openbios-ppc
-openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
-petalogix-s3adsp1800.dtb ppc_rom.bin s390-ccw.img slof.bin
-spapr-rtas.bin u-boot.e500)
+case $CARCH in
+  i?86) _corearch=i386 ;;
+  x86_64) _corearch=x86_64 ;;
+esac
 
 pkgver() {
-	cd "${srcdir}/$_gitname"
-	echo "$(git describe | sed 's/^v//' | cut -c -5).r$(git rev-list --count master).$(git log -1 --format=%h)"
+  cd "${srcdir}/${_gitname}"
+  echo "$(git describe | sed 's/^v//' | cut -c -5).r$(git rev-list --count master).$(git log -1 --format=%h)"
+ #Todo : find a way to provide a cleaner revision number.
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  mkdir build-{full,headless}
+  mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
+
+  #cd "${srcdir}/${_gitname}"
+  sed -i 's/vte-2\.90/vte-2.91/g' configure
 }
 
 build() {
-  cd $_gitname
-  # qemu vs. make 4 == bad
-  export ARFLAGS="rv"
-  # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
-  export CFLAGS+=' -fPIC'
-  # gtk gui breaks keymappings at the moment
-  ./configure --prefix=/usr --sysconfdir=/etc --audio-drv-list='pa alsa sdl' \
-              --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
-              --enable-docs --libexecdir=/usr/lib/qemu \
-              --disable-gtk --enable-linux-aio --enable-seccomp \
-              --localstatedir=/var \
-              --enable-tpm --disable-werror \
-              --enable-modules --enable-{rbd,glusterfs,libiscsi,curl}
-  make V=99
+  _build full \
+    --audio-drv-list="pa alsa sdl"
+
+  _build headless \
+    --audio-drv-list= \
+    --disable-bluez \
+    --disable-sdl \
+    --disable-gtk \
+    --disable-vte \
+    --disable-opengl \
+    --disable-virglrenderer \
+    --disable-brlapi
 }
 
+_build() (
+  cd ${srcdir}/${_gitname}/build-$1
+
+  # qemu vs. make 4 == bad
+  export ARFLAGS=rv
+
+  # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
+  export CFLAGS+=" -fPIC"
+
+  # Note for gcc 7.x users : please modify your /etc/makepkg.conf
+  # and add -Wno-error to both CFLAGS and CXXFLAGS for this PKGBUILD
+
+  ../configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib/qemu \
+    --python=/usr/bin/python2 \
+    --smbd=/usr/bin/smbd \
+    --with-gtkabi=3.0 \
+    --with-sdlabi=2.0 \
+    --enable-modules \
+    --enable-jemalloc \
+    "${@:2}"
+
+  make
+)
+
 package_qemu-git() {
-  pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Git version.'
-  depends=('pixman' 'libjpeg' 'libpng' 'sdl' 'libgl'
-           'gnutls' 'bluez-libs'
-           'usbredir' 'lzo' 'snappy' 'libpulse' 
-           'dtc' 'numactl' 'libnfs' 'libepoxy')
-  optdepends=('ovmf: Tianocore UEFI firmware for qemu'
-              'samba: SMB/CIFS server support'
-              'qemu-arch-extra-git: extra architectures support'
-              'qemu-block-iscsi-git: iSCSI block support'
-              'qemu-block-rbd-git: RBD block support'
-              'qemu-block-gluster-git: glusterfs block support')
-  conflicts=('qemu' 'kvm' 'kvm-git' 'qemu-spice' 'seabios' 'seabios-git')
-  provides=('qemu' 'qemu-kvm' 'qemu-spice' 'seabios' 'seabios-git')
+  optdepends=('qemu-arch-extra-git: extra architectures support')
+  conflicts=('qemu-headless' 'qemu' 'kvm' 'kvm-git' 'qemu-spice')
+  provides=('qemu-headless' 'qemu' 'qemu-kvm' 'qemu-spice')
+  replaces=(qemu-kvm)
 
-  options=(!strip)
+  _package full
+}
+
+package_qemu-headless-git() {
+  pkgdesc="QEMU without GUI. Git version."
+  depends=("${_headlessdeps[@]}")
+  optdepends=('qemu-headless-arch-extra-git: extra architectures support')
+
+  _package headless
+}
+
+_package() {
+  optdepends+=('ovmf: Tianocore UEFI firmware for qemu'
+               'samba: SMB/CIFS server support'
+               'qemu-block-iscsi-git: iSCSI block support'
+               'qemu-block-rbd-git: RBD block support'
+               'qemu-block-gluster-git: glusterfs block support')
   install=qemu.install
+  options=(!strip)
 
-  make -C $_gitname DESTDIR="${pkgdir}" libexecdir="/usr/lib/qemu" install
-
-  cd "${pkgdir}"
-  # remove conflicting /var/run directory
-  rm -r var
+  make -C ${srcdir}/${_gitname}/build-$1 DESTDIR="$pkgdir" install "${@:2}"
 
   # systemd stuff
-  install -D -m644 "${srcdir}/65-kvm.rules" usr/lib/udev/rules.d/65-kvm.rules
-  install -D -m644 "${srcdir}/qemu.sysusers" usr/lib/sysusers.d/qemu.conf
+  install -Dm644 65-kvm.rules "$pkgdir/usr/lib/udev/rules.d/65-kvm.rules"
+  install -Dm644 qemu.sysusers "$pkgdir/usr/lib/sysusers.d/qemu.conf"
+
+  # remove conflicting /var/run directory
+  cd "$pkgdir"
+  rm -r var
+
+  cd usr/lib
+  tidy_strip
 
   # bridge_helper needs suid
   # https://bugs.archlinux.org/task/32565
-  chmod u+s usr/lib/qemu/qemu-bridge-helper
+  chmod u+s qemu/qemu-bridge-helper
 
-  # remove splitted block modules
-  rm usr/lib/qemu/block-{iscsi,rbd,gluster}.so
+  # remove split block modules
+  rm qemu/block-{iscsi,rbd,gluster}.so
 
-  # remove guest agent
-  rm usr/bin/qemu-ga
+  cd ../bin
+  tidy_strip
 
   # remove extra arch
-  for _arch in "${_extra_arches[@]}"; do
-    rm -f usr/bin/qemu-${_arch} usr/bin/qemu-system-${_arch}
+  for _bin in qemu-*; do
+    [[ -f $_bin ]] || continue
+
+    case ${_bin#qemu-} in
+      # guest agent
+      ga) rm "$_bin"; continue ;;
+
+      # tools
+      img|io|nbd) continue ;;
+
+      # core emu
+      system-${_corearch}) continue ;;
+    esac
+
+    mv "$_bin" "$srcdir/$_gitname/extra-arch-$1/usr/bin"
   done
-  for _blob in "${_extra_blob[@]}"; do
-    rm usr/share/qemu/${_blob}
+
+  cd ../share/qemu
+  for _blob in *; do
+    [[ -f $_blob ]] || continue
+
+   case $_blob in
+      # provided by seabios package
+      bios.bin|acpi-dsdt.aml|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
+      vgabios-stdvga.bin|vgabios-vmware.bin) rm "$_blob"; continue ;;
+
+   
+  # iPXE ROMs
+      efi-*|pxe-*) continue ;;
+
+      # core blobs
+      kvmvapic.bin|linuxboot*|multiboot.bin|sgabios.bin|vgabios*) continue ;;
+
+      # Trace events definitions
+      trace-events*) continue ;;
+
+      # Logos
+      *.bmp|*.svg) continue ;;
+    esac
+
+    mv "$_blob" "$srcdir/$_gitname/extra-arch-$1/usr/share/qemu"
   done
 }
 
 package_qemu-arch-extra-git() {
-  pkgdesc='QEMU with full support for non x86 architectures. Git version'
-  depends=('glib2' 'qemu-git')
-  conflicts=(qemu-arch-extra)
-  provides=(qemu-arch-extra)
+  pkgdesc="QEMU for foreign architectures. Git version."
+  depends=(qemu)
+  provides=(qemu-headless-arch-extra)
+  conflicts=(qemu-headless-arch-extra)
   options=(!strip)
 
-  cd $_gitname
-  install -dm755 "${pkgdir}"/usr/bin
-  for _arch in "${_extra_arches[@]}"; do
-    install -m755 ${_arch}-*/qemu-*${_arch} "${pkgdir}"/usr/bin
-  done
+  mv $srcdir/$_gitname/extra-arch-full/usr "$pkgdir"
+}
 
-  cd pc-bios
-  for _blob in "${_extra_blob[@]}"; do
-    install -Dm644 ${_blob} "${pkgdir}"/usr/share/qemu/${_blob}
-  done
+package_qemu-headless-arch-extra-git() {
+  pkgdesc="QEMU without GUI, for foreign architectures. Git version."
+  depends=(qemu-headless)
+  options=(!strip)
+  conflicts=(qemu-headless-arch-extra)
+  provides=(qemu-headless-arch-extra)
 
-  # manually stripping
-  find "${pkgdir}"/usr/bin -type f -exec strip {} \;
+  mv $srcdir/$_gitname/extra-arch-headless/usr "$pkgdir"
 }
 
 package_qemu-block-iscsi-git() {
-  pkgdesc='QEMU iSCSI block module. Git version.'
-  depends=('glib2' 'libiscsi')
+  pkgdesc="QEMU iSCSI block module. Git version."
+  depends=(glib2 libiscsi jemalloc)
   conflicts=(qemu-block-iscsi)
   provides=(qemu-block-iscsi)
 
-  install -D $_gitname/block-iscsi.so "${pkgdir}"/usr/lib/qemu/block-iscsi.so
+  install -D $srcdir/$_gitname/build-full/block-iscsi.so "$pkgdir/usr/lib/qemu/block-iscsi.so"
 }
 
 package_qemu-block-rbd-git() {
-  pkgdesc='QEMU RBD block module. Git version.'
-  depends=('glib2' 'ceph')
+  pkgdesc="QEMU RBD block module. Git version."
+  depends=(glib2 ceph)
   conflicts=(qemu-block-rbd)
   provides=(qemu-block-rbd)
 
-  install -D $_gitname/block-rbd.so "${pkgdir}"/usr/lib/qemu/block-rbd.so
+  install -D $srcdir/$_gitname/build-full/block-rbd.so "$pkgdir/usr/lib/qemu/block-rbd.so"
 }
 
 package_qemu-block-gluster-git() {
-  pkgdesc='QEMU GlusterFS block module. Git version.'
-  depends=('glib2' 'glusterfs')
+  pkgdesc="QEMU GlusterFS block module. Git version."
+  depends=(glib2 glusterfs)
   conflicts=(qemu-block-gluster)
   provides=(qemu-block-gluster)
 
-  install -D $_gitname/block-gluster.so "${pkgdir}"/usr/lib/qemu/block-gluster.so
+  install -D $srcdir/$_gitname/build-full/block-gluster.so "$pkgdir/usr/lib/qemu/block-gluster.so"
 }
 
 package_qemu-guest-agent-git() {
-  pkgdesc='QEMU Guest Agent. Git version'
-  depends=('glib2')
+  pkgdesc="QEMU Guest Agent. Git version."
+  depends=(gcc-libs glib2)
   conflicts=(qemu-guest-agent)
   provides=(qemu-guest-agent)
 
-  install -D $_gitname/qemu-ga "${pkgdir}"/usr/bin/qemu-ga
-  install -D qemu-ga.service "${pkgdir}"/usr/lib/systemd/system/qemu-ga.service
+  install -D $srcdir/$_gitname/build-full/qemu-ga "$pkgdir/usr/bin/qemu-ga"
+  install -Dm644 $srcdir/qemu-ga.service "$pkgdir/usr/lib/systemd/system/qemu-ga.service"
+  install -Dm755 "$srcdir/$_gitname/scripts/qemu-guest-agent/fsfreeze-hook" "$pkgdir/etc/qemu/fsfreeze-hook"
 }
 
 # vim:set ts=2 sw=2 et:
