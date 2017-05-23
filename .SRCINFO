@@ -1,6 +1,6 @@
 pkgbase = lunarglass-git
 	pkgdesc = LLVM IR and optimizer for shaders, including front-end adapters for GLSL and SPIR-V
-	pkgver = 20161115
+	pkgver = 20170523
 	pkgrel = 1
 	url = https://github.com/LunarG/LunarGLASS
 	arch = i686
