@@ -1,12 +1,11 @@
-# Maintainer: Tyler Ahde <notonewith@gmail.com>
-#
+# Maintainer: Kamari Kim kamarikim8@gmail.com
+# Contributor: Tyler Ahde <notonewith@gmail.com>
 # Upstream: https://github.com/bitpay/bitpay
 
 pkgname=bitpay
-pkgver=1.3.6
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="BitPay Bitcoin Wallet"
-#arch=('i686' 'x86_64')
 arch=('x86_64')
 url="https://bitpay.io"
 license=('MIT')
@@ -20,15 +19,16 @@ source=('bitpay.desktop')
 
 
 md5sums=('0506f49c065177fc829f8f0a75aab19b')
-md5sums_x86_64=('7a4c00c48e5a0511b14b75d63f910e21'
+md5sums_x86_64=('d5680a7c912b97907a4541bb385e1609'
                 'SKIP')
 
-source_x86_64=("https://github.com/bitpay/copay/releases/download/bitpay/BitPay-linux.zip"
-               "https://github.com/bitpay/copay/releases/download/bitpay/BitPay-linux.zip.sig"
+source_x86_64=("https://github.com/bitpay/copay/releases/download/v3.2.0/BitPay-linux.zip"
+               
+"https://github.com/bitpay/copay/releases/download/v3.2.0/BitPay-linux.zip.sig"
               )
 
 
-# gpg --recv-keys 9D17E656BB3B6163AE9D71725CD600A61112CFA1
+#gpg --recv-keys 5CD600A61112CFA1
 validpgpkeys=('9D17E656BB3B6163AE9D71725CD600A61112CFA1')
 
 package() {
