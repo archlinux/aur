@@ -1,6 +1,6 @@
 pkgbase = gscreenshot
 	pkgdesc = A GUI front-end for scrot
-	pkgver = 2.6.3
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = gscreenshot
 	depends = python-setuptools
 	depends = python-gobject
 	optdepends = slop: improved region and window selection
-	source = https://github.com/thenaterhood/gscreenshot/archive/v2.6.3.tar.gz
-	sha256sums = a88f0503a67e8087f3c0eccdab3943372d464569547e108d5236f84c9c28cf26
+	source = https://github.com/thenaterhood/gscreenshot/archive/v2.7.0.tar.gz
+	sha256sums = 70108e7afb9e55a3b3c1c7fb85ad75e9c8d64b29b628317f74473a3f09b261ad
 
 pkgname = gscreenshot
 
