@@ -4,7 +4,7 @@
 
 pkgname=gscreenshot
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A GUI front-end for scrot"
 arch=('any')
@@ -20,7 +20,9 @@ depends=("python"
         "python-gobject")
 makedepends=("fakeroot")
 checkdepends=()
-optdepends=('slop: improved region and window selection')
+optdepends=('slop: improved region and window selection'
+            'xclip: command line clipboard support'
+            'xdg-utils: for opening screenshot files from gscreenshot')
 provides=()
 conflicts=()
 replaces=()
