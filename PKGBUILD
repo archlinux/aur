@@ -2,7 +2,7 @@
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=lttng-tools
-pkgver=2.9.3
+pkgver=2.9.4
 pkgrel=1
 pkgdesc="LTTng tracing control tools"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ optdepends=(
     'babeltrace: view traces with `lttng view` command'
     'man-db: view man pages with the `lttng help` command'
 )
-sha1sums=('78fdc9b7fd15f33ac60ea08320d679ce66e18bf7')
+sha1sums=('ab1945fd36b30f445eb5c83f199b011d42525612')
 
 build()
 {
