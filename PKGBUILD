@@ -43,7 +43,7 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python-tox: Python environments for testing tool with Python 3', 
             'jupyter: For support Jupyter Notebook')
 # for no-jdk:
-# sha256sums=('5053fa8a8aca372c255b66136fc7d04b2fb54607ac4f71d1d342621ed7767343'
+# sha256sums=('e53118815de5a32afb4c85518b15137097428a2982fbf7cc1de6a05574cf9601'
 sha256sums=('0cb46ef439e3608162235efbb755844c62016356b32738123efd12500682eff3'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
