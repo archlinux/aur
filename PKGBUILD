@@ -4,12 +4,13 @@
 _target=powerpc-wrs-vxworks
 pkgname=${_target}-gdb
 pkgver=7.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger (${_target})"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gdb/"
 license=('GPL3')
-depends=('wrs-vxworks-headers' 'xz' 'python')
+depends=(wrs-vxworks-headers ncurses expat xz gdb-common=$pkgver)
+makedepends=(texinfo python guile2.0 xz)
 conflicts=('gdb-powerpc-wrs-vxworks')
 provides=('gdb-powerpc-wrs-vxworks')
 options=('!strip' 'libtool' '!zipman' 'staticlibs')
@@ -25,7 +26,10 @@ build() {
     --prefix=/usr \
     --target=${_target} \
     --disable-nls \
-    --with-sysroot=/usr/${_target}
+    --with-python=/usr/bin/python3 \
+    --with-guile=guile-2.0 \
+    --with-sysroot=/usr/${_target} \
+    --enable-lto
   make
 }
 
@@ -34,7 +38,10 @@ package() {
 
   make DESTDIR=${pkgdir} install
 
-  rm -rv ${pkgdir}/usr/share/info
-  rm -rv ${pkgdir}/usr/include
-  rm -rv ${pkgdir}/usr/share/gdb
+  # fix conflicts with gdb
+  rm -r $pkgdir/usr/include/gdb
+  rm -r $pkgdir/usr/share/info
+
+  # comes from gdb-common
+  rm -r $pkgdir/usr/share/gdb
 }

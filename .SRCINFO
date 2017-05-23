@@ -1,14 +1,20 @@
 pkgbase = powerpc-wrs-vxworks-gdb
 	pkgdesc = The GNU Debugger (powerpc-wrs-vxworks)
 	pkgver = 7.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = texinfo
+	makedepends = python
+	makedepends = guile2.0
+	makedepends = xz
 	depends = wrs-vxworks-headers
+	depends = ncurses
+	depends = expat
 	depends = xz
-	depends = python
+	depends = gdb-common=7.12.1
 	provides = gdb-powerpc-wrs-vxworks
 	conflicts = gdb-powerpc-wrs-vxworks
 	options = !strip
