@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=batman-adv
-pkgver=2017.0.1
+pkgver=2017.1
 pkgrel=0
 epoch=1
 pkgdesc='batman kernel module'
@@ -17,7 +17,7 @@ source=("https://downloads.open-mesh.org/batman/releases/${pkgname}-${pkgver}/${
 depends=('linux')
 makedepends=('linux-headers')
 
-sha256sums=('55c2bc9739c5ef13d6951705431a3bcc4b9e5686be9c8d742923d1149f04c47c'
+sha256sums=('ec1848023308c41710eeefb544580f5853d68b88a627a3f2dabaa3472b988c15'
             '347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37')
 
 prepare() {
