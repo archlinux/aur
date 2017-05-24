@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -34,7 +34,7 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="tag=0.3.10"
+_commit_hash="commit=9e25e9f004bcab070cdecb201ba89da539b2f780"
 
 _pkgname="popcorn-desktop"
 source=(
@@ -54,13 +54,24 @@ _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 prepare() {
 	cd "${srcdir}/${_srcdir}"
 
-	msg2 "Installing npm and bower dependencies..."
+	msg2 "Installing npm, bower and missing dependencies..."
 	# Using a different folder for the cache, makes the system cleaner
 	_cache=`npm config get cache`
 	npm config set cache "$srcdir/npm_cache"
+	msg2 "Cache changed from $_cache to `npm config get cache`"
+
+	msg2 "Install missing dependencies"
+	missing_ones="thepiratebay@1.4.0"
+	for package in $missing_ones
+	do
+		msg2 "Installing missing dependency $package"
+		npm install "$package"
+	done
+
 	# Actually install the stuff
-	msg2 "Cache changed from $_cache to `npm config get cache`, ready to install"
+	msg2 "Installing normal dependencies"
 	npm install #-dd install
+
 	# Restore the cache directory
 	npm config set cache ${_cache}
 }
