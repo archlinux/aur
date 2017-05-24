@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec /usr/bin/java -cp "/usr/share/java/color-oracle/ColorOracle.jar" ika.colororacle.ColorOracle "$@"
+
+exit 0
