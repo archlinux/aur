@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.1
+Name=Vcash-electron
+GenericName=Vcash Client
+GenericName[pt]=Vcash Cliente
+GenericName[sl]=Vcash odjemalec
+Comment=Vcash wallet GUI
+Comment[pt]=Vcash GUI da carteira
+Comment[sl]=Vcash denarnica GUI
+Exec=/usr/lib/vcash-electron/linux-unpacked/vcash-electron %f
+Icon=vcash
+Terminal=false
+Type=Application
+Keywords=cryptocurrency;
+Categories=Network;P2P;
+MimeType=text/html;image/png;application/javascript;text/css;application/json;
