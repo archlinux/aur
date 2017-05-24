@@ -1,6 +1,6 @@
 pkgbase = kubernetes-helm
 	pkgdesc = A tool to manage Kubernetes charts
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/kubernetes/helm
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = kubernetes-helm
 	license = Apache
 	depends = socat
 	optdepends = kubectl-bin: Check Kubernetes status
-	source_i686 = https://kubernetes-helm.storage.googleapis.com/helm-v2.4.1-linux-386.tar.gz
-	sha512sums_i686 = 99bf82e9f0186fbd7dae502d672ef4b98bdf7342011c91150a2fb4ede5e5b40ff461544ee94fbc0741d1910051b604509fd65c529ca880325b679e7344e3c612
-	source_x86_64 = https://kubernetes-helm.storage.googleapis.com/helm-v2.4.1-linux-amd64.tar.gz
-	sha512sums_x86_64 = 0befa8157b26fefd3f8d9461ee0d982f01f3e5e539601359dff373d5e791edee459c72141c07d5735b01d980259b95062fb5a74039308ff2a73da4bc187a1fea
+	source_i686 = https://kubernetes-helm.storage.googleapis.com/helm-v2.4.2-linux-386.tar.gz
+	sha512sums_i686 = 8d23fb3196659004f9aa300fa01055cf2594d1a9002599b6dc48ae074cc1773a253812b79eaf6aff0ce48b9e66224bd7d9658f9318f62510b7f001a23511aa6e
+	source_x86_64 = https://kubernetes-helm.storage.googleapis.com/helm-v2.4.2-linux-amd64.tar.gz
+	sha512sums_x86_64 = 0ea566f4bba5fdf1b2459921e0eb6ddf41abb446d034dae695699266885fb4e2ab42d4df3b4f1f89453ff7f6719697af8eb5e3df586dbaa828643012f728dd85
 
 pkgname = kubernetes-helm
 

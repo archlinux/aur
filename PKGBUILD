@@ -1,7 +1,7 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=kubernetes-helm
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ optdepends=('kubectl-bin: Check Kubernetes status')
 license=('Apache')
 source_i686=("https://kubernetes-helm.storage.googleapis.com/helm-v$pkgver-linux-386.tar.gz")
 source_x86_64=("https://kubernetes-helm.storage.googleapis.com/helm-v$pkgver-linux-amd64.tar.gz")
-sha512sums_i686=('ceaa0314f0ebf67dcfc7531513605cebc1b8c8c6e0cd6307d82123bb44d7230bf4576cf0a23c741029ad446364f6edc24fedcb47c4c645476f770750abbaa8a8')
-sha512sums_x86_64=('5eaf9fae902907e6bb24efbcd61b9e5ce8022b5ecf9d03faa7dbb6c78e796d22e80559406b76aa244c058d42554065b85279f2392afe3d9e99777cdf97d2b66d')
+sha512sums_i686=('8d23fb3196659004f9aa300fa01055cf2594d1a9002599b6dc48ae074cc1773a253812b79eaf6aff0ce48b9e66224bd7d9658f9318f62510b7f001a23511aa6e')
+sha512sums_x86_64=('0ea566f4bba5fdf1b2459921e0eb6ddf41abb446d034dae695699266885fb4e2ab42d4df3b4f1f89453ff7f6719697af8eb5e3df586dbaa828643012f728dd85')
 
 package() {
   cd "$srcdir"
