@@ -3,7 +3,7 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'expat' 'gconf' 'gtk2' 'gvfs' 'hunspell' 'hunspell-en' 'libc
 optdepends=('gnome-keyring')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname}-${pkgver}-amd64.deb"
         "${pkgname}.patch")
-sha256sums=('7ecf34f6c433a186469ce44cf3b9bf2eab334e7437f155211a4188e531e632db'
+sha256sums=('a856cb453871a2cea5cde5165902f0a0729b7f3c3d41e32fab17a36defffed07'
             '5eceb99baa2e248ea8b2785a582de2e6b876e9bf820e818f92c3ae3827ee5fed')
 
 package() {
