@@ -1,9 +1,12 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=wxwidgets-light
-pkgname=('wxbase-light' 'wxgtk-light' 'wxcommon-light')
-pkgver=3.0.2
-pkgrel=7
+pkgname=('wxbase-light'
+         'wxgtk-light'
+         'wxcommon-light'
+         )
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 url='http://wxwidgets.org'
@@ -21,23 +24,20 @@ source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver
         'wx-config.sh'
         'make-abicheck-non-fatal.patch'
         )
-sha1sums=('SKIP'
-          'fed3ad06526f2bccd3f3197c2b1fd3e96bf05685'
-          '47df8d82e6c9671212428ea769ff4a3e3f725917'
-          'dfe38650c655395b90bf082b5734c4093508bfa3'
-          )
+sha256sums=('SKIP'
+            '770b976681e7b5fe513b1b6dcabc1472802eb67fc777a07e903a77772825120f'
+            '55a54da8396923f413bdf0c582ade281e014dc6f7ab65854b0f0fe24d4697c2a'
+            '46a1bb97d69163547da13d5e23a4c73e68de27ee601da5d2fb5bc5c417931453'
+            )
 
 prepare() {
   mkdir -p build-{base,gtk{2,3}}
 
   cd wxwidgets
 
-  # Fix build with GCC 6.1.1
-  git cherry-pick 73e9e18ea09ffffcaac50237def0d9728a213c02
-
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
-  patch -Np1 -i ../make-abicheck-non-fatal.patch
+  patch -Np1 -i "${srcdir}/make-abicheck-non-fatal.patch"
 }
 
 build() {
@@ -45,7 +45,7 @@ build() {
   ../wxwidgets/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
-    --with-regex='builtin' \
+    --with-regex=builtin \
     --enable-unicode \
     --disable-{precomp-headers,gui}
   make
@@ -55,9 +55,9 @@ build() {
   ../wxwidgets/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
-    --with-gtk='2' \
-    --with-lib{jpeg,png,tiff,xpm}='sys' \
-    --with-regex='builtin' \
+    --with-gtk=2 \
+    --with-lib{jpeg,png,tiff,xpm}=sys \
+    --with-regex=builtin \
     --with-{opengl,sdl} \
     --enable-{unicode,graphics_ctx} \
     --without-{libnotify,gnome{vfs,print}} \
@@ -69,9 +69,9 @@ build() {
   ../wxwidgets/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
-    --with-gtk='3' \
-    --with-lib{jpeg,png,tiff,xpm}='sys' \
-    --with-regex='builtin' \
+    --with-gtk=3 \
+    --with-lib{jpeg,png,tiff,xpm}=sys \
+    --with-regex=builtin \
     --with-{opengl,sdl} \
     --enable-{unicode,graphics_ctx} \
     --without-{libnotify,gnome{vfs,print}} \
