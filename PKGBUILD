@@ -7,8 +7,8 @@ pkgbase="python-numpy-mkl"
 pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
-pkgver=1.12.0
-pkgrel=3
+pkgver=1.12.1
+pkgrel=1
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -20,7 +20,7 @@ makedepends=( 'python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'in
 source=( https://github.com/numpy/numpy/archive/v${pkgver}.tar.gz 
 	  'site64.cfg' 'site32.cfg' 'intel.py' 'intelccompiler.py' '__init__2.py.patch' '__init__3.py.patch' )
 
-sha256sums=( 'edec8d62882bef688a0cfd6b79987a722d26028238b6120b47974da58824ad08' 
+sha256sums=( '71253c0db5df2d0a925090b0804aa1070e9c336d891217bda5701f455d8141f7' 
              '86cd68a695a5e1d76f8e53cda70c888c4ed04349f15c8096d4492e346e7187e1' 
              '882f2717deca0fd6a2e2384aac2dc7973c566f9cd2ba46777c3b5ffdffa814df' 
              'f2c6fa043b8c888f6df672a6031c3a4917909230236b725c6ce7e924a6d01462' 
