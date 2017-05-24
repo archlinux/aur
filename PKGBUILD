@@ -4,7 +4,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=155.0.0
+pkgver=156.0.0
 pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus kubectl and Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
@@ -27,13 +27,13 @@ options=('!strip' 'staticlibs')
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
 sha256sums_x86_64=(
-  '4b64fba9d98b9e48cc7a37ed3b321e50f92e87f9c2b358d183f966dae05216a2'
+  'f47f41e7c389301dfee4879d6eb71d36c7b06aaf43a2be49a9ea39749be22851'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
 sha256sums_i686=(
-  '5fc4754836a17fb74dc6abd6923ff8c0f6124d72fbc008778e15e37193ef08f6'
+  '7d3d5f1ec8fceb70822e14a111a6d4c509bdb8680f4b1d5c797d82d309886e17'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 
 prepare() {
@@ -64,6 +64,11 @@ package() {
     --usage-reporting false --path-update false --bash-completion false \
     --rc-path="$srcdir/fake.bashrc" \
     --additional-components kubectl app-engine-python
+
+  # https://issuetracker.google.com/issues/35900282
+  msg2 "Fixing appengine bug #35900282 (RAND_egd)"
+  sed -i 's/from _ssl import RAND_add, RAND_egd, RAND_status/from _ssl import RAND_add, RAND_status/g' "$pkgdir/opt/$pkgname/platform/google_appengine/google/appengine/dist27/socket.py"
+  python2 -m py_compile "$pkgdir/opt/$pkgname/platform/google_appengine/google/appengine/dist27/socket.py"
 
   # This is the strangest design they made to backup a fresh install
   msg2 "Removing unnecessary backups created by bootstrap"
