@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=seasonproxer
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A tool to passivly check for updates on seasons, for proxer.me"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/SeasonProxer"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('qt5-base' 'qt5-tools' 'qt5-datasync' 'qt5-restclient')
 makedepends=('qpm')
 source=("https://install.skycoder42.de/pkg/SeasonProxer-${pkgver}.tar.gz")
-sha256sums=('e6dd804c162a87c47cb21fffdcd7c8e0df906e9f00f47e5a65dbff8156d2c974')
+sha256sums=('b6740f3f2da23c6f9348744e8a425172babe3691a675758af2fca2c69485702d')
 
 package() {
 	TRANSLATION_DIR=$(qmake -query QT_INSTALL_TRANSLATIONS)
