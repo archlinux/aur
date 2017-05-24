@@ -2,9 +2,6 @@ post_install() {
   if [[ -x usr/bin/xdg-icon-resource ]]; then
     usr/bin/xdg-icon-resource forceupdate &>/dev/null || true
   fi
-
-  echo -e "\e[0;32mCurrent \e[1;32msky\e[0;32m release(s) is known to conflict with \e[1;32mtesting/openssl (1.1.x)\e[0;32m packages"\
-    "\nThis is a pending issue which will be resolved in upcoming updates"
 }
 
 post_upgrade() {
