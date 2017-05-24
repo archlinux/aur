@@ -25,6 +25,6 @@ package() {
     find . -type f -exec install -Dm0644 {,${pkgdir}/usr/share/}{} \;
 
     install -dm0755 "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/${_pkgname}/mooltiapp" "${pkgdir}/usr/bin/mooltiapp"
+    ln -s "${pkgdir}/opt/${_pkgname}/mooltiapp" "/usr/bin/mooltiapp"
 
 }
