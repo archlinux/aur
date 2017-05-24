@@ -2,7 +2,7 @@
 # Contributor: dorphell <dorphell at archlinux dot org>
 pkgname=zip-natspec
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Creates PKZIP-compatible .zip files for non-latin filenames, using libnatspec patch from AltLinux."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://www.info-zip.org/pub/infozip/Zip.html"
@@ -11,7 +11,7 @@ depends=('glibc' 'bzip2' 'libnatspec')
 conflicts=('zip')
 provides=('zip')
 options=('!makeflags')
-source=('ftp://ftp.info-zip.org/pub/infozip/src/zip30.tgz' 'zip30-natspec-asdos-mod.diff')
+source=('https://netix.dl.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz' 'zip30-natspec-asdos-mod.diff')
 md5sums=('7b74551e63f8ee6aab6fbc86676c0d37' '89e224906ea45b6ed80fcd6c11cbd605')
 build() {
    cd $srcdir/${pkgname/-natspec/}${pkgver/./}
