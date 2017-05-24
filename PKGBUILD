@@ -29,5 +29,4 @@ build() {
 package() {
   cd ${srcdir}/${_pkgname}
   install -Dm755 modules/mysql.so ${pkgdir}/usr/lib/php/modules/mysql.so
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/PHP
 }
