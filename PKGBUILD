@@ -2,7 +2,7 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.0.RC3.r3535.3fbc09a5
+pkgver=0.7.0.RC4.r3573.afe92529
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
