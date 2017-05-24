@@ -16,7 +16,7 @@ makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ledger/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname-boost-1.61.patch::https://github.com/ledger/$pkgname/commit/1856b8c4902498843f4da37a7aaeb2ce85acc1d3.patch")
 sha256sums=('90f06561ab692b192d46d67bc106158da9c6c6813cc3848b503243a9dfd8548a'
-            'bf694b022d5984caf49b3454c65e502dabbd657cc8b207f5f3cc677f0b630e6e')
+            '3fe6750973d1ac10c822735759b35f362a68afb3dfa9887aaa7d83839a9e99eb')
 
 prepare() {
   cd "$pkgname-$pkgver"
