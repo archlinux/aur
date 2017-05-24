@@ -1,7 +1,7 @@
 pkgbase = eman2
 	pkgdesc = Greyscale scientific image processing suite for processing data from transmission electron microscopes
 	pkgver = 2.12
-	pkgrel = 5
+	pkgrel = 6
 	url = http://blake.bcm.edu/emanwiki/EMAN2
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = eman2
 	depends = hdf5
 	depends = fftw
 	depends = boost
-	depends = qtwebkit
+	depends = qt4
 	depends = cmake
 	depends = gsl
 	depends = ftgl
