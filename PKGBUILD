@@ -1,46 +1,33 @@
-# Maintainer: Peter Hoeg <firstname at lastname dot com>
+# Maintainer: Leonardo Santana Vieira <leosanvieira at gmail dot com>
+# Contributors: Peter Hoeg
 
-_pkgbase=pecl-database-mysql
-pkgname=${_pkgbase}-git
-pkgver=r12.294ce3b
-pkgrel=2
-pkgdesc='PECL MySQL - support mysql_* functions on PHP7'
-arch=('x86_64' 'i686')
-url='http://www.php.net'
-license=('GPL')
+_pkgname=pecl-database-mysql
+pkgname=${_pkgname}-git
+pkgver=17.230a828
+pkgrel=1
+pkgdesc="PECL MySQL - support mysql_* functions on PHP7"
+arch=("i686" "x86_64")
+url="https://pecl.php.net/package/mysql"
+license=("PHP")
+depends=("php")
+install=${pkgname}.install
 source=("git+https://github.com/php/pecl-database-mysql.git")
-depends=('php')
-sha1sums=('SKIP')
+md5sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgbase}
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
-prepare() {
-  cd ${srcdir}/${_pkgbase}
-  git submodule update --init
+  cd ${srcdir}/${_pkgname}
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${srcdir}/${_pkgbase}
+  cd ${srcdir}/${_pkgname}
   phpize
   ./configure --prefix="${pkgdir}/usr"
   make
 }
 
-check() {
-  cd ${srcdir}/${_pkgbase}
-  # make test
-}
-
 package() {
-  cd ${srcdir}/${_pkgbase}
-  install -dm755 ${pkgdir}/usr/lib/php/modules
-  install -m644 modules/*.so ${pkgdir}/usr/lib/php/modules
+  cd ${srcdir}/${_pkgname}
+  install -Dm755 modules/mysql.so ${pkgdir}/usr/lib/php/modules/mysql.so
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/PHP
 }
-
-# vim:set ts=2 sw=2 et:

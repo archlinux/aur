@@ -1,0 +1,7 @@
+post_install() {
+    echo "Remember to add 'extension=mysql.so' without the quotes to /etc/php/php.ini"
+}
+
+post_remove() {
+    echo "Remember to remove 'extension=mysql.so' without the quotes from /etc/php/php.ini"
+}
