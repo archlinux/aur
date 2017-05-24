@@ -1,11 +1,11 @@
 # Maintainer: Alexander Phinikarides (alexisph -at- gmail -dot- com)
 
 pkgname=microsoft-r-open
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
-_majorver=3.3
-_mrandate=2017-03-15
-pkgdesc="Language and environment for statistical computing and graphics, modified version by Microsoft"
+_majorver=3.4
+_mrandate=2017-05-01
+pkgdesc="Language and environment for statistical computing and graphics, enhanced by Microsoft"
 arch=('x86_64')
 license=('GPL')
 url='https://mran.revolutionanalytics.com/open/'
@@ -46,11 +46,11 @@ source=("https://mran.revolutionanalytics.com/install/mro/${pkgver}/microsoft-r-
         'mro.desktop'
         'mro.png'
         'R.conf')
-md5sums=('641c8636b5f3e1f5a3870ccae448d87e'
+md5sums=('4e6ceae0641a1224d944de6c75988025'
          '70e8f9d0b1eebeb1f0b45f4568bc0701'
          '8e0c51650b8a63f110fa7b09e699e9c4'
          '6c381ed007c2bfc97ab42f05bf50b57d')
-sha512sums=('ca5943068233a5687b75f4edf923f75ba6dad75804ef1b368e464817e09f2ca7b07d0033e1d4dc9c6815c5d780fe184ece9b6a0629128c6180900e18dfa8e971'
+sha512sums=('a5f9e01fb15b4b46a71b3692376f64ae2771419620a0be496d089cb295666ea1c669146ea9c1e923e2595f5ae5216c8c105484b224317023c7fce6862c29aaf6'
             '2b0221bd1e0fdd399284333e6f2020bb9ad11395ad39dd2fca688b7ebc68fbbc60de59a757e1898be8bcd9e2926afccc121043f38445e7693f177c3076f92b61'
             '1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe'
             '41e6779500748eee0fa785a20bcaf7323d4aa67000386243fdfe1681152023fb4a5dd4e1f078eeae24db18c223f86fa57afbbad391da226988b0a14eec75c986')
@@ -72,7 +72,7 @@ package() {
   install -d "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/backup/lib"
   mv ${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/lib/*.so "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/backup/lib"
   install -Dm644 "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/backup/lib/libR.so" "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/lib/libR.so"
-  install -Dm644 ${pkgdir}/usr/lib/microsoft-r/${_majorver}/stage/mkl_install_stage/*.so "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/lib"
+  install -Dm644 ${pkgdir}/usr/lib/microsoft-r/${_majorver}/stage/Linux/bin/x64/*.so "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/lib"
   rm -rf ${pkgdir}/usr/lib/microsoft-r/${_majorver}/stage
 
   # Link R binaries to system path
