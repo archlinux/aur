@@ -1,14 +1,5 @@
 --- ./src/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs.orig	2017-04-23 13:59:57.476068918 -0400
 +++ ./src/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs	2017-04-23 14:42:48.021739418 -0400
-@@ -94,7 +94,7 @@
- 				throw new BuildException("clang 3.4.x is known to miscompile the engine - refusing to register the Linux toolchain.");
- 			}
- 			// prevent unknown clangs since the build is likely to fail on too old or too new compilers
--			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 39 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 35)
-+			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 40 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 35)
- 			{
- 				throw new BuildException(
- 					string.Format("This version of the Unreal Engine can only be compiled with clang 3.9, 3.8, 3.7, 3.6 and 3.5. clang {0} may not build it - please use a different version.",
 @@ -387,6 +387,8 @@
  			Result += " -Wno-unused-variable";
  			// this will hide the warnings about static functions in headers that aren't used in every single .cpp file

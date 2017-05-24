@@ -6,7 +6,7 @@
 # The source is over 3 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.15.3
+pkgver=4.16.0
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -19,25 +19,19 @@ license=('custom:UnrealEngine')
 source=(
   "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
-  'remove-clang35-dependency.patch'
   'ignore-return-value-error.patch'
-  'ParticleEmitterInstances.patch'
   'LMStats.patch'
 )
 
 md5sums=(
   'SKIP'
   'c7fc35a7eb9e23c0a9b7c593f7f9878d'
-  '271579e814358390d210d57c724a3b00'
-  'a5bb2f9ebc7379b603e3293880dc5c12'
-  '21da50059f3b805d2dc78638efac0b1b'
+  'f1a95777bea1abc3f4731d9f0f68b610'
   'abe70f602445e9465c1eff2769bc7d61'
 )
 
 prepare() {
-  patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" remove-clang35-dependency.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
-  patch "$srcdir/UnrealEngine/Engine/Source/Runtime/Engine/Private/Particles/ParticleEmitterInstances.cpp" ParticleEmitterInstances.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealLightmass/Private/LightmassCore/Misc/LMStats.h" LMStats.patch
 
   cd $srcdir/UnrealEngine
