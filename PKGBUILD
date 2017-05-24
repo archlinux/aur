@@ -1,7 +1,7 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=libinput-git
-pkgver=1.7.0.r29.g7944d89
+pkgver=1.7.0.r102.ga2a8db2
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url='http://freedesktop.org/wiki/Software/libinput/'
 provides=("libinput=${pkgver}")
 license=('MIT')
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
-makedepends=('git')
+makedepends=('git' 'doxygen' 'graphviz' 'gtk3')
 conflicts=('libinput')
 source=(git://anongit.freedesktop.org/wayland/libinput)
 sha1sums=('SKIP')
