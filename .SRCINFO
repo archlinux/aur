@@ -1,7 +1,7 @@
 pkgbase = gitlab-runner-custom-executors
 	pkgdesc = The official GitLab CI runner written in Go with a LXC Executor
-	pkgver = 9.1.1
-	pkgrel = 1
+	pkgver = 9.2.0
+	pkgrel = 3
 	url = https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
 	install = gitlab-runner.install
 	arch = i686
@@ -17,15 +17,14 @@ pkgbase = gitlab-runner-custom-executors
 	depends = git
 	depends = glibc
 	depends = tar
-	provides = gitlab-runner=9.1.1-1
+	provides = gitlab-runner=9.2.0-3
 	conflicts = gitlab-runner
 	noextract = prebuilt-x86_64.tar.xz
 	noextract = prebuilt-arm.tar.xz
 	backup = etc/gitlab-runner/config.toml
-	source = git+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner.git#tag=v9.1.1
+	source = git+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner.git#tag=v9.2.0
 	source = https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-x86_64.tar.xz
 	source = https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-arm.tar.xz
-	source = gitlab-runner.install
 	source = gitlab-runner.service
 	source = gitlab-runner.sysusers
 	source = gitlab-runner.tmpfiles
@@ -34,7 +33,6 @@ pkgbase = gitlab-runner-custom-executors
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = d5888f378c5b12b84e4238b191ef56a97a81c9073d27dcb47065998f0a1f6caf9f13314ae908e72a06f4d29d1bd1f4f72338c97268391e2c98706216c8281f3e
 	sha512sums = ed24841242a56a3b10dd80cd23e0c980f6bbe5fd0ebd4c6b46529947e4920cc9c03e4f4b239da8a798c801a6cdd757415113f97e45c1032f2c519fdaec4d3ae0
 	sha512sums = 8aa7f08702e99053c696fcc2aaba83beb9e9cd6f31973d82862db9350ac46df3a095377625d31fe909677525290d2de922d7a97930ed235774cb8f0da8944d40
 	sha512sums = 6751d9fa0b27172d1b419c4138f5ac15cbc7c9147653a7258cf1470216142c637210bb60608c7ed0974e0e4057e5ddeae32225df1bb36e7dd1f20fec71e33cc3

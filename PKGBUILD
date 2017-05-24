@@ -3,8 +3,8 @@
 # Custom Executor Maintainer: Marc Mettke <marc@itmettke.de>
 
 pkgname=gitlab-runner-custom-executors
-pkgver=9.1.1
-pkgrel=1
+pkgver=9.2.0
+pkgrel=3
 pkgdesc="The official GitLab CI runner written in Go with a LXC Executor"
 arch=('i686' 'x86_64')
 url='https://gitlab.com/gitlab-org/gitlab-ci-multi-runner'
@@ -23,7 +23,6 @@ conflicts=("${pkgname/-custom-executors}")
 source=("git+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner.git#tag=v${pkgver}"
         "https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-x86_64.tar.xz"
         "https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-arm.tar.xz"
-        "gitlab-runner.install"
         "gitlab-runner.service"
         "gitlab-runner.sysusers"
         "gitlab-runner.tmpfiles"
@@ -32,7 +31,6 @@ source=("git+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner.git#tag=v${pkg
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'd5888f378c5b12b84e4238b191ef56a97a81c9073d27dcb47065998f0a1f6caf9f13314ae908e72a06f4d29d1bd1f4f72338c97268391e2c98706216c8281f3e'
             'ed24841242a56a3b10dd80cd23e0c980f6bbe5fd0ebd4c6b46529947e4920cc9c03e4f4b239da8a798c801a6cdd757415113f97e45c1032f2c519fdaec4d3ae0'
             '8aa7f08702e99053c696fcc2aaba83beb9e9cd6f31973d82862db9350ac46df3a095377625d31fe909677525290d2de922d7a97930ed235774cb8f0da8944d40'
             '6751d9fa0b27172d1b419c4138f5ac15cbc7c9147653a7258cf1470216142c637210bb60608c7ed0974e0e4057e5ddeae32225df1bb36e7dd1f20fec71e33cc3'
@@ -47,6 +45,8 @@ prepare() {
     msg "Patch add lxc Executor"
     patch -Np1 -i "${srcdir}/lxc_executor.patch"
 
+    make version
+
     export GOPATH="${srcdir}"
     make deps
 
@@ -57,7 +57,8 @@ prepare() {
 build() {
     cd "${srcdir}/src/gitlab.com/gitlab-org/gitlab-ci-multi-runner"
 
-    GOPATH="${srcdir}" go-bindata \
+    export GOPATH="${srcdir}" 
+    go-bindata \
         -pkg docker \
         -nocompress \
         -nomemcopy \
@@ -66,7 +67,7 @@ build() {
         prebuilt-x86_64.tar.xz \
         prebuilt-arm.tar.xz
 
-    GOPATH="${srcdir}" go build
+    make build_simple
 }
 
 package() {
@@ -76,6 +77,6 @@ package() {
     install -Dm644 "${srcdir}/gitlab-runner.service" "${pkgdir}/usr/lib/systemd/system/gitlab-runner.service"
     install -Dm644 "${srcdir}/gitlab-runner.sysusers" "${pkgdir}/usr/lib/sysusers.d/gitlab-runner.conf"
     install -Dm644 "${srcdir}/gitlab-runner.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/gitlab-runner.conf"
-    install -Dm755 "gitlab-ci-multi-runner" "${pkgdir}/usr/bin/gitlab-ci-multi-runner"
+    install -Dm755 out/binaries/gitlab-ci-multi-runner "${pkgdir}/usr/bin/gitlab-ci-multi-runner"
     ln -s /usr/bin/gitlab-ci-multi-runner "${pkgdir}/usr/bin/gitlab-runner"
 }
