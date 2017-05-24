@@ -2,7 +2,7 @@
 
 pkgname=openvpn-nordvpn
 pkgver=17.5.24
-pkgrel=9
+pkgrel=10
 pkgdesc="OpenVPN configuration files and helper for nordvpn.com"
 arch=(any)
 url="http://www.nordvpn.com"
@@ -14,7 +14,7 @@ makedepends=('unzip' 'coreutils')
 provides=('nordvpn')
 source=('https://nordvpn.com/api/files/zip')
 noextract=(zip)
-sha256sums=('acb78bf11748362bd84dbcdfb6f6e2d8b5a1e9539b8a3451e4a69a820459fbe2')
+sha256sums=('SKIP')
 install=${pkgname}.install
 
 prepare() {
