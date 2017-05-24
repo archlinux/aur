@@ -1,0 +1,10 @@
+--- old/awusb.c	2017-05-24 22:17:59.122680228 +0200
++++ new/awusb.c	2017-05-24 22:18:09.568817074 +0200
+@@ -37,6 +37,7 @@
+ #include <linux/spinlock.h>
+ #include <linux/usb.h>
+ #include <linux/wait.h>
++#include <linux/sched/signal.h>
+ 
+ /* by Cesc */
+ #include <linux/ioctl.h>
