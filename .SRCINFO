@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 17.2.0_devel.92238.1db28fbbea
+	pkgver = 17.2.0_devel.92260.359fa0e9a0
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -58,7 +58,7 @@ pkgname = lib32-mesa-git
 	provides = lib32-libva-mesa-driver
 	provides = lib32-mesa-vdpau
 	provides = lib32-mesa-libgl
-	provides = lib32-opengl-provider
+	provides = lib32-opengl-driver
 	conflicts = lib32-mesa
 	conflicts = lib32-opencl-mesa
 	conflicts = lib32-vulkan-intel
