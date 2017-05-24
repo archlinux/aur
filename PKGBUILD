@@ -4,8 +4,8 @@
 # Contributor: Cuneyt Unlu <unlucu AT gmail.com>
 
 pkgname=fityk
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=0
 pkgdesc="A program for nonlinear fitting of analytical functions to data."
 arch=(i686 x86_64)
 url="http://fityk.nieto.pl/"
@@ -15,7 +15,7 @@ makedepends=('boost' 'python2-sphinx' 'swig')
 options=(!libtool)
 install=fityk.install
 source=("https://github.com/wojdyr/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('d533e0ae646d9066c46b6d90885dc4b5')
+md5sums=('41c9a2589e2eac4317a480b364ff493a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
