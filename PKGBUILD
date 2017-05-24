@@ -1,19 +1,21 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=biboumi
-pkgver=4.1
+pkgver=5.0
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://biboumi.louiz.org/"
 license=('ZLIB')
-depends=('expat' 'libidn' 'c-ares' 'botan' 'litesql-git')
+depends=('expat' 'libidn' 'udns' 'botan' 'litesql-git')
 makedepends=('cmake' 'pandoc')
 backup=("etc/$pkgname/$pkgname.cfg")
 install="$pkgname.install"
 source=("https://git.louiz.org/biboumi/snapshot/$pkgname-$pkgver.tar.xz"
+        'biboumi.install'
         'sysuser.conf')
-md5sums=('270467e2d1f12f48ee447744e1992806'
+md5sums=('231466a3070b32e16cf58f149828db34'
+         '4d83eb74d68a2328b19c1e8df5cdb5d7'
          '07c92af3248861ce94d361e98cfb7f5c')
 
 prepare() {
@@ -38,6 +40,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 doc/biboumi.1.rst "$pkgdir/usr/share/doc/$pkgname/$pkgname.rst"
+  install -Dm644 conf/biboumi.cfg "$pkgdir/etc/$pkgname/$pkgname.cfg"
 
   cd "$srcdir"
   install -Dm644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
