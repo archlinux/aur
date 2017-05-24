@@ -1,66 +1,88 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/palopezv>
 
 #######################################################################
-# CAVEAT LECTOR
+# CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
+#                rope to hang yourself, but by default it only
+#                enables the features I use.
 #######################################################################
-#
-#  Don't run this on a tmpfs unless you have oodles of RAM.
-#  When the official git repo started, the size was about
-#  200MB. As time passes, it is growing more and more.
-#  Final directory size after a build is shy of 1Gb! 
-#  Furthermore, the FSF isn't precisely rich and Savannah 
-#  network costs aren't cheap. Keep your git checkout!
+
+#######################################################################
 #
 #  Keeping this directory in a safe place preserves the 
 #  git repo and the src dir for faster compilation if 
 #  you want. You may delete the pkg dir after successfully 
 #  creating a package.
 #
-#  "makepkg -i" is your friend.
-#
 #######################################################################
 
 #######################################################################
-#
-# Still reading? Here kid, have enough rope to hang yourself. :-)
-#
-#######################################################################
-
-#######################################################################
-# Assign "YES" to the variable you want enabled, empty otherwise
+# Assign "YES" to the variable you want enabled; empty or other value
+# for NO.
 #
 # Where you read experimental, replace with foobar.
-# =============================================================
+# =================================================
 #
 #######################################################################
-GTK2=            # Leave empty to compile with gtk+ 3 support.
 LTO=             # Enable link-time optimization. Experimental.
+ATHENA=          # Use Athena widgets. (83 1337, 83 001d sk00l).
+GTK2=            # Leave empty to compile with gtk+ 3 support.
+                 # No, gtk+ 2 ain't kool, dawg!
+NOGTK3=          # Leave empty to compile with gtk+ 3 support.
+GPM=             # Enable gpm support.
+M17N=            # Enable m17n international support.
+IMAGIGK=         # ImageMagick is worse than Adobe Flash.
 CAIRO=           # Highly experimental.
-XWIDGETS=        # Use GTK+ widgets pulled from webkitgtk. Experimental.
+XWIDGETS=        # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=       # Generate and install html documentation.
 DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
+#######################################################################
 pkgname=emacs-git
-pkgver=26.0.50.128795
+pkgver=26.0.50.129323
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
-depends=('gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
+depends=('alsa-lib')
 makedepends=('git')
 #######################################################################
+
 #######################################################################
+if [[ $ATHENA = "YES" ]]; then  
+  depends+=('libxaw');
+fi
+
 if [[ $GTK2 = "YES" ]]; then
   depends+=('gtk2');
 else
-  depends+=('gtk3'); 
+  if [[ ! $NOGTK3 = "YES" ]]; then
+    depends+=('gtk3'); 
+  fi
 fi
-if [[ $CAIRO = "YES" ]]; then depends+=('cairo'); fi
-if [[ $XWIDGETS = "" ]]; then depends+=('giflib'); fi
+
+if [[ $GPM = "YES" ]]; then 
+  depends+=('gpm');
+fi
+
+if [[ $M17N = "YES" ]]; then
+  depends+=('m17n-lib');
+fi
+
+if [[ $IMAGICK = "YES" ]]; then 
+  depends+=('imagemagick'); 
+else 
+  depends+=('libxpm' 'libjpeg-turbo' 'libtiff' \
+            'giflib' 'libpng' 'librsvg');
+fi
+
+if [[ $CAIRO = "YES" ]]; then 
+  depends+=('cairo'); 
+fi
+
 if [[ $XWIDGETS = "YES" ]]; then
-  if [[ $GTK2 = "YES" ]]; then 
+  if [[ $GTK2 = "YES" ]] || [[ $ATHENA = "YES" ]]; then 
     echo "";
     echo "";
     echo "Xwidgets support *requires* gtk+3!!!";
@@ -71,13 +93,18 @@ if [[ $XWIDGETS = "YES" ]]; then
       depends+=('webkit2gtk'); 
   fi
 fi
-if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
+
+if [[ $DOCS_PDF = "YES" ]]; then 
+  makedepends+=('texlive-core'); 
+fi
 #######################################################################
+
 #######################################################################
 conflicts=('emacs')
 provides=('emacs')
-source=("$pkgname::git://git.savannah.gnu.org/emacs.git")
-#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git")
+#source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=master")
+#source=("$pkgname::git+https://git.savannah.gnu.org/git/emacs.git#branch=master")
+source=("$pkgname::git+https://github.com/emacs-mirror/emacs.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -112,40 +139,76 @@ build() {
     --with-gameuser=:games 
     --with-sound=alsa 
     --with-xft
-    --with-modules)
+    --with-modules
+  )
 
 #######################################################################
+
 #######################################################################
-  if [[ $GTK2 = "YES" ]]; then 
-    _conf+=('--with-x-toolkit=gtk2' '--with-gconf' '--without-gsettings');
-  else
-    _conf+=('--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings'); 
-  fi
-  if [[ $LTO = "YES" ]]; then _conf+=('--enable-link-time-optimization'); fi
-  if [[ $CAIRO = "YES" ]]; then _conf+=('--with-cairo'); fi
-  if [[ $XWIDGETS = "YES" ]]; then _conf+=('--with-xwidgets'); fi
+if [[ $LTO = "YES" ]]; then 
+  _conf+=('--enable-link-time-optimization'); 
+fi
+
+if [[ $ATHENA = "YES" ]]; then
+  _conf+=('--with-x-toolkit=athena' '--without-gconf' '--without-gsettings');
+fi
+
+if [[ $GTK2 = "YES" ]]; then 
+  _conf+=('--with-x-toolkit=gtk2' '--with-gconf' '--without-gsettings');
+else
+  _conf+=('--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings'); 
+fi
+
+if [[ ! $GPM = "YES" ]]; then 
+  _conf+=('--without-gpm'); 
+fi
+
+if [[ ! $M17N = "YES" ]]; then 
+  _conf+=('--without-m17n-flt'); 
+fi
+
+if [[ $IMAGICK = "YES" ]]; then 
+  _conf+=('--without-xpm' '--without-jpeg' '--without-tiff' 
+          '--without-gif' '--without-png' '--without-rsvg'); 
+else
+  _conf+=('--without-imagemagick');
+fi
+
+if [[ $CAIRO = "YES" ]]; then 
+  _conf+=('--with-cairo'); 
+fi
+
+if [[ $XWIDGETS = "YES" ]]; then 
+  _conf+=('--with-xwidgets'); 
+fi
 #######################################################################
+
 #######################################################################
 
   ./configure "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
-  # compiling. Less time recompiling. Yay! But if you may 
-  # need to use bootstrap sometime, just add it to the command 
-  # line.
+  # compiling. Less time recompiling. Yay! But you may 
+  # need to use bootstrap sometimes to unbreak the build. 
+  # Just add it to the command line.
+  #
   # Please note that incremental compilation implies that you 
   # are reusing your src directory!
+  #
   make
 
-  # You may need to run this if loaddefs.el files become
-  # corrupt.
+  # You may need to run this if 'loaddefs.el' files corrupt.
   #cd "$srcdir/$pkgname/lisp"
   #make autoloads
   #cd ../
 
   # Optional documentation formats.
-  if [[ $DOCS_HTML = "YES" ]]; then make html; fi
-  if [[ $DOCS_PDF = "YES" ]]; then make pdf; fi
+  if [[ $DOCS_HTML = "YES" ]]; then 
+    make html; 
+  fi
+  if [[ $DOCS_PDF = "YES" ]]; then 
+    make pdf; 
+  fi
 }
 
 package() {
