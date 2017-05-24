@@ -1,7 +1,7 @@
 # Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
 pkgname=baidupcs-git
 _pkgname=BaiduPCS
-pkgver=0.2.6.14.gbe97351
+pkgver=0.2.6.27.g1abd895
 pkgrel=1
 pkgdesc="The terminal utility for Baidu Network Disk"
 arch=('i686' 'x86_64')
@@ -23,12 +23,13 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
+  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm755 bin/pcs "$pkgdir"/usr/bin/pcs
+  make install DESTDIR=$pkgdir
 }
 
 # vim:set ts=2 sw=2 et:
