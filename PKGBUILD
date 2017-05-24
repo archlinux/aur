@@ -1,7 +1,7 @@
 pkgname=mingw-w64-pango
-pkgver=1.40.4
+pkgver=1.40.6+6+g6f59d0f3
 pkgrel=1
-_commit=43b9668ba688b01553abb7b453aeb206d7fd56fa
+_commit=6f59d0f387dd62f12a7107e898064c7e42159945  # master
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=(any)
 url="http://www.pango.org"
@@ -9,8 +9,10 @@ license=("LGPL")
 makedepends=(mingw-w64-configure gtk-doc git)
 depends=(mingw-w64-harfbuzz mingw-w64-cairo)
 options=(staticlibs !strip !buildflags !emptydirs)
-source=("git+https://git.gnome.org/browse/pango#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://git.gnome.org/browse/pango#commit=$_commit"
+"0001-no-unconditional-xft-please.all.patch")
+sha256sums=('SKIP'
+            'bebab6128258d300e677df0751177f5c30235d0a49c150d97987d0f00b309f35')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
@@ -20,6 +22,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/pango"
+	patch -p1 -i ${srcdir}/0001-no-unconditional-xft-please.all.patch
 	NOCONFIGURE=1 ./autogen.sh
 	sed -i 's/have_libthai=true/have_libthai=false/' configure
 }
