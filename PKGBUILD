@@ -1,7 +1,6 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Rastislav Barlik <barlik-arch at gmx dot com>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Thomas Mudrunka <harvie@@email..cz>
-# Contributor: Thomas Mudrunka <harvie@@email..cz>
-# You can also contact me on http://blog.harvie.cz/
 
 pkgname=figlet-fonts
 pkgver=1.0 #23.03.2014
