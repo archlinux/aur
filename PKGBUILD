@@ -3,12 +3,13 @@
 
 pkgname=galera
 pkgver=25.3.20
-pkgrel=1
+pkgrel=3
 pkgdesc='WSREP provider'
 arch=('i686' 'x86_64' 'mips64el')
 license=('GPL2' 'custom:OpenSSL Linking Exception')
-depends=('openssl' 'asio')
-makedepends=('boost>=1.58' 'check' 'scons')
+depends=('mariadb' 'openssl')
+makedepends=('asio' 'check' 'scons')
+optdepends=('rsync: transfer database state to a newly joined node with rsync')
 url='http://www.codership.com'
 options=('!libtool')
 validpgpkeys=('44B7345738EBDE52594DAD80D669017EBC19DDBA') # Codership Oy <info@galeracluster.com>
@@ -24,10 +25,12 @@ build(){
 package(){
   cd "${pkgname}-3-${pkgver}"
 
-  install -Dm0644 libgalera_smm.so "${pkgdir}"/usr/lib/libgalera_smm.so
-  install -Dm0755 garb/garbd "${pkgdir}"/usr/bin/garbd
-  install -Dm0644 scripts/packages/README "${pkgdir}"/usr/share/doc/galera/README
-  install -m0644 scripts/packages/README-MySQL "${pkgdir}"/usr/share/doc/galera/README-MySQL
-  install -m0644 COPYING "${pkgdir}"/usr/share/doc/galera/COPYING
+  install -D -m0755 libgalera_smm.so "${pkgdir}"/usr/lib/libgalera_smm.so
+  install -D -m0755 garb/garbd "${pkgdir}"/usr/bin/garbd
+
+  install -D -m0644 scripts/packages/README "${pkgdir}"/usr/share/doc/galera/README
+  install -D -m0644 scripts/packages/README-MySQL "${pkgdir}"/usr/share/doc/galera/README-MySQL
+  install -D -m0644 scripts/mysql/README "${pkgdir}"/usr/share/doc/galera/mysql/README
+  install -D -m0644 COPYING "${pkgdir}"/usr/share/doc/galera/COPYING
 }
 
