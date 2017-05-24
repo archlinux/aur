@@ -1,0 +1,19 @@
+pkgbase = libcoap-dtls-git
+	pkgdesc = C-Implementation of CoAP, DTLS
+	pkgver = r849.2586304
+	pkgrel = 1
+	url = https://libcoap.net/
+	arch = x86
+	arch = x86_64
+	license = BSD2
+	license = GPL2
+	makedepends = git
+	provides = libcoap
+	conflicts = libcoap
+	source = libcoap::git://github.com/obgm/libcoap.git#branch=dtls
+	source = automakehack.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libcoap-dtls-git
+

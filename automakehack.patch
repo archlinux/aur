@@ -1,0 +1,22 @@
+diff --git Makefile.in Makefile.in
+index 932919c..1cf7b82 100644
+--- Makefile.in
++++ Makefile.in
+@@ -104,12 +104,12 @@ dist:	$(FILES) $(DISTSUBDIRS)
+ 	tar czf $(package).tar.gz $(DISTDIR)
+ 
+ install:	$(LIB) $(HEADERS) $(SUBDIRS)
+-	test -d $(libdir) || mkdir -p $(libdir)
+-	test -d $(includedir) || mkdir -p $(includedir)
+-	$(install) $(LIB) $(libdir)/
+-	$(install) $(HEADERS) $(includedir)/
++	test -d $(DESTDIR)/$(libdir) || mkdir -p $(DESTDIR)/$(libdir)
++	test -d $(DESTDIR)/$(includedir) || mkdir -p $(DESTDIR)/$(includedir)
++	$(install) $(LIB) $(DESTDIR)/$(libdir)/
++	$(install) $(HEADERS) $(DESTDIR)/$(includedir)/
+ 	for dir in $(SUBDIRS); do \
+-		$(MAKE) -C $$dir install="$(install)" includedir=$(includedir) install; \
++		$(MAKE) -C $$dir install="$(install)" includedir=$(DESTDIR)/$(includedir) install; \
+ 	done
+ 
+ TAGS:	
