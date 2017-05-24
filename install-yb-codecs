@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mv -v /opt/yandex/browser-beta/lib/libffmpeg.so /opt/yandex/browser-beta/lib/libffmpeg.so.bak
+cp -v /opt/yandex/browser-beta/lib/extra/libffmpeg.so /opt/yandex/browser-beta/lib/libffmpeg.so
