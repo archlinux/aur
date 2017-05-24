@@ -2,7 +2,7 @@
 
 _pkgname=buildhosts
 pkgname=$_pkgname-git
-pkgver=20160814.r10.b332639
+pkgver=20170524.r12.99ed481
 pkgrel=1
 pkgdesc='Download and use custom hosts sources to build /etc/hosts'
 url='https://github.com/prurigro/buildhosts'
