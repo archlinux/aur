@@ -2,7 +2,7 @@
 
 pkgname=madx-dev
 pkgver=5.03.04
-pkgrel=2
+pkgrel=3
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -29,14 +29,12 @@ prepare() {
     cd ${srcdir}/build
 
     cmake \
-        -DCMAKE_C_COMPILER=gcc \
-        -DCMAKE_Fortran_COMPILER=gfortran \
         -DMADX_STATIC=OFF \
         -DMADX_ONLINE=OFF \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBINARY_POSTFIX= \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_RPATH='$ORIGIN' \
         ${srcdir}/${extract}
 }
