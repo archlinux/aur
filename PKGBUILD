@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=nfs2se-git
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
 arch=('i686' 'x86_64' 'armv7' 'armv7h')
@@ -33,6 +33,11 @@ fi
 
 install=nfs2se-git.install
 
+pkgver()
+{
+	$srcdir/NFSIISE/version
+}
+
 prepare()
 {
 	cd $srcdir/NFSIISE
@@ -42,8 +47,10 @@ prepare()
 
 build()
 {
+# 	GL=gl2
+# 	GL=gles2
 	cd $srcdir/NFSIISE
-	./compile_nfs $COMPILE_ARG
+	./compile_nfs $COMPILE_ARG $GL
 }
 
 package()
