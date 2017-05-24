@@ -1,0 +1,17 @@
+pkgbase = libelectronpass-git
+	pkgdesc = Backend library for ElectronPass desktop app.
+	pkgver = 20170519.e434291
+	pkgrel = 1
+	url = https://electronpass.github.io
+	arch = any
+	groups = electronpass
+	license = GPL3
+	makedepends = git
+	makedepends = gcc-libs
+	depends = libsodium
+	provides = libelectronpass
+	source = libelectronpass::git://github.com/electronpass/libelectronpass.git
+	md5sums = SKIP
+
+pkgname = libelectronpass-git
+
