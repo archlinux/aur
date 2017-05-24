@@ -1,11 +1,11 @@
 pkgname=fahviewer
 pkgver=7.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Folding@home 3D simulation viewer"
-url="http://folding.stanford.edu/English/HomePage"
+url="http://folding.stanford.edu/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('glew' 'gtk2' 'freetype2' 'glut')
+depends=('glew' 'gtk2' 'freetype2' 'glut' 'foldingathome')
 options=('!docs' '!libtool')
 
 # Moronic server
