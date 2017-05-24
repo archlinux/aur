@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-spreed.me
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="spreed.memail integration for nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("$pkgname-$pkgver.tgz::https://apps.owncloud.com/CONTENT/content-files/174436-spreedme.tar.gz")
-sha256sums=('1f715122be9c6bc40d7be88243a982adfade6b117aacff4f1390f774801d0c60')
+sha256sums=('7670bf76cc086a6301aa431d03a158357c6d2abbf6e5800cb01a34a9f2a50a64')
 
 prepare() {
   cd ${srcdir}/spreedme
