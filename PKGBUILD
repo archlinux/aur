@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
