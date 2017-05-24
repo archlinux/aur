@@ -1,7 +1,7 @@
 pkgbase = python-telegram-bot-git
 	pkgdesc = A Python wrapper around the Telegram Bot API
 	pkgver = 6.0.1.r3.ff897ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	changelog = CHANGES.rst
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = python-telegram-bot-git
 	provides = python-telegram-bot
 	conflicts = python-telegram-bot
 	source = python-telegram-bot-git::git+https://github.com/python-telegram-bot/python-telegram-bot.git
+	source = https://gist.githubusercontent.com/evgfilim1/95ba7f195d742136831321ca4419a058/raw/0baefa28fe0ca34b6d1d6716514d3adcea8e98a7/setup.py.patch
 	sha256sums = SKIP
+	sha256sums = d6adcf6e70d632ee20263be3e902ef4a400cc31c16bfb2f49bb6e0aaccf35066
 
 pkgname = python-telegram-bot-git
 
