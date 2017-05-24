@@ -2,31 +2,31 @@
 # Contributor: Nicole Fontenot <nfontenot27@gmail.com>
 
 pkgname=osu-lazer-git
-pkgver=2017.523.0
+pkgver=2017.523.0_205_g16212fce
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
-url='http://osu.ppy.sh'
+url='https://osu.ppy.sh'
 license=('MIT')
 makedepends=('nuget'
-			 'git')
+             'git')
 depends=('ffmpeg'
-		 'libgl'
-		 'mono')
+         'libgl'
+         'mono')
 optdepends=()
 options=()
 provides=('osu-lazer')
 conflicts=('osu-lazer')
 source=('git+https://github.com/ppy/osu.git'
-		'osu-launcher'
-		'osu-lazer.desktop'
-		'osu-lazer.png'
-		'x-osu-lazer.xml')
+        'osu-launcher'
+        'osu-lazer.desktop'
+        'osu-lazer.png'
+        'x-osu-lazer.xml')
 sha256sums=('SKIP'
-			'c499dbff1d9a8f382e7b3cf4a95b58b9f02fb98e66e50cddb5d7d6c8a5223d2d'
-			'13df6b2d9d6d4c6839554ebf55c51f0812890a30dc0b40b7186447265db1f212'
-			'3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
-			'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
+            'c499dbff1d9a8f382e7b3cf4a95b58b9f02fb98e66e50cddb5d7d6c8a5223d2d'
+            '13df6b2d9d6d4c6839554ebf55c51f0812890a30dc0b40b7186447265db1f212'
+            '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
+            'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
 
 case "$CARCH" in
 	x86_64)
