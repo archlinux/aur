@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.0.beta5.r0.g46a728ae82
+pkgver=8.0.beta8.r0.gc011cfada9
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -35,7 +35,7 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
   mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch cython-sys-path.patch is-package-installed.patch package.patch latte-count.patch
-        jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch ecm-7.patch r-no-readline.patch fes02.patch
+        jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch r-no-readline.patch fes02.patch
         create_extension.patch include_dirs_from_externs.patch)
 sha256sums=('SKIP'
             'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
@@ -46,7 +46,6 @@ sha256sums=('SKIP'
             '889b65598d2a15e73eb482f543ec9b28d8992eeb57b07883c2e9627dfee15a9b'
             '27aa73d427d92aeb2c181a233aa3a574a4158cd7dee33832808f69edaec55ea2'
             '81d08c6a760f171f3381455b66a6c84789c9f0eefddbe6ca5794075514ad8c3a'
-            '06bc1e5b409e21d49fc71ef03e96ec35b7a9b524bfd1f81a2dbf5c64a55e5acf'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
             'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
             '362bd7603e14f729c87eebc9d3f56eb8a9ec94456038f0cb17591e81c459ef8e'
@@ -71,8 +70,6 @@ prepare(){
   patch -p0 -i ../jupyter-path.patch
 # search system paths for cython includes
   patch -p1 -i ../cython-sys-path.patch
-# fix regressions with ECM 7
-  patch -p1 -i ../ecm-7.patch
 # fix freezes in R interface with readline 7 (Debian)
   patch -p1 -i ../r-no-readline.patch
 # use correct latte-count binary name
