@@ -1,6 +1,6 @@
 pkgname=archlogo-glyph
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux glyph (unicode e900).  See url below showing it."
 url="https://raw.githubusercontent.com/duffydack/dotfiles/master/arch-glyph.png"
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = archlogo-glyph
 	pkgdesc = Arch Linux glyph (unicode e900). See url below showing it.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://raw.githubusercontent.com/duffydack/dotfiles/master/arch-glyph.png
 	install = archlogo-glyph.install
 	arch = any
