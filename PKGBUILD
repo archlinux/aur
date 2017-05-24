@@ -1,7 +1,6 @@
-# Maintainer: Abdulhaq Emhemmed <el.ingeniero09@gmail.com>
 pkgname=green-recorder
-pkgver=2.0
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="A simple yet functional desktop recorder for Linux systems."
 arch=('any')
 url="https://github.com/green-project/green-recorder"
@@ -11,20 +10,14 @@ depends=('python2-pydbus'
          'gawk'
          'python2-gobject'
          'python2-urllib3'
-         'xorg-utils'
+         'xorg-xdpyinfo'
+         'xorg-xwininfo'
          'ffmpeg')
 optdepends=('gnome-shell: Gnome on Wayland desktop recording.')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/green-project/${pkgname}/archive/${pkgver}.tar.gz"
-        "non_gnome_session_fix.patch::https://github.com/green-project/${pkgname}/commit/98575fa29706dac502746eee4c38b4b065ad2c2a.patch")
-sha256sums=('5d4921b784f5fe1ffdf0ef9ddc54cdddccf1f757e84b720949301cc4f4b884df'
-            'da69dbc47fa6068fafe6c2a6b30ff1c47e118b0233dc036ce3a48062ac13acd5')
- 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < ../non_gnome_session_fix.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/green-project/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('e1b72edcfa9da8219409a0d687f7789f9e7376ff0df69ffae6f3db7fbba3bd12')
  
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -34,4 +27,3 @@ package() {
  
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
-# vim:set ts=2 sw=2 et:

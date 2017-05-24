@@ -1,7 +1,7 @@
 pkgbase = green-recorder
 	pkgdesc = A simple yet functional desktop recorder for Linux systems.
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.1.5
+	pkgrel = 1
 	url = https://github.com/green-project/green-recorder
 	arch = any
 	license = GPL
@@ -11,14 +11,13 @@ pkgbase = green-recorder
 	depends = gawk
 	depends = python2-gobject
 	depends = python2-urllib3
-	depends = xorg-utils
+	depends = xorg-xdpyinfo
+	depends = xorg-xwininfo
 	depends = ffmpeg
 	optdepends = gnome-shell: Gnome on Wayland desktop recording.
 	options = !emptydirs
-	source = green-recorder-2.0.tar.gz::https://github.com/green-project/green-recorder/archive/2.0.tar.gz
-	source = non_gnome_session_fix.patch::https://github.com/green-project/green-recorder/commit/98575fa29706dac502746eee4c38b4b065ad2c2a.patch
-	sha256sums = 5d4921b784f5fe1ffdf0ef9ddc54cdddccf1f757e84b720949301cc4f4b884df
-	sha256sums = da69dbc47fa6068fafe6c2a6b30ff1c47e118b0233dc036ce3a48062ac13acd5
+	source = green-recorder-2.1.5.tar.gz::https://github.com/green-project/green-recorder/archive/2.1.5.tar.gz
+	sha256sums = e1b72edcfa9da8219409a0d687f7789f9e7376ff0df69ffae6f3db7fbba3bd12
 
 pkgname = green-recorder
 
