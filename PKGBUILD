@@ -1,5 +1,6 @@
+# Maintainer: Rastislav Barlik <barlik-arch at gmx dot com>
 # Contributor: Bernardo Barros <bernardobarros@gmail.com>
-# Maintainer: Adrien Sohier <adrien.sohier@art-software.fr>
+# Contributor: Adrien Sohier <adrien.sohier@art-software.fr>
 
 pkgname=paulstretch-jack
 pkgver=2.2
