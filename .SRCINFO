@@ -1,0 +1,15 @@
+pkgbase = loadlibrary-git
+	pkgdesc = Porting Windows Dynamic Link Libraries to Linux
+	pkgver = r15.ca6dce8
+	pkgrel = 1
+	url = https://github.com/taviso/loadlibrary
+	arch = x86_64
+	license = GPL2
+	depends = lib32-glibc
+	source = loadlibrary::git+https://github.com/taviso/loadlibrary.git
+	source = mpam-fe.exe::http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86
+	md5sums = SKIP
+	md5sums = b385d0d1f931f269988fef14dc9fa27a
+
+pkgname = loadlibrary-git
+
