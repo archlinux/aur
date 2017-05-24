@@ -1,0 +1,17 @@
+pkgbase = elm-format-0.18-exp-bin
+	pkgdesc = Format Elm source code according to a standard set of rules based on the official Elm Style Guide (experimental version for Elm 0.18).
+	pkgver = 0.7.0_exp
+	pkgrel = 1
+	url = https://github.com/avh4/elm-format
+	arch = i686
+	arch = x86_64
+	license = BSD
+	provides = elm-format
+	conflicts = elm-format-0.16-bin
+	conflicts = elm-format-0.17-bin
+	conflicts = elm-format-0.18-bin
+	source = https://github.com/avh4/elm-format/releases/download/0.7.0-exp/elm-format-0.18-0.7.0-exp-linux-x64.tgz
+	md5sums = c6ea7666ba002c682f25863cc4acce8f
+
+pkgname = elm-format-0.18-exp-bin
+
