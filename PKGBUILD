@@ -2,7 +2,7 @@
 
 pkgname='scaleft-url-handler'
 pkgdesc='ScaleFT(TM) URL handler'
-pkgver=1.25.3
+pkgver=1.25.4
 pkgrel=1
 arch=('any')
 url="https://scaleft.com"
@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('rpmextract')
 depends=('scaleft-client-tools' 'python2')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.noarch.rpm")
-sha256sums=('b628ba1e5488f6d5c69b0e7cf3cd370f9bad8fce24385922d80791f91f04282e')
+sha256sums=('7dfd0d1468877010b7efb982f628a36b3c61739b16432f1e5e7065e4662273c2')
 
 prepare() {
 	rpmextract.sh ${pkgname}-${pkgver}-${pkgrel}.noarch.rpm
