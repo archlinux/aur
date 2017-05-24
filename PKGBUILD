@@ -2,7 +2,7 @@
 
 pkgname=madx-dev
 pkgver=5.03.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -15,12 +15,15 @@ arch=('x86_64')
 tarball=madx-src.tgz
 extract=madx-${pkgver}
 
-source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}")
-md5sums=('efd9df109045cb7937621ec647d86ec0')
+source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}"
+        cmake_fix_gc.patch)
+md5sums=('efd9df109045cb7937621ec647d86ec0'
+         '9edea53d6653e16dc1dbf8853f3d8fe5')
 
 prepare() {
     cd ${srcdir}/${extract}
     find . -name '._*' -print0 | xargs -0 -r rm
+    patch -p1 < ${srcdir}/cmake_fix_gc.patch
 
     mkdir -p ${srcdir}/build
     cd ${srcdir}/build

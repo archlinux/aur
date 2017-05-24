@@ -1,0 +1,64 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5a74201..56064a4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -42,7 +42,8 @@ include(setupOptions)
+ # We add libraries before setting up compilers because
+ # some of our options are incompatible with e.g. GC
+ if(USE_GC)
+-   add_subdirectory(libs/gc/gc)
++   set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++   add_subdirectory(libs/gc/gc-7.2f)
+ endif()
+ 
+ # 
+diff --git a/cmake/ndifftests.cmake b/cmake/ndifftests.cmake
+index 4d04afc..b0e2344 100644
+--- a/cmake/ndifftests.cmake
++++ b/cmake/ndifftests.cmake
+@@ -74,11 +74,6 @@ ndiff_test(test-thick-quad 0)
+ ndiff_test(test-thick-quad-2 0)
+ ndiff_test(test-thick-quad-3 0)
+ 
+-if(USE_GC)
+-   ndiff_test(test-memory 1)
+-   set_tests_properties(test-memory_LONG PROPERTIES TIMEOUT 60)
+-endif()
+-
+ ndiff_test(test-survey-2 0)
+ 
+ ndiff_test(test-cororbit 1)
+@@ -150,6 +145,7 @@ ndiff_test(test-table 0)
+ ndiff_test(test-line 0)
+ 
+ ndiff_test(test-memory 1)
++# set_tests_properties(test-memory_LONG PROPERTIES TIMEOUT 60)
+ ndiff_test(test-beam 0)
+ set_tests_properties(test-beam PROPERTIES WILL_FAIL 1)
+ 
+diff --git a/cmake/setupOptions.cmake b/cmake/setupOptions.cmake
+index b27ff09..743cf3e 100644
+--- a/cmake/setupOptions.cmake
++++ b/cmake/setupOptions.cmake
+@@ -68,7 +68,7 @@ if(MADX_NTPSA)
+     add_definitions("-D_NTPSA")
+ endif()
+ 
+-option(USE_GC "Use Garbage Collector" OFF)
++option(USE_GC "Use Garbage Collector" ON)
+ if(USE_GC)
+    add_definitions("-D_USEGC")
+ endif()
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b98b4fc..2cf346a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -109,7 +109,7 @@ target_link_libraries(madx  ${CMAKE_THREAD_LIBS_INIT} ${STDCPP_LIBS})
+ 
+ # Garbage collector:
+ if(USE_GC)
+-   include_directories(${CMAKE_SOURCE_DIR}/libs/gc/gc/include)
++   include_directories(${CMAKE_SOURCE_DIR}/libs/gc/gc-7.2f/include)
+ endif()
+ 
+ # Defining specific stuff for packaging:
