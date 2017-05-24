@@ -2,12 +2,12 @@
 
 pkgname=fastqc
 pkgver=0.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A quality control tool for high throughput sequence data.'
 arch=('any')
 url="http://www.bioinformatics.babraham.ac.uk/projects/fastqc"
 license=('GPL3')
-depends=('perl' 'java-environment>=6')
+depends=('perl' 'java-environment>=6' 'ttf-dejavu')
 source=("http://www.bioinformatics.babraham.ac.uk/projects/$pkgname/${pkgname}_v$pkgver.zip")
 md5sums=('3524f101c0ab0bae77c7595983170a76')
 
