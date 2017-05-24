@@ -3,7 +3,7 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=20170102
+pkgver=20170524
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -11,8 +11,9 @@ arch=('i686' 'x86_64')
 url="http://flightgear.org/"
 license=('GPL')
 depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'openal' 'fgdata-git' 'openscenegraph' 'subversion')
-optdepends=('qt5-base: fgfs --launcher')
-makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear-git' 'qt5-base')
+optdepends=('qt5-base: fgfs --launcher'
+            'qt5-declarative: fgfs --launcher')
+makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear-git' 'qt5-base' 'qt5-declarative')
 provides=('flightgear-git' 'flightgear')
 conflicts=('flightgear')
 source=(git://git.code.sf.net/p/flightgear/flightgear)
@@ -35,7 +36,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     ../${_gitname}
 
-  uudecode -o ../${_gitname}/package/flightgear.png ../${_gitname}/package/flightgear.png.uue
   make || return 1
   sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear --launcher|' ../${_gitname}/package/flightgear.desktop
 }
@@ -44,9 +44,9 @@ package(){
   cd "${srcdir}/${_gitname}-build/"
   make DESTDIR="$pkgdir" install
 
-  install -Dm0644 ../${_gitname}/package/flightgear.desktop $pkgdir/usr/share/applications/flightgear.desktop
-  install -Dm0644 ../${_gitname}/package/flightgear.ico $pkgdir/usr/share/icons/flightgear.ico
-  install -Dm0644 ../${_gitname}/package/flightgear.png $pkgdir/usr/share/icons/flightgear.png
-  install -Dm0644 ../${_gitname}/scripts/completion/fg-completion.bash $pkgdir/usr/share/bash-completion/completions/fgfs
+  install -Dm0644 ../${_gitname}/package/org.flightgear.FlightGear.desktop "$pkgdir"/usr/share/applications/flightgear.desktop
+  install -Dm0644 ../${_gitname}/package/flightgear.ico "$pkgdir"/usr/share/icons/flightgear.ico
+  install -Dm0644 ../${_gitname}/scripts/completion/fg-completion.bash "$pkgdir"/usr/share/bash-completion/completions/fgfs
+  install -Dm0644 ../${_gitname}/scripts/completion/fg-completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_fgfs
 }
 
