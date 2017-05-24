@@ -31,7 +31,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  make DISTDIR="$pkgdir"  DESTDIR="$pkgdir" PREFIX="/dinmamma" install
+  make DISTDIR="$pkgdir"  DESTDIR="$pkgdir" PREFIX="/usr" install
 }
 
 # vim:set ts=2 sw=2 et:
