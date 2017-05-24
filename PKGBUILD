@@ -4,7 +4,7 @@
 
 pkgname=cryfs
 pkgver=0.9.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Cryptographic filesystem for the cloud"
 arch=('armv7h' 'i686' 'x86_64')
 depends=('boost'
@@ -22,7 +22,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cryfs/$pkgname/tar.
         spdlog.diff::https://github.com/cryfs/cryfs/commit/f1c6fa044f44e33c0c9e6eab78877d47ac4c87be.diff)
 sha256sums=('4d65c462fa988f698090f00052cbb236cfc7e7524b872f96409187bc5285eedd'
             'SKIP'
-            '10540361f6fcf99bd88c6c3673677af5c005a449595df96670bc776b52a6bf78')
+            '13c93eae25e969db0bbe2182b509bc4890e38c847d97818711fbb40e7c9e8ff9')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
