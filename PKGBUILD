@@ -1,7 +1,7 @@
 # Maintainer: Denis Yantarev <denis dot yantarev at gmail dot com>
 
 pkgname=smstools3
-pkgver=3.1.20
+pkgver=3.1.21
 pkgrel=1
 pkgdesc="SMS gateway which can send and receive messages through GSM modems and mobile phones"
 arch=('i686' 'x86_64')
@@ -12,25 +12,17 @@ install=smsd.install
 depends=('bash')
 makedepends=()
 source=(http://smstools3.kekekasvi.com/packages/$pkgname-$pkgver.tar.gz
-	sendsms.patch
 	smsd.install
 	smsd.conf
 	smsd.tmpfiles
 	smsd.logrotate
 	smsd.service)
-md5sums=('2f2c83aabc93b94a6a8f0f1e898635ef'
-         'eabdaf793ed2fb9883ea0923b31450d3'
+md5sums=('6a9f038fb38a49cc3a4f8f14a88fb8af'
          '24b41505c471d0594174bca4a1555f8f'
          'ebc64ebc17f874fc0b1e6f0b4ce7fc79'
          '6209da5f6d2b53bb8814f6181aa42848'
          '647c58aa56c6a29d6e68e73c239715f4'
          '7357a577480e95463112963f4244d2c1')
-
-prepare()
-{
-	cd $srcdir || return 1
-	patch -p0 <sendsms.patch || return 1
-}
 
 build()
 {
