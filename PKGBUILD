@@ -1,11 +1,11 @@
 pkgname=fahcontrol
 pkgver=7.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A Graphical User Interface (GUI)for Folding@Home'
-url="http://folding.stanford.edu/English/HomePage"
+url="http://folding.stanford.edu"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('gtk2' 'python2' 'pygtk' 'glib2' 'pango')
+depends=('gtk2' 'python2' 'pygtk' 'glib2' 'pango' 'foldingathome')
 options=('!docs' '!libtool')
 source=(https://folding.stanford.edu/releases/public/release/fahcontrol/debian-testing-64bit/v7.4/fahcontrol_7.4.4-1_all.deb)
 md5sums=('f8278d80824d7da65c5b34136a18a0de')
