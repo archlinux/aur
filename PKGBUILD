@@ -9,8 +9,8 @@ pkgrel=1
 arch=('any')
 url='https://electronpass.github.io'
 license=('GPL3')
-depends=('libsodium')
-makedepends=('git' 'gcc-libs')
+depends=('libsodium' 'gcc-libs')
+makedepends=('git')
 provides=('libelectronpass')
 groups=('electronpass')
 
