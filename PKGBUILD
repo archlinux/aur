@@ -4,14 +4,14 @@
 
 pkgname=moneymanagerex-git
 _gitname=moneymanagerex
-pkgver=1.3.0.r125.f70094d3
+pkgver=1.4.0.alpha1.r0.0e72d84a
 pkgrel=1
 pkgdesc="An easy-to-use personal finance suite"
 arch=('i686' 'x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
 depends=('wxgtk' 'webkitgtk2' 'hicolor-icon-theme') 
-makedepends=('git' 'boost' 'gettext')
+makedepends=('cmake' 'git' 'boost' 'gettext')
 optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
@@ -26,20 +26,19 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_gitname"
-
+  mkdir -p build
   git submodule update --init
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-
-  ./configure --prefix=/usr --disable-shared --enable-unicode
+  cd "$srcdir/$_gitname/build"
+  cmake -DCMAKE_BUILD_TYPE=Release ..
   make
   make po
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_gitname/build"
 
   make DESTDIR="${pkgdir}" install
 }
