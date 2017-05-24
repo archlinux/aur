@@ -1,8 +1,8 @@
 # Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=dpf-plugins-git
-pkgver=r80.4477c3e
-pkgrel=2
+pkgver=r81.954fd27
+pkgrel=1
 pkgdesc="Collection of DPF-based plugins by DISTRHO. LV2, LADSPA, dssi and VST."
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
