@@ -1,0 +1,16 @@
+pkgbase = sndio-git
+	pkgdesc = A small audio and MIDI framework part of the OpenBSD project
+	pkgver = 1.0.1.r123.f8436a7
+	pkgrel = 1
+	url = http://www.sndio.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = sndio
+	source = git+http://caoua.org/git/sndio
+	source = 0001-put-cookie-somewhere-better.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = sndio-git
+

@@ -1,0 +1,34 @@
+From 020bd1da2875b573862b333a4a7d13cbdfd94fea Mon Sep 17 00:00:00 2001
+From: Ivy Foster <ivy.foster@gmail.com>
+Date: Wed, 1 Feb 2017 14:17:52 -0600
+Subject: [PATCH] put cookie somewhere better
+
+---
+ libsndio/aucat.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libsndio/aucat.c b/libsndio/aucat.c
+index 10ddce4..9dfad79 100644
+--- a/libsndio/aucat.c
++++ b/libsndio/aucat.c
+@@ -244,7 +244,7 @@ _aucat_wdata(struct aucat *hdl, const void *buf, size_t len,
+ static int
+ aucat_mkcookie(unsigned char *cookie)
+ {
+-#define COOKIE_SUFFIX	"/.aucat_cookie"
++#define COOKIE_SUFFIX	"/aucat_cookie"
+ #define TEMPL_SUFFIX	".XXXXXXXX"
+ 	struct stat sb;
+ 	char *home, *path = NULL, *tmp = NULL;
+@@ -257,7 +257,7 @@ aucat_mkcookie(unsigned char *cookie)
+ 	/*
+ 	 * try to load the cookie
+ 	 */
+-	home = issetugid() ? NULL : getenv("HOME");
++	home = issetugid() ? NULL : getenv("XDG_CACHE_HOME");
+ 	if (home == NULL)
+ 		goto bad_gen;
+ 	home_len = strlen(home);
+-- 
+2.11.0
+
