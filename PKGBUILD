@@ -1,40 +1,42 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=parquet-cpp
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A C++ library to read and write the Apache Parquet columnar data format."
 arch=('i686' 'x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('gcc-libs')
+depends=('gcc-libs' 'boost-libs' 'arrow')
 checkdepends=()
 optdepends=()
-makedepends=('brotli' 'cmake' 'gcc-libs' 'snappy-static' 'thrift-static')
-source=("git+https://github.com/apache/parquet-cpp.git")
-sha256sums=('SKIP')
+makedepends=('brotli' 'cmake' 'snappy-static' 'thrift-static' 'boost')
+source=("https://github.com/apache/parquet-cpp/archive/apache-$pkgname-$pkgver.tar.gz")
+sha256sums=('7fb059900c313a5cbc6990ba5405df6076dd5f78d5430cfcb2d19d5d5f4043df')
 
 build(){
-  cd "$srcdir"
+  cd "$srcdir/$pkgname-apache-$pkgname-$pkgver"
   mkdir -p build
-  cd "$srcdir/build"
-  PARQUET_BUILD_TOOLCHAIN=/usr cmake ../$pkgname \
+  cd build
+  PARQUET_BUILD_TOOLCHAIN=/usr cmake .. \
     -DCMAKE_BUILD_TYPE=release \
     -DPARQUET_BUILD_TESTS=off \
     -DPARQUET_BUILD_EXECUTABLES=off \
     -DPARQUET_BUILD_BENCHMARKS=off \
+    -DPARQUET_ARROW=on \
+    -DPARQUET_USE_SSE=on \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib"
     make
 }
 
 package(){
-  cd "$srcdir/build"
+  cd "$srcdir/$pkgname-apache-$pkgname-$pkgver/build"
   make DESTDIR="${pkgdir}" install
 }
 
-check(){
-  cd "$srcdir/build"
-  make test
-}
+#check(){
+#  cd "$srcdir/$pkgname-apache-$pkgname-$pkgver/build"
+#  make test
+#}
 # vim:ts=2:sw=2:et:
