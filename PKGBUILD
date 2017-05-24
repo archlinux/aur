@@ -8,7 +8,7 @@
 
 pkgname=dosemu-git
 pkgver=1.4.0.8.r753.18f6f5cd
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="DOS emulator"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=('dosemu::git://git.code.sf.net/p/dosemu/code#branch=devel'
         debianize.patch
         xdosemu.desktop)
 sha512sums=('SKIP'
-            '742343992ac32e2196fef56472f8734ff1314b930938d8ac2f916c612dc0046d1f9d4d3ede82e5a5513a6d2071a88a3803a91ea2789d67dc920b445c0e37a3ce'
+            'e65cf0fdb119f9923574d2a3f68cb272a1430554271e1968da3899ad43d1c763a818080f06951e7aaf84f057691a8b038eab6256e34f519c4a2a570de3697f83'
             '173525b8c622315dfe3860c9fda62e48c19603bad84f16cbc4db723a2a4c80adc85069fc6a8696229253adc03d29ea35c79fdaf1ca911c4d8d96e5de9c38ff39'
             'ff3ccaebb84eca622484f98750f360de5470f169271eed7500b713dcfb705c32618af239494741ea3396c5e1d9d97f374aa4e6346bf171f158d645d10ba24de7')
 noextract=('dosemu-freedos-1.2-bin.tgz')
