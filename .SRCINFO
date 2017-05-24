@@ -1,6 +1,6 @@
 pkgbase = latte-dock-git
 	pkgdesc = A dock based on plasma frameworks - git version
-	pkgver = 0.6.0.r178.g6a9622d
+	pkgver = 0.6.0.r259.g325b352
 	pkgrel = 1
 	url = https://github.com/psifidotos/Latte-Dock
 	arch = i686
