@@ -3,18 +3,18 @@
 # Contributor: rtfreedman  (rob<d0t>til<d0t>freedman<aT>googlemail<d0t>com
 
 pkgname=steinberg-vst36
-pkgver=3.6.6
+pkgver=3.6.7
 pkgrel=1
 pkgdesc="Steinberg's VST SDK (version 3.6)"
 arch=('any')
 url="http://www.steinberg.net/en/company/developers.html"
 license=('custom')
 provides=('steinberg-vst')
-source=(http://www.steinberg.net/sdk_downloads/vstsdk366_27_06_2016_build_61.zip)
-md5sums=('6485724a5a07abedde6c415c5f6ac4e8')
+source=(http://www.steinberg.net/sdk_downloads/vstsdk367_03_03_2017_build_352.zip)
+md5sums=('b4ed4f4f4be77b267f1821fc1413ea36')
 
 package() {
-  cd "$srcdir/VST3 SDK"
+  cd "$srcdir/VST_SDK/VST2_SDK/"
 
   # install headers
   mkdir -p "$pkgdir/usr/include/vst36/pluginterfaces/vst2.x"
@@ -23,6 +23,7 @@ package() {
     "$pkgdir/usr/include/vst36/pluginterfaces/vst2.x/"
 
   # install license
+  cd "$srcdir/VST_SDK/VST3_SDK/"
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 doc/*License* "$pkgdir/usr/share/licenses/$pkgname/"
 }
