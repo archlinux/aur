@@ -1,7 +1,7 @@
 # Maintainer: Sum01 https://github.com/sum01
 pkgname=('vcash-electron')
 pkgver=0.31.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Vcash GUI bundled with the Vcash wallet."
 arch=('x86_64')
 url="https://github.com/whphhg/vcash-electron"
@@ -19,13 +19,13 @@ source=("https://github.com/whphhg/vcash-electron/releases/download/v$pkgver/Vca
 				"https://github.com/whphhg/vcash-electron/raw/master/build/icons/256x256.png"
 				"vcash-electron.desktop")
 sha256sums=('d7b90bd349fe6be1e08d34d28b170c2c60a6e468c2c36ecfc44da7d3f6705453'
-            'c1737e5e05e153e95a743c7989df0dfe8c197e4159e8341ced9d6ca84ae99ab5'
-            '2b4b19808cabb18820d802e4e26f0f587e73fc8a0fd78fb6f70a9337e8a4ad89'
-            '747f9d0ae02f6e6b8bab6a04794f66c88e6a8b1a6d4c4af938c7aa12adb29c28'
-            'e85907fb18237fd6abe5a4aa464a8e9869d8293fe5acb593e550c13005c893b9'
-            'f215ece667efc575bf452c4ea720da15d759f346453b53f6aed01022cc968a1d'
-            '5bb6e09574141d9e807fd04050bc800d7f5ae6413f5bfd9359fd095ef2e0ece2'
-						'f8bf3982de98c9ba9c2901ac821053c9550742e47e5e5640fbebb80076cb253f')
+						'c1737e5e05e153e95a743c7989df0dfe8c197e4159e8341ced9d6ca84ae99ab5'
+						'2b4b19808cabb18820d802e4e26f0f587e73fc8a0fd78fb6f70a9337e8a4ad89'
+						'747f9d0ae02f6e6b8bab6a04794f66c88e6a8b1a6d4c4af938c7aa12adb29c28'
+						'e85907fb18237fd6abe5a4aa464a8e9869d8293fe5acb593e550c13005c893b9'
+						'f215ece667efc575bf452c4ea720da15d759f346453b53f6aed01022cc968a1d'
+						'5bb6e09574141d9e807fd04050bc800d7f5ae6413f5bfd9359fd095ef2e0ece2'
+            'f76a097cfa68d4a5bad32f4c1dee4d15f6d0232c420b2c552ade062d00bde54c')
 
 package() {
 	cd $srcdir/linux-unpacked
