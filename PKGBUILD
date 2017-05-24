@@ -1,7 +1,7 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=pencil
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sketching and GUI prototyping/wireframing tool"
 arch=('any')
 license=('GPL2')
@@ -20,5 +20,5 @@ package() {
 
     install -d "$pkgdir/usr/share/$pkgname/" "$pkgdir/usr/bin"
     cp -r dist/linux-unpacked/* "$pkgdir/usr/share/$pkgname/"
-    ln -s "$pkgdir/usr/share/$pkgname/pencil" "$pkgdir/usr/bin"
+    ln -s "/usr/share/$pkgname/pencil" "$pkgdir/usr/bin/"
 }
