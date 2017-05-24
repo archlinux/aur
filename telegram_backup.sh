@@ -22,4 +22,4 @@ then
   APP_ARGS="-open"
 fi
 
-"$JAVA_EXEC" -jar /usr/share/java/sweethome3d.jar "$APP_ARGS" "$@"
+"$JAVA_EXEC" -jar /usr/share/java/telegram_backup.jar "$APP_ARGS" "$@"
