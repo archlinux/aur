@@ -13,7 +13,7 @@ source=("https://github.com/fabianonline/${pkgname}/releases/download/${pkgver}/
         "${pkgname}.sh")
 
 sha256sums=('1e93e42b52d04e07b9cdf46b10bc8d9c6726f17dd2f04a2e69fd582ce679d780'
-            'c2e8fc8fb29761a1b273edba2a55bd57b48fa936815fcb2988a3f2a92bf30231')
+            'a5cdcd1bbe28c941a22f26fdce3cd49e737af16141db580aaf3a7e33229f58a0')
 
 package() {
   cd "${srcdir}"

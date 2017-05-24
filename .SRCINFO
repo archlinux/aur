@@ -9,7 +9,7 @@ pkgbase = telegram_backup
 	source = https://github.com/fabianonline/telegram_backup/releases/download/1.0.6/telegram_backup.jar
 	source = telegram_backup.sh
 	sha256sums = 1e93e42b52d04e07b9cdf46b10bc8d9c6726f17dd2f04a2e69fd582ce679d780
-	sha256sums = c2e8fc8fb29761a1b273edba2a55bd57b48fa936815fcb2988a3f2a92bf30231
+	sha256sums = a5cdcd1bbe28c941a22f26fdce3cd49e737af16141db580aaf3a7e33229f58a0
 
 pkgname = telegram_backup
 
