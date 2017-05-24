@@ -2,7 +2,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname='netsurf-git'
-pkgver=3.5.r168.g22d84a5
+pkgver=3.6.r434.g79cde2cef
 pkgrel=1
 pkgdesc='Lightweight and fast web browser'
 url='http://www.netsurf-browser.org/'
@@ -11,7 +11,7 @@ license=('MIT' 'GPL2')
 depends=('curl' 'desktop-file-utils' 'duktape' 'gtk3' 'lcms' 'libmng' 'librsvg' 
 	'libcss-git' 'libdom-git' 'libnsbmp-git' 'libnsgif-git' 'libnsutils-git' 'libutf8proc-git'
 )
-makedepends=('git' 'inetutils' 'netsurf-buildsystem-git' 'nsgenbind-git')
+makedepends=('git' 'inetutils' 'netsurf-buildsystem-git' 'nsgenbind-git' 'perl-html-parser')
 optdepends=('gstreamer0.10: In-browser video support')
 provides=('netsurf')
 conflicts=('netsurf')
