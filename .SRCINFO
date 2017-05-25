@@ -1,0 +1,21 @@
+
+pkgbase = dyaml-git
+	pkgdesc = YAML parser and emitter for D language - git checkout
+	pkgver = v0.4.5.r402.5a52601
+	pkgrel = 1
+	url = https://github.com/dlang-community/D-YAML
+	arch = x86_64
+	arch = i686
+	license = custom:Boost
+	makedepends = git
+	makedepends = dub
+	depends = bash
+	source = git://github.com/dlang-community/D-YAML.git
+	source = git://github.com/ximion/tinyendian.git
+	source = dyaml-config
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = f8eb0fbdedb405f8f547790835c41234
+
+pkgname = dyaml-git
+

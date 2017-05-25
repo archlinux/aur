@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+case $1 in
+	"--include") echo "-I/usr/include/dyaml";;
+	"--libs") echo "-L/usr/lib/libdyaml.a";;
+	*) echo "Usage: dyaml-config [--include] [--libs]";;
+esac
