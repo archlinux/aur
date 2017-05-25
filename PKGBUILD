@@ -4,8 +4,8 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-userns
-_srcname=linux-4.10
-pkgver=4.10.13
+_srcname=linux-4.11
+pkgver=4.11.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -24,12 +24,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'ubuntu-unprivileged-overlayfs.patch')
 
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'b1a7a98aa97cc0917fcab0def68032d5bf61838c79177b2222cee2485015458f'
+            'df7138c754c95f2c22127d1d76c122dbfe26b0b586572855d9d095f0d112b29b'
             'SKIP'
-            '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
-            '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
+            'e4e928488d35ba2b4049bd224dee87be9eb574ed3c1882f22c8fd5d8674c9abd'
+            '2e38528bd2f1be712f5a274b66882c41d2a9cf996b3a05b4a772c8ba7309b261'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa')
