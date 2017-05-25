@@ -1,7 +1,8 @@
 # Maintainer: epitron <chris@ill-logic.com>
+
 pkgname=svox-pico-bin
 pkgver=1.0+git20130326
-pkgrel=1
+pkgrel=5
 pkgdesc='The text-to-speech engine used on Android phones'
 url='https://android.googlesource.com/platform/external/svox/+/master'
 license=('custom')
@@ -9,45 +10,39 @@ arch=('i686' 'x86_64')
 
 if [[ $CARCH = i686 ]]; then
   _arch=i386
-
-  sha256sums=(
-    f6c95bbe61a443a11ae3bf415f0873908994784faa74cf68de53b36bfe67a5ff 
-    c761855de47e4e21ec8ddca5ed55dec4690928f0c8bdf1120dfd9af85b5a1335
-    6c47e936341b6d2f23d62b29902b7b72dffed02e9d9e9ed2878a61a9611dc698
-    a1fa3f1938b6856254d09cf51d7c6344b79cff25c807adf39bb26b141910e492
-  )
+  sha256sums=('c89c1de8ee77a258c6f191481abd0332629281b1224549f6ab86787fe08f5cd5'
+              '1bc7c5e0e11a7533103cd9eee4971aae691d057ea4621cb7ca93dec3019f23cd'
+              'dd61781cd803232e8fbe0a086d390c7a949231fb09d0e922c2d8df703b7b2bb8'
+              'a1fa3f1938b6856254d09cf51d7c6344b79cff25c807adf39bb26b141910e492')
 else
   _arch=amd64
-
-  sha256sums=(
-    93384ae527250eb8edba9c48da806c59386214b0769ef1da9b4a6054885eb387
-    c761855de47e4e21ec8ddca5ed55dec4690928f0c8bdf1120dfd9af85b5a1335
-    767880e8d29e5c84a635b54dc096d78ccfeb32c15e2d41c948eda26cd3702f2b
-    a1fa3f1938b6856254d09cf51d7c6344b79cff25c807adf39bb26b141910e492
-  )
+  sha256sums=('96f430e3433bea077a9ffd69f60db5337dbf04c18fe0eecb7303a9808c51e4f2'
+              '1bc7c5e0e11a7533103cd9eee4971aae691d057ea4621cb7ca93dec3019f23cd'
+              '851369a1b9f9a47d3f0e7d563f4ea77f9537b85ef165f3abce77d0bd1b79b846'
+              'a1fa3f1938b6856254d09cf51d7c6344b79cff25c807adf39bb26b141910e492')
 fi
 
 source=(
-  "http://mirrors.kernel.org/ubuntu/pool/multiverse/s/svox/libttspico0_1.0+git20130326-1ubuntu1_${_arch}.deb"
-  "http://mirrors.kernel.org/ubuntu/pool/multiverse/s/svox/libttspico-data_1.0+git20130326-1ubuntu1_all.deb"
-  "http://mirrors.kernel.org/ubuntu/pool/multiverse/s/svox/libttspico-utils_1.0+git20130326-1ubuntu1_${_arch}.deb"
-  "picospeaker"
+  "http://mirrors.kernel.org/ubuntu/pool/multiverse/s/svox/libttspico0_1.0+git20130326-5_${_arch}.deb"
+  "http://mirrors.kernel.org/ubuntu/pool/multiverse/s/svox/libttspico-data_1.0+git20130326-5_all.deb"
+  "http://mirrors.kernel.org/ubuntu/pool/multiverse/s/svox/libttspico-utils_1.0+git20130326-5_${_arch}.deb"
+  "picospeaker" # source: https://raw.githubusercontent.com/the-kyle/picospeaker/master/picospeaker
 )
 
 noextract=(
-  "libttspico0_1.0+git20130326-1ubuntu1_${_arch}.deb"
-  "libttspico-data_1.0+git20130326-1ubuntu1_all.deb"
-  "libttspico-utils_1.0+git20130326-1ubuntu1_${_arch}.deb"
+  "libttspico0_1.0+git20130326-5_${_arch}.deb"
+  "libttspico-data_1.0+git20130326-5_all.deb"
+  "libttspico-utils_1.0+git20130326-5_${_arch}.deb"
 )
 
 depends=('popt')
+makedepends=('binutils')
 optdepends=('sox: for using the picospeaker script')
 
-# picospeaker source: https://raw.githubusercontent.com/the-kyle/picospeaker/master/picospeaker
 
 package() {
   for deb in "${noextract[@]}"; do
-    ar p "$deb" data.tar.gz | tar zx -C "$pkgdir/"
+    ar p "$deb" data.tar.xz | tar Jx -C "$pkgdir/"
   done
 
   mv "$pkgdir/usr/lib/"*-linux-gnu/* "$pkgdir/usr/lib"
