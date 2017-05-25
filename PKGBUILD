@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=icon-git
-pkgver=19.g047cee9
+pkgver=21.gcfed634
 pkgrel=1
 pkgdesc="The Icon programming language"
 arch=('i686' 'x86_64')
