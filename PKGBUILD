@@ -27,7 +27,7 @@ build() {
   cd $_gitname
   ./autogen.sh
   ./configure --prefix=/usr --disable-error-on-warning \
-	--program-suffix=2.3
+	--program-suffix=3.0
   make LDFLAGS+="-lpthread"
 }
 
@@ -37,9 +37,9 @@ package() {
   cd $pkgdir/usr/share/info
   for i in guile*
   do
-    mv $i guile-2.3${i#guile}
+    mv $i guile-3.0${i#guile}
   done
-  mv r5rs.info r5rs-2.3.info
-  mv $pkgdir/usr/share/aclocal/guile.m4 $pkgdir/usr/share/aclocal/guile-2.3.m4
+  mv r5rs.info r5rs-3.0.info
+  mv $pkgdir/usr/share/aclocal/guile.m4 $pkgdir/usr/share/aclocal/guile-3.0.m4
   rm $pkgdir/usr/lib/libguile-3.0.so.0.0.0-gdb.scm
 }
