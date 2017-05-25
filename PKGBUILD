@@ -3,19 +3,29 @@
 
 pkgname=mustache-d
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Moustache template engine for D"
-arch=(any)
+arch=(x86_64 i686)
 url="https://github.com/repeatedly/mustache-d"
 license=(custom:boost)
 depends=()
-makedepends=()
+makedepends=(meson ldc)
 source=($pkgname-$pkgver::"https://github.com/repeatedly/mustache-d/archive/v$pkgver.tar.gz" "http://www.boost.org/LICENSE_1_0.txt")
 sha256sums=('b8cf5fe193b11dece663ad2d7f8acbcc02ef48334f0fdc922a2dde3f8ac64b57'
             'c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566')
 
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  meson ../$pkgname-$pkgver --prefix=/usr
+  ninja
+}
+
 package() {
-  cd $pkgname-$pkgver
-  install -Dm644 src/mustache.d "$pkgdir"/usr/include/d/mustache-d/mustache.d
+  cd build
+  DESTDIR="$pkgdir" ninja install
   install -Dm644 "$srcdir"/LICENSE_1_0.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
