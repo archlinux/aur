@@ -1,8 +1,8 @@
 pkgbase = openvpn-nordvpn
 	pkgdesc = OpenVPN helper script for nordvpn.com
-	pkgver = 17.5.24
-	pkgrel = 11
-	url = http://www.nordvpn.com
+	pkgver = 17.5.25
+	pkgrel = 12
+	url = https://github.com/nstinus/nordvpn
 	install = openvpn-nordvpn.install
 	arch = any
 	license = MIT
@@ -16,6 +16,8 @@ pkgbase = openvpn-nordvpn
 	optdepends = iputils: run ping and rank functions
 	optdepends = vpnfailsafe-git: use instead of update-resolv-conf if available
 	provides = nordvpn
+	source = https://github.com/nstinus/nordvpn.git#8bedcb2
+	sha1sums = SKIP
 
 pkgname = openvpn-nordvpn
 
