@@ -1,16 +1,16 @@
-# Maintainer: unclesam <web _AT_ shinobi-mail _DOT_ de>
-# Contributor: willemw <willemw12@gmail.com>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: unclesam <web _AT_ shinobi-mail _DOT_ de>
 
 _pkgname=mintstick
 pkgname=$_pkgname-git
-pkgver=r155.ce797e4
+pkgver=r169.1020c77
 pkgrel=1
 pkgdesc="Format or write images to usb-sticks (Linux Mint tool)"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/mintstick"
 license=('GPL')
-depends=('python2-dbus' 'python2-gobject' 'python2-pyparted' 'udisks' 'dosfstools')
-optdepends=('ntfs-3g' 'e2fsprogs')
+depends=('desktop-file-utils' 'dosfstools' 'python2-dbus' 'python2-gobject' 'python2-pyparted' 'udisks2')
+optdepends=('e2fsprogs' 'ntfs-3g')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -36,3 +36,4 @@ package() {
   install -d "$pkgdir/usr/share/polkit-1/actions"
   ./install.sh
 }
+
