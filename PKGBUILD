@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname="sickgear"
-pkgver=0.12.18
+pkgver=0.12.19
 pkgrel=1
 pkgdesc="Automate your TV enjoyment with innovation, proven stability and reliability."
 arch=("any")
@@ -35,11 +35,11 @@ source=("$url/archive/release_$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "0001-adjust-imports.patch")
-sha256sums=('e391dfbb1be6eeeeccac840e065f8d8eb7c07eb02a043d55fac18a4e09d2cc48'
+sha256sums=('071962dd278af21aa49b5a59849883d61b7f2a033c85d919fcbceaacd82b5ae8'
             '91cd5e6bb57f23321926757497ba6cc8d4ac82784c73795279d17eab1d26a1dc'
             '8421dae047549f0db56278e8e2a0a46762804ac4552a5438c9093840fef0f57d'
             '43ed9ebfcda9e254084cc1bd43d3bca988139267406654f96a5f78ab223a323c'
-            '4f9b8e75953d6b07fe43faefb7dd973ec1def7271c256409a128cd1fb37c5c8a')
+            '3188b34d5277eacf2bae51016c2d69ac51ef86dba619ce61dde29b1ec46ddb40')
 
 prepare() {
     cd "SickGear-release_$pkgver"

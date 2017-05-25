@@ -1,4 +1,4 @@
-From dd6c00f893dfeee1629a1ac60ed6aaab0cc3e2f0 Mon Sep 17 00:00:00 2001
+From 20c2f88b73a24e1154af82f2e26b2a4421ce5960 Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
 Date: Fri, 17 Mar 2017 14:53:05 -0500
 Subject: [PATCH] adjust imports
@@ -27,7 +27,6 @@ Subject: [PATCH] adjust imports
  sickbeard/providers/dh.py           | 2 +-
  sickbeard/providers/fano.py         | 2 +-
  sickbeard/providers/filelist.py     | 2 +-
- sickbeard/providers/freshontv.py    | 2 +-
  sickbeard/providers/funfile.py      | 2 +-
  sickbeard/providers/gftracker.py    | 2 +-
  sickbeard/providers/grabtheinfo.py  | 2 +-
@@ -56,7 +55,7 @@ Subject: [PATCH] adjust imports
  sickbeard/providers/zooqle.py       | 2 +-
  sickbeard/rssfeeds.py               | 2 +-
  sickbeard/webapi.py                 | 2 +-
- 52 files changed, 53 insertions(+), 53 deletions(-)
+ 51 files changed, 52 insertions(+), 52 deletions(-)
 
 diff --git a/SickBeard.py b/SickBeard.py
 index 5d6276d3..e55b11b6 100755
@@ -363,19 +362,6 @@ index 78b2328b..0f6f7cbd 100644
  
  
  class FLProvider(generic.TorrentProvider):
-diff --git a/sickbeard/providers/freshontv.py b/sickbeard/providers/freshontv.py
-index 7335dc09..c541f6c4 100644
---- a/sickbeard/providers/freshontv.py
-+++ b/sickbeard/providers/freshontv.py
-@@ -26,7 +26,7 @@ from . import generic
- from sickbeard import logger
- from sickbeard.bs4_parser import BS4Parser
- from sickbeard.helpers import tryInt
--from lib.unidecode import unidecode
-+from unidecode import unidecode
- 
- 
- class FreshOnTVProvider(generic.TorrentProvider):
 diff --git a/sickbeard/providers/funfile.py b/sickbeard/providers/funfile.py
 index b82d5e64..58e6d515 100644
 --- a/sickbeard/providers/funfile.py
