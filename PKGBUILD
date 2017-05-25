@@ -33,6 +33,8 @@ build() {
     go get github.com/spf13/viper
     echo "Install email"
     go get github.com/jordan-wright/email
+    echo "Install natsort"
+    go get bitbucket.org/zombiezen/cardcpx/natsort
 
     cd "$_builddir"
 
