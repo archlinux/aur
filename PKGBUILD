@@ -2,21 +2,21 @@
 # Contributor: rtfreedman
 
 pkgname=csoundqt
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A frontend for Csound featuring a highlighting editor with autocomplete, interactive widgets and integrated help"
 arch=('i686' 'x86_64')
 url="https://csoundqt.github.io/"
 license=('GPL3') # or, at your option, LGPL2
-depends=('csound' 'qt5-base' 'csound-doc')
+depends=('csound' 'qt5-base' 'csound-doc' 'qt5-declarative')
 makedepends=('shared-mime-info')
 _rtmidi=rtmidi-2.1.0
-source=("https://github.com/CsoundQt/CsoundQt/archive/$pkgver.tar.gz" 
+source=("https://github.com/CsoundQt/CsoundQt/archive/$pkgver.tar.gz"
         "csoundqt.desktop"
         "http://www.music.mcgill.ca/~gary/rtmidi/release/${_rtmidi}.tar.gz"
         "csoundqt-mime.xml"
         "csoundqt-icons.tar.gz")
-sha256sums=('409c3fe7081d51561392f96732066d1f2f5168d76e7a10c2dd60ea632fc6d58b'
+sha256sums=('fd7555c997ef0ec6fc89ba0e3008dd22ae7adf3a4d06fc79e65fd1f7291f3286'
             '6d08233ee50eec15bbcb59f1edcee56626264fb37590603bc88af4764e8dda9d'
             'a0a59226614b878e7c32890cb7c38a6fe48a97082baf4913297d4c3958a9b3ac'
             '2d78945761ff6f673ac93f7d879a691eb77466e73a40ef77e4a8f3c3c374d599'
