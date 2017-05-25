@@ -1,7 +1,7 @@
 pkgbase = libcotp
 	pkgdesc = C library that generates TOTP and HOTP
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paolostivanin/libcotp
 	arch = i686
 	arch = x86_64

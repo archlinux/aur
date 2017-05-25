@@ -2,7 +2,7 @@
 
 pkgname=libcotp
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='C library that generates TOTP and HOTP'
 arch=('i686' 'x86_64')
 depends=('libbaseencode')
@@ -19,7 +19,7 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir build && cd $_
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    make cotp
 }
 
 package() {
