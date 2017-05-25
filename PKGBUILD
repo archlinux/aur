@@ -1,7 +1,7 @@
 # Maintainer: Cody P Schafer < aur [at] codyps.com >
 pkgbase=parallels-tools
 pkgname=(parallels-tools parallels-tools-dkms)
-pkgver=11.2.2.32651
+pkgver=11.2.2.32663
 pkgrel=4
 pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
@@ -36,8 +36,8 @@ source=(
 	'0001-fix-4.10.y.patch'
 )
 
-sha1sums=('af32269e60b11704be9fca73ea9586da01b37ae2'
-          '604bcee0d5c9ac6a347c6ce40792ddc7598f99dd'
+sha1sums=('1bb6c8d9b1fc8ff781d89cdd3856995002670911'
+          'af8932e2abd88d50c8135b9d1effa38abb3664ff'
           '8d7b264653f8167904d0328e1fc540fc0b7bc7eb'
           'a20911495461ed1950bee069d128fe6c7103c97d'
           'da5fcbc6a93f1d3939752838e53d1daea13307cb'
@@ -54,6 +54,7 @@ sha1sums=('af32269e60b11704be9fca73ea9586da01b37ae2'
 prepare() {
 	patch -p1 -i ../0001-fix-for-4.9.y.patch
 	patch -p1 -i ../0001-fix-4.10.y.patch
+	patch -p1 -i ../0001-fix-4.11.y.patch
 }
 
 package_parallels-tools() {
