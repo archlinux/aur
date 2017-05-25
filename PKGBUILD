@@ -1,6 +1,6 @@
-# Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
+# Maintainer: Radeox <dawid.weglarz95@gmail.com>
 pkgname="pomodoneapp"
-pkgver="1.5.998"
+pkgver="1.5.1008"
 pkgrel=1
 pkgdesc="Pomodoro timer for your favourite productivity tool"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ source_i686=("https://app.pomodoneapp.com/installers/PomoDoneApp-${pkgver}-ia32.
 source_x86_64=("https://app.pomodoneapp.com/installers/PomoDoneApp-${pkgver}.deb")
 source=("pomodoneapp.sh")
 sha256sums=('f35ab3bcd2c99d89edb1636d6359af1cf2b3e7af0e890ae525a23b55535b3860')
-sha256sums_i686=('b9a0630656ee2f213e01a860e28b8d2021a3278798f6270fa7419cadbee0ab78')
-sha256sums_x86_64=('c5c27e0abda607e5a6bfbc357ade92c4ad04e354925d332475f27ded30982d4d')
+sha256sums_i686=('69ea8b64510bebcb29b9f6787e38c7b9beb861c5b222539a4d3924a2ac4b144d')
+sha256sums_x86_64=('be32892b736f744eb94c7af9b391b2ee7622056e53053ed8543b92181c5c23cf')
 
 package() {
     cd "$srcdir"
