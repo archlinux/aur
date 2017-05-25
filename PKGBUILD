@@ -3,7 +3,7 @@
 pkgname=wcc-git
 _pkgname=wcc
 pkgver=0.0.1.r1.g391ae30
-pkgrel=1
+pkgrel=2
 pkgdesc="The Witchcraft Compiler Collection"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -32,6 +32,10 @@ build() {
 
 package() {
   cd "$_pkgname"
-  mkdir -p "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/bin"
   make DESTDIR="${pkgdir}/" install
+
+  # install manpages
+  install -d "${pkgdir}/usr/share/man/man1/"
+  install -pm 644 doc/manpages/* $pkgdir/usr/share/man/man1
 }
