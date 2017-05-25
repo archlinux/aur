@@ -7,11 +7,11 @@
 
 pkgname=packettracer
 pkgver=7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=( 'i686' 'x86_64' )
-depends_x86_64=('libopenssl-1.0-compat')
-depends_i686=('qtwebkit' 'libpng' 'libopenssl-1.0-compat')
+depends_x86_64=('openssl-1.0')
+depends_i686=('qtwebkit' 'libpng' 'openssl-1.0')
 url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
 
@@ -19,7 +19,7 @@ source=('packettracer' 'linguist' 'packettracer.sh')
 source_i686=('local://PacketTracer70_32bit_linux.tar.gz')
 source_x86_64=('local://PacketTracer70_64bit_linux.tar.gz')
 sha512sums=(
-'ddfe0b7dfd6fff32ff5b52429c07b2ea85bcc7b10abb465c16515d9cfaa5bc2c88ee0c38d022dc84072703f2d1d327f7c43c61451ec1605adc8cf049fa124473' 'bd800d5335e54436f760e4a21a381c5cca4752c864c559ebc302bdcfc9819a3cf76fecc3b1490fdfd18d0f98e14c0886d8c6b7776dd3814af7ade17b9c85d80a'
+'3fb22457ae4901bd22a8d984da6ae61354fa0c8a1be972a7ab0b48afcb3933bb8c0625dbd4f370fd4da394c8b043724e32ccced93c76f3536fac9defb941ac17' 'bd800d5335e54436f760e4a21a381c5cca4752c864c559ebc302bdcfc9819a3cf76fecc3b1490fdfd18d0f98e14c0886d8c6b7776dd3814af7ade17b9c85d80a'
 '3f4732213a9ca7c95f742edbdccf4d84c95e1c9e00d3dfa72e79b8039ef86bed29bc5b76586402a233ce3af409c0a56c759c2554e17962c292a6bd333654ce71')
 sha512sums_i686=('eb80fa9b56de1130ed751e67a20845f3b5c79e9967a64634f5a5058c4b1ac3274d68d7662456c1d247a984d27e5056da324efb4424fe8669a0aec11782b3e1b2')
 sha512sums_x86_64=('77e52d67c6d4a50e5e2508ea9a2a274d54dd1fbbbdd5995d0b4e975f4acf7ceb98a8914c0e7fe63bf8dacea65635668860bf2733d9d10377a2300ceecf657359')

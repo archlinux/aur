@@ -6,7 +6,6 @@
 # If you exprerience any troubles, try to uncomment
 # the following line
 
-export LD_PRELOAD=/usr/lib/libcrypto-compat.so.1.0.0
 export LD_LIBRARY_PATH="/usr/share/packettracer/lib"
 
 exec /usr/share/packettracer/bin/PacketTracer7 "$@"
