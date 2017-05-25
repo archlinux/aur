@@ -1,6 +1,6 @@
 pkgname=wcgbrowser-git
-pkgver=r122.0f8740c
-pkgrel=3
+pkgver=r131.fd26ba3
+pkgrel=1
 pkgdesc="A web browser for kiosk systems."
 arch=('any')
 url="http://www.alandmoore.com/wcgbrowser/wcgbrowser.html"
@@ -13,7 +13,7 @@ backup=("etc/wcgbrowser.yaml")
 _reponame="wcgbrowser"
 
 pkgver() {
-  
+
   cd "${srcdir}"/"${_reponame}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
 
   cd "${srcdir}"/"${_reponame}"
-  
+
   # Fix the path in wcgbrowser launch script
   sed -i 's|/usr/local|/usr|' wcgbrowser
 
@@ -31,10 +31,10 @@ prepare() {
 package(){
 
   cd "${srcdir}"/"${_reponame}"
-  
+
   # Make directories
   install -dm755 "${pkgdir}"/usr/share/doc/"${_reponame}"/examples
-  
+
   # Copy Files
   install -D -m644 browser.py "${pkgdir}"/usr/share/"${_reponame-}"/browser.py
   install -D -m755 wcgbrowser "${pkgdir}"/usr/bin/wcgbrowser

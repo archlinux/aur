@@ -1,7 +1,7 @@
 pkgbase = wcgbrowser-git
 	pkgdesc = A web browser for kiosk systems.
-	pkgver = r122.0f8740c
-	pkgrel = 3
+	pkgver = r131.fd26ba3
+	pkgrel = 1
 	url = http://www.alandmoore.com/wcgbrowser/wcgbrowser.html
 	arch = any
 	license = GPL
