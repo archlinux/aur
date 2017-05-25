@@ -9,7 +9,7 @@
 php_suffix="70" # This mutation
 php_ext="xdebug"
 pkgname="php${php_suffix}-${php_ext}"
-pkgver="2.5.3"
+pkgver="2.5.4"
 pkgrel=1
 
 
@@ -24,7 +24,7 @@ pkg_src="${php_ext}-${pkgver}"
 source=("https://www.xdebug.org/files/${pkg_src}.tgz"  'xdebug.ini')
 
 sha256sums=(
-  '4cce3d495243e92cd2e1d764a33188d60c85f0d2087d94d4203c354ea03530f4'
+  '300ca6fc3d95025148b0b5d0c96e14e54299e536a93a5d68c67b2cf32c9432b8'
   '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 
 
