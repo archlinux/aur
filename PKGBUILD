@@ -10,8 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee' 'libpulse'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'gobject-introspection'
-             'switchboard-git' 'vala')
+makedepends=('cmake' 'git' 'granite-git' 'gtk2' 'switchboard-git' 'vala')
 provides=('switchboard-plug-sound')
 conflicts=('switchboard-plug-sound')
 source=('git+https://github.com/elementary/switchboard-plug-sound.git')
