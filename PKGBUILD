@@ -1,10 +1,12 @@
+# Maintainer: Stanislav Seletskiy <s.seletskiy@gmail.com>
 pkgname=urxvt-vim-insert
 pkgver=1.f0703b3
 pkgrel=1
 pkgdesc="Shift-Insert fix for terminal vim"
 arch=('any')
 url='https://github.com/seletskiy/urxvt-vim-insert'
-depends=('rxvt-unicode')
+license=('MIT')
+depends=()
 makedepends=('git')
 source=('git+https://github.com/seletskiy/urxvt-vim-insert')
 sha1sums=('SKIP')
