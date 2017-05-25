@@ -12,7 +12,7 @@ depends=('gnome-settings-daemon')
 provides=('pantheon-dpms-helper')
 conflicts=('pantheon-dpms-helper')
 replaces=('elementary-dpms-helper-bzr')
-makedepends=('bzr')
+makedepends=('bzr' 'cmake')
 source=('bzr+lp:~elementary-pantheon/elementaryos/pantheon-dpms-helper')
 sha256sums=('SKIP')
 
