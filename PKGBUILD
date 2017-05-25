@@ -22,7 +22,7 @@ pkgver() {
 build() {
   cd ${srcdir}/${_pkgname}
   phpize
-  ./configure --prefix="${pkgdir}/usr"
+  ./configure
   make
 }
 
