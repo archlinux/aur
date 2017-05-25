@@ -4,17 +4,22 @@
 
 pkgname=cloudabi-binutils
 pkgver=2.26
-pkgrel=3
+pkgrel=4
 _commit=71090e7a
-pkgdesc="A set of programs to assemble and manipulate binary and object files"
+pkgdesc="This package is now obsolete, use cloudabi-clang instead."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL')
 depends=('glibc>=2.23')
-source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2")
-sha256sums=('c2ace41809542f5237afc7e3b8f32bb92bc7bc53c6232a84463c423b0714ecd9')
+#source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2")
+#sha256sums=('c2ace41809542f5237afc7e3b8f32bb92bc7bc53c6232a84463c423b0714ecd9')
 
 prepare() {
+	echo
+	error "This package is obsolete. You should use cloudabi-clang instead which adds symlinks for lld.\n           %s" \
+	"If you insist on building this packag, feel free to edit the PKGBUILD to remove this warning and uncomment the sources."
+	false
+
 	# hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" "$srcdir/binutils-$pkgver/libiberty/configure"
 	mkdir -p "$srcdir/build-x86_64"
