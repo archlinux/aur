@@ -1,4 +1,4 @@
-# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# Maintainer: Serkan Hosca <serkan@hosca.com>
 
 pkgname=devpi-semantic-ui
 pkgver=0.2.2
