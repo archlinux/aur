@@ -3,7 +3,7 @@
 
 pkgname=wingpanel-standalone-git
 pkgver=r286.89956c5
-pkgrel=1
+pkgrel=2
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
