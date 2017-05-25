@@ -4,13 +4,12 @@
 
 pkgname=skychart
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk2' 'xplanet' 'libpasastro')
 url="http://www.ap-i.net/skychart/start"
-install=skychart.install
 
 case $CARCH in
 i686)
@@ -28,4 +27,5 @@ source=(http://sourceforge.net/projects/skychart/files/1-software/version_${pkgv
 package() {
 mkdir "${pkgdir}"/usr/
 tar -xf "${srcdir}"/skychart-"$pkgver"-3575-linux_"${_real_arch}".tar.xz --strip 1 -C "${pkgdir}/usr/"
+chown -R root:root "${pkgdir}/usr/"
 }
