@@ -1,0 +1,4 @@
+250c250
+< 	return iter ? iter->get_value (cols.property) : false;
+---
+> 	return iter ? static_cast<bool>(iter->get_value (cols.property)) : false;
