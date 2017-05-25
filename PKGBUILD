@@ -1,8 +1,9 @@
-# Maintainer Evgeniy Alekseev <arcanis at archlinux dot org>
+# Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
+# Contributor: naund
 
 pkgname='zsh-autosuggestions'
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fish-like autosuggestions for zsh'
 url='https://github.com/zsh-users/zsh-autosuggestions'
 arch=('any')
@@ -15,8 +16,9 @@ install="${pkgname}.install"
 md5sums=('e7e1a9869039c52064e8043d26a3bec5')
 
 package() {
-    install -Dm644 "${srcdir}/zsh-users-${pkgname}"-*"/zsh-autosuggestions.zsh" \
-                   "${pkgdir}/usr/share/zsh/plugins/${pkgname}/zsh-autosuggestions.zsh"
+    install -d "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
+    install -Dm644 "${srcdir}/zsh-users-${pkgname}"-*"/zsh-autosuggestions"{.plugin,}".zsh" \
+                   "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
 
     # license
     install -Dm644 "${srcdir}/zsh-users-${pkgname}"-*"/LICENSE" \
