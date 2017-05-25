@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-sound-git
-pkgver=r19.be2613c
+pkgver=r76.15361b9
 pkgrel=1
 pkgdesc='Switchboard Sound Plug'
 arch=('i686' 'x86_64')
@@ -10,7 +10,8 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee' 'libpulse'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
+makedepends=('cmake' 'git' 'granite-git' 'gobject-introspection'
+             'switchboard-git' 'vala')
 provides=('switchboard-plug-sound')
 conflicts=('switchboard-plug-sound')
 source=('git+https://github.com/elementary/switchboard-plug-sound.git')
