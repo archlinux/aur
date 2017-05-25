@@ -11,7 +11,7 @@
 pkgname=mpv-rpi
 _pkgname=mpv
 epoch=1
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 _waf_version=1.8.12
 pkgdesc='mpv with Raspberry Pi support'
@@ -29,7 +29,7 @@ optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
   "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
-sha256sums=('a41854fa0ac35b9c309ad692aaee67c8d4495c3546f11cb4cdd0a124195d3f15'
+sha256sums=('07423ffad6921ec4da32f703cd7fbfb27012301dcb736ac8542ac8e6083b0bce'
   '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
 provides=('mpv')
 conflicts=('mpv')
@@ -47,7 +47,9 @@ build() {
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
+    --enable-libarchive \
     --enable-cdda \
+    --enable-dvdnav \
     --enable-encoding \
     --enable-libmpv-shared \
     --enable-zsh-comp \
