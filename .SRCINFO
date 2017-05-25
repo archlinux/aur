@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-system-monitor-git
 	pkgdesc = System monitor extension for Gnome-Shell (display mem swap cpu usage)
-	pkgver = 783.9dae81e
+	pkgver = 792.6fc86f4
 	pkgrel = 1
 	url = http://github.com/paradoxxxzero/gnome-shell-system-monitor-applet
 	arch = any
