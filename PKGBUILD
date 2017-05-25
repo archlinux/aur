@@ -3,9 +3,8 @@
 # Contributor: Bernardo Barros
 
 pkgname=csound
-# 6.08.1 is a bugfix release for Windows only.
-pkgver=6.08.0
-pkgrel=5
+pkgver=6.09.0
+pkgrel=1
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('i686' 'x86_64')
 url="http://csound.github.io"
@@ -21,7 +20,7 @@ conflicts=('libextractor')
 source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
         "Custom.cmake"
         "csound.sh")
-sha256sums=('480bde5c07ac7fb8303b4c84c01710999815c2334501d007170adc9cdbf826a1'
+sha256sums=('fa57dcf31c33ff1f95910ebf794b2f7f6270a311224c812d54eaf660d4b92392'
             '81c9473ad3142c658afe2e509f3ae597b5349bba07f95d4ba03f420188786e57'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
 
