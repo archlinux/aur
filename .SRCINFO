@@ -1,6 +1,6 @@
 pkgbase = lightdm-slick-greeter
 	pkgdesc = A slick-looking LightDM greeter
-	pkgver = 1.0.3
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/linuxmint/slick-greeter
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = lightdm-slick-greeter
 	depends = libcanberra
 	depends = libxext
 	depends = pixman
-	source = https://github.com/linuxmint/slick-greeter/archive/1.0.3.tar.gz
-	sha256sums = 9a8a1ae4526ca179b6dd4613bdb52427a0c234f26ec4cd7ed60246081e8f10ba
+	source = https://github.com/linuxmint/slick-greeter/archive/1.0.5.tar.gz
+	sha256sums = d291a58c5493eefac08103e743d80359d7920bf446da7ac038e5f442ca7446f1
 
 pkgname = lightdm-slick-greeter
 
