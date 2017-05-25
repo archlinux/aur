@@ -3,7 +3,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=tup-git
-pkgver=0.7.4.r40.g84b7039
+pkgver=0.7.5.r27.g2364ced6
 pkgrel=1
 pkgdesc='A fast, file-based build system'
 arch=(i686 x86_64)
