@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
-pkgdesc='Lightweight web server written in Go with support for HTTP/2, Markdown, Pongo2 and Lua'
+pkgdesc='Pure Go web server with built-in support for HTTP/2, Markdown, Lua and templates'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
@@ -57,11 +57,11 @@ package() {
   cd "$GOPATH/src/$_gourl"
 
   install -Dm755 algernon "$pkgdir/usr/bin/algernon"
+  install -Dm755 desktop/mdview "$pkgdir/usr/bin/mdview"
   install -Dm644 system/algernon_dev.service "$pkgdir/usr/lib/systemd/system/algernon.service"
   install -Dm644 system/logrotate "$pkgdir/etc/logrotate.d/algernon"
   install -Dm644 system/serverconf.lua "$pkgdir/etc/algernon/serverconf.lua"
   install -Dm644 desktop/algernon.desktop "$pkgdir/usr/share/applications/algernon.desktop"
-  install -Dm755 desktop/mdview "$pkgdir/usr/bin/mdview"
   install -Dm644 desktop/markdown.png "$pkgdir/usr/share/pixmaps/markdown.png"
   install -d "$pkgdir/usr/share/doc/$pkgname/"
   cp -r samples "$pkgdir/usr/share/doc/algernon/samples"
