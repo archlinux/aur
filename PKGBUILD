@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r283.54cd1fe
+pkgver=r286.89956c5
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ groups=('pantheon-unstable' 'pantheon-qq')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
          'libgranite.so')
 makedepends=('cmake' 'git' 'granite-git' 'vala')
-optdepends=("slingshot-launcher-standalone-bzr: Application launcher (without Gala dependencies)"
+optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sound}-git": Tray applet"
             "wingpanel-indicator-ayatana-bzr: Unity 7 Tray applets"
             "indicator-powersave: On the fly power savings and performance toggles"
