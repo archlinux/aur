@@ -1,13 +1,13 @@
 pkgbase = tidb-bin-nightly
 	pkgdesc = A distributed NewSQL database compatible with MySQL protocol
-	pkgver = 0.0.1.20170117051151
+	pkgver = 0.0.1.20170524020718
 	pkgrel = 1
 	url = https://github.com/pingcap/tidb
 	arch = x86_64
 	license = APACHE
 	depends = gcc-libs
-	source = http://download.pingcap.org/tidb-latest-linux-amd64.sha256
-	source = http://download.pingcap.org/tidb-latest-linux-amd64.tar.gz
+	source = tidb-bin-nightly-2017-05-25T16.sha256::http://download.pingcap.org/tidb-latest-linux-amd64.sha256
+	source = tidb-bin-nightly-2017-05-25T16.tar.gz::http://download.pingcap.org/tidb-latest-linux-amd64.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 
