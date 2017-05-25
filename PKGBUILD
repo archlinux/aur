@@ -1,4 +1,4 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=rnashapes
 pkgver=2.1.6
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://bibiserv.techfak.uni-bielefeld.de/rnashapes/"
 license=('custom')
 depends=('libedit')
-source=("http://bibiserv.techfak.uni-bielefeld.de/spool/download/bibiserv_1421311114_27465/RNAshapes-$pkgver.tar.gz")
+source=("https://bibiserv.cebitec.uni-bielefeld.de/spool/download/bibiserv_1495624364_26964/RNAshapes-$pkgver.tar.gz")
 md5sums=('8f86b93771914662e54483ea0f734111')
 
 build() {
