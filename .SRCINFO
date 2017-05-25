@@ -1,7 +1,7 @@
 pkgbase = pug
 	pkgdesc = Automatically saves and synchronizes Pacman and AUR installed package lists into Gists.
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/Ventto/pug.git
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = pug
 	depends = pacman>=5.0
 	depends = pacaur>=4.0.0
 	depends = gist>=4.5.0
-	source = https://github.com/Ventto/pug/archive/v1.1-2.tar.gz
+	source = https://github.com/Ventto/pug/archive/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = pug
