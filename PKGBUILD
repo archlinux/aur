@@ -2,13 +2,13 @@
 
 pkgname=libinput-gestures-git
 _pkgname=libinput-gestures
-pkgver=r101.fb14540
+pkgver=r112.a0df416
 pkgrel=1
 pkgdesc="Actions gestures on your touchpad using libinput"
 arch=('any')
 license=('GPL3')
 url="https://github.com/bulletmark/libinput-gestures"
-depends=('libinput' 'xdotool' 'python' 'wmctrl')
+depends=('libinput' 'xdotool' 'python' 'wmctrl' 'hicolor-icon-theme')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
