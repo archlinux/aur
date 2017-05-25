@@ -9,8 +9,8 @@ url='https://code.launchpad.net/~elementary-os/elementaryos/pantheon-xsession-se
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cerbere' 'gala-git' 'gconf' 'gnome-keyring' 'gnome-session'
-         'gnome-settings-daemon' 'gnome-user-share'
-         'pantheon-applications-menu' 'wingpanel' 'xdg-user-dirs-gtk')
+         'gnome-user-share' 'pantheon-applications-menu'
+         'pantheon-dpms-helper-bzr' 'wingpanel' 'xdg-user-dirs-gtk')
 makedepends=('bzr')
 optdepends=('pantheon-default-settings-bzr')
 source=('pantheon-session::bzr+lp:~elementary-os/elementaryos/pantheon-xsession-settings')
