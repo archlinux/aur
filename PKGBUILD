@@ -4,7 +4,7 @@
 pkgname=kodi-addon-pvr-dvblink
 pkgbase=${pkgname}
 _gitname=pvr.dvblink
-pkgver=3.3.12
+pkgver=3.4.5
 _gitver=branch=Krypton
 pkgrel=3
 pkgdesc='DVBLink PVR client addon for Kodi'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/kodi-pvr/$_gitname"
 license=('GPL')
 groups=('kodi-addons')
-makedepends=('cmake' 'kodi-platform' 'libplatform-legacy')
+makedepends=('cmake' 'p8-platform' 'kodi-dev' 'kodi-platform')
 depends=('kodi>=17.0' 'tinyxml2')
 source=("git+https://github.com/kodi-pvr/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')

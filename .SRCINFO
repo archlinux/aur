@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-dvblink
 	pkgdesc = DVBLink PVR client addon for Kodi
-	pkgver = 3.3.12
+	pkgver = 3.4.5
 	pkgrel = 3
 	url = https://github.com/kodi-pvr/pvr.dvblink
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = kodi-addon-pvr-dvblink
 	groups = kodi-addons
 	license = GPL
 	makedepends = cmake
+	makedepends = p8-platform
+	makedepends = kodi-dev
 	makedepends = kodi-platform
-	makedepends = libplatform-legacy
 	depends = kodi>=17.0
 	depends = tinyxml2
 	source = git+https://github.com/kodi-pvr/pvr.dvblink.git#branch=Krypton
