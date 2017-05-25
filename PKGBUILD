@@ -1,8 +1,8 @@
-# Maintainer: Paolo Stivanin <info A,T paolostivanin D,O,T com>
+# Maintainer: Paolo Stivanin <info [at] paolostivanin [DOT] com>
 
 pkgname=libbaseencode
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library written in C for encoding and decoding data using base32 or base64 (RFC-4648)'
 arch=('i686' 'x86_64')
 makedepends=('cmake')
@@ -18,7 +18,7 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir build && cd $_
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    make baseencode
 }
 
 package() {
