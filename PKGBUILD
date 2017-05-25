@@ -1,6 +1,6 @@
 # Maintainer: Adrià Arrufat <adria.arrufat+AUR AT protonmail DOT ch>
 pkgname=coax-git
-pkgver=0+103+g6326c4c
+pkgver=0+112+g526dae3
 pkgrel=1
 pkgdesc="A (barely working) native Wire client for Unix"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('libsodium' 'gtk3' 'openssl' 'sqlite')
 makedepends=('cargo')
 source=("git+https://github.com/wireapp/coax.git/" "coax-symbolic.svg")
 sha512sums=('SKIP'
-            '09be14c9d112e784a483e4c14dd73341441af5172c1b83f582e2ce56a8766c6d0e7ea3cad530750188090ff7f273ce3a20e6ec1a748b95ebe3d86673d8924d6d')
+            'ac10d0ce1186edd738955c098bffd47b320e102b26b2416b82bb2f2d356aa6c9bb3a93c535a8625b0236d78d59ccc2d5374f107c09eb9fac0169d0c862d39dd1')
 
 
 pkgver() {
