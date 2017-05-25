@@ -2,8 +2,8 @@
 
 pkgname=supercollider-git
 _name="supercollider"
-_pkgbranch="3.8"
-pkgver=3.8.0.r0.g0947edd
+_latest_tag="3.8.0"
+pkgver=3.8.0.r1392.gcd76d209f
 pkgrel=1
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,29 +12,24 @@ license=('GPL3')
 depends=('jack' 'fftw' 'cwiid' 'qt5-webkit')
 makedepends=('avahi' 'boost' 'cmake' 'emacs' 'libsndfile' 'qt5-tools' 'ruby' 'vim')
 optdepends=('emacs: emacs interface'
-            'gedit: gedit interface'
-            'vim: vim interface'
-            'ruby: vim support'
-            'tmux: vim interface'
-            'screen: vim interface')
+            'gedit: gedit interface')
 conflicts=('supercollider')
 provides=('supercollider')
 install="${_name}.install"
-source=("${_name}::git+https://github.com/supercollider/supercollider.git"
-        "${_name}-cxxflags.patch")
-md5sums=('SKIP'
-         '4f62489286fe8008d6013fc59047c20b')
+source=("${_name}::git+https://github.com/supercollider/supercollider.git")
+md5sums=('SKIP')
 
-prepare() {
-  cd "$_name"
-  git checkout origin/${_pkgbranch}
-  # Fix CXXFLAGS
-  patch -p1 -i ../supercollider-cxxflags.patch
-}
+#prepare() {
+#  cd "$_name"
+#  git checkout origin/${_pkgbranch}
+#  # Fix CXXFLAGS
+#  patch -p1 -i ../supercollider-cxxflags.patch
+#}
 
 pkgver() {
   cd "$_name"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.//g'
+#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.//g'
+  git describe HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.3.7.2/'"$_latest_tag"'/g'
 }
 
 build() {
@@ -90,6 +85,7 @@ build() {
     ;;
     *)
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+      -DSC_VIM=OFF \
       -DCMAKE_BUILD_TYPE=Release 2>&1 | tee cmake-output.txt
     make 2>&1 | tee make-output.txt
     ;;
