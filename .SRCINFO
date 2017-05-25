@@ -1,0 +1,23 @@
+pkgbase = wcc-git
+	pkgdesc = The Witchcraft Compiler Collection
+	pkgver = 0.0.1.r1.g391ae30
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = capstone
+	depends = glibc
+	depends = binutils
+	depends = zlib
+	depends = libelf
+	depends = readline
+	depends = gsl
+	provides = wcc
+	conflicts = wcc
+	source = git+https://github.com/endrazine/wcc.git
+	sha256sums = SKIP
+
+pkgname = wcc-git
+
