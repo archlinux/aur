@@ -1,9 +1,11 @@
+# Maintainer: Stanislav Seletskiy <s.seletskiy@gmail.com>
+
 # Upstream URL: https://github.com/seletskiy/runki
 #
 # Dont forget to star the repo if you liked the package
 
 pkgname=runki-git
-pkgver=20140625
+pkgver=20170523
 pkgrel=1
 pkgdesc="Ankiweb.net console client. Manage Anki flashcards without a friction."
 arch=('any')
@@ -29,5 +31,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   mkdir -p $pkgdir/usr/bin
-  mv runki $pkgdir/usr/bin
+  mv runki-git $pkgdir/usr/bin/runki
 }
