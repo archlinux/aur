@@ -12,13 +12,13 @@ pkgname=(nm-connection-editor-indicator network-manager-applet-indicator)
 pkgdesc="Applet for managing network connections, with AppIndicator"
 url="https://wiki.gnome.org/Projects/NetworkManager/"
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 depends=(libnm-glib libgudev gtk3 mobile-broadband-provider-info iso-codes)
 makedepends=(libsecret libnotify libmm-glib intltool gobject-introspection git gtk-doc)
 options=(!emptydirs)
-_commit=582194699e34b9a2f7d0ea19e07f888c099ad966  # tags/1.4.6^0
+_commit=ecfaab54bc02e6e34a569bce6e4cc92138986f01  # tags/1.8.0^0
 source=("git+https://git.gnome.org/browse/network-manager-applet#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -66,14 +66,14 @@ check() {
 
 package_nm-connection-editor-indicator() {
   pkgdesc="NetworkManager GUI connection editor and widgets, with AppIndicator"
-  provides=("libnm-gtk=$pkgver-$pkgrel" "libnma=$pkgver-$pkgrel")
+  provides=("libnm-gtk=${pkgver}-${pkgrel}" "libnma=${pkgver}-${pkgrel}" "nm-connection-editor=${pkgver}-${pkgrel}")
   conflicts=(libnm-gtk)
   replaces=(libnm-gtk)
 
   cd ${pkgbase%-indicator}
   make DESTDIR="$pkgdir" install
 
-### Split network-manager-applet
+### Split network-manager-applet-indicator
   cd ../nma
   mv "$pkgdir"/etc/xdg/autostart etc/xdg/
   mv "$pkgdir"/usr/bin/nm-applet usr/bin/
