@@ -2,7 +2,7 @@
 # Contributor: svalo <me@valo.space>
 
 pkgname=dino-git
-pkgver=r109.bcb9690
+pkgver=r110.142257a
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
