@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1401967#p1401967'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=('dconf' 'compiz' 'pantheon-workarounds'}
+depends=('dconf' 'compiz' 'pantheon-workarounds'
          'plank' 'cerbere' 'wingpanel-standalone-git')
 provides=("pantheon-3d")
 conflicts=()
