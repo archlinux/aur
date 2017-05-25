@@ -17,7 +17,7 @@ install=$_pkgname.install
 backup=('etc/umurmur/umurmur.conf')
 source=($_pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz
         umurmur.service)
-md5sums=('061aa71eb059eb00d2b123ec9200b405'
+md5sums=('b06566c896a8b4ac32ca00920c8dd093'
          'd9d556e4ffa77e193fb40ce508804720')
 
 prepare() {
