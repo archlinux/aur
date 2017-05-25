@@ -27,8 +27,8 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.0.18
-pkgrel=3
+pkgver=7.0.19
+pkgrel=1
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -36,14 +36,14 @@ license=('PHP')
 
 url='http://www.php.net'
 makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu' 
-			'openssl-1.0' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp' 
+			'libmcrypt' 'libxslt' 'libzip' 'net-snmp' 
 			'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 
 			'libtool' 'freetds' 'pcre' 'c-client')
 
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         )
-sha256sums=('679cffcdf2495dee5ab89bda595e678a1096136678b3a1d08f1f57ba347c234d'
+sha256sums=('640e5e3377d15a6d19adce2b94a9d876eeddabdb862d154a5e347987f4225ef6'
             'SKIP'
             '819f05d2fd5a75c96e93c863517ca77dbd021a1224dc2d8096f758fb2937df6a'
             'df075b89484eb3a08402788580de16d23123f95541b2e9aed8d928105de9b874'
@@ -140,18 +140,6 @@ build() {
 		--enable-pcntl \
 		"
 
-	# PHP 7.0 is unlikely to become compatible with openssl >= 1.1
-	# changed build environment
-	local _sav_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
-	local _sav_CFLAGS=$CFLAGS
-	local _sav_LDFLAGS=$LDFLAGS
-
-	export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-	CFLAGS+=" -I/usr/include/openssl-1.0"
-	LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
-	export CFLAGS
-	export LDFLAGS
-
 	EXTENSION_DIR=/usr/lib/${pkgbase}/modules
 	export EXTENSION_DIR
 
@@ -191,15 +179,12 @@ build() {
 	make
 	cd ../../
 
-	export PKG_CONFIG_PATH=$_sav_PKG_CONFIG_PATH
-	export CFLAGS=$_sav_CFLAGS
-	export LDFLAGS=$_sav_LDFLAGS
 }
 
 
 package_php70() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development'
-	depends=('libxml2' 'curl' 'libzip' 'pcre' 'openssl-1.0')
+	depends=('libxml2' 'curl' 'libzip' 'pcre')
 	replaces=('php70-ldap')
 	conflicts=('php70-ldap')
 	provides=("${_pkgbase}=$pkgver")
