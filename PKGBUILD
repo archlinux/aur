@@ -1,7 +1,7 @@
 #Maintainer: ThomasWFan <thomas[at]moespirit[dot]ltd>
 pkgname=memoink
 pkgver=13.578.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A OneNote-like application with a nice GUI."
 url="https://doui.cc/product/memoink"
 arch=('x86_64')
