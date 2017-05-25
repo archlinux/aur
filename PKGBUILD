@@ -1,8 +1,8 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 
 pkgbase=linux-max98090
-_srcname=linux-4.10
-pkgver=4.10.13
+_srcname=linux-4.11
+pkgver=4.11.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -21,17 +21,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         # patch for max98090 soundcard
         'max98090.patch'
+        # patch to revert platform x86 enable atom pmc platform clocks
+        '0001-Revert-platform-x86-Enable-Atom-PMC-platform-clocks.patch'
         )
 
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'b1a7a98aa97cc0917fcab0def68032d5bf61838c79177b2222cee2485015458f'
+            'df7138c754c95f2c22127d1d76c122dbfe26b0b586572855d9d095f0d112b29b'
             'SKIP'
-            '2af546e8d3f3719cbfcc3b0d80a3ecde42cf4d129326381bfb9374abb939726c'
-            '824683f6e3677f2166eae541b6503fcfb4df93768a0d3f6465f71373c1609adf'
+            'd5838e62606983753f0426c8008b1be2c8fbb76f4e540f20f3f851f1ff85718f'
+            '2e2ba527579196e2823ae6c09b7d6dc4c65f88f3816956487d7a808559a084b1'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '3a4d8d182de94c031860c33ae35d92c5f9f3b987b0a5191c4e15366353a8d217')
+            '3a4d8d182de94c031860c33ae35d92c5f9f3b987b0a5191c4e15366353a8d217'
+            '10ec161f83768e03dfded48e59c3cdf97d8bad1eea827804c472742e061a8e83')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -48,8 +51,11 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # Patch byt-max98090 soc audio
+  # patch byt-max98090 soc audio
   patch -p1 -i "${srcdir}/max98090.patch"
+
+  # patch to revert platform x86 enable atom pmc platform clocks
+  patch -p1 -i "${srcdir}/0001-Revert-platform-x86-Enable-Atom-PMC-platform-clocks.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
