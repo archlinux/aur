@@ -3,7 +3,7 @@
 pkgname=syncit
 pkgdesc='Sync files, directories or the entire file-system with durability in mind'
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/agherzan/syncit'
 license=('APACHE')
@@ -21,6 +21,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   DEST="${pkgdir}/usr/bin/"
-  mkdir -p "${DEST}"
+  install -d "${DEST}"
   make INSTALL_DEST="${DEST}" install
 }
