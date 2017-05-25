@@ -1,0 +1,14 @@
+pkgbase = aspell6-fa
+	pkgdesc = Farsi dictionary for aspell
+	pkgver = 0.11_0
+	pkgrel = 0
+	url = http://ftp.gnu.org/gnu/aspell/dict/fa/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = aspell>=0.60
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/fa/aspell6-fa-0.11-0.tar.bz2
+	md5sums = 47c8599e529fc291a096c12f0b8372ca
+
+pkgname = aspell6-fa
+
