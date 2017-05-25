@@ -1,7 +1,7 @@
 ##PKGBUILD
 pkgname=hedera-theme-git
-pkgver=0.r1.487359f
-pkgrel=6
+pkgver=0.r2.f92f398
+pkgrel=1
 pkgdesc='Eye-friendly GUIKit based on breeze'
 arch=('x86_64')
 url='https://github.com/sixsixfive/Hedera/blob/master/readme.md'
