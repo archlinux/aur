@@ -1,13 +1,20 @@
-diff -rupN openexr-2.1.0/IlmImf/ImfSystemSpecific.h openexr-2.1.0-new/IlmImf/ImfSystemSpecific.h
---- openexr-2.1.0/IlmImf/ImfSystemSpecific.h	2013-10-21 21:02:22.000000000 +0200
-+++ openexr-2.1.0-new/IlmImf/ImfSystemSpecific.h	2013-12-27 01:57:30.936052388 +0100
-@@ -60,8 +60,7 @@ static bool GLOBAL_SYSTEM_LITTLE_ENDIAN
+--- openexr-2.2.0/IlmImf/ImfSystemSpecific.h	2014-08-10 07:23:57.000000000 +0300
++++ openexr-2.2.0/IlmImf/ImfSystemSpecific.h	2017-05-24 22:28:12.713121986 +0300
+@@ -62,15 +62,14 @@
  
  static void* EXRAllocAligned(size_t size, size_t alignment)
  {
 -    void* ptr = 0;
 -    posix_memalign(&ptr, alignment, size);
-+    void* ptr = _aligned_malloc(alignment, size);
++    void* ptr = _aligned_malloc(size, alignment);
      return ptr;
  }
  
+ 
+ static void EXRFreeAligned(void* ptr)
+ {
+-    free(ptr);
++    _aligned_free(ptr);
+ }
+ 
+ #elif defined _MSC_VER

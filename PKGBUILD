@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-openexr
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An high dynamic-range image file format library (mingw-w64)"
 url="http://www.openexr.com/"
 arch=(any)
