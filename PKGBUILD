@@ -4,7 +4,7 @@
 _pkgbase=rtl8812au-v5
 pkgname=rtl8812au-v5-dkms-git
 pkgver=5.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="rtl8812AU Chipset driver"
 arch=('i686' 'x86_64')
 url="https://github.com/uminokoe/rtl8812AU/tree/driver-5.1.5"
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('dkms')
 makedepends=('git')
 conflicts=("${_pkgbase}")
-source=("git+https://github.com/uminokoe/rtl8812AU.git"
+source=("git+https://github.com/uminokoe/rtl8812AU.git#branch=driver-${pkgver}"
         'dkms.conf')
 md5sums=('SKIP'
          'SKIP')
@@ -20,13 +20,13 @@ md5sums=('SKIP'
 
 
 build() {
-  cd "rtl8812AU-driver-${pkgver}"
+  cd "rtl8812AU"
   make clean
   make
 }         
 
 package() {
-	cd ${srcdir}/rtl8812AU-driver-${pkgver}
+	cd ${srcdir}/rtl8812AU
 	mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
 	cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
 	cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
