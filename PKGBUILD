@@ -4,17 +4,23 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=r11518.67b111193
-_branch=master
+pkgver=2.1.0.r15.g20cc6826d
+_branch=2.2
 pkgrel=1
-pkgdesc='Latest git-version of the sheet music editor MuseScore'
+pkgdesc='git-version of the sheet music editor MuseScore'
 arch=('i686' 'x86_64')
 url='https://github.com/musescore/MuseScore'
 license=('GPL')
-depends=('qt5-svg'
-	'qt5-tools'
-	'qt5-webengine'
-	'shared-mime-info')
+
+depends=('desktop-file-utils'
+    'gtk-update-icon-cache'
+    'libpulse'
+    'portaudio'
+    'qt5-quickcontrols'
+    'qt5-svg'
+    'qt5-tools'
+    'qt5-webkit'
+    'shared-mime-info')
 makedepends=('cmake'
 	'doxygen'
 	'git'
@@ -22,14 +28,21 @@ makedepends=('cmake'
 	'qt5-script'
 	'texlive-core')
 optdepends=('lame: MP3 export')
-install='musescore.install'
+install=musescore.install
 
-source=("git+$url.git#branch=$_branch")
-md5sums=('SKIP')
+source=("git+$url.git#branch=$_branch"
+    precompiled_headers_qt5.7.patch)
+md5sums=('SKIP'
+         '2d3dae13250d5074922d9c94ebb2c1e8')
 
 pkgver() {
   cd MuseScore
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd MuseScore
+  patch -p1 -i $srcdir/precompiled_headers_qt5.7.patch
 }
 
 build() {
