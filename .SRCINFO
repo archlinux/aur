@@ -1,6 +1,6 @@
 pkgbase = privoxy-adfilter
 	pkgdesc = Privoxy rule to filter web advertisement.
-	pkgver = 507.a15ff1a
+	pkgver = 508.d15151b
 	pkgrel = 1
 	url = https://github.com/qwIvan/privoxy-adfilter
 	install = privoxy-adfilter.install
