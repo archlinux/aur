@@ -2,8 +2,8 @@ post_install() {
     pkgname=searchnewdoconaidop
 
     # Fixing membership
-    chown users: /var/log/$pkgname
-    chown -R users: /etc/$pkgname
+    chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
 
     # Reload systemctl
     systemctl daemon-reload
@@ -16,8 +16,8 @@ post_install() {
 }
 
 post_upgrade() {
-	chown users: /var/log/$pkgname
-  chown -R users: /etc/$pkgname
+	chown http: /var/log/$pkgname
+  chown -R http: /etc/$pkgname
 
   # Reload systemctl
   systemctl daemon-reload
