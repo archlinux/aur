@@ -1,6 +1,6 @@
 pkgbase = libvirt-git
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = pkgver=3.2.0.rc1.12.gd63d54e55-1
+	pkgver = pkgver=3.3.0.137.g2453501fc
 	pkgrel = 1
 	url = http://libvirt.org/
 	install = libvirt.install
