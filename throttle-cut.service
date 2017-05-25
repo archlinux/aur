@@ -2,7 +2,7 @@
 Description=Throttle Cut
 
 [Service]
-Type=simple
+Type=idle
 RemainAfterExit=yes
 ExecStart=/usr/bin/throttle cut
 StandardOutput=null
