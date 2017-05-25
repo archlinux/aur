@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=keeweb
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('keeweb-desktop')
 source=("https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
         'keeweb')
 
-sha1sums=('cd55c81f288a26528fdd04dfe5137370a9b8cff8'
+sha1sums=('e946fff7fec60688277fa2a3dadd74b2542c0f94'
           '6f73285126a5d6d948712de73053957528aba0cc')
 
 prepare() {
