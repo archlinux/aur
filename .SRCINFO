@@ -9,7 +9,6 @@ pkgbase = powershell-git
 	makedepends = cmake
 	makedepends = proot
 	makedepends = dotnet-cli-git
-	depends = bash
 	depends = icu
 	provides = powershell
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git
