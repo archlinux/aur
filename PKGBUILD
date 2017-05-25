@@ -5,8 +5,8 @@
 
 _pkgname=umurmur
 pkgname=umurmur-openssl
-pkgver=0.2.16_a
-pkgrel=7
+pkgver=0.2.17
+pkgrel=1
 pkgdesc='Minimalistic Mumble server - built with openssl'
 arch=('i686' 'x86_64')
 url='https://github.com/umurmur/umurmur'
@@ -15,23 +15,23 @@ depends=('openssl' 'libconfig' 'protobuf-c')
 makedepends=('cmake')
 install=$_pkgname.install
 backup=('etc/umurmur/umurmur.conf')
-source=($_pkgname-$pkgver.tar.gz::$url/archive/${pkgver/_/}.tar.gz
+source=($_pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz
         umurmur.service)
 md5sums=('061aa71eb059eb00d2b123ec9200b405'
          'd9d556e4ffa77e193fb40ce508804720')
 
 prepare() {
-  cd $_pkgname-${pkgver/_/}
+  cd $_pkgname-${pkgver}
 }
 
 build() {
-  cd $_pkgname-${pkgver/_/}
+  cd $_pkgname-${pkgver}
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DSSL=openssl
   make
 }
 
 package() {
-  cd $_pkgname-${pkgver/_/}
+  cd $_pkgname-${pkgver}
   make DESTDIR="$pkgdir" install
   install -dm0755 $pkgdir/etc/umurmur/
   mv $pkgdir/usr/etc/umurmur.conf $pkgdir/etc/umurmur/
