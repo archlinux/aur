@@ -1,7 +1,7 @@
 pkgbase = dbninja
 	pkgdesc = Advanced web-based application for MySQL database administration and development
 	pkgver = 3.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dbninja.com/
 	install = install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dbninja
 	depends = php
 	source = dbninja-3.2.7.tar.gz::http://www.dbninja.com/download/dbninja.tar.gz
 	source = service
-	md5sums = e6ca2716b529e5a874f151a694a83e12
+	md5sums = 4db2ae6f085ed4069a460e19d1d2af87
 	md5sums = aff1d2120e5e753b160ae8deeb333978
 
 pkgname = dbninja
