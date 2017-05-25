@@ -22,8 +22,8 @@ post_upgrade() {
   # Reload systemctl
   systemctl daemon-reload
 
-  echo "You should restart sshd_autoban:"
-  echo "  systemctl restart sshd_autoban"
+  echo "You should restart reducemp4video:"
+  echo "  systemctl restart reducemp4video"
 
 	true
 }
