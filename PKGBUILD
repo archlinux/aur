@@ -1,10 +1,10 @@
 # $Id$
-# Maintainer: Evan Penner <evaninrussia@gmail.com>
+# Maintainer: Christoph Böhmwalder <christoph@boehmwalder.at>
 # Based on cinnamon PKGBUILD
 
 _pkgname=cinnamon
 pkgname=${_pkgname}-git
-pkgver=3910.dfdcb08
+pkgver=6157.e9905a09
 pkgrel=1
 pkgdesc="A Linux desktop which provides advanced innovative features and a traditional user experience"
 arch=('i686' 'x86_64')
@@ -26,9 +26,9 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install=${pkgname}.install
 source=("${_pkgname}"::git+https://github.com/linuxmint/cinnamon.git
-        "set_wheel.patch")
+        "use-wheel.patch")
 sha256sums=('SKIP'
-            '3c4c7bb65d9e3b7d5569a14a45ebf08d2326250869645511dfa18d87b8eaf444')
+            'f2d86a98fa27e90030bc152c5a591f118acd1fa6a506bfbbffd7a5896e2e49cb')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -39,7 +39,7 @@ prepare() {
   cd ${srcdir}/cinnamon
 
   # Use wheel group instread of sudo
-  patch -Np1 -i ../set_wheel.patch
+  patch -Np1 -i ../use-wheel.patch
 
   # Add polkit agent to required components
   sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' files/usr/share/cinnamon-session/sessions/cinnamon*.session
@@ -52,7 +52,7 @@ prepare() {
 
   # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
   sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
-    files/usr/lib/cinnamon-settings/modules/cs_backgrounds.py
+    files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
 }
 
 build() {

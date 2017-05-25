@@ -1,6 +1,6 @@
 pkgbase = cinnamon-git
 	pkgdesc = A Linux desktop which provides advanced innovative features and a traditional user experience
-	pkgver = 3910.dfdcb08
+	pkgver = 6157.e9905a09
 	pkgrel = 1
 	url = https://github.com/linuxmint/Cinnamon
 	install = cinnamon-git.install
@@ -10,7 +10,6 @@ pkgbase = cinnamon-git
 	makedepends = gnome-common
 	makedepends = intltool
 	makedepends = git
-	makedepends = patch
 	depends = cinnamon-settings-daemon-git
 	depends = cinnamon-session-git
 	depends = cinnamon-desktop-git
@@ -47,9 +46,9 @@ pkgbase = cinnamon-git
 	conflicts = cinnamon
 	options = !emptydirs
 	source = cinnamon::git+https://github.com/linuxmint/cinnamon.git
-	source = set_wheel.patch
+	source = use-wheel.patch
 	sha256sums = SKIP
-	sha256sums = 3c4c7bb65d9e3b7d5569a14a45ebf08d2326250869645511dfa18d87b8eaf444
+	sha256sums = f2d86a98fa27e90030bc152c5a591f118acd1fa6a506bfbbffd7a5896e2e49cb
 
 pkgname = cinnamon-git
 
