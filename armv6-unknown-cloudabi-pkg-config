@@ -1,0 +1,2 @@
+#!/bin/sh
+PKG_CONFIG_LIBDIR=/usr/armv6-unknown-cloudabi/lib/pkgconfig exec pkg-config "$@"
