@@ -21,7 +21,7 @@ options=(!makeflags)
 validpgpkeys=('7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C' # Richard Levitte <richard@levitte.org>
               '8657ABB260F056B1E5190839D9C4D26D0E604491' # Matt Caswell <matt@openssl.org>
 	      )
-source=("https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz"{,.asc}
+source=("https://www.openssl.org/source/old/0.9.x/${_pkgbasename}-${_ver}.tar.gz"{,.asc}
         'no-rpath.patch'
         'ca-dir.patch')
 sha256sums=('f1d9f3ed1b85a82ecf80d0e2d389e1fda3fca9a4dba0bf07adbf231e1a5e2fd6'
