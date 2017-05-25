@@ -6,7 +6,7 @@ _ver=1.0.2k
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (32-bit)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -20,11 +20,11 @@ source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
         'no-rpath.patch'
         'ssl3-test-failure.patch'
         'openssl-1.0-versioned-symbols.patch')
-md5sums=('f965fc0bf01bf882b31314b61391ae65'
-         'SKIP'
-         'dc78d3d06baffc16217519242ce92478'
-         '62fc492252edd3283871632bb77fadbe'
-         'fb9dab4e571c1110375c8375f809b78e')
+sha256sums=('6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0'
+            'SKIP'
+            '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
+            'c54ae87c602eaa1530a336ab7c6e22e12898e1941012349c153e52553df64a13'
+            '353a84e4c92e36c379ebd9216b8f8fb9c271396583561eb84ac8c825979acaa6')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
