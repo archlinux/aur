@@ -1,0 +1,41 @@
+post_install() {
+    pkgname=searchnewdoconaidop
+
+    # Fixing membership
+    chown users: /var/log/$pkgname
+    chown -R users: /etc/$pkgname
+
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "Adding reducemp4video in systemctl:"
+    echo "  systemctl enable reducemp4video"
+    echo "  systemctl start reducemp4video"
+
+    true
+}
+
+post_upgrade() {
+	chown users: /var/log/$pkgname
+  chown -R users: /etc/$pkgname
+
+  # Reload systemctl
+  systemctl daemon-reload
+
+  echo "You should restart sshd_autoban:"
+  echo "  systemctl restart sshd_autoban"
+
+	true
+}
+
+pre_remove() {
+  pkgname=reducemp4video
+  # Remove symlink in systemd
+  systemctl disable $pkgname
+  # Stop server
+  systemctl stop $pkgname
+  # Reload systemctl
+  # systemctl daemon-reload
+
+	true
+}
