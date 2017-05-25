@@ -4,7 +4,7 @@
 
 pkgname=pantheon-workarounds
 pkgver=5
-pkgrel=4
+pkgrel=5
 pkgdesc='Workarounds for modular and minimal Pantheon Desktop Environments'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/gala'
@@ -15,9 +15,10 @@ depends=('gconf' gnome-{keyring,settings-daemon-{elementary,compat},session}
 optdepends=("pantheon-default-settings-bzr: Pantheon configuration and themeing"
             "contractor-git: Service for sharing data between apps"
             "pantheon-print-git: Print settings dialog"
-            "pantheon-agent-polkit-bzr: Polkit Authentication Agent")
+            "pantheon-agent-polkit-bzr: Polkit Authentication Agent"
+            "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops")
 makedepends=('bzr' 'intltool')
-conflicts=(pantheon-session{,-bzr} gala{,-bzr})
+conflicts=(pantheon-session{,-bzr} gala{,-bzr,-git})
 install='gala.install'
 source=("pantheon-session::bzr+lp:~elementary-os/elementaryos/pantheon-xsession-settings"
         'pantheon-session.sh'
@@ -45,7 +46,7 @@ prepare() {
   # This space reserved for pantheon-default-settings(-bzr)
 }
 
-provides=(pantheon-session{,-bzr}="${pkgverpantheonsession}" gala{,-bzr}="${pkgvergala}")
+provides=(pantheon-session{,-bzr}="${pkgverpantheonsession}" gala{,-bzr,-git}="${pkgvergala}")
 
 package() {
   install -Dm644 {"${srcdir}","${pkgdir}"/usr/share/glib-2.0/schemas}/org.pantheon.desktop.gala.gschema.xml
