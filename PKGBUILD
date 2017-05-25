@@ -4,7 +4,7 @@
 
 pkgname=cloudabi-binutils
 pkgver=2.26
-pkgrel=4
+pkgrel=5
 _commit=71090e7a
 pkgdesc="This package is now obsolete, use cloudabi-clang instead."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('glibc>=2.23')
 prepare() {
 	echo
 	error "This package is obsolete. You should use cloudabi-clang instead which adds symlinks for lld.\n           %s" \
-	"If you insist on building this packag, feel free to edit the PKGBUILD to remove this warning and uncomment the sources."
+	"If you insist on building this package, feel free to edit the PKGBUILD to remove this warning and uncomment the sources."
 	false
 
 	# hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
