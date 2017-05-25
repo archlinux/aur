@@ -3,7 +3,7 @@
 # Contributor: Trevor Turner <turn3r.tr3v0r at gmail.com>
 
 pkgname=ntfs-3g-fuse
-pkgver=2016.2.22
+pkgver=2017.3.23
 pkgrel=1
 pkgdesc="Stable read and write NTFS driver and ntfsprogs. This package will allow normal users to mount NTFS Volumes."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('ntfsprogs' 'ntfs-3g')
 options=('!libtool')
 install=ntfs-3g-fuse.install
 source=(http://tuxera.com/opensource/ntfs-3g_ntfsprogs-$pkgver.tgz)
-sha256sums=('d7b72c05e4b3493e6095be789a760c9f5f2b141812d5b885f3190c98802f1ea0')
+sha256sums=('3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5')
 
 prepare() 
 {
