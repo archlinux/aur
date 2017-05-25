@@ -2,7 +2,7 @@
 # Contributor: Ner0 (based on chromium-pepperflash-dev PKGBUILD)
 
 pkgname=chromium-widevine-dev
-pkgver=1.4.8.903
+pkgver=1.4.8.1000
 pkgrel=1
 pkgdesc="The Widevine Media Optimizer is a browser plugin designed for the viewing of premium video content (Only for chromium-dev)"
 arch=('x86_64')
@@ -29,6 +29,5 @@ pkgver() {
 
 package() {
   install -Dm755 opt/google/chrome*/libwidevinecdm.so "${pkgdir}/usr/lib/chromium-dev/libwidevinecdm.so"
-  #echo ${pkgver} > "${pkgdir}/usr/lib/chromium-dev/widevine.version"
   install -Dm644 eula_text.html "${pkgdir}/usr/share/licenses/${pkgname}/eula_text.html"
 }
