@@ -9,8 +9,9 @@
 # Based on linux-hardened package
 
 pkgbase=linux-libre-hardened
-_pkgbasever=4.10-gnu
-_pkgver=4.10.16-gnu
+_pkgbasever=4.11-gnu
+_pkgver=4.11.2-gnu
+_hardenedver=c
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -18,9 +19,9 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
-pkgver=${_pkgver//-/_}
+pkgver=${_pkgver//-/_}.${_hardenedver}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x0
 arch=('i686' 'x86_64' 'armv7h')
 url="https://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -31,12 +32,14 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm.sig"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm.sig"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm.sig"
+        "https://github.com/thestinger/linux-hardened/releases/download/${_pkgver%-*}.${_hardenedver}/linux-hardened-${_pkgver%-*}.${_hardenedver}.patch"
+        "https://github.com/thestinger/linux-hardened/releases/download/${_pkgver%-*}.${_hardenedver}/linux-hardened-${_pkgver%-*}.${_hardenedver}.patch.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_vga16.ppm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
         # pacman hook for initramfs regeneration
@@ -46,8 +49,8 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
-        "https://github.com/coadde/rcn-libre/raw/master/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
-        "https://github.com/coadde/rcn-libre/raw/master/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://git.hyperbola.info:50100/kernels/rcn-libre.git/plain/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://git.hyperbola.info:50100/kernels/rcn-libre.git/plain/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -56,10 +59,13 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
-        '0009-disable-USB3-port-on-ODROID-XU.patch')
-sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
+        '0009-disable-USB3-port-on-ODROID-XU.patch'
+        '0010-ARM-dove-enable-ethernet-on-D3Plug.patch')
+sha512sums=('f1d9138024b127385248de5c8eb72123b717bbbaba3e80bded20f073acac816a7ea979c4677ddc72252a8ec77c6a6c1d1738b1c20106f7d53ef39c9cf64c1853'
             'SKIP'
-            '83b92415a071baf8064fe4d6f2a100d3201236fcf46c689b2391a4fecbc4be0005fe8b8e4c73266f968e79a1da0f789a8c482db3ca22013967353d8c52d84697'
+            '181d9aef7b766dbe11e7dd09e8030239d0040af782cdd37dc9b8d2f9da8849e51c5aa8cbd44f89bebf8d9f6f97ddeefb2a8feb95d2c674e06c16a6be2d5a9fad'
+            'SKIP'
+            '10867e25c6e2990167cd434556aa5ced6479d1f549c720089d5dcd285d0ee229e41fa6741f513d8f81234f7a3de95c85a420f58922bab5aac8a2133563db3d63'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -67,26 +73,28 @@ sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf58
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '4ab229a73ffbe2f2cbcc6b3f70d493cda8cb939774c797d3960e395028eeff800d340a688dc60fda5993019deefaef86789008a6bbf670ccccffd726d46615e5'
-            '0049acd22a05de73612fde9cdd7158525ea9a36436dc5f50d5ca1fa3dd267af46e5b3f5d5b4a27f76dee935cd35a3f53581120683a03ff3adc8995c9cd702719'
-            '4db45210008d2ef94e42564b10944c51e0577ec9404503018af329ce64be93c4f0cdc26727b0227cb1144c5d298bbd3ae0a952e5db8d2e6ab0368bdef1149022'
+            '2de62681db4176fdf65f1b2075d423a645ddef4376b49c9580b00f0afceb8d9f43ece4d64d997524b457da4b121bdcedcc32e0007e33c5e7ddeba3973fd2a47a'
+            '449113c76d1acf0e757a7f5706f916c90c1de70396383e126a79c9a63adebbe95370551029cd42910ebf1455f8d640dfc8ac5cdd0636bb875df67566a603a945'
+            'cdbced8e0884d87eaa6d5ab2c273bf3f6b62ed49b2b712c8720a2f501bac5f8e3107c42b528a06b2ccb7824850029c70c89fa33d6d7437ce32556e33244cb306'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'd58a65532e0e9bfad4099e5650d2391d28d135e17c779de3766137f31b5dae925db78005187015914a66279d68bf701b50da0e29b20ac052596916262eb2662f'
+            'bb087f597c4ed3a4d7eb5065a70dc8ec15abdecb36eabed6779a0884c003f7ceaefd64d64259b7077007f85df58a0f06d41148e8fee8c2c2daf2dde0382d2ec0'
             'SKIP'
-            '1d550ee87d3c35b4022c23feb771f9a40c34bead6eb8dc5e92cd767417723b32bcb7e0608419aa2b8a4f3306c183447d9ae713d33df68102b1c2df4e267cee39'
-            'cca509462861ac85e6229bd2bf5f5e0e4d2d2db182cf1d562f765862eb192ade5917a9e0306375642c1090143fae6826129fd531435658d906e6a8f88982ddef'
-            '8bff227b9b52b7cf9981c7224a1032abce2955488e4c21494f11c07c96d3999fe920d494ff715baa7bf6071d828f7d22533640b7bc9ac0ad7ab47021156e0f69'
-            '6b870843e8bfee9944befaddf3c4544442d550ccb2d91e5b9eddbb7ea5f48115c6815d4635d6418d3cb8d1013e9dbaf6a3c16fb75f778e215a32d582543ed38e'
-            '7864004635ed568d951eb85ba55b342b844a655abe160b30590b1d980afc12cdbc8ce235e76c92d7ff287c3847d31e5085a215ba42c453c60dca079790103d04'
-            'c00a187921dddbf6712b74af4c439d87a646ec8db3e28e59e279f919e889b9369593dabdc1e4943901b3b0a0ed50a3e910fde03e19f74f74de9591799aee9680'
-            'c33811f633adbefad6e6a1dc73e9b64a594fae3dc06b0970f4f59b11372c3c1a626fda8ff2effca09a2a7630d1dbe4d81aaf371eb04a71d72b345576da8521da'
-            'e51b1d296daa73759d9e932a4d0f72f7e4d6b53c7fa0edb0191f0cd69affe6deba2a4dd6a28165d4861d9b7117fc21190997e691d34b32bb9c96b7dc7c358c63'
-            'b36238543e6dcaa3b6086618fb0eab108480d1224898548205f56a174911d38ce140b8206636c093ad6670987e09bd8a55c7d84ab5512bc6cda45260a1031a59')
+            'b3c214cc9adf22858f21ea8b0b919bd167257c2f624e98718d486b7fb82f1cfd17f578f799c13c26948bc2cb23e9eb6de0ef9299cbe49afb63929778eda24026'
+            'db14593a4a0c0371e2cc2bcdcb0a4ac2abec96945dbb455393c5ef5140eca8ffb857dfee818087e4dfe261e9725a9e40a5d7e4c9774bca96560e3628743d7955'
+            '5ed2d772ff47517b21ba5f848ee2792a85e5e2a3d80a2aa4f0eef2acc445c20c630e6033bb180754d5cfcf11b19dbfa939b14e00bbe2acaacde02f90e3ddbb48'
+            '41ee45da195f7350d1c4febe21d127bccddac796adac840296a9f7ea405ad8484751658cf5174bed0ec20497d907a4429d77b0a506798136ad52c2e6e2474d0d'
+            '4e4dcb143ce096971ee0d77eaf513f2013d0c23a4f24462fdb9363560860bc392893100b1fe4509101427151e5d3e643dd3f3c5769fb7da1f8182879d8c5eed3'
+            '6c6d8250a44c0771035c3f0fe5fdfd2789f984b084df0b55fa2c17ff7b9aa3cd6cc0572fc84b230678c0fe40688f90c973b8af5e98c0e743aa73e2cd19102a6b'
+            '178f75b381a3c67069d8ab99ad4805fac28e40a5213ea9aa7b73913540dadee905055552dd9a5541287503b49f175dd3b85445a4b6ceae7413119297cf3a2656'
+            '2528481b6b1fbf7f1a39832e20ed66398cd2bc13a6bec296c351a4f571b5158c86b30993ebf450ae7a983dc82b05cd4917b19b9648665f64f328cc59cbb167fc'
+            '981a24d1309910c6700aaa1d8bba866c0c3fd7cf6a15a1a4b10ec69b05072775f32ef707cbfc209355aa72237880431e74213d3b5b8c6e16247cb5d943380ad2'
+            '3b17a9b3aac558f739320b50c84ecb44affbb26709b0f970b6f6e8f96b56aee644d92f61a0cf27c774a6c347dfc3676b4b657c4cac9ff678fb12c59fc7bcdc80')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
+              '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A' # Daniel Micay
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
 )
@@ -109,6 +117,9 @@ prepare() {
     patch -p1 -i "${srcdir}/patch-${_pkgbasever}-${_pkgver}"
   fi
 
+  # add hardened patches
+  patch -Np1 -i "${srcdir}/linux-hardened-${_pkgver%-*}.${_hardenedver}.patch"
+
   if [ "${CARCH}" = "armv7h" ]; then
     # RCN patch (CM3 firmware deblobbed and AUFS removed)
     # Note: For stability reasons, AUFS has been removed in the RCN patch.
@@ -126,6 +137,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
     patch -p1 -i "${srcdir}/0009-disable-USB3-port-on-ODROID-XU.patch"
+    patch -p1 -i "${srcdir}/0010-ARM-dove-enable-ethernet-on-D3Plug.patch"
   fi
 
   # add freedo as boot logo
@@ -182,7 +194,7 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "kernel=${_archpkgver}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}.${_hardenedver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -248,7 +260,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
-  provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
+  provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}.${_hardenedver}}")
   conflicts=("${_replacesoldkernels[@]/%/-headers}")
   replaces=("${_replacesoldkernels[@]/%/-headers}")
 
@@ -389,7 +401,7 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
-  provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
+  provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}.${_hardenedver}}")
   conflicts=("${_replacesoldkernels[@]/%/-docs}")
   replaces=("${_replacesoldkernels[@]/%/-docs}")
 
