@@ -1,9 +1,8 @@
 pkgbase = yandex-browser-ffmpeg-codecs
 	pkgdesc = additional support for proprietary codecs for yandex browser
 	pkgver = 58.0.3029.81
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ffmpeg.org/
-	install = yandex-browser-ffmpeg-codecs.install
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
@@ -21,11 +20,9 @@ pkgbase = yandex-browser-ffmpeg-codecs
 	options = !strip
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-58.0.3029.81.tar.xz
 	source = chromium-last-commit-position-r1.patch
-	source = install-yb-codecs
 	source = https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r2.patch
 	sha256sums = 5ab61b7025a5143fa1b21713479b316ec7a98e262e79e84f9c9a9656179217cb
 	sha256sums = d3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e
-	sha256sums = de600d0ac737fd4a891d917cb64eb1268e625f3854a86e7f297b0280fe6d616c
 	sha256sums = 64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de
 
 pkgname = yandex-browser-ffmpeg-codecs
