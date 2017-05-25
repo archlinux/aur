@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname='pop-gtk-theme'
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='System76 Pop GTK+ Theme (GNOME, Budgie, XFCE, MATE)'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
     'parallel'
 )
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1b637fc557362943507210d5bc1f6af3baefed87828d2ad47013fd823c906784')
+sha256sums=('2029e692077c2a37251d294b1e20c836f06e6af3d26f0b144e0ee162bdab1359')
 
 prepare() {
     cd "$pkgname-$pkgver"
