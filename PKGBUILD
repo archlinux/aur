@@ -4,7 +4,7 @@
 
 pkgname=ntfs-3g-fuse
 pkgver=2017.3.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Stable read and write NTFS driver and ntfsprogs. This package will allow normal users to mount NTFS Volumes."
 arch=('i686' 'x86_64')
 url="http://www.tuxera.com/community/open-source-ntfs-3g/"
