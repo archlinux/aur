@@ -13,7 +13,7 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
 makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
 provides=('switchboard-plug-datetime')
 conflicts=('switchboard-plug-datetime')
-conflicts=('switchboard-plug-datetime-bzr')
+replaces=('switchboard-plug-datetime-bzr')
 source=('git+https://github.com/elementary/switchboard-plug-datetime.git')
 sha256sums=('SKIP')
 
