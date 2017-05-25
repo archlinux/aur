@@ -9,7 +9,7 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-git
-pkgver=2017.03.29
+pkgver=2017.05.23
 _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
