@@ -1,8 +1,9 @@
+# Contributor: kaptoxic
 # Contributor: Gustavo A. Gomez Farhat <gustavo_dot_gomez_dot_farhat at gmail_dot_com>
 
 pkgname=rodin
-pkgver=3.2
-pkgver_upstream=0.201506220911-ecacdcb
+pkgver=3.3
+pkgver_upstream=0.201704022034-f9fbb0d
 pkgrel=1
 pkgdesc="Tool for cost effective rigorous development of dependable software systems"
 arch=('i686' 'x86_64')
@@ -15,12 +16,12 @@ sha256sums=('aa4c0909b4e156f20882a1b861c6a7b37d144a18e9fe7fa00088b9dc2f586d75')
 
 if test "$CARCH" == x86_64; then
   source+=(http://downloads.sourceforge.net/project/rodin-b-sharp/Core_Rodin_Platform/${pkgver}/rodin-${pkgver}.${pkgver_upstream}-linux.gtk.x86_64.tar.gz)
-  md5sums+=('2da46b2fd30ae5dff7d466baf475bf55')
-  sha256sums+=('36e3ac4ab30586f12bd552902e9afb4e50a4bd3cb711ee4f9becbec88ea5385e')
+  md5sums+=('3b68c78b70e53199243b7d447d3d1aa5')
+  sha256sums+=('2f685073f034f29dac67e02d8529b1f4436798fbe896163f7f35e67335110517')
 else
   source+=(http://downloads.sourceforge.net/project/rodin-b-sharp/Core_Rodin_Platform/${pkgver}/rodin-${pkgver}.${pkgver_upstream}-linux.gtk.x86.tar.gz)
-  md5sums+=('7f52140cc41133908b19ed8758d9b80b')
-  sha256sums+=('ede945b0abde3c1167d77f1cedba15c2234671a4c8e3e65cfbfd487fad0dee2a')
+  md5sums+=('4ecb200a1b23a74cf45d757666d12510')
+  sha256sums+=('29dd52d3a560a6e832213af9040afac1ae865e67b01145a24e0f3780f110d7b0')
 fi
 
 package() {
