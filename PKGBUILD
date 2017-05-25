@@ -1,4 +1,5 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: ice-man <icemanf@gmail.com>
@@ -6,27 +7,26 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="http://www.libssh.org/"
 license=('LGPL')
 arch=('any')
-depends=('mingw-w64-openssl' 'mingw-w64-zlib')
+depends=('mingw-w64-libgcrypt' 'mingw-w64-zlib') # use openssl again for 0.8
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'doxygen')
 options=(!strip !buildflags staticlibs)
 #cmocka
-#checkdepends=('openssh')
-source=(https://red.libssh.org/attachments/download/210/libssh-$pkgver.tar.xz
-        https://red.libssh.org/attachments/download/209/libssh-$pkgver.tar.asc
+source=(https://red.libssh.org/attachments/download/218/libssh-$pkgver.tar.xz
+        https://red.libssh.org/attachments/download/217/libssh-$pkgver.tar.asc
         mingw-as-unix.patch
         mingw-DATADIR-conflict.patch
         mingw-pkgconfig.patch)
-md5sums=('ec36040a9d0cc343ba78edf3b6580855'
-         'SKIP'
-         'fc03637960f420837ad506892b444986'
-         '7be13e00d27ce77f862012ee0654019b'
-         '8362595ebf2d566f0c6dec7c0c65219d')
+sha256sums=('54e86dd5dc20e5367e58f3caab337ce37675f863f80df85b6b1614966a337095'
+            'SKIP'
+            '89d8b663f0a9403f64998057e24dbdb46cd85be51bf2b97bc4c2e69bc231d7e8'
+            '444a66b1926f49c54df844c22263496c2d86e124c8bcdbd194c4581d06140c1b'
+            '00b0f061b49d1268dd738910c6663870061d2244e9ed2424b03ea6c396274dc4')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -51,6 +51,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DCMAKE_BUILD_TYPE=Release \
       -DWITH_GSSAPI=OFF \
+      -DWITH_GCRYPT=ON \
       -DWITH_STATIC_LIB=ON
 
       #-DWITH_TESTING=ON
