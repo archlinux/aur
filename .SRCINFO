@@ -1,0 +1,13 @@
+pkgbase = pulsenomore
+	pkgdesc = Run Executable without Pulseaudio correctly
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://bugs.kerbalspaceprogram.com/issues/7515#note-28
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://raw.githubusercontent.com/mwestphal/pulsenomore/master/pulsenomore.c
+	sha256sums = b55398ee95f9f65eeef91c5df79d12a3bdbe2e6e8e75bc46c058c330cac903ca
+
+pkgname = pulsenomore
+
