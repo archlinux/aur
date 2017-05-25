@@ -1,14 +1,14 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-security-privacy-git
-pkgver=r429.aded947
+pkgver=r459.bf411fc
 pkgrel=1
 pkgdesc='Switchboard Security & Privacy Plug'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-security-privacy'
 license=('GPL3')
-depends=('elementary-dpms-helper-bzr' 'glib2' 'glibc' 'gtk3' 'libgee'
-         'light-locker' 'polkit' 'ufw' 'zeitgeist'
+depends=('glib2' 'glibc' 'gtk3' 'libgee' 'light-locker'
+         'pantheon-dpms-helper-bzr' 'polkit' 'ufw' 'zeitgeist'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'git' 'granite-git' 'switchboard-git' 'vala')
 provides=('switchboard-plug-security-privacy')
