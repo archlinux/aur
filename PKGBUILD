@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xcl-git
-pkgver=0.0.0.291.672.g1410ba8
-pkgrel=5
+pkgver=0.0.0.291.673.ge576a5e
+pkgrel=1
 pkgdesc="An native-code implementation of Common Lisp"
 arch=('i686' 'x86_64')
 url="http://armedbear.org/"
