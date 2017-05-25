@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=60.0.3100.0
+pkgver=60.0.3107.4
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -83,11 +83,8 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/skia-avx2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r6.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-opus-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-libpng-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-libwebp-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r7.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-harfbuzz-r1.patch'
         # Misc Patches
 #         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
 #         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
@@ -103,12 +100,8 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
             'b34b698059a8e10aa1a4b26f41599c3a62cfd39b59d6269bcfe939e7ff7ad39a'
-            'aa10f5797fe28858533ceeb0fa903f37e744ed4133c889eac60f5094e4b6a596'
-            '2fc21f48b95f9f2c2bd8576742fcf8028a8877c6b6e96c04d88184915982234e'
-            'ee7947cf63064d108c10f92db9b8dc772283757f27d7030b34520e9884c9ea67'
-            '72162373321acdc3d1fc4ab4d14a05f8103e066579e364a18c2e7ee3f66db9bf'
-            '71321092ee15738386d839312dba32aa407682a38ea158c9b13b3dca3114bb78'
-
+            '7c5151c295811bfdde473de5b7521f3a911813388e4811a75e296d42a5e22623'
+            'a81e83e7b88a76ad68a9d7a4fcbcdedd15cb915470760c93cf4cd0af78248987'
             # Misc Patches
 #             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
 #             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
@@ -401,11 +394,8 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r1.patch"
-  patch -p1 -i "${srcdir}/skia-avx2.patch"
-  patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r6.patch"
-  patch -p1 -i "${srcdir}/chromium-system-opus-r1.patch"
-  patch -p1 -i "${srcdir}/chromium-system-libpng-r1.patch"
-  patch -p1 -i "${srcdir}/chromium-system-libwebp-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r7.patch"
+  patch -p1 -i "${srcdir}/chromium-system-harfbuzz-r1.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
