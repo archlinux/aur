@@ -1,6 +1,6 @@
 # Maintainer: Liqueur Librazy <im@librazy.org>
 pkgname=tidb-bin-nightly
-pkgver=0.0.1.20170117051151
+pkgver=0.0.1.20170524020718
 pkgrel=1
 
 pkgdesc="A distributed NewSQL database compatible with MySQL protocol"
@@ -33,7 +33,5 @@ package() {
 	install -dm755 "$pkgdir"/{opt/tidb/conf,usr/bin}
 	cd "tidb-latest-linux-amd64/bin"
 	install -D -m755 *-server "${pkgdir}/usr/bin"
-	cd ..
-	cp -R conf "$pkgdir/opt/tidb/"
 	cd ..
 }
