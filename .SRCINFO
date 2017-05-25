@@ -1,0 +1,15 @@
+pkgbase = devpi-semantic-ui
+	pkgdesc = A Semantic UI theme for devpi
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://doc.devpi.net/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = devpi-server
+	source = https://pypi.io/packages/source/d/devpi-semantic-ui/devpi-semantic-ui-0.2.2.tar.gz
+	sha256sums = 554b076d4f1e5c827765c1019cdacfeea7f43a8356ef94f3fdedc7233b3f1868
+
+pkgname = devpi-semantic-ui
+
