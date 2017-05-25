@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r2392.86312f06
+pkgver=r2458.82129a8e
 pkgrel=1
 pkgdesc="A framework for high speed network packet I/O, using kernel bypass"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://info.iet.unipi.it/~luigi/netmap"
 license=('BSD')
 groups=()
 depends=('glibc')
-makedepends=('git' 'sed' 'gzip' 'linux-headers' 'abs' 'pacman' 'xmlto' 'docbook-xsl' 'patch' 'bc')
+makedepends=('git' 'sed' 'gzip' 'linux-headers' 'pacman' 'xmlto' 'docbook-xsl' 'patch' 'bc' 'asp')
 provides=()
 conflicts=()
 replaces=()
@@ -31,10 +31,10 @@ build() {
     msg "Downloading kernel sources..."
     # Download kernel sources using ABS, checking that the version is the
     # same as the running kernel
-    mkdir -p $srcdir/abs
-    cd $srcdir/abs
-    ABSROOT=. abs core/linux
-    NESTEDDIR="$srcdir/abs/core/linux"
+    mkdir -p $srcdir/asp
+    cd $srcdir/asp
+    asp export linux
+    NESTEDDIR="$srcdir/asp/linux"
     cd $NESTEDDIR
     grep "pkgver[ ]*=" PKGBUILD > .ksver
     KSVER=$(sed 's|pkgver[ ]*=[ ]*||g' .ksver)
