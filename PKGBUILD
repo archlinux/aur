@@ -6,8 +6,8 @@
 # https://www.gnu.org/licenses/gpl-2.0.html
 
 pkgname=('pacman-pstatus')
-pkgver=0.1.0
-pkgrel=0
+pkgver=0.1.5
+pkgrel=1
 arch=('any')
 url='https://gitlab.com/renyuneyun/pacman-ps'
 license=('GPLv2')
@@ -20,7 +20,7 @@ pkgdesc="Provides a command to identify which running processes have files that 
 install='pacman-ps.install'
 
 options=('!strip')
-source=('git+https://gitlab.com/renyuneyun/pacman-ps#commit=323c3dc46b59125b68fa808d89316b1f3884248c'
+source=('git+https://gitlab.com/renyuneyun/pacman-ps#commit=6c49b205cbc39aeb4fc0ae5b5fc96cad179fae89'
         'pacman-ps.install')
 sha1sums=('SKIP'
           '53dcfea595c1c59cd47ae45c7f083e3e03a5e219')
@@ -35,6 +35,7 @@ package() {
   repodir=${srcdir}/pacman-ps
 
   install -D -m 644 ${repodir}/pacman-ps-post.hook ${pkgdir}${HOOK_DIR}/pacman-ps-post.hook
+  install -D -m 644 ${repodir}/pacman-ps-pre.hook ${pkgdir}${HOOK_DIR}/pacman-ps-pre.hook
 
   install -D -m 755 ${repodir}/pacman-ps.py ${pkgdir}${LIB_DIR}/pacman-ps.py
   install -D -m 755 ${repodir}/ps-lsof.py ${pkgdir}${LIB_DIR}/ps-lsof.py
@@ -44,6 +45,7 @@ package() {
   ln -sr ${pkgdir}${LIB_DIR}/ps-lsof.py ${pkgdir}${BIN_DIR}/ps-lsof
 
   install -D -m 755 ${repodir}/pacman-ps-posthook.sh ${pkgdir}${BIN_DIR}/pacman-ps-posthook
+  install -D -m 755 ${repodir}/pacman-ps-prehook.sh ${pkgdir}${BIN_DIR}/pacman-ps-prehook
 
   install -D -m 644 ${repodir}/license.txt ${pkgdir}${LICENSE_DIR}/${pkgname}/license.txt
 

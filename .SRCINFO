@@ -1,7 +1,7 @@
 pkgbase = pacman-pstatus
 	pkgdesc = Provides a command to identify which running processes have files that have changed on disk. It also provides a pacman hook and pacman-ps to also show which packages own the files that are still open. (forked from samcv's pacman-ps)
-	pkgver = 0.1.0
-	pkgrel = 0
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://gitlab.com/renyuneyun/pacman-ps
 	install = pacman-ps.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pacman-pstatus
 	depends = python
 	conflicts = pacman-ps
 	options = !strip
-	source = git+https://gitlab.com/renyuneyun/pacman-ps#commit=323c3dc46b59125b68fa808d89316b1f3884248c
+	source = git+https://gitlab.com/renyuneyun/pacman-ps#commit=6c49b205cbc39aeb4fc0ae5b5fc96cad179fae89
 	source = pacman-ps.install
 	sha1sums = SKIP
 	sha1sums = 53dcfea595c1c59cd47ae45c7f083e3e03a5e219
