@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2811.g42418a6b
+pkgver=0.2.r2969.ga2de741d
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -36,6 +36,7 @@ prepare() {
 
 git pull origin pull/492/head --no-edit # positional tracking videobasedtracker
 git pull origin pull/493/head --no-edit # positional tracking unifiedvideoinertialtracker
+git pull origin pull/546/head --no-edit # remove boost version check
 
 #temporary fix for boost incompatibility
 #sed -i "s/105900/106200/g" src/osvr/Common/IPCRingBuffer.cpp
