@@ -45,8 +45,8 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.11
 pkgver=4.11.3
-pkgrel=1
-_ckpatchversion=1
+pkgrel=2
+_ckpatchversion=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -71,7 +71,7 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
             '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
             'SKIP'
-            'd5903ed77b33984720e2178d34f8db287f6c274b7f1a30b4f28306b71a0bc3f1'
+            '1acde415a6a35d301beb65bc09bd20903f3a9c835c6c850f4c5a0ce0ab236bc1'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             'b0ce3fcfd51aa531959974768de8165406950b1cde3b946fdcd4d129e72f7810'
             'a31eaabfa627cc29bf28ae0e4e114f1f65734cbf1611b28abbabc2e470f813d1'
@@ -189,8 +189,8 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.155"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.155"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck2 patchset featuring MuQSS CPU scheduler v0.156"
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck2 patchset featuring MuQSS CPU scheduler v0.156"
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
