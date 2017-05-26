@@ -1,8 +1,7 @@
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=0xffff
-pkgver=0.6.1
+pkgver=0.7
 pkgrel=1
-pkgdesc="Open Free Fiasco Firmware Flasher "
+pkgdesc="Open Free Fiasco Firmware Flasher"
 arch=("x86_64" "i686")
 url="https://talk.maemo.org/showthread.php?t=87996"
 license=('GPLv3')
@@ -10,7 +9,7 @@ depends=("libusb0")
 makedepends=("libusb0")
 optdepends=()
 source=("http://repository.maemo.org/extras-devel/pool/fremantle/free/source/0/$pkgname/${pkgname}_${pkgver}.orig.tar.gz")
-sha1sums=("898d5c05c0835c340b63ff3e8e2c458d29b93bd8")
+sha256sums=("5ab8197989586703fc501741766343df8fa26ca4b8603ad3c2e922f3be10fd87")
 
 build() {
 	cd "$pkgname-$pkgver"
