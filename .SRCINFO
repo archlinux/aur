@@ -1,6 +1,6 @@
 pkgbase = sane-git
 	pkgdesc = Scanner Access Now Easy
-	pkgver = 1.0.24_352_gf45e166
+	pkgver = 1.0.27_4_g2b0028b4
 	pkgrel = 1
 	url = http://www.sane-project.org/
 	arch = i686

@@ -1,12 +1,13 @@
-# Maintainer: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
-# Original Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Tom X. Tobin <tomxtobin@tomxtobin.com>
+# Contributor: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
+# Contributor: eric <eric@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Simo L. <neotuli@yahoo.com>
-# Contributor: eric <eric@archlinux.org>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 _pkgname=sane
 pkgname=$_pkgname-git
-pkgver=1.0.24_352_gf45e166
+pkgver=1.0.27_4_g2b0028b4
 pkgrel=1
 pkgdesc="Scanner Access Now Easy"
 url="http://www.sane-project.org/"
@@ -49,7 +50,8 @@ build() {
     --enable-pthread \
     --disable-rpath \
     --enable-libusb_1_0 \
-    --disable-locking
+    --disable-locking \
+    --without-api-spec
   make
 }
 
