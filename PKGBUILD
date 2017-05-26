@@ -1,14 +1,15 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 # Contributer: Stefan Seemayer <stefan@seemayer.de>
-pkgname=tsmclient
-pkgver=7.1.4
+pkgbase=tsmclient
+pkgname=(tsmclient-service tsmclient-dkms)
+pkgver=7.1.6.2
 pkgrel=1
 pkgdesc="IBM Tivoli Storage Manager Client"
 arch=('x86_64')
 url="http://www-03.ibm.com/software/products/en/tivostormana/"
 license=('proprietary')
 depends=()
-makedepends=(rpmextract)
+makedepends=(libarchive patchelf)
 checkdepends=()
 optdepends=('jre8-openjdk: support for dsmj java gui')
 provides=()
@@ -16,21 +17,37 @@ conflicts=()
 install=
 options=(!strip)
 
-source=(ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86/BA/v${pkgver//.}/${pkgver}.0-TIV-TSMBAC-LinuxX86.tar
-	dsmcad.service)
+# For 7.1.6.2:
+# 7
+_ver_major="${pkgver%%.*}"
+# 7.1.6
+_ver_3="${pkgver%.*}"
+# 716
+_ver_3_nd="${_ver_3//.}"
+# 7.1
+_ver_2="${_ver_3%.*}"
+# 1
+_ver_minor="${_ver_2#*.}"
+source=(ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v${_ver_major}r${_ver_minor}/Linux/LinuxX86/BA/v${_ver_3_nd}/${pkgver}-TIV-TSMBAC-LinuxX86.tar
+	dkms.conf)
 
-sha1sums=('acecc4cc3fbe0f3d5cf9bd2cd9339534214b091d'
-          'd4702d06339da46e998980e0d145e1f3e92f30aa')
+sha1sums=('db47fa69b96a20da08d29e55738e71158277adc7'
+          'ad89fff3d6096ba25d973e7e27ee3ce10e2fe57f')
 
 prepare() {
 	cd "$srcdir/"
 	for rpmfile in *.rpm; do
+		case "$rpmfile" in
+			TIVsm-filepath-*) continue ;;
+		esac
 		echo "Extracting '$rpmfile'"
-		rpmextract.sh $rpmfile
+		bsdtar -xf $rpmfile
 	done
+
+	bsdtar -xf TIVsm-filepath-source.tar.gz
 }
 
-package() {
+package_tsmclient-service() {
 	cd "$srcdir/"
 
 	#cp -r "$srcdir/etc" "$pkgdir/"
@@ -40,8 +57,35 @@ package() {
 
 	ln -s "/opt/tivoli/tsm/client/lang/EN_US" "$pkgdir/opt/tivoli/tsm/client/ba/bin/EN_US"
 
-	install -Dm 644 "$srcdir/dsmcad.service" "$pkgdir/usr/lib/systemd/system/dsmcad.service"
+	for serv in "$srcdir"/opt/tivoli/tsm/client/ba/bin/*.service; do
+		install -d "$pkgdir"/usr/lib/systemd/system
+		install -m 644 "$serv" "$pkgdir"/usr/lib/systemd/system
+	done
 
-	# Install ld.so.conf.d file so that shared libraries can be found
-	#install -Dm 644 "$srcdir/tsmclient.conf" "$pkgdir/etc/ld.so.conf.d/tsmclient.conf"
+	# Permissions even for owner are locked down, fix what we need for now.
+	chmod u+rw -R "$pkgdir"/opt/tivoli/tsm/client/ba
+
+	# GSK stuff is in wierd places, tweak rpath to allow it
+	# TODO: consider relocating these somewhere else
+	for bin in "$pkgdir"/opt/tivoli/tsm/client/ba/bin/{dsmadmc,dsmagent,dsmc,dsmcad,dsmenc,dsmswitch,dsmtca,dsmtrace,tsmjbbd}; do
+		echo "Patch rpath of $bin"
+		patchelf --set-rpath '/usr/local/ibm/gsk8_64/lib64:/opt/tivoli/tsm/client/api/bin64'  "$bin"
+	done
 }
+
+package_tsmclient-dkms() {
+	arch=('any')
+	depends=('dkms')
+
+	cd "$srcdir"/jbb_gpl
+
+	install -d -m 0755 "${pkgdir}"/usr/src/${pkgbase}-${pkgver}
+	install -D -m 0644 "${srcdir}"/dkms.conf "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/dkms.conf
+	install -m0644 Makefile *.c *.h "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/
+
+	sed \
+		-e "s/@PKGBASE@/${pkgbase}/" \
+		-e "s/@PKGVER@/${pkgver}/" \
+		-i "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/dkms.conf
+}
+		
