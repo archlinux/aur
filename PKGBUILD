@@ -2,7 +2,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-experimental
-pkgver=0.15.13
+pkgver=0.15.14
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (experimental branch)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ build() {
 
   while [[ ! -f "${pkgpath}/${_gamepkg}" ]]; do
     error "Game package not found."
-    read -p "Please provide the path to the directory containing ${_gamepkg} or leave blank to download the game using your Factorio credentials:" pkgpath
+    read -rp "Please provide the path to the directory containing ${_gamepkg} or leave blank to download the game using your Factorio credentials:" pkgpath
 
     if [[ -z "$pkgpath" ]]; then
       _download && pkgpath="$SRCDEST" || true
@@ -76,8 +76,8 @@ _download() {
     local password
     local file="${SRCDEST}/${_gamepkg}"
 
-    read -p "Username or email: " login
-    [[ -n $login ]] && read -sp "Password: " password ; echo
+    read -rp "Username or email: " login
+    [[ -n $login ]] && read -rsp "Password: " password ; echo
 
     if [[ -n $login && -n $password ]]; then
       msg "Logging in..."
@@ -127,7 +127,7 @@ _download() {
       else
         error "Login failed"
         #echo "$output"
-        read -p "Try again? (Y/n)"
+        read -rp "Try again? (Y/n)"
         [[ $REPLY == n ]] && break
       fi
     else
