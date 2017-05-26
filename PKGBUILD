@@ -14,8 +14,8 @@
 # 3. Run makepkg -i and enjoy!
 
 pkgname=scrt-sfx
-pkgver=8.1.2
-incrver=1362
+pkgver=8.1.3
+incrver=1382
 pkgrel=1
 pkgdesc="Vandyke SecureCRT & SecureFX SSH Client"
 arch=('x86_64' 'i686')
@@ -28,8 +28,8 @@ source=("run_securecrt.sh" "run_securefx.sh")
 md5sums=('f46dbfcf871ed5056742ad2b4d0a6051' 'e64a26ecdc092367dfd5bbd4035e9923')
 source_i686=("${pkgname}-${pkgver}.${incrver}.ubuntu16.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu16.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}.${incrver}.ubuntu16-64.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu16-64.tar.gz")
-md5sums_i686=('62b179388e49392a6757dbc85e316f7b')
-md5sums_x86_64=('03e0dce2d9f5846549ab3eb984485111')
+md5sums_i686=('8d3b0ca4af6c289346490b9ae267281c')
+md5sums_x86_64=('75c49b2dfa79fc2ac745cc03ed744a08')
 
 package() {
 	install -Dm 755 ./run_securecrt.sh ${pkgdir}/usr/bin/SecureCRT
