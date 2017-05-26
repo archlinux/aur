@@ -4,9 +4,10 @@
 # Contributor: Eimantas Bunevičius <eimantaster@gmail.com>
 _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
+_openssl_ver=1.0.2l
 pkgname=openresty
 pkgver=1.11.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
@@ -25,7 +26,7 @@ source=(https://openresty.org/download/$pkgname-$pkgver.tar.gz{,.asc}
         service
         $pkgname.logrotate
         $pkgname.install
-        https://www.openssl.org/source/openssl-1.0.2l.tar.gz
+        https://www.openssl.org/source/openssl-${_openssl_ver}.tar.gz
         $pkgname.sh
         )
 noextract=()
@@ -54,7 +55,7 @@ build() {
     --prefix=/opt/openresty \
     --conf-path=$_cfgdir/nginx.conf \
     --user=http --group=http \
-    --with-openssl=$srcdir/openssl-1.0.2k \
+    --with-openssl=$srcdir/openssl-${_openssl_ver} \
     --with-file-aio \
     --with-http_dav_module \
     --with-http_gzip_static_module \
