@@ -41,11 +41,8 @@
   "Load layers specified in spacemacs-funcs-enabled-layers."
   (dolist (file-string (file-expand-wildcards "/usr/share/emacs/site-lisp/spacemacs-funcs/layers*" t))
     (if (and (string-match "layers_.*_\\([[:alnum:]-]+\\)_funcs.elc" file-string)
-	     (member (match-string 1) spacemacs-funcs-enabled-layers))
-	(message "match: %s %s %s" file-string (match-string 1 file-string) spacemacs-funcs-enabled-layers)
-      (sit-for 1)
-      )));(load file-string))))
-
+	     (member (match-string 1 file-string) spacemacs-funcs-enabled-layers))
+      (load file-string))))
 
 (provide 'spacemacs-funcs)
 

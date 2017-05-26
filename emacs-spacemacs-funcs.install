@@ -2,15 +2,28 @@ post_install () {
 
 cat << EOF
 
-==> Add this code to your .emacs file to include these functions:
+==> Add this code to your .emacs file to include the core functions:
 
 (require 'spacemacs-funcs)
 
-==> Or do the above with use-package:
+==> For each additional Spacemacs layer from which you want utility functions (probably at least spacemacs-base):
 
-(use-package spacemacs-funcs)
+(setq spacemacs-funcs-enabled-layers '("spacemacs-base"
+                                       "<name of other layer>"))
 
-==> NOTE: This is a really rough include, and basically imports all of the *funcs.el files in the Spacemacs project. There are bound to be functions that don't work, because they reference variables outside of these files (and therefore outside of the scope of this package.) Over time I might think about refining this, but for now it gets me the utilities I need.
+==> If you enabled some layers, then: 
+
+(spacemacs-funcs-load-layers)
+
+==> Or do all the above with use-package:
+
+(use-package spacemacs-funcs
+  :config
+  (setq spacemacs-funcs-enabled-layers '("spacemacs-base"
+                                         "<name of other layer>")) ; To enable some layers
+  (spacemacs-funcs-load-layers))                                   ; If extra layers are enabled
+)
+
 
 EOF
 }

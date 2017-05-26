@@ -5,7 +5,7 @@ _pkgmaintainer=syl20bnr
 _pkgdestdirname=spacemacs-funcs
 _versionprefix=v
 pkgver=0.200.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Useful functions from the Spacemacs project"
 pkgname=emacs-${_pkgdestdirname}
 arch=(any)
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('emacs')
 source=("spacemacs-funcs.el"
 	"$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('eb0382f22b73e3be609ac585dd24ef3a5ecb317067d13f7f06d85ec7887779a2'
+sha256sums=('1cb471431cbc7b1654a16f9dbe8c56dac044010d7f1eaa998b31a966dedc5198'
             '81e8fc56421e00405cba2d78f8b5e14b1d9e8e23803dcf43eb8e89b72273ea1b')
 install=${pkgname}.install
 
