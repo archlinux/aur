@@ -12,7 +12,7 @@ depends=('gconf' 'gtk2' 'nss' 'libxss')
 source=("https://github.com/NebulousLabs/Sia-UI/releases/download/${pkgver}/Sia-UI-${pkgver}-linux-x64.zip"
         "https://github.com/NebulousLabs/Sia-UI/raw/master/assets/siaLogo.svg"
         "${_pkgname}.desktop")
-sha256sums=('ebdabe15c5ac14c19cc4af47cc1b16bf42efc8132093fbfed5a5ebe4c285d9e8'
+sha256sums=('0163db87f814a2c8111334019c55387f822ff4a2a67b6ab6214d4e11d1baf3b8'
             'a02a534c151b49de1c6cb9f63502043ed3e06d0cbb058126198f821ec2a9a1c2'
             '56c2ee24ac0ed3f43579ecc77cae29f2f15ee75b505b01b9d37b30a2330cc489')
 
