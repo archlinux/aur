@@ -6,19 +6,19 @@
 
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-headless' 'ppsspp-qt')
-pkgver=1.4
-pkgrel=3
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
 url='http://www.ppsspp.org/'
 license=('GPL2')
 depends=('glew' 'sdl2')
 makedepends=('cmake' 'git' 'glu' 'libzip' 'qt5-tools')
-_commit='186d471305cad6fe83d8716d6b328f0e8b32b38c'
+_commit='e776eff6dba97df3b742dd7e178d2aaf9b15cc87'
 source=("git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}"
         'git+https://github.com/hrydgard/ppsspp-ffmpeg.git#commit=a2e98d7ba4c7c5cac08608732c3058cb46e3e0ef'
         'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git#commit=b16f7e6819267e57c3c244808d1981f0ce34acbc'
-        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=ed0bbfb389da213bd891d179d1d92e95b8f05e43'
+        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=f32328a88cbf368af90eb79bc7ad5420795d6585'
         'git+https://github.com/Kingcom/armips.git#commit=770365d44df35d6e675c58bb2a774ca412278ef5'
         'armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git#commit=b7f5a22753c81d834ab5133d655f1fd525280765'
         'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=6381b2ff9c0d975af8fd2974c97aa12a69ab6cc6'
@@ -35,9 +35,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '873d63c6ef9acdf7121f4bcc4cb849bb8a006abc508c403786c24ebd500e0eec'
-            '5c168ae19d19059095101e5ff587d5b107b16d070721541f765d002e15d89ed4'
-            'e14964ec3a931d10ed71a88316735f4c47ac7fd62f346973e0c9a0d0a2ff6cab'
+            '2c2d1ee6d1ce5c2acec372d58b8079885f6d5d674633cfea489cd550252a5426'
+            '1236ce000bb670ee2c0e0645c3d55f4d8c8e74dbc35a1af0962a3bdd7608f1c5'
+            '828b06aacc56672a4d953d77342717c5be414a68261025f74e466abd084b8e6b'
             '1c332702d0aeced07df7e12ba8530bc3f19a52bc76c355f6c84c141becfd46d8'
             'b3b1fb9e0ecd3c4472b51f27d028a69514b1a3823c26e33da6ffaebfb1522b7f'
             '6694643d96dae673f01555637139468eb277f3379afbcceccad3f7e0ae670278')
