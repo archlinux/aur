@@ -8,9 +8,10 @@ arch=('any')
 url='https://code.launchpad.net/~elementary-os/elementaryos/pantheon-xsession-settings'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('cerbere-git' 'gala-git' 'gconf' 'gnome-keyring' 'gnome-session'
-         'gnome-user-share' 'pantheon-applications-menu-git'
-         'pantheon-dpms-helper-bzr' 'wingpanel-git' 'xdg-user-dirs-gtk')
+depends=('cerbere-git' 'dconf' 'gala-git' 'gconf' 'gnome-keyring'
+         'gnome-session' 'gnome-user-share' 'pantheon-applications-menu-git'
+         'pantheon-dpms-helper-bzr' 'plank' 'wingpanel-git'
+         'xdg-user-dirs-gtk')
 makedepends=('bzr')
 optdepends=('pantheon-default-settings-bzr')
 source=('pantheon-session::bzr+lp:~elementary-os/elementaryos/pantheon-xsession-settings')
@@ -20,6 +21,12 @@ pkgver() {
   cd pantheon-session
 
   echo "r$(bzr revno)"
+}
+
+prepare() {
+  cd pantheon-session/gnome-session
+
+  sed 's/gnome-settings-daemon;//' -i *
 }
 
 package() {
