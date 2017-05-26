@@ -10,7 +10,7 @@ license=('custom:Boost')
 makedepends=('git' 'dub')
 depends=()
 source=('git://github.com/dlang-community/D-YAML.git'
-	'git://github.com/ximion/tinyendian.git' # a dependency
+	'git://github.com/dlang-community/tinyendian.git' # a dependency
 	'dyaml.pc'
 	)
 md5sums=('SKIP' 
