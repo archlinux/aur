@@ -1,0 +1,14 @@
+pkgbase = python2-x11_hash
+	pkgdesc = Binding for Dash's X11 proof of work hashing.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/mazaclub/x11_hash
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://github.com/mazaclub/x11_hash/archive/1.4.tar.gz
+	md5sums = aeb83b7e868f504890a6a8d12c9ef2a0
+
+pkgname = python2-x11_hash
+
