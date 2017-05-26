@@ -1,6 +1,6 @@
 pkgname=mingw-w64-fftw
 pkgver=3.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (mingw-w64)"
 arch=('any')
 url="http://www.fftw.org"
@@ -9,13 +9,13 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 checkdepends=('wine')
 options=(staticlibs !strip !buildflags)
-source=("$url/fftw-${pkgver}-pl1.tar.gz")
-md5sums=('682a0e78d6966ca37c7446d4ab4cc2a1')
+source=("$url/fftw-${pkgver}-pl2.tar.gz")
+sha1sums=('66384d4bf5da3efbcbb9d6ea92f0df264b1620b1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "${srcdir}/fftw-${pkgver}-pl1"
+  cd "${srcdir}/fftw-${pkgver}-pl2"
   for _arch in ${_architectures}; do
     unset LDFLAGS
     mkdir -p build-${_arch}-d && pushd build-${_arch}-d
@@ -52,26 +52,26 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/fftw-${pkgver}-pl1"
+  cd "${srcdir}/fftw-${pkgver}-pl2"
 
   # run tests through wine
   sed -i "s|\$program=\$arglist\[0\]|\$program=\"wine \$arglist[0]\"|g" tests/check.pl
 
   for _arch in ${_architectures}; do
-    cd "${srcdir}/fftw-${pkgver}-pl1/build-${_arch}-d"
+    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-d"
     make check
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/fftw-${pkgver}-pl1/build-${_arch}-d"
+    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-d"
     make DESTDIR="$pkgdir" install
-    cd "${srcdir}/fftw-${pkgver}-pl1/build-${_arch}-ld"
+    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-ld"
     make DESTDIR="$pkgdir" install
-    cd "${srcdir}/fftw-${pkgver}-pl1/build-${_arch}-f"
+    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-f"
     make DESTDIR="$pkgdir" install
-    cd "${srcdir}/fftw-${pkgver}-pl1/build-${_arch}-q"
+    cd "${srcdir}/fftw-${pkgver}-pl2/build-${_arch}-q"
     make DESTDIR="$pkgdir" install
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
