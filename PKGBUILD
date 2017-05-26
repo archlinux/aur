@@ -10,8 +10,8 @@ license=('GPL')
 depends=('ghostscript' 'poppler-glib' 'djvulibre' 'desktop-file-utils'
     'gsettings-desktop-schemas' 'gtk3' 'gtk2' 'libsecret' 'libspectre' 'webkit2gtk')
 makedepends=('git' 'mate-common' 'yelp-tools')
-optdepends=('nemo: nemo extension (must be enabled at compile time)'
-    'caja-extensions-common: caja extension (must be enabled at compile time)'
+optdepends=('nemo: nemo extension'
+    'caja: caja extension'
     'gtk3-print-backends: printer support in gtk3 apps'
     'texlive-bin: support for dvi files')
 provides=($_pkgname)
@@ -28,11 +28,14 @@ pkgver() {
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
+    if [ -d /usr/include/nemo/libnemo-extension ]; then NEMO_EXT_FLAG=""; else NEMO_EXT_FLAG="--disable-nemo"; fi
+    if [ -d /usr/include/caja/libcaja-extension ]; then CAJA_EXT_FLAG=""; else CAJA_EXT_FLAG="--disable-caja"; fi
+
+    cd ${srcdir}/${pkgname}-${pkgver}
     ./autogen.sh --prefix="/usr" \
          --localstatedir="/var" \
-         --libexecdir="/usr/lib/${_pkgbasename}" \
-        --disable-caja --disable-nemo
+         --libexecdir="/usr/lib/${pkgname}" \
+         "$NEMO_EXT_FLAG" "$CAJA_EXT_FLAG"
     make
 }
 
