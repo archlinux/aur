@@ -2,8 +2,8 @@
 Exec=/usr/bin/studio-3t
 Type=Application
 Terminal=false
-Icon=mongochef
+Icon=studio-3t
 Categories=Development;
 
-Name=MongoChef
+Name=Studio3T
 GenericName=MongoDB Administration Tool
