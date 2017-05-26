@@ -1,0 +1,11 @@
+pkgbase = flwrap
+	pkgdesc = file encapsulation / compression
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = http://www.w1hkj.com/
+	arch = x86_64
+	license = gpl
+	md5sums = 599709df9f410ad7cab02ae52424b9d8
+
+pkgname = flwrap
+
