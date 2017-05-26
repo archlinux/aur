@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.54
-pkgrel=2
+pkgrel=3
 pkgdesc='Native replacement for the Steam runtime'
 arch=('i686' 'x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
