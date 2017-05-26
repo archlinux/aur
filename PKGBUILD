@@ -3,14 +3,16 @@
 
 pkgname=foldingathome-noroot
 pkgver=7.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Folding@Home client that does not run as the root user."
 arch=('i686' 'x86_64')
 url="http://folding.stanford.edu/"
 license=('CUSTOM')
 depends=('zlib' 'bzip2' 'bash')
 optdepends=('opencl-nvidia: for folding with an nVidia GPU'
-            'opencl-mesa: for folding with an AMD GPU')
+	        'cuda: for folding with an nVidia GPU'	
+	        'opencl-mesa: for folding with an older AMD GPU'
+	        'opencl-amd: for folding with a newer AMD GPU')
 replaces=('foldingathome-v7' 'foldingathome')
 conflicts=('foldingathome-v7' 'foldingathome')
 install=foldingathome.install
@@ -18,7 +20,6 @@ install=foldingathome.install
 source=(foldingathome.service fah-config foldingathome.install)
 source_i686=("https://fah.stanford.edu/file-releases/public/release/fahclient/debian-testing-32bit/v7.4/fahclient_7.4.4_i386.deb")
 source_x86_64=("https://fah.stanford.edu/file-releases/public/release/fahclient/debian-testing-64bit/v7.4/fahclient_7.4.4_amd64.deb")
-
 md5sums=('40530df579e406fa29e6535adf2c0c22'
          'bb0bca34f6f32c8bd46dfcdcd6abe1f6'
          '12accb9cd18aaa13d8b2f1ce6fa169d0')
