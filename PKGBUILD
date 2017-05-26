@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.0.0r1377.1c8fe44
+pkgver=0.0.0r1381.fcdd808
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=(zig)
 source=("git://github.com/andrewrk/zig.git#branch=master")
 md5sums=('SKIP')
 
-prepare() {
+pkgver() {
     cd "$srcdir/$provides"
     printf "0.0.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
