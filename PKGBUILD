@@ -1,6 +1,6 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 pkgname='pug'
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='Automatically saves and synchronizes Pacman and AUR installed package lists into Gists.'
 arch=('x86_64' 'i686')
