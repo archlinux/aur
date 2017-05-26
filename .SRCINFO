@@ -15,6 +15,7 @@ pkgbase = onscripter-jh
 	depends = libjpeg-turbo
 	depends = bzip2
 	depends = libvorbis
+	depends = lua
 	provides = onscripter-jh-hg
 	conflicts = onscripter-jh-hg
 	source = https://bitbucket.org/jh10001/onscripter-jh/get/SDL2.zip
