@@ -1,8 +1,8 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 pkgname=('python-telegram-bot-git')
-pkgver=6.0.1.r3.ff897ce
+pkgver=6.0.1.r23.ae33d33
 _pkgver=6.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
 url="https://github.com/${pkgname%-git}/${pkgname%-git}"
@@ -12,15 +12,12 @@ makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 changelog='CHANGES.rst'
-source=("${pkgname}::git+${url}.git"
-        'https://gist.githubusercontent.com/evgfilim1/95ba7f195d742136831321ca4419a058/raw/0baefa28fe0ca34b6d1d6716514d3adcea8e98a7/setup.py.patch')
-sha256sums=('SKIP'
-            'd6adcf6e70d632ee20263be3e902ef4a400cc31c16bfb2f49bb6e0aaccf35066')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir/$pkgname"
     git submodule update --init --recursive
-    patch setup.py ../setup.py.patch
 }
 
 pkgver() {
