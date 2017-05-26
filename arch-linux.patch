@@ -81,19 +81,6 @@ index db05af9c..0b5c2291 100644
  elseif(FREEBSD)
    ADD_OSQUERY_LINK_CORE("icuuc")
    ADD_OSQUERY_LINK_CORE("boost_system")
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index dfb9ccd7..6d9e257e 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -392,7 +392,7 @@ elseif(OSQUERY_BUILD_PLATFORM STREQUAL "windows")
-   LOG_PLATFORM("Windows")
- endif()
-
--if("${OSQUERY_BUILD_DISTRO}" MATCHES "^(centos|rhel|scientific|oracle)7$")
-+if("${OSQUERY_BUILD_DISTRO}" MATCHES "^(centos|rhel|scientific|oracle)7$|arch")
-   # Useful for libudev version detection.
-   set(SYSTEMD TRUE)
- endif()
 diff --git a/Makefile b/Makefile
 index 2e2bd13c..c5ae915a 100644
 --- a/Makefile
@@ -107,3 +94,16 @@ index 2e2bd13c..c5ae915a 100644
         "--commit" "master" "-f" "--style=file"
 
  ANALYSIS := ${SOURCE_DIR}/tools/analysis
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4444a9a2..b9c2640d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -393,6 +393,8 @@ endif()
+
+ if(APPLE)
+   LOG_PLATFORM("OS X")
++elseif(OSQUERY_BUILD_PLATFORM STREQUAL "arch")
++  LOG_PLATFORM("Arch Linux")
+ elseif(OSQUERY_BUILD_PLATFORM STREQUAL "debian")
+   LOG_PLATFORM("Debian")
+ elseif(OSQUERY_BUILD_PLATFORM STREQUAL "ubuntu")

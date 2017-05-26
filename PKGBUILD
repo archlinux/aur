@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.4.0.r13.g352b43a4
+pkgver=2.4.4.r34.g62beb1e5
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -13,10 +13,11 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'llvm' 'lsb-release' 'beecrypt' 'python-jinja' 'python-pip'
 			 'sleuthkit' 'snappy' 'yara' 'thrift' 'magic' 'cpp-netlib'
 			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
-			 'augeas' 'boost' 'boost-libs' 'lldpd' 'apt' 'dpkg' 'rpm-org')
+			 'augeas' 'boost' 'boost-libs' 'lldpd' 'lld' 'apt' 'dpkg' 'rpm-org')
+conflicts=('gtest' 'gmock')
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit="352b43a4d5e885771837b803790b34b17a2aa76b"
+_gitcommit="62beb1e547622d63ca8793d4bc2f8eafc26e0c47"
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
@@ -25,7 +26,7 @@ source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit
 sha256sums=('SKIP'
             '3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1'
             '7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104'
-            '3494a662165f4862f3bc6c575ae11f36448ade01a2f316a03f95612de2d08163')
+            'e0dd9964a1754b28f2be014ee617cd99be13b1a6a14e025b3b2104f70e424fd8')
 
 _gitname=${pkgname}
 
@@ -69,7 +70,7 @@ build() {
 
 	find . -type f -name link.txt -exec sed -i -re 's/Bstatic -lgflags/Bdynamic	-lgflags/g' "{}" \;
 
-	make -j $(nproc) all
+	make ${MAKEFLAGS} all
 }
 
 package() {
