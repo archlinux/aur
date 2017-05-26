@@ -1,4 +1,5 @@
-# Maintainer: condy <condy0919[at]gmail[dot]com>
+# Maintainer: Jonas Schürmann <jonasschuermann@aol.de>
+# Contributor: condy <condy0919[at]gmail[dot]com>
 pkgname=psysh
 pkgver=0.8.5
 pkgrel=1
