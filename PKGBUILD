@@ -6,6 +6,7 @@ pkgdesc="Writefull is an app that gives feedback on your writing by checking you
 arch=('i686' 'x86_64')
 url="http://writefullapp.com/"
 license=('custom')
+makedepends=('imagemagick')
 source_i686=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_ia32.zip")
 source_x86_64=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_amd64.zip")
 md5sums_i686=("56a2f9d719aa7620e3870572ef098b3a")

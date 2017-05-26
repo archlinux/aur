@@ -6,6 +6,7 @@ pkgbase = writefull
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = imagemagick
 	noextract = writefull_3.0.0-beta19_ia32.zip
 	noextract = writefull_3.0.0-beta19_amd64.zip
 	source_i686 = https://d3aw1w08kaciwn.cloudfront.net/3.0.0-beta19/writefull_3.0.0-beta19_ia32.zip
