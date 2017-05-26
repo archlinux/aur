@@ -1,0 +1,13 @@
+[Unit]
+Description=CoreDNS
+After=network.target
+
+[Service]
+Type=simple
+KillMode=process
+WorkingDirectory=~
+ExecStart=/bin/coredns -conf %h/.config/coredns/corefile
+
+[Install]
+WantedBy=default.target
+

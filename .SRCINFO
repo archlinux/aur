@@ -1,0 +1,11 @@
+pkgbase = dotcoredns
+	pkgdesc = Tools for running CoreDNS as a regular user
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = coredns
+	source = coredns.service
+	md5sums = b50821b897707b1832fccb44667f875f
+
+pkgname = dotcoredns
+
