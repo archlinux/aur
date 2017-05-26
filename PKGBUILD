@@ -2,7 +2,7 @@
 
 pkgname='jam-git'
 pkgver=0.6.0.a.4.g217f5db
-pkgrel=2
+pkgrel=3
 pkgdesc="A Google Play Music console player written in Go."
 arch=('x86_64')
 url="https://github.com/budkin/jam"
@@ -12,8 +12,7 @@ depends=('pulseaudio')
 provides=('jam')
 
 prepare() {
-  cd $srcdir
-  export GOPATH=$(pwd)
+  export GOPATH=$srcdir
 
   go get github.com/budkin/jam
   go get github.com/boltdb/bolt
