@@ -1,7 +1,7 @@
 # Maintainer: Michail Pevnev <mpevnev@gmail.com>
 
 pkgname=dyaml-git
-pkgver=v0.4.5.r404.b388322
+pkgver=v0.4.5.r407.4010531
 pkgrel=1
 pkgdesc="YAML parser and emitter for D language - git checkout"
 arch=('x86_64' 'i686')
@@ -32,11 +32,13 @@ package() {
 	cd "$srcdir/D-YAML"
 
 	mkdir -p $pkgdir/usr/include/dyaml/dyaml
-	install -Dm 644 LICENSE_1_0.txt $pkgdir/usr/share/licenses/dyaml-git/LICENSE
+	mkdir -p $pkgdir/usr/share/doc/dyaml
 	install -Dm 644 libdyaml.a $pkgdir/usr/lib/libdyaml.a
 	install -Dm 644 source/yaml.d $pkgdir/usr/include/dyaml/yaml.d
 	install -Dm 644 source/dyaml/* $pkgdir/usr/include/dyaml/dyaml/
 	install -Dm 644 ../tinyendian/source/tinyendian.d $pkgdir/usr/include/dyaml/tinyendian.d
 	install -Dm 644 ../dyaml.pc $pkgdir/usr/share/pkgconfig/dyaml.pc
+	install -Dm 644 LICENSE_1_0.txt $pkgdir/usr/share/licenses/dyaml-git/LICENSE
+	cp -r doc/html $pkgdir/usr/share/doc/dyaml
 }
 
