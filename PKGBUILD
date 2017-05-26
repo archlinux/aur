@@ -8,11 +8,10 @@ pkgdesc="dconf configuration editor (old interface)"
 arch=(i686 x86_64)
 url="https://wiki.gnome.org/Projects/dconf"
 license=(GPL3)
-groups=(gnome)
-depends=(gtk3 dconf)
-conflicts=(${_pkgname})
-provides=(${_pkgname}=$pkgver})
-makedepends=(vala intltool)
+depends=('gtk3' 'dconf')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
+makedepends=('vala' 'intltool')
 source=(http://download.gnome.org/sources/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.xz)
 sha256sums=('a8721499a277550b28d8dd94dafbea6efeb95fa153020da10603d0d4d628c579')
 
