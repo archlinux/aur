@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=gtk-theme-united-gnome
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
 epoch=1
 pkgdesc="Based on a Ubuntu 18.04 design concept Flat-Plat as a base."
@@ -14,12 +14,12 @@ source=("United-Arch-$pkgver"::"https://github.com/godlyranchdressing/United-GNO
         "United-OpenSUSE-$pkgver"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-OpenSUSE.tar.gz"
         "United-Solus-$pkgver"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Solus.tar.gz"
         "United-Ubuntu-$pkgver"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Ubuntu-alt.tar.gz")
-sha256sums=('04935177d93a5a399eb03dd30fac4b720da2e950eee4768823a5bf07119886bd'
-            'd44a9231a7517c1fd6b4a802d3eacf2f937b1f703520c74c13fdc8c09eef3833'
-            'be210cb363e1ea87f31326a808725a4aecc52eb7ec05d46fd01a4bd4c33c4ee6'
-            'f885b78f12fe9e7ebab4e6c73ebc90ad2e9700eed557c4f6514cd07afe26aa09'
-            'a409c75c1fc07765008afdc45c1301af23b8a701dd5e7ce438245b8d7d1cdde1'
-            '271c47af95374e6dcc4d0426289f5701c689b13885c1bc8c1efffb122e7fd0c4')
+sha256sums=('1d9844059665efda1bb986980a627161f2d7616919fd8254288aff5a09137a1b'
+            'f66808391ea125002611cde5d0e383909c97a051bd4dfd588255dbf4f63ce0d8'
+            'ba5111949389bcc18a1a4c7019144315e2b9e4f055be5bdb04162f691d9c51c3'
+            '25dfae62b34e8d01c7640b361f63d1e7202a6bca7b0672deafc8c6b06b435ee4'
+            'd0ce7adc6a23f30748dfdae4a2b2c18c6cab9d334dd2a5b061f088dc32bfee2d'
+            '159cd6dd41ab76bd15116ad6d1036758022af7ba8ead5ab3d3c1606d991d3e7d')
 
 package() {
   install -dm755 "$pkgdir/usr/share/themes"
