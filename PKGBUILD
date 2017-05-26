@@ -1,7 +1,7 @@
 # Maintainer: Evan Goldenberg <evangoldenberg@gmail.com>
 
 pkgname='hbase'
-pkgver=1.2.4
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='HBase - the Hadoop database'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=(
   'hbase.service'
   'hbase-site.xml'
 )
-sha256sums=('012d506796e28537cdf6e7cf512dc3b6b3c562e2863ca0ec5d48722bffdd265e'
+sha256sums=('926ef3c576c44e3a37295d286aa9acabea4eb6f77c420a4d9034b6aac86902e0'
             '07ea851195baf0f9a82686872077bbfd9ea4726b2fc618639bf0cdcb5e278c25'
             '8cab4654859bcc830dd0127bf8ea1c9200c46377a8885c4b726335502e3a079f'
             '0d99566ffac2b1b9ebb3d6e6867ecd4dcfaba2bdb348c29b293fb9673e001a7d'
