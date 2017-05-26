@@ -6,12 +6,12 @@ _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
 pkgname=openresty
 pkgver=1.11.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
 license=('BSD')
-depends=('perl>=5.6.1' 'readline' 'pcre' 'openssl')
+depends=('perl>=5.6.1' 'readline' 'pcre')
 install=$pkgname.install
 options=(!purge)
 validgpgkeys=('iQEcBAEBAgAGBQJY+EzlAAoJELVQ4J6g6YBmKyoH/3ExFtvtdkEis6s6tAmjheJv
@@ -25,7 +25,8 @@ source=(https://openresty.org/download/$pkgname-$pkgver.tar.gz{,.asc}
         service
         $pkgname.logrotate
         $pkgname.install
-        https://www.openssl.org/source/openssl-1.0.2k.tar.gz
+        https://www.openssl.org/source/openssl-1.0.2l.tar.gz
+        $pkgname.sh
         )
 noextract=()
 sha256sums=('7a0a8570fd3eb193913eb2287f7c926b47e363f376e80c7aa332c35d0fccde69'
@@ -33,7 +34,8 @@ sha256sums=('7a0a8570fd3eb193913eb2287f7c926b47e363f376e80c7aa332c35d0fccde69'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
             '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23'
             'f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6'
-            '6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0')
+            'ce07195b659e75f4e1db43552860070061f156a98bb37b672b101ba6e3ddf30c'
+            'bf628aa47fb85f036f250416f13900be61dccac89736434498a80989b16ae85a')
 backup=(${_cfgdir:1}/fastcgi.conf
         ${_cfgdir:1}/fastcgi_params
         ${_cfgdir:1}/koi-win
@@ -228,8 +230,6 @@ package() {
   install -d "$pkgdir"/$_tmpdir
   install -Dm644 "$srcdir/service" "$pkgdir/usr/lib/systemd/system/openresty.service"
   rm -rf "$pkgdir/var/run"
-  if ! grep -i "/opt/openresty/bin/:/opt/openresty/nginx/sbin/" /etc/bash.bashrc > /dev/null
-  	then echo -e "export PATH=\$PATH:/opt/openresty/bin/:/opt/openresty/nginx/sbin/ #Automatically added by openresty package\n" >> ~/.bashrc;
-  fi
+  install -Dm755 $srcdir/$pkgname.sh $pkgdir/etc/profile.d/$pkgname.sh
 }
 # vim:set ts=2 sw=2 et:
