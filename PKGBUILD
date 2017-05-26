@@ -3,14 +3,14 @@
 
 pkgname=plasma-workspace-git
 pkgver=r4154.a84e771
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE Plasma Workspace'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=('LGPL')
 depends=('qt5-tools' 'kded-git' 'libksysguard-git' 'kjsembed-git' 'knotifyconfig-git' 'ktexteditor-git' 'kde-cli-tools-git' 
 	 'kio-extras-git' 'baloo-git' 'milou-git' 'libkscreen-git' 'breeze-git' 'kwin-git' 'gpsd' 'libqalculate' 
-	 'khelpcenter-git' 'xorg-xrdb' 'xorg-xsetroot' 'xorg-xmessage' 'xorg-xprop' 'prison-frameworks' 'kxmlrpcclient-git' 
+	 'khelpcenter-git' 'xorg-xrdb' 'xorg-xsetroot' 'xorg-xmessage' 'xorg-xprop' 'prison-git' 'kxmlrpcclient-git'
 	 'networkmanager-qt' 'kscreenlocker-git' 'kholidays-git')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 optdepends=('plasma-workspace-wallpapers: additional wallpapers')
