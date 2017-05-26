@@ -65,4 +65,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('62417be0caca62f2c5c2ff122212e694e855ffa7c2c5cfb61804edf7a8360ac00bcba7df9e06fbfacdf21964bcc9664c4b5f132140ec09b83e6edaef2d8e803c')
+sha512sums=('93d74b5936e3d45956a6958ebab3e8e114cd430f46649b5154bef0783cad4ac1f17ebb78f19cc0e3c74f2deb54c5d916f77a09b795cd073912499299cfbe47f3')
