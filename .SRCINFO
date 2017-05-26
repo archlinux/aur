@@ -1,6 +1,6 @@
 pkgbase = mumble-snapshot
 	pkgdesc = A high quality voice chat program.
-	pkgver = 1.3.0_2389_gdde8173
+	pkgver = 1.3.0_2407_g3754898
 	pkgrel = 1
 	url = https://www.mumble.info/
 	install = mumble.install
@@ -20,10 +20,10 @@ pkgbase = mumble-snapshot
 	optdepends = espeak: speech synthesizer
 	provides = mumble
 	conflicts = mumble
-	source = https://dl.mumble.info/mumble-1.3.0~2389~gdde8173~snapshot.tar.gz
-	source = https://dl.mumble.info/mumble-1.3.0~2389~gdde8173~snapshot.tar.gz.sig
+	source = https://dl.mumble.info/mumble-1.3.0~2407~g3754898~snapshot.tar.gz
+	source = https://dl.mumble.info/mumble-1.3.0~2407~g3754898~snapshot.tar.gz.sig
 	validpgpkeys = C4666C6767A26017CE68406988048D0D625297A0
-	sha256sums = facba5c71d8e610ece1c966d898dcb9a0511debdb9ea823d1979398fc60fa343
+	sha256sums = 0b7431a26fd915cf6c8ba4097026873f24d33a993a67830cc167ef4ea583f759
 	sha256sums = SKIP
 
 pkgname = mumble-snapshot
