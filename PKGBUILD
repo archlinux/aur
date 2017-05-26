@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=r841.g508ddd0
+pkgver=r856.g21f5635
 pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
 url='https://github.com/cmdrkotori/mpc-qt'
@@ -29,10 +29,7 @@ build() {
 }
 
 package() {
-  cd mpc-qt
-  install -Dm755 mpc-qt "$pkgdir/usr/bin/mpc-qt"
-  install -Dm644 ../mpc-qt.desktop "$pkgdir/usr/share/applications/mpc-qt.desktop"
-  install -Dm644 images/bitmaps/icon.png "$pkgdir/usr/share/pixmaps/mpc-qt.png"
-  install -Dm644 images/bitmaps/icon16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/mpc-qt.png"
-  install -Dm644 image-sources/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/mpc-qt.svg"
+  install -Dm755 mpc-qt/mpc-qt "$pkgdir/usr/bin/mpc-qt"
+  install -Dm644 mpc-qt/images/icon/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/mpc-qt.svg"
+  install -Dm644 mpc-qt.desktop "$pkgdir/usr/share/applications/mpc-qt.desktop"
 }
