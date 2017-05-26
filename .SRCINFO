@@ -1,0 +1,16 @@
+pkgbase = hdf5_18
+	pkgdesc = General purpose library and file format for storing scientific data
+	pkgver = 1.8.18
+	pkgrel = 1
+	url = http://www.hdfgroup.org/HDF5/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = time
+	depends = zlib
+	depends = sh
+	source = https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-1.8.18.tar.bz2
+	sha1sums = d7e008cbfcf5cb6913b5327a81bbcaf34cc9436d
+
+pkgname = hdf5_18
+
