@@ -1,6 +1,6 @@
 # Maintainer: Daniel Souvignier <daniel.souvignier@gmail.com>
 pkgname=docker-rpm-builder
-pkgver=1.32.0
+pkgver=1.39.0
 pkgrel=1
 pkgdesc="A script to build rpms for different architectures using docker"
 arch=('any')
