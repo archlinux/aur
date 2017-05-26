@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-intel-tbb
-pkgver=2017_20161128
-_pkgver=2017_U5
+pkgver=2017_20170412
+_pkgver=2017_U6
 pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -13,7 +13,7 @@ license=('APACHE')
 source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz"
         "https://raw.githubusercontent.com/wjakob/tbb/master/CMakeLists.txt"
         "https://raw.githubusercontent.com/wjakob/tbb/master/build/version_string.ver.in")
-sha1sums=('26f720729d322913912e99d1e4a36bd10625d3ca'
+sha1sums=('5b0909fbb1741724f7a0ce83232f50b166788af0'
           'SKIP'
           'SKIP')
 
