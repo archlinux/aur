@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r1880.0811db4b
+pkgver=r1953.d40e7955
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
@@ -60,7 +60,7 @@ prepare() {
     sed -i conf/config.php \
         -e "s:\$topDirectory .*:\$topDirectory = '/home';:" \
         -e "s:\$XMLRPCMountPoint .*:\$XMLRPCMountPoint = \"/rutorrent/RPC1\";:" \
-        -e "s:\$tempDirectory .*:\$tempDirectory = '/${_webdir}/rutorrent/tmp';:"
+        -e "s:\$tempDirectory .*:\$tempDirectory = '/${_webdir}/rutorrent/tmp/';:"
 
     for i in php stat curl id gzip; do
         sed -i conf/config.php \
@@ -90,6 +90,7 @@ prepare() {
 }
 
 package() {
+    export LC_ALL=$LANG
     cd "$srcdir/rutorrent/plugins"
 
     for i in ${_plugins[@]}; do
