@@ -1,7 +1,7 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=ntfs-3g-system-compression-git
-pkgver=0.4.r8.f01c486
+pkgver=1.0.r13.3a474d4
 pkgrel=1
 pkgdesc="NTFS-3G plugin for reading \"system compressed\" files"
 arch=("i686" "x86_64")
