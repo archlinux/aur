@@ -37,16 +37,10 @@ build() {
     ../${_gitname}
 
   make || return 1
-  sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear --launcher|' ../${_gitname}/package/org.flightgear.FlightGear.desktop
 }
 
 package(){
   cd "${srcdir}/${_gitname}-build/"
   make DESTDIR="$pkgdir" install
-
-  install -Dm0644 ../${_gitname}/package/org.flightgear.FlightGear.desktop "$pkgdir"/usr/share/applications/flightgear.desktop
-  install -Dm0644 ../${_gitname}/package/flightgear.ico "$pkgdir"/usr/share/icons/flightgear.ico
-  install -Dm0644 ../${_gitname}/scripts/completion/fg-completion.bash "$pkgdir"/usr/share/bash-completion/completions/fgfs
-  install -Dm0644 ../${_gitname}/scripts/completion/fg-completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_fgfs
 }
 
