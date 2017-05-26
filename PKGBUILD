@@ -29,6 +29,7 @@ pkgver() {
 }
 
 build() {
+  export GOPATH=$srcdir
   cd $srcdir/src/github.com/budkin/jam
   go build -buildmode=pie
 }
