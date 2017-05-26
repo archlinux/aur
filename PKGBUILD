@@ -2,7 +2,7 @@
 
 pkgname=gincamalarm
 pkgver=0.0.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Gin server to manage camera with motion"
 arch=('any')
 url="https://github.com/Chipsterjulien/gincamalarm"
@@ -38,7 +38,7 @@ build() {
         go get github.com/spf13/viper
         echo "Install gin-cors"
         go get github.com/itsjamie/gin-cors
-    
+
     else
 
         # Getting some libs
@@ -83,4 +83,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('c5b77a25c4cc07ceecee92b15ad7b543cea50152af85fe387482a74d79f622847ed0bb58c40536db3cb51adec646b7a1237303efbe976da6db453cf3e7762418')
+sha512sums=('d20c9107e406668a2997277cf068ea2b2a64c0c3d3b3d7124f74e60fe30cc96046530bece69b11038720c70e9dd6f254042db040544eb983f01fc7d533f65fa4')
