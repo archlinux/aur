@@ -1,6 +1,6 @@
 pkgname=mingw-w64-hmat-oss
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A hierarchical matrix C/C++ library (mingw-w64)"
 license=('GPL')
 arch=('any')
@@ -15,6 +15,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "$srcdir/hmat-oss-${pkgver}"
+  sed -i '34i#include "cluster_tree.hpp"' src/full_matrix.hpp
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
