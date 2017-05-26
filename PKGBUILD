@@ -1,5 +1,5 @@
 pkgname=reaper
-pkgver=5.412
+pkgver=5.413
 pkgrel=1
 pkgdesc="digital audio workstation"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('gdk-pixbuf2' 'gtk3' 'jack')
 makedepends=('git' 'gcc' 'make' 'lsb-release')
 source=("http://www.landoleet.org/dev/${pkgname}_${pkgver//.}_developer_linux_x86_64.tar.xz"
 	"git+http://www-dev.cockos.com/wdl/WDL.git")
-md5sums=('3a6004b9bfd80a7fb614cd073394561a'
+md5sums=('df373b017d57bd32e4914cec209b8514'
          'SKIP')
 
 build() {
