@@ -1,9 +1,12 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase="lib32-wxwidgets-light"
-pkgname=('lib32-wxbase-light' 'lib32-wxgtk-light' 'lib32-wxcommon-light')
-pkgver=3.0.2
-pkgrel=5
+pkgname=('lib32-wxbase-light'
+         'lib32-wxgtk-light'
+         'lib32-wxcommon-light'
+         )
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!) (32 bits)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -36,14 +39,11 @@ prepare() {
 
   cd wxwidgets
 
-  # Fix build with GCC 6.1.1
-  git cherry-pick 73e9e18ea09ffffcaac50237def0d9728a213c02
-
-  patch -Np1 -i ../lib32-wxwidgets-collision.patch
+  patch -p1 -i "${srcdir}/lib32-wxwidgets-collision.patch"
 
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
-  patch -Np1 -i ../lib32-make-abicheck-non-fatal.patch
+  patch -p1 -i "${srcdir}/lib32-make-abicheck-non-fatal.patch"
 }
 
 build() {
@@ -58,7 +58,7 @@ build() {
   ../wxwidgets/configure \
       --prefix=/usr \
       --libdir=/usr/lib32 \
-      --with-regex='builtin' \
+      --with-regex=builtin \
       --enable-unicode \
       --disable-{precomp-headers,gui}
   make
@@ -68,9 +68,9 @@ build() {
   ../wxwidgets/configure \
       --prefix=/usr \
       --libdir=/usr/lib32 \
-      --with-gtk='2' \
-      --with-lib{jpeg,png,tiff,xpm}='sys' \
-      --with-regex='builtin' \
+      --with-gtk=2 \
+      --with-lib{jpeg,png,tiff,xpm}=sys \
+      --with-regex=builtin \
       --with-{opengl,sdl} \
       --enable-{unicode,graphics_ctx} \
       --without-{libnotify,gnome{vfs,print}} \
@@ -82,9 +82,9 @@ build() {
   ../wxwidgets/configure \
       --prefix=/usr \
       --libdir=/usr/lib32 \
-      --with-gtk='3' \
-      --with-lib{jpeg,png,tiff,xpm}='sys' \
-      --with-regex='builtin' \
+      --with-gtk=3 \
+      --with-lib{jpeg,png,tiff,xpm}=sys \
+      --with-regex=builtin \
       --with-{opengl,sdl} \
       --enable-{unicode,graphics_ctx} \
       --without-{libnotify,gnome{vfs,print}} \
