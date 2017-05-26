@@ -1,0 +1,27 @@
+pkgbase = electrum-dash
+	pkgdesc = Lightweight Bitcoin wallet, fork for DASH
+	pkgver = 2.6.4
+	pkgrel = 1
+	url = https://electrum-dash.org
+	arch = any
+	license = MIT
+	makedepends = python2-pyqt4
+	depends = python2-slowaes
+	depends = python2-ecdsa
+	depends = python2-pbkdf2
+	depends = python2-requests
+	depends = python2-qrcode
+	depends = python2-protobuf
+	depends = python2-dnspython
+	depends = python2-jsonrpclib
+	depends = python2-trezor
+	depends = python2-x11_hash
+	depends = python2-pyqt4
+	optdepends = python2-btchip: BTChip hardware wallet support
+	optdepends = python2-matplotlib: plot transaction history in graphical mode
+	optdepends = zbar: QR code reading support
+	source = electrum-dash-2.6.4.tar.gz::https://electrum-dash.org/download/2.6.4/Electrum-DASH-2.6.4.tar.gz
+	sha256sums = f8e1c9188e425ea4740125ba931b2ce034a97eaa3b37e4b589a22db8486a231b
+
+pkgname = electrum-dash
+
