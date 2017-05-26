@@ -7,8 +7,8 @@
 pkgbase=('qemu-minimal-git')
 _gitname=qemu
 pkgname=('qemu-minimal-git')
-pkgver=2.8.0.r51391.796b288f7b
-pkgrel=3
+pkgver=2.9.0.r53387.9964e96dc9
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
