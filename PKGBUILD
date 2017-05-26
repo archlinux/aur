@@ -2,7 +2,7 @@
 
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
-pkgver=r559.52f4a7e
+pkgver=r578.e82afd1
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("git+https://github.com/anbox/anbox.git"
 	'anbox-bridge.network'
 	'anbox-bridge.netdev')
 sha256sums=('SKIP'
-            '49aa34a582de04540a01754976db89f2c05d6170f7192fec0ff14e23d14320d2'
+            '5be94b63dc30d141f15ca7d1be6e3e81f26ef33f844614975537562f5d08236c'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
             '210eb93342228168f7bb632c8b93d9bfda6f53f62459a6b74987fa1e17530475'
             '3e07dc524a827c1651857cce28a06c1565bc5188101c140ed213bbafedc5abff'

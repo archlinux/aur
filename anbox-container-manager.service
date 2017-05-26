@@ -2,7 +2,7 @@
 Description=Anbox Container Manager
 
 [Service]
-ExecStart=/usr/bin/anbox container-manager --privileged
+ExecStart=/usr/bin/anbox container-manager --daemon --privileged --data-path=/var/lib/anbox
 
 [Install]
 WantedBy=multi-user.target
