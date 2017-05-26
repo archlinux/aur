@@ -10,8 +10,8 @@ set -u
 _pkgname='imagemagick'
 pkgbase="${_pkgname}-git"
 _srcdir="${pkgbase}"
-pkgname=("${pkgbase}" "${pkgbase}-doc")
-pkgver=7.0.2.6.r11121.gdf24175
+pkgname=("${pkgbase}"{,-doc})
+pkgver=7.0.5.8.r11939.g10f7befbf
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ url='http://www.imagemagick.org/script/'
 license=('custom')
 makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
              'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2'
-             'opencl-headers' 'libcl' 'libwebp' 'patch' 'git')
+             'opencl-headers' 'ocl-icd' 'libwebp' 'patch' 'git')
 _verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=("${_srcdir}::git+http://git.imagemagick.org/repos/ImageMagick.git"
@@ -42,35 +42,42 @@ prepare() {
   set -u
   cd "${_srcdir}/"
   #[ "${CARCH}" = 'x86_64' ] && patch -p1 -i "${srcdir}/libpng_mmx_patch_x86_64.patch"
-  sed -i -e '/AC_PATH_XTRA/d' 'configure.ac'
-  autoreconf --force --install
-  patch -p0 -i "${srcdir}/perlmagick.rpath.patch"
-  local _EXTRAOPTS=''
-  case "${CARCH}" in
-  'i686') _EXTRAOPTS='--with-gcc-arch=i686';;
-  'x86_64') _EXTRAOPTS='--with-gcc-arch=x86-64';;
-  esac
-  #./configure --prefix='/usr' --sysconfdir='/etc' --with-modules --disable-static --enable-openmp --with-x --with-wmf --with-openexr --with-xml --with-gslib --with-gs-font-dir='/usr/share/fonts/Type1' --with-perl --with-perl-options='INSTALLDIRS=vendor' --without-gvc --with-djvu --without-autotrace --with-jp2 --with-jbig --without-fpx --without-dps --without-fftw
-  ./configure --prefix='/usr' --sysconfdir='/etc' --with-modules \
-    --enable-hdri --with-wmf --with-openexr --with-xml --with-lcms2 \
-    --with-webp --with-gslib --with-gs-font-dir='/usr/share/fonts/Type1' \
-    --with-perl --with-perl-options='INSTALLDIRS=vendor' --with-lqr --with-rsvg \
-    --enable-opencl --with-openjp2 --without-gvc --without-djvu --without-autotrace \
-    --without-jbig --without-fpx --without-dps --without-fftw ${_EXTRAOPTS}
-  sed -i -e 's: -mtune=x86-64 : :g' 'Makefile' # This works even though the screen still shows the flags
+  sed -e '/AC_PATH_XTRA/d' -i 'configure.ac'
+  set +u
+}
+
+_configure() {
+  set -u
+  cd "${_srcdir}/"
+  if [ ! -s 'Makefile' ]; then
+    autoreconf --force --install
+    patch -p0 -i "${srcdir}/perlmagick.rpath.patch"
+    declare -A _EXTRAOPTS=([i686]='i686' [x86_64]='x86-64')
+    #./configure --prefix='/usr' --sysconfdir='/etc' --with-modules --disable-static --enable-openmp --with-x --with-wmf --with-openexr --with-xml --with-gslib --with-gs-font-dir='/usr/share/fonts/Type1' --with-perl --with-perl-options='INSTALLDIRS=vendor' --without-gvc --with-djvu --without-autotrace --with-jp2 --with-jbig --without-fpx --without-dps --without-fftw
+    ./configure --prefix='/usr' --sysconfdir='/etc' --with-modules \
+      --enable-hdri --with-wmf --with-openexr --with-xml --with-lcms2 \
+      --with-webp --with-gslib --with-gs-font-dir='/usr/share/fonts/Type1' \
+      --with-perl --with-perl-options='INSTALLDIRS=vendor' --with-lqr --with-rsvg \
+      --enable-opencl --with-openjp2 --without-gvc --without-djvu --without-autotrace \
+      --without-jbig --without-fpx --without-dps --without-fftw --with-gcc-arch="${_EXTRAOPTS[${CARCH}]}"
+    sed -e 's: -mtune=x86-64 : :g' -i 'Makefile' # This works even though the screen still shows the flags
+  fi
+  cd "${srcdir}"
   set +u
 }
 
 build() {
+  _configure
   set -u
   cd "${_srcdir}/"
-  make -s -j $(nproc)
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -s -j "${_nproc}"
   set +u
 }
 
 check() {
   cd "${_srcdir}/"
-  #make -s -j $(nproc) check
+  #make -s -j1 check
 }
 
 package_imagemagick-git() {
@@ -93,7 +100,7 @@ package_imagemagick-git() {
   conflicts=("${_pkgname}")
 
   cd "${_srcdir}/"
-  make -s -j $(nproc) DESTDIR="${pkgdir}" install
+  make -s -j1 DESTDIR="${pkgdir}" install
   #install -d "${pkgdir}/usr/share/licenses/${_pkgname}/"
   install -Dpm644 'LICENSE' 'NOTICE' -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
   #Cleaning. Why are we deleting a file that says DO NOT DELETE?
@@ -124,16 +131,5 @@ package_imagemagick-git-doc() {
   make -s DESTDIR="${pkgdir}" install-data-html
   install -Dpm644 'LICENSE' 'NOTICE' -t "${pkgdir}/usr/share/licenses/${_pkgname}-doc/"
   set +u
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
-  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  #! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
-  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  #! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 set +u
