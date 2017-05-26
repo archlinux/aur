@@ -5,14 +5,14 @@ pkgname=${_target}-binutils #-git
 _pkgver=2.28
 pkgver=${_pkgver}
 #pkgver=2.25.r84308.c576455
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
 options=('!libtool' '!buildflags') 
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=('zlib' 'flex')
-
+depends=('zlib')
+checkdepends=('dejagnu' 'bc')
 # build from trunk
 # provides=("${_target}-binutils=${_pkgver}")
 # conflicts=("${_target}-binutils")
@@ -62,7 +62,7 @@ check() {
   
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # do not abort on errors - manually check log files
-  make LDFLAGS="" -k check
+  make LDFLAGS="" -k check || true
 }
 
 package() {
