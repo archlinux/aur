@@ -1,27 +1,26 @@
-# $Id: PKGBUILD 290479 2017-03-10 11:26:15Z heftig $
+# $Id: PKGBUILD 296472 2017-05-23 14:11:16Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-surftab-wintron-7
 _srcname=linux
-pkgver=4.10.2.r11.g135e4ed9f770
+pkgver=4.11.3
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=('git+https://github.com/c-mauderer/linux#branch=v4.10_trekstore_surftab_wintron_7'
+source=("linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#tag=v$pkgver"
         # the main kernel config files
         'config.x86_64'
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        "linux.preset"
-        )
+        'linux.preset')
 
 sha256sums=('SKIP'
-            '50fffd4267f1fbfdc77bac2a54144d26b6b2d396ebbf59442a9fbf3cc34d5cfe'
+            '8ba2c708ae9b6626044f4845c8d16ea9c8d6bf852ecc0d68c8ed5bb7a886f8ff'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -31,23 +30,14 @@ validpgpkeys=(
 
 _kernelname=${pkgbase#linux}
 
-pkgver() {
-  cd "${_srcname}"
-
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
-}
-
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # add patches
-  #for p in "${srcdir}"/*.patch
-  #do
-  #  patch -p1 -i "$p"
-  #done
+  # add latest fixes from stable queue, if needed
+  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -115,8 +105,8 @@ _package() {
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
