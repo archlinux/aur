@@ -3,7 +3,7 @@
 pkgname=flwrap
 pkgver=1.3.4
 pkgrel=1
-pkgdesc="file encapsulation / compression"
+pkgdesc="file encapsulation / compression for fldigi"
 arch=("x86_64")
 url="http://www.w1hkj.com/"
 license=("gpl")
