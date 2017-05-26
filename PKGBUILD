@@ -17,9 +17,9 @@ depends=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
          'librtmp0' 'libsm' 'libtheora' 'libtiff4' 'libudev0-shim' 'libusb'
          'libva' 'libvorbis' 'libvpx1.3' 'libwrap' 'libxcomposite' 'libxcursor'
          'libxft' 'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender'
-         'libxtst' 'libxxf86vm' 'nspr' 'nss' 'openal' 'pango' 'sdl' 'sdl2'
-         'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image' 'sdl_mixer'
-         'sdl_ttf' 'librsvg' 'vulkan-icd-loader')
+         'libxtst' 'libxxf86vm' 'nspr' 'nss' 'openal' 'openssl-1.0' 'pango'
+         'sdl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image'
+         'sdl_mixer' 'sdl_ttf' 'librsvg' 'vulkan-icd-loader')
 depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
                 'lib32-curl' 'lib32-dbus-glib' 'lib32-fontconfig'
                 'lib32-freetype2' 'lib32-freeglut' 'lib32-gconf'
@@ -36,9 +36,9 @@ depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
                 'lib32-libxft' 'lib32-libxi' 'lib32-libxinerama' 'lib32-libxmu'
                 'lib32-libxrandr' 'lib32-libxrender' 'lib32-libxtst'
                 'lib32-libxxf86vm' 'lib32-nspr' 'lib32-nss' 'lib32-openal'
-                'lib32-pango' 'lib32-sdl' 'lib32-sdl2' 'lib32-sdl2_image'
-                'lib32-sdl2_mixer' 'lib32-sdl2_ttf' 'lib32-sdl_image'
-                'lib32-sdl_mixer' 'lib32-sdl_ttf')
+                'lib32-openssl-1.0' 'lib32-pango' 'lib32-sdl' 'lib32-sdl2'
+                'lib32-sdl2_image' 'lib32-sdl2_mixer' 'lib32-sdl2_ttf'
+                'lib32-sdl_image' 'lib32-sdl_mixer' 'lib32-sdl_ttf')
 
 package() {
   install -d "${pkgdir}/usr/lib/steam"
