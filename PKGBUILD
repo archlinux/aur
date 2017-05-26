@@ -5,7 +5,7 @@ _pkgname=jdk
 pkgname=jdk-devel
 _major=9
 #_minor=1
-_build=170
+_build=171
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -53,8 +53,8 @@ sha256sums=('76a1e9a15e13bd62d953c1a4806be7821b2b09d974b6ed622b6d85c8d6dfc8b2'
             'f5bf5f941a118d2db45a7e451e762e0f04ff38cea0f6674a09268daed09c4052'
             'e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013'
             '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
-sha256sums_i686=('dacdac91b69222d265a43bc0fc53dd7d6f85ce58fb0b9b4a3bff415e6f0e1c1f')
-sha256sums_x86_64=('498c561867f372795bb6672e0d4b5b3d77d0eb69ff7018e31f9c3311ee7aaef0')
+sha256sums_i686=('23ecf77dff0756bb0d66fe1edc98356f818752f462b3438c0a8d24355a7deae5')
+sha256sums_x86_64=('bd9a45f98a24a845f77799f12295f9826d8be892afa8f97f8db3d17ec248f52a')
 
 package() {
     cd ${_pkgname}-${_major}
