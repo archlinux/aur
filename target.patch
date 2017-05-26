@@ -1,0 +1,15 @@
+--- a/Makefile.Linux	2016-12-01 21:17:39.000000000 +0800
++++ b/Makefile.Linux	2017-05-26 20:46:40.060434625 +0800
+@@ -9,11 +9,7 @@
+ .SUFFIXES:
+ .SUFFIXES: $(OBJSUFFIX) .cpp .h
+ 
+-TARGET = onscripter$(EXESUFFIX) \
+-	sardec$(EXESUFFIX) \
+-	nsadec$(EXESUFFIX) \
+-	sarconv$(EXESUFFIX) \
+-	nsaconv$(EXESUFFIX) 
++TARGET = onscripter$(EXESUFFIX)
+ EXT_OBJS = 
+ 
+ # mandatory: SDL, SDL_ttf, SDL_image, SDL_mixer, bzip2
