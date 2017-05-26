@@ -1,11 +1,11 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-iptvsimple
 pkgver=2.4.11
-pkgrel=2
+pkgrel=3
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 _koditarget=Krypton
 _gitname=pvr.iptvsimple
-_kodiver=17.2
+_kodiver=17.3
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
@@ -17,7 +17,7 @@ source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
 sha256sums=('0a006e275cddba02d5d3fd22a95cec6411a765719509a9bc8fcc93dfa247bd4c'
-            'aed9236c5a0074a4dfc775c111d362e4358daa0030d7e8ba38fbb6d58ae1affe')
+            '1de8653a3729cefd1baaf09ecde5ace01a1e3a58fbf29d48c1363f2503d331a1')
 
 build() {
 	mkdir -p "pvr.iptvsimple-${pkgver}-${_koditarget}/build"
