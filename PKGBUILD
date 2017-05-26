@@ -2,15 +2,15 @@
 
 pkgname=('mailman-core')
 _pkgbase='mailman'
-_commit=dfb807e04037786a62e7635d0b37e0695a77d5d6
-pkgver=3.1.0b3
+_commit=28dbc044a0d0c464c6800df6b5e27e2b25025b8d
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A mailing list management system"
 arch=(any)
 conflicts=('mailman')
 makedepends=('python-setuptools')
 depends=('python-zope-interface' 'python-zope-event' 'python-zope-configuration'
-         'python-zope-component' 'python-passlib' 'python-httplib2'
+         'python-zope-component' 'python-passlib'
          'python-flufl-lock' 'python-flufl-i18n' 'python-flufl-bounce' 'python-falcon'
          'python-alembic' 'python-lazr-config' 'python-lazr-smtptest'
          'python-aiosmtpd' 'python-atpublic' 'python-dnspython' 'python-requests'
@@ -25,7 +25,7 @@ source=("mailman-${pkgver}.tar.gz::https://gitlab.com/mailman/mailman/repository
 				'mailman.sysusers'
         'mailman.service'
         'mailman.cfg')
-sha256sums=('0e7b1ae906c845ffc2be1419d872c56554eaaa5adb8f3edcb1fcf546eb57246b'
+sha256sums=('fca0317ee15dca752786f7de5fa5750807484dd1d57ffa33fa5527c087611b2c'
             'a99bf88267184fee0568856ac09bb682224ee67029cfc20f603a43fe5f053dad'
             '81048cb6a27490fb36881b2eb88567b2ea2271b481dd0254fe9a398e6ca9beaf'
             'f48dac59786be58c6a8b5fe2a12f4f356872d87600be64506f22066508847f3a')
