@@ -4,24 +4,26 @@
 pkgname=('linux-gpib')
 pkgver=4.0.4rc2
 _pkgver=4.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc='A support package for GPIB (IEEE 488) hardware.'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
 license=('GPL')
-depends=('bash' 'linux>=4.10' 'linux<4.11')
+depends=('bash' 'linux>=4.11' 'linux<4.12')
 makedepends=('perl' 'python' 'linux-headers' 'bison')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${_pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'gpib_build.patch')
+        'gpib_build.patch'
+        'linux-4.11.patch')
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
-_kernver=4.10
+_kernver=4.11
 _extramodules=/usr/lib/modules/extramodules-${_kernver}-ARCH
 
 md5sums=('281274e45825f34e69876d38ae008b44'
-         '15f3bfbf7a79ddacdd0d66db5e749648')
+         '15f3bfbf7a79ddacdd0d66db5e749648'
+         '41083d40c050d78ca93502e23d022a39')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,6 +31,7 @@ prepare() {
     msg "Patching sources"
     msg2 "Applying gpib_build.patch"
     patch -Np1 -i "../gpib_build.patch"
+    patch -Np1 -i "../linux-4.11.patch"
 
     echo 'ACTION=="add|change", KERNEL=="gpib[0-9]*", MODE="0660", GROUP="gpib"' >| \
         usb/99-gpib-generic.rules
