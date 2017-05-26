@@ -1,8 +1,8 @@
 # Maintainer: Yarema aka Knedlyk <yupadmin (at) gmail (dot) com>
 
 pkgname=ddrescue-gui
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use."
 arch=('any')
 url="https://launchpad.net/ddrescue-gui"
@@ -28,4 +28,4 @@ package() {
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/ddrescue-gui.png" "${pkgdir}/usr/share/pixmaps"
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/${pkgname}"
 }
-md5sums=('61b14975e5648a8b76332e655b1ea00e')
+md5sums=('b0232120fa778dad5c3275f057db4397')
