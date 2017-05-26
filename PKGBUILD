@@ -1,8 +1,8 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/palopezv>
 pkgname=brave
-pkgver=0.15.3.0.8
-_pkgver=0.15.308
+pkgver=0.15.3.0.9
+_pkgver=0.15.309
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
@@ -166,4 +166,4 @@ END
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
-md5sums=('779191a162fb7626145e308ac5bca033')
+md5sums=('4cacab0ea6220cd22f2727918d95fdc3')
