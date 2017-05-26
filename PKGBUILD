@@ -2,7 +2,7 @@
 
 pkgname=reducemp4video
 pkgver=0.0.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Program that reduce size of mp4 video"
 arch=('any')
 url="https://github.com/Chipsterjulien/reduceMP4Video"
@@ -65,4 +65,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('84e537912b6f2e1fa2540e1acbf293dd7f6846196de846afcaa2fc8ce6dce3df771be0f3ec76b21ed3f31ff134952315a4b86ec8debf92fda2cb747b421f56e6')
+sha512sums=('de1020eebdf841f7962bf461a6711c10195080b4eac537c7c1bfeb6675304bb70d9dedcf910e597d62578d3493677688c7ca1b0bd9b63a008985d1cbe1e04e16')
