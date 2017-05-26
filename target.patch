@@ -1,5 +1,5 @@
 --- a/Makefile.Linux	2016-12-01 21:17:39.000000000 +0800
-+++ b/Makefile.Linux	2017-05-26 20:46:40.060434625 +0800
++++ b/Makefile.Linux	2017-05-26 23:10:26.000000000 +0800
 @@ -9,11 +9,7 @@
  .SUFFIXES:
  .SUFFIXES: $(OBJSUFFIX) .cpp .h
@@ -13,3 +13,21 @@
  EXT_OBJS = 
  
  # mandatory: SDL, SDL_ttf, SDL_image, SDL_mixer, bzip2
+@@ -56,7 +52,16 @@
+ EXT_OBJS += LUAHandler$(OBJSUFFIX)
+ 
+ # optional: SIMD optimizing
+-DEFS += -DUSE_SIMD -DUSE_SIMD_X86_SSE2
++ARCH = $(shell uname -m)
++DEFS += -DUSE_SIMD
++ifneq ($(filter i686 x86_64,$(ARCH)),)
++DEFS += -DUSE_SIMD_X86_SSE2
++else
++ifneq ($(filter armv7h armv7l,$(ARCH)),)
++DEFS += -DUSE_SIMD_ARM_NEON
++EXT_FLAGS += -mfpu=neon
++endif
++endif
+ 
+ # optional: multicore rendering
+ DEFS += -DUSE_OMP_PARALLEL

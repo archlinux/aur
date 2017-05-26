@@ -21,7 +21,7 @@ pkgbase = onscripter-jh
 	source = https://bitbucket.org/jh10001/onscripter-jh/get/SDL2.zip
 	source = target.patch
 	sha256sums = 6f0c6495c72477af2d52d64182b964aa567db9bb8729f5cf03e0b29b40c70ace
-	sha256sums = a84c4136b4d025b22a080b08b891033764dfc0a08e225b8d34168b4c2a8c8b9b
+	sha256sums = d169f6ec66c70429bce973be76f77c8ae05ecaead30e1586e5f68e284dfc4b94
 
 pkgname = onscripter-jh
 
