@@ -28,10 +28,11 @@ package() {
 
 	cp -a ${srcdir}/writefull/Writefull-linux-${_arch_dir}/* "${pkgdir}/usr/share/${pkgname}"
 
+	convert ${pkgdir}/usr/share/${pkgname}/Writefull.ico ${pkgdir}/usr/share/${pkgname}/Writefull.png
 	ln -s "/usr/share/${pkgname}/Writefull" "${pkgdir}/usr/bin/writefull"
-
-	install -Dm644 "${pkgdir}/usr/share/${pkgname}/Writefull.ico" "${pkgdir}/usr/share/pixmaps/writefull.ico"
-	sed -i 's/Icon=.*$/Icon=\/usr\/share\/pixmaps\/writefull.ico/' "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
+	
+	install -Dm644 "${pkgdir}/usr/share/${pkgname}/Writefull-0.png" "${pkgdir}/usr/share/pixmaps/writefull.png"
+	sed -i 's/Icon=.*$/Icon=\/usr\/share\/pixmaps\/writefull.png/' "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
 	sed -i 's/Exec=.*$/Exec=writefull/' "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
 	install -Dm644 "${pkgdir}/usr/share/${pkgname}/writefull.desktop" "${pkgdir}/usr/share/applications/writefull.desktop"
 	
@@ -39,6 +40,7 @@ package() {
 	install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 
 	rm "${pkgdir}/usr/share/${pkgname}/Writefull.ico"
+	rm ${pkgdir}/usr/share/${pkgname}/Writefull-*.png
 	rm "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
 	rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
 	rm "${pkgdir}/usr/share/${pkgname}/LICENSES.chromium.html"
