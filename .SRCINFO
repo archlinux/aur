@@ -1,6 +1,6 @@
 pkgbase = net2plan
 	pkgdesc = Java tool for planning, optimizing and evaluating communication networks.
-	pkgver = 0.5.1Beta1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/girtel/Net2Plan
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = net2plan
 	depends = glpk
 	depends = coin-or-ipopt
 	depends = java-environment
-	source = https://github.com/girtel/Net2Plan/releases/download/0.5.1-beta.1/net2plan-0.5.1-Beta.1.zip
-	md5sums = d469c9e26ec043ad0d4351b4c8ad12ca
+	source = https://github.com/girtel/Net2Plan/releases/download/0.5.2/net2plan-0.5.2.zip
+	md5sums = c7fb739b47e64e00bb8cfdf8c31858ec
 
 pkgname = net2plan
 
