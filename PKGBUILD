@@ -1,11 +1,9 @@
-# $Id: PKGBUILD 291104 2017-03-20 13:40:57Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
-pkgbase=linux-macbook
-_srcname=linux-4.10
-pkgver=4.10.14
+#pkgbase=linux               # Build stock -ARCH kernel
+pkgbase=linux-macbook        # Build kernel with a different name
+_srcname=linux-4.11
+pkgver=4.11.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -19,7 +17,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # service file for suspend/resume events
@@ -31,15 +29,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'intel-pstate-backport.patch'
         )
 
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '23943754227405d3e2beacbd20e9a73c27fc2b22eb7345e9c185f0dfc0c1fc1a'
+            'df7138c754c95f2c22127d1d76c122dbfe26b0b586572855d9d095f0d112b29b'
             'SKIP'
-            '6957209a54486548de8fc217352bb50efe52986b85b7dc88c1d13ef9e8dc3e2a'
-            '37a281f78616fee061aafa4b1189284c9e13d0eb52e40d7f446f1a50dfc99800'
+            '21da1c7d0dc1ef8201e7961977c80c4c0d72073141591018da9abe386c4bd985'
+            'b115305791bfdd49a8dddd952e0b6bcaa6c522fddf476677fe846bbf26696499'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '72f0b3ce04f33dfae305297bd045fba8cb5e5c8594ffd7a68a4d8ed293b1b1b5'
+            'c5a714823c3418692bc5c212dd5d094a0e2ae6147d6726822911f1c26e3a1d1b'
             'e74dbeaa3fd04dbf93ef4498015234bdb65351857e07c03c00cee69fcfc844b4'
             '8f91c4b8b30fb0db3fdf92223618b4a399041f4be399bc8eacbbcbbe646ca678'
             'ad800989f9cf2fd04e6db09409b9a531e883eeb825f430d14df8c6ee7870621a'
@@ -133,8 +131,8 @@ _package() {
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}

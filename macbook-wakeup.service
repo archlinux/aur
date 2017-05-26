@@ -1,6 +1,7 @@
 [Unit]
-Description=Configure device events for linux-macbook
+Description=Configure LID-only device events for linux-macbook
 ConditionPathExists=/proc/acpi/wakeup
+After=suspend.target
 
 [Service]
 Type=oneshot
@@ -10,4 +11,4 @@ RemainAfterExit=yes
 TimeoutSec=0
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target sleep.target
