@@ -1,16 +1,46 @@
-post_install() {
-  echo "Guix 0.8.3 already provides a systemd service file in its release,"
-  echo "so the one included in AUR package is now removed. Please use the"
-  echo "following commands to keep your installation compatible with the"
-  echo "new service file:"
-  echo
-  echo "  systemctl disable guix"
-  echo "  systemctl enable guix-daemon"
-  echo "  groupmod -n guixbuild guix-builder"
-  echo "  usermod -l guixbuild guix-builder"
-  echo
-  echo "If you have /etc/systemd/system/guix.service.d, please also remember"
-  echo "to review its content and rename it to guix-daemon.service.d."
+post_upgrade() {
+  if [ "$(vercmp "$2" "0.8.3-2")" -lt "0" ]; then
+    echo "(NOTES FOR UPGRADING FROM VERSIONS BEFORE 0.8.3-2)"
+    echo
+    echo "The systemd service file used to run guix-daemon is renamed from"
+    echo "guix.service to guix-daemon.service. Please use the following"
+    echo "commands to keep your installation compatible with the new version."
+    echo
+    echo "  systemctl disable guix"
+    echo "  systemctl enable guix-daemon"
+    echo "  groupmod -n guixbuild guix-builder"
+    echo "  usermod -l guixbuild guix-builder"
+    echo
+    echo "If you have /etc/systemd/system/guix.service.d, please also remember"
+    echo "to review its content and rename it to guix-daemon.service.d."
+    echo
+  fi
+  if [ "$(vercmp "$2" "0.13.0-1")" -lt "0" ]; then
+    echo "(NOTES FOR UPGRADING FROM VERSIONS BEFORE 0.13.0-1)"
+    echo
+    echo "The systemd service file provided by upstream is no longer usable"
+    echo "by default because it includes path to the guix profile of root"
+    echo "user, which does not exist unless you installed guix with guix"
+    echo "itself as root user before. Therefore, guix-daemon.service provided"
+    echo "by upstream is renamed to guix-daemon-latest.service, and"
+    echo "guix-daemon.service is generated from the upstream one by replacing"
+    echo "and removing unavailable paths."
+    echo
+    echo "To use the systemd service file provided by upstream, run the"
+    echo "following commands as root."
+    echo
+    echo "  systemctl disable guix-daemon"
+    echo "  systemctl start guix-daemon"
+    echo "  guix package -i guix"
+    echo "  systemctl stop guix-daemon"
+    echo "  systemctl start guix-daemon-latest"
+    echo "  systemctl enable guix-daemon-latest"
+    echo
+    echo "Please note that only one of guix-daemon.service or"
+    echo "guix-daemon-latest.service can be started or enabled since"
+    echo "they use the same /var/guix directory."
+    echo
+  fi
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
