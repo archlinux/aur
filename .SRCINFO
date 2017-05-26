@@ -1,0 +1,12 @@
+pkgbase = dotrtorrent
+	pkgdesc = Tools for running rTorrent headless as a regular user
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = rtorrent
+	depends = dtach
+	source = rtorrent.service
+	md5sums = SKIP
+
+pkgname = dotrtorrent
+

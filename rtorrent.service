@@ -1,0 +1,14 @@
+[Unit]
+Description=Headless rTorrent
+After=network.target
+
+[Service]
+Type=simple
+KillMode=process
+WorkingDirectory=~
+Environment="TERM=linux"
+ExecStart=/bin/dtach -N /tmp/rtorrent.dtach /bin/rtorrent -n -o import=%h/.rtorrent/rtorrent.rc
+
+[Install]
+WantedBy=default.target
+
