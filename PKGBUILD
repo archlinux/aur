@@ -8,7 +8,7 @@ pkgdesc="Vim, the text editor. CLI version and GTK2 GUI providing majority of fe
 arch=("i686" "x86_64")
 url="http://www.vim.org"
 license=("custom:vim")
-depends=("gtk2" "hicolor-icon-theme" "gtk-update-icon-cache" "desktop-file-utils")
+depends=("libxt" "gawk" "gtk2" "hicolor-icon-theme" "gtk-update-icon-cache" "desktop-file-utils")
 optdepends=("lua: Lua interpreter" "perl: Perl interpreter" "python: Python 3 interpreter"
             "python2: Python 2 interpreter" "ruby: Ruby interpreter")
 makedepends=("git" "libxt" "lua" "python" "python2" "ruby")
