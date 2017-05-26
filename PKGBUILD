@@ -2,9 +2,9 @@
 
 pkgname=gtk-theme-united-gnome
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc="Based on a Ubuntu 18.04 design concept Flat-Plat as a base."
+pkgdesc="GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept."
 arch=(any)
 url="https://github.com/godlyranchdressing/United-GNOME"
 license=('GPL3')
