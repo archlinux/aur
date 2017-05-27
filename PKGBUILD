@@ -1,6 +1,6 @@
 # Maintainer: Mewp <aur.archlinux.org@mewp.pl>
 pkgname=emptyepsilon
-pkgver=2017.01.19
+pkgver=2017.05.06
 pkgrel=1
 epoch=
 pkgdesc="Open source spaceship bridge simulator"
@@ -19,12 +19,11 @@ build() {
 	cmake -DSERIOUS_PROTON_DIR=../SeriousProton/ \
           -DCMAKE_CXX_FLAGS='-DINSTALL_PREFIX=\"/usr\"' \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCPACK_PACKAGE_VERSION_MAJOR=$(echo $pkgver | cut -d. -f1) \
+          -DCPACK_PACKAGE_VERSION_MINOR=$(echo $pkgver | cut -d. -f2) \
+          -DCPACK_PACKAGE_VERSION_PATCH=$(echo $pkgver | cut -d. -f3) \
           .
 	make
-}
-
-prepare() {
-    patch -Np1 < ../fixed-version.patch
 }
 
 package() {
