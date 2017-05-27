@@ -14,13 +14,13 @@ sha256sums=('9916b86b02fe3027bc389bb3eee4a489693ddeef287d505a197d82687cafbd1e')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-mailmanclient() {
-  depends=('python')
+  depends=('python' 'python-six' 'python-httplib2')
   cd "$srcdir/mailmanclient-$pkgver-$_commit"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-mailmanclient() {
-  depends=('python2')
+  depends=('python2' 'python2-six' 'python2-httplib2')
   cd "$srcdir/mailmanclient-$pkgver-$_commit"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
