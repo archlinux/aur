@@ -36,10 +36,10 @@ build() {
 	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 	qbs setup-qt /usr/bin/qmake-qt5 qt5
 	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 qbs.installRoot:/usr lirideployment.qmlDir:lib/qt/qml lirideployment.pluginsDir:lib/qt/plugins
+	qbs build --no-install -d build profile:qt5 qbs.installRoot:/ qbs.installPrefix:usr lirideployment.qmlDir:lib/qt/qml lirideployment.pluginsDir:lib/qt/plugins
 }
 
 package() {
 	cd ${srcdir}/${_gitname}
-	qbs install -d build --no-build -v --install-root $pkgdir/usr profile:qt5
+	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
 }
