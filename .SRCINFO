@@ -1,0 +1,13 @@
+pkgbase = id3ren
+	pkgdesc = Batch rename mp3 files by reading ID3 tags
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/sebcode/id3ren
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/sebcode/id3ren/archive/master.zip
+	md5sums = e3cba13748f2670b1392d17223592756
+
+pkgname = id3ren
+
