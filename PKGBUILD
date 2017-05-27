@@ -1,20 +1,20 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
-pkgname=black-screen
-pkgver=0.2.146
+pkgname=upterm
+pkgver=0.2.153
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
-url='https://github.com/railsware/black-screen'
+url='https://github.com/railsware/upterm'
 license=('MIT')
 depends=('electron')
-makedepends=('apm' 'git' 'npm')
+makedepends=('apm' 'git' 'npm' 'typescript')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        'black-screen.desktop'
-        'black-screen.js')
-sha256sums=('3076727b5b093988a5d63297d41ebbd10b5c1cf87307c5045a31793c2c0977c4'
-            'd23e2d0254139efb0dfdd14814cee758bf7345834c5cc92dfd740c0fae0b586e'
-            'd13c04e3a0c9855fd00faaf4a7ec1cef39a276744ff49a3c9b6cbbf0f83513fb')
+        'upterm.desktop'
+        'upterm.js')
+sha256sums=('b9a44bef7e21d5977ddb548ea3ccdbed5b998dd2bacdc2a89ee5128a311d3a1f'
+            '2d55728dcd4f0b25195474d8676f8994c266f24e8e928ddbb9ff86959c3ac96f'
+            '5522f5f78c0686d5e419661f4264e2d2f5f0856582f1494010e457c150f67910')
 
 prepare() {
     cd ${pkgname}-${pkgver}
@@ -28,9 +28,7 @@ build() {
     ATOM_HOME="${PWD}" apm install --production
     rmdir packages
 
-    npm install typescript
     npm run compile
-    npm uninstall typescript
 }
 
 package() {

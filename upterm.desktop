@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Black Screen
+Name=Upterm
 GenericName=Terminal
 Comment=A terminal emulator for the 21st century
-Icon=black-screen
-Exec=black-screen
+Icon=upterm
+Exec=upterm
 Categories=GTK;System;TerminalEmulator;
 StartupNotify=true

@@ -1,6 +1,6 @@
 #!/usr/bin/electron
 
-const name = 'black-screen';
+const name = 'upterm';
 
 const {app} = require('electron');
 const fs = require('fs');
