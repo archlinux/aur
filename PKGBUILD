@@ -3,7 +3,7 @@
 
 pkgname=mousepad-git
 _pkgname=mousepad
-pkgver=0.4.0.r114.gedbe8b6
+pkgver=0.4.0.r146.gbc4cc2f
 pkgrel=1
 pkgdesc="Mousepad development version, gtk3 only version"
 arch=('i686' 'x86_64')
