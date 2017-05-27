@@ -1,0 +1,17 @@
+pkgbase = umonitor-git
+	pkgdesc = Dynamic monitor configuration
+	pkgver = 20170518
+	pkgrel = 1
+	url = https://github.com/rliou92/umonitor
+	install = umonitor.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libconfig
+	depends = libxcb
+	source = git://github.com/rliou92/umonitor.git
+	md5sums = SKIP
+
+pkgname = umonitor-git
+
