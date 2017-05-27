@@ -1,0 +1,15 @@
+pkgbase = vim-sxhkdrc-git
+	pkgdesc = Vim syntax for sxhkd's configuration files
+	pkgver = 20150405
+	pkgrel = 1
+	url = https://github.com/baskerville/vim-sxhkdrc
+	arch = i686
+	arch = x86_64
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	source = vim-sxhkdrc-git::git+https://github.com/baskerville/vim-sxhkdrc
+	sha256sums = SKIP
+
+pkgname = vim-sxhkdrc-git
+
