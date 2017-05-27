@@ -7,7 +7,8 @@ pkgbase=deluge-split
 _pkgbase=deluge
 pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
 pkgver=1.3.15+2+g38d7b7cdf
-pkgrel=1
+_major=1.3.15
+pkgrel=2
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
@@ -92,7 +93,7 @@ rm -r  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo}
 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
 rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{web,console}
-rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$pkgver-py2.7.egg-info/
+rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$_major-py2.7.egg-info/
 }
 
 package_deluge-web() {
@@ -110,7 +111,7 @@ rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo}
 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{gtkui,console}
 rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
-rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$pkgver-py2.7.egg-info/
+rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$_major-py2.7.egg-info/
 rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 
 install -Dm644 ../deluge-web.service "$pkgdir/usr/lib/systemd/system/deluge-web.service"
@@ -131,7 +132,7 @@ rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo}
 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
 rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{gtkui,web}
 rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
-rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$pkgver-py2.7.egg-info/
+rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$_major-py2.7.egg-info/
 rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 }
 
