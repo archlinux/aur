@@ -10,7 +10,7 @@ pkgname=dolphin-emu-faster-melee
 # shellcheck disable=SC2034
 pkgver=5.0.3
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 # shellcheck disable=SC2034
 pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
 # shellcheck disable=SC2034
@@ -33,6 +33,8 @@ options=('!emptydirs')
 # The commit for FasterMelee 4.3 (unchanged for FasterMelee 4.4)
 # shellcheck disable=SC2034
 source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=d462ca38724db65d7f92f3edbd16b6657291e420"
+        "GALE01r0.ini"
+        "GALE01r1.ini"
         "GALE01r2.ini"
         "GALE01.ini"
         "MNCE02.ini"
@@ -41,7 +43,9 @@ source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=d462ca387
        )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
-            'eae12be9d008453d09bf1379315a2299eca9c76cc093727f8f41926193981c50'
+            '2406936466089ea70ce006a5a631d614c88fa2819f22b6ecd1f5161e1798a3d9'
+            '8fcac6f1a0f6e0c590fc229fe86a0c26d0621c355e153979a73ed24afb0a22da'
+            'ed28a19527eaf11af94ed02709bf771a965569244259a9cee86d4f3e82fc5048'
             '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f'
             '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c'
             '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c'
@@ -114,6 +118,8 @@ package() {
   # cp -f "${srcdir}/GALE01r2.ini" "${pkgdir}"/opt/dolphin-emu-faster-melee/dolphin-emu/sys/GameSettings/GALE01r2.ini
   #
   # Instead of the line below
+  cp -f "${srcdir}/GALE01r0.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r0.ini
+  cp -f "${srcdir}/GALE01r1.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r1.ini
   cp -f "${srcdir}/GALE01r2.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r2.ini
 }
 
