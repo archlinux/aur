@@ -14,10 +14,10 @@ md5sums=('8e18e6fbdc1e4139f3905ff92919e99f')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python setup.py install --root="$pkgdir" --optimize=1 
 }
