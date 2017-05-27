@@ -1,0 +1,12 @@
+pkgbase = flnet
+	pkgdesc = voice net controller database / check-in application
+	pkgver = 7.3.2
+	pkgrel = 1
+	url = http://www.w1hkj.com/
+	arch = x86_64
+	license = gpl
+	source = https://downloads.sourceforge.net/project/fldigi/flnet/flnet-7.3.2.tar.gz
+	md5sums = 2b1df942ae1272cdb64f4ffbf8eda13a
+
+pkgname = flnet
+
