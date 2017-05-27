@@ -1,0 +1,12 @@
+pkgbase = bytecoinwallet
+	pkgdesc = Bytecoin(BCN) Wallet
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://bytecoin.org/downloads/
+	arch = any
+	license = GPL
+	source = https://bytecoin.org/static/files/BytecoinWallet-1.1.4.amd64.deb
+	md5sums = f5669271aa3c12be433bdfa7e3a11d5b
+
+pkgname = bytecoinwallet
+
