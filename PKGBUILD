@@ -6,7 +6,7 @@
 
 pkgname=compiz
 pkgver=0.9.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -21,11 +21,13 @@ provides=("compiz-core=${pkgver}" "compiz-bcop=${pkgver}" "ccsm=${pkgver}" "comp
 source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
-        "reverse-unity-config.patch")
+        "reverse-unity-config.patch"
+        "screenshot-launch-fix.patch")
 sha256sums=('9854802ba2a072a497552a55cc03cce1e947ff68ed3755b484c218f688222cbf'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '97778fde6eff779e10a03f5c03f26ffdda8bdb89091956fee19ce84d7d8c9ef9')
+            '97778fde6eff779e10a03f5c03f26ffdda8bdb89091956fee19ce84d7d8c9ef9'
+            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -45,6 +47,9 @@ prepare() {
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
   patch -p1 -i "${srcdir}/gtk-extents.patch"
+
+  # Fix application launching for the screenshot plugin
+  patch -p1 -i "${srcdir}/screenshot-launch-fix.patch"
 }
 
 build() {
