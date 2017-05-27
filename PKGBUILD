@@ -1,5 +1,5 @@
 pkgname=pdftag
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple metadata editor for PDFs"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags
+  git describe --tags | sed -e 's/-/+/g'
 }
 
 build() {
@@ -26,5 +26,4 @@ build() {
 package() {
   cd ${pkgname}/build
   DESTDIR=${pkgdir} ninja install
-  install -Dm644 ${srcdir}/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
