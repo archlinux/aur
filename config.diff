@@ -16,8 +16,8 @@
 -#QMAKECOMMAND = qmake-qt4
 +QMAKECOMMAND = qmake
  # lrelease command:
--#LRELEASECOMMAND = lrelease-qt4
-+LRELEASECOMMAND = lrelease
+-LRELEASECOMMAND = lrelease
++LRELEASECOMMAND = lrelease-qt4
  # qcollectiongenerator command:
  #QCOLLECTIONGENERATORCOMMAND = qcollectiongenerator
  
