@@ -1,15 +1,15 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=rink
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Unit conversion tool and library written in rust'
 arch=('x86_64')
 url=https://github.com/tiffany352/rink-rs
 license=('Custom:MPLv2' 'GPL3')
 makedepends=('cargo')
 source=("rink-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('78510545d58961f0df35be25bb47aaecac7e173dc7dcb8ceea29975a4ab6a4e1c8f7dfb91c8df5ef525bd23c530d6e0c6b671c3033f25ffc1984063991f89688')
+sha512sums=('fa35afd1ea25a0bb3d2963281205f61fb585dd03f60c74771dca8958583389c48d1919c411c8232a8d1da1d6ed06fed9543f200796a682066875d38c69a63218')
 
 build() {
   cd rink-rs-$pkgver
