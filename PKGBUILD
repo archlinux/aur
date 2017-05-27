@@ -1,7 +1,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-openssl
-_ver=1.1.0e
+_ver=1.1.0f
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
@@ -13,7 +13,7 @@ license=("custom:BSD")
 url="http://www.openssl.org"
 source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
 "openssl-1.0.2a-x509.patch")
-md5sums=('51c42d152122e474754aea96f66928c6'
+md5sums=('7b521dea79ab159e8ec879d2333369fa'
          'SKIP'
          'c730f823023879de28513081aedbf06b')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
@@ -48,7 +48,7 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}"
-    make -j1 DESTDIR="${pkgdir}" install
+    make -j1 DESTDIR="${pkgdir}" install_sw
     install -m644 ms/applink.c "${pkgdir}/usr/${_arch}/include/openssl/"
     find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
