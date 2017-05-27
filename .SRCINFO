@@ -1,6 +1,6 @@
 pkgbase = dyaml-git
 	pkgdesc = YAML parser and emitter for D language - git checkout
-	pkgver = v0.4.5.r407.4010531
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/dlang-community/D-YAML
 	arch = x86_64

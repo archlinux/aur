@@ -4,6 +4,6 @@ includedir=${prefix}/include
 
 Name: libdyaml
 Description: YAML parser and emitter library for D language
-Version: 0.4.5
+Version: 0.6.1
 Libs: -L${libdir}/libdyaml.a
 Cflags: -I${includedir}/dyaml
