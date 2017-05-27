@@ -1,6 +1,6 @@
 pkgbase = xstarter
 	pkgdesc = Terminal-based application launcher for Unix systems
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/lchsk/xstarter
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = xstarter
 	depends = glib2
 	provides = xstarter
 	conflicts = xstarter
+	source = https://github.com/lchsk/xstarter/archive/v0.5.2.tar.gz
+	md5sums = f4f2970aff8b44c28711f65b90c7d2cf
 
 pkgname = xstarter
 
