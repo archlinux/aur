@@ -4,7 +4,7 @@
 pkgname=tor-git
 _branch=master
 #_branch=maint-0.2.6
-pkgver=0.3.1.0.alpha.24262
+pkgver=0.3.1.2.alpha.24949
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -23,7 +23,7 @@ source=("git+https://git.torproject.org/tor.git#branch=${_branch}"
         'tor.service' 'tor.tmpfiles' 'tor.sysusers')
 
 sha256sums=('SKIP'
-            'e49f03ed46ce9cc4c4c53449c1cf7946bd363e9de98c73fe4618abc3b86950e9'
+            'aedb4bbdf18583a6eb74959a700805093bb515f7fed3fa80a607b06694255d17'
             '5acd97eed1e4e175d5d547704a7d125009de6dc51d3c7163b7311e82fd34e9a2'
             '37ff22a2e6f3dab412f08b46b86dede063538f6a32039d58a90d1212f188b379'
             '4a27a177889c044ff4e3e1f6ab8bbb32211466d53d884974240dab67592343b2')
