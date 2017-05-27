@@ -16,6 +16,7 @@ post_install() {
   MNCE02.ini
   NMNB01.ini
   PALE02.ini
+  GKYE01.ini
 
   See https://fastermelee.net for more information on the
   Faster Melee build of the Dolphin Emulator.

@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-faster-melee
 	pkgdesc = The FasterMelee NetPlay build of the Dolphin Emulator
 	pkgver = 5.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fastermelee.net
 	install = faster-melee.install
 	arch = x86_64
