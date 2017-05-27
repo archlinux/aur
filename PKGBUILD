@@ -16,9 +16,13 @@ _opt_Debug=0
 # Debug builds must be launched from the command line to allow
 # sudo to change a system setting.
 
+_opt_clang=0
+# 0 = gcc
+# 1 = clang
+
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre6.1.dev.357.g10ac6c7f
+pkgver=2.0pre6.1.dev.530.g844d5366
 pkgrel=1
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
@@ -34,9 +38,13 @@ optdepends=(
   'slang: console display'
   'sdl2: graphical display'
   'fluidsynth: MIDI support'
+  'soundfont-fluid: or other SoundFont for MIDI support' # ERROR: Your fluidsynth is too old and soundfonts not found
   'vde2-dosemu2: networking support'
 )
 makedepends=('git' 'flex' 'bison' 'binutils' 'sed' 'perl' 'bash')
+if [ "${_opt_clang}" -ne 0 ]; then
+  makedepends+=('clang')
+fi
 provides=('dosemu=2.0' "${_pkgname}=2.0")
 conflicts=('dosemu' "${_pkgname}")
 backup=(
@@ -44,21 +52,25 @@ backup=(
 # 'etc/dosemu/dosemu.users'
 # 'etc/dosemu/global.conf'
 )
+options=('!strip')
 _github='stsp/dosemu2'
 _verwatch=("https://github.com/${_github}/releases.atom" "\s\+<title>${_pkgname}-\([^<]\+\)</title>" 'f')
-_freedos='dosemu-freedos-1.1-bin.tgz' # 'dosemu-freedos-bin.tgz'
+_freedos='none'
+_freedos='dosemu-freedos-1.1-bin.tgz'
+#_freedos='dosemu-freedos-bin.tgz'
+#_freedos='msdos70-bin.tgz' # install.c will need to be fixed before this is automatic
 source=(
   "git+https://github.com/${_github}.git"
-  #"https://dl.dropboxusercontent.com/u/13513277/dosemu/${_freedos}"
-  "https://chungy.keybase.pub/dosemu/${_freedos}"
-  'build-system.patch'
   'http://downloads.sourceforge.net/sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz' # for the GNU utils
 )
+if [ "${_freedos}" != 'none' ]; then
+  #source+=("https://dl.dropboxusercontent.com/u/13513277/dosemu/${_freedos}")
+  source+=("https://chungy.keybase.pub/dosemu/${_freedos}")
+fi
 noextract=("${_freedos}")
 sha256sums=('SKIP'
-            '0891a8346ee58f8468ab17f93315d6f23fe68348d297be39c1faad5bd6e59613'
-            'c4364f3837744775faebeac86ad22e5b636db411942c6e21e74e9b3277e066cf'
-            '080c306a1b611e1861fd64466062f268eb44d2bf38082b8a57efadb5a9c0ebc7')
+            '080c306a1b611e1861fd64466062f268eb44d2bf38082b8a57efadb5a9c0ebc7'
+            '0891a8346ee58f8468ab17f93315d6f23fe68348d297be39c1faad5bd6e59613')
 
 pkgver() {
   set -u
@@ -76,42 +88,53 @@ prepare() {
 
   # Some makepkg options including -i erroneously run prepare() for vcs packages
   if [ -f 'debian/rules' ]; then
-    #patch -Np1 < ../build-system.patch
-    #sed -ie '/yyget_leng/ s/int/size_t/' src/base/init/lexer.h
-    ln -sf "../${_freedos}"
+    if [ "${_freedos}" != 'none' ]; then
+      ln -sf "../${_freedos}"
+    fi
+    #ln -s '../.git' 'src/.git'
     sed -i -e '# Enable VDE' \
            -e 's:^\(\s*plugin_vde\)\s.*$:\1 on:g' \
-           -e '# Adjust conf folder in /etc' \
-           -e 's:^\(\s*sysconfdir\)\s.*$:\1 /etc/dosemu:g' \
            -e '# Update freedos' \
            -e 's:^\(\s*fdtarball\)\s.*$:'"\1 ${_freedos}:g" \
            -e '# Prefix' \
            -e 's:^}$:  prefix /usr\n&:g' \
       'compiletime-settings'{,.devel}
-    ./autogen.sh
-    local _opts=()
-    if [ "${_opt_Debug}" -ne 0 ]; then
-      #sed -i -e '# Temp fix for debug xbacktrace' \
-      #       -e 's:^#include <string\.h>:#include "config.h"\n&:g' \
-      #  'src/arch/linux/async/backtrace-symbols.c'
-      _opts+=('-d')
-      #_opts+=('-d' '--disable-xbacktrace')
-    fi
-    CFLAGS="${CFLAGS} -Wno-unused-result" \
-    ./default-configure ${_opts[@]:-}
-    rm -f 'debian/rules'
+    rm -f 'debian/rules' # We don't use this file so I'm using it as a flag.
   fi
   set +u
 }
 
+_configure() { # makepkg -e compatible
+  set -u
+  cd 'dosemu2'
+  if [ ! -s 'configure' ]; then
+    ./autogen.sh
+    local _opts=()
+    if [ "${_opt_Debug}" -ne 0 ]; then
+      _opts+=('-d')
+      #_opts+=('-d' '--disable-xbacktrace')
+    fi
+    if [ "${_opt_clang}" -ne 0 ]; then
+      _opts+=('CC=clang' 'CXX=clang++')
+      CFLAGS="${CFLAGS//-fstack-protector-strong/} -fno-stack-protector" # Issue #332
+    fi
+    echo "CFLAGS=${CFLAGS}"
+    CFLAGS="${CFLAGS} -Wno-unused-result" \
+    ./default-configure "${_opts[@]:-}"
+  fi
+  set +u
+  cd "${srcdir}"
+}
+
 build() {
+  _configure
   set -u
   cd 'dosemu2'
   if [ "${_opt_Debug}" -gt 1 ]; then
     make -j1
   else
     local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-    make -s -j "${_nproc}"
+    nice make -s -j "${_nproc}"
   fi
   set +u
 }
