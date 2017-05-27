@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-faster-melee
 	pkgdesc = The FasterMelee NetPlay build of the Dolphin Emulator
 	pkgver = 5.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://fastermelee.net
 	install = faster-melee.install
 	arch = x86_64
@@ -28,16 +28,18 @@ pkgbase = dolphin-emu-faster-melee
 	source = GALE01r2.ini
 	source = GALE01.ini
 	source = MNCE02.ini
+	source = GKYE01.ini
 	source = NMNB01.ini
 	source = PALE02.ini
 	sha256sums = SKIP
-	sha256sums = 2406936466089ea70ce006a5a631d614c88fa2819f22b6ecd1f5161e1798a3d9
-	sha256sums = 8fcac6f1a0f6e0c590fc229fe86a0c26d0621c355e153979a73ed24afb0a22da
-	sha256sums = ed28a19527eaf11af94ed02709bf771a965569244259a9cee86d4f3e82fc5048
-	sha256sums = 62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f
-	sha256sums = 4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c
-	sha256sums = 4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c
-	sha256sums = 4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c
+	sha256sums = be5bc1ed63fc6a030b39786e8dbc7074304a0b82c0333dfe27edb061b7e2dad8
+	sha256sums = 1d8a2553af3581f3a80e36c95d8e01d334015ec7cd3cfc9c19b12e77230567b2
+	sha256sums = ac0c39f7fe27f1e232523b02347b0645404d40dc0e6ef328d1e37993ab94de0c
+	sha256sums = 6cfb98a6592dbc597b90a7c0562c4179a5f2db5f7ce293e8fad1a0bd19e8c861
+	sha256sums = 858158866197425edcda5b176aa4da289eca8e5422252145c40ea1337c4a1b63
+	sha256sums = 1ad7113b73fe9298a037c020cad63dded4ba842565fb7477e6240cd5d58749e9
+	sha256sums = 11b5a9d907207e9732d9d1b02d99487d0cbed416f033b248baa56c47391d79f6
+	sha256sums = 858158866197425edcda5b176aa4da289eca8e5422252145c40ea1337c4a1b63
 
 pkgname = dolphin-emu-faster-melee
 

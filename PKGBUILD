@@ -10,7 +10,7 @@ pkgname=dolphin-emu-faster-melee
 # shellcheck disable=SC2034
 pkgver=5.0.3
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=4
 # shellcheck disable=SC2034
 pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
 # shellcheck disable=SC2034
@@ -38,18 +38,20 @@ source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=d462ca387
         "GALE01r2.ini"
         "GALE01.ini"
         "MNCE02.ini"
+        "GKYE01.ini"
         "NMNB01.ini"
         "PALE02.ini"
        )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
-            '2406936466089ea70ce006a5a631d614c88fa2819f22b6ecd1f5161e1798a3d9'
-            '8fcac6f1a0f6e0c590fc229fe86a0c26d0621c355e153979a73ed24afb0a22da'
-            'ed28a19527eaf11af94ed02709bf771a965569244259a9cee86d4f3e82fc5048'
-            '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f'
-            '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c'
-            '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c'
-            '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c')
+            'be5bc1ed63fc6a030b39786e8dbc7074304a0b82c0333dfe27edb061b7e2dad8'
+            '1d8a2553af3581f3a80e36c95d8e01d334015ec7cd3cfc9c19b12e77230567b2'
+            'ac0c39f7fe27f1e232523b02347b0645404d40dc0e6ef328d1e37993ab94de0c'
+            '6cfb98a6592dbc597b90a7c0562c4179a5f2db5f7ce293e8fad1a0bd19e8c861'
+            '858158866197425edcda5b176aa4da289eca8e5422252145c40ea1337c4a1b63'
+            '1ad7113b73fe9298a037c020cad63dded4ba842565fb7477e6240cd5d58749e9'
+            '11b5a9d907207e9732d9d1b02d99487d0cbed416f033b248baa56c47391d79f6'
+            '858158866197425edcda5b176aa4da289eca8e5422252145c40ea1337c4a1b63')
 # shellcheck disable=SC2034
 provides=('dolphin-emu')
 
