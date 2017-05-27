@@ -2,13 +2,15 @@
 pkgname=('python-telegram-bot-git')
 pkgver=6.0.1.r23.ae33d33
 _pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
 url="https://github.com/${pkgname%-git}/${pkgname%-git}"
 license=('LGPL3')
 depends=('python-future>=0.15.2' 'python-certifi')
 makedepends=('git' 'python-setuptools')
+optdepends=('python-pysocks: SOCKS or HTTP proxy'
+            'python-ujson: Ultra fast JSON parsing')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 changelog='CHANGES.rst'
@@ -28,10 +30,10 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    python setup.py build -q
+    python setup.py build
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    python setup.py install -q --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir" --optimize=1
 }

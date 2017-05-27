@@ -1,7 +1,7 @@
 pkgbase = python-telegram-bot-git
 	pkgdesc = A Python wrapper around the Telegram Bot API
 	pkgver = 6.0.1.r23.ae33d33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	changelog = CHANGES.rst
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = python-telegram-bot-git
 	makedepends = python-setuptools
 	depends = python-future>=0.15.2
 	depends = python-certifi
+	optdepends = python-pysocks: SOCKS or HTTP proxy
+	optdepends = python-ujson: Ultra fast JSON parsing
 	provides = python-telegram-bot
 	conflicts = python-telegram-bot
 	source = python-telegram-bot-git::git+https://github.com/python-telegram-bot/python-telegram-bot.git
