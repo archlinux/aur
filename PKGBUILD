@@ -4,13 +4,13 @@
 # NVIDIA Video Codec SDK
 
 pkgname=nvidia-sdk-manjaro
-pkgver=7.1.9
+pkgver=8.0.14
 pkgrel=1
 pkgdesc="NVIDIA Video Codec SDK (NVENCODE API and NVDECODE API)"
 arch=('i686' 'x86_64')
 url="https://developer.nvidia.com/nvidia-video-codec-sdk/"
 license=('custom')
-source=('https://github.com/Elrondo46/nvidia-sdk-manjaro/raw/master/Video_Codec_SDK_7.1.9.zip')
+source=('https://github.com/Elrondo46/nvidia-sdk-manjaro/raw/master/Video_Codec_SDK_8.0.14.zip')
 sha256sums=('SKIP')
 
 package() {
