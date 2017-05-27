@@ -2,7 +2,7 @@
 pkgname=libclassicclient
 _luxver=1.1.0
 pkgver=7.2.0_b04
-pkgrel=2
+pkgrel=3
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(i686 x86_64)
@@ -18,7 +18,6 @@ depends=(
 optdepends=(
   "luxtrust-middleware: LuxTrust software for web authentication"
 )
-source=("https://www.luxtrust.lu/downloads/middleware/eula.pdf")
 source_i686=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_32bit.tar.gz")
 source_x86_64=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_64bit.tar.gz")
 sha256sums=('4c9b71b596900700cdbf8f1515df44d9383fd5f336114e38cebfffc30d74f564')
