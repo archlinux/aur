@@ -1,6 +1,6 @@
 pkgbase=tmkernel-bfq       # Build kernel with a different name
 _srcname=linux-4.11
-pkgver=4.11.2
+pkgver=4.11.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -17,10 +17,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'df7138c754c95f2c22127d1d76c122dbfe26b0b586572855d9d095f0d112b29b'
+            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
             'SKIP'
             'dfb53fb48bad4d9f61bbea5e364d5619137460e7224bdf0e7bde5e137bc512d5'
-            '086891e5358e9077b8d1d5dd2351c688b64f3f26b1b671a5a4a73db494bd30e2'
+            '619d66c52a4e6fae509a12f249999295c84cadd85b86885c13326bd756912433'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
