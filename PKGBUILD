@@ -1,19 +1,20 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer:  Mike Swanson <mikeonthecomputer@gmail.com>
+# Contributor: Daniel M. Capella <polyzen@archlinux.info>
 # Contributor: carstene1ns <arch carsten-teibes de>
 # Contributor: <kfgz at interia dot pl>
 # Contributor: <damir at archlinux dot org>
 
-pkgname=ms-sys
-pkgver=2.4.1
+pkgname=ms-sys-devel
+pkgver=2.5.3
 pkgrel=1
-epoch=1
-pkgdesc='Used to create Microsoft compatible boot records'
+pkgdesc='Used to create Microsoft compatible boot records (devel version)'
 arch=('i686' 'x86_64')
 url=http://ms-sys.sourceforge.net/
 license=('GPL')
-makedepends=('hardening-wrapper')
+conflicts=('ms-sys')
+provides=('ms-sys')
 source=("http://prdownloads.sourceforge.net/ms-sys/ms-sys-$pkgver.tar.gz")
-sha512sums=('28b8c58432c579a79d17ce458fe94351d8df211fe4f7b355281fb2146580b49e51a8ae335227b962db24489e66b1ceaa9ca7e40ad72ec5198f24bdf7bb2e3be4')
+sha512sums=('18080bef903c68b6032e04124f3b3b9f0eb58517b338c6bd795846d786ee0af6b65760166b591090ad865a08a03346675f3c34ce59c64215059dac1439b558d8')
 
 build() {
   cd ms-sys-$pkgver
@@ -24,5 +25,3 @@ package() {
   cd ms-sys-$pkgver
   make PREFIX=/usr MANDIR=/usr/share/man DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
