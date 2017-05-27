@@ -1,0 +1,29 @@
+pkgbase = ethereum-genoil-ocl-git
+	pkgdesc = Genoil's Ethereum GPU miner, built with OpenCL support
+	pkgver = .20170528.8d36c4c92
+	pkgrel = 1
+	url = https://github.com/gemoil/cpp-ethereum
+	arch = i686
+	arch = x86_64
+	groups = ethereum
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	depends = boost
+	depends = crypto++
+	depends = leveldb
+	depends = ocl-icd
+	depends = libmicrohttpd
+	depends = miniupnpc
+	depends = opencl-headers
+	depends = libjson-rpc-cpp-git
+	optdepends = solidity: The Solidity Contract-Oriented Programming Language
+	provides = ethminer
+	conflicts = ethereum
+	conflicts = cpp-ethereum
+	source = ethereum-genoil-ocl::git+https://github.com/Genoil/cpp-ethereum.git
+	sha256sums = SKIP
+
+pkgname = ethereum-genoil-ocl-git
+
