@@ -3,7 +3,7 @@
 pkgname=lualdap-devurandom-git
 _pkgver_comparable=1.2.3
 pkgver=master
-pkgrel=2
+pkgrel=3
 pkgdesc="lua binding to openldap"
 arch=('any')
 url="https://github.com/devurandom/lualdap"
@@ -24,6 +24,7 @@ pkgver() {
 build() {
   local lua
   cd "${srcdir}/lualdap"
+  git apply "${srcdir}/allow-uri.patch"
   sed -i 's/^LUA *:=.*/LUA := lua5.1/' config
   make
 }
