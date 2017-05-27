@@ -1,7 +1,7 @@
 pkgbase = flnet
 	pkgdesc = voice net controller database / check-in application
 	pkgver = 7.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.w1hkj.com/
 	arch = x86_64
 	license = gpl
