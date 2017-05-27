@@ -3,10 +3,10 @@
 #             and: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=lib32-libopenssl-1.0-compat
-_ver=1.0.2k
+_ver=1.0.2l
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=3
+pkgrel=1
 pkgdesc='The Open Source library for Secure Sockets Layer and Transport Layer Security (without versioned symbols patch)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -19,7 +19,7 @@ source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
         "https://www.openssl.org/source/openssl-${_ver}.tar.gz.asc"
         "no-rpath.patch"
         "ssl3-test-failure.patch")
-sha256sums=('6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0'
+sha256sums=('ce07195b659e75f4e1db43552860070061f156a98bb37b672b101ba6e3ddf30c'
             'SKIP'
             '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
             'c54ae87c602eaa1530a336ab7c6e22e12898e1941012349c153e52553df64a13')
