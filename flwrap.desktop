@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Flwrap
-GenericName=Amateur Radio Data Encapsulation
-Comment=Amateur Radio Communications
-Exec=flwrap
-Icon=flwrap
-Terminal=false
-Type=Application
-Categories=Network;HamRadio;
