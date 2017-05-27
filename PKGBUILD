@@ -22,6 +22,7 @@ build() {
   cd $pkgname-$pkgver
 
   qmake-qt5 PREFIX=/usr
+  make
 }
 
 package() {
