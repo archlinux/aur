@@ -1,23 +1,19 @@
---- qtikzconfig.pri	2016-02-02 18:52:16.990065588 +0100
-+++ qtikzconfig.pri.new	2016-02-05 19:20:14.849508464 +0100
-@@ -28,7 +28,7 @@
- #MIME_INSTALL_DIR = /usr/share/mime/packages
- 
- #install documentation here:
--#DOCUMENTATION_INSTALL_DIR=$${RESOURCES_INSTALL_DIR}/documentation
-+DOCUMENTATION_INSTALL_DIR=/usr/share/doc/qtikz-git
- 
- #install templates here:
- #TEMPLATES_INSTALL_DIR=$${RESOURCES_INSTALL_DIR}/templates
-@@ -46,9 +46,9 @@
+diff --git a/qmake/qtikzconfig.pri b/qmake/qtikzconfig.pri
+index 22758c5..0927c34 100644
+--- a/qmake/qtikzconfig.pri
++++ b/qmake/qtikzconfig.pri
+@@ -46,11 +46,11 @@ CONFIG -= debug
  CONFIG += release
  
  # qmake command:
 -#QMAKECOMMAND = qmake-qt4
-+QMAKECOMMAND = qmake
++QMAKECOMMAND = qmake-qt4
  # lrelease command:
--LRELEASECOMMAND = lrelease
+-#LRELEASECOMMAND = lrelease-qt4
 +LRELEASECOMMAND = lrelease-qt4
  # qcollectiongenerator command:
- #QCOLLECTIONGENERATORCOMMAND = qcollectiongenerator
+-#QCOLLECTIONGENERATORCOMMAND = qcollectiongenerator
++QCOLLECTIONGENERATORCOMMAND = qcollectiongenerator-qt4
  
+ # TikZ documentation default file path:
+ TIKZ_DOCUMENTATION_DEFAULT = "/usr/share/doc/texmf/pgf/pgfmanual.pdf.gz"
