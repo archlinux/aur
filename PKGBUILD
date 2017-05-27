@@ -7,12 +7,12 @@ pkgname=('leap-motion-driver' 'leap-motion-sdk')
 _major=2.3.1
 _build=31549
 pkgver=${_major}
-pkgrel=3
+pkgrel=4
 pkgdesc="The Leap Motion Developer SDK"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
 license=('custom')
-source=(Leap_Motion_SDK_Linux_${_major}.tgz.tgz::http://warehouse.$pkgbase.com/apps/4185/download
+source=(Leap_Motion_SDK_Linux_${_major}.tgz.tgz::http://warehouse.leapmotion.com/apps/4185/download
 	libleap.pc
 	LICENSE
     	leapd.service
