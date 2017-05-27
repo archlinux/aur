@@ -1,0 +1,26 @@
+pkgbase = marcfs-git
+	pkgdesc = FUSE-based file system backed by Mail.ru Cloud storage
+	pkgver = 0.4.r1.033bf1a
+	pkgrel = 1
+	url = https://gitlab.com/Kanedias/MARC-FS
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = cmake
+	makedepends = gcc
+	depends = fuse2
+	depends = curl
+	depends = jsoncpp
+	optdepends = jemalloc: to reduce memory pressure
+	provides = marcfs
+	conflicts = marcfs
+	source = marcfs::git+https://gitlab.com/Kanedias/MARC-FS.git
+	source = git+https://github.com/JosephP91/curlcpp.git
+	source = git+https://github.com/google/googletest.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = marcfs-git
+
