@@ -53,4 +53,4 @@
 +                subprocess.call(["usermod", username, "-G", "%s" % username])
              self.load_groups()
          dialog.destroy()
- 
+

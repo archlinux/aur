@@ -4,7 +4,7 @@
 
 _pkgname=cinnamon
 pkgname=${_pkgname}-git
-pkgver=6157.e9905a09
+pkgver=6161.3842206a
 pkgrel=1
 pkgdesc="A Linux desktop which provides advanced innovative features and a traditional user experience"
 arch=('i686' 'x86_64')
@@ -26,9 +26,11 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install=${pkgname}.install
 source=("${_pkgname}"::git+https://github.com/linuxmint/cinnamon.git
-        "use-wheel.patch")
+        "use-wheel.patch"
+	"default-theme.patch")
 sha256sums=('SKIP'
-            'f2d86a98fa27e90030bc152c5a591f118acd1fa6a506bfbbffd7a5896e2e49cb')
+            '5c98d0e44c2cc2c11fac42a10a22f999ba60016b06fc6e45416484febe048417'
+	    '566585873f38a79ec248b916645a2e081abec3c6d4df2c34339cde1f35375cc5')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -40,6 +42,9 @@ prepare() {
 
   # Use wheel group instread of sudo
   patch -Np1 -i ../use-wheel.patch
+
+  # Set default theme to 'cinnamon'
+  patch -Np1 -i ../default-theme.patch
 
   # Add polkit agent to required components
   sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' files/usr/share/cinnamon-session/sessions/cinnamon*.session
@@ -53,6 +58,20 @@ prepare() {
   # Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
   sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
     files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
+
+  # Fix selected background color in Cinnamon Settings for Adwaita theme
+  sed -i 's/@selected_bg_color;/@theme_selected_bg_color;/' \
+    files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
+
+  # GNOME Terminal desktop file was renamed in GNOME 3.20
+  sed -i 's/gnome-terminal.desktop/org.gnome.Terminal.desktop/' data/org.cinnamon.gschema.xml.in \
+    files/usr/share/cinnamon/applets/panel-launchers@cinnamon.org/settings-schema.json
+
+  # Replace MintInstall with GNOME Software
+  sed -i 's/mintinstall.desktop/org.gnome.Software.desktop/' data/org.cinnamon.gschema.xml.in
+
+  # Remove broken symlink
+  rm files/etc/xdg/menus/cinnamon-applications-merged
 }
 
 build() {
