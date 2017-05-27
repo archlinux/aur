@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('python2-django-postorius')
-_commit=29bae4b21d32328d509d88f71611b1f1bff18310
+_commit=52c9c3a5c630a59e88ff88ba0c7d66881e5b805d
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Django app that provides a web user interface to access GNU Mailman"
