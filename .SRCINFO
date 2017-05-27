@@ -9,6 +9,7 @@ pkgbase = lib32-libopenssl-1.0-compat
 	makedepends = makedepend
 	depends = perl
 	optdepends = ca-certificates
+	conflicts = lib32-openssl-1.0
 	options = !makeflags
 	source = https://www.openssl.org/source/openssl-1.0.2l.tar.gz
 	source = https://www.openssl.org/source/openssl-1.0.2l.tar.gz.asc

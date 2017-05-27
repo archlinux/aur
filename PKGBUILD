@@ -12,6 +12,7 @@ arch=('x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('perl')
+conflicts=('lib32-openssl-1.0')
 makedepends=('gcc-multilib' 'makedepend')
 optdepends=('ca-certificates')
 options=('!makeflags')
