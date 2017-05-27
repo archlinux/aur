@@ -57,9 +57,9 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-UPnP.git${_upnp}"
         "git+https://github.com/freenet/plugin-KeyUtils.git${_keyutils}"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
+        "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         #"https://downloads.freenetproject.org/alpha/opennet/seednodes.fref"
         "https://github.com/skydrome/db4o-7.4-java/raw/master/seednodes.fref"
-        "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         #"https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar"
         "commons-compress.jar::http://central.maven.org/maven2/org/apache/commons/commons-compress/1.4.1/commons-compress-1.4.1.jar"
         "https://www.bouncycastle.org/download/bcprov-jdk15on-156.jar"
@@ -75,8 +75,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '7b375cbd2c715fd3d239985ae2a97021cfef8483c88ff57f6364016451e65c21'
-            'cd009175698272da2a35f340f27772a39406779d41a069c4167cde598caa697f'
             '28a00d80716f073d644b9da76e94b5e8ff94de8e9323f06f558fba653fcf5f86'
             '963e1ee14f808ffb99897d848ddcdb28fa91ddda867eb18d303e82728f878349'
             '96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1'
