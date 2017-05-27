@@ -2,20 +2,26 @@
 # Contributor: Arnaud Taffanel <dev@taffanel.org>
 # Contributor: Victor Häggqvist <victor@snilius.com>
 pkgname=solaar-git
-pkgver=20151002
+pkgver=r930.dd2f884
 pkgrel=1
 pkgdesc="Linux devices manager for the Logitech Unifying Receiver."
 arch=('any')
 url="http://pwr.github.io/Solaar/"
 license=('GPL2')
 
-depends=('python' 'python-pyudev' 'python-gobject' 'pygtk')
+depends=('python' 'python-pyudev' 'python-gobject' 'pygtk' 'python-six')
+optdepends=('libappindicator-gtk3')
 makedepends=('git')
 provides=('solaar')
 conflicts=('solaar')
 install='solaar.install'
 source=('git+https://github.com/pwr/Solaar.git' 'solaar.install')
 md5sums=('SKIP' '4057d7179fe2ae9718b8aac4607a2c47')
+
+pkgver() {
+	cd "$srcdir/Solaar"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
 	cd "$srcdir/Solaar"
