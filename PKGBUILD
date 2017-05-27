@@ -1,10 +1,12 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 
-# Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
+# Maintainer: André-Sebastian Liebe <andre+arch at lianse dot eu>
+# Contributor: schulmar 
+# Contributor: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 _pkgbase="dddvb"
 pkgname="dddvb-dkms"
 pkgdesc="Official Digital Devices driver package as DKMS"
-pkgver=0.9.26
+pkgver=0.9.29
 pkgrel=1
 arch=("any")
 url="http://download.digital-devices.de"
@@ -16,7 +18,7 @@ conflicts=('digitaldevices-dvb-drivers' 'dvbsky-dvb-drivers' 'technotrend-dvb-dr
 provides=('dddvb-dkms')
 install="${pkgname}.install"
 source=("https://github.com/DigitalDevices/$_pkgbase/archive/$pkgver.tar.gz")
-md5sums=('2724912a8331a470a1ed4cb26fe4165b')
+sha256sums=('4c5df07c799c8590a1bd0e463fee7dce36d89bb4519d5c3815adcb839b1653e0')
 
 prepare() {
   cd "$srcdir"
