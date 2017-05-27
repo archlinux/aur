@@ -1,6 +1,6 @@
 # Maintainer: wagnerflo <florian@wagner-flo.net>
 _cranname=Rcpp
-_cranver=0.12.8
+_cranver=0.12.11
 pkgname=r-cran-rcpp
 pkgver=${_cranver}
 pkgrel=1
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL2' 'GPL3')
 depends=('r')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('1e878b7bdc3fd23a2cd4a33572613aae')
+md5sums=('ea1710213cbb1d91b1d0318e6fa9aa37')
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
