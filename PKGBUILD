@@ -2,7 +2,7 @@
 _author=choroba
 _perlmod=Treex-PML
 pkgname=perl-treex-pml
-pkgver=2.17
+pkgver=2.22
 pkgrel=1
 pkgdesc="Perl implementation for the Prague Markup Language (PML)"
 arch=("any")
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://search.cpan.org/CPAN/authors/id/C/CH/CHOROBA/${_perlmod}-${pkgver}.tar.gz")
-md5sums=('29299c2afe2c4cc8351242edf8fe86d0')
+sha512sums=('78717aaf4ce4ffcea7245db14d5ab40cf0a317051b14c531ea1cd4fa6545dcb7e1f20b67248b67bf983d818eda5781a86b214fa08a5e2626ed14b575bf50e6f5')
 options=(!emptydirs)
 
 build() {
