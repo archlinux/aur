@@ -3,7 +3,7 @@
 pkgname=lualdap-devurandom-git
 _pkgver_comparable=1.2.3
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc="lua binding to openldap"
 arch=('any')
 url="https://github.com/devurandom/lualdap"
@@ -11,8 +11,10 @@ url="https://github.com/devurandom/lualdap"
 license=('MIT')
 depends=('openldap>=2.1' 'lua51')
 makedepends=('git')
-source=("git+https://github.com/devurandom/lualdap.git")
-sha1sums=('SKIP')
+source=("git+https://github.com/devurandom/lualdap.git"
+        "allow-uri.patch")
+sha1sums=('SKIP'
+          'a5185d05bf737707937bf3f7177afb33160ff5ec')
 
 pkgver() {
   cd "${srcdir}/lualdap"
