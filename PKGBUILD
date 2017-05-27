@@ -13,7 +13,6 @@ source=("https://github.com/RutrackerOrg/rutracker-proxy/releases/download/v0.1.
 
 sha256sums=('2e87ef606068a32397b36f1e39c9f53780f9c30eb2e503520a957b058104c119')
 md5sums=('ccf210b40983f8811e9b39ff1b8fe82e')
-validpgpkeys=('BC02894E554D22A62D381930300E89650A716A5A')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
