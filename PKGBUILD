@@ -6,7 +6,7 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=2.2.4
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (without X support)"
 arch=('i686' 'x86_64')
@@ -57,7 +57,7 @@ options=('!emptydirs')
 install=${_pkgbase}.install
 source=("http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
         "lua53_compat.patch")
-md5sums=('55666c9898f658c7fcca12725bf7dd1b'
+md5sums=('031d1bbef7737d44d18d78d6761ed26e'
          '96d3b346d9149ffb1b430066dfb6249a')
 
 prepare() {
@@ -72,8 +72,14 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" \
-  CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" \
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
+  export CFLAGS+=" -I/usr/include/samba-4.0"
+  export CPPFLAGS+=" -I/usr/include/samba-4.0"
+  export CXXFLAGS+=" -std=gnu++98"
+  export LUAC=/usr/bin/luac
+  export LUA_LIBS="`pkg-config --libs lua`"
+  export RCC=/usr/bin/rcc-qt4
+
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --disable-qt \
@@ -89,10 +95,7 @@ build() {
               --enable-vcdx \
               --enable-upnp \
               --enable-opus \
-              --enable-sftp \
-              LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
-              RCC=/usr/bin/rcc-qt4
-
+              --enable-sftp
   make
 }
 
