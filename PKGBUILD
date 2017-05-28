@@ -43,13 +43,17 @@ if [[ -z ${startdir} ]]; then
   _building=false;
 fi
 
+if [[ -f target-host ]]; then
+  _target_host=true
+  _minimal=false
+fi
+
 if [[ -f full-build ]]; then
   _minimal=false
-  _debug=false
 fi
 
 # Sanity check options
-if $_building; then
+if $_building && ! $_target_host; then
   if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then _piver=$LOCAL_PI_VER; fi
   _sysroot=/mnt/pi${_piver}
   if [[ -z "${_piver}" ]]; then
@@ -61,10 +65,6 @@ if $_building; then
     echo "You have to set a valid sysroot to proceed with the build"
     exit 1
   fi
-fi
-
-if [[ $_piver = "" ]]; then
-  _target_host=true
 fi
 
 # vars
@@ -118,15 +118,11 @@ fi
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
 
 $_build_from_head && _patching=false && _shadow_build=true
-$_skip_web_engine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine"
+$_skip_web_engine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine -no-icu"
 $_skip_qt_script && _additional_configure_flags="$_additional_configure_flags -skip qtscript"
 $_skip_qt_widgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
 $_static_build && _additional_configure_flags="$_additional_configure_flags -static"
 $_float && _additional_configure_flags="$_additional_configure_flags -qreal float"
-
-if $_skip_web_engine; then
-  _additional_configure_flags="$_additional_configure_flags -no-icu"
-fi
 
 # PKGBUILD vars
 
