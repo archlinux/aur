@@ -3,7 +3,7 @@
 # Contributor:
 
 pkgname='minitube-aur'
-pkgver='2.6'
+pkgver='2.7'
 pkgrel='3'
 pkgdesc='A youtube client that does not need flash'
 conflicts=('minitube')
