@@ -2,7 +2,7 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful GUI for Git"
 arch=('any')
 url="http://git-cola.github.com/"
