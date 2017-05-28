@@ -3,7 +3,7 @@
 
 pkgname=free42
 pkgver=2.0.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
 url="http://thomasokken.com/free42/"
