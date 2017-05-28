@@ -1,4 +1,5 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
+# Co-Maintainer: Raphael Scholer <rascholer@gmail.com>
 
 _pkgbase=quodlibet
 pkgname=exfalso
@@ -12,8 +13,9 @@ depends=('gtk3' 'python-mutagen' 'python-gobject' 'python-cairo' 'python-feedpar
 makedepends=('intltool' 'gettext')
 #optdepends=('python-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 conflicts=("${pkgbase}")
-source=("https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('97e3f30d2bed8074f271b95093372e1c61897cefe5047845ba118a663ada4fb7' 'SKIP')
+source=("https://github.com/${_pkgbase}/${_pkgbase}/releases/download/release-${pkgver}/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
+sha256sums=('97e3f30d2bed8074f271b95093372e1c61897cefe5047845ba118a663ada4fb7'
+            'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
 
 prepare() {
