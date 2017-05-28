@@ -8,11 +8,11 @@ pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgver=20170302
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/horst3180/${_pkgname}"
 license=('GPL3')
-depends=('gtk3' 'gtk-engine-murrine')
+depends=('gtk3' 'gtk-engine-murrine' 'gnome-themes-standard')
 optdepends=('arc-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/horst3180/${_pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/horst3180/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
