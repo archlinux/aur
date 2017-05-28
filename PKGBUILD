@@ -1,6 +1,7 @@
 # Maintainer: Stephan Eisvogel <eisvogel at embinet dot de>
 pkgname=nsjail-git
-pkgver=r437.8e00976
+pkgver=r450.3e99703
+_pkgcommit=#commit=3e99703df21978f4f87717e1563fbbc9454c6848
 pkgrel=1
 pkgdesc="A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)"
 arch=('x86_64')
@@ -8,7 +9,7 @@ url="http://nsjail.com"
 license=('Apache')
 makedepends=('git' 'autoconf-archive>2016.03.20' 'doxygen' 'graphviz' 're2c' 'check>=0.9.4')
 depends=('libnl>=3' 'protobuf-c')
-source=("${pkgname}::git+git://github.com/google/nsjail.git#commit=8e00976f4976bb546e669fa2b3a586abba8ef4cd"
+source=("${pkgname}::git+git://github.com/google/nsjail.git${_pkgcommit}"
 		"https://github.com/trustm3/external_protobuf-c-text/commit/c37f8708d847319921a3fba7d6863103f6b801e2.patch"
 		"https://github.com/trustm3/external_protobuf-c-text/commit/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch"
 		"https://github.com/trustm3/external_protobuf-c-text/commit/ccb50d69f833b4417ba66690a0257a8a64eab6ec.patch"
@@ -28,9 +29,8 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
-
 	# Populate kafel and protobuf-c-text submodules
+	cd "${srcdir}/${pkgname}"
 	git submodule update --init
 
 	# Package maintainer fixes
@@ -39,21 +39,11 @@ prepare() {
 	sed -i '/^include am\/aminclude_doxygen.am/c@DX_RULES@' protobuf-c-text/Makefile.am
 	# Fix wrong variable usage
 	sed -i 's/\$(GREP) \/libdata\//\$GREP \/libdata\//' protobuf-c-text/configure.ac
-	# Delete stack protector flag, Arch has its own through makepkg
-	sed -i 's/-fstack-protector-all //' Makefile
-	# Introduce EXTRA_FLAGS to preserve makepkg CFLAGS
-	sed -i '/CC ?= gcc/aEXTRA_CFLAGS := $(CFLAGS)' Makefile
-	# Build protobuf-c-text with with different CFLAGS (libs need PIC instead of PIE etc.)
-	sed -i 's/-fPIC/\$(EXTRA_CFLAGS) -fPIC/' Makefile
-	# Fix bison warning
-	cd kafel
-	sed -i '/if (!ctxt->lexical_error) {/aYYUSE(scanner);' src/parser.y
-	cd ..
 
 	# 3rd party fixes
 
 	cd protobuf-c-text
-	# Added Android.mk file for integration into Android build system and fixed includes
+	# Fix includes (we ignore the additional Android stuff)
 	patch -Np1 -i "$srcdir/c37f8708d847319921a3fba7d6863103f6b801e2.patch"
 	# Fix wrong integer en- and decoding in protobuf-c-text library
 	patch -Np1 -i "$srcdir/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch"
@@ -62,13 +52,19 @@ prepare() {
 	# esc_str: escape with octal as unsigned (buffer overflow otherwise)
 	patch -Np1 -i "$srcdir/b79ba3f1cd350a9ebc4929fa9d63368b460b8877.patch"
 	# Fixes bad mallocs and memcpys caused by invalid input
-	patch -Np1 -i "$srcdir/6a8727066180615e7767b550b491e4ef4d0db514.patch"	
+	patch -Np1 -i "$srcdir/6a8727066180615e7767b550b491e4ef4d0db514.patch"
+}
+
+build() {
+	cd "${srcdir}/${pkgname}/protobuf-c-text"
+	autoreconf -vif
+	env CFLAGS="${CFLAGS} -fPIC" ./configure
+	cd "${srcdir}/${pkgname}"
+	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	make
-
 	install -d "${pkgdir}/etc/nsjail"
 	install -d "${pkgdir}/usr/share/${pkgname}/examples"
 	install -D nsjail "${pkgdir}/usr/bin/nsjail"
