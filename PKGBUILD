@@ -2,7 +2,7 @@
 
 _pkgname=mumble
 pkgname=${_pkgname}-snapshot-minimal
-pkgver=1.3.0_2389_gdde8173
+pkgver=1.3.0_2407_g3754898
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Mumble is an open source voice chat application similar to TeamSpeak. This release doesn't include Text2Speech, Overlay and several plugins."
