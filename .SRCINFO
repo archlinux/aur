@@ -1,0 +1,17 @@
+pkgbase = brother-mfcj6720dw-cupswrapper
+	pkgdesc = LPR-to-CUPS wrapper for Brother MFC-j6720DW multifunction network printer
+	pkgver = 3.0.0_1
+	pkgrel = 5
+	url = http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcj6720dw_us_eu_as
+	install = brother-mfcj6720dw-cupswrapper.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = ghostscript
+	depends = brother-mfcj6720dw-lpr>=3.0.0_1
+	source = http://download.brother.com/welcome/dlf100966/mfcj6720dwcupswrapper-3.0.0-1.i386.deb
+	md5sums = 4c94e477a2191fc70f8e0afa819601f1
+
+pkgname = brother-mfcj6720dw-cupswrapper
+
