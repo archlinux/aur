@@ -1,9 +1,9 @@
 # Maintainer: M0Rf30
 
 pkgname=namecoin-core
-pkgver=0.12.0
+pkgver=0.13.0rc1
 pkgrel=3
-pkgdesc="namecoin Core headless P2P node"
+pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://namecoin.org"
 depends=('boost'
@@ -19,7 +19,7 @@ makedepends=('autoconf'
              'make'
              'pkg-config')
 license=('MIT')
-source=(${pkgname%-core}-$pkgver.tar.gz::https://codeload.github.com/namecoin/namecoin-core/tar.gz/v$pkgver
+source=(${pkgname%-core}-$pkgver.tar.gz::https://github.com/namecoin/namecoin-core/archive/nc$pkgver.tar.gz
         namecoin.conf
         namecoin.logrotate
         namecoin.service
@@ -31,7 +31,7 @@ conflicts=('namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
 install=namecoin.install
 
 build() {
-  cd "$srcdir/${pkgname}-$pkgver"
+  cd "$srcdir/${pkgname}-nc$pkgver"
 
   msg2 'Building...'
   ./autogen.sh
@@ -50,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}-$pkgver"
+  cd "$srcdir/${pkgname}-nc$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
@@ -82,7 +82,7 @@ package() {
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-md5sums=('887e618fa025e98e1c7d6f88facadee2'
+md5sums=('55b654a7b96c50aeee6827bfda7e8a0b'
          '5248a01217a58e4a91e5cf5dd4002a12'
          '2ca92d94c329bf54b8df70f22c27ba98'
          '5a5aca0d121066eff20e5431f4b89a48'
