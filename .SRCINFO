@@ -1,0 +1,19 @@
+pkgbase = nsjail-git
+	pkgdesc = A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)
+	pkgver = r426.0585f08
+	pkgrel = 1
+	url = http://nsjail.com
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = autoconf-archive>2016.03.20
+	makedepends = doxygen
+	makedepends = re2c
+	makedepends = check>=0.9.4
+	depends = libnl>=3
+	provides = nsjail
+	source = nsjail-git::git+git://github.com/google/nsjail.git
+	sha256sums = SKIP
+
+pkgname = nsjail-git
+
