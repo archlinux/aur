@@ -4,7 +4,7 @@
 _pkgbase=quodlibet
 pkgname=exfalso
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
 url="https://${_pkgbase}.readthedocs.io/"
@@ -12,6 +12,9 @@ license=('GPL2')
 depends=('gtk3' 'python-mutagen' 'python-gobject' 'python-cairo' 'python-feedparser')
 makedepends=('intltool' 'gettext')
 #optdepends=('python-musicbrainzngs: for "MusicBrainz Lookup" plugin')
+optdepends=('gst-plugins-bad: for "Acoustic Fingerprint" plugins'
+            'gst-plugins-good: for "Replay Gain" plugin'
+            'kakasi: for "Kana/Kanji Simple Inverter" plugin')
 conflicts=("${pkgbase}")
 source=("https://github.com/${_pkgbase}/${_pkgbase}/releases/download/release-${pkgver}/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
 sha256sums=('97e3f30d2bed8074f271b95093372e1c61897cefe5047845ba118a663ada4fb7'
@@ -50,6 +53,35 @@ package_exfalso() {
     rm    "${pkgdir}"/usr/share/man/man1/${_pkgbase}.1
     rm -r "${pkgdir}"/usr/share/zsh/
 
-    # Remove Plugins (TODO: Inspect which one are useful for ExFalso and what are their dependencies)
-    rm -r "${pkgdir}"/usr/lib/python3.6/site-packages/${_pkgbase}/ext/
+
+    # Remove plugins
+    for package in _shared events gstreamer playlist playorder query
+    do
+        rm -r "${pkgdir}/usr/lib/python3.6/site-packages/${_pkgbase}/ext/${package}"
+    done
+
+    find "${pkgdir}/usr/lib/python3.6/site-packages/${_pkgbase}/ext/covers" \
+        -type f \( \
+            -name "discogs.*" \
+            -o -name "lastfm.*" \
+            -o -name "musicbrainz.*" \
+        \) -delete
+
+    find "${pkgdir}/usr/lib/python3.6/site-packages/${_pkgbase}/ext/songsmenu" \
+        -type f \( \
+            -name "bookmarks.*" \
+            -o -name "filterall.*" \
+            -o -name "editplaycount.*" \
+            -o -name "importexport.*"\
+            -o -name "lastfmsync.*"\
+            -o -name "migrate.*"\
+            -o -name "exact_rating.*"\
+            -o -name "html.*"\
+            -o -name "playlist.*" \
+            -o -name "forcewrite.*" \
+        \) -delete
+
+    rm -r "${pkgdir}/usr/lib/python3.6/site-packages/${_pkgbase}/ext/songsmenu/brainz"
 }
+
+# vim:set tabstop=4 softtabstop=4 shiftwidth=4 expandtab:
