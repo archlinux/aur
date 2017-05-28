@@ -2,7 +2,7 @@
 # Mantainer: M0Rf30
 pkgname=unrealtournament
 pkgver=451
-pkgrel=8
+pkgrel=9
 pkgdesc="The classic Unreal Tournament from 1999. Retail CD or DVD required."
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
@@ -10,7 +10,7 @@ license=('custom')
 groups=(ut1999-goty)
 [ "$CARCH" = "i686" ] && depends=(ossp libnotify sdl libgl)
 [ "$CARCH" = "x86_64" ] &&  depends=(ossp libnotify lib32-sdl lib32-libgl)
-makedepends=(makepkg-unreal unshield)
+makedepends=(makepkg-unreal unshield lib32-fakeroot)
 provides=(ut1999)
 conflicts=(ut1999 ut ut-server)
 source=(ut436.run::'https://raw.github.com/XenGi/oldgames/master/ut/unreal.tournament_436-multilanguage.run'
@@ -24,16 +24,16 @@ source=(ut436.run::'https://raw.github.com/XenGi/oldgames/master/ut/unreal.tourn
         utcustom.sh
         https://raw.github.com/XenGi/oldgames/master/ut/ut.svgz)
 noextract=(UTPGPatch451.tar.bz2)
-md5sums=('726aede817997a2aefccb8c20601d760'
-         '7012dc6caaa9453dcf8951474556912a'
-         '165ced7397e1269f061e356f170a90ba'
-         '0bb18191cafbc6e6ae48e0b3577a39ad'
-         '77a735a78b1eb819042338859900b83b'
-         '8906e3958918af977f5a8583fa7c263f'
-         '7fbe728f7cef23d53bdfe6be17b7129a'
-         '72efce99d512b1a71587c2c127dccd06'
-         '5575e5771736d143a0ccaa4d4d043bcb'
-         'cc8e253aac0e008c9fbe0d4cfdf3ffbd')
+sha512sums=('e3ab99af410eaa486a62cc21a40c5047996d0667ace963ccf2db666e5af9365ec49b707310fabf0bb1ed4d31ca78d9eb1e26a02ed6f258a4c1154bcc7184f518'
+            '6ba8dbf3a05b293eccc500e9edcf5417f38d0b60ff31f8df728e8791ec902e95d2d21feb025655ad5e464b9f0f025c79054baf43bd70bfd6e4644b693f6a4a49'
+            '5b2cb8a5c5690d785c9972a85b2608fdfe37c19eddc7b28c8b9599bd468306d7f340352b72113914a9d85ce1f5f95d9edc15aff87fe6d5e88326c01657ded822'
+            'fe10ff2f916df08c2904aa4311d668f7460415f8c6b07b17c2797e8a3c19333ac8484d53da3cb426a616b5ca4b6464e3f6d55b6f93502b854500ba172dc0fb07'
+            'd11ecb3e60e8bba0288be0a4860acb563c277e75ce30a749de04673219d484b7a8c7e6207bc582872df33db684658dc1a15235b9d79ceb98fcd2ad1410982423'
+            '204fe409d2b10416301cb72f57abb6b547c88909339fbb9f27cb42a08072f0e935b2bdfd7cc2cc4db1432db54f3d64d4c616f58e51de20722d05214069ff8c2f'
+            '4d0bbbef707eceac5e3ecf8711d92c3df6d1467cf6ef949d5c773c70858750e5bf4f820d67fbfb26708d6d145de143a14e390c891a9a49bd68301bb1452ffd5c'
+            '623f429e07ddf004d8288a355f4da7e7ac3b249cdf2bb61d206a806fadb294c315182d3d22facf01c55c87938055bb122bb21a2a21610c9beeac9df09deaae4b'
+            'b9da24af0845128990e6eb2fc71c146b12a5902dbf5326161ad10858bdf1fcc1aec6d78d0bc812e399a990d07fb4d2e010eec9232b0232138b73bca860b16936'
+            'cc662cac9b0dee11e65f20cb7bd2d241690b22054527b2eb2ba36eb309844ea671529f4b7da4e9bab839cb254d572eb5807c15687979594e88429132cf332daf')
 
 # You can uncomment and set these two variables in order to override the auto
 # detection done in build() by _detect_cdpath() and _detect_cdversion().
