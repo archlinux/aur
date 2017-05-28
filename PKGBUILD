@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=('albert')
 conflicts=('albert-git')
 source=(https://github.com/ManuelSchneid3r/albert/archive/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('7de4f5a062a8fc1bb91f5cf8a2f2f72a')
+md5sums=('945f2cf58f750e6f9dd6330a8018310d')
 
 # If you want a debug build, change CMAKE_BUILD_TYPE to 'Debug'
 #_build_type="Debug"
