@@ -1,0 +1,13 @@
+--- desktop/azpainter.desktop.orig	2017-05-28 23:08:23.005078116 +0700
++++ desktop/azpainter.desktop	2017-05-28 23:09:58.535588559 +0700
+@@ -5,5 +5,10 @@
+ Icon=azpainter
+ Terminal=false
+ Categories=Graphics;
++Comment=16-bit RGB full color painting application
++Comment[ja]=16-bit RGB full color painting application
++Comment[pt_BR]=16-bit RGB full color painting application
++Comment[ru]=16-bit RGB full color painting application
++Comment[uk]=16-bit RGB full color painting application
+ MimeType=application/x-azpainter-apd;
+ StartupNotify=true
