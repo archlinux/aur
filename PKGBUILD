@@ -1,7 +1,7 @@
 # Maintainer: Sum01 https://github.com/sum01
 pkgname=('vcash-electron')
 pkgver=0.31.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Vcash GUI bundled with the Vcash wallet."
 arch=('x86_64')
 url="https://github.com/whphhg/vcash-electron"
@@ -25,18 +25,19 @@ sha256sums=('d7b90bd349fe6be1e08d34d28b170c2c60a6e468c2c36ecfc44da7d3f6705453'
 						'e85907fb18237fd6abe5a4aa464a8e9869d8293fe5acb593e550c13005c893b9'
 						'f215ece667efc575bf452c4ea720da15d759f346453b53f6aed01022cc968a1d'
 						'5bb6e09574141d9e807fd04050bc800d7f5ae6413f5bfd9359fd095ef2e0ece2'
-						'409aaf41391234ded7aed20e5d4839ad8c4d5d8d977d5a155811f4a146a9be4f')
+						'5904fb8617faad9f46b85d2dd4c88af5ea9a66c3b51a95458dc6db7501202f29')
 
 package() {
-	chmod a+x $srcdir/linux-unpacked/vcash-electron
-	chmod a+x $srcdir/linux-unpacked/resources/app.asar.unpacked/bin/vcashd-x64
+	chmod u+x $srcdir/linux-unpacked/vcash-electron
+	chmod u+x $srcdir/linux-unpacked/resources/app.asar.unpacked/bin/vcashd-x64
+	chmod u+x $srcdir/vcash-electron.desktop
 	mkdir -p $pkgdir/usr/{lib/$pkgname,share/{applications,icons/hicolor/{16x16,32x32,48x48,96x96,128x128,256x256}/apps}}/
 	mv $srcdir/linux-unpacked "$pkgdir/usr/lib/$pkgname/Vcash Electron GUI"
-	cp $srcdir/vcash-electron.desktop $pkgdir/usr/share/applications/
-	cp $srcdir/16x16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/vcash.png
-	cp $srcdir/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/vcash.png
-	cp $srcdir/48x48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/vcash.png
-	cp $srcdir/96x96.png $pkgdir/usr/share/icons/hicolor/96x96/apps/vcash.png
-	cp $srcdir/128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/vcash.png
-	cp $srcdir/256x256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/vcash.png
+	mv $srcdir/vcash-electron.desktop $pkgdir/usr/share/applications/
+	mv $srcdir/16x16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/vcash.png
+	mv $srcdir/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/vcash.png
+	mv $srcdir/48x48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/vcash.png
+	mv $srcdir/96x96.png $pkgdir/usr/share/icons/hicolor/96x96/apps/vcash.png
+	mv $srcdir/128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/vcash.png
+	mv $srcdir/256x256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/vcash.png
 }
