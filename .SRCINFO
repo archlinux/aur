@@ -1,14 +1,14 @@
 pkgbase = r-cran-digest
 	pkgdesc = hash digests of arbitrary R objects
-	pkgver = 0.6.10
+	pkgver = 0.6.12
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/digest/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = r
-	source = http://cran.r-project.org/src/contrib/digest_0.6.10.tar.gz
-	md5sums = 47d19499e89d3bd3e2c2c20ff3f33001
+	source = http://cran.r-project.org/src/contrib/digest_0.6.12.tar.gz
+	md5sums = 738efd4d9a37c5a4001ae66e954ce07e
 
 pkgname = r-cran-digest
 
