@@ -1,0 +1,10 @@
+[Unit]
+Description=Flood
+After=network.target
+
+[Service]
+WorkingDirectory=%h/.flood
+ExecStart=/bin/npm start
+
+[Install]
+WantedBy=default.target

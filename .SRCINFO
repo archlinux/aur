@@ -1,0 +1,11 @@
+pkgbase = dotflood
+	pkgdesc = Tools for running Flood under a dedicated user
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = npm
+	source = flood.service
+	md5sums = SKIP
+
+pkgname = dotflood
+
