@@ -4,7 +4,7 @@
 _pkgbase=quodlibet
 pkgname=exfalso
 pkgver=3.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
 url="https://${_pkgbase}.readthedocs.io/"
@@ -14,6 +14,7 @@ makedepends=('intltool' 'gettext')
 optdepends=('gst-plugins-bad: for "Acoustic Fingerprint" plugins'
             'gst-plugins-good: for "Replay Gain" plugin'
             'kakasi: for "Kana/Kanji Simple Inverter" plugin'
+            'python-dbus: for "Browse Folders" plugin'
             'python-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 conflicts=("${pkgbase}")
 source=("https://github.com/${_pkgbase}/${_pkgbase}/releases/download/release-${pkgver}/${_pkgbase}-${pkgver}.tar.gz"{,.sig})

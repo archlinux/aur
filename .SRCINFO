@@ -1,7 +1,7 @@
 pkgbase = exfalso
 	pkgdesc = GTK+ audio tag editor
 	pkgver = 3.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://quodlibet.readthedocs.io/
 	arch = any
 	license = GPL2
@@ -15,6 +15,7 @@ pkgbase = exfalso
 	optdepends = gst-plugins-bad: for "Acoustic Fingerprint" plugins
 	optdepends = gst-plugins-good: for "Replay Gain" plugin
 	optdepends = kakasi: for "Kana/Kanji Simple Inverter" plugin
+	optdepends = python-dbus: for "Browse Folders" plugin
 	optdepends = python-musicbrainzngs: for "MusicBrainz Lookup" plugin
 	source = https://github.com/quodlibet/quodlibet/releases/download/release-3.9.0/quodlibet-3.9.0.tar.gz
 	source = https://github.com/quodlibet/quodlibet/releases/download/release-3.9.0/quodlibet-3.9.0.tar.gz.sig
