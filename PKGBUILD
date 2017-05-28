@@ -6,7 +6,7 @@ pkgdesc='RuTracker proxy app based at electron + angularjs'
 arch=('x86_64' 'i686')
 url='https://rutracker.cr/forum/viewtopic.php?t=5403116'
 license=('MIT')
-depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'lib32-nss' 'libxss' )
+depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'lib32-nss' 'libxss' 'nss')
 options=(!strip)
 
 source_x86_64=("https://github.com/RutrackerOrg/rutracker-proxy/releases/download/v0.1.3/rto-proxy_0.1.3_amd64.deb")
