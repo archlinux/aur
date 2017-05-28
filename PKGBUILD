@@ -4,7 +4,7 @@
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
 pkgver=3.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://cdn.cocos2d-x.org/"
@@ -60,6 +60,7 @@ source=(
 "ccShader_Position_uColor.frag.patch"
 "ccShader_Position_uColor.vert.patch"
 "ccShader_UI_Gray.frag.patch"
+"CCPhysicsWorld.cpp.patch"
 )
 sha256sums=(
 '5296091bf87d894475d2bbde39d2081612aea9ee855a91968e7523fbc6c84a5f'
@@ -109,6 +110,7 @@ sha256sums=(
 'db37cb1c64fc1990e26da2cc1d7a7756d50c2059a24c5d0d29757275850ace4d'
 '5394b03f78a25d6736171c792b384b6abdb20e80647cbf5220c55729eb9a2650'
 'c4cb76c3d896e66391453173f30417f8646257c1d702ee5a3cb3e4980f3df000'
+'3e7d0bf050e877fd94f18589562fd5b5af6a170cc7d2a92b24274492ed4623cb'
 )
 
 
@@ -134,24 +136,7 @@ package() {
 	## Add CMake configuration flags to ease the configuratino of libcocos2d:
 	patch -s "$srcdir"/$_appname-$pkgver/templates/cpp-template-default/CMakeLists.txt CMakeLists.txt.patch
 
-	# TODO: Also add the following options to the CMakeLists.txt patch for disabling/enabling libraries
-		# Uncomment to disable compiling/linking the following:
-		#set(USE_CHIPMUNK OFF CACHE BOOL "Use chipmunk for physics library")
-		#set(USE_BOX2D ON CACHE BOOL "Use box2d for physics library")
-		#set(USE_BULLET OFF CACHE BOOL "Use bullet for physics3d library")
-		#set(USE_RECAST OFF CACHE BOOL "Use Recast for navigation mesh")
-		#set(USE_WEBP OFF CACHE BOOL "Use WebP codec")
-		#set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries")
-		#set(DEBUG_MODE OFF CACHE BOOL "Debug or release?")
-		#set(BUILD_EXTENSIONS OFF CACHE BOOL "Build extension library")
-		#set(BUILD_EDITOR_SPINE OFF CACHE BOOL "Build editor support for spine")
-		#set(BUILD_EDITOR_COCOSTUDIO OFF CACHE BOOL "Build editor support for cocostudio")
-		#set(BUILD_EDITOR_COCOSBUILDER OFF CACHE BOOL "Build editor support for cocosbuilder")
-		#set(BUILD_BOX2D OFF CACHE BOOL "Build box2d external without using it for physics library")
-		#set(USE_PREBUILT_LIBS OFF CACHE BOOL "Use prebuilt libraries in external directory")
-		#set(USE_SOURCES_EXTERNAL OFF CACHE BOOL "Use sources in external directory (automatically ON when USE_PREBUILT_LIBS is)")
-
-	# POSSIBLE FUTURE TODO: There is a memory leak patch currently out for Labels. Stay tuned to see if it's affected: https://github.com/cocos2d/cocos2d-x/pull/17670
+	# POSSIBLE FUTURE TODO: There is a memory leak patch currently out for Labels. Stay tuned: https://github.com/cocos2d/cocos2d-x/pull/17670
 
 	# Switch C++ multiline string literal to the STRINGIFY macro which uses less memory. See https://github.com/cocos2d/cocos2d-x/pull/16742
 	# TL;DR: For smoother development, using the C++ multiline string literal is convenient, however the STRINGIFY macro defined at ccShaders.cpp uses less memory.
@@ -195,6 +180,9 @@ package() {
 	patch -s "$srcdir"/$_appname-$pkgver/cocos/renderer/ccShader_Position_uColor.frag ccShader_Position_uColor.frag.patch 
 	patch -s "$srcdir"/$_appname-$pkgver/cocos/renderer/ccShader_Position_uColor.vert ccShader_Position_uColor.vert.patch 
 	patch -s "$srcdir"/$_appname-$pkgver/cocos/renderer/ccShader_UI_Gray.frag ccShader_UI_Gray.frag.patch 
+
+	# Fix for issue: https://github.com/cocos2d/cocos2d-x/pull/17875
+	patch -s "$srcdir"/$_appname-$pkgver/cocos/physics/CCPhysicsWorld.cpp CCPhysicsWorld.cpp.patch
 
 	# Engine tweaks that must be adjusted on a user basis -- must be enabled by the users. These change the behaviour of the engine in certain areas
 
