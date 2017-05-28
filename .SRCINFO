@@ -1,17 +1,20 @@
 pkgbase = lib32-libunwind
-	pkgdesc = Portable and efficient C programming interface (API) to determine the call-chain of a program
-	pkgver = 1.1
-	pkgrel = 3
+	pkgdesc = Portable and efficient C programming interface (API) to determine the call-chain of a program, multilib version
+	pkgver = 1.2
+	pkgrel = 1
 	url = http://www.nongnu.org/libunwind/
 	arch = x86_64
 	license = GPL
-	makedepends = texlive-core
-	depends = glibc
 	depends = libunwind
-	provides = lib32-libunwind
-	options = !libtool
-	source = http://download.savannah.gnu.org/releases/libunwind/libunwind-1.1.tar.gz
-	md5sums = fb4ea2f6fbbe45bf032cd36e586883ce
+	depends = lib32-xz
+	depends = gcc-multilib
+	source = http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz
+	source = http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz.sig
+	validpgpkeys = 1675C8DA2EF907FB116EB709EC52B396E6874AF2
+	md5sums = eefcb5d7f78fdc8f1ed172a26ea4202f
+	md5sums = SKIP
+	sha512sums = 985d0817944e3cafd99aaa5642862d878972e0851f7954289247e808c9319f399ca29342395f0571cb6568a1104a82bd92d585936f2ca888dda37ac796fde0d4
+	sha512sums = SKIP
 
 pkgname = lib32-libunwind
 
