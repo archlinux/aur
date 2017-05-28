@@ -5,7 +5,7 @@
 # NOTE: requires rebuilt with each new gcc version
 
 pkgname=libtool-git
-pkgver=2.4.6+35.gf003a1f9
+pkgver=2.4.6+40.g6ca5e224
 pkgrel=1
 _gccver=6.3.1
 pkgdesc="A generic library support script (git version)"
