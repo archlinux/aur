@@ -5,11 +5,11 @@ _other_agents=n # you want agents for other operating systems? (y / n)
 _agent=n # agent is in seperate package check_mk-agent
 
 pkgname=check_mk
-pkgver=1.2.8p21
+pkgver=1.2.8p23
 pkgrel=1
 pkgdesc="A comprehensive IT monitoring solution in the tradition of Nagios"
 license=('GPL2')
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://mathias-kettner.com/check_mk.html"
 depends=( 'python2'
 	  'nagios>=4.0.0'
@@ -28,7 +28,7 @@ source=(
   'check_mk.patch'
   'setup.sh.patch'
 )
-md5sums=('96c80d5ef359f7f35fa0c26ad59c24ac'
+md5sums=('d15fb411f364661c65a6adc3a35b5d39'
          '078175f2851419ae53346a06a42f9f2c'
          'e10a352fff0563bddeb788c7f9aee759'
          '5e8cb4a9ca2b7e17c1c902be43808653'
@@ -72,7 +72,8 @@ package() {
   mkdir -p "./usr/bin" "./etc/xinetd.d"
   ln -s "/usr/share/check_mk/agents/check_mk_agent.linux" "./usr/bin/check_mk_agent"
   ln -s "/usr/share/check_mk/agents/xinetd.conf" "./etc/xinetd.d/check_mk"
-  ln -s "/usr/share/check_mk/agents/waitmax" "./usr/bin/waitmax"
+  mv "./usr/share/check_mk/agents/waitmax" "./usr/bin/waitmax"
+  ln -s "/usr/bin/waitmax" "./usr/share/check_mk/agents/waitmax"
 
   # Add init.d dummy script
   cp "${srcdir}/init.d.check_mk" "./usr/share/check_mk/init.d.check_mk"
