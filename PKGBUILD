@@ -13,7 +13,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 url="https://mumble.info"
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha512sums=('18d0c2e8d0caeed1306429a367a2756260280a3bcc7ed8bac7c3a6e8b8938e6f13b65c83271f1411b948c50d20d7426aebaf14f271109df8c62209108157e374')
+sha512sums=('a6af48b1f972a2885ed38bcb60c9b2b532f74bc2e06acb237f30c934e1d6c41f26cd5b4dafcd06cb9bdceed1c0259124233b32ab3eef60e5bbfb8dd5bdcd6f5b')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
