@@ -1,13 +1,14 @@
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgname=clazy-git
-pkgver=r1207.0390bb9
+pkgver=r1224.728a3a6
 pkgrel=1
 pkgdesc='Static C++ code checker'
 arch=(i686 x86_64)
 url='http://www.kdab.com/use-static-analysis-improve-performance/'
 license=(GPL2)
 depends=(clang llvm)
+optdepends=('clazy-mkspec: to use clazy from qmake')
 makedepends=(git cmake make gcc)
 provides=(clazy)
 conflicts=(clazy)
