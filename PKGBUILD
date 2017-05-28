@@ -6,14 +6,14 @@
 _reponame=passwordmanager
 pkgname=passwordmanager
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
 depends=('qt5-base' 'qtutilities' 'passwordfile' 'openssl' 'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
 makedepends=('cmake' 'qt5-tools')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('fc76512ba3e596becc3585fd88e2ea7570a2527f8a230a54316b0f14ea17158a')
 
 build() {
