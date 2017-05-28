@@ -1,6 +1,6 @@
 pkgbase = systemrescuecd
 	pkgdesc = Installs a rescue system into the boot partition to allow grub to boot it.
-	pkgver = 4.9.5
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = http://www.sysresccd.org
 	install = systemrescuecd.install
@@ -9,13 +9,13 @@ pkgbase = systemrescuecd
 	license = GPL
 	makedepends = p7zip
 	depends = grub>=2.00
-	noextract = systemrescuecd-x86-4.9.5.iso
+	noextract = systemrescuecd-x86-5.0.1.iso
 	backup = etc/default/systemrescuecd
-	source = http://downloads.sourceforge.net/project/systemrescuecd/sysresccd-x86/4.9.5/systemrescuecd-x86-4.9.5.iso
+	source = http://downloads.sourceforge.net/project/systemrescuecd/sysresccd-x86/5.0.1/systemrescuecd-x86-5.0.1.iso
 	source = 25_systemrescuecd
 	source = systemrescuecd
-	md5sums = 4e76483f3aff8e44d76e26ad2fd027f8
-	md5sums = e8a3f16ee5208a0be0742d9995295187
+	md5sums = ba26eabb079705e1aca1272429f12999
+	md5sums = 6b717dcaa4e6e79801b7b257ddf6e910
 	md5sums = 9cef18f521312ca5c5d505f6619bd183
 
 pkgname = systemrescuecd

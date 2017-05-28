@@ -1,6 +1,6 @@
 # Maintainer: PyroDevil <p dot devil at gmail dot com>
 pkgname=systemrescuecd
-pkgver=4.9.5
+pkgver=5.0.1
 pkgrel=1
 epoch=
 pkgdesc="Installs a rescue system into the boot partition to allow grub to boot it."
@@ -22,8 +22,8 @@ changelog=
 source=("http://downloads.sourceforge.net/project/systemrescuecd/sysresccd-x86/$pkgver/$pkgname-x86-$pkgver.iso"
         "25_systemrescuecd"
         "systemrescuecd")
-md5sums=('4e76483f3aff8e44d76e26ad2fd027f8'
-         'e8a3f16ee5208a0be0742d9995295187'
+md5sums=('ba26eabb079705e1aca1272429f12999'
+         '6b717dcaa4e6e79801b7b257ddf6e910'
          '9cef18f521312ca5c5d505f6619bd183')
 noextract=("$pkgname-x86-$pkgver.iso")
 backup=("etc/default/systemrescuecd")
@@ -43,17 +43,11 @@ package() {
   install -m 644 "$srcdir/systemrescuecd"                         "$pkgdir/etc/default/"
   install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/rescue32"     "$pkgdir/boot/sysrescue/"
   install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/rescue64"     "$pkgdir/boot/sysrescue/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/altker32"     "$pkgdir/boot/sysrescue/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/altker64"     "$pkgdir/boot/sysrescue/"
   install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/initram.igz"  "$pkgdir/boot/sysrescue/"
   install -m 644 "$srcdir/$pkgname-$pkgver/sysrcd.dat"            "$pkgdir/boot/sysrescue/"
   install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/memdisk"      "$pkgdir/boot/sysrescue/"
   install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/netboot"      "$pkgdir/boot/sysrescue/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/aida.img"     "$pkgdir/boot/sysrescue/bootdisk"
-  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/dban.bzi"     "$pkgdir/boot/sysrescue/bootdisk"
   install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/freedos.img"  "$pkgdir/boot/sysrescue/bootdisk"
-  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/gag.img"      "$pkgdir/boot/sysrescue/bootdisk"
-  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/grubdisk.img" "$pkgdir/boot/sysrescue/bootdisk"
   install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/hdt.img"      "$pkgdir/boot/sysrescue/bootdisk"
   install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/memtestp"     "$pkgdir/boot/sysrescue/bootdisk"
   install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/mhdd.img"     "$pkgdir/boot/sysrescue/bootdisk"
