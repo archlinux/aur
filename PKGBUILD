@@ -1,14 +1,14 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=(lua-http lua51-http lua52-http)
-pkgver=0.1
+pkgver=0.2
 pkgrel=0
 arch=('any')
 url='https://github.com/daurnimator/lua-http'
 license=('MIT')
 makedepends=('pandoc')
 source=("https://github.com/daurnimator/lua-http/archive/v$pkgver.tar.gz")
-md5sums=('f5da73665fb3a13cd600e8b17e0c1bb9')
+md5sums=('ce50b1635ffe60c589651dc2557912b3')
 
 build() {
 	cd lua-http-"$pkgver"/doc
