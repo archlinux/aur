@@ -1,15 +1,19 @@
-# Maintainer: wookietreiber <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=strace-analyzer
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="analyzes strace output"
 arch=(any)
 url="https://github.com/wookietreiber/strace-analyzer"
 license=('GPL')
 depends=('java-environment' 'bash')
-source=("https://github.com/wookietreiber/strace-analyzer/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('d222ac54a33775f1211b92dc76c7c321')
+source=("https://github.com/wookietreiber/strace-analyzer/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.asc})
+md5sums=('6071b2dc528ee668da51b7f45d747423'
+         'SKIP')
+validpgpkeys=(# Christian Krause <christian.krause@mailbox.org>
+              # https://pgp.mit.edu/pks/lookup?op=get&search=0xD8A6485D41708D7B
+              D6117C56E0DDF9B5ADF18E5ED8A6485D41708D7B)
 
 package() {
   cd $srcdir/$pkgname-$pkgver
