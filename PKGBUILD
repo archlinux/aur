@@ -1,18 +1,18 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-ayatana
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
-pkgdesc='Ayatana indicator for Wingpanel'
+pkgdesc='Wingpanel Ayatana Indicator'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/wingpanel-indicator-ayatana'
+url='https://github.com/elementary/wingpanel-indicator-ayatana'
 license=('GPL3')
-groups=('pantheon')
-depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'libindicator-gtk3'
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
+         'libindicator-gtk3-ubuntu'
          'libwingpanel-2.0.so')
-makedepends=('cmake' 'vala')
-source=("https://launchpad.net/wingpanel-indicator-ayatana/loki/${pkgver}/+download/wingpanel-indicator-ayatana-${pkgver}.tar.xz")
-sha256sums=('8345c9ce3e9c6c00f44b21f00621a13660dbaf4019bd0aa48236982cd31b2cd8')
+makedepends=('cmake' 'gobject-introspection' 'vala')
+source=("wingpnel-indicator-ayatana-${pkgver}.tar.gz::https://github.com/elementary/wingpanel-indicator-ayatana/archive/${pkgver}.tar.gz")
+sha256sums=('5f6cd50a63784ae5f48efd954707274d6d299af87ce8e476cd00db459ba48071')
 
 prepare() {
   cd wingpanel-indicator-ayatana-${pkgver}
