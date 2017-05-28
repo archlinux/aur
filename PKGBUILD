@@ -2,7 +2,7 @@
 # Contributor: ovi chis <ovi@ovios.org>
 
 pkgname=libqb
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Library with the primary purpose of providing high performance client server reusable features'
 arch=("i686" "x86_64" "mips64el")
@@ -11,7 +11,7 @@ license=("LGPL2.1")
 options=(!libtool)
 url="https://github.com/ClusterLabs/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ClusterLabs/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('70b9b8361dbb93694a2db97b7db0644ebfe2b45ba7f9caf3e04a7c5b10aaa22ee9177f3491af55723010b8b3d3ce75bda79f1771df5cb63b562156edff9ce1e8')
+sha512sums=('6991719cc860f2596254697a7cd568dfe90653987332e71e4278f2a9d74b351e02fd77cbd65372f56d93594ace5f781ea84d5c480969f8f6e837ff506f701ee1')
 
 build() {
 cd "${srcdir}/${pkgname}-${pkgver}"
