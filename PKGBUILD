@@ -1,8 +1,8 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
-pkgname=switchboard-plug-elementary-tweaks-bzr
-pkgver=r276
+pkgname=switchboard-plug-elementary-tweaks-git
+pkgver=0.0.1.r1.g211e2a9
 pkgrel=1
 pkgdesc='Elementary Tweaks plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -14,20 +14,14 @@ depends=('gconf' 'glib2' 'glibc' 'gtk3' 'libgee'
 makedepends=('bzr' 'cmake' 'vala')
 provides=(switchboard-plug-elementary-tweaks{,-bzr})
 conflicts=('switchboard-plug-elementary-tweaks')
-source=('switchboard-plug-elementary-tweaks::bzr+lp:elementary-tweaks'
-        'opacity.patch')
-sha256sums=('SKIP'
-            'e9a73d0b7b57178b676e3c563db5559dc83469debadf83855a8639999cb370cc')
+source=('switchboard-plug-elementary-tweaks::git+https://github.com/elementary-tweaks/elementary-tweaks.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd switchboard-plug-elementary-tweaks
-
-  echo "r$(bzr revno)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  patch -Np1 < opacity.patch
-}
 
 build() {
   cd switchboard-plug-elementary-tweaks
