@@ -1,6 +1,6 @@
 # Maintainer: wagnerflo <florian@wagner-flo.net>
 _cranname=assertthat
-_cranver=0.1
+_cranver=0.2.0
 pkgname=r-cran-$_cranname
 pkgver=${_cranver}
 pkgrel=1
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('r')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('59f9d7f7c00077ea54d763b78eeb5798')
+md5sums=('8134f0072c6a84fd738d3bfc5e7f68ef')
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
