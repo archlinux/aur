@@ -1,0 +1,12 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/systemd/system/*
+
+[Action]
+Description = Reloading Systemd Daemon...
+When = PostTransaction
+Exec = /usr/bin/systemctl daemon-reload
+Depends = systemd
