@@ -295,7 +295,12 @@ if $_patching; then
   patch -p1 < ${startdir}/0001-Revert-Fully-qualify-libEGL.so.1-libEGLESv2.so.2-lib.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
-  sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
+  # Now also present as we get complaints on the RPI 1 when Qt is left to use O3 about the
+  # lack of NEON intrinsics
+  # Couple with that the fact clang does not appear to consider -Os legitimate
+  if ! $_target_host; then
+    sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
+  fi
 fi
 
   rm -Rf ${_bindir}
