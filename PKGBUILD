@@ -11,7 +11,6 @@ url="https://${_pkgbase}.readthedocs.io/"
 license=('GPL2')
 depends=('gtk3' 'python-mutagen' 'python-gobject' 'python-cairo' 'python-feedparser')
 makedepends=('intltool' 'gettext')
-#optdepends=('python-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 optdepends=('gst-plugins-bad: for "Acoustic Fingerprint" plugins'
             'gst-plugins-good: for "Replay Gain" plugin'
             'kakasi: for "Kana/Kanji Simple Inverter" plugin')
