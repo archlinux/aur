@@ -14,7 +14,7 @@ makedepends=('doxygen' 'git' 'graphviz' 'systemd' 'meson')
 source=('git+https://github.com/libratbag/libratbag.git')
 sha256sums=('SKIP')
 conflicts=('libratbag')
-provides=("libratbag=${pkgver%%.r*}")
+provides=('libratbag')
 
 pkgver() {
   cd libratbag
