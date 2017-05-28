@@ -7,8 +7,8 @@ pkgdesc='Wingpanel Ayatana-Compatibility Indicator'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel-indicator-ayatana'
 license=('GPL3')
-groups=('pantheon-unstable')
-depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'libindicator-gtk3-ubuntu'
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
+         'libindicator-gtk3-ubuntu'
          'libwingpanel-2.0.so')
 makedepends=('cmake' 'git' 'gobject-introspection' 'vala')
 provides=('wingpanel-indicator-ayatana')
