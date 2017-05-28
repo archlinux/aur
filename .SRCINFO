@@ -1,0 +1,15 @@
+pkgbase = python-networkmanager
+	pkgdesc = Easy communication with NetworkManager
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/seveas/python-networkmanager
+	arch = any
+	license = Zlib
+	makedepends = python-setuptools
+	depends = python
+	depends = networkmanager
+	source = https://pypi.io/packages/source/p/python-networkmanager/python-networkmanager-2.0.1.tar.gz
+	md5sums = 5fc644a65463031295c6b7dd51a0f1bd
+
+pkgname = python-networkmanager
+
