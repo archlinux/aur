@@ -1,0 +1,19 @@
+pkgbase = python-flask-caching
+	pkgdesc = Adds easy cache support to Flask
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://pythonhosted.org/Flask-Caching/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	makedepends = python2-flask
+	makedepends = python-flask
+	source = https://pypi.python.org/packages/17/2b/13c709c8889b425d9a10188df577217fd251b7cd11162e833ef839196cbc/Flask-Caching-1.2.0.tar.gz
+	md5sums = aab3b466c1b54780095d81fd7d457b52
+
+pkgname = python2-flask-caching
+	depends = python2-flask
+
+pkgname = python-flask-caching
+	depends = python-flask
