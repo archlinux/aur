@@ -1,16 +1,16 @@
 pkgbase = ty
-	pkgdesc = GUI and command-line tools to manage Teensy devices
-	pkgver = 0.8.0
+	pkgdesc = Collection of tools to manage Teensy boards
+	pkgver = 0.8.5
 	pkgrel = 1
-	url = http://github.com/Koromix/ty
+	url = http://github.com/Koromix/tytools
 	arch = x86_64
 	arch = i686
-	license = MIT
+	license = custom:Unlicense
 	makedepends = imagemagick
 	depends = teensyduino
 	depends = libudev.so
 	depends = qt5-base
-	source = https://github.com/Koromix/ty/archive/v0.8.0.tar.gz
+	source = https://github.com/Koromix/ty/archive/v0.8.5.tar.gz
 	sha256sums = 68d3e671f898fa78ff8a57caacc2fabbe52fc84864fe03c5c60de9b1feee542a
 
 pkgname = ty
