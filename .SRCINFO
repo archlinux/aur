@@ -1,6 +1,6 @@
 pkgbase = r-cran-stringr
 	pkgdesc = Consistent, simple and easy to use wrappers around the stringi package
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/stringr/index.html
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = r-cran-stringr
 	depends = r
 	depends = r-cran-stringi>=0.4.1
 	depends = r-cran-magrittr
-	source = http://cran.r-project.org/src/contrib/stringr_1.1.0.tar.gz
-	md5sums = 47973a33944c6d5db9524b1e835b8a5d
+	source = http://cran.r-project.org/src/contrib/stringr_1.2.0.tar.gz
+	md5sums = 9054b1de91c578cc5cf454d656e9c697
 
 pkgname = r-cran-stringr
 
