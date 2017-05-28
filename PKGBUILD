@@ -1,13 +1,13 @@
 # Maintainer: Sum01 https://github.com/sum01
 pkgname=('vcash-electron')
 pkgver=0.31.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Vcash GUI bundled with the Vcash wallet."
 arch=('x86_64')
 url="https://github.com/whphhg/vcash-electron"
 license=('GPL3' 'AGPL3')
 depends=('libxss' 'gconf')
-provides=('vcash=0.63.0')
+provides=('vcash=0.6.0.3')
 conflicts=('vcash')
 backup=('~/.Vcash/' '~/.config/Vcash Electron GUI/')
 source=("https://github.com/whphhg/vcash-electron/releases/download/v$pkgver/Vcash-Electron-GUI-$pkgver-linux64.zip"
@@ -25,7 +25,7 @@ sha256sums=('d7b90bd349fe6be1e08d34d28b170c2c60a6e468c2c36ecfc44da7d3f6705453'
 						'e85907fb18237fd6abe5a4aa464a8e9869d8293fe5acb593e550c13005c893b9'
 						'f215ece667efc575bf452c4ea720da15d759f346453b53f6aed01022cc968a1d'
 						'5bb6e09574141d9e807fd04050bc800d7f5ae6413f5bfd9359fd095ef2e0ece2'
-						'5904fb8617faad9f46b85d2dd4c88af5ea9a66c3b51a95458dc6db7501202f29')
+						'98a3383cb83b0a609fa26a738e72b788be4ed9408227b0bdda79deec6b795f06')
 
 package() {
 	chmod u+x $srcdir/linux-unpacked/vcash-electron
