@@ -15,6 +15,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/arduino/${_pkgname}/ar
         "CVE-2014-7204.patch")
 sha512sums=('6375077dfd983e98862773dfe6213bd41cd17d99260e39e97f99eff7d7f363f6d6a61582994382c69f0e3dfa7da88c1640a5bc037adbcc526e07f86dbd4f3646'
             '212ec5d3daec5ffadc3ffe60406fc1f6b76356f2c56f99e999f8bf0646891c0067144e5de8ccbbe9391a803cd4005fe94a5973911274928dd7c1414d1ec68477')
+validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
