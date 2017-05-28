@@ -1,16 +1,17 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
 pkgname=python-serpent
-pkgver=0.2.0
-pkgrel=2
-pkgdesc='Serpent serialization library (Python/.NET/Java)'
+_pypi_pkgname=serpent
+pkgver=1.19
+pkgrel=1
+pkgdesc='Serialization based on ast.literal_eval'
 url='https://github.com/irmen/Serpent'
 arch=('any')
 license=('MIT')
 depends=('python')
-source=("git://github.com/irmen/Serpent")
-md5sums=('SKIP')
+source=("https://pypi.io/packages/source/s/serpent/${_pypi_pkgname}-${pkgver}.tar.gz")
+md5sums=('cdef596f727cb6b4176c89769d2d41ee')
 
 package() {
-  cd Serpent
+  cd ${_pypi_pkgname}-${pkgver}
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }

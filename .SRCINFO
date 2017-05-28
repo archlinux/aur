@@ -1,13 +1,13 @@
 pkgbase = python-serpent
-	pkgdesc = Serpent serialization library (Python/.NET/Java)
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgdesc = Serialization based on ast.literal_eval
+	pkgver = 1.19
+	pkgrel = 1
 	url = https://github.com/irmen/Serpent
 	arch = any
 	license = MIT
 	depends = python
-	source = git://github.com/irmen/Serpent
-	md5sums = SKIP
+	source = https://pypi.io/packages/source/s/serpent/serpent-1.19.tar.gz
+	md5sums = cdef596f727cb6b4176c89769d2d41ee
 
 pkgname = python-serpent
 
