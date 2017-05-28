@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=lunarglass-git
-pkgver=20170523
+pkgver=20170528
 pkgrel=1
 pkgdesc="LLVM IR and optimizer for shaders, including front-end adapters for GLSL and SPIR-V"
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ prepare() {
 
 build() {
   # Build glslang
+  [[ -d glslang/build ]] && rm -rf glslang/build
   mkdir glslang/build
   cd "${srcdir}/glslang/build"
   cmake -DCMAKE_INSTALL_PREFIX="" ..
@@ -32,6 +33,7 @@ build() {
   make install DESTDIR=install
 
   # Build LLVM
+  [[ -d "${srcdir}/LunarGLASS/Core/LLVM/llvm-3.4/build" ]] && rm -rf "${srcdir}/LunarGLASS/Core/LLVM/llvm-3.4/build"
   mkdir "${srcdir}/LunarGLASS/Core/LLVM/llvm-3.4/build"
   cd "${srcdir}/LunarGLASS/Core/LLVM/llvm-3.4/build"
   ../configure
@@ -39,6 +41,7 @@ build() {
   make install DESTDIR=$(pwd)/install
 
   # Build LunarGLASS
+  [[ -d "${srcdir}/LunarGLASS/build" ]] && rm -rf "${srcdir}/LunarGLASS/build"
   mkdir "${srcdir}/LunarGLASS/build"
   cd "${srcdir}/LunarGLASS/build"
   cmake ..
