@@ -2,7 +2,7 @@
 
 _pkgname=murmur
 pkgname=${_pkgname}-snapshot-minimal
-pkgver=1.3.0_2389_gdde8173
+pkgver=1.3.0_2407_g3754898
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64' 'armv7h')
