@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=drminfo-git
-pkgver=3.1+3.g051747e
+pkgver=5.1+1.gbf13f4a
 pkgrel=1
 pkgdesc="print drm device information"
 arch=('i686' 'x86_64')
