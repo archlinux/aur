@@ -24,6 +24,7 @@
 # Contributor: aslmaswd (acpi main script)
 # Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
 # Contributor: sling00 (4.10 kernel patch)
+# Contributor: npfeiler (4.11 kernel patch)
 
 
 _old_control=n #for pre-GCN users who has problems with default config, pick =y to enable catalyst 15.9 control file
@@ -31,7 +32,7 @@ _old_control=n #for pre-GCN users who has problems with default config, pick =y 
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=14
+pkgrel=15
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons are optionally supported"
@@ -39,14 +40,14 @@ arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.11' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
+depends=('dkms' 'linux>=3.0' 'linux<4.12' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
 	    'procps-ng: brings pgrep used in acpi event support'
 	    'opencl-icd-loader: OpenCL ICD Bindings')
-conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'catalyst-dkms' 'opencl-catalyst' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl' 'opencl-amd' 'libglvnd')
+conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'catalyst-dkms' 'opencl-catalyst' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl' 'opencl-amd' 'libglvnd' 'catalyst-control')
 provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-dkms=${pkgver}" "catalyst-hook=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'mesa-libgl' 'mesa-libgl-git' 'opencl-driver' 'libgles' 'libegl')
 
 if [ "${CARCH}" = "x86_64" ]; then
@@ -102,7 +103,8 @@ source=(
     4.7-arch-cpu_has_pge-v2.patch
     4.9_over_4.6-arch-get_user_pages_remote.patch
     catalyst-15.9_control_file.tar.gz
-    4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch)
+    4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
+    4.11-npfeiler-signal_vmf.patch)
 
 md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -132,7 +134,8 @@ md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 '37eef5103a11d8136979463e7bc31091'
 	 '194cb44e9e2ab0e65b6267aca66d0400'
 	 'e98e50bebe96b08ca680aed6ca505356'
-	 '05f6364db877d9c4bdf1592deda905b7')
+	 '05f6364db877d9c4bdf1592deda905b7'
+	 '8e53ba65a0aad42eb2ff771c1ace6609')
 
 
 build() {
@@ -328,6 +331,7 @@ package() {
       patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
       patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
       patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
+      patch -Np1 -i ../4.11-npfeiler-signal_vmf.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
