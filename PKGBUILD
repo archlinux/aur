@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('qt5-webengine' 'fluid-git')
-makedepends=('git')
+makedepends=('git' 'qbs')
 conflicts=('liri-browser')
 replaces=('liri-browser')
 provides=('liri-browser')
@@ -32,11 +32,13 @@ prepare() {
 
 build() {
 	cd ${srcdir}/${_gitname}
-	qmake LIRI_INSTALL_PREFIX=/usr CONFIG+=use_qt_paths -r liri-browser.pro
-	make
+	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+	qbs setup-qt /usr/bin/qmake-qt5 qt5
+	qbs config profiles.qt5.baseProfile gcc
+	qbs build --no-install -d build profile:qt5 qbs.installRoot:/ qbs.installPrefix:usr
 }
 
 package() {
 	cd ${srcdir}/${_gitname}
-	make INSTALL_ROOT="${pkgdir}" install
+	qbs install -d build --no-build -v --install-root $pkgdir profile:qt5
 }
