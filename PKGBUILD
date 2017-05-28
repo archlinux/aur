@@ -1,8 +1,8 @@
 # Maintainer: Ainola
 
 pkgname=gtk-theme-united-gnome
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 epoch=1
 pkgdesc="GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept."
 arch=(any)
@@ -14,12 +14,12 @@ source=("United-Arch-$pkgver"::"https://github.com/godlyranchdressing/United-GNO
         "United-OpenSUSE-$pkgver"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-OpenSUSE.tar.gz"
         "United-Solus-$pkgver"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Solus.tar.gz"
         "United-Ubuntu-$pkgver"::"https://github.com/godlyranchdressing/United-GNOME/releases/download/V$pkgver/United-Ubuntu-alt.tar.gz")
-sha256sums=('1d9844059665efda1bb986980a627161f2d7616919fd8254288aff5a09137a1b'
-            'f66808391ea125002611cde5d0e383909c97a051bd4dfd588255dbf4f63ce0d8'
-            'ba5111949389bcc18a1a4c7019144315e2b9e4f055be5bdb04162f691d9c51c3'
-            '25dfae62b34e8d01c7640b361f63d1e7202a6bca7b0672deafc8c6b06b435ee4'
-            'd0ce7adc6a23f30748dfdae4a2b2c18c6cab9d334dd2a5b061f088dc32bfee2d'
-            '159cd6dd41ab76bd15116ad6d1036758022af7ba8ead5ab3d3c1606d991d3e7d')
+sha256sums=('86974a261b0b70f3c9a61d4f6a9f129ecc54d3fe7508e305e76e0bc3b947a1c7'
+            '57fa9001e7baad299ed5c89e0859313f67b995805b1599365fe77dc904ca25f1'
+            '29123008ed1d416df0496837013ffa5974b62a3596daebe6c6701ad9c01b7bf9'
+            '9106cdab1120be1b4c57218f4a32cad9d34219a35d137db4d81f07847cc66c0a'
+            'd58e3ed5610647ac812f5489a3edfe5ec805f45516b43dee6ab2a8e2ad4f9063'
+            '97a828812df3f8470211bca03fe28d00fcccb1d85a7be4afbb58a9c4570504f1')
 
 package() {
   install -dm755 "$pkgdir/usr/share/themes"
