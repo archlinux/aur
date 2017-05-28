@@ -1,8 +1,8 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter
-pkgver=3.2.0
-pkgrel=2
-pkgdesc="The simplest + fastest video cut & merge tool"
+pkgver=3.5.0
+pkgrel=1
+pkgdesc="the simplest + fastest video cutter & joiner"
 arch=('any')
 license=('GPL3')
 url="http://vidcutter.ozmartians.com"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 install=${pkgname}.install
 provides=('vidcutter')
 conflicts=('vidcutter-git')
-md5sums=('eed9c06b6600c1e830bf774cbce56a3b')
+md5sums=('f098ed2ea926dc5ebfa46c5b1d743e65')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"

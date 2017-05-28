@@ -1,7 +1,7 @@
 pkgbase = vidcutter
-	pkgdesc = The simplest + fastest video cut & merge tool
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgdesc = the simplest + fastest video cutter & joiner
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter.install
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = vidcutter
 	depends = mediainfo
 	provides = vidcutter
 	conflicts = vidcutter-git
-	source = https://github.com/ozmartian/vidcutter/archive/3.2.0.tar.gz
-	md5sums = eed9c06b6600c1e830bf774cbce56a3b
+	source = https://github.com/ozmartian/vidcutter/archive/3.5.0.tar.gz
+	md5sums = f098ed2ea926dc5ebfa46c5b1d743e65
 
 pkgname = vidcutter
 
