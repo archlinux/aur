@@ -6,7 +6,7 @@
 pkgname=android-ndk-beta
 _pkgname=${pkgname/-beta*/}
 pkgver=r15_beta2
-pkgrel=1
+pkgrel=2
 pkgdesc='Android C/C++ developer kit (beta)'
 arch=('x86_64')
 url='https://developer.android.com/ndk/'
@@ -27,6 +27,10 @@ package() {
   mv "$_pkgname-${pkgver/_/-}" "$pkgdir/opt/$pkgname"
 
   install -Dm755 $pkgname.sh "$pkgdir/etc/profile.d/$pkgname.sh"
+
+  # make sdkmanager and gradle recognize NDK
+  install -Ddm755 "$pkgdir"/opt/android-sdk
+  ln -s /opt/$pkgname "$pkgdir"/opt/android-sdk/ndk-bundle
 }
 
 # vim:set ts=2 sw=2 et:
