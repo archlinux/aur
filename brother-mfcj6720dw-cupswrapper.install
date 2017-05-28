@@ -1,5 +1,5 @@
 post_install() {
   echo "Running cupswrappermfcj6720w install script..."
-  /usr/share/brother/Printer/mfc6490cw/cupswrapper/cupswrappermfc6490cw
+  /usr/share/brother/Printers/mfcj6720dw/cupswrapper/cupswrappermfcj6720dw
   /bin/true
 }
