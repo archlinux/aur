@@ -1,6 +1,7 @@
 # Maintainer: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 # Contributor: Vladimir Turba <turbavladimir@yandex.ru>
+# Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=translate-shell
 pkgver=0.9.6.3
