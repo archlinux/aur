@@ -1,7 +1,7 @@
 pkgbase = vips
 	pkgdesc = A free image processing system
 	pkgver = 8.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jcupitt/libvips
 	arch = i686
 	arch = x86_64
@@ -13,11 +13,10 @@ pkgbase = vips
 	depends = openexr
 	depends = pango
 	depends = libexif
-	depends = swig
 	optdepends = python2: vipsprofile
 	options = !libtool
-	source = https://github.com/jcupitt/libvips/archive/v8.5.5.tar.gz
-	sha256sums = e744a2c7d2060138369fa569baa7940fcd82c113fecc340e97bb92eb82b6104a
+	source = https://github.com/jcupitt/libvips/releases/download/v8.5.5/vips-8.5.5.tar.gz
+	sha256sums = 0891af4531d6f951a16ca6d03020b73796522d5fcf7c6247f2f04c896ecded28
 
 pkgname = vips
 
