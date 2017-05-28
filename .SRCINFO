@@ -1,6 +1,6 @@
 pkgbase = perceptia
 	pkgdesc = Dynamic window manager with support for Wayland
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/perceptia/perceptia
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = perceptia
 	depends = libegl
 	depends = udev
 	depends = libxkbcommon
-	source = https://github.com/perceptia/perceptia/archive/v0.3.0.tar.gz
-	md5sums = 31bcb6c37122eee595fb128143c2a061
+	source = https://github.com/perceptia/perceptia/archive/v0.4.0.tar.gz
+	md5sums = 34c261ce7ec6162e9ee3f91810f93e74
 
 pkgname = perceptia
 
