@@ -1,22 +1,20 @@
-# Maintainer: Ian Glen <ian@ianglen.me>
+# Contributor: Ian Glen <ian@ianglen.me>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 __pkgname=Mutate
-_pkgname=mutate
-pkgname=${_pkgname}
+pkgname=mutate
 pkgver=2.4
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple launcher inspired by Alfred.'
 arch=('i686' 'x86_64')
 url="https://github.com/qdore/$__pkgname"
-depends=('qt5-base' 'qt5-x11extras' 'boost' 'gtk2' 'icu' 
-'libxkbcommon-x11' 'libsm')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("https://github.com/qdore/Mutate/archive/v2.4.tar.gz"
+depends=('qt5-x11extras' 'gtk2' 'boost-libs' 'python' 'python2')
+makedepends=('boost')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/qdore/${__pkgname}/archive/v$pkgver.tar.gz"
         "fix-compile-error.patch")
-sha512sums=('04d2a9980f578161c9ba2859e3f55d0a4f33ea5551af311fdf2fb8884a6699560b00f30920248e42d8b046dfc495bb414cf2937212db7bb6de9e715615cf5edd'
-            '5c8404b428ec71e0b283aac339100ebc360380470a8675056ccf4c049077a1b5ebc63c275dbc7cea89bd0cb5f1a4a2abab9ef1daad4d2f41dcf06ec609adf75b')
-install=${_pkgname}.install
+md5sums=('faa7549f09f8aa38c812d7861eef8a99'
+         '6c12e8abc592480619bee5191b877598')
+install=${pkgname}.install
 license=('MIT')
 
 prepare() {
@@ -47,4 +45,5 @@ package() {
     mkdir -p "$pkgdir/usr/share/applications"
     cp "$srcdir/$__pkgname-$pkgver/info/Mutate.desktop" "$pkgdir/usr/share/applications"
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    find $pkgdir/usr/share/doc/mutate/config/ -exec chmod o-w {} \;
 }
