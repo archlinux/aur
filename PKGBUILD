@@ -2,15 +2,13 @@
 
 pkgname=siggen
 pkgver=2.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Curses based signal generator"
 arch=('i686' 'x86_64')
 url="http://www.comp.leeds.ac.uk/jj/linux/siggen.html"
 license=('GPL2')
 depends=('ncurses')
-conflicts=('siggen')
-provides=('siggen')
-install=("${pkgname}.install")
+install="${pkgname}.install"
 
 source=("http://www.comp.leeds.ac.uk/jj/linux/${pkgname}.tgz"
 		"segfault-and-install.patch")
