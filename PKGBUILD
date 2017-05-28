@@ -16,7 +16,7 @@ source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v3.5/${pkgname#mingw-w64-}-${pkg
         'gnutls-fix-external-libtasn1-detection.patch')
 sha256sums=('63cb39a5eaa029381df2e49a74cfb7be89fc4a592445191818ffe1e66bde57cb'
             'SKIP'
-            '9e18e03c8f736f49a46b911920e87ea52e3bb2b35044b1fc5ac0e45fd528935a'
+            'c77b307dcbe3d83b99a15b9ff0cac3978983b40b8cb2495eeb02ade5c9c12969'
             '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
 validpgpkeys=('0424D4EE81A0E3D119C6F835EDA21E94B565716F'
               '1F42418905D8206AA754CCDC29EE58B996865171')
