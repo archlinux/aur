@@ -229,7 +229,7 @@ adjust_bin_dir() {
   fi
   if $_shadow_build; then
     _bindir="${_bindir}-build"
-    if [[ -d $_tmpfs_dir ]]; then
+    if $_minimal && [[ -d $_tmpfs_dir ]]; then
       _bindir="${_tmpfs_dir}/${_bindir}"
     fi
   fi
