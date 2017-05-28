@@ -5,7 +5,7 @@
 # Contributor: Brice Mealier <mealier_brice@yahoo.fr>
 
 pkgname=omniorb
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="A CORBA object request broker for C++ and Python."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL2' 'LGPL2')
 depends=('python2' 'openssl')
 makedepends=('pkgconfig')
 source=(http://downloads.sourceforge.net/omniorb/omniORB-${pkgver}.tar.bz2)
-sha512sums=('ea1f008706cffa010b666675b1f8dbe3f20a2bb5b6059de1d8506de2a13589bb999ed5d0c38dbecb434c8e33a1d97fab00e5a27b552abf14e865c7d9bc81d6dd')
+sha512sums=('3fe6c05d0e7f19455c4cd6702887f91b7d14cdc248008cbc456c103072a37251387877bd64d59a271c6e92703a70bbbb9713f9fa2e45d094628e42564cffd0ad')
 
 build() {
   cd "${srcdir}/omniORB-${pkgver}"
