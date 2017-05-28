@@ -96,9 +96,9 @@ pkgbase = strongswan-pkcs11
 	backup = etc/strongswan.d/charon/chapoly.conf
 	backup = etc/strongswan.d/charon/unity.conf
 	backup = etc/strongswan.d/charon/pkcs11.conf
-	source = https://download.strongswan.org/strongswan-5.4.0.tar.bz2
+	source = https://download.strongswan.org/strongswan-5.5.2.tar.bz2
 	source = configure_ac.patch
-	sha256sums = 720b301991f77bdedd8d551a956f52e2d11686a0ec18e832094f86cf2b842ab7
+	sha256sums = da976fca836f05fc7b7a38baab299745f960cb7640319969d239d8aa4ace9f6a
 	sha256sums = 003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7
 
 pkgname = strongswan-pkcs11
