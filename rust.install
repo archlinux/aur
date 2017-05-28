@@ -1,9 +1,0 @@
-post_install() {
-  echo ""
-  echo "==> Remember to add (require 'rust-mode) to your ~/.emacs if you wish to use it."
-  echo ""
-}
-
-post_upgrade() {
-  post_install "$@"
-}
