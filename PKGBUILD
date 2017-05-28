@@ -2,10 +2,11 @@
 
 pkgname=palemoon-i18n-common
 pkgver=27.0
-pkgrel=1
-pkgdesc="Language pack for Pale Moon browser (common data)"
+pkgrel=2
+pkgdesc="Common data for Pale Moon language packs"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
+depends=("palemoon")
 license=('GPL')
 source=("disable-addons-installation-warning.js"
         "locale-match-os.js")
