@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ArkClient
+Comment=Ark Desktop
+Exec=/usr/bin/arkclient
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/arkclient.png
