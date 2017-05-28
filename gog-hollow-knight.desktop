@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hollow Knight
+Comment=Hollow Knight is a challenging 2D action-adventure. You’ll explore twisting caverns, battle tainted creatures and escape intricate traps, all to solve an ancient long-hidden mystery.
+Exec=gog-hollow-knight
+Icon=gog-hollow-knight
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
