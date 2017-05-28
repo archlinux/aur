@@ -3,7 +3,7 @@
 
 pkgname=vhba-dkms
 pkgver=20161009
-pkgrel=1
+pkgrel=2
 pkgdesc='VHBA kernel module sources (DKMS)'
 arch=('any')
 url='http://cdemu.sourceforge.net/'
@@ -16,15 +16,18 @@ conflicts=('vhba-module')
 install='vhba-dkms.install'
 source=("http://downloads.sourceforge.net/cdemu/vhba-module-${pkgver}.tar.bz2"
         'dkms.conf'
-        '60-vhba.rules')
+        '60-vhba.rules'
+        'vhba-linux4.11.patch')
 sha256sums=('cd062d8bd61ccb8137622f837a0dadb771cc935981d8bccb2ad4de0bd11f33d9'
             'a663db5183d0c7e2d830d33d56aeaaeded2f3d13d72f602bca6c74549c7696ae'
-            '3052cb1cadbdf4bfb0b588bb8ed80691940d8dd63dc5502943d597eaf9f40c3b')
+            '3052cb1cadbdf4bfb0b588bb8ed80691940d8dd63dc5502943d597eaf9f40c3b'
+            'a756b78865bfc1ea7eda447cd209035f9da7982174d03e643af3441d50ab3e08')
 
 prepare() {
   cd vhba-module-${pkgver}
 
   sed "s/@VERSION@/${pkgver}/g" -i ../dkms.conf
+  patch -Np2 -i ../vhba-linux4.11.patch
 }
 
 package() {
