@@ -6,12 +6,12 @@
 
 pkgname=packettracer62
 pkgver=6.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=('i686' 'x86_64')
-depends_x86_64=('lib32-libopenssl-1.0-compat' 'lib32-libpng')
+depends_x86_64=('lib32-openssl-1.0' 'lib32-libpng')
 makedepends_x86_64=('gcc-multilib')
-depends_i686=('libopenssl-1.0-compat' 'libpng')
+depends_i686=('openssl-1.0' 'libpng')
 conflicts=('packettracer')
 replaces=('packettracer')
 url="http://www.netacad.com/about-networking-academy/packet-tracer"
@@ -93,13 +93,4 @@ package() {
     install -D -m644 ./bin/Cisco-PacketTracer.desktop "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
     sed 's,/usr/local/PacketTracer6,/usr/share/packettracer,' -i "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
     rm "${install_dir}/bin/Cisco-PacketTracer.desktop"
-    
-    # Use openssl-1.0-compat
-    if [ "${CARCH}" == 'x86_64' ]; then
-        ln -s /usr/lib32/libcrypto-compat.so.1.0.0 "$install_dir/lib/libcrypto.so.1.0.0"
-        ln -s /usr/lib32/libssl-compat.so.1.0.0 "$install_dir/lib/libssl.so.1.0.0"
-    elif [ "${CARCH}" == 'i686' ]; then
-        ln -s /usr/lib/libcrypto-compat.so.1.0.0 "$install_dir/lib/libcrypto.so.1.0.0"
-        ln -s /usr/lib/libssl-compat.so.1.0.0 "$install_dir/lib/libssl.so.1.0.0"
-    fi
 }
