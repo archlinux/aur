@@ -3,7 +3,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-genoil-ocl-git
-pkgver=.20170528.8d36c4c92
+pkgver=.20170528.83cb02125
 pkgrel=1
 pkgdesc="Genoil's Ethereum GPU miner, built with OpenCL support"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ groups=('ethereum')
 url="https://github.com/gemoil/cpp-ethereum"
 license=('GPL')
 source=(
-  "${pkgname%-git}::git+https://github.com/Genoil/cpp-ethereum.git"
+  "${pkgname%-git}::git+https://github.com/mmstick/cpp-ethereum.git"
 )
 sha256sums=('SKIP')
 provides=(
