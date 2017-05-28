@@ -2,13 +2,13 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-dev-git
-pkgver=3.0.5947.1884.r1.e042cf3
+pkgver=3.2.0.104.r466.69a00a7e9
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://emby.media'
 license=('GPL2')
-depends=('ffmpeg' 'imagemagick' 'mono' 'sqlite')
+depends=('ffmpeg' 'imagemagick' 'mono<5.0.0.0' 'referenceassemblies-pcl' 'sqlite')
 makedepends=('git')
 provides=('emby-server')
 conflicts=('emby-server')
@@ -44,7 +44,7 @@ build(){
     /p:Configuration='Release Mono' \
     /p:Platform='Any CPU' \
     /p:OutputPath="${srcdir}/build" \
-    /t:build MediaBrowser.Mono.sln
+    /t:build MediaBrowser.sln
   mono --aot='full' -O='all' ../build/MediaBrowser.Server.Mono.exe
 }
 
