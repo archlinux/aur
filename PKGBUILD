@@ -20,10 +20,10 @@ md5sums=(SKIP
          '82baecba5be4c2af0cccf0f5bc0e00c7') ## $pkgname.install
 
 pkgver=6.1.5
-pkgrel=2
+pkgrel=3
 url="http://www.livrephoto-cewe.fr/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget')
+depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base-plugins')
 makedepends=('unzip')
 arch=('i686' 'x86_64')
 source=("http://dls.photoprintit.com/download/Data/$_keyaccount/hps/$_setupFilename.tgz"
