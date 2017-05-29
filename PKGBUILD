@@ -24,5 +24,5 @@ package() {
 
   # Desktop shortcut
   install -Dm644 vulkan-caps-viewer.desktop "${pkgdir}"/usr/share/applications/vulkan-caps-viewer.desktop
-  install -Dm644 android_icon_256.png "${pkgdir}"/usr/share/icons/vulkan-caps-viewer.png
+  install -Dm644 android_icon_256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
 }
