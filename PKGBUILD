@@ -1,13 +1,12 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=gce-compute-image-packages
 pkgver=20170523
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Guest Environment for Google Compute Engine'
 arch=('any')
 url='https://github.com/GoogleCloudPlatform/compute-image-packages'
 license=('Apache')
-depends=('python-boto')
-makedepends=('python-setuptools')
+depends=('python-boto' 'python-setuptools')
 source=("https://github.com/GoogleCloudPlatform/compute-image-packages/archive/${pkgver}.tar.gz")
 
 package() {
