@@ -5,7 +5,7 @@
 
 pkgname=idjc
 pkgver=0.8.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
 license=('GPL2')
