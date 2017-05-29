@@ -3,7 +3,7 @@
 # Contributor: rememberthemer <rememberthemer@_GMAIL_DOT_COM_>
 
 pkgname=python2-netcdf4
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Python/numpy interface to the netCDF version 4 library."
 arch=('x86_64' 'i686')
@@ -14,9 +14,9 @@ depends=('python2-numpy' 'netcdf' 'hdf5' 'curl' 'zlib')
 makedepends=('python2-setuptools' 'cython2')
 optdepends=('python-netcdf4: python 3 version')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Unidata/netcdf4-python/archive/v${pkgver}rel.tar.gz")
-md5sums=('3400d5d122950a68f9b75695bedd6f01')
-sha1sums=('d1c013b13aceca7e4890a9e07700c616f825f7b5')
-sha256sums=('42255f15341ae1959f814443385af4be5ae012b42e2202f300a5e5095338f54e')
+md5sums=('d2f7a82e0c04dc35d881c90215ec336b')
+sha1sums=('fbf5725c0f9521b05f158070c901e12d6dc85034')
+sha256sums=('535473c6db26964dd13cf1eb4a4b7994e56f5ec53e0097e2ff09aae4a297a818')
 
 build() {
     cd "$srcdir"/netcdf4-python-${pkgver}rel
