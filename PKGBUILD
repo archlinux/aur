@@ -1,6 +1,6 @@
 
 pkgname=passenger-nginx-module
-pkgver=5.1.1
+pkgver=5.1.4
 pkgrel=1
 pkgdesc="Phusion Passenger configured for use as a static nginx module."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('passenger')
 conflicts=('passenger')
 options=('!emptydirs' 'staticlibs')
 source=(http://s3.amazonaws.com/phusion-passenger/releases/passenger-$pkgver.tar.gz)
-sha256sums=('cc59ed164a71aec1d06dd993172729ae656948788528d04e5453595ce5e5a10e')
+sha256sums=('6e8460143fff88c7ae833b43ff5389c0b0d2654ee38ab1ac62e24a3814416de0')
 
 build(){
   cd $srcdir/passenger-$pkgver
