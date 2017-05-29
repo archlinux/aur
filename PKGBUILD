@@ -1,8 +1,8 @@
 # Maintainer: Sum01 https://github.com/sum01
 pkgname=('vcash-electron')
 pkgver=0.31.3
-pkgrel=8
-pkgdesc="Vcash GUI buled with the Vcash wallet."
+pkgrel=9
+pkgdesc="Vcash GUI bundled with the Vcash wallet."
 arch=('x86_64')
 url="https://github.com/whphhg/vcash-electron"
 license=('GPL3' 'AGPL3')
