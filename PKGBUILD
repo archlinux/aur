@@ -2,31 +2,30 @@
 
 pkgname=libbatch
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
-depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'omninotify-omniorb416' 'hdf5-1.8' 'graphviz' 'libxml2' 'cppunit' 'lapack' 'net-tools')
-makedepends=('doxygen' 'python2-sphinx' 'git' 'swig2')
+depends=('python2')
+makedepends=('swig2')
 arch=('i686' 'x86_64')
 license=('LGPL')
-source=()
+source=("http://files.salome-platform.org/Salome/other/libBatch-${pkgver}.tar.gz")
 
-# "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz"
-#_source=LIBBATCH_SRC_${pkgver}
-
-_source=libbatch
 _installdir=/usr
+_source=libBatch-${pkgver}
 
-prepare() {
-  msg "Connecting to git server..."
-  if [[ -d ${_source} ]] ; then
-     rm -rf ${_source}
-  fi
-  git clone git://git.salome-platform.org/tools/${_source}.git
-  cd ${_source}
-  git checkout V${pkgver:0:1}_${pkgver:2:1}_${pkgver:4:1}
-  msg "GIT checkout done or server timeout"
-}
+# uncomment to build from git
+#_source=libbatch
+#prepare() {
+#  msg "Connecting to git server..."
+#  if [[ -d ${_source} ]] ; then
+#     rm -rf ${_source}
+#  fi
+#  git clone git://git.salome-platform.org/tools/${_source}.git
+#  cd ${_source}
+#  git checkout V${pkgver:0:1}_${pkgver:2:1}_${pkgver:4:1}
+#  msg "GIT checkout done or server timeout"
+#}
 
 build() {
   rm -rf "$srcdir/$_source/build"
@@ -35,7 +34,6 @@ build() {
 
   cmake .. \
      -DCMAKE_INSTALL_PREFIX=${_installdir} \
-     -DCMAKE_CXX_STANDARD=98 \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DSWIG_EXECUTABLE=/usr/bin/swig-2
 
@@ -48,3 +46,4 @@ package() {
   make DESTDIR="$pkgdir" install
 
 }
+md5sums=('9da297f755832eabe10db0cca311f340')
