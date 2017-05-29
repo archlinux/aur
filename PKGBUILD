@@ -12,7 +12,7 @@ makedepends=('git')
 source=("git://github.com/groeck/nct6775.git"
         dkms.conf.in)
 md5sums=('SKIP'
-         'def0cd6481eec8acdae8340655aa278f')
+         '6551ee94016305d53c86883a1731a9aa')
 
 pkgver() {
   cd ${_pkgname}
