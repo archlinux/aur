@@ -1,6 +1,6 @@
 pkgbase = tmux-fullwidth-backspace
 	pkgdesc = A terminal multiplexer (patched with support for fullwidth backspace)
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://tmux.github.io/
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = tmux-fullwidth-backspace
 	depends = libutempter
 	provides = tmux
 	conflicts = tmux
-	source = https://github.com/tmux/tmux/releases/download/2.4/tmux-2.4.tar.gz
+	source = https://github.com/tmux/tmux/releases/download/2.5/tmux-2.5.tar.gz
 	source = LICENSE
 	source = fullwidth-backspace.patch
-	md5sums = 6165d3aca811a3225ef8afbd1afcf1c5
+	md5sums = 4a5d73d96d8f11b0bdf9b6f15ab76d15
 	md5sums = 71601bc37fa44e4395580b321963018e
 	md5sums = d94a3a131ae12cc227cb76b627451d7a
 
