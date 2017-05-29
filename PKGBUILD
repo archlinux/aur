@@ -1,10 +1,10 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 
 pkgname=ufetch
-pkgver=1.0.8777d23
+pkgver=1.0.39dd763
 pkgrel=1
 pkgdesc="Info script for minimal *nix systems."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/jschx/${pkgname}"
 license=('GPL')
 provides=('ufetch')
