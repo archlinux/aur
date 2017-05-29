@@ -1,7 +1,7 @@
 # Maintainer: Jonas Frei <freijon@gmail.com>
 
 pkgname=mpvc-rs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An mpc-like cli tool for mpv which connects to existing mpv instances through sockets, written in Rust"
 arch=('x86_64')
