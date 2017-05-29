@@ -18,12 +18,14 @@ conflicts=('abiword' 'abiword-plugins')
 replaces=('abiword' 'abiword-plugins')
 options=('!makeflags')
 source=(abiword::svn+http://svn.abisource.com/abiword/trunk \
-	aiksaurus-plugin.m4 plugin-builtin.m4 plugin-configure.m4 plugin-makefiles.m4)
+	    aiksaurus-plugin.m4 plugin-builtin.m4 plugin-configure.m4 \
+	    plugin-makefiles.m4 gcc7.diff)
 sha256sums=('SKIP'
             '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
             'c2d5851f66755c8b3bae8d16988f6f85a943ca76341c735b898a3635568de10f'
             '784508cdf5aa426258bc82c05fe79a3bbb7a0738b243b6a55a8fef58314439a6'
-            '99428d00304404e086c81ac9c2c9c68b9c5e532abae87c7b29b4bda22d85db4d')
+            '99428d00304404e086c81ac9c2c9c68b9c5e532abae87c7b29b4bda22d85db4d'
+            '4654f1a468dbc3f9a7339ca8b4a62f59ba394bd04a077ab5dc5ef86dacbe76f8')
 _svnmod=abiword
 
 pkgver() {
@@ -42,10 +44,12 @@ prepare() {
   
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-list.m4
+  patch -p0 < "$srcdir"/gcc7.diff || true
 }
 
 build() {
   cd ${pkgname%-svn}
+LANG=C
   export CXXFLAGS+=" -O3"
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \

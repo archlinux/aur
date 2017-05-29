@@ -1,0 +1,12 @@
+Index: src/text/fmt/xp/fl_AutoNum.h
+===================================================================
+--- src/text/fmt/xp/fl_AutoNum.h	(Revision 35439)
++++ src/text/fmt/xp/fl_AutoNum.h	(Arbeitskopie)
+@@ -28,6 +28,7 @@
+ #include <string>
+ #include <unordered_set>
+ #include <vector>
++#include <functional>
+ 
+ #include "ut_types.h"
+ #include "ut_misc.h"
