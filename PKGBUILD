@@ -1,7 +1,7 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=doctoc
-pkgver=v1.2.0
+pkgver=v1.3.0
 pkgrel=1
 pkgdesc="Generates table of contents for markdown files inside local git repository., installed through npm"
 arch=('any')
