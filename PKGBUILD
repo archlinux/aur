@@ -29,7 +29,7 @@ package() {
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/lib/systemd/system
   install misc/asus-fan-create-symlinks.sh ${pkgdir}/usr/bin/asus-fan-create-symlinks.sh
-  install misc/systemd/asus-fan.service ${pkgdir}/usr/lib/systemd/system/asus-fan.service
+  install -m 644 misc/systemd/asus-fan.service ${pkgdir}/usr/lib/systemd/system/asus-fan.service
 
   echo "Installing asus-fan.service for systemd"
 
