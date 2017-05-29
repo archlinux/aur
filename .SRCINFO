@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-git
 	pkgdesc = A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)
-	pkgver = 3.3.12.r1215.g67f44e03a
+	pkgver = 3.3.12.r1382.gff8020853
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
 	arch = i686
