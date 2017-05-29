@@ -4,7 +4,7 @@
 
 _pkgname=nwjs
 pkgname=$_pkgname-bin
-pkgver=0.22.0
+pkgver=0.22.3
 pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js."
 arch=("i686" "x86_64")
@@ -28,8 +28,8 @@ fi
 source_common="http://dl.nwjs.io/v$pkgver/$_pkgname-v$pkgver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-sha512sums_i686=('c28bbf8a07b483452d4640133faca6f9aaa8ec03425d3224ddf9ff498806dbd286f78546444f03680b35def901cb132fb6bc37e916e85ef3e3b80a3868f2de9f')
-sha512sums_x86_64=('3493f9f6cdc852f75cb58e183162124a99fa3df26c3674b7a9b10bc3582170906027328c3beb79af8daeadfa4480670426ed8543c25e9fb72f5514a9b6d1713c')
+sha512sums_i686=('17b18477513d3d742bb1f6e57ff1061a0cf4786c9cb5ee34567e7e816bbfd73da44a02dba15cbe4d3b4a1b52cb6a7a46365f9e3e1282e67d9979dfd3d0e15d8b')
+sha512sums_x86_64=('2e0b230529706f7bc1456ed945671c174d3b2f69e86786f2acdd981b0f42aa31be46c80ca5da4de7212b9456bf30b7e7ba6c2a4a1e5b9ff1ab45915cc26347e9')
 
 package() {
   cd "$srcdir/$_pkgname-v$pkgver-linux-$_arch"
