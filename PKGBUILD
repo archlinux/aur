@@ -2,7 +2,7 @@
 
 pkgname=snap7
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Step7 Open Source Ethernet Communication Suite"
 url="http://snap7.sourceforge.net/"
 license=("LGPL3")
@@ -26,15 +26,12 @@ case "$CARCH" in
 esac
 
 build() {
-	cd "${srcdir}/${pkgname}-full-${pkgver}/build/unix/"
-    make -f ${_pkgarch}_linux.mk all
+  cd "${srcdir}/${pkgname}-full-${pkgver}/build/unix/"
+  make -f ${_pkgarch}_linux.mk all
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-full-${pkgver}/build/"
+  cd "${srcdir}/${pkgname}-full-${pkgver}/build/"
 
-	install -dm755 "${pkgdir}/usr/lib"
-	install -dm755 "${pkgdir}/usr/include"
-
-	cp -a bin/${_pkgarch}-linux/libsnap7.so "${pkgdir}/usr/lib/"
+  install -D -m755 "bin/${_pkgarch}-linux/libsnap7.so" "${pkgdir}/usr/lib/libsnap7.so"
 }
