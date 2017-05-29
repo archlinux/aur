@@ -1,6 +1,6 @@
 pkgbase = diaspora-postgresql-git
 	pkgdesc = A distributed privacy aware social network (development head) (PostgreSQL)
-	pkgver = 0.6.5.0.r208.g45c623c26
+	pkgver = 0.6.6.0.r223.g05efe9b8f
 	pkgrel = 1
 	url = https://diasporafoundation.org
 	install = diaspora.install
@@ -30,12 +30,12 @@ pkgbase = diaspora-postgresql-git
 	source = diaspora.tmpfiles.d.conf
 	source = diaspora.bashrc
 	source = diaspora.bash_profile
-	md5sums = SKIP
-	md5sums = 9ff045bfb5926afb09c8303f53dccd0a
-	md5sums = 165a798c4f270be6a4206c2db76a5e15
-	md5sums = 28f46e8562bce1e91e28fb03d34fb4c0
-	md5sums = 7ecc1fff1ab67e74c9569cabf79c404b
-	md5sums = 594a4153159cb3435c25f5cae03a1fa6
+	sha256sums = SKIP
+	sha256sums = aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685
+	sha256sums = d10f10439e56c38a9960e7cd481c7b44a68bc0ecf7c88b91d9cafb454aa6ffd0
+	sha256sums = 7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408
+	sha256sums = 77cb2529eacef2d1e77aad5daf21856f67097d6342f230e5dd5057f753932bfa
+	sha256sums = 29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715
 
 pkgname = diaspora-postgresql-git
 
