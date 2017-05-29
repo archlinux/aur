@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc="KDE's terminal emulator"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/applications/konsole'
-license=('LGPL')
-depends=('knotifyconfig-git' 'kpty-git' 'libkonq-frameworks-git')
+license=('GPL' 'LGPL' 'FDL')
+depends=('knotifyconfig-git' 'kpty-git' 'kparts-git')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 provides=('konsole')
 conflicts=('konsole' 'kdebase-konsole')
@@ -29,9 +29,8 @@ build() {
   cmake ../konsole \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DBUILD_TESTING=OFF \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
   make
 }
 
