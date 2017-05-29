@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20170426
+pkgver=3.0.0v20170528
 _pkgver=3.0.0
-_snapshot_=20170426
-_snapver_=0240
+_snapshot_=20170528
+_snapver_=0239
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -120,7 +120,7 @@ package() {
   depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('fa0b882189756e927a2cd673a24c97aa925df4fa97a2d612026d9061499a8f97'
+sha256sums=('5ec8f49ee231049a4efa08b37d5c41df7e60de354f76e6d01be4aa7fbfa26da2'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
