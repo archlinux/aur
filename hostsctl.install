@@ -1,0 +1,6 @@
+# hostsctl.install
+
+# Restore the original /etc/hosts file
+pre_remove() {
+  hostsctl restore
+}
