@@ -1,7 +1,7 @@
 # Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=blis
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('i686' 'x86_64')
@@ -10,10 +10,9 @@ url='https://github.com/flame/blis'
 #provides=('blas=3.5.0' 'cblas')
 #conflicts=('blas' 'cblas')
 options=('!makeflags' '!emptydirs')
-
-source=("https://github.com/flame/blis/archive/${pkgver}.zip")
-md5sums=('d9886c662ad801c1bf19a29c5f68dada')
-sha512sums=('e97f6757004e2154a9920d6570050a02025602a16bd7f53253fcb7cf7681c95e780641298020cee5cb53c0f3e3337a69a023b26cbe526e048011dbb68d6b4c4d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/flame/blis/archive/${pkgver}.tar.gz")
+md5sums=('85f7fc63ca3dec48d02655ccdb775700')
+sha512sums=('a8b0fbbeede584c54548f366ffd2d4cc94fd6b86bd7de7b8cacf59c40acd4349593198f1f8fade739ba39ad21eb2dd2e078aa31491fa9cea5451d160e88d04ff')
 
 prepare() {
 # Determine appropriate BLIS kernel for CPU
@@ -21,11 +20,11 @@ prepare() {
   _bliskernel="$(./auto-detect.sh)"
   echo "Selected a BLIS kernel for the ${_bliskernel} CPU architecture"
 
-# Switch on BLAS compatibility and set Fortran name-mangling macros
-  sed -i '/#define BLIS_CONFIG_H/a#define BLIS_ENABLE_BLAS2BLIS\n#define BLIS_BLAS2BLIS_INT_TYPE_SIZE 32\n#define PASTEF770(name)                        name ## _ \n#define PASTEF77(ch1,name)       ch1        ## name ## _ \n#define PASTEF772(ch1,ch2,name)  ch1 ## ch2 ## name ## _' "${srcdir}//blis-${pkgver}/config/${_bliskernel}/bli_config.h"
+# # Switch on BLAS compatibility and set Fortran name-mangling macros
+#   sed -i '/#define BLIS_CONFIG_H/a#define BLIS_ENABLE_BLAS2BLIS\n#define BLIS_BLAS2BLIS_INT_TYPE_SIZE 32\n#define PASTEF770(name)                        name ## _ \n#define PASTEF77(ch1,name)       ch1        ## name ## _ \n#define PASTEF772(ch1,ch2,name)  ch1 ## ch2 ## name ## _' "${srcdir}//blis-${pkgver}/config/${_bliskernel}/bli_config.h"
 
-# Switch on CBLAS compatibility (always switches on the BLAS compatibility layer)
-  sed -i '/#define PASTEF772(ch1,ch2,name)  ch1 ## ch2 ## name ## _/a#define BLIS_ENABLE_CBLAS' "${srcdir}//blis-${pkgver}/config/${_bliskernel}/bli_config.h"
+# # Switch on CBLAS compatibility (always switches on the BLAS compatibility layer)
+#   sed -i '/#define PASTEF772(ch1,ch2,name)  ch1 ## ch2 ## name ## _/a#define BLIS_ENABLE_CBLAS' "${srcdir}//blis-${pkgver}/config/${_bliskernel}/bli_config.h"
 
 }
 
