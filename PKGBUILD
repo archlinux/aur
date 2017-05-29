@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('mpv')
 makedepends=('cargo')
 source=("mpvc-${pkgver}.tar.gz::https://github.com/freijon/mpvc-rs/archive/v${pkgver}.tar.gz")
-sha512sums=('2cf827b5fae3a064dc8d039101e4d8f5df319140cf8ea9c2369cbf6aea337766326af7927b39466d1b91f9da9614e9a2d682bc9ab4ec4e155268ea574ff9842f')
+sha512sums=('adce4947a606a2710a5e5975816485ec43e3d86c13c66e352835e129f3028f2eef67a6f8629d5acd8659b71caba9f4add5c175936ed878dc971f5627028917bb')
 provides=('mpvc')
 
 build() {
