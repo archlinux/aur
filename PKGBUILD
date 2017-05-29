@@ -14,7 +14,7 @@ depends=('glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
 makedepends=('cmake' 'git' 'granite-git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sound}-git": Tray applet"
-            "wingpanel-indicator-ayatana-bzr: Unity 7 Tray applets"
+            "wingpanel-indicator-ayatana-git: Unity 7 Tray applets"
             "indicator-powersave: On the fly power savings and performance toggles"
             "glippy-indicator: Excellent clipboard manager applet"
             "indicator-sensors: Sensors readout applet")
