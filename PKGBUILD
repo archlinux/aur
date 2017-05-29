@@ -8,7 +8,7 @@
 
 pkgbase=eclipse-devel
 pkgname=(eclipse-{common,java,cpp,jee,php}-devel)
-_milestone=M7
+_milestone=RC1
 pkgver=4.7.0.${_milestone}
 pkgrel=1
 _release=oxygen-${_milestone}
