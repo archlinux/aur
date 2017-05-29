@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-wm-git
-pkgver=20170507.be8b6d1
+pkgver=1.0.6.gf3c7b3b
 pkgrel=1
 pkgdesc="Windowmanagement environment for guile"
 arch=('any')
@@ -10,13 +10,14 @@ depends=('guile' 'guile-xcb')
 makedepends=('git')
 provides=('guile-wm')
 conflicts=('guile-wm')
-source=("git+https://github.com/mwitmer/guile-wm")
+source=("git+https://github.com/mwitmer/guile-wm.git")
 md5sums=('SKIP')
 options=('!makeflags')
 _gitname="guile-wm"
 
 pkgver() {
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  cd $_gitname
+  printf %s $(git describe --tags  | tr  - .)
 }
 
 prepare() {
