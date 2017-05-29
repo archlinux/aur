@@ -55,7 +55,7 @@ build() {
               --localstatedir=/var \
               --enable-tpm --enable-curl \
               --enable-modules --enable-spice --disable-werror --enable-jemalloc \
-              --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez
+              --target-list=x86_64-softmmu,i386-softmmu --disable-libiscsi --disable-bluez
   make V=99
 }
 
