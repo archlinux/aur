@@ -1,7 +1,7 @@
 # Maintainer: Giulio De Pasquale <me@giugl.io>
 pkgname=dike
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool di firma e rinnovo online per i certificati digitali emessi da InfoCert S.p.A."
 arch=( 'i686' 'x86_64')
 url=""

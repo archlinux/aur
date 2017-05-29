@@ -23,3 +23,28 @@ pkgbase = dike
 
 pkgname = dike
 
+pkgbase = dike
+	pkgdesc = Tool di firma e rinnovo online per i certificati digitali emessi da InfoCert S.p.A.
+	pkgver = 6.0
+	pkgrel = 3
+	install = dike.install
+	arch = i686
+	arch = x86_64
+	license = custom:EULA
+	depends = python2-nautilus
+	depends = libnotify
+	depends = usb_modeswitch
+	depends = pcsclite
+	depends = pcsc-tools
+	depends = gstreamer0.10
+	depends = gstreamer0.10-base
+	depends = libappindicator-gtk2
+	source = https://www.firma.infocert.it/pdf/licenza-dike6.pdf
+	sha256sums = c3c0df98ff788b40c31ff4915ebfcbcb71dea389733a71f71e7fe72f145120aa
+	source_i686 = https://rinnovofirma.infocert.it/download/i686/latest
+	sha256sums_i686 = d99fc97a773580ad240b18efae7d7463ce54f3ff0383240a616e70c90e468cde
+	source_x86_64 = https://rinnovofirma.infocert.it/download/x86_64/latest
+	sha256sums_x86_64 = 2cb584d0ab5a644f233d83e1df3f4ffd71f5494afba01e0a05cc1e322bf0a35a
+
+pkgname = dike
+
