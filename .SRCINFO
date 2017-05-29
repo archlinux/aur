@@ -1,6 +1,6 @@
 pkgbase = libyami-utils
 	pkgdesc = Intel VA-API Media Applications and Scripts for libyami
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/01org/libyami-utils
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = libyami-utils
 	depends = libyami
 	depends = ffmpeg
 	options = !emptydirs
-	source = https://github.com/01org/libyami-utils/archive/1.1.0.tar.gz
-	sha256sums = 66865408b63d09a80f1305828898c9cb5e7d57585b944b08148c92d774ba8dcd
+	source = https://github.com/01org/libyami-utils/archive/1.2.0.tar.gz
+	sha256sums = 3dbaedc797bf2d0e03879bfdbea462c3ec2aac89b49c1ed55cbff1be2590d1e8
 
 pkgname = libyami-utils
 
