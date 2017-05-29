@@ -6,8 +6,8 @@
      
 pkgname=med-salome
 _pkgname=med
-pkgver=3.2.0
-pkgrel=5
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
@@ -19,18 +19,11 @@ conflicts=("med_fichier" "med")
 replaces=("med_fichier" "med")
 backup=()
 arch=('i686' 'x86_64')
-source=("http://files.salome-platform.org/Salome/other/${_pkgname}-${pkgver}.tar.gz"
-        "patch-include_2.3.6_med.h.in"
-        "patch-include_med.h.in"
-        "patch-src_2.3.6_ci_MEDequivInfo.c"
-        "patch-int2long")
-md5sums=('eb61df92f0624feb6328f517cd756a23'
-         'b83949326d7ae0ca77a06822b754a329'
-         '14a151cea108388d7a3b4c62887169f6'
-         '8f0cbf6f08783a6ba68ff5ab240dd62e'
-         '08c436aee7cf573ff28463cc2e88ec1b')
+source=("http://files.salome-platform.org/Salome/other/${_pkgname}-${pkgver}.tar.gz")
 	
+md5sums=('4965899bb578229ba27c9bc5293c651e')
 
+_basesrcdir=${_pkgname}-${pkgver}_SRC
 # _installdir=/opt/${pkgname}
 _installdir=/usr
 _sharedir=${_installdir}/share/${pkgname}
@@ -43,7 +36,7 @@ prepare() {
 #    rm -rf build
 #  fi
 
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${srcdir}/${_basesrcdir}
 
 #  uncomment if using cmake
 #  sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${PYFILELOC}/\${inputname}|\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\${PYFILELOC}/\${inputname}|" \
@@ -52,15 +45,6 @@ prepare() {
 #  comment if using cmake
   sed -e "s|\$hdf5home/include|\$hdf5home/include/hdf5_18|" -i configure
   sed -e "s|\$hdf5home/lib|\$hdf5home/lib/hdf5_18|" -i configure
-
-  # patch H5public_extract.h.in
-  sed -i -e '/^#typedef/ s/#/\/\//' ./include/H5public_extract.h.in
-  
-  #patch for hdf5-1.10
-  patch -p0 < ${srcdir}/patch-include_2.3.6_med.h.in
-  patch -p0 < ${srcdir}/patch-include_med.h.in
-  patch -p0 < ${srcdir}/patch-src_2.3.6_ci_MEDequivInfo.c
-  patch -p0 < ${srcdir}/patch-int2long
 }
 
 build() {
@@ -85,7 +69,7 @@ build() {
 #  export F77=$MPIF77
 
 #  comment if using cmake
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${srcdir}/${_basesrcdir}
   ./configure --prefix=${_installdir} --with-med_int=int --datadir=${_sharedir} --with-swig=yes --with-hdf5=/usr
 
 #  uncomment if using cmake
@@ -121,7 +105,7 @@ package() {
 #  cd "${srcdir}/build"
 
 #  comment if using cmake
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${srcdir}/${_basesrcdir}
 
   make DESTDIR=${pkgdir} install
 }
