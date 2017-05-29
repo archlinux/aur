@@ -1,9 +1,10 @@
 # Contributor: Aashik S  aashiks at gmail dot com
 # Maintainer: http://smc.org.in
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
+# Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=ttf-malayalam-font-manjari
-pkgver=0.1.0+20161126
+pkgver=1.1.0+20170528
 pkgrel=1
 pkgdesc="This is Manjari, a font belonging to a set of TrueType and OpenType fonts released under the 
 SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007 for Malayalam Language."
@@ -16,9 +17,9 @@ source=(
 "https://smc.org.in/downloads/fonts/manjari/Manjari-Bold.ttf"
 "67-smc-manjari.conf"
 )
-md5sums=('9c4e2124e535470350ed6fe68aa58502'
-         '3b4e4a1972888c52798e42b72cb3b70c'
-         '92fc89f04d7b6c6a9f119dadebdc3a4c'
+md5sums=('3745683107896d7b92f2f02bfb69d710'
+         '547397024560f51430284c4ea8cf84be'
+         '51e61f699c651f0bb4564cc950e2dd2d'
          '98923c2e7c4df841f7e8ee0f3e05f9f5')
 install=ttf-malayalam-fonts.install
 package() {
