@@ -1,8 +1,9 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
+# With contributions from Nicolas Porcel
 
 pkgbase=linux-lts-max98090
 _srcname=linux-4.9
-pkgver=4.9.29
+pkgver=4.9.30
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -24,10 +25,10 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 	# https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'a3e4f2000ba4968a2ca141b444c3e7b7b1c25b4c3a8fc8100ab76cea2d1988b2'
+            '363c6135ce997f105a61e8207b8e7553b0f59cf36cbc8950968286a8a9d521b3'
             'SKIP'
-            '79354caade3ceed1b144f9b4bd8d4c95db7f5bc45a5a1ef7e549e5917a5e7784'
-            'b169900b23872a2b96dffec7d7f8c68fcaec04391bd034c91be92eafd1339e17'
+            '37260f1ca0b62325e243fba19a522b00b46cf1e8148dba53eefc498e122146ec'
+            'bcc54d9f79e93b0f34ffa77c8c6eeb42958e87c3c982100591a3695c91a7ca30'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
