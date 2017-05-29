@@ -1,10 +1,11 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Det <nimetonmaili at gmail a-dot com>
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly
-pkgver=54.0a1.20170303
-_version=54.0a1
+pkgver=55.0a1.20170529
+_version=55.0a1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Nightly build"
 arch=('i686' 'x86_64')
