@@ -4,15 +4,15 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=vtk-qt4
-pkgver=7.0.0
-_majorver=7.0
-pkgrel=2
+pkgver=7.1.1
+_majorver=7.1
+pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization. Linked against QT4'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
 license=('BSD')
-depends=('boost-libs' 'gcc-libs' 'gl2ps')
-makedepends=('boost' 'ffmpeg' 'qtwebkit' 'lesstif' 'jsoncpp' 'cmake' 'ninja'  'java-environment' 'doxygen' 'gnuplot' 'tk' 'wget' 'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn' 'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' )
+depends=('boost-libs' 'gcc-libs')
+makedepends=('boost' 'cmake' 'ninja' 'java-environment' 'doxygen' 'gnuplot' 'tk' 'wget' 'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn' 'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' 'ffmpeg' 'lesstif' 'jsoncpp' )
 optdepends=('python2: python bindings'
             'java-runtime: java bindings'
             'tk: tcl bindings'
@@ -33,25 +33,16 @@ optdepends=('python2: python bindings'
 source=("http://www.vtk.org/files/release/${_majorver}/VTK-${pkgver}.tar.gz"
         "http://www.vtk.org/files/release/${_majorver}/VTKData-${pkgver}.tar.gz"
         "http://www.vtk.org/files/release/${_majorver}/VTKLargeData-${pkgver}.tar.gz"
-        gdal2.patch
-        ffmpeg3.patch
-        gcc6.patch)
+       )
 
 options=(staticlibs)
-sha1sums=('7719fac36b36965eaf5076542166ba49bbe7afbb'
-          '1bbaa642a3e3676a58a08c956df73645326c2859'
-          '8d16a1fba15e4eb95c03fe97937488ddcdd7fbd0'
-          'c60610e7c8cf0ad93d7c02cbf8a20fc415f59b3e'
-          'a78177f8dd6dedd9ad189fa12730ec53c7d02508'
-          '0c6684c51240c9c52b809694ce41c1308e947bae')
+sha1sums=('8b3433e408ba3408354356dee4d295ea599a817c'
+          'e0021056162e72e0dac20fa833ea4f9ee29dee48'
+          '1ba20c351ac8237c168198a89504c3d93ea699c7'
+          )
 
 prepare() {
   cd "${srcdir}"/VTK-$pkgver
-
-  # fix compilation errors:
-  patch -Np1 -i "${srcdir}"/gdal2.patch
-  patch -Np1 -i "${srcdir}"/ffmpeg3.patch
-  patch -Np1 -i "${srcdir}"/gcc6.patch
 
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
       -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
@@ -68,17 +59,22 @@ build() {
   # to help cmake find java
   export JAVA_HOME=/usr/lib/jvm/default
 
-  # flags to enable using system libs
+   # flags to enable using system libs
   local cmake_system_flags=""
-  # TODO: try to use system provided XDMF2, XDMF3, LIBPROJ4 NETCDF and HDF5
+  # TODO: try to use system provided XDMF2, XDMF3, LIBPROJ4 NETCDF, HDF5
   # VTK fails to compile with recent netcdf-cxx package, VTK should be ported to the latest API
-  for lib in EXPAT FREETYPE JPEG PNG TIFF ZLIB LIBXML2 OGGTHEORA TWISTED ZOPE SIX AUTOBAHN MPI4PY JSONCPP GLEW GL2PS; do
+  # VTK does not work with XDMF2 compiled from git. TODO: make vtk compatible with system XDMF library. 
+  # Note: VTK explicitly disables system GLEW dependency, it uses embedded sources with modifications
+  # Note: system HDF5 is incompatible
+  for lib in EXPAT FREETYPE JPEG PNG TIFF ZLIB LIBXML2 OGGTHEORA TWISTED ZOPE SIX AUTOBAHN MPI4PY JSONCPP GLEW; do
     cmake_system_flags+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
-
+  
   # flags to use python2 instead of python which is 3.x.x on archlinux
   local cmake_system_python_flags="-DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so"
 
+  local _tkver=$(echo 'puts $tcl_version' | tclsh)
+  
   cmake \
     -Wno-dev \
     -DCMAKE_SKIP_RPATH=ON \
@@ -99,6 +95,7 @@ build() {
     -DCMAKE_CXX_FLAGS="-D__STDC_CONSTANT_MACROS" \
     -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
     -DVTK_INSTALL_INCLUDE_DIR:PATH=include \
+    -DVTK_INSTALL_TCL_DIR=/opt/${pkgname}/lib/tcl${_tkver}/vtk/ \
     ${cmake_system_flags} \
     ${cmake_system_python_flags} \
     -DCMAKE_BUILD_TYPE=Release \
