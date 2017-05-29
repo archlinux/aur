@@ -1,26 +1,22 @@
 # Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
 
 pkgname='lightdm-settings'
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A configuration tool for the LightDM display manager "
 arch=('any')
-url="http://packages.linuxmint.com/pool/main/l/${pkgname}"
+url="https://github.com/linuxmint/${pkgname}"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'lightdm' 'lightdm-slick-greeter' 'lsb-release' 'python-setproctitle'  'python-xapp')
-source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('1d389f4f0f1e0b19276fd03e9d98615151aa019c922a2898dbf0c49cf455eea7')
-
-prepare() {
-  cd ${pkgname}
-}
+depends=(hicolor-icon-theme lightdm lightdm-slick-greeter lsb-release python-setproctitle python-xapp)
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
+sha256sums=('e71f9c89e4b59279c414e2969ab1613692289672db10aabf875f12039d7dd4b6')
 
 build() {
-  cd ${pkgname}
+  cd $pkgname-$pkgver
   make
 }
 
 package() {
-  cd ${pkgname}
-  cp -r usr "$pkgdir"
+  cd $pkgname-$pkgver
+  cp -r usr $pkgdir
 }
