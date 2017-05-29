@@ -10,6 +10,7 @@ pkgbase = nheko-git
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = fontconfig
+	makedepends = qt5-tools
 	depends = qt5-base
 	source = nheko-git::git+https://github.com/mujx/nheko.git
 	md5sums = SKIP
