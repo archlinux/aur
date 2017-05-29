@@ -1,7 +1,7 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 
 pkgname=ufetch
-pkgver=1.0.39dd763
+pkgver=20170529.08cbd2e
 pkgrel=1
 pkgdesc="Info script for minimal *nix systems."
 arch=('any')
