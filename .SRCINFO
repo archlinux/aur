@@ -1,9 +1,10 @@
 pkgbase = guile-xcb-git
 	pkgdesc = Windowmanagement environment for guile
-	pkgver = r87.0720ed4
+	pkgver = r88.db7d5a3
 	pkgrel = 1
 	url = http://www.markwitmer.com/guile-xcb/guile-wm.html
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = git
 	provides = guile-xcb
