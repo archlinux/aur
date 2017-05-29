@@ -1,13 +1,13 @@
 # Maintainer: Stephan Eisvogel <eisvogel at embinet dot de>
 pkgname=nsjail-git
-pkgver=r450.3e99703
-_pkgcommit=#commit=3e99703df21978f4f87717e1563fbbc9454c6848
+pkgver=r457.cae0c4a
 pkgrel=1
+_pkgcommit=#commit=cae0c4a7f5420b7bf0fb0046a8c13fedfe9d0a44
 pkgdesc="A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)"
 arch=('x86_64')
 url="http://nsjail.com"
 license=('Apache')
-makedepends=('git' 'autoconf-archive>2016.03.20' 'doxygen' 'graphviz' 're2c' 'check>=0.9.4')
+makedepends=('git' 'autoconf-archive>2016.03.20' 're2c' 'check>=0.9.4')
 depends=('libnl>=3' 'protobuf-c')
 source=("${pkgname}::git+git://github.com/google/nsjail.git${_pkgcommit}"
 		"https://github.com/trustm3/external_protobuf-c-text/commit/c37f8708d847319921a3fba7d6863103f6b801e2.patch"
@@ -39,6 +39,8 @@ prepare() {
 	sed -i '/^include am\/aminclude_doxygen.am/c@DX_RULES@' protobuf-c-text/Makefile.am
 	# Fix wrong variable usage
 	sed -i 's/\$(GREP) \/libdata\//\$GREP \/libdata\//' protobuf-c-text/configure.ac
+	# Fix bison warning
+	sed -i '/if (!ctxt->lexical_error) {/aYYUSE(scanner);' kafel/src/parser.y
 
 	# 3rd party fixes
 
@@ -58,7 +60,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}/protobuf-c-text"
 	autoreconf -vif
-	env CFLAGS="${CFLAGS} -fPIC" ./configure
+	env CFLAGS="${CFLAGS} -fPIC" ./configure --enable-shared=no --disable-doxygen-doc
 	cd "${srcdir}/${pkgname}"
 	make
 }
