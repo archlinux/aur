@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname='pyload-git'
-pkgver=5650.5928ad3
+pkgver=v0.4.9.r4021.ga5c07bf2c
 pkgrel=1
 pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest stable branch"
 url="https://github.com/pyload/pyload"
@@ -28,7 +28,7 @@ source=('pyload::git+https://github.com/pyload/pyload.git#branch=stable'
 
 pkgver() {
   cd pyload
-  echo $(git rev-list --count stable).$(git rev-parse --short stable)
+  git describe --long --tags| sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
