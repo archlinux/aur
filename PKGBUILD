@@ -3,16 +3,17 @@
 pkgname=nct6775-dkms-git
 _pkgname=nct6775
 pkgver=r148.3100f3c
-pkgrel=1
+pkgrel=2
 pkgdesc="Nuvoton module for nct67xx chips not yet supported in the kernel."
 arch=('i686' 'x86_64')
 url="https://github.com/groeck/nct6775"
 license=('GPLv2')
 makedepends=('git')
+depends=('dkms')
 source=("git://github.com/groeck/nct6775.git"
         dkms.conf.in)
 md5sums=('SKIP'
-         '6551ee94016305d53c86883a1731a9aa')
+         '7e9f26fd1e869fc17223db7ed23e498f')
 
 pkgver() {
   cd ${_pkgname}
