@@ -10,6 +10,12 @@ makedepends=('cmake')
 source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
 sha1sums=('ea50bc4ee9eabd42fb81757c5549a2e592a4a434')
 
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i "s|\-Werror||g" CMakeLists.txt
+}
+
+
 build() {
   cd $pkgname-$pkgver
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_INCLUDE_DIR=/usr/include/hmat .
