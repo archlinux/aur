@@ -3,7 +3,7 @@
 
 pkgname=wingpanel-standalone-git
 pkgver=r286.89956c5
-pkgrel=2
+pkgrel=3
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
@@ -26,13 +26,13 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'minus-galaplugin.patch'
         'minus-gala-cmake.patch'
         'y-is-broken-cogl.patch'
-        'autohide.patch')
+        'autohide-evbox.patch')
 sha256sums=('SKIP'
             '0fd440cdb4b9871c5ee8812866b365e4a45b29813800345556db74429bacca3e'
             '1f50f34a7d36fc8331c1080c42c38f8208e35f4551eed97705919d304d410c95'
             '910130e7033db8874ed8d5e1734c6eb0ce75eed7ddf2620400c2a129cf05755d'
             'df03ebb7fe08da77d51e6b96ab033b5c712530727d9fa2dd61420d2c7923fced'
-            '2705bd49c38debd20ad2759fa880238661530abdd8962a5373d0b431cd7cf084')
+            'c5cf804716585e1189e3bcf47a3387c2a3708d39aabfa89681de783da31eaade')
 
 pkgver() {
   cd wingpanel
@@ -58,7 +58,7 @@ prepare() {
 
   #autohide
   #msg2 "autohide"
-  #patch -Np2 < ../autohide.patch
+  #patch -Np2 < ../autohide-evbox.patch
 
   #Cogl can't be found, although it is installed. Arch-specific? .so bump?
   msg2 "minus cgl"

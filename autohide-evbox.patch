@@ -1,0 +1,104 @@
+--- src/wingpanel/src/PanelWindow.vala.old	2017-05-30 05:11:04.862053641 +0900
++++ src/wingpanel/src/PanelWindow.vala	2017-05-30 05:15:50.025099860 +0900
+@@ -22,6 +22,8 @@
+ 
+     private Widgets.Panel panel;
+ 
++    private Gtk.EventBox box;
++
+     private int monitor_number;
+ 
+     private int monitor_width;
+@@ -62,10 +64,17 @@
+ 
+         popover_manager = new Services.PopoverManager (this);
+ 
++        box = new Gtk.EventBox();
++        box.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
++
+         panel = new Widgets.Panel (popover_manager);
+         panel.realize.connect (on_realize);
+ 
+-        this.add (panel);
++        box.add(panel);
++        box.enter_notify_event.connect (reactivate);
++        box.leave_notify_event.connect (on_idle);
++
++        this.add (box);
+     }
+ 
+     private bool animation_step () {
+@@ -75,7 +84,19 @@
+ 
+         panel_displacement--;
+ 
+-        update_panel_dimensions ();
++        animate_panel ();
++
++        return true;
++    }
++
++    private bool animation_unstep () {
++        if (panel_displacement >= -1) {
++            return false;
++        }
++
++        panel_displacement++;
++
++        animate_panel ();
+ 
+         return true;
+     }
+@@ -85,7 +106,26 @@
+ 
+         //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
+ 
+-        Timeout.add (300 / panel_height, animation_step);
++        Timeout.add (100 / panel_height, animation_step);
++        Timeout.add (100 / panel_height, animation_unstep);
++    }
++
++    private bool on_idle () {
++        animate_panel ();
++
++        //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
++
++        Timeout.add (100 / panel_height, animation_unstep);
++
++        return true;
++    }
++
++    private bool reactivate () {
++        animate_panel ();
++
++        Timeout.add (100 / panel_height, animation_step);
++
++        return true;
+     }
+ 
+     private void update_panel_dimensions () {
+@@ -108,6 +148,24 @@
+         update_struts ();
+     }
+ 
++    private void animate_panel () {
++        panel_height = panel.get_allocated_height ();
++
++        monitor_number = screen.get_primary_monitor ();
++        Gdk.Rectangle monitor_dimensions;
++        this.screen.get_monitor_geometry (monitor_number, out monitor_dimensions);
++
++        monitor_width = monitor_dimensions.width;
++        monitor_height = monitor_dimensions.height;
++
++        this.set_size_request (monitor_width, (popover_manager.current_indicator != null ? monitor_height : -1));
++
++        monitor_x = monitor_dimensions.x;
++        monitor_y = monitor_dimensions.y;
++
++        this.move (monitor_x, monitor_y - (panel_height + panel_displacement));
++    }
++
+     private void update_visual () {
+         var visual = this.screen.get_rgba_visual ();
+ 
