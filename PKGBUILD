@@ -3,7 +3,7 @@
 
 _pkgname=onedrive
 pkgname=$_pkgname-git
-pkgver=r132.g88d2a94
+pkgver=r154.g4511242
 pkgrel=1
 epoch=1
 pkgdesc='Free OneDrive client written in D'
@@ -23,18 +23,11 @@ pkgver() {
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  sed -i 's|/usr/local|/usr|g' $_pkgname/onedrive.service
-}
-
 build() {
-  make -C $_pkgname
+  make PREFIX=/usr -C $_pkgname
 }
 
 package() {
-  cd $_pkgname
-
-  install -Dm755 onedrive -t "$pkgdir/usr/bin/"
-  install -Dm644 config "$pkgdir/usr/share/onedrive/config.default"
-  install -Dm644 onedrive.service -t "$pkgdir/usr/lib/systemd/user/"
+  make PREFIX=/usr DESTDIR="$pkgdir" -C $_pkgname install
+  install -Dm644 $_pkgname/config "$pkgdir/usr/share/onedrive/config.default"
 }
