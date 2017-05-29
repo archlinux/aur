@@ -1,5 +1,5 @@
 *.asc
-*.gz
+*.tgz
 logs/
 *.pkg.tar.xz
 *.sig
