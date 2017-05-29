@@ -76,4 +76,4 @@ bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
   msg2 "Creating symlink to hyphen..."
   ln -Ts /usr/share/hyphen "$pkgdir/opt/waterfox/hyphenation"
 }
-sha256sums=('cfd8d3e9e3e50b517a90637401b81b228026b44058dd03bcb9331741f0ae78c7')
+sha256sums=('0b7d36ecac5d69bc0b00e930899a3b3f908d02c9394328e859dfcf24f7057b0c')

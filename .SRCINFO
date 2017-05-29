@@ -23,7 +23,7 @@ pkgbase = waterfox-kde-bin
 	options = !emptydirs
 	options = !strip
 	source = waterfox-kde_53.0.3_amd64.deb::https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox-kde/waterfox-kde_53.0.3_amd64.deb
-	sha256sums = cfd8d3e9e3e50b517a90637401b81b228026b44058dd03bcb9331741f0ae78c7
+	sha256sums = 0b7d36ecac5d69bc0b00e930899a3b3f908d02c9394328e859dfcf24f7057b0c
 
 pkgname = waterfox-kde-bin
 
