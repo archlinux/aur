@@ -1,12 +1,13 @@
-# Maintainer: Mathieu OTHACEHE <m.othacehe@gmail.com>
+# Maintainer: Philipp A. <flying-sheep@web.de>
+# Contibutor: Mathieu OTHACEHE <m.othacehe@gmail.com>
 
 pkgname=sencha-cmd-6
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks'
 url='https://www.sencha.com/products/extjs/cmd-download/'
 arch=(i686 x86_64)
-license=(GPL)
+license=('custom: commercial')
 depends=(java-runtime ttf-font)
 provides=(sencha-cmd)
 conflicts=(sencha-cmd sencha-cmd-5)
@@ -16,9 +17,10 @@ sha512sums_i686=('139b099b2f6e9882fc6f167c68b439bc918312851397e25fcb88018e50a4c5
 sha512sums_x86_64=('9170a22be6c97b30785a30519e62d65930bb870e94eaae869eaaf2c5b366b3a377701d5f67890f27b3f56e9f98e64ac55fb2dc7c3e14078383fc1ad076a2f30b')
 
 build() {
+	#tail -c 1397056  SenchaCmd-$pkgver.*-linux-amd64.sh > sfx_archive.tar.gz
 	bash SenchaCmd-$pkgver.*-linux-amd64.sh -q \
 		-Dall=true \
-		-VaddToPath=No \
+		-V'addToPath$Integer'=1 \
 		-dir "$srcdir/$pkgname-$pkgver"
 }
 
