@@ -4,7 +4,7 @@
 pkgname=elasticdump2
 _pkgname=elasticdump
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Import and export tools for Elasticsearch < 5"
 arch=(any)
 url="https://www.npmjs.com/package/elasticdump"
@@ -20,6 +20,9 @@ package() {
   rm -r "$pkgdir/usr/etc"
 
   mv "$pkgdir/usr/lib/node_modules/$_pkgname" "$pkgdir/usr/lib/node_modules/$pkgname"
-  mv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/bin/$pkgname"
-  mv "$pkgdir/usr/bin/multi$_pkgname" "$pkgdir/usr/bin/multi$pkgname"
+  rm "$pkgdir/usr/bin/$_pkgname"
+  rm "$pkgdir/usr/bin/multi$_pkgname"
+  cd "$pkgdir/usr/bin"
+  ln -s "../lib/node_modules/$pkgname/bin/$_pkgname" $pkgname
+  ln -s "../lib/node_modules/$pkgname/bin/multi$_pkgname" multi$pkgname
 }
