@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/rstudio/www/index.htm
+Target = usr/share/libalpm/hooks/rstudio-ligatures.hook
+
+[Action]
+Description = Enabling RStudio ligatures
+When = PostTransaction
+Exec = /usr/bin/sed -i 's/.!head_tags./\0\n    <style>* {text-rendering: optimizeLegibility}<\/style>/' /usr/lib/rstudio/www/index.htm
