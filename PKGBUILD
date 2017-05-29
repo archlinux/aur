@@ -4,8 +4,8 @@
 # Contributor: Andrea 'dedalus' Turconi <andy.dedalus@gmail.com>
 
 pkgname=freefem++
-pkgver=3.50
-pkgrel=2
+pkgver=3.53+1
+pkgrel=1
 pkgdesc="A PDE oriented language using the finite element method"
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
@@ -15,7 +15,7 @@ makedepends=('gcc-fortran' 'ed' 'wget')
 options=('!makeflags')
 source=("http://www.freefem.org/ff++/ftp/$pkgname-${pkgver//+/-}.tar.gz"
         'disable-doc.patch')
-sha256sums=('26edf4f305ddc2ccb143377e845ecde754a2c7aafa315b5aac3c54a69421e076'
+sha256sums=('b9e4ce65468e89791313ae515daf646bb06d5bde19091648b94a938c2c44f4a1'
             '0e6a176f38c0d9ec299994d978ae378f71aafe55ef90c1fb5d40e137ba939d70')
 
 prepare() {
