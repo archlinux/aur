@@ -8,8 +8,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-nand         # Build stock kernel
-_pkgbasever=4.10-gnu
-_pkgver=4.10.16-gnu
+_pkgbasever=4.11-gnu
+_pkgver=4.11.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -28,12 +28,12 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm.sig"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm.sig"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_vga16.ppm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -42,9 +42,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         'linux.preset'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
-sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
+sha512sums=('f1d9138024b127385248de5c8eb72123b717bbbaba3e80bded20f073acac816a7ea979c4677ddc72252a8ec77c6a6c1d1738b1c20106f7d53ef39c9cf64c1853'
             'SKIP'
-            '83b92415a071baf8064fe4d6f2a100d3201236fcf46c689b2391a4fecbc4be0005fe8b8e4c73266f968e79a1da0f789a8c482db3ca22013967353d8c52d84697'
+            '181d9aef7b766dbe11e7dd09e8030239d0040af782cdd37dc9b8d2f9da8849e51c5aa8cbd44f89bebf8d9f6f97ddeefb2a8feb95d2c674e06c16a6be2d5a9fad'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -52,8 +52,8 @@ sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf58
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '7cf0242c255d12369fb1c133ad6424e799019addaf85a536c6c1e1dba07a2e4de1e77295dfb9c6ef2cc52e87c3aae9205867d9ceb675dc8e66be7a13b47405b0'
-            '6fef7c4796da7399a3072e0178ba6ddbe2d81341054af9ac97536d18e8317b63d6b54d74e5522c888315f8deb696a062ac8f0731c868c5ed511a75098a540949'
+            '0af48a9198fb3828ddbde745fd36dc42a1c609e2caef4b6f144812b3ac84562b54ced35928790b12e8230389771585d94445e945592688f4e9fbbd1aef3d72a7'
+            'f7e76df8de15b0d8f3de1ddecd3c5e4ca0cb7874bac2f342f0712d2a4041e4124b4e7b39dd170104ae57dec8a8c9c3429af07340b742ae1cc402bdd837d71c0c'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
@@ -130,7 +130,7 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "kernel=${_archpkgver}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
