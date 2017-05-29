@@ -2,7 +2,7 @@
 
 pkgname='scaleft-client-tools'
 pkgdesc='ScaleFT(TM) client tools'
-pkgver=1.25.4
+pkgver=1.26.2
 pkgrel=1
 arch=('x86_64')
 url="https://scaleft.com"
@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('rpmextract')
 depends=('glibc')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm")
-sha256sums=('1427e58989d646f8f066dd45eda7994c3f05445aa3ce1ec0aaab25e8f14a72d0')
+sha256sums=('d649e3f6c918b369f131ff8f282cd78204542e0fc98d31e7a830488243636c30')
 
 prepare() {
 	rpmextract.sh ${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm
