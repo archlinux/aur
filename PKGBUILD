@@ -2,7 +2,7 @@
 
 pkgname=hfsutils
 pkgver=3.2.6
-pkgrel=9
+pkgrel=10
 pkgdesc="A comprehensive software to permit manipulation of HFS volumes"
 arch=("i686" "x86_64")
 url="http://www.mars.org/home/rob/proj/hfs/"
@@ -17,10 +17,6 @@ source=("ftp://ftp.mars.org/pub/hfs/$pkgname-$pkgver.tar.gz"
         "hfsutils-3.2.6-fix-tcl-8.6.patch")
 
 prepare() {
-
-  # Upstream bug, need patch, not build with default cppflags
-  unset CPPFLAGS CFLAGS
-
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Fixed Makefile @INSTALL@ path
@@ -38,6 +34,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Upstream bug, need patch, not build with default cppflags
+  unset CPPFLAGS CFLAGS
+
   ./configure --prefix="${pkgdir}/usr" \
   	--sbindir="/usr/bin" \
   	--bindir="/usr/bin" \
@@ -49,6 +49,7 @@ build() {
   	DESTDIR="${pkgdir}/usr" \
   	BINDEST="${pkgdir}/usr/bin" \
 	SBINDEST="${pkgdir}/usr/bin"
+
   # change the without to with to add tcl and/or tk support
 
   cd "${srcdir}/${pkgname}-${pkgver}/hfsck"
@@ -61,6 +62,7 @@ build() {
 
 #check() {
 #  cd "${srcdir}/${pkgname}-${pkgver}"
+#  # Check ALLWAYS fail
 #  make -k check
 #}
 
