@@ -2,9 +2,10 @@
 
 pkgname=blis
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('i686' 'x86_64')
+depends=('glibc')
 license=('BSD')
 url='https://github.com/flame/blis'
 #provides=('blas=3.5.0' 'cblas')
