@@ -23,7 +23,7 @@ build() {
     cd "$srcdir/$_gitname"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir" \
+    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -DRAPIDJSON_HAS_STDSTRING=ON \
         -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DRAPIDJSON_BUILD_EXAMPLES=OFF \
