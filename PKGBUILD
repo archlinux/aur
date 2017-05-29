@@ -34,8 +34,8 @@ _shadow_build=true
 # automatically disabled if you are building webengine
 _debug=true
 _skip_qtscript=false
-_skip_web_engine=false
-_skip_qt_widgets=false
+_skip_qtwebengine=false
+_skip_qtwidgets=false
 _static_build=false
 _build_from_head=false
 _patching=true
@@ -105,8 +105,8 @@ esac
 
 if $_building && $_minimal; then
   _skip_qtscript=true;
-  _skip_web_engine=true;
-  _skip_qt_widgets=true;
+  _skip_qtwebengine=true;
+  _skip_qtwidgets=true;
   pkgname="${pkgname}-minimal"
 fi
 
@@ -119,9 +119,9 @@ fi
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
 
 $_build_from_head && _patching=false && _shadow_build=true
-$_skip_web_engine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine -no-icu"
-$_skip_qt_script && _additional_configure_flags="$_additional_configure_flags -skip qtscript"
-$_skip_qt_widgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
+$_skip_qtwebengine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine -no-icu"
+$_skip_qtscript && _additional_configure_flags="$_additional_configure_flags -skip qtscript"
+$_skip_qtwidgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
 $_static_build && _additional_configure_flags="$_additional_configure_flags -static"
 $_float && _additional_configure_flags="$_additional_configure_flags -qreal float"
 
