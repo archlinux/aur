@@ -33,7 +33,9 @@ _float=false
 _shadow_build=true
 # automatically disabled if you are building webengine
 _debug=true
+_skip_qtscript=false
 _skip_web_engine=false
+_skip_qt_widgets=false
 _static_build=false
 _build_from_head=false
 _patching=true
@@ -89,7 +91,6 @@ __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 case ${_piver} in
 1)
   _toolchain_name=armv6-rpi-linux-gnueabihf
-  _minimal=true
   # too problematic for me to care about
   #_float=true
 ;;
