@@ -1,15 +1,13 @@
-# Maintainer: frames <markkuehn at outlook dot com>
-
 _pkgname=kamoso
 pkgname=$_pkgname-git
-pkgver=908.5cf48dd
+pkgver=r994.95d86f8
 pkgrel=1
 pkgdesc="Kamoso is an application to take pictures and videos out of your webcam. Git version."
 url="https://projects.kde.org/projects/extragear/multimedia/kamoso"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('qt5-gstreamer' 'libkipi')
-makedepends=('cmake' 'git' 'purpose-git')
+depends=('qt5-gstreamer' 'purpose-git' 'kirigami')
+makedepends=('cmake' 'git')
 conflicts=('kamoso')
 provides=('kamoso')
 
@@ -18,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	echo "$(git rev-list --count HEAD).$(git describe --always)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
