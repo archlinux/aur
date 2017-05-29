@@ -5,11 +5,11 @@
 # Contributor: Christophe Gueret <tolgam@homegnu.net>
 pkgname=blt-git
 pkgver=r875.5ab3f0a
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds new commands and widgets to the Tcl interpreter."
 url="http://blt.sourceforge.net"
 license=("custom")
-depends=('tk')
+depends=('tk' 'libxpm' 'libxrandr' 'libtiff' 'libjpeg-turbo' 'libssh2' 'libmariadbclient' 'sqlite')
 makedepends=('git')
 conflicts=('blt_tcl85')
 arch=('i686' 'x86_64')
