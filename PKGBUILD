@@ -42,14 +42,14 @@ pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
 pkgver=4.11.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfq_mq_patch='4.11-bfq-mq-20170518.patch'
+_bfq_mq_patch='4.11-bfq-mq-20170529.patch'
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -68,7 +68,7 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            'f9aaddb4363f91dfa3ee69c1662944254e979572c32e25cad12b061eaa742a79'
+            '76654ea3f587c377d90bcfefd2ac5bf2b04d04165eae77b32849acd8c14add3c'
             'd0fb9f05857124246b613505934da979990f6080631eedec615236d8dad6f06e'
             'c8df5b77b43c426d34fd8a9e690df1632f2f0efbbbedfc8e98337b74c7cc1c40'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
