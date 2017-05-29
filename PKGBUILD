@@ -2,7 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.10.845.3
+pkgver=1.10.856.16
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
@@ -16,7 +16,7 @@ optdepends=(
     'vivaldi-widevine: Widevine DRM Plugin'
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
-sha512sums=('b9257a4061fbae08f92fe56b873cf4eec8c2df6353453ee9f1e1c56ac05cb2485c5f69c058186cce9d9986b5fa9929cc1b8473d8ddec87f411e9181a302d1046')
+sha512sums=('9b1ed90d17cb0fbba2c7e9b2f0ea3316cb5f43c31a8cb11bee0c8a4f6db4f8dcec55111bd250367c1521fc57170ff70a0bac500b1c73c858bc57dd1862509289')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
