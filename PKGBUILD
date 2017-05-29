@@ -4,7 +4,7 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=10
+_minor=11
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -82,7 +82,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
 	'config' 'config.x86_64'		# the main kernel config files
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
-        "git+$_aufs3#branch=aufs4.$_minor"
+   #     "git+$_aufs3#branch=aufs4.$_minor"
         "uksm-$_major.$_minor.patch"::"http://kerneldedup.org/download/uksm/0.1.2.6/uksm-0.1.2.6-for-v$_major.$_minor.patch"
         "90-linux-pf.hook"
        )
@@ -92,33 +92,33 @@ prepare() {
   cd "${srcdir}/linux-${_basekernel}"
   msg "Applying pf-kernel patch"
   patch -Np1 < ${srcdir}/${_pfpatchname}
-  msg "applying aufs3 patches"
-  cd "$srcdir/${_aufs3##*/}"
+#  msg "applying aufs3 patches"
+#  cd "$srcdir/${_aufs3##*/}"
 #  git checkout origin/aufs${_basekernel} || _aufs3checkout=KRAKRA
-  if [[ ${_aufs3checkout} = "KRAKRA" ]]; then
-      echo
-      msg "AUFS3 not yet ported to version ${_basekernel}!"
-      msg "Skipping related patches."
-      echo
-      cd ..
-  else
+ # if [[ ${_aufs3checkout} = "KRAKRA" ]]; then
+  #    echo
+   #   msg "AUFS3 not yet ported to version ${_basekernel}!"
+    #  msg "Skipping related patches."
+     # echo
+     # cd ..
+  #else
     #        mkdir -p "${pkgdir}/usr/lib/modules/build/${_kernver}/include"
     #        mv include/linux/Kbuild "${pkgdir}/usr/lib/modules/build/${_kernver}/include/"
-    rm include/uapi/linux/Kbuild
-    cp -a {Documentation,fs,include} ${srcdir}/linux-${_basekernel}/
-    cd ../linux-${_basekernel}
-    msg "Patching aufs3"
-    for _patch in ${srcdir}/${_aufs3##*/}/*.patch; do
-      patch -Np1 -i ${_patch} || _aufs3fail=KRAKRA
-    done
-    if [[ ${_aufs3fail} = "KRAKRA" ]]; then
-	echo
-    	warning "Not all aufs3 patches applied correctly. Ignore this if you won't use AUFS."
-    	warning "Otherwise, press CTRL-C now and fix manually"
-	warning "Remind me to enable it again if it's aviable again"
-    	echo
-    fi
-  fi
+   # rm include/uapi/linux/Kbuild
+    #cp -a {Documentation,fs,include} ${srcdir}/linux-${_basekernel}/
+    #cd ../linux-${_basekernel}
+    #msg "Patching aufs3"
+    #for _patch in ${srcdir}/${_aufs3##*/}/*.patch; do
+    #  patch -Np1 -i ${_patch} || _aufs3fail=KRAKRA
+    #done
+    #if [[ ${_aufs3fail} = "KRAKRA" ]]; then
+#	echo
+    #	warning "Not all aufs3 patches applied correctly. Ignore this if you won't use AUFS."
+    #	warning "Otherwise, press CTRL-C now and fix manually"
+#	warning "Remind me to enable it again if it's aviable again"
+ #   	echo
+  #  fi
+  #fi
   
   # linux-ARCH patches
 
@@ -701,11 +701,10 @@ package_linux-pf-preset-default()
 pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3"
 
 # makepkg -g >>PKGBUILD
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
-            'c5f788e83efcef4f0eb26e8aa3eceac1c2db9ca047e34cc37251fc4f0be63784'
-            'e15ef66afbe1448539aa9df56cca906c45abe514521ab80da06bffa45b2d365d'
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
+            'c2d2327ad9a78d06a96efdeed18575e433e077261ff2e1e299d038d10805849e'
+            'cac9f249e878d0b7f8a523855c1b3181f80fd67e6da719ac7f5c14bdbee21131'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'd38323bb91b6f2b04d1d51247bbfbab57daabc22ad71c0e195f688679db2f7e6'
-            'SKIP'
-            '6752da3c575963f4c95b1df66d8a6fd96d47b7b88d0cf2b0b002dc23d6f8833b'
+            '54ac2cd29f7ecd2a4118100303a959dd2ec415bddbbc56f0072ae6fed71f42cc'
+            'bba97e70a69561e026ef8898c441fde136204d89c974d28a50f4542f4df4c52f'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
