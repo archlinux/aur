@@ -1,6 +1,6 @@
 pkgbase = mopidy-subidy
 	pkgdesc = Mopidy extension for playing music from Subsonic servers
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/Prior99/mopidy-subidy
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = mopidy-subidy
 	depends = python2-setuptools
 	depends = python2-pysonic>=0.6.1
 	provides = mopidy-subidy
-	source = https://github.com/prior99/mopidy-subidy/archive/0.3.2.tar.gz
-	sha256sums = 81d25db646691711122e4e57cfece11bed4a955ec65ebaa46a8afb060e9868be
+	source = https://github.com/prior99/mopidy-subidy/archive/0.3.3.tar.gz
+	sha256sums = b7db9de61d54b6974ba6b309afc96f7a4f97e18b9980e3bcebb5da1f7511543b
 
 pkgname = mopidy-subidy
 
