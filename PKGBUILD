@@ -6,8 +6,8 @@
 # Contributer: Jarek Sedlacek <JarekSedlacek@gmail>
 
 pkgname=grive-git
-pkgver=434.7bbb01c
-pkgrel=2
+pkgver=439.4b6cf69
+pkgrel=1
 pkgdesc='An open source Linux client for Google Drive with support for the new Drive REST API and partial sync'
 arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
