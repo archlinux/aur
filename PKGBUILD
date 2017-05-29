@@ -1,7 +1,7 @@
 _npmname=create-elm-app
-_npmver=0.7.0
+_npmver=0.8.1
 pkgname=create-elm-app
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Create Elm apps with zero configuration"
 arch=(any)
