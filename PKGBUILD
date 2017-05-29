@@ -1,21 +1,16 @@
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: Michal Krenek <mikos@sg1.cz>
-
-_username=boinc-next
+_username=vorot93
 _reponame=volunode
 #_ref="#branch=develop"
 _pkgbase=volunode
 pkgname=${_pkgbase}-git
 pkgdesc="Next generation client for Berkeley Open Infrastructure for Network Computing."
-pkgver=r29415.bea54ec
+pkgver=r30167.6d90b58c2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/$_username/${_reponame/}"
 license=('LGPL')
-depends=('glibmm' 'curl' 'boinc-app-api')
-makedepends=('libxslt' 'perl-xml-sax' 'git' 'curl' 'inetutils' 'pstreams' 'rsync')
+depends=('curl' 'boinc-app-api')
+makedepends=('git' 'curl' 'meson' 'pstreams')
 install=$_pkgbase.install
 options=('!staticlibs')
 source=("git+https://github.com/${_username}/${_reponame}${_ref}"
@@ -30,22 +25,27 @@ sha256sums=(
             )
 
 pkgver() {
-  cd "$_reponame"
+  cd "${_reponame}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${srcdir}/${_reponame}
+  if [ ! ${srcdir}/build ]; then
+    mkdir -p ${srcdir}/build
+    cd ${srcdir}/${_reponame}
+    meson --prefix=/usr --buildtype=release ${srcdir}/build
+    cd ..
+  fi
 
-  autoreconf -i
-  ./configure --prefix=/usr --disable-documentation --enable-headers
-  make
+  cd ${srcdir}/build
+
+  ninja
 }
 
 package() {
-  cd ${_reponame}
+  cd ${srcdir}/build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 
   #install systemd unit
   install -Dm644 "${srcdir}/${_pkgbase}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
