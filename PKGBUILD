@@ -4,7 +4,7 @@
 
 pkgname=antileech
 _gitname=amule-dlp.antiLeech
-pkgver=10.c526f61
+pkgver=v4405.r15.a9f4304
 pkgrel=1
 pkgdesc="AntiLeech Library for aMule-dlp"
 arch=('i686' 'x86_64')
@@ -16,12 +16,11 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	echo "$(git rev-list --count HEAD).$(git describe --always)"
+    printf "v4405.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/$_gitname"
-  sed -i 's:wx-config --cppflags:wx-config-2.8 --cppflags:g' configure.ac
   ./autogen.sh
   ./configure --prefix="${pkgdir}/usr"
   make
