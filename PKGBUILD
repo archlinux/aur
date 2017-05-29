@@ -2,7 +2,7 @@
 
 pkgname=libshout-idjc
 pkgver=2.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Libshout library plus some extensions for IDJC."
 arch=(i686 x86_64)
 url="http://idjc.sourceforge.net/"
@@ -10,6 +10,11 @@ depends=('libvorbis' 'libtheora' 'speex' 'openssl' 'twolame')
 options=('!emptydirs')
 source=("http://downloads.sourceforge.net/idjc/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 license=('LGPL')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  sed -e 's/SSLeay_add_all_algorithms/OpenSSL_add_all_algorithms/g' -i src/tls.c
+}
 
 build()
 {
