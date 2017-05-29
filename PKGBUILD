@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=v2.0.4.r44.g75926a9c
+pkgver=v2.0.4.r152.g29c291d1
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
