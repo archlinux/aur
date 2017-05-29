@@ -1,7 +1,7 @@
 pkgbase = rambox
 	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
 	pkgver = 0.5.8
-	pkgrel = 3
+	pkgrel = 4
 	url = http://rambox.pro/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rambox
 	makedepends = yarn
 	makedepends = sencha-cmd-6
 	depends = electron
-	noextract = Rambox-0.5.8-x64.tar.gz
+	noextract = Rambox-0.5.3-x64.tar.gz
 	source = https://github.com/saenzramiro/rambox/archive/0.5.8.tar.gz
 	source = https://github.com/saenzramiro/rambox/releases/download/0.5.3/Rambox-0.5.3-x64.tar.gz
 	source = rambox.desktop
