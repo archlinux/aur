@@ -2,7 +2,7 @@
 
 pkgname=hfsutils
 pkgver=3.2.6
-pkgrel=10
+pkgrel=11
 pkgdesc="A comprehensive software to permit manipulation of HFS volumes"
 arch=("i686" "x86_64")
 url="http://www.mars.org/home/rob/proj/hfs/"
@@ -80,9 +80,16 @@ package() {
   # Faulty makefile, install hfsck
   install -m 755 "${srcdir}/${pkgname}-${pkgver}/hfsck/hfsck" \
   	"${pkgdir}/usr/bin/hfsck"
+  
+  # Standard linux toolset
   cd "${pkgdir}/usr/bin"
   ln -f "hfsck" "fsck.hfs"
+  ln -f "hformat" "mkfs.hfs"
 
+  # Toolset for standard linux manpages
+  cd "${pkgdir}/usr/share/man/man1/"
+  # ln -f "hfsck.1" "fsck.hfs.1" # there no manpage for hfsck
+  ln -f "hformat.1" "mkfs.hfs.1"
 }
 
 md5sums=('fa572afd6da969e25c1455f728750ec4'
