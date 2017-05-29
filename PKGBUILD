@@ -1,8 +1,8 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
-
+# With help from Nicolas Porcel
 pkgbase=linux-max98090
 _srcname=linux-4.11
-pkgver=4.11.2
+pkgver=4.11.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -27,10 +27,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'df7138c754c95f2c22127d1d76c122dbfe26b0b586572855d9d095f0d112b29b'
+            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
             'SKIP'
-            'd5838e62606983753f0426c8008b1be2c8fbb76f4e540f20f3f851f1ff85718f'
-            '2e2ba527579196e2823ae6c09b7d6dc4c65f88f3816956487d7a808559a084b1'
+            '8e21d15a9970973ff59059b756899adaf082026661c851afdaac9fb2173aa3ad'
+            '47b46e99454b508a247ccdf8687d8b1dc760f1f505fafcf6a93bd1e39b3658ec'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '3a4d8d182de94c031860c33ae35d92c5f9f3b987b0a5191c4e15366353a8d217'
