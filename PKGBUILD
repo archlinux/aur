@@ -1,8 +1,8 @@
 # Maintainer Robert Booster > boosterdev@linuxmail.org
-# Automatic builder > https://github.com/boosterdev/autobuild
 
-pkgname="numix-icon-theme-pack"
-pkgver="LATEST"
+pkgbase="numix-icon-theme-pack"
+pkgname="numix-icon-theme-pack-git"
+pkgver="r4477.1ed32a50"
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
@@ -17,6 +17,13 @@ source=("numix-icon-theme-square::git+https://github.com/numixproject/numix-icon
         "numix-icon-theme::git+https://github.com/numixproject/numix-icon-theme.git"
         "numix-core::git+https://github.com/numixproject/numix-core.git")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+pkgver() {
+  cd $srcdir/numix-core
+  (
+    echo \"$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")\"
+  )
+}
 
 prepare() {
   # update with Numix-Core
