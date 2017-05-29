@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=libshout-idjc-git
-pkgver=882.7e4ff89
+pkgver=891.61ef6b1
 pkgrel=1
 pkgdesc="Libshout library plus some extensions for IDJC."
 arch=(i686 x86_64)
@@ -14,8 +14,12 @@ options=('!emptydirs')
 source=('libshout-idjc::git://idjc.git.sourceforge.net/gitroot/idjc/idjc/')
 license=('LGPL')
 
-build()
-{
+prepare() {
+  cd $srcdir/libshout-idjc/libshout-idjc
+  sed -e 's/SSLeay_add_all_algorithms/OpenSSL_add_all_algorithms/g' -i src/tls.c
+}
+
+build(){
   cd $srcdir/libshout-idjc
   ./bootstrap
   cd libshout-idjc
