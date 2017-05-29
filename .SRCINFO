@@ -1,0 +1,16 @@
+pkgbase = nct6775-dkms-git
+	pkgdesc = Nuvoton module for nct67xx chips not yet supported in the kernel.
+	pkgver = r148.3100f3c
+	pkgrel = 1
+	url = https://github.com/groeck/nct6775
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	source = git://github.com/groeck/nct6775.git
+	source = dkms.conf.in
+	md5sums = SKIP
+	md5sums = def0cd6481eec8acdae8340655aa278f
+
+pkgname = nct6775-dkms-git
+
