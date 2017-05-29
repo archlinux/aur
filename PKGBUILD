@@ -30,7 +30,7 @@ _pkgname=firefox
 pkgname=iceweasel
 epoch=1
 pkgver=$_debver.$_debrel
-pkgrel=5
+pkgrel=6
 pkgdesc="A libre version of Debian Iceweasel, the standalone web browser based on Mozilla Firefox."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
@@ -140,32 +140,32 @@ prepare() {
   cp -av /usr/lib/mozilla/searchplugins browser/locales
 
   # Disable various components at the source level
-  patch -Np1 -i "$srcdir/$pkgname-disabled-components.patch"
-  sed -i 's|1|0|' toolkit/components/telemetry/TelemetryStartup.manifest || die "failed break telemetry startup"
-  sed -i 's|1|0|' toolkit/components/remotebrowserutils/remotebrowserutils.manifest || die "failed break remotebrowsing at startup"
-  sed -i 's|1|0|' toolkit/components/captivedetect/CaptivePortalDetectComponents.manifest || die "failed to break captiveportaldetection at startup"
-  sed -i 's|1|0|' toolkit/components/terminator/terminator.manifest || die "failed to break terminator at startup"
-  sed -i 's|1|0|' toolkit/components/securityreporter/SecurityReporter.manifest || die "failed to break securityReporter"
-  sed -i 's|1|0|' toolkit/components/crashes/CrashService.manifest || die "failed to break CrashService"
-  sed -i 's|1|0|' toolkit/components/crashmonitor/crashmonitor.manifest || die "failed to break CrashMonitor"
-  sed -i '/gmp-clearkey/d' toolkit/toolkit.mozbuild || die "failed to remove ClearKey DRM"
-  sed -i 's|1|0|' browser/experiments/Experiments.manifest || die "failed to break ExperimentsService"
-  #echo "" > dom/flyweb/moz.build || die "failed to break FlyWeb"
-  echo "" > toolkit/crashreporter/moz.build || die "Failed to dsiable CrashReporter"
-  echo "Disabling intrusive Balrog backdoor... please wait."
-  echo "" > testing/moz.build || die "failed to disable testing directory (contains Balrog/WebRTC/etc)"
-  grep -rl "aus4.mozilla.org"  | xargs sed -i 's/aus4.mozilla.org/0.0.0.0/' || die "Failed to delete aus4 Barlog servers"
-  grep -rl "aus5.mozilla.org"  | xargs sed -i 's/aus5.mozilla.org/0.0.0.0/' || die "Failed to delete aus5 Barlog servers"
-  echo "" > browser/extensions/moz.build || die "failed to disable bundled extensions"
-  echo "" > browser/app/blocklist.xml || die "failed to clear pre-loaded blocklist"
-  echo "" > services/cloudsync/moz.build || die "failed to disable CloudSync"
-  echo "" > services/fxaccounts/moz.build || die "failed to disable FxAccounts"
-  echo "" > modules/libmar/moz.build || die "failed to disable libmar (custom file format used for unattended mozilla updates)"
-  echo "" > netwerk/wifi/moz.build || die "failed to disable wifi"
-  echo "" > media/sphinxbase/moz.build || die "failed to disable SphinxBase voice recognition"
-  echo "" > media/pocketsphinx/moz.build || die "failed to disable PocketSpinx voice recognition"
-  #echo "" > b2g/moz.build || die "failed to disable B2G"
-  echo "origin	install	1	https://addons.mozilla.org" > browser/app/permissions  || die "failed disable remote login whitelist"
+#  patch -Np1 -i "$srcdir/${pkgname%-*}-disabled-components.patch"
+#  sed -i 's|1|0|' toolkit/components/telemetry/TelemetryStartup.manifest || die "failed break telemetry startup"
+#  sed -i 's|1|0|' toolkit/components/remotebrowserutils/remotebrowserutils.manifest || die "failed break remotebrowsing at startup"
+#  sed -i 's|1|0|' toolkit/components/captivedetect/CaptivePortalDetectComponents.manifest || die "failed to break captiveportaldetection at startup"
+#  sed -i 's|1|0|' toolkit/components/terminator/terminator.manifest || die "failed to break terminator at startup"
+#  sed -i 's|1|0|' toolkit/components/securityreporter/SecurityReporter.manifest || die "failed to break securityReporter"
+#  sed -i 's|1|0|' toolkit/components/crashes/CrashService.manifest || die "failed to break CrashService"
+#  sed -i 's|1|0|' toolkit/components/crashmonitor/crashmonitor.manifest || die "failed to break CrashMonitor"
+#  sed -i '/gmp-clearkey/d' toolkit/toolkit.mozbuild || die "failed to remove ClearKey DRM"
+#  sed -i 's|1|0|' browser/experiments/Experiments.manifest || die "failed to break ExperimentsService"
+#  #echo "" > dom/flyweb/moz.build || die "failed to break FlyWeb"
+#  echo "" > toolkit/crashreporter/moz.build || die "Failed to dsiable CrashReporter"
+#  echo "Disabling intrusive Balrog backdoor... please wait."
+#  echo "" > testing/moz.build || die "failed to disable testing directory (contains Balrog/WebRTC/etc)"
+#  grep -rl "aus4.mozilla.org"  | xargs sed -i 's/aus4.mozilla.org/0.0.0.0/' || die "Failed to delete aus4 Barlog servers"
+#  grep -rl "aus5.mozilla.org"  | xargs sed -i 's/aus5.mozilla.org/0.0.0.0/' || die "Failed to delete aus5 Barlog servers"
+#  echo "" > browser/extensions/moz.build || die "failed to disable bundled extensions"
+#  echo "" > browser/app/blocklist.xml || die "failed to clear pre-loaded blocklist"
+#  echo "" > services/cloudsync/moz.build || die "failed to disable CloudSync"
+#  echo "" > services/fxaccounts/moz.build || die "failed to disable FxAccounts"
+#  echo "" > modules/libmar/moz.build || die "failed to disable libmar (custom file format used for unattended mozilla updates)"
+#  echo "" > netwerk/wifi/moz.build || die "failed to disable wifi"
+#  echo "" > media/sphinxbase/moz.build || die "failed to disable SphinxBase voice recognition"
+#  echo "" > media/pocketsphinx/moz.build || die "failed to disable PocketSpinx voice recognition"
+#  #echo "" > b2g/moz.build || die "failed to disable B2G"
+#  echo "origin	install	1	https://addons.mozilla.org" > browser/app/permissions  || die "failed disable remote login whitelist"
 
   # ARM-specific changes:
   if [[ "$CARCH" == arm* ]]; then
