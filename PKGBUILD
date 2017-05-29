@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 pkgname=fastpwd
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Hash-based (SHA-3) Qt password generator and manager"
 url="https://github.com/pfactum/fastpwd/"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPLv3')
 depends=(
 	'bzip2'
 	'freetype2'
-	'gcc-libs-multilib'
+	'gcc-libs'
 	'glib2'
 	'glibc'
 	'graphite'
