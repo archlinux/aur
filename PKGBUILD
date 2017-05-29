@@ -2,7 +2,7 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libva-utils
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Intel VA-API Media Applications and Scripts for libva"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('libva-intel-driver: backend for Intel cards')
 options=('!emptydirs')
 changelog=
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=('cbd7a88b9b2592106879d271008c9e2236457e5bf4a647efe4bb3d3eaabaf94c')
+sha256sums=('ccae885d9f3b4511081d287816c56bd7dda98e5947e6254ebe60d08e86c6ba4a')
 
 build() {
 	export LD_RUN_PATH='$ORIGIN/lib/'
