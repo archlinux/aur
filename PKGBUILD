@@ -22,7 +22,7 @@
 # option will force the rebuild of all git sources.
 
 pkgname=mupen64plus-git
-pkgver=2.5.r222.g5f6fb04.20170219.172534
+pkgver=2.5.r374.g1d6d57e.20170529.153246
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (Git version)'
 arch=('i686' 'x86_64')
