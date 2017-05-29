@@ -1,16 +1,16 @@
 pkgbase = ruby-slop
 	pkgdesc = Simple Lightweight Option Parsing
-	pkgver = 4.4.3
+	pkgver = 4.5.0
 	pkgrel = 1
-	url = http://github.com/leejarvis/slop
+	url = https://rubygems.org/gems/slop
 	arch = any
 	license = MIT
 	makedepends = ruby
 	optdepends = ruby-minitest
 	optdepends = ruby-rake
-	noextract = slop-4.4.3.gem
-	source = https://rubygems.org/gems/slop-4.4.3.gem
-	sha256sums = 53f6adf091a060999425e50cf94acfde4d19a921f2522b3c7bfb8da8721fa27d
+	noextract = slop-4.5.0.gem
+	source = https://rubygems.org/gems/slop-4.5.0.gem
+	sha256sums = 17542a5c73cbf6a76f8638939781e4431d07dc64b359b958b23383574641d52d
 
 pkgname = ruby-slop
 
