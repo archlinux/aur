@@ -1,0 +1,15 @@
+pkgbase = libserial-git
+	pkgdesc = A library for accessing serial ports on POSIX systems (git version)
+	pkgver = r148.80e5f25
+	pkgrel = 1
+	url = https://github.com/crayzeewulf/libserial/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	provides = libserial
+	conflicts = libserial
+	source = libserial-git::git+https://github.com/crayzeewulf/libserial.git
+	sha512sums = SKIP
+
+pkgname = libserial-git
+
