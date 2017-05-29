@@ -1,0 +1,27 @@
+From 10a6644218e76ee930ea678d46f1d8c1d7d16fa0 Mon Sep 17 00:00:00 2001
+From: Christian Mauderer <oss@c-mauderer.de>
+Date: Sun, 14 May 2017 21:33:59 +0200
+Subject: [PATCH] Allow higher versions of some packages.
+
+---
+ requirements.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index 29601b5..720c050 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,8 +2,8 @@ fswrap>=1.0.0, <2.0
+ commando>=1.0.0, <2.0
+ PyYAML>=3.11, <4.0
+ Markdown>=2.6.2, <3.0
+-MarkupSafe>=0.23, <1.0
++MarkupSafe>=0.23, <2.0
+ Pygments>=2.0.2, <3.0
+ typogrify>=2.0.7, <3.0
+-smartypants>=1.8.6, <2.0
++smartypants>=1.8.6, <3.0
+ Jinja2>=2.7.3, <3.0
+-- 
+2.13.0
+
