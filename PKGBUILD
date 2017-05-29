@@ -3,7 +3,7 @@
 pkgname=python2-tldextract
 pkgver=2.0.2
 pkgrel=1
-pkgdesc="Accurately separate the TLD from the registered domain andsubdomains of a URL, using the Public Suffix List."
+pkgdesc="Accurately separate the TLD from the registered domain and subdomains of a URL, using the Public Suffix List."
 arch=("any")
 url="https://github.com/john-kurkowski/tldextract"
 license=("BSD")
