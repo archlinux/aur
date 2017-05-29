@@ -1,9 +1,10 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/opt/gsas/expgui/expgui
+Exec=wish /opt/gsas/expgui/expgui
 Name=EXPGUI
 Icon=/opt/gsas/EXPGUI.png
 Categories=Science;

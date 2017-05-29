@@ -2,16 +2,16 @@
 # Committer: Zachary A. Jones <jazzplayerl9@gmail.com>
 pkgname=gsas-expgui-svn
 pkgver=1253
-pkgrel=2
+pkgrel=3
 pkgdesc="General Structure Analysis System - refinement for powder diffraction patterns"
 arch=(i686 x86_64)
 url="http://www.ccp14.ac.uk/solution/gsas/"
 license=(custom)
-depends=('python2' 'tcl85' 'tk85' 'blt_tcl85')
+depends=('python2' 'tcl' 'tk' 'blt-git')
 [ "${CARCH}" = "x86_64" ] && depends=("${depends[@]}" "lib32-libx11")
 makedepends=(hd2u subversion)
 
-_svntrunk="https://subversion.xor.aps.anl.gov/EXPGUI"
+_svntrunk="https://subversion.xray.aps.anl.gov/EXPGUI"
 source=("gsas::svn+${_svntrunk}/gsas/all"
 	"EXPGUI.desktop"
 	"GSAS.desktop"
@@ -20,7 +20,7 @@ source=("gsas::svn+${_svntrunk}/gsas/all"
 	"GSAS.png")
 
 md5sums=('SKIP'
-	 '16bd3a714ad7c6de2db98abe6d8de8d5'
+	 '4c8e71d8b7cd33a1ba7cdbc313970376'
 	 'd7a44b644d9d4de663c8ca00c9aa2e55'
 	 '4c8e94cd085eae5c6557331514483b78'
 	 '2e886fc46a261283e82ed8a4080e2329'
