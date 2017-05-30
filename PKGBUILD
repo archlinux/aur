@@ -7,7 +7,7 @@ pkgname=yandex-${_pkgname}
 pkgver=17.4.1.906_1
 _pkgver=17.4.1.906-1
 pkgrel=1
-epoch=1
+#epoch=1
 
 pkgdesc="The web browser from Yandex.
  Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
