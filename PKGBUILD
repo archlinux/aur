@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=80
+pkgver=82+57+gcdd1673
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -16,6 +16,8 @@ optdepends=(
   'colord: ICC profiles support'
   'cpio: cpio archive support'
   'diffutils: diff utilities support'
+  'docx2txt: docx comparing support'
+  'dtc: device tree comparing support'
   'e2fsprogs: Ext2/3/4 filesystem utilities support'
   'enjarify: Android dex file support'
   'imagemagick: ImageMagick identify support'
@@ -23,16 +25,21 @@ optdepends=(
   'java-environment: java utilities support'
   'libcaca: image compare support'
   'llvm: LLVM bitcode files support'
+  'odt2txt: odt comparing support'
   'fontforge: bitmap font utilities support'
   'gettext: GNU internationalization utilities support'
   'ghc: haskell utilities support'
+  'giflib: gifbuild utilities support'
   'gnupg: GNU privacy guard support'
   'mono: mono support'
   'openssh: OpenSSH key comparing support'
   'poppler: PDF utilities support'
+  'r: R language support'
   'sqlite: SQLite support'
   'squashfs-tools: squashfs filesystem support'
   #'python-guestfs: guestfs filesystem support'
+  'python-jsbeautifier: javascript beautifier support'
+  'tcpdump: pcap matching support'
   'tlsh: fuzzy matching supprt'
   'unzip: zip utilities support'
   'gzip: gzip utilities support'
@@ -42,9 +49,9 @@ optdepends=(
 )
 makedepends=('git')
 checkdepends=(
-  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrtools' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'imagemagick'
+  'python-pytest' 'python-jsbeautifier' 'acl' 'binutils' 'bzip2' 'cdrtools' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'imagemagick'
   'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg' 'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools'
-  'tlsh' 'unzip' 'gzip' 'tar' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh')
+  'tlsh' 'unzip' 'gzip' 'tar' 'tcpdump' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh' 'odt2txt' 'docx2txt' 'r' 'dtc' 'giflib')
 provides=('diffoscope')
 conflicts=('diffoscope')
 source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/diffoscope.git#branch=experimental")
@@ -70,7 +77,7 @@ check() {
   # TODO: readd fpc
   # TODO: colord test fails with lcms2 >= 2.8
   PYTHONPATH=".:${PYTHONPATH}" LC_CTYPE=en_US.UTF-8 py.test \
-    -k 'not test_icc and not test_ppu and not test_iso9660'
+    -k 'not test_icc and not test_ppu and not test_iso9660 and not test_sqlite and not test_ico_image and not test_presenters'
 }
 
 package() {
