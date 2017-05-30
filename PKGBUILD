@@ -1,8 +1,8 @@
 # Maintainer: Stephan Eisvogel <eisvogel at embinet dot de>
 pkgname=nsjail-git
-pkgver=r457.cae0c4a
+pkgver=r466.24002c6
 pkgrel=1
-_pkgcommit=#commit=cae0c4a7f5420b7bf0fb0046a8c13fedfe9d0a44
+_pkgcommit=#commit=24002c606d5d32d02a8bbbd2fd4c9a7a7309a5d4
 pkgdesc="A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)"
 arch=('x86_64')
 url="http://nsjail.com"
@@ -43,18 +43,19 @@ prepare() {
 	sed -i '/if (!ctxt->lexical_error) {/aYYUSE(scanner);' kafel/src/parser.y
 
 	# 3rd party fixes
-
+	_patch="patch -N -t -p1 --no-backup-if-mismatch -i"
 	cd protobuf-c-text
+
 	# Fix includes (we ignore the additional Android stuff)
-	patch -Np1 -i "$srcdir/c37f8708d847319921a3fba7d6863103f6b801e2.patch"
+	${_patch} "$srcdir/c37f8708d847319921a3fba7d6863103f6b801e2.patch"
 	# Fix wrong integer en- and decoding in protobuf-c-text library
-	patch -Np1 -i "$srcdir/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch"
+	${_patch} "$srcdir/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch"
 	# Added sanity check for size passed to memcpy
-	patch -Np1 -i "$srcdir/ccb50d69f833b4417ba66690a0257a8a64eab6ec.patch"
+	${_patch} "$srcdir/ccb50d69f833b4417ba66690a0257a8a64eab6ec.patch"
 	# esc_str: escape with octal as unsigned (buffer overflow otherwise)
-	patch -Np1 -i "$srcdir/b79ba3f1cd350a9ebc4929fa9d63368b460b8877.patch"
+	${_patch} "$srcdir/b79ba3f1cd350a9ebc4929fa9d63368b460b8877.patch"
 	# Fixes bad mallocs and memcpys caused by invalid input
-	patch -Np1 -i "$srcdir/6a8727066180615e7767b550b491e4ef4d0db514.patch"
+	${_patch} "$srcdir/6a8727066180615e7767b550b491e4ef4d0db514.patch"
 }
 
 build() {
