@@ -15,13 +15,13 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.85950.g8ef2c791c9
-pkgrel=5
+pkgrel=6
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
-    'glibc' 'alsa-lib' 'libpng' 'jack'
+    'glibc' 'alsa-lib' 'jack' 'libpng'
     'bzip2' 'chromaprint-fftw' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa'
     'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
     'libavc1394' 'libfdk-aac' 'flite1' 'fontconfig' 'freetype2' 'fribidi' 'libgme'
