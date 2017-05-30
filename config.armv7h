@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.11.2-gnu-1-hardened Kernel Configuration
+# Linux/arm 4.11.3-gnu-1-hardened Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_ARM_HAS_SG_CHAIN=y
@@ -3626,7 +3626,7 @@ CONFIG_TCG_TIS_I2C_INFINEON=m
 # CONFIG_TCG_VTPM_PROXY is not set
 # CONFIG_TCG_TIS_ST33ZP24_I2C is not set
 # CONFIG_TCG_TIS_ST33ZP24_SPI is not set
-CONFIG_DEVPORT=y
+# CONFIG_DEVPORT is not set
 # CONFIG_XILLYBUS is not set
 
 #
