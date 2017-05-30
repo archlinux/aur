@@ -11,7 +11,7 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot de>
 
 pkgname=strongswan
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=1
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
@@ -45,7 +45,7 @@ source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
 
 validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
 
-sha256sums=('da976fca836f05fc7b7a38baab299745f960cb7640319969d239d8aa4ace9f6a'
+sha256sums=('c5ea54b199174708de11af9b8f4ecf28b5b0743d4bc0e380e741f25b28c0f8d4'
             'SKIP'
             '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7')
             
