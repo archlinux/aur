@@ -1,6 +1,6 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale
-pkgver=0.4.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
@@ -10,10 +10,10 @@ license=('MIT')
 depends=('')
 makedepends=('go' 'ruby')
 options=('!emptydirs')
-source=("https://github.com/ValeLint/${pkgname}/archive/v${pkgver}.zip"
+source=("https://github.com/ValeLint/${pkgname}/archive/${pkgver}.zip"
         'enable_local_build.patch')
-sha256sums=('ebc36eda21835e1b46e09e0da9561f71870e5cfaf879bd99ffea466e15c5b48e'
-            '991b817b6e82ab53e18036386350af1e9e98f475cbf797d67f69ee94c2e33e8b')
+sha256sums=('82b731653f040c3b7a6c5ef01c596f13e10b43b2ecc689c8d4e010b252934ee6'
+            '03be0c5d6b4e4c70346c8da348f5d8a51daffdc203f1f1d022a890da4d34e9f4')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,7 +29,8 @@ build() {
     mkdir -p "${srcdir}/ruby"
     export HOME="${srcdir}/ruby"
     export GEM_HOME="${HOME}/.gem/ruby/${RUBY_VER}"
-    export PATH="${srcdir}/gopath/bin:${GEM_HOME}/bin:$PATH"
+    export GEM_HOME_OLD="${HOME}/.gem/ruby/2.4.0"
+    export PATH="${srcdir}/gopath/bin:${GEM_HOME}/bin:${GEM_HOME_OLD}/bin:$PATH"
     mkdir -p "${srcdir}/gopath/src/github.com/ValeLint/vale"
     rsync -az "${srcdir}/${pkgname}-${pkgver}/" "${srcdir}/gopath/src/github.com/ValeLint/vale/"
     cd "${srcdir}/gopath/src/github.com/ValeLint/vale"
