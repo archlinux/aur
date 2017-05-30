@@ -3,11 +3,11 @@
 # AUR dependencies
 # ----------------
 # libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
-# nut-multimedia-git xavs libmfx-git libopenmpt-svn
+# nut-multimedia-git xavs libmfx-git libopenmpt-svn flite1
 
 # AUR make dependencies
 # ---------------------
-# flite1 blackmagic-decklink-sdk
+# blackmagic-decklink-sdk
 
 # AUR optional dependency
 # -----------------------
@@ -15,7 +15,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.85950.g8ef2c791c9
-pkgrel=2
+pkgrel=3
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -23,7 +23,7 @@ license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
     'alsa-lib' 'zlib' 'bzip2' 'xz' 'libpng' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
     'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
-    'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'freetype2' 'fribidi' 'libgme' 'gsm'
+    'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'flite1' 'freetype2' 'fribidi' 'libgme' 'gsm'
     'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf' 'nut-multimedia-git'
     'opencore-amr' 'opencv' 'openh264' 'openjpeg2' 'libopenmpt-svn' 'opus' 'pulseaudio'
     'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
@@ -34,7 +34,7 @@ depends=(
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
-makedepends=('git' 'yasm' 'opencl-headers' 'flite1' 'blackmagic-decklink-sdk')
+makedepends=('git' 'yasm' 'opencl-headers' 'blackmagic-decklink-sdk')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
