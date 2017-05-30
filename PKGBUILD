@@ -22,10 +22,6 @@ prepare() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevinecdm.so,libwidevinecdmadapter.so}
 }
 
-pkgver() {
-  awk 'match($0,/\(version: \0?([0-9.]+)/,a) {print a[1];}' opt/google/chrome/chrome
-}
-
 package() {
   install -Dm644 opt/google/chrome/libwidevinecdm.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
   install -Dm644 opt/google/chrome/libwidevinecdmadapter.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
