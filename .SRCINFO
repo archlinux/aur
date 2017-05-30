@@ -1,10 +1,11 @@
 pkgbase = concourse
 	pkgdesc = Concourse is a pipeline-based CI system written in Go.
 	pkgver = v3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://concourse.ci/introduction.html
 	arch = x86_64
 	license = Apache
+	depends = linux-userns
 	provides = concourse
 	source = https://github.com/concourse/concourse/releases/download/v3.0.1/concourse_linux_amd64
 	sha512sums = b1404d5cb163367aaed2abef6a70c55daf149efc6cbe99d370d45494af040084edc52a32b5ccfd9f7785b6be321f1765f06b54db3e5c96e42b95dee01a250a68
