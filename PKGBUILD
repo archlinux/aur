@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-apparmor
 _pkgbasever=4.9-gnu
-_pkgver=4.9.28-gnu
+_pkgver=4.9.30-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -31,12 +31,12 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm.sig"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm.sig"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_vga16.ppm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
         # pacman hook for initramfs regeneration
@@ -47,8 +47,8 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
-        "https://github.com/coadde/rcn-libre/raw/master/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
-        "https://github.com/coadde/rcn-libre/raw/master/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://git.hyperbola.info:50100/kernels/rcn-libre.git/plain/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://git.hyperbola.info:50100/kernels/rcn-libre.git/plain/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -59,7 +59,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            'c5ace3b2c6e1f23941308542832aeec4be5b24198ce94ab7dd84a55f8ca3efee7c6bdfe4213d605a51ee8de727698d019eec689efdffd1f6aafabfded3d3a52a'
+            '470461abe876c3cd44fcc5c8f9de1937506140e3e7f813e562bc2914d84c741a7201934061fa67063f27990b9f854b1f672a3ee79f862368b048a853470afd39'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -75,7 +75,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'e4de5908b856abcb601620e9365e7f8a145a2ce9f31cefe5b50496ea68b249eeaa7ab2133b804267b47fd5fc5d19a5ce6dc88296b5ad600b3a2592fe9a5b2acd'
+            '7c039f0b08103eef8dcdb6a394508ed23b7bddb2f6c3381c301f833db59a9e80418c4fa4c34add08d3056977febde5703cd6282a418b7a11af1c14aef3ddab2d'
             'SKIP'
             'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
             '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
@@ -187,7 +187,7 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
               'apparmor: to configure and enable mandatory access control for programs')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "kernel=${_archpkgver}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
