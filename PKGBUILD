@@ -7,7 +7,7 @@
 pkgbase=notmuch-git
 _pkgname=notmuch
 pkgname=('notmuch-git' 'notmuch-vim-git' 'notmuch-mutt-git' 'notmuch-runtime-git')
-pkgver=0.24.1.75.g5f71a4d3
+pkgver=0.24.1.82.g51cf6dba
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://notmuchmail.org/"
