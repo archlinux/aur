@@ -1,12 +1,13 @@
-_username=boinc-next
+_username=volunode
 _reponame=boinc-app-api
 _pkgbase=boinc-app-api
 pkgname=${_pkgbase}
 pkgdesc="API for communication with BOINC applcations."
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/$_username/${_reponame/}"
+makedepends=('meson')
 license=('LGPL')
 options=('!staticlibs')
 _ref="#tag=${pkgver}"
@@ -14,15 +15,20 @@ source=("git+https://github.com/${_username}/${_reponame}${_ref}")
 sha256sums=('SKIP')
 
 build() {
-  cd ${srcdir}/${_reponame}
+  if [ ! -d ${srcdir}/build ]; then
+    mkdir -p ${srcdir}/build
+    cd ${srcdir}/${_reponame}
+    meson --prefix=/usr --buildtype=release ${srcdir}/build
+    cd ..
+  fi
 
-  autoreconf -i
-  ./configure --prefix=/usr
-  make
+  cd ${srcdir}/build
+
+  ninja
 }
 
 package() {
-  cd ${_reponame}
+  cd ${srcdir}/build
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
