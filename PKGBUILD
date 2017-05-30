@@ -1,8 +1,8 @@
 # Maintainer: PlusMinus
 
-pkgname=evdi
+pkgname=evdi-pre-release
 pkgver=1.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A Linux® kernel module that enables management of multiple screens."
 arch=('i686' 'x86_64')
 url="https://github.com/DisplayLink/evdi"
@@ -11,7 +11,7 @@ groups=()
 depends=(dkms)
 makedepends=()
 optdepends=()
-provides=()
+provides=('evdi')
 conflicts=()
 replaces=()
 backup=()
@@ -23,7 +23,7 @@ noextract=()
 md5sums=('eece77058251418d5707457aa8ae914e')
 
 build() {
-# We only need to build the library in this step, dmks will build the module
+# We only need to build the library in this step, dkms will build the module
 cd "$pkgname-$pkgver/library"
 
 make
@@ -32,7 +32,7 @@ make
 package() {
 # Predfine some target folders
 SRCDIR="$pkgdir/usr/src/$pkgname-$pkgver"	# This one is needed for dkms
-LIBNAME=lib$pkgname
+LIBNAME=libevdi
 
 cd "$pkgname-$pkgver"
 
