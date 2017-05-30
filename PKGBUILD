@@ -19,8 +19,7 @@ sha256sums=('SKIP')
 
 package() {
 	rm ${srcdir}/${pkgname}-${pkgver}-${pkgrel}.tar.gz
-	find ${srcdir} -type d -exec chmod 755 '{}' \;
-  	find ${srcdir} -type f -exec chmod 644 '{}' \;
+  	find ${srcdir} -type f -name "*.sh" -exec chmod 644 '{}' \;
 	install -dm 755 ${pkgdir}${_destname}
   	cp -r ${srcdir}/* ${pkgdir}${_destname}
 }
