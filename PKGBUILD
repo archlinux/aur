@@ -1,7 +1,7 @@
 # Maintainer: David Demelier <markand@malikania.fr
 pkgname=vera++
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A programmable tool for verification, analysis and transformation of C++ source code"
 arch=(i686 x86_64)
 url="https://bitbucket.org/verateam/vera"
