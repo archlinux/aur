@@ -2,7 +2,7 @@
 
 pkgname=python2-bugzilla
 _pkgname=python-bugzilla
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Bugzilla XMLRPC access module"
 arch=(any)
@@ -16,4 +16,4 @@ package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
-md5sums=('78cc04e32c04c05a1e7958493d73a8b7')
+md5sums=('27f71931c17ceb6553b2562429994515')
