@@ -1,25 +1,42 @@
-_npmname=svgo
-_npmver=0.6.1
-pkgname=nodejs-svgo # All lowercase
-pkgver=${_npmver}
+# Maintainer: Nicola Squartini <tensor5@gmail.com>
+
+pkgname=nodejs-svgo
+pkgver=0.7.2
 pkgrel=1
-pkgdesc="Nodejs-based tool for optimizing SVG vector graphics files."
-arch=(any)
-url="https://github.com/svg/svgo"
-license=(MIT)
+pkgdesc='Nodejs-based tool for optimizing SVG vector graphics files'
+arch=('any')
+url='https://github.com/svg/svgo'
+license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha256sums=('e0f3941275791040cbeb0fac1e2f73df4eef10a9eff2ae74848f9f83ec0febf3')
+options=(!emptydirs)
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
-}
+    npm install --user root -g --prefix="${pkgdir}"/usr svgo@${pkgver}
 
-# vim:set ts=2 sw=2 et:
+    appdir=/usr/lib/node_modules/svgo
+    install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
+    ln -s $(realpath -m --relative-to=/usr/share/licenses/${pkgname} ${appdir}/LICENSE) \
+        "${pkgdir}"/usr/share/licenses/${pkgname}
+
+    # Clean up
+    rm "${pkgdir}"${appdir}/{Makefile,.npmignore}
+    find "${pkgdir}"${appdir}/node_modules \
+        -name 'package.json' \
+            -exec sed -e "s|${pkgdir}||" \
+                -i {} \; \
+        -or -name '.*' -prune -exec rm -r '{}' \; \
+        -or -name '*.coffee' -exec rm '{}' \; \
+        -or -name 'Cakefile' -exec rm '{}' \; \
+        -or -name 'angular-sprintf.js' -exec rm '{}' \; \
+        -or -name 'bin' -prune -exec rm -r '{}' \; \
+        -or -name 'bower.json' -exec rm '{}' \; \
+        -or -name 'demo' -prune -exec rm -r '{}' \; \
+        -or -name 'dist' -prune -exec rm -r '{}' \; \
+        -or -name 'example' -prune -exec rm -r '{}' \; \
+        -or -name 'examples' -prune -exec rm -r '{}' \; \
+        -or -name 'GNUmakefile' -exec rm '{}' \; \
+        -or -name 'gruntfile.js' -exec rm '{}' \; \
+        -or -name 'test' -prune -exec rm -r '{}' \; \
+        -or -name 'tests' -prune -exec rm -r '{}' \;
+}
