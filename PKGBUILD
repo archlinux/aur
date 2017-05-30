@@ -1,42 +1,40 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# AUR dependencies
-# ----------------
-# libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
-# nut-multimedia-git xavs libmfx-git libopenmpt-svn flite1
-
-# AUR make dependencies
-# ---------------------
-# blackmagic-decklink-sdk
-
-# AUR optional dependency
-# -----------------------
-# intel-media-sdk (experimental Intel QSV support only for x86_64)
-
 pkgname=ffmpeg-full-git
 pkgver=N.85950.g8ef2c791c9
-pkgrel=6
+pkgrel=7
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
-    'glibc' 'alsa-lib' 'jack' 'libpng'
-    'bzip2' 'chromaprint-fftw' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa'
-    'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
-    'libavc1394' 'libfdk-aac' 'flite1' 'fontconfig' 'freetype2' 'fribidi' 'libgme'
-    'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'nut-multimedia-git'
-    'opencore-amr' 'opencv' 'openh264' 'openjpeg2' 'libopenmpt-svn' 'opus' 'pulseaudio'
-    'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'snappy' 'libsoxr'
-    'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
-    'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'xavs'
-    'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'xz' 'netcdf' 'openal'
-    'opencl-icd-loader' 'mesa' 'openssl' 'sdl2' 'libx11' 'zlib' 'libmfx-git'
-    'libomxil-bellagio' 'libva' 'libdrm' 'libva-intel-driver' 'libvdpau'
+    # official repositories:
+        'glibc' 'alsa-lib' 'jack' 'libpng'
+        'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass'
+        'libbluray' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394' 'libavc1394'
+        'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
+        'libmodplug' 'lame' 'opencore-amr' 'opencv' 'openjpeg2' 'opus' 'pulseaudio'
+        'rubberband' 'rtmpdump' 'schroedinger' 'smbclient' 'snappy' 'libsoxr'
+        'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
+        'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb'
+        'xvidcore' 'zimg' 'zeromq' 'zvbi' 'xz' 'netcdf' 'openal' 'opencl-icd-loader'
+        'mesa' 'openssl' 'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm'
+        'libva-intel-driver' 'libvdpau'
+    # AUR:
+        'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'nut-multimedia-git'
+        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'libmfx-git'
 )
 depends_x86_64=('cuda')
-optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
-makedepends=('git' 'yasm' 'blackmagic-decklink-sdk' 'opencl-headers')
+optdepends_x86_64=(
+    # AUR:
+        'intel-media-sdk: for Intel QSV support (experimental)'
+)
+makedepends=(
+    # official repositories:
+        'git' 'yasm' 'opencl-headers'
+    # AUR:
+        'blackmagic-decklink-sdk'
+)
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
