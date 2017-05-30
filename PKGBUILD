@@ -9,8 +9,8 @@ _version=55.0a1
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Nightly build"
 arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL')
 url="http://www.mozilla.org/thunderbird"
+license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
          'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
          'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
@@ -18,7 +18,6 @@ depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
 optdepends=('libcanberra: for sound support')
 provides=("thunderbird=$_version")
 install="$pkgname.install"
-PKGEXT='.pkg.tar'
 
 FX_SRC="thunderbird-${_version}.en-US.linux-${CARCH}"
 FX_SRC_URI="http://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central/${FX_SRC}"
@@ -28,10 +27,10 @@ source=("${FX_SRC_URI}.txt"
         "$pkgname.desktop"
         "vendor.js")
 
-sha1sums=('SKIP'
-          'SKIP'
-          '9373c6b8e57692f62bac9f738351407ff27aa6f3'
-          '4243393daf5bd5a68644034001f512178cad09cc')
+sha512sums=('5e0a95220517638939495cbee8fc46275d8cb3b67df1b20637c88112683047bab65fec03d5a8de6fc49c137eafabefd9120a11ea5fd37b4dc22482b602c5bc79'
+            'd3d6d82ecc801e2c1b4ff0443e885c32ad62f853de94c00606a7b29ada3fe647aea37f29163cd5a0b35c390f2ea7e8a294d3eacb4b1f7bb356ea03072484929a'
+            'c75c6d5b6f48e25a3c2ea666ae9b42f4e3372de9aaf6cd4270f3356c7046f9f19caa1651e5d779b95d790edfd4dd39dc3f4261361d882a62166dc9e91e9e8cb1'
+            'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 
 pkgver(){
     cd "$srcdir"
