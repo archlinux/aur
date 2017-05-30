@@ -9,7 +9,8 @@ arch=('any')
 url="https://forums.eveonline.com/default.aspx?g=posts&t=482663"
 license=('custom')
 groups=()
-depends=('wine''libopenssl-1.0-compat')
+depends=('wine'
+'libopenssl-1.0-compat')
 makedepends=()
 checkdepends=()
 optdepends=()
