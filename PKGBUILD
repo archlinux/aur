@@ -15,26 +15,28 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.85950.g8ef2c791c9
-pkgrel=3
+pkgrel=4
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
-    'alsa-lib' 'zlib' 'bzip2' 'xz' 'libpng' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
-    'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
-    'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'flite1' 'freetype2' 'fribidi' 'libgme' 'gsm'
-    'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf' 'nut-multimedia-git'
+    'glibc' 'alsa-lib' 'libpng'
+    'bzip2' 'chromaprint-fftw' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa'
+    'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
+    'libavc1394' 'libfdk-aac' 'flite1' 'fontconfig' 'freetype2' 'fribidi' 'libgme'
+    'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'nut-multimedia-git'
     'opencore-amr' 'opencv' 'openh264' 'openjpeg2' 'libopenmpt-svn' 'opus' 'pulseaudio'
-    'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
-    'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc'
-    'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
-    'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver' 'opencl-icd-loader'
-    'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl2' 'libmfx-git' 'libomxil-bellagio'
+    'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'snappy' 'libsoxr'
+    'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
+    'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'xavs'
+    'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'xz' 'netcdf' 'openal'
+    'opencl-icd-loader' 'mesa' 'openssl' 'sdl2' 'zlib' 'libmfx-git' 'libomxil-bellagio'
+    'libva' 'libdrm' 'libva-intel-driver' 'libvdpau'
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
-makedepends=('git' 'yasm' 'opencl-headers' 'blackmagic-decklink-sdk')
+makedepends=('git' 'yasm' 'blackmagic-decklink-sdk' 'opencl-headers')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
