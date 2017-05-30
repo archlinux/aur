@@ -1,8 +1,8 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 _npmname=sails
 pkgname=nodejs-$_npmname
-pkgver=0.11.2
+pkgver=0.12.13
 pkgrel=1
 pkgdesc="Realtime MVC Framework for Node.js."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('30c23940170e99e8599369b11c658ff5044787a8630454d96929545d3d00c9f1')
+sha256sums=('ef7edad74fc44b5d37d9ef61227affb25724779ef132ee830d0c591ad9c73ae2')
 
 package() {
   cd "$srcdir"
