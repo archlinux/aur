@@ -1,8 +1,8 @@
 # Maintainer:Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname='openastro'
-pkgver='1.1.48'
-pkgrel=6
+pkgver='1.1.49'
+pkgrel=1
 pkgdesc='Open source fully-featured astrology software'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,14 +13,14 @@ optdepends=()
 conflicts=('openastro-dev' 'swisseph_12' 'swisseph_18' 'swisseph-fixstars')
 source=(
 	"openastro.org_"$pkgver".orig.tar.gz::http://www.openastro.org/download.php?file=source&type=openastro"
-	"openastro.org-data_1.6.orig.tar.gz::http://openastro.org/download.php?file=source&type=data"
+	"openastro.org-data_1.7.orig.tar.gz::http://openastro.org/download.php?file=source&type=data"
 	)
-md5sums=('b64d7263b5ab4e5a61b05cf57a2aea5b'
-         'cd6b05177a454a5e6b8458403725130a')
+md5sums=('5150fd817bafa2e3436459b546851e8c'
+         '418c3f7d1a24f58881e4dabf8c962c9f')
 
 package() {
     cd $srcdir"/openastro.org-"$pkgver
     python2 setup.py install --root=$pkgdir || return 1
-    cd $srcdir"/openastro.org-data-1.6"
+    cd $srcdir"/openastro.org-data-1.7"
     python2 setup.py install --root=$pkgdir || return 1
 }
