@@ -4,7 +4,7 @@
 pkgname=sardi-icons
 pkgver=9.2
 pkgrel=0
-_pkgdir="/usr/share/icons"
+_destname="/usr/share/icons/"
 pkgdesc="Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders. "
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
@@ -21,8 +21,8 @@ package() {
 	rm ${srcdir}/${pkgname}-${pkgver}-${pkgrel}.tar.gz
 	find ${srcdir} -type d -exec chmod 755 '{}' \;
   	find ${srcdir} -type f -exec chmod 644 '{}' \;
-	install -dm 755 "${pkgdir}/usr/share/icons"
-  	cp -r ${srcdir}/* ${pkgdir}/usr/share/icons/
+	install -dm 755 ${pkgdir}${_destname}
+  	cp -r ${srcdir}/* ${pkgdir}${_destname}
 }
 
 
