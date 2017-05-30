@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='ttf-monoid-git'
 pkgdesc='Open Source coding font'
-pkgver=r421.cebcdd6
+pkgver=r425.e9d77ec1
 pkgrel=1
 arch=('any')
 license=('custom:MIT')
