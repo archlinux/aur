@@ -5,13 +5,13 @@
 pkgname=caffe-git
 _srcname=caffe
 pkgver=1.0.r11.g91b09280f
-pkgrel=1
+pkgrel=2
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
 license=('BSD')
 depends=(
-    # binary repositories:
+    # official repositories:
         'boost-libs' 'protobuf' 'google-glog' 'gflags' 'hdf5' 'opencv' 'leveldb'
         'lmdb' 'cuda' 'python' 'boost' 'cython' 'python-numpy' 'python-scipy'
         'python-matplotlib' 'ipython' 'python-h5py' 'python-networkx' 'python-nose'
