@@ -1,6 +1,6 @@
 pkgbase = xpub
 	pkgdesc = POSIX Shell script to get user's display environment variables of any TTY from anywhere.
-	pkgver = 0.6
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Ventto/xpub.git
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = xpub
 	makedepends = help2man
 	provides = xpub
 	conflicts = xpub
-	source = https://github.com/Ventto/xpub/archive/v0.6.tar.gz
+	source = https://github.com/Ventto/xpub/archive/v0.6.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = xpub

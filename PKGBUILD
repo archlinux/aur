@@ -1,7 +1,7 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=xpub
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="POSIX Shell script to get user's display environment variables of any TTY from anywhere."
 arch=('any')
