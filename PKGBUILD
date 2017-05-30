@@ -6,7 +6,7 @@
 
 options=(!strip)
 pkgname=restic
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="restic is a program that does backups right."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('glibc')
 makedepends=('go>=1.6')
 conflicts=('restic-git')
 source=("https://github.com/restic/restic/archive/v${pkgver}.tar.gz")
-sha256sums=('a8e99087478a076b8a9c7c74d37cd23a56224d8c9b242c171756784ade024fda')
+sha256sums=('3876532e2a95a889713dcc6119fc86fa619b884dd27555951595b7d12ee56b12')
 
 #importpath='github.com/restic/restic'
 
@@ -29,7 +29,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 "restic"    "${pkgdir}/usr/bin/restic"
   install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/$pkgname/README"
+  install -Dm644 "README.rst" "${pkgdir}/usr/share/doc/$pkgname/README"
 }
 
 # vim:set ts=2 sw=2 et:
