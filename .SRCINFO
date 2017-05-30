@@ -1,0 +1,13 @@
+pkgbase = prompt-hjem-git
+	pkgdesc = prompt for zsh
+	pkgver = 31.ad2a670
+	pkgrel = 1
+	url = https://github.com/cornerman/prompt-hjem
+	arch = any
+	license = MIT
+	depends = zsh
+	source = git://github.com/cornerman/prompt-hjem.git
+	md5sums = SKIP
+
+pkgname = prompt-hjem-git
+
