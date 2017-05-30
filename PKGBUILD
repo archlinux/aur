@@ -1,4 +1,4 @@
-# Maintainer: Jeff Labonte <jeff.labonte12@gmail.com>
+# Maintainer: Andre Bauer <novamoon@ts.3v.fi>
 pkgname=evelauncher
 pkgver=1146159
 pkgrel=1
