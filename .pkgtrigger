@@ -2,7 +2,7 @@ dependencypackages=(
     'vivaldi-snapshot-ffmpeg-codecs'
 )
 
-chrome_version=$(bsdtar -xOf "$pkgrepo/pool/$pkgbase-$pkgver-$pkgrel-x86_64.pkg.tar.xz" | strings | grep -A2 -i '^chrome' | grep '^[0-9]\+\.[0-9]\+\.[1-9][0-9]\+\.[0-9]\+')
+chrome_version=$(bsdtar -xOf "$pkgrepo/pool/$pkgbase-$pkgver-$pkgrel-x86_64.pkg.tar.xz" | strings | grep -A2 -i '^chrome\/' | grep '^[0-9]\+\.[0-9]\+\.[1-9][0-9]\+\.[0-9]\+')
 
 pkgupdate=$(cat <<EOF
 update_pkgver="$chrome_version"
