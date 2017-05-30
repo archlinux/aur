@@ -3,11 +3,11 @@
 pkgname=rambox
 pkgver=0.5.9
 _relver=0.5.3  # for a release tarball containing env.js
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=(i686 x86_64)
 depends=(electron)
-makedepends=(desktop-file-utils asar ruby yarn sencha-cmd-6)
+makedepends=(desktop-file-utils asar ruby npm yarn sencha-cmd-6)
 url='http://rambox.pro/'
 license=('GPL3')
 source=("https://github.com/saenzramiro/$pkgname/archive/$pkgver.tar.gz"
