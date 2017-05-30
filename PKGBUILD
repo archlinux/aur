@@ -2,8 +2,8 @@
 
 pkgname='lightdm-slick-greeter'
 _pkgname='slick-greeter'
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="A slick-looking LightDM greeter"
 arch=(i686 x86_64)
 url="https://github.com/linuxmint/${_pkgname}"
@@ -11,7 +11,7 @@ license=('GPL3')
 source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
 depends=(cairo freetype2 gnome-common gtk3 libcanberra libxext lightdm pixman)
 makedepends=(intltool vala)
-sha256sums=('d291a58c5493eefac08103e743d80359d7920bf446da7ac038e5f442ca7446f1')
+sha256sums=('d31f04c04aeafd51c49ed930b0afdc85d4ac845cb44e5dd9b87655e819f472e7')
 
 build() {
     cd ${_pkgname}-$pkgver
