@@ -16,7 +16,6 @@ sha256sums=('SKIP')
 
 build() {
   if [ ! -d ${srcdir}/build ]; then
-    mkdir -p ${srcdir}/build
     cd ${srcdir}/${_reponame}
     meson --prefix=/usr --buildtype=release ${srcdir}/build
     cd ..
