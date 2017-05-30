@@ -18,8 +18,8 @@ source_x86_64=("$pkgname-$pkgver-x64.tar.gz::https://download.studio3t.com/studi
 
 sha256sums=('b51ed1a6897541f52d60aa2b6e5add005cba31dabf7992e2177cfea6ab8fc070' 
 'c84a8462407ac2d300c34477c05c9545b7359cd1842879c2c321c88343b754f5')
-sha256sums_i686=('8c464ca8926384b5a599cbc8a459e0e58736a3fde856499b5371c9bd23e41906')
-sha256sums_x86_64=('e5297b5d332104a3e73124f9549f88dee559f0fb3d1dbb03142b2a8a301aaed7')
+sha256sums_i686=('d9f2d79e6249f2d6d2bfc421df88b685a9742f19ffe9103c0d650aef6ccb0dc2')
+sha256sums_x86_64=('96a7e9b6c082594d63e38d71aabb5e41e8890bf7ecc311048a58858e686de491')
 
 prepare() {
   unzip -j ${srcdir}/${pkgname}-${pkgver}-linux-*/lib/data-man-mongodb-ent-${pkgver}.jar "t3/dataman/icons/mac/512.png" -d "./"
