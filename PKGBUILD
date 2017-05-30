@@ -2,13 +2,13 @@
 _pkgname='xfce4-xkb-plugin'
 pkgname='xfce4-xkb-plugin-git'
 pkgver='0.7.0.r95.gcace06d'
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin to switch keyboard layouts for the Xfce4 panel'
 arch=('i686' 'x86_64')
 url='http://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin'
 license=('custom')
 depends=('xfce4-panel' 'libxklavier' 'librsvg')
-makedepends=('intltool')
+makedepends=('xfce4-dev-tools')
 conflicts=('xfce4-xkb-plugin')
 source=("$pkgname::git://git.xfce.org/panel-plugins/xfce4-xkb-plugin")
 sha256sums=('SKIP')
