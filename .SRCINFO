@@ -1,0 +1,16 @@
+pkgbase = hunspell14
+	pkgdesc = Spell checker and morphological analyzer library and program (version 1.4)
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://hunspell.github.io/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MPL
+	depends = gcc-libs
+	source = hunspell14-1.4.2.tar.gz::https://github.com/hunspell/hunspell/archive/v1.4.2.tar.gz
+	sha256sums = b6a0b23d083e0130f8c561cca8c980814ba65740ccfa52f47159f9141089946d
+
+pkgname = hunspell14
+
