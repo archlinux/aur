@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.85950.g8ef2c791c9
-pkgrel=7
+pkgrel=8
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -14,12 +14,12 @@ depends=(
         'libbluray' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394' 'libavc1394'
         'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
         'libmodplug' 'lame' 'opencore-amr' 'opencv' 'openjpeg2' 'opus' 'pulseaudio'
-        'rubberband' 'rtmpdump' 'schroedinger' 'smbclient' 'snappy' 'libsoxr'
-        'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
-        'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb'
-        'xvidcore' 'zimg' 'zeromq' 'zvbi' 'xz' 'netcdf' 'openal' 'opencl-icd-loader'
-        'mesa' 'openssl' 'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm'
-        'libva-intel-driver' 'libvdpau'
+        'librsvg' 'rubberband' 'rtmpdump' 'schroedinger' 'smbclient' 'snappy'
+        'libsoxr' 'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
+        'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265'
+        'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'xz' 'netcdf' 'openal'
+        'opencl-icd-loader' 'mesa' 'openssl' 'sdl2' 'libx11' 'zlib'
+        'libomxil-bellagio' 'libva' 'libdrm' 'libva-intel-driver' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'nut-multimedia-git'
         'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'libmfx-git'
@@ -121,6 +121,7 @@ build() {
         --enable-libopenmpt \
         --enable-libopus \
         --enable-libpulse \
+        --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
         --enable-libschroedinger \
