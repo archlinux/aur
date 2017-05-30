@@ -5,28 +5,24 @@
 
 pkgbase=mesa-noglvnd
 pkgname=('opencl-mesa-noglvnd' 'vulkan-intel-noglvnd' 'vulkan-radeon-noglvnd' 'libva-mesa-driver-noglvnd' 'mesa-vdpau-noglvnd' 'mesa-noglvnd' 'mesa-libgl-noglvnd')
-pkgver=17.0.5
-pkgrel=2
+pkgver=17.1.0
+pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
-             'libomxil-bellagio' 'libclc' 'clang') # 'libglvnd')
+             'libomxil-bellagio' 'libclc' 'clang' 'libunwind' 'lm_sensors') # 'libglvnd')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
-        LICENSE
-        remove-libpthread-stubs.patch)
-sha256sums=('668efa445d2f57a26e5c096b1965a685733a3b57d9c736f9d6460263847f9bfe'
+        LICENSE)
+sha256sums=('cf234a6ed4764673886b6661553b54675776ef0898f774716173cec890ac3b17'
             'SKIP'
-            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
-            '75ab53ad44b95204c788a2988e97a5cb963bdbf6072a5466949a2afb79821c8f')
+            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
+validpgpkeys+=('946D09B5E4C9845E63075FF1D961C596A7203456') #  "Andres Gomez <tanty@igalia.com>"
 
 prepare() {
   cd ${srcdir}/mesa-${pkgver}
-
-  # Now mesa checks for libpthread-stubs - so remove the check
-  patch -Np1 -i ../remove-libpthread-stubs.patch
 
   autoreconf -fiv
 }
@@ -37,14 +33,17 @@ build() {
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --with-dri-driverdir=/usr/lib/xorg/modules/dri \
-    --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+    --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,swr \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-    --with-egl-platforms=x11,drm,wayland \
+    --with-platforms=x11,drm,wayland \
     --with-vulkan-drivers=intel,radeon \
     --disable-xvmc \
-    --enable-gallium-llvm \
+    --enable-llvm \
     --enable-llvm-shared-libs \
     --enable-shared-glapi \
+    --disable-libglvnd \
+    --enable-libunwind \
+    --enable-lmsensors \
     --enable-egl \
     --enable-glx \
     --enable-glx-tls \
@@ -52,7 +51,8 @@ build() {
     --enable-gles2 \
     --enable-gbm \
     --enable-dri \
-    --enable-osmesa \
+    --enable-gallium-osmesa \
+    --enable-gallium-extra-hud \
     --enable-texture-float \
     --enable-xa \
     --enable-vdpau \
@@ -61,7 +61,6 @@ build() {
     --enable-opencl \
     --enable-opencl-icd \
     --with-clang-libdir=/usr/lib
-    #--with-sha1=libgcrypt \
 
   make
 
@@ -72,7 +71,7 @@ build() {
 
 package_opencl-mesa-noglvnd() {
   pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers - non-libglvnd version"
-  depends=('expat' 'libdrm' 'libelf' 'libclc' 'clang')
+  depends=('expat' 'libdrm' 'libelf' 'lm_sensors' 'libunwind' 'libclc' 'clang')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=('opencl-driver' 'opencl-mesa')
   conflicts=('opencl-mesa' 'opencl-mesa-git')
@@ -126,7 +125,7 @@ package_vulkan-radeon-noglvnd() {
 
 package_libva-mesa-driver-noglvnd() {
   pkgdesc="VA-API implementation for gallium - non-libglvnd version"
-  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence')
+  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence' 'lm_sensors' 'libunwind')
   provides=('libva-mesa-driver')
   conflicts=('libva-mesa-driver')
   replaces=('libva-mesa-driver')
@@ -140,7 +139,7 @@ package_libva-mesa-driver-noglvnd() {
 
 package_mesa-vdpau-noglvnd() {
   pkgdesc="Mesa VDPAU drivers - non-libglvnd version"
-  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libgcrypt' 'libxshmfence')
+  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libgcrypt' 'libxshmfence' 'lm_sensors' 'libunwind')
   provides=('mesa-vdpau')
   conflicts=('mesa-vdpau')
   replaces=('mesa-vdpau')
@@ -179,6 +178,8 @@ package_mesa-noglvnd() {
   cp -rv ${srcdir}/fakeinstall/usr/lib/libOSMesa.so* ${pkgdir}/usr/lib/
   cp -rv ${srcdir}/fakeinstall/usr/lib/libwayland*.so* ${pkgdir}/usr/lib/
   cp -rv ${srcdir}/fakeinstall/usr/lib/libxatracker.so* ${pkgdir}/usr/lib/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libswrAVX*.so* ${pkgdir}/usr/lib/
+
 
   cp -rv ${srcdir}/fakeinstall/usr/include ${pkgdir}/usr
   cp -rv ${srcdir}/fakeinstall/usr/lib/pkgconfig ${pkgdir}/usr/lib/
