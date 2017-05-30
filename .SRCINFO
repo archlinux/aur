@@ -1,7 +1,7 @@
 pkgbase = parallels-tools
 	pkgdesc = Parallels virtualization integration services & drivers
 	pkgver = 11.2.2.32663
-	pkgrel = 4
+	pkgrel = 5
 	url = https://parallels.com
 	arch = x86_64
 	license = custom: commercial
@@ -42,6 +42,7 @@ pkgbase = parallels-tools
 	sha1sums = 56d3fc7c9abb7c63b9c6356422261f0a87cf3b22
 	sha1sums = e955e6d9215a0d104a0482b69bb7d7399f8c9f36
 	sha1sums = 078ecd2bb95b05006e94007dc8428d9c8fcc519e
+	sha1sums = dec42902094d221f14f453fa3281d62bb7731748
 
 pkgname = parallels-tools
 

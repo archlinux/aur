@@ -50,7 +50,8 @@ sha1sums=('1bb6c8d9b1fc8ff781d89cdd3856995002670911'
           'bd681d740b4a1a68adfd4f94afec5934c2ea69ac'
           '56d3fc7c9abb7c63b9c6356422261f0a87cf3b22'
           'e955e6d9215a0d104a0482b69bb7d7399f8c9f36'
-          '078ecd2bb95b05006e94007dc8428d9c8fcc519e')
+          '078ecd2bb95b05006e94007dc8428d9c8fcc519e'
+          'dec42902094d221f14f453fa3281d62bb7731748')
 
 prepare() {
 	patch -p1 -i ../0001-fix-for-4.9.y.patch
