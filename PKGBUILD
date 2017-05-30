@@ -25,7 +25,9 @@ prepare() {
 
 build() {
   cd $_pkgbasename
-  ./configure --disable-static --prefix=/usr --libdir=/usr/lib32 CC='gcc -m32'
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  ./configure --disable-static --prefix=/usr --libdir=/usr/lib32 
   make
 }
 
