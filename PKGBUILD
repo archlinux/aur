@@ -3,7 +3,7 @@
 
 pkgname=gerbera
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Media Server"
 arch=(i686 x86_64)
 url="https://github.com/v00d00/gerbera"
@@ -22,4 +22,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+
+	mkdir -p "$pkgdir"/usr/lib/systemd
+	cp -a scripts/systemd "$pkgdir"/usr/lib/systemd/system
 }
