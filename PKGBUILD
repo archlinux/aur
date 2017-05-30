@@ -2,12 +2,12 @@
 
 pkgname=seadrive-daemon
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon part of seadrive"
 arch=('i686' 'x86_64')
 url="https://bintray.com/seafile-org/deb-unstable/seadrive-daemon"
 license=('Apache')
-depends=('libsearpc' 'libcurl-compat' 'openssl-1.0' 'fuse' 'libevent')
+depends=('libsearpc' 'libcurl-compat' 'openssl-1.0' 'fuse2' 'libevent')
 source=('seadrive')
 source_i686=("https://dl.bintray.com/seafile-org/deb-unstable/jessie/pool/main/s/seadrive-daemon/seadrive-daemon_0.6.1_i386.deb")
 source_x86_64=("https://dl.bintray.com/seafile-org/deb-unstable/jessie/pool/main/s/seadrive-daemon/seadrive-daemon_0.6.1_amd64.deb")
