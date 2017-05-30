@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-092-bzr
-pkgver=r15432
+pkgver=r15433
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format"
 url="https://launchpad.net/inkscape"
@@ -19,8 +19,9 @@ makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig' 'python' 'c
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!makeflags')
-source=('inkscape-0.92.x::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/0.92.x')
-md5sums=('SKIP')
+source=('inkscape-0.92.x::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/0.92.x' inkscape-0.92.1-gcc7-1.patch)
+md5sums=('SKIP'
+         'a6b01372fa4a1882e72d6018beb55730')
 _bzrmod="inkscape-0.92.x"
 
 pkgver() {
@@ -39,6 +40,7 @@ prepare() {
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/svg.py
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/canvas.py
   sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
+  patch -Np1 < "$srcdir"/inkscape-0.92.1-gcc7-1.patch || true
 }
 
 build() {
