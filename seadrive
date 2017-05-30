@@ -1,0 +1,3 @@
+#!/bin/sh
+export LD_PRELOAD="libcurl-compat.so.4.4.0"
+/usr/share/seadrive/seadrive "$@"
