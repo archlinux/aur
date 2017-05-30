@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="https://restic.github.io"
 license=('BSD')
 depends=('glibc')
-makedepends=('go>=1.6')
+makedepends=('go>=1.7')
 conflicts=('restic-git')
 source=("https://github.com/restic/restic/archive/v${pkgver}.tar.gz")
 sha256sums=('3876532e2a95a889713dcc6119fc86fa619b884dd27555951595b7d12ee56b12')
