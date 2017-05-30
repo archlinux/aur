@@ -1,7 +1,7 @@
 pkgbase = xrootd
 	pkgdesc = Software framework for fast, low latency, scalable and fault tolerant data access.
 	pkgver = 4.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xrootd.org/
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,14 @@ pkgbase = xrootd
 	makedepends = cmake
 	depends = ceph
 	depends = libxml2
+	depends = openssl-1.0
 	provides = xrootd
 	provides = xrootd-abi0
 	options = !emptydirs
 	source = http://xrootd.org/download/v4.6.0/xrootd-4.6.0.tar.gz
+	source = gcc7.patch
 	sha256sums = b50f7c64ed2a4aead987de3fdf6fce7ee082407ba9297b6851cd917db72edd1d
+	sha256sums = 20f4d966f302e44e4729df6454f4e12570522632a25726e38523f7fbb4b01941
 
 pkgname = xrootd
 
