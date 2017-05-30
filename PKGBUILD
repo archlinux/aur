@@ -15,7 +15,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.85950.g8ef2c791c9
-pkgrel=1
+pkgrel=2
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -49,140 +49,137 @@ sha256sums=('SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	
-	# use FFmpeg internal git versioning
-	printf "%s" "$(git describe --tags --match N | tr '-' '.')"
+    cd "$pkgname"
+    
+    # use FFmpeg internal git versioning
+    printf "%s" "$(git describe --tags --match N | tr '-' '.')"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	
-	# set x86_64 specific options
-	if [ "$CARCH" = "x86_64" ] 
-	then
-	    _cuda="--enable-cuda"
-	    _cuvid="--enable-cuvid"
-	    _libnpp="--enable-libnpp"
-	    _cflags="--extra-cflags=-I/opt/cuda/include"
-	    _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
-	fi
-	
-	msg2 "Running ffmpeg configure script. Please wait..."
-	
-	./configure \
-	        --prefix=/usr \
-	        $_cflags \
-	        "$_ldflags" \
-	        \
-	        --enable-rpath \
-	        --enable-gpl \
-	        --enable-version3 \
-	        --enable-nonfree \
-	        --enable-shared \
-	        --disable-static \
-	        --enable-gray \
-	        --enable-avresample \
-	        \
-	        --enable-avisynth \
-	        --enable-bzlib \
-	        --enable-chromaprint \
-	        --enable-frei0r \
-	        --enable-gcrypt \
-	        --enable-gmp \
-	        --enable-gnutls \
-	        --enable-iconv \
-	        --enable-ladspa \
-	        --enable-libass \
-	        --enable-libbluray \
-	        --enable-libbs2b \
-	        --enable-libcaca \
-	        --enable-libcelt \
-	        --enable-libcdio \
-	        --enable-libdc1394 \
-	        --enable-libfdk-aac \
-	        --enable-libflite \
-	        --enable-fontconfig \
-	        --enable-libfreetype \
-	        --enable-libfribidi \
-	        --enable-libgme \
-	        --enable-libgsm \
-	        --enable-libiec61883 \
-	        --enable-libilbc \
-	        --enable-libkvazaar \
-	        --enable-libmodplug \
-	        --enable-libmp3lame \
-	        --enable-libnut \
-	        --enable-libopencore-amrnb \
-	        --enable-libopencore-amrwb \
-	        --enable-libopencv \
-	        --enable-libopenh264 \
-	        --enable-libopenjpeg \
-	        --enable-libopenmpt \
-	        --enable-libopus \
-	        --enable-libpulse \
-	        --enable-librubberband \
-	        --enable-librtmp  \
-	        --enable-libschroedinger \
-	        --enable-libshine \
-	        --enable-libsmbclient \
-	        --enable-libsnappy \
-	        --enable-libsoxr \
-	        --enable-libspeex \
-	        --enable-libssh \
-	        --enable-libtesseract \
-	        --enable-libtheora \
-	        --enable-libtwolame \
-	        --enable-libv4l2 \
-	        --enable-libvidstab \
-	        --enable-libvo-amrwbenc \
-	        --enable-libvorbis \
-	        --enable-libvpx \
-	        --enable-libwavpack \
-	        --enable-libwebp \
-	        --enable-libx264 \
-	        --enable-libx265 \
-	        --enable-libxavs \
-	        --enable-libxcb \
-	        --enable-libxcb-shm \
-	        --enable-libxcb-xfixes \
-	        --enable-libxcb-shape \
-	        --enable-libxvid \
-	        --enable-libzimg \
-	        --enable-libzmq \
-	        --enable-libzvbi \
-	        --enable-lzma \
-	        --enable-decklink \
-	        --enable-netcdf \
-	        --enable-openal \
-	        --enable-opencl \
-	        --enable-opengl \
-	        --enable-openssl \
-	        --enable-sdl2 \
-	        --enable-xlib \
-	        --enable-zlib \
-	        \
-	        $_cuda \
-	        $_cuvid \
-	        --enable-libmfx \
-	        $_libnpp \
-	        --enable-nvenc \
-	        --enable-omx \
-	        --enable-omx-rpi \
-	        --enable-vaapi \
-	        --enable-vdpau \
-	        --enable-videotoolbox
-	
-	make
-	
-	make tools/qt-faststart
+    cd "$pkgname"
+    
+    # set x86_64 specific options
+    if [ "$CARCH" = "x86_64" ] 
+    then
+        _cuda="--enable-cuda"
+        _cuvid="--enable-cuvid"
+        _libnpp="--enable-libnpp"
+        _cflags="--extra-cflags=-I/opt/cuda/include"
+        _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
+    fi
+    
+    msg2 "Running ffmpeg configure script. Please wait..."
+    
+    ./configure \
+        --prefix=/usr \
+        $_cflags \
+        "$_ldflags" \
+        \
+        --enable-rpath \
+        --enable-gpl \
+        --enable-version3 \
+        --enable-nonfree \
+        --enable-shared \
+        --disable-static \
+        --enable-gray \
+        --enable-avresample \
+        \
+        --enable-avisynth \
+        --enable-bzlib \
+        --enable-chromaprint \
+        --enable-frei0r \
+        --enable-gcrypt \
+        --enable-gmp \
+        --enable-gnutls \
+        --enable-iconv \
+        --enable-ladspa \
+        --enable-libass \
+        --enable-libbluray \
+        --enable-libbs2b \
+        --enable-libcaca \
+        --enable-libcelt \
+        --enable-libcdio \
+        --enable-libdc1394 \
+        --enable-libfdk-aac \
+        --enable-libflite \
+        --enable-fontconfig \
+        --enable-libfreetype \
+        --enable-libfribidi \
+        --enable-libgme \
+        --enable-libgsm \
+        --enable-libiec61883 \
+        --enable-libilbc \
+        --enable-libkvazaar \
+        --enable-libmodplug \
+        --enable-libmp3lame \
+        --enable-libnut \
+        --enable-libopencore-amrnb \
+        --enable-libopencore-amrwb \
+        --enable-libopencv \
+        --enable-libopenh264 \
+        --enable-libopenjpeg \
+        --enable-libopenmpt \
+        --enable-libopus \
+        --enable-libpulse \
+        --enable-librubberband \
+        --enable-librtmp  \
+        --enable-libschroedinger \
+        --enable-libshine \
+        --enable-libsmbclient \
+        --enable-libsnappy \
+        --enable-libsoxr \
+        --enable-libspeex \
+        --enable-libssh \
+        --enable-libtesseract \
+        --enable-libtheora \
+        --enable-libtwolame \
+        --enable-libv4l2 \
+        --enable-libvidstab \
+        --enable-libvo-amrwbenc \
+        --enable-libvorbis \
+        --enable-libvpx \
+        --enable-libwavpack \
+        --enable-libwebp \
+        --enable-libx264 \
+        --enable-libx265 \
+        --enable-libxavs \
+        --enable-libxcb \
+        --enable-libxcb-shm \
+        --enable-libxcb-xfixes \
+        --enable-libxcb-shape \
+        --enable-libxvid \
+        --enable-libzimg \
+        --enable-libzmq \
+        --enable-libzvbi \
+        --enable-lzma \
+        --enable-decklink \
+        --enable-netcdf \
+        --enable-openal \
+        --enable-opencl \
+        --enable-opengl \
+        --enable-openssl \
+        --enable-sdl2 \
+        --enable-xlib \
+        --enable-zlib \
+        \
+        $_cuda \
+        $_cuvid \
+        --enable-libmfx \
+        $_libnpp \
+        --enable-nvenc \
+        --enable-omx \
+        --enable-omx-rpi \
+        --enable-vaapi \
+        --enable-vdpau \
+        --enable-videotoolbox
+    make
+    make tools/qt-faststart
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	
-	make DESTDIR="$pkgdir/" install
-	
-	install -D -m755 tools/qt-faststart "${pkgdir}/usr/bin/qt-faststart"
-	install -D -m644 "$srcdir"/UNREDISTRIBUTABLE.txt "${pkgdir}/usr/share/licenses/${pkgname}/UNREDISTRIBUTABLE.txt"
+    cd "$pkgname"
+    make DESTDIR="$pkgdir/" install
+    
+    install -D -m755 tools/qt-faststart "${pkgdir}/usr/bin/qt-faststart"
+    install -D -m644 "${srcdir}/UNREDISTRIBUTABLE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/UNREDISTRIBUTABLE.txt"
 }
