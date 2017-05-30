@@ -1,31 +1,35 @@
---- a/source/fitz/load-jpx.c                                                                                                                                                                                        
+diff --git a/source/fitz/load-jpx.c b/source/fitz/load-jpx.c
+index d01de58..6ca3838 100644
+--- a/source/fitz/load-jpx.c
 +++ b/source/fitz/load-jpx.c
-@@ -484,13 +484,18 @@
- /* Without the definition of OPJ_STATIC, compilation fails on windows
-  * due to the use of __stdcall. We believe it is required on some
-  * linux toolchains too. */
-+
+@@ -444,14 +444,18 @@ fz_load_jpx_info(fz_context *ctx, unsigned char *data, size_t size, int *wp, int
+ 
+ #else /* HAVE_LURATECH */
+ 
 +#ifdef __cplusplus
 +extern "C"
 +{
  #define OPJ_STATIC
- #ifndef _MSC_VER
+ #define OPJ_HAVE_INTTYPES_H
+ #if !defined(_WIN32) && !defined(_WIN64)
  #define OPJ_HAVE_STDINT_H
  #endif
 +#endif
+ #define USE_JPIP
  
 -#include <openjpeg.h>
--
 +#include <openjpeg-2.1/openjpeg.h>
-+    
- /* OpenJPEG does not provide a safe mechanism to intercept
-  * allocations. In the latest version all allocations go
-  * though opj_malloc etc, but no context is passed around.
-@@ -972,3 +977,7 @@
+ 
+ struct fz_jpxd_s
+ {
+@@ -919,6 +923,10 @@ fz_load_jpx_info(fz_context *ctx, unsigned char *data, size_t size, int *wp, int
+ 	*yresp = state.yres;
  }
  
- #endif /* HAVE_LURATECH */
-+
-+#ifdef __cplusplus                                                                                                                                                                                                 
-+}                                                                                                                                                                                                                  
++#ifdef __cplusplus
++}
 +#endif
++
+ #endif /* HAVE_LURATECH */
+ 
+ #else /* FZ_ENABLE_JPX */
