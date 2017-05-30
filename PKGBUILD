@@ -21,7 +21,7 @@ arch=('i686' 'x86_64')
 depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'pam')
 makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'systemd' 'pam')
 conflicts=('openswan')
-options=(!libtool)
+options=(!libtool !strip)
 backup=(
     etc/ipsec.conf
     etc/ipsec.secrets
@@ -68,6 +68,7 @@ build() {
         --libexecdir=/usr/lib \
         --with-ipsecdir=/usr/lib/strongswan \
         --with-nm-ca-dir=/etc/ssl/certs \
+        --enable-integrity-test \
         --enable-sqlite \
         --enable-openssl --enable-curl \
         --enable-sql --enable-attr-sql \
