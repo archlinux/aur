@@ -3,7 +3,6 @@ pkgbase = evelauncher
 	pkgver = 1146159
 	pkgrel = 1
 	url = https://forums.eveonline.com/default.aspx?g=posts&t=482663
-	install = evelauncher.install
 	arch = any
 	license = custom
 	depends = wine
