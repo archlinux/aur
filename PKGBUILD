@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r2458.82129a8e
+pkgver=r2462.2535f093
 pkgrel=1
 pkgdesc="A framework for high speed network packet I/O, using kernel bypass"
 arch=('any')
@@ -37,9 +37,9 @@ build() {
     NESTEDDIR="$srcdir/asp/linux"
     cd $NESTEDDIR
     grep "pkgver[ ]*=" PKGBUILD > .ksver
-    KSVER=$(sed 's|pkgver[ ]*=[ ]*||g' .ksver)
+    KSVER=$(sed 's|pkgver[ ]*=[ ]*||g' .ksver | sed 's|\.[^.]*$||')
     rm .ksver
-    RKVER=$(uname -r | sed 's|-.*||g')
+    RKVER=$(uname -r | sed 's|\.[^.]*$||')
     if [ "$KSVER" != "$RKVER" ]; then
         msg "Kernel sources version ($KSVER) differs from running kernel version ($RKVER): Cannot continue"
         return 1
