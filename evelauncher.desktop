@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Eve Online Launcher
-Exec=sh /opt/evelauncher/evelauncher.sh
+Exec= env LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat/ sh /opt/evelauncher/evelauncher.sh
 Icon=/opt/evelauncher/icon.png

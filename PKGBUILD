@@ -1,6 +1,6 @@
 # Maintainer: Jeff Labonte <jeff.labonte12@gmail.com>
 pkgname=evelauncher
-pkgver=1104891
+pkgver=1146159
 pkgrel=1
 epoch=
 pkgdesc="Unofficial Eve Online Launcher brought to us by CCP Devs. It simplifies the installation of Eve 
@@ -9,7 +9,7 @@ arch=('any')
 url="https://forums.eveonline.com/default.aspx?g=posts&t=482663"
 license=('custom')
 groups=()
-depends=('wine')
+depends=('wine''libopenssl-1.0-compat')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,12 +21,12 @@ options=()
 install="evelauncher.install"
 changelog=
 source=(
-	"https://binaries.eveonline.com/evelauncher-1104891.tar.gz"
+	"https://binaries.eveonline.com/evelauncher-1146159.tar.gz"
 	"evelauncher.desktop"
 	"icon.png")
 noextract=()
 md5sums=(
-	'a99e75f1de68531f86f52b30ea4ee2cd'
+	'SKIP'
 	'd6d1437552264f74f64a745d9a3c9d3f'
 	'37c1b0799f8e671b298c288d900dd7f0'
 )
