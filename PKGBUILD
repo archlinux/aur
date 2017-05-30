@@ -1,10 +1,10 @@
-_username=vorot93
+_username=volunode
 _reponame=volunode
 #_ref="#branch=develop"
 _pkgbase=volunode
 pkgname=${_pkgbase}-git
 pkgdesc="Next generation client for Berkeley Open Infrastructure for Network Computing."
-pkgver=r30167.6d90b58c2
+pkgver=r30182.2a30c072f
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/$_username/${_reponame/}"
@@ -30,8 +30,7 @@ pkgver() {
 }
 
 build() {
-  if [ ! ${srcdir}/build ]; then
-    mkdir -p ${srcdir}/build
+  if [ ! -d ${srcdir}/build ]; then
     cd ${srcdir}/${_reponame}
     meson --prefix=/usr --buildtype=release ${srcdir}/build
     cd ..
