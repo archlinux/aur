@@ -1,6 +1,6 @@
 pkgbase = elisa-git
 	pkgdesc = Elisa Music Player
-	pkgver = r527.8e583e4
+	pkgver = r641.215f626
 	pkgrel = 1
 	url = https://cgit.kde.org/elisa.git/
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = elisa-git
 	makedepends = qt5-websockets
 	depends = baloo
 	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
 	depends = kdeclarative
 	source = git://anongit.kde.org/elisa.git
 	md5sums = SKIP
