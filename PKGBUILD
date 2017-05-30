@@ -1,6 +1,6 @@
 # Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
 pkgname=waterfox-bin
-pkgver=53.0.1
+pkgver=53.0.3
 pkgrel=1
 pkgdesc="64-Bit optimized Firefox, no data collection, allows unsigned extensions"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=('waterfox.desktop' 'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
-md5sums=('0e8dbbeaf61ad27b0f0d6c31038b529e' 'a74d7153eb00dd493efbf86c464a137e')
+md5sums=('0e8dbbeaf61ad27b0f0d6c31038b529e' '8ed07ce220e778f7ab5b526059acb4cf')
 
 package() {
   install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
