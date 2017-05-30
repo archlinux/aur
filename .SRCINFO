@@ -10,7 +10,6 @@ pkgbase = rto-proxy
 	depends = libnotify
 	depends = libappindicator-gtk2
 	depends = libxtst
-	depends = lib32-nss
 	depends = libxss
 	depends = nss
 	options = !strip
