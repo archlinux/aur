@@ -1,18 +1,17 @@
 # Maintainer: Bram Swenson <bram@amplified.work>
 
 pkgname='concourse-fly'
-pkgver=v2.7.3
+pkgver=v3.0.1
 pkgrel=1
 pkgdesc="A command line interface that runs a build in a container with ATC."
 arch=(x86_64)
 url="https://concourse.ci/fly-cli.html"
 license=('Apache')
 source=(https://github.com/concourse/concourse/releases/download/${pkgver}/fly_linux_amd64)
-sha512sums=('2d06ac3edb662008c18bc5c4a2c837a8e55400741fe960496ce692988061214a5b6d0a3c33a911abe98e1b6e5cd73c413c22ec731b06f2ac2e52c7f097cce9fd')
+sha512sums=('bf63d30a0601b987bdaf5bac4fc6b866f0c6ac3fb826704e81c1f9dfc265a8d57e205d771daa297f46071609b60c4ed58f62f7d9abaa7442bc91647e023d3c2d')
 provides=('fly')
+depends=("linux-userns")
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  cp "fly_linux_amd64" "$pkgdir/usr/bin/fly"
-  chmod ugo+x "$pkgdir/usr/bin/fly"
+  install -Dm755 "fly_linux_amd64" "$pkgdir/usr/bin/fly"
 }
