@@ -3,13 +3,13 @@
 pkgname=python2-bugzilla
 _pkgname=python-bugzilla
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bugzilla XMLRPC access module"
 arch=(any)
 url="https://github.com/python-bugzilla/python-bugzilla"
 license=(GPL2)
-depends=("python2")
-makedepends=("python2-distribute")
+depends=("python2" "python2-magic" "python2-requests")
+makedepends=("python2-distribute" "python2-requests")
 source=("https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 package() {
