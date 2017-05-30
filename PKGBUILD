@@ -17,7 +17,7 @@ source=("git://$_pkgname.git.sourceforge.net/gitroot/$_pkgname/$_pkgname")
 md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	echo $(awk -F"['+]" '/version/ {print $2} ' src/version.py).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	echo $(awk -F"['+]" '/version/ {print $2} ' src/version.py | grep -o "^[^-]*").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 build() {
   cd "$srcdir/$_pkgname"
