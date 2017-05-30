@@ -73,7 +73,7 @@ _bldtype=Release
 
 _mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
 _mozcver=2.20.2673.102
-_utdicver=20170321
+_utdicver=20170529
 _zipcoderel=201704
 _uimmozcrev=321.3ea28b1
 
@@ -96,8 +96,8 @@ source=(
   mod-generate-dictionary.sh
 )
 sha1sums=('SKIP'
-          '66b5ebb21625880d5a00e77d200111ba32455546'
-          '4a44c97c3eb68d538279dcf44beaa576d911bf0e'
+          '62cd3a980518f3b200b677343f50ab2aa1eb05f6'
+          'caaedb35ce7c303e841e8c151c6c67b48fb33004'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '39cd35e1a477dab43846e4a2d75fee9fc33f9ed1'
           '5ae7b86083250d1923d46d995f25a0b968e0f683'
