@@ -1,16 +1,16 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-vault
-pkgver=5.9.95
+pkgver=5.9.96
 pkgrel=1
 pkgdesc="Plasma applet and services for creating encrypted vaults"
 arch=(i686 x86_64)
 url="https://www.kde.org/"
 license=(LGPL)
-depends=(plasma-framework libksysguard)
+depends=(plasma-framework libksysguard encfs)
 makedepends=(extra-cmake-modules python)
 source=("https://download.kde.org/unstable/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('26c6152e9f9cc1b1d112417b4a8f27972bf9203e4a4c62831197f30688fdd017'
+sha256sums=('1f1868c42df15e1584bb29efc51b1e533f95f1f8374021a7a12d4945d9b1bc00'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E')  # Jonathan Riddell
 
