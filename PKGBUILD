@@ -8,7 +8,7 @@ _gitname='libldm'
 pkgname="${_pkgname}"
 pkgver=0.2.3
 pkgrel=1
-pkgdesc="tool for managing Microsoft Windows dynamic disks"
+pkgdesc='tool for managing Microsoft Windows dynamic disks'
 arch=('i686' 'x86_64')
 url="https://github.com/${_gitauth}/${_gitname}"
 license=('GPL')
@@ -60,7 +60,7 @@ _configure() {
     BUILDDIR= \
     bash -u -e ./autogen.sh --prefix='/usr'
     #./configure --prefix='/usr'
-    #sed -e 's:-Werror::g' -i 'src/Makefile' 'test/Makefile'
+    sed -e 's:-Werror::g' -i 'src/Makefile' 'test/Makefile'
   fi
   cd "${srcdir}"
   set +u
@@ -71,7 +71,7 @@ build() {
   set -u
   cd "${_srcdir}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}"
   set +u
 }
 
@@ -79,7 +79,7 @@ package() {
   set -u
   depends=('gtk-doc' 'json-glib')
   cd "${_srcdir}"
-  make DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" install
   set +u
 }
 set +u
