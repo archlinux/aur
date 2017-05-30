@@ -3,7 +3,7 @@
 
 pkgname=python2-twitter
 _srcname=python-twitter
-pkgver=3.2.1
+pkgver=3.3
 pkgrel=1
 pkgdesc='Python 2 wrapper around the Twitter API'
 arch=('any')
@@ -11,9 +11,8 @@ url='https://pypi.python.org/pypi/python-twitter'
 license=('APACHE')
 depends=('python2' 'python2-httplib2' 'python2-simplejson' 'python2-oauth2' 'python2-requests-oauthlib')
 makedepends=('python2-distribute')
-source=("https://pypi.python.org/packages/source/p/${_srcname}/${_srcname}-${pkgver}.tar.gz")
-source=("https://pypi.python.org/packages/39/44/4ff06d3f0ab9f8ee718f7f74bd1bdbc257da157e00c78a5f8901cb384629/${_srcname}-${pkgver}.tar.gz#md5=9d7430bc5b1ef924be7830a4806d645a")
-md5sums=('9d7430bc5b1ef924be7830a4806d645a')
+source=("https://pypi.python.org/packages/b6/43/3e91acc643b9e11430dc1288dcac33c88aca6c417272a961729fd04c2ed8/${_srcname}-${pkgver}.tar.gz")
+md5sums=('f07f2519c779cb6f6ba85bd98d2ee09e')
 
 package() {
   cd $_srcname-$pkgver
