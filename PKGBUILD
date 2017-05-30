@@ -1,6 +1,6 @@
 pkgname=i8kutils
 pkgver=1.43
-pkgrel=1
+pkgrel=2
 pkgdesc="Fan control for Dell laptops"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/i8kutils"
