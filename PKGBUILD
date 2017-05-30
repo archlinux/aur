@@ -7,14 +7,14 @@
 
 pkgname=cin-git
 _pkgname=cinelerra-gg
-pkgver=5.1.20170329
+pkgver=5.1.20170429
 _pkgver=5.1
 pkgrel=1
 pkgdesc="Cinelerra maintained by Good Guy (git version)"
 arch=('x86_64' 'i686')
 url="https://cinelerra-cv.org/"
 license=('GPL')
-depends=('xorg-server' 'xorg-server-utils' 'libpng' 'libxv' 'libva'
+depends=('xorg-server' 'libpng' 'libxv' 'libva'
          'libxft' 'freetype2' 'alsa-lib' 'inkscape' 'dvdauthor'
          'libvorbis')
 makedepends=('yasm' 'nasm' 'cmake' 'git'
