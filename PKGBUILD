@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=scribus-indigo-git
-pkgver=r99.d203809
+pkgver=r100.13a2133
 pkgrel=1
 pkgdesc="A desktop publishing program - indigo fork"
 arch=('i686' 'x86_64')
