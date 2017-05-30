@@ -7,7 +7,8 @@ pkgbase = purple-rocketchat
 	arch = x86_64
 	license = GNU
 	depends = libpurple
-	depends = json-glib zlib
+	depends = json-glib
+	depends = zlib
 	depends = discount>=2.1.7
 	provides = purple-rocketchat
 	conflicts = purple-rocketchat
