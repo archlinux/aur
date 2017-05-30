@@ -26,11 +26,9 @@ source=(
 	"evelauncher.desktop"
 	"icon.png")
 noextract=()
-md5sums=(
-	'SKIP'
-	'd6d1437552264f74f64a745d9a3c9d3f'
-	'37c1b0799f8e671b298c288d900dd7f0'
-)
+md5sums=('468c81b40abe535695fa2a0b812588db'
+         '39a115108240a68c1f1a4a24837e9632'
+         '37c1b0799f8e671b298c288d900dd7f0')
 
 package() {
 	# Install the main files.

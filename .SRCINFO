@@ -11,8 +11,8 @@ pkgbase = evelauncher
 	source = https://binaries.eveonline.com/evelauncher-1146159.tar.gz
 	source = evelauncher.desktop
 	source = icon.png
-	md5sums = SKIP
-	md5sums = d6d1437552264f74f64a745d9a3c9d3f
+	md5sums = 468c81b40abe535695fa2a0b812588db
+	md5sums = 39a115108240a68c1f1a4a24837e9632
 	md5sums = 37c1b0799f8e671b298c288d900dd7f0
 
 pkgname = evelauncher
