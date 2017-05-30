@@ -6,7 +6,7 @@
 
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-headless' 'ppsspp-qt')
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
@@ -14,7 +14,7 @@ url='http://www.ppsspp.org/'
 license=('GPL2')
 depends=('glew' 'sdl2')
 makedepends=('cmake' 'git' 'glu' 'libzip' 'qt5-tools')
-_commit='e776eff6dba97df3b742dd7e178d2aaf9b15cc87'
+_commit='3ae4c122e5131a818ca88c54b1e62a66710d8799'
 source=("git+https://github.com/hrydgard/ppsspp.git#commit=${_commit}"
         'git+https://github.com/hrydgard/ppsspp-ffmpeg.git#commit=a2e98d7ba4c7c5cac08608732c3058cb46e3e0ef'
         'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git#commit=b16f7e6819267e57c3c244808d1981f0ce34acbc'
