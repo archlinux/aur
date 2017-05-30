@@ -2,11 +2,11 @@ diff --git Makefile Makefile
 index e2c56aa..d46bedd 100644
 --- Makefile
 +++ Makefile
-@@ -222,8 +222,6 @@ endif
+@@ -279,8 +279,6 @@ endif
  
  do-test:
- 	./runtests.sh bin/flow
--	bin/flow check
+ 	./runtests.sh bin/flow$(EXE)
+-	bin/flow$(EXE) check
 -	./tool test
  
  test: build-flow copy-flow-files

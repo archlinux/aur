@@ -4,28 +4,29 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.42.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
 depends=('libelf' 'ocaml')
-makedepends=('ocamlbuild')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-sedlex')
 url="http://flowtype.org"
 license=('BSD')
+provides=('flow')
+conflicts=('flow-bin')
+replaces=('flow-bin')
 source=(
 		"https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
-		'Makefile-fPIC.patch'
 		'Makefile-no-flow-check.patch'
 )
 sha256sums=(
-		'5668a4a83242ac397239d001fbf071955a9e0a17ad255cb17b74345a434f7a93'
-		'4df293e75de2461e0d741a1a6c4448494f4b2cd9bcc0ea3eb2dd41d64b49e730'
-		'5a8490c237a498d1523a1686800d9cd8bde2159f10c5efc12097ded91393e9cf'
+		'cf4bda660731c6d0731d1193fac458f590a1313172989b4a4561f64fbcc2cc1c'
+		'29e38d7412a920858945df56850bc227bd06d50965d620313912bf2fdeb3d045'
 )
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	for f in Makefile-fPIC.patch Makefile-no-flow-check.patch; do
+	for f in Makefile-no-flow-check.patch; do
 		msg "Applying patch ${f}"
 		patch -p0 <"${srcdir}/../${f}"
 	done
