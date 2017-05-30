@@ -1,7 +1,7 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=mons
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='POSIX Shell script to quickly manage 2-monitors display.'
 arch=('any')
@@ -11,8 +11,7 @@ depends=('xorg-xrandr')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man')
-source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz"
-        "https://github.com/Ventto/posix-shell-list/archive/v1.0.tar.gz")
+source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
 
 sha256sums=('SKIP' 'SKIP')
 
