@@ -2,7 +2,7 @@
 pkgbase=parallels-tools
 pkgname=(parallels-tools parallels-tools-dkms)
 pkgver=11.2.2.32663
-pkgrel=4
+pkgrel=5
 pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
 url="https://parallels.com"
@@ -34,6 +34,7 @@ source=(
 	dir://parallels-tools/installer/prlfsmountd.sh
 	'0001-fix-for-4.9.y.patch'
 	'0001-fix-4.10.y.patch'
+	'0001-fix-4.11.y.patch'
 )
 
 sha1sums=('1bb6c8d9b1fc8ff781d89cdd3856995002670911'
