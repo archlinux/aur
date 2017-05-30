@@ -2,25 +2,27 @@
 # Put icons always in folder with version and release
 
 pkgname=sardi-icons
-pkgver=9.1
-pkgrel=8
+pkgver=9.2
+pkgrel=0
+_pkgdir="/usr/share/icons"
 pkgdesc="Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders. "
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
-provides=('sardi-icons')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 options=(!strip !emptydirs)
-install='sardi-icons.install'
 source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 sha256sums=('SKIP')
 
-package() {
 
-  install -dm 755 "${pkgdir}/usr/share/icons"
-  cp -r ${srcdir}/* ${pkgdir}/usr/share/icons/
-  find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 '{}' \;
-  find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 '{}' \;
+package() {
+	rm ${srcdir}/${pkgname}-${pkgver}-${pkgrel}.tar.gz
+	find ${srcdir} -type d -exec chmod 755 '{}' \;
+  	find ${srcdir} -type f -exec chmod 644 '{}' \;
+	install -dm 755 "${pkgdir}/usr/share/icons"
+  	cp -r ${srcdir}/* ${pkgdir}/usr/share/icons/
 }
 
 
