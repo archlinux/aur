@@ -8,7 +8,7 @@ USE_ADL=1
 
 pkgname=dofus
 pkgver=2.41
-pkgrel=1
+pkgrel=2
 pkgdesc='A manga inspired, Massively Multiplayer Online Role-playing Game (MMORPG) for Adobe AIR .'
 arch=('i686' 'x86_64')
 url='http://www.dofus.com/'
@@ -48,8 +48,11 @@ package() {
   cp -r "$srcdir/Dofus/"* "$pkgdir/$installdir"
 
   msg2 'Setting up game file permissions...'
-  chgrp -R games "$pkgdir/$_installdir"
-  chmod -R g+w "$pkgdir/$_installdir"
+  chgrp -R games "$pkgdir/$installdir"
+  chmod -R g+w "$pkgdir/$installdir"
+  install -dm775 "$pkgdir/$installdir/bin"
+  install -dm775 "$pkgdir/$installdir/share/reg/"
+  install -dm775 "$pkgdir/$installdir/share/reg/bin"
 
   msg2 'Installing launcher...'
   install -Dm755 "$srcdir/dofus.sh" "$pkgdir/usr/bin/dofus"
