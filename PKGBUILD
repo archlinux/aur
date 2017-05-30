@@ -2,7 +2,7 @@
 
 _pkgname=grestful
 pkgname=${_pkgname}-git
-pkgver=20170119.0b56614
+pkgver=20170122.7df4a2b
 pkgrel=1
 pkgdesc="A simple RESTful API client written in GTK 3."
 url="https://gitlab.com/Gert-dev/grestful"
@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 license=("MPL")
 depends=("curl")
 makedepends=("dub" "dmd" "git" "gtk3" "gtksourceview3" )
-source=("${_pkgname}::git+https://gitlab.com/Gert-dev/grestful.git")
+source=("${_pkgname}::git+https://gitlab.com/Gert-dev/grestful.git#branch=development")
 sha1sums=('SKIP')
 
 provides=("${_pkgname}")
