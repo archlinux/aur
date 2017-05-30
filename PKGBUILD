@@ -17,7 +17,8 @@ optdepends=("pantheon-applications-menu-git: Application launcher"
             "wingpanel-indicator-ayatana-git: Unity 7 Tray applets"
             "indicator-powersave: On the fly power savings and performance toggles"
             "glippy-indicator: Excellent clipboard manager applet"
-            "indicator-sensors: Sensors readout applet")
+            "indicator-sensors: Sensors readout applet"
+            "ubuntu-indicator-weather: Simple weather applet")
 provides=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
 conflicts=('wingpanel')
 replaces=('wingpanel-standalone-bzr')
