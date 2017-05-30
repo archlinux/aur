@@ -1,8 +1,9 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 pkgname=('python-telegram-bot-git')
-pkgver=6.0.1.r23.ae33d33
-_pkgver=6.0.1
-pkgrel=2
+_pkgver=6.0.3
+_lastver_commit=1951d6f
+pkgver=6.0.3.r0.1951d6f
+pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
 url="https://github.com/${pkgname%-git}/${pkgname%-git}"
@@ -24,8 +25,8 @@ prepare() {
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    # printf "%s.r%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    printf "%s" "$(git describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s.r%s.%s" "${_pkgver}" "$(git rev-list --count ${_lastver_commit}..HEAD)" "$(git rev-parse --short HEAD)"
+    # printf "%s" "$(git describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
