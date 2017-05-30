@@ -4,15 +4,15 @@ _name="gitdb2"
 _module="${_name%2}"
 
 pkgname=("python-$_name" "python2-$_name")
-pkgver="2.0.0"
-pkgrel="3"
+pkgver="2.0.2"
+pkgrel="1"
 pkgdesc="a pure-Python git object database"
 arch=("any")
 url="https://github.com/gitpython-developers/$_module"
 license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b9f3209b401b8b4da5f94966c9c17650e66b7474ee5cd2dde5d983d1fba3ab66')
+sha256sums=('f2e36d7561e91f30a6a44858756dc020d8f1e81ca6e4185979d5c6c24c648070')
 
 build() {
     cd "$_name-$pkgver"
