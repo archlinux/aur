@@ -3,7 +3,7 @@
 
 pkgname=vhba-dkms
 pkgver=20161009
-pkgrel=2
+pkgrel=3
 pkgdesc='VHBA kernel module sources (DKMS)'
 arch=('any')
 url='http://cdemu.sourceforge.net/'
