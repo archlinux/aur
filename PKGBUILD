@@ -6,8 +6,8 @@
 
 pkgname=libtool-git
 pkgver=2.4.6+40.g6ca5e224
-pkgrel=1
-_gccver=6.3.1
+pkgrel=2
+_gccver=7.1.1
 pkgdesc="A generic library support script (git version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libtool"

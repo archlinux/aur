@@ -1,13 +1,13 @@
 pkgbase = libtool-git
 	pkgdesc = A generic library support script (git version)
 	pkgver = 2.4.6+40.g6ca5e224
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/libtool
 	arch = i686
 	arch = x86_64
 	groups = base-devel
 	license = GPL
-	makedepends = gcc=6.3.1
+	makedepends = gcc=7.1.1
 	depends = sh
 	depends = tar
 	depends = glibc
