@@ -1,13 +1,12 @@
-# Maintainer: flu
+# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Contributor: flu
 
 I_WANT_WEBM_SUPPORT=yes
 
 
-#---------------
-
 _name=pqiv
 pkgname=$_name-git
-pkgver=2.3.r171.gdd7511b
+pkgver=2.8.5.r133.ge7ade7c
 pkgrel=1
 pkgdesc="Modern rewrite of Quick Image Viewer - development version"
 arch=('i686' 'x86_64')
@@ -23,6 +22,7 @@ optdepends=(
   'poppler:      PDF support'
   'imagemagick:  additional image formats like psd'
   'libarchive:   comic books support'
+  'libwebp:      WebP support'
 )
 
 if [ $I_WANT_WEBM_SUPPORT = yes ]; then
