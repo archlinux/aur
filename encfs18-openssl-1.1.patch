@@ -1,0 +1,344 @@
+diff --git a/encfs/SSL_Cipher.cpp b/encfs/SSL_Cipher.cpp
+index e9ba424..4d14755 100644
+--- a/encfs/SSL_Cipher.cpp
++++ b/encfs/SSL_Cipher.cpp
+@@ -28,6 +28,7 @@
+ #include <openssl/err.h>
+ #include <openssl/hmac.h>
+ 
++#include "SSL_Compat.h"
+ #include "SSL_Cipher.h"
+ #include "Range.h"
+ #include "MemoryPool.h"
+@@ -79,19 +80,19 @@ int BytesToKey(int keyLen, int ivLen, const EVP_MD *md,
+   int nkey = key ? keyLen : 0;
+   int niv = iv ? ivLen : 0;
+ 
+-  EVP_MD_CTX cx;
+-  EVP_MD_CTX_init(&cx);
++  EVP_MD_CTX *cx = EVP_MD_CTX_new();
++  EVP_MD_CTX_init(cx);
+ 
+   for (;;) {
+-    EVP_DigestInit_ex(&cx, md, NULL);
+-    if (addmd++) EVP_DigestUpdate(&cx, mdBuf, mds);
+-    EVP_DigestUpdate(&cx, data, dataLen);
+-    EVP_DigestFinal_ex(&cx, mdBuf, &mds);
++    EVP_DigestInit_ex(cx, md, NULL);
++    if (addmd++) EVP_DigestUpdate(cx, mdBuf, mds);
++    EVP_DigestUpdate(cx, data, dataLen);
++    EVP_DigestFinal_ex(cx, mdBuf, &mds);
+ 
+     for (unsigned int i = 1; i < rounds; ++i) {
+-      EVP_DigestInit_ex(&cx, md, NULL);
+-      EVP_DigestUpdate(&cx, mdBuf, mds);
+-      EVP_DigestFinal_ex(&cx, mdBuf, &mds);
++      EVP_DigestInit_ex(cx, md, NULL);
++      EVP_DigestUpdate(cx, mdBuf, mds);
++      EVP_DigestFinal_ex(cx, mdBuf, &mds);
+     }
+ 
+     int offset = 0;
+@@ -111,7 +112,7 @@ int BytesToKey(int keyLen, int ivLen, const EVP_MD *md,
+     }
+     if ((nkey == 0) && (niv == 0)) break;
+   }
+-  EVP_MD_CTX_cleanup(&cx);
++  EVP_MD_CTX_free(cx);
+   OPENSSL_cleanse(mdBuf, sizeof(mdBuf));
+ 
+   return keyLen;
+@@ -233,12 +234,12 @@ class SSLKey : public AbstractCipherKey {
+   // followed by iv of _ivLength bytes,
+   unsigned char *buffer;
+ 
+-  EVP_CIPHER_CTX block_enc;
+-  EVP_CIPHER_CTX block_dec;
+-  EVP_CIPHER_CTX stream_enc;
+-  EVP_CIPHER_CTX stream_dec;
++  EVP_CIPHER_CTX *block_enc;
++  EVP_CIPHER_CTX *block_dec;
++  EVP_CIPHER_CTX *stream_enc;
++  EVP_CIPHER_CTX *stream_dec;
+ 
+-  HMAC_CTX mac_ctx;
++  HMAC_CTX *mac_ctx;
+ 
+   SSLKey(int keySize, int ivLength);
+   ~SSLKey();
+@@ -266,12 +267,12 @@ SSLKey::~SSLKey() {
+   ivLength = 0;
+   buffer = 0;
+ 
+-  EVP_CIPHER_CTX_cleanup(&block_enc);
+-  EVP_CIPHER_CTX_cleanup(&block_dec);
+-  EVP_CIPHER_CTX_cleanup(&stream_enc);
+-  EVP_CIPHER_CTX_cleanup(&stream_dec);
+ 
+-  HMAC_CTX_cleanup(&mac_ctx);
++  EVP_CIPHER_CTX_free(block_enc);
++  EVP_CIPHER_CTX_free(block_dec);
++  EVP_CIPHER_CTX_free(stream_enc);
++  EVP_CIPHER_CTX_free(stream_dec);
++  HMAC_CTX_free(mac_ctx);
+ 
+   pthread_mutex_destroy(&mutex);
+ }
+@@ -288,33 +289,38 @@ void initKey(const shared_ptr<SSLKey> &key, const EVP_CIPHER *_blockCipher,
+   Lock lock(key->mutex);
+   // initialize the cipher context once so that we don't have to do it for
+   // every block..
+-  EVP_CIPHER_CTX_init(&key->block_enc);
+-  EVP_CIPHER_CTX_init(&key->block_dec);
+-  EVP_CIPHER_CTX_init(&key->stream_enc);
+-  EVP_CIPHER_CTX_init(&key->stream_dec);
+-
+-  EVP_EncryptInit_ex(&key->block_enc, _blockCipher, NULL, NULL, NULL);
+-  EVP_DecryptInit_ex(&key->block_dec, _blockCipher, NULL, NULL, NULL);
+-  EVP_EncryptInit_ex(&key->stream_enc, _streamCipher, NULL, NULL, NULL);
+-  EVP_DecryptInit_ex(&key->stream_dec, _streamCipher, NULL, NULL, NULL);
+-
+-  EVP_CIPHER_CTX_set_key_length(&key->block_enc, _keySize);
+-  EVP_CIPHER_CTX_set_key_length(&key->block_dec, _keySize);
+-  EVP_CIPHER_CTX_set_key_length(&key->stream_enc, _keySize);
+-  EVP_CIPHER_CTX_set_key_length(&key->stream_dec, _keySize);
+-
+-  EVP_CIPHER_CTX_set_padding(&key->block_enc, 0);
+-  EVP_CIPHER_CTX_set_padding(&key->block_dec, 0);
+-  EVP_CIPHER_CTX_set_padding(&key->stream_enc, 0);
+-  EVP_CIPHER_CTX_set_padding(&key->stream_dec, 0);
+-
+-  EVP_EncryptInit_ex(&key->block_enc, NULL, NULL, KeyData(key), NULL);
+-  EVP_DecryptInit_ex(&key->block_dec, NULL, NULL, KeyData(key), NULL);
+-  EVP_EncryptInit_ex(&key->stream_enc, NULL, NULL, KeyData(key), NULL);
+-  EVP_DecryptInit_ex(&key->stream_dec, NULL, NULL, KeyData(key), NULL);
+-
+-  HMAC_CTX_init(&key->mac_ctx);
+-  HMAC_Init_ex(&key->mac_ctx, KeyData(key), _keySize, EVP_sha1(), 0);
++  key->block_enc = EVP_CIPHER_CTX_new();
++  EVP_CIPHER_CTX_init(key->block_enc);
++  key->block_dec = EVP_CIPHER_CTX_new();
++  EVP_CIPHER_CTX_init(key->block_dec);
++  key->stream_enc = EVP_CIPHER_CTX_new();
++  EVP_CIPHER_CTX_init(key->stream_enc);
++  key->stream_dec = EVP_CIPHER_CTX_new();
++  EVP_CIPHER_CTX_init(key->stream_dec);
++
++  EVP_EncryptInit_ex(key->block_enc, _blockCipher, NULL, NULL, NULL);
++  EVP_DecryptInit_ex(key->block_dec, _blockCipher, NULL, NULL, NULL);
++  EVP_EncryptInit_ex(key->stream_enc, _streamCipher, NULL, NULL, NULL);
++  EVP_DecryptInit_ex(key->stream_dec, _streamCipher, NULL, NULL, NULL);
++
++  EVP_CIPHER_CTX_set_key_length(key->block_enc, _keySize);
++  EVP_CIPHER_CTX_set_key_length(key->block_dec, _keySize);
++  EVP_CIPHER_CTX_set_key_length(key->stream_enc, _keySize);
++  EVP_CIPHER_CTX_set_key_length(key->stream_dec, _keySize);
++
++  EVP_CIPHER_CTX_set_padding(key->block_enc, 0);
++  EVP_CIPHER_CTX_set_padding(key->block_dec, 0);
++  EVP_CIPHER_CTX_set_padding(key->stream_enc, 0);
++  EVP_CIPHER_CTX_set_padding(key->stream_dec, 0);
++
++  EVP_EncryptInit_ex(key->block_enc, NULL, NULL, KeyData(key), NULL);
++  EVP_DecryptInit_ex(key->block_dec, NULL, NULL, KeyData(key), NULL);
++  EVP_EncryptInit_ex(key->stream_enc, NULL, NULL, KeyData(key), NULL);
++  EVP_DecryptInit_ex(key->stream_dec, NULL, NULL, KeyData(key), NULL);
++
++  key->mac_ctx = HMAC_CTX_new();
++  HMAC_CTX_reset(key->mac_ctx);
++  HMAC_Init_ex(key->mac_ctx, KeyData(key), _keySize, EVP_sha1(), 0);
+ }
+ 
+ static RLogChannel *CipherInfo = DEF_CHANNEL("info/cipher", Log_Info);
+@@ -458,8 +459,8 @@ static uint64_t _checksum_64(SSLKey *key, const unsigned char *data,
+   unsigned char md[EVP_MAX_MD_SIZE];
+   unsigned int mdLen = EVP_MAX_MD_SIZE;
+ 
+-  HMAC_Init_ex(&key->mac_ctx, 0, 0, 0, 0);
+-  HMAC_Update(&key->mac_ctx, data, dataLen);
++  HMAC_Init_ex(key->mac_ctx, 0, 0, 0, 0);
++  HMAC_Update(key->mac_ctx, data, dataLen);
+   if (chainedIV) {
+     // toss in the chained IV as well
+     uint64_t tmp = *chainedIV;
+@@ -469,10 +470,10 @@ static uint64_t _checksum_64(SSLKey *key, const unsigned char *data,
+       tmp >>= 8;
+     }
+ 
+-    HMAC_Update(&key->mac_ctx, h, 8);
++    HMAC_Update(key->mac_ctx, h, 8);
+   }
+ 
+-  HMAC_Final(&key->mac_ctx, md, &mdLen);
++  HMAC_Final(key->mac_ctx, md, &mdLen);
+ 
+   rAssert(mdLen >= 8);
+ 
+@@ -639,10 +640,10 @@ void SSL_Cipher::setIVec(unsigned char *ivec, uint64_t seed,
+     }
+ 
+     // combine ivec and seed with HMAC
+-    HMAC_Init_ex(&key->mac_ctx, 0, 0, 0, 0);
+-    HMAC_Update(&key->mac_ctx, ivec, _ivLength);
+-    HMAC_Update(&key->mac_ctx, md, 8);
+-    HMAC_Final(&key->mac_ctx, md, &mdLen);
++    HMAC_Init_ex(key->mac_ctx, 0, 0, 0, 0);
++    HMAC_Update(key->mac_ctx, ivec, _ivLength);
++    HMAC_Update(key->mac_ctx, md, 8);
++    HMAC_Final(key->mac_ctx, md, &mdLen);
+     rAssert(mdLen >= _ivLength);
+ 
+     memcpy(ivec, md, _ivLength);
+@@ -734,17 +735,17 @@ bool SSL_Cipher::streamEncode(unsigned char *buf, int size, uint64_t iv64,
+   shuffleBytes(buf, size);
+ 
+   setIVec(ivec, iv64, key);
+-  EVP_EncryptInit_ex(&key->stream_enc, NULL, NULL, NULL, ivec);
+-  EVP_EncryptUpdate(&key->stream_enc, buf, &dstLen, buf, size);
+-  EVP_EncryptFinal_ex(&key->stream_enc, buf + dstLen, &tmpLen);
++  EVP_EncryptInit_ex(key->stream_enc, NULL, NULL, NULL, ivec);
++  EVP_EncryptUpdate(key->stream_enc, buf, &dstLen, buf, size);
++  EVP_EncryptFinal_ex(key->stream_enc, buf + dstLen, &tmpLen);
+ 
+   flipBytes(buf, size);
+   shuffleBytes(buf, size);
+ 
+   setIVec(ivec, iv64 + 1, key);
+-  EVP_EncryptInit_ex(&key->stream_enc, NULL, NULL, NULL, ivec);
+-  EVP_EncryptUpdate(&key->stream_enc, buf, &dstLen, buf, size);
+-  EVP_EncryptFinal_ex(&key->stream_enc, buf + dstLen, &tmpLen);
++  EVP_EncryptInit_ex(key->stream_enc, NULL, NULL, NULL, ivec);
++  EVP_EncryptUpdate(key->stream_enc, buf, &dstLen, buf, size);
++  EVP_EncryptFinal_ex(key->stream_enc, buf + dstLen, &tmpLen);
+ 
+   dstLen += tmpLen;
+   if (dstLen != size) {
+@@ -768,17 +769,17 @@ bool SSL_Cipher::streamDecode(unsigned char *buf, int size, uint64_t iv64,
+   int dstLen = 0, tmpLen = 0;
+ 
+   setIVec(ivec, iv64 + 1, key);
+-  EVP_DecryptInit_ex(&key->stream_dec, NULL, NULL, NULL, ivec);
+-  EVP_DecryptUpdate(&key->stream_dec, buf, &dstLen, buf, size);
+-  EVP_DecryptFinal_ex(&key->stream_dec, buf + dstLen, &tmpLen);
++  EVP_DecryptInit_ex(key->stream_dec, NULL, NULL, NULL, ivec);
++  EVP_DecryptUpdate(key->stream_dec, buf, &dstLen, buf, size);
++  EVP_DecryptFinal_ex(key->stream_dec, buf + dstLen, &tmpLen);
+ 
+   unshuffleBytes(buf, size);
+   flipBytes(buf, size);
+ 
+   setIVec(ivec, iv64, key);
+-  EVP_DecryptInit_ex(&key->stream_dec, NULL, NULL, NULL, ivec);
+-  EVP_DecryptUpdate(&key->stream_dec, buf, &dstLen, buf, size);
+-  EVP_DecryptFinal_ex(&key->stream_dec, buf + dstLen, &tmpLen);
++  EVP_DecryptInit_ex(key->stream_dec, NULL, NULL, NULL, ivec);
++  EVP_DecryptUpdate(key->stream_dec, buf, &dstLen, buf, size);
++  EVP_DecryptFinal_ex(key->stream_dec, buf + dstLen, &tmpLen);
+ 
+   unshuffleBytes(buf, size);
+ 
+@@ -799,7 +800,7 @@ bool SSL_Cipher::blockEncode(unsigned char *buf, int size, uint64_t iv64,
+   rAssert(key->ivLength == _ivLength);
+ 
+   // data must be integer number of blocks
+-  const int blockMod = size % EVP_CIPHER_CTX_block_size(&key->block_enc);
++  const int blockMod = size % EVP_CIPHER_CTX_block_size(key->block_enc);
+   if (blockMod != 0)
+     throw ERROR("Invalid data size, not multiple of block size");
+ 
+@@ -810,9 +811,9 @@ bool SSL_Cipher::blockEncode(unsigned char *buf, int size, uint64_t iv64,
+   int dstLen = 0, tmpLen = 0;
+   setIVec(ivec, iv64, key);
+ 
+-  EVP_EncryptInit_ex(&key->block_enc, NULL, NULL, NULL, ivec);
+-  EVP_EncryptUpdate(&key->block_enc, buf, &dstLen, buf, size);
+-  EVP_EncryptFinal_ex(&key->block_enc, buf + dstLen, &tmpLen);
++  EVP_EncryptInit_ex(key->block_enc, NULL, NULL, NULL, ivec);
++  EVP_EncryptUpdate(key->block_enc, buf, &dstLen, buf, size);
++  EVP_EncryptFinal_ex(key->block_enc, buf + dstLen, &tmpLen);
+   dstLen += tmpLen;
+ 
+   if (dstLen != size) {
+@@ -831,7 +832,7 @@ bool SSL_Cipher::blockDecode(unsigned char *buf, int size, uint64_t iv64,
+   rAssert(key->ivLength == _ivLength);
+ 
+   // data must be integer number of blocks
+-  const int blockMod = size % EVP_CIPHER_CTX_block_size(&key->block_dec);
++  const int blockMod = size % EVP_CIPHER_CTX_block_size(key->block_dec);
+   if (blockMod != 0)
+     throw ERROR("Invalid data size, not multiple of block size");
+ 
+@@ -842,9 +843,9 @@ bool SSL_Cipher::blockDecode(unsigned char *buf, int size, uint64_t iv64,
+   int dstLen = 0, tmpLen = 0;
+   setIVec(ivec, iv64, key);
+ 
+-  EVP_DecryptInit_ex(&key->block_dec, NULL, NULL, NULL, ivec);
+-  EVP_DecryptUpdate(&key->block_dec, buf, &dstLen, buf, size);
+-  EVP_DecryptFinal_ex(&key->block_dec, buf + dstLen, &tmpLen);
++  EVP_DecryptInit_ex(key->block_dec, NULL, NULL, NULL, ivec);
++  EVP_DecryptUpdate(key->block_dec, buf, &dstLen, buf, size);
++  EVP_DecryptFinal_ex(key->block_dec, buf + dstLen, &tmpLen);
+   dstLen += tmpLen;
+ 
+   if (dstLen != size) {
+diff --git a/encfs/SSL_Compat.h b/encfs/SSL_Compat.h
+new file mode 100644
+index 0000000..f7b1629
+--- /dev/null
++++ b/encfs/SSL_Compat.h
+@@ -0,0 +1,52 @@
++/*****************************************************************************
++ * Author:   Rogelio Dominguez Hernandez <rogelio.dominguez@gmail.com>
++ *
++ *****************************************************************************
++ * Copyright (c) 2016, Rogelio Dominguez Hernandez
++ *
++ * This program is free software: you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as published by the
++ * Free Software Foundation, either version 3 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef _SSL_Compat_incl_
++#define _SSL_Compat_incl_
++
++// OpenSSL < 1.1.0
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++
++// Equivalent methods
++#define EVP_MD_CTX_new EVP_MD_CTX_create
++#define EVP_MD_CTX_free EVP_MD_CTX_destroy
++#define HMAC_CTX_reset HMAC_CTX_cleanup
++
++// Missing methods (based on 1.1.0 versions)
++HMAC_CTX *HMAC_CTX_new(void)
++{
++  HMAC_CTX *ctx = (HMAC_CTX *)OPENSSL_malloc(sizeof(HMAC_CTX));
++  if (ctx != NULL) {
++    memset(ctx, 0, sizeof(HMAC_CTX));
++    HMAC_CTX_reset(ctx);
++  }
++  return ctx;
++}
++
++void HMAC_CTX_free(HMAC_CTX *ctx)
++{
++  if (ctx != NULL) {
++    HMAC_CTX_cleanup(ctx);
++    OPENSSL_free(ctx);
++  }
++}
++#endif
++
++#endif
+diff --git a/encfs/encfssh b/encfs/encfssh
+old mode 100755
+new mode 100644
