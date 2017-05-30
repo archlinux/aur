@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.9-gnu
-_pkgver=4.9.20-gnu
+_pkgver=4.9.27-gnu
 _rtbasever=4.9
-_rtpatchver=rt16
+_rtpatchver=rt18
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -35,12 +35,12 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/older/patch-${_pkgver%-*}-${_rtpatchver}.patch.xz"
         "https://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/older/patch-${_pkgver%-*}-${_rtpatchver}.patch.sign"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm.sig"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm.sig"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm"
-        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_clut224.ppm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_mono.pbm.sig"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_vga16.ppm"
+        "https://git.hyperbola.info:50100/kernels/linux-libre_logos.git/plain/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
         # pacman hook for initramfs regeneration
@@ -51,8 +51,8 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
-        "https://github.com/coadde/rcn-libre-rt/raw/master/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
-        "https://github.com/coadde/rcn-libre-rt/raw/master/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://git.hyperbola.info:50100/kernels/rcn-libre.git/plain/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://git.hyperbola.info:50100/kernels/rcn-libre.git/plain/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -63,9 +63,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '8de958db6f6fb48900cd7b877c99af2e2d0ed1c2ff2b566657766206f24db04b4d52b6309ad49a5b39136119a4cf57a267e018304058160daac79837d32ec99c'
+            '01faa5cbcaaf87affed8ca2243234bd6e17c8ab07fbd0f14692273e4910b0a31b3fb590d634f4ff0fc8b9d3bd911161ab34d35710f8b9ab880c3e2a3e4c264f4'
             'SKIP'
-            'b3061fc975c24cb9ff5320f3d72534de322336fbdc669558069ebca12607f9f45d905eb7e752569140fcd56127e64870eac2b24126a77090f117d4c77dc6a45a'
+            '78481a3463946637728468aac05f8f1101d788918dac862f06ba25f1ce99b9f28d6edf432dacedf8edb6a33874cab96fb1d33c91b7faeef38e2b4b8b4a551c92'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -81,7 +81,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '42ecfcf796218b4e12f15831224a74d17861d3007adaa8ac39ef889678be44ba961014d173ca2d54a67b505472e6353d0dbda3d3c20bfad6def1c4672c1ba187'
+            'ad856244c852432856f1f411800517a54800e6d6d653fca9e811788da5c7d0efa2856d696230bf5bf6cc6b8316611b245bed0ebbda94bc188387e2fec435c1f4'
             'SKIP'
             'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
             '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
@@ -123,10 +123,10 @@ prepare() {
   rm localversion-rt
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed, AUFS and RT removed)
-    # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
-    # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
-    # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
+    # RCN patch (CM3 firmware deblobbed and AUFS removed)
+    # Note: For stability reasons, AUFS has been removed in the RCN patch.
+    # We are supporting AUFS in linux-libre-pck through PCK patch.
+    # See https://wiki.parabola.nu/PCK for further details.
     git apply -v "${srcdir}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
@@ -199,7 +199,7 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "kernel=${_archpkgver}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
