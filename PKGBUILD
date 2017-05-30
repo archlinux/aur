@@ -1,0 +1,23 @@
+# Maintainer: Jan Tojnar <jtojnar@gmail.com>
+pkgname=tectonic
+pkgver=0.1.5
+pkgrel=1
+makedepends=('rust' 'cargo')
+arch=('i686' 'x86_64')
+pkgdesc="minimalistic command launcher in rust similar to gmrun"
+url='https://tectonic-typesetting.github.io/en-US/'
+license=('GPL')
+depends=('fontconfig' 'harfbuzz-icu' 'openssl')
+source=("https://github.com/tectonic-typesetting/tectonic/archive/v${pkgver}/${pkgname}.tar.gz")
+sha256sums=('a493d6685cf63bea389c290677a641786f0b899e3e77fc7e865c8d1dcabc7aac')
+
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+	cargo build --release
+}
+
+package() {
+	cd "$srcdir/$pkgname-$pkgver"
+	mkdir -p "$pkgdir/usr/bin"
+	install "target/release/tectonic" "$pkgdir/usr/bin/tectonic"
+}
