@@ -4,7 +4,7 @@
 
 _name=twmn
 pkgname="${_name}-git"
-pkgver=179.5d1d555
+pkgver=182.1d9c9cc
 pkgrel=1
 pkgdesc="A notification system for tiling window managers"
 arch=('any')
