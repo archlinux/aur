@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libkscreen
-pkgver=5.9.5
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ replaces=('libkscreen-frameworks')
 provides=('libkscreen-frameworks')
 groups=(plasma)
 source=("https://download.kde.org/stable/plasma/${pkgver}/libkscreen-$pkgver.tar.xz"{,.sig})
-sha256sums=('040031f4fdcae638e92b8af32ad4cb8d2c96648ac31a6032d1e36f14333a00eb'
+sha256sums=('90c3b17ce762a5779962bdf27a9f05455c1c87a50b1a82ff2b57848c7f035dc6'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '348C8651206633FD983A8FC4DEACEA00075E1D76'  # KDE Neon
