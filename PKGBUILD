@@ -2,7 +2,7 @@
 pkgname=matterhorn-git
 _pkgname=matterhorn
 
-pkgver=30701.0.0
+pkgver=30802.1.0
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | cut -d- -f1
@@ -13,11 +13,12 @@ pkgdesc='A terminal-based chat client for MatterMost'
 arch=('x86_64')
 url="https://github.com/matterhorn-chat/matterhorn"
 license=('BSD')
-makedepends=('git' 'cabal-install')
+makedepends=('git' 'cabal-install' 'ghc')
 source=("$_pkgname::git+https://github.com/matterhorn-chat/matterhorn.git"
         "mattermost-api::git+https://github.com/matterhorn-chat/mattermost-api.git")
+md5sums=('SKIP'
+         'SKIP')
 provides=('matterhorn')
-md5sums=('SKIP' 'SKIP')
 
 build() {
   cd "$srcdir/$_pkgname"
