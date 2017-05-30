@@ -15,13 +15,13 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.85950.g8ef2c791c9
-pkgrel=4
+pkgrel=5
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
-    'glibc' 'alsa-lib' 'libpng'
+    'glibc' 'alsa-lib' 'libpng' 'jack'
     'bzip2' 'chromaprint-fftw' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa'
     'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'libdc1394'
     'libavc1394' 'libfdk-aac' 'flite1' 'fontconfig' 'freetype2' 'fribidi' 'libgme'
@@ -31,8 +31,8 @@ depends=(
     'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
     'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'xavs'
     'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'xz' 'netcdf' 'openal'
-    'opencl-icd-loader' 'mesa' 'openssl' 'sdl2' 'zlib' 'libmfx-git' 'libomxil-bellagio'
-    'libva' 'libdrm' 'libva-intel-driver' 'libvdpau'
+    'opencl-icd-loader' 'mesa' 'openssl' 'sdl2' 'libx11' 'zlib' 'libmfx-git'
+    'libomxil-bellagio' 'libva' 'libdrm' 'libva-intel-driver' 'libvdpau'
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
