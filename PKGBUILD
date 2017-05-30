@@ -3,7 +3,7 @@
 pkgname=sportstracker-bin
 _pkgname=sportstracker
 _PkgName=SportsTracker
-pkgver=7.3.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="Application for people which want to record their sporting activities ; stand-alone version with its own java"
 url="http://www.saring.de/sportstracker/"
@@ -13,7 +13,7 @@ makedepends=('tar')
 provides=(sportstracker)
 conflicts=(sportstracker)
 source=("http://netix.dl.sourceforge.net/project/${_pkgname}/${_PkgName}/${_PkgName}%20${pkgver}/Ubuntu-64bit/${_pkgname}-${pkgver}.deb")
-md5sums=('19ef0ba87e3473fb13c6df8d25093faf')
+md5sums=('f5646c15e430a3e28dd699cc8bba8b76')
 
 package() {
   cd $srcdir
