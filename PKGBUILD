@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lutris
-pkgver=0.4.10
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
   'python-pyinotify: Enhanced Steam integration.'
   )
 source=("https://lutris.net/releases/lutris_${pkgver}.tar.xz")
-sha256sums=('6ad3e5d08a7ce1644b3cf0bd50d928b14b6a30d82eec6a5b899c2d8a55d747c6')
+sha256sums=('24ad8e1df21b3e05c4285be46367de59a3cbf615de31e1c8ccdfd423d6a32b28')
 
 package() {
   cd lutris
