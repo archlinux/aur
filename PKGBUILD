@@ -9,18 +9,13 @@ arch=('any')
 url="https://github.com/cornerman/prompt-hjem"
 license=('MIT')
 depends=('zsh')
-#source=('https://github.com/cornerman/prompt-hjem/archive/master.tar.gz')
 source=("git://github.com/cornerman/${_gitname}.git")
 md5sums=('SKIP')
 
-
 pkgver() {
-	#cd "${_gitname}"
-	#git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   cd $srcdir/$_gitname
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 package() {
   pwd
