@@ -8,7 +8,7 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=2.9.0.r53387.9964e96dc9
+pkgver=2.9.0.r53498.0748b3526e
 pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
@@ -70,9 +70,6 @@ _build() (
   # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
   export CFLAGS+=" -fPIC"
 
-  # Note for gcc 7.x users : please modify your /etc/makepkg.conf
-  # and add -Wno-error to both CFLAGS and CXXFLAGS for this PKGBUILD
-
   ../configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -84,6 +81,7 @@ _build() (
     --with-sdlabi=2.0 \
     --enable-modules \
     --enable-jemalloc \
+    --disable-werror \
     "${@:2}"
 
   make
