@@ -5,7 +5,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-$_module" "python2-$_module")
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="CLI and Client Library for OpenStack Networking"
 arch=("any")
@@ -13,21 +13,21 @@ url="https://github.com/openstack/$_name"
 license=("Apache")
 makedepends=("python-pbr>=2.0.0" "python2-pbr>=2.0.0")
 source=("https://tarballs.openstack.org/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('cd888d082e6f72b35fe6eb24a970ff4a05e275dfd3dd30f7f1d9014b61f55589')
+sha256sums=('9bb478dd5a9eb3c6c7e14f00ad985b0949cd74f9d411fe37c1dc46725c795caf')
 
 package_python-neutronclient() {
     depends=(
         "python-pbr>=2.0.0"
-        "python-cliff>=2.3.0"
+        "python-cliff>=2.6.0"
         "python-debtcollector>=1.2.0"
         "python-iso8601>=0.1.11"
         "python-netaddr>=0.7.13"
-        "python-osc-lib>=1.2.0"
+        "python-osc-lib>=1.5.1"
         "python-oslo-i18n>=2.1.0"
         "python-oslo-serialization>=1.10.0"
         "python-oslo-utils>=3.20.0"
-        "python-os-client-config>=1.22.0"
-        "python-keystoneauth1>=2.18.0"
+        "python-os-client-config>=1.27.0"
+        "python-keystoneauth1>=2.20.0"
         "python-keystoneclient>=3.8.0"
         "python-requests>=2.10.0"
         "python-simplejson>=2.2.0"
@@ -42,16 +42,16 @@ package_python-neutronclient() {
 package_python2-neutronclient() {
     depends=(
         "python2-pbr>=2.0.0"
-        "python2-cliff>=2.3.0"
+        "python2-cliff>=2.6.0"
         "python2-debtcollector>=1.2.0"
         "python2-iso8601>=0.1.11"
         "python2-netaddr>=0.7.13"
-        "python2-osc-lib>=1.2.0"
+        "python2-osc-lib>=1.5.1"
         "python2-oslo-i18n>=2.1.0"
         "python2-oslo-serialization>=1.10.0"
         "python2-oslo-utils>=3.20.0"
-        "python2-os-client-config>=1.22.0"
-        "python2-keystoneauth1>=2.18.0"
+        "python2-os-client-config>=1.27.0"
+        "python2-keystoneauth1>=2.20.0"
         "python2-keystoneclient>=3.8.0"
         "python2-requests>=2.10.0"
         "python2-simplejson>=2.2.0"
