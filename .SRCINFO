@@ -1,7 +1,7 @@
 pkgbase = i8kutils
 	pkgdesc = Fan control for Dell laptops
 	pkgver = 1.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/i8kutils
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = i8kutils
 	source = https://launchpad.net/i8kutils/trunk/1.43/+download/i8kutils_1.43.tar.xz
 	source = i8kmon.service
 	sha1sums = 46204f9a567bbbc2267d67269c5bbbfad4187799
-	sha1sums = 5c20f5241de7e60b46117269f4e867b08734cdc8
+	sha1sums = 251660c03249b82de6e3212440524b57398c2657
 
 pkgname = i8kutils
 

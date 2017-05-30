@@ -12,7 +12,7 @@ source=(https://launchpad.net/i8kutils/trunk/${pkgver}/+download/i8kutils_${pkgv
         i8kmon.service)
 
 sha1sums=('46204f9a567bbbc2267d67269c5bbbfad4187799'
-          '5c20f5241de7e60b46117269f4e867b08734cdc8')
+          '251660c03249b82de6e3212440524b57398c2657')
 
 prepare() {
   cd $pkgname
