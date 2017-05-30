@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=kcyberfoxhelper
-pkgver=5.0.1.3
+pkgver=5.0.1.4
 pkgrel=1
 pkgdesc="Cyberfox KDE Plasma Integration"
 url="https://github.com/hawkeye116477/kcyberfoxhelper"
@@ -32,4 +32,4 @@ package() {
     install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('74a79b47d2621e78d8371bc6920f5b41a6ae7fa2573c2a01ce0a5c61bf5ed4db')
+sha256sums=('2fb64fa57e232374761eca15b81482f219071227e1654a045d5ff8bed764709d')
