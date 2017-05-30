@@ -1,7 +1,7 @@
 # Maintainer: Mike Williamson <mike at korora dot ca>
 
 pkgname=arangodb
-pkgver=3.1.19
+pkgver=3.1.21
 pkgrel=2
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
 "arangodb-tmpfile.conf"
 "arangodb-users.conf")
 validpgpkeys=('CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B') # Frank Celler (ArangoDB Debian Repository) <info@arangodb.com>
-sha512sums=('f2f1a938bb765b474ffdf9f827b1b97464b4c3376f6768f18eac54ad33c7d5cec501ba1ddafb58d461b8b2f7178b0195f45c7ea667581d36d4d08526a9b769c9'
+sha512sums=('c74d7a93a3177fa888166d16f3b9bb2dc7e8df678df8eb2efcf3f4f40a8f50a37156fecfcad54f011bb163b8e878aed6f15a57ec1cc248ac1aaa4392013831ba'
             'SKIP'
             '18bccbc960555c600c86409a89545c1c056dbce9abcd5724cd61c54a734d9c974df0d01b0a49c1859299ffc448c3e576f8c2bcc6134ad3f5062293b11cf85091'
             'b1fdf8cc0525d1fc093d02b24b18a1d8361fb2cd8274974269957ef8074a26eb4f2174bdd4abd41154d535df43cd9d553c1b8205cd5945e53674d25dfa3c533f'
