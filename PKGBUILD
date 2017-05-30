@@ -1,8 +1,8 @@
 # Maintainer: Jan Tojnar <jtojnar@gmail.com>
 pkgname=tectonic
 pkgver=0.1.5
-pkgrel=1
-makedepends=('rust' 'cargo')
+pkgrel=2
+makedepends=('cargo')
 arch=('i686' 'x86_64')
 pkgdesc="minimalistic command launcher in rust similar to gmrun"
 url='https://tectonic-typesetting.github.io/en-US/'
