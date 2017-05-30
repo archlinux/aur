@@ -33,8 +33,6 @@ build() {
   make
 }
 
-#FIXME: check fails; probably should investigate at some point :P
-false &&
 check() {
   cd ${srcdir}/libtool
   make check
