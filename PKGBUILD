@@ -1,7 +1,7 @@
 # Maintainer: Emeric <emeric.grange@gmail.com>
 # Created: 12/12/2016
 pkgname=autopanovideopro
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Stitch and create 360° videos automatically with Autopano Video Pro (trial version)."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("$_archivename::http://download.kolor.com/avp/stable/linux64tarxz/${pkgv
         "$pkgname"
         "$pkgname.desktop")
 
-sha256sums=('0c00d0eb19d5c31baa0cb7b8b32090600b2ced0034d58932672f5d2e66efdc69'
+sha256sums=('f873cc22700b1805a6cb27cec1afa79e12797464029346fb6aaaa66f8d1cd8a2'
             'e8f01d2cd75a9e350d4e9b837dc342f2952f0b52125158f22f9e5b35ce71c885'
             '1c09f2253abf940361dbf38c8ae44895f553244ed7c48c6e5cdf1895383cef27')
 
