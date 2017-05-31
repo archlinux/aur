@@ -1,6 +1,6 @@
 pkgbase = python2-imapclient
 	pkgdesc = An easy-to-use, Pythonic and complete IMAP client library with no dependencies outside the Python standard library
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://imapclient.freshfoo.com/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-imapclient
 	depends = python2
 	depends = python-backports.ssl
 	options = !emptydirs
-	source = http://freshfoo.com/projects/IMAPClient/IMAPClient-1.0.1.tar.gz
-	md5sums = ff508fbed5745725362a2b292e4503a1
+	source = http://freshfoo.com/projects/IMAPClient/IMAPClient-1.0.2.tar.gz
+	md5sums = 525aa0bbd2056ba06a8d286be082911e
 
 pkgname = python2-imapclient
 
