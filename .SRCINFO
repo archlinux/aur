@@ -1,0 +1,37 @@
+pkgbase = souffle-git
+	pkgdesc = Soufflé is a translator of declarative Datalog programs into the C++ language
+	pkgver = r1390.2b4ccd0
+	pkgrel = 1
+	url = https://github.com/souffle-lang/souffle
+	arch = any
+	license = UPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = bison
+	makedepends = doxygen
+	makedepends = flex
+	makedepends = sqlite
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = jdk8-openjdk
+	makedepends = pkg-config
+	makedepends = python
+	makedepends = zlib
+	depends = bison
+	depends = doxygen
+	depends = flex
+	depends = sqlite
+	depends = libtool
+	depends = pkg-config
+	depends = jdk8-openjdk
+	depends = pkg-config
+	depends = python
+	depends = zlib
+	provides = ${pkgname%-git}
+	conflicts = ${pkgname%-git}
+	source = git+https://github.com/souffle-lang/souffle.git
+	md5sums = SKIP
+
+pkgname = souffle-git
+
