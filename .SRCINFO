@@ -1,0 +1,17 @@
+pkgbase = orphan-manager
+	pkgdesc = Systemd timer to automatically remove orphaned packages
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = coreutils
+	depends = systemd
+	source = orphan-manager
+	source = orphan-manager.service
+	source = orphan-manager.timer
+	sha256sums = 32af05fcbee78a58ce8026fc42abf04286dd9e568eedb4343bcbae97de8803ca
+	sha256sums = 822c5314564143815bc2765cb3e7d33ca21ca2c17c0752eae34fc5e8610d17b6
+	sha256sums = 4c2c3936aca97ccf8269e8756a304a66743938d69337c3b097b0b92fc8a13855
+
+pkgname = orphan-manager
+

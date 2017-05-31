@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Cleans up orphaned packages on an Arch Linux system
+
+if [[ $EUID -ne 0 ]]; then
+        echo "You must be root to run this program"
+        exit
+fi
+
+ORPHANS=$(pacman -Qdtq)
+if [[ -z $ORPHANS ]]; then
+        echo "No orphans present. Stopping."
+else
+        pacman -Rns --noconfirm $ORPHANS
+fi

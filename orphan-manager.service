@@ -1,0 +1,6 @@
+[Unit]
+Description=Removes orphaned packages
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/orphans
