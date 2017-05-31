@@ -2,7 +2,7 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Blackmagic DeckLink SDK"
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
@@ -18,21 +18,21 @@ _referid="9a0fb7d769a04badbd08928a7aaefb76"
 _srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 _expected_sha256sum="584656b8e1c3c06e78bd35a9a7c6bef7795520ff9e24a48694de92e88c2c72df"
 
-_useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64)
-                        AppleWebKit/537.36 (KHTML, like Gecko)
-                        Chrome/58.0.3029.96
+_useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64) \
+                        AppleWebKit/537.36 (KHTML, like Gecko) \
+                        Chrome/58.0.3029.96 \
                         Safari/537.36"
-_reqjson="{
-    \"country\": \"us\",
-    \"platform\": \"Linux\",
-    \"firstname\": \"Arch\",
-    \"lastname\": \"Linux\",
-    \"email\": \"someone@archlinux.org\",
-    \"phone\": \"202-555-0194\",
-    \"city\": \"pacman\",
-    \"state\": \"AUR\",
-    \"terms\": true,
-    \"product\": \"Desktop Video ${pkgver} SDK\"
+_reqjson="{ \
+    \"country\": \"us\", \
+    \"platform\": \"Linux\", \
+    \"firstname\": \"Arch\", \
+    \"lastname\": \"Linux\", \
+    \"email\": \"someone@archlinux.org\", \
+    \"phone\": \"202-555-0194\", \
+    \"city\": \"pacman\", \
+    \"state\": \"AUR\", \
+    \"terms\": true, \
+    \"product\": \"Desktop Video ${pkgver} SDK\" \
 }"
 
 _exit_makepkg() {
@@ -65,7 +65,7 @@ prepare() {
                 -H 'Accept-Language: en-US,en;q=0.8' \
                 --data-binary "$_reqjson"\
                 --compressed \
-                "$_srcurl"
+                "$_srcurl" \
             )" || _exit_makepkg "download"
     else
         msg2 "Found ${_srcfile}"
@@ -73,8 +73,7 @@ prepare() {
     
     # check integrity of the decklink sdk zip file (file validation)
     msg2 "Validating ${_srcfile} with sha256sum..."
-    local _real_sha256sum="$(openssl dgst -sha256 "../${_srcfile}" \
-                                || _exit_makepkg "calculate SHA256 of")"
+    local _real_sha256sum="$(openssl dgst -sha256 "../${_srcfile}" || _exit_makepkg "calculate SHA256 of")"
     _real_sha256sum="${_real_sha256sum##* }"
     printf "%s" "       ${_srcfile} ... "
     if [ "$_expected_sha256sum" = "$_real_sha256sum" ] 
@@ -82,7 +81,7 @@ prepare() {
         printf "%s\n" "Passed"
     else
         printf "%s\n" "FAILED"
-    exit 1
+        exit 1
     fi
     
     # create symbolic link of decklink sdk zip file in $srcdir
