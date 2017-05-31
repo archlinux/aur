@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86313.g87bddba43b
-pkgrel=2
+pkgrel=3
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -66,7 +66,16 @@ build() {
         _cuvid="--enable-cuvid"
         _libnpp="--enable-libnpp"
         _cflags="--extra-cflags=-I/opt/cuda/include"
-        _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
+        
+        # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
+        # systems with nvidia-340xx-utils or nvidia-304xx-utils
+        if pacman -Qqs '^nvidia-340xx-utils$' | grep -q '^nvidia-340xx-utils$' ||
+           pacman -Qqs '^nvidia-304xx-utils$' | grep -q '^nvidia-304xx-utils$'
+        then
+            _nvidia_340xx_ldflags="-L/usr/lib/nvidia"
+        fi
+        _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
+        _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
     fi
     
     msg2 "Running ffmpeg configure script. Please wait..."
