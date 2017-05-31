@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=N.86313.g87bddba43b
-pkgrel=6
+pkgver=N.86329.ga47273c803
+pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
-license=('GPL3' 'custom:UNREDISTRIBUTABLE')
+license=('custom:nonfree and unredistributable')
 depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
@@ -43,9 +43,9 @@ conflicts=(
     'ffmpeg' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
-        'UNREDISTRIBUTABLE.txt')
+        'LICENSE')
 sha256sums=('SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+            '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 pkgver() {
     cd "$pkgname"
@@ -194,5 +194,5 @@ package() {
     make DESTDIR="$pkgdir/" install
     
     install -D -m755 tools/qt-faststart "${pkgdir}/usr/bin/qt-faststart"
-    install -D -m644 "${srcdir}/UNREDISTRIBUTABLE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/UNREDISTRIBUTABLE.txt"
+    install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
