@@ -1,15 +1,14 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=gnome-shell-extension-put-window-git
-pkgver=r269.caeff2b
+pkgver=r292.7aa49dc
 pkgrel=1
 pkgdesc="Makes window movement a lot easier. Can be compared with a basic version of the compiz grid plugin."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/negesti/gnome-shell-extensions-negesti"
-license=('unknown')
+license=('GPL2')
 depends=('gnome-shell' 'libwnck3')
 makedepends=('git')
-install=gnome-shell-extension-put-window.install
 source=("$pkgname::git+https://github.com/negesti/gnome-shell-extensions-negesti.git")
 sha256sums=('SKIP')
 
@@ -32,8 +31,10 @@ package() {
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/utils.js"
   install -m644 "moveFocus.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/moveFocus.js"
-   install -m644 "moveWorkspace.js" \
+  install -m644 "moveWorkspace.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/moveWorkspace.js"
+  install -m644 "convenience.js" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/convenience.js"
   install -Dm644 "schemas/org.gnome.shell.extensions.org-lab21-putwindow.gschema.xml" \
     "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.org-lab21-putwindow.gschema.xml"
 }
