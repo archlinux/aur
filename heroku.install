@@ -1,0 +1,15 @@
+## arg 1:  the new package version
+post_install() {
+  printf "\n"
+  printf "You have to execute the following commands to upgrade automatically:\n\n"
+  printf "     $ rm -rf ~/.local/share/heroku/cli\n"
+  printf "     $ mkdir -p ~/.local/share/heroku\n"
+  printf "     $ cp -r /usr/lib/heroku ~/.local/share/heroku/cli\n\n"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  printf "\n"
+  printf "Please remove the following directories to uninstall compeletely:\n\n"
+  printf "     $ rm -rf ~/.local/share/heroku ~/.config/heroku ~/.cache/heroku ~/.heroku\n\n"
+}
