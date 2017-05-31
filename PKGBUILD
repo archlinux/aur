@@ -1,7 +1,7 @@
 # Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
 
 pkgname='buck'
-pkgver='2017.05.09.01'
+pkgver='2017.05.31.01'
 pkgrel=1
 pkgdesc='A fast build system that encourages the creation of small, reusable modules over a variety of platforms and languages.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
 		'force-python2.patch'
 )
 sha256sums=(
-		'09c4f944edad3ebb85edf1c8cd526da9033a13019597a85c87f435ef74b6a48b'
+		'f717175cdde5b4ab30dad0d5032e150ef208ea5d09835a701c039cd3d9fbac27'
 		'e65ce876291984af91fd6fadfc588c5bded4e43205f312e0b2f2a5c7cf86329e'
 		'f2cfad85402cd75d2a7d809fe6aadd8dc72d592b05e74f4dbe1cf6806f26e749'
 )
