@@ -1,0 +1,14 @@
+pkgbase = git-stream-git
+	pkgdesc = A git flow replacement with a single branch model
+	pkgver = 0.6.0.r1.g83e41f0
+	pkgrel = 1
+	url = https://github.com/mrkmg/git-stream
+	arch = any
+	license = MIT
+	depends = git
+	provides = git-stream
+	source = git-stream::git+https://github.com/mrkmg/git-stream.git
+	md5sums = SKIP
+
+pkgname = git-stream-git
+
