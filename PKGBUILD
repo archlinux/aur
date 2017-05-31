@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jonathan Wiersma <arch aur at jonw dot org>
 # Contributor: Thore Bödecker <me [at] foxxx0 [dot] de>
-# 
+#
 # Credit to all other past PHP version AUR packages
 
 php_suffix="70" # This mutation
@@ -34,13 +34,13 @@ sha256sums=(
 php_select()
 {
     declare -a php_configy # paths
-    
+
 
     # pass a folder to be searched for any php-config*
     findconfig()
     {
       local _myglob="$1/php-config${php_suffix}*"
-      for f in $_myglob; 
+      for f in $_myglob;
       do
         if [ "$f" != "$_myglob" ]; then
           php_configy+=("$f")
@@ -70,11 +70,11 @@ php_select()
         exit -1
     elif [[ $optct -eq "1" ]]; then
         php_config="${php_configy[0]}"
-    else 
+    else
       declare -a php_options # assemble user menu
       optct=0
       php_options+=("0) Get me out of here!")
-      for cfg in "${php_configy[@]}"; 
+      for cfg in "${php_configy[@]}";
       do
         let optct='((optct+1))'
         PHP_FULL_VERSION=`${cfg} --version`
@@ -100,7 +100,7 @@ php_select()
       let choice='((choice-1))'
       php_config="${php_configy[$choice]}"
     fi
-    
+
     #get some config options,  assumable from php70
     all_options=`${php_config} --configure-options`
 
@@ -121,7 +121,7 @@ php_select()
 prepare()
 {
     echo "PHPIZE path is ${PHPIZE_CMD}"
-    echo "PHP scan directory is $PHPCONFIG_SCANDIR"  
+    echo "PHP scan directory is $PHPCONFIG_SCANDIR"
 }
 build() {
   cd "$srcdir"/$pkg_src
@@ -137,12 +137,14 @@ build() {
 
 package() {
   backup=("${PHPCONFIG_SCANDIR}/xdebug.ini")
-  cd "$srcdir"/$pkg_src/debugclient
-  make DESTDIR="$pkgdir" install
+  #cd "$srcdir"/$pkg_src/debugclient
+  #make DESTDIR="$pkgdir" install
 
   cd "$srcdir"/$pkg_src
   make INSTALL_ROOT="$pkgdir" install
   install -D -m 644 "$srcdir"/xdebug.ini "$pkgdir/${PHPCONFIG_SCANDIR}/xdebug.ini"
+
+  install -D -m755 "./debugclient/debugclient" "${pkgdir}/usr/bin/debugclient70"
 }
 # Run this  before the backup file variables get evaluated
 if [[ -z $PHPIZE_CMD ]]; then
