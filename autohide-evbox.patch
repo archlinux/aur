@@ -1,10 +1,12 @@
 --- src/wingpanel/src/PanelWindow.vala.old	2017-05-30 05:11:04.862053641 +0900
 +++ src/wingpanel/src/PanelWindow.vala	2017-05-30 05:15:50.025099860 +0900
-@@ -22,6 +22,8 @@
+@@ -22,6 +22,10 @@
  
      private Widgets.Panel panel;
  
 +    private Gtk.EventBox box;
++
++    uint timeout;
 +
      private int monitor_number;
  
@@ -49,7 +51,7 @@
  
          return true;
      }
-@@ -85,7 +106,23 @@
+@@ -85,7 +106,27 @@
  
          //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
  
@@ -58,17 +60,21 @@
 +    }
 +
 +    private bool on_idle () {
-+        animate_panel ();
++        if (timeout > 0) {
++            Source.remove (timeout);
++        }
 +
-+        Timeout.add (100 / panel_height, animation_unstep);
++        timeout = Timeout.add (100 / panel_height, animation_unstep);
 +
 +        return true;
 +    }
 +
 +    private bool reactivate () {
-+        animate_panel ();
++        if (timeout > 0) {
++            Source.remove (timeout);
++        }
 +
-+        Timeout.add (100 / panel_height, animation_step);
++        timeout = Timeout.add (100 / panel_height, animation_step);
 +
 +        return true;
      }
