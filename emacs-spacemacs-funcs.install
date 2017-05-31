@@ -11,7 +11,11 @@ cat << EOF
 (setq spacemacs-funcs-enabled-layers '("spacemacs-base"
                                        "<name of other layer>"))
 
-==> If you enabled some layers, then: 
+==> There's a good chance you'll have to add some definitions for variables before loading these layers. For example, "spacemacs-base" needs
+
+(setq dotspacemacs-persistent-server nil)
+
+==> Finall, if you enabled some layers:
 
 (spacemacs-funcs-load-layers)
 
@@ -19,6 +23,7 @@ cat << EOF
 
 (use-package spacemacs-funcs
   :config
+  (setq dotspacemacs-persistent-server nil)
   (setq spacemacs-funcs-enabled-layers '("spacemacs-base"
                                          "<name of other layer>")) ; To enable some layers
   (spacemacs-funcs-load-layers))                                   ; If extra layers are enabled
