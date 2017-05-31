@@ -1,7 +1,7 @@
 # Maintainer: Daniel Holman <dholman@gymli.org>
 pkgname=orphan-manager
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd timer to automatically remove orphaned packages"
 arch=('any')
 license=('MIT')

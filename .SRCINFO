@@ -1,7 +1,7 @@
 pkgbase = orphan-manager
 	pkgdesc = Systemd timer to automatically remove orphaned packages
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	depends = coreutils
