@@ -4,7 +4,7 @@
 
 pkgname=java-jai-imageio
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Container for JavaTM Advanced Imaging Image I/O Tools projects."
 arch=(i686 x86_64)
   [ "${CARCH}" = 'i686' ]   && _arch='i586'
