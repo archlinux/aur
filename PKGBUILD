@@ -2,7 +2,7 @@
 
 pkgname=mattercontrol
 _pkgname=MatterControl
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
@@ -13,7 +13,9 @@ optdepends=('mattercontrol-plugins: Closed source plugins for cloud functionalit
 makedepends=('git' 'nuget')
 provides=('mattercontrol')
 install="mattercontrol.install"
+_buildver=1.7.0.8527
 _projecttoken=ag9zfm1hdHRlcmNvbnRyb2xyFAsSB1Byb2plY3QYgICAiOCSzAsM
+_buildtoken=ag9zfm1hdHRlcmNvbnRyb2xyQQsSB1Byb2plY3QYgICAiOCSzAsMCxINUHVibGljUmVsZWFzZRiAgICgsdyLCgwLEgZVcGxvYWQYgICAoK3hngoM
 source=(git://github.com/MatterHackers/MatterControl.git
 	'mattercontrol'
 	'mattercontrol.desktop'
@@ -21,7 +23,7 @@ source=(git://github.com/MatterHackers/MatterControl.git
 	'mattercontrol.install')
 sha256sums=('SKIP'
             '4954c0de00d6701d37c15c73d3509d0d91e67339c08afa3b273e9343dfd5cc61'
-            'f82724678f8d3912f3632dc150945a5a88fc1fde79267c4c270b97343cabfd3a'
+            '89854894868127bdb8d7ebdef8cccf1c528b0a07e526380dcc0e1024a15c033c'
             '6470dfabd982109638c2e9fc01acca51dc1109ce07aec261dbc4c86ead9f9927'
             '41e907de000d6b57c7788229a36ff4b247de928597401631e2b1036fdf97aa77')
 
@@ -30,7 +32,7 @@ build() {
 
 	git checkout tags/Releases/${pkgver}
 	git submodule update --init --recursive
-	mozroots --import --sync
+	#mozroots --import --sync
 	nuget restore MatterControl.sln
 
 	xbuild /p:Configuration=Release MatterControl.sln
@@ -48,7 +50,7 @@ build() {
 
 	# Build Info
 	cd StaticData
-	echo "{\"BuildVersion\": \"${pkgver}\", \"ProjectToken\": \"${projecttoken}\", \"ReleaseVersion\": \"${pkgver}\", \"BuildToken\": \"no-key\"}" > BuildInfo.txt
+	echo "{\"BuildVersion\": \"${_buildver}\", \"ProjectToken\": \"${_projecttoken}\", \"ReleaseVersion\": \"${pkgver}\", \"BuildToken\": \"${_buildtoken}\"}" > BuildInfo.txt
 }
 
 package() {
