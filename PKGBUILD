@@ -4,7 +4,7 @@
 # Maintainer : Marcos Heredia <chelqo@gmail.com>
 
 pkgname=yacas
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Yet another computer algebra system'
 url='http://www.yacas.org/'
@@ -12,20 +12,29 @@ screenshot='https://dl.dropbox.com/s/dy9evnpl13kdo21/yacas-console.png'
 license=('GPL2')
 groups=("mathematics")
 arch=('i686' 'x86_64')
+#--------------------------------------------------------------
+_build_gui="ON"
+if [ ${_build_gui} == "OFF" ]; then
 depends=('glibc' 'gcc-libs')
+makedepends=('gcc' 'cmake' 'perl')
+else
+depends=('glibc' 'gcc-libs' 'qt5-base' 'qt5-webkit' 'qt5-svg')
+makedepends=('gcc' 'cmake' 'perl' 'python-sphinx')
+fi
+#--------------------------------------------------------------
 optdepends=('gnuplot' 'lynx' 'texmacs' 'fbreader: Reading EPUB manual')
-makedepends=('gcc' 'perl' 'imagemagick' 'python-sphinx')
+conflicts=('yagy')
 install=${pkgname}.install
 noextract=('yacas.epub')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grzegorzmazur/yacas/archive/v${pkgver}.tar.gz"
-        'https://media.readthedocs.org/epub/yacas/latest/yacas.epub'
-        'yacas.desktop'
-        'yacas-docs.desktop'
+        "https://media.readthedocs.org/epub/yacas/v${pkgver}/yacas.epub"
+        "yacas.desktop"
+        "yacas-docs.desktop"
         )
-md5sums=('0745ff1f7d7c4520b40054deb16801f9'  # yacas source
-         'SKIP'                              # Epub manual
-         '21d4cf6e7658aa0d7c4a0ed14c13f2e9'  # yacas.desktop
-         'fff8c43f7ab3a77c6f6e181bc3e2687f'  # yacas-docs.desktop
+md5sums=('c955d95b2eee79a59b6df5a2002814de'  # yacas source
+         '1278f790a15792996931c2adc56dd8aa'  # Epub manual
+         'eb776002fabe21623716ed2642f6d365'  # yacas.desktop
+         '04d2a47c02fba5d88f337a404e02929c'  # yacas-docs.desktop
          )
 
 build() {
@@ -35,11 +44,13 @@ build() {
   cd build
   msg "### cmake" ; cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_DOCS=ON \
+    -DENABLE_CYACAS_CONSOLE=ON \
+    -DENABLE_CYACAS_GUI=${_build_gui} \
+    -DENABLE_JYACAS=OFF \
+    -DENABLE_DOCS=OFF \
+    -DENABLE_CYACAS_KERNEL=OFF \
     -DCMAKE_BUILD_TYPE=Release
   msg "### make"  ; make
-
-#    -DENABLE_JYACAS=yes \
 }
 
 package() {
@@ -52,10 +63,10 @@ package() {
   _docdir=${pkgdir}/usr/share/doc/${pkgname}-${pkgver}
   _licdir=${pkgdir}/usr/share/licenses/${pkgname}
   install -dm755 ${_appdir} ${_pngdir} ${_docdir} ${_licdir}
-  install -Dpm644 ${startdir}/yacas.desktop ${_appdir}/
-  install -Dpm644 ${startdir}/yacas-docs.desktop ${_appdir}/
-  convert -crop 500x500+34+110 docs/yacaslogo.png ${_pngdir}/yacas.png
-  install -Dpm644 AUTHORS INSTALL NEWS README* TODO build/changelog.gz packaging/deb/copyright ${_docdir}/
+  install -Dpm644 ${srcdir}/yacas.desktop ${_appdir}/
+  install -Dpm644 ${srcdir}/yacas-docs.desktop ${_appdir}/
+  [ ${_build_gui} == "OFF" ] && install -Dpm644 ${srcdir}/${pkgname}-${pkgver}/cyacas/yacas-gui/resources/pixmaps/yacas-gui.png ${_pngdir}
+  install -Dpm644 AUTHORS ChangeLog INSTALL.rst README.rst TODO ${_docdir}/
   install -Dpm644 ${srcdir}/yacas.epub ${pkgdir}/usr/share/yacas/
   install -Dpm644 COPYING ${_licdir}/
   (cd ${_docdir} ; ln -s ../../yacas/yacas.epub .)
