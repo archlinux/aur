@@ -1,6 +1,5 @@
 pkgname=mopidy-alarmclock
-_pypiname=Mopidy-AlarmClock
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Mopidy extension using it as an alarm clock."
 arch=('any')
@@ -12,10 +11,10 @@ depends=(
 	'python2-pykka>=1.1'
 )
 makedepends=('python2' 'git')
-source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('93d9297f223e2823d1a28442144b2d60d048a6c01ffb4d6e6e9ee6f0c49ab3b8')
+source=("https://github.com/DavisNT/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('82c27cfe2828d9bf1969b832b142f4567c91fc9e6eb49ad89aedd92513fb75cf')
 
 package() {
-  cd "$srcdir/$_pypiname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
