@@ -1,9 +1,10 @@
-# Maintainer:   Maximilian Weiss <max at maxweiss dot io>
-# Contributor:  Felix Yan <felixonmars at gmail dot com>
+# Maintainer:   Maximilian Weiss <$(echo "bWF4QG1heHdlaXNzLmlv" | base64 -d)>
+# Contributor:  Felix Yan <$(echo "ZmVsaXhvbm1hcnNAZ21haWwuY29t" | base64 -d)>
+
 
 pkgname=libunique3
 pkgver=3.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Library for writing single instance applications for GTK3'
 arch=('i686' 'x86_64')
 url='http://live.gnome.org/LibUnique'
