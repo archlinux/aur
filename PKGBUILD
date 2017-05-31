@@ -8,17 +8,18 @@ pkgver() {
   git describe --long --tags | cut -d- -f1
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal-based chat client for MatterMost'
 arch=('x86_64')
 url="https://github.com/matterhorn-chat/matterhorn"
 license=('BSD')
-makedepends=('git' 'cabal-install' 'ghc')
+makedepends=('git' 'cabal-install' 'ghc' 'happy')
 source=("$_pkgname::git+https://github.com/matterhorn-chat/matterhorn.git"
         "mattermost-api::git+https://github.com/matterhorn-chat/mattermost-api.git")
 md5sums=('SKIP'
          'SKIP')
 provides=('matterhorn')
+conficts=('matterhorn')
 
 build() {
   cd "$srcdir/$_pkgname"
