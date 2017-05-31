@@ -8,11 +8,11 @@ pkgbase=('qemu-minimal-git')
 _gitname=qemu
 pkgname=('qemu-minimal-git')
 pkgver=2.9.0.r53387.9964e96dc9
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
-makedepends=('glib2' 'pixman'
+makedepends=('glib2' 'pixman' 'jemalloc'
              'gnutls' 'util-linux' 'curl' 'libsasl'
              'libcap-ng' 'libaio' 'libseccomp'
              'python2' 'usbredir' 'lzo'

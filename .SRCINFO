@@ -1,6 +1,6 @@
 pkgbase = qemu-minimal-git
 	pkgver = 2.9.0.r53387.9964e96dc9
-	pkgrel = 4
+	pkgrel = 5
 	url = http://wiki.qemu.org/
 	arch = i686
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = qemu-minimal-git
 	license = LGPL2.1
 	makedepends = glib2
 	makedepends = pixman
+	makedepends = jemalloc
 	makedepends = gnutls
 	makedepends = util-linux
 	makedepends = curl
