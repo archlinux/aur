@@ -1,0 +1,16 @@
+pkgbase = jasmine-gjs-git
+	pkgdesc = Run Jasmine specs for GJS code
+	pkgver = 2.2.1.r11.g7f12b66
+	pkgrel = 1
+	url = https://github.com/ptomato/jasmine-gjs
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gjs
+	provides = jasmine-gjs
+	conflicts = jasmine-gjs
+	source = jasmine-gjs-git::git+https://github.com/ptomato/jasmine-gjs.git
+	sha256sums = SKIP
+
+pkgname = jasmine-gjs-git
+
