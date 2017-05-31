@@ -5,11 +5,11 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=1.25
+pkgver=1.26.1
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output"
 arch=('i686' 'x86_64')
-url="http://home.gna.org/${pkgname}/"
+url="https://veusz.github.io/"
 license=('GPL2')
 depends=('python2-pyqt4' 'python2-numpy')
 optdepends=('python2-pyfits: for reading files in FITS format'
@@ -17,10 +17,9 @@ optdepends=('python2-pyfits: for reading files in FITS format'
             'python2-dbus: for dbus interface'
 #            'python2-pyminuit2: for numerical function minimization' - http://code.google.com/p/pyminuit/ - package missing
             'python2-astropy: for VO table import')
-install='veusz.install'
-source=("http://download.gna.org/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}/veusz-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('b99ce07dfe583f8382b1a95f9d1787bf'
+md5sums=('cb0d269b0a76e03aa4811c8625fc64b9'
          '3823fe5961f3975a4dff2967aadaa14f')
 
 build() {
