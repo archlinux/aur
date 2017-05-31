@@ -1,0 +1,14 @@
+--- src/cg3/include/boost/functional/hash/hash.hpp.orig	2017-04-24 22:28:46.000000000 +0200
++++ src/cg3/include/boost/functional/hash/hash.hpp	2017-05-31 09:34:36.380704706 +0200
+@@ -89,6 +89,10 @@
+             boost::hash_detail::enable_hash_value {};
+         template <> struct basic_numbers<unsigned long> :
+             boost::hash_detail::enable_hash_value {};
++        template <> struct basic_numbers<char16_t> :
++            boost::hash_detail::enable_hash_value {};
++        template <> struct basic_numbers<char32_t> :
++            boost::hash_detail::enable_hash_value {};
+ 
+ #if !defined(BOOST_NO_INTRINSIC_WCHAR_T)
+         template <> struct basic_numbers<wchar_t> :
+
