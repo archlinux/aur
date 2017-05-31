@@ -2,7 +2,7 @@
 pkgname=heroku
 pkgver=5.7.1.c574890
 pkgrel=1
-pkgdesc="Everything you need to get started with Heroku"
+pkgdesc="The Heroku Command Line Interface (CLI), formerly known as the Heroku Toolbelt."
 arch=("x86_64")
 url="https://cli.heroku.com"
 license=('MIT')
