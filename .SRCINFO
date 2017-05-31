@@ -1,0 +1,22 @@
+pkgbase = python-eddy
+	pkgver = 0.2.1
+	pkgrel = 1
+	arch = any
+	license = GPLv3
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-pypandoc
+	depends = python-markdown
+	depends = python-pygments
+	depends = python-jinja
+	depends = python-argparse
+	depends = python-yaml
+	depends = python-requests
+	depends = python-argcomplete
+	depends = python-py-gfm
+	options = !emptydirs
+	source = python-eddy::git+https://github.com/joajfreitas/eddy.git
+	md5sums = SKIP
+
+pkgname = python-eddy
+
