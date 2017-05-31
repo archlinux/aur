@@ -3,70 +3,38 @@
 
 pkgname=plecs-standalone
 _pkgname="plecs"
-pkgver=v3.7.5
+pkgver=v4.0.6
 pkgrel=1
 pkgdesc="A Circuit simulation tool written by plexim (license needed, only demo mode available otherwise)"
 url='http://www.plexim.com/de/products/plecs_standalone'
 
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('custom')
 provides=('plecs-standalone')
 depends=('qt4' 'ncurses5-compat-libs')
-makedepends=('findutils')
+makedepends=('coreutils')
 
-source=("plecs.desktop")
-md5sums=('6a70b9891052f0a18e56565f81182a2d')
-
-source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-3-7-5_linux64.tar.gz")
-md5sums_x86_64=('3b4c9e61c7284e5431810c832fba1dd8')
-sha1sums_x86_64=('0aa7448b450f38a1ab2f0471f4efe4652feabd7b')
-
-source_i686=("$pkgname-$pkgver-i686.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-3-7-5_linux32.tar.gz")
-md5sums_i686=('e8e13583c1b047b0eddad40f95a36aea')
-sha1sums_i686=('289b407fa089f1d89c8b178b60fa6e5d6d6d799a')
+source=("plecs.desktop" "plecs.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-0-6_linux64.tar.gz")
+md5sums=('1304e0fb305fbaa4f7725dde65b646f8' '9d22a86f620506b3e5768d54e338af5d' '26b6e7679c7253721b32101a3050cb0d')
+sha1sums=('21635d737fcb2ec287eb195e2f75b2f895fd032f' '5e708849ba6a5fbb55bcbf97debfca3168230c63' '2a99411ec2329483487362918f29b9a1d8682842')
 
 package() {
-	# desktop file
 	mkdir -p "$pkgdir/usr/share/applications/"
-	install -m 664 plecs.desktop "$pkgdir/usr/share/applications/"
-
-	cd "$_pkgname"
+	mkdir -p "$pkgdir/opt/plecs"
 	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/share/plecs/"
-	mkdir -p "$pkgdir/usr/share/plecs/private"
 	mkdir -p "$pkgdir/usr/share/licenses/plecs"
 
-	install -m 664 license.txt 		"$pkgdir/usr/share/licenses/plecs/LICENSE"
-	install -m 664 Components.plecs 	"$pkgdir/usr/share/plecs/"
-	install -m 664 Deprecated.plecs 	"$pkgdir/usr/share/plecs/"
-	install -m 775 PLECS.bin 		"$pkgdir/usr/share/plecs/plecs"
-	install -m 775 crashreporter.bin 	"$pkgdir/usr/share/plecs/crashreporter"
+	# desktop file
+	echo "install plecs.desktop"
+	install -m 664 "$srcdir/plecs.desktop" "$pkgdir/usr/share/applications/"
 
-	# private dir
-	install -m 775 "private/plecs.oct" 	"$pkgdir/usr/share/plecs/private/"
-	install -m 664 private/*.m 		"$pkgdir/usr/share/plecs/private/"
+	echo "install start script"
+	install -m 555 "$srcdir/plecs.sh" "$pkgdir/usr/bin/plecs"
 
-	# include dir	
-	cp include "$pkgdir/usr/share/plecs/include" -r
-
-	cp plugins "$pkgdir/usr/share/plecs/" -r
-	find "$pkgdir/usr/share/plecs/plugins" -type f -exec chmod 775 {} +
-
-	cp onlinehelp "$pkgdir/usr/share/plecs/" -r
-	find "$pkgdir/usr/share/plecs/onlinehelp" -type f -exec chmod 664 {} +
-
-	cp pilframeworks "$pkgdir/usr/share/plecs/" -r 
-	find "$pkgdir/usr/share/plecs/pilframeworks" -type f -exec chmod 775 {} +
-
+	echo "install license.txt"
+	install -m 664 "$srcdir/plecs/license.txt" "$pkgdir/usr/share/licenses/plecs/"
 	
-	cp octave 	"$pkgdir/usr/share/plecs/" -r
-	cp demos 	"$pkgdir/usr/share/plecs/" -r 
-
-	find "$pkgdir/usr/share/plecs/demos" -type f -exec chmod 664 {} +
-	
-	echo '#!/bin/sh' > plecs
-	echo 'cd /usr/share/plecs/' >> plecs
-	echo 'exec ./plecs' >> plecs
-	
-	install -m 775 -t "$pkgdir/usr/bin/" plecs 
+	echo "copying plecs dir"
+	rm "$srcdir/plecs/PLECS"
+	cp "$srcdir/plecs/." "$pkgdir/opt/plecs" -r 
 }
