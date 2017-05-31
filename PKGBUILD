@@ -3,13 +3,13 @@
 pkgname=spop-git
 _pkgname=spop
 pkgver=r328.1a26dec
-pkgrel=1
+pkgrel=2
 pkgdesc="A Spotify client running as a daemon, similar to mpd."
 arch=('i686' 'x86_64')
 url='https://github.com/Schnouki/spop'
 license=('GPL')
 depends=('libspotify' 'json-glib')
-makedepends=('git' 'cmake' 'python')
+makedepends=('git' 'cmake' 'python' 'dbus-glib' 'libao' 'libnotify' 'libsoup'  'sox')
 optdepends=(
   'libao: libao audio output'
   'sox: libsox audio output'
