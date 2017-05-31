@@ -3,8 +3,8 @@
 
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
-pkgver=3.15
-pkgrel=3
+pkgver=3.15.1
+pkgrel=1
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://cdn.cocos2d-x.org/"
@@ -63,7 +63,7 @@ source=(
 "CCPhysicsWorld.cpp.patch"
 )
 sha256sums=(
-'5296091bf87d894475d2bbde39d2081612aea9ee855a91968e7523fbc6c84a5f'
+'36299ecc61d95bcb9cbfbaac4410be395aeb61c161b682e5576495b8e2a923f8'
 '09248ad9af9a94579b56c7c7dbf1b4276a59852c90423ad70c48b16355f28574'
 'f2f74a36538c43045894bd2b2415a2396bcb5c28f9241296b0e6d39a452b56b1'
 '3a7ae492fe9b2d7db8ef15c2d47e147746823942943e099d5a494c7076b2e92b'
@@ -224,8 +224,10 @@ package() {
 		mkdir -p "$pkgdir/usr/lib32"
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/64-bit/libfmod.so "$pkgdir/usr/lib/libfmod.so.6"
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/64-bit/libfmodL.so "$pkgdir/usr/lib/libfmodL.so.6"
-		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmod.so "$pkgdir/usr/lib32/libfmod.so.6"
-		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmodL.so "$pkgdir/usr/lib32/libfmodL.so.6"
+
+		# 32-bit linux support was dropped.
+		#ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmod.so "$pkgdir/usr/lib32/libfmod.so.6"
+		#ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmodL.so "$pkgdir/usr/lib32/libfmodL.so.6"
 	else
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmod.so "$pkgdir/usr/lib/libfmod.so.6"
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmodL.so "$pkgdir/usr/lib/libfmodL.so.6"
