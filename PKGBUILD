@@ -2,22 +2,22 @@
 # Contributor: Joker-jar <joker-jar@yandex.ru>
 
 pkgname="psi-plus-webkit-git"
-pkgver=0.16.559.574
+pkgver=1.0.0.792
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (with webkit support)"
 url="http://psi-plus.com"
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('qt4' 'qca-qt4' 'qtwebkit' 'libidn' 'aspell' 'libxss')
+depends=('qt4' 'qca-qt4' 'qtwebkit' 'libidn' 'enchant' 'libxss')
 makedepends=('git' 'patch' 'qconf-git')
 optdepends=('qca-gnupg: encrypted client-to-client connection')
 provides=("psi-plus=$pkgver" "psi-plus-git=$pkgver")
 replaces=('psi-plus' 'psi-plus-git')
 conflicts=('psi-plus' 'psi-plus-git')
 source=('git://github.com/psi-im/psi.git'
-	'psi-plus::git://github.com/psi-plus/main.git'
-	'git://github.com/psi-im/iris.git'
-	'git://github.com/psi-im/libpsi.git')
+        'psi-plus::git://github.com/psi-plus/main.git'
+        'git://github.com/psi-im/iris.git'
+        'git://github.com/psi-im/libpsi.git')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
@@ -26,9 +26,9 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir"/psi-plus
 
-  PSI_PLUS_REVISION="$(git describe --tags | cut -d - -f 2)"
+  PSI_PLUS_REVISION="$(git describe --tags --long | cut -d - -f 2)"
   PSI_PLUS_TAG="$(git describe --tags | cut -d - -f 1)"
-  PSI_REVISION="$(cd "$srcdir"/psi && git describe --tags | cut -d - -f 2)"
+  PSI_REVISION="$(cd "$srcdir"/psi && git describe --tags --long | cut -d - -f 2)"
 
   echo "${PSI_PLUS_TAG}.${PSI_PLUS_REVISION}.${PSI_REVISION}"
 }
@@ -62,9 +62,7 @@ build() {
 
   qconf
   ./configure --prefix=/usr \
-              --libdir=/usr/lib \
               --enable-webkit \
-              --disable-enchant \
               --qtdir="/usr/lib/qt4"
   make
 }
