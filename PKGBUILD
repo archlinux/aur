@@ -1,7 +1,7 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-resources-git
-pkgver=20140502
+pkgver=v17.05.29
 pkgrel=1
 pkgdesc="Additional iconsets, themes and sounds for Psi+"
 arch=('any')
@@ -15,8 +15,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd psi-plus-resources
 
-	# Date of last commit
-	git log -1 --format="%ci" HEAD | cut -d\  -f1 | tr -d '-'
+	git describe --tags | cut -d - -f 1-2 --output-delimiter=.
 }
 
 package() {
