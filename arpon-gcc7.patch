@@ -1,0 +1,41 @@
+diff --unified -r src/ArpON-3.0-ng/src/opt.c src-gcc7fix/ArpON-3.0-ng/src/opt.c
+--- src/ArpON-3.0-ng/src/opt.c	2016-01-28 20:56:19.000000000 -0500
++++ src-gcc7fix/ArpON-3.0-ng/src/opt.c	2017-05-31 02:22:54.053601192 -0400
+@@ -222,6 +222,8 @@
+                 /* Print the version command option, cleanup and exit. */
+                 std_version();
+                 exit_cleanup(true);
++                /* Explicit break because exit_cleanup conditionally exits (noreturn unsuitable). */
++                break;
+ 
+             case 'h':
+                 MSG_DEBUG("-h or --help command option");
+@@ -229,6 +231,8 @@
+                 /* Print the help screen command option, cleanup and exit. */
+                 std_help();
+                 exit_cleanup(true);
++                /* Explicit break because exit_cleanup conditionally exits (noreturn unsuitable). */
++                break;
+ 
+             case '?':
+             case ':':
+@@ -285,7 +289,7 @@
+     }
+ 
+     /* Re-initialize the interface name command option to no interface? */
+-    if (opt->interface != '\0')
++    if (opt->interface[0] != '\0')
+         memset(opt->interface, '\0', (size_t)IF_NAMESIZE);
+ 
+     /* Set the value of the interface name command option. */
+diff --unified -r src/ArpON-3.0-ng/src/sig.c src-gcc7fix/ArpON-3.0-ng/src/sig.c
+--- src/ArpON-3.0-ng/src/sig.c	2016-01-28 21:06:37.000000000 -0500
++++ src-gcc7fix/ArpON-3.0-ng/src/sig.c	2017-05-31 02:17:58.216940834 -0400
+@@ -204,6 +204,7 @@
+             case SIGINT:
+                 /* Remove ^C symbol from the output terminal. */
+                 printf("\r");
++                __attribute__ ((fallthrough));
+ 
+             case SIGTERM:
+                 MSG_DEBUG("Caught %s (%d)..", SIG_ITOA(sig), sig);
