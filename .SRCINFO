@@ -1,0 +1,14 @@
+pkgbase = python-langid
+	pkgdesc = A standalone Language Identification (LangID) tool
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/saffsd/langid.py
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-numpy
+	source = https://pypi.python.org/packages/ea/4c/0fb7d900d3b0b9c8703be316fbddffecdab23c64e1b46c7a83561d78bd43/langid-1.1.6.tar.gz
+	sha256sums = 044bcae1912dab85c33d8e98f2811b8f4ff1213e5e9a9e9510137b84da2cb293
+
+pkgname = python-langid
+
