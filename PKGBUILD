@@ -1,7 +1,7 @@
-# Maintainer: Charles Heywood <charles@hashbang.sh>
-pkgname=('lua-ossl-git' 'lua51-ossl-git' 'lua52-ossl-git')
+# Maintainer: Charles Heywood <vandor2012@gmail.com>
+pkgname=('lua-luaossl-git' 'lua51-luaossl-git' 'lua52-luaossl-git')
 pkgver=20161214.r43.a91aba8
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://25thandclement.com/~william/projects/luaossl.html"
 license=('MIT')
@@ -19,7 +19,7 @@ build() {
   make prefix=/usr
 }
 
-package_lua-ossl-git() {
+package_lua-luaossl-git() {
   pkgdesc="Most comprehensive OpenSSL module in the Lua universe for Lua 5.3"
 
   cd luaossl
@@ -27,7 +27,7 @@ package_lua-ossl-git() {
   install -Dm644 LICENSE "$pkgdir"/usr/share/license/$pkgname/LICENSE
 }
 
-package_lua51-ossl-git() {
+package_lua51-luaossl-git() {
   pkgdesc="Most comprehensive OpenSSL module in the Lua universe for Lua 5.1"
 
   cd luaossl
@@ -35,7 +35,7 @@ package_lua51-ossl-git() {
   install -Dm644 LICENSE "$pkgdir"/usr/share/license/$pkgname/LICENSE
 }
 
-package_lua52-ossl-git() {
+package_lua52-luaossl-git() {
   pkgdesc="Most comprehensive OpenSSL module in the Lua universe for Lua 5.1"
 
   cd luaossl

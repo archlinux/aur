@@ -1,6 +1,6 @@
-pkgbase = lua-ossl-git
+pkgbase = lua-luaossl-git
 	pkgver = 20161214.r43.a91aba8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/wahern/luaossl
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = lua-ossl-git
 	source = git+https://github.com/wahern/luaossl.git#branch=master
 	md5sums = SKIP
 
-pkgname = lua-ossl-git
+pkgname = lua-luaossl-git
 	pkgdesc = Most comprehensive OpenSSL module in the Lua universe for Lua 5.3
 
-pkgname = lua52-ossl-git
+pkgname = lua52-luaossl-git
 	pkgdesc = Most comprehensive OpenSSL module in the Lua universe for Lua 5.2
 
-pkgname = lua51-ossl-git
+pkgname = lua51-luaossl-git
 	pkgdesc = Most comprehensive OpenSSL module in the Lua universe for Lua 5.1
