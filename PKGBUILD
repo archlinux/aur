@@ -33,7 +33,7 @@ package() {
     ${pkgdir}/etc/profile.d/jai-imageio.csh
     
   msg "Installing jre libs..."
-  install -d ${pkgdir}/usr/lib/jvm/default/lib
+#  install -d ${pkgdir}/usr/lib/jvm/default/lib
   install -Dm644 lib/* \
     ${pkgdir}/usr/lib/jvm/default/lib
   
