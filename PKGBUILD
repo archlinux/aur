@@ -30,8 +30,9 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     sh ./bootstrap
     ./configure --prefix=/usr
-    make
-    make check
+
+    make -j4
+    make -j4 check
 }
 
 package() {
