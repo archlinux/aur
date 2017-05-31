@@ -31,7 +31,7 @@ build() {
     sh ./bootstrap
     ./configure --prefix=/usr
 
-    make -j4
+    make
     make -j4 check
 }
 
