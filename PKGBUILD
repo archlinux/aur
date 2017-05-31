@@ -4,11 +4,11 @@
 
 pkgname=bitcoin-infinity
 pkgver=v0.14.0.0.g7b3d9c92
-pkgrel=2
+pkgrel=3
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1496213923
+epoch=1496213924
 
 _commit=7b3d9c9290abbcc2dfaefeb4760ef7b4e9eff490
 _commitziphash=b9c4c147ad6967181d66acfb3d90f072e96f5d8792fe824ca5436a91fded4036
@@ -20,7 +20,7 @@ license=('MIT')
 depends=('desktop-file-utils' 'openssl' 'db4.8' 'boost' 'boost-libs' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
 provides=('bitcoin-infinity' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-infinity' 'bitcoin' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
-source=("https://github.com/whitslack/bitcoin-infinity/archive/$_commit.zip")
+source=("$_commit.zip::https://github.com/whitslack/bitcoin-infinity/archive/$_commit.zip")
 sha256sums=("$_commitziphash")
 
 build() {
