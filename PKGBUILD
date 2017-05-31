@@ -54,16 +54,16 @@ prepare() {
   patch -Np2 < ../minus-backgroundmanager.patch
   msg2 "minus gpg"
   patch -Np2 < ../minus-galaplugin.patch
-  #msg2 "minus gcm"
-  #patch -Np2 < ../minus-gala-cmake.patch
+  msg2 "minus gcm"
+  patch -Np2 < ../minus-gala-cmake.patch
 
   #autohide
   #msg2 "autohide"
   #patch -Np2 < ../autohide-evbox.patch
 
   #Cogl can't be found, although it is installed. Arch-specific? .so bump?
-  #msg2 "minus cgl"
-  #patch -Np2 < ../y-is-broken-cogl.patch
+  msg2 "minus cgl"
+  patch -Np2 < ../y-is-broken-cogl.patch
 }
 
 build() {
