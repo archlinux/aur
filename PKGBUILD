@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=xargo
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='Effortless cross compilation of Rust programs to custom bare-metal targets like ARM Cortex-M'
 url="https://github.com/japaric/$pkgname"
@@ -9,7 +9,7 @@ license=('Apache' 'MIT')
 depends=('rustup' 'gcc-libs-multilib')
 makedepends=('cargo')
 source=("$url/archive/v$pkgver.zip")
-sha256sums=('5022f43abd55b9f2b6e8e8d5ecbe4ac2d058139ce4195388b54a314ba7bbfc1a')
+sha256sums=('d168ef50c11419dd2b033fd3d8a8e15c6a33a98ff747edd09dd4913e578536a6')
 
 build()
 {
