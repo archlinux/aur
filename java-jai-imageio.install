@@ -1,0 +1,7 @@
+post_install() {
+  echo 'The jai-imageio package is licensed software.'
+  echo 'You MUST read and agree to the license stored in'
+  echo '/usr/share/licenses/java-jai-imageio/LICENSE-jai_imageio.txt before using it.'
+  
+  echo 'Please relogin to include jai-imageio in your CLASSPATH'
+}

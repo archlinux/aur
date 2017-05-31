@@ -1,0 +1,20 @@
+pkgbase = java-jai-imageio
+	pkgdesc = Container for JavaTM Advanced Imaging Image I/O Tools projects.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://java.net/projects/jai-imageio/
+	install = java-jai-imageio.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-environment
+	depends = glibc
+	source = http://download.java.net/media/jai-imageio/builds/release/1.1/jai_imageio-1_1-lib-linux-amd64.tar.gz
+	source = jai-imageio.profile.csh
+	source = jai-imageio.profile
+	md5sums = 163a33949d92930372dd1f59702f791e
+	md5sums = 81805b48a7bd2af07ad168a8f594f4b3
+	md5sums = d48bee907e9f3f7649a340a2369caf73
+
+pkgname = java-jai-imageio
+
