@@ -4,14 +4,14 @@
 
 pkgname=bitcoin-infinity
 pkgver=v0.14.0.0.g7b3d9c92
-pkgrel=3
+pkgrel=4
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1496213924
+epoch=1496213925
 
 _commit=7b3d9c9290abbcc2dfaefeb4760ef7b4e9eff490
-_commitziphash=b9c4c147ad6967181d66acfb3d90f072e96f5d8792fe824ca5436a91fded4036
+_commitziphash=62d503dc6448fce24b24b34fc8ca2442d3dd6de174e896bb6b119466258057ca
 
 pkgdesc='A patch with the minimal changes necessary to make Bitcoin Core accept blocks of any size'
 arch=('i686' 'x86_64')
