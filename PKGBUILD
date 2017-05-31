@@ -1,7 +1,7 @@
 pkgname=stacer-git
 _gitname=Stacer
 pkgver=v1.0.6.r6.gc22c273
-pkgrel=2
+pkgrel=3
 pkgdesc="Ubuntu System Optimizer"
 url="https://github.com/oguzhaninan/Stacer"
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('stacer')
 source=("git://github.com/oguzhaninan/$_gitname.git" $pkgname.sh $pkgname.desktop)
 sha256sums=('SKIP'
             '96c90af9d95e01f45141c63a22c38fc7a090543138f8864b7601112895c5cd3e'
-            '5b853a40cc986270bdf2ac3d6b5b42d0fe71a6373f4a382a313e71284c2037e8')
+            '5c1a6698d1dd4ac2b09ef684564fc120765dd028dbe31fe17ce1d745f1fc4291')
 
 pkgver() {
   cd "$_gitname"

@@ -5,6 +5,6 @@ Name=Stacer
 GenericName=Stacer
 Comment=System optimizer
 Icon=stacer.png
-Exec=stacer
+Exec=stacer-git
 Categories=Development;
 
