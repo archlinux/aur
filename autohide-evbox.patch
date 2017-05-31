@@ -1,5 +1,5 @@
---- src/wingpanel/src/PanelWindow.vala.old	2017-05-30 05:11:04.862053641 +0900
-+++ src/wingpanel/src/PanelWindow.vala	2017-05-30 05:15:50.025099860 +0900
+--- src/wingpanel/src/PanelWindow.vala	2017-06-01 02:18:32.090889031 +0900
++++ src/wingpanel/src/PanelWindow.vala.patched	2017-06-01 02:11:40.814767918 +0900
 @@ -22,6 +22,10 @@
  
      private Widgets.Panel panel;
@@ -11,7 +11,7 @@
      private int monitor_number;
  
      private int monitor_width;
-@@ -62,10 +64,17 @@
+@@ -62,20 +66,41 @@
  
          popover_manager = new Services.PopoverManager (this);
  
@@ -30,7 +30,10 @@
      }
  
      private bool animation_step () {
-@@ -75,7 +84,19 @@
+         if (panel_displacement <= panel_height * (-1)) {
++            timeout = 0;
+             return false;
+         }
  
          panel_displacement--;
  
@@ -42,6 +45,7 @@
 +
 +    private bool animation_unstep () {
 +        if (panel_displacement >= -1) {
++            timeout = 0;
 +            return false;
 +        }
 +
@@ -51,7 +55,7 @@
  
          return true;
      }
-@@ -85,7 +106,27 @@
+@@ -85,7 +110,27 @@
  
          //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
  
@@ -80,7 +84,7 @@
      }
  
      private void update_panel_dimensions () {
-@@ -108,6 +148,24 @@
+@@ -108,6 +153,24 @@
          update_struts ();
      }
  
