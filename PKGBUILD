@@ -2,7 +2,7 @@
 
 pkgname=evdi-pre-release
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Linux® kernel module that enables management of multiple screens."
 arch=('i686' 'x86_64')
 url="https://github.com/DisplayLink/evdi"
@@ -24,7 +24,7 @@ md5sums=('eece77058251418d5707457aa8ae914e')
 
 build() {
 # We only need to build the library in this step, dkms will build the module
-cd "$pkgname-$pkgver/library"
+cd "evdi-$pkgver/library"
 
 make
 }
@@ -34,7 +34,7 @@ package() {
 SRCDIR="$pkgdir/usr/src/$pkgname-$pkgver"	# This one is needed for dkms
 LIBNAME=libevdi
 
-cd "$pkgname-$pkgver"
+cd "evdi-$pkgver"
 
 install -D -m 755 library/$LIBNAME.so $pkgdir/usr/lib/$LIBNAME.so
 
