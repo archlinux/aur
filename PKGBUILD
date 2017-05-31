@@ -1,3 +1,4 @@
+
 # Maintainer: Pierre Franco <pierre dot franco at ensimag dot grenoble dash inp dot fr>
 # Based on wine-staging PKGBUILD
 
@@ -10,11 +11,11 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
-#_d3d9ver=$_pkgbasever
-_d3d9ver=2.8
+_d3d9ver=$_pkgbasever
+#_d3d9ver=2.8
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
@@ -27,7 +28,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         wbemprox_query_v2.patch
         )
 sha1sums=('29f9a44a317efe3985d88c881aa3acd033100819'
-	  'cb5d8ca73af7f2d7b2ad8160d8ba6311daa7a58f'
+	  'd587c2f35006c23b51836cbef0fb7b453130d59e'
 	  '0c45c2e050a7642acd5c7dec6fd5b03f8b5cd658'
 	  'b9ca93f8afcd01cf12460d40022df733010069d2'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
