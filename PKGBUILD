@@ -2,16 +2,16 @@
 
 # NOTE:
 # To enable CUDA support you need a ffmpeg build that has been
-# compiled with CUDA (ffmpeg-full-git).
+# compiled with CUDA (ffmpeg-full).
 # CUDA is x86_64 only and so it will not be available in i686 builds.
 
 # AUR dependencies
 # ----------------
 # i686: rsound sndio uchardet
-# x86_64: all from i686 and ffmpeg-full-git
+# x86_64: all from i686 and ffmpeg-full
 
 pkgname=mpv-full-git
-pkgver=0.25.0.r92.gbc3365b169
+pkgver=0.25.0.r97.gcc69650e76
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ depends_i686=(
   'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
   'libbluray' 'sdl2' 'openal' 'ffmpeg'
 )
-depends_x86_64=('ffmpeg-full-git')
+depends_x86_64=('ffmpeg-full')
 optdepends=('youtube-dl: for video-sharing websites playback')
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
