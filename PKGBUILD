@@ -13,18 +13,19 @@
 # Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 # Contributor: runnytu
 # Contributor: sling00 (4.10 kernel patch)
+# Contributor: npfeiler (4.11 kernel patch)
 
 
 pkgname=catalyst-dkms
 pkgver=15.9
-pkgrel=15
+pkgrel=16
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers AKA Crimson. Sources to build fglrx module on DKMS."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.11' 'linux-headers')
+depends=('dkms' 'catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.12' 'linux-headers')
 optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-hook' 'catalyst-daemon' 'catalyst' 'catalyst-generator')
 provides=("catalyst=${pkgver}")
@@ -49,7 +50,8 @@ source=(
     makesh-dont-check-gcc-version.patch
     4.7-arch-cpu_has_pge-v2.patch
     4.9_over_4.6-arch-get_user_pages_remote.patch
-    4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch)
+    4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
+    4.11-npfeiler-signal_vmf.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '3e1b82bd69774ea808da69c983d6a43b'
@@ -67,7 +69,8 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '10829e3b992b3e80a6e78c8e27748703'
 	 '37eef5103a11d8136979463e7bc31091'
 	 '194cb44e9e2ab0e65b6267aca66d0400'
-	 '05f6364db877d9c4bdf1592deda905b7')
+	 '05f6364db877d9c4bdf1592deda905b7'
+	 '8e53ba65a0aad42eb2ff771c1ace6609')
 
 
 build() {
@@ -97,6 +100,7 @@ package() {
       patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
       patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
       patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
+      patch -Np1 -i ../4.11-npfeiler-signal_vmf.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
