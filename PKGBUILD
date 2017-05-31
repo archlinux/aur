@@ -32,7 +32,7 @@ build() {
     ./configure --prefix=/usr
 
     make
-    make -j4 check
+    make check
 }
 
 package() {
