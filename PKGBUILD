@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86313.g87bddba43b
-pkgrel=1
+pkgrel=2
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -24,7 +24,7 @@ depends=(
         'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'openh264'
         'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'libmfx-git'
 )
-depends_x86_64=('cuda')
+depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
     # AUR:
         'intel-media-sdk: for Intel QSV support (experimental)'
@@ -62,6 +62,7 @@ build() {
     if [ "$CARCH" = "x86_64" ] 
     then
         _cuda="--enable-cuda"
+        _cudasdk="--enable-cuda-sdk"
         _cuvid="--enable-cuvid"
         _libnpp="--enable-libnpp"
         _cflags="--extra-cflags=-I/opt/cuda/include"
@@ -162,6 +163,7 @@ build() {
         --enable-zlib \
         \
         $_cuda \
+        $_cudasdk \
         $_cuvid \
         --enable-libmfx \
         $_libnpp \
