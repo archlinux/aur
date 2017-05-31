@@ -3,7 +3,7 @@
 pkgbase=phonon-gstreamer
 pkgname=('phonon-qt4-gstreamer' 'phonon-qt5-gstreamer')
 pkgver=4.9.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 license=('LGPL')
@@ -42,6 +42,7 @@ build() {
 package_phonon-qt4-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt4"
   depends=(gst-plugins-base phonon-qt4)
+  provides=(phonon-qt4-backend)
 
   cd build-qt4
   make DESTDIR="${pkgdir}" install
@@ -53,6 +54,7 @@ package_phonon-qt4-gstreamer() {
 package_phonon-qt5-gstreamer() {
   pkgdesc="Phonon GStreamer backend for Qt5"
   depends=(gst-plugins-base qt5-x11extras phonon-qt5)
+  provides=(phonon-qt5-backend)
 
   cd build-qt5
   make DESTDIR="${pkgdir}" install
