@@ -2,13 +2,13 @@
 
 pkgname=ib-tws
 pkgver=965.1b
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
 license=('custom')
-depends=(jre bash)
-makedepends=(imagemagick gzip tar)
+depends=(bash)
+makedepends=(gtk2 imagemagick gzip tar)
 
 source=('LICENSE'
 	'ib-tws'
@@ -17,9 +17,9 @@ source=('LICENSE'
 	'ib-gw.desktop'
 	'https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh')
 md5sums=('e1cae2de592add7133bb08123e8db1ad'
-         'f6475c9ea0bdd03e9dec608983ae1218'
+         'dff283b103c0ddeb76eba6ecfb852afd'
          '9205b5eade96d69f8e470cc52c30db4a'
-         '4fde990121cb3b4f0fad029d3c923cbe'
+         '6f08b240afad921b29c2c81a440a6a8a'
          'ffa9fcfb623850e5c9e796040bdbd052'
          'b5c6bbb526862cfd463304fb1da4dbc9')
 
@@ -32,6 +32,9 @@ build() {
   rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer}
   ./tws-latest-standalone-linux-x64.sh -q
 
+  BUNDLED_JRE_VER=$(ls -1 ${HOME}/.i4j_jres)
+  mv ${HOME}/.i4j_jres/${BUNDLED_JRE_VER} ${HOME}/.i4j_jres/jre
+  mv ${HOME}/.i4j_jres/jre ${srcdir}/jre
   mv ${HOME}/Jts/${majorVer}/jars/*.jar ${srcdir}
   rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer}
   cd ${srcdir}
@@ -59,6 +62,8 @@ package() {
   install -Dm644 ib-gw.desktop ${pkgdir}/usr/share/applications/ib-gw.desktop
   mkdir -p ${pkgdir}/usr/share/pixmaps/
   install -Dm644 *.png "${pkgdir}/usr/share/pixmaps/"
-  mkdir -p ${pkgdir}/usr/share/java/${pkgname}
-  install -Dm644 *.jar ${pkgdir}/usr/share/java/${pkgname}
+  mkdir -p ${pkgdir}/usr/share/${pkgname}/jre
+  cp -R jre ${pkgdir}/usr/share/${pkgname}
+  mkdir -p ${pkgdir}/usr/share/${pkgname}/jars
+  install -Dm644 *.jar ${pkgdir}/usr/share/${pkgname}/jars
 }

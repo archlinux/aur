@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /usr/share/java/ib-tws
-/usr/lib/jvm/java-8-jre/jre/bin/java -cp \* \
+cd /usr/share/ib-tws/jars
+/usr/share/ib-tws/jre/bin/java -cp \* \
                                      -Xmx768m -Dsun.awt.nopixfmt=true -Dsun.java2d.noddraw=true -Dswing.boldMetal=false -Dsun.locale.formatasdefault=true \
                                      jclient.LoginFrame $HOME/.ib-tws
