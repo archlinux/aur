@@ -2,14 +2,14 @@
 
 pkgname="python-rofi"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python module to make simple GUIs with Rofi'
 url='https://github.com/bcbnz/python-rofi'
 arch=('any')
 license=('MIT')
 makedepends=('python')
-source=("https://pypi.python.org/packages/source/h/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f2d6b8c7a1fcd1807b19cf27329d9a7f6c839cc9e8877396a819337cfa797a61')
+source=("https://github.com/bcbnz/python-rofi/archive/${pkgver}.tar.gz")
+sha256sums=('515fd9f5707df219f480633990d0902efe5b3ef0dd1470bf1ef1844097e44e78')
 
 # Enable for tests
 check() {
