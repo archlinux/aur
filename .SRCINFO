@@ -1,0 +1,19 @@
+pkgbase = pseucoco
+	pkgdesc = A Pseuco compiler written in Java
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://liebe.cs.uni-saarland.de/gitlab/pseuco/pseuco-java-compiler
+	install = pseucoco.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gradle
+	depends = java-runtime
+	depends = sudo
+	provides = pseucoco
+	conflicts = pseucoco
+	source = pseucoco::git+https://liebe.cs.uni-saarland.de/gitlab/pseuco/pseuco-java-compiler.git
+	md5sums = SKIP
+
+pkgname = pseucoco
+

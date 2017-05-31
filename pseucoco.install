@@ -1,0 +1,6 @@
+#!/bin/bash
+post_install() {
+    echo "This program currently requires sudo access."
+    echo "That is because the pseuco compiler requires write access on the files it creates in /usr/share/pseucoco/include."
+    echo "Hopefully this will be fixed in the future."
+}
