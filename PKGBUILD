@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86313.g87bddba43b
-pkgrel=5
+pkgrel=6
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -15,11 +15,10 @@ depends=(
         'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
         'libmodplug' 'lame' 'opencore-amr' 'opencv' 'openjpeg2' 'opus' 'pulseaudio'
         'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
-        'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
-        'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb'
-        'xvidcore' 'zimg' 'zeromq' 'zvbi' 'xz' 'netcdf' 'openal' 'opencl-icd-loader'
-        'mesa' 'openssl' 'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm'
-        'libvdpau'
+        'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
+        'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
+        'zeromq' 'zvbi' 'xz' 'netcdf' 'openal' 'opencl-icd-loader' 'mesa' 'openssl'
+        'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'openh264'
         'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'libmfx-git'
