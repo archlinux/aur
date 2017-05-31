@@ -33,9 +33,9 @@ package() {
     ${pkgdir}/etc/profile.d/jai-imageio.csh
     
   msg "Installing jre libs..."
-  install -d ${pkgdir}/usr/lib/jvm/default/lib
+  install -d ${pkgdir}/usr/lib/jvm/java-8-jdk/lib
   install -Dm644 lib/* \
-    ${pkgdir}/usr/lib/jvm/default/lib
+    ${pkgdir}/usr/lib/jvm/java-8-jdk/lib
   
   msg "Installing licenses..."
   install -d $pkgdir/usr/share/licenses/$pkgname   
