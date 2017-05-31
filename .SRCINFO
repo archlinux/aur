@@ -1,8 +1,8 @@
 pkgbase = bitcoinec
 	pkgdesc = A minimal patchset on top of Bitcoin Core to provide a stable implementation of Emergent Consensus
 	pkgver = v0.14.0.0.g15436fd2
-	pkgrel = 3
-	epoch = 1493794014
+	pkgrel = 4
+	epoch = 1496213927
 	url = https://bitcoinec.info
 	arch = i686
 	arch = x86_64
@@ -31,8 +31,8 @@ pkgbase = bitcoinec
 	conflicts = bitcoin-cli
 	conflicts = bitcoin-qt
 	conflicts = bitcoin-tx
-	source = https://github.com/bitcoinec/bitcoinec/archive/15436fd2bf1af29523c2ea44156c1c24aec7385f.zip
-	sha256sums = 286e73c516f10f431aaaf77cb920650c83c501e222b81052da58faa38700be73
+	source = 15436fd2bf1af29523c2ea44156c1c24aec7385f.zip::https://github.com/bitcoinec/bitcoinec/archive/15436fd2bf1af29523c2ea44156c1c24aec7385f.zip
+	sha256sums = fa9b93273638d3d337318197faef33961042c819f9d2bd97ce4e1b871a81f761
 
 pkgname = bitcoinec
 
