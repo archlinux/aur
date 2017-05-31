@@ -8,7 +8,7 @@ _pkgname=gogs
 _team=github.com/gogits
 _gogsdir="src/${_team}/${_pkgname}"
 pkgname=${_pkgname}-dev-git
-pkgver=0.11.9.0407+0+6500aafcb
+pkgver=0.11.12.0529+10+612a7e76f
 pkgrel=1
 pkgdesc="Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -26,7 +26,7 @@ optdepends=("sqlite: SQLite support"
             "openssh: GIT over SSH support"
             "bash: GIT over SSH support"
 )
-makedepends=('git' 'go' 'go-bindata' 'nodejs-less' 'sqlite')
+makedepends=('git' 'go' 'go-bindata-git' 'nodejs-less' 'sqlite')
 install=${_pkgname}.install
 
 source=(
