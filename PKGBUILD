@@ -9,7 +9,7 @@
 
 pkgname=bitcoin-segwit2x-git
 pkgver=v0.14.1.6.g20aa12154
-pkgrel=3
+pkgrel=4
 
 pkgdesc='The "official" segwit2x software representing the New York scaling agreement, a.k.a. the Silbert agreement'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 build() {
-    mkdir "$srcdir/tmp"
+    mkdir -p "$srcdir/tmp"
     cd "$srcdir/bitcoin/"
     git checkout segwit2x > /dev/null 2>&1
     git reset --hard HEAD > /dev/null 2>&1
