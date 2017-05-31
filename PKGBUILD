@@ -11,7 +11,7 @@ _pkgname='imagemagick'
 pkgbase="${_pkgname}-git"
 _srcdir="${pkgbase}"
 pkgname=("${pkgbase}"{,-doc})
-pkgver=7.0.5.8.r11939.g10f7befbf
+pkgver=7.0.5.9.r11959.g13b8ea1e7
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 arch=('i686' 'x86_64')
@@ -83,7 +83,7 @@ check() {
 package_imagemagick-git() {
   set -u
   pkgdesc='An image viewing/manipulation program'
-  depends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'liblqr' 'libcl')
+  depends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'liblqr')
   optdepends=('imagemagick-doc: for additional information'
               'ghostscript: for Ghostscript support' 
               'openexr: for OpenEXR support' 
