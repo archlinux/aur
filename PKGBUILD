@@ -2,7 +2,7 @@
 
 pkgname=libva-headless
 _pkgname=libva
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux headless systems'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ depends=('libdrm')
 optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
             'libva-intel-driver: backend for Intel cards')
 source=(https://github.com/01org/libva/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('c1d5d85b6b40b76f37993b4da33388d3d73b64998dcbc160b7578e24ed775c73')
+sha256sums=('9ed3e3ddc8f47a715d4c6ec366beb21c83fc4e8a3d4d39a811baff76f0a0cede')
 
 build() {
   cd ${_pkgname}-$pkgver
