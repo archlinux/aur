@@ -1,7 +1,7 @@
 pkgbase = maldet
 	pkgdesc = linux malware scanner designed around threats faced in shared host environments
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rfxn.com/projects/linux-malware-detect/
 	arch = any
 	license = GPL2

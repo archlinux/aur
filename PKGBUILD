@@ -1,6 +1,6 @@
 pkgname=maldet
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=('GPL2')
@@ -38,7 +38,7 @@ package(){
     mkdir -p "$pkgdir/etc/maldet"
     mv "$dest/conf.maldet" "$pkgdir/etc/maldet/maldet.conf"
     sed 's|^logdir="\$inspath/logs"|logdir="/var/log/maldet"|' "$dest/internals/internals.conf" \
-      | sed 's|^inspath=/usr/local/maldetect|inspath="/usr/share/maldetect"|' \
+      | sed 's|^inspath=/usr/local/maldetect|inspath="/usr/share/maldet"|' \
       | sed 's|^intcnf="$inspath/internals/internals.conf"|intcnf="/etc/maldet/internals.conf"|' \
       | sed 's|^confpath="\$inspath"|confpath="/etc/maldet"|' \
       | sed 's|^cnffile="conf.maldet"|cnffile="maldet.conf"|' \
