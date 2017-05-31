@@ -5,6 +5,7 @@ pkgbase = python-cachey
 	url = https://github.com/dask/cachey
 	arch = any
 	license = BSD
+	checkdepends = python-heapdict
 	checkdepends = python-nose
 	makedepends = python-setuptools
 	makedepends = git

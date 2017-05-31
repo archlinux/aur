@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/dask/cachey"
 license=('BSD')
 depends=('python')
-checkdepends=('python-nose')
+checkdepends=('python-heapdict' 'python-nose')
 makedepends=('python-setuptools' 'git')
 source=("git+https://github.com/dask/cachey.git#commit=6d4aca7")
 sha256sums=('SKIP')
