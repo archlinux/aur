@@ -3,7 +3,7 @@
 _pkgbase='gtimelog'
 pkgname=gtimelog-collabora-nokeyring-git
 pkgver=r326.b2aa134
-pkgrel=1
+pkgrel=2
 pkgdesc="A time tracking application: Collabora repository. Patched to remove gnomekeyring"
 provides=('gtimelog')
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ sha256sums=('SKIP'
             '7550c70300659a387a900ed0ee80dd3afafc8f655284b02e9cf46dced9a99227')
 
 pkgver() {
-	cd "$srcdir/$_pkgbase"
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgbase"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_pkgbase"
+  cd "$srcdir/$_pkgbase"
   python2 setup.py build
 }
 
