@@ -24,10 +24,12 @@ prepare() {
     cd ${srcdir}/${extract}
     find . -name '._*' -print0 | xargs -0 -r rm
     patch -p1 < ${srcdir}/cmake_fix_gc.patch
+}
 
+build() {
+    rm -rf ${srcdir}/build
     mkdir -p ${srcdir}/build
     cd ${srcdir}/build
-
     cmake \
         -DMADX_STATIC=OFF \
         -DMADX_ONLINE=OFF \
@@ -39,10 +41,6 @@ prepare() {
         -DMADX_INSTALL_DOC=OFF \
         -DCMAKE_INSTALL_RPATH='$ORIGIN' \
         ${srcdir}/${extract}
-}
-
-build() {
-    cd ${srcdir}/build
     make
 }
 
