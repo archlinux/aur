@@ -7,7 +7,7 @@ pkgdesc='Electronic trading platform from discount brokerage firm Interactive Br
 arch=('any')
 url="http://interactivebrokers.com/"
 license=('custom')
-depends=(java-environment bash)
+depends=(jre bash)
 makedepends=(imagemagick gzip tar)
 
 source=('LICENSE'
@@ -17,11 +17,11 @@ source=('LICENSE'
 	'ib-gw.desktop'
 	'https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh')
 md5sums=('e1cae2de592add7133bb08123e8db1ad'
-         'c407d22dfafdb33ec2fe97eeb5e9f0aa'
+         'f6475c9ea0bdd03e9dec608983ae1218'
          '9205b5eade96d69f8e470cc52c30db4a'
-         'c95eeb41fec3aae6ad5e82703a39060c'
+         '4fde990121cb3b4f0fad029d3c923cbe'
          'ffa9fcfb623850e5c9e796040bdbd052'
-         '7c755b9d5b6889e2c89fd924b9a18807')
+         'b5c6bbb526862cfd463304fb1da4dbc9')
 
 
 build() {
