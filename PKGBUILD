@@ -1,6 +1,6 @@
 # Maintainer: Kevin Gravier
 pkgname=git-stream-git
-pkgver=0.6.0.r1.g83e41f0
+pkgver=0.6.1.r1.gca9f65a
 pkgrel=1
 pkgdesc="A git flow replacement with a single branch model"
 arch=(any)
