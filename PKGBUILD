@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86313.g87bddba43b
-pkgrel=3
+pkgrel=4
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -76,6 +76,10 @@ build() {
         fi
         _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
         _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
+        
+        # strictly specifying nvcc path is needed if package is installing
+        # cuda for the first time
+        sed -i 's/^nvcc_default=.*/nvcc_default=\"\/opt\/cuda\/bin\/nvcc\"/' configure
     fi
     
     msg2 "Running ffmpeg configure script. Please wait..."
