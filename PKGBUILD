@@ -54,7 +54,7 @@ build() {
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
               --enable-tpm --enable-curl \
-              --enable-modules --disble-spice --disable-werror --enable-jemalloc \
+              --enable-modules --disable-spice --disable-werror --enable-jemalloc \
               --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez
   make V=99
 }
