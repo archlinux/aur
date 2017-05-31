@@ -2,7 +2,7 @@
 
 pkgname=lrz-syncshare
 pkgver=11.3.417
-pkgrel=1
+pkgrel=2
 pkgdesc="Sync client for the LRZ Sync+Share service"
 url='https://syncandshare.lrz.de/'
 arch=('any')
