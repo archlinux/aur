@@ -2,17 +2,19 @@
 
 pkgname=httperf-git
 pkgver=cc88843
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The HTTP load generator"
 arch=('i686' 'x86_64')
 url="https://github.com/httperf/httperf"
 license=('GPL')
-makedepends=('git')
+makedepends=('git' 'openssl-1.0')
 provides=('httperf')
 conflicts=('httperf')
-source=("git+https://github.com/httperf/httperf.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/httperf/httperf.git"
+        "openssl-1.0.patch")
+sha256sums=('SKIP'
+            '14e17f66425dc8433255b6ba893e933dce3fabb37e860290f4cfaf3a24c36ac0')
 
 
 pkgver() {
@@ -23,6 +25,8 @@ pkgver() {
 
 prepare() {
     cd "httperf"
+
+    patch -Np1 -i "../openssl-1.0.patch"
 
     autoreconf -i
     mkdir -p "build"
