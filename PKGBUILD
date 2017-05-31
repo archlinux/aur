@@ -1,11 +1,11 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=rtags
-pkgver=2.9
+pkgver=2.10
 pkgrel=1
-pkgdesc="RTags is a client/server application that indexes C/C++ code"
+pkgdesc='RTags is a client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
-url="https://github.com/Andersbakken/rtags"
+url='https://github.com/Andersbakken/rtags'
 license=('GPL3')
 depends=('bash' 'clang')
 makedepends=('cmake' 'git' 'llvm' 'zlib')
