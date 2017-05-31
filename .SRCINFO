@@ -1,6 +1,6 @@
 pkgbase = noice-git
 	pkgdesc = Small file browser
-	pkgver = 0.6.r0.ge56e7d9
+	pkgver = 0.6.r2.g2f11fc5
 	pkgrel = 1
 	url = http://git.2f30.org/noice/
 	arch = i686
