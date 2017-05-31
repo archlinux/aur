@@ -1,7 +1,7 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
 	pkgver = 2.018
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/PDL
 	changelog = ChangeLog
 	arch = i686
@@ -11,14 +11,17 @@ pkgbase = perl-pdl
 	checkdepends = perl-test-warn
 	makedepends = perl>=5.11.3
 	makedepends = fftw2
+	makedepends = hdf4
 	makedepends = perl-opengl
 	makedepends = plplot
 	makedepends = perl-extutils-f77
 	makedepends = proj
-	depends = perl>=5.8.9
+	makedepends = perl-extutils-parsexs>=3.01
+	depends = perl>=5.10
 	depends = perl-inline>=0.43
 	depends = gsl
 	optdepends = fftw2: for PDL::FFTW support
+	optdepends = hdf4: for HDF files support
 	optdepends = perl-astro-fits-header: improved FITS files support
 	optdepends = perl-opengl: for PDL::Graphics::TriD support
 	optdepends = plplot: for PDL::Graphics::PLplot support

@@ -8,7 +8,7 @@
 pkgname=perl-pdl
 _pkgname=PDL
 pkgver=2.018
-pkgrel=1
+pkgrel=2
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
@@ -21,7 +21,7 @@ depends=(
 makedepends=(
 	'perl>=5.11.3' # To provide ExtUtils::MakeMaker 6.56
 	'fftw2'
-#	'hdf4'
+	'hdf4'
 	'perl-opengl'
 	'plplot'
 	'perl-extutils-f77'
@@ -33,7 +33,7 @@ checkdepends=(
 )
 optdepends=(
 	'fftw2: for PDL::FFTW support'
-#	'hdf4: for HDF files support'
+	'hdf4: for HDF files support'
 	'perl-astro-fits-header: improved FITS files support'
 #	'perl-convert-uu: for the case when something wrong with Unicode support'  # It is necessary on *BSD systems
 #	'perl-extutils-f77: for PDL::Slatec and PDL::Minuit support'               # It is not necessary at runtime
@@ -52,8 +52,8 @@ md5sums=('4974da8767f635806c9c18d9849e61b8'
 build() {
 	cd "${_pkgname}-${pkgver}"
 	F77LIBS='-lgfortran -lm' PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=${srcdir}/perldl.conf
-  patch < "${srcdir}/Makefile.patch"
-  make
+        patch < "${srcdir}/Makefile.patch"
+        make
 }
 
 check() {
@@ -64,6 +64,6 @@ check() {
 package() {
 	cd "${_pkgname}-${pkgver}"
 	make install DESTDIR="${pkgdir}"
-  make doc_install DESTDIR="${pkgdir}"
+        make doc_install DESTDIR="${pkgdir}"
 	find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
