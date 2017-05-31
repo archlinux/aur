@@ -1,9 +1,10 @@
 pkgbase = vidcutter
 	pkgdesc = the simplest + fastest video cutter & joiner
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter.install
+	changelog = changelog
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools

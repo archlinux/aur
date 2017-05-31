@@ -1,12 +1,13 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="the simplest + fastest video cutter & joiner"
 arch=('any')
 license=('GPL3')
 url="http://vidcutter.ozmartians.com"
 source=(https://github.com/ozmartian/${pkgname}/archive/${pkgver}.tar.gz)
+changelog=changelog
 depends=('python-pyqt5' 'mpv' 'ffmpeg' 'mediainfo')
 makedepends=('python-setuptools')
 install=${pkgname}.install
