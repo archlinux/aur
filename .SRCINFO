@@ -7,7 +7,8 @@ pkgbase = lrz-syncshare
 	license = custom
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	depends = java-runtime=8
+	depends = jre>8u
+	depends = jre<9
 	depends = xdg-utils
 	source = https://syncandshare.lrz.de/client_deployment/LRZ_Sync_Share_Latest_Linux.tar.gz
 	md5sums = b3a451629b5779822264394849046385
