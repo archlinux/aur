@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86313.g87bddba43b
-pkgrel=4
+pkgrel=5
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -19,7 +19,7 @@ depends=(
         'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb'
         'xvidcore' 'zimg' 'zeromq' 'zvbi' 'xz' 'netcdf' 'openal' 'opencl-icd-loader'
         'mesa' 'openssl' 'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm'
-        'libva-intel-driver' 'libvdpau'
+        'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'openh264'
         'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'libmfx-git'
