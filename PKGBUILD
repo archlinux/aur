@@ -1,13 +1,14 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=matterhorn
 pkgver=30802.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based chat client for MatterMost"
 arch=('x86_64')
 url="https://github.com/matterhorn-chat/matterhorn"
 license=('BSD')
 provides=('matterhorn')
 conflicts=('matterhorn-git')
+depends=('libtinfo')
 replaces=()
 backup=()
 options=()
