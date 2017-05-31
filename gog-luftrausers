@@ -1,0 +1,4 @@
+#!/bin/sh
+
+gogdir="/opt/gog-luftrausers"
+"${gogdir}/start.sh"
