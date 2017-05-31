@@ -4,14 +4,13 @@
 
 _pkgorigname=kwin
 pkgname=kwin-presentwindows-close
-pkgver=5.9.3
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='KDE Window manager, reverting the removal of the close action in present windows'
 arch=('i686' 'x86_64')
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=('LGPL')
-depends=('qt5-multimedia' 'kscreenlocker' 'knewstuff' 'xcb-util-cursor' 'hicolor-icon-theme'
-         'plasma-framework' 'kcmutils' 'breeze')
+depends=('kscreenlocker' 'xcb-util-cursor' 'hicolor-icon-theme' 'plasma-framework' 'kcmutils' 'breeze')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'kdoctools' 'python')
 optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 groups=('plasma')
@@ -19,7 +18,7 @@ conflicts=('kdebase-workspace', 'kwin')
 provides=('kwin')
 source=("http://download.kde.org/stable/plasma/${pkgver}/${_pkgorigname}-${pkgver}.tar.xz"{,.sig}
         "presentwindows-close.patch")
-sha256sums=('13f64ec29268dc1e167548d7943e943abb57905e97844d4ace5a972e0ef12c85'
+sha256sums=('05a82a742ebf5116df49e37fd34a38f7611149114fca7f55a59144fe2979e1e5'
             'SKIP'
             'a42e050f873632240595026b0f0f98ce4e109dd36a7768ba6b361d1b4854aefb')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
