@@ -2,13 +2,13 @@
 
 pkgname=mtop
 pkgver=0.6.6
-pkgrel=3
-pkgdesc="MySQL top (monitor and examine slow queries)"
+pkgrel=4
+pkgdesc='MySQL top (monitor and examine slow queries)'
 arch=('i686' 'x86_64')
-url="http://mtop.sourceforge.net/"
+url='"http://mtop.sourceforge.net/'
 license=('GPL')
-depends=(perl perl-dbi libmysqlclient perl-dbd-mysql perl-curses)
-backup=(etc/mtoprc)
+depends=('perl-dbd-mysql' 'perl-curses')
+backup=('etc/mtoprc')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	'mtoprc')
 sha256sums=('2e7fc09511d2d0f130da1f52bf85fcfeea0be2cc3aa3d93b88498605c0281d74'
