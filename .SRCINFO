@@ -1,7 +1,7 @@
 pkgbase = libunique3
 	pkgdesc = Library for writing single instance applications for GTK3
 	pkgver = 3.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://live.gnome.org/LibUnique
 	arch = i686
 	arch = x86_64

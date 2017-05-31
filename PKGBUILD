@@ -3,7 +3,7 @@
 
 pkgname=libunique3
 pkgver=3.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Library for writing single instance applications for GTK3'
 arch=('i686' 'x86_64')
 url='http://live.gnome.org/LibUnique'
@@ -26,9 +26,6 @@ package() {
     install -Dm644 "usr/include/unique-3.0/unique/uniqueenumtypes.h" "$pkgdir/usr/include/unique-3.0/unique/uniqueenumtypes.h"
     install -Dm644 "usr/include/unique-3.0/unique/uniquemessage.h" "$pkgdir/usr/include/unique-3.0/unique/uniquemessage.h"
     install -Dm644 "usr/include/unique-3.0/unique/uniqueversion.h" "$pkgdir/usr/include/unique-3.0/unique/uniqueversion.h"
-    install -Dm755 "usr/lib/libunique-3.0.so.0.0.2" "$pkgdir/usr/lib/libunique-3.0.so.0.0.2"
-    ln -s "/usr/lib/libunique-3.0.so.0.0.2" "$pkgdir/usr/lib/libunique-3.0.so.0"
-    ln -s "/usr/lib/libunique-3.0.so.0.0.2" "$pkgdir/usr/lib/libunique-3.0.so"
     install -Dm644 "usr/lib/girepository-1.0/Unique-3.0.typelib" "$pkgdir/usr/lib/girepository-1.0/Unique-3.0.typelib"
     install -Dm644 "usr/lib/pkgconfig/unique-3.0.pc" "$pkgdir/usr/lib/pkgconfig/unique-3.0.pc"
     install -Dm644 "usr/share/gir-1.0/Unique-3.0.gir" "$pkgdir/usr/share/gir-1.0/Unique-3.0.gir"
@@ -49,4 +46,8 @@ package() {
     install -Dm644 "usr/share/gtk-doc/html/unique-3.0/unique-glossary.html" "$pkgdir/usr/share/gtk-doc/html/unique-3.0/unique-glossary.html"
     install -Dm644 "usr/share/gtk-doc/html/unique-3.0/unique-overview.html" "$pkgdir/usr/share/gtk-doc/html/unique-3.0/unique-overview.html"
     install -Dm644 "usr/share/gtk-doc/html/unique-3.0/up.png" "$pkgdir/usr/share/gtk-doc/html/unique-3.0/up.png"
+    install -Dm755 "usr/lib/libunique-3.0.so.0.0.2" "$pkgdir/usr/lib/libunique-3.0.so.0.0.2"
+    cd /usr/lib/
+    ln -s "libunique-3.0.so.0.0.2" "libunique-3.0.so.0"
+    ln -s "libunique-3.0.so.0.0.2" "libunique-3.0.so"
 }
