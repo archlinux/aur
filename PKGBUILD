@@ -80,7 +80,9 @@ build() {
   if [ -n "${_extractedCorefxFolder}" ]; then
     cd "${_extractedCorefxFolder}"
     #./src/Native/build-native.sh x64 release
-    CPLUS_INCLUDE_PATH=/usr/include/openssl-1.0 C_INCLUDE_PATH=/usr/include/openssl-1.0 ./src/Native/build-native.sh x64 release cmakeargs -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 cmakeargs -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so cmakeargs -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so cmakeargs -DCURL_LIBRARIES=/usr/lib/openssl-1.0/libcurl.so
+    #CPLUS_INCLUDE_PATH=/usr/include/openssl-1.0 C_INCLUDE_PATH=/usr/include/openssl-1.0 ./src/Native/build-native.sh x64 release cmakeargs -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 cmakeargs -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so cmakeargs -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so cmakeargs -DCURL_LIBRARIES=/usr/lib/openssl-1.0/libcurl.so
+
+    CPLUS_INCLUDE_PATH=/usr/include/openssl-1.0 C_INCLUDE_PATH=/usr/include/openssl-1.0 ./src/Native/build-native.sh x64 release cmakeargs -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 cmakeargs -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so cmakeargs -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so cmakeargs -DCURL_LIBRARIES=/usr/lib/libcurl-openssl-1.0.so
 
     #./src/Native/build-native.sh x64 release cmakeargs -DCURL_LIBRARIES=/usr/lib/openssl-1.0/libcurl.so
   fi
