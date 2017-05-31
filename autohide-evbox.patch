@@ -49,7 +49,7 @@
  
          return true;
      }
-@@ -85,7 +106,25 @@
+@@ -85,7 +106,27 @@
  
          //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
  
@@ -69,6 +69,8 @@
 +
 +    private bool reactivate () {
 +        animate_panel ();
++
++        //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
 +
 +        Timeout.add (100 / panel_height, animation_step);
 +
