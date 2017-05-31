@@ -2,12 +2,12 @@
 
 pkgname=wumwum
 pkgver=0.9
-pkgrel=5
+pkgrel=6
 pkgdesc="The Window Manager manager. It can turn emwh compliant window managers into a tiling window manager while retaining all initial functionalities. "
 arch=('i686' 'x86_64')
 url="http://wumwum.sourceforge.net/"
 license=('GPL3')
-depends=('wmctrl' 'libaosd' 'xorg-utils')
+depends=('wmctrl' 'libaosd' 'xorg-xprop' 'xorg-xdpyinfo')
 options=('!emptydirs')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tgz)
 
