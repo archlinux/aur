@@ -28,8 +28,8 @@ pkgbase = souffle-git
 	depends = pkg-config
 	depends = python
 	depends = zlib
-	provides = ${pkgname%-git}
-	conflicts = ${pkgname%-git}
+	provides = souffle-git
+	conflicts = souffle-git
 	source = git+https://github.com/souffle-lang/souffle.git
 	md5sums = SKIP
 
