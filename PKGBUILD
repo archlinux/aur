@@ -9,7 +9,7 @@
 
 pkgname=bitcoin-segwit2x-git
 pkgver=v0.14.1.6.g20aa12154
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The "official" segwit2x software representing the New York scaling agreement, a.k.a. the Silbert agreement'
 arch=('i686' 'x86_64')
@@ -31,26 +31,32 @@ pkgver() {
 }
 
 build() {
+    mkdir "$srcdir/tmp"
     cd "$srcdir/bitcoin/"
     git checkout segwit2x > /dev/null 2>&1
     git reset --hard HEAD > /dev/null 2>&1
     ./autogen.sh
     ./configure --prefix=/usr --enable-upnp-default --enable-hardening --with-gui=qt5
-    make
+    make DESTDIR="$srcdir/tmp"
+    make DESTDIR="$srcdir/tmp" install
 }
 
 package() {
-    cd "$srcdir/"
-    install -Dm755 "bitcoin/src/qt/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
-    install -Dm644 "bitcoin/share/pixmaps/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
-    install -Dm644 "bitcoin.desktop" "$pkgdir/usr/share/applications/bitcoin.desktop"
-    install -Dm644 "bitcoin/doc/man/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
-    install -Dm755 "bitcoin/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
-    install -Dm644 "bitcoin/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/bitcoin/examples/bitcoin.conf"
-    install -Dm644 "bitcoin/doc/man/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
-    install -Dm755 "bitcoin/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
-    install -Dm644 "bitcoin/doc/man/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
-    install -Dm755 "bitcoin/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
-    install -Dm644 "bitcoin/doc/man/bitcoin-tx.1" "$pkgdir/usr/share/man/man1/bitcoin-tx.1"
-    install -Dm644 "bitcoin/COPYING" "$pkgdir/usr/share/licenses/bitcoin/COPYING"
+    install -Dm644 "$srcdir/bitcoin.desktop" "$pkgdir/usr/share/applications/bitcoin.desktop"
+    install -Dm755 "$srcdir/tmp/usr/local/bin/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
+    install -Dm644 "$srcdir/bitcoin/share/pixmaps/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
+    install -Dm644 "$srcdir/bitcoin/doc/man/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
+    install -Dm755 "$srcdir/tmp/usr/local/bin/bitcoind" "$pkgdir/usr/bin/bitcoind"
+    install -Dm644 "$srcdir/bitcoin/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/bitcoin/examples/bitcoin.conf"
+    install -Dm644 "$srcdir/bitcoin/doc/man/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
+    install -Dm755 "$srcdir/tmp/usr/local/bin/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
+    install -Dm644 "$srcdir/bitcoin/doc/man/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
+    install -Dm755 "$srcdir/tmp/usr/local/bin/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
+    install -Dm644 "$srcdir/bitcoin/doc/man/bitcoin-tx.1" "$pkgdir/usr/share/man/man1/bitcoin-tx.1"
+    install -Dm644 "$srcdir/bitcoin/COPYING" "$pkgdir/usr/share/licenses/bitcoin/COPYING"
+    install -Dm644 "$srcdir/tmp/usr/local/include/bitcoinconsensus.h" "$pkgdir/usr/include/bitcoinconsensus.h"
+    install -Dm644 "$srcdir/tmp/usr/local/lib/libbitcoinconsensus.so.0.0.0" "$pkgdir/usr/lib/libbitcoinconsensus.so.0.0.0"
+    cd "$pkgdir/usr/lib/"
+    ln -s "libbitcoinconsensus.so.0.0.0" "libbitcoinconsensus.so.0"
+    ln -s "libbitcoinconsensus.so.0.0.0" "libbitcoinconsensus.so"
 }
