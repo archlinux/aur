@@ -1,0 +1,14 @@
+pkgbase = matterhorn
+	pkgdesc = A terminal-based chat client for MatterMost
+	pkgver = 30802.1.0
+	pkgrel = 1
+	url = https://github.com/matterhorn-chat/matterhorn
+	arch = x86_64
+	license = BSD
+	provides = matterhorn
+	conflicts = matterhorn-git
+	source = https://github.com/matterhorn-chat/matterhorn/releases/download/30802.1.0/matterhorn-30802.1.0-Linux-x86_64.tar.gz
+	md5sums = 0b2d0d6e12e0267be6eb2f5afdf64b7f
+
+pkgname = matterhorn
+
