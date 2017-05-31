@@ -1,6 +1,6 @@
 # Maintainer: Carol Alexandru shapeshifter@archlinux.us
 pkgname=python-imapclient
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An easy-to-use, Pythonic and complete IMAP client library with no dependencies outside the Python standard library"
 arch=('any')
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=(!emptydirs)
 source=("http://freshfoo.com/projects/IMAPClient/IMAPClient-$pkgver.tar.gz")
-md5sums=('ff508fbed5745725362a2b292e4503a1')
+md5sums=('525aa0bbd2056ba06a8d286be082911e')
 
 package() {
   cd "$srcdir/IMAPClient-$pkgver"
