@@ -1,7 +1,7 @@
 pkgbase = java-jai-imageio
 	pkgdesc = Container for JavaTM Advanced Imaging Image I/O Tools projects.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://java.net/projects/jai-imageio/
 	install = java-jai-imageio.install
 	arch = i686

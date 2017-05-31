@@ -4,7 +4,7 @@
 
 pkgname=java-jai-imageio
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Container for JavaTM Advanced Imaging Image I/O Tools projects."
 arch=(i686 x86_64)
   [ "${CARCH}" = 'i686' ]   && _arch='i586'
@@ -33,9 +33,9 @@ package() {
     ${pkgdir}/etc/profile.d/jai-imageio.csh
     
   msg "Installing jre libs..."
-  install -d ${pkgdir}/usr/lib/jvm/java-7-openjdk/lib
+  install -d ${pkgdir}/usr/lib/jvm/default/lib
   install -Dm644 lib/* \
-    ${pkgdir}/usr/lib/jvm/java-7-openjdk/lib
+    ${pkgdir}/usr/lib/jvm/default/lib
   
   msg "Installing licenses..."
   install -d $pkgdir/usr/share/licenses/$pkgname   
