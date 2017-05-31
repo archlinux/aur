@@ -1,0 +1,15 @@
+pkgbase = focus-git
+	pkgdesc = A desktop notification based app that keeps you focused
+	pkgver = r42.7626df4
+	pkgrel = 1
+	url = https://github.com/nagyation/Focus
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk2
+	depends = libnotify
+	source = git+https://github.com/nagyation/Focus.git
+	md5sums = SKIP
+
+pkgname = focus-git
+
