@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-connectivity
-_qtver=5.8.0
+_qtver=5.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('aabc57b30ab4d888b390f12f2bee637a')
+sha256sums=('9755f4bc0a55fba3250635e3a902c0f6611a36c3d23583b84d0465ee3553a24c')
 
 prepare() {
   mkdir -p build
