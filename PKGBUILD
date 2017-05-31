@@ -1,35 +1,45 @@
-# Maintainer: Charles Heywood <charles@hashbang.sh>
-pkgname=lua-cqueues-git
-pkgver=r845.7595820 # As per latest release as of 29 Feb. 2016
-pkgrel=2
-pkgdesc="Asynchronous networking, threading, and notification framework for Lua."
+# Maintainer: Charles Heywood <vandor2012@gmail.com>
+pkgname=('lua-cqueues-git' 'lua51-cqueues-git' 'lua52-cqueues-git')
+pkgver=20161215.r1.97cac6d
+pkgrel=1
 arch=('i686' 'x86_64')
-url="https://github.com/wahern/cqueues"
+url="http://25thandclement.com/~william/projects/cqueues.html"
 license=('MIT')
-depends=('m4' 'openssl')
-makedepends=('git')
+makedepends=('git' 'openssl')
 source=('git+https://github.com/wahern/cqueues.git#branch=master')
 md5sums=('SKIP')
-_luaversions=('5.1' '5.2' '5.3')
+
 pkgver() {
   cd "$srcdir/cqueues"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --tags --long | sed "s/^[^-]*-//;s/\([^-]*-\)g/r\1/;s/-/./g"
 }
+
 build() {
   cd "$srcdir/cqueues"
-  for version in ${_luaversions[@]}; do
-    echo "*** Attempting build for Lua version: $version"
-    make cqueues${version}
-  done
+  make prefix=/usr
 }
-package() {
-  cd "$srcdir/cqueues"
-  for version in ${_luaversions[@]}; do
-    make prefix="$pkgdir/usr" install${version}
-  done
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+package_lua-cqueues-git() {
+  pkgdesc="Asynchronous networking, threading, and notification framework for Lua 5.3"
+
+  cd cqueues
+  make DESTDIR="$pkgdir" prefix=/usr install5.3
+  install -Dm644 LICENSE "$pkgdir"/usr/share/license/$pkgname/LICENSE
+}
+
+package_lua51-cqueues-git() {
+  pkgdesc="Asynchronous networking, threading, and notification framework for Lua 5.1"
+
+  cd cqueues
+  make DESTDIR="$pkgdir" prefix=/usr install5.1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/license/$pkgname/LICENSE
+}
+
+package_lua52-cqueues-git() {
+  pkgdesc="Asynchronous networking, threading, and notification framework for Lua 5.2"
+
+  cd cqueues
+  make DESTDIR="$pkgdir" prefix=/usr install5.2
+  install -Dm644 LICENSE "$pkgdir"/usr/share/license/$pkgname/LICENSE
 }
 # vim:set et sts=0 sw=2 ts=2:
