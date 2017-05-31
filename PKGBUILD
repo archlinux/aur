@@ -5,7 +5,7 @@ _pkgmaintainer=k1LoW
 _pkgdestdirname=ansible
 _versionprefix=
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ansible minor mode for Emacs"
 pkgname=emacs-${_pkgdestdirname}
 arch=(any)
@@ -25,4 +25,6 @@ package() {
   cd "${srcdir}/${_pkgsrcname}-master"
   mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
   install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
+
+  cp -dr --preserve=mode,timestamp snippets "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/" 
 }
