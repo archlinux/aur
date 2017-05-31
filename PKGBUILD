@@ -8,11 +8,11 @@ pkgbase=('qemu-minimal-git')
 _gitname=qemu
 pkgname=('qemu-minimal-git')
 pkgver=2.9.0.r53387.9964e96dc9
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
-makedepends=('glib2' 'pixman' 'spice' 'spice-protocol' 'sdl2'
+makedepends=('glib2' 'pixman' 'spice' 'spice-protocol'
              'gnutls' 'util-linux' 'curl' 'libsasl'
              'libcap-ng' 'libaio' 'libseccomp'
              'python2' 'usbredir' 'lzo'
@@ -53,7 +53,7 @@ build() {
               --disable-docs --libexecdir=/usr/lib/qemu \
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
-              --enable-tpm --enable-curl --enable-sdl \
+              --enable-tpm --enable-curl \
               --enable-modules --enable-spice --disable-werror --enable-jemalloc \
               --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez
   make V=99
@@ -61,7 +61,7 @@ build() {
 
 package() {
   pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. Contains x86_64 emulator only.'
-  depends=('gnutls' 'dtc' 'usbredir' 'lzo' 'jemalloc' 'spice' 'spice-protocol' 'sdl2')
+  depends=('gnutls' 'dtc' 'usbredir' 'lzo' 'jemalloc' 'spice' 'spice-protocol')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'
