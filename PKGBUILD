@@ -2,12 +2,12 @@
 
 pkgname=visidata-git
 pkgver=0.59.g8229e2e
-pkgrel=1
+pkgrel=2
 pkgdesc='A console spreadsheet tool for discovering and arranging data'
 arch=('any')
 url='http://saul.pw/visidata'
 license=('GPLv3')
-depends=('python3')
+depends=('python')
 makedepends=('git')
 optdepends=('python-dateutil: for converting string column to datetime'
             'python-openpyxl: for opening .xlsx files'
