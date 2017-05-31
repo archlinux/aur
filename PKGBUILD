@@ -4,33 +4,25 @@
 # Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgname=qt5-doc
-_qtver=5.8.0
+_qtver=5.9.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=('any')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework (Documentation)'
 depends=('qt5-base')
-makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite')
+makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite' 'git')
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
-md5sums=('66660cd3d9e1a6fed36e88adcb72e9fe')
+sha256sums=('f70b5c66161191489fc13c7b7eb69bf9df3881596b183e7f6d94305a39837517')
 
 prepare() {
   cd ${_pkgfqn}
 
-  # Use python2 for Python 2.x
-  find . -name '*.py' -exec sed -i \
-    's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|' {} +
-  find -name '*.pro' -o -name '*.pri' -o -name '*.prf' | xargs sed -i -e 's|python -c|python2 -c|g' -e 's|python \$|python2 \$|g'
-
   ln -s /usr/bin qttools/
   ln -s /usr/bin/{rcc,uic,moc} qtbase/bin/
-
-  # workaround c++11 detection with GCC6
-  sed -e '/requires(c++11)/d' -i qtserialbus/qtserialbus.pro
 
   # Hack to force using python2
   cd "$srcdir"
