@@ -56,7 +56,7 @@
          //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
  
 -        Timeout.add (300 / panel_height, animation_step);
-+        Timeout.add (100 / panel_height, animation_step);
++        timeout = Timeout.add (100 / panel_height, animation_step);
 +    }
 +
 +    private bool on_idle () {

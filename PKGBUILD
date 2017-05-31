@@ -3,7 +3,7 @@
 
 pkgname=wingpanel-standalone-git
 pkgver=r288.0b6d486
-pkgrel=1
+pkgrel=2
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
             '1f50f34a7d36fc8331c1080c42c38f8208e35f4551eed97705919d304d410c95'
             '910130e7033db8874ed8d5e1734c6eb0ce75eed7ddf2620400c2a129cf05755d'
             'df03ebb7fe08da77d51e6b96ab033b5c712530727d9fa2dd61420d2c7923fced'
-            '9fb6f2657692d68228130ed8c8480a5ee66fe473112a37679885ae343b824fb8')
+            '7cf4d73688e7edc258a9ed2803fa018250a9ec3307b4d1399298d567459fb87a')
 
 pkgver() {
   cd wingpanel
@@ -58,10 +58,10 @@ prepare() {
   patch -Np2 < ../minus-gala-cmake.patch
 
   #autohide
-  #msg2 "autohide"
-  #patch -Np2 < ../autohide-evbox.patch
+  msg2 "autohide"
+  patch -Np2 < ../autohide-evbox.patch
 
-  #Cogl can't be found, although it is installed. Arch-specific? .so bump?
+  #Cogl can't be found when not using gala's cmake package; wtf?
   msg2 "minus cgl"
   patch -Np2 < ../y-is-broken-cogl.patch
 }
