@@ -1,6 +1,6 @@
 # Maintainer: Nikita Puzyryov <nekit1234007@gmail.com>
 pkgname=gixy-git
-pkgver=v0.1.5
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Nginx configuration static analyzer"
 arch=(any)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   ( set -o pipefail
-    git describe --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }

@@ -1,6 +1,6 @@
 pkgbase = gixy-git
 	pkgdesc = Nginx configuration static analyzer
-	pkgver = v0.1.5
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/yandex/gixy
 	arch = any
