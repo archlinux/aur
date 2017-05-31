@@ -10,7 +10,7 @@ options=('!docs' '!emptydirs')
 source=("https://github.com/terkelg/ramme/releases/download/v3.2.2/Ramme_3.2.2_amd64.deb")
 md5sums=('257e4b6ee30a212d468ba8fe6f435556')
 prepare() {
-  ar vx Ramme_3.1.0_amd64.deb
+  ar vx Ramme_3.2.2_amd64.deb
 }
 package() {
   mkdir $pkgdir/opt/
