@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colingw@gmail.com>
 _hkgname=aura
 pkgname=aura
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="A secure package manager for Arch Linux and the AUR written in Haskell."
 url="https://github.com/fosskers/aura"
@@ -13,7 +13,7 @@ makedepends=('ghc'
              'haskell-mtl'
              'haskell-parsec'
              'haskell-regex-base'
-             'haskell-regex-pcre-builtin'
+             'haskell-regex-pcre'
              'haskell-split'
              'haskell-temporary'
              'haskell-text'
@@ -25,11 +25,7 @@ provides=('aura')
 conflicts=('aura-git' 'aura-bin')
 options=('strip')
 source=(https://github.com/aurapm/aura/releases/download/v${pkgver}/aura-${pkgver}.tar.gz)
-md5sums=('e4dc69dd841e4b263b5eafd510d9e73d')
-
-
-
-
+md5sums=('44e52d84daffbc65a919c17f53bb1435')
 
 
 build() {
