@@ -1,34 +1,45 @@
 # Maintainer: Charles Heywood <charles@hashbang.sh>
-pkgname=lua-ossl-git
-pkgver=rel.20140328.r185.gdac0e48
-pkgrel=3
-pkgdesc="Most comprehensive OpenSSL module in the Lua universe."
+pkgname=('lua-ossl-git' 'lua51-ossl-git' 'lua52-ossl-git')
+pkgver=20161214.r43.a91aba8
+pkgrel=4
 arch=('i686' 'x86_64')
-url="https://github.com/wahern/luaossl"
+url="http://25thandclement.com/~william/projects/luaossl.html"
 license=('MIT')
-makedepends=('git' 'm4' 'openssl')
+makedepends=('git' 'openssl')
 source=('git+https://github.com/wahern/luaossl.git#branch=master')
 md5sums=('SKIP')
-_luaversions=('5.1' '5.2' '5.3')
+
 pkgver() {
   cd "$srcdir/luaossl"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --tags --long | sed "s/^[^-]*-//;s/\([^-]*-\)g/r\1/;s/-/./g"
 }
+
 build() {
   cd "$srcdir/luaossl"
-  for version in ${_luaversions[@]}; do
-    echo "*** Attempting build for Lua version: $version"
-    make all${version}
-  done
+  make prefix=/usr
 }
-package() {
-  cd "$srcdir/luaossl"
-  for version in ${_luaversions[@]}; do
-    make prefix="$pkgdir/usr" install${version}
-  done
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+package_lua-ossl-git() {
+  pkgdesc="Most comprehensive OpenSSL module in the Lua universe for Lua 5.3"
+
+  cd luaossl
+  make DESTDIR="$pkgdir" prefix=/usr install5.3
+  install -Dm644 LICENSE "$pkgdir"/usr/share/license/$pkgname/LICENSE
+}
+
+package_lua51-ossl-git() {
+  pkgdesc="Most comprehensive OpenSSL module in the Lua universe for Lua 5.1"
+
+  cd luaossl
+  make DESTDIR="$pkgdir" prefix=/usr install5.1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/license/$pkgname/LICENSE
+}
+
+package_lua52-ossl-git() {
+  pkgdesc="Most comprehensive OpenSSL module in the Lua universe for Lua 5.1"
+
+  cd luaossl
+  make DESTDIR="$pkgdir" prefix=/usr install5.2
+  install -Dm644 LICENSE "$pkgdir"/usr/share/license/$pkgname/LICENSE
 }
 # vim:set et sts=0 sw=2 ts=2:
