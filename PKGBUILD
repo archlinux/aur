@@ -7,7 +7,7 @@ pkgdesc='A Python module to make simple GUIs with Rofi'
 url='https://github.com/bcbnz/python-rofi'
 arch=('any')
 license=('MIT')
-makedepends=('python')
+depends=('python' 'python-setuptools')
 source=("https://github.com/bcbnz/python-rofi/archive/${pkgver}.tar.gz")
 sha256sums=('515fd9f5707df219f480633990d0902efe5b3ef0dd1470bf1ef1844097e44e78')
 
