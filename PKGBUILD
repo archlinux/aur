@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=powa-archivist-git
 _gitname=powa-archivist
-pkgver=79e7870
+pkgver=8d9878f
 pkgrel=1
 pkgdesc="postgresql background worker to capture data"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
