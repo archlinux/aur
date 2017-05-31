@@ -9,7 +9,7 @@
 
 pkgname=bitcoin-segwit2x-git
 pkgver=v0.14.1.6.g20aa12154
-pkgrel=2
+pkgrel=3
 
 pkgdesc='The "official" segwit2x software representing the New York scaling agreement, a.k.a. the Silbert agreement'
 arch=('i686' 'x86_64')
@@ -43,19 +43,19 @@ build() {
 
 package() {
     install -Dm644 "$srcdir/bitcoin.desktop" "$pkgdir/usr/share/applications/bitcoin.desktop"
-    install -Dm755 "$srcdir/tmp/usr/local/bin/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
+    install -Dm755 "$srcdir/tmp/usr/bin/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
     install -Dm644 "$srcdir/bitcoin/share/pixmaps/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
     install -Dm644 "$srcdir/bitcoin/doc/man/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
-    install -Dm755 "$srcdir/tmp/usr/local/bin/bitcoind" "$pkgdir/usr/bin/bitcoind"
+    install -Dm755 "$srcdir/tmp/usr/bin/bitcoind" "$pkgdir/usr/bin/bitcoind"
     install -Dm644 "$srcdir/bitcoin/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/bitcoin/examples/bitcoin.conf"
     install -Dm644 "$srcdir/bitcoin/doc/man/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
-    install -Dm755 "$srcdir/tmp/usr/local/bin/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
+    install -Dm755 "$srcdir/tmp/usr/bin/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
     install -Dm644 "$srcdir/bitcoin/doc/man/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
-    install -Dm755 "$srcdir/tmp/usr/local/bin/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
+    install -Dm755 "$srcdir/tmp/usr/bin/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
     install -Dm644 "$srcdir/bitcoin/doc/man/bitcoin-tx.1" "$pkgdir/usr/share/man/man1/bitcoin-tx.1"
     install -Dm644 "$srcdir/bitcoin/COPYING" "$pkgdir/usr/share/licenses/bitcoin/COPYING"
-    install -Dm644 "$srcdir/tmp/usr/local/include/bitcoinconsensus.h" "$pkgdir/usr/include/bitcoinconsensus.h"
-    install -Dm644 "$srcdir/tmp/usr/local/lib/libbitcoinconsensus.so.0.0.0" "$pkgdir/usr/lib/libbitcoinconsensus.so.0.0.0"
+    install -Dm644 "$srcdir/tmp/usr/include/bitcoinconsensus.h" "$pkgdir/usr/include/bitcoinconsensus.h"
+    install -Dm644 "$srcdir/tmp/usr/lib/libbitcoinconsensus.so.0.0.0" "$pkgdir/usr/lib/libbitcoinconsensus.so.0.0.0"
     cd "$pkgdir/usr/lib/"
     ln -s "libbitcoinconsensus.so.0.0.0" "libbitcoinconsensus.so.0"
     ln -s "libbitcoinconsensus.so.0.0.0" "libbitcoinconsensus.so"
