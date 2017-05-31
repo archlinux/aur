@@ -14,7 +14,6 @@ depends=('python-pypandoc'
         'python-argparse'
         'python-yaml'
         'python-requests'
-        'python-argcomplete'
         'python-py-gfm'
 )
 makedepends=('python' 'python-setuptools')

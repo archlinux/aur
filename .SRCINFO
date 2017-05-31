@@ -12,7 +12,6 @@ pkgbase = python-eddy
 	depends = python-argparse
 	depends = python-yaml
 	depends = python-requests
-	depends = python-argcomplete
 	depends = python-py-gfm
 	options = !emptydirs
 	source = python-eddy::git+https://github.com/joajfreitas/eddy.git
