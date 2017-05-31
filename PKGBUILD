@@ -1,6 +1,6 @@
 # Maintainer: joajfreitas <joao.freitas@gmail.com>
 pkgname=python-eddy
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc=""
 arch=('any')
@@ -14,8 +14,10 @@ depends=('python-pypandoc'
         'python-argparse'
         'python-yaml'
         'python-requests'
-        'python-py-gfm'
 )
+#Extra optional dependency: pyemdeb-markdown
+optdepends=('python-py-gfm')
+            
 makedepends=('python' 'python-setuptools')
 provides=()
 conflicts=()
