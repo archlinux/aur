@@ -1,7 +1,7 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 pkgname=pagmo
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model."
 arch=('i686' 'x86_64')
 url="https://github.com/esa/pagmo"
@@ -14,8 +14,10 @@ optdepends=('gsl: Mathematical operations (symbolic)'
 	    'python: PyGMO support'
 	    'openmpi: MPI Support')
 makedepends=('cmake')
-source=(https://github.com/esa/pagmo/archive/${pkgver}.tar.gz)
-sha512sums=('502705b9b87bf2607472347bb6d04571b132f1df9864a18448586f03befc86511ca445c78aad7f20a24630bc5671f3c22c3d61a40f7257791759fb996c0fe551')
+source=(https://github.com/esa/pagmo/archive/${pkgver}.tar.gz
+        gcc7.patch)
+sha512sums=('502705b9b87bf2607472347bb6d04571b132f1df9864a18448586f03befc86511ca445c78aad7f20a24630bc5671f3c22c3d61a40f7257791759fb996c0fe551'
+            'd070d454bde9e289a1d2d1ee2f08b6a698fb70308949336f5475326cda05d586b0caa9aeba8e5cd75cfa3ff5fd7612f810040bfc71859ee703637c34ba3ac1b2')
 
 # Build type
 _buildtype="RelWithDebInfo"
@@ -28,6 +30,8 @@ _cmake_options=(
   -D BUILD_EXAMPLES=OFF
   -D ENABLE_TESTS=OFF
   -D INSTALL_HEADERS=ON
+  -DCMAKE_CXX_FLAGS='-std=c++11'
+  -DCMAKE_C_FLAGS='-std=c11'
 )
 
 check_optdepends() {
@@ -73,6 +77,11 @@ check_optdepends() {
     else
         msg "Disabling PyGMO build"
     fi
+}
+
+prepare() {
+    cd $srcdir/$pkgname-$pkgver
+    patch -p1 -i ../gcc7.patch
 }
 
 # Build the project
