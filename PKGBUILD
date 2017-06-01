@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname=(aursec-git aursec-tui-git)
-pkgver=v0.9.r30.90d1bc7
+pkgver=v0.11.r0.15ea0e9
 pkgrel=1
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=(any)
@@ -14,44 +14,43 @@ conflicts=("${pkgname%-git}")
 depends=(firejail geth vim bc)
 makedepends=(pandoc git)
 checkdepends=(shellcheck)
-#optdepends=()
 
-#changelog="CHANGELOG"
 source=("git+https://github.com/clawoflight/${pkgname%-git}.git")
 sha256sums=('SKIP')
 validpgpkeys=('871F10477DB3DDED5FC447B226C7E577EF967808')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "${pkgname%-git}"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}/aursec"
-	make
-        cd "$srcdir/${pkgname%-git}/tui"
-	make
+    cd "${pkgname%-git}/aursec"
+    make
+    cd "../tui"
+    make
 }
 
 check() {
-	cd "$srcdir/${pkgname%-git}/aursec"
-	make -k check
+    cd "${pkgname%-git}/aursec"
+    make -k check
 }
 
 package_aursec-git() {
-        install=aursec-git.install
-	optdepends=("aursec-tui: to manually inspect the blockchain.")
+    install=aursec-git.install
+    optdepends=("aursec-tui: to manually inspect the blockchain.")
 
-	cd "$srcdir/${pkgname%-git}/aursec"
-	make PREFIX="/usr" DESTDIR="$pkgdir/" install
+    cd "${pkgname%-git}/aursec"
+    make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
 
 package_aursec-tui-git() {
-        pkgdesc='Inspect the aursec blockchain'
-        depends=(python python-requests python-urwid aursec)
-        provides=(aursec-tui)
-	conflicts=(aursec-tui)
+    pkgdesc='Inspect the aursec blockchain'
+    depends=(python python-requests python-urwid aursec)
+    provides=(aursec-tui)
+    conflicts=(aursec-tui)
 
-        cd "$srcdir/aursec/tui"
-        make PREFIX="/usr" DESTDIR="$pkgdir/" install
+    echo $PWD
+    cd "aursec/tui"
+    make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
