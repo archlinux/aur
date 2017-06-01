@@ -2,7 +2,7 @@
 # Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=cppreference-devhelp
-pkgver=20170214
+pkgver=20170409
 pkgrel=1
 pkgdesc="Offline cppreference documentation for devhelp."
 arch=('any')
@@ -10,8 +10,8 @@ url="http://en.cppreference.com/w/"
 license=('CCPL:cc-by-sa')
 depends=('devhelp' 'cppreference')
 makedepends=('python-lxml')
-source=("http://upload.cppreference.com/mwiki/images/0/0d/cppreference-doc-$pkgver.tar.gz")
-md5sums=('170e443ba3a7c481c0f3522c4f8b705d')
+source=("http://upload.cppreference.com/mwiki/images/b/bd/cppreference-doc-$pkgver.tar.gz")
+sha256sums=('1f54cf7b6d5c27434b7e9d24b4f7bdb0dde04441f20928d12ab9bd87317dc3f2')
 
 prepare() {
     cd "$srcdir/cppreference-doc-$pkgver"
