@@ -8,6 +8,7 @@ arch=('any')
 url="https://metacpan.org/release/Perl4-CoreLibs"
 license=('PerlArtistic' 'GPL')
 depends=('perl')
+makedepends=('perl-module-build')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Perl4-CoreLibs-$pkgver.tar.gz")
 sha1sums=('ad4c5a9fa8da4f461dc774e5c53136a55413ef2f')
