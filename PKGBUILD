@@ -208,7 +208,7 @@ if ${_use_mesa}; then
   _profiled_gpu_fn=qpi-mesa.sh
   _additional_configure_flags="$_additional_configure_flags -gbm -kms"
 else
-  if [[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]] ; then
+  if $_building && ([[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]]); then
     echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
     exit 1
   fi
