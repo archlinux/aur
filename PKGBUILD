@@ -1,8 +1,8 @@
 # Maintainer: gbr <gbr@protonmail.com>
 # Maintainer: masutu <masutu dot arch at gmail dot com>
 pkgname=ezthumb
-pkgver=3.6.3
-pkgrel=2
+pkgver=3.6.4
+pkgrel=1
 pkgdesc='A video thumbnail generator based on ffmpeg.'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/ezthumb/'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('ffmpeg' 'gd' 'gtk2')
 makedepends=('imagemagick')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('f9f4d348cde6e4ed34632c9ec54feecf28b5ebcc947ed61f5a72f8973badaf03')
+sha256sums=('0ac2f453bb54de17d5203df5dfbd47a0e5ed676d83b941a518b80f5ac03e00b1')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -20,8 +20,7 @@ build() {
         --localstatedir=/var \
         --disable-debug-build \
         --with-gui=gtk2 \
-        --with-x \
-        LDFLAGS='-L/usr/lib/ffmpeg' CPPFLAGS='-I/usr/include/ffmpeg'
+        --with-x
 
     make
     make gtkicons
