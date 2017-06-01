@@ -74,11 +74,14 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _pkgvermajmin="5.9"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta2"
-pkgrel=5
+_dev_suffix=""
+pkgrel=6
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
-_pkgver=${pkgver}-${_dev_suffix}
+_pkgver=${pkgver}
+if [[ -n ${_dev_suffix} ]]; then
+  _pkgver=${pkgver}-${_dev_suffix}
+fi
 _release_type="development_releases"
 _mkspec="linux-rpi${_piver}-g++"
 _additional_configure_flags=""
@@ -197,7 +200,7 @@ _core_configure_options="\
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
-  sha256sums=("SKIP" "b74c30cd80474880b4a0c2f0ed6efdbda16ebe72cdc26f2a85bb025a42d5d838")
+  sha256sums=("SKIP" "f70b5c66161191489fc13c7b7eb69bf9df3881596b183e7f6d94305a39837517")
 fi
 
 options=('!strip')
