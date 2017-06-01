@@ -2,13 +2,13 @@
 # Mantainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=crark-cuda
-pkgver=3.43
-download=crark34-linux-cuda.rar
+pkgver=5.1
+download=crark51-linux.rar
 pkgrel=3
 pkgdesc="A command-line utility for RAR 2.x-3.x password cracking, uses Password Cracking Library 2.0 that supports special password recovery language. Highly optimized for all modern processors. with CUDA support"
 arch=('i686' 'x86_64')
 url="http://www.crark.net/"
-license="unknown"
+license=("unknown")
 options=('!strip')
 depends=(cuda)
 makedepends=('unrar')
