@@ -1,0 +1,12 @@
+# Bookmarks allow you to keep connection settings to your most frequent servers
+# with credentials stored in a file on your local filesystem, encoded as TOML.
+
+# Here's an example of a bookmark file (/etc/pgweb/server.toml):
+host = "localhost"
+port = 5432
+user = "postgres"
+database = "mydatabase"
+ssl = "disable"
+
+# To keep things short, you can just define an url:
+url = "postgres://user:password@host:port/database?sslmode=mode"
