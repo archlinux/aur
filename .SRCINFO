@@ -1,0 +1,27 @@
+pkgbase = aimtux-git
+	pkgdesc = Open source internal multi-hack for Counter-Strike: Global Offensive
+	pkgver = v1.0.r703.g9e7c759
+	pkgrel = 1
+	url = https://github.com/AimTuxOfficial/AimTux
+	install = aimtux.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = sdl2
+	depends = gdb
+	depends = sudo
+	depends = procps-ng
+	source = aimtux::git+https://github.com/AimTuxOfficial/AimTux.git
+	source = git://github.com/AimTuxOfficial/imgui.git
+	source = aimtux-load
+	source = aimtux-uload
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 5ac2581c29337a1a56bbef703d674ac359652d13ecd50975a63256b4d47d322c
+	sha256sums = d9eb70f4a48ca3d8ab77dcac4fcbbe3044f37f00bed6251408320da4384d45f2
+
+pkgname = aimtux-git
+
