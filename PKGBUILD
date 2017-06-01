@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.6.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -19,7 +19,7 @@ options=(!emptydirs)
 source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         dkms.conf)
 sha256sums=('50234820c3da9752d2ca05fb7e83b7dc5c96a0e96a0b875ebc7ae3c835607614'
-            'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf')
+            'baa3ab82ab2bb801d3a57568b46d5844add91cf8fc100386459d91d004f80f4f')
 
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
