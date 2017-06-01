@@ -2,7 +2,7 @@
 pkgname=libclassicclient
 _luxver=1.1.0
 pkgver=7.2.0_b04
-pkgrel=3
+pkgrel=4
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(i686 x86_64)
@@ -20,18 +20,24 @@ optdepends=(
 )
 source_i686=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_32bit.tar.gz")
 source_x86_64=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_${_luxver}_Ubuntu_64bit.tar.gz")
-sha256sums=('4c9b71b596900700cdbf8f1515df44d9383fd5f336114e38cebfffc30d74f564')
-sha256sums_i686=('771195d2cd48a56ee70b2826fa1c008fed8925ad29dddd46fff155e6d474e775')
-sha256sums_x86_64=('e1f77f5c1eaa479395a62106db0ec4b3aa0df45d428ebe790982159ec6f55283')
+sha256sums_i686=('a79c5809743a49d278583f4d4b501c602d4d12191890cdf32dc068975dc7702e')
+sha256sums_x86_64=('e83565ec6fdb4195f0eabe1cf2fc7d61ea000e1044f3dca5864ace0155058f43')
 
 prepare() {
+  # the main tarball sometimes gets updated without changing its version;
+  # but all we want is the Gemalto .deb
   case $CARCH in
     i686)
-      bsdtar -xf Gemalto_Middleware_Ubuntu_32bit_${pkgver/_/-}.deb;;
+      _hash=0620b7038153daaa62235adfee921fe9c57d6bd60a8260a705661843e1fd4e32
+      _file=Gemalto_Middleware_Ubuntu_32bit_${pkgver/_/-}.deb;;
     x86_64)
-      bsdtar -xf Gemalto_Middleware_Ubuntu_64bit_${pkgver/_/-}.deb;;
+      _hash=36e51990062c48e4ead8a25aff2b72b040dab7063e0c59190548ba05501ca159
+      _file=Gemalto_Middleware_Ubuntu_64bit_${pkgver/_/-}.deb;;
+    *)
+      false;;
   esac
-
+  echo "$_hash $_file" | sha256sum -c
+  bsdtar -xf "$_file"
   bsdtar -xf data.tar.xz
 }
 
