@@ -40,7 +40,7 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
         'rootd'
         'root.xml')
 sha256sums=('fc868e5f4905544c3f392cc9e895ef5571a08e48682e7fe173bd44c0ba0c7dcd'
-            'cbe83392eb3d73e212236619a3ad21592c05e23e61c4b6343b0869c4b922337c'
+            '6129b1bd324fe0438a6f7f28169bffdb9fb0fdc2497edf5014cf2579cd91ec84'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0')
