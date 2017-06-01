@@ -12,7 +12,7 @@ _enable_kio_plugin=1
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tray application for Syncthing'
@@ -27,7 +27,7 @@ checkdepends=('cppunit' 'syncthing')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('b5eb2a3f596b6affd3b30b1a1a5b5f7cae54c9b8c389a30c7ebd6e724ad9fcef')
+sha256sums=('97940ce14b9480583da1d0a71c5797458a2d29f203d54ecd1ccd2b30065dbdf4')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
