@@ -3,7 +3,7 @@
 
 pkgname=cqrlog
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced ham radio logger based on MySQL database ( MariaDB replaces MySQL in repositories ). (Binary Version)"
 arch=('i686' 'x86_64')
 url="http://www.cqrlog.com"
@@ -14,7 +14,7 @@ groups=()
 #depends=('mysql' 'hamlib' 'trustedqsl' 'xplanet' 'cwdaemon' 'glabels')
 
 
-depends=('mariadb' 'libmariadbclient' 'mariadb-clients' 'libmysqlclient' 'hamlib' 'trustedqsl' 'xplanet' 'glabels' )
+depends=('mariadb' 'libmariadbclient' 'mariadb-clients' 'hamlib' 'trustedqsl' 'xplanet' 'glabels' )
 
 
 if [ "$CARCH" = "i686" ]; then
