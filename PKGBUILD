@@ -42,6 +42,16 @@ build() {
               --with-linux-kernel-packaging \
               --with-linux-kernel-build="/usr/lib/modules/${_kernelver}/build"
 
+  # It seems like gcc is not happy with the code wich tests for the presence
+  # of gid in the group_info struct:
+  #
+  # /var/lib/dkms/openafs/1.6.20.2/build/conftest.dir/conftest.c:43:8: internal compiler error: Segmentation fault
+  #  struct group_info _test; printk("%x\n", &_test.gid);
+  #         ^~~~~~~~~~
+  #
+  # Until this is fixed, we just force the result.
+  echo "#define STRUCT_GROUP_INFO_HAS_GID" >>  ${srcdir}/${_srcname}-${pkgver}/src/config/afsconfig.h
+
   make only_libafs
 }
 
