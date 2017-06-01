@@ -2,7 +2,7 @@
 
 gitname=arch-https-mirrors
 pkgname=${gitname}-git
-pkgver=90.11101e6
+pkgver=93.05ce521
 pkgrel=1
 pkgdesc="arch linux mirrors which support https"
 arch=('any')
