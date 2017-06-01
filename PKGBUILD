@@ -8,7 +8,7 @@ url="http://trac.osgeo.org/gdal/wiki/ECW"
 license=('ECWPL')
 depends=()
 makedepends=('autoconf' 'libtool')
-source=("http://meuk.technokrat.nl/${pkgname}-${pkgver}-2006-09-06.zip"
+source=("http://www.kyngchaos.com/files/macosxport/${pkgname}-${pkgver}-2006-09-06.zip"
         'libecwj2-3.3-nolcms.patch'
         'libecwj2-3.3-3245a.patch'
         'libecwj2-3.3-3245b.patch'
