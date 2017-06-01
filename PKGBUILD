@@ -7,7 +7,7 @@
 pkgname=root-dev
 _pkgname=root
 pkgver=6.09.02
-pkgrel=1
+pkgrel=2
 provides=('root' 'root-dev')
 conflicts=('root' 'root-extra' 'root-extra-dev')
 pkgdesc='C++ data analysis framework and interpreter from CERN - development version.'
@@ -26,7 +26,7 @@ depends=('cfitsio'
          'intel-tbb'
          'libafterimage'
          'libiodbc'
-         'libmysqlclient'
+         'libmariadbclient'
          'postgresql-libs'
          'python'
          'sqlite'
