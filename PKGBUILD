@@ -1,10 +1,10 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
-_gamepkg=RimWorldAlpha16Linux.zip
-_pkg_subver=1393
+_gamepkg=RimWorldAlpha17Linux.zip
+_pkg_subver=1546  # see ${srcdir}/Version.txt
 
 pkgname=rimworld
-pkgver=0.16.${_pkg_subver}  # see ${srcdir}/Version.txt
+pkgver=0.17.${_pkg_subver}
 pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
@@ -49,7 +49,8 @@ build() {
   # unpack game zipfile
   msg "Found game package, unpacking..."
   unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" \
-        -x "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*RimWorld/*" \
+        -x "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/ChineseSimplified/*.txt" \
+           "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*RimWorld/*" \
            "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*.txt" \
            "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Polish/*.md"
 }
