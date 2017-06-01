@@ -1,7 +1,7 @@
 pkgbase = root
 	pkgdesc = C++ data analysis framework and interpreter from CERN.
 	pkgver = 6.08.06
-	pkgrel = 1
+	pkgrel = 2
 	url = http://root.cern.ch
 	install = root.install
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = root
 	depends = intel-tbb
 	depends = libafterimage
 	depends = libiodbc
-	depends = libmysqlclient
+	depends = libmariadbclient
 	depends = postgresql-libs
 	depends = python
 	depends = sqlite
