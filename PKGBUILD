@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 makedepends=('help2man')
 source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
   cd ${srcdir}

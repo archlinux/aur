@@ -11,7 +11,6 @@ pkgbase = mons
 	conflicts = mons
 	source = https://github.com/Ventto/mons/archive/v0.5.1.tar.gz
 	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = mons
 
