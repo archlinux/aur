@@ -9,10 +9,8 @@ license=('GPLv3')
 depends=('boost')
 optdepends=('gsl: Mathematical operations (symbolic)'
 	    'blas: GSL CBLAS functions'
-	    'ipopt: Nonlinear optimization algorithms'
 	    'nlopt: Nonlinear optimization algorithms'
-	    'python: PyGMO support'
-	    'openmpi: MPI Support')
+	    'python: PyGMO support')
 makedepends=('cmake')
 source=(https://github.com/esa/pagmo2/archive/v${pkgver}.tar.gz)
 sha512sums=('9c2e5bab47495ce1b03aae5c1bd4d617f9136feaf1854f29230690ffb7a30e675b21b3bc041c8e0bdd1988631d25b77324f7642f60f7cf4b32222339811f891f')
