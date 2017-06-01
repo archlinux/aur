@@ -3,7 +3,7 @@
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.17pre.r3961.g3b6020cda
+pkgver=0.17pre.r4505.gbc6a52ee9
 pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -21,24 +21,14 @@ provides=('freecad')
 conflicts=('freecad')
 source=("${pkgname}::git+https://github.com/FreeCAD/FreeCAD.git"
         "freecad.desktop"
-        "freecad.xml"
-        "rpath.patch"
-        "fix-occ-search.patch")
+	"freecad.xml")
 md5sums=('SKIP'
          '7e781d41e90a1c137930e47672996a52'
-         'c2f4154c8e4678825411de8e7fa54c6b'
-         'b313a990287bce43dc698affae35d58d'
-         '5a7beefb78ef73241b0e421fec67f4db')
+         'c2f4154c8e4678825411de8e7fa54c6b')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    patch -Np1 -i "${srcdir}/rpath.patch"
-    patch -Np1 -i "${srcdir}/fix-occ-search.patch"
 }
 
 build() {

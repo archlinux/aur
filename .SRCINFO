@@ -1,6 +1,6 @@
 pkgbase = freecad-git
 	pkgdesc = A general purpose 3D CAD modeler - git checkout
-	pkgver = 0.17pre.r3961.g3b6020cda
+	pkgver = 0.17pre.r4505.gbc6a52ee9
 	pkgrel = 1
 	epoch = 1
 	url = http://www.freecadweb.org/
@@ -38,13 +38,9 @@ pkgbase = freecad-git
 	source = freecad-git::git+https://github.com/FreeCAD/FreeCAD.git
 	source = freecad.desktop
 	source = freecad.xml
-	source = rpath.patch
-	source = fix-occ-search.patch
 	md5sums = SKIP
 	md5sums = 7e781d41e90a1c137930e47672996a52
 	md5sums = c2f4154c8e4678825411de8e7fa54c6b
-	md5sums = b313a990287bce43dc698affae35d58d
-	md5sums = 5a7beefb78ef73241b0e421fec67f4db
 
 pkgname = freecad-git
 
