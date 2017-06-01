@@ -81,6 +81,9 @@ check_optdepends() {
 
 prepare() {
     cd $srcdir/$pkgname-$pkgver
+
+    # Patch based off this:
+    # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853453#19
     patch -p1 -i ../gcc7.patch
 }
 
