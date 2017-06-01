@@ -1,7 +1,7 @@
 pkgbase = ogre-1.9
 	pkgdesc = Scene-oriented, flexible 3D engine written in C++
 	pkgver = 1.9.0
-	pkgrel = 16
+	pkgrel = 17
 	url = http://www.ogre3d.org
 	install = ogre-1.9.install
 	arch = i686

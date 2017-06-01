@@ -4,7 +4,7 @@
 _dir="OGRE-1.9"
 pkgname=('ogre-1.9')
 pkgver=1.9.0
-pkgrel=16
+pkgrel=17
 pkgdesc='Scene-oriented, flexible 3D engine written in C++'
 arch=('i686' 'x86_64')
 url='http://www.ogre3d.org'
@@ -60,6 +60,10 @@ package() {
   make DESTDIR=${pkgdir} install
 
   install -Dm644 ../Docs/License.html ${pkgdir}/usr/share/licenses/${pkgname}/license.html
+
+  # Create symlinks in /usr/lib
+  mkdir -p ${pkgdir}/usr/lib/OGRE/Samples
+  find ${pkgdir}/opt/${_dir}/lib -name "*so.${pkgver}" -exec sh -c 'ln -s `echo "$1" | sed -e "s/^.*opt/\/opt/g"` `echo "$1" | sed -e "s/opt\/OGRE-1.9/usr/g"`' sh {} \;
 }
 
 # vim:set ts=2 sw=2 et:
