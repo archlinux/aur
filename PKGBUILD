@@ -15,8 +15,15 @@ optdepends=("$pkgname-doc: API documentation")
 makedepends=('cmake')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('a569f51e367f372dfbfe1903944e848e54de7eeee400c20ed527d7a2c3bea8ef')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
+        '0001-Make-check-target-depend-on-.clang-format-file.patch')
+sha256sums=('a569f51e367f372dfbfe1903944e848e54de7eeee400c20ed527d7a2c3bea8ef'
+            '2c965ecaad6557cbe4367f09801f4cdc78602de4c8c3eed38838943a9423bb66')
+
+prepare() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  patch -p1 -i "$srcdir/0001-Make-check-target-depend-on-.clang-format-file.patch"
+}
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
