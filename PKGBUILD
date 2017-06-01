@@ -6,7 +6,7 @@
 
 options=(!strip)
 pkgname=restic
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="restic is a program that does backups right."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('glibc')
 makedepends=('go>=1.7')
 conflicts=('restic-git')
 source=("https://github.com/restic/restic/archive/v${pkgver}.tar.gz")
-sha256sums=('3876532e2a95a889713dcc6119fc86fa619b884dd27555951595b7d12ee56b12')
+sha256sums=('7cd709c592a5978723673397d7d13c37c0977e20c43db253d0c274b53a55654a')
 
 #importpath='github.com/restic/restic'
 
