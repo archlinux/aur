@@ -27,13 +27,13 @@ build() {
 }
 
 package_python-rosinstall() {
-    depends+=('python' 'python-catkin_pkg' 'python-pyyaml' 'python-rosdistro' 'python-vcstools' 'python-wstool')
+    depends+=('python' 'python-catkin_pkg' 'python-yaml' 'python-rosdistro' 'python-vcstools' 'python-wstool')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-rosinstall() {
-    depends+=('python2' 'python2-catkin_pkg' 'python2-pyyaml' 'python2-rosdistro' 'python2-vcstools' 'python2-wstool')
+    depends+=('python2' 'python2-catkin_pkg' 'python2-yaml' 'python2-rosdistro' 'python2-vcstools' 'python2-wstool')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
