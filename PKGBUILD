@@ -2,7 +2,7 @@
 # Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=vislcg3
 pkgver=1.0.0~r12200
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiler and parser for Constraint Grammar (CG), a paradigm for robust, rule-based Natural Language Parsing."
 url="http://beta.visl.sdu.dk/cg3.html"
 license=('GPL3')
@@ -23,8 +23,12 @@ package () {
 
 build() {
   cd "$srcdir/cg3"
-  ./get-boost.sh
-  # https://svn.boost.org/trac/boost/ticket/11145
-  ( cd ../.. && patch -p0 < icu_boost.diff )
+  if [[ bug11145 = bug11145 ]]; then
+      # https://svn.boost.org/trac/boost/ticket/11145
+      ./get-boost.sh
+      # fixed in https://github.com/boostorg/functional/commit/767673645e14aac6020ad45cc88cc4716c242851
+      # so next boost ought to have this fixed
+      ( cd ../.. && patch -p0 < icu_boost.diff )
+  fi
   ./cmake.sh -D CMAKE_INSTALL_PREFIX=/usr && make
 }
