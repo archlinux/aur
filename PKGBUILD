@@ -2,7 +2,7 @@
 
 pkgname=mpdmenu
 pkgver=1.0.3
-pkgrel=4
+pkgrel=3
 pkgdesc='dmenu frontend to MPD'
 url='http://github.com/cdown/mpdmenu'
 arch=('any')
