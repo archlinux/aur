@@ -1,48 +1,47 @@
-# Maintainer: Alexander Pavel <alexpavel123(at)gmail(dot)com>
+# Maintainer: Almir Dzinovic <almir@dzinovic.net>
+# Contributor: Alexander Pavel <alexpavel123@gmail.com>
 
 pkgname=mattermost-desktop-bin
-pkgdesc="Mattermost chat desktop client for Linux (binary)"
-_pkgname=desktop
-pkgver=1.3.0
-pkgrel=4
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Mattermost Desktop (Beta) for Linux (binary)"
 arch=('x86_64')
+
 url="https://github.com/mattermost/desktop"
-license=('MIT')
+license=('Apache')
+
 makedepends=('gendesk')
-depends=('gconf')
+depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'nspr' 'alsa-lib')
 optdepends=()
-conflicts=('mattermost', 'mattermost-desktop')
 
-source=("https://releases.mattermost.com/desktop/1.3.0/mattermost-desktop-${pkgver}-linux-x64.tar.gz")
+conflicts=('mattermost-desktop')
 
-sha256sums=('eb349ff12a39cc5e29413c56480a0bcd7d3d991699647b364f0f8fb62499e4c2')
-
-build() {
-    cd "${srcdir}/mattermost-desktop-linux-x64"
-}
+source=("https://releases.mattermost.com/desktop/${pkgver}/mattermost-desktop-${pkgver}-linux-x64.tar.gz")
+sha512sums=('f46f13045850579c49a87ab2a01caf3c3d95ac6bb9bc807c414413df6804ea36342bbc0a31a75d10a3b048dc3ac5a3efe8c26883c0705aec8875900366b9b58a')
 
 prepare() {
-  gendesk --pkgname "Mattermost Desktop" --pkgdesc "$pkgdesc" \
-        --exec "/usr/lib/mattermost/Mattermost" \
-        --categories "GNOME;GTK;Network;InstantMessaging;"
+    cd "${srcdir}/mattermost-desktop-${pkgver}"
+
+    gendesk -f -n \
+        --pkgname "mattermost-desktop" \
+        --pkgdesc "Open source, private cloud Slack-alternative" \
+        --name "Mattermost Desktop (Beta)" \
+        --exec "/usr/lib/mattermost/mattermost-desktop" \
+        --categories "Network;Chat;InstantMessaging;VideoConference;GTK"
 }
 
 package() {
-    cd "${srcdir}/mattermost-desktop-linux-x64"
+    cd "${srcdir}/mattermost-desktop-${pkgver}"
 
     install -d -m 755 "${pkgdir}"/usr/lib/mattermost
 
-    echo `ls -l`
     cp -r * "$pkgdir/usr/lib/mattermost"
-    rm $pkgdir/usr/lib/mattermost/LICENSE
 
     install -d -m 755 "$pkgdir/usr/bin"
-    ln -s /usr/lib/mattermost/Mattermost "$pkgdir/usr/bin/mattermost"
+    ln -s /usr/lib/mattermost/mattermost-desktop "$pkgdir/usr/bin/mattermost-desktop"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 "$srcdir/Mattermost Desktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$pkgdir/usr/lib/mattermost/resources/app/resources/appicon.png" "$pkgdir/usr/share/pixmaps/Mattermost Desktop.png"
+    install -Dm644 mattermost-desktop.desktop "$pkgdir/usr/share/applications/mattermost-desktop.desktop"
+    install -Dm644 "$pkgdir/usr/lib/mattermost/icon.png" "$pkgdir/usr/share/pixmaps/mattermost-desktop.png"
 }
-
