@@ -1,6 +1,6 @@
 pkgbase = the_silver_searcher_wild-git
 	pkgdesc = Allen Wild's fork of ag, which supports pcre2 and .agrc user config
-	pkgver = 1.0.3.r49.g59dccf2
+	pkgver = 1.0.3.r68.ga114832
 	pkgrel = 1
 	url = https://github.com/aswild/the_silver_searcher
 	arch = x86_64
