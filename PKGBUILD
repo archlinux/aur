@@ -4,7 +4,7 @@
 
 pkgname=multibootusb
 pkgver=8.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Boot multiple live Linux distros from a usb flash drive."
 arch=("any")
 url="http://multibootusb.org"
