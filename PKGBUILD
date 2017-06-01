@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.4.r219.g24b95fe
+pkgver=0.9.4.r361.g5a2c4c1
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -36,7 +36,7 @@ prepare () {
 
 build () {
     cd "$srcdir/${pkgname%-git}"
-    ./configure
+    ./configure --prefix=/usr
     make
 }
 
