@@ -5,14 +5,24 @@ pkgbase = python-rosdistro
 	url = http://wiki.ros.org/rosdistro
 	arch = any
 	license = BSD
-	makedepends = python
 	makedepends = python-setuptools
-	depends = python
-	conflicts = python2-rosdistro
-	source = http://download.ros.org/downloads/rosdistro/rosdistro-0.6.2.tar.gz
-	source = https://raw.githubusercontent.com/ros-infrastructure/rosdistro/f6a87bf67a39c64ed962c3f79d7b45256e0c14a7/LICENSE.txt
-	sha256sums = 834776e7419465b23080b099ddb3b981fbe8623442ed2b446989f3fa998fb178
-	sha256sums = 32aac2a1d3abb4c6ee1c0a973f6337874228d459a2565c5ad4c6a4dc46e84b3b
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/r/rosdistro/rosdistro-0.6.2.tar.gz
+	md5sums = 5ef1af890d0fc92c6920c4c86ef498cd
 
 pkgname = python-rosdistro
+	depends = 
+	depends = python
+	depends = python-catkin_pkg
+	depends = python-rospkg
+	depends = python-yaml
+	conflicts = python2-rosdistro
+
+pkgname = python2-rosdistro
+	depends = 
+	depends = python2
+	depends = python2-catkin_pkg
+	depends = python2-rospkg
+	depends = python2-yaml
+	conflicts = python-rosdistro
 
