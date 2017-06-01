@@ -14,6 +14,7 @@ md5sums=('e3eaf2bbd841409326670cb8f501f2c6')
 
 package() {
  #sed -e "s|'/opt/cuda'|'/opt/cuda-toolkit'|" -e "s|' --host-compilation C'||" -i setup.py
+sed -e "s|' --host-compilation C'||" -i ${srcdir}/cpyrit-cuda-0.4.0/setup.py
 echo "ln -s /opt/cuda-toolkit /opt/cuda"
 cd ${srcdir}/${pkgname}-${pkgver}
 python2 setup.py build
