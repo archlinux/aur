@@ -15,7 +15,7 @@ _PXE='0'
 
 _pkgname='refind'
 pkgname="${_pkgname}-efi-git"
-pkgver=0.10.4.2.r518.76f5e60
+pkgver=0.10.8.1.r558.85e61fb
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='http://www.rodsbooks.com/refind/'
@@ -72,7 +72,7 @@ pkgver() {
 
 	cd "${srcdir}/${_pkgname}/"
 
-	printf "%s.r%s.%s" "$(grep -o 'REFIND_VERSION=.*' "${srcdir}/${_pkgname}/Makefile"  | grep -Eo '([0-9]|\.)+')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(grep -oP 'REFIND_VERSION L"\K[^"]+' "${srcdir}/${_pkgname}/include/version.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
