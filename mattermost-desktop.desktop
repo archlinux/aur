@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Mattermost Desktop (Beta)
+Comment=Open source, private cloud Slack-alternative
+Exec=/usr/lib/mattermost/mattermost-desktop
+Icon=mattermost-desktop
+Terminal=false
+StartupNotify=false
+Categories=Network;Chat;InstantMessaging;VideoConference;GTK;
