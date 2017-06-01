@@ -1,13 +1,14 @@
 pkgbase = mpdris2-py3
 	pkgdesc = MPRIS2 support for MPD using python 3
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eonpatapon/mpDris2
 	arch = any
 	license = GPL3
 	makedepends = intltool
 	depends = python-dbus
 	depends = python-mpd2
+	depends = libnotify
 	depends = python-gobject
 	optdepends = mutagen: read covers from music files
 	optdepends = python-gobject: Gnome notifications and media keys
