@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=60.0.3107.4
+pkgver=60.0.3112.7
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -44,6 +44,7 @@ depends=(
          'ffmpeg'
 #          'icu' # https://crbug.com/678661
          'gtk3'
+         'openh264'
          )
 makedepends=('libexif'
              'gperf'
@@ -83,8 +84,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r7.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-harfbuzz-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch'
         # Misc Patches
 #         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
 #         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
@@ -100,8 +100,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
             'b34b698059a8e10aa1a4b26f41599c3a62cfd39b59d6269bcfe939e7ff7ad39a'
-            '7c5151c295811bfdde473de5b7521f3a911813388e4811a75e296d42a5e22623'
-            'a81e83e7b88a76ad68a9d7a4fcbcdedd15cb915470760c93cf4cd0af78248987'
+            '06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f'
             # Misc Patches
 #             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
 #             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
@@ -240,7 +239,6 @@ _keeplibs=(
   'third_party/mt19937ar'
   'third_party/node'
   'third_party/node/node_modules/vulcanize/third_party/UglifyJS2'
-  'third_party/openh264'
   'third_party/openmax_dl'
   'third_party/ots'
   'third_party/pdfium'
@@ -266,7 +264,6 @@ _keeplibs=(
   'third_party/spirv-tools-angle'
   'third_party/swiftshader'
   'third_party/swiftshader/third_party/llvm-subzero'
-  'third_party/swiftshader/third_party/pnacl-subzero'
   'third_party/swiftshader/third_party/subzero'
   'third_party/sqlite'
   'third_party/tcmalloc'
@@ -341,6 +338,7 @@ _use_system=(
   'libwebp'
 #  'libxml' # https://bugs.gentoo.org/616818
   'libxslt'
+  'openh264'
   'opus'
 #  'protobuf' # https://bugs.gentoo.org/525560
   're2'
@@ -394,8 +392,7 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r1.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r7.patch"
-  patch -p1 -i "${srcdir}/chromium-system-harfbuzz-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r8.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -508,10 +505,8 @@ build() {
   python2 tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${_flags[*]} ${_debug_flag}"
   out/Release/gn gen out/Release -v --args="${_flags[*]} ${_debug_flag}" --script-executable=/usr/bin/python2
 
-
   # Build all with ninja.
   LC_ALL=C ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver widevinecdmadapter clearkeycdm
-
 }
 
 package() {
@@ -535,16 +530,16 @@ package() {
 
   # Install libs.
   _libs=(
+    'libclearkeycdm.so'
     'libEGL.so'
     'libGLESv2.so'
+    'libosmesa.so'
     'libVkLayer_core_validation.so'
     'libVkLayer_object_tracker.so'
     'libVkLayer_parameter_validation.so'
     'libVkLayer_swapchain.so'
     'libVkLayer_threading.so'
     'libVkLayer_unique_objects.so'
-    'libclearkeycdm.so'
-    'libosmesa.so'
     'libwidevinecdmadapter.so'
   )
   for i in "${_libs[@]}"; do
@@ -560,13 +555,13 @@ package() {
   _resources=(
     'chrome_100_percent.pak'
     'chrome_200_percent.pak'
+    'headless_lib.pak'
     'keyboard_resources.pak'
     'mus_app_resources_100.pak'
     'mus_app_resources_200.pak'
     'mus_app_resources_strings.pak'
     'resources.pak'
     'views_mus_resources.pak'
-    'headless_lib.pak'
   )
   for i in "${_resources[@]}"; do
     install -Dm644 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
