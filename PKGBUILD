@@ -11,8 +11,8 @@ depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('Apache')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/o/osrf_pycommon/osrf_pycommon-${pkgver}.tar.gz")
-md5sums=('3c1d452ad93043b266b0225467c0d9cb')
+source=("https://github.com/osrf/osrf_pycommon/archive/${pkgver}.tar.gz")
+md5sums=('562020a22797338d834a549c4c291ece')
 
 prepare() {
     cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
