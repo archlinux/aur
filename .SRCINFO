@@ -9,7 +9,7 @@ pkgbase = mpvc-rs
 	depends = mpv
 	provides = mpvc
 	source = mpvc-1.0.3.tar.gz::https://github.com/freijon/mpvc-rs/archive/v1.0.3.tar.gz
-	sha512sums = 346853d1e20923b34b2bad3a567b9e870a3b41b9303df2f7810d99bc98532c7de8f6ffd60edafdf1dc95d04aa30aa890d4ce94cb8675afa3a69db133a8609e25
+	sha512sums = 0b2695fc03b0195d7dc5543ab45ad85e0138e8721149252297f294cd1cd62aa18797e3975222ddcf4f468b95b77f49245eff405379d70ba1cb29eb8c1752933a
 
 pkgname = mpvc-rs
 
