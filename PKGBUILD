@@ -46,6 +46,7 @@ if [[ -z ${startdir} ]]; then
 fi
 
 if [[ -f target-host ]]; then
+  unset LOCAL_PI_VER
   _target_host=true
   _minimal=false
 fi
