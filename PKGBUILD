@@ -6,7 +6,7 @@
 
 pkgname=root5
 pkgver=5.34.36
-pkgrel=4
+pkgrel=5
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -20,14 +20,12 @@ depends=('cfitsio'
          'glew'
          'graphviz'
          'gsl'
+         'hicolor-icon-theme'
          'libiodbc'
          'libafterimage'
          'libmariadbclient'
          'postgresql-libs'
-         'python2'
-         'tex-gyre-fonts'
-         'unixodbc'
-         'xmlrpc-c')
+         'python2')
 optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
             'pythia: Pythia8 event generator support'
             'tcsh: Legacy CSH support'
