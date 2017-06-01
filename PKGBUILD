@@ -6,7 +6,7 @@
 
 pkgname=root5
 pkgver=5.34.36
-pkgrel=3
+pkgrel=4
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -22,7 +22,7 @@ depends=('cfitsio'
          'gsl'
          'libiodbc'
          'libafterimage'
-         'libmysqlclient'
+         'libmariadbclient'
          'postgresql-libs'
          'python2'
          'tex-gyre-fonts'
