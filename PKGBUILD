@@ -18,7 +18,7 @@ optdepends=('tcl: ispin graphical interface'
             'ispin: GUI for Spin')
 source=(https://spinroot.com/spin/Src/spin${pkgver//./}.tar.gz
         LICENSE.txt)
-sha512sums=('77bc35bb852c0448915c655bf11910d0b226d30d66abaa63311e6227de03f920ca026e7399cbeebdae631368fd8091f1e8330bd3094bd4febdf7d5c7a81834ad'
+sha512sums=('4ce720a1234c3bfe37320b6a41ee27346237592ca0a9437a67a13078b9ae0f8f1ad321c6715329799d6295084649c4dab5164cb32682bf1033a94c8ee960e1de'
             'a5b63fc7136a2631c9a27619953abe2e9d6cab179042dd56bb76afbffe1966ad7edb41a131af5d6663f3cdbf77128833232e9174c0ef817b8522bfd978add595')
 
 build() {
