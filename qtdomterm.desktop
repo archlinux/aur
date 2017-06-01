@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=qtdomterm
+GenericName=Terminal
+Exec=qtdomterm
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Qt;System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;
+Icon=utilities-terminal
