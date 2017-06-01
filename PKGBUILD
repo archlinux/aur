@@ -4,14 +4,14 @@
 
 pkgname=amnesia-tdd
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Amnesia: The Dark Descent is a first person survival horror game."
 arch=('i686' 'x86_64')
 url="http://www.amnesiagame.com/"
 license=('custom')
 depends=('libxft')
 conflicts=('amnesia-tdd-hib')
-source=("amnesia_tdd-${pkgver}-3.sh")
+source=("local://amnesia_tdd-${pkgver}-3.sh")
 sha256sums=("5ced96a2ce619a44647f6cbd8190000ec48df41c621f1b6ccbeba537e1fc89e5")
 [ "$CARCH" == "x86_64" ] && _suffix=_64
 # Prevent compressing final package
