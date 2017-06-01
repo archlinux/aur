@@ -11,9 +11,10 @@ depends=('xorg-xrandr')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man')
-source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz"
+        "https://github.com/Ventto/posix-shell-list/archive/v1.0.tar.gz")
 
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd ${srcdir}
