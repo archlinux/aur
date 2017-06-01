@@ -261,7 +261,6 @@ build() {
   local _basedir="${_srcdir}/qtbase"
   local _waylanddir="${_srcdir}/qtwayland"
   local _declarativedir="${_srcdir}/qtdeclarative"
-  local _webenginedir="${_srcdir}/qtwebengine"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
   cd ${_srcdir}
@@ -277,8 +276,6 @@ fi
 
 if $_patching; then
   # build qtwebengine with our mkspec
-  local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
-  sed -i "s/linux-clang/linux*/" ${_webenginefileoverride} || exit 1
 
   # hard coded off, so we have to hard code it on
   local _reducerelocations="${_basedir}/config.tests/unix/reduce_relocs/bsymbolic_functions.c"
@@ -294,9 +291,9 @@ if $_patching; then
   cd ${_waylanddir}
   #patch -p1 < ${startdir}/0001-Fix-brcm-egl-build-by-correcting-commit-usage.patch
 
-  cd ${_webenginedir}
+  #cd ${_webenginedir}
   # reverse patch which breaks dynamic loading of EGL/GLESvs with rpi proprietary drivers
-  patch -p1 < ${startdir}/0001-Revert-Fully-qualify-libEGL.so.1-libEGLESv2.so.2-lib.patch
+  #patch -p1 < ${startdir}/0001-Revert-Fully-qualify-libEGL.so.1-libEGLESv2.so.2-lib.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   # Now also present as we get complaints on the RPI 1 when Qt is left to use O3 about the
