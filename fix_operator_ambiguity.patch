@@ -1,0 +1,352 @@
+diff -ruN old/src/mbase/project/serialization.h new/src/mbase/project/serialization.h
+--- old/src/mbase/project/serialization.h	2017-06-01 13:54:44.086895687 +0430
++++ new/src/mbase/project/serialization.h	2017-06-01 14:09:16.523275880 +0430
+@@ -75,7 +75,9 @@
+ template<typename T>
+ std::string MakeString(const T& t)
+ {
+-    return (str::stream() << t).str();
++    str::stream ss;
++    ss << t;
++    return ss.str();
+ }
+ 
+ template<typename T>
+diff -ruN old/src/mgui/dvdimport.cpp new/src/mgui/dvdimport.cpp
+--- old/src/mgui/dvdimport.cpp	2017-06-01 13:54:44.086895687 +0430
++++ new/src/mgui/dvdimport.cpp	2017-06-01 14:06:42.488114237 +0430
+@@ -211,10 +211,11 @@
+                 row[VF().selState]  = false;
+                 row[VF().name]      = VobFName(vob.pos);
+                 row[VF().thumbnail] = vob.aspect == af4_3 ? pix4_3 : pix16_9;
+-                std::string desc = (str::stream(Mpeg::SecToHMS(vob.tmLen, true)) <<  ", "
+-                                    << vob.sz.x << "x" << vob.sz.y << ", "
+-                                    << (vob.aspect == af4_3 ? "4:3" : "16:9") << ", " 
+-                                    << std::fixed << std::setprecision(2) << vob.Count()/512. << " " << _("MB")).str();
++                str::stream ss (Mpeg::SecToHMS(vob.tmLen, true));
++                ss << ", " << vob.sz.x << "x" << vob.sz.y << ", "
++                  << (vob.aspect == af4_3 ? "4:3" : "16:9") << ", " 
++                  << std::fixed << std::setprecision(2) << vob.Count()/512. << " " << _("MB");
++                std::string desc = ss.str();
+                 row[VF().desc]      = desc;
+             }
+             CompleteSelection(id, false);
+diff -ruN old/src/mbase/project/media.cpp new/src/mbase/project/media.cpp
+--- old/src/mbase/project/media.cpp	2017-06-01 14:25:09.492134844 +0430
++++ new/src/mbase/project/media.cpp	2017-06-01 14:37:53.196336367 +0430
+@@ -58,7 +58,9 @@
+ 
+ std::string MakeAutoName(const std::string& str, int old_sz)
+ {
+-    return (str::stream() << str << " " << old_sz+1).str();
++    str::stream ss;
++    ss << str << " " << old_sz+1;
++    return ss.str();
+ }
+ 
+ void VideoMD::AddChapter(ChapterItem chp)
+diff -ruN old/src/mbase/project/menu.cpp new/src/mbase/project/menu.cpp
+--- old/src/mbase/project/menu.cpp	2017-06-01 14:25:09.495468141 +0430
++++ new/src/mbase/project/menu.cpp	2017-06-01 14:39:42.004331141 +0430
+@@ -166,7 +166,9 @@
+ static std::string MakeObjectPath(int idx, const char* type)
+ {
+     ASSERT( idx != NO_HNDL );
+-    return (str::stream() << type << "." << idx).str();
++    str::stream ss;
++    ss << type << "." << idx;
++    return ss.str();
+ }
+ 
+ std::string GetMediaRef(MediaItem mi)
+@@ -197,7 +199,9 @@
+ void RefMaker::Visit(VideoChapterMD& obj)
+ {
+     refStr  = GetMediaRef(obj.owner);
+-    refStr += (str::stream() << "." << ChapterPosInt(&obj)).str();
++    str::stream ss;
++    ss << "." << ChapterPosInt(&obj);
++    refStr += ss.str();
+ }
+ 
+ std::string Media2Ref(MediaItem mi)
+@@ -233,8 +237,9 @@
+ 
+ std::string ThrowBadIndex(const char* prefix, int idx)
+ {
+-    throw std::runtime_error(
+-        (str::stream() << prefix << idx).str() );
++    str::stream ss;
++    ss << prefix << idx;
++    throw std::runtime_error(ss.str());
+ }
+ 
+ MediaItem TryGetMedia(int idx)
+diff -ruN old/src/mbase/project/srl-common.cpp new/src/mbase/project/srl-common.cpp
+--- old/src/mbase/project/srl-common.cpp	2017-06-01 14:25:09.495468141 +0430
++++ new/src/mbase/project/srl-common.cpp	2017-06-01 14:40:56.524722225 +0430
+@@ -36,10 +36,12 @@
+ std::string ToString(const RGBA::Pixel& pxl)
+ {
+     using Mpeg::set_hms;
+-    return (str::stream("#") << std::hex 
+-            << set_hms() << (int)pxl.red 
+-            << set_hms() << (int)pxl.green 
+-            << set_hms() << (int)pxl.blue << (int)pxl.alpha).str();
++    str::stream ss ("#");
++    ss << std::hex 
++      << set_hms() << (int)pxl.red 
++      << set_hms() << (int)pxl.green 
++      << set_hms() << (int)pxl.blue << (int)pxl.alpha;
++    return ss.str();
+ }
+ 
+ // как pango_color_parse()
+diff -ruN old/src/mgui/author/render.cpp new/src/mgui/author/render.cpp
+--- old/src/mgui/author/render.cpp	2017-06-01 14:25:09.498801438 +0430
++++ new/src/mgui/author/render.cpp	2017-06-01 14:28:08.901379890 +0430
+@@ -1307,7 +1307,9 @@
+ 
+ bool RenderMainPicture(const std::string& out_dir, Menu mn, int i)
+ {
+-    Author::Info((str::stream() << "Rendering menu \"" << mn->mdName << "\" ...").str());
++    str::stream ss;
++    ss << "Rendering menu \"" << mn->mdName << "\" ...";
++    Author::Info(ss.str());
+     const std::string mn_dir = MakeMenuPath(out_dir, mn, i);
+ 
+     if( IsMotion(mn) )
+diff -ruN old/src/mgui/author/script.cpp new/src/mgui/author/script.cpp
+--- old/src/mgui/author/script.cpp	2017-06-01 14:25:09.498801438 +0430
++++ new/src/mgui/author/script.cpp	2017-06-01 14:31:23.248978018 +0430
+@@ -130,7 +130,9 @@
+     {
+         VideoItem vi = IsVideo(mi);
+         ASSERT( vi );
+-        str = (str::stream() << "title " << GetAuthorNumber(vi)).str();
++        str::stream ss;
++        ss << "title " << GetAuthorNumber(vi);
++        str = ss.str();
+     }
+     return str;
+ }
+@@ -179,7 +181,9 @@
+     // Потому: для удоства пользователей даем создавать нулевую главу, разрешая это здесь 
+     // (однако доп. нулевые главы будут приводить к ошибке Cannot jump to chapter N ... only M exist)
+     int c_num = ChapterPosInt(&obj) + (owner->List()[0]->chpTime ? 2 : 1) ;
+-    res = (str::stream() << "jump title " << v_num << " chapter " << c_num << ";").str();
++    str::stream ss;
++    ss << "jump title " << v_num << " chapter " << c_num << ";";
++    res = ss.str();
+ }
+ 
+ static std::string MakeButtonJump(MediaItem mi, bool vts_domain)
+@@ -204,7 +208,9 @@
+     if( !fs::native(name) )
+         name = "Menu";
+ 
+-    std::string fname = (str::stream() << idx+1 << "." << name).str();
++    str::stream ss;
++    ss << idx+1 << "." << name;
++    std::string fname = ss.str();
+     return cnv_from_utf8 ? ConvertPathFromUtf8(fname) : fname ;
+ }
+ 
+@@ -626,7 +632,9 @@
+ void AuthorSectionInfo(const std::string& str)
+ {
+     Author::Info("\n#", false);
+-    Author::Info((str::stream() << "# " << str).str(), false);
++    str::stream ss;
++    ss << "# " << str;
++    Author::Info(ss.str(), false);
+     Author::Info("#\n", false);
+ }
+ 
+@@ -1082,7 +1090,9 @@
+ 
+ static void AuthorImpl(const std::string& out_dir)
+ {
+-    AuthorSectionInfo((str::stream() << "Build DVD-Video in folder: " << out_dir).str());
++    str::stream ss;
++    ss << "Build DVD-Video in folder: " << out_dir;
++    AuthorSectionInfo(ss.str());
+     IteratePendingEvents();
+ 
+     IndexVideosForAuthoring();
+diff -ruN old/src/mgui/project/add.cpp new/src/mgui/project/add.cpp
+--- old/src/mgui/project/add.cpp	2017-06-01 14:25:09.498801438 +0430
++++ new/src/mgui/project/add.cpp	2017-06-01 14:33:26.303387642 +0430
+@@ -86,7 +86,9 @@
+ 
+ static std::string FpsToStr(const Point& frate)
+ {
+-    return (str::stream() << (double)frate.x/frate.y).str();
++    str::stream ss;
++    ss << (double)frate.x/frate.y;
++    return ss.str();
+ }
+ 
+ static std::string TVTypeStr(bool is_ntsc)
+@@ -163,7 +165,9 @@
+     // *
+     bool is_aspect_ok = vid.sarCode == af4_3 || vid.sarCode == af16_9;
+     Point aspect = vid.SizeAspect();
+-    std::string aspect_str = (str::stream() << aspect.x << ':' << aspect.y).str();
++    str::stream ss;
++    ss << aspect.x << ':' << aspect.y;
++    std::string aspect_str = ss.str();
+     SetImportError(ed, is_aspect_ok, 
+                    std::string(_("Aspect ratio")) + ": \t" + MarkError(aspect_str, is_aspect_ok),
+                    BF_(Descriptions[2]) % tv_type % bf::stop);
+diff -ruN old/src/mgui/sdk/cairo_utils.cpp new/src/mgui/sdk/cairo_utils.cpp
+--- old/src/mgui/sdk/cairo_utils.cpp	2017-06-01 14:25:09.498801438 +0430
++++ new/src/mgui/sdk/cairo_utils.cpp	2017-06-01 14:35:20.831246046 +0430
+@@ -27,6 +27,8 @@
+ std::string MakeSVGFilename(const char* prefix)
+ {
+     static int idx = 1;
+-    return (str::stream() << prefix << "-" << Mpeg::set_hms() << idx++ << ".svg" ).str();
++    str::stream ss;
++    ss << prefix << "-" << Mpeg::set_hms() << idx++ << ".svg";
++    return ss.str();
+ }
+ 
+diff -ruN old/src/mgui/timeline/layout.cpp new/src/mgui/timeline/layout.cpp
+--- old/src/mgui/timeline/layout.cpp	2017-06-01 14:25:09.502134734 +0430
++++ new/src/mgui/timeline/layout.cpp	2017-06-01 14:36:36.152095784 +0430
+@@ -600,8 +600,10 @@
+ void FramesToTime(std::string& str, int cnt, double fps)
+ {
+     time4_t t4 = FramesToTime(cnt, fps);
+-    str = (str::stream() << Mpeg::set_hms() << t4.hh << ":" << Mpeg::set_hms() << t4.mm << ":"
+-                         << Mpeg::set_hms() << t4.ss << ";" << Mpeg::set_hms() << t4.ff).str();
++    str::stream ss;
++    ss << Mpeg::set_hms() << t4.hh << ":" << Mpeg::set_hms() << t4.mm << ":"
++      << Mpeg::set_hms() << t4.ss << ";" << Mpeg::set_hms() << t4.ff;
++    str = ss.str();
+ }
+ 
+ } // namespace TimeLine
+diff -ruN old/src/mgui/win_utils.cpp new/src/mgui/win_utils.cpp
+--- old/src/mgui/win_utils.cpp	2017-06-01 14:25:09.498801438 +0430
++++ new/src/mgui/win_utils.cpp	2017-06-01 14:26:50.898112082 +0430
+@@ -132,7 +132,9 @@
+ 
+ std::string ColorToString(const unsigned int rgba)
+ {
+-    return (str::stream() << std::hex << (rgba >> 8)).str();
++    str::stream ss;
++    ss << std::hex << (rgba >> 8);
++    return ss.str();
+ }
+ 
+ CR::Color GetBGColor(Gtk::Widget& wdg)
+diff -ruN old/src/mdemux/dvdread.cpp new/src/mdemux/dvdread.cpp
+--- old/src/mdemux/dvdread.cpp	2017-06-01 14:48:30.110355679 +0430
++++ new/src/mdemux/dvdread.cpp	2017-06-01 14:50:50.141065674 +0430
+@@ -35,8 +35,10 @@
+ std::string VobFName(VobPos& pos, const std::string& suffix)
+ {
+     using Mpeg::set_hms;
+-    return (str::stream("Video") << set_hms() << int(pos.Vts()) 
+-            << "-" << set_hms() << pos.VobId() << suffix << ".vob").str();
++    str::stream ss ("Video");
++    ss << set_hms() << int(pos.Vts()) 
++      << "-" << set_hms() << pos.VobId() << suffix << ".vob";
++    return ss.str();
+ }
+ 
+ typedef boost::function<void(int, double)> VobTimeFnr;
+@@ -282,9 +284,11 @@
+ static void TryDVDReadBlocks(dvd_file_t* file, int off, size_t cnt, char* buf)
+ {
+     int real_cnt = DVDReadBlocks(file, off, cnt, (unsigned char*)buf);
+-    if( (int)cnt != real_cnt )
+-        throw std::runtime_error( (str::stream() << real_cnt << 
+-                                   " != DVDReadBlocks(" << cnt << ")").str() );
++    if( (int)cnt != real_cnt ) {
++        str::stream ss;
++        ss << real_cnt << " != DVDReadBlocks(" << cnt << ")";
++        throw std::runtime_error( ss.str() );
++    }
+ }
+ 
+ // размер буфера должен соответствовать читаемому диапазону
+diff -ruN old/src/mdemux/mpeg2demux.cpp new/src/mdemux/mpeg2demux.cpp
+--- old/src/mdemux/mpeg2demux.cpp	2017-06-01 14:48:30.110355679 +0430
++++ new/src/mdemux/mpeg2demux.cpp	2017-06-01 14:55:35.784165916 +0430
+@@ -71,7 +71,9 @@
+ 
+ static std::string MakePESKey(int id, const char* ext)
+ {
+-    return (str::stream() << id << "." << ext).str();
++    str::stream ss;
++    ss << id << "." << ext;
++    return ss.str();
+ }
+ 
+ static bool ReadPart(io::stream& strm, uint8_t* buf, int sz, int& len)
+@@ -110,7 +112,9 @@
+         ASSERT(0);
+     }
+ 
+-    std::string header_str = (str::stream() << sample_rate << ":" << channels << ":" << bps << ".lpcm").str();
++    str::stream ss;
++    ss << sample_rate << ":" << channels << ":" << bps << ".lpcm";
++    std::string header_str = ss.str();
+     return MakePESKey(track, header_str.c_str());
+ }
+ 
+diff -ruN old/src/mdemux/seek.cpp new/src/mdemux/seek.cpp
+--- old/src/mdemux/seek.cpp	2017-06-01 14:48:30.110355679 +0430
++++ new/src/mdemux/seek.cpp	2017-06-01 14:52:09.669280234 +0430
+@@ -37,8 +37,10 @@
+     int hh    = min / 60;
+     int mm    = min - hh*60;
+ 
+-    return (str::stream() << set_hms() << hh << ":" 
+-                          << set_hms() << mm << ":" << set_hms() << ss).str();
++    str::stream strss;
++    strss << set_hms() << hh << ":"
++      << set_hms() << mm << ":" << set_hms() << ss;
++    return strss.str();
+ }
+ 
+ bool MediaInfo::InitBegin(VideoLine& vl)
+diff -ruN old/src/mlib/sdk/misc.cpp new/src/mlib/sdk/misc.cpp
+--- old/src/mlib/sdk/misc.cpp	2017-06-01 14:48:30.120355606 +0430
++++ new/src/mlib/sdk/misc.cpp	2017-06-01 14:53:25.504549937 +0430
+@@ -173,12 +173,16 @@
+ std::string Double2Str(double val)
+ {
+     //return boost::format("%1%") % val % bf::stop;
+-    return (str::stream() << val).str();
++    str::stream ss;
++    ss << val;
++    return ss.str();
+ }
+ 
+ std::string Int2Str(int val)
+ {
+-    return (str::stream() << val).str();
++    str::stream ss;
++    ss << val;
++    return ss.str();
+ }
+ 
+ static bool ICaseMatch(const std::string& str, const std::string& pat_str)
+diff -ruN old/src/mlib/sdk/system.cpp new/src/mlib/sdk/system.cpp
+--- old/src/mlib/sdk/system.cpp	2017-06-01 14:48:30.120355606 +0430
++++ new/src/mlib/sdk/system.cpp	2017-06-01 14:54:13.980777662 +0430
+@@ -28,7 +28,9 @@
+ int GetMemSize()
+ {
+     pid_t pid = getpid();
+-    std::string str = (str::stream() << "/proc/" << pid << "/statm").str();
++    str::stream ss;
++    ss << "/proc/" << pid << "/statm";
++    std::string str = ss.str();
+ 
+     io::stream strm(str.c_str(), iof::in);
+     int mem;

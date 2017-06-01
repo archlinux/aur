@@ -1,0 +1,24 @@
+diff -ruN old/src/mbase/project/table.h new/src/mbase/project/table.h
+--- old/src/mbase/project/table.h	2017-06-01 13:54:44.086895687 +0430
++++ new/src/mbase/project/table.h	2017-06-01 13:55:58.089107253 +0430
+@@ -128,7 +128,7 @@
+                  void  ClearSettings();
+ 
+                  void  Load(const std::string& fname,
+-                            const std::string& cur_dir = std::string()) throw (std::exception);
++                            const std::string& cur_dir = std::string());
+                  bool  Save();
+ 
+                  bool  SaveAs(const std::string& fname,
+diff -ruN old/src/mbase/project/srl-db.cpp new/src/mbase/project/srl-db.cpp
+--- old/src/mbase/project/srl-db.cpp	2017-06-01 14:25:09.495468141 +0430
++++ new/src/mbase/project/srl-db.cpp	2017-06-01 14:41:49.699901753 +0430
+@@ -102,7 +102,7 @@
+ }
+ 
+ void ADatabase::Load(const std::string& fname,
+-                     const std::string& cur_dir) throw (std::exception)
++                     const std::string& cur_dir)
+ {
+     try
+     {
