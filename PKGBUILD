@@ -1,7 +1,7 @@
 # Contributor: rpj8 (Factory) <semidigerati@gmail.com>
 pkgname=charm
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured, console-based, cross-platfom blogging client 
 for LiveJournal, Atom (Movable Type, Blogger), and MetaWeb (WordPress)."
 arch=('any')
@@ -15,7 +15,8 @@ md5sums=('b67effd5fba0683d79613c853ed352b0')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' charm
-  }
+  sed -i 's/== \"UTF8\"/== \"UTF-8\"/' ljcharm.py
+}
 
   package() {
   cd "$srcdir/$pkgname-$pkgver"
