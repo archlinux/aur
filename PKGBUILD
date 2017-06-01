@@ -177,6 +177,7 @@ _core_configure_options="\
                  -prefix ${_installprefix} \
                  -optimized-tools \
                  -optimized-qmake \
+                 -optimize-size \
                  -confirm-license \
                  -opensource \
                  -v \
@@ -294,14 +295,6 @@ if $_patching; then
   #cd ${_webenginedir}
   # reverse patch which breaks dynamic loading of EGL/GLESvs with rpi proprietary drivers
   #patch -p1 < ${startdir}/0001-Revert-Fully-qualify-libEGL.so.1-libEGLESv2.so.2-lib.patch
-
-  # Work around our embarresing propensity to stomp on your own tailored build configuration
-  # Now also present as we get complaints on the RPI 1 when Qt is left to use O3 about the
-  # lack of NEON intrinsics
-  # Couple with that the fact clang does not appear to consider -Os legitimate
-  if ! $_target_host; then
-    sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
-  fi
 fi
 
   rm -Rf ${_bindir}
@@ -319,9 +312,9 @@ fi
   # Prepare for breakage in all your Qt derived projects
   #-qtnamespace "Pi${_piver}" \
 
+# -platform linux-clang \
 if $_target_host; then
   local _configure_line="${_srcdir}/configure \
-                 -platform linux-clang \
                  -make tools \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
