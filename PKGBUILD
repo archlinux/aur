@@ -3,9 +3,9 @@
 # Contributor: Tom Vincent <http://www.tlvince.com/contact/>
 
 pkgname=mutt-kiss
-pkgver=1.6.1
+pkgver=1.8.2
 pkgrel=1
-pkgdesc="Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL, with forgotten attachments patch."
+pkgdesc="Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL"
 arch=('i686' 'x86_64')
 url="http://www.mutt.org/"
 license=('GPL')
@@ -14,17 +14,8 @@ provides=('mutt')
 conflicts=('mutt')
 backup=('etc/Muttrc')
 install=$pkgname.install
-source=("https://bitbucket.org/mutt/mutt/downloads/mutt-$pkgver.tar.gz"
-        "mutt-attach.patch")
-sha1sums=('ff1c76209a5c299018fc72b9e2e1ab98bf5138dd'
-          '94da52d50508d8951aa78ca4b073023414866be1')
-
-prepare() {
-  cd "$srcdir/mutt-$pkgver"
-
-  # Forgotten attachment detector
-  patch -p1 -i ../mutt-attach.patch
-}
+source=("https://bitbucket.org/mutt/mutt/downloads/mutt-$pkgver.tar.gz")
+sha1sums=('bdac1201de464d63f61a663f3dcf1ee4484dbbb3')
 
 build() {
   cd "$srcdir/mutt-$pkgver"
@@ -36,6 +27,10 @@ build() {
     --enable-hcache \
     --with-curses=/usr \
     --with-regex \
+    --disable-pop \
+    --disable-imap \
+    --disable-smtp \
+    --enable-sidebar \
     --with-idn \
 
   make
