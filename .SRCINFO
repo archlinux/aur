@@ -8,6 +8,7 @@ pkgbase = dbus-c++-git
 	license = GPL
 	makedepends = autoconf
 	makedepends = automake
+	makedepends = git
 	makedepends = libtool
 	depends = dbus
 	depends = glib2
