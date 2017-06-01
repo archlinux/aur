@@ -8,68 +8,63 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v4.0.0.rc1.r117.g03acd1f
+pkgver=v4.3.0.r274.gee17a71a1f
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
-url='http://wiki.qt.io/Category:Tools::QtCreator'
-license=('GPL')
-depends=('qt5-script' 'qt5-tools' 'qt5-quickcontrols' 'qt5-svg')
-makedepends=('git' 'mesa' 'clang')
+url='https://www.qt.io/ide/'
+license=('LGPL')
+depends=('clang' 'qbs' 'qt5-svg' 'qt5-tools' 'qt5-webengine')
+makedepends=('git' 'llvm' 'mesa')
 options=('docs')
-optdepends=('qt5-doc: for the integrated Qt documentation'
-            'gdb: for the debugger'
-            'cmake: for cmake project support'
-            'openssh-askpass: for ssh support'
-            'git: for git support'
-            'mercurial: for mercurial support'
-            'bzr: for bazaar support'
-            'clang: Clang code model'
-            'valgrind: for analyze support'
-            'subversion: for subversion support'
-            'cvs: for cvs support'
-            'valgrind: for valgrind support')
+optdepends=('bzr: bazaar support'
+            'cmake: cmake project support'
+            'cvs: cvs support'
+            'gdb: debugger'
+            'git: git support'
+            'mercurial: mercurial support'
+            'qt5-doc: integrated Qt documentation'
+            'qt5-examples: welcome page examples'
+            'qt5-translations: other languages'
+            'subversion: subversion support'
+            'valgrind: analyze support'
+            'x11-ssh-askpass: ssh support')
 provides=('qtcreator')
 conflicts=('qtcreator')
-install='qtcreator-git.install'
-source=("git://code.qt.io/qt-creator/qt-creator.git"
-        "git://code.qt.io/qt-labs/qbs.git"
-        'qtcreator.desktop')
-md5sums=('SKIP'
-         'SKIP'
-         '800c94165c547b64012a207d9830250a')
+source=("git://code.qt.io/qt-creator/qt-creator.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd qt-creator
+    cd qt-creator
 
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd qt-creator
+    [[ -d build ]] && rm -r build
+    mkdir build
 
-  git submodule init
-  git config submodule.qbs.url $srcdir/qbs
-  git submodule update
+    # fix hardcoded libexec path
+    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qt-creator/qtcreator.pri
+    # use system qbs
+    rm -r qt-creator/src/shared/qbs
 }
 
 build() {
-  [[ -d build ]] && rm -r build
-  mkdir build && cd build
+    cd build
 
-  LLVM_INSTALL_DIR=/usr qmake CONFIG+=journald -r ../qt-creator/qtcreator.pro
-  make
-  make docs -j1
+    qmake LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
+        DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES "$srcdir"/qt-creator/qtcreator.pro
+    make
+    make docs
 }
 
 package() {
-  cd build
+    cd build
 
-  make INSTALL_ROOT="${pkgdir}/usr/" install
-  make INSTALL_ROOT="${pkgdir}/usr/" install_docs
+    make INSTALL_ROOT="${pkgdir}/usr/" install
+    make INSTALL_ROOT="${pkgdir}/usr/" install_docs
 
-  install -Dm644 "${srcdir}/qtcreator.desktop" \
-    "${pkgdir}/usr/share/applications/qtcreator.desktop"
-  install -Dm644 "${srcdir}/qt-creator/LICENSE.GPL3-EXCEPT" \
-    "${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT"
+    install -Dm644 "${srcdir}/qt-creator/LICENSE.GPL3-EXCEPT" \
+        "${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT"
 }
