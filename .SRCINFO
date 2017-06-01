@@ -1,0 +1,18 @@
+pkgbase = python-vcstools
+	pkgdesc = VCS/SCM source control library for svn, git, hg, and bzr
+	pkgver = 0.1.39
+	pkgrel = 1
+	url = http://wiki.ros.org/vcstools
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/v/vcstools/vcstools-0.1.39.tar.gz
+	md5sums = c20e19e5a5b83520329bd2040bccb375
+
+pkgname = python-vcstools
+	depends = 
+	depends = python
+	depends = python-dateutil
+	depends = python-yaml
+	conflicts = python2-vcstools
+
