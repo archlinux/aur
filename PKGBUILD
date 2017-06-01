@@ -4,7 +4,7 @@ pkgbase=('python-osrf_pycommon')
 pkgname=('python-osrf_pycommon' 'python2-osrf_pycommon')
 _module='osrf_pycommon'
 pkgver='0.1.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="Commonly needed Python modules, used by Python software developed at OSRF"
 url="http://osrf-pycommon.readthedocs.org/"
 depends=()
@@ -27,7 +27,7 @@ build() {
 }
 
 package_python-osrf_pycommon() {
-    depends+=('python' 'python-trollius')
+    depends+=('python')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
