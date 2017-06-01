@@ -3,12 +3,12 @@
 
 pkgname=mpdris2-py3
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="MPRIS2 support for MPD using python 3"
 url="https://github.com/eonpatapon/mpDris2"
 arch=('any')
 license=('GPL3')
-depends=('python-dbus' 'python-mpd2')
+depends=('python-dbus' 'python-mpd2' 'python-gobject')
 provides=('mpdris2')
 conflicts=('mpdris2')
 makedepends=('intltool')
