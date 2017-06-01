@@ -33,9 +33,16 @@ depends=('alsa-lib'
 provides=("conky=$pkgver")
 conflicts=('conky')
 backup=('etc/conky/conky.conf' 'etc/conky/conky_no_x11.conf')
-source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('54cb3322dc3a969f1fda03383012c61d57261345')
- 
+source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz"
+    'include_functional.patch')
+sha1sums=('54cb3322dc3a969f1fda03383012c61d57261345'
+          '5111076229ddfa778d60af15a8a13d3f703567ba')
+
+prepare() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    patch -p1 -i $srcdir/include_functional.patch
+}
+
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
  
