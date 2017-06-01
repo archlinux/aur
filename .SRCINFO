@@ -1,0 +1,16 @@
+pkgbase = psisolver-git
+	pkgdesc = Exact Inference Engine for Probabilistic Programs
+	pkgver = da79cad
+	pkgrel = 1
+	url = http://psisolver.org/
+	arch = i686
+	arch = x86_64
+	license = custom:Boost Software License 1.0
+	makedepends = git
+	makedepends = dmd
+	source = git+https://github.com/eth-srl/psi
+	md5sums = SKIP
+	sha1sums = SKIP
+
+pkgname = psisolver-git
+
