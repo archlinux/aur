@@ -12,7 +12,7 @@ _js_provider=script
 _reponame=tageditor
 pkgname=mingw-w64-tageditor
 _name=${pkgname#mingw-w64-}
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 arch=('any')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -26,7 +26,7 @@ depends=('mingw-w64-crt' 'mingw-w64-qtutilities>=5.6.0' 'mingw-w64-tagparser>=6.
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('8f2a1e32fbbf7e208a42155600bfe931add1c77634ce80d28d1b7c58ef835e80')
+sha256sums=('376e6b780b5c09da9cb765c16e80362ee0cbf80022de476bd4dcc047a499a541')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
