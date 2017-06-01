@@ -21,8 +21,8 @@ install=
 changelog=
 source=("https://github.com/Storj/storjshare-daemon/archive/v${pkgver}.tar.gz")
 noextract=("v${pkgver}.tar.gz")
-md5sums=('cd2ae7b9594e3a4cf918341e5ab9d5a9')
 validpgpkeys=()
+md5sums=('d3fb8b863037f736d03e37e8406c98ef')
 
 package() {
 cd "$srcdir"
