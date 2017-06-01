@@ -33,7 +33,7 @@ _float=false
 _shadow_build=true
 # automatically disabled if you are building webengine
 _debug=true
-_skip_qtscript=false
+_skip_qtscript=true
 _skip_qtwebengine=false
 _skip_qtwidgets=false
 _static_build=false
