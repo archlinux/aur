@@ -1,6 +1,7 @@
 # Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
 
 pkgname=ttf-merriweather-sans
+_commit='982e9355296882ebb55e6f39117bb106a6a82b17'
 pkgver=1.006
 pkgrel=3
 pkgdesc='A sans-serif typeface that is pleasant to read on screens by Sorkin Type Co'
@@ -9,15 +10,15 @@ url='https://fonts.google.com/specimen/Merriweather+Sans'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-sans-ib')
-source=("MerriweatherSans-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-Bold.ttf"
-        "MerriweatherSans-BoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-BoldItalic.ttf"
-        "MerriweatherSans-ExtraBold-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-ExtraBold.ttf"
-        "MerriweatherSans-ExtraBoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-ExtraBoldItalic.ttf"
-        "MerriweatherSans-Italic-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-Italic.ttf"
-        "MerriweatherSans-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-Light.ttf"
-        "MerriweatherSans-LightItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-LightItalic.ttf"
-        "MerriweatherSans-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-Regular.ttf"
-        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/OFL.txt")
+source=("MerriweatherSans-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-Bold.ttf"
+        "MerriweatherSans-BoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-BoldItalic.ttf"
+        "MerriweatherSans-ExtraBold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-ExtraBold.ttf"
+        "MerriweatherSans-ExtraBoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-ExtraBoldItalic.ttf"
+        "MerriweatherSans-Italic-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-Italic.ttf"
+        "MerriweatherSans-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-Light.ttf"
+        "MerriweatherSans-LightItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-LightItalic.ttf"
+        "MerriweatherSans-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/MerriweatherSans-Regular.ttf"
+        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/${_commit}/ofl/merriweathersans/OFL.txt")
 sha256sums=('9b17d0769b7f16eae06168007dfe129ca1be4e582d972949103daf9be393ba87'
             'dc40cb2fb6d2e7d775cf63af674f137c74160d1de8af55d942192381a8eb7d2e'
             'b3c4697d84a65397d98657ce2e934aa1dd0f9187776525b61ebf05e2779d4fef'
