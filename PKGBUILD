@@ -19,10 +19,12 @@ source=("git+https://github.com/GalliumOS/linux.git#branch=v${pkgver}"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         "dmi_product_family.diff"
+        "gcc7_compatibility_fix.diff"
         "cherryview-pinctrl.diff")
 sha256sums=('SKIP'
             '7f9b77e1ac3b59453f6bb3858d0549c3022e6ae93ca3978427d96ae23f87e451'
             '949990c191638f63f1906dbd7f4be8b82b40da94ef873b15af68c9e726b13c51'
+            '2d6a5e0a87cafeda120a509d90626579c0e857d3b277ebf1a0f5824c9376ddaf'
             'SKIP')
 
 _kernelname=${pkgbase#linux}
@@ -30,6 +32,7 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${_srcname}"
 
+  patch -p1 < ${srcdir}/gcc7_compatibility_fix.diff
   patch -p1 < ${srcdir}/dmi_product_family.diff
 
   cp $srcdir/cherryview-pinctrl.diff galliumos/diffs/
