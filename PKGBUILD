@@ -1,6 +1,6 @@
 # Contributor: Victor van den Elzen <victor.vde@gmail.com>
 pkgname=pgbadger
-pkgver=7.1
+pkgver=9.1
 pkgrel=1
 pkgdesc="a fast PostgreSQL log analysis report"
 arch=("any")
@@ -13,7 +13,7 @@ optdepends=(
 )
 options=('!emptydirs' purge)
 source=("https://github.com/dalibo/pgbadger/archive/v${pkgver}.tar.gz")
-sha256sums=('de7f36cb55d2c177fdf47115f3fb5c2e842b443432631212e408726baacbad7e')
+sha256sums=('2fd7166d74692cc7d87f00b37cc5c7c1c6eddf156372376d382a40f67d694011')
 
 build() {
   cd "$srcdir/pgbadger-$pkgver"
