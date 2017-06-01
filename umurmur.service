@@ -1,5 +1,5 @@
 [Unit]
-Description=A minimalistic Mumble server
+Description=Minimalistic Mumble server
 After=network.target
 
 [Service]
