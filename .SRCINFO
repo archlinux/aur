@@ -1,0 +1,22 @@
+pkgbase = dbus-c++-git
+	pkgdesc = A C++ API for D-BUS
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/andreas-volz/dbus-cplusplus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	depends = dbus
+	depends = glib2
+	provides = dbus-c++
+	conflicts = dbus-c++
+	source = git+https://github.com/andreas-volz/dbus-cplusplus.git
+	source = port-to-gcc-7.patch
+	sha256sums = SKIP
+	sha256sums = 0d32460ea38d162d648da27a7341c8514d09e987a7bd2c957ef746a2faf27c7c
+
+pkgname = dbus-c++-git
+
