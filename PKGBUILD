@@ -4,7 +4,7 @@
 # Contributor: Tianjiao Yin <ytj000@gmail.com>
 # Contributor: Vinicius de Avila Jorge <vinicius.avila.jorge@gmail.com>
 pkgname=cppreference
-pkgver=20170214
+pkgver=20170409
 pkgrel=1
 pkgdesc="A complete reference for the features in the C++ Standard Library. HTML book."
 arch=('any')
@@ -12,8 +12,8 @@ url="http://en.cppreference.com/"
 license=('CCPL:cc-by-sa')
 options=('!strip' '!emptydirs')
 depends=('ttf-dejavu')
-source=("http://upload.cppreference.com/mwiki/images/f/f2/html_book_20170214.tar.gz")
-sha256sums=('4c1b907a4029d83eea62211ae0f1335a313789929b0f97cd438bbf977075978a')
+source=("http://upload.cppreference.com/mwiki/images/3/37/html_book_20170409.tar.gz")
+sha256sums=('136bbf532cca6c266bcc5800af90a271667e9aaa6cc27d4d60be71fffc216362')
 
 package() {
     rm "$srcdir/reference/common/DejaVuSansMonoCondensed60.ttf"
