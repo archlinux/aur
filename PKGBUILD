@@ -75,7 +75,7 @@ _pkgvermajmin="5.9"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=6
+pkgrel=7
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -187,8 +187,6 @@ _core_configure_options="\
                  -system-sqlite \
                  -system-freetype \
                  -system-harfbuzz \
-                 -dbus-linked \
-                 -openssl-linked \
                  -pch \
                  -opengl es2 \
                  -egl \
@@ -267,7 +265,6 @@ build() {
   cd ${_srcdir}
 
   echo "INCLUDEPATH += ${_sysroot}/usr/include/openssl-1.0" >> ${_basedir}/src/network/network.pro
-  export OPENSSL_LIBS="-L${_sysroot}/usr/lib/openssl-1.0 -lssl -lcrypto"
 
 if ! $_target_host; then
   # Get our mkspec
