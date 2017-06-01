@@ -38,5 +38,5 @@ package() {
   install -d "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
   gzip -9c "${srcdir}/Spin/Man/spin.1" > "${pkgdir}/usr/share/man/man1/spin.1.gz"
-  cp -a "${srcdir}/Spin/Examples/*" "${pkgdir}/usr/share/doc/${pkgname}/examples/"
+  cp -a "${srcdir}/Spin/Examples/"* "${pkgdir}/usr/share/doc/${pkgname}/examples/"
 }
