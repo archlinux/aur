@@ -5,7 +5,7 @@
 
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.11
-pkgver=4.11.1
+pkgver=4.11.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -37,7 +37,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '0d96845b0f1bbe47a62659f48367948c4e747f995694927aa309e0e5e1556949'
+            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
             'SKIP'
             'c479246846a98ca99e4116de44829b2f4bfd56506f3bd268c07d61f1f1e137d4'
             '376cfe624987b477689b811ff7bc42a5eddf132a08e01f61fcc4ae2f0e88a584'
