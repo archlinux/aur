@@ -1,33 +1,26 @@
 pkgname=otf-libre-caslon
-pkgver=1.0
+pkgver=1.002
 pkgrel=1
 pkgdesc='A free Caslon font designed by Pablo Impallari'
 arch=('any')
-# Github sources are at https://github.com/impallari/Libre-Caslon-Text
-# and the project overview is at
-# http://www.impallari.com/projects/overview/libre-caslon-display-and-text,
-# but I'm providing the URL to the TeX package maintained by Bob Tennent,
-# as he fixed up the metadata (so programs recognize bold as bold, etc.)
-# and created a bold italic variant.
-# See https://github.com/impallari/Libre-Caslon-Text/issues/3
-url='https://www.ctan.org/tex-archive/fonts/librecaslon'
+url='http://www.impallari.com/projects/overview/libre-caslon-display-and-text'
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=otf-libre-caslon.install
-ctanbase='http://mirrors.ctan.org/fonts/librecaslon'
-source=("$ctanbase/doc/OFL.txt"
-        "$ctanbase/opentype/LibreCaslonText-Bold.otf"
-        "$ctanbase/opentype/LibreCaslonText-BoldItalic.otf"
-        "$ctanbase/opentype/LibreCaslonText-Italic.otf"
-        "$ctanbase/opentype/LibreCaslonText-Regular.otf"
-       )
+depends=('fontconfig')
+textbase='https://github.com/impallari/Libre-Caslon-Text/raw/c31e21f7e8cf91f18d90f778ce20e66c68219c74'
+displaybase='https://github.com/impallari/Libre-Caslon-Display/raw/3491f6a9cfde2bc15e736463b0bc7d93054d5da1'
+source=(
+  "$textbase/OFL.txt"
+  "$textbase/fonts/OTF/LibreCaslonText-Bold.otf"
+  "$textbase/fonts/OTF/LibreCaslonText-Italic.otf"
+  "$textbase/fonts/OTF/LibreCaslonText-Regular.otf"
+  "$displaybase/fonts/OTF/LibreCaslonDisplay-Regular.otf"
+)
 noextract=("${source[@]%%::*}") # Don't extract anything
-md5sums=('8e184cec6e2a8bf0423341399083fa07'
-         '6cdec38ecd76b81386a744985bbdea86'
-         'a8a0aaf422b28e3e511dac87c064657b'
-         'ee0f2d6f2d7b58227740189d0989cb11'
-         '79800978e881ff893177369171de12a7'
-        )
+sha256sums=('ba0f5eb8f16cbf7096e413341a236c2b1b11dbb7a90898ecff865fe3d25c44ec'
+            'b996ece27366aae000f48671b2cbab2e5a037e17173b7971d1f352d524652438'
+            'b8c6261d06cc21ea1e0a7297ee1bc65645ae402459ac9ad550cba677cc5fe72e'
+            '948d0f09c527a10b30e47370e46ed7ef2602d372ca96bb0ccc14b5a255d99fe7'
+            '48ab940f9c68ea74029a052f71959c2f6a8307c6a4e5575f1a65495e69c2fd3b')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/OTF"
