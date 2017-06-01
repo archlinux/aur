@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
-pkgdesc='Pure Go web server with built-in support for HTTP/2, Markdown, Lua and templates'
+pkgdesc='Pure Go web server with Lua, Markdown, HTTP/2 and template support'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
@@ -13,7 +13,7 @@ optdepends=('redis: For using the Redis database backend'
             'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
-source=("git+https://github.com/xyproto/algernon#tag=$pkgver")
+source=("git+https://github.com/xyproto/algernon#commit=59a3b8dc65adc72352771a4cf1ab474fccfb386c")
 md5sums=('SKIP')
 _gourl=github.com/xyproto/algernon
 
@@ -25,8 +25,8 @@ prepare() {
   rm pkg; mkdir pkg; cd pkg
   for f in "$GOROOT/pkg/"*; do ln -s "$f"; done
 
-  export GOROOT="$srcdir/build/go"
   export GOPATH="$srcdir/build"
+  export GOROOT="$GOPATH/go"
   export DESTPATH="$GOPATH/src/$_gourl"
 
   # Make sure $DESTPATH is empty, but exists
@@ -51,6 +51,12 @@ build() {
   cd "$GOPATH/src/$_gourl"
 
   go build -x
+}
+
+check() {
+  cd "$GOPATH/src/$_gourl"
+
+  ./test.sh
 }
 
 package() {
