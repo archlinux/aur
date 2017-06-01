@@ -1,6 +1,7 @@
 # Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
 
 pkgname=ttf-oswald
+_commit='5209d4cc57eca34da2e44737f95123604556e591'
 pkgver=4.002
 pkgrel=1
 pkgdesc='Sans-serif typeface from Google by Vernon Adams'
@@ -9,13 +10,13 @@ url='https://fonts.google.com/specimen/Oswald'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'otf-oswald-ib')
-source=("Oswald-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-Bold.ttf"
-        "Oswald-ExtraLight-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-ExtraLight.ttf"
-        "Oswald-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-Light.ttf"
-        "Oswald-Medium-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-Medium.ttf"
-        "Oswald-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-Regular.ttf"
-        "Oswald-SemiBold-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-SemiBold.ttf"
-        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/OFL.txt")
+source=("Oswald-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-Bold.ttf"
+        "Oswald-ExtraLight-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-ExtraLight.ttf"
+        "Oswald-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-Light.ttf"
+        "Oswald-Medium-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-Medium.ttf"
+        "Oswald-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-Regular.ttf"
+        "Oswald-SemiBold-${pkgver}.ttf::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/Oswald-SemiBold.ttf"
+        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/${_commit}/ofl/oswald/OFL.txt")
 sha256sums=('28e94e414c2ea0d2737da6e84e365c32dcfd09f2bfbda462d423a1acc631bab7'
             'b37a9470920d1ce7239bed62fcec385df35a8c6cdf9c599f378f9a06fcc2b638'
             '29205b8c745a797c26668dd7dcb278e5b4229243f1f2c1e4a17d1e650436da07'
