@@ -1,23 +1,24 @@
 # Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
 
 pkgname=ttf-merriweather
+_commit='17311b9ddc3c17e073f9fbc4dbcbd844f8d49347'
 pkgver=2.001
 pkgrel=1
 pkgdesc='A typeface that is pleasant to read on screens by Sorkin Type Co'
 arch=('any')
-url='https://fonts.google.com/specimen/Merriweather'
+url='http://sorkintype.com/'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-ib')
-source=("Merriweather-Black-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Black.ttf"
-        "Merriweather-BlackItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-BlackItalic.ttf"
-        "Merriweather-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Bold.ttf"
-        "Merriweather-BoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-BoldItalic.ttf"
-        "Merriweather-Italic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Italic.ttf"
-        "Merriweather-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Light.ttf"
-        "Merriweather-LightItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-LightItalic.ttf"
-        "Merriweather-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Regular.ttf"
-        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/OFL.txt")
+source=("Merriweather-Black-${pkgver}.ttf::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/fonts/ttf/Merriweather-Black.ttf"
+        "Merriweather-BlackItalic-${pkgver}.ttf::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/fonts/ttf/Merriweather-BlackItalic.ttf"
+        "Merriweather-Bold-${pkgver}.ttf::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/fonts/ttf/Merriweather-Bold.ttf"
+        "Merriweather-BoldItalic-${pkgver}.ttf::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/fonts/ttf/Merriweather-BoldItalic.ttf"
+        "Merriweather-Italic-${pkgver}.ttf::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/fonts/ttf/Merriweather-Italic.ttf"
+        "Merriweather-Light-${pkgver}.ttf::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/fonts/ttf/Merriweather-Light.ttf"
+        "Merriweather-LightItalic-${pkgver}.ttf::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/fonts/ttf/Merriweather-LightItalic.ttf"
+        "Merriweather-Regular-${pkgver}.ttf::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/fonts/ttf/Merriweather-Regular.ttf"
+        "${pkgname}-${pkgver}-OFL.txt::https://github.com/EbenSorkin/Merriweather/raw/${_commit}/OFL.txt")
 sha256sums=('9fbb4fe2db16613f6a1a6c3fac5c16e2642abf76cbcef1fd89f62f0d25faaf65'
             '04f446a6425e5c6a019169da1c621ce3f1cb22ab43553c7f00b933080e0e5a26'
             '07c866cc42802badf0a880658041570acf606eb2525bbd26ac4db202a2e129ad'
