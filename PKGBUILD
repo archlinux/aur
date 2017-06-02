@@ -1,69 +1,74 @@
 # Maintainer: Krakn <dan.ray.beste@gmail.com>
-
-# Previous maintainer(s):
-# Maintainer: Daniel Isenmann <daniel@archlinux.org>
+# Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: Brice Carpentier <brice@dlfp.org>
 
 pkgname='mono-git'
-_pkgname='mono'
-pkgver=r109943.129f185e583
+_gitname='mono'
+pkgver=3.2.3.r17742.ga560146b7ce
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
-arch=(
-    'i686'
-    'x86_64'
-)
-license=(
-    'custom=MITX11'
-    'custom=MSPL'
-    'BSD'
-    'GPL'
-    'LGPL2.1'
-    'MPL'
-)
-depends=(
-    'ca-certificates'
-    'libgdiplus'
-    'mono'
-    'python'
-    'sh'
-    'zlib'
-)
-makedepends=(
-    'git'
-)
-options=(
-    '!makeflags'
-)
-provides=(
-    'mono'
-    'monodoc'
-)
-conflicts=(
-    'mono'
-    'monodoc'
-)
+arch=('i686' 'x86_64')
+license=('custom=MITX11' 'custom=MSPL' 'BSD' 'GPL' 'LGPL2.1' 'MPL')
+depends=('ca-certificates' 'libgdiplus' 'python' 'sh' 'zlib')
+makedepends=('git' 'mono')
+#options=('!makeflags')
+provides=('mono' 'monodoc')
+conflicts=('mono' 'monodoc')
 source=(
-    'git://github.com/mono/mono.git'
+    'git+https://github.com/mono/mono.git'
+    'git+https://github.com/mono/aspnetwebstack.git'
+    'git+https://github.com/mono/Newtonsoft.Json.git'
+    'git+https://github.com/mono/cecil.git'
+    'git+https://github.com/mono/rx.git#branch=rx-oss-v2.2'
+    'ikvm::git+https://github.com/mono/ikvm-fork.git'
+    'git+https://github.com/mono/ikdasm.git'
+    'binary-reference-assemblies::git+https://github.com/mono/reference-assemblies.git'
+    'nunit-lite::git+https://github.com/mono/NUnitLite.git'
+    'nuget-buildtasks::git+https://github.com/mono/NuGet.BuildTasks'
+    'git+https://github.com/mono/buildtools.git'
+    'cecil-legacy::git+https://github.com/mono/cecil.git#branch=mono-legacy-0.9.5'
+    'git+https://github.com/mono/boringssl.git#branch=mono'
+    'git+https://github.com/mono/corefx.git'
+    'git+https://github.com/mono/bockbuild.git'
+    'git+https://github.com/mono/linker.git'
+    'git+https://github.com/mono/roslyn-binaries.git'
+    'git+https://github.com/mono/corert.git'
+    'git+https://github.com/mono/xunit-binaries.git'
+    'git+https://github.com/mono/api-doc-tools.git'
+    'git+https://github.com/mono/api-snapshot.git'
     'mono.binfmt.d'
 )
 sha256sums=(
+    'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+    'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
     'SKIP'
     '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425'
 )
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}" || exit 1
-	printf "r%s.%s"                     \
-        "$(git rev-list --count HEAD)"	\
-        "$(git rev-parse --short HEAD)"
+	cd "${_gitname}"
+
+    git describe --long --tags \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/mono.//'
+}
+
+prepare() {
+    cd "${_gitname}"
+
+    externals=('aspnetwebstack' 'Newtonsoft.Json' 'cecil' 'rx' 'ikvm' 'ikdasm' 'binary-reference-assemblies' 'nunit-lite' 'nuget-buildtasks' 'buildtools' 'cecil-legacy' 'boringssl' 'corefx' 'bockbuild' 'linker' 'roslyn-binaries' 'corert' 'xunit-binaries' 'api-doc-tools' 'api-snapshot')
+
+    for external in ${externals[@]}; do
+        submodule="external/${external}"
+        git submodule init "${submodule}"
+        git config "submodule.${submodule}.url" "${srcdir}/${external}"
+        git submodule update
+    done
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}" || exit 1
+	cd "${_gitname}"
 
-	# Configure mono
 	./autogen.sh                \
         --prefix=/usr           \
         --sysconfdir=/etc       \
@@ -71,39 +76,30 @@ build() {
         --sbindir=/usr/bin      \
         --disable-quiet-build	\
         --with-mcs-docs=no
-
-    # If mono is unable to bootstrap itself, make sure monolite is available
-    make get-monolite-latest
-
-	# Build mono
 	make
 
-	# Build jay
-	cd "${srcdir}/${_pkgname}/mcs/jay" || exit 1
+	cd "mcs/jay"
+
 	make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}" || exit 1
+	cd "${_gitname}"
+
 	make DESTDIR="${pkgdir}" install
 
-	# Install jay
-	cd "${srcdir}/${_pkgname}/mcs/jay" || exit 1
+	cd mcs/jay"
+
 	make					        \
         DESTDIR="${pkgdir}"		    \
         prefix="/usr"			    \
         INSTALL="../../install-sh"	\
         install
 
-	# Install binfmt conf file
-	install	 -m644 -D "${srcdir}/mono.binfmt.d" \
-        "${pkgdir}/usr/lib/binfmt.d/mono.conf"
-
-	# Install license
-	mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
-	install	-m644 -D "${srcdir}/${_pkgname}/LICENSE"    \
-        "${pkgdir}/usr/share/licenses/${_pkgname}/"
-
+    cd "${srcdir}"
+	install -D -m 644 mono.binfmt.d "${pkgdir}/usr/lib/binfmt.d/mono.conf"
+	install -d -m 755 "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install	-D -m 644 "${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/"
 	# Fix .pc file to be able to request mono on what it depends,
 	# fixes #go-oo build
 	sed -i -e "s:#Requires:Requires:" "${pkgdir}/usr/lib/pkgconfig/mono.pc"
