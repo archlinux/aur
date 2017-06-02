@@ -4,7 +4,7 @@
 # https://github.com/manjaro/manjaro-hello
 # Version : 0.4.20.1
 
-pkgname=archlabs-hello
+pkgname=archlabs-hello-git
 pkgver=1.1
 pkgrel=1
 pkgdesc="A tool providing access to documentation and support for new Archlabs users."
