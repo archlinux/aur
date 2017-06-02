@@ -3,7 +3,7 @@
 
 pkgname=fahcontrol-beta
 pkgver=7.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc='A Graphical User Interface (GUI) for Folding@Home - Beta version'
 url="http://folding.stanford.edu"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(https://folding.stanford.edu/releases/beta/release/fahcontrol/debian-sta
 sha256sums=('6fa229c39ca7c77e64802374ca80289c698112d92b90d5e2bc8d483b8d5a8405')
 
 # Moronic server
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
+#DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 package() {
   cd ${srcdir}
