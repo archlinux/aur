@@ -4,7 +4,7 @@
 #   1. Firejail profile + script
 
 pkgname='rust-doom-git'
-_reponame='rust-doom'
+_gitname='rust-doom'
 _execname='rs_doom'
 pkgver=r325.5b2a843
 pkgrel=1
@@ -15,31 +15,38 @@ license=('Apache')
 depends_x86_64=('sdl2' 'sdl2_ttf')
 depends_i686=('lib32-sdl2' 'lib32-sdl2_ttf')
 makedepends=('cargo' 'git' 'rust')
-provides=("${_reponame}")
-conflicts=("${_reponame}")
+provides=("${_gitname}")
+conflicts=("${_gitname}")
 source=('git+https://github.com/cristicbz/rust-doom.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_reponame}"
+	cd "${_gitname}"
+
 	printf "r%s.%s"                     \
         "$(git rev-list --count HEAD)"  \
         "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${_reponame}"
+	cd "${_gitname}"
+
 	cargo build --release
 }
 
+check() {
+    cd "${_gitname}"
+
+    cargo test
+}
+
 package() {
-	cd "${_reponame}"
+	cd "${_gitname}"
 
-    install -Dm 755                     \
-        "target/release/${_execname}"    \
-        "${pkgdir}/usr/bin/${_reponame}"
-
-    install -Dm 644 \
-        LICENSE     \
+    install -D -m 755                   \
+        "target/release/${_execname}"   \
+        "${pkgdir}/usr/bin/${_gitname}"
+    install -D -m 644   \
+        LICENSE         \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
