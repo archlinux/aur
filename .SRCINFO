@@ -1,6 +1,6 @@
 pkgbase = focus-git
-	pkgdesc = A desktop notification based app that keeps you focused
-	pkgver = r42.7626df4
+	pkgdesc = A desktop notification based app that keeps you focused by notifying you of what you should be doing
+	pkgver = r52.c5e651b
 	pkgrel = 1
 	url = https://github.com/nagyation/Focus
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = focus-git
 	makedepends = git
 	depends = gtk2
 	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = gtk-update-icon-cache
 	source = git+https://github.com/nagyation/Focus.git
 	md5sums = SKIP
 
