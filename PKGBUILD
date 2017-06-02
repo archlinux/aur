@@ -1,12 +1,12 @@
 pkgname="psi-plus-webkit-qt5-git"
-pkgver=0.16.571.627
+pkgver=1.0.4.808
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x and Webkit)"
 url="http://psi-plus.com"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5' 'libidn' 'aspell' 'libxss')
-makedepends=('git' 'patch' 'qconf-git')
+makedepends=('git' 'patch' 'qconf')
 optdepends=('qca-gnupg: encrypted client-to-client connection')
 provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver" "psi-plus-git=$pkgver")
 replaces=('psi-plus' 'psi-plus-webkit-git' 'psi-plus-git')
