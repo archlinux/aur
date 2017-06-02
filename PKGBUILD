@@ -2,9 +2,9 @@
 # Contributor:  Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname="torque"
-pkgver=6.1.0
+pkgver=6.1.1.1
 pkgrel=1
-linknum="3170"
+linknum="3212"
 pkgdesc='An open source resource manager providing control over batch jobs and distributed compute nodes'
 arch=('i686' 'x86_64')
 url="http://www.adaptivecomputing.com/products/open-source/torque/"
@@ -15,7 +15,7 @@ backup=(var/spool/torque/server_name var/spool/torque/mom_priv/config var/spool/
 options=(!libtool)
 install=torque.install
 source=("torque-"$pkgver".tar.gz"::'http://www.adaptivecomputing.com/index.php?wpfb_dl='$linknum)
-md5sums=('346a5d7cafb9ad0baa8193897a0e7acc')
+md5sums=('ec4979262e5f259e539873b208a191dd')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
