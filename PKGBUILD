@@ -2,10 +2,10 @@
 
 pkgname=gtk-theme-adwaita-tweaks-git
 pkgver=r31.2ff12ea
-pkgrel=1
-pkgdesc="A tweaked, more compact version of Adwaita."
+pkgrel=2
+pkgdesc="Tweaks to improve the default GNOME experience."
 arch=(any)
-url="https://github.com/godlyranchdressing/Minwaita"
+url="https://github.com/Jazqa/adwaita-tweaks"
 license=('GPL3')
 source=('git://github.com/Jazqa/adwaita-tweaks.git')
 sha256sums=('SKIP')
