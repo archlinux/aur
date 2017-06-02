@@ -22,7 +22,8 @@ provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web
           "java32-openjfx=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u'
+          'https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib32/jvm/java32-$_major-$_pkgname
 
