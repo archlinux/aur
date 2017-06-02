@@ -23,6 +23,7 @@ prepare() {
 
 build() {
   cd Gtk2-$pkgver
+  export PERL_USE_UNSAFE_INC=1
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
