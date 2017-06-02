@@ -1,0 +1,22 @@
+pkgbase = python-catkin_lint
+	pkgdesc = Check catkin packages for common errors
+	pkgver = 1.4.16
+	pkgrel = 1
+	url = https://github.com/fkie/catkin_lint
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/c/catkin_lint/catkin_lint-1.4.16.tar.gz
+	md5sums = 6252b8ac505cfc0a87d0064e316db460
+
+pkgname = python-catkin_lint
+	depends = 
+	depends = python
+	depends = python-catkin_pkg
+
+pkgname = python2-catkin_lint
+	depends = 
+	depends = python2
+	depends = python2-catkin_pkg
+
