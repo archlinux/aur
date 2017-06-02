@@ -1,17 +1,17 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
 # https://github.com/t-richards/aur-php-vld
 _pkgname=vld
-_pkgver=VLD_0_13_0
+_pkgver=VLD_0_14_0
 pkgname=php-vld
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="The Vulcan Logic Dumper hooks into the Zend Engine and dumps all the opcodes (execution units) of a script."
 arch=('x86' 'x86_64')
 url="http://derickrethans.nl/projects.html#vld"
 license=('BSD')
 makedepends=('php')
-source=("https://github.com/derickr/vld/archive/VLD_0_13_0.tar.gz")
-sha256sums=('9b8eaac66309d4a869f17e72862baf90af13766ecf30975288a4bb1c944ed57a')
+source=("https://github.com/derickr/vld/archive/VLD_0_14_0.tar.gz")
+sha256sums=('94b71b29164b31f8dc2e98193a05eaa2fceb41c11823fdf8710cfdf244df4873')
 
 build() {
     cd "$_pkgname-$_pkgver"
