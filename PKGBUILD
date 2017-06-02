@@ -1,17 +1,19 @@
-# $Id: PKGBUILD 271834 2016-07-13 17:04:38Z arojas $
+# $Id: PKGBUILD 286760 2017-01-17 07:11:04Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kirigami
-pkgver=1.0.2
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc='A QtQuick based components set'
 arch=(i686 x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt5-declarative)
-makedepends=(extra-cmake-modules)
-source=("http://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz")
-md5sums=('e16e1d34d5ab03db3ea272c603a87898')
+depends=(qt5-quickcontrols qt5-svg)
+makedepends=(extra-cmake-modules qt5-tools plasma-framework)
+source=("http://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
+md5sums=('04491f0180ba69cea095e9ed61f76c9f'
+         'SKIP')
+validpgpkeys=('1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
   mkdir -p build
@@ -31,3 +33,4 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 }
+
