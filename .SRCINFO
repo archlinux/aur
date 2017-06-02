@@ -1,0 +1,20 @@
+pkgbase = plymouth-kcm
+	pkgdesc = A KCM for configuring Plymouth
+	pkgver = 5.10.0
+	pkgrel = 1
+	url = https://cgit.kde.org/plymouth-kcm.git/
+	arch = any
+	license = GPL
+	makedepends = cmake,
+	makedepends = kdoctools
+	depends = plymouth,
+	depends = knewstuff,
+	depends = kconfig,
+	depends = kconfigwidgets,
+	depends = ki18n,
+	depends = kdeclarative
+	source = https://download.kde.org/stable/plasma/5.10.0/plymouth-kcm-5.10.0.tar.xz
+	sha256sums = 68bc524ef57816c0f711ef3cfc75674f819031e1d007624e3dd7d827b2f8152e
+
+pkgname = plymouth-kcm
+
