@@ -1,7 +1,7 @@
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 
 pkgname=powershell
-_pkgver=6.0.0-beta.1
+_pkgver=6.0.0-beta.2
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
@@ -26,8 +26,6 @@ prepare() {
   git config submodule.src/Modules/Pester.url "$srcdir"/pester
   git config submodule.src/libpsl-native/test/googletest.url "$srcdir"/googletest
   git submodule update
-
-  # Starting off clean.
   git clean -dfx
 }
 
