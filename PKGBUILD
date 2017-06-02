@@ -18,7 +18,7 @@ sha512sums=('9c2e5bab47495ce1b03aae5c1bd4d617f9136feaf1854f29230690ffb7a30e675b2
 build() {
 
 cd "${srcdir}/$pkgname-$pkgver"
-  cmake  $ARMA64LIBDIR -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
   make
 }
 
