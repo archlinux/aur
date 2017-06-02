@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Dynalist
+Encoding=UTF-8
+Version=1.0.2
+Type=Application
+Terminal=false
+Exec=/opt/dynalist/dynalist 
+Icon=/opt/dynalist/icon.png
