@@ -1,0 +1,21 @@
+diff --git a/Makefile b/Makefile
+index 437f372..126dac8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ EXENAME=matcher
+-PREFIX=/usr/local
+-BINDIR=$(PREFIX)/bin
++PREFIX=/usr
++BINDIR=$(PREFIX)/bin/
+ 
+ .PHONY: all
+ all: $(EXENAME)
+@@ -10,5 +10,5 @@ $(EXENAME): main.c matcher.c
+ 
+ .PHONY: install
+ install: $(EXENAME)
+-	install -d $(DESTDIR)$(PREFIX)
+-	install -m 0755 $< $(DESTDIR)$(PREFIX)/bin
++	install -d $(DESTDIR)$(BINDIR)
++	install -m 0755 $< $(DESTDIR)$(BINDIR)

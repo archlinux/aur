@@ -1,0 +1,18 @@
+pkgbase = matcher-git
+	pkgdesc = Intelligently searches through a list of file names for the one you were probably looking for.
+	pkgver = 1.0.0.r0.g6c54c26
+	pkgrel = 1
+	url = https://github.com/burke/matcher
+	arch = i686
+	arch = x86_64
+	license = BSD2
+	makedepends = git
+	provides = matcher
+	conflicts = matcher
+	source = git+https://github.com/burke/matcher
+	source = matcher-git.patch
+	md5sums = SKIP
+	md5sums = f96518bab54f9dd6b404bb7378a52b07
+
+pkgname = matcher-git
+
