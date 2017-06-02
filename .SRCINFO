@@ -1,7 +1,7 @@
 pkgbase = vcash-electron
 	pkgdesc = Electron GUI bundled with the Vcash wallet.
 	pkgver = 0.32.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/whphhg/vcash-electron
 	arch = x86_64
 	license = GPL3
@@ -29,7 +29,7 @@ pkgbase = vcash-electron
 	sha256sums = e85907fb18237fd6abe5a4aa464a8e9869d8293fe5acb593e550c13005c893b9
 	sha256sums = f215ece667efc575bf452c4ea720da15d759f346453b53f6aed01022cc968a1d
 	sha256sums = 5bb6e09574141d9e807fd04050bc800d7f5ae6413f5bfd9359fd095ef2e0ece2
-	sha256sums = fe86442835902db8acda700c4323585c6bbb1747714c77a85ea18b983b3aaae9
+	sha256sums = 304cb81792e2854b9c5e6faa4663b76eb2f6dcabb007789cc29aa5d3109c30c0
 
 pkgname = vcash-electron
 
