@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe <giuscri@gmail.com>
 
 pkgname=gokey-git
-pkgver=r14.214b212
+pkgver=r14.214b212_1
 pkgrel=1
 pkgdesc="A simple vaultless password manager in Go"
 arch=('x86_64')
