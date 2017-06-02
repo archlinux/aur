@@ -1,0 +1,20 @@
+pkgbase = budgie-calendar-applet
+	pkgdesc = Calendar applet for Budgie Desktop
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/danielpinto8zz6/budgie-calendar-applet
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = vala
+	depends = gtk3
+	depends = glib2
+	depends = libpeas
+	depends = budgie-desktop
+	depends = gnome-calendar
+	source = https://github.com/danielpinto8zz6/budgie-calendar-applet/archive/1.0.zip
+	sha256sums = 16d8b92b1bb7fdd3958afeff6481aa09f85f3ad26bf01f8c0975142e265c0284
+
+pkgname = budgie-calendar-applet
+
