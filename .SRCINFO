@@ -1,4 +1,4 @@
-pkgbase = kate
+pkgbase = kate-root
 	pkgver = 17.04.1
 	pkgrel = 1
 	arch = armv7h

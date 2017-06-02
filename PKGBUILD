@@ -3,7 +3,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgbase=kate
+_pkgbase=kate
+pkgbase=kate-root
 pkgname=('kwrite-root'
          'kate-root')
 pkgver=17.04.1
@@ -12,7 +13,7 @@ arch=('armv7h' 'i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework' 'knewstuff' 'ktexteditor'
              'threadweaver' 'kitemmodels' 'kactivities')
-source=("https://download.kde.org/stable/applications/${pkgver}/src/${pkgbase}-${pkgver}.tar.xz"{,.sig}
+source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgbase}-${pkgver}.tar.xz"{,.sig}
         "https://gitlab.com/Megver83/kdebase-root-patches/raw/master/0001-Defuse-root-block.patch"{,.sig})
 sha256sums=('34eee6c384e2c2776c7d0ab65e7217e730cdbdecb82578c9dc90380cb82affd2'
             'SKIP'
@@ -25,13 +26,13 @@ options=(!emptydirs)
 
 prepare() {
   mkdir -p build
-  cd $srcdir/${pkgbase}-${pkgver}
+  cd $srcdir/${_pkgbase}-${pkgver}
   patch -p1 -i $srcdir/0001-Defuse-root-block.patch
 }
 
 build() {
   cd build
-  cmake ../${pkgbase}-${pkgver} \
+  cmake ../${_pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
