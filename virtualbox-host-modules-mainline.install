@@ -1,5 +1,5 @@
 _depmod() {
-  EXTRAMODULES=extramodules-4.9-mainline
+  EXTRAMODULES=extramodules-4.12-mainline
   depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
