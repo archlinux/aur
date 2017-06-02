@@ -3,10 +3,10 @@
 # You must register at unrealengine.com and link your github account to access this private repo.
 # @see https://wiki.archlinux.org/index.php/Unreal_Engine_4
 
-# The source is over 3 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
+# The source is over 8 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.16.0
+pkgver=4.16.1
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
