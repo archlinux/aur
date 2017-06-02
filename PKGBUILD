@@ -20,7 +20,7 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 package() {
   cd ${srcdir}
-  tar -xf data.tar.gz
+  tar -xf data.tar.xz
 
 # python2 fixes  
   cd ${srcdir}/usr/bin/
