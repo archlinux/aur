@@ -1,0 +1,13 @@
+pkgbase = paranoid-git
+	pkgdesc = GTK+3 configuration tool for compton.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/semplice/paranoid
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = compton
+	provides = paranoid
+
+pkgname = paranoid-git
+
