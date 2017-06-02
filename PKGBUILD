@@ -4,10 +4,10 @@
 _pkgname=jre
 pkgname=jre7
 _major=7
-_minor=79
+_minor=80
 _build=b15
 pkgver=${_major}u${_minor}
-pkgrel=3
+pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment (public release - end of support)"
 arch=('i686' 'x86_64')
 url='http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html'
@@ -43,12 +43,14 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
         "policytool-$_jname.desktop")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz")
+#source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
+#source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz")
+source_i686=('https://www.dropbox.com/s/37wrnymobxsglbe/jre-7u80-linux-i586.tar.gz')
+source_x86_64=('https://www.dropbox.com/s/uzx46ug4307nteg/jre-7u80-linux-x64.tar.gz')
 md5sums=('c47e997b90ddfd0d813a37ccc97fb933'
          'db24e699517801b35343cc7ebc93ce88')
-md5sums_i686=('eba02bbd1dcb9546fed93a9854b84ed9')
-md5sums_x86_64=('fcd884a57920d90fa23240abb403fcf5')
+md5sums_i686=('ff0f6847e51b6be5c241615a73043005')
+md5sums_x86_64=('c0e01ae8683b2d8924ce79cd6ce6a691')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
