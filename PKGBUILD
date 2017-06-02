@@ -14,9 +14,9 @@ sha256sums=('836596c6486fc8a54d14bc7c7af52baa3e1b35a49dc4d6967a0d47c6770aafdc'
             'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a')
 
 package() {
-    optdir="/opt/${pkgname}"
-    target="${pkgdir}${optdir}"
-    extracted="${srcdir}/jprofiler${pkgver}"
+    local optdir="/opt/${pkgname}"
+    local target="${pkgdir}${optdir}"
+    local extracted="${srcdir}/jprofiler${pkgver}"
     install -dm755 "$target"
     install -dm755 "${pkgdir}/usr/bin"
     cp -dpr --no-preserve=ownership "${extracted}/." "$target"
@@ -25,12 +25,12 @@ package() {
     install -dm755 "${pkgdir}/etc"
     ln -s "${optdir}/config" "${pkgdir}/etc/${pkgname}"
 
-    hicolor="${pkgdir}/usr/share/icons/hicolor/"
+    local hicolor="${pkgdir}/usr/share/icons/hicolor/"
     install -dm755 "${hicolor}/64x64/apps"
     install -dm755 "${hicolor}/32x32/apps"
     install -dm755 "${hicolor}/16x16/apps"
 
-    licensedir="${pkgdir}/usr/share/licenses/${pkgname}"
+    local licensedir="${pkgdir}/usr/share/licenses/${pkgname}"
     install -dm755 "$licensedir"
     mv "${target}/license.txt" "$licensedir"
     mv "${target}/license.html" "$licensedir"
@@ -41,8 +41,8 @@ package() {
     cp "${target}/.install4j/i4j_extf_3_${image_var}_u9lgq5.png" "${hicolor}/32x32/apps/${pkgname}.png"
     cp "${target}/.install4j/i4j_extf_2_${image_var}_1u8i2ka.png" "${hicolor}/16x16/apps/${pkgname}.png"
 
-    appsdir="${pkgdir}/usr/share/applications"
+    local appsdir="${pkgdir}/usr/share/applications"
     install -dm755 "$appsdir"
-    cp "${srcdir}/jprofiler.desktop" "$appsdir"
+    cp "${srcdir}/${pkgname}.desktop" "$appsdir"
 
 }
