@@ -4,15 +4,15 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=3.2.3.r17742.ga560146b7ce
+pkgver=3.2.3.r17752.g077582d3f90
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
 arch=('i686' 'x86_64')
 license=('custom=MITX11' 'custom=MSPL' 'BSD' 'GPL' 'LGPL2.1' 'MPL')
-depends=('ca-certificates' 'libgdiplus' 'python' 'sh' 'zlib')
-makedepends=('git' 'mono')
-#options=('!makeflags')
+depends=('ca-certificates' 'libgdiplus' 'python' 'zlib')
+makedepends=('git')
+optdepends=('mono: Needed if bootstrapping fails')
 provides=('mono' 'monodoc')
 conflicts=('mono' 'monodoc')
 source=(
@@ -56,9 +56,29 @@ pkgver() {
 prepare() {
     cd "${_gitname}"
 
-    externals=('aspnetwebstack' 'Newtonsoft.Json' 'cecil' 'rx' 'ikvm' 'ikdasm' 'binary-reference-assemblies' 'nunit-lite' 'nuget-buildtasks' 'buildtools' 'cecil-legacy' 'boringssl' 'corefx' 'bockbuild' 'linker' 'roslyn-binaries' 'corert' 'xunit-binaries' 'api-doc-tools' 'api-snapshot')
+    local externals=(
+        'aspnetwebstack'
+        'Newtonsoft.Json'
+        'cecil'
+        'rx'
+        'ikvm'
+        'ikdasm'
+        'binary-reference-assemblies'
+        'nunit-lite'
+        'nuget-buildtasks'
+        'buildtools'
+        'cecil-legacy'
+        'boringssl'
+        'corefx'
+        'bockbuild'
+        'linker'
+        'roslyn-binaries'
+        'corert'
+        'xunit-binaries'
+        'api-doc-tools' 'api-snapshot'
+    )
 
-    for external in ${externals[@]}; do
+    for external in ""${externals[@]}""; do
         submodule="external/${external}"
         git submodule init "${submodule}"
         git config "submodule.${submodule}.url" "${srcdir}/${external}"
@@ -69,38 +89,34 @@ prepare() {
 build() {
 	cd "${_gitname}"
 
-	./autogen.sh                \
-        --prefix=/usr           \
-        --sysconfdir=/etc       \
-        --bindir=/usr/bin       \
-        --sbindir=/usr/bin      \
-        --disable-quiet-build	\
-        --with-mcs-docs=no
+    ./autogen.sh --prefix=/usr
+    if ! hash mono; then
+        make get-monolite-latest
+    fi
 	make
 
-	cd "mcs/jay"
+    cd mcs/jay
 
-	make
+    make
 }
 
 package() {
 	cd "${_gitname}"
 
 	make DESTDIR="${pkgdir}" install
+	install -d -m 755 "${pkgdir}/usr/share/licenses/${_gitname}"
+	install	-D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/"
 
-	cd mcs/jay"
+    cd mcs/jay
 
-	make					        \
-        DESTDIR="${pkgdir}"		    \
-        prefix="/usr"			    \
-        INSTALL="../../install-sh"	\
-        install
+    make DESTDIR="${pkgdir}" prefix=/usr install
 
     cd "${srcdir}"
-	install -D -m 644 mono.binfmt.d "${pkgdir}/usr/lib/binfmt.d/mono.conf"
-	install -d -m 755 "${pkgdir}/usr/share/licenses/${_pkgname}"
-	install	-D -m 644 "${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/"
-	# Fix .pc file to be able to request mono on what it depends,
-	# fixes #go-oo build
+    install -D -m 644               \
+        "${srcdir}/mono.binfmt.d"   \
+        "${pkgdir}/usr/lib/binfmt.d/mono.conf"
+
+	# Fix .pc file to be able to request mono on what it depends, fixes #go-oo
+    # build
 	sed -i -e "s:#Requires:Requires:" "${pkgdir}/usr/lib/pkgconfig/mono.pc"
 }
