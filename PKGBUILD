@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=flake8-docstrings
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A plugin to flake8 to include checks provided by pydocstyle"
 arch=('any')
