@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Kharitonov <darksab0r at gmail com>
 # Contributor: paul2lv [at] gmail dot com
 
-pkgname=fahviewer
+pkgname=fahviewer-beta
 pkgver=7.4.16
 pkgrel=1
 pkgdesc="A Folding@home 3D simulation viewer"
@@ -21,10 +21,10 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 package() {
 	cd ${srcdir}
 	install -dm755 ${pkgdir}/opt/fah/
-	cp -rf fahviewer_${pkgver}-${_source_arch}-release/backgrounds ${pkgdir}/opt/fah/
+	cp -rf fahviewer_${pkgver}-64bit-release/backgrounds ${pkgdir}/opt/fah/
 
 	install -d "${pkgdir}/usr/bin"
-	install -D -m0755 ${srcdir}/fahviewer_${pkgver}-${_source_arch}-release/FAHViewer ${pkgdir}/opt/fah/FAHViewer
+	install -D -m0755 ${srcdir}/fahviewer_${pkgver}-64bit-release/FAHViewer ${pkgdir}/opt/fah/FAHViewer
 	ln -s "/opt/fah/FAHViewer" "${pkgdir}/usr/bin/FAHViewer"
 }
 
