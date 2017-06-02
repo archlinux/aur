@@ -13,8 +13,8 @@ optdepends=('opencl-nvidia: for folding with an nVidia GPU'
 	'cuda: for folding with an nVidia GPU'	
 	'opencl-mesa: for folding with an older AMD GPU'
 	'opencl-amd: for folding with a newer AMD GPU')
-replaces=('foldingathome')
 conflicts=('foldingathome')
+provides=('foldingathome=${pkgver}')
 install=foldingathome.install
 source=("https://folding.stanford.edu/releases/beta/release/fahclient/debian-stable-64bit/v7.4/fahclient_${pkgver}-64bit-release.tar.bz2"
 "foldingathome.service")
@@ -34,8 +34,8 @@ package() {
   chmod 755 ${pkgdir}/opt/fah/FAHClient
   chmod 755 ${pkgdir}/opt/fah/FAHCoreWrapper
   install -D -m644 fahclient_${pkgver}-64bit-release/copyright ${pkgdir}/usr/share/licenses/${pkgname}/copyright
-  install -D -m644 fahclient_${pkgver}-64bit-release/README ${pkgdir}/opt/fah/README
-  install -D -m644 fahclient_${pkgver}-64bit-release/ChangeLog ${pkgdir}/opt/fah/ChangeLog
+  install -D -m644 fahclient_${pkgver}-64bit-release/README.md ${pkgdir}/opt/fah/README.md
+  install -D -m644 fahclient_${pkgver}-64bit-release/CHANGELOG.md ${pkgdir}/opt/fah/CHANGELOG.md
   install -D -m644 ${srcdir}/foldingathome.service ${pkgdir}/usr/lib/systemd/system/foldingathome.service
 }
 
