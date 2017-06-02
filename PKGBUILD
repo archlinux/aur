@@ -1,12 +1,12 @@
 # Maintainer: danielpinto8zz6 <danielpinto8zz6@gmail.com>
 
 pkgname=budgie-calendar-applet
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Calendar applet for Budgie Desktop"
 arch=('i686' 'x86_64')
 license=('GPL2')
-sha256sums=('16d8b92b1bb7fdd3958afeff6481aa09f85f3ad26bf01f8c0975142e265c0284')
+sha256sums=('1b9c7a2594631de4bc80e4624bcfee0b17b9586df027861fa1e98ac84c0899a1')
 depends=('gtk3' 'glib2' 'libpeas' 'budgie-desktop')
 makedepends=('git' 'vala')
 optdepends=('gnome-calendar')
