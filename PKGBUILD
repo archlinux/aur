@@ -3,15 +3,15 @@
 
 pkgname=fahviewer-beta
 pkgver=7.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A Folding@home 3D simulation viewer"
 url="http://folding.stanford.edu/"
 arch=('x86_64')
 license=('GPL2')
-depends=('glew' 'gtk2' 'freetype2' 'glut' 'foldingathome=${pkgver}')
+depends=('glew' 'gtk2' 'freetype2' 'glut' 'foldingathome=7.4.16')
 options=('!docs' '!libtool')
 conflicts=('fahviewer')
-provides=('fahviewer=${pkgver}')
+provides=('fahviewer=7.4.16')
 source=(https://folding.stanford.edu/releases/beta/release/fahviewer/debian-stable-64bit/v7.4/fahviewer_${pkgver}-64bit-release.tar.bz2)
 sha256sums=('56bdc4f64451f5c1dc43cbc2332e044b7b4c2f3bd41b26f25b7c69b2a529ab1c')
 
