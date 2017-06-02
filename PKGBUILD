@@ -27,5 +27,5 @@ package() {
         install -D -m644 "License.txt" "${pkgdir}/usr/share/licenses/${_newpkgname}/LICENSE"
         install -D -m755 "focus" "${pkgdir}/usr/bin/focus"
         install -D -m755 "icons/focus-icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/focus-icon.svg"
-	gtk-update-icon-cache -f -t /usr/share/icons/hicolor	
+	sudo gtk-update-icon-cache -f -t /usr/share/icons/hicolor	
 }
