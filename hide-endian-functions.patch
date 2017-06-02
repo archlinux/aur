@@ -1,0 +1,20 @@
+--- a/src-IL/include/il_endian.h	2017-06-02 12:05:55.321355203 +0200
++++ b/src-IL/include/il_endian.h	2017-06-02 11:57:47.210954830 +0200
+@@ -68,6 +68,8 @@ extern "C" {
+ #define INLINE
+ #endif
+ 
++#pragma GCC visibility push(hidden)
++
+ void   iSwapUShort(ILushort *s);
+ void   iSwapShort(ILshort *s);
+ void   iSwapUInt(ILuint *i);
+@@ -101,6 +103,8 @@ ILubyte SaveBigDouble(ILdouble d);
+ 
+ void EndianSwapData(void *_Image);
+ 
++#pragma GCC visibility pop
++
+ #ifdef __cplusplus
+ }
+ #endif

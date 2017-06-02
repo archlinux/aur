@@ -1,5 +1,5 @@
---- include/IL/ilut_config.h.old	2017-06-02 09:55:51.057995171 +0200
-+++ include/IL/ilut_config.h	2017-06-02 09:56:03.494411426 +0200
+--- a/include/IL/ilut_config.h	2017-06-02 09:55:51.057995171 +0200
++++ b/include/IL/ilut_config.h	2017-06-02 09:56:03.494411426 +0200
 @@ -16,11 +16,11 @@
  //
  #undef ILUT_USE_ALLEGRO
@@ -14,8 +14,8 @@
 +//#define ILUT_USE_WIN32
  
  #endif//__ILUT_CONFIG_H__
---- include/IL/ilut.h.old	2017-06-02 09:54:48.259185625 +0200
-+++ include/IL/ilut.h	2017-06-02 09:54:55.892381093 +0200
+--- a/include/IL/ilut.h	2017-06-02 09:54:48.259185625 +0200
++++ b/include/IL/ilut.h	2017-06-02 09:54:55.892381093 +0200
 @@ -96,10 +96,10 @@
  			#pragma comment(lib, "ILUT.lib")
  		#endif
@@ -29,8 +29,8 @@
  
  
   
---- src-ILUT/pkgconfig/ILUT.pc.cmake.in.old	2017-06-02 10:09:04.646074566 +0200
-+++ src-ILUT/pkgconfig/ILUT.pc.cmake.in	2017-06-02 10:09:19.438930975 +0200
+--- a/src-ILUT/pkgconfig/ILUT.pc.cmake.in	2017-06-02 10:09:04.646074566 +0200
++++ b/src-ILUT/pkgconfig/ILUT.pc.cmake.in	2017-06-02 10:09:19.438930975 +0200
 @@ -10,5 +10,5 @@ URL: http://openil.sourceforge.net
  Requires: IL ILU
  Cflags: -I${includedir}

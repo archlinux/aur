@@ -7,7 +7,7 @@
 pkgname=devil-ilut-vanilla
 # "vanilla" as in doesn't add more --enable or --disable flags than neccesary for ILUT
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for reading several different image formats (includes ILUT & doesn't --{dis,en}able more than that)"
 arch=('i686' 'x86_64')
 url='http://openil.sourceforge.net/'
@@ -18,12 +18,17 @@ license=('GPL')
 provides=('devil')
 conflicts=('devil')
 source=(http://downloads.sourceforge.net/openil/DevIL-$pkgver.tar.gz
+        hide-endian-functions.patch
         opengl.patch)
 md5sums=('4d8c21aa4822ac86d77e44f8d7c9becd'
-         '17413db6a911bf73bf5e3fcdb9aeac27')
+         'aea342d8ef0be8542901bf693fbcec72'
+         '7042e399ee812cbc624256914c9c50b0')
 
 prepare() {
-  cd ${srcdir}/DevIL
+  cd "${srcdir}/DevIL/DevIL"
+
+  patch -p1 -i "${srcdir}/hide-endian-functions.patch"
+  patch -p1 -i "${srcdir}/opengl.patch"
 }
 
 build() {
