@@ -3,5 +3,5 @@
 /src/
 /*.tar.gz
 /*.xz
-/concourse_linux_amd64
 /*.swp
+/concourse-v*
