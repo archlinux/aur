@@ -18,9 +18,9 @@ md5sums=('SKIP')
 
 package() {
     cd $_pkgname
-    install -dm755 $pkgdir/usr/share/$pkgname
-    cp -r data $pkgdir/usr/share/$pkgname
-    cp -r ui $pkgdir/usr/share/$pkgname
+    install -dm755 $pkgdir/usr/share/$_pkgname
+    cp -r data $pkgdir/usr/share/$_pkgname
+    cp -r ui $pkgdir/usr/share/$_pkgname
     install -dm755 $pkgdir/usr/share/icons/hicolor/64x64/apps/
     cp archlabs.png $pkgdir/usr/share/icons/hicolor/64x64/apps/
     install -Dm644 $_pkgname.desktop $pkgdir/etc/skel/.config/autostart/$_pkgname.desktop
