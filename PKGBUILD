@@ -28,7 +28,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-xsl")
 pkgver=5.3.29
 _suhosinver=5.3.9-0.9.10
-pkgrel=8
+pkgrel=9
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -120,21 +120,18 @@ prepare() {
 
 build() {
 	local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
+		--config-cache \
 		--prefix=/usr \
 		--sysconfdir=/etc/${pkgbase} \
 		--localstatedir=/var \
 		--libdir=/usr/lib/${pkgbase} \
+		--datarootdir=/usr/share/${pkgbase} \
 		--datadir=/usr/share/${pkgbase} \
 		--program-suffix=${pkgbase#php} \
 		--with-layout=GNU \
 		--with-config-file-path=/etc/${pkgbase} \
 		--with-config-file-scan-dir=/etc/${pkgbase}/conf.d \
-		--enable-inline-optimization \
-		--disable-debug \
 		--disable-rpath \
-		--disable-static \
-		--enable-shared \
-		--mandir=/usr/share/man \
 		--without-pear \
 		"
 
@@ -171,8 +168,8 @@ build() {
 		--with-gmp=shared \
 		--with-iconv=shared \
 		--with-icu-dir=/usr \
-		--with-imap-ssl=shared,/usr \
-		--with-imap=shared,/usr \
+		--with-imap-ssl \
+		--with-imap=shared \
 		--with-kerberos=/usr \
 		--with-jpeg-dir=shared,/usr \
 		--with-ldap=shared \
