@@ -1,9 +1,9 @@
 # Contributor: Rod Kay     <charlie5 on #ada at freenode.net>
 
 pkgname=prepare_gnat_util
-pkgver=6.3.1
+pkgver=7.1
 pkgrel=1
-pkgdesc="Provides libgnat-6.3.so & libgnarl-6.3.so required by gnat_util."
+pkgdesc="Provides libgnat-7.1.so & libgnarl-7.1.so required by gnat_util and other Ada packages."
 
 options=('!emptydirs')
 
@@ -23,6 +23,6 @@ build()
 package() 
 {
   mkdir -p  $pkgdir/usr/lib
-  ln -s  /usr/lib/libgnat-6.so   $pkgdir/usr/lib/libgnat-6.3.so
-  ln -s  /usr/lib/libgnarl-6.so  $pkgdir/usr/lib/libgnarl-6.3.so
+  ln -s  /usr/lib/libgnat-7.so   $pkgdir/usr/lib/libgnat-7.1.so
+  ln -s  /usr/lib/libgnarl-7.so  $pkgdir/usr/lib/libgnarl-7.1.so
 }
