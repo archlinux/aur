@@ -4,7 +4,7 @@
 pkgname=fahcontrol-beta
 pkgver=7.4.16
 pkgrel=1
-pkgdesc='A Graphical User Interface (GUI)for Folding@Home - Beta version'
+pkgdesc='A Graphical User Interface (GUI) for Folding@Home - Beta version'
 url="http://folding.stanford.edu"
 arch=('x86_64')
 license=('GPL3')
