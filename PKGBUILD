@@ -49,8 +49,9 @@ sha256sums=(
 pkgver() {
 	cd "${_gitname}"
 
-    git describe --long --tags \
-        | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/mono.//'
+    git describe --long --tags              \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  \
+        | sed 's/mono.//'
 }
 
 prepare() {
@@ -112,6 +113,7 @@ package() {
     make DESTDIR="${pkgdir}" prefix=/usr install
 
     cd "${srcdir}"
+
     install -D -m 644               \
         "${srcdir}/mono.binfmt.d"   \
         "${pkgdir}/usr/lib/binfmt.d/mono.conf"
