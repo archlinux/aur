@@ -1,15 +1,18 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
 
+# You may want to change this value if your target device is not API 19
+_TARGET_API=19
+
 _pkgname=fb-adb
 pkgname=$_pkgname-git
 pkgver=20170417.r359.0cc0534
-pkgrel=1
+pkgrel=2
 pkgdesc='A better shell to use in place of adb when connecting to Android devices'
 url='https://github.com/facebook/fb-adb'
 license=('GPL3')
 arch=('x86_64')
 depends=('android-tools')
-makedepends=('git' 'vim' 'android-sdk-build-tools' 'android-platform-19')
+makedepends=('git' 'vim' 'android-sdk-build-tools' "android-platform-$_TARGET_API")
 options=('!strip' '!buildflags')
 source=("git+$url.git"
         "fix-build.patch"::"https://github.com/facebook/fb-adb/pull/59.patch")
@@ -35,7 +38,10 @@ build() {
   # build
   install -d build
   cd build
-  ../configure --enable-checking=yes --with-android-sdk="$ANDROID_HOME"
+  ../configure \
+      --enable-checking=yes \
+      --with-android-sdk="$ANDROID_HOME" \
+      --with-android-platform=android-$_TARGET_API
   make
 }
 
