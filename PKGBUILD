@@ -2,7 +2,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz" #{,.asc}
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
 #	"ae102b5d7bccd29bc6015a3e0acefeaa90d097ac.patch::https://libvirt.org/git/?p=libvirt.git;a=patch;h=ae102b5d7bccd29bc6015a3e0acefeaa90d097ac")
-sha256sums=('29e00984174e33cf2183b478382c017de26860452ffee17b73871051264ebb1b'
+sha256sums=('42186af6225904d2ada0b494fda4fa777fe5e662a9134686816e7919332c248d'
             '9d0597bbf2bd7892420cebaf0563236fe1483b83ae95ee6263c1ce7f44a44134'
             '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66'
             '5c26353833944db8dc97aa63843734519d6521bd8d88497d94d910ee9d3169d8')
