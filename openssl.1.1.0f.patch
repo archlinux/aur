@@ -1,0 +1,87 @@
+diff --git a/configure.ac b/configure.ac
+index 5b2a4bb..55078e2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -170,7 +170,7 @@ case "${target_os}" in
+ esac
+ 
+ # To ensure compatibility with Microsoft compiler.
+-CFLAGS+= " -Wdeclaration-after-statement"
++CFLAGS+=" -Wdeclaration-after-statement"
+ # Add more warnings
+ CFLAGS+=" -Wall"
+ AC_ARG_WITH(unit-test-xml,
+diff --git a/src/ksi/hash_openssl.c b/src/ksi/hash_openssl.c
+index 4eacc49..8d64c66 100644
+--- a/src/ksi/hash_openssl.c
++++ b/src/ksi/hash_openssl.c
+@@ -101,9 +101,8 @@ int KSI_isHashAlgorithmSupported(KSI_HashAlgorithm algo_id) {
+ void KSI_DataHasher_free(KSI_DataHasher *hasher) {
+ 	if (hasher != NULL) {
+ 		if (hasher->hashContext != NULL) {
+-			EVP_MD_CTX_cleanup(hasher->hashContext);
++			EVP_MD_CTX_free(hasher->hashContext);
+ 		}
+-		KSI_free(hasher->hashContext);
+ 		KSI_free(hasher);
+ 	}
+ }
+@@ -172,7 +171,7 @@ int KSI_DataHasher_reset(KSI_DataHasher *hasher) {
+ 
+ 	context = hasher->hashContext;
+ 	if (context == NULL) {
+-		context = KSI_new(EVP_MD_CTX);
++		context = EVP_MD_CTX_new();
+ 		if (context == NULL) {
+ 			KSI_pushError(hasher->ctx, res = KSI_OUT_OF_MEMORY, NULL);
+ 			goto cleanup;
+diff --git a/src/ksi/pkitruststore_openssl.c b/src/ksi/pkitruststore_openssl.c
+index f42a348..e213cc7 100644
+--- a/src/ksi/pkitruststore_openssl.c
++++ b/src/ksi/pkitruststore_openssl.c
+@@ -1020,13 +1020,13 @@ cleanup:
+ int KSI_PKITruststore_verifyRawSignature(KSI_CTX *ctx, const unsigned char *data, size_t data_len, const char *algoOid, const unsigned char *signature, size_t signature_len, const KSI_PKICertificate *certificate) {
+ 	int res;
+ 	ASN1_OBJECT* algorithm = NULL;
+-	EVP_MD_CTX md_ctx;
++	EVP_MD_CTX *md_ctx;
+ 	X509 *x509 = NULL;
+ 	const EVP_MD *evp_md;
+ 	EVP_PKEY *pubKey = NULL;
+ 
+ 	/* Needs to be initialized before jumping to cleanup. */
+-	EVP_MD_CTX_init(&md_ctx);
++	md_ctx = EVP_MD_CTX_new();
+ 
+ 	KSI_ERR_clearErrors(ctx);
+ 
+@@ -1069,17 +1069,17 @@ int KSI_PKITruststore_verifyRawSignature(KSI_CTX *ctx, const unsigned char *data
+ 		goto cleanup;
+ 	}
+ 
+-	if (!EVP_VerifyInit(&md_ctx, evp_md)) {
++	if (!EVP_VerifyInit(md_ctx, evp_md)) {
+ 		KSI_pushError(ctx, res = KSI_CRYPTO_FAILURE, NULL);
+ 		goto cleanup;
+ 	}
+ 
+-	if (!EVP_VerifyUpdate(&md_ctx, (unsigned char *)data, data_len)) {
++	if (!EVP_VerifyUpdate(md_ctx, (unsigned char *)data, data_len)) {
+ 		KSI_pushError(ctx, res = KSI_CRYPTO_FAILURE, NULL);
+ 		goto cleanup;
+ 	}
+ 
+-	res = EVP_VerifyFinal(&md_ctx, (unsigned char *)signature, (unsigned)signature_len, pubKey);
++	res = EVP_VerifyFinal(md_ctx, (unsigned char *)signature, (unsigned)signature_len, pubKey);
+ 	if (res < 0) {
+ 		KSI_pushError(ctx, res = KSI_CRYPTO_FAILURE, NULL);
+ 		goto cleanup;
+@@ -1095,7 +1095,7 @@ int KSI_PKITruststore_verifyRawSignature(KSI_CTX *ctx, const unsigned char *data
+ 
+ cleanup:
+ 
+-	EVP_MD_CTX_cleanup(&md_ctx);
++	EVP_MD_CTX_free(md_ctx);
+ 	if (algorithm != NULL) ASN1_OBJECT_free(algorithm);
+ 	if (pubKey != NULL) EVP_PKEY_free(pubKey);
+ 
