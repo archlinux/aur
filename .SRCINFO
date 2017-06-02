@@ -1,0 +1,13 @@
+pkgbase = gpaste-menu
+	pkgdesc = Dmenu interface for gpaste-client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/subosito/gpaste-menu
+	arch = any
+	license = MIT
+	depends = gpaste
+	source = https://github.com/subosito/gpaste-menu/archive/master.zip
+	sha256sums = fc4916f41670294e152ec8cfa20678d85071b1d95c3d05db6dd619d67bdd55a4
+
+pkgname = gpaste-menu
+
