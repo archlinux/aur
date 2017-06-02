@@ -4,32 +4,28 @@
 # https://github.com/manjaro/manjaro-hello
 # Version : 0.4.20.1
 
-pkgname=archlabs-hello
+pkgname=archlabs-hello-git
+_pkgname=archlabs-hello
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool providing access to documentation and support for new Archlabs users."
 url="https://github.com/ARCHLabs/$pkgname"
 arch=('any')
 license=('GPL')
 depends=('gtk3'  'python-gobject')
-source=("git+$url.git")
+source=(${_pkgname}::"git+https://github.com/ARCHLabs/${_pkgname}.git")
 md5sums=('SKIP')
 
-
-prepare() {
-    mv $pkgname $pkgname-$pkgver
-}
-
 package() {
-    cd $pkgname-$pkgver
+    cd $_pkgname
     install -dm755 $pkgdir/usr/share/$pkgname
     cp -r data $pkgdir/usr/share/$pkgname
     cp -r ui $pkgdir/usr/share/$pkgname
     install -dm755 $pkgdir/usr/share/icons/hicolor/64x64/apps/
     cp archlabs.png $pkgdir/usr/share/icons/hicolor/64x64/apps/
-    install -Dm644 $pkgname.desktop $pkgdir/etc/skel/.config/autostart/$pkgname.desktop
-    install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-    install -Dm755 src/archlabs_hello.py $pkgdir/usr/bin/$pkgname
+    install -Dm644 $_pkgname.desktop $pkgdir/etc/skel/.config/autostart/$_pkgname.desktop
+    install -Dm644 $_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
+    install -Dm755 src/archlabs_hello.py $pkgdir/usr/bin/$_pkgname
     
     cd po
     for lang in $(ls *.po); do
