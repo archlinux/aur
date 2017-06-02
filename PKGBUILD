@@ -7,7 +7,7 @@
 _pkgname=dolphin
 pkgname=dolphin-root
 pkgver=17.04.1
-pkgrel=1.aur1
+pkgrel=1
 pkgdesc="File Manager, patched to be able to run as root"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://kde.org/applications/system/dolphin/"

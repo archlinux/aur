@@ -1,7 +1,7 @@
 pkgbase = dolphin-root
 	pkgdesc = File Manager, patched to be able to run as root
 	pkgver = 17.04.1
-	pkgrel = 1.aur1
+	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = armv7h
 	arch = i686
