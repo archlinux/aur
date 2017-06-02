@@ -3,17 +3,17 @@
 pkgname=cockroachdb-bin
 conflicts=('cockroachdb')
 provides=('cockroachdb')
-pkgver=v1.0.1
+pkgver=v1.1_alpha.20170601
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
 url="https://www.cockroachlabs.com/"
 license=('Apache')
 depends=('gcc-libs')
-source=("https://binaries.cockroachdb.com/cockroach-${pkgver}.linux-amd64.tgz")
-sha256sums=('83977e9f4daecdc3268ce8e08f3d91e01df2e1658e188d50846a5cf53fabb3b9')
+source=("https://binaries.cockroachdb.com/cockroach-${pkgver//_/-}.linux-amd64.tgz")
+sha256sums=('16eef6fcc31c65f80277f59a10731d36da8664966a132c293fb58d74ab139492')
 
 package() {
-  cd $srcdir/cockroach-${pkgver}.linux-amd64/
+  cd $srcdir/cockroach-${pkgver//_/-}.linux-amd64/
   install -Dm755 cockroach "${pkgdir}/usr/bin/cockroach"
 }
