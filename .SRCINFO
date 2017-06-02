@@ -1,8 +1,8 @@
 pkgbase = qbittorrent-qt4
 	pkgdesc = A bittorrent client written in C++ / Qt4 using the good libtorrent library
-	pkgver = 3.3.12
+	pkgver = 3.3.13
 	pkgrel = 1
-	url = http://www.qbittorrent.org
+	url = https://www.qbittorrent.org
 	install = qbittorrent-qt4.install
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = qbittorrent-qt4
 	depends = xdg-utils
 	optdepends = python: needed for torrent search tab
 	conflicts = qbittorrent
-	source = http://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-3.3.12.tar.xz
-	md5sums = 2537a5afa16e2b9b86e88412dc59f7fb
+	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-3.3.13.tar.xz
+	md5sums = 4a61d9d3703b4bdbb7d9e8126a6cd5a8
 
 pkgname = qbittorrent-qt4
 
