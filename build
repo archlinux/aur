@@ -9,7 +9,7 @@ build () {
 }
 
 clean () {
-  rm -rf *.pkg.tar.xz *.tar.gz ; rm -rf ./pkg ./src ; true
+  rm -rf *.pkg.tar.xz *.tar.gz concourse-fly-v* ; rm -rf ./pkg ./src ; true
 }
 
 main () {
