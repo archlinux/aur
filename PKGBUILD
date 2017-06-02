@@ -7,7 +7,7 @@
 _pkgname=dolphin
 pkgname=dolphin-root
 pkgver=17.04.1
-pkgrel=1
+pkgrel=1.aur1
 pkgdesc="File Manager, patched to be able to run as root"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://kde.org/applications/system/dolphin/"
@@ -16,6 +16,7 @@ depends=(baloo-widgets knewstuff kio-extras kuiserver kcmutils)
 makedepends=(extra-cmake-modules kdoctools python)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails' 
             'ruby: installing new service menus from KDE Store' 'kdegraphics-thumbnailers: PDF and PS thumbnails' 'konsole: terminal panel')
+provides=(dolphin)
 conflicts=('kdebase-dolphin<15.08' 'dolphin')
 replaces=(kdebase-dolphin dolphin)
 source=("https://download.kde.org/stable/applications/$pkgver/src/${_pkgname}-$pkgver.tar.xz"{,.sig}

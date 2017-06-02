@@ -1,7 +1,7 @@
 pkgbase = dolphin-root
 	pkgdesc = File Manager, patched to be able to run as root
 	pkgver = 17.04.1
-	pkgrel = 1
+	pkgrel = 1.aur1
 	url = https://kde.org/applications/system/dolphin/
 	arch = armv7h
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = dolphin-root
 	optdepends = ruby: installing new service menus from KDE Store
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = konsole: terminal panel
+	provides = dolphin
 	conflicts = kdebase-dolphin<15.08
 	conflicts = dolphin
 	replaces = kdebase-dolphin
