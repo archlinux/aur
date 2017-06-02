@@ -1,6 +1,6 @@
 pkgbase = git-duet
 	pkgdesc = Support for pairing with git
-	pkgver = 0.3.0
+	pkgver = 0.3.0+
 	pkgrel = 1
 	url = https://github.com/git-duet/git-duet
 	arch = i686
