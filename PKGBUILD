@@ -7,7 +7,7 @@
 pkgbase=notmuch-git
 _pkgname=notmuch
 pkgname=('notmuch-git' 'notmuch-vim-git' 'notmuch-mutt-git' 'notmuch-runtime-git')
-pkgver=0.24.1.82.g51cf6dba
+pkgver=0.24.2.1.84.g1ec63446
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://notmuchmail.org/"
@@ -20,7 +20,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --tags|tr - .
+  git describe --long --tags|tr - .|cut -c8-
 }
 
 prepare(){
