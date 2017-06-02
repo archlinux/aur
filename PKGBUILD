@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Philipp Trommler <ph.trommler@gmail.com>
 pkgname=valum
-pkgver=0.3.6
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ optdepends=("libmemcached: For memcached cache storage."
             "luajit: For an embedded Lua VM.")
 makedepends=(git meson python-sphinx vala valadoc)
 source=("https://github.com/valum-framework/valum/archive/v${pkgver}.tar.gz")
-md5sums=('404468d53b6b0ec518012e721ea101e3')
+md5sums=('e89b49d65d8130c7df051d91d49b9279')
 
 build() {
   cd ${pkgname}
