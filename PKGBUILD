@@ -2,7 +2,7 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20170224
+pkgver=20170602
 pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
@@ -17,7 +17,6 @@ depends=(akonadi
          attica-qt5
          baloo
          baloo-widgets
-         bash-completion
          bluez-qt
          calendarsupport
          clang
@@ -26,6 +25,8 @@ depends=(akonadi
          extra-cmake-modules
          frameworkintegration
          gcc
+         gdb
+         gettext
          git
          grantleetheme
          incidenceeditor
@@ -69,7 +70,7 @@ depends=(akonadi
          kimap
          kinit
          kio
-         kirigami
+         kirigami2
          kitemmodels
          kitemviews
          kjobwidgets
