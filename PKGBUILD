@@ -7,7 +7,7 @@
 pkgname=archlabs-hello-git
 _pkgname=archlabs-hello
 pkgver=1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A tool providing access to documentation and support for new Archlabs users."
 url="https://github.com/ARCHLabs/$pkgname"
 arch=('any')
