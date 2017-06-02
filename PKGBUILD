@@ -1,7 +1,7 @@
 # Maintainer: gbr <gbr@protonmail.com>
 # Maintainer: masutu <masutu dot arch at gmail dot com>
 pkgname=ezthumb
-pkgver=3.6.4
+pkgver=3.6.5
 pkgrel=1
 pkgdesc='A video thumbnail generator based on ffmpeg.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('ffmpeg' 'gd' 'gtk2')
 makedepends=('imagemagick')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('0ac2f453bb54de17d5203df5dfbd47a0e5ed676d83b941a518b80f5ac03e00b1')
+sha256sums=('8ce1a961bfc788c3a60bdbeec3c175c774fb68fc6b82f93e3a8ace93dc3e6d4a')
 
 build() {
     cd "${pkgname}-${pkgver}"
