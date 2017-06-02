@@ -3,7 +3,7 @@
 
 pkgname=fahviewer-beta
 pkgver=7.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A Folding@home 3D simulation viewer"
 url="http://folding.stanford.edu/"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(https://folding.stanford.edu/releases/beta/release/fahviewer/debian-stab
 sha256sums=('56bdc4f64451f5c1dc43cbc2332e044b7b4c2f3bd41b26f25b7c69b2a529ab1c')
 
 # Moronic server
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
+#DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 package() {
 	cd ${srcdir}
