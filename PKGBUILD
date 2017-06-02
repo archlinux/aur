@@ -1,6 +1,6 @@
 # Maintainer: BrainDamage
 pkgname="python2-scikit-rf"
-pkgver=0.14.3
+pkgver=0.14.5
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=(
 	"python2-xlwt: for xls writing"
 	"ipython2: for interactive shell"
 )
-sha256sums=("df3490609eee5832b369c6b3e5a76e2919528d37639420a616e056b10be0b6a6")
+sha256sums=("d0b3d59f838f9b73b5f96aebe9e89e5d7a1237cf697c0c909bf5c71d56bd8dad")
 source=("https://github.com/scikit-rf/scikit-rf/archive/v$pkgver.tar.gz")
 
 package() {

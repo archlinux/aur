@@ -1,6 +1,6 @@
 pkgbase = python2-scikit-rf
 	pkgdesc = Scikit-rf (aka skrf) is a python package for RF/Microwave engineering
-	pkgver = 0.14.3
+	pkgver = 0.14.5
 	pkgrel = 1
 	url = http://scikit-rf-web.readthedocs.org
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python2-scikit-rf
 	optdepends = python2-xlrd: for xls reading
 	optdepends = python2-xlwt: for xls writing
 	optdepends = ipython2: for interactive shell
-	source = https://github.com/scikit-rf/scikit-rf/archive/v0.14.3.tar.gz
-	sha256sums = df3490609eee5832b369c6b3e5a76e2919528d37639420a616e056b10be0b6a6
+	source = https://github.com/scikit-rf/scikit-rf/archive/v0.14.5.tar.gz
+	sha256sums = d0b3d59f838f9b73b5f96aebe9e89e5d7a1237cf697c0c909bf5c71d56bd8dad
 
 pkgname = python2-scikit-rf
 
