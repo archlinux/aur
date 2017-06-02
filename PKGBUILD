@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=8.05.14.20170501
+pkgver=8.06.02.20170601
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ optdepends=('wget: for web/gethttp addon'
             'lapack: for math/lapack addon')
 source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j805_env_20170501.tar.gz')
-md5sums=('SKIP' 'SKIP' 'e60dd18237639436e4bdc0b948b80d62')
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j806_env_20170601.tar.gz')
+md5sums=('SKIP' 'SKIP' '1782b39d100cb1d7534ca96025c90a7c')
 install=j8-git.install
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
