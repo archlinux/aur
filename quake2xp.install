@@ -1,3 +1,4 @@
 post_install() {
 	echo 'Put the Quake 2 paks in ~/.quake/baseq2 to play.'
+	echo 'Obtain the GLSL shaders via `svn checkout svn://svn.code.sf.net/p/quake2xp/code/glsl ~/.quake/baseq2/glsl`.'
 }
