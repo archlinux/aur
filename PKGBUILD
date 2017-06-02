@@ -5,10 +5,10 @@
 _pkgname=jdk
 pkgname=jdk7
 _major=7
-_minor=79
+_minor=80
 _build=b15
 pkgver=${_major}u${_minor}
-pkgrel=4
+pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit (public release - end of support)"
 arch=('i686' 'x86_64')
 url='http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html'
@@ -49,15 +49,17 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJ
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz")
+#source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
+#source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz")
+source_i686=('https://www.dropbox.com/s/j6lb08xu2l9k3kq/jdk-7u80-linux-i586.tar.gz')
+source_x86_64=('https://www.dropbox.com/s/9fys7eqsqsy4zk1/jdk-7u80-linux-x64.tar.gz')
 md5sums=('c47e997b90ddfd0d813a37ccc97fb933'
          'c72336327d7cefadf4ffd74c014c7c2e'
          'ac3f149795f62cdf5bdfdd6061fb8184'
          '1b692eac219a0b34fd7ec13f09cea078'
          'daf7f23efea899b8c575145d1eb73aab')
-md5sums_i686=('b0ed59147c77a6d3e63a7b340e4e1d28')
-md5sums_x86_64=('9222e097e624800fdd9bfb568169ccad')
+md5sums_i686=('0811a4045714bd8f1e1577e318528597')
+md5sums_x86_64=('6152f8a7561acf795ca4701daa10a965')
 ## Alternative mirror, if your local one is throttled:
 #source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$_pkgname-$pkgver-linux-x64.gz")
 
