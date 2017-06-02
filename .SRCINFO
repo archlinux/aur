@@ -1,12 +1,14 @@
 pkgbase = perl-gnome2-gconf
 	pkgdesc = Perl interface to the GConf configuration database
 	pkgver = 1.044
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Gnome2-GConf
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
+	makedepends = perl-extutils-depends
+	makedepends = perl-extutils-pkgconfig
 	depends = gtk2-perl
 	depends = gconf
 	depends = glib-perl
@@ -19,4 +21,6 @@ pkgname = perl-gnome2-gconf
 	depends = gtk2-perl
 	depends = gconf
 	depends = glib-perl
+	depends = perl>=
+	depends = perl<
 

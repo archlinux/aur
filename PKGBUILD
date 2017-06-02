@@ -4,7 +4,7 @@
 
 pkgname=perl-gnome2-gconf
 pkgver=1.044
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl interface to the GConf configuration database"
 arch=('i686' 'x86_64')
 license=("GPL" "PerlArtistic")
