@@ -4,10 +4,10 @@
 _pkgname=jre
 pkgname=bin32-jre7
 _major=7
-_minor=79
+_minor=80
 _build=b15
 pkgver=${_major}u${_minor}
-pkgrel=3
+pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment (32-bit) (public release - end of support)"
 arch=('x86_64')
 url='http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html'
@@ -41,10 +41,11 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
+#source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
+source=('https://www.dropbox.com/s/37wrnymobxsglbe/jre-7u80-linux-i586.tar.gz'
         "http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
         "policytool32-$_jname.desktop")
-md5sums=('eba02bbd1dcb9546fed93a9854b84ed9'
+md5sums=('ff0f6847e51b6be5c241615a73043005'
          'c47e997b90ddfd0d813a37ccc97fb933'
          'ab6a5ad84bfdcfb949651e7bb83b682e')
 
