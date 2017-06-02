@@ -3,7 +3,7 @@
 pkgname=docker-compose-bin
 pkgver=1.13.0
 pkgrel=1
-pkgdesc="Pythonless package of a fast, isolated development environments using Docker"
+pkgdesc="Pythonless package of a a tool for defining and running multi-container applications"
 depends=('docker')
 arch=('x86_64')
 conflicts=('docker-compose')
