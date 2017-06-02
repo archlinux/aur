@@ -17,6 +17,8 @@ source=("http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-GConf-${pkgver}
 sha256sums=('875cb87bff28340c15c9bda9b645b5af8002d9b471363d5475532bc1d34e1df2')
 
 build() {
+  # Workaround for Perl 5.26
+  export PERL_USE_UNSAFE_INC=1
   cd Gnome2-GConf-${pkgver}
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
