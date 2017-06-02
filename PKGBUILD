@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-px68000-git
-pkgver=142.207f1d0
+pkgver=173.bbfcea0
 pkgrel=1
 pkgdesc="Portable SHARP X68000 Emulator for PSP, Android and other platforms"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
