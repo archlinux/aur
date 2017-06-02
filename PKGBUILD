@@ -3,7 +3,7 @@
 
 pkgbase='pypy-setuptools'
 pkgname=(pypy-setuptools pypy3-setuptools)
-pkgver=35.0.1
+pkgver=36.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
@@ -11,8 +11,8 @@ arch=('any')
 license=('PSF')
 url="http://pypi.python.org/pypi/setuptools"
 source=("https://pypi.io/packages/source/s/setuptools/setuptools-${pkgver}.zip")
-sha512sums=('a3f5362ad64dead468172f9989bc62043ce736180d22e50d9815af25aecbceb58e701bb87a643b9fbbf0beedb37a45268b23b1b5e7e6e397aa124f43b1d4bb0d')
-makedepends=('pypy3' 'pypy3-packaging' 'pypy' 'pypy-packaging')
+sha512sums=('cbcd2591d0d8a7591c5d9a1d4173814afa0b984af29f2e34d26a37c357474b043f371978ac224cea12f50834d91babd9f14b137488c4edcd62594e91aff903d8')
+makedepends=('pypy3' 'pypy')
 
 prepare() {
   cd "${srcdir}"/setuptools-${pkgver}
@@ -38,7 +38,7 @@ _check_pypy3-setuptools() {
 }
 
 package_pypy-setuptools() {
-  depends=('pypy' 'pypy-packaging' 'pypy-appdirs')
+  depends=('pypy')
   provides=('pypy-distribute')
   replaces=('pypy-distribute')
   cd "${srcdir}/setuptools-${pkgver}"
@@ -46,7 +46,7 @@ package_pypy-setuptools() {
 }
 
 package_pypy3-setuptools() {
-  depends=('pypy3' 'pypy3-packaging' 'pypy3-appdirs')
+  depends=('pypy3')
   provides=('pypy3-distribute')
   replaces=('pypy3-distribute')
   cd "${srcdir}/setuptools-${pkgver}"
