@@ -3,7 +3,7 @@
 
 pkgname=gtk2-perl
 pkgver=1.2498
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl bindings for GTK+ 2.x"
 arch=(i686 x86_64)
 license=('LGPL')
