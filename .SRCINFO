@@ -1,0 +1,14 @@
+pkgbase = gtk-theme-minwaita-light-shell-unbold
+	pkgdesc = Light gnome-shell theme with a normal font weights
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/godlyranchdressing/Minwaita
+	arch = any
+	license = GPL
+	source = Minwaita-1.4.tar.gz::https://github.com/godlyranchdressing/Minwaita/releases/download/V1.4/Minwaita.tar.gz
+	source = unbold.patch
+	sha256sums = c004d672cd5ee34f3a5e1580b5347005a16f7d623e8fb35e05a784a99ab5b78e
+	sha256sums = b9c3d3a8e705e99d40dc2cbda63b57eec127d77703ad0666a9428678efa6b5bb
+
+pkgname = gtk-theme-minwaita-light-shell-unbold
+
