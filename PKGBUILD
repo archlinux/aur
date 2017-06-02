@@ -1,10 +1,11 @@
 # Maintainer: halflife <pigoig_At_gmail_com>
+# Maintainer: MaryJaneInChain <gmail.com@maryjaneinchain>
 
 pkgname=firefox-developer-zh-cn
 _pkgname=firefox-developer
 pkgver=54.0a2
-pkgrel=1
-pkgdesc="Chinese Simplified For Firefox Developer (Aurora)"
+pkgrel=2
+pkgdesc="Standalone web browser from mozilla.org, developer build - Chinese Simplified"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/developer/"
 license=('MPL' 'GPL' 'LGPL')
@@ -19,7 +20,7 @@ provides=("firefox developer")
 install=$pkgname.install
 _baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/"
 _filename="firefox-${pkgver}.zh-CN.linux-${CARCH}"
-_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
+_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2$" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
         "vendor.js"
         "${_baseurl}${_filename}.tar.bz2")
