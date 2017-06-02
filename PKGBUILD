@@ -4,10 +4,10 @@
 _pkgname=jdk
 pkgname=bin32-jdk7
 _major=7
-_minor=79
+_minor=80
 _build=b15
 pkgver=${_major}u${_minor}
-pkgrel=3
+pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit (32-bit) (public release - end of support)"
 arch=('x86_64')
 url='http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html'
@@ -43,13 +43,14 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
+#source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
+source=('https://www.dropbox.com/s/j6lb08xu2l9k3kq/jdk-7u80-linux-i586.tar.gz'
         "http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop")
-md5sums=('b0ed59147c77a6d3e63a7b340e4e1d28'
+md5sums=('0811a4045714bd8f1e1577e318528597'
          'c47e997b90ddfd0d813a37ccc97fb933'
          '721fa304a1f1057c7079330308772ca4'
          '8a9ff08e43c75c4d7460790dff7dfd4a'
