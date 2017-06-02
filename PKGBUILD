@@ -2,10 +2,10 @@
 # Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-wx
-pkgver=0.9928
+pkgver=0.9932
 _author=M/MD/MDOOTSON
 _perlmod=Wx
-pkgrel=4
+pkgrel=1
 pkgdesc="Wx - interface to the wxWidgets GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Wx"
@@ -84,12 +84,12 @@ perl-build-wx-xsp-virtual
 )
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('58e06c094c07817617b1e69fa0501f2cee80cd4700ac7a62c516179f7aa85b42')
+sha256sums=('1cfdb6535a0f4676e6f1aab2c9d8e16d577be3eb3b7cc04c8074d685e6651b70')
+unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
   make
 }
@@ -104,6 +104,5 @@ check(){
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
