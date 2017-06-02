@@ -16,6 +16,7 @@ md5sums=('7508b2a34da2202cc0c78deb59e36526')
 build() {
   cd  "${srcdir}/Crypt-SSLeay-${pkgver}"
 
+  PERL_USE_UNSAFE_INC=1 \
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
