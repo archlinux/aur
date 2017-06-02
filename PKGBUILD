@@ -3,7 +3,7 @@
 
 pkgname=foldingathome-beta
 pkgver=7.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Folding@Home is a distributed computing project which studies protein folding, misfolding, aggregation, and related diseases - beta version."
 arch=('x86_64')
 url="http://folding.stanford.edu/"
@@ -22,7 +22,7 @@ sha256sums=('dade69e217697dd886a241c4400b9aaef0e16e66f510c33ddcde22cd098fec30'
             'ad1bb4f104bc3446db7bb91a7d199bfeda5d80e15e08fe17bc69de1c276e2010')
 
 # Moronic server
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
+#DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 package() {
   cd ${srcdir}
