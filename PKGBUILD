@@ -41,13 +41,13 @@ build() {
 }
 
 package_kwrite-root() {
-  pkgdesc="Text Editor"
+  pkgdesc="Text Editor, patched to be able to run as root"
   groups=('kde-applications' 'kdebase')
   url="https://www.kde.org/applications/utilities/kwrite/"
   depends=('ktexteditor' 'kactivities' 'hicolor-icon-theme')
-  replaces=('kdebase-kwrite')
-  conflicts=('kdebase-kwrite')
-  provides=('kdebase-kwrite')
+  replaces=('kdebase-kwrite' 'kwrite')
+  conflicts=('kdebase-kwrite' 'kwrite')
+  provides=('kdebase-kwrite' 'kwrite')
 
   cd build
   make DESTDIR="${pkgdir}" install
@@ -61,13 +61,13 @@ package_kwrite-root() {
 }
 
 package_kate-root() {
-  pkgdesc="Advanced Text Editor"
+  pkgdesc="Advanced Text Editor, patched to be able to run as root"
   groups=('kde-applications' 'kdebase')
   url="https://www.kde.org/applications/utilities/kate/"
   depends=('knewstuff' 'ktexteditor' 'threadweaver' 'kitemmodels' 'kactivities' 'hicolor-icon-theme')
-  replaces=('kdesdk-kate')
-  conflicts=('kdesdk-kate')
-  provides=('kdesdk-kate')
+  replaces=('kdesdk-kate' 'kate')
+  conflicts=('kdesdk-kate' 'kate')
+  provides=('kdesdk-kate' 'kate')
   optdepends=('konsole: open a terminal in Kate')
 
   cd build

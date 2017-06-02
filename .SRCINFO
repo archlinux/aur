@@ -29,7 +29,7 @@ pkgbase = kate
 	sha256sums = SKIP
 
 pkgname = kwrite-root
-	pkgdesc = Text Editor
+	pkgdesc = Text Editor, patched to be able to run as root
 	url = https://www.kde.org/applications/utilities/kwrite/
 	groups = kde-applications
 	groups = kdebase
@@ -37,11 +37,14 @@ pkgname = kwrite-root
 	depends = kactivities
 	depends = hicolor-icon-theme
 	provides = kdebase-kwrite
+	provides = kwrite
 	conflicts = kdebase-kwrite
+	conflicts = kwrite
 	replaces = kdebase-kwrite
+	replaces = kwrite
 
 pkgname = kate-root
-	pkgdesc = Advanced Text Editor
+	pkgdesc = Advanced Text Editor, patched to be able to run as root
 	url = https://www.kde.org/applications/utilities/kate/
 	groups = kde-applications
 	groups = kdebase
@@ -53,6 +56,9 @@ pkgname = kate-root
 	depends = hicolor-icon-theme
 	optdepends = konsole: open a terminal in Kate
 	provides = kdesdk-kate
+	provides = kate
 	conflicts = kdesdk-kate
+	conflicts = kate
 	replaces = kdesdk-kate
+	replaces = kate
 
