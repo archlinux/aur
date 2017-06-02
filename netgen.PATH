@@ -1,4 +1,0 @@
-export PATH=/opt/netgen/bin:$PATH
-export LD_LIBRARY_PATH=/opt/netgen/lib:$LD_LIBRARY_PATH
-export PYTHONPATH=/opt/netgen/lib/python3.5/site-packages:$PYTHONPATH
-export NETGENDIR=/opt/netgen/bin/

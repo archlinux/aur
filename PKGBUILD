@@ -1,37 +1,49 @@
 # Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=netgen-git
-pkgver=r1081.5f29387
+pkgver=v6.2.dev.203.g08823c1
 pkgrel=1
 pkgdesc="An automatic 3d tetrahedral mesh generator."
 url=https://sourceforge.net/projects/netgen-mesher/
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
-depends=('python' 'boost' 'tk' 'libxmu' 'opencascade' 'ffmpeg' 'openmpi' 'metis')
+depends=('python' 'tk' 'libxmu' 'glu'
+        'opencascade'     # USE_OCC=ON
+        'openmpi' 'metis' # USE_MPI=ON
+        'ffmpeg'          # USE_MPEG=ON
+)
 options=('!buildflags')
 provides=('netgen')
 conflicts=('netgen-nogui')
-source=("${pkgname%-git}::git+http://git.code.sf.net/p/netgen-mesher/git#branch=master"
-        "netgen.PATH")
-md5sums=('SKIP'
-         'ae799b81edf32652c31d2f6061f1f966')
+source=("${pkgname%-git}::git+http://git.code.sf.net/p/netgen-mesher/git#branch=master")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}"/${pkgname%-git}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/-/./g'
 }
 
 build() {
   cd "${srcdir}"/${pkgname%-git}
+  git submodule update --init --recursive
   mkdir build && cd build
-  cmake -DINSTALL_DIR="${pkgdir}/opt/netgen" -DCMAKE_BUILD_TYPE=RELEASE -DUSE_JPEG=ON -DUSE_MPEG=ON -DUSE_MPI=ON -DUSE_OCC=ON ..
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DNG_INSTALL_DIR_LIB=lib/${pkgname%-git} \
+    -DNG_INSTALL_DIR_INCLUDE=include/${pkgname%-git} \
+    -DCMAKE_BUILD_TYPE=RELEASE \
+    -DUSE_JPEG=ON \
+    -DUSE_MPEG=ON \
+    -DUSE_MPI=ON \
+    -DMETIS_DIR=/usr \
+    -DUSE_OCC=ON \
+    ..
   make
 }
 
 package() {
   cd "${srcdir}"/${pkgname%-git}/build
-  make install
-  install -m644 "${srcdir}/netgen.PATH" "${pkgdir}/opt/netgen.PATH"
+  make DESTDIR="$pkgdir/" install
 }
 
