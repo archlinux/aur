@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Torchlight 2
+GenericName=Torchlight 2
+Comment=An action RPG dungeon crawler
+Exec=gog-torchlight2
+Icon=gog-torchlight2
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;

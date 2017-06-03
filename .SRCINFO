@@ -1,0 +1,18 @@
+pkgbase = gog-torchlight2
+	pkgdesc = An action RPG dungeon crawler
+	pkgver = 2.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/torchlight_ii
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom:commercial
+	source = gog://gog_torchlight_2_2.0.0.1.sh
+	source = gog-torchlight2.desktop
+	source = gog-torchlight2
+	sha512sums = 56c47950aebf87886b42e7037801788223ddbf76b124abc61d6eb70ce402435650b7b47aeee1e976fc9fed7150b3dba07d97c4dc2e4034443af3b61f900de5de
+	sha512sums = f85e8fa535e739f620819998acfb663b7fa7645978c7a5e7f56f16c2f447c1aff0c457b65699e849c101d1d4c93c3221797941621b7882beedf99b8e6eb7228b
+	sha512sums = c68c5a015bb75ae520d34f0e5f94309462db8ea6159f8a22b3d2842def37800229c6a5c1c37e09ed9c7d570abf8e89340781bb17ed0ad2ae61508b7abd3be97a
+
+pkgname = gog-torchlight2
+
