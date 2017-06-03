@@ -4,7 +4,7 @@ _pkgname=archlabs-slimlock-themes
 _destname="/usr/share/slim/themes/"
 _destname2="/etc/"
 pkgver=1.1
-pkgrel=11
+pkgrel=12
 pkgdesc="Slimlock themes created for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Slimlock-Themes"
@@ -16,6 +16,10 @@ options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/ARCHLabs/${_pkgname}.git")
 sha256sums=('SKIP')
 backup=('etc/slim.conf')
+prepare() {
+	curtime=$(date +%Y%m%d_%H%M%S)
+	sudo mv  /etc/slim.conf /etc/slim-backup-$curtime.conf
+}
 package() {
 	mkdir -p "${pkgdir}${_destname2}"
 	cp "${srcdir}/${_pkgname}/"slim.conf "${pkgdir}${_destname2}"
