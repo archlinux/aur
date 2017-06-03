@@ -1,19 +1,18 @@
 pkgbase = cen64
 	pkgdesc = Cycle-accurate Nintendo 64 emulator
-	pkgver = 0.3.19.g8aff451
+	pkgver = 0.3
 	pkgrel = 1
 	url = http://www.cen64.com/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	makedepends = git
 	depends = mesa
 	depends = openal
 	provides = cen64
-	conflicts = cen64-git
-	source = git+https://github.com/tj90241/cen64.git
-	sha256sums = SKIP
+	conflicts = cen64
+	source = https://github.com/tj90241/cen64/archive/v0.3.tar.gz
+	sha256sums = 0e6330a51b606805ff4224d88f17940936cb5dc4c27a64e11e2fcfe240e496b5
 
 pkgname = cen64
 
