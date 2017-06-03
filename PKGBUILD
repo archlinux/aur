@@ -1,5 +1,5 @@
 pkgname=gog-darkest-dungeon
-pkgver=2.1.0.2
+pkgver=2.10.0.10
 pkgrel=1
 _gamename=${pkgname#gog-}
 _gamename_=${_gamename//-/_}
@@ -9,10 +9,10 @@ arch=("i686" "x86_64")
 url="https://www.gog.com/game/darkest-dungeon"
 license=("custom")
 groups=("games")
-source=("gog_darkest_dungeon_${pkgver}.sh::gogdownloader://${_gamename_}/en3installer1"
+source=("gog_darkest_dungeon_${pkgver}.sh::gogdownloader://${_gamename_}/en3installer7"
         "${pkgname}"
         "${pkgname}.desktop")
-md5sums=('fe0de7fe3da351b275e5b06e40f79948'
+md5sums=('f8fa42b354731886f9b69e1d0e78b3b7'
          '23b66329f52fb4a9073ec7f1589625cc'
          '1fc48d384bc8e36749174ece86c6706e')
 noextract=("gog_darkest_dungeon_${pkgver}.sh")
@@ -57,7 +57,7 @@ package() {
   chmod +x $pkgdir/opt/$pkgname/game/darkest.bin.x86_64
 
   install -Dm 755 $srcdir/$pkgname $pkgdir/usr/bin/$pkgname
-  install -Dm 644 $srcdir/gog_darkest_dungeon_${pkgver}/data/noarch/game/Icon.bmp $pkgdir/usr/share/pixmaps/$pkgname.bmp
+  install -Dm 644 $srcdir/gog_darkest_dungeon_${pkgver}/data/noarch/support/icon.png $pkgdir/usr/share/pixmaps/$pkgname.png
   install -Dm 644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -Dm 644 $srcdir/gog_darkest_dungeon_${pkgver}/data/noarch/docs/End\ User\ License\ Agreement.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
