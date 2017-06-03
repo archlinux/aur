@@ -1,13 +1,14 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-ss10
 pkgver=1.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A slender monospace typeface. Shape: Envy Code R.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-iosevka'
+           'ttf-iosevka-pack'
            'ttf-iosevka-ss01'
            'ttf-iosevka-ss02'
            'ttf-iosevka-ss03'
