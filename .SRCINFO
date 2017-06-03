@@ -1,0 +1,18 @@
+pkgbase = mmake-bin
+	pkgdesc = Modern Make
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/tj/mmake
+	arch = x86_64
+	arch = i386
+	arch = arm
+	license = Apache
+	provides = mmake
+	conflicts = mmake
+	source_x86_64 = https://github.com/tj/mmake/releases/download/v1.2.0/mmake_linux_amd64
+	sha256sums_x86_64 = 9ff59e186f3fc1d0d97c096202b9c2d5e9a442e15aa3892a1175324a72fcf695
+	source_arm = https://github.com/tj/mmake/releases/download/v1.2.0/mmake_linux_arm
+	sha256sums_arm = 271d1aaf213abb9a722a6405bf20b65c7cb29adfe04ca9c87445ec015a48bcf9
+
+pkgname = mmake-bin
+
