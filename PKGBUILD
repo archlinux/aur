@@ -1,12 +1,23 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss11
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
+conflicts=('ttf-iosevka-term'
+           'ttf-iosevka-term-ss01'
+           'ttf-iosevka-term-ss02'
+           'ttf-iosevka-term-ss03'
+           'ttf-iosevka-term-ss04'
+           'ttf-iosevka-term-ss05'
+           'ttf-iosevka-term-ss06'
+           'ttf-iosevka-term-ss07'
+           'ttf-iosevka-term-ss08'
+           'ttf-iosevka-term-ss09'
+           'ttf-iosevka-term-ss10')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss11-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
 sha256sums=('2efe9aabbbf804d07b1f0ffcb4fe9d4cba135a99ea1a50e3fada933468090fce'
