@@ -1,6 +1,6 @@
 pkgbase = kcyberfoxhelper
 	pkgdesc = Cyberfox KDE Plasma Integration
-	pkgver = 5.0.1.4
+	pkgver = 5.0.1.5
 	pkgrel = 1
 	url = https://github.com/hawkeye116477/kcyberfoxhelper
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = kcyberfoxhelper
 	depends = kwindowsystem
 	options = !emptydirs
 	options = !strip
-	source = kcyberfoxhelper-5.0.1.4.tar.gz::https://github.com/hawkeye116477/kcyberfoxhelper/archive/v5.0.1.4.tar.gz
-	sha256sums = 2fb64fa57e232374761eca15b81482f219071227e1654a045d5ff8bed764709d
+	source = kcyberfoxhelper-5.0.1.5.tar.gz::https://github.com/hawkeye116477/kcyberfoxhelper/archive/v5.0.1.5.tar.gz
+	sha256sums = 68cfc5ea6c5c2c72ae3ce00969a97755723cd682456cea2d6ed13fccf3cdf331
 
 pkgname = kcyberfoxhelper
 
