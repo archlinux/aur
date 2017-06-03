@@ -2,7 +2,7 @@
 
 pkgname=alacritty-terminfo-git
 pkgver=0.1.0.525.g8776b7e
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Terminfo files for the alacritty terminal emulator"
 url="https://github.com/jwilm/alacritty"
@@ -22,8 +22,7 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
   install -dm 755 "$pkgdir/usr/share/terminfo/a/"
-  cp alacritty.info "$pkgdir/usr/share/terminfo/a/alacritty"
-  cp alacritty.info "$pkgdir/usr/share/terminfo/a/alacritty-256color"
+  tic -o "$pkgdir/usr/share/terminfo" alacritty.info
 }
 
 # vim:set ts=2 sw=2 et:
