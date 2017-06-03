@@ -1,0 +1,14 @@
+pkgbase = erutaso
+	pkgdesc = Eru Chitanda runs across your terminal when you type "erutaso" as you meant to type "ls".
+	pkgver = r27.bd3a103
+	pkgrel = 1
+	url = https://github.com/sgymtic/sl
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	source = git+https://github.com/sgymtic/sl.git
+	md5sums = SKIP
+
+pkgname = erutaso
+
