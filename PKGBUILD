@@ -1,6 +1,6 @@
 # Maintainer: DATSD <dastudiodirector at gmail dot com>
 _basename=factorio-mod-info
-pkgname=${_basename}-git
+pkgname=("${_basename}-git" "${_basename}-dbg-git")
 pkgver=0.1.1.r13
 pkgrel=1
 pkgdesc="A C ++ library that retrieves Factorio\'s Mod information"
@@ -23,11 +23,17 @@ pkgver()
 build()
 {
 	cd "${srcdir}/${_basename}"
-	xmake build "${_basename}"
+	xmake build
 }
 
-package()
+package_factorio-mod-info-git()
 {
 	cd "${srcdir}/${_basename}"
 	xmake install --installdir="${pkgdir}/usr" --root "${_basename}"
+}
+
+package_factorio-mod-info-dbg-git()
+{
+	cd "${srcdir}/${_basename}"
+	xmake install --installdir="${pkgdir}/usr" --root
 }
