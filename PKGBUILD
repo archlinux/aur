@@ -1,7 +1,7 @@
 # Maintainer    : Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='bcachefs-tools'
-pkgver=r251.1b495cf
+pkgver=r260.565b4a7
 pkgrel=1
 pkgdesc='Bcachefs filesystem utilities'
 arch=('i686' 'x86_64')
@@ -31,10 +31,5 @@ build() {
 package() {
     cd "${pkgname}"
 
-    mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/usr/share/man/man8/"
-    install -m0755 bcachefs         "${pkgdir}/usr/bin/"
-    install -m0755 fsck.bcachefs	"${pkgdir}/usr/bin/"
-    install -m0755 mkfs.bcachefs	"${pkgdir}/usr/bin/"
-    install -m0644 bcachefs.8       "${pkgdir}/usr/share/man/man8/"
+    make DESTDIR="${pkgdir}" install
 }

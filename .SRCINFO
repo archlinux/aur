@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools
 	pkgdesc = Bcachefs filesystem utilities
-	pkgver = r251.1b495cf
+	pkgver = r260.565b4a7
 	pkgrel = 1
 	url = http://bcachefs.org/
 	arch = i686
