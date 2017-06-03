@@ -1,12 +1,13 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libvpx-full-git
-pkgver=1.6.1.r442.gff1fef9607
+pkgver=1.6.1.r703.ge30781ff80
 pkgrel=1
 pkgdesc="VP8 and VP9 video codecs (Git version with all possible options)"
 arch=('i686' 'x86_64')
 url="http://www.webmproject.org/code/"
 license=('BSD')
+depends=('gcc-libs')
 makedepends=('git' 'yasm')
 provides=('libvpx' 'libvpx-git' 'libvpx.so')
 conflicts=('libvpx' 'libvpx-git')
