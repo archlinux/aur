@@ -1,6 +1,6 @@
 pkgbase = gokey-git
 	pkgdesc = A simple vaultless password manager in Go
-	pkgver = 20120515
+	pkgver = r15.05f83bb
 	pkgrel = 1
 	url = https://github.com/cloudflare/gokey
 	arch = x86_64

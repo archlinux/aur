@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe <giuscri@gmail.com>
 
 pkgname=gokey-git
-pkgver=r14.214b212_1
+pkgver=r15.05f83bb
 pkgrel=1
 pkgdesc="A simple vaultless password manager in Go"
 arch=('x86_64')
@@ -13,8 +13,7 @@ _gourl=github.com/cloudflare/gokey/cmd/gokey
 
 pkgver() {
   cd "$srcdir/src/$_gourl"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"|sed s,-,_,g
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
