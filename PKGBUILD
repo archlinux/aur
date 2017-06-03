@@ -1,7 +1,7 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 pkgname=moolticute
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ depends=('libusb'
 makedepends=('make')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz")
-sha256sums=('2b2fc5c6f241dd13c18a3d1b0ef2aaba4aa1a30828ddcaa9915a6702cb3401bb')
+sha256sums=('cc2d1be10ccc65fc835aeaab7f2b3a2953012dbfb11a4b32d088c985c79d479d')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}-beta"
