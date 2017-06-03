@@ -1,7 +1,7 @@
 pkgbase = libdrm-git
 	pkgdesc = Userspace interface to kernel DRM services, master git version
-	pkgver = 2.4.80.r11.ga2fa2e08
-	pkgrel = 1
+	pkgver = 2.4.81.r2.gce9e3ba6
+	pkgrel = 2
 	url = http://dri.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = libdrm-git
 	depends = libpciaccess
 	provides = libdrm
 	conflicts = libdrm
-	replaces = libdrm
 	source = libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master
 	source = COPYING
 	sha512sums = SKIP

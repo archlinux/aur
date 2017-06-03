@@ -3,8 +3,8 @@
 
 pkgname=libdrm-git
 _pkgname=libdrm
-pkgver=2.4.80.r11.ga2fa2e08
-pkgrel=1
+pkgver=2.4.81.r2.gce9e3ba6
+pkgrel=2
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
 license=('custom')
@@ -13,7 +13,6 @@ makedepends=('valgrind' 'xorg-util-macros' 'libxslt' 'docbook-xsl')
 checkdepends=('cairo' 'bcunit-cunit-compat')
 url="http://dri.freedesktop.org/"
 provides=('libdrm')
-replaces=('libdrm')
 conflicts=('libdrm')
 
 source=('libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master'
