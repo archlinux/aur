@@ -1,6 +1,6 @@
 pkgbase = i3lock-git
 	pkgdesc = An improved screenlocker based upon XCB and PAM
-	pkgver = 2.8.r10.g9c8ae8b
+	pkgver = 2.9
 	pkgrel = 1
 	url = http://i3wm.org/i3lock/
 	arch = i686
