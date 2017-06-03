@@ -137,7 +137,6 @@ package_lib32-llvm-svn() {
         'llvm-svn'
     )
     provides=('lib32-llvm')
-    replaces=('lib32-llvm')
     conflicts=('lib32-llvm')
 
     cd "${srcdir}/build"
@@ -186,7 +185,6 @@ package_lib32-llvm-libs-svn() {
         'lib32-zlib'
     )
     provides=('lib32-llvm-libs')
-    replaces=('lib32-llvm-libs')
     conflicts=('lib32-llvm-libs')
 
     cd "${srcdir}/build"
@@ -222,7 +220,6 @@ package_lib32-clang-svn() {
         "lib32-llvm-svn=${pkgver}-${pkgrel}"
     )
     provides=('lib32-clang')
-    replaces=('lib32-clang')
     conflicts=('lib32-clang')
 
     cd "${srcdir}/build/tools/clang"
