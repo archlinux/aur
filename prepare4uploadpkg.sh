@@ -18,6 +18,6 @@ namcap PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
 git add . # PKGBUILD prepare4uploadpkg.sh .SRCINFO
 git commit -m "New package commit"
-git push
+git push --set-upstream origin master
 
 exit
