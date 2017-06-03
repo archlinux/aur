@@ -31,5 +31,8 @@ build() {
 package() {
     cd "${pkgname}"
 
-    make DESTDIR="${pkgdir}" install
+    make                        \
+        DESTDIR="${pkgdir}/usr" \
+        ROOT_SBINDIR=/bin       \
+        install
 }
