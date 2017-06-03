@@ -18,7 +18,7 @@ optdepends=(
    'gsettings-desktop-schemas: For web search support'
 )
 source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${pkgver}.jar
-        https://raw.githubusercontent.com/JabRef/jabref/master/LICENSE.md
+        https://raw.githubusercontent.com/JabRef/jabref/v${pkgver}/LICENSE.md
         jabref.sh
         jabref.desktop)
 noextract=(JabRef-${pkgver}.jar)
