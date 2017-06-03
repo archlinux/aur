@@ -7,16 +7,12 @@
 # Contributor of the -ck PKGBUILD
 #   graysky <graysky AT archlinux DOT us>
 
-### Do not edit below this line unless you know what you're doing
-
-pkgname=linux-lts310
-true && pkgname=(linux-lts310 linux-lts310-headers)
-_kernelname=-lts310
+pkgbase=linux-lts310
 _srcname=linux-3.10
 pkgver=3.10.105
 pkgrel=1
 arch=('i686' 'x86_64')
-url="https://www.kernel.org"
+url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'gcc49')
 options=('!strip')
@@ -24,44 +20,50 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
-        'enable_haswell_pstate_driver.patch'
-        'linux-lts310.preset'
-        'change-default-console-loglevel.patch'
-        'config' 'config.x86_64'
+        # the main kernel config files
+        'config.i686' 'config.x86_64'
+        # pacman hook for initramfs regeneration
         '90-linux-lts310.hook'
+        # standard config files for mkinitcpio ramdisk
+        'linux-lts310.preset'
+        # additional fixes
+        'enable_haswell_pstate_driver.patch'
+        'change-default-console-loglevel.patch'
         'criu-no-expert.patch'
         '0002_asmlinkage.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
             'f80c551ebb34df1244b3cec5e06d09fb3eff30289c00cb6347f5d1c874976fda'
             'SKIP'
-            'd7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9'
-            'abd98bed3e743ba60809fe54a1a5c6b46b9f401844b0beef8da1708b1fe8196b'
-            '56bd99e54429a25a144f2d221718b67f516344ffd518fd7dcdd752206ec5be69'
             '9f3ac423acd111057786196413798e46d7f88435d34a28eb6af882b197f11597'
             'efc600449f588e8baff59f7595c885cedd5b83af8302aa9e87a4a8171e72bd50'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'abd98bed3e743ba60809fe54a1a5c6b46b9f401844b0beef8da1708b1fe8196b'
+            'd7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9'
+            '56bd99e54429a25a144f2d221718b67f516344ffd518fd7dcdd752206ec5be69'
             'daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5'
             '2696c43b1b42504f58657205a100defb8002b5055986cf363fc8fbe8e63e5923')
-validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds  <torvalds@linux-foundation.org>
+              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
 
+_kernelname=${pkgbase#linux}
+
 prepare() {
-  cd "${_srcname}"
+  cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  msg "Patching source to v$pkgver"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # add latest fixes from stable queue, if needed
+  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # allow criu without expert option set
-  # patch from fedora
+  # allow criu without expert option set; patch from fedora
   patch -Np1 -i "${srcdir}/criu-no-expert.patch"
 
   # Fix asmlinkage for GCC5 on 32bit systems
@@ -71,14 +73,8 @@ prepare() {
   fi
 	
   ### Clean tree and copy ARCH config over
-  msg "Running make mrproper to clean source tree"
   make mrproper
-
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -92,7 +88,6 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # get kernel version
-  msg "Running make prepare for you to enable patched options of your choosing"
   make prepare
 
   # load configuration
@@ -111,28 +106,25 @@ prepare() {
 #  if [ "${CARCH}" = "x86_64" ]; then
 #    cat .config > "${startdir}/config.x86_64.last"
 #  else
-#    cat .config > "${startdir}/config.last"
+#    cat .config > "${startdir}/config.i686.last"
 #  fi
 }
 
 build() {
   cd "${srcdir}/${_srcname}"
 
-  msg "Running make bzImage and modules"
   make CC="gcc-4.9" ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-package_linux-lts310() {
-  pkgdesc='The linux-lts310 kernel and modules - 3.10 longterm stable kernel'
-  #_Kpkgdesc='The linux-lts310 kernel and modules - 3.10 longterm stable kernel'
-  #pkgdesc="${_Kpkgdesc}"
+_package() {
+  pkgdesc="The linux-lts310 kernel and modules - 3.10 longterm stable kernel"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-  backup=("etc/mkinitcpio.d/linux-lts310.preset")
-  install=linux-lts310.install
-  groups=('lts-31x')
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'modprobed_db: Keeps track of EVERY kernel module that has ever been probed')
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  install=${pkgbase}.install
 
-  cd "${_srcname}"
+  cd "${srcdir}/${_srcname}"
 
   KARCH=x86
 
@@ -143,29 +135,28 @@ package_linux-lts310() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-linux-lts310"
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-
   sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=-lts310/g" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
+    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux-lts310.preset" "${pkgdir}/etc/mkinitcpio.d/linux-lts310.preset"
+  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
-    -e "1s|'linux.*'|'linux-lts310'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-linux-lts310\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-linux-lts310.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-lts310-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/linux-lts310.preset"
+    -e "1s|'linux.*'|'${pkgbase}'|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgname}|g" "${srcdir}/90-${pkgname}.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgname}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-${pkgbase}.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -190,12 +181,9 @@ package_linux-lts310() {
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
-package_linux-lts310-headers() {
-  pkgdesc='Header files and scripts to build modules for linux-lts310.'
-  #_Hpkgdesc='Header files and scripts to build modules for linux-lts310.'
-  #pkgdesc="${_Hpkgdesc}"
+_package-headers() {
+  pkgdesc="Header files and scripts to build modules for linux-lts310"
   depends=('linux-lts310') # added to keep kernel and headers packages matched
-  groups=('lts-31x')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -328,5 +316,10 @@ package_linux-lts310-headers() {
   rm -rf "${pkgdir}"/usr/src/linux-${_kernver}/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-# Global pkgdesc and depends are here so that they will be picked up by AUR
-pkgdesc='The linux-lts310 kernel and modules - 3.10 longterm stable kernel'
+pkgname=("${pkgbase}" "${pkgbase}-headers")
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
