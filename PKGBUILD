@@ -7,7 +7,7 @@
 pkgname=archlabs-hello-git
 _pkgname=archlabs-hello
 pkgver=1.1
-pkgrel=7
+pkgrel=9
 pkgdesc="A tool providing access to documentation and support for new Archlabs users."
 url="https://github.com/ARCHLabs/$pkgname"
 arch=('any')
@@ -22,6 +22,7 @@ package() {
     cp -r data $pkgdir/usr/share/$_pkgname
     cp -r ui $pkgdir/usr/share/$_pkgname
     install -dm755 $pkgdir/usr/share/icons/hicolor/64x64/apps/
+    cp archlabs-hello.png $pkgdir/usr/share/icons/hicolor/64x64/apps/
     cp archlabs.png $pkgdir/usr/share/icons/hicolor/64x64/apps/
     install -Dm644 $_pkgname.desktop $pkgdir/etc/skel/.config/autostart/$_pkgname.desktop
     install -Dm644 $_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
