@@ -1,0 +1,16 @@
+pkgbase = libmpsse_spi
+	pkgdesc = The LibMPSSE-SPI library has been created to to aid the implementation of SPI designs using FTDI devices which incorporate the FTDI MPSSE (FT4232H, FT2232H, FT2232D and FT232H) by taking care of all the required MPSSE commands.
+	pkgver = 0.41
+	pkgrel = 1
+	url = http://www.ftdichip.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libftd2xx
+	options = !strip
+	options = staticlibs
+	source = http://www.ftdichip.com/Support/SoftwareExamples/MPSSE/LibMPSSE-SPI/LibMPSSE-SPI_source.zip
+	md5sums = d551e99a9dc403c95941ffac13ab81a7
+
+pkgname = libmpsse_spi
+
