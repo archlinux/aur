@@ -2,14 +2,14 @@
 
 pkgname=ayat
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Holy Quran - KSU Electronic Moshaf project"
 arch=('any')
 url="http://quran.ksu.edu.sa/"
 license=('GPL')
 depends=(adobe-air-sdk lib32-libxt lib32-curl)
 makedepends=(unzip)
-source=("http://cdn.ksu.edu.sa/quran/ayat/download/programs/Ayat-v${pkgver}_linux.zip" ${pkgname} ${pkgname}.desktop)
+source=("http://quran.ksu.edu.sa/ayat/download/programs/Ayat-v${pkgver}_linux.zip" ${pkgname} ${pkgname}.desktop)
 noextract=("Ayat-v${pkgver}_linux.zip")
 md5sums=(b1fa5ee55415ea3e9228e6f11599206a 
          ad48120862e0767d15968a49420c1a27
