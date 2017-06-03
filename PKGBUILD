@@ -25,13 +25,13 @@ md5sums=('d551e99a9dc403c95941ffac13ab81a7')
 options=(!strip staticlibs)
 
 prepare() {
-          cd "$srcdir/LibMPSSE-SPI_source/LibMPSSE-SPI/LibMPSSE/Build/Linux/"
-          make clean -i
+    cd "$srcdir/LibMPSSE-SPI_source/LibMPSSE-SPI/LibMPSSE/Build/Linux/"
+    make clean -i
 }    
 
 build() {
-        cd "$srcdir/LibMPSSE-SPI_source/LibMPSSE-SPI/LibMPSSE/Build/Linux/"
-        make
+    cd "$srcdir/LibMPSSE-SPI_source/LibMPSSE-SPI/LibMPSSE/Build/Linux/"
+    make
 }
 
 
