@@ -13,7 +13,7 @@
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.25.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -29,7 +29,7 @@ depends_i686=(
 )
 depends_x86_64=('ffmpeg-full')
 optdepends=('youtube-dl: for video-sharing websites playback')
-makedepends=('git' 'mesa' 'python-docutils' 'ladspa')
+makedepends=('mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
