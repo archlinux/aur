@@ -1,8 +1,8 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss08
 pkgver=1.13.0
-pkgrel=2
-pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
+pkgrel=3
+pkgdesc='A slender monospace typeface. Shape: Pragmata Pro.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
