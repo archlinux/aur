@@ -9,14 +9,14 @@
 pkgname=snort-nfqueue
 _pkgname=snort
 pkgver=2.9.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64')
 url='http://www.snort.org'
 license=('GPL')
-provides=("snort=${pkgver}")
+provides=('snort')
 conflicts=('snort')
-depends=('libdaq' 'libdnet' 'libnetfilter_queue' 'libpcap' 'openssl' 'pcre' 'zlib')
+depends=('libdaq-nfqueue' 'libdnet' 'libnetfilter_queue' 'libpcap' 'openssl' 'pcre' 'zlib')
 backup=('etc/snort/snort.conf'
         'etc/snort/homenet.conf'
         'etc/snort/rules/local.rules'
@@ -35,21 +35,12 @@ source=("https://www.snort.org/downloads/snort/${_pkgname}-${pkgver}.tar.gz"
         'logrotate'
 	'snort.service')
 sha256sums=('71b147125e96390a12f3d55796ed5073df77206bd3563d84d3e5a1f19e7d7a56'
-            'fde9236d0f17944fb58ad9016163f6781f7c3464ee28cb388d9abce032dc01f7'
+            '8ba237d55d753af880db217811ff0fad3812caf014b7b239a1cd067f58e61883'
             'c947dcf8b243647537ca998bd6271fc06f9e6a33af29aff7ff0951430bebcff4'
             'b65d8d8e37f686244dfb7293b1ea378f1dfd8141c14dbaf5e83dba9440152808'
             'ec4d81936b3905ba980ee694ae77ad15d5adda45c9f87fa0c27adc38f11bca08'
             '4df93871c41f94d688a6c8b9762fa221a703b54d309ee1436c90eebbd3fb8c9d'
             'b904ed172ea0c1a4eeaddb30745aadb8db21e333eb9faaf93400ce3db166f90d')
-
-prepare() {
-  if [ ! -x "/usr/lib/daq/daq_nfq.so" ]; then
-    echo 'ERROR: daq is without NFQUEUE support'
-    echo 'ERROR: first download libdaq source, makepkg and install it'
-    echo 'WEBSITE: https://www.archlinux.org/packages/?q=libdaq'
-    exit
-  fi 
-}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -67,7 +58,7 @@ package() {
   install -d -m750 "${pkgdir}/var/log/snort/old"
   chmod 750 "${pkgdir}/var/log/snort"
   chown -R 29:29 "${pkgdir}/var/log/snort"
-  install -d -m755 "${pkgdir}/etc/snort/rules" "${pkgdir}/etc/snort/dynamicrules"
+  install -d -m755 "${pkgdir}"/etc/snort/{dynamic,}rules
   install -D -m644 etc/{*.conf*,*.map} "${pkgdir}/etc/snort/"
   install -D -m644 ../snort.conf ../homenet.conf "${pkgdir}/etc/snort/"
   install -D -m644 ../local.rules "${pkgdir}/etc/snort/rules/"
