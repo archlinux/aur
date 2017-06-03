@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=N.86329.ga47273c803
+pkgver=N.86349.g2ba896fef7
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -35,13 +35,15 @@ makedepends=(
         'blackmagic-decklink-sdk'
 )
 provides=(
-    'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
-    'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
-    'libavfilter.so' 'libavresample.so' 'libswscale.so' 'libswresample.so' 'libpostproc.so'
+    'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
+    'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-nvenc' 'ffmpeg-semifull-git' 'libavutil.so'
+    'libavcodec.so' 'libavformat.so' 'libavdevice.so' 'libavfilter.so' 'libavresample.so'
+    'libswscale.so' 'libswresample.so' 'libpostproc.so'
 )
 conflicts=(
-    'ffmpeg' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
-    'ffmpeg-libfdk_aac')
+    'ffmpeg' 'ffmpeg-git' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
+    'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-nvenc' 'ffmpeg-semifull-git'
+)
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
@@ -191,8 +193,8 @@ build() {
 
 package() {
     cd "$pkgname"
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir" install
     
-    install -D -m755 tools/qt-faststart "${pkgdir}/usr/bin/qt-faststart"
+    install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
     install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
