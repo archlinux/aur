@@ -1,6 +1,6 @@
 #Maintainer: AlpixTM aka Lukas N. <contact@alpix.eu>
 pkgname=transfersh
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="unofficial command-line client for https://github.com/dutchcoders/transfer.sh (https://transfer.sh) Share a file easy with >transfersh filepath<"
 arch=('any')
