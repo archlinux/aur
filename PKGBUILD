@@ -1,13 +1,14 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss01
 pkgver=1.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A slender monospace typeface. Shape: Andale Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-iosevka-term'
+conflicts=('ttf-iosevka-pack'
+           'ttf-iosevka-term'
            'ttf-iosevka-term-ss02'
            'ttf-iosevka-term-ss03'
            'ttf-iosevka-term-ss04'
