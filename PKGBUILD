@@ -9,8 +9,8 @@ url='https://github.com/745275633/Factorio-Mod-info'
 license=('GPL')
 depends=('boost' 'openssl')
 makedepends=('xmake>=2.1.4.r178' 'git' 'boost' 'avhttp' 'da-exception')
-provides=(${_basename}-dbg=${pkgver})
-conflicts=(${_basename}-dbg)
+provides=(${_basename}=${pkgver})
+conflicts=(${_basename})
 source=("${_basename}::git+https://github.com/745275633/Factorio-Mod-info.git")
 sha256sums=('SKIP')
 
@@ -23,11 +23,11 @@ pkgver()
 build()
 {
 	cd "${srcdir}/${_basename}"
-	xmake build "${_basename}-dbg"
+	xmake build
 }
 
 package()
 {
 	cd "${srcdir}/${_basename}"
-	xmake install --installdir="${pkgdir}/usr" --root "${_basename}-dbg"
+	xmake install --installdir="${pkgdir}/usr" --root
 }
