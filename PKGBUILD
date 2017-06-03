@@ -56,12 +56,14 @@ package_exfalso() {
 
 
     # Remove plugins
+    site_packages="$(find ${pkgdir} -type d -name site-packages)"
+
     for package in _shared covers events gstreamer playlist playorder query
     do
-        rm -r "${pkgdir}/usr/lib/python3.6/site-packages/${_pkgbase}/ext/${package}"
+        rm -r "${site_packages}/${_pkgbase}/ext/${package}"
     done
 
-    find "${pkgdir}/usr/lib/python3.6/site-packages/${_pkgbase}/ext/songsmenu" \
+    find "${site_packages}/${_pkgbase}/ext/songsmenu" \
         -type f \( \
             -name "bookmarks.*" \
             -o -name "filterall.*" \
