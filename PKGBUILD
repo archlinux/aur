@@ -10,6 +10,8 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('mpv' 'qt5-x11extras')
 makedepends=('git' 'qt5-tools')
+optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
+            'libva-intel-driver: backend for Intel cards')
 provides=('mpc-qt')
 conflicts=('mpc-qt')
 source=("git+${url}.git"
