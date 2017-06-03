@@ -1,0 +1,10 @@
+
+post_install() {
+  echo " => For use in MAME:"
+  echo "    $ mkdir -p ~/.mame/dats"
+  echo "    $ ln -sf /usr/share/arcade-history-dat/history.dat ~/.mame/dats/history.dat"
+}
+
+post_upgrade() {
+  post_install
+}

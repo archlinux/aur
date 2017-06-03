@@ -1,14 +1,16 @@
 pkgbase = arcade-history-dat
-	pkgdesc = Arcade History Database file to use for Emulators and Frontends with more than 36,000 entries!
-	pkgver = 155
+	pkgdesc = arcade history database file for emulators and frontends with more than 61000 entries
+	pkgver = 186
 	pkgrel = 1
-	url = http://www.arcade-history.com
+	url = https://www.arcade-history.com
+	install = arcade-history-dat.install
 	arch = any
 	license = custom
-	optdepends = raine: for use in raine
-	optdepends = qmc2: for use in qmc2
-	source = http://www.arcade-history.com/dats/history155.7z
-	sha256sums = 05e8bec9c2f3f1747e4f5bf772a68289191c1e4d3ec9938d8d806056d8a4aab6
+	optdepends = raine: for use in Raine
+	optdepends = qmc2: for use in QMC2
+	optdepends = sdlmame: for use in MAME
+	source = https://www.arcade-history.com/dats/history186.7z
+	sha256sums = 747c8934f416c5620babec5068acc23fb251c4915d270cee6d53436e5a009261
 
 pkgname = arcade-history-dat
 
