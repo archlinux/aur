@@ -4,15 +4,15 @@
 
 pkgbase=python-pyalsaaudio
 pkgname=(python-pyalsaaudio python2-pyalsaaudio)
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="ALSA wrappers for Python"
 arch=('i686' 'x86_64')
 url="http://larsimmisch.github.io/pyalsaaudio/"
 license=('custom: PSF')
 makedepends=('python-setuptools' 'python2-setuptools' 'alsa-lib')
-source=("https://github.com/larsimmisch/pyalsaaudio/archive/$pkgver.tar.gz")
-sha256sums=('2f16c327c0c9efd99e3094cd60044dfdd28b0a4522833af63194271c5b970e93')
+source=("https://files.pythonhosted.org/packages/source/p/pyalsaaudio/pyalsaaudio-$pkgver.tar.gz")
+sha256sums=('84e8f8da544d7f4bd96479ce4a237600077984d9be1d7f16c1d9a492ecf50085')
 
 prepare() {
   # copy folder, so we can cleanly build for both python versions

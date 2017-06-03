@@ -1,6 +1,6 @@
 pkgbase = python-pyalsaaudio
 	pkgdesc = ALSA wrappers for Python
-	pkgver = 0.8.2
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = http://larsimmisch.github.io/pyalsaaudio/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = python-pyalsaaudio
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = alsa-lib
-	source = https://github.com/larsimmisch/pyalsaaudio/archive/0.8.2.tar.gz
-	sha256sums = 2f16c327c0c9efd99e3094cd60044dfdd28b0a4522833af63194271c5b970e93
+	source = https://files.pythonhosted.org/packages/source/p/pyalsaaudio/pyalsaaudio-0.8.4.tar.gz
+	sha256sums = 84e8f8da544d7f4bd96479ce4a237600077984d9be1d7f16c1d9a492ecf50085
 
 pkgname = python-pyalsaaudio
 	pkgdesc = ALSA wrappers for Python 3
