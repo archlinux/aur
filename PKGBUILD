@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-cc-slab
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -15,6 +15,6 @@ sha256sums=('09bf3d70184852b84f9a9425b3f6721a057981cc3668c6f2dc88f0418c321e6b'
 package() {
   cd ${srcdir}
   install -d ${pkgdir}/usr/share/fonts/TTF/
-  install -m644 *.ttf ${pkgdir}/usr/share/fonts/TTF/
+  install -m644 ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
   install -D -m644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
