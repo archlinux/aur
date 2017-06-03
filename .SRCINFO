@@ -1,6 +1,6 @@
 pkgbase = perl-ppi
 	pkgdesc = Parse, Analyze and Manipulate Perl (without perl)
-	pkgver = 1.220
+	pkgver = 1.224
 	pkgrel = 1
 	url = http://search.mcpan.org/dist/PPI
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = perl-ppi
 	checkdepends = perl-test-nowarnings>=0.084
 	checkdepends = perl-test-object>=0.07
 	checkdepends = perl-test-subcalls>=1.07
+	checkdepends = perl-test-deep
 	makedepends = perl-class-inspector>=1.22
 	makedepends = perl-file-remove>=1.42
 	depends = perl-clone>=0.30
@@ -18,9 +19,9 @@ pkgbase = perl-ppi
 	depends = perl-task-weaken
 	depends = perl>=5.6.0
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/M/MI/MITHALDU/PPI-1.220.tar.gz
-	md5sums = 52224156144862b79b91fb53191ae47f
-	sha512sums = 03ff865424a11cb351211dc7d57b6477848e8f354de74dc5bae214614438549f1dba6818842f6312f88fa631514abad69b0023046d56c8e8584d0b634c202694
+	source = http://search.mcpan.org/CPAN/authors/id/M/MI/MITHALDU/PPI-1.224.tar.gz
+	md5sums = 527b70bb15263c4f3907d6d4b5be6dba
+	sha512sums = 7c5f4a01b3d4a1e7e2f68d7e5c81368387fbe9a4cd2f20afc494706f742c9ba0b293747b692fb77af9a1457e077687c7d5217bf09137ab71bb50ba52da24431c
 
 pkgname = perl-ppi
 
