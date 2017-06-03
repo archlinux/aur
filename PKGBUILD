@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=alock-git
-pkgver=2.3.r12.g329ac15
+pkgver=2.3.r13.g0ffde00
 pkgrel=1
 pkgdesc="Simple transparent screen-lock"
 arch=('i686' 'x86_64')
