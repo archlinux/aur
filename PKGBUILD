@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20170403.8c94fa26
+pkgver=20170601.ec34ebfb
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
@@ -13,12 +13,8 @@ makedepends=('git' 'cmake' 'asciidoc')
 depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2'
          'subsurface-libdc' 'subsurface-marble'
          'qt5-connectivity' 'grantlee')
-source=('git://git.subsurface-divelog.org/subsurface'
-        'headers.patch')
-sha256sums=('SKIP'
-            'fbcbf99294e9ba9ef134eb04b832cca4b19355070020f5ee2984ce739e8f0a6c')
-
-# Cloud storage is broken because libQt5Network does not yet support openssl-1.1.0
+source=('git://git.subsurface-divelog.org/subsurface')
+sha256sums=('SKIP')
 
 provides=('subsurface')
 conflicts=('subsurface')
@@ -31,7 +27,6 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	sed 's:<marble:<subsurface/marble:g' -i desktop-widgets/globe.*
-	patch -p1 -i ../headers.patch
 }
 
 build() {
