@@ -28,12 +28,16 @@ build() {
 
 package_python-catkin_pkg() {
     depends+=('python' 'python-argparse' 'python-dateutil' 'python-docutils')
+    conflicts=('python-catkin-pkg')
+    replaces=('python-catkin-pkg')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-catkin_pkg() {
     depends+=('python2' 'python2-argparse' 'python2-dateutil' 'python2-docutils')
+    conflicts=('python2-catkin-pkg')
+    replaces=('python2-catkin-pkg')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
