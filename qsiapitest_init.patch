@@ -1,0 +1,13 @@
+--- src/qsiapitest.cpp.orig	2017-03-31 00:23:56.000000000 +0200
++++ src/qsiapitest.cpp	2017-06-04 01:31:07.142438223 +0200
+@@ -193,8 +193,8 @@
+ 		std::cout << "qsiapitest version: " << info << "\n";
+ 		//Discover the connected cameras
+ 		int iNumFound;
+-		std::string camSerial[QSICamera::MAXCAMERAS] = "";
+-		std::string camDesc[QSICamera::MAXCAMERAS] = "";
++		std::string camSerial[QSICamera::MAXCAMERAS] = {};
++		std::string camDesc[QSICamera::MAXCAMERAS] = {};
+ 
+ 		cam.get_AvailableCameras(camSerial, camDesc, iNumFound);
+ 
