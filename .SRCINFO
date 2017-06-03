@@ -1,7 +1,7 @@
 pkgbase = xorg-xdriinfo-git
 	pkgdesc = Query configuration information of DRI drivers with glvnd support
 	pkgver = xdriinfo.1.0.5.r4.g6273d9d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = xorg-xdriinfo-git
 	depends = libgl
 	provides = xorg-xdriinfo
 	conflicts = xorg-xdriinfo
-	replaces = xorg-xdriinfo
 	source = git://anongit.freedesktop.org/git/xorg/app/xdriinfo
 	sha512sums = SKIP
 

@@ -4,7 +4,7 @@
 pkgname=xorg-xdriinfo-git
 _gitname=xdriinfo
 pkgver=xdriinfo.1.0.5.r4.g6273d9d
-pkgrel=2
+pkgrel=3
 pkgdesc="Query configuration information of DRI drivers with glvnd support"
 arch=('i686' 'x86_64')
 url="https://xorg.freedesktop.org/"
@@ -12,7 +12,6 @@ license=('custom')
 depends=('libx11' 'libgl')
 makedepends=('xorg-util-macros' 'glproto')
 provides=('xorg-xdriinfo')
-replaces=('xorg-xdriinfo')
 conflicts=('xorg-xdriinfo')
 groups=('xorg-apps' 'xorg')
 source=('git://anongit.freedesktop.org/git/xorg/app/xdriinfo')
