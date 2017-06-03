@@ -6,13 +6,13 @@
 pkgname=libdesktop-agnostic-git
 _gitname=libdesktop-agnostic
 pkgver=2016.05.02
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides an extensible config API, a unified virtual fs API, and a desktop item editor for GLib-based projects.'
 arch=('i686' 'x86_64')
 url='https://github.com/p12tic/libdesktop-agnostic'
 license=('GPL' 'LGPL')
 depends=('pygtk')
-makedepends=('git' 'intltool' 'vala' 'gobject-introspection')
+makedepends=('git' 'intltool' 'vala' 'gobject-introspection' 'gconf')
 optdepends=('gconf: gconf configuration backend')
 conflicts=('libdesktop-agnostic')
 provides=('libdesktop-agnostic')
