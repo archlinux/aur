@@ -4,7 +4,7 @@
 name=cloudcompare
 pkgname=${name}-git
 pkgver=2.8.0.r140.gedb8d44b
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -38,7 +38,6 @@ build() {
         -DINSTALL_QBLUR_PLUGIN=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON \
-        -DCGAL_DIR=/usr/lib/CGAL \
         -DINSTALL_QHPR_PLUGIN=ON \
         -DINSTALL_QPOISSON_RECON_PLUGIN=ON \
         -DPOISSON_RECON_WITH_OPEN_MP=ON \
