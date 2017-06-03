@@ -28,6 +28,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'linux-lts310.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
+        '90-linux-lts310.hook'
         'criu-no-expert.patch'
         '0002_asmlinkage.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
@@ -39,6 +40,7 @@ sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             '56bd99e54429a25a144f2d221718b67f516344ffd518fd7dcdd752206ec5be69'
             '9f3ac423acd111057786196413798e46d7f88435d34a28eb6af882b197f11597'
             'efc600449f588e8baff59f7595c885cedd5b83af8302aa9e87a4a8171e72bd50'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5'
             '2696c43b1b42504f58657205a100defb8002b5055986cf363fc8fbe8e63e5923')
 validpgpkeys=(
@@ -114,7 +116,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/linux-3.10"
+  cd "${srcdir}/${_srcname}"
 
   msg "Running make bzImage and modules"
   make CC="gcc-4.9" ${MAKEFLAGS} LOCALVERSION= bzImage modules
@@ -160,6 +162,10 @@ package_linux-lts310() {
     -e "s|default_image=.*|default_image=\"/boot/initramfs-linux-lts310.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-lts310-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/linux-lts310.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgname}|g" "${srcdir}/90-${pkgname}.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgname}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
