@@ -1,7 +1,7 @@
 # Maintainer: DATSD <dastudiodirector at gmail dot com>
 _basename=factorio-mod-info
-pkgname=factorio-mod-info-git
-pkgver=0.1.1.r9
+pkgname=${_basename}-git
+pkgver=0.1.1.r13
 pkgrel=1
 pkgdesc="A C ++ library that retrieves Factorio\'s Mod information"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/745275633/Factorio-Mod-info'
 license=('GPL')
 depends=('boost' 'openssl')
 makedepends=('xmake>=2.1.4.r178' 'git' 'boost' 'avhttp' 'da-exception')
-provides=(${_basename})
+provides=(${_basename}=${pkgver})
 conflicts=(${_basename})
 source=("${_basename}::git+https://github.com/745275633/Factorio-Mod-info.git")
 sha256sums=('SKIP')
@@ -23,11 +23,11 @@ pkgver()
 build()
 {
 	cd "${srcdir}/${_basename}"
-	xmake build
+	xmake build "${_basename}"
 }
 
 package()
 {
 	cd "${srcdir}/${_basename}"
-	xmake install --installdir="${pkgdir}/usr" --root
+	xmake install --installdir="${pkgdir}/usr" --root "${_basename}"
 }
