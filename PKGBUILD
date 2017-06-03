@@ -1,7 +1,7 @@
 # Maintainer: David Cao <dcao@protonmail.com>
 pkgname=timew-git
 pkgver=r2000.747bdd3
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line time tracker (also known as timewarrior)"
 arch=('i686' 'x86_64')
 url="https://taskwarrior.org/docs/timewarrior/index.html"
@@ -15,8 +15,9 @@ conflicts=('timew')
 install=timew-git.install
 source=('git+https://git.tasktools.org/tm/timew.git'
         'git+https://git.tasktools.org/tm/libshared.git'
-        'timew-refresh-python2.patch')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+        'timew-refresh-python2.patch'
+        'on-modify-python2.patch')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -30,6 +31,7 @@ prepare() {
   git submodule update src/libshared
 
   patch -p1 -i "${srcdir}/timew-refresh-python2.patch"
+  patch -p1 -i "${srcdir}/on-modify-python2.patch"
 
   cp "${srcdir}/${pkgname%-git}/ext/on-modify.timewarrior" "${srcdir}"
 }
