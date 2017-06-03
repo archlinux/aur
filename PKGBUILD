@@ -1,4 +1,4 @@
-# Maintainer: Lex Black <autumn-wind at web dot de>
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='libscrypt-git'
 gitname='libscrypt'
@@ -11,20 +11,21 @@ license=('BSD')
 makedepends=('git')
 provides=("${gitname}")
 conflicts=("${gitname}")
-source=('git+https://github.com/technion/libscrypt')
+source=('git+https://github.com/technion/libscrypt.git')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${gitname}"
 
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/v//'
+    git describe --long                     \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  \
+        | sed 's/v//'
 }
 
 build() {
     cd "${gitname}"
 
     CFLAGS="${CFLAGS} -fPIC"
-
     make
 }
 
@@ -37,6 +38,8 @@ check() {
 package() {
   cd "${gitname}"
 
-  make PREFIX='/usr' DESTDIR="${pkgdir}" install
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -D -m 644 \
+      LICENSE       \
+      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
