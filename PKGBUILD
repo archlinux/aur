@@ -36,12 +36,12 @@ build() {
 
 
 package() {
-	# Make required dirs
-	mkdir -p ${pkgdir}/usr/{lib,include}
+    # Make required dirs
+    mkdir -p ${pkgdir}/usr/{lib,include}
 
-	# Install versioned so file as well as static library
-	install -Dm755 ${srcdir}/LibMPSSE-SPI_source/LibMPSSE-SPI/LibMPSSE/Build/Linux/libMPSSE.so ${pkgdir}/usr/lib/libMPSSE.so.${pkgver}
-	install -m644 ${srcdir}/LibMPSSE-SPI_source/LibMPSSE-SPI/LibMPSSE/Build/Linux/libMPSSE.a ${pkgdir}/usr/lib/libMPSSE.a
+    # Install versioned so file as well as static library
+    install -Dm755 ${srcdir}/LibMPSSE-SPI_source/LibMPSSE-SPI/LibMPSSE/Build/Linux/libMPSSE.so ${pkgdir}/usr/lib/libMPSSE.so.${pkgver}
+    install -m644 ${srcdir}/LibMPSSE-SPI_source/LibMPSSE-SPI/LibMPSSE/Build/Linux/libMPSSE.a ${pkgdir}/usr/lib/libMPSSE.a
 
     # Link versioned so file to generic
     ln -sf /usr/lib/libMPSSE.so.${pkgver} "${pkgdir}"/usr/lib/libMPSSE.so
