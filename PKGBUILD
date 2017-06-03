@@ -12,13 +12,17 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.2.0_devel.92260.359fa0e9a0
+pkgver=17.2.0_devel.92548.0d576fbfbe
 pkgrel=1
 arch=('x86_64')
-makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
-             'lib32-libxshmfence' 'lib32-libxxf86vm'  'lib32-libxdamage' 'gcc-multilib' 'lib32-libvdpau' 'lib32-wayland' 'lib32-libelf' 'lib32-llvm-svn'
-              'git' 'lib32-libtxc_dxtn' 'lib32-libgcrypt' 'lib32-systemd'
-              'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libunwind' 'lib32-libglvnd')
+makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'dri2proto' 'dri3proto' 'presentproto' 
+             'gcc-multilib' 'lib32-libvdpau' 'lib32-libelf' 'lib32-llvm-svn' 'git' 'lib32-libgcrypt' 'lib32-systemd'
+             'mesa-git' 'lib32-llvm-libs-svn' 'lib32-libglvnd')
+depends=('mesa-git' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
+           'lib32-libtxc_dxtn' 'lib32-llvm-libs-svn' 'lib32-libunwind')
+optdepends=('opengl-man-pages: for the OpenGL API man pages')
+provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver')
+conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
@@ -119,13 +123,6 @@ build () {
 
 
 package_lib32-mesa-git () {
-  pkgdesc="an open-source implementation of the OpenGL specification, git version"
-  depends=('mesa-git' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
-           'lib32-libtxc_dxtn' 'lib32-llvm-libs-svn' 'lib32-libunwind')
-  optdepends=('opengl-man-pages: for the OpenGL API man pages')
-  provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver')
-  replaces=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl')
-  conflicts=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl')
 
   cd mesa
   make DESTDIR="$pkgdir" install
