@@ -2,7 +2,7 @@
 # Contributor: Alan Orth <alan.orth@gmail.com>
 
 pkgname=dmapd
-pkgver=0.0.72
+pkgver=0.0.73
 pkgrel=1
 pkgdesc="Serve DAAP (iTunes) and DPAP (iPhoto) shares from Linux"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ options=('!libtool')
 backup=('etc/dmapd.conf')
 source=("http://www.flyn.org/projects/$pkgname/$pkgname-$pkgver.tar.gz")
 install=dmapd.install
-md5sums=('0fe290d1bf003296b1ed9dfcc0108d6f')
+md5sums=('458adf9d0c0e434fb92ebc8bd9739f68')
 
 build() {
   cd "$pkgname-$pkgver"

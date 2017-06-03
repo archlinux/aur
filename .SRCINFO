@@ -1,6 +1,6 @@
 pkgbase = dmapd
 	pkgdesc = Serve DAAP (iTunes) and DPAP (iPhoto) shares from Linux
-	pkgver = 0.0.72
+	pkgver = 0.0.73
 	pkgrel = 1
 	url = http://www.flyn.org/projects/dmapd/
 	install = dmapd.install
@@ -15,8 +15,8 @@ pkgbase = dmapd
 	optdepends = gst-plugins-ugly: Extra media codecs
 	options = !libtool
 	backup = etc/dmapd.conf
-	source = http://www.flyn.org/projects/dmapd/dmapd-0.0.72.tar.gz
-	md5sums = 0fe290d1bf003296b1ed9dfcc0108d6f
+	source = http://www.flyn.org/projects/dmapd/dmapd-0.0.73.tar.gz
+	md5sums = 458adf9d0c0e434fb92ebc8bd9739f68
 
 pkgname = dmapd
 
