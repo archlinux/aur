@@ -3,7 +3,7 @@
 
 pkgname=subsurface-libdc-git
 _pkgname=libdc
-pkgver=20160930.534dd2f
+pkgver=20170430.9df029a
 pkgrel=1
 pkgdesc='Library for communication with dive computers'
 url='http://git.subsurface-divelog.org/'
