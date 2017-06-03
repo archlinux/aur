@@ -1,0 +1,14 @@
+diff --git a/CC/CGALSupport.cmake b/CC/CGALSupport.cmake
+index 2e7c5e64..826dbdfb 100644
+--- a/CC/CGALSupport.cmake
++++ b/CC/CGALSupport.cmake
+@@ -5,9 +5,6 @@
+ FIND_PACKAGE( CGAL QUIET COMPONENTS Core ) # implies findGMP
+ 
+ if (CGAL_FOUND)
+-	if(${CGAL_MAJOR_VERSION}.${CGAL_MINOR_VERSION} LESS 4.3)
+-		message(SEND_ERROR "CC Lib requires at least CGAL 4.3")
+-	endif()
+ 
+   	# We need to get rid of CGAL CXX flags
+   	set(CGAL_DONT_OVERRIDE_CMAKE_FLAGS ON CACHE INTERNAL "override CGAL flags" FORCE)
