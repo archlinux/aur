@@ -1,0 +1,17 @@
+pkgbase = fluidlite-git
+	pkgdesc = A real-time software synthesizer with SF3 support (development version)
+	pkgver = r42.7b5f279
+	pkgrel = 1
+	url = https://github.com/divideconcept/FluidLite
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = libvorbis
+	conflicts = fluidsynth
+	source = fluidlite::git+https://github.com/divideconcept/FluidLite.git
+	md5sums = SKIP
+
+pkgname = fluidlite-git
+
