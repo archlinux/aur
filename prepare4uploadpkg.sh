@@ -16,9 +16,9 @@ rm -rfv src/ United-Arch/ United-Arch.tar.gz gtk-theme-united-archers-git-*.tar.
 
 namcap PKGBUILD && {
 	makepkg --printsrcinfo > .SRCINFO
-	git add PKGBUILD prepare4uploadpkg.sh .SRCINFO
+	git add . # PKGBUILD prepare4uploadpkg.sh .SRCINFO
 	git commit -m "New package commit"
-	git push
+	git push origin
 }
 
 exit
