@@ -1,6 +1,6 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=script-communicator
-pkgver=4.18
+pkgver=4.22
 _pkgver=0${pkgver/./_}
 pkgrel=1
 pkgdesc="ScriptCommunicator is a scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
@@ -11,22 +11,24 @@ depends=('qt5-script' 'qt5-serialport')
 makedepends=('qt5-tools')
 
 source=("https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_${_pkgver}.zip" 
-	"qmake.patch"
 	"$pkgname.desktop")
-sha256sums=('804f42ec28de0c95d772ad1a864301d73c3e5221f92102848f087c8793174be5'
-            '42d4c91d7313281e41588d7d75016ab30695bf057e81197fa09a904cb3311b6e'
+sha256sums=('322e5d502ce4db24ec68b9d9dac153b5010b43722e6d2e56116521a5a9245bd5'
             'a6ff5c6079a0af0c5bc47c8f660073fcfc31c22a68b57d98f454542aaa560566')
 
 
 prepare() {
 	mv ScriptCommunicator_serial-terminal-Release_${_pkgver}/ScriptCommunicator/ ${pkgname}
 	cd $pkgname
-	patch -i "$srcdir/qmake.patch"
+	echo "DESTDIR = build" >> ScriptCommunicator.pro
+	echo "DESTDIR = build" >> ScriptEditor/ScriptEditor.pro
 }
 
 build() {
 	cd $pkgname
 	qmake -o Makefile ScriptCommunicator.pro
+	make --no-print-directory
+	cd ScriptEditor/
+        qmake -o Makefile ScriptEditor.pro
 	make --no-print-directory
 }
 
@@ -42,4 +44,8 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgname/ScriptCommunicator" "$pkgdir/usr/bin/$pkgname"
 	cp -r templates exampleScripts documentation "$pkgdir/opt/$pkgname/"
+	
+	cd ScriptEditor/
+	install -Dm755 "build/ScriptEditor" "$pkgdir/opt/$pkgname/"
+	ln -s "/opt/$pkgname/ScriptEditor" "$pkgdir/usr/bin/script-editor"
 }
