@@ -7,8 +7,8 @@ pkgdesc="A C ++ library that retrieves Factorio\'s Mod information"
 arch=('i686' 'x86_64')
 url='https://github.com/745275633/Factorio-Mod-info'
 license=('GPL')
-depends=('boost' 'openssl')
-makedepends=('xmake>=2.1.4.r178' 'git' 'boost' 'avhttp' 'da-exception')
+depends=('boost' 'openssl' 'avhttp' 'da-exception')
+makedepends=('xmake>=2.1.4.r178' 'git')
 provides=(${_basename}=${pkgver})
 conflicts=(${_basename})
 source=("${_basename}::git+https://github.com/745275633/Factorio-Mod-info.git")
