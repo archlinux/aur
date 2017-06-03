@@ -1,0 +1,24 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'cider)
+
+==> Or, with use-package:
+
+(use-package cider)
+
+==> From the README:
+
+Simply open in Emacs a file belonging to your lein or boot project (like foo.clj) and type M-x cider-jack-in. This will start an nREPL server with all the project dependencies loaded in and CIDER will automatically connect to it.
+
+Alternatively you can use C-u M-x cider-jack-in to specify the name of a lein or boot project, without having to visit any file in it.
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
