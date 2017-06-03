@@ -3,7 +3,7 @@
 # Contributor : Tony Sokhon <tonyskn@gmail.com>
 
 pkgname='perl-par-packer'
-pkgver='1.036'
+pkgver='1.037'
 pkgrel='1'
 pkgdesc="PAR Packager"
 arch=('any')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-archive-zip>=1' 'perl-getopt-argvfile>=1.07' 'perl-module-scandeps>=1.05' 'perl-par>=1.005' 'perl-par-dist>=0.22')
 makedepends=('perl-extutils-makemaker>=6.62')
 source=("http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/PAR-Packer-${pkgver}.tar.gz")
-md5sums=('988e77f94bdf97f668d9347d82a6358b')
+md5sums=('b23120f5896eae05b88affe6f274f05a')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
