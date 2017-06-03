@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libtorrent-rasterbar-git
-pkgver=1.1.3.r1021.ge870852c6
+pkgver=1.1.3.r1070.gea851e955
 pkgrel=1
 pkgdesc="A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)"
 url="http://www.rasterbar.com/products/libtorrent/"
