@@ -3,7 +3,7 @@
 pkgname=kubernetes
 pkgver=1.6.4
 _contribver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Container Cluster Manager for Docker"
 depends=('glibc' 'bash')
 makedepends=('go' 'rsync' 'go-bindata')
@@ -29,6 +29,7 @@ build() {
     cd $srcdir/kubernetes-$pkgver
     
     make
+    hack/generate-docs.sh
 }
 
 package() {
