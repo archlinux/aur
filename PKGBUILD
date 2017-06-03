@@ -1,7 +1,7 @@
 # Maintainer: djazz
 
 pkgname=ultrastardx-utility
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Manage UltraStar Deluxe songs."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
 )
 source=("https://github.com/daniel-j/usdx-linux-utility/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  '715646f9f2bff0e79034ff0e0510ed5a5446c02e251d676e0d166c72a203e0fb'
+  'de9e1c2e02ad9df04292eaeb694df289c69012e16c3ef49f044fc1ac3dd89d8c'
 )
 
 #pkgver() {
