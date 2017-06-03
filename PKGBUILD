@@ -1,12 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-type-slab
 pkgver=1.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A slender monospace typeface. Shape: default.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
+conflicts=('ttf-iosevka-pack')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/07-iosevka-type-slab-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
 sha256sums=('e7be87b2c39431c0d8840ed6de2ddd8912e43b56556971e3a055ccb6d46a4406'
