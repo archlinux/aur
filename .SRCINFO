@@ -1,6 +1,6 @@
 pkgbase = dnscrypt-proxy-gui
 	pkgdesc = Qt/KF5 GUI wrapper over dnscrypt-proxy
-	pkgver = 1.9.8
+	pkgver = 1.10.8
 	pkgrel = 1
 	url = https://github.com/F1ash/dnscrypt-proxy-gui
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = dnscrypt-proxy-gui
 	depends = dnscrypt-proxy
 	depends = systemd
 	conflicts = dnscrypt-proxy-gui-git
-	source = https://github.com/F1ash/dnscrypt-proxy-gui/archive/1.9.8.tar.gz
-	sha256sums = 971dedb3b40f1e8efe09ddc336ff47da8f52c01296e6204f59cd1156d565f40a
+	source = https://github.com/F1ash/dnscrypt-proxy-gui/archive/1.10.8.tar.gz
+	sha256sums = 85254686f3be4760f61dbbc73aeb077b66e2d806bc9b87f3c1761a2551e955df
 
 pkgname = dnscrypt-proxy-gui
 
