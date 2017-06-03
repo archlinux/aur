@@ -1,6 +1,6 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -776,7 +776,7 @@
+@@ -799,7 +799,7 @@
    RUST_LIBS="-lrustzcash"
  fi
  

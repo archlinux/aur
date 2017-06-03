@@ -1,27 +1,32 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=1.0.8_1
-pkgrel=3
+pkgver=1.0.9
+_commit=a410f124b24f1ebd763015492b029af09b1872a9
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
 depends=('boost-libs' 'libevent' 'miniupnpc' 'zeromq')
-makedepends=('boost' 'cargo' 'wget')
+makedepends=('boost' 'cargo' 'cmake' 'git' 'python' 'wget')
 checkdepends=('python' 'python2' 'python2-pyzmq')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zcash/zcash/archive/v1.0.8-1.tar.gz"
+source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "boost-no-mt-suffix.patch"
         "use-system-libraries.patch"
         "use-system-rust.patch")
-sha256sums=('d0210c93b7baddf55274ba7a3372dbe195ca5d2429e54d36289b97354bb83065'
-            'c318e12a9d48a50cf254d2a58c24dd0cbbf1dc969e3afeecadd0756425ea5b07'
+sha256sums=('SKIP'
+            'a2ac906ac99757adaa7d5eb7e68d2a64c3d628e71c03264c31edcbb500990569'
             'ef8ab26635bb2608f03ddf991da3581060670161938171fa2e413758fa4bad3f'
             '065cd418ca7be72018c7fdada3012872bd079a254a95560312514594381b8028')
 
 prepare() {
-    # cd ${pkgname}-${pkgver}
-    cd ${pkgname}-1.0.8-1
+    cd ${pkgname}
+
+    # Set gitattributes on src/clientversion.cpp
+    mkdir ../${pkgname}-${pkgver}
+    git archive ${_commit} | tar -xC ../${pkgname}-${pkgver}
+    cd ../${pkgname}-${pkgver}
 
     patch -Np1 -i ../boost-no-mt-suffix.patch
     patch -Np1 -i ../use-system-libraries.patch
@@ -29,11 +34,10 @@ prepare() {
 }
 
 build() {
-    # cd ${pkgname}-${pkgver}
-    cd ${pkgname}-1.0.8-1
+    cd ${pkgname}-${pkgver}
 
     cd depends
-    libs=('bdb' 'googletest' 'googlemock' 'librustzcash' 'libsnark')
+    libs=('bdb' 'googletest' 'googlemock' 'librustzcash' 'libsnark' 'proton')
     for lib in "${libs[@]}"; do
         make ${lib}
     done
@@ -44,7 +48,7 @@ build() {
     cd ..
 
     CPPFLAGS="${CPPFLAGS} -I$PWD/depends/x86_64-unknown-linux-gnu/include"
-    LDFLAGS="${LDFLAGS} -L${PWD}/depends/x86_64-unknown-linux-gnu/lib"
+    LDFLAGS="${LDFLAGS} -L${PWD}/depends/x86_64-unknown-linux-gnu/lib -L${PWD}/depends/x86_64-unknown-linux-gnu/lib64"
 
     ./autogen.sh
     ./configure --prefix=/usr
@@ -52,19 +56,17 @@ build() {
 }
 
 check() {
-    # cd ${pkgname}-${pkgver}
-    cd ${pkgname}-1.0.8-1
+    cd ${pkgname}-${pkgver}
 
     ./qa/zcash/full-test-suite.sh
 
     # Run the RPC tests
-    ./zcutil/fetch-params.sh
-    ./qa/pull-tester/rpc-tests.sh
+    # ./zcutil/fetch-params.sh
+    # ./qa/pull-tester/rpc-tests.sh
 }
 
 package() {
-    # cd ${pkgname}-${pkgver}
-    cd ${pkgname}-1.0.8-1
+    cd ${pkgname}-${pkgver}
 
     make DESTDIR="${pkgdir}" install
 
