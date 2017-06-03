@@ -1,6 +1,6 @@
 pkgbase = kwaterfoxhelper
 	pkgdesc = Waterfox KDE Plasma Integration
-	pkgver = 5.0.1.4
+	pkgver = 5.0.1.5
 	pkgrel = 1
 	url = https://github.com/hawkeye116477/kwaterfoxhelper
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = kwaterfoxhelper
 	depends = kwindowsystem
 	options = !emptydirs
 	options = !strip
-	source = kwaterfoxhelper-5.0.1.4.tar.gz::https://github.com/hawkeye116477/kwaterfoxhelper/archive/v5.0.1.4.tar.gz
-	sha256sums = 3c06e41bf8123142a661c6790a47e7fda8da5707f57c81c19a045aed5ec8c95c
+	source = kwaterfoxhelper-5.0.1.5.tar.gz::https://github.com/hawkeye116477/kwaterfoxhelper/archive/v5.0.1.5.tar.gz
+	sha256sums = d7e8621e595acc397dc3598bd4bdede6d448dd4a9a69ec84c0aed2347a216604
 
 pkgname = kwaterfoxhelper
 
