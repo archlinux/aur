@@ -212,7 +212,6 @@ package_llvm-svn() {
     )
     groups=('llvm-toolchain-svn')
     provides=('llvm')
-    replaces=('llvm')
     conflicts=('llvm')
 
     cd "${srcdir}/build"
@@ -258,7 +257,6 @@ package_llvm-libs-svn() {
     )
     groups=('llvm-toolchain-svn')
     provides=('llvm-libs')
-    replaces=('llvm-libs')
     conflicts=('llvm-libs')
 
     cd "${srcdir}/build"
@@ -294,7 +292,6 @@ package_llvm-ocaml-svn() {
         'ocaml-ctypes'
     )
     provides=('llvm-ocaml')
-    replaces=('llvm-ocaml')
     conflicts=('llvm-ocaml')
 
     cd "${srcdir}/build"
@@ -321,7 +318,6 @@ package_clang-svn() {
     )
     groups=('llvm-toolchain-svn')
     provides=('clang')
-    replaces=('clang')
     conflicts=('clang')
 
     cd "${srcdir}/build/tools/clang"
@@ -401,7 +397,6 @@ package_clang-analyzer-svn() {
     )
     groups=('llvm-toolchain-svn')
     provides=('clang-analyzer')
-    replaces=('clang-analyzer')
     conflicts=('clang-analyzer')
 
     cd "${srcdir}"
@@ -426,7 +421,6 @@ package_clang-compiler-rt-svn() {
     )
     groups=('llvm-toolchain-svn')
     provides=('clang-compiler-rt')
-    replaces=('clang-compiler-rt')
     conflicts=('clang-compiler-rt')
 
     cd "${srcdir}/build/projects/compiler-rt"
@@ -444,7 +438,6 @@ package_clang-tools-extra-svn() {
     )
     groups=('llvm-toolchain-svn')
     provides=('clang-tools-extra')
-    replaces=('clang-tools-extra')
     conflicts=('clang-tools-extra')
 
     cd "${srcdir}/build/tools/clang/tools/extra"
