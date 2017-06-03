@@ -1,7 +1,9 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
 # Contributor: Serhii Balbieko <sergey@balbeko.com>
+# Contributor: Simon Dreher <code@simon-dreher.de>
+
 pkgname=sonic-pi-git
-pkgver=v2.11.1.r2.g5c7e054
+pkgver=v2.11.1.r573.g47821c6d7
 pkgrel=1
 pkgdesc="A music-centric programming environment, originally built for the raspberry pi."
 arch=('i686' 
@@ -38,7 +40,7 @@ md5sums=('SKIP'
          '298e2729cda0c33c9cec7f7f721c1bbd'
          'ba86680be610cc3d6f12d4a89b0f434d'
          'fd330b2be9b52e9bee2fb9922141e2ca'
-         '6ebb72a4e146c868a77c523050e85fb1'
+         '5ed2b42a1a0f6fd4840f1a7154b2d44f'
          'c1c63041f01c9b1394c3a3273f5ff543')
 
 prepare() {
@@ -46,7 +48,7 @@ prepare() {
   qmake -set QMAKEFEATURES usr/share/qt4/mkspecs/features
   
   msg2 "Fix wrongly-named (on Arch) QT library"
-  find $srcdir/sonic-pi/app/gui/qt -type f -name "*" -readable -exec sed -i 's/lqt5scintilla2/lqscintilla2-qt5/g' {} +
+  find $srcdir/sonic-pi/app/gui/qt -type f -name "*" -readable -exec sed -i 's/lqt5scintilla2/lqscintilla2_qt5/g' {} +
   
   #Patch build-ubuntu-app script to skip ubuntu-specific (and redundant) options
   msg2 "Patch build-ubuntu-app script for Arch Linux"
