@@ -1,0 +1,17 @@
+pkgbase = ashuffle-git
+	pkgver = r64.aab5d80
+	pkgrel = 1
+	url = https://github.com/joshkunz/ashuffle
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	license = MIT
+	makedepends = git
+	depends = libmpdclient
+	provides = ashuffle
+	conflicts = ashuffle
+	source = ashuffle::git+https://github.com/joshkunz/ashuffle
+	md5sums = SKIP
+
+pkgname = ashuffle-git
+
