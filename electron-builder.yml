@@ -1,0 +1,2 @@
+electronDownload:
+    cache: ./electron-cache
