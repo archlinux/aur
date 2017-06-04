@@ -1,7 +1,7 @@
 pkgbase = mod_authnz_pam
 	pkgdesc = Apache module to run PAM authorization on result of other module's authentication; also full Basic Auth PAM provider.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.adelton.com/apache/mod_authnz_pam/
 	arch = i686
 	arch = x86_64

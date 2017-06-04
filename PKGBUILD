@@ -2,7 +2,7 @@
 
 pkgname=mod_authnz_pam
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Apache module to run PAM authorization on result of other module's authentication; also full Basic Auth PAM provider."
 arch=('i686' 'x86_64')
 license=('apache-2.0')
@@ -14,12 +14,12 @@ source=(https://fedorapeople.org/cgit/adelton/public_git/mod_authnz_pam.git/snap
 sha1sums=('644c25da063ae560cea8e6a7abf61a62a516e9a5')
 
 build() {
-	cd "${pkgname}-${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	apxs -c mod_authnz_pam.c -lpam -Wall -pedantic
 }
 
 package() {
-	cd "${pkgname}-${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	
 	APACHE_MOD_DIR=$(apxs -q libexecdir)
 	install -D -m755 .libs/mod_authnz_pam.so ${pkgdir}/${APACHE_MOD_DIR}/mod_authnz_pam.so
