@@ -1,7 +1,7 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=pencil
 pkgver=3.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Sketching and GUI prototyping/wireframing tool"
 arch=('any')
 license=('GPL2')
@@ -18,7 +18,7 @@ depends=('nodejs' 'npm')
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    npm install
+    npm install --cache "$srcdir/npm-cache"
     node_modules/.bin/build --linux dir
 
     install -d "$pkgdir/usr/share/$pkgname/" "$pkgdir/usr/bin" \
