@@ -18,7 +18,7 @@ md5sums=('439f4569ffd7af96ef1d3feaab23760e')
 
 build() {
   cd Gnome2-Wnck-${pkgver}
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  PERL_MM_USE_DEFAULT=1 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
