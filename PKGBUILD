@@ -23,7 +23,7 @@ md5sums=('0beb552933b765a017588563a71af123'
 build() {
   cd "$srcdir/$_realname-$pkgver"
   patch -Np1 -i "$srcdir/$pkgname.patch"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  PERL_MM_USE_DEFAULT=1 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
