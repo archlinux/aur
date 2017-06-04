@@ -11,7 +11,7 @@ url="https://wiki.gnome.org/Projects/Vala"
 arch=(i686 x86_64)
 license=(LGPL)
 depends=(glib2)
-provides=('vala')
+provides=("vala=${pkgver}")
 conflicts=('vala')
 makedepends=(libxslt git vala)
 source=("git://git.gnome.org/vala#tag=$pkgver")
