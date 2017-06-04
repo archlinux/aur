@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stinus <nicolas.stinus@gmail.com>
 
 pkgname=openvpn-nordvpn
-pkgver=0.1.1
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="OpenVPN helper script for nordvpn.com"
 arch=(any)
@@ -16,7 +16,7 @@ depends=('openvpn'
          'coreutils')
 optdepends=('iputils: run ping and rank functions'
             'vpnfailsafe-git: use instead of update-resolv-conf if available')
-makedepends=('coreutils')
+makedepends=('coreutils' 'pandoc')
 provides=('nordvpn')
 source=('git+https://github.com/nstinus/nordvpn.git#branch=master')
 sha1sums=('SKIP')
@@ -29,6 +29,14 @@ pkgver() {
         | sed 's/v//'
 }
 
+build() {
+    sed "s/@version@/$pkgver/g" nordvpn/doc.md \
+        | pandoc -s -f markdown -t man \
+        | gzip \
+        > nordvpn.8.gz
+}
+
 package() {
+    install -D -m 644 nordvpn.8.gz $pkgdir/usr/share/man/man8/nordvpn.8.gz
     install -D -m 755 nordvpn/nordvpn $pkgdir/usr/bin/nordvpn
 }
