@@ -1,8 +1,8 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=drumgizmo
 pkgname=$_pkgname-git
-pkgver=0.9.13.r12.g33639dd
-pkgrel=2
+pkgver=0.9.14.r17.ge3e60b5
+pkgrel=1
 pkgdesc="an open source cross-platform drum plugin and stand-alone application (lv2)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.drumgizmo.org"
