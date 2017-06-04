@@ -1,16 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.2.r215.07f0c7b4a
+pkgver=0.0.2.r257.3d284d3c8
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
 url='https://github.com/RPCS3/rpcs3'
 license=('GPL2')
 depends=('alsa-lib' 'gcc-libs' 'glew' 'glibc' 'glu' 'libgl' 'libpng' 'libx11'
-         'openal' 'wxgtk' 'yaml-cpp' 'zlib'
-         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libncursesw.so'
-         'libswresample.so' 'libswscale.so' 'libudev.so')
+         'llvm-libs' 'openal' 'qt5-base' 'yaml-cpp' 'zlib'
+         'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so'
+         'libswscale.so' 'libudev.so')
 makedepends=('boost' 'cereal' 'cmake' 'git' 'llvm')
 provides=('rpcs3')
 conflicts=('rpcs3')
@@ -86,7 +86,7 @@ build() {
 package() {
   cd build
 
-  install -Dm 755 bin/rpcs3 -t "${pkgdir}"/usr/bin/
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim: ts=2 sw=2 et:
