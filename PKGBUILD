@@ -1,7 +1,7 @@
 # Maintainer: Bjorn Pagen <bjornpagen at gmail dot com>
 
 pkgname=systemf
-pkgver=1
+pkgver=1.10
 pkgrel=1
 pkgdesc="a brainfuck interpreter supporting Linux syscalls"
 arch=('x86_64')
@@ -20,9 +20,10 @@ package() {
 	cd ${srcdir}/${pkgname}
 	install -m755 -d ${pkgdir}/usr/bin/
 	install -m755 -d ${pkgdir}/usr/share/systemf
+	install -m755 -d ${pkgdir}/usr/share/doc/systemf
 	install -m755 bin/${pkgname} ${pkgdir}/usr/share/systemf/${pkgname}
-	install -m644 README.md ${pkgdir}/usr/share/systemf/README.md
-	cp -a examples/ ${pkgdir}/usr/share/systemf/examples
+	install -m644 README.md ${pkgdir}/usr/share/doc/systemf/README.md
+	cp -a examples/ ${pkgdir}/usr/share/doc/systemf/examples
 	ln -s /usr/share/systemf/${pkgname} \
 		${pkgdir}/usr/bin/${pkgname}
 }
