@@ -31,11 +31,6 @@ build() {
     make
 }
 
-check() {
-    cd "$srcdir/$_srcname"
-    make test
-}
-
 package() {
     cd "$srcdir/$_srcname"
     make DESTDIR="$pkgdir/" install
