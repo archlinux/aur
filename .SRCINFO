@@ -1,0 +1,16 @@
+pkgbase = python2-subprocess2
+	pkgdesc = Extensions to the upstream python subprocess module
+	pkgver = 2.0.2
+	pkgrel = 2
+	url = http://github.com/kata198/python-subprocess2
+	arch = any
+	license = LGPLv2
+	makedepends = python2-setuptools
+	makedepends = python2
+	depends = python2-setuptools
+	depends = python2
+	source = https://github.com/kata198/python-subprocess2/archive/2.0.2.tar.gz
+	sha512sums = 910545ac2444bc25f2a6a1ac080e9508f934a35dfdd7866568adf53105263da59893939541654724f0413331d48f8f12110db2ce89a618d4dd6fd7472d48c496
+
+pkgname = python2-subprocess2
+
