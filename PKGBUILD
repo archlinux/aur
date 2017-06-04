@@ -4,14 +4,13 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=2.1.0.r15.g20cc6826d
+pkgver=2.1.0.r38.g13b035893
 _branch=2.2
 pkgrel=1
 pkgdesc='git-version of the sheet music editor MuseScore'
 arch=('i686' 'x86_64')
 url='https://github.com/musescore/MuseScore'
 license=('GPL')
-
 depends=('desktop-file-utils'
     'gtk-update-icon-cache'
     'libpulse'
@@ -29,20 +28,12 @@ makedepends=('cmake'
 	'texlive-core')
 optdepends=('lame: MP3 export')
 install=musescore.install
-
-source=("git+$url.git#branch=$_branch"
-    precompiled_headers_qt5.7.patch)
-md5sums=('SKIP'
-         '2d3dae13250d5074922d9c94ebb2c1e8')
+source=("git+$url.git#branch=$_branch")
+md5sums=('SKIP')
 
 pkgver() {
   cd MuseScore
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd MuseScore
-  patch -p1 -i $srcdir/precompiled_headers_qt5.7.patch
 }
 
 build() {

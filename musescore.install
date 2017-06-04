@@ -1,7 +1,7 @@
 warning() {
   echo ""
-  echo ">>> NOTE: MuseScore and MuseScore-git can be installed alongside."
-  echo "    Run by executing 'mscore-git'
+  echo ">>> NOTE: MuseScore-git can be installed alongside MuseScore."
+  echo "    Launch by executing 'mscore-git'
   "
 }
 post_install() {
