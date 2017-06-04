@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides a set of simple math utilities to work with
 url='http://ros.org/wiki/angles'
 
 pkgname='ros-kinetic-angles'
-pkgver='1.9.10'
+pkgver='1.9.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry_angles_utils-release-release-kinetic-angles-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_angles_utils-release/archive/release/kinetic/angles/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9d6fe0b57c6c99a4bde98a8bb7fb2b66f9b8fab24ea7da6892fb1425dec23302')
+sha256sums=('5937dd2efcb6ed58eb69a1b57c4d76c76dffad86d787f9c9374fd27faed597de')
 
 build() {
   # Use ROS environment variables
