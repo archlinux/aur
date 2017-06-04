@@ -1,0 +1,5 @@
+post_install() {
+    cat <<<"
+To use the sample configuration file, copy /usr/share/extendp/extendp.cfg to ~/.extendp.cfg
+"
+}
