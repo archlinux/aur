@@ -1,8 +1,8 @@
 # Maintainer: Shervin Khastoo <me@shervin.org>
 
 pkgname=openvpn-xor-patched
-pkgver=2.4.1
-pkgrel=3
+pkgver=2.4.2
+pkgrel=1
 pkgdesc="OpenVPN obfuscated with xor-patch which can bypass internet censoring"
 arch=(i686 x86_64)
 url="https://github.com/Tunnelblick/Tunnelblick/tree/master/third_party/sources/openvpn"
@@ -17,14 +17,16 @@ source=("https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sourc
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/04-tunnelblick-openvpn_xorpatch-c.diff"
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/05-tunnelblick-openvpn_xorpatch-d.diff"
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/06-tunnelblick-openvpn_xorpatch-e.diff"
-        "systemd-patch.diff")
-sha256sums=('831a1a05268fe3b1646d367e2559cff94d347d213ca8995cc48a4eedc452097a'
+        "systemd-patch.diff"
+        "openssl-1-1-0.patch")
+sha256sums=('b24740c9d44a81eaf2befc4846d51445a520104321e32aaf0c135ed2e098a624'
             '24e4d6d828f3b3296cc36d16c39d5bced62fab3db4226ad71e9f598ad4441993'
             '96f755428f3ead19d0caba0098c8f9ab70cc380e9f63e5e4b705325f404f40a4'
             'e6ee5518600fca5529dca57b4e752c0f69f98330805492f0c58869c819fd3e5a'
             'e893bf611575d3ff749a00c5b9201d534ea1691b9c0540f15728705992780098'
             '47b3100206b7164d7b4a1f2cce8646cd2ec6f1a62ec5902ad659df1f5e89752f'
-            '6d341005060488af7f4961262819a9fbfe5fbe59ac0d31de4368074a506d9dec')
+            '6d341005060488af7f4961262819a9fbfe5fbe59ac0d31de4368074a506d9dec'
+            'd801b1118d64c0667eae87ab1da920179f339614da22c5c8bed75d17650fad03')
 
 prepare() {
     cd "openvpn-${pkgver}"/
@@ -36,6 +38,7 @@ prepare() {
     patch -Np1 -i ../05-tunnelblick-openvpn_xorpatch-d.diff
     patch -Np1 -i ../06-tunnelblick-openvpn_xorpatch-e.diff
     patch -Np1 -i ../systemd-patch.diff
+    patch -Np1 -i ../openssl-1-1-0.patch
 }
 
 build() {
