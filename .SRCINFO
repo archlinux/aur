@@ -1,0 +1,14 @@
+pkgbase = pacman-utils-data
+	pkgdesc = Additional data for use with pacman-utils (required for provides_upstream)
+	pkgver = 0.5.1__2017_06_03
+	pkgrel = 1
+	url = https://github.com/kata198/pacman-utils
+	arch = i686
+	arch = x86_64
+	license = apache
+	depends = pacman-utils
+	source = https://github.com/kata198/pacman-utils/archive/0.5.1.tar.gz
+	md5sums = 020375e8130ae5a73c721e9194ca9142
+
+pkgname = pacman-utils-data
+
