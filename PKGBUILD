@@ -3,8 +3,8 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=nrpe
-pkgver=3.1.0
-pkgrel=3
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,8 +13,8 @@ optdepends=("monitoring-plugins: common tools for monitoring using $pkgname")
 install=$pkgname.install
 backup=('etc/nrpe/nrpe.cfg' 'etc/xinetd.d/nrpe')
 url="https://github.com/NagiosEnterprises/nrpe"
-source=(https://github.com/NagiosEnterprises/nrpe/releases/download/release-$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('ad9208ef4938449986cb5c5ba094598e')
+source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
+md5sums=('9a49dbd75b9ee9d0dcb7b9b099f5dddc')
 
 build() {
   cd $pkgname-$pkgver
