@@ -5,7 +5,7 @@
 
 pkgname=spectrum2
 pkgver=2.0.3
-pkgrel=4
+pkgrel=5
 #epoch=
 pkgdesc="Create C++ transports easily"
 arch=('any')
