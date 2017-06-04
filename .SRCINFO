@@ -1,6 +1,6 @@
 pkgbase = systemf
 	pkgdesc = a brainfuck interpreter supporting Linux syscalls
-	pkgver = 1
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/ajyoon/systemf
 	arch = x86_64
