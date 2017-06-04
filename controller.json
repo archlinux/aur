@@ -1,0 +1,11 @@
+{
+    "dir_app_log": "/var/log/cozy",
+    "dir_app_bin": "/var/lib/cozy/apps",
+    "dir_app_data": "/var/lib/cozy/data",
+    "restart_cmd": "/usr/bin/systemctl restart cozy-controller",
+    "env": {
+        "kresus": {
+            "KRESUS_WEBOOB_DIR": "/usr/lib/python2.7/site-packages/weboob/"
+        }
+    }
+}

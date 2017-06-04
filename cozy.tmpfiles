@@ -1,0 +1,7 @@
+d /var/lib/cozy   0755 cozy cozy
+d /var/log/cozy   0755 cozy cozy
+d /etc/cozy       0755 cozy cozy
+x /var/lib/cozy
+x /var/log/cozy
+x /etc/cozy
+z /etc/cozy/controller.json - cozy cozy

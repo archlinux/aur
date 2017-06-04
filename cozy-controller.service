@@ -1,0 +1,12 @@
+[Unit]
+Description=Cozy Controller
+Wants=couchdb.service
+After=couchdb.service
+
+[Service]
+Environment=NODE_ENV=production
+Environment=USE_SYSLOG=true
+ExecStart=/usr/bin/cozy-controller
+
+[Install]
+WantedBy=multi-user.target
