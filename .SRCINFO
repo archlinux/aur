@@ -1,0 +1,15 @@
+pkgbase = pidcat-git
+	pkgdesc = Pidcat is a colored logcat script with improved readability that only shows log entries for a specific Android package.
+	pkgver = 04.2017
+	pkgrel = 1
+	url = https://github.com/JakeWharton/pidcat
+	arch = any
+	license = Apache
+	depends = python2
+	source = git+https://github.com/JakeWharton/pidcat.git
+	source = pidcat.patch
+	md5sums = SKIP
+	md5sums = 88dd654d600d8de4ff42174d042f0a77
+
+pkgname = pidcat-git
+
