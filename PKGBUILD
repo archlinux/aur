@@ -7,7 +7,7 @@ pkgname='ros-kinetic-rviz'
 pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-kinetic-map-msgs
@@ -35,7 +35,7 @@ ros_makedepends=(ros-kinetic-map-msgs
   ros-kinetic-laser-geometry)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  ogre
+  ogre-1.9
   qt5-base
   urdfdom-headers
   assimp
@@ -67,7 +67,7 @@ ros_depends=(ros-kinetic-resource-retriever
   ros-kinetic-roscpp
   ros-kinetic-laser-geometry)
 depends=(${ros_depends[@]}
-  ogre
+  ogre-1.9
   qt5-base
   urdfdom-headers
   assimp
@@ -98,6 +98,8 @@ build() {
 
   # Fix Python2/Python3 conflicts
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+
+  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/OGRE-1.9/lib/pkgconfig/
 
   # Build project
   cmake ${srcdir}/${_dir} \
