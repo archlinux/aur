@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=upterm
-pkgver=0.2.153
+pkgver=0.2.154
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('apm' 'git' 'npm' 'typescript')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'upterm.desktop'
         'upterm.js')
-sha256sums=('b9a44bef7e21d5977ddb548ea3ccdbed5b998dd2bacdc2a89ee5128a311d3a1f'
+sha256sums=('5a55c45acffd7f15b4ad513f047f967cc316c26294684be383d92a0c702237b1'
             '2d55728dcd4f0b25195474d8676f8994c266f24e8e928ddbb9ff86959c3ac96f'
             '5522f5f78c0686d5e419661f4264e2d2f5f0856582f1494010e457c150f67910')
 
@@ -28,7 +28,11 @@ build() {
     ATOM_HOME="${PWD}" apm install --production
     rmdir packages
 
-    npm run compile
+    type=('@types/electron' '@types/enzyme' '@types/fs-extra' '@types/klaw' '@types/lodash' '@types/node' '@types/react')
+    npm install "${type[@]}"
+    tsc
+    install -Dm644 -t compiled/src/views src/views/index.html
+    npm uninstall "${type[@]}"
 }
 
 package() {
@@ -39,10 +43,14 @@ package() {
     install -d "${pkgdir}"${appdir}
     cp -r * "${pkgdir}"${appdir}
 
-    install -dm755  "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
-    mv "${pkgdir}"${appdir}/build/icon.png \
-        "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
-    rm "${pkgdir}"${appdir}/build/icon.{icns,ico}
+    for size in 16 32 48 64 256; do
+        install -Dm644 \
+            build/icons/${size}x${size}.png \
+            "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png
+        rm  "${pkgdir}"${appdir}/build/icons/${size}x${size}.png
+    done
+    rm "${pkgdir}"${appdir}/build/icon.{icns,ico,png}
+    rmdir "${pkgdir}"${appdir}/build/icons
     rmdir "${pkgdir}"${appdir}/build
 
     install -Dm755 "${srcdir}"/${pkgname}.js "${pkgdir}"/usr/bin/${pkgname}
