@@ -20,7 +20,7 @@ optdepends=('cozy-management: Helper to manage Cozy'
             'libyaml: Needed for the Kresus app'
             'weboob-git: Needed for the Kresus app')
 source=(${_pkgctrl}-${_verctrl}.tar.gz::"https://github.com/${pkgname}/${_pkgctrl}/archive/v${_verctrl}.tar.gz"
-        ${_pkgmntr}-${_vermntr}.tar.gz::"https://github.com/${pkgname}/${_pkgctrl}/archive/v${_vermntr}.tar.gz"
+        ${_pkgmntr}-${_vermntr}.tar.gz::"https://github.com/${pkgname}/${_pkgmntr}/archive/v${_vermntr}.tar.gz"
         "${pkgname}.tmpfiles"
         "${pkgname}.sysusers"
         "${_pkgctrl}.service"
