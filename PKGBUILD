@@ -2,8 +2,8 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=v0.8.0.0.r0.g7df687e
-pkgrel=2
+pkgver=v0.8.1.2.r0.g7401fa07
+pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
 url="http://jasp-stats.org"
@@ -12,12 +12,9 @@ depends=('qt5-base' 'r' 'libarchive' 'qt5-webkit' 'qt5-declarative' 'qt5-sensors
 makedepends=('git' 'r' 'gcc-fortran' 'boost' 'jasp-rbundle')
 provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
-install='jasp-desktop-git.install'
 options=('!strip')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.8.0.0" 
-	"include.patch"
-	"sem.patch"
-	"rlibrary.patch")
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.8.1.2" 
+	"include.patch")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -31,11 +28,6 @@ prepare() {
   cd $srcdir/$_pkgname
   #Patch the R include path
   patch -p1 < $srcdir/include.patch
-  #Patch simplesem back into the linux version
-  patch -p1 < $srcdir/sem.patch
-  #Patch to allow multiple R libraries
-  patch -p1 < $srcdir/rlibrary.patch
-
   #Create separate build dir
   mkdir -p $srcdir/$_buildname
   cd $srcdir/$_buildname
@@ -52,13 +44,12 @@ build() {
 package() {
   #Install files
   cd $srcdir/$_buildname
-  mkdir -p $pkgdir/usr/share/$_pkgname
-  cp -r R $pkgdir/usr/share/$_pkgname
-  cp -r jasp JASPEngine Resources libJASP-Common.a libJASP-Desktop.a $pkgdir/usr/share/$_pkgname/
+  mkdir -p $pkgdir/usr/lib/JASP
+  
+  cp -r ./R ./jasp ./JASPEngine ./Resources $pkgdir/usr/lib/JASP
 
   #Install icon
-  mkdir -p $pkgdir/usr/share/pixmaps/
-  cp $srcdir/$_pkgname/Tools/debian/jasp.svg $pkgdir/usr/share/$_pkgname/Resources/
+  cp $srcdir/$_pkgname/Tools/debian/jasp.svg $pkgdir/usr/lib/JASP/Resources/
 
   #Install .desktop file
   mkdir -p $pkgdir/usr/share/applications
@@ -66,9 +57,7 @@ package() {
 
   #Install link to binary
   mkdir -p $pkgdir/usr/bin/
-  ln -s /usr/share/$_pkgname/jasp $pkgdir/usr/bin/JASP
+  ln -s /usr/lib/JASP/jasp $pkgdir/usr/bin/JASP
 }
 md5sums=('SKIP'
-         '55f6dd36a413afa371fd112d3afa038e'
-         'c7381a233ac6c6d7f6ccd85434f93f41'
-         '7359b62112feac921e59346f52a74b4d')
+         'a703cd01dddd301d89425b47cb2a0c61')
