@@ -2,7 +2,7 @@
 
 
 pkgname=pacman-utils
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Some utils and helper scripts for archlinux packages "
 # arch package url is https://github.com/kata198/pacman-utils-pkg
@@ -12,7 +12,7 @@ license=(apache)
 depends=(python python-virtualenv python-setuptools)
 optdepends=('pacman-utils-data:  Data for whatprovides_upstream')
 source=("https://github.com/kata198/pacman-utils/archive/${pkgver}.tar.gz")
-md5sums=('020375e8130ae5a73c721e9194ca9142')
+sha512sums=('b7ceab1984abc828ad3f368317cd0c82d8bc27b18eded38e87b276435d2e011736dad895a32554522e76720c4b6086a660372637ce8a5fa13277ccd210284546')
 install=install.sh
 
 build() {
@@ -30,6 +30,9 @@ package() {
   source var/lib/pacman-utils/env/bin/activate
 
   pushd "${srcdir}/${pkgname}-${pkgver}"
+
+  # TODO: Need to add cmp_version and func_timeout packages, which will remove
+  #   the need for this virtualenv
   pip install -r requirements.txt
 
   ./install.sh DESTDIR="${pkgdir}"
