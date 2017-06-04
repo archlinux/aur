@@ -1,6 +1,6 @@
 pkgbase = netmap
 	pkgdesc = A framework for high speed network packet I/O, using kernel bypass
-	pkgver = r2462.2535f093
+	pkgver = r2463.d93db47d
 	pkgrel = 1
 	url = http://info.iet.unipi.it/~luigi/netmap
 	install = netmap.install

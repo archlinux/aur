@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r2462.2535f093
+pkgver=r2463.d93db47d
 pkgrel=1
 pkgdesc="A framework for high speed network packet I/O, using kernel bypass"
 arch=('any')
@@ -29,8 +29,8 @@ pkgver() {
 
 build() {
     msg "Downloading kernel sources..."
-    # Download kernel sources using ABS, checking that the version is the
-    # same as the running kernel
+    # Download and prepare kernel sources using asp, checking that the
+    # version is the same as the running kernel
     mkdir -p $srcdir/asp
     cd $srcdir/asp
     asp export linux
@@ -44,7 +44,7 @@ build() {
         msg "Kernel sources version ($KSVER) differs from running kernel version ($RKVER): Cannot continue"
         return 1
     fi
-    KMAJVER=$(echo "$KSVER" | sed 's|\.[0-9]\+$||g')
+    msg "Building on $KSVER"
 
     echo "SRCDEST=$SRCDEST"
     echo "SRCPKGDEST=$SRCPKGDEST"
@@ -70,8 +70,9 @@ build() {
     msg "Starting to build netmap and netmap applications"
     cd "$srcdir/netmap"
     msg "PREFIX=$pkgdir/usr/local"
+    msg "KERNEL-SOURCES=$NESTEDDIR/src/linux-$KSVER"
     msg "INSTALL-MOD-PATH=$pkgdir"
-    ./configure --kernel-sources=$NESTEDDIR/src/linux-$KMAJVER \
+    ./configure --kernel-sources=$NESTEDDIR/src/linux-$KSVER \
                 --no-ext-drivers \
                 --driver-suffix="_netmap" \
                 --install-mod-path="$pkgdir/usr" \
