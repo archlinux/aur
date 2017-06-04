@@ -1,6 +1,6 @@
 # Maintainer: Michael Gisbers <michael@gisbers.de>
 pkgname=flashprint
-pkgver=3.16.2
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="Slicer for the FlashForge 3D printers."
 ### no i686 link for version 3.16.0 available
@@ -8,15 +8,9 @@ pkgdesc="Slicer for the FlashForge 3D printers."
 arch=('x86_64')
 url="http://www.ff3dp.com/"
 depends=('qt5-base')
-source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.ishare3d.com/3dapp/public/FlashPrint-ii/flashprint_3.16.2_amd64.deb" "flashprint")
+source=("${pkgname}-${pkgver}_amd64.deb::http://www.ishare3d.com/3dapp/public/FlashPrint-ii/flashprint_3.17.0_amd64.deb" "flashprint")
 #source_i686=("${pkgname}-${pkgver}_i686.deb::http://www.sz3dp.com/upfile/2017/01/03/20170103151329_822.deb" "flashprint")
 
-md5sums_x86_64=('698a9fdac14942a914d848f2712e7f58'
-                '1fa4e9abedbfb0fe9744986e2725d443')
-sha256sums_x86_64=('d30dd62b92e4ea5615a00de73cec4c4e061410e35dfcdf3292804503b7c7a4f1'
-                   'c981bd5d01b885ee952331f60a5545f1e667055f2c1fd0a37d9bb1d227bc281a')
-sha512sums_x86_64=('743bf339faabfe486fd7e01cac1aab7c67af18c23d5bcedd8d414ab25b8a29e453bf70fce01f4fd620ed99048cc0af075e0be48dbb2e92eca44956591ab4e2b0'
-		   'e233d1f4eac6b69ecb43bbd2a7a18ded87896109d1e20b7e41cae76377bd16901fd8defa7d89225a958f2d80aa44de52d8a6533619a2fc237aaae056d971fe0f')
 
 package() {
     cd ${pkgdir}
@@ -29,3 +23,9 @@ package() {
     sed -i "/^Exec=/ c Exec=/usr/bin/flashprint" ${pkgdir}/usr/share/applications/FlashPrint.desktop
 }
 
+md5sums=('2615e53e8960cbcfdb542f2b63648cb0'
+         '1fa4e9abedbfb0fe9744986e2725d443')
+sha256sums=('bb410a754d29e15088eee2c1f45804861ed6f6b0ee47d28c349937f2a8bf76fc'
+            'c981bd5d01b885ee952331f60a5545f1e667055f2c1fd0a37d9bb1d227bc281a')
+sha512sums=('7e1fec252bdaebce2333c7eb17309ec0cc30be8b6e3fb4ea7c2c1cd468c34a0990bbf1afbea9f1d301a6f7f8b963b10189ec3622d81442263c461bb09a58d9b6'
+            'e233d1f4eac6b69ecb43bbd2a7a18ded87896109d1e20b7e41cae76377bd16901fd8defa7d89225a958f2d80aa44de52d8a6533619a2fc237aaae056d971fe0f')
