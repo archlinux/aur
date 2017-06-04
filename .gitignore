@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!android-sdk.install
+!android-sdk.conf
+!android-sdk.sh
+!android-sdk.csh
+!android-sdk.desktop
+!license.html
