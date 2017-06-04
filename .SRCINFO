@@ -1,0 +1,21 @@
+pkgbase = blastem
+	pkgdesc = Fast and accurate Sega Genesis/Mega Drive emulator
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://www.retrodev.com/blastem/changes.html
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = python2-pillow
+	depends = sdl2
+	depends = glew
+	optdepends = vasm: game selection menu (must rebuild)
+	provides = blastem
+	conflicts = blastem-hg
+	source = https://www.retrodev.com/repos/blastem/archive/99d153d9e9ca.tar.gz
+	source = menu.patch
+	md5sums = 8d2fbac987082700912d84d00cbbe67d
+	md5sums = cea255d6ac07a7ac8eab47cef08c5e93
+
+pkgname = blastem
+
