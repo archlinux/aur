@@ -124,7 +124,7 @@ ocaml-gavl
 ocaml-ffmpeg
 
 # Frei0r is a minimalistic plugin API for video sources and filters.
-ocaml-frei0r
+#ocaml-frei0r
 
 # ============================================================================
 # Sound synthesis
