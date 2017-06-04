@@ -1,0 +1,13 @@
+pkgbase = bash-resume
+	pkgdesc = Adds support in shell scripts to resume execution at last failing point. Like make for shell scripts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/kata198/bash-resume
+	arch = any
+	license = LGPLv3
+	depends = bash
+	source = https://github.com/kata198/bash-resume/archive/1.0.0.tar.gz
+	sha512sums = e3acea7d4e60e905a42a91e0c134fff60de190a356a658322d5ce5fef46ff2a6f91ea28c60433f6a30cc9d45f0652181e29fcddf81901b9dd34a32797f4f643d
+
+pkgname = bash-resume
+
