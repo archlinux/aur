@@ -2,25 +2,31 @@
 
 pkgname=thunar-gtk3
 pkgver=1.6.90
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern file manager for Xfce - GTK3 Version'
 arch=('i686' 'x86_64')
 license=('GPL')
 url=https://github.com/andreldm/thunar
-depends=('desktop-file-utils' 'exo' 'gtk2' 'hicolor-icon-theme' 'libexif' 'libnotify' 'libpng'
-        'libxfce4ui' 'libxfce4util')
-makedepends=('git' 'xfce4-dev-tools')
-optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
-            'xfce4-panel: trash applet')
+depends=('desktop-file-utils' 'libexif' 'hicolor-icon-theme' 'libnotify'
+         'libgudev' 'gtk3' 'exo>=0.11.2' 'libxfce4util' 'libxfce4ui' 'libpng')
+makedepends=('intltool' 'xfce4-panel' 'git' 'xfce4-dev-tools' 'python')
+optdepends=('gvfs: for trash support, mounting with udisk and remote filesystems'
+            'xfce4-panel: for trash applet'
+            'tumbler: for thumbnail previews'
+            'thunar-volman: manages removable devices'
+            'thunar-archive-plugin: create and deflate archives'
+            'thunar-media-tags-plugin: view/edit id3/ogg tags')
 provides=(thunar="${pkgver%%.r*}")
-conflicts=(thunar{,-extended})
-options=(!libtool)
+conflicts=(thunar)
 install=$pkgname.install
 source=("$pkgname::git://github.com/andreldm/thunar")
 sha256sums=('SKIP')
 
-build() {
-    cd "$pkgname"
+prepare() {
+    cd "$srcdir/$pkgname"
+
+    git config --local user.name 'noname'
+    git config --local user.email 'noemail'
 
     git fetch origin pull/20/head:missingIcons2
     git merge missingIcons2 --no-commit --no-ff
@@ -28,6 +34,10 @@ build() {
     git fetch origin pull/22/head:fix-dbus-name
     git merge fix-dbus-name --no-commit --no-ff
     git stash && git stash pop
+}
+
+build() {
+    cd "$srcdir/$pkgname"
 
     ./autogen.sh \
         --prefix=/usr \
@@ -47,7 +57,6 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$srcdir/$pkgname"
     make DESTDIR="$pkgdir" install
-    sed -i ':x-directory/gnome-default-handler;:d' "$pkgdir"/usr/share/applications/Thunar-folder-handler.desktop
 }

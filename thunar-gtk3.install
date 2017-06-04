@@ -1,6 +1,17 @@
 post_install() {
     update-desktop-database -q
     gtk-update-icon-cache -qtf usr/share/icons/hicolor
+    x=`pacman -Qs xfdesktop`
+    if [ -n "$x" ]; then cat << EOF
+ 
+    xfdesktop users note:
+  -----------------------------------------------------------------------------
+    xfdesktop from official repositories depends on libthunarx-2 while this
+    package provides libthunarx-3. You should rebuild your xfdesktop package
+    against this thunar version.
+ 
+EOF
+  fi
 }
 
 post_upgrade() {
@@ -8,5 +19,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    post_install
+    update-desktop-database -q
+    gtk-update-icon-cache -qtf usr/share/icons/hicolor
 }
