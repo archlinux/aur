@@ -1,9 +1,9 @@
-
 # Maintainer: Pierre Franco <pierre dot franco at ensimag dot grenoble dash inp dot fr>
 # Based on wine-staging PKGBUILD
 
 #Additional patches:
 # -Gallium Nine support
+# -GCC 7 fix (see https://bugs.winehq.org/show_bug.cgi?id=43127 )
 # -Keybind patch reversion
 # -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.9
-pkgrel=2
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=$_pkgbasever
@@ -23,6 +23,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 	"https://github.com/wine-compholio/wine-staging/raw/master/patches/ntdll-Heap_FreeLists/0001-ntdll-Improve-heap-allocation-performance-by-using-m.patch"
 	"https://github.com/laino/wine-patches/archive/master.tar.gz"
         30-win32-aliases.conf
+	gcc_7_fix.patch
 	keybindings.patch
         steam.patch
         wbemprox_query_v2.patch
@@ -32,6 +33,7 @@ sha1sums=('29f9a44a317efe3985d88c881aa3acd033100819'
 	  '0c45c2e050a7642acd5c7dec6fd5b03f8b5cd658'
 	  'b9ca93f8afcd01cf12460d40022df733010069d2'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
+	  '0663651dd32b1537055bf560e6ec098623785238'
 	  'f3febb8836f38320742a546c667106608d4c4395'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
@@ -148,6 +150,7 @@ prepare()
     patch -p1 < ../wine-patches-master/0006-Ensure-16-byte-alignment-of-data.patch
     
     patch -p1 < ../wbemprox_query_v2.patch
+    patch -p1 < ../gcc_7_fix.patch
 
     patch -p1 -R < ../keybindings.patch
 
