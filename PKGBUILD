@@ -2,8 +2,8 @@
 
 pkgname=spflashtool-bin
 _pkgname=spflashtool
-pkgver="5.1712"
-pkgrel=2
+pkgver="5.1716"
+pkgrel=1
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone."
 arch=('x86_64')
 url="http://spflashtools.com/category/linux"
@@ -15,7 +15,7 @@ conflicts=('spflashtool')
 changelog=
 source=("http://spflashtools.com/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip"
         'spflashtool.png')
-sha256sums=('9a037dfac6b89bdf68e7ba579a7fc3106ee5ea922e8e49a1b6471fd7c8e20226'
+sha256sums=('010d563ccd1cb75d681a507e9cd44c284c837a0f63faac64501f0045c3af4c85'
             'fe0b9c1de77c687623bfc07733041d1387f755493cdf904e6afcb47f784d34c7')
 
 # Workaround for source file download, which requires the 'Referer' header to be set
