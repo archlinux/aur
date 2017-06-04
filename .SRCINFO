@@ -1,0 +1,16 @@
+pkgbase = rextract
+	pkgdesc = Powerful commandline tool to extract and manipulate strings using regular exressions
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/kata198/rextract
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-setuptools
+	depends = python
+	source = https://github.com/kata198/rextract/archive/1.0.0.tar.gz
+	sha512sums = 70ed19664cb83a845045480e50e4097ffd4b0aabdab2382064360a0f198d6ec8a14e77a1c9979cd9f94983ab9acfda48078cea17b60c92c14eea89967e26027d
+
+pkgname = rextract
+
