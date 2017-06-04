@@ -1,6 +1,6 @@
-pkgbase = python-iptables
+pkgbase = python-iptables-git
 	pkgdesc = Python bindings for iptables
-	pkgver = 0.11.0
+	pkgver = r486.d1de82d
 	pkgrel = 1
 	url = https://github.com/ldx/python-iptables
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = python-iptables
 	depends = python
 	depends = iptables
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/python-iptables/python-iptables-0.11.0.tar.gz
-	sha256sums = 55bdd0d8e3d0b4c27e4d61bf6f21ada1e19146c0adf65e5093e254a126abcce9
+	source = python-iptables-git::git+https://github.com/ldx/python-iptables.git
+	sha256sums = SKIP
 
-pkgname = python-iptables
+pkgname = python-iptables-git
 

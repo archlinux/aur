@@ -1,8 +1,7 @@
-# Maintainer: Matthew Ellison <matt+aur@arroyonetworks>
-# Contributor: Ivan Cai <caizixian@users.noreply.github.com>
+# Maintainer: Adam Hose <adis@blad.is>
 
-pkgname=python-iptables 
-pkgver=0.11.0
+pkgname=python-iptables-git
+pkgver=r486.d1de82d
 pkgrel=1
 pkgdesc='Python bindings for iptables'
 arch=('x86_64' 'i686')
@@ -16,15 +15,20 @@ conflicts=()
 replaces=()
 backup=()
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('55bdd0d8e3d0b4c27e4d61bf6f21ada1e19146c0adf65e5093e254a126abcce9')
+source=($pkgname::git+https://github.com/ldx/${pkgname%-git}.git)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd $pkgname
   python setup.py check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd $pkgname
   python setup.py install --root="${pkgdir}" --optimize=1
 }
