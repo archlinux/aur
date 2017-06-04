@@ -27,10 +27,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-lts310.preset'
         # additional fixes
-        'enable_haswell_pstate_driver.patch'
-        'change-default-console-loglevel.patch'
-        'criu-no-expert.patch'
-        '0002_asmlinkage.patch')
+        '001_change-default-console-loglevel.patch'
+        '002_criu-no-expert.patch'
+        '003_gcc5-asmlinkage-fix.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
             'f80c551ebb34df1244b3cec5e06d09fb3eff30289c00cb6347f5d1c874976fda'
@@ -61,15 +60,15 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -Np1 -i "${srcdir}/001_change-default-console-loglevel.patch"
 
   # allow criu without expert option set; patch from fedora
-  patch -Np1 -i "${srcdir}/criu-no-expert.patch"
+  patch -Np1 -i "${srcdir}/002_criu-no-expert.patch"
 
   # Fix asmlinkage for GCC5 on 32bit systems
   if [ "${CARCH}" = "i686" ]; then
     #https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/patch/drivers/lguest/x86/core.c?id=cdd77e87eae52b7251acc5990207a1c4500a84ce
-    patch -Np1 -i "${srcdir}/0002_asmlinkage.patch"
+    patch -Np1 -i "${srcdir}/003_gcc5-asmlinkage-fix.patch"
   fi
 	
   ### Clean tree and copy ARCH config over
