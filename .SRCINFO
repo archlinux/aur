@@ -1,0 +1,18 @@
+pkgbase = perl-linux-fd
+	pkgdesc = Provides you Linux specific special file handles
+	pkgver = 0.011
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Linux-FD
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-module-build
+	depends = perl-sub-exporter
+	depends = perl-test-exception
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Linux-FD-0.011.tar.gz
+	sha256sums = 6bb579d47644cb0ed35626ff77e909ae69063073c6ac09aa0614fef00fa37356
+
+pkgname = perl-linux-fd
+
