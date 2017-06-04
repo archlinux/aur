@@ -33,14 +33,14 @@ install=
 changelog=
 source=("https://github.com/hanzz/$pkgname/archive/$pkgver.tar.gz"
         'spectrum2.service')
-noextract=()
 sha256sums=('694172dfbf62d7de19bbcc06ba11113d238c86e36d39297b2f80d4b277e03933'
             '8b95ddcf90449dcd0dec111276c69d04a92d09a0f9e1815009b2179a8050c9d1')
+noextract=()
 validpgpkeys=()
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cmake . -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr -DSPECTRUM_VERSION=${pkgver}
+	cmake . -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr -DSPECTRUM_VERSION=${pkgver} -DIRC_INCLUDE_DIR=/usr/include/qt/Communi
 	make
 }
 
