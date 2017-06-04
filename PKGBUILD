@@ -16,13 +16,15 @@ source=("${pkgname}::git+https://github.com/simonfuhrmann/mve.git"
         "git+https://github.com/nmoehrle/mvs-texturing.git"
         "git+https://github.com/flanggut/smvs.git"
         'gtest.patch'
-        'umve.opengl.patch')
+        'umve.opengl.patch'
+       )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          '7e7d7c62d2a191fd4d27dde052035fcf'
-         'bfd0e38c522498b371de12b7ecad4856')
+         'bfd0e38c522498b371de12b7ecad4856'
+        )
 _binar="apps/sfmrecon/sfmrecon
 apps/meshconvert/meshconvert
 apps/meshalign/meshalign
@@ -41,6 +43,7 @@ prepare() {
   patch -Np1 -i gtest.patch
   cd ${pkgname}
   patch -Np1 -i ../umve.opengl.patch
+  sed -i '/CXXFLAGS*/s/$/ -msse4.2/' libs/sfm/Makefile
 }
 
 pkgver() {
@@ -76,6 +79,7 @@ build() {
 
   msg "build Shading-aware Multi-view Stereo"
   cd ${srcdir}/smvs
+  sed -i "s:msse4.1:msse4.2:" lib/Makefile tools/Makefile app/Makefile
   sed -i "s:mve:mve-git:" Makefile.inc
   make  
 
