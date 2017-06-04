@@ -4,17 +4,17 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=3.2.3.r17752.g077582d3f90
+pkgver=r111557.ed9fb93c62f
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
 arch=('i686' 'x86_64')
 license=('custom=MITX11' 'custom=MSPL' 'BSD' 'GPL' 'LGPL2.1' 'MPL')
 depends=('ca-certificates' 'libgdiplus' 'python' 'zlib')
-makedepends=('git')
-optdepends=('mono: Needed if bootstrapping fails')
+makedepends=('git' 'mono')
 provides=('mono' 'monodoc')
 conflicts=('mono' 'monodoc')
+install="${_gitname}.install"
 source=(
     'git+https://github.com/mono/mono.git'
     'git+https://github.com/mono/aspnetwebstack.git'
@@ -49,15 +49,17 @@ sha256sums=(
 pkgver() {
 	cd "${_gitname}"
 
-    git describe --long --tags              \
-        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  \
-        | sed 's/mono.//'
+    # Tags are 'broken' for now, use revisions since the beginning of
+    # history:
+      printf "r%s.%s"                       \
+          "$(git rev-list --count HEAD)"    \
+          "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "${_gitname}"
 
-    local externals=(
+    local submodules=(
         'aspnetwebstack'
         'Newtonsoft.Json'
         'cecil'
@@ -79,19 +81,29 @@ prepare() {
         'api-doc-tools' 'api-snapshot'
     )
 
-    for external in ""${externals[@]}""; do
-        submodule="external/${external}"
+    for module in "${submodules[@]}"; do
+        local submodule="external/${module}"
         git submodule init "${submodule}"
-        git config "submodule.${submodule}.url" "${srcdir}/${external}"
+        git config "submodule.${submodule}.url" "${srcdir}/${module}"
         git submodule update "${submodule}"
     done
 }
 
 build() {
-	cd "${_gitname}"
+    cd "${_gitname}"
 
-    ./autogen.sh --prefix=/usr
+    # Default prefix is /usr/local/
+    # Default sysconfdir is /usr/local/etc/
+    # Default sbindir is /usr/local/sbin/
+    ./autogen.sh            \
+        --prefix=/usr       \
+        --sbindir=/usr/bin  \
+        --sysconfdir=/etc   \
+        --with-mcs-docs=no
+
     if ! hash mono; then
+        # If a working installation of mono is not found, attempt to
+        # bootstrap the project:
         make get-monolite-latest
     fi
 	make
@@ -102,23 +114,31 @@ build() {
 }
 
 package() {
-	cd "${_gitname}"
-
-	make DESTDIR="${pkgdir}" install
-	install -d -m 755 "${pkgdir}/usr/share/licenses/${_gitname}"
-	install	-D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/"
-
-    cd mcs/jay
-
-    make DESTDIR="${pkgdir}" prefix=/usr install
-
-    cd "${srcdir}"
-
     install -D -m 644               \
         "${srcdir}/mono.binfmt.d"   \
         "${pkgdir}/usr/lib/binfmt.d/mono.conf"
 
-	# Fix .pc file to be able to request mono on what it depends, fixes #go-oo
-    # build
-	sed -i -e "s:#Requires:Requires:" "${pkgdir}/usr/lib/pkgconfig/mono.pc"
+    cd "${_gitname}"
+
+	make DESTDIR="${pkgdir}" install
+	install	-D -m 644   \
+        "LICENSE"       \
+        "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+
+    cd mcs/jay
+
+    make                            \
+        DESTDIR="${pkgdir}"         \
+        prefix=/usr                 \
+        INSTALL=../../install-sh    \
+        install
+
+	# Fix .pc file to be able to request mono on what it depends, fixes
+    # go-oo build:
+    sed -i -e               \
+        "s:/2.0/:/4.5/:g"   \
+        "${pkgdir}/usr/lib/pkgconfig/mono-nunit.pc"
+	sed -i -e                   \
+        "s:#Requires:Requires:" \
+        "${pkgdir}/usr/lib/pkgconfig/mono.pc"
 }
