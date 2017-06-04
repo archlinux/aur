@@ -1,12 +1,12 @@
 pkgbase = macos-icon-theme
 	pkgdesc = macOS iCons Theme
-	pkgver = 3.6
+	pkgver = 3.8
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1102582/
 	arch = any
 	depends = gtk-update-icon-cache
-	source = https://dl.opendesktop.org/api/files/download/id/1494077696/macOS.tar.xz
-	md5sums = 9cfe3594b030236b68881208a3402074
+	source = https://dl.opendesktop.org/api/files/download/id/1494895082/macOS.tar.xz
+	md5sums = 26ee193b24012bd1b10504e82379181d
 
 pkgname = macos-icon-theme
 
