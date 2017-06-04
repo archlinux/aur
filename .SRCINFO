@@ -1,0 +1,11 @@
+pkgbase = systemf
+	pkgdesc = An AUR helper that minimizes user interaction
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ajyoon/systemf
+	arch = x86_64
+	license = unknown
+	makedepends = nasm
+	source = git://github.com/ajyoon/systemf
+
+pkgname = systemf
