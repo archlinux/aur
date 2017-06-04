@@ -1,0 +1,13 @@
+pkgbase = aws-vault
+	pkgdesc = A vault for securely storing and accessing AWS credentials in development environments
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = https://github.com/99designs/aws-vault
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source = https://github.com/99designs/aws-vault/releases/download/v${pkgver}/aws-vault-linux-amd64
+	sha256sums = 737897071e5efacaeea2abf88989662d5f45b9bedbf954b224ec4e2d98852f50
+
+pkgname = aws-vault
+
