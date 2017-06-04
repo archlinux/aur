@@ -19,12 +19,9 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}
 	install -m755 -d ${pkgdir}/usr/bin/
-	install -m755 -d ${pkgdir}/usr/share/systemf
 	install -m755 -d ${pkgdir}/usr/share/doc/systemf
-	install -m755 bin/${pkgname} ${pkgdir}/usr/share/systemf/${pkgname}
+	install -m755 bin/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 	install -m644 README.md ${pkgdir}/usr/share/doc/systemf/README.md
 	cp -a examples/ ${pkgdir}/usr/share/doc/systemf/examples
-	ln -s /usr/share/systemf/${pkgname} \
-		${pkgdir}/usr/bin/${pkgname}
 }
 
