@@ -1,0 +1,20 @@
+pkgbase = python2-indexedredis
+	pkgdesc = A super-fast ORM backed by Redis, supporting models and indexes with O(1) searches, and support for storing native/complex types and objects
+	pkgver = 6.0.3
+	pkgrel = 1
+	url = http://github.com/kata198/IndexedRedis
+	arch = any
+	license = LGPLv2
+	makedepends = python2-setuptools
+	makedepends = python2-queryablelist
+	makedepends = python2-redis
+	makedepends = python2
+	depends = python2-setuptools
+	depends = python2-queryablelist
+	depends = python2-redis
+	depends = python2
+	source = https://github.com/kata198/indexedredis/archive/6.0.3.tar.gz
+	sha512sums = 6179dd7bd01b2c4f937eb5d824f71cf92801c41f4ae0b3dcf1bd6568bde2ba50aa28d8c2d16bdda32b3fdcd1464e72bc490489436a6ec943d7e715dc46db7ab2
+
+pkgname = python2-indexedredis
+
