@@ -2,8 +2,8 @@
 pkgname=fdu-elearning-helper
 _pkgname=${pkgname//-/_}
 pkgver=0.2.0
-pkgrel=1
-pkgdesc='A frontend for Fudan eLearning, with many feature added. http://eh.zbyzbyzby.com/'
+pkgrel=2
+pkgdesc='A frontend for Fudan eLearning, with many features added. http://eh.zbyzbyzby.com/'
 arch=('any')
 url="https://github.com/zhangboyang/${_pkgname}"
 license=('MIT')
