@@ -15,6 +15,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
 	cd "${srcdir}"
+	CFLAGS="-Wno-error $CFLAGS"
+	CXXFLAGS="-Wno-error $CXXFLAGS"
 	mkdir -p "${srcdir}"/gendef-build && cd "${srcdir}"/gendef-build
 	"${srcdir}"/mingw-w64-v${_pkgver}/mingw-w64-tools/gendef/configure --prefix=/usr
 	make
