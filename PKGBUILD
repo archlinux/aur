@@ -17,19 +17,19 @@ conflicts=('r-cran-rinside' 'r-cran-rcpp')
 
 
 prepare(){
-	mkdir -p $srcdir/usr/share/jasp-desktop/R/library
+	mkdir -p $srcdir/usr/lib/JASP/R/library
 }
 
 build(){
 	cd $srcdir
-	_libraryPath=$srcdir/usr/share/jasp-desktop/R/library
+	_libraryPath=$srcdir/usr/lib/JASP/R/library
 	Rscript rbundle.R $_libraryPath
 }
 
 package(){
 	cp -r $srcdir/usr $pkgdir/
 	mkdir -p $pkgdir/usr/lib/R/library
-	mv $pkgdir/usr/share/jasp-desktop/R/library/RInside $pkgdir/usr/lib/R/library/
-	mv $pkgdir/usr/share/jasp-desktop/R/library/Rcpp $pkgdir/usr/lib/R/library/
+	mv $pkgdir/usr/lib/JASP/R/library/RInside $pkgdir/usr/lib/R/library/
+	mv $pkgdir/usr/lib/JASP/R/library/Rcpp $pkgdir/usr/lib/R/library/
 }	
 md5sums=('65a18a87e12c25012d6291b1cea370c4')
