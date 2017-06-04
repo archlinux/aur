@@ -5,7 +5,7 @@
 
 pkgname=perl-gnome2-wnck
 pkgver=0.16
-pkgrel=12
+pkgrel=13
 pkgdesc="Perl interface to the Window Navigator Construction Kit"
 arch=('i686' 'x86_64')
 license=("GPL" "PerlArtistic")
