@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-vecx-git
-pkgver=54.4d94408
+pkgver=63.30d39a0
 pkgrel=1
 pkgdesc="libretro implementation of vecx (Vectrex)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -30,5 +30,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
