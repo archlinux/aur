@@ -1,5 +1,5 @@
 #Set repo to 0cloud
-options('repos' = 'http://cran.revolutionanalytics.com')
+options('repos' = 'https://cloud.r-project.org/')
 
 #Grab library dir
 path <- commandArgs(trailingOnly = TRUE)
