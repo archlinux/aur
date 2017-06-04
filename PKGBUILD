@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('qt5-base' 'python-sphinx' 'emacs' 'rhash')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('2164f502900a803928f2df3168fb5094de05392fd62d30c55d08de89bdd4ba7323255e724cbca260202edf1691bd5c6be63c585f75ff9d36bd0d35b816c2fde0')
+sha512sums=('49ea6f74a81dfa8ed8336c94ed50e0a483b796132c260f4bef159f9c389d99cc7b26ecfcccdd8b0a8f5b52fddd277c17c547d2a2e8848da9912c464ada1cbe3f')
 
 build() {
   cd ${pkgname}-${pkgver}
