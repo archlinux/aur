@@ -46,22 +46,22 @@ _use_current=
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-fbcondecor
-_srcname=linux-4.10
-pkgver=4.10.8
-pkgrel=1
-_ckpatchversion=1
+_srcname=linux-4.11
+pkgver=4.11.3
+pkgrel=2
+_ckpatchversion=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchname="patch-4.10-ck${_ckpatchversion}"
+_ckpatchname="patch-4.11-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "http://ck.kolivas.org/patches/4.0/4.10/4.10-ck${_ckpatchversion}/${_ckpatchname}.xz"
+        "http://ck.kolivas.org/patches/4.0/4.11/4.11-ck${_ckpatchversion}/${_ckpatchname}.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
         'config.i686' 'config.x86_64'
@@ -69,15 +69,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-	'fbcondecor-4.10.patch')
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+	'fbcondecor-4.11.patch')
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'ceb385486e34084dd53425e5ba50b9fba4a8e380d8f2815bfde142852d797da0'
+            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
             'SKIP'
-            '1913eeb921bbef3733b53f4004a3013289fa85a26409610bb14fcff3bbd7ef72'
+            '1acde415a6a35d301beb65bc09bd20903f3a9c835c6c850f4c5a0ce0ab236bc1'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            '97386dde2c628a89bcdb231a9acda4ff9b4cf4144258e87d211415f7550e93a3'
-            '97e4066570721a08ce21d7d572a7a399acd1aa35b315d1cf57b15378944dfc8a'
+            'a77b7147a730ba4c47f8e6f5a87e329b59ea305f2a84c02aaebd082f4d4e5458'
+            'ad1fa7abca1865226c912a97adfbe6af99fbd50f6aa5e106d68bacb29140fb64'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '0671b52ba9498ba2027fa643ba0e3b524696b358fe983fbad1c586f9446a17a6')
@@ -106,7 +106,7 @@ prepare() {
 
   # Patch source to enable frame buffer decorations.
   msg "Patching source with fbcondecor patch."
-  patch -Np1 -i "${srcdir}/fbcondecor-4.10.patch"
+  patch -Np1 -i "${srcdir}/fbcondecor-4.11.patch"
 
   # Clean tree and copy ARCH config over
   make mrproper
@@ -199,8 +199,8 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.152 and the fbcondecor framebuffer decoration support."
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.152 and the fbcondecor framebuffer decoration support."
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck2 patchset featuring MuQSS CPU scheduler v0.156 and the fbcondecor framebuffer decoration support."
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck2 patchset featuring MuQSS CPU scheduler v0.156 and the fbcondecor framebuffer decoration support."
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
