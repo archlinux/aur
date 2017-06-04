@@ -83,7 +83,7 @@ prepare() {
         submodule="external/${external}"
         git submodule init "${submodule}"
         git config "submodule.${submodule}.url" "${srcdir}/${external}"
-        git submodule update
+        git submodule update "${submodule}"
     done
 }
 
