@@ -1,7 +1,7 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=pencil
 pkgver=3.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Sketching and GUI prototyping/wireframing tool"
 arch=('any')
 license=('GPL2')
@@ -18,11 +18,15 @@ depends=('nodejs' 'npm')
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    TMP_HOME="$(pwd)/tmp-home"
-    mkdir -p "$TMP_HOME"
+    if [ -d "$HOME" ]; then
+        TMP_HOME="$HOME"
+    else
+        TMP_HOME="$(pwd)/tmp-home"
+        mkdir -p "$TMP_HOME/.config"
+    fi
 
-    XDG_CONFIG_HOME="$TMP_HOME" HOME="$TMP_HOME" npm install
-    XDG_CONFIG_HOME="$TMP_HOME" HOME="$TMP_HOME" node_modules/.bin/build --linux dir
+    HOME="$TMP_HOME" npm install
+    HOME="$TMP_HOME" node_modules/.bin/build --linux dir
 
     install -d "$pkgdir/usr/share/$pkgname/" "$pkgdir/usr/bin" \
         "$pkgdir/usr/share/applications" "$pkgdir/usr/share/mime/packages"
