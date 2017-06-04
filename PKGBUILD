@@ -2,7 +2,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-postgresql
-pkgver=9.6.2
+pkgver=9.6.3
 pkgrel=1
 pkgdesc='A sophisticated object-relational DBMS (mingw-w64)'
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=('mingw-w64-postgresql-libs')
 replaces=('mingw-w64-postgresql-libs')
 source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2"
         'postgresql-9.4.1-mingw-link.patch')
-sha256sums=('0187b5184be1c09034e74e44761505e52357248451b0c854dddec6c231fe50c9'
+sha256sums=('1645b3736901f6d854e695a937389e68ff2066ce0cde9d73919d6ab7c995b9c6'
             '0f2b5c7edb48dd106900854c9323ca2d483054595c4cf8a5b796a1d536d22aad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -30,7 +30,7 @@ build() {
   cd postgresql-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    PATH=/usr/${_arch}/bin:$PATH ${_arch}-configure \
       --enable-thread-safety \
       --enable-nls \
       --with-libxml \
