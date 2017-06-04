@@ -1,0 +1,18 @@
+pkgbase = pacman-utils
+	pkgdesc = Some utils and helper scripts for archlinux packages
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/kata198/pacman-utils
+	install = install.sh
+	arch = i686
+	arch = x86_64
+	license = apache
+	depends = python
+	depends = python-virtualenv
+	depends = python-setuptools
+	optdepends = pacman-utils-data: Data for whatprovides_upstream
+	source = https://github.com/kata198/pacman-utils/archive/0.5.1.tar.gz
+	md5sums = 020375e8130ae5a73c721e9194ca9142
+
+pkgname = pacman-utils
+
