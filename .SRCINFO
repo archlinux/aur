@@ -1,5 +1,5 @@
 pkgbase = systemf
-	pkgdesc = a brainfuck interpreter supporting Linux syscalls
+	pkgdesc = A brainfuck interpreter supporting Linux syscalls
 	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/ajyoon/systemf
