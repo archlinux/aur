@@ -14,7 +14,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc' 'gcc49')
+makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
@@ -113,7 +113,17 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make CC="gcc-4.9" ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  if [ "${CARCH}" = "i686" ]; then
+    if [ ! -f /usr/bin/gcc-4.9 ]; then
+      printf "i686 builds are KNOWN BROKEN with alteast gcc 5.2 [5.4, 6.3 & 7.1 are untested]\n"
+      printf "package 'gcc49' in the aur is safe and the recomended compiler, stopping build\n"
+      return -1
+    else
+      make CC="gcc-4.9" ${MAKEFLAGS} LOCALVERSION= bzImage modules
+    fi
+  else
+    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  fi
 }
 
 _package() {
