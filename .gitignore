@@ -1,0 +1,7 @@
+/*.pkg.tar.*
+/jsmn/
+/libbase58/
+/libsodium/
+/lightning/
+/pkg/
+/src/
