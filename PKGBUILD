@@ -45,8 +45,9 @@ build() {
 	-DMUSESCORE_LABEL="Git Build" \
 	-DBUILD_LAME="ON" \
 	-DCMAKE_SKIP_RPATH="FALSE" \
-	-DBUILD_JACK=ON \
-	-DBUILD_PORTAUDIO=ON .
+	-DBUILD_JACK="ON" \
+	-DBUILD_PORTAUDIO="ON" \
+	-DUSE_SYSTEM_FREETYPE="ON" .
   make lrelease
   make
 }
