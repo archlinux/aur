@@ -1,7 +1,7 @@
 #@IgnoreInspection BashAddShebang
 # Maintainer: Cooper Paul EdenDay <cedenday@protonmail.com>
 pkgname=rshare
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='A file sharing program written in Rust.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/cedenday/rshare'
 license=('GPL3')
 source=("https://github.com/cedenday/rshare/releases/download/v$pkgver/rshare-v$pkgver-$CARCH-unknown-linux-musl"{,.asc})
 validpgpkeys=('BDB3F8A842A1656CC10B5CD9EE3B8B8C88FC7275')
-sha256sums=('5a37da26b09a03df5b91521941427068ace45bf35221c56a8d0c0ca5b45002f6'
+sha256sums=('c6f50817f91580d945fd494004943b2cc21b607569121c757c76c3c346e84578'
             'SKIP')
 
 build() {
