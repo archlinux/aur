@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Standard Notes
+Comment=A standard notes app with an un-standard focus on longevity, portability, and privacy.
+Exec=electron /opt/standardnotes-desktop/app/
+Terminal=false
+Type=Application
+Icon=standard-notes
