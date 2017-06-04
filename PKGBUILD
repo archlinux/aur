@@ -1,7 +1,9 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Alex Combas <alex.combas@gmail.com>
+# Comaintainer: bartus <aur@bartus.33mail.com>
+_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 pkgname=luxrays-hg
-pkgver=3748+.6941cfd544c4+
+pkgver=3752+.36522ab16096+
 pkgrel=1
 pkgdesc="Accelerate the ray intersection process by using GPUs"
 arch=('x86_64')
@@ -57,8 +59,8 @@ package() {
   cp -a include "$pkgdir"/usr
 
   # install pyluxcore to the Python search path
-  install -d -m755 "$pkgdir"/usr/lib/python3.6/
-  mv "$pkgdir"/usr/lib/pyluxcore.so "$pkgdir"/usr/lib/python3.6/
+  install -d -m755 "$pkgdir"/usr/lib/python${_pyver}/
+  mv "$pkgdir"/usr/lib/pyluxcore.so "$pkgdir"/usr/lib/python${_pyver}/
 }
 
 # vim:set ts=2 sw=2 et:
