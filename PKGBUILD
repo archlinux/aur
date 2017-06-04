@@ -12,6 +12,7 @@ depends=('openvpn'
          'openvpn-update-resolv-conf-git'
          'curl'
          'unzip'
+         'sudo'
          'coreutils')
 optdepends=('iputils: run ping and rank functions'
             'vpnfailsafe-git: use instead of update-resolv-conf if available')
