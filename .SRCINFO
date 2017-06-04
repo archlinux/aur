@@ -1,0 +1,18 @@
+pkgbase = urxvt-config-reload-git
+	pkgdesc = Reload urxvt configuration
+	pkgver = r5.72f3846
+	pkgrel = 1
+	url = https://github.com/regnarg/urxvt-config-reload
+	arch = any
+	makedepends = git
+	depends = rxvt-unicode
+	depends = perl-anyevent
+	depends = perl-common-sense
+	depends = perl-linux-fd
+	provides = urxvt-config-reload
+	conflicts = urxvt-config-reload
+	source = git://github.com/regnarg/urxvt-config-reload.git
+	sha256sums = SKIP
+
+pkgname = urxvt-config-reload-git
+
