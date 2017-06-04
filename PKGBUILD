@@ -8,9 +8,9 @@
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 
 pkgname=android-studio-canary
-pkgver=3.0.0.1
+pkgver=3.0.0.2
 pkgrel=1
-_build=171.4041253
+_build=171.4056697
 pkgdesc="The Official Android IDE (Canary branch)"
 arch=('i686' 'x86_64')
 url="http://tools.android.com/"
@@ -22,7 +22,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-sha256sums=('ae6ba335ef007775ce4c957e381089e1a4d70953f84f7bd41e794c8cfd8a0d75'
+sha256sums=('1c8a40e0c56774995af5d8629abda31d9f4ea7ffe6b690470c78a60fba12d7fb'
             '698430d3a2b3d6315ae22827e59c89e42c030089499f4e06bc32b3c92b796e35')
 
 if [ "$CARCH" = "i686" ]; then
