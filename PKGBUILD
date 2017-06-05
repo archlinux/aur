@@ -26,10 +26,12 @@ sha1sums=('SKIP'
           '7dec45682d4a1c44e9517ecb9c4e2f5afccd08c2'
           '04799236d75963c9abe2d41c9f2a6c3d3e61780d')
 
+
 pkgver() {
     cd gnatcoll
     git describe --long --tags | sed 's/^gnatcoll-//; s/-/.r/; s/-/./'
 }
+
 
 prepare() {
     cd gnatcoll
@@ -37,12 +39,20 @@ prepare() {
     patch -Np1 -i "$srcdir"/use_fpic_for_gtk.patch
     patch -Np1 -i "$srcdir"/use_fpic_for_python.patch
     patch -Np1 -i "$srcdir"/expose-cargs-and-largs-makefile.patch
+
+    ## Force use of pyhon2
+    #
+    rm -fr temp_bin
+    mkdir  temp_bin
+    ln -s /usr/bin/python2        temp_bin/python
+    ln -s /usr/bin/python2-config temp_bin/python-config
 }
+
 
 build() {
     cd gnatcoll
 
-    export PYTHON=python2
+    export PATH=$srcdir/$pkgname/temp_bin:$PATH    
 
     export OS=unix
     ./configure --prefix=/usr \
@@ -52,7 +62,8 @@ build() {
     make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
 }
 
+
 package() {
     cd gnatcoll
-    PYTHON=python2  make prefix="$pkgdir"/usr install
+    make prefix="$pkgdir"/usr install
 }
