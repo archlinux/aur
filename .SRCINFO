@@ -16,7 +16,7 @@ pkgbase = powder-toy
 	source = http://github.com/FacialTurd/The-Powder-Toy/archive/v91.5.330.tar.gz
 	source = powder-toy.desktop
 	source = powder-toy.png
-	md5sums = 1e6fbf990995cb0b1a372e5c3b74fb94
+	md5sums = ccc38069246a78f9b74f28088655d525
 	md5sums = 8901d334c53c04738cbd3518c80fa37c
 	md5sums = bb40bf9c2fa3982e2872b5d32de3b006
 
