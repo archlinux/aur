@@ -2,7 +2,7 @@
 
 pkgname=nautilus-ext-git
 _gitname=nautilus-git
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Nautilus extension to add important information about the current git directory Edit'
 arch=('i686' 'x86_64')
@@ -13,21 +13,19 @@ makedepends=('gnome-common' 'meson' 'ninja' 'intltool' 'gettext' 'python')
 
 options=('!emptydirs')
 source=("https://github.com/bil-elmoussaoui/${_gitname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0b5785f75221e793214670d9c9fc545faa9a9c6840717074f33a89517f15b74a')
+sha256sums=('3c69f2c9fd9f0999d62835714431218b5a3a45a2309ebddb9194374b20b2d514')
 provides=("nautilus-git=$pkgver")
 
 prepare(){
 	cd "$srcdir/${_gitname}-${pkgver}"
-	mkdir -p build
 }
 
 build() {
-	cd "$srcdir/${_gitname}-${pkgver}/build"
-	meson --prefix=/usr -Dpost_install=false ..
-  	ninja -j1
+	cd "$srcdir/${_gitname}-${pkgver}"
+	meson builddir --prefix=/usr
 }
 
 package() {
-	cd "$srcdir/${_gitname}-${pkgver}/build"
-	DESTDIR="${pkgdir}" ninja install
+	cd "$srcdir/${_gitname}-${pkgver}"
+	DESTDIR="${pkgdir}" ninja -C builddir install
 }
