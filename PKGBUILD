@@ -9,9 +9,9 @@ arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=716'
 license=('BSD')
 depends=('vim-runtime')
-source=("http://www.vim.org/scripts/download_script.php?src_id=$_scriptid" license.txt)
+source=("http://www.vim.org/scripts/download_script.php?src_id=$_scriptid" brainfuck.vim)
 sha256sums=('70801ce78e0c8cc7731b573ce5018ed97e17c8121c1896ebd95986ff032d62bb'
-	'446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3')
+	'352e03a934d0becdf400ef7c4b195c936c154b1851f6ed432bd0de0edf50ef7f')
 
 package() {
   cd "$srcdir"
