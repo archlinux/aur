@@ -1,8 +1,8 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
-pkgname=python-advancedhtmlparser
+pkgname=('python-advancedhtmlparser' 'python-advancedhtmlparser-tools')
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast Indexed python HTML parser which builds a DOM node tree, providing common getElementsBy* functions for scraping, testing, modification, and formatting"
 arch=('any')
 license=('LGPLv3')
@@ -18,7 +18,20 @@ build() {
   python setup.py build
 }
 
-package() {
+package_python-advancedhtmlparser() {
   cd AdvancedHTMLParser-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # Remove tools from lib package
+  rm -Rf "$pkgdir/usr/bin"
+}
+package_python-advancedhtmlparser-tools() {
+  depends=('python-advancedhtmlparser')
+  conflicts=('python2-advancedhtmlparser-tools')
+  optdepends=()
+  cd AdvancedHTMLParser-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # Remove lib from tools package
+  rm -Rf "${pkgdir}/usr/lib"
 }
