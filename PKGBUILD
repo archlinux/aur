@@ -26,7 +26,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   ## add -Wno-format in CFLAGS see FS#34658
-  CFLAGS="$CFLAGS -Wno-format -Wno-misleading-indentation" ./configure --prefix=/usr --disable-static
+  CFLAGS="$CFLAGS -Wno-format -Wno-misleading-indentation -Wno-error" ./configure --prefix=/usr --disable-static
   make 
 }
 
