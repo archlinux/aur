@@ -7,11 +7,11 @@ _STANDALONE_VIRTUALENV="false"
 
 pkgname=pacman-utils
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Some utils and helper scripts for archlinux packages "
 # arch package url is https://github.com/kata198/pacman-utils-pkg
 url="https://github.com/kata198/pacman-utils"
-arch=(i686 x86_64)
+arch=(any)
 license=(apache)
 if [ "$_STANDALONE_VIRTUALENV" = "true" ];
 then

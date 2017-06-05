@@ -1,10 +1,9 @@
 pkgbase = pacman-utils
 	pkgdesc = Some utils and helper scripts for archlinux packages
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kata198/pacman-utils
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = apache
 	makedepends = python
 	makedepends = python-setuptools
