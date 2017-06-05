@@ -1,0 +1,15 @@
+pkgbase = ctkarch-sysconfig-git
+	pkgdesc = This utility helps with configuring an Arch Linux installation
+	pkgver = 1.0.r15.ge81168c
+	pkgrel = 1
+	url = http://ctkarch.org/git/sysconfig
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dialog
+	optdepends = xorg-xinput: support for hot-detecting touchpad capabilities
+	source = git+http://ctkarch.org/git/sysconfig
+	md5sums = SKIP
+
+pkgname = ctkarch-sysconfig-git
+
