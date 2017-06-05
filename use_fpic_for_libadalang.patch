@@ -1,0 +1,30 @@
+--- build/lib/gnat/libadalang.gpr	2017-06-05 11:38:11.357910001 +1000
++++ build/lib/gnat/libadalang.gpr-new	2017-06-05 11:37:33.665740000 +1000
+@@ -90,9 +90,9 @@
+                Common_Ada_Cargs & ("-g", "-O0", "-gnatwe", "-gnata");
+ 
+             for Default_Switches ("C") use
+-               Common_C_Cargs & ("-g3", "-O0", "-DDEBUG=1");
++               Common_C_Cargs & ("-g3", "-O0", "-DDEBUG=1", "-fPIC");
+ 
+-            for Switches ("quex_lexer.c") use Common_C_Cargs & ("-g0", "-O0");
++            for Switches ("quex_lexer.c") use Common_C_Cargs & ("-g0", "-O0", "-fPIC");
+             --  This file is *huge* and the debugging information for it harms
+             --  Valgrind runs. We almost never have to debug this file so
+             --  this is acceptable.
+@@ -103,13 +103,13 @@
+             for Default_Switches ("Ada") use
+                Common_Ada_Cargs & ("-g", "-Ofast", "-gnatp", "-gnatn2");
+ 
+-            for Default_Switches ("C") use Common_C_Cargs & ("-Ofast");
++            for Default_Switches ("C") use Common_C_Cargs & ("-Ofast", "-fPIC");
+ 
+             case Target is
+                when "x86-linux" | "x86-windows" =>
+                   for Switches ("quex_lexer.c") use Common_C_Cargs
+                     & ("-Ofast", "-fno-ree", "-fdisable-rtl-cprop_hardreg",
+-                       "-fdisable-rtl-sched2", "-mno-stv");
++                       "-fdisable-rtl-sched2", "-mno-stv", "-fPIC");
+                   --  Deactivate because of memory usage, see P726-024. This
+                   --  limits the memory usage peaks of GCC 6 based compilers
+                   --  and should prevent OOM on 32-bit platforms.
