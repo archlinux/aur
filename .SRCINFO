@@ -1,0 +1,20 @@
+pkgbase = sphinx-beta
+	pkgdesc = Free open-source SQL full-text search engine (SVN version, with libsphinxclient, with systemd support)
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = http://www.sphinxsearch.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libmariadbclient
+	provides = sphinx
+	conflicts = sphinx
+	conflicts = sphinx-svn
+	options = !makeflags
+	source = http://sphinxsearch.com/files/sphinx-2.3.2-beta.tar.gz
+	source = sphinx.service
+	sha256sums = d2e71e094b7f979cdd554069006983e1c1289601d8572428b36d488c61621460
+	sha256sums = 847218ba5cd0b8f5a3b0d851352ffca1085229bfdf2779cbe2eff5e5eef99351
+
+pkgname = sphinx-beta
+
