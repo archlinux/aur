@@ -5,7 +5,7 @@
 pkgname=conky-lua-archers
 _pkgname=conky
 pkgver=1.10.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -38,14 +38,17 @@ makedepends=(
 	'perl-xml-sax-expat'
 )
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz"
-	'asciime.patch')
+	'asciime.patch'
+	'include.patch')
 sha1sums=('54cb3322dc3a969f1fda03383012c61d57261345'
-	  'b07407c2be11cee7bd50e046024b89cf2579c448')
+	  'b07407c2be11cee7bd50e046024b89cf2579c448'
+	  '0efe24eab88c48cc1fef0dae001ce935f743c131')
 options=('strip' '!debug')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	patch -p1 -i ../asciime.patch # db2x_manxml fails on non-ascii chars
+	patch -p1 -i ../include.patch # Build fails with gcc7 due to missing include
 }
 
 build() {
