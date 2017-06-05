@@ -46,8 +46,8 @@ source=("http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$
         'javaws-launcher')
 #source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin")
 #source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin")
-source_i686=('https://www.dropbox.com/s/fopb2sh993y9qgp/jre-6u45-linux-i586.bin')
-source_x86_64=('https://www.dropbox.com/s/42x6c7f7s02m4n3/jre-6u45-linux-x64.bin')
+source_i686=('https://www.dropbox.com/s/kiaooneyl2lhl33/jre-6u45-linux-i586.bin')
+source_x86_64=('https://www.dropbox.com/s/w1y1ftw174bb5lc/jre-6u45-linux-x64.bin')
 md5sums=('b20f9d6ed14e55d73a5ed204bca01e7a'
          '1ae1bd8b6f12af6c30a2558a39da0fe4'
          '45c15a6b4767288f2f745598455ea2bf')
