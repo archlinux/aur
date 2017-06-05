@@ -1,0 +1,18 @@
+pkgbase = python2-virtualenvondemand
+	pkgdesc = Easily create and use virtualenvs via script and provides the ability for an application to install and use its runtime dependencies on first import
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = http://github.com/kata198/VirtualEnvOnDemand
+	arch = any
+	license = LGPLv3
+	makedepends = python2-setuptools
+	makedepends = python2
+	depends = python2-setuptools
+	depends = python2-virtualenv
+	depends = python2-pip
+	depends = python2
+	source = https://github.com/kata198/VirtualEnvOnDemand/archive/6.0.0.tar.gz
+	sha512sums = 9faa48b7015a6656a2f53a64f4aab8c41ca830c74fccebf157c5cd06683b518f94bd70b2e2d7026da790adef3c4780099494e9e2031b033d6e27f2d98721dace
+
+pkgname = python2-virtualenvondemand
+
