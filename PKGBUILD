@@ -42,7 +42,7 @@ build()
   export OS=unix
   export Build=Production
 
-  export PATH=$srcdir/$pkgname/temp_bin:$PATH    
+  export PATH=$srcdir/gps/temp_bin:$PATH    
 	
   cd $srcdir/gps
 
