@@ -1,0 +1,22 @@
+pkgbase = redshift-gnomerr-git
+	pkgdesc = Adjusts the color temperature of your screen according to your surroundings, with experimental Wayland support through gnomerr.
+	pkgver = 1.11.r32.gd417c96
+	pkgrel = 1
+	url = https://github.com/prahal/redshift/tree/add-gnomerr-method
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = intltool
+	makedepends = python
+	depends = libxxf86vm
+	depends = libdrm
+	depends = libxcb
+	depends = geoclue2
+	provides = redshift
+	conflicts = redshift
+	source = redshift::git+https://github.com/prahal/redshift.git#branch=add-gnomerr-method
+	md5sums = SKIP
+
+pkgname = redshift-gnomerr-git
+

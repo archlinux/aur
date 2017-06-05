@@ -1,0 +1,7 @@
+# source files
+*.pkg.tar.xz
+pkg/**
+src/**
+redshift/**
+build.sh
+test.sh
