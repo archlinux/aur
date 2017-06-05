@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-qt4
 pkgver=4.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 arch=('i686' 'x86_64')
 url="http://qt-project.org/"
@@ -39,21 +39,23 @@ source=("http://download.qt-project.org/official_releases/qt/4.8/${pkgver}/${_pk
         'qt-4.8.1-fix-activeqt-compilation.patch'
         'qt-dont-set-qt-dll-define-for-static-builds.patch'
         'qt4-fix-linking-against-static-dbus.patch'
-        'qt-everywhere-opensource-src-4.8.7-gcc6.patch')
-md5sums=('d990ee66bf7ab0c785589776f35ba6ad'
-         '3759f73b9c872ce692b7067daef134a9'
-         'db6257762e051f2b7b18745dca2df43d'
-         '2cba45b6c52c20aa51265d61c1dd9856'
-         '6faad05e8897d3d88cc5b0f5205b2bdc'
-         '91d01b6d31887f78c7933c04544c5758'
-         '28660113fcb05f62ace400187eb8580a'
-         '63dc5a13265ed82b2ba3abd0aa7a59f7'
-         '7f8e12ad3b140e773c7a1f76cdd800f2'
-         '3fe6e419c1f21c59062db1f562c1f9bf'
-         '22fc6f20aa6af060c640fc3b9af888a9'
-         'b6d9bcdd1df5115e7063d08bf75c2fd1'
-         '84a802e6619be4f43b2a9be0ec1a11ef'
-         '8ba77cd8f325c38daca8eadc982395a4')
+        'qt-everywhere-opensource-src-4.8.7-gcc6.patch'
+         qt4-openssl-1.1.patch)
+sha256sums=('e2882295097e47fe089f8ac741a95fef47e0a73a3f3cdf21b56990638f626ea0'
+            '71f6e368bd7b14089d1e312f86970d1d5aa649b8e5c7f1f55b7381ec5d841755'
+            '59d9355c66a810f56d56c3debc2c8f93412cea0e047f08745589e7a2492693e8'
+            '73916d59566843f6b9ab8b9091a328b6443e09ca0478bb5c0f8a64777b69d4f5'
+            '321603e3993efabc4dce5c4369d87ad407b7b95a6e63327a7e9ca832ee218666'
+            '1e0eb85e1a88438ee1f99b5d27b775bf7d077bebf5de2e57fe831d0e39ce6df1'
+            '08a98118a235681209848dfa204d9bf8a57248b58ad1670b5d1d42677c647cf2'
+            '5e6a61ced784d7d24c65d81e769b67b8f6066a33581c8b17cdf374a4c723cd23'
+            '21a36a92b988ed0054d07d97933d0392c4bbd651e005dab43257e0b0480a054c'
+            'fba6cf2b0bd5f6229b21b1cf4adf093c216a10c97255527d71979599b7047be8'
+            '4a758b90b2768cef4877ae1b5bafca69902b88633a18d5ec3d5c6bb0064510a5'
+            '9a8ad8953e465a141b53e9b925eb0bcd34832b2fe88d6a5237fb3abcaa4fa1a5'
+            '5f9286d16cce0a1b1585102074cc06007053751fe7e351773c173be768e6c957'
+            'aaa073195b6fc47ebdc241574da4a29e7ba0a1ae51bdf9a64b866c683f30684a'
+            'ff3ddb5428cd2ff243558dc0c75b35f470077e9204bbc989ddcba04c866c1b68')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -117,6 +119,11 @@ prepare() {
 
   # GCC 6
   patch -Np1 -i "${srcdir}"/qt-everywhere-opensource-src-4.8.7-gcc6.patch
+
+  # Fix build with OpenSSL 1.1 (Debian + OpenMandriva)
+  patch -p1 -i "$srcdir"/qt4-openssl-1.1.patch
+  # qsslsocket_openssl_symbols.cpp:312:11: error: ‘_q_CRYPTO_free’ was not declared
+  sed -i "123iDEFINEFUNC(void, CRYPTO_free, void *a, a, return, DUMMYARG)" src/network/ssl/qsslsocket_openssl_symbols.cpp
 
   # Cross-compilation qmake target.
   mkdir -p mkspecs/win32-g++-cross
