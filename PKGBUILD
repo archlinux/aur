@@ -41,12 +41,15 @@ prepare() {
 
 build() {
     cd gnatcoll
+
+    export PYTHON=python2
+
     export OS=unix
     ./configure --prefix=/usr \
         --libexecdir=/lib \
         --enable-shared \
         --enable-gpl
-    PYTHON=python2 make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
+    make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
 }
 
 package() {
