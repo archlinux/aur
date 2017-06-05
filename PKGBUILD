@@ -1,7 +1,8 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer : David Phillips < david sighup nz >
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=beef
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Flexible interpreter for the Brainfuck programming language'
 arch=('x86_64' 'i686')
@@ -10,7 +11,7 @@ license=('GPL')
 depends=('cattle')
 makedepends=('addinclude')
 source=("$pkgname-$pkgver.tgz::http://kiyuko.org/software/$pkgname/releases/$pkgver/source")
-sha256sums=('112472c832c623a6d8a90e12cd9f5fb55d93658d0bd181273c7149b11c4f5df8')
+sha256sums=('5febdb9504fbc8d292e7678f8fe9e9758e915ef2cd8252d0f1a502c93e3b51e6')
 
 prepare() {
   cd "$pkgname-$pkgver"
