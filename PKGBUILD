@@ -1,4 +1,4 @@
-# Maintainer: Bjorn Pagen <bjornpagen at gmail dot com>
+# Maintainer: Bjorn Pagen <bjornpagenatgmaildotcom>
 
 pkgname=systemf
 pkgver=1.10
