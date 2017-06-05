@@ -1,6 +1,7 @@
 # Maintainer: Youngbin Han <sukso96100@gmail.com>
+# Contributor: Andrew Kluger <evilgnome@gmail.com>
 pkgname=micro-git
-pkgver=1.0.3.1739f06
+pkgver=1.2.0.eeb2aaf
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
@@ -18,6 +19,7 @@ pkgver() {
 build(){
  cd "${srcdir}/${pkgname}"
  export GOPATH=${srcdir}/${pkgname}
+ export GOBIN="$GOPATH/bin"
  make
  make install
 }
