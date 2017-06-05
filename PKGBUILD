@@ -1,5 +1,5 @@
 pkgname=shufti
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="shufti - the persistent image viewer"
 arch=('any')
