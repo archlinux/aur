@@ -17,6 +17,6 @@ package() {
   cd "$srcdir"
   local installpath="$pkgdir/usr/share/vim/vimfiles"
 
-  install -D -m644 "download_script.php?src_id=$_scriptid" "$installpath/plugin/brainfuck.vim"
+  install -D -m644 "download_script.php?src_id=$_scriptid" "$installpath/syntax/brainfuck.vim"
   install -D -m644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
