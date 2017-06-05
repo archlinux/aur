@@ -4,12 +4,12 @@
 
 pkgname=python-oursql
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="new set of MySQL bindings for python3"
 arch=('i386' 'x86_64')
 url="https://launchpad.net/oursql"
 license=('BSD')
-depends=('python>=3.1' 'libmysqlclient')
+depends=('python>=3.1' 'libmariadbclient')
 makedepends=('python-setuptools')
 source=("http://launchpad.net/oursql/py3k/py3k-$pkgver/+download/oursql-$pkgver.zip")
 sha1sums=('fdc853d1020c227bd5bda08ecb368746d3ed5b6d')
