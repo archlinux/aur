@@ -43,7 +43,7 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
 #source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
-source=('https://www.dropbox.com/s/37wrnymobxsglbe/jre-7u80-linux-i586.tar.gz'
+source=('https://www.dropbox.com/s/omxrvt66z0calk6/jre-7u80-linux-i586.tar.gz'
         "http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
         "policytool32-$_jname.desktop")
 md5sums=('ff0f6847e51b6be5c241615a73043005'
