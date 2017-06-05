@@ -1,0 +1,65 @@
+pkgbase = gcc63
+	pkgdesc = The GNU Compiler for Java
+	pkgver = 6.3.1
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = mpfr>=2.4.2
+	makedepends = elfutils
+	makedepends = jack
+	makedepends = zip
+	makedepends = libart-lgpl
+	makedepends = git
+	depends = gtk2
+	depends = libxtst
+	depends = alsa-lib
+	depends = libmpc>=0.8.1
+	depends = classpath
+	optdepends = python2: for running /usr/bin/aot-compile
+	optdepends = java-environment: for runnig some jars
+	options = !libtool
+	options = !makeflags
+	source = https://github.com/gcc-mirror/gcc/archive/4ca53f06ff7d346ef8021a23108f23a5406a0417.tar.gz
+	source = http://isl.gforge.inria.fr/isl-0.17.tar.bz2
+	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.4.tar.gz
+	md5sums = e65d06ed7c00e68bc84f6989752a09eb
+	md5sums = 47dcb4fc963a9a625ccb47b72a167ffa
+	md5sums = e531f725244856c92c9bba009ff44faf
+
+pkgname = gcc63
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends
+	groups = base-devel
+	depends = gcc-libs
+	depends = binutils>=2.28
+	depends = libmpc
+	options = staticlibs
+
+pkgname = gcc63-fortran
+	pkgdesc = Fortran front-end for GCC
+	depends = gcc63
+	options = !emptydirs
+
+pkgname = gcc63-objc
+	pkgdesc = Objective-C front-end for GCC
+	depends = gcc63
+
+pkgname = gcc63-ada
+	pkgdesc = Ada front-end for GCC (GNAT)
+	depends = gcc63
+	options = staticlibs
+	options = !emptydirs
+
+pkgname = gcc63-go
+	pkgdesc = Go front-end for GCC
+	depends = gcc63
+	conflicts = go
+	options = !emptydirs
+
+pkgname = gcc63-gcj
+	pkgdesc = Java front-end for GCC
+	depends = gcc63
+	options = !emptydirs
+
