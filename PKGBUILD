@@ -6,7 +6,7 @@
 pkgname=perl-gtk2-unique
 _realname=Gtk2-Unique
 pkgver=0.05
-pkgrel=16
+pkgrel=17
 pkgdesc="Perl bindings for the C library libunique"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_realname}"
@@ -23,7 +23,8 @@ md5sums=('0beb552933b765a017588563a71af123'
 build() {
   cd "$srcdir/$_realname-$pkgver"
   patch -Np1 -i "$srcdir/$pkgname.patch"
-  PERL_MM_USE_DEFAULT=1 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+  export PERL_MM_USE_DEFAULT=1 PERL_USE_UNSAFE_INC=1
+  perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
