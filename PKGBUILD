@@ -183,7 +183,7 @@ prepare() {
   rm "${_wrapper_source}"
 
   cd "${srcdir}"
-  # Misnamed printer does not sort properly
+  # Misnamed printer does not sort or autodetect properly
   sed -e 's:Brother HL2230 :Brother HL-2230 :g' -i 'usr/share/cups/model'/*.ppd
 
   # Check to see if the lpd wrapper is referenced by the ppd
