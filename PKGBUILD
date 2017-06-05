@@ -2,14 +2,14 @@
 
 pkgname=perl-app-borgrestore
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Restore paths from borg backups'
 arch=(any)
 license=(PerlArtistic GPL)
 options=(!emptydirs)
 depends=('perl>=5.10.0' perl-dbd-sqlite perl-dbi perl-function-parameters
          perl-ipc-run perl-log-any perl-log-any-adapter-log4perl
-         perl-log-log4perl)
+         perl-log-log4perl borg)
 makedepends=(perl-devel-checkbin 'perl-module-build-tiny>=0.035')
 checkdepends=(perl-test-differences perl-test-exception perl-test-mockobject)
 url=https://metacpan.org/release/App-BorgRestore
@@ -40,7 +40,7 @@ package()
   cd "$srcdir/$_ddir"
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
   unset PERL5LIB PERL_MB_OPT
-  ./Build install installdirs=vendor destdir="$pkgdir"
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 )
 
