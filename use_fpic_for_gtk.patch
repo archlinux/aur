@@ -1,0 +1,13 @@
+diff --git a/src/gnatcoll_gtk.gpr b/src/gnatcoll_gtk.gpr
+index f37017df..6654804d 100644
+--- a/src/gnatcoll_gtk.gpr
++++ b/src/gnatcoll_gtk.gpr
+@@ -71,7 +71,7 @@ project GnatColl_Gtk is
+       for Switches ("Ada") use GnatColl_Shared.Compiler'Switches ("Ada");
+ 
+       for Switches ("C") use
+-        ("-g", "-O2")
++        ("-g", "-O2", "-fPIC")
+         & GnatColl_Shared.Python_Cflags
+         & GnatColl_Shared.Pygtk_Include
+         & GnatColl_Shared.PyGobject_Include

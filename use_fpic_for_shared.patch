@@ -1,0 +1,19 @@
+diff --git a/gnatcoll_shared.gpr.in b/gnatcoll_shared.gpr.in
+index f189c9db..64ff0741 100644
+--- a/gnatcoll_shared.gpr.in
++++ b/gnatcoll_shared.gpr.in
+@@ -76,12 +76,12 @@ abstract project GnatColl_Shared is
+             for Switches ("Ada") use
+               ("-g", "-O0", "-gnata", "-gnatVa", "-gnatQ", "-gnaty", "-gnateE",
+                "-gnatwaCJe");
+-            for Switches ("C") use ("-g", "-Wunreachable-code");
++            for Switches ("C") use ("-g", "-Wunreachable-code", "-fPIC");
+ 
+          when "Production" =>
+             --  Do not use -gnatwe for production mode
+             for Switches ("Ada") use ("-O2", "-gnatn", "-gnatwaCJ");
+-            for Switches ("C") use ("-O2", "-Wunreachable-code");
++            for Switches ("C") use ("-O2", "-Wunreachable-code", "-fPIC");
+       end case;
+ 
+       case Syslog is

@@ -1,0 +1,57 @@
+diff --git a/Makefile b/Makefile
+index ef378102..40f7bcd1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -49,12 +49,12 @@ build_library_type/%: generate_sources
+ 	@${RM} src/gnatcoll-atomic.adb
+ 
+ 	@echo "====== Building $(@F) libraries ======"
+-	${GPRBUILD} ${GPRBLD_OPTS} -Pgnatcoll_full
++	${GPRBUILD} ${GPRBLD_OPTS} -Pgnatcoll_full $(CARGS) $(LARGS)
+ 
+ 	@# Need to build libgnatcoll_gtk separately, because its project files
+ 	@# requires gtkada.gpr, which might not exist on the machine.
+ ifeq (${WITH_GTK},yes)
+-	${GPRBUILD} ${GPRBLD_OPTS} -Psrc/gnatcoll_gtk
++	${GPRBUILD} ${GPRBLD_OPTS} -Psrc/gnatcoll_gtk $(CARGS) $(LARGS)
+ endif
+ 
+ build_tools/%: build_library_type/%
+@@ -63,7 +63,7 @@ build_tools/%: build_library_type/%
+ 	@# They are not build as part of the above because only the Main from
+ 	@# gnatcoll_full.gpr are build. We could use aggregate projects to
+ 	@# speed things up.
+-	${GPRBUILD} ${GPRBLD_OPTS} -q -Psrc/gnatcoll_tools
++	${GPRBUILD} ${GPRBLD_OPTS} -q -Psrc/gnatcoll_tools $(CARGS) $(LARGS)
+ 
+ #######################################################################
+ #  install
+@@ -126,10 +126,10 @@ SQLITE_DIR=src/sqlite/amalgamation
+ sqlite3_shell: $(SQLITE_DIR)/sqlite3_for_gps
+ $(SQLITE_DIR)/sqlite3_for_gps: $(SQLITE_DIR)/shell.c $(SQLITE_DIR)/sqlite3.c
+ ifeq ($(OS),Windows_NT)
+-	-cd $(SQLITE_DIR); gcc -O2 -DSQLITE_OMIT_LOAD_EXTENSION -D__EXTENSIONS__ -o sqlite3_for_gps shell.c sqlite3.c
++	-cd $(SQLITE_DIR); gcc $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -DSQLITE_OMIT_LOAD_EXTENSION -D__EXTENSIONS__ -o sqlite3_for_gps shell.c sqlite3.c
+ else
+ 	# If we fail to compile, never mind. Some tests will simply be disabled
+-	-cd $(SQLITE_DIR); gcc -O2 -DSQLITE_OMIT_LOAD_EXTENSION -D__EXTENSIONS__ -o sqlite3_for_gps shell.c sqlite3.c -lpthread -ldl
++	-cd $(SQLITE_DIR); gcc $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -DSQLITE_OMIT_LOAD_EXTENSION -D__EXTENSIONS__ -o sqlite3_for_gps shell.c sqlite3.c -lpthread -ldl
+ endif
+ 
+ ## Only works after installation, so we should install to a local directory
+diff --git a/Makefile.conf.in b/Makefile.conf.in
+index 32975d66..f55ec0f1 100644
+--- a/Makefile.conf.in
++++ b/Makefile.conf.in
+@@ -91,3 +91,11 @@ DIRSEP=;
+ else
+ DIRSEP=:
+ endif
++
++ifneq ($(strip $(CFLAGS)),)
++CARGS := -cargs $(CFLAGS)
++endif
++
++ifneq ($(strip $(LDFLAGS)),)
++LARGS := -largs $(LDFLAGS)
++endif

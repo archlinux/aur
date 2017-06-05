@@ -1,0 +1,13 @@
+diff --git a/src/gnatcoll_python.gpr b/src/gnatcoll_python.gpr
+index 7dbab9d4..b9c90907 100644
+--- a/src/gnatcoll_python.gpr
++++ b/src/gnatcoll_python.gpr
+@@ -59,7 +59,7 @@ project GnatColl_Python is
+         GnatColl_Shared.Compiler'Switches ("Ada");
+ 
+       for Switches ("C") use
+-        ("-g", "-O2") & GnatColl_Shared.Python_Cflags;
++        ("-g", "-O2", "-fPIC") & GnatColl_Shared.Python_Cflags;
+    end Compiler;
+ 
+    package Linker is
