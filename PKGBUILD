@@ -4,7 +4,7 @@ pkgbase=python-nikola
 _pyname=Nikola
 _pynamel=nikola
 pkgname=('python-nikola' 'python-nikola-doc')
-pkgver=7.8.6
+pkgver=7.8.7
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
@@ -15,9 +15,9 @@ makedepends=('python' 'python-doit' 'python-pygments' 'python-pillow'
              'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
              'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
              'python-blinker' 'python-natsort' 'python-setuptools'
-             'python-requests' 'python-husl' 'python-piexif')
+             'python-requests' 'python-husl' 'python-piexif' 'python-markdown')
 source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
-md5sums=('8079abce3ec29a4fe652e1f4697e6325')
+md5sums=('5d86dd33b03cf37fa3078fd5c56870ef')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
@@ -28,9 +28,8 @@ package_python-nikola() {
            'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
            'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
            'python-blinker' 'python-natsort' 'python-setuptools'
-           'python-requests' 'python-husl' 'python-piexif')
-  optdepends=('python-markdown: for Markdown support'
-              'python-jinja: for Jinja2 themes'
+           'python-requests' 'python-husl' 'python-piexif' 'python-markdown')
+  optdepends=('python-jinja: for Jinja2 themes'
               'python-pyphen>=0.9.1: for hyphenation'
               'python-pygal=1.7.0: for SVG graph plotting'
               'python-typogrify>=2.0.4: for typographical enhancements'
