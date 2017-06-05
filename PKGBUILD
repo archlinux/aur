@@ -3,15 +3,24 @@
 
 pkgname=gerbera
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="UPnP Media Server"
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 url="https://github.com/v00d00/gerbera"
 license=('GPL2')
-depends=('taglib' 'curl' 'sqlite' 'file' 'libmariadbclient' 'gcc-libs' 'pupnp>=1.8.0'
+depends=('taglib' 'curl' 'sqlite' 'file' 'libmariadbclient' 'gcc-libs' 'pupnp'
 	 'duktape' 'libexif' 'expat')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/v00d00/gerbera/archive/v$pkgver.tar.gz")
-sha256sums=('297c26e0b4223ea96cc6db403e2a2e8f81c51b64284535f3bc644abf24f66975')
+makedepends=('cmake')
+install=gerbera.install
+options=('emptydirs')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/v00d00/gerbera/archive/v$pkgver.tar.gz"
+	gerbera-mysql.service
+	gerbera.service
+	gerbera.sysusers)
+sha256sums=('297c26e0b4223ea96cc6db403e2a2e8f81c51b64284535f3bc644abf24f66975'
+            'f8abf002308fabb8327f3bff0fd100357360921fcbfde61795f044af96ab9257'
+            '766383ece7e5fc308b52d8c9df3924e31c65e0ac0a954033248c7d80a8c40140'
+            'b3f956a6eaee8753cff7a04b51091b8b283dd0da054190ced13362a5b050d73f')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -23,6 +32,8 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 
-	mkdir -p "$pkgdir"/usr/lib/systemd
-	cp -a scripts/systemd "$pkgdir"/usr/lib/systemd/system
+	install -dm0755 "$pkgdir"/var/lib/gerbera
+	install -Dm0644 "$srcdir"/gerbera.sysusers "$pkgdir"/usr/lib/sysusers.d/gerbera.conf
+	install -Dm0644 "$srcdir"/gerbera-mysql.service "$pkgdir"/usr/lib/systemd/system/gerbera-mysql.service
+	install -Dm0644 "$srcdir"/gerbera.service "$pkgdir"/usr/lib/systemd/system/gerbera.service
 }
