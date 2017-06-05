@@ -12,13 +12,17 @@ makedepends=('unzip' 'gnome-common' 'gobject-introspection' 'intltool' 'itstool'
 source=(https://github.com/cybre/screenshot-applet/archive/${pkgver}.zip)
 url="https://github.com/cybre/${pkgname}"
 
-build() {
+prepare() {
 	cd "$srcdir/budgie-${pkgname}-${pkgver}"
-	./autogen.sh --prefix=/usr  --disable-schemas-compile
-	make
+  mkdir -p build
+}
+
+build() {
+	cd "$srcdir/budgie-${pkgname}-${pkgver}/build"
+  meson --prefix /usr --buildtype=plain ..
 }
 
 package() {
-	cd "$srcdir/budgie-${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+	cd "$srcdir/budgie-${pkgname}-${pkgver}/build"
+	DESTDIR="${pkgdir}" ninja install
 }
