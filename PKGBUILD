@@ -26,6 +26,13 @@ prepare()
   cd $srcdir/gps
 
   patch -p0 -i ../patch-Makefile.in
+
+  ## Force use of pyhon2
+  #
+  rm -fr temp_bin
+  mkdir  temp_bin
+  ln -s /usr/bin/python2        temp_bin/python
+  ln -s /usr/bin/python2-config temp_bin/python-config
 }
 
 
@@ -34,12 +41,14 @@ build()
 {
   export OS=unix
   export Build=Production
+
+  export PATH=$srcdir/$pkgname/temp_bin:$PATH    
 	
   cd $srcdir/gps
 
   ./configure  --prefix=/usr
 
-  PYTHON=python2 PROCESSORS=5  make -j5
+  PROCESSORS=5  make -j5
 }
 
 
