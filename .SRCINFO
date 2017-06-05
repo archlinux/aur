@@ -1,0 +1,12 @@
+pkgbase = spaghetti
+	pkgdesc = Joke text utility - replaces ASCII letters with unicode letters that look the same
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/EinBaum/spaghetti
+	arch = any
+	license = GPL
+	source = https://github.com/EinBaum/spaghetti/archive/1.0.tar.gz
+	sha256sums = 2904bb0071e5d07e3e2747ddfddfa28dcff3189863a2d7c730c94b55fe84efb5
+
+pkgname = spaghetti
+
