@@ -2,7 +2,7 @@
 pkgname=zelda-3t-fr
 _name=zelda-3t
 pkgver=1.8
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc="Zelda: Time To Triumph (french version)"
 url="http://www.zeldaroth.fr/"
@@ -41,6 +41,10 @@ prepare () {
   
   # Create the directory $HOME/.zelda3t if it doesnt exist
   sed -i -e s~'(NULL));'~'&\n\tif (system(\"stat $HOME/.'$_name' \&> /dev/null")) system (\"mkdir $HOME/.'$_name'\");'~ main.cpp
+  
+  #Fix the preprocessor options (SDL.h not found)
+  sed -i -e "s#CFLAGS  =#CFLAGS  += -I/usr/include/SDL#g" Makefile
+  sed -i -e "s#LDFLAGS =#LDFLAGS +=#g" Makefile
 }
 
 build () {
