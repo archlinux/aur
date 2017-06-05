@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 224939 2017-04-24 12:10:38Z jgc $
+# $Id$
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
@@ -6,7 +6,7 @@
 pkgname=gdal-hdf4
 _pkgname=gdal
 pkgver=2.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -29,7 +29,6 @@ prepare() {
 
 # python2 fixes
   sed -i 's_python python1.5_python2 python python1.5_' configure
-  sed -i -e 's@uchar@unsigned char@' frmts/jpeg2000/jpeg2000_vsil_io.cpp
   for file in swig/python/{,osgeo/,samples/,scripts/}*.py; do
       sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
   done
@@ -48,6 +47,9 @@ build() {
   ./configure --prefix=/usr --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
               --with-mysql --with-python=/usr/bin/python2 --with-curl --with-hdf4 --with-hdf5 --with-perl --with-geos \
               --with-png --with-poppler --with-spatialite --with-openjpeg
+
+# bug: http://osgeo-org.1560.x6.nabble.com/gdal-dev-jpeg2000-jasper-error-compiling-gdal-2-1-from-git-release-branch-td5299100.html
+  sed -i -e 's@uchar@unsigned char@' frmts/jpeg2000/jpeg2000_vsil_io.cpp
 
 # workaround for bug #13646
   sed -i 's/PY_HAVE_SETUPTOOLS=1/PY_HAVE_SETUPTOOLS=/g' ./GDALmake.opt
