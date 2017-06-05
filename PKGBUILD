@@ -1,7 +1,7 @@
 # Maintainer: Jonne Haß <me@mrzyx.de>
 pkgname=boxcars
 pkgver=r59.2e02b6d
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy-to-configure Static Web & Reverse Proxy Server in Go"
 arch=('x86_64' 'i686')
 url="https://github.com/azer/boxcars"
@@ -25,8 +25,9 @@ prepare() {
 }
 
 build() {
- cd "$srcdir/$pkgname/$pkgname"
- go build -o $pkgname boxcars.go
+  cd "$srcdir/$pkgname/$pkgname"
+  export GOPATH="$srcdir/go"
+  go build -o $pkgname boxcars.go
 }
 
 package() {

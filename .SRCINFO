@@ -1,7 +1,7 @@
 pkgbase = boxcars
 	pkgdesc = Easy-to-configure Static Web & Reverse Proxy Server in Go
 	pkgver = r59.2e02b6d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/azer/boxcars
 	arch = x86_64
 	arch = i686
