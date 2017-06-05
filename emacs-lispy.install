@@ -5,13 +5,18 @@ cat << EOF
 ==> Add this code to your .emacs file to use the mode:
 
 (require 'lispy)
+
+==> Then, for any modes for which you want to activate lispy:
+
 (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+(add-hook 'clojure-mode-hook (lambda () (lispy-mode 1)))
 
 ==> Or do the above with use-package:
 
 (use-package lispy
   :config
-  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1))))
+  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))  ; For Elisp
+  (add-hook 'clojure-mode-hook (lambda () (lispy-mode 1))))    ; For Clojure
 
 EOF
 }
