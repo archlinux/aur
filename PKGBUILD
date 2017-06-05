@@ -8,7 +8,7 @@ url="http://www.gcc.tu-darmstadt.de/home/proj/mve/"
 license=('BSD' 'GPL')
 groups=()
 depends=('libjpeg' 'libtiff' 'libpng' 'libgl' 'qt5-base')
-makedepends=('git' 'go-md2man' 'gcc5' 'cmake' 'gtest')
+makedepends=('git' 'go-md2man' 'cmake' 'gtest')
 provides=()
 options=()
 source=("${pkgname}::git+https://github.com/simonfuhrmann/mve.git"
@@ -70,7 +70,7 @@ build() {
   cd ${srcdir}/mvs-texturing
   mkdir -p build
   cd build
-  cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 -DCMAKE_C_COMPILER=/usr/bin/gcc-5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
   make
 
   msg "build Shading-aware Multi-view Stereo"

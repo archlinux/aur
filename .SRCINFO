@@ -1,6 +1,6 @@
 pkgbase = mve-git
 	pkgdesc = Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,
-	pkgver = r1190.e454a6a
+	pkgver = r1192.5657454
 	pkgrel = 1
 	url = http://www.gcc.tu-darmstadt.de/home/proj/mve/
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = mve-git
 	license = GPL
 	makedepends = git
 	makedepends = go-md2man
-	makedepends = gcc5
 	makedepends = cmake
 	makedepends = gtest
 	depends = libjpeg
