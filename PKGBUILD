@@ -35,7 +35,7 @@ prepare()
     git clone "$_gitroot" "$_gitname"
     cd "$_gitname"
 
-    git checkout 0f2542be82b7a4edd89b564205202b16a0f1dfd3
+#    git checkout 0f2542be82b7a4edd89b564205202b16a0f1dfd3
     msg "GIT checkout done or server timeout"
   fi
 }
