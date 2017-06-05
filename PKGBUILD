@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/gps"
 license=('GPL')
 
-depends=("clang" "ada-gnatcoll-git")
+depends=("clang" "gnatcoll")
 makedepends=("libadalang")
 
 source=(git+https://github.com/AdaCore/gps.git
