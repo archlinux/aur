@@ -39,14 +39,14 @@ prepare() {
 
 build() {
     cd gprbuild
-    export OS=linux
+    export OS=UNIX
     make prefix=/usr  PROCESSORS="$(nproc)" setup
     make GPRBUILD_OPTIONS=-R
 }
 
 package() {
     cd gprbuild
-    export OS=linux
+    export OS=UNIX
     make prefix="$pkgdir"/usr install
 
     # Cleanup
