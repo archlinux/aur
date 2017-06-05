@@ -1,0 +1,12 @@
+
+pkgbase = vim-brainfuck
+	pkgdesc = Vim syntax highlighting for the brainfuck programming language
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=716
+	arch = any
+	license = custom:vim
+	depends = vim
+	source = http://www.vim.org/scripts/download_script.php?src_id=22518
+
+pkgname = vim-brainfuck
