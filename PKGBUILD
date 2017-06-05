@@ -7,7 +7,7 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=sudo-selinux
-_sudover=1.8.20p1
+_sudover=1.8.20p2
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -23,7 +23,7 @@ backup=('etc/sudoers' 'etc/pam.d/sudo')
 install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.pam)
-sha256sums=('9e980eb23a60dd11f0f452e672e705d7a386882bc230c6e8483050e03182db1d'
+sha256sums=('bd42ae1059e935f795c69ea97b3de09fe9410a58a74b5d5e6836eb5067a445d9'
             'SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 validpgpkeys=('CCB24BE9E9481B15D34159535A89DFA27EE470C4')
