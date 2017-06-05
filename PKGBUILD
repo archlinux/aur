@@ -1,7 +1,8 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer : David Phillips < david sighup nz >
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=cattle
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Toolkit for the Brainfuck programming language'
 arch=('x86_64' 'i686')
@@ -10,7 +11,7 @@ license=('GPL')
 depends=('glib2')
 options=('!libtool')
 source=("$pkgname-$pkgver.tgz::http://kiyuko.org/software/$pkgname/releases/$pkgver/source")
-sha256sums=('d1ff3084d097db308f39f8a53f8679d5accf62fc96a4285a213289a0858b13c0')
+sha256sums=('e8e9baba41c4b25a1fdac552c5b03ad62a4dbb782e9866df3c3463baf6411826')
 
 build() {
   cd "$pkgname-$pkgver"
