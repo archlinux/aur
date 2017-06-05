@@ -10,8 +10,8 @@ license=('GPL')
 depends=('gcc-ada')
 makedepends=('git' 'gprbuild-bootstrap')
 
-provides=('ada-xmlada')
-conflicts=('ada-xmlada')
+provides=('xmlada')
+conflicts=('xmlada')
 
 source=('git+https://github.com/AdaCore/xmlada'
         'expose-cargs-and-largs-makefile.patch')
