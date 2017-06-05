@@ -1,0 +1,59 @@
+* commit 35d419f50a97e54e632734c7a0efd58a2fc12678
+| Author: anyc <dev@kicherer.org>
+| Date:   Thu Mar 19 21:08:29 2015 +0100
+| 
+|     include screenshot in the readme
+| 
+* commit d67300498af155e5dd9dc63d89963a07f5f90847
+| Author: anyc <dev@kicherer.org>
+| Date:   Wed Mar 18 21:43:44 2015 +0100
+| 
+|     release 0.3.0pre2
+| 
+* commit 8dee38d29f7388c7f10efd7d745a7ace4976c5de
+| Author: anyc <dev@kicherer.org>
+| Date:   Wed Mar 18 21:19:43 2015 +0100
+| 
+|     fix AI shutdown
+| 
+* commit e54ad599c01161bff63950618a006a9c117820d4
+| Author: anyc <dev@kicherer.org>
+| Date:   Wed Mar 18 20:18:47 2015 +0100
+| 
+|     use a customizable directory for game and user database
+| 
+* commit c625e668b0da81c9b50b571287bb08ed7ea5c96f
+| Author: anyc <dev@kicherer.org>
+| Date:   Sun Feb 15 19:49:23 2015 +0100
+| 
+|     remove old changelog, rename README
+| 
+* commit c01cad9c0063abf3dad2acd814b5ccc8808780b4
+| Author: anyc <dev@kicherer.org>
+| Date:   Sun Feb 15 19:38:21 2015 +0100
+| 
+|     README update
+| 
+* commit 25aadf75d2997daacd118e20db7cb1de86decd29
+| Author: anyc <dev@kicherer.org>
+| Date:   Sun Feb 15 17:19:49 2015 +0100
+| 
+|     remove custom StaticBitmap, fixes image display
+| 
+* commit 0730dae71247eb0607c0477564580fc0c0eb38a0
+| Author: anyc <dev@kicherer.org>
+| Date:   Sun Feb 15 10:06:07 2015 +0100
+| 
+|     Fix application startup and shutdown with wxreactor
+| 
+* commit a292e71b17c1d883b6dd8e5343ad2e3fdcdc71da
+| Author: anyc <dev@kicherer.org>
+| Date:   Fri Feb 13 20:25:19 2015 +0100
+| 
+|     remove tags from old VCS
+| 
+* commit 7ac8cc5dab7ab91a172357c23c5fdb304f02f59e
+| Author: anyc <dev@kicherer.org>
+| Date:   Sat Feb 14 16:20:47 2015 +0100
+| 
+|     accept custom data directory
