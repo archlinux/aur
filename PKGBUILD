@@ -1,5 +1,5 @@
 pkgname=rtile-git
-pkgver=1
+pkgver=dbb531b
 pkgrel=1
 pkgdesc="Ruby script for manual tiling and window placement."
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --always --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
