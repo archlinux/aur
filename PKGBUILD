@@ -2,13 +2,13 @@
 
 pkgname=xake-git
 _pkgname=xake
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=3
 pkgdesc="A build system for Ximera documents"
 arch=('x86_64' 'i686')
 url="https://github.com/XimeraProject/xake/"
 license=('MIT')
-depends=('mupdf-tools' 'texlive-htmlxml' 'gpg')
+depends=('mupdf-tools' 'texlive-htmlxml' 'gnupg')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 _gourl=github.com/XimeraProject/xake
