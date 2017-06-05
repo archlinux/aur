@@ -4,22 +4,23 @@
 
 pkgname=searx
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
 license=('AGPL')
 makedepends=('openssl')
-depends=('python2-flask'
-        'python2-flask-babel'
-        'python2-requests'
-        'python2-lxml'
-        'python2-yaml'
-        'python2-dateutil'
-        'python2-pygments'
-        'python2-certifi'
-        'python2-idna'
-        'python2-pysocks')
+depends=(   'python2-certifi'
+            'python2-flask'
+            'python2-flask-babel'
+            'python2-lxml'
+            'python2-idna'
+            'python2-pygments'
+            'python2-pyopenssl'
+            'python2-dateutil'
+            'python2-yaml'
+            'python2-requests'
+            'python2-pysocks')
 conflicts=('searx-git')
 backup=('etc/searx/settings.yml')
 install=searx.install
