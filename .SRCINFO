@@ -1,13 +1,14 @@
 pkgbase = gonvim-git
 	pkgdesc = Neovim GUI written in Golang
 	pkgver = r97.6f278c2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dzhou121/gonvim
 	arch = any
 	license = unknown
 	makedepends = git
 	makedepends = go
 	depends = neovim
+	depends = gtk3
 	provides = gonvim
 	conflicts = gonvim
 	source = git+https://github.com/dzhou121/gonvim#branch=master

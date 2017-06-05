@@ -1,7 +1,7 @@
 # Maintainer: Reto Brunner <brunnre8@gmail.com>
 pkgname=gonvim-git
 pkgver=r97.6f278c2
-pkgrel=1
+pkgrel=2
 pkgdesc="Neovim GUI written in Golang"
 arch=('any')
 url="https://github.com/dzhou121/gonvim"
