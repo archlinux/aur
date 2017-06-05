@@ -3,7 +3,7 @@
 _gitname=United-GNOME
 _pkgname=United-Arch
 pkgname=gtk-theme-united-archers-git
-pkgver=8c2c260
+pkgver=1636b0e
 pkgrel=1
 pkgdesc='GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept.'
 arch=('any')
@@ -19,7 +19,7 @@ depends=('git'
 optdepends=('gnome-shell>=3.23: The GNOME Shell'
 	'gnome-tweak-tool: A graphical tool to tweak gnome settings')
 source=("${_pkgname}.tar.gz::${url}/blob/master/${_pkgname}.tar.gz?raw=true")
-sha256sums=('b4c542df226952ced0c158cfddcb2b3c5a33e078a28ffddf00fae6e185b8abaf')
+sha256sums=('ef8f19153a2d595588f1bb776fead7dff61e92f8807e14ba686641dd0387fa5a')
 
 pkgver() {
 	git ls-remote -q -h "${url}" master | cut -c1-7
