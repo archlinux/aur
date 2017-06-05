@@ -1,23 +1,15 @@
-*** Makefile.in	2016-04-26 22:43:30.000000000 +1000
---- Makefile.in-new	2016-06-05 10:33:38.808552897 +1000
-***************
-*** 11,19 ****
-  INSTALL_DATA    = @INSTALL_DATA@
-  GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
-  prefix          = @prefix@
-! bindir          = $(prefix)/bin
-! sharedir        = $(prefix)/share
-! examplesdir     = $(prefix)/share/examples/gps
-  
-  SYS := $(shell gcc -dumpmachine)
-  
---- 11,19 ----
-  INSTALL_DATA    = @INSTALL_DATA@
-  GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
-  prefix          = @prefix@
-! bindir          = $(DESTDIR)$(prefix)/bin
-! sharedir        = $(DESTDIR)$(prefix)/share
-! examplesdir     = $(DESTDIR)$(prefix)/share/examples/gps
-  
-  SYS := $(shell gcc -dumpmachine)
-  
+--- Makefile.in	2017-06-05 12:32:08.095470000 +1000
++++ Makefile.in-new	2017-06-05 13:23:21.571439999 +1000
+@@ -11,9 +11,9 @@
+ INSTALL_DATA    = @INSTALL_DATA@
+ GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
+ prefix          = @prefix@
+-bindir          = $(prefix)/bin
+-sharedir        = $(prefix)/share
+-examplesdir     = $(prefix)/share/examples/gps
++bindir          = $(DESTDIR)$(prefix)/bin
++sharedir        = $(DESTDIR)$(prefix)/share
++examplesdir     = $(DESTDIR)$(prefix)/share/examples/gps
+ 
+ SYS := $(shell gcc -dumpmachine)
+ 
