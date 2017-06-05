@@ -1,13 +1,5 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=jamovi-git # '-bzr', '-git', '-hg' or '-svn'
+# Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
+pkgname=jamovi-git
 _pkgname=jamovi
 pkgver=r481.e08f52f
 pkgrel=1
@@ -56,9 +48,12 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
+	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/lib/$_pkgname/bin
 	mkdir -p $pkgdir/usr/lib/$_pkgname/Resources/jamovi/{client,examples,server}
+	mkdir -p $pkgdir/usr/lib/$_pkgname/Resources/jamovi/server/jamovi
 	mkdir -p $pkgdir/usr/lib/$_pkgname/Resources/modules
+	mkdir -p $pkgdir/usr/share/applications/
 
 	# Resources
 	## Client files
@@ -68,16 +63,14 @@ package() {
 	cp -r examples $pkgdir/usr/lib/$_pkgname/Resources/jamovi/
 
 	## Server
-	mkdir $pkgdir/usr/lib/$_pkgname/Resources/jamovi/server/jamovi
 	cp -r server/jamovi/server $pkgdir/usr/lib/$_pkgname/Resources/jamovi/server/jamovi
 	cp -r server/jamovi/{__init__.py,core.cpython-36m-x86_64-linux-gnu.so} $pkgdir/usr/lib/$_pkgname/Resources/jamovi/server/jamovi
 
 	# User stuff
-	mkdir -p $pkgdir/usr/share/applications/
-	mkdir -p $pkgdir/usr/bin
 	cp platform/jamovi.desktop $pkgdir/usr/share/applications
-	install -m 755 $srcdir/jamovi.sh $pkgdir/usr/lib/$_pkgname/bin/jamovi.sh
 	cp platform/app-icon.svg $pkgdir/usr/lib/$_pkgname/Resources
+
+	install -m 755 $srcdir/jamovi.sh $pkgdir/usr/lib/$_pkgname/bin/jamovi.sh
 	ln -s /usr/lib/$_pkgname/bin/jamovi.sh $pkgdir/usr/bin/jamovi
 
 	# bin
@@ -85,14 +78,10 @@ package() {
 	cp engine/jamovi-engine $pkgdir/usr/lib/$_pkgname/bin/
 	## Various electron stuff
 	ln -s /usr/lib/electron/* $pkgdir/usr/lib/$_pkgname/bin/
-	#cp -r /usr/lib/electron/* $pkgdir/usr/lib/$_pkgname/bin
 	cp /usr/lib/electron/electron $pkgdir/usr/lib/$_pkgname/bin/jamovi
 	### Remove node link
 	rm $pkgdir/usr/lib/$_pkgname/bin/node
-	#rm -r $pkgdir/usr/lib/$_pkgname/bin/node
-	### Rename electron executable to jamovi
-	#mv $pkgdir/usr/lib/$_pkgname/bin/electron $pkgdir/usr/lib/$_pkgname/bin/jamovi 
-	### Replace electron's default thing with 
+	### Replace electron's default thing with jamovi's
 	rm $pkgdir/usr/lib/$_pkgname/bin/resources
 	mkdir $pkgdir/usr/lib/$_pkgname/bin/resources
 	cp electron/default_app.asar $pkgdir/usr/lib/$_pkgname/bin/resources
@@ -100,5 +89,4 @@ package() {
 
 	# Env conf
 	cp $srcdir/env.conf $pkgdir/usr/lib/$_pkgname/bin
-
 }
