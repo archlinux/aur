@@ -2,30 +2,41 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
-pkgdesc='Desktop integration portals for sandboxed apps'
-arch=('i686' 'x86_64')
-url='https://github.com/flatpak/xdg-desktop-portal'
-license=('LGPL2.1')
-depends=('glib2')
-makedepends=('python' 'flatpak' 'xmlto' 'docbook-xsl')
-source=(https://github.com/flatpak/xdg-desktop-portal/releases/download/$pkgver/$pkgname-$pkgver.tar.xz)
-sha256sums=('fbaa92c1761167a1d9bd54232843dcf8cf53bb6e47709c7bda0fa89804a1c8e5')
+pkgdesc="Desktop integration portals for sandboxed apps"
+url="https://github.com/flatpak/xdg-desktop-portal"
+arch=(i686 x86_64)
+license=(LGPL2.1)
+depends=(glib2)
+makedepends=(python flatpak xmlto docbook-xsl git)
+_commit=db9c5060b9483ec9493811449d21001826dc0dc2  # tags/0.7^0
+source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make 
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make check
 }
 
 package() {
   depends+=('xdg-desktop-portal-impl')
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
