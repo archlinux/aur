@@ -2,7 +2,7 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.0.RC4.r3573.afe92529
+pkgver=0.7.0.r3575.212ec067
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
@@ -41,12 +41,6 @@ build() {
   cmake ..                      \
     -DCMAKE_BUILD_TYPE=Release  \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMapper_BUILD_QT=0         \
-    -DMapper_BUILD_CLIPPER=0    \
-    -DMapper_BUILD_PROJ=0       \
-    -DMapper_BUILD_GDAL=0       \
-    -DMapper_USE_GDAL=1         \
-    -DMapper_BUILD_DOXYGEN=0    \
     -DMapper_PACKAGE_NAME=${pkgname} \
     -Wno-dev
   make -j$(nproc)
