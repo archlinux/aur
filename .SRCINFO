@@ -10,7 +10,13 @@ pkgbase = jamovi-rbundle
 	makedepends = r
 	depends = r
 	source = rbundle.R
+	source = rbundleJMV.R
+	source = git+https://github.com/jamovi/jamovi-compiler.git
+	source = git+https://github.com/jamovi/jmv.git
 	md5sums = a4e28de7c48767ca7836dd778c5ba502
+	md5sums = 15436079c0f279bc403bae5026b8f3fa
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = jamovi-rbundle
 

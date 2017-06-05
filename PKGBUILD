@@ -10,19 +10,42 @@ license=('GPL')
 depends=('r')
 makedepends=('nodejs' 'r')
 source=("rbundle.R"
+	"rbundleJMV.R"
+	"git+https://github.com/jamovi/jamovi-compiler.git"
+	"git+https://github.com/jamovi/jmv.git"
         )
 noextract=()
-md5sums=('a4e28de7c48767ca7836dd778c5ba502')
+md5sums=('a4e28de7c48767ca7836dd778c5ba502'
+         '15436079c0f279bc403bae5026b8f3fa'
+         'SKIP'
+         'SKIP')
 validpgpkeys=()
 
 build() {
 	# jmvcore
 	cd $srcdir
-	mkdir -p base/R
-	Rscript $srcdir/rbundle.R $srcdir/base/R
+	mkdir -p jmvcoreBundle/base/R
+	Rscript $srcdir/rbundle.R $srcdir/jmvcoreBundle/base/R
+
+	# jmv
+	mkdir -p jmvBundle
+	mkdir -p $srcdir/jmv/build/R #If jmv/build/R has dependencies, jmc will not try to install deps;
+	## Necessary, because jmc fails to build the deps for some reason
+	Rscript $srcdir/rbundleJMV.R $srcdir/jmv/build/R
+	
+	cd $srcdir/jamovi-compiler
+	npm install ./
+	
+	cd $srcdir/jmv/
+	node ../jamovi-compiler/index.js --install ./ --to $srcdir/jmvBundle/ --home /usr/lib/jamovi
+	
 }
 
 package() {
+	# jmvcore
 	mkdir -p $pkgdir/usr/lib/jamovi/Resources/modules
-	cp -r $srcdir/base $pkgdir/usr/lib/jamovi/Resources/modules/
+	cp -r $srcdir/jmvcoreBundle/base $pkgdir/usr/lib/jamovi/Resources/modules/
+
+	# jmv
+	cp -r $srcdir/jmvBundle/jmv $pkgdir/usr/lib/jamovi/Resources/modules/
 }
