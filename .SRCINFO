@@ -1,6 +1,6 @@
 pkgbase = quickcurver-git
 	pkgdesc = Qt Material design implementation of Achtung die Kurve with online multiplayer
-	pkgver = r229.8ef3edd
+	pkgver = r245.ea7bac7
 	pkgrel = 1
 	url = https://github.com/magnus-gross/quickcurver
 	arch = i686
