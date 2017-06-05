@@ -1,0 +1,30 @@
+diff --git a/Makefile.in b/Makefile.in
+index c6327d2..3355762 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -51,14 +51,22 @@ all: static
+ install: install-clean install-static
+ endif
+ 
++ifneq ($(strip $(CFLAGS)),)
++CARGS := -cargs $(CFLAGS)
++endif
++
++ifneq ($(strip $(LDFLAGS)),)
++LARGS := -largs $(LDFLAGS)
++endif
++
+ static:
+-	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr
++	${GPRBUILD} -p -XLIBRARY_TYPE=static ${GPROPTS} xmlada.gpr $(CARGS) $(LARGS)
+ 
+ shared relocatable:
+-	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr
++	${GPRBUILD} -p -XLIBRARY_TYPE=relocatable ${GPROPTS} xmlada.gpr $(CARGS) $(LARGS)
+ 
+ static-pic:
+-	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr
++	${GPRBUILD} -p -XLIBRARY_TYPE=static-pic ${GPROPTS} xmlada.gpr $(CARGS) $(LARGS)
+ 
+ # Rebuild the tests (and not the XML/Ada code itself)
+ test: force
