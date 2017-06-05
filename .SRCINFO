@@ -1,0 +1,14 @@
+pkgbase = blizcord
+	pkgdesc = A Discord bot
+	pkgver = 0.3.0.1
+	pkgrel = 1
+	url = https://github.com/Bleuzen/Blizcord/
+	install = blizcord.install
+	arch = any
+	license = mit
+	depends = jre8-openjdk
+	source = blizcord-0.3.0.1.deb::https://github.com/Bleuzen/Blizcord/releases/download/0.3.0.1/blizcord-0.3.0.1.deb
+	md5sums = 276bba4a04251f94445f5a87740a0a10
+
+pkgname = blizcord
+
