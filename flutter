@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+FLUTTER_PATH=~/.flutter-sdk
+FLUTTER_GIT=https://github.com/flutter/flutter.git
+FLUTTER_BRANCH=alpha
+
+if ! [[ -x "$FLUTTER_PATH/bin/flutter" ]]
+then
+    if ! git clone -b "$FLUTTER_BRANCH" "$FLUTTER_GIT" "$FLUTTER_PATH"
+    then
+        exit 1
+    fi
+fi
+
+"$FLUTTER_PATH/bin/flutter" $@

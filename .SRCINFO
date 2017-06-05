@@ -1,0 +1,13 @@
+pkgbase = flutter
+	pkgdesc = Flutter is a new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
+	pkgver = alpha
+	pkgrel = 1
+	url = https://flutter.io/
+	arch = any
+	license = https://github.com/flutter/flutter/blob/master/LICENSE
+	provides = flutter
+	source = flutter
+	sha256sums = SKIP
+
+pkgname = flutter
+
