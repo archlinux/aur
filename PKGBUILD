@@ -2,11 +2,12 @@
 
 pkgbase=wxwidgets-light
 pkgname=('wxbase-light'
-         'wxgtk-light'
+         'wxgtk2-light'
+         'wxgtk3-light'
          'wxcommon-light'
          )
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 url='http://wxwidgets.org'
@@ -99,49 +100,63 @@ package_wxbase-light() {
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxbase-light/LICENSE"
 }
 
-package_wxgtk-light() {
-  pkgdesc="wxWidgets GTK2 and GTK3 Toolkit (GNOME/GStreamer free!)"
-  depends=('wxbase-light'
-           'gtk2'
-           'gtk3'
+package_wxgtk2-light() {
+  pkgdesc="wxWidgets GTK2 Toolkit (GNOME/GStreamer free!)"
+  depends=('gtk2'
            'libsm'
-           'sdl'
+           'sdl2'
            )
-  provides=("wxgtk=${pkgver}")
+  provides=("wxgtk=${pkgver}"
+            'wxgtk-light'
+            )
   conflicts=('wxgtk')
   options=('!emptydirs')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
+
   rm -fr "${pkgdir}/usr/bin"
-
-  make -C build-gtk3 DESTDIR="${pkgdir}" install
-
-  rm -fr "${pkgdir}/usr/bin/wx-config"
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*baseu*
   rm -fr "${pkgdir}/usr/share"
 
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxgtk-light/LICENSE"
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxgtk2-light/LICENSE"
+}
+
+package_wxgtk3-light() {
+  pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!)"
+  depends=('gtk3'
+           'libsm'
+           'sdl2'
+           )
+  provides=("wxgtk3=${pkgver}")
+  conflicts=('wxgtk3')
+  options=('!emptydirs')
+
+  make -C build-gtk3 DESTDIR="${pkgdir}" install
+
+  rm -fr "${pkgdir}/usr/bin"
+  rm -fr "${pkgdir}/usr/include"
+  rm -fr "${pkgdir}/usr/lib/"*baseu*
+  rm -fr "${pkgdir}/usr/share"
+
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxgtk3-light/LICENSE"
 }
 
 package_wxcommon-light() {
   pkgdesc="wxWidgets common (GNOME/GStreamer free!)"
-  arch=('any')
-  depends=('bash')
+  depends=('bash'
+           'wxbase-light'
+           )
   provides=("wxcommon=${pkgver}")
   conflicts=('wxcommon')
   options=('!emptydirs')
   backup=('etc/wx/config')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
-  rm -fr "${pkgdir}/usr/bin"
-
   make -C build-gtk3 DESTDIR="${pkgdir}" install
-  rm -fr "${pkgdir}/usr/bin"
-
   make -C build-base DESTDIR="${pkgdir}" install
-  rm -fr "${pkgdir}/usr/bin"
 
+  rm -fr "${pkgdir}/usr/bin/wx-config"
   rm -fr "${pkgdir}/usr/lib"
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxcommon-light/LICENSE"
