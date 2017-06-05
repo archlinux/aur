@@ -21,13 +21,9 @@ makedepends=('git'
              'libgl'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
-        'config.conf'
-        'wx-config.sh'
         'make-abicheck-non-fatal.patch'
         )
 sha256sums=('SKIP'
-            '770b976681e7b5fe513b1b6dcabc1472802eb67fc777a07e903a77772825120f'
-            '55a54da8396923f413bdf0c582ade281e014dc6f7ab65854b0f0fe24d4697c2a'
             '46a1bb97d69163547da13d5e23a4c73e68de27ee601da5d2fb5bc5c417931453'
             )
 
@@ -93,7 +89,7 @@ package_wxbase-light() {
 
   make -C build-base DESTDIR="${pkgdir}" install
 
-  rm -fr "${pkgdir}/usr/bin/wx-config"
+  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-base"
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/share/"
 
@@ -114,7 +110,8 @@ package_wxgtk2-light() {
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
 
-  rm -fr "${pkgdir}/usr/bin"
+  cp -P "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-gtk2"
+  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3.0}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*baseu*
   rm -fr "${pkgdir}/usr/share"
@@ -134,7 +131,8 @@ package_wxgtk3-light() {
 
   make -C build-gtk3 DESTDIR="${pkgdir}" install
 
-  rm -fr "${pkgdir}/usr/bin"
+  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-gtk3"
+  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3.0}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*baseu*
   rm -fr "${pkgdir}/usr/share"
@@ -150,7 +148,6 @@ package_wxcommon-light() {
   provides=("wxcommon=${pkgver}")
   conflicts=('wxcommon')
   options=('!emptydirs')
-  backup=('etc/wx/config')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
   make -C build-gtk3 DESTDIR="${pkgdir}" install
@@ -160,7 +157,4 @@ package_wxcommon-light() {
   rm -fr "${pkgdir}/usr/lib"
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxcommon-light/LICENSE"
-
-  install -Dm644 config.conf "${pkgdir}/etc/wx/config"
-  install -Dm755 wx-config.sh "${pkgdir}/usr/bin/wx-config"
 }
