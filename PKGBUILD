@@ -1,8 +1,8 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
-pkgname='python-cmp_version'
+pkgname=('python-cmp_version' 'cmp_version')
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A script and python module to compare version numbers. Use this to compare the version strings of packages, modules, really anything."
 arch=('any')
 license=('LGPLv3')
@@ -19,12 +19,24 @@ build() {
 
 }
 
-package() {
+package_python-cmp_version() {
   cd cmp_version-$pkgver
 
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # Remove tool from lib package
+  rm -Rf "${pkgdir}/usr/bin"
 }
 
 
 
 
+package_cmp_version() {
+  depends=('python-cmp_version')
+  cd cmp_version-$pkgver
+
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # Remove lib from tools package
+  rm -Rf "${pkgdir}/usr/lib"
+}
