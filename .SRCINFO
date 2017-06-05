@@ -1,0 +1,16 @@
+pkgbase = python2-namedatomiclock
+	pkgdesc = Python module for an atomic named interprocess lock which is local to the machine.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://github.com/kata198/NamedAtomicLock
+	arch = any
+	license = LGPLv3
+	makedepends = python2-setuptools
+	makedepends = python2
+	depends = python2-setuptools
+	depends = python2
+	source = https://github.com/kata198/NamedAtomicLock/archive/1.1.1.tar.gz
+	sha512sums = e17be61a7d1e3ef34eac116ed0aa17afda5647ca9d27ed90db5d882f813b1b7747aa5e52cee1def6bd5875f825e31e2f7ca4218b7da647b68b7803104b9be49e
+
+pkgname = python2-namedatomiclock
+
