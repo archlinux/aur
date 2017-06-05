@@ -23,14 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/gambit-scheme"
-  ./configure \
-      --prefix=/usr \
-      --docdir=/usr/share/gambit-c \
-      --infodir=/usr/share/info \
-      --libdir=/usr/lib/gambit-c \
-      --enable-c-opt \
-      --enable-gcc-opts \
-      --disable-shared
+  ./configure 
    make current-gsc-boot
   
   ./configure \
