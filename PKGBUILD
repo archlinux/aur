@@ -39,7 +39,8 @@ build() {
     export LIBRARY_TYPE=relocatable
 
     # XXX Disable opengl https://github.com/AdaCore/gtkada/issues/9
-    ./configure --prefix=/usr --with-GL=no --disable-static --disable-static-pic
+#    ./configure --prefix=/usr --with-GL=no --disable-static --disable-static-pic
+    ./configure --prefix=/usr --with-GL=no
 
     # Disable RPATH usage with -R
     make PROCESSORS="$(nproc)" GPRBUILD_SWITCHES=-R
