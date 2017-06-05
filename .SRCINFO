@@ -1,0 +1,13 @@
+pkgbase = mira
+	pkgdesc = An abstract workflow assistant for Git
+	pkgver = 0.2.0_beta
+	pkgrel = 1
+	url = https://github.com/north-crescent/mira
+	arch = any
+	license = GPL3
+	depends = lua>=5.3.0
+	source = mira::git+https://github.com/north-crescent/mira.git#tag=0.2.0-beta
+	md5sums = SKIP
+
+pkgname = mira
+
