@@ -5,13 +5,13 @@ _commit=5814139990daf10155b4fb0951ee456ac9c97a4b
 
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
-pkgver=227.4
+pkgver=229.4
 pkgrel=1
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('i686' 'x86_64')
 url="https://github.com/elogind/elogind"
 license=('GPL')
-makedepends=('intltool' 'libtool' 'gperf' 'gtk-doc' 'dbus-x11' 'git' 'libcap')
+makedepends=('intltool' 'libtool' 'gperf' 'gtk-doc' 'dbus-nosystemd' 'git' 'libcap')
 options=('!libtool')
 source=("elogind-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "elogind-docs.patch")
