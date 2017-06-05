@@ -55,6 +55,8 @@ build() {
     export PATH=$srcdir/$pkgname/temp_bin:$PATH    
 
     export OS=unix
+    export LIBRARY_TYPE=relocatable
+
     ./configure --prefix=/usr \
         --libexecdir=/lib \
         --enable-shared \
