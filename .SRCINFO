@@ -1,6 +1,6 @@
 pkgbase = valentina
 	pkgdesc = Cloth patternmaking software - Stable Release
-	pkgver = 0.4.5
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = http://valentina-project.org/
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = valentina
 	makedepends = unzip
 	makedepends = awk
 	depends = qt5-svg
-	source = https://bitbucket.org/dismine/valentina/get/v0.4.5.zip
-	md5sums = 49d3c7db3526e3cb84dffdf705d613f2
+	depends = poppler
+	source = https://bitbucket.org/dismine/valentina/get/v0.5.0.zip
+	md5sums = 8733c30cc8e6ca18874c37b28be6eab8
 
 pkgname = valentina
 
