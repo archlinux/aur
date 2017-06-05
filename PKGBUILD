@@ -1,5 +1,4 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
-#             adapted from package python2-scikit-rf
 pkgname="python-dxfwrite"
 pkgver=1.2.1
 pkgrel=1
