@@ -1,7 +1,7 @@
 # Maintainer: Daniel Holman <dholman@gymli.org>
 pkgname=orphan-manager
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="Systemd timer to automatically remove orphaned packages"
 arch=('any')
 license=('MIT')
@@ -10,8 +10,8 @@ source=("orphan-manager"
         "orphan-manager.service"
         "orphan-manager.timer")
 sha256sums=('32af05fcbee78a58ce8026fc42abf04286dd9e568eedb4343bcbae97de8803ca'
-            'e711f8c32c78460461e42e91eedce7752476cd5d6d4ac10ef01823197185afcd'
-            '4c2c3936aca97ccf8269e8756a304a66743938d69337c3b097b0b92fc8a13855')
+            'd40b088efab2975140e73f2258af13dd24ba1c9cdbb7a8e661f560110d9041ac'
+            'c83f75c00465597b0704a4842000c5db266e5cf8a6c124d5407f7bd9e92b35dd')
 
 package() {
         mkdir -p "${pkgdir}/usr/lib/systemd/system/"
