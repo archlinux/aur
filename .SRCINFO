@@ -4,6 +4,7 @@ pkgbase = jamovi-rbundle
 	pkgdesc = R Bundle for Jamovi
 	pkgver = 1
 	pkgrel = 1
+	url = http://www.jamovi.org
 	arch = any
 	license = GPL
 	makedepends = nodejs
