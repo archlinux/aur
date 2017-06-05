@@ -1,6 +1,7 @@
 2017-06-05
 	* 1.8-5 :
 	Fixed preprocessor options (SDL.h not found)
+	fluidr3 became soundfont-fluid
 	
 2013-02-28 FoolEcho <foolecho at gmail dot com>
 
