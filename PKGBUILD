@@ -3,7 +3,7 @@
 pkgname=searx-py3
 pkgver=0.12.0
 pkgrel=1
-pkgdesc="A privacy-respecting, hackable metasearch engine"
+pkgdesc="A privacy-respecting, hackable metasearch engine (python3 based)"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
 license=('AGPL')
