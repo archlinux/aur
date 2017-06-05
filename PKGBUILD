@@ -2,7 +2,7 @@
 pkgname=zelda-roth-fr
 _name=zelda-roth
 pkgver=6.11
-pkgrel=4
+pkgrel=5
 pkgdesc="Zelda: Return of the Hylian (french version)"
 arch=('i686' 'x86_64')
 url="http://www.zeldaroth.fr/"
@@ -37,6 +37,10 @@ prepare () {
   
   # Create the directory $HOME/.zelda-roth if it doesnt exist
   sed -i -e s~'(NULL));'~'&\n\tif (system(\"stat $HOME/.'$_name' \&> /dev/null")) system (\"mkdir $HOME/.'$_name'\");'~ main.cpp
+  
+  #Fix the preprocessor options (SDL.h not found)
+  sed -i -e "s#CFLAGS  =#CFLAGS  += -I/usr/include/SDL#g" Makefile
+  sed -i -e "s#LDFLAGS =#LDFLAGS +=#g" Makefile
 }
 
 build () {
