@@ -1,18 +1,17 @@
 pkgbase = archi
 	pkgdesc = Free, open source, cross-platform tool and editor to create ArchiMate models.
-	pkgver = 3.3.2
-	pkgrel = 4
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = http://www.archimatetool.com/
-	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = java-runtime>=1.7
+	depends = java-runtime>=1.8
 	depends = webkitgtk
 	provides = archi
-	source = http://www.archimatetool.com/downloads/latest/Archi-lnx32_64-3.3.2.tar.gz
+	source = https://archimatetool.com/downloads/release/v4/Archi-Linux64-4.0.1.tar.gz
 	source = archi.desktop
-	sha256sums = 2013204c8afe98bca809d823ea070aa391f518da0c0e5b217505ea468a90b494
-	sha256sums = fa911232f47b9116044b6129965376c8c8acc9fc8bb212c5a2b4b834f03adb7c
+	sha256sums = 037947fa341286b63d98a42b50a1512e8f2bd8cf585007e0d304fb21e833b693
+	sha256sums = eb97e9fb2af5b15b710ddace817d08fe73055d27816aaf790a6cd6bf26643714
 
 pkgname = archi
 
