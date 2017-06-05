@@ -11,7 +11,7 @@ license=('GPL')
 
 depends=("gcc-ada" "gnatcoll"
          "quex-for_libadalang" "python2-mako" "python-yaml" "python-sphinx" "python-coverage" "python2-enum34"
-         "python-psutil" "python-funcy" "python2-docutils" "autopep8" "yapf")
+         "python-psutil" "python2-funcy" "python2-docutils" "autopep8" "yapf")
 
 makedepends=("git")
 
