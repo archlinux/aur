@@ -2,17 +2,17 @@
 # Contributor:
 
 pkgname=hakuneko-hg
-pkgver=1.4.3.r207.1f84fc28fa17
-pkgrel=1
+pkgver=1.4.3.r208.3dc84e0981da
+pkgrel=2
 pkgdesc="Manga Downloader for Linux and Windows"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/hakuneko/"
+url="https://sourceforge.net/p/hakuneko/legacy/"
 license=('MIT')
 depends=('curl' 'webkitgtk2' 'wxgtk')
 makedepends=('mercurial')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::hg+http://hg.code.sf.net/p/hakuneko/code")
+source=("${pkgname%-*}::hg+http://hg.code.sf.net/p/hakuneko/legacy/code")
 md5sums=('SKIP')
 
 pkgver() {

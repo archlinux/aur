@@ -1,8 +1,8 @@
 pkgbase = hakuneko-hg
 	pkgdesc = Manga Downloader for Linux and Windows
-	pkgver = 1.4.3.r207.1f84fc28fa17
-	pkgrel = 1
-	url = http://sourceforge.net/projects/hakuneko/
+	pkgver = 1.4.3.r208.3dc84e0981da
+	pkgrel = 2
+	url = https://sourceforge.net/p/hakuneko/legacy/
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = hakuneko-hg
 	depends = wxgtk
 	provides = hakuneko
 	conflicts = hakuneko
-	source = hakuneko::hg+http://hg.code.sf.net/p/hakuneko/code
+	source = hakuneko::hg+http://hg.code.sf.net/p/hakuneko/legacy/code
 	md5sums = SKIP
 
 pkgname = hakuneko-hg
