@@ -40,9 +40,9 @@ pkgbase = jre7
 	source = policytool-jre7.desktop
 	md5sums = c47e997b90ddfd0d813a37ccc97fb933
 	md5sums = db24e699517801b35343cc7ebc93ce88
-	source_i686 = https://www.dropbox.com/s/37wrnymobxsglbe/jre-7u80-linux-i586.tar.gz
+	source_i686 = https://www.dropbox.com/s/omxrvt66z0calk6/jre-7u80-linux-i586.tar.gz
 	md5sums_i686 = ff0f6847e51b6be5c241615a73043005
-	source_x86_64 = https://www.dropbox.com/s/uzx46ug4307nteg/jre-7u80-linux-x64.tar.gz
+	source_x86_64 = https://www.dropbox.com/s/77b7n7wkjzpzhfd/jre-7u80-linux-x64.tar.gz
 	md5sums_x86_64 = c0e01ae8683b2d8924ce79cd6ce6a691
 
 pkgname = jre7
