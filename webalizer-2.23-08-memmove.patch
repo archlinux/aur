@@ -1,0 +1,33 @@
+diff -u new/dns_resolv.c new.1/dns_resolv.c
+--- new/dns_resolv.c	2013-02-26 05:37:27.000000000 +0000
++++ new.1/dns_resolv.c	2016-04-05 06:57:30.827715718 +0000
+@@ -886,7 +886,7 @@
+    /* kludge for IPv6 6to4 (RFC3056) */
+    if (addr[0]==0x20 && addr[1]==0x02)
+    {
+-      memcpy(&addr[12],&addr[2],4);
++      memmove(&addr[12],&addr[2],4);
+       memset(&addr,0,12);
+    }
+ 
+diff -u new/preserve.c new.1/preserve.c
+--- new/preserve.c	2013-02-26 05:37:27.000000000 +0000
++++ new.1/preserve.c	2016-04-05 06:56:39.023080706 +0000
+@@ -109,7 +109,7 @@
+                         yr = hist[i].year;
+                         mth= hist[i].month+1;
+                         if (mth>12) { mth=1; yr++; }
+-                        memcpy(&hist[0], &hist[1], sizeof(hist[0])*i);
++                        memmove(&hist[0], &hist[1], sizeof(hist[0])*i);
+                         memset(&hist[i], 0, sizeof(struct hist_rec));
+                         hist[i].year=yr; hist[i].month=mth; n--;
+                     }
+@@ -277,7 +277,7 @@
+                   yr = hist[i].year;
+                   mth= hist[i].month+1;
+                   if (mth>12) { mth=1; yr++; }
+-                  memcpy(&hist[0],&hist[1],sizeof(hist[0])*i);
++                  memmove(&hist[0],&hist[1],sizeof(hist[0])*i);
+                   memset(&hist[i], 0, sizeof(struct hist_rec));
+                   hist[i].year=yr; hist[i].month=mth; n--;
+                }
