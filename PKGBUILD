@@ -1,7 +1,7 @@
 # Maintainer: Bjorn Pagen <bjornpagenatgmaildotcom>
 
 _srcname=systemf
-pkgname=${_srcname}-git
+pkgname=${_srcname}
 pkgver=1.11
 pkgrel=1
 pkgdesc="A brainfuck interpreter supporting Linux syscalls"
