@@ -1,48 +1,52 @@
-# Contributor: Sietse van der Molen
-# Contributor: Rod Kay <charlie5 on #ada at freenode.net>
-
-pkgname=gprbuild
-pkgver=2016
+pkgname=gprbuild-git
+pkgver=r3147.g18e2bc01
 pkgrel=1
 
-depends=('gcc-ada' 'xmlada')
-
-pkgdesc="Software tool designed to help automate the construction of multi-language systems"
-
-arch=('any')
+pkgdesc='multi-language build system'
+url='http://www.adacore.com/gnatpro/toolsuite/gprbuild/'
+arch=('i686' 'x86_64')
 license=('GPL')
-url="http://www.adacore.com/gnatpro/toolsuite/gprbuild/"
 
-source=("http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8"
-        "Makefile.archy")
+depends=('ada-xmlada')
+makedepends=('git' 'gprbuild-bootstrap')
 
-sha1sums=('c85b877596dbc53bfc39ec5b23f674e8463677ce'
-          '222357dc7f46b9ab6a8c2df098632c67b4505743')
+# We provide gprbuild-bootstrap here so we can use this gprbuild to bootstrap
+# itself and ada-xmlada.
+provides=('gprbuild' 'gprbuild-bootstrap')
+conflicts=('gprbuild' 'gprbuild-bootstrap')
 
+source=('git+https://github.com/AdaCore/gprbuild'
+        'expose-cargs-and-largs-makefile.patch')
 
-prepare()
-{
-  WRKSRC=$srcdir/$pkgname-gpl-$pkgver-src
+sha1sums=('SKIP'
+          'bda77367bc6985c3daf96929cccf5551a0544237')
 
-  cp $srcdir/Makefile.archy ${WRKSRC}
-
-  cd $pkgname-gpl-$pkgver-src
-  mkdir -p obj
+pkgver() {
+    cd gprbuild
+    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd gprbuild
+    patch -Np1 -i "$srcdir"/expose-cargs-and-largs-makefile.patch
 
-build() 
-{
-  cd $pkgname-gpl-$pkgver-src
-
-  PREFIX=/usr  make -j1 -f Makefile.archy all
+    # Not everyone is Debian
+    sed -i 's/libexec/lib/g' bootstrap.sh doinstall gprbuild.gpr \
+        share/gprconfig/compilers.xml \
+        share/gprconfig/linker.xml \
+        share/gprconfig/gnat.xml
 }
 
-
-package() 
-{
-  cd $pkgname-gpl-$pkgver-src
-
-  DESTDIR=$pkgdir  PREFIX=/usr  make  -f Makefile.archy  install
+build() {
+    cd gprbuild
+    make prefix=/usr  PROCESSORS="$(nproc)" setup
+    make GPRBUILD_OPTIONS=-R
 }
 
+package() {
+    cd gprbuild
+    make prefix="$pkgdir"/usr install
+
+    # Cleanup
+    rm -f -- "$pkgdir"/usr/doinstall
+}
