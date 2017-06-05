@@ -1,8 +1,8 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=tsscreenlock
-pkgver=1.9
-pkgrel=1
+pkgver=1.10
+pkgrel=0
 pkgdesc="Screen Locker for theShell"
 arch=("x86_64")
 url="https://github.com/vicr123/tsscreenlock"
