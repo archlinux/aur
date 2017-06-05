@@ -2,8 +2,8 @@
 
 pkgname=brave-bin
 pkgver=0.16.0
-_pkgver=0.16.0
-pkgrel=1
+_pkgver=0.15.312
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -16,7 +16,7 @@ conflicts=('brave')
 source=("$pkgname-$_pkgver".tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$_pkgver"dev/Brave.tar.bz2
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt")
 options=(!strip)
-sha512sums=('12704710e697945acafeb67e08788088531eac070fda3740d987fc41f00830167cbccef17d1b69a51d20040a0b140a2c4dfbb84e3f7cd2ddefbaacacb80cd986'
+sha512sums=('59eaf5e5f4375a2377861e3ffe87d04661dab608559760798f1e04e283c8bb40b66cd1547bdd1e50d87bc45380b40a6d141436305e4351ccedae10aa7bba9493'
             'c1e3a0c8f5267fb5c0b65733bda037c62d914ed989bee0f510d8196b1029eec00d40f415ce1514a4996d420ba02d856d04db0915b64573ef4a36033cc5efb94e')
 
 _bdir=Brave-linux-x64
@@ -28,7 +28,7 @@ package() {
 
   cp -a --reflink=auto $_bdir "$pkgdir/usr/lib/$pkgname"
 
-  _launcher="$pkgdir/usr/bin/$pkgname"
+  _launcher="$pkgdir/usr/bin/brave"
   install -Dm0755 /dev/stdin "$_launcher"<<END
 #!/usr/bin/sh
 
@@ -39,7 +39,7 @@ END
   install -Dm0644 /dev/stdin "$_deskfile"<<END
 [Desktop Entry]
 Version=1.0
-Name=Brave
+Name=Brave (binary)
 # Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
 # From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
 GenericName=Web Browser
@@ -146,8 +146,8 @@ Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
 StartupNotify=true
 StartupWMClass=Brave
-TryExec=$pkgname
-Exec=$pkgname %U
+TryExec=brave
+Exec=brave %U
 Terminal=false
 Icon=brave
 Type=Application
