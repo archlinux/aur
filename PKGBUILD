@@ -45,7 +45,7 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
 #source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
-source=('https://www.dropbox.com/s/j6lb08xu2l9k3kq/jdk-7u80-linux-i586.tar.gz'
+source=('https://www.dropbox.com/s/tof6j0eyqbljugy/jdk-7u80-linux-i586.tar.gz'
         "http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJDK$_major.zip"
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
