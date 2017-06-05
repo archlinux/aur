@@ -20,10 +20,10 @@ sha1sums=('SKIP'
           '9b65cc99453fd15bdb7c49a32e6f76922ec904bd')
 
 
-pkgver() {
-    cd xmlada
-    git describe | sed 's/^xmlada-//; s/-/.r/; s/-/./'
-}
+#pkgver() {
+#    cd xmlada
+#    git describe | sed 's/^xmlada-//; s/-/.r/; s/-/./'
+#}
 
 
 prepare() {
