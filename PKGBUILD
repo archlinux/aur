@@ -5,10 +5,11 @@ pkgver=r481.e08f52f
 pkgrel=1
 pkgdesc="Open Source Software to bridge the gap between researcher and statistician"
 arch=('any')
-url=""
-license=('git')
+url="https://www.jamovi.org/"
+license=('GPL')
 depends=('electron' 'python' 'python-protobuf' 'python-tornado' 'python-nanomsg' 'python-yaml' 'boost-libs' 'python-chardet')
-makedepends=('boost' 'npm' 'cython') # 'bzr', 'git', 'mercurial' or 'subversion'
+optdepends=("jamovi-rbundle: R backend for various analyses")
+makedepends=('boost' 'npm' 'cython' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+https://github.com/jamovi/jamovi.git 
@@ -89,4 +90,7 @@ package() {
 
 	# Env conf
 	cp $srcdir/env.conf $pkgdir/usr/lib/$_pkgname/bin
+
+	# Version
+	cp version $pkgdir/usr/lib/$_pkgname/Resources/jamovi
 }
