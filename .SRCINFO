@@ -13,6 +13,8 @@ pkgbase = redshift-gnomerr-git
 	depends = libdrm
 	depends = libxcb
 	depends = geoclue2
+	optdepends = python: GTK support
+	optdepends = gnome-desktop: Wayland support through Gnome RR
 	provides = redshift
 	conflicts = redshift
 	source = redshift::git+https://github.com/prahal/redshift.git#branch=add-gnomerr-method
