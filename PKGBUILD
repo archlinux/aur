@@ -2,7 +2,7 @@
 
 pkgname=reducemp4video
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Program that reduce size of mp4 video"
 arch=('any')
 url="https://github.com/Chipsterjulien/reduceMP4Video"
