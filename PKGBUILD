@@ -137,7 +137,7 @@ build() {
     kmk -C src/VBox/ExtPacks/VNC packing
 }
 
-package_virtualbox() {
+package_virtualbox-i3() {
     pkgdesc='Powerful x86 virtualization for enterprise as well as home use'
     depends=('glibc' 'openssl' 'curl' 'gcc-libs' 'libpng' 'python2' 'sdl'
              'libvpx' 'libxml2' 'procps-ng' 'shared-mime-info' 'zlib'

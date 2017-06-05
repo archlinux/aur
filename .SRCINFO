@@ -1,4 +1,4 @@
-pkgbase = virtualbox
+pkgbase = virtualbox-i3
 	pkgver = 5.1.22
 	pkgrel = 2
 	url = http://virtualbox.org
@@ -83,7 +83,7 @@ pkgbase = virtualbox
 	sha256sums = 8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc
 	sha256sums = 24d33c00da2d79ce578b5a35e816d11f9e61c5317fe4415fc08a2cbcd5f1c001
 
-pkgname = virtualbox
+pkgname = virtualbox-i3
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use
 	install = virtualbox.install
 	depends = glibc
