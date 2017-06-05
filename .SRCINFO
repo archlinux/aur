@@ -12,6 +12,8 @@ pkgbase = opentx-companion
 	makedepends = avr-gcc
 	makedepends = avr-libc
 	makedepends = sed
+	makedepends = qt5-tools
+	makedepends = python-pyqt5
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-svg
@@ -20,7 +22,9 @@ pkgbase = opentx-companion
 	conflicts = companion
 	conflicts = companion9x-svn
 	source = https://github.com/opentx/opentx/archive/2.2.0.tar.gz
+	source = cmake_version.diff
 	sha256sums = 27a07efcbb7d5759bafea7d8a6d97f910c2830881c0d4c71cbbc7da65446b2cd
+	sha256sums = 3c2777a7f5261851150652dd0c15aa8900c5f07ab20b19322e6be7dc5450d3c4
 
 pkgname = opentx-companion
 
