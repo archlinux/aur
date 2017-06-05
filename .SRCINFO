@@ -22,13 +22,11 @@ pkgbase = mve-git
 	source = git+https://github.com/nmoehrle/mvs-texturing.git
 	source = git+https://github.com/flanggut/smvs.git
 	source = gtest.patch
-	source = umve.opengl.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 7e7d7c62d2a191fd4d27dde052035fcf
-	md5sums = bfd0e38c522498b371de12b7ecad4856
 
 pkgname = mve-git
 

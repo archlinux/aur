@@ -1,6 +1,6 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 pkgname=mve-git
-pkgver=r1190.e454a6a
+pkgver=r1192.5657454
 pkgrel=1
 pkgdesc="Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,"
 arch=('i686' 'x86_64')
@@ -16,15 +16,12 @@ source=("${pkgname}::git+https://github.com/simonfuhrmann/mve.git"
         "git+https://github.com/nmoehrle/mvs-texturing.git"
         "git+https://github.com/flanggut/smvs.git"
         'gtest.patch'
-        'umve.opengl.patch'
        )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '7e7d7c62d2a191fd4d27dde052035fcf'
-         'bfd0e38c522498b371de12b7ecad4856'
-        )
+         '7e7d7c62d2a191fd4d27dde052035fcf')
 _binar="apps/sfmrecon/sfmrecon
 apps/meshconvert/meshconvert
 apps/meshalign/meshalign
@@ -42,7 +39,6 @@ prepare() {
   cd ${srcdir}
   patch -Np1 -i gtest.patch
   cd ${pkgname}
-  patch -Np1 -i ../umve.opengl.patch
   sed -i '/CXXFLAGS*/s/$/ -msse4.2/' libs/sfm/Makefile
 }
 
