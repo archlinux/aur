@@ -1,4 +1,4 @@
-pkgname=gprbuild-git
+pkgname=gprbuild
 pkgver=r3147.g18e2bc01
 pkgrel=1
 
@@ -7,7 +7,7 @@ url='http://www.adacore.com/gnatpro/toolsuite/gprbuild/'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('ada-xmlada')
+depends=('xmlada')
 makedepends=('git' 'gprbuild-bootstrap')
 
 # We provide gprbuild-bootstrap here so we can use this gprbuild to bootstrap
