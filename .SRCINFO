@@ -1,6 +1,6 @@
 pkgbase = shufti
 	pkgdesc = shufti - the persistent image viewer
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	arch = any
 	license = AGPL3
