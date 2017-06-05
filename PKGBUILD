@@ -46,10 +46,10 @@ build() {
         --libexecdir=/lib \
         --enable-shared \
         --enable-gpl
-    make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
+    PYTHON=python2 make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
 }
 
 package() {
     cd gnatcoll
-    make prefix="$pkgdir"/usr install
+    PYTHON=python2  make prefix="$pkgdir"/usr install
 }
