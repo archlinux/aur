@@ -4,45 +4,42 @@ _pkgname=airgeddon
 pkgname=$_pkgname-git
 pkgver=r693.dbbaa4e
 pkgrel=1
-pkgdesc='This is a multi-use bash script for Linux systems to audit wireless networks'
+pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
 source=('git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master')
 depends=(
-  'aircrack-ng'
-  'bash>=4.2'
-  'coreutils'
-  'gawk'
-  'iw'
-  'net-tools'
-  'sed'
-  'wireless_tools'
-  'xterm'
+  'aircrack-ng' 'bash>=4.2' 'coreutils'
+  'gawk' 'iw' 'net-tools'
+  'sed' 'wireless_tools' 'xterm'
 )
 optdepends=(
-  'beef'
-  'bettercap'
-  'bully'
-  'crunch'
-  'curl'
-  'dhcp'
-  'dsniff'
-  'ethtool'
-  'ettercap'
-  'expect'
-  'hashcat'
-  'hostapd'
-  'iptables'
-  'lighttpd'
-  'mdk3'
-  'pciutils' 
-  'pixiewps'
-  'reaver'
-  'rfkill'
-  'sslstrip'
-  'usbutils'
-  'wget'
-  'xorg-xdpyinfo'
+  'beef: Browser Exploitation Framework (BeEF). It is a penetration testing tool that focuses on the web browser'
+  'bettercap: Complete, modular, portable and easily extensible MITM framework'
+  'bully: Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
+  'crunch: A wordlist generator where you can specify a standard character set or a
+    character set you specify and generate all possible combinations and
+    permutations'
+  'curl: An URL retrieval utility and library'
+  'dhcp: A DHCP server, client, and relay agent'
+  'dsniff: Collection of tools for network auditing and penetration testing'
+  'ethtool: Utility for controlling network drivers and hardware'
+  'ettercap: A network sniffer/interceptor/logger for ethernet LANs'
+  'expect: A tool for automating interactive applications'
+  'hashcat: Multithreaded advanced password recovery utility'
+  'hostapd: IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
+  'iptables: Linux kernel packet control tool'
+  'lighttpd: A secure, fast, compliant and very flexible web-server'
+  'mdk3: WLAN penetration tool'
+  'pciutils: PCI bus configuration space access library and tools' 
+  'pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy
+    of some APs'
+  'reaver: Brute force attack against Wifi Protected Setup'
+  'rfkill: Tool for enabling and disabling wireless devices'
+  'sslstrip: Python tool to hijack HTTPS connections during a MITM attack'
+  'usbutils: USB Device Utilities'
+  'wget: A network utility to retrieve files from the Web'
+  'xorg-xdpyinfo: Display information utility for X'
 )
 makedepends=('binutils' 'coreutils' 'git')
 conflicts=('airgeddon-git')
