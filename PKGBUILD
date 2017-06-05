@@ -1,50 +1,37 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
 pkgname=lastpass
-pkgver=4.1.44
-_universal=$pkgver    # Version of the universal installer: https://lastpass.com/misc_download2.php
-_chromver=4.1.52      # The actual extensions' versions
-_chromver_lib=4.1.23
-_ffver=4.1.53a
-pkgrel=9
+pkgver=4.1.53
+_universalver=4.1.44
+_chromever=4.1.52
+pkgrel=1
+_amo_file=650260
+_crx_id=hdokiejnpimakedhajhdlcegeplioahd
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
 license=('custom')
-depends=('libx11' 'libxau' 'libxcb' 'libxdmcp')
-optdepends=('chromium: for Chromium'
-            'chromium-dev: for Chromium (Dev Channel) (AUR)'
-            'firefox: for Mozilla Firefox'
-            'firefox-beta-bin: for Mozilla Firefox (Beta) (AUR)'
-            'firefox-nightly: for Mozilla Firefox (Nightly) (AUR)'
-            'google-chrome: for Google Chrome (AUR)'
-            'google-chrome-beta: for Google Chrome (Beta Channel) (AUR)'
-            'google-chrome-dev: for Google Chrome (Dev Channel) (AUR)'
-            'opera: for Opera'
-            'opera-beta: for Opera Beta (AUR)'
-            'opera-developer: for Opera Developer (AUR)')
-install=$pkgname.install
-source=(# Universal
-        "lplinux_$_universal.tar.bz2::$url/lplinux.tar.bz2"
-        # Chrome
-        "lpchrome_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
-        "lpchrome_lib_${_chromver_lib}.crx::$url/lpchrome_linux.crx"
-        'com.lastpass.nplastpass.json'
-        'lastpass_policy.json'
-        # Firefox
-        #"https://addons.cdn.mozilla.net/user-media/addons/8542/lastpass_password_manager-$_ffver-an+fx.xpi"
-        #"$url/lp4.xpi"
-        "lpfirefox_$_ffver.xpi::$url/lastpassffx/xpi.php"
-        'profiles.ini')
-noextract=("lpchrome_$_chromver.crx"
-           "lpfirefox_$_ffver.xpi")
-md5sums=('5a9bb6e274c8d5102400fa03a3cab776'  # Universal
-         '2f1632b33cae35a4dfa8099851f243de'  # Chrome
-         'bd7678de722909acd89ba768edf0d5d5'  # Chrome with Lib
-         '151251e415bccdffc1dc0df592d1d7e1'
-         '9af777d2eea8e67ad332235718a7653d'
-         'a742b797ace7134cf3f49575fe1d11ce'  # Firefox
-         'd0f555a644484baccf649f7969794ece')
+optdepends=('chromium'
+            'firefox'
+            'google-chrome'
+            'opera')
+# Apparently, API endpoints are all the rage -- so this isn't actually a file...
+source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_amo_file}/"
+        "lpchrome-${_chromever}.crx::${url}/lpchrome_linux.crx"
+        "lplinux-${_universalver}.tar.bz2::${url}/lplinux.tar.bz2"
+        "com.lastpass.nplastpass.json"
+        "lastpass_policy_sources.json"
+        "lastpass_policy_install.json"
+        "License.txt")
+noextract=("${pkgname}-${pkgver}.xpi"
+"lpchrome-${_chromever}.crx")
+sha256sums=('927a56376751e75e6bbfb29eec6a13defd06e991cfa79116bf2e8aaadb0b2c9d'
+            '47937f48972b73f024a1e616547405d41e368cb3756f97958423d20d2196762d'
+            'adb0e91f8d212d34dbb85db0b11738fe36db1a741ad5674d7070c4019a9fc75e'
+            'e8eb3b585809d6644807727c5bd0a74ead96dd2c5a7e6d2ce29e0b6ea28b9e59'
+            'f82b920620575654fcbc0baf9b5d6c275835cbfc05b779ad309de5c6411c8bc9'
+            '1c061cb5352d84dd6cde4dd6ce3889d41a31fd38acc4d97a7d69709e3d5ac693'
+            '17a871edf1134c498f6e91465f5b3138ba5af7d822e4c253cda81ab929906388')
 
 # 64-bit?
 if [[ $CARCH = x86_64 ]]; then
@@ -52,42 +39,41 @@ if [[ $CARCH = x86_64 ]]; then
 fi
 
 prepare() {
-    # Write user var to .install
-    sed -i "s/_user=[^ ]*/_user=$USER/" "$startdir"/$pkgname.install
-}
+    cd "${srcdir}"
 
-_chrome_package() {
-    # Install to single place for linking
-    install -Dm644 lpchrome_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_$_chromver.crx
-    install -Dm755 lplinux/nplastpass$_64 "$pkgdir"/etc/opt/chrome/native-messaging-hosts/nplastpass$_64
+    tail -c +307 lpchrome-${_chromever}.crx > lpchrome-${_chromever}.zip
+    unzip -qqo lpchrome-${_chromever}.zip -d lpchrome-${_chromever}
 
-    # 64-bit?
-    sed -i "s|/nplastpass|/nplastpass$_64|" com.lastpass.nplastpass.json
-
-    # JSONs
-    for i in opt/chrome chromium chromium-dev; do
-        # Messaging host
-        install -Dm644 com.lastpass.nplastpass.json "$pkgdir"/etc/$i/native-messaging-hosts/com.lastpass.nplastpass.json
-
-        # Allow silent installation since Chrome v21: http://www.chromium.org/administrators/policy-list-3#ExtensionInstallSources
-        install -Dm644 lastpass_policy.json "$pkgdir"/etc/$i/policies/managed/lastpass_policy.json
-    done
-}
-
-_firefox_package() {
-    # Extension + profiles.ini go to $HOME, so do this in .install
-    install -m644 lpfirefox_$_ffver.xpi "$pkgdir"/usr/share/lastpass/
-    install -m644 profiles.ini "$pkgdir"/usr/share/lastpass/
-
-    # Binary plugin
-    #bsdtar -xf lpchrome_linux_${_chromver_lib}.crx libnplastpass$_64.so
-    install -Dm755 libnplastpass$_64.so "$pkgdir"/usr/lib/mozilla/plugins/libnplastpass$_64.so
+    unzip -qqo "${pkgname}-${pkgver}.xpi" -d "${pkgname}-${pkgver}"
 }
 
 package() {
-    msg2 "Installing for Google Chromes/Chromiums..."
-    _chrome_package
+    cd "${srcdir}"
 
-    msg2 "Installing for Mozilla Firefoxes..."
-    _firefox_package
+    # Firefox
+    _extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${pkgname}-${pkgver}/install.rdf)"
+    _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
+    # Should this extension be unpacked or not?
+    if grep '<em:unpack>true</em:unpack>' ${pkgname}-${pkgver}/install.rdf > /dev/null; then
+        install -dm755 "${_extension_dest}"
+        cp -R ${pkgname}-${pkgver}/* "${_extension_dest}"
+        chmod -R ugo+rX "${_extension_dest}"
+    else
+        install -Dm644 ${pkgname}-${pkgver}.xpi "${_extension_dest}.xpi"
+    fi
+
+    # Chrome(ium)
+    install -Dm755 lplinux/nplastpass$_64 "$pkgdir"/usr/lib/lastpass/nplastpass
+    for i in opt/chrome chromium chromium-dev; do
+        install -Dm644 com.lastpass.nplastpass.json "$pkgdir"/etc/$i/native-messaging-hosts/com.lastpass.nplastpass.json
+        install -Dm644 lastpass_policy_sources.json "$pkgdir"/etc/$i/policies/managed/lastpass.json
+    done
+    for i in google-chrome chromium ; do
+        install -Dm644 lastpass_policy_install.json "$pkgdir"/usr/share/$i/extensions/hdokiejnpimakedhajhdlcegeplioahd.json
+    done
+
+    # Opera
+    install -Dm755 lpchrome-${_chromever}/libnplastpass${_64}.so "${pkgdir}"/usr/lib/opera/plugins/libnplastpass.so
+
+    install -Dm644 License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
