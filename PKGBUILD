@@ -2,7 +2,7 @@
 pkgname=zelda-olb-fr
 _name=zelda-olb
 pkgver=3.6
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc="Zelda: Oni Link Begins is the sequel of Zelda: Return of the Hylian (french version)"
 url="http://www.zeldaroth.fr/"
@@ -39,6 +39,10 @@ prepare () {
   
   # Create the directory $HOME/.zelda-olb if it doesnt exist
   sed -i -e s~'(NULL));'~'&\n\tif (system(\"stat $HOME/.'$_name' \&> /dev/null")) system (\"mkdir $HOME/.'$_name'\");'~ main.cpp
+  
+  #Fix the preprocessor options (SDL.h not found)
+  sed -i -e "s#CFLAGS  =#CFLAGS  += -I/usr/include/SDL#g" Makefile
+  sed -i -e "s#LDFLAGS =#LDFLAGS +=#g" Makefile
 }
 
 build() {
