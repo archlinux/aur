@@ -14,7 +14,7 @@ url="https://github.com/danielpinto8zz6/${pkgname}"
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-	./autogen.sh --prefix=/usr  --disable-schemas-compile
+	./autogen.sh --prefix=/usr
 	make
 }
 
