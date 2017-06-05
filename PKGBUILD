@@ -41,7 +41,8 @@ build() {
     cd gprbuild
     export OS=UNIX
     make prefix=/usr  PROCESSORS="$(nproc)" setup
-    make GPRBUILD_OPTIONS=-R
+    make
+#    make GPRBUILD_OPTIONS=-R
 }
 
 package() {
