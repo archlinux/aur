@@ -1,0 +1,17 @@
+pkgbase = mopiqy-git
+	pkgdesc = Mopidy Qt client
+	pkgver = 0.1.1.r0.ed8a227
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-websockets
+	provides = mopiqy
+	conflicts = mopiqy
+	source = git+https://github.com/AlexandrePTJ/mopiqy.git#branch=master
+	md5sums = SKIP
+
+pkgname = mopiqy-git
+
