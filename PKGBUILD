@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('dialog')
 makedepends=('git')
 optdepends=('xorg-xinput: support for hot-detecting touchpad capabilities')
-source=('git+http://ctkarch.org/git/sysconfig')
+source=('git+https://ctkarch.org/git/sysconfig')
 md5sums=(SKIP)
 
 pkgver() {

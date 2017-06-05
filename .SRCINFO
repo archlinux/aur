@@ -8,7 +8,7 @@ pkgbase = ctkarch-sysconfig-git
 	makedepends = git
 	depends = dialog
 	optdepends = xorg-xinput: support for hot-detecting touchpad capabilities
-	source = git+http://ctkarch.org/git/sysconfig
+	source = git+https://ctkarch.org/git/sysconfig
 	md5sums = SKIP
 
 pkgname = ctkarch-sysconfig-git
