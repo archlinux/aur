@@ -19,7 +19,7 @@ index ee34a4b..b0c8013 100644
 +   { .key = "      L: ", .info = "list open files with lsof" },
     { .key = "      s: ", .info = "trace syscalls with strace" },
     { .key = "         ", .info = "" },
-    { .key = "   F2 S: ", .info = "setup" },
+    { .key = " F2 C S: ", .info = "setup" },
 -   { .key = "   F1 h: ", .info = "show this help screen" },
 +   { .key = "   F1 ?: ", .info = "show this help screen" },
     { .key = "  F10 q: ", .info = "quit" },
