@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/libadalang"
 license=('GPL')
 
-depends=("gcc-ada" "ada-gnatcoll-git"
+depends=("gcc-ada" "gnatcoll"
          "quex" "python2-mako" "python-yaml" "python-sphinx" "python-coverage" "python2-enum34"
          "python-psutil" "python-funcy" "python2-docutils" "autopep8" "yapf")
 
