@@ -51,6 +51,10 @@ build()
 {
   cd $srcdir/$pkgname
 
+  # Ensure that QUEX_PATH is set.
+  #
+  source /etc/profile.d/quex.sh
+
   export PATH=$srcdir/$pkgname/temp_bin:$PATH
   python ada/manage.py generate
 
@@ -65,6 +69,10 @@ build()
 package()
 {
   cd $srcdir/$pkgname
+
+  # Ensure that QUEX_PATH is set.
+  #
+  source /etc/profile.d/quex.sh
 
   python ada/manage.py install $pkgdir/usr
 
