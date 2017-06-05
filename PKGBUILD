@@ -6,11 +6,11 @@ pkgname=pacman-utils-data
 _basever="0.5.1"
 date_str=2017_06_03
 pkgver="${_basever}__${date_str}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional data for use with pacman-utils (required for provides_upstream)"
 # arch package url is https://github.com/kata198/pacman-utils-data-pkg
 url="https://github.com/kata198/pacman-utils"
-arch=(i686 x86_64)
+arch=(any)
 license=(apache)
 depends=(pacman-utils)
 source=("https://github.com/kata198/pacman-utils/archive/${_basever}.tar.gz")
