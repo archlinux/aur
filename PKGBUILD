@@ -40,6 +40,7 @@ _static_build=false
 _build_from_head=false
 _patching=true
 _minimal=true
+_uberminimal=false
 
 if [[ -z ${startdir} ]]; then
   _building=false;
@@ -76,7 +77,7 @@ _pkgvermajmin="5.9"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=7
+pkgrel=8
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -107,10 +108,13 @@ case ${_piver} in
 ;;
 esac
 
+if $_building && $_uberminimal; then
+  _skip_qtwidgets=true;
+fi
+
 if $_building && $_minimal; then
   _skip_qtscript=true;
   _skip_qtwebengine=true;
-  _skip_qtwidgets=true;
   pkgname="${pkgname}-minimal"
 fi
 
