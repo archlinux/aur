@@ -51,9 +51,9 @@ pkgbase = jdk7
 	md5sums = ac3f149795f62cdf5bdfdd6061fb8184
 	md5sums = 1b692eac219a0b34fd7ec13f09cea078
 	md5sums = daf7f23efea899b8c575145d1eb73aab
-	source_i686 = https://www.dropbox.com/s/j6lb08xu2l9k3kq/jdk-7u80-linux-i586.tar.gz
+	source_i686 = https://www.dropbox.com/s/tof6j0eyqbljugy/jdk-7u80-linux-i586.tar.gz
 	md5sums_i686 = 0811a4045714bd8f1e1577e318528597
-	source_x86_64 = https://www.dropbox.com/s/9fys7eqsqsy4zk1/jdk-7u80-linux-x64.tar.gz
+	source_x86_64 = https://www.dropbox.com/s/lni4xcu2eqhqjq9/jdk-7u80-linux-x64.tar.gz
 	md5sums_x86_64 = 6152f8a7561acf795ca4701daa10a965
 
 pkgname = jdk7

@@ -52,8 +52,8 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/UnlimitedJCEPolicyJ
         "policytool-$_jname.desktop")
 #source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz")
 #source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.tar.gz")
-source_i686=('https://www.dropbox.com/s/j6lb08xu2l9k3kq/jdk-7u80-linux-i586.tar.gz')
-source_x86_64=('https://www.dropbox.com/s/9fys7eqsqsy4zk1/jdk-7u80-linux-x64.tar.gz')
+source_i686=('https://www.dropbox.com/s/tof6j0eyqbljugy/jdk-7u80-linux-i586.tar.gz')
+source_x86_64=('https://www.dropbox.com/s/lni4xcu2eqhqjq9/jdk-7u80-linux-x64.tar.gz')
 md5sums=('c47e997b90ddfd0d813a37ccc97fb933'
          'c72336327d7cefadf4ffd74c014c7c2e'
          'ac3f149795f62cdf5bdfdd6061fb8184'
