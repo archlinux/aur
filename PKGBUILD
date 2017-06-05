@@ -2,8 +2,8 @@
 # Maintainer: Sébastien "Seblu" Luttringer
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgbase=virtualbox
-pkgname=('virtualbox'
+pkgbase=virtualbox-i3
+pkgname=('virtualbox-i3'
          'virtualbox-host-dkms'
          'virtualbox-guest-dkms'
          'virtualbox-sdk'
