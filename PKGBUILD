@@ -2,19 +2,19 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}
-pkgver=0.6.8
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
 url="http://www.openorienteering.org/apps/mapper/"
 license=('GPL3')
-depends=('qt5-base>=5.3' 'polyclipping>=6.1.3a' 'proj>=4.9.2')
+depends=('qt5-base>=5.3' 'polyclipping>=6.1.3a' 'proj>=4.9.2' 'gdal')
 makedepends=('cmake>=3.1' 'qt5-tools>=5.3' 'doxygen' 'libcups')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 install=${pkgname}.install
 source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8c7daf459c10f1affc40904c6048a52711c758c52752208e36395dc3256587ee')
+sha256sums=('bc12453bff1863186e5ee7d7d47f43d4ce65a74bd9bb57fada709e0dc68c1065')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
@@ -26,10 +26,6 @@ build() {
   cmake ..                      \
     -DCMAKE_BUILD_TYPE=Release  \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMapper_BUILD_QT=0         \
-    -DMapper_BUILD_CLIPPER=0    \
-    -DMapper_BUILD_PROJ=0       \
-    -DMapper_BUILD_DOXYGEN=0    \
     -DMapper_PACKAGE_NAME=${pkgname} \
     -Wno-dev
   make -j$(nproc)
