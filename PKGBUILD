@@ -1,7 +1,7 @@
 # Maintainer: somekool <somekool _ at _ gmail _ dot _com>
 
 pkgname=netvirt-agent-git
-pkgver=0.6.r172.gaacd0fc
+pkgver=0.6.r173.g148d261
 pkgrel=1
 pkgdesc="NetVirt is an open source network virtualization platform (NVP)."
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ build() {
   [ -d ${srcdir}/${pkgname}/build ] && rm -fr ${srcdir}/${pkgname}/build
   mkdir ${srcdir}/${pkgname}/build
   cd ${srcdir}/${pkgname}/build
-  cmake .. -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DWITH_GUI=OFF
+  cmake .. -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr -DWITH_GUI=OFF -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so -DOPENSSL_ROOT_DIR=/usr/lib/openssl-1.0 -DOPENSSL_LIBRARIES=/usr/lib/openssl-1.0
   make nvagent
   echo ======================== build completed ========================
 }
