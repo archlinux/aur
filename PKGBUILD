@@ -5,7 +5,7 @@
 pkgname=gnomecanvas-perl
 _realname=Gnome2-Canvas
 pkgver=1.002
-pkgrel=17
+pkgrel=18
 pkgdesc="Gnome2-Canvas perl bindings for libgnomecanvas"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -18,8 +18,8 @@ md5sums=('93405a987ba4bbd03c2f91592b88f5cb')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PERL_USE_UNSAFE_INC=1
-  make
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor 
+  PERL_USE_UNSAFE_INC=1 make
 }
 
 package() {
