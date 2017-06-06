@@ -3,7 +3,7 @@
 
 pkgname=meep
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A free finite-difference time-domain simulation software package"
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/Meep"
@@ -17,7 +17,7 @@ md5sums=('18a5b9e18008627a0411087e0bb60db5')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
-  ./configure CC=gcc CXX=g++ GUILE='/usr/bin/guile2.0' GUILE_CONFIG='/usr/bin/guile-config2.0' --prefix=/usr --enable-shared --with-mpi
+  ./configure CC=gcc CXX=g++ GUILE='/usr/bin/guile1.8' GUILE_CONFIG='/usr/bin/guile-config1.8' --prefix=/usr --enable-shared --with-mpi
   make
 }
 package() {
