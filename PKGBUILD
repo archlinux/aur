@@ -1,5 +1,6 @@
 pkgname=gnatcoll
-pkgver=17.1.r64.g09ee8996
+#pkgver=17.1.r64.g09ee8996
+pkgver=2017
 pkgrel=1
 
 pkgdesc='gnat components collection'
@@ -27,10 +28,10 @@ sha1sums=('SKIP'
           '04799236d75963c9abe2d41c9f2a6c3d3e61780d')
 
 
-pkgver() {
-    cd gnatcoll
-    git describe --long --tags | sed 's/^gnatcoll-//; s/-/.r/; s/-/./'
-}
+#pkgver() {
+#    cd gnatcoll
+#    git describe --long --tags | sed 's/^gnatcoll-//; s/-/.r/; s/-/./'
+#}
 
 
 prepare() {
@@ -58,7 +59,8 @@ build() {
         --libexecdir=/lib \
         --enable-shared \
         --enable-gpl
-    make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
+#    make PROCESSORS="$(nproc)" GPRBUILD_OPTIONS=-R
+    make
 }
 
 
