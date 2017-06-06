@@ -22,7 +22,7 @@ sha256sums=('250eef9fa5c8949a240caee85e72153154a0ecc2af0da3a43259ed9bf0222677'
             '138964b43d7a282e1ed5f7fcf1f8dc9baa4f664655b628eeac1912a3017a787b')
 
 build() {
-    cd "${srcdir}/zfs"
+    cd "${srcdir}/zfs-${_pkgver_base}"
     ./autogen.sh
 
     ./configure --prefix=/usr \
