@@ -1,5 +1,6 @@
 pkgname=gprbuild-bootstrap
-pkgver=r3147.g18e2bc01
+#pkgver=r3147.g18e2bc01
+pkgver=2017
 pkgrel=1
 
 pkgdesc='static gprbuild to bootstrap xmlada and gprbuild proper'
@@ -12,18 +13,15 @@ options=('debug' '!strip')
 depends=('glibc')
 makedepends=('git' 'gcc-ada')
 
-provides=('gprbuild-bootstrap')
-conflicts=('gprbuild' 'gprbuild-bootstrap')
-
 source=('git+https://github.com/AdaCore/gprbuild'
         'git+https://github.com/AdaCore/xmlada')
 
 sha1sums=('SKIP' 'SKIP')
 
-pkgver() {
-    cd gprbuild
-    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#    cd gprbuild
+#    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 prepare() {
     cd gprbuild
