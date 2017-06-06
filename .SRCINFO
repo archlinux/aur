@@ -1,0 +1,19 @@
+pkgbase = gog-besiege
+	pkgdesc = Besiege is an upcoming physics based building game in which you construct medieval siege engines and lay waste to immense fortresses and peaceful hamlets.
+	pkgver = 2.2.0.3
+	pkgrel = 1
+	url = http://spiderlinggames.co.uk/
+	arch = i686
+	arch = x86_64
+	groups = games
+	groups = gog
+	license = custom
+	source = gog-besiege
+	source = gog-besiege.desktop
+	source = file://gog_besiege_2.2.0.3.sh
+	sha256sums = 161227eeb3e2d63da8fc124f9893e00ee5a45e24cd9b9d3cd3dbeb18b4ad2bb1
+	sha256sums = f02edff7f3174e5f4239fc2fa2c669b47ee8608eb8e4a817ea708e981056a3ae
+	sha256sums = d1e0e3153e20ff499bb078374f0b863629414e987f22f44ae16366e7ffa8137e
+
+pkgname = gog-besiege
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Besiege
+Comment=Besiege is an upcoming physics based building game in which you construct 
+medieval siege engines and lay waste to immense fortresses and peaceful hamlets.
+Exec=gog-besiege
+Icon=gog-besiege
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
