@@ -1,6 +1,6 @@
 pkgbase = python-sphinx
-	pkgver = 1.6.1
-	pkgrel = 3
+	pkgver = 1.6.2
+	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = BSD
@@ -47,12 +47,8 @@ pkgbase = python-sphinx
 	makedepends = python2-sqlalchemy
 	makedepends = python2-whoosh
 	makedepends = python2-typing
-	source = https://pypi.org/packages/source/S/Sphinx/Sphinx-1.6.1.tar.gz
-	source = typing-module-py35+.patch
-	source = fix-broken-latex-testcase.patch
-	md5sums = 26cb1cdca7aa4afc8c925d926b6268e7
-	md5sums = 7e9371d2bbae0a790cb2ba9200979803
-	md5sums = 7ec2270be8902c2351f9f4a8c9a33f26
+	source = https://pypi.org/packages/source/S/Sphinx/Sphinx-1.6.2.tar.gz
+	md5sums = a5f613e2b807c1f8c6cdd985a3d909f1
 
 pkgname = python-sphinx
 	pkgdesc = Python3 documentation generator

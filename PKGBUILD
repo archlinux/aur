@@ -6,8 +6,8 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.6.2
+pkgrel=1
 
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -51,19 +51,11 @@ checkdepends=(
   'imagemagick' 'librsvg'
 )
 
-source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"
-        "typing-module-py35+.patch"
-        "fix-broken-latex-testcase.patch")
+source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
 
-md5sums=('26cb1cdca7aa4afc8c925d926b6268e7'
-         '7e9371d2bbae0a790cb2ba9200979803'
-         '7ec2270be8902c2351f9f4a8c9a33f26')
+md5sums=('a5f613e2b807c1f8c6cdd985a3d909f1')
 
 prepare() {
-  (cd Sphinx-$pkgver
-  patch -p1 <"$srcdir"/fix-broken-latex-testcase.patch
-  patch -p1 <"$srcdir"/typing-module-py35+.patch)
-
   # souce duplication is required because makefile modify source code
   # setyp.py --build tricks don't works well
   cp -a Sphinx-$pkgver Sphinx-${pkgver}2
