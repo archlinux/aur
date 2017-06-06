@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-sudo
-pkgver=1.0.20
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Sudo manager"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
 install=fusiondirectory-plugin-sudo.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('e5a9c45ef75891f0d56fbe35f147fd0f' '440d1a5461998c8fdf9eee0e5aed5d1e')
+md5sums=('1df851a6489d220cb136dbc8a0b03046' 'a74181098ebbee7b30245238974ef142')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
