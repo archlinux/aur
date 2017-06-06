@@ -1,0 +1,61 @@
+#
+# Maintainer: Grey Christoforo <first name at last name dot net>
+#
+
+pkgbase="spl-dkms-rc"
+pkgname=("spl-dkms-rc" "spl-utils-rc")
+_pkgver=0.7.0-rc4
+pkgver=${_pkgver//-rc/.}
+pkgrel=1
+license=('GPL')
+makedepends=("git")
+arch=("i686" "x86_64")
+url="http://zfsonlinux.org/"
+source=("https://github.com/zfsonlinux/spl/archive/spl-${_pkgver}.tar.gz"
+        "spl-utils.hostid")
+sha256sums=('562e386a97ab4698389057ec4a8e08ab49d3a7545d06d25f05ad5274d6154729'
+            'ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e')
+
+build() {
+    cd "${srcdir}/spl-spl-${_pkgver}"
+    ./autogen.sh
+
+    _at_enable=""
+    [ "${CARCH}" == "i686"  ] && _at_enable="--enable-atomic-spinlocks"
+
+    ./configure --prefix=/usr \
+                --libdir=/usr/lib \
+                --sbindir=/usr/bin \
+                --with-config=user \
+                ${_at_enable}
+
+    make
+}
+
+package_spl-dkms-rc() {
+    pkgdesc="Solaris Porting Layer kernel modules."
+    depends=("dkms" "spl-utils-rc=${pkgver}-${pkgrel}")
+    provides=("spl")
+    conflicts=("spl-git" "spl-lts" "spl-dkms")
+    install=spl.install
+
+    dkmsdir="${pkgdir}/usr/src/spl-${pkgver}"
+    install -d "${dkmsdir}"
+    cp -a "${srcdir}/spl-spl-${_pkgver}/." ${dkmsdir}
+
+    cd "${dkmsdir}"
+    make clean distclean
+    find . -name ".git*" -print0 | xargs -0 rm -fr --
+    scripts/dkms.mkconf -v ${pkgver} -f dkms.conf -n spl
+    chmod g-w,o-w -R .
+}
+
+package_spl-utils-rc() {
+    pkgdesc="Solaris Porting Layer kernel module support files."
+    conflicts=("spl-utils-git" "spl-utils-lts spl-utils")
+
+    cd "${srcdir}/spl-spl-${_pkgver}"
+    make DESTDIR="${pkgdir}" install
+
+    install -D -m644 "${srcdir}"/spl-utils.hostid "${pkgdir}"/etc/hostid
+}

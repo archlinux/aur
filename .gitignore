@@ -1,0 +1,7 @@
+!.gitignore
+
+/src
+/pkg
+*.pkg*
+*.orig
+spl-*.tar.gz
