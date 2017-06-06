@@ -33,7 +33,7 @@ build() {
 }
 
 package_spl-dkms-rc() {
-    pkgdesc="Solaris Porting Layer kernel modules."
+    pkgdesc="Solaris Porting Layer kernel modules -- release candidates"
     depends=("dkms" "spl-utils-rc=${pkgver}-${pkgrel}")
     provides=("spl")
     conflicts=("spl-git" "spl-lts" "spl-dkms")
@@ -51,7 +51,7 @@ package_spl-dkms-rc() {
 }
 
 package_spl-utils-rc() {
-    pkgdesc="Solaris Porting Layer kernel module support files."
+    pkgdesc="Solaris Porting Layer kernel module support files -- release candidates"
     conflicts=("spl-utils-git" "spl-utils-lts spl-utils")
 
     cd "${srcdir}/spl-spl-${_pkgver}"
