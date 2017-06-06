@@ -7,29 +7,30 @@
 
 _pkgname=scribus
 pkgname=${_pkgname}-devel
-pkgver=1.5.2
-pkgrel=3
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="Desktop publishing software"
 arch=('i686' 'x86_64')
 url="https://www.scribus.net/"
 license=('GPL')
 depends=('hunspell' 'libcdr' 'libmspub' 'libpagemaker' 'libvisio' 'podofo'
-         'poppler' 'python2' 'qt5-declarative' 'hicolor-icon-theme')
+         'poppler' 'python2' 'qt5-base' 'hicolor-icon-theme' 'harfbuzz-icu')
 makedepends=('cmake' 'boost' 'mesa' 'qt5-tools')
 optdepends=('tk: scripts based on tkinter'
             'hyphen-lang: hyphenation patterns for desired languages')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.asc}
-        "fix-qt-5.8-build.patch")
-sha256sums=('ec5eec23aeda655d3a761cffb85853dcd2ede3973b9e62a1b3c28bd1093c74f5' 'SKIP'
-            '317e9bc8832b71accd9903cd97d9041cb39cd6afc304196fa2f84a9024dc34b6')
-validpgpkeys=('5086B8D68E70FDDF4C40045AEF7B95E7F60166DA') # Peter Linnell <plinnell@scribus.net>
+        'findOpenSSL.patch')
+sha256sums=('73a30b4727e19f5d301a936d23a84275cc4f5613a92416cbd843f5167721d74f' 'SKIP'
+            'd6d798a370442026e04d56769848761111d63af2ca69a6c2591233da3703dfb4')
+validpgpkeys=('5086B8D68E70FDDF4C40045AEF7B95E7F60166DA'  # Peter Linnell <plinnell@scribus.net>
+              '757F5E9B13DD648887AD50092D47C099E782504E') # The Scribus Team (www.scribus.net) <the_scribus_team@scribus.net>
 
 prepare() {
     cd ${_pkgname}-${pkgver}
 
-    patch -p1 -i ../fix-qt-5.8-build.patch
+    patch -p1 -i ../findOpenSSL.patch
 
     sed \
         -e 's|#!/usr/bin/python|#!/usr/bin/python2|' \
