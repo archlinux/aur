@@ -3,14 +3,14 @@
 pkgname=ocaml-pipebang
 pkgver=113.00.00
 pkgrel=1
-license=('Apache')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml syntax extension to transform x |! f into f x"
+arch=('i686' 'x86_64')
 url="https://github.com/janestreet/pipebang"
+license=('Apache')
 depends=('ocaml' 'camlp4')
 makedepends=('ocaml-findlib')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 md5sums=('685ee2184eb95270751c58790f93dd0b')
 
 build() {
