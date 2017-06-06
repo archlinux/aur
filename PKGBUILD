@@ -3,14 +3,14 @@
 pkgname=ocaml-pa_ounit
 pkgver=113.00.00
 pkgrel=1
-license=('Apache')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml inline testing "
+arch=('i686' 'x86_64')
 url="https://github.com/janestreet/pa_ounit"
+license=('Apache')
 depends=('ocaml' 'camlp4' 'ocaml-ounit' 'ocaml-type_conv')
 makedepends=('ocaml-findlib')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 md5sums=('6604dde1e72444d65caa0656e3c211de')
 
 build() {
