@@ -1,0 +1,12 @@
+pkgbase = vim-drawit
+	pkgdesc = DrawIt is a plugin which allows one to draw lines left, right, up, down, and along both slants. Optionally one may cap the lines with arrowheads. One may change the horizontal, vertical, slant, and crossing characters to whichever characters one wishes.
+	pkgver = 1
+	pkgrel = 1
+	url = https://vim.sourceforge.io/scripts/script.php?script_id=40
+	arch = any
+	license = GPL
+	source = vim-drawit.vba.gz::https://vim.sourceforge.io/scripts/download_script.php?src_id=21108
+	md5sums = 791c58020cfdf9b9e769f276da1066a0
+
+pkgname = vim-drawit
+
