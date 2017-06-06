@@ -3,14 +3,14 @@
 pkgname=ocaml-alsa
 pkgver=0.2.3
 pkgrel=1
-license=('GPL2')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml ALSA bindings"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-alsa"
+license=('GPL2')
 depends=('ocaml' 'alsa-lib')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-alsa/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-alsa/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('bf14e0c419a8141a56a1cede08577843')
 
 build() {
