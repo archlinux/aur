@@ -7,7 +7,7 @@ _desktopfile="${_pkgname_base}.desktop"
 _mimefile="${_pkgname}-mime.xml"
 
 pkgname=${_pkgname}-bin
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="An open-source GUI prototyping tool - Evolus release"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=($_pkgname $_pkgname_base)
 source=("http://pencil.evolus.vn/dl/V${pkgver}/${_binname}_${pkgver}_amd64.deb"
 	"${_desktopfile}"
 	"${_mimefile}")
-sha1sums=('adc4f66ce2a7f3881350b4b38eaa0e6a6de78dfd'
+sha1sums=('26c846759639514dfe2bf7637e13a91b09de5ae2'
 	'fd1a937f77388e46917fa566000acd89c5d181c3'
 	'975e4818189aa041bfe4df6e20c69d82cd130298')
 
