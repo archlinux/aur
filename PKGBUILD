@@ -19,7 +19,7 @@ pkgver() {
   sha=`echo "$gitinfo" | head -n 1 | cut -c -7`
   tag=`echo "$gitinfo" | tail -n 1 | awk -F "/" {'print $3'}`
   commits=`curl -s ${srcgiturl}/releases/tag/${tag} | grep -o "[0-9]* commits" | awk {'print $1'}`
-  printf "%s.r%s.%s" $tag $commits $sha
+  printf "%s.r%s.g%s" $tag $commits $sha
 }
 
 prepare() {
