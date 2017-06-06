@@ -3,6 +3,7 @@ Encoding=UTF-8
 Type=Application
 Name=Mattermost
 Comment=Open source, private cloud Slack-alternative
+StartupWMClass=Mattermost
 Exec=/usr/lib/mattermost/mattermost-desktop
 Icon=mattermost-desktop
 Terminal=false
