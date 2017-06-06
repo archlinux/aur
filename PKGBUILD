@@ -3,16 +3,16 @@
 pkgname=ocaml-libocaml_ipv6_address
 pkgver=2014.08.08
 pkgrel=1
-license=('GPL3')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml library for IPv6 addresses"
+arch=('i686' 'x86_64')
 url="http://git.grenouille.com/?p=libocaml_ipv6_address.git"
+license=('GPL3')
 depends=('ocaml' 'ocaml-libocaml_exception' 'ocaml-libocaml_lexing')
 makedepends=('git' 'ocaml-findlib')
+options=('!strip')
 source=("git://git.autogeree.net/~julm/libocaml_ipv6_address.git#tag=v${pkgver//./-}"
         "git://git.autogeree.net/~julm/libocaml_make.git#tag=v2014-08-08"
         "git://git.autogeree.net/~julm/tool/pkg.git#tag=v2014-08-07")
-options=('!strip')
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
