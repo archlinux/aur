@@ -1,9 +1,10 @@
-# Contributor: Laurent Laffont <laurent.laffont@gmail.com>
+# Maintainer: Laurent Laffont <laurent.laffont@gmail.com>
+# Contributor: Benoit Verhaeghe <badetitou@gmail.com>
 
 
 pkgname=pharo-launcher
 pkgver=5.0
-pkgrel=0
+pkgrel=2
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(i686 x86_64)
 source=($pkgname-$pkgver.tar.gz)
@@ -14,12 +15,12 @@ depends=('pharo-vm' 'pharo-spur-vm')
 
 source=(
 	'http://files.pharo.org/media/logo/icon-lighthouse-128x128.png'
-	'http://files.pharo.org/platform/launcher/PharoLauncher-user-stable-2016.03.14.zip'
+	'http://files.pharo.org/platform/launcher/PharoLauncher-user-stable-2017.05.15.zip'
 )
 
 md5sums=(
 	'dec67d08d24433696375a319de029f34'
-	'4e6290f0d7561afff2a386ab2802dde6'
+	'36b94e544f4a4cd629bbad4a250a1244'
 )
 
 prepare() {
@@ -30,17 +31,18 @@ prepare() {
 package() {
 	cd $srcdir/
 
-	pharo -vm-display-X11 -headless PharoLauncher.image eval "PhLLaunchImageCommand spurFullPath: '/usr/bin/pharo-spur'. Smalltalk snapshot: true andQuit: true"
+	pharo-spur -vm-display-X11 --headless PharoLauncher.image eval "PhLLaunchImageCommand spurFullPath: '/usr/bin/pharo-spur'. Smalltalk snapshot: true andQuit: true"
 
 	mkdir -p $pkgdir/usr/share/pharo-launcher/
 	mkdir -p $pkgdir/usr/bin/
 	mkdir -p $pkgdir/usr/share/pixmaps/
 
 	cp -f $srcdir/PharoLauncher.* $pkgdir/usr/share/pharo-launcher/
-	chgrp users $pkgdir/usr/share/pharo-launcher/PharoLauncher.changes
-	chmod 775 $pkgdir/usr/share/pharo-launcher/PharoLauncher.changes
+	chgrp -R users $pkgdir/usr/share/pharo-launcher/
+	chmod -R 775 $pkgdir/usr/share/pharo-launcher/
 
-	echo "/usr/bin/pharo /usr/share/pharo-launcher/PharoLauncher.image" > $pkgdir/usr/bin/pharo-launcher
+
+	echo "/usr/bin/pharo-spur /usr/share/pharo-launcher/PharoLauncher.image" > $pkgdir/usr/bin/pharo-launcher
 	chmod +x $pkgdir/usr/bin/pharo-launcher
 
 	cp $srcdir/icon-lighthouse-128x128.png	$pkgdir/usr/share/pixmaps/$pkgname.png
