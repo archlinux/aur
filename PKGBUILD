@@ -1,0 +1,42 @@
+# Maintainer: Tiziano Bacocco <tizbac2@gmail.com>
+
+pkgname=kdevelop-go
+pkgver=v4.9
+pkgrel=1
+pkgdesc="Go language plugin for kdevelop"
+arch=('i686' 'x86_64')
+url="https://cgit.kde.org/kdev-go.git"
+license=('GPL')
+groups=('kde' 'kdevelop-plugins')
+depends=('kdevplatform' 'kdevelop' 'go' 'kdevelop-pg-qt')
+makedepends=('cmake' 'automoc4' 'git' 'go' 'kdevelop-pg-qt')
+source=('git+git://anongit.kde.org/kdev-go')
+
+md5sums=('SKIP')
+
+prepare()
+{
+	cd "$srcdir/kdev-go"
+	git checkout 28b68c0f20fc5c2d977aa682a8a201b789ce0e9b
+}
+
+build() {
+    cd "$srcdir/kdev-go"
+
+    mkdir -p "$srcdir/kdev-go/build"
+    cd "$srcdir/kdev-go/build"
+
+    cmake ../ \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLIB_INSTALL_DIR=lib \
+        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+
+    make
+}
+
+package() {
+    cd "$srcdir/kdev-go/build"
+
+    make DESTDIR="$pkgdir/" install
+}
