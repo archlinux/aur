@@ -3,14 +3,14 @@
 pkgname=ocaml-portaudio
 pkgver=0.2.1
 pkgrel=1
-license=('LGPL2.1')
+pkgdesc="OCaml bindings for portaudio"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for portaudio")
 url="https://github.com/savonet/ocaml-portaudio"
+license=('LGPL2.1')
 depends=('ocaml' 'portaudio')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-portaudio/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-portaudio/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('c504a0d47c1aa834b774b9c668b65691')
 
 build() {
