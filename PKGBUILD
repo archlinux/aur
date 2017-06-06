@@ -1,10 +1,12 @@
-# Contributor: Laurent Laffont <laurent.laffont@gmail.com>
+# Maintainer: Laurent Laffont <laurent.laffont@gmail.com>
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 # Contributor: Daniel Milde <daniel@milde.cz>
+# Contributor: Benoit Verhaeghe <badetitou@gmail.com>
+
 
 pkgname=pharo-vm
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pharo-VM for Pharo 4 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment"
 conflicts=('pharo' 'pharo-vm-latest')
 arch=(i686 x86_64)
@@ -18,22 +20,22 @@ else
 fi
 
 source=(http://files.pharo.org/sources/PharoV40.sources.zip
-        http://files.pharo.org/vm/pharo/linux/stable-20151211.zip)
+        http://files.pharo.org/vm/pharo/linux/548.zip)
 
 md5sums=('f748553d42c7dda963d56286e3be3f08'
-         '8a7746cbbc6c2457c1c85f96f2a25ce4')
+         '2a6187fdef9eaa507661910092f554ac')
 
 package() {
   cd $srcdir/
-  mkdir -p $pkgdir/usr/share/pharo/vm/
+  mkdir -p $pkgdir/usr/lib/pharo/shared/vm/40/
   mkdir -p $pkgdir/usr/bin/
 
-  cp -fr $srcdir/* $pkgdir/usr/share/pharo/vm/
-  rm $pkgdir/usr/share/pharo/vm/*.zip
-  chmod +x $pkgdir/usr/share/pharo/vm/pharo
+  cp -fr $srcdir/* $pkgdir/usr/lib/pharo/shared/vm/40/
+  rm $pkgdir/usr/lib/pharo/shared/vm/40/*.zip
+  chmod +x $pkgdir/usr/lib/pharo/shared/vm/40/pharo
 
-  chgrp -R users $pkgdir/usr/share/pharo/vm/
-  chmod -R 775 $pkgdir/usr/share/pharo/vm/
+  chgrp -R users $pkgdir/usr/lib/pharo/shared/vm/40/
+  chmod -R 775 $pkgdir//usr/lib/pharo/shared/vm/40/
 
-  ln -s /usr/share/pharo/vm/pharo $pkgdir/usr/bin/pharo
+  ln -s /usr/lib/pharo/shared/vm/40/pharo $pkgdir/usr/bin/pharo
 }

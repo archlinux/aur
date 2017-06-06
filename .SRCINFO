@@ -1,7 +1,7 @@
 pkgbase = pharo-vm
 	pkgdesc = Pharo-VM for Pharo 4 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pharo.org/
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = pharo-vm
 	conflicts = pharo
 	conflicts = pharo-vm-latest
 	source = http://files.pharo.org/sources/PharoV40.sources.zip
-	source = http://files.pharo.org/vm/pharo/linux/stable-20151211.zip
+	source = http://files.pharo.org/vm/pharo/linux/548.zip
 	md5sums = f748553d42c7dda963d56286e3be3f08
-	md5sums = 8a7746cbbc6c2457c1c85f96f2a25ce4
+	md5sums = 2a6187fdef9eaa507661910092f554ac
 
 pkgname = pharo-vm
 
