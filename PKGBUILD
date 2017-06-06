@@ -1,0 +1,35 @@
+# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+
+_plug=descale
+pkgname=vapoursynth-plugin-${_plug}-git
+pkgver=r2.2.gee3ac31
+pkgrel=1
+pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+arch=('i686' 'x86_64')
+url='https://github.com/Frechdachs/vapoursynth-descale.git'
+license=('WTFPL')
+depends=('vapoursynth')
+source=("${_plug}::git+https://github.com/Frechdachs/vapoursynth-descale.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_plug}"
+  echo "$(git describe --long --tags | tr - .)"
+}
+
+prepare() {
+
+  echo "all:
+	  g++ -c -std=c++11 -fPIC ${CFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o descale.o descale/descale.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so descale.o" > Makefile
+}
+
+build() {
+  make
+}
+
+package(){
+  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+
+  install -Dm644 descale/README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+}
