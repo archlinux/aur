@@ -5,19 +5,20 @@
 pkgbase="spl-dkms-rc"
 pkgname=("spl-dkms-rc" "spl-utils-rc")
 _pkgver=0.7.0-rc4
+_pkgver_base=${_pkgver%-*}
 pkgver=${_pkgver//-rc/.}
 pkgrel=1
 license=('GPL')
 makedepends=("git")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/spl/archive/spl-${_pkgver}.tar.gz"
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_pkgver}/spl-${_pkgver}.tar.gz"
         "spl-utils.hostid")
-sha256sums=('562e386a97ab4698389057ec4a8e08ab49d3a7545d06d25f05ad5274d6154729'
+sha256sums=('99e858d65a51ef50ef1d2edc5a2e0c70bf4bb258801937b84625ed57fc8df5fa'
             'ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e')
 
 build() {
-    cd "${srcdir}/spl-spl-${_pkgver}"
+    cd "${srcdir}/spl-${_pkgver_base}"
     ./autogen.sh
 
     _at_enable=""
@@ -41,7 +42,7 @@ package_spl-dkms-rc() {
 
     dkmsdir="${pkgdir}/usr/src/spl-${pkgver}"
     install -d "${dkmsdir}"
-    cp -a "${srcdir}/spl-spl-${_pkgver}/." ${dkmsdir}
+    cp -a "${srcdir}/spl-${_pkgver_base}/." ${dkmsdir}
 
     cd "${dkmsdir}"
     make clean distclean
@@ -54,7 +55,7 @@ package_spl-utils-rc() {
     pkgdesc="Solaris Porting Layer kernel module support files -- release candidates"
     conflicts=("spl-utils-git" "spl-utils-lts spl-utils")
 
-    cd "${srcdir}/spl-spl-${_pkgver}"
+    cd "${srcdir}/spl-${_pkgver_base}"
     make DESTDIR="${pkgdir}" install
 
     install -D -m644 "${srcdir}"/spl-utils.hostid "${pkgdir}"/etc/hostid
