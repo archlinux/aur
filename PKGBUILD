@@ -7,14 +7,14 @@
 pkgbase=linux-mptcp
 _srcname=mptcp
 pkgver=0.92
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("git+https://github.com/multipath-tcp/mptcp#commit=b47be2ff07584d52a331607856841feffcbf8cc3"
+source=("https://github.com/multipath-tcp/mptcp/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -22,7 +22,7 @@ source=("git+https://github.com/multipath-tcp/mptcp#commit=b47be2ff07584d52a3316
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-sha256sums=('SKIP'
+sha256sums=('6a2b7a68ee9522d256eaf9a837419d24f53b2b27d1567dc84d569dd4527abc1f'
             'fd08d8ae23138ed4f8f2b164988d33d0d5a1bd73a61971295b3388147e2bba6b'
             'b587dd89f69508f3016193b1bb362263daa0af00726e1d1137193329d3bd85cb'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
@@ -31,13 +31,8 @@ sha256sums=('SKIP'
 
 _kernelname=${pkgbase#linux}
 
-#pkgver() {
-#  cd "${srcdir}/${_srcname}"
-#  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-#}
-
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -51,8 +46,8 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-  # set extraversion to git revision
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -$(git rev-parse --short HEAD)|" Makefile
+  # set extraversion to pkgrel
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -73,7 +68,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.${CARCH}.last"
@@ -91,7 +86,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   KARCH=x86
 
@@ -143,7 +138,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
@@ -269,7 +264,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
