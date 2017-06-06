@@ -1,7 +1,7 @@
 pkgbase = core
 	pkgdesc = Common Open Research Emulator
 	pkgver = 4.8
-	pkgrel = 1
+	pkgrel = 3
 	url = http://cs.itd.nrl.navy.mil/work/core/
 	arch = i686
 	arch = x86_64
