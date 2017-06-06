@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=upterm
-pkgver=0.2.155
+pkgver=0.2.156
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('apm' 'git' 'npm' 'typescript')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'upterm.desktop'
         'upterm.js')
-sha256sums=('bb7de58188454bf2abaa1fb7a82f43474bdb5a71fdd2974149a99847279ea381'
+sha256sums=('a28a81d19c2643c62953f1ce77b5ee329c3548d863786fa9dd561d9b8c919a81'
             '2d55728dcd4f0b25195474d8676f8994c266f24e8e928ddbb9ff86959c3ac96f'
             '5522f5f78c0686d5e419661f4264e2d2f5f0856582f1494010e457c150f67910')
 
@@ -28,7 +28,7 @@ build() {
     ATOM_HOME="${PWD}" apm install --production
     rmdir packages
 
-    type=('@types/electron' '@types/enzyme' '@types/fs-extra' '@types/klaw' '@types/lodash' '@types/node' '@types/react')
+    type=('@types/chokidar' '@types/electron' '@types/enzyme' '@types/fs-extra' '@types/klaw' '@types/lodash' '@types/node' '@types/react')
     npm install "${type[@]}"
     tsc
     install -Dm644 -t compiled/src/views src/views/index.html
