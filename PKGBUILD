@@ -5,7 +5,7 @@ pkgdesc="Samba 3 integration"
 arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
-depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
+depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver" "fusiondirectory-plugin-posix>=$pkgver")
 
 install=fusiondirectory-plugin-samba.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
