@@ -1,13 +1,13 @@
 pkgbase = pacman-utils-data
 	pkgdesc = Additional data for use with pacman-utils (required for provides_upstream)
-	pkgver = 0.5.1__2017_06_03
+	pkgver = 2017_06_03
 	pkgrel = 2
-	url = https://github.com/kata198/pacman-utils
+	url = https://github.com/kata198/pacman-utils-data
 	arch = any
 	license = apache
 	depends = pacman-utils
-	source = https://github.com/kata198/pacman-utils/archive/0.5.1.tar.gz
-	md5sums = 020375e8130ae5a73c721e9194ca9142
+	source = https://github.com/kata198/pacman-utils-data/raw/master/providesDB
+	sha512sums = 71701c87f11d62591de29c374c44942ba11a27a163aea7e669c244a574d9fdc06f3289a9c1173c9ba7b8ae43161be99b09438a30d26485b8393b448e8cc3263d
 
 pkgname = pacman-utils-data
 

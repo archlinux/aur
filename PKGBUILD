@@ -3,30 +3,24 @@
 _basename=pacman-utils
 
 pkgname=pacman-utils-data
-_basever="0.5.1"
-date_str=2017_06_03
-pkgver="${_basever}__${date_str}"
+_basever="2017_06_03"
+pkgver="${_basever}"
 pkgrel=2
 pkgdesc="Additional data for use with pacman-utils (required for provides_upstream)"
 # arch package url is https://github.com/kata198/pacman-utils-data-pkg
-url="https://github.com/kata198/pacman-utils"
+url="https://github.com/kata198/pacman-utils-data"
 arch=(any)
 license=(apache)
 depends=(pacman-utils)
-source=("https://github.com/kata198/pacman-utils/archive/${_basever}.tar.gz")
-md5sums=('020375e8130ae5a73c721e9194ca9142')
+source=("https://github.com/kata198/pacman-utils-data/raw/master/providesDB")
+sha512sums=("71701c87f11d62591de29c374c44942ba11a27a163aea7e669c244a574d9fdc06f3289a9c1173c9ba7b8ae43161be99b09438a30d26485b8393b448e8cc3263d")
 
-build() {
-  cd "${_basename}-${_basever}"
-
-}
 
 package() {
+  cd "${srcdir}"
+
   mkdir -p "${pkgdir}/var/lib/pacman"
 
-  pushd "${srcdir}/${_basename}-${_basever}"
+  cp -f providesDB "${pkgdir}/var/lib/pacman"
 
-  ./install_data.sh DESTDIR="${pkgdir}"
-
-  popd
 }
