@@ -4,7 +4,7 @@ pkgname='perl-module-install'
 _perlmod=Module-Install
 _author='E/ET/ETHER'
 pkgver=1.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Module::Install - Standalone, extensible Perl module installer"
 arch=('any')
 url='http://serch.cpan.org/dist/Module-Install'
@@ -15,7 +15,7 @@ perl-file-remove
 perl-json
 perl-module-scandeps
 perl-par-dist
-perl-parse-cpan-meta
+perl-cpan-meta # replaces perl-parse-cpan-meta
 perl-yaml-tiny
 )
 makedepends=(perl-yaml-tiny)
