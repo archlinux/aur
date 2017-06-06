@@ -3,14 +3,14 @@
 pkgname=ocaml-archive
 pkgver=2.8.4+2
 pkgrel=1
-license=('LGPL2.1')
-arch=('i686' 'x86_64')
 pkgdesc="Bindings to libarchive with Lwt support"
+arch=('i686' 'x86_64')
 url="https://forge.ocamlcore.org/projects/ocaml-archive/"
+license=('LGPL2.1')
 depends=('ocaml' 'ocaml-fileutils' 'ocaml-lwt' 'ocaml-extlib' 'libarchive')
 makedepends=('ocaml-findlib' 'ocaml-ounit')
-source=("https://forge.ocamlcore.org/frs/download.php/1129/ocaml-archive-2.8.4+2.tar.gz")
 options=('!strip')
+source=("https://forge.ocamlcore.org/frs/download.php/1129/ocaml-archive-2.8.4+2.tar.gz")
 md5sums=('5be75adde03a871c36f8a9ddacbba844')
 
 build() {
