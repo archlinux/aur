@@ -1,4 +1,4 @@
-# Maintainer: chet <chetgurevitch @ protonmail . com>
+# Maintainer:  chet <chetgurevitch @ protonmail . com>
 # Contributor: teacher4711 <inverness1 @ gmx . de>
 # Contributor: fheday <fheday @ gmail . com>
 # Contributor: seishinryohosha <seishinryohosha @ gmail . com>
@@ -6,12 +6,12 @@
 
 pkgname=greenfoot
 pkgver=3.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Allows easy development of two-dimensional graphical applications, such as simulations and interactive games."
 arch=('x86_64')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CPL' 'LGPL2' 'LGPL2.1' 'MIT' 'custom')
-depends=('sh' 'java-runtime' 'java-environment' 'java-openjfx')
+depends=('java-runtime' 'java-environment' 'java-openjfx')
 source=("https://www.${pkgname}.org/download/files/Greenfoot-linux-${pkgver//.}.deb"
         "${pkgname}"
         "${pkgname}.desktop")

@@ -1,7 +1,7 @@
 pkgbase = greenfoot
 	pkgdesc = Allows easy development of two-dimensional graphical applications, such as simulations and interactive games.
 	pkgver = 3.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.greenfoot.org
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,6 @@ pkgbase = greenfoot
 	license = LGPL2.1
 	license = MIT
 	license = custom
-	depends = sh
 	depends = java-runtime
 	depends = java-environment
 	depends = java-openjfx
