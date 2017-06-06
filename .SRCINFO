@@ -12,6 +12,7 @@ pkgbase = budgie-calendar-applet
 	depends = glib2
 	depends = libpeas
 	depends = budgie-desktop
+	depends = gobject-introspection
 	source = https://github.com/danielpinto8zz6/budgie-calendar-applet/archive/2.0.tar.gz
 	sha256sums = da25249f3675a04d999e62e7c5f9f58fd1131877a152436ef84f1ae10f6d9fa2
 
