@@ -1,6 +1,6 @@
 pkgbase = ratbagd
 	pkgdesc = ratbagd is a system daemon to introspect and modify configurable mice
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/libratbag/ratbagd
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = ratbagd
 	depends = libratbag>=0.2
 	depends = systemd>=227
 	conflicts = ratbagd-git
-	source = https://github.com/libratbag/ratbagd/archive/0.3.tar.gz
-	sha256sums = 9213d7677749d91a755a2800319d04b97bea4fc0c08c3ff2da535732add18f1a
+	source = https://github.com/libratbag/ratbagd/archive/0.4.tar.gz
+	sha256sums = d216b964dcc16c40355b1b224019d7476d4128f6533e51d46a873b66eaec86dd
 
 pkgname = ratbagd
 
