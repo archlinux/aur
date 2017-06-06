@@ -8,7 +8,7 @@ EnvironmentFile=-/etc/conf.d/crate
 ExecStart=/usr/share/crate/bin/crate -Cpath.conf=/etc/crate -Cpath.home=/usr/share/crate -Cpath.logs=/var/log/crate -Cpath.work=/var/lib/crate
 
 LimitMEMLOCK=infinity
-LimitNOFILE=65535
+LimitNOFILE=65536
 
 [Install]
 WantedBy=multi-user.target
