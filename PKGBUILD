@@ -5,7 +5,7 @@
 
 pkgname=libim
 pkgver=3.12
-pkgrel=4
+pkgrel=5
 pkgdesc="Toolkit for Digital Imaging"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/im/"
@@ -27,7 +27,7 @@ options=('staticlibs')
 build() {
   tar xf im-${pkgver}_Sources.tar.gz # sources have a problem with bsdtar, use gnutar instead
   cd im
-  make -k
+  make -k || true
 }
 
 package() {
@@ -39,5 +39,5 @@ package() {
   install -m644 "$srcdir"/im/include/* "$pkgdir"/usr/include/im
   install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/libim/LICENSE
   install -d "$pkgdir"/usr/lib/lua/5.1/
-  install -Dm644 "$srcdir"/im/lib/Linux??_??/Lua51/*.so "$pkgdir"/usr/lib/lua/5.1/
+  install -Dm644 "$srcdir"/im/lib/Linux*_??/Lua51/*.so "$pkgdir"/usr/lib/lua/5.1/
 }
