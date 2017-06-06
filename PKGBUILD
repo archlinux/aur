@@ -3,7 +3,7 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=2.32.0
+pkgver=2.33.0
 _attnum=3473464
 pkgrel=1
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
@@ -13,19 +13,22 @@ license=('Apache')
 depends=('qt5-base' 'proj' 'fftw' 'pango' 'netcdf-cxx-legacy' 'eccodes' 'python')
 optdepends=('libaec' 'odb_api')
 makedepends=('perl-xml-parser' 'gcc-fortran' 'swig' 'python2-numpy' 'cmake' 'boost' 'emos')
-source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz patch)
-md5sums=('e17956fffce9ea826cf994f8d275e0f5'
-         'da04828807d7fda1d767197c6d69ec0b')
+source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz patch g++7.patch)
+md5sums=('740169caf9dca3a2ad4dfb61d6570448'
+         '73b04ae78df8c2f6e88b2a36dcd2dd96'
+         '79ff00492ab8bbfce1a1c7b2e82c5e48')
 
 build() {
   cd "$srcdir/${Pkgname}-${pkgver}-Source"
   patch -p0 -i ../patch
+  patch -p2 -i ../g++7.patch
   mkdir -p build
   cd build
-  CC=gcc CXX=g++ \
+  CC=gcc CXX='g++' \
   cmake -DCMAKE_LINKER_FLAGS="-pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-pthread" \
     -DCMAKE_EXE_LINKER_FLAGS="-pthread" \
+    -DODB_API_DIR=/usr \
     -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=gcc \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
