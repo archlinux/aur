@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Greenfoot
+Comment=A simple Java IDE and animation framework
+Categories=Application;Development;
+Exec=greenfoot
+Icon=greenfoot
+Terminal=false
+Type=Application
+StartupWMClass=bluej-runtime-ExecServer

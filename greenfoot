@@ -1,7 +1,7 @@
 #!/bin/sh
-CP=/usr/share/java/greenfoot/bluej.jar:$JAVAPATH/lib/tools.jar
-java -Dawt.useSystemAAFontSettings=on -cp "$CP" bluej.Boot \
-    -greenfoot=true \
-    -bluej.compiler.showunchecked=false \
-    -greenfoot.url.javadoc=file:///usr/share/greenfoot/API \
-    "$@"
+java -Dawt.useSystemAAFontSettings=on \
+        -cp /opt/greenfoot/bluej.jar bluej.Boot \
+        -greenfoot=true \
+        -bluej.compiler.showunchecked=false \
+        -greenfoot.url.javadoc=file:///usr/share/doc/greenfoot/API \
+        "$@"
