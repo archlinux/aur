@@ -1,7 +1,7 @@
 # Maintainer: hfte posteo org
 pkgname=onewireviewer
 pkgver=3.13.40
-pkgrel=1
+pkgrel=2
 pkgdesc="demonstration application for exploring iButton or 1-Wire® chip features"
 arch=('x86_64')
 url="https://www.maximintegrated.com/en/products/ibutton/software/1wire/OneWireViewer.cfm"
@@ -40,4 +40,6 @@ package() {
     cp "${pkgname}.desktop" "${pkgdir}/usr/share/applications"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
     cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+    mkdir -p "${pkgdir}/etc/udev/rules.d/"
+    cp "99-one-wire.rules" "${pkgdir}/etc/udev/rules.d/"
 }
