@@ -3,14 +3,14 @@
 pkgname=ocaml-herelib
 pkgver=112.35.00
 pkgrel=1
-license=('Apache')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml syntax extension for inserting the current location"
+arch=('i686' 'x86_64')
 url="https://github.com/janestreet/herelib"
+license=('Apache')
 depends=('ocaml' 'camlp4')
 makedepends=('ocaml-findlib')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 md5sums=('b534bc00f643b664135346e6b8d69da0')
 
 build() {
