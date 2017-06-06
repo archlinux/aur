@@ -1,7 +1,7 @@
 # Maintainer: hfte posteo org
 pkgname=onewireviewer
 pkgver=3.13.40
-pkgrel=2
+pkgrel=3
 pkgdesc="demonstration application for exploring iButton or 1-Wire® chip features"
 arch=('x86_64')
 url="https://www.maximintegrated.com/en/products/ibutton/software/1wire/OneWireViewer.cfm"
