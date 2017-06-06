@@ -1,7 +1,7 @@
 # Maintainer: K1412 <FD.K1412@openaliasbox.org>
 pkgname=schema2ldif
-pkgver=1.0
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Convert .schema to .ldif." 
 arch=('any')
 url='https://forge.fusiondirectory.org/projects/schema2ldif'
@@ -9,7 +9,7 @@ license=('BSD')
 
 source=("http://repos.fusiondirectory.org/sources/1.0/schema2ldif/${pkgname}-${pkgver}.tar.gz"
         'default-path-for-ldap-schema-manager.patch')
-md5sums=('6241c0138b56d1b5941f6e9df496aa06'
+md5sums=('bc4639b540f210a6afcf114fdfae56b6'
          '35cab7886fe2fd592e414099db1d500d')
 
 prepare() {
