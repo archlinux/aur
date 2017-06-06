@@ -3,7 +3,7 @@
 
 _number_of_bits=32
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=1.42
+pkgver=1.43
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for all of their 32bit microcontrollers"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run"
         "bitrock-unpacker.tcl")
 
-md5sums=('78aef27c4fc89264e1678d7a262aedd7'
+md5sums=('8cba570dea965bb7f595b8548f6d1e38'
          '70dedba4c417f8c0bb07c32d19e9d197')
 install=$pkgname.install
 
