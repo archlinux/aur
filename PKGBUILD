@@ -3,14 +3,14 @@
 pkgname=ocaml-ladspa
 pkgver=0.1.5
 pkgrel=1
-license=('LGPL2.1')
+pkgdesc="OCaml bindings for LADSPA plugins"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for LADSPA plugins")
 url="https://github.com/savonet/ocaml-ladspa"
+license=('LGPL2.1')
 depends=('ocaml')
 makedepends=('ocaml-findlib' 'ladspa')
-source=("https://github.com/savonet/ocaml-ladspa/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-ladspa/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('ae66337eb15dbbf0f432016e79db7267')
 
 build() {
