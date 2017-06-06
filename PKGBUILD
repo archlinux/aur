@@ -3,14 +3,14 @@
 pkgname=ocaml-mad
 pkgver=0.4.5
 pkgrel=2
-license=('GPL2')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml bindings to the MAD mp3 decoder"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-mad"
+license=('GPL2')
 depends=('ocaml' 'libmad')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-mad/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-mad/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('d326d7441c40d2bb1359766173306639')
 
 build() {
