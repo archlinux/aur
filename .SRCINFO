@@ -15,6 +15,7 @@ pkgbase = urh
 	depends = python-pyzmq
 	optdepends = airspy: for native airspy backend
 	optdepends = hackrf: for native hackrf backend
+	optdepends = libuhd: for native USRP backend
 	optdepends = rtl-sdr: for native RTL-SDR backend
 	optdepends = rfcat-hg: for rfcat plugin
 	optdepends = gnuradio: for USRP gnuradio backend

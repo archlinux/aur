@@ -11,6 +11,7 @@ makedepends=('gcc' 'python-setuptools')
 optdepends=(
   'airspy: for native airspy backend'
   'hackrf: for native hackrf backend'
+  'libuhd: for native USRP backend'
   'rtl-sdr: for native RTL-SDR backend'
   'rfcat-hg: for rfcat plugin'
   'gnuradio: for USRP gnuradio backend'
