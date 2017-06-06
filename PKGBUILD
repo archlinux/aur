@@ -2,7 +2,7 @@
 
 pkgname=0xff
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple http(s) file sharing tool. Think 'python -m http.server' but better."
 arch=('any')
 url='https://github.com/xengi/0xff'
