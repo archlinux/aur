@@ -11,7 +11,6 @@ pkgbase = kdevelop-go
 	makedepends = cmake
 	makedepends = automoc4
 	makedepends = git
-	makedepends = php
 	depends = kdevplatform
 	depends = kdevelop
 	depends = go
