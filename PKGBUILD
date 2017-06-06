@@ -3,14 +3,14 @@
 pkgname=ocaml-frei0r
 pkgver=0.1.1
 pkgrel=1
-license=('LGPL2.1')
+pkgdesc="OCaml bindings to the frei0r video API"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings to the frei0r video API")
 url="https://github.com/savonet/ocaml-frei0r"
+license=('LGPL2.1')
 depends=('ocaml' 'frei0r-plugins')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-frei0r/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-frei0r/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('20ee88a65427e7f492b31e2a17cc7911')
 
 build() {
