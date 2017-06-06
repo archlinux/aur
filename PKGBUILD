@@ -3,15 +3,13 @@
 
 pkgname=libcd
 pkgver=5.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Platform-independent graphics library"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/cd/"
 depends=('ftgl' 'gtk3' 'libxmu' 'libim')
 makedepends=('lua')
 license=('custom')
-options=('staticlibs')
-
 source=(
   "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Sources.tar.gz"
   "http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/cd-${pkgver}_Docs.pdf"
@@ -40,5 +38,5 @@ package() {
   install -m644 "$srcdir"/cd/include/* "$pkgdir"/usr/include/cd
   install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -d "$pkgdir"/usr/lib/lua/5.1/
-  install -Dm644 "$srcdir"/cd/lib/Linux??_??/Lua51/*.so "$pkgdir"/usr/lib/lua/5.1/
+  install -Dm644 "$srcdir"/cd/lib/Linux*_??/Lua51/*.so "$pkgdir"/usr/lib/lua/5.1/
 }
