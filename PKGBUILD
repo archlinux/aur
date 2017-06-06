@@ -4,7 +4,7 @@
 
 pkgname=gnome-perl
 pkgver=1.045
-pkgrel=7
+pkgrel=8
 pkgdesc="Perl bindings for libgnome"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -18,7 +18,7 @@ md5sums=('95c06139f9d950df17c9cb0340c74168')
 build() {
   cd Gnome2-$pkgver
   perl Makefile.PL INSTALLDIRS=vendor
-  make
+  PERL_USE_UNSAFE_INC=1 make
 }
 
 package() {

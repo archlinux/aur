@@ -1,7 +1,7 @@
 pkgbase = gnome-perl
 	pkgdesc = Perl bindings for libgnome
 	pkgver = 1.045
-	pkgrel = 7
+	pkgrel = 8
 	url = http://gtk2-perl.sourceforge.net/
 	arch = i686
 	arch = x86_64
