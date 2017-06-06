@@ -1,54 +1,71 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Paul Hunnisett <phunnilemur@gmail.com>
 
-# TODO: Does the v305w have the same USB PID?
-# Scanner doesn't work on v305. Maybe it does for the Lexmark.
+# Driver source: Lexmark X4650, Fedora 15
+
+# TODO: Does the V305w have a different Nickname for autodetect?
+# Scanner doesn't work on v305. Maybe it does for the Lexmark X4650.
 # Many of the same drivers are in lexmark_pro700 as 64-bit
+
+# Inkjet AIO
+# X3650 X4630 X4650 X4690 X4950 X4975 X4975ve X5070 X5075 X5630 X5650 X5650ES X5690 X6650 X6675 X6690 X7675
+
+# Inkjet Consumer
+# z2420
+
+_opt_Scanner=0 # 1 if you want to try getting the scanner working. See lexmark-inkjet-legacy for a valid .conf file.
 
 set -u
 pkgname='lexmark-08z' # sometimes called lexmark-inkjet-08z
-pkgver='1.0.4'
+pkgver='1.0_1'
 pkgrel='1'
-pkgdesc='printer driver for Lexmark Z2400 3600 4600 X4650 4900 5000 5600 6600 7600 and Dell v305 v305w'
+pkgdesc='printer driver for Lexmark Z2420 X3650 X4630 X4650 X4690 X4950 X4975 X5070 X5075 X5630 X5650 X5690 X6650 X6675 X6690 X7675 and Dell v305 v305w'
 arch=('i686' 'x86_64')
 url='http://www.lexmark.com/'
 license=('custom')
 depends=('cups')
 depends_i686=('glibc' 'libcups' 'ncurses5-compat-libs' 'gnutls' 'zlib' 'p11-kit' 'libidn' 'libtasn1' 'nettle' 'gmp' 'libffi')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
+if [ "${_opt_Scanner}" -ne 0 ]; then
 optdepends=(
   'libusb-compat: Scanner support'
   'sane: Scanner support' # don't know if scanning works
   'xsane: Scanner support'
 )
+fi
 makedepends=('libarchive' 'sed')
 options=('!strip') # not working on 32 bit ELF
 install="${pkgname}.install"
 # Both work the same. The RPM is a lot smaller due to better compression.
-source=('http://downloads.lexmark.com/downloads/cpd/lexmark-08z-series-driver-1.0-1.i386.rpm.sh.tar.gz')
-#source=('http://downloads.lexmark.com/downloads/cpd/lexmark-08z-series-driver-1.0-1.i386.deb.sh.tar.gz')
-sha256sums=('4c39ab39c8848868d49489cdaaa57b3f04e99437807fe2e9db506ef0373c2ecb')
+source=("http://downloads.lexmark.com/downloads/cpd/${pkgname}-series-driver-${pkgver//_/-}.i386.rpm.sh.tar.gz")
+#source=("http://downloads.lexmark.com/downloads/cpd/${pkgname}-series-driver-${pkgver//_/-}.i386.deb.sh.tar.gz")
+source+=('Lexmark08_1_0_0.conf') # experimental
+sha256sums=('4c39ab39c8848868d49489cdaaa57b3f04e99437807fe2e9db506ef0373c2ecb'
+            'e555b2bbf93a148414cebd79563bc74dfbda90eaf802fa54f6ea003638dad2ba')
 
 prepare() {
   set -u
+  local _f="${pkgname}-series-driver-${pkgver//_/-}.i386"
   if [ "${source[0]//deb/}" != "${source[0]}" ]; then
-    sh -e 'lexmark-08z-series-driver-1.0-1.i386.deb.sh' --noexec --keep --target 'tmp'
-    mkdir 'instarchive_all'
-    cd 'instarchive_all'
-    bsdtar -xf '../tmp/instarchive_all'
-    bsdtar -xf 'lexmark-08z-series-driver-1.0-1.i386.deb'
-    mkdir '../lexmark'
-    cd '../lexmark'
-    bsdtar -xf '../instarchive_all/data.tar.gz'
-    bsdtar -xf '../instarchive_all/control.tar.gz'
+    sh -e "${_f}.deb.sh" --noexec --keep --target 'lexmark-1'
+    mkdir 'lexmark-2'
+    cd 'lexmark-2'
+    bsdtar -xf '../lexmark-1/instarchive_all'
+    bsdtar -xf "${_f}.deb"
+    mkdir '../lexmark-3'
+    cd '../lexmark-3'
+    bsdtar -xf '../lexmark-2/data.tar.gz'
+    bsdtar -xf '../lexmark-2/control.tar.gz'
+    mv 'postinst' 'POSTIN'
   else
-    sh -e 'lexmark-08z-series-driver-1.0-1.i386.rpm.sh' --noexec --keep --target 'tmp'
-    mkdir 'instarchive_all'
-    cd 'instarchive_all'
-    bsdtar -xf '../tmp/instarchive_all'
-    mkdir '../lexmark'
-    cd '../lexmark'
-    bsdtar -xf '../instarchive_all/lexmark-08z-series-driver-1.0-1.i386.rpm'
+    sh -e "${_f}.rpm.sh" --noexec --keep --target 'lexmark-1'
+    mkdir 'lexmark-2'
+    cd 'lexmark-2'
+    bsdtar -xf '../lexmark-1/instarchive_all'
+    mkdir '../lexmark-3'
+    cd '../lexmark-3'
+    bsdtar -xf "../lexmark-2/${_f}.rpm"
+    #rpm -qp "../lexmark-2/${_f}.rpm" --queryformat "%{POSTIN}" > 'POSTIN'; echo "" >> 'POSTIN'
   fi
   # Rampage through and fix permissions
   cd 'usr/local/lexmark'
@@ -62,7 +79,7 @@ package() {
   set -u
   cd "${pkgdir}"
   install -d "${pkgdir}/usr/lexinkjet/"
-  cp -dprx "${srcdir}/lexmark/usr/local/lexmark"/* "${pkgdir}/usr/lexinkjet/"
+  cp -dprx "${srcdir}/lexmark-3/usr/local/lexmark"/* "${pkgdir}/usr/lexinkjet/"
   cd "${pkgdir}/usr/lexinkjet/"
 
   # Make included link generator package compatible
@@ -87,14 +104,17 @@ package() {
   sh -e -u '08z-series-driver.link.Arch' "${RPM_INSTALL_PREFIX}"
   rm '08z-series-driver.link.Arch' *link '08zero/08zero'
 
-  # replicate POSTIN. The Debian scripts are easy to unpack. View the rpm scripts in mc on any RPM distro.
-  local XSANE_CUSTOM_LOGO='Lexmark-logo.xpm'
-  local XSANE_LOGO_DIR='/usr/share/sane/xsane'
-  install -d "${pkgdir}${XSANE_LOGO_DIR}/"
-  (cd "${pkgdir}${XSANE_LOGO_DIR}/"; ln -s "${RPM_INSTALL_PREFIX}/08zero/etc/${XSANE_CUSTOM_LOGO}")
+  if [ "${_opt_Scanner}" -eq 0 ]; then
+    rm -r "${pkgdir}/etc/sane.d/" "${pkgdir}/usr/lib/sane/"
+    # replicate POSTIN. The Debian scripts are easy to unpack. View the rpm scripts in mc after installing 'rpm-org'.
+  else
+    local XSANE_CUSTOM_LOGO='Lexmark-logo.xpm'
+    local XSANE_LOGO_DIR='/usr/share/sane/xsane'
+    install -d "${pkgdir}${XSANE_LOGO_DIR}/"
+    (cd "${pkgdir}${XSANE_LOGO_DIR}/"; ln -s "${RPM_INSTALL_PREFIX}/08zero/etc/${XSANE_CUSTOM_LOGO}")
 
-  local LIB_NAME='Lexmark08_1_0_0'
-  install -Dpm644 <(echo "${LIB_NAME}") "${pkgdir}/etc/sane.d/dll.d/lexmark-08z"
+    install -Dpm644 <(echo 'Lexmark08_1_0_0') "${pkgdir}/etc/sane.d/dll.d/${pkgname}"
+  fi
 
   # Dell v305 patch without breaking the Lexmark
   # Google Search: Dell 413C 5305
@@ -114,11 +134,11 @@ EOF
       ) 'printdriver'
     )
   fi
-  sed -e '2iATTRS{idVendor}=="413c", ATTRS{idProduct}=="5305", MODE="666"' -i '99-lexmark-08z.rules'
+  sed -e '2iATTRS{idVendor}=="413c", ATTRS{idProduct}=="5305", MODE="666"' -i "99-${pkgname}.rules"
   (
     #declare -A _arch=([i686]='lib' [x86_64]='lib32')
     declare -A _arch=([i686]='lib' [x86_64]='lib')
-    cd ../lib
+    cd '../lib'
     for _file in liblxdx*; do
       ln -s "${RPM_INSTALL_PREFIX}/08zero/lib/${_file}" "${pkgdir}/usr/${_arch[${CARCH}]}/${_file//lxdx/lxdX}"
       _file="${_file%\.so}"
@@ -147,11 +167,27 @@ EOF
       -e 's:^DEVICE_VID=0x043D.*$:DEVICE_VID=0x413C:g' \
      -i 'lxdX.conf'
 
+  # The configuration file doesn't look like the others.
+  # We copy and update the one from lexmark-inkjet-08
+  if false && [ "${_opt_Scanner}" -ne 0 ]; then
+    local _saneppd VID PID
+    local _txt=''
+    for _saneppd in *.ppd; do
+      if [ "${_saneppd#lxZ}" = "${_saneppd}" ]; then # z printers don't have a scanner
+        PID="$(sed -n -e 's/^\*PID: "\([^"]\+\)"/\1/p' "${_saneppd}")" # '
+        VID="$(sed -n -e 's/^\*VID: "\([^"]\+\)"/\1/p' "${_saneppd}")" # '
+        _txt+="# ${_saneppd%\.ppd}\\nusb ${PID} ${VID}\n"
+      fi
+    done
+    #echo -e "${_txt}"
+    sed -e 's:^usb 0x.*$:'"${_txt}:g" "${srcdir}/Lexmark08_1_0_0.conf" > 'Lexmark08_1_0_0.conf'
+  fi
+
   local PPD_OEM='Lexmark'
   local CUPS_PPD_ROOT1='/usr/share/ppd/'
   local CUPS_PPD_ROOT2='/usr/share/cups/model/'
   #install -Dpm644 *.ppd -t "${pkgdir}${CUPS_PPD_ROOT1}/${PPD_OEM}/" # This makes each printer show double.
-  # For some reason the installer does not add lx5000.ppd. Maybe it doesn't work.
+  # For some reason the installer does not add lx5000.ppd. This is the driver provided for the X5070 so it should work.
   install -Dpm644 *.ppd -t "${pkgdir}${CUPS_PPD_ROOT2}/${PPD_OEM}/"
 
   install -Dm644 '../docs/license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
