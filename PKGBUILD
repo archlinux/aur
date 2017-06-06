@@ -1,7 +1,8 @@
 # Maintainer: somekool <somekool _ at _ gmail _ dot _com>
 
 pkgname=netvirt-agent-git
-pkgver=0.6.r173.g148d261
+srcgiturl=https://github.com/mathieujobin/netvirt
+pkgver=v0.6.r173.758f816
 pkgrel=1
 pkgdesc="NetVirt is an open source network virtualization platform (NVP)."
 arch=('i686' 'x86_64')
@@ -10,11 +11,15 @@ license=('GPLv3')
 depends=()
 optdepends=()
 makedepends=('git' 'scons' 'cmake' 'libcap') # 'libqt4-dev' 'libssl-dev')
-source=("${pkgname}::git+https://github.com/mathieujobin/netvirt.git")
+source=("${pkgname}::git+${srcgiturl}.git")
 md5sums=('SKIP')
 
-pkgrel() {
-  git rev-parse --short HEAD
+pkgver() {
+  gitinfo=`git ls-remote ${srcgiturl} | sort -Vk2`
+  sha=`echo "$gitinfo" | head -n 1 | cut -c -7`
+  tag=`echo "$gitinfo" | tail -n 1 | awk -F "/" {'print $3'}`
+  commits=`curl -s ${srcgiturl}/releases/tag/${tag} | grep -o "[0-9]* commits" | awk {'print $1'}`
+  printf "%s.r%s.%s" $tag $commits $sha
 }
 
 prepare() {
