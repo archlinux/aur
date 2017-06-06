@@ -1,0 +1,12 @@
+--- a/bin/ldap-schema-manager	2017-04-25 15:23:44.960156848 +0200
++++ b/bin/ldap-schema-manager	2017-04-25 15:28:49.155279776 +0200
+@@ -31,7 +31,7 @@
+ use 5.008;
+ 
+ my $ldap_host_options = '-Y EXTERNAL -H ldapi:///';
+-my $defaultpath       = "/etc/ldap/schema/";
++my $defaultpath       = "/etc/openldap/schema/";
+ my $full_cmd          = "";
+ my $schema2ldif       = "schema2ldif";
+ 
+
