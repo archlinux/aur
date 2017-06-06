@@ -1,6 +1,6 @@
 pkgbase = egl-man-pages
 	pkgdesc = EGL Man Pages
-	pkgver = 20140330.r33416
+	pkgver = 20170107.r10
 	pkgrel = 1
 	url = http://www.opengl.org/wiki/Getting_started/XML_Toolchain_and_Man_Pages
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = egl-man-pages
 	makedepends = libxslt
 	makedepends = docbook-xsl
 	makedepends = subversion
-	source = https://cvs.khronos.org/svn/repos/registry/trunk/public/egl/sdk/docs/man/
+	source = git+https://github.com/KhronosGroup/EGL-Registry
 	md5sums = SKIP
 
 pkgname = egl-man-pages

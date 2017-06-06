@@ -1,28 +1,26 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=egl-man-pages
-pkgver=20140330.r33416
+pkgver=20170107.r10
 pkgrel=1
 pkgdesc="EGL Man Pages"
 arch=('any')
 url="http://www.opengl.org/wiki/Getting_started/XML_Toolchain_and_Man_Pages"
 license=('custom')
 makedepends=('libxslt' 'docbook-xsl' 'subversion')
-source=('svn+https://cvs.khronos.org/svn/repos/registry/trunk/public/egl/sdk/docs/man/')
+source=('git+https://github.com/KhronosGroup/EGL-Registry')
 md5sums=('SKIP')
 
 pkgver() {
-  cd man
+  cd "$srcdir"/EGL-Registry/sdk/docs/man
 
   printf '%s.r%d' \
-    $(svn info --show-item last-changed-date | cut -dT -f1 | tr -dc 0-9) \
-    $(svn info --show-item revision)
+    $(date -d"$(git log -1 --format=%aD .)" +%Y%m%d) \
+    $(git rev-list --count $(git log -1 --format=%h .))
 }
 
 build() {
-  cd man
-
-  for file in egl*.xml; do
+  for file in "$srcdir"/EGL-Registry/sdk/docs/man/egl*.xml; do
     xsltproc --noout --nonet --xinclude \
       --stringparam funcsynopsis.style ansi \
       --stringparam man.authors.section.enabled 0 \
@@ -39,8 +37,8 @@ build() {
 
 package() {
   install -d "$pkgdir"/usr/share/man/man3
-  install -m644 "$srcdir"/man/*.3G "$pkgdir"/usr/share/man/man3/
+  install -m644 "$srcdir"/*.3G "$pkgdir"/usr/share/man/man3/
 
-  install -D -m644 "$srcdir"/man/copyright.xml \
+  install -D -m644 "$srcdir"/EGL-Registry/sdk/docs/man/copyright.xml \
     "$pkgdir/usr/share/licenses/$pkgname/copyright.xml"
 }
