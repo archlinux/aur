@@ -1,15 +1,15 @@
 # Contributor: Bruno Gomes <bgomes@opens1.com>, Lucas Castro <lucas@opens1.com>
 
 pkgname=python-pyfprint-git
-pkgver=r12.e682eb1
+pkgver=r13.9e579e2
 pkgrel=1
 pkgdesc="Python bindings for the libfprint fingerprinting library"
 url="https://github.com/luksan/pyfprint"
 arch=('i686' 'x86_64')
 license=('GPL-2')
 depends=('python' 'libfprint')
-makedepends=('swig')
-source=("git+https://github.com/xantares/pyfprint.git")
+makedepends=('swig' 'python-setuptools')
+source=("git+https://github.com/luksan/pyfprint.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,5 +24,5 @@ build() {
 
 package() {
   cd "${srcdir}/pyfprint"
-  python setup.py install --root=${pkgdir}
+  python setup.py install --root=${pkgdir} --optimize=1
 }
