@@ -1,0 +1,12 @@
+pkgbase = 0xff
+	pkgdesc = Simple http(s) file sharing tool. Think 'python -m http.server' but better.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/xengi/0xff
+	arch = x86_64
+	license = MIT
+	source = https://github.com/XenGi/0xff/releases/download/v1.1.0/0xff
+	sha256sums = ab79535ec5e56484f0c1a845a185a2555aaa8f998c4d7744f6d62a2ae8b11c14
+
+pkgname = 0xff
+

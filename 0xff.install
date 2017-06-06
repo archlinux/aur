@@ -1,0 +1,7 @@
+post_install() {
+    echo "Please edit the secret by creating the file '/etc/systemd/system/0xff.service.d/secret.conf' with the following content:"
+    echo ""
+    echo "[Service]"
+    echo "Environment=0XFF_SECRET=yoursecret"
+    echo ""
+}

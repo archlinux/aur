@@ -1,0 +1,12 @@
+[Unit]
+Description=0xff http file sharing
+After=network.target
+
+[Service]
+Type=simple
+#Environment=0XFF_SECRET=
+#Environment=0XFF_PORT=
+ExecStart=/usr/bin/0xff
+
+[Install]
+WantedBy=multi-user.target
