@@ -1,0 +1,12 @@
+pkgbase = rig
+	pkgdesc = Random Identity Generator
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/EinBaum/rig
+	arch = any
+	license = GPL
+	source = https://github.com/EinBaum/rig/archive/1.12.tar.gz
+	sha256sums = SKIP
+
+pkgname = rig
+
