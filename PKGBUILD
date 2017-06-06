@@ -14,6 +14,9 @@ makedepends=('go')
 
 build() {
   cd "${srcdir}/${pkgname}"
+  go get -u github.com/labstack/echo/...
+  go get -u github.com/peterbourgon/diskv
+  go get -u github.com/satori/go.uuid
   go build 0xff.go
 }
 
