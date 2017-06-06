@@ -3,16 +3,16 @@
 pkgname=ocaml-libocaml_http
 pkgver=2014.08.08
 pkgrel=1
-license=('GPL3')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml library for HTTP"
+arch=('i686' 'x86_64')
 url="http://git.grenouille.com/?p=libocaml_http.git"
+license=('GPL3')
 depends=('ocaml' 'ocaml-libocaml_lexing' 'ocaml-libocaml_option' 'ocaml-libocaml_plus' 'ocaml-libocaml_uri')
 makedepends=('git' 'ocaml-findlib')
+options=('!strip')
 source=("git://git.autogeree.net/~julm/libocaml_http.git#tag=v${pkgver//./-}"
         "git://git.autogeree.net/~julm/libocaml_make.git#tag=v2014-08-08"
         "git://git.autogeree.net/~julm/tool/pkg.git#tag=v2014-08-07")
-options=('!strip')
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
