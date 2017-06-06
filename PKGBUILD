@@ -3,14 +3,14 @@
 pkgname=ocaml-ffmpeg
 pkgver=0.1.2
 pkgrel=1
-license=('LGPL2.1')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml bindings to the FFmpeg library"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ffmpeg"
+license=('LGPL2.1')
 depends=('ocaml' 'ffmpeg')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-ffmpeg/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-ffmpeg/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('b65fcef8c4ac2792976c206648c81f38')
 
 build() {
