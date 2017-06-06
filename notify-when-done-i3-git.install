@@ -1,4 +1,4 @@
 post_install() {
     echo "## To complete installation, add the following line to your bashrc"
-    echo '## "source /usr/share/nwd/nwd-preexec.sh"'
+    echo '## [[ -f /usr/share/nwd/nwd-preexec.sh ]] && source /usr/share/nwd/nwd-preexec.sh'
 }
