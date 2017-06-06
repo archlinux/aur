@@ -1,4 +1,5 @@
 # Maintainer: Dylan Simowitz <dsimowitz@gmail.com>
+# Maintainer: Alex Yatskov <alex@foosoft.net>
 pkgname=homemaker-git
 _pkgname=homemaker
 pkgver=r126.87f1a4e
