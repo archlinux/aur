@@ -8,9 +8,9 @@
 
 pkgname=bluej
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated Java environment specifically designed for introductory teaching"
-arch=('x86_64')
+arch=('any')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CPL' 'LGPL2.1' 'MIT' 'custom')
 depends=('java-runtime' 'java-environment' 'java-openjfx')

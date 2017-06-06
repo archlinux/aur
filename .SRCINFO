@@ -1,9 +1,9 @@
 pkgbase = bluej
 	pkgdesc = An integrated Java environment specifically designed for introductory teaching
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bluej.org
-	arch = x86_64
+	arch = any
 	license = GPL2
 	license = Apache
 	license = BSD
