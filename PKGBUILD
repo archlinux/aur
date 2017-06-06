@@ -3,7 +3,7 @@
 
 pkgname=motion-git
 _pkgname=motion
-pkgver=release.3.4.1.r105.g7692717
+pkgver=release.4.0.r178.ga801f19
 pkgrel=1
 pkgdesc="A software motion detector which grabs images from video4linux devices and/or from webcams"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
