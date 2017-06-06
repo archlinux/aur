@@ -22,7 +22,9 @@ pkgbase = firefox-beta-bin
 	source = firefox-beta-bin.desktop
 	sha512sums = 865c832fe683f4ebeca7704058d56f834ec5d9d56391d31912cf4a928c56a268cf25064965cf8bbf935a45f638d0a8b24ffa744a47934e5ed8b8bb78883db4c0
 	source_i686 = firefox-54.0rc1.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/54.0-candidates/build1/linux-i686/en-US/firefox-54.0.tar.bz2
+	sha512sums_i686 = 90a698e639a8c6c49beae5ea812d8ab373a9149c0e697a90030ad14a04b8664d9272121e54733b33482cea1d75cafc0f2280252a1bf51fbc791838d279f780ec
 	source_x86_64 = firefox-54.0rc1.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/54.0-candidates/build1/linux-x86_64/en-US/firefox-54.0.tar.bz2
+	sha512sums_x86_64 = 071ae0235a9cf540131644b3bc72ad3843674d2f50c2b4121807792c28394d22461292351ace01f2ec6c1959149867a6ac226e83c54f9c85201b1910ef26d7a3
 
 pkgname = firefox-beta-bin
 
