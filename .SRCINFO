@@ -1,0 +1,21 @@
+pkgbase = session-nanny-git
+	pkgdesc = A small daemon to help session management
+        pkgver = 0.r14.g1a094b3
+	pkgrel = 1
+	url = https://github.com/sardemff7/session-nanny/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = meson>=0.39.1
+	makedepends = pkg-config
+	makedepends = ninja
+	makedepends = vala
+	depends = glib2>=2.40.0
+	provides = session-nanny
+	conflicts = session-nanny
+	options = !strip
+	source = git+https://github.com/sardemff7/session-nanny
+	sha256sums = SKIP
+
+pkgname = session-nanny-git
+
