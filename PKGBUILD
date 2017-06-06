@@ -5,7 +5,7 @@
 pkgname=gnomecanvas-perl
 _realname=Gnome2-Canvas
 pkgver=1.002
-pkgrel=15
+pkgrel=16
 pkgdesc="Gnome2-Canvas perl bindings for libgnomecanvas"
 arch=('i686' 'x86_64')
 license=('LGPL')
