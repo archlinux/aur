@@ -18,7 +18,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=('gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath')
-makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'libart-lgpl' 'git')
+makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'libart-lgpl' 'gcc-ada' 'gcc-objc' 'gcc-go' 'gcc-fortran' 'git')
 optdepends=('python2: for running /usr/bin/aot-compile'
   'java-environment: for runnig some jars')
 options=('!libtool' '!makeflags')
