@@ -3,14 +3,14 @@
 pkgname=ocaml-gavl
 pkgver=0.1.6
 pkgrel=1
-license=('GPL2')
+pkgdesc="OCaml bindings for the Gavl video manipulation library"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for the Gavl video manipulation library")
 url="https://github.com/savonet/ocaml-gavl"
+license=('GPL2')
 depends=('ocaml' 'gavl')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-gavl/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-gavl/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('6a95cb233b1929bd9d54431a7c7c4aa1')
 
 build() {
