@@ -20,14 +20,12 @@ _brotherl="${_brotheru,,}"     # mfc-0000dw
 _brotherlnd="${_brotherl//-/}" # mfc0000dw
 _brotherund="${_brotheru//-/}" # MFC0000DW
 pkgname="brother-${_brotherl}"
-pkgver='3.0.0'
-pkgrel='2'
-_lprpkgver='3.0.0'
-_lprpkgrel='1'
+pkgver='3.0.0_1'
+pkgrel='1'
 pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
 arch=('i686' 'x86_64')
-url='http://solutions.brother.com/linux/en_us/'
-license=('custom:Brother Industries')
+url='http://www.brother.com/'
+license=('GPL' 'custom')
 depends=('cups' 'ghostscript' 'psutils' 'a2ps' 'sed' 'grep')
 depends_x86_64=('lib32-glibc')
 # We look at the scripts and find these programs from which we decide on the depends above.
@@ -39,20 +37,24 @@ depends_x86_64=('lib32-glibc')
 # sed grep awk
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
 # Printing a text file fails when Liberation is the only TrueType font available
-optdepends=('ttf-dejavu: printing text files from lpr')
-#install="${pkgname}.install"
-# The cups wrapper uses the lpr driver.
-_brsource="${_brotherlnd}_cupswrapper_GPL_source_${pkgver}-1"
-source=(
-  "http://download.brother.com/welcome/dlf006815/${_brsource}.tar.gz"
-  "http://download.brother.com/welcome/dlf006619/${_brotherlnd}cupswrapper-${pkgver}-1.i386.rpm"
-  "http://download.brother.com/welcome/dlf006617/${_brotherlnd}lpr-${_lprpkgver}-${_lprpkgrel}.i386.rpm"
+optdepends=(
+  'ttf-dejavu: printing text files from lpr'
+  'brscan4: Scanner support'
 )
-sha256sums=('749145cf019dad18ebdbc46c138846a10df32459729b05fbd3167bad2a73423b'
-            'c7fb5985701a41cb6230685fd1d704b17315a977c6ffb487e33766177810f6a0'
-            '5d01721cc6f264fa989cb4ffff4aa1f7a9559474a70788b06a5ba9131b645c25')
+_brsource="${_brotherlnd}_cupswrapper_GPL_source_${pkgver//_/-}"
+_dlf='http://www.brother.com/pub/bsc/linux/dlf'
+source=(
+  "${_dlf}/${_brotherlnd}cupswrapper-${pkgver//_/-}.i386.rpm"
+  "${_dlf}/${_brotherlnd}lpr-${pkgver//_/-}.i386.rpm"
+  "${_dlf}/${_brsource}.tar.gz"
+  'lpr-license.txt'
+)
+sha256sums=('c7fb5985701a41cb6230685fd1d704b17315a977c6ffb487e33766177810f6a0'
+            '5d01721cc6f264fa989cb4ffff4aa1f7a9559474a70788b06a5ba9131b645c25'
+            '749145cf019dad18ebdbc46c138846a10df32459729b05fbd3167bad2a73423b'
+            '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67')
 
-build() {
+prepare() {
   set -u
   # Do not Install in '/usr/local'. Does not apply to all Brother models.
   # This may modify binary blobs which only
@@ -61,7 +63,7 @@ build() {
     install -dm755 "${srcdir}/usr/share"
     mv "${srcdir}/usr/local/Brother/" "${srcdir}/usr/share/brother"
     rm -rf "${srcdir}/usr/local"
-    sed -i -e 's:/usr/local/Brother:/usr/share/brother:g' $(grep -lr '/usr/local/Brother' ./)
+    sed -e 's:/usr/local/Brother:/usr/share/brother:g' -i $(grep -lr '/usr/local/Brother' ./)
   fi
 
   # setup cups-directories
@@ -76,6 +78,9 @@ build() {
   test -f "${_rcfile}" || echo "${}"
   local _bindir="$(find "`pwd`" -type d -name 'cupswrapper')"
   test -d "${_bindir}" || echo "${}" # die if blank or invalid before we rm something we don't want to
+  pushd "${_bindir}" > /dev/null
+  local _brcupsconf=(brcupsconf*); _brcupsconf="${_brcupsconf[0]}"
+  test -x "${_brcupsconf}" || echo "${}"
   rm -f "${_bindir}"/* # We download the cups driver only to throw it all away. All I want is the dir name without hunting for it in the installer.
   local _basedir="${srcdir}/${_brsource}"
   test -d "${_basedir}" || echo "${}"
@@ -99,15 +104,15 @@ build() {
   # rid of that either.
   cd "${_makedir}"
   if [ -s 'Makefile' ]; then
-    make -s
-    cp -p 'brcupsconfpt1' "${_bindir}"
+    'ma''ke' -s
+    cp -p 'brcupsconfpt1' "${_bindir}" # "${_bindir}/${_brcupsconf}"
+    _brcupsconf='brcupsconfpt1'
   else
-    # Not sure why it's called brcupsconfig3 some places and brcupsconfig4 in others.
-    # The version in their binary matches the version in the source so it looks good to me.
     # gcc options are pulled from other Brother makefiles.
-    gcc -pipe -Wall -W -O2 -s -o "${_bindir}/brcupsconfig3" "brcupsconfig.c"
+    gcc -pipe -Wall -W -O2 -s -o "${_bindir}/${_brcupsconf}" "brcupsconfig.c"
   fi
 
+  # Some models supply the ppd in the install script
   cd "${_bindir}"
   if [ ! -z "${_ppddir:-}" ]; then
     # Use the ppd supplied in the source
@@ -118,51 +123,85 @@ build() {
   # Some Brother installers create files here
   mkdir -p "${srcdir}/var/tmp"
 
-  # Fix any sbin reference in the lpr driver. The cups driver uses bin.
-  #sed -i -e 's:/sbin/:/bin/:g' $(find "${srcdir}/usr" -type f -name "psconvert2")
+  # Fix lpr driver.
+  true sed -e '# Fix sbin reference' \
+      -e 's:/sbin/:/bin/:g' \
+      -e '#Fix hash bang' \
+      -e 's:#/bin/sh:#!/bin/sh:g' \
+    -i $(find "${srcdir}/usr" -type f -name 'psconvert2')
 
   # Fix page shifted off center that affects some printers
   # Letter prints off center shifted down and right with PaperType=A4
   # I can only test printing A4 on Letter paper. A4 appears to print correctly with PaperType=Letter
-  sed -i -e 's:^\(PaperType\)=.\+$:\1=Letter:g' "${_rcfile}"
+  sed -e 's:^\(PaperType\)=.\+$:\1=Letter:g' -i "${_rcfile}"
 
   # Modify the installer so we can finish the install here in PKGBUILD.
   cp -p "${_wrapdir}/${_wrapper_source}" "${_bindir}/"
   #cp -p "${_wrapper_source}" "${_wrapper_source}.Arch" # debug: diff compare with Total Commander
-  sed -i -e '# Install to _srcdir. Some folders may not apply to this model.' \
-         -e 's:/usr:${_srcdir}&:g' \
-         -e 's:/opt:${_srcdir}&:g' \
-         -e 's:/var:${_srcdir}&:g' \
-         -e "# Stop the Install script after the files are generated. cups doesn't require a reload to see the printer driver." \
-         -e 's:^if \[ -e /etc/init:exit 0 #Arch Linux Compatible\n&:g' \
-    "${_wrapper_source}"
-  grep -lq "#Arch Linux Compatible" "${_wrapper_source}" || echo "${}"
+  sed -e '# Install to _srcdir. Some folders may not apply to this model.' \
+      -e 's:/usr:"${_srcdir}"&:g' \
+      -e 's:/opt:"${_srcdir}"&:g' \
+      -e 's:/var:"${_srcdir}"&:g' \
+      -e 's:/etc:"${_srcdir}"&:g' \
+      -e 's:""${_srcdir}":"${_srcdir}:g' \
+      -e "# Stop the Install script after the files are generated. cups doesn't require a reload to see the printer driver." \
+      -e 's:^sleep.*$:exit 0 # & #Arch Linux Compatible:g' \
+      -e '# not using set -u allows bugs like this to slip by' \
+      -e '#/Nup=/ s:`:\\`:g' \
+      -e 's: $errorcode: \\$errorcode:g' \
+      -e '# This printer requires the permissions fix that isnt multi user compatible.' \
+      -e 's:/usr/local/Brother:/usr/share/brother:g' \
+    -i "${_wrapper_source}"
+  grep -lq "#Arch Linux Compatible$" "${_wrapper_source}" || echo "${}"
   test -f "${_wrapper_source}.Arch" && echo "${}" # Halt for debugging
   # Generate PPD and wrapper. Use sh -x to debug
   # Possible bug: copying to /usr/share/ppd is disabled.
-  export _srcdir="${srcdir}"
-  sh -e "${_wrapper_source}" -i
-  unset _srcdir
-
+  _srcdir="${srcdir}" \
+  sh -u -e "${_wrapper_source}" -i
+  find "${srcdir}" -type 'f' -name '*.ppd' -exec chmod 644 '{}' '+' # Some installers make ppd executable
   rm -rf "${srcdir}/var"
 
   # Remove srcdir from the generated wrapper file.
   # No paths in the generated ppd.
-  sed -i -e '# Remove the ${_srcdir} variety' \
-         -e 's:${_srcdir}::' \
-         -e '# Remove the /home/... variety' \
-         -e "s:${srcdir}::" "${srcdir}/usr/lib/cups/filter/"*lpdwrapper*
+  sed -e '# Remove the ${_srcdir} variety' \
+      -e 's:${_srcdir}::' \
+      -e '# Remove the /home/... variety' \
+      -e "s:${srcdir}::" \
+      -e '# Remove surplus quotes' \
+      -e 's:""/:/:g' \
+    -i "${srcdir}/usr/lib/cups/filter"/*lpdwrapper*
 
   # We did everything in the installer so we can get rid of it.
-  rm -f "${_wrapper_source}"
-  set +u
+  rm "${_wrapper_source}"
+
+  cd "${srcdir}"
+  # Misnamed printer does not sort or autodetect properly
+  #sed -e "s:Brother ${_brotherund} :Brother ${_brotheru} :g" -i 'usr/share/cups/model'/*.ppd
+
+  # Check to see if the lpd wrapper is referenced by the ppd
+  # Check to see if our compiled code is referenced by the lpd wrapper
+  local _nppdfound=0
+  local _ncodefound=0
+  local _lwrapper
+  for _lwrapper in 'usr/lib/cups/filter'/*; do
+    if grep -q "$(basename "${_lwrapper}")" 'usr/share/cups/model'/*.ppd || grep -q "$(basename "${_lwrapper}")" 'usr/share/cups/model/Brother'/*.ppd; then
+      _nppdfound=$((_nppdfound+1))
+    fi
+    if grep -q "${_brcupsconf}" "${_lwrapper}"; then
+      _ncodefound=$((_ncodefound+1))
+    fi
+  done
+  test "${_nppdfound}" -ne 0 || echo "${}"
+  test "${_ncodefound}" -ne 0 || echo "${}"
+
+  set  +u
 }
 
 package() {
   set -u
   local _dir
   # /var/spool is not used anywhere in this package. Maybe it's needed for non cups lprng.
-  for _dir in usr opt; do # var
+  for _dir in 'usr' 'opt'; do # 'var'
     if [ -d "${srcdir}/${_dir}" ]; then
       cp -pR "${srcdir}/${_dir}" "${pkgdir}"
     fi
@@ -176,18 +215,11 @@ package() {
   test "$(find "${pkgdir}/usr/lib/cups/filter/" -type f)"
 
   # Ensure there are no forbidden paths
-  grep -alqr "/sbin" "${pkgdir}" && echo "${}"
-  grep -alqr "/usr/tmp" "${pkgdir}" && echo "${}"
+  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
+  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
 
-  #install -Dm644 'cupswrapper-license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/cupswrapper-licence.txt"
-  #install -Dm644 'lpr-license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/lpr-licence.txt"
-
-  # Change mode to avoid warning on reinstall
-  # This is no longer necessary. Running the installer here in PKGBUILD sets
-  # the proper permissions for the package.
-  #install -d -m777 "${pkgdir}/usr/local/Brother/inf/"
-  # It looks like this is so everyone can write to brMFC7360Nrc (brPRINTERrc)
-  # I suspect this isn't safe for multiple users.
+  install -Dpm644 <(sed -e 's:\r::g' "${_brsource}/Copying") "${pkgdir}/usr/share/licenses/${pkgname}/cupswrapper-licence.txt"
+  install -Dpm644 'lpr-license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/lpr-licence.txt"
   set +u
 }
 set +u
