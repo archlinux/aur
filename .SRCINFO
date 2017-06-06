@@ -1,0 +1,16 @@
+pkgbase = onewireviewer
+	pkgdesc = demonstration application for exploring iButton or 1-Wire® chip features
+	pkgver = 3.13.40
+	pkgrel = 1
+	url = https://www.maximintegrated.com/en/products/ibutton/software/1wire/OneWireViewer.cfm
+	arch = x86_64
+	license = Custom
+	depends = java-environment
+	depends = libusb-compat
+	provides = onewireviewer
+	conflicts = onewireviewer
+	source = https://www.maximintegrated.com/en/design/tools/appnotes/5917/OneWireViewer-Linux.zip
+	sha256sums = fe6dfce35e093a2e36abc4c2a7f612a01b0680bafb662212acd5f9bf1bec27d2
+
+pkgname = onewireviewer
+
