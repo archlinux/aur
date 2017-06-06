@@ -2,7 +2,7 @@
 
 _pkgname=murmur
 pkgname=${_pkgname}-snapshot-noice
-pkgver=1.3.0_2389_gdde8173
+pkgver=1.3.0_2424_gd66eeeb
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,7 +16,7 @@ install=murmur-snapshot-minimal.install
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"
         "murmur.service"
         "murmur.logrotate")
-sha512sums=('18d0c2e8d0caeed1306429a367a2756260280a3bcc7ed8bac7c3a6e8b8938e6f13b65c83271f1411b948c50d20d7426aebaf14f271109df8c62209108157e374'
+sha512sums=('968478929379b763a0e54719ca7265748e40e82e50a98709d3e0a6ac5af8596eb3621af606485e24faf4ffbebe34ba7180753e0e24dfb31c8bc0f5b69435fcef'
             'SKIP'
             'SKIP')
 
