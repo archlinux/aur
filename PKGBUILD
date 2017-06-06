@@ -2,12 +2,12 @@
 
 _plug=readmpls
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.0.g4d8e727
+pkgver=r3.1.g2a0f835
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='https://forum.doom9.org/showthread.php?t=174580'
-license=('GPL')
+license=('GPL3')
 depends=('libbluray'
          'vapoursynth'
          )
