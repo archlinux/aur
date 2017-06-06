@@ -1,8 +1,8 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=pcsclite-git
-pkgver=pcsc.1.8.20.r58.gfd1e32d
-pkgrel=2
+pkgver=pcsc.1.8.21.r0.gf47cccf
+pkgrel=1
 pkgdesc="PC/SC Architecture smartcard middleware library"
 arch=('i686' 'x86_64')
 url="https://alioth.debian.org/projects/pcsclite/"
