@@ -1,8 +1,8 @@
 # Maintainer: somekool <somekool _ at _ gmail _ dot _com>
 
 pkgname=netvirt-agent-git
-pkgver=0.6.r20.g3798298
-pkgrel=3798298
+pkgver=0.6.r172.gaacd0fc
+pkgrel=1
 pkgdesc="NetVirt is an open source network virtualization platform (NVP)."
 arch=('i686' 'x86_64')
 url="http://netvirt.org"
@@ -10,7 +10,7 @@ license=('GPLv3')
 depends=()
 optdepends=()
 makedepends=('git' 'scons' 'cmake' 'libcap') # 'libqt4-dev' 'libssl-dev')
-source=("${pkgname}::git+https://github.com/netvirt/netvirt.git")
+source=("${pkgname}::git+https://github.com/mathieujobin/netvirt.git")
 md5sums=('SKIP')
 
 pkgrel() {
