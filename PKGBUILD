@@ -5,7 +5,7 @@
 
 pkgname=gulp-cli
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The streaming build system'
 arch=(any)
 url='http://gulpjs.com/'
@@ -26,16 +26,18 @@ build() {
 package() {
 	cd "$srcdir/package"
 	
-	install -d "$pkgdir/usr/lib/node_modules/gulp-cli"
-	for f in bin lib node_modules CHANGELOG.md index.js package.json README.md; do
-		cp -rt "$pkgdir/usr/lib/node_modules/gulp-cli" "$f"
+	install -Dm755 'bin/gulp.js' "$pkgdir/usr/lib/node_modules/gulp-cli/bin/gulp.js"
+	for f in CHANGELOG.md index.js package.json README.md; do
+		install -Dm644 "$f" "$pkgdir/usr/lib/node_modules/gulp-cli/$f"
+	done
+	for d in lib node_modules; do
+		find "$d" -type f -exec install -Dm644 {} "$pkgdir/usr/lib/node_modules/gulp-cli/{}" \;
 	done
 	
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 gulp.1 "$pkgdir/usr/share/man/man1/gulp.1"
 	install -d "$pkgdir/usr/bin"
-	chmod 755 "$pkgdir/usr/lib/node_modules/gulp-cli/bin/gulp.js"
-	ln -s "$pkgdir/usr/lib/node_modules/gulp-cli/bin/gulp.js" "$pkgdir/usr/bin/gulp"
+	ln -s '/usr/lib/node_modules/gulp-cli/bin/gulp.js' "$pkgdir/usr/bin/gulp"
 	
 	install -Dm644 completion/bash "$pkgdir/usr/share/bash-completion/completions/gulp"
 	install -Dm644 completion/fish "$pkgdir/usr/share/fish/completions/gulp.fish"
