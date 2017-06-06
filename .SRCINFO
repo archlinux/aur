@@ -4,10 +4,11 @@ pkgbase = 0xff
 	pkgrel = 1
 	url = https://github.com/xengi/0xff
 	install = 0xff.install
-	arch = x86_64
+	arch = any
 	license = MIT
-	source = https://github.com/XenGi/0xff/releases/download/v1.1.0/0xff
-	sha256sums = ab79535ec5e56484f0c1a845a185a2555aaa8f998c4d7744f6d62a2ae8b11c14
+	makedepends = go
+	source = git+https://github.com/XenGi/0xff#tag=v1.1.0
+	sha256sums = SKIP
 
 pkgname = 0xff
 
