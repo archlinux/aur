@@ -6,7 +6,7 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-pkgver=0.92.rc2
+pkgver=0.92
 pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://www.multipath-tcp.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-source=("git+https://github.com/multipath-tcp/mptcp#commit=19022e809873e4a31ed6925581833df9757c9443"
+source=("git+https://github.com/multipath-tcp/mptcp#commit=b47be2ff07584d52a331607856841feffcbf8cc3"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -82,7 +82,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.4.63)"
+  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.4.70)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
