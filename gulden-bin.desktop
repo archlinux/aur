@@ -1,10 +1,8 @@
 [Desktop Entry]
-Version=1.5.5
-Name=Gulden
+Exec=/usr/share/gulden-bin/Gulden %u
 Comment=Cryptocurrency
 GenericName=Gulden Cryptocurrency
-Exec=Gulden %u
-TryExec=Gulden
+Name=Gulden
 Icon=gulden-bin
 Terminal=false
 Type=Application
