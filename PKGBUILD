@@ -10,14 +10,11 @@ pkgdesc="A cross-platform, aesthetic, distraction-free Markdown editor"
 arch=('i686' 'x86_64')
 url="https://github.com/wereturtle/ghostwriter"
 license=('GPL3')
-depends=('qt5-webkit' 'hicolor-icon-theme')
-makedepends=('qt5-tools' 'hunspell')
+depends=('qt5-webkit' 'hunspell' 'hicolor-icon-theme')
+makedepends=('qt5-tools')
 optdepends=('multimarkdown: For alternative converter, superset of Markdown with various output formats'
             'pandoc: For Pandoc supported Markdown flavors and export to various formats'
-            'cmark: For processing and rendering CommonMark'
-            'hunspell: For spell checking')
-provides=('ghostwriter')
-conflicts=('ghostwriter' 'ghostwriter-git')
+            'cmark: For processing and rendering CommonMark')
 source=("https://github.com/wereturtle/ghostwriter/archive/v${pkgver}.tar.gz")
 md5sums=('46788d672481f9750293eb71eced35b7')
 
