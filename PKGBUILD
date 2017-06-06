@@ -3,14 +3,14 @@
 pkgname=ocaml-pulseaudio
 pkgver=0.1.3
 pkgrel=1
-license=('LGPL2.1')
+pkgdesc="OCaml bindings for pulseaudio"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for pulseaudio")
 url="https://github.com/savonet/ocaml-pulseaudio"
+license=('LGPL2.1')
 depends=('ocaml' 'libpulse')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-pulseaudio/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-pulseaudio/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('bd04013ada1a6ed72e111e406befc709')
 
 build() {
