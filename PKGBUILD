@@ -1,8 +1,9 @@
-# Contributor: Laurent Laffont <laurent.laffont@gmail.com>
+# Maintainer: Laurent Laffont <laurent.laffont@gmail.com>
+# Contributor: Benoit Verhaeghe <badetitou@gmail.com>
 
 pkgname=pharo-spur-vm
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pharo Spur VM for Pharo 5 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment"
 conflicts=('pharo' 'pharo-vm-latest')
 arch=(i686 x86_64)
@@ -15,23 +16,26 @@ else
   depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'dbus-core' 'libxml2' 'wget' 'unzip')
 fi
 
-source=(http://files.pharo.org/sources/PharoV50.sources.zip
-        http://files.pharo.org/vm/pharo-spur32/linux/stable-20160623.zip)
+source=('http://files.pharo.org/sources/PharoV50.sources.zip'
+        'http://files.pharo.org/sources/PharoV60.sources.zip'
+        'http://files.pharo.org/vm/pharo-spur32/linux/stable-20170503.zip')
 
-md5sums=('9810ede95576dba2fb4f71158ae4a4d6'
-				 'f16396ad292ae7b49c0cb236051f589e')
+md5sums=('ba84826ecafc18142e4406f43d0b0102'
+         '3235e30002cb8be5666a1190bd27be2c'
+				 '741261ef2922b0f1dc3e17fdab27ed0e')
 
 package() {
   cd $srcdir/
-  mkdir -p $pkgdir/usr/share/pharo/spur/
+  mkdir -p $pkgdir/usr/lib/pharo/5.0-201705022326/
   mkdir -p $pkgdir/usr/bin/
 
-  cp -fr $srcdir/* $pkgdir/usr/share/pharo/spur/
-  rm $pkgdir/usr/share/pharo/spur/*.zip
-  chmod +x $pkgdir/usr/share/pharo/spur/pharo
+  cp -fr $srcdir/lib/pharo/5.0-201705022326/* $pkgdir/usr/lib/pharo/5.0-201705022326/
+  cp $srcdir/PharoV50.sources $pkgdir/usr/lib/pharo/5.0-201705022326/
+  cp $srcdir/PharoV60.sources $pkgdir/usr/lib/pharo/5.0-201705022326/
+  chmod +x $pkgdir/usr/lib/pharo/5.0-201705022326/pharo
 
-  chgrp -R users $pkgdir/usr/share/pharo/spur/
-  chmod -R 775 $pkgdir/usr/share/pharo/spur/
+  chgrp -R users $pkgdir/usr/lib/pharo/5.0-201705022326/
+  chmod -R 775 $pkgdir/usr/lib/pharo/5.0-201705022326/
 
-  ln -s /usr/share/pharo/spur/pharo $pkgdir/usr/bin/pharo-spur
+  ln -s /usr/lib/pharo/5.0-201705022326/pharo $pkgdir/usr/bin/pharo-spur
 }

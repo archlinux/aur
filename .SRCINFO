@@ -1,7 +1,7 @@
 pkgbase = pharo-spur-vm
 	pkgdesc = Pharo Spur VM for Pharo 5 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pharo.org/
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,11 @@ pkgbase = pharo-spur-vm
 	conflicts = pharo
 	conflicts = pharo-vm-latest
 	source = http://files.pharo.org/sources/PharoV50.sources.zip
-	source = http://files.pharo.org/vm/pharo-spur32/linux/stable-20160623.zip
-	md5sums = 9810ede95576dba2fb4f71158ae4a4d6
-	md5sums = f16396ad292ae7b49c0cb236051f589e
+	source = http://files.pharo.org/sources/PharoV60.sources.zip
+	source = http://files.pharo.org/vm/pharo-spur32/linux/stable-20170503.zip
+	md5sums = ba84826ecafc18142e4406f43d0b0102
+	md5sums = 3235e30002cb8be5666a1190bd27be2c
+	md5sums = 741261ef2922b0f1dc3e17fdab27ed0e
 
 pkgname = pharo-spur-vm
 
