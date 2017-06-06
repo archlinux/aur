@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='https://github.com/Frechdachs/vapoursynth-descale.git'
-license=('WTFPL')
+license=('custom:WTFPL')
 depends=('vapoursynth')
 source=("${_plug}::git+https://github.com/Frechdachs/vapoursynth-descale.git")
 sha256sums=('SKIP')
@@ -32,4 +32,5 @@ package(){
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
 
   install -Dm644 descale/README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 descale/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
