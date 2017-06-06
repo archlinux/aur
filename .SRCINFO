@@ -1,0 +1,21 @@
+pkgbase = brother-mfc-9560cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-9560CDW
+	pkgver = 1.1.1
+	pkgrel = 3
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-9560cdw.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9560cdwlpr-1.1.1-5.i386.deb
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9560cdwcupswrapper-1.1.1-5.i386.deb
+	md5sums = dca5a82a1b9f0c446d6b91351f681ded
+	md5sums = 22ebdb31222d8e3bde28690fb2b73af3
+
+pkgname = brother-mfc-9560cdw
+
