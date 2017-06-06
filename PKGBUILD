@@ -3,14 +3,14 @@
 pkgname=ocaml-ogg
 pkgver=0.5.0
 pkgrel=2
-license=('LGPL2.1')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml binding to libogg"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ogg"
+license=('LGPL2.1')
 depends=('ocaml' 'libogg')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-ogg/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-ogg/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('21eaee00d3765b3a78aed78520219a52')
 
 build() {
