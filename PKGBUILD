@@ -3,14 +3,14 @@
 pkgname=ocaml-enumerate
 pkgver=111.08.00
 pkgrel=2
-license=('Apache')
-arch=('i686' 'x86_64')
 pkgdesc="Text output utilities"
+arch=('i686' 'x86_64')
 url="https://github.com/janestreet/enumerate"
+license=('Apache')
 depends=('ocaml' 'camlp4' 'ocaml-type_conv')
 makedepends=('ocaml-findlib')
-source=("https://ocaml.janestreet.com/ocaml-core/${pkgver}/individual/${pkgname#ocaml-}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://ocaml.janestreet.com/ocaml-core/${pkgver}/individual/${pkgname#ocaml-}-${pkgver}.tar.gz")
 md5sums=('2cb0ad1f4a7fc4c9fe1bf6d294be10ce')
 
 build() {
