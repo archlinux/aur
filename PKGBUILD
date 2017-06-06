@@ -4,12 +4,12 @@
 
 pkgbase=virtualbox-i3
 pkgname=('virtualbox-i3'
-         'virtualbox-host-dkms'
-         'virtualbox-guest-dkms'
-         'virtualbox-sdk'
-         'virtualbox-guest-utils'
-         'virtualbox-guest-utils-nox'
-         'virtualbox-ext-vnc')
+         'virtualbox-i3-host-dkms'
+         'virtualbox-i3-guest-dkms'
+         'virtualbox-i3-sdk'
+         'virtualbox-i3-guest-utils'
+         'virtualbox-i3-guest-utils-nox'
+         'virtualbox-i3-ext-vnc')
 pkgver=5.1.22
 pkgrel=2
 arch=('i686' 'x86_64')
@@ -145,9 +145,9 @@ package_virtualbox-i3() {
              'qt5-base' 'qt5-x11extras' 'VIRTUALBOX-HOST-MODULES')
     optdepends=('vde2: Virtual Distributed Ethernet support'
                 'net-tools: Host-only or bridged networking support'
-                'virtualbox-guest-iso: Guest Additions CD image'
-                'virtualbox-ext-vnc: VNC server support'
-                'virtualbox-sdk: Developer kit')
+                'virtualbox-i3-guest-iso: Guest Additions CD image'
+                'virtualbox-i3-ext-vnc: VNC server support'
+                'virtualbox-i3-sdk: Developer kit')
     backup=('etc/vbox/vbox.cfg')
     replaces=('virtualbox-ose')
     conflicts=('virtualbox-ose')
@@ -233,7 +233,7 @@ package_virtualbox-i3() {
     ln -s vboxreload "$pkgdir/usr/bin/rcvboxdrv"
 }
 
-package_virtualbox-sdk() {
+package_virtualbox-i3-sdk() {
     pkgdesc='VirtualBox Software Developer Kit (SDK)'
     depends=('python2')
 
@@ -254,7 +254,7 @@ package_virtualbox-sdk() {
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_virtualbox-host-dkms() {
+package_virtualbox-i3-host-dkms() {
     pkgdesc='VirtualBox Host kernel modules sources'
     depends=('dkms' 'gcc' 'make')
     replaces=('virtualbox-source'
@@ -284,7 +284,7 @@ package_virtualbox-host-dkms() {
     sed -i "s,@VERSION@,$pkgver," "$_p"
 }
 
-package_virtualbox-guest-dkms() {
+package_virtualbox-i3-guest-dkms() {
     pkgdesc='VirtualBox Guest kernel modules sources'
     depends=('dkms' 'gcc' 'make')
     replaces=('virtualbox-archlinux-source'
@@ -314,7 +314,7 @@ package_virtualbox-guest-dkms() {
     sed -i "s,@VERSION@,$pkgver," "$_p"
 }
 
-package_virtualbox-guest-utils() {
+package_virtualbox-i3-guest-utils() {
     pkgdesc='VirtualBox Guest userspace utilities'
     depends=('glibc' 'pam' 'libx11' 'libxcomposite'
              'libxdamage' 'libxext' 'libxfixes' 'libxmu' 'libxt' 'xorg-xrandr'
@@ -343,7 +343,7 @@ package_virtualbox-guest-utils() {
     install -Dm644 VirtualBox-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_virtualbox-guest-utils-nox() {
+package_virtualbox-i3-guest-utils-nox() {
     pkgdesc='VirtualBox Guest userspace utilities without X support'
     depends=('glibc' 'pam' 'VIRTUALBOX-GUEST-MODULES')
     conflicts=('virtualbox-guest-utils')
@@ -363,7 +363,7 @@ package_virtualbox-guest-utils-nox() {
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_virtualbox-ext-vnc() {
+package_virtualbox-i3-ext-vnc() {
     pkgdesc='VirtualBox VNC extension pack'
     depends=('virtualbox' 'libvncserver')
     optdepends=('tigervnc: vnc client')

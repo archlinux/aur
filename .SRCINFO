@@ -109,14 +109,14 @@ pkgname = virtualbox-i3
 	depends = VIRTUALBOX-HOST-MODULES
 	optdepends = vde2: Virtual Distributed Ethernet support
 	optdepends = net-tools: Host-only or bridged networking support
-	optdepends = virtualbox-guest-iso: Guest Additions CD image
-	optdepends = virtualbox-ext-vnc: VNC server support
-	optdepends = virtualbox-sdk: Developer kit
+	optdepends = virtualbox-i3-guest-iso: Guest Additions CD image
+	optdepends = virtualbox-i3-ext-vnc: VNC server support
+	optdepends = virtualbox-i3-sdk: Developer kit
 	conflicts = virtualbox-ose
 	replaces = virtualbox-ose
 	backup = etc/vbox/vbox.cfg
 
-pkgname = virtualbox-host-dkms
+pkgname = virtualbox-i3-host-dkms
 	pkgdesc = VirtualBox Host kernel modules sources
 	install = virtualbox-host-dkms.install
 	depends = dkms
@@ -132,7 +132,7 @@ pkgname = virtualbox-host-dkms
 	replaces = virtualbox-host-source
 	replaces = virtualbox-host-modules-lts
 
-pkgname = virtualbox-guest-dkms
+pkgname = virtualbox-i3-guest-dkms
 	pkgdesc = VirtualBox Guest kernel modules sources
 	install = virtualbox-guest-dkms.install
 	depends = dkms
@@ -148,11 +148,11 @@ pkgname = virtualbox-guest-dkms
 	replaces = virtualbox-guest-source
 	replaces = virtualbox-guest-modules-lts
 
-pkgname = virtualbox-sdk
+pkgname = virtualbox-i3-sdk
 	pkgdesc = VirtualBox Software Developer Kit (SDK)
 	depends = python2
 
-pkgname = virtualbox-guest-utils
+pkgname = virtualbox-i3-guest-utils
 	pkgdesc = VirtualBox Guest userspace utilities
 	depends = glibc
 	depends = pam
@@ -171,14 +171,14 @@ pkgname = virtualbox-guest-utils
 	replaces = virtualbox-archlinux-additions
 	replaces = virtualbox-guest-additions
 
-pkgname = virtualbox-guest-utils-nox
+pkgname = virtualbox-i3-guest-utils-nox
 	pkgdesc = VirtualBox Guest userspace utilities without X support
 	depends = glibc
 	depends = pam
 	depends = VIRTUALBOX-GUEST-MODULES
 	conflicts = virtualbox-guest-utils
 
-pkgname = virtualbox-ext-vnc
+pkgname = virtualbox-i3-ext-vnc
 	pkgdesc = VirtualBox VNC extension pack
 	install = virtualbox-ext-vnc.install
 	depends = virtualbox
