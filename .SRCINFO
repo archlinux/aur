@@ -1,5 +1,5 @@
-pkgbase = notify-when-done-git
-	pkgdesc = Send notification in i3 when command in a non-focused workspace finish.
+pkgbase = notify-when-done-i3-git
+	pkgdesc = Get notifications when commands in non-focused i3's workspaces finish.
 	pkgver = r1.ab2912a
 	pkgrel = 1
 	url = https://github.com/giuscri/notify-when-done-i3
@@ -9,8 +9,8 @@ pkgbase = notify-when-done-git
 	makedepends = git
 	depends = jq
 	depends = i3-wm
-	source = notify-when-done-git::git+https://github.com/giuscri/notify-when-done-i3.git
+	source = notify-when-done-i3-git::git+https://github.com/giuscri/notify-when-done-i3.git
 	md5sums = SKIP
 
-pkgname = notify-when-done-git
+pkgname = notify-when-done-i3-git
 
