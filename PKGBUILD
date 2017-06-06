@@ -40,7 +40,7 @@ prepare() {
     patch -Np1 -i "$srcdir"/use_fpic_for_python.patch
     patch -Np1 -i "$srcdir"/expose-cargs-and-largs-makefile.patch
 
-    ## Force use of pyhon2
+    ## Force use of python2
     #
     rm -fr temp_bin
     mkdir  temp_bin
@@ -53,9 +53,6 @@ build() {
     cd gnatcoll
 
     export PATH=$srcdir/$pkgname/temp_bin:$PATH    
-
-    export OS=unix
-    export LIBRARY_TYPE=relocatable
 
     ./configure --prefix=/usr \
         --libexecdir=/lib \
