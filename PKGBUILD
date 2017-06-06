@@ -6,9 +6,9 @@
 
 pkgname=greenfoot
 pkgver=3.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Allows easy development of two-dimensional graphical applications, such as simulations and interactive games."
-arch=('x86_64')
+arch=('any')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CPL' 'LGPL2' 'LGPL2.1' 'MIT' 'custom')
 depends=('java-runtime' 'java-environment' 'java-openjfx')

@@ -1,9 +1,9 @@
 pkgbase = greenfoot
 	pkgdesc = Allows easy development of two-dimensional graphical applications, such as simulations and interactive games.
 	pkgver = 3.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.greenfoot.org
-	arch = x86_64
+	arch = any
 	license = GPL2
 	license = Apache
 	license = BSD
