@@ -1,7 +1,7 @@
 pkgbase = burp-backup-dev
 	pkgdesc = A next generation experimental version of the burp backup and restore program.
 	pkgver = 2.1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://burp.grke.org/burp2.html
 	install = burp.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = burp-backup-dev
 	depends = acl
 	depends = librsync
 	depends = openssl
+	provides = burp-backup
 	conflicts = burp-backup
 	conflicts = burp-backup-git
 	backup = etc/burp/burp.conf
