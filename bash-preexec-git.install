@@ -2,7 +2,7 @@ preexec_path=/etc/bash-preexec/bash-preexec.sh
 
 post_install() {
     echo "## To finish installation source bash-preexec.sh at the end of your bashrc, e.g."
-    echo '## echo "[[ -f $preexec_path ]] && source $preexec_path" >> /etc/bash.bashrc'
+    echo "## echo \"[[ -f $preexec_path ]] && source $preexec_path\" >> /etc/bash.bashrc"
 }
 
 post_remove() {

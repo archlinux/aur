@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe <giuscri@gmail.com>
 pkgname=bash-preexec-git
 pkgver=0.3.3.r0.gc4537b4
-pkgrel=1
+pkgrel=2
 pkgdesc="⚡ preexec and precmd functions for Bash just like Zsh."
 arch=('x86_64')
 url="https://github.com/rcaloras/bash-preexec"
