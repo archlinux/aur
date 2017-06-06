@@ -3,15 +3,15 @@
 
 pkgname=python2-ezdxf
 _pkgname=ezdxf
-pkgver=0.6.5
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A Python package to create/manipulate DXF drawings."
 arch=('i686' 'x86_64')
-url="http://bitbucket.org/mozman/ezdxf"
+url="https://github.com/mozman/ezdxf"
 license=('MIT')
 depends=('python2')
-source=(https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('bd471bd7d433e085b8f6d11ab39055b2')
+source=(https://github.com/mozman/ezdxf/archive/v${pkgver}.tar.gz)
+md5sums=('4592c83d3eff0708f23251c272072a25')
 
 prepare() {
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
