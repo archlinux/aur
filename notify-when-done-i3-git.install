@@ -1,4 +1,4 @@
 post_install() {
     echo "## To complete installation, add the following line to your bashrc"
-    echo '## "source /etc/notify-when-done-i3/nwd-preexec.sh"'
+    echo '## "source /usr/share/nwd/nwd-preexec.sh"'
 }
