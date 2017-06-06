@@ -3,14 +3,14 @@
 pkgname=ocaml-ao
 pkgver=0.2.1
 pkgrel=2
-license=('LGPL2.1')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml libao bindings"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-ao"
+license=('LGPL2.1')
 depends=('ocaml' 'libao')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-ao/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-ao/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('7f763e8c47e8369274ee400c640532d4')
 
 build() {
