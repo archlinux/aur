@@ -1,13 +1,10 @@
-# Maintainer: Perry Hung <perry@leaflabs.com>
-
+# Maintainers: Perry Hung <perry@leaflabs.com> Florent Thiery <fthiery@gmail.com>
 pkgname=decklink
-_dvver=10.9a7 # DesktopVideo
-_mever=3.5.3a1 # MediaExpress
-pkgver=${_dvver}
-pkgrel=2
+pkgver=10.9.3
+pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
-url="http://www.blackmagic-design.com/products/"
+url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
 license=('custom')
 makedepends=('curl')
 depends=('linux-headers' 'libxml2' 'libpng12' 'glu' 'qt4')
@@ -17,9 +14,9 @@ install='decklink.install'
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/46d65f46d6434b16bd69482b0ca7dba3"
-pkgsrc_file=$pkgname-${_dvver}.tar.gz
-pkgsrc_sha256sum="6a883936e877ee3985dea55027662cf58782a5e19081f1dce668761879159581"
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/593cebbfb81f43e3a24ca19a8679df4c"
+pkgsrc_file=$pkgname-${pkgver}.tar.gz
+pkgsrc_sha256sum="51d53ecdbcc2253a484c3aaf5149623045ea3459926eec4b767a7d5ede683f61"
 
 prepare() {
   if [ -f $pkgsrc_file ]; then
@@ -38,15 +35,13 @@ package() {
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 	ln -s /usr/share/doc/desktopvideo/License.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
-	cd "$srcdir/Blackmagic_Desktop_Video_Linux_${pkgver}/other/${_arch}"
+	cd $srcdir/Blackmagic_Desktop_Video_Linux_*/other/${_arch}
 
-	tar xf "desktopvideo-${_dvver}-${_arch}.tar.gz"
-	cp -a "desktopvideo-${_dvver}-${_arch}/"* "$pkgdir"
-	mv "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin"
-	rm -rf "$pkgdir/usr/sbin"
+	tar xf desktopvideo-*-${_arch}.tar.gz
+	cp -a desktopvideo-*-${_arch}/* $pkgdir
+	mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
+	rm -rf $pkgdir/usr/sbin
 
-	tar xf "mediaexpress-${_mever}-${_arch}.tar.gz"
-	cp -a "mediaexpress-${_mever}-${_arch}/"* "$pkgdir"
+	tar xf mediaexpress-*-${_arch}.tar.gz
+	cp -a mediaexpress-*-${_arch}/* $pkgdir
 }
-
-
