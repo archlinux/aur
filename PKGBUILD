@@ -3,14 +3,14 @@
 pkgname=ocaml-faad
 pkgver=0.3.3
 pkgrel=2
-license=('GPL2')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml bindings for the libfaad AAC decoder library"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-faad"
+license=('GPL2')
 depends=('ocaml' 'faad2')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-faad/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-faad/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('70b3bea8fc805255ff2a7f9aafe55d8c')
 
 build() {
