@@ -35,6 +35,5 @@ package() {
 
   mkdir -p ${pkgdir}/usr/share/doc/${pkgname}/
   cp ./LICENSE ${pkgdir}/usr/share/doc/${pkgname}/
-  cp ./README ${pkgdir}/usr/share/doc/${pkgname}/
 }
 
