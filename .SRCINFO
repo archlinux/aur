@@ -1,7 +1,7 @@
 pkgbase = mdl
 	pkgdesc = MarkDown Less is a Markdown displayer
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/dopsi/mdl
 	arch = x86

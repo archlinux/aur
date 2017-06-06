@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=mdl
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='MarkDown Less is a Markdown displayer'
 arch=('x86' 'x86_64')
