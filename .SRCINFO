@@ -1,6 +1,6 @@
 pkgbase = logitechmediaserver
 	pkgdesc = Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Release-Version, if you prefer bleeding edge consider using logitechmediaserver-git instead)
-	pkgver = 7.9.0.arch6
+	pkgver = 7.9.0.arch7
 	pkgrel = 1
 	url = https://github.com/stefansielaff/slimserver
 	install = install
@@ -16,16 +16,16 @@ pkgbase = logitechmediaserver
 	makedepends = rsync
 	makedepends = gd
 	makedepends = zlib
-	depends = perl>=5.18
-	depends = perl<5.25
+	depends = perl>=5.20
+	depends = perl<5.27
 	depends = perl-cgi
 	depends = perl-ev
 	depends = perl-digest-sha1
-	source = slimserver-7.9.0.arch6.tar.gz::https://github.com/stefansielaff/slimserver/archive/7.9.0.arch6.tar.gz
-	source = slimserver-vendor-7.9.0.arch6.tar.gz::https://github.com/stefansielaff/slimserver-vendor/archive/7.9.0.arch6.tar.gz
+	source = slimserver-7.9.0.arch7.tar.gz::https://github.com/stefansielaff/slimserver/archive/7.9.0.arch7.tar.gz
+	source = slimserver-vendor-7.9.0.arch7.tar.gz::https://github.com/stefansielaff/slimserver-vendor/archive/7.9.0.arch7.tar.gz
 	source = service
-	sha256sums = 6f4c91f7b7b867aac36366e63b28c6deb4d12e3d309f4332df42a4841a949e2b
-	sha256sums = 2f780c8607f7edbf884addcec86de190354130f7f7863d536638af05763b12a2
+	sha256sums = 36a9c1fb59cc6ecea5de73717a3f90efa20f486ec4799937dba00ff374d7960c
+	sha256sums = 707843649d70bc8af1a84062b8e0c23bb88ee8345d98a2133c6e1460ed4948ad
 	sha256sums = 41718cf74b2f9b542089e7bd238fb974d049a6132e8d3e0ed598d6689e5d16c2
 	optdepends_x86_64 = lib32-glibc: transcoding on 64-bit systems
 	optdepends_x86_64 = lib32-gcc-libs: transcoding on 64-bit systems
