@@ -1,7 +1,7 @@
 # Maintainer: Tom Wambold <tom5760@gmail.com>
 pkgname=core
 pkgver=4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Common Open Research Emulator"
 arch=('i686' 'x86_64')
 url="http://cs.itd.nrl.navy.mil/work/core/"
@@ -23,7 +23,7 @@ build() {
 
   patch -p1 < ../python2.patch
 
-  ./configure CFLAGS=-Wno-strict-aliasing CPPFLAGS=-Wno-strict-aliasing PYTHON=/usr/bin/python2 --prefix=/usr
+  ./configure CFLAGS="-Wno-strict-aliasing -Wno-int-in-bool-context" CPPFLAGS="-Wno-strict-aliasing -Wno-int-in-bool-context" PYTHON=/usr/bin/python2 --prefix=/usr
   make
 }
 
