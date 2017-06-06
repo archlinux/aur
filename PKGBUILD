@@ -1,8 +1,8 @@
 # Maintainer: Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
 
 pkgname=nana
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="An opensource cross-platform GUI library written in modern C++11 for static linking"
 arch=("i686" "x86_64")
 url="http://nanapro.org/en-us/"
@@ -10,14 +10,17 @@ license=("custom:Boost Software License")
 depends=("alsa-lib" "libjpeg-turbo" "libpng" "libx11" "libxft")
 makedepends=("alsa-lib" "cmake" "libjpeg-turbo" "libpng" "libx11" "libxft" "xproto")
 source=("http://downloads.sourceforge.net/project/nanapro/Nana/Nana 1.x/${pkgname} ${pkgver}.zip"
-        fix_memcpy.patch)
-sha256sums=('3cb4e8e781b73a94584a809df981e70fb0aa7d90df823865eff35bf51b3de9b7'
-            '98c5401396583534682c21b8b2762a1cbbcbecd997804a5b11aabe1094ac4b44')
+        fix_memcpy.patch
+        add_missing_includes.patch)
+sha256sums=('7a0afd92060d7c2c40a594b9649aa408b2ad42795c7e27a2d3ddd95aeb8ab415'
+            '98c5401396583534682c21b8b2762a1cbbcbecd997804a5b11aabe1094ac4b44'
+            'ec0896c20b111b4c5c4d51b90399716d79d0239e34a45029d687419a8e73e19a')
 
 prepare() {
     cd ${srcdir}/${pkgname}
 
     patch -Np1 < ../fix_memcpy.patch
+    patch -Np1 < ../add_missing_includes.patch
 }
 
 build() {
