@@ -6,7 +6,7 @@ __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
 pkgver=12
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
 arch=('x86_64')
@@ -51,7 +51,7 @@ build() {
 
 	local __vendorCertFile="${__certfile}"
 	local __makeArgs
-	if [ ! -f ${__vendorCertFile} ]; then
+	if [ -f ${__vendorCertFile} ]; then
 		__makeArgs="VENDOR_CERT_FILE=${__certfile}"
 	fi
 	make ${__makeArgs}
