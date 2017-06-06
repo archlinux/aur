@@ -1,15 +1,15 @@
 pkgbase = jcdk-classic
 	pkgver = 3.0.5u1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.oracle.com/java/java-card.html
 	arch = any
 	license = custom
 	makedepends = msitools
 	options = !strip
 	source = http://download.oracle.com/otn-pub/java/java_card_kit/3.0.5/java_card_kit-classic-3_0_5-u1-win32-do-b35-15_may_2017.msi
-	source = jcdk.sh
+	source = jcdk-classic.sh
 	md5sums = bf7e66cdc37aa1c022d8cb2b38a1443c
-	md5sums = cc1c1ba445ca83e2b1c2ed6cb2c7a59c
+	md5sums = 98c628b901809a5cc61c3987e8d35314
 
 pkgname = jcdk-classic
 	pkgdesc = Java Card Classic Development Kit

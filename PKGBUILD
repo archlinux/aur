@@ -4,16 +4,16 @@
 pkgbase=jcdk-classic
 pkgname=("$pkgbase"{,-doc})
 pkgver=3.0.5u1
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://www.oracle.com/java/java-card.html"
 license=('custom')
 makedepends=('msitools')
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/java_card_kit/3.0.5/java_card_kit-classic-3_0_5-u1-win32-do-b35-15_may_2017.msi"
-        "jcdk.sh")
+        "$pkgbase.sh")
 md5sums=('bf7e66cdc37aa1c022d8cb2b38a1443c'
-         'cc1c1ba445ca83e2b1c2ed6cb2c7a59c')
+         '98c628b901809a5cc61c3987e8d35314')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=accept-securebackup-cookie -o %o %u')
 
@@ -26,7 +26,7 @@ package_jcdk-classic() {
 	depends=('java-environment>=7')
 
 	# shellcheck disable=SC2154
-	install -Dm755 -t "$pkgdir/etc/profile.d" jcdk.sh
+	install -Dm755 -t "$pkgdir/etc/profile.d" "$pkgbase.sh"
 	cd "Program Files/Oracle/Java Card Development Kit 3.0.5dev"
 
 	install -d "$pkgdir/usr/share/$pkgbase"
