@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=backblaze-b2
-pkgver=0.6.8
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client"
 url="https://www.backblaze.com/b2/cloud-storage.html"
 depends=('python2'
@@ -18,7 +18,7 @@ arch=('any')
 
 # Need a better source URL at some point
 source=("https://github.com/Backblaze/B2_Command_Line_Tool/archive/v${pkgver}.tar.gz")
-sha512sums=('4d33ce772cba79c4d35eee1953d51b4e4616995e699a41788f77383fb9bc910a53ad0729a73b7fd266b58568aa76b2c3aba117b3b1d6e4dbfefaa9187f4434b1')
+sha512sums=('161d5b76c81ff1d46775d8bc58f2abc295f5b235502b7c2d7760dd4b1f1587b019ef959b7698d847888797eb685cc0c29b758f3accdc57fa351975eb4f41edc5')
 
 build() {
     cd ${srcdir}/B2_Command_Line_Tool-${pkgver}
