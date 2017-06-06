@@ -1,7 +1,7 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
 
 pkgname=gridcoinresearch-qt
-pkgver=3.5.8.9
+pkgver=3.5.9.0a
 pkgrel=1
 pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
 depends=('boost-libs' 'qrencode' 'qt5-base' 'qt5-charts' 'libzip' 'miniupnpc' 'curl' 'boinc')
@@ -14,17 +14,10 @@ license=('custom:gridcoin')
 _sourcename="Gridcoin-Research-$pkgver"
 
 source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz"
-        'gridcoinresearch-qt.desktop'
-        '0001-Openssl-1.1.0-185.patch')
+        'gridcoinresearch-qt.desktop')
 
-sha256sums=('7e637f6a7d9b10d3df3bb183611d8094dadb1e884c1e5fba860adfb338686d60'
-            '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053'
-            '6aec7fc3612444cdf5b837c82177268f29aba4f9b6bb4a8c47a7d6fca831b42c')
-
-prepare() {
-  cd "$srcdir/$_sourcename"
-  patch -Np1 -i "$srcdir/0001-Openssl-1.1.0-185.patch"
-}
+sha256sums=('26985bef60aaffa21bbf0faa669b1a9701d89c688eca4226698ccc9bc8ef7f75'
+            '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
 
 build() {
   cd "$srcdir/$_sourcename"
