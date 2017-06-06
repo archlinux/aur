@@ -3,14 +3,14 @@
 pkgname=ocaml-dssi
 pkgver=0.1.2
 pkgrel=1
-license=('GPL2')
+pkgdesc="OCaml bindings for dssi plugins"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for dssi plugins")
 url="https://github.com/savonet/ocaml-dssi"
+license=('GPL2')
 depends=('ocaml' 'ocaml-ladspa')
 makedepends=('ocaml-findlib' 'dssi' 'ladspa')
-source=("https://github.com/savonet/ocaml-dssi/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-dssi/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('9fe0b20291e33676e8f33a445e8d3ee8')
 
 build() {
