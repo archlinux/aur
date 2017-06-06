@@ -39,10 +39,10 @@ prepare()
 
 build() 
 {
-  export OS=unix
-  export Build=Production
+#  export OS=unix
+#  export Build=Production
 
-  export PATH=$srcdir/gps/temp_bin:$PATH    
+  export PATH=$srcdir/gps/temp_bin:$PATH
 	
   cd $srcdir/gps
 
@@ -57,5 +57,6 @@ package()
 {
   cd $srcdir/gps
 
-  PYTHON=python2 make DESTDIR="$pkgdir/" install
+  export PATH=$srcdir/gps/temp_bin:$PATH
+  make DESTDIR="$pkgdir/" install
 }
