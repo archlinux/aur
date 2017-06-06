@@ -3,14 +3,14 @@
 pkgname=ocaml-lo
 pkgver=0.1.1
 pkgrel=1
-license=('LGPL2.1')
+pkgdesc="OCaml bindings for LO library"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for LO library")
 url="https://github.com/savonet/ocaml-lo"
+license=('LGPL2.1')
 depends=('ocaml' 'liblo')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-lo/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-lo/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('8534c358aa497e96e6af033a20ba0fc4')
 
 build() {
