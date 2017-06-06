@@ -6,17 +6,17 @@ _pkgver=2.8.4+2
 _yypkgver=1.9.0
 pkgver=${_pkgver}yypkg${_yypkgver}
 pkgrel=1
-license=('LGPL2.1')
-arch=('i686' 'x86_64')
 pkgdesc="Bindings to libarchive with Lwt support (with yypkg patches)"
+arch=('i686' 'x86_64')
 url="https://forge.ocamlcore.org/projects/ocaml-archive/"
+license=('LGPL2.1')
 depends=('ocaml' 'ocaml-fileutils' 'ocaml-lwt' 'ocaml-extlib' 'libarchive')
 makedepends=('ocaml-findlib' 'ocaml-ounit')
 provides=("${_pkgname}=${_pkgver}")
 conflicts=("${_pkgname}")
+options=('!strip')
 source=("https://forge.ocamlcore.org/frs/download.php/1129/ocaml-archive-2.8.4+2.tar.gz"
         "http://win-builds.org/yypkg/yypkg-${_yypkgver}.tar.xz")
-options=('!strip')
 md5sums=('5be75adde03a871c36f8a9ddacbba844'
          'f1613c5ef9ccffc26370f743cbb8cae7')
 
