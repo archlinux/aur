@@ -2,23 +2,20 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.11.0
+pkgver=4.13.1
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
 license=('GPL2')
-groups=('xfce4')
-# http://www.xfce.org/documentation/requirements
-# keep dbus, see also http://bugs.archlinux.org/task/14536
-depends=('libxfce4util' 'dbus-glib' 'dbus')
+depends=('libxfce4util' 'dbus')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'glib-perl'
              'intltool' 'gtk-doc' 'chrpath')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('8667fc7e90fb760979fb7da75157aead000ae206d24c4ea55b6f2b5631d905d6')
+sha256sums=('17f1ffff49f8f0cdbd4f3c8fb7869015c57a5bc6ba1c842faade6d6ec75fea5b')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
