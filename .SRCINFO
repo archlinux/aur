@@ -1,7 +1,7 @@
 pkgbase = rig
 	pkgdesc = Random Identity Generator
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EinBaum/rig
 	arch = any
 	license = GPL

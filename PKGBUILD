@@ -1,6 +1,6 @@
 # Maintainer: EinBaum <mail@einbaum.org>
 
-pkgrel=1
+pkgrel=2
 pkgver=1.12
 sha256sums=('SKIP')
 
@@ -13,6 +13,6 @@ source=("https://github.com/EinBaum/rig/archive/1.12.tar.gz")
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
-	make
+	make PREFIX=/usr
 	make install PREFIX=$pkgdir/usr
 }
