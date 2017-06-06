@@ -2,11 +2,12 @@
 
 pkgbase="lib32-wxwidgets-light"
 pkgname=('lib32-wxbase-light'
-         'lib32-wxgtk-light'
+         'lib32-wxgtk2-light'
+         'lib32-wxgtk3-light'
          'lib32-wxcommon-light'
          )
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!) (32 bits)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -24,15 +25,11 @@ makedepends=('lib32-gcc-libs'
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
         'lib32-make-abicheck-non-fatal.patch'
         'lib32-wxwidgets-collision.patch'
-        'config32.conf'
-        'wx-config32.sh'
         )
-sha1sums=('SKIP'
-          'ef7d3727381adf62b9f3a9b28120cb7646163666'
-          'ef6bf800b1505bb617eeeb0516ab43a6226920a4'
-          'fed3ad06526f2bccd3f3197c2b1fd3e96bf05685'
-          '218ec754f1f93affc8f51396304abf5d11b898f2'
-          )
+sha256sums=('SKIP'
+            'd4c2d070a06eb63f0a018c8cf687589e5ffdec601225b4d16a268ffe390fb58b'
+            'c73c51f4b65a779462a4e0923a7e3bc7fe28457258fc8bfb5d843d87df119364'
+            )
 
 prepare() {
   mkdir -p build-{base,gtk{2,3}}
@@ -106,63 +103,83 @@ package_lib32-wxbase-light() {
 
   make -C build-base DESTDIR="${pkgdir}" install
 
-  rm -fr "${pkgdir}/usr/bin/"wx-config32*
+  rm -fr "${pkgdir}/usr/bin/wx-config32"
+  mv "${pkgdir}/usr/bin/wx-config32-3.0" "${pkgdir}/usr/bin/wx-config32-3.0-base"
+  (cd "${pkgdir}/usr/bin"; ln -s wx-config32-3.0-base wx-config32-base)
   rm -fr "${pkgdir}/usr/include"
-  rm -fr "${pkgdir}/usr/share/"
+  rm -fr "${pkgdir}/usr/share"
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/lib32-wxbase-light/LICENSE"
 }
 
-package_lib32-wxgtk-light() {
-  pkgdesc="wxWidgets GTK2 and GTK3 Toolkit (GNOME/GStreamer free!) (32 bits)"
+package_lib32-wxgtk2-light() {
+  pkgdesc="wxWidgets GTK2 Toolkit (GNOME/GStreamer free!) (32 bits)"
   depends=('lib32-wxbase-light'
            'lib32-gtk2'
-           'lib32-gtk3'
            'lib32-libsm'
-           'lib32-sdl'
+           'lib32-sdl2'
            )
-  provides=("lib32-wxgtk=${pkgver}")
+  provides=("lib32-wxgtk=${pkgver}"
+            'lib32-wxgtk-light'
+            )
   conflicts=('lib32-wxgtk')
   options=('!emptydirs')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
-  rm -fr "${pkgdir}/usr/bin"
 
-  make -C build-gtk3 DESTDIR="${pkgdir}" install
-
-  rm -fr "${pkgdir}/usr/bin/"wx-config32*
+  cp -P "${pkgdir}/usr/bin/wx-config32" "${pkgdir}/usr/bin/wx-config32-gtk2"
+  cp -P "${pkgdir}/usr/bin/wx-config32-3.0" "${pkgdir}/usr/bin/wx-config32-3.0-gtk2"
+  rm -fr "${pkgdir}/usr/bin/"wxrc32{,-3.0}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib32/"*baseu*
   rm -fr "${pkgdir}/usr/share"
 
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/lib32-wxgtk-light/LICENSE"
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/lib32-wxgtk2-light/LICENSE"
+}
+
+package_lib32-wxgtk3-light() {
+  pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!) (32 bits)"
+  depends=('lib32-wxbase-light'
+           'lib32-gtk3'
+           'lib32-libsm'
+           'lib32-sdl2'
+           )
+  provides=("lib32-wxgtk3=${pkgver}")
+  conflicts=('lib32-wxgtk3')
+  options=('!emptydirs')
+
+  make -C build-gtk3 DESTDIR="${pkgdir}" install
+
+  rm -fr "${pkgdir}/usr/bin/wx-config32"
+  mv "${pkgdir}/usr/bin/wx-config32-3.0" "${pkgdir}/usr/bin/wx-config32-3.0-gtk3"
+  (cd "${pkgdir}/usr/bin"; ln -s wx-config32-3.0-gtk3 wx-config32-gtk3)
+  rm -fr "${pkgdir}/usr/bin/"wxrc32{,-3.0}
+  rm -fr "${pkgdir}/usr/include"
+  rm -fr "${pkgdir}/usr/lib32/"*baseu*
+  rm -fr "${pkgdir}/usr/share"
+
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/lib32-wxgtk3-light/LICENSE"
 }
 
 package_lib32-wxcommon-light() {
   pkgdesc="wxWidgets common (GNOME/GStreamer free!) (32 bits)"
-  arch=('any')
-  depends=('wxcommon-light')
+  depends=('wxcommon-light'
+           'lib32-wxbase-light'
+           )
   provides=("lib32-wxcommon=${pkgver}")
   conflicts=('lib32-wxcommon')
   options=('!emptydirs')
-  backup=('etc/wx/config32')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
   rm -fr "${pkgdir}/usr/bin"
-
   make -C build-gtk3 DESTDIR="${pkgdir}" install
-  rm -fr "${pkgdir}/usr/bin"
-
+  rm -fr "${pkgdir}/usr/bin/"wx-config32{,-3.0}
   make -C build-base DESTDIR="${pkgdir}" install
-  rm -fr "${pkgdir}/usr/bin"
 
+  rm -fr "${pkgdir}/usr/bin/"wx-config32{,-3.0}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib32"
   rm -fr "${pkgdir}/usr/share"
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/lib32-wxcommon-light/LICENSE"
-
-  install -Dm644 config32.conf "${pkgdir}/etc/wx/config32"
-  install -Dm755 wx-config32.sh "${pkgdir}/usr/bin/wx-config32"
-  ln -s wx-config32 "${pkgdir}/usr/bin/wx-config32-3.0"
 }
