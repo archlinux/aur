@@ -4,7 +4,7 @@
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
 pkgver=3.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Mattermost Desktop (Beta) for Linux (binary)"
 arch=('i686' 'x86_64')
 
