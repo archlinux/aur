@@ -2,7 +2,7 @@
 
 pkgname=0xff
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple http(s) file sharing tool. Think 'python -m http.server' but better."
 arch=('any')
 url='https://github.com/xengi/0xff'
@@ -14,10 +14,10 @@ makedepends=('go')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  go get -u github.com/labstack/echo/...
-  go get -u github.com/peterbourgon/diskv
-  go get -u github.com/satori/go.uuid
-  go build 0xff.go
+  GOPATH="${srcdir}" go get -u github.com/labstack/echo/...
+  GOPATH="${srcdir}" go get -u github.com/peterbourgon/diskv
+  GOPATH="${srcdir}" go get -u github.com/satori/go.uuid
+  GOPATH="${srcdir}" go build 0xff.go
 }
 
 package() {

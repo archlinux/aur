@@ -1,7 +1,7 @@
 pkgbase = 0xff
 	pkgdesc = Simple http(s) file sharing tool. Think 'python -m http.server' but better.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xengi/0xff
 	install = 0xff.install
 	arch = any
