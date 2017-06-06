@@ -1,4 +1,3 @@
-# Maintainer: b00rt00s ( bomby dot zrzuc at gmail dot com )
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 # Committer: Judd Vinet <jvinet@zeroflux.org>
