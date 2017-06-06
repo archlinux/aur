@@ -2,16 +2,16 @@
 
 pkgname=cube-perf
 _version=4.3
-_patch=.4
+_patch=.5
 pkgver=${_version}${_patch}
 pkgrel=1
 pkgdesc="Performance report explorer for displaying a multi-dimensional performance space."
 arch=('i686' 'x86_64')
 url="http://www.scalasca.org/software/cube-4.x/download.html"
 license=('BSD')
-depends=('qt4')
+depends=('qt5-base')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/cube-${pkgver}.tar.gz)
-sha1sums=('fd4c34996c1ea8002ddb771b6c23130bf6268926')
+sha1sums=('854690e614a762dc40fe53675b8eb4c52ce11c28')
 options=('!makeflags')
 
 build() {
