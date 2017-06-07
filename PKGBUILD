@@ -4,19 +4,19 @@
 
 pkgname=bdf-bitocra
 pkgver=1.2
-pkgrel=9
+pkgrel=10
+_tag="223d56a"
 pkgdesc="A monospace bit font, inspired by OCR-A. Created to be very readable on small sizes"
 url="http://ubuntuforums.org/showthread.php?t=1846868"
 arch=('any')
 license=('custom:OFL 1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=('master.tar.gz::https://github.com/ninjaaron/bitocra/tarball/master')
-install='bdf-bitocra.install'
-md5sums=('0ead4e1894f9ea52caa7311b243a79d0')
+source=("bitocra-$_tag.tar.gz::https://github.com/ninjaaron/bitocra/tarball/master")
+md5sums=('fe5a42b724a43a2b664bc2e07a7a4cd8')
 
 package()
 {
-  cd "$srcdir/ninjaaron-bitocra-6e8ace5"
+  cd "$srcdir/ninjaaron-bitocra-$_tag"
   
   install -d "$pkgdir/usr/share/fonts/misc"
   
