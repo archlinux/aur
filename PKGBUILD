@@ -5,7 +5,7 @@
 pkgbase="python-scikit-fuzzy"
 pkgname=("python-scikit-fuzzy" "python2-scikit-fuzzy")
 _pkgname="scikit-fuzzy"
-pkgver="0.2"
+pkgver="0.3"
 pkgrel="1"
 pkgdesc="A fuzzy logic toolkit for SciPy"
 arch=('any')
@@ -52,3 +52,4 @@ package_python-scikit-fuzzy() {
 # vim:set ts=2 sw=2 et:
 
 
+sha256sums=('411fe39402628e1294620b9ebf731e9c8682a024d7a754a1a8cc23372b9820fd')
