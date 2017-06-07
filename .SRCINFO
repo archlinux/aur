@@ -1,6 +1,6 @@
 pkgbase = rdkit
     pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
-    pkgver = 2017_03_1
+    pkgver = 2017_03_2
     pkgrel = 1
     url = http://rdkit.org/
     arch = i686
@@ -20,7 +20,7 @@ pkgbase = rdkit
     provides = rdkit
     source = https://github.com/rdkit/rdkit/archive/Release_2017_03_1.tar.gz
     source = http://www.inchi-trust.org/download/104/INCHI-1-API.zip
-    md5sums = e0ae4f922cc60cae1cf891bd0aadbaa5
+    md5sums = c835bbd363154afcd2801881b891c19b
     md5sums = 8447bf108af12fe66eecba41bbc89918
 
 pkgname = rdkit
