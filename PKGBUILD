@@ -11,12 +11,12 @@ _autofirewall=y
 ### END BUILD OPTIONS
 
 pkgname=nomachine
-pkgver=5.2.21
-pkgrel_i686=1
-pkgrel_x86_64=1
+pkgver=5.3.9
+pkgrel_i686=5
+pkgrel_x86_64=6
 pkgrel_armv6h=3
 pkgrel_armv7h=1
-pkgrel_armv8h=1
+pkgrel_armv8h=3
 pkgrel=1
 pkgdesc="Remote desktop application"
 groups=('network')
@@ -26,16 +26,16 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'armv8h')
 options=('!strip')
 conflicts=('nxmanager nxwebplayer nxserver nxnode nxclient')
 depends=('bash' 'openssh')
-sha512sums_x86_64=('66849acbbdcbd4fb5f61319db26a7264a2efd1835a0f449228528c73711e727561b6995acd8b99c100c45cf931af1a7498da441e387db3e50846894cc40aaf3c')
-sha512sums_i686=('060480f440cef59df9daa3a053ac915d230325ba3c15f0291164db269159639c1119585654aed6aa060d5afad49ac9f1746f1f22467a5ca192e5a3793dc8e2f6')
-sha512sums_armv6h=('2211203d8a0e3ea0f3606dfb4b247afda34947a6d6ac080c0cb0f81eac06d4bc9a7d7c7e762beb10917725332213503dcfb1df42754b03e07e9c4d922b73b77a')
-sha512sums_armv7h=('2b408eff94fc6f519931f5d776c99c76490c52c574baa25715eed898794e2bac8311fa105ee011e9472f0b6feaed8d3709d00931d085144c0eca75ea9219aaa8')
-sha512sums_armv8h=('3011dc1c91f61e62fb1dfcd9ce16a1568e3c30865db9b27c2845d0f4c85c919d5cc045d48445d3938b1488c74aaaabfe30e40162aaa0359fbd40fa2edabdcee0')
-source_x86_64=("http://download.nomachine.com/download/5.2/Linux/${pkgname}_${pkgver}_${pkgrel_x86_64}_x86_64.tar.gz")
-source_i686=("http://download.nomachine.com/download/5.2/Linux/${pkgname}_${pkgver}_${pkgrel_i686}_i686.tar.gz")
-source_armv6h=("http://download.nomachine.com/download/5.2/Linux/${pkgname}_${pkgver}_${pkgrel_armv6h}_armv6hl.tar.gz")
-source_armv7h=("http://download.nomachine.com/download/5.2/Linux/${pkgname}_${pkgver}_${pkgrel_armv7h}_armv7hl.tar.gz")
-source_armv8h=("http://download.nomachine.com/download/5.2/Linux/${pkgname}_${pkgver}_${pkgrel_armv8h}_aarch64.tar.gz")
+sha512sums_x86_64=('dca7d519f6c0d62625f2c6b78c0df1fb07019f09c40e60e6662e6af82348bc82abc92162bcaaa7c170556e15b5e8b177f1b563015f14c66081904708d24cc9b0')
+sha512sums_i686=('00a53f377c0f17910d374ba7121c1eb895f26821b6aae15e188c8e654b81b7e3b37744dc9a50a0356277134004a54a5aa9ad45e3d8273a7dcfa4e46bccf8fd24')
+sha512sums_armv6h=('5493228bc567f9bf52b9efb223479f05d4665b4c64c39a4b3a500555b3dcba2a069fdfc46b763c083bc93e8650f4f1479c42105bd2bd762f553ee28176f8c7ee')
+sha512sums_armv7h=('f62d5c6e25c49fe92045e8c54075e2abea46950d411d9311f507596e36677d61cbde84416828d58b84bf9935877290089de7a1ee1d32e886e4e076b0c8a43037')
+sha512sums_armv8h=('a3ec737d7e9a0fc0b3b368ef4674d4515863b2e90fa87eb75ec364e9bc8f9dbf183f65d248828e988fc63494f9a2c9035ff2b2836a8b529a13d4d7826e86c497')
+source_x86_64=("http://download.nomachine.com/download/5.3/Linux/${pkgname}_${pkgver}_${pkgrel_x86_64}_x86_64.tar.gz")
+source_i686=("http://download.nomachine.com/download/5.3/Linux/${pkgname}_${pkgver}_${pkgrel_i686}_i686.tar.gz")
+source_armv6h=("http://download.nomachine.com/download/5.3/Linux/${pkgname}_${pkgver}_${pkgrel_armv6h}_armv6hl.tar.gz")
+source_armv7h=("http://download.nomachine.com/download/5.3/Linux/${pkgname}_${pkgver}_${pkgrel_armv7h}_armv7hl.tar.gz")
+source_armv8h=("http://download.nomachine.com/download/5.3/Linux/${pkgname}_${pkgver}_${pkgrel_armv8h}_aarch64.tar.gz")
 install=nomachine.install
 
 prepare()
