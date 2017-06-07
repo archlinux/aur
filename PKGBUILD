@@ -5,12 +5,12 @@
 
 pkgname=ffmpeg-decklink
 pkgver=3.3.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
-license=('custom:UNREDISTRIBUTABLE')
+license=('custom:nonfree and unredistributable')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
          'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
