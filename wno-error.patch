@@ -1,0 +1,4 @@
+6c6
+< 	scons debug=0
+---
+> 	scons debug=0 werror=0
