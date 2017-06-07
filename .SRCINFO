@@ -1,0 +1,17 @@
+pkgbase = lxc-ps-git
+	pkgdesc = Implementation of lxc-ps for LXC 1.x and 2.x
+	pkgver = r2.dd941f0
+	pkgrel = 1
+	url = https://github.com/2ion/lxc-ps
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = lxc
+	depends = python-psutil
+	provides = lxc-ps
+	conflicts = lxc-ps
+	source = lxc-ps-git::git+https://github.com/2ion/lxc-ps.git
+	md5sums = SKIP
+
+pkgname = lxc-ps-git
+
