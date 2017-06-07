@@ -4,19 +4,16 @@
 # Contributer: Travis Lyons <travis.lyons@gmail.com>
 
 pkgname=magicassistant-gtk
-pkgver=1.5.1.201704290156
+pkgver=1.5.1.201705240155
 pkgrel=1
 pkgdesc="Card Browser, Library Organizer, Deck Builder and Tournament Manager for Magic the Gathering Card Game"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="http://sourceforge.net/projects/mtgbrowser/"
 license=('EPL')
 depends=(gtk2 'java-runtime>=8' unzip webkitgtk)
 source_x86_64=(https://downloads.sourceforge.net/project/mtgbrowser/Magic_Assistant/1.5.0/magicassistant-${pkgver}-linux.gtk.x86_64.zip magicassistant.desktop)
-source_x86=(https://downloads.sourceforge.net/project/mtgbrowser/Magic_Assistant/1.5.0/magicassistant-${pkgver}-linux.gtk.x86.zip magicassistant.desktop)
-md5sums_x86_64=('1bb5ccab8d342d4fbf1e610d50702a2d'
+md5sums_x86_64=('c40fe440f926a9c1bb8ac7ce7d92a82e'
                 '37f143dbb28032d4fcc7a0a6e4e7f239')
-md5sums_x86=('d1acb16077e7fdf56731be2a835f9d4b'
-             '37f143dbb28032d4fcc7a0a6e4e7f239')
 
 package() {
     msg "Installing..."
