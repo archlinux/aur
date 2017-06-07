@@ -1,11 +1,12 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer: Breizh <breizh.craft.98@openmailbox.org>
 # Contributor: Mr_Men <tetcheve at gmail dot com>
 # Contributor: Hasan Gormus aka hsngrms <hsngrms at yandex dot com>
 # Contributor: uwinkelvos <uwinkelvos at gmx dot de>
+# Contributor: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=nvidiabl
 pkgver=0.88
-pkgrel=4
+pkgrel=5
 pkgdesc="Backlight driver for NVidia graphics adapters"
 arch=('x86_64' 'i686')
 url="https://github.com/guillaumezin/nvidiabl"
@@ -27,7 +28,7 @@ prepare() {
 }
 
 build() {
-  cd $pkgnmame-master
+  cd $pkgname-master
   make
 }
 
@@ -36,7 +37,7 @@ package() {
   _extramodules="extramodules-$(uname -r | cut -f-2 -d'.')-$(uname -r|sed -e 's/.*-//g')"
   _MODPATH="$pkgdir/usr/lib/modules/$_extramodules/"
   install -d "$_MODPATH"
-  install -d "$pkgdi}/usr/bin/"
+  install -d "$pkgdir/usr/bin/"
   install -m 644 "$pkgnmame-master/$pkgnmame.ko" "$_MODPATH"
   install -m 755 scripts/usr/local/sbin/${pkgnmame}ctl "$pkgdir/usr/bin/"
 }
