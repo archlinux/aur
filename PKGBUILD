@@ -1,6 +1,6 @@
 pkgname=xmr-stak-cpu-git
 pkgver=r127.d0f991c
-pkgrel=3
+pkgrel=4
 pkgdesc="Monero CPU miner"
 arch=('x86_64')
 url="https://github.com/nicehash/xmr-stak-cpu"
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-    install -D -m755 "$srcdir/xmr-stak-cpu/bin/xmr-stak-cpu" "$pkgdir/usr/bin/"
+    install -D -m755 "$srcdir/xmr-stak-cpu/bin/xmr-stak-cpu" -t "$pkgdir/usr/bin/"
     install -D -m644 "$srcdir/xmr-stak-cpu/config.txt" "$pkgdir/etc/xmr-stak-cpu.json"
 }
