@@ -1,6 +1,6 @@
 _precmd() {
     CURRENT_WS=$(i3-msg -t get_workspaces|jq -c '.[]| select(.focused)|.num')
-    if [[ $ND_FOCUSED_WS -ne $CURRENT_WS ]]; then
+    if [[ $ND_FOCUSED_WS && $ND_FOCUSED_WS -ne $CURRENT_WS ]]; then
         notify-send -u critical "$ND_CMD" "Done @workspace=$ND_FOCUSED_WS"
     fi
 }
