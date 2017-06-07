@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe <giuscri@gmail.com>
 pkgname=notify-when-done-i3-git
 pkgver=r4.9f1752e
-pkgrel=1
+pkgrel=2
 pkgdesc="Get notifications when commands in non-focused i3's workspaces finish."
 arch=('x86_64')
 url="https://github.com/giuscri/notify-when-done-i3"
