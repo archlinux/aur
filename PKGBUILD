@@ -1,6 +1,6 @@
 pkgname=renderdoc
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(i686 x86_64)
 url="https://github.com/baldurk/renderdoc"
@@ -16,6 +16,7 @@ build() {
         -DBUILD_VERSION_STABLE=ON \
         -DBUILD_VERSION_DIST_CONTACT="https://aur.archlinux.org/packages/renderdoc" \
         -DBUILD_VERSION_DIST_NAME="Arch" \
+        -DBUILD_VERSION_DIST_VER="${pkgver}" \
         -B"${srcdir}/${pkgname}-${pkgver}"/build \
         -H"${srcdir}/${pkgname}-${pkgver}"
   cmake --build "${srcdir}/${pkgname}-${pkgver}"/build
