@@ -1,6 +1,6 @@
 pkgbase = purple-discord-git
 	pkgdesc = A purple-based (Pidgin) plugin for Discord.
-	pkgver = v0.0.r0.gec1292a
+	pkgver = v0.0.r0.g4c4c480
 	pkgrel = 1
 	url = https://github.com/EionRobb/purple-discord
 	arch = i686

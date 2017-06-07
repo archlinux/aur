@@ -2,7 +2,7 @@
 # Contributor: kaptoxic
 
 pkgname=purple-discord-git
-pkgver=v0.0.r0.gec1292a
+pkgver=v0.0.r0.g4c4c480
 pkgrel=1
 pkgdesc="A purple-based (Pidgin) plugin for Discord."
 url='https://github.com/EionRobb/purple-discord'
