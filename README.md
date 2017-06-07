@@ -34,8 +34,8 @@ command you're typing will take very long to execute.
 
 What happens instead is that you realize some command will execute for a long time
 *after* the command has been issued. Also when you notice that you don't have
-the courage to interrupt the execution since who knows?, maybe is going to finish
-in 10 seconds from now - instead it will take another 2, 3 minutes.
+the courage to interrupt the execution to append the alias, since who knows?,
+maybe is going to finish in 10 seconds from now - instead it will take another 2, 3 minutes.
 
 Moreover, the fact that you have to append a command after every command is boring,
 and you'll eventually forget to do that, until you'll stumble into a long command again.
