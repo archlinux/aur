@@ -4,7 +4,7 @@
 
 pkgname=libbitcoin-network
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin P2P Network Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -27,6 +27,10 @@ sha256sums=('a3e8229ae532803b0ed11fd4b2d3d2df93bcf371eb5108a3c95f3994b501d266')
 provides=('libbitcoin-network')
 conflicts=('libbitcoin-network')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -40,14 +44,14 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-network \
     --localstatedir=/var/lib/libbitcoin-network \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
