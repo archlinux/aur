@@ -115,8 +115,6 @@ prepare() {
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
-
-  python2 third_party/libaddressinput/chromium/tools/update-strings.py
 }
 
 build() {
