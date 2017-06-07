@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-headless-addrindex-git
 pkgver=20170103
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Core headless P2P wallet with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
@@ -23,6 +23,10 @@ source=(${pkgname%%-*}::git+https://github.com/btcdrak/bitcoin#branch=addrindex-
 sha256sums=('SKIP')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
+
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
 
 pkgver() {
   cd ${pkgname%%-*}
@@ -46,14 +50,14 @@ build() {
     --with-gui=no \
     --with-incompatible-bdb \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd ${pkgname%%-*}
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
