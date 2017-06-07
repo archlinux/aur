@@ -3,7 +3,7 @@
 # Contributor: mitro <mitro@somecode.com>
 
 pkgname=taskjuggler
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A project management tool for Linux and UNIX system-based operating systems."
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-mail ruby-term-ansicolor)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha1sums=('b4de15c6252bd285a27344b97bc7bd3b337e7943')
+sha1sums=('ff5192289793b5974d28a89c8968c0c92726f96b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
