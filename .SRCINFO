@@ -1,7 +1,7 @@
 pkgbase = xmr-stak-cpu-git
 	pkgdesc = Monero CPU miner
 	pkgver = r127.d0f991c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nicehash/xmr-stak-cpu
 	arch = x86_64
 	license = GPL3
