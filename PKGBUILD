@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-blockchain-git
 pkgver=20170228
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Blockchain Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -28,6 +28,10 @@ sha256sums=('SKIP')
 provides=('libbitcoin-blockchain')
 conflicts=('libbitcoin-blockchain')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
@@ -46,21 +50,14 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-blockchain \
     --localstatedir=/var/lib/libbitcoin-blockchain \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd ${pkgname%-git}
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
-}
-
-check() {
-  cd ${pkgname%-git}
-
-  msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
