@@ -3,13 +3,13 @@
 # Contributor: Morgan LEFIEUX <comete_AT_archlinuxfr.org>
 
 pkgname=ubi_reader
-pkgver=20160830
+pkgver=20170607
 pkgrel=1
 pkgdesc="UBI reader"
 arch=('i686' 'x86_64')
 url="https://github.com/jrspruitt/ubi_reader"
 license=('GPL3')
-depends=('python2' 'python2-lzo')
+depends=('python2' 'python2-lzo' 'python2-setuptools')
 makedepends=('git')
 source=("git://github.com/jrspruitt/ubi_reader.git")
 md5sums=('SKIP')
