@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 _srcname=ffmpeg
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (with all possible libs)"
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ conflicts=(
 )
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'LICENSE')
-sha256sums=('b702a7fc656ac23e276b8c823a2f646e4e6f6309bb2788435a708e69bea98f2f'
+sha256sums=('1998de1ab32616cbf2ff86efc3f1f26e76805ec5dc51e24c041c79edd8262785'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 build() {
@@ -178,8 +178,8 @@ build() {
 
 package() {
     cd "${_srcname}-${pkgver}"
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir" install
     
-    install -D -m755 tools/qt-faststart "${pkgdir}/usr/bin/qt-faststart"
+    install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
     install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
