@@ -1,19 +1,32 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
+# Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-pkgname='python-magic-ahupp'
 _pkgname='python-magic'
+pkgname=('python-magic-ahupp' 'python2-magic-ahupp')
 pkgdesc='A python wrapper for libmagic'
-pkgver=0.4.11
+pkgver=0.4.13
 pkgrel=1
 arch=('any')
 url="https://github.com/ahupp/python-magic"
-license=('GPL')
-source=("https://pypi.python.org/packages/bb/03/1246519939004c60fc34c7bed9c0ab0e7d1b972b9278e5394bed942446a3/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('89021e288d6efd22cde2842349d79939b9664efdbf99f5790c9862a67759ea94')
+license=('MIT')
+makedepends=('python-setuptools' 'python2-setuptools')
 conflicts=('python-magic')
 provides=('python-magic')
+source=("https://github.com/ahupp/${_pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('fd476aeab18792985b18e51c4356677e5a396576bc21717360fc6c81587e872e')
 
-package () {
+package_python-magic-ahupp() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}"
+  python setup.py install --root="${pkgdir}" --optimize='1'
+
+  # doc file
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+package_python2-magic-ahupp() {
+  cd "${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize='1'
+
+  # doc file
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
