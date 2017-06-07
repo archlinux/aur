@@ -2,12 +2,12 @@
 # Git: https://github.com/nogo/archlinux-pkgbuild
 
 # Uncomment, if you want tha last release
-_version=2.2.4
+_version=2.3.1
 
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.2.4
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
 url="https://nextcloud.com/"
@@ -76,5 +76,6 @@ package() {
   # Fix some naming issues
   if [ -f ${pkgdir}/usr/share/applications/nextcloud.desktop ]; then
     sed -Ei 's/Icon(\[.*\])?=nextcloud/Icon\1=Nextcloud/g' ${pkgdir}/usr/share/applications/nextcloud.desktop
+    mv ${pkgdir}/usr/share/applications/nextcloud.desktop ${pkgdir}/usr/share/applications/Nextcloud.desktop
   fi
 }
