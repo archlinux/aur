@@ -8,7 +8,7 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-cvs
-pkgver=20160726
+pkgver=20170518
 pkgrel=1
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt) - latest cvs revision'
 arch=('i686' 'x86_64')
