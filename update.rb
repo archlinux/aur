@@ -1,72 +1,51 @@
 #!/usr/bin/env ruby
-# Initial work on updater script for pkg files.
-# This still is mostly a hack and could be vastly improved.
 
-require 'date'
 require 'net/http'
 
-FF_VERSION = "54.0a2"
+# carch: "x86_64" or "i686"
+def path_for_version(version, carch="x86_64")
+	"https://ftp.mozilla.org/pub/devedition/releases/#{version}/linux-#{carch}/de/firefox-#{version}.tar.bz2"
+end
 
 # Check current version.
 pkgbuild = File.read "PKGBUILD"
-current_version = Date.new(
-	/^_release_year=(\d+)$/.match(pkgbuild)[1].to_i,
-	/^_release_month=(\d+)$/.match(pkgbuild)[1].to_i,
-	/^_release_day=(\d+)$/.match(pkgbuild)[1].to_i
-)
+current_version = /^pkgver=(.*)$/.match(pkgbuild)[1].to_s
+puts "Current packaged version: #{current_version}"
 
-def attempt_upgrade (date)
-	# Format date components.
-	year = date.year
-	month = "%02d" % date.month
-	day = "%02d" % date.day
-	puts "Attempting upgrade to version #{date}"
-
-	# Find directory on server.
-	request_url = URI "https://ftp.mozilla.org/pub/firefox/nightly/#{year}/#{month}/"
-	response = Net::HTTP.get(request_url)
-	search = %r~href="/(pub/firefox/nightly/#{year}/#{month}/#{year}-#{month}-#{day}-([0-9-]+)-mozilla-aurora-l10n/)"~
-	matches = response.scan(search)
-	return false if matches.empty?
-	release_url, release_time = matches.max_by{|_, t| t}
-
+def attempt_upgrade(version)
 	# Check if the release actually exists (sometimes it's not included in the directory).
-	base_url = "https://ftp.mozilla.org/#{release_url}"
-	filename = "firefox-#{FF_VERSION}.de.linux-x86_64.tar.bz2"
-	uri = URI(base_url + filename)
+	uri = URI(path_for_version(version))
+	puts "attempting upgrade (#{version}), checking: #{uri}"
 	
 	request = Net::HTTP.new uri.host
 	response = request.request_head uri.path
 	if response.code.to_i != 200
-		puts "Found directory on server (#{year}-#{month}-#{day}) but no file."
 		return false
 	end
 
 	# Update PKGBUILD file.
 	pkgbuild = File.read "PKGBUILD"
-	pkgbuild.gsub!(/^_release_year=.*$/, "_release_year=#{year}")
-	pkgbuild.gsub!(/^_release_month=.*$/, "_release_month=#{month}")
-	pkgbuild.gsub!(/^_release_day=.*$/, "_release_day=#{day}")
-	pkgbuild.gsub!(/^_release_time=.*$/, "_release_time=#{release_time}")
-	pkgbuild.gsub!(/^_release_version=.*$/, "_release_version=#{FF_VERSION}")
+	pkgbuild.gsub!(/^pkgver=.*$/, "pkgver=#{version}")
 	
 	File.open "PKGBUILD", "w" do |file|
-	    file.write pkgbuild
+		file.write pkgbuild
 	end
 	
 	true
 end
 
-# Update logic. Start with tomorrow (to account for timezone differences) and work back in time
-# and pick the most recent version or cancel if we arrive at the current version.
-new_version = Date.today.next_day
+# Update logic: Start with current version, alway incrementing the beta part by one and see if it exists, if yes
+#	we perform an additional step if not we are happy with what we've found.
 success = false
-while current_version < new_version
-	success = attempt_upgrade(new_version)
-	if success
-		break
+v_num, v_patch = current_version.split("b")
+loop do
+	v_patch = v_patch.to_i + 1
+	new_version = "#{v_num}b#{v_patch}"
+
+	if attempt_upgrade(new_version)
+		success = false
 	else
-		new_version = new_version.prev_day
+		break
 	end
 end
 
@@ -82,10 +61,10 @@ if success
 
 	# If run with --publish it will be uploaded to the remotes.
 	if ARGV.include? "--publish"
-	    puts "Publishing update to AUR."
-	    system "git add PKGBUILD .SRCINFO"
-	    system "git commit -m 'Automatic upgrade to version #{FF_VERSION} (#{new_version}).'"
-	    system "git push"
+		puts "Publishing update to AUR."
+		system "git add PKGBUILD .SRCINFO"
+		system "git commit -m 'Automatic upgrade to version #{FF_VERSION} (#{new_version}).'"
+		system "git push"
 	end
 else
 	puts "No update was available."
