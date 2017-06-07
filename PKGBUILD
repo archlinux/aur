@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=todoist
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
@@ -9,8 +9,8 @@ url="https://github.com/sachaos/todoist"
 license=('MIT')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
-source=("https://github.com/sachaos/todoist/archive/$pkgver.tar.gz")
-sha256sums=('81ad919ae4ac3f9127c456062cabc4d06901c7931b0f995384859c3a973b18e9')
+source=("https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz")
+sha256sums=('d51605b755f013782fe8b1609cde9d5c08150e366be18c2263569800f55df37a')
 
 prepare() {
  mkdir -p "$srcdir/go"
