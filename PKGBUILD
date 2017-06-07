@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
@@ -34,6 +34,10 @@ provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin.install
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 build() {
   cd "$srcdir/${pkgname%-core}-$pkgver"
 
@@ -50,14 +54,14 @@ build() {
     --with-gui=no \
     --disable-wallet \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd "$srcdir/${pkgname%-core}-$pkgver"
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
