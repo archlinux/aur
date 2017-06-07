@@ -1,14 +1,13 @@
 # Maintainer: Sum01 https://github.com/sum01
 pkgname=('vcash-electron')
 pkgver=0.32.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Electron GUI bundled with the Vcash wallet."
 arch=('x86_64')
 url="https://github.com/whphhg/vcash-electron"
 license=('GPL3' 'AGPL3')
 depends=('libxss' 'gconf' 'nss' 'alsa-lib' 'gtk2' 'libxtst')
 provides=('vcash=0.6.0.3')
-conflicts=('vcash')
 source=("https://github.com/whphhg/vcash-electron/releases/download/v$pkgver/Vcash-Electron-GUI-$pkgver-linux64.zip"
 "https://github.com/whphhg/vcash-electron/raw/master/build/icons/16x16.png"
 "https://github.com/whphhg/vcash-electron/raw/master/build/icons/32x32.png"
