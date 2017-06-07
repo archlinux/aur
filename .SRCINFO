@@ -1,7 +1,7 @@
 pkgbase = powershell-beta
 	pkgdesc = A cross-platform automation and configuration tool/framework (beta version)
 	pkgver = 6.0.0.beta.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PowerShell/PowerShell
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = powershell-beta
 	makedepends = proot
 	makedepends = dotnet-cli-git
 	depends = icu
-	conflicts = powershell-git
+	provides = powershell
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v6.0.0-beta.2
 	source = pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
 	source = googletest::git+https://github.com/google/googletest.git
