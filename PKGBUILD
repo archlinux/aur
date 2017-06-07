@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-protocol-git
 pkgver=20170304
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Blockchain Query Protocol"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -27,6 +27,10 @@ sha256sums=('SKIP')
 provides=('libbitcoin-protocol')
 conflicts=('libbitcoin-protocol')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
@@ -45,14 +49,14 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-protocol \
     --localstatedir=/var/lib/libbitcoin-protocol \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd ${pkgname%-git}
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
