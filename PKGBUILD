@@ -1,11 +1,11 @@
 pkgname=psi-plus-plugins-qt5-git
-pkgver=20170602
+pkgver=20170607
 pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('i686' 'x86_64')
 url="http://psi-plus.com"
 license=('GPL2')
-depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'psi-plus-qt5-git')
+depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'psi-plus-qt5-git' 'qt5-webengine')
 conflicts=('psi-plus-plugins-git')
 makedepends=('libotr' 'tidyhtml')
 optdepends=('libotr: for OTR plugin'
@@ -23,12 +23,14 @@ pkgver() {
 
 prepare() {
     cp -v psiplugin.pri psi-plus-plugins/
+    
 }
 
 build() {
     cd psi-plus-plugins
-
-    for plugin in generic/* unix/*; do
+    # Kill broken plugins
+    rm -rf generic/juickplugin
+    for plugin in generic/*; do
         if [ -d "$srcdir/psi-plus-plugins/$plugin" ]; then
             cd "$srcdir/psi-plus-plugins/$plugin"
             qmake-qt5 PREFIX="/usr" QMAKE_STRIP=
