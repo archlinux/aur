@@ -3,6 +3,11 @@ post_install() {
     echo '## [[ -f /usr/share/nwd/nwd-preexec.sh ]] && source /usr/share/nwd/nwd-preexec.sh'
 }
 
+post_update() {
+    echo '## Update will be effective only after a source of your bashrc,'
+    echo '## or by reopening the shell.'
+}
+
 post_removal() {
     echo "## To complete removal, remove the source of nwd/preexec.sh from your bashrc"
 }
