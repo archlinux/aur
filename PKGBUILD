@@ -1,8 +1,8 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=prettier
-_npmver=1.4.0
+_npmver=1.4.2
 pkgname=prettier
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="An opinionated JavaScript formatter inspired by refmt with advanced support for language features from ES2017, JSX, Flow, TypeScript, CSS/LESS/SCSS"
 arch=(any)
@@ -22,5 +22,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('e648862b3737c85e3592cf85571dc42939bb5216')
-sha256sums=('667609131e1975170bceba6526e0c4173a6463b78c4063b7343a42a5f74877f1')
+sha1sums=('bcdd95ed1eca434ac7f98ca26ea4d25a2af6a2ac')
+sha256sums=('ed483f4075232b45503a8e39884c91609d3c3a18e3a01f9f8e404fc0b529326b')
