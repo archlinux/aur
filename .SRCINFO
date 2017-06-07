@@ -1,0 +1,14 @@
+pkgbase = gog-dont-starve-shipwrecked
+	pkgdesc = Don't Starve: Shipwrecked DLC
+	pkgver = 2.3.0.5
+	pkgrel = 1
+	url = https://www.kleientertainment.com/games/dont-starve
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gog-dont-starve
+	source = file://gog_don_t_starve_shipwrecked_dlc_2.3.0.5.sh
+	sha256sums = 1a06da5546803c9c8b17f99b876362dec8fc8c85ec26277d10011879ffd19267
+
+pkgname = gog-dont-starve-shipwrecked
+
