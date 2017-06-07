@@ -3,7 +3,7 @@
 
 pkgname=guacamole-server
 pkgver=0.9.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64')
 url="http://guacamole.sourceforge.net/"
@@ -28,7 +28,7 @@ build() {
 	PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
 	CFLAGS+=" -I/usr/include/openssl-1.0" \
 	LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
-	./configure --with-openssl --prefix=/usr --sbindir=/usr/bin CPPFLAGS="-Wno-error=pedantic"
+	./configure --with-openssl --prefix=/usr --sbindir=/usr/bin CPPFLAGS="-Wno-error=pedantic -Wno-error=format-overflow"  ## Wno-error=format-overflow added to workaround build in GCC 7.1.1
 	make
 }
  
