@@ -1,0 +1,12 @@
+diff --git a/Srcs/jsonlib/jsoncpp.cpp b/Srcs/jsonlib/jsoncpp.cpp
+index c373405..1723253 100644
+--- a/Srcs/jsonlib/jsoncpp.cpp
++++ b/Srcs/jsonlib/jsoncpp.cpp
+@@ -1446,6 +1446,7 @@ bool OurReader::readToken(Token& token) {
+     ok = readStringSingleQuote();
+     break;
+     } // else continue
++    [[gnu::fallthrough]];
+   case '/':
+     token.type_ = tokenComment;
+     ok = readComment();
