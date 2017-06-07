@@ -11,13 +11,15 @@ arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/gps"
 license=('GPL')
 
-depends=("clang" "gnatcoll" "gtkada")
+depends=("clang" "gnatcoll" "gtkada" "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic")
 makedepends=("libadalang")
 
 source=(git+https://github.com/AdaCore/gps.git
-        patch-Makefile.in)
+        patch-Makefile.in
+        patch-docs-Makefile.in)
 
 md5sums=('SKIP'
+         'SKIP'
          'SKIP')
 
 
@@ -26,6 +28,7 @@ prepare()
   cd $srcdir/gps
 
   patch -p0 -i ../patch-Makefile.in
+  patch -p0 -i ../patch-docs-Makefile.in
 
   ## Force use of pyhon2
   #
