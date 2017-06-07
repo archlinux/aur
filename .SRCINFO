@@ -1,0 +1,14 @@
+pkgbase = nodejs-rollup-watch
+	pkgdesc = Watch files for changes and perform incremental rebuilds with Rollup
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/rollup/rollup-watch
+	arch = any
+	license = MIT
+	depends = npm
+	noextract = rollup-watch-4.0.0.tgz
+	source = http://registry.npmjs.org/rollup-watch/-/rollup-watch-4.0.0.tgz
+	sha256sums = 736772714eccfc264181faefd736de4f5447d5cf0e1d9df2623a82e4ce625ea5
+
+pkgname = nodejs-rollup-watch
+
