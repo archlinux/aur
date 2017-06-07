@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-decklink
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg' 'ffmpeg-git')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
-        'UNREDISTRIBUTABLE.txt')
+        'LICENSE')
 sha256sums=('b702a7fc656ac23e276b8c823a2f646e4e6f6309bb2788435a708e69bea98f2f'
             'bc2b76d4f5be42c5b0a6a07f1b754d29392c84f8234f3b6ab9e7858fdc4043ff')
 
@@ -92,8 +92,8 @@ build() {
 
 package() {
   cd "ffmpeg-${pkgver}"
-
-  make DESTDIR="$pkgdir" install install-man
-  install -Dm 755 tools/qt-faststart "${pkgdir}/usr/bin/"
-  install -D -m644 "${srcdir}/UNREDISTRIBUTABLE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/UNREDISTRIBUTABLE.txt"
+  make DESTDIR="$pkgdir" install
+  
+  install -D -m755 tools/qt-faststart  "${pkgdir}/usr/bin/qt-faststart"
+  install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,1 +1,0 @@
-This package uses nonfree code and thus cannot be redistributed in binary form.
