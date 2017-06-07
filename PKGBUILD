@@ -4,12 +4,12 @@
 pkgname=perl-audio-mixer
 _cpanname=Audio-Mixer
 pkgver=0.7
-pkgrel=9
+pkgrel=10
 pkgdesc="Sound mixer control using ioctl"
 arch=(i686 x86_64)
 license=(PerlArtistic GPL)
 options=('!emptydirs')
-depends=(perl)
+depends=('perl>=5.26' 'perl<5.29')
 url="https://metacpan.org/release/Audio-Mixer"
 source=("http://cpan.metacpan.org/authors/id/S/SE/SERGEY/$_cpanname-$pkgver.tar.gz")
 md5sums=('5aaa808a4852ed68f952705172ece2a8')
