@@ -25,7 +25,7 @@ source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/FileBot_$pkgv
         https://github.com/java-native-access/jna/archive/$_jnaver.tar.gz
         $pkgname-arch.sh $pkgname.svg $pkgname.desktop)
 
-md5sums=('961dbdb7d6c62c133952df2f9f427d96'
+md5sums=('47f4a51ee060cf5fec68843fecbbeeb6'
          '2de8ba99fc91809935e6c2ab02f49a82'
          'd94b4245dd3b226872f05fd2bf75bd1c'
          '04f46be047049448dba3f0de29fe192d'
