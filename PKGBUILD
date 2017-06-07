@@ -3,7 +3,7 @@
 pkgname=homemaker-git
 _pkgname=homemaker
 pkgver=r126.87f1a4e
-pkgrel=1
+pkgrel=2
 pkgdesc="Homemaker is a lightweight tool for straightforward and efficient management of *nix configuration files found in the user's home directory, commonly known as dot-files."
 arch=('any')
 url="https://github.com/FooSoft/homemaker"
@@ -26,6 +26,7 @@ pkgver() {
 
 package() {
     cd "$pkgname"
+    go get -d
     go build -o "$_pkgname"
     mkdir -p "${pkgdir}/usr/bin"
     install -D -m755 ./homemaker "${pkgdir}/usr/bin/$_pkgname"

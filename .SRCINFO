@@ -1,7 +1,7 @@
 pkgbase = homemaker-git
 	pkgdesc = Homemaker is a lightweight tool for straightforward and efficient management of *nix configuration files found in the user's home directory, commonly known as dot-files.
 	pkgver = r126.87f1a4e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FooSoft/homemaker
 	arch = any
 	license = MIT
