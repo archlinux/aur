@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -44,6 +44,10 @@ backup=('etc/obelisk/bs/bs.cfg'
         'etc/logrotate.d/bs')
 install=bs.install
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -75,14 +79,14 @@ build() {
     --localstatedir=/var/lib/libbitcoin-server \
     --with-bash-completiondir=/usr/share/bash-completion/completions \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
