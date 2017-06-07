@@ -1,0 +1,9 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!gog-dont-starve
+!gog-dont-starve.desktop

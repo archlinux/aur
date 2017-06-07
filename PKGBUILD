@@ -1,51 +1,59 @@
-# Maintainer: Ainola
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: Ainola
 
-pkgname=gog-dont-starve
-pkgver=2.1.0.3
-pkgrel=2
+# Notes:
+#   + gog:// DLAGENT:
+#       - A gog:// DLAGENT can be configured in /etc/makepkg.conf to
+#         automatically pull game files from GOG.
+#       - https://github.com/Sude-/lgogdownloader
+
+pkgname='gog-dont-starve'
+pkgver=2.6.0.8
+pkgrel=1
 pkgdesc="An uncompromising wilderness survival game full of science and magic"
-url="https://www.kleientertainment.com/games/dont-starve"
+url='https://www.kleientertainment.com/games/dont-starve'
 license=('custom')
-arch=('i686' 'x86_64')
-depends=('sdl2' 'libcurl-gnutls')
-optdepends=('gog-dont-starve-rog: Reign of Giants DLC')
-source=("gog://gog_don_t_starve_${pkgver}.sh"
-        "${pkgname}.desktop")
-sha256sums=('8f8fca4d89626e43f4ee2d378cc30daf2a45c24c91a3bc1694d83a00fb0a062b'
-            '609856aae2d19877f8afb764a8db15a8932e535b719cc342f4b42c3d0e4b1956')
-
-# You need to download the gog.com installer file manually or with lgogdownloader.
-DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
-
-# Prevent compressing final package
-PKGEXT='.pkg.tar'
-
-prepare(){
-    cd "$srcdir/data/noarch"
-    [ $CARCH == "x86" ]    && rm -r "game/dontstarve64"
-    [ $CARCH == "x86_64" ] && rm -r "game/dontstarve32"
-    # The launcher expects the user to be in the game dir
-    echo -e "#!/bin/sh\ncd /opt/${pkgname}\n./start.sh" > "${srcdir}/${pkgname}"
-}
+arch=('x86_64')
+optdepends=(
+    'gog-dont-starve-rog: Reign of Giants DLC'
+    'gog-dont-starve-shipwrecked: Shipwrecked DLC'
+)
+source=(
+    "${pkgname}"
+    "${pkgname}.desktop"
+    "file://gog_don_t_starve_${pkgver}.sh"
+)
+sha256sums=(
+    '9827bed58903e8a351b4f52f4728b37c6e7b31abb206f2fff99e1467ae967179'
+    '609856aae2d19877f8afb764a8db15a8932e535b719cc342f4b42c3d0e4b1956'
+    '6cb3f1572f7b1d25d7b561cab7b144b3ad8ade0b84a9b5dbcfdaf42ede5cc28d'
+)
 
 package(){
-    cd "$srcdir"
-    # Install game
-    install -d "${pkgdir}/opt/${pkgname}/"
-    install -d "${pkgdir}/opt/${pkgname}/support"
-    install -d "${pkgdir}/usr/bin/"
-    cp -r "data/noarch/game/" "${pkgdir}/opt/${pkgname}/"
-    install -Dm755 "data/noarch/start.sh" \
-        "${pkgdir}/opt/${pkgname}/"
-    install -Dm755 data/noarch/support/*.{sh,shlib} -t \
-        "${pkgdir}/opt/${pkgname}/support"
+    cd "${srcdir}"
 
-    # Desktop integration
-    install -Dm 644 "data/noarch/support/icon.png" \
-        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "data/noarch/docs/End User License Agreement.txt" \
+    install -d "${pkgdir}/opt/${pkgname}/"
+    install -d "${pkgdir}/opt/${pkgname}/support/"
+    install -d "${pkgdir}/usr/bin/"
+
+    cp -r data/noarch/game/ "${pkgdir}/opt/${pkgname}/"
+
+    install -D -m 755           \
+        "${srcdir}/${pkgname}"  \
+        "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m 755           \
+        data/noarch/start.sh    \
+        "${pkgdir}/opt/${pkgname}/"
+    install -D -m 755                       \
+        data/noarch/support/*.{sh,shlib} -t \
+        "${pkgdir}/opt/${pkgname}/support/"
+    install -D -m 644                                       \
+        'data/noarch/docs/End User License Agreement.txt'   \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${pkgname}.desktop" \
+    install -D -m 644                   \
+        "data/noarch/support/icon.png"  \
+        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -D -m 644                   \
+        "${srcdir}/${pkgname}.desktop"  \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm 755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
