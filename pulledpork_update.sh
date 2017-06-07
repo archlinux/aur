@@ -16,19 +16,19 @@ fi
 ( ulimit -t 60; /usr/bin/pulledpork.pl -P -c /etc/pulledpork/pulledpork.conf )
 
 # restart snort
-if systemctl is-active snort &>/dev/null
+if systemctl -q is-active snort.service &>/dev/null
 then
-	systemctl restart snort
+	systemctl -q try-restart snort.service
 fi
 
 # restart suricata
-if systemctl is-active suricata &>/dev/null
+if systemctl -q is-active suricata.service &>/dev/null
 then
-	systemctl restart suricata
+	systemctl -q try-restart suricata.service
 fi
 
 # restart barnyard2
-if systemctl is-active barnyard2 &>/dev/null
+if systemctl -q is-active barnyard2.service &>/dev/null
 then
-	systemctl restart barnyard2
+	systemctl -q try-restart barnyard2.service
 fi
