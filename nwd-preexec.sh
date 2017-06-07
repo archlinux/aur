@@ -1,15 +1,16 @@
 _precmd() {
     CURRENT_WS=$(i3-msg -t get_workspaces|jq -c '.[]| select(.focused)|.num')
-    if [[ $ND_FOCUSED_WS && $ND_FOCUSED_WS -ne $CURRENT_WS ]]; then
-        notify-send -u critical "$ND_CMD" "Done @workspace=$ND_FOCUSED_WS"
+    if [[ $NWD_FOCUSED_WS && $NWD_FOCUSED_WS -ne $CURRENT_WS ]]; then
+        notify-send "$NWD_CMD" "Done @workspace=$NWD_FOCUSED_WS"
     fi
 
-    ND_FOCUSED_WS=
+    NWD_FOCUSED_WS=
 }
 
 _preexec() {
-    ND_FOCUSED_WS=$(i3-msg -t get_workspaces|jq -c '.[]| select(.focused)|.num')
-    ND_CMD=$1
+    NWD_FOCUSED_WS=$(i3-msg -t get_workspaces|jq -c '.[]| select(.focused)|.num')
+    NWD_CMD=$1
+    echo "*** $NWD_CMD"
 }
 
 preexec_functions+=(_preexec)
