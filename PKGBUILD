@@ -5,12 +5,12 @@
 
 pkgname=stone-soup-tiles-git
 _pkgname=crawl
-pkgver=0.21.a0.r2.ge494091ab2
+pkgver=0.21.a0.r47.g7c8f5373d8
 pkgrel=1
 pkgdesc="Community maintained variant of Linley's Dungeon Crawl (tiles) - git version"
 arch=('i686' 'x86_64')
 url="http://crawl.develz.org"
-depends=(lua libpng libx11 ncurses sdl2_image)
+depends=(lua51 libpng libx11 ncurses sdl2_image)
 makedepends=(pngcrush git)
 license=('GPL2')
 conflicts=('crawl' 'stone-soup-tiles')
@@ -31,12 +31,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}/crawl-ref/source"
-  make prefix="${pkgdir}/usr" TILES=y SAVEDIR='~/.stone-soup'
+  make prefix="${pkgdir}/usr" TILES=y SAVEDIR='~/.crawl'
 }
 
 package() {
   cd "${srcdir}/${_pkgname}/crawl-ref/source"
-  make install prefix="${pkgdir}/usr" TILES=y SAVEDIR='~/.stone-soup'
+  make install prefix="${pkgdir}/usr" TILES=y SAVEDIR='~/.crawl'
   mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir/usr/share/pixmaps
   cp ${srcdir}/${_pkgname}/crawl-ref/source/dat/tiles/stone_soup_icon-32x32.png $pkgdir/usr/share/pixmaps/$pkgname.png
