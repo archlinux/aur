@@ -4,8 +4,8 @@
 # Contributor: Mikhail Burdin <xdshot9000@gmail.com>
 
 pkgname=darkplaces-xonotic
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="An advanced Quake 1 game engine (Xonotic branch)"
 arch=('i686' 'x86_64')
 url="http://icculus.org/twilight/darkplaces/"
@@ -17,7 +17,7 @@ provides=('darkplaces')
 install=$pkgname.install
 source=(https://github.com/xonotic/darkplaces/archive/xonotic-v$pkgver.tar.gz
         $pkgname.desktop)
-sha256sums=('61c2225e7a740af3111e4ebb260d7aceddd7e1f3e632b39f6dae22150097c431'
+sha256sums=('203450aaf67f901e64442a64f5ea4e27d98a6e157618b8bd62311652e3f18a4a'
             '476f513f85da873ce93c89f2078bf9c2ea244e3e13a19c6ab02e818ddf221c37')
 
 build() {
@@ -25,7 +25,7 @@ build() {
 
   # Compile
   make OPTIM_RELEASE="${CFLAGS}" DP_FS_BASEDIR=/usr/share/games/quake DP_LINK_TO_LIBJPEG=1 cl-release
-  make OPTIM_RELEASE="${CFLAGS}" DP_FS_BASEDIR=/usr/share/games/quake DP_LINK_TO_LIBJPEG=1 sdl2-release
+  make OPTIM_RELEASE="${CFLAGS}" DP_FS_BASEDIR=/usr/share/games/quake DP_LINK_TO_LIBJPEG=1 sdl-release
   make OPTIM_RELEASE="${CFLAGS}" DP_FS_BASEDIR=/usr/share/games/quake DP_LINK_TO_LIBJPEG=1 sv-release
 }
 
