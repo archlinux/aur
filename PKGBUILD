@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-explorer-git
 pkgver=20170307
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -33,6 +33,10 @@ sha256sums=('SKIP' 'SKIP')
 provides=('libbitcoin-explorer')
 conflicts=('libbitcoin-explorer')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
@@ -52,14 +56,14 @@ build() {
     --localstatedir=/var/lib/libbitcoin-explorer \
     --with-bash-completiondir=/usr/share/bash-completion/completions \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd ${pkgname%-git}
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
