@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-protocol
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Blockchain Query Protocol"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -24,6 +24,10 @@ license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
 sha256sums=('506f7ca608c91ccefd467f2a34d36ed5c671a1b7b1dc6bca8f0ebacd887f7837')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -37,14 +41,14 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-protocol \
     --localstatedir=/var/lib/libbitcoin-protocol \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
