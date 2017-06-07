@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-consensus-git
 pkgver=20170212
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Consensus Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -24,6 +24,10 @@ sha256sums=('SKIP')
 provides=('libbitcoin-consensus')
 conflicts=('libbitcoin-consensus')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
@@ -42,14 +46,14 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-consensus \
     --localstatedir=/var/lib/libbitcoin-consensus \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd ${pkgname%-git}
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
