@@ -11,6 +11,7 @@ license=('GPL')
 depends=('gtkmm3' 'gnet' 'freealut')
 makedepends=('git' 'asciidoc' 'texlive-latexextra' 'w3m' 'dos2unix')
 conflicts=('freedoko')
+provides=('freedoko')
 source=("git+https://gitlab.com/dknof/FreeDoko.git"
         "freedoko-git-archlinux.patch")
 sha256sums=('SKIP'

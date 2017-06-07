@@ -14,6 +14,7 @@ pkgbase = freedoko-git
 	depends = gtkmm3
 	depends = gnet
 	depends = freealut
+	provides = freedoko
 	conflicts = freedoko
 	source = git+https://gitlab.com/dknof/FreeDoko.git
 	source = freedoko-git-archlinux.patch
