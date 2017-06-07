@@ -11,6 +11,11 @@ arch=('x86_64')
 makedepends=()
 provides=('minishift')
 
+optdepends=(
+  'virtualbox: to use minishift with VirtualBox virtualization'
+  'docker-machine-kvm: to use minishisft with KVM virtualization'
+)
+
 source=(https://github.com/minishift/minishift/releases/download/v${minishift_version}/minishift-${minishift_version}-linux-amd64.tgz)
 sha256sums=('6eb46670dd7df1696db20137cfc9bff6a84d42d9e846a329746c53a36163bb90')
 
