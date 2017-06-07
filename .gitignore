@@ -2,4 +2,3 @@ src
 pkg
 *x86_64.pkg.tar.xz
 snort-*.tar.gz
-emerging.rules.tar.gz

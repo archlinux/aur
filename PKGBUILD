@@ -9,14 +9,14 @@
 pkgname=snort-nfqueue
 _pkgname=snort
 pkgver=2.9.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64')
 url='http://www.snort.org'
 license=('GPL')
 provides=('snort')
 conflicts=('snort')
-depends=('libdaq-nfqueue' 'libdnet' 'libnetfilter_queue' 'libpcap' 'openssl' 'pcre' 'zlib')
+depends=('libdaq-nfqueue' 'libdnet' 'libnetfilter_queue' 'libpcap' 'openssl' 'pcre' 'pulledpork' 'zlib')
 backup=('etc/snort/snort.conf'
         'etc/snort/homenet.conf'
         'etc/snort/rules/local.rules'
@@ -28,15 +28,13 @@ backup=('etc/snort/snort.conf'
 options=('!makeflags' '!libtool')
 install='snort.install'
 source=("https://www.snort.org/downloads/snort/${_pkgname}-${pkgver}.tar.gz"
-	"http://rules.emergingthreats.net/open/${_pkgname}-2.9.0/emerging.rules.tar.gz"
         'snort.conf'
         'homenet.conf'
         'local.rules'
         'logrotate'
 	'snort.service')
 sha256sums=('71b147125e96390a12f3d55796ed5073df77206bd3563d84d3e5a1f19e7d7a56'
-            '8ba237d55d753af880db217811ff0fad3812caf014b7b239a1cd067f58e61883'
-            'c947dcf8b243647537ca998bd6271fc06f9e6a33af29aff7ff0951430bebcff4'
+            'd6ae35120698353a6066088401d945fd94e6fed6ae9370d0fba4d5436d71cc16'
             'b65d8d8e37f686244dfb7293b1ea378f1dfd8141c14dbaf5e83dba9440152808'
             'ec4d81936b3905ba980ee694ae77ad15d5adda45c9f87fa0c27adc38f11bca08'
             '4df93871c41f94d688a6c8b9762fa221a703b54d309ee1436c90eebbd3fb8c9d'
@@ -67,7 +65,4 @@ package() {
   install -D -m644 ../snort.service "${pkgdir}/usr/lib/systemd/system/snort.service"
   sed -i 's#/usr/local/lib/#/usr/lib/#' "${pkgdir}/etc/snort/snort.conf"
   install -Dm644 ../logrotate "${pkgdir}/etc/logrotate.d/snort"
-
-  # emergingthreats rules
-  cp ${srcdir}/rules/* "${pkgdir}/etc/snort/rules"
 }

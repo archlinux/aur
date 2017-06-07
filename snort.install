@@ -4,12 +4,13 @@ post_install() {
   usr/bin/passwd -l snort &>/dev/null
 
   [ -f var/log/snort/alert ] || : >var/log/snort/alert
-  chown snort.snort var/log/snort/ -R
+  chown -R snort.snort var/log/snort/
+
+  /usr/bin/nohup /usr/bin/pulledpork_update.sh /etc/snort/rules/snort.rules > /dev/null 2>&1 &
 
 cat << _EOF  
 
 >>> EDIT /etc/snort/homenet.conf file to match your local network.
->>> Also EDIT /etc/snort/rules/emerging.conf as per your requirement.
 >>> Add local rules to /etc/snort/rules/local.rules
 
 >>> TIP: iptables rule to monitor all FORWARDed traffic:
