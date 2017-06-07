@@ -13,7 +13,7 @@ url="https://github.com/scikit-fuzzy/scikit-fuzzy"
 license=('custom')
 makedepends=('python' 'python-setuptools' 'python-numpy' 'python-scipy' 'python-networkx' 'python2' 'python2-setuptools' 'python2-numpy' 'python2-scipy' 'python2-networkx')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e9d974e6ea9f660934cbbc0edfc7091ed0ea9e3b2cc242b89a0f821560e9f118')
+sha256sums=('411fe39402628e1294620b9ebf731e9c8682a024d7a754a1a8cc23372b9820fd')
 
 prepare() {
   cd "$srcdir"
@@ -50,6 +50,3 @@ package_python-scikit-fuzzy() {
 }
 
 # vim:set ts=2 sw=2 et:
-
-
-sha256sums=('411fe39402628e1294620b9ebf731e9c8682a024d7a754a1a8cc23372b9820fd')
