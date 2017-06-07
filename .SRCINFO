@@ -1,7 +1,7 @@
 pkgbase = bacula5-client
 	pkgdesc = A network backup tool for Linux, Unix, Mac and Windows - client edition
 	pkgver = 5.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bacula.org/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = bacula5-client
 	arch = armv6h
 	license = GPL2
 	depends = openssl
-	provides = bacula-fd=5.2.13
-	conflicts = bacula bacula-client
+	provides = bacula5-client=5.2.13
+	conflicts = bacula bacula-client bacula-fd
 	backup = etc/bacula/bconsole.conf
 	backup = etc/bacula/bacula-fd.conf
 	source = http://downloads.sourceforge.net/project/bacula/bacula/5.2.13/bacula-5.2.13.tar.gz

@@ -5,11 +5,11 @@
 
 pkgname=bacula5-client
 pkgver=5.2.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A network backup tool for Linux, Unix, Mac and Windows - client edition'
-conflicts=('bacula' 'bacula-client')
+conflicts=('bacula' 'bacula-client' 'bacula-fd')
 depends=('openssl')
-provides=("bacula-fd=${pkgver}")
+provides=("bacula5-client=${pkgver}")
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url='http://www.bacula.org/'
 license=('GPL2')
