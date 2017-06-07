@@ -3,7 +3,7 @@
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
@@ -64,6 +64,7 @@ package() {
     cd $_name
 
     make install DESTDIR="$pkgdir"
+    install -D -m644 ${_name}.sf2 "$pkgdir"/usr/share/$_name
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
