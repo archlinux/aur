@@ -3,6 +3,8 @@ _precmd() {
     if [[ $ND_FOCUSED_WS && $ND_FOCUSED_WS -ne $CURRENT_WS ]]; then
         notify-send -u critical "$ND_CMD" "Done @workspace=$ND_FOCUSED_WS"
     fi
+
+    ND_FOCUSED_WS=
 }
 
 _preexec() {
