@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-client
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Client Query Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -25,6 +25,10 @@ license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
 sha256sums=('186fed5a3a0107aa2c229aa078493d4aa658db2d779e36e96214d5d44a180bc4')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -39,14 +43,14 @@ build() {
     --localstatedir=/var/lib/libbitcoin-client \
     --with-gnu-ld \
     --without-examples
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
