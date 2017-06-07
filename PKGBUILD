@@ -1,9 +1,11 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
 #
+# Contributor: ValHue <vhuelamo at gmail dot com>
+#
 _pkgname="Snap4Arduino_desktop-gnu"
 pkgname="snap4arduino"
-pkgver="1.2.2"
+pkgver="1.2.3"
 pkgrel="1"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
@@ -15,8 +17,8 @@ provides=("${pkgname}")
 source_i686=("http://${pkgname}.org/downloads/${pkgver}/Snap4Arduino_desktop-gnu-32_${pkgver}.tar.gz")
 source_x86_64=("http://${pkgname}.org/downloads/${pkgver}/Snap4Arduino_desktop-gnu-64_${pkgver}.tar.gz")
 
-sha256sums_i686=('790360217abc32cb4f996cf4d700d96a2667f9ccfd7a6cba8d1f8dd90f857b15')
-sha256sums_x86_64=('3fd4a56d4396c9946f26615a35189bde128180fa8b904eade9b5779ceb5ef75c')
+sha256sums_i686=('4992756afc07978c57f77b2d5888ddee2f4c02dfdba776bc45a9923fcdb80e76')
+sha256sums_x86_64=('90addb370593ebdc36649fc8e56be505f6bd03306a508a2690d7baa1eb937e06')
 
 if [[ $CARCH == i686 ]]; then
     _dir="32";
