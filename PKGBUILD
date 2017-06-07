@@ -2,7 +2,7 @@
 
 pkgname=xkcdpass
 _pkgname=XKCD-password-generator-xkcdpass
-pkgver=1.10.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Generate secure multiword passwords/passphrases, inspired by XKCD"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('cracklib: alternative wordlist'
             'words: alternative wordlist')
 options=(!emptydirs)
 source=("https://github.com/redacted/XKCD-password-generator/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0ad77067c89b0f3f067f4c783377e56f801124bd4152d6c64945d6dbb260e907')
+sha256sums=('d1ffe2d572e7ca9015d8d57881e18dcc2149897d00ba55072bfa1d409025059c')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
