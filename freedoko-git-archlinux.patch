@@ -1,0 +1,143 @@
+diff -ru freedoko-svn-orig/Makefile freedoko-svn/Makefile
+--- freedoko-svn-orig/Makefile	2017-01-12 12:10:43.620252109 +0100
++++ freedoko-svn/Makefile	2017-01-12 12:13:57.116240026 +0100
+@@ -78,8 +78,12 @@
+ .PHONY: compile
+ compile:
+ # compile FreeDoko
+-	$(MAKE) Version
+-	$(MAKE) -C src/ FreeDoko
++	$(MAKE) \
++	  "USE_UI_TEXT=false" \
++	  "USE_UI_GTKMM=true" \
++	  "USE_NETWORK=true" \
++	  "CPPFLAGS+= -DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"'" \
++	  -C src/ FreeDoko
+ 	@echo "---"
+ 	@echo "* Program 'FreeDoko' created"
+ 
+@@ -289,22 +293,11 @@
+ ifeq ($(OPERATING_SYSTEM), Linux)
+ .PHONY: install
+ install :
+-	$(MAKE) \
+-	  --always-make \
+-	  "USE_UI_TEXT=false" \
+-	  "USE_UI_GTKMM=true" \
+-	  "USE_NETWORK=true" \
+-	  "CXXFLAGS=-Wall -Werror -Wno-parentheses -pipe -Os -std=c++14" \
+-	  "CPPFLAGS=-DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"'" \
+-	  -C src \
+-	  $(PROGRAM)
+-	$(MAKE) -C src strip
+ #	Copying the program
+ 	echo "Copying the program"
+ 	mkdir -p $(DESTDIR)$(BIN_DIRECTORY)
+ 	cp src/FreeDoko $(DESTDIR)$(BIN_DIRECTORY)
+-	-chgrp games $(DESTDIR)$(BIN_DIRECTORY)/FreeDoko
+-	chmod 750 $(DESTDIR)$(BIN_DIRECTORY)/FreeDoko
++	chmod 755 $(DESTDIR)$(BIN_DIRECTORY)/FreeDoko
+ 	cd $(DESTDIR)$(BIN_DIRECTORY) && ln -sf FreeDoko freedoko
+ #	Copying the data files
+ 	echo "Copying the data files"
+@@ -321,15 +314,13 @@
+ 	a2x -f manpage doc/freedoko.asciidoc
+ 	mkdir -p $(DESTDIR)$(MAN_DIRECTORY)
+ 	cp doc/freedoko.6 $(DESTDIR)$(MAN_DIRECTORY)/
+-	-chgrp games $(DESTDIR)$(MAN_DIRECTORY)/freedoko.6
+-	chmod 640 $(DESTDIR)$(MAN_DIRECTORY)/freedoko.6
++	chmod 644 $(DESTDIR)$(MAN_DIRECTORY)/freedoko.6
+ 	cd $(DESTDIR)$(MAN_DIRECTORY)/ && ln -sf freedoko.6 FreeDoko.6
+ #	copy the icon
+ 	echo "copy the icon"
+ 	mkdir -p $(DESTDIR)$(ICON_DIRECTORY)
+ 	cp src/FreeDoko.png $(DESTDIR)$(ICON_DIRECTORY)/
+-	-chgrp games $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
+-	chmod 640 $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
++	chmod 644 $(DESTDIR)$(ICON_DIRECTORY)/FreeDoko.png
+ 
+ .PHONY: uninstall
+ uninstall :
+diff -ru freedoko-svn-orig/Makefile.install.directories freedoko-svn/Makefile.install.directories
+--- freedoko-svn-orig/Makefile.install.directories	2017-01-12 12:10:43.620252109 +0100
++++ freedoko-svn/Makefile.install.directories	2017-01-12 12:12:19.404933897 +0100
+@@ -4,13 +4,13 @@
+ # the different directories for the files
+ 
+ # installing in /usr/local
+-MAIN_DIRECTORY         = /usr/local
+-BIN_DIRECTORY          = $(MAIN_DIRECTORY)/games
+-DATA_DIRECTORY         = $(MAIN_DIRECTORY)/share/games/FreeDoko
+-HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/FreeDoko
+-MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
+-ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
+-DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
++#MAIN_DIRECTORY         = /usr/local
++#BIN_DIRECTORY          = $(MAIN_DIRECTORY)/games
++#DATA_DIRECTORY         = $(MAIN_DIRECTORY)/share/games/FreeDoko
++#HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/FreeDoko
++#MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
++#ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
++#DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
+ 
+ # debian
+ #MAIN_DIRECTORY         = /usr
+@@ -49,13 +49,13 @@
+ #DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
+ 
+ # Arch Linux
+-#MAIN_DIRECTORY         = /usr
+-#BIN_DIRECTORY          = $(MAIN_DIRECTORY)/bin
+-#DATA_DIRECTORY         = $(MAIN_DIRECTORY)/share/freedoko
+-#HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/freedoko
+-#MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
+-#ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
+-#DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
++MAIN_DIRECTORY         = /usr
++BIN_DIRECTORY          = $(MAIN_DIRECTORY)/bin
++DATA_DIRECTORY         = $(MAIN_DIRECTORY)/share/freedoko
++HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/freedoko
++MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
++ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
++DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
+ 
+ 
+ # release
+diff -ru freedoko-svn-orig/bin/FreeDoko.desktop freedoko-svn/bin/FreeDoko.desktop
+--- freedoko-svn-orig/bin/FreeDoko.desktop	2017-01-12 12:10:48.156824827 +0100
++++ freedoko-svn/bin/FreeDoko.desktop	2017-01-12 12:11:22.139454212 +0100
+@@ -6,7 +6,7 @@
+ Comment=game of Doppelkopf
+ Comment[de]=Doppelkopf-Spiel
+ Comment[fr]=un jeu de Doppelkopf
+-Exec=/usr/games/freedoko
++Exec=/usr/bin/freedoko
+ Path=
+ Icon=FreeDoko
+ Categories=Application;Game;CardGame;
+diff -ru freedoko-svn-orig/data/Makefile freedoko-svn/data/Makefile
+--- freedoko-svn-orig/data/Makefile	2017-01-12 12:10:41.893621198 +0100
++++ freedoko-svn/data/Makefile	2017-01-12 12:11:37.355805565 +0100
+@@ -40,8 +40,7 @@
+ 	for d in cardsets iconsets backgrounds sounds; do \
+ 	  $(MAKE) -C $$d install; \
+ 	done
+-	-chgrp games $(DESTDIR)$(DATA_DIRECTORY) && chgrp -R games $(DESTDIR)$(DATA_DIRECTORY)
+-	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(DATA_DIRECTORY)
++	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(DATA_DIRECTORY)
+ endif
+ 
+ ifeq ($(SHELLTYPE), sh)
+diff -ru freedoko-svn-orig/doc/Makefile freedoko-svn/doc/Makefile
+--- freedoko-svn-orig/doc/Makefile	2017-01-12 12:10:44.033576883 +0100
++++ freedoko-svn/doc/Makefile	2017-01-12 12:11:55.618760369 +0100
+@@ -36,8 +36,7 @@
+ 	fi
+ 	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/
+ 	for d in de en; do $(MAKE) -C $$d install; done
+-	-chgrp games $(DESTDIR)$(HELP_DIRECTORY) && chgrp -R games $(DESTDIR)$(HELP_DIRECTORY)
+-	chmod -R o-rwx,g+rX,g-w $(DESTDIR)$(HELP_DIRECTORY)
++	chmod -R o-rwx,g+rX,g-w,+rX $(DESTDIR)$(HELP_DIRECTORY)
+ 	cd $(DESTDIR)$(DATA_DIRECTORY) && ln -sf $(HELP_DIRECTORY)/ doc
+ endif
+ 
