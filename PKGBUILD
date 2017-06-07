@@ -2,9 +2,9 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.beta.1.28.g7aa7f385
+pkgver=6.0.0.beta.2.2.ga543161d
 pkgrel=1
-pkgdesc="A cross-platform automation and configuration tool/framework"
+pkgdesc="A cross-platform automation and configuration tool/framework (git version)"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
