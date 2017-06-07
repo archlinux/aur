@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-qt-addrindex-git
 pkgver=20170103
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Core GUI P2P wallet with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
@@ -28,6 +28,10 @@ sha256sums=('SKIP')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 pkgver() {
   cd ${pkgname%%-*}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
@@ -50,14 +54,14 @@ build() {
     --with-gui=qt4 \
     --with-incompatible-bdb \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd ${pkgname%%-*}
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
