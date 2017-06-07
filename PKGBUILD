@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=xtables-geoip-db
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="GeoIP Database for xtables."
 arch=('any')
 license=('BSD' 'GPL')
@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-	install -d -m 755 "${pkgdir}/usr/share/xt_geoip"
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	install -d -m 755 "${pkgdir}/usr/share/xt_geoip"
 	perl /usr/lib/iptables/xtables-addons/xt_geoip_build -D "${pkgdir}/usr/share/xt_geoip" GeoIP*.csv
 }
