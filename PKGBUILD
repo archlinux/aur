@@ -15,8 +15,14 @@ makedepends=('autoconf')
 provides=("automake=$pkgver")
 checkdepends=('dejagnu' 'python2' 'java-environment' 'vala' 'emacs' 'cscope')
 install=automake.install
-source=(ftp://ftp.gnu.org/gnu/${_realname}/${_realname}-${pkgver}.tar.xz)
-md5sums=('cf4752287ad708f83bd3689da57a32c9')
+source=(ftp://ftp.gnu.org/gnu/${_realname}/${_realname}-${pkgver}.tar.xz perl2.6.patch)
+md5sums=('cf4752287ad708f83bd3689da57a32c9'
+         'bae3eaea7e736cdc60fdab27eb70b357')
+
+prepare() {
+  cd ${srcdir}/${_realname}-${pkgver}
+  patch -p1 < ../perl2.6.patch
+}
 
 build() {
   cd ${srcdir}/${_realname}-${pkgver}
