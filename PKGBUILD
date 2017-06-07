@@ -3,14 +3,13 @@
 pkgname=powershell
 _pkgver=6.0.0-beta.2
 pkgver=${_pkgver/-/.}
-pkgrel=1
-pkgdesc="A cross-platform automation and configuration tool/framework"
+pkgrel=2
+pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
 makedepends=('git' 'cmake' 'proot' 'dotnet-cli-git')
 depends=('icu')
-conflicts=('powershell-git')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
         googletest::git+https://github.com/google/googletest.git
@@ -61,5 +60,5 @@ package() {
   cp ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   mkdir -p "$pkgdir"/usr/bin
-  ln -s /usr/lib/$pkgname/ubuntu.16.04-x64/powershell "$pkgdir"/usr/bin/powershell
+  ln -s /usr/lib/$pkgname/ubuntu.16.04-x64/$pkgname "$pkgdir"/usr/bin/powershell
 }
