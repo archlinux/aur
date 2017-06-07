@@ -4,7 +4,7 @@
 # Contributor: Henrik Hodne <henrik@hodne.io>
 
 pkgname=terraform-bin
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
@@ -16,8 +16,8 @@ source=("https://raw.githubusercontent.com/hashicorp/terraform/v${pkgver}/contri
 source_i686=("https://releases.hashicorp.com/terraform/${pkgver}/terraform_${pkgver}_linux_386.zip")
 source_x86_64=("https://releases.hashicorp.com/terraform/${pkgver}/terraform_${pkgver}_linux_amd64.zip")
 sha256sums=('4efcb7d7a231ea5e1f9bc9c06c3abfb6825e907883f88a8790e590548353da93')
-sha256sums_i686=('c063e59a67a92f562cbe6fcf4aadb3150e367c594db143c92c6f112466ce1a31')
-sha256sums_x86_64=('7ec24a5d57da6ef7bdb5a3003791a4368489b32fa93be800655ccef0eceaf1ba')
+sha256sums_i686=('4adddba02c54df7dfad760b5e08eeca9756f49c0df2d86bf157c47e85b9f4ed0')
+sha256sums_x86_64=('df6aecbddca9ea4e0f32290ed5efb92c1b4173d8afd1d95470424f635c41d242')
 noextract=('_terraform')
 
 package() {
