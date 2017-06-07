@@ -4,7 +4,7 @@
 
 pkgname=cryfs
 pkgver=0.9.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Cryptographic filesystem for the cloud"
 arch=('armv7h' 'i686' 'x86_64')
 depends=('boost'
@@ -24,6 +24,10 @@ sha256sums=('4d65c462fa988f698090f00052cbb236cfc7e7524b872f96409187bc5285eedd'
             'SKIP'
             '13c93eae25e969db0bbe2182b509bc4890e38c847d97818711fbb40e7c9e8ff9')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -42,7 +46,7 @@ build() {
     -DBUILD_TESTING=off \
     -DCRYFS_UPDATE_CHECKS=off \
     ..
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 package() {
