@@ -7,7 +7,7 @@
 
 pkgname=crypto++-git
 pkgver=20160916
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Class Library of Cryptographic Schemes"
 arch=('i686' 'x86_64')
 depends=('gcc-libs')
@@ -20,6 +20,10 @@ sha256sums=('SKIP'
             'a5e467460494a97ada513a0c22f735cf5aade9cec75e0b4c46055ecd4b32fea6')
 provides=('crypto++')
 conflicts=('crypto++')
+
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
 
 pkgver() {
   cd ${pkgname%-git}
@@ -38,14 +42,14 @@ build() {
 
   msg2 'Building...'
   export CXXFLAGS="$CXXFLAGS -DNDEBUG -fPIC"
-  make -j$(($(nproc)/2)) dynamic static
+  make -j$_nproc dynamic static
 }
 
 check() {
   cd ${pkgname%-git}
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) test
+  make -j$_nproc test
 }
 
 package() {
