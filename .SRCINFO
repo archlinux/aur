@@ -1,0 +1,15 @@
+pkgbase = fileteasend
+	pkgdesc = Easy file transfer using the FileTea service
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/brechin/FileTeaSend
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-magic
+	source = https://github.com/brechin/FileTeaSend/archive/v1.0.tar.gz
+	sha256sums = 8d1c61b81ced3730fca7db6cb90d5f81f6db90b568d55c802f481afb78689d91
+
+pkgname = fileteasend
+
