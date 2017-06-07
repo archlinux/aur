@@ -10,7 +10,6 @@ _precmd() {
 _preexec() {
     NWD_FOCUSED_WS=$(i3-msg -t get_workspaces|jq -c '.[]| select(.focused)|.num')
     NWD_CMD=$1
-    echo "*** $NWD_CMD"
 }
 
 preexec_functions+=(_preexec)
