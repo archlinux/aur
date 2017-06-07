@@ -4,7 +4,7 @@
 
 ## Install
 
-You need `jq` and must use i3 as a window manager.
+You need `jq`, `libnotify`, and must use `i3` as a window manager.
 
 If you have archlinux, you can download the package from aur
 
