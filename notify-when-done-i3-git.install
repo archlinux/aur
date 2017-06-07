@@ -3,7 +3,7 @@ post_install() {
     echo '## [[ -f /usr/share/nwd/nwd-preexec.sh ]] && source /usr/share/nwd/nwd-preexec.sh'
 }
 
-post_update() {
+post_upgrade() {
     echo '## Update will be effective only after a source of your bashrc,'
     echo '## or by reopening the shell.'
 }
