@@ -1,0 +1,9 @@
+post_install() {
+  echo "This package does not currently install the printer for you."
+  echo "Do so via the usual CUPS web interface at localhost:631."
+}
+
+post_remove() {
+  echo "This package does not uninstall the printer from CUPS for you."
+  echo "Do so via the usual CUPS web interface at localhost:631."
+}
