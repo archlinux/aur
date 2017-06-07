@@ -3,15 +3,15 @@
 _pkgname=podcastparser
 pkgname=python2-$_pkgname
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="podcast parser for gpodder"
 arch=('any')
-url="http://gpodder.org/podcastparser/"
+url="https://github.com/gpodder/podcastparser"
 license=('ISC')
 depends=('python2')
 conflicts=('')
-source=(http://gpodder.org/podcastparser/podcastparser-$pkgver.tar.gz)
-md5sums=('b2a33d34d6ff66660a38daf0e857d8f6')
+source=(https://github.com/gpodder/podcastparser/archive/$pkgver.tar.gz)
+md5sums=('294cb1cdc934aac7ade67ac24ea10cc4')
 
 package() {
   cd $srcdir/$_pkgname-$pkgver
