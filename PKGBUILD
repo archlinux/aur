@@ -3,13 +3,14 @@
 pkgname=powershell
 _pkgver=6.0.0-beta.2
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
 makedepends=('git' 'cmake' 'proot' 'dotnet-cli-git')
 depends=('icu')
+conflicts=('powershell-git')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
         googletest::git+https://github.com/google/googletest.git
