@@ -1,7 +1,7 @@
 pkgbase = mooltipass-udev
 	pkgdesc = Udev rules to connect Mooltipass devices
 	pkgver = 2017021102
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/bobsaintcool/mooltipass-udev
 	arch = any
 	license = GPL3
@@ -11,6 +11,6 @@ pkgbase = mooltipass-udev
 	source = mooltipass-udev-2017021102.tar.gz.asc::https://github.com/bobsaintcool/mooltipass-udev/releases/download/2017021102/mooltipass-udev-2017021102.tar.gz.asc
 	validpgpkeys = 3486CBAC7F116CA71351B0D7F7181B2010660E6F
 	sha256sums = 428c8284fd9bd52a0e0b38de2b3262158090038051b16210e9ebba2bc0859f8a
-	sha256sums = 13bd3047396dadd7d8472184591b11639b8d87bf720b3d94435c662c2fabb749
+	sha256sums = 2c79f2e0487ccf564c3edc548393080b6a5a5cfcf997d213ff5d89ce969ffd59
 
 pkgname = mooltipass-udev
