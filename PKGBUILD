@@ -38,6 +38,6 @@ package() {
   _MODPATH="$pkgdir/usr/lib/modules/$_extramodules/"
   install -d "$_MODPATH"
   install -d "$pkgdir/usr/bin/"
-  install -m 644 "$pkgnmame-master/$pkgnmame.ko" "$_MODPATH"
-  install -m 755 scripts/usr/local/sbin/${pkgnmame}ctl "$pkgdir/usr/bin/"
+  install -m 644 "$pkgname-master/$pkgname.ko" "$_MODPATH"
+  install -m 755 scripts/usr/local/sbin/${pkgname}ctl "$pkgdir/usr/bin/"
 }
