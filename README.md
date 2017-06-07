@@ -45,3 +45,13 @@ and you'll eventually forget to do that, until you'll stumble into a long comman
 Wrap *every* command, such that when one command finishe execution,
 a notification will be sent if the current workspace is not the same
 from which you initially issued the command. Simple.
+
+## Sound
+
+Sound should not be handled by this script. Instead, it's likely
+that your notification server already has some way of playing
+a sound every time a notification is issued. Dunst has one for example.
+
+If you need a notification sound, you can find a .wav one, base64 encoded, here
+
+    https://gist.githubusercontent.com/giuscri/621bddfe5600d3f08e2b0b385db48a3b/raw/916ca26bc8c8fb4d8b343850e1b6cac2ffcdbedd/sound.wav.b64
