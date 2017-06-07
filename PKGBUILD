@@ -4,7 +4,7 @@
 pkgname=paraview-bin
 _pkgname=paraview
 _PkgName=ParaView
-_pkgver=5.3.0
+_pkgver=5.4.0
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="ParaView is an open-source, multi-platform data analysis and visualization application"
@@ -15,7 +15,7 @@ _flavour=Qt5-OpenGL2-MPI-Linux-64bit
 source=("http://www.paraview.org/files/v${pkgver:0:3}/${_PkgName}-${_pkgver}-${_flavour}.tar.gz"
         "https://gitlab.kitware.com/paraview/paraview/raw/v${_pkgver}/License_v1.2.txt"
         "paraview.sh")
-sha256sums=('ee05d4443f20494b70979ce06f83667be45ffe2dff154c34dc4280d13b83a54f'
+sha256sums=('c76026c4bdc4faed2dcb55453b150959b31c80e3f7a6dec015837d689211dc36'
             'd2b1ab821f9b09f99c2b8ddb50438e1a0a7bae18bbb00e6a8962fb57ec64a197'
             'df0f6f274a69a4111709dbedb7fa968e01608b31c187421c121a117cdb854942')
 conflicts=('paraview')
