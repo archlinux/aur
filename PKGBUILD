@@ -4,7 +4,7 @@
 
 pkgname=libbitcoin-system
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -31,6 +31,10 @@ sha256sums=('f10cea6b505ec0eb6b64382ce26c95c2437982fa751a1b7d5c3c7989f9ad5ea6'
 provides=('libbitcoin' 'libbitcoin-system')
 conflicts=('libbitcoin')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 build() {
   cd "$srcdir/libbitcoin-$pkgver"
 
@@ -48,14 +52,14 @@ build() {
     --with-qrencode \
     --with-gnu-ld \
     --without-examples
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd "$srcdir/libbitcoin-$pkgver"
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
