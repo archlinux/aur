@@ -1,13 +1,13 @@
 _name='zsh-autosuggestions'
 pkgname="${_name}-git"
-pkgver=v0.3.3.r1.gfedc22e
+pkgver=v0.4.0.r0.g2cb6eb6
 pkgrel=1
 pkgdesc='Fish shell like fast/unobtrusive autosuggestions for zsh'
 url='https://github.com/zsh-users/zsh-autosuggestions'
 arch=('any')
 license=('Custom:MIT')
 depends=('zsh')
-makedepends=('git')
+makedepends=('git' 'ruby')
 provides=('zsh-autosuggestions')
 install="${_name}.install"
 source=("${_name}::${url//https/git}")
@@ -30,5 +30,15 @@ package() {
 
 check() {
     cd "${srcdir}/${_name}"
-    make test
+    (
+      # The test script uses Ruby Gems.
+      # Avoid installing them in the user's real home.
+      export HOME=$PWD/tmphome
+      export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+      export PATH=$GEM_HOME/bin:$PATH
+      gem install bundler
+      bundle install
+
+      make test
+    )
 }
