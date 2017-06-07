@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=folly
 pkgver=2017.06.05.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
 url="https://github.com/facebook/folly"
@@ -30,8 +30,8 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver/$pkgname"
   CFLAGS="$CFLAGS -fpermissive" CXXFLAGS="$CXXFLAGS -fpermissive" \
-  LIBS=-latomic ./configure --prefix=/usr --disable-static
-  make CC=gcc-5 CXX=g++-5
+  LIBS=-latomic CC=gcc-5 CXX=g++-5 ./configure --prefix=/usr --disable-static
+  make
 }
 
 check() {
