@@ -1,4 +1,4 @@
-preexec_path=/etc/bash-preexec/bash-preexec.sh
+preexec_path=/usr/share/bash-preexec/bash-preexec.sh
 
 post_install() {
     echo "## To finish installation source bash-preexec.sh at the end of your bashrc, e.g."

@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe <giuscri@gmail.com>
 pkgname=bash-preexec-git
 pkgver=0.3.3.r0.gc4537b4
-pkgrel=2
+pkgrel=3
 pkgdesc="⚡ preexec and precmd functions for Bash just like Zsh."
 arch=('x86_64')
 url="https://github.com/rcaloras/bash-preexec"
@@ -23,7 +23,7 @@ check() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -D -m0755 "$srcdir/$pkgname/bash-preexec.sh" "$pkgdir/etc/bash-preexec/bash-preexec.sh"
+	install -D -m0755 "$srcdir/$pkgname/bash-preexec.sh" "$pkgdir/usr/share/bash-preexec/bash-preexec.sh"
 	install -D -m0644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/bash-preexec/LICENSE.md"
 }
 
