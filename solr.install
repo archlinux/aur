@@ -1,5 +1,6 @@
-print_core_message() {
+post_install() {
   cat <<EOT
+
 Start the solr service first!
   $ sudo systemctl restart solr
 
@@ -7,13 +8,6 @@ Then, create new Solr core(s) from the command line:
   $ sudo -u solr -s /bin/bash
   $ cd
   $ bin/solr create_core -c new_core
+
 EOT
-}
-
-post_install() {
-  print_core_message
-}
-
-post_upgrade() {
-  post_install $1
 }

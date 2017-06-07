@@ -5,3 +5,4 @@
 !PKGBUILD
 !solr.install
 !solr.service
+!solr.sysusers
