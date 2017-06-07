@@ -3,12 +3,12 @@
 
 pkgname='perl-event'
 pkgver='1.24'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Event loop processing"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.26' 'perl<5.27')
 makedepends=()
 url='http://search.mcpan.org/dist/Event'
 source=('http://search.mcpan.org/CPAN/authors/id/E/ET/ETJ/Event-1.24.tar.gz')
