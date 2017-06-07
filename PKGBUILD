@@ -1,21 +1,21 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=stratagus
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
-url="https://launchpad.net/stratagus"
+url="https://github.com/Wargus/stratagus"
 license=('GPL')
-depends=('gcc-libs' 'libgl' 'sdl' 'libpng' 'libmng' 'libvorbis' 'libtheora' 'libmikmod' 'lua51' 'sqlite')
-makedepends=('cmake' 'tolua++')
+depends=('libgl' 'sdl' 'libpng' 'libmng' 'libtheora' 'libmikmod' 'sqlite' 'tolua++')
+makedepends=('cmake')
 changelog=stratagus.changelog
-source=(http://launchpad.net/stratagus/trunk/2.3/+download/stratagus_$pkgver.orig.tar.gz)
-md5sums=('bf64b87f387c8281350e4b54327bc95f')
+source=("stratagus::git://github.com/Wargus/stratagus.git#tag=v2.4.1")
+md5sums=('SKIP')
 
 build() {
   cd $srcdir
 
-  cmake ${pkgname}_$pkgver.orig \
+  cmake ${pkgname} \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DGAMEDIR=/usr/bin \
@@ -29,7 +29,7 @@ build() {
 package() {
   cd ${srcdir}/build
   make DESTDIR=${pkgdir} install
-  
+
   mkdir -p ${pkgdir}/usr/include
-  cp ${srcdir}/${pkgname}_$pkgver.orig/gameheaders/stratagus-game-launcher.h ${pkgdir}/usr/include
+  cp ${srcdir}/stratagus/gameheaders/stratagus-game-launcher.h ${pkgdir}/usr/include
 }
