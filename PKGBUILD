@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd pkgnmame-master
+  cd $pkgname-master
   _extramodules="extramodules-$(uname -r | cut -f-2 -d'.')-$(uname -r|sed -e 's/.*-//g')"
   _MODPATH="$pkgdir/usr/lib/modules/$_extramodules/"
   install -d "$_MODPATH"
