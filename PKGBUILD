@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core-git
 pkgver=20170422
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://github.com/bitcoin/bitcoin"
@@ -35,6 +35,10 @@ provides=('bitcoin-cli' 'bitcoin-core' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-core' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin.install
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 pkgver() {
   cd ${pkgname%%-*}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
@@ -56,14 +60,14 @@ build() {
     --with-gui=no \
     --disable-wallet \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd "${pkgname%%-*}"
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
