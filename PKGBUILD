@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-blockchain
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Blockchain Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -25,6 +25,10 @@ license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
 sha256sums=('32c533bbc30323c5a5f468f4d49cc38d628431aae397cba257b7811a6b7fcf55')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
@@ -38,14 +42,14 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-blockchain \
     --localstatedir=/var/lib/libbitcoin-blockchain \
     --with-gnu-ld
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
