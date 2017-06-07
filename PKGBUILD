@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-client-git
 pkgver=20170306
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Client Query Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -28,6 +28,10 @@ sha256sums=('SKIP')
 provides=('libbitcoin-client')
 conflicts=('libbitcoin-client')
 
+# half of available processing units or one if only one is available
+_nproc=$(($(nproc)/2))
+[[ ${_nproc} < 1 ]] && _nproc=1
+
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
@@ -47,14 +51,14 @@ build() {
     --localstatedir=/var/lib/libbitcoin-client \
     --with-gnu-ld \
     --without-examples
-  make -j$(($(nproc)/2))
+  make -j$_nproc
 }
 
 check() {
   cd ${pkgname%-git}
 
   msg2 'Testing...'
-  make -j$(($(nproc)/2)) check
+  make -j$_nproc check
 }
 
 package() {
