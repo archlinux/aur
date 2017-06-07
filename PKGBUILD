@@ -1,10 +1,10 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=prettier
-_npmver=1.3.1
+_npmver=1.4.0
 pkgname=prettier
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="An opinionated JavaScript formatter inspired by refmt with advanced support for language features from ES2017, JSX, and Flow"
+pkgdesc="An opinionated JavaScript formatter inspired by refmt with advanced support for language features from ES2017, JSX, Flow, TypeScript, CSS/LESS/SCSS"
 arch=(any)
 url="https://github.com/jlongster/prettier"
 license=('MIT')
@@ -22,5 +22,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('fa0ea84b45ac0ba6de6a1e4cecdcff900d563151')
-sha256sums=('430224cad5d59caa9b43a0e72d423515e5f5e6e88400f1a7192753012094587d')
+sha1sums=('e648862b3737c85e3592cf85571dc42939bb5216')
+sha256sums=('667609131e1975170bceba6526e0c4173a6463b78c4063b7343a42a5f74877f1')
