@@ -3,7 +3,7 @@
 _pkgparent=plasma-workspace
 _pkgname=xembed-sni-proxy
 pkgname=$_pkgname-git
-pkgver=v5.9.4.r182.gbf19dbba
+pkgver=v5.10.0.r48.g149212e7
 pkgrel=1
 pkgdesc="Convert XEmbed system tray icons to SNI icons"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('extra-cmake-modules' 'git')
 conflicts=($_pkgparent)
 source=("git+${url}.git" "cmake.patch")
 sha256sums=('SKIP'
-            '215090152973a85e9757bbab3de05020a1f44b1032db1c816d4e381f4f9d1c73')
+            'b42393e12c49ec434685ae1c1143dcf462c566cb3b2c1dcea56456c8a21b85e6')
 
 pkgver() {
     cd $_pkgparent
