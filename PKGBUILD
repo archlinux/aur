@@ -4,7 +4,7 @@
 # This package is a modified version of extra/ffmpeg with --enable-decklink
 
 pkgname=ffmpeg-decklink
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -32,8 +32,8 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg' 'ffmpeg-git')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'LICENSE')
-sha256sums=('b702a7fc656ac23e276b8c823a2f646e4e6f6309bb2788435a708e69bea98f2f'
-            'bc2b76d4f5be42c5b0a6a07f1b754d29392c84f8234f3b6ab9e7858fdc4043ff')
+sha256sums=('1998de1ab32616cbf2ff86efc3f1f26e76805ec5dc51e24c041c79edd8262785'
+            '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 build() {
   cd "ffmpeg-${pkgver}"
