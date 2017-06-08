@@ -1,4 +1,4 @@
-From 17ca839c5b370748fc55e64f826d39ab25eee13e Mon Sep 17 00:00:00 2001
+From a89d4b71b43afa80a84281bd11c8bcd2c8b068a2 Mon Sep 17 00:00:00 2001
 From: Jose Santiago <jsantiago@haivision.com>
 Date: Thu, 3 Nov 2016 14:36:10 -0500
 Subject: [PATCH 2/2] Fix build with ANGLE
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] Fix build with ANGLE
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/src/plugins/common/evr/evrd3dpresentengine.cpp b/src/plugins/common/evr/evrd3dpresentengine.cpp
-index 9718c78b..5bd8d81a 100644
+index 4bc2bac8..d673f559 100644
 --- a/src/plugins/common/evr/evrd3dpresentengine.cpp
 +++ b/src/plugins/common/evr/evrd3dpresentengine.cpp
 @@ -49,9 +49,9 @@
@@ -25,5 +25,5 @@ index 9718c78b..5bd8d81a 100644
  #endif
  
 -- 
-2.11.0
+2.13.0
 

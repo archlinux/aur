@@ -1,4 +1,4 @@
-From ecfcbb10eaae22d0887e074e3734d6d9e69d2e34 Mon Sep 17 00:00:00 2001
+From 6d06f53c95a7c3e3b47578714d12a14eac26a72d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:36:56 +0200
 Subject: [PATCH 1/2] Recorder includes to prevent conflict with vsnprintf
@@ -8,8 +8,8 @@ This is a C header which also #include's stdio.h which adds a #define vsnprintf
 This #define vsnprint conflicts with QtCore/qstring.h so reorder the includes
 a bit to prevent this situation
 ---
- src/multimedia/video/qvideosurfaceformat.h        | 1 +
- src/plugins/directshow/helpers/directshowglobal.h | 1 +
+ src/multimedia/video/qvideosurfaceformat.h       | 1 +
+ src/plugins/directshow/common/directshowglobal.h | 1 +
  2 files changed, 2 insertions(+)
 
 diff --git a/src/multimedia/video/qvideosurfaceformat.h b/src/multimedia/video/qvideosurfaceformat.h
@@ -24,18 +24,18 @@ index 83785ac0..25607d08 100644
  #include <QtGui/qimage.h>
  #include <QtMultimedia/qvideoframe.h>
  
-diff --git a/src/plugins/directshow/helpers/directshowglobal.h b/src/plugins/directshow/helpers/directshowglobal.h
-index f7890c52..4f7c8213 100644
---- a/src/plugins/directshow/helpers/directshowglobal.h
-+++ b/src/plugins/directshow/helpers/directshowglobal.h
+diff --git a/src/plugins/directshow/common/directshowglobal.h b/src/plugins/directshow/common/directshowglobal.h
+index 5f391710..3ae3b8aa 100644
+--- a/src/plugins/directshow/common/directshowglobal.h
++++ b/src/plugins/directshow/common/directshowglobal.h
 @@ -43,6 +43,7 @@
  #include <dshow.h>
  
  #include <QtCore/qglobal.h>
 +#include <QtCore/qstring.h>
+ #include <QtCore/qloggingcategory.h>
  
- template <typename T> T *com_cast(IUnknown *unknown, const IID &iid)
- {
+ QT_BEGIN_NAMESPACE
 -- 
-2.11.0
+2.13.0
 
