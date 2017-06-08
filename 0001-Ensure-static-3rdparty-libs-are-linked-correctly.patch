@@ -1,26 +1,27 @@
-From f6a900bbfcb931b1d8d2771dcf4438671d94dfc6 Mon Sep 17 00:00:00 2001
+From 67ab2da0410246551b8972a7920ebea7595bf9e7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 22 Dec 2016 22:30:59 +0100
-Subject: [PATCH] Ensure static 3rdparty libs are linked correctly
+Subject: [PATCH 1/2] Ensure static 3rdparty libs are linked correctly
 
+Not sure whether this is still required in Qt 5.9.0
 ---
- src/imports/location/location.pro | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ src/imports/location/location.pro | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/src/imports/location/location.pro b/src/imports/location/location.pro
-index 57172ad8..ddea8b23 100644
+index dec1149b..ad57a5c5 100644
 --- a/src/imports/location/location.pro
 +++ b/src/imports/location/location.pro
-@@ -62,7 +62,8 @@ include(declarativeplaces/declarativeplaces.pri)
+@@ -5,6 +5,9 @@ SOURCES += \
  
  load(qml_plugin)
  
--LIBS_PRIVATE += -L$$MODULE_BASE_OUTDIR/lib -lpoly2tri$$qtPlatformTargetSuffix() -lclip2tri$$qtPlatformTargetSuffix()
 +LIBS_PRIVATE += -L$$MODULE_BASE_OUTDIR/lib -lclip2tri$$qtPlatformTargetSuffix() -lclipper$$qtPlatformTargetSuffix() -lpoly2tri$$qtPlatformTargetSuffix()
 +QMAKE_LIBS_PRIVATE += -lclip2tri$$qtPlatformTargetSuffix() -lclipper$$qtPlatformTargetSuffix() -lpoly2tri$$qtPlatformTargetSuffix()
- 
++
  OTHER_FILES += \
      plugin.json \
+     qmldir
 -- 
-2.11.0
+2.13.0
 

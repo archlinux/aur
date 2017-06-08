@@ -9,21 +9,24 @@
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-angleproject')
+optdepends=('mingw-w64-angleproject: Mapbox GL plugin')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
-md5sums=('2077d5d6f926087614c9e94021019c0e'
-         '5c0aeb724cfefeb3e7852c2c35d50fce')
+        '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch'
+        '0002-Enforce-use-of-ANGLE-in-Mapbox-GL-plugin.patch')
+sha256sums=('e3ee0ba44b1d3df4a958cdf9c9b70d8f41fd05d5f56580504d944679830f2af6'
+            '1e006906a649177edae0a9e4d712d90940771f929997a9ceeec920b497ffae49'
+            'ff67ff7c940268b31abe0b3fadc71a50aa02821134ce440e13a4a6086e86ceac')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
