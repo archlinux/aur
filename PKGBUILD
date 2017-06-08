@@ -25,6 +25,6 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  npm install -g --user root --prefix "$pkgdir"/usr
+  npm install -g --prefix "$pkgdir"/usr
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
