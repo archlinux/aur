@@ -4,13 +4,12 @@
 _pkgname=pecl-database-mysql
 pkgname=${_pkgname}-git
 pkgver=17.230a828
-pkgrel=1
+pkgrel=2
 pkgdesc="PECL MySQL - support mysql_* functions on PHP7"
 arch=("i686" "x86_64")
 url="https://pecl.php.net/package/mysql"
 license=("PHP")
 depends=("php")
-install=${pkgname}.install
 source=("git+https://github.com/php/pecl-database-mysql.git")
 md5sums=('SKIP')
 
@@ -27,6 +26,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
-  install -Dm755 modules/mysql.so ${pkgdir}/usr/lib/php/modules/mysql.so
+  cd ${srcdir}
+  install -Dm644 ${pkgname}.ini ${pkgdir}/etc/php/conf.d/${pkgname}.ini
+  install -Dm755 ${_pkgname}/modules/mysql.so ${pkgdir}/usr/lib/php/modules/mysql.so
 }
