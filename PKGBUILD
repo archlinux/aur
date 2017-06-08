@@ -3,7 +3,7 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal
-pkgver=1.17.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A cross-platform 3D audio library (32-bit)"
 arch=(x86_64)
@@ -15,6 +15,11 @@ makedepends=(lib32-alsa-lib pkgconfig cmake lib32-libpulse lib32-portaudio lib32
 _commit=61e43d4039277c538f3f6e0af7c988e7d71d8558  # tags/openal-soft-1.18.0
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd openal-soft
+  git describe --tags | sed 's/^openal-soft-//;s/-/+/g'
+}
 
 prepare() {
   mkdir build
