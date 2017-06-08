@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=gnome-shell-extension-impatience-git
 _pkgname=gnome-shell-impatience
-pkgver=r29.952c7f2
+pkgver=r32.d6c48fd
 pkgrel=1
 pkgdesc="speed up gnome-shell animations"
 arch=('any')
