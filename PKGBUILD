@@ -18,7 +18,7 @@ source=("$_pkgname::git+https://github.com/KastB/r8169.git"
         "blacklist-r8169-dkms.conf")
                
 sha256sums=('SKIP'
-            '2867acec4b3e65c756c177bc6b2eb0218c90e39d9a0386e0449be0e62e805aa6'
+            'e3290e0cfb55875f16e9962138240ff9cdd32ec5da285b0474a8a4fd1e6de40f'
             '47c992bfbd98403d9aa80b5ed00408af43c57ab0f5960f270d9d9b9f000618b3')
 
 package() {
