@@ -1,7 +1,7 @@
 pkgbase = onewireviewer
 	pkgdesc = demonstration application for exploring iButton or 1-Wire® chip features
 	pkgver = 3.13.40
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.maximintegrated.com/en/products/ibutton/software/1wire/OneWireViewer.cfm
 	arch = x86_64
 	license = Custom
