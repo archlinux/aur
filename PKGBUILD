@@ -2,11 +2,11 @@
 # Contributor: Original submitter John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _name=firefox
-_channel=dev
+_channel=dev-da
 _version='54.0b14'
 _file="${_name}-${_version}"
 _srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases/${_version}/"
-pkgname="${_name}-${_channel}-da"
+pkgname="${_name}-${_channel}"
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 url='http://www.mozilla.org/firefox/developer'
 pkgver=54.0b14.20170608
