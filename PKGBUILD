@@ -1,4 +1,4 @@
-# Maintainer: Yang <positivcheg94@gmail.com>
+# Maintainer: Patrick José Pereira <positivcheg94@gmail.com>
 pkgname=librealsense
 pkgver=0.9.1
 pkgrel=1
