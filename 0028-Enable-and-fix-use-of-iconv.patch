@@ -1,7 +1,7 @@
-From c8710fe0122cc6847fb11944b657f814872954b5 Mon Sep 17 00:00:00 2001
+From 63a1e37e442e61f9d65e340e6602ad732ad26bdf Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:20 +0100
-Subject: [PATCH 26/30] Enable and fix use of iconv
+Subject: [PATCH 28/31] Enable and fix use of iconv
 
 Change-Id: I5f0ab27afca0800dec11c7af74d196190820ae5c
 ---
@@ -24,10 +24,10 @@ index 1276311e08..993a12c7ee 100644
      size_t inbytes, outbytes;
      iconv(x, &inp, &inbytes, &outp, &outbytes);
 diff --git a/src/corelib/codecs/qiconvcodec.cpp b/src/corelib/codecs/qiconvcodec.cpp
-index e4fb359f2c..771b1fa9f2 100644
+index d6362b6fbc..4da4546a24 100644
 --- a/src/corelib/codecs/qiconvcodec.cpp
 +++ b/src/corelib/codecs/qiconvcodec.cpp
-@@ -50,7 +50,6 @@ QT_REQUIRE_CONFIG(iconv);
+@@ -49,7 +49,6 @@ QT_REQUIRE_CONFIG(iconv);
  #include <errno.h>
  #include <locale.h>
  #include <stdio.h>
@@ -35,7 +35,7 @@ index e4fb359f2c..771b1fa9f2 100644
  
  // unistd.h is needed for the _XOPEN_UNIX macro
  #include <unistd.h>
-@@ -183,7 +182,7 @@ QString QIconvCodec::convertToUnicode(const char* chars, int len, ConverterState
+@@ -182,7 +181,7 @@ QString QIconvCodec::convertToUnicode(const char* chars, int len, ConverterState
      IconvState *state = *pstate;
      size_t inBytesLeft = len;
      // best case assumption, each byte is converted into one UTF-16 character, plus 2 bytes for the BOM
@@ -44,7 +44,7 @@ index e4fb359f2c..771b1fa9f2 100644
      // GNU doesn't disagree with POSIX :/
      const char *inBytes = chars;
  #else
-@@ -282,7 +281,7 @@ static bool setByteOrder(iconv_t cd)
+@@ -281,7 +280,7 @@ static bool setByteOrder(iconv_t cd)
      size_t outBytesLeft = sizeof buf;
      size_t inBytesLeft = sizeof bom;
  
@@ -53,7 +53,7 @@ index e4fb359f2c..771b1fa9f2 100644
      const char **inBytesPtr = const_cast<const char **>(&inBytes);
  #else
      char **inBytesPtr = &inBytes;
-@@ -304,7 +303,7 @@ QByteArray QIconvCodec::convertFromUnicode(const QChar *uc, int len, ConverterSt
+@@ -303,7 +302,7 @@ QByteArray QIconvCodec::convertFromUnicode(const QChar *uc, int len, ConverterSt
      char *outBytes;
      size_t inBytesLeft;
  
@@ -63,10 +63,10 @@ index e4fb359f2c..771b1fa9f2 100644
  #else
      char **inBytesPtr = &inBytes;
 diff --git a/src/corelib/configure.json b/src/corelib/configure.json
-index 0d1954c3a8..32bbe92f57 100644
+index c6c5c93ddb..62c75f37ab 100644
 --- a/src/corelib/configure.json
 +++ b/src/corelib/configure.json
-@@ -263,9 +263,9 @@
+@@ -256,9 +256,9 @@
          },
          "gnu-libiconv": {
              "label": "GNU iconv",
@@ -79,5 +79,5 @@ index 0d1954c3a8..32bbe92f57 100644
          },
          "icu": {
 -- 
-2.12.1
+2.13.0
 

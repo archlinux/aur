@@ -1,17 +1,20 @@
-From b91bb54e98627bd92ff740ed547d52febb3523d4 Mon Sep 17 00:00:00 2001
+From bd8345de18a4ad2bdcc17710c69c09ad2f81c83f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:27:28 +0200
-Subject: [PATCH 16/30] Build dynamic host libraries
+Subject: [PATCH 17/31] Build dynamic host libraries
 
-For better accordance with Arch Linux packaging
-standards
+This came initially from Fedora, not sure whether
+it makes sense to keep it. Regular Arch package
+uses static lib as intended by upstream.
+
+Change-Id: I91a3613955c656fb0d262ccb9b2529350bab032b
 ---
  mkspecs/features/qt_module.prf              | 2 +-
  src/tools/bootstrap-dbus/bootstrap-dbus.pro | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/features/qt_module.prf b/mkspecs/features/qt_module.prf
-index 31d628596c..360c99ac73 100644
+index 36f632e8ca..2deec56866 100644
 --- a/mkspecs/features/qt_module.prf
 +++ b/mkspecs/features/qt_module.prf
 @@ -24,7 +24,7 @@ requires(!$$skip)
@@ -34,5 +37,5 @@ index c3ed27d979..30d2114aa1 100644
 -INSTALLS = lib
 +INSTALLS += lib
 -- 
-2.12.1
+2.13.0
 

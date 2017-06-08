@@ -1,7 +1,7 @@
-From 1ffc87d8805a92fb7666084c656bac46cd276599 Mon Sep 17 00:00:00 2001
+From 7a6384756287b07c0e3a6e18ed07414a7672feee Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
-Subject: [PATCH 03/30] Use external ANGLE library
+Subject: [PATCH 03/31] Use external ANGLE library
 
 ---
  src/gui/Qt5GuiConfigExtras.cmake.in       | 4 ++--
@@ -28,7 +28,7 @@ index 07869efd7d..2e32911a64 100644
  
  _qt5_Gui_check_file_exists(${Qt5Gui_EGL_INCLUDE_DIRS})
 diff --git a/src/gui/gui.pro b/src/gui/gui.pro
-index 5f8cbe2cbe..0ebf6b7281 100644
+index cfdb5e889b..4afb45e592 100644
 --- a/src/gui/gui.pro
 +++ b/src/gui/gui.pro
 @@ -18,12 +18,6 @@ MODULE_PLUGIN_TYPES = \
@@ -66,11 +66,11 @@ index 718a886809..89965709ed 100644
  HEADERS += qgl.h \
             qgl_p.h \
 diff --git a/src/plugins/platforms/windows/windows.pri b/src/plugins/platforms/windows/windows.pri
-index 20e0b81da9..b55847fc69 100644
+index 73677311f5..05a1dc2e6e 100644
 --- a/src/plugins/platforms/windows/windows.pri
 +++ b/src/plugins/platforms/windows/windows.pri
-@@ -2,6 +2,7 @@
- LIBS += -lole32 -luser32 -lwinspool -limm32 -lwinmm -loleaut32
+@@ -4,6 +4,7 @@ LIBS += -lole32 -luser32 -lwinspool -limm32 -lwinmm -loleaut32
+ QT_FOR_CONFIG += gui
  
  qtConfig(opengl):!qtConfig(opengles2):!qtConfig(dynamicgl): LIBS *= -lopengl32
 +qtConfig(angle):LIBS += -lGLESv2 -lEGL
@@ -78,10 +78,10 @@ index 20e0b81da9..b55847fc69 100644
  mingw: LIBS *= -luuid
  # For the dialog helpers:
 diff --git a/src/src.pro b/src/src.pro
-index 90d7e2b76c..92e89ea39f 100644
+index 43fc06f2e5..4188d4ea6b 100644
 --- a/src/src.pro
 +++ b/src/src.pro
-@@ -160,10 +160,6 @@ qtConfig(gui) {
+@@ -175,10 +175,6 @@ qtConfig(gui) {
          SUBDIRS += src_3rdparty_harfbuzzng
          src_gui.depends += src_3rdparty_harfbuzzng
      }
@@ -93,5 +93,5 @@ index 90d7e2b76c..92e89ea39f 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.12.1
+2.13.0
 

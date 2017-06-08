@@ -1,11 +1,13 @@
-From 0e79722e8c8162f87b2b765932d3507de2f20a88 Mon Sep 17 00:00:00 2001
+From 905438dce78dd9fb08692b81bfbed4caa30fd23e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 17:59:27 +0200
-Subject: [PATCH 17/30] Enable rpath for build tools
+Subject: [PATCH 18/31] Enable rpath for build tools
 
-- Required because library various tools depend on (libQt5Bootstrap.so) resides
+- Required because various tools depend on libQt5Bootstrap.so which resides
   in folder /usr/${_arch}/lib
 - Can't use regular lib dir because it would conflict with the native package
+
+Change-Id: I9808062a66406cdec7446a75150b40b2f30038c7
 ---
  mkspecs/features/qt_app.prf | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -31,5 +33,5 @@ index cb84ae0da8..8d9471ed0a 100644
  INSTALLS += target
  
 -- 
-2.12.1
+2.13.0
 

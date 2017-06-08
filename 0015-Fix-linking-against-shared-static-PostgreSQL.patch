@@ -1,17 +1,17 @@
-From 953ca26efa1cb2e86a958c52ce737ada0078e1a3 Mon Sep 17 00:00:00 2001
+From cb4fbac9533065928a6c839da4675c60cb7fe6c0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:58:25 +0200
-Subject: [PATCH 14/30] Fix linking against shared/static PostgreSQL
+Subject: [PATCH 15/31] Fix linking against shared/static PostgreSQL
 
 ---
  src/sql/configure.json | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/src/sql/configure.json b/src/sql/configure.json
-index fce948026f..f560c191fd 100644
+index d162d7bc09..0f86b23f22 100644
 --- a/src/sql/configure.json
 +++ b/src/sql/configure.json
-@@ -72,9 +72,10 @@
+@@ -73,9 +73,10 @@
              "label": "PostgreSQL",
              "test": "unix/psql",
              "sources": [
@@ -25,5 +25,5 @@ index fce948026f..f560c191fd 100644
              ]
          },
 -- 
-2.12.1
+2.13.0
 

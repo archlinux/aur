@@ -1,7 +1,7 @@
-From cea6744e8b23c780033c4e5a2f51fdb0bd60153c Mon Sep 17 00:00:00 2001
+From 7ccfcf6a364c00f5ec0204b4614ae78dd2296c0e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
-Subject: [PATCH 20/30] Use *.dll.a as import lib extension
+Subject: [PATCH 21/31] Use *.dll.a as import lib extension
 
 The variables used here are provided by
 mingw-w64 specific mkspec
@@ -11,7 +11,7 @@ mingw-w64 specific mkspec
  2 files changed, 15 insertions(+), 7 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index ed9b82fba9..461a7fdff5 100644
+index 146e83ae67..15fc070008 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -236,8 +236,9 @@ mac {
@@ -27,7 +27,7 @@ index ed9b82fba9..461a7fdff5 100644
      } else {
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}d.lib
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index caa000ea53..e6338546bb 100644
+index b6b8dda397..d9388e8518 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -80,10 +80,14 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
@@ -64,5 +64,5 @@ index caa000ea53..e6338546bb 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.12.1
+2.13.0
 
