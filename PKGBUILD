@@ -1,13 +1,13 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
 _pkgname=vidcutter
-pkgver=4.0.0.r0.g8d91075
-pkgrel=2
+pkgver=4.0.0.r0.g9f98576
+pkgrel=3
 pkgdesc="the simplest + fastest video cutter & joiner"
 arch=('any')
 license=('GPL3')
 url="http://vidcutter.ozmartians.com"
-source=(vidcutter-git::git+https://github.com/ozmartian/vidcutter.git#opengl)
+source=(vidcutter-git::git+https://github.com/ozmartian/vidcutter.git#branch=opengl)
 depends=('python-pyqt5' 'mpv' 'ffmpeg' 'mediainfo' 'python-opengl')
 makedepends=('python-setuptools')
 install=${pkgname}.install
