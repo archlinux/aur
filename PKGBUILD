@@ -1,5 +1,8 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-# Category: system
+
+# TODO: Add more _printerids to make autodetect work for more models.
+#   The printer ID is found inside the ()
+#   Discovered Network Printers: B411 (OKI DATA CORP B411)
 
 set -u
 pkgname='oki-b411-b431'
@@ -11,11 +14,17 @@ arch=('i686' 'x86_64')
 url='http://www.okidata.com/'
 license=('GPL')
 depends=('cups')
+makedepends=('gzip')
 # install="${pkgname}.install"
 # An Install is not necessary. Printers appear and disappear from cups
 # without a systemctl reload org.cups.cupsd.service or killall -HUP cupsd
 source=('ftp://ftp2.okidata.com/pub/drivers/linux/SFP/monochrome/desktop/MB400PCLv5.tar')
 sha256sums=('3ab2df56a62e03d0c0f8dcbb09ea7cde757eac3eb9ab1772f5f3c421cbb6c73f')
+
+_printerids=(
+  # PPDName:Printer ID
+  'OKB411:OKI DATA CORP B411'
+)
 
 prepare() {
   set -u
@@ -23,14 +32,21 @@ prepare() {
   # There's 101 ways to hack up this installer. I choose to
   # fix it the way it should be for most package makers.
   chmod 755 'install.sh'
-  sed -e 's:^\(_CUPS[A-Z]*="\):# \1:g' \
-      -e 's:PATH="\(/usr/\):PATH="${DESTDIR}\1:g' \
+  sed -e '# Disable unnecessary PATH statements' \
+      -e 's:^PATH=/:# &:g' \
+      -e 's:^export PATH:# &:g' \
+      -e '# Ownership is managed by makepkg' \
+      -e 's:\${CHOWN}:# &:g' \
+      -e 's:\${CHGRP}:true # &:g' \
+      -e '# Root is not necessary when packaging' \
+      -e 's:\[ `\${ID} -u`:[ -z "${DESTDIR}" ] \&\& &:g' \
+      -e '# Disable these variables to ensure that set -u catches us if we try to use them.' \
+      -e 's:^_CUPS[A-Z]*=":# &:g' \
+      -e '# Install to package folder' \
+      -e 's:_PATH="/usr/:_PATH="${DESTDIR}/usr/:g' \
+      -e '# Terminate before changing services' \
       -e 's:^\(for i in \${_CUPS}\):if [ "${DESTDIR}" != "" ]; then\n\texit 0\nfi\n\n\1:g' \
-      -e 's:\(\${CHOWN}\):# \1:g' \
-      -e 's:\(\${CHGRP}\):true # \1:g' \
-      -e 's:^\(PATH=/\):# \1:g' \
-      -e 's:^\(export PATH\):# \1:g' \
-      -e 's:^if \[ \(`${ID} -u`\):if \[ "${DESTDIR}" = "" -a \1:g' -i 'install.sh'
+    -i 'install.sh'
   set +u
 }
 
@@ -41,6 +57,27 @@ package() {
   install -d "${pkgdir}/usr/lib/cups/filter"
   DESTDIR="${pkgdir}" \
   sh -u -e 'install.sh'
+
+  # Add alternate nicknames to make autodetect work
+  local _oldfile='OK400PCL.ppd.gz'
+  local _printerid
+  for _printerid in "${_printerids[@]}"; do
+    local _newtag="${_printerid%%:*}"
+    local _newid="${_printerid#*:}"
+    local _newfile="${_oldfile//OK400/${_newtag}}"
+    test "${_oldfile}" != "${_newfile}" || echo "${}"
+    gunzip < "${_oldfile}" | \
+    sed -e '# Fix autodetect *NickName' \
+        -e "s:OKI B4000 / B400 / MB400 PCL:${_newid}:g" \
+        -e "s:OK400PCL.PPD:${_newfile%\.gz}:g" \
+        -e '# Make the printer sort in the list with foomatic' \
+        -e '# I cant figure how how to change the display name without breaking autodetect' \
+        -e '#/^*ModelName/ s:OKI DATA CORP:Oki:g ' \
+        -e '#/^*ShortNickName/ s:OKI DATA CORP:Oki:g ' \
+      | gzip > "${_newfile}"
+    install -m644 "${_newfile}" -t "${pkgdir}/usr/share/cups/model/"
+  done
+
   set +u
 }
 set +u
