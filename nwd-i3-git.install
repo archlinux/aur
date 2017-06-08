@@ -1,0 +1,13 @@
+post_install() {
+    echo "==> To complete installation, add the following line to your bashrc"
+    echo '==> [[ -f /usr/share/nwd/nwd-preexec.sh ]] && source /usr/share/nwd/nwd-preexec.sh'
+    echo '==> and restart bash'
+}
+
+post_upgrade() {
+    echo '==> Upgrade will be effective only you restart bash'
+}
+
+post_remove() {
+    echo "==> To complete removal, remove the source of nwd-preexec.sh from your bashrc"
+}

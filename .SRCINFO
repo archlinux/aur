@@ -1,16 +1,16 @@
 pkgbase = notify-when-done-i3-git
-	pkgdesc = Get notifications when commands in non-focused i3's workspaces finish.
-	pkgver = r19.ee99d96
+	pkgdesc = Get notifications when commands in non-focused i3's window finish.
+	pkgver = r24.ac9414a
 	pkgrel = 1
 	url = https://github.com/giuscri/notify-when-done-i3
-	install = notify-when-done-i3-git.install
+	install = nwd-i3-git.install
 	arch = x86_64
 	license = WTFPL
 	makedepends = git
-	depends = jq
 	depends = i3-wm
 	depends = bash-preexec-git
 	depends = libnotify
+	depends = python
 	source = notify-when-done-i3-git::git+https://github.com/giuscri/notify-when-done-i3.git
 	md5sums = SKIP
 
