@@ -1,8 +1,8 @@
 # Maintainer: Hugues Chabot <at google mail>
 _npmname=serverless
-_npmver=1.14.0
+_npmver=1.15.1
 pkgname=nodejs-serverless # All lowercase
-pkgver=1.14.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(93cfa39e26af90409e08b8b983f4004244ead83f)
+sha1sums=(6481077ce9b24af4a58a5fb49b0e2c28d7915321)
 
 package() {
   cd $srcdir
