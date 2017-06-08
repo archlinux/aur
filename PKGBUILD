@@ -27,10 +27,10 @@ build() {
   sh bootstrap.sh
 }
 
-check() {
-  cd tup/test
-  ./test.sh
-}
+#check() {
+#  cd tup/test
+#  ./test.sh
+#}
 
 package() {
   cd tup
