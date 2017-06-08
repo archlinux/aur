@@ -2,7 +2,7 @@
 Name=Cascade
 Comment=Write in markdown, design in scss/js.
 GenericName=
-Exec=/usr/local/bin/cascade
+Exec=/usr/bin/cascade
 Icon=cascade
 Type=Application
 StartupNotify=true
