@@ -77,16 +77,16 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.8.0
-pkgrel=2
+pkgver=5.9.0
+pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
 isStatic && arch=('any') || arch=('i686' 'x86_64')
 url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
-         'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
-         'mingw-w64-pcre')
+         'mingw-w64-libpng' 'mingw-w64-openssl-1.0' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
+         'mingw-w64-pcre2')
 groups=('mingw-w64-qt5')
 optdepends=('mingw-w64-postgresql: PostgreSQL support' 'mingw-w64-mariadb-connector-c: MySQL support')
 makedepends=('mingw-w64-gcc' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-pkg-config')
@@ -102,61 +102,62 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         '0007-Prevent-debug-library-names-in-pkg-config-files.patch'
         '0008-Fix-linking-against-shared-static-libpng.patch'
         '0009-Fix-linking-against-static-D-Bus.patch'
-        '0010-Fix-linking-against-static-freetype2.patch'
-        '0011-Fix-linking-against-static-harfbuzz.patch'
-        '0012-Fix-linking-against-static-pcre.patch'
-        '0013-Fix-linking-against-shared-static-MariaDB.patch'
-        '0014-Fix-linking-against-shared-static-PostgreSQL.patch'
-        '0015-Rename-qtmain-to-qt5main.patch'
-        '0016-Build-dynamic-host-libraries.patch'
-        '0017-Enable-rpath-for-build-tools.patch'
-        '0018-Use-system-zlib-for-build-tools.patch'
-        '0019-Disable-determing-default-include-and-lib-dirs-at-qm.patch'
-        '0020-Use-.dll.a-as-import-lib-extension.patch'
-        '0021-Merge-shared-and-static-library-trees.patch'
-        '0022-Allow-usage-of-static-version-with-CMake.patch'
-        '0023-Use-correct-pkg-config-static-flag.patch'
-        '0024-Fix-qt5_wrap_ui-macro.patch'
-        '0025-Ignore-errors-about-missing-feature-static.patch'
-        '0026-Enable-and-fix-use-of-iconv.patch'
-        '0027-Ignore-failing-pkg-config-test.patch'
-        '0028-Include-uiviewsettingsinterop.h-correctly.patch'
-        '0029-Hardcode-linker-flags-for-libqwindows.dll.patch'
-        '0030-Prevent-qmake-from-messing-static-lib-dependencies.patch')
-md5sums=('6e1f7f6fb6333eb66e563b175c4e87e9'
-         '59cabe2d0b5646342c6cec93f7ebc074'
-         '9d45eaf425961899c40c76dbd1151204'
-         '60fc8de6d43685fc158ff705891b12ff'
-         'f8da92ad83e2d0e0ebc6ead7d49dcd62'
-         'f4d2daf0e914d7df8ff9ea0db778164c'
-         'd198fc82d361e5a52f066e20d0f2ac1a'
-         'b8a9042191146eee8898c19090e6dd79'
-         'bcf6b7aa10e04c1093c801d2f2b5722b'
-         '50ef8614cb99b72b1e5cd5cb790b089e'
-         '381c9f451602c72c9a11512b41a7e725'
-         '6f2986a143d4d3fcbbf5ec6149742896'
-         '398499d79aeb1ccbdc02c4e604035ee9'
-         '94c63b114ee93f3d9892646090dceea2'
-         '01c49b3786ce8852607aeb40482c56ab'
-         '8d43ede146c545826b8667f4ebe1a92c'
-         '47e13ec0622a3af2d89768cb6c228774'
-         'e08a00d918adad4734e56be6f03ba9bc'
-         '4808132cbdbc320d2e0dd26033fa245f'
-         '92afca193efe77c51fe33c209047d6c5'
-         '75ef72598c4274447b5668c791d019e4'
-         '8eb99eec735bc566847ac692bec14ce6'
-         'b22a8b34e4e403256fd9cfeba5fff508'
-         '26c08be34065619f12a15b485c8c2ea3'
-         '360f6a8dae753f3649bb7bea1ca9170f'
-         'ac4b80a15f9004a8f668b80fb475ddd1'
-         'ccec8075e73f445fcf4c600b4b990fee'
-         '2a7a504e2b4572bef11855c8a0b2863a'
-         '963f27d8f720a91b2345cda9fe0be8cd'
-         'a12368572b27f714babb720258f7b81e'
-         '3aa314937307e172c30258a82dd4ed67')
+        '0010-Don-t-try-to-use-debug-version-of-D-Bus-library.patch'
+        '0011-Fix-linking-against-static-freetype2.patch'
+        '0012-Fix-linking-against-static-harfbuzz.patch'
+        '0013-Fix-linking-against-static-pcre.patch'
+        '0014-Fix-linking-against-shared-static-MariaDB.patch'
+        '0015-Fix-linking-against-shared-static-PostgreSQL.patch'
+        '0016-Rename-qtmain-to-qt5main.patch'
+        '0017-Build-dynamic-host-libraries.patch'
+        '0018-Enable-rpath-for-build-tools.patch'
+        '0019-Use-system-zlib-for-build-tools.patch'
+        '0020-Disable-determing-default-include-and-lib-dirs-at-qm.patch'
+        '0021-Use-.dll.a-as-import-lib-extension.patch'
+        '0022-Merge-shared-and-static-library-trees.patch'
+        '0023-Allow-usage-of-static-version-with-CMake.patch'
+        '0024-Adjust-linker-flags-for-static-build-with-cmake-ming.patch'
+        '0025-Use-correct-pkg-config-static-flag.patch'
+        '0026-Fix-macro-invoking-moc-rcc-and-uic.patch'
+        '0027-Ignore-errors-about-missing-feature-static.patch'
+        '0028-Enable-and-fix-use-of-iconv.patch'
+        '0029-Ignore-failing-pkg-config-test.patch'
+        '0030-Prevent-qmake-from-messing-static-lib-dependencies.patch'
+        '0031-Hardcode-linker-flags-for-platform-plugins.patch')
+sha256sums=('267eb2af1a203c087f2113f43b08014d0e2d2cb269295b8602d869a2fad5296c'
+            'b4406bba39ee7c8cf74c3b8a98b936b46772ca1798ef6884b7b1574ece80fbdc'
+            '86cf470f1694abf6973f7b0f8e6cb75dd8a58e9335bab075b25229d26064adab'
+            '670b6cd7a6ee49f12ccf4121e997055daec887d080baf0269793b1d0243d1d89'
+            '878c08a1e9d0c8d639ddbdbc944ac8647ff204e9f078ddd9337737b2b929c2ed'
+            '38533dba16df99074e8c3f5d52bc15fabdbaffe0a56dbed79683c47f08342587'
+            '5ef3a569f4c53e848750ff655342e92a103abe78495905a5ef47afea9da8d1fb'
+            'd21ebc9465a19e01912ebccb365b4f7ecfd3a95787c1de2640f29bdbc161983c'
+            '0622a2e606d9edbea23d3a5724ea9d4ed3958e60296b85134176c3980d590a41'
+            '90f1347e5c41b9e447c0339715d19e0434a0b58c36fd8405e850190fe17369dc'
+            '6b6ebfdf598658172680e4e83d2c3de24dcbc93233b0f48d5ccbf760d8f59a5c'
+            '11ce05f79174440406d84b38023d81c1fa87034119360fa2f0bd3887429fa694'
+            'c30c558ea413c986aec2ffe86e34dd8e99f96cbc615e3963f711ec1628888114'
+            'b9fbfc213089e3b44ed888f4e628030e78dd84c8030ba7a2a9f79fbf31312934'
+            '94ebedf699ebc0a5c6fed307eecd3dfabf9f864c696f3cf17bd8462789c1fae2'
+            'df05b0f65dcafede1f83ce190895e6c6f4a22feecb1c5b1a0ba03f4948e56220'
+            '0acae3adb542d6ea0b405a947adf087826b4971df133b984d9166a9872e5cc98'
+            'bb825226ca1e97cb49c3ac3a0c03a7db9f3e1eca632628d344201fcf9816376d'
+            'e74fb8219bf599fbe5fbd1b08ff89d717089f1fa4d9e488a60e6097b212b7391'
+            'cf3f90b69feb98e42ede770828db4538a3dd31dd02b2b15f55ea1743db5868ad'
+            '813cd1c22e3211133337231e1df754b5560159eecf1cf3eef0408d335e186190'
+            'a0feb7b5a9747d6a88058360fc34f8ac8fb3cdeb2b343a5a2b28a88fdabb45b3'
+            '82f8f1eba6ac63c9a8749e20eb57fad80e92ddd5a58912a60a8c2fad9e83d6eb'
+            '34652aec17d7511815db59b438b0597e52b7f43c19d068e7e417325897a72254'
+            'dcfe2103ace81898960316dd691fae38d05b2b6a79dc0ae0f245ae402f1101a8'
+            '0682dcc62b44717fa850700cec183cd856ce7335f26884ab15d4d0e7d3543bfe'
+            'cecf5ff2916d95ffdbcf60ba3e18297a6107e17e9766a5e4d8b9ae748d99ba52'
+            '79bc920bb539fc68001b5def07eea3e45eb3d2c6aa3f2a949823236adf8e4633'
+            '80757f614fe02bfb85d00292d4f84c9f2ab2c39a512c21e956df135f3fbfdd81'
+            'cc46ffc3a2183539aba923fb256045464eaae37a666034172138f4689a5c9bd3'
+            'f0e63e022d1e52b82a7622828b568c57d1422f9726e116902cd2be81fec45da4'
+            '28b11e63f570891212073b3739a20489304d3c7205ae38471cbd6b15c651fabc')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-#_architectures='x86_64-w64-mingw32 i686-w64-mingw32'
 
 isStatic && depends+=(${pkgname%-static})
 if isANGLE; then
@@ -220,6 +221,9 @@ build() {
   unset PKG_CONFIG_PATH
 
   for _arch in ${_architectures}; do
+    echo "INCLUDEPATH += /usr/${_arch}/include/openssl-1.0" >> src/network/network.pro
+    export OPENSSL_LIBS='-L/usr/${_arch}/lib/openssl-1.0 -lssl -lcrypto'
+
     # Phonon is disabled for now because we lack the directx headers
     # FIXME: check whether this is still the case
 

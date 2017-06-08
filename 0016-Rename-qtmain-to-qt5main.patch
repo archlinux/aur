@@ -1,7 +1,7 @@
-From e81d865a144c5c12ea1b93922a8c27f676aad531 Mon Sep 17 00:00:00 2001
+From f0f623ebdc7e578047212feac62044e08aaf08cb Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
-Subject: [PATCH 15/30] Rename qtmain to qt5main
+Subject: [PATCH 16/31] Rename qtmain to qt5main
 
 Prevents conflict with mingw-w64-qt4 package
 ---
@@ -11,7 +11,7 @@ Prevents conflict with mingw-w64-qt4 package
  3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 1099e14b17..ed9b82fba9 100644
+index bb5083c925..146e83ae67 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -225,8 +225,8 @@ mac {
@@ -52,5 +52,5 @@ index 4140ae48de..9ae73db74b 100644
  
  CONFIG += static
 -- 
-2.12.1
+2.13.0
 
