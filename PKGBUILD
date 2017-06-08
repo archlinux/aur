@@ -1,6 +1,6 @@
 # Maintainer: Giuseppe <giuscri@gmail.com>
 pkgname='notify-when-done-i3-git'
-pkgver=r25.6b95dd4
+pkgver=r26.631ca29
 pkgrel=1
 pkgdesc="Get notifications when commands in non-focused i3's window finish."
 arch=('x86_64')
@@ -19,5 +19,6 @@ pkgver() {
 
 package() {
     install -Dm0644 "$srcdir/$pkgname/preexec.sh" "$pkgdir/usr/share/nwd/preexec.sh"
+    install -Dm0644 "$srcdir/$pkgname/focused_window.py" "$pkgdir/usr/share/nwd/focused_window.py"
     install -Dm0644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/nwd/LICENSE"
 }
