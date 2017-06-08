@@ -1,0 +1,19 @@
+pkgbase = bcoin-git
+	pkgdesc = An alternative implementation of the bitcoin protocol, written in node.js.
+	pkgver = 1.0.0.beta.12.100.gf0b43764
+	pkgrel = 1
+	url = http://bcoin.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = python2
+	depends = nodejs
+	provides = bcoin
+	conflicts = bcoin
+	source = bcoin-git::git+https://github.com/bcoin-org/bcoin.git
+	md5sums = SKIP
+
+pkgname = bcoin-git
+
