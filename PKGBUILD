@@ -5,7 +5,7 @@ _basename=pacman-utils
 pkgname=pacman-utils-data
 _basever="2017_06_07"
 pkgver="${_basever}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Additional data for use with pacman-utils (required for provides_upstream)"
 # arch package url is https://github.com/kata198/pacman-utils-data-pkg
 url="https://github.com/kata198/pacman-utils-data"
@@ -21,6 +21,6 @@ package() {
 
   mkdir -p "${pkgdir}/var/lib/pacman"
 
-  cp -f providesDB "${pkgdir}/var/lib/pacman"
+  cp -f providesDB "${pkgdir}/var/lib/pacman/.providesDB"
 
 }
