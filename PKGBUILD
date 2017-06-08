@@ -1,7 +1,7 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=madgraph
-pkgver=2.5.4
+pkgver=2.5.5
 _dirname="MG5_aMC_v${pkgver//./_}"
 pkgrel=1
 pkgdesc="MadGraph5_aMC@NLO is a framework that aims at providing all the elements necessary for SM and BSM phenomenology"
@@ -28,9 +28,9 @@ optdepends=(
 source=("https://launchpad.net/mg5amcnlo/${pkgver%%.*}.0/${pkgver%.*}.x/+download/MG5_aMC_v${pkgver}.tar.gz"
         "python2.patch"
         "mg5_configuration.patch")
-sha256sums=('cf690d228cfe054491d672c2ac9a835e9061c3494e196d4b0b5b7d16bc809236'
-            '18ea6bc5d0655067a03afbdeb33272b6ce8f11508b838124532e022893882c73'
-            'ae4860ea65302b917ed8c6b357d0b54999d8ead3e698e907f9093733f3d2e8aa')
+sha256sums=('dbfd242376382b8037e22ec833e77fc39aa3a74133e8bc10a8d92973457834a9'
+            '9a031f29942784d3e496c4f107b62d9a03a7f2f8f057bb9944145a0a579fca67'
+            '34d065f4ead2681af572b15302208b34e89480de9f70edfdf4ca460dd79020bb')
 options=("!strip")
 
 prepare() {
