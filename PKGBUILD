@@ -1,6 +1,6 @@
 #Maintainer: Dimitris Pappas <mitsakosgr@gmail.com>
 pkgname=minizinc-ide
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=('i686' 'x86_64')
@@ -21,10 +21,10 @@ depends=('libpng12'
 source_x86_64=(https://github.com/MiniZinc/MiniZincIDE/releases/download/"${pkgver}"/MiniZincIDE-"${pkgver}"-bundle-linux-x86_64.tgz)
 source_i686=(https://github.com/MiniZinc/MiniZincIDE/releases/download/"${pkgver}"/MiniZincIDE-"${pkgver}"-bundle-linux-x86_32.tgz)
 
-md5sums=('dbc72538f4e9bfd6ca0b4dec0a013341'
-         'c4aff15df2271ac84fc60b2dd9a7d192')
-md5sums_i686=('02cb718f5218179a2cb52c4132b92790')
-md5sums_x86_64=('17e9d99cbbcd1c64a1d8e0c28acb7cf9')
+sha256sums=('b86ef15b8ee1014342a2f38358d7f806a58b900bf1150101b535aecddaa122d1'
+            '1b9fa21e25c48e1080eaea2348eb98a45242e045b7ba94fe4723a9b01cbcdb2a')
+sha256sums_i686=('006e72beefcfe9a291adffc60597f129b88db12c7ab07ebc9126bb9807e05cd2')
+sha256sums_x86_64=('e88e3d774d5670275c61d44e6bbaff91288940e92b0475b4c41f0cf685fada8c')
 
 
 package() {
