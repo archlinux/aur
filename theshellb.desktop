@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Exec=/usr/bin/init_theshellb
+TryExec=/usr/bin/init_theshellb
+DesktopNames=theShell
+Name=theShell Blueprint
+Comment=Desktop Shell for theOS

@@ -15,8 +15,9 @@ optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'
 	    'festival: for theWave')
 makedepends=('git')
-source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=blueprint')
-md5sums=('SKIP')
+source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=blueprint'
+	"theshellb.desktop")
+md5sums=('SKIP' 'SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -29,10 +30,10 @@ build() {
 package() {
 	chmod +x "$pkgname-$pkgver/init_theshell"
 	mkdir -p "$pkgdir/usr/bin"
-	cp "$pkgname-$pkgver/theshell" "$pkgdir/usr/bin"
-	cp "$pkgname-$pkgver/init_theshell" "$pkgdir/usr/bin"
+	cp "$pkgname-$pkgver/theshell" "$pkgdir/usr/bin/theshellb"
+	cp "$pkgname-$pkgver/init_theshell" "$pkgdir/usr/bin/init_theshellb"
 	mkdir -p "$pkgdir/usr/share/xsessions"
-	cp "$pkgname-$pkgver/theshell.desktop" "$pkgdir/usr/share/xsessions"
-	mkdir -p "$pkgdir/usr/share/theshell/translations"
-	cp "$pkgname-$pkgver/translations/"* "$pkgdir/usr/share/theshell/translations"
+	cp "theshellb.desktop" "$pkgdir/usr/share/xsessions"
+	#mkdir -p "$pkgdir/usr/share/theshell/translations"
+	#cp "$pkgname-$pkgver/translations/"* "$pkgdir/usr/share/theshell/translations"
 }
