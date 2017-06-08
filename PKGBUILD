@@ -11,7 +11,7 @@
 #
 
 pkgname='tor-browser'
-pkgver='6.5.2'
+pkgver='7.0'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor (language-agnostic PKGBUILD)'
 url='https://www.torproject.org/projects/torbrowser.html'
