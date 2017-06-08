@@ -1,6 +1,6 @@
 pkgbase = chirp-daily
 	pkgdesc = Latest build for GUI tool for programming ham radios
-	pkgver = 20170607
+	pkgver = 20170608
 	pkgrel = 1
 	url = http://chirp.danplanet.com/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = chirp-daily
 	provides = chirp
 	conflicts = chirp
 	options = !emptydirs
-	source = http://trac.chirp.danplanet.com/chirp_daily/daily-20170607/chirp-daily-20170607.tar.gz
-	sha1sums = 16197032c79fc7782eac86e22d902fabfdd88959
+	source = http://trac.chirp.danplanet.com/chirp_daily/daily-20170608/chirp-daily-20170608.tar.gz
+	sha1sums = 7e84718a3c11d6f43492af62705ccd7df3eabf50
 
 pkgname = chirp-daily
