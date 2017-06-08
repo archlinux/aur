@@ -1,0 +1,16 @@
+pkgbase = jupyter-calysto_processing-git
+	pkgdesc = Calysto Processing kernel for Jupyter (GIT version)
+	pkgver = r22.3594bf7
+	pkgrel = 1
+	url = https://github.com/Calysto/calysto_processing
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = jupyter-metakernel
+	depends = python-html2text
+	depends = processing
+	source = git+https://github.com/Calysto/calysto_processing.git
+	md5sums = SKIP
+
+pkgname = jupyter-calysto_processing-git
+
