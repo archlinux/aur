@@ -32,8 +32,8 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
             '88c3781f6ca5d1d7d96481d423168cb8258cf0e332ed69afc45c1a55312e87ca'
             'SKIP'
-            'c18ad38afc8f507ea69c9c2b26f75ceb2bbef40be60d2f73797914caca13cc53'
-            'eaa5da093e300d733810eac1e09e87d33686cad483ed09e6372531776560abb4'
+            'c7af34db3eaa94954cf2bee0615fdbf51bf3b5d54a115fbd3aad8cc6788eb998'
+            'ab9d9aae34e11db85c36cee93413cb31b8f5faf663a2fa113a38467eb7b42f19'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
