@@ -2,8 +2,8 @@
 
 _pkgname=screencloud
 pkgname=${_pkgname}-git
-pkgver=1.3.1.3.g74724ca
-pkgrel=4
+pkgver=1.3.1.5.gc9482a7
+pkgrel=2
 pkgdesc='An easy to use screenshot sharing tool. Development version.'
 arch=('i686' 'x86_64')
 url='https://screencloud.net/'
@@ -20,14 +20,8 @@ makedepends=('cmake' 'git' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
-source=(
-	"git+https://github.com/olav-st/${_pkgname}.git"
-	'fix_pythonqt.patch'
-)
-sha512sums=(
-	'SKIP'
-	'f953f57e21db580c299f48fb1b02452ee7bd612701ead112ad05a42a531fe07e3207569135ec91a8895b57481607ccfd429aa7fa4336b122d7bcf71f1b88f316'
-)
+source=("git+https://github.com/olav-st/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	# Updating package version
@@ -38,10 +32,6 @@ pkgver() {
 prepare() {
 	# Create build directory
 	mkdir -p "${srcdir}"/build
-
-	# Fix PythonQt detection
-	cd "${srcdir}"/${_pkgname}
-	patch -Np1 < ../fix_pythonqt.patch
 }
 
 build() {
