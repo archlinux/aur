@@ -3,4 +3,4 @@ Description=Remove orphaned packages
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/orphan-manager
+ExecStart=/usr/bin/orphan-manager
