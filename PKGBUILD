@@ -1,7 +1,7 @@
 # Maintainer: hfte posteo org
 pkgname=onewireviewer
 pkgver=3.13.40
-pkgrel=6
+pkgrel=7
 pkgdesc="demonstration application for exploring iButton or 1-Wire® chip features"
 arch=('x86_64')
 url="https://www.maximintegrated.com/en/products/ibutton/software/1wire/OneWireViewer.cfm"
@@ -50,7 +50,8 @@ package() {
 
     # install USB Driver for 1-Wire
     cp "${srcdir}/OneWireViewer-Linux/PDKAdapterUSB/libonewireUSB.so" "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/OneWireViewer-Linux/PDKAdapterUSB/com" "${DESTDIR}/PDKAdapterUSB/"
+    mkdir -p "${DESTDIR}//PDKAdapterUSB/com"
+    cp -r "${srcdir}/OneWireViewer-Linux/PDKAdapterUSB/com" "${DESTDIR}/PDKAdapterUSB/com"
 
     # install OneWireViewer
     mkdir -p "${DESTDIR}/OneWireViewer"
