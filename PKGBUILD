@@ -1,8 +1,8 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-custom-git
-pkgver=r996.2b41904
-pkgrel=2
+pkgver=r1004.65ee6eb
+pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -51,7 +51,9 @@ package() {
 #   ligset-elm: Default ligation set would be assigned to Elm.
 #   ligset-ml: Default ligation set would be assigned to ML.
 #   ligset-fs: Default ligation set would be assigned to F#.
-#   ligset-fstar: D
+#   ligset-fstar: Default ligation set would be assigned to F*.
+#   ligset-swift: Default ligation set would be assigned to Swift.
+#   ligset-purescript: Default ligation set would be assigned to PureScript.
 # letter l:
 #   v-l-hooky : Hooky l.
 #   v-l-zshaped : Z-shaped l.
