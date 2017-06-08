@@ -1,9 +1,11 @@
-From 7d8372b48046631d93ea260649d29a023fe29b01 Mon Sep 17 00:00:00 2001
+From 842da3facc0a4e3269d391b57bd1207a796b8628 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 21/30] Merge shared and static library trees
+Subject: [PATCH 22/31] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
+
+Change-Id: Ie60ddbe967cb553d5d92d5a706398a1e7385344a
 ---
  configure.pri                     |  7 +++++++
  mkspecs/features/default_post.prf | 11 +++++++++++
@@ -13,13 +15,13 @@ Allow installation of shared and static build in the same prefix
  5 files changed, 47 insertions(+), 6 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 19719736a9..0c4b8ebbf8 100644
+index be1b166080..9a5c6cb30d 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -555,3 +555,10 @@ QMAKE_POST_CONFIGURE += \
+@@ -1181,3 +1181,10 @@ defineTest(createConfigStatus) {
  
- # load and process input from configure.sh/.exe
- include($$shadowed($$PWD)/config.tests/configure.cfg)
+ QMAKE_POST_CONFIGURE += \
+     "createConfigStatus()"
 +
 +# merge shared and static library trees
 +contains(CONFIG, static) {
@@ -28,7 +30,7 @@ index 19719736a9..0c4b8ebbf8 100644
 +    QT_CONFIG -= shared
 +}
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index e7e9a5bd87..72305ad9b8 100644
+index d6caf870f7..7bff3d32ba 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -1,5 +1,16 @@
@@ -49,10 +51,10 @@ index e7e9a5bd87..72305ad9b8 100644
  
  !have_target:!force_qt: CONFIG -= qt
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 98f794c485..1799622edd 100644
+index 3ccbbe7061..20b02d5ca9 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
-@@ -152,6 +152,21 @@ for(ever) {
+@@ -255,6 +255,21 @@ for(ever) {
              !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
                  WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
          }
@@ -97,10 +99,10 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index a762443fe2..8ac3a0f647 100644
+index 55e25d596a..990d10a286 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3167,6 +3167,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3169,6 +3169,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -110,7 +112,7 @@ index a762443fe2..8ac3a0f647 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3340,9 +3343,9 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3342,9 +3345,9 @@ MakefileGenerator::writePkgConfigFile()
      t << endl;
  
      // requires
@@ -124,5 +126,5 @@ index a762443fe2..8ac3a0f647 100644
  
      t << endl;
 -- 
-2.12.1
+2.13.0
 
