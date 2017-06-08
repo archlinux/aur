@@ -2,8 +2,8 @@
 
 pkgname=vcsn-git
 _realname=vcsn
-pkgver=v2.1.r384.g74679ab
-pkgrel=2
+pkgver=v2.5.r113.g620a9084
+pkgrel=1
 pkgdesc="Finite state machine manipulation platform, consisting of a library and tools implemented on top of it."
 arch=('i686' 'x86_64')
 url="http://vcsn.lrde.epita.fr/"
@@ -31,7 +31,9 @@ build() {
   cd "$srcdir/${_realname}"
   ./bootstrap
   ./configure --prefix="/usr" CXXFLAGS='-O3' CPPFLAGS='-DNDEBUG'
-  make V=1
+  # make V=1
+  # Temporary fix for Boost Python 1.64
+  make V=1 VISIBILITY_CXXFLAGS=""
 }
 
 package() {
