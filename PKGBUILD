@@ -48,7 +48,7 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm655 wp-cli.phar "$pkgdir/usr/bin/wp"
   cd "$srcdir"
   install -Dm644 wp-completion.bash "${pkgdir}/usr/share/bash-completion/completions/wp"
