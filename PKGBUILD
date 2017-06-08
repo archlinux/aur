@@ -15,7 +15,7 @@
 
 _qt_module=qtwebkit
 pkgname=mingw-w64-qt5-webkit
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for a WebKit2 based implementation and a new QML API (mingw-w64)"
@@ -44,25 +44,25 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 groups=('mingw-w64-qt5')
 source=("https://download.qt.io/community_releases/${pkgver:0:3}/${pkgver}-final/${_pkgfqn}.tar.xz"
-         '0001-Use-correct-ICU-libs.patch'
-         '0002-Use-pkg-config.patch'
-         '0003-Use-system-ANGLE-rather-than-bundled-version.patch'
-         '0004-Prevent-symbols-not-being-exported-in-Qt5WebKit.dll.patch'
-         '0005-Build-with-smaller-debug-info.patch'
-         '0006-Establish-compatibility-with-latest-ANGLE.patch'
-         '0007-Include-intrin.h-for-declaration-of-_mm_mfence.patch'
-         '0008-Link-against-ANGLE-even-if-Qt-is-configured-not-to.patch'
-         '0009-Fixed-crash-probably-miscompilation-with-MinGW-w64-5.patch')
-md5sums=('60a6935aca4a7c553d0ec4646ceed3b4'
-         '208ff77dc291de1c91b8143e7fb9c1ae'
-         '1ea0dc59ce4283e533126a0abb30f21a'
-         '695ba1f69129024dd3abb0bf6eb2b736'
-         '6b65ea17730b99ee3e24821089624d56'
-         'fdacb552245d089c77017977f52e8d51'
-         '5964c02a0dcf8c4af354bc0a0f4babd3'
-         '83fae95c74b670d84a03985d3dbd83d0'
-         '307d500b217ca9183d9f97d617461803'
-         'a9fd04dcfe19ef9458a0485219f24c64')
+        '0001-Use-correct-ICU-libs.patch'
+        '0002-Use-pkg-config.patch'
+        '0003-Use-system-ANGLE-rather-than-bundled-version.patch'
+        '0004-Prevent-symbols-not-being-exported-in-Qt5WebKit.dll.patch'
+        '0005-Build-with-smaller-debug-info.patch'
+        '0006-Establish-compatibility-with-latest-ANGLE.patch'
+        '0007-Include-intrin.h-for-declaration-of-_mm_mfence.patch'
+        '0008-Link-against-ANGLE-even-if-Qt-is-configured-not-to.patch'
+        '0009-Fixed-crash-probably-miscompilation-with-MinGW-w64-5.patch')
+sha256sums=('8dad193b740055a998312e04a040f2e32a923c0823b2d239b24eab08276a4e04'
+            'f1ba67d7ed37fe6902fb4febf6b1f6963845b6211982609016e8a93cd3a892ed'
+            '76516383d7ca1f1c0af9d72d4e7c153d7174fe5c60bef64f16db62a4b3fb8171'
+            '0dd645333df5ee3907ad105fe58bd5371951389ab9d6b6fea35e06d8ed4f7019'
+            '77e26af64a5dc252ee3c57609ffea6119fdbeceda3202d8b5c847b91d23ab937'
+            '88c8a92ede8bf415b6aa119bde2e77de57eeb151442524c590327f0a468c491d'
+            '85248547a2154883c64500b0b7c50dcf63254f7be960ebda3aaf64e4758f38f4'
+            '99d5fc8cda32cc1b5d0cb7de8c47bda1f5a75dc85f451aa5cb8b02d830c8c7da'
+            '1a280a9584317f3490da5e8e95f3f0588b09bc711c4b6836c0e0f0e79f7ab77f'
+            'ee98d9f1fc6cda090434bc366dff8cf6733d3bfd21ac3fe3f9cb47044b44ca40')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -100,7 +100,8 @@ build() {
       export CPATH="${default_cpath}:/usr/$_arch/include:/usr/$_arch/include/GLSLANG"
 
       ${_arch}-qmake-qt5 \
-        "QMAKE_CXXFLAGS+=-Wno-c++0x-compat" \
+        'QMAKE_CXXFLAGS+=-Wno-c++0x-compat' \
+        'QMAKE_CXXFLAGS+=-Wno-expansion-to-defined' \
         ../WebKit.pro
       make
       popd

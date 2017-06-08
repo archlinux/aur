@@ -1,4 +1,4 @@
-From 5134bfb5375b9bedf5bdb15c8fadf441285802d9 Mon Sep 17 00:00:00 2001
+From f956920ce7932e20e315656e72282007087b6ab9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:19:57 +0200
 Subject: [PATCH 6/9] Establish compatibility with latest ANGLE
@@ -291,5 +291,5 @@ index 43b546d18..73b61e2cd 100644
      if (!m_private->m_surface || !m_private->m_platformContext) {
          LOG_ERROR("GraphicsContext3D: GL context creation failed.");
 -- 
-2.11.0
+2.13.0
 

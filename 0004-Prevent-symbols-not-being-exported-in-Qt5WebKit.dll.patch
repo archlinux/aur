@@ -1,4 +1,4 @@
-From 1059d77bb26bb03485fa2ab2f5770dec215a2de5 Mon Sep 17 00:00:00 2001
+From 69c1909da075f68961276dc4ca3720ee0346ba2b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:08:26 +0200
 Subject: [PATCH 4/9] Prevent symbols not being exported in Qt5WebKit.dll
@@ -42,5 +42,5 @@ index fe222c2fc..46d629c05 100644
  QWEBKIT_EXPORT QString qWebKitVersion();
  QWEBKIT_EXPORT int qWebKitMajorVersion();
 -- 
-2.11.0
+2.13.0
 

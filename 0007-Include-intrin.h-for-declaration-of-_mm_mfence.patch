@@ -1,4 +1,4 @@
-From e2623801cfd15fdf24f0af2bfc01bdfb2b0ca22d Mon Sep 17 00:00:00 2001
+From bd24ddb0593aa238d80532c76390497bbe1d2ed2 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:21:54 +0200
 Subject: [PATCH 7/9] Include intrin.h for declaration of _mm_mfence
@@ -21,5 +21,5 @@ index 8f950c718..142c0db3e 100644
  #include <windows.h>
  #elif OS(QNX)
 -- 
-2.11.0
+2.13.0
 

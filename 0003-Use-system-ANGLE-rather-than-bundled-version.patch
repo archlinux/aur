@@ -1,4 +1,4 @@
-From 15e8abbefe0e71c29c106f1e7b54bd1f4b7433f8 Mon Sep 17 00:00:00 2001
+From 29cdc4ee740431916eb78a2fc0fdc8680de16319 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Nov 2016 12:14:01 +0100
 Subject: [PATCH 3/9] Use system ANGLE rather than bundled version
@@ -64,5 +64,5 @@ index 11b59e58b..e9709a238 100644
      leveldb.file = Source/ThirdParty/leveldb/leveldb.pro
      leveldb.makefile = Makefile.leveldb
 -- 
-2.11.0
+2.13.0
 

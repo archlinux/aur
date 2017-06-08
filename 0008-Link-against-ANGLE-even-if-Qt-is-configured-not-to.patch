@@ -1,4 +1,4 @@
-From 8f0a0019f827815161291e4f63dfe8d15d32bd60 Mon Sep 17 00:00:00 2001
+From 84fa5b7bdb6e48635bee214daca34cee49289ef8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Nov 2016 12:46:27 +0100
 Subject: [PATCH 8/9] Link against ANGLE even if Qt is configured not to
@@ -31,5 +31,5 @@ index d6c32e80c..42aadaacc 100644
          }
      } else {
 -- 
-2.11.0
+2.13.0
 
