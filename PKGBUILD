@@ -1,7 +1,7 @@
 # Maintainer: Youngbin Han <sukso96100@gmail.com>
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
 pkgname=micro-git
-pkgver=1.2.0.eeb2aaf
+pkgver=v1.2.0.cf92f91
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
@@ -24,6 +24,6 @@ build(){
  make install
 }
 package(){
- install -Dm755 $srcdir/$pkgname/bin "$pkgdir/usr/bin/micro"
+ install -d -Dm755 $srcdir/$pkgname/bin "$pkgdir/usr/bin/micro"
  install -Dm644 $srcdir/$pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
