@@ -1,7 +1,7 @@
 # Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=netgen-git
-pkgver=v6.2.dev.203.g08823c1
+pkgver=v6.2.dev.210.g24a67bc
 pkgrel=1
 pkgdesc="An automatic 3d tetrahedral mesh generator."
 url=https://sourceforge.net/projects/netgen-mesher/
@@ -45,5 +45,8 @@ build() {
 package() {
   cd "${srcdir}"/${pkgname%-git}/build
   make DESTDIR="$pkgdir/" install
+
+  # remove reference to srcdir
+  sed -i "s;${srcdir}/;;g" ${pkgdir}/usr/lib/cmake/netgen/NetgenConfig.cmake
 }
 
