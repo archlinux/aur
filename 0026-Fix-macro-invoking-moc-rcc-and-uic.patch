@@ -1,0 +1,74 @@
+From 27d8249c25041e18ae3168a733d34208b42f436d Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 4 Dec 2016 20:35:47 +0100
+Subject: [PATCH 26/31] Fix macro invoking moc, rcc and uic
+
+* Otherwise the arguments aren't passed correctly leading to errors like
+  ```
+  [  3%] Generating qca_core.moc
+  moc: Too many input files specified: 'Qt5::moc' '/build/qca-qt5/src/qca-2.1.3/include/QtCrypto/qca_safetimer.h'
+  ```
+* Just a workaround, not sure what is causing the issue (maybe a CMake bug?)
+* See https://github.com/Martchus/PKGBUILDs/issues/11
+
+Change-Id: I6fde86d0a3ade37b4376604a1eb6d5723eda8b4c
+---
+ src/corelib/Qt5CoreMacros.cmake    | 9 ++++++---
+ src/widgets/Qt5WidgetsMacros.cmake | 3 ++-
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/corelib/Qt5CoreMacros.cmake b/src/corelib/Qt5CoreMacros.cmake
+index 489bc75511..c980f4220d 100644
+--- a/src/corelib/Qt5CoreMacros.cmake
++++ b/src/corelib/Qt5CoreMacros.cmake
+@@ -132,8 +132,9 @@ function(QT5_CREATE_MOC_COMMAND infile outfile moc_flags moc_options moc_target
+     endif()
+ 
+     set(_moc_extra_parameters_file @${_moc_parameters_file})
++    get_target_property(MOC_LOC ${Qt5Core_MOC_EXECUTABLE} IMPORTED_LOCATION)
+     add_custom_command(OUTPUT ${outfile}
+-                       COMMAND ${Qt5Core_MOC_EXECUTABLE} ${_moc_extra_parameters_file}
++                       COMMAND ${MOC_LOC} ${_moc_extra_parameters_file}
+                        DEPENDS ${infile} ${moc_depends}
+                        ${_moc_working_dir}
+                        VERBATIM)
+@@ -251,8 +252,9 @@ function(QT5_ADD_BINARY_RESOURCES target )
+         set(rc_depends ${rc_depends} ${_rc_depends})
+     endforeach()
+ 
++    get_target_property(RCC_LOC ${Qt5Core_RCC_EXECUTABLE} IMPORTED_LOCATION)
+     add_custom_command(OUTPUT ${rcc_destination}
+-                       COMMAND ${Qt5Core_RCC_EXECUTABLE}
++                       COMMAND ${RCC_LOC}
+                        ARGS ${rcc_options} --binary --name ${target} --output ${rcc_destination} ${infiles}
+                        DEPENDS ${rc_depends} ${out_depends} VERBATIM)
+ 
+@@ -284,8 +286,9 @@ function(QT5_ADD_RESOURCES outfiles )
+ 
+         _QT5_PARSE_QRC_FILE(${infile} _out_depends _rc_depends)
+ 
++        get_target_property(MOC_LOC ${Qt5Core_RCC_EXECUTABLE} IMPORTED_LOCATION)
+         add_custom_command(OUTPUT ${outfile}
+-                           COMMAND ${Qt5Core_RCC_EXECUTABLE}
++                           COMMAND ${MOC_LOC}
+                            ARGS ${rcc_options} --name ${outfilename} --output ${outfile} ${infile}
+                            MAIN_DEPENDENCY ${infile}
+                            DEPENDS ${_rc_depends} "${out_depends}" VERBATIM)
+diff --git a/src/widgets/Qt5WidgetsMacros.cmake b/src/widgets/Qt5WidgetsMacros.cmake
+index f5e7b7f050..18d120f0c7 100644
+--- a/src/widgets/Qt5WidgetsMacros.cmake
++++ b/src/widgets/Qt5WidgetsMacros.cmake
+@@ -55,8 +55,9 @@ function(QT5_WRAP_UI outfiles )
+         get_filename_component(outfile ${it} NAME_WE)
+         get_filename_component(infile ${it} ABSOLUTE)
+         set(outfile ${CMAKE_CURRENT_BINARY_DIR}/ui_${outfile}.h)
++        get_target_property(UIC_LOC ${Qt5Widgets_UIC_EXECUTABLE} IMPORTED_LOCATION)
+         add_custom_command(OUTPUT ${outfile}
+-          COMMAND ${Qt5Widgets_UIC_EXECUTABLE}
++          COMMAND ${UIC_LOC}
+           ARGS ${ui_options} -o ${outfile} ${infile}
+           MAIN_DEPENDENCY ${infile} VERBATIM)
+         list(APPEND ${outfiles} ${outfile})
+-- 
+2.13.0
+

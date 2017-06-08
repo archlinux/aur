@@ -1,0 +1,101 @@
+From 7f5e0ffbc26a67ba4bc3c0868fdd492641846a23 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Wed, 25 Jan 2017 23:42:30 +0100
+Subject: [PATCH 31/31] Hardcode linker flags for platform plugins
+
+Otherwise incorrect order of libs leads to errors
+when building libqminimal.dll, libqoffscreen.dll
+and libqwindows.dll
+
+Change-Id: I594ddcc15599c63bb8ac5e998f59c4561a18eb26
+---
+ src/plugins/platforms/minimal/minimal.pro     | 15 +++++++++++++--
+ src/plugins/platforms/offscreen/offscreen.pro | 14 ++++++++++++--
+ src/plugins/platforms/windows/windows.pro     | 19 +++++++++++++++----
+ 3 files changed, 40 insertions(+), 8 deletions(-)
+
+diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
+index 8cfb68824e..c3fd4c73f2 100644
+--- a/src/plugins/platforms/minimal/minimal.pro
++++ b/src/plugins/platforms/minimal/minimal.pro
+@@ -1,8 +1,19 @@
+ TARGET = qminimal
+ 
+ QT += \
+-    core-private gui-private \
+-    eventdispatcher_support-private fontdatabase_support-private
++    core-private gui-private
++
++# Fix linker error when building libqminimal.dll by specifying linker flags for
++# required modules manually (otherwise order is messed)
++LIBS += \
++    -lQt5EventDispatcherSupport \
++    -lQt5FontDatabaseSupport \
++    -lfreetype -lole32 -lgdi32 -luuid
++# However, this workaround leads to the necessity of specifying include dirs manually
++INCLUDEPATH += \
++    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/5.9.0 \
++    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/5.9.0
++
+ 
+ DEFINES += QT_NO_FOREACH
+ 
+diff --git a/src/plugins/platforms/offscreen/offscreen.pro b/src/plugins/platforms/offscreen/offscreen.pro
+index 6652cefd86..03c30f4a96 100644
+--- a/src/plugins/platforms/offscreen/offscreen.pro
++++ b/src/plugins/platforms/offscreen/offscreen.pro
+@@ -1,8 +1,18 @@
+ TARGET = qoffscreen
+ 
+ QT += \
+-    core-private gui-private \
+-    eventdispatcher_support-private fontdatabase_support-private
++    core-private gui-private
++
++# Fix linker error when building libqoffscreen.dll by specifying linker flags for
++# required modules manually (otherwise order is messed)
++LIBS += \
++    -lQt5EventDispatcherSupport \
++    -lQt5FontDatabaseSupport \
++    -lfreetype -lole32 -lgdi32 -luuid
++# However, this workaround leads to the necessity of specifying include dirs manually
++INCLUDEPATH += \
++    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/5.9.0 \
++    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/5.9.0
+ 
+ DEFINES += QT_NO_FOREACH
+ 
+diff --git a/src/plugins/platforms/windows/windows.pro b/src/plugins/platforms/windows/windows.pro
+index 23168c10dc..07d0f16a88 100644
+--- a/src/plugins/platforms/windows/windows.pro
++++ b/src/plugins/platforms/windows/windows.pro
+@@ -1,11 +1,22 @@
+ TARGET = qwindows
+ 
+ QT += \
+-    core-private gui-private \
+-    eventdispatcher_support-private accessibility_support-private \
+-    fontdatabase_support-private theme_support-private
++    core-private gui-private
+ 
+-LIBS += -lgdi32 -ldwmapi
++# Fix linker error when building libqwindows.dll by specifying linker flags for
++# required modules manually (otherwise order is messed)
++LIBS += \
++    -lQt5EventDispatcherSupport \
++    -lQt5AccessibilitySupport \
++    -lQt5FontDatabaseSupport \
++    -lQt5ThemeSupport \
++    -lfreetype -lole32 -lgdi32 -ldwmapi
++# However, this workaround leads to the necessity of specifying include dirs manually
++INCLUDEPATH += \
++    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/5.9.0 \
++    $$QT_SOURCE_TREE/include/QtAccessibilitySupport/5.9.0 \
++    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/5.9.0 \
++    $$QT_SOURCE_TREE/include/QtThemeSupport/5.9.0
+ 
+ include(windows.pri)
+ 
+-- 
+2.13.0
+
