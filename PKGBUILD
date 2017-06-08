@@ -9,7 +9,7 @@ url="http://sourceforge.net/projects/google2srt/"
 license=('GPL3')
 depends=('java-runtime' 'java-jdom1' 'java-commons-io')
 makedepends=('unzip' 'java-environment')
-source=("http://sourceforge.net/project/google2srt/files/Google2SRT/${pkgver}/Google2SRT-${pkgver}.zip"
+source=("http://sourceforge.net/projects/google2srt/files/Google2SRT/${pkgver}/Google2SRT-${pkgver}.zip"
 		google2srt
 		google2srt.desktop
 		icon.png
