@@ -1,8 +1,8 @@
 pkgbase = gss-ntlmssp
 	pkgdesc = A GSSAPI Mechanism that implements NTLMSSP
 	pkgver = 0.7.0
-	pkgrel = 1
-	url = https://fedorahosted.org/gss-ntlmssp/
+	pkgrel = 2
+	url = https://github.com/simo5/gss-ntlmssp
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -19,7 +19,7 @@ pkgbase = gss-ntlmssp
 	depends = m4
 	depends = perl-extutils-pkgconfig
 	depends = openssl
-	source = https://fedorahosted.org/released/gss-ntlmssp/gssntlmssp-0.7.0.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gss-ntlmssp_0.7.0.orig.tar.gz
 	sha512sums = 43fc9e57c00e74be3c6954b3f43677e176f6284a543917533d7e427dff98810f1547336cdc240e5f9161f62975803f4b39c925a429c6c669202267da99e3d841
 
 pkgname = gss-ntlmssp
