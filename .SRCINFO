@@ -1,0 +1,14 @@
+pkgbase = jupyter-calysto_scheme-git
+	pkgdesc = A Scheme kernel for Jupyter that can use Python libraries (GIT version)
+	pkgver = r61.c7235ee
+	pkgrel = 1
+	url = https://github.com/Calysto/calysto_scheme
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = jupyter-metakernel
+	source = git+https://github.com/Calysto/calysto_scheme.git
+	md5sums = SKIP
+
+pkgname = jupyter-calysto_scheme-git
+
