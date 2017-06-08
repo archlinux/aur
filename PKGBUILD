@@ -49,7 +49,7 @@ optdepends=('kdialog: needed for file dialogs in KDE'
             'kwallet: for storing passwords in KWallet'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-system-ffmpeg-r6.patch
@@ -79,7 +79,7 @@ _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/chromium-$pkgver"
 
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
@@ -139,7 +139,7 @@ prepare() {
 build() {
   make -C "$srcdir/chromium-launcher-$_launcher_ver" PREFIX=/usr GTK=3
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/chromium-$pkgver"
 
   export PATH="$srcdir/python2-path:$PATH"
   export TMPDIR="$srcdir/temp"
@@ -185,7 +185,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/chromium-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
