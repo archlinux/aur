@@ -1,0 +1,13 @@
+diff -uprNEBZ --suppress-blank-empty a/build/python.prf b/build/python.prf
+--- a/build/python.prf	2016-06-09 06:10:52.000000000 -0500
++++ b/build/python.prf	2017-06-08 10:03:40.858019605 -0500
+@@ -2,7 +2,8 @@
+
+ # Change this variable to your python version (2.6, 2.7, 3.3, ...)
+ win32:PYTHON_VERSION=27
+-unix:PYTHON_VERSION=2.7
++# Use Python3
++unix:PYTHON_VERSION=3
+ 
+ macx {
+   # for macx you need to have the Python development kit installed as framework

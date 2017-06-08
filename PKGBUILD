@@ -4,8 +4,8 @@
 # Contributor: speps
 
 pkgname=pythonqt
-pkgver=3.1
-pkgrel=3
+pkgver=3.2
+pkgrel=1
 pkgdesc='A dynamic Python binding for Qt applications'
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'
@@ -18,17 +18,11 @@ replaces=("${pkgname}-qt5")
 
 source=(
 	"http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/PythonQt-${pkgver}/PythonQt${pkgver}.zip"
-	'fix_qt_58.patch'
-	'fix_uitools.patch'
-	'fix_python_config.patch'
-	'upstream_patches_r444.patch'
+	'fix_python_version.patch'
 )
 sha512sums=(
-	'b3c208e3f909ebb15d40a6e83385f03e6196a8439e39cad4f924e7b1e774edbce83680298ab032161619d1358696a0d073028860f68540aadd8028b712ae8fc1'
-	'2a3adc86fc4d91d82830aed8bd8400afa913eb36ed98f1c6991bcdbe1b8ff392959740e22d698af1a435423c35ce8b2d5c867ce24b7252b139d4dd440935f1b3'
-	'16fea1728e44b96c452a8523a0fbaed4840a3b8cfe434824d5a97f59ee5bbad19e357786aadcf22876244f3c58e8e64429f7a1e601e8722d8864ffb07207e4d1'
-	'843d34c90cbea7d70ec3e2b56eef40cc189cdd3d8bc1e5a823d47348eed0df92e60369496cc99cad8fe2fa35b24d6992c960388cd1ababdb7250515240b6cfd0'
-	'2fca4c0dd059ad92e6bc9b81fa1708f8c766a6157faff2374cc6f874bf06531fa95c80bae7a4f22cf3da64c9b32d3ad44c177f6de0608e99d99e8a05bf0871ef'
+	'1ee0f50f5035568b38e945108f5496ba64355c6357c1ea8dfc17ad90fa360540769f94e0b3e0e398176e8a21c8afe139607f0b5a2e82c63f1cbd40201a25e0f0'
+	'9747898842f60bdfc5c38a54f7516a46b46279c57cbfa6c7f4796aa1ca5771ebb121f07fe4d09d23c60c92530750ee265808484f3e07aaae72065ed51c3896c7'
 )
 
 prepare() {
@@ -37,17 +31,8 @@ prepare() {
 	cd "${srcdir}"/build
 	cp -R ../PythonQt${pkgver}/* ./
 
-	# Fix Qt 5.8 compilation errors
-	patch -Np1 < ../fix_qt_58.patch
-
-	# Fix QtUiTools
-	patch -Np1 < ../fix_uitools.patch
-
-	# Fix python library path
-	patch -Np1 < ../fix_python_config.patch
-
-	# Merge upstream patches until r444
-	patch -Np1 < ../upstream_patches_r444.patch
+	# Fix python version
+	patch -Np1 < ../fix_python_version.patch
 }
 
 build() {
