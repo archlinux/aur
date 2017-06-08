@@ -1,6 +1,6 @@
 # Maintainer: Giuseppe <giuscri@gmail.com>
 pkgname='notify-when-done-i3-git'
-pkgver=r24.ac9414a
+pkgver=r25.6b95dd4
 pkgrel=1
 pkgdesc="Get notifications when commands in non-focused i3's window finish."
 arch=('x86_64')
