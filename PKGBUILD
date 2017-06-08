@@ -1,34 +1,33 @@
 # Maintainer: Patrick José Pereira <positivcheg94@gmail.com>
 pkgname=librealsense
-pkgver=0.9.1
+pkgver=c8754286
 pkgrel=1
 pkgdesc="Librealsense is a cross-platform library (Linux, OSX, Windows) for capturing data from the Intel RealSense F200, SR300 and R200 cameras"
 arch=(any)
 url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
 makedepends=()
-depends=('glfw-x11>=3' 'libusb')
+depends=('git' 'glfw-x11>=3' 'libusb' 'base-devel' 'linux-headers')
 optdepends=('qtcreator')
 changelog=''
-source=("https://github.com/IntelRealSense/librealsense/archive/v${pkgver}.tar.gz")
-md5sums=('f2f2bad22f3cffb8f1bb3f509a90f3fb')
-
+source=("git://github.com/IntelRealSense/librealsense")
+md5sums=(SKIP)
 udev_rules="etc/udev/rules.d/99-realsense-libusb.rules"
 
+pkgver() {
+  cd "$pkgname"
+  git log --pretty=format:'%h' -n 1
+}
+
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
+  mkdir build && cd build
+  cmake ../ -DBUILD_EXAMPLES=true
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/
-  mkdir -p $pkgdir/usr/include/$pkgname
-  mkdir -p $pkgdir/usr/lib/
-  mkdir -p $pkgdir/etc/udev/rules.d/
-  cp -r lib/* $pkgdir/usr/lib/
-  cp -r include/$pkgname/* $pkgdir/usr/include/$pkgname
-  echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0a80\", MODE=\"0666\", GROUP=\"realsense\"" > $pkgdir/$udev_rules
-  echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0a66\", MODE=\"0666\", GROUP=\"realsense\"" >>$pkgdir/$udev_rules
-  echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0aa5\", MODE=\"0666\", GROUP=\"realsense\"" >>$pkgdir/$udev_rules
-  install=librealsense.install
+  cd "$pkgname/build"
+  sudo make install
+  echo "Maybe kernel patch be necessary !!"
 }

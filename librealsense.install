@@ -1,5 +1,7 @@
 post_install() {
   getent group realsense >/dev/null 2>&1 ||  groupadd realsense
   udevadm control --reload-rules
-  echo "to use this driver you should add user to realsense group"
+  echo "To use this driver you should add user to realsense group !!!"
+  echo "sudo udevadm control --reload-rules && udevadm trigger"
+  echo "To updare usb rules."
 }
