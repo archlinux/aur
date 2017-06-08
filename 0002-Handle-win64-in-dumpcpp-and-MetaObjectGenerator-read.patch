@@ -1,9 +1,22 @@
-diff -rupN qtactiveqt-opensource-src-5.4.1/src/activeqt/container/qaxbase.cpp qtactiveqt-opensource-src-5.4.1-new/src/activeqt/container/qaxbase.cpp
---- qtactiveqt-opensource-src-5.4.1/src/activeqt/container/qaxbase.cpp	2015-02-17 05:56:13.000000000 +0100
-+++ qtactiveqt-opensource-src-5.4.1-new/src/activeqt/container/qaxbase.cpp	2015-06-23 16:41:44.483979750 +0200
-@@ -2164,6 +2164,10 @@
-             QStringList versions = controls.childGroups();
-             foreach (const QString &version, versions) {
+From c8c5802c04b4fbd7fc34ba70af93851a35294741 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 2 Jun 2017 17:21:08 +0200
+Subject: [PATCH 2/2] Handle win64 in dumpcpp and
+ MetaObjectGenerator::readClassInfo
+
+See https://bugreports.qt.io/browse/QTBUG-46827
+---
+ src/activeqt/container/qaxbase.cpp | 4 ++++
+ tools/dumpcpp/main.cpp             | 8 ++++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/src/activeqt/container/qaxbase.cpp b/src/activeqt/container/qaxbase.cpp
+index 22aec57..64b2f47 100644
+--- a/src/activeqt/container/qaxbase.cpp
++++ b/src/activeqt/container/qaxbase.cpp
+@@ -2170,6 +2170,10 @@ void MetaObjectGenerator::readClassInfo()
+             const QStringList versions = controls.childGroups();
+             for (const QString &version : versions) {
                  tlfile = controls.value(QLatin1Char('/') + version + QLatin1String("/0/win32/.")).toString();
 +                if(tlfile.isEmpty())
 +                {
@@ -12,10 +25,11 @@ diff -rupN qtactiveqt-opensource-src-5.4.1/src/activeqt/container/qaxbase.cpp qt
                  if (!tlfile.isEmpty())
                      break;
              }
-diff -rupN qtactiveqt-opensource-src-5.4.1/tools/dumpcpp/main.cpp qtactiveqt-opensource-src-5.4.1-new/tools/dumpcpp/main.cpp
---- qtactiveqt-opensource-src-5.4.1/tools/dumpcpp/main.cpp	2015-02-17 05:56:13.000000000 +0100
-+++ qtactiveqt-opensource-src-5.4.1-new/tools/dumpcpp/main.cpp	2015-06-23 16:35:53.157273425 +0200
-@@ -1515,6 +1515,10 @@
+diff --git a/tools/dumpcpp/main.cpp b/tools/dumpcpp/main.cpp
+index 97915c1..ae41289 100644
+--- a/tools/dumpcpp/main.cpp
++++ b/tools/dumpcpp/main.cpp
+@@ -1539,6 +1539,10 @@ int main(int argc, char **argv)
              typeLib = settings.value(QLatin1Char('/') + codes.at(c) + QLatin1String("/0/win32/.")).toString();
              if (QFile::exists(typeLib))
                  break;
@@ -26,7 +40,7 @@ diff -rupN qtactiveqt-opensource-src-5.4.1/tools/dumpcpp/main.cpp qtactiveqt-ope
          }
  
          if (!typeLib.isEmpty())
-@@ -1577,6 +1581,10 @@
+@@ -1598,6 +1602,10 @@ int main(int argc, char **argv)
                                       + QLatin1String("/win32/.")).toString();
              if (QFile::exists(typeLib))
                  break;
@@ -37,3 +51,6 @@ diff -rupN qtactiveqt-opensource-src-5.4.1/tools/dumpcpp/main.cpp qtactiveqt-ope
          }
      }
  
+-- 
+2.13.0
+

@@ -9,7 +9,7 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
@@ -21,11 +21,11 @@ license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        "qtactiveqt-fix-build.patch"
-        "qtactiveqt-win64.patch")
-md5sums=('d1c8ae9489b737957ba100bb27323eb5'
-         '7a7ba436452aa56613b3fbb15684e094'
-         '1264d0274586aec14f96a978b416b048')
+        '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
+        '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
+sha256sums=('d7c7babf1510e0728e80a786fe9d83f6cb931813005d05c85873929207261635'
+            '32977d8a1e6cb8b6c4f4c44ac4c801ae7bc2c5ec70563f28e2cb3d01cd379b1f'
+            '0efddd784b939e0b78006dd7739b6889664dea0721289d56bc3c5dd7b39fd240')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -35,12 +35,11 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
-  # Don't try to build stuff which requires windows.h with the native Linux gcc
-  patch -p1 -i ../qtactiveqt-fix-build.patch
 
-  # dumpcpp and MetaObjectGenerator::readClassInfo do not handle win64
-  # https://bugreports.qt.io/browse/QTBUG-46827
-  patch -p1 -i ../qtactiveqt-win64.patch
+  # Apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    patch -p1 -i "$patch"
+  done
 }
 
 build() {
