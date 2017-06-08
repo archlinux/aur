@@ -2,9 +2,8 @@
 
 _font="encode-sans"
 _group="impallari"
-_update="106"
 pkgname=ttf-${_group}-${_font}
-pkgver=1.000
+pkgver=2.000
 pkgrel=1
 pkgdesc="Encode Sans Font: Obsessively optimized for the web, from Pablo Impallari"
 arch=(any)
@@ -14,18 +13,18 @@ license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 install=updatefont.install
-source=("http://www.impallari.com/media/uploads/prosources/update-${_update}-source.zip")
-md5sums=('cec291f414c9b4020395b095c04594aa')
+source=("${_font}-${pkgver}.zip::https://github.com/impallari/Encode-Sans/archive/master.zip")
+md5sums=('b38a26b123ecb84df4152b998e8dd031')
 
 package() {
-  cd ${srcdir}/E*
+  cd ${srcdir}/Encode-Sans-master/
 
   install -dm755 "${pkgdir}/usr/share/fonts/TTF/${_group}"
-  install -Dpm644 *.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"
+  install -Dpm644 fonts/*.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dpm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -Dpm644 FONTLOG.txt "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dpm644 AUTHORS.txt CONTRIBUTORS.txt README.md "${pkgdir}/usr/share/doc/${pkgname}/"
 }
