@@ -21,6 +21,7 @@ md5sums=('SKIP' 'SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
+	git checkout blueprint
 	qdbuscpp2xml -M -s notificationdbus.h -o org.freedesktop.Notifications.xml
 	qdbuscpp2xml -a -o org.thesuite.power.xml upowerdbus.h
 	qmake theShell.pro
