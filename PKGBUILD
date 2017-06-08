@@ -12,7 +12,7 @@ license=('MPL' 'GPL' 'LGPL')
 _file="$_name-$pkgver.$_locale.linux-$CARCH"
 _srcurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora-l10n"
 source=("$_srcurl/$_file.tar.bz2" "firefox-$_channel.desktop" "vendor.js")
-sha512sums=('2dbbb1a2db411965860499347d34fd14f9bc4a1157dd2004e46e70eb4fc319f9eb2143400bcfdec8b68507aa3fa7825ffe6f56971e70b0b2ef29779720a7475e'
+sha512sums=('56cdf1b9227ec54dfc8d7122987a931ab98e8592885a8a43f294bf6d0119be8ef996ba2543448e52bb975722adb5df6561f23274624bc630de0289791bcc425c'
             'b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite3' 'dbus-glib')
