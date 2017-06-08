@@ -1,16 +1,16 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
 
 pkgname=quteqoin-git
-pkgver=r660.7002b67
+pkgver=r678.9dc4ed9
 pkgrel=1
 pkgdesc="Tool based on Qt framework to allow effective mouling on bouchots."
 arch=('i686' 'x86_64')
-url="https://github.com/ototu/quteqoin"
+url="https://github.com/dguihal/quteqoin"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('git')
 provides=('quteqoin')
-source=('quteqoin::git+https://github.com/ototu/quteqoin.git')
+source=('quteqoin::git+https://github.com/dguihal/quteqoin.git')
 sha1sums=('SKIP')
 
 pkgver() {
