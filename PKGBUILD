@@ -28,12 +28,14 @@ build() {
 
 package_python-rospkg() {
     depends+=('python' 'python-yaml')
+    conflicts=('python2-rospkg')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-rospkg() {
     depends+=('python2' 'python2-yaml')
+    conflicts=('python-rospkg')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
