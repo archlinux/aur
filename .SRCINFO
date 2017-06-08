@@ -1,7 +1,7 @@
 pkgbase = screencloud-git
 	pkgdesc = An easy to use screenshot sharing tool. Development version.
 	pkgver = 1.3.1.3.g74724ca
-	pkgrel = 3
+	pkgrel = 4
 	url = https://screencloud.net/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,9 @@ pkgbase = screencloud-git
 	provides = screencloud=1.3.1.3.g74724ca
 	conflicts = screencloud
 	source = git+https://github.com/olav-st/screencloud.git
+	source = fix_pythonqt.patch
 	sha512sums = SKIP
+	sha512sums = f953f57e21db580c299f48fb1b02452ee7bd612701ead112ad05a42a531fe07e3207569135ec91a8895b57481607ccfd429aa7fa4336b122d7bcf71f1b88f316
 
 pkgname = screencloud-git
 
