@@ -1,0 +1,4 @@
+post_install() {
+    echo 'add your user to plugdev & uupc groups for connection to robot!'
+}
+

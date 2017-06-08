@@ -1,0 +1,2 @@
+ATTRS{idProduct}=="ffff", ATTRS{idVendor}=="0416", MODE="666", GROUP="plugdev"
+SYSFS{idProduct}=="ffff", SYSFS{idVendor}=="0416", MODE="666", GROUP="plugdev"
