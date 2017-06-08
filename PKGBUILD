@@ -1,8 +1,8 @@
 # Maintainer: Artur Paiva <dr.hoome@gmail.com>
 pkgname='cpuface-git'
-pkgver=1496853556
+pkgver=1496920823
 pkgrel=1
-pkgdesc="A simple graphical CPU Frequency manager written in Python and Qt"
+pkgdesc="A simple CPU Governor and Monitor for Unix Systems written in Python and Qt"
 arch=('i686' 'x86_64')
 url="https://github.com/h0m3/cpuface"
 license=('GPL3')
