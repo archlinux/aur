@@ -3,7 +3,7 @@
 # Contributor: Martin Kostolný <clearmartin at zoho dot com>
 
 pkgname=plasma5-applets-active-window-control
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Plasma applet for controlling the currently active window"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ license=(GPL2)
 depends=(plasma-workspace qt5-graphicaleffects)
 makedepends=(extra-cmake-modules)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/kotelnik/plasma-applet-active-window-control/archive/v$pkgver.tar.gz")
-sha256sums=('5deae9fe7203f7b8ca08c596cdcfb6d2a9bcf0d354459cdc61de005a4bfdd271')
+sha256sums=('f4662560bffd57155081fb8bb0d82c118204f578c7c681b442e365b6c7d169a9')
 
 prepare() {
   mkdir -p build
