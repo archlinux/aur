@@ -31,7 +31,7 @@ declare -rgA _system_libs=(
 
 pkgname=chromium-vaapi
 pkgver=59.0.3071.86
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by your GPU"
 arch=('i686' 'x86_64')

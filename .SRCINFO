@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by your GPU
 	pkgver = 59.0.3071.86
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium.install
 	arch = i686
@@ -46,7 +46,7 @@ pkgbase = chromium-vaapi
 	optdepends = libva-intel-driver: Needed to support VA-API for Intel graphics cards
 	provides = chromium
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-vaapi-59.0.3071.86.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-59.0.3071.86.tar.xz
 	source = chromium-launcher-3.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v3.tar.gz
 	source = chromium.desktop
 	source = chromium-system-ffmpeg-r6.patch
