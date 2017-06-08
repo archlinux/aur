@@ -1,10 +1,10 @@
 # notify-when-done-i3
 
-![Sample screenshot](http://i.imgur.com/qZeSuOt.png)
+![Sample screenshot](https://i.imgur.com/qmW2BGt.png)
 
 ## Install
 
-You need `jq`, `libnotify`, and must use `i3` as a window manager.
+You need `libnotify`, `bash-preexec` and must use `i3` as a window manager.
 
 If you have archlinux, you can download the package from the aur
 
@@ -17,7 +17,6 @@ or for other distributions
     mkdir ~/.nwd
     cp nwn-preexec.sh ~/.nwd/nwd-preexec.sh
     echo '[[ -f ~/.nwd/nwd-preexec ]] && source ~/.nwd/nwd-preexec.sh' >> ~/.bashrc
-    source ~/.bashrc
 
 ## The problem
 
@@ -33,9 +32,11 @@ The problem with this solution is that most of the time you don't know if the
 command you're typing will take very long to execute.
 
 What happens instead is that you realize some command will execute for a long time
-*after* the command has been issued. Also when you notice that you don't have
+*after* the command has been issued. ~~Also when you notice that you don't have
 the courage to interrupt the execution to append the alias, since who knows?,
-maybe is going to finish in 10 seconds from now - instead it will take another 2, 3 minutes.
+maybe is going to finish in 10 seconds from now - instead it will take another 2, 3 minutes.~~
+(EDIT: [/u/HidariRyoushin](https://www.reddit.com/user/HidariRyoushin) made me notice that
+you can just suspend the command and restart it via `fg; ndone`)
 
 Moreover, the fact that you have to append a command after every command is boring,
 and you'll eventually forget to do that, until you'll stumble into a long command again.
@@ -44,7 +45,7 @@ and you'll eventually forget to do that, until you'll stumble into a long comman
 
 Wrap *every* command, such that when one command finishe execution,
 a notification will be sent if the current workspace is not the same
-from which you initially issued the command. Simple.
+from which you initially issued the command. Simple as pie.
 
 ## Sound
 
