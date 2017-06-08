@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=deployer
-pkgver=5.0.0
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="A deployment tool written in PHP with support for popular frameworks out of the box."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('php')
 makedepends=('composer')
 source=("https://github.com/deployphp/deployer/archive/v$pkgver.tar.gz")
-sha256sums=('d57549723a973759ef3fd5c9ae1824e68910cf4aa848d60640d166a24dcdf2c4')
+sha256sums=('b301bd058fb32ce82e210ce2a7d52a7a878b9b6a83d06acacecc64200aea02d9')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
