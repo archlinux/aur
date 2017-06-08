@@ -4,12 +4,12 @@
 _target=powerpc-wrs-vxworks
 pkgname=${_target}-gdb
 pkgver=7.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Debugger (${_target})"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gdb/"
 license=('GPL3')
-depends=(wrs-vxworks-headers ncurses expat xz gdb-common=$pkgver)
+depends=(wrs-vxworks-headers ncurses expat xz gdb-common)
 makedepends=(texinfo python guile2.0 xz)
 conflicts=('gdb-powerpc-wrs-vxworks')
 provides=('gdb-powerpc-wrs-vxworks')
