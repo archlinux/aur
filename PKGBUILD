@@ -8,13 +8,15 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-#
 
+# Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
+# Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg     # https://bugs.archlinux.org/task/53796
+  #[ffmpeg]=ffmpeg     # https://crbug.com/723537
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
   #[icu]=icu           # Enable again when upstream supports ICU 59
+  [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
   #[libvpx]=libvpx     # https://bugs.gentoo.org/show_bug.cgi?id=611394
@@ -28,14 +30,14 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium-vaapi
-pkgver=58.0.3029.110
+pkgver=59.0.3071.86
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by your GPU"
 arch=('i686' 'x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
+depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
          'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
@@ -44,22 +46,29 @@ conflicts=('chromium')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'kwallet: for storing passwords in KWallet')
+            'kwallet: for storing passwords in KWallet'
+            'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-system-ffmpeg-r4.patch
-        chromium-gn-bootstrap-r2.patch
+        chromium-system-ffmpeg-r6.patch
+        0001-ClientNativePixmapFactoryDmabuf-uses-ioctl-instead-o.patch
+        0001-Fix-kernel-version-condition-for-including-dma-buf.h.patch
+        chromium-blink-gcc7.patch
+        chromium-v8-gcc7.patch
         chromium-widevine.patch
-        vaapi_patch_r0.patch)
-sha256sums=('f24cef3dd2acf9dd5ccdeeca47fea42d1c1ddff32b7375dc9e0cd35a4e8d78ff'
+        vaapi_patch_r2.patch)
+sha256sums=('c31431aa9f4ae521d784bee89792e7fa05793cb822bfb8d3fbacaf414b29ace7'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
-            '64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de'
+            '2fc21f48b95f9f2c2bd8576742fcf8028a8877c6b6e96c04d88184915982234e'
+            '9c081c84a4f85dbef82a9edf34cf0b1e8377c563874fd9c1b4efddf1476748f9'
+            '42eb6ada30d5d507f2bda2d2caece37e397e7086bc0d430db776fad143562fb6'
+            'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
+            '46dacc4fa52652b7d99b8996d6a97e5e3bac586f879aefb9fb95020d2c4e5aec'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            'fef17ee6b80b9c60e4579ec4afec72fedb6ab1807ecc5903ab6aa2ccbb9fc8b0')
+            '2c507aa6186e8295cac27a71d409796cb233fdc59737298a92c939d7e259d1b6')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -70,7 +79,7 @@ _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
@@ -78,9 +87,18 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
+  # https://bugs.chromium.org/p/chromium/issues/detail?id=707604
+  patch -Np1 -i ../0001-ClientNativePixmapFactoryDmabuf-uses-ioctl-instead-o.patch
+  patch -Np1 -i ../0001-Fix-kernel-version-condition-for-including-dma-buf.h.patch
+
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853347
+  patch -Np1 -i ../chromium-blink-gcc7.patch
+
+  # https://bugs.chromium.org/p/chromium/issues/detail?id=614289
+  patch -Np1 -i ../chromium-v8-gcc7.patch
+
   # Fixes from Gentoo
-  #patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
-  patch -Np1 -i ../chromium-gn-bootstrap-r2.patch
+  patch -Np1 -i ../chromium-system-ffmpeg-r6.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -91,16 +109,16 @@ prepare() {
 
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
-  
+
   # VA-API patch
-  patch -p1 -i "${srcdir}/vaapi_patch_r0.patch" 
+  patch -p1 -i "${srcdir}/vaapi_patch_r2.patch" 
   # Fix paths.
   sed -e 's|i386-linux-gnu/||g' \
       -e 's|x86_64-linux-gnu/||g' \
       -e 's|/usr/lib/va/drivers|/usr/lib/dri|g' \
       -e 's|/usr/lib64/va/drivers|/usr/lib/dri|g' \
       -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
-
+  
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
@@ -116,14 +134,12 @@ prepare() {
 
   python2 build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
-
-  python2 third_party/libaddressinput/chromium/tools/update-strings.py
 }
 
 build() {
-  make -C "$srcdir/chromium-launcher-$_launcher_ver" PREFIX=/usr
+  make -C "$srcdir/chromium-launcher-$_launcher_ver" PREFIX=/usr GTK=3
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   export PATH="$srcdir/python2-path:$PATH"
   export TMPDIR="$srcdir/temp"
@@ -141,6 +157,7 @@ build() {
     'proprietary_codecs=true'
     'link_pulseaudio=true'
     'linux_use_bundled_binutils=false'
+    'use_gtk3=true'
     'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
@@ -148,6 +165,7 @@ build() {
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
+    'enable_swiftshader=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
@@ -167,7 +185,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
