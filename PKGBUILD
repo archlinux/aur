@@ -16,8 +16,9 @@ optdepends=('alsa-utils: for volume controls'
 	    'festival: for theWave')
 makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=blueprint'
-	"theshellb.desktop")
-md5sums=('SKIP' 'SKIP')
+	"theshellb.desktop"
+	"initscript.sh")
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -29,10 +30,10 @@ build() {
 }
 
 package() {
-	chmod +x "$pkgname-$pkgver/init_theshell"
+	chmod +x "initscript.sh"
 	mkdir -p "$pkgdir/usr/bin"
 	cp "$pkgname-$pkgver/theshell" "$pkgdir/usr/bin/theshellb"
-	cp "$pkgname-$pkgver/init_theshell" "$pkgdir/usr/bin/init_theshellb"
+	cp "initscript.sh" "$pkgdir/usr/bin/init_theshellb"
 	mkdir -p "$pkgdir/usr/share/xsessions"
 	cp "theshellb.desktop" "$pkgdir/usr/share/xsessions"
 	#mkdir -p "$pkgdir/usr/share/theshell/translations"
