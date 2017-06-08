@@ -1,0 +1,16 @@
+pkgbase = plymouth-theme-arch8
+	pkgdesc = Windows 8 like plymouth theme with Arch logo.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = all
+	license = LGPL
+	depends = git
+	depends = plymouth
+	source = git://github.com/Oficerx/plymouth-theme-arch8
+	md5sums = SKIP
+
+pkgname = plymouth-theme-arch8
+
