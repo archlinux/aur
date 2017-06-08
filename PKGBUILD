@@ -1,7 +1,7 @@
 # Maintainer: Bachir Soussi Chiadmi (bach at figureslibres dot io)
 
 pkgname=libriis-git
-pkgver=0.1.alpha.r12.a136863
+pkgver=r83.7baaf0e
 pkgrel=1
 pkgdesc="PyQt5 based appliaction for writing with markdown and designing with css printed documents."
 arch=('any')
@@ -19,9 +19,9 @@ md5sums=('SKIP' 'da4863b42a1ff9a816d2c0c3c8bc510f' 'd2de8e22b3f16a03c393dc1b8878
 pkgver() {
 	cd "$srcdir/libriis"
 	# without tags
-	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	# with tags
-	git describe --long --tags| sed 's/^v//g;s/\([^-]*-\)g/r\1/;s/-/./g'
+	# git describe --long --tags| sed 's/^v//g;s/\([^-]*-\)g/r\1/;s/-/./g'
 
 }
 
