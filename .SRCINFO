@@ -1,6 +1,6 @@
 pkgbase = ttf-iosevka-term-custom-git
 	pkgdesc = A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.
-	pkgver = r996.2b41904
+	pkgver = r1004.65ee6eb
 	pkgrel = 1
 	url = https://be5invis.github.io/Iosevka/
 	arch = any
