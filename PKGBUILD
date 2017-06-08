@@ -4,15 +4,14 @@ _pkgname=backblaze-b2
 _reponame="B2_Command_Line_Tool"
 
 pkgname="${_pkgname}-git"
-pkgver=r534.4e5f238
+pkgver=r987.c1e4a38
 pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client."
 arch=('any')
 url="https://www.backblaze.com/b2/cloud-storage.html"
 license=('MIT')
-depends=('python2' 'python2-futures' 'python2-portalocker')
+depends=('python2' 'python2-futures' 'python2-logfury' 'python2-portalocker' 'python2-requests' 'python2-tqdm')
 makedepends=('git' 'python2-setuptools')
-optdepends=('python-tqdm: upload/download progress bar')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git://github.com/Backblaze/$_reponame.git")
