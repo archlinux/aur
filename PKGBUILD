@@ -3,7 +3,7 @@ _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
 url="http://www.openorienteering.org/apps/mapper/"
@@ -26,6 +26,7 @@ build() {
   cmake ..                      \
     -DCMAKE_BUILD_TYPE=Release  \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLICENSING_PROVIDER=arch   \
     -DMapper_PACKAGE_NAME=${pkgname} \
     -Wno-dev
   make -j$(nproc)
