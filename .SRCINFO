@@ -1,6 +1,6 @@
 pkgbase = cpuface-git
-	pkgdesc = A simple graphical CPU Frequency manager written in Python and Qt
-	pkgver = 1496853556
+	pkgdesc = A simple CPU Governor and Monitor for Unix Systems written in Python and Qt
+	pkgver = 1496921457
 	pkgrel = 1
 	url = https://github.com/h0m3/cpuface
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = cpuface-git
 	md5sums = SKIP
 
 pkgname = cpuface-git
-
