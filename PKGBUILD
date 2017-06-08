@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd babe
-  version=$(grep "Verion: " about.cpp | awk '{print $5 "." $6}' | awk -F'\' '{print $1}')
+  version="$(grep 'Verion:' about.cpp | awk '{print $5 "." $6}' | awk -F'\' '{print $1}')"
   printf '%s.r%s.g%s' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
