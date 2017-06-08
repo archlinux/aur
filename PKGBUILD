@@ -10,7 +10,7 @@
 
 _qt_module=qtquickcontrols2
 pkgname="mingw-w64-qt5-quickcontrols2"
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 arch=('any')
 pkgdesc="Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)"
@@ -22,7 +22,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('d5ce30fe81fcd9b7ba51d1b5dc7f7265')
+sha256sums=('09ab6fc1cc5fe6ea6179cff971950cdb37b074610d0d84f0cd61052ec97c1d9c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
