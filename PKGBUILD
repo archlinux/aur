@@ -2,8 +2,8 @@
 #Maintainer: Andrea Tarocchi <valdar@email.it>
 
 pkgname=wesnoth-devel
-pkgver=1.13.6
-pkgrel=2
+pkgver=1.13.8
+pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
 url="http://www.wesnoth.org/"
@@ -20,7 +20,7 @@ source=("http://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.ta
     "wesnothd-devel.service"
     "patch_gcc6.patch")
  
-md5sums=('ebfc1f936db5c46bd85b747aa7317ab2'
+md5sums=('8f931a2f5a53b8d41c8fb9b47c1eef6d'
 'a906eae5d541a51de77038469b1f794b'
 'b9de9e7ee16f757aa406466657c274a9'
 'b73f4fdefd3e7daa158cce278f11be64'
