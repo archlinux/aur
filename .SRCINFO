@@ -1,6 +1,6 @@
 pkgbase = vidcutter-git
 	pkgdesc = the simplest + fastest video cutter & joiner
-	pkgver = 3.5.0.r0.g1b0f20a
+	pkgver = 4.0.0.r0.g8d91075
 	pkgrel = 1
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter-git.install
@@ -11,6 +11,7 @@ pkgbase = vidcutter-git
 	depends = mpv
 	depends = ffmpeg
 	depends = mediainfo
+	depends = python-opengl
 	provides = vidcutter-git
 	conflicts = vidcutter
 	source = vidcutter-git::git+https://github.com/ozmartian/vidcutter.git
