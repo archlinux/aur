@@ -5,13 +5,13 @@
 
 pkgname=nimf-git
 _pkgname=nimf
-pkgver=2017.01.28.a29e324
+pkgver=2017.01.28.aa61961
 pkgrel=1
 pkgdesc="Nimf is an input method framework"
 arch=('any')
 url="https://cogniti.github.io/${_pkgname}"
 license=('GNU LGPL v3')
-depends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'xorg-apps' 'glib2' 
+depends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'libxkbcommon' 'glib2' 
 'libappindicator-gtk3' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 'libchewing' 'librime' 'brise')
 makedepends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'intltool' 'gobject-introspection' 'glib2' 'libappindicator-gtk3' 'git' 'librsvg' 'noto-fonts-cjk' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 'libchewing' 'librime' 'brise')
 conflicts=("nimf")
