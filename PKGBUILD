@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-custom-git
-pkgver=r1004.65ee6eb
+pkgver=r1006.7d01557
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -30,7 +30,7 @@ build() {
 
 package() {
   install -d "${pkgdir}/usr/share/fonts/TTF"
-  install -m644 Iosevka/dist/*/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
+  install -m644 Iosevka/dist/*/ttf/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 Iosevka/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/"
   for font in "${pkgdir}"/usr/share/fonts/TTF/*; do
