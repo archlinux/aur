@@ -1,7 +1,7 @@
 # Maintainer: Austin Haedicke (gtbjj @ GitHub)
 
 pkgname=dnd-tools
-pkgver=92de5bb
+pkgver=ec678ea
 pkgrel=1
 pkgdesc='Interactive CLI tools for Dungeons and Dragons 5e'
 depends=('python')
@@ -22,4 +22,5 @@ pkgver() {
 package() {
   cd ${srcdir}/${pkgname} 
   python setup.py install --root="$pkgdir"
+  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }

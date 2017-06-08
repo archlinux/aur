@@ -1,6 +1,6 @@
 pkgbase = dnd-tools
 	pkgdesc = Interactive CLI tools for Dungeons and Dragons 5e
-	pkgver = 92de5bb
+	pkgver = ec678ea
 	pkgrel = 1
 	url = https://github.com/gtbjj/dnd-tools
 	arch = i686
