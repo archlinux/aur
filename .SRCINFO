@@ -1,8 +1,8 @@
 pkgbase = qtcreator-cppcheck-plugin-git
 	pkgdesc = QtCreator plugin using cppcheck
-	pkgver = r53.f82377d
+	pkgver = r83.dff7bcd
 	pkgrel = 1
-	url = http://gres.biz/qtc-cppcheck/
+	url = https://github.com/OneMoreGres/qtc-cppcheck
 	arch = i686
 	arch = x86_64
 	groups = qt
@@ -13,7 +13,8 @@ pkgbase = qtcreator-cppcheck-plugin-git
 	depends = qtcreator
 	depends = cppcheck
 	provides = qtcreator-cppcheck-plugin
-	source = qtcreator-cppcheck-plugin-git::git+https://github.com/OneMoreGres/qtc-cppcheck.git#branch=master
+	conflicts = qtcreator-cppcheck-plugin
+	source = qtcreator-cppcheck-plugin-git::git+https://github.com/OneMoreGres/qtc-cppcheck.git
 	source = binary_default.patch
 	sha256sums = SKIP
 	sha256sums = e417e53be8f58a8107008129253c20d9426f54d718ae3b07cbd64cc20ecfe9e5
