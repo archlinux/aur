@@ -1,0 +1,24 @@
+diff -Naur mup-6.5.orig/makefile mup-6.5.new/makefile
+--- mup-6.5.orig/makefile	2017-06-08 21:38:01.492213651 +0200
++++ mup-6.5.new/makefile	2017-06-08 21:38:23.532091819 +0200
+@@ -53,9 +53,9 @@
+ PREFIX = $(DESTDIR)/usr
+ BINDIR = $(PREFIX)/bin
+ MANDIR = $(PREFIX)/share/man/man1
+-ICONDIR = $(PREFIX)/share/pixmaps/mup
++ICONDIR = $(PREFIX)/share/pixmaps
+ LIBDIR = $(PREFIX)/lib/mup
+-DOCDIR = $(PREFIX)/share/doc/packages/mup
++DOCDIR = $(PREFIX)/share/doc/mup
+ 
+ # This is the name of your C compiler.
+ # cc would be another common choice.
+@@ -85,7 +85,7 @@
+ # If you installed fltk somewhere other than $(X_LOCATION)/lib
+ # set this to find them, as in
+ # FLTK_LIB_LOCATION = -L/usr/local/lib
+-FLTK_LIB_LOCATION =
++FLTK_LIB_LOCATION = -L/usr/lib
+ 
+ # The X libraries to link with Mupmate.
+ # Depending on how fltk was compiled, you may be able to omit

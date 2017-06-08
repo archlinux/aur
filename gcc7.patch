@@ -1,0 +1,12 @@
+diff -Naur mup-6.5.orig/mupmate/Run.C mup-6.5.new/mupmate/Run.C
+--- mup-6.5.orig/mupmate/Run.C	2017-06-08 20:46:33.410533495 +0200
++++ mup-6.5.new/mupmate/Run.C	2017-06-08 21:15:55.093383589 +0200
+@@ -1192,7 +1192,7 @@
+ 	}
+ #else
+ 	command[1] = mup_output;
+-	command[2] = '\0';
++	command[2] = "";
+ #endif
+ 
+ 	if (execute_command(command,
