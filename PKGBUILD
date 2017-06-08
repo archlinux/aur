@@ -28,7 +28,7 @@ build() {
 
 package_python-catkin_lint() {
     depends+=('python' 'python-catkin_pkg')
-    conflicts=('python-catkin-lint')
+    conflicts=('python-catkin-lint' 'python2-catkin_lint')
     replaces=('python-catkin-lint')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
@@ -36,7 +36,7 @@ package_python-catkin_lint() {
 
 package_python2-catkin_lint() {
     depends+=('python2' 'python2-catkin_pkg')
-    conflicts=('python2-catkin-lint')
+    conflicts=('python2-catkin-lint' 'python-catkin_lint')
     replaces=('python2-catkin-lint')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build

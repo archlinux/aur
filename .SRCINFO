@@ -15,6 +15,7 @@ pkgname = python-catkin_lint
 	depends = python
 	depends = python-catkin_pkg
 	conflicts = python-catkin-lint
+	conflicts = python2-catkin_lint
 	replaces = python-catkin-lint
 
 pkgname = python2-catkin_lint
@@ -22,5 +23,6 @@ pkgname = python2-catkin_lint
 	depends = python2
 	depends = python2-catkin_pkg
 	conflicts = python2-catkin-lint
+	conflicts = python-catkin_lint
 	replaces = python2-catkin-lint
 
