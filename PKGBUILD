@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=60.0.3112.10
+pkgver=60.0.3112.20
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -42,7 +42,7 @@ depends=(
 #          'protobuf'
 #          'libevent'
          'ffmpeg'
-#          'icu' # https://crbug.com/678661
+#          'icu'    # https://crbug.com/678661
          'gtk3'
          'openh264'
          )
@@ -63,14 +63,13 @@ makedepends=('libexif'
              'sandbox'
              )
 optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
-            'libva-mesa-driver: HW video acceleration for Nouveau, r600 and radeonsi users'
-            'libva-intel-driver: HW video acceleration for intel users'
+            'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
+            'libva-intel-driver: HW video acceleration for Intel users'
             #
             'pepper-flash: PPAPI Flash Player'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
             #
             'kdialog: Needed for file dialogs in KF5'
-            #
             'kwalletmanager: Needed for storing passwords in KWallet'
             #
             'ttf-font: For some typography'
@@ -86,8 +85,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch'
         # Misc Patches
-#         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
-#         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
         'minizip.patch'
         'vaapi_patch_r2.patch'
         # Patch from crbug (chromium bugtracker)
@@ -326,25 +323,26 @@ _flags=(
 _use_system=(
   'ffmpeg'
   'flac'
+#  'freetype'   # https://bugs.chromium.org/p/pdfium/issues/detail?id=733
   'harfbuzz-ng'
-#  'hunspell' # need ustream changes
-#  'icu' # https://crbug.com/678661
+#  'hunspell'   # need ustream changes
+#  'icu'        # https://crbug.com/678661
   'libdrm'
-#  'libevent' # Get segfaults and other problems https://bugs.gentoo.org/593458
+#  'libevent'   # Get segfaults and other problems https://bugs.gentoo.org/593458
   'libjpeg'
   'libpng'
-#  'libsrtp' # https://bugs.gentoo.org/459932
+#  'libsrtp'    # https://bugs.gentoo.org/459932
 #  'libvpx'
   'libwebp'
-#  'libxml' # https://bugs.gentoo.org/616818
+#  'libxml'     # https://bugs.gentoo.org/616818
   'libxslt'
   'openh264'
   'opus'
-#  'protobuf' # https://bugs.gentoo.org/525560
+#  'protobuf'   # https://bugs.gentoo.org/525560
   're2'
-#  'sqlite' # https://crbug.com/58087
+#  'sqlite'     # https://crbug.com/58087
   'snappy'
-#   'ssl' # https://crbug.com/22208
+#   'ssl'       # https://crbug.com/22208
   'yasm'
   'zlib'
 )
@@ -396,8 +394,6 @@ prepare() {
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
-#     patch -p1 -i "${srcdir}/enable_vaapi_on_linux_${pkgver}.diff"
-#     patch -p1 -i "${srcdir}/specify-max-resolution_${pkgver}.patch"
     patch -p1 -i "${srcdir}/vaapi_patch_r2.patch"
   fi
 
