@@ -1,15 +1,15 @@
 # Mantainer: Kozec (kozec2 <at> kozec <dot> com)
 
 pkgname=google2srt
-pkgver=0.7
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Google2SRT allows you to convert subtitles from Google Video and YouTube to SubRip (.srt) format."
 arch=('i686' 'x86_64')
-url=(http://sourceforge.net/projects/google2srt/)
+url="http://sourceforge.net/projects/google2srt/"
 license=('GPL3')
 depends=('java-runtime' 'java-jdom1' 'java-commons-io')
 makedepends=('unzip' 'java-environment')
-source=("http://sourceforge.net/project/google2srt/Google2SRT/${pkgver}/Google2SRT-${pkgver}.zip"
+source=("http://sourceforge.net/project/google2srt/files/Google2SRT/${pkgver}/Google2SRT-${pkgver}.zip"
 		google2srt
 		google2srt.desktop
 		icon.png
@@ -43,7 +43,8 @@ package() {
 	done
 }
 
-md5sums=('7aa6575552f949e737c776d68968816c'
+md5sums=('d61bc76a18631a09e085393e634fa493'
          '51010acfab296d7998a6885a0b30dee7'
          '06c19e48725df1476945d73cb28744ce'
          '7878c439c81412767874bfbf6c6683ad')
+
