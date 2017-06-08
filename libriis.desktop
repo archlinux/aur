@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Cascade
-Comment=Write in markdown, design in scss/js.
+Name=Libriis
+Comment=A Markup Cascading Printing software.
 GenericName=
-Exec=/usr/bin/cascade
-Icon=cascade
+Exec=/usr/bin/libriis
+Icon=libriis
 Type=Application
 StartupNotify=true
 Categories=Graphisme;

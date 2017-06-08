@@ -1,4 +1,4 @@
-Cascade arch linux package
+Libriis arch linux package
 ============================
 
 ## A Markup Cascading Printing software.
