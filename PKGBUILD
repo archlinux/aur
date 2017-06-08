@@ -4,7 +4,7 @@ pkgver=0.6.0.3
 _opensslver=1.0.2k
 _boostver=1_53_0
 _dbver=6.1.29.NC
-pkgrel=1
+pkgrel=2
 pkgdesc="A decentralized currency for the internet."
 arch=('i686' 'x86_64')
 url="https://github.com/openvcash/vcash"
@@ -44,7 +44,7 @@ build() {
   ./bjam -j$_threads link=static toolset=$_toolset cxxflags=-std=gnu++0x --with-system release &
 	touch "$srcdir/$pkgname/src/deps/boost/current_boost_$_boostver"
   cd "$srcdir/$pkgname/src/coin/test/"
-  ../../deps/boost/bjam -j$_threads toolset=$_toolset cxxflags=-std=gnu++0x release
+  ../../deps/boost/bjam -j$_threads toolset=$_toolset cxxflags=-std=gnu++0x hardcode-dll-paths=false release
   cd "$srcdir/$pkgname/src/coin/test/bin/$_toolset/release/link-static/"
   strip "$srcdir/$pkgname/src/coin/test/bin/$_toolset/release/link-static/stack"
   cp "$srcdir/$pkgname/src/coin/test/bin/$_toolset/release/link-static/stack" "$srcdir/$pkgname/vcashd"

@@ -1,7 +1,7 @@
 pkgbase = vcash
 	pkgdesc = A decentralized currency for the internet.
 	pkgver = 0.6.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openvcash/vcash
 	arch = i686
 	arch = x86_64
