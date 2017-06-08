@@ -2,7 +2,7 @@
 
 pkgbase=linux-ec2
 _srcname=linux-4.11
-pkgver=4.11.3
+pkgver=4.11.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -23,10 +23,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
+            '7b36a573cce74d8e5312c88595bc0c0a60957c1fb79758303c9de9e944e2d339'
             'SKIP'
-            '70977017d25ebdc5bc939af675ed665fa4434754a27c4de663a3cd17feb1dfaa'
-            '160616eb5370a6af13e4a16d2c121bc306988a378005e4bcc26204c1231775ee'
+            'a15f7f98854ee379535bed77bf5cffa0174ebda042b4e2d9e4ce61c439c56d76'
+            '8be2bec4a5020dffeef458a72109e72d386d0df6def363be476c76f05175b82c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
             'f4ee2c2aed01b984b7ede924cbabefaccedc854b338901568d03a45320ea8056')
