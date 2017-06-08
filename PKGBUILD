@@ -2,7 +2,7 @@
 # Contributor: Original submitter John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _name=firefox
-_channel=developer
+_channel=dev
 _version='54.0b14'
 _file="${_name}-${_version}"
 _srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases/${_version}/"
