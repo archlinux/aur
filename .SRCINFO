@@ -17,6 +17,7 @@ pkgname = python-catkin_pkg
 	depends = python-dateutil
 	depends = python-docutils
 	conflicts = python-catkin-pkg
+	conflicts = python2-catkin_pkg
 	replaces = python-catkin-pkg
 
 pkgname = python2-catkin_pkg
@@ -26,5 +27,6 @@ pkgname = python2-catkin_pkg
 	depends = python2-dateutil
 	depends = python2-docutils
 	conflicts = python2-catkin-pkg
+	conflicts = python-catkin_pkg
 	replaces = python2-catkin-pkg
 
