@@ -50,6 +50,7 @@ package() {
 
     # install USB Driver for 1-Wire
     cp "${srcdir}/OneWireViewer-Linux/PDKAdapterUSB/libonewireUSB.so" "${pkgdir}/usr/lib"
+<<<<<<< HEAD
 
     # install OneWireViewer
     mkdir -p "${DESTDIR}/OneWireViewer"
@@ -57,6 +58,10 @@ package() {
     cp "OneWireViewer-Linux/OneWireViewer/run.sh" "${DESTDIR}/OneWireViewer"
     chmod +x "${DESTDIR}/OneWireViewer/run.sh"
     cp "${srcdir}/../${pkgname}.gif" "${DESTDIR}/OneWireViewer"
+=======
+    cd ${srcdir}/../
+    cp "${pkgname}.gif" "${DESTDIR}/OneWireViewer"
+>>>>>>> b50de19d726c4ce8f6dcad2ea175e768a3768650
     mkdir -p "${pkgdir}/usr/share/applications"
     cp "${srcdir}/../${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 
