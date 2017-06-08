@@ -1,7 +1,7 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=blastem
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator"
 arch=('x86_64' 'i686')
 url="https://www.retrodev.com/blastem/changes.html"
@@ -9,7 +9,8 @@ license=('GPL3')
 groups=()
 depends=('sdl2' 'glew')
 makedepends=('python2-pillow')
-optdepends=('vasm: game selection menu (must rebuild)')
+optdepends=('vasm: game selection menu (must rebuild)'
+	    'xcftools: game selection menu (must rebuild)')
 provides=("${pkgname}")
 conflicts=("${pkgname}-hg")
 replaces=()
@@ -51,4 +52,4 @@ package() {
 	ln -s "/opt/blastem/blastem" "$pkgdir/usr/bin/blastem"
 }
 md5sums=('8d2fbac987082700912d84d00cbbe67d'
-         'cea255d6ac07a7ac8eab47cef08c5e93')
+         'b01d07f2630bb2c31ffda48dddc85785')
