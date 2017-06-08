@@ -3,7 +3,7 @@
 _pkgname=screencloud
 pkgname=${_pkgname}-git
 pkgver=1.3.1.3.g74724ca
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy to use screenshot sharing tool. Development version.'
 arch=('i686' 'x86_64')
 url='https://screencloud.net/'
