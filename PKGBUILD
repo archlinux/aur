@@ -6,8 +6,8 @@ _STANDALONE_VIRTUALENV="false"
 #_STANDALONE_VIRTUALENV="true"
 
 pkgname=pacman-utils
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Some utils and helper scripts for archlinux packages "
 # arch package url is https://github.com/kata198/pacman-utils-pkg
 url="https://github.com/kata198/pacman-utils"
@@ -16,15 +16,15 @@ license=(apache)
 if [ "$_STANDALONE_VIRTUALENV" = "true" ];
 then
     makedepends=(python python-virtualenv python-setuptools)
-    depends=(python python-virtualenv python-setuptools)
+    depends=(wget curl python python-virtualenv python-setuptools)
     install=install.sh
 else
     makedepends=(python python-setuptools python-cmp_version python-func_timeout)
-    epends=(python python-setuptools python-cmp_version python-func_timeout)
+    depends=(wget curl python python-setuptools python-cmp_version python-func_timeout)
 fi
 optdepends=('pacman-utils-data:  Data for whatprovides_upstream')
 source=("https://github.com/kata198/pacman-utils/archive/${pkgver}.tar.gz")
-sha512sums=("7e1a14ad3798c89a1ed9ad005417397a60e2258a3882a8cd97edc614ec3e45128dd6fecc87a1e3225f064d37c3fa2726bfbde8ea19cd86932bf526642b837d2b")
+sha512sums=("f13327f3956d4d867bb4c05aeb6b04f7d097e222a442032ab9e57e7b53423ff21a2fd32afd5f92d3c4a2840e53d99944fb497326d594bc6a877b7c2a1ba072dc")
 
 build() {
   cd "${pkgname}-${pkgver}"
