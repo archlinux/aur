@@ -2,7 +2,7 @@
 
 pkgname=vcsn
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Finite state machine manipulation platform, consisting of a library and tools implemented on top of it."
 arch=('i686' 'x86_64')
 url="http://vcsn.lrde.epita.fr/"
@@ -23,7 +23,9 @@ check() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix="/usr" CXXFLAGS='-O3' CPPFLAGS='-DNDEBUG'
-  make
+  # make
+  # Temporary fix for Boost Python 1.64
+  make VISIBILITY_CXXFLAGS=""
 }
 
 package() {
