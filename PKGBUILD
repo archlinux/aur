@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=gnome-shell-extension-web-search-dialog-git
 _pkgname=web-search-dialog
-pkgver=r125.462aebf
+pkgver=r129.40e1acf
 pkgrel=1
 pkgdesc="Search the web directly from Gnome Shell"
 arch=('any')
