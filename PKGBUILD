@@ -1,8 +1,8 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
 _pkgname=vidcutter
-pkgver=4.0.0.r0.g785fd25
-pkgrel=4
+pkgver=4.0.0.r0.g428f271
+pkgrel=5
 pkgdesc="the simplest + fastest video cutter & joiner"
 arch=('any')
 license=('GPL3')
