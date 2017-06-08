@@ -19,7 +19,7 @@ Path=/usr/lib/onewireviewer/OneWireViewer
 Exec=/usr/lib/onewireviewer/OneWireViewer/run.sh
 
 # The name of the icon that will be used to display this entry
-Icon=/usr/lib/onewireviewer/OneWireViewer/onewireviewer.png
+Icon=/usr/lib/onewireviewer/OneWireViewer/onewireviewer.gif
 
 # Describes whether this application needs to be run in a terminal or not
 Terminal=false

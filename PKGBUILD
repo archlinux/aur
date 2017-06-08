@@ -35,7 +35,7 @@ package() {
     chmod +x "${DESTDIR}/OneWireViewer/run.sh"
     cp "${srcdir}/OneWireViewer-Linux/PDKAdapterUSB/libonewireUSB.so" "${pkgdir}/usr/lib"
     cd ${srcdir}/../
-    cp "${pkgname}.png" "${DESTDIR}/OneWireViewer"
+    cp "${pkgname}.gif" "${DESTDIR}/OneWireViewer"
     mkdir -p "${pkgdir}/usr/share/applications"
     cp "${pkgname}.desktop" "${pkgdir}/usr/share/applications"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
