@@ -57,6 +57,8 @@ package() {
     cp "OneWireViewer-Linux/OneWireViewer/run.sh" "${DESTDIR}/OneWireViewer"
     chmod +x "${DESTDIR}/OneWireViewer/run.sh"
     cp "${srcdir}/../${pkgname}.gif" "${DESTDIR}/OneWireViewer"
+    cd ${srcdir}/../
+    cp "${pkgname}.gif" "${DESTDIR}/OneWireViewer"
     mkdir -p "${pkgdir}/usr/share/applications"
     cp "${srcdir}/../${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 
