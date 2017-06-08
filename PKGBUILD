@@ -2,7 +2,7 @@
 
 pkgname=sky
 pkgver=2.1.6731
-pkgrel=201705242000
+pkgrel=201705242099
 pkgdesc="Lync and Skype for Business client on Linux"
 
 arch=(
@@ -28,7 +28,7 @@ depends=(
 	'libxss'
 	'libxv'
 	'qt5-base>=5.6'
-	'qt5-base<5.9.0'
+	'qt5-base<5.10'
 )
 makedepends=(
 	'binutils'
