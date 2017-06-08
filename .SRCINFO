@@ -1,0 +1,14 @@
+pkgbase = jupyter-calysto_prolog-git
+	pkgdesc = A Prolog kernel for Jupyter (GIT version)
+	pkgver = r10.1e6f292
+	pkgrel = 1
+	url = https://github.com/Calysto/calysto_prolog
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = jupyter-metakernel
+	source = git+https://github.com/Calysto/calysto_prolog.git
+	md5sums = SKIP
+
+pkgname = jupyter-calysto_prolog-git
+
