@@ -1,0 +1,17 @@
+pkgbase = dnd-tools
+	pkgdesc = Interactive CLI tools for Dungeons and Dragons 5e
+	pkgver = 92de5bb
+	pkgrel = 1
+	url = https://github.com/gtbjj/dnd-tools
+	arch = i686
+	arch = x86_64
+	license = AGPLv3
+	makedepends = git
+	makedepends = python
+	depends = python
+	provides = dnd-tools
+	source = git://github.com/gtbjj/dnd-tools.git
+	sha256sums = SKIP
+
+pkgname = dnd-tools
+
