@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
 depends=('python' 'tk' 'libxmu' 'glu'
         'opencascade'     # USE_OCC=ON
-        'openmpi' 'metis' # USE_MPI=ON
         'ffmpeg'          # USE_MPEG=ON
 )
 options=('!buildflags')
@@ -35,10 +34,10 @@ build() {
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DUSE_JPEG=ON \
     -DUSE_MPEG=ON \
-    -DUSE_MPI=ON \
     -DMETIS_DIR=/usr \
     -DUSE_OCC=ON \
     ..
+
   make
 }
 
