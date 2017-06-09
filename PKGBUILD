@@ -4,7 +4,7 @@
 pkgname=perl-html-lint
 _pkgname='HTML-Lint'
 pkgver=2.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl module to check for HTML errors in a string or file"
 arch=("any")
 url="http://search.cpan.org/dist/HTML-Lint"
