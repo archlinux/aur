@@ -2,8 +2,8 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 pkgname=openmpi
-pkgver=1.10.6
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='High performance message passing library (MPI)'
 arch=(i686 x86_64)
 url='http://www.open-mpi.org'
@@ -13,18 +13,20 @@ makedepends=(inetutils valgrind gcc-fortran)
 optdepends=('gcc-fortran: fortran support')
 options=(staticlibs)
 source=(http://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('cbb3121d30869ee89b5484af274b6b477d8ac72f')
+sha1sums=('3aaee35c17b6ef02f4cee274f2670d5b7b2c968a')
 
 build() {
    cd $pkgname-$pkgver
 
-   ./autogen.pl
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
                --enable-mpi-fortran=all \
                --libdir=/usr/lib/${pkgname} \
                --with-threads=posix \
+               --enable-mpi-thread-multiple \
                --enable-smp-locks \
+               --enable-builtin-atomics \
+               --enable-mpi-cxx \
                --with-valgrind \
                --enable-memchecker \
                --enable-pretty-print-stacktrace \
@@ -52,12 +54,6 @@ package() {
    for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
       ln -sf /usr/lib/openmpi/pkgconfig/$i "$pkgdir"/usr/lib/pkgconfig/
    done
-
-   # Openmpi's otfinfo conflicts with the one from texlive
-   mv "$pkgdir"/usr/bin/otfinfo{,mpi}
-
-   # Remove dangling symlink and useless file
-   rm "$pkgdir"/usr/share/vampirtrace/config.log
 
    install -d -m 755 "$pkgdir"/etc/ld.so.conf.d
    echo "/usr/lib/$pkgname" > "$pkgdir"/etc/ld.so.conf.d/$pkgname.conf
