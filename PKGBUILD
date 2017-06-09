@@ -3,7 +3,7 @@
 
 pkgname=screencloud
 pkgver=1.3.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Easy to use screenshot sharing application."
 arch=('i686' 'x86_64')
 url="https://github.com/olav-st/screencloud"
@@ -14,10 +14,14 @@ optdepends=('python-crypto: required for SFTP support')
 options=('strip' 'docs' 'libtool' '!staticlibs' 'emptydirs' 'zipman' 'purge' '!optipng' '!upx' '!debug' '!emptydirs')
 install="${pkgname}".install
 conflicts=('screencloud-git')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/olav-st/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('c23d8efb955ea861920c548f7fd3255726e86409d7a2022952225c765cc3da52')
+#source=(${pkgname}-${pkgver}.tar.gz::https://github.com/olav-st/${pkgname}/archive/v${pkgver}.tar.gz)
+# fix CMake Error PYTHONQT_LIBRARY (ADVANCED) before release
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/olav-st/screencloud/archive/22ff74bd2835b66e030fd31601e62d15f3b6a634.zip)
+sha256sums=('2ffe2703519edcb627451e2a1f8833b49f039bbfcd81111f09f8a3d3d827db99')
 
 prepare() {
+    # hack, fix CMake Error PYTHONQT_LIBRARY (ADVANCED)
+    mv "${srcdir}/screencloud-22ff74bd2835b66e030fd31601e62d15f3b6a634/" "${srcdir}/${pkgname}-${pkgver}"
     # Create build directory
     mkdir -p "${srcdir}/${pkgname}-${pkgver}"/build
 }
