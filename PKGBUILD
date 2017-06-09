@@ -4,7 +4,7 @@
 pkgname='perl-class-trigger'
 _cpanname='Class-Trigger'
 pkgver='0.14'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="Mixin to add / call inheritable triggers"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -29,12 +29,7 @@ test() {
   make PERL_MM_USE_DEFAULT=1 test
 }
 
-package() {
-  cd ${_cpanname}-${pkgver}
-  make DESTDIR="${pkgdir}/" PERL_MM_USE_DEFAULT=1 install;
-
-  find "$pkgdir" -name .packlist -delete
-  find "$pkgdir" -name perllocal.pod -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -42,4 +37,13 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+
+package() {
+  cd ${_cpanname}-${pkgver}
+  make DESTDIR="${pkgdir}/" PERL_MM_USE_DEFAULT=1 install;
+
+  find "$pkgdir" -name .packlist -delete
+  find "$pkgdir" -name perllocal.pod -delete
+  _perl_depends
 }

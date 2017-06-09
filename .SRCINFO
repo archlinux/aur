@@ -1,7 +1,7 @@
 pkgbase = perl-class-trigger
 	pkgdesc = Mixin to add / call inheritable triggers
 	pkgver = 0.14
-	pkgrel = 4
+	pkgrel = 5
 	url = http://search.cpan.org/dist/Class-Trigger
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,4 @@ pkgbase = perl-class-trigger
 	sha512sums = f0908469a4853ef386158f2ee66bb52a1bb4cfcdb385ecd9fd3375af87943910ba75f99066a00eab5dd367f68404369c8ad4ae2afbcb76d18e9f1327f95eb2ca
 
 pkgname = perl-class-trigger
-	depends = perl
-	depends = perl-io-stringy
-	depends = perl>=
-	depends = perl<
 
