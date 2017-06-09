@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Ada library to handle GPRbuild project files"
 
 arch=('i686' 'x86_64')
-url="https://github.com/AdaCore/gprbuild"
+url="http://libre.adacore.com/"
 license=('GPL')
 
 depends=('gcc-ada' 'gcc-libs' 'prepare_gnat_util')
