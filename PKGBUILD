@@ -21,9 +21,9 @@ check() {
   ./runtests
 
   # fix for case sensitivity
-  ln -s test-e.pgn infiles/test-E.pgn
-  ln -s test-S.pgn infiles/test-s.pgn
-  ln -s test-W.pgn infiles/test-w.pgn
+  ls infiles/test-E.pgn || ln -s test-e.pgn infiles/test-E.pgn
+  ls infiles/test-s.pgn || ln -s test-S.pgn infiles/test-s.pgn
+  ls infiles/test-w.pgn || ln -s test-W.pgn infiles/test-w.pgn
 
   make -k all
 }
