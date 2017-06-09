@@ -1,13 +1,13 @@
 # Maintainer: Chris Salzberg <chris@dejimata.com>
 
 pkgname=neomutt
-pkgver=20170602
+pkgver=20170609
 pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
 source=("https://github.com/neomutt/neomutt/archive/neomutt-$pkgver.tar.gz")
-md5sums=('5c0b40832b5fe7efca64f27f9214199e')
+md5sums=('928029c6e4b764e1fc8cd21eda1ecbb1')
 arch=('i686' 'x86_64')
 depends=('openssl' 'gdbm' 'mime-types' 'libsasl' 'gnupg' 'gpgme' 'libidn' 'krb5' 'notmuch-runtime')
 optdepends=('urlview: for url menu')
