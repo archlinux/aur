@@ -2,7 +2,7 @@
 
 pkgname=qt5gtk2
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+2.0 integration plugins for Qt5"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/trialuser02/${pkgname}"
