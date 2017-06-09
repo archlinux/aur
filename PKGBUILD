@@ -10,7 +10,7 @@ license=('AGPL')
 depends=('python' 'python-pyqt5' 'python-markdown' 'python-pygit2' 'python-beautifulsoup4' 'pandoc' 'python-pypandoc' 'python-pygments' 'qt5-base' 'python-setuptools' 'desktop-file-utils')
 
 # needs custom build of 'qt5-webkit-ng'
-makedepends=('coreutils' 'git' 'python' 'python-setuptools')
+makedepends=('coreutils' 'git' 'python' 'python-setuptools' 'python-pip')
 # provides=('cascade')
 source=('git+https://figureslibres.io/gogs/bachir/libriis.git' 'libriis.desktop' 'libriis.png')
 md5sums=('SKIP' 'da4863b42a1ff9a816d2c0c3c8bc510f' 'd2de8e22b3f16a03c393dc1b8878fb48')
