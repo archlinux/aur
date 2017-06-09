@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_traits contains the message traits code as described in Me
 url='http://ros.org/wiki/roscpp_traits'
 
 pkgname='ros-lunar-roscpp-traits'
-pkgver='0.6.3'
+pkgver='0.6.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-lunar-roscpp_traits-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/lunar/roscpp_traits/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4692355c21b8c823166cca9f8f8d9d208a8114a10942123ddfbe0778332b5ad3')
+sha256sums=('982708f7bd56e611dbc34ca6120b7f4594f093445fd281e9657fd8e00175f051')
 
 build() {
   # Use ROS environment variables
