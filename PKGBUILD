@@ -1,14 +1,15 @@
 # Maintainer: Stephen Brennan <stephen@brennan.io>
 pkgname=alien-console
-pkgver=0.7
+pkgver=1.0
 pkgrel=1
 pkgdesc="A ncurses based clone of the Alien: Isolation console interfaces."
 arch=('x86_64')
 url="https://github.com/brenns10/alien-console"
 license=('GPL')
 depends=('ncurses')
-source=("https://brenns10.keybase.pub/$pkgname-$pkgver.tar.gz")
-sha256sums=('297394cc2a74b0189095f893d331f5ae06839734b65302a5aaf06debeff840d1')
+optdepends=('alsa-utils: for aplay sound support')
+source=("https://github.com/brenns10/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('4ec81fb5abc77b28e7678f252fc46653c9fa6f73becc506b7ad968b18c7974b4')
 
 build() {
 	cd "$pkgname-$pkgver"
