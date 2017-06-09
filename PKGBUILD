@@ -2,7 +2,7 @@
 
 pkgname=perl-gtk2-appindicator
 pkgver=0.15
-pkgrel=5
+pkgrel=6
 pkgdesc="Gtk2::AppIndicator - Perl extension for libappindicator"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~oesterhol/Gtk2-AppIndicator/lib/Gtk2/AppIndicator.pm"
@@ -15,7 +15,7 @@ sha1sums=('8a63d442a7bcb31a832363d06b6ac185a7852566')
 build() {
     cd "$srcdir/Gtk2-AppIndicator-${pkgver}"
     perl Makefile.PL INSTALLDIRS=vendor
-    make || return 1
+    PERL_USE_UNSAFE_INC=1 make || return 1
 }
 package() {
     cd "$srcdir/Gtk2-AppIndicator-${pkgver}"
