@@ -11,7 +11,8 @@ license=('GPL' 'custom')
 provides=('logitechmediaserver')
 depends=('perl>=5.26' 'perl<5.27' 'perl-cgi' 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-sha1' 'perl-ev' 'perl-yaml-libyaml')
 makedepends=('nasm' 'yasm' 'rsync' 'gd' 'zlib')
-optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems')
+optdepends=('perl-io-socket-ssl: support for https streams')
+optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems' 'perl-io-socket-ssl: support for https streams')
 install=install
 source=("slimserver.tar.gz::${url}/archive/public/${_gitver}.tar.gz"
         "slimserver-vendor.tar.gz::${url}-vendor/archive/public/${_gitver}.tar.gz"

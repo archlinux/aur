@@ -19,11 +19,12 @@ pkgbase = logitechmediaserver-git
 	depends = perl>=5.26
 	depends = perl<5.27
 	depends = perl-cgi
-	depends = perl-dbi
 	depends = perl-dbd-sqlite
+	depends = perl-dbi
 	depends = perl-digest-sha1
 	depends = perl-ev
 	depends = perl-yaml-libyaml
+	optdepends = perl-io-socket-ssl: support for https streams
 	provides = logitechmediaserver
 	source = slimserver.tar.gz::https://github.com/stefansielaff/slimserver/archive/public/7.9.tar.gz
 	source = slimserver-vendor.tar.gz::https://github.com/stefansielaff/slimserver-vendor/archive/public/7.9.tar.gz
@@ -33,6 +34,7 @@ pkgbase = logitechmediaserver-git
 	sha256sums = f5c64f2a066914dbab9a1dd4a8ec33895645a72bde3bdbeb83c49e4624a997cb
 	optdepends_x86_64 = lib32-glibc: transcoding on 64-bit systems
 	optdepends_x86_64 = lib32-gcc-libs: transcoding on 64-bit systems
+	optdepends_x86_64 = perl-io-socket-ssl: support for https streams
 
 pkgname = logitechmediaserver-git
 
