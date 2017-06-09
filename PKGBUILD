@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=amule-daemon
-pkgver=r10983
+pkgver=r10990
 pkgrel=1
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)'
 url='http://www.amule.org'
@@ -22,7 +22,7 @@ source=("http://amule.sourceforge.net/tarballs/aMule-SVN-${pkgver}.tar.bz2"
         'amuleweb.service'
         'amule.sysuser'
         )
-sha256sums=('484d8d0ae4c3f7b3b696d5e5f96b7d7d10025aa36f6c5fc919593268224cd29f'
+sha256sums=('215d65df096ecdd3f420d9b0e7b0f180c9345e7f386a8aaa45c9205f820f7c63'
             '835a1058ba926e4c0cfcfbd9ac2266abd057753fdf85f7bb9da7e217432e7e56'
             '84cde583acf2b431a6363eb9d6f6ed98177826add1f80b483da837e5fef52bf4'
             'f50c46605d3ae977913f4dcf0c7405e0bdc84322d1fc877ae851706f0e1ae5fd'
@@ -45,7 +45,7 @@ build() {
     --enable-{alcc,amule-daemon,amulecmd,fileview,optimize,upnp,webserver,mmap} \
     --with-boost=/usr/include \
     --with-toolkit=base \
-    --with-wx-config=/usr/lib/wx/config/base-unicode-3.0
+    --with-wx-config=/usr/bin/wx-config-base
   make
 }
 
