@@ -4,7 +4,7 @@
 pkgname=perl-gtk2-notify
 _cpanname=Gtk2-Notify
 pkgver=0.05
-pkgrel=18
+pkgrel=19
 pkgdesc="Perl interface to libnotify"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/${_cpanname}"
@@ -25,13 +25,10 @@ prepare() {
 build() {
   cd $_cpanname-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  sed 's,build\/doc\.pl,./build/doc.pl,g' -i Makefile
-  make NOECHO=
+  sed 's,q(build/doc.pl),q(./build/doc.pl),g' -i Makefile
+  make
 }
-package() {
-  cd $_cpanname-$pkgver
-  make DESTDIR="$pkgdir" install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -39,4 +36,10 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+package() {
+  cd $_cpanname-$pkgver
+  make DESTDIR="$pkgdir" install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  _perl_depends
 }

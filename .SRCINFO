@@ -1,7 +1,7 @@
 pkgbase = perl-gtk2-notify
 	pkgdesc = Perl interface to libnotify
 	pkgver = 0.05
-	pkgrel = 18
+	pkgrel = 19
 	url = http://metacpan.org/release/Gtk2-Notify
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,4 @@ pkgbase = perl-gtk2-notify
 	md5sums = c54d841861c9adfaa77b80bdf9cb0f98
 
 pkgname = perl-gtk2-notify
-	depends = gtk2-perl
-	depends = libnotify
-	depends = perl>=
-	depends = perl<
 
