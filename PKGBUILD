@@ -31,6 +31,10 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   git submodule update --init
+
+  # By default, installs pkg-config file in /usr/local/share/pkgconfig
+  # instead of /usr/share/pkgconfig.
+  export PKG_CONFIG_PATH=/usr/share/pkgconfig:/usr/local/share/pkgconfig
   autoreconf --install
 
   # Default compiler = clang, which can be a problem if using hardening-wrapper
