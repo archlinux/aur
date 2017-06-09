@@ -6,7 +6,7 @@
 
 pkgname=perl-goo-canvas
 pkgver=0.06
-pkgrel=9
+pkgrel=10
 pkgdesc="Perl bindings for GooCanvas"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Goo-Canvas/"
@@ -20,6 +20,7 @@ md5sums=('7dfe0be8c17bfd641d18384d4fd8fb23')
 build() {
   cd "$srcdir/Goo-Canvas-$pkgver"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  sed -i -e 's,q(build/doc.pl),q(./build/doc.pl),' Makefile
   make
 }
 
@@ -28,14 +29,18 @@ check() {
   make test
 }
 
+_perl_depends() {
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
+}
+
 package() {
   cd "$srcdir/Goo-Canvas-$pkgver"
   make install DESTDIR="$pkgdir"
-# template start; name=perl-binary-module-dependency; version=1;
-#if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-#	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-#	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-#	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-#fi
-# template end;
+  _perl_depends
 }
