@@ -1,0 +1,18 @@
+pkgbase = snaptile-git
+	pkgdesc = Versatile, mouse-free window tiling for X11, with a 12 section grid system.
+	pkgver = r18.dd53049
+	pkgrel = 1
+	url = https://github.com/jakebian/snaptile
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-xlib
+	provides = snaptile
+	conflicts = snaptile
+	source = git://github.com/jakebian/snaptile#branch=master
+	sha512sums = SKIP
+
+pkgname = snaptile-git
+
