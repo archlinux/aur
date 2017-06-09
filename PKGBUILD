@@ -7,7 +7,7 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg     # https://crbug.com/723537
+  #[ffmpeg]=ffmpeg     # https://crbug.com/731766
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
   #[icu]=icu           # Enable again when upstream supports ICU 59
