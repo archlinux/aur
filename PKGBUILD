@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides a cmake config for the default version of Gazebo for the
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-lunar-gazebo-dev'
-pkgver='2.7.1'
+pkgver='2.7.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,8 +17,6 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=()
 depends=(${ros_depends[@]}
   gazebo)
-#  gazebo8
-#  libgazebo8-dev)
 
 # Git version (e.g. for debugging)
 # _tag=release/lunar/gazebo_dev/${pkgver}-${_pkgver_patch}
@@ -29,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-lunar-gazebo_dev-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/lunar/gazebo_dev/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d9f582eb9e7b59bff6735c02803f6d38a5a3d911f5c9bd18cfea3f0d4c9d5dc3')
+sha256sums=('09db83f541be65918dbf2dd616285c279a3df86055ce9d855ef19a5bbc30d8ac')
 
 build() {
   # Use ROS environment variables
