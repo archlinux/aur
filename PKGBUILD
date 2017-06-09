@@ -1,7 +1,7 @@
 # Maintainer: alienzj <lovelornpig@gmail.com>
 
 pkgname=seqtk
-pkgver=1.2.r102.32e7903
+pkgver=1.2.r94
 pkgrel=1
 pkgdesc="Toolkit for processing sequences in FASTA/Q formats"
 arch=('i686' 'x86_64')
