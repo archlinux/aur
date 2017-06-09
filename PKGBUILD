@@ -11,6 +11,7 @@ url="https://github.com/wayland-wall/wayland-wall"
 license=('MIT')
 depends=('gdk-pixbuf2' 'pango' 'wayland-protocols')
 makedepends=('git' 'meson' 'ninja')
+optdepends=('wlc-wall-injector: inject wall into wlc based compositors')
 provides=('wayland-wall' 'wayland-wall-git')
 conflicts=('wayland-wall')
 source=("git+https://github.com/wayland-wall/wayland-wall.git")
