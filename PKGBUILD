@@ -22,8 +22,8 @@ source=('ftp://ftp2.okidata.com/pub/drivers/linux/SFP/monochrome/desktop/MB400PC
 sha256sums=('3ab2df56a62e03d0c0f8dcbb09ea7cde757eac3eb9ab1772f5f3c421cbb6c73f')
 
 _printerids=(
-  # PPDName:Printer ID
-  'OKB411:OKI DATA CORP B411'
+  # PPDName:Friendly Name (MATCH TEXT)
+  'OKB411:Oki B411 (OKI DATA CORP B411) PCL'
 )
 
 prepare() {
