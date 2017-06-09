@@ -4,7 +4,7 @@ pkgname=perl-sys-gamin
 _cpanname=Sys-Gamin
 _module=Sys::Gamin
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="$_module - Perl interface to Gamin (File Access Monitor implementation)"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/$_cpanname"
@@ -15,20 +15,27 @@ source=("http://cpan.metacpan.org/authors/id/G/GA/GARNACHO/${_cpanname}-${pkgver
 md5sums=('4eb05138c28e8a5f12340938b0823a4c')
 
 build() {
-  cd "$srcdir/$_cpanname-$pkgver"
+  cd $_cpanname-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 check() {
-  cd "$srcdir/$_cpanname-$pkgver"
+  cd $_cpanname-$pkgver
 #  make test
 }
 
 package() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  make install DESTDIR="$pkgdir"
+  cd $_cpanname-$pkgver
+  make DESTDIR="$pkgdir" install
   find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
 }
 
 # vim:set ts=2 sw=2 et:
