@@ -1,7 +1,7 @@
 pkgbase = qesteidutil
 	pkgdesc = UI application for managing smart card PIN/PUK codes and certificates
 	pkgver = 3.12.4.1226
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.id.ee/
 	arch = x86_64
 	arch = i686
