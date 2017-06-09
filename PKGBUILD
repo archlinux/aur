@@ -2,7 +2,7 @@
 # Contributor: Gergely Imreh <imrehg@gmail.com>
 
 pkgname=io
-pkgver=2017.06.09
+pkgver=2017.06.08
 pkgrel=1
 pkgdesc='IO programming language'
 arch=('x86_64' 'i686')
