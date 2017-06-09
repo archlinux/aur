@@ -3,12 +3,12 @@
 
 pkgname='perl-glib-object-introspection'
 pkgver='0.042'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Dynamically create Perl language bindings"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('glib-perl>=1.32' 'glib2>=2.50.3' 'gobject-introspection-runtime>=1.50.0+1+gb8d92b0' 'libffi>=3.2.1' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig' 'perl>=5.26' 'perl<5.27')
+depends=('glib-perl>=1.32' 'glib2>=2.50.3' 'gobject-introspection-runtime>=1.50.0+1+gb8d92b0' 'libffi>=3.2.1' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig')
 makedepends=('gobject-introspection' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig')
 url='https://metacpan.org/release/Glib-Object-Introspection'
 source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.042.tar.gz')
@@ -36,11 +36,22 @@ check() {
   )
 }
 
+_perl_depends() {
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
+}
+
 package() {
   cd "$srcdir/$_distdir"
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  _perl_depends
 }
 
 # Local Variables:
