@@ -1,26 +1,28 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver
-pkgver=7.9.0.arch7
+pkgver=7.9.1.arch1
 pkgrel=1
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Release-Version, if you prefer bleeding edge consider using logitechmediaserver-git instead)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/stefansielaff/slimserver'
 license=('GPL' 'custom')
-depends=('perl>=5.20' 'perl<5.27' 'perl-cgi' 'perl-ev' 'perl-digest-sha1')
+depends=('perl>=5.26' 'perl<5.27' 'perl-cgi' 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-sha1' 'perl-ev' 'perl-yaml-libyaml')
+optdepends=('perl-io-socket-ssl: support for https streams')
 optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems')
 makedepends=('nasm' 'yasm' 'rsync' 'gd' 'zlib')
 install=install
 source=("slimserver-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "slimserver-vendor-${pkgver}.tar.gz::${url}-vendor/archive/${pkgver}.tar.gz"
         'service')
-sha256sums=('36a9c1fb59cc6ecea5de73717a3f90efa20f486ec4799937dba00ff374d7960c'
-            '707843649d70bc8af1a84062b8e0c23bb88ee8345d98a2133c6e1460ed4948ad'
+sha256sums=('de677160435b7a8542cc9d8ea298975492bd04fb967bd4a0ec7c311425b73392'
+            '6a84a1601fc291d4813aef5c017b1f0768d1581d114bf70867a35e3e65537cf8'
             '41718cf74b2f9b542089e7bd238fb974d049a6132e8d3e0ed598d6689e5d16c2')
 
 prepare() {
     cd "${srcdir}/slimserver-${pkgver}"
-    rm -rf Bin/i86pc-solaris-thread-multi-64int
+    rm -f CPAN/DBI.pm
+    rm -rf CPAN/{DBI,DBD,Digest,YAML}
     case $CARCH in
         x86_64) rm -rf Bin/{arm,armhf}-linux ;;
         i686) rm -rf Bin/{arm,armhf}-linux ;;
