@@ -14,7 +14,7 @@ screenshot="https://gitlab.com/eang/diffpdf/blob/master/images/icon.png"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('poppler-qt5')
-makedepends=('cmake' 'extra-cmake-modules')
+makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools')
 source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/eang/diffpdf/repository/archive.tar.gz?ref=v${pkgver}")
 md5sums=('d3b0340760296837fdd0dcc442f3ef3a')
 
