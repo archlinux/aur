@@ -3,20 +3,21 @@
 
 _author="Daniel P. Berrange"
 _perlmod="sys-virt"
+_cpanname='Sys-Virt'
 pkgname=perl-${_perlmod}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Represent and manage a libvirt hypervisor connection"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Sys-Virt/"
 license=('GPL' 'PerlArtistic')
 depends=('libvirt')
 makedepends=('perl-test-pod-coverage' 'perl-xml-xpath')
-source=("http://www.cpan.org/authors/id/D/DA/DANBERR/Sys-Virt-${pkgver}.tar.gz")
+source=("http://www.cpan.org/authors/id/D/DA/DANBERR/${_cpanname}-${pkgver}.tar.gz")
 md5sums=('2d5673dd8929957513f951a63a0ae2b1')
 
 build() {
-  cd "${srcdir}/Sys-Virt-${pkgver}"
+  cd ${_cpanname}-${pkgver}
 
   # From Fedora spec file - generation of spec file causes make to segfault
   sed -i -e '/Sys-Virt\.spec/d' Makefile.PL
@@ -30,11 +31,18 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/Sys-Virt-${pkgver}"
+  cd ${_cpanname}-${pkgver}
   make install DESTDIR="${pkgdir}/"
 
   # From Fedora RPM spec file - remove empty '.packlist' and '*.bs' files
   find "${pkgdir}" -type f \( -name .packlist -o -name '*.bs' -o -name perllocal.pod -empty \) | xargs rm -vf
   rm -fr "${pkgdir}/usr/lib/perl5/core_perl"
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
 }
 
