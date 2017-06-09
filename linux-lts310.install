@@ -1,10 +1,7 @@
-KERNEL_NAME=-lts310
-KERNEL_VERSION=
-
 post_install () {
 	# updating module dependencies
 	echo ">>> Updating module dependencies. Please wait ..."
-	depmod ${KERNEL_VERSION}
+	depmod %KERNVER%
 }
 
 post_upgrade() {
@@ -14,11 +11,11 @@ post_upgrade() {
 
 	# updating module dependencies
 	echo ">>> Updating module dependencies. Please wait ..."
-	depmod ${KERNEL_VERSION}
+	depmod %KERNVER%
 }
 
 post_remove() {
 	# also remove the compat symlinks
-	rm -f boot/initramfs-linux${KERNEL_NAME}.img
-	rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
+	rm -f boot/initramfs-%PKGBASE%.img
+	rm -f boot/initramfs-%PKGBASE%-fallback.img
 }
