@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-git
-pkgver=0.0.Alpha.r126.g62a84b2
+pkgver=0.5.Beta.r136.gd4b4aac
 pkgrel=1
 pkgdesc='Tiny Qt Music Player to keep your favorite songs at hand'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd babe
-  version="$(grep 'Verion:' about.cpp | awk '{print $5 "." $6}' | awk -F'\' '{print $1}')"
+  version="$(grep 'Version:' about.cpp | awk '{print $5 "." $6}' | awk -F'\' '{print $1}')"
   printf '%s.r%s.g%s' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
