@@ -3,7 +3,7 @@
 pkgname='perl-catalyst-plugin-session'
 _pkgname='Catalyst-Plugin-Session'
 pkgver='0.40'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Generic Session plugin - ties together server side storage and client side state required to maintain session data."
 arch=('any')
 license=('PerlArtistic' 'GPL')
