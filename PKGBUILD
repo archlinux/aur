@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface for using ROS with the Gazebo simulator."
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-lunar-gazebo-ros-pkgs'
-pkgver='2.7.1'
+pkgver='2.7.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-lunar-gazebo_ros_pkgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/lunar/gazebo_ros_pkgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dcb82dae4f85719c9779e9c3a0581d21e9eba67a18c5854e6bb26058605c0d32')
+sha256sums=('77f05d91b1cfd597e446e239c01bc5337ae36968a40505383c527e08f489f1ec')
 
 build() {
   # Use ROS environment variables
