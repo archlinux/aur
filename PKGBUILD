@@ -2,42 +2,32 @@
 # Contributor: Gergely Imreh <imrehg@gmail.com>
 
 pkgname=io
-pkgver=2015.11.11
-pkgrel=7
+pkgver=2017.06.09
+pkgrel=1
 pkgdesc='IO programming language'
 arch=('x86_64' 'i686')
 url='http://iolanguage.com/'
 license=('BSD')
-depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2' 'libtiff' 'libevent' 'yajl' 'libmariadbclient' 'lzo' 'libpng' 'python2' 'util-linux' 'freeglut' 'libjpeg-turbo' 'libtheora')
+depends=('pcre' 'libsndfile' 'libxmu' 'freetype2' 'libedit' 'libxml2' 'libtiff' 'libevent' 'yajl' 'libmariadbclient' 'lzo' 'libpng' 'python2' 'util-linux' 'freeglut' 'libjpeg-turbo' 'libtheora' 'python')
 makedepends=('cmake' 'git')
 options=('!makeflags' '!buildflags')
-source=("git://github.com/stevedekorte/io#tag=$pkgver"
-        'PATCH-Fix-for-inlining-in-C11-mode.patch'
-        'PATCH-added--msse2-to-compile-flags-for.patch')
-md5sums=('SKIP'
-         'a3bab046cbc4be88ec95bb22c28abab3'
-         '83552f6cabb4224cbcdcc01cb3bd4b90')
+source=("git+https://github.com/stevedekorte/io#commit=5fffec7cbe9679632ff793befacedd92f79d7f0f")
+sha256sums=('SKIP')
 
 prepare() {
-  cd io
-  patch -p1 -i../PATCH-Fix-for-inlining-in-C11-mode.patch
-  patch -p1 -i../PATCH-added--msse2-to-compile-flags-for.patch
+  sed -i "s:20151111:${pkgver//./}:" io/libs/iovm/source/IoVersion.h
 }
 
 build() {
-  cd io
-  sed -i "s:20140919:${pkgver//./}:" libs/iovm/source/IoVersion.h
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake ../io -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 package() {
-  cd io
-  make -C build DESTDIR="$pkgdir" install
-  install -Dm644 license/bsd_license.txt \
+  DESTDIR="$pkgdir" make -C build install
+  install -Dm644 io/license/bsd_license.txt \
     "$pkgdir/usr/share/licenses/$pkgname/bsd_license.txt"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
