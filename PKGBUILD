@@ -1,7 +1,7 @@
 # Maintainer: emersion <contact@emersion.fr>
 pkgname=browserpass
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('x86_64')
 url="https://github.com/dannyvankooten/browserpass"
@@ -10,7 +10,7 @@ depends=('pass')
 makedepends=()
 optdepends=()
 source=("browserpass-$pkgver.zip::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-linux64.zip")
-md5sums=('3a4146f43c420acd7bfe397a1256072a')
+md5sums=('62d35b34e5de5abcada0fca0af8990de')
 
 package() {
 	cd "$srcdir"
