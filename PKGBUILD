@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdb
-pkgver=7.12
+pkgver=8.0
 pkgrel=1
 pkgdesc="The GNU Debugger (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt' 'mingw-w64-expat' 'mingw-w64-zlib' 'mingw-w64-readline'
 makedepends=('mingw-w64-gcc' 'texinfo')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-md5sums=('a0a3a00f7499b0c5278ba8676745d180')
+md5sums=('c3d35cd949084be53b92cc1e03485f88')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
