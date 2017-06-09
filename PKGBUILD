@@ -1,62 +1,64 @@
-# Maintainer: eloaders <eloaders at linux dot pl>
+# Maintainer : Vassilis Palassopoulos <palasso [at] gmail [dot] com>
+# Based on the PKGBUILD from eloaders <eloaders at linux dot pl>
 
 pkgname=i-nex-git
-pkgver=7.4.0.21.g5bdc044
+pkgver=7.6.0.r61.g0c10102
 pkgrel=1
 pkgdesc="System information tool like hardinfo, sysinfo"
 arch=('i686' 'x86_64')
 url="http://i-nex.linux.pl/"
 license=('LGPL3')
-depends=('gambas3-runtime' 
-	 'gambas3-gb-image' 
-	 'gambas3-gb-form'
+depends=('gambas3-runtime'
+         'gambas3-gb-image'
+         'gambas3-gb-form'
          'gambas3-gb-desktop'
-         'gambas3-gb-qt4'
+         'gambas3-gb-qt5'
          'gambas3-gb-desktop-x11'
-         'python2' 
+         'python2'
          'libcpuid-git'
-         'xorg-server-utils' 
-         'lsb-release' 
-         'curl')
+         'lsb-release'
+         'curl'
+         'pastebinit'
+         'procps-ng')
 makedepends=('gambas3-devel' 'gcc' 'imagemagick' 'git')
 source=($pkgname::'git://github.com/eloaders/I-Nex.git')
 sha256sums=('SKIP')
-provides=('i-nex' 'i-nex-bzr' 'i-nex-dev')
-conflicts=('i-nex' 'i-nex-bzr' 'i-nex-dev')
+provides=('i-nex')
+conflicts=('i-nex')
 backup=('etc/i-nex/Database/i2c/devices.json'
-	'etc/i-nex/Database/A6.json'
-	'etc/i-nex/Database/amd.json'
-	'etc/i-nex/Database/atom.json'
-	'etc/i-nex/Database/i3.json'
-	'etc/i-nex/Database/i5.json'
-	'etc/i-nex/Database/i7.json'
-	'etc/i-nex/Database/intel_Core_2_Duo.json'
-	'etc/i-nex/Database/intel.json'
-	'etc/i-nex/Database/Opteron.json'
-	'etc/i-nex/Database/Xeon.json')
+        'etc/i-nex/Database/A6.json'
+        'etc/i-nex/Database/amd.json'
+        'etc/i-nex/Database/atom.json'
+        'etc/i-nex/Database/i3.json'
+        'etc/i-nex/Database/i5.json'
+        'etc/i-nex/Database/i7.json'
+        'etc/i-nex/Database/intel_Core_2_Duo.json'
+        'etc/i-nex/Database/intel.json'
+        'etc/i-nex/Database/Opteron.json'
+        'etc/i-nex/Database/Xeon.json')
+
 pkgver() {
-  cd $pkgname
-  git describe --tags | tr - .
+    cd $pkgname
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
+
 prepare() {
-  cd $pkgname
-  sed -i 's|python3$|python2|' pastebinit
-  # make it dynamic
-  sed -i -e 's|^STATIC.*|STATIC = false|' i-nex.mk
-  sed -i -e 's|^UDEV_RULES_DIR.*|UDEV_RULES_DIR = /usr/lib/udev/rules.d|' i-nex.mk
-  cd I-Nex
-  autoreconf -i
+    cd $pkgname
+    sed -i -e 's|^STATIC.*|STATIC = false|' i-nex.mk
+    sed -i -e 's|^UDEV_RULES_DIR.*|UDEV_RULES_DIR = /usr/lib/udev/rules.d|' i-nex.mk
+    cd I-Nex
+    autoreconf -i
 }
- 
+
 build() {
-  cd $pkgname
-  cd I-Nex
-  ./configure --prefix=/usr
-  cd ..
-  make
+    cd $pkgname
+    cd I-Nex
+    ./configure --prefix=/usr
+    cd ..
+    make
 }
- 
+
 package() {
-  cd $pkgname
-  make install DESTDIR="$pkgdir"
+    cd $pkgname
+    make install DESTDIR="$pkgdir"
 }
