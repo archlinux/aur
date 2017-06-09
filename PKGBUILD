@@ -4,7 +4,7 @@ pkgdesc="ROS - gazebo_ros_control."
 url='http://ros.org/wiki/gazebo_ros_control'
 
 pkgname='ros-lunar-gazebo-ros-control'
-pkgver='2.7.1'
+pkgver='2.7.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -47,7 +47,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-lunar-gazebo_ros_control-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/lunar/gazebo_ros_control/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ff534d711c1f39867083f68344c5d324fa8f737290aec67f08b041f13ed56f18')
+sha256sums=('7059dc5684c7c8b1e972b1c048d7449acc351425ff748c9f499454412c97aaa1')
 
 build() {
   # Use ROS environment variables
