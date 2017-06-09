@@ -5,7 +5,7 @@
 # Contributor: denn
 
 pkgname=i2pd
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv7h')
@@ -74,6 +74,6 @@ package(){
   chmod -R o= $pkgdir/${_home_dest}
 }
 
-md5sums=('f72d5a5eec8b5b0ca3403592dea31467'
+md5sums=('d13139cad7e327506f5281ccd28cd640'
          '6e9869d619464902e635e520d21a8a56'
          '384658d2792ef6433d2de70ebc9d40d4')
