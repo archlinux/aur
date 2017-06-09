@@ -3,7 +3,7 @@
 _font="dancing-script"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
-pkgver=1.2
+pkgver=2.000
 pkgrel=1
 pkgdesc="Lively casual script where the letters bounce and change size slightly, from Pablo Impallari"
 arch=(any)
@@ -12,18 +12,18 @@ license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 install=updatefont.install
-source=("http://www.impallari.com/media/releases/${_font}-v${pkgver}.zip")
-md5sums=('2dff08125b75464d697b83c1d931b136')
+source=("${_font}-${pkgver}.zip::https://github.com/impallari/DancingScript/archive/master.zip")
+md5sums=('bad057ff904f9963fb3ed1eab915a5e2')
 
 package() {
-  cd ${srcdir}/*
+  cd ${srcdir}/DancingScript-master/
 
   install -dm755 "${pkgdir}/usr/share/fonts/TTF/${_group}"
-  install -Dpm644 *.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"
+  install -Dpm644 fonts/ttf/*.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dpm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -Dpm644 FONTLOG.txt "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dpm644 AUTHORS.txt CONTRIBUTORS.txt DESCRIPTION.en_us.html FONTLOG.txt README.md "${pkgdir}/usr/share/doc/${pkgname}/"
 }
