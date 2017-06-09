@@ -16,7 +16,7 @@ source=("slimserver-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "slimserver-vendor-${pkgver}.tar.gz::${url}-vendor/archive/${pkgver}.tar.gz"
         'service')
 sha256sums=('de677160435b7a8542cc9d8ea298975492bd04fb967bd4a0ec7c311425b73392'
-            '6a84a1601fc291d4813aef5c017b1f0768d1581d114bf70867a35e3e65537cf8'
+            '76f7174ccf51f3173b1e69681938c9d1e15409690910aa844e40891706558a9c'
             '41718cf74b2f9b542089e7bd238fb974d049a6132e8d3e0ed598d6689e5d16c2')
 
 prepare() {
