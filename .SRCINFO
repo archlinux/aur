@@ -1,20 +1,23 @@
 pkgbase = perl-gtk2-sexy
 	pkgdesc = Perl/CPAN Module Gtk2::Sexy
 	pkgver = 0.05
-	pkgrel = 11
+	pkgrel = 13
 	url = http://search.cpan.org/perldoc?Gtk2::Sexy
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = perl-extutils-pkgconfig
 	makedepends = perl-extutils-depends
-	depends = gtk2
+	makedepends = perl-module-install
+	depends = gtk2-perl
 	depends = libsexy
-	depends = perl>=5.24
-	depends = perl<5.25
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Gtk2-Sexy-0.05.tar.gz
 	md5sums = 3e291808250d7b956ba8443013a1b461
 
 pkgname = perl-gtk2-sexy
+	depends = gtk2-perl
+	depends = libsexy
+	depends = perl>=
+	depends = perl<
 
