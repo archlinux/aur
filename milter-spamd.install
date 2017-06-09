@@ -1,0 +1,5 @@
+
+pre_remove() {
+  systemctl stop milter-spamd.service
+  systemctl disable milter-spamd.service
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description = Milter for SpamAssassin
+Wants = spamassassin.service
+After = network.target
+After = spamassassin.service
+Before = postfix.service
+
+
+[Service]
+Type = forking
+User = postfix
+Group = postfix
+Environment = SOCKET=unix:/var/spool/postfix/private/milter-spamd
+ExecStart = /usr/bin/milter-spamd -p $SOCKET -U spamd
+#Restart= always
+
+[Install]
+WantedBy = multi-user.target
