@@ -4,7 +4,7 @@
 
 _pkgname=nss
 pkgname=nss-hg
-pkgver=r13365.209329be2d0c
+pkgver=r13423.431af1a9435a
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
@@ -20,12 +20,14 @@ conflicts=('nss')
 provides=('nss')
 
 pkgver() {
-  cd nss
+  cd "$_pkgname"
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
-  git clone https://chromium.googlesource.com/external/gyp
+  if [ ! -d gyp ]; then
+    git clone https://chromium.googlesource.com/external/gyp
+  fi
   python2 -m virtualenv python-env
   cd gyp
   ../python-env/bin/python setup.py install
@@ -34,9 +36,13 @@ prepare() {
 }
 
 build() {
-  ln -s /usr/bin/python2 python
+  if [ ! -f python ]; then
+    ln -s /usr/bin/python2 python
+  fi
   cd nss
-  PATH=$PWD/../python-env/bin/:$PWD/../:$PATH ./build.sh --opt --system-sqlite --system-nspr
+  PATH=$PWD/../python-env/bin/:$PWD/../:$PATH ./build.sh --opt --system-sqlite \
+                                                         --system-nspr \
+                                                         --disable-tests
 }
 
 package() {
