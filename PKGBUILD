@@ -29,10 +29,11 @@ prepare()
 {
   cd "$srcdir"
 
-#  if [[ -d "$_gitname" ]]; then
-#    msg "gprbuild git repository exists."
-#  else
-#    msg "Connecting to GIT server...."
+  if [[ -d "$_gitname" ]]; then
+    msg "gprbuild git repository exists."
+    git pull
+  else
+    msg "Connecting to GIT server...."
 
     git clone "$_gitroot" "$_gitname"
 
@@ -40,7 +41,7 @@ prepare()
 #    git checkout
 #    git checkout 0f2542be82b7a4edd89b564205202b16a0f1dfd3
 #    msg "GIT checkout done or server timeout"
-#  fi
+  fi
 }
 
 
