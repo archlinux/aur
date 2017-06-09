@@ -22,7 +22,7 @@ pkgbase = neomutt
 	provides = mutt
 	conflicts = mutt
 	source = https://github.com/neomutt/neomutt/archive/neomutt-20170609.tar.gz
-	md5sums = 928029c6e4b764e1fc8cd21eda1ecbb1
+	md5sums = 9220411268cf2fa0498770e182f02d98
 
 pkgname = neomutt
 
