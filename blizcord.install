@@ -3,7 +3,6 @@ post_install() {
     chmod +x /usr/bin/blizcord
     chmod +x /usr/bin/blizcord-config
     chmod +x /usr/bin/blizcord-gui
-    chmod o+rwx /opt/Blizcord/
 }
 
 post_upgrade() {
