@@ -1,10 +1,10 @@
 # Maintainer: Sum01 https://github.com/sum01
 pkgname=('vcash')
-pkgver=0.6.0.3
+pkgver=0.6.0.4
 _opensslver=1.0.2k
 _boostver=1_53_0
 _dbver=6.1.29.NC
-pkgrel=2
+pkgrel=1
 pkgdesc="A decentralized currency for the internet."
 arch=('i686' 'x86_64')
 url="https://github.com/openvcash/vcash"
@@ -15,7 +15,7 @@ source=("https://github.com/openvcash/vcash/archive/$pkgver.tar.gz"
 "https://www.openssl.org/source/openssl-$_opensslver.tar.gz"
 "https://sourceforge.net/projects/boost/files/boost/1.53.0/boost_$_boostver.tar.gz"
 "https://github.com/sum01/aur-packages/raw/master/vcash/db-$_dbver.tar.gz")
-sha256sums=('7b67e98bb250b8e6c03462f31f403a8ffb5a84366c86bf7f05bd0bd3ab03617b'
+sha256sums=('d72213fbecbe078e039d5a166fcba1bafe31fd17016ed4975b82894745786a2d'
 '6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0'
 '7c4d1515e0310e7f810cbbc19adb9b2d425f443cc7a00b4599742ee1bdfd4c39'
 'e3404de2e111e95751107d30454f569be9ec97325d5ea302c95a058f345dfe0e')
