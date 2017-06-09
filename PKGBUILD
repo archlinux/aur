@@ -7,7 +7,7 @@
 
 pkgname=rofi-wayland-git
 _gitname=rofi
-pkgver=1.3.1.r337.gbb56bf3
+pkgver=1.3.1.r384.g3a29d3ec
 pkgrel=1
 pkgdesc="A window switcher, run dialog and dmenu replacement"
 arch=('i686' 'x86_64')
