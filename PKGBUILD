@@ -3,7 +3,7 @@
 pkgbase=python-acme-git
 pkgname=("python-acme-git" "python2-acme-git")
 _reponame="certbot"
-pkgver=0.14.0.r6.gc6fcb017
+pkgver=0.15.0.r8.gcd34c427
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
