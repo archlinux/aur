@@ -6,7 +6,7 @@ _perlmod="sys-virt"
 _cpanname='Sys-Virt'
 pkgname=perl-${_perlmod}
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Represent and manage a libvirt hypervisor connection"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Sys-Virt/"
@@ -30,13 +30,7 @@ build() {
   make
 }
 
-package() {
-  cd ${_cpanname}-${pkgver}
-  make install DESTDIR="${pkgdir}/"
-
-  # From Fedora RPM spec file - remove empty '.packlist' and '*.bs' files
-  find "${pkgdir}" -type f \( -name .packlist -o -name '*.bs' -o -name perllocal.pod -empty \) | xargs rm -vf
-  rm -fr "${pkgdir}/usr/lib/perl5/core_perl"
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -44,5 +38,15 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+
+package() {
+  cd ${_cpanname}-${pkgver}
+  make PERL_MM_USE_DEFAULT=1 DESTDIR="${pkgdir}/" install
+
+  # From Fedora RPM spec file - remove empty '.packlist' and '*.bs' files
+  find "${pkgdir}" -type f \( -name .packlist -o -name '*.bs' -o -name perllocal.pod -empty \) | xargs rm -vf
+  rm -fr "${pkgdir}/usr/lib/perl5/core_perl"
+  _perl_depends
 }
 
