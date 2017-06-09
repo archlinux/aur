@@ -1,6 +1,6 @@
 # Maintainer: alienzj <lovelornpig@gmail.com>
 
-pkgname=seqtk-git
+pkgname=seqtk
 pkgver=1.2.r102.32e7903
 pkgrel=1
 pkgdesc="Toolkit for processing sequences in FASTA/Q formats"
