@@ -1,32 +1,52 @@
-# Maintainer: jason ryan <jasonwryan@gmail.com>
-
+# Contributor: jason ryan <jasonwryan@gmail.com>
+# Contributor: fanglingsu
+# Maintainer: <aksr at t-com dot me>
 pkgname=vimb-git
-_pkgname=vimb
-pkgver=2.10.r6.g1a8f7e5
+pkgver=3.0.r1426.782acb5
 pkgrel=1
-pkgdesc="Vimb is a lightweight WebKit-based browser"
+epoch=
 arch=('i686' 'x86_64')
+pkgdesc="A Vim-like web browser that is inspired by Pentadactyl and Vimprobable."
+url="https://github.com/fanglingsu/vimb"
 url="http://fanglingsu.github.io/vimb"
-license=('GPL3')
-depends=('webkitgtk2')
+license=('GPLv3')
+depends=('webkit2gtk>=2.8')
+makedepends=('git')
+optdepends=()
+checkdepends=()
 provides=('vimb')
-conflicts=('vimb')
-source=('git+https://github.com/fanglingsu/vimb.git')
+conflicts=('vimb' 'vimb2')
+replaces=()
+backup=()
+options=()
+changelog=
+install=
+source=("$pkgname::git+https://github.com/fanglingsu/vimb.git")
+noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$pkgname"
+  printf "%s.r%s.%s" "$(git describe --long --tags | sed -e 's/-alpha/.0/' -e 's/-.*//')" \
+                     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  if [ -e $SRCDEST/config.h ]; then
+    msg "Using custom config.h";
+    cp $SRCDEST/config.h "$srcdir/$pkgname/src"
+  fi
 }
 
 build() {
-    cd "${_pkgname}"
-	make
+  cd "$srcdir/$pkgname"
+  make V=1
 }
 
 package() {
-    cd "${_pkgname}"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
