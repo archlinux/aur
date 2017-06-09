@@ -4,7 +4,7 @@ pkgdesc="ROS - The smach_ros package contains extensions for the SMACH library t
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-smach-ros'
-pkgver='2.0.0'
+pkgver='2.0.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="executive_smach-release-release-lunar-smach_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/executive_smach-release/archive/release/lunar/smach_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f3b6da823dfb85544f453ce035b36bbe18cae5cea38c922d38b77942e2eb4c2b')
+sha256sums=('7725cb005e7f08520fd64bbe78d441192bb1b7980ae85a7fa54dcd42f594f038')
 
 build() {
   # Use ROS environment variables
