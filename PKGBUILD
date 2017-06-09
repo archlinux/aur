@@ -26,6 +26,6 @@ build() {
 package() {
   #make DESTDIR=${pkgdir} install
   cd seqtk
-  cp seqtk ${pkgdir}/usr
+  cp seqtk ${pkgdir}/usr/bin
   #install -Dm644 seqtk/LICENSE ${pkgdir}/usr/share/licenses/seqtk/LICENSE
 }
