@@ -4,7 +4,7 @@ pkgdesc="ROS - This metapackage depends on the SMACH library and ROS SMACH integ
 url='http://ros.org/wiki/smach'
 
 pkgname='ros-lunar-executive-smach'
-pkgver='2.0.0'
+pkgver='2.0.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="executive_smach-release-release-lunar-executive_smach-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/executive_smach-release/archive/release/lunar/executive_smach/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ff1122823a2910ed5b80358e325ac667bafb9bd9483c6b9339551301ab1b0927')
+sha256sums=('37cb80b39b90d5a9095440afe5aaf447e14ca96f761d63d97e17104e28a0b017')
 
 build() {
   # Use ROS environment variables
