@@ -2,13 +2,13 @@
 
 pkgname=letshelp-certbot-git
 _reponame="certbot"
-pkgver=0.14.0.r6.gc6fcb017
+pkgver=0.15.0.r8.gcd34c427
 pkgrel=1
 pkgdesc="Let's help Certbot client"
 arch=('any')
 license=('Apache')
 url="https://github.com/certbot/${_reponame}"
-depends=('python2-setuptools' 'python2-mock')
+depends=('python-setuptools' 'python-mock')
 makedepends=('git')
 provides=("letshelp-certbot=${pkgver}" "letshelp-letsencrypt=${pkgver}")
 conflicts=("letshelp-certbot" "letshelp-letsencrypt")
@@ -25,12 +25,12 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_reponame}/letshelp-certbot"
-	python2 setup.py clean
+	python setup.py clean
 	rm -rf build dist
-	python2 setup.py build
+	python setup.py build
 }
 
 package() {
 	cd "${srcdir}/${_reponame}/letshelp-certbot"
-	python2 setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1
 }
