@@ -2,18 +2,18 @@
 
 pkgname=certbot-git
 _reponame="certbot"
-pkgver=0.14.0.r6.gc6fcb017
+pkgver=0.15.0.r8.gcd34c427
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
 license=('Apache')
 url="https://certbot.eff.org/"
-# Most AUR helpers unfortunately do not support versioned deps in the AUR ("python2-acme=${pkgver}")
-depends=('ca-certificates' 'python2-acme-git' 'python2-configargparse' 'python2-configobj'
-	'python2-cryptography' 'python2-pyopenssl' 'python2-mock' 'python2-parsedatetime'
-	'python2-psutil' 'python2-pyrfc3339' 'python2-pythondialog' 'python2-pytz'
-	'python2-requests' 'python2-setuptools' 'python2-six' 'python2-zope-component'
-	'python2-zope-interface')
+# Most AUR helpers unfortunately do not support versioned deps in the AUR ("python-acme=${pkgver}")
+depends=('ca-certificates' 'python-acme-git' 'python-configargparse' 'python-configobj'
+	'python-cryptography' 'python-pyopenssl' 'python-mock' 'python-parsedatetime'
+	'python-psutil' 'python-pyrfc3339' 'python-pythondialog' 'python-pytz'
+	'python-requests' 'python-setuptools' 'python-six' 'python-zope-component'
+	'python-zope-interface')
 optdepends=("certbot-apache-git: Apache plugin for Let’s Encrypt client"
 	"certbot-nginx-git: Nginx plugin for Let’s Encrypt client"
 	"letshelp-certbot-git: Let's help Certbot client")
@@ -37,11 +37,11 @@ build() {
 	cd "${srcdir}/${_reponame}"
 
 	# Clean up build environment
-	python2 setup.py clean
+	python setup.py clean
 	rm -rf build dist
 
-	# Build the package using python2
-	python2 setup.py build
+	# Build the package using python
+	python setup.py build
 }
 
 package() {
@@ -49,7 +49,7 @@ package() {
 	cd "${srcdir}/${_reponame}"
 
 	# Install files
-	python2 setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1
 
 	# Create configuration, log and lib directories
 	install -d "${pkgdir}"/etc/letsencrypt	# TODO: someday this will probably change
