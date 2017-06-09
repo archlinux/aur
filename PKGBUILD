@@ -4,7 +4,7 @@ pkgdesc="ROS - this package contains a set of messages that are used by the intr
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-smach-msgs'
-pkgver='2.0.0'
+pkgver='2.0.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="executive_smach-release-release-lunar-smach_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/executive_smach-release/archive/release/lunar/smach_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e86daa37db9bccf8ad120e009c8aa12db3ba9b2518b9565444396a14cb40b412')
+sha256sums=('c5434f699ab79f7a0ffa77e653a81de19b8238ef6e7b1adaf2a59cc08ab771f3')
 
 build() {
   # Use ROS environment variables
