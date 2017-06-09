@@ -5,19 +5,19 @@
 pkgname=perl-net-libdnet
 _cpanname="Net-Libdnet"
 pkgver=0.98
-pkgrel=5
+pkgrel=6
 pkgdesc="Binding for Dug Song's libdnet"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.5.0' 'perl-class-gomor' 'libdnet')
+depends=('perl-class-gomor' 'libdnet')
 makedepends=('perl-extutils-makemaker')
 options=('!emptydirs')
 source=("http://www.cpan.org/authors/id/G/GO/GOMOR/${_cpanname}-${pkgver}.tar.gz")
 md5sums=('556bb84c712f0b65b8c0b252cae4fc16')
 
 build() {
-  cd "$srcdir/$_cpanname-$pkgver"
+  cd $_cpanname-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
@@ -28,9 +28,16 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  make install DESTDIR="$pkgdir"
+  cd $_cpanname-$pkgver
+  make DESTDIR="$pkgdir" install
   find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
 }
 
 # vim:set ts=2 sw=2 et:

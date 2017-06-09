@@ -1,14 +1,13 @@
 pkgbase = perl-net-libdnet
 	pkgdesc = Binding for Dug Song's libdnet
 	pkgver = 0.98
-	pkgrel = 5
+	pkgrel = 6
 	url = https://metacpan.org/release/Net-Libdnet
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-extutils-makemaker
-	depends = perl>=5.5.0
 	depends = perl-class-gomor
 	depends = libdnet
 	options = !emptydirs
@@ -16,4 +15,8 @@ pkgbase = perl-net-libdnet
 	md5sums = 556bb84c712f0b65b8c0b252cae4fc16
 
 pkgname = perl-net-libdnet
+	depends = perl-class-gomor
+	depends = libdnet
+	depends = perl>=
+	depends = perl<
 
