@@ -1,0 +1,22 @@
+[Desktop Entry]
+Version=1.1
+Name=Vcash Electron
+GenericName=Vcash Client
+GenericName[pt_BR]=Vcash Cliente
+GenericName[sl_SI]=Vcash Odjemalec
+GenericName[ru_RU]=Клиент Vcash
+GenericName[es_ES]=Cliente Vcash
+GenericName[fr_FR]=Vcash Client
+Comment=Vcash wallet GUI
+Comment[pt_BR]=Vcash GUI da carteira
+Comment[sl_SI]=Vcash denarnica GUI
+Comment[ru_RU]=Графический интерфейс кошелька Vcash
+Comment[es_ES]=GUI de la carpeta Vcash
+Comment[fr_FR]=GUI du portefeuille Vcash
+Exec=vcash-electron-bin %f
+Icon=vcash
+Terminal=false
+Type=Application
+Keywords=cryptocurrency;gui;wallet;
+Categories=Network;P2P;
+MimeType=text/html;image/png;application/javascript;text/css;application/json;
