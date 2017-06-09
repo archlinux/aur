@@ -6,7 +6,7 @@
 
 pkgname=perl-goo-canvas
 pkgver=0.06
-pkgrel=9
+pkgrel=10
 pkgdesc="Perl bindings for GooCanvas"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Goo-Canvas/"
@@ -20,7 +20,7 @@ md5sums=('7dfe0be8c17bfd641d18384d4fd8fb23')
 build() {
   cd "$srcdir/Goo-Canvas-$pkgver"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+  PERL_USE_UNSAFE_INC=1 make
 }
 
 check() {
