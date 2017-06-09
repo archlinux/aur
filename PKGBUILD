@@ -4,7 +4,7 @@
 pkgname=perl-list-compare
 _pkgname=List-Compare
 pkgver=0.53
-pkgrel=1
+pkgrel=2
 pkgdesc="Compare elements of two or more lists"
 arch=('any')
 url="http://search.cpan.org/~JKEENAN/List-Compare/"
