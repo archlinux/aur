@@ -1,7 +1,7 @@
 # Maintainer: Ole Jon Bjørkum <mail at olejon dot net>
 
 pkgname=spotcommander
-pkgver=13.0
+pkgver=13.1
 pkgrel=1
 pkgdesc="The most intuitive and feature-rich remote control for Spotify for Linux."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('apache' 'php' 'php-apache' 'php-sqlite' 'qt4' 'inotify-tools' 'xdotool
 optdepends=('pulseaudio' 'pulseaudio-alsa')
 install=$pkgname.install
 source=($url/files/$pkgname-$pkgver.tar.bz2)
-md5sums=('79d7e649c21f8930a821b055474fe6e9')
+md5sums=('6776c4ae4d837a9ec64ba49ed58475f7')
 
 package()
 {

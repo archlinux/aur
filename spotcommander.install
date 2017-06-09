@@ -20,9 +20,9 @@ post_install()
 
 	echo -e "Alias /spotcommander /usr/share/webapps/spotcommander\n\n<Directory \"/usr/share/webapps/spotcommander\">\nAllowOverride AuthConfig\nRequire all granted\n</Directory>" > /etc/httpd/conf/extra/spotcommander.conf
 
-	systemctl restart httpd.service 1>/dev/null 2>&1
-
 	systemctl enable httpd.service 1>/dev/null 2>&1
+
+	systemctl restart httpd.service 1>/dev/null 2>&1
 	
 	echo "Creating symlink..."
 	
