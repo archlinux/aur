@@ -1,7 +1,7 @@
 pkgbase = perl-ev-glib
 	pkgdesc = Embed the glib main loop into EV
 	pkgver = 2.01
-	pkgrel = 9
+	pkgrel = 10
 	url = http://search.cpan.org/perldoc?EV::Glib
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,4 @@ pkgbase = perl-ev-glib
 	md5sums = 20c0196095062a5e0f27a455ac32d8f5
 
 pkgname = perl-ev-glib
-	depends = glib-perl
-	depends = perl-ev
-	depends = perl>=
-	depends = perl<
 
