@@ -22,6 +22,6 @@ build(){
 package() {
         cd "${srcdir}/${pkgname}/build"
         mkdir -p "${pkgdir}/usr/bin"
-        cp bin/tomita-parser "${pkgdir}/usr/bin/tomita-parser"
+        cp bin/tomita-parser "${pkgdir}/usr/bin/tomita"
         install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
