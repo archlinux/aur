@@ -1,5 +1,5 @@
 pkgbase = enlightenment-arc-theme-git
-	pkgdesc = A flat theme for enlightenment
+	pkgdesc = A flat theme for enlightenment (Warning: will pull latest revision of efl to compile the theme)
 	pkgver = r96.e268617
 	pkgrel = 1
 	url = https://github.com/LeBlue/enlightenment-arc-theme
@@ -8,8 +8,6 @@ pkgbase = enlightenment-arc-theme-git
 	makedepends = git
 	depends = efl
 	source = git://github.com/LeBlue/enlightenment-arc-theme.git
-	source = git+https://git.enlightenment.org/core/efl.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = enlightenment-arc-theme-git
