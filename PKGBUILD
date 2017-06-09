@@ -2,7 +2,7 @@
 
 pkgname=perl-bigip-icontrol
 pkgver=0.098
-pkgrel=1
+pkgrel=2
 conflicts=('perl-icontrol')
 replaces=('perl-icontrol')
 pkgdesc="A Perl interface to the F5 iControl API"
