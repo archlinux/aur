@@ -3,13 +3,13 @@
 pkgname=perl-coro
 _realname=Coro
 pkgver=6.511
-pkgrel=2
+pkgrel=1
 pkgdesc="CPAN/Coro - the only real threads in perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-anyevent>=5' 'perl-common-sense' 'perl-guard>=0.5')
-makedepends=('perl-canary-stability')
+makedepends=()
 url="https://metacpan.org/release/${_realname}"
 source=("http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${_realname}-${pkgver}.tar.gz"
         "https://rt.cpan.org/Ticket/Attachment/1672349/897490/coro-5.24.patch")
@@ -24,25 +24,18 @@ prepare() {
 build() {
   cd $_realname-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make PERL_MM_USE_DEFAULT=1
+  make
 }
 
 check() {
   cd $_realname-$pkgver
-  make PERL_MM_USE_DEFAULT=1 test
+  make test
 }
 
 package() {
   cd $_realname-$pkgver
-  make PERL_MM_USE_DEFAULT=1 DESTDIR="$pkgdir" install
+  make install DESTDIR="$pkgdir"
   find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
-# template start; name=perl-binary-module-dependency; version=1;
-if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-fi
-# template end;
 }
 
 # vim:set ts=2 sw=2 et:
