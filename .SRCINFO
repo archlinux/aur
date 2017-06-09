@@ -1,12 +1,12 @@
 pkgbase = pacmanager-bin
 	pkgdesc = Perl Auto Connector PAC Manager
 	pkgver = 4.5.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sites.google.com/site/davidtv/
 	arch = any
 	license = GPL3
 	makedepends = xz
-	depends = gconf-perl
+	depends = perl-gnome2-gconf
 	depends = glade-perl
 	depends = openssh
 	depends = perl-crypt-blowfish
@@ -21,7 +21,7 @@ pkgbase = pacmanager-bin
 	depends = perl-crypt-cbc
 	depends = perl-gtk2-unique
 	depends = perl-socket6
-        depends = uuid
+	depends = uuid
 	source = https://drive.google.com/uc?export=download&id=0B4jA_htRqlMbY2p6aThBUWxjOTg
 	md5sums = 814be8e0e5bafb91bea034f21ac4317c
 
