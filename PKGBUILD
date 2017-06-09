@@ -14,18 +14,18 @@ source=("git://github.com/lh3/seqtk.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd seqtk
+  cd seqtk-git
   echo "1.2.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd seqtk
+  cd seqtk-git
   make
 }
 
 package() {
   #make DESTDIR=${pkgdir} install
-  cd seqtk
+  cd seqtk-git
   cp seqtk ${pkgdir}/usr
   #install -Dm644 seqtk/LICENSE ${pkgdir}/usr/share/licenses/seqtk/LICENSE
 }
