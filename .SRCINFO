@@ -1,0 +1,17 @@
+pkgbase = python-backports-abc
+	pkgdesc = A backport of recent additions to the 'collections.abc' module.
+	pkgver = 0.5
+	pkgrel = 00
+	url = https://github.com/cython/backports_abc
+	arch = any
+	license = PSF
+	makedepends = python-pip
+	depends = python
+	noextract = backports_abc-0.5-py2.py3-none-any.whl
+	source = https://pypi.python.org/packages/7d/56/6f3ac1b816d0cd8994e83d0c4e55bc64567532f7dc543378bd87f81cebc7/backports_abc-0.5-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = 8a2af5176b751b185b8cb2241e0f40fc
+	md5sums = dd98d01d471fac8d8dbdd975229dba03
+
+pkgname = python-backports-abc
+
