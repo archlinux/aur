@@ -4,7 +4,7 @@
 pkgname=perl-json-rpc-common
 _pkgname='JSON-RPC-Common'
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl module provide transport agnostic JSON RPC helper objects"
 arch=("any")
 url="https://metacpan.org/pod/JSON::RPC::Common"
