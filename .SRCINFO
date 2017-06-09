@@ -1,0 +1,19 @@
+pkgbase = libdazzle-git
+	pkgdesc = Companion library to GObject and GTK+
+	pkgver = r193.a86b759
+	pkgrel = 1
+	url = https://github.com/chergert/libdazzle
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = gtk3
+	provides = libdazzle
+	conflicts = libdazzle
+	source = libdazzle-git::git+https://github.com/chergert/libdazzle
+	sha512sums = SKIP
+
+pkgname = libdazzle-git
+
