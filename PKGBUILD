@@ -1,7 +1,7 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
 pkgname=rapydscript-ng-git
-pkgver=0.7.14.r3.g5fadb13
+pkgver=0.7.16.r0.ge6cf962
 pkgrel=1
 pkgdesc="Pythonic JavaScript that doesn't suck"
 arch=('any')
