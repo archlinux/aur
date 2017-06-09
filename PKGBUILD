@@ -8,7 +8,7 @@ url="http://www.faforever.com/"
 arch=('any')
 license=('GPL3')
 groups=()
-depends=('python2-pyqt4>=4.0.0' 'python2-ipaddress' 'python2-enum34' 'python2-pathlib' 'python2-py' 'python2-pycparser' 'python2-dateutil' 'python2-requests' 'python2-bsdiff4' 'python2-lupa' 'python2-trueskill' 'python2-cffi' 'python2-marshmallow-jsonapi' 'python2-semantic-version' 'python2-faftools' 'lib32-libpulse' 'wine>1.6.0' 'xdelta3' 'faf-uid' 'faf-res')
+depends=('python2-pyqt4>=4.0.0' 'python2-ipaddress' 'python2-py' 'python2-pycparser' 'python2-dateutil' 'python2-requests' 'python2-lupa' 'python2-trueskill' 'python2-cffi' 'python2-marshmallow-jsonapi' 'python2-semantic-version' 'python2-faftools' 'lib32-libpulse' 'wine>1.6.0' 'xdelta3' 'faf-uid' 'faf-res')
 makedepends=('python2-setuptools')
 checkdepends=()
 optdepends=()
