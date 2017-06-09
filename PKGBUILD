@@ -3,7 +3,7 @@
 pkgname='perl-catalyst-view-tt'
 _pkgname='Catalyst-View-TT'
 pkgver='0.44'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Helper for TT Views"
 arch=('any')
 license=('PerlArtistic' 'GPL')
