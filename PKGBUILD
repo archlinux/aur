@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-lunar-gazebo-ros'
-pkgver='2.7.1'
+pkgver='2.7.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -48,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-lunar-gazebo_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/lunar/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c932a71d4c22aa8c81ea8b00c259218fc118d609fde0f070dcbd47717b96da81')
+sha256sums=('7ce6a96c5596eea0bdd8373be6f8d0fcb6a035d2c828bed60a8519aad0d4e91f')
 
 build() {
   # Use ROS environment variables
