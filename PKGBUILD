@@ -6,7 +6,7 @@
 
 pkgname=perl-gtk2-imageview
 pkgver=0.05
-pkgrel=9
+pkgrel=10
 pkgdesc="Perl bindings to the GtkImageView image viewer widget"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Gtk2-ImageView/"
@@ -21,7 +21,7 @@ md5sums=('7c961071b347b6a64b8351fdd87ec4c0')
 build() {
   cd "$srcdir/Gtk2-ImageView-$pkgver"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+  PERL_USE_UNSAFE_INC=1 make
 }
 
 check() {
