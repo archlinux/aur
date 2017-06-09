@@ -1,7 +1,8 @@
+# Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra"
 pkgver=0.2.218
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra"
@@ -11,14 +12,12 @@ optdepends=('python2-lxml: faster result processing')
 conflicts=('nzbhydra-git')
 install='nzbhydra.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theotherp/nzbhydra/archive/$pkgver.tar.gz"
-        'nzbhydra.sh'
         'nzbhydra.service'
         'nzbhydra.install'
         'nzbhydra.sysusers')
 
 sha256sums=('853fac6a018beef7464377ff8bd5720aae3849cfea6ac7c7841c04d4175b0160'
-            '91552953d0d956101136cd3165f217de4d14eb65042b7dd3e9a09c8657319436'
-            '0643666218ceb8b35a65c9b420de26ea9e334fccfc39472f698a090d2056176a'
+            '069e149cbf6a0d01c11b3ce681c016f8477f03ab6682e21f26f1d6891bdad790'
             'f1d2028ef593ce367438fed6520d4387482da74e45aacafc72c028a2a0337614'
             '0c901b44980cdfcfd62a49883ea2edd954e8f60711f10b49958f9a402a7ad2d0')
 
@@ -29,8 +28,6 @@ package() {
     cp -dpr --no-preserve=ownership "${srcdir}/nzbhydra-${pkgver}/"* "${pkgdir}/usr/lib/nzbhydra"
 
     python2 -m compileall -q "${pkgdir}/usr/lib/nzbhydra"
-
-    install -D -m 755 "${srcdir}/nzbhydra.sh" "${pkgdir}/usr/bin/nzbhydra"
 
     install -d -m 755 "${pkgdir}/var/lib/nzbhydra"
 
