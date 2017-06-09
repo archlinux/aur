@@ -7,7 +7,7 @@
 
 pkgname=copay
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Copay Bitcoin Wallet"
 arch=('x86_64')
 url="https://copay.io"
@@ -65,6 +65,6 @@ package() {
 
     # Create desktop icon
     mkdir -p "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
-    ln -s "${pkgdir}/opt/copay/copay.desktop" "$pkgdir/usr/share/applications/copay.desktop"
-    ln -s "${pkgdir}/opt/copay/512x512.png" "$pkgdir/usr/share/pixmaps/copay.png"
+    install -m644 "${srcdir}/copay.desktop" "$pkgdir/usr/share/applications/copay.desktop"
+    ln -s "../../../opt/copay/512x512.png" "$pkgdir/usr/share/pixmaps/copay.png"
 }
