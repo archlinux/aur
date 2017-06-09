@@ -4,7 +4,7 @@
 pkgname='perl-mail-gnupg'
 _pkgname='Mail-GnuPG'
 pkgver='0.23'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="MIME Email <-> GnuPG::Interface interface"
 arch=('any')
 license=('PerlArtistic' 'GPL')
