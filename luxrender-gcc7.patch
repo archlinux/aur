@@ -1,0 +1,13 @@
+--- luxrender-lux-b3f85cf7742f/qtgui/mainwindow.hxx.debug	2016-05-10 06:21:17.000000000 +0900
++++ luxrender-lux-b3f85cf7742f/qtgui/mainwindow.hxx	2017-03-24 19:42:42.005564560 +0900
+@@ -134,8 +134,8 @@
+ public:
+ 	QMRUListModel() : QAbstractListModel(), maxCount(0) { }
+ 	QMRUListModel(int count, QObject *parent = 0) : QAbstractListModel(parent), maxCount(count)  { }
+-	QMRUListModel(const QMRUListModel<T> &other) 
+-		: maxCount(other.maxCount), mruList(other.mruList), QAbstractListModel(other.parent()) { }
++	//QMRUListModel(const QMRUListModel<T> &other) 
++		//: maxCount(other.maxCount), mruList(other.mruList), QAbstractListModel(other.parent()) { }
+ 
+ 	int count() const {
+ 		return maxCount;
