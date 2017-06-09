@@ -1,17 +1,21 @@
 pkgbase = perl-b-hooks-op-check
 	pkgdesc = Wrap OP check callbacks
 	pkgver = 0.19
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/~flora/B-Hooks-OP-Check/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-extutils-depends
+	makedepends = perl-module-install
 	depends = perl>=5.5.0
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/B-Hooks-OP-Check-0.19.tar.gz
 	md5sums = a6af890eccb266f6ad9cb295eb7c570b
 
 pkgname = perl-b-hooks-op-check
+	depends = perl>=5.5.0
+	depends = perl>=
+	depends = perl<
 

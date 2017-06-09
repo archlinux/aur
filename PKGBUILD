@@ -3,14 +3,14 @@
 pkgname=perl-b-hooks-op-check
 _cpanname="B-Hooks-OP-Check"
 pkgver=0.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Wrap OP check callbacks"
 arch=('i686' 'x86_64')
 license=('GPL' 'PerlArtistic')
 url="http://search.cpan.org/~flora/$_cpanname/"
 options=('!emptydirs')
 depends=('perl>=5.5.0')
-makedepends=('perl-extutils-depends')
+makedepends=('perl-extutils-depends' 'perl-module-install')
 source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_cpanname-$pkgver.tar.gz")
 md5sums=('a6af890eccb266f6ad9cb295eb7c570b')
 
@@ -43,4 +43,11 @@ package() {
 
 	# Remove "perllocal.pod" and ".packlist".
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
 }
