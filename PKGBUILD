@@ -3,7 +3,7 @@
 _perlmod=Data-Perl
 pkgname=perl-data-perl
 pkgver=0.002009
-pkgrel=1
+pkgrel=2
 pkgdesc="Data::Perl - Base classes wrapping fundamental Perl data types"
 arch=('any')
 url="http://search.cpan.org/~mattp/$_perlmod-$pkgver/"
