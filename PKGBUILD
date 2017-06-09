@@ -3,7 +3,7 @@
 pkgname=perl-gtk2-sexy
 _cpanname=Gtk2-Sexy
 pkgver=0.05
-pkgrel=13
+pkgrel=14
 pkgdesc="Perl/CPAN Module Gtk2::Sexy"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/perldoc?Gtk2::Sexy"
@@ -16,22 +16,11 @@ md5sums=('3e291808250d7b956ba8443013a1b461')
 
 build() {
   cd $_cpanname-$pkgver
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                  \
-      PERL_AUTOINSTALL=--skipdeps                             \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"      \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'"  \
-      MODULEBUILDRC=/dev/null
-
-    /usr/bin/perl Makefile.PL
-    sed 's,build\/doc\.pl,./build/doc.pl,g' -i Makefile
-    make
-  )
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  sed 's,q(build/doc.pl),q(./build/doc.pl),g' -i Makefile
+  make
 }
-package() {
-  cd $_cpanname-$pkgver
-  make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -39,4 +28,11 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+package() {
+  cd $_cpanname-$pkgver
+  make PERL_MM_USE_DEFAULT=1 DESTDIR="$pkgdir" install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  _perl_depends
 }
