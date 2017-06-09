@@ -3,12 +3,12 @@
 
 pkgname='xml-security-c'
 pkgver='1.7.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='C++ Implementation of W3C security standards for XML'
 arch=('i686' 'x86_64')
 url='http://santuario.apache.org/'
 license=('GPL')
-depends=('xalan-c')
+depends=('xalan-c' 'openssl-1.0')
 source=("http://www.apache.org/dist/santuario/c-library/$pkgname-$pkgver.tar.gz"
         "http://www.apache.org/dist/santuario/c-library/$pkgname-$pkgver.tar.gz.asc"
         "xmlsec-1.6.1-cxx11.patch")
@@ -26,6 +26,7 @@ prepare(){
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
   ./configure --prefix=/usr \
     --with-openssl \
     --with-xerces \

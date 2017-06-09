@@ -1,12 +1,13 @@
 pkgbase = xml-security-c
 	pkgdesc = C++ Implementation of W3C security standards for XML
 	pkgver = 1.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://santuario.apache.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = xalan-c
+	depends = openssl-1.0
 	source = http://www.apache.org/dist/santuario/c-library/xml-security-c-1.7.3.tar.gz
 	source = http://www.apache.org/dist/santuario/c-library/xml-security-c-1.7.3.tar.gz.asc
 	source = xmlsec-1.6.1-cxx11.patch
