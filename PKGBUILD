@@ -35,8 +35,8 @@ prepare()
 
   # Install langkit
   #
-  rm -fr langkit
-  mv ../langkit .
+#  rm -fr langkit
+#  mv ../langkit .
   
   ## Force use of pyhon2
   #
@@ -56,6 +56,8 @@ build()
   source /etc/profile.d/quex.sh
 
   export PATH=$srcdir/$pkgname/temp_bin:$PATH
+  export PYTHONPATH=$srcdir/langkit:$PYTHONPATH
+
   python ada/manage.py generate
 
   # Add -fPIC where needed.
