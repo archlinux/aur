@@ -2,7 +2,7 @@
 
 pkgbase=('stig')
 pkgname=('stig')
-pkgver=0.7.0a
+pkgver=0.7.1a
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
@@ -13,7 +13,7 @@ optdepends=('python-geoip: shows country codes in peer lists')
 license=('GPL')
 arch=('any')
 source=("stig-${pkgver}.tar.gz::https://github.com/rndusr/stig/archive/v${pkgver}.tar.gz")
-sha256sums=('140d65ea01ac7bd453858587413eac4cbcc6b9629a9bc72fa4fc0421eefda577')
+sha256sums=('bf35bb10cf0ccd97d2a1f27868d5590050e0a384dd6eef1e7b78d1d32198666f')
 
 build() {
     cd "stig-${pkgver}"
