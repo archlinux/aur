@@ -4,7 +4,7 @@ pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic 
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-lunar-gazebo-plugins'
-pkgver='2.7.1'
+pkgver='2.7.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -73,7 +73,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-lunar-gazebo_plugins-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/lunar/gazebo_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('abd3b06a280e47cf51ca46e366a69448eeb67457222c3f63ee18b7f28432d42f')
+sha256sums=('a5846c2126d3686523857f11dc68d01de1cacba26d90375d574b92396f6e12ac')
 
 build() {
   # Use ROS environment variables
