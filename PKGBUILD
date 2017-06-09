@@ -1,8 +1,9 @@
 # Maintainer:  Michael Kogan <michael dot kogan at gmx dot net>
 
 pkgname=perl-net-dbus-glib
+_cpanname=Net-DBus-GLib
 pkgver=0.33.0
-pkgrel=6
+pkgrel=8
 pkgdesc="Net::DBus::GLib - Perl extension for the DBus GLib bindings"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~danberr/Net-DBus-GLib-$pkgver/lib/Net/DBus/GLib.pm"
@@ -14,11 +15,18 @@ sha1sums=('42e243e09f7406da276c73d91579bf4a3df3fc78')
 options=('!emptydirs')
 
 build() {
-    cd "$srcdir/Net-DBus-GLib-$pkgver"
-    perl Makefile.PL INSTALLDIRS=vendor
-    make || return 1
+	cd $_cpanname-$pkgver
+	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 package() {
-    cd "$srcdir/Net-DBus-GLib-$pkgver"
-    make DESTDIR=$pkgdir install || return 1
+	cd $_cpanname-$pkgver
+	make DESTDIR="$pkgdir" install
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
 }
