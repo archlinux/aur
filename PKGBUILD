@@ -8,7 +8,7 @@
 pkgname=perl-pdl
 _pkgname=PDL
 pkgver=2.018
-pkgrel=2
+pkgrel=3
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
