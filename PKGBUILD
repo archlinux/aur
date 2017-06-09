@@ -4,7 +4,7 @@ pkgdesc="ROS - SMACH is a task-level architecture for rapidly creating complex r
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-smach'
-pkgver='2.0.0'
+pkgver='2.0.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="executive_smach-release-release-lunar-smach-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/executive_smach-release/archive/release/lunar/smach/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6edb3750845e07fd751d10ddb6aacff6b836a0ed5611f954dd7603ffb81e266f')
+sha256sums=('e7a93ed3ddff3328d636c30fe1095812535372c08ed9524e7726d749d8b47501')
 
 build() {
   # Use ROS environment variables
