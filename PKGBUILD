@@ -3,7 +3,7 @@
 pkgname=perl-b-hooks-op-check
 _cpanname="B-Hooks-OP-Check"
 pkgver=0.19
-pkgrel=3
+pkgrel=4
 pkgdesc="Wrap OP check callbacks"
 arch=('i686' 'x86_64')
 license=('GPL' 'PerlArtistic')
@@ -37,12 +37,7 @@ check() {
 	make test
 }
 
-package() {
-	prepareEnvironment
-	make install
-
-	# Remove "perllocal.pod" and ".packlist".
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -50,4 +45,13 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+
+package() {
+	prepareEnvironment
+	make install
+
+	# Remove "perllocal.pod" and ".packlist".
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	_perl_depends
 }
