@@ -1,0 +1,11 @@
+post_install() {
+  grep -qe '^/usr/bin/xs$' /etc/shells || echo '/usr/bin/xs' >> /etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  sed -ri '\|^/usr/bin/xs$|d' /etc/shells
+}

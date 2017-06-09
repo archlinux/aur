@@ -1,0 +1,20 @@
+pkgbase = xs-git
+	pkgdesc = An extensible shell descended from es and rc. (GIT version)
+	pkgver = r809.a843a47
+	pkgrel = 1
+	url = https://github.com/TieDyedDevil/XS
+	install = xs.install
+	arch = x86_64
+	arch = i686
+	license = Custom
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gc
+	provides = xs
+	conflicts = xs
+	source = git+https://github.com/TieDyedDevil/xs.git
+	sha256sums = SKIP
+
+pkgname = xs-git
+
