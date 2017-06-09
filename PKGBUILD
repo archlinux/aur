@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	if [ -d efl ] ; then
-		cd efl && git pull efl master
+		cd efl && git pull efl master --depth=1
 	else
 		mkdir efl
 		cd efl
