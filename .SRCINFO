@@ -1,19 +1,20 @@
 pkgbase = python-xapp
 	pkgdesc = Python Xapp Library
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.0.1
+	pkgrel = 0
 	url = https://github.com/linuxmint/python-xapp
 	arch = any
 	license = GPL3
-	makedepends = python-distutils-extra
+	makedepends = python
+	makedepends = python-setuptools
 	depends = python-psutil
 	optdepends = mate-polkit: PolicyKit integration for the MATE desktop
 	optdepends = polkit-gnome: PolicyKit integration for the GNOME desktop and derivatives like Cinnamon or Xfce
 	optdepends = polkit-kde-agent: PolicyKit integration for the KDE desktop
 	optdepends = gksu: Fallback authentication method for the GNOME desktop and derivatives
 	optdepends = kdesu: Fallback authentication method for the KDE desktop
-	source = python-xapp-1.0.0.tar.gz::https://github.com/linuxmint/python-xapp/archive/212eb0bcd73ebaa3666d54d6e61179371bdf544b.tar.gz
-	sha256sums = 6f02c458eddd7bdc1918bb4b9106d5679c9fc8d74a12be9aa331979831748250
+	source = python-xapp-1.0.1.tar.gz::https://github.com/linuxmint/python-xapp/archive/1.0.1.tar.gz
+	sha256sums = da2ec46dc3fce97accd0ee6d9bd9d71d26c953b01de1a5336ba2b4b60f2f3b6b
 
 pkgname = python-xapp
 
