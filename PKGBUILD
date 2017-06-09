@@ -1,15 +1,16 @@
 # Maintainer: Ruben De Smet <me at rubdos dot be>
+# Contributor: btschaegg
 
 pkgname=wayland-wall-git
 _gitname=wayland-wall
-pkgver=r47.68eab6f
+pkgver=r49.39400ea
 pkgrel=1
 pkgdesc="A collection of protocols, called bricks, to create a complete desktop experience for Wayland."
 arch=('i686' 'x86_64')
 url="https://github.com/wayland-wall/wayland-wall"
 license=('MIT')
 depends=('gdk-pixbuf2' 'pango' 'wayland-protocols')
-makedepends=('git')
+makedepends=('git' 'meson' 'ninja')
 provides=('wayland-wall' 'wayland-wall-git')
 conflicts=('wayland-wall')
 source=("git+https://github.com/wayland-wall/wayland-wall.git")
@@ -23,23 +24,24 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   git submodule update --init
-  autoreconf --install
 
-  ./configure \
-      --prefix=/usr \
-      --enable-clients \
-      --enable-images \
-      --enable-text
+  mkdir -p build
+  meson build \
+    --buildtype=release \
+    -Dprefix=/usr \
+    -Denable-clients=true \
+    -Denable-images=true \
+    -Denable-text=true
 }
 
 build() {
   cd "$srcdir/$_gitname"
-  make
+  ninja -C build
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  make install install-man DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" ninja -C build install
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/wayland-wall-git/COPYING"
 }
