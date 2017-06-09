@@ -7,9 +7,16 @@ pkgbase = perl-net-interface
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
+	makedepends = perl-extutils-depends
+	makedepends = perl-module-install
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/MI/MIKER/Net-Interface-1.012.tar.gz
+	source = inc.patch
 	md5sums = cfa0c390c506996c004fb5b214fc4a7c
+	md5sums = 3240db69ec69d45d4a9f768171f6f24e
 
 pkgname = perl-net-interface
+	depends = 
+	depends = perl>=
+	depends = perl<
 

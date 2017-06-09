@@ -1,0 +1,12 @@
+diff -up src/Net-Interface-1.012/Makefile.PL.orig src/Net-Interface-1.012/Makefile.PL
+--- src/Net-Interface-1.012/Makefile.PL.orig	2017-06-08 23:59:57.000000000 -0600
++++ src/Net-Interface-1.012/Makefile.PL	2017-06-09 00:00:01.000000000 -0600
+@@ -148,7 +148,7 @@ print F qq|#define NI_OSVER_BASE $Config
+ close F;
+ 
+ ################ build family definitions
+-do 'inst/netsymbols.pl';
++do './inst/netsymbols.pl';
+ ## END ######### build family definitions
+ 
+ sub MY::top_targets {
