@@ -1,47 +1,47 @@
 pkgbase = certbot-plugins-git
 	pkgdesc = Plugins for Certbot
-	pkgver = 0.14.0.r6.gc6fcb017
+	pkgver = 0.15.0.r8.gcd34c427
 	pkgrel = 1
 	url = https://github.com/certbot/certbot
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = certbot-git
-	makedepends = python2-acme-git
-	makedepends = python2-pyopenssl
-	makedepends = python2-pyparsing
-	makedepends = python2-setuptools
-	makedepends = python2-mock
-	makedepends = python2-zope-interface
-	makedepends = python2-zope-component
-	makedepends = python2-augeas
+	makedepends = python-acme-git
+	makedepends = python-pyopenssl
+	makedepends = python-pyparsing
+	makedepends = python-setuptools
+	makedepends = python-mock
+	makedepends = python-zope-interface
+	makedepends = python-zope-component
+	makedepends = python-augeas
 	source = certbot::git+https://github.com/certbot/certbot
 	sha512sums = SKIP
 
 pkgname = certbot-nginx-git
 	pkgdesc = Nginx plugin for Certbot
 	depends = certbot
-	depends = python2-acme
-	depends = python2-pyopenssl
-	depends = python2-pyparsing
-	depends = python2-setuptools
-	depends = python2-mock
-	depends = python2-zope-interface
-	provides = certbot-nginx=0.14.0.r6.gc6fcb017
-	provides = letsencrypt-nginx=0.14.0.r6.gc6fcb017
+	depends = python-acme
+	depends = python-pyopenssl
+	depends = python-pyparsing
+	depends = python-setuptools
+	depends = python-mock
+	depends = python-zope-interface
+	provides = certbot-nginx=0.15.0.r8.gcd34c427
+	provides = letsencrypt-nginx=0.15.0.r8.gcd34c427
 	conflicts = certbot-nginx
 	conflicts = letsencrypt-nginx
 
 pkgname = certbot-apache-git
 	pkgdesc = Apache plugin for Certbot
 	depends = certbot
-	depends = python2-acme
-	depends = python2-augeas
-	depends = python2-setuptools
-	depends = python2-mock
-	depends = python2-zope-component
-	depends = python2-zope-interface
-	provides = certbot-apache=0.14.0.r6.gc6fcb017
-	provides = letsencrypt-apache=0.14.0.r6.gc6fcb017
+	depends = python-acme
+	depends = python-augeas
+	depends = python-setuptools
+	depends = python-mock
+	depends = python-zope-component
+	depends = python-zope-interface
+	provides = certbot-apache=0.15.0.r8.gcd34c427
+	provides = letsencrypt-apache=0.15.0.r8.gcd34c427
 	conflicts = certbot-apache
 	conflicts = letsencrypt-apache
