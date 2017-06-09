@@ -1,0 +1,16 @@
+pkgbase = ts-kbd
+	pkgdesc = Touchscreen keyboard
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/vicr123/ts-kbd
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = xdg-utils
+	depends = qt5-base
+	depends = libxtst
+	source = ts-kbd-0.1::git+https://github.com/vicr123/ts-kbd.git
+	md5sums = SKIP
+
+pkgname = ts-kbd
+
