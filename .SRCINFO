@@ -1,0 +1,17 @@
+pkgbase = es-shell-jpco-git
+	pkgdesc = Extensible Shell, a shell based on Plan 9's rc shell (jpco's fork, GIT)
+	pkgver = r67.568efda
+	pkgrel = 1
+	url = https://github.com/jpco/es-shell
+	install = es-shell.install
+	arch = x86_64
+	arch = i686
+	license = Unknown
+	makedepends = git
+	provides = es-shell
+	conflicts = es-shell
+	source = git+https://github.com/jpco/es-shell.git
+	sha256sums = SKIP
+
+pkgname = es-shell-jpco-git
+
