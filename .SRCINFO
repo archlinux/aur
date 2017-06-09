@@ -1,11 +1,13 @@
 pkgbase = perl-gtk2-traymanager
 	pkgdesc = CPAN/Gtk2::TrayManger -- perl bindings for EggTrayManager
 	pkgver = 0.05
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/module/Gtk2::TrayManager
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = perl-extutils-depends
+	makedepends = perl-extutils-pkgconfig
 	depends = gtk2-perl
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/B/BO/BORUP/Gtk2-TrayManager-0.05.tar.gz
