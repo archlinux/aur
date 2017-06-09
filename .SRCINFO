@@ -1,0 +1,16 @@
+pkgbase = android-constraint-layout
+	pkgdesc = ConstraintLayout for Android (includes solver)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	options = !strip
+	source = http://dl-ssl.google.com/android/repository/com.android.support.constraint-constraint-layout-1.0.2.zip
+	source = http://dl-ssl.google.com/android/repository/com.android.support.constraint-constraint-layout-solver-1.0.2.zip
+	sha1sums = 3d9688a50fe0ed7348275f85d1b02278f616d8a4
+	sha1sums = 96d7ff669f0e808e9833b2c2e320702826ccc8be
+
+pkgname = android-constraint-layout
+
