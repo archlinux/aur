@@ -8,21 +8,20 @@ arch=('i686' 'x86_64')
 url="https://github.com/lh3/bioawk"
 license=('GPL')
 provides=("bioawk")
-conflicts=("bioawk")
-source=("git://github.com/lh3/bioawk.git")
-md5sums=('SKIP')
+conflicts=("bioawk" "bioawk-git")
+source=("https://github.com/lh3/bioawk/archive/v1.0.tar.gz")
+md5sums=('a2d0dbb2943b3e0bea96a5360390b656')
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  echo "1.0.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname-${pkgver}"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-${pkgver}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 bioawk $pkgdir/usr/bin/bioawk
+  cd "$srcdir/$pkgname-${pkgver}"
+  install -Dm755 bioawk "$pkgdir/usr/bin/bioawk"
 }
