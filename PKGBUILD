@@ -4,7 +4,7 @@ pkgdesc="ROS - EusLisp ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-lunar-geneus'
-pkgver='2.2.5'
+pkgver='2.2.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geneus-release-release-lunar-geneus-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/tork-a/geneus-release/archive/release/lunar/geneus/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b772982bc71e113e47e166cd10c8e11dd018110dafd2f6e7fe181891fa363048')
+sha256sums=('154b49e570e2016b1eb9aecfbb233149302a445733bd0a6fd1f78d5e2d6c3988')
 
 build() {
   # Use ROS environment variables
