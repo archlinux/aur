@@ -4,7 +4,7 @@
 
 pkgname=openshot
 pkgver=2.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
 arch=('any')
 url="http://www.openshotvideo.com/"
@@ -12,7 +12,8 @@ license=('GPL')
 depends=('mlt-python-bindings' 'sdl' 'librsvg' 'mplayer'
 	 'pyxdg' 'python-pyqt5' 'python-httplib2' 'python-pillow' 'dvgrab'
 	 'ladspa' 'sox' 'vid.stab' 'qt5-svg' 'sdl_image'
-	 'libopenshot' 'python-pyzmq' 'qt5-webkit' 'python-setuptools')
+	 'libopenshot' 'python-pyzmq' 'qt5-webkit' 'python-setuptools'
+	 'python-requests')
 optdepends=('frei0r-plugins: effects'
 	    'libquicktime' 'libavc1394' 'faac' 'jack' 'jack-rack')
 makedepends=('python-setuptools')
