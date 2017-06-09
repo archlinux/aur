@@ -3,10 +3,10 @@
 _perlmod=MooX-HandlesVia
 pkgname=perl-moox-handlesvia
 pkgver=0.001008
-pkgrel=2
+pkgrel=3
 pkgdesc="MooX::HandlesVia - NativeTrait-like behavior for Moo"
 arch=('any')
-url="http://search.cpan.org/~mattp/$_perlmod-$pkgver/"
+url="http://search.cpan.org/~mattp/$_perlmod/"
 license=('GPL' 'PerlArtistic')
 groups=()
 depends=('perl' 'perl-moo' 'perl-moox-types-mooselike' 'perl-strictures' 'perl-data-perl')
