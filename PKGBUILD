@@ -4,6 +4,11 @@
 #   The printer ID is found inside the ()
 #   Discovered Network Printers: B411 (OKI DATA CORP B411)
 
+_printerids=(
+  # PPDName:Friendly Name (MATCH TEXT)
+  'OKB411:Oki B411 PCL (OKI DATA CORP B411)'
+)
+
 set -u
 pkgname='oki-b411-b431'
 _pkgnick='MB400PCL'
@@ -15,22 +20,13 @@ url='http://www.okidata.com/'
 license=('GPL')
 depends=('cups')
 makedepends=('gzip')
-# install="${pkgname}.install"
-# An Install is not necessary. Printers appear and disappear from cups
-# without a systemctl reload org.cups.cupsd.service or killall -HUP cupsd
 source=('ftp://ftp2.okidata.com/pub/drivers/linux/SFP/monochrome/desktop/MB400PCLv5.tar')
 sha256sums=('3ab2df56a62e03d0c0f8dcbb09ea7cde757eac3eb9ab1772f5f3c421cbb6c73f')
-
-_printerids=(
-  # PPDName:Friendly Name (MATCH TEXT)
-  'OKB411:Oki B411 (OKI DATA CORP B411) PCL'
-)
 
 prepare() {
   set -u
   cd "${_pkgnick}"
-  # There's 101 ways to hack up this installer. I choose to
-  # fix it the way it should be for most package makers.
+  # Make the installer package compatible
   chmod 755 'install.sh'
   sed -e '# Disable unnecessary PATH statements' \
       -e 's:^PATH=/:# &:g' \
@@ -58,7 +54,7 @@ package() {
   DESTDIR="${pkgdir}" \
   sh -u -e 'install.sh'
 
-  # Add alternate nicknames to make autodetect work
+  # Add alternate nicknames to make model autodetect work
   local _oldfile='OK400PCL.ppd.gz'
   local _printerid
   for _printerid in "${_printerids[@]}"; do
@@ -70,10 +66,6 @@ package() {
     sed -e '# Fix autodetect *NickName' \
         -e "s:OKI B4000 / B400 / MB400 PCL:${_newid}:g" \
         -e "s:OK400PCL.PPD:${_newfile%\.gz}:g" \
-        -e '# Make the printer sort in the list with foomatic' \
-        -e '# I cant figure how how to change the display name without breaking autodetect' \
-        -e '#/^*ModelName/ s:OKI DATA CORP:Oki:g ' \
-        -e '#/^*ShortNickName/ s:OKI DATA CORP:Oki:g ' \
       | gzip > "${_newfile}"
     install -m644 "${_newfile}" -t "${pkgdir}/usr/share/cups/model/"
   done
