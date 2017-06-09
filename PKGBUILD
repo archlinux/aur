@@ -1,7 +1,7 @@
 # Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=ngsolve-git
-pkgver=v6.2.1705.129.g984592a0
+pkgver=v6.2.1706.5.geee9d5a7
 pkgrel=1
 pkgdesc="A general purpose Finite Element Library on top of Netgen."
 url=https://sourceforge.net/projects/ngsolve/
@@ -24,10 +24,10 @@ build() {
   mkdir build && cd build
 
   cmake \
-  -DNETGEN_DIR=/usr \
-  -DUSE_UMFPACK=ON \
-  -DCMAKE_BUILD_TYPE=RELEASE \
-  /home/matthias/src/ngsolve
+    -DNETGEN_DIR=/usr \
+    -DUSE_UMFPACK=ON \
+    -DCMAKE_BUILD_TYPE=RELEASE \
+    ..
 
   make
 }
