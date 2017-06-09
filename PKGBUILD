@@ -3,7 +3,7 @@
 pkgname=perl-coro
 _realname=Coro
 pkgver=6.511
-pkgrel=2
+pkgrel=3
 pkgdesc="CPAN/Coro - the only real threads in perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -32,10 +32,7 @@ check() {
   make PERL_MM_USE_DEFAULT=1 test
 }
 
-package() {
-  cd $_realname-$pkgver
-  make PERL_MM_USE_DEFAULT=1 DESTDIR="$pkgdir" install
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -43,6 +40,13 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+
+package() {
+  cd $_realname-$pkgver
+  make PERL_MM_USE_DEFAULT=1 DESTDIR="$pkgdir" install
+  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  _perl_depends
 }
 
 # vim:set ts=2 sw=2 et:
