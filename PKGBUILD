@@ -7,13 +7,15 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc-git
-pkgver=0.156.0.r64.g61abb07
+_pkgname=osc
+pkgver=0.156.0.r94.gd8ba394
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
 license=('GPL2')
 depends=('python2' 'python2-m2crypto' 'urlgrabber')
+makedepends=('git')
 optdepends=(
     'obs-build: required to run local builds'
     'obs-service-format_spec_file: for running the format_spec_file source service'
@@ -25,17 +27,17 @@ source=("git+https://github.com/openSUSE/osc.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_pkgname"
     ( set -o pipefail; git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_pkgname}"
     python2 setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_pkgname}"
     python2 setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
 
     cd "${pkgdir}/usr/bin"
