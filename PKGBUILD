@@ -1,7 +1,7 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail dot com>
 
 pkgrel=1
-pkgver=r269.61ff601
+pkgver=r317.95f1e3c
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/Eriner/zim"
@@ -47,7 +47,7 @@ build() {
 
 package() {
 	mkdir -p $pkgdir/usr/lib/zim
-	rsync -ar --exclude=.git $srcdir/$_gitname/ $pkgdir/usr/lib/zim
+	rsync -ar --exclude=".git*" $srcdir/$_gitname/ $pkgdir/usr/lib/zim
 
 	mkdir -p $pkgdir/etc
 	cp -r $srcdir/etc/zsh $pkgdir/etc
