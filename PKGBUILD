@@ -2,7 +2,7 @@
 
 _gitname=enlightenment-arc-theme
 pkgname=${_gitname}-git
-pkgver=e268617
+pkgver=r96.e268617
 pkgrel=1
 pkgdesc="A flat theme for enlightenment"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
-	git log --format="%h" -n1
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

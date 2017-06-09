@@ -1,6 +1,6 @@
 pkgbase = enlightenment-arc-theme-git
 	pkgdesc = A flat theme for enlightenment
-	pkgver = e268617
+	pkgver = r96.e268617
 	pkgrel = 1
 	url = https://github.com/LeBlue/enlightenment-arc-theme
 	arch = any
