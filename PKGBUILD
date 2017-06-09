@@ -3,7 +3,7 @@
 pkgname=perl-alpm
 _cpanname=ALPM
 pkgver=3.06
-pkgrel=5
+pkgrel=6
 pkgdesc='ArchLinux Package Manager backend library.'
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -24,10 +24,7 @@ check() (
   make test
 )
 
-package() (
-  cd $_cpanname-$pkgver
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -35,4 +32,11 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+
+package() (
+  cd $_cpanname-$pkgver
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  _perl_depends
 )
