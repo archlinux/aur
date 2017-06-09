@@ -2,7 +2,7 @@
 
 pkgname=perl-glib-ev
 pkgver=2.02
-pkgrel=7
+pkgrel=8
 pkgdesc="Coerce Glib into using the EV module as event loop"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?Glib::EV'
@@ -20,13 +20,7 @@ build() {
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
-package() {
-	cd "$srcdir/Glib-EV-$pkgver"
-	make install DESTDIR="$pkgdir/"
-
-	#remove perllocal.pod and .packlist
-	find "$pkgdir" -name perllocal.pod -delete
-	find "$pkgdir" -name .packlist -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -34,4 +28,13 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+package() {
+	cd "$srcdir/Glib-EV-$pkgver"
+	make install DESTDIR="$pkgdir/"
+
+	#remove perllocal.pod and .packlist
+	find "$pkgdir" -name perllocal.pod -delete
+	find "$pkgdir" -name .packlist -delete
+	_perl_depends
 }
