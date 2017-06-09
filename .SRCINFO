@@ -23,3 +23,28 @@ pkgbase = perl-starman
 
 pkgname = perl-starman
 
+pkgbase = perl-starman
+	pkgdesc = Starman launcher
+	pkgver = 0.4014
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Starman
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-test-requires
+	makedepends = perl-test-tcp
+	makedepends = perl-module-build-tiny>=0.018
+	depends = perl>=5.8.1
+	depends = perl-data-dump
+	depends = perl-http-date
+	depends = perl-http-parser-xs
+	depends = perl-http-message
+	depends = perl-net-server>=2.007
+	depends = perl-plack>=0.9971
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Starman-0.4014.tar.gz
+	sha512sums = 27e5735a1bd2c29944c469f19a6e05cae038da0f678ca6a12bdae87dd075e4e433e3f4126507f90284a71aa5baf1b8babd120603d265d8b1f3b7b1a6528e0c9f
+
+pkgname = perl-starman
+

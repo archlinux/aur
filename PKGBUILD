@@ -3,7 +3,7 @@
 pkgname='perl-starman'
 _pkgname='Starman'
 pkgver='0.4014'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Starman launcher"
 arch=('any')
 license=('PerlArtistic' 'GPL')
