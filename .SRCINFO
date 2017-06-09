@@ -1,0 +1,13 @@
+pkgbase = buttercup
+	pkgdesc = Javascript Password Vault - Multi-Platform Desktop Application
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://buttercup.pw/
+	arch = x86_64
+	license = GNU/GPL Version 3
+	provides = buttercup
+	source = https://github.com/buttercup/buttercup/releases/download/v0.17.2/buttercup-0.17.2.rpm
+	md5sums = 9082021383d7e15d836fd136a0df292c
+
+pkgname = buttercup
+
