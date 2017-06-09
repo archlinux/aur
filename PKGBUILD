@@ -1,7 +1,7 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=faf-res
 pkgver=0.12.5.1.gc49373c4
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
 url="http://www.faforever.com/"
@@ -11,7 +11,7 @@ groups=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=("python2-fafclient<=0.12.5.0")
 replaces=()
 backup=()
 options=()
