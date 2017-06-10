@@ -1,6 +1,6 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 pkgname=iaito-git
-pkgver=0.1
+pkgver=r266.d033b52
 pkgrel=1
 _gitname=iaito
 pkgdesc="A Qt and C++ GUI for radare2 reverse engineering framework"
