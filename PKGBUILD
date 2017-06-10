@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.17
+_ver=1.19
 _pkgbase=caja
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.3
+pkgver=${_ver}.0
 pkgrel=5
 pkgdesc="File manager for the MATE desktop"
 url="http://mate-desktop.org"
@@ -14,14 +14,14 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus' 'desktop-file-utils' 'exempi' 'glib2' 'gtk3' 'gtk-update-icon-cache'
-         'gvfs' 'libexif' 'libunique3' 'libxt' 'mate-desktop-dev' 'shared-mime-info'
+         'gvfs' 'libexif' 'libunique3' 'libxt' 'mate-desktop>=1.19' 'shared-mime-info'
          'startup-notification')
-makedepends=('gobject-introspection' 'mate-common-dev')
+makedepends=('gobject-introspection' 'mate-common>=1.19')
 optdepends=('gstreamer: automatic media playback when mouseover'
             'gvfs-smb: To connect to Samba/Windows shares')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('8c5c2b942de62f4c0d7b62ce7543fdaa504f761f')
+sha1sums=('51f82c2b576a92021d214ff00b786681c45f6939')
 
 prepare() {
     cd "${srcdir}"
