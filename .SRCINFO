@@ -1,4 +1,4 @@
-pkgbase = python-quandl-git
+pkgbase = python-quandl
 	pkgdesc = Wrapper for quandl-python
 	pkgver = v3.1.0.r0.g1d06fe5
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = python-quandl-git
 	source = python-quandl::git+https://github.com/quandl/quandl-python.git
 	md5sums = SKIP
 
-pkgname = python-quandl-git
+pkgname = python-quandl
 

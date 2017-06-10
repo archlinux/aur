@@ -1,6 +1,6 @@
 # Contributor: vsilv <vsilv@posteo.eu>
 # Maintainer : vsilv <vsilv@posteo.eu>
-pkgname=python-quandl-git
+pkgname=python-quandl
 pkgver=v3.1.0.r0.g1d06fe5
 pkgrel=1
 pkgdesc="Wrapper for quandl-python"
