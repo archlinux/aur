@@ -12,9 +12,9 @@ pkgbase = mate-meta-dev
 	depends = libmateweather-dev
 	depends = marco-dev
 	depends = mate-media-dev
+	depends = mate-meta-dev
 	depends = mate-panel-dev
 	depends = pluma-dev
-	depends = caja-extensions-common-dev
 
 pkgname = mate-meta-dev
 
