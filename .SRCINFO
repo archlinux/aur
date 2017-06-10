@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-gmail-message-tray-git
+	pkgdesc = Gmail Message Tray Gnome Shell Extension
+	pkgver = r71.5a5980c
+	pkgrel = 1
+	url = https://github.com/shumingch/GmailMessageTray
+	install = gschemas.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/shumingch/GmailMessageTray.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-gmail-message-tray-git
+
