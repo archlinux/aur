@@ -1,7 +1,7 @@
 # Maintainer: nerflad (nerflad@gmail.com)
 
 pkgname=gapi-ocaml
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A simple OCaml client for Google Services."
 arch=("x86_64" "i686")
@@ -20,7 +20,7 @@ depends=(
 )
 source=(https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz)
 options=('!strip' 'staticlibs')
-md5sums=('ad2e8f0df3e31561bf7234c1408e9e22')
+md5sums=('8f4b9a2fb59279db089d54e70313c037')
 
 
 build() {
