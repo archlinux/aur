@@ -1,14 +1,14 @@
 # Maintainer: Giorgio Wicklein <giowckln@gmail.com>
 pkgname=symphytum
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Personal database software"
 arch=('i686' 'x86_64')
 url="http://giowck.github.io/symphytum/"
 license=('BSD')
-depends=('qt5-base' 'qt5-svg' 'sqlite' 'python2' 'python2-setuptools')
+depends=('qt5-base' 'qt5-svg' 'sqlite' 'python3' 'python-setuptools' 'python-six' 'python-certifi' 'python-chardet' 'python-idna' 'python-requests' 'python-urllib3')
 source=("https://github.com/giowck/symphytum/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz")
-md5sums=('400484e8b06d77491012989f69105c11')
+md5sums=('c32ffe32121e2d45753b14f58836bca9')
 
 build() {
   qmake-qt5 -config release
