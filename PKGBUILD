@@ -2,30 +2,37 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r37.31.gcf4685c
+pkgver=r38.0.g540a82a
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.vapoursynth.com'
 license=('LGPL2.1' 'custom:OFL' 'custom:WFTPL')
 depends=('libzimg.so'
-         'libavformat.so'
-         'libavcodec.so'
-         'libavutil.so'
-         'libass.so'
-         'tesseract'
          'python'
-         'imagemagick'
          )
 makedepends=('git'
              'cython'
              'yasm'
              'python-sphinx'
+             'imagemagick'
+             'libass.so'
+             'tesseract'
+             'libavformat.so'
+             'libavcodec.so'
+             'libavutil.so'
              )
 provides=('vapoursynth')
 conflicts=('vapoursynth'
            'vapoursynth-plugin-miscfilters'
            )
+optdepends=('imagemagick: imwri plugin'
+            'tesseract: OCR plugin'
+            'libass.so: subtext plugin'
+            'libavformat.so: subtext plugin'
+            'libavcodec.so: subtext plugin'
+            'libavutil.so: subtext plugin'
+            )
 source=('git+https://github.com/vapoursynth/vapoursynth.git'
         'vapoursynth.xml'
         'wtfpl.txt::http://www.wtfpl.net/txt/COPYING'
@@ -50,8 +57,7 @@ prepare() {
 build() {
   cd vapoursynth
   ./configure \
-    --prefix=/usr \
-    --enable-imwri
+    --prefix=/usr
 
   make
   make -C doc html man
