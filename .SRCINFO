@@ -1,7 +1,7 @@
 pkgbase = perl-x11-xcb
 	pkgdesc = Perl bindings for libxcb
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 3
 	url = http://metacpan.org/release/X11-XCB
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,9 @@ pkgbase = perl-x11-xcb
 	makedepends = perl-extutils-depends
 	makedepends = libpthread-stubs
 	makedepends = python
+	makedepends = perl-module-install
+	makedepends = perl-extutils-pkgconfig
+	makedepends = perl-data-dump
 	depends = libxau
 	depends = libxdmcp
 	depends = perl-mouse
@@ -17,9 +20,14 @@ pkgbase = perl-x11-xcb
 	depends = perl-try-tiny
 	depends = perl-xml-simple
 	depends = perl-xml-descent
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-wm
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/X11-XCB-0.16.tar.gz
+	source = inc.patch
 	md5sums = 15c56ac74a7412378c26e5d343e19246
+	md5sums = fd779512518f4bf5e8ae9a1596dd201f
 
 pkgname = perl-x11-xcb
 

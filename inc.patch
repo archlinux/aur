@@ -1,0 +1,12 @@
+diff -up src/X11-XCB-0.16/Makefile.PL.orig src/X11-XCB-0.16/Makefile.PL
+--- src/X11-XCB-0.16/Makefile.PL.orig	2017-06-09 01:05:31.000000000 -0600
++++ src/X11-XCB-0.16/Makefile.PL	2017-06-09 01:05:41.000000000 -0600
+@@ -81,7 +81,7 @@ WriteMakefile(
+ 
+ postamble <<'END_OF_MAKEFILE';
+ XCB_xs.inc:
+-	$(PERL) -M_GenerateMyXS -E '_GenerateMyXS::generate()'
++	$(PERL) -I. -M_GenerateMyXS -E '_GenerateMyXS::generate()'
+ 
+ XCB.c: XCB_xs.inc XCB_util.inc XCB.inc
+ 
