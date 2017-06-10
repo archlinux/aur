@@ -180,7 +180,7 @@ prepare() {
   local _ncodefound=0
   local _lwrapper
   for _lwrapper in 'usr/lib/cups/filter'/*; do
-    if grep -q "$(basename "${_lwrapper}")" 'usr/share/cups/model'/*.ppd || grep -q "$(basename "${_lwrapper}")" 'usr/share/cups/model/Brother'/*.ppd; then
+    if grep -sq "$(basename "${_lwrapper}")" 'usr/share/cups/model'/*.ppd || grep -sq "$(basename "${_lwrapper}")" 'usr/share/cups/model/Brother'/*.ppd; then
       _nppdfound=$((_nppdfound+1))
     fi
     if grep -q "${_brcupsconf}" "${_lwrapper}"; then
