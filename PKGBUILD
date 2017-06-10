@@ -1,55 +1,112 @@
-# Maintainer: Yardena Cohen <yardenack at gmail dot com>
-# Contributor: Max Roder <maxroder@web.de>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
+# Contributor: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: TrialnError <autumn-wind AT web DOT de>
+# Contributor: Yardena Cohen <yardenack AT gmail DOT com>
+# Contributor: Max Roder <maxroder AT web DOT de>
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
 
-# To port this PKGBUILD to another language of tor-browser you 
-# have to change $pkgname, $_language, $pkgdesc and $url in PKGBUILD
-# AND (!) the first line in the .install file!
+#
+# Before running makepkg, you must do this:
+#
+# gpg --keyserver hkp://pgp.mit.edu:11371 --recv-keys D1483FA6C3C07136
+#
 
 pkgname='tor-browser-es'
-pkgver='6.5.2'
-_language='es-ES'
+_pkgname='tor-browser'
+pkgver='7.0'
 pkgrel=1
-pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor (es-ES version)'
+pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor (language-agnostic PKGBUILD)'
 url='https://www.torproject.org/projects/torbrowser.html'
-arch=('x86_64')
+arch=('i686' 'x86_64')
+_idstr32='linux32'
+_idstr64='linux64'
 license=('GPL')
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
+	'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+	'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
-            'kdialog: KDE dialog boxes'
-            'gst-plugins-good: h.264 video'
-            'gst-libav: h.264 video'
-            'libpulse: PulseAudio audio driver'
-            'libnotify: Gnome dialog boxes')
+	'kdialog: KDE dialog boxes'
+	'gst-plugins-good: h.264 video'
+	'gst-libav: h.264 video'
+	'libpulse: PulseAudio audio driver'
+	'libnotify: Gnome dialog boxes')
 install="${pkgname}.install"
+
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
-source=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc}
-        "${pkgname}.desktop"
-        "${pkgname}.png"
-        "${pkgname}.sh")
-sha512sums=('bc350985865d14ff1ea9f0186a222ea75cbd72f94514ace45dd78a70d78c4e9e62212aa6e190bd55345a73b9d6381aa3bb574e3450c4220bd7541457b31a1904'
-            'SKIP'
-            'ea785893bfec7e5d0c5caf6f73a119950f12751cec39186bb2335f410f30e207f43f7bc0bb9bac583d811d21e91157fd76dbdd6c6256ff680c065f477b8bb486'
-            '0a68a0a8cfeea630a91036d86b167cf640ab378e64e0d8ab55e9f99cde3c9d6a2d762ea0f5528f8a8e1579600fcc59eaa72ba499d95daeb4334e81ab644bfb02'
-            '87ceaa0fc03e43bd5cd591514ca9f5ad583982a80607180c8e3633ceb76de8a39e49fe37eb7f407e1e4c24ac4e6954b328699cbd714884bd80b6a0ef243e0946')
-noextract=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
+
+_archstr=$([ $CARCH = 'x86_64' ] && echo "${_idstr64}" || echo "${_idstr32}")
+
+TORBROWSER_PKGLANG='es-ES'
+
+_localetor() {
+
+	#
+	# Checking if a `tor-browser` package exists for current locale; a different language can be
+	# chosen by giving a `TORBROWSER_PKGLANG` environment variable to `makepkg`, for instance:
+	#
+	#	TORBROWSER_PKGLANG='en-US' makepkg
+	#
+
+	if [ -z "${TORBROWSER_PKGLANG}" ]; then
+
+		local _urlbase="https://dist.torproject.org/torbrowser/${pkgver}/${_pkgname}-${_archstr}-${pkgver}"
+		local _fulllocale="$(locale | grep LANG | cut -d= -f2 | cut -d. -f1 | sed s/_/\-/)"
+		local _shortlocale="$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)"
+
+		if curl --output /dev/null --silent --head --fail "${_urlbase}_${_fulllocale}.tar.xz"; then
+			echo -n "${_fulllocale}"
+		elif curl --output /dev/null --silent --head --fail "${_urlbase}_${_shortlocale}.tar.xz"; then
+			echo -n "${_shortlocale}"
+		else
+			echo 'en-US'
+		fi
+
+	else
+
+		echo "${TORBROWSER_PKGLANG}"
+
+	fi
+
+}
+
+_language="$(_localetor)"
+
+source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/${_pkgname}-${_idstr32}-${pkgver}_${_language}.tar.xz"{,.asc})
+source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/${_pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz"{,.asc})
+
+source=("${pkgname}.desktop"
+	"${pkgname}.install"
+	"${pkgname}.png"
+	"${pkgname}.sh")
+
+md5sums=('f0cfc7681d58a77251abc49b250802d3'
+	'ef1de5f4e269f1084f20122d2703e954'
+	'494afbfa60fb4ce21840244cc3f7208c'
+	'3ef08aff0e2afebb1a2a7ffbf8f65897')
+md5sums_i686=('SKIP'
+	'SKIP')
+md5sums_x86_64=('SKIP'
+	'SKIP')
+
+noextract=("${pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz"
+	"${pkgname}-${_idstr32}-${pkgver}_${_language}.tar.xz")
 
 package() {
-   cd "${srcdir}"
 
-   sed -i "s/REPL_NAME/${pkgname}/g"       ${pkgname}.sh
-   sed -i "s/REPL_VERSION/${pkgver}/g"	    ${pkgname}.sh
-   sed -i "s/REPL_LANGUAGE/${_language}/g" ${pkgname}.sh
+	cd "${srcdir}"
 
-   sed -i "s/REPL_NAME/${pkgname}/g"       ${pkgname}.desktop
-   sed -i "s/REPL_LANGUAGE/${_language}/g" ${pkgname}.desktop
-   sed -i "s/REPL_COMMENT/${pkgdesc}/g"    ${pkgname}.desktop
+	sed -i "s/REPL_NAME/${pkgname}/g"	"${pkgname}.sh"
+	sed -i "s/REPL_VERSION/${pkgver}/g"	"${pkgname}.sh"
+	sed -i "s/REPL_LANGUAGE/${_language}/g" "${pkgname}.sh"
 
-   install -Dm 644 ${pkgname}.desktop      ${pkgdir}/usr/share/applications/${pkgname}.desktop
-   install -Dm 644 ${pkgname}.png          ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-   install -Dm 755 ${pkgname}.sh           ${pkgdir}/usr/bin/${pkgname}
+	sed -i "s/REPL_NAME/${pkgname}/g"	"${pkgname}.desktop"
+	sed -i "s/REPL_LANGUAGE/${_language}/g" "${pkgname}.desktop"
+	sed -i "s/REPL_COMMENT/${pkgdesc}/g"	"${pkgname}.desktop"
 
-   install -Dm 644 tor-browser-linux64-${pkgver}_${_language}.tar.xz ${pkgdir}/opt/${pkgname}/tor-browser-linux64-${pkgver}_${_language}.tar.xz
+	install -Dm 644 "${pkgname}.desktop"	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm 644 "${pkgname}.png"	"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 755 "${pkgname}.sh"		"${pkgdir}/usr/bin/${pkgname}"
+
+	install -Dm 644 "${_pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/${pkgname}/${_pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz"
+
 }
