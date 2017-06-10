@@ -1,9 +1,10 @@
-# Maintainer: Rasmus Steinke <rasi at xssn dot at>
+# Maintainer: Jack Random <jack at random dot to>
+# former Maintainer: Rasmus Steinke <rasi at xssn dot at>
 
 pkgname=buku-git
 _pkgname=buku
 pkgver=998.6abfea2
-pkgrel=1
+pkgrel=2
 pkgdesc="cmdline bookmark management utility written in Python3 and SQLite3"
 arch=('any')
 depends=('python' 'python-crypto' 'sqlite')
