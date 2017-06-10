@@ -1,0 +1,15 @@
+pkgbase = hadolint-git
+	pkgdesc = Dockerfile linter written in Haskell
+	pkgver = r257.85789f3
+	pkgrel = 1
+	url = http://hadolint.lukasmartinelli.ch/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = stack
+	provides = hadolint
+	source = git+https://github.com/lukasmartinelli/hadolint.git
+	sha256sums = SKIP
+
+pkgname = hadolint-git
+
