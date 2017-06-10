@@ -2,11 +2,12 @@
 
 pkgname=liquidsky
 pkgver=2
-pkgrel=6
+pkgrel=7
 pkgdesc="LiquidSky lets you instantly own and stream a powerful gaming computer to any device!"
 arch=('x86_64' 'i686')
 url='https://liquidsky.tv/'
-depends=('wine' 'wine_gecko' 'wine-mono' 'winetricks')
+depends=('wine' 'wine_gecko' 'wine-mono' 'winetricks' 'lib32-vulkan-icd-loader' 'lib32-vulkan-validation-layers'
+         'vulkan-extra-layers' 'vulkan-headers' 'vulkan-icd-loader' 'vulkan-intel' 'vulkan-validation-layers' 'samba')
 makedepends=('wget')
 install=liquidsky.install
 source=(
