@@ -1,6 +1,6 @@
 # Maintainer: Wojciech Kluczka <wojciech.kluczka@gmail.com>
 pkgname=perceptia-git
-pkgver=0.3.0.r0.g0c34f50
+pkgver=0.5.0.r0.g5710c8f
 pkgrel=1
 pkgdesc='Dynamic window manager with support for Wayland'
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname%-git}"
 
-    cargo build --release --manifest-path ./src/perceptia/Cargo.toml
-    cargo build --release --manifest-path ./src/perceptiactl/Cargo.toml
+    cargo build --release --manifest-path ./perceptia/perceptia/Cargo.toml
+    cargo build --release --manifest-path ./perceptia/perceptiactl/Cargo.toml
 }
 
 package() {
