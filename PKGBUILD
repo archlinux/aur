@@ -5,7 +5,7 @@
 pkgname=gnumeric-minimal
 _pkgname=gnumeric
 pkgver=1.12.34
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/gnumeric/"
@@ -34,7 +34,7 @@ build() {
               --disable-schemas-install --disable-ssindex \
               --without-gnome --without-psiconv --without-perl \
               --without-python --without-gda \
-	      --with-help-dir="$pkgdir"/usr/share/gnome/help
+	      --with-help-dir=/usr/share/gnome/help
   make
 }
 
