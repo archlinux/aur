@@ -4,7 +4,7 @@
 pkgname=perl-net-interface
 _cpanname=Net-Interface
 pkgver=1.012
-pkgrel=7
+pkgrel=8
 pkgdesc="Net::Interface - Perl extension to access network interfaces    "
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
@@ -21,18 +21,21 @@ build() {
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
+_perl_depends() {
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
+}
 package() {
   cd ${_cpanname}-${pkgver}
   make DESTDIR="$pkgdir" install
   find "$pkgdir" -name '.packlist' -delete
   find "$pkgdir" -name '*.pod' -delete
-# template start; name=perl-binary-module-dependency; version=1;
-if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-  _perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-  _perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-  depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-fi
-# template end;
+  _perl_depends
 }
 
 
