@@ -9,7 +9,7 @@ url="https://github.com/quandl/quandl-python"
 license=('MIT')
 depends=('python>=3.6')
 makedepends=('git')
-provides=('python-quandl')
+provides=('python-quandl, python-numpy', 'python-more-itertools')
 source=('python-quandl::git+https://github.com/quandl/quandl-python.git')
 
 md5sums=('SKIP')
