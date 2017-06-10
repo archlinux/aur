@@ -1,9 +1,10 @@
-# Maintainer: kfgz <kfgz at interia pl>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: kfgz <kfgz at interia pl>
 # Contributor: François Charette <firmicus at gmx dot net>
 
 pkgname=perl-xml-dom
 pkgver=1.44
-pkgrel=8
+pkgrel=9
 pkgdesc="Implements Level 1 of W3's DOM"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/XML-DOM"
@@ -20,9 +21,20 @@ build() {
   make
 }
 
+_perl_depends() {
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
+}
+
 package() {
   cd ${srcdir}/XML-DOM-${pkgver}
   make install DESTDIR=${pkgdir}
   find ${pkgdir} -name '.packlist' -delete
   find ${pkgdir} -name '*.pod' -delete
+  _perl_depends
 }
