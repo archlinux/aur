@@ -14,5 +14,4 @@ atril-dev caja-dev engrampa-dev eom-dev libmateweather-dev marco-dev mate-media-
 
 package(){
   /bin/true
-
 }
