@@ -1,7 +1,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=ts-kbd
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Touchscreen keyboard"
 arch=("x86_64")
 url="https://github.com/vicr123/ts-kbd"
@@ -14,6 +14,7 @@ md5sums=('SKIP')
 build() {
 	cd "$pkgname-$pkgver"
 	qmake
+	qdbuscpp2xml -A kbddbus.h -o org.thesuite.tskbd.xml
 	make
 }
 
