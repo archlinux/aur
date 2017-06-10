@@ -1,8 +1,9 @@
-# $Id: PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-amd-staging-git
+pkgdesc='Linux kernel with AMD DC patches'
 _srcname=$pkgbase
 _branch=amd-staging-4.11
 pkgver=4.11.665002.cad2d1111e12
@@ -74,7 +75,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with AMD DC patches"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -129,7 +130,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel with AMD DC patches"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -257,7 +258,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel with AMD DC patches"
 
   cd "${srcdir}/${_srcname}"
 
