@@ -1,15 +1,15 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=backblaze-b2
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Backblaze B2 Command Line Client"
 url="https://www.backblaze.com/b2/cloud-storage.html"
 depends=('python2'
-         'python2-futures'
-         'python2-portalocker'
-         'python2-requests'
-         'python2-tqdm>=4.5.0'
+         'python2-arrow>=0.8.0'
          'python2-logfury>=0.1.2'
+         'python2-requests>=2.9.1'
+         'python2-tqdm>=4.5.0'
+         'python2-six>=1.10'
         )
 optdepends=()
 # MIT or Creative Commons: https://www.backblaze.com/using_b2_code.html
