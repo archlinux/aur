@@ -1,0 +1,12 @@
+pkgbase = pasmo
+	pkgdesc = Portable Z80 cross assembler
+	pkgver = 0.5.4.beta2
+	pkgrel = 1
+	url = http://pasmo.speccy.org/
+	arch = any
+	license = GPLv2
+	source = http://pasmo.speccy.org/bin/pasmo-0.5.4.beta2.tgz
+	md5sums = c85b0b7935ea174f9a57821019f464fa
+
+pkgname = pasmo
+
