@@ -1,12 +1,12 @@
 pkgbase = perl-spread
 	pkgdesc = Perl extension for the Spread group communication system
 	pkgver = 3.17.4.4
-	pkgrel = 7
+	pkgrel = 8
 	url = http://search.cpan.org/~jesus/Spread-3.17.4.4/Spread.pm
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	license = Perl
+	license = PerlArtistic
 	depends = perl
 	depends = gtk2-perl
 	depends = perl-extutils-depends
