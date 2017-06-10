@@ -2,7 +2,7 @@
 
 pkgname=liquidsky
 pkgver=2
-pkgrel=7
+pkgrel=9
 pkgdesc="LiquidSky lets you instantly own and stream a powerful gaming computer to any device!"
 arch=('x86_64' 'i686')
 url='https://liquidsky.tv/'
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '094947892547c10c89c145894374064c62dc16d8c3e237fe2a46b9c4bc064f59'
+    'aded9d60ec3ba4fba6c6c096b5dfed22f7c27448f89658fedca0827290f7cfb7'
     'd3354f08697806b7034c24377c528bc2b4c1db23a27bc424deda5d0a7869e7e9'
 )
 

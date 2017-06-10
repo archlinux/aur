@@ -1,3 +1,5 @@
 #! /usr/bin/env sh
 
-wine /opt/liquidsky/LiquidSkyClient.exe --force-player --disable-gpu
+pushd /opt/liquidsky
+wine start LiquidSkyClient.exe "--force-player" "--disable-gpu"
+popd
