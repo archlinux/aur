@@ -1,7 +1,7 @@
 # Maintainer: Tom <reztho@archlinux.org>
 # Based on a contribution of: bitwave
 pkgname=textadept
-pkgver=9.3
+pkgver=9.4
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('mercurial' 'wget' 'unzip')
 provides=("$pkgname")
 conflicts=('textadept-bin')
 replaces=('textadept-bin')
-source=("hg+http://foicica.com/hg/textadept#revision=5969451ae1fe"
+source=("hg+http://foicica.com/hg/textadept#revision=90d027eb635f"
         "http://foicica.com/textadept/download/textadept_${pkgver}.modules.zip")
 
 build() {
@@ -37,19 +37,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname/src"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
+  rm "$pkgdir/usr/share/pixmaps/"textadept{.svg,.png}
   make curses PREFIX=/usr DESTDIR="$pkgdir/" install
-  
-  # Icon
-  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  ln -s /usr/share/$pkgname/core/images/$pkgname.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  
-  # Desktop files
-  install -d "$pkgdir/usr/share/applications"
-  install -m644 *.desktop "$pkgdir/usr/share/applications/"
-  for i in "$pkgdir/usr/share/applications/"*.desktop; do
-    sed -i 's@^Icon=textadept.svg@Icon=textadept@' "$i"
-  done
   
   # Additional modules
   cd "$srcdir/${pkgname}_$pkgver.modules"
@@ -65,4 +54,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         'bff24468d52baf4db899dd63618daffb')
+         'aceeffc0729f3c2acacb984674c7b5a8')
