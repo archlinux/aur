@@ -15,8 +15,8 @@ source=(https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz
         https://patch-diff.githubusercontent.com/raw/mozilla/rr/pull/2001.patch
         https://github.com/mozilla/rr/commit/5a16d15ef348c069b82449dcdeaeea3c1eb8639b.patch)
 sha1sums=('70d3902c36fb1d0cd423cf1046df06f5153cba5b'
-          '51dba5dbbe16c3631a101409a28247075668fe7b'
-          '401ca2e7108fc305c6644c2d27a86fdb24855fb1')
+          'e05f9c5081cb67b53d730097731fa382a1bb0194'
+	  'cee1884633ecd377a6ca0c7cfcfe2ae257c0876a')
 
 prepare() {
 	cd $pkgname-$pkgver
