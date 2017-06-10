@@ -1,0 +1,15 @@
+pkgbase = python-krakenex
+	pkgdesc = Wrapper for krakenex
+	pkgver = v3.1.0.r0.g1d06fe5
+	pkgrel = 1
+	url = https://github.com/veox/python3-krakenex
+	arch = x86_64
+	license = LGPLv3
+	makedepends = git
+	depends = python>=3.6
+	provides = python-krakenex
+	source = python-krakenex::git+https://github.com/veox/python3-krakenex.git
+	md5sums = SKIP
+
+pkgname = python-krakenex
+
