@@ -4,7 +4,7 @@
 
 pkgname=ums
 pkgver=6.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8."
 arch=('i686' 'x86_64')
 url="http://www.universalmediaserver.com/"
@@ -24,9 +24,9 @@ backup=(opt/ums/UMS.conf \
 source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
         'ums.desktop'
         'ums.service')
-sha256sums=('dfc40476cf0f03f1761cb0fe004ed1931d17cbfd1e012e7801f10db167aec722'
+sha256sums=('d09523714bdccfe67ec54336c5931a2d307bafc80bf1ee6c1143c01d028032f8'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
-            'd09523714bdccfe67ec54336c5931a2d307bafc80bf1ee6c1143c01d028032f8')
+            '6444b0ad9a61c1f7d450d79497bbdd80d5b6d2da893550cd7260e6e233c8d886')
 
 package() {
   mkdir -p $pkgdir/opt/ums
