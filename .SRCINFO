@@ -1,0 +1,14 @@
+pkgbase = postgresql-unit
+	pkgdesc = SI Units for PostgreSQL
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/ChristophBerg/postgresql-unit
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = postgresql
+	source = https://codeload.github.com/ChristophBerg/postgresql-unit/tar.gz/3.1
+	sha256sums = 60a8be238b7521d37b0541e07ff3be775490c53e184524b0b18c3b0bd2be06f2
+
+pkgname = postgresql-unit
+
