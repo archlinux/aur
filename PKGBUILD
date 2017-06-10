@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss03
-pkgver=1.13.0
-pkgrel=5
+pkgver=1.13.1
+pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Consolas.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -21,7 +21,7 @@ conflicts=('ttf-iosevka-pack'
            'ttf-iosevka-term-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss03-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('d1b7f59f614f0dd4d373cf7f161e27217578fc88ac33dc3d0997ff84d37c033e'
+sha256sums=('5a1bf5bef77a10642c3d739bd650a6c7c24217a74066bda641b064338902e77f'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
