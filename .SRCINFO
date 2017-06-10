@@ -1,6 +1,6 @@
 pkgbase = mate-panel-dev
 	pkgdesc = The MATE Panel
-	pkgver = 1.17.1
+	pkgver = 1.19.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = mate-panel-dev
 	groups = mate
 	license = GPL
 	makedepends = gobject-introspection
-	makedepends = mate-common-dev
+	makedepends = mate-common>=1.19
 	makedepends = yelp-tools
 	makedepends = gtk3
-	makedepends = libmateweather-dev
+	makedepends = libmateweather>=1.19
 	makedepends = libwnck3
-	makedepends = mate-desktop-dev
+	makedepends = mate-desktop>=1.19
 	depends = dbus-glib
 	depends = dconf
 	depends = glib2
@@ -22,20 +22,20 @@ pkgbase = mate-panel-dev
 	depends = libwnck3
 	depends = libcanberra
 	depends = libice
-	depends = libmateweather-dev
+	depends = libmateweather>=1.19
 	depends = librsvg
 	depends = libsm
 	depends = libsoup
 	depends = libxau
-	depends = mate-menus-dev
-	depends = mate-desktop-dev
+	depends = mate-menus>=1.19
+	depends = mate-desktop>=1.19
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-panel
 	provides = mate-panel-gtk3
 	conflicts = mate-panel
 	conflicts = mate-panel-gtk3
-	source = http://pub.mate-desktop.org/releases/1.17/mate-panel-1.17.1.tar.xz
-	sha1sums = d66dffa6a9344de454975fcbc4576402b796cadb
+	source = http://pub.mate-desktop.org/releases/1.19/mate-panel-1.19.0.tar.xz
+	sha1sums = 8499c3acb8b517feae7f985906552457ab38b690
 
 pkgname = mate-panel-dev
 	pkgdesc = The MATE Panel (GTK3 version)
