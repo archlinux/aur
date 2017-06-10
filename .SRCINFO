@@ -15,8 +15,4 @@ pkgbase = perl-net-libdnet
 	md5sums = 556bb84c712f0b65b8c0b252cae4fc16
 
 pkgname = perl-net-libdnet
-	depends = perl-class-gomor
-	depends = libdnet
-	depends = perl>=
-	depends = perl<
 
