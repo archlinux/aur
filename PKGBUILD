@@ -1,7 +1,7 @@
 pkgname=anki
 pkgver=2.1.0a14
 alpha=14
-pkgrel=1
+pkgrel=2
 pkgdesc="Friendly, intelligent flash cards"
 url="https://ankisrs.net/"
 license=('AGPL3')
@@ -14,13 +14,6 @@ optdepends=('lame: record sound'
             'texlive-core: use latex markup')
 source=(https://apps.ankiweb.net/downloads/alpha/alpha$alpha/$pkgname-$pkgver-source.tgz)
 sha512sums=('95f8b905f699bb4fdbad19438182312f2373b58cdc2a839944b97a75a6e4b5cc73f897f444f5603c26776283b747da7c100d46b4ccea8731e7b462eca7681058')
-
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  # Remove warning that qt version is broken
-  head -n -5 aqt/qt.py > tmp
-  mv tmp aqt/qt.py
-}
 
 build() {
   cd $srcdir/$pkgname-$pkgver
