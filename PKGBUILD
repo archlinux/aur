@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86349.g2ba896fef7
-pkgrel=2
+pkgrel=3
 pkgdesc='Record, convert and stream audio and video (Git version with all possible libs)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
