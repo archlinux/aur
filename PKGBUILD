@@ -4,7 +4,7 @@ pkgname=perl-sys-gamin
 _cpanname=Sys-Gamin
 _module=Sys::Gamin
 pkgver=0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="$_module - Perl interface to Gamin (File Access Monitor implementation)"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/$_cpanname"
@@ -25,10 +25,7 @@ check() {
 #  make test
 }
 
-package() {
-  cd $_cpanname-$pkgver
-  make DESTDIR="$pkgdir" install
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -36,6 +33,13 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+
+package() {
+  cd $_cpanname-$pkgver
+  make PERL_MM_USE_DEFAULT=1 DESTDIR="$pkgdir" install
+  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  _perl_depends
 }
 
 # vim:set ts=2 sw=2 et:
