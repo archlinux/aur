@@ -1,7 +1,7 @@
 pkgbase = perl-net-dbus-glib
 	pkgdesc = Net::DBus::GLib - Perl extension for the DBus GLib bindings
 	pkgver = 0.33.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://search.cpan.org/~danberr/Net-DBus-GLib-0.33.0/lib/Net/DBus/GLib.pm
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,4 @@ pkgbase = perl-net-dbus-glib
 	sha1sums = 42e243e09f7406da276c73d91579bf4a3df3fc78
 
 pkgname = perl-net-dbus-glib
-	depends = dbus-glib
-	depends = glib-perl
-	depends = perl-net-dbus
-	depends = perl>=
-	depends = perl<
 

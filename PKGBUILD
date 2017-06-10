@@ -3,7 +3,7 @@
 pkgname=perl-net-dbus-glib
 _cpanname=Net-DBus-GLib
 pkgver=0.33.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Net::DBus::GLib - Perl extension for the DBus GLib bindings"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~danberr/Net-DBus-GLib-$pkgver/lib/Net/DBus/GLib.pm"
@@ -19,9 +19,7 @@ build() {
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
-package() {
-	cd $_cpanname-$pkgver
-	make DESTDIR="$pkgdir" install
+_perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
@@ -29,4 +27,9 @@ if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
 fi
 # template end;
+}
+package() {
+	cd $_cpanname-$pkgver
+	make DESTDIR="$pkgdir" install
+	_perl_depends
 }
