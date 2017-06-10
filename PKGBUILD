@@ -3,7 +3,7 @@
 pkgname=kde-service-menu-encfs
 pkgver=0.5.2
 pkgrel=1
-pkgdesc="A KDE service menus for EncFS from dolphin"
+pkgdesc="A KDE service menus for EncFS from dolphin. KF5 version."
 arch=('any')
 url="http://www.egregorion.net"
 license=('GPL')
