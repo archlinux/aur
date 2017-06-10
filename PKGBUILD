@@ -8,12 +8,12 @@ arch=('any')
 url="http://www.egregorion.net"
 license=('GPL')
 depends=('dolphin' 'kdialog')
-source=("https://docs.google.com/uc?id=0B2KQf7Dbx7DUUVBnSDJRRVpVaFU&export=download")
-md5sums=('26e9f8d37d40a49250d3b84905f88ae5')
+source=("https://github.com/denoos/kde-service-menu-encfs/archive/v${pkgver}.tar.gz")
+md5sums=('22eebfc4c83590d18778b2f6372357fe')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
   mkdir -p ${pkgdir}/usr/bin/
-  install -m 644 ${srcdir}/kde-service-menu-enfs_${pkgver}archlinux/desktop/*.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/
-  install -m 755 ${srcdir}/kde-service-menu-encfs_${pkgver}archlinux/bin/* ${pkgdir}/usr/bin/
+  install -m 644 ${srcdir}/kde-service-menu-encfs-${pkgver}/desktop/encfs.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  install -m 755 ${srcdir}/kde-service-menu-encfs-${pkgver}/bin/kde-service-menu-encfs.sh ${pkgdir}/usr/bin/
 }
