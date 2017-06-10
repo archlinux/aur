@@ -13,7 +13,10 @@ url="https://cogniti.github.io/${_pkgname}"
 license=('GNU LGPL v3')
 depends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'libxkbcommon' 'glib2' 
 'libappindicator-gtk3' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 'libchewing' 'librime' 'brise')
-makedepends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'intltool' 'gobject-introspection' 'glib2' 'libappindicator-gtk3' 'git' 'librsvg' 'noto-fonts-cjk' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 'libchewing' 'librime' 'brise')
+makedepends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'intltool' 
+'gobject-introspection' 'glib2' 'libappindicator-gtk3' 'git' 'librsvg' 
+'noto-fonts-cjk' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 
+'libchewing' 'librime' 'brise' 'audit')
 conflicts=("nimf")
 source=("${_pkgname}"::"git+https://github.com/cogniti/${_pkgname}.git")
 md5sums=('SKIP')
