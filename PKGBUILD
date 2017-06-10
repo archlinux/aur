@@ -1,8 +1,8 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=the-libs
-pkgver=1.2
-pkgrel=1
+pkgver=1.3
+pkgrel=0
 pkgdesc="Common libraries for the- applications by Victor Tran"
 arch=("x86_64")
 url="https://github.com/vicr123/the-libs"
