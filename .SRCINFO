@@ -1,7 +1,7 @@
 pkgbase = linux-amd-staging-git
 	pkgver = 4.11.665002.cad2d1111e12
-	pkgrel = 1
-	url = https://www.kernel.org/
+	pkgrel = 2
+	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = i686
 	arch = x86_64
 	license = GPL2
