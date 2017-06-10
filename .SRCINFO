@@ -1,0 +1,17 @@
+pkgbase = iaito-git
+	pkgdesc = A Qt and C++ GUI for radare2 reverse engineering framework
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/hteso/iaito
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = radare2
+	source = git://github.com/hteso/iaito
+	md5sums = SKIP
+
+pkgname = iaito-git
+
