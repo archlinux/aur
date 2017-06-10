@@ -3,8 +3,8 @@
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=vips
-pkgver=8.5.5
-pkgrel=2
+pkgver=8.5.6
+pkgrel=1
 pkgdesc="A free image processing system"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -16,7 +16,7 @@ optdepends=('python2: vipsprofile')
 # minimal depends: 'libxml2'
 options=('!libtool')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0891af4531d6f951a16ca6d03020b73796522d5fcf7c6247f2f04c896ecded28')
+sha256sums=('19a77ab200eb0ddfcd8babab130fe43c7730880d1f1fdfbdd8def519af32c4b8')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -30,7 +30,4 @@ package() {
   cd "$srcdir"/$pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
-
-  # fix vipsprofile - bug reported and can be removed by 8.6.0
-  sed -i 's|^#!.*python$|&2|' "$pkgdir/usr/bin/vipsprofile"
 }
