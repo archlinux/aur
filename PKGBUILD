@@ -1,6 +1,6 @@
 # Maintainer: lazant <a.l.i.c.e at outlook.com>
 pkgname=keepass-ja
-pkgver=2.35
+pkgver=2.36
 pkgrel=1
 pkgdesc="Japanese locale for keepass"
 license=('GPL2')
@@ -9,7 +9,7 @@ makedepends=('unzip')
 url="http://keepass.info/translations.html"
 source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Japanese.zip)
 arch=(any)
-md5sums=('11ec1da198997ddbb97477f90bcee23e')
+md5sums=('4281836cdc264a67a0dad8f77f5bda91')
 
 package(){
    mkdir -p "${pkgdir}"/usr/share/keepass
