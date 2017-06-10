@@ -2,7 +2,7 @@
 
 _pkgname="easystroke"
 pkgname="$_pkgname-git"
-pkgver="0.6.0.r7.g72eaf61"
+pkgver=0.6.0.r9.gf7c1614
 pkgrel=1
 pkgdesc="Gesture-recognition application for X11."
 arch=("i686" "x86_64")
@@ -16,11 +16,13 @@ install="$_pkgname.install"
 source=("git+https://github.com/thjaeger/easystroke.git"
         "sigc.patch"
         "dont-ignore-xshape-when-saving.patch"
-        "add-toggle-option.patch")
+        "add-toggle-option.patch"
+        "abs.patch")
 md5sums=("SKIP"
          "25fb4b21e36501276285caa788e1acd0"
          "b9cd799d59ec868371e8e6c538d43bf6"
-         "39013c97c368735967a2f6897c96d614")
+         "39013c97c368735967a2f6897c96d614"
+         "cf43fd18e370a37d9e780df97f1cbf92")
 
 pkgver() {
   cd "$_pkgname"
