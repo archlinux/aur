@@ -2,7 +2,7 @@
 
 pkgname=cereal
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++11 library for serialization'
 arch=('i686' 'x86_64')
 url='https://github.com/USCiLab/cereal'
@@ -27,7 +27,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-error=unused-variable"
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-unused-variable -Wno-implicit-fallthrough"
   make
 }
 
