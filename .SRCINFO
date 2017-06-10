@@ -1,11 +1,11 @@
 pkgbase = perl-xml-tokeparser
 	pkgdesc = Perl/CPAN Module XML::TokeParser
 	pkgver = 0.05
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/CPAN/authors/id/M/ME/MERLYN/
-	arch = i686
-	arch = x86_64
-	license = unknown
+	arch = any
+	license = GPL
+	license = PerlArtistic
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/P/PO/PODMASTER/XML-TokeParser-0.05.tar.gz

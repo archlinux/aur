@@ -1,12 +1,13 @@
-#Maintainer : Mr_Men <tetcheve at gmail dot com>
+# Maintainer : Brian Bidulock <bidulock@openss7.org>
+# Contributor : Mr_Men <tetcheve at gmail dot com>
 
 pkgname=perl-xml-tokeparser
 _realname=XML-TokeParser
 pkgver=0.05
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl/CPAN Module XML::TokeParser"
-arch=('i686' 'x86_64')
-license=('unknown')
+arch=('any')
+license=('GPL' 'PerlArtistic')
 url=http://search.cpan.org/CPAN/authors/id/M/ME/MERLYN/
 
 depends=('perl')
@@ -15,15 +16,15 @@ source=("http://search.cpan.org/CPAN/authors/id/P/PO/PODMASTER/${_realname}-$pkg
 md5sums=('a886ac451d99dca522df20d7cf7b28b4')
 
 build () {
-  cd $startdir/src/${_realname}-$pkgver
+  cd ${_realname}-$pkgver
   # install module in vendor directories.
   perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package () {
-  cd $startdir/src/${_realname}-$pkgver
-  make install DESTDIR=${pkgdir} || return 1
+  cd ${_realname}-$pkgver
+  make install DESTDIR=${pkgdir}
 
   # remove perllocal.pod and .packlist
   find ${pkgdir} -name perllocal.pod -delete
