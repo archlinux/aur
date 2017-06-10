@@ -1,7 +1,7 @@
 pkgname=anki
-pkgver=2.1.0a13
-alpha=13
-pkgrel=6
+pkgver=2.1.0a14
+alpha=14
+pkgrel=1
 pkgdesc="Friendly, intelligent flash cards"
 url="https://ankisrs.net/"
 license=('AGPL3')
@@ -13,7 +13,7 @@ optdepends=('lame: record sound'
             'mplayer: play sound'
             'texlive-core: use latex markup')
 source=(https://apps.ankiweb.net/downloads/alpha/alpha$alpha/$pkgname-$pkgver-source.tgz)
-sha512sums=('5a6055f3cf08a19a86843068135ea7034ee28bebb4c71453033c7e9a8f7e8e0281f4faca14f61debd16f0faad2cf6ba8c420a12d207ae380bfc3f282d9a2b0ba')
+sha512sums=('95f8b905f699bb4fdbad19438182312f2373b58cdc2a839944b97a75a6e4b5cc73f897f444f5603c26776283b747da7c100d46b4ccea8731e7b462eca7681058')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
