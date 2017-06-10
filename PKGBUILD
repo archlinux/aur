@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=N.86349.g2ba896fef7
-pkgrel=3
+pkgver=N.86415.g90e8317b3b
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (Git version with all possible libs)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -17,11 +17,11 @@ depends=(
         'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex'
         'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'libvorbis'
         'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
-        'zeromq' 'zvbi' 'xz' 'netcdf' 'openal' 'opencl-icd-loader' 'mesa' 'openssl'
-        'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
+        'zeromq' 'zvbi' 'xz' 'openal' 'opencl-icd-loader' 'mesa' 'openssl' 'sdl2'
+        'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'openh264'
-        'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'libmfx-git'
+        'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'libmfx-git' 'libmysofa-git'
 )
 depends_x86_64=('cuda' 'nvidia-utils')
 optdepends_x86_64=(
@@ -167,7 +167,7 @@ build() {
         --enable-libzvbi \
         --enable-lzma \
         --enable-decklink \
-        --enable-netcdf \
+        --enable-libmysofa \
         --enable-openal \
         --enable-opencl \
         --enable-opengl \
