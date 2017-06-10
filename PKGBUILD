@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/duniter/sakia/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=("9f9ba201e06ef74ef8e5c943783c8f94f32d82c3dc1df6d0d4bbae892eb4550f")
+sha256sums=("e03fe42c7a6cf940289ae9e63df2d0db89a0bb8a6cc0ef986cfb972842371f5b")
 validpgpkeys=()
 
 PYENV_PYTHON_VERSION=3.5.2
