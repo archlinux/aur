@@ -1,25 +1,18 @@
 pkgbase = asix-ax88179-dkms
 	pkgdesc = Driver for USB ASIX Ethernet model AX88179/AX88178A
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asix.com.tw/
-	install = ax88179_178a-dkms.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = dkms
 	source = http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v1.18.0_SOURCE.tar.bz2
-	source = dkms.conf
-	source = blacklist-ax88179_178a.conf
-	source = ax88179_178a-dkms.conf
-	source = ax88179_178a-dkms.install
+	source = asix-ax88179-dkms.conf
 	source = 0001-No-date-time.patch
 	source = 0002-b2b128.patch
 	sha512sums = 1fb871aca533eeac9476f647a9e6bebcc2151f9327240d31fcc8cdb4d566006386685b77a437924ca05785ec23d82d82d8c485fede5edac70a81742ea82fdf22
 	sha512sums = 7fcbb1bda952997151c3f9b647b1770273e3c6a64ff7306232ba4fbc11ede6dd29989b302f823ca9c36932499765a0c61405400440d699b1659841a855fe69c4
-	sha512sums = 23073861698f4cd181b5051c008a047742ec2710e2bf6927f86fd58822d1bb2edb1338460983d09deb3b006cdcb3b1efbfa94fc4ebfeb3f853a60fb467901948
-	sha512sums = 3c76cdd84422ed416c57ee3a93a90d888fca0baa2961f4a428fa6e1e49256a5b2de8164cda5524a3fa90b97e702b85d2da47c1cfc9d07fe450516dcacef187ac
-	sha512sums = 030d641119c90390973eb85b24697bbc1ce1a9785f604110225fdbf4889c857a6282d441e2c0a51acfa99c2f0946a394c546ca3fdea6295f737ba440bab6e6d2
 	sha512sums = 74a730f2ccfabf54c600391ee9a54ad3977b730c141c9ca9e7b1740c0d93161595a71312b4e3067411bde2f7d7f2a1cb9fb9e982a6ccfc0a4fbfa86829f6c346
 	sha512sums = a31cab0b3e0fa027acbf629aec7294d591d6dd01928de800bd915e78c75be7be0fe7603b6c69ed90f5a6fefe30ecf6a953fa154cccb03b9cb3e070e7566394f8
 
