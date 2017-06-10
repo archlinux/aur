@@ -23,8 +23,8 @@ pkgbase = liquidsky
 	source = liquidsky.sh
 	source = liquidsky.desktop
 	sha256sums = SKIP
-	sha256sums = a6edadaf93664a56fbe3f9d883146542cc1a795f7f09750babd5461da07bc8c2
-	sha256sums = 8b52fd84f397717396babd540422316c3771fe1d5a9cd61c2d88bb007c0da094
+	sha256sums = 094947892547c10c89c145894374064c62dc16d8c3e237fe2a46b9c4bc064f59
+	sha256sums = d3354f08697806b7034c24377c528bc2b4c1db23a27bc424deda5d0a7869e7e9
 
 pkgname = liquidsky
 
