@@ -1,0 +1,6 @@
+post_install() {
+    /usr/lib/vlc/vlc-cache-gen -f /usr/lib/vlc/plugins
+}
+post_remove() {
+    /usr/lib/vlc/vlc-cache-gen -f /usr/lib/vlc/plugins
+}
