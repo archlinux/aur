@@ -1,5 +1,5 @@
 pkgbase = kde-service-menu-encfs
-	pkgdesc = A KDE service menus for EncFS from dolphin
+	pkgdesc = A KDE service menus for EncFS from dolphin. KF5 version.
 	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://www.egregorion.net
