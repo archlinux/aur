@@ -9,7 +9,7 @@ url="http://www.egregorion.net"
 license=('GPL')
 depends=('dolphin' 'kdialog')
 source=("https://github.com/denoos/kde-service-menu-encfs/archive/v${pkgver}.tar.gz")
-md5sums=('22eebfc4c83590d18778b2f6372357fe')
+md5sums=('201ee55fcdd8d701b00a42ee04c4222b')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
