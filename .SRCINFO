@@ -1,7 +1,7 @@
 pkgbase = asix-ax88179-dkms
 	pkgdesc = Driver for USB ASIX Ethernet model AX88179/AX88178A
 	pkgver = 1.18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.asix.com.tw/
 	arch = i686
 	arch = x86_64

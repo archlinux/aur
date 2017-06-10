@@ -3,7 +3,7 @@
 
 pkgname=asix-ax88179-dkms
 pkgver=1.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for USB ASIX Ethernet model AX88179/AX88178A"
 arch=('i686' 'x86_64')
 
