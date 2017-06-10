@@ -1,6 +1,6 @@
 pkgbase = perl-inline-c
 	pkgdesc = Perl module providing a way to write Perl subroutines in C
-	pkgver = 0.76
+	pkgver = 0.78
 	pkgrel = 1
 	url = https://metacpan.org/release/Inline-C
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = perl-inline-c
 	depends = perl-parse-recdescent>=1.967009
 	depends = perl-pegex>=0.58
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Inline-C-0.76.tar.gz
-	md5sums = c0fbfdd058075c9271a1384c822c9a87
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TINITA/Inline-C-0.78.tar.gz
+	md5sums = 710a454b5337b1cbf3f2ae5c8c45b413
 
 pkgname = perl-inline-c
 
