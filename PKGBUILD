@@ -2,11 +2,11 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86349.g2ba896fef7
-pkgrel=1
-pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
+pkgrel=2
+pkgdesc='Record, convert and stream audio and video (Git version with all possible libs)'
 arch=('i686' 'x86_64')
-url="http://www.ffmpeg.org/"
-license=('custom:nonfree and unredistributable')
+url='http://www.ffmpeg.org/'
+license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
