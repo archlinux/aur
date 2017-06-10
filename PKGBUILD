@@ -2,7 +2,7 @@
 
 _pkgname=weboob
 pkgname=weboob-headless-git
-pkgver=1.2.r513.g81bfbe368
+pkgver=1.2.r855.g5185d341d
 pkgrel=1
 pkgdesc="Web Out Of Browsers provides several applications to interact with a lot of websites. Headless version, for use in e.g. Cozy/Kresus."
 arch=('any')
@@ -22,8 +22,8 @@ depends=('python2-dateutil'
          'python2-gdata'
          'python2-futures')
 makedepends=('python2-setuptools' 'git')
-conflicts=('weboob')
-provides=('weboob')
+conflicts=('weboob' 'weboob-git')
+provides=('weboob' 'weboob-git')
 source=(${_pkgname}::'git+https://git.weboob.org/weboob/devel.git')
 sha256sums=('SKIP')
 
