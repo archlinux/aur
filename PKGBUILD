@@ -6,10 +6,10 @@
 pkgname='mate-multiload-ng-applet-gtk2-git'
 pkgdesc='Modern graphical system monitor, MATE panel applet'
 pkgver=r933.bc23d06
-pkgrel=1
+pkgrel=2
 
 makedepends=('intltool' 'git')
-depends=('gtk2>=2.20.0' 'cairo' 'mate-panel>=1.7.0')
+depends=('gtk2>=2.20.0' 'cairo' 'mate-panel-gtk2>=1.7.0')
 
 conflicts=('mate-multiload-ng-applet-gtk2' 'mate-multiload-ng-applet-gtk3' 'mate-multiload-ng-applet-gtk3-git')
 
