@@ -26,7 +26,8 @@ build() {
   cd build
   cmake ../libxlsxwriter \
     -DBUILD_STATIC=OFF \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
