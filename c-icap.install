@@ -1,4 +1,5 @@
 post_upgrade() {
+	systemd-sysusers c-icap.conf
 	systemd-tmpfiles --create c-icap.conf
 }
 
