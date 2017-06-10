@@ -1,0 +1,16 @@
+Author: Daniel Baumann <daniel@debian.org>
+Description:
+ Opening libopencryptoki correctly with soname major (Closes: #493999).
+
+diff -Naurp tpm-tools.orig/include/tpm_pkcs11.h tpm-tools/include/tpm_pkcs11.h
+--- tpm-tools.orig/include/tpm_pkcs11.h	2008-06-21 16:14:56.000000000 +0200
++++ tpm-tools/include/tpm_pkcs11.h	2008-08-06 16:42:50.000000000 +0200
+@@ -26,7 +26,7 @@
+ 
+ #include <opencryptoki/pkcs11.h>
+ 
+-#define TPM_OPENCRYPTOKI_SO	"libopencryptoki.so"
++#define TPM_OPENCRYPTOKI_SO	"libopencryptoki.so.0"
+ #define TPM_TOKEN_LABEL		"IBM PKCS#11 TPM Token"
+ #define TPM_FIND_MAX		10
+ 

@@ -1,4 +1,5 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 # Contributor: Patryk Kowalczyk <patryk AT kowalczyk dot ws>
 # Contributor: Robert Buhren <robert@robertbuhren.de>
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
@@ -7,28 +8,45 @@
 
 pkgname=tpm-tools
 pkgver=1.3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to manage and diagnose a TPM"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/trousers"
 license=('CPL')
 depends=('trousers' 'opencryptoki')
-source=(http://downloads.sourceforge.net/project/trousers/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('9cb714e2650826e2e932f65bc0ba9d61b927dc5fea47f2c2a2b64f0fdfcbfa68')
+source=(http://downloads.sourceforge.net/project/trousers/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
+        01-opencryptoki-soname.patch
+        03-fix-bool-error-parseStringWithValues.patch
+        04-fix-FTBFS-clang.patch
+        05-openssl1.1_fix_data_mgmt.patch)
+noextract=(${pkgname}-${pkgver}.tar.gz)
+sha1sums=('c35cb031c6b5220dd1c8a03995654fdd12aa3031'
+          'f87849fc46d8c8cab5b7a0fbc1a8de69f3fd1669'
+          'b40d56f3a7ca3ef231470cc401a73e178b698a4e'
+          '521e9f58e6740bc50979e8dc727a60b82ad4fae0'
+          '3fdf2d39a25f5c2e152ec44a457ffd2f7258d698')
+
+prepare() {
+  mkdir -p ${pkgname}-${pkgver}
+  bsdtar -x -f ${pkgname}-${pkgver}.tar.gz -C ${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
+  patch -p1 -i ${srcdir}/01-opencryptoki-soname.patch
+  patch -p1 -i ${srcdir}/03-fix-bool-error-parseStringWithValues.patch
+  patch -p1 -i ${srcdir}/04-fix-FTBFS-clang.patch
+  patch -p1 -i ${srcdir}/05-openssl1.1_fix_data_mgmt.patch
+}
 
 build() {
-  # the tarball for 1.3.9 doesn't have a parent directory
-  cd ${srcdir}/
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr \
-	            --mandir=/usr/share/man \
-	            --enable-static \
-	            --sbindir=/usr/bin
+              --mandir=/usr/share/man \
+              --enable-static \
+              --sbindir=/usr/bin
   make
 }
 
 package() {
-  # the tarball for 1.3.9 doesn't have a parent directory
-  cd ${srcdir}/
+  cd ${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
 
