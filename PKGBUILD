@@ -4,13 +4,13 @@
 
 _pkgbase='openage'
 pkgname="$_pkgbase-git"
-pkgver=v0.3.0.r859.g6952370a
+pkgver=v0.3.0.r932.ga7c98afe
 pkgrel=1
 pkgdesc='A free (as in freedom) clone of the Age of Empires II engine'
 arch=('i686' 'x86_64')
 url='http://openage.sft.mx/'
 license=('GPL3')
-depends=('python' 'libepoxy' 'ftgl' 'sdl2_image' 'opusfile' 'qt5-declarative' 'xdg-utils')
+depends=('python' 'libepoxy' 'ftgl' 'sdl2_image' 'opusfile' 'qt5-declarative' 'xdg-utils' 'sdl2' 'qt5-quickcontrols')
 makedepends=('git' 'cmake' 'python-pillow' 'gcc' 'cython' 'python-pygments' 'python-numpy' 'opus-tools')
 optdepends=('python-pillow: for the media convert script'
             'python-numpy: for the media convert script'

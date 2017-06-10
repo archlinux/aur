@@ -1,6 +1,6 @@
 pkgbase = openage-git
 	pkgdesc = A free (as in freedom) clone of the Age of Empires II engine
-	pkgver = v0.3.0.r859.g6952370a
+	pkgver = v0.3.0.r932.ga7c98afe
 	pkgrel = 1
 	url = http://openage.sft.mx/
 	arch = i686
@@ -21,6 +21,8 @@ pkgbase = openage-git
 	depends = opusfile
 	depends = qt5-declarative
 	depends = xdg-utils
+	depends = sdl2
+	depends = qt5-quickcontrols
 	optdepends = python-pillow: for the media convert script
 	optdepends = python-numpy: for the media convert script
 	optdepends = opus-tools: for the media convert script
