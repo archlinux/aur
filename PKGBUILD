@@ -5,7 +5,7 @@
 pkgname=perl-netcdf
 _pkgname=netcdf-perl
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A perl extension module for scientific data access via the netCDF API"
 arch=('i686' 'x86_64')
 url="http://www.unidata.ucar.edu/software/netcdf-perl/"
@@ -36,6 +36,15 @@ build() {
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
+_perl_depends() {
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
+}
 package() {
   cd $srcdir/$_pkgname-$pkgver/src
   install -Dm0644 netCDFPerl.1 "${pkgdir}"/usr/share/man/man3/NetCDF.3pm
@@ -45,6 +54,7 @@ package() {
   make DESTDIR=$pkgdir install
   find $pkgdir -name '.packlist' -delete
   find $pkgdir -name '*.pod' -delete
+  _perl_depends
 }
 
 # vim:set ts=2 sw=2 et:
