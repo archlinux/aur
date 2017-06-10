@@ -1,14 +1,14 @@
 pkgbase = kde-service-menu-encfs
 	pkgdesc = A KDE service menus for EncFS from dolphin. KF5 version.
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.egregorion.net
 	arch = any
 	license = GPL
 	depends = dolphin
 	depends = kdialog
 	source = https://github.com/denoos/kde-service-menu-encfs/archive/v0.5.2.tar.gz
-	md5sums = 22eebfc4c83590d18778b2f6372357fe
+	md5sums = 201ee55fcdd8d701b00a42ee04c4222b
 
 pkgname = kde-service-menu-encfs
 
