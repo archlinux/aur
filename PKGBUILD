@@ -1,7 +1,7 @@
 # Maintainer: Andrej Marolt <andrej.marolt@gmail.com>
 pkgname=jboss-forge-offline
-_forge_version=3.6.1.Final
-pkgver=3.6.1
+_forge_version=3.7.0.Final
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="JBoss Forge is the Fastest way to build Maven-based Java EE projects, and anything else you fancy."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=()
 install=${pkgname}.install
 # source=("http://downloads.jboss.org/forge/releases/${_forge_version}/forge-distribution-${_forge_version}-offline.zip")
 source=("https://oss.sonatype.org/service/local/repositories/releases/content/org/jboss/forge/forge-distribution/${_forge_version}/forge-distribution-${_forge_version}-offline.zip")
-md5sums=('bcc628e290a364e8e5383f1746e0523d')
+md5sums=('91bd44b4f71e3309a02c0485c068ea67')
 
 package() {
     cd "$srcdir/forge-distribution-${_forge_version}"
