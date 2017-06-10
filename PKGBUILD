@@ -1,39 +1,44 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 # Contributor: Patryk Kowalczyk <patryk at kowalczyk dot ws>
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 # Contributor: VuDu <vudu.curse@gmail.com>
 
 pkgname=opencryptoki
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PKCS11 implementation for Linux"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/opencryptoki"
 license=('CPL' 'GPL')
 depends=('openssl' 'trousers')
-makedepends=('libtool' 'expect')
-install=${pkgname}.install
+makedepends=('expect')
 source=(https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/3.7/${pkgname}-${pkgver}.tar.gz
-        'opencryptoki.tmpfiles.conf')
+        opencryptoki.sysusers.conf
+        opencryptoki.tmpfiles.conf)
 sha256sums=('a2d4c3a2393e9b805f5368628c7b328039c4cb0e5fd23c157f801e99070485cf'
+            '63723f403ac795182cb258d07896e6f3828e8db2fe31597df00a0461783dd16d'
             'e315fc996a1f416efd34f6f3e3149378118cded0da9f8a919e9501ea8db90fac')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   ./bootstrap.sh
-  ./configure --prefix=/usr --sysconfdir=/etc \
-	--with-systemd=/usr/lib/systemd/system/ \
-	--localstatedir=/var \
-	--sbindir=/usr/bin \
-	--enable-testcases
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --with-systemd=/usr/lib/systemd/system/ \
+              --localstatedir=/var \
+              --sbindir=/usr/bin \
+              --enable-testcases
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir/" install -i
+  install -Dm644 "${srcdir}/opencryptoki.sysusers.conf" \
+                 "${pkgdir}/usr/lib/sysusers.d/opencryptoki.conf"
   install -Dm644 "${srcdir}/opencryptoki.tmpfiles.conf" \
-      "${pkgdir}/usr/lib/tmpfiles.d/opencryptoki.conf"
+                 "${pkgdir}/usr/lib/tmpfiles.d/opencryptoki.conf"
   rm -rf ${pkgdir}/var/lock
 }
 

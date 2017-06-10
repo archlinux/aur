@@ -1,7 +1,0 @@
-post_install() {
-  getent group pkcs11 > /dev/null || groupadd -r pkcs11
-}
-
-post_upgrade() {
-  post_install $1
-}
