@@ -1,7 +1,8 @@
 pkgbase = linux-amd-staging-git
-	pkgver = 4.9.636097.99eb22d3eab1
+	pkgver = 4.9.665002.cad2d1111e12
 	pkgrel = 1
 	url = https://www.kernel.org/
+	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -12,16 +13,16 @@ pkgbase = linux-amd-staging-git
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-4.9
+	source = linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-4.11
 	source = config.x86_64
-	source = 99-linux.hook
+	source = config.i686
+	source = 90-linux.hook
 	source = linux.preset
-	source = change-default-console-loglevel.patch
 	sha256sums = SKIP
-	sha256sums = 25dcd2e535df8e913c148f37197ff14160a8901988f6dab03a8b6edf50c912d9
+	sha256sums = b5d5a6107d4e654705a1abc0e83e515b605ebfaceb16d69468c8179698d22812
+	sha256sums = 995d837997de03b72108d2602be5c9fd15a11ff652dd7c5152549999b55419fc
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-amd-staging-git
 	pkgdesc = The Linux-amd-staging-git kernel and modules
