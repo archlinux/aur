@@ -4,7 +4,7 @@
 
 pkgname=ums
 pkgver=6.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8."
 arch=('i686' 'x86_64')
 url="http://www.universalmediaserver.com/"
@@ -21,7 +21,7 @@ optdepends=("vlc: Internet video/audio support"
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
 #source=("http://app.oldfoss.com:81/download/Universal-Media-Server/1466892989UMS-$pkgver-Java8.tgz"
-source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver-Java8.tgz"
+source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgve.tgz"
         'ums.desktop'
         'ums.service')
 sha256sums=('dfc40476cf0f03f1761cb0fe004ed1931d17cbfd1e012e7801f10db167aec722'
