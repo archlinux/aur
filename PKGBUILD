@@ -1,6 +1,6 @@
 pkgname=mingw-w64-fontconfig
 pkgver=2.12.3
-pkgrel=1
+pkgrel=2
 _commit=690f822a1b26b089d86e9843746cab80f3c07fe3  # tags/2.12.3^0
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=(any)
@@ -11,10 +11,12 @@ depends=(mingw-w64-expat mingw-w64-freetype2)
 options=(staticlibs !strip !buildflags)
 source=("git+https://anongit.freedesktop.org/git/fontconfig#commit=$_commit"
 "0001-fix-config-linking.all.patch"
-"0007-pkgconfig.mingw.patch")
+"0007-pkgconfig.mingw.patch"
+"fix-cache-update.patch")
 sha256sums=('SKIP'
             '1266d4bbd8270f013fee2401c890f0251babf50a175a69d681d3a6af5003c899'
-            'af373531873da46d0356305da5444c1ec74f443cd2635ea2db6b7dadd1561f5b')
+            'af373531873da46d0356305da5444c1ec74f443cd2635ea2db6b7dadd1561f5b'
+            'f0d9cab1cc7f6c45303f1ff31c6c52641a2101b4b3c4788fe89c2748ffa48621')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,6 +27,7 @@ pkgver() {
 
 prepare() {
 	cd fontconfig
+	patch -p1 -i ${srcdir}/fix-cache-update.patch
 	patch -p1 -i ${srcdir}/0001-fix-config-linking.all.patch
 	patch -p1 -i ${srcdir}/0007-pkgconfig.mingw.patch
 	NOCONFIGURE=1 ./autogen.sh
