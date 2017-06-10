@@ -31,7 +31,7 @@ source=("${_branchname}.zip::https://github.com/leon0516/sublime-text-imfix-fcit
 source_i686=("https://download.sublimetext.com/${_pkgname}_build_${pkgver:2}_x32.tar.bz2")
 source_x86_64=("http://download.sublimetext.com/${_pkgname}_build_${pkgver:2}_x64.tar.bz2")
 
-sha512sums=('923e05d7118aed5b604a899c0a0570d0f31fe9ff9980bfe7cf50cd7f9245a158b0c7fe1db5ca557ce787436df35b599b1d338e49f649b5737f969ea90d2cc253'
+sha512sums=('d9fc5913384ee9ff9847807c5a746d1c10c95116ef5e40f168f57395a508526f2ffc618586b83efdbd88a32d0ed2b1a65c2b18c405ea8ea1fa44a40c9befa867'
             '54b356867e6699fe88130c183ec76ea631f4afeab1a15f37e9ecd460f726bc7c80f056fd57637c24a67b865522e9d3bb5156414fe3cc5d091be9e1f21ef0f31f'
             '32023ae446a981cbf22c1e7c056d1bec76b1a8c4cba1a625d8314331c947ff3d12adaa24f267794f270de76a1170d19405a57100db1054760bfeeb29950bb5a0'
             '3ed8d47663d6e825ff3321155a65e1afa691fea541b96500d11ac763c55741db5712a307f6695fdf5f6d09a71d195efea494736026612bac5d0e410bc1e43c1f')
@@ -73,7 +73,7 @@ _package_common() {
 
   # Make symbolic links
   ln -sf "/usr/bin/${_pkgname1}" "${pkgdir}/usr/bin/subl3"
-
+  
   # Install license file
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
