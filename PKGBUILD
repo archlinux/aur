@@ -38,12 +38,12 @@
 
 pkgname=openssh-hpn-git
 pkgver=7.5.P1.r71.gecb50afb
-pkgrel=1
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='http://www.psc.edu/networking/projects/hpn-ssh/'
 license=('custom:BSD')
 arch=('i686' 'x86_64' 'armv7h')
-depends=('krb5' 'ldns' 'libedit' 'openssl' 'pam')
+depends=('krb5' 'ldns' 'libedit' 'openssl-1.0' 'pam')
 makedepends=('git')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
@@ -71,6 +71,22 @@ sha256sums=('SKIP'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
 
 install=$pkgname.install
+
+prepare() {
+	
+	if ! [ -e openssl-1.0 ] ; then
+		mkdir openssl-1.0
+	fi
+	
+	if ! [ -e openssl-1.0/include ] ; then
+		ln -s /usr/include/openssl-1.0 openssl-1.0/include
+	fi
+
+	if ! [ -e openssl-1.0/lib ] ; then
+		ln -s /usr/lib/openssl-1.0 openssl-1.0/lib
+	fi
+	
+}
 
 pkgver() {
   cd openssh-portable/
@@ -106,6 +122,7 @@ build() {
     --with-mantype=man \
     --with-md5-passwords \
     --with-pid-dir=/run \
+    --with-ssl-dir=../openssl-1.0 \
 
   make
 }
