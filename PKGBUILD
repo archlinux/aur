@@ -15,7 +15,7 @@ optdepends=('gstreamer: Video support'
     'exiv2: Embedded metadata support'
     'libjpeg-turbo: Jpeg writing support'
     'libtiff: Tiff writing support'
-    'libopenraw: Support for RAW photos'
+    'dcraw: Support for RAW photos'
     'brasero: Burn discs'
     'liboauth: Web albums'
     'libchamplain: Map Viewer')
