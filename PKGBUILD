@@ -5,7 +5,7 @@
 
 pkgname=jhbuild
 pkgver=3.15.92+1180+g19a3a0f3
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -21,7 +21,7 @@ _commit=19a3a0f3
 source=("$pkgname::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
-            'ff7c90c43c7380c2ea4d2390e75b405bec625892b25e678df09d506117bf9b99')
+            'f2c25fd732971383f13559a3ed646b91d561f4eb10de91551f3eea15090c49e2')
 
 pkgver() {
   cd $pkgname
@@ -55,4 +55,4 @@ package() {
 }
 
 # list of dependencies reported by 'jhbuild sysdeps'
-depends+=(anthy argyllcms caribou cmake cups docbook-sgml docbook-utils docbook-xsl dotconf doxygen espeak exempi git gmime gperf gtkspell3 hyphen intltool itstool kyotocabinet libatasmart libcanberra libdmapsharing libdvdread libgexiv2 libgphoto2 libhangul libical libmusicbrainz5 libndp liboauth libpwquality libraw libvirt libvpx mpc ninja openldap opus plymouth poppler-glib ppp python-cairo ragel ruby smbclient startup-notification taglib v4l-utils vala wavpack wget wireless_tools xf86-input-wacom xmlto xorg-server-xwayland xorg-util-macros xtrans)
+depends+=(anthy argyllcms caribou check cmake cups docbook-sgml docbook-utils docbook-xsl dotconf doxygen espeak exempi git gmime gperf gtkspell3 hyphen intltool itstool kyotocabinet libatasmart libcanberra libdmapsharing libdvdread libgexiv2 libgphoto2 libhangul libical libmusicbrainz5 libndp liboauth libpwquality libraw libunwind libvirt libvpx mpc ninja openldap opus plymouth poppler-glib ppp python-cairo ragel ruby smbclient startup-notification taglib v4l-utils vala wavpack wget wireless_tools xf86-input-wacom xmlto xorg-server-xwayland xorg-util-macros xtrans)
