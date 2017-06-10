@@ -1,0 +1,17 @@
+pkgbase = pdsite-git
+	pkgdesc = Pandoc-backed static site generator shell script with precompiled binary dependencies.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/GordStephen/pdsite
+	arch = any
+	makedepends = git
+	depends = pandoc
+	depends = tree
+	optdepends = webfs
+	source = pdsite-git::git+https://github.com/GordStephen/pdsite
+	source = binlink
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pdsite-git
+
