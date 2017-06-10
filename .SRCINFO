@@ -1,7 +1,7 @@
 pkgbase = opencv-contrib
 	pkgdesc = Open Source Computer Vision Library including additional 'contrib' modules
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.2.0
+	pkgrel = 1
 	url = http://opencv.org/
 	arch = i686
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = opencv-contrib
 	optdepends = libcl: For coding with OpenCL
 	optdepends = python-numpy: Python 3.x interface
 	optdepends = python2-numpy: Python 2.x interface
-	source = opencv-3.1.0::https://github.com/Itseez/opencv/archive/3.1.0.zip
-	source = opencv-3.1.0-contrib::https://github.com/Itseez/opencv_contrib/archive/3.1.0.zip
-	md5sums = 6082ee2124d4066581a7386972bfd52a
-	md5sums = 0d0bfeabe539542791b465ec1c7c90e6
+	source = opencv-3.2.0::https://github.com/Itseez/opencv/archive/3.2.0.zip
+	source = opencv-3.2.0-contrib::https://github.com/Itseez/opencv_contrib/archive/3.2.0.zip
+	md5sums = bfc6a261eb069b709bcfe7e363ef5899
+	md5sums = 423237bccd1c6e0a5edd812823fb4237
 
 pkgname = opencv-contrib
 	provides = opencv
@@ -32,7 +32,7 @@ pkgname = opencv-contrib
 
 pkgname = opencv-samples-contrib
 	pkgdesc = Open Source Computer Vision Library including additional 'contrib' modules (samples)
-	depends = opencv-contrib=3.1.0
+	depends = opencv-contrib=3.2.0
 	provides = opencv-samples
 	conflicts = opencv-samples
 

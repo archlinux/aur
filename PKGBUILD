@@ -5,8 +5,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=('opencv-contrib' 'opencv-samples-contrib')
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library including additional 'contrib' modules"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -21,8 +21,8 @@ optdepends=('eigen'
 source=("${pkgname%-contrib}-$pkgver::https://github.com/Itseez/opencv/archive/$pkgver.zip"
         "${pkgname%-contrib}-$pkgver-contrib::https://github.com/Itseez/opencv_contrib/archive/$pkgver.zip")
 
-md5sums=('6082ee2124d4066581a7386972bfd52a'
-         '0d0bfeabe539542791b465ec1c7c90e6')
+md5sums=('bfc6a261eb069b709bcfe7e363ef5899'
+         '423237bccd1c6e0a5edd812823fb4237')
 
 _cmakeopts=('-D WITH_OPENCL=ON'
             '-D WITH_OPENGL=ON'
@@ -40,6 +40,7 @@ _cmakeopts=('-D WITH_OPENCL=ON'
             '-D CMAKE_BUILD_TYPE=Release'
             '-D CMAKE_INSTALL_PREFIX=/usr'
             '-D CMAKE_SKIP_RPATH=ON'
+            '-D ENABLE_PRECOMPILED_HEADERS=off'
 # Settings for neural network module'
             '-D BUILD_opencv_dnn=ON'
             '-D BUILD_LIBPROTOBUF_FROM_SOURCES=ON')
