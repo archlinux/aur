@@ -1,7 +1,7 @@
 pkgbase = perl-filesys-df
 	pkgdesc = Perl extension for filesystem disk space information
 	pkgver = 0.92
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/~iguthrie/Filesys-Df-0.92/
 	arch = i686
 	arch = x86_64
