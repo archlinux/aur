@@ -4,14 +4,15 @@
 
 pkgbase=linux-amd-staging-git
 _srcname=$pkgbase
-pkgver=4.9.665002.cad2d1111e12
+_branch=amd-staging-4.11
+pkgver=4.11.665002.cad2d1111e12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'git')
 options=('!strip')
-source=('linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-4.11'
+source=("linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
         # the main kernel config files
         'config.x86_64' 'config.i686'
         # pacman hook for initramfs regeneration
@@ -20,15 +21,16 @@ source=('linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch
         'linux.preset')
 sha256sums=('SKIP'
             'b5d5a6107d4e654705a1abc0e83e515b605ebfaceb16d69468c8179698d22812'
-            '995d837997de03b72108d2602be5c9fd15a11ff652dd7c5152549999b55419fc'
+            'e843b95d4562fc695380087a52dc01baa49bfad6e9d4e184ee5ca8adf4179b17'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+
 _kernelname=${pkgbase#linux}
 
 pkgver() {
   cd "${srcdir}/${_srcname}"
 
-  echo 4.9.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo 4.11.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {

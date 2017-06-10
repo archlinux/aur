@@ -1,5 +1,5 @@
 pkgbase = linux-amd-staging-git
-	pkgver = 4.9.665002.cad2d1111e12
+	pkgver = 4.11.665002.cad2d1111e12
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = linux-amd-staging-git
 	source = linux.preset
 	sha256sums = SKIP
 	sha256sums = b5d5a6107d4e654705a1abc0e83e515b605ebfaceb16d69468c8179698d22812
-	sha256sums = 995d837997de03b72108d2602be5c9fd15a11ff652dd7c5152549999b55419fc
+	sha256sums = e843b95d4562fc695380087a52dc01baa49bfad6e9d4e184ee5ca8adf4179b17
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
