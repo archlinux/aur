@@ -1,9 +1,8 @@
 pkgbase = asix-dkms
 	pkgdesc = Driver for USB ASIX Ethernet models AX88760 AX88772 AX88772A AX88772B AX88772C AX88178
 	pkgver = 4.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asix.com.tw/
-	install = asix-dkms.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,13 +10,10 @@ pkgbase = asix-dkms
 	provides = asix-dkms
 	provides = asix-module
 	conflicts = asix-module
-	options = !strip
 	source = http://asix.com.tw/FrootAttach/driver/AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v4.20.0_Source.tar.gz
-	source = dkms.conf
-	source = asix-dkms.install
+	source = asix-dkms.conf
 	sha512sums = 1c51cba49481b7a7273019c9ce6fdf988cfbeeb270cef78a5722439f8fd0e07e9e05bc4983b81998724413df803f3aabe5a75d0367a0423751115e4c2f64009d
-	sha512sums = c6230810dfe963452b89800f220713ef3c5539b27f5d2e94b302f51f3b5cd65ed364e7f326b2fb61fdfbe6b831909f2d50c88ce93c5805e3af3d280dc03f0fe1
-	sha512sums = f6612ca32a5cd8848878b495bbb41e18fbe4ad442f3b2f81d53ef6fc2bcacc18cb188f96108abf76f514f026d3d45ba4134c2f3efed09d88b5718cbff62b6a41
+	sha512sums = ded1bed08f61ce207e394fc4f49345f0ea50639f53fb797907402b3503feecc485ba85fb799f2b3bc9c22cd4a250509c5eb99d4b36d42228a9475a9e7d67b293
 
 pkgname = asix-dkms
 
