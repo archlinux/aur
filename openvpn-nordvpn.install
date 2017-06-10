@@ -2,6 +2,14 @@ pre_remove() {
     nordvpn stop
 }
 
+post_upgrade() {
+    if [ $(find /etc/openvpn/client -name 'nordvpn_*p.conf' | wc -l) -eq 0 ];
+    then
+        echo "Config files outdated."
+        nordvpn update -f
+    fi
+}
+
 post_remove() {
     rm -rf /etc/openvpn/client/nordvpn
     find /etc/openvpn/client -name 'nordvpn_*.conf' | xargs -r rm
