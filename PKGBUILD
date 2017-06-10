@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.17
+_ver=1.19
 _pkgbase=atril
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
+pkgver=${_ver}.0
 pkgrel=5
 pkgdesc="MATE document viewer"
 url="http://mate-desktop.org"
@@ -14,9 +14,9 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dconf' 'dbus' 'desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache' 
-         'libsecret' 'libsm' 'libspectre' 'mate-desktop-dev' 'mathjax' 
+         'libsecret' 'libsm' 'libspectre' 'mate-desktop>=1.19' 'mathjax' 
          'poppler-glib' 'webkitgtk' 'zlib')
-makedepends=('caja-dev' 'djvulibre' 'gtk-doc>=1.13' 'intltool>=0.50.1' 'gobject-introspection' 'libgxps'
+makedepends=('caja>=1.19' 'djvulibre' 'gtk-doc>=1.13' 'intltool>=0.50.1' 'gobject-introspection' 'libgxps'
              'texlive-bin' 'yelp-tools' 'webkit2gtk')
 optdepends=('caja: Document Properties extension'
             'djvulibre: DjVu support'
@@ -25,7 +25,7 @@ optdepends=('caja: Document Properties extension'
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('189a0808ff41016a0bf3860a20ee6a6a109dd2da')
+sha1sums=('8310ef0e6cf020a2c9c73fd9831e3d93866ffb37')
 
 prepare() {
     cd "${srcdir}"

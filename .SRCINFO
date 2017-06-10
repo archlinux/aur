@@ -1,13 +1,13 @@
 pkgbase = atril-dev
 	pkgdesc = MATE document viewer
-	pkgver = 1.17.1
+	pkgver = 1.19.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = caja-dev
+	makedepends = caja>=1.19
 	makedepends = djvulibre
 	makedepends = gtk-doc>=1.13
 	makedepends = intltool>=0.50.1
@@ -25,7 +25,7 @@ pkgbase = atril-dev
 	depends = libsecret
 	depends = libsm
 	depends = libspectre
-	depends = mate-desktop-dev
+	depends = mate-desktop>=1.19
 	depends = mathjax
 	depends = poppler-glib
 	depends = webkitgtk
@@ -39,8 +39,8 @@ pkgbase = atril-dev
 	provides = atril-gtk3
 	conflicts = atril
 	conflicts = atril-gtk3
-	source = http://pub.mate-desktop.org/releases/1.17/atril-1.17.1.tar.xz
-	sha1sums = 189a0808ff41016a0bf3860a20ee6a6a109dd2da
+	source = http://pub.mate-desktop.org/releases/1.19/atril-1.19.0.tar.xz
+	sha1sums = 8310ef0e6cf020a2c9c73fd9831e3d93866ffb37
 
 pkgname = atril-dev
 	pkgdesc = MATE document viewer (GTK3 version)
