@@ -1,6 +1,6 @@
 # Maintainer: Denoos <denis at sent.com>
 
-pkgname=kde-servicemenus-encfs
+pkgname=kde-service-menu-encfs
 pkgver=0.5.2
 pkgrel=1
 pkgdesc="A KDE service menus for EncFS from dolphin"
