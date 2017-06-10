@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lilypond-devel
-pkgver=2.19.61
+pkgver=2.19.62
 pkgrel=1
 pkgdesc="An automated music engraving system (development version)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ optdepends=('netpbm: building HTML documentation'
 provides=("lilypond=$pkgver")
 conflicts=('lilypond' 'lilypond-git')
 source=("http://download.linuxaudio.org/lilypond/sources/v2.19/lilypond-${pkgver}.tar.gz" "no_fontforge-versioncheck.patch")
-sha256sums=('fc42103824cbd9e5d230ded0f73c8ecffae14998b2ad2e136914f7eab1eecb0a'
+sha256sums=('6174314a79238fe1edec0eb89e5afc297bc6138c756887be9117a8f0f1db83ac'
             'e74391f718babb984c5f637397162cf096c4716f5b9a21346ec76035cfc80817')
 
 prepare() {
