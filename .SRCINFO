@@ -11,8 +11,7 @@ pkgbase = dynare
 	depends = blas
 	depends = gsl
 	depends = libmatio
-	optdepends = latex
-	optdepends = slicot
+	optdepends = texlive-core
 	source = http://www.dynare.org/release/source/dynare-4.5.0.tar.xz
 	md5sums = 181c532e1636cef7eaf341afd2e0e990
 

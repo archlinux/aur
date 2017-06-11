@@ -7,7 +7,7 @@ url="http://www.dynare.org/"
 license=('GPL')
 depends=('octave' 'boost' 'blas' 'gsl' 'libmatio')
 makedepends=('gcc-fortran')
-optdepends=('latex' 'slicot')
+optdepends=('texlive-core')
 source=(http://www.dynare.org/release/source/${pkgname}-${pkgver}.tar.xz)
 md5sums=('181c532e1636cef7eaf341afd2e0e990')
 
