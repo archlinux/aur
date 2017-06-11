@@ -1,14 +1,14 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=spindown
 pkgver=0.4.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Daemon that spins down idle disks"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/spindown/"
 license=('GPL3')
 depends=('sg3_utils')
 backup=('etc/spindown.conf')
-source=("http://spindown.googlecode.com/files/${pkgname}-${pkgver}.tar.gz"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/spindown/${pkgname}-${pkgver}.tar.gz"
     'spindown.service'
     'spindown.tmpfiles')
 
