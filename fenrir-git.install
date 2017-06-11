@@ -8,7 +8,7 @@ cat << EOF
 To have fenrir start at boot:
 sudo systemctl enable fenrir
 Pulseaudio users may want to run
-/usr/share/fenrir/tools/configure-pulseaudio
+/usr/share/fenrir/tools/configure_pulse.sh
 once as their user account and once as root.
 EOF
 }
