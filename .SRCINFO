@@ -1,0 +1,20 @@
+pkgbase = dynare
+	pkgdesc = A software platform for handling (economic) DSGE and OLG models.
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = http://www.dynare.org/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = octave
+	depends = boost
+	depends = blas
+	depends = gsl
+	depends = libmatio
+	optdepends = latex
+	optdepends = slicot
+	source = http://www.dynare.org/release/source/dynare-4.5.0.tar.xz
+	md5sums = 181c532e1636cef7eaf341afd2e0e990
+
+pkgname = dynare
+
