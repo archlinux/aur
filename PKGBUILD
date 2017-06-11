@@ -1,8 +1,8 @@
 # Maintainer: Jens Adam <jra@byte.cx>
 
 pkgname=bastet
-pkgver=0.43.1
-pkgrel=2
+pkgver=0.43.2
+pkgrel=1
 pkgdesc="Tetris(r) clone with 'bastard' block-choosing AI"
 url="http://fph.altervista.org/prog/bastet.html"
 license=('GPL3')
@@ -11,7 +11,7 @@ depends=('boost-libs' 'ncurses')
 makedepends=('boost')
 backup=('var/games/bastet.scores2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fph/bastet/archive/${pkgver}.tar.gz")
-md5sums=('a76fb6b4bd49f780a52153d199fec98c')
+md5sums=('aee009b77b8cf9516d686bd24673800e')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
@@ -23,17 +23,18 @@ package() {
 
   # populate files
   install -D bastet "${pkgdir}"/usr/bin/bastet
-  install -Dm644 bastet.6 "${pkgdir}"/usr/share/man/man6/bastet.6
-  install -Dm644 bastet.desktop "${pkgdir}"/usr/share/applications/bastet.desktop
-  install -Dm644 bastet.appdata.xml "${pkgdir}"/usr/share/appdata/bastet.appdata.xml
+  install -D -m 0644 bastet.6 "${pkgdir}"/usr/share/man/man6/bastet.6
+  install -D -m 0644 bastet.png "${pkgdir}"/usr/share/pixmaps/bastet.png
+  install -D -m 0644 bastet.desktop "${pkgdir}"/usr/share/applications/bastet.desktop
+  install -D -m 0644 bastet.appdata.xml "${pkgdir}"/usr/share/appdata/bastet.appdata.xml
   for F in AUTHORS INSTALL NEWS README; do
-    install -Dm644 ${F} "${pkgdir}"/usr/share/doc/bastet/${F}
+    install -D -m 0644 ${F} "${pkgdir}"/usr/share/doc/bastet/${F}
   done
 
   # prepare the (optional) global highscore file
   # (users need to be in 'games' group, obviously)
-  install -dm775 -g games "${pkgdir}"/var/games
+  install -d -m 0775 -g games "${pkgdir}"/var/games
   touch "${pkgdir}"/var/games/bastet.scores2
-  chmod 664 "${pkgdir}"/var/games/bastet.scores2
+  chmod 0664 "${pkgdir}"/var/games/bastet.scores2
   chown root:games "${pkgdir}"/var/games/bastet.scores2
 }
