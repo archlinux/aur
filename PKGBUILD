@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=adapta-gtk-theme
 _gtk2_min='2.24.30'
-_gtk3_min='3.18'
+_gtk3_min='3.20'
 _gtk_max='4.0'
 pkgver="3.91.0.69"
 pkgrel=1
@@ -10,14 +10,14 @@ arch=(any)
 url="https://github.com/adapta-project/${pkgname}"
 license=('GPL2' 'CCPL')
 depends=("gtk2>=${_gtk2_min}"
-         "gtk3>=${_gtk3_min}.9"
+         "gtk3>=${_gtk3_min}"
          "gtk3<=${_gtk_max}.99"
          'gtk-engine-murrine>=0.98.1')
 optdepends=('ttf-roboto: The recommended font'
             'noto-fonts: The recommended font for improved language support'
             'cantarell-fonts: The fallback font'
-            "gnome-shell>=${_gtk3_min}.3: The GNOME Shell"
-            "gnome-flashback>=${_gtk3_min}.2: The GNOME flashback shell"
+            "gnome-shell>=${_gtk3_min}: The GNOME Shell"
+            "gnome-flashback>=${_gtk3_min}: The GNOME flashback shell"
             'budgie-desktop>=10.2.7: The Budgie desktop'
             'cinnamon>=2.8.6: The Cinnamon desktop'
             'xfdesktop>=4.12.2: The Xfce desktop'
@@ -39,12 +39,20 @@ sha256sums=('f4707152f7d311a324ee7fd5fc0fb55cd8430398bf168c4c8820ef238c2ec50f')
 
 build() {
     cd "${pkgname}-${pkgver}"
+
+    local gnome_shell="--enable-gnome"
+    if [[ -z "$(which gnome-shell 2> /dev/null)" ]]
+    then
+        gnome_shell="--disable-gnome"
+    fi
+
     ./autogen.sh --enable-gtk_next \
                  --enable-chrome \
                  --enable-plank \
                  --enable-telegram \
                  --enable-parallel \
-                 --disable-unity
+                 --disable-unity \
+                 "$gnome_shell"
     make
 }
 
