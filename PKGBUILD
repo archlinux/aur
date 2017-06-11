@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=matwm2-git
 _pkgname=matwm2
-pkgver=0.1.2pre3.r626.g038b4ca
-pkgrel=3
+pkgver=0.1.2pre3.r631.g28d0947
+pkgrel=1
 pkgdesc="A nice tiling or floating window manager"
 arch=('i686' 'x86_64')
 url="https://github.com/segin/${_pkgname}"
