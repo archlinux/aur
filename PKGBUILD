@@ -9,7 +9,7 @@ pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url='https://github.com/chrys87/${_pkgname}'
 license=('LGPL')
-depends=('python' 'python-daemonize' 'python-evdev')
+depends=('python' 'python-daemonize' 'python-evdev' 'python-dbus')
 optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
   'sox: The default sound driver'
