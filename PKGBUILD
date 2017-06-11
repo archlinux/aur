@@ -6,7 +6,7 @@
 
 pkgname=luakit-git
 gitname=luakit
-pkgver=r3250.fa3fe102
+pkgver=r3471.3d38286d
 pkgrel=1
 pkgdesc='fork of luakit using webkit2'
 arch=('x86_64' 'i686' 'armv7h')
@@ -23,7 +23,7 @@ backup=('etc/xdg/luakit/binds.lua'
         'etc/xdg/luakit/theme.lua'
         'etc/xdg/luakit/webview.lua'
         'etc/xdg/luakit/window.lua')
-source=("git://github.com/aidanholm/luakit#branch=develop")
+source=("git://github.com/luakit/luakit#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
