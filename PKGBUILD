@@ -1,5 +1,5 @@
 pkgname=pacaur-git
-pkgver=4.7.8
+pkgver=4.7.9
 pkgrel=1
 pkgdesc="An AUR helper that minimizes user interaction"
 arch=('any')
