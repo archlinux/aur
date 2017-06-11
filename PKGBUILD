@@ -2,12 +2,12 @@
 
 pkgname=ff4d
 pkgver=0.01
-pkgrel=1
+pkgrel=2
 pkgdesc='FUSE Filesystem 4 Dropbox (ff4d) is a FUSE plugin whichs allows a local mount of your global Dropbox or jailed application folder'
 arch=('any')
 url="https://github.com/realriot/${pkgname}"
 license=('BSD')
-depends=('fuse' 'python2-fusepy')
+depends=('fuse' 'python2-dropbox' 'python2-fusepy')
 source=("${pkgname}.git::git+https://github.com/realriot/${pkgname}.git"
         "${pkgname}")
 md5sums=('SKIP'
