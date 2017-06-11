@@ -2,9 +2,9 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
-pkgver=2.52.2+1+gb8bd46bc8
+pkgver=2.52.2+9+g3245eba16
 pkgrel=1
-_commit=b8bd46bc862598db41013f4b56b0d74126e25c52  # glib-2-52
+_commit=3245eba169c439180cc13ed3c76f47298d723031  # glib-2-52
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext)
@@ -36,8 +36,7 @@ pkgver() {
 
 prepare() {
   cd glib
-  git revert -n e4ce400e8f7f  # https://bugzilla.gnome.org/show_bug.cgi?id=781601
-  git cherry-pick -n 9ba95e25b74a  # https://bugs.archlinux.org/task/53730
+  git revert -n 6560b37450cd  # Noisy glib-compile-schemas
   patch -Np1 -i .."/0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
   patch -Np1 -i ../0004-glib-prefer-constructors-over-DllMain.patch
   patch -Np1 -i ../"0027-no_sys_if_nametoindex.patch"
