@@ -2,14 +2,14 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-devel
-pkgver=4.13.0
+pkgver=4.13.1
 pkgrel=1
 pkgdesc="A desktop manager for Xfce"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
-depends=('libxfce4ui>=4.13.0' 'exo>=0.11.0' 'thunar' 'garcon>=0.6.0' 'hicolor-icon-theme' 'libwnck3>=3.14')
+depends=('libxfce4ui>=4.13' 'exo>=0.11.0' 'thunar' 'garcon>=0.6.0' 'hicolor-icon-theme' 'libwnck3>=3.14')
 makedepends=('intltool')
 conflicts=('xfce4-menueditor' "${_pkgname}" "${_pkgname}-git")
 provides=("${_pkgname}=${pkgver}")
@@ -43,4 +43,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('b06ff81b506b7d3eb80cd42bf48fcb18')
+md5sums=('9e7d04e79053cf9ec077f55425f234c6')
