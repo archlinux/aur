@@ -21,13 +21,13 @@ source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
         'openssl-1.0.1-x32.patch'
         'openssl-1.0.2a-parallel-build.patch'
         'openssl-1.0-versioned-symbols.patch')
-sha256sums=('f965fc0bf01bf882b31314b61391ae65'
-         'SKIP'
-         'c730f823023879de28513081aedbf06b'
-         'dd616e53eba607f5ab46634f93d5c5a5'
-         '7400927e547cd4c68d2af2fe0b322345'
-         '7ea5aaac21cee0f89dfb58b03219caaa'
-         '353a84e4c92e36c379ebd9216b8f8fb9c271396583561eb84ac8c825979acaa6')
+sha256sums=('ce07195b659e75f4e1db43552860070061f156a98bb37b672b101ba6e3ddf30c'
+            'SKIP'
+            'd38dfc58fe2c3723f2dfa10408394a6e796bd1e7273804cb19c41baf3dcee534'
+            '164aa4928b022cc716fac545b4fd69899cb274682aa487100e595abb652adbae'
+            'f913185a36538315de3ff122ef96fc9a49e068078e65895cfc950bdb4ac4e4f0'
+            '609d7ca040f7ab26f5e9844e486b3bcc04f3da656ce2db7733fbd65c6d10457a'
+            '353a84e4c92e36c379ebd9216b8f8fb9c271396583561eb84ac8c825979acaa6')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
