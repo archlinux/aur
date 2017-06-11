@@ -5,13 +5,13 @@
 
 pkgname='kapacitor'
 _gitname='kapacitor'
-pkgver='1.2.1'
+pkgver='1.3.1'
 pkgrel='1'
 pkgdesc='Open source framework for processing, monitoring, and alerting on time series data'
 arch=('i686' 'x86_64')
 url='http://influxdb.org/'
 license=('MIT')
-depends=('go')
+depends=('')
 makedepends=('go' 'git')
 provides=('kapacitor')
 backup=('etc/kapacitor/kapacitor.conf')
