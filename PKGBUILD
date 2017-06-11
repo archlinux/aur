@@ -1,13 +1,13 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
 
 pkgname='telegraf'
-pkgver='1.2.1'
+pkgver='1.3.1'
 pkgrel='1'
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://influxdb.org/'
 license=('MIT')
-depends=('go')
+depends=('')
 makedepends=('go' 'git')
 provides=('telegraf')
 backup=('etc/telegraf/telegraf.conf')
