@@ -15,5 +15,5 @@ _preexec() {
     NWD_FOCUSED_W=$(python3 /usr/share/nwd/focused_window.py)
 }
 
-preexec_functions+=(_preexec)
-precmd_functions+=(_precmd)
+if [[ -z $(echo $preexec_functions|grep _preexec) ]]; then preexec_functions+=(_preexec); fi
+if [[ -z $(echo $precmd_functions|grep _precmd) ]]; then precmd_functions+=(_precmd); fi
