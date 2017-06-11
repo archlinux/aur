@@ -1,0 +1,32 @@
+# Maintainer: Jonathan Toledo <kry0ster@gmail.com>
+
+pkgname=jumpapp-git
+pkgver=r62.8229224
+pkgrel=1
+pkgdesc="A run-or-raise application switcher for any X11 desktop"
+arch=('i686' 'x86_64')
+url="https://github.com/mkropat/jumpapp"
+license=('MIT')
+depends=('pandoc' 'wmctrl')
+makedepends=('git')
+provides=('jumpapp','jumpappify-desktop-entry')
+
+source=("$pkgname"::'git+https://github.com/mkropat/jumpapp')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$srcdir/$pkgname"
+    make
+}
+
+package() {
+    cd "$srcdir/$pkgname"
+    install -Dm755 jumpapp ${pkgdir}/usr/bin/jumpapp
+    install -Dm755 jumpappify-desktop-entry ${pkgdir}/usr/bin/jumpappify-desktop-entry
+    install -Dm644 jumpapp.1 ${pkgdir}/usr/share/man/man1/jumpapp.1
+}
