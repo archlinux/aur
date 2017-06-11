@@ -1,0 +1,55 @@
+diff -Nur original/src/truetype/ttdriver.c modified/src/truetype/ttdriver.c
+--- original/src/truetype/ttdriver.c	2017-04-29 05:38:17.000000000 +0100
++++ modified/src/truetype/ttdriver.c	2017-06-11 15:11:59.313798025 +0100
+@@ -357,6 +357,7 @@
+     if ( FT_IS_SCALABLE( size->face ) )
+     {
+       error = tt_size_reset( ttsize, 0 );
++      ttsize->root.metrics = *ttsize->metrics;
+ 
+ #ifdef TT_USE_BYTECODE_INTERPRETER
+       /* for the `MPS' bytecode instruction we need the point size */
+diff -Nur original/src/truetype/ttgload.c modified/src/truetype/ttgload.c
+--- original/src/truetype/ttgload.c	2017-05-03 22:40:41.000000000 +0100
++++ modified/src/truetype/ttgload.c	2017-06-11 15:17:43.758145947 +0100
+@@ -2038,7 +2038,7 @@
+ 
+     y_scale = 0x10000L;
+     if ( ( loader->load_flags & FT_LOAD_NO_SCALE ) == 0 )
+-      y_scale = size->metrics->y_scale;
++      y_scale = size->root.metrics.y_scale;
+ 
+     if ( glyph->format != FT_GLYPH_FORMAT_COMPOSITE )
+       FT_Outline_Get_CBox( &glyph->outline, &bbox );
+@@ -2070,7 +2070,7 @@
+ 
+ 
+       widthp = tt_face_get_device_metrics( face,
+-                                           size->metrics->x_ppem,
++                                           size->root.metrics.x_ppem,
+                                            glyph_index );
+ 
+ #ifdef TT_SUPPORT_SUBPIXEL_HINTING_INFINALITY
+@@ -2637,11 +2637,11 @@
+           if ( !glyph->metrics.horiAdvance && glyph->linearHoriAdvance )
+             glyph->metrics.horiAdvance =
+               FT_MulFix( glyph->linearHoriAdvance,
+-                         size->metrics->x_scale );
++                         size->root.metrics.x_scale );
+           if ( !glyph->metrics.vertAdvance && glyph->linearVertAdvance )
+             glyph->metrics.vertAdvance =
+               FT_MulFix( glyph->linearVertAdvance,
+-                         size->metrics->y_scale );
++                         size->root.metrics.y_scale );
+         }
+ 
+         return FT_Err_Ok;
+@@ -2737,7 +2737,7 @@
+     /* TrueType glyphs at all sizes using the bytecode interpreter. */
+     /*                                                              */
+     if ( !( load_flags & FT_LOAD_NO_SCALE ) &&
+-         size->metrics->y_ppem < 24         )
++         size->root.metrics.y_ppem < 24         )
+       glyph->outline.flags |= FT_OUTLINE_HIGH_PRECISION;
+ 
+   Exit:

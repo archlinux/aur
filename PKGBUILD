@@ -3,7 +3,7 @@
 
 pkgname=freetype2-ttmetrics
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Font rasterization library with TrueType metrics enabled"
 arch=(i686 x86_64)
 license=('GPL')
@@ -23,7 +23,8 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         0003-Enable-infinality-subpixel-hinting.patch
         0004-Enable-long-PCF-family-names.patch
         freetype2.sh
-        enable_truetype_like_size_metrics.patch)
+        enable_truetype_like_size_metrics.patch
+        revert_allow_linear_scaling.patch)
 sha1sums=('42c6b1f733fe13a3eba135f5025b22cb68450f91'
           '5b221ee14fe674cd5f6db0193d55360bc0bd3655'
           'c3e91e668936206d3c158bffde0f69788a086a5b'
@@ -31,7 +32,8 @@ sha1sums=('42c6b1f733fe13a3eba135f5025b22cb68450f91'
           '81586014ea44375ddc85dd9dbcabae6e91c34d62'
           '334f229875039794adeb574e27d365bb445fb314'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f'
-          '833a8622bc61fc6f41c0e87c3614dec73490c9b1')
+          '833a8622bc61fc6f41c0e87c3614dec73490c9b1'
+          'f2cc372aedce56b387ee0c5403745d642bd44fe8')
 
 prepare() {
   # Rename source dir to allow building the demos
@@ -45,6 +47,9 @@ prepare() {
 
   # See https://bbs.archlinux.org/viewtopic.php?id=226380
   patch -Np1 -i ../enable_truetype_like_size_metrics.patch
+
+  # Also see https://bbs.archlinux.org/viewtopic.php?id=226380
+  patch -Np1 -i ../revert_allow_linear_scaling.patch
 }
 
 build() {
