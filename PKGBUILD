@@ -1,6 +1,6 @@
 # Maintainer: Nicolai <Finic8@protonmail.com>
 pkgname=zbectl-git
-pkgver=v0.2.r1.gb8768ea
+pkgver=v0.2.r3.g2db68d6
 pkgrel=1
 pkgdesc="script for managing boot environments using zfs"
 arch=(any)
