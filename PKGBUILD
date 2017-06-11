@@ -5,13 +5,13 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='1.2.3'
-pkgrel='2'
+pkgver='1.2.4'
+pkgrel='1'
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://influxdb.org/'
 license=('MIT')
-depends=('go')
+depends=('')
 makedepends=('go' 'git')
 provides=('influxdb')
 backup=('etc/influxdb/influxdb.conf')
