@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 pkgname=bcunit-cunit-compat
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Headers and libraries which allow building with BCUnit Cunit-based projects"
 arch=('any')
 url='https://github.com/BelledonneCommunications/bcunit'
@@ -27,7 +27,7 @@ package() {
     ln -s ../BCUnit/Util.h "${pkgdir}/usr/include/CUnit/Util.h"
 
     # Provide CUnit.h too
-    ln -s ../BCUnit/BCUnit.h "${pkgdir}/usr/include/CUnit/Cunit.h"
+    ln -s ../BCUnit/BCUnit.h "${pkgdir}/usr/include/CUnit/CUnit.h"
 
     # Make linking with "-lcunit" use BCUnit library
     mkdir -p "${pkgdir}/usr/lib"
