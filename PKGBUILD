@@ -4,7 +4,7 @@ pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=ppcoin
 pkgver=0.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Peercoin wallet client."
 makedepends=('boost' 'miniupnpc' 'openssl' 'qt4')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt4')
@@ -19,7 +19,7 @@ source=(https://github.com/ppcoin/ppcoin/archive/v${pkgver}ppc.tar.gz
         peercoind@.service
         peercoind-tor@.service
 	net.patch)
-sha256sums=('61d9de36f111c833afa491d4db2473985e126a26fd5f913db6663bdec88c1075'
+sha256sums=('bff33d7103583e1ae436319b7cd14f1c10255e88504358c8743441c5a86d32c2'
             '6cb18e19847bbf4066920dbbf4371ddf07409392408fc6d079487e8759ea322e'
             'bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32'
             '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f'
