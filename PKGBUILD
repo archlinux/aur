@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
 makedepends=()
-depends=('git' 'glfw-x11>=3' 'libusb' 'base-devel' 'linux-headers')
+depends=('git' 'glfw-x11>=3' 'libusb' 'linux-headers')
 optdepends=('qtcreator')
 changelog=''
 source=("git://github.com/IntelRealSense/librealsense")
