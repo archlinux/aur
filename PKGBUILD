@@ -1,7 +1,7 @@
 # Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=ubridge
-pkgver=0.9.4
+pkgver=0.9.11
 pkgrel=1
 pkgdesc='Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces.'
 arch=('i686' 'x86_64')
@@ -11,18 +11,17 @@ groups=('gns3')
 depends=('libpcap')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz")
 install="${pkgname}.install"
-md5sums=('217bf4b59624b57d9d3ca79410fa980a')
+sha256sums=('4057224ff1173e0ac5dfbe69170b4fa71106db976cd0db617405ef272cf8ed3e')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd ${pkgname}-${pkgver}
   make
 }
 
 package() {
-  install -Dm755 ${srcdir}/${pkgname}-${pkgver}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  install -dm755 ${pkgdir}/usr/share/doc/${pkgname}
-  install -m644 ${srcdir}/${pkgname}-${pkgver}/README.rst -t ${pkgdir}/usr/share/doc/${pkgname}
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd ${pkgname}-${pkgver}
+  install -Dm755 ubridge "${pkgdir}"/usr/bin/ubridge
+  install -Dm644 README.rst "${pkgdir}"/usr/share/doc/ubridge/README.rst
 }
 
 # vim:set ts=2 sw=2 et:
