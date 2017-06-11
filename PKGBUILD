@@ -7,8 +7,8 @@
 android_arch=x86
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.8.0
-pkgrel=3
+pkgver=5.9.0
+pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('i686' 'x86_64')
 url='https://www.qt.io'
@@ -49,9 +49,11 @@ esac
 
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:3}/${pkgver}/single/${_pkgfqn}.tar.xz"
-        "JavaScriptCore.pri.patch")
-sha256sums=('0f4c54386d3dbac0606a936a7145cebb7b94b0ca2d29bc001ea49642984824b6'
-            '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455')
+        "JavaScriptCore.pri.patch"
+        "geoservices.pro.patch")
+sha256sums=('f70b5c66161191489fc13c7b7eb69bf9df3881596b183e7f6d94305a39837517'
+            '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455'
+            'f0770923c55725417b7f334b7558371fc9833ae914b81a456d9beee7a3eeab8b')
 
 prepare() {
     cd ${_pkgfqn}
@@ -61,6 +63,7 @@ prepare() {
         armeabi)
             # Disable JIT.
             patch -Np1 -i "../JavaScriptCore.pri.patch"
+            patch -Np1 -i "../geoservices.pro.patch"
             ;;
         *)
             ;;
@@ -97,11 +100,23 @@ build() {
 
     export ANDROID_NDK_ROOT=/opt/android-ndk
     export ANDROID_SDK_ROOT=/opt/android-sdk
-    export ANDROID_BUILD_TOOLS_REVISION=$(get_last ${ANDROID_SDK_ROOT}/build-tools)
-    export ANDROID_API_VERSION=$(get_last ${ANDROID_SDK_ROOT}/platforms)
+
+    if [ -z "${ANDROID_BUILD_TOOLS_REVISION}" ]; then
+        export ANDROID_BUILD_TOOLS_REVISION=$(get_last ${ANDROID_SDK_ROOT}/build-tools)
+    fi
+
+    if [ -z "${ANDROID_API_VERSION}" ]; then
+        export ANDROID_API_VERSION=$(get_last ${ANDROID_SDK_ROOT}/platforms)
+    fi
+
     export PYTHON=/usr/bin/python2
 
-    ndkPlatform=$(get_last_platform ${ANDROID_NDK_ROOT}/platforms)
+    if [ -z "${ANDROID_NDK_PLATFORM}" ]; then
+        ndkPlatform=$(get_last_platform ${ANDROID_NDK_ROOT}/platforms)
+    else
+        ndkPlatform=${ANDROID_NDK_PLATFORM}
+    fi
+
     _pref=/opt/${_pkgname}/${pkgver}/${android_arch}
 
     configue_opts="
