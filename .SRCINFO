@@ -1,6 +1,6 @@
 pkgbase = python-processmappingscanner
 	pkgdesc = Python module for scanning information on running processes, including mappings, open file-descriptors, process owner, and other information
-	pkgver = 2.1.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://github.com/kata198/ProcessMappingScanner
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-processmappingscanner
 	makedepends = python
 	depends = python-setuptools
 	depends = python
-	source = https://github.com/kata198/ProcessMappingScanner/archive/2.1.2.tar.gz
-	sha512sums = b9db33b3b1e27b1f9efb6689cb70c5bb512169f637abf47cd9791b15da932bca60c34ef0447fce989c36dccdc6a573df636e16d8e0db5baf0b25f454fdb6a67d
+	source = https://github.com/kata198/ProcessMappingScanner/archive/2.2.1.tar.gz
+	sha512sums = aca2c42fc6e435f9cc17b352ab06ad19a292556e144bba42340c3abf9f7ef399466df1af34d322495b0181db1261cadda3960ae5946953a467380e9fa1d4fab3
 
 pkgname = python-processmappingscanner
 
