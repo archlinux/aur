@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/clbr/radeontop"
 license=('GPL3')
 depends=('ncurses' 'libdrm' 'libxcb')
-source=("${pkgname}-${pkgver}::https://github.com/clbr/radeontop.git#tag=v$pkgver")
-sha256sums=('bb82bca498a62fb6706d273feb55860bca6627e3497d66f4435d0fba969d48ae')
+source=("$pkgname-$pkgver::git+https://github.com/clbr/radeontop.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
