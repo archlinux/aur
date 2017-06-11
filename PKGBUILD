@@ -3,7 +3,7 @@
 
 _pkgbase=quodlibet
 pkgname=exfalso
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=4
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('gst-plugins-bad: for "Acoustic Fingerprint" plugins'
             'python-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 conflicts=("${pkgbase}")
 source=("https://github.com/${_pkgbase}/${_pkgbase}/releases/download/release-${pkgver}/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('97e3f30d2bed8074f271b95093372e1c61897cefe5047845ba118a663ada4fb7'
+sha256sums=('d2b42df5d439213973dc97149fddc779a6c90cec389c24baf1c0bdcc39ffe591'
             'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
 

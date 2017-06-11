@@ -1,6 +1,6 @@
 pkgbase = exfalso
 	pkgdesc = GTK+ audio tag editor
-	pkgver = 3.9.0
+	pkgver = 3.9.1
 	pkgrel = 4
 	url = https://quodlibet.readthedocs.io/
 	arch = any
@@ -17,10 +17,10 @@ pkgbase = exfalso
 	optdepends = kakasi: for "Kana/Kanji Simple Inverter" plugin
 	optdepends = python-dbus: for "Browse Folders" plugin
 	optdepends = python-musicbrainzngs: for "MusicBrainz Lookup" plugin
-	source = https://github.com/quodlibet/quodlibet/releases/download/release-3.9.0/quodlibet-3.9.0.tar.gz
-	source = https://github.com/quodlibet/quodlibet/releases/download/release-3.9.0/quodlibet-3.9.0.tar.gz.sig
+	source = https://github.com/quodlibet/quodlibet/releases/download/release-3.9.1/quodlibet-3.9.1.tar.gz
+	source = https://github.com/quodlibet/quodlibet/releases/download/release-3.9.1/quodlibet-3.9.1.tar.gz.sig
 	validpgpkeys = 0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC
-	sha256sums = 97e3f30d2bed8074f271b95093372e1c61897cefe5047845ba118a663ada4fb7
+	sha256sums = d2b42df5d439213973dc97149fddc779a6c90cec389c24baf1c0bdcc39ffe591
 	sha256sums = SKIP
 
 pkgname = exfalso
