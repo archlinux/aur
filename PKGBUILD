@@ -1,15 +1,15 @@
 # Maintainer: Bachir Soussi Chiadmi (bach at figureslibres dot io)
 
 pkgname=libriis-git
-pkgver=r83.7baaf0e
+pkgver=r88.547be1b
 pkgrel=1
 pkgdesc="PyQt5 based appliaction for writing with markdown and designing with css printed documents."
 arch=('any')
 url="https://figureslibres.io/gogs/bachir/libriis"
 license=('AGPL')
-depends=('python' 'python-pyqt5' 'python-markdown' 'python-pygit2' 'python-beautifulsoup4' 'pandoc' 'python-pypandoc' 'python-pygments' 'qt5-base' 'python-setuptools' 'desktop-file-utils')
+depends=( 'qt5-base' 'python' 'python-pyqt5' 'python-markdown' 'python-pygit2' 'python-beautifulsoup4' 'pandoc' 'python-pypandoc' 'python-pygments' 'python-setuptools' 'desktop-file-utils' 'qt5-webkit-print')
+#  'qt5-webkit-ng'
 
-# needs custom build of 'qt5-webkit-ng'
 makedepends=('coreutils' 'git' 'python' 'python-setuptools' 'python-pip')
 # provides=('cascade')
 source=('git+https://figureslibres.io/gogs/bachir/libriis.git' 'libriis.desktop' 'libriis.png')
