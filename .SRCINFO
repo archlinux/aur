@@ -1,7 +1,7 @@
 pkgbase = python-scikit-bio
 	pkgdesc = Python package providing data structures, algorithms, and educational resources for bioinformatics
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/biocore/scikit-bio
 	arch = x86_64
 	license = BSD
@@ -20,6 +20,7 @@ pkgbase = python-scikit-bio
 	depends = python-matplotlib
 	depends = python-requests
 	depends = python-cachecontrol
+	depends = python-msgpack
 	options = !emptydirs
 	source = https://github.com/biocore/scikit-bio/archive/0.5.1.tar.gz
 	md5sums = f5cb304ea29e50851c242f70bf4c8316
