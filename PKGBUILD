@@ -75,7 +75,7 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 
-  mv "$pkgdir"/usr/local/lib64 "$pkgdir"/usr/local/lib
+  # mv "$pkgdir"/usr/local/lib64 "$pkgdir"/usr/local/lib
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt5-base "$pkgdir"/usr/share/licenses/${pkgname}
