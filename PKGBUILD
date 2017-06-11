@@ -15,7 +15,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config.i686' 'config.x86_64' '.config'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
@@ -28,6 +28,7 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
             '8649f8fa27863d485ae2e28579a79cec46d8c3f9d2905303c1242f436bab7219'
             'e45f067f94f326fa5fd809b23c2bf296a182c3e70cafb74bd3f185c8d3f93aa1'
+            'f19f9af45d5d60f87ff88b397d25cb959e3408494f97ec9d1cc270ae3adace1c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
 	    '93c200f7cd0f7a860440d6b5190b84014534346ff0fd5582b4554a4854945f08')
@@ -83,7 +84,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="A custom linux kernel and modules for the Dell XPS 15 - 9560.  Has APCI override enabled and a wifi patch."
+  pkgdesc="A custom linux kernel and modules for the Dell XPS 15 - 9560.  Has ACPI override enabled and a wifi patch.  Should be used with 'acpi_rev_override=1' in boot flags."
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')

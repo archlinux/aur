@@ -18,6 +18,7 @@ pkgbase = linux-xps-9560
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.11.3.sign
 	source = config.i686
 	source = config.x86_64
+	source = .config
 	source = 90-linux.hook
 	source = linux.preset
 	source = patch-ath10k.patch
@@ -29,12 +30,13 @@ pkgbase = linux-xps-9560
 	sha256sums = SKIP
 	sha256sums = 8649f8fa27863d485ae2e28579a79cec46d8c3f9d2905303c1242f436bab7219
 	sha256sums = e45f067f94f326fa5fd809b23c2bf296a182c3e70cafb74bd3f185c8d3f93aa1
+	sha256sums = f19f9af45d5d60f87ff88b397d25cb959e3408494f97ec9d1cc270ae3adace1c
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 93c200f7cd0f7a860440d6b5190b84014534346ff0fd5582b4554a4854945f08
 
 pkgname = linux-xps-9560
-	pkgdesc = A custom linux kernel and modules for the Dell XPS 15 - 9560. Has APCI override enabled and a wifi patch.
+	pkgdesc = A custom linux kernel and modules for the Dell XPS 15 - 9560. Has ACPI override enabled and a wifi patch. Should be used with 'acpi_rev_override=1' in boot flags.
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
