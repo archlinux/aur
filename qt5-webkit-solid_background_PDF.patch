@@ -1,0 +1,32 @@
+From df18029adc431e6f0f3f5cfa47fb09849b2be63a Mon Sep 17 00:00:00 2001
+From: Alex Leray <alexandre@stdin.fr>
+Date: Wed, 10 Aug 2016 18:40:55 +0200
+Subject: [PATCH] Fixes issues with solid background in PDFs.
+
+---
+ Source/WebKit/qt/WidgetApi/qwebview.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Source/WebKit/qt/WidgetApi/qwebview.cpp b/Source/WebKit/qt/WidgetApi/qwebview.cpp
+index d97a604261c0..8f5cd207aea2 100644
+--- a/Source/WebKit/qt/WidgetApi/qwebview.cpp
++++ b/Source/WebKit/qt/WidgetApi/qwebview.cpp
+@@ -28,6 +28,7 @@
+ #ifndef QT_NO_ACCESSIBILITY
+ #include "qwebviewaccessible_p.h"
+ #endif
++#include <qapplication.h>
+ #include <qbitmap.h>
+ #include <qdir.h>
+ #include <qevent.h>
+@@ -259,7 +260,9 @@ void QWebView::setPage(QWebPage* page)
+ 
+     if (d->page) {
+         d->page->setView(this);
+-        d->page->setPalette(palette());
++        QPalette palette = QApplication::palette();
++        palette.setBrush(QPalette::Base, QColor::fromRgbF(0, 0, 0, 0));
++        d->page->setPalette(palette);
+         // #### connect signals
+         QWebFrame *mainFrame = d->page->mainFrame();
+         connect(mainFrame, SIGNAL(titleChanged(QString)),

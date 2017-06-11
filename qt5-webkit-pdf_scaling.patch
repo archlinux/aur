@@ -1,0 +1,25 @@
+From 24e655e27c68880cd71c762a27e1813e3300a4b3 Mon Sep 17 00:00:00 2001
+From: Alex Leray <alexandre@stdin.fr>
+Date: Wed, 10 Aug 2016 18:38:31 +0200
+Subject: [PATCH] Fix PDF scale issue with Point units
+
+Done by hardcoding the scalefactor to 72 (1 inch = 72 points).
+---
+ Source/WebKit/qt/WidgetApi/qwebframe.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Source/WebKit/qt/WidgetApi/qwebframe.cpp b/Source/WebKit/qt/WidgetApi/qwebframe.cpp
+index e27d9b0f8f40..a35d5fbcc5ca 100644
+--- a/Source/WebKit/qt/WidgetApi/qwebframe.cpp
++++ b/Source/WebKit/qt/WidgetApi/qwebframe.cpp
+@@ -827,8 +827,8 @@ void QWebFrame::print(QPrinter *printer) const
+     if (!painter.begin(printer))
+         return;
+ 
+-    const qreal zoomFactorX = (qreal)printer->logicalDpiX() / qt_defaultDpi();
+-    const qreal zoomFactorY = (qreal)printer->logicalDpiY() / qt_defaultDpi();
++    const qreal zoomFactorX = (qreal)printer->logicalDpiX() / 72;
++    const qreal zoomFactorY = (qreal)printer->logicalDpiY() / 72;
+ 
+     QRect qprinterRect = printer->pageRect();
+ 
