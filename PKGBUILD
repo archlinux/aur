@@ -1,7 +1,7 @@
 # Maintainer: DonOregano <lars@foldspace.nu>
 
 pkgname=safir-sdk-core
-pkgver=6.3.3
+pkgver=6.3.9
 pkgrel=1
 pkgdesc="Safir SDK Core is a middleware and platform for creation of distributed soft real-time systems. It is Scalable, Reliable, Portable, and last but not least, it is Open!"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ makedepends=('git' 'subversion' 'doxygen' 'graphviz')
 install=install
 source=("https://github.com/SafirSDK/safir-sdk-core/releases/download/${pkgver}/safir-sdk-core_${pkgver}_src.tar.bz2"
         'safir-sdk-core.tmpfiles')
-sha1sums=('3985e8a2453cb53816281db429f1823e40c04c15'
+sha1sums=('b2e9afc953823f220015e775a0681d54beb060d1'
           'b2ef06ef3614b2f7243556cb8a28e4856e0c9e7b')
 backup=('etc/safir-sdk-core/typesystem.ini' 'etc/safir-sdk-core/logging.ini' 'etc/safir-sdk-core/locations.ini')
 
