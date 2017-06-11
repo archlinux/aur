@@ -5,7 +5,7 @@
 
 set -u
 pkgname='shc'
-pkgver='3.9.5'
+pkgver='3.9.6'
 pkgrel='1'
 pkgdesc='Converts shell script to C source code, and then compiles it. Do NOT use this to encrypt your scripts as it is not meant to be used for that.'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz"
   'disableencryption.diff'
 )
-sha256sums=('b4b36abb2ec8829b6adaf08a8d36d3b0a50103b5809ca788cf0cd5b5011831d3'
+sha256sums=('da6a2a3ff4c356a61e086c616561bf681489993cab00c426bad0cfd703a68063'
             '08f9ae1e3fdb2b2f86f9d96257930158fbaa302d3e0d71eadbc5e246fc01150d')
 
 if [ "$(vercmp "${pkgver}" '3.9.0')" -lt 0 ]; then
