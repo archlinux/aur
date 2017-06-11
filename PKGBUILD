@@ -1,15 +1,16 @@
 # Maintainer: McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-svn
-pkgver=r27849
-pkgrel=2
+pkgver=r27879
+pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe (latest SVN build)'
 arch=('i686' 'x86_64')
 url='http://openttd.org'
 license=('GPL')
 depends=('libpng' 'sdl' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz')
 optdepends=('openttd-opengfx: free graphics' 
-            'openttd-opensfx: free soundset')
+            'openttd-opensfx: free soundset'
+            'timidity++: for in-game music')
 makedepends=('svn')
 
 source=("$pkgname::svn+svn://svn.openttd.org/trunk")
