@@ -6,7 +6,7 @@ pkgdesc="browser based analytics and search dashboard for Elasticsearch. Please 
 arch=('any')
 url="https://www.elastic.co/products/kibana"
 license=('apache')
-depends=('nodejs')
+depends=('nodejs<7.0')
 optdepends=('elasticsearch>=2.4')
 backup=('etc/elasticsearch/kibana/kibana.yml')
 options=('!strip')
