@@ -1,0 +1,18 @@
+pkgbase = leds-apu2-dkms
+	pkgdesc = Kernel Driver for exposing the APU2/3 LEDs via the sysfs, also usermode tools
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://daduke.org/linux/apu2/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = https://daduke.org/dl/apu2-leds.tgz
+	source = dkms.conf
+	source = makefile.patch
+	sha256sums = 4eb4251681e6ae671294e7c3209c5c9f02a26f4c49c33f7bfe0d94e18713e7aa
+	sha256sums = 19bb519cbd1875deaab264fb7b1d0bf936bec8dfde989ac9ba57e5c438969373
+	sha256sums = f9d52a39ae9e3835ffa091632431bf051566ddd5a695d110274af61c22d7d895
+
+pkgname = leds-apu2-dkms
+
