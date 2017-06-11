@@ -1,30 +1,32 @@
 # Maintainer: spider-mario <spidermario@free.fr>
-pkgname=('cinnxp' 'cinnxp-icons' 'cinnxp-royale' 'cinnxp-metallic')
+pkgname=('cinnxp' 'cinnxp-icons')
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="XP-like theme for Cinnamon"
 arch=('any')
 url="https://github.com/petrucci4prez/CinnXP"
-license=('unknown')
+license=('GPL3')
 makedepends=('git' 'ruby-bundler' 'ruby-sass' 'xorg-xcursorgen')
-optdepends=('gtk2' 'gtk3' 'cinnamon' 'metacity' 'cinnxp-icons')
 options=('!strip')
-source=('cinnxp::git+https://github.com/petrucci4prez/CinnXP.git#commit=93708aed2dfe6eb539999614e249f5e50d868ea3')
+source=('cinnxp::git+https://github.com/petrucci4prez/CinnXP.git#commit=0ec6d6946b3a61b58ad2ed8b0c3eafceca62d439')
 sha512sums=('SKIP')
 
 build() {
 	cd cinnxp
 
-	rm -fr pkg{,-royale,-metallic}
-	./compile-theme
-	./compile-theme -f royale -n pkg-royale
-	./compile-theme -f metallic -n pkg-metallic
+	rm -fr pkg
+	./compile-theme -a -g 20
 
-	find pkg{,-royale,-metallic} -type d -exec chmod 755 '{}' +
-	find pkg{,-royale,-metallic} -type f -exec chmod 644 '{}' +
+	find pkg -type d -exec chmod 755 '{}' +
+	find pkg -type f -exec chmod 644 '{}' +
 }
 
 package_cinnxp() {
+	optdepends=('gtk2' 'gtk3' 'cinnamon' 'metacity' 'cinnxp-icons')
+	conflicts=('cinnxp-royale' 'cinnxp-metallic')
+	provides=('cinnxp-royale' 'cinnxp-metallic')
+	replaces=('cinnxp-royale' 'cinnxp-metallic')
+
 	cd "$pkgdir"
 	cp -a "$srcdir"/cinnxp/pkg/usr .
 	rm -fr usr/share/icons
@@ -32,25 +34,8 @@ package_cinnxp() {
 
 package_cinnxp-icons() {
 	pkgdesc="XP-like theme for Cinnamon (Cursors)"
-	optdepends=()
 
 	cd "$pkgdir"
 	cp -a "$srcdir"/cinnxp/pkg/usr .
 	rm -fr usr/share/themes
-}
-
-package_cinnxp-royale() {
-	pkgdesc="XP-like theme for Cinnamon (Royale variant)"
-
-	cd "$pkgdir"
-	cp -a "$srcdir"/cinnxp/pkg-royale/usr .
-	rm -fr usr/share/icons
-}
-
-package_cinnxp-metallic() {
-	pkgdesc="XP-like theme for Cinnamon (Metallic variant)"
-
-	cd "$pkgdir"
-	cp -a "$srcdir"/cinnxp/pkg-metallic/usr .
-	rm -fr usr/share/icons
 }
