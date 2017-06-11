@@ -1,7 +1,7 @@
 pkgbase = findprocessesusing
 	pkgdesc = Application which scans running processes on the system for given mappings (shared libraries, executables) or open file descriptors
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/findProcessesUsing
 	arch = any
 	license = GPLv2
@@ -9,7 +9,7 @@ pkgbase = findprocessesusing
 	makedepends = python
 	depends = python-setuptools
 	depends = python
-	depends = python-processmappingscanner
+	depends = python-processmappingscanner>=2.2.2
 	source = https://github.com/kata198/findProcessesUsing/archive/2.3.0.tar.gz
 	sha512sums = 9ab514784b1a5812322e2544494999196647344c0dce72262347c380c7e41157b1849c840eed84c05d73818c478be0f316679985c60f05ac09bf5fdb7ab98a51
 
