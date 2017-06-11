@@ -2,8 +2,8 @@
 
 pkgname=gajim-plugin-httpupload
 _pkgname=httpupload
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="Gajim plugin for HTTP upload (XEP-0363)."
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/HttpUploadPlugin"
