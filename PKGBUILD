@@ -1,7 +1,7 @@
 # Maintainer: Brian Salcedo <salcbrian@gmail.com>
 pkgname=rancher-cli-git
-pkgver=r164.9ca7983
-pkgrel=2
+pkgver=r174.6fc408b
+pkgrel=1
 pkgdesc="The Rancher Command Line Interface (CLI) is a unified tool to manage your Rancher server."
 arch=('any')
 url="https://github.com/rancher/cli"
