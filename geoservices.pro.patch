@@ -1,0 +1,12 @@
+--- a/qtlocation/src/plugins/geoservices/geoservices.pro	2017-05-19 14:42:14.000000000 -0300
++++ b/qtlocation/src/plugins/geoservices/geoservices.pro	2017-06-10 13:46:34.743784296 -0300
+@@ -10,7 +10,7 @@
+     !exists(../../3rdparty/mapbox-gl-native/CMakeLists.txt) {
+         warning("Submodule mapbox-gl-native does not exist. Run 'git submodule update --init' on qtlocation.")
+     } else {
+-        SUBDIRS += mapboxgl ../../3rdparty/mapbox-gl-native
+-        mapboxgl.depends = ../../3rdparty/mapbox-gl-native
++#        SUBDIRS += mapboxgl ../../3rdparty/mapbox-gl-native
++#        mapboxgl.depends = ../../3rdparty/mapbox-gl-native
+     }
+ }
