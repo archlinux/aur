@@ -6,7 +6,7 @@
        # thus we should remove this as soon as a fix gets released.
 -      backgroundColor: "#fff"
 +      # backgroundColor: "#fff"
-+      frame: false
++      frame: true
 +      transparent: true
        webPreferences:
          # Prevent specs from throttling when the window is in the background:

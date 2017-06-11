@@ -4,7 +4,7 @@
 pkgname=atom-editor-transparent
 _atomver=1.17.0
 pkgver=1.17.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atom is a hackable text editor for the 21st century built on Electron - with transparent background support"
 arch=('x86_64')
 url="https://github.com/atom/atom"
@@ -18,7 +18,7 @@ conflicts=('atom' 'atom-editor' 'atom-editor-bin' 'atom-editor-git' 'atom-editor
 install=$pkgname.install
 
 sha384sums=('abc4154731856bd52dc86d29fb80894a6aaf791016441fde40bfd7be505b08c3b751644658f7e1d1321893c282a9e4b2'
-            '614d682bdca79ca91d6753eef0fccfe4f5b322688c9d82adcd95e5dd07e33052e703f1fa7335828a4c8af74540966dba'
+            '1e027cc6eef1921d0ab08e30c0f44f49e9966503452cf3821782574dd8486bf59fd9170efe051171efb2375635499f7f'
             '7b28df309d5aae71a71edca781537b808c507ca156f6e7c559f6f8482fc450eb3c8c9e15b10ac9570302c652666cbc2f')
 
 source=("https://github.com/atom/atom/archive/v${_atomver}.tar.gz"
