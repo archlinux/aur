@@ -2,12 +2,12 @@
 
 pkgname=delta-media-player
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc='provides new generation Online TV service'
 arch=('i686' 'x86_64')
 url='http://www.deltamediaplayer.com/en/'
 license=('GPL3')
-depends=(vlc gcc-libs qt5-tools)
+depends=(vlc gcc-libs qt5-tools libevent)
 makedepends=(chrpath)
 provides=(dmplayer)
 install='delta-media-player.install'
@@ -22,9 +22,5 @@ package(){
   chrpath -d "$pkgdir"/usr/bin/dmplayer
   sed 's#/local##' -i "$pkgdir"/usr/share/applications/DeltaMediaPlayer.desktop
   rm -f "$pkgdir"/usr/lib/libevent*
-  cd "$pkgdir"/usr/lib
-  ln -s libevent_pthreads.so libevent_pthreads-2.1.so.6
-  ln -s libevent.so libevent-2.1.so.6
-  ln -s libevent_openssl.so libevent_openssl-2.1.so.6
 }
 
