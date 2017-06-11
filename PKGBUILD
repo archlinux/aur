@@ -2,7 +2,7 @@
 # With help from Nicolas Porcel
 pkgbase=linux-max98090
 _srcname=linux-4.11
-pkgver=4.11.3
+pkgver=4.11.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -23,18 +23,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'max98090.patch'
         # patch to revert platform x86 enable atom pmc platform clocks
         '0001-Revert-platform-x86-Enable-Atom-PMC-platform-clocks.patch'
+        '0001-ASoC-Intel-byt-max98090-changes-for-4.11-v2.patch'
         )
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
+            '7b36a573cce74d8e5312c88595bc0c0a60957c1fb79758303c9de9e944e2d339'
             'SKIP'
-            '8e21d15a9970973ff59059b756899adaf082026661c851afdaac9fb2173aa3ad'
-            '47b46e99454b508a247ccdf8687d8b1dc760f1f505fafcf6a93bd1e39b3658ec'
+            '9d3849ff572d4fc85208428a65e852ee25ced0f1c4fe3c690044d74a1a414e04'
+            '27422a0c9e68ff9e228ebb9038cb43897c3251409af8470c7097e5beb4435b6c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '3a4d8d182de94c031860c33ae35d92c5f9f3b987b0a5191c4e15366353a8d217'
-            '10ec161f83768e03dfded48e59c3cdf97d8bad1eea827804c472742e061a8e83')
+            '66f1e1a21ceecbad1efa892515e542323a2895fc5141663eeca7fc341bec35aa'
+            '10ec161f83768e03dfded48e59c3cdf97d8bad1eea827804c472742e061a8e83'
+            '22b144afef8249a616bf726d78dfae53f0ed67d8686c2fc4eb38892da88ce0c5')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -53,9 +55,8 @@ prepare() {
 
   # patch byt-max98090 soc audio
   patch -p1 -i "${srcdir}/max98090.patch"
-
-  # patch to revert platform x86 enable atom pmc platform clocks
   patch -p1 -i "${srcdir}/0001-Revert-platform-x86-Enable-Atom-PMC-platform-clocks.patch"
+  patch -p1 -i "${srcdir}/0001-ASoC-Intel-byt-max98090-changes-for-4.11-v2.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
