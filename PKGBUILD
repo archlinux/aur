@@ -26,13 +26,12 @@ source=(${pkgname}.desktop
 	${pkgname}.install
 	${pkgname}.png)
 
-#prepare() {
-#	bsdtar xf data.tar.gz
-#	bsdtar xf "opt/pdfstudio11/lib/pdfstudio.jar" 
-resources/license.html
-#
-#	rm -rf "opt/pdfstudio11/jre"
-#}
+prepare() {
+	bsdtar xf data.tar.gz
+	bsdtar xf "opt/pdfstudio12/lib/pdfstudio.jar" resources/license.html
+
+	rm -rf "opt/pdfstudio12/jre"
+}
 
 package() {
 
