@@ -1,0 +1,15 @@
+diff -up src/wmcore-0.0.2/list.h.orig src/wmcore-0.0.2/list.h
+--- src/wmcore-0.0.2/list.h.orig	2017-06-10 18:27:32.000000000 -0600
++++ src/wmcore-0.0.2/list.h	2017-06-10 18:27:41.000000000 -0600
+@@ -29,11 +29,7 @@ Boston, MA 02111-1307, USA.  */
+ #ifndef __LIST_H_
+ #define __LIST_H_
+ 
+-#if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+-# define INLINE inline
+-#else
+ # define INLINE
+-#endif
+ 
+ typedef struct LinkedList {
+   void *head;

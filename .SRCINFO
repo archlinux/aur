@@ -1,14 +1,16 @@
 pkgbase = wmcore
 	pkgdesc = A windowmaker dockapp which shows the usage of each core in the system
 	pkgver = 0.0.2
-	pkgrel = 11
+	pkgrel = 12
 	url = http://web.archive.org/web/20121114121553/http://dockapps.windowmaker.org/file.php/id/362
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
 	source = wmcore-0.0.2.tar.gz
+	source = list.patch
 	md5sums = 26899aba55f84e649178ab8ab18f331e
+	md5sums = ce22a4016c93b0a1ee211e997f12a4e9
 
 pkgname = wmcore
 
