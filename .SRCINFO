@@ -1,0 +1,15 @@
+pkgbase = pyswitch-git
+	pkgdesc = Easily switch between python2 and python3
+	pkgver = r2.240a8f0
+	pkgrel = 1
+	url = https://github.com/giuscri/pyswitch
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	depends = python-colorama
+	depends = python2-colorama
+	source = pyswitch-git::git+https://github.com/giuscri/pyswitch.git
+	md5sums = SKIP
+
+pkgname = pyswitch-git
+
