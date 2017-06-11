@@ -56,3 +56,11 @@ a sound every time a notification is issued. Dunst has one for example.
 If you need a notification sound, you can find a .wav one, base64 encoded, here
 
     https://gist.githubusercontent.com/giuscri/621bddfe5600d3f08e2b0b385db48a3b/raw/916ca26bc8c8fb4d8b343850e1b6cac2ffcdbedd/sound.wav.b64
+
+## Troubleshooting
+
++ If you're using dunst as a notification server and for any curl
+command you seem a strange `(U)` prepended, that's actually a dunst
+feature: https://github.com/dunst-project/dunst/blob/master/docs/dunst.pod#actions
+I didn't want to use this feature: you can disable it via `show_indicators=no`
+in your dunstrc
