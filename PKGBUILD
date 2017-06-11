@@ -1,3 +1,4 @@
+# Mantainer: Angelo Salton <gsalton4@hotmail.com>
 pkgname=dynare
 pkgver=4.5.0
 pkgrel=1
