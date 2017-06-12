@@ -6,7 +6,7 @@ _build_gnome_help="no" # yes|no
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.4.3.r50.g67864eb
+pkgver=2.4.3.r51.gd0c0513
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  git describe --tags | sed 's/^easytag-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^easytag-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -47,8 +47,9 @@ prepare() {
 
 build() {
   cd "$_gitname"
-  CXXFLAGS="$CXXFLAGS -Wno-error=deprecated-declarations"
-  
+  CXXFLAGS="$CXXFLAGS -Wno-error=deprecated-declarations -Wno-error"
+  # Workaround for gcc 7 
+  CFLAGS="$CFLAGS -Wno-error"
   ./configure --prefix=/usr 
   make
 }
