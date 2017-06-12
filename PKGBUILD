@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.9-gnu
-_pkgver=4.9.27-gnu
+_pkgver=4.9.30-gnu
 _rtbasever=4.9
-_rtpatchver=rt18
+_rtpatchver=rt21
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -51,8 +51,8 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
-        "https://git.hyperbola.info:50100/kernels/rcn-libre.git/plain/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
-        "https://git.hyperbola.info:50100/kernels/rcn-libre.git/plain/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://git.hyperbola.info:50100/kernels/rcn-libre-rt.git/plain/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
+        "https://git.hyperbola.info:50100/kernels/rcn-libre-rt.git/plain/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -63,9 +63,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '01faa5cbcaaf87affed8ca2243234bd6e17c8ab07fbd0f14692273e4910b0a31b3fb590d634f4ff0fc8b9d3bd911161ab34d35710f8b9ab880c3e2a3e4c264f4'
+            '470461abe876c3cd44fcc5c8f9de1937506140e3e7f813e562bc2914d84c741a7201934061fa67063f27990b9f854b1f672a3ee79f862368b048a853470afd39'
             'SKIP'
-            '78481a3463946637728468aac05f8f1101d788918dac862f06ba25f1ce99b9f28d6edf432dacedf8edb6a33874cab96fb1d33c91b7faeef38e2b4b8b4a551c92'
+            '543b357ffac20bfcfd891df86a002080fb216c873babb6b43c7e7456a2713113a261d8e9187899785b060b4770993cfdbc5b34b9ed05bc80e1fdf4591e8a97b2'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -81,7 +81,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'ad856244c852432856f1f411800517a54800e6d6d653fca9e811788da5c7d0efa2856d696230bf5bf6cc6b8316611b245bed0ebbda94bc188387e2fec435c1f4'
+            '62aed807495a28cc7b3441f4c18cb0f5a56e80f537cda924466b2632da18c2407d8260095bb4c21f6b01a59e0baec924b0d42da892dfbc99e93255f37139e8b0'
             'SKIP'
             'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
             '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
