@@ -1,17 +1,11 @@
 function install_nix_sandbox() {
   version=$(echo $1 | sed 's/-.*$//')
-  mkdir -p nix/var/nix/profiles/arch-system
+  mkdir -p /nix/var/nix/profiles/arch-system
   NIX_REMOTE="" nix-build \
     --option build-use-sandbox false \
-    -o nix/var/nix/profiles/arch-system/build-sandbox \
+    -o /nix/var/nix/profiles/arch-system/build-sandbox \
     -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/$version.tar.gz \
-    -E <<EOF
-with import <nixpkgs> {};
-buildEnv {
-  name = "arch-system-build-sandbox";
-  paths = [ bash coreutils perl ];
-}
-EOF
+    -E 'with import <nixpkgs> {}; buildEnv { name = "arch-system-build-sandbox"; paths = [ bash coreutils perl ]; }'
 }
 
 function nix_sandbox_path() {
@@ -44,13 +38,13 @@ function append_nix_sandbox_paths() {
 
 pre_install () {
   # Check that the group and users don't already exist
-  if [[ -n $(cut -d: -f1 etc/group | grep -w nixbld) ]]; then
+  if [[ -n $(cut -d: -f1 /etc/group | grep -w nixbld) ]]; then
     echo "The nixbld group already exists.  This install cannot proceed."
     exit 1
   fi
 
   for i in {1..10}; do
-    if [[ -n $(cut -d: -f1 etc/passwd | grep -w nixbld$i) ]]; then
+    if [[ -n $(cut -d: -f1 /etc/passwd | grep -w nixbld$i) ]]; then
       echo "The nixbld$i user already exists.  This install cannot proceed."
       exit 1
     fi
@@ -82,17 +76,17 @@ delete_users() {
 
 create_store() {
   # Create nix folders and set permissions
-  mkdir -p nix/store
-  chown root.nixbld nix/store
-  chmod 1775 nix/store
-  mkdir -p -m 1777 nix/var/nix/gcroots/per-user
-  mkdir -p -m 1777 nix/var/nix/profiles/per-user
+  mkdir -p /nix/store
+  chown root.nixbld /nix/store
+  chmod 1775 /nix/store
+  mkdir -p -m 1777 /nix/var/nix/gcroots/per-user
+  mkdir -p -m 1777 /nix/var/nix/profiles/per-user
 }
 
 restore_store() {
   # Restore folder permissions
-  chmod 755 nix/store
-  chown root.root nix/store
+  chmod 755 /nix/store
+  chown root.root /nix/store
 }
 
 daemon_info() {
