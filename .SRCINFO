@@ -1,5 +1,5 @@
 pkgbase = zhcal-git
-	pkgdesc = A Chinese calendar toolkit.
+	pkgdesc = A Chinese calendar toolkit which supports four pillars (Sizhu) lookup.
 	pkgver = r7.97f8af8
 	pkgrel = 1
 	url = https://github.com/910JQK/zhcal
