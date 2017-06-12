@@ -1,7 +1,7 @@
-#Maintainer: Seantum <tsiegele@gmx.at>
+#Maintainer: Seantum <tsiegele AT gmx DOT at>
 pkgname=mint-backgrounds-sarah
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The backgrounds included in Linux Mint 18 Sarah"
 license=('GPL3')
 arch=('any')
