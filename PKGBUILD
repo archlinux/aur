@@ -18,7 +18,7 @@ prepare() {
 }
 
 pkgver() {
-  # Exctract the version from the filename.
+  # Extract the version from the filename.
   grep -oiP 'content-disposition: attachment; filename=.*musixmatch_\K([0-9.]+)(?=_amd64.deb.*)' headers.txt
 }
 
