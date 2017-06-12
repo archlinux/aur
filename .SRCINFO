@@ -1,6 +1,6 @@
 pkgbase = cargo-tree
 	pkgdesc = Cargo subcommand that visualizes a crate's dependency graph in a tree-like format
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/sfackler/cargo-tree
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = cargo-tree
 	license = APACHE
 	makedepends = cmake
 	depends = cargo
-	source = https://github.com/sfackler/cargo-tree/archive/v0.12.0/cargo-tree-0.12.0.tar.gz
-	sha256sums = c67986495c1da2a55e6a23b4906b6469f782fb4eb7ad4b9458cf73ba67cbc9df
+	source = https://github.com/sfackler/cargo-tree/archive/v0.13.0/cargo-tree-0.13.0.tar.gz
+	sha256sums = 048edb82e9563681d1aadeba9f72a08e8c172183bd8da228448aa707e79381fe
 
 pkgname = cargo-tree
 
