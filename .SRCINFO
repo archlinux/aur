@@ -1,0 +1,15 @@
+pkgbase = cmus-in-bg-git
+	pkgdesc = A simple wrapper for GNU Screen and Cmus.
+	pkgver = r1.1bc065d
+	pkgrel = 1
+	url = https://github.com/notramo/cmus-in-bg
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = perl-proc-processtable
+	provides = cmus-in-bg
+	source = git+https://github.com/notramo/cmus-in-bg.git
+	md5sums = SKIP
+
+pkgname = cmus-in-bg-git
+
