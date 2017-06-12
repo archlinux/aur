@@ -1,0 +1,34 @@
+diff -ura package.orig/frontend/au_channel.h package.new/frontend/au_channel.h
+--- package.orig/frontend/au_channel.h	2017-06-12 16:45:07.801636703 -0500
++++ package.new/frontend/au_channel.h	2017-06-12 18:34:47.922727878 -0500
+@@ -12,7 +12,7 @@
+ 	int	aFmt;
+ } WavInfo;
+ 
+-inline FILE* AuChannelOpen (const char* filename, WavInfo* info)
++static inline FILE* AuChannelOpen (const char* filename, WavInfo* info)
+ {
+ 	unsigned char header[12];
+ 	unsigned char data[WAV_HEADER_SIZE];
+@@ -48,18 +48,18 @@
+ 	return handle;
+ }
+ 
+-inline void AuChannelClose (FILE *audioChannel)
++static inline void AuChannelClose (FILE *audioChannel)
+ {
+ 	fclose(audioChannel);
+ }
+ 
+-inline size_t AuChannelReadShort(FILE *audioChannel, short *samples, int nSamples, int *readed)
++static inline size_t AuChannelReadShort(FILE *audioChannel, short *samples, int nSamples, int *readed)
+ {
+ 	*readed = fread(samples, 2, nSamples, audioChannel);
+ 	return *readed <= 0;
+ }
+ 
+-inline size_t AuChannelReadFloat(FILE *audioChannel, float *samples, int nSamples, int *readed)
++static inline size_t AuChannelReadFloat(FILE *audioChannel, float *samples, int nSamples, int *readed)
+ {
+ 	*readed = fread(samples, 4, nSamples, audioChannel);
+ 	return *readed <= 0;
