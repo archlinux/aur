@@ -1,9 +1,9 @@
 #Maintainer: Seantum <tsiegele@gmx.at>
 pkgname=mint-backgrounds-sarah
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The backgrounds included in Linux Mint 18 Sarah"
-license=('Various')
+license=('GPL3')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sarah"
 source=("$url/mint-backgrounds-sarah_$pkgver.tar.gz")
