@@ -2,7 +2,7 @@
 # Contributor: j1simon
 pkgname=buttercup
 pkgver=0.17.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
 url="https://github.com/buttercup/buttercup"
@@ -16,7 +16,7 @@ sha256sums=('0a4db0c51a25122a5e786b1f7de2ddd2e5c6aad63149938ecc797386d892c53c'
 prepare(){
   sed -i '/"rpm",/d' "$srcdir/$pkgname-$pkgver/package.json"
   sed -i '/"AppImage",/d' "$srcdir/$pkgname-$pkgver/package.json"
-  sed -i 's/"deb"/"zip"/' "$srcdir/$pkgname-$pkgver/package.json"
+  sed -i 's/"deb"/"dir"/' "$srcdir/$pkgname-$pkgver/package.json"
   if [[ $CARCH = "i686" ]]; then
     sed -i 's/build --linux --x64/build --linux --ia32/' "$srcdir/$pkgname-$pkgver/package.json"
   fi
