@@ -18,7 +18,7 @@ optdepends=('iputils: run ping and rank functions'
             'vpnfailsafe-git: use instead of update-resolv-conf if available')
 makedepends=('coreutils' 'pandoc')
 provides=('nordvpn')
-source=('git+https://github.com/nstinus/nordvpn.git#branch=master')
+source=("git+https://github.com/nstinus/nordvpn.git#branch=${NORDVPN_BRANCH:-master}")
 sha1sums=('SKIP')
 install=${pkgname}.install
 
