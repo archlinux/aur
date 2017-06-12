@@ -20,7 +20,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/cmus-in-bg"
-	install -D cmus-in-bg $pkgdir/usr/bin/cmusn-in-bg
-	install -D cmus-in-bg-terminal $pkgdir/usr/bin/cmusn-in-bg-terminal
+	install -D cmus-in-bg $pkgdir/usr/bin/cmus-in-bg
+	install -D cmus-in-bg-terminal $pkgdir/usr/bin/cmus-in-bg-terminal
 	install -D COPYING $pkgdir/usr/share/licenses/cmus-in-bg-git/LICENSE
 }
