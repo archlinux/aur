@@ -6,7 +6,9 @@ pkgbase = python-quandl
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = python>=3.6
+	depends = python>=3.6,
+	depends = python-numpy,
+	depends = python-more-itertools
 	provides = python-quandl
 	source = python-quandl::git+https://github.com/quandl/quandl-python.git
 	md5sums = SKIP
