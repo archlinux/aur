@@ -1,11 +1,13 @@
 pkgbase = epfl-menu-git
 	pkgdesc = Pretty-print the lunch and supper menus at the EPFL
 	pkgver = r16.2406823
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gcmalloc/epfl-menu
 	arch = any
 	license = custom:Beerware
 	makedepends = python-setuptools
+	provides = epfl-menu
+	conflicts = epfl-menu
 	source = git+https://github.com/gcmalloc/epfl-menu
 	md5sums = SKIP
 
