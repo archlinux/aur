@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=60.0.3112.20
+pkgver=61.0.3124.4
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -82,8 +82,9 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         'BUILD.gn'
         # Patch form Gentoo
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r9.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-icu-r2.patch'
         # Misc Patches
         'minizip.patch'
         'vaapi_patch_r2.patch'
@@ -96,11 +97,10 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
-            'b34b698059a8e10aa1a4b26f41599c3a62cfd39b59d6269bcfe939e7ff7ad39a'
-            '06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f'
+            'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
+            '02d13c22a658de47f1e2331c761b9445e24b43ef0b698d46746137dd8701e285'
+            '65c89853c132e3a61e17ba3157ba3ad1352e53bf39480889a2d766de4a0c409f'
             # Misc Patches
-#             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
-#             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce'
             # Patch from crbug (chromium bugtracker)
@@ -389,8 +389,9 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
-  patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r1.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r8.patch"
+  patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r9.patch"
+  patch -p1 -i "${srcdir}/chromium-system-icu-r2.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -529,7 +530,6 @@ package() {
     'libclearkeycdm.so'
     'libEGL.so'
     'libGLESv2.so'
-    'libosmesa.so'
     'libVkLayer_core_validation.so'
     'libVkLayer_object_tracker.so'
     'libVkLayer_parameter_validation.so'
