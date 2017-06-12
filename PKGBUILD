@@ -11,7 +11,7 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -23,8 +23,8 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
          'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
          'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
-         'libass.so' 'libbluray.so' 'libfreetype.so' 'libnetcdf.so'
-         'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libvidstab.so'
+         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so'
          'raspberrypi-firmware-tools')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
@@ -35,7 +35,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('b702a7fc656ac23e276b8c823a2f646e4e6f6309bb2788435a708e69bea98f2f'
+sha256sums=('1998de1ab32616cbf2ff86efc3f1f26e76805ec5dc51e24c041c79edd8262785'
             'SKIP')
 
 build() {
@@ -83,7 +83,6 @@ build() {
     --enable-libxcb \
     --enable-libxvid \
     --enable-mmal \
-    --enable-netcdf \
     --enable-shared \
     --enable-version3 \
     $CONFIG
