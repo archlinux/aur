@@ -10,8 +10,8 @@
 
 pkgbase=linux-libre-hardened
 _pkgbasever=4.11-gnu
-_pkgver=4.11.3-gnu
-_hardenedver=b
+_pkgver=4.11.4-gnu
+_hardenedver=a
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -63,9 +63,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0010-ARM-dove-enable-ethernet-on-D3Plug.patch')
 sha512sums=('f1d9138024b127385248de5c8eb72123b717bbbaba3e80bded20f073acac816a7ea979c4677ddc72252a8ec77c6a6c1d1738b1c20106f7d53ef39c9cf64c1853'
             'SKIP'
-            '5110084b5579851aeae0f88a4c2e6f230926ca38dbdeab78de63c7bb4c8ac8efa40d8828baa79ca976873fc268bc560e9eebd9eff2d4d23fa3cbc66b23a4851a'
+            '40bbd6d18d362c5c51f138fe8772fd57c1a2232e6fbcadabd4f152217b45c05e3018e976686fdc982f59008a12addc9c57de91b1332df7c1b78a05aa3e9809fe'
             'SKIP'
-            'd935fe1fe999cad6ed5cd60342d48cf44c82a27e1b36e897d1709b77f393464b1d53eb51f5c385e1e5d6cad5965a22c6b6018ce68e0c551793309b314ba3d9c9'
+            '7f7ed87b875fb8aae2ea8bf12c3d3a12245e3bcf17163a4ece0cb98736df043836ea0f084aee5ceff033148fcbb9fd5eca7b65e3e7fd58020c038bc459b91e7b'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
