@@ -1,4 +1,5 @@
-# Maintainer: favonia <favonia@gmail.com>
+# Maintainer: Hill YU <hillyunews@gmail.com>
+# Contributor: favonia <favonia@gmail.com>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 
