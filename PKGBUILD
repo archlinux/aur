@@ -1,9 +1,9 @@
 #Maintainer: Seantum <tsiegele@gmx.at>
 pkgname=mint-backgrounds-sonya
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="The backgrounds included in Linux Mint 18.2 Sonya"
-license=('Various')
+license=('GPL3')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sonya"
 source=("$url/mint-backgrounds-sonya_$pkgver.tar.gz")
