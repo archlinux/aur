@@ -1,6 +1,6 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname=zsync-curl-git 
-pkgver=r66.0a98026
+pkgver=r73.6757f73
 pkgrel=1
 pkgdesc="zsync build against libcurl to support https"
 arch=('x86_64')
