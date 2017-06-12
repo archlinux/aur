@@ -60,6 +60,6 @@ package() {
     for _size in 16 24 32 40 48 64 128 256; do
         install -D -m644 \
                 ${_name}-${_size}.png \
-                "$pkgdir"/usr/share/icons/hicolor/$_size/${_name}.png
+                "$pkgdir"/usr/share/icons/hicolor/${_size}x${_size}/apps/${_name}.png
     done
 }
