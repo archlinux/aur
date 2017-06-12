@@ -7,7 +7,7 @@ pkgbase = adhosts
 	license = GPL
 	depends = wget
 	source = https://github.com/levinit/adhosts/archive/master.zip
-	md5sums = 9770ee4c990c8a19f1a7f2b4c5979a12
+	md5sums = 9e6a96a4adb5b97755680311c4d3c69b
 
 pkgname = adhosts
 

@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/levinit/adhosts/archive/master.zip")
 noextract=()
-md5sums=('832e281ef7dec6d9f4bb746e24d10d11')
+md5sums=('9e6a96a4adb5b97755680311c4d3c69b')
 validpgpkeys=()
 
 prepare() {
