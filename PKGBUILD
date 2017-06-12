@@ -2,7 +2,7 @@
 
 pkgname=libmysofa
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format'
 arch=('i686' 'x86_64')
 url='https://hoene.github.io/libmysofa/'
@@ -25,12 +25,7 @@ build() {
     cd "${pkgname}-${pkgver}"
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -s'|[^/]*/||'
     
-    # replace 'CUnit.h' references for 'Cunit.h' (due to packaging of bcunit-cunit-compat)
-    cd src/tests
-    sed -i 's/CUnit\.h/Cunit\.h/' tests.c
-    sed -i 's/CUnit\.h/Cunit\.h/' tests.h
-    
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
+    cd build
     cmake \
         -DCMAKE_BUILD_TYPE:STRING=Release \
         -DCMAKE_COLOR_MAKEFILE:BOOL=ON \
