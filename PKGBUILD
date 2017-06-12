@@ -4,7 +4,7 @@
 pkgname=vmware-vcli
 _pkgver=6.5.0-4566394
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="VMware vSphere Command-Line Interface (vCLI); run commands against vSphere and ESX/ESXi"
 arch=('i686' 'x86_64')
 url="https://developercenter.vmware.com/tool/vsphere_cli/6.0"
@@ -49,4 +49,18 @@ package() {
   # Having this causes some python programs to throw errors and this seems
   # OK without it
   rm "$pkgdir"/usr/bin/six.pyc
+
+  # Fix location config
+  sed "s:^file .*/pkg/vmware-vcli:file /usr:" \
+    -i "$pkgdir"/etc/vmware-vcli/locations
+  sed "s:^directory .*/pkg/vmware-vcli:directory /usr:" \
+    -i "$pkgdir"/etc/vmware-vcli/locations
+  sed "s:LIBDIR .*/pkg/vmware-vcli:LIBDIR /usr:" \
+    -i "$pkgdir"/etc/vmware-vcli/locations
+  sed "s:BINDIR .*/pkg/vmware-vcli:BINDIR /usr:" \
+    -i "$pkgdir"/etc/vmware-vcli/locations
+  sed "s:DOCDIR .*/pkg/vmware-vcli:DOCDIR /usr:" \
+    -i "$pkgdir"/etc/vmware-vcli/locations
+  sed "s:^libdir .*:/usr/lib/vmware-vcli:" \
+    -i "$pkgdir"/etc/vmware-vcli/config
 }
