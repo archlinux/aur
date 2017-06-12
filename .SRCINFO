@@ -1,12 +1,13 @@
 pkgbase = nss-hg
 	pkgdesc = Mozilla Network Security Services
-	pkgver = r13423.431af1a9435a
+	pkgver = r13438.8cd50ae99b50
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
 	arch = i686
 	arch = x86_64
 	license = MPL
 	license = GPL
+	makedepends = gyp
 	makedepends = perl
 	makedepends = python2
 	makedepends = ninja
@@ -15,7 +16,7 @@ pkgbase = nss-hg
 	makedepends = mercurial
 	makedepends = python2-setuptools
 	makedepends = python2-virtualenv
-	depends = nspr>=4.13
+	depends = nspr>=4.15
 	depends = sqlite
 	depends = zlib
 	depends = sh

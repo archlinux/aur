@@ -4,15 +4,15 @@
 
 _pkgname=nss
 pkgname=nss-hg
-pkgver=r13423.431af1a9435a
+pkgver=r13438.8cd50ae99b50
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license=('MPL' 'GPL')
-_nsprver=4.13
-depends=("nspr>=${_nsprver}" 'sqlite' 'zlib' 'sh' 'p11-kit')
-makedepends=('perl' 'python2' 'ninja' 'git' 'python2' 'mercurial' 'python2-setuptools' 'python2-virtualenv')
+_nsprver=4.15
+depends=("nspr>=${_nsprver}" sqlite zlib sh p11-kit)
+makedepends=(gyp perl python2 ninja git python2 mercurial python2-setuptools python2-virtualenv)
 options=('!strip' '!makeflags' 'staticlibs')
 source=("hg+https://hg.mozilla.org/projects/nss")
 sha256sums=('SKIP')
@@ -24,25 +24,12 @@ pkgver() {
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-prepare() {
-  if [ ! -d gyp ]; then
-    git clone https://chromium.googlesource.com/external/gyp
-  fi
-  python2 -m virtualenv python-env
-  cd gyp
-  ../python-env/bin/python setup.py install
-  cd ../nss
-  hg up default
-}
-
 build() {
-  if [ ! -f python ]; then
-    ln -s /usr/bin/python2 python
-  fi
   cd nss
-  PATH=$PWD/../python-env/bin/:$PWD/../:$PATH ./build.sh --opt --system-sqlite \
-                                                         --system-nspr \
-                                                         --disable-tests
+  hg up default
+  PATH=:$PWD/../:$PATH ./build.sh --opt --system-sqlite \
+                                        --system-nspr \
+                                        --disable-tests
 }
 
 package() {
