@@ -1,18 +1,17 @@
 pkgbase = cockatrice-git
 	pkgdesc = Open-source multiplatform supported program for playing tabletop card games over a network.
-	pkgver = 20161030
+	pkgver = 2.3.17
 	pkgrel = 1
 	url = https://github.com/Cockatrice/Cockatrice
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	makedepends = git
 	depends = protobuf
 	depends = qt5-svg
 	depends = qt5-tools
 	depends = qt5-multimedia
-	source = git+https://github.com/Cockatrice/Cockatrice#tag=2016-10-30-Release
+	source = https://github.com/Cockatrice/Cockatrice/archive/2017-05-05-Release-2.3.17.tar.gz
 	sha256sums = SKIP
 
 pkgname = cockatrice-git
