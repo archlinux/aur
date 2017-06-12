@@ -30,7 +30,7 @@ prepare() {
 	rm -f CPAN/JSON/XS.pm
 	rm -f CPAN/Template.pm
 	rm -f CPAN/version.pm
-	rm -rf CPAN/{CGI,common,DBI,DBD,Digest,Sub,Template,version,XML,YAML}
+	rm -rf CPAN/{CGI,common,DBI,DBD,Digest,HTML,Sub,Template,version,XML,YAML}
 	case $CARCH in
 	    x86_64) rm -rf Bin/{arm,armhf}-linux ;;
 	    i686) rm -rf Bin/{arm,armhf}-linux ;;
