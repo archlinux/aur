@@ -1,0 +1,12 @@
+[Unit]
+Description=Pachost Mirror Server
+After=network.target
+
+[Service]
+Type=simple
+Environment=ROCKET_ENV=prod
+Environment=ROCKET_TEMPLATE_DIR=/usr/share/pachost/
+ExecStart=/usr/bin/pachost
+
+[Install]
+WantedBy=multi-user.target
