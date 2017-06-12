@@ -9,6 +9,7 @@ url="https://www.kde.org/"
 license=(LGPL)
 depends=(plasma-framework libksysguard encfs)
 makedepends=(extra-cmake-modules python)
+optdepends=('encfs: to use encFS for encryption' 'cryfs: to use cryFS for encryption')
 source=("https://download.kde.org/unstable/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('1f1868c42df15e1584bb29efc51b1e533f95f1f8374021a7a12d4945d9b1bc00'
             'SKIP')
