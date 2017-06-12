@@ -5,7 +5,7 @@ pkgdesc="The backgrounds included in Linux Mint 18.2 Sonya"
 license=('Various')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sonya"
-source=("$url/mint-backgrounds-sonya$pkgver.tar.gz")
+source=("$url/mint-backgrounds-sonya_$pkgver.tar.gz")
 package() {
 	mkdir -p $pkgdir/usr/share/backgrounds/linuxmint-sonya
 	cp -a $srcdir/$pkgname/backgrounds/linuxmint-sonya $pkgdir/usr/share/backgrounds/
