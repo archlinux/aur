@@ -5,13 +5,13 @@
 
 pkgname=mosh
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
-url='https://mosh.mit.edu/'
+url='https://mosh.org/'
 license=('GPL3')
 depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
-source=("https://$pkgname.mit.edu/$pkgname-$pkgver.tar.gz")
+source=("https://mosh.org/$pkgname-$pkgver.tar.gz")
 sha256sums=('320e12f461e55d71566597976bd9440ba6c5265fa68fbf614c6f1c8401f93376')
 options=('!emptydirs')
 
@@ -30,4 +30,4 @@ package() {
 }
 
 # getver: raw.githubusercontent.com/mobile-shell/mosh/master/ChangeLog
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
