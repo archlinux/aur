@@ -1,6 +1,7 @@
 post_install() {
-    echo "==> To complete installation, add the following line to your bashrc"
-    echo '==> [[ -f /usr/share/nwd/preexec.sh ]] && . /usr/share/nwd/preexec.sh'
+    echo "==> To complete installation, add the following lines to your bashrc"
+    echo '    [[ -S /run/user/$USER/i3/ipc-socket.$(pidof i3) && -f /usr/share/nwd/preexec.sh ]] \'
+    echo '        && . /usr/share/nwd/preexec.sh'
     echo '==> and restart bash'
 }
 
