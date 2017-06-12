@@ -1,7 +1,7 @@
 pkgbase = nbc
-	pkgdesc = Next Byte Codes (NBC) compiler
+	pkgdesc = Next Byte Codes (NBC) compiler for the LEGO Mindstorms NXT programmable brick
 	pkgver = 1.2.1.r4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://bricxcc.sourceforge.net/nbc/
 	arch = i686
 	arch = x86_64
