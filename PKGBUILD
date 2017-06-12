@@ -4,7 +4,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=brltty-minimal
-pkgver=5.3.1
+pkgver=5.5
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix"
 arch=(i686 x86_64)
@@ -44,5 +44,5 @@ package() {
   install -Dm644 Documents/brltty.conf "$pkgdir/etc/brltty.conf"
   install -Dm644 ../brltty.service "$pkgdir/usr/lib/systemd/system/brltty.service"
 }
-md5sums=('7835871c911effd286040225bf5355f8'
+md5sums=('cd2fb2158b9fc85b23c4225d1d067df6'
          '0cad54bb5470122535f5e3a11d5ca123')
