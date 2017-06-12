@@ -1,6 +1,6 @@
 pkgbase = fusedav-git
 	pkgdesc = A webdav filesystem based on FUSE
-	pkgver = a59dbe9
+	pkgver = v2.0.26+618
 	pkgrel = 1
 	url = https://github.com/pantheon-systems/fusedav/
 	arch = i686
@@ -17,7 +17,9 @@ pkgbase = fusedav-git
 	depends = jemalloc
 	depends = uriparser
 	source = git://github.com/pantheon-systems/fusedav.git
+	source = libsystemd.patch
 	md5sums = SKIP
+	md5sums = fe087994e80a346d773b0a721f5fd771
 
 pkgname = fusedav-git
 
