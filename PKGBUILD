@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-audit
 _pkgbasever=4.11-gnu
-_pkgver=4.11.2-gnu
+_pkgver=4.11.4-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -60,7 +60,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0010-ARM-dove-enable-ethernet-on-D3Plug.patch')
 sha512sums=('f1d9138024b127385248de5c8eb72123b717bbbaba3e80bded20f073acac816a7ea979c4677ddc72252a8ec77c6a6c1d1738b1c20106f7d53ef39c9cf64c1853'
             'SKIP'
-            '181d9aef7b766dbe11e7dd09e8030239d0040af782cdd37dc9b8d2f9da8849e51c5aa8cbd44f89bebf8d9f6f97ddeefb2a8feb95d2c674e06c16a6be2d5a9fad'
+            '40bbd6d18d362c5c51f138fe8772fd57c1a2232e6fbcadabd4f152217b45c05e3018e976686fdc982f59008a12addc9c57de91b1332df7c1b78a05aa3e9809fe'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -75,7 +75,7 @@ sha512sums=('f1d9138024b127385248de5c8eb72123b717bbbaba3e80bded20f073acac816a7ea
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'bb087f597c4ed3a4d7eb5065a70dc8ec15abdecb36eabed6779a0884c003f7ceaefd64d64259b7077007f85df58a0f06d41148e8fee8c2c2daf2dde0382d2ec0'
+            'f5ac0362e6c79ef007be088b8138a1795937e392db7b05fa4d1cca6644d08b77b88ff7cfcc7c768c067fc7301f462fa7bdb6120e60f992486f56dd88c47c3fd9'
             'SKIP'
             'b3c214cc9adf22858f21ea8b0b919bd167257c2f624e98718d486b7fb82f1cfd17f578f799c13c26948bc2cb23e9eb6de0ef9299cbe49afb63929778eda24026'
             'db14593a4a0c0371e2cc2bcdcb0a4ac2abec96945dbb455393c5ef5140eca8ffb857dfee818087e4dfe261e9725a9e40a5d7e4c9774bca96560e3628743d7955'
