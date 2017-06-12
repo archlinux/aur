@@ -4,7 +4,7 @@
 
 pkgname=nix-multiuser
 pkgver=17.03 # indicates the version of NixOS used for the sandbox
-pkgrel=1
+pkgrel=2
 pkgdesc="Set up multi-user environment for the Nix package manager"
 arch=("any")
 license=('MIT')
