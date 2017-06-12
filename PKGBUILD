@@ -5,18 +5,18 @@ pkgname=upwork
 pkgver=4.2.153.0
 _rawver=${pkgver//./_}
 _hashver="tkzkho5lhz15j08q"
-pkgrel=2
-pkgdesc="Desktop App (aka Team App)"
+pkgrel=3
+pkgdesc="Desktop App (aka Team App) Standard version"
 arch=('i686' 'x86_64')
 url="https://www.upwork.com/downloads?source=Footer"
 license=('custom')
 conflicts=('upwork-beta' 'upwork-alpha')
-depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libxss')
+depends=('alsa-lib' 'gconf' 'gtkglext' 'libgcrypt15' 'libxss' 'libxtst' 'nss')
+makedepends=('gobject-introspection' 'help2man' 'gtk-doc' 'git')  # Needed to build pango
 install=upwork.install
 
-#source=("https://dl.devtrue.net/archlinux/upwork/LICENSE")
-source=('LICENSE')
-md5sums=('1a87c2b530067bcf4c632e49c18af484')
+source=("LICENSE" "git+https://git.gnome.org/browse/pango#commit=6c5d1d35061a91c3c0792f7720da3f8308ebff65")
+md5sums=('1a87c2b530067bcf4c632e49c18af484' 'SKIP')
 md5sums_i686=('fa3aa945068e49081e1ac2cc7490032b')
 md5sums_x86_64=('6c33e3ff5ae168c840f46887d690fd5e')
 # how to get links Standard, Beta, Alpha: grep "https://updates-desktopapp.upwork.com/binaries" ~/.Upwork/Upwork/Logs/* | tail -n 4
