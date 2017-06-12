@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-ndk
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 
 _modname="ngx_devel_kit"
-_nginxver=1.13.0
+_nginxver=1.13.1
 
 pkgdesc="Module for mainline nginx that adds generic tools that module developers can use"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/simpl/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
+sha256sums=('a5856c72a6609a4dc68c88a7f3c33b79e6693343b62952e021e043fe347b6776'
             '88e05a99a8a7419066f5ae75966fb1efc409bad4522d14986da074554ae61619')
 
 build() {
