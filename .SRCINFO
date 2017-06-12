@@ -1,6 +1,6 @@
 pkgbase = openfx-arena
 	pkgdesc = Extra OpenFX plugins for Natron
-	pkgver = 2.2.1
+	pkgver = 2.2.8
 	pkgrel = 3
 	url = https://github.com/olear/openfx-arena
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = openfx-arena
 	depends = gcc-libs-multilib
 	optdepends = natron-plugins
 	optdepends = openfx-gmic-bin
-	source = openfx-arena::git+https://github.com/olear/openfx-arena.git#tag=Natron-2.2.1
+	source = openfx-arena::git+https://github.com/MrKepzie/openfx-arena.git#tag=Natron-2.2.8
 	source = git+https://github.com/devernay/openfx.git
 	source = git+https://github.com/devernay/openfx-supportext.git
 	source = git+https://github.com/MrKepzie/openfx-io.git

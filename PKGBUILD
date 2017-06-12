@@ -2,7 +2,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena
-pkgver=2.2.1
+pkgver=2.2.8
 pkgrel=3
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
@@ -12,7 +12,7 @@ makedepends=("git")
 depends=("imagemagick" "libcdr" "librsvg" "libtool" "libzip" "opencolorio" "poppler-glib")
 optdepends=("natron-plugins" "openfx-gmic-bin")
 depends_x86_64=("gcc-libs-multilib")
-source=("$pkgname::git+https://github.com/olear/openfx-arena.git#tag=Natron-$pkgver"
+source=("$pkgname::git+https://github.com/MrKepzie/openfx-arena.git#tag=Natron-$pkgver"
         "git+https://github.com/devernay/openfx.git"
         "git+https://github.com/devernay/openfx-supportext.git"
         "git+https://github.com/MrKepzie/openfx-io.git"
