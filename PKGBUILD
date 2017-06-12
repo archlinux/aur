@@ -2,12 +2,12 @@
 
 pkgname="systemd-lock-handler"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Logind lock event to systemd target translation."
 arch=('any')
 url="https://github.com/hobarrera/systemd-lock-handler"
 license=('ISC')
-depends=('python2-txdbus')
+depends=('python-txdbus')
 source=("$pkgname::git+https://github.com/hobarrera/systemd-lock-handler.git#tag=v$pkgver")
 md5sums=('SKIP')
 
