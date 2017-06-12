@@ -11,7 +11,8 @@ license=('GPL' 'custom')
 provides=('logitechmediaserver')
 depends=('perl>=5.26' 'perl<5.27' 'perl-cgi' 'perl-common-sense'
 	 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-sha1' 'perl-ev' 'perl-yaml-libyaml'
-	 'perl-html-parser' 'perl-json-xs' 'perl-sub-name' 'perl-sub-uplevel'
+	 'perl-html-parser' 'perl-html-form' 'perl-html-fomatter' 'perl-html-tree'
+	 'perl-json-xs' 'perl-sub-name' 'perl-sub-uplevel'
 	 'perl-template-toolkit' 'perl-xml-parser' 'perl-xml-simple')
 makedepends=('nasm' 'yasm' 'rsync' 'gd' 'zlib')
 optdepends=('perl-io-socket-ssl: support for https streams')
