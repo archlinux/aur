@@ -4,9 +4,9 @@
 
 pkgname=bsdmainutils
 pkgver=9.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Some BSD-style programs including ncal and lorder."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://launchpad.net/ubuntu/+source/bsdmainutils"
 license=(GPL)
 source=(
@@ -26,7 +26,7 @@ build() {
 
     # Make a fresh copy of the files we'll be mangling in case you need to rebuild the
     # package.
-    
+
     if [ -d "${srcdir}/${pkgname}-work" ]
     then
         rm -r "${srcdir}/${pkgname}-work"
@@ -66,7 +66,8 @@ package() {
     install -Dm0644 "${srcdir}/${pkgname}-work/debian/calendars/default" "${pkgdir}/etc/calendar"
     cp -a "${srcdir}/${pkgname}-work/usr.bin/calendar/calendars/"* "${pkgdir}/etc/calendar/"
 
-    # Generate symlinks to language-specific calendars. If you don't want these,
+    # Generate symlinks to language-specific calendars. If you don't want
+    # these, simply remove the entries below.
     cd "${pkgdir}/etc/calendar/"
     ln -s de_AT.ISO_8859-15 de_AT
     ln -s de_DE.ISO8859-1 de_DE
