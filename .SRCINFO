@@ -1,0 +1,22 @@
+pkgbase = grpc-git-boringssl
+	pkgdesc = gRPC - An RPC library and framework, using BoringSSL
+	pkgver = v1.3.5.r1003.gb2eceb167d
+	pkgrel = 1
+	url = http://www.grpc.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gflags
+	makedepends = go
+	makedepends = zlib
+	makedepends = perl
+	depends = c-ares
+	depends = protobuf>=3
+	conflicts = grpc,
+	conflicts = grpc-git
+	options = !makeflags
+	source = git+https://github.com/grpc/grpc.git#branch=v1.4.x
+	md5sums = SKIP
+
+pkgname = grpc-git-boringssl
+
