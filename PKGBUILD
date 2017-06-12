@@ -2,7 +2,7 @@
 
 pkgname=dh-make-golang
 _baseversion=0.0
-_debiangitsuffix=git20150803.0.bd09cd9
+_debiangitsuffix=git20161120.0.71f5e23
 _debianpkgrel=1
 pkgver=$_baseversion$_debiangitsuffix
 pkgrel=1
@@ -13,11 +13,11 @@ license=('BSD')
 makedepends=('go'
              'git')
 options=('!strip' '!emptydirs')
-source=("http://httpredir.debian.org/debian/pool/main/d/dh-make-golang/dh-make-golang_$_baseversion~$_debiangitsuffix.orig.tar.bz2"
+source=("http://httpredir.debian.org/debian/pool/main/d/dh-make-golang/dh-make-golang_$_baseversion~$_debiangitsuffix.orig.tar.xz"
 	"http://httpredir.debian.org/debian/pool/main/d/dh-make-golang/dh-make-golang_$_baseversion~$_debiangitsuffix-$_debianpkgrel.debian.tar.xz")
 
-sha256sums=('bfc00b8fcd5d6c8005ab4c5fdf7188e63304953c337345c6a48165ad203adf0a'
-            'b8e5b8bb4b2c77608f0399a19da94541325eea0ab78947b00a9e956c83414a15')
+sha256sums=('e5dddc76743a74666ddc74d33283bf4085eedb85fff41a6b42d9b7fac1f8f28b'
+            '622fdf2e33c24620b30657c09235b9feb1a7307ac340344672ea68c137313cc7')
 
 prepare() {
   export GOPATH="$srcdir"
