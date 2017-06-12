@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-dav-ext
 pkgver=0.0.3
-pkgrel=3
+pkgrel=4
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.0
+_nginxver=1.13.1
 
 pkgdesc='Nginx mainline module with support for missing PROPFIND and OPTIONS WebDAV methods'
 arch=('i686' 'x86_64')
@@ -16,16 +16,16 @@ license=('CUSTOM')
 source=(
 	http://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/arut/nginx-dav-ext-module/archive/v$pkgver/nginx-dav-ext-module-$pkgver.tar.gz
-	nginx-dav-ext-dynamin-module.patch::https://patch-diff.githubusercontent.com/raw/arut/nginx-dav-ext-module/pull/26.patch
+	nginx-dav-ext-dynamic-module.patch::https://patch-diff.githubusercontent.com/raw/arut/nginx-dav-ext-module/pull/26.patch
 )
 
-sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
+sha256sums=('a5856c72a6609a4dc68c88a7f3c33b79e6693343b62952e021e043fe347b6776'
             'd428a0236c933779cb40ac8c91afb19d5c25a376dc3caab825bfd543e1ee530d'
             '722e12ff18ded5266f9ca29f5d9db79205d8247f82981c928663fbbe39d20833')
 
 prepare() {
 	cd "$srcdir"/nginx-dav-ext-module-$pkgver
-	patch -p1 -i "$srcdir"/nginx-dav-ext-dynamin-module.patch
+	patch -p1 -i "$srcdir"/nginx-dav-ext-dynamic-module.patch
 }
 
 build() {
