@@ -2,7 +2,7 @@
 
 pkgname=musixmatch-bin
 _pkgname=musixmatch
-pkgver=0.18.1
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='Lyrics platform where users can search and share lyrics'
 arch=('x86_64')
@@ -19,7 +19,7 @@ prepare() {
 
 pkgver() {
   # Exctract the version from the filename.
-  grep -oiP 'content-disposition: attachment; filename=musixmatch_\K([0-9.]+)(?=_amd64.deb.*)' headers.txt
+  grep -oiP 'content-disposition: attachment; filename=.*musixmatch_\K([0-9.]+)(?=_amd64.deb.*)' headers.txt
 }
 
 package() {
