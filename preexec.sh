@@ -1,19 +1,28 @@
-_precmd() {
-    if [[ -z $NWD_CMD ]]; then return; fi
+__nwd_cmd=
+__nwd_previous_focused=
+__nwd_when_started=
 
-    CURRENT_FOCUSED_W=$(python3 /usr/share/nwd/focused_window.py)
-    if [[ $NWD_FOCUSED_W && $CURRENT_FOCUSED_W -ne $NWD_FOCUSED_W ]]; then
-        notify-send -a nwd "$NWD_CMD"
+__nwd_precmd() {
+    [[ -z $__nwd_cmd ]] && return
+
+    local current_focused
+    current_focused=$(python3 /usr/share/nwd/focused_window.py)
+    if [[ $__nwd_previous_focused && $current_focused -ne $__nwd_previous_focused ]]; then
+        local elapsed_seconds
+        elapsed_seconds=$(( $(date +%s) - $__nwd_when_started ))
+        [[ $elapsed_seconds -ge 1 ]] && notify-send -a nwd "$__nwd_cmd"
     fi
 
-    NWD_FOCUSED_W=
-    NWD_CMD=
+    __nwd_previous_focused=
+    __nwd_cmd=
+    __nwd_when_started=
 }
 
-_preexec() {
-    NWD_CMD=$1
-    NWD_FOCUSED_W=$(python3 /usr/share/nwd/focused_window.py)
+__nwd_preexec() {
+    __nwd_cmd=$1
+    __nwd_previous_focused=$(python3 /usr/share/nwd/focused_window.py)
+    __nwd_when_started=$(date +%s)
 }
 
-if [[ -z $(echo $preexec_functions|grep _preexec) ]]; then preexec_functions+=(_preexec); fi
-if [[ -z $(echo $precmd_functions|grep _precmd) ]]; then precmd_functions+=(_precmd); fi
+[[ -z $(echo $preexec_functions|grep __nwd_preexec) ]] && preexec_functions+=(__nwd_preexec)
+[[ -z $(echo $precmd_functions|grep __nwd_precmd) ]] && precmd_functions+=(__nwd_precmd)
