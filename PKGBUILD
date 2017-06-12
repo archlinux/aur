@@ -1,7 +1,7 @@
-#Maintainer: Seantum <tsiegele@gmx.at>
+#Maintainer: Seantum <tsiegele AT gmx DOT at>
 pkgname=mint-backgrounds-sonya
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="The backgrounds included in Linux Mint 18.2 Sonya"
 license=('GPL3')
 arch=('any')
