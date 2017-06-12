@@ -4,12 +4,12 @@
 
 pkgname=syncthing-inotify-git
 _pkgname=syncthing-inotify
-pkgver=0.7.r9.gef7839c
+pkgver=0.8.5.r24.gaf6fbf9
 pkgrel=1
 pkgdesc="Inotify file watcher for Syncthing"
 url="https://github.com/syncthing/syncthing-inotify"
 license=('MPL')
-arch=('i686' 'x86_64')
+arch=(any)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('syncthing')
@@ -33,14 +33,11 @@ build() {
     export GOPATH="${srcdir}"
     cd "${srcdir}/src/github.com/syncthing/${_pkgname}"
     go get
+    go get -u github.com/FiloSottile/gvt
+    ${srcdir}/bin/gvt update github.com/zillode/notify
     go build
 }
 
-check() {
-    export GOPATH="${srcdir}"
-    cd "${srcdir}/src/github.com/syncthing/${_pkgname}"
-    go test
-}
 
 package() {
     cd "${srcdir}/src/github.com/syncthing/${_pkgname}"
