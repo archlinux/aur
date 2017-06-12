@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=gitea
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language.'
 arch=('any')
@@ -16,18 +16,18 @@ optdepends=('sqlite: SQLite support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
 conflicts=('gitea-git' 'gitea-git-dev')
-install=gitea.install
 backup=('etc/gitea/app.ini')
-source=(git://github.com/go-gitea/gitea.git#tag=v${pkgver}
+install=gitea.install
+source=(https://github.com/go-gitea/gitea/archive/v${pkgver}.tar.gz
         gitea.service
         app.ini)
-sha512sums=('SKIP'
+sha512sums=('ecad2e11cc01fd9c2b05b672e334c013d65824a111be25cbd3956196688c0d52e31875263e16fdae497e651d771539de7c9244cb01fbc522ef77a763315ecaca'
             '692ea79b3195f3222f69b485f8a7905223fa457dc5cb2b480edbac6f480ac4f74075accb04ae0c17b90e98e41f53224e661a85762310d7263921e763cb3fc257'
             'f72a6ea944e9f6b55c33a1b8f7bf5ff3c2f6dd6e12e3ab0702c74ec2e4ce6c7190aaf97676c3408004089688b91ead04f8a8054906aa73ebf4034fbf0d9d1104')
 
 prepare() {
   mkdir -p "${srcdir}/src/code.gitea.io"
-  ln -s "${srcdir}/${pkgname}" "${srcdir}/src/code.gitea.io/gitea"
+  ln -s "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/code.gitea.io/${pkgname}"
 }
 
 build() {
