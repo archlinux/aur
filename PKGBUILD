@@ -1,7 +1,7 @@
 # Maintainer: Márton Szabó <notramo@vipmail.hu>
 
 pkgname="arch-anywhere-lang-tool-git"
-pkgver="1.0"
+pkgver=r8.6eec9af
 pkgrel=1
 pkgdesc="A simple tool for maintain Arch Linux Anywhere translation files."
 arch=('any')
@@ -14,8 +14,13 @@ conflicts=('arch-anywhere-lang-tool')
 source=("$url.git")
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$srcdir/arch-anywhere-lang-tool"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
-	cd "arch-anywhere-lang-tool"
+	cd "$srcdir/arch-anywhere-lang-tool"
 	install -D arch-anywhere-lang-tool $pkgdir/usr/bin/arch-anywhere-lang-tool
-	install -D COPYING $pkgdir/usr/share/licenses/arch-anywhere-lang-tool-git/LICENSE
+	install -D COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
