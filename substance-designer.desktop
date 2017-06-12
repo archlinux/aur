@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=6.0.3.181
+Name=Substance Designer
+Description=PBR material design and authoring tool
+Exec="/opt/Allegorithmic/Substance_Designer-6/Substance Designer"
+Icon=substance-designer-icon
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Utility;Application;Graphics;

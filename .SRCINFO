@@ -1,0 +1,22 @@
+pkgbase = substance-designer-6
+	pkgdesc = Substance Designer 6 is a node-based non-destructive application for material authoring.
+	pkgver = 6.0.3
+	pkgrel = 1
+	url = https://www.allegorithmic.com/products/substance-designer
+	arch = x86_64
+	license = custom
+	depends = fontconfig
+	depends = gcc-libs-multilib
+	depends = glu
+	depends = hicolor-icon-theme
+	depends = libtiff4
+	options = !strip
+	source = https://alg-releases.s3.amazonaws.com/public_releases/substance-designer/6.x/Substance_Designer-6.0.3.181-linux-x64-standard-full.rpm
+	source = substance-designer-icon.png
+	source = substance-designer.desktop
+	md5sums = b40a0cb5e2d9712a7f5ee373490227e0
+	md5sums = 99b9c5d4bb59fe884839d2872396f376
+	md5sums = 1a5a0216c066af7157f48c34ef750667
+
+pkgname = substance-designer-6
+
