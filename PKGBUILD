@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-knock
 _pkgbasever=4.9-gnu
-_pkgver=4.9.30-gnu
+_pkgver=4.9.31-gnu
 _knockpatchver=4.9_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -64,7 +64,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '470461abe876c3cd44fcc5c8f9de1937506140e3e7f813e562bc2914d84c741a7201934061fa67063f27990b9f854b1f672a3ee79f862368b048a853470afd39'
+            'd2b1e6f2c36db85e77a3bda9a8a8805e4aeb1372ae5c5d970a35294b5ec30811c48ac04859408b83b34924e528b65562566d08b8dcaf4ff23637439d745c1dfc'
             'SKIP'
             'a00e9fc0b930021242b231dfdd15160eaefbfad4aaa0ba0426bb9a25dd14acc1825cbb1bc9c680a6d43baca797591dc219e232862f566457752ff378e03600a3'
             'SKIP'
