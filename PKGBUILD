@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.11-gnu
-_pkgver=4.11.2-gnu
+_pkgver=4.11.4-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -61,9 +61,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0010-ARM-dove-enable-ethernet-on-D3Plug.patch')
 sha512sums=('f1d9138024b127385248de5c8eb72123b717bbbaba3e80bded20f073acac816a7ea979c4677ddc72252a8ec77c6a6c1d1738b1c20106f7d53ef39c9cf64c1853'
             'SKIP'
-            '181d9aef7b766dbe11e7dd09e8030239d0040af782cdd37dc9b8d2f9da8849e51c5aa8cbd44f89bebf8d9f6f97ddeefb2a8feb95d2c674e06c16a6be2d5a9fad'
+            '40bbd6d18d362c5c51f138fe8772fd57c1a2232e6fbcadabd4f152217b45c05e3018e976686fdc982f59008a12addc9c57de91b1332df7c1b78a05aa3e9809fe'
             'SKIP'
-            'f9a929a0ed54ef3bf93ef4647bd1bc812970dd0996cf2ba4ddaa26443388e26ee865441a155abac1eee0bc336708d64613beb4e28b5335d82ae935ebd018da28'
+            '6472b9f57083cc382256ae306ef5ca25e187a3d1c63ddf9a2898ab52c24bd2f7413ba2de8ba8b9a2f602bae4a5d05de7e4dca4a1f9b88be3b8510757a6aef29f'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -76,7 +76,7 @@ sha512sums=('f1d9138024b127385248de5c8eb72123b717bbbaba3e80bded20f073acac816a7ea
             '473ef653888081f56f50a3e88d9247351f3147c35436277ba742a75be1dc4f085613bf7c650adcdb2ad5c4c97d91209eab32997af88c1ea457e7d05ac1df9a38'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'bb087f597c4ed3a4d7eb5065a70dc8ec15abdecb36eabed6779a0884c003f7ceaefd64d64259b7077007f85df58a0f06d41148e8fee8c2c2daf2dde0382d2ec0'
+            'f5ac0362e6c79ef007be088b8138a1795937e392db7b05fa4d1cca6644d08b77b88ff7cfcc7c768c067fc7301f462fa7bdb6120e60f992486f56dd88c47c3fd9'
             'SKIP'
             'b3c214cc9adf22858f21ea8b0b919bd167257c2f624e98718d486b7fb82f1cfd17f578f799c13c26948bc2cb23e9eb6de0ef9299cbe49afb63929778eda24026'
             'db14593a4a0c0371e2cc2bcdcb0a4ac2abec96945dbb455393c5ef5140eca8ffb857dfee818087e4dfe261e9725a9e40a5d7e4c9774bca96560e3628743d7955'
