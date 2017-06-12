@@ -4,7 +4,7 @@
 
 pkgname=gmusicbrowser
 pkgver=1.1.15
-pkgrel=6
+pkgrel=7
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
