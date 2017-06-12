@@ -9,7 +9,7 @@ echo "Updating $repo"
 git clean -fdx
 git pull
 
-newver=$(curl -s -N "https://github.com/$repo/releases.atom" | grep -m 1 -o '/releases/.*' | sed -e 's/\/releases\/tag\/\(.*\)"\/>/\1/');
+newver=$(curl -s -N "https://github.com/$repo/releases.atom" | grep -m 1 -o '/releases/.*' | sed -e 's/\/releases\/tag\/v\?\(.*\)"\/>/\1/');
 oldver=$(grep -a 'pkgver=' PKGBUILD | sed 's/pkgver=//g')
 
 oldpure=$(echo "$oldver" | sed -e 's/\.//g;s/-//g')
