@@ -1,7 +1,7 @@
 # Maintainer: Sum01 https://github.com/sum01
 pkgname=('vcash-electron')
 pkgver=0.33.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform and multi-node GUI for Vcash."
 arch=('i686' 'x86_64')
 url="https://github.com/openvcash/vcash-electron"
@@ -15,6 +15,7 @@ sha256sums=('8aa260e8129f245a67fb09c11d24a7f9a2c729ece2a361c5658946ac1e3d57ae'
 '304cb81792e2854b9c5e6faa4663b76eb2f6dcabb007789cc29aa5d3109c30c0')
 prepare(){
 	sed -i '/"deb",/d' "$srcdir/$pkgname-$pkgver/package.json"
+	sed -i 's/"zip"/"dir"/' "$srcdir/$pkgname-$pkgver/package.json"
 	if [[ $CARCH = "i686" ]]; then
 		sed -i 's/build --linux --x64/build --linux --ia32/' "$srcdir/$pkgname-$pkgver/package.json"
 	fi
