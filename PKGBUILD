@@ -1,0 +1,47 @@
+# Contributor: Hugo Ideler <hugo at hugoideler dot com>
+pkgname=jaxx
+pkgver=1.2.13
+pkgrel=1
+epoch=
+pkgdesc="Multi-chain cryptocurrency wallet"
+arch=('x86_64')
+# ^ not tested on other platforms
+url="https://jaxx.io/"
+license=('unknown')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://jaxx.io/files/$pkgver/Jaxx-v$pkgver-linux-x64.tar.gz")
+noextract=()
+md5sums=('2ed538aada0d361a6970e566e2ebb1ca')
+validpgpkeys=()
+
+prepare() {
+	true
+}
+
+build() {
+	true
+}
+
+check() {
+	true
+}
+
+package() {
+	mkdir -p $pkgdir/opt/$pkgname
+	cp -a Jaxx-vv${pkgver}_linux-x64/jaxx-assets/* $pkgdir/opt/$pkgname
+
+	mkdir -p $pkgdir/usr/bin
+	ln -s ../../opt/$pkgname/Jaxx $pkgdir/usr/bin/$pkgname
+}
+
