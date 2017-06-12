@@ -1,7 +1,7 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=pencil
-pkgver=3.0.2
-pkgrel=7
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="Sketching and GUI prototyping/wireframing tool"
 arch=('any')
 license=('GPL2')
@@ -9,7 +9,7 @@ url="http://github.com/evolus/pencil"
 source=("https://github.com/evolus/pencil/archive/v$pkgver.tar.gz"
         "pencil.desktop"
         "pencil-mime.xml")
-sha256sums=('afcbd3809e0ff4ca03579d8cc5123e4bedccf759a76e6f8d2187c62e1e97a6dc'
+sha256sums=('c3e98aaad267414cb03669eaa9cbbe1c28d2daf77918bfa6545ab03d4bc685fa'
             '6d467da74509e74e06325e7464a6a177164ae8977470423da6cae43265dedd4d'
             '87aac9f5005ccd57aa6b1bf190052fcc4915eff1d7bddb2723863739545e42fc')
 conflicts=('evolus-pencil-bin' 'pencil-v2')
