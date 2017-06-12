@@ -1,37 +1,46 @@
-pkgname=mingw-w64-libarchive
-pkgver=3.2.1
-pkgrel=2
-pkgdesc="Multi-format archive and compression library (mingw-w64)"
-arch=('any')
-url="http://www.libarchive.org/"
-license=('BSD')
-makedepends=('mingw-w64-cmake' 'ninja')
-depends=('mingw-w64-crt')
-options=('!strip' '!buildflags' 'staticlibs')
-source=("http://www.libarchive.org/downloads/libarchive-3.2.1.tar.gz")
-md5sums=('afa257047d1941a565216edbf0171e72')
+# Maintainer: Andrew Gunnerson <andrewgunnerson@gmail.com>
+# Original maintainer: Dan McGee <dan@archlinux.org>
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+pkgname=mingw-w64-libarchive
+pkgver=3.3.1
+pkgrel=1
+pkgdesc="library that can create and read several streaming archive formats (mingw-w64)"
+arch=(any)
+url="http://www.libarchive.org/"
+license=(BSD)
+depends=(mingw-w64-crt mingw-w64-bzip2 mingw-w64-expat mingw-w64-lz4 mingw-w64-openssl mingw-w64-xz mingw-w64-zlib)
+makedepends=(mingw-w64-cmake ninja)
+options=(!strip !buildflags staticlibs)
+source=("libarchive-${pkgver}.tar.gz::https://github.com/libarchive/libarchive/archive/v${pkgver}.tar.gz")
+sha256sums=('ff138120fe7fca1bd02bed6f06d6869c7497658904a2f8916947f9a3f3257377')
+
+_architectures=(i686-w64-mingw32 x86_64-w64-mingw32)
 
 build() {
+    local arch
     unset LDFLAGS
-    cd "$srcdir/libarchive-$pkgver/"
-    for _arch in ${_architectures}; do
-        mkdir -p build-${_arch} && pushd build-${_arch}
-        ${_arch}-cmake -GNinja \
-                -DCMAKE_BUILD_TYPE=Release \
-                -DENABLE_TEST=OFF \
-                ..
+
+    cd "libarchive-${pkgver}"
+    for arch in "${_architectures[@]}"; do
+        mkdir -p build-${arch} && pushd build-${arch}
+        ${arch}-cmake \
+            -GNinja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DENABLE_TEST=OFF \
+            ..
         ninja
         popd
     done
 }
 
 package() {
-    for _arch in ${_architectures}; do
-        cd "${srcdir}/libarchive-$pkgver/build-${_arch}"
+    local arch
+
+    for arch in "${_architectures[@]}"; do
+        pushd "libarchive-${pkgver}/build-${arch}"
         DESTDIR="${pkgdir}" ninja install
-        ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-        ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+        ${arch}-strip --strip-unneeded "${pkgdir}"/usr/${arch}/bin/*.dll
+        ${arch}-strip -g "${pkgdir}"/usr/${arch}/lib/*.a
+        popd
     done
 }
