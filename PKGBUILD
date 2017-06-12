@@ -2,8 +2,8 @@
 
 _pkgname=lxqt-desktop
 pkgname=$_pkgname-git
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="The LXQt desktop"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
@@ -13,11 +13,10 @@ depends=(
 	# components
 	"lxqt-about-git"
 	"lxqt-admin-git"
-	"lxqt-common-git"
 	"lxqt-config-git"
 	"lxqt-globalkeys-git"
 	"lxqt-notificationd-git"
-	"lxqt-openssh-askpass"
+	"lxqt-openssh-askpass-git"
 	"lxqt-panel-git"
 	"lxqt-policykit-git"
 	"lxqt-powermanagement-git"
@@ -29,11 +28,12 @@ depends=(
 optdepends=(
 	"lximage-qt-git: The LXQt image viewer"
 	"openbox: Recommended window manager"
-	"sddm: Recommended display manager"
-	"qterminal: Pure Qt terminal"
-	"juffed: Pure Qt text editor (Kate clone)"
-	"screengrab: Screenshot capture"
-	"qps: Task Monitoring"
+	"sddm-git: Recommended display manager"
+	"qterminal-git: Pure Qt terminal"
+	"juffed-qt5-git: Pure Qt text editor (Kate clone)"
+	"screengrab-git: Screenshot capture"
+	"qps-git: Task Monitoring"
+	"nm-tray-git: Qt front-end to NetworkManager"
 )
 makedepends=("git")
 provides=("$_pkgname")
