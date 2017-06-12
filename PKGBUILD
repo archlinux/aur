@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-memc
-pkgver=0.17
-pkgrel=3
+pkgver=0.18
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.13.1
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=('a5856c72a6609a4dc68c88a7f3c33b79e6693343b62952e021e043fe347b6776'
-            '25cbe3ff4931283a681260607bc91ae4a922075345d5770b293c6cd7f1e3bdcc'
+            '4e280d1dcb8b312bc7875604c1e35b17879279126d3d5fbf482aa9cc7c11276d'
             'b5f9b83a0d2a08f1efc71ce8099eaa4e1d283afd502a7062ac4f150d569140ff')
 
 prepare() {
