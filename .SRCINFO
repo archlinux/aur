@@ -6,6 +6,7 @@ pkgbase = mint-backgrounds-sonya
 	arch = any
 	license = Various
 	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sonya/mint-backgrounds-sonya_1.1.tar.gz
+	md5sums = 8434cdecd5fee375061f4a5c0cf9956c
 
 pkgname = mint-backgrounds-sonya
 

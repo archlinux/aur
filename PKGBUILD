@@ -7,7 +7,7 @@ license=('Various')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sonya"
 source=("$url/mint-backgrounds-sonya_$pkgver.tar.gz")
-md5sum=("8434cdecd5fee375061f4a5c0cf9956c")
+md5sums=("8434cdecd5fee375061f4a5c0cf9956c")
 package() {
 	mkdir -p $pkgdir/usr/share/backgrounds/linuxmint-sonya
 	cp -a $srcdir/$pkgname/backgrounds/linuxmint-sonya $pkgdir/usr/share/backgrounds/
