@@ -1,11 +1,11 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-njs
-pkgver=0.1.9 # http://hg.nginx.org/njs/tags
-pkgrel=3
+pkgver=0.1.10 # http://hg.nginx.org/njs/tags
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.0
+_nginxver=1.13.1
 
 pkgdesc='nginScript module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source=(
 	njs-$pkgver.tar.gz::http://hg.nginx.org/njs/archive/$pkgver.tar.gz
 )
 
-sha256sums=('79f52ab6550f854e14439369808105b5780079769d7b8db3856be03c683605d7'
-            '2caf900cab71addde7d9aa64aa53adee7c7c02798e44a28ba9cc014391d998a5')
+sha256sums=('a5856c72a6609a4dc68c88a7f3c33b79e6693343b62952e021e043fe347b6776'
+            '17658ef9efa127f13b4d2541a69ddb4359267c63a11c19beda1d3220d4a2fe0d')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
