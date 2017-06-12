@@ -1,56 +1,113 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 pkgname=fsl
-pkgver=5.0.9
+pkgver=5.0.10
 pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("i686" "x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
 license=(custom)
-depends=()
+depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk6)
 makedepends=()
-optdepends=("fslview")
-md5sums=('5e38052b268dbc0fc09114615eff85c9')
+optdepends=(cuda)
+sha1sums=('34a4a3a0c3bc9e6fbf9a9745636c7b3b4479ecdf'
+          '35108d2da18a6dfe1f9f6f6ff81b1a0836235c3c'
+          '8c4badea905d49b10a937f9fd64ba1e7df384f25'
+          'f7841c51fb221a74017400e4daef7de640679887'
+          '2df550b126a6ec6022a164a18dddffe4e59962f9')
 
-source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz")
+source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
+        "http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
+	"systemvars.mk"
+	"externallibs.mk"
+	"fsl_exec.patch")
 
-build() {
+prepare() {
 	
+	cd "${srcdir}"
+
 	export FSLDIR="${srcdir}/fsl"
 	. "${FSLDIR}/etc/fslconf/fsl.sh"
 	export FSLMACHTYPE=`${FSLDIR}/etc/fslconf/fslmachtype.sh`
 
+	# Create new configuration
 	if [ ! -e "${FSLDIR}/config/${FSLMACHTYPE}" ]; then
-	cp -rv "${FSLDIR}/config/linux_64-gcc4.4" "${FSLDIR}/config/${FSLMACHTYPE}"
+	    mkdir "${FSLDIR}/config/${FSLMACHTYPE}"
+	    cp "${srcdir}/systemvars.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
+	    cp "${srcdir}/externallibs.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
 	fi
 
+	# Fix 32-bit
 	if test "$CARCH" == i686; then
-	sed -i "s^-m64^^g" "${FSLDIR}/config/${FSLMACHTYPE}/systemvars.mk"
+	    sed -i "s^-m64^^g" "${FSLDIR}/config/${FSLMACHTYPE}/systemvars.mk"
 	fi
 
-	sed -i 's^#include <vector>^#include <vector>\n#include <stdlib.h>^g' "${FSLDIR}/src/utils/opttst.cc"
+	# Use system TCL
+	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl.sh"
+	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl-devel.sh"
+	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl.csh"
 
-	sed -i "s^//#include <cmath>^#include <cmath>^g" "${FSLDIR}/src/fslsurface/fslsurface_structs.h"
+	# Disable building of system libraries
+	sed -i 's/ libgd / /g' "${FSLDIR}/extras/build"
+	sed -i 's/ libxml2-2.9.2 / /g' "${FSLDIR}/extras/build"
+	sed -i 's/ libxml++-2.34.0 / /g' "${FSLDIR}/extras/build"
+	sed -i 's/ newmat / /g' "${FSLDIR}/extras/build"
+	sed -i 's/ boost / /g' "${FSLDIR}/extras/build"
+	sed -i 's/ libnlopt / /g' "${FSLDIR}/extras/build"
+	sed -i 's/ libpng"/"/g' "${FSLDIR}/extras/build"
+	sed -i 's/ libiconv"/"/g' "${FSLDIR}/extras/build"
+	sed -i 's/ zlib"/"/g' "${FSLDIR}/extras/build"
+	sed -i 's/ fftw"/"/g' "${FSLDIR}/extras/build"
+	sed -i 's/"tcl tk"/""/g' "${FSLDIR}/extras/build"
 
+	# Fix Melodic use of ifstream
+	sed -i 's^if(in>0)^if(!!in)^g' "${FSLDIR}/src/melodic/meldata.cc"
+
+	# Add missing library directories
+	sed -i 's^-L${LIB_ZLIB}$^& -L${LIB_PROB}^g' "${FSLDIR}/src/asl_mfree/Makefile"
+	sed -i 's^-L${LIB_NEWMAT} $^&-L${LIB_PROB}^g' "${FSLDIR}/src/first/Makefile"
+	sed -i 's^-L${LIB_NEWMAT} $^&-L${LIB_PROB}^g' "${FSLDIR}/src/topup/Makefile"
+
+	# Fix problem w/ dynamically-linked boost
+	sed -i 's^USRCXXFLAGS = -std=c++11$^& -DBOOST_LOG_DYN_LINK^g' "${FSLDIR}/src/mist-clean/Makefile"
+
+	# Fix fsl_exec.tcl session issue (https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;e8fa48c1.1501)
+	patch -p0 < fsl_exec.patch
+	
+}
+
+build() {
+
+	export FSLDIR="${srcdir}/fsl"
 	cd "${FSLDIR}"
 	./build
 }
 
+check() {
+
+	export FSLDIR="${srcdir}/fsl"
+	export FEEDSDIR="${srcdir}/feeds"
+	. "${FSLDIR}/etc/fslconf/fsl.sh"
+	cd "${FEEDSDIR}"
+	time ./RUN all
+}
+
 package() {
 
+	rm -rf "${srcdir}/fsl/src"
 	rm -rf "${srcdir}/fsl/extras/src"
-	mkdir -p "${pkgdir}/usr/bin"
+	rm -rf "${srcdir}/fsl/extras/include"
 	mkdir -p "${pkgdir}/opt/fsl"
 
-	cp "${srcdir}/fsl/bin/"*	"${pkgdir}/usr/bin/"
+	cp -r "${srcdir}/fsl/bin"	"${pkgdir}/opt/fsl/"
 	cp -r "${srcdir}/fsl/data"	"${pkgdir}/opt/fsl/"
 	cp -r "${srcdir}/fsl/doc"	"${pkgdir}/opt/fsl/"
 	cp -r "${srcdir}/fsl/etc"	"${pkgdir}/opt/fsl/"
 	cp -r "${srcdir}/fsl/extras"	"${pkgdir}/opt/fsl/"
-	cp -r "${srcdir}/fsl/include"	"${pkgdir}/opt/fsl/"
 	cp -r "${srcdir}/fsl/lib"	"${pkgdir}/opt/fsl/"
 	cp -r "${srcdir}/fsl/refdoc"	"${pkgdir}/opt/fsl/"
 	cp -r "${srcdir}/fsl/tcl"	"${pkgdir}/opt/fsl/"
+	cp -r "${srcdir}/feeds"	        "${pkgdir}/opt/fsl/"
 
 	mkdir -p "${pkgdir}/etc/profile.d"
 	echo 'FSLDIR=/opt/fsl' >			"${pkgdir}/etc/profile.d/fsl.sh"
@@ -62,9 +119,14 @@ package() {
 
 	find "${pkgdir}" -type f -exec chmod 644 {} \;
 	find "${pkgdir}" -type d -exec chmod 755 {} \;
-	find "${pkgdir}/usr/bin" -exec chmod 755 {} \;
+	find "${pkgdir}/opt/fsl/bin" -exec chmod 755 {} \;
 	find "${pkgdir}/opt/fsl/etc/fslconf" -exec chmod 755 {} \;
-	find "${pkgdir}/opt/fsl/extras/bin" -exec chmod 755 {} \;
 	chmod 755 "${pkgdir}/etc/profile.d/fsl.sh"
-	ln -s /usr/bin "${pkgdir}/opt/fsl/bin"
+	
+	mkdir -p "${pkgdir}/opt/fsl/feeds/results"
+	chmod -R 777 "${pkgdir}/opt/fsl/feeds/results"
+	chmod 755 "${pkgdir}/opt/fsl/feeds/RUN"
+	
+	find "${pkgdir}" -empty -delete
+	find "${pkgdir}" -type f -exec sed -i 's^/usr/local/fsl^/opt/fsl^g' "{}" \;
 }
