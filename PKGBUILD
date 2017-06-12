@@ -4,7 +4,7 @@
 
 _pkgname=ktextwidgets
 pkgname=${_pkgname}-light
-pkgver=5.34.0
+pkgver=5.35.0
 pkgrel=1
 pkgdesc="Advanced text editing widgets, light version without Text-to-Speech"
 arch=('i686' 'x86_64')
@@ -16,8 +16,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 groups=('kf5')
 source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('fc15f146da7f7fb1b758cb8213e62d609e53ad881493b05fe17c8d33161931c3'
-            'SKIP')
+sha256sums=('dff98f8c4a7203d9106c00efd66ac2dbd000dcbc62afb0d54a32d9cd4cd52b24' 'SKIP')
 validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@kde.org>
 
 prepare() {
