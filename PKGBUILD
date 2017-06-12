@@ -7,12 +7,13 @@
 pkgname=luakit-git
 gitname=luakit
 pkgver=r3471.3d38286d
-pkgrel=1
+pkgrel=2
 pkgdesc='fork of luakit using webkit2'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/aidanholm/luakit'
 license=('GPL3')
 makedepends=('git')
+checkdepends=('lua51-luacheck' 'lua51-luassert' )
 provides=('luakit')
 conflicts=('luakit')
 depends=('webkit2gtk' 'lua51-filesystem' 'luajit')
@@ -42,6 +43,11 @@ prepare() {
 build() {
   cd "${srcdir}/${gitname}"
   make  DEVELOPMENT_PATHS=0 USE_LUAJIT=1 PREFIX=/usr all
+}
+
+check(){
+cd "${srcdir}/${gitname}"
+make run-tests
 }
 package() {
   cd "${srcdir}/${gitname}"
