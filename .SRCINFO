@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-sarah
+	pkgdesc = The backgrounds included in Linux Mint 18 Sarah
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sarah
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-sarah/mint-backgrounds-sarah_1.1.tar.gz
+	sha1sums = 5993acb3e9f2c075399e9275725cbd6ad3ab61a1
+
+pkgname = mint-backgrounds-sarah
+
