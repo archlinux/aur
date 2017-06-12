@@ -1,10 +1,11 @@
-# Maintainer: boosterdev@linuxmail.org
-# Contributor: Martchus <martchus@gmx.net>>
+# Maintainer: Martchus <martchus@gmx.net>>
+# Contributor: Thomas Fanninger <thomas@fanninger.at>
+# Contributor: Thomas Laroche <tho.laroche@gmail.com>
 
 pkgname=gogs
 _pkgname=${pkgname}
-pkgver=0.11.4
-pkgrel=4
+pkgver=0.11.19
+pkgrel=1
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,7 +20,7 @@ optdepends=('sqlite: SQLite support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
 makedepends=('go>=1.3')
-conflicts=('gogs-bin' 'gogs-git' 'gogs-git-dev')
+conflicts=('gogs-bin' 'gogs-git' 'gogs-dev-git')
 options=('!strip' '!emptydirs')
 backup=('etc/gogs/app.ini')
 install=gogs.install
@@ -27,9 +28,9 @@ _gourl=github.com/gogits/$_pkgname
 source=("$_pkgname-$pkgver::https://${_gourl}/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
-sha512sums=('e262cdd2409dd846a1473993c222a7b9692c694ac9620a5dcd576a17714bfee76212935dcfbf0ad83b7b95623c075f1622613524f347d24d7530732e966c733f'
-            '1df73da8962605369bbefcf6ad2b2cf1594b628b182f9ef591089da9324d134b352a0cd3999748bf52b42a260421f08f128a8b61c9f89f70ef11c6c3bc92786c'
-            '9a869febcdd74e7cb81c4fb5f23d23e6ec70c94e88849fefe6e9c34902de380e5dd3aabced302a5c6b1eab061252b046aa3878caa69893a6240ae14984a0341c')
+sha512sums=('80339daefe9c4eb9e39af4ab90b6803e9d86648565c0f109a34c00aad9bd40e2edfc77d58e18ad1192ce2e8bc7322113a407e7a02c0116229e1cecf8e67fc8b5'
+            'a3632ed26abb634711c0c51defcf7288053845dfebcf27712de49319cfe80c5f7f7ef725c1a20413b1550a866f106818b5f2fd041c5b2a9158d77eae11897ef4'
+            'fbb75efd69740638cbb2ce2f0fde3710a466c1128c6afddfd54028b04bb69e7e1f983aba60bbba378c35a854ef1bc7d6fd066acf3846aa48d424784dc15beb4d')
 _goroot='/usr/lib/go'
 
 prepare() {
@@ -66,7 +67,7 @@ build() {
   cd "$GOPATH/src/${_gourl}"
 
   go fix
-  go build -x -tags='sqlite pam cert'
+  go build -x -ldflags="-s -w" -tags='sqlite pam cert'
 }
 
 package() {
