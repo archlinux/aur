@@ -1,0 +1,17 @@
+pkgbase = tzme-git
+	pkgdesc = Timezone updates based on location
+	pkgver = r5.33f19a7
+	pkgrel = 1
+	url = https://github.com/alexoneill/tzme
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = libsystemd
+	depends = libxml2
+	provides = tzme
+	source = tzme::git+https://github.com/alexoneill/tzme.git
+	md5sums = SKIP
+
+pkgname = tzme-git
+
