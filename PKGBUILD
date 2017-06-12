@@ -3,7 +3,7 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=gnome-mpv-git
-pkgver=0.11.r59.g1b0bce9
+pkgver=0.12.r0.g809b98e
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
