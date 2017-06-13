@@ -1,0 +1,9 @@
+post_install() {
+  cat << EOF
+
+Next add the following alias to your profile:
+
+  alias make=mmake
+
+EOF
+}
