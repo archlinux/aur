@@ -1,7 +1,7 @@
 pkgbase = linux-amd-staging-git
-	pkgdesc = Linux kernel with AMD DC patches
+	pkgdesc = Linux kernel with AMDGPU DC patches
 	pkgver = 4.11.665002.cad2d1111e12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = linux-amd-staging-git
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-amd-staging-git
-	pkgdesc = The Linux-amd-staging-git kernel and modules with AMD DC patches
+	pkgdesc = The Linux-amd-staging-git kernel and modules with AMDGPU DC patches
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -36,8 +36,8 @@ pkgname = linux-amd-staging-git
 	backup = etc/mkinitcpio.d/linux-amd-staging-git.preset
 
 pkgname = linux-amd-staging-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-amd-staging-git kernel with AMD DC patches
+	pkgdesc = Header files and scripts for building modules for Linux-amd-staging-git kernel with AMDGPU DC patches
 
 pkgname = linux-amd-staging-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-amd-staging-git kernel with AMD DC patches
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-amd-staging-git kernel with AMDGPU DC patches
 
