@@ -20,8 +20,8 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
          'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
          'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
-         'libass.so' 'libbluray.so' 'libfreetype.so' 'libnetcdf.so'
-         'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libvidstab.so'
+         'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so'
          'libfdk-aac')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
@@ -78,7 +78,6 @@ build() {
     --enable-libx265 \
     --enable-libxcb \
     --enable-libxvid \
-    --enable-netcdf \
     --enable-shared \
     --enable-version3 \
     --enable-libfdk_aac \
