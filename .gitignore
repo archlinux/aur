@@ -1,0 +1,5 @@
+*.tar*
+*.tgz
+paps/
+pkg/
+src/

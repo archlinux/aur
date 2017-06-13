@@ -1,0 +1,18 @@
+pkgbase = paps-git
+	pkgdesc = UTF-8 to PostScript converter using Pango
+	pkgver = r86.37e6ca1
+	pkgrel = 1
+	url = https://github.com/dov/paps
+	arch = x86_64
+	license = LGPL2
+	makedepends = git
+	makedepends = glib2
+	makedepends = intltool
+	depends = pango
+	provides = paps
+	conflicts = paps
+	source = git+https://github.com/dov/paps.git
+	sha256sums = SKIP
+
+pkgname = paps-git
+
