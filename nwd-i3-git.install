@@ -1,17 +1,15 @@
 post_install() {
     echo "==> To complete installation, add the following lines to your bashrc"
-    echo '    [[ -S /run/user/$USER/i3/ipc-socket.$(pidof i3) && -f /usr/share/nwd/preexec.sh ]] \'
-    echo '        && . /usr/share/nwd/preexec.sh'
+    echo '[[ -f /usr/share/nwd/preexec.sh ]] && . /usr/share/nwd/prexec.sh'
     echo '==> and restart bash'
 }
 
 post_upgrade() {
     echo "==> To complete update, make sure you have the following lines in your bashrc"
-    echo '    [[ -S /run/user/$USER/i3/ipc-socket.$(pidof i3) && -f /usr/share/nwd/preexec.sh ]] \'
-    echo '        && . /usr/share/nwd/preexec.sh'
-    echo '==> Upgrade will be effective only after you restart bash'
+    echo '[[ -f /usr/share/nwd/preexec.sh ]] && . /usr/share/nwd/prexec.sh'
+    echo '==> and restart bash'
 }
 
 post_remove() {
-    echo "==> To complete removal, remove the `source` of preexec.sh from your bashrc"
+    echo "==> To complete removal, remove the `source` of nwd/preexec.sh from your bashrc"
 }
