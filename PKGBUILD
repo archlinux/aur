@@ -2,12 +2,14 @@
 
 pkgname=quilter
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Focus on your writing for any kind of story, even longer ones."
 arch=(any)
 url="https://github.com/lainsce/quilter"
-depends=(granite gtksourceview3 gtk3)
+depends=(granite gtksourceview3 gtk3 glib2)
 makedepends=(unzip ninja meson)
+install=quilter.install
+
 source=(
   "https://github.com/lainsce/quilter/archive/${pkgver}.zip"
 )

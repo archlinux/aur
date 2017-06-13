@@ -3,6 +3,7 @@ pkgbase = quilter
 	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/lainsce/quilter
+	install = quilter.install
 	arch = any
 	makedepends = unzip
 	makedepends = ninja
@@ -10,6 +11,8 @@ pkgbase = quilter
 	depends = granite
 	depends = gtksourceview3
 	depends = gtk3
+	depends = glib2
+	depends = dconf
 	source = https://github.com/lainsce/quilter/archive/1.0.7.zip
 	sha256sums = 25a306fb3a7239c9f95138f6d029f23324fb20e6fc73d8a58763fbbeaf2ef539
 
