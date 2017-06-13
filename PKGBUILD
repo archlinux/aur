@@ -2,7 +2,7 @@
 # Many, many thanks to former maintainer and author of original PKGBUILD, ronnie
 #and many thanks to the previous maintainer mxtm
 pkgname=mullvad
-pkgver=62
+pkgver=63
 pkgrel=1
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
@@ -19,7 +19,7 @@ source=('https://mullvad.net/media/client/mullvad-'$pkgver'.tar.gz'
  		'update-resolv-conf'
  )
 
-sha256sums=('e28b250c29dc1ebbcdef67d38468ec5d2c5aa3d5fa7df8c51327303cd41ccb65'
+sha256sums=('c7f3831a4d27db8ba142fa18ce2b15d9f8cd4ab8b9bc4a873092000308318b01'
 			'7227dfd75d03ba90c1e45cda41e5ba5a938729b622ced4a708932b22c189efa1'
 )
 
