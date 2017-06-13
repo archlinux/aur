@@ -1,6 +1,6 @@
 pkgbase = nsjail-git
 	pkgdesc = A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)
-	pkgver = r466.24002c6
+	pkgver = r481.1dd3223
 	pkgrel = 1
 	url = http://nsjail.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nsjail-git
 	depends = libnl>=3
 	depends = protobuf-c
 	provides = nsjail
-	source = nsjail-git::git+git://github.com/google/nsjail.git#commit=24002c606d5d32d02a8bbbd2fd4c9a7a7309a5d4
+	source = nsjail-git::git+git://github.com/google/nsjail.git#commit=1dd3223b7437831a3549ef301465fb3649229726
 	source = https://github.com/trustm3/external_protobuf-c-text/commit/c37f8708d847319921a3fba7d6863103f6b801e2.patch
 	source = https://github.com/trustm3/external_protobuf-c-text/commit/620db2f1a5bf9a1468a2f54ef904977133267aa2.patch
 	source = https://github.com/trustm3/external_protobuf-c-text/commit/ccb50d69f833b4417ba66690a0257a8a64eab6ec.patch

@@ -1,8 +1,8 @@
 # Maintainer: Stephan Eisvogel <eisvogel at embinet dot de>
 pkgname=nsjail-git
-pkgver=r466.24002c6
+pkgver=r481.1dd3223
 pkgrel=1
-_pkgcommit=#commit=24002c606d5d32d02a8bbbd2fd4c9a7a7309a5d4
+_pkgcommit=#commit=1dd3223b7437831a3549ef301465fb3649229726
 pkgdesc="A light-weight process isolation tool, making use of Linux namespaces and seccomp-bpf syscall filters (with help of the kafel bpf language)"
 arch=('x86_64')
 url="http://nsjail.com"
