@@ -1,24 +1,24 @@
-arch=(any)
-conflicts=(sph-dg)
-depends=(liblmdb)
-license=(gpl3+)
-makedepends=(git gcc sph-sc)
-md5sums=(SKIP)
-pkgdesc='key/value/relations/graph database as a shared library'
-pkgname=sph-dg-git
-_gitname=sph-dg
+_name=sph-dg
+pkgname=$_name-git
+pkgver=39
 pkgrel=1
-pkgver=25
-provides=(sph-dg)
-source=("$pkgname::git://git.sph.mn/sph-dg#branch=stable")
+pkgdesc="key/value/relations/graph database as a shared library"
+arch=(any)
+license=(gpl3+)
+makedepends=(git gcc)
+depends=(liblmdb)
+provides=($_name)
+source=("git://git.sph.mn/$_name#branch=stable")
 url="http://sph.mn/content/2faf"
+md5sums=(SKIP)
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_name"
   git rev-list --count HEAD
 }
 
 package() {
-  cd $pkgname
-  ./exe/compile && ./exe/install --prefix="${pkgdir}"
+  cd "$_name" &&
+  ./exe/compile-c &&
+  ./exe/install "${pkgdir}"
 }
