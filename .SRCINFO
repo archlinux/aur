@@ -1,0 +1,17 @@
+pkgbase = brother-dcp8157dn
+	pkgdesc = Brother CUPS and LPD driver for DCP-8157DN
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = main.install
+	arch = x86_64
+	license = unknown
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf005563/dcp8157dnlpr-3.0.0-1.i386.deb
+	source = http://download.brother.com/welcome/dlf005565/dcp8157dncupswrapper-3.0.0-1.i386.deb
+	md5sums = 57efee890748b0528712c19470d0d86f
+	md5sums = fb16c07235cebbf855c91b2fe212fc20
+
+pkgname = brother-dcp8157dn
+

@@ -1,0 +1,141 @@
+post_install() {
+	if [ -e /usr/lib/cups/filter ] &&    [ ! -e /usr/lib/cups/filter/brother_lpdwrapper_DCP8157DN ];then 
+	  ln -s /opt/brother/Printers/DCP8157DN/cupswrapper/brother_lpdwrapper_DCP8157DN      /usr/lib/cups/filter
+	fi
+	if [ -e /usr/lib32/cups/filter ] &&    [ ! -e /usr/lib32/cups/filter/brother_lpdwrapper_DCP8157DN ];then 
+	  ln -s /opt/brother/Printers/DCP8157DN/cupswrapper/brother_lpdwrapper_DCP8157DN      /usr/lib32/cups/filter
+	fi
+	if [ -e /usr/lib64/cups/filter ] &&    [ ! -e /usr/lib64/cups/filter/brother_lpdwrapper_DCP8157DN ];then 
+	  ln -s /opt/brother/Printers/DCP8157DN/cupswrapper/brother_lpdwrapper_DCP8157DN      /usr/lib64/cups/filter
+	fi
+	if [ -e /usr/libexec/cups/filter ] &&    [ ! -e /usr/libexec/cups/filter/brother_lpdwrapper_DCP8157DN ];then 
+	  ln -s /opt/brother/Printers/DCP8157DN/cupswrapper/brother_lpdwrapper_DCP8157DN      /usr/libexec/cups/filter
+	fi
+
+	if [ -e /usr/share/cups/model ];then
+	  ln -s /opt/brother/Printers/DCP8157DN/cupswrapper/brother-DCP-8157DN-cups-en.ppd      /usr/share/cups/model
+	  PPDDIR=/usr/share/cups/model/
+	fi
+	if [ -e /usr/share/ppd ];then
+	  if [ ! -e /usr/share/ppd/brother ];then
+		mkdir /usr/share/ppd/brother
+	  fi
+	  ln -s /opt/brother/Printers/DCP8157DN/cupswrapper/brother-DCP-8157DN-cups-en.ppd      /usr/share/ppd/brother
+	  PPDDIR=/usr/share/ppd/brother/
+	fi
+	uris=$(lpinfo -v)
+
+	for uri in $uris
+	do  
+	  URI=$(echo $uri | grep DCP-8157DN | grep usb)
+	  if [ "$URI" != '' ];then
+		break;
+	  fi
+	done
+
+	if [ "$URI" = '' ];then
+	  for uri in $uris
+	  do  
+		URI=$(echo $uri | grep DCP-8157DN)
+		if [ "$URI" != '' ];then
+		  break;
+		fi
+	  done
+	fi
+
+	if [ "$URI" = '' ];then
+	  for uri in $uris
+	  do
+		URI=$(echo $uri | grep -i Brother | grep usb)
+		if [ "$URI" != '' ];then
+		  break;
+		fi
+	  done
+	fi
+	if [ "$URI" = '' ];then
+	  for uri in $uris
+	  do
+		URI=$(echo $uri | grep usb)
+		if [ "$URI" != '' ];then
+		  break;
+		fi
+	  done
+	fi
+
+	if [ "$URI" = '' ];then
+	  URI="usb://dev/usb/lp0"
+	fi
+
+	lpadmin -p DCP8157DN -E -v $URI -P ${PPDDIR}brother-DCP-8157DN-cups-en.ppd
+	
+	/opt/brother/Printers/DCP8157DN/inf/setupPrintcap DCP8157DN -i USB
+	/opt/brother/Printers/DCP8157DN/inf/braddprinter -i DCP8157DN
+	if [ -e /etc/init.d/lprng ]; then
+		 /etc/init.d/lprng restart
+	elif [ -e /etc/init.d/lpd ]; then
+		 /etc/init.d/lpd restart
+	fi
+	if [ ! -e /usr/sbin/pstops ];then
+	 PSTOPS=/usr/bin/pstops
+	 if [ "`echo $PSTOPS | grep -i cups`" != "" ];then
+	  PSTOPS=""
+	 fi
+	 if [ "$PSTOPS" != "" ];then
+	   echo \[psconvert2\]   >>/opt/brother/Printers/DCP8157DN/inf/brDCP8157DNfunc
+	   echo pstops=$PSTOPS >>/opt/brother/Printers/DCP8157DN/inf/brDCP8157DNfunc
+	 fi
+	fi
+
+	ln -s /opt/brother/Printers/DCP8157DN/inf/brDCP8157DNrc       /etc/opt/brother/Printers/DCP8157DN/inf/brDCP8157DNrc
+
+	if [ ! -e /usr/bin/brprintconflsr3_DCP8157DN ];then
+	 echo "#! /bin/sh"  > /usr/bin/brprintconflsr3_DCP8157DN
+	 echo "/opt/brother/Printers/DCP8157DN/lpd/brprintconflsr3 -P DCP8157DN" '$''*'           >>/usr/bin/brprintconflsr3_DCP8157DN
+	  chmod 755 /usr/bin/brprintconflsr3_DCP8157DN
+	fi
+	
+	echo "\nPrinter installed as USB. Open a web browser and go to http://localhost:631/printers for modifications."
+}
+
+pre_remove() {
+	lpadmin -x DCP8157DN
+
+	if [ -e /usr/lib/cups/filter/brother_lpdwrapper_DCP8157DN  ];then
+	  rm   /usr/lib/cups/filter/brother_lpdwrapper_DCP8157DN 
+	fi
+	if [ -e /usr/lib32/cups/filter/brother_lpdwrapper_DCP8157DN ];then
+	  rm   /usr/lib32/cups/filter/brother_lpdwrapper_DCP8157DN
+	fi
+	if [ -e /usr/lib64/cups/filter/brother_lpdwrapper_DCP8157DN ];then
+	  rm   /usr/lib64/cups/filter/brother_lpdwrapper_DCP8157DN
+	fi
+	if [ -e /usr/libexec/cups/filter/brother_lpdwrapper_DCP8157DN ];then
+	  rm   /usr/libexec/cups/filter/brother_lpdwrapper_DCP8157DN
+	fi
+	if [ -e /usr/share/ppd/brother/brother-DCP-8157DN-cups-en.ppd ];then
+	  rm /usr/share/ppd/brother/brother-DCP-8157DN-cups-en.ppd
+	  rmdir /usr/share/ppd/brother 2> /dev/null
+	fi
+	if [ -e /usr/share/cups/model/brother-DCP-8157DN-cups-en.ppd ];then
+	  rm /usr/share/cups/model/brother-DCP-8157DN-cups-en.ppd
+	fi
+	
+	/opt/brother/Printers/DCP8157DN/inf/setupPrintcap DCP8157DN -e USB
+	/opt/brother/Printers/DCP8157DN/inf/braddprinter -e DCP8157DN
+	rm -fR /var/spool/lpd/DCP8157DN/* 2>/dev/null
+	rm /etc/opt/brother/Printers/DCP8157DN/inf/brDCP8157DNrc 2>/dev/null
+
+	if [ -e /usr/bin/brprintconflsr3_DCP8157DN ];then
+	 rm /usr/bin/brprintconflsr3_DCP8157DN
+	fi
+}
+
+post_remove() {
+	if [ -e /etc/init.d/lprng ]; then
+		 /etc/init.d/lprng restart
+	elif [ -e /etc/init.d/lpd ]; then
+		 /etc/init.d/lpd restart
+	fi
+	
+	rm -rf /opt/brother/Printers/DCP8157DN/
+}
