@@ -1,0 +1,23 @@
+pkgbase = genx
+	pkgdesc = X-ray and Neutron reflectivity fitting software
+	pkgver = 2.4.9
+	pkgrel = 1
+	url = http://genx.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL v3
+	makedepends = cython
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-h5py
+	depends = wxpython-phoenix
+	depends = python-appdirs
+	options = !libtool
+	source = https://github.com/haozhangphd/genx-py3/archive/v2.4.9.tar.gz
+	sha256sums = 52d760cd032492c45fa02b7c707b2af9de03c05c949dc0dced86b9aecce1ef4f
+
+pkgname = genx
+
