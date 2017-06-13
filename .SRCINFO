@@ -1,0 +1,24 @@
+pkgbase = python-pypump
+	pkgdesc = Python pump.io library
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/xray7224/PyPump
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = python-pypump-0.7.tar.gz::https://github.com/xray7224/PyPump/archive/v0.7.tar.gz
+	sha512sums = 3906118f681dd886bd8e3d57a49f66a0bc4236fe526d8137905ea8f7fd9bc9fea61a5646ca6e6617095fab62ab3ce91f2ea7d2c5e150125f399048c2f8831e86
+
+pkgname = python-pypump
+	depends = python
+	depends = python-requests
+	depends = python-requests-oauthlib
+	depends = python-dateutil
+
+pkgname = python2-pypump
+	depends = python2
+	depends = python2-requests
+	depends = python2-requests-oauthlib
+	depends = python2-dateutil
+
