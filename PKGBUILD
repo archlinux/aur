@@ -1,7 +1,7 @@
 # Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=grisbi
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Personal financial management program"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('goffice8.0: for drawing charts' 'libofx: support for the OFX bankin
 options=(!libtool)
 install=grisbi.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ed52fa6b3a7be3b0c588702e6d85afc8f6a699142eba0ae82eafcd360aee0414')
+sha256sums=('f5ab794ab1b04141402ae50cdc2d37cfaf245ace422812b3193f9548605061d4')
 
 build() {
 	cd "${pkgname}-${pkgver}"
