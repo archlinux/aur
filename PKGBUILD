@@ -1,10 +1,11 @@
-# Maintainer: Austin Haedicke (gtbjj @ GitHub)
+# Maintainer: Austin Haedicke
+# austin.haedicke@gamil.com
 
 pkgname=dnd-tools
 pkgver=ec678ea
 pkgrel=1
 pkgdesc='Interactive CLI tools for Dungeons and Dragons 5e'
-depends=('python')
+depends=('python>=3.6')
 makedepends=('git' 'python')
 arch=('i686' 'x86_64')
 url='https://github.com/gtbjj/dnd-tools'

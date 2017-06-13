@@ -8,7 +8,7 @@ pkgbase = dnd-tools
 	license = AGPLv3
 	makedepends = git
 	makedepends = python
-	depends = python
+	depends = python>=3.6
 	provides = dnd-tools
 	source = git://github.com/gtbjj/dnd-tools.git
 	sha256sums = SKIP
