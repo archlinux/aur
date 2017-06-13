@@ -12,7 +12,7 @@ depends=('python')
 provides=("${_name}=${pkgver}")
 install="${pkgname}.install"
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('71a7e916a5fe5518461e2e8d2c475fed8c39054a98ae491025b45ec9fcb43024')
+sha256sums=('bbdcd0275508c4cf042a7973243a6dd9136d053446224642d72ed964431a836a')
 
 # Enable for tests
 # check() {
