@@ -2,7 +2,7 @@
 
 _name=dtags
 pkgname="${_name}"
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=2
 pkgdesc='Directory Tags for Lazy Programmers'
 url='https://github.com/joowani/dtags'
