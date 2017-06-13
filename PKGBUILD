@@ -5,7 +5,7 @@
 pkgname=electrum-dash
 _pkgname=Electrum-DASH
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Bitcoin wallet, fork for DASH"
 arch=('any')
 depends=(
@@ -36,7 +36,7 @@ optdepends=(
 )
 url="https://electrum-dash.org"
 license=(MIT)
-source=("${pkgname}-${pkgver}.tar.gz::https://electrum-dash.org/download/${pkgver}/Electrum-DASH-${pkgver}.tar.gz")
+source=("https://electrum.dash.org/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('f8e1c9188e425ea4740125ba931b2ce034a97eaa3b37e4b589a22db8486a231b')
 
 prepare() {
