@@ -57,8 +57,8 @@ fi
 validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>
               '95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <unifoundry@unifoundry.com>
 
-source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
-        "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#commit=${_GRUB_EXTRAS_COMMIT}"
+source=("https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
+        "https://git.savannah.nongnu.org/cgit/grub-extras.git/snapshot/grub-extras-${_GRUB_EXTRAS_COMMIT}.tar.gz"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
         '0002-intel-ucode.patch'
         '0003-10_linux-detect-archlinux-initramfs.patch'
@@ -68,7 +68,7 @@ source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
 
 sha256sums=('810b3798d316394f94096ec2797909dbf23c858e48f7b3830826b8daa06b7b0f'
             'SKIP'
-            'SKIP'
+            '2844601914cea6b1231eca0104853a93c4d67a5209933a0766f1475953300646'
             '4246c4773ed70f78a7e27ff1118fd257a280d1102200265ad5d58bb2011195ef'
             'SKIP'
             '37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c'
@@ -109,7 +109,8 @@ prepare() {
 	msg "Remove not working langs which need LC_ALL=C.UTF-8"
 	sed -e 's#en@cyrillic en@greek##g' -i "po/LINGUAS"
 
-	msg "Avoid problem with unifont during compile of grub, http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847"
+	msg "Avoid problem with unifont during compile of grub"
+	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
 	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "unifont.bdf"
 }
 
@@ -127,7 +128,8 @@ _build_grub-common_and_bios() {
 
 	msg "Add the grub-extra sources for bios build"
 	install -d "${srcdir}/grub-${pkgver}-bios/grub-extras"
-	cp -r "${srcdir}/grub-extras/915resolution" "${srcdir}/grub-${pkgver}-bios/grub-extras/915resolution"
+	cp -r "${srcdir}/grub-extras-${_GRUB_EXTRAS_COMMIT}/915resolution" \
+		"${srcdir}/grub-${pkgver}-bios/grub-extras/915resolution"
 	export GRUB_CONTRIB="${srcdir}/grub-${pkgver}-bios/grub-extras/"
 
 	msg "Unset all compiler FLAGS for bios build"
