@@ -4,15 +4,15 @@ cat << EOF
 
 ==> Add this code to your .emacs file to use the mode:
 
-(require 'auto-complete)
+(require 'auto-complete-config)
 (ac-config-default)
 
 ==> Or, with use-package:
 
-(use-package auto-complete
+(use-package auto-complete-config
   :config
   (ac-config-default))
-  
+
 EOF
 }
 
