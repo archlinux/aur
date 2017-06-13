@@ -269,7 +269,7 @@ index 81c13a18..1af2e86e 100644
                  'qt_version%': '5.3.2',
                }, {
 -                'qt_version%': '5.6.2',
-+                'qt_version%': '5.8.0',
++                'qt_version%': '5.9.0',
                }]
              ],
            },
