@@ -49,7 +49,6 @@ fi
 if [[ -f target-host ]]; then
   unset LOCAL_PI_VER
   _target_host=true
-  _minimal=false
 fi
 
 if [[ -f full-build ]]; then
@@ -77,7 +76,7 @@ _pkgvermajmin="5.9"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=8
+pkgrel=9
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -115,7 +114,6 @@ fi
 if $_building && $_minimal; then
   _skip_qtscript=true;
   _skip_qtwebengine=true;
-  pkgname="${pkgname}-minimal"
 fi
 
 if $_target_host; then
@@ -293,6 +291,7 @@ if $_patching; then
 
   cd ${_waylanddir}
   #patch -p1 < ${startdir}/0001-Fix-brcm-egl-build-by-correcting-commit-usage.patch
+  patch -p1 < ${startdir}/0001-Avoid-double-deletion-of-mBuffer.patch
 
   #cd ${_webenginedir}
   # reverse patch which breaks dynamic loading of EGL/GLESvs with rpi proprietary drivers
