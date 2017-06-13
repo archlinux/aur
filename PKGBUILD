@@ -2,7 +2,7 @@
 # Please note you must have a Vulkan-capable GPU
 
 pkgname=vkquake
-pkgver=0.95
+pkgver=0.96
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('i686' 'x86_64')
