@@ -1,27 +1,35 @@
 # Maintainer: Donald Carr <sirspudd@gmail.com>
 
-set -e
+#set -e
 
-_pi_ver=2
+_qmake="qmake"
+_piver=""
+
+if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then
+  _piver=$LOCAL_PI_VER
+fi
+
+if [[ -n "$_piver" ]]; then
+  _qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
+fi
+
 pkgname="quint"
 pkgver=0.0.1
-pkgrel=3
-provides=("pi-launcher")
+pkgrel=1
 pkgdesc="Live coding demo for the Raspberry Pi"
 arch=("any")
 url="https://github.com/sirspudd/quint"
-makedepends=("qt-sdk-raspberry-pi${_pi_ver}")
-depends=("qt-sdk-raspberry-pi${_pi_ver}-target-libs")
+makedepends=("qt-sdk-raspberry-pi${_piver}")
+depends=("qt-sdk-raspberry-pi-target-libs")
 source=("git://github.com/sirspudd/${pkgname}.git")
 sha256sums=("SKIP")
 options=('!strip')
 
 build() {
   local repo_src=${srcdir}/${pkgname}
-  local qmake=/opt/qt-sdk-raspberry-pi${_pi_ver}/bin/qmake
 
   cd ${repo_src}
-  $qmake
+  $_qmake
   make
 }
 

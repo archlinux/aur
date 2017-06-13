@@ -2,8 +2,7 @@
 
 [Unit]
 Description=quint session for user %i
-After=x@vt7.service systemd-user-sessions.service
-Wants=x@vt7.service
+After=systemd-user-sessions.service
 Conflicts=getty@tty7.service
 
 [Service]
@@ -11,7 +10,8 @@ User=%i
 WorkingDirectory=~
 TTYPath=/dev/tty7
 PAMName=login
-ExecStart=/opt/quint/quint
+ExecStart=/opt/quint/quint -platform eglfs
 
 [Install]
 WantedBy=graphical.target
+Alias=display-manager.service
