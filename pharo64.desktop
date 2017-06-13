@@ -5,6 +5,6 @@ Name=Pharo 64
 GenericName=Pharo 64
 Comment=An implementation of Smalltalk
 Icon=pharo.png
-Exec=pharo
+Exec=pharo64
 Categories=Development;
 
