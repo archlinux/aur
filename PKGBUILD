@@ -2,7 +2,7 @@
 
 pkgname=naemon
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="System and network monitoring application"
 arch=('i686' 'x86_64')
 url="http://naemon.org"
@@ -16,13 +16,21 @@ provides=('naemon-core' 'naemon-livestatus')
 conflicts=('naemon-core' 'naemon-livestatus')
 replaces=('naemon-core' 'naemon-livestatus')
 source=(http://labs.consol.de/naemon/release/v$pkgver/src/$pkgname-$pkgver.tar.gz
+        gcc7.patch
         $pkgname.service)
 md5sums=('6c9b95a737a8f232e114f4cff200ff92'
-         'd6a77534e612e8f65ff3360336faec77')
+         '4a6d8f9b39335dfe3348a1a20df10dfd'
+         '29f1d11c1a7f4f1515b7993c540dabe8')
 backup=('etc/logrotate.d/naemon'
         'etc/naemon/naemon.cfg'
         'etc/naemon/resource.cfg')
 install=$pkgname.install
+
+prepare() {
+  cd $pkgname-$pkgver/naemon-core
+
+  patch -Np1 -i "$srcdir"/gcc7.patch
+}
 
 build() {
   cd $pkgname-$pkgver
@@ -44,7 +52,7 @@ build() {
               --with-logrotatedir="/etc/logrotate.d" \
               --with-naemon-user="naemon" \
               --with-naemon-group="naemon" \
-              --with-lockfile="/run/naemon.pid" \
+              --with-lockfile="/run/naemon/naemon.pid" \
               --with-thruk-user="http" \
               --with-thruk-group="naemon" \
               --with-thruk-libs="/usr/lib/naemon/perl5" \
@@ -76,6 +84,8 @@ package() {
 
   install -Dm644 "$srcdir"/$pkgname.service \
     "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+  install -Dm644 naemon-core/naemon.tmpfiles.conf \
+    "$pkgdir"/usr/lib/tmpfiles.d/naemon.conf
 
   # Move sample config files
   mv "$pkgdir"/etc/naemon/conf.d "$pkgdir"/etc/naemon/examples

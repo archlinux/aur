@@ -4,10 +4,10 @@ Documentation=http://naemon.org/documentation
 After=network.target
 
 [Service]
-Type=simple
-PIDFile=/run/naemon.pid
+Type=forking
+PIDFile=/run/naemon/naemon.pid
 ExecStartPre=/usr/bin/naemon -vp /etc/naemon/naemon.cfg
-ExecStart=/usr/bin/naemon /etc/naemon/naemon.cfg
+ExecStart=/usr/bin/naemon --daemon /etc/naemon/naemon.cfg
 ExecReload=/bin/kill -HUP $MAINPID
 User=naemon
 Group=naemon
