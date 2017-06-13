@@ -1,6 +1,6 @@
 # Maintainer: Lukas Fürmetz <fuermetz@mailbox.org>
 pkgname=krunner-pass
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A krunner plugin to retrieve a password from the password-store (https://www.passwordstore.org/)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('krunner' 'qt5-base' 'ki18n')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("https://github.com/akermu/krunner-pass/archive/v${pkgver}.tar.gz")
-md5sums=("017b5f4d0f1075b27a3c13ebada70e89")
+md5sums=('c7072d1c78560f7000dd389beb1d4d33')
 
 build() {
   mkdir -p build
