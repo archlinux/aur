@@ -1,14 +1,15 @@
-# Maintainer: David P. <megver83@hyperbola.info>
+# Maintainer: David P. <megver83@parabola.nu>
 
 pkgbase=python-pypump
 pkgname=('python-pypump' 'python2-pypump')
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL3')
 pkgdesc="Python pump.io library"
 url="https://github.com/xray7224/PyPump"
 makedepends=('python-setuptools' 'python2-setuptools')
+checkdepends=('python-dateutil' 'python2-dateutil' 'python-requests' 'python2-requests' 'python-requests-oauthlib' 'python2-requests-oauthlib')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/xray7224/PyPump/archive/v$pkgver.tar.gz")
 sha512sums=('3906118f681dd886bd8e3d57a49f66a0bc4236fe526d8137905ea8f7fd9bc9fea61a5646ca6e6617095fab62ab3ce91f2ea7d2c5e150125f399048c2f8831e86')
 
