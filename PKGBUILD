@@ -1,14 +1,13 @@
-# Maintainer: Adam Nielsen <malvineous@shikadi.net>
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+# Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
 pkgname=xlnt-git
-pkgver=0.9.4.r898.c3d9b85
+pkgver=0.9.5.r1019.2c5d579
 pkgrel=1
 pkgdesc="Cross-platform user-friendly xlsx library for C++14"
 url="https://github.com/tfussell/xlnt"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('zlib' 'crypto++')
 makedepends=('git' 'cmake>=3.2.0')
 conflicts=('xlnt')
 provides=('xlnt')
@@ -17,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd xlnt
-  echo "0.9.4.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "$(grep project source/CMakeLists.txt | cut -d '(' -f2 | cut -d ')' -f1 | cut -d ' ' -f3).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -35,5 +34,5 @@ build() {
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 xlnt/LICENSE.md ${pkgdir}/usr/share/licenses/xlnt-git/LICENSE
+  install -Dm644 xlnt/LICENSE.md ${pkgdir}/usr/share/licenses/xlnt-git/LICENSE.md
 }
