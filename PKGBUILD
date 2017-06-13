@@ -7,7 +7,7 @@ pkgdesc="Focus on your writing for any kind of story, even longer ones."
 arch=(any)
 url="https://github.com/lainsce/quilter"
 depends=(granite gtksourceview3 gtk3)
-makedepends=('unzip ninja meson')
+makedepends=(unzip ninja meson)
 source=(
   "https://github.com/lainsce/quilter/archive/${pkgver}.zip"
 )
