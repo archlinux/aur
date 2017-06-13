@@ -1,0 +1,9 @@
+diff -uprNEBZ --suppress-blank-empty b/src/src.pro c/src/src.pro
+--- b/src/src.pro	2017-06-06 02:26:06.000000000 -0500
++++ c/src/src.pro	2017-06-13 13:00:29.533614419 -0500
+@@ -41,3 +41,5 @@ include ( src.pri )
+ 
+ include($${PYTHONQT_GENERATED_PATH}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin.pri)
+ include($${PYTHONQT_GENERATED_PATH}/com_trolltech_qt_gui_builtin/com_trolltech_qt_gui_builtin.pri)
++
++include(../build/pkgconfig_file.prf)
