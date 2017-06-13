@@ -2,12 +2,12 @@
 
 pkgname=fluid
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for QtQuick apps with Material Design and Universal"
 arch=('i686' 'x86_64')
 url='https://github.com/lirios/fluid'
 license=('MPL')
-depends=('qt5-svg' 'qt5-quickcontrols2')
+depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg')
 makedepends=('extra-cmake-modules' 'nodejs-material-design-icons')
 replaces=('qml-material')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/fluid/archive/v$pkgver.tar.gz")
