@@ -1,4 +1,5 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Gavin Fernandes <gavinfernandes2012@gmail.com>
+# Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 _pkgname=enlightenment
@@ -10,7 +11,8 @@ arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'xcb-util-keysyms' 'shared-mime-info'
-         'desktop-file-utils' 'udisks2' 'ttf-font')
+         'desktop-file-utils' 'udisks2' 'ttf-font'
+	 'wayland' 'xorg-server-xwayland')
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'
