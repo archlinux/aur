@@ -70,5 +70,5 @@ package() {
 
 	# pkg-config file
 	mkdir -p "${pkgdir}"/usr/share/
-	cp -R pkgconfig "${pkgdir}"/usr/share
+	cp -R pkgconfig "${pkgdir}"/usr/share/
 }
