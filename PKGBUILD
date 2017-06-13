@@ -35,7 +35,7 @@ package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 Iosevka/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/"
   for font in "${pkgdir}"/usr/share/fonts/TTF/*; do
-    mv "$font" "${font%.*}-slab-term.${font##*.}"
+    mv "$font" "${font%.*}-term-slab.${font##*.}"
   done
 }
 
