@@ -5,7 +5,7 @@ function install_nix_sandbox() {
     --option build-use-sandbox false \
     -o /nix/var/nix/profiles/arch-system/build-sandbox \
     -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/$version.tar.gz \
-    -E 'with import <nixpkgs> {}; buildEnv { name = "arch-system-build-sandbox"; paths = [ bash coreutils perl ]; }'
+    -E 'with import <nixpkgs> {}; buildEnv { name = "arch-system-build-sandbox"; paths = [ bash bzip2 coreutils gnutar gzip perl xz ]; }'
 }
 
 function nix_sandbox_path() {
@@ -15,8 +15,16 @@ function nix_sandbox_path() {
 function nix_sandbox_paths() {
   echo "build-sandbox-paths = \
     /bin/sh=$(nix_sandbox_path bash) \
+    /usr/bin/bash=$(nix_sandbox_path bash) \
+    /usr/bin/bzip2=$(nix_sandbox_path bzip2) \
     /usr/bin/env=$(nix_sandbox_path env) \
-    /usr/bin/perl=$(nix_sandbox_path perl)"
+    /usr/bin/gzip=$(nix_sandbox_path gzip) \
+    /usr/bin/mkdir=$(nix_sandbox_path mkdir) \
+    /usr/bin/mv=$(nix_sandbox_path mv) \
+    /usr/bin/perl=$(nix_sandbox_path perl) \
+    /usr/bin/tar=$(nix_sandbox_path tar) \
+    /usr/bin/tr=$(nix_sandbox_path tr) \
+    /usr/bin/xz=$(nix_sandbox_path xz)"
 }
 
 # Append the sandbox paths line either into the pacnew file, or the original.
