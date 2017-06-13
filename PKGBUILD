@@ -13,7 +13,8 @@ depends=('openvpn'
          'curl'
          'unzip'
          'sudo'
-         'coreutils')
+         'coreutils'
+         'bc')
 optdepends=('iputils: run ping and rank functions'
             'vpnfailsafe-git: use instead of update-resolv-conf if available')
 makedepends=('coreutils' 'pandoc')
