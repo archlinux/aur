@@ -34,7 +34,8 @@ build () {
     --prefix=/usr \
     --disable-static \
     --enable-glib \
-    --disable-ecore
+    --disable-ecore \
+    --disable-examples
   make
 }
 
