@@ -10,9 +10,9 @@ pkgdesc="Desktop App (aka Team App) Standard version"
 arch=('i686' 'x86_64')
 url="https://www.upwork.com/downloads?source=Footer"
 license=('custom')
-conflicts=('upwork-beta' 'upwork-alpha')
+conflicts=('upwork-alpha' 'upwork-appimage' 'upwork-beta')
 depends=('alsa-lib' 'gconf' 'gtkglext' 'libgcrypt15' 'libxss' 'libxtst' 'nss')
-makedepends=('gobject-introspection' 'help2man' 'gtk-doc' 'git')  # Needed to build pango
+makedepends=('gobject-introspection' 'help2man' 'gtk-doc' 'git')  # needed to build pango
 install=upwork.install
 
 source=("LICENSE" "git+https://git.gnome.org/browse/pango#commit=6c5d1d35061a91c3c0792f7720da3f8308ebff65")
@@ -26,6 +26,20 @@ source_i686=(upwork_i386_${pkgver}.deb::https://updates-desktopapp.upwork.com/bi
 prepare() {
     cd "${srcdir}"
     tar -zxf "${srcdir}/data.tar.gz"
+    cd pango
+    NOCONFIGURE=1 ./autogen.sh
+}
+
+build() {
+  cd "${srcdir}/pango"
+  ./configure --prefix=/usr
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+}
+
+check() {
+  cd "${srcdir}/pango"
+  make -k check || :
 }
 
 package() {
