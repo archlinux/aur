@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.11.2
+Type=Application
+Name=Reactotron
+Exec=/opt/reactotron/Reactotron %f
+Icon=reactotron
+Comment=Reactotron IDE
+Categories=Development;IDE;
+Terminal=false
+
