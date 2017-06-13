@@ -3,7 +3,7 @@
 pkgbase=python-pypump
 pkgname=('python-pypump' 'python2-pypump')
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('GPL3')
 pkgdesc="Python pump.io library"
@@ -35,7 +35,7 @@ check() {
 }
 
 package_python-pypump() {
-  depends=('python' 'python-requests' 'python-requests-oauthlib' 'python-dateutil')
+  depends=('python' 'python-requests' 'python-requests-oauthlib')
 
   cd pypump-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
@@ -43,7 +43,7 @@ package_python-pypump() {
 }
 
 package_python2-pypump() {
-  depends=('python2' 'python2-requests' 'python2-requests-oauthlib' 'python2-dateutil')
+  depends=('python2' 'python2-requests' 'python2-requests-oauthlib')
 
   cd pypump-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
