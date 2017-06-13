@@ -1,7 +1,7 @@
 # Maintainer: Matthias Loibl <mail at matthiasloibl dot com>
 
 pkgname=gopass
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="The slightly more awesome standard unix password manager for teams."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('dmenu: for dmenu support'
 	'xdotool: for typing passwords selected by dmenu')
 provides=("gopass=${pkgver}")
 source_x86_64=("gopass-${pkgver}-${pkgrel}-x86_64.tar.xz::https://www.justwatch.com/gopass/releases/${pkgver}/gopass-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
-sha256sums_x86_64=('c8d9dd9299bd30a4aca57a424389d4ece0e26d3c1d917c2170dadba509399c0a')
+sha256sums_x86_64=('b0b2dc3203b0be1253ce57fcfdeeb8e674c036eb855eee46de4931e609c3fdbe')
 
 package() {
   cd "$srcdir"
