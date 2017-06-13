@@ -1,11 +1,10 @@
 # $Id$
 # Maintainer : Figue <ffigue@gmail.com>
-# Contributor : Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=52.1.2
+pkgver=52.2.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -23,10 +22,14 @@ conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
+        0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
+        0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         firefox-install-dir.patch fix-wifi-scanner.diff)
-sha256sums=('388e0454d69801f0f2010f8f93b796420ec0493fbf138fc659dbd5b497b8373b'
+sha256sums=('a2f180e4109b15d86d58444134996c1d49eb52e7702d89510508fbd7bddb9381'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
+            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
+            '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
@@ -43,7 +46,6 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
-
 prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
@@ -54,6 +56,12 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i ../fix-wifi-scanner.diff
+
+  # https://bugs.archlinux.org/task/53890
+  patch -Np1 -i ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
+
+  # https://bugs.archlinux.org/task/54395 // https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
+  patch -Np1 -i ../0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -69,6 +77,7 @@ ac_add_options --enable-pie
 # Branding
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_ADDON_SIGNING=1
@@ -137,6 +146,19 @@ pref("extensions.shownSelectionUI", true);
 
 // Opt all of us into e10s, instead of just 50%
 pref("browser.tabs.remote.autostart", true);
+END
+
+  _distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$_distini" <<END
+[Global]
+id=archlinux
+version=1.0
+about=Mozilla Firefox for Arch Linux
+
+[Preferences]
+app.distributor=archlinux
+app.distributor.channel=$pkgname
+app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 256; do
