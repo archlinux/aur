@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=yank
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='Copy terminal output to clipboard'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=("xsel")
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 source=("${url}/archive/v$pkgver.tar.gz")
-sha1sums=('3219d15e24bdca03a79212320bdb53ba5a3c1286')
+sha1sums=('7eceff6ea3beae26c1c0f3c35471ad8fc5f9ef70')
 
 build() {
   cd "${pkgname}-${pkgver}"
