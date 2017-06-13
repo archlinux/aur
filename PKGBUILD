@@ -14,7 +14,7 @@ fi
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
-pkgver=0.4.r0.g9d27639
+pkgver=0.4.r1.g035945a
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
@@ -39,14 +39,7 @@ build() {
 }
 
 package() {
-  local _repo_src=${srcdir}/${pkgname}
-  local _systemd_deploy_path=${pkgdir}/usr/lib/systemd/system
-  local _bin_path=${pkgdir}/usr/bin
+  cd ${srcdir}/${pkgname}
 
-  mkdir -p $_systemd_deploy_path $_qml_deploy_path $_bin_path
-  cp ${_repo_src}/artriculate $_bin_path
-  cp ${_repo_src}/src/resources/*.service ${_systemd_deploy_path}
-
-  cd ${_repo_src}
   INSTALL_ROOT="$pkgdir" make install
 }
