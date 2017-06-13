@@ -15,7 +15,16 @@ md5sums=('3fffbdf110c847942f7ce05fe373e57f')
 build() {
 	cd "${pkgname}-${pkgver}"/
 
-	qmake
+	# Fix missing libPythonQt.so
+	if [ ! -e "/usr/lib/libPythonQt.so" ]; then
+		libpython=$(find /usr/lib/ -type f -iname libpythonqt* ! -iname libPythonQt_QtAll*)
+		ln -svf "${libpython}" libPythonQt.so
+
+		qmake QMAKE_LIBDIR_FLAGS="-L $PWD"
+	else
+		qmake
+	fi
+
 	make -j4
 }
 
