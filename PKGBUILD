@@ -250,9 +250,17 @@ adjust_src_dir() {
 
 build() {
   # Qt tries to do the right thing and stores these, breaking cross compilation
+  # unset everything set in /etc/makepkg.conf
   unset LDFLAGS
   unset CFLAGS
   unset CXXFLAGS
+  unset CHOST
+  unset CPPFLAGS
+  unset CARCH
+  unset HOSTTYPE
+  unset MACHTYPE
+  unset DEBUG_CFLAGS
+  unset DEBUG_CXXFLAGS
 
   export PATH=${startdir}:${PATH}
 
@@ -331,8 +339,10 @@ else
                  -no-xcb \
                  ${_additional_configure_flags}"
 fi
-  echo ${_configure_line} > configure_line
-  ${_configure_line} || exit 1
+  local _configure_line_fn=configure_line
+  echo ${_configure_line} > ${_configure_line_fn}
+  set &> configure_env
+  ${_configure_line} || ${_configure_line} || exit 1
   make || exit 1
 }
 
