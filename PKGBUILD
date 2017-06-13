@@ -1,7 +1,7 @@
 # former Maintainer: Brenton Horne
 
 pkgname=hugo
-pkgver=0.22
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="Fast and Flexible Static Site Generator in Go — built from source."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 optdepends=('pygmentize: syntax-highlight code snippets.')
 makedepends=('go' 'git' 'govendor')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/spf13/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('79f40a4a976e391c5fec6ddeefa318bfaa6f35a68edb465ee22b31a29c4f38a071c4cc734b70780c3477bb7963495d80ae943c5c1b0d204a1cff12617e1a2e32')
+sha512sums=('0864c42cf29c70eadf574579c5cfe0efb04e6899e2b836b39973c9f13de08ac7f7cdde299cb40267442e7bfe59b0381e4db2e6ded9b98ad912cddfc61392530c')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
