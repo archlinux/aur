@@ -6,7 +6,7 @@
 #  Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-zfs
-pkgver=3.2.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('i686' 'x86_64')
@@ -71,9 +71,9 @@ source=("git+git://libvirt.org/libvirt.git#tag=v$pkgver"
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
 md5sums=('SKIP'
-	 '5e31269067dbd12ca871234450bb66bb'
-	 '384fff96c6248d4f020f6fa66c32b357'
-	 '020971887442ebbf1b6949e031c8dd3f')
+         '5e31269067dbd12ca871234450bb66bb'
+         '384fff96c6248d4f020f6fa66c32b357'
+         '020971887442ebbf1b6949e031c8dd3f')
 
 prepare() {
   cd "$srcdir/${pkgname/-zfs/}"
