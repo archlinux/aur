@@ -1,14 +1,13 @@
-# Maintainer: PromAvtomatika <info@spnx.ru>
-# Contributor: George Kiselyov <tinctura[dot]ginseng[at]gmail[dot]com>
+# Maintainer: PromAvtomatika <info@sigursys.com>
+# Contributor: George Kiselyov <i[dot]am[at]kiselyov-george[dot]ru>
 
 pkgname=spnxclient
 pkgver=1.0.57.20
 pkgrel=0
 pkgdesc="ACS Sphinx client module"
 arch=('any')
-url="http://sigursys.com"
+url="http://sigursys.com/download_current.php"
 license=('custom')
-#depends=('libc6>=2.8','libudev-dev>=164-3','gksu>=2.0.2-5','libpcsclite-dev')
 source=("http://sigursys.com/dl/spnxclient_${pkgver}-${pkgrel}_all.deb"
         "spnx-client.desktop")
 sha256sums=('5c9970d74053be90c1c8285f6ab1c10fffb167aedec87b6338429812e78ef389'
