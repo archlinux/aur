@@ -1,4 +1,5 @@
-# Maintainer: Xwang <xwaang1976@gmail.com>
+# Maintainer: Jingbei Li <i@jingbei.li>
+# Contributor: Xwang <xwaang1976@gmail.com>
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Andrew Fischer <andrew_at_apastron.co>
 
@@ -6,22 +7,21 @@ pkgname=openfoam
 
 # The distributors package name
 _distpkgname=OpenFOAM
+_gitname=$_distpkgname-4.x
 
-pkgver=4.x
-pkgrel=7
+pkgver=4.1
+pkgrel=1
 pkgdesc="The open source CFD toolbox"
-arch=("any")
+arch=('x86_64')
 url="http://www.openfoam.org"
 license=("GPL")
 depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
-        
-source=("git+git://github.com/OpenFOAM/OpenFOAM-4.x.git")        
-
+source=("https://github.com/OpenFOAM/$_gitname/archive/version-$pkgver.tar.gz")
 install="${pkgname}.install"
-        
-md5sums=('SKIP')      
+md5sums=('318a446c4ae6366c7296b61184acd37c')
 
 prepare() {
+  mv $srcdir/$_gitname-version-$pkgver $srcdir/$_distpkgname-$pkgver
   # Extract the current version and major of paraview and of scotch for use in the system preferences
   #_pversion=`pacman -Q paraview | sed -e 's/.* //; s/-.*//g'`
   _pversion=$(pacman -Q $(pacman -Qqo $(which paraview)) | sed -e 's/.* //; s/-.*//g')
@@ -33,7 +33,6 @@ prepare() {
   echo "export WM_MPLIB=SYSTEMOPENMPI" >> ${srcdir}/prefs.sh
   echo "export ParaView_VERSION=${_pversion}" >> ${srcdir}/prefs.sh
   echo "export ParaView_MAJOR=${_pmajor}" >> ${srcdir}/prefs.sh
-#  mv ${srcdir}/${_distpkgname}-3.0.x ${srcdir}/${_distpkgname}-${pkgver}
   cp ${srcdir}/prefs.sh ${srcdir}/${_distpkgname}-${pkgver}/etc #|| return 1
 
   # Generate the scotch.sh file for arch
@@ -41,6 +40,7 @@ prepare() {
   echo "export SCOTCH_ARCH_PATH=/usr" >> ${srcdir}/scotch.sh
   cp ${srcdir}/scotch.sh ${srcdir}/${_distpkgname}-${pkgver}/etc/config #|| return 1
 
+  sed '35a#include "CGAL/number_utils.h"' -i $srcdir/$_distpkgname-$pkgver/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H
 }
 
 build() {
@@ -53,8 +53,9 @@ build() {
   cd ${srcdir}/${_distpkgname}-${pkgver} #|| return 1
 
   # Build and clean up OpenFOAM
-  ./Allwmake > ../../openfoam_log.make 2>&1 #|| return 1
+  ./Allwmake || return 1
   wclean all || return 1
+  wmakeLnIncludeAll || return 1
 }
 
 package() {
@@ -70,7 +71,7 @@ package() {
   echo "export FOAM_INST_DIR=/opt/${_distpkgname}" > ${pkgdir}/etc/profile.d/openfoam-${pkgver}.sh || return 1
   echo "alias ofoam=\"source \${FOAM_INST_DIR}/${_distpkgname}-${pkgver}/etc/bashrc\"" >> ${pkgdir}/etc/profile.d/openfoam-${pkgver}.sh || return 1
   chmod 755 ${pkgdir}/etc/profile.d/openfoam-${pkgver}.sh || return 1
-  
+
   # Add stub thirdparty directory to keep openfoam happy
   install -d ${pkgdir}/opt/${_distpkgname}/ThirdParty-${pkgver} || return 1
 
@@ -81,5 +82,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
-
