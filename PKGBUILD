@@ -3,21 +3,19 @@
 
 # Maintainer: Pavle <xpio at tut.by>
 pkgname=klooni1010-git
-pkgver=0.6.r0.g583284f
+pkgver=0.6.r1.g6781e49
 pkgrel=1
 pkgdesc="Puzzle game based on the original 1010!"
 arch=('any')
 url="https://lonamiwebs.github.io/klooni"
-license=('MIT')
+license=('GPL3')
 groups=()
 depends=('bash' 'java-environment')
 makedepends=('jdk8-openjdk' 'git' 'gendesk')
 provides=('klooni1010')
 conflicts=('klooni1010')
-source=('git://github.com/LonamiWebs/Klooni1010'
-        'https://raw.githubusercontent.com/LonamiWebs/Klooni1010/master/LICENSE.md')
-md5sums=('SKIP'
-         '9f012822c5b039f34a21b07ae1e2a038')
+source=('git://github.com/LonamiWebs/Klooni1010')
+md5sums=('SKIP')
 
 _gitname='Klooni1010'
 
@@ -38,7 +36,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  mkdir -p "$pkgdir/usr/share/java/klooni1010" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses"
+  mkdir -p "$pkgdir/usr/share/java/klooni1010" "$pkgdir/usr/bin"
   install -m644 desktop/build/libs/desktop-0.6.jar "$pkgdir/usr/share/java/klooni1010"
   # shell script
   echo -e '#!/bin/sh\ncd\nexec /usr/bin/java -jar /usr/share/java/klooni1010/desktop-0.6.jar "$@"' > "$pkgdir/usr/bin/klooni1010"
@@ -46,8 +44,6 @@ package() {
   # .desktop file
   install -Dm644 "../klooni1010.desktop" "$pkgdir/usr/share/applications/klooni1010.desktop"
   install -Dm644 "android/assets/ic_launcher/icon128.png" "$pkgdir/usr/share/pixmaps/klooni1010.png"
-  # license
-  install -Dm644 "../LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
 
 # vim:set ts=2 sw=2 et:
