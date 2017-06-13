@@ -30,7 +30,7 @@ PARALLELFLAGS = -fopenmp
 
 DEPENDFLAGS = -MM
 
-OPTFLAGS = -g -O3 -fexpensive-optimizations ${ARCHFLAGS}
+OPTFLAGS = -march=native -O3 -fexpensive-optimizations ${ARCHFLAGS}
 MACHDBGFLAGS = -g
 GNU_ANSI_FLAGS = -Wall -ansi -pedantic -std=c++11 -Wno-long-long
 SGI_ANSI_FLAGS = -ansi -fullwarn

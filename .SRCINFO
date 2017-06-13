@@ -20,6 +20,7 @@ pkgbase = fsl
 	depends = glu
 	depends = boost-libs
 	depends = vtk6
+	depends = sqlite
 	optdepends = cuda
 	source = http://www.fmrib.ox.ac.uk/fsldownloads/fsl-5.0.10-sources.tar.gz
 	source = http://www.fmrib.ox.ac.uk/fsldownloads/fsl-5.0.10-feeds.tar.gz
@@ -28,7 +29,7 @@ pkgbase = fsl
 	source = fsl_exec.patch
 	sha1sums = 34a4a3a0c3bc9e6fbf9a9745636c7b3b4479ecdf
 	sha1sums = 35108d2da18a6dfe1f9f6f6ff81b1a0836235c3c
-	sha1sums = 8c4badea905d49b10a937f9fd64ba1e7df384f25
+	sha1sums = 679c65c90e79b7f748ad1c2d4b5abeebebf05dfd
 	sha1sums = f7841c51fb221a74017400e4daef7de640679887
 	sha1sums = 2df550b126a6ec6022a164a18dddffe4e59962f9
 

@@ -7,12 +7,12 @@ pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain i
 arch=("i686" "x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
 license=(custom)
-depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk6)
+depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk6 sqlite)
 makedepends=()
 optdepends=(cuda)
 sha1sums=('34a4a3a0c3bc9e6fbf9a9745636c7b3b4479ecdf'
           '35108d2da18a6dfe1f9f6f6ff81b1a0836235c3c'
-          '8c4badea905d49b10a937f9fd64ba1e7df384f25'
+          '679c65c90e79b7f748ad1c2d4b5abeebebf05dfd'
           'f7841c51fb221a74017400e4daef7de640679887'
           '2df550b126a6ec6022a164a18dddffe4e59962f9')
 
@@ -36,6 +36,13 @@ prepare() {
 	    cp "${srcdir}/systemvars.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
 	    cp "${srcdir}/externallibs.mk" "${FSLDIR}/config/${FSLMACHTYPE}/"
 	fi
+
+	# Copy makepkg build flags into configuration
+	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
+	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CPPFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
+	sed -i '1,/${AccumulatedIncFlags}/!{s^${AccumulatedIncFlags}^& '"${CXXFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
+	sed -i '1,/${AccumulatedIncFlags}/!{s^${AccumulatedIncFlags}^& '"${CPPFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"
+	sed -i 's^LDFLAGS = .*$^& '"${LDFLAGS}"'^g' "${srcdir}/fsl/config/common/vars.mk"
 
 	# Fix 32-bit
 	if test "$CARCH" == i686; then
@@ -62,6 +69,9 @@ prepare() {
 	sed -i 's/ zlib"/"/g' "${FSLDIR}/extras/build"
 	sed -i 's/ fftw"/"/g' "${FSLDIR}/extras/build"
 	sed -i 's/"tcl tk"/""/g' "${FSLDIR}/extras/build"
+
+	# Link mist-clean against system sqlite
+	sed -i 's^${SQLITE_LIB}/libsqlite3.a^-lsqlite3^g' "${srcdir}/fsl/src/mist-clean/Makefile"
 
 	# Fix Melodic use of ifstream
 	sed -i 's^if(in>0)^if(!!in)^g' "${FSLDIR}/src/melodic/meldata.cc"
