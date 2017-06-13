@@ -1,0 +1,21 @@
+post_install() {
+  pkgname=hogc
+
+  # Fixing membership
+  chown -R julien: /etc/$pkgname
+
+  true
+}
+
+post_upgrade() {
+  pkgname=hogc
+
+  chown -R julien: /etc/$pkgname
+
+  true
+}
+
+pre_remove() {
+
+  true
+}
