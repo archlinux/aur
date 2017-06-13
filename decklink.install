@@ -7,12 +7,12 @@ pre_install() {
 post_install() {
   ldconfig
 
-  cd /usr/src/blackmagic-${1%%-*}
+  cd /usr/src/blackmagic-${1%%-*}*
   make
   install -D -m 0644 blackmagic.ko "/lib/modules/$(uname -r)/kernel/drivers"
   make clean
 
-  cd /usr/src/blackmagic-io-${1%%-*}
+  cd /usr/src/blackmagic-io-${1%%-*}*
   make
   install -D -m 0644 blackmagic-io.ko "/lib/modules/$(uname -r)/kernel/drivers"
   install -D -m 0644 snd_blackmagic-io.ko "/lib/modules/$(uname -r)/kernel/drivers"
