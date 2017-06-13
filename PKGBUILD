@@ -362,6 +362,8 @@ package() {
   # Qt is now installed to $pkgdir/$sysroot/$prefix
   # manually generate/decompose host/target
 
+  local _basepkgdir=${pkgdir}/${_installprefix}
+
   local _libsdir="${startdir}/${_libspkgname}"
   local _libsdebugdir="${startdir}/${_libsdebugpkgname}"
 
@@ -376,6 +378,8 @@ package() {
 
   local _installed_dir="${pkgdir}/${_sysroot}/${_baseprefix}"
 
+  cp ${_bindir}/configure_line ${_basepkgdir}
+  cp ${_bindir}/config.summary ${_basepkgdir}
   rm -Rf ${_libspkgdir} ${_libsdebugpkgdir}
   mkdir -p ${_libspkgdir} ${_libsdebugpkgdir}
 
