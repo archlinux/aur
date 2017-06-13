@@ -1,16 +1,28 @@
 _username=volunode
 _reponame=volunode
 #_ref="#branch=develop"
+#_ref="#commit=CommitID"
 _pkgbase=volunode
 pkgname=${_pkgbase}-git
 pkgdesc="Next generation client for Berkeley Open Infrastructure for Network Computing."
-pkgver=r30182.2a30c072f
+pkgver=r30245.ea496d7c6
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=(
+    'x86_64'
+)
 url="https://github.com/$_username/${_reponame/}"
 license=('LGPL')
-depends=('curl' 'boinc-app-api')
-makedepends=('git' 'curl' 'meson' 'pstreams')
+depends=(
+    'curl'
+    'libbsd'
+    'boinc-app-api'
+)
+makedepends=(
+    'git'
+    'curl'
+    'meson'
+    'pstreams'
+)
 install=$_pkgbase.install
 options=('!staticlibs')
 source=("git+https://github.com/${_username}/${_reponame}${_ref}"
@@ -33,6 +45,7 @@ build() {
   if [ ! -d ${srcdir}/build ]; then
     cd ${srcdir}/${_reponame}
     meson --prefix=/usr --buildtype=release ${srcdir}/build
+#   meson --prefix=/usr --buildtype=debug ${srcdir}/build
     cd ..
   fi
 
