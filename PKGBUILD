@@ -42,10 +42,13 @@ prepare() {
 	    sed -i "s^-m64^^g" "${FSLDIR}/config/${FSLMACHTYPE}/systemvars.mk"
 	fi
 
-	# Use system TCL
+	# Use system TCL/Tk
 	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl.sh"
 	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl-devel.sh"
 	sed -i 's^$FSLDIR/bin/fsltclsh^/usr/bin/tclsh^g' "${FSLDIR}/etc/fslconf/fsl.csh"
+	sed -i 's^$FSLDIR/bin/fslwish^/usr/bin/wish^g' "${FSLDIR}/etc/fslconf/fsl.sh"
+	sed -i 's^$FSLDIR/bin/fslwish^/usr/bin/wish^g' "${FSLDIR}/etc/fslconf/fsl-devel.sh"
+	sed -i 's^$FSLDIR/bin/fslwish^/usr/bin/wish^g' "${FSLDIR}/etc/fslconf/fsl.csh"
 
 	# Disable building of system libraries
 	sed -i 's/ libgd / /g' "${FSLDIR}/extras/build"
@@ -113,6 +116,7 @@ package() {
 	echo 'FSLDIR=/opt/fsl' >			"${pkgdir}/etc/profile.d/fsl.sh"
 	echo '. ${FSLDIR}/etc/fslconf/fsl.sh' >>	"${pkgdir}/etc/profile.d/fsl.sh"
 	echo 'export FSLDIR' >>				"${pkgdir}/etc/profile.d/fsl.sh"
+	echo 'export PATH=$PATH:${FSLDIR}/bin' >>	"${pkgdir}/etc/profile.d/fsl.sh"
 
 	mkdir -p "${pkgdir}/usr/share/licenses/fsl"
 	grep -v \< "${srcdir}/fsl/doc/fsl/licence.html" | cat -s > "${pkgdir}/usr/share/licenses/fsl/LICENSE"
