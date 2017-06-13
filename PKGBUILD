@@ -2,7 +2,8 @@
 pkgname=brouwhulp
 pkgver=5.3.5.2
 pkgrel=1
-pkgesc="Brouwhulp"
+pkgdesc="a program to design and document beer brewing recipes"
+url="http://wittepaard.roodetoren.nl/index.php/brouwhulp"
 arch=("x86_64")
 depends=("libfann" "qt4pas")
 provides=("brouwhulp")
