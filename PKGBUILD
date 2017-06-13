@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=yq
-pkgver=2.0.2
-pkgrel=3
+pkgver='2.1.1'
+pkgrel=1
 pkgdesc="Command-line YAML processor - jq wrapper for YAML documents"
 url="https://github.com/kislyuk/yq"
 depends=('python' 'python-yaml' 'jq')
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/y/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6582c1f33ea4b6cc5a42742ac7c41a63114fba69b95d1b1f2648f13fbb51aa24')
+sha256sums=('ed02a0ade44d97413a3ce105ffd031f44a47c49d493c1ccff999cc635d5df93c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
