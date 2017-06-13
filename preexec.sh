@@ -3,7 +3,10 @@ __nwd_previous_focused=
 __nwd_when_started=
 
 __nwd_precmd() {
-    [[ -z $__nwd_cmd ]] && return
+    local abort
+    abort=0
+    [[ -z $DISPLAY || $(pgrep i3|wc -l) -eq 0 ]] && abort=1
+    [[ $abort -eq 1 && -z $__nwd_cmd ]] && return
 
     local current_focused
     current_focused=$(python3 /usr/share/nwd/focused_window.py)
@@ -19,6 +22,11 @@ __nwd_precmd() {
 }
 
 __nwd_preexec() {
+    local abort
+    abort=0
+    [[ -z $DISPLAY || $(pgrep i3|wc -l) -eq 0 ]] && abort=1
+    [[ $abort -eq 1 && -z $__nwd_cmd ]] && return
+
     __nwd_cmd=$1
     __nwd_previous_focused=$(python3 /usr/share/nwd/focused_window.py)
     __nwd_when_started=$(date +%s)
