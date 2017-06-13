@@ -1,6 +1,6 @@
 pkgbase = camunda-modeler
 	pkgdesc = An integrated modeling solution for BPMN and DMN based on bpmn.io
-	pkgver = 1.8.0
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://camunda.org/features/modeler/
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = camunda-modeler
 	md5sums = bc08d6679ab052bd7c936954f0a8d97c
 	md5sums = 2d041c2f1a6cafa0d0079d207eb635fd
 	md5sums = 22f05a8460e7b0d823dc65a2ee3f5a0e
-	source_i686 = https://camunda.org/release/camunda-modeler/1.8.0/camunda-modeler-1.8.0-linux-ia32.tar.gz
-	md5sums_i686 = 9df6d081605c7962583572a448fd6368
-	source_x86_64 = https://camunda.org/release/camunda-modeler/1.8.0/camunda-modeler-1.8.0-linux-x64.tar.gz
-	md5sums_x86_64 = e29d71deec808eda5b4045a085e34efd
+	source_i686 = https://camunda.org/release/camunda-modeler/1.8.2/camunda-modeler-1.8.2-linux-ia32.tar.gz
+	md5sums_i686 = 1c8c3d2fca6013b648138b1c6bbc6bb1
+	source_x86_64 = https://camunda.org/release/camunda-modeler/1.8.2/camunda-modeler-1.8.2-linux-x64.tar.gz
+	md5sums_x86_64 = dfb550b85d163d34fdc3192cbd84f39d
 
 pkgname = camunda-modeler
 
