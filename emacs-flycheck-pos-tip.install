@@ -1,0 +1,23 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'flycheck-pos-tip)
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
+
+==> Or, with use-package:
+
+(use-package flycheck-pos-tip
+  :after flycheck
+  :config
+  (flycheck-pos-tip-mode))
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
