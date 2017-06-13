@@ -2,13 +2,13 @@
 
 pkgbase=opensnitch-git
 pkgname=(opensnitch-git)
-pkgver=r106.89ea71f
+pkgver=r168.28e5395
 pkgrel=1
 pkgdesc="OpenSnitch is a GNU/Linux port of the Little Snitch application firewall."
 arch=(any)
 url=https://github.com/evilsocket/${pkgname%-git}
 license=(GPL3)
-depends=(python python-pyqt5 python-netfilterqueue-git python-dpkt scapy3k python-psutil python-pyinotify)
+depends=(python python-pyqt5 python-netfilterqueue-git python-dpkt scapy3k python-psutil python-pyinotify python-iptables-git python-prctl python-gobject)
 makedepends=(git python-setuptools)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})

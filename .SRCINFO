@@ -1,6 +1,6 @@
 pkgbase = opensnitch-git
 	pkgdesc = OpenSnitch is a GNU/Linux port of the Little Snitch application firewall.
-	pkgver = r106.89ea71f
+	pkgver = r168.28e5395
 	pkgrel = 1
 	url = https://github.com/evilsocket/opensnitch
 	arch = any
@@ -14,6 +14,9 @@ pkgbase = opensnitch-git
 	depends = scapy3k
 	depends = python-psutil
 	depends = python-pyinotify
+	depends = python-iptables-git
+	depends = python-prctl
+	depends = python-gobject
 	provides = opensnitch
 	conflicts = opensnitch
 	source = opensnitch-git::git+https://github.com/evilsocket/opensnitch.git
