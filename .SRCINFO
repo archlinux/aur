@@ -1,0 +1,15 @@
+pkgbase = quilter
+	pkgdesc = Focus on your writing for any kind of story, even longer ones.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/lainsce/quilter
+	arch = any
+	makedepends = unzip ninja meson
+	depends = granite
+	depends = gtksourceview3
+	depends = gtk3
+	source = https://github.com/lainsce/quilter/archive/1.0.7.zip
+	sha256sums = 25a306fb3a7239c9f95138f6d029f23324fb20e6fc73d8a58763fbbeaf2ef539
+
+pkgname = quilter
+
