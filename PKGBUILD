@@ -1,3 +1,4 @@
+# Maintainer: Chris Berkhout <chris@chrisberkhout.com>
 pkgname=pgn-extract
 pkgver=17.38
 pkgrel=1
