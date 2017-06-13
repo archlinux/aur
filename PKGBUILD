@@ -12,7 +12,7 @@ url="https://www.upwork.com/downloads?source=Footer"
 license=('custom')
 conflicts=('upwork-alpha' 'upwork-appimage' 'upwork-beta')
 depends=('alsa-lib' 'gconf' 'gtkglext' 'libgcrypt15' 'libxss' 'libxtst' 'nss')
-makedepends=('gobject-introspection' 'help2man' 'gtk-doc' 'git')  # needed to build pango
+makedepends=('git' 'gtk-doc')  # needed to build pango
 install=upwork.install
 
 source=("LICENSE" "git+https://git.gnome.org/browse/pango#commit=6c5d1d35061a91c3c0792f7720da3f8308ebff65")
@@ -26,10 +26,13 @@ source_i686=(upwork_i386_${pkgver}.deb::https://updates-desktopapp.upwork.com/bi
 prepare() {
     cd "${srcdir}"
     tar -zxf "${srcdir}/data.tar.gz"
+### BEGIN pango section ###
     cd pango
     NOCONFIGURE=1 ./autogen.sh
+### END pango section ###
 }
 
+### BEGIN pango section ###
 build() {
   cd "${srcdir}/pango"
   ./configure --prefix=/usr
@@ -41,10 +44,16 @@ check() {
   cd "${srcdir}/pango"
   make -k check || :
 }
+### END pango section ###
 
 package() {
     cd "${srcdir}"
     cp -rp usr "${pkgdir}/usr"
 
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+### BEGIN pango section ###
+    install -Dm755 "${srcdir}/pango/pango/.libs/libpangoft2-1.0.so.0.4000.5" \
+                   "${pkgdir}/usr/share/upwork/libpangoft2-1.0.so.0.4000.5"
+    ln -s "libpangoft2-1.0.so.0.4000.5" "${pkgdir}/usr/share/upwork/libpangoft2-1.0.so.0"
+### END pango section ###
 }
