@@ -30,3 +30,6 @@ set (CMAKE_Fortran_COMPILER @TRIPLE@-gfortran)
 set (CMAKE_AR:FILEPATH @TRIPLE@-ar)
 set (CMAKE_RANLIB:FILEPATH @TRIPLE@-ranlib)
 
+# properly detect hdf5 includes from cmake 3.8
+set (HDF5_ROOT /usr/@TRIPLE@/)
+
