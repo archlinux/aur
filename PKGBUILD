@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=peek
 pkgname=peek-git
-pkgver=1.0.1.r64.g5065429
+pkgver=1.0.3.r0.g257e5e3
 pkgrel=1
 pkgdesc="Simple animated GIF screen recorder with an easy to use interface (latest development release)"
 arch=('i686' 'x86_64')
@@ -15,11 +15,11 @@ optdepends=(
   'gst-plugins-good: WebM output under Gnome Shell'
   'gst-plugins-ugly: MP4 output under Gnome Shell'
 )
-source=(git+https://github.com/phw/${_pkgname}.git)
+source=(${_pkgname}-${pkgver}::git+https://github.com/phw/${_pkgname}.git)
 sha1sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=ON \
     -DGSETTINGS_COMPILE=OFF .
@@ -27,16 +27,16 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
