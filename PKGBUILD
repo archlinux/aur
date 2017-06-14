@@ -23,7 +23,7 @@ build() {
     cd ${pkgname%-dev}
 
     mkdir build || true
-    ./configure --prefix=/usr --disable-debug
+    ./configure --prefix=/usr --config-dir=/etc --disable-debug
     make
 }
 
