@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=44.b653929
+pkgver=46.bcac1bf
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam."
 arch=('x86_64')
@@ -40,9 +40,9 @@ build() {
   #make
 
   cd samples
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ -Wno-dev .
-
-  make
+  # samples are broken (1.0.8 release)
+  #cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ -Wno-dev .
+  #make
 }
 
 package() {
@@ -52,12 +52,14 @@ package() {
   install -m 555 openvr/bin/linux64/libopenvr_api.so "$pkgdir/usr/lib"
   install -m 555 openvr/bin/linux64/libopenvr_api.a "$pkgdir/usr/lib"
 
-  #make install DESTDIR="$pkgdir"
+  #make install DESTDIR="$pkgdir" #There is no installer for the samples
   install -d "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/openvr/samples/bin/cube_texture.png" "$pkgdir/usr/" #TODO: fix source code to look in proper place
-  install -m 755 "$srcdir/openvr/samples/bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/openvr/samples/bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
+  #samples are broken (1.0.8 release)
+  #install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
+  #install -m 755 "$srcdir/openvr/samples/bin/cube_texture.png" "$pkgdir/usr/" #TODO: fix source code to look in proper place
+  #install -m 755 "$srcdir/openvr/samples/bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
+  #install -m 755 "$srcdir/openvr/samples/bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
+  
   #install -m 755 "$srcdir/build/samples/hellovr_opengl/run_hellovr.sh" "$pkgdir/usr/bin/run_hellovr.sh"
   
   install -d "$pkgdir/usr/include/"
