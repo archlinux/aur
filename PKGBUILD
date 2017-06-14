@@ -1,17 +1,18 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=cyberfox-kde-bin
-pkgver=52.1.3
+pkgver=52.2.0
 pkgrel=1
 pkgdesc="
 'KDE Plasma Edition' of the fast, stable & reliable x64-bit web browser. It contains KDE patches, which contains KDE file dialogs, file associations, protocol handlers and other KDE Plasma integration features."
 arch=('x86_64')
 url="https://cyberfox.8pecxstudios.com/"
 license=('MPL' 'GPL')
-depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kcyberfoxhelper' 'nspr' 'ffmpeg' 'libvpx' 'libevent' 'sqlite' 'icu')
+depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kcyberfoxhelper')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
+provides=("cyberfox=$pkgver")
 conflicts=('cyberfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
@@ -22,6 +23,7 @@ source=("cyberfox-kde_${pkgver}_amd64.deb::https://hawkeye116477.github.io/cyber
 package() {
 msg2 "Extracting Cyberfox..."
 bsdtar -xf data.tar.xz -C "$pkgdir/"
+
 # Download and install language pack
 echo "Do you wish to download and install language pack (if you want to have en-US this is not needed)?"
             select yn in "Yes" "No"; do
@@ -48,22 +50,15 @@ echo -e "Available languages:
 "
 printf "Type language code of language you wish to download and install (for example: en or pl): "
 read _chosenlang
-if [ "$_chosenlang" == "pl" ]; then
-	printf "\nWITAJCIE RODACY :)\n";
-	wget -O $srcdir/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb https://hawkeye116477.github.io/cyberfox-deb/pool/main/c/cyberfox/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb;
-	msg2 "Wypakowywanie polskiego języka..."
-    bsdtar -xf $srcdir/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb
-    bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
-else
     wget -O $srcdir/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb https://hawkeye116477.github.io/cyberfox-deb/pool/main/c/cyberfox/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
     bsdtar -xf $srcdir/cyberfox-locale-${_chosenlang}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
-fi;
                     break;;
                     No ) break;;
                     esac
                 done
+
 # Download and install CyberCTR and Pocket
 echo "Do you wish to download and install CyberCTR?"
             select yn in "Yes" "No"; do
@@ -91,9 +86,8 @@ bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
                     esac
                 done
 
-  
   # Use system-provided dictionaries. Hunspell symlink is in deb.
   msg2 "Creating symlink to hyphen..."
   ln -Ts /usr/share/hyphen "$pkgdir/opt/cyberfox/hyphenation"
 }
-sha256sums=('cfa65914cd32a245ad36d6d7ddbc85385c1f70a88b59ba04c981d6cb985eafcc')
+sha256sums=('c816a3ea228b44aa6804d1485e3c5d6eb9a108a286a7a2300497f65840ed0c5b')
