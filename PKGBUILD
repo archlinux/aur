@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=61.0.3124.4
+pkgver=61.0.3128.3
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -83,7 +83,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r9.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-icu-r2.patch'
         # Misc Patches
         'minizip.patch'
@@ -98,7 +97,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            '02d13c22a658de47f1e2331c761b9445e24b43ef0b698d46746137dd8701e285'
             '65c89853c132e3a61e17ba3157ba3ad1352e53bf39480889a2d766de4a0c409f'
             # Misc Patches
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
@@ -175,7 +173,7 @@ _keeplibs=(
   'third_party/WebKit'
   'third_party/analytics'
   'third_party/angle'
-  'third_party/angle/src/common/third_party/numerics'
+  'third_party/angle/src/common/third_party/base'
   'third_party/angle/src/third_party/compiler'
   'third_party/angle/src/third_party/murmurhash'
   'third_party/angle/src/third_party/trace_event'
@@ -390,7 +388,6 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r9.patch"
   patch -p1 -i "${srcdir}/chromium-system-icu-r2.patch"
 
   # Misc Patches:
