@@ -2,7 +2,7 @@
 
 pkgname=autofirma
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Spanish Government digital signature client'
 arch=('i686' 'x86_64')
 url='http://firmaelectronica.gob.es'
@@ -24,6 +24,8 @@ package() {
 
 	mkdir -p "${pkgdir}"/usr/share/licenses/autofirma/
 	ln -s /usr/share/doc/AutoFirma/copyright "${pkgdir}"/usr/share/licenses/autofirma/LICENSE
+
+    java -jar "${pkgdir}"/usr/lib/AutoFirma/AutoFirmaConfigurador.jar
 
 	chmod 644 "${pkgdir}"/usr/share/applications/afirma.desktop
 	chmod 644 "${pkgdir}"/usr/share/doc/AutoFirma/copyright

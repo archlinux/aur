@@ -1,7 +1,7 @@
 pkgbase = autofirma
 	pkgdesc = Spanish Government digital signature client
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://firmaelectronica.gob.es
 	arch = i686
 	arch = x86_64
