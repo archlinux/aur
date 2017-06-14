@@ -1,8 +1,9 @@
 # Contributor: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
 # Contributor: Haruue Icymoon <haruue@caoyue.com.cn>
+# Maintainer: Oskar Sveinsen
 
 pkgname=firebird-nspire
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Community emulator of TI-Nspire calculators.'
 arch=('i686' 'x86_64')
@@ -35,4 +36,3 @@ package() {
   cd "${srcdir}/${pkgname}/build"
   INSTALL_ROOT="${pkgdir}" make install
 }
-
