@@ -2,7 +2,7 @@
 
 pkgname=thunar-gtk3
 pkgver=1.6.90
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern file manager for Xfce - GTK3 Version'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -30,9 +30,6 @@ prepare() {
 
     git fetch origin pull/20/head:missingIcons2
     git merge missingIcons2 --no-commit --no-ff
-    git stash && git stash pop
-    git fetch origin pull/22/head:fix-dbus-name
-    git merge fix-dbus-name --no-commit --no-ff
     git stash && git stash pop
 }
 
