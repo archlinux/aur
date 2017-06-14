@@ -39,6 +39,7 @@ build() {
     -DgRPC_BUILD_TESTS:BOOL=OFF \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+    -DCMAKE_INSTALL_LIBDIR="$pkgdir/usr/lib" \
     -DBORINGSSL_ROOT_DIR="$srcdir/$_pkgname"/third_party/boringssl/ \
     -DgRPC_ZLIB_PROVIDER=package \
     -DgRPC_GFLAGS_PROVIDER=packet \
