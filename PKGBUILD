@@ -1,11 +1,12 @@
 # $Id$
-# Maintainer: mnovick1988 <contact through AUR please>
+# Maintainer: Eden Rose(mnovick1988) <contact through AUR please>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
+#
 pkgname=openra-git
-pkgver=BLEED.285e9a803
+pkgver=BLEED.20170524.5dd6aa7a3
 pkgrel=1
-pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL"
+pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. DuneII and Red Alert 2, mods Included. -GIT VERSION"
 arch=('any')
 url="http://www.openra.net"
 license=('GPL3')
@@ -17,41 +18,86 @@ provides=('openra')
 conflicts=('openra')
 options=(!strip)
 
-source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed')
-md5sums=('SKIP')
+source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed'
+        'RA2::git://github.com/OpenRA/ra2.git'
+        'D2::git://github.com/OpenRA/d2.git')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
 
 
 pkgver() {
   cd "$srcdir/OpenRA"
-
-  PV=$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || echo git-`git rev-parse --short HEAD`)
-  echo $PV | sed 's/git-/BLEED./' 
-  #git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's/release-/BLEED./'''
-  #gitdate="$( git log -1 --format=%ai | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/ /\n/g' | head -1 )"
-  #echo "playtest.$gitdate.git"
+  
+  DATE="$(date +%Y%m%d)"
+  PV=$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || echo git-`git rev-parse --short HEAD`) ### get GIT version
+  echo "BLEED."$DATE""$PV | sed -e 's/git-/./g' 
 }
 
 
-#prepare() {
-#  cd OpenRA
-#
-#  make version
-#}
+
+#prepare() {    ### No Longer Required
+#  cd OpenRA    ###
+#               ###
+#  make version ###
+#}              ###
 
 build() {
   cd OpenRA
-
-  make dependencies
-  make core
-  make tools
-  #make version
+    make dependencies      ### Verify Dependencies.
+    make all DEBUG=false   ### Build application and tools...
+    make test DEBUG=false  ### Checking the build, for erroneous yaml files...
+    make check DEBUG=false ### Checking the build, for StyleCop violations...
+    #make docs DEBUG=false ### This exists in the Makefile, but is unused? (Make Documentation, mainly aimed at modders)
 }
 
 package() {
   cd OpenRA
 
-  make prefix=/usr DESTDIR="$pkgdir" install-all
-  make prefix=/usr DESTDIR="$pkgdir" install-linux-shortcuts
-  make prefix=/usr DESTDIR="$pkgdir" install-linux-mime
-  make prefix=/usr DESTDIR="$pkgdir" install-linux-appdata
+  make prefix=/usr DESTDIR="$pkgdir" install DEBUG=false                    ### game data...
+  make prefix=/usr DESTDIR="$pkgdir" install-linux-shortcuts DEBUG=false    ### all the beautiful shortcuts...
+  #make prefix=/usr DESTDIR="$pkgdir" install-linux-mime DEBUG=false        ### apparently removed...
+  #make prefix=/usr DESTDIR="$pkgdir" install-linux-appdata DEBUG=false     ### apparently removed...
+  
+  
+  ### adding RA2 to OpenRA
+  if [ ! -d $pkgdir/usr/lib/openra/mods/ra2 ]; then
+  mkdir -p $pkgdir/usr/lib/openra/mods/ra2
+  fi
+  cp -rf $srcdir/RA2/OpenRA.Mods*  $pkgdir/usr/lib/openra/mods/ra2
+  cp -rf $srcdir/RA2/*.yaml $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/*.png  $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/audio $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/chrome $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/bits $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/installer $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/languages $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/maps $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/rules $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/sequences $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/tilesets $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/uibits $pkgdir/usr/lib/openra/mods/ra2 
+  cp -rf $srcdir/RA2/weapons $pkgdir/usr/lib/openra/mods/ra2 
+  #########################################################
+  
+  ### adding DuneII to OpenRA
+  if [ ! -d $pkgdir/usr/lib/openra/mods/d2 ]; then
+  mkdir $pkgdir/usr/lib/openra/mods/d2
+  fi
+  cp -rf $srcdir/D2/OpenRA.Mods*  $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/*.yaml  $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/*.png   $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/audio  $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/chrome  $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/bits  $pkgdir/usr/lib/openra/mods/d2 
+  #cp -rf $srcdir/D2/installer  $pkgdir/usr/lib/openra/mods/d2  ### installer hasnt been made yet.
+  cp -rf $srcdir/D2/languages  $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/maps  $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/rules  $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/sequences  $pkgdir/usr/lib/openra/mods/d2 
+  cp -rf $srcdir/D2/tilesets  $pkgdir/usr/lib/openra/mods/d2 
+  #cp -rf $srcdir/D2/uibits  $pkgdir/usr/lib/openra/mods/d2    ### Missing atm.
+  cp -rf $srcdir/D2/weapons  $pkgdir/usr/lib/openra/mods/d2 
+  #########################################################
+
 }

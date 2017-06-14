@@ -1,6 +1,6 @@
 pkgbase = openra-git
-	pkgdesc = An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL
-	pkgver = BLEED.285e9a803
+	pkgdesc = An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. DuneII and Red Alert 2, mods Included. -GIT VERSION
+	pkgver = BLEED.20170524.5dd6aa7a3
 	pkgrel = 1
 	url = http://www.openra.net
 	install = openra.install
@@ -24,6 +24,10 @@ pkgbase = openra-git
 	conflicts = openra
 	options = !strip
 	source = OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed
+	source = RA2::git://github.com/OpenRA/ra2.git
+	source = D2::git://github.com/OpenRA/d2.git
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = openra-git
