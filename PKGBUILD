@@ -8,7 +8,7 @@
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
 pkgver=52.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -120,6 +120,9 @@ END
 
 build() {
   cd firefox-${pkgver}esr
+
+  # using gcc v6.3
+  CC=gcc-6.3
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
