@@ -11,9 +11,9 @@ depends=('java-runtime')
 source=("http://www.benf.org/other/cfr/cfr_${pkgver}.jar"
         'cfr' 'LICENSE')
 noextract=("cfr_${pkgver}.jar")
-md5sums=('aa00ae7ae6fccabd601d00c8ae479b87'
-         'd0f7cff1f51f2b25139e4855bf0520ee'
-         '023543479a311ba82f63192d82d4ef92')
+sha256sums=('65c2dfb76c4904014092663b74c2ea4a8e2f18ca75e98a1e4e064352c618360f'
+            '0cb60b0fa08a507b696f8a637f1ef7910ab6c5ab90348de6d920b334d19d79af'
+            '7d3ca327a39d6177be9c960b2864b39314343cd18bdc1445776b7aef9fcf2d83')
 
 package() {
   install -D cfr "$pkgdir/usr/bin/cfr"
