@@ -1,15 +1,15 @@
 # Maintainer: scan
 
 pkgname=obsidian-2-theme
-pkgver=3.22
-pkgrel=20170320
+pkgver=20170527
+pkgrel=1
 pkgdesc="Obsidian 2 Theme GNOME 3.22+"
 arch=('any')
 url="https://www.gnome-look.org/p/1173113/"
 license=('GPL')
 optdepends=('gnome-tweak-tool: A tool to customize advanced GNOME 3 options.')
-source=("Obsidian-2.zip::https://dl.opendesktop.org/api/files/download/id/1490050871/theme-obsidian-2-blue.zip")
-sha256sums=('cce02795afcd9b0effdad9e353e4b7e7f063330a7298ed7ff5e686dcc39e67b4')
+source=("Obsidian-2.tar.gz::https://www.dropbox.com/s/jrxqqryoupi2ps4/Obsidian-2.tar.gz")
+sha256sums=('1707094b344be358bd56bd3a24c5e7f310babb6ec7e698bd6d0591e7c6208864')
 
 package() {
 	install -d ${pkgdir}/usr/share/themes
