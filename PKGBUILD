@@ -24,10 +24,10 @@ package() {
 
   unzip "v${pkgver}-full.zip" -d "v${pkgver}-full"
   cd "v${pkgver}-full"
-  install -dm777 "${pkgdir}/opt/${pkgname}"
+  install -dm666 "${pkgdir}/opt/${pkgname}"
   for path in `find` ; do
     if [ -d "${path}" ] ; then
-      install -dm777 "${pkgdir}/opt/${pkgname}/${path}"
+      install -dm666 "${pkgdir}/opt/${pkgname}/${path}"
     elif [ -f "${path}" ] ; then
       install -m644 {,"${pkgdir}/opt/${pkgname}/"}"${path}"
     fi
