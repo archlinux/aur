@@ -8,14 +8,14 @@
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
 pkgver=52.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          libvpx libevent nss hunspell sqlite ttf-font icu)
-makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
+makedepends=(gcc63 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 cargo)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
