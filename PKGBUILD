@@ -4,7 +4,7 @@
 GTK=3
 
 pkgname="spacefm-git"
-pkgver=20160403
+pkgver=20170325
 pkgrel=1
 pkgdesc="A multi-panel tabbed file manager - git branch"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ else
     depends+=('gtk3'); _opts='--with-gtk3'
 fi
 
-source=("git+https://github.com/IgnorantGuru/spacefm.git#branch=next")
+source=("git+https://github.com/IgnorantGuru/spacefm.git#branch=alpha")
 sha512sums=(SKIP)
 
 pkgver() {
