@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.25.0.87.g25a4d10c8e
+pkgver=v0.25.0.129.gd223a63bc5
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -36,7 +36,7 @@ depends=('desktop-file-utils'
          'v4l-utils'
          'libvdpau'
          'fribidi'
-         'netcdf'
+         'libmysofa-git'
          )
 license=('GPL2' 'GPL3')
 url='http://mpv.io'
@@ -94,7 +94,7 @@ prepare() {
     '--enable-ladspa'
     '--enable-libbs2b'
     '--enable-libgme'
-    '--enable-netcdf'
+    '--enable-libmysofa'
     '--enable-libsoxr'
     )
   _mpv_options=(
