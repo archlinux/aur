@@ -1,0 +1,12 @@
+pkgbase = oce_varioprint
+	pkgdesc = PPD files CUPS needs in order to install OCE VarioPrint printers
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = custom
+	optdepends = cups: printing support
+	source = oce_varioprint-1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = oce_varioprint
+
