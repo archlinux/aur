@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.5.9
+pkgver=1.6.0
 pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
@@ -22,6 +22,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/mime_types.inc'
 		'etc/rspamd/modules.conf'
 		'etc/rspamd/modules.d/antivirus.conf'
+		'etc/rspamd/modules.d/arc.conf'
 		'etc/rspamd/modules.d/asn.conf'
 		'etc/rspamd/modules.d/chartable.conf'
 		'etc/rspamd/modules.d/clickhouse.conf'
@@ -42,6 +43,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/modules.d/metadata_exporter.conf'
 		'etc/rspamd/modules.d/metric_exporter.conf'
 		'etc/rspamd/modules.d/mid.conf'
+		'etc/rspamd/modules.d/milter_headers.conf'
 		'etc/rspamd/modules.d/mime_types.conf'
 		'etc/rspamd/modules.d/multimap.conf'
 		'etc/rspamd/modules.d/mx_check.conf'
@@ -52,9 +54,9 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/modules.d/redis.conf'
 		'etc/rspamd/modules.d/regexp.conf'
 		'etc/rspamd/modules.d/replies.conf'
-		'etc/rspamd/modules.d/rmilter_headers.conf'
 		'etc/rspamd/modules.d/rspamd_update.conf'
 		'etc/rspamd/modules.d/spamassassin.conf'
+		'etc/rspamd/modules.d/spamtrap.conf'
 		'etc/rspamd/modules.d/spf.conf'
 		'etc/rspamd/modules.d/surbl.conf'
 		'etc/rspamd/modules.d/trie.conf'
@@ -65,14 +67,13 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/options.inc'
 		'etc/rspamd/redirectors.inc'
 		'etc/rspamd/rspamd.conf'
-		'etc/rspamd/rspamd.systemd.conf'
-		'etc/rspamd/rspamd.sysvinit.conf'
 		'etc/rspamd/spf_dkim_whitelist.inc'
 		'etc/rspamd/statistic.conf'
 		'etc/rspamd/surbl-whitelist.inc'
 		'etc/rspamd/worker-controller.inc'
 		'etc/rspamd/worker-fuzzy.inc'
-		'etc/rspamd/worker-normal.inc')
+		'etc/rspamd/worker-normal.inc'
+		'etc/rspamd/worker-proxy.inc')
 
 install="rspamd.install"
 
@@ -82,10 +83,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/arc
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('864705c09733257449ffc52740f380c1edeb56bb4be6e0ad0a8ab8c0cdf6cbe6'
+sha256sums=('8a4df7115193fce8c8147495ef6b25961acd0f9758a12c6c5f6617f227f7153e'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
-            'cfcb82cc1833bf1db6501ed78d62ba68b51bcd9087db139e393121b50f6d557d')
+            '832aa4b91385080150c6628fd16e0c241eea41075977773ed140d8aeeea4129b')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
