@@ -4,7 +4,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.11
-pkgver=4.11.3
+pkgver=4.11.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
+            '7b36a573cce74d8e5312c88595bc0c0a60957c1fb79758303c9de9e944e2d339'
             'SKIP'
             'ed46b6567a5501fe5a579b663657c7e98e993b562a034ee1d9b89843a3323e1c'
             'b64745d302af2baca64bbfa893e5ad1ba6d7d605c44d6a5c3f6bf450e1f8b8c0'
