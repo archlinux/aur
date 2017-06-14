@@ -1,0 +1,59 @@
+diff -rupN a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+--- a/docs/CMakeLists.txt	2017-04-21 14:18:29.000000000 -0700
++++ b/docs/CMakeLists.txt	2017-06-14 09:32:33.058127996 -0700
+@@ -11,7 +11,7 @@ SET(SWIFT_SPHINX_PAPER_SIZE "letter"
+ 
+ SET(SPHINX_ARGS
+   -W
+-  -D latex_paper_size=${SWIFT_SPHINX_PAPER_SIZE}
++  -D latex_elements.papersize=${SWIFT_SPHINX_PAPER_SIZE}
+   -d ${CMAKE_BINARY_DIR}/doctrees)
+ 
+ if(SPHINX_EXECUTABLE)
+diff -rupN a/docs/conf.py b/docs/conf.py
+--- a/docs/conf.py	2017-04-21 14:18:29.000000000 -0700
++++ b/docs/conf.py	2017-06-14 10:03:22.266757932 -0700
+@@ -29,7 +29,7 @@ from datetime import date
+ extensions = ['sphinx.ext.intersphinx', 'sphinx.ext.todo']
+ 
+ # Add any paths that contain templates here, relative to this directory.
+-templates_path = ['_templates']
++templates_path = ['_templates', 'archive']
+ 
+ # The suffix of source filenames.
+ source_suffix = '.rst'
+@@ -146,7 +146,7 @@ html_last_updated_fmt = '%Y-%m-%d'
+ 
+ # Additional templates that should be rendered to pages, maps page names to
+ # template names.
+-html_additional_pages = {'LangRef': 'archive/LangRef.html'}
++html_additional_pages = {'archive/LangRef': 'LangRef.html'}
+ 
+ # If false, no module index is generated.
+ # html_domain_indices = True
+diff -rupN a/docs/Makefile b/docs/Makefile
+--- a/docs/Makefile	2017-04-21 14:18:29.000000000 -0700
++++ b/docs/Makefile	2017-06-14 09:28:39.455750766 -0700
+@@ -8,8 +8,8 @@ PAPER         =
+ BUILDDIR      = _build
+ 
+ # Internal variables.
+-PAPEROPT_a4     = -D latex_paper_size=a4
+-PAPEROPT_letter = -D latex_paper_size=letter
++PAPEROPT_a4     = -D latex_elements.papersize=a4
++PAPEROPT_letter = -D latex_elements.papersize=letter
+ ALLSPHINXOPTS   = -W -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+ # the i18n builder cannot share the environment and doctrees with the others
+ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+diff -rupN a/docs/proposals/InitializerInheritance.rst b/docs/proposals/InitializerInheritance.rst
+--- a/docs/proposals/InitializerInheritance.rst	2017-04-21 14:18:29.000000000 -0700
++++ b/docs/proposals/InitializerInheritance.rst	2017-06-14 10:03:51.077044885 -0700
+@@ -135,7 +135,7 @@ doing so is safe.
+ Complete object initializers
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Introduce the notion of a complete object initializer, which is
+-written as an initializer with ``Self`` as its return type [#], e.g.::
++written as an initializer with ``Self`` as its return type [#]_, e.g.::
+ 
+   init() -> Self {
+     // ...

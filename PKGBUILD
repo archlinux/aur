@@ -4,13 +4,13 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=3.1.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
-         'sqlite' 'ncurses' 'libkqueue' 'libblocksruntime')
+         'sqlite' 'ncurses' 'libblocksruntime')
 makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
              'python2-sphinx' 'python2-requests' 'rsync')
 
@@ -28,6 +28,8 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "sourcekit_link_order.patch"
     "icu59.patch"
+    "sphinx1.6.patch"
+    "lldb_missing_include.patch"
 )
 sha256sums=('03eb54e7f89109a85c9b2a9bfdee88d2d7e1bdef73ae0385b30fe4661efaf407'
             'fc6ac7c0c6afff344a8d4e5299b7417f414f1499cf374953e06c339d8177fc26'
@@ -41,7 +43,9 @@ sha256sums=('03eb54e7f89109a85c9b2a9bfdee88d2d7e1bdef73ae0385b30fe4661efaf407'
             'b711a5afaf027ac2cfefc144cd3760dd1d6a99689864be6ecb73a62cbb21b04f'
             'fff8f596a7104ba5fc202dc5a80683032a33a298cf9ede7fdd12f7faf629a45c'
             'c9aa6e167a57ed31002471204d39bf24bb4ebecc38322571515ac73f02b237b6'
-            '3fedb626b375f6ad8b4601abd336f4560718a9c9134716f0c3a4e823b8c12857')
+            '3fedb626b375f6ad8b4601abd336f4560718a9c9134716f0c3a4e823b8c12857'
+            '3c06dcc15bef6cbda7ce7b8a6a4f89bd16599ddbd1b964add9f2048cdda4700b'
+            'be61c69ae7bb626f7f07f95cb5c0074013725c1b90a3ca68aa0c0f989d75e41e')
 
 prepare() {
     # Use python2 where appropriate
@@ -74,6 +78,12 @@ prepare() {
 
     # ICU 59 changed the type of UChar to char16_t
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/icu59.patch" )
+
+    # Fix documentation build against Sphinx 1.6
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/sphinx1.6.patch" )
+
+    # LLDB is missing an include for std::bind with libstdc++/gcc7
+    ( cd "${srcdir}/lldb" && patch -p1 -i "${srcdir}/lldb_missing_include.patch" )
 }
 
 _common_build_params=(
