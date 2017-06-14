@@ -1,13 +1,13 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=c15d7897b9c41c198beea13ed4155e9f81f315e41
+pkgver=c624e95eb0d4500f80f5611f903bdb608c88ef857
 pkgrel=1
 pkgdesc="A ShareX inspired cross platform utility written with Qt."
 arch=('i686' 'x86_64')
 url="https://github.com/ArsenArsen/KShare"
 license=('MIT')
 provides=('kshare=$pkgver')
-depends=(qt5-base qt5-x11extras xcb-util-cursor libxfixes)
+depends=(qt5-base qt5-x11extras xcb-util-cursor ffmpeg libxfixes)
 source=(git+https://github.com/ArsenArsen/KShare.git)
 sha1sums=('SKIP')
 
