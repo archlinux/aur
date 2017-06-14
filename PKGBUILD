@@ -7,12 +7,12 @@ _codename=aurora
 pkgname="${_name}-dev"
 pkgdesc='Mozilla Firefox Developer Edition'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=55.0_20170613054006
-_ffver=55.0
-_ffbid=20170613054006
+pkgver=56.0a1_20170614150218
+_ffver=56.0a1
+_ffbid=20170614150218
 locale="en-US"
-# Next version: 55.0
-# Current BID: 20170613054006
+# Next version: 56.0a1
+# Current BID: 20170614150218
 year=${_ffbid:0:4}
 month=${_ffbid:4:2}
 day=${_ffbid:6:2}
