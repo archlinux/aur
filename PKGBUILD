@@ -9,7 +9,7 @@ pkgdesc="A tool to download rtmp and rtmpe streams"
 url="http://rtmpdump.mplayerhq.hu/"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
-depends=('openssl')
+depends=('gnutls')
 makedepends=('git')
 provides=('rtmpdump')
 conflicts=('rtmpdump')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/rtmpdump"
+    sed -e 's/^CRYPTO=OPENSSL/#CRYPTO=OPENSSL/' -e 's/#CRYPTO=GNUTLS/CRYPTO=GNUTLS/' -i Makefile -i librtmp/Makefile
     make OPT="$CFLAGS" XLDFLAGS="$LDFLAGS"
 }
 
