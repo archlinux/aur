@@ -1,0 +1,18 @@
+pkgbase = s2png-git
+	pkgdesc = stuff to PNG
+	pkgver = v0.7.0.13.g1b39277
+	pkgrel = 1
+	url = https://github.com/dbohdan/s2png
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = gd
+	provides = s2png
+	provides = s2png-git
+	conflicts = s2png
+	conflicts = s2png-git
+	source = git://github.com/dbohdan/s2png
+	sha256sums = SKIP
+
+pkgname = s2png-git
+
