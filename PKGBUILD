@@ -10,7 +10,7 @@
 _pkgname=synergy
 pkgname=$_pkgname-git
 pkgver=20170303.r2847.ec56ac448
-pkgrel=1
+pkgrel=2
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -26,6 +26,7 @@ source=(
   "$_pkgname.png"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
+  'openssl-fix.patch'
 )
 
 sha512sums=(
@@ -33,6 +34,7 @@ sha512sums=(
   'fc4db2f76a52d88d18a10a178ce885d618820a2a32fbde703e70e2000a54bc943d247064e9b0238fd13478dd59c8a1d85fdfafd9abbf80c6a7b45b0f321d84a0'
   'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
   'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
+  '2a4fe1a4758d5365afa1add237054ee09ab53fe44a5b7bc3a01536abd2c4e5c86e62a2b077312f155aca55cca992281c62aebdf5e777064e2c523904b4fc6f2f'
 )
 
 pkgver() {
@@ -46,6 +48,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+  patch -p1 < ../openssl-fix.patch
   sed -i 's|/usr/share/icons/synergy.ico|/usr/share/pixmaps/synergy.png|' res/synergy.desktop
   cd ext
   rm -rf gmock-1.6.0 gtest-1.6.0
