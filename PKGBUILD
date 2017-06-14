@@ -2,7 +2,7 @@
 
 pkgname=zpdic
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern solution for editing dictionaries."
 url="http://ziphil.web.fc2.com/application/download/2.html"
 license=('custom')
@@ -24,7 +24,12 @@ package() {
 
   unzip "v${pkgver}-full.zip" -d "v${pkgver}-full"
   cd "v${pkgver}-full"
-  for f in `find -type f` ; do
-    install -Dm644 {,"${pkgdir}/usr/share/${pkgname}/"}"${f}"
+  install -dm777 "${pkgdir}/opt/${pkgname}"
+  for path in `find` ; do
+    if [ -d "${path}" ] ; then
+      install -dm777 "${pkgdir}/opt/${pkgname}/${path}"
+    elif [ -f "${path}" ] ; then
+      install -m644 {,"${pkgdir}/opt/${pkgname}/"}"${path}"
+    fi
   done
 }

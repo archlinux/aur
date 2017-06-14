@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/java -jar /usr/share/zpdic/Dictionary.jar "$@"
+exec /usr/bin/java -jar /opt/zpdic/Dictionary.jar "$@"
