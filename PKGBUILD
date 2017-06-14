@@ -3,7 +3,7 @@
 pkgname=gnome-mpv
 pkgver=0.12
 pkgrel=4
-pkgdesc="GNOME frontend for MPV"
+pkgdesc="A simple GTK+ frontend for mpv."
 arch=('i686' 'x86_64')
 url="https://github.com/gnome-mpv/gnome-mpv"
 license=('GPL3')
