@@ -2,13 +2,13 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=r1071.23a3372
+pkgver=r1087.5ba66c3
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://biboumi.louiz.org/"
 license=('ZLIB')
-depends=('expat' 'libidn' 'udns' 'botan' 'litesql-git')
+depends=('expat' 'libidn' 'udns' 'botan' 'sqlite')
 makedepends=('git' 'cmake' 'pandoc')
 backup=("etc/$_pkgname/$_pkgname.cfg")
 install="$_pkgname.install"
