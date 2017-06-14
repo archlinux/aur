@@ -20,7 +20,7 @@ pkgbase = openvpn-nordvpn
 	optdepends = vpnfailsafe-git: use instead of update-resolv-conf if available
 	optdepends = python-pandas: run nordvpn infos command
 	provides = nordvpn
-	source = git+https://github.com/nstinus/nordvpn.git#branch=master
+	source = git+https://github.com/nstinus/nordvpn.git#commit=v0.1-9-g8dfce11
 	sha1sums = SKIP
 
 pkgname = openvpn-nordvpn

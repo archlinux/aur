@@ -20,7 +20,7 @@ optdepends=('iputils: run ping and rank functions'
             'python-pandas: run nordvpn infos command')
 makedepends=('coreutils' 'pandoc')
 provides=('nordvpn')
-source=("git+https://github.com/nstinus/nordvpn.git#branch=${NORDVPN_BRANCH:-master}")
+source=("git+https://github.com/nstinus/nordvpn.git#commit=${NORDVPN_COMMIT:-v0.1-9-g8dfce11}")
 sha1sums=('SKIP')
 install=${pkgname}.install
 
