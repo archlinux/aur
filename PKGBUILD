@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.11
 pkgver=4.11.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -281,7 +281,7 @@ _package-headers() {
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
 	for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-		media net pcmcia scsi soc sound trace uapi video xen; do
+		media net pcmcia rdma scsi soc sound trace uapi video xen; do
 	cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
 	done
 
@@ -432,8 +432,8 @@ sha512sums=('6610eed97ffb7207c71771198c36179b8244ace7222bebb109507720e26c5f17d91
             'be1b94ac52ed519243aa1889bd392dd1e68ec0a2fdae4bf5d2c9fa62a33cad94f1ff6db26e66cd4de60a4e07ab7d2cbad6b3f9a625ddeb909702f5bf39a2368a'
             'cd82bce44c7d5a8148e69ae8bab3ea10df1b65bb97a6494c0c0ffe0e5b6f7e6eb08d8c2c3597e31e3d88ba908d36ab749fc97aaccf51857bbd29a697395789c9'
             '77d80d50d8c4323ed36fd2097ba9f6b49bb8d7cae59d32ffa76b309758a7e9f972d26fedd77046d88ce2691bb01a07909f8bdc34ba214414be3bc030ee31994d'
-            'eb7a66b7c5da819ab64a6c1962d13124fe2dd7eec3058dad3940dd6e27b042fe060b45c9f6b2e486bf3e5366acf27bbdb5ca5dc4315f9a9333cba8302f61f30f'
-            '0ed96d313f8445d05b2544531562dfbb25a05464b5c70c36172c29097e3746fb515b18d6435c59b7d86ad5e2e319c582b71cd4fea0e29f2a3b10def5060105e2'
+            '4030c799ee2fbf681aacd8396dab577162b9d34900c879c963ccb260fe40dc3fa1974cbe944ff1685cef2f0751528a3c5ba195c4ec6fca2b7b405e4f061f8e76'
+            '57addf780fc68d8e2914514e47d2edd27600cc0d1bf0c7d3786bc3e16ec9c6527eb8e9d95f156da8b77c11a53ac2a8f0d23360547a26350ebc3dca93721ebc42'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
             
