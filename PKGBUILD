@@ -1,4 +1,3 @@
-# Contributor: levinit <levinit@outlook.com>
 # Maintainer: levinit <levinit@outlook.com>
 pkgname=adhosts
 pkgver=0.1
@@ -6,10 +5,10 @@ pkgrel=2
 epoch=
 pkgdesc="google hosts and blocking ads hosts.用于科学上网和屏蔽广告的hosts."
 arch=(any)
-url="https://github.com/levinit/adhosts"
+url="https://github.com/levinit/$pkgname"
 license=('GPL')
 groups=()
-depends=('wget')
+depends=('git')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -20,13 +19,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/levinit/adhosts/archive/master.zip")
+source=("git://github.com/levinit/$pkgname.git")
 noextract=()
-md5sums=('9e6a96a4adb5b97755680311c4d3c69b')
+md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-        sed -i '/adhosts/d' "$pkgname-master"/adhosts
+        cd $srcdir/$pkgname/
+        sed -i '/adhosts/d' $pkgname
 }
 #build() {
 #}
@@ -34,7 +34,6 @@ prepare() {
 #}
 
 package() {
-        cd "$pkgname-master"
-        mkdir -p $pkgdir/usr/bin
-        install $pkgname "$pkgdir/usr/bin"
+        cd $srcdir/$pkgname/
+        install -Dm755 $pkgname "$pkgdir/usr/bin/adhosts"
 }
