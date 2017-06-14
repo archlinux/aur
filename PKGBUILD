@@ -3,19 +3,18 @@
 
 #Additional patches:
 # -Gallium Nine support
-# -GCC 7 fix (see https://bugs.winehq.org/show_bug.cgi?id=43127 )
 # -Keybind patch reversion
 # -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=2.9
-pkgrel=3
+pkgver=2.10
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
-_d3d9ver=$_pkgbasever
-#_d3d9ver=2.8
+#_d3d9ver=$_pkgbasever
+_d3d9ver=2.9
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
@@ -28,7 +27,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('29f9a44a317efe3985d88c881aa3acd033100819'
+sha1sums=('097e19e65873afe8be3ce877361b70bc5e423c25'
 	  'd587c2f35006c23b51836cbef0fb7b453130d59e'
 	  '0c45c2e050a7642acd5c7dec6fd5b03f8b5cd658'
 	  'b9ca93f8afcd01cf12460d40022df733010069d2'
@@ -146,11 +145,11 @@ prepare()
     patch -p1 < ../wine-patches-master/0002-ntdll-heap.c-align-everything-to-64-byte-to-reduce-f.patch
     patch -p1 < ../wine-patches-master/0003-wine-list.h-linked-list-cache-line-prefetching.patch
     patch -p1 < ../wine-patches-master/0004-ntdll-heap.c-freelist_balance-prefetch-next-entry-ca.patch
-    patch -p1 < ../wine-patches-master/0005-oleaut32-typelib.c-fix-cursor2-having-the-wrong-type.patch
+#   This patch has been upstreamed 
+#   patch -p1 < ../wine-patches-master/0005-oleaut32-typelib.c-fix-cursor2-having-the-wrong-type.patch
     patch -p1 < ../wine-patches-master/0006-Ensure-16-byte-alignment-of-data.patch
     
     patch -p1 < ../wbemprox_query_v2.patch
-    patch -p1 < ../gcc_7_fix.patch
 
     patch -p1 -R < ../keybindings.patch
 
