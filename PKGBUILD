@@ -1,6 +1,6 @@
 # Maintainer: Daniel Cohen <dan@supercore.co.uk>
 pkgname=plymouth-kcm
-pkgver=5.10.1
+pkgver=5.10.2
 pkgrel=1
 pkgdesc="A KCM for configuring Plymouth"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'kdoctools' 'extra-cmake-modules')
 optdepends=()
 options=()
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('7a9ab26f031ee0fdae3d851cb98b6e2f376584e62136c6d936cde930d06c88d3')
+sha256sums=('6a0c001a19060cdd0e8ab2f60e4522154ea318f2b8df8d87373120c07c09bfbb')
 
 prepare() {
     mkdir -p $srcdir/${pkgname}-$pkgver/build
