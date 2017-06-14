@@ -26,6 +26,8 @@ package() {
 	ln -s /usr/share/doc/AutoFirma/copyright "${pkgdir}"/usr/share/licenses/autofirma/LICENSE
 
     java -jar "${pkgdir}"/usr/lib/AutoFirma/AutoFirmaConfigurador.jar
+	mkdir -p "${pkgdir}"/usr/share/ca-certificates/trust-source/anchors
+	mv "${pkgdir}"/usr/lib/AutoFirma/AutoFirma_ROOT.cer "${pkgdir}"/usr/share/ca-certificates/trust-source/anchors/AutoFirma_ROOT.cer
 
 	chmod 644 "${pkgdir}"/usr/share/applications/afirma.desktop
 	chmod 644 "${pkgdir}"/usr/share/doc/AutoFirma/copyright
