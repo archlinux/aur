@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-php-git
+	pkgdesc = Sphinx Extensions for PHP and Symfony
+	pkgver = v1.0.10.r1.g7312ecc
+	pkgrel = 1
+	url = https://github.com/fabpot/sphinx-php/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/fabpot/sphinx-php.git
+	md5sums = SKIP
+
+pkgname = python-sphinx-php-git
+
