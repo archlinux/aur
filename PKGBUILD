@@ -1,9 +1,8 @@
 pkgname=gprbuild
-#pkgver=r3147.g18e2bc01
 pkgver=2017
-pkgrel=1
+pkgrel=2
 
-pkgdesc='multi-language build system'
+pkgdesc='Multi-language build system.'
 url='http://www.adacore.com/gnatpro/toolsuite/gprbuild/'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,19 +15,16 @@ makedepends=('git' 'gprbuild-bootstrap')
 provides=('gprbuild' 'gprbuild-bootstrap')
 conflicts=('gprbuild' 'gprbuild-bootstrap')
 
-source=('git+https://github.com/AdaCore/gprbuild'
+source=('http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecff7'
         'expose-cargs-and-largs-makefile.patch')
 
-sha1sums=('SKIP'
+sha1sums=('f956aa57c58c342a958332c8cd98e6481e9ce593'
           'bda77367bc6985c3daf96929cccf5551a0544237')
 
-#pkgver() {
-#    cd gprbuild
-#    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
 
-prepare() {
-    cd gprbuild
+prepare()
+{
+    cd gprbuild-gpl-2017-src
     patch -Np1 -i "$srcdir"/expose-cargs-and-largs-makefile.patch
 
     # Not everyone is Debian
@@ -38,18 +34,18 @@ prepare() {
         share/gprconfig/gnat.xml
 }
 
-build() {
-    cd gprbuild
-#    export OS=UNIX
-#    make prefix=/usr  PROCESSORS="$(nproc)" setup
+
+build()
+{
+    cd gprbuild-gpl-2017-src
     make prefix=/usr setup
     make all
-#    make GPRBUILD_OPTIONS=-R
 }
 
-package() {
-    cd gprbuild
-#    export OS=UNIX
+
+package() 
+{
+    cd gprbuild-gpl-2017-src
     make prefix="$pkgdir"/usr install
 
     # Cleanup
