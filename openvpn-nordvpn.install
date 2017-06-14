@@ -2,14 +2,6 @@ pre_remove() {
     nordvpn stop
 }
 
-post_install() {
-    nordvpn update
-}
-
-post_upgrade() {
-    nordvpn update
-}
-
 post_remove() {
     rm -rf /etc/openvpn/client/nordvpn
     find /etc/openvpn/client -name 'nordvpn_*.conf' | xargs -r rm

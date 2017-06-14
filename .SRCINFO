@@ -1,7 +1,7 @@
 pkgbase = openvpn-nordvpn
 	pkgdesc = OpenVPN helper script for nordvpn.com
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.1.7
+	pkgrel = 1
 	url = https://github.com/nstinus/nordvpn
 	install = openvpn-nordvpn.install
 	arch = any
