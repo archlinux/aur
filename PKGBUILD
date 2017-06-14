@@ -1,14 +1,14 @@
 pkgbase=python-gast
 pkgname=('python-gast' 'python2-gast')
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="AST that abstracts the underlying Python version "
 url="https://github.com/serge-sans-paille/gast"
 arch=(any)
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/1a/87/7c3a76a8754fb602fe1d0c397978c55795c776b6d31a6e714002046190f8/gast-0.1.3.tar.gz")
-md5sums=('5a4cd95a7890c0bd4b85a63e4b391935')
+source=("https://pypi.io/packages/source/g/gast/gast-${pkgver}.tar.gz")
+md5sums=('41b0a32cd6872af9e09794f9ce382b47')
 
 prepare() {
   cd "${srcdir}"/gast-$pkgver
