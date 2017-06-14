@@ -13,9 +13,8 @@ if [[ -n "$_piver" ]]; then
   _qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
 fi
 
-_pi_ver=2
 pkgname="pi-compositor"
-pkgver=0.0.2
+pkgver=.0.2.r1.g41ce6ff
 pkgrel=1
 pkgdesc="Rudimentary QML compositor branched off qtwayland/examples/wayland/pure-qml"
 arch=("any")
@@ -23,9 +22,14 @@ url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 makedepends=("qt-sdk-raspberry-pi${_piver}")
 depends=("qt-sdk-raspberry-pi-target-libs")
-source=("git://github.com/sirspudd/${pkgname}.git#tag=${pkgver}")
+source=("git://github.com/sirspudd/${pkgname}.git")
 sha256sums=("SKIP")
 options=('!strip')
+
+pkgver() {
+  cd ${srcdir}/${pkgname}
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   local repo_src=${srcdir}/${pkgname}
