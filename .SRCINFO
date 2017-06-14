@@ -5,7 +5,6 @@ pkgbase = electrum-ltc
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
-	makedepends = gettext
 	makedepends = python2-pycurl
 	depends = python2-btchip
 	depends = python2-dnspython
@@ -22,8 +21,11 @@ pkgbase = electrum-ltc
 	depends = python2-qrcode
 	depends = python2-requests
 	depends = zbar
-	source = electrum-ltc-2.8.3.2.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/2.8.3.2
-	sha256sums = 87861c1b46f37c2e3d025a8e0d55ed5fe44056d615d564146e6a3a210e857f8e
+	source = https://electrum-ltc.org/download/Electrum-LTC-2.8.3.2.tar.gz
+	source = https://electrum-ltc.org/download/Electrum-LTC-2.8.3.2.tar.gz.asc
+	validpgpkeys = CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA
+	sha256sums = e3000130dc9e64a70d8ecacf604e2ebd36501e34ab8d53d7084e5be7c03126b2
+	sha256sums = SKIP
 
 pkgname = electrum-ltc
 

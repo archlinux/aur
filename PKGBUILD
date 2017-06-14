@@ -20,18 +20,22 @@ depends=(python2-btchip
          python2-qrcode
          python2-requests
          zbar)
-makedepends=(gettext python2-pycurl)
-source=(electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/$pkgver)
-sha256sums=(87861c1b46f37c2e3d025a8e0d55ed5fe44056d615d564146e6a3a210e857f8e)
+makedepends=(python2-pycurl)
+source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz
+        https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz.asc)
+validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
+sha256sums=(e3000130dc9e64a70d8ecacf604e2ebd36501e34ab8d53d7084e5be7c03126b2
+            SKIP)
 
 prepare() {
-  cd electrum-ltc-$pkgver/
+  cd Electrum-LTC-$pkgver/
 
   find ./ -type f -exec sed -i '/#!/s/python$/&2/' {} +
 
   for i in icons/{electrum_{dark,light}_icon,unpaid}.png
   do convert $i $i
   done
+  pyrcc4 icons.qrc >gui/qt/icons_rc.py
 
   sed -i '/fee_widgets.append((rbf_label, rbf_combo))/d
           s/set_rbf(True)/set_rbf(False)/' gui/qt/main_window.py
@@ -39,15 +43,12 @@ prepare() {
 }
 
 build() {
-  cd electrum-ltc-$pkgver/
-  pyrcc4 icons.qrc >gui/qt/icons_rc.py
-  protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
-  contrib/make_locale
+  cd Electrum-LTC-$pkgver/
   ./setup.py build
 }
 
 package() {
-  cd electrum-ltc-$pkgver/
+  cd Electrum-LTC-$pkgver/
 
   ./setup.py install -O1 --root=$pkgdir
 
