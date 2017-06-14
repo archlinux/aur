@@ -6,7 +6,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-de'
-pkgver='7.0'
+pkgver='7.0.1'
 _language='de'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymes Surfen mit Firefox und Tor'
@@ -14,13 +14,12 @@ url='https://www.torproject.org/projects/torbrowser.html'
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+         'dbus-glib' 'libpulse' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
             'kdialog: KDE dialog boxes'
             'gst-plugins-good: h.264 video'
             'gst-libav: h.264 video'
-            'libpulse: PulseAudio audio driver'
             'libnotify: Gnome dialog boxes')
 install="${pkgname}.install"
 
@@ -35,9 +34,9 @@ source+=("${pkgname}.desktop"
 md5sums=('5b0844612fcbed11666e3c766072b092'
          '494afbfa60fb4ce21840244cc3f7208c'
          'bb53b2544e2038943e703c7c6ccf48a1')
-md5sums_x86_64=('aac8ea6e6e1628b3ac631bd12a19212f'
+md5sums_x86_64=('c17958e00ad303795998e5fedd9787fd'
                 'SKIP')
-md5sums_i686=('8681f501c2d8456c6456a5f5e18b0f10'
+md5sums_i686=('e21a31c1744ba5c1122ba5aefa09a873'
               'SKIP')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
