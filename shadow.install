@@ -1,0 +1,9 @@
+post_upgrade() {
+  grpck -r >/dev/null 2>&1
+  if [ $? -eq 2 ]; then
+    printf '%s\n' \
+      "==> Warning: /etc/group or /etc/gshadow are inconsistent." \
+      "    Run 'grpck' to correct this."
+  fi
+  return 0
+}

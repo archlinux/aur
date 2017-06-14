@@ -1,0 +1,10 @@
+[Unit]
+Description=Verify integrity of password and group files
+After=systemd-sysusers.service
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c '/usr/bin/pwck -r ; /usr/bin/grpck -r'
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
