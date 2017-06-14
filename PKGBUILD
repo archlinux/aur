@@ -4,14 +4,12 @@
 pkgname=dmenu-extended
 pkgver=r201.56b9f6f
 pkgrel=1
-
 pkgdesc='An extension to dmenu for quickly opening files and folders.'
 url='https://github.com/markjones112358/dmenu-extended'
 license=('MIT')
 arch=('any')
-
 depends=('dmenu' 'python')
-makedepends=('python')
+makedepends=('python' 'git')
 source=("git+https://github.com/markjones112358/dmenu-extended.git")
 sha256sums=('SKIP')
 
