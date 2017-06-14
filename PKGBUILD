@@ -1,8 +1,8 @@
 # Maintainer: Shengyu Zhang <lastavengers at archlinuxcn dot org>
 
 pkgname=srain-git
-pkgver=0.566.e52038c
-pkgrel=2
+pkgver=0.602.40e16be
+pkgrel=1
 pkgdesc="Modern, beautiful IRC client written in GTK+ 3"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,7 +24,7 @@ build() {
     cd ${pkgname%-git}
 
     mkdir build || true
-    ./configure --prefix=/usr --disable-debug
+    ./configure --prefix=/usr --config-dir=/etc --disable-debug
     make
 }
 
