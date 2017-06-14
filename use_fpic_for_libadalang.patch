@@ -1,18 +1,18 @@
---- build/lib/gnat/libadalang.gpr	2017-06-05 11:38:11.357910001 +1000
-+++ build/lib/gnat/libadalang.gpr-new	2017-06-05 11:37:33.665740000 +1000
-@@ -90,9 +90,9 @@
+--- build/lib/gnat/libadalang.gpr	2017-06-14 20:38:02.947741666 +1000
++++ build/lib/gnat/libadalang.gpr-new	2017-06-14 20:39:57.568356667 +1000
+@@ -88,9 +88,9 @@
+             for Default_Switches ("Ada") use
                 Common_Ada_Cargs & ("-g", "-O0", "-gnatwe", "-gnata");
  
-             for Default_Switches ("C") use
--               Common_C_Cargs & ("-g3", "-O0", "-DDEBUG=1");
-+               Common_C_Cargs & ("-g3", "-O0", "-DDEBUG=1", "-fPIC");
+-            for Default_Switches ("C") use Common_C_Cargs & ("-g3", "-O0");
++            for Default_Switches ("C") use Common_C_Cargs & ("-g3", "-O0", "-fPIC");
  
 -            for Switches ("quex_lexer.c") use Common_C_Cargs & ("-g0", "-O0");
 +            for Switches ("quex_lexer.c") use Common_C_Cargs & ("-g0", "-O0", "-fPIC");
              --  This file is *huge* and the debugging information for it harms
              --  Valgrind runs. We almost never have to debug this file so
              --  this is acceptable.
-@@ -103,13 +103,13 @@
+@@ -101,13 +101,13 @@
              for Default_Switches ("Ada") use
                 Common_Ada_Cargs & ("-g", "-Ofast", "-gnatp", "-gnatn2");
  
