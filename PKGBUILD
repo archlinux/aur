@@ -3,14 +3,14 @@
 pkgname=wingide
 _wingver=6.0.5
 _wingrel=1
-_wing_patch_lvl=3 #bump this when adding a patch
+_wing_patch_lvl=4 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
-_wingpatch=("fix-auto-arg-removal-6.0.5p1-all.tar" "fix-script-print-encoding-6.0.5p2-all.tar" "fix-logging-6.0.5p3-all.tar" "fix-remote-bps-6.0.5p4-all.tar" "fix-vi-mode-yy-6.0.5p5-all.tar" "fix-vi-mode-line-pos-6.0.5p6-all.tar" "fix-reverse-ssh-6.0.5p7-all.tar" "fix-auto-indent-6.0.5p8-all.tar")
+_wingpatch=("fix-auto-arg-removal-6.0.5p1-all.tar" "fix-script-print-encoding-6.0.5p2-all.tar" "fix-logging-6.0.5p3-all.tar" "fix-remote-bps-6.0.5p4-all.tar" "fix-vi-mode-yy-6.0.5p5-all.tar" "fix-vi-mode-line-pos-6.0.5p6-all.tar" "fix-reverse-ssh-6.0.5p7-all.tar" "fix-auto-indent-6.0.5p8-all.tar" "fix-special-env-6.0.5p9-all.tar" "fix-indent-button-6.0.5p10-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 _wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
@@ -24,7 +24,9 @@ md5sums=('944c2edf81b7a681a9d0ab5dc528498c'
          'aa5edf6eb1259b04def4a989632cf2ca'
          '4be37a3ad346059fe4b6f2b522004a99'
          '2da3c2dd61721328ea84978f2c65e690'
-         '4b672bbc005297e2cc8edb33df175601')
+         '4b672bbc005297e2cc8edb33df175601'
+         '87262383b43bde9ad010aef1eafd1619'
+         '547e3b3688cbd7ee245626e85063e000')
 
 install=${pkgname}.install
 
