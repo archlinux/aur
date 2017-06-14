@@ -71,6 +71,8 @@ package()
   #
   source /etc/profile.d/quex.sh
 
+  export PATH=$srcdir/libadalang-gps-src/temp_bin:$PATH
+
   python ada/manage.py install $pkgdir/usr
 
   mkdir -p $pkgdir/usr/lib/python2.7/site-packages
