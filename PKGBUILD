@@ -14,7 +14,7 @@ if [[ -n "$_piver" ]]; then
 fi
 
 pkgname="pi-compositor"
-pkgver=.0.2.r1.g41ce6ff
+pkgver=0.0.2.r1.g41ce6ff
 pkgrel=1
 pkgdesc="Rudimentary QML compositor branched off qtwayland/examples/wayland/pure-qml"
 arch=("any")
