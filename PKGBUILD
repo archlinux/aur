@@ -14,7 +14,7 @@ if [[ -n "$_piver" ]]; then
 fi
 
 pkgname="quint"
-pkgver=0.0.1
+pkgver=.0.1
 pkgrel=1
 pkgdesc="Live coding demo for the Raspberry Pi"
 arch=("any")
@@ -24,6 +24,11 @@ depends=("qt-sdk-raspberry-pi-target-libs")
 source=("git://github.com/sirspudd/${pkgname}.git")
 sha256sums=("SKIP")
 options=('!strip')
+
+pkgver() {
+  cd ${srcdir}/${pkgname}
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   local repo_src=${srcdir}/${pkgname}
