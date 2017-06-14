@@ -1,5 +1,5 @@
 pkgname=iri
-pkgver=1.1.2.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="IOTA Reference Implementation"
 url="https://www.iotatoken.com/"
@@ -7,8 +7,8 @@ arch=('any')
 license=('GPL')
 depends=("java-runtime")
 makedepends=("java-environment" "maven")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/iotaledger/iri/archive/$pkgver.tar.gz")
-md5sums=('bafbe9656e64be7430682b568697aaff')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/iotaledger/iri/archive/v$pkgver.tar.gz")
+md5sums=('d4289b77522ae0a794e5bbd8d1ad968f')
  
 build(){
     cd $pkgname-$pkgver
