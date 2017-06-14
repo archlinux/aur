@@ -1,8 +1,8 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
 pkgname='udash-generator'
-pkgver='0.4.0'
-pkgrel='1'
+pkgver='0.5.0'
+pkgrel=1
 pkgdesc='Udash project generator'
 url="https://github.com/UdashFramework/udash-generator"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 source=("https://github.com/UdashFramework/udash-generator/releases/download/v${pkgver}/udash-generator.zip"
         "https://raw.githubusercontent.com/UdashFramework/udash-generator/master/LICENSE"
         "udash-generator.sh")
-md5sums=('2b329024d69420dc2e731f7362a4af35'
+md5sums=('da63ea64591ea27522e4aff6afa7d675'
          '175792518e4ac015ab6696d16c4f607e'
          '88d5a254ac9d259bf693cf45c93b2021')
 depends=('java-environment')
