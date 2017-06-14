@@ -14,7 +14,7 @@ fi
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
-pkgver=0.4.r1.g035945a
+pkgver=0.4.r3.g271b162
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
