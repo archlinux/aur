@@ -7,12 +7,12 @@ _codename=date
 pkgname="${_name}-dev"
 pkgdesc='Mozilla Firefox Developer Edition'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=55.0_20170613054006
-_ffver=55.0
-_ffbid=20170613054006
+pkgver=55.0b1_20170614150218
+_ffver=55.0b1
+_ffbid=20170614150218
 locale="en-US"
-# Next version: 55.0
-# Current BID: 20170613054006
+# Next version: 56.0a1
+# Current BID: 20170614150218
 year=${_ffbid:0:4}
 month=${_ffbid:4:2}
 day=${_ffbid:6:2}
@@ -23,7 +23,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${_ffver}.en-US.linux-${CARCH}"
-_puburl="https://download-installer.cdn.mozilla.net/pub/devedition/releases/55.0b1/linux-x86_64/en-US/"
+_puburl="https://download-installer.cdn.mozilla.net/pub/devedition/releases"
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases
 source=(
   ${_puburl}/${_ffver}/linux-${CARCH}/${locale}/${_name}-${_ffver}.tar.bz2
