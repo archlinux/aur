@@ -1,6 +1,6 @@
 pkgname=enpass-bin
 _pkgname=enpass
-pkgver=5.5.3
+pkgver=5.5.6
 _pkgver_x86_x64=${pkgver}
 _pkgver_i686=${pkgver}
 pkgrel=1
@@ -14,8 +14,8 @@ provides=("${_pkgname}")
 install=enpass-bin.install
 source_x86_64=("http://repo.sinew.in/pool/main/e/enpass/${_pkgname}_${_pkgver_x86_x64}_amd64.deb")
 source_i686=("http://repo.sinew.in/pool/main/e/enpass/${_pkgname}_${_pkgver_i686}_i386.deb")
-sha256sums_x86_64=('350adbff6961bed7119544a503a43bbab5a8f40b3fa54284ed780b0c8d6b55ab')
-sha256sums_i686=('735742c43b4e6fe12cfb73616ec35e392461cef4f9e6bd7c100550c236060e96')
+sha256sums_x86_64=('2fbfa341fb98f4ffbb9f39f25a3564849fa5447fa9b12277084c49d0d0e5f5e3')
+sha256sums_i686=('38a690dae4eeef2c2a21662dd575f6fedc7c63f26f4061e78d41a121e316b275')
 
 # Disable strip as otherwise the browser extension will not work
 options=('!strip')
