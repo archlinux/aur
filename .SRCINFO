@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-9335cdw
 	pkgdesc = LPR and CUPS drivers for the Brother MFC-9335CDW
 	pkgver = 1.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://support.brother.com/g/s/id/linux/en/index.html
 	install = brother-mfc-9335cdw.install
 	changelog = changelog.md

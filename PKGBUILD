@@ -2,7 +2,7 @@
 
 pkgname=brother-mfc-9335cdw
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='LPR and CUPS drivers for the Brother MFC-9335CDW'
 arch=('i686' 'x86_64')
 url='http://support.brother.com/g/s/id/linux/en/index.html'
