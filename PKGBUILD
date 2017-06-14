@@ -15,6 +15,7 @@ pkgname=(
     'llvm-svn'
     'llvm-libs-svn'
     'llvm-ocaml-svn'
+    'lld-svn'
     'clang-svn'
     'clang-analyzer-svn'
     'clang-compiler-rt-svn'
@@ -109,6 +110,7 @@ _install_python_bindings() {
 _install_licenses() {
     find "${1}" \
         \( \
+            -path "${srcdir}/${_pkgname}/tools/lld" -o \
             -path "${srcdir}/${_pkgname}/tools/clang" -o \
             -path "${srcdir}/${_pkgname}/projects/compiler-rt" \
         \) -prune -o \
@@ -216,10 +218,8 @@ package_llvm-svn() {
 
     cd "${srcdir}/build"
 
-    # Exclude the clang directory, since it'll be installed in a separate package
-    sed -i \
-        "s|^\([[:blank:]]*include(\"${srcdir}/build/tools/clang/cmake_install.cmake\")\)$|#\1|" \
-        tools/cmake_install.cmake
+    # Disable automatic installation of components that go into subpackages
+    sed -i '/\(clang\|lld\|lldb\)\/cmake_install.cmake/d' tools/cmake_install.cmake
 
     make DESTDIR="${pkgdir}" install
 
@@ -242,7 +242,7 @@ package_llvm-svn() {
 
     # Clean up documentation
     # TODO: This may not be needed any more.
-    rm -rf "${pkgdir}/usr/share/doc/"{llvm,lld}"/html/_sources"
+    rm -rf "${pkgdir}/usr/share/doc/llvm/html/_sources"
 
     _install_python_bindings "${srcdir}/llvm/bindings/python/llvm"
 
@@ -302,6 +302,26 @@ package_llvm-ocaml-svn() {
     cp -a "${srcdir}/ocaml.doc" "${pkgdir}/usr/share/doc/llvm/ocaml-html"
 
     _install_licenses "${srcdir}/llvm"
+}
+
+package_lld-svn() {
+    pkgdesc='A linker from the LLVM project'
+    depends=(
+        "llvm-libs-svn=${pkgver}-${pkgrel}"
+    )
+    groups=('llvm-toolchain-svn')
+    provides=('lld')
+    conflicts=('lld')
+
+    cd "${srcdir}/build/tools/lld"
+
+    make DESTDIR="${pkgdir}" install
+
+    # Clean up documentation
+    # TODO: This may at some point not be needed any more.
+    rm -rf "${pkgdir}/usr/share/doc/lld/html/_sources"
+
+    _install_licenses "${srcdir}/lld"
 }
 
 package_clang-svn() {
