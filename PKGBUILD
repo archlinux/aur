@@ -6,7 +6,7 @@
 pkgname=('lnd-git')
 pkgver=0.2.1.alpha.291.ge4563ca
 pkgrel=1
-pkgdesc='An alternative implementation of the bitcoin protocol, written in Go.'
+pkgdesc='The Lighting Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('i686' 'x86_64')
 url='https://github.com/lightningnetwork/lnd'
 license=('MIT')
