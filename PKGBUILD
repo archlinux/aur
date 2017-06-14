@@ -3,12 +3,12 @@
 _pkgname=humanize
 pkgname="python2-${_pkgname}"
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Humanize is a modest package contains various common humanization utilities'
 url='https://github.com/jmoiron/humanize'
 arch=('any')
 license=('MIT')
-depends=('python2' 'python2-setuptools')
+makedepends=('python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/h/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('a43f57115831ac7c70de098e6ac46ac13be00d69abbf60bdcac251344785bb19')
 
