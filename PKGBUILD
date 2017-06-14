@@ -8,7 +8,7 @@
 
 pkgname=prosody-hg-stable
 pkgrel=1
-pkgver=0.10.r7384+.a395957f3bf2+
+pkgver=0.10.r7386+.39188851811c+
 pkgver() {
   cd "$srcdir/prosody-hg"
   printf "0.10.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
