@@ -8,13 +8,13 @@
 
 _stable_branch="v3_3_x"
 pkgname=qbittorrent-stable-git
-pkgver=3.3.12.r3.g4a95291fc
+pkgver=3.3.13.r0.g15e772623
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. Built from source."
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org"
 license=('custom' 'GPL')
-depends=('libtorrent-rasterbar-1_0-git' 'qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
+depends=('libtorrent-rasterbar' 'qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('boost' 'git' 'qt5-tools')
 optdepends=('python: needed for torrent search tab')
 provides=('qbittorrent')
@@ -37,5 +37,5 @@ build() {
 package() {
   cd $srcdir/${pkgname%-*-*}
   make INSTALL_ROOT="$pkgdir/" install
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
