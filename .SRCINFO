@@ -1,6 +1,6 @@
 pkgbase = zotero-beta
 	pkgdesc = Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
-	pkgver = 5.0_beta.211+7dd9cee0d
+	pkgver = 5.0_beta.212+1bb6217ec
 	pkgrel = 1
 	url = http://www.zotero.org/download
 	install = zotero-beta.install
@@ -13,9 +13,9 @@ pkgbase = zotero-beta
 	depends = gcc-libs
 	depends = nss
 	conflicts = zotero
-	source = https://download.zotero.org/standalone/beta/5.0-beta.211%2B7dd9cee0d/Zotero-5.0-beta.211%2B7dd9cee0d_linux-x86_64.tar.bz2
+	source = https://download.zotero.org/standalone/beta/5.0-beta.212%2B1bb6217ec/Zotero-5.0-beta.212%2B1bb6217ec_linux-x86_64.tar.bz2
 	source = zotero-beta.desktop
-	md5sums = ab2d66f3fea2242c7268549f8a03a9d7
+	md5sums = c18f1f8b466377045717250f23a66246
 	md5sums = 3bfed397fb9d060af469eaacfe8add63
 
 pkgname = zotero-beta
