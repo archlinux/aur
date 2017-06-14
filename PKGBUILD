@@ -1,16 +1,17 @@
 # Maintainer: Terunori Togo <terut.dev+github at gmail dot com>
 _npmname=heroku-cli
 pkgname=nodejs-$_npmname
-pkgver=6.10.4
+pkgver=6.11.7
 pkgrel=1
 pkgdesc="The next generation Node-based Heroku CLI"
 arch=("any")
 url="https://github.com/heroku/cli"
 license=('ISC')
 depends=('nodejs>=7.10.0' 'npm')
+conflicts=('heroku' 'heroku-toolbelt')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-sha512sums=('cce23f74c1596b3e0ff2971d372b51e9ae661a9cf6fef2121fd3d1fd38787a4db78f5e3d01966a5b706c9e6d3d7f661e70f07fdc73480d5106032f98977f2f1d')
+sha512sums=('68f49c39c577d2e19132b8acebb3f32380132924e4a90b103c05a022f309fa40a1b88a201dbfcf6709492efcab6d59dff04352f7e862c184ad2987051d32464a')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules"
