@@ -2,14 +2,14 @@
 
 pkgname=zpdic
 pkgver=1.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern solution for editing dictionaries."
 url="http://ziphil.web.fc2.com/application/download/2.html"
 license=('custom')
 arch=('any')
 conflicts=('zpdic')
 provides=('zpdic')
-depends=('java-openjfx')
+depends=('java-environment>=8' 'java-openjfx>=8' 'sh')
 source=("v${pkgver}-full.zip::https://www.dropbox.com/sh/g75rqn97sdlpp0b/AABEFUdM_TaFJbI3m_ybR2jha/v${pkgver}-full.zip?dl=1"
         'zpdic'
         'LICENSE')
