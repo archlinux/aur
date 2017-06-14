@@ -3,50 +3,25 @@
 
 pkgname=libgpr
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ada library to handle GPRbuild project files"
 
 arch=('i686' 'x86_64')
-url="http://libre.adacore.com/"
+url="http://www.adacore.com/gnatpro/toolsuite/gprbuild"
 license=('GPL')
 
-depends=('gcc-ada' 'gcc-libs' 'prepare_gnat_util')
+depends=('gcc-ada' 'gcc-libs')
 makedepends=('git' 'gcc-ada' 'gprbuild')
 
-#source=('https://github.com/AdaCore/gprbuild.git')
-#sha256sums=(SKIP)
-#source=()
-#sha256sums=(SKIP)
-
-_gitroot='https://github.com/AdaCore/gprbuild.git'
-_gitname='gprbuild'
+source=('http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecff7')
+sha1sums=('f956aa57c58c342a958332c8cd98e6481e9ce593')
 
 
 library_kinds="static shared"
 
 
-prepare()
-{
-  cd "$srcdir"
-
-  if [[ -d "$_gitname" ]]; then
-    msg "gprbuild git repository exists."
-    git pull
-  else
-    msg "Connecting to GIT server...."
-
-    git clone "$_gitroot" "$_gitname"
-
-#    cd "$_gitname"
-#    git checkout
-#    git checkout 0f2542be82b7a4edd89b564205202b16a0f1dfd3
-#    msg "GIT checkout done or server timeout"
-  fi
-}
-
-
 build() {
-  cd "$srcdir/gprbuild"
+  cd "$srcdir/gprbuild-gpl-2017-src"
 
   for k in $library_kinds
   do
@@ -56,7 +31,8 @@ build() {
 
 
 package() {
-  cd "$srcdir/gprbuild"
+  cd "$srcdir/gprbuild-gpl-2017-src"
+
   for k in $library_kinds
   do
     make libgpr.install.$k "prefix=$pkgdir/usr"
