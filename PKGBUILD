@@ -2,13 +2,13 @@
 pkgname=xwrited-hg
 pkgver=2.r18.4a5330979433
 _pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc="Display write and wall messages as desktop notifications."
 arch=('i686' 'x86_64')
 url="https://code.guido-berhoerster.org/projects/xwrited/"
 license=('MIT')
 depends=('notification-daemon' 'libutempter' 'dbus-glib')
-makedepends=('mercurial')
+makedepends=('intltool' 'mercurial')
 provides=('xwrited')
 conflicts=('xwrited')
 source=("${pkgname}::hg+https://hg.guido-berhoerster.org/projects/xwrited/")
