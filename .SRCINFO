@@ -1,7 +1,7 @@
 pkgbase = archnews2
 	pkgdesc = Utility for displaying Arch news feed in console
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mjiricka/archnews
 	arch = any
 	license = MIT
