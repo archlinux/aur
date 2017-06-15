@@ -1,0 +1,15 @@
+pkgbase = babel
+	pkgdesc = Babel randomly generates character strings based on context free grammars.
+	pkgver = 2.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghc=8.0.1
+	depends = haskell-random
+	depends = haskell-parsec
+	source = babel-2.0.tar.gz::https://github.com/quytelda/babel/archive/v2.0.tar.gz
+	md5sums = 788494cc53283f35617db241bdd2ab08
+
+pkgname = babel
+
