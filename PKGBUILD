@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="http://lmb.bioch.ox.ac.uk/coot/"
@@ -38,7 +38,7 @@ sha256sums=('df31ab66d7c3de6524fefcafaab6acc11e4525b930fed3b929ed773ae1776aa7'
             'f4747e1fc7a3387f42b6c40358f999404761a0282ee6be3c621091d9d5d88099'
             'dd2eb7c66ff2fa6f68a9d1e834e1911d2a1669a76ed29b5dbd6863619edcba18'
             '987e41d1b8adf87c2b66e75c07ac85810381354b3b78cb708ebadd8bbada8251'
-            '681606cc5e1cb832235f568a59df6738461afa8270a25c468b92920ef269a250')
+            '5ba4e0d9bdc4db0bab403b8f9aadb1320af60e91f9ed87e81dc680425375590b')
 
 build() {
 
