@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="https://github.com/maandree/libcolour"
 license=('ISC')
 depends=(glibc)
-makedepends=(glibc make coreutils gcc sed)
+makedepends=(glibc make coreutils gcc sed python)
 source=($url/archive/$pkgver.tar.gz)
 sha256sums=(f207e89386db4056cf3cb7f3335adea59b433ae2b78f11dc2b4c79bdae6bb9d0)
 
