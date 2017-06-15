@@ -7,6 +7,7 @@ pkgrel=3
 pkgdesc='A code search tool similar to ack and the_silver_searcher(ag)'
 arch=('x86_64')
 makedepends=('git' 'go')
+depends=('glibc')
 url='https://github.com/monochromegane/the_platinum_searcher'
 license=('MIT')
 provides=('the_platinum_searcher')
