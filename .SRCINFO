@@ -15,7 +15,7 @@ pkgbase = slock-gruvbox-lowcontrast
 	source = http://dl.suckless.org/tools/slock-1.4.tar.gz
 	source = gruvbox.patch
 	md5sums = f91dd5ba50ce7bd1842caeca067086a3
-	md5sums = 74cb3d6aabedf7dabd2e099eaa1ac2e7
+	md5sums = 81a66434d957cef3e12e94459429b97d
 
 pkgname = slock-gruvbox-lowcontrast
 
