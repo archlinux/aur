@@ -33,7 +33,8 @@ _plugins=('extra/filemanager'
           'extra/fileupload'
           'extra/mediastream'
           'titlebar'
-          'ratiocolor')
+          'ratiocolor'
+          'mobile')
 
 _themes=('MaterialDesign'
          'QuickBox'
@@ -45,12 +46,14 @@ source=("plugins.ini"
         "titlebar::git+https://github.com/SanKen/rutorrent-titlebar.git"
         "ratiocolor::git+https://github.com/senki/rutorrent-ratiocolor.git"
         "extra::git+https://github.com/nelu/rutorrent-thirdparty-plugins.git"
+        "mobile::git+https://github.com/xombiemp/rutorrentMobile.git"
         "MaterialDesign::git+https://github.com/Phlooo/ruTorrent-MaterialDesign.git"
         "QuickBox::git+https://github.com/QuickBox/club-QuickBox.git"
         "git+https://github.com/exetico/FlatUI.git")
 
-md5sums=('5c50a738ee4180d63b596519d07d64d5'
+md5sums=('21b595d878e49dde91fca665a0a8effb'
          '3e0002fe9ce69f43513152c515944559'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
