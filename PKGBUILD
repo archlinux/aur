@@ -10,6 +10,7 @@ makedepends=('git' 'go' 'mercurial')
 url="https://github.com/monochromegane/the_platinum_searcher"
 license=('MIT')
 provides=('the_platinum_searcher')
+conflicts=('the_platinum_searcher-bin')
 source=('git+https://github.com/monochromegane/the_platinum_searcher.git')
 md5sums=('SKIP')
 
