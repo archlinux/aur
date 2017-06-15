@@ -7,7 +7,7 @@ pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
 depends=('boost-libs' 'qrencode' 'qt5-base' 'qt5-charts' 'libzip' 'miniupnpc' 'curl' 'boinc')
 makedepends=('boost' 'qt5-tools' 'qrencode' 'db')
 
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://gridcoin.us"
 license=('custom:gridcoin')
 
