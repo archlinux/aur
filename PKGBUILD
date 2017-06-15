@@ -1,6 +1,6 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
-pkgname=cyberfox-test
+pkgname=cyberfox_test
 pkgver=52.2.0
 pkgrel=1
 pkgdesc="Test"
