@@ -1,14 +1,14 @@
 pkgbase = nodejs-pnpm
 	pkgdesc = Performant npm installations
-	pkgver = 0.65.3
+	pkgver = 0.69.5
 	pkgrel = 1
 	url = https://github.com/rstacruz/pnpm
 	arch = any
 	license = MIT
 	depends = nodejs
-	noextract = pnpm-0.65.3.tgz
-	source = http://registry.npmjs.org/pnpm/-/pnpm-0.65.3.tgz
-	sha256sums = d7fffe2845ffe15298ae8289a48566ffe623d5b27c35c599d3f650ca4fc1c107
+	noextract = pnpm-0.69.5.tgz
+	source = http://registry.npmjs.org/pnpm/-/pnpm-0.69.5.tgz
+	sha256sums = 9189ef892f6cc132b053e75a5a62318e848988541b3b800cad9219184ada86d4
 
 pkgname = nodejs-pnpm
 
