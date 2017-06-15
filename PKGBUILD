@@ -2,13 +2,13 @@
 
 pkgname=caffe2-git
 pkgver=0.7.0.r434.g4c76b747
-pkgrel=2
+pkgrel=3
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
 license=('BSD')
 depends=(
-    # binary repositories:
+    # official repositories:
         # required:
             'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf' 'cuda'
             'cudnn'
