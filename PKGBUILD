@@ -2,7 +2,7 @@
 
 pkgname=neomutt
 pkgver=20170609
-pkgrel=1
+pkgrel=2
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
