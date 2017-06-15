@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=46.bcac1bf
+pkgver=1.0.8.r0.gbcac1bf
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam."
 arch=('x86_64')
@@ -19,8 +19,10 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/openvr"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  #echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 
 prepare() {
   cd "$srcdir/openvr"
