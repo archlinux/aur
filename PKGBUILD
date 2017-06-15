@@ -17,7 +17,7 @@
 #
 pkgname="zfs-utils-linux-lts-git"
 pkgver=0.7.0_rc4_r60_g627791f3c_4.9.31_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-lts-git" "linux-lts=4.9.31-1")
 makedepends=("linux-lts-headers=4.9.31-1" "git")
@@ -29,7 +29,7 @@ source=("git+https://github.com/zfsonlinux/zfs.git"
         "zfs-utils.initcpio.hook")
 sha256sums=("SKIP"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77"
+            "aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca"
             "90d50df503464e8d76770488dbd491cb633ee27984d4d3a31b03f1a4e7492038")
 license=("CDDL")
 groups=("archzfs-linux-lts-git")
