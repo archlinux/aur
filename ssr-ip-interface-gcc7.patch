@@ -1,0 +1,38 @@
+From 6dad59cc8fc75d41b335e75e2742eb0d8f7e069e Mon Sep 17 00:00:00 2001
+From: David Runge <dave@sleepmap.de>
+Date: Tue, 6 Jun 2017 18:28:46 +0200
+Subject: [PATCH] src/network/{connection,server}.cpp: Adding include for
+ functional to prevent build error using gcc > 7 (fixing #80).
+
+---
+ src/network/connection.cpp | 1 +
+ src/network/server.cpp     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/network/connection.cpp b/src/network/connection.cpp
+index 09d3fed..f5449a4 100644
+--- a/src/network/connection.cpp
++++ b/src/network/connection.cpp
+@@ -27,6 +27,7 @@
+ /// @file
+ /// Connection class (implementation). 
+ 
++#include <functional>
+ #include <memory>
+ #include "connection.h"
+ #include "publisher.h"
+diff --git a/src/network/server.cpp b/src/network/server.cpp
+index a43f7f3..6c75e13 100644
+--- a/src/network/server.cpp
++++ b/src/network/server.cpp
+@@ -27,6 +27,7 @@
+ /// @file
+ /// Server class (implementation).
+ 
++#include <functional>
+ #include "server.h"
+ 
+ ssr::Server::Server(Publisher& controller, int port
+-- 
+2.13.1
+
