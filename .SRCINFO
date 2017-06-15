@@ -1,0 +1,18 @@
+pkgbase = steamforwarder
+	pkgdesc = steam_api.dll implementation for Wine. Windows games now can interact with the Linux Steam runtime.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/xomachine/SteamForwarder
+	install = steamforwarder.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = steamcmd
+	depends = wine
+	depends = steam
+	source = https://github.com/xomachine/steamforwarder/releases/download/0.2.2/redist.tar.bz2
+	sha256sums = 356eb3956b5ddf5ce6bc2e5dfaf520d2700d8fa41a7533a71d0f3d46da43c2bd
+
+pkgname = steamforwarder
+

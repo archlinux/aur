@@ -1,0 +1,4 @@
+post_install() {
+    echo "You have to create a 32-bit Wine environment for SteamForwarder to work."
+    echo "This can be achieved by running $ WINEARCH=win32 winecfg"
+}
