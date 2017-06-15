@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default.
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://www.brave.com/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = brave
 	optdepends = cups: Printer support
 	optdepends = pepper-flash: Adobe Flash support
 	provides = brave-browser
-	source = browser-laptop-0.17.1dev.tar.gz::https://github.com/brave/browser-laptop/archive/v0.17.1dev.tar.gz
-	md5sums = afb06c2a6739e3a22785e6d98932cc87
+	source = browser-laptop-0.17.2dev.tar.gz::https://github.com/brave/browser-laptop/archive/v0.17.2dev.tar.gz
+	md5sums = f859e51afe82d262ce31fb5c3ca19421
 
 pkgname = brave
 
