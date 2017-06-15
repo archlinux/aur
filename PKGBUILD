@@ -17,6 +17,7 @@ optdepends=(
   'beef: Browser Exploitation Framework (BeEF). It is a penetration testing tool that focuses on the web browser'
   'bettercap: Complete, modular, portable and easily extensible MITM framework'
   'bully: Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
+  'ccze: Robust and modular log colorizer with many plugins'
   'crunch: A wordlist generator where you can specify a standard character set or a
     character set you specify and generate all possible combinations and
     permutations'
