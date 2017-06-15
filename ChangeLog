@@ -1,3 +1,8 @@
+2017-06-15 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.9.4.r175.d14ac25-1
+	removed gcc-libs-multilib dependency
+
 2016-11-28 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.9.2.r153.47b947d
