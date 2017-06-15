@@ -1,7 +1,7 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=gitit
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A wiki backed by a git, darcs, or mercurial filestore"
 arch=(i686 x86_64)
 url=https://hackage.haskell.org/package/$pkgname
@@ -18,7 +18,7 @@ build() {
     cabal --require-sandbox update
     cabal --require-sandbox install \
           --force-reinstalls --reinstall --only-dependencies --enable-tests
-    cabal --require-sandbox configure --prefix=/usr --enable-tests
+    cabal --require-sandbox configure --prefix=/usr --enable-tests --ghc-options=-rtsopts
     cabal --require-sandbox build
 }
 
