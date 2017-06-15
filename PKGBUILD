@@ -9,7 +9,7 @@ _version=2017.1.0
 _build=b8
 _buildtag=20170606
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=2
+pkgrel=3
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -68,6 +68,9 @@ package() {
 
   # HACK: fixes WebGL builds by adding a symlink (python -> python2) to the PATH
   ln -s /usr/bin/python2 ${pkgdir}/opt/UnityBeta/Editor/python
+
+  # Fix permissions
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/*
 
   mv "${pkgdir}/opt/UnityBeta/unity-editor.desktop" "${pkgdir}/opt/UnityBeta/unity-editor-beta.desktop"
   mv "${pkgdir}/opt/UnityBeta/unity-monodevelop.desktop" "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
