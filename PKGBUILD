@@ -2,7 +2,7 @@
 
 pkgname=thunar-gtk3
 pkgver=1.6.90
-pkgrel=3
+pkgrel=4
 pkgdesc='Modern file manager for Xfce - GTK3 Version'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -21,17 +21,6 @@ conflicts=(thunar)
 install=$pkgname.install
 source=("$pkgname::git://github.com/andreldm/thunar")
 sha256sums=('SKIP')
-
-prepare() {
-    cd "$srcdir/$pkgname"
-
-    git config --local user.name 'noname'
-    git config --local user.email 'noemail'
-
-    git fetch origin pull/20/head:missingIcons2
-    git merge missingIcons2 --no-commit --no-ff
-    git stash && git stash pop
-}
 
 build() {
     cd "$srcdir/$pkgname"
