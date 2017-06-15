@@ -1,0 +1,32 @@
+pkgbase = zencash
+	pkgdesc = The zencash cryptocurrency daemon and tools.
+	pkgver = 2.0.9
+	pkgrel = 2
+	url = https://zencash.io/
+	arch = x86_64
+	license = MIT
+	checkdepends = python
+	checkdepends = python2
+	checkdepends = python2-pyzmq
+	makedepends = boost
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	makedepends = wget
+	depends = boost-libs
+	depends = libevent
+	depends = miniupnpc
+	depends = zeromq
+	conflicts = zcash
+	source = git+https://github.com/ZencashOfficial/zen.git#commit=c400f0676d7c2d1facab15563982e4c812f4e6d3
+	source = boost-no-mt-suffix.patch
+	source = use-system-libraries.patch
+	source = use-system-rust.patch
+	sha256sums = SKIP
+	sha256sums = a2ac906ac99757adaa7d5eb7e68d2a64c3d628e71c03264c31edcbb500990569
+	sha256sums = ef8ab26635bb2608f03ddf991da3581060670161938171fa2e413758fa4bad3f
+	sha256sums = 065cd418ca7be72018c7fdada3012872bd079a254a95560312514594381b8028
+
+pkgname = zencash
+
