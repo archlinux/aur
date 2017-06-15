@@ -17,8 +17,6 @@ pkgver=55.0b1
 pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_file="${_name}-${_release_version}.de.linux-x86_64"
-_release_dir="${_release_year}-${_release_month}-${_release_day}-${_release_time}-mozilla-aurora-l10n"
 source=("https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/de/firefox-$pkgver.tar.bz2"
         "https://ftp.mozilla.org/pub/devedition/releases/$pkgver/SHA512SUMS"
         "https://ftp.mozilla.org/pub/devedition/releases/$pkgver/SHA512SUMS.asc"
