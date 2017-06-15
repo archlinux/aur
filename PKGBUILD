@@ -8,22 +8,29 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.1.218.r26.g6fd0aac880
+pkgver=v1.1.271.r0.ge631e32417
+_gwtver=2.7.0
+_ginver=1.5
+_clangver=3.8.0
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
-depends=('r>=2.11.1' 'boost-libs>=1.5' 'util-linux' 'gcc-libs' 'openssl-1.0')
+depends=('r>=2.11.1' 'boost-libs>=1.5' 'openssl-1.0' 'mathjax' 'pandoc' 'clang')
 makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
 source=('git://github.com/rstudio/rstudio.git'
 	'rstudio-server.service'
+	"https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
+	"https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
 	'socketproxy-openssl.patch'
 	'ssl.patch')
 md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
+         '2409168cc18bf5f341e107e6887fe359'
+         'a8f3704a597b392910ea060284f21a03'
          'd571313f511ad4a17014c4aef6d01bbc'
          '9012aeab620b45aa74f6f4db3f192b44')
          
@@ -37,19 +44,34 @@ prepare () {
 	msg "Apply socketproxy-openssl.patch"
 	cd ${srcdir}/$_gitname
 	patch -p1 < ${srcdir}/socketproxy-openssl.patch
+	msg "Apply SSL-1.0 patch"
 	patch -p1 < ${srcdir}/ssl.patch
+
+	msg "Extracting dependencies..."
+	    cd "${srcdir}/${_gitname}/src/gwt"
+	    install -d lib/{gin,gwt}
+	    install -d lib/gin/${_ginver}
+	    install -d lib/gwt/${_gwtver}
+	    unzip -qo "${srcdir}/gin-${_ginver}.zip" -d lib/gin/${_ginver}
+	    cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
+
+	    cd "${srcdir}/${_gitname}/dependencies/common"
+	    install -d pandoc libclang/{3.5,builtin-headers}
+
+	    ln -sfT "/usr/share/mathjax" mathjax-26
+	    ln -sfT "/usr/bin/pandoc" pandoc/pandoc
+	    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/pandoc-citeproc
+	    ln -sfT "/usr/lib/libclang.so" libclang/3.5/libclang.so
+	    ln -sfT "/usr/lib/clang/$_clangver/include" libclang/builtin-headers/3.5
+
+	    ./install-dictionaries
+	    msg "Downloading and installing R packages..."
+	    ./install-packages
 }
 
 
 build() {
   cd "${srcdir}/$_gitname/dependencies/common"
-  msg "Downloading and installing dependencies"
-  ./install-gwt
-  ./install-dictionaries
-  ./install-mathjax
-  ./install-pandoc
-  ./install-libclang
-  ./install-packages  
 
   # Small hack
   # unset user Rprofile.r variable for building
@@ -63,8 +85,6 @@ build() {
   # Configure cmake 
   cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DCMAKE_DL_LIBRARIES=/usr/lib64/libdl.so -DCMAKE_LIBR_DOC_DIR=/usr/share/doc/R -DCMAKE_LIBR_EXECUTABLE=/usr/bin/R -DCMAKE_LIBR_HOME=/usr/lib64/R -DCMAKE_LIBR_INCLUDE_DIRS=/usr/include/R -DCMAKE_LIBR_CORE_LIBRARY=usr/lib64/R/lib/libR.so ..
 
-  # Make
-  make
 }
 
 
