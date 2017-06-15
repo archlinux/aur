@@ -1,19 +1,21 @@
-# Maintainer: lilydjwg <lilydjwg@gmail.com>
-# Maintainer: gborzi <gborzi@ieee.org>
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Contributor: lilydjwg <lilydjwg@gmail.com>
+# Contributor: gborzi <gborzi@ieee.org>
 # Contributor: Greg von Nessi <greg.vonnessi@gmail.com>
 
 _pkgname=screenruler
 pkgname=gnome-$_pkgname
 pkgver=0.9.6
-pkgrel=3
+pkgrel=4
 pkgdesc="ScreenRuler lets you measure objects on your screen using six different metrics."
 arch=('any')
 url="https://launchpad.net/screenruler"
 license=('GPL')
 depends=('ruby-gtk2' 'ruby-cairo' 'ruby-gettext' 'ruby-pkgconfig')
 makedepends=('intltool')
-conflicts=('gruler')
-source=(https://launchpad.net/screenruler/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz $pkgname.desktop path_patch.diff)
+source=("https://launchpad.net/screenruler/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz"
+        "$pkgname.desktop"
+        "path_patch.diff")
 
 md5sums=('0caefe6835501beae8daffe2a8069e54' 
          '4f0e90bb3f2a241c64de7e5b1ddefdd4'
@@ -28,7 +30,7 @@ build() {
 
 package() {
   cd $srcdir/$_pkgname
-  # no compile for installation
+
   mkdir -p $pkgdir/usr/share/{applications,pixmaps,$_pkgname/utils}
   install -m644 *.glade $pkgdir/usr/share/$_pkgname
   install -m644 preferences_window.rb help_window.rb \

@@ -1,7 +1,7 @@
 pkgbase = gnome-screenruler
 	pkgdesc = ScreenRuler lets you measure objects on your screen using six different metrics.
 	pkgver = 0.9.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/screenruler
 	arch = any
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = gnome-screenruler
 	depends = ruby-cairo
 	depends = ruby-gettext
 	depends = ruby-pkgconfig
-	conflicts = gruler
 	source = https://launchpad.net/screenruler/trunk/0.9.6/+download/screenruler-0.9.6.tar.gz
 	source = gnome-screenruler.desktop
 	source = path_patch.diff
