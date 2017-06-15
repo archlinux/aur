@@ -16,7 +16,7 @@
 #
 pkgname="spl-linux-git"
 pkgver=0.7.0_rc4_r4_gac48361_4.11.4_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux-git" "kmod" "linux=4.11.4-1")
 makedepends=("linux-headers=4.11.4-1" "git")
@@ -28,7 +28,7 @@ groups=("archzfs-linux-git")
 license=("GPL")
 install=spl.install
 provides=("spl")
-conflicts=('spl-utils-linux' 'spl-utils-linux-lts')
+conflicts=('spl-utils-linux' 'spl-utils-linux-lts' 'spl-utils-linux-lts-git')
 
 build() {
     cd "${srcdir}/spl"
