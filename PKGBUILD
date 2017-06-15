@@ -43,7 +43,7 @@ build() {
 
 package() {
   local repo_src=${srcdir}/${_pkgname}
-  local deploy_path=${pkgdir}/opt/pi-compositor
+  local deploy_path=${pkgdir}/opt/${_pkgname}
   local systemd_deploy_path=${pkgdir}/usr/lib/systemd/system
 
   mkdir -p $deploy_path
