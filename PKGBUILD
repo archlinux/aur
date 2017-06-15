@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/firm1/${pkgname}/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('d0ac7d0b67cbb54f52d2606eba810177')
+md5sums=('2997057df1de21accba5677cd051b774')
 validpgpkeys=()
 
 build() {

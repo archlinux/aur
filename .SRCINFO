@@ -12,7 +12,7 @@ pkgbase = zest-writer
 	depends = ffmpeg
 	depends = libxslt
 	source = https://github.com/firm1/zest-writer/archive/1.8.0.tar.gz
-	md5sums = d0ac7d0b67cbb54f52d2606eba810177
+	md5sums = 2997057df1de21accba5677cd051b774
 
 pkgname = zest-writer
 
