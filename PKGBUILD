@@ -22,7 +22,7 @@ prepare(){
 
 build() {
 	cd "$srcdir/${_gitname}-${pkgver}"
-	meson builddir --prefix=/usr
+	meson builddir -Dpost_install=false --prefix=/usr
 }
 
 package() {
