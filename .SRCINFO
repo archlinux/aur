@@ -1,32 +1,34 @@
 pkgbase = nxt-git
-	pkgdesc = The Nxt Reference Software Client for use with the Nxt Cryptocurrency.
-	pkgver = 1.5.12.r5.g5bbafe1
+	pkgdesc = The Nxt Reference Software Client for use with the Nxt Cryptocurrency
+	pkgver = 1.11.5+0+gfc25fd5a2
 	pkgrel = 1
 	url = http://nxt.org
-	install = nxt.install
 	arch = any
 	license = MIT
 	license = GPL
 	license = MPL
 	license = APACHE
-	makedepends = java-environment-openjdk=8
-	depends = bash
-	depends = java-runtime-openjdk=8
-	optdepends = flashplugin: NRS clipboard support
-	optdepends = libnotify: NRS startup error notification
-	optdepends = tor: route NXT traffic through Tor
-	source = nxt-git::git+https://bitbucket.org/JeanLucPicard/nxt.git
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
+	depends = systemd
+	backup = etc/nxt/nxt.properties
+	backup = etc/nxt/logging.properties
+	source = git+https://bitbucket.org/JeanLucPicard/nxt.git
+	source = logging.properties
+	source = nxt.properties
+	source = nxt.sysusers
+	source = nxt.tmpfiles
 	source = nxt.service
-	source = nxt-tor.service
-	source = nxt.install
-	source = nrs.sh
-	source = nrs.desktop
+	source = nxt.desktop
+	source = nxt.sh
 	sha256sums = SKIP
-	sha256sums = 293bf1e313677f769e4a12e6e0f78bbd58c796ebe7c34528ba50cd73bbea15a7
-	sha256sums = 87a725d1e2cf5af3554dd8d2775c94a952bc27313287777f0ca8984644f0d9b4
-	sha256sums = b7575397d7dd19e9b1bab75e21a433f3bdc98279ad822fe57235b830c062abca
-	sha256sums = b0429b9fb91f1b7ecd6bac2f93b36e0a0344efa21052fd5b1742067e11ba89e5
-	sha256sums = 8381f120b645cca9079b5e958a8917326f71b55f031f15df3324703377638eee
+	sha256sums = e00b9e5a605653faec8a4582ba004eff54c3692f60dc5a8c13c98119041195b1
+	sha256sums = a65abe20dcec9ab4e7f39b5f16daee3e10a0b93dd78cadea47d45289ea145cbf
+	sha256sums = d73213fe300346c548e991af0797b23b3c608e803f741cd0ae89d3bb0549bfe3
+	sha256sums = 2f4775688213f0948364f1594162c12a6ec865501f7434847ce9bb7c73b11c59
+	sha256sums = 9c3ba3fff584e4baae3d9af88aa62418fd701094d2256e6e687300ce35b1f6f8
+	sha256sums = 9c5cd343af10ba63d024280e79453fa92a1c0864b47c77020eaa86fc316f5661
+	sha256sums = c3beaaf62b9d499e023426d4206d8eb775d7dcf6f7b005b3bb34b12d64d9c1af
 
 pkgname = nxt-git
 

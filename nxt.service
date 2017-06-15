@@ -1,10 +1,25 @@
 [Unit]
-Description=NXT
+Description=NXT Cryptocurrency Daemon
 After=network.target
 
 [Service]
 User=nxt
-ExecStart=/usr/bin/bash -c 'cd /opt/nxt/; ./run.sh'
+WorkingDirectory=/usr/share/java/nxt
+ExecStart=/usr/bin/java \
+	-cp nxt.jar:lib/*:conf:addons/classes:addons/lib/* \
+	-Dnxt.properties=/etc/nxt/nxt.properties \
+	-Dlogging.properties=/etc/nxt/logging.properties \
+	nxt.Nxt
+
+NoNewPrivileges=true
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+
+ReadOnlyPaths=/
+ReadWritePaths=/var/lib/nxt
+ReadWritePaths=/var/log/nxt
 
 [Install]
 WantedBy=multi-user.target

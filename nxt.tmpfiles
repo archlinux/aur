@@ -1,0 +1,2 @@
+d /var/lib/nxt 0700 nxt nxt -
+d /var/log/nxt 0750 nxt log -
