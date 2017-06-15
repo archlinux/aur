@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 source=("https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz")
-sha256sums=('50b0cac55d10e2ac3b589d4eb107488539be39e1b6baaaa5a0d58ad1cc0eec74')
+sha256sums=('2986fffe561847d5f40740a1455568e8fb8e4e0409418738fe7d8445250781a7')
 
 prepare() {
  mkdir -p "$srcdir/go"
