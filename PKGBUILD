@@ -2,10 +2,10 @@
 
 pkgname=caffe2-git
 pkgver=0.7.0.r252.ge6c6b859
-pkgrel=2
-pkgdesc="A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)"
+pkgrel=3
+pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
-url="http://caffe2.ai/"
+url='http://caffe2.ai/'
 license=('BSD')
 depends=(
     # binary repositories:
@@ -35,7 +35,7 @@ conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
 options=('!emptydirs')
 source=(
     # main source:
-        "$pkgname"::"git+https://github.com/caffe2/caffe2.git"
+        "$pkgname"::'git+https://github.com/caffe2/caffe2.git'
     # git submodules:
         'submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
         'submodule-nccl'::'git+https://github.com/nvidia/nccl.git'
@@ -88,7 +88,7 @@ prepare() {
     done
     git submodule update
     
-    # avoid errors with gloo if using '-march=native' in a cpu with AVX2
+    # avoid compile errors with gloo if using '-march=native' in a cpu with AVX2
     # https://github.com/facebookincubator/gloo/issues/43
     cd third_party/gloo
     git checkout 21a5c8ea5e02edca03068790df3d7f7ba4e2d75b
@@ -200,6 +200,6 @@ package() {
     
     # license
     cd "${srcdir}/${pkgname}"
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "PATENTS" "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
+    install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 'PATENTS' "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }
