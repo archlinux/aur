@@ -11,7 +11,7 @@ pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
-depends=('alsa-lib' 'gconf' 'gtk3' 'libxss' 'libxtst' 'nss')
+depends=('alsa-lib' 'gconf' 'gtk3' 'libcups' 'libxss' 'libxtst' 'nss')
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'

@@ -9,6 +9,7 @@ pkgbase = google-chrome
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk3
+	depends = libcups
 	depends = libxss
 	depends = libxtst
 	depends = nss
