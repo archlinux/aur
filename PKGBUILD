@@ -10,10 +10,10 @@ url="https://github.com/AdaCore/libadalang"
 license=('GPL')
 
 depends=("gcc-ada" "gnatcoll"
-         "quex-for_libadalang" "python-funcy" "python2-mako" "python-yaml" "python-sphinx" "python-coverage" "python2-enum34"
+         "quex-for_libadalang" "python2-funcy" "python2-mako" "python-yaml" "python-sphinx" "python-coverage" "python2-enum34"
          "python-psutil" "python2-docutils" "autopep8" "yapf")
 
-makedepends=("git" "python-funcy")
+makedepends=("git" "python2-funcy")
 
 
 source=(http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed042
