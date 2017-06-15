@@ -2,7 +2,7 @@
 # Contributor: Karel Louwagie <karel@louwagie.net>
 
 pkgname=toggldesktop
-pkgver=7.4.38
+pkgver=7.4.47
 pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/toggl/toggldesktop/arch
         "production.patch"
         )
 
-sha512sums=('be1f8809cc3c1020fe6eba60b50d85b12f18e4490b8d311f406a49d936a4568676bb98629d7f91946bdfd99a4a60c78a55f8c9b1c045e6bd9d0f3dce323dd472'
+sha512sums=('4bc634caaa02ff8b53c918768e7b04c8aa241517a1738e15d72e87fe86367715c67639ca70220442031dfe583a65a8bcd1b177b12be522f1edb42cd400e59317'
             '484c6e3ba73e2f2ccbe9737424bee68624bd8d46a06735937b3ca134aa34ad9e335b260f7d22bcd3e351ae9d8b989ef048e78cf7ed52bac363bb651a7d229428')
 
 conflicts=('toggldesktop-bin' 'toggl-bin')
@@ -50,8 +50,8 @@ EOF
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make deps
-  make
+  make -j1 deps
+  make -j1
 }
 
 package() {
