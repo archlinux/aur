@@ -9,6 +9,7 @@
 
 _name=firefox
 _channel=developer
+_lang=de
 
 pkgname="${_name}-${_channel}-de"
 pkgdesc='Standalone web browser from mozilla.org, developer build - German'
@@ -17,12 +18,19 @@ pkgver=55.0b1
 pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-source=("https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/de/firefox-$pkgver.tar.bz2"
+source=("https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/$_lang/firefox-$pkgver.tar.bz2"
         "https://ftp.mozilla.org/pub/devedition/releases/$pkgver/SHA512SUMS"
         "https://ftp.mozilla.org/pub/devedition/releases/$pkgver/SHA512SUMS.asc"
         "firefox-$_channel.desktop"
         "vendor.js")
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
+optdepends=(
+	'pulseaudio: audio/video playback'
+	'ffmpeg: h.264 video'
+	'hunspell: spell checking'
+	'hyphen: hyphenation'
+)
+
 provides=(firefox-developer)
 conflicts=(firefox-developer)
 
@@ -30,7 +38,7 @@ validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
 prepare() {
     # Check if hash of the source archive matches the one provided by Mozilla (which was signed with GPG).
-    _checksum=`grep "linux-x86_64/de/firefox-$pkgver.tar.bz2" $srcdir/SHA512SUMS | cut -f1 -d " "`
+    _checksum=`grep "linux-x86_64/$_lang/firefox-$pkgver.tar.bz2" $srcdir/SHA512SUMS | cut -f1 -d " "`
     _actual=`sha512sum $srcdir/firefox-$pkgver.tar.bz2 | cut -f1 -d " "`
 
     msg2 "Checking integrity of firefox-$pkgver.tar.bz2"
