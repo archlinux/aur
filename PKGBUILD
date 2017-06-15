@@ -4,7 +4,7 @@ pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit "
 pkgver=0.0.0.r319.g3650731
 _branch='master'
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://github.com/alerque/casile/'
 license=('LGPL3')
@@ -13,16 +13,20 @@ conflicts=("${pkgname%-git}")
 source=("git://github.com/alerque/${pkgname%-git}.git#branch=${_branch}")
 sha512sums=('SKIP')
 makedepends=('git')
-depends=('sile-git>=0.9.4.r361'
-         'python-usfm2osis-cw-git'
-         'povray'
-         'inkscape'
-         'haskell-pandoc'
-         'pdftk'
-         'cpdf'
-         'otf-libertinus'
-         'ttf-hack'
-         'imagemagick7')
+depends=('cpdf'
+        'haskell-pandoc'
+        'imagemagick7'
+        'inkscape'
+        'kindlegen'
+        'otf-libertinus'
+        'pdftk'
+        'podofo'
+        'poppler'
+        'povray'
+        'python-usfm2osis-cw-git'
+        'sile-git>=0.9.4.r361'
+        'ttf-hack'
+        'zint')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
