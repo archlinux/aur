@@ -3,7 +3,7 @@
 _name="mando"
 pkgbase="python-${_name}"
 pkgname=("${pkgbase}" "python2-${_name}")
-pkgver=0.5
+pkgver=0.6.4
 pkgrel=1
 arch=('any')
 url="https://${_name}.readthedocs.org/"
@@ -13,7 +13,7 @@ depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         'LICENSE')
-sha256sums=('80b5b5f0405e64d8b35ae04c5e897ecdfdcc7337154b32696df8a5418c810560'
+sha256sums=('79feb19dc0f097daa64a1243db578e7674909b75f88ac2220f1c065c10a0d960'
             '6123bc92c70372634b45af73fbae39eaa70683a66782b73b833c258c4de939eb')
 
 prepare() {
