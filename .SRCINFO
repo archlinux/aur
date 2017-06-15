@@ -1,7 +1,7 @@
 pkgbase = acroread
 	pkgdesc = Adobe Reader is a PDF file viewer
 	pkgver = 9.5.5
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.adobe.com/products/reader/
 	install = acroread.install
 	arch = i686
@@ -29,4 +29,11 @@ pkgbase = acroread
 	sha512sums = f9c18ca0dc0687de353afeb90925439a557a14604e6361ff2b229ec29257ff051ea9eac6a90671b38a745473b5c87135377d035520f441ceaabf2510d690675b
 
 pkgname = acroread
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = libxml2
+	depends = libxt
+	depends = mesa
+	depends = pangox-compat
+	depends = libidn
 

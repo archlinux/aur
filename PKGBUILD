@@ -6,12 +6,11 @@
 
 pkgname=acroread
 pkgver=9.5.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Adobe Reader is a PDF file viewer"
 arch=('i686' 'x86_64')
 url="http://www.adobe.com/products/reader/"
 license=(custom)
-depends=('desktop-file-utils' 'gtk2' 'libxml2' 'libxt' 'mesa' 'pangox-compat' 'libidn')
 optdepends=('acroread-fonts: CJK and extended font packs'
             'libcanberra: XDG sound support'
             'gtk-engine-murrine: fix ugly buttons and scrollbars'
@@ -50,6 +49,13 @@ Adobe/Reader9/Browser/intellinux/nppdf.so
 }
 
 package() {
+    if [[ $CARCH == "x86_64" ]]
+    then
+        depends=('desktop-file-utils' 'gtk2' 'libxml2' 'libxt' 'mesa' 'pangox-compat' 'libidn' 'lib32-libcurl-compat')
+    elif [[ $CARCH == "i686" ]]
+    then
+        depends=('desktop-file-utils' 'gtk2' 'libxml2' 'libxt' 'mesa' 'pangox-compat' 'libidn')
+    fi
     desktop-file-install $pkgname.desktop --dir "$pkgdir"/usr/share/applications/
     cd AdobeReader/Adobe/Reader9/
 
