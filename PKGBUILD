@@ -14,13 +14,13 @@ _gitwebver=master
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.7.0
-pkgrel=5
-pkgdesc="A new lightweight, modular, and scalable deep learning framework (cpu only)"
+pkgrel=6
+pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
-url="http://caffe2.ai/"
+url='http://caffe2.ai/'
 license=('BSD')
 depends=(
-    # binary repositories:
+    # official repositories:
         # required:
             'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf'
         # not required but enabled in build:
@@ -193,6 +193,6 @@ package() {
     
     # license
     cd "${srcdir}/${_srcname}-${pkgver}"
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "PATENTS" "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
+    install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 'PATENTS' "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }
