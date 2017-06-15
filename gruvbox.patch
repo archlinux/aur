@@ -9,7 +9,7 @@ diff -aur slock-1.4/config.def.h slock-1.4.new/config.def.h
 -	[INPUT] =  "#005577",   /* during input */
 -	[FAILED] = "#CC3333",   /* wrong password */
 +	[INIT] =   "#32302f",     /* after initialization */
-+	[INPUT] =  "#458588",   /* during input */
++	[INPUT] =  "#689d6a",   /* during input */
 +	[FAILED] = "#cc241d",   /* wrong password */
  };
  
