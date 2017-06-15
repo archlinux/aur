@@ -16,6 +16,7 @@ conflicts=()
 install="wechat-web-devtools-git.install"
 source=("git://github.com/BruceZhang1993/${_pkgname}.git")
 md5sums=('SKIP')
+options=(!strip)
 
 package() {
 	cd "${srcdir}/${_pkgname}"
