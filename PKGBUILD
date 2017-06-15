@@ -2,19 +2,27 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=sejda-desktop
-pkgver=2.1.1
+pkgver=2.5.10
 pkgrel=1
-license=('unknown')
+license=('custom:EULA')
 pkgdesc='PDF editor'
-arch=("i686" "x86_64")
+arch=('x86_64')
 url='http://www.sejda.com/desktop'
 source=("https://bitbucket.org/sejdapdf/sejda-desktop-public/downloads/sejda-desktop_${pkgver}_amd64.deb")
-sha512sums=('b30a1719b40f7d4663d7e19214cbb53dfc78c87bc4303796c3f5c1188d16f0482e825a7745041cb98bd1f1b46d157a74f3fe8383547a6ec86dbb5371ba3ed3ef')
+sha512sums=('5129c16badb1abec4ffc8077af1f1a0912957618d9c5af9b59425632afa2fb2866a1df680444066d77c90bd6b8aae77a59b727294f1559148314c182cedd022f')
 options=(!strip)
 
 package() {
-  cd "$srcdir"
-  bsdtar -xf data.tar.xz -C "$pkgdir"
+  bsdtar -xf data.tar.xz -C "${pkgdir}"
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/sejda-desktop/sejda-desktop "${pkgdir}/usr/bin/sejda-desktop"
+
+  # fix permissions
+  find "${pkgdir}" -type d -exec chmod 755 {} \;
+
+  # symlink licenses
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  for _i in EULA.pdf LICENSE.electron LICENSES.chromium.html; do
+    ln -s /opt/sejda-desktop/${_i} "${pkgdir}/usr/share/licenses/${pkgname}/${_i}"
+  done
 }
