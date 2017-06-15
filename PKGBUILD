@@ -1,21 +1,33 @@
 # Maintainer: emersion <contact@emersion.fr>
 pkgname=browserpass
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('x86_64')
 url="https://github.com/dannyvankooten/browserpass"
 license=('MIT')
 depends=('pass')
-makedepends=()
+makedepends=('go')
 optdepends=()
-source=("browserpass-$pkgver.zip::https://github.com/dannyvankooten/browserpass/releases/download/$pkgver/browserpass-linux64.zip")
-md5sums=('62d35b34e5de5abcada0fca0af8990de')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dannyvankooten/browserpass/archive/$pkgver.tar.gz")
+md5sums=('fa33f9c4cea5597a9632a527dabd576f')
+
+build() {
+	export GOPATH="$(pwd)/.go"
+
+	go_pkgname="github.com/dannyvankooten/browserpass"
+	go_pkgpath="$GOPATH/src/$go_pkgname"
+	mkdir -p "$(dirname $go_pkgpath)"
+	ln -s "$srcdir/$pkgname-$pkgver" "$go_pkgpath"
+
+	cd "$srcdir/$pkgname-$pkgver"
+	make browserpass static-files
+}
 
 package() {
-	cd "$srcdir"
+	cd "$srcdir/$pkgname-$pkgver"
 
-	install -D browserpass-linux64 "$pkgdir/usr/bin/browserpass"
+	install -D browserpass "$pkgdir/usr/bin/browserpass"
 
 	host_file="/usr/bin/browserpass"
 	escaped_host_file=${host_file////\\/}
