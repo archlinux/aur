@@ -1,16 +1,17 @@
 pkgbase = zest-writer
 	pkgdesc = An offline editor for Zeste de Savoir
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/firm1/zest-writer
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = jdk8-openjdk java-openjfx
+	makedepends = jdk8-openjdk
+	makedepends = java-openjfx
 	depends = gtk2
 	depends = ffmpeg
 	depends = libxslt
-	source = https://github.com/firm1/zest-writer/archive/1.7.1.tar.gz
+	source = https://github.com/firm1/zest-writer/archive/1.8.0.tar.gz
 	md5sums = d0ac7d0b67cbb54f52d2606eba810177
 
 pkgname = zest-writer
