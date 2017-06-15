@@ -4,7 +4,7 @@
 
 _pkgname=nss
 pkgname=nss-hg
-pkgver=r13438.8cd50ae99b50
+pkgver=r13443.d68d2b44082f
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
@@ -27,9 +27,8 @@ pkgver() {
 build() {
   cd nss
   hg up default
-  PATH=:$PWD/../:$PATH ./build.sh --opt --system-sqlite \
-                                        --system-nspr \
-                                        --disable-tests
+  PATH=:$PWD/../:$PATH ./build.sh --opt --system-sqlite --system-nspr \
+                                  --disable-tests --enable-libpkix
 }
 
 package() {
