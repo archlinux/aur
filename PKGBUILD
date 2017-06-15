@@ -1,5 +1,7 @@
 # Maintainer: Donald Carr<sirspudd at gmail dot com>
 
+# set -x
+
 _qmake="qmake"
 _piver=""
 
@@ -14,17 +16,27 @@ fi
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
-pkgver=0.4.r3.g271b162
+pkgver=0.4.r9.g0d98bbc
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
 url='https://github.com/sirspudd/artriculate'
 license=('GPL3')
-makedepends=("qt-sdk-raspberry-pi${_piver}")
-depends=('qt-sdk-raspberry-pi-target-libs')
 source=("git://github.com/sirspudd/artriculate")
 sha256sums=('SKIP')
 options=('!strip')
+
+if [[ -n "$_piver" ]]; then
+  depends=('qt-sdk-raspberry-pi-target-libs')
+  makedepends=("qt-sdk-raspberry-pi${_piver}")
+fi
+
+prepare() {
+  cd "$srcdir/$pkgname"
+
+  git submodule init
+  git submodule update
+}
 
 pkgver () {
   cd "$srcdir/$pkgname"
