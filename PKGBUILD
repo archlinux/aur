@@ -15,8 +15,8 @@
 # archzfs github page.
 #
 pkgname="zfs-utils-linux-git"
-pkgver=0.7.0_rc4_r59_g8f7933fec_4.11.4_1
-pkgrel=1
+pkgver=0.7.0_rc4_r60_g627791f3c_4.11.4_1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-git" "linux=4.11.4-1")
 makedepends=("linux-headers=4.11.4-1" "git")
@@ -28,20 +28,20 @@ source=("git+https://github.com/zfsonlinux/zfs.git"
         "zfs-utils.initcpio.hook")
 sha256sums=("SKIP"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77"
+            "aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca"
             "90d50df503464e8d76770488dbd491cb633ee27984d4d3a31b03f1a4e7492038")
 license=("CDDL")
 groups=("archzfs-linux-git")
 provides=("zfs-utils")
 install=zfs-utils.install
-conflicts=('zfs-utils-linux' 'zfs-utils-linux-lts')
+conflicts=('zfs-utils-linux' 'zfs-utils-linux-lts' 'zfs-utils-linux-lts-git')
 
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.9 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.10 \
                 --with-config=user
     make
 }
