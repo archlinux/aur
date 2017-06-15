@@ -2,13 +2,12 @@
 pkgname=xfce4-vala-git
 _pkgname=${pkgname%-git}
 pkgver=4.10.0.r4.g62f270a
-pkgrel=1
+pkgrel=2
 pkgdesc='Vala Bindings for the Xfce framework'
-arch=('i686' 'x86_64')
+arch=('any')
 license=('GPL')
 url='https://wiki.xfce.org/vala-bindings'
 groups=('xfce4-goodies')
-depends=('xfce4-panel')
 conflicts=('xfce4-vala')
 provides=('xfce4-vala')
 makedepends=('xfce4-dev-tools')
