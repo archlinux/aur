@@ -1,7 +1,7 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
 
 pkgname=gridcoinresearchd-git
-pkgver=3.5.8.6.r704.941eb66
+pkgver=3.5.9.0.r1025.c5f0f8e
 pkgrel=1
 pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - daemon"
 depends=('boost-libs' 'libzip' 'miniupnpc' 'curl' 'boinc')
@@ -10,7 +10,7 @@ makedepends=('boost' 'git' 'db')
 replaces=('gridcoinresearch-daemon-git')
 conflicts=('gridcoinresearch-daemon-git' 'gridcoinresearchd')
 
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://gridcoin.us"
 license=('custom:gridcoin')
 
