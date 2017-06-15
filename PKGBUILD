@@ -3,6 +3,7 @@
 # Contributor: Guillaume ALAUX <Guillaume at ALAUX dot net>
 # Contributor: Shizeeg Unadequatov <shizeeque@gmail.com>
 
+_ref=""
 pkgname=kakoune-git
 pkgver=r4446.650a989
 pkgrel=1
@@ -18,7 +19,7 @@ optdepends=('xorg-xmessage: for nicer debugging messages'
             'tmux: tabbing support')
 makedepends=('git' 'asciidoc')
 
-source=("${pkgname}::git+https://github.com/mawww/kakoune.git")
+source=("${pkgname}::git+https://github.com/mawww/kakoune.git${_ref}")
 sha256sums=('SKIP')
 
 pkgver() {
