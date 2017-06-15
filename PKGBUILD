@@ -2,7 +2,7 @@
 
 pkgname=caffe2-git
 pkgver=0.7.0.r434.g4c76b747
-pkgrel=1
+pkgrel=2
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -77,15 +77,17 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "$pkgname"
-    _submodule_list="pybind11 nccl cnmem cub eigen googletest nervanagpu benchmark
-                     protobuf android-cmake ios-cmake NNPACK gloo NNPACK_deps/pthreadpool
-                     NNPACK_deps/FXdiv NNPACK_deps/FP16 NNPACK_deps/psimd"
+    local _submodule_list="pybind11 nccl cnmem cub eigen googletest nervanagpu benchmark \
+                           protobuf android-cmake ios-cmake NNPACK gloo \
+                           NNPACK_deps/pthreadpool NNPACK_deps/FXdiv NNPACK_deps/FP16 \
+                           NNPACK_deps/psimd"
     git submodule init
     for _submodule in $_submodule_list
     do
-        _submodule_dir="submodule-$(printf "%s" "${_submodule}" | tr '/' '-')"
+        local _submodule_dir="submodule-$(printf "%s" "${_submodule}" | tr '/' '-')"
         git config "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule_dir}"
     done
+    unset _submodule
     git submodule update
     
     # avoid compile errors with gloo if using '-march=native' in a cpu with AVX2
