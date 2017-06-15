@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=rocksdb-lite
-pkgver=5.1.2
+pkgver=5.4.6
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage (lite version)'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(gperftools zlib bzip2 lz4 snappy gcc-libs)
 conflicts=(rocksdb)
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/rocksdb-$pkgver.zip)
-sha256sums=('5e6841021a30841cacd61a628c7829c7bacfdf4846ba30c0e02173a3f3431966')
+sha256sums=('b130935c3c59a3cdc0193a87f985d559b7f6bd26548fe039293172227ec8ae5a')
 
 prepare() {
   cd rocksdb-rocksdb-$pkgver
