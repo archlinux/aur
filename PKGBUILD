@@ -1,11 +1,14 @@
 # Contributor: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 #
 # Note to self. It is necessary to remove the current Go4 installation -if any- otherwise the compilation fails.
+#               As of 5.2.0-2 it seems like this is no longer the case
+#
+# It looks that ROOT6 requires the modification/definition of the variable ROOT_INCLUDE_PATH to /usr/include/go4
 #
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('i686' 'x86_64')
 depends=('root' 'qt4')
@@ -62,5 +65,13 @@ package() {
 	StartupNotify=false
 	" > $srcdir/$pkgname.desktop
   install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+
+  ## new ROOT_INCLUDE_PATH definition
+  install -d ${pkgdir}/etc/profile.d
+  echo 'export ROOT_INCLUDE_PATH=$ROOT_INCLUDE_PATH:/usr/include/go4' > ${srcdir}/go4.sh
+  echo 'setenv ROOT_INCLUDE_PATH $ROOT_INCLUDE_PATH:/usr/include/go4' > ${srcdir}/go4.csh
+
+  install -m755 ${srcdir}/go4.sh  ${pkgdir}/etc/profile.d/go4.sh
+  install -m755 ${srcdir}/go4.csh ${pkgdir}/etc/profile.d/go4.csh
 
 }
