@@ -1,7 +1,7 @@
-# Maintainer: Alfredo Palhares <alfredo@palhares.me>
+# Maintainer: Michael Leer <michael.leer@trozzy.net>
 
-pkgname=rancher-compose
-pkgver=0.11.0
+pkgname=rancher-compose-git
+pkgver=master
 pkgrel=2
 pkgdesc="Docker compose compatible client to deploy to Rancher"
 url='https://github.com/rancher/rancher-compose'
