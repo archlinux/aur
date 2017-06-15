@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Brightness Controller
+Comment=Control Brightness of your Primary and Secondary Display in Linux
+Exec=brightness-controller
+Icon=brightness-controller
+Terminal=false
+StartupNotify=false
+Categories=Application;
