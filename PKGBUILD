@@ -17,9 +17,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
 
-  # disable all plugins ~ -DPARAVIEW_BUILD_PLUGIN_XXX=OFF
-  sed -i "s|if (PARAVIEW_BUILD_PLUGIN|if(OFF|g" CMake/ParaViewPluginsMacros.cmake
-
   # https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
   sed -i "s|if (CMAKE_CROSSCOMPILING AND NOT COMPILE_TOOLS_IMPORTED)|if (CMAKE_CROSSCOMPILING AND NOT COMPILE_TOOLS_IMPORTED AND NOT DEFINED CMAKE_CROSSCOMPILING_EMULATOR AND CMAKE_VERSION VERSION_LESS 3.8)|g" CMakeLists.txt
   sed -i "s|if (NOT CMAKE_CROSSCOMPILING)|if (NOT COMPILE_TOOLS_IMPORTED)|g" Utilities/WrapClientServer/CMakeLists.txt Utilities/ProcessXML/CMakeLists.txt 
@@ -68,13 +65,10 @@ build() {
     -DVTK_USE_SYSTEM_PROTOBUF:BOOL=OFF \
     -DVTK_USE_SYSTEM_GL2PS=OFF \
     -DVTK_USE_SYSTEM_LIBHARU=OFF \
-    -DVISIT_BUILD_READER_CGNS:BOOL=OFF \
     -DVTK_PYTHON_VERSION=2 \
     -DVTK_QT_VERSION=5 \
     -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
     -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=OpenMP \
-    -DPARAVIEW_BUILD_PLUGIN_AcceleratedAlgorithms=OFF \
-    -DPARAVIEW_BUILD_PLUGIN_AnalyzeNIfTIIO=OFF \
     -DHDF5_ROOT=/usr/${_arch}/ \
     ..
     make
