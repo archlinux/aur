@@ -1,0 +1,10 @@
+--- lidia-core/use-rdkit.hh.old	2017-06-15 20:46:21.245950862 +0200
++++ lidia-core/use-rdkit.hh	2017-06-15 20:46:28.492679795 +0200
+@@ -5,6 +5,7 @@
+ #include <vector>
+ #include <algorithm>
+ #include <string>
++#include <queue>
+
+ #ifndef WINDOWS_MINGW
+ #define ENABLE_NLS // fixes dcgettext() header problems on including

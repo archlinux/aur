@@ -1,20 +1,24 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.8.8
+pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="http://lmb.bioch.ox.ac.uk/coot/"
 license=('GPL')
 depends=('guile1.8' 'guile1.8-lib' 'guile1.8-gtk' 'guile1.8-gui' 'gtkglext' 'libccp4' 'clipper' 'goocanvas1' 'gsl' 'libgnomecanvas' 'imlib' 'swig'
-         'freeglut' 'libgl' 'gtk2' 'cairo' 'libssm>=1.4' 'zlib' 'curl' 'python2' 'pygtk' 'gtkglarea' 'which' 'bc' 'sqlite')
+         'freeglut' 'libgl' 'gtk2' 'cairo' 'libssm>=1.4' 'zlib' 'curl' 'python2' 'pygtk' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
 source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/source/releases/$pkgname-$pkgver.tar.gz
-        coot-0.8.2-desktop.patch
-        coot-0.8.2-libguile.patch
-        coot-0.8.2-libtool.patch
-        coot-0.8.2-sandbox-icons.patch
-        coot-0.8.2-python.patch
-        coot-0.8.2-guile.patch)
+        coot-configure.ac.patch
+        coot-makefile.patch
+        coot-guile.patch
+        coot-libguile.patch
+        coot-utils.patch
+        coot-rdkit.patch
+        coot-lbg.patch
+        coot-python.patch
+        coot-lidia.patch
+        )
 #	coot-configure.in.patch
 #	coot-user-manual.texi.patch
 #	coot-makefile.patch
@@ -22,37 +26,43 @@ source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/source/releases/$pkg
 #        coot-python.patch
 #        coot-icons.patch
 #        coot-lidia.patch)
-sha256sums=('2f5961ded7f2cf06b887560afe964c239aba94f9c4bf8a2a80b3ca4fbc471eee'
-            '6558c17da028f47bec3480afbf85d8457e4c34bb50a6285bf0522de922a6bc89'
+sha256sums=('df31ab66d7c3de6524fefcafaab6acc11e4525b930fed3b929ed773ae1776aa7'
+            '2babfbc3cb798868d9e22f19ee49d12981fac35e3dfba2d8f7318716f59f673c'
+            '9ad5a56116748ab5b1f77b2a4b2e3df47847ff881579105dff6589ed60ac8eb4'
+            'c15e844536f512c2d5524391dbc046a889a0d5f8c23336b854508e453e226911'
             'aa1e18d4ef43fb61e85aba05d13797f9aa2beb1da220405f1eb6058ac36eb60b'
-            'e4ba02ad24330e3df3f32772275db47caeb4f36d77d57de882f7a73d7e11e5bf'
-            'b93756a9ab1244573ac24427954c53ac9f14a82e7ec1f115b178897abcab42a8'
+            '059d57dc092feb8134a95e6fa452a2d807ccb3666da374f4a023e5684e3a0dfa'
+            '8b1c499ce5d506419ca72f999b6a0332a2edcc30e3128b1eb0bd3d399d0d80a6'
+            '423a50d27639376c52e6987877acea908d854decb48c7c2452f7f5ecb92b60e9'
             'f4747e1fc7a3387f42b6c40358f999404761a0282ee6be3c621091d9d5d88099'
-            'c15e844536f512c2d5524391dbc046a889a0d5f8c23336b854508e453e226911')
+            'dd2eb7c66ff2fa6f68a9d1e834e1911d2a1669a76ed29b5dbd6863619edcba18')
 
 build() {
 
   cd "$srcdir/$pkgname-$pkgver"
-  
-  patch -Np1 -i "$srcdir/coot-0.8.2-desktop.patch"
-  patch -Np1 -i "$srcdir/coot-0.8.2-libguile.patch"
-  patch -Np1 -i "$srcdir/coot-0.8.2-libtool.patch"
-  patch -Np1 -i "$srcdir/coot-0.8.2-sandbox-icons.patch"
-  patch -Np0 -i "$srcdir/coot-0.8.2-python.patch"
-  patch -Np0 -i "$srcdir/coot-0.8.2-guile.patch"
-  
+
+  patch -Np0 -i "$srcdir/coot-configure.ac.patch"
+  patch -Np0 -i "$srcdir/coot-makefile.patch"
+  patch -Np0 -i "$srcdir/coot-guile.patch"
+  patch -Np1 -i "$srcdir/coot-libguile.patch"
+  patch -Np0 -i "$srcdir/coot-utils.patch"
+  patch -Np0 -i "$srcdir/coot-rdkit.patch"
+  patch -Np0 -i "$srcdir/coot-lbg.patch"
+  patch -Np0 -i "$srcdir/coot-python.patch"
+  patch -Np0 -i "$srcdir/coot-lidia.patch"
+
+
   iconv -f iso8859-1 -t utf-8 README > README.conv && mv -f README.conv README
-  
+
   aclocal -I macros
   libtoolize --automake --copy
   autoconf
   automake --copy --add-missing --gnu
-  
+
   # Work around coot's code not beeing completely standart compliant
   CXXFLAGS="${CXXFLAGS} -fpermissive"
-  
+
   ./configure --prefix=/usr \
-              --without-guile \
               --with-python \
               --with-guile \
               --with-guile-gtk \
@@ -60,7 +70,8 @@ build() {
               --with-sqlite3 \
               --with-boost \
               --with-boost-python \
-              --disable-static
+              --disable-static \
+              --with-enhanced-ligand-tools RDKIT_LIBS="-lRDKitMolDraw2D -lRDKitForceFieldHelpers -lRDKitDescriptors -lRDKitForceField -lRDKitSubstructMatch -lRDKitOptimizer -lRDKitDistGeomHelpers -lRDKitDistGeometry -lRDKitAlignment -lRDKitEigenSolvers -lRDKitDepictor -lRDKitMolChemicalFeatures -lRDKitFileParsers  -lRDKitRDGeometryLib -lRDKitGraphMol -lRDKitSmilesParse -lRDKitDataStructs -lRDKitRDGeneral -lboost_python -lpython2.7" RDKIT_CXXFLAGS="-I/usr/include/rdkit"
 
   make
 
@@ -73,12 +84,12 @@ build() {
 # patch -Np0 -i "$srcdir/coot-lidia.patch"
 
 #  iconv -f iso8859-1 -t utf-8 README > README.conv && mv -f README.conv README
-#  
+#
 #  aclocal -I macros
 #  libtoolize --automake --copy
 #  autoconf
 #  automake --copy --add-missing --gnu
-#  
+#
 #  CXXFLAGS="${CXXFLAGS} -fpermissive"
 #  CFLAGS="${CFLAGS} -fpermissive"
 #
@@ -88,11 +99,11 @@ build() {
 #              --with-python \
 #              --with-pygtk \
 #              --disable-static
-#  
+#
 #  make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-} 
+}

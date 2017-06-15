@@ -1,0 +1,11 @@
+--- lbg/lbg-search.cc_orig	2016-11-09 18:29:44.870809951 -0500
++++ lbg/lbg-search.cc	2016-11-09 18:42:43.549933656 -0500
+@@ -34,7 +34,7 @@
+ #include "geometry/srs-interface.hh"
+ #ifdef RDKIT_HAS_CAIRO_SUPPORT
+ #include <cairo.h>
+-#include <MolDraw2DCairo.h>
++#include <GraphMol/MolDraw2D/MolDraw2DCairo.h>
+ #include "lidia-core/rdkit-interface.hh"
+ #else
+ #include "lidia-core/rdkit-interface.hh"
