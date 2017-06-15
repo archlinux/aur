@@ -5,15 +5,15 @@
 
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
-pkgver=1.34.0
+pkgver=1.35.3
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
 license=('AGPL3')
-depends=('boost-libs' 'perl' 'perl-class-accessor' 'perl-libwww' 'perl-encode-locale'
+depends=('boost-libs' 'intel-tbb' 'perl' 'perl-class-accessor' 'perl-libwww' 'perl-encode-locale'
          'perl-moo' 'perl-opengl' 'perl-sub-quote' 'perl-wx-glcanvas')
-makedepends=('boost' 'git' 'perl-devel-checklib' 'perl-extutils-cppguess'
+makedepends=('boost' 'git' 'perl-alien-wxwidgets' 'perl-devel-checklib' 'perl-extutils-cppguess'
              'perl-extutils-typemaps-default' 'perl-module-build-withxspp')
 checkdepends=('perl-io-stringy')
 optdepends=('perl-net-dbus: notifications support via any dbus-based notifier'
