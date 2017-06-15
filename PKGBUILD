@@ -17,7 +17,7 @@
 #
 pkgname="zfs-linux-lts-git"
 pkgver=0.7.0_rc4_r60_g627791f3c_4.9.31_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for the Zettabyte File System."
 depends=("kmod" "spl-linux-lts-git" "zfs-utils-linux-lts-git" "linux-lts=4.9.31-1")
 makedepends=("linux-lts-headers=4.9.31-1" "git")
