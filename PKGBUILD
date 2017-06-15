@@ -2,7 +2,7 @@
 
 pkgname=caffe2-git
 pkgver=0.7.0.r252.ge6c6b859
-pkgrel=1
+pkgrel=2
 pkgdesc="A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe2.ai/"
@@ -87,6 +87,11 @@ prepare() {
         git config "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule_dir}"
     done
     git submodule update
+    
+    # avoid errors with gloo if using '-march=native' in a cpu with AVX2
+    # https://github.com/facebookincubator/gloo/issues/43
+    cd third_party/gloo
+    git checkout 21a5c8ea5e02edca03068790df3d7f7ba4e2d75b
 }
 
 pkgver() {
@@ -190,7 +195,6 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # move/rename folders to the right location
-    mv -f "${pkgdir}/usr/binaries" "${pkgdir}/usr/bin"
     mv -f "${pkgdir}/usr/caffe"    "${pkgdir}/usr/lib/python2.7/site-packages"
     mv -f "${pkgdir}/usr/caffe2"   "${pkgdir}/usr/lib/python2.7/site-packages"
     
