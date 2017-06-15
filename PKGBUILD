@@ -12,6 +12,8 @@ conflicts=('ccp4-libs5')
 depends=('mmdb2')
 makedepends=('gcc-fortran')
 source=(ftp://ftp.ccp4.ac.uk/opensource/$pkgname-$pkgver.tar.gz)
+options=('libtool')
+
 sha256sums=('280b473d950cdf8837ef66147ec581104298b892399bd856f13b096f2395dbe5')
 
 build() {
