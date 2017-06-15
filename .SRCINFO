@@ -1,0 +1,16 @@
+pkgbase = ftl-git
+	pkgdesc = The Fortran Template Library
+	pkgver = r172.d977353
+	pkgrel = 1
+	url = https://github.com/robertrueger/ftl
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = gcc-fortran
+	depends = pcre
+	source = ftl-git::git+https://github.com/robertrueger/ftl.git
+	md5sums = SKIP
+
+pkgname = ftl-git
+
