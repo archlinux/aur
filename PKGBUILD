@@ -15,7 +15,7 @@ provides=('slock')
 source=("http://dl.suckless.org/tools/slock-$pkgver.tar.gz" 'gruvbox.patch')
 #source=("slock-$pkgver.tar.bz2::http://hg.suckless.org/slock/archive/$_pkgver.tar.gz")
 md5sums=('f91dd5ba50ce7bd1842caeca067086a3'
-         '74cb3d6aabedf7dabd2e099eaa1ac2e7')
+         '81a66434d957cef3e12e94459429b97d')
 
 prepare() {
   cd "$srcdir/slock-$pkgver"
