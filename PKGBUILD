@@ -9,7 +9,7 @@ arch=('x86_64')
 makedepends=('git' 'go' 'mercurial')
 url="https://github.com/monochromegane/the_platinum_searcher"
 license=('MIT')
-provides=('pt' 'the_platinum_searcher')
+provides=('the_platinum_searcher')
 source=('git+https://github.com/monochromegane/the_platinum_searcher.git')
 md5sums=('SKIP')
 
