@@ -5,7 +5,7 @@ _author=A/AZ/AZAWAWI
 _perlmod=Wx-Scintilla
 pkgname=perl-wx-scintilla-dev
 pkgver=0.40_02
-pkgrel=3
+pkgrel=4
 pkgdesc='Wx::Scintilla - Scintilla source code editing component for wxWidgets - Developer Release'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/~azawawi/Wx-Scintilla/'
@@ -50,7 +50,7 @@ build(){
   cd "$srcdir/$_perlmod-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  /usr/bin/perl Build.PL
+  perl Build.PL
   ./Build
 }
 check(){
