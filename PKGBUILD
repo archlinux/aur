@@ -18,7 +18,9 @@ build() {
   mkdir -p "$repodir"
   mv "$srcdir"/$pkgname "$repodir"
   cd "$repodir"/$pkgname
-  git checkout -q v$pkgver
+  #git checkout -q v$pkgver
+  # v2.1.5 + fix to build issue
+  git checkout -q c7d8eec66dca50773e6b4ee7dfdad2174860b9b1
   GOPATH="$srcdir" go get -v ./...
 }
 
