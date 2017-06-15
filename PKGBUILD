@@ -1,8 +1,8 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-git
-pkgver=0.7.0.r252.ge6c6b859
-pkgrel=4
+pkgver=0.7.0.r434.g4c76b747
+pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -168,6 +168,7 @@ build() {
         -DUSE_NERVANA_GPU:BOOL=ON \
         -DUSE_NNPACK:BOOL=OFF \
         -DUSE_OPENCV:BOOL=OFF \
+        -DUSE_FFMPEG:BOOL=OFF \
         -DUSE_OPENMP:BOOL=ON \
         -DUSE_REDIS:BOOL=ON \
         -DUSE_ROCKSDB:BOOL=OFF \
