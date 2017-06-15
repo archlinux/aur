@@ -47,7 +47,6 @@ package() {
   ln -s /opt/firefox-$_channel/firefox $pkgdir/usr/bin/firefox-$_channel
   install -m644 $srcdir/firefox-$_channel.desktop $pkgdir/usr/share/applications/
   install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
-  ls
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 
   # Use system-provided dictionaries
