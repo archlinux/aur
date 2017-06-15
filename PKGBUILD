@@ -10,7 +10,7 @@ makedepends=('boost' 'db')
 replaces=('gridcoinresearch-daemon')
 conflicts=('gridcoinresearch-daemon')
 
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://gridcoin.us"
 license=('custom:gridcoin')
 
@@ -18,7 +18,7 @@ _sourcename="Gridcoin-Research-$pkgver"
 
 source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz")
 
-sha256sums=('7e637f6a7d9b10d3df3bb183611d8094dadb1e884c1e5fba860adfb338686d60')
+sha256sums=('26985bef60aaffa21bbf0faa669b1a9701d89c688eca4226698ccc9bc8ef7f75')
 
 prepare() {
   mkdir -p "$srcdir/$_sourcename/src/obj"
