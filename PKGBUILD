@@ -3,7 +3,7 @@ pkgname=clipper
 pkgver=2.1.20170202
 _pkgver=2.1-20170202
 _url=http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of object-oriented libraries for the organisation of crystallographic data"
 arch=('i686' 'x86_64')
 url="http://www.ysbl.york.ac.uk/~cowtan/clipper/clipper.html"
@@ -15,7 +15,7 @@ source=(https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/dependencies/$pkgna
 sha256sums=('4d31628272c44fac7df3926f64fab00b76cd08c1c90a187f27d26d8f32325bb4')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-2.1"
 
   ./configure --prefix=/usr \
               --enable-shared \
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-2.1"
 
   make DESTDIR="$pkgdir/" install
 } 
