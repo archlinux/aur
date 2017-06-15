@@ -1,7 +1,7 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
 
 pkgname=gridcoinresearch-qt-staging
-pkgver=3.5.8.8.r847.c7aabaf
+pkgver=3.5.9.0.r1025.c5f0f8e
 pkgrel=1
 pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
 depends=('boost-libs' 'qrencode' 'qt5-base' 'qt5-charts' 'libzip' 'miniupnpc' 'curl' 'boinc')
@@ -9,7 +9,7 @@ makedepends=('boost' 'git' 'qt5-tools' 'qrencode' 'db')
 
 conflicts=('gridcoinresearch-qt' 'gridcoinresearch-qt-git' 'gridcoinresearch-qt-dev')
 
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://gridcoin.us"
 license=('custom:gridcoin')
 
