@@ -33,7 +33,5 @@ check() {
 
 package() {
   msg 'Installing binaries...'
-  for _bin in `find "$srcdir/bin" -mindepth 1 -maxdepth 1 -type f -printf '%f\n'`; do
-    install -Dm 755 "$srcdir/bin/$_bin" "$pkgdir/usr/bin/$_bin"
-  done
+  install -Dm 755 "$srcdir/bin/pt" "$pkgdir/usr/bin/pt"
 }
