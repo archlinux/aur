@@ -8,6 +8,7 @@ pkgbase = nginx-mainline-mod-http-xslt-filter
 	arch = armv7h
 	license = custom
 	depends = nginx-mainline
+	depends = libxslt
 	source = http://nginx.org/download/nginx-1.13.1.tar.gz
 	sha256sums = a5856c72a6609a4dc68c88a7f3c33b79e6693343b62952e021e043fe347b6776
 

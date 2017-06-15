@@ -9,7 +9,7 @@ _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
 
 pkgdesc='HTTP XSLT module for the Nginx web server'
 arch=('i686' 'x86_64' 'armv7h')
-depends=('nginx-mainline')
+depends=('nginx-mainline' 'libxslt')
 url="https://nginx.org"
 license=('custom')
 
