@@ -45,7 +45,7 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.11
 pkgver=4.11.5
-pkgrel=1
+pkgrel=2
 _ckpatchversion=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -267,7 +267,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
