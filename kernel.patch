@@ -28,7 +28,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  #include <linux/slab.h>
  #include "psmouse.h"
  #include "synaptics.h"
-@@ -659,6 +660,139 @@
+@@ -657,6 +658,139 @@
  	serio_register_port(serio);
  }
  
@@ -207,7 +207,7 @@ diff -ur old/drivers/input/mouse/synaptics.h new/drivers/input/mouse/synaptics.h
  struct synaptics_data {
  	/* Data read from the touchpad */
  	unsigned long int model_id;		/* Model-ID */
-@@ -197,6 +199,7 @@
+@@ -196,6 +198,7 @@
  	bool					press;
  	bool					report_press;
  	bool					is_forcepad;
