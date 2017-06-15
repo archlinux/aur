@@ -6,8 +6,8 @@
 
 pkgname=luakit-git
 gitname=luakit
-pkgver=r3471.3d38286d
-pkgrel=3
+pkgver=r3479.62509c14
+pkgrel=1
 pkgdesc='fork of luakit using webkit2'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/aidanholm/luakit'
@@ -17,13 +17,13 @@ checkdepends=('lua51-luacheck' 'lua51-luassert' )
 provides=('luakit')
 conflicts=('luakit')
 depends=('webkit2gtk' 'lua51-filesystem' 'luajit')
-backup=('etc/xdg/luakit/binds.lua'
-        'etc/xdg/luakit/globals.lua'
-        'etc/xdg/luakit/modes.lua'
-        'etc/xdg/luakit/rc.lua'
-        'etc/xdg/luakit/theme.lua'
-        'etc/xdg/luakit/webview.lua'
-        'etc/xdg/luakit/window.lua')
+#backup=('etc/xdg/luakit/binds.lua'
+#        'etc/xdg/luakit/globals.lua'
+#        'etc/xdg/luakit/modes.lua'
+#        'etc/xdg/luakit/rc.lua'
+#        'etc/xdg/luakit/theme.lua'
+#        'etc/xdg/luakit/webview.lua'
+#        'etc/xdg/luakit/window.lua')
 source=("git://github.com/luakit/luakit#branch=develop")
 md5sums=('SKIP')
 
