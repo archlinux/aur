@@ -17,7 +17,7 @@
 #
 pkgname="spl-linux-lts-git"
 pkgver=0.7.0_rc4_r4_gac48361_4.9.31_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux-lts-git" "kmod" "linux-lts=4.9.31-1")
 makedepends=("linux-lts-headers=4.9.31-1" "git")
