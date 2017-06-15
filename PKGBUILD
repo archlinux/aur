@@ -33,4 +33,4 @@ package() {
 }
 
 
-sha256sums=('68cfc5ea6c5c2c72ae3ce00969a97755723cd682456cea2d6ed13fccf3cdf331')
+sha256sums=('9887eaba354110e7d0171c70f0ce7a93cb0a2509e7233e406efe9f7fdaf95d06')
