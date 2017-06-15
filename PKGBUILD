@@ -3,13 +3,14 @@
 
 pkgname=the_platinum_searcher
 pkgver=2.1.5
-pkgrel=1
-pkgdesc="A code search tool similar to ack and the_silver_searcher(ag)"
-arch=('i686' 'x86_64')
+pkgrel=2
+pkgdesc='A code search tool similar to ack and the_silver_searcher(ag)'
+arch=('x86_64')
 makedepends=('git' 'go' 'mercurial')
-url="https://github.com/monochromegane/the_platinum_searcher"
+url='https://github.com/monochromegane/the_platinum_searcher'
 license=('MIT')
-provides=('pt' 'the_platinum_searcher')
+provides=('the_platinum_searcher')
+conflicts=('the_platinum_searcher-bin')
 source=('git+https://github.com/monochromegane/the_platinum_searcher.git')
 md5sums=('SKIP')
 
@@ -18,7 +19,10 @@ build() {
   mkdir -p "$repodir"
   mv "$srcdir"/$pkgname "$repodir"
   cd "$repodir"/$pkgname
-  git checkout -q v$pkgver
+  #git checkout -q v$pkgver
+  # v2.1.5 + fix to build issue
+  git checkout -q c7d8eec66dca50773e6b4ee7dfdad2174860b9b1
+  unset GOBIN  # prevent bin to end up elsewhere
   GOPATH="$srcdir" go get -v ./...
 }
 
