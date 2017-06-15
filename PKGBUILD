@@ -1,16 +1,16 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=libcolour
-pkgver=2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="A C colour space library"
 arch=(i686 x86_64)
 url="https://github.com/maandree/libcolour"
 license=('ISC')
 depends=(glibc)
-makedepends=(glibc make coreutils gcc)
+makedepends=(glibc make coreutils gcc sed)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(cf8aa366267066bd3f84c99777ba4e3a8264c62fb1f5e5ee578d5e3bbf4c4c89)
+sha256sums=(f207e89386db4056cf3cb7f3335adea59b433ae2b78f11dc2b4c79bdae6bb9d0)
 
 
 build() {
