@@ -5,7 +5,7 @@
 
 pkgname=slock-gruvbox
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple screen locker for X, modified for the gruvbox colorscheme"
 arch=('any')
 url="http://tools.suckless.org/slock"
@@ -16,7 +16,7 @@ provides=('slock')
 source=("http://dl.suckless.org/tools/slock-$pkgver.tar.gz" 'gruvbox.patch')
 #source=("slock-$pkgver.tar.bz2::http://hg.suckless.org/slock/archive/$_pkgver.tar.gz")
 md5sums=('f91dd5ba50ce7bd1842caeca067086a3'
-         'dcc568535e4dbffda9e807a01e47f65f')
+         'edf4ea3c7db6dd0dc064bab667b3e1ba')
 
 prepare() {
   cd "$srcdir/slock-$pkgver"
