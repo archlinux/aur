@@ -2,7 +2,7 @@
 pkgname=mmdb2
 conflicts=('mmdb')
 pkgver=2.0.12
-pkgrel=3
+pkgrel=5
 pkgdesc="A C++ toolkit for working with macromolecular coordinate files"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/mmdb"
@@ -13,7 +13,7 @@ sha256sums=('a24fca06266c6b4db06ad1e0e0ddf5037f2ea624347ab119a6b163d8929c62a0')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ./configure --prefix=/usr --enable-shared --enable-static
+  ./configure --prefix=/usr --enable-shared
   make
 }
 
