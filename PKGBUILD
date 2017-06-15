@@ -2,14 +2,14 @@
 
 pkgname=perl-html-escape
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 _author="T/TO/TOKUHIROM"
 _perlmod="HTML-Escape"
 pkgdesc="HTML::Escape - Extremely fast HTML escaping"
 arch=(i686 x86_64)
 url="http://search.cpan.org/dist/HTML-Escape/"
 license=('GPL' 'PerlArtistic')
-depends=(perl)
+depends=(perl-module-build)
 provides=(perl-html-escape-pureperl)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
