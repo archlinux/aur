@@ -8,7 +8,7 @@
 
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
-pkgver=52.2.0
+pkgver=52.1.1
 pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/thunderbird/"
 depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          libvpx libevent nss hunspell sqlite ttf-font icu)
-makedepends=(gcc63 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 cargo)
 optdepends=('libcanberra: sound support')
 options=(!emptydirs !makeflags)
@@ -24,13 +24,9 @@ provides=("thunderbird=${pkgver}-${pkgrel}")
 conflicts=("thunderbird")
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         thunderbird.desktop
-        0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
-        0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         thunderbird-install-dir.patch fix-wifi-scanner.diff)
-sha256sums=('c65c66244ac113996002bcfa9e387f14291163cfb7009a9126e3a8d4a970e72d'
+sha256sums=('88211d0d57dfdae9232617244f9c5406520a538e9e7be6ceec79fdfed175ba84'
             'e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827'
-            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
-            '93c495526c1a1227f76dda5f3a43b433bc7cf217aaf74bd06b8fc187d285f593'
             '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 
@@ -56,12 +52,6 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
 
-  # https://bugs.archlinux.org/task/53890
-  patch -Np1 -i ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
-
-  # https://bugs.archlinux.org/task/54395 // https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
-  patch -Np1 -i ../0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
-
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
@@ -73,7 +63,6 @@ ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-gold
 ac_add_options --enable-pie
-ac_add_options --enable-rust
 
 ac_add_options --enable-default-toolkit=cairo-gtk2
 
@@ -124,7 +113,7 @@ build() {
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
   #  make -f client.mk build MOZ_PGO=1
-  make -f client.mk build CC=gcc-6.3
+  make -f client.mk build
 }
 
 package() {
