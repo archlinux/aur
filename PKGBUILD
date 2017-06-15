@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=quiterss-git
-pkgver=0.18.4.r4.g0d295bc2
+pkgver=0.18.5.r0.ge7165f6f
 pkgrel=1
 pkgdesc="Fast and light RSS/Atom feed reader written in Qt/С++"
 arch=('i686' 'x86_64')
