@@ -6,12 +6,12 @@
 _pkgname=screenruler
 pkgname=gnome-$_pkgname
 pkgver=0.9.6
-pkgrel=4
+pkgrel=5
 pkgdesc="ScreenRuler lets you measure objects on your screen using six different metrics."
 arch=('any')
 url="https://launchpad.net/screenruler"
 license=('GPL')
-depends=('ruby-gtk2' 'ruby-cairo' 'ruby-gettext' 'ruby-pkgconfig')
+depends=('ruby-gtk2' 'ruby-cairo' 'ruby-gettext' 'ruby-pkg-config')
 makedepends=('intltool')
 source=("https://launchpad.net/screenruler/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz"
         "$pkgname.desktop"
