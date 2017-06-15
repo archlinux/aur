@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc')
-makedepends_i686=('kmod' 'inetutils' 'bc' 'gcc49')
+makedepends_i686=('gcc49')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
