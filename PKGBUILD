@@ -3,7 +3,7 @@
 
 pkgname=the_platinum_searcher
 pkgver=2.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc='A code search tool similar to ack, the_silver_searcher (ag) and ripgrep (rg).'
 arch=('x86_64')
 makedepends=('git' 'go')
@@ -36,7 +36,7 @@ package() {
 	install -Dm 755 "$srcdir/bin/pt" "$pkgdir/usr/bin/pt"
 
 	msg 'Installing README...'
-	install -Dm 644 "$_repodir/$pkgname/README.md"  "$pkgdir/usr/share/doc/pt/README.md"
+	install -Dm 644 "$_repodir/$pkgname/README.md"  "$pkgdir/usr/share/doc/$pkgname/README.md"
 
 	msg 'Installing LICENSE...'
 	install -m 644 -D "$_repodir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
