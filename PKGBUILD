@@ -1,20 +1,30 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
-_benchver=1.1.0
-_cnmemver=1.0.0
-_cubver=1.6.4
-_eigenver=3.3.3
-_gtestver=1.8.0
-_ncclver=1.3.4-1
-_protover=3.3.1
-_pybindver=2.1.1
-_gitver=gitmaster
-_gitwebver=master
+# third_party with no stable release at the needed commit
+_android_cmake_commit='556cc14296c226f753a3778d99d8b60778b7df4f'
+_benchmark_commit='4bf28e611b55de8a2d4eece3c335e014f8b0f630'
+_cnmem_commit='28a182d49529da49f4ac4e3941cec3edf16b3540'
+_cub_commit='89de7ab20167909bc2c4f8acd397671c47cf3c0d'
+_gloo_commit='f67ab32d3439061946ce2c1bed8baa0e1b5d367f'
+_googletest_commit='5e7fd50e17b6edf1cadff973d0ec68966cf3265e'
+_ios_cmake_commit='e3a7695d1d68ef4eca716031f94e8475b1589b1f'
+_nccl_commit='2a974f5ca2aa12b178046b2206b43f1fd69d9fae'
+_nervanagpu_commit='d4eefd50fbd7d34a17dddbc829888835d67b5f4a'
+_nnpack_commit='02bfa475d64040cd72b7c01daa9e862523ae87da'
+_pybind11_commit='f38f359f96815421f1780c1a676715efd041f1ae'
+_nnpackdeps_fp16_commit='2e9eeeb0b463736d13b887d790ac7e72e78fa4bc'
+_nnpackdeps_fxdiv_commit='8f85044fb41e560508cd69ed26c9afb9cc120e8a'
+_nnpackdeps_psimd_commit='0b26a3fb98dd6af7e1f4e0796c56df6b32b1c016'
+_nnpackdeps_pthreadpool_commit='9e17903a3fc963fe86b151aaddae7cf1b1d34815'
+
+ # third_party with stable release at the needed commit
+_eigen_version='3.3.2'    # commit 'ae9889a130bd0a9d3007f41d015563c2e8ac605f' is version '3.3.2'
+_protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is version '3.1.0'
 
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.7.0
-pkgrel=7
+pkgrel=8
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -45,56 +55,40 @@ source=(
     # main source:
         "${_srcname}-${pkgver}.tar.gz"::"https://github.com/${_srcname}/${_srcname}/archive/v${pkgver}.tar.gz"
     # third party:
-        "thirdparty-android-cmake-${_gitver}.zip"::"https://github.com/taka-no-me/android-cmake/archive/${_gitwebver}.zip"
-        "thirdparty-benchmark-${_benchver}.tar.gz"::"https://github.com/google/benchmark/archive/v${_benchver}.tar.gz"
-        "thirdparty-cnmem-${_cnmemver}.tar.gz"::"https://github.com/NVIDIA/cnmem/archive/v${_cnmemver}.tar.gz"
-        "thirdparty-cub-${_cubver}.zip"::"https://github.com/NVlabs/cub/archive/${_cubver}.zip"
-        "thirdparty-eigen-${_eigenver}.tar.gz"::"https://github.com/RLovelett/eigen/archive/${_eigenver}.tar.gz"
-        "thirdparty-gloo-${_gitver}.zip"::"https://github.com/facebookincubator/gloo/archive/${_gitwebver}.zip"
-        "thirdparty-googletest-${_gtestver}.tar.gz"::"https://github.com/google/googletest/archive/release-${_gtestver}.tar.gz"
-        "thirdparty-ios-cmake-${_gitver}.zip"::"https://github.com/Yangqing/ios-cmake/archive/${_gitwebver}.zip"
-        "thirdparty-nccl-${_ncclver}.tar.gz"::"https://github.com/NVIDIA/nccl/archive/v${_ncclver}.tar.gz"
-        "thirdparty-nervanagpu-${_gitver}.zip"::"https://github.com/NervanaSystems/nervanagpu/archive/${_gitwebver}.zip"
-        "thirdparty-NNPACK-${_gitver}.zip"::"https://github.com/Maratyszcza/NNPACK/archive/${_gitwebver}.zip"
-        "thirdparty-protobuf-${_protover}.tar.gz"::"https://github.com/google/protobuf/archive/v${_protover}.tar.gz"
-        "thirdparty-pybind11-${_pybindver}.tar.gz"::"https://github.com/pybind/pybind11/archive/v${_pybindver}.tar.gz"
-        "thirdparty-FP16-${_gitver}.zip"::"https://github.com/Maratyszcza/FP16/archive/${_gitwebver}.zip"
-        "thirdparty-FXdiv-${_gitver}.zip"::"https://github.com/Maratyszcza/FXdiv/archive/${_gitwebver}.zip"
-        "thirdparty-psimd-${_gitver}.zip"::"https://github.com/Maratyszcza/psimd/archive/${_gitwebver}.zip"
-        "thirdparty-pthreadpool-${_gitver}.zip"::"https://github.com/Maratyszcza/pthreadpool/archive/${_gitwebver}.zip"
+        'thirdparty-android-cmake-git'::"git+https://github.com/taka-no-me/android-cmake.git#commit=${_android_cmake_commit}"
+        'thirdparty-benchmark-git'::"git+https://github.com/google/benchmark.git#commit=${_benchmark_commit}"
+        'thirdparty-cnmem-git'::"git+https://github.com/NVIDIA/cnmem.git#commit=${_cnmem_commit}"
+        'thirdparty-cub-git'::"git+https://github.com/NVlabs/cub.git#commit=${_cub_commit}"
+        "thirdparty-eigen-${_eigen_version}.tar.gz"::"https://github.com/RLovelett/eigen/archive/${_eigen_version}.tar.gz"
+        'thirdparty-gloo-git'::"git+https://github.com/facebookincubator/gloo.git#commit=${_gloo_commit}"
+        'thirdparty-googletest-git'::"git+https://github.com/google/googletest.git#commit=${_googletest_commit}"
+        'thirdparty-ios-cmake-git'::"git+https://github.com/Yangqing/ios-cmake.git#commit=${_ios_cmake_commit}"
+        'thirdparty-nccl-git'::"git+https://github.com/NVIDIA/nccl.git#commit=${_nccl_commit}"
+        'thirdparty-nervanagpu-git'::"git+https://github.com/NervanaSystems/nervanagpu.git#commit=${_nervanagpu_commit}"
+        'thirdparty-NNPACK-git'::"git+https://github.com/Maratyszcza/NNPACK.git#commit=${_nnpack_commit}"
+        "thirdparty-protobuf-${_protobuf_version}.tar.gz"::"https://github.com/google/protobuf/archive/v${_protobuf_version}.tar.gz"
+        'thirdparty-pybind11-git'::"git+https://github.com/pybind/pybind11.git#commit=${_pybind11_commit}"
+        'thirdparty-NNPACK_deps-FP16-git'::"git+https://github.com/Maratyszcza/FP16.git#commit=${_nnpackdeps_fp16_commit}"
+        'thirdparty-NNPACK_deps-FXdiv-git'::"git+https://github.com/Maratyszcza/FXdiv.git#commit=${_nnpackdeps_fxdiv_commit}"
+        'thirdparty-NNPACK_deps-psimd-git'::"git+https://github.com/Maratyszcza/psimd.git#commit=${_nnpackdeps_psimd_commit}"
+        'thirdparty-NNPACK_deps-pthreadpool-git'::"git+https://github.com/Maratyszcza/pthreadpool.git#commit=${_nnpackdeps_pthreadpool_commit}"
 )
-noextract=("thirdparty-android-cmake-${_gitver}.zip"
-           "thirdparty-benchmark-${_benchver}.tar.gz"
-           "thirdparty-cnmem-${_cnmemver}.tar.gz"
-           "thirdparty-cub-${_cubver}.zip"
-           "thirdparty-eigen-${_eigenver}.tar.gz"
-           "thirdparty-gloo-${_gitver}.zip"
-           "thirdparty-googletest-${_gtestver}.tar.gz"
-           "thirdparty-ios-cmake-${_gitver}.zip"
-           "thirdparty-nccl-${_ncclver}.tar.gz"
-           "thirdparty-nervanagpu-${_gitver}.zip"
-           "thirdparty-NNPACK-${_gitver}.zip"
-           "thirdparty-protobuf-${_protover}.tar.gz"
-           "thirdparty-pybind11-${_pybindver}.tar.gz"
-           "thirdparty-FP16-${_gitver}.zip"
-           "thirdparty-FXdiv-${_gitver}.zip"
-           "thirdparty-psimd-${_gitver}.zip"
-           "thirdparty-pthreadpool-${_gitver}.zip"
-)
+noextract=("thirdparty-eigen-${_eigen_version}.tar.gz"
+           "thirdparty-protobuf-${_protobuf_version}.tar.gz")
 sha256sums=('b8f266ed283efc172fa96c06c878ed7f125755f89cde480580b754c1f03c0bab'
             'SKIP'
-            'e7334dd254434c6668e33a54c8f839194c7c61840d52f4b6258eee28e9f3b20e'
-            'bd8c2803813f00c55995b106a5d385a343211100f8943856525472997f5b2bb0'
-            '966d0c4f41e2bdc81aebf9ccfbf0baffaac5a74f00b826b06f4dee79b2bb8cee'
-            '1b7e1dba81c0de7267437e91be9508e80ced48b7ba5b58847eac7dafc1b89acc'
-            'SKIP'
-            '58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8'
-            'SKIP'
-            '11e4eb44555bb28b9cbad973dacb4640b82710c9769e719afc2013b63ffaf884'
             'SKIP'
             'SKIP'
-            '30f23a45c6f4515598702a6d19c4295ba92c4a635d7ad8d331a4db9fccff392d'
-            'f2c6874f1ea5b4ad4ffffe352413f7d2cd1a49f9050940805c2a082348621540'
+            'SKIP'
+            '78fe37183e04aa8ca2d938df57b93f9489448d38c10fb470cf51c332a461f371'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '0a0ae63cbffc274efb573bdde9a253e3f32e458c41261df51c5dbc5ad541e8f7'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -104,24 +98,32 @@ sha256sums=('b8f266ed283efc172fa96c06c878ed7f125755f89cde480580b754c1f03c0bab'
 prepare() {
     cd "${_srcname}-${pkgver}/third_party"
     
-    _thirdparty_list="android-cmake benchmark cnmem cub eigen gloo googletest
-                     ios-cmake nccl nervanagpu NNPACK protobuf pybind11"
-    _nnpackdeps_list="FP16 FXdiv psimd pthreadpool"
+    local _thirdparty_nongit_list="eigen protobuf"
+    local _thirdparty_git_list="android-cmake benchmark cnmem cub gloo googletest \
+                                ios-cmake nccl nervanagpu NNPACK pybind11"
+    local _nnpackdeps_list="FP16 FXdiv psimd pthreadpool"
     
-    for _component in $_thirdparty_list
+    for _component in $_thirdparty_nongit_list
     do
         cd "$_component"
         bsdtar -xf "${srcdir}/thirdparty-${_component}"* -s'|[^/]*/||'
         cd ..
+    done
+    
+    for _component in $_thirdparty_git_list
+    do
+        rm -rf "$_component"
+        ln -sf "${srcdir}/thirdparty-${_component}-git" "${_component}"
     done
     
     cd NNPACK_deps
     for _component in $_nnpackdeps_list
     do
-        cd "$_component"
-        bsdtar -xf "${srcdir}/thirdparty-${_component}"* -s'|[^/]*/||'
-        cd ..
+        rm -rf "$_component"
+        ln -sf "${srcdir}/thirdparty-NNPACK_deps-${_component}-git" "${_component}"
     done
+    
+    unset _component
 }
 
 build() {
