@@ -5,7 +5,7 @@
 
 _ref=""
 pkgname=kakoune-git
-pkgver=r4446.650a989
+pkgver=r5245.e73cd782
 pkgrel=1
 pkgdesc='Code editor heavily inspired by Vim'
 arch=('i686' 'x86_64')
