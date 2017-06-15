@@ -11,27 +11,28 @@ fi
 
 if [[ -n "$_piver" ]]; then
   _qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
+  makedepends=("qt-sdk-raspberry-pi${_piver}")
+  depends=("qt-sdk-raspberry-pi-target-libs")
 fi
 
-pkgname="quint"
-pkgver=.0.1
+_pkgname="quint"
+pkgname="${_pkgname}-git"
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Live coding demo for the Raspberry Pi"
 arch=("any")
 url="https://github.com/sirspudd/quint"
-makedepends=("qt-sdk-raspberry-pi${_piver}")
-depends=("qt-sdk-raspberry-pi-target-libs")
-source=("git://github.com/sirspudd/${pkgname}.git")
+source=("git://github.com/sirspudd/${_pkgname}.git")
 sha256sums=("SKIP")
 options=('!strip')
 
 pkgver() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${_pkgname}
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  local repo_src=${srcdir}/${pkgname}
+  local repo_src=${srcdir}/${_pkgname}
 
   cd ${repo_src}
   $_qmake
@@ -39,13 +40,13 @@ build() {
 }
 
 package() {
-  local repo_src=${srcdir}/${pkgname}
-  local deploy_path=${pkgdir}/opt/${pkgname}
+  local repo_src=${srcdir}/${_pkgname}
+  local deploy_path=${pkgdir}/opt/${_pkgname}
   local systemd_deploy_path=${pkgdir}/usr/lib/systemd/system
 
   mkdir -p $deploy_path
   mkdir -p $systemd_deploy_path
 
-  cp ${repo_src}/${pkgname} ${deploy_path}
+  cp ${repo_src}/${_pkgname} ${deploy_path}
   cp ${startdir}/*.service ${systemd_deploy_path}
 }
