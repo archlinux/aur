@@ -24,7 +24,7 @@ url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 makedepends=("qt-sdk-raspberry-pi${_piver}")
 depends=("qt-sdk-raspberry-pi-target-libs")
-source=("git://github.com/sirspudd/${pkgname}.git#tag=${pkgver}")
+source=("git://github.com/sirspudd/${pkgname}.git")
 sha256sums=("SKIP")
 options=('!strip')
 
