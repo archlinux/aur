@@ -1,0 +1,20 @@
+pkgbase = mcp-mapping-viewer
+	pkgdesc = A small GUI for viewing the mappings from Minecraft obfuscated code names to MCP code names.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/bspkrs/MCPMappingViewer
+	arch = any
+	license = MIT
+	license = Apache
+	makedepends = java-environment>=7
+	depends = sh
+	depends = java-runtime>=7
+	source = MCPMappingViewer
+	source = MCPMappingViewer.desktop
+	source = https://github.com/bspkrs/MCPMappingViewer/archive/1.0.1.tar.gz
+	md5sums = 0b60fd59792482a0e69a2457d9d3e309
+	md5sums = 61a50d4721e1378ac1c91023aec3010d
+	md5sums = 715927a5df7c012dfe22e3f3c08dcc87
+
+pkgname = mcp-mapping-viewer
+
