@@ -2,13 +2,14 @@
 pkgname="google-play-music-desktop-player-bin"
 _pkgname="google-play-music-desktop-player"
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music"
 arch=("x86_64")
 url="https://www.googleplaymusicdesktopplayer.com/"
 license=("MIT")
 depends=("nodejs")
-makedepends=("rpmextract")
+makedepends=("rpmextract"
+             "imagemagick")
 source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v$pkgver/google-play-music-desktop-player-$pkgver.x86_64.rpm"
         "google-play-music-desktop-player.svg")
 md5sums=('4545f0756a78578d68ed979769fc64c9'
