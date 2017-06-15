@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="http://lmb.bioch.ox.ac.uk/coot/"
@@ -60,6 +60,7 @@ build() {
 
   cp $srcdir/coot.in src/
 
+  rm macros/libtool.m4
   aclocal -I macros
   libtoolize --automake --copy
   autoconf
