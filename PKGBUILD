@@ -8,7 +8,7 @@
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
 pkgver=52.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -78,6 +78,7 @@ ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-gold
 ac_add_options --enable-pie
+ac_add_options --enable-rust
 
 ac_add_options --enable-default-toolkit=cairo-gtk2
 
