@@ -1,8 +1,8 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=mmdb2
-conflicts=mmdb
+conflicts=('mmdb')
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ toolkit for working with macromolecular coordinate files"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/mmdb"
