@@ -2,7 +2,7 @@
 pkgname=mmdb2
 conflicts=('mmdb')
 pkgver=2.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ toolkit for working with macromolecular coordinate files"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/mmdb"
@@ -21,4 +21,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir/" install
+  cp $srcdir/$pkgname-$pkgver/${pkgname}/lib${pkgname}.la $pkgdir/usr/lib/
 }
