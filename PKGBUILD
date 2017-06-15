@@ -23,7 +23,7 @@ source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
 sha1sums=('54cb3322dc3a969f1fda03383012c61d57261345'
           '96cdbc38e8706c8a3120601983df5c7265716128'
           'a3a74542b6524e5663ad37aaba292b48e8bea3b1'
-          '5111076229ddfa778d60af15a8a13d3f703567ba')
+          '1c52147c9cacde6c1115cc73cd3099f2602c24f7')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
