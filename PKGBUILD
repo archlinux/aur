@@ -14,7 +14,7 @@ _gitwebver=master
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.7.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -37,7 +37,7 @@ depends=(
     # missing:
         # 'python2-nvd3'
 )
-makedepends=('cmake')
+makedepends=('cmake' 'gcc5')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu-git')
 options=('!emptydirs')
@@ -141,6 +141,8 @@ build() {
         -DCAFFE2_CPU_FLAGS:BOOL=OFF \
         -DCMAKE_BUILD_TYPE:STRING=Release \
         -DCMAKE_COLOR_MAKEFILE:BOOL=ON \
+        -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 \
+        -DCMAKE_C_COMPILER=/usr/bin/gcc-5 \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL=NO \
         -DCMAKE_SKIP_RPATH:BOOL=NO \
