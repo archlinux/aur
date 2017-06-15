@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r1953.d40e7955
+pkgver=r1974.9191af0c
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
@@ -32,16 +32,29 @@ _plugins=('extra/filemanager'
           'extra/fileshare'
           'extra/fileupload'
           'extra/mediastream'
-          'titlebar')
+          'titlebar'
+          'ratiocolor')
+
+_themes=('MaterialDesign'
+         'QuickBox'
+         'FlatUI')
 
 source=("plugins.ini"
         "https://raw.githubusercontent.com/weixiyen/jquery-filedrop/master/jquery.filedrop.js"
         "rutorrent::git+https://github.com/Novik/ruTorrent.git"
         "titlebar::git+https://github.com/SanKen/rutorrent-titlebar.git"
-        "extra::git+https://github.com/nelu/rutorrent-thirdparty-plugins.git")
+        "ratiocolor::git+https://github.com/senki/rutorrent-ratiocolor.git"
+        "extra::git+https://github.com/nelu/rutorrent-thirdparty-plugins.git"
+        "MaterialDesign::git+https://github.com/Phlooo/ruTorrent-MaterialDesign.git"
+        "QuickBox::git+https://github.com/QuickBox/club-QuickBox.git"
+        "git+https://github.com/exetico/FlatUI.git")
 
-md5sums=('a3efa833b362ac7f3ff69ddaa720de81'
+md5sums=('5c50a738ee4180d63b596519d07d64d5'
          '3e0002fe9ce69f43513152c515944559'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -96,6 +109,11 @@ package() {
     for i in ${_plugins[@]}; do
         rm -rf "$srcdir/$i/.git"
         cp -r  "$srcdir/$i" .
+    done
+
+    for i in ${_themes[@]}; do
+        rm -rf "$srcdir/$i/.git"
+        cp -r  "$srcdir/$i" ./theme/themes
     done
 
     cp -f  "$srcdir/jquery.filedrop.js" filedrop/jquery.filedrop.js
