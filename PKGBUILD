@@ -4,7 +4,7 @@
 
 pkgname=slock-gruvbox-lowcontrast
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple screen locker for X modified for the gruvbox (low contrast) colorscheme"
 arch=('any')
 url="http://tools.suckless.org/slock"
