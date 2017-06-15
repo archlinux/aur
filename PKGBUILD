@@ -4,7 +4,7 @@
 pkgname=the_platinum_searcher
 pkgver=2.1.5
 pkgrel=3
-pkgdesc='A code search tool similar to ack and the_silver_searcher(ag)'
+pkgdesc='A code search tool similar to ack, the_silver_searcher (ag) and ripgrep (rg).'
 arch=('x86_64')
 makedepends=('git' 'go')
 depends=('glibc')
@@ -13,25 +13,31 @@ license=('MIT')
 provides=('the_platinum_searcher')
 conflicts=('the_platinum_searcher-bin')
 source=('git+https://github.com/monochromegane/the_platinum_searcher.git')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 build() {
-  repodir="$srcdir"/src/github.com/monochromegane
-  mkdir -p "$repodir"
-  mv "$srcdir"/$pkgname "$repodir"
-  cd "$repodir"/$pkgname
-  #git checkout -q v$pkgver
-  # v2.1.5 + fix to build issue
-  git checkout -q c7d8eec66dca50773e6b4ee7dfdad2174860b9b1
-  unset GOBIN  # prevent bin to end up elsewhere
-  GOPATH="$srcdir" go get -v ...
+	export _repodir="$srcdir/src/github.com/monochromegane"
+	mkdir -p "$_repodir"
+	mv "$srcdir/$pkgname" "$_repodir"
+	cd "$_repodir/$pkgname"
+	#git checkout -q v"$pkgver"
+	# v2.1.5 + fix to build issue
+	git checkout -q c7d8eec66dca50773e6b4ee7dfdad2174860b9b1
+	unset GOBIN  # prevent bin to end up elsewhere
+	GOPATH="$srcdir" go get -v ...
 }
 
 check() {
-  GOPATH="$GOPATH${GOPATH+:}$srcdir" go test -v -x github.com/monochromegane/the_platinum_searcher/
+	GOPATH="$srcdir" go test -v -x github.com/monochromegane/the_platinum_searcher/
 }
 
 package() {
-  msg 'Installing binaries...'
-  install -Dm 755 "$srcdir/bin/pt" "$pkgdir/usr/bin/pt"
+	msg 'Installing pt binary...'
+	install -Dm 755 "$srcdir/bin/pt" "$pkgdir/usr/bin/pt"
+
+	msg 'Installing README...'
+	install -Dm 644 "$_repodir/$pkgname/README.md"  "$pkgdir/usr/share/doc/pt/README.md"
+
+	msg 'Installing LICENSE...'
+	install -m 644 -D "$_repodir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
