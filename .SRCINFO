@@ -1,14 +1,12 @@
 pkgbase = xfce4-vala-git
 	pkgdesc = Vala Bindings for the Xfce framework
 	pkgver = 4.10.0.r4.g62f270a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.xfce.org/vala-bindings
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = xfce4-goodies
 	license = GPL
 	makedepends = xfce4-dev-tools
-	depends = xfce4-panel
 	provides = xfce4-vala
 	conflicts = xfce4-vala
 	options = !libtool
