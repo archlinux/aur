@@ -35,10 +35,10 @@ prepare()
 
   ## Force use of pyhon2
   #
-  rm -fr temp_bin
-  mkdir  temp_bin
-  ln -s /usr/bin/python2        temp_bin/python
-  ln -s /usr/bin/python2-config temp_bin/python-config
+#  rm -fr temp_bin
+#  mkdir  temp_bin
+#  ln -s /usr/bin/python2        temp_bin/python
+#  ln -s /usr/bin/python2-config temp_bin/python-config
 }
 
 
@@ -50,16 +50,16 @@ build()
   #
   source /etc/profile.d/quex.sh
 
-  export PATH=$srcdir/libadalang-gps-src/temp_bin:$PATH
+#  export PATH=$srcdir/libadalang-gps-src/temp_bin:$PATH
   export PYTHONPATH=$srcdir/langkit-gps-src:$PYTHONPATH
 
-  python ada/manage.py generate
+  python2 ada/manage.py generate
 
   # Add -fPIC where needed.
   #
   patch -Np0 -i "$srcdir"/use_fpic_for_libadalang.patch
 
-  python ada/manage.py build
+  python2 ada/manage.py build
 }
 
 
@@ -71,9 +71,9 @@ package()
   #
   source /etc/profile.d/quex.sh
 
-  export PATH=$srcdir/libadalang-gps-src/temp_bin:$PATH
+#  export PATH=$srcdir/libadalang-gps-src/temp_bin:$PATH
 
-  python ada/manage.py install $pkgdir/usr
+  python2 ada/manage.py install $pkgdir/usr
 
   mkdir -p $pkgdir/usr/lib/python2.7/site-packages
 
