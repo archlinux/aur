@@ -8,26 +8,28 @@
 
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
-pkgver=52.1.1
+pkgver=52.2.0
 pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/thunderbird/"
 depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
-         libvpx libevent nss hunspell sqlite ttf-font icu)
-makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
+         nss hunspell sqlite ttf-font icu libvpx)
+makedepends=(gcc63 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 cargo)
 optdepends=('libcanberra: sound support')
 options=(!emptydirs !makeflags)
-provides=("thunderbird=${pkgver}-${pkgrel}")
-conflicts=("thunderbird")
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         thunderbird.desktop
-        thunderbird-install-dir.patch fix-wifi-scanner.diff)
-sha256sums=('88211d0d57dfdae9232617244f9c5406520a538e9e7be6ceec79fdfed175ba84'
+        0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
+        thunderbird-install-dir.patch no-crmf.diff rust-i686.patch fix-wifi-scanner.diff)
+sha256sums=('c65c66244ac113996002bcfa9e387f14291163cfb7009a9126e3a8d4a970e72d'
             'e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827'
+            '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
             '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d'
+            'a7317caba56e89932bd9e3b9352d94701dd9a419685057f238b1ded8dc0adcd7'
+            'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -49,8 +51,17 @@ prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ../thunderbird-install-dir.patch
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
+  patch -Np1 -i ../no-crmf.diff
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
+
+  # Build with the rust targets we actually ship
+  patch -d mozilla -Np1 < ../rust-i686.patch
+
+  # https://bugs.archlinux.org/task/53890
+  patch -d mozilla -Np1 < ../0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -63,6 +74,8 @@ ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-gold
 ac_add_options --enable-pie
+ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-rust
 
 ac_add_options --enable-default-toolkit=cairo-gtk2
 
@@ -82,7 +95,6 @@ ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
-ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
@@ -113,14 +125,14 @@ build() {
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
   #  make -f client.mk build MOZ_PGO=1
-  make -f client.mk build
+  make -f client.mk build CC=gcc-6.3
 }
 
 package() {
   cd $_pkgname-$pkgver
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
-  _vendorjs="$pkgdir/usr/lib/thunderbird/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/$_pkgname/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
@@ -133,7 +145,7 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
-  _distini="$pkgdir/usr/lib/thunderbird/distribution/distribution.ini"
+  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
 id=archlinux
@@ -148,25 +160,25 @@ END
 
   for i in 16 22 24 32 48 256; do
     install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 
-  install -Dm644 ../thunderbird.desktop \
-    "$pkgdir/usr/share/applications/thunderbird.desktop"
+  install -Dm644 ../$_pkgname.desktop \
+    "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/usr/lib/thunderbird/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/thunderbird/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/thunderbird/hyphenation"
+  rm -r "$pkgdir"/usr/lib/$_pkgname/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/thunderbird" <<END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
-exec /usr/lib/thunderbird/thunderbird "\$@"
+exec /usr/lib/$_pkgname/thunderbird "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/thunderbird" \
-    "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
+  ln -srf "$pkgdir/usr/bin/$_pkgname" \
+    "$pkgdir/usr/lib/$_pkgname/thunderbird-bin"
 }
