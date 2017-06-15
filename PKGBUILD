@@ -4,23 +4,23 @@
 
 pkgname=gnat-gps
 pkgver=2017
-pkgrel=2
+pkgrel=3
 pkgdesc="GPS, the GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/gps"
 license=('GPL')
 
-depends=("clang" "gnatcoll" "gtkada" "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic")
-makedepends=("libadalang")
+depends=("clang" "libadalang" "gnatcoll" "gtkada"
+         "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic")
 
 source=(http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed03b
         patch-Makefile.in
         patch-docs-Makefile.in)
 
 sha1sums=('7d394bf2c74551b3084dcf624121344fb303f140'
-          'SKIP'
-          'SKIP')
+          '763584d9a931887eff11151310504c02df279224'
+          '60813145324cd5ea9f081648da10cffd99f87586')
 
 
 prepare()
