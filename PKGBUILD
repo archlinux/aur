@@ -24,7 +24,7 @@ _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.7.0
-pkgrel=8
+pkgrel=9
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -47,13 +47,19 @@ depends=(
     # missing:
         # 'python2-nvd3'
 )
-makedepends=('cmake' 'gcc5')
+makedepends=(
+    # official repositories:
+        'git' 'cmake' 'gcc5' 'ninja'
+    # AUR:
+        'confu-git' 'python-peachpy-git'
+)
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu-git')
 options=('!emptydirs')
 source=(
     # main source:
         "${_srcname}-${pkgver}.tar.gz"::"https://github.com/${_srcname}/${_srcname}/archive/v${pkgver}.tar.gz"
+        'external-nnpack-fix.patch'
     # third party:
         'thirdparty-android-cmake-git'::"git+https://github.com/taka-no-me/android-cmake.git#commit=${_android_cmake_commit}"
         'thirdparty-benchmark-git'::"git+https://github.com/google/benchmark.git#commit=${_benchmark_commit}"
@@ -76,6 +82,7 @@ source=(
 noextract=("thirdparty-eigen-${_eigen_version}.tar.gz"
            "thirdparty-protobuf-${_protobuf_version}.tar.gz")
 sha256sums=('b8f266ed283efc172fa96c06c878ed7f125755f89cde480580b754c1f03c0bab'
+            '1c94a1ecc0fe2a52c50c9d1a7bfca655d60c08d48995b27c73aa22b6c375da54'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -124,6 +131,11 @@ prepare() {
     done
     
     unset _component
+    
+    # avoid compile errors with nnpack if system library is found
+    # https://github.com/caffe2/caffe2/pull/808
+    cd "${srcdir}/${_srcname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/external-nnpack-fix.patch"
 }
 
 build() {
@@ -169,7 +181,7 @@ build() {
         -DUSE_MPI:BOOL=ON \
         -DUSE_NCCL:BOOL=OFF \
         -DUSE_NERVANA_GPU:BOOL=OFF \
-        -DUSE_NNPACK:BOOL=OFF \
+        -DUSE_NNPACK:BOOL=ON \
         -DUSE_OPENCV:BOOL=OFF \
         -DUSE_OPENMP:BOOL=ON \
         -DUSE_REDIS:BOOL=ON \
