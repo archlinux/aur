@@ -1,24 +1,44 @@
-#Maintainer: fclad <fcladera at fcladera.com>
+# Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
+# PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
+# Contributor: fclad <fcladera at fcladera.com>
 
-_pkgname=plotly
-pkgname=python-plotly
-pkgver=2.0.7
+_pkgname=python-plotly
+_pypiname=plotly
+pkgbase=python-plotly
+pkgname=('python-plotly' 'python2-plotly')
+pkgver=2.0.9
 pkgrel=1
-pkgdesc="An interactive, browser-based charting library for python"
-arch=('any')
 url="https://plot.ly/python/"
 license=('MIT')
-depends=('python-requests' 'python-pytz')
-makedepends=('git' 'python' 'python-setuptools')
-source=('https://pypi.python.org/packages/8c/4a/9e42d13f74a2c7872ba6e7a868b152bd815c01038144570ec729ff13c065/'$_pkgname'-'$pkgver'.tar.gz')
-md5sums=('SKIP')
+arch=("any")
+makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
+source=("${_pkgname}-${pkgver}.tar.gz::https://pypi.org/packages/source/p/${_pypiname}/${_pypiname}-${pkgver}.tar.gz"
+        "LICENSE")
+sha512sums=('0353091e204cbd42b2f425a739d58b8c35087045ceced229b594178706695009588f7a92a62f83583db2a5629570d9823dc9ff4687e270e790dcedaacf6a8556'
+            '1f27d546f594955e443a3d8a72aa4f18afa9d946336a9fd0585de3c8120e3ef262ce109eea0ee8d97510616864b8d01f8e4d48ebc0fc1486fd490bf8ba3a7f89')
+#validpgpkeys=('') # TODO https://github.com/plotly/plotly.py/issues/764
 
-build() {
-    cd $srcdir/$_pkgname-$pkgver
-    python setup.py build
+prepare() {
+    # Create a copy for the python2 package
+    cp -r "${_pypiname}-${pkgver}" "python2-${_pypiname}-${pkgver}"
 }
 
-package() {
-    cd $srcdir/$_pkgname-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
+package_python-plotly() {
+    pkgdesc="An interactive, browser-based graphing library for Python3"
+    depends=('python' 'python-requests' 'python-pytz' 'python-six')
+
+    cd "${srcdir}/${_pypiname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
+
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-plotly() {
+    pkgdesc="An interactive, browser-based graphing library for Python2"
+    depends=('python2' 'python2-requests' 'python2-pytz' 'python2-six')
+
+    cd "${srcdir}/python2-${_pypiname}-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1
+
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
