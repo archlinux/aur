@@ -3,10 +3,10 @@
 
 pkgname=the_platinum_searcher
 pkgver=2.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A code search tool similar to ack and the_silver_searcher(ag)'
 arch=('x86_64')
-makedepends=('git' 'go' 'mercurial')
+makedepends=('git' 'go')
 url='https://github.com/monochromegane/the_platinum_searcher'
 license=('MIT')
 provides=('the_platinum_searcher')
