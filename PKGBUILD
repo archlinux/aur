@@ -9,6 +9,8 @@ fi
 
 if [[ -n "$_piver" ]]; then
   _qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
+  makedepends=('git' "qt-sdk-raspberry-pi${_piver}")
+  depends=('qt-sdk-raspberry-pi-target-libs')
 fi
 
 _pkgname=literm
@@ -21,14 +23,6 @@ url='https://github.com/rburchell/literm'
 license=('GPL2')
 source=("git://github.com/rburchell/literm.git")
 sha256sums=('SKIP')
-
-if [[ -n "$_piver" ]]; then
-  makedepends=('git' "qt-sdk-raspberry-pi${_piver}")
-  depends=('qt-sdk-raspberry-pi-target-libs')
-else
-  makedepends=('git')
-  depends=('qt5-declarative')
-fi
 
 pkgver () {
   cd "$srcdir/$_pkgname"
