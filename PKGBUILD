@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.0.beta8.r0.gc011cfada9
+pkgver=8.0.beta11.r0.g61fa91ff0b
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'modular_decomposition: modular decomposition of graphs' 'ffmpeg: to export animations to video' 'imagemagick: to show animations'
-  'coxeter3: Coxeter groups implementation' 'cryptominisat2: SAT solver' 'gap-data: for computing Galois groups'
+  'coxeter3: Coxeter groups implementation' 'cryptominisat5: SAT solver' 'gap-data: for computing Galois groups'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
@@ -32,15 +32,15 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'sirocco: for computing the fundamental group of the complement of a plane curve'
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
-  mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
+  mcqd coxeter3 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        env.patch cython-sys-path.patch is-package-installed.patch package.patch latte-count.patch
+        env.patch cython-sys-path.patch package.patch latte-count.patch
         jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch r-no-readline.patch fes02.patch
-        create_extension.patch include_dirs_from_externs.patch)
+        create_extension.patch include_dirs_from_externs.patch
+        sagemath-ecl-no-sigfpe.patch)
 sha256sums=('SKIP'
             'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
             '4a411b6253f54e610523440acf86526390a09b05ebff10ec0008fa046ee1ac66'
-            '57349b0d1596a1719ba97f1c4d0cceb1ab0051a551c9904064145a5583c883f2'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
             'c6836783251d94c00f0229c1e671de86c58c6c6fb0f6959725317817abc64ca8'
             '889b65598d2a15e73eb482f543ec9b28d8992eeb57b07883c2e9627dfee15a9b'
@@ -49,7 +49,8 @@ sha256sums=('SKIP'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
             'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
             '362bd7603e14f729c87eebc9d3f56eb8a9ec94456038f0cb17591e81c459ef8e'
-            '19603251870e308e824d130611d5211482bc5912579780a527748d7f8d2ef560')
+            '19603251870e308e824d130611d5211482bc5912579780a527748d7f8d2ef560'
+            'c31809f887bf9acc45c5bd9dd30bb93e73601d3efbf3016594c3c1d241731c8a')
 
 pkgver() {
   cd sage
@@ -76,12 +77,15 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # make 'sage -notebook=jupyter' work with our python3 jupyter-notebook package
   patch -p1 -i ../sagemath-python3-notebook.patch
+# fix Cremona database detection
+  sed -e "s|is_package_installed('database_cremona_ellcurve')|os.path.exists('/usr/share/cremona/cremona.db')|" \
+   -i src/sage/databases/cremona.py
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
   patch -p1 -i ../fes02.patch
-# replace is_package_installed usage http://trac.sagemath.org/ticket/20377
-  patch -p1 -i ../is-package-installed.patch
+# disable SIGFPE for ecl https://trac.sagemath.org/ticket/22191
+  patch -p1 -i ../sagemath-ecl-no-sigfpe.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*

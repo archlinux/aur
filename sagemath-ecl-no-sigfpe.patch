@@ -1,0 +1,12 @@
+diff --git a/src/sage/libs/ecl.pyx b/src/sage/libs/ecl.pyx
+index 1fafb6c..4f730ad 100644
+--- a/src/sage/libs/ecl.pyx
++++ b/src/sage/libs/ecl.pyx
+@@ -314,6 +314,7 @@ def init_ecl():
+         """))
+     safe_funcall_clobj=cl_eval(string_to_object("(symbol-function 'sage-safe-funcall)"))
+ 
++    cl_eval(string_to_object("(si::trap-fpe T NIL)"))
+     ecl_has_booted = 1
+ 
+ cdef cl_object ecl_safe_eval(cl_object form) except NULL:
