@@ -1,7 +1,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=libccp4
 pkgver=6.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Protein X-ray crystallography toolkit - Libraries"
 arch=('i686' 'x86_64')
 url="http://www.ccp4.ac.uk/"
