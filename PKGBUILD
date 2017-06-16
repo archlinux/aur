@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=lastpass-cli-git
-pkgver=1.1.2.r6.g1c6f8f6
+pkgver=1.2.0.r2.g2c60147
 pkgrel=1
 pkgdesc="LastPass command line interface tool (git version)"
 arch=('i686' 'x86_64')
