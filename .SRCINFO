@@ -1,0 +1,13 @@
+pkgbase = splashy-bin
+	pkgdesc = Unsplash photos as desktop wallpapers
+	pkgver = 1
+	pkgrel = 1
+	url = https://splashy.art/
+	arch = x86_64
+	license = ignored
+	provides = splashy
+	source = https://splashy.s3.amazonaws.com/Splashy-v1.0.deb
+	md5sums = eb1583dbbb406a3641df0d3006ece557
+
+pkgname = splashy-bin
+
