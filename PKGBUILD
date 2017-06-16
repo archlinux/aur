@@ -51,7 +51,6 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
     -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
-    -DPARAVIEW_BUILD_QT_GUI:BOOL=OFF \
     -DOSPRAY_INSTALL_DIR:PATH=/usr \
     -DPARAVIEW_ENABLE_FFMPEG:BOOL=OFF \
     -DPARAVIEW_ENABLE_PYTHON:BOOL=OFF \
