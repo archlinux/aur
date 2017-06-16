@@ -1,13 +1,12 @@
 # Maintainer: DetMittens
 pkgname=libaom-git
 _gitname=aom
-pkgver=r20380.550a11757
+pkgver=r21126.1d1df182e
 pkgrel=1
 pkgdesc="Alliance for Open Media codec library with encoders and decoders for AV1"
 arch=('i686' 'x86_64')
 url="http://aomedia.org"
 license=('custom:BSD-2-Clause' 'custom:AOM-Patent-1.0')
-depends=('gcc-libs' 'glibc')
 makedepends=( 'yasm' 'git')
 provides=('libaom.so')
 source=('git+https://aomedia.googlesource.com/aom')
@@ -31,6 +30,7 @@ build() {
     --disable-static \
     --enable-runtime-cpu-detect \
     --enable-webm-io \
+    --enable-libyuv \
     --enable-postproc \
     --enable-highbitdepth \
     --enable-lowbitdepth \
