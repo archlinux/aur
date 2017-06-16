@@ -2,7 +2,7 @@
 # Contributor: Rod Kay              <charlie5 on #ada at freenode.net>
 
 pkgname=florist
-pkgver=2016
+pkgver=2017
 pkgrel=1
 pkgdesc="An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding."
 
@@ -10,27 +10,11 @@ arch=('any')
 url="http://sourceforge.net/projects/gnat-florist/"
 license=('GPL3')
 
-groups=()
-
 depends=('gcc-ada')
-makedepends=()
-optdepends=()
-
-provides=()
-conflicts=()
-replaces=()
-backup=()
-
 options=(staticlibs)
 
-noextract=()
-install=
-changelog=
-
-source=('http://mirrors.cdn.adacore.com/art/57399229c7a447658e0aff79')
-
-md5sums=('c739f1c1e724b177a7bbc682435d2df3')
-
+source=('http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed009')
+sha1sums=('7f3fb3e1ccee420cab1172836064915bb586e3e4')
 
 
 build() 
@@ -38,9 +22,8 @@ build()
   cd "$srcdir/$pkgname-gpl-$pkgver-src"
 
   ./configure --prefix=$pkgdir/usr
-  make -j7
+  PROCESSORS="$(nproc)" make
 }
-
 
 
 package() 
