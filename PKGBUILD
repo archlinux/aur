@@ -3,13 +3,13 @@
 
 _name=firefox
 _channel=dev-da
-_version='54.0b14'
+_version='55.0b2'
 _file="${_name}-${_version}"
 _srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases/${_version}/"
 pkgname="${_name}-${_channel}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Danish'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=54.0b14.20170608
+pkgver=55.0b2.20170616
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
