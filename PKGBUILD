@@ -2,8 +2,9 @@
 # Maintainer: Thomas Parker <tom@tomparker.tech>
 
 pkgbase=linux-xps-9560               # Build stock -ARCH kernel
+#pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
-pkgver=4.11.3
+pkgver=4.11.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -15,7 +16,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config.i686' 'config.x86_64' '.config'
+        'config.i686' 'config.x86_64'
+	'.config'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
@@ -24,14 +26,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
+            '1686ea3200069acd7869075a208ad6771c651b4f9d942b4a340fb8606c75fe13'
             'SKIP'
-            '8649f8fa27863d485ae2e28579a79cec46d8c3f9d2905303c1242f436bab7219'
-            'e45f067f94f326fa5fd809b23c2bf296a182c3e70cafb74bd3f185c8d3f93aa1'
-            'f19f9af45d5d60f87ff88b397d25cb959e3408494f97ec9d1cc270ae3adace1c'
+            'c6cd82d752eafc62d383db71f8cc6ad34630d86b83677ae4e50b5993c6f6875a'
+            '15df5086374d77676177cf9f89a59d3ebf3542457df436913d0ce09f10f893f5'
+            '9c13354b3afbe9ab147727b1e91b54e57a310176e295b1898b249e957556560b'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-	    '93c200f7cd0f7a860440d6b5190b84014534346ff0fd5582b4554a4854945f08')
+            '93c200f7cd0f7a860440d6b5190b84014534346ff0fd5582b4554a4854945f08')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -44,6 +46,7 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
   patch -Np1 -i "${srcdir}/patch-ath10k.patch"
 
   # add latest fixes from stable queue, if needed
@@ -84,7 +87,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="A custom linux kernel and modules for the Dell XPS 15 - 9560.  Has ACPI override enabled and a wifi patch.  Should be used with 'acpi_rev_override=1' in boot flags."
+  pkgdesc="A custom linux kernel and modules for the Dell XPS 15 - 9560.  Has ACPI override enabled and a wifi patch.  Should be used with 'acpi_rev_override=1' in boot flags. WiFi bug: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1692836"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -154,7 +157,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
