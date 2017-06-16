@@ -2,8 +2,8 @@
 # Sun Jan  1 18:26:10 UTC 2017
 pkgbase = tor-browser-dev-en
 	pkgdesc = Tor Browser is +1 for privacy and -1 for mass surveillance
-	pkgver = 7.0a4
-	pkgrel = 3
+	pkgver = 7.5a1
+	pkgrel = 1
 	url = https://www.torproject.org/projects/torbrowser.html.en
 	arch = i686
 	arch = x86_64
@@ -35,13 +35,13 @@ pkgbase = tor-browser-dev-en
 	sha1sums = 344ded68e188649c0d0347f8f675e006c36c03f1
 	sha1sums = aa3f84762b5f0b39aea5e03befdb03c4f53e8078
 	sha1sums = 309aac05a0b0f022eda2f292fb572b523726409c
-	source_i686 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux32-7.0a4_en-US.tar.xz
-	source_i686 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux32-7.0a4_en-US.tar.xz.asc
-	sha256sums_i686 = a019f786934257011d36c332d4b465f40332c3cd952264559d6698d0bff659fc
+	source_i686 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux32-7.5a1_en-US.tar.xz
+	source_i686 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux32-7.5a1_en-US.tar.xz.asc
+	sha256sums_i686 = d183dc0f4c8f5400ae03703cc89bfe2daaac253ca43eb402f3336a88cad11488
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux64-7.0a4_en-US.tar.xz
-	source_x86_64 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux64-7.0a4_en-US.tar.xz.asc
-	sha256sums_x86_64 = 615547c4230ac398bbd829a9df98d8303668ac2c5207a6c9277cf12b9fe39d58
+	source_x86_64 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux64-7.5a1_en-US.tar.xz
+	source_x86_64 = https://dist.torproject.org/torbrowser/7.0a4/tor-browser-linux64-7.5a1_en-US.tar.xz.asc
+	sha256sums_x86_64 = 8d908b0476faf8b0a0b0a941007bb6ef9d861c66b2675c40b01cf322aefd686f
 	sha256sums_x86_64 = SKIP
 
 pkgname = tor-browser-dev-en
