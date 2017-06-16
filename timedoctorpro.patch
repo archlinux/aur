@@ -1,0 +1,10 @@
+--- ./opt/timedoctorpro/timedoctorpro	2016-11-23 06:32:18.000000000 +0100
++++ ./opt/timedoctorpro/timedoctorpro	2017-06-16 21:45:38.026766821 +0200
+@@ -11,4 +11,7 @@
+ export LD_LIBRARY_PATH
+ QT_PLUGIN_PATH=$TDDIR
+ export QT_PLUGIN_PATH
++
++export LD_PRELOAD="/opt/opencv2/lib/libopencv_calib3d.so /opt/opencv2/lib/libopencv_contrib.so /opt/opencv2/lib/libopencv_core.so /opt/opencv2/lib/libopencv_features2d.so /opt/opencv2/lib/libopencv_flann.so /opt/opencv2/lib/libopencv_gpu.so /opt/opencv2/lib/libopencv_highgui.so /opt/opencv2/lib/libopencv_imgproc.so /opt/opencv2/lib/libopencv_legacy.so /opt/opencv2/lib/libopencv_ml.so /opt/opencv2/lib/libopencv_nonfree.so /opt/opencv2/lib/libopencv_objdetect.so /opt/opencv2/lib/libopencv_ocl.so /opt/opencv2/lib/libopencv_photo.so /opt/opencv2/lib/libopencv_stitching.so /opt/opencv2/lib/libopencv_superres.so /opt/opencv2/lib/libopencv_video.so /opt/opencv2/lib/libopencv_videostab.so"
++
+ exec $TDDIR/timedoctorpro.run "$@"
