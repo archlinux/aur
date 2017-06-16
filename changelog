@@ -1,18 +1,19 @@
-Released on November 24th 2015
+Changelog Modelio 3.6.1
 
 Evolutions:
 
-    Diagrams layout assistant is now customizable.
-    Floating labels are no more taken into account by the layout assistant.
-    Views positions are now saved when closing a project.
+    Improvement of the indexes management.
+    Diagrams palette are now displayed in ‘icon’ mode by default.
+    A diagram selection box now appears when creating a Related Diagram Link.
 
 Fixes / Improvements:
 
-    Fixes in the Patterns feature.
-    Fix Use Cases edition boxes.
-    Fixes in Sequence diagrams.
-    Fixes in Activity diagrams.
-    Fixes in XMI import/export.
+    Fixed issues with edition in diagrams when several diagrams are opened.
+    Fixed issues with the XMI import/export.
+    Fixed memory leaks in diagram editors.
+    Fixed issue with integer values edition in the Properties view.
+    Fixed issue with elements label display in ‘User defined image’ representation mode.
+    Fixed issue with project export on MacOS.
 
 Notes:
 
