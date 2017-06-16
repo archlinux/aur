@@ -1,9 +1,9 @@
 # Maintainer: boosterdev@linuxmail.org
 
 pkgname=flashplayer-standalone
-pkgver=25.0.0.171
+pkgver="26.0.0.126"
 pkgrel=1
-pkgdesc="Macromedia standalone flash player (nonfree)"
+pkgdesc="Adobe Flash Player (Standalone)"
 arch=('x86_64')
 url='http://www.adobe.com/support/flashplayer/downloads.html'
 license=('custom')
