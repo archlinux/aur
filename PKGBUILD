@@ -3,18 +3,18 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zencash
-pkgver=2.0.9
+pkgver=2.0.9.2
 _pkgname=zen
 _commit=c400f0676d7c2d1facab15563982e4c812f4e6d3
-pkgrel=2
+pkgrel=1
 pkgdesc='The zencash cryptocurrency daemon and tools.'
 arch=('x86_64')
-url='https://zencash.io/'
+url='https://zensystem.io/'
 license=('MIT')
 conflicts=('zcash') # because of libzcashconsensus.so
 depends=('boost-libs' 'libevent' 'miniupnpc' 'zeromq')
 makedepends=('boost' 'cargo' 'cmake' 'git' 'python' 'wget')
-checkdepends=('python' 'python2' 'python2-pyzmq')
+# checkdepends=('python' 'python2' 'python2-pyzmq')
 source=("git+https://github.com/ZencashOfficial/zen.git#commit=${_commit}"
         "boost-no-mt-suffix.patch"
         "use-system-libraries.patch"
