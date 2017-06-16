@@ -2,12 +2,12 @@
 
 pkgname=nxt-git
 pkgver=1.11.5+0+gfc25fd5a2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Nxt Reference Software Client for use with the Nxt Cryptocurrency"
 arch=('any')
 url="http://nxt.org"
 license=('MIT' 'GPL' 'MPL' 'APACHE')
-depends=('java-runtime>=8' 'systemd')
+depends=('java-runtime-headless>=8' 'systemd')
 makedepends=('java-environment>=8')
 source=('git+https://bitbucket.org/JeanLucPicard/nxt.git'
         'logging.properties'

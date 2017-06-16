@@ -1,7 +1,7 @@
 pkgbase = nxt-git
 	pkgdesc = The Nxt Reference Software Client for use with the Nxt Cryptocurrency
 	pkgver = 1.11.5+0+gfc25fd5a2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nxt.org
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = nxt-git
 	license = MPL
 	license = APACHE
 	makedepends = java-environment>=8
-	depends = java-runtime>=8
+	depends = java-runtime-headless>=8
 	depends = systemd
 	backup = etc/nxt/nxt.properties
 	backup = etc/nxt/logging.properties
