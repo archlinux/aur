@@ -1,7 +1,7 @@
 # Maintainer: xausky <xausky[at]163[dot]com>
 pkgname=hand-network
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The application can auto login hand-china company network.'
 url='https://github.com/xausky/hand-network'
 arch=('x86_64')
