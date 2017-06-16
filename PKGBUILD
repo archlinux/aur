@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 _vendorname=CLIQZ
-pkgver=1.13.4
+pkgver=1.13.6
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser"
 arch=('i686' 'x86_64')
@@ -13,11 +13,11 @@ depends=('alsa-lib' 'dbus-glib' 'ffmpeg' 'gtk2' 'gtk3' 'hunspell'
          'mozilla-common' 'nss' 'sqlite' 'startup-notification'
          'ttf-font')
 makedepends=('python2' 'zip' 'autoconf2.13' 'yasm' 'libidl2'
-             'linux-api-headers' 'rust' 'cargo')
+             'linux-api-headers' 'rust' 'cargo' 'gcc5')
 conflicts=('cliqz-bin')
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         "fix-wifi-scanner.diff")
-sha256sums=('356458042a839912ef3d02f71cce047984442f84fae9d38db2e76a865cc39132'
+sha256sums=('00889950244c53baeaf6617ed26de3d2bee1a960aaaa0eb74b1fc9e554d49658'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 options=(!emptydirs !makeflags !strip)
 
@@ -26,6 +26,9 @@ prepare() {
   sed -i 's/ifeq ($(OS_ARCH), Linux)/ifeq ($(OS_ARCH), Nope)/' toolkit/mozapps/installer/upload-files.mk
   sed -i "s/@MOZ_APP_DISPLAYNAME@/$_vendorname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
   sed -i "s/@MOZ_APP_NAME@/$pkgname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
+
+  # We get a 403 on this one
+  sed -i 's|CLIQZ_EXT_URL = "http://cdn2.cliqz.com/update/browser/Cliqz.1.13.0.xpi"|CLIQZ_EXT_URL = "http://repository.cliqz.com.s3.amazonaws.com/dist/release/1.13.6/20170522183742/cliqz%40cliqz.com.xpi"|' config/rules.mk
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i $srcdir/fix-wifi-scanner.diff
@@ -48,7 +51,6 @@ prepare() {
 ac_add_options --prefix=/usr
 ac_add_options --enable-gold
 ac_add_options --enable-pie
-ac_add_options --enable-rust
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -76,11 +78,22 @@ END
 build() {
   cd $srcdir/$_pkgname-$pkgver
 
-  CPPFLAGS+=" -O2"
+  # Rewrite to avoid multiple -pipe
+  march=$(gcc -Q --help=target | grep march | sed -nr 's/^.*\s+([^\s]+)$/\1/p')
+  CFLAGS="-march=${march} -mtune=generic -O2 -fstack-protector-strong"
+
+  # No need for this one, already in CFLAGS
+  # CPPFLAGS+=" -O2"
 
   # Hardening is currently deactivated as it hangs on my current machine
   # Hardening
   LDFLAGS+=" -Wl,-z,now"
+
+  # Ugly graphic glitches if compiled with gcc7
+  export CXX=/usr/bin/g++-5
+  export CC=/usr/bin/gcc-5
+
+  export CQZ_RELEASE_CHANNEL=release
 
   ./magic_build_and_package.sh
 }
