@@ -31,7 +31,7 @@ optdepends=('bzr: bazaar support'
             'x11-ssh-askpass: ssh support')
 provides=('qtcreator')
 conflicts=('qtcreator')
-source=("git://code.qt.io/qt-creator/qt-creator.git")
+source=('git+https://code.qt.io/qt-creator/qt-creator.git')
 md5sums=('SKIP')
 
 pkgver() {

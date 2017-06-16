@@ -29,7 +29,7 @@ pkgbase = qtcreator-git
 	provides = qtcreator
 	conflicts = qtcreator
 	options = docs
-	source = git://code.qt.io/qt-creator/qt-creator.git
+	source = git+https://code.qt.io/qt-creator/qt-creator.git
 	md5sums = SKIP
 
 pkgname = qtcreator-git
