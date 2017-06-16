@@ -4,6 +4,7 @@ pkgbase = dotbro
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
+	url = https://github.com/hypnoglow/dotbro
 	license = MIT
 	makedepends = go
 	makedepends = git
@@ -12,4 +13,3 @@ pkgbase = dotbro
 	md5sums = SKIP
 
 pkgname = dotbro
-
