@@ -2,7 +2,7 @@
 
 pkgname=coyim
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe and secure chat client"
 arch=('i686' 'x86_64')
 depends=('cairo' 'glib2' 'gtk3' 'pango')
@@ -11,7 +11,7 @@ url="https://coy.im"
 license=('GPL3')
 options=('!strip' '!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/twstrike/coyim/tar.gz/v$pkgver)
-sha256sums=('4a687370d96fa55d08adf91d238b32b1d361c87cd69d323e399126baaa4801d9')
+sha256sums=('30a86c6c83a8b2d8e0e7966a41fd20e8dcdf3a27ff819d9e363771f867f804ef')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
