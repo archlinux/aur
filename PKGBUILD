@@ -9,7 +9,7 @@ arch=(any)
 url="http://mate-desktop.org"
 license=('GPL')
 depends=(
-atril-dev caja-dev engrampa-dev eom-dev libmateweather-dev marco-dev mate-media-dev mate-meta-dev mate-panel-dev pluma-dev
+atril-dev caja-dev engrampa-dev eom-dev libmateweather-dev marco-dev mate-control-center-dev mate-media-dev mate-meta-dev mate-panel-dev pluma-dev
 )
 
 package(){

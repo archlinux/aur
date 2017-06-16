@@ -11,6 +11,7 @@ pkgbase = mate-meta-dev
 	depends = eom-dev
 	depends = libmateweather-dev
 	depends = marco-dev
+	depends = mate-control-center-dev
 	depends = mate-media-dev
 	depends = mate-meta-dev
 	depends = mate-panel-dev
