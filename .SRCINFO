@@ -9,6 +9,7 @@ pkgbase = teleport
 	arch = x86_64
 	license = Apache
 	source = https://github.com/gravitational/teleport/releases/download/v2.0.4/teleport-v2.0.4-linux-amd64-bin.tar.gz
+	depends = glibc
 	source = teleport.service
 	sha256sums = aa27fb0b200038f859a80e3165ac236f3b03d36b7c8a6c8e46ddb8fdcd2a642a
 	sha256sums = 3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc

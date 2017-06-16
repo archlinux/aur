@@ -8,6 +8,7 @@ pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('x86_64')
 url="https://gravitational.com/teleport"
 license=('Apache')
+depends=('glibc')
 install=teleport.install
 source=("https://github.com/gravitational/teleport/releases/download/v${pkgver}/teleport-v${pkgver}-linux-amd64-bin.tar.gz"
         "teleport.service")
