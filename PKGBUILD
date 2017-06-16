@@ -9,7 +9,7 @@
 pkgname=thunderbird-gtk2
 _pkgname=thunderbird
 pkgver=52.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone mail and news reader from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -19,6 +19,8 @@ depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib als
 makedepends=(gcc63 unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
              autoconf2.13 cargo)
 optdepends=('libcanberra: sound support')
+provides=("thunderbird=$pkgver")
+conflicts=(thunderbird)
 options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         thunderbird.desktop
