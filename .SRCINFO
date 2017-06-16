@@ -1,7 +1,7 @@
 pkgbase = pi-hole-ftl
 	pkgdesc = The Pi-hole FTL engine
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pi-hole/FTL
 	install = pi-hole-ftl.install
 	arch = i686
