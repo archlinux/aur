@@ -49,7 +49,7 @@ sha256sums=('bbae5602b9cf6d26ccce9e1bf8b388d79c27cf89673d1a56f248bf0a50e518ed'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
             '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
             'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
-            '0a753ef612fa689465aceb2e8279591bca9b8ffd02ee16da0b69d32388d81303')
+            'd5b2d3408ff68e6f44201493f38330d7a1a10c6126ec768d0e22a61ce4a20b62')
 
 package() {
   # compile PyDev debugger used by PyCharm to speedup debugging
