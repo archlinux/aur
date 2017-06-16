@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.7.0.r434.g4c76b747
+pkgver=0.7.0.r435.g05ba3e95
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ depends=(
     # missing:
         # 'python2-nvd3'
 )
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'gcc5')
 provides=('caffe2-cpu')
 conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu')
@@ -115,6 +115,8 @@ build() {
         -DCAFFE2_CPU_FLAGS:BOOL=OFF \
         -DCMAKE_BUILD_TYPE:STRING=Release \
         -DCMAKE_COLOR_MAKEFILE:BOOL=ON \
+        -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 \
+        -DCMAKE_C_COMPILER=/usr/bin/gcc-5 \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL=NO \
         -DCMAKE_SKIP_RPATH:BOOL=NO \
