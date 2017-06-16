@@ -37,13 +37,14 @@ end
 # Update logic: Start with current version, alway incrementing the beta part by one and see if it exists, if yes
 #	we perform an additional step if not we are happy with what we've found.
 success = false
+new_version = nil
 v_num, v_patch = current_version.split("b")
 loop do
 	v_patch = v_patch.to_i + 1
 	new_version = "#{v_num}b#{v_patch}"
 
 	if attempt_upgrade(new_version)
-		success = false
+		success = true
 	else
 		break
 	end
