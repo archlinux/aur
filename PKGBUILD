@@ -4,7 +4,7 @@
 pkgname=perl-gnome2-vte
 _cpanname=Gnome2-Vte
 pkgver=0.11
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl interface to the Virtual Terminal Emulation library "
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://search.cpan.org/~TSCH/${_cpanname}"
@@ -18,7 +18,7 @@ build() {
   cd $srcdir/${_cpanname}-${pkgver}
   sed -i '/^auto_install/d' Makefile.PL
   PERL_MM_USE_DEFAULT=1 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+  PERL_USE_UNSAFE_INC=1 make
 }
 
 package() {
