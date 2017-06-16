@@ -1,12 +1,12 @@
 pkgname=alacritty-git
-pkgver=0.1.0.489.gf298e04
+pkgver=0.1.0.532.g3c8514b
 pkgrel=1
 pkgdesc="A cross-platform, GPU enhanced terminal emulator"
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
 license=('Apache-2.0')
 depends=('freetype2' 'fontconfig' 'xclip')
-makedepends=('cargo' 'cmake')
+makedepends=('cargo' 'cmake' 'git')
 optdepends=()
 provides=('alacritty')
 conflicts=('alacritty')
