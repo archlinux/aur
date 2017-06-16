@@ -1,0 +1,21 @@
+pkgbase = jvpn-git
+	pkgdesc = Script to connect to the Juniper firewall with enabled HostChecker
+	pkgver = 0.7.0.r18.g39933ba
+	pkgrel = 1
+	url = https://github.com/samm-git/jvpn
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = perl-term-readkey
+	depends = perl-lwp-protocol-https
+	depends = jdk
+	depends = unzip
+	depends = lib32-zlib
+	depends = net-tools
+	provides = jvpn
+	conflicts = jvpn
+	source = git+https://github.com/samm-git/jvpn.git
+	md5sums = SKIP
+
+pkgname = jvpn-git
+
