@@ -1,7 +1,7 @@
 pkgbase = unblur
 	pkgdesc = Aligns the frames of movies recorded on an electron microscope to reduce image blurring due to beam-induced motion
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://grigoriefflab.janelia.org/unblur
 	arch = x86_64
 	license = custom
