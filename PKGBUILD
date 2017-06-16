@@ -14,7 +14,7 @@ depends=("sane" "gtkmm" "imagemagick" "libtiff")
 makedepends=("boost")
 optdepends=("tesseract: OCR support")
 source=("http://support.epson.net/linux/src/scanner/imagescanv3/fedora/${pkgname}-${pkgver}-1epson4fedora${_fedrel}.src.rpm"
-        "utsushi.desktop"
+        "utsushi-scan-gtkmm.desktop"
         "utsushi.conf")
 md5sums=('89a65516b87742532a78022fcd5a9a36'
          '34907cc33aa800c54ff83abb0eac3fc4'
@@ -46,6 +46,6 @@ build() {
 package() {
   cd $srcdir/${_pkgname}-${_pkgver}
   make DESTDIR=${pkgdir} install
-  install -Dm644 ${srcdir}/utsushi.desktop $pkgdir/usr/share/applications/utsushi.desktop
+  install -Dm644 ${srcdir}/utsushi-scan-gtkmm.desktop $pkgdir/usr/share/applications/utsushi-scan-gtkmm.desktop
   install -Dm644 ${srcdir}/utsushi.conf $pkgdir/etc/utsushi/utsushi.conf
 }
