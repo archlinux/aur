@@ -2,10 +2,10 @@
 
 pkgname=caffe2-cpu-git
 pkgver=0.7.0.r252.ge6c6b859
-pkgrel=2
-pkgdesc="A new lightweight, modular, and scalable deep learning framework (git version, cpu only)"
+pkgrel=3
+pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
-url="http://caffe2.ai/"
+url='http://caffe2.ai/'
 license=('BSD')
 depends=(
     # binary repositories:
@@ -32,7 +32,7 @@ conflicts=('caffe' 'caffe-cpu' 'caffe-git' 'caffe-cpu-git'
 options=('!emptydirs')
 source=(
     # main source:
-        "$pkgname"::"git+https://github.com/caffe2/caffe2.git"
+        "$pkgname"::'git+https://github.com/caffe2/caffe2.git'
     # git submodules:
         'submodule-pybind11'::'git+https://github.com/pybind/pybind11.git'
         'submodule-nccl'::'git+https://github.com/nvidia/nccl.git'
@@ -166,6 +166,6 @@ package() {
     
     # license
     cd "${srcdir}/${pkgname}"
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "PATENTS" "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
+    install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 'PATENTS' "${pkgdir}/usr/share/licenses/${pkgname}/PATENTS"
 }
