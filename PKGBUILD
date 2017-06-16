@@ -1,7 +1,7 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=curl-git
-pkgver=7.47.0.18.g0515e49
+pkgver=7.54.1.29.g01811b674
 pkgrel=1
 pkgdesc="A URL retrieval utility and library"
 arch=('i686' 'x86_64')
@@ -12,13 +12,10 @@ makedepends=('git')
 provides=('curl=999')
 conflicts=('curl')
 options=('!libtool')
-source=('git://github.com/curl/curl.git'
-        'curlbuild.h')
-md5sums=('SKIP'
-         '751bd433ede935c8fae727377625a8ae')
+source=('git://github.com/curl/curl.git')
+md5sums=('SKIP')
 
 pkgver() {
-  # curl-7_30_0-101-gf4e6e20
   cd curl
 
   git describe | sed 's/curl-//; s/[_-]/./g'
@@ -37,7 +34,7 @@ build() {
       --enable-manual \
       --enable-versioned-symbols \
       --enable-threaded-resolver \
-      --without-libidn \
+      --with-gssapi \
       --with-random=/dev/urandom \
       --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
 
@@ -49,18 +46,5 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  local ptrsize=$(cpp <<<'__SIZEOF_POINTER__' | sed '/^#/d')
-  case $ptrsize in
-    8) _curlbuild=curlbuild-64.h ;;
-    4) _curlbuild=curlbuild-32.h ;;
-    *) error "unknown pointer size for architecture: %s bytes" "$ptrsize"
-      exit 1
-      ;;
-  esac
-
-  install -Dm644 docs/libcurl/libcurl.m4 $pkgdir/usr/share/aclocal/libcurl.m4
-  mv "$pkgdir/usr/include/curl/curlbuild.h" "$pkgdir/usr/include/curl/$_curlbuild"
-  install -m 644 $srcdir/curlbuild.h "$pkgdir/usr/include/curl/curlbuild.h"
-
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
