@@ -1,0 +1,19 @@
+diff -u dhcpdump.c dhcpdump.c
+--- dhcpdump.c	2008-06-23 23:26:52.000000000 -0400
++++ dhcpdump.c	2017-06-09 18:56:33.946931778 -0400
+@@ -16,6 +16,7 @@
+ #include <netinet/in.h>
+ #include <netinet/ip.h>
+ #include <netinet/udp.h>
++#include <netinet/ether.h>
+ #include <arpa/inet.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -24,6 +25,7 @@
+ #include <pcap.h>
+ #include <err.h>
+ #include <regex.h>
++#include <time.h>
+ #include "dhcp_options.h"
+ 
+ #ifndef HAVE_STRSEP
