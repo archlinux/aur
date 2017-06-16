@@ -3,7 +3,7 @@
 pkgname=rdkit-python2
 _pkgname=RDKit
 pkgver=2017_03_2
-pkgrel=1
+pkgrel=2
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64" "armv7h")
 url="http://rdkit.org/"
@@ -24,7 +24,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DRDK_INSTALL_INTREE=0 \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_LIBRARY=/usr/lib/libpython3.6m.so \
+    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
     -DPYTHON_INCLUDE_DIR=/usr/include/python2.7/ \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DRDK_BUILD_INCHI_SUPPORT=ON
