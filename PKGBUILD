@@ -2,7 +2,7 @@
 pkgname=peek
 pkgver=1.0.3
 pkgrel=1
-pkgdesc="Simple animated GIF screen recorder with an easy to use interface"
+pkgdesc="Simple screen recorder with an easy to use interface"
 arch=('i686' 'x86_64')
 url="https://github.com/phw/peek"
 license=('GPL3')
