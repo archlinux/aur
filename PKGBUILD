@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://lmb.bioch.ox.ac.uk/coot/"
 license=('GPL')
 replaces=('coot-data')
-depends=('guile1.8' 'guile1.8-lib' 'guile1.8-gtk' 'guile1.8-gui' 'gtkglext' 'libccp4>=6.5.1-2' 'clipper' 'goocanvas1' 'gsl' 'libgnomecanvas' 'imlib' 'swig'
+depends=('guile1.8' 'guile1.8-lib' 'guile1.8-gtk' 'guile1.8-gui' 'gtkglext' 'libccp4>=6.5.1-2' 'clipper>=2.1.20170202-3' 'goocanvas1' 'gsl' 'libgnomecanvas' 'imlib' 'swig'
          'freeglut' 'libgl' 'gtk2' 'cairo' 'libssm>=1.4.0-2' 'zlib' 'curl' 'python2' 'pygtk' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit-python2' 'mmdb2>=2.0.12-4')
 source=(http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/source/releases/$pkgname-$pkgver.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
