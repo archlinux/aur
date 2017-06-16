@@ -1,12 +1,13 @@
 pkgbase = haskell-pcap
 	pkgdesc = A system-independent interface for user-level packet capture
 	pkgver = 0.4.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bos/pcap
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = git
 	depends = ghc
+	depends = haskell-network
 	provides = haskell-pcap
 	conflicts = haskell-pcap
 	options = !emptydirs
