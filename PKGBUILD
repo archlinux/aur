@@ -1,16 +1,16 @@
 _username=volunode
 _reponame=volunode
-#_ref="#branch=develop"
+#_ref="#branch=BranchID"
 #_ref="#commit=CommitID"
 _pkgbase=volunode
 pkgname=${_pkgbase}-git
 pkgdesc="Next generation client for Berkeley Open Infrastructure for Network Computing."
-pkgver=r30245.ea496d7c6
+pkgver=r30264.41d8578cd
 pkgrel=1
 arch=(
     'x86_64'
 )
-url="https://github.com/$_username/${_reponame/}"
+url="https://github.com/$_username/${_reponame}"
 license=('LGPL')
 depends=(
     'curl'
@@ -26,13 +26,11 @@ makedepends=(
 install=$_pkgbase.install
 options=('!staticlibs')
 source=("git+https://github.com/${_username}/${_reponame}${_ref}"
-         $_pkgbase.desktop
          $_pkgbase.service
          $_pkgbase.sysusers)
 sha256sums=(
             'SKIP'
-            'e41addacd2a1f508f7ac6803e53228fb580fb6b1fdf258322c4d0221d9ca90d1'
-            '1b1233ae27c0611e67da9adcaf7e4f23a4edde10d9ff2da351aebb85df9886ee'
+            '194e196253046ae6515322332dfd14111aa2fb9de8bf6ed75423de30170e7883'
             'c7a03d70cce6206d071d99c13315977db4c4deac2cab52a236f0825325720907'
             )
 

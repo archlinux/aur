@@ -4,8 +4,9 @@ Description=Volunode daemon
 [Service]
 User=volunode
 Nice=19
-ExecStart=/usr/bin/volunode --gui_rpc_port 31417 --allow_remote_gui_rpc
+ExecStart=/usr/bin/volunode
 WorkingDirectory=/var/lib/volunode
+Environment=TCP_RPC_PORT=31417
 
 [Install]
 WantedBy=multi-user.target
