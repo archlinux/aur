@@ -1,6 +1,6 @@
 pkgbase = notify-when-done-i3-git
 	pkgdesc = Get notifications when commands in non-focused i3's window finish.
-	pkgver = r38.300a0b2
+	pkgver = r39.983bd73
 	pkgrel = 1
 	url = https://github.com/giuscri/notify-when-done-i3
 	install = nwd-i3-git.install
