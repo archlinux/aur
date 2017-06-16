@@ -3,13 +3,13 @@ _ipn=hgettext
 _bpn=haskell-${_ipn}
 pkgname=${_bpn}
 pkgver=0.1.30
-pkgrel=2
+pkgrel=3
 pkgdesc="bindings to libintl.h (gettext, bindtextdomain)"
 arch=(x86_64)
 url="https://github.com/vasylp/hgettext"
 license=('custom:BSD3')
 groups=()
-depends=(ghc haskell-src-exts haskell-uniplate)
+depends=(ghc haskell-src-exts haskell-uniplate haskell-setlocale)
 makedepends=(git)
 provides=(${_bpn})
 conflicts=(${_bpn})
@@ -17,8 +17,17 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("http://hackage.haskell.org/packages/archive/${_ipn}/${pkgver}/${_ipn}-${pkgver}.tar.gz")
-md5sums=('6b36a5c86e13de18c7daef124d9e9a71')
+source=(
+  "http://hackage.haskell.org/packages/archive/${_ipn}/${pkgver}/${_ipn}-${pkgver}.tar.gz"
+  "file://0001-update-to-support-haskell-src-exts-1.18.patch"
+)
+md5sums=('6b36a5c86e13de18c7daef124d9e9a71'
+         'd76683ac658490d60b880e6ee7928fe9')
+
+prepare() {
+  cd "$srcdir/${_ipn}-${pkgver}"
+  patch -Np1 -i "$srcdir/0001-update-to-support-haskell-src-exts-1.18.patch"
+}
 
 build() {
   cd "$srcdir/${_ipn}-${pkgver}"

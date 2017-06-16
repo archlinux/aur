@@ -1,0 +1,52 @@
+From 5bf5932d6a40f5b830ffdbaa2cda2948eef52732 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <siarheit@google.com>
+Date: Sat, 1 Oct 2016 15:13:10 +0100
+Subject: [PATCH] update to support haskell-src-exts-1.18
+
+One of major haskell-src-exts-1.18 changes
+is to parameterise AST with source location
+and add that field to every ast node.
+
+Signed-off-by: Sergei Trofimovich <siarheit@google.com>
+---
+ hgettext.cabal  |  2 +-
+ src/hgettext.hs | 11 +++++++++--
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/hgettext.cabal b/hgettext.cabal
+index af934ac..37b659c 100644
+--- a/hgettext.cabal
++++ b/hgettext.cabal
+@@ -26,6 +26,6 @@ Executable hgettext
+         Main-Is:                hgettext.hs
+         Extensions:             TemplateHaskell
+         Hs-Source-Dirs:         src        
+-        Build-Depends:          base>=3.0.3.0 && <5, uniplate, haskell-src-exts
++        Build-Depends:          base>=3.0.3.0 && <5, uniplate, haskell-src-exts >= 1.18
+         Other-Modules:          Paths_hgettext
+ 
+diff --git a/src/hgettext.hs b/src/hgettext.hs
+index c3b1b12..4139cae 100644
+--- a/src/hgettext.hs
++++ b/src/hgettext.hs
+@@ -49,8 +49,15 @@ parseArgs args =
+     where header = "Usage: hgettext [OPTION] [INPUTFILE] ..."
+ 
+ 
+-toTranslate :: String -> H.ParseResult H.Module -> [(Int, String)]
+-toTranslate f (H.ParseOk z) = nub [ (0, s) | H.App (H.Var (H.UnQual (H.Ident x))) (H.Lit (H.String s)) <- universeBi z, x == f]
++toTranslate :: String -> H.ParseResult (H.Module H.SrcSpanInfo) -> [(Int, String)]
++toTranslate f (H.ParseOk z) = nub [ (0, s)
++                                  | H.App _
++                                        (H.Var _
++                                            (H.UnQual _
++                                                (H.Ident  _ x)))
++                                        (H.Lit _
++                                            (H.String _ s _slit)) <- universeBi z :: [H.Exp H.SrcSpanInfo]
++                                  , x == f]
+ toTranslate _ _ = []
+ 
+ -- Create list of messages from a single file
+-- 
+2.13.1
+
