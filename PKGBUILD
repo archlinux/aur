@@ -1,9 +1,10 @@
-# Maintainer: Valentin-Costel Hăloiu <vially.ichb@gmail.com>
+# Maintainer: pancho horrillo <pancho at pancho dot name>
+# Contributor: Valentin-Costel Hăloiu <vially.ichb@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=the_platinum_searcher
 pkgver=2.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc='A code search tool similar to ack, the_silver_searcher (ag) and ripgrep (rg).'
 arch=('x86_64')
 makedepends=('git' 'go')
