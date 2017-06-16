@@ -1,12 +1,12 @@
 # Maintainer: Max Bruckner <max at maxbruckner dot de>
 pkgname=cpp-dependencies
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to check C++ #include dependencies (dependency graphs created in .dot format)"
 arch=('x86_64' 'i686')
 url="https://github.com/tomtom-international/cpp-dependencies"
-license=('Apache2')
-depends=('graphviz')
+license=('Apache')
+optdepends=('graphviz')
 makedepends=('cmake')
 conflicts=('cpp-dependencies-git')
 source=("cpp-dependencies-$pkgver.tar.gz::https://github.com/tomtom-international/cpp-dependencies/archive/$pkgver.tar.gz")
