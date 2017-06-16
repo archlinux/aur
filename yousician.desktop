@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Yousician music teacher
+Comment=Singstar-like music teacher
+Path=/opt/yousician
+Exec=/opt/yousician/Yousician\ Launcher
+#Icon=battlescribe
+Terminal=false
+Categories=Game;Unity
+X-Desktop-File-Install-Version=0.22
