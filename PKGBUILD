@@ -1,12 +1,12 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-jsonserializer
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A library to perform generic seralization and deserialization of QObjects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QJsonSerializer"
 license=('BSD')
-depends=('qt5-base>=5.8.0' 'qt5-tools>=5.8.0')
+depends=('qt5-base' 'qt5-tools')
 makedepends=('git')
 source=("$pkgname-$pkgver::git+https://github.com/Skycoder42/QJsonSerializer.git#tag=$pkgver")
 md5sums=('SKIP')
