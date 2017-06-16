@@ -26,10 +26,10 @@ build() {
   cmake ../${_upstream_name}-${pkgver} -DCMAKE_INSTALL_PREFIX="${pkgdir}`kf5-config --prefix`" \
                                        -DCMAKE_BUILD_TYPE=Release
   make
-  rm -f "$pkgdir/usr/share/icons/breeze/icon-theme.cache"
 }
 
 package() {
   cd build
   make install
+  rm -f "$pkgdir/usr/share/icons/breeze/icon-theme.cache" || echo
 }
