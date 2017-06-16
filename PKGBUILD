@@ -2,13 +2,13 @@
 
 pkgname=caffe2-cpu-git
 pkgver=0.7.0.r435.g05ba3e95
-pkgrel=2
+pkgrel=3
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
 license=('BSD')
 depends=(
-    # binary repositories:
+    # official repositories:
         # required:
             'google-glog' 'protobuf' 'python2' 'python2-numpy' 'python2-protobuf'
         # not required but enabled in build:
