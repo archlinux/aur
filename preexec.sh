@@ -7,7 +7,7 @@ __nwd_preexec() {
 
     local no_i3
     no_i3=0
-    [[ -z $DISPLAY || $(pgrep i3|wc -l) -eq 0 ]] && no_i3=1
+    [[ -z $DISPLAY || -z $(i3 --get-socketpath) ]] && no_i3=1
     [[ $no_i3 -eq 1 || -z $1 ]] && return
 
     __nwd_cmd=$1
@@ -20,7 +20,7 @@ __nwd_precmd() {
 
     local no_i3
     no_i3=0
-    [[ -z $DISPLAY || $(pgrep i3|wc -l) -eq 0 ]] && no_i3=1
+    [[ -z $DISPLAY || -z $(i3 --get-socketpath) ]] && no_i3=1
     [[ $no_i3 -eq 1 || -z $__nwd_cmd ]] && return
 
     local current_focused
