@@ -1,8 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2017.1.3
-_pkgver=2017.1.3
+pkgver=2017.1.4
+_pkgver=2017.1.4
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('any')
@@ -43,8 +43,8 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python-tox: Python environments for testing tool with Python 3', 
             'jupyter: For support Jupyter Notebook')
 # for no-jdk:
-# sha256sums=('e53118815de5a32afb4c85518b15137097428a2982fbf7cc1de6a05574cf9601'
-sha256sums=('0cb46ef439e3608162235efbb755844c62016356b32738123efd12500682eff3'
+# sha256sums=('5afb1b816ab3028aea1d4b18c7d74561a53f0bb7f029b72374417b74fd1e3c2c'
+sha256sums=('bbae5602b9cf6d26ccce9e1bf8b388d79c27cf89673d1a56f248bf0a50e518ed'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
             '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
