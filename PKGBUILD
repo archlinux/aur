@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 197154 2013-10-23 13:04:19Z allan $
-# Maintainer: Allan McRae <allan@archlinux.org>
+# Maintainer: ajs124 < aur AT ajs124 DOT de >
+# Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=pcre-static
-pkgver=8.37
+pkgver=8.40
 pkgrel=1
 pkgdesc="A library that implements Perl 5-style regular expressions"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends=('gcc-libs')
 options=('staticlibs' '!libtool')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8')
 source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${pkgver}.tar.bz2{,.sig})
-md5sums=('ed91be292cb01d21bc7e526816c26981'
-         'SKIP')
+sha256sums=('00e27a29ead4267e3de8111fcaa59b132d0533cdfdbdddf4b0604279acbcf4f4'
+            'SKIP')
 
 build() {
   cd "${srcdir}"/pcre-${pkgver}
