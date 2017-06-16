@@ -2,13 +2,13 @@
 
 pkgname=nginx-mainline-mod-http-xslt-filter
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
 
 pkgdesc='HTTP XSLT module for the Nginx web server'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 depends=('nginx-mainline' 'libxslt')
 url="https://nginx.org"
 license=('custom')
