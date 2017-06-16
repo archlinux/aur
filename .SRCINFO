@@ -5,6 +5,7 @@ pkgbase = yousician
 	url = http://yousician.com/
 	arch = x86_64
 	license = unknown
+	depends = clang
 	depends = libc++
 	depends = libc++abi
 	source = https://d3mzlbmn9ukddk.cloudfront.net/Builds/Yousician.tar.gz
