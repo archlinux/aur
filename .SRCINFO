@@ -1,15 +1,15 @@
 pkgbase = qt5-jsonserializer
 	pkgdesc = A library to perform generic seralization and deserialization of QObjects
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/Skycoder42/QJsonSerializer
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = qt5-base>=5.8.0
-	depends = qt5-tools>=5.8.0
-	source = qt5-jsonserializer-2.1.1::git+https://github.com/Skycoder42/QJsonSerializer.git#tag=2.1.1
+	depends = qt5-base
+	depends = qt5-tools
+	source = qt5-jsonserializer-2.2.0::git+https://github.com/Skycoder42/QJsonSerializer.git#tag=2.2.0
 	md5sums = SKIP
 
 pkgname = qt5-jsonserializer
