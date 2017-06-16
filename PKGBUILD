@@ -4,7 +4,7 @@
 pkgname=qxmledit
 pkgver=0.9.7.1
 _realver=0.9.7-1
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Simple XML editor and XSD viewer"
 arch=('x86_64')
 url="http://qxmledit.org/"
@@ -32,10 +32,8 @@ package() {
   make INSTALL_ROOT="$pkgdir/" install
 
   # desktop
-  install -Dm644 install_scripts/environment/desktop/QXmlEdit.desktop \
-    "$pkgdir/usr/share/applications/QXmlEdit.desktop"
+  install -Dm644 install_scripts/environment/desktop/QXmlEdit.desktop "$pkgdir/usr/share/applications/QXmlEdit.desktop"
 
   # icon
-  install -Dm644 install_scripts/environment/icon/qxmledit_48x48.png \
-    "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 src/images/icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 }
