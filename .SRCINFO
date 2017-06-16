@@ -1,13 +1,12 @@
 pkgbase = vidcutter-git
 	pkgdesc = the simplest + fastest video cutter & joiner
-	pkgver = 4.0.0.r1.g4fadb3d
+	pkgver = 4.0.0.RC3.g4b724c3
 	pkgrel = 1
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter-git.install
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = cython
 	depends = python-pyqt5
 	depends = mpv
 	depends = ffmpeg
