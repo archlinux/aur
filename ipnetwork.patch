@@ -1,0 +1,15 @@
+diff --git a/comet/service/broker.py b/comet/service/broker.py
+index 3917f9f..d9ea4dc 100644
+--- a/comet/service/broker.py
++++ b/comet/service/broker.py
+@@ -57,8 +57,8 @@ class Options(BaseOptions):
+         ["receive-port", None, 8098, "TCP port for receiving events.", int],
+         ["broadcast-port", None, DEFAULT_REMOTE_PORT, "TCP port for broadcasting events.", int],
+         ["broadcast-test-interval", None, BCAST_TEST_INTERVAL, "Interval between test event brodcasts (in seconds; 0 to disable).", int],
+-        ["author-whitelist", None, "0.0.0.0/0", "Network to be included in author whitelist."],
+-        ["subscriber-whitelist", None, "0.0.0.0/0", "Network to be included in subscriber whitelist."],
++        ["author-whitelist", None, u"0.0.0.0/0", "Network to be included in author whitelist."],
++        ["subscriber-whitelist", None, u"0.0.0.0/0", "Network to be included in subscriber whitelist."],
+         ["remote", None, None, "Remote broadcaster to subscribe to (host[:port])."],
+         ["filter", None, None, "XPath filter applied to events broadcast by remote."],
+         ["cmd", None, None, "Spawn external command on event receipt."]
