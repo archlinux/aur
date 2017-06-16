@@ -2,22 +2,25 @@ post_install () {
 
 cat << EOF
 
-==> Add this code to your .emacs file to use the mode:
+==> Add this code to your .emacs file to use the checker:
 
-(require 'anzu)
-(global-anzu-mode +1)
+(require 'flycheck-clojure)
+(flycheck-clojure-setup)
 
-==> If you are using spaceline or another modeline modifier that
-    references anzu internally:
-
-(setq anzu-cons-mode-line-p nil))
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (eval-after-load 'flycheck
+              '(flycheck-clojure-setup))))
 
 ==> Or do the above with use-package:
 
-(use-package anzu
-  :config
-  (global-anzu-mode +1)
-  (setq anzu-cons-mode-line-p nil)) ;If using spaceline or the like
+(use-package flycheck-clojure
+  :commands (flycheck-clojure-setup)
+  :init
+  (add-hook 'clojure-mode-hook
+	    (lambda ()
+	      (eval-after-load 'flycheck
+		'(flycheck-clojure-setup)))))
 
 EOF
 }
