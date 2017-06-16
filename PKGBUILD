@@ -5,7 +5,7 @@ _pkgname=jre
 pkgname=jre-devel
 _major=9
 #_minor=1
-_build=173
+_build=174
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -45,8 +45,8 @@ source_i686=("http://download.java.net/java/jdk${_major}/archive/${_build}/binar
 source_x86_64=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
 sha256sums=('82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e'
             '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
-sha256sums_i686=('7d8924242b5e97265b275e25c4ad5eb86cc9e92e9aa1dbd6a9c6c9a4713de359')
-sha256sums_x86_64=('9a7165b33857dd48462fc2a0335a445a4b129358f34f164b9ddaddcaa01a7eaf')
+sha256sums_i686=('2839575fd9359a80e9b99f9d1decfb3f8a618aea869ffd586e16d63e01683151')
+sha256sums_x86_64=('e7be71c8bd7a0e87e1a816fdf19016b00097042da558bc3d4d47d5aa68ef366b')
 
 package() {
     cd ${_pkgname}-${_major}
