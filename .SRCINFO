@@ -1,0 +1,12 @@
+pkgbase = us_da-layout
+	pkgdesc = US keyboard layout with level 3-4 æøå
+	pkgver = r1.85115d7
+	pkgrel = 1
+	url = https://gist.githubusercontent.com/Tyilo/d329020017ca37bf0d23264230637120
+	arch = any
+	license = GPL
+	source = us_da::git+https://gist.githubusercontent.com/Tyilo/d329020017ca37bf0d23264230637120
+	md5sums = SKIP
+
+pkgname = us_da-layout
+
