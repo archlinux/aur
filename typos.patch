@@ -22,3 +22,22 @@ diff -ura a/browser/main/Main.js b/browser/main/Main.js
  import eventEmitter from 'browser/main/lib/eventEmitter'
  
  function focused () {
+diff -ura a/package.json b/package.json
+--- a/package.json	2017-06-12 15:44:28.000000000 +0200
++++ b/package.json	2017-06-17 17:52:36.904971194 +0200
+@@ -77,7 +77,6 @@
+     "react-redux": "^4.4.5",
+     "redux": "^3.5.2",
+     "sander": "^0.5.1",
+-    "spectron": "^3.6.2",
+     "superagent": "^1.2.0",
+     "superagent-promise": "^1.0.3"
+   },
+@@ -114,6 +113,7 @@
+     "react-input-autosize": "^1.1.0",
+     "react-router": "^2.4.0",
+     "react-router-redux": "^4.0.4",
++    "spectron": "^3.6.2",
+     "standard": "^8.4.0",
+     "style-loader": "^0.12.4",
+     "stylus": "^0.52.4",
