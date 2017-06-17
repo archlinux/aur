@@ -3,7 +3,7 @@
 
 _pkgbasename=libunwind
 pkgname=lib32-libunwind
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Portable and efficient C programming interface (API) to determine the call-chain of a program, multilib version"
 arch=('x86_64')
@@ -12,9 +12,9 @@ license=('GPL')
 depends=('libunwind' 'lib32-xz' 'gcc-multilib')
 validpgpkeys=('1675C8DA2EF907FB116EB709EC52B396E6874AF2') # Dave Watson <davejwatson@fb.com> , project admin for unwind
 source=(http://download.savannah.gnu.org/releases/$_pkgbasename/$_pkgbasename-$pkgver.tar.gz{,.sig})
-md5sums=('eefcb5d7f78fdc8f1ed172a26ea4202f'
+md5sums=('06ba9e60d92fd6f55cd9dadb084df19e'
          'SKIP')
-sha512sums=('985d0817944e3cafd99aaa5642862d878972e0851f7954289247e808c9319f399ca29342395f0571cb6568a1104a82bd92d585936f2ca888dda37ac796fde0d4'
+sha512sums=('af7c280d2a963779a4a2711887618bc96383011e4e5d52e4085aa7fb351e55e357468f6ff85e66a216f1c6826538f498335a917a5970575c93be74c96316319b'
             'SKIP')
 
 build() {
