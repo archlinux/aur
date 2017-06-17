@@ -2,7 +2,7 @@
 
 pkgname=python-daphne
 _pypi_pkgname=daphne
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="HTTP, HTTP2 and WebSocket protocol server for ASGI, and developed to power Django Channels"
 arch=(any)
@@ -11,8 +11,8 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python' 'python-asgiref' 'python-twisted' 'python-autobahn')
 optdepends=('python-asgi-ipc' 'python-asgi-redis')
-source=("https://pypi.python.org/packages/c5/17/ceb2b30aeb406cae00ba4f3a573ad5f81cf15e374582a385c46f78640c37/daphne-1.2.0.tar.gz")
-md5sums=('c07263cd57b46f8767dd63a7eb665913')
+source=("https://pypi.io/packages/source/d/daphne/${_pypi_pkgname}-${pkgver}.tar.gz")
+md5sums=('70f7f112d0a0047ed9db9ace42782caf')
 
 build() {
     cd "${srcdir}/daphne-${pkgver}"
