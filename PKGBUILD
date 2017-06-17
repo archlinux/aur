@@ -76,7 +76,7 @@ _pkgvermajmin="5.9"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=10
+pkgrel=91
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
