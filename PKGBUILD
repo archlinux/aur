@@ -6,8 +6,8 @@
 # CUDA is x86_64 only and so it will not be available in i686 builds.
 
 pkgname=mpv-full-git
-pkgver=0.25.0.r97.gcc69650e76
-pkgrel=2
+pkgver=0.25.0.r147.gaa690e3997
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -18,7 +18,7 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'vapoursynth' 'libarchive'
     # AUR:
-        'uchardet' 'rsound' 'sndio'
+        'mujs' 'uchardet' 'rsound' 'sndio'
 )
 depends_i686=(
     'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
@@ -86,6 +86,7 @@ build() {
         --enable-shm \
         --enable-libsmbclient \
         --enable-lua \
+        --enable-javascript \
         --enable-libass \
         --enable-libass-osd \
         --enable-encoding \
@@ -155,6 +156,7 @@ build() {
         --disable-videotoolbox-gl \
         --enable-vdpau-hwaccel \
         --disable-d3d-hwaccel \
+        --disable-d3d-hwaccel-new \
         "$_cuda" \
         \
         --enable-tv \
