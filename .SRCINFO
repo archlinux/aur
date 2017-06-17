@@ -30,8 +30,10 @@ pkgbase = luxrender-hg
 	provides = luxrender
 	conflicts = luxrender
 	source = lux::hg+https://bitbucket.org/luxrender/lux#branch=default
+	source = luxrender-gcc7.patch
 	source = force_python3.diff
 	md5sums = SKIP
+	md5sums = fa680b0d621b42c8e7440056bf26ec1c
 	md5sums = 42692e65eabc5828693e2682e94b7c64
 
 pkgname = luxrender-hg
