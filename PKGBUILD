@@ -5,7 +5,7 @@
 # Maintainer: Nikos Skalkotos <skalkoto (at) Gmail.com>
 
 pkgname=libguestfs
-pkgver=1.36.3
+pkgver=1.36.4
 pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
@@ -18,7 +18,7 @@ backup=("etc/libguestfs-tools.conf"
 # backup=("etc/libguestfs-tools.conf" "etc/php.d/guestfs_php.ini")
 install="appliance.install"
 _pythonver=2
-depends=("qemu"
+depends=("qemu-headless"
 #         "febootstrap>=3.21"
          "augeas"
          "hivex>=1.3.2"
@@ -28,7 +28,7 @@ depends=("qemu"
          "file"
          "cpio"
          "wget")
-makedepends=("qemu"
+makedepends=("qemu-headless"
              "pcre"
              "cdrkit"
              "libvirt"
@@ -64,7 +64,7 @@ provides=("guestfish=${pkgver}")
 options=()
 source=("http://libguestfs.org/download/${pkgver_short}-stable/${pkgname}-${pkgver}.tar.gz"
         "update-libguestfs-appliance")
-sha512sums=('be4173619557fcc63fc06416608d47f831b898cd612863849395ba3d7d5c86a8a8c616934562771c76bc6edd2f53998f3d22085730ff9a63f6e52ed102ddc8de'
+sha512sums=('195e458ced82fda7ee7cdf9d97eec72e47699937878e244c3eae3b0579d9350900f81149666203d171b5ff639b8ad67869fee94368ff0011ae72ba715b34fe75'
             'b16a8a15d39392ab2d5c51ac4cbbcd0fd1e6e8e064bf5b866e7c9f93a639fb8e96fc4328b05963ac24c3333e454b63a6a700e6e6fb1584c9d671f289ee1bcade')
 
 check() {
