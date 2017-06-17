@@ -2,7 +2,7 @@
 
 pkgname=python-django-channels
 _pypi_pkgname=django-channels
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Developer-friendly asynchrony for Django"
 arch=(any)
@@ -10,6 +10,7 @@ url="https://channels.readthedocs.io"
 license=('BSD')
 makedepends=('python-setuptools')
 depends=('python' 'python-django')
+optdepends=('python-daphne')
 source=("git://github.com/django/channels")
 md5sums=('SKIP')
 
