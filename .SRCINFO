@@ -1,0 +1,24 @@
+pkgbase = drumstick-svn
+	pkgdesc = MIDI libraries for Qt5/C++. (SVN version)
+	pkgver = 20170510.341
+	pkgrel = 1
+	url = http://drumstick.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = docbook-xsl
+	makedepends = subversion
+	depends = fluidsynth
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
+	depends = qt5-svg
+	provides = drumstick
+	conflicts = drumstick
+	source = svn+https://svn.code.sf.net/p/drumstick/code/trunk
+	sha256sums = SKIP
+
+pkgname = drumstick-svn
+
