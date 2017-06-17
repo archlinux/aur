@@ -1,0 +1,13 @@
+pkgbase = soundfont-arachno
+	pkgdesc = GM/GS soundbank courtesy of Maxime Abbey.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.arachnosoft.com
+	arch = any
+	groups = soundfonts
+	license = custom
+	source = https://www.dropbox.com/s/2rnpya9ecb9m4jh/arachno-soundfont-10-sf2.zip
+	md5sums = 893e9ff89bc24a23ecffa9e644cb12f4
+
+pkgname = soundfont-arachno
+
