@@ -3,7 +3,7 @@
 
 _gemname=claide
 pkgname=ruby-$_gemname
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A small command-line interface framework.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('d0e8a93b455279aa1ffc932d2201ef3f87acd16d')
+sha1sums=('5000b0f440d8066093af4e6f530cb64b6aa1148a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
