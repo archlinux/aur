@@ -3,7 +3,7 @@
 pkgname=python-django-channels
 _pypi_pkgname=django-channels
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Developer-friendly asynchrony for Django"
 arch=(any)
 url="https://channels.readthedocs.io"
