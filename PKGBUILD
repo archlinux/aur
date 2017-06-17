@@ -10,7 +10,7 @@ _minor=11
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=3
+_pfrel=4
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -558,7 +558,7 @@ package_linux-pf-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -702,9 +702,9 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS in
 
 # makepkg -g >>PKGBUILD
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
-            'c2d2327ad9a78d06a96efdeed18575e433e077261ff2e1e299d038d10805849e'
-            'cac9f249e878d0b7f8a523855c1b3181f80fd67e6da719ac7f5c14bdbee21131'
+            '832a6cef648a311c5ca65aad59648ef3449baa80aa29adb24b0be65cae9a140e'
+            'bcfe2a323678009d35f5e9fb7fdafa2e4863bed1822342b3a8bef312e69a0ff6'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '54ac2cd29f7ecd2a4118100303a959dd2ec415bddbbc56f0072ae6fed71f42cc'
+            '51b4797a9ea511d1db7c7495a552cdf489a8f18413f9cbc4db705c3e93d7c259'
             'bba97e70a69561e026ef8898c441fde136204d89c974d28a50f4542f4df4c52f'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
