@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bil-elmoussaoui/${pkgname}"
 depends=('gobject-introspection' 'gtk3' 'python2-nautilus' 'nautilus')
-makedepends=('gnome-common' 'meson' 'ninja' 'gettext' 'python')
+makedepends=('gnome-common' 'meson' 'ninja' 'gettext' 'python' 
+'appstream-glib')
 
 options=('!emptydirs')
 source=("https://github.com/bil-elmoussaoui/${pkgname}/archive/v${pkgver}.tar.gz")

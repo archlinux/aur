@@ -11,6 +11,7 @@ pkgbase = nautilus-folder-icons
 	makedepends = ninja
 	makedepends = gettext
 	makedepends = python
+	makedepends = appstream-glib
 	depends = gobject-introspection
 	depends = gtk3
 	depends = python2-nautilus
