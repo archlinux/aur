@@ -4,14 +4,14 @@
 
 pkgbase='pyside2-tools-git'
 pkgname=('python2-pyside2-tools-git' 'python-pyside2-tools-git' 'pyside2-tools-common-git')
-pkgver=2.0.0.r107.d16479e
+pkgver=2.0.0.r108.f68388c
 _upver=2.0.0
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='https://qt-project.org/wiki/PySide'
-makedepends=('git' 'cmake' 'python' 'python2' 'qt5.6' 'shiboken2-git' python{,2}-pyside2-git)
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside-tools.git")
+makedepends=('git' 'cmake' 'python' 'python2' 'shiboken2-git' python{,2}-pyside2-git)
+source=("$pkgbase::git+https://code.qt.io/pyside/pyside-tools.git#branch=5.9")
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,9 +20,6 @@ pkgver() {
 }
 
 build() {
-    local qt5_src="/opt/qt5.6"
-    local qt5_rpath="$qt5_src/lib"
-
     # Build for python2.
     cd "$srcdir/$pkgbase"
     mkdir -p build-py2 && cd build-py2
@@ -30,11 +27,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DPYTHON_EXTENSION_SUFFIX=-python2.7 \
-        -DPYTHON_BASENAME=-python2.7 \
-        -DUSE_PYTHON_VERSION=2 \
-        "-DCMAKE_PREFIX_PATH=$qt5_src" \
-        "-DQT_SRC_DIR=$qt5_src" \
-        "-DCMAKE_INSTALL_RPATH=$qt5_rpath"
+        -DPYTHON_BASENAME=-python2.7
     make
 
     # Build for python3.
@@ -42,16 +35,11 @@ build() {
     mkdir -p build-py3 && cd build-py3
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        "-DCMAKE_PREFIX_PATH=$qt5_src" \
-        "-DQT_SRC_DIR=$qt5_src" \
-        -DUSE_PYTHON_VERSION=3 \
-        "-DCMAKE_INSTALL_RPATH=$qt5_rpath"
+        -DCMAKE_BUILD_TYPE=Release
     make
 }
 
 package_pyside2-tools-common-git() {
-    depends=('qt5.6')
     pkgdesc='PySide lupdate, rcc, and uic development tools (Common Files)'
 
     cd "$srcdir/$pkgbase/build-py3"

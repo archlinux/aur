@@ -1,6 +1,6 @@
 pkgbase = pyside2-tools-git
-	pkgver = 2.0.0.r107.d16479e
-	pkgrel = 2
+	pkgver = 2.0.0.r108.f68388c
+	pkgrel = 1
 	url = https://qt-project.org/wiki/PySide
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,10 @@ pkgbase = pyside2-tools-git
 	makedepends = cmake
 	makedepends = python
 	makedepends = python2
-	makedepends = qt5.6
 	makedepends = shiboken2-git
 	makedepends = python-pyside2-git
 	makedepends = python2-pyside2-git
-	source = pyside2-tools-git::git+https://code.qt.io/pyside/pyside-tools.git
+	source = pyside2-tools-git::git+https://code.qt.io/pyside/pyside-tools.git#branch=5.9
 	md5sums = SKIP
 
 pkgname = python2-pyside2-tools-git
@@ -28,5 +27,4 @@ pkgname = python-pyside2-tools-git
 
 pkgname = pyside2-tools-common-git
 	pkgdesc = PySide lupdate, rcc, and uic development tools (Common Files)
-	depends = qt5.6
 
