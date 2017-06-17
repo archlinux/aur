@@ -21,9 +21,8 @@ pkgver() {
 
 package() {
     mkdir -p "$pkgdir/opt/$_name"
-	mkdir -p "$pkgdir/usr/bin"
     cp -r $srcdir/$_name/* $pkgdir/opt/$_name
-	
+
     mkdir -p "$pkgdir/usr/bin"
     echo "#!/bin/bash" >> "$pkgdir/usr/bin/jvpn"
     echo "cd /opt/jvpn" >> "$pkgdir/usr/bin/jvpn"
