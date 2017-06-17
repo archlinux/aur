@@ -1,0 +1,20 @@
+pkgbase = gprbuild-bootstrap-git
+	pkgdesc = Static GPRbuild to bootstrap XML/Ada and GPRbuild itself
+	pkgver = r3152.ba7dba01
+	pkgrel = 1
+	url = https://github.com/AdaCore/gprbuild/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc-ada
+	depends = glibc
+	provides = gprbuild
+	conflicts = gprbuild
+	source = git+https://github.com/AdaCore/gprbuild.git
+	source = git+https://github.com/AdaCore/xmlada.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = gprbuild-bootstrap-git
+

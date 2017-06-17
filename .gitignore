@@ -1,0 +1,5 @@
+gprbuild
+pkg
+src
+xmlada
+*.tar.xz
