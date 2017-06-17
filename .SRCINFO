@@ -1,0 +1,18 @@
+pkgbase = qsynth-git
+	pkgdesc = A fluidsynth Qt GUI Interface (GIT version)
+	pkgver = r531.999e198
+	pkgrel = 1
+	url = https://qsynth.sourceforge.io/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = qt5-tools
+	depends = fluidsynth
+	depends = qt5-x11extras
+	provides = qsynth
+	conflicts = qsynth
+	source = qsynth::git+https://git.code.sf.net/p/qsynth/code
+	sha256sums = SKIP
+
+pkgname = qsynth-git
+
