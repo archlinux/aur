@@ -13,7 +13,7 @@ license=('Apache')
 depends=('glibc')
 optdepends=('pygmentize: syntax-highlight code snippets.')
 makedepends=('go' 'git' 'govendor')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gohugoio/hugo/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gohugoio/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('4bc54b3ca3b126d6cf3761e78430f77dcf7ba0fad3c858573449c4e4b4e8842000a5e4d1a48589d4db18456eda327b634ff608afe7986b249380518eb755d93c')
 
 build() {
