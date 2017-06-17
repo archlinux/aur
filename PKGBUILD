@@ -2,7 +2,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thecalculator
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Powerful Calculator"
 arch=("x86_64")
 url="https://github.com/vicr123/thecalculator"

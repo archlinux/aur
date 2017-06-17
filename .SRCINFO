@@ -1,7 +1,7 @@
 pkgbase = thecalculator
 	pkgdesc = Powerful Calculator
 	pkgver = 1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/vicr123/thecalculator
 	arch = x86_64
 	license = GPL3
