@@ -1,17 +1,19 @@
-# Maintainer: Martchus <martchus@gmx.net>>
+# Maintainer: Martchus <martchus@gmx.net>
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
 
-pkgname=gogs
-_pkgname=${pkgname}
+_pkgname=gogs
+_orga=go-${_pkgname}
+_gourl=github.com/gogits/$_pkgname
+
+pkgname=$_pkgname
 pkgver=0.11.19
 pkgrel=1
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://gogs.io/'
+url="https://$_pkgname.io"
 license=('MIT')
-provides=('gogs')
 depends=('git>=1.7.1')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
@@ -20,12 +22,11 @@ optdepends=('sqlite: SQLite support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
 makedepends=('go>=1.3')
-conflicts=('gogs-bin' 'gogs-git' 'gogs-dev-git')
+conflicts=("$_pkgname-bin" "$_pkgname-git" "$_pkgname-dev-git")
 options=('!strip' '!emptydirs')
-backup=('etc/gogs/app.ini')
-install=gogs.install
-_gourl=github.com/gogits/$_pkgname
-source=("$_pkgname-$pkgver::https://${_gourl}/archive/v${pkgver}.tar.gz"
+backup=("etc/$_pkgname/app.ini")
+install=$_pkgname.install
+source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
 sha512sums=('80339daefe9c4eb9e39af4ab90b6803e9d86648565c0f109a34c00aad9bd40e2edfc77d58e18ad1192ce2e8bc7322113a407e7a02c0116229e1cecf8e67fc8b5'
@@ -54,7 +55,7 @@ prepare() {
   export GOROOT="$srcdir/build/go"
   export GOPATH="$srcdir/build"
 
-  mkdir -p "$GOPATH/src/github.com/gogits"
+  mkdir -p "$GOPATH/src/${_gourl%/$_pkgname}"
   mv "$srcdir/$_pkgname-${pkgver}" "$GOPATH/src/${_gourl}"
 
   msg2 'Patch config and service file'
@@ -64,6 +65,8 @@ prepare() {
 }
 
 build() {
+  export GOROOT="$srcdir/build/go"
+  export GOPATH="$srcdir/build"
   cd "$GOPATH/src/${_gourl}"
 
   go fix
@@ -79,6 +82,6 @@ package() {
   cp -r "$srcdir/build/src/${_gourl}/templates" "$pkgdir/usr/share/${_pkgname}"
 
   install -Dm0644 "$pkgdir/usr/share/$_pkgname/conf/app.ini" "$pkgdir/etc/$_pkgname/app.ini"
-  install -Dm0644 "$srcdir/build/src/${_gourl}/scripts/systemd/gogs.service" "$pkgdir/usr/lib/systemd/system/gogs.service"
+  install -Dm0644 "$srcdir/build/src/${_gourl}/scripts/systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm0644 "$srcdir/build/src/${_gourl}/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
 }
