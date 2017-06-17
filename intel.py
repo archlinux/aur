@@ -219,4 +219,3 @@ if __name__ == '__main__':
     compiler = new_fcompiler(compiler='intel')
     compiler.customize()
     print(compiler.get_version())
-    
