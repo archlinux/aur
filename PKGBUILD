@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-git
-pkgver=0.5.Beta.r136.gd4b4aac
+pkgver=0.5.Beta.r163.geba9061
 pkgrel=1
 pkgdesc='Tiny Qt Music Player to keep your favorite songs at hand'
 arch=('i686' 'x86_64')
@@ -31,5 +31,5 @@ build() {
 package() {
   cd babe
   make DESTDIR="${pkgdir}/" install
-  install -Dm755 data/babe.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/Babe.svg"
+  install -Dm755 data/babe.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/babe.svg"
 }

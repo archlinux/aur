@@ -1,6 +1,6 @@
 pkgbase = babe-git
 	pkgdesc = Tiny Qt Music Player to keep your favorite songs at hand
-	pkgver = 0.5.Beta.r136.gd4b4aac
+	pkgver = 0.5.Beta.r163.geba9061
 	pkgrel = 1
 	url = https://babe.kde.org/
 	arch = i686
