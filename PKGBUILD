@@ -2,7 +2,7 @@
 
 pkgname=phoenix-emu-project
 pkgver=2.8.JAG
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator of ColecoVision, Sega Master System, Atari Jaguar and 3DO consoles."
 url="http://www.arts-union.ru/node/23"
 license=('custom')
@@ -14,7 +14,7 @@ source=("http://www.arts-union.ru/sites/default/files/ph28jag-lin-x64.zip"
         translation.xml.eng)
 md5sums=('d2cdf18c76afac1b3e58325d58f91272'
          '7f9b5652c512887d7e034cc8c07b2045'
-         '2dda6097a84eadaee848c31fe86001bd'
+         '4272bb20b1c1d8499bd08839faeaaf55'
          '5acbb45a6a1df36eddc3123273595c12')
 prepare() {
   echo

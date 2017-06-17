@@ -1,7 +1,7 @@
 pkgbase = phoenix-emu-project
 	pkgdesc = An emulator of ColecoVision, Sega Master System, Atari Jaguar and 3DO consoles.
 	pkgver = 2.8.JAG
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.arts-union.ru/node/23
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = phoenix-emu-project
 	source = translation.xml.eng
 	md5sums = d2cdf18c76afac1b3e58325d58f91272
 	md5sums = 7f9b5652c512887d7e034cc8c07b2045
-	md5sums = 2dda6097a84eadaee848c31fe86001bd
+	md5sums = 4272bb20b1c1d8499bd08839faeaaf55
 	md5sums = 5acbb45a6a1df36eddc3123273595c12
 
 pkgname = phoenix-emu-project

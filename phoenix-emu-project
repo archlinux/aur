@@ -1,19 +1,23 @@
 #!/bin/sh
 
-confdir=$HOME/.config/PhoenixEmuProject
+if [ ! -z $XDG_CONFIG_HOME ]; then
+    confdir=$XDG_CONFIG_HOME/PhoenixEmuProject
+else 
+    confdir=$HOME/.config/PhoenixEmuProject
+fi
 mkdir -p $confdir
 cd  $confdir
-if [ ! -s $confdir/scalers ] ; then 
-    cp -r /opt/phoenix-emu-project/scales $confdir/scales
+if [ ! -d $confdir/scalers ]; then 
+    cp -fr /opt/phoenix-emu-project/scales/ $confdir/scales/
 fi 
-if [ ! -s $confdir/shaders ] ; then 
-    cp -r /opt/phoenix-emu-project/shaders $confdir/shaders
+if [ ! -d $confdir/shaders ]; then 
+    cp -fr /opt/phoenix-emu-project/shaders/ $confdir/shaders/
 fi 
-if [ ! -s $confdir/skin ] ; then 
-    cp -r /opt/phoenix-emu-project/skin $confdir/skin
+if [ ! -d $confdir/skin ]; then 
+    cp -fr /opt/phoenix-emu-project/skin/ $confdir/skin/
 fi 
 if [[ $LANG != "ru_RU"* ]]; then
-    cp /opt/phoenix-emu-project/translation.xml.eng $confdir/translation.xml
+    cp -f /opt/phoenix-emu-project/translation.xml.eng $confdir/translation.xml
 fi
 /opt/phoenix-emu-project/PhoenixEmuProject
 
