@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=archlabs-wallpapers-4k-git
 _pkgname=archlabs-wallpapers-4k
-_destname="/usr/share/backgrounds/archlabs/"
+_destname="/usr/share/backgrounds/archlabs-4k/"
 pkgver=1.1
 pkgrel=1
 pkgdesc="Wallpapers for ARCHLabs"
