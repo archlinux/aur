@@ -1,10 +1,10 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=53.0.3
+pkgver=54.0
 pkgrel=1
 pkgdesc="
-'KDE Plasma Edition' of the free, open and private browser. It contains KDE patches (which contains KDE file dialogs, file associations, protocol handlers and other KDE Plasma integration features) and other useful patches."
+'KDE Plasma Edition' of the free, open and private browser, integrate better with KDE."
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
 license=('MPL' 'GPL')
@@ -12,8 +12,10 @@ depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'n
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
+provides=('waterfox=$pkgver')
 conflicts=('waterfox-bin' 'waterfox-git')
 options=('!emptydirs' '!strip')
+install=$pkgname.install
 
 source=("waterfox-kde_${pkgver}_amd64.deb::https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox-kde/waterfox-kde_${pkgver}_amd64.deb")
 
@@ -23,11 +25,43 @@ package() {
 msg2 "Extracting the data.tar.xz..."
 bsdtar -xf data.tar.xz -C "$pkgdir/"
 
+# Use system-provided dictionaries. Hunspell symlink is in deb.
+msg2 "Creating symlink to hyphen..."
+ln -Ts /usr/share/hyphen "$pkgdir/opt/waterfox/hyphenation"
+
+_settings=/opt/waterfox/.installer/settings
+
+if [ -f "$_settings" ]; then
+echo "Previous settings detected! Do you wish to load them?"
+select yn in "Yes" "No"; do
+                case $yn in
+                    Yes )
+    if grep -q download_language=yes "$_settings"; then
+    _chosen_language=$(grep -Po 'chosen_language=\K[^ ]+' $_settings)
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
+	msg2 "Extracting locale..."
+    bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
+    bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
+    fi
+    mkdir $pkgdir/opt/waterfox/.installer/
+    cp $_settings $pkgdir/opt/waterfox/.installer/
+                break;;
+No )
+echo "Root access is required to remove settings file!"
+sudo rm -rvf /opt/waterfox/.installer/
+break;;
+                    esac
+                done
+fi
+
+if [ ! -f "$_settings" ]; then
 # Download and install language pack
-echo "Do you wish to download and install language pack (if you want to have en-US this is not needed)?"
+echo "Do you wish to download and install language pack (if you want to have en-US - this is not needed)?"
+
             select yn in "Yes" "No"; do
                 case $yn in
                     Yes )
+_download_language=yes
 echo -e "Available languages:
   (ach) Acholi;	(af) Afrikaans;	(an) Aragonese;	(ar) Arabic;	(as) Assamese;	
   (ast) Asturian;	(az) Azerbaijani;	(bg) Bulgarian;	(bn) Bengali; 
@@ -48,32 +82,34 @@ echo -e "Available languages:
   (zh-hans) Chinese (Simplified); (zh-hant) Chinese (Traditional)
 "
 printf "Type language code of language you wish to download and install (for example: en or pl): "
-read chosenlang
-    wget -O $srcdir/waterfox-locale-${chosenlang}_${pkgver}_amd64.deb https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox/waterfox-locale-${chosenlang}_${pkgver}_amd64.deb;
+read _chosen_language
+
+    wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
 	msg2 "Extracting locale..."
-    bsdtar -xf $srcdir/waterfox-locale-${chosenlang}_${pkgver}_amd64.deb
+    bsdtar -xf $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb
     bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
                     break;;
-                    No ) break;;
+                    No ) 
+                    _download_language=no
+                    _chosen_language=en-US
+                    break;;
                     esac
                 done
 
-# Download and install Firejail profile for Waterfox
-echo "Do you wish to download and install Firejail profile for Waterfox?"
+echo "Do you wish to save your choice (thanks to this, you don't have to select language again when reinstalling/updating)?"
             select yn in "Yes" "No"; do
                 case $yn in
                     Yes )
-wget "https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox/waterfox-firejail-profile_${pkgver}_amd64.deb";
-msg2 "Extracting Firejail profile for Waterfox..."
-bsdtar -xf $srcdir/waterfox-firejail-profile_${pkgver}_amd64.deb
-bsdtar -xf $srcdir/data.tar.xz -C "$pkgdir/"
-                    break;;
-                    No ) break;;
+mkdir $pkgdir/opt/waterfox/.installer/
+tee -a $pkgdir/opt/waterfox/.installer/settings <<EOF
+download_language=$_download_language
+chosen_language=$_chosen_language
+EOF
+break;;
+No ) break;;
                     esac
                 done
+fi
 
-  # Use system-provided dictionaries. Hunspell symlink is in deb.
-  msg2 "Creating symlink to hyphen..."
-  ln -Ts /usr/share/hyphen "$pkgdir/opt/waterfox/hyphenation"
 }
-sha256sums=('0b7d36ecac5d69bc0b00e930899a3b3f908d02c9394328e859dfcf24f7057b0c')
+sha256sums=('4483fd9f900f408a67e0635f16bf2548981834860621d919385dc1ab9300fdc4')

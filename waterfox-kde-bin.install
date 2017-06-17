@@ -1,0 +1,10 @@
+post_remove() 
+{
+    if [ -d "/opt/waterfox/browser/features" ]; then 
+        rm -rf /opt/waterfox/browser/features/
+    fi
+    
+    if [ -d "/opt/waterfox/.installer" ]; then
+        rm -rf /opt/waterfox/.installer/
+    fi
+}
