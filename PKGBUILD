@@ -3,7 +3,7 @@
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
 
 _pkgname=gogs
-_orga=go-${_pkgname}
+_orga=gogits
 _gourl=github.com/gogits/$_pkgname
 
 pkgname=$_pkgname
