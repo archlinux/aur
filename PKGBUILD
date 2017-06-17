@@ -6,7 +6,7 @@ pkgname="python-scipy-mkl"
 true && pkgname=('python-scipy-mkl' 'python2-scipy-mkl')
 
 pkgver=0.19.0
-pkgrel=1
+pkgrel=3
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering. Compiled with intel MKL"
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
@@ -21,7 +21,7 @@ build() {
   unset LDFLAGS
   unset FFLAGS
   export LDFLAGS="" 
-  export FFLAGS="-fPIC -openmp"
+  export FFLAGS="-fPIC -qopenmp -xHost"
   
   #mv scipy-0.18.1 scipy-0.18.1
   
@@ -37,7 +37,9 @@ build() {
   cd scipy-${pkgver}
   #patch -Np1   -i $srcdir/0001-GEN-regenerate-C-sources-with-Cython-0.17.1.patch
 
-  python setup.py build --fcompiler=intelem --compiler=intel
+  #python setup.py build --fcompiler=intelem --compiler=intel
+  python setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem 
+
 
   # build for python2
   cd ../scipy-${pkgver}-py2
@@ -47,7 +49,9 @@ build() {
        sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
 
-  python2 setup.py build --fcompiler=intelem --compiler=intel
+  #python2 setup.py build --fcompiler=intelem --compiler=intel
+  python2 setup.py config --compiler=intelem --fcompiler=intelem build_clib --compiler=intelem --fcompiler=intelem build_ext --compiler=intelem --fcompiler=intelem 
+
 }
 
 check() {
