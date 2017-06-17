@@ -4,7 +4,7 @@
 # Contributor: Jeff Mickey <jeff@archlinux.org>
 
 pkgname=yodl
-pkgver=3.08.02
+pkgver=4.01.00
 pkgrel=1
 pkgdesc='Implements a pre-document language and tools to process it.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('bash')
 makedepends=('icmake>=8.00.00')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fbb-git/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('adad9f6235288f0ae6990c0dbba3cd7c8461172ae83231ca8fa113275d04ad20d3722e70f6f0ffcf072a19b4816e556b9b09227123516fc4a0170bc053b48b8e')
+sha512sums=('f195dec8e03b83561b47f9bd00fbb0fe711bbc254c32413d748587d8bf3848e050b90a2140977bec5a335021b2ef49ec5a6b0ca89f1649def495d81c3e7b437f')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
