@@ -1,16 +1,17 @@
 pkgbase = python-asgi-ipc
 	pkgdesc = Posix IPC-backed ASGI channel layer implementation
-	pkgver = 1.3.1
-	pkgrel = 1
-	url = http://github.com/django/asgi_redis/
+	pkgver = 1.4.0
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/asgi_ipc
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	depends = python-redis
 	depends = python-msgpack
-	source = https://pypi.io/packages/source/a/asgi_ipc/asgi_ipc-1.3.1.tar.gz
-	md5sums = c80e000ece3ecfe56fc6e6e2a0a029cb
+	depends = python-posix_ipc
+	depends = python-asgiref
+	source = https://pypi.io/packages/source/a/asgi_ipc/asgi_ipc-1.4.0.tar.gz
+	md5sums = bdefbc5eaa661d775116868555c74033
 
 pkgname = python-asgi-ipc
 

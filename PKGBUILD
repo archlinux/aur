@@ -3,7 +3,7 @@
 pkgname=python-asgi-ipc
 _pypi_pkgname=asgi_ipc
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Posix IPC-backed ASGI channel layer implementation"
 arch=(any)
 url=" https://pypi.python.org/pypi/asgi_ipc"
@@ -14,11 +14,11 @@ source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${p
 md5sums=('bdefbc5eaa661d775116868555c74033')
 
 build() {
-    cd "${srcdir}/asgi_ipc-${pkgver}"
+    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
     python setup.py build || return 1
 }
 
 package() {
-    cd "${srcdir}/asgi_ipc-${pkgver}"
+    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
     python setup.py install --root=${pkgdir} --optimize=1 || return 1
 }
