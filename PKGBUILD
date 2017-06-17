@@ -1,7 +1,7 @@
 # Maintainer: Haruki Ota <ootaharuki99[at]gmail.com>
 pkgname=libarib25-git
-pkgver=0.2.5
-pkgrel=3
+pkgver=0.2.5+9c2c83c
+pkgrel=1
 pkgdesc='ARIB STD-B25 library for Linux.'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/stz2012/libarib25'
@@ -10,7 +10,7 @@ makedepends=('git' 'cmake')
 depends=('pcsclite')
 provides=('libarib25')
 conflicts=('libarib25')
-source=('git+https://github.com/stz2012/libarib25.git#commit=741377f65a7ca1482e47d78cfecc8f3d5802b537')
+source=('git+https://github.com/stz2012/libarib25.git#commit=9c2c83ca0673ae58b1e4335ea83eb3f3c0530e8c')
 md5sums=('SKIP')
 
 build() {
