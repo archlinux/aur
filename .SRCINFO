@@ -42,7 +42,7 @@ pkgbase = freecad-qt5-git
 	md5sums = SKIP
 	md5sums = 20043b18348679526cf17853cb08f42e
 	md5sums = 5fe6884bb663b157c8c24f9b00da5337
-	md5sums = cb6691e33df31199ea93d4f309a86e54
+	md5sums = 79457324c2c4602ce0f6d7f4e1188fef
 	md5sums = c2f4154c8e4678825411de8e7fa54c6b
 
 pkgname = freecad-qt5-git

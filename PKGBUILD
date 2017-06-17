@@ -26,7 +26,7 @@ source=("${pkgname}::git+https://github.com/FreeCAD/FreeCAD.git"
 md5sums=('SKIP'
          '20043b18348679526cf17853cb08f42e'
          '5fe6884bb663b157c8c24f9b00da5337'
-         'cb6691e33df31199ea93d4f309a86e54'
+         '79457324c2c4602ce0f6d7f4e1188fef'
          'c2f4154c8e4678825411de8e7fa54c6b')
 
 pkgver() {
