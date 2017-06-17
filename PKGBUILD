@@ -1,9 +1,9 @@
 # Maintainer: mesmer <mesmer@fisica.if.uff.br>
 
 pkgname=(vim-clipboard)
-pkgver=8.0.0586
+pkgver=8.0.0628
 _versiondir=74
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64)
 license=('custom:vim')
 url='http://www.vim.org'
@@ -11,7 +11,7 @@ makedepends=(gpm python2 python ruby libxt desktop-file-utils gtk2 gtk3 lua gawk
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
         archlinux.vim)
-sha1sums=('0215480a10362cbfc1494b074742dc2399dd3d11'
+sha1sums=('a6345466133f84874f11c93c4f59b82a069a3b46'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
