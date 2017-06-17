@@ -1,0 +1,15 @@
+pkgbase = ruby-uber
+	pkgdesc = Gem-authoring tools like generic builders, dynamic options and more.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/apotonick/uber
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = uber-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/uber-0.1.0.gem
+	sha1sums = 65d97603e8d30519288c78474b18e021ddf1c9a7
+
+pkgname = ruby-uber
+
