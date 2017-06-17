@@ -13,7 +13,7 @@ depends=('perl>=5.26' 'perl<5.27' 'perl-cgi' 'perl-common-sense' 'perl-data-dump
 	 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-sha1' 'perl-ev' 'perl-yaml-libyaml'
 	 'perl-html-parser' 'perl-html-form' 'perl-html-tree'
 	 'perl-json-xs' 'perl-module-build' 'perl-sub-name' 'perl-sub-uplevel'
-	 'perl-template-toolkit' 'perl-test-nowarnings' 'perl-test-warn'.
+	 'perl-template-toolkit' 'perl-test-nowarnings' 'perl-test-warn'
 	 'perl-xml-parser' 'perl-xml-simple'
 	 'ffmpeg' 'giflib' 'libexif' 'libjpeg-turbo' 'libpng')
 makedepends=('yasm' 'rsync' 'gd' 'zlib')
