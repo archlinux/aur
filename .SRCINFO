@@ -1,7 +1,7 @@
 pkgbase = chromium-vaapi-bin
 	pkgdesc = Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by your GPU (binary package)
-	pkgver = 59.0.3071.86
-	pkgrel = 2
+	pkgver = 59.0.3071.104
+	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	license = BSD
@@ -29,8 +29,6 @@ pkgbase = chromium-vaapi-bin
 	depends = libwebp
 	depends = libjpeg
 	depends = snappy
-	depends = perl-file-basedir
-	depends = perl-ipc-system-simple
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
@@ -38,8 +36,8 @@ pkgbase = chromium-vaapi-bin
 	provides = chromium
 	conflicts = chromium
 	conflicts = chromium-vaapi
-	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-59.0.3071.86-2-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = 1e2197df4cee9d31fccb379c5a8606e4b38c85d233a7e4fbfaf80f44ba9074e8
+	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-59.0.3071.104-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 3c200186e952f9447999128295fb49921a96105475d88b29ebcadfe32c709079
 
 pkgname = chromium-vaapi-bin
 
