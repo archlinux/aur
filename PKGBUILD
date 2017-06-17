@@ -34,14 +34,13 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'desktop-file-utils'
          'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
-depends+=('perl-file-basedir' 'perl-ipc-system-simple') # TODO Remove when binary is updated to match AUR/chromium-vappi
+depends+=('perl-file-basedir' 'perl-ipc-system-simple') # TODO Remove this line when binary is updated to match AUR/chromium-vappi
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 
-file_x86_64="chromium-vaapi-$pkgver-$pkgrel-$arch.pkg.tar.xz"
-source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/$file_x86_64")
+source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/chromium-vaapi-$pkgver-$pkgrel-$arch.pkg.tar.xz")
 sha256sums_x86_64=('1e2197df4cee9d31fccb379c5a8606e4b38c85d233a7e4fbfaf80f44ba9074e8')
 
 package() {
