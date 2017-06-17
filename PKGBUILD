@@ -1,7 +1,7 @@
 # Maintainer: Vinicius Massuchetto <vmassuchetto@gmail.com>
 
 pkgname=magarena
-pkgver=1.83
+pkgver=1.85
 pkgrel=1
 pkgdesc="A single-player fantasy card game played against a computer opponent"
 arch=(any)
@@ -10,7 +10,7 @@ license=("GPLv3")
 depends=("java-runtime-common")
 source=("https://github.com/magarena/magarena/releases/download/$pkgver/Magarena-$pkgver.zip"
         "magarena.png" "magarena.desktop" "magarena")
-md5sums=("0243a3e62e59d8654c5542ea572cdc20"
+md5sums=("94fa171cf2d31bd1079023069898cbaa"
          "SKIP" "SKIP" "SKIP")
 
 package() {
