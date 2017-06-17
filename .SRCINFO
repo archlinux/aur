@@ -1,0 +1,15 @@
+pkgbase = ruby-declarative-option
+	pkgdesc = Dynamic options to evaluate at runtime.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/apotonick/declarative-option
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = declarative-option-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/declarative-option-0.1.0.gem
+	sha1sums = 74d6f23aed302881f89ea34caae6f73ccb81366a
+
+pkgname = ruby-declarative-option
+
