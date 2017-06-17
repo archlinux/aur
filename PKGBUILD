@@ -1,36 +1,32 @@
-# Maintainer: Jorge Araya Navarro <elcorreo@deshackra.com>
+# Maintainer: Scott Linder <scott.linder18@gmail.com>
+# Contributer: Jorge Araya Navarro <elcorreo@deshackra.com>
+# Contributer: Mikhail Burakov <mikhail.burakov@gmail.com>
+
 pkgname=cockatrice-server-git
-pkgver=20150924.1
+pkgver=2.3.17
 pkgrel=1
-pkgdesc="A cross-platform virtual tabletop for multiplayer card games (Server)"
+pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
-url="http://www.woogerworks.com/"
+url='https://cockatrice.github.io/'
 license=('GPL2')
-depends=('qt5-base' 'qt5-tools' 'protobuf')
-makedepends=('git' 'cmake')
+depends=('protobuf' 'qt5-websockets')
+optdepends=('mariadb: database support')
+makedepends=('cmake' 'git')
+provides=('cockatrice-server')
 conflicts=('cockatrice-server')
-source=(git+https://github.com/Cockatrice/Cockatrice.git)
-md5sums=('SKIP')
+source=("git+https://github.com/Cockatrice/Cockatrice")
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/Cockatrice"
-
-  if [ ! -d "build"];
-  then
-      mkdir build
-  else
-    rm -rf build
-    mkdir build
-  fi
+  test -d build && rm -rf build
+  mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DWITH_SERVER=1 -DWITH_CLIENT=0 -DWITH_ORACLE=0 ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DWITH_ORACLE=0 -DWITH_CLIENT=0 -DWITH_SERVER=1 ..
   make
 }
 
 package() {
   cd "$srcdir/Cockatrice/build"
-
   make DESTDIR="$pkgdir/" install
 }
-
-# vim:set ts=2 sw=2 et:

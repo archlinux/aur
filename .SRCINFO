@@ -1,19 +1,20 @@
 pkgbase = cockatrice-server-git
-	pkgdesc = A cross-platform virtual tabletop for multiplayer card games (Server)
-	pkgver = 20150924.1
+	pkgdesc = Open-source multiplatform supported program for playing tabletop card games over a network.
+	pkgver = 2.3.17
 	pkgrel = 1
-	url = http://www.woogerworks.com/
+	url = https://cockatrice.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git
 	makedepends = cmake
-	depends = qt5-base
-	depends = qt5-tools
+	makedepends = git
 	depends = protobuf
+	depends = qt5-websockets
+	optdepends = mariadb: database support
+	provides = cockatrice-server
 	conflicts = cockatrice-server
-	source = git+https://github.com/Cockatrice/Cockatrice.git
-	md5sums = SKIP
+	source = git+https://github.com/Cockatrice/Cockatrice
+	sha256sums = SKIP
 
 pkgname = cockatrice-server-git
 
