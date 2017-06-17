@@ -3,7 +3,7 @@
 
 _gemname=google-api-client
 pkgname=ruby-$_gemname
-pkgver=0.9.24
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Client for accessing Google APIs'
 arch=(any)
@@ -11,21 +11,17 @@ url='https://github.com/google/google-api-ruby-client'
 license=('Apache 2.0')
 depends=(
   ruby
-  'ruby-addressable<3' 'ruby-addressable>=2.3'
-  'ruby-googleauth<1' 'ruby-googleauth>=0.5'
-  'ruby-httpclient<3' 'ruby-httpclient>=2.7'
-  'ruby-hurley<1' 'ruby-hurley>=0.1'
-  'ruby-memoist<1' 'ruby-memoist>=0.11'
-  'ruby-mime-types>=1.6'
-  # 'ruby-representable<2.4' 'ruby-representable>=2.3'
-  ruby-representable-2.3
-  # 'ruby-retriable<3' 'ruby-retriable>=2'
-  ruby-retriable-2
+  'ruby-addressable>=2.5.1' 'ruby-addressable<3'
+  'ruby-googleauth>=0.5' 'ruby-googleauth<1'
+  'ruby-httpclient>=2.8.1' 'ruby-httpclient<3'
+  'ruby-mime-types>=3' 'ruby-mime-types<4'
+  'ruby-representable>=3' 'ruby-representable<4'
+  'ruby-retriable>=2' 'ruby-retriable<4'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('45ec4022aa2958378a7f5f888bd958a960d502c7')
+sha1sums=('aa0438f3c0d8533a1b4e578fb90e8fd336aae74a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
