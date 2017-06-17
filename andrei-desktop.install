@@ -1,0 +1,29 @@
+post_install() {
+	mkdir -p /tmp
+	cd /tmp
+	if [[ -d "andrei-linux-$1" ]]; then
+		cd "andrei-linux-$1"
+		git pull
+	else
+		git clone -q https://gitlab.com/webative-open-source/andrei-linux.git "andrei-linux-$1"
+		cd "andrei-linux-$1"
+	fi
+
+	setfacl --restore=./permissions.acl 2>&1
+
+	rsync -qacAXb --suffix=.pacsave ./files/etc /
+	rsync -qacAXb --suffix=.pacsave ./files/root /
+
+	updatedb
+
+	echo "In order to update your home directory config files, please run:"
+	echo "# rsync -qacAXb --suffix=.pacsave --chown=user:group /etc/skel/ user_home_dir/"
+	echo "# updatedb"
+	echo
+	echo "You should run \"pacdiff -l\" and review installed config files."
+	echo
+}
+
+post_upgrade() {
+	post_install $1
+}
