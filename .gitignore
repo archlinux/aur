@@ -1,0 +1,5 @@
+Cockatrice/
+*.tar.xz
+*.swp
+pkg/
+src/
