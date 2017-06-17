@@ -1,6 +1,6 @@
 pkgbase = higan-git
 	pkgdesc = Multisystem emulator by Byuu
-	pkgver = r572.1ca46090
+	pkgver = 102.26
 	pkgrel = 1
 	url = https://byuu.org
 	arch = x86_64
@@ -17,8 +17,10 @@ pkgbase = higan-git
 	conflicts = higan
 	source = git+https://gitlab.com/higan/higan.git
 	source = allow_root.patch
+	source = getver.patch
 	md5sums = SKIP
 	md5sums = 6bc32fa73fafec579fcc608feed43523
+	md5sums = 0b32b7421da621785ee29070782cfb77
 
 pkgname = higan-git
 
