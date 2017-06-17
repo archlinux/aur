@@ -1,0 +1,19 @@
+[Unit]
+Description=Noxbit, the Live Video Streaming tool
+After=network.target
+
+[Service]
+Type=simple
+User=noxbit
+Group=noxbit
+ExecStart=/opt/noxbit/STM-Hypervisor -config=/opt/noxbit/noxbit.cfg
+Restart=on-failure
+RestartSec=5
+ProtectHome=true
+ProtectSystem=strict
+PrivateUsers=true
+ReadWritePaths=/tmp
+ProtectKernelModules=true
+
+[Install]
+WantedBy=multi-user.target

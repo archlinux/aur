@@ -1,0 +1,8 @@
+post_install() {
+  echo "Remember to edit /opt/noxbit/noxbit.cfg file with your UID and password"
+  echo "Please edit noxbit.service if you want to place the cache directory outside of /tmp"
+}
+
+post_upgrade() {
+  post_install
+}
