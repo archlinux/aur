@@ -1,0 +1,20 @@
+pkgbase = vim-ultisnips-git
+	pkgdesc = TextMate-style snippets for Vim (git).
+	pkgver = 3.0.r381.g113a901
+	pkgrel = 1
+	url = https://github.com/SirVer/ultisnips
+	arch = any
+	groups = vim-plugins
+	license = GPL3
+	makedepends = git
+	depends = vim
+	depends = python2
+	conflicts = vim-ultisnips
+	replaces = vim-snipmate
+	source = ultisnips-git::git+https://github.com/SirVer/ultisnips.git
+	source = git+https://github.com/honza/vim-snippets.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = vim-ultisnips-git
+
