@@ -4,13 +4,13 @@
 
 pkgname=barry
 pkgver=0.18.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Barry is an Open Source application that provides a Desktop GUI, synchronization, backup, restore and program management for BlackBerry ™ devices."
 url=http://www.netdirect.ca/software/packages/barry
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('libusb' 'zlib' 'libglademm' 'libtar' 'libxml++' 'wxgtk' 'sdl' 'libgcal')
-optdepends=('fuse: for mounting the BB database with bfuse'
+depends=('libusb' 'zlib' 'libglademm' 'libtar' 'libxml++2.6' 'wxgtk3' 'sdl' 'libgcal')
+optdepends=('fuse2: for mounting the BB database with bfuse'
             'ppp: for tethering with pppob')
 options=('!libtool')
 source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-0.18.4/sources/debian/${pkgname}_${pkgver}.orig.tar.gz"
