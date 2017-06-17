@@ -3,7 +3,7 @@
 pkgname=python-asgiref
 _pypi_pkgname=asgiref
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference ASGI adapters and channel layers"
 arch=(any)
 url=" http://github.com/django/asgiref/"
