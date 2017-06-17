@@ -11,31 +11,30 @@ makedepends=('gcc-libs')
 depends=('glew>=1.8' 'freeglut>=2.7' 'devil>=1.7')
 optdepends=('cuda>=5.0')
 makedepends=('git')
-source=('git+https://github.com/pitzer/SiftGPU')
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/pitzer/SiftGPU"
+        'makefile-cuda.patch')
+sha256sums=('SKIP'
+            '9f3ce3d74180d34bc2c787811a6552cb996b950d808466bc74e3194253721288')
 
-folder=SiftGPU
 
 prepare() {
-  cd ${srcdir}
-  sed -i "s/Glew/GLEW/" $folder/src/SiftGPU/CMakeLists.txt
+  cd ${srcdir}/${pkgname}
+  patch -Np1 -i ../makefile-cuda.patch
 }
 
 build() {
-  cd ${srcdir}
+  cd ${srcdir}/${pkgname}
   #mkdir -p build
   #cd build
-  #cmake -DSIFTGPU_ENABLE_CUDA=TRUE -DSIFTGPU_ENABLE_OPENCL=TRUE -DBUILD_SHARED_LIBS=TRUE ../${folder}
-  cd ${folder}
-  sed -i "s/^CUDA_INSTALL_PATH = .*$/CUDA_INSTALL_PATH = \/opt\/cuda/" makefile
+  #cmake -DSIFTGPU_ENABLE_CUDA=TRUE -DSIFTGPU_ENABLE_OPENCL=TRUE -DBUILD_SHARED_LIBS=TRUE ../${pkgname}
   make -j1
 }
 
 package ()
 {
-  cd "$srcdir/$folder"
+  cd ${srcdir}/${pkgname}
   install -Dm755 -t ${pkgdir}/usr/lib ./bin/libsiftgpu.so 
-  install -Dm755 -t ${pkgdir}/usr/include ./src/$folder/SiftGPU.h
+  install -Dm755 -t ${pkgdir}/usr/include ./src/SiftGPU/SiftGPU.h
   install -Dm644 ./license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
 
