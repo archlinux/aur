@@ -5,17 +5,17 @@
 
 pkgname=davinci-resolve
 _pkgname=resolve
-pkgver=12.5.5
-pkgrel=7
+pkgver=12.5.6
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
 license=('Commercial')
-depends=('glu' 'gtk2' 'gstreamer' 'ocl-icd' 'libopenssl-1.0-compat' 'libpng12' 'log4cxx'
+depends=('glu' 'gtk2' 'gstreamer' 'ocl-icd' 'libpng12' 'log4cxx'
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 options=('!strip')
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('d0235480f400f531729ceec2e5daf5334191d1a59d3c32c5e0d8b32c69f88b38')
+sha256sums=('602384d691987aeafa57005b1bf80a77d79ccba681d3a8a403cc97abea8c810d')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs,Media}
