@@ -79,7 +79,7 @@ package() {
     "${srcdir}/custom.lib.bash.shim" \
     "${pkgdir}/usr/lib/${pkgname}/lib/custom.bash"
 
-  # `.editorconfig` it not meant to be user-editable
+  # `.editorconfig` is not meant to be user-editable
   cp -r --preserve=mode -t "${pkgdir}/usr/share/${pkgname}" \
     "${srcdir}/.editorconfig" \
     "${srcdir}/install.sh" \

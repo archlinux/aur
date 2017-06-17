@@ -18,7 +18,7 @@ post_remove() {
     ## 1. Re-install bash-it-git                        ##
     ## 2. For each user, run: ~/.bash_it/uninstall.sh   ##
     ##    (this also restores their original .bashrc)   ##
-    ## 3. Remove the `~/.bash_it`directory (optional)   ##
+    ## 3. Remove the `~/.bash_it` directory (optional)  ##
     ## 4. Uninstall bash-it-git                         ##
     ##                                                  ##
 
