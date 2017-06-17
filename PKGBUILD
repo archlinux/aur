@@ -7,18 +7,22 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=2.0.0.r2088.455acf44
+pkgver=2.0.0.r2151.4ec9cfa3
 _upver=2.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://qt-project.org/wiki/PySide"
-makedepends=('python' 'python2' "qt5.6" "python"{,2}"-shiboken2-git"
-             'cmake' 'qt5.6-webkit' 'phonon-qt5' 'git' 'python2-sphinx'
-	     'graphviz')
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside.git"
+makedepends=('python' 'python2' "python"{,2}"-shiboken2-git" 'cmake'
+             'phonon-qt5' 'git' 'python2-sphinx' 'graphviz' 'qt5-base'
+             'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative'
+             'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-webchannel'
+             'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
+source=("$pkgbase::git+https://code.qt.io/pyside/pyside.git#branch=5.9"
+        "fix-module-name.patch"
         "sphinx-build2.patch")
 md5sums=('SKIP'
+         '0d000a2cdd7f18bcaf8450998707da2e'
          '0431767d635147c638063c71a2a138b3')
 
 pkgver() {
@@ -29,23 +33,18 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgbase"
     patch -Np1 -i "$srcdir/sphinx-build2.patch"
+    patch -Np1 -i "$srcdir/fix-module-name.patch"
 }
 
 build(){
-    local qt5_src="/opt/qt5.6"
-    local qt5_rpath="$qt5_src/lib"
-    local phonon_inc="/usr/include/qt4/phonon"
-
     # Build for python2.
     cd "$srcdir/$pkgbase"
     mkdir -p build-py2 && cd build-py2
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
              -DCMAKE_BUILD_TYPE=Release \
-             -DBUILD_TESTS=OFF \
-             "-DQT_PHONON_INCLUDE_DIR=$phonon_inc" \
-             "-DCMAKE_PREFIX_PATH=$qt5_src" \
-             "-DQT_SRC_DIR=$qt5_src" \
-             "-DCMAKE_INSTALL_RPATH=$qt5_rpath"
+             -DPYTHON_EXTENSION_SUFFIX=-python2.7 \
+             -DUSE_PYTHON_VERSION=2 \
+             -DBUILD_TESTS=OFF
     make
 
     # Build for python3.
@@ -53,17 +52,13 @@ build(){
     mkdir -p build-py3 && cd build-py3
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
              -DCMAKE_BUILD_TYPE=Release \
-             -DBUILD_TESTS=OFF \
-             "-DQT_PHONON_INCLUDE_DIR=$phonon_inc" \
-             "-DCMAKE_PREFIX_PATH=$qt5_src" \
-             "-DQT_SRC_DIR=$qt5_src" \
-             "-DCMAKE_INSTALL_RPATH=$qt5_rpath" \
-             -DUSE_PYTHON_VERSION=3
+             -DUSE_PYTHON_VERSION=3 \
+             -DBUILD_TESTS=OFF
     make
 }
 
 package_pyside2-common-git(){
-    pkgdesc="Provides LGPL Qt bindings for Python and related tools for binding generation (Common Files)"
+    pkgdesc="LGPL Qt bindings for Python (Common Files)"
 
     cd "$srcdir/$pkgbase/build-py3"
     make DESTDIR="$pkgdir" install
@@ -74,10 +69,11 @@ package_pyside2-common-git(){
 }
 
 package_python-pyside2-git(){
-    depends=('python' "qt5.6" "python-shiboken2-git" "pyside2-common-git")
-    pkgdesc="Provides LGPL Qt bindings for Python and related tools for binding generation (Python 3 version)"
-    optdepends=('qt5.6-webkit: for PySide2.QtWebKit'
-                'phonon: for PySide2.phonon')
+    depends=('python' "python-shiboken2-git" "pyside2-common-git" "qt5-base")
+    pkgdesc="LGPL Qt bindings for Python 3"
+    optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
+                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg'
+                'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 
     cd "$srcdir/$pkgbase/build-py3"
     make DESTDIR="$pkgdir" install
@@ -89,16 +85,16 @@ package_python-pyside2-git(){
 }
 
 package_python2-pyside2-git(){
-    depends=('python2' "qt5.6" "python2-shiboken2-git" "pyside2-common-git")
-    pkgdesc="Provides LGPL Qt bindings for Python and related tools for binding generation (Python 2 version)"
-    optdepends=('qt5.6-webkit: for PySide2.QtWebKit'
-                'phonon: for PySide2.phonon')
+    depends=('python2' "python2-shiboken2-git" "pyside2-common-git" "qt5-base")
+    pkgdesc="LGPL Qt bindings for Python 2"
+    optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
+                'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg'
+                'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
 
     cd "$srcdir/$pkgbase/build-py2"
     make DESTDIR="$pkgdir" install
 
-    mv "$pkgdir"/usr/lib/pkgconfig/pyside2.pc \
-        "$pkgdir"/usr/lib/pkgconfig/pyside2-py2.pc
+    mv "$pkgdir"/usr/lib/pkgconfig/pyside2{,-py2}.pc
 
     sed -i 's#^Requires: shiboken$#Requires: shiboken-py2#' \
         "$pkgdir"/usr/lib/pkgconfig/pyside2-py2.pc
@@ -108,4 +104,3 @@ package_python2-pyside2-git(){
     rm "$pkgdir"/usr/lib/cmake/PySide2-$_upver/PySide2Config.cmake
     rm "$pkgdir"/usr/lib/cmake/PySide2-$_upver/PySide2ConfigVersion.cmake
 }
-

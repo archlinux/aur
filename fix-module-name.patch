@@ -1,0 +1,12 @@
+diff -ru pyside2-git/cmake/Macros/PySideModules.cmake pyside2-git.new/cmake/Macros/PySideModules.cmake
+--- pyside2-git/cmake/Macros/PySideModules.cmake	2017-06-16 22:33:54.712099607 +0200
++++ pyside2-git.new/cmake/Macros/PySideModules.cmake	2017-06-16 22:54:42.604343309 +0200
+@@ -101,7 +101,7 @@
+     add_library(${module_name} MODULE ${${module_sources}} ${${module_static_sources}})
+     set_target_properties(${module_name} PROPERTIES
+                           PREFIX ""
+-                          OUTPUT_NAME "${module_name}${PYTHON_EXTENSION_SUFFIX}"
++                          OUTPUT_NAME "${module_name}"
+                           LIBRARY_OUTPUT_DIRECTORY ${pyside2_BINARY_DIR})
+     if(WIN32)
+         set_target_properties(${module_name} PROPERTIES SUFFIX ".pyd")
