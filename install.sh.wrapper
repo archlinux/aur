@@ -1,9 +1,17 @@
 #!/usr/bin/env sh
 set -e
 
-if [[ "$(whoami)" != "$(logname)" ]]; then
+if [[ "$(whoami)" != "$(logname 2>/dev/null)" ]]; then
+  echo >&2
   echo >&2 'This command will install files into your' \
-    'home directory. It must be run without sudo.'
+    'home directory. It must be run *without* sudo.'
+
+  if pacman -Q tmux >/dev/null 2>&1; then
+    echo >&2 'Also, this installer does *not* support tmux sessions.'
+    echo >&2 'Please detach from tmux; you can re-attach' \
+      'after this command has finished running.'
+  fi
+
   exit 1
 fi
 
