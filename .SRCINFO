@@ -12,9 +12,9 @@ pkgbase = rescuetime
 	depends = xorg-xprop
 	depends = xprintidle
 	conflicts = rescuetime-beta
-	source_i686 = https://www.rescuetime.com/installers/rescuetime_current_i386.deb
+	source_i686 = rescuetime_2.9.11.1300_amd64.deb::https://www.rescuetime.com/installers/rescuetime_current_i386.deb
 	sha256sums_i686 = cfc5ee42e8565f3ce5119f68dd6051d2d7645f1a44824cd737f82e4126c43261
-	source_x86_64 = https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
+	source_x86_64 = rescuetime_2.9.11.1300_amd64.deb::https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
 	sha256sums_x86_64 = 85d9b2d2109da56fbb430f18887885a03e0d9a67507562d048174d99dfca2a98
 
 pkgname = rescuetime
