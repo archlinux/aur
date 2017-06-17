@@ -1,0 +1,18 @@
+pkgbase = arcueid-git
+	pkgdesc = A C interpreter for Paul Graham's Arc dialect of Lisp. (GIT version)
+	pkgver = 0.1.2.r413.gb71408e4
+	pkgrel = 1
+	url = https://arcueid-arc.org
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gmp
+	optdepends = readline
+	provides = arcueid
+	conflicts = arcueid
+	source = git+https://github.com/dido/arcueid.git
+	sha256sums = SKIP
+
+pkgname = arcueid-git
+
