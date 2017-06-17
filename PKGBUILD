@@ -5,7 +5,7 @@
 # Contributor: Romain Bazile <gromain {dot} baz {at} gmail {dot} com>
 pkgname=boostnote
 _pkgname=Boostnote
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
@@ -15,23 +15,26 @@ depends=('electron' 'nodejs')
 makedepends=('npm' 'grunt-cli' 'git')
 
 source=(
-  "${pkgver}.tar.gz::https://github.com/BoostIO/"${_pkgname}"/archive/v"$pkgver".tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/BoostIO/"${_pkgname}"/archive/v"$pkgver".tar.gz"
   "${pkgname}.js"
   "${pkgname}.desktop"
   "warning-fix.patch"
+  "typos.patch"
   )
 
 sha512sums=(
-  '263bf64a359fcfde27685aed7e1605a27ae064fc5c544c11a04bb1a6d32cc1bd3aef7bb6fdb3c2999ec1749ace4d20395b37153bb3ed9b1abce9bdd630170448'
+  '6a34c4b5852f3427410012faa49004f92f7bec779505e492efd26eb15a16130a94b4f872e37a51fa35a18c2a6836778fcb0b15147e70a7902fb75d017c636cc7'
   'f0abbdcca34d7f74d3dc66ffc2d0995416e7708c715d55fa58c4c2abc31d191ea42f3434e3105292b4817f83ac0ca89f456f5f93007ae80ab2426c8941f615f9'
   '18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40'
   '64fb4c4823744322b5777736fc1792fb377e433608b5456cb0e0b7053507d104a1bbe3fdc6fe193b41dfddadc1943e8220a27e26ec6d4166704f3e61e2572437'
+  '75f29e82f75874e9c525da84c2b9f8fc6d8a325584adea9ffbf25ced96e73f177c7e35e6f78f714b5bf747f77f3ecf617c1e6fa56852e59288b21216844622d8'
   )
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
   patch -Np1 -i "${srcdir}/warning-fix.patch"
+  patch -Np1 -i "${srcdir}/typos.patch"
 }
 
 build() {
@@ -49,7 +52,7 @@ package() {
   appdir="/usr/lib/${pkgname}"
 
   install -dm755 "${pkgdir}""${appdir}"
-  cp -r * "${pkgdir}""${appdir}"
+  cp -a * "${pkgdir}""${appdir}"
 
   install -Dm755 "${srcdir}/${pkgname}.js" "$pkgdir/usr/bin/${pkgname}"
 
