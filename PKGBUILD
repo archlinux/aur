@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.25.0.r117.g4e12baf3d7
+pkgver=0.25.0.r147.gaa690e3997
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -17,7 +17,7 @@ license=('GPL3')
 url='http://mpv.io'
 screenshot='http://i.imgur.com/6TacA5I.png'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
-depends=('pulseaudio' 'lcms2' 'libdvdread' 'libgl' 'libvdpau'
+depends=('pulseaudio' 'lcms2' 'mujs' 'libdvdread' 'libgl' 'libvdpau'
          'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
 	 'wayland' 'v4l-utils' 'lua52' 'rsound' 'sndio' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
          'enca' 'libguess' 'harfbuzz' 'libxrandr' 'rubberband' 'smbclient' "${_undetected_depends[@]}")
@@ -179,6 +179,8 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --disable-videotoolbox-gl \
 	            --enable-vdpau-hwaccel \
 	            --disable-d3d-hwaccel \
+              --disable-d3d-hwaccel-new \
+              --enable-javascript \
               --enable-tv \
 	            --enable-tv-v4l2 \
 	            --enable-libv4l2 \
