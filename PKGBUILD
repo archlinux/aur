@@ -1,4 +1,5 @@
-# Maintainer: Troy Will <troydwill at gmail dot com>
+# Maintainer: Mesmer <mesmer@fisica.if.uff.br>
+# Contributor: Troy Will <troydwill at gmail dot com>
 # Contributor: /dev/rs0                  </dev/rs0@secretco.de.com>
 # Contributor: Jacek Burghardt           <jacek@hebe.us>
 # Contributor: Vojtech Aschenbrenner     <v@asch.cz>
@@ -11,7 +12,7 @@
 # Orginally based on a Debian Squeeze package
 _pkgname=zoneminder
 pkgname=zoneminder
-pkgver=1.30.0
+pkgver=1.30.4
 pkgrel=1
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
@@ -40,28 +41,32 @@ optdepends=(
 install=$_pkgname.install
 
 source=(
-    # https://github.com/ZoneMinder/ZoneMinder/archive/v$pkgver.tar.gz
-    https://github.com/ZoneMinder/ZoneMinder/releases/download/v$pkgver/ZoneMinder-$pkgver.tar.gz
+    https://github.com/ZoneMinder/ZoneMinder/archive/$pkgver.tar.gz
     httpd-zoneminder.conf
     zoneminder.service
     zoneminder-tmpfile.conf
     zm_rtp_ctrl.h.quick_fix_for_gcc6.diff
 )
-sha256sums=('0a7378835398a720f2b5ef7723415cf5cba9170cf72753631916b30d9f8160a2'
+sha256sums=('5461350caa9d8ec58deb1ef08e2e1641084e694f2a9f9e17b3b678b1a43203c7'
             'ff7382b38ac07dadead0ad4d583e3dbcf8da4aaa06b76d048ee334f69f95db67'
             '043d77a995553c533d62f48db4b719d29cf6c7074f215d866130e97be57ed646'
             'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
-            '312f5fb1ab995b8b5510c16f3e1f1027856c105c37f926f76126027cb8860b96'
-           )
-     
-build() {
-    cd $srcdir/ZoneMinder-$pkgver
-    # patch src/zm_rtp_ctrl.h ../zm_rtp_ctrl.h.quick_fix_for_gcc6.diff
+            '312f5fb1ab995b8b5510c16f3e1f1027856c105c37f926f76126027cb8860b96')
 
-    # ZM_PERL_SUBPREFIX=/lib/perl5 flag added to force Perl modules
-    # to /usr/lib/perl5/ on non i686 architectures
-    
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+prepare () {
+    cd $srcdir/ZoneMinder-$pkgver/web/api/app/Plugin/
+    if [ ! -d "crud" ]; then
+    git clone -b 3.0 https://github.com/FriendsOfCake/crud.git
+    mkdir -p Crud
+    cp -Rv crud/* Crud/
+    fi
+
+}
+
+build() {
+   cd $srcdir/ZoneMinder-$pkgver
+   
+   cmake -DCMAKE_INSTALL_PREFIX=/usr \
           -DZM_PERL_SUBPREFIX=/lib/perl5 \
           -DZM_WEBDIR=/srv/http/zoneminder \
           -DZM_CGIDIR=/srv/http/cgi-bin \
@@ -73,7 +78,7 @@ build() {
           -DZM_SOCKDIR=/var/lib/zoneminder/sock .
      
     make V=0
-}
+} 
      
 package() {
 
