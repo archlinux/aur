@@ -1,0 +1,14 @@
+pkgbase = kattis-cli-git
+	pkgdesc = Kattis online judge command line tool
+	pkgver = r42.e18dd19
+	pkgrel = 1
+	url = https://github.com/Kattis/kattis-cli
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	source = git+https://github.com/Kattis/kattis-cli
+	md5sums = SKIP
+
+pkgname = kattis-cli-git
+
