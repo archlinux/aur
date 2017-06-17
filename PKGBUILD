@@ -2,7 +2,7 @@
 # Contributor: Egon Geerardyn <egon [dot] geerardyn [at] gmail [dot] com>
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
@@ -20,7 +20,7 @@ source=("https://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_
 	'crashplan.service'
 	'install.vars'
 	'sysctl-crashplan.conf')
-sha256sums=('ce870d9aadef2e22430879866dd61b3f390f3d7993916b99f58c46032aa30872'
+sha256sums=('c25d87ec1d442a396b668547e39b70d66dcfe02250cc57a25916ebb42a407113'
             '259d38afa8fc34246ac0ecfeefc701d47501c552eb0ffcd1bd4b8e9a2751c3c8'
             'a2b4d4469847721f8e68970fb55a2c78655441e124ad8db151e047ff6a592416'
             'c6dc626a180671d6b01f46f22158857c3fa86cd3eec79e3388284a2ab2682617'
