@@ -369,6 +369,18 @@
         <translation>Create a compatibility list</translation>
     </text>
     <text>
+        <origin>Удалить дубликаты</origin>
+        <translation>Remove duplicates</translation>
+    </text>
+    <text>
+        <origin>Удалить дубликаты насовсем</origin>
+        <translation>Remove duplicates permanently</translation>
+    </text>
+    <text>
+        <origin>Убрать ненайденные дампы</origin>
+        <translation>Remove unfound dumps</translation>
+    </text>
+    <text>
         <origin>Экспортировать</origin>
         <translation>Export</translation>
     </text>
@@ -377,16 +389,20 @@
         <translation>Select a directory for precompile</translation>
     </text>
     <text>
+        <origin>Удаление дубликатов</origin>
+        <translation>Removing duplicates</translation>
+    </text>
+    <text>
+        <origin>Вы действительно хотите удалить файл с компьютера?</origin>
+        <translation>Do you want to remove a file from your computer?</translation>
+    </text>
+    <text>
         <origin>Выбрать директорию для экспорта</origin>
         <translation>Select directory for export</translation>
     </text>
     <text>
         <origin>Удаление: </origin>
         <translation>Deletion: </translation>
-    </text>
-    <text>
-        <origin>Вы действительно хотите удалить файл с компьютера?</origin>
-        <translation>Do you want to remove a file from your computer?</translation>
     </text>
     <text>
         <origin>Удаление</origin>
@@ -469,12 +485,32 @@
         <translation>ColecoVision</translation>
     </text>
     <text>
-        <origin>Sega Master System</origin>
-        <translation>Sega Master System</translation>
+        <origin>SG-1000\nSega Master System\nSega Game Gear</origin>
+        <translation>SG-1000\nSega Master System\nSega Game Gear</translation>
+    </text>
+    <text>
+        <origin>SG-1000, Sega Master System и Sega Game Gear</origin>
+        <translation>SG-1000, Sega Master System и Sega Game Gear</translation>
+    </text>
+    <text>
+        <origin>Game Boy</origin>
+        <translation>Game Boy</translation>
+    </text>
+    <text>
+        <origin>Jaguar</origin>
+        <translation>Jaguar</translation>
+    </text>
+    <text>
+        <origin>Atari Jaguar</origin>
+        <translation>Atari Jaguar</translation>
     </text>
     <text>
         <origin>Дочерние проекты</origin>
         <translation>Child projects</translation>
+    </text>
+    <text>
+        <origin>Хочу поддержать проект!</origin>
+        <translation>I want to support the project!</translation>
     </text>
     <text>
         <origin>Real3DOPlayer</origin>
@@ -491,6 +527,14 @@
     <text>
         <origin>NumPadPlayer - эмулятор ColecoVision под Android</origin>
         <translation>NumPadPlayer - ColecoVision emulator for Android</translation>
+    </text>
+    <text>
+        <origin>GearMasterPlayer</origin>
+        <translation>GearMasterPlayer</translation>
+    </text>
+    <text>
+        <origin>GearMasterPlayer - эмулятор SG-1000, Sega Master System и Game Gear под Android</origin>
+        <translation>GearMasterPlayer - an emulator SG-1000, Sega Master System and Game Gear for Android</translation>
     </text>
     <text>
         <origin>Выйти</origin>
@@ -665,6 +709,46 @@
         <translation>Open gameplay record</translation>
     </text>
     <text>
+        <origin>Редактировать аннотацию текущей игры</origin>
+        <translation>Edit the annotation of the current game</translation>
+    </text>
+    <text>
+        <origin>Режим ускоренной эмуляции</origin>
+        <translation>Fast emulation mode</translation>
+    </text>
+    <text>
+        <origin>Данный режим позволяет оценить производительность или быстро пройти тесты эмулируемых подсистем</origin>
+        <translation>This mode allows to evaluate the performance or quickly pass the tests of emulated subsystems</translation>
+    </text>
+    <text>
+        <origin>Создать С++ массив</origin>
+        <translation>Create С++ array</translation>
+    </text>
+    <text>
+        <origin>Создать С++ массив из бинарного файла</origin>
+        <translation>Create С++ array from binary file</translation>
+    </text>
+    <text>
+        <origin>Протестировать M68K</origin>
+        <translation>M68K test</translation>
+    </text>
+    <text>
+        <origin>Добавить заголовок в дамп картриджа Atari Jaguar</origin>
+        <translation>Add a header in dump of Atari Jaguar cartridge</translation>
+    </text>
+    <text>
+        <origin>Добавить универсальный заголовок в дамп картриджа Atari Jaguar</origin>
+        <translation>Добавить универсальный заголовок в дамп картриджа Atari Jaguar</translation>
+    </text>
+    <text>
+        <origin>Исправить образ 3DO диска</origin>
+        <translation>Fix the 3DO disk image</translation>
+    </text>
+    <text>
+        <origin>Исправить образ 3DO диска с некорректным числом секторов</origin>
+        <translation>Fix the 3DO disk image with incorrect number of sectors</translation>
+    </text>
+    <text>
         <origin>Добавить %1 образ в коллекцию</origin>
         <translation>Add %1 a image to the collection</translation>
     </text>
@@ -687,6 +771,10 @@
     <text>
         <origin>Помощь</origin>
         <translation>Help</translation>
+    </text>
+    <text>
+        <origin>Конвертaция</origin>
+        <translation>Converting</translation>
     </text>
     <text>
         <origin>Сохранить снимок экрана в файл</origin>
@@ -713,16 +801,12 @@
         <translation>Open a ROM dump</translation>
     </text>
     <text>
-        <origin>Файл дампа ПЗУ (*.bin *.rom *.col *.binar);;Произвольный файл (*.*)</origin>
-        <translation>ROM dump file (*.bin *.rom *.col *.binar);;Any file (*.*)</translation>
+        <origin>Файл дампа ПЗУ </origin>
+        <translation>ROM dump file </translation>
     </text>
     <text>
-        <origin>Файл дампа ПЗУ (*.sms *.binar);;Произвольный файл (*.*)</origin>
-        <translation>ROM dump file (*.sms *.binar);;Any file (*.*)</translation>
-    </text>
-    <text>
-        <origin>Файл дампа ПЗУ (*.bin *.rom *.binar);;Произвольный файл (*.*)</origin>
-        <translation>ROM dump file (*.bin *.rom *.binar);;Any file (*.*)</translation>
+        <origin>);;Произвольный файл (*.*)</origin>
+        <translation>);;Any file (*.*)</translation>
     </text>
     <text>
         <origin>Создать хранилище энергонезависимой памяти</origin>
@@ -739,6 +823,34 @@
     <text>
         <origin>Файл записи игры (*.recplay);;Произвольный файл (*.*)</origin>
         <translation>Game record file (*.recplay);;Any file (*.*)</translation>
+    </text>
+    <text>
+        <origin>Открыть тест</origin>
+        <translation>Open test</translation>
+    </text>
+    <text>
+        <origin>Файл теста (*.tm68k);;Произвольный файл (*.*)</origin>
+        <translation>Test file (*.tm68k);;Any file (*.*)</translation>
+    </text>
+    <text>
+        <origin>Открыть файл</origin>
+        <translation>Open file</translation>
+    </text>
+    <text>
+        <origin>Произвольный файл (*.*)</origin>
+        <translation>Any file (*.*)</translation>
+    </text>
+    <text>
+        <origin>Файл с образом диска (*.iso *.img *.cdi *.bin *.nrg);;Произвольный файл (*.*)</origin>
+        <translation>Disk image file (*.iso *.img *.cdi *.bin *.nrg);;Any file (*.*)</translation>
+    </text>
+    <text>
+        <origin>Открыть дамп</origin>
+        <translation>Open dump</translation>
+    </text>
+    <text>
+        <origin>Дамп (*.jag *.bin *.rom);;Произвольный файл (*.*)</origin>
+        <translation>Dump (*.jag *.bin *.rom);;Any file (*.*)</translation>
     </text>
     <text>
         <origin>Рокировка каналов</origin>
@@ -939,6 +1051,10 @@
     <text>
         <origin>Опорные кадры при записи раз в %1 сек.</origin>
         <translation>Keyframes for record time per %1 second.</translation>
+    </text>
+    <text>
+        <origin>Отключить автосохранения</origin>
+        <translation>Disable autosaving</translation>
     </text>
     <text>
         <origin>Сохранять пропорции экрана</origin>
@@ -1161,8 +1277,8 @@
         <translation>Emulate DSP in separate thread</translation>
     </text>
     <text>
-        <origin>Эмулровать CEL-Engines в отдельных потоках</origin>
-        <translation>Emulate CEL-Engines in separate threads</translation>
+        <origin>Эмулровать CEL-Engine в отдельном потоке</origin>
+        <translation>Emulate CEL-Engine in separate thread</translation>
     </text>
     <text>
         <origin>Скорость CD-привода</origin>
@@ -1177,12 +1293,20 @@
         <translation>Without restrictions</translation>
     </text>
     <text>
-        <origin>Учет CEL трафика</origin>
-        <translation>Сonsider CEL traffic</translation>
+        <origin>Учет циклов CEL-Engine</origin>
+        <translation>Сonsidering a cycles CEL-Engine</translation>
+    </text>
+    <text>
+        <origin>100% + вне кадра</origin>
+        <translation>100% + out of frame</translation>
     </text>
     <text>
         <origin>Не учитывать</origin>
         <translation>Ignore</translation>
+    </text>
+    <text>
+        <origin>Отрисовка всех CEL в конце CCB-списка</origin>
+        <translation>Rendering all CEL to tail CCB-list</translation>
     </text>
     <text>
         <origin>Эмуляция DSP</origin>
@@ -1199,5 +1323,9 @@
     <text>
         <origin>Медленная - с точностью до такта</origin>
         <translation>Slow - accurate to tact</translation>
+    </text>
+    <text>
+        <origin>Учитывать ограничения консоли на спрайты</origin>
+        <translation>Considering limitations on sprites in the console</translation>
     </text>
 </root>

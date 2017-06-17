@@ -1,21 +1,21 @@
 # Maintainer: Viachaslau Khalikin <vkhinegret@gmail.com>
 
 pkgname=phoenix-emu-project
-pkgver=2.8
+pkgver=2.8.JAG
 pkgrel=1
-pkgdesc="An emulator of 3DO consoles. 100% compatible!"
+pkgdesc="An emulator of ColecoVision, Sega Master System, Atari Jaguar and 3DO consoles."
 url="http://www.arts-union.ru/node/23"
 license=('custom')
 arch=('x86_64')
 depends=('qt5-base' 'openal' 'glu')
-source=("http://www.arts-union.ru/sites/default/files/ph28-lin-x64.zip"
+source=("http://www.arts-union.ru/sites/default/files/ph28jag-lin-x64.zip"
         phoenix-emu-project.desktop
         phoenix-emu-project
         translation.xml.eng)
-md5sums=('a82514312aee59b0addd7cb75591ef86'
+md5sums=('d2cdf18c76afac1b3e58325d58f91272'
          '7f9b5652c512887d7e034cc8c07b2045'
          '2dda6097a84eadaee848c31fe86001bd'
-         '9077a8400eb3c4e06183b7fd9974f50f')
+         '5acbb45a6a1df36eddc3123273595c12')
 prepare() {
   echo
 }
