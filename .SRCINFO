@@ -19,6 +19,7 @@ pkgbase = ruby-google-api-client-0.12
 	depends = ruby-retriable>=2
 	depends = ruby-retriable<4
 	provides = ruby-google-api-client=0.12
+	conflicts = ruby-google-api-client
 	noextract = google-api-client-0.12.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/google-api-client-0.12.0.gem

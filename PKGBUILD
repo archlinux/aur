@@ -10,6 +10,7 @@ arch=(any)
 url='https://github.com/google/google-api-ruby-client'
 license=('Apache 2.0')
 provides=('ruby-google-api-client=0.12')
+conflicts=('ruby-google-api-client')
 depends=(
   ruby
   'ruby-addressable>=2.5.1' 'ruby-addressable<3'
