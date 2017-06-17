@@ -2,7 +2,7 @@
 pkgname=deepin-qq-im
 pkgver=8.9.19983deepin18
 _qqver=8.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Tencent QQ Client on Deepin Wine"
 arch=("x86_64")
 url="http://www.deepin.com/"
