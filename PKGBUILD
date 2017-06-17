@@ -4,7 +4,7 @@
 _appname=freecad-qt5
 pkgname="${_appname}-git"
 pkgver=0.17pre.r4610.gd28bae3f5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ build() {
           -DCMAKE_PREFIX_PATH="/opt/opencascade7" \
           -DCMAKE_INCLUDE_PATH="/opt/opencascade7/include/opencascade" \
           -DCMAKE_LIBRARY_PATH="/opt/opencascade7/lib" \
-          -DCMAKE_INSTALL_RPATH="/opt/opencascade7/lib" \
+          -DCMAKE_INSTALL_RPATH="/opt/opencascade7/lib;/usr/lib" \
           -DPYTHON_EXECUTABLE="/usr/bin/python2" \
           -DPYTHON_EXTENSION_SUFFIX="-python2.7" \
           -DPYTHON_BASENAME="-python2.7" \
