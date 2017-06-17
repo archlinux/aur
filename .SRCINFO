@@ -1,6 +1,6 @@
 pkgbase = stig
 	pkgdesc = TUI and CLI client for the Transmission daemon
-	pkgver = 0.7.1a
+	pkgver = 0.7.3a
 	pkgrel = 1
 	url = https://github.com/rndusr/stig
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = stig
 	depends = python-blinker
 	depends = python-natsort
 	optdepends = python-geoip: shows country codes in peer lists
-	source = stig-0.7.1a.tar.gz::https://github.com/rndusr/stig/archive/v0.7.1a.tar.gz
-	sha256sums = bf35bb10cf0ccd97d2a1f27868d5590050e0a384dd6eef1e7b78d1d32198666f
+	source = stig-0.7.3a.tar.gz::https://github.com/rndusr/stig/archive/v0.7.3a.tar.gz
+	sha256sums = 8f63b10d78cde951e55d54aed34488d7f1f9fafccf5c7190dbdd4bd931926303
 
 pkgname = stig
 
