@@ -2,7 +2,7 @@
 Name=MCPMappingViewer
 Comment=A small GUI for viewing the mappings from Minecraft obfuscated code names to MCP code names
 Exec=/usr/bin/MCPMappingViewer
-Icon=/usr/share/mcp-mapping-viewer/icon.png
+Icon=/usr/share/pixmaps/MCPMappingViewer.png
 Categories=Development;Utility;Java;
 Encoding=UTF-8
 StartupNotify=false
