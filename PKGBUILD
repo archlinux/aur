@@ -32,4 +32,4 @@ package() {
     install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('d7e8621e595acc397dc3598bd4bdede6d448dd4a9a69ec84c0aed2347a216604')
+sha256sums=('82d6830313508358eee6cb31ee56cd7cabc04aae16afd5e6964968661ccc17f3')
