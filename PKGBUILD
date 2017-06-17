@@ -3,18 +3,20 @@
 pkgname=logitechmediaserver-git
 pkgver=7.9.1
 _gitver=7.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/stefansielaff/slimserver'
 license=('GPL' 'custom')
 provides=('logitechmediaserver')
-depends=('perl>=5.26' 'perl<5.27' 'perl-cgi' 'perl-common-sense'
+depends=('perl>=5.26' 'perl<5.27' 'perl-cgi' 'perl-common-sense' 'perl-data-dump'
 	 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-sha1' 'perl-ev' 'perl-yaml-libyaml'
 	 'perl-html-parser' 'perl-html-form' 'perl-html-tree'
-	 'perl-json-xs' 'perl-sub-name' 'perl-sub-uplevel'
-	 'perl-template-toolkit' 'perl-xml-parser' 'perl-xml-simple')
-makedepends=('nasm' 'yasm' 'rsync' 'gd' 'zlib')
+	 'perl-json-xs' 'perl-module-build' 'perl-sub-name' 'perl-sub-uplevel'
+	 'perl-template-toolkit' 'perl-test-nowarnings' 'perl-test-warn'.
+	 'perl-xml-parser' 'perl-xml-simple'
+	 'ffmpeg' 'giflib' 'libexif' 'libjpeg-turbo' 'libpng')
+makedepends=('yasm' 'rsync' 'gd' 'zlib')
 optdepends=('perl-io-socket-ssl: support for https streams')
 optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems' 'perl-io-socket-ssl: support for https streams')
 install=install
