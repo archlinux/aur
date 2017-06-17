@@ -12,7 +12,7 @@ depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'n
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
-provides=('waterfox=$pkgver')
+provides=("waterfox=$pkgver")
 conflicts=('waterfox-bin' 'waterfox-git')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
