@@ -1,6 +1,6 @@
 pkgbase = qsynth-git
 	pkgdesc = A fluidsynth Qt GUI Interface (GIT version)
-	pkgver = r531.999e198
+	pkgver = 0.4.4.r6.g999e198
 	pkgrel = 1
 	url = https://qsynth.sourceforge.io/
 	arch = i686

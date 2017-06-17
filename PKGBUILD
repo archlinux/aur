@@ -2,7 +2,7 @@
 
 _pkgname=qsynth
 pkgname=${_pkgname}-git
-pkgver=r531.999e198
+pkgver=0.4.4.r6.g999e198
 pkgrel=1
 pkgdesc="A fluidsynth Qt GUI Interface (GIT version)"
 arch=('i686' 'x86_64')
