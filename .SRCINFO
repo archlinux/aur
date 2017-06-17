@@ -1,0 +1,17 @@
+pkgbase = arcpp-git
+	pkgdesc = An implementation of the Arc programming language. (GIT version)
+	pkgver = 0.13.2.r0.g946c5c5
+	pkgrel = 1
+	url = https://github.com/kimtg/Arcpp
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = git
+	depends = readline
+	provides = arcpp
+	conflicts = arcpp
+	source = git+https://github.com/kimtg/arcpp.git
+	sha256sums = SKIP
+
+pkgname = arcpp-git
+
