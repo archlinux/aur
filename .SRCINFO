@@ -1,0 +1,16 @@
+pkgbase = arcpp
+	pkgdesc = An implementation of the Arc programming language.
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://github.com/kimtg/Arcpp
+	arch = x86_64
+	arch = i686
+	license = Apache
+	depends = readline
+	provides = arcpp
+	conflicts = arcpp
+	source = https://github.com/kimtg/arcpp/archive/v0.13.2.zip
+	sha256sums = bff813b49e801f6eed8dac6ba76b8dcddc1d98385cbd1134aa426d407a06f74c
+
+pkgname = arcpp
+
