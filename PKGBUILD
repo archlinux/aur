@@ -12,39 +12,41 @@ license=('MIT' 'Apache')
 depends=('sh' 'java-runtime>=7')
 makedepends=('java-environment>=7')
 
-source=(${_name}
-	${_name}.desktop
-	${url}/archive/${pkgver}.tar.gz)
+source=('bin'
+        'desktop'
+        "${url}/archive/${pkgver}.tar.gz")
 
-md5sums=('0b60fd59792482a0e69a2457d9d3e309'
-         '61a50d4721e1378ac1c91023aec3010d'
-         '715927a5df7c012dfe22e3f3c08dcc87')
+sha256sums=('f5bac19becef64725e04bab40b2cc2d23b6f9453e641e56320f02a34e491617f'
+            '857ef429e636f7ee1258b2543f2db09802cdd69c55fab58ae7fb6af649f79b7f'
+            '80cbdcec1e46d4cc55aa8a80807bb9c19ea4832500c70e320d8472bc48a14a1c')
 
 build() {
-	cd ${srcdir}/${_name}-${pkgver}
+	cd "${srcdir}/${_name}-${pkgver}"
 	./gradlew build
 }
 
 package() {
-	cd ${srcdir}/${_name}-${pkgver}
+	cd "${pkgdir}"
+
+	tar="${srcdir}/${_name}-${pkgver}"
 
 	# Create pkgdir tree
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/applications"
-	mkdir -p "${pkgdir}/usr/share/java/${pkgname}"
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+	mkdir -p "usr/bin"
+	mkdir -p "usr/share/applications"
+	mkdir -p "usr/share/java/${pkgname}"
+	mkdir -p "usr/share/licenses/${pkgname}"
 
 	# Install files into pkgdir
 	# Use the -all jar so all libs are packed in the jar and we don't need to setup a classpath
-	install -D -m755 "build/libs/${_name}-${pkgver}-all.jar" "${pkgdir}/usr/share/java/${pkgname}/${_name}.jar"
+	install -D -m755 "${tar}/build/libs/${_name}-${pkgver}-all.jar" "usr/share/java/${pkgname}/${_name}.jar"
 
-	# TODO Consider injecting variables into the script and .desktop file
-	install -D -m755 "${srcdir}/${_name}" "${pkgdir}/usr/bin/"
-	install -D -m644 "${srcdir}/${_name}.desktop" "${pkgdir}/usr/share/applications"
+	# TODO Consider injecting variables into the bin and desktop files
+	install -D -m755 "${srcdir}/bin" "usr/bin/${_name}"
+	install -D -m644 "${srcdir}/desktop" "usr/share/applications/${_name}.desktop"
 
 	# LICENSE and BON_LICENSE are MIT, GSON_LICENSE is Apache 2.0
-	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "BON_LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/BON.LICENSE"
-	install -D -m644 "GSON_LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/GSON.LICENSE"
+	install -D -m644 "${tar}/LICENSE" "usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${tar}/BON_LICENSE.txt" "usr/share/licenses/${pkgname}/BON.LICENSE"
+	install -D -m644 "${tar}/GSON_LICENSE.txt" "usr/share/licenses/${pkgname}/GSON.LICENSE"
 }
 

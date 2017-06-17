@@ -9,12 +9,12 @@ pkgbase = mcp-mapping-viewer
 	makedepends = java-environment>=7
 	depends = sh
 	depends = java-runtime>=7
-	source = MCPMappingViewer
-	source = MCPMappingViewer.desktop
+	source = bin
+	source = desktop
 	source = https://github.com/bspkrs/MCPMappingViewer/archive/1.0.1.tar.gz
-	md5sums = 0b60fd59792482a0e69a2457d9d3e309
-	md5sums = 61a50d4721e1378ac1c91023aec3010d
-	md5sums = 715927a5df7c012dfe22e3f3c08dcc87
+	sha256sums = f5bac19becef64725e04bab40b2cc2d23b6f9453e641e56320f02a34e491617f
+	sha256sums = 857ef429e636f7ee1258b2543f2db09802cdd69c55fab58ae7fb6af649f79b7f
+	sha256sums = 80cbdcec1e46d4cc55aa8a80807bb9c19ea4832500c70e320d8472bc48a14a1c
 
 pkgname = mcp-mapping-viewer
 
