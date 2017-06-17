@@ -3,7 +3,7 @@
 
 _gemname=xcodeproj
 pkgname=ruby-$_gemname
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Create and modify Xcode projects from Ruby.'
 arch=(any)
@@ -11,15 +11,15 @@ url='https://github.com/cocoapods/xcodeproj'
 license=(MIT)
 depends=(
   ruby
-  'ruby-cfpropertylist<2.4' 'ruby-cfpropertylist>=2.3.3'
-  'ruby-claide<2.0' 'ruby-claide>=1.0.1'
-  'ruby-colored2<4' 'ruby-colored2>=3.1'
-  'ruby-nanaimo<0.3' 'ruby-nanaimo>=0.2.3'
+  'ruby-cfpropertylist>=2.3.3' 'ruby-cfpropertylist<2.4'
+  'ruby-claide>=1.0.2' 'ruby-claide<2'
+  'ruby-colored2>=3.1' 'ruby-colored2<4'
+  'ruby-nanaimo>=0.2.3' 'ruby-nanaimo<0.3'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7ea76b83c2e1baa5768d1cdeb937a517b08ffc3f')
+sha1sums=('f7a4b06a10db1ab8e47a6148568a5b0efcab6b2b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
