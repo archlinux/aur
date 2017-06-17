@@ -5,8 +5,11 @@ pkgbase = xtensor-git
 	url = http://quantstack.net/xtensor
 	arch = any
 	license = unknown
-	makedepends = git cmake
-	depends = gcc>=4.9
+	makedepends = git
+	makedepends = cmake
+	depends = gcc
+	optdepends = python: Optional, for python bindings
+	optdepends = pybind11: Optional, for python bindings
 	source = git+https://github.com/QuantStack/xtensor.git
 	md5sums = SKIP
 

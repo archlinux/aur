@@ -7,8 +7,12 @@ pkgdesc="xtensor is a C++ library meant for numerical analysis with multi-dimens
 arch=("any")
 url="http://quantstack.net/xtensor"
 license=('unknown')
-depends=('gcc>=4.9')
-makedepends=('git cmake')
+depends=('gcc')
+makedepends=('git' 'cmake')
+optdepends=(
+    "python: Optional, for python bindings"
+    "pybind11: Optional, for python bindings"
+    )
 source=('git+https://github.com/QuantStack/xtensor.git')
 md5sums=('SKIP')
 
