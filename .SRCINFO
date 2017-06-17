@@ -1,0 +1,14 @@
+pkgbase = xtensor-git
+	pkgdesc = xtensor is a C++ library meant for numerical analysis with multi-dimensional array expressions.
+	pkgver = 0.10.4.r6.74fbf4a
+	pkgrel = 1
+	url = http://quantstack.net/xtensor
+	arch = any
+	license = unknown
+	makedepends = git cmake
+	depends = gcc>=4.9
+	source = git+https://github.com/QuantStack/xtensor.git
+	md5sums = SKIP
+
+pkgname = xtensor-git
+
