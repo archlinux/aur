@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd vbam
-  git describe | perl -pe 'tr/-/./; s/^\D+//i'
+  git describe | perl -pe 'tr/-/./; s/^\D+//'
 }
 
 prepare() {
