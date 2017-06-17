@@ -5,28 +5,29 @@
 # compiled with CUDA (ffmpeg-full).
 # CUDA is x86_64 only and so it will not be available in i686 builds.
 
-# AUR dependencies
-# ----------------
-# i686: rsound sndio uchardet
-# x86_64: all from i686 and ffmpeg-full
-
 pkgname=mpv-full-git
 pkgver=0.25.0.r97.gcc69650e76
-pkgrel=1
-pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
+pkgrel=2
+pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://mpv.io/'
 depends=(
-  'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
-  'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-  'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet' 'rsound' 'sndio'
+    # official repositories:
+        'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
+        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
+        'libxrandr' 'jack' 'vapoursynth' 'libarchive'
+    # AUR:
+        'uchardet' 'rsound' 'sndio'
 )
 depends_i686=(
-  'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
-  'libbluray' 'sdl2' 'openal' 'ffmpeg'
+    'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
+    'libbluray' 'sdl2' 'openal' 'ffmpeg'
 )
-depends_x86_64=('ffmpeg-full')
+depends_x86_64=(
+    # AUR:
+        'ffmpeg-full'
+)
 optdepends=('youtube-dl: for video-sharing websites playback')
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
@@ -37,7 +38,6 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    
     local _version="$(git tag | sort -Vr | head -n1 | sed 's/^v//')"
     local _revision="$(git rev-list v${_version}..HEAD --count)"
     local _shorthash="$(git rev-parse --short HEAD)"
@@ -171,8 +171,6 @@ build() {
 
 package() {
     cd "$pkgname"
-    
     ./waf install --destdir="$pkgdir"
-    
     install -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
 }
