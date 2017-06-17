@@ -1,7 +1,7 @@
 # Maintainer: gbr <gbr@protonmail.com>
-_pkgname='xfce4-xkb-plugin'
 pkgname='xfce4-xkb-plugin-git'
-pkgver='0.7.1.r77.g2d155da'
+_pkgname='xfce4-xkb-plugin'
+pkgver='0.8.0.r2.g5691ad6'
 pkgrel=1
 pkgdesc='Plugin to switch keyboard layouts for the Xfce4 panel'
 arch=('i686' 'x86_64')
@@ -10,17 +10,19 @@ license=('custom')
 depends=('xfce4-panel' 'libxklavier' 'librsvg' 'libwnck3')
 makedepends=('xfce4-dev-tools')
 conflicts=('xfce4-xkb-plugin')
-source=("$pkgname::git://git.xfce.org/panel-plugins/xfce4-xkb-plugin")
+source=("${pkgname}::git://git.xfce.org/panel-plugins/xfce4-xkb-plugin")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/$pkgname"
+pkgver()
+{
+    cd "${srcdir}/${pkgname}"
 
-    git describe --long | sed -r "s/^$_pkgname-//;s/([^-]*-g)/r\1/;s/-/./g"
+    git describe --long | sed -r "s/^${_pkgname}-//;s/([^-]*-g)/r\1/;s/-/./g"
 }
 
-build() {
-    cd "$srcdir/$pkgname"
+build()
+{
+    cd "${srcdir}/${pkgname}"
 
     ./autogen.sh \
         --prefix=/usr \
@@ -32,11 +34,12 @@ build() {
     make
 }
 
-package() {
-    cd "$srcdir/$pkgname"
+package()
+{
+    cd "${srcdir}/${pkgname}"
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
 
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
 # vim:set ts=4 sw=4 et:
