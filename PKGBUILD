@@ -9,7 +9,7 @@ pkgdesc="Barry is an Open Source application that provides a Desktop GUI, synchr
 url=http://www.netdirect.ca/software/packages/barry
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('libusb' 'zlib' 'libglademm' 'libtar' 'libxml++2.6' 'wxgtk3' 'sdl' 'libgcal')
+depends=('libusb' 'zlib' 'libglademm' 'libtar' 'libxml++2.6' 'wxgtk2' 'sdl' 'libgcal')
 optdepends=('fuse2: for mounting the BB database with bfuse'
             'ppp: for tethering with pppob')
 options=('!libtool')
