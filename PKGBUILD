@@ -14,7 +14,7 @@ depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade7'
          'med' 'xerces-c' 'python2-pivy' 'python2-pyside2-git' 'qt5-webkit'
          'qt5-tools' 'libtheora' 'shared-mime-info' 'vtk' 'jsoncpp'
          'netgen-nogui-occ7')
-makedepends=('git' 'boost' 'cmake' 'coin' 'python2-pyside2-tools'
+makedepends=('git' 'boost' 'cmake' 'coin' 'python2-pyside2-tools-git'
              'desktop-file-utils' 'eigen' 'gcc-fortran' 'swig')
 optdepends=('python2-matplotlib'
             'pycollada-git: Create, edit and load COLLADA documents.')
