@@ -1,0 +1,22 @@
+pkgbase = vmpk-svn
+	pkgdesc = Virtual MIDI Piano Keyboard. (SVN version)
+	pkgver = 20170416.474
+	pkgrel = 1
+	url = http://vmpk.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = docbook-xsl
+	makedepends = qt5-tools
+	makedepends = libxkbcommon-x11
+	makedepends = subversion
+	depends = drumstick
+	depends = qt5-x11extras
+	provides = vmpk
+	conflicts = vmpk
+	source = svn+https://svn.code.sf.net/p/vmpk/code/trunk
+	sha256sums = SKIP
+
+pkgname = vmpk-svn
+
