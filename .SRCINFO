@@ -1,0 +1,13 @@
+pkgbase = soundfont-sso-sf2
+	pkgdesc = The Sonatina Symphonic Orchestra by Mattias Westlund. (SF2 format)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sso.mattiaswestlund.net
+	arch = any
+	groups = soundfonts
+	license = unknown
+	source = http://ftp.osuosl.org/pub/musescore/soundfont/Sonatina_Symphonic_Orchestra_SF2.zip
+	md5sums = 5128567e7c85efc596fcb8eb46a160d0
+
+pkgname = soundfont-sso-sf2
+
