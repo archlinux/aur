@@ -1,7 +1,7 @@
 # Maintainer: Adriaan Zonnenberg <amz@adriaan.xyz>
 
 pkgname=git-open
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Open a repo website (GitHub, GitLab, Bitbucket) in your browser'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git' 'xdg-utils')
 conflicts=('nodejs-git-open')
 source=("https://github.com/paulirish/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c3a7f61743e995aa82bde7d466cfea52f4462f6f1af1e803a2aae1a1bc91ebc4')
+sha256sums=('12463f3dc586db703c4612ed12160e2a23336ade0c8fba34798bd741a3cf3a3c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
