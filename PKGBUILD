@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stinus <nicolas.stinus@gmail.com>
 
 pkgname=openvpn-nordvpn
-pkgver=0.1.10
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="OpenVPN helper script for nordvpn.com"
 arch=(any)
@@ -17,10 +17,11 @@ depends=('openvpn'
          'bc')
 optdepends=('iputils: run ping and rank functions'
             'vpnfailsafe-git: use instead of update-resolv-conf if available'
-            'python-pandas: run nordvpn infos command')
+            'python-pandas: run nordvpn infos command'
+            'bash-completion: auto-complete commands')
 makedepends=('coreutils' 'pandoc')
 provides=('nordvpn')
-source=("git+https://github.com/nstinus/nordvpn.git#commit=${NORDVPN_COMMIT:-v0.1-10-g4222e85}")
+source=("git+https://github.com/nstinus/nordvpn.git#commit=${NORDVPN_COMMIT:-v0.1-15-ge0ef9d3}")
 sha1sums=('SKIP')
 install=${pkgname}.install
 
@@ -32,7 +33,7 @@ pkgver() {
 }
 
 build() {
-    sed "s/@version@/$pkgver/g" nordvpn/doc.md \
+    sed "s/@version@/$pkgver/g" nordvpn/doc/man.md \
         | pandoc -s -f markdown -t man \
         | gzip \
         > nordvpn.8.gz
@@ -40,10 +41,8 @@ build() {
 
 package() {
     install -D -m 644 nordvpn.8.gz $pkgdir/usr/share/man/man8/nordvpn.8.gz
-    install -D -m 755 nordvpn/nordvpn $pkgdir/usr/bin/nordvpn
-    if [ -f nordvpn/servers.py ]
-    then
-        install -D -m 644 nordvpn/servers.py $pkgdir/etc/openvpn/client/nordvpn/servers.py
-        chmod 750 $pkgdir/etc/openvpn/client $pkgdir/etc/openvpn/client/nordvpn
-    fi
+    install -D -m 755 nordvpn/src/nordvpn $pkgdir/usr/bin/nordvpn
+    install -D -m 644 nordvpn/src/servers.py $pkgdir/etc/openvpn/client/nordvpn/servers.py
+    chmod 750 $pkgdir/etc/openvpn/client $pkgdir/etc/openvpn/client/nordvpn
+    install -D -m 644 nordvpn/completion/bash $pkgdir/usr/share/bash-completion/completions/nordvpn
 }
