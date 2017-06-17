@@ -2,15 +2,15 @@
 # This is my first package, I'll gladly improve the PKGBUILD if needs be
 
 # maintenance
-pkgver="v0.8.10"
+pkgver="0.8.10"
+pkgrel=1
 sha256sums_i686=("8afc6b230f290408e74a2716815966f9508b22e4acb7097886c00feeb91efcee")
 sha256sums_x86_64=("ddb769a361a65915aef43a0782610db382634a0205aff92c065a05904957f77f")
 
 # info
 pkgname="ethereumwallet-bin"
 _binname="ethereumwallet"
-_strver=`echo ${pkgver} | sed "s/v//" | sed "s/\./-/g"`
-pkgrel=1
+_strver=`echo ${pkgver} | sed "s/\./-/g"`
 pkgdesc="Ethereum Wallet from git releases"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -41,8 +41,8 @@ optdepends=(
 )
 
 # 32 and 64 file sources, checksums at top of file
-source_i686=("${url}/download/${pkgver}/Ethereum-Wallet-linux32-${_strver}.zip")
-source_x86_64=("${url}/download/${pkgver}/Ethereum-Wallet-linux64-$_strver.zip")
+source_i686=("${url}/download/v${pkgver}/Ethereum-Wallet-linux32-${_strver}.zip")
+source_x86_64=("${url}/download/v${pkgver}/Ethereum-Wallet-linux64-$_strver.zip")
 
 # desktop file and icon
 source=(
