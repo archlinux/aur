@@ -2,13 +2,13 @@
 
 pkgname=waterfox-kde-bin
 pkgver=54.0
-pkgrel=1
+pkgrel=2
 pkgdesc="
 'KDE Plasma Edition' of the free, open and private browser, integrate better with KDE."
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
 license=('MPL' 'GPL')
-depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kwaterfoxhelper')
+depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kwaterfoxhelper>=5.0.1.5')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
