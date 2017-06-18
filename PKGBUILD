@@ -3,7 +3,7 @@
 
 pkgname=grpc-git-boringssl
 _pkgname=${pkgname/-git-boringssl/}
-pkgver=v1.3.5.r1003.gb2eceb167d
+pkgver=v1.3.5.r1011.g59c232c904
 pkgrel=1
 pkgdesc="gRPC - An RPC library and framework, using BoringSSL"
 arch=('i686' 'x86_64')
@@ -57,7 +57,24 @@ package() {
   cd "$_pkgname/build"
 
   make install
+
+
+  # install pkg-config files
+  cd ..
+  make pc_c
+  make pc_c_unsecure
+  make pc_cxx
+  make pc_cxx_unsecure
+  cd -
+  mkdir -p "$pkgdir"/usr/lib/pkgconfig
+  install -Dm644 ../libs/opt/pkgconfig/grpc.pc "$pkgdir"/usr/lib/pkgconfig
+  install -Dm644 ../libs/opt/pkgconfig/grpc_unsecure.pc "$pkgdir"/usr/lib/pkgconfig
+  install -Dm644 ../libs/opt/pkgconfig/grpc++.pc "$pkgdir"/usr/lib/pkgconfig
+  install -Dm644 ../libs/opt/pkgconfig/grpc++_unsecure.pc "$pkgdir"/usr/lib/pkgconfig
+
+  # install license
   install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+
   # cleanup protobuf stuff since this comes from the arch package
   rm -rf "$pkgdir/usr/bin/protoc"
   rm -rf "$pkgdir/usr/include/google"
