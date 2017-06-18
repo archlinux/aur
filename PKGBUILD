@@ -8,7 +8,7 @@ pkgdesc='A build tool for Scala, Java, and more'
 arch=('any')
 url='http://www.scala-sbt.org/'
 license=('BSD')
-depends=('sh', 'rsync')
+depends=('sh' 'rsync')
 conflicts=('sbt')
 source=("https://dl.bintray.com/${_pkgname}/native-packages/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tgz"
         "https://raw.githubusercontent.com/${_pkgname}/${_pkgname}/v${pkgver}/LICENSE")
