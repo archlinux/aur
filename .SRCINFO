@@ -1,0 +1,21 @@
+pkgbase = pd-flext-git
+	pkgdesc = C++ development layer for Pure Data
+	pkgver = r1353.098455b
+	pkgrel = 1
+	url = https://grrrr.org/research/software/flext/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = pd
+	depends = glibc
+	provides = flext
+	conflicts = flext
+	options = staticlibs
+	source = flext::git+https://github.com/grrrr/flext.git
+	source = flext-cpp11.patch
+	md5sums = SKIP
+	md5sums = 83353956bbbe1d5b3f9d23d521e96bc8
+
+pkgname = pd-flext-git
+

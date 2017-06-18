@@ -1,0 +1,16 @@
+diff --git a/source/flsupport.h b/source/flsupport.h
+index e6a7678..ebf7409 100644
+--- a/source/flsupport.h
++++ b/source/flsupport.h
+@@ -118,7 +118,10 @@ public:
+ // MFC doesn't like global overloading of allocators
+ // anyway, who likes MFC
+ 
+-#if !defined(_MSC_VER) && !defined(__BORLANDC__)
++#if __cplusplus >= 201103L
++#define NEWTHROW
++#define DELTHROW noexcept
++#elif !defined(_MSC_VER) && !defined(__BORLANDC__)
+ #define NEWTHROW throw(std::bad_alloc)
+ #define DELTHROW throw()
+ #else
