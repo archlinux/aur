@@ -4,7 +4,7 @@ pkgbase=('python-wstool')
 pkgname=('python-wstool' 'python2-wstool')
 _module='wstool'
 pkgver='0.1.13'
-pkgrel=1
+pkgrel=2
 pkgdesc="workspace multi-SCM commands"
 url="http://wiki.ros.org/wstool"
 depends=()
@@ -28,12 +28,14 @@ build() {
 
 package_python-wstool() {
     depends+=('python' 'python-vcstools' 'python-yaml')
+    conflicts=('python2-wstool')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-wstool() {
     depends+=('python2' 'python2-vcstools' 'python2-yaml')
+    conflicts=('python-wstool')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
