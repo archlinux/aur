@@ -2,16 +2,16 @@
 
 pkgname=pgf-umlsd
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Some LaTeX macros for UML Sequence Diagrams"
-url="https://code.google.com/p/pgf-umlsd/"
+url="https://www.ctan.org/pkg/pgf-umlsd"
 license=('GPL3')
 arch=('any')
 depends=('texlive-core')
 install=${pkgname}.install
-source=("https://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.zip")
-md5sums=('9857cef889b662879c2f78516adc0144')
+source=("https://github.com/xuyuan/pgf-umlsd/raw/master/release/${pkgname}-${pkgver}/pgf-umlsd.sty")
+sha1sums=('396c99e6b6c24db157e1459c65feffed45840652')
 
 package() {
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.sty" "${pkgdir}/usr/share/texmf/tex/latex/${pkgname}/${pkgname}.sty"
+  install -Dm644 "${srcdir}/${pkgname}.sty" "${pkgdir}/usr/share/texmf/tex/latex/${pkgname}/${pkgname}.sty"
 }
