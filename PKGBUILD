@@ -1,6 +1,6 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=libtensorflow-gpu
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="Assembled TenforFlow library for computation using data flow graphs on GPU."
@@ -20,7 +20,7 @@ install=
 changelog=
 
 source=("https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-linux-x86_64-${pkgver}.tar.gz")
-md5sums=('b2e22107231c4b0d0f0115dcd2a86499')
+md5sums=('8f6fab14473165e0f984a29c68fa13c7')
 
 validpgpkeys=()
 
