@@ -1,6 +1,6 @@
 pkgbase = clickhouse
 	pkgdesc = An open-source column-oriented database management system that allows generating analytical data reports in real time
-	pkgver = 1.1.54231
+	pkgver = 1.1.54236
 	pkgrel = 1
 	url = https://clickhouse.yandex/
 	install = clickhouse.install
@@ -17,14 +17,12 @@ pkgbase = clickhouse
 	backup = etc/clickhouse-client/config.xml
 	backup = etc/clickhouse-server/config.xml
 	backup = etc/clickhouse-server/users.xml
-	source = https://github.com/yandex/ClickHouse/archive/v1.1.54231-stable.tar.gz
+	source = https://github.com/yandex/ClickHouse/archive/v1.1.54236-stable.tar.gz
 	source = clickhouse-server.service
-	source = clickhouse-mongodb.patch
-	source = https://gist.github.com/kmeaw/bf6703543421abb68e0c524c1f48026f/raw/a2afde429cd795103fc2511ba31ada98c31d7b5d/clickhouse-lz4.patch
-	md5sums = 32f49d54c8482ff1e17e13f33514eaa3
+	source = re2-length.patch
+	md5sums = 78083caddfdc9b2fead32d11ea8609b8
 	md5sums = f9f5663b0a9a58e99f481efe9d193e85
-	md5sums = 127966b32939673fa0b695f0360555b0
-	md5sums = ba6a4ec1c6b9040f1ff27bb18d998fb7
+	md5sums = 143f0146c3ef3a6832191fba352b70c4
 
 pkgname = clickhouse
 

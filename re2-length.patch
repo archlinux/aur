@@ -1,0 +1,26 @@
+From e6a76059d371c11dae51648e348f9d9f41d3ba96 Mon Sep 17 00:00:00 2001
+From: Dmitry Bilunov <kmeaw@yandex-team.ru>
+Date: Tue, 6 Jun 2017 13:10:33 +0300
+Subject: [PATCH 1/1] re2: respect (possibly signed) return type of
+ StringPiece::length()
+
+---
+ dbms/src/Functions/FunctionsStringSearch.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dbms/src/Functions/FunctionsStringSearch.cpp b/dbms/src/Functions/FunctionsStringSearch.cpp
+index daf595f74..a3b335d6b 100644
+--- a/dbms/src/Functions/FunctionsStringSearch.cpp
++++ b/dbms/src/Functions/FunctionsStringSearch.cpp
+@@ -630,7 +630,7 @@ struct ReplaceRegexpImpl
+     {
+         re2_st::StringPiece matches[max_captures];
+ 
+-        int start_pos = 0;
++        decltype(input.length()) start_pos = 0;
+         while (start_pos < input.length())
+         {
+             /// If no more replacements possible for current string
+-- 
+2.12.2
+
