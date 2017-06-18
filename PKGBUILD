@@ -31,7 +31,7 @@ package_python-unrardll() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-unrardll/LICENSE.txt"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python2-unrardll/LICENSE"
 }
 
 package_python2-unrardll() {
@@ -40,6 +40,6 @@ package_python2-unrardll() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-unrardll/LICENSE.txt"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python2-unrardll/LICENSE"
 
 }
