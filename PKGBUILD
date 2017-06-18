@@ -2,8 +2,8 @@
 
 pkgname=gilbert
 pkgver=1.004
-pkgrel=2
-pkgdesc="Font made in tribute of Gilbert Baker, creator of the Rainbow Flag. Only one of the two version of this font is available because this one is compatible system-wide."
+pkgrel=3
+pkgdesc="Font made in tribute of Gilbert Baker, creator of the Rainbow Flag. Two versions of the font are available, one is compatible system-wide while the other is only compatible with Firefox because it is an OpenType-SVG font."
 url="https://www.typewithpride.com/"
 arch=(any)
 license=('Creative Commons BY-SA')
@@ -15,6 +15,7 @@ package() {
     cd TypeWithPride-$pkgver
     install -d "$pkgdir/usr/share/fonts/gilbert"
     install -t "$pkgdir/usr/share/fonts/gilbert" -m644 fonts/Gilbert\ Bold-Preview_1004.otf
+    install -t "$pkgdir/usr/share/fonts/gilbert" -m644 fonts/Gilbert-Color\ Bold-Preview_1004.otf
 }
 
 # vim:set ts=2 sw=2 et:
