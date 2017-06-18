@@ -1,0 +1,7 @@
+post_install() {
+ln -sf '/opt/ELEET/ELEET' '/usr/local/bin/ELEET'
+}
+
+post_remove() {
+rm -f '/usr/local/bin/ELEET'
+}

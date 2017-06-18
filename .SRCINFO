@@ -1,0 +1,18 @@
+pkgbase = eleet
+	pkgdesc = Eleet private messenger
+	pkgver = 1.3.10
+	pkgrel = 1
+	url = https://github.com/ELMessenger/Desktop
+	install = eleet.install
+	arch = x86_64
+	license = GPL2
+	makedepends = wget
+	depends = libnotify
+	depends = libappindicator
+	options = !strip
+	source_x86_64 = https://www.dropbox.com/s/4qc8koqurc1mz6q/eleet.deb
+	md5sums_x86_64 = f92299b192080937ad9e91382a0cb403
+	sha256sums_x86_64 = fee3b22a0f266ab713dece82683d82bceb6c38526a75d3e80425fb5605a445e0
+
+pkgname = eleet
+
