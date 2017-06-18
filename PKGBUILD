@@ -9,13 +9,13 @@ pkgver=2.4.2
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('i686' 'x86_64')
-url='http://${_pkgname}.net/index.php/open-source.html'
+url='http://openvpn.net/index.php/open-source.html'
 depends=('openssl' 'lzo' 'iproute2' 'pkcs11-helper' 'pam')
-conflicts=('${_pkgname}')
-provides=('${_pkgname}')
+conflicts=('openvpn')
+provides=('openvpn')
 optdepends=('easy-rsa: easy CA and certificate handling')
 license=('custom')
-source=("https://swupdate.${_pkgname}.net/community/releases/${_pkgname}-${pkgver}.tar.xz"
+source=("https://swupdate.openvpn.net/community/releases/${_pkgname}-${pkgver}.tar.xz"
         '0004-openssl-1-1-0.patch')
 sha256sums=('df5c4f384b7df6b08a2f6fa8a84b9fd382baf59c2cef1836f82e2a7f62f1bff9'
             'd801b1118d64c0667eae87ab1da920179f339614da22c5c8bed75d17650fad03')
