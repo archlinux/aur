@@ -15,7 +15,7 @@ pkgbase = pd-flext-git
 	source = flext::git+https://github.com/grrrr/flext.git
 	source = flext-cpp11.patch
 	md5sums = SKIP
-	md5sums = 83353956bbbe1d5b3f9d23d521e96bc8
+	md5sums = 21e110a285bb2bfed260557b39de46a5
 
 pkgname = pd-flext-git
 

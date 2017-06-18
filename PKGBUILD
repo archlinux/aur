@@ -2,7 +2,7 @@
 pkgname=pd-flext-git
 _pkgname=flext
 pkgver=r1353.098455b
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ development layer for Pure Data"
 arch=('i686' 'x86_64')
 url="https://grrrr.org/research/software/flext/"
@@ -19,7 +19,7 @@ install=
 source=("$_pkgname::git+https://github.com/grrrr/flext.git"
         'flext-cpp11.patch')
 md5sums=('SKIP'
-         '83353956bbbe1d5b3f9d23d521e96bc8')
+         '21e110a285bb2bfed260557b39de46a5')
 noextract=()
 
 pkgver() {
