@@ -4,7 +4,7 @@ pkgbase=('python-rosinstall')
 pkgname=('python-rosinstall' 'python2-rosinstall')
 _module='rosinstall'
 pkgver='0.7.8'
-pkgrel=1
+pkgrel=2
 pkgdesc="The installer for ROS"
 url="http://wiki.ros.org/rosinstall"
 depends=()
@@ -28,12 +28,14 @@ build() {
 
 package_python-rosinstall() {
     depends+=('python' 'python-catkin_pkg' 'python-rosdistro' 'python-vcstools' 'python-wstool' 'python-yaml')
+    conflicts=('python2-rosinstall')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-rosinstall() {
     depends+=('python2' 'python2-catkin_pkg' 'python2-rosdistro' 'python2-vcstools' 'python2-wstool' 'python2-yaml')
+    conflicts=('python-rosinstall')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
