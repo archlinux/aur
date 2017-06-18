@@ -1,7 +1,7 @@
 # Maintainer: Ruben De Smet <ruben dot de dot smet at glycos dot org>
 # Contributor: Jashandeep Sohi <jashandeep.s.sohi@gmail.com>
 
-_gccver="6.3.0"
+_gccver="7.1.0"
 _gccsrc="gcc-$_gccver"
 
 pkgname='libgccjit'
