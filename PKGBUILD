@@ -1,7 +1,7 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=blastem
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator"
 arch=('x86_64' 'i686')
 url="https://www.retrodev.com/blastem/changes.html"
@@ -43,10 +43,9 @@ package() {
 	install -d "$pkgdir/opt/blastem"
 	install -m 755 -D to_install/* "$pkgdir/opt/blastem"
 	install -m 666 -D default.cfg "$pkgdir/opt/blastem"
-	cp -R shaders rom.db gamecontrollerdb.txt "$pkgdir/opt/blastem"
-	chmod 666 "$pkgdir/opt/blastem/shaders"
-	chmod 666 "$pkgdir/opt/blastem/rom.db"
-	chmod 666 "$pkgdir/opt/blastem/gamecontrollerdb.txt"
+	install -m 666 rom.db gamecontrollerdb.txt "$pkgdir/opt/blastem"
+	install -m 644 -d "$pkgdir/opt/blastem/shaders"
+	install -m 644 -D shaders/* "$pkgdir/opt/blastem/shaders"
 	chmod 755 "$pkgdir/opt/blastem/blastem"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/blastem/blastem" "$pkgdir/usr/bin/blastem"

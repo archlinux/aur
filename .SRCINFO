@@ -1,7 +1,7 @@
 pkgbase = blastem
 	pkgdesc = Fast and accurate Sega Genesis/Mega Drive emulator
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.retrodev.com/blastem/changes.html
 	arch = x86_64
 	arch = i686
