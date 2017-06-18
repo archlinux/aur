@@ -1,0 +1,14 @@
+pkgbase = python-typing
+	pkgdesc = Type Hints for Python
+	pkgver = 3.5.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/typing
+	arch = i686
+	arch = x86_64
+	license = PSF
+	depends = python3
+	source = https://files.pythonhosted.org/packages/source/t/typing/typing-3.5.3.0.tar.gz
+	md5sums = 3996a747158e5591abf689c1c5f8f9db
+
+pkgname = python-typing
+
