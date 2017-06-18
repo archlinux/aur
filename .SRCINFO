@@ -11,6 +11,7 @@ pkgbase = mattermost-git
 	makedepends = git
 	makedepends = libpng12
 	makedepends = pngquant
+	makedepends = yarn
 	optdepends = mariadb: SQL server storage
 	optdepends = percona-server: SQL server storage
 	optdepends = postgresql: SQL server storage

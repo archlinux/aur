@@ -14,8 +14,7 @@ url="http://mattermost.org"
 # src.: https://www.mattermost.org/licensing
 license=('AGPL3')
 
-#makedepends=('go' 'npm' 'python2' 'git' 'mercurial' 'pngquant')
-makedepends=('go' 'npm' 'git' 'libpng12' 'pngquant')
+makedepends=('go' 'npm' 'git' 'libpng12' 'pngquant' 'yarn')
 provides=('mattermost')
 conflicts=('mattermost')
 backup=('etc/webapps/mattermost/config.json')
