@@ -1,6 +1,6 @@
-From 166ab46e4ff9e44f31ce9713995516538da105ec Mon Sep 17 00:00:00 2001
+From 17d1ab90c228b1efbe774357bd3265b2af006899 Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 14:39:07 +0100
+Date: Mon, 12 Jun 2017 15:43:23 +0200
 Subject: [PATCH 1/8] OpenSSL: don't use direct access to the internal of
  X509
 
@@ -16,23 +16,41 @@ far stricter than the currently implemented check. So far, I have
 not been able to find a situation where this stricter test fails
 (although I must admit that I haven't tested that very well).
 
+We double-check the certificate purpose using "direct access" to the
+internal of the certificate object (of course, this is not a real
+direct access, but we still fetch ASN1 strings within the X509 object
+and we check the internal value of these strings). This allow us to
+warn the user if there is a discrepancy between the X509_check_purpose()
+return value and our internal, less strict check.
+
+We use these changes to make peer_cert a non-const parameter to
+x509_verify_ns_cert_type(). The underlying library waits for a
+non-const pointer, and forcing it to be a const pointer does not make
+much sense (please note that this has an effect on the mbedtls part
+too).
+
 Compatibility with OpenSSL 1.0 is kept by defining the corresponding
 functions when they are not found in the library.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
-Signed-off-by: Christian Hesse <mail@eworm.de>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <20170612134330.20971-2-logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14792.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 ---
  configure.ac                     |  1 +
- src/openvpn/openssl_compat.h     | 15 +++++++++++++++
- src/openvpn/ssl_openssl.c        |  3 ++-
- src/openvpn/ssl_verify_openssl.c | 28 +++++++++++++++++++---------
- 4 files changed, 37 insertions(+), 10 deletions(-)
+ src/openvpn/openssl_compat.h     | 15 +++++++++
+ src/openvpn/ssl_openssl.c        |  3 +-
+ src/openvpn/ssl_verify_backend.h |  2 +-
+ src/openvpn/ssl_verify_mbedtls.c |  2 +-
+ src/openvpn/ssl_verify_openssl.c | 68 ++++++++++++++++++++++++++++++++++------
+ 6 files changed, 78 insertions(+), 13 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 2406ad8..d2c40ff 100644
+index 334247df..c30bf3d5 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -902,6 +902,7 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
+@@ -921,6 +921,7 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
  		[ \
  			SSL_CTX_get_default_passwd_cb \
  			SSL_CTX_get_default_passwd_cb_userdata \
@@ -41,10 +59,10 @@ index 2406ad8..d2c40ff 100644
  			X509_OBJECT_free \
  			X509_OBJECT_get_type \
 diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
-index e98e8df..fe245ed 100644
+index 811d559c..612bfa56 100644
 --- a/src/openvpn/openssl_compat.h
 +++ b/src/openvpn/openssl_compat.h
-@@ -74,6 +74,21 @@ SSL_CTX_get_default_passwd_cb(SSL_CTX *ctx)
+@@ -73,6 +73,21 @@ SSL_CTX_get_default_passwd_cb(SSL_CTX *ctx)
  }
  #endif
  
@@ -67,10 +85,10 @@ index e98e8df..fe245ed 100644
  /**
   * Fetch the X509 object stack from the X509 store
 diff --git a/src/openvpn/ssl_openssl.c b/src/openvpn/ssl_openssl.c
-index f011e06..b683961 100644
+index 1fa46e18..89c3b014 100644
 --- a/src/openvpn/ssl_openssl.c
 +++ b/src/openvpn/ssl_openssl.c
-@@ -1073,7 +1073,8 @@ tls_ctx_use_external_private_key(struct tls_root_ctx *ctx,
+@@ -1070,7 +1070,8 @@ tls_ctx_use_external_private_key(struct tls_root_ctx *ctx,
      }
  
      /* get the public key */
@@ -80,11 +98,37 @@ index f011e06..b683961 100644
      pub_rsa = cert->cert_info->key->pkey->pkey.rsa;
  
      /* initialize RSA object */
+diff --git a/src/openvpn/ssl_verify_backend.h b/src/openvpn/ssl_verify_backend.h
+index 35660532..978e54fd 100644
+--- a/src/openvpn/ssl_verify_backend.h
++++ b/src/openvpn/ssl_verify_backend.h
+@@ -210,7 +210,7 @@ void x509_setenv_track(const struct x509_track *xt, struct env_set *es,
+  *                      the expected bit set. \c FAILURE if the certificate does
+  *                      not have NS cert type verification or the wrong bit set.
+  */
+-result_t x509_verify_ns_cert_type(const openvpn_x509_cert_t *cert, const int usage);
++result_t x509_verify_ns_cert_type(openvpn_x509_cert_t *cert, const int usage);
+ 
+ /*
+  * Verify X.509 key usage extension field.
+diff --git a/src/openvpn/ssl_verify_mbedtls.c b/src/openvpn/ssl_verify_mbedtls.c
+index d80b7a53..27c5c3e1 100644
+--- a/src/openvpn/ssl_verify_mbedtls.c
++++ b/src/openvpn/ssl_verify_mbedtls.c
+@@ -410,7 +410,7 @@ x509_setenv(struct env_set *es, int cert_depth, mbedtls_x509_crt *cert)
+ }
+ 
+ result_t
+-x509_verify_ns_cert_type(const mbedtls_x509_crt *cert, const int usage)
++x509_verify_ns_cert_type(mbedtls_x509_crt *cert, const int usage)
+ {
+     if (usage == NS_CERT_CHECK_NONE)
+     {
 diff --git a/src/openvpn/ssl_verify_openssl.c b/src/openvpn/ssl_verify_openssl.c
-index 5c2c5b7..5bdd1e3 100644
+index 5d897b6d..31c16389 100644
 --- a/src/openvpn/ssl_verify_openssl.c
 +++ b/src/openvpn/ssl_verify_openssl.c
-@@ -286,18 +286,20 @@ backend_x509_get_serial_hex(openvpn_x509_cert_t *cert, struct gc_arena *gc)
+@@ -293,18 +293,20 @@ backend_x509_get_serial_hex(openvpn_x509_cert_t *cert, struct gc_arena *gc)
  struct buffer
  x509_get_sha1_fingerprint(X509 *cert, struct gc_arena *gc)
  {
@@ -110,35 +154,82 @@ index 5c2c5b7..5bdd1e3 100644
      return hash;
  }
  
-@@ -574,13 +576,21 @@ x509_verify_ns_cert_type(const openvpn_x509_cert_t *peer_cert, const int usage)
+@@ -569,7 +571,7 @@ x509_setenv(struct env_set *es, int cert_depth, openvpn_x509_cert_t *peer_cert)
+ }
+ 
+ result_t
+-x509_verify_ns_cert_type(const openvpn_x509_cert_t *peer_cert, const int usage)
++x509_verify_ns_cert_type(openvpn_x509_cert_t *peer_cert, const int usage)
+ {
+     if (usage == NS_CERT_CHECK_NONE)
+     {
+@@ -577,13 +579,59 @@ x509_verify_ns_cert_type(const openvpn_x509_cert_t *peer_cert, const int usage)
      }
      if (usage == NS_CERT_CHECK_CLIENT)
      {
 -        return ((peer_cert->ex_flags & EXFLAG_NSCERT)
 -                && (peer_cert->ex_nscert & NS_SSL_CLIENT)) ? SUCCESS : FAILURE;
 +        /*
-+         * Unfortunately, X509_check_purpose() does some wierd thing that
++         * Unfortunately, X509_check_purpose() does some weird thing that
 +         * prevent it to take a const argument
 +         */
-+        return X509_check_purpose((X509 *)peer_cert, X509_PURPOSE_SSL_CLIENT, 0) ?
++        result_t result = X509_check_purpose(peer_cert, X509_PURPOSE_SSL_CLIENT, 0) ?
 +	       SUCCESS : FAILURE;
++
++        /*
++         * old versions of OpenSSL allow us to make the less strict check we used to
++         * do. If this less strict check pass, warn user that this might not be the
++         * case when its distribution will update to OpenSSL 1.1
++         */
++        if (result == FAILURE)
++        {
++            ASN1_BIT_STRING *ns;
++            ns = X509_get_ext_d2i(peer_cert, NID_netscape_cert_type, NULL, NULL);
++            result = (ns && ns->length > 0 && (ns->data[0] & NS_SSL_CLIENT)) ? SUCCESS : FAILURE;
++            if (result == SUCCESS)
++            {
++                msg(M_WARN, "X509: Certificate is a client certificate yet it's purpose "
++                    "cannot be verified (check may fail in the future)");
++            }
++            ASN1_BIT_STRING_free(ns);
++        }
++        return result;
      }
      if (usage == NS_CERT_CHECK_SERVER)
      {
 -        return ((peer_cert->ex_flags & EXFLAG_NSCERT)
 -                && (peer_cert->ex_nscert & NS_SSL_SERVER))  ? SUCCESS : FAILURE;
 +        /*
-+         * Unfortunately, X509_check_purpose() does some wierd thing that
++         * Unfortunately, X509_check_purpose() does some weird thing that
 +         * prevent it to take a const argument
 +         */
-+        return X509_check_purpose((X509 *)peer_cert, X509_PURPOSE_SSL_SERVER, 0) ?
++        result_t result = X509_check_purpose(peer_cert, X509_PURPOSE_SSL_SERVER, 0) ?
 +	       SUCCESS : FAILURE;
++
++        /*
++         * old versions of OpenSSL allow us to make the less strict check we used to
++         * do. If this less strict check pass, warn user that this might not be the
++         * case when its distribution will update to OpenSSL 1.1
++         */
++        if (result == FAILURE)
++        {
++            ASN1_BIT_STRING *ns;
++            ns = X509_get_ext_d2i(peer_cert, NID_netscape_cert_type, NULL, NULL);
++            result = (ns && ns->length > 0 && (ns->data[0] & NS_SSL_SERVER)) ? SUCCESS : FAILURE;
++            if (result == SUCCESS)
++            {
++                msg(M_WARN, "X509: Certificate is a server certificate yet it's purpose "
++                    "cannot be verified (check may fail in the future)");
++            }
++            ASN1_BIT_STRING_free(ns);
++        }
++        return result;
      }
  
      return FAILURE;
-From 8addd59567a60fc2cf0d2e69f75af1653a6c17bb Mon Sep 17 00:00:00 2001
+From b8ca5bc3593e539d0735a74b55ed41a792e55033 Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 14:53:52 +0100
+Date: Mon, 12 Jun 2017 15:43:24 +0200
 Subject: [PATCH 2/8] OpenSSL: don't use direct access to the internal of
  EVP_PKEY
 
@@ -150,7 +241,10 @@ Compatibility with OpenSSL 1.0 is kept by defining the corresponding
 functions when they are not found in the library.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
-Signed-off-by: Christian Hesse <mail@eworm.de>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <20170612134330.20971-3-logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14795.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 ---
  configure.ac                 |  3 +++
  src/openvpn/openssl_compat.h | 42 ++++++++++++++++++++++++++++++++++++++++++
@@ -158,10 +252,10 @@ Signed-off-by: Christian Hesse <mail@eworm.de>
  3 files changed, 48 insertions(+), 3 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index d2c40ff..089aa89 100644
+index c30bf3d5..43f332b2 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -906,6 +906,9 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
+@@ -925,6 +925,9 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
  			X509_STORE_get0_objects \
  			X509_OBJECT_free \
  			X509_OBJECT_get_type \
@@ -172,10 +266,10 @@ index d2c40ff..089aa89 100644
  			RSA_meth_free \
  			RSA_meth_set_pub_enc \
 diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
-index fe245ed..9d99c72 100644
+index 612bfa56..60498595 100644
 --- a/src/openvpn/openssl_compat.h
 +++ b/src/openvpn/openssl_compat.h
-@@ -134,6 +134,48 @@ X509_OBJECT_get_type(const X509_OBJECT *obj)
+@@ -133,6 +133,48 @@ X509_OBJECT_get_type(const X509_OBJECT *obj)
  }
  #endif
  
@@ -225,10 +319,10 @@ index fe245ed..9d99c72 100644
  /**
   * Allocate a new RSA method object
 diff --git a/src/openvpn/ssl_openssl.c b/src/openvpn/ssl_openssl.c
-index b683961..dbeb868 100644
+index 89c3b014..c84372d6 100644
 --- a/src/openvpn/ssl_openssl.c
 +++ b/src/openvpn/ssl_openssl.c
-@@ -1075,7 +1075,7 @@ tls_ctx_use_external_private_key(struct tls_root_ctx *ctx,
+@@ -1072,7 +1072,7 @@ tls_ctx_use_external_private_key(struct tls_root_ctx *ctx,
      /* get the public key */
      EVP_PKEY *pkey = X509_get0_pubkey(cert);
      ASSERT(pkey); /* NULL before SSL_CTX_use_certificate() is called */
@@ -237,7 +331,7 @@ index b683961..dbeb868 100644
  
      /* initialize RSA object */
      rsa->n = BN_dup(pub_rsa->n);
-@@ -1680,13 +1680,13 @@ print_details(struct key_state_ssl *ks_ssl, const char *prefix)
+@@ -1677,13 +1677,13 @@ print_details(struct key_state_ssl *ks_ssl, const char *prefix)
          EVP_PKEY *pkey = X509_get_pubkey(cert);
          if (pkey != NULL)
          {
@@ -253,9 +347,9 @@ index b683961..dbeb868 100644
                       && pkey->pkey.dsa->p != NULL)
              {
                  openvpn_snprintf(s2, sizeof(s2), ", %d bit DSA",
-From 8424472e58e7648712c8cdd12f6ca0f3d0a0b6fc Mon Sep 17 00:00:00 2001
+From f7780af6f1aaffcbbfb8b4dde0f2af052f84b28a Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 14:17:59 +0100
+Date: Mon, 12 Jun 2017 15:43:25 +0200
 Subject: [PATCH 3/8] OpenSSL: don't use direct access to the internal of RSA
 
 OpenSSL 1.1 does not allow us to directly access the internal of
@@ -266,32 +360,36 @@ Compatibility with OpenSSL 1.0 is kept by defining the corresponding
 functions when they are not found in the library.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
-Signed-off-by: Christian Hesse <mail@eworm.de>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <20170612134330.20971-4-logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14790.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 ---
- configure.ac                 |  3 ++
- src/openvpn/openssl_compat.h | 84 ++++++++++++++++++++++++++++++++++++++++++++
- src/openvpn/ssl_openssl.c    | 24 ++++++++-----
- 3 files changed, 103 insertions(+), 8 deletions(-)
+ configure.ac                 |   4 ++
+ src/openvpn/openssl_compat.h | 100 +++++++++++++++++++++++++++++++++++++++++++
+ src/openvpn/ssl_openssl.c    |  24 +++++++----
+ 3 files changed, 119 insertions(+), 9 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 089aa89..e9942e3 100644
+index 43f332b2..e9ac5a6e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -909,6 +909,9 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
+@@ -928,6 +928,10 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
  			EVP_PKEY_id \
  			EVP_PKEY_get0_RSA \
  			EVP_PKEY_get0_DSA \
 +			RSA_set_flags \
++			RSA_bits \
 +			RSA_get0_key \
 +			RSA_set0_key \
  			RSA_meth_new \
  			RSA_meth_free \
  			RSA_meth_set_pub_enc \
 diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
-index 9d99c72..0f7b0bb 100644
+index 60498595..e3f20b73 100644
 --- a/src/openvpn/openssl_compat.h
 +++ b/src/openvpn/openssl_compat.h
-@@ -176,6 +176,90 @@ EVP_PKEY_get0_DSA(EVP_PKEY *pkey)
+@@ -175,6 +175,106 @@ EVP_PKEY_get0_DSA(EVP_PKEY *pkey)
  }
  #endif
  
@@ -379,25 +477,56 @@ index 9d99c72..0f7b0bb 100644
 +}
 +#endif
 +
++#if !defined(HAVE_RSA_BITS)
++/**
++ * Number of significant RSA bits
++ *
++ * @param rsa                The RSA object ; shall not be NULL
++ * @return                   The number of RSA bits or 0 on error
++ */
++static inline int
++RSA_bits(const RSA *rsa)
++{
++    const BIGNUM *n = NULL;
++    RSA_get0_key(rsa, &n, NULL, NULL);
++    return n ? BN_num_bits(n) : 0;
++}
++#endif
++
  #if !defined(HAVE_RSA_METH_NEW)
  /**
   * Allocate a new RSA method object
 diff --git a/src/openvpn/ssl_openssl.c b/src/openvpn/ssl_openssl.c
-index dbeb868..25935b4 100644
+index c84372d6..da801ed5 100644
 --- a/src/openvpn/ssl_openssl.c
 +++ b/src/openvpn/ssl_openssl.c
-@@ -978,8 +978,8 @@ rsa_priv_dec(int flen, const unsigned char *from, unsigned char *to, RSA *rsa, i
+@@ -973,10 +973,13 @@ rsa_priv_dec(int flen, const unsigned char *from, unsigned char *to, RSA *rsa, i
+ 
+ /* called at RSA_free */
  static int
- rsa_finish(RSA *rsa)
+-rsa_finish(RSA *rsa)
++openvpn_extkey_rsa_finish(RSA *rsa)
  {
 -    RSA_meth_free(rsa->meth);
 -    rsa->meth = NULL;
++    /* meth was allocated in tls_ctx_use_external_private_key() ; since
++     * this function is called when the parent RSA object is destroyed,
++     * it is no longer used after this point so kill it. */
 +    const RSA_METHOD *meth = RSA_get_method(rsa);
 +    RSA_meth_free((RSA_METHOD *)meth);
      return 1;
  }
  
-@@ -1078,8 +1078,11 @@ tls_ctx_use_external_private_key(struct tls_root_ctx *ctx,
+@@ -1058,7 +1061,7 @@ tls_ctx_use_external_private_key(struct tls_root_ctx *ctx,
+     RSA_meth_set_priv_enc(rsa_meth, rsa_priv_enc);
+     RSA_meth_set_priv_dec(rsa_meth, rsa_priv_dec);
+     RSA_meth_set_init(rsa_meth, NULL);
+-    RSA_meth_set_finish(rsa_meth, rsa_finish);
++    RSA_meth_set_finish(rsa_meth, openvpn_extkey_rsa_finish);
+     RSA_meth_set0_app_data(rsa_meth, NULL);
+ 
+     /* allocate RSA object */
+@@ -1075,8 +1078,11 @@ tls_ctx_use_external_private_key(struct tls_root_ctx *ctx,
      pub_rsa = EVP_PKEY_get0_RSA(pkey);
  
      /* initialize RSA object */
@@ -411,7 +540,7 @@ index dbeb868..25935b4 100644
      if (!RSA_set_method(rsa, rsa_meth))
      {
          goto err;
-@@ -1680,11 +1683,16 @@ print_details(struct key_state_ssl *ks_ssl, const char *prefix)
+@@ -1677,11 +1683,11 @@ print_details(struct key_state_ssl *ks_ssl, const char *prefix)
          EVP_PKEY *pkey = X509_get_pubkey(cert);
          if (pkey != NULL)
          {
@@ -419,22 +548,16 @@ index dbeb868..25935b4 100644
 -                && pkey->pkey.rsa->n != NULL)
 +            if (EVP_PKEY_id(pkey) == EVP_PKEY_RSA && EVP_PKEY_get0_RSA(pkey) != NULL)
              {
--                openvpn_snprintf(s2, sizeof(s2), ", %d bit RSA",
--                                 BN_num_bits(pkey->pkey.rsa->n));
 +                RSA *rsa = EVP_PKEY_get0_RSA(pkey);
-+                const BIGNUM *n = NULL;
-+                RSA_get0_key(rsa, &n, NULL, NULL);
-+                if (n != NULL)
-+                {
-+                    openvpn_snprintf(s2, sizeof(s2), ", %d bit RSA",
-+                                     BN_num_bits(n));
-+                }
+                 openvpn_snprintf(s2, sizeof(s2), ", %d bit RSA",
+-                                 BN_num_bits(pkey->pkey.rsa->n));
++                                 RSA_bits(rsa));
              }
              else if (EVP_PKEY_id(pkey) == EVP_PKEY_DSA && EVP_PKEY_get0_DSA(pkey) != NULL
                       && pkey->pkey.dsa->p != NULL)
-From 1b0088d4410d10810aea432bab2a80bca30a5f7e Mon Sep 17 00:00:00 2001
+From c07c0358b553c519ed9d80e2e0a9ba48ca8850e4 Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 15:23:50 +0100
+Date: Mon, 12 Jun 2017 15:43:26 +0200
 Subject: [PATCH 4/8] OpenSSL: don't use direct access to the internal of DSA
 
 OpenSSL 1.1 does not allow us to directly access the internal of
@@ -445,30 +568,34 @@ Compatibility with OpenSSL 1.0 is kept by defining the corresponding
 functions when they are not found in the library.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
-Signed-off-by: Christian Hesse <mail@eworm.de>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <20170612134330.20971-5-logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14791.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 ---
- configure.ac                 |  1 +
- src/openvpn/openssl_compat.h | 28 ++++++++++++++++++++++++++++
- src/openvpn/ssl_openssl.c    | 13 +++++++++----
- 3 files changed, 38 insertions(+), 4 deletions(-)
+ configure.ac                 |  2 ++
+ src/openvpn/openssl_compat.h | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ src/openvpn/ssl_openssl.c    |  6 +++---
+ 3 files changed, 49 insertions(+), 3 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index e9942e3..b14c468 100644
+index e9ac5a6e..52348780 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -912,6 +912,7 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
- 			RSA_set_flags \
+@@ -932,6 +932,8 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
+ 			RSA_bits \
  			RSA_get0_key \
  			RSA_set0_key \
 +			DSA_get0_pqg \
++			DSA_bits \
  			RSA_meth_new \
  			RSA_meth_free \
  			RSA_meth_set_pub_enc \
 diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
-index 0f7b0bb..8bf31c7 100644
+index e3f20b73..729fab6c 100644
 --- a/src/openvpn/openssl_compat.h
 +++ b/src/openvpn/openssl_compat.h
-@@ -260,6 +260,34 @@ RSA_set0_key(RSA *rsa, BIGNUM *n, BIGNUM *e, BIGNUM *d)
+@@ -275,6 +275,50 @@ RSA_bits(const RSA *rsa)
  }
  #endif
  
@@ -500,38 +627,88 @@ index 0f7b0bb..8bf31c7 100644
 +}
 +#endif
 +
++#if !defined(HAVE_DSA_BITS)
++/**
++ * Number of significant DSA bits
++ *
++ * @param rsa                The DSA object ; shall not be NULL
++ * @return                   The number of DSA bits or 0 on error
++ */
++static inline int
++DSA_bits(const DSA *dsa)
++{
++    const BIGNUM *p = NULL;
++    DSA_get0_pqg(dsa, &p, NULL, NULL);
++    return p ? BN_num_bits(p) : 0;
++}
++#endif
++
  #if !defined(HAVE_RSA_METH_NEW)
  /**
   * Allocate a new RSA method object
 diff --git a/src/openvpn/ssl_openssl.c b/src/openvpn/ssl_openssl.c
-index 25935b4..2f3211f 100644
+index da801ed5..11f4a567 100644
 --- a/src/openvpn/ssl_openssl.c
 +++ b/src/openvpn/ssl_openssl.c
-@@ -1694,11 +1694,16 @@ print_details(struct key_state_ssl *ks_ssl, const char *prefix)
-                                      BN_num_bits(n));
-                 }
+@@ -1689,11 +1689,11 @@ print_details(struct key_state_ssl *ks_ssl, const char *prefix)
+                 openvpn_snprintf(s2, sizeof(s2), ", %d bit RSA",
+                                  RSA_bits(rsa));
              }
 -            else if (EVP_PKEY_id(pkey) == EVP_PKEY_DSA && EVP_PKEY_get0_DSA(pkey) != NULL
 -                     && pkey->pkey.dsa->p != NULL)
 +            else if (EVP_PKEY_id(pkey) == EVP_PKEY_DSA && EVP_PKEY_get0_DSA(pkey) != NULL)
              {
--                openvpn_snprintf(s2, sizeof(s2), ", %d bit DSA",
--                                 BN_num_bits(pkey->pkey.dsa->p));
 +                DSA *dsa = EVP_PKEY_get0_DSA(pkey);
-+                const BIGNUM *p = NULL;
-+                DSA_get0_pqg(dsa, &p, NULL, NULL);
-+                if (p != NULL)
-+                {
-+                    openvpn_snprintf(s2, sizeof(s2), ", %d bit DSA",
-+                                     BN_num_bits(p));
-+                }
+                 openvpn_snprintf(s2, sizeof(s2), ", %d bit DSA",
+-                                 BN_num_bits(pkey->pkey.dsa->p));
++                                 DSA_bits(dsa));
              }
              EVP_PKEY_free(pkey);
          }
-From 15c77738757aaa15b3c9a2b5fce7bc4eb47702be Mon Sep 17 00:00:00 2001
+From 3fd07c31fe8878dc75e760d151d291379c0f8743 Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 19:21:17 +0100
-Subject: [PATCH 5/8] OpenSSL: don't use direct access to the internal of
+Date: Mon, 12 Jun 2017 15:43:30 +0200
+Subject: [PATCH 5/8] OpenSSL: force meth->name as non-const when we free()
+ it
+
+We are in control of meth->name (we string_alloc() it in RSA_meth_new())
+so we know that we can free() it when it's no longer needed. Yet we have
+to force the value to be non-const to avoid a compiler warning -- due to
+the fact that OpenSSL defines the value as a const char*, regardless of
+its origin.
+
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <20170612134330.20971-9-logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14798.html
+
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
+---
+ src/openvpn/openssl_compat.h | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
+index 729fab6c..eeacb525 100644
+--- a/src/openvpn/openssl_compat.h
++++ b/src/openvpn/openssl_compat.h
+@@ -349,7 +349,13 @@ RSA_meth_free(RSA_METHOD *meth)
+ {
+     if (meth)
+     {
+-        free(meth->name);
++        /* OpenSSL defines meth->name to be a const pointer, yet we
++         * feed it with an allocated string (from RSA_meth_new()).
++         * Thus we are allowed to free it here. In order to avoid a
++         * "passing 'const char *' to parameter of type 'void *' discards
++         * qualifiers" warning, we force the pointer to be a non-const value.
++         */
++        free((char *)meth->name);
+         free(meth);
+     }
+ }
+From c481ef002803f360743c72727ae3ca971ce59a5d Mon Sep 17 00:00:00 2001
+From: Emmanuel Deloget <logout@free.fr>
+Date: Mon, 12 Jun 2017 15:43:27 +0200
+Subject: [PATCH 6/8] OpenSSL: don't use direct access to the internal of
  EVP_MD_CTX
 
 OpenSSL 1.1 does not allow us to directly access the internal of
@@ -542,7 +719,10 @@ Compatibility with OpenSSL 1.0 is kept by defining the corresponding
 functions when they are not found in the library.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
-Signed-off-by: Christian Hesse <mail@eworm.de>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <20170612134330.20971-6-logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14793.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 ---
  configure.ac                 |  3 ++
  src/openvpn/crypto_backend.h | 14 ++++++++
@@ -550,16 +730,16 @@ Signed-off-by: Christian Hesse <mail@eworm.de>
  src/openvpn/crypto_openssl.c | 18 ++++++++--
  src/openvpn/httpdigest.c     | 78 +++++++++++++++++++++++---------------------
  src/openvpn/misc.c           | 14 ++++----
- src/openvpn/openssl_compat.h | 50 ++++++++++++++++++++++++++++
+ src/openvpn/openssl_compat.h | 43 ++++++++++++++++++++++++
  src/openvpn/openvpn.h        |  2 +-
  src/openvpn/push.c           | 11 ++++---
- 9 files changed, 150 insertions(+), 52 deletions(-)
+ 9 files changed, 143 insertions(+), 52 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index b14c468..0df6e00 100644
+index 52348780..f971e54a 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -900,6 +900,9 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
+@@ -919,6 +919,9 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
  
  	AC_CHECK_FUNCS(
  		[ \
@@ -570,10 +750,10 @@ index b14c468..0df6e00 100644
  			SSL_CTX_get_default_passwd_cb_userdata \
  			X509_get0_pubkey \
 diff --git a/src/openvpn/crypto_backend.h b/src/openvpn/crypto_backend.h
-index 2c79baa..9b35cda 100644
+index e2d2c96f..f1da0432 100644
 --- a/src/openvpn/crypto_backend.h
 +++ b/src/openvpn/crypto_backend.h
-@@ -502,6 +502,20 @@ int md_kt_size(const md_kt_t *kt);
+@@ -507,6 +507,20 @@ int md_kt_size(const md_kt_t *kt);
  int md_full(const md_kt_t *kt, const uint8_t *src, int src_len, uint8_t *dst);
  
  /*
@@ -595,10 +775,10 @@ index 2c79baa..9b35cda 100644
   *
   * @param ctx           Message digest context
 diff --git a/src/openvpn/crypto_mbedtls.c b/src/openvpn/crypto_mbedtls.c
-index 942684c..d674152 100644
+index e6388dd5..03cc1308 100644
 --- a/src/openvpn/crypto_mbedtls.c
 +++ b/src/openvpn/crypto_mbedtls.c
-@@ -766,6 +766,18 @@ md_full(const md_kt_t *kt, const uint8_t *src, int src_len, uint8_t *dst)
+@@ -765,6 +765,18 @@ md_full(const md_kt_t *kt, const uint8_t *src, int src_len, uint8_t *dst)
      return 0 == mbedtls_md(kt, src, src_len, dst);
  }
  
@@ -618,10 +798,10 @@ index 942684c..d674152 100644
  void
  md_ctx_init(mbedtls_md_context_t *ctx, const mbedtls_md_info_t *kt)
 diff --git a/src/openvpn/crypto_openssl.c b/src/openvpn/crypto_openssl.c
-index a66ee71..bea4399 100644
+index ee20902f..3a5a26f8 100644
 --- a/src/openvpn/crypto_openssl.c
 +++ b/src/openvpn/crypto_openssl.c
-@@ -42,6 +42,7 @@
+@@ -41,6 +41,7 @@
  #include "integer.h"
  #include "crypto.h"
  #include "crypto_backend.h"
@@ -629,7 +809,7 @@ index a66ee71..bea4399 100644
  
  #include <openssl/des.h>
  #include <openssl/err.h>
-@@ -845,13 +846,24 @@ md_full(const EVP_MD *kt, const uint8_t *src, int src_len, uint8_t *dst)
+@@ -843,13 +844,24 @@ md_full(const EVP_MD *kt, const uint8_t *src, int src_len, uint8_t *dst)
      return EVP_Digest(src, src_len, dst, &in_md_len, kt, NULL);
  }
  
@@ -656,7 +836,7 @@ index a66ee71..bea4399 100644
      EVP_MD_CTX_init(ctx);
      EVP_DigestInit(ctx, kt);
  }
-@@ -859,7 +871,7 @@ md_ctx_init(EVP_MD_CTX *ctx, const EVP_MD *kt)
+@@ -857,7 +869,7 @@ md_ctx_init(EVP_MD_CTX *ctx, const EVP_MD *kt)
  void
  md_ctx_cleanup(EVP_MD_CTX *ctx)
  {
@@ -666,10 +846,10 @@ index a66ee71..bea4399 100644
  
  int
 diff --git a/src/openvpn/httpdigest.c b/src/openvpn/httpdigest.c
-index ae4a638..2a66d9b 100644
+index e578c85d..c553f939 100644
 --- a/src/openvpn/httpdigest.c
 +++ b/src/openvpn/httpdigest.c
-@@ -81,27 +81,28 @@ DigestCalcHA1(
+@@ -80,27 +80,28 @@ DigestCalcHA1(
      )
  {
      HASH HA1;
@@ -714,7 +894,7 @@ index ae4a638..2a66d9b 100644
      CvtHex(HA1, SessionKey);
  }
  
-@@ -123,40 +124,41 @@ DigestCalcResponse(
+@@ -122,40 +123,41 @@ DigestCalcResponse(
      HASH RespHash;
      HASHHEX HA2Hex;
  
@@ -779,10 +959,10 @@ index ae4a638..2a66d9b 100644
  }
  
 diff --git a/src/openvpn/misc.c b/src/openvpn/misc.c
-index a2f45b6..0c422dd 100644
+index d286c197..df108b08 100644
 --- a/src/openvpn/misc.c
 +++ b/src/openvpn/misc.c
-@@ -1439,7 +1439,7 @@ get_user_pass_auto_userid(struct user_pass *up, const char *tag)
+@@ -1387,7 +1387,7 @@ get_user_pass_auto_userid(struct user_pass *up, const char *tag)
      static const uint8_t hashprefix[] = "AUTO_USERID_DIGEST";
  
      const md_kt_t *md5_kt = md_kt_get("MD5");
@@ -791,7 +971,7 @@ index a2f45b6..0c422dd 100644
  
      CLEAR(*up);
      buf_set_write(&buf, (uint8_t *)up->username, USER_PASS_LEN);
-@@ -1447,11 +1447,13 @@ get_user_pass_auto_userid(struct user_pass *up, const char *tag)
+@@ -1395,11 +1395,13 @@ get_user_pass_auto_userid(struct user_pass *up, const char *tag)
      if (get_default_gateway_mac_addr(macaddr))
      {
          dmsg(D_AUTO_USERID, "GUPAU: macaddr=%s", format_hex_ex(macaddr, sizeof(macaddr), 0, 1, ":", &gc));
@@ -811,20 +991,13 @@ index a2f45b6..0c422dd 100644
      }
      else
 diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
-index 8bf31c7..235a916 100644
+index eeacb525..3d8fad10 100644
 --- a/src/openvpn/openssl_compat.h
 +++ b/src/openvpn/openssl_compat.h
-@@ -46,6 +46,56 @@
+@@ -45,6 +45,49 @@
  #include <openssl/ssl.h>
  #include <openssl/x509.h>
  
-+#include <openssl/des.h>
-+#include <openssl/err.h>
-+#include <openssl/evp.h>
-+#include <openssl/objects.h>
-+#include <openssl/rand.h>
-+#include <openssl/ssl.h>
-+
 +#if !defined(HAVE_EVP_MD_CTX_RESET)
 +/**
 + * Reset a message digest context
@@ -872,7 +1045,7 @@ index 8bf31c7..235a916 100644
  /**
   * Fetch the default password callback user data from the SSL context
 diff --git a/src/openvpn/openvpn.h b/src/openvpn/openvpn.h
-index 893296e..e6cea50 100644
+index c01e8a2c..9262e68b 100644
 --- a/src/openvpn/openvpn.h
 +++ b/src/openvpn/openvpn.h
 @@ -472,7 +472,7 @@ struct context_2
@@ -885,10 +1058,10 @@ index 893296e..e6cea50 100644
  
      struct event_timeout scheduled_exit;
 diff --git a/src/openvpn/push.c b/src/openvpn/push.c
-index 8c3104e..7479f7c 100644
+index 441d303e..5947a31f 100644
 --- a/src/openvpn/push.c
 +++ b/src/openvpn/push.c
-@@ -722,7 +722,8 @@ process_incoming_push_msg(struct context *c,
+@@ -723,7 +723,8 @@ process_incoming_push_msg(struct context *c,
              struct buffer buf_orig = buf;
              if (!c->c2.pulled_options_digest_init_done)
              {
@@ -898,7 +1071,7 @@ index 8c3104e..7479f7c 100644
                  c->c2.pulled_options_digest_init_done = true;
              }
              if (!c->c2.did_pre_pull_restore)
-@@ -736,14 +737,16 @@ process_incoming_push_msg(struct context *c,
+@@ -737,14 +738,16 @@ process_incoming_push_msg(struct context *c,
                                     option_types_found,
                                     c->c2.es))
              {
@@ -918,10 +1091,10 @@ index 8c3104e..7479f7c 100644
                          c->c2.pulled_options_digest_init_done = false;
                          ret = PUSH_MSG_REPLY;
                          break;
-From bc7b51e81b3208df7ddc9b14df65a1161283f0af Mon Sep 17 00:00:00 2001
+From 6cbd48a3ead23f004f25943d067fa668efdc580e Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 19:38:39 +0100
-Subject: [PATCH 6/8] OpenSSL: don't use direct access to the internal of
+Date: Mon, 12 Jun 2017 15:43:28 +0200
+Subject: [PATCH 7/8] OpenSSL: don't use direct access to the internal of
  EVP_CIPHER_CTX
 
 OpenSSL 1.1 does not allow us to directly access the internal of
@@ -932,7 +1105,10 @@ Compatibility with OpenSSL 1.0 is kept by defining the corresponding
 functions when they are not found in the library.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
-Signed-off-by: Christian Hesse <mail@eworm.de>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <20170612134330.20971-7-logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14796.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 ---
  configure.ac                 |  2 ++
  src/openvpn/crypto.c         |  4 ++--
@@ -943,10 +1119,10 @@ Signed-off-by: Christian Hesse <mail@eworm.de>
  6 files changed, 72 insertions(+), 4 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 0df6e00..7f65df7 100644
+index f971e54a..07fc3392 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -900,6 +900,8 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
+@@ -919,6 +919,8 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
  
  	AC_CHECK_FUNCS(
  		[ \
@@ -956,10 +1132,10 @@ index 0df6e00..7f65df7 100644
  			EVP_MD_CTX_free \
  			EVP_MD_CTX_reset \
 diff --git a/src/openvpn/crypto.c b/src/openvpn/crypto.c
-index 909f725..4ba344d 100644
+index b6d0d550..f7c4d60a 100644
 --- a/src/openvpn/crypto.c
 +++ b/src/openvpn/crypto.c
-@@ -820,7 +820,7 @@ init_key_ctx(struct key_ctx *ctx, struct key *key,
+@@ -829,7 +829,7 @@ init_key_ctx(struct key_ctx *ctx, struct key *key,
      if (kt->cipher && kt->cipher_length > 0)
      {
  
@@ -968,7 +1144,7 @@ index 909f725..4ba344d 100644
          cipher_ctx_init(ctx->cipher, key->cipher, kt->cipher_length,
                          kt->cipher, enc);
  
-@@ -869,7 +869,7 @@ free_key_ctx(struct key_ctx *ctx)
+@@ -878,7 +878,7 @@ free_key_ctx(struct key_ctx *ctx)
      if (ctx->cipher)
      {
          cipher_ctx_cleanup(ctx->cipher);
@@ -978,10 +1154,10 @@ index 909f725..4ba344d 100644
      }
      if (ctx->hmac)
 diff --git a/src/openvpn/crypto_backend.h b/src/openvpn/crypto_backend.h
-index 9b35cda..04876bf 100644
+index f1da0432..9679ee9b 100644
 --- a/src/openvpn/crypto_backend.h
 +++ b/src/openvpn/crypto_backend.h
-@@ -295,6 +295,20 @@ bool cipher_kt_mode_aead(const cipher_kt_t *cipher);
+@@ -300,6 +300,20 @@ bool cipher_kt_mode_aead(const cipher_kt_t *cipher);
   */
  
  /**
@@ -1003,10 +1179,10 @@ index 9b35cda..04876bf 100644
   *
   * @param ctx           Cipher context. May not be NULL
 diff --git a/src/openvpn/crypto_mbedtls.c b/src/openvpn/crypto_mbedtls.c
-index d674152..4d38aad 100644
+index 03cc1308..5f16a1f0 100644
 --- a/src/openvpn/crypto_mbedtls.c
 +++ b/src/openvpn/crypto_mbedtls.c
-@@ -509,6 +509,19 @@ cipher_kt_mode_aead(const cipher_kt_t *cipher)
+@@ -508,6 +508,19 @@ cipher_kt_mode_aead(const cipher_kt_t *cipher)
   *
   */
  
@@ -1027,10 +1203,10 @@ index d674152..4d38aad 100644
  void
  cipher_ctx_init(mbedtls_cipher_context_t *ctx, uint8_t *key, int key_len,
 diff --git a/src/openvpn/crypto_openssl.c b/src/openvpn/crypto_openssl.c
-index bea4399..e19b5b3 100644
+index 3a5a26f8..f4470fc0 100644
 --- a/src/openvpn/crypto_openssl.c
 +++ b/src/openvpn/crypto_openssl.c
-@@ -652,6 +652,19 @@ cipher_kt_mode_aead(const cipher_kt_t *cipher)
+@@ -650,6 +650,19 @@ cipher_kt_mode_aead(const cipher_kt_t *cipher)
   *
   */
  
@@ -1050,7 +1226,7 @@ index bea4399..e19b5b3 100644
  
  void
  cipher_ctx_init(EVP_CIPHER_CTX *ctx, uint8_t *key, int key_len,
-@@ -659,8 +672,6 @@ cipher_ctx_init(EVP_CIPHER_CTX *ctx, uint8_t *key, int key_len,
+@@ -657,8 +670,6 @@ cipher_ctx_init(EVP_CIPHER_CTX *ctx, uint8_t *key, int key_len,
  {
      ASSERT(NULL != kt && NULL != ctx);
  
@@ -1060,10 +1236,10 @@ index bea4399..e19b5b3 100644
      if (!EVP_CipherInit(ctx, kt, NULL, NULL, enc))
      {
 diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
-index 235a916..c795265 100644
+index 3d8fad10..c9e2692b 100644
 --- a/src/openvpn/openssl_compat.h
 +++ b/src/openvpn/openssl_compat.h
-@@ -96,6 +96,34 @@ EVP_MD_CTX_new(void)
+@@ -88,6 +88,34 @@ EVP_MD_CTX_new(void)
  }
  #endif
  
@@ -1098,10 +1274,10 @@ index 235a916..c795265 100644
  #if !defined(HAVE_SSL_CTX_GET_DEFAULT_PASSWD_CB_USERDATA)
  /**
   * Fetch the default password callback user data from the SSL context
-From 6ca8f34a56353eb16f9e1aa24be153fa0a28dffc Mon Sep 17 00:00:00 2001
+From aba98e9050eb54d72d921e70bcd422cb892b9c6c Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 19:48:32 +0100
-Subject: [PATCH 7/8] OpenSSL: don't use direct access to the internal of
+Date: Mon, 12 Jun 2017 15:43:29 +0200
+Subject: [PATCH 8/8] OpenSSL: don't use direct access to the internal of
  HMAC_CTX
 
 OpenSSL 1.1 does not allow us to directly access the internal of
@@ -1112,7 +1288,10 @@ Compatibility with OpenSSL 1.0 is kept by defining the corresponding
 functions when they are not found in the library.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
-Signed-off-by: Christian Hesse <mail@eworm.de>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <20170612134330.20971-8-logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14797.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 ---
  configure.ac                 |  4 +++
  src/openvpn/crypto.c         |  4 +--
@@ -1125,10 +1304,10 @@ Signed-off-by: Christian Hesse <mail@eworm.de>
  8 files changed, 140 insertions(+), 29 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 7f65df7..bd4ab9c 100644
+index 07fc3392..56ce5f82 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -902,6 +902,10 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
+@@ -921,6 +921,10 @@ if test "${enable_crypto}" = "yes" -a "${with_crypto_library}" = "openssl"; then
  		[ \
  			EVP_CIPHER_CTX_new \
  			EVP_CIPHER_CTX_free \
@@ -1140,10 +1319,10 @@ index 7f65df7..bd4ab9c 100644
  			EVP_MD_CTX_free \
  			EVP_MD_CTX_reset \
 diff --git a/src/openvpn/crypto.c b/src/openvpn/crypto.c
-index 4ba344d..dd7c8d8 100644
+index f7c4d60a..191fee8e 100644
 --- a/src/openvpn/crypto.c
 +++ b/src/openvpn/crypto.c
-@@ -844,7 +844,7 @@ init_key_ctx(struct key_ctx *ctx, struct key *key,
+@@ -853,7 +853,7 @@ init_key_ctx(struct key_ctx *ctx, struct key *key,
      }
      if (kt->digest && kt->hmac_length > 0)
      {
@@ -1152,7 +1331,7 @@ index 4ba344d..dd7c8d8 100644
          hmac_ctx_init(ctx->hmac, key->hmac, kt->hmac_length, kt->digest);
  
          msg(D_HANDSHAKE,
-@@ -875,7 +875,7 @@ free_key_ctx(struct key_ctx *ctx)
+@@ -884,7 +884,7 @@ free_key_ctx(struct key_ctx *ctx)
      if (ctx->hmac)
      {
          hmac_ctx_cleanup(ctx->hmac);
@@ -1162,10 +1341,10 @@ index 4ba344d..dd7c8d8 100644
      }
      ctx->implicit_iv_len = 0;
 diff --git a/src/openvpn/crypto_backend.h b/src/openvpn/crypto_backend.h
-index 04876bf..e5442c5 100644
+index 9679ee9b..b7f519b5 100644
 --- a/src/openvpn/crypto_backend.h
 +++ b/src/openvpn/crypto_backend.h
-@@ -578,6 +578,20 @@ void md_ctx_final(md_ctx_t *ctx, uint8_t *dst);
+@@ -583,6 +583,20 @@ void md_ctx_final(md_ctx_t *ctx, uint8_t *dst);
   */
  
  /*
@@ -1187,10 +1366,10 @@ index 04876bf..e5442c5 100644
   * and key.
   *
 diff --git a/src/openvpn/crypto_mbedtls.c b/src/openvpn/crypto_mbedtls.c
-index 4d38aad..f0698f6 100644
+index 5f16a1f0..24bc3158 100644
 --- a/src/openvpn/crypto_mbedtls.c
 +++ b/src/openvpn/crypto_mbedtls.c
-@@ -841,6 +841,21 @@ md_ctx_final(mbedtls_md_context_t *ctx, uint8_t *dst)
+@@ -840,6 +840,21 @@ md_ctx_final(mbedtls_md_context_t *ctx, uint8_t *dst)
  /*
   * TODO: re-enable dmsg for crypto debug
   */
@@ -1213,10 +1392,10 @@ index 4d38aad..f0698f6 100644
  hmac_ctx_init(mbedtls_md_context_t *ctx, const uint8_t *key, int key_len,
                const mbedtls_md_info_t *kt)
 diff --git a/src/openvpn/crypto_openssl.c b/src/openvpn/crypto_openssl.c
-index e19b5b3..23de175 100644
+index f4470fc0..a55e65c1 100644
 --- a/src/openvpn/crypto_openssl.c
 +++ b/src/openvpn/crypto_openssl.c
-@@ -912,6 +912,19 @@ md_ctx_final(EVP_MD_CTX *ctx, uint8_t *dst)
+@@ -910,6 +910,19 @@ md_ctx_final(EVP_MD_CTX *ctx, uint8_t *dst)
   *
   */
  
@@ -1236,7 +1415,7 @@ index e19b5b3..23de175 100644
  
  void
  hmac_ctx_init(HMAC_CTX *ctx, const uint8_t *key, int key_len,
-@@ -919,8 +932,6 @@ hmac_ctx_init(HMAC_CTX *ctx, const uint8_t *key, int key_len,
+@@ -917,8 +930,6 @@ hmac_ctx_init(HMAC_CTX *ctx, const uint8_t *key, int key_len,
  {
      ASSERT(NULL != kt && NULL != ctx);
  
@@ -1245,7 +1424,7 @@ index e19b5b3..23de175 100644
      HMAC_CTX_init(ctx);
      HMAC_Init_ex(ctx, key, key_len, kt, NULL);
  
-@@ -931,7 +942,7 @@ hmac_ctx_init(HMAC_CTX *ctx, const uint8_t *key, int key_len,
+@@ -929,7 +940,7 @@ hmac_ctx_init(HMAC_CTX *ctx, const uint8_t *key, int key_len,
  void
  hmac_ctx_cleanup(HMAC_CTX *ctx)
  {
@@ -1255,10 +1434,10 @@ index e19b5b3..23de175 100644
  
  int
 diff --git a/src/openvpn/ntlm.c b/src/openvpn/ntlm.c
-index 0c43681..4a4e8b9 100644
+index 69b7d426..16d60d2c 100644
 --- a/src/openvpn/ntlm.c
 +++ b/src/openvpn/ntlm.c
-@@ -86,13 +86,13 @@ static void
+@@ -85,13 +85,13 @@ static void
  gen_hmac_md5(const char *data, int data_len, const char *key, int key_len,char *result)
  {
      const md_kt_t *md5_kt = md_kt_get("MD5");
@@ -1279,10 +1458,10 @@ index 0c43681..4a4e8b9 100644
  
  static void
 diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
-index c795265..8792710 100644
+index c9e2692b..c765f0bb 100644
 --- a/src/openvpn/openssl_compat.h
 +++ b/src/openvpn/openssl_compat.h
-@@ -124,6 +124,71 @@ EVP_CIPHER_CTX_new(void)
+@@ -116,6 +116,71 @@ EVP_CIPHER_CTX_new(void)
  }
  #endif
  
@@ -1355,10 +1534,10 @@ index c795265..8792710 100644
  /**
   * Fetch the default password callback user data from the SSL context
 diff --git a/src/openvpn/ssl.c b/src/openvpn/ssl.c
-index 86450fe..03dc80f 100644
+index cc7b1830..c658f377 100644
 --- a/src/openvpn/ssl.c
 +++ b/src/openvpn/ssl.c
-@@ -1614,8 +1614,8 @@ tls1_P_hash(const md_kt_t *md_kt,
+@@ -1606,8 +1606,8 @@ tls1_P_hash(const md_kt_t *md_kt,
  {
      struct gc_arena gc = gc_new();
      int chunk;
@@ -1369,7 +1548,7 @@ index 86450fe..03dc80f 100644
      uint8_t A1[MAX_HMAC_KEY_LENGTH];
      unsigned int A1_len;
  
-@@ -1624,8 +1624,8 @@ tls1_P_hash(const md_kt_t *md_kt,
+@@ -1616,8 +1616,8 @@ tls1_P_hash(const md_kt_t *md_kt,
      const uint8_t *out_orig = out;
  #endif
  
@@ -1380,7 +1559,7 @@ index 86450fe..03dc80f 100644
  
      dmsg(D_SHOW_KEY_SOURCE, "tls1_P_hash sec: %s", format_hex(sec, sec_len, 0, &gc));
      dmsg(D_SHOW_KEY_SOURCE, "tls1_P_hash seed: %s", format_hex(seed, seed_len, 0, &gc));
-@@ -1633,36 +1633,38 @@ tls1_P_hash(const md_kt_t *md_kt,
+@@ -1625,36 +1625,38 @@ tls1_P_hash(const md_kt_t *md_kt,
      chunk = md_kt_size(md_kt);
      A1_len = md_kt_size(md_kt);
  
@@ -1433,40 +1612,3 @@ index 86450fe..03dc80f 100644
      secure_memzero(A1, sizeof(A1));
  
      dmsg(D_SHOW_KEY_SOURCE, "tls1_P_hash out: %s", format_hex(out_orig, olen_orig, 0, &gc));
-From 3da5a0180f9178ba783f675acb7277075b916ebe Mon Sep 17 00:00:00 2001
-From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 15:27:35 +0100
-Subject: [PATCH 8/8] OpenSSL: constify getbio() parameters
-
-Although it is required by BIO_new() to have a non-const object,
-this is merely an OpenSSL interface accident. Newer versions of
-OpenSSL (i.e. OpenSSL 1.1) have are a bit better w.r.t. constification
-and changed this.
-
-As a result, we can safely constify the BIO_METHOD parameter of getbio()
-(yet we still need to un-const the value when feeding it to BIO_new()
-for the sake of compatibility).
-
-Signed-off-by: Emmanuel Deloget <logout@free.fr>
-Signed-off-by: Christian Hesse <mail@eworm.de>
----
- src/openvpn/ssl_openssl.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/src/openvpn/ssl_openssl.c b/src/openvpn/ssl_openssl.c
-index 5a8fd1e..5c91e48 100644
---- a/src/openvpn/ssl_openssl.c
-+++ b/src/openvpn/ssl_openssl.c
-@@ -1388,10 +1388,10 @@ bio_debug_oc(const char *mode, BIO *bio)
-  * through "memory BIOs".
-  */
- static BIO *
--getbio(BIO_METHOD *type, const char *desc)
-+getbio(const BIO_METHOD *type, const char *desc)
- {
-     BIO *ret;
--    ret = BIO_new(type);
-+    ret = BIO_new((BIO_METHOD *)type);
-     if (!ret)
-     {
-         crypto_msg(M_FATAL, "Error creating %s BIO", desc);

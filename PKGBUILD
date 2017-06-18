@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('i686' 'x86_64')
 url='http://openvpn.net/index.php/open-source.html'
@@ -17,7 +17,7 @@ source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.x
         '0004-openssl-1-1-0.patch')
 sha256sums=('df5c4f384b7df6b08a2f6fa8a84b9fd382baf59c2cef1836f82e2a7f62f1bff9'
             'SKIP'
-            'd801b1118d64c0667eae87ab1da920179f339614da22c5c8bed75d17650fad03')
+            '75259cb14ed8237c2ca5618eca902ed39f720df166e732911e21dd5abcc68b3e')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
