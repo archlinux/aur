@@ -1,5 +1,5 @@
 post_install() {
-   echo "An example configuration file is found in /etc/my_backup/config."
+   echo "An example configuration file is found in /etc/simple_backup/config."
 }
 
 post_upgrade() {
