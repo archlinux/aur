@@ -1,4 +1,5 @@
-# Maintainer: Will Adams <info at clementlumber dot com>
+# Maintainer: Manuel Kauschinger <admin at bruzzzla dot de>
+# Previous Maintainer: Will Adams <info at clementlumber dot com>
 # Previous Maintainer: T. Jameson Little <t.jameson.little at gmail dot com>
 # Previous Maintainer: Stephen Michael <ihateseptictanks at gmail dot com>
 # Previous Maintainer: Simon Tunnat <simon+aur@tunn.at>
@@ -11,7 +12,7 @@
 
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
-pkgver=52.1.0
+pkgver=52.2.0
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
@@ -25,10 +26,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=('firefox=52')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
-sha512sums=('21b1770c114723404bec3509b145d07ec8d5f40d4ed1bedfad59b036b4aacb776338b50ba9b9eb99988c5160dc4752f57177f45f264a773269bc91a608c060ad'
+sha512sums=('664c6d95fc2d31f1ce4470b3a4719c16116d26b785c69268c311a15c2b7b4934981988e27ecb4c243f6cefd3338d3f6abf2b83688446e5b87124a59b11bfdfe5'
             '2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba'
             '8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0')
-[[ "$CARCH" == "i686" ]] && sha512sums[0]='adc33ffb9db164991f304473583453d077ce3a833e02b0f63c6b6e6c7a7e24fddd207b51c3dffb46b8ad5315b92ed12e82ef5ae510a53780f4a9e5ca2c127fd6'
+[[ "$CARCH" == "i686" ]] && sha512sums[0]='caeee15b63f0df7fc3aae0c4e4cc4fc705d923b8c5d63180539c4b56ecfd3aa21b0bd5b841660d334b7a786b5412960301a4364a64d5679a4854d61df0d5bf20'
 # if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
     # pkgver=38.8.0
     # provides=('firefox=38')
