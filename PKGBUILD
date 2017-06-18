@@ -4,7 +4,7 @@
 
 set -u
 pkgname='miller'
-pkgver='5.1.0'
+pkgver='5.2.0'
 pkgrel='1'
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l') 
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 #source[0]='https://github.com/johnkerl/miller/archive/master.tar.gz'; _srcdir='miller-master'
-sha256sums=('07a498c0228e15321798e5f3f6d03ee6ba9aaf13110f55e52ddfadee52b9da6a')
+sha256sums=('e773d2aee08d9d864d1bfa21bbfe94d4abbe1fce51dea68979ac55936b22c6b4')
 
 prepare() {
   set -u
@@ -34,7 +34,7 @@ build() {
   cd "${_srcdir}"
   if grep -q 'am__is_gnu_make' 'Makefile'; then # 2.2.1 and newer
     local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-    make -s -j "${_nproc}"
+    nice make -s -j "${_nproc}"
   else
     make -s -j1
   fi
