@@ -151,10 +151,10 @@ package()
     install -D -m 755 $srcdir/nwn.launcher $pkgdir/usr/bin/nwn
 
     # Install icons files
-    install -D -m 644 $srcdir/icons/goggame-1207658890_6_256x256x32.png $pkgdir/usr/share/icons/hicolor/256x256/app/nwn.png
-    install -D -m 644 $srcdir/icons/goggame-1207658890_7_48x48x32.png $pkgdir/usr/share/icons/hicolor/48x48/app/nwn.png
-    install -D -m 644 $srcdir/icons/goggame-1207658890_8_32x32x32.png $pkgdir/usr/share/icons/hicolor/32x32/app/nwn.png
-    install -D -m 644 $srcdir/icons/goggame-1207658890_9_16x16x32.png $pkgdir/usr/share/icons/hicolor/16x16/app/nwn.png
+    install -D -m 644 $srcdir/icons/goggame-1207658890_6_256x256x32.png $pkgdir/usr/share/icons/hicolor/256x256/apps/nwn.png
+    install -D -m 644 $srcdir/icons/goggame-1207658890_7_48x48x32.png $pkgdir/usr/share/icons/hicolor/48x48/apps/nwn.png
+    install -D -m 644 $srcdir/icons/goggame-1207658890_8_32x32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/nwn.png
+    install -D -m 644 $srcdir/icons/goggame-1207658890_9_16x16x32.png $pkgdir/usr/share/icons/hicolor/16x16/apps/nwn.png
 
     # Fix Permissions, just to be sure
     chown -R root:root $pkgdir
