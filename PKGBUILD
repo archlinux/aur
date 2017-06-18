@@ -9,7 +9,7 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.1.4.r393.ga2e82dc8
+pkgver=2.1.4.r428.gf817eaa5
 pkgrel=1
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
@@ -19,8 +19,7 @@ depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme'
          'desktop-file-utils' 'yubikey-personalization')
 install=keepassxc.install
 makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
-conflicts=('keepassx-svn' 'keepassx' 'keepassx-git' 'keepassx2-git' 'keepassx2' 'keepassx2-yubikey-git' 'keepassx-http' 'keepassxc')
-provides=("keepassx"{,2}"=${pkgver}" "keepassx-svn=${pkgver}" "keepassx2-git=${pkgver}")
+conflicts=('keepassxc')
 replaces=('keepassx-http' 'keepassx-reboot-git')
 options=(!emptydirs)
 source=(git+https://github.com/keepassxreboot/keepassxc.git#branch=develop)
@@ -33,7 +32,6 @@ pkgver() {
 
 prepare() {
     cd "${_gitname}"
-    sed -i'' -e 's/add_subdirectory(x11)/add_subdirectory(xcb)/' src/autotype/CMakeLists.txt
     mkdir -p build
 }
 
