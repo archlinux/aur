@@ -3,15 +3,14 @@
 _srcname=screencast
 pkgname=screencast-git
 pkgver=1.2.0.r0.gf747466
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line interface to record a X11 desktop (git version)"
 arch=('any')
 url="https://github.com/dbermond/screencast/"
 license=('GPL')
-depends=('ffmpeg' 'xorg-xdpyinfo')
+depends=('ffmpeg' 'xorg-xdpyinfo' 'libnotify')
 optdepends=('bc: fade effect support'
             'imagemagick: watermark effect support'
-            'libnotify: desktop notification support'
             'oxygen-icons: desktop notification icons support'
             'sound-theme-freedesktop: sound notification support'
             'advancecomp: png (watermark) optimization support'
