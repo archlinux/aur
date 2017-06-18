@@ -1,0 +1,16 @@
+pkgbase = container-transform
+	pkgdesc = Small utility to transform various docker container formats to one another
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/micahhausler/container-transform
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-jinja
+	depends = python-yaml
+	source = https://github.com/micahhausler/container-transform/archive/1.1.5.tar.gz
+	sha256sums = 2063ac32c802929eb7ef5be9f6934f37f584148ed186deb9b9d276dd6cc21112
+
+pkgname = container-transform
+
