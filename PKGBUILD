@@ -1,7 +1,8 @@
-# Maintainer: Patrick Wozniak <email@patwoz.de>
+# Maintainer: Tom Nguyen <tom81094@gmail.com>
+# Contributor: Patrick Wozniak <email@patwoz.de>
 
 pkgname=masterpassword-cli-git
-pkgver=20160225.r987.b4da801
+pkgver=20170607.r1185.d3e3c9d7
 pkgrel=1
 pkgdesc="CLI version of Master Password. (git-version)"
 
@@ -10,39 +11,36 @@ url="https://github.com/Lyndir/MasterPassword"
 license=('GPL3')
 
 optdepends=(
-  'xclip: copy password to clipboard'
+    'xclip: copy password to clipboard'
 )
 makedepends=(
-  'openssl'
-  'gcc'
-  'git'
+    'gcc'
+    'git'
+    'libsodium'
+    'openssl'
 )
 conflicts=(
-  'masterpassword-cli'
+    'masterpassword-cli'
+    'masterpassword-cli-git'
 )
 
-source=("${pkgname%-git}::git+http://github.com/Lyndir/MasterPassword.git#branch=master")
+source=("${pkgname%-git}::git+https://github.com/Lyndir/MasterPassword.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  printf "%s.r%s.%s" "$(date +%Y%m%d)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${pkgname%-git}/MasterPassword/C"
-  sed -i '/^svn=/d' ./lib/scrypt/.source
+    cd "${pkgname%-git}"
+    printf "%s.r%s.%s" "$(date +%Y%m%d)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${pkgname%-git}/MasterPassword/C"
-  targets="mpw" ./build
+    cd "${pkgname%-git}/platform-independent/cli-c"
+    targets="mpw" ./build
 }
 
 package() {
-  cd "${pkgname%-git}"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+    cd "${pkgname%-git}"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 
-  cd "MasterPassword/C"
-  /usr/bin/install -Dm755 "mpw" "$pkgdir/usr/bin/mpw"
+    cd "platform-independent/cli-c"
+    /usr/bin/install -Dm755 "mpw" "$pkgdir/usr/bin/mpw"
 }
