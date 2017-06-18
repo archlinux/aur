@@ -1,7 +1,7 @@
 pkgbase = python-nonblock
 	pkgdesc = Pure-Python non-blocking IO functions
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/kata198/python-nonblock
 	arch = any
 	license = LGPLv2
@@ -9,8 +9,6 @@ pkgbase = python-nonblock
 	makedepends = python
 	depends = python-setuptools
 	depends = python
-	depends = python-redis
-	depends = python-indexedredis
 	backup = etc/nonblock.cfg
 	source = https://github.com/kata198/python-nonblock/archive/4.0.0.tar.gz
 	sha512sums = 868ad345cd1015c9845d98891ea5dd8471018b7fd73586ac36c8ed3a3782d384477e78223097ae7c318b964b6912506bfbc2153fca09163d05d35066811b05ae
