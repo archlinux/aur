@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=N.86415.g90e8317b3b
-pkgrel=2
+pkgver=N.86504.gc557718bea
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (git version with all possible libs)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
