@@ -6,14 +6,14 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=amule-remote-tools
-pkgver=10983
+pkgver=10990
 pkgrel=1
 pkgdesc="aMule Remote Tools CLI and GUI"
 arch=('i686' 'x86_64')
 url="http://www.amule.org"
 license=('GPL')
 conflicts=('amule')
-depends=('wxgtk' 'geoip' 'boost-libs')
+depends=('wxgtk2' 'geoip' 'boost-libs')
 makedepends=('crypto++' 'git' 'ccache' 'boost')
 source=("git://repo.or.cz/amule.git#tag=amule-svn-r$pkgver")
 md5sums=('SKIP')
