@@ -16,7 +16,7 @@ source=(
  "ftp://gcc.gnu.org/pub/gcc/releases/gcc-$_gccver/$_gccsrc.tar.bz2"
 )
 sha512sums=(
- '234dd9b1bdc9a9c6e352216a7ef4ccadc6c07f156006a59759c5e0e6a69f0abcdc14630eff11e3826dd6ba5933a8faa43043f3d1d62df6bd5ab1e82862f9bf78'
+ 'b5d952be9a10f0e0926bb2868877d10544039d6d2f35ba0a08f51231dd622a007650764a03e173194701467547789ad7d2d9cbc10adcdf118d619cdedbd14aec'
 )
 arch=(
  'i686'
