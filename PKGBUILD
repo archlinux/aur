@@ -4,13 +4,14 @@
 # PKGBUILD reference: https://wiki.archlinux.org/index.php/PKGBUILD
 
 pkgname=bash-it-git
-pkgver=master
+pkgver=r1716.64abb64
 pkgrel=1
 pkgdesc='A community Bash framework'
 arch=('any')
 url='https://github.com/Bash-it/bash-it'
 license=('custom:undecided')
 depends=('bash' 'coreutils' 'curl' 'p7zip')
+makedepends=('git')
 optdepends=(
   'autojump: plugin'
   'base-devel: `makefile` completion'
@@ -32,7 +33,7 @@ conflicts=('bash-it')
 options=('libtool' 'staticlibs' '!strip')
 install="${pkgname}.install"
 source=(
-  'https://github.com/Bash-it/bash-it/tarball/master'
+  "${pkgname}::git+https://github.com/Bash-it/bash-it.git"
   'LICENSE'
   'custom.lib.bash.shim'
   'install.sh.wrapper'
@@ -43,19 +44,11 @@ sha512sums=(
   'SKIP'
   'SKIP'
 )
-noextract=("${pkgname}.tar.gz")
 
-prepare() {
-  mv "${srcdir}/master"{,.tar.gz}
-
-  tar -x \
-    -f "${srcdir}/master.tar.gz" -z \
-    --no-anchored --wildcards -C "${srcdir}" \
-    --exclude='test' \
-    --strip-components=1 \
-    '.editorconfig' 'aliases' 'completion' 'custom' \
-    'lib' 'plugins' 'template' 'themes' \
-    'CONTRIBUTING.md' 'README.md' '*.sh'
+pkgver() {
+  printf "r%s.%s" \
+    "$(git -C "${pkgname}" rev-list --count HEAD)" \
+    "$(git -C "${pkgname}" rev-parse --short HEAD)"
 }
 
 package() {
@@ -70,9 +63,9 @@ package() {
     "${srcdir}/LICENSE"
 
   cp -r --preserve=mode -t "${pkgdir}/usr/lib/${pkgname}" \
-    "${srcdir}"/{bash_it,install,uninstall}.sh \
-    "${srcdir}"/{aliases,completion,custom,lib} \
-    "${srcdir}"/{plugins,themes}
+    "${srcdir}/${pkgname}"/{bash_it,install,uninstall}.sh \
+    "${srcdir}/${pkgname}"/{aliases,completion,custom,lib} \
+    "${srcdir}/${pkgname}"/{plugins,themes}
 
   # Copy warning shim to `lib/custom.bash`
   cp --preserve=mode \
@@ -81,9 +74,9 @@ package() {
 
   # `.editorconfig` is not meant to be user-editable
   cp -r --preserve=mode -t "${pkgdir}/usr/share/${pkgname}" \
-    "${srcdir}/.editorconfig" \
-    "${srcdir}/install.sh" \
-    "${srcdir}/template"
+    "${srcdir}/${pkgname}/.editorconfig" \
+    "${srcdir}/${pkgname}/install.sh" \
+    "${srcdir}/${pkgname}/template"
 
   # Copy wrapper for `install.sh`
   cp --preserve=mode \
@@ -91,7 +84,7 @@ package() {
     "${pkgdir}/usr/share/${pkgname}/install.sh"
 
   cp --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    "${srcdir}"/*.md
+    "${srcdir}/${pkgname}"/*.md
 
   # This is where things get a little tricky.
   # 
