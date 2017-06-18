@@ -1,4 +1,4 @@
-pkgbase = mopidy-deezer-git
+pkgbase = mopidy-deezer
 	pkgdesc = Mopidy extension for playing music from Deezer
 	pkgver = r26.0c7f543
 	pkgrel = 1
