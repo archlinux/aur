@@ -61,10 +61,10 @@ package() {
 
   # install pkg-config files
   cd ..
-  make pc_c
-  make pc_c_unsecure
-  make pc_cxx
-  make pc_cxx_unsecure
+  make pc_c prefix=/usr
+  make pc_c_unsecure prefix=/usr
+  make pc_cxx prefix=/usr
+  make pc_cxx_unsecure prefix=/usr
   cd -
   mkdir -p "$pkgdir"/usr/lib/pkgconfig
   install -Dm644 ../libs/opt/pkgconfig/grpc.pc "$pkgdir"/usr/lib/pkgconfig
