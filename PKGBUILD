@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=svgcleaner-git
-pkgver=0.9.1.#also.updatein.cli.rs390.
+pkgver=0.9.1.393
 pkgrel=1
 pkgdesc="Program for reducing size of svg images without loss"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ _gitname="SVGCleaner"
 
 pkgver() {
   cd "$srcdir"/"$_gitname"
-  printf "%s.%s" $(awk -F= '/version/ {print $2}' Cargo.toml|head -1|tr -d \") $(git rev-list --count HEAD)
+  printf "%s.%s" $(awk -F# '/version/ {print $1}' Cargo.toml|head -1|tr -d \"|cut -c10-) $(git rev-list --count HEAD)
 }
 
 build() {
