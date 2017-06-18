@@ -4,7 +4,7 @@
 # Contributor: J. Santiago Hirschfeld <jsantiagoh@yahoo.com.ar>
 
 pkgname=qalculate-gtk-nognome
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="GTK+ frontend for libqalculate, without gnome dependencies"
 arch=('i686' 'x86_64')
@@ -28,5 +28,5 @@ package() {
   make DESTDIR="${pkgdir}" install || return 1
 }
 
-md5sums=('3f81a7fcba203797185c3f0cb7b201c4')
-sha1sums=('d3d5861d6317f1c05fb6b3d67ae7149f15bd7533')
+md5sums=('61065bd9e18e2ee4f48571de7ac7d2f4')
+sha1sums=('e5a0e1aa68cf77260d78becc93ab95970dca9434')
