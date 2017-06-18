@@ -1,6 +1,6 @@
 pkgbase = apt-mirror
 	pkgdesc = APT sources mirroring tool
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://apt-mirror.github.io/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = apt-mirror
 	depends = perl
 	backup = etc/apt/mirror.list
 	backup = etc/apt/mirror_jessie.list
-	source = http://ftp.de.debian.org/debian/pool/main/a/apt-mirror/apt-mirror_0.5.3.orig.tar.xz
-	md5sums = 628005f93529ee1f4cf61741a7187b1d
+	source = http://ftp.de.debian.org/debian/pool/main/a/apt-mirror/apt-mirror_0.5.4.orig.tar.xz
+	md5sums = 3935851c7822f671b8ce7fd694bc9282
 
 pkgname = apt-mirror
 
