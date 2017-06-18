@@ -1,0 +1,17 @@
+pkgbase = python2-cllist
+	pkgdesc = C-implemented linked-list module for Python
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://github.com/kata198/python-cllist
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python2
+	depends = python2-setuptools
+	depends = python2
+	source = https://github.com/kata198/python-cllist/archive/1.1.0.tar.gz
+	sha512sums = 922ba867748fe9eeabfb37b159e63c9fb3ba6f67476e80d5c2a2a0e009d795693b6d9d55afe705d637eb4caa79648edd8e54e1ea6bf26748ac4598ca0beb0ee2
+
+pkgname = python2-cllist
+
