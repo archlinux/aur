@@ -3,12 +3,13 @@
 pkgname=sbt-latest
 _pkgname=${pkgname%-*}
 pkgver=0.13.15
-pkgrel=3
+pkgrel=4
 pkgdesc='A build tool for Scala, Java, and more'
 arch=('any')
 url='http://www.scala-sbt.org/'
 license=('BSD')
-depends=('sh' 'rsync')
+depends=('rsync'
+         'sh')
 conflicts=('sbt')
 source=("https://dl.bintray.com/${_pkgname}/native-packages/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tgz"
         "https://raw.githubusercontent.com/${_pkgname}/${_pkgname}/v${pkgver}/LICENSE")

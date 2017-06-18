@@ -1,12 +1,12 @@
 pkgbase = sbt-latest
 	pkgdesc = A build tool for Scala, Java, and more
 	pkgver = 0.13.15
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.scala-sbt.org/
 	arch = any
 	license = BSD
-	depends = sh
 	depends = rsync
+	depends = sh
 	conflicts = sbt
 	source = https://dl.bintray.com/sbt/native-packages/sbt/0.13.15/sbt-0.13.15.tgz
 	source = https://raw.githubusercontent.com/sbt/sbt/v0.13.15/LICENSE
