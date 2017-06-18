@@ -1,4 +1,5 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Sebastian Stammler <stammler.s@gmail.com>
 # Contributor: Sarkasper <echo a2FzcGVyLm1lbnRlbkBnbXguY29tCg== | base64 -d>
@@ -7,7 +8,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=20170324
+pkgver=20170614
 pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
@@ -47,6 +48,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-inconsolata'
            'ttf-kimberly_geswein_print'
            'ttf-lato'
+           'ttf-lora-cyrillic'
            'ttf-lekton'
            'ttf-medievalsharp'
            'ttf-merriweather'
