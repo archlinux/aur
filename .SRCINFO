@@ -1,0 +1,18 @@
+pkgbase = steamfootbridge-git
+	pkgdesc = Allows running Steam applications in WINE, while using the native Steam client.
+	pkgver = r25.eb908b4
+	pkgrel = 1
+	url = https://github.com/sirnuke/steamfootbridge
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-steamodd
+	provides = steamfootbridge
+	conflicts = steamfootbridge
+	replaces = steambridge
+	source = git+https://github.com/sirnuke/steamfootbridge.git
+	sha256sums = SKIP
+
+pkgname = steamfootbridge-git
+
