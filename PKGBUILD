@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r25
+pkgver=r26
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -22,20 +22,17 @@ depends=('vapoursynth'
          'vapoursynth-plugin-f3kdb'
          'vapoursynth-plugin-fluxsmooth'
          'vapoursynth-plugin-fmtconv'
-         'vapoursynth-plugin-genericfilters-git'
          'vapoursynth-plugin-knlmeanscl'
          'vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-nnedi3_resample-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-sangnom-hg'
-         'vapoursynth-plugin-scenechange'
-         'vapoursynth-plugin-temporalsoften-git'
          'vapoursynth-plugin-svpflow1'
          'vapoursynth-plugin-svpflow2-bin'
          )
 makedepends=('git')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
-sha256sums=('aac44a9e667d5458bdbbc7b81ebfc3bf201518da380090591d251b051b58f818')
+sha256sums=('620ff5dc890012f742f1d5e5e1241a730db7cb28f5a584978929bac349c62029')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
