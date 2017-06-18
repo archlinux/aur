@@ -1,6 +1,6 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
@@ -12,7 +12,7 @@ makedepends=('go' 'ruby')
 options=('!emptydirs')
 source=("https://github.com/ValeLint/${pkgname}/archive/${pkgver}.zip"
         'enable_local_build.patch')
-sha256sums=('82b731653f040c3b7a6c5ef01c596f13e10b43b2ecc689c8d4e010b252934ee6'
+sha256sums=('3240324686cd4efb8a2e68dde67c2e68d891fa26a2afdf74fa0cf46d986d7242'
             '03be0c5d6b4e4c70346c8da348f5d8a51daffdc203f1f1d022a890da4d34e9f4')
 
 prepare() {
