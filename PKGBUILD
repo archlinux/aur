@@ -5,7 +5,7 @@
 
 pkgname=nwn-gog
 pkgver=2.1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Neverwinter Nigts is an RPG from Bioware. This requires the GOG version."
 url="http://nwn.bioware.com"
 license=('custom')
