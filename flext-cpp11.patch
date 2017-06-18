@@ -1,8 +1,33 @@
 diff --git a/source/flsupport.h b/source/flsupport.h
-index e6a7678..ebf7409 100644
+index e6a7678..b016264 100644
 --- a/source/flsupport.h
 +++ b/source/flsupport.h
-@@ -118,7 +118,10 @@ public:
+@@ -63,9 +63,11 @@ public:
+ #ifdef FLEXT_USE_CMEM
+     inline void *operator new(size_t bytes) { return ::operator new(bytes); }
+     inline void operator delete(void *blk) { ::operator delete(blk); }
++    inline void operator delete(void *blk, size_t) { ::operator delete(blk); }
+ 
+     inline void *operator new[](size_t bytes) { return ::operator new[](bytes); }
+     inline void operator delete[](void *blk) { ::operator delete[](blk); }
++    inline void operator delete[](void *blk, size_t) { ::operator delete[](blk); }
+ 
+     static bool MemCheck(void *) { return true; }
+ #else
+@@ -76,10 +78,12 @@ public:
+     void *operator new(size_t bytes);
+     //! Overloaded delete method
+     void operator delete(void *blk);
++    void operator delete(void *blk, size_t) { operator delete(blk); }
+ 
+ #ifndef __MRC__ // doesn't allow new[] overloading?!
+     inline void *operator new[](size_t bytes) { return operator new(bytes); }
+     inline void operator delete[](void *blk) { operator delete(blk); }
++    inline void operator delete[](void *blk, size_t) { operator delete(blk); }
+ #endif
+ 
+ #ifdef FLEXT_DEBUGMEM
+@@ -118,7 +122,10 @@ public:
  // MFC doesn't like global overloading of allocators
  // anyway, who likes MFC
  
@@ -14,3 +39,15 @@ index e6a7678..ebf7409 100644
  #define NEWTHROW throw(std::bad_alloc)
  #define DELTHROW throw()
  #else
+@@ -129,9 +136,11 @@ public:
+ // define global new/delete operators
+ inline void *operator new(size_t bytes) NEWTHROW { return flext_root::operator new(bytes); }
+ inline void operator delete(void *blk) DELTHROW { flext_root::operator delete(blk); }
++inline void operator delete(void *blk, size_t) DELTHROW { flext_root::operator delete(blk); }
+ #ifndef __MRC__ // doesn't allow new[] overloading?!
+ inline void *operator new[](size_t bytes) NEWTHROW { return flext_root::operator new[](bytes); }
+ inline void operator delete[](void *blk) DELTHROW { flext_root::operator delete[](blk); }
++inline void operator delete[](void *blk, size_t) DELTHROW { flext_root::operator delete[](blk); }
+ #endif
+ 
+ #endif // FLEXT_USE_CMEM
