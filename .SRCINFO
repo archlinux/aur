@@ -1,7 +1,7 @@
 pkgbase = sbt-latest
 	pkgdesc = A build tool for Scala, Java, and more
 	pkgver = 0.13.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.scala-sbt.org/
 	arch = any
 	license = BSD

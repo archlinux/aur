@@ -3,7 +3,7 @@
 pkgname=sbt-latest
 _pkgname=${pkgname%-*}
 pkgver=0.13.15
-pkgrel=2
+pkgrel=3
 pkgdesc='A build tool for Scala, Java, and more'
 arch=('any')
 url='http://www.scala-sbt.org/'
