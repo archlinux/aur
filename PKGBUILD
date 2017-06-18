@@ -1,6 +1,6 @@
 # Maintainer: KeyboardFire <andy@keyboardfire.com>
 pkgname=tm-git
-pkgver=r5.e0196c7
+pkgver=r6.68d8086
 pkgrel=1
 pkgdesc='a text-based stopwatch/countdown timer tool'
 arch=('any')

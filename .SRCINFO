@@ -1,6 +1,6 @@
 pkgbase = tm-git
 	pkgdesc = a text-based stopwatch/countdown timer tool
-	pkgver = r5.e0196c7
+	pkgver = r6.68d8086
 	pkgrel = 1
 	url = http://github.com/KeyboardFire/tm
 	arch = any
