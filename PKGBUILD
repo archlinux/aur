@@ -28,12 +28,14 @@ build() {
 
 package_python-rosdep() {
     depends+=('python' 'python-catkin_pkg' 'python-rosdistro' 'python-rospkg' 'python-yaml')
+    conflicts=('python2-rosdep')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-rosdep() {
     depends+=('python2' 'python2-catkin_pkg' 'python2-rosdistro' 'python2-rospkg' 'python2-yaml')
+    conflicts=('python-rosdep')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
