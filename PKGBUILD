@@ -143,6 +143,9 @@ package()
     install -D -m 644 $srcdir/game/docs/HotUreadme.txt $pkgdir/usr/share/licenses/$pkgname/HOTU_LICENSE.txt
     install -D -m 644 $srcdir/game/docs/SoUreadme.txt $pkgdir/usr/share/licenses/$pkgname/SOU_LICENSE.txt
 
+    # Install .desktop file
+    install -D -m 644 $srcdir/nwn.desktop $pkgdir/usr/share/applications/nwn.desktop
+
     # Install launcher
     install -D -m 755 $srcdir/nwn.launcher $pkgdir/opt/nwn/nwn.sh
     install -D -m 755 $srcdir/nwn.launcher $pkgdir/usr/bin/nwn
