@@ -6,6 +6,7 @@ pkgbase = sbt-latest
 	arch = any
 	license = BSD
 	depends = sh
+	depends = rsync
 	conflicts = sbt
 	source = https://dl.bintray.com/sbt/native-packages/sbt/0.13.15/sbt-0.13.15.tgz
 	source = https://raw.githubusercontent.com/sbt/sbt/v0.13.15/LICENSE
