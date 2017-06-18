@@ -22,6 +22,7 @@ depends=('zlib')
 # removed ada, don't know where to get ada-multilib
 makedepends=('binutils>=2.28' 'libmpc' 'doxygen')
 makedepends+=('lib32-glibc>=2.25')
+
 makedepends+=('git')
 checkdepends=('dejagnu' 'inetutils')
 provides=("gcc${_pkgver//\./}") # no version as it is completely contained in the name
@@ -30,12 +31,13 @@ options=('!emptydirs' '!strip')
 source=(
   #"git+https://gcc.gnu.org/git/gcc.git#commit=${_commit}"
   #"gcc-${pkgver%%_*}.tgz::https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz"
-  "http://mirrors.concertpass.com/gcc/snapshots/LATEST-6/gcc-${_snapshot}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
+  "http://mirrors.concertpass.com/gcc|snapshots/LATEST-6/gcc-${_snapshot}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
 sha256sums=('ec36462b9a8388accca91ffae190eb696e5fade4a5e1c573be349448ee4b31ac'
             '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb')
-PKGEXT='.pkg.tar.gz'
+
+PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -44,6 +46,65 @@ else
 fi
 
 #_libdir="usr/lib/gcc/${CHOST:-}/${pkgver%%_*}"
+
+# https://gcc.gnu.org/mirrors.html
+_setmirror() {
+  local _cmd="${BASH_SOURCE[*]}" # want * not @
+  local _lang="${LANG:-}" # mksrcinfo removes LANG
+  if [ "${_cmd/makepkg/}" != "${_cmd}" ] && [ ! -z "${_lang}" ]; then
+    local _mirrors=()
+    _lang="${_lang%%\.*}"
+    _lang="${_lang##*_}"
+    case "${_lang}" in
+    'CA') _mirrors+=(
+      'http://gcc.parentingamerica.com/'
+      'http://gcc.skazkaforyou.com/'
+      'http://ca.mirror.babylon.network/gcc/'
+      );;
+    'FR') _mirrors+=(
+      # 'ftp://ftp.lip6.fr/pub/gcc/' # no snapshots
+      'ftp://ftp.irisa.fr/pub/mirrors/gcc.gnu.org/gcc/'
+      'http://fr.mirror.babylon.network/gcc/'
+      'ftp://ftp.uvsq.fr/pub/gcc/'
+      );;
+    'DE') _mirrors+=(
+      'ftp://ftp.fu-berlin.de/unix/languages/gcc/'
+      'http://www.bothelp.net/mirrors/gcc/'
+      'ftp://ftp.gwdg.de/pub/misc/gcc/'
+      'ftp://ftp.mpi-sb.mpg.de/pub/gnu/mirror/gcc.gnu.org/pub/gcc/'
+      #'http://gcc.cybermirror.org/' # Maintenance
+      );;
+    'GR') _mirrors+=('ftp://ftp.ntua.gr/pub/gnu/gcc/');;
+    'HU') _mirrors+=('http://robotlab.itk.ppke.hu/gcc/');;
+    'JP') _mirrors+=('http://ftp.tsukuba.wide.ad.jp/software/gcc/');;
+    'NL') _mirrors+=(
+      'http://nl.mirror.babylon.network/gcc/'
+      'ftp://ftp.nluug.nl/mirror/languages/gcc/'
+      );;
+    #'SL') _mirrors+=('http://gcc.fyxm.net/');; # invalid response, no files
+    'UK') _mirrors+=('ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/');;
+    'US') _mirrors+=(
+      'http://www.netgull.com/gcc/'
+      'http://mirrors-usa.go-parts.com/gcc/'
+      'http://mirrors.concertpass.com/gcc/'
+      );;
+    esac
+    local _mc="${#_mirrors[@]}"
+    if [ "${_mc}" -ne 0 ]; then
+      _mc=$((${RANDOM} % ${_mc}))
+      _mc="${_mirrors[${_mc}]%/}"
+      source[0]="${_mc}/${source[0]##*|}"
+      set +u
+      msg "Alternate mirror: ${_mc}"
+      set -u
+    fi
+  fi
+}
+if [ "${source[0]//|/}" != "${source[0]}" ]; then
+  _setmirror
+  source[0]="${source[0]//|/\/}"
+fi
+unset -f _setmirror
 
 prepare() {
   set -u
