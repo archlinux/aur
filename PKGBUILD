@@ -1,11 +1,11 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname="qotd-git"
-pkgver=0.10.6_1_g601e01e.601e01e
+pkgver=0.11.3.fdab195
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon. (git version)"
 arch=('any')
-url="https://gitlab.com/ammongit/${pkgname%-git}"
+url="https://github.com/ammongit/${pkgname%-git}"
 license=('GPL')
 depends=()
 makedepends=('git' 'gcc' 'ghostscript' 'gzip')
@@ -14,7 +14,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!zipman')
 install="$pkgname.install"
-source=("git+https://gitlab.com/ammongit/${pkgname%-git}.git")
+source=("git+https://github.com/ammongit/${pkgname%-git}.git")
 sha256sums=('SKIP')
 backup=('etc/qotd.conf')
 
