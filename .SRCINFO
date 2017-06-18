@@ -1,7 +1,7 @@
 pkgbase = gcc6
 	pkgdesc = The GNU Compiler Collection (6.x.x)
 	pkgver = 6.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64

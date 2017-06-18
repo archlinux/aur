@@ -8,7 +8,7 @@ pkgname=('gcc6')
 pkgver=6.3.1
 _pkgver=6
 _islver=0.16.1
-pkgrel=2
+pkgrel=3
 _commit=4fc407888a30c5d953816b05c8a8e98ec2ab3101
 pkgdesc="The GNU Compiler Collection (6.x.x)"
 arch=('i686' 'x86_64')
@@ -106,6 +106,7 @@ package()
   
   make -j1 DESTDIR=${pkgdir} install
   rm -rf ${pkgdir}/usr/share/{info,locale,man}
+  rm -rf ${pkgdir}/usr/include/libiberty
 
   [[ -d ${pkgdir}/usr/lib ]] && mv ${pkgdir}/usr/lib/lib* ${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/
   [[ -d ${pkgdir}/usr/lib/gcc/${CHOST}/lib/ ]] && mv ${pkgdir}/usr/lib/gcc/${CHOST}/lib/lib* ${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}
