@@ -4,11 +4,11 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.3.2
-pkgrel=1
-pkgdesc="Record, convert and stream audio and video (with all possible libs)"
+pkgrel=2
+pkgdesc='Record, convert and stream audio and video (with all possible libs)'
 arch=('i686' 'x86_64')
-url="http://www.ffmpeg.org/"
-license=('custom:nonfree and unredistributable')
+url='http://www.ffmpeg.org/'
+license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
@@ -55,20 +55,20 @@ build() {
     cd "${_srcname}-${pkgver}"
     
     # set x86_64 specific options
-    if [ "$CARCH" = "x86_64" ] 
+    if [ "$CARCH" = 'x86_64' ] 
     then
-        _cuda="--enable-cuda"
-        _cuvid="--enable-cuvid"
-        _libnpp="--enable-libnpp"
-        _cflags="--extra-cflags=-I/opt/cuda/include"
-        _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
+        _cuda='--enable-cuda'
+        _cuvid='--enable-cuvid'
+        _libnpp='--enable-libnpp'
+        _cflags='--extra-cflags=-I/opt/cuda/include'
+        _ldflags='--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64'
         
         # strictly specifying nvcc path is needed if package is installing
         # cuda for the first time
-        sed -i 's/^nvcc_default=.*/nvcc_default=\"\/opt\/cuda\/bin\/nvcc\"/' configure
+        sed -i 's@^nvcc_default=.*@&\"/opt/cuda/bin/nvcc\"@' configure
     fi
     
-    msg2 "Running ffmpeg configure script. Please wait..."
+    msg2 'Running ffmpeg configure script. Please wait...'
     
     ./configure \
         --prefix=/usr \
