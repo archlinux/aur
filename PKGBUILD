@@ -2,12 +2,15 @@
 
 pkgname=neomutt
 pkgver=20170609
-pkgrel=2
+pkgrel=3
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
-source=("https://github.com/neomutt/neomutt/archive/neomutt-$pkgver.tar.gz")
-md5sums=('9220411268cf2fa0498770e182f02d98')
+validpgpkeys=('86C2397270DD7A561263CA4E5FAF0A6EE7371805') # Richard Russon (flatcap) <rich@flatcap.org>
+source=("https://github.com/neomutt/neomutt/archive/$pkgname-$pkgver.tar.gz"
+        "https://github.com/neomutt/neomutt/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz.sig")
+md5sums=('9220411268cf2fa0498770e182f02d98'
+         'SKIP')
 arch=('i686' 'x86_64')
 depends=('openssl' 'gdbm' 'mime-types' 'libsasl' 'gnupg' 'gpgme' 'libidn' 'krb5' 'notmuch-runtime')
 optdepends=('urlview: for url menu')
