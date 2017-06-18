@@ -1,6 +1,6 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=apulse-git
-pkgver=0.1.7_r13_gf445ae7
+pkgver=0.1.10_r12_gee63fd3
 pkgrel=1
 pkgdesc="Pulseaudio emulation for ALSA"
 arch=('i686' 'x86_64')
@@ -8,6 +8,8 @@ url="http://github.com/i-rinat/apulse"
 license=('MIT')
 depends=('alsa-lib' 'glib2')
 makedepends=('cmake' 'git')
+provides=('apulse')
+conflicts=('apulse')
 source=(git+"https://github.com/i-rinat/apulse.git")
 md5sums=('SKIP')
 
