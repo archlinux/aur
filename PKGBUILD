@@ -1,85 +1,77 @@
-# Maintainer: Stephen Baker <baker dot stephen dot e at gmail dot com>
+# Maintainer: ubervison <vis0n at protonmail dot com>
+# Contributor: Stephen Baker <baker dot stephen dot e at gmail dot com>
 # Contributor: Slash <demodevil5[at]yahoo[dot]com>
 # Contributor: Adam Griffiths <adam_griffithsAATTdart.net.au>
 
 pkgname=nwn-gog
-pkgver=2.0.0.15
-pkgrel=4
-pkgdesc="Neverwinter Nights is an RPG from Bioware. This requires the GOG version."
-url="http://nwn.bioware.com/"
+pkgver=2.1.0.21
+pkgrel=1
+pkgdesc="Neverwinter Nigts is an RPG from Bioware. This requires the GOG version."
+url="http://nwn.bioware.com"
 license=('custom')
 arch=('i686' 'x86_64')
-if [ "$CARCH" = "x86_64" ]; then
-    depends=('binkplayer' 'elfutils' 'lib32-elfutils' 'lib32-libgl' 'lib32-glu' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'perl' 'lib32-sdl_mixer')
-else
-    depends=('binkplayer' 'elfutils' 'libgl' 'glu' 'libstdc++5' 'libxcursor' 'perl' 'sdl_mixer')
-fi
-makedepends=('git' 'icoutils' 'innoextract' 'p7zip' 'perl' 'unzip')
+depends=('binkplayer' 'perl' 'elfutils' 'icoutils')
+depends_x86_64=('lib32-elfutils' 'lib32-libgl' 'lib32-glu' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-sdl_mixer')
+depends_i686=('libgl' 'glu' 'libstdc++5' 'libxcursor' 'sdl_mixer')
+makedepends=('git' 'innoextract' 'p7zip' 'perl' 'unzip')
 optdepends=('xdg-utils: xdg .desktop file support')
 provides=('nwn')
 conflicts=('nwn')
 install=nwn.install
-source=("gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_${pkgver}.exe" \
-        "gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_${pkgver}-1.bin" \
-        "gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_${pkgver}-2.bin" \
+source=("gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_$pkgver.exe" \
+        "gog://neverwinter_nights_diamond_edition/setup_nwn_diamond_$pkgver-1.bin" \
         "gog://neverwinter_nights_diamond_edition/extras/nvn_KingmakerSetup.zip" \
-        "http://nwdownloads.bioware.com/neverwinternights/linux/gold/nwclientgold.tar.gz" \
-        "http://nwdownloads.bioware.com/neverwinternights/linux/161/nwclienthotu.tar.gz" \
-        "http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp2.tar.gz" \
+        "https://lutris.net/files/games/neverwinter-nights/nwclientgold.tar.gz" \
+        "https://lutris.net/files/games/neverwinter-nights/nwclienthotu.tar.gz" \
+        "https://lutris.net/files/games/neverwinter-nights/English_linuxclient169_xp2.tar.gz" \
+        "libz.patch" \
         "nwn.launcher" \
         "nwn.desktop" \
-        "git+https://github.com/nwnlinux/nwmouse.git#commit=6df8b96f" \
-        "git+https://github.com/nwnlinux/nwuser.git#commit=3fbbf546" \
-        "git+https://github.com/nwnlinux/nwlogger.git#commit=3bfa7aa5" \
-        "git+https://github.com/nwnlinux/nwmovies.git#commit=61fb3645")
-noextract=('nwclientgold.tar.gz' 'nwclienthotu.tar.gz' 'nwmovies-latest.tar.gz')
-md5sums=('e7d063a2c892519dc431fc84c3611a65'
-         '2b6bec0df8d2f1755876407069f6ae43'
-         'db2c1e75b087e43fa5895bcc70fca8b9'
+        "git+https://github.com/nwnlinux/nwmouse.git" \
+        "git+https://github.com/nwnlinux/nwuser.git" \
+        "git+https://github.com/nwnlinux/nwlogger.git" \
+        "git+https://github.com/nwnlinux/nwmovies.git")
+noextract=("nwclientgold.tar.gz" "nwclienthotu.tar.gz" "English_linuxclient169_xp2.tar.gz" "setup_nwn_diamond_$pkgver-1.bin")
+md5sums=('cd809b9d22022adb01b0d1d70c5afa8e'
+         'ce60bf104cc6082fe79d6f0bd7b48f51'
          '57be8c593db88db6b6ee78ba9201ec53'
          '0a059d55225fc32f905e86191d88a11f'
          '376cdece07106ea058d42b531f3146bb'
          'b021f0da3b3e00848521926716fdf487'
-         '7fd0497f55856edf50480b5acd3136d3'
-         '26c5f221589ba84af13039c805ac1210'
+         'd0a157cefe55daa9d06e9803ade22fdc'
+         '966641dc9bfd49ff56bf1dac9fe00c3c'
+         'bfae08cdce6f17a2a699fa6ec5492720'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
-PKGEXT='.pkg.tar'
 
 prepare()
 {
     # Extract gog setup
-    innoextract -e $srcdir/setup_nwn_diamond_2.0.0.15.exe -d $srcdir || return 1
+    innoextract -e $srcdir/setup_nwn_diamond_${pkgver}.exe -d $srcdir --gog || return 1
 
-    # Move the original cd key so it doesn't get overwritten
-    mv $srcdir/app/nwncdkey.ini $srcdir/nwncdkey.ini
-
-    # Extract Game Icons
+    # Extract game icons
     mkdir $srcdir/icons
-    icotool -x -p 0 $srcdir/app/gfw_high.ico -o $srcdir/icons
+    icotool -x -p 0 $srcdir/game/goggame-1207658890.ico -o $srcdir/icons
 
-    # Extract Kingmaker Files
-    7z x $srcdir/KingmakerSetup.exe -xr0\!*PLUGINSDIR* -xr\!*.exe -xr\!*.dat \
-        -o$srcdir/kingmakertmp/
-
-    # Patch nwmouse so it can find user.h
-    /bin/sed -i 's|linux/user.h|sys/user.h|1' $srcdir/nwmouse/nwmouse/nwmouse_cookie.c
-
-    # Patch nwlogger so it can find user.h
+    # Extract Kingmaker files
+    7z x $srcdir/KingmakerSetup.exe -xr'!$PLUGINSDIR' -xr'!*.exe' -xr'!*.dat' -o$srcdir/kingmakertmp/
+    
+    # Patch nwlogger so that it finds sys/user.h
     /bin/sed -i 's|linux/user.h|sys/user.h|1' $srcdir/nwlogger/nwlogger/nwlogger_cookie.c
+
+    # Patch nwmovies to link against zlib
+    cp libz.patch $srcdir/nwmovies/nwmovies
+    cd $srcdir/nwmovies/nwmovies
+    patch < libz.patch
 }
 
 build()
 {
-    # Compile nwmovies using the appropriate SDL library
+    # Compile mwmovies
     cd $srcdir/nwmovies
-    if [ "$CARCH" = "x86_64" ]; then
-        ./nwmovies_install.pl /usr/lib32/libSDL-1.2.so.0
-    else
-        ./nwmovies_install.pl /usr/lib/libSDL-1.2.so.0
-    fi
+    ./nwmovies_install.pl build
 
     # Compile nwuser
     cd $srcdir/nwuser
@@ -96,106 +88,73 @@ build()
 
 package()
 {
-    cd $srcdir/
+    cd $srcdir
 
-    # Create Destination Directory
+    # Create final directory
     install -d $pkgdir/opt/nwn
 
     # Move game files to directory
-    cp -R $srcdir/app/* $pkgdir/opt/nwn
+    cd game
+    mv -t $pkgdir/opt/nwn ambient data dmvault hak localvault modules movies music nwm texturepacks premium chitin.key dialog.tlk xp1.key xp2.key
 
-    # Extract Game Clients
-    tar -zxvf $srcdir/nwclientgold.tar.gz -C $pkgdir/opt/nwn/
-    tar -zxvf $srcdir/nwclienthotu.tar.gz -C $pkgdir/opt/nwn/
+    # Extract linux clients
+    tar zxfv $srcdir/nwclientgold.tar.gz --directory $pkgdir/opt/nwn
+    tar zxvf $srcdir/nwclienthotu.tar.gz --directory $pkgdir/opt/nwn
 
-    # Install Kingmaker Files
-    cp -r $srcdir/kingmakertmp/\$0/* \
-        $pkgdir/opt/nwn/
+    # Install Kingmaker files
+    mv -n $srcdir/kingmakertmp/\$0/* $pkgdir/opt/nwn
 
-    # Extract Latest Patch
-    tar -zxvf $srcdir/English_linuxclient169_xp2.tar.gz -C $pkgdir/opt/nwn
+    # Extract latest patch
+    tar zxvf $srcdir/English_linuxclient169_xp2.tar.gz --directory $pkgdir/opt/nwn
 
-    # Check the Installation
-    cd $pkgdir/opt/nwn/
+    # Check installation
+    cd $pkgdir/opt/nwn
     ./fixinstall
 
-    # Remove Unneeded Files & Directories
+    # Included SDL is old and buggy. Get rid of it.
     rm -r $pkgdir/opt/nwn/SDL-1.2.5/
 
-    # Install nwmovies binaries
-    install -D -m 755 -t $pkgdir/opt/nwn/ \
-        $srcdir/nwmovies/{nwmovies.so,nwmovies.pl}
-
-    # Install binkplayer binaries
-    install -D -m 755 $srcdir/nwmovies/nwmovies/binklib.so \
-        $pkgdir/opt/nwn/nwmovies/binklib.so
-
-    # Install libdis binaries
-    install -D -m 755 $srcdir/nwmovies/nwmovies/libdis/libdisasm.so \
-        $pkgdir/opt/nwn/nwmovies/libdis/libdisasm.so
-
-    # SymLink BinkPlayer to the NWN Directory so the Movie Launcher (nwmovies.pl) can find it
-    ln -s /usr/bin/binkplayer $pkgdir/opt/nwn/BinkPlayer
+    # Install nwmovies binaries 
+    install -D -m 755 $srcdir/nwmovies/nwmovies.so $pkgdir/opt/nwn/nwmovies.so
+    # Install libdis binaries 
+    install -D -m 755 $srcdir/nwmovies/nwmovies/libdis/libdisasm.so $pkgdir/opt/nwn/lib/libdisasm.so
 
     # Install nwuser binaries
-    install -D -m 755 $srcdir/nwuser/nwuser/nwuser.so \
-        $pkgdir/opt/nwn/nwuser.so
-
-    # Install 64bit binaries if Arch64
+    install -D -m 755 $srcdir/nwuser/nwuser/nwuser.so $pkgdir/opt/nwn/nwuser.so
     if [ "$CARCH" = "x86_64" ]; then
-        install -D -m 755 $srcdir/nwuser/nwuser/nwuser64.so \
-            $pkgdir/opt/nwn/nwuser64.so
+        install -D -m 755 $srcdir/nwuser/nwuser/nwuser64.so $pkgdir/opt/nwn/nwuser64.so
     fi
 
     # Install nwmouse binaries
-    install -D -m 755 $srcdir/nwmouse/nwmouse/nwmouse.so \
-        $pkgdir/opt/nwn/nwmouse.so
-
+    install -D -m 755 $srcdir/nwmouse/nwmouse/nwmouse.so $pkgdir/opt/nwn/nwmouse.so
     # Install libdis binaries
-    install -D -m 755 $srcdir/nwmouse/nwmouse/libdis/libdisasm.so \
-        $pkgdir/opt/nwn/nwmouse/libdis/libdisasm.so
+    install -D -m 755 $srcdir/nwmouse/nwmouse/libdis/libdisasm.so $pkgdir/opt/nwn/nwmouse/libdis/libdisasm.so
 
     # Install nwlogger binaries
-    install -D -m 755 $srcdir/nwlogger/nwlogger/nwlogger.so \
-        $pkgdir/opt/nwn/nwlogger.so
-
+    install -D -m 755 $srcdir/nwlogger/nwlogger/nwlogger.so $pkgdir/opt/nwn/nwlogger.so
     # Install libdis binaries
-    install -D -m 755 $srcdir/nwlogger/nwlogger/libdis/libdisasm.so \
-        $pkgdir/opt/nwn/nwlogger/libdis/libdisasm.so
+    install -D -m 755 $srcdir/nwlogger/nwlogger/libdis/libdisasm.so $pkgdir/opt/nwn/nwlogger/libdis/libdisasm.so
 
-    ###########################################################################
+    # Copy cdkey
+    cp $srcdir/support/app/nwncdkey.ini $pkgdir/opt/nwn
 
-    # Copy the original licence file
-    cp $srcdir/nwncdkey.ini $pkgdir/opt/nwn/nwncdkey.ini
+    # Copy custom license
+    install -D -m 644 $srcdir/game/docs/readme.txt $pkgdir/usr/share/licenses/$pkgname/PLATINUM_LICENSE.txt
+    install -D -m 644 $srcdir/game/docs/HotUreadme.txt $pkgdir/usr/share/licenses/$pkgname/HOTU_LICENSE.txt
+    install -D -m 644 $srcdir/game/docs/SoUreadme.txt $pkgdir/usr/share/licenses/$pkgname/SOU_LICENSE.txt
 
-    # Install Cursors
-    install -d $pkgdir/opt/nwn/nwmouse/cursors/
-    tar -zxvf $srcdir/nwmouse/nwmouse/cursors.tar.gz -C $pkgdir/opt/nwn/nwmouse/cursors/
+    # Install launcher
+    install -D -m 755 $srcdir/nwn.launcher $pkgdir/opt/nwn/nwn.sh
+    install -D -m 755 $srcdir/nwn.launcher $pkgdir/usr/bin/nwn
 
-    # Install Custom License
-    install -D -m 644 $srcdir/tmp/EULA.txt \
-        $pkgdir/usr/share/licenses/$pkgname/EULA.txt
+    # Install icons files
+    install -D -m 644 $srcdir/icons/goggame-1207658890_6_256x256x32.png $pkgdir/usr/share/icons/hicolor/256x256/app/nwn.png
+    install -D -m 644 $srcdir/icons/goggame-1207658890_7_48x48x32.png $pkgdir/usr/share/icons/hicolor/48x48/app/nwn.png
+    install -D -m 644 $srcdir/icons/goggame-1207658890_8_32x32x32.png $pkgdir/usr/share/icons/hicolor/32x32/app/nwn.png
+    install -D -m 644 $srcdir/icons/goggame-1207658890_9_16x16x32.png $pkgdir/usr/share/icons/hicolor/16x16/app/nwn.png
 
-    # Install Launcher (Client)
-    install -D -m 755 $srcdir/nwn.launcher \
-        $pkgdir/usr/bin/nwn
-
-    # Install Desktop File
-    install -D -m 644 $srcdir/nwn.desktop \
-        $pkgdir/usr/share/applications/nwn.desktop
-
-    # Install Icon Files
-    install -D -m 644 $srcdir/icons/gfw_high_6_256x256x32.png \
-        $pkgdir/usr/share/icons/hicolor/256x256/apps/nwn.png
-    install -D -m 644 $srcdir/icons/gfw_high_7_48x48x32.png \
-        $pkgdir/usr/share/icons/hicolor/48x48/apps/nwn.png
-    install -D -m 644 $srcdir/icons/gfw_high_8_32x32x32.png \
-        $pkgdir/usr/share/icons/hicolor/32x32/apps/nwn.png
-    install -D -m 644 $srcdir/icons/gfw_high_9_16x16x32.png \
-        $pkgdir/usr/share/icons/hicolor/16x16/apps/nwn.png
-
-    # Fix Whacky Permissions
-    chown -R root:root $pkgdir/
-    chmod -R o+r $pkgdir/
+    # Fix Permissions, just to be sure
+    chown -R root:root $pkgdir
+    chmod -R o+r $pkgdir
 }
 

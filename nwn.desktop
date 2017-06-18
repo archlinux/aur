@@ -1,12 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
-Name=Neverwinter Nights Diamond
-GenericName=Neverwinter Nights
-Comment=Play Neverwinter Nights Diamond
-Exec=/usr/bin/nwn
+Categories=Game;
+Comment=A Forgotten Realms CRPG
+Exec=~/usr/bin/nwn
 Icon=nwn
+Name=Neverwinter Nights
+NoDisplay=false
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Qt;KDE;GNOME;Application;Game;
-

@@ -1,0 +1,11 @@
+--- nwmovies_install.pl	2017-06-18 00:59:03.297013302 +0200
++++ patched.pl	2017-06-18 00:59:43.553680961 +0200
+@@ -59,7 +59,7 @@
+ 			 $gcc, $cflags, $x86_64, $ndir, $ndir, $ndir, $ndir );
+ do_exec($command); 
+ 
+-$command = sprintf("%s %s %s -Wall -shared -g -I/usr/include/libelf -I%s/libdis -o %s/nwmovies.so %s/nwmovies.c %s/nwmovies_lookup.c %s/nwmovies_cookie.c %s/nwmovies_player.c %s/nwmovies_link.S %s -ldl -Wl,-static -lelf -Wl,-Bdynamic", 
++$command = sprintf("%s %s %s -Wall -shared -g -I/usr/include/libelf -I%s/libdis -o %s/nwmovies.so %s/nwmovies.c %s/nwmovies_lookup.c %s/nwmovies_cookie.c %s/nwmovies_player.c %s/nwmovies_link.S %s -ldl -Wl,-static -lelf -Wl,-Bdynamic -lz", 
+ 			$gcc, $cflags, $x86_64,  $ndir, $ndir, $ndir, $ndir, $ndir, $ndir, $ndir, $ldflags ); 
+ do_exec($command); 
+ 
