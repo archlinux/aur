@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Python wrapper for the UnRAR DLL"
 arch=('i686' 'x86_64')
 url="https://github.com/kovidgoyal/${_pkgname}"
-license=('Apache')
+license=('BSD')
 depends=('libunrar')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"{,.asc})
@@ -30,6 +30,8 @@ package_python-unrardll() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-unrardll/LICENSE.txt"
 }
 
 package_python2-unrardll() {
@@ -37,4 +39,7 @@ package_python2-unrardll() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-unrardll/LICENSE.txt"
+
 }
