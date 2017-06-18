@@ -6,12 +6,12 @@ pkgname=sparkleshare
 _pkgname=SparkleShare
 pkgver=1.5
 _gitrev=325bc848afe460911d596eff1e09a4d39cd0b638
-pkgrel=3
+pkgrel=4
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
 url="http://sparkleshare.org/"
 license=('GPL3')
-depends=('webkit2-sharp' 'notify-sharp-3' 'curl' 'git' 'openssh')
+depends=('webkit2-sharp' 'notify-sharp-3' 'curl' 'git' 'openssh' 'gvfs')
 source=("$pkgname-$_gitrev.tar.gz::https://codeload.github.com/hbons/$pkgname/tar.gz/$_gitrev"
         fix-build.patch)
 sha256sums=('SKIP'
