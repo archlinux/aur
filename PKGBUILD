@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Record, convert and stream audio and video (with all possible libs)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
