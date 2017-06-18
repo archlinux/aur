@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=N.86504.gc557718bea
+pkgver=N.86510.g8a09325311
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -80,7 +80,7 @@ build() {
         
         # strictly specifying nvcc path is needed if package is installing
         # cuda for the first time
-        sed -i 's@^nvcc_default=.*@&\"/opt/cuda/bin/nvcc\"@' configure
+        sed -i 's@^nvcc_default=.*@nvcc_default=\"/opt/cuda/bin/nvcc\"@' configure
     fi
     
     msg2 'Running ffmpeg configure script. Please wait...'
