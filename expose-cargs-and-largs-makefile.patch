@@ -1,0 +1,36 @@
+--- a/Makefile
++++ b/Makefile
+@@ -67,6 +67,14 @@
+    LIBGPR_TYPES=static
+ endif
+ 
++ifneq ($(strip $(CFLAGS)),)
++   CARGS := -cargs $(CFLAGS)
++endif
++
++ifneq ($(strip $(LDFLAGS)),)
++   LARGS := -largs $(LDFLAGS)
++endif
++
+ # Used to pass extra options to GPRBUILD, like -d for instance
+ GPRBUILD_OPTIONS=
+ 
+@@ -136,15 +144,15 @@
+ 
+ libgpr.build.shared:
+ 	${BUILDER} -XLIBRARY_TYPE=relocatable \
+-		-XXMLADA_BUILD=relocatable $(GPR_GPR)
++		-XXMLADA_BUILD=relocatable $(GPR_GPR) $(CARGS) $(LARGS)
+ 
+ libgpr.build.static:
+ 	${BUILDER} -XLIBRARY_TYPE=static \
+-		-XXMLADA_BUILD=static $(GPR_GPR)
++		-XXMLADA_BUILD=static $(GPR_GPR) $(CARGS) $(LARGS)
+ 
+ libgpr.build.static-pic:
+ 	${BUILDER} -XLIBRARY_TYPE=static-pic \
+-		-XXMLADA_BUILD=static-pic $(GPR_GPR)
++		-XXMLADA_BUILD=static-pic $(GPR_GPR) $(CARGS) $(LARGS)
+ 
+ libgpr.install: libgpr.uninstall $(foreach t, $(LIBGPR_TYPES), libgpr.install.$(t))
+ 

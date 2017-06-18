@@ -1,0 +1,4 @@
+gprbuild
+pkg
+src
+*.pkg.tar.xz
