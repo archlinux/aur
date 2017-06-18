@@ -1,7 +1,7 @@
 pkgbase = drone-cli
 	pkgdesc = Drone CLI
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://docs.drone.io/cli-installation/
 	arch = any
 	license = Apache
