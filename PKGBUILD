@@ -1,8 +1,8 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=rtags
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='RTags is a client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
 url='https://github.com/Andersbakken/rtags'
@@ -22,9 +22,9 @@ sha256sums=('SKIP'
 
 prepare() {
   cd rtags
+  git checkout v${pkgver}
   git submodule init
   git submodule update
-  git checkout v${pkgver}
 }
 
 build() {
