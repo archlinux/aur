@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Record, convert and stream audio and video (with all possible libs)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -62,10 +62,6 @@ build() {
         _libnpp='--enable-libnpp'
         _cflags='--extra-cflags=-I/opt/cuda/include'
         _ldflags='--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64'
-        
-        # strictly specifying nvcc path is needed if package is installing
-        # cuda for the first time
-        sed -i 's@^nvcc_default=.*@&\"/opt/cuda/bin/nvcc\"@' configure
     fi
     
     msg2 'Running ffmpeg configure script. Please wait...'
