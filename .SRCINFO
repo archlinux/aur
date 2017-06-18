@@ -1,0 +1,20 @@
+pkgbase = mopidy-deezer-git
+	pkgdesc = Mopidy extension for playing music from Deezer
+	pkgver = r26.0c7f543
+	pkgrel = 1
+	url = https://github.com/rusty-dev/mopidy-deezer
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = mopidy
+	depends = python2-requests
+	depends = python2-eyed3
+	depends = python2-crypto
+	depends = python2-pykka
+	depends = python2-simplejson
+	source = mopidy-deezer::git+https://github.com/rusty-dev/mopidy-deezer.git
+	md5sums = SKIP
+
+pkgname = mopidy-deezer-git
+
