@@ -1,0 +1,17 @@
+pkgbase = python2-jsontocsv
+	pkgdesc = Extract data from json and convert to CSV
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://github.com/kata198/jsonToCsv
+	arch = any
+	license = LGPLv3
+	makedepends = python2-setuptools
+	makedepends = python2
+	depends = python2-setuptools
+	depends = python2
+	source = https://github.com/kata198/jsonToCsv/archive/1.0.1.tar.gz
+	sha512sums = 003671c2e50e7b45621494a5edb34171db829ee74f5471381fb3173cd546d35609eb38fa392315352f90da6b809fbdc1cc839b724a456335d60cb90c9598725a
+
+pkgname = python2-jsontocsv
+	pkgdesc = Python3 lib to extract data from json and convert to CSV
+
