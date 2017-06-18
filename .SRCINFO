@@ -1,7 +1,7 @@
 pkgbase = nwn-gog
 	pkgdesc = Neverwinter Nigts is an RPG from Bioware. This requires the GOG version.
 	pkgver = 2.1.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nwn.bioware.com
 	install = nwn.install
 	arch = i686
@@ -44,7 +44,7 @@ pkgbase = nwn-gog
 	md5sums = b021f0da3b3e00848521926716fdf487
 	md5sums = d0a157cefe55daa9d06e9803ade22fdc
 	md5sums = 966641dc9bfd49ff56bf1dac9fe00c3c
-	md5sums = bfae08cdce6f17a2a699fa6ec5492720
+	md5sums = 3a7fa617a2aa8d324bb4d57dcf84cf8c
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
