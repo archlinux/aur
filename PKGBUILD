@@ -1,6 +1,6 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
-pkgname=('python-jsontocsv' 'jsontocsv')
+pkgname=('jsontocsv' 'python-jsontocsv')
 _realName='jsonToCsv'
 pkgver=1.0.1
 pkgrel=1
