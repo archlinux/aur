@@ -1,0 +1,25 @@
+pkgbase = gprbuild-git
+	pkgdesc = Build system for multi-language systems
+	pkgver = r3152.ba7dba01
+	pkgrel = 1
+	url = https://github.com/AdaCore/gprbuild/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gprbuild-bootstrap-git
+	makedepends = libgpr
+	depends = libgpr
+	provides = gprbuild
+	provides = gprbuild-bootstrap-git
+	conflicts = gprbuild
+	conflicts = gprbuild-bootstrap-git
+	source = git+https://github.com/AdaCore/gprbuild.git
+	source = relocatable-build.patch
+	source = expose-cargs-and-largs-makefile.patch
+	sha1sums = SKIP
+	sha1sums = 4aaab0df8b611750d2cb35973ed28823fb233989
+	sha1sums = db88bcb65d1a5f41c5b30e0c3dea996c47c4f5b9
+
+pkgname = gprbuild-git
+

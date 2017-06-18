@@ -1,0 +1,28 @@
+diff --git a/Makefile b/Makefile
+index b591cb9a..4d711028 100644
+--- a/Makefile
++++ b/Makefile
+@@ -67,6 +67,14 @@ else
+    LIBGPR_TYPES=static
+ endif
+ 
++ifneq ($(strip $(CFLAGS)),)
++   CARGS := -cargs $(CFLAGS)
++endif
++
++ifneq ($(strip $(LDFLAGS)),)
++   LARGS := -largs $(LDFLAGS)
++endif
++
+ # Used to pass extra options to GPRBUILD, like -d for instance
+ GPRBUILD_OPTIONS=
+ 
+@@ -75,7 +83,7 @@ LIB_INSTALLER=gprinstall -p -f --target=$(TARGET) $(RBD) --prefix=${prefix}
+ CLEANER=gprclean -q $(RBD)
+ 
+ GPRBUILD_BUILDER=$(BUILDER) $(GPRBUILD_GPR) \
+-	-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable
++	-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable $(CARGS) $(LARGS)
+ LIBGPR_BUILDER=$(BUILDER) $(GPR_GPR)
+ LIBGPR_INSTALLER=$(LIB_INSTALLER) $(GPR_GPR) -XBUILD=${BUILD} \
+ 	--install-name=gpr --build-var=LIBRARY_TYPE $(GTARGET)
