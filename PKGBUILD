@@ -2,7 +2,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname=gst-plugins-bad-git
-pkgver=1.5.1.1.19128.1248b00
+pkgver=1.13.0.1.22504.25d2b8a60
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('mjpegtools' 'gst-plugins-base-git' 'curl' 'chromaprint' 'libmms' 'faad
 makedepends=('schroedinger' 'libexif' 'libdvdread' 'libvdpau' 'libmpeg2' 'gtk-doc' 'glu')
 options=(!libtool !emptydirs)
 
-source='git+git://anongit.freedesktop.org/gstreamer/gst-plugins-bad'
+source=('git+git://anongit.freedesktop.org/gstreamer/gst-plugins-bad')
 sha256sums=('SKIP')
 
 _gitname='gst-plugins-bad'
@@ -24,7 +24,7 @@ pkgver() {
   version=$(grep AC_INIT configure.ac | sed 's/AC_INIT(\[GStreamer Bad Plug-ins\],\[//' | sed 's/\],\[http:\/\/bugzilla.gnome.org\/enter_bug.cgi?product=GStreamer\],\[gst-plugins-bad\])//')
   hash=$(git log --pretty=format:'%h' -n 1)
   revision=$(git rev-list --count HEAD)
-  
+
   echo $version.$revision.$hash
 }
 
