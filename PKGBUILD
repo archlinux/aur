@@ -9,19 +9,19 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.85.1.r583.gdd1d4061bc
+pkgver=3.0.0.r30.g1829e698f5
 pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
-depends=('python2-dateutil' 'python2-cssutils' 'python2-mechanize' 'mtdev'
-         'podofo' 'poppler' 'libwmf' 'chmlib' 'python2-lxml' 'python2-regex'
-         'libusbx' 'python2-pillow' 'python2-dnspython' 'python2-msgpack'
-         'python2-pyqt5' 'python2-psutil' 'icu' 'libmtp' 'python2-dbus'
-         'python2-netifaces' 'python2-cssselect' 'python2-apsw' 'python2-dukpy'
-         'qt5-webkit' 'qt5-svg' 'python2-chardet' 'python2-pygments' 'optipng')
+depends=('chmlib' 'icu' 'libmtp' 'libusbx' 'libwmf' 'mtdev' 'optipng' 'podofo'
+         'poppler' 'python2-apsw' 'python2-chardet' 'python2-cssselect'
+         'python2-cssutils' 'python2-dateutil' 'python2-dbus' 'python2-dnspython'
+         'python2-dukpy' 'python2-lxml' 'python2-mechanize' 'python2-msgpack'
+         'python2-netifaces' 'python2-unrardll' 'python2-pillow' 'python2-psutil'
+         'python2-pygments' 'python2-pyqt5' 'python2-regex' 'qt5-svg' 'qt5-webkit')
 makedepends=('git' 'qt5-x11extras' 'xdg-utils' 'rapydscript-ng')
 optdepends=('ipython2: to use calibre-debug')
 provides=("${pkgname%-git}")
@@ -67,7 +67,7 @@ build() {
   LANG='en_US.UTF-8' python2 setup.py build
   LANG='en_US.UTF-8' python2 setup.py iso639
   LANG='en_US.UTF-8' python2 setup.py iso3166
-  LANG='en_US.UTF-8' python2 setup.py translations
+#  LANG='en_US.UTF-8' python2 setup.py translations
   LANG='en_US.UTF-8' python2 setup.py gui
   LANG='en_US.UTF-8' python2 setup.py resources
   # This tries to download new user-agent data, so pre-seed a
