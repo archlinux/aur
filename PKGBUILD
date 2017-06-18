@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=ion
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="The Ion Shell. Compatible with Redox and Linux."
 arch=("x86_64" "i686")
@@ -9,7 +9,7 @@ url="https://github.com/redox-os/ion"
 license=('MIT')
 makedepends=('cargo')
 source=("https://github.com/redox-os/ion/archive/$pkgver.tar.gz")
-sha512sums=('9f78ceab9fd0fa454582eede84f84914d72c37a75530a338ae6d5ac8f16c8cb136b353d9d9c4f8331c7a047e24ea368171875b86bb12c921a3660da2f76c0f40')
+sha512sums=('132edc4afc161789b0a4036413686c2f41cfc0880e91c85577297059a23643aade9749f217c0bc2cbd6467c13fa729cdd95800c90980f1c2c4eac06b196906a9')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
