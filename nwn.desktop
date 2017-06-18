@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Game;
 Comment=A Forgotten Realms CRPG
-Exec=~/usr/bin/nwn
+Exec=/usr/bin/nwn
 Icon=nwn
 Name=Neverwinter Nights
 NoDisplay=false
