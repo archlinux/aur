@@ -1,0 +1,25 @@
+pkgbase = python-unrardll
+	pkgdesc = Python wrapper for the UnRAR DLL
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/kovidgoyal/unrardll
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = libunrar
+	source = https://pypi.io/packages/source/u/unrardll/unrardll-0.1.3.tar.gz
+	source = https://pypi.io/packages/source/u/unrardll/unrardll-0.1.3.tar.gz.asc
+	validpgpkeys = 3CE1780F78DD88DF45194FD706BC317B515ACE7C
+	sha256sums = 5f214ab1ec24208c6ee353f2d836e536968d5379b7140129f04aa3a52bc56a5e
+	sha256sums = SKIP
+
+pkgname = python-unrardll
+	depends = libunrar
+	depends = python
+
+pkgname = python2-unrardll
+	depends = libunrar
+	depends = python2
+
