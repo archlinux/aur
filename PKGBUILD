@@ -2,12 +2,12 @@
 pkgname=python-hypergan
 _pkgname=hypergan
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A customizable generative adversarial network with good defaults. Build your own content generator."
 arch=('i686' 'x86_64')
 url="https://github.com/255BITS/HyperGAN"
 license=('MIT')
-depends=('python' 'python-flask' 'python-flask-cors' 'python-hyperchamber' 'python-tensorflow-gpu' 'python-scipy' 'python-pillow')
+depends=('python' 'python-flask' 'python-flask-cors' 'python-hyperchamber' 'python-tensorflow-cuda' 'python-scipy' 'python-pillow')
 optdepends=('gperftools: Increase memory performance')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/h/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
