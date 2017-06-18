@@ -4,7 +4,7 @@
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
 pkgver=3.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://cdn.cocos2d-x.org/"
@@ -61,6 +61,7 @@ source=(
 "ccShader_Position_uColor.vert.patch"
 "ccShader_UI_Gray.frag.patch"
 "CCPhysicsWorld.cpp.patch"
+"ProcessCpuTracker.cpp.patch"
 )
 sha256sums=(
 '36299ecc61d95bcb9cbfbaac4410be395aeb61c161b682e5576495b8e2a923f8'
@@ -111,6 +112,7 @@ sha256sums=(
 '5394b03f78a25d6736171c792b384b6abdb20e80647cbf5220c55729eb9a2650'
 'c4cb76c3d896e66391453173f30417f8646257c1d702ee5a3cb3e4980f3df000'
 '3e7d0bf050e877fd94f18589562fd5b5af6a170cc7d2a92b24274492ed4623cb'
+'fa7aa811f6cc248dbdb04eb876ecd8027e2ed52c4b4a4db664f1cfa5e46393eb'
 )
 
 
@@ -135,6 +137,9 @@ package() {
 
 	## Add CMake configuration flags to ease the configuratino of libcocos2d:
 	patch -s "$srcdir"/$_appname-$pkgver/templates/cpp-template-default/CMakeLists.txt CMakeLists.txt.patch
+
+	# Patch ProcessCpuTracker.cpp to fix NDK v15 issue:
+	patch -s "$srcdir"/$_appname-$pkgver/cocos/platform/android/jni/ProcessCpuTracker.cpp ProcessCpuTracker.cpp.patch
 
 	# POSSIBLE FUTURE TODO: There is a memory leak patch currently out for Labels. Stay tuned: https://github.com/cocos2d/cocos2d-x/pull/17670
 
