@@ -1,5 +1,4 @@
-pkg
-src
-*.gz
-*.tar.xz
-LICENSE
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO

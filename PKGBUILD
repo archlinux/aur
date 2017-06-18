@@ -1,21 +1,34 @@
-# Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
-# Maintainer: Christian Höppner <chris@mkaito.com>
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Contributor: Franklyn Tackitt <franklyn@tackitt.net>
+# Contributor: Christian Höppner <chris@mkaito.com>
+
 pkgname=drone-cli
-pkgver=0.5.0
-pkgrel=3
-pkgdesc='Drone.ci command line utility'
-arch=('x86_64')
-url='http://readme.drone.io/cli/'
-license=('Apache 2.0')
-depends=('docker')
-source=("http://downloads.drone.io/$pkgver/release/linux/amd64/drone.tar.gz"
-        'https://raw.githubusercontent.com/drone/drone-cli/master/LICENSE')
-sha256sums=('f6ea4355779da52dc96f573ffba850abedb598b4063a3764b4f573e8d46ce793'
-            'cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14')
+pkgver=0.7.0
+pkgrel=1
+pkgdesc='Drone CLI'
+arch=('any')
+url='http://docs.drone.io/cli-installation/'
+license=('Apache')
+makedepends=('go')
+source=("https://github.com/drone/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('456b315245aacc9586622a8b3873c880c34f68c1f6d86c5e000abc3da411e28f')
+
+build() {
+  export GOPATH="${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+  mkdir -p vendor/github.com/drone/drone-cli
+  ln -fsT "${srcdir}/${pkgname}-${pkgver}/drone/main.go" \
+    main.go
+  ln -fsT "${srcdir}/${pkgname}-${pkgver}/drone" \
+    vendor/github.com/drone/drone-cli/drone
+  ln -fsT vendor src
+  go build -ldflags "-X main.version=${pkgver}" -o drone-cli
+}
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin/"
-  mkdir -p "${pkgdir}/usr/share/licenses/drone/"
-  install -Dm755 drone ${pkgdir}/usr/bin/drone
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/drone/LICENSE
+  cd "${pkgname}-${pkgver}"
+  # binary
+  install -D -m755 drone-cli "${pkgdir}/usr/bin/drone-cli"
+  # doc files
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
