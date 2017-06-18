@@ -1,11 +1,12 @@
 pkgbase = perl-clipboard
 	pkgdesc = Perl clipboard module
 	pkgver = 0.13
-	pkgrel = 3
-	url = http://search.cpan.org/dist/Clipboard
+	pkgrel = 4
+	url = https://metacpan.org/release/Clipboard
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-install
 	depends = perl>=5.6.0
 	depends = xclip
 	options = !emptydirs
