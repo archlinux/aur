@@ -2,9 +2,9 @@
 
 pkgname=('poplines' 'python-poplines')
 _realName=popLines
+pkgdesc="Tools to pop/peek lines from the head/tail or known position within a given file, and output to stdout. Makes files into queues!"
 pkgver=2.1.1
-pkgrel=1
-pkgdesc=""
+pkgrel=2
 arch=('any')
 license=('GPLv2')
 url="http://github.com/kata198/popLines"
