@@ -1,0 +1,13 @@
+post_install() {
+  msg2 'Note: To enable bash-it, run: ~/.bash_it/install.sh'
+  ~/.bash_it/install.sh --help >&2
+}
+
+post_remove() {
+  msg2 'Note: To complete removal, restore your' \
+    'original `~/.bashrc` file from `~/.bashrc.bak`.'
+}
+
+post_upgrade() {
+  :
+}
