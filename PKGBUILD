@@ -5,49 +5,50 @@
 # compiled with CUDA (ffmpeg-full).
 # CUDA is x86_64 only and so it will not be available in i686 builds.
 
-# AUR dependencies
-# ----------------
-# i686: rsound sndio uchardet
-# x86_64: all from i686 and ffmpeg-full
-
 _srcname=mpv
 pkgname=mpv-full
 pkgver=0.25.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://mpv.io/'
 depends=(
-  'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
-  'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-  'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet' 'rsound' 'sndio'
+    # official repositories:
+        'lcms2' 'libgl' 'libxss' 'libxinerama' 'libxv' 'libxkbcommon' 'wayland'
+        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
+        'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet' 'rsound' 'sndio'
+    # AUR:
+        'uchardet' 'rsound' 'sndio'
 )
 depends_i686=(
-  'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
-  'libbluray' 'sdl2' 'openal' 'ffmpeg'
+    'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
+    'libbluray' 'sdl2' 'openal' 'ffmpeg'
 )
-depends_x86_64=('ffmpeg-full')
+depends_x86_64=(
+    # official repositories:
+        'ffmpeg-full'
+)
 optdepends=('youtube-dl: for video-sharing websites playback')
 makedepends=('mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
-source=("$_srcname-$pkgver.tar.gz::https://github.com/mpv-player/$_srcname/archive/v$pkgver.tar.gz")
+source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz")
 sha256sums=('07423ffad6921ec4da32f703cd7fbfb27012301dcb736ac8542ac8e6083b0bce')
 
 build() {
     cd "${_srcname}-${pkgver}"
     
     # Add CUDA to the build if architecture is x86_64
-    if [ "$CARCH" = "x86_64" ] 
+    if [ "$CARCH" = 'x86_64' ] 
     then
-        _cuda="--enable-cuda-hwaccel"
+        _cuda='--enable-cuda-hwaccel'
         else
-        _cuda="--disable-cuda-hwaccel"
+        _cuda='--disable-cuda-hwaccel'
     fi
     
-    msg2 "Running bootstrap. Please wait..."
+    msg2 'Running bootstrap. Please wait...'
     ./bootstrap.py
     
     ./waf configure \
