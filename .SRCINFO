@@ -1,7 +1,7 @@
 pkgbase = dartium
 	pkgdesc = Dartium is a special build of Chromium that includes the Dart VM
-	pkgver = 1.23.0
-	pkgrel = 2
+	pkgver = 1.24.1
+	pkgrel = 1
 	url = https://dartlang.org/
 	arch = x86_64
 	license = custom
@@ -9,8 +9,8 @@ pkgbase = dartium
 	options = !strip
 	source = LICENSE
 	sha256sums = 7a209dd1b94cabdb5ea9c6f9164b9546ffa5daaa671e7767d49510db055f5c51
-	source_x86_64 = dartium-1.23.0.zip::https://storage.googleapis.com/dart-archive/channels/stable/release/1.23.0/dartium/dartium-linux-x64-release.zip
-	sha256sums_x86_64 = 11b5ce6d36a981374bf6180407b6d9ee09754716108a4d4f59f5687068497817
+	source_x86_64 = dartium-1.24.1.zip::https://storage.googleapis.com/dart-archive/channels/stable/release/1.24.1/dartium/dartium-linux-x64-release.zip
+	sha256sums_x86_64 = c02174a211829dda6d82330c281d6dc634feeed1736176aef51617832cf826b6
 
 pkgname = dartium
 
