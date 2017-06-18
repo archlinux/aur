@@ -1,0 +1,16 @@
+pkgbase = goodtests
+	pkgdesc = A fast, parallel, featured python unit-testing framework
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://github.com/kata198/GoodTests
+	arch = any
+	license = LGPLv2
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-setuptools
+	depends = python
+	source = https://github.com/kata198/GoodTests/archive/2.1.1.tar.gz
+	sha512sums = 1c3fa63318d4395b7ab85d3a3c87ba34d1f3dab9d3854af4984074e14673c3b82d39a4d632ac46d1f36c136b835b05797a96a4f801f4b87f607ed1c5122c4af7
+
+pkgname = goodtests
+
