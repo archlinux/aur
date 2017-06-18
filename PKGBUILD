@@ -1,7 +1,7 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
 pkgname=python-cllist
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="C-implemented linked-list module for Python"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://github.com/kata198/python-cllist"
 makedepends=('python-setuptools' 'python')
 depends=('python-setuptools' 'python')
 source=("https://github.com/kata198/python-cllist/archive/${pkgver}.tar.gz")
-sha512sums=("0595dc5e24cb08f58b52977f62694ecbee25d9f8d9bce741cbb1c488508ca012bbf2c2c37e5d83b7d271264e01aacab1916fc585a92034c13f221d55d5ca9865")
+sha512sums=("922ba867748fe9eeabfb37b159e63c9fb3ba6f67476e80d5c2a2a0e009d795693b6d9d55afe705d637eb4caa79648edd8e54e1ea6bf26748ac4598ca0beb0ee2")
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"

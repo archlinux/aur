@@ -1,6 +1,6 @@
 pkgbase = python-cllist
 	pkgdesc = C-implemented linked-list module for Python
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://github.com/kata198/python-cllist
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = python-cllist
 	makedepends = python
 	depends = python-setuptools
 	depends = python
-	source = https://github.com/kata198/python-cllist/archive/1.0.2.tar.gz
-	sha512sums = 0595dc5e24cb08f58b52977f62694ecbee25d9f8d9bce741cbb1c488508ca012bbf2c2c37e5d83b7d271264e01aacab1916fc585a92034c13f221d55d5ca9865
+	source = https://github.com/kata198/python-cllist/archive/1.1.0.tar.gz
+	sha512sums = 922ba867748fe9eeabfb37b159e63c9fb3ba6f67476e80d5c2a2a0e009d795693b6d9d55afe705d637eb4caa79648edd8e54e1ea6bf26748ac4598ca0beb0ee2
 
 pkgname = python-cllist
 
