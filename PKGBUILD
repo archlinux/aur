@@ -3,12 +3,12 @@
 pkgname=sbt-latest
 _pkgname=${pkgname%-*}
 pkgver=0.13.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A build tool for Scala, Java, and more'
 arch=('any')
 url='http://www.scala-sbt.org/'
 license=('BSD')
-depends=('sh')
+depends=('sh', 'rsync')
 conflicts=('sbt')
 source=("https://dl.bintray.com/${_pkgname}/native-packages/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tgz"
         "https://raw.githubusercontent.com/${_pkgname}/${_pkgname}/v${pkgver}/LICENSE")
@@ -18,11 +18,10 @@ sha256sums=('b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef'
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  mkdir -p "${pkgdir}"/usr/share/${pkgname}/bin
-  install -m 644 bin/java9-rt-export.jar -t "${pkgdir}"/usr/share/${pkgname}/bin
-  install -m 644 bin/sbt-launch.jar -t "${pkgdir}"/usr/share/${pkgname}/bin
-  install -m 755 bin/sbt -t "${pkgdir}"/usr/share/${pkgname}/bin
-  install -m 755 bin/sbt-launch-lib.bash -t "${pkgdir}"/usr/share/${pkgname}/bin
+  install -D -m 644 bin/java9-rt-export.jar -t "${pkgdir}"/usr/share/${pkgname}/bin
+  install -D -m 644 bin/sbt-launch.jar -t "${pkgdir}"/usr/share/${pkgname}/bin
+  install -D -m 755 bin/sbt -t "${pkgdir}"/usr/share/${pkgname}/bin
+  install -D -m 755 bin/sbt-launch-lib.bash -t "${pkgdir}"/usr/share/${pkgname}/bin
   mkdir -p "${pkgdir}"/usr/bin
   ln -s /usr/share/${pkgname}/bin/java9-rt-export.jar "${pkgdir}"/usr/bin/java9-rt-export.jar
   ln -s /usr/share/${pkgname}/bin/sbt "${pkgdir}"/usr/bin/sbt
@@ -31,6 +30,8 @@ package() {
   install -D -m 644 conf/sbtopts -t "${pkgdir}"/usr/share/${pkgname}/conf
   mkdir "${pkgdir}"/etc
   ln -s /usr/share/${pkgname}/conf "${pkgdir}"/etc/${_pkgname}
+
+  cp -r lib "${pkgdir}"/usr/share/${pkgname}
 
   install -D "${srcdir}"/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
