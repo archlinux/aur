@@ -1,8 +1,8 @@
 pkgbase = vlc-qt5
-	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (Qt5 version)
-	pkgver = 2.2.4
+	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player (Qt5 version)
+	pkgver = 2.2.6
 	pkgrel = 1
-	url = http://www.videolan.org/vlc/
+	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
@@ -87,19 +87,15 @@ pkgbase = vlc-qt5
 	provides = vlc
 	conflicts = vlc
 	options = !emptydirs
-	backup = usr/share/vlc/lua/http/.hosts
-	backup = usr/share/vlc/lua/http/dialogs/.hosts
-	source = http://download.videolan.org/vlc/2.2.4/vlc-2.2.4.tar.xz
-	source = http://download.videolan.org/vlc/2.2.4/vlc-2.2.4.tar.xz.asc
+	source = https://download.videolan.org/vlc/2.2.6/vlc-2.2.6.tar.xz
+	source = https://download.videolan.org/vlc/2.2.6/vlc-2.2.6.tar.xz.asc
 	source = update-vlc-plugin-cache.hook
 	source = lua53_compat.patch
-	source = Fix-build-using-old-GCC-intrinsics.patch
 	validpgpkeys = 65F7C6B4206BD057A7EB73787180713BE58D1ADC
-	md5sums = 55666c9898f658c7fcca12725bf7dd1b
-	md5sums = SKIP
-	md5sums = 6449d0d26bd34bca009eed58a4c20c83
-	md5sums = 96d3b346d9149ffb1b430066dfb6249a
-	md5sums = 61c8cfdf29668aa1f4a607f6bec6dfa8
+	sha512sums = 9aff5922eb8b3c6a24e6153c367b0170dbc67602ae3e9304f52d2da00c9081d66cc98abd722b7c95b6c7d2e6cc7c86f21f9cba42c7d4bf29ca97d0f2d3553f8d
+	sha512sums = SKIP
+	sha512sums = d9e69a01eb8868647beac0f419328e6ca3fe14a2e2a9e6ce4b61ed590b41b0136fb3ac9e284b174a910c2fe8822d1b37445a48d0b7caea647060ebfabe899e7b
+	sha512sums = 33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f
 
 pkgname = vlc-qt5
 
