@@ -1,0 +1,24 @@
+pkgbase = netfetch
+	pkgdesc = Networked file storage and retrieval with optional password protection and compression using Redis
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = http://github.com/kata198/NetFetch
+	arch = any
+	license = GPLv2
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-setuptools
+	depends = python
+	depends = python-redis
+	depends = python-indexedredis
+	backup = etc/netfetch.cfg
+	source = https://github.com/kata198/NetFetch/archive/3.0.3.tar.gz
+	sha512sums = 4fa515a1fbf52965b99e08bd694b1010835be71bbf579eecefd5827cdfbb888744ad623d4f998b66e2a44561b0ce414de14b53375dfbfc19d332b8c2a2ff18e5
+
+pkgname = netfetch
+	depends = python-setuptools
+	depends = python
+	depends = python-netfetch
+
+pkgname = python-netfetch
+
