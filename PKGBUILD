@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r25.0.g7edb567
+pkgver=r26.0.g932d64a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
@@ -22,14 +22,11 @@ depends=('vapoursynth'
          'vapoursynth-plugin-f3kdb'
          'vapoursynth-plugin-fluxsmooth'
          'vapoursynth-plugin-fmtconv'
-         'vapoursynth-plugin-genericfilters-git'
          'vapoursynth-plugin-knlmeanscl'
          'vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-nnedi3_resample-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-sangnom-hg'
-         'vapoursynth-plugin-scenechange'
-         'vapoursynth-plugin-temporalsoften-git'
          'vapoursynth-plugin-svpflow1'
          'vapoursynth-plugin-svpflow2-bin'
          )
