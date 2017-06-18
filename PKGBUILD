@@ -2,7 +2,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname=gst-plugins-good-git
-pkgver=1.5.1.1.15187.dd72267
+pkgver=1.13.0.1.16696.0da5679c6
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Good Plugins"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('libpulse' 'jack' 'libsoup' 'gst-plugins-base-git' 'wavpack' 'aalib' 't
 makedepends=('gstreamer' 'speex' 'flac' 'libraw1394')
 options=(!libtool !emptydirs)
 
-source='git://anongit.freedesktop.org/gstreamer/gst-plugins-good'
+source=('git://anongit.freedesktop.org/gstreamer/gst-plugins-good')
 sha256sums=('SKIP')
 
 _gitname='gst-plugins-good'
@@ -24,7 +24,7 @@ pkgver() {
   version=$(grep AC_INIT configure.ac | sed 's/AC_INIT(\[GStreamer Good Plug-ins\],\[//' | sed 's/\],\[http:\/\/bugzilla.gnome.org\/enter_bug.cgi?product=GStreamer\],\[gst-plugins-good\])//')
   hash=$(git log --pretty=format:'%h' -n 1)
   revision=$(git rev-list --count HEAD)
-  
+
   echo $version.$revision.$hash
 }
 
