@@ -7,7 +7,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.25.0.r147.gaa690e3997
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -39,24 +39,24 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     local _version="$(git tag | sort -Vr | head -n1 | sed 's/^v//')"
-    local _revision="$(git rev-list v${_version}..HEAD --count)"
+    local _revision="$(git rev-list v"${_version}"..HEAD --count)"
     local _shorthash="$(git rev-parse --short HEAD)"
     
-    printf "%s.r%s.g%s" "$_version" "$_revision" "$_shorthash"
+    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
     cd "$pkgname"
     
     # Add CUDA to the build if architecture is x86_64
-    if [ "$CARCH" = "x86_64" ] 
+    if [ "$CARCH" = 'x86_64' ] 
     then
-        _cuda="--enable-cuda-hwaccel"
+        _cuda='--enable-cuda-hwaccel'
     else
-        _cuda="--disable-cuda-hwaccel"
+        _cuda='--disable-cuda-hwaccel'
     fi
     
-    msg2 "Running bootstrap. Please wait..."
+    msg2 'Running bootstrap. Please wait...'
     ./bootstrap.py
     
     ./waf configure \
