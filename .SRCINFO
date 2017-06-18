@@ -1,5 +1,5 @@
 pkgbase = linux-lts-ck
-	pkgver = 4.9.32
+	pkgver = 4.9.33
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = linux-lts-ck
 	options = !strip
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.32.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.32.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.33.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.33.sign
 	source = http://ck.kolivas.org/patches/4.0/4.9/4.9-ck1/patch-4.9-ck1.xz
 	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
 	source = config
@@ -25,7 +25,7 @@ pkgbase = linux-lts-ck
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a
 	sha256sums = SKIP
-	sha256sums = a8223d4c6ac3717c433d03ce9aa5b21bb74213a63d8b8960549105da189dbcac
+	sha256sums = 939006459d6bd9ac4374956353b795a746bd4a6b357eea1e349cd84638713ad2
 	sha256sums = SKIP
 	sha256sums = 5b9d8f4ef73f87e8595de66ccc38bad86e290fd9453bd536b9cc950f5344b82d
 	sha256sums = 0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66
@@ -43,12 +43,12 @@ pkgname = linux-lts-ck
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-lts-ck=4.9.32
+	provides = linux-lts-ck=4.9.33
 	backup = etc/mkinitcpio.d/linux-lts-ck.preset
 
 pkgname = linux-lts-ck-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts-ck kernel
 	depends = linux-lts-ck
-	provides = linux-lts-ck-headers=4.9.32
-	provides = linux-headers=4.9.32
+	provides = linux-lts-ck-headers=4.9.33
+	provides = linux-headers=4.9.33
 
