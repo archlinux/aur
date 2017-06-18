@@ -2,7 +2,7 @@
 
 pkgname=freedom
 pkgver=20170617.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This package conflicts with all non-free Arch packages, as defined by OSI."
 arch=('any')
 url="https://opensource.org/docs/definition.php"
