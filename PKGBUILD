@@ -2,7 +2,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname='gst-plugins-base-git'
-pkgver=1.5.1.1.14399.bd508a3
+pkgver=1.13.0.1.15990.7e94d2824
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ options=(!libtool !emptydirs)
 url="http://gstreamer.freedesktop.org/"
 
 conflicts=('gst-plugins-base' 'gst-plugins-base-libs')
-provides=('gst-plugins-base='$pkgver 'gst-plugins-base-libs='$pkgver) 
+provides=('gst-plugins-base='$pkgver 'gst-plugins-base-libs='$pkgver)
 
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
 depends=('gstreamer-git' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 'libvisual' 'libvorbis' 'libtheora' 'pango')
 
-source='git://anongit.freedesktop.org/gstreamer/gst-plugins-base'
+source=('git://anongit.freedesktop.org/gstreamer/gst-plugins-base')
 sha256sums=('SKIP')
 
 _gitname='gst-plugins-base'
@@ -27,7 +27,7 @@ pkgver() {
   version=$(grep AC_INIT configure.ac | sed 's/AC_INIT(\[GStreamer Base Plug-ins\],\[//' | sed 's/\],\[http:\/\/bugzilla.gnome.org\/enter_bug.cgi?product=GStreamer\],\[gst-plugins-base\])//')
   hash=$(git log --pretty=format:'%h' -n 1)
   revision=$(git rev-list --count HEAD)
-  
+
   echo $version.$revision.$hash
 }
 
