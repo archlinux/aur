@@ -6,6 +6,7 @@ url="https://github.com/rgerganov/footswitch"
 arch=('any')
 license=('GPL')
 makedepends=()
+depends=('hidapi')
 source=(git+https://github.com/rgerganov/footswitch)
 md5sums=(SKIP)
 
