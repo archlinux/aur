@@ -5,11 +5,6 @@
 # Previous Maintainer: Simon Tunnat <simon+aur@tunn.at>
 # Contributor: Bartlomiej Piotrowski <nospam@bpiotrowski.pl>
 
-# during times when two firefox-esr versions overlap, if environment variable 
-# $FIREFOX_ESR_BIN_PREFER_OLDER is set, the older version will be built.
-# e.g., on 2016.05.01 versions 38.8.0 and 45.1.0 were both simulaneously 
-# available/supported by mozilla.  
-
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
 pkgver=52.2.0
@@ -17,6 +12,8 @@ pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
 arch=('i686' 'x86_64')
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse 
+inetutils autoconf2.13 cargo)
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          libvpx libevent nss hunspell sqlite ttf-font icu)
 optdepends=('networkmanager: Location detection via available WiFi networks'
