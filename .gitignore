@@ -1,0 +1,5 @@
+gcc6-*.pkg.tar.xz
+pkg/
+src/
+isl-*.tar.bz2
+gcc/

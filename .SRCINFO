@@ -1,0 +1,30 @@
+pkgbase = gcc6
+	pkgdesc = The GNU Compiler Collection (6.x.x)
+	pkgver = 6.3.1
+	pkgrel = 2
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	makedepends = binutils>=2.28
+	makedepends = libmpc
+	makedepends = doxygen
+	makedepends = git
+	depends = glibc>=2.25
+	depends = binutils>=2.28
+	depends = libmpc
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = git+https://gcc.gnu.org/git/gcc.git#commit=4fc407888a30c5d953816b05c8a8e98ec2ab3101
+	source = http://isl.gforge.inria.fr/isl-0.16.1.tar.bz2
+	md5sums = SKIP
+	md5sums = ac1f25a0677912952718a51f5bc20f32
+
+pkgname = gcc6
+
