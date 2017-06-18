@@ -1,10 +1,10 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=telepad
 pkgver=1.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Telepad desktop application. This software communicates with the Telepad mobile application in order to use a mobile/tablet as a remote mouse and keyboard."
 arch=('x86_64' 'i686')
-url="https://archlinuxarm.org/wiki/Distcc_Cross-Compiling"
+url="http://www.telepad-app.com/en/"
 license=('custom')
 provides=('telepad' 'telepad-app')
 depends=('bluez-libs' 'libx11' 'libxext' 'libxtst' 'jre8-openjdk' 'classpath')

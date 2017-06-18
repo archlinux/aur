@@ -1,8 +1,8 @@
 pkgbase = telepad
 	pkgdesc = Telepad desktop application. This software communicates with the Telepad mobile application in order to use a mobile/tablet as a remote mouse and keyboard.
 	pkgver = 1.0.7
-	pkgrel = 3
-	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
+	pkgrel = 4
+	url = http://www.telepad-app.com/en/
 	arch = x86_64
 	arch = i686
 	license = custom
