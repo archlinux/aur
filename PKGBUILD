@@ -1,7 +1,7 @@
 # Maintainer: Martino Pilia <martino.pilia@gmail.com>
 _upstream_name=plasma-applet-ambientnoise
 pkgname=plasma5-applets-ambientnoise
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Plasmoid for ambient noise reproduction"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('anoise-media: noise files and icons'
 makedepends=('extra-cmake-modules'
              'git')
 source=(https://github.com/m-pilia/${_upstream_name}/archive/${pkgver}.tar.gz)
-sha512sums=('c7f86a9d0fe77bc7e9a6f333427f49ccf74766aa7cca5bab126ca05134b3e8de797a518f091db0fade706d96196f7de6449af14c3fd0ae27aeffb3663dc5d6fe')
+sha512sums=('f0ba6f97ac68a02af303b33533744cda2884459b47f26686df3fdc4394b99c35958c5e0d3ace04f21a471dcd0e0b832eb2aaf7f12adbf53f20525e42119711dc')
 
 prepare() {
   mkdir -p build
