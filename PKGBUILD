@@ -1,5 +1,6 @@
 # Maintainer: Bjoern Franke  <bjo@nord-west.org>
 
+_pkgbase=mopidy-deezer
 _pkgname=mopidy-deezer
 pkgname=${_pkgname}-git
 pkgver=r26.0c7f543
