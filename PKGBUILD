@@ -3,7 +3,7 @@ _pkgname=pcgen
 pkgname=${_pkgname}-git
 provides=(pcgen)
 pkgrel=1
-pkgver=6.07.00_SNAPSHOT.gd3540f8
+pkgver=6.07.03_snapshot.gead8271dd0
 conflicts=(pcgen)
 pkgdesc="An RPG Character Generator."
 arch=(any)
@@ -11,7 +11,7 @@ url=http://pcgen.org
 license=(LGPL2)
 depends=(sh java-runtime gtk-update-icon-cache desktop-file-utils shared-mime-info)
 makedepends=(git gradle java-environment)
-source=("${pkgname}"::'git+http://github.com/PCGen/pcgen.git'
+source=("${pkgname}"::'git+https://github.com/PCGen/pcgen.git'
         ${_pkgname}.xml
         ${_pkgname}.desktop
         ${_pkgname}.sh
@@ -40,8 +40,8 @@ package(){
   install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 config.ini "${pkgdir}/usr/share/java/pcgen/config.ini"
-  install -Dm644 ${pkgname}/pcgen.jar "${pkgdir}/usr/share/java/pcgen/pcgen.jar"
-  install -Dm644 ${pkgname}/pcgen-batch-convert.jar "${pkgdir}/usr/share/java/pcgen/pcgen-batch-convert.jar"
+  install -Dm644 ${pkgname}/output/pcgen.jar "${pkgdir}/usr/share/java/pcgen/pcgen.jar"
+  install -Dm644 ${pkgname}/output/pcgen-batch-convert.jar "${pkgdir}/usr/share/java/pcgen/pcgen-batch-convert.jar"
   install -Dm644 ${pkgname}/code/src/images/PCGenApp.png \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
   for dir in data docs libs outputsheets plugins preview system; do
