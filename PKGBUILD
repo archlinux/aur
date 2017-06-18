@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale-bin
 _pkgname=vale
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
