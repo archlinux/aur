@@ -10,7 +10,7 @@ url='https://developer.apple.com/fonts/'
 depends=('fontconfig' 'xorg-font-utils' 'cpio')
 makedepends=('xar')
 source=("https://developer.apple.com/fonts/downloads/SFPro.zip")
-sha256sums=('61d21ddba98b73f96f4c256aba92e490448f80c346e934245627cedbf8d3291f')
+sha256sums=('5c596d7d5d54fd309f973809edbc0297ac15979c2c40ebc380ae9397501306ed')
 
 package() {
   cd "$srcdir/SFPro"
