@@ -3,7 +3,7 @@
 # Contributors: Arkham, Christoph Zeiler, JD Steffen
 
 pkgname=eduke32-svn
-pkgver=r6110
+pkgver=r6191
 pkgrel=1
 pkgdesc="Advanced Duke Nukem 3D source port - svn version"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  make debug="$CFLAGS" CPLUSPLUS=0 SDL_TARGET=2 VC_REV=${pkgver/r}
+  make debug="$CFLAGS" SDL_TARGET=2 VC_REV=${pkgver/r}
 }
 
 package() {
