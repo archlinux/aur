@@ -48,8 +48,8 @@ E=O=F
     install -Dm755 bin/aerospike "${pkgdir}/usr/bin/aerospike"
     install -Dm755 bin/asd "${pkgdir}/usr/bin/asd"
 
-	sed -e "s|${srcdir}/init||g" -i etc/aerospike.conf
-	sed -e "s|/share/udf/lua|/usr/share/udf/lua|" -i etc/aerospike.conf
+    sed -e "s|${srcdir}/init||g" -i etc/aerospike.conf
+    sed -e "s|/share/udf/lua|/usr/share/udf/lua|" -i etc/aerospike.conf
     install -Dm644 etc/aerospike.conf "${pkgdir}/etc/aerospike.conf"
     cat << E=O=F > "${pkgdir}/etc/aerospike.rc"
 export AEROSPIKE_DAEMON=/usr/bin/asd
@@ -93,5 +93,8 @@ E=O=F
     install -Dm755 share/udf/lua/stream_ops.lua "${pkgdir}/usr/share/udf/lua/stream_ops.lua"
 
     # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
- 
+
+    # Systemd
+    install -m755 -d ${pkgdir}/usr/lib/systemd/system || return 1
+    install -m644  $startdir/aerospike.service ${pkgdir}/usr/lib/systemd/system || return 1
 }

@@ -1,0 +1,13 @@
+[Unit]
+Description=Aerospike Database
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/aerospike.pid
+ExecStart=/usr/bin/aerospike start
+ExecReload=/usr/bin/aerospike restart
+ExecStop=/usr/bin/aerospike stop
+
+[Install]
+WantedBy=multi-user.target
