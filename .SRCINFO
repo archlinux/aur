@@ -1,6 +1,6 @@
 pkgbase = traefik-bin
 	pkgdesc = A modern reverse proxy
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/containous/traefik
 	install = traefik.install
@@ -12,15 +12,15 @@ pkgbase = traefik-bin
 	source = traefik.logrotate
 	source = traefik.service
 	source = traefik.toml
-	source = https://raw.githubusercontent.com/containous/traefik/v1.3.0/LICENSE.md
+	source = https://raw.githubusercontent.com/containous/traefik/v1.3.1/LICENSE.md
 	sha512sums = d1dfacff1e7a5b9f8e8b4796fcfbb9c1bed6151013708078361ac31ae221dd956f746ec1e0bc5bd09a05763438d877318259577f6f0178d42f011bd737c31207
 	sha512sums = 1ba00b19f691e173eb1d69d2a3e1bcb95370025de49baf4f8024c30579cb58c6296ed743959f261b4ada6731f1c810ebe4eb0e3481e7eb17a9f09596fa004986
 	sha512sums = 05de0378cd4c430084c122dfcbb433c9cf8dda912dee03a5c80d1e199b133ecc0b32f6e8ae985544dca89355e21c23c8c4d04c05e1d0a72f5bf135db7fc724d2
 	sha512sums = 8ca3ccd49fccf47a67d6e80bd21ceec6a3968a9d3defd781862782cd4eb2a5763688fb028091548ed102c719267623f18f94fa532ee7a1673806246407e150e7
-	source_i686 = traefik_i686_1.3.0::https://github.com/containous/traefik/releases/download/v1.3.0/traefik_linux-386
-	sha512sums_i686 = 59b87baee3c01b1e859d357a5f11815c08e35d394faddd2101d203c76888e8a03fb8e50993a7e45cd612b7cc95fecd673811ebb0048661757d591f802629e51b
-	source_x86_64 = traefik_x86_64_1.3.0::https://github.com/containous/traefik/releases/download/v1.3.0/traefik_linux-amd64
-	sha512sums_x86_64 = 5731e9bdf2af4e7782352b068556370001c1693b843e4122fae765d14c430ec3dbeb4154dea7af0908771cd02bc41c4ff16801912934a3e4a4412e9128ba6244
+	source_i686 = traefik_i686_1.3.1::https://github.com/containous/traefik/releases/download/v1.3.1/traefik_linux-386
+	sha512sums_i686 = e7874f3b2aacd2a548b7f364c11bce00770daa51e6b594a397a9d77edcd848d4cb3951a9d619e2cfd5c39ae1ab431bc299447520969656a27aa6a80b8405be4b
+	source_x86_64 = traefik_x86_64_1.3.1::https://github.com/containous/traefik/releases/download/v1.3.1/traefik_linux-amd64
+	sha512sums_x86_64 = b522469a3759ce04cbce2c01871b307aeef0bb85bcfccabfa74260e226aa55cc99d41e224ba13e0a3cb81ec53d75b242c2dddd0c04718f30835a893cd17e4901
 
 pkgname = traefik-bin
 
