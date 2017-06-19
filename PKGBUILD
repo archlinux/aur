@@ -1,6 +1,6 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
-_pkgnamefmt=LibreOfficeDev
+_pkgnamefmt=LibreOffice
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
 _LOver=5.4.0.0.beta2
