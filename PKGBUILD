@@ -22,12 +22,19 @@ depends=('ca-certificates'
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}"::"git+https://github.com/zenhack/simp_le.git")
-md5sums=('SKIP')
+source=("${_pkgname}"::"git+https://github.com/zenhack/simp_le.git"
+        'acme_0.15.patch')
+md5sums=('SKIP'
+         '718c7d24821a24f92f7fa26401635f8c')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    patch -Np1 -i "${srcdir}/acme_0.15.patch"
 }
 
 package() {
