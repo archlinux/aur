@@ -3,7 +3,7 @@
 
 _pkgname=drupalconsole
 pkgname=${_pkgname}
-pkgver=1.0.0_rc19
+pkgver=1.0.0_rc20
 pkgrel=1
 pkgdesc="The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('php')
 makedepends=("php-box" "php-composer" "git")
 install="${_pkgname}.install"
 source=("${_pkgname}-${pkgver//_/-}"::"https://github.com/hechoendrupal/drupal-console-launcher/archive/${pkgver//_/-}.tar.gz")
-sha512sums=('8492b29b93209e8ce25606bae8b0065b9bcbe73bd8400955e4a52e5a9f45636aa3b8cf887756a17fb93607a42e456dc583abc0f71c24e803234968e10dfdabd5')
+sha512sums=('83b8e0279f438660581ebfcd3e6b870746c343dfd883d95b0727713e2ff2c948a10cd8b6369e4129d3dd5ef82381480902976746e28775dfacbce54da59d2aab')
 
 build() {
   cd "${srcdir}/drupal-console-launcher-${pkgver//_/-}"
