@@ -1,7 +1,7 @@
 # Maintainer: Jan Tojnar <jtojnar@gmail.com>
 _pkgname='hamster-lib'
 pkgname="python-${_pkgname}"
-pkgver='0.13.0'
+pkgver='0.13.1'
 pkgrel=1
 pkgdesc="A library for common timetracking functionality."
 url="https://github.com/projecthamster/hamster-lib"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://github.com/projecthamster/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7ad906861b7c87558ecfb79158b3f8b9b025aa32422b587ef5cc416871668763')
+sha256sums=('bb0c0a442ce7a753c54b13fa7f1b3d9e0eda2c77e380dba9274a71ae63ec634a')
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
