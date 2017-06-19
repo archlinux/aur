@@ -1,6 +1,6 @@
 pkgbase = robo
 	pkgdesc = Modern task runner for PHP.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = http://robo.li
 	arch = any
