@@ -2,7 +2,7 @@
 
 pkgname=emacs-epc
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An RPC stack for Emacs Lisp"
 url="https://github.com/kiwanami/emacs-epc"
 arch=('any')
