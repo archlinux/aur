@@ -1,5 +1,5 @@
 pkgname=reaper
-pkgver=5.50rc1
+pkgver=5.50rc2b
 pkgrel=1
 pkgdesc="digital audio workstation"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('git' 'gcc' 'make' 'lsb-release')
 source=("http://www.landoleet.org/dev/${pkgname}_${pkgver//.}_developer_linux_x86_64.tar.xz"
 	"git+http://www-dev.cockos.com/wdl/WDL.git"
 	"Reaper.desktop")
-md5sums=('db21a5a13949bf30079b1a895017c5ec'
+md5sums=('fe79ad7658074794e1bb58c8ad96e043'
          'SKIP'
          '1cb4c919a67431bd75c39e428959919c')
 
