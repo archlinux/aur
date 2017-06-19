@@ -1,6 +1,6 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=php-phalcon
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
@@ -15,7 +15,7 @@ source=(
 	"https://github.com/phalcon/cphalcon/archive/v$pkgver.zip"
 )
 
-sha256sums=('1c67b31b9ec767585933ecdd5bdd6f229d5ed2b5814361ebafcdc5bcb8866420')
+sha256sums=('1e253bc34e07145838548eee3e52cc9d60abc60fce191d662ac153771f587bd7')
 
 #get php version
 PHP_FULL_VERSION=`php-config --version`
