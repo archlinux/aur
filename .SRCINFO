@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-nvenc-manjaro
 	pkgdesc = Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration
 	pkgver = 3.3.2
-	pkgrel = 8
+	pkgrel = 9
 	epoch = 1
 	url = http://ffmpeg.org/
 	arch = x86_64
@@ -53,22 +53,22 @@ pkgbase = ffmpeg-nvenc-manjaro
 	depends = libx264
 	depends = x265
 	optdepends = ladspa: LADSPA filters
-	provides = libavcodec.so
+	provides = libavcodec.so=57-64
 	provides = libavdevice.so
 	provides = libavfilter.so
-	provides = libavformat.so
+	provides = libavformat.so=57-64
 	provides = libavresample.so
-	provides = libavutil.so
+	provides = libavutil.so=55-64
 	provides = libpostproc.so
 	provides = libswresample.so
-	provides = libswscale.so
+	provides = libswscale.so=4-64
 	provides = ffmpeg
 	provides = ffmpeg-nvenc
 	conflicts = ffmpeg
 	conflicts = ffmpeg-nvenc
 	conflicts = ffmpeg-full-nvenc
 	source = http://ffmpeg.org/releases/ffmpeg-3.3.2.tar.bz2
-	sha256sums = fcb2cd7b77fcb66a00abccd5a04e34342a02cab9f89626f28cf1abca715b6730
+	sha256sums = 216900d5c0af9017bb8f76b0ad23f0ac53cf7fc618cf04b40d989bd99b088e6a
 
 pkgname = ffmpeg-nvenc-manjaro
 
