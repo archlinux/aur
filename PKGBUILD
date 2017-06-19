@@ -1,7 +1,7 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=curl-git
-pkgver=7.54.1.29.g01811b674
+pkgver=7.54.1.49.g176ec5138
 pkgrel=1
 pkgdesc="A URL retrieval utility and library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://curl.haxx.se/"
 license=('MIT')
 depends=('zlib' 'libssh2' 'openssl' 'ca-certificates')
 makedepends=('git')
-provides=('curl=999')
+provides=("curl=$pkgver")
 conflicts=('curl')
 options=('!libtool')
 source=('git://github.com/curl/curl.git')
