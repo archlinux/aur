@@ -2,12 +2,12 @@
 # Tue Mar  7 00:15:53 UTC 2017
 pkgbase = otf-san-francisco
 	pkgdesc = The system font for macOS, iOS, watchOS, and tvOS
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
-	makedepends = xar
+	makedepends = xar, cpio
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://developer.apple.com/fonts/downloads/SFUI.zip
