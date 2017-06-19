@@ -2,6 +2,7 @@
 # Contributor: Maks Verver <maksverver@geocities.com>
 # Contributor: p2k <Patrick.Schneider@uni-ulm.de>
 # Contributor: nokangaroo <nokangaroo@aon.at>
+
 pkgname=golly
 pkgver=2.8
 pkgrel=1
