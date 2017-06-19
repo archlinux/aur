@@ -1,5 +1,5 @@
 pkgbase = linux-baytrail49
-	pkgver = 4.9.25
+	pkgver = 4.9.33
 	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = linux-baytrail49
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9.25
+	source = git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9.33
 	source = config
 	source = config.x86_64
 	source = linux-baytrail49.preset
