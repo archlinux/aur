@@ -1,10 +1,11 @@
+# Maintainer: Andreas Nüßlein <nutz@noova.de>
 # Maintainer: Ben Edwards <ben@artfuldodge.io>
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
-pkgver=3.4.9
-pkgrel=2
+pkgver=3.4.10
+pkgrel=1
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
 url='https://zookeeper.apache.org/'
@@ -23,7 +24,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_zookeeper.conf
         systemd_tmpfiles.d_zookeeper.conf)
 
-sha256sums=('e7f340412a61c7934b5143faef8d13529b29242ebfba2eba48169f4a8392f535'
+sha256sums=('7f7f5414e044ac11fee2a1e0bc225469f51fb0cdf821e67df762a43098223f27'
             'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
             'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
