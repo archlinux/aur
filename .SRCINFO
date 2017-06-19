@@ -1,0 +1,16 @@
+pkgbase = boost-63-compat
+	pkgdesc = Free peer-reviewed portable C++ source libraries - compat version
+	pkgver = 1.63.0
+	pkgrel = 1
+	url = http://www.boost.org/
+	arch = i686
+	arch = x86_64
+	license = Boost Software License, Version 1.0.
+	makedepends = make
+	depends = python
+	depends = icu
+	source = https://download.sourceforge.net/project/boost/boost/1.63.0/boost_1_63_0.tar.bz2
+	sha256sums = beae2529f759f6b3bf3f4969a19c2e9d6f0c503edcb2de4a61d1428519fcb3b0
+
+pkgname = boost-63-compat
+
