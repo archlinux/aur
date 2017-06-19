@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=The Swapper
+GenericName=The Swapper
+Comment=An atmospheric brain teaser with a sense of existential crisis
+Icon=/usr/share/pixmaps/theswapper.png
+Exec=theswapper
+Categories=Game
