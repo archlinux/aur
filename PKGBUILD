@@ -3,7 +3,7 @@
 _pkgname='traefik'
 pkgname="${_pkgname}-bin"
 pkgver='1.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern reverse proxy'
 arch=('i686' 'x86_64')
 url='https://github.com/containous/traefik'
