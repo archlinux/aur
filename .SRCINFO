@@ -1,13 +1,13 @@
 pkgbase = debian-keyring
 	pkgdesc = GnuPG keys for Debian (non-archive)
-	pkgver = 2017.05.09
+	pkgver = 2017.05.28
 	pkgrel = 1
 	url = http://keyring.debian.org/
 	arch = any
 	license = GPL
 	depends = gnupg
-	source = http://httpredir.debian.org/debian/pool/main/d/debian-keyring/debian-keyring_2017.05.09_all.deb
-	sha256sums = b2728b93265f9fceb13f9ea62f95bee46cab0ae767c398dfb80ca4c79df85bc8
+	source = http://httpredir.debian.org/debian/pool/main/d/debian-keyring/debian-keyring_2017.05.28_all.deb
+	sha256sums = 2d43b866907dec296edf27c0e756daf5eba196370d6fbe37fc3852cdc4a12da2
 
 pkgname = debian-keyring
 
