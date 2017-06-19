@@ -1,7 +1,7 @@
 # Maintainer: Max Bruckner <max at maxbruckner dot de>
 pkgname=cpp-dependencies
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to check C++ #include dependencies (dependency graphs created in .dot format)"
 arch=('x86_64' 'i686')
 url="https://github.com/tomtom-international/cpp-dependencies"
@@ -18,6 +18,11 @@ build() {
 	cd build || exit 1
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 	make
+}
+
+check() {
+	cd "$pkgname-$pkgver/build" || exit 1
+	make test
 }
 
 package() {
