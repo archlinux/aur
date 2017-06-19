@@ -1,22 +1,31 @@
-#Maintainer truh <truhgoj[äT]truh(O)in>
+#Maintainer: nutz <nutz[äT]noova(O)de>
+#Contributor: kiz <kiswono[äT]gmail(O)com>
+#Contributor: truh <truhgoj[äT]truh(O)in>
 
 pkgname=aerospike-server-ce
-pkgver=3.10.1
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="High performance NoSQL database"
 arch=('x86_64' 'i686')
 url="http://www.aerospike.com/"
 license=('AGPLv3')
-source=("http://artifacts.aerospike.com/aerospike-server-community/3.10.1/aerospike-server-community-3.10.1.tar.gz",'http://aerospike.com/download/server/latest/artifact/ubuntu12')
-depends=('dpkg')
-sha512sums=('e3301f4a58dae5fa7e2e04d6ac11b03369254444e824b406182838ad0343fa338457a8117da296b817246f2c8c6ca231b612ecd55ce78bb2db40861045bcf2ca','1f3df2d335a026799ec150b106c539e1c7fb50fca88b818cca2ad8f0a3ce8f9f56ed86ca1b81f9dd6a2493157b7ca363d4f646f041b8f73880c4321b8adc612f')
+source=("http://www.aerospike.com/download/server/${pkgver}/artifact/tgz")
+sha512sums=('9c28e2c9d26b731055aeb7e41f58c23358de59e1848dbf722a4ebdcfda5a432c25720c6347ed64e8eaa09d1b25ec5237509b01cc6275a966df04e1c3a53f7138')
+options=("!zipman")
 
 
 #prepare() {}
 
+#pkgver() {}
+
 #build() {}
 
+#check() {}
+
 package() {
+    ${srcdir}/aerospike-server/bin/aerospike init --home ${srcdir}/init/
+
+    mkdir -p -m 755 "${pkgdir}/etc/"
     mkdir -p -m 755 "${pkgdir}/usr/bin/"
     mkdir -p -m 755 "${pkgdir}/usr/share/bin/"
     mkdir -p -m 755 "${pkgdir}/usr/share/etc/"
@@ -24,18 +33,34 @@ package() {
     mkdir -p -m 755 "${pkgdir}/usr/share/libexec/"
     mkdir -p -m 755 "${pkgdir}/usr/share/udf/lua/external/"
     mkdir -p -m 755 "${pkgdir}/usr/share/udf/lua/ldt/"
+    mkdir -p -m 755 "${pkgdir}/var/log"
+    mkdir -p -m 755 "${pkgdir}/var/smd"
+    mkdir -p -m 755 "${pkgdir}/var/udf/lua"
 
-    cd $srcdir/aerospike-server
+    cd ${srcdir}/init/
 
+    cat << E=O=F > "bin/aerospike"
+#!/bin/bash
+cd /
+. /etc/aerospike.rc
+/usr/share/bin/aerospike \$*
+E=O=F
     install -Dm755 bin/aerospike "${pkgdir}/usr/bin/aerospike"
     install -Dm755 bin/asd "${pkgdir}/usr/bin/asd"
 
+	sed -e "s|${srcdir}/init||g" -i etc/aerospike.conf
+	sed -e "s|/share/udf/lua|/usr/share/udf/lua|" -i etc/aerospike.conf
+    install -Dm644 etc/aerospike.conf "${pkgdir}/etc/aerospike.conf"
+    cat << E=O=F > "${pkgdir}/etc/aerospike.rc"
+export AEROSPIKE_DAEMON=/usr/bin/asd
+export AEROSPIKE_INST=1
+export AEROSPIKE_CONF=/etc/aerospike.conf
+E=O=F
+
     install -Dm755 share/bin/aerospike "${pkgdir}/usr/share/bin/aerospike"
-    
     install -Dm644 share/etc/aerospike.conf "${pkgdir}/usr/share/etc/aerospike.conf"
-    
     install -Dm644 share/lib/aerospike-render.py "${pkgdir}/usr/share/lib/aerospike-render.py"
-    
+
     install -Dm755 share/libexec/aerospike-destroy "${pkgdir}/usr/share/libexec/aerospike-destroy"
     install -Dm755 share/libexec/aerospike-init "${pkgdir}/usr/share/libexec/aerospike-init"
     install -Dm755 share/libexec/aerospike-restart "${pkgdir}/usr/share/libexec/aerospike-restart"
@@ -43,13 +68,12 @@ package() {
     install -Dm755 share/libexec/aerospike-status "${pkgdir}/usr/share/libexec/aerospike-status"
     install -Dm755 share/libexec/aerospike-stop "${pkgdir}/usr/share/libexec/aerospike-stop"
 
-    # TODO: man
-    #install -Dm755 share/man/aerospike-init.gz "${pkgdir}/usr/share/man/aerospike-init.man"
-    #install -Dm755 share/man/aerospike-destroy.gz "${pkgdir}/usr/share/man/aerospike-destroy.man"
-    #install -Dm755 share/man/aerospike-restart.gz "${pkgdir}/usr/share/man/aerospike-restart.man"
-    #install -Dm755 share/man/aerospike-start.gz "${pkgdir}/usr/share/man/aerospike-start.man"
-    #install -Dm755 share/man/aerospike-status.gz "${pkgdir}/usr/share/man/aerospike-status.man"
-    #install -Dm755 share/man/aerospike-stop.gz "${pkgdir}/usr/share/man/aerospike-stop.man"
+    install -Dm755 share/man/aerospike-init.man "${pkgdir}/usr/share/man/aerospike-init.man"
+    install -Dm755 share/man/aerospike-destroy.man "${pkgdir}/usr/share/man/aerospike-destroy.man"
+    install -Dm755 share/man/aerospike-restart.man "${pkgdir}/usr/share/man/aerospike-restart.man"
+    install -Dm755 share/man/aerospike-start.man "${pkgdir}/usr/share/man/aerospike-start.man"
+    install -Dm755 share/man/aerospike-status.man "${pkgdir}/usr/share/man/aerospike-status.man"
+    install -Dm755 share/man/aerospike-stop.man "${pkgdir}/usr/share/man/aerospike-stop.man"
 
     install -Dm755 share/udf/lua/external/llist.lua "${pkgdir}/usr/share/udf/lua/external/llist.lua"
     install -Dm755 share/udf/lua/external/lmap.lua "${pkgdir}/usr/share/udf/lua/external/lmap.lua"
@@ -68,8 +92,6 @@ package() {
     install -Dm755 share/udf/lua/as.lua "${pkgdir}/usr/share/udf/lua/as.lua"
     install -Dm755 share/udf/lua/stream_ops.lua "${pkgdir}/usr/share/udf/lua/stream_ops.lua"
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    cd $srcdir/aerospike-server-community-3.10.1-ubuntu12.04/
-    # TODO: what to do with deb package?
+    # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+ 
 }
