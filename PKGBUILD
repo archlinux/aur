@@ -2,11 +2,11 @@
 
 pkgname=lz4-git
 pkgver=1.7.4.2.r221.g89b9f02
-pkgrel=1
+pkgrel=2
 pkgdesc="Extremely Fast Compression algorithm"
 arch=('i686' 'x86_64')
 url="https://lz4.github.io/lz4/"
-license=('GPL2')
+license=('GPL2' 'BSD')
 depends=('glibc')
 makedepends=('git')
 provides=('lz4')
@@ -37,4 +37,5 @@ package() {
   cd "lz4"
 
   make PREFIX="/usr" DESTDIR="$pkgdir" install
+  install -Dm644 "lib/LICENSE" "$pkgdir/usr/share/licenses/lz4/LICENSE"
 }
