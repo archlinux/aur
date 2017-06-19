@@ -1,14 +1,14 @@
-# Maintainer: Dimitrios Vogiatzis <me@dimtree.net>
-
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Contributor: Dimitrios Vogiatzis <me@dimtree.net>
 pkgname=discord-cli-git
 _pkgname=discord-cli
 pkgver=r45.57f869f
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalistic Command-Line Interface for Discord"
 arch=('i686' 'x86_64')
 url="https://github.com/Rivalo/discord-cli"
 license=('GPL')
-depends=('')
+depends=('glibc')
 makedepends=('go' 'git')
 source=("$pkgname::git+https://github.com/Rivalo/discord-cli")
 md5sums=('SKIP')
@@ -34,6 +34,3 @@ package() {
   install -Dm755 "go/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
-
-# vim:ft=sh
-
