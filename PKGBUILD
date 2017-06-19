@@ -10,8 +10,15 @@ pkgdesc="Simple Let's Encrypt client."
 arch=('any')
 license=('GPL')
 url="https://github.com/zenhack/simp_le"
-depends=('git' 'ca-certificates' 'python-setuptools' 'python-pip' 'python-wheel' 'python-cryptography' 'python-mock'
-         'python-pyopenssl' 'python-acme')
+depends=('ca-certificates'
+         'python-setuptools'
+         'python-pip'
+         'python-wheel'
+         'python-cryptography'
+         'python-mock'
+         'python-pyopenssl'
+         'python-acme')
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/zenhack/simp_le.git")
