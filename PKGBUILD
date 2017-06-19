@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qsshfs
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A gui wrapper around sshfs, written in Qt"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/qsshfs"
