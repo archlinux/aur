@@ -1,0 +1,21 @@
+pkgbase = mpg123-svn
+	pkgdesc = A fast and free real time MPEG Audio Layer 1, 2 and 3 decoding library and console player
+	pkgver = r4246
+	pkgrel = 1
+	url = https://www.mpg123.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = svn
+	makedepends = sdl
+	makedepends = jack
+	makedepends = libpulse
+	depends = glibc
+	depends = alsa-lib
+	provides = mpg123
+	conflicts = mpg123
+	source = svn://scm.orgis.org/mpg123/trunk
+	sha256sums = SKIP
+
+pkgname = mpg123-svn
+
