@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=r111557.ed9fb93c62f
+pkgver=r111721.f98b92ea6c8
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
@@ -26,7 +26,6 @@ source=(
     'binary-reference-assemblies::git+https://github.com/mono/reference-assemblies.git'
     'nunit-lite::git+https://github.com/mono/NUnitLite.git'
     'nuget-buildtasks::git+https://github.com/mono/NuGet.BuildTasks'
-    'git+https://github.com/mono/buildtools.git'
     'cecil-legacy::git+https://github.com/mono/cecil.git#branch=mono-legacy-0.9.5'
     'git+https://github.com/mono/boringssl.git#branch=mono'
     'git+https://github.com/mono/corefx.git'
@@ -42,7 +41,6 @@ source=(
 sha256sums=(
     'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
     'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-    'SKIP'
     '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425'
 )
 
@@ -69,7 +67,6 @@ prepare() {
         'binary-reference-assemblies'
         'nunit-lite'
         'nuget-buildtasks'
-        'buildtools'
         'cecil-legacy'
         'boringssl'
         'corefx'
