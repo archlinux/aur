@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-about
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Switchboard About Plug'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
 makedepends=('cmake' 'switchboard' 'vala')
 source=("switchboard-plug-about-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-about/archive/${pkgver}.tar.gz")
-sha256sums=('45f92e1eeac8ed4d102de9e1c8f675adbdc5118ac32f1cd5e0a3668b86514249')
+sha256sums=('656726dc16406cffc4112581e48470005d03c124d70d439ea8c15b283cce5873')
 
 prepare() {
   cd switchboard-plug-about-${pkgver}
