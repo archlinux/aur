@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libpng' 'libharu' 'python2' 'hdf5' 'texlive-bin' 'texlive-core' 'python2-numpy' 
         'freeglut' 'gsl' 'wxgtk' 'qt5-base' )
 makedepends=( 'cmake' 'swig')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}%20${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('5b23345d322df18a326f1ce40b38ab37')
 
 build() {
