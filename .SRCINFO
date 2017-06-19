@@ -1,7 +1,7 @@
 pkgbase = carl
 	pkgdesc = An Open Source C++ Library for Computer Arithmetic and Logic
-	pkgver = 17.04.r0.g59185e46
-	pkgrel = 2
+	pkgver = 17.06.r0.gd9d0411c
+	pkgrel = 1
 	url = https://github.com/smtrat/carl
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = carl
 	depends = gmp>=5.1
 	depends = eigen>=3.2
 	depends = boost>=1.55
-	source = carl::git+https://github.com/smtrat/carl.git#tag=17.04
+	source = carl::git+https://github.com/smtrat/carl.git#tag=17.06
 	md5sums = SKIP
 
 pkgname = carl

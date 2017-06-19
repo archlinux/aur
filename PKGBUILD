@@ -1,8 +1,8 @@
 # Maintainer: Gereon Kremer <gereon.kremer@cs.rwth-aachen.de>
 
 pkgname=carl
-pkgver=17.04.r0.g59185e46
-pkgrel=2
+pkgver=17.06.r0.gd9d0411c
+pkgrel=1
 pkgdesc="An Open Source C++ Library for Computer Arithmetic and Logic"
 arch=("i686" "x86_64")
 url="https://github.com/smtrat/carl"
@@ -12,7 +12,7 @@ makedepends=("make" "cmake>=3.0")
 conflicts=()
 replaces=()
 backup=()
-source=("$pkgname::git+https://github.com/smtrat/carl.git#tag=17.04")
+source=("$pkgname::git+https://github.com/smtrat/carl.git#tag=17.06")
 md5sums=('SKIP')
 
 prepare() {
