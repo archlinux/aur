@@ -1,7 +1,7 @@
 pkgbase = sococo
 	pkgdesc = Sococo for Linux
 	pkgver = 0.5.5_14531
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app.sococo.com/a/download
 	arch = x86_64
 	license = custom
