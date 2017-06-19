@@ -2,21 +2,21 @@
 # Latest sources are at http://snapshots.linaro.org/components/toolchain/gcc-linaro/
 
 pkgname=arm-none-eabi-gcc60-linaro
-_relver=snapshot-6.2
-_relshortdate=16.10
+_relver=snapshot-6.3
+_relshortdate=17.06
 _reldate=20${_relshortdate}
 _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
 #pkgver=${_relver}_${_reldate//-/_}
-pkgver=6.2_2016.10
-_pkgver=6.2-2016.10
+pkgver=6.3_2017.06
+_pkgver=6.3-2017.06
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target."
 arch=(i686 x86_64)
 url="https://releases.linaro.org/"
 license=('GPL' 'LGPL')
 groups=('arm-none-eabi-toolchain')
-depends=('arm-none-eabi-binutils>=2.26-1' 'gmp' 'cloog-git' 'arm-none-eabi-newlib-linaro-git' 'mpfr' 'libmpc')
+depends=('arm-none-eabi-binutils>=2.26-1' 'gmp' 'cloog' 'arm-none-eabi-newlib-linaro-git' 'mpfr' 'libmpc')
 makedepends=('flex' 'bison')
 provides=('arm-none-eabi-gcc')
 conflicts=('arm-none-eabi-gcc' 'cross-arm-none-eabi-gcc')
@@ -26,6 +26,11 @@ source=(http://snapshots.linaro.org/components/toolchain/gcc-linaro/${_pkgver}/g
         0300-gcc-multilib2.patch
         1039-libcc1-fix-libcc1-s-install-path-and-rpath.patch)
 _basedir=gcc-linaro-${_relverdate}
+
+sha256sums=('173ed3dc04260875cfdad203906532521401a621670c58b7c191e14850a60824'
+            '76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a'
+            'c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1'
+            'fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07')
 
 build() {
   cd ${srcdir}
@@ -75,8 +80,3 @@ package() {
 }
 
 # vim: set ts=2 sw=2 ft=sh et:
-
-sha256sums=('d0082159bd5bb609e07c24a414666e1c2820d9b8ce6e39462f5927d6104fd3d8'
-            '76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a'                                                                                                                                     
-            'c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1'                                                                                                                                     
-            'fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07')
