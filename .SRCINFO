@@ -1,13 +1,16 @@
 pkgbase = kiwix-cli-git
 	pkgdesc = Offline reader for Web content. It's especially intended to make Wikipedia available offline.
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kiwix.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = aria2
+	makedepends = zip
+	makedepends = python
+	makedepends = cmake
 	depends = zimlib-git
 	depends = xapian-core
 	depends = libmicrohttpd

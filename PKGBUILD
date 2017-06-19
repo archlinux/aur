@@ -1,6 +1,6 @@
 # Maintainer: Pavel Minaev <int19h@gmail.com>
 pkgname=kiwix-cli-git
-pkgver=r5370.f001cfc6
+pkgver=0.0.0
 pkgrel=2
 pkgdesc="Offline reader for Web content. It's especially intended to make Wikipedia available offline."
 arch=('i686' 'x86_64')
