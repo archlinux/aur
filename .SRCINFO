@@ -1,0 +1,24 @@
+pkgbase = wp-desktop
+	pkgdesc = WordPress.com Desktop client
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://desktop.wordpress.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = gconf
+	depends = gtk2
+	depends = libgpg-error
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = wp-desktop
+	source_i686 = wp-desktop-linux-i686-2.5.0.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps
+	sha256sums_i686 = 136aa83986bfa9f0f7f88ba2816f9a32927527fab3feb3e05d460313cbb0135a
+	source_x86_64 = wp-desktop-linux-x64-2.5.0.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps
+	sha256sums_x86_64 = 136aa83986bfa9f0f7f88ba2816f9a32927527fab3feb3e05d460313cbb0135a
+
+pkgname = wp-desktop
+
