@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-beta
 	pkgdesc = Professional A/V post-production software suite
-	pkgver = 14.0b3
+	pkgver = 14.0b4
 	pkgrel = 0
 	url = https://www.blackmagicdesign.com/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = davinci-resolve-beta
 	depends = gtk2
 	depends = gstreamer
 	depends = ocl-icd
-	depends = libopenssl-1.0-compat
 	depends = libpng12
 	depends = log4cxx
 	depends = opencl-driver
@@ -21,8 +20,8 @@ pkgbase = davinci-resolve-beta
 	depends = qt5-websockets
 	conflicts = davinci-resolve
 	options = !strip
-	source = local://DaVinci_Resolve_14.0b3_Linux.zip
-	sha256sums = c84cd613f766b47f8188145a1d4a749926e97a6dfcd484ef8ae6d8a774c28ae4
+	source = local://DaVinci_Resolve_14.0b4_Linux.zip
+	sha256sums = 1756c12c94af08a2b7a9d502aa63ab429ed756d47cdd0f1834f92add2f945191
 
 pkgname = davinci-resolve-beta
 
