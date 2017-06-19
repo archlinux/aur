@@ -1,19 +1,19 @@
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Maintainer: Jesús Castro (51v4n) <51v4n@openmailbox.org>
 
 pkgname=otf-san-francisco
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc='The system font for macOS, iOS, watchOS, and tvOS'
 arch=('any')
 license=('custom')
-url='https://developer.apple.com/fonts/'
-depends=('fontconfig' 'xorg-font-utils')
+url='https://developer.apple.com/fonts/' 
+depends=('fontconfig' 'xorg-font-utils' 'cpio')
 makedepends=('xar')
-source=("https://developer.apple.com/fonts/downloads/SFUI.zip")
+source=("https://developer.apple.com/fonts/downloads/SFPro.zip")
 sha256sums=('61d21ddba98b73f96f4c256aba92e490448f80c346e934245627cedbf8d3291f')
 
 package() {
-  cd "$srcdir/SFUI"
+  cd "$srcdir/SFPro"
 
   mkdir pkg
   xar -xf 'San Francisco UI.pkg' -C pkg
