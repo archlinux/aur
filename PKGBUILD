@@ -18,7 +18,8 @@ optdepends=('ca-certificates')
 provides=('lib32-openssl-compatibility')
 conflicts=('lib32-openssl-compatibility')
 options=(!makeflags)
-validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
+validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'  # Matt Caswell <matt@openssl.org>
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C') # Richard Levitte <richard@levitte.org>
 source=("https://www.openssl.org/source/old/0.9.x/${_pkgbasename}-${_ver}.tar.gz"{,.asc}
         'no-rpath.patch'
         'ca-dir.patch')
