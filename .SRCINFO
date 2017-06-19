@@ -1,0 +1,18 @@
+pkgbase = envlinkfs-git
+	pkgdesc = FUSE filesystem that exposes environment variables as symbolic links
+	pkgver = 0.1.r0.726bfaf
+	pkgrel = 1
+	url = https://github.com/Akaricchi/envlinkfs
+	arch = any
+	license = WTFPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fusepy
+	provides = envlinkfs
+	conflicts = envlinkfs
+	source = git+https://github.com/Akaricchi/envlinkfs
+	md5sums = SKIP
+
+pkgname = envlinkfs-git
+
