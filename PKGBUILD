@@ -33,8 +33,8 @@ pkgver() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -Dp -m755 simp_le.py "${pkgdir}"/usr/share/"${_pkgname}"/simp_le.py
-    cp -r examples/ "${pkgdir}"/usr/share/"${_pkgname}"/
-    install -d "${pkgdir}"/usr/bin/
-    ln -s /usr/share/${_pkgname}/simp_le.py "${pkgdir}"/usr/bin/simp_le
+    python setup.py install --root="$pkgdir/" --optimize=1
+
+    install -d "${pkgdir}/usr/share/${_pkgname}"
+    cp -dr --no-preserve=ownership examples/ "${pkgdir}/usr/share/${_pkgname}"
 }
