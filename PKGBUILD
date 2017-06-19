@@ -1,14 +1,15 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=sherpa
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A particle physics package for Monte Carlo simulation of collider events."
 arch=('x86_64' 'i686')
 url="http://sherpa.hepforge.org"
 license=('GPL3')
 depends=('lhapdf' 'fastjet' 'hepmc' 'openmpi' 'openloops' 'rivet')
+makedepends=('boost')  # for lhapdf
 source=(http://www.hepforge.org/archive/sherpa/SHERPA-MC-$pkgver.tar.gz)
-md5sums=('3959f576b05d1e3ceb35ee8c6c3acb76')
+md5sums=('076faede50e81414d6bf5603ae3e32c8')
 
 build() {
 	cd "$srcdir/SHERPA-MC-$pkgver"
