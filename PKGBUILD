@@ -1,14 +1,14 @@
 # Maintainer: Pavel Minaev <int19h@gmail.com>
 pkgname=kiwix-cli-git
-pkgver=0.0.0
-pkgrel=1
+pkgver=r5370.f001cfc6
+pkgrel=2
 pkgdesc="Offline reader for Web content. It's especially intended to make Wikipedia available offline."
 arch=('i686' 'x86_64')
 url="http://www.kiwix.org"
 license=('GPL3')
 groups=()
 depends=('zimlib-git' 'xapian-core' 'libmicrohttpd' 'pugixml' 'ctpp2' 'icu')
-makedepends=('git' 'aria2')
+makedepends=('git' 'aria2' 'zip' 'python' 'cmake')
 provides=('kiwix')
 conflicts=('kiwix' 'kiwix-bin')
 replaces=()
@@ -35,7 +35,7 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./autogen.sh
-	./configure --prefix=/usr --sysconfdir=/etc --enable-indexer --enable-searcher --disable-components --disable-launcher --disable-installer
+	./configure --prefix=/usr --sysconfdir=/etc --enable-indexer --enable-searcher --disable-components --disable-launcher --disable-installer HAVE_UPX=0
 	make
 }
 
