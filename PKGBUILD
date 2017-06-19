@@ -3,14 +3,14 @@
 pkgbase=linux-baytrail410
 _srcname=linux-baytrail410
 _gitver=8d187a6230251eb0e09d20e17393b512df1f46d3
-pkgver=4.10.13
+pkgver=4.10.17
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("git+https://github.com/muhviehstah/linux-baytrail410.git#tag=4.10.13"
+source=("git+https://github.com/muhviehstah/linux-baytrail410.git#tag=${pkgver}"
         'config' 'config.x86_64'
         'linux-baytrail410.preset'
         )
