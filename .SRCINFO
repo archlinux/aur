@@ -1,7 +1,7 @@
 pkgbase = etherwall
 	pkgdesc = Ethereum GUI Wallet (QT5)
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://etherwall.com
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = etherwall
 	depends = qt5-declarative
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
+	depends = qt5-websockets
 	depends = geth
 	depends = protobuf
 	depends = hidapi
