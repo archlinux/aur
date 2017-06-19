@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt
 +++ b/CMakelists.txt
-@@ -22,6 +22,6 @@
- ADD_EXECUTABLE(ttylog ${ttylog_executable_SRCS})
+@@ -50,6 +50,6 @@
+ endif()
 
  # add install targets:
 -INSTALL(TARGETS ttylog DESTINATION sbin)
