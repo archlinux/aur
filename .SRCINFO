@@ -1,8 +1,8 @@
 pkgbase = nwn-gog
-	pkgdesc = Neverwinter Nigts is an RPG from Bioware. This requires the GOG version.
+	pkgdesc = Neverwinter Nights is an RPG from Bioware. This requires the GOG version.
 	pkgver = 2.1.0.21
 	pkgrel = 2
-	url = http://nwn.bioware.com
+	url = https://www.gog.com/game/neverwinter_nights_diamond_edition
 	install = nwn.install
 	arch = i686
 	arch = x86_64
