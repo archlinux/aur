@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-git
-pkgver=1.3.12.411
+pkgver=1.3.12.458
 pkgrel=1
 pkgdesc="A window manager designed for speed, usability, and consistency"
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
+  rm -fr "$pkgdir/usr/share/icewm/themes/Natural"
 }
 
 # vim: sw=2 et:
