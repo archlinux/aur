@@ -7,10 +7,10 @@
 pkgname=unifi-voip
 pkgver=1.0.5
 _pkgver="1.0.5-kxe7d9"
-pkgrel=1
+pkgrel=2
 pkgdesc='Centralized management system for Ubiquiti UniFi VoIP hardware'
 arch=('any')
-url='https://community.ubnt.com/unifi'
+url='https://www.ubnt.com/download/unifi-video/'
 license=('custom')
 depends=('mongodb' 'java-runtime-headless' 'fontconfig')
 conflicts=('tomcat-native')
