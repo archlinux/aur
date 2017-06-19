@@ -88,7 +88,7 @@ _find_pkgpath_from_dir() {
 }
 
 _find_pkgpath_from_input() {
-    read -p "Please provide the path to the directory containing ${_gamepkg} (e.g. /home/joe). Leave blank to download from https://factorio.com: " pkgpath
+    read -rp "Please provide the path to the directory containing ${_gamepkg} (e.g. /home/joe). Leave blank to download from https://factorio.com: " pkgpath
 }
 
 _find_pkgpath_from_download() {
@@ -99,11 +99,11 @@ _find_pkgpath_from_download() {
     local password
     local file="${SRCDEST}/${_gamepkg}"
 
-    read -p "Username or email: " login
+    read -rp "Username or email: " login
     if [[ -z "${login}" ]]; then
       break
     fi
-    read -sp "Password: " password ; echo
+    read -rsp "Password: " password ; echo
     if [[ -z "${password}" ]]; then
       break
     fi
