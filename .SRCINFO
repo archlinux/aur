@@ -1,0 +1,18 @@
+pkgbase = tor-fw-helper-git
+	pkgdesc = Pure-go port-forwarding implementation
+	pkgver = r36.481599e
+	pkgrel = 1
+	url = https://gitweb.torproject.org/tor-fw-helper.git/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	provides = tor-fw-helper
+	conflicts = tor-fw-helper
+	options = !strip
+	options = !emptydirs
+	source = tor-fw-helper-git::git+https://git.torproject.org/tor-fw-helper.git
+	sha256sums = SKIP
+
+pkgname = tor-fw-helper-git
+
