@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-desktop
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Switchboard Desktop Plug'
 arch=('i686' 'x86_64')
@@ -11,10 +11,8 @@ groups=('pantheon')
 depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee' 'plank'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'switchboard' 'vala')
-source=("switchboard-plug-desktop-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-pantheon-shell/archive/switchboard-plug-pantheon-shell-${pkgver}.tar.gz"
-        'https://github.com/elementary/switchboard-plug-pantheon-shell/commit/c6dfa4307cc6f91728f8eaa74597ff16825aa551.patch')
-sha256sums=('0deb16bd1e2a548e8cbc78d083e0cbab613cfa6c0a3be3c51b0519e489d71762'
-            'd1bd5360f8559a7b32328999ac4ad6970bba68fd8caa820c4d19f8783dbe2656')
+source=("switchboard-plug-desktop-${pkgver}.tar.gz::https://github.com/elementary/switchboard-plug-pantheon-shell/archive/${pkgver}.tar.gz")
+sha256sums=('857b7996573ede801b297c2dc6beb3b86b37e985a90f151475ea1683259ff5c4')
 
 prepare() {
   cd switchboard-plug-pantheon-shell-switchboard-plug-pantheon-shell-${pkgver}
@@ -23,8 +21,6 @@ prepare() {
     rm -rf build
   fi
   mkdir build
-
-  patch -Np1 -i ../c6dfa4307cc6f91728f8eaa74597ff16825aa551.patch
 }
 
 build() {
