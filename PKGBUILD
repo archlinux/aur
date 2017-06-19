@@ -1,17 +1,18 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Contributor: Daniel M. Capella <polyzen@archlinux.info>
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 
 pkgname=sloc
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple source-lines-of-code counter'
 arch=('i686' 'x86_64')
-url=http://git.bytbox.net/sloc/
+url="http://git.bytbox.net/sloc/"
 license=('MIT')
 optdepends=('perl-datetime' 'perl-json' 'perl-switch' 'gnuplot')
 makedepends=('git' 'go')
 source=("sloc::git+$url#tag=v$pkgver")
-sha512sums=('SKIP')
+md5sums=('SKIP')
 
 build() {
   cd sloc
@@ -28,5 +29,3 @@ package() {
   install -Dm644 reposloc.1 "$pkgdir"/usr/share/man/man1/reposloc.1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/sloc/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
