@@ -19,7 +19,7 @@ pkgbase = mathgl
 	depends = gsl
 	depends = wxgtk
 	depends = qt5-base
-	source = http://downloads.sourceforge.net/project/mathgl/mathgl/mathgl%202.4/mathgl-2.4.tar.gz
+	source = http://downloads.sourceforge.net/project/mathgl/mathgl/2.4/mathgl-2.4.tar.gz
 	md5sums = 5b23345d322df18a326f1ce40b38ab37
 
 pkgname = mathgl
