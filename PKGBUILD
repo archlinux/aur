@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='Pure Go web server with Lua, Markdown, HTTP/2 and template support'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=('redis: For using the Redis database backend'
             'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
-source=("git+https://github.com/xyproto/algernon#commit=59a3b8dc65adc72352771a4cf1ab474fccfb386c")
+source=("git+https://github.com/xyproto/algernon#commit=5d09d0a1d50c6d6aaa03e8aa29c3d11d9628d002")
 md5sums=('SKIP')
 _gourl=github.com/xyproto/algernon
 
