@@ -1,0 +1,1 @@
+ACTION=="add", KERNEL=="vhba_ctl", NAME="vhba_ctl", MODE="0660", OWNER="root", GROUP="cdemu", TAG+="uaccess"

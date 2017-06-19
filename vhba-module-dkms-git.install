@@ -1,0 +1,5 @@
+post_install() {
+  getent group cdemu &> /dev/null || groupadd -r cdemu
+}
+
+# vim: ts=2 sw=2 et:
