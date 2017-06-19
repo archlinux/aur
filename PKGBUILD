@@ -3,7 +3,7 @@
 pkgname=outlast-gog
 pkgver=1.01_2.0.0.2
 _gogver=2.0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Hell is an experiment you can't survive in Outlast."
 arch=('i686' 'x86_64')
 url="http://www.redbarrelsgames.com/"
@@ -29,7 +29,7 @@ package() {
 
     # Desktop Integration
     mkdir -p "${pkgdir}/usr/share/pixmaps/"
-    ln -s "/opt/${pkgname}/OLGame/Icon.png" \
+    ln -s "/opt/${pkgname}/game/OLGame/Icon.png" \
           "${pkgdir}/usr/share/pixmaps/outlast.png"
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
