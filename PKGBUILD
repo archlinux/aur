@@ -4,7 +4,7 @@
 
 _pkgname=php-ssh
 pkgname=${_pkgname}-unstable
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="An SSH2 extension for PHP"
 url="http://pecl.php.net/package/ssh2"
@@ -15,7 +15,7 @@ makedepends=('php>=7.0.0' 'git')
 provides=('php-ssh')
 conflicts=('php-ssh')
 install=${_pkgname}.install
-source=("${pkgname}::git+https://git.php.net/repository/pecl/networking/ssh2.git")
+source=("${pkgname}::git+https://git.php.net/repository/pecl/networking/ssh2.git#commit=455339f1c83819e2d4c3fae877a095f01b8e9b9a")
 sha512sums=('SKIP')
 
 build() {
