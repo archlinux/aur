@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=59.0.3071.83
+pkgver=59.0.3071.104
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-dma-buf-r1.patch'
   'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
 )
-sha512sums=('f232eb7325b16957b413ecbc991593ee44aa14b878a3a6624b236d7e24fb334a04f302719f95c185bf8bde2fc071c2b77059ab62e20a26bc1dfc1c77dd8b6a8d'
+sha512sums=('419cf5bafa80f190cd301c2933502351929c1ef1d5cfedc720ce6762674a0e6af3b4246a8f92e0c29743420338b056061d4e7f9f4a4066a5bdd4d2ee8db3ddbf'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
             '279185af77d504a9be7fb3f0f8c85ebbb422fa15a716614989288921d546179ed04d238c7b176a8eb64e6e4a7ae5147d200d694d7df1647fc0382c884a53f3cd'
             'd404976ebeca7ffe4e07770055aa9ec8db8761fcbbbf1e463523232a135e11d201c6263d468124190372b3178fda4ea36bdf9be34c50183b7ca93f14ab9d83b0')
