@@ -4,7 +4,7 @@
 _target=arm-none-eabi
 pkgname=$_target-newlib-linaro-git
 _gitver=cf38811335370ab2bcd044801c56a2b081a0c5bf
-pkgver=20160923
+pkgver=20170519
 pkgrel=1
 _libname=newlib
 _upstream_ver=snapshot-"${pkgver}"
@@ -12,7 +12,7 @@ pkgdesc='A C standard library implementation intended for use on embedded system
 arch=(any)
 url='http://www.sourceware.org/newlib/'
 license=(BSD)
-makedepends=($_target-gcc 'cloog-git')
+makedepends=($_target-gcc 'cloog')
 options=(!emptydirs !strip)
 provides=('"${_target}"-newlib')
 source=("git+http://git.linaro.org/toolchain/newlib.git#tag=newlib-snapshot-${pkgver}")
