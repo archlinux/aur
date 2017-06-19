@@ -4,26 +4,26 @@
 # Contributor: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 
 pkgname=mintlocale
-pkgver=1.3.7
+pkgver=1.4.3
 pkgrel=1
-pkgdesc="Locale selection for the Cinnamon Desktop"
+pkgdesc="Language and locale selection tool"
 arch=('any')
 url="https://github.com/linuxmint/mintlocale"
 license=('GPL2')
-depends=('python2-gobject')
-source=("https://ftp.fau.de/mint/packages/pool/main/m/${pkgname}/${pkgname}_${pkgver}.tar.xz"
-	'apt_pkg.patch')
+depends=('python2-gobject' 'python-gobject' 'gksu')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
 
-sha256sums=('128a617c9614458de32415ff199b61ca9728207bc4b9d1ed48ebde1e8d81b798'
-            'b065dc500075a5648a4aa15c98b701af7816d3d0ee2822330635b5fe6740d116')
+sha256sums=('136b2f985ffd5bca46ae47271365b266c0dabc58f055ba4f274b0147efbd74f4')
 
+# Remove the im desktop file since input methods are handled differently on Arch
+# You can still use "mintlocale im" command
 prepare() {
-	cd "${srcdir}/${pkgname}"
-	find -type f -print0 | xargs -0 sed -i 's@^#!.*python$@#!/usr/bin/python2@'
-	patch -p1 -i '../apt_pkg.patch'
+	cd $pkgname-$pkgver
+	cd usr/share/applications/
+    rm mintlocale-im.desktop
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	cp -r --no-preserve=owner './usr' "${pkgdir}/"
+	cd $pkgname-$pkgver
+	cp -r usr $pkgdir
 }
