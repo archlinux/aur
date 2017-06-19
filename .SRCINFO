@@ -1,0 +1,18 @@
+pkgbase = lizard-git
+	pkgdesc = An efficient compressor with very fast decompression
+	pkgver = 1.0.r3.g6a1ed71
+	pkgrel = 1
+	url = https://github.com/inikep/lizard
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = BSD
+	makedepends = git
+	depends = glibc
+	provides = lizard
+	conflicts = lizard
+	source = git+https://github.com/inikep/lizard.git
+	sha256sums = SKIP
+
+pkgname = lizard-git
+
