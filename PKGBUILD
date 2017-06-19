@@ -4,13 +4,16 @@
 
 pkgname=aerospike-server-ce
 pkgver=3.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance NoSQL database"
 arch=('x86_64' 'i686')
 url="http://www.aerospike.com/"
 license=('AGPLv3')
-source=("http://www.aerospike.com/download/server/${pkgver}/artifact/tgz")
-sha512sums=('9c28e2c9d26b731055aeb7e41f58c23358de59e1848dbf722a4ebdcfda5a432c25720c6347ed64e8eaa09d1b25ec5237509b01cc6275a966df04e1c3a53f7138')
+source=("http://www.aerospike.com/download/server/${pkgver}/artifact/tgz"
+        aerospike.service
+       )
+sha512sums=('9c28e2c9d26b731055aeb7e41f58c23358de59e1848dbf722a4ebdcfda5a432c25720c6347ed64e8eaa09d1b25ec5237509b01cc6275a966df04e1c3a53f7138'
+            '88829d7152fc2dfddb309c4aee96079243f3ee76f98a56adf2b0c6f9a91573bb7367740e1c7f5fc0c93386b3794b462b5792433e6d91e4a418fb5c3e8a23f986')
 options=("!zipman")
 
 
