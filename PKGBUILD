@@ -15,20 +15,25 @@ optdepends=(
 source=(${pkgname}-${pkgver}::git+https://github.com/phw/${pkgname}.git#tag=v${pkgver})
 sha1sums=('SKIP')
 
+prepare() {
+  mkdir -p build
+}
+
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cd "build"
+  cmake "${srcdir}/${pkgname}-${pkgver}" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=ON \
-    -DGSETTINGS_COMPILE=OFF .
+    -DGSETTINGS_COMPILE=OFF
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "build"
   #make test
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "build"
   make DESTDIR=${pkgdir} install
 }
