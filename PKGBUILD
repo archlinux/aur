@@ -1,4 +1,6 @@
-#  Maintainer: Arthur Țițeică <arthur dot titeica at gmail>
+# Maintainer: Klemens Schölhorn <klemens@schoelhorn.eu>
+# Contributors: Arthur Țițeică <arthur dot titeica at gmail>
+# Contributors: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=simp_le-git
 _pkgname=simp_le
