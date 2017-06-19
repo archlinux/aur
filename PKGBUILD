@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=60.0.3095.5
+pkgver=60.0.3107.4
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -9,18 +9,20 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('gcc-libs' 'zlib')
 makedepends=(
-  'gtk3' 'gtk2' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
+  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
   'xdg-utils'
 )
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r7.patch'
 )
-sha512sums=('be9a3edd3c3b3d72e0bf443cdcd93eb160b5016b783167c8545999cab536eb644ab86e4cb71e49d7fbcb7037024962e0e18bd94a843cf0b978d2ad86ffa17dbe'
+sha512sums=('0c2e6a2496105f026f8d4cf42c5eabfac1f513385c8ace9070f1c9a7ebbcd62190d30857a7f9cc8aed3e590a57816029e04813a7876d47f00ea0e1302f5a8556'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
-            'd404976ebeca7ffe4e07770055aa9ec8db8761fcbbbf1e463523232a135e11d201c6263d468124190372b3178fda4ea36bdf9be34c50183b7ca93f14ab9d83b0')
+            'ab16fdbae0bbbb5756d46492025c7f29a0c78648026ae4bfcca77bf400fea4fb6b4f5ac45b40351c36dd17c81a3a636a13622a7791370c753a112f36418f841b'
+            'dc169048f99491e864c42eb553b527dff3fbcee39b9a8efafeef5aa77f9bb528d4a0499b2d582b9b1085f6f4098abcfd6f42dd59aa1a1ce30159ca9da04d77da')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -38,7 +40,8 @@ prepare() {
   touch chrome/test/data/webui/i18n_process_css_test.html
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
-  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE.patch"
+  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r1.patch"
+  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r7.patch"
 }
 
 build() {
