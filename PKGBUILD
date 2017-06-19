@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 pkgname=gprbuild-bootstrap-git
-pkgver=r3152.ba7dba01
+pkgver=r3154.7e996a6c
 pkgrel=1
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url='https://github.com/AdaCore/gprbuild/'
 license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'gcc-ada')
-provides=('gprbuild')
-conflicts=('gprbuild')
+provides=('gprbuild-bootstrap')
+conflicts=('gprbuild' 'gprbuild-bootstrap')
 source=('git+https://github.com/AdaCore/gprbuild.git'
         'git+https://github.com/AdaCore/xmlada.git')
 sha1sums=(SKIP SKIP)
