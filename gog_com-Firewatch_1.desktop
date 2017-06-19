@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Firewatch
+GenericName=Firewatch
+Comment=Firewatch
+Icon=/usr/share/pixmaps/firewatch.png
+Exec=firewatch
+Categories=Game;
