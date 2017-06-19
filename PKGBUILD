@@ -14,7 +14,7 @@ sha256sums=('5c596d7d5d54fd309f973809edbc0297ac15979c2c40ebc380ae9397501306ed')
 package() {
   cd "$srcdir/SFPro"
 
-  mkdir pkg
+#  mkdir pkg
   bsdtar xvPf 'San Francisco Pro.pkg' || true
   bsdtar xvPf 'San Francisco Pro.pkg/Payload'
 
