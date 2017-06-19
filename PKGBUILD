@@ -1,9 +1,9 @@
-# Maintainer:  ainola <opp310@alh.rqh> (ROT13)
+# Maintainer:  Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
 
 pkgname=outlast-gog
 pkgver=1.01_2.0.0.2
 _gogver=2.0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Hell is an experiment you can't survive in Outlast."
 arch=('i686' 'x86_64')
 url="http://www.redbarrelsgames.com/"
@@ -17,24 +17,24 @@ sha256sums=("d8fb15a9ced75152525274aaec5c6522c80a8f6eadf221e854613d193c1705b6"
 PKGEXT='.pkg.tar'
 
 package() {
-    mkdir -p "${pkgdir}/opt/${pkgname}/"
+    mkdir -p "${pkgdir}/opt/outlast/"
 
     # Launcher and Data
-    cp -Ral "${srcdir}/data/noarch/"* "${pkgdir}/opt/${pkgname}"
+    cp -Ral "${srcdir}/data/noarch/"* "${pkgdir}/opt/outlast"
 
     # Install Binaries/Launchers
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/game/Binaries/Linux/OLGame.${CARCH}" \
+    ln -s "/opt/outlast/game/Binaries/Linux/OLGame.${CARCH}" \
           "${pkgdir}/usr/bin/outlast"
 
     # Desktop Integration
     mkdir -p "${pkgdir}/usr/share/pixmaps/"
-    ln -s "/opt/${pkgname}/game/OLGame/Icon.png" \
+    ln -s "/opt/outlast/game/OLGame/Icon.png" \
           "${pkgdir}/usr/share/pixmaps/outlast.png"
-    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/outlast.desktop"
 
     # Permissions
-    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
-    find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/opt/${pkgname}/game/Binaries/Linux/OLGame.${CARCH}"
+    find "${pkgdir}/opt/outlast" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/opt/outlast" -type f -exec chmod 644 {} \;
+    chmod 755 "${pkgdir}/opt/outlast/game/Binaries/Linux/OLGame.${CARCH}"
 }
