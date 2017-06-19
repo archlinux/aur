@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-restclient
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtRestClient"
