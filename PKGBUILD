@@ -1,5 +1,6 @@
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Dimitrios Vogiatzis <me@dimtree.net>
+
 pkgname=discord-cli-git
 _pkgname=discord-cli
 pkgver=r45.57f869f
