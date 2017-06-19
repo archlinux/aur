@@ -5,7 +5,7 @@
 
 _pkgname=phpunit
 pkgname=${_pkgname}
-pkgver=6.1.3
+pkgver=6.1.4
 pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
@@ -15,7 +15,7 @@ depends=("php>=7.0.0")
 install="${_pkgname}.install"
 source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
-sha512sums=('1b65229a207dca72ca87211e35a9b27b39eda4eeb4d4ff8e4a4b503f230a9e800d705d132f9c739e37ee152e75729ed0e7a09c8ec6103c3f6d8a4a6d2de3e974'
+sha512sums=('bc5e254f9c5a59584408a2eda3432ebd4760b9a1195de560d9de509078b5fee3b80bd6fa9ba9538fdfb44c5e6438222b043d54766ea2d715f11eda282ea76578'
             'a1899db182b9221aca64fd5a8952a56028786f9dbe4db78375d8e59075483b88a58c9cc68124bdaa2ebeb12340490b13cd5732b9e47ae5ed2d12703b6ffead2a')
 
 package() {
