@@ -1,0 +1,15 @@
+pkgbase = jam
+	pkgdesc = A Google Play Music console player written in Go (stable release)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/budkin/jam
+	arch = x86_64
+	license = MIT
+	depends = pulseaudio
+	provides = jam
+	conflicts = jam
+	source = jam::https://github.com/budkin/jam/releases/download/v0.4.1/jam_x64
+	md5sums = 13f56d00a4f4bf96b21c720199060814
+
+pkgname = jam
+
