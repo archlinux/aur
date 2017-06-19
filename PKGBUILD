@@ -16,11 +16,11 @@
 #
 #
 pkgname="zfs-utils-linux-lts-git"
-pkgver=0.7.0_rc4_r63_g05a5357a6_4.9.32_1
+pkgver=0.7.0_rc4_r65_gd9ad3fea3_4.9.33_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
-depends=("spl-linux-lts-git" "linux-lts=4.9.32-1")
-makedepends=("linux-lts-headers=4.9.32-1" "git")
+depends=("spl-linux-lts-git" "linux-lts=4.9.33-1")
+makedepends=("linux-lts-headers=4.9.33-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git"
