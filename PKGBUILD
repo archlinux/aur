@@ -1,7 +1,7 @@
 # Maintainer    : Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='bcachefs-tools'
-pkgver=r260.565b4a7
+pkgver=r263.38f2216
 pkgrel=1
 pkgdesc='Bcachefs filesystem utilities'
 arch=('i686' 'x86_64')
