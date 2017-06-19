@@ -7,8 +7,7 @@ pkgdesc='The system font for macOS, iOS, watchOS, and tvOS'
 arch=('any')
 license=('custom')
 url='https://developer.apple.com/fonts/' 
-depends=('fontconfig' 'xorg-font-utils' 'cpio')
-makedepends=('xar')
+depends=('fontconfig' 'xorg-font-utils')
 source=("https://developer.apple.com/fonts/downloads/SFPro.zip")
 sha256sums=('5c596d7d5d54fd309f973809edbc0297ac15979c2c40ebc380ae9397501306ed')
 
@@ -16,8 +15,8 @@ package() {
   cd "$srcdir/SFPro"
 
   mkdir pkg
-  xar -xf 'San Francisco Pro.pkg' -C pkg
-  gunzip -dc "pkg/San Francisco Pro.pkg/Payload" | cpio -i
+  bsdtar xvPf 'San Francisco Pro.pkg' || true
+  bsdtar xvPf 'San Francisco Pro.pkg/Payload'
 
   install -d $pkgdir/usr/share/fonts/OTF/
   install -m644 Library/Fonts/*.otf $pkgdir/usr/share/fonts/OTF/
