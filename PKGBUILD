@@ -4,8 +4,9 @@
 
 pkgname=simp_le-git
 _pkgname=simp_le
-pkgver=61.3c22bfa
+pkgver=0.2.0.r10.gd88af9d
 pkgrel=1
+epoch=1
 pkgdesc="Simple Let's Encrypt client."
 arch=('any')
 license=('GPL')
@@ -26,7 +27,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
