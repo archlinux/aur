@@ -7,7 +7,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=pack
 _pkgname=PACK
 pkgver=0.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Password Analysis and Cracking Kit"
 url="http://thesprawl.org/projects/pack/"
 arch=('i686' 'x86_64')
@@ -50,6 +50,7 @@ package() {
     install -Dm755 ${srcdir}/${_pkgname}-${pkgver}/maskgen.py ${pkgdir}/usr/bin/maskgen.py
     install -Dm755 ${srcdir}/${_pkgname}-${pkgver}/policygen.py ${pkgdir}/usr/bin/policygen.py
     install -Dm755 ${srcdir}/${_pkgname}-${pkgver}/rulegen.py ${pkgdir}/usr/bin/rulegen.py
+    install -Dm755 ${srcdir}/${_pkgname}-${pkgver}/statsgen.py ${pkgdir}/usr/bin/statsgen.py
     install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/README ${pkgdir}/usr/share/${pkgname}/doc/README
 
     install -dm755 ${pkgdir}/usr/lib/python2.7/${pkgname}
