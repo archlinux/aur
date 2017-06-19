@@ -1,14 +1,6 @@
-diff -aur conan-0.23.0-pristine/conans/requirements.txt conan-0.23.0-new/conans/requirements.txt
---- conan-0.23.0-pristine/conans/requirements.txt	2017-06-01 18:09:22.378905244 +0200
-+++ conan-0.23.0-new/conans/requirements.txt	2017-06-01 18:10:30.318894020 +0200
-@@ -1,5 +1,5 @@
--PyJWT>=1.4.0, <1.6.0
--requests>=2.7.0, <2.14.0
-+PyJWT>=1.4.0, <2.0.0
-+requests>=2.7.0, <3.0.0
- colorama>=0.3.3, <0.4.0
- PyYAML>=3.11, <3.13.0
- patch==1.16
+diff -aur conan-0.24.0-pristine/conans/requirements.txt conan-0.24.0-new/conans/requirements.txt
+--- conan-0.24.0-pristine/conans/requirements.txt	2017-06-20 00:23:39.093403904 +0200
++++ conan-0.24.0-new/conans/requirements.txt	2017-06-20 00:24:02.460449544 +0200
 @@ -7,6 +7,6 @@
  six>=1.10.0
  node-semver==0.1.1

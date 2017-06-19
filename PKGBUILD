@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.23.2
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -22,8 +22,8 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<2.0.0'
          'python-pylint>=1.6.5'
          'python-future=0.16.0')
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "arch-deps.patch")
-sha512sums=('95cbfe699bf05c212ebf034da071ec53a3bb4c81cc33a1821c3f0e237686ecdeeb88f677bf8425e42e30a8a4c0c65b29ebd52100bc8241184907036eb4984aa0'
-            '061141627deb43423bbcd9281b97ddb64b560923a1a411a2338d6d8720417904356626ce82386d740fffb3838bbcd029d1f13bfb17d9ef6b8abd4e45157ef74b')
+sha512sums=('eed98b69fc729c30f81569048ea92144fbba771b743b75f3219fd68fb97ef52035c98cf9e8e0564646a9d27bf51bfb9c04fc67c59abe7b125e3884d43173be60'
+            '032abe97060ee1515343ff295c68180ef6e4ccc33dd73eadcb8b8d68a34ebe98123d4997430e882691b77b6e2a50782f7fff93c1e3b4357f3f23892915a313d7')
 
 prepare() {
 cd $pkgname-$pkgver
