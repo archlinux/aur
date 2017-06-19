@@ -1,7 +1,7 @@
 pkgbase = qt5-backgroundprocess
 	pkgdesc = A Library to create background applications with simple, automated foreground control
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/QtBackgroundProcess
 	arch = i686
 	arch = x86_64

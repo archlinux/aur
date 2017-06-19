@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-backgroundprocess
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Library to create background applications with simple, automated foreground control"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtBackgroundProcess"
