@@ -1,0 +1,23 @@
+diff -aur scorep-3.1.pristine/src/adapters/compiler/gcc-plugin/scorep_plugin_inst_descriptor.inc.c scorep-3.1.new/src/adapters/compiler/gcc-plugin/scorep_plugin_inst_descriptor.inc.c
+--- scorep-3.1.pristine/src/adapters/compiler/gcc-plugin/scorep_plugin_inst_descriptor.inc.c	2017-05-30 17:26:21.203939989 +0100
++++ scorep-3.1.new/src/adapters/compiler/gcc-plugin/scorep_plugin_inst_descriptor.inc.c	2017-06-19 17:30:42.604985489 +0100
+@@ -194,7 +194,7 @@
+                                         TREE_TYPE( region_descr_value ) );
+ 
+     /* Align the struct generously, so that it works for 32 and 64 bit */
+-    DECL_ALIGN( region_descr_var )      = 64 * BITS_PER_UNIT;
++    SET_DECL_ALIGN(region_descr_var, 64 * BITS_PER_UNIT );//      == 64 * BITS_PER_UNIT;
+     DECL_USER_ALIGN( region_descr_var ) = 1;
+ 
+     /* The struct is 64 bytes, because of reserved entries */
+diff -aur scorep-3.1.pristine/src/adapters/compiler/gcc-plugin/scorep_plugin_tree-flow.h scorep-3.1.new/src/adapters/compiler/gcc-plugin/scorep_plugin_tree-flow.h
+--- scorep-3.1.pristine/src/adapters/compiler/gcc-plugin/scorep_plugin_tree-flow.h	2017-05-30 17:26:21.203939989 +0100
++++ scorep-3.1.new/src/adapters/compiler/gcc-plugin/scorep_plugin_tree-flow.h	2017-06-19 17:36:32.204975964 +0100
+@@ -23,6 +23,7 @@
+ #include "stringpool.h"
+ #include "basic-block.h"
+ #include "tree-ssa-alias.h"
++#include "tree-vrp.h"
+ #include "tree-ssanames.h"
+ #include "internal-fn.h"
+ #include "gimple-expr.h"
