@@ -2,7 +2,7 @@
 _github_pkgname=PlayBar2
 pkgname=plasma5-applets-playbar2
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Applet that shows now playing music"
 arch=('i686' 'x86_64')
 url="https://github.com/audoban/PlayBar2/"
