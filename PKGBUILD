@@ -6,7 +6,7 @@ _gogver=2.4.0.5
 pkgrel=3
 pkgdesc="Firewatch is a single-player first-person mystery set in the Wyoming wilderness."
 arch=('x86_64')
-url="http://www.redbarrelsgames.com/"
+url="http://www.firewatchgame.com/"
 license=('custom: commercial')
 source=("local://gog_firewatch_${_gogver}.sh"
         gog_com-Firewatch_1.desktop)
