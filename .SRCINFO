@@ -1,0 +1,24 @@
+pkgbase = tbs-linux_media-git-dkms
+	pkgdesc = TBS linux open source drivers (DKMS)
+	pkgver = r762.af5f7c7
+	pkgrel = 1
+	url = https://github.com/tbsdtv/linux_media
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = patchutils
+	depends = perl-proc-processtable
+	provides = tbs-linux_media-git
+	provides = linux_media
+	conflicts = tbs-linux_media-git
+	conflicts = tbs-dvb-drivers
+	options = !strip
+	source = dkms.conf
+	source = media_build::git+https://github.com/tbsdtv/media_build.git
+	sha256sums = bfbc45cf2cbb67a6dfc622ced346b0717b12f3922cff0fd379004d175a2dcd7d
+	sha256sums = SKIP
+
+pkgname = tbs-linux_media-git-dkms
+
