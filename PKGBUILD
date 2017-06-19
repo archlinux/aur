@@ -3,7 +3,7 @@
 pkgname=firewatch-gog
 pkgver=1.06_2.4.0.5
 _gogver=2.4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Firewatch is a single-player first-person mystery set in the Wyoming wilderness."
 arch=('x86_64')
 url="http://www.redbarrelsgames.com/"
@@ -23,7 +23,7 @@ package() {
 
     # Install Binaries/Launchers
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/firewatch/game/fw.${CARCH}" \
+    ln -s "/opt/firewatch/start.sh" \
           "${pkgdir}/usr/bin/firewatch"
 
     # Desktop Integration
@@ -35,5 +35,6 @@ package() {
     # Permissions
     find "${pkgdir}/opt/firewatch" -type d -exec chmod 755 {} \;
     find "${pkgdir}/opt/firewatch" -type f -exec chmod 644 {} \;
+    chmod 755 "${pkgdir}/opt/firewatch/start.sh"
     chmod 755 "${pkgdir}/opt/firewatch/game/fw.${CARCH}"
 }
