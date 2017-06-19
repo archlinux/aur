@@ -7,10 +7,10 @@ pkgbase = otf-san-francisco
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
-	makedepends = xar, cpio
+	makedepends = xar
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://developer.apple.com/fonts/downloads/SFUI.zip
+	source = https://developer.apple.com/fonts/downloads/SFPro.zip
 	sha256sums = 61d21ddba98b73f96f4c256aba92e490448f80c346e934245627cedbf8d3291f
 
 pkgname = otf-san-francisco
