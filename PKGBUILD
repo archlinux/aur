@@ -4,7 +4,7 @@
 
 pkgname=phploc
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for quickly measuring the size of a PHP project"
 url="https://github.com/sebastianbergmann/phploc"
 arch=("any")
