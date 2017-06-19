@@ -5,7 +5,7 @@
 
 pkgbase=linux-userns
 _srcname=linux-4.11
-pkgver=4.11.4
+pkgver=4.11.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -26,10 +26,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '7b36a573cce74d8e5312c88595bc0c0a60957c1fb79758303c9de9e944e2d339'
+            '1686ea3200069acd7869075a208ad6771c651b4f9d942b4a340fb8606c75fe13'
             'SKIP'
-            'e4e928488d35ba2b4049bd224dee87be9eb574ed3c1882f22c8fd5d8674c9abd'
-            '2e38528bd2f1be712f5a274b66882c41d2a9cf996b3a05b4a772c8ba7309b261'
+            'c6cd82d752eafc62d383db71f8cc6ad34630d86b83677ae4e50b5993c6f6875a'
+            '15df5086374d77676177cf9f89a59d3ebf3542457df436913d0ce09f10f893f5'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa')
@@ -160,7 +160,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
