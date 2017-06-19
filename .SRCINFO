@@ -1,5 +1,5 @@
 pkgbase = linux-baytrail411
-	pkgver = 4.11.rc4
+	pkgver = 4.11.6
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = linux-baytrail411
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = git+https://github.com/muhviehstah/linux-baytrail411.git#tag=4.11.rc4
+	source = git+https://github.com/muhviehstah/linux-baytrail411.git#tag=4.11.6
 	source = config
 	source = config.x86_64
 	source = linux-baytrail411.preset
