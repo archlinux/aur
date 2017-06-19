@@ -2,8 +2,8 @@
 
 pkgname='jam-git'
 pkgver=0.6.0.a.4.g217f5db
-pkgrel=5
-pkgdesc="A Google Play Music console player written in Go."
+pkgrel=6
+pkgdesc="A Google Play Music console player written in Go (git version)"
 arch=('x86_64')
 url="https://github.com/budkin/jam"
 license=('MIT')
