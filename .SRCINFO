@@ -1,0 +1,21 @@
+pkgbase = casync-git
+	pkgdesc = Content-Addressable Data Synchronization Tool
+	pkgver = r304.1111422
+	pkgrel = 1
+	url = https://github.com/systemd/casync
+	arch = x86
+	arch = x86_64
+	license = LGPL
+	checkdepends = rsync
+	makedepends = git
+	depends = acl
+	depends = libcurl.so
+	depends = libgcrypt
+	depends = xz
+	provides = casync
+	conflicts = casync
+	source = casync-git::git+https://github.com/systemd/casync
+	sha256sums = SKIP
+
+pkgname = casync-git
+
