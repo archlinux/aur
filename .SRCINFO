@@ -1,11 +1,12 @@
 pkgbase = aerospike-server-ce
 	pkgdesc = High performance NoSQL database
 	pkgver = 3.14.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.aerospike.com/
 	arch = x86_64
 	arch = i686
 	license = AGPLv3
+	depends = openssl-1.0
 	options = !zipman
 	source = http://www.aerospike.com/download/server/3.14.0/artifact/tgz
 	source = aerospike.service

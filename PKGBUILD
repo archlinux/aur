@@ -4,11 +4,12 @@
 
 pkgname=aerospike-server-ce
 pkgver=3.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance NoSQL database"
 arch=('x86_64' 'i686')
 url="http://www.aerospike.com/"
 license=('AGPLv3')
+depends=('openssl-1.0')
 source=("http://www.aerospike.com/download/server/${pkgver}/artifact/tgz"
         aerospike.service
        )
