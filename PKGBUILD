@@ -4,41 +4,67 @@
 pkgname=wireless-regdb-pentest
 _pkgname=wireless-regdb
 pkgver=2017.03.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Central Regulatory Domain Database with txpower/channels modified for pentesters. please respect the law in your country"
 arch=('any')
 url="http://wireless.kernel.org/en/developers/Regulatory"
 backup=(etc/conf.d/wireless-regdom)
 license=('custom')
 depends=('sh')
-makedepends=('crda')
-conflicts=('wireless-regdb')
-provides=('wireless-regdb')
+makedepends=('gcc5')
+conflicts=('wireless-regdb' 'crda')
+provides=('wireless-regdb' 'crda')
 source=(https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-${pkgver}.tar.xz
         'crda.conf.d'
-	'db.txt.patch')
+	'db.txt.patch'
+	'set-wireless-regdom'
+	'0001-Makefile-Link-libreg.so-against-the-crypto-library.patch'
+	'0001-Makefile-Don-t-run-ldconfig.patch'
+	'https://www.kernel.org/pub/software/network/crda/crda-3.18.tar.xz')
+
 sha256sums=('371eafa3b26ece916ef83aca02c4bed2e54099eb5b8c6d22d3a4358dce6535b9'
             '192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b'
-            '464037af76e3a90548f30a4a0fcacc35053da8ea9d077c76f9ab728cf0772313')
+            '464037af76e3a90548f30a4a0fcacc35053da8ea9d077c76f9ab728cf0772313'
+            '603ce97da5cce3f5337e99007ce04e2f295bb33a36b308794884011f7bcabaf3'
+            '96b2068b27202f8bc78009869520e396cb3f3ac7a826efef06d0fc41047f2520'
+            'ff52990cf9295e5cebcf07ebbf2a96e225d97088573edcc898b29ce33a0fb663'
+            '43fcb9679f8b75ed87ad10944a506292def13e4afb194afa7aa921b01e8ecdbf')
+
 
 prepare() {
+  tar xf crda-3.18.tar.xz
   cd "${srcdir}"/"${_pkgname}"-"${pkgver}"
   patch -Np1 -i ../db.txt.patch
+  sed -i 's/python/python2/' *.py 
 }
 
 package() {
+  cd "${srcdir}"/${_pkgname}-${pkgver}/
+  make
+  cp root.key.pub.pem "${srcdir}"/crda-3.18/pubkeys/ 
+  cd "${srcdir}"/crda-3.18
+  sed 's|^#!/usr/bin/env python|#!/usr/bin/python2|' -i utils/key2pub.py
+  patch -p1 -i "${srcdir}"/0001-Makefile-Link-libreg.so-against-the-crypto-library.patch
+  patch -p1 -i "${srcdir}"/0001-Makefile-Don-t-run-ldconfig.patch
+  CC=gcc-5 make
+  
+  make DESTDIR="${pkgdir}" UDEV_RULE_DIR=/usr/lib/udev/rules.d/ SBINDIR=/usr/bin/ install
+  # Adjust paths in udev rule file
+  sed 's|/sbin/crda|/usr/bin/crda|' -i "${pkgdir}"/usr/lib/udev/rules.d/85-regulatory.rules
+  # This rule automatically sets the regulatory domain when cfg80211 is loaded
+  echo 'ACTION=="add" SUBSYSTEM=="module", DEVPATH=="/module/cfg80211", RUN+="/usr/bin/set-wireless-regdom"' >> "${pkgdir}"/usr/lib/udev/rules.d/85-regulatory.rules
+
+  install -D -m644 "${srcdir}"/crda-3.18/LICENSE "${pkgdir}"/usr/share/licenses/crda/LICENSE
+  
+  install -D -m755 "${srcdir}"/set-wireless-regdom "${pkgdir}"/usr/bin/set-wireless-regdom
+  cd "${srcdir}"/${_pkgname}-${pkgver}/
+  make  
   # Install and verify regulatory.bin file
   msg "Installing and verifying the regulatory.bin file ..."
   install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/regulatory.bin "${pkgdir}"/usr/lib/crda/regulatory.bin
   # This creates a depend/makedepend loop:
   # crda depends on wireless-regdb (but strictly doesn't makedepend on it)
   # wireless-regdb makedepends on crda
-  if /usr/bin/regdbdump "${pkgdir}"/usr/lib/crda/regulatory.bin > /dev/null; then
-    msg "Regulatory database verification was succesful."
-  else
-    error "Regulatory database verification failed."
-    return 1
-  fi
   install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/sforshee.key.pub.pem "${pkgdir}"/usr/lib/crda/pubkeys/sforshee.key.pub.pem
   install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/wireless-regdb/LICENSE
   install -D -m644 "${srcdir}"/${_pkgname}-${pkgver}/regulatory.bin.5 "${pkgdir}"/usr/share/man/man5/regulatory.bin.5

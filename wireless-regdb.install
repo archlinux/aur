@@ -1,4 +1,6 @@
 post_install() {
+  echo "Uncomment the right regulatory domain in /etc/conf.d/wireless-regdom."
+  echo "It will automatically be set on boot."
   post_upgrade
 }
 
