@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _pkgname=peek
 pkgname=peek-git
-pkgver=1.0.3.r0.g257e5e3
+pkgver=1.0.3.r32.g02569b4
 pkgrel=1
 pkgdesc="Simple screen recorder with an easy to use interface (latest development release)"
 arch=('i686' 'x86_64')
@@ -15,11 +15,11 @@ optdepends=(
   'gst-plugins-good: WebM output under Gnome Shell'
   'gst-plugins-ugly: MP4 output under Gnome Shell'
 )
-source=(${_pkgname}-${pkgver}::git+https://github.com/phw/${_pkgname}.git)
+source=(git+https://github.com/phw/${_pkgname}.git)
 sha1sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=ON \
     -DGSETTINGS_COMPILE=OFF .
@@ -27,16 +27,16 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   make test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   make DESTDIR=${pkgdir} install
 }
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
