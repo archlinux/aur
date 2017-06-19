@@ -4,7 +4,7 @@
 
 pkgname=aerospike-server-ce
 pkgver=3.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance NoSQL database"
 arch=('x86_64' 'i686')
 url="http://www.aerospike.com/"
