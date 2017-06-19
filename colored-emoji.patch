@@ -1,5 +1,5 @@
---- a/cairo-1.14.8/src/cairo-ft-font.c  2016-03-13 09:36:42.618325503 +0800
-+++ b/cairo-1.14.8/src/cairo-ft-font.c  2016-03-13 09:38:24.194288159 +0800
+--- a/cairo-1.14.10/src/cairo-ft-font.c 2016-03-13 09:36:42.618325503 +0800
++++ b/cairo-1.14.10/src/cairo-ft-font.c 2016-03-13 09:38:24.194288159 +0800
 @@ -2258,7 +2258,7 @@
       * Moreover, none of our backends and compositors currently support
       * color glyphs.  As such, this is currently disabled.
