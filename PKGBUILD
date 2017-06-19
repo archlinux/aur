@@ -21,7 +21,7 @@ conflicts=(
 )
 
 source=("https://github.com/audoban/$_github_pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('SKIP')
+sha512sums=(367984610621daecc2e1389d4d30284bdd6cc2842ee81f4638cc14863f449e811d6351ffb8832f5c95e2bb007c6d7c88e7d80f7744d01723527ddc5c6c785c96)
 
 
 build() {
