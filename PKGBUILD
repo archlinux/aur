@@ -5,7 +5,7 @@
 
 pkgname=nwn-gog
 pkgver=2.1.0.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Neverwinter Nights is an RPG from Bioware. This requires the GOG version."
 url="https://www.gog.com/game/neverwinter_nights_diamond_edition"
 license=('custom')
