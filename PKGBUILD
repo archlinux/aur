@@ -4,8 +4,8 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=fixtar-git
 pkgver=r4.87bb44a
-pkgrel=2
-pkgdesc="SOME DESCRIPTION HERE"
+pkgrel=3
+pkgdesc="A tool to fix some common issues with tarballs"
 arch=('i686' 'x86_64')
 url="https://github.com/BestSolution-at/fixtar"
 license=('GPL2')
