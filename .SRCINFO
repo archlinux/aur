@@ -1,14 +1,14 @@
 pkgbase = hanstunnel
 	pkgdesc = IP over ICMP, Hans makes it possible to tunnel IPv4 through ICMP echo packets
-	pkgver = 0.4.4
-	pkgrel = 3
+	pkgver = 1.0
+	pkgrel = 1
 	url = http://code.gerade.org/hans/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gcc-libs
-	source = http://downloads.sourceforge.net/sourceforge/hanstunnel/hans-0.4.4.tar.gz
-	sha1sums = 8a21a9acc6d52cf7d2a5049523469e2609716ab3
+	source = https://github.com/friedrich/hans/archive/v1.0.tar.gz
+	sha1sums = 8b5b5ad005afedf4a6bba5dd845c9ea40f2d6dd8
 
 pkgname = hanstunnel
 
