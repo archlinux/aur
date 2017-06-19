@@ -14,7 +14,7 @@ license=('MIT')
 #optdepends=('android-emulator: emulator has become standalone since 25.3.0'
 #            'android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
 #            'android-udev: udev rules for Android devices')
-source=('https://github.com/99designs/aws-vault/releases/download/v${pkgver}/aws-vault-linux-amd64')
+source=("https://github.com/99designs/aws-vault/releases/download/v${pkgver}/aws-vault-linux-amd64")
 sha256sums=('737897071e5efacaeea2abf88989662d5f45b9bedbf954b224ec4e2d98852f50')
 
 package() {
