@@ -10,22 +10,23 @@ arch=('i686' 'x86_64')
 url='https://github.com/technion/libscrypt'
 license=('BSD')
 makedepends=('git')
-provides=("${gitname}")
-conflicts=("${gitname}")
-source=('git+https://github.com/technion/libscrypt')
+provides=("${_gitname}")
+conflicts=("${_gitname}")
+source=('git+https://github.com/technion/libscrypt.git')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${_gitname}"
 
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/v//'
+    git describe --long                     \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  \
+        | sed 's/v//'
 }
 
 build() {
     cd "${_gitname}"
 
     CFLAGS="${CFLAGS} -fPIC"
-
     make
 }
 

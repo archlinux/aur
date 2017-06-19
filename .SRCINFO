@@ -9,7 +9,7 @@ pkgbase = libscrypt-git
 	makedepends = git
 	provides = libscrypt
 	conflicts = libscrypt
-	source = git+https://github.com/technion/libscrypt
+	source = git+https://github.com/technion/libscrypt.git
 	sha256sums = SKIP
 
 pkgname = libscrypt-git
