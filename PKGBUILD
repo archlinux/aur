@@ -16,8 +16,8 @@ package() {
   cd "$srcdir/SFPro"
 
   mkdir pkg
-  xar -xf 'San Francisco UI.pkg' -C pkg
-  gunzip -dc "pkg/San Francisco UI.pkg/Payload" | cpio -i
+  xar -xf 'San Francisco Pro.pkg' -C pkg
+  gunzip -dc "pkg/San Francisco Pro.pkg/Payload" | cpio -i
 
   install -d $pkgdir/usr/share/fonts/OTF/
   install -m644 Library/Fonts/*.otf $pkgdir/usr/share/fonts/OTF/
