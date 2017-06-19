@@ -1,15 +1,15 @@
 pkgbase = phpunit
 	pkgdesc = PHPUnit is a programmer-oriented testing framework for PHP.
-	pkgver = 6.1.4
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://phpunit.de
 	install = phpunit.install
 	arch = any
 	license = BSD
 	depends = php>=7.0.0
-	source = https://phar.phpunit.de/phpunit-6.1.4.phar
-	source = https://raw.githubusercontent.com/sebastianbergmann/phpunit/6.1.4/LICENSE
-	sha512sums = bc5e254f9c5a59584408a2eda3432ebd4760b9a1195de560d9de509078b5fee3b80bd6fa9ba9538fdfb44c5e6438222b043d54766ea2d715f11eda282ea76578
+	source = https://phar.phpunit.de/phpunit-6.2.0.phar
+	source = https://raw.githubusercontent.com/sebastianbergmann/phpunit/6.2.0/LICENSE
+	sha512sums = ab87721267e27075221dac01d919b08af9e8981044fbe9be258aca39a803c17060c87011350f9f8f9a56f049e4d953b45ca489b95a1890f932359cf603e45f54
 	sha512sums = a1899db182b9221aca64fd5a8952a56028786f9dbe4db78375d8e59075483b88a58c9cc68124bdaa2ebeb12340490b13cd5732b9e47ae5ed2d12703b6ffead2a
 
 pkgname = phpunit
