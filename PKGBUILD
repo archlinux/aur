@@ -2,7 +2,7 @@
 
 pkgname=minergate
 pkgver=6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Cryptocurrency GUI miner and Mining Pool'
 arch=('x86_64')
 url='http://www.minergate.com/'
@@ -20,6 +20,8 @@ install=$pkgname.install
 package() {
   bsdtar xf data.tar.gz
   rm -r opt/minergate/lib/libQt5*
+  rm -r opt/minergate/platforms
+  rm -r opt/minergate/share
   chmod -R g-w usr opt
   mv usr opt "${pkgdir}"
 }
