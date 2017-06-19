@@ -1,14 +1,14 @@
 pkgbase = icecat-bin
 	pkgdesc = Binary build of the GNU version of the Mozilla Firefox browser
 	pkgver = 52.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = MPL
 	license = LGPL
-	depends = gtk2
+	depends = gtk3
 	depends = mozilla-common
 	depends = libxt
 	depends = startup-notification
