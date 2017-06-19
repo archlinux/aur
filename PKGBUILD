@@ -1,6 +1,7 @@
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: fnord0 <fnord0@riseup.net>
 # Contributor: N. Izumi aka izmntuk
+
 pkgname=hanstunnel
 pkgver=1.0
 pkgrel=1
