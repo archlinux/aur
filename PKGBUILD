@@ -1,7 +1,7 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=pencil
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Sketching and GUI prototyping/wireframing tool"
 arch=('any')
 license=('GPL2')
@@ -13,7 +13,7 @@ sha256sums=('c3e98aaad267414cb03669eaa9cbbe1c28d2daf77918bfa6545ab03d4bc685fa'
             '6d467da74509e74e06325e7464a6a177164ae8977470423da6cae43265dedd4d'
             '87aac9f5005ccd57aa6b1bf190052fcc4915eff1d7bddb2723863739545e42fc')
 conflicts=('evolus-pencil-bin' 'pencil-v2')
-depends=('nodejs' 'npm')
+depends=('nodejs' 'npm' 'libxss' 'nss' 'gconf' 'libxtst' 'gtk2' 'alsa-lib')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
