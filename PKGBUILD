@@ -1,4 +1,4 @@
-# Maintainer: Alexei Colin <ac@alexeicolin.com>
+# Maintainer: Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=wireshark-nordic-ble-dissector-git
 pkgdesc='A Wireshark dissector for the BLE protocol as dumped by NordicRF sniffer'
