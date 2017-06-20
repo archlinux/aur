@@ -1,0 +1,19 @@
+pkgbase = nemu
+	pkgdesc = ncurses interface for QEMU
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bitbucket.org/PascalRD/nemu
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = qemu
+	depends = glibc
+	depends = ncurses
+	depends = sqlite
+	depends = udev
+	depends = libusb
+	source = https://bitbucket.org/PascalRD/nemu/get/v1.2.0.tar.bz2
+	md5sums = 6fbd0e997433ddfeedab2ad718335155
+
+pkgname = nemu
+
