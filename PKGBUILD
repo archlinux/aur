@@ -10,7 +10,7 @@ conflicts=('wire-desktop-bin')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('gendesk' 'grunt-cli' 'npm' 'python2' 'git')
 optdepends=('hunspell-en: for English spellcheck support'
-            'rust: for encryption speed improvements (optional makedep)')
+            'cargo: for encryption speed improvements (optional makedep)')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")        
 sha256sums=('4a901dff91a9dc1b2b9886d15d66e252986e6df1a237f61ec30e7a2f1c27f20c')
