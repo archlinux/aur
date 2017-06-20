@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=blizcord
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A simple Discord bot which can play music from YouTube or local files"
 arch=('any')
@@ -10,7 +10,7 @@ license=('mit')
 depends=('jre8-openjdk')
 install=$pkgname.install
 source=("blizcord-${pkgver}.deb::https://github.com/Bleuzen/Blizcord/releases/download/${pkgver}/blizcord-${pkgver}.deb")
-md5sums=('e45460d0ddd63576c5a7d83cf00e723b')
+md5sums=('971fdaef00941b906aaab90478aebe08')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
