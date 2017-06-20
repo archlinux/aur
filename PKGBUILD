@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=0.10.1.r74.gdfb4374ae
+pkgver=0.10.1.r851.gcb5cd1a91
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
@@ -21,6 +21,7 @@ optdepends=(
   'gst-plugins-ugly: media playback'
   'pdfjs: Displaying PDF in-browser'
   'qt5-webengine: To use --backend webengine'
+  'python-opengl: To use --backend webengine'
 )
 
 options=(!emptydirs)
