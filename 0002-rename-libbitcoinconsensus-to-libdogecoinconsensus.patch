@@ -1,0 +1,524 @@
+From 1a9b78f89d7999df16d5b114eea0b2645b5d19eb Mon Sep 17 00:00:00 2001
+From: Patrick Lodder <patrick.lodder@intellibiz.org>
+Date: Sat, 13 Feb 2016 12:06:49 +0100
+Subject: [PATCH] rename libbitcoinconsensus to libdogecoinconsensus
+
+Changes all consensus library name tags from bitcoinconsensus
+to dogecoinconsensus to prevent packagers from having to deal
+with our shared library and headers having the same name as
+Bitcoin's.
+
+Also changes all exported names to create incompatibility
+between the two libraries, so that one cannot accidentally link
+code for bitcoin consensus but instead get dogecoin consensus.
+---
+ .gitignore                       |  2 +-
+ Makefile.am                      |  2 +-
+ configure.ac                     |  2 +-
+ libbitcoinconsensus.pc.in        | 11 -----
+ libdogecoinconsensus.pc.in       | 11 +++++
+ src/Makefile.am                  | 20 ++++-----
+ src/script/bitcoinconsensus.cpp  | 91 ----------------------------------------
+ src/script/bitcoinconsensus.h    | 68 ------------------------------
+ src/script/dogecoinconsensus.cpp | 91 ++++++++++++++++++++++++++++++++++++++++
+ src/script/dogecoinconsensus.h   | 68 ++++++++++++++++++++++++++++++
+ src/test/script_tests.cpp        |  4 +-
+ 11 files changed, 185 insertions(+), 185 deletions(-)
+ delete mode 100644 libbitcoinconsensus.pc.in
+ create mode 100644 libdogecoinconsensus.pc.in
+ delete mode 100644 src/script/bitcoinconsensus.cpp
+ delete mode 100644 src/script/bitcoinconsensus.h
+ create mode 100644 src/script/dogecoinconsensus.cpp
+ create mode 100644 src/script/dogecoinconsensus.h
+
+diff --git a/.gitignore b/.gitignore
+index a809323..a0a22be 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -112,4 +112,4 @@ qa/pull-tester/test.*/*
+ 
+ /doc/doxygen/
+ 
+-libbitcoinconsensus.pc
++libdogecoinconsensus.pc
+diff --git a/Makefile.am b/Makefile.am
+index 60d7b04..e7012e3 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,7 +6,7 @@ GZIP_ENV="-9n"
+ 
+ if BUILD_BITCOIN_LIBS
+ pkgconfigdir = $(libdir)/pkgconfig
+-pkgconfig_DATA = libbitcoinconsensus.pc
++pkgconfig_DATA = libdogecoinconsensus.pc
+ endif
+ 
+ BITCOIND_BIN=$(top_builddir)/src/dogecoind$(EXEEXT)
+diff --git a/configure.ac b/configure.ac
+index 5453481..1849ccf 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -709,7 +709,7 @@ AC_MSG_CHECKING([whether to build libraries])
+ AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test x$build_bitcoin_libs = xyes])
+ if test x$build_bitcoin_libs = xyes; then
+   AC_DEFINE(HAVE_CONSENSUS_LIB, 1, [Define this symbol if the consensus lib has been built])
+-  AC_CONFIG_FILES([libbitcoinconsensus.pc:libbitcoinconsensus.pc.in])
++  AC_CONFIG_FILES([libdogecoinconsensus.pc:libdogecoinconsensus.pc.in])
+ fi
+ AC_MSG_RESULT($build_bitcoin_libs)
+ 
+diff --git a/libbitcoinconsensus.pc.in b/libbitcoinconsensus.pc.in
+deleted file mode 100644
+index 3ca1696..0000000
+--- a/libbitcoinconsensus.pc.in
++++ /dev/null
+@@ -1,11 +0,0 @@
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
+-
+-Name: Bitcoin Core consensus library
+-Description: Library for the Bitcoin consensus protocol.
+-Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -lbitcoinconsensus
+-Cflags: -I${includedir}
+-Requires.private: libcrypto
+diff --git a/libdogecoinconsensus.pc.in b/libdogecoinconsensus.pc.in
+new file mode 100644
+index 0000000..9b5e5d7
+--- /dev/null
++++ b/libdogecoinconsensus.pc.in
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: Dogecoin Core consensus library
++Description: Library for the Dogecoin consensus protocol.
++Version: @PACKAGE_VERSION@
++Libs: -L${libdir} -ldogecoinconsensus
++Cflags: -I${includedir}
++Requires.private: libcrypto
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 53601a1..35f5a6d 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -50,8 +50,8 @@ EXTRA_LIBRARIES += libbitcoin_wallet.a
+ endif
+ 
+ if BUILD_BITCOIN_LIBS
+-lib_LTLIBRARIES = libbitcoinconsensus.la
+-LIBBITCOIN_CONSENSUS=libbitcoinconsensus.la
++lib_LTLIBRARIES = libdogecoinconsensus.la
++LIBBITCOIN_CONSENSUS=libdogecoinconsensus.la
+ else
+ LIBBITCOIN_CONSENSUS=
+ endif
+@@ -375,10 +375,10 @@ dogecoin_tx_LDADD = \
+ dogecoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+ #
+ 
+-# bitcoinconsensus library #
++# dogecoinconsensus library #
+ if BUILD_BITCOIN_LIBS
+-include_HEADERS = script/bitcoinconsensus.h
+-libbitcoinconsensus_la_SOURCES = \
++include_HEADERS = script/dogecoinconsensus.h
++libdogecoinconsensus_la_SOURCES = \
+   crypto/hmac_sha512.cpp \
+   crypto/ripemd160.cpp \
+   crypto/scrypt.cpp \
+@@ -390,19 +390,19 @@ libbitcoinconsensus_la_SOURCES = \
+   hash.cpp \
+   primitives/transaction.cpp \
+   pubkey.cpp \
+-  script/bitcoinconsensus.cpp \
++  script/dogecoinconsensus.cpp \
+   script/interpreter.cpp \
+   script/script.cpp \
+   uint256.cpp \
+   utilstrencodings.cpp
+ 
+ if GLIBC_BACK_COMPAT
+-  libbitcoinconsensus_la_SOURCES += compat/glibc_compat.cpp
++  libdogecoinconsensus_la_SOURCES += compat/glibc_compat.cpp
+ endif
+ 
+-libbitcoinconsensus_la_LDFLAGS = -no-undefined $(RELDFLAGS)
+-libbitcoinconsensus_la_LIBADD = $(CRYPTO_LIBS)
+-libbitcoinconsensus_la_CPPFLAGS = $(CRYPTO_CFLAGS) -I$(builddir)/obj -DBUILD_BITCOIN_INTERNAL
++libdogecoinconsensus_la_LDFLAGS = -no-undefined $(RELDFLAGS)
++libdogecoinconsensus_la_LIBADD = $(CRYPTO_LIBS)
++libdogecoinconsensus_la_CPPFLAGS = $(CRYPTO_CFLAGS) -I$(builddir)/obj -DBUILD_BITCOIN_INTERNAL
+ 
+ endif
+ #
+diff --git a/src/script/bitcoinconsensus.cpp b/src/script/bitcoinconsensus.cpp
+deleted file mode 100644
+index b0d5faa..0000000
+--- a/src/script/bitcoinconsensus.cpp
++++ /dev/null
+@@ -1,91 +0,0 @@
+-// Copyright (c) 2009-2010 Satoshi Nakamoto
+-// Copyright (c) 2009-2014 The Bitcoin Core developers
+-// Distributed under the MIT software license, see the accompanying
+-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+-
+-#include "bitcoinconsensus.h"
+-
+-#include "primitives/transaction.h"
+-#include "script/interpreter.h"
+-#include "version.h"
+-
+-namespace {
+-
+-/** A class that deserializes a single CTransaction one time. */
+-class TxInputStream
+-{
+-public:
+-    TxInputStream(int nTypeIn, int nVersionIn, const unsigned char *txTo, size_t txToLen) :
+-    m_type(nTypeIn),
+-    m_version(nVersionIn),
+-    m_data(txTo),
+-    m_remaining(txToLen)
+-    {}
+-
+-    TxInputStream& read(char* pch, size_t nSize)
+-    {
+-        if (nSize > m_remaining)
+-            throw std::ios_base::failure(std::string(__func__) + ": end of data");
+-
+-        if (pch == NULL)
+-            throw std::ios_base::failure(std::string(__func__) + ": bad destination buffer");
+-
+-        if (m_data == NULL)
+-            throw std::ios_base::failure(std::string(__func__) + ": bad source buffer");
+-
+-        memcpy(pch, m_data, nSize);
+-        m_remaining -= nSize;
+-        m_data += nSize;
+-        return *this;
+-    }
+-
+-    template<typename T>
+-    TxInputStream& operator>>(T& obj)
+-    {
+-        ::Unserialize(*this, obj, m_type, m_version);
+-        return *this;
+-    }
+-
+-private:
+-    const int m_type;
+-    const int m_version;
+-    const unsigned char* m_data;
+-    size_t m_remaining;
+-};
+-
+-inline int set_error(bitcoinconsensus_error* ret, bitcoinconsensus_error serror)
+-{
+-    if (ret)
+-        *ret = serror;
+-    return 0;
+-}
+-
+-} // anon namespace
+-
+-int bitcoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
+-                                    const unsigned char *txTo        , unsigned int txToLen,
+-                                    unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err)
+-{
+-    try {
+-        TxInputStream stream(SER_NETWORK, PROTOCOL_VERSION, txTo, txToLen);
+-        CTransaction tx;
+-        stream >> tx;
+-        if (nIn >= tx.vin.size())
+-            return set_error(err, bitcoinconsensus_ERR_TX_INDEX);
+-        if (tx.GetSerializeSize(SER_NETWORK, PROTOCOL_VERSION) != txToLen)
+-            return set_error(err, bitcoinconsensus_ERR_TX_SIZE_MISMATCH);
+-
+-         // Regardless of the verification result, the tx did not error.
+-         set_error(err, bitcoinconsensus_ERR_OK);
+-
+-        return VerifyScript(tx.vin[nIn].scriptSig, CScript(scriptPubKey, scriptPubKey + scriptPubKeyLen), flags, TransactionSignatureChecker(&tx, nIn), NULL);
+-    } catch (const std::exception&) {
+-        return set_error(err, bitcoinconsensus_ERR_TX_DESERIALIZE); // Error deserializing
+-    }
+-}
+-
+-unsigned int bitcoinconsensus_version()
+-{
+-    // Just use the API version for now
+-    return BITCOINCONSENSUS_API_VER;
+-}
+diff --git a/src/script/bitcoinconsensus.h b/src/script/bitcoinconsensus.h
+deleted file mode 100644
+index 0320577..0000000
+--- a/src/script/bitcoinconsensus.h
++++ /dev/null
+@@ -1,68 +0,0 @@
+-// Copyright (c) 2009-2010 Satoshi Nakamoto
+-// Copyright (c) 2009-2014 The Bitcoin Core developers
+-// Distributed under the MIT software license, see the accompanying
+-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+-
+-#ifndef BITCOIN_BITCOINCONSENSUS_H
+-#define BITCOIN_BITCOINCONSENSUS_H
+-
+-#if defined(BUILD_BITCOIN_INTERNAL) && defined(HAVE_CONFIG_H)
+-#include "config/bitcoin-config.h"
+-  #if defined(_WIN32)
+-    #if defined(DLL_EXPORT)
+-      #if defined(HAVE_FUNC_ATTRIBUTE_DLLEXPORT)
+-        #define EXPORT_SYMBOL __declspec(dllexport)
+-      #else
+-        #define EXPORT_SYMBOL
+-      #endif
+-    #endif
+-  #elif defined(HAVE_FUNC_ATTRIBUTE_VISIBILITY)
+-    #define EXPORT_SYMBOL __attribute__ ((visibility ("default")))
+-  #endif
+-#elif defined(MSC_VER) && !defined(STATIC_LIBBITCOINCONSENSUS)
+-  #define EXPORT_SYMBOL __declspec(dllimport)
+-#endif
+-
+-#ifndef EXPORT_SYMBOL
+-  #define EXPORT_SYMBOL
+-#endif
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-#define BITCOINCONSENSUS_API_VER 0
+-
+-typedef enum bitcoinconsensus_error_t
+-{
+-    bitcoinconsensus_ERR_OK = 0,
+-    bitcoinconsensus_ERR_TX_INDEX,
+-    bitcoinconsensus_ERR_TX_SIZE_MISMATCH,
+-    bitcoinconsensus_ERR_TX_DESERIALIZE,
+-} bitcoinconsensus_error;
+-
+-/** Script verification flags */
+-enum
+-{
+-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_NONE      = 0,
+-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_P2SH      = (1U << 0), // evaluate P2SH (BIP16) subscripts
+-    bitcoinconsensus_SCRIPT_FLAGS_VERIFY_DERSIG    = (1U << 2), // enforce strict DER (BIP66) compliance
+-};
+-
+-/// Returns 1 if the input nIn of the serialized transaction pointed to by
+-/// txTo correctly spends the scriptPubKey pointed to by scriptPubKey under
+-/// the additional constraints specified by flags.
+-/// If not NULL, err will contain an error/success code for the operation
+-EXPORT_SYMBOL int bitcoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
+-                                    const unsigned char *txTo        , unsigned int txToLen,
+-                                    unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err);
+-
+-EXPORT_SYMBOL unsigned int bitcoinconsensus_version();
+-
+-#ifdef __cplusplus
+-} // extern "C"
+-#endif
+-
+-#undef EXPORT_SYMBOL
+-
+-#endif // BITCOIN_BITCOINCONSENSUS_H
+diff --git a/src/script/dogecoinconsensus.cpp b/src/script/dogecoinconsensus.cpp
+new file mode 100644
+index 0000000..177b3dc
+--- /dev/null
++++ b/src/script/dogecoinconsensus.cpp
+@@ -0,0 +1,91 @@
++// Copyright (c) 2009-2010 Satoshi Nakamoto
++// Copyright (c) 2009-2014 The Bitcoin Core developers
++// Distributed under the MIT software license, see the accompanying
++// file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#include "dogecoinconsensus.h"
++
++#include "primitives/transaction.h"
++#include "script/interpreter.h"
++#include "version.h"
++
++namespace {
++
++/** A class that deserializes a single CTransaction one time. */
++class TxInputStream
++{
++public:
++    TxInputStream(int nTypeIn, int nVersionIn, const unsigned char *txTo, size_t txToLen) :
++    m_type(nTypeIn),
++    m_version(nVersionIn),
++    m_data(txTo),
++    m_remaining(txToLen)
++    {}
++
++    TxInputStream& read(char* pch, size_t nSize)
++    {
++        if (nSize > m_remaining)
++            throw std::ios_base::failure(std::string(__func__) + ": end of data");
++
++        if (pch == NULL)
++            throw std::ios_base::failure(std::string(__func__) + ": bad destination buffer");
++
++        if (m_data == NULL)
++            throw std::ios_base::failure(std::string(__func__) + ": bad source buffer");
++
++        memcpy(pch, m_data, nSize);
++        m_remaining -= nSize;
++        m_data += nSize;
++        return *this;
++    }
++
++    template<typename T>
++    TxInputStream& operator>>(T& obj)
++    {
++        ::Unserialize(*this, obj, m_type, m_version);
++        return *this;
++    }
++
++private:
++    const int m_type;
++    const int m_version;
++    const unsigned char* m_data;
++    size_t m_remaining;
++};
++
++inline int set_error(dogecoinconsensus_error* ret, dogecoinconsensus_error serror)
++{
++    if (ret)
++        *ret = serror;
++    return 0;
++}
++
++} // anon namespace
++
++int dogecoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
++                                    const unsigned char *txTo        , unsigned int txToLen,
++                                    unsigned int nIn, unsigned int flags, dogecoinconsensus_error* err)
++{
++    try {
++        TxInputStream stream(SER_NETWORK, PROTOCOL_VERSION, txTo, txToLen);
++        CTransaction tx;
++        stream >> tx;
++        if (nIn >= tx.vin.size())
++            return set_error(err, dogecoinconsensus_ERR_TX_INDEX);
++        if (tx.GetSerializeSize(SER_NETWORK, PROTOCOL_VERSION) != txToLen)
++            return set_error(err, dogecoinconsensus_ERR_TX_SIZE_MISMATCH);
++
++         // Regardless of the verification result, the tx did not error.
++         set_error(err, dogecoinconsensus_ERR_OK);
++
++        return VerifyScript(tx.vin[nIn].scriptSig, CScript(scriptPubKey, scriptPubKey + scriptPubKeyLen), flags, TransactionSignatureChecker(&tx, nIn), NULL);
++    } catch (const std::exception&) {
++        return set_error(err, dogecoinconsensus_ERR_TX_DESERIALIZE); // Error deserializing
++    }
++}
++
++unsigned int dogecoinconsensus_version()
++{
++    // Just use the API version for now
++    return DOGECOINCONSENSUS_API_VER;
++}
+diff --git a/src/script/dogecoinconsensus.h b/src/script/dogecoinconsensus.h
+new file mode 100644
+index 0000000..bcfdb3d
+--- /dev/null
++++ b/src/script/dogecoinconsensus.h
+@@ -0,0 +1,68 @@
++// Copyright (c) 2009-2010 Satoshi Nakamoto
++// Copyright (c) 2009-2014 The Bitcoin Core developers
++// Distributed under the MIT software license, see the accompanying
++// file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#ifndef BITCOIN_BITCOINCONSENSUS_H
++#define BITCOIN_BITCOINCONSENSUS_H
++
++#if defined(BUILD_BITCOIN_INTERNAL) && defined(HAVE_CONFIG_H)
++#include "config/bitcoin-config.h"
++  #if defined(_WIN32)
++    #if defined(DLL_EXPORT)
++      #if defined(HAVE_FUNC_ATTRIBUTE_DLLEXPORT)
++        #define EXPORT_SYMBOL __declspec(dllexport)
++      #else
++        #define EXPORT_SYMBOL
++      #endif
++    #endif
++  #elif defined(HAVE_FUNC_ATTRIBUTE_VISIBILITY)
++    #define EXPORT_SYMBOL __attribute__ ((visibility ("default")))
++  #endif
++#elif defined(MSC_VER) && !defined(STATIC_LIBBITCOINCONSENSUS)
++  #define EXPORT_SYMBOL __declspec(dllimport)
++#endif
++
++#ifndef EXPORT_SYMBOL
++  #define EXPORT_SYMBOL
++#endif
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++#define DOGECOINCONSENSUS_API_VER 0
++
++typedef enum dogecoinconsensus_error_t
++{
++    dogecoinconsensus_ERR_OK = 0,
++    dogecoinconsensus_ERR_TX_INDEX,
++    dogecoinconsensus_ERR_TX_SIZE_MISMATCH,
++    dogecoinconsensus_ERR_TX_DESERIALIZE,
++} dogecoinconsensus_error;
++
++/** Script verification flags */
++enum
++{
++    dogecoinconsensus_SCRIPT_FLAGS_VERIFY_NONE      = 0,
++    dogecoinconsensus_SCRIPT_FLAGS_VERIFY_P2SH      = (1U << 0), // evaluate P2SH (BIP16) subscripts
++    dogecoinconsensus_SCRIPT_FLAGS_VERIFY_DERSIG    = (1U << 2), // enforce strict DER (BIP66) compliance
++};
++
++/// Returns 1 if the input nIn of the serialized transaction pointed to by
++/// txTo correctly spends the scriptPubKey pointed to by scriptPubKey under
++/// the additional constraints specified by flags.
++/// If not NULL, err will contain an error/success code for the operation
++EXPORT_SYMBOL int dogecoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
++                                    const unsigned char *txTo        , unsigned int txToLen,
++                                    unsigned int nIn, unsigned int flags, dogecoinconsensus_error* err);
++
++EXPORT_SYMBOL unsigned int dogecoinconsensus_version();
++
++#ifdef __cplusplus
++} // extern "C"
++#endif
++
++#undef EXPORT_SYMBOL
++
++#endif // BITCOIN_BITCOINCONSENSUS_H
+diff --git a/src/test/script_tests.cpp b/src/test/script_tests.cpp
+index c0614cc..5ffa356 100644
+--- a/src/test/script_tests.cpp
++++ b/src/test/script_tests.cpp
+@@ -16,7 +16,7 @@
+ #include "test/test_bitcoin.h"
+ 
+ #if defined(HAVE_CONSENSUS_LIB)
+-#include "script/bitcoinconsensus.h"
++#include "script/dogecoinconsensus.h"
+ #endif
+ 
+ #include <fstream>
+@@ -99,7 +99,7 @@ void DoTest(const CScript& scriptPubKey, const CScript& scriptSig, int flags, bo
+ #if defined(HAVE_CONSENSUS_LIB)
+     CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
+     stream << tx2;
+-    BOOST_CHECK_MESSAGE(bitcoinconsensus_verify_script(begin_ptr(scriptPubKey), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, flags, NULL) == expect,message);
++    BOOST_CHECK_MESSAGE(dogecoinconsensus_verify_script(begin_ptr(scriptPubKey), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, flags, NULL) == expect,message);
+ #endif
+ }
+ 
+-- 
+1.9.1
+

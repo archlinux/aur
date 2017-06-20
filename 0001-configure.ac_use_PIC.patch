@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -417,7 +417,7 @@
+ 
+   if test x$TARGET_OS != xwindows; then
+     # All windows code is PIC, forcing it on just adds useless compile warnings
+-    AX_CHECK_COMPILE_FLAG([-fPIE],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -fPIE"])
++    AX_CHECK_COMPILE_FLAG([-fPIC],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -fPIC"])
+     AX_CHECK_LINK_FLAG([[-pie]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -pie"])
+   fi
+ 
