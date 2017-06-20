@@ -9,13 +9,13 @@
 
 pkgname=android-studio-canary
 pkgver=3.0.0.3
-pkgrel=1
+pkgrel=2
 _build=171.4101728
 pkgdesc="The Official Android IDE (Canary branch)"
 arch=('i686' 'x86_64')
 url="http://tools.android.com/"
 license=('APACHE')
-makedepends=('unzip')
+makedepends=('unzip' 'zip')
 depends=('freetype2' 'libxrender' 'libxtst')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
@@ -23,7 +23,7 @@ options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
 sha256sums=('98ff0ed9093022d834c985e3457462e50eaf5898459d208e748edb1bd3f092af'
-            '698430d3a2b3d6315ae22827e59c89e42c030089499f4e06bc32b3c92b796e35')
+            '60edb7937f6c0fd1ad724574ff3c63fa69cedd2fdfcedf788f39a443c76743b6')
 
 if [ "$CARCH" = "i686" ]; then
     depends+=('java-environment')
@@ -31,6 +31,13 @@ fi
 
 package() {
   cd $srcdir/android-studio
+
+  # Change the product name to produce a unique WM_CLASS attribute.
+  mkdir -p idea
+  unzip -p lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
+      | sed "s/\"Studio\"/\"Studio Canary\"/" >idea/AndroidStudioApplicationInfo.xml
+  zip -r lib/resources.jar idea
+  rm -r idea
 
   # Install the application.
   install -d $pkgdir/{opt/$pkgname,usr/bin}
