@@ -1,0 +1,14 @@
+pkgbase = python2-backports.weakref
+	pkgdesc = Package provides backports of new features in Python's weakref module under the backports namespace
+	pkgver = 1.0rc1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/backports.weakref
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-backports
+	source = https://pypi.python.org/packages/source/b/backports.weakref/backports.weakref-1.0rc1.tar.gz
+	md5sums = c3dcb466fe3bbd72b6af87c0fa547f24
+
+pkgname = python2-backports.weakref
+
