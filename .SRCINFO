@@ -61,7 +61,6 @@ pkgbase = andrei-desktop
 	depends = htop
 	depends = intel-ucode
 	depends = inxi
-	depends = iotop
 	depends = leafpad
 	depends = lib32-alsa-plugins
 	depends = lib32-libpulse
