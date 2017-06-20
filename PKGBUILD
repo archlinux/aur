@@ -3,9 +3,9 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.34dev.git20161119
+pkgver=0.34dev.git20170619
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('any')
 pkgdesc='VHDL simulator - GCC flavour'
 url='http://sourceforge.net/projects/ghdl-updates/'
 license=('GPLv2')
@@ -26,14 +26,12 @@ source=(
 	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
 	"ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
 	"ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
-	"Makefile.patch"
 )
 md5sums=(
 	'SKIP'
 	'6f831b4d251872736e8e9cc09746f327'
 	'e039bfcfb6c2ab039b8ee69bf883e824'
 	'e34fca0540d840e5d0f6427e98c92252'
-	'5b0c20923b9fda2bd7f6caa6391bf125'
 )
 
 pkgver() {
@@ -110,19 +108,14 @@ build() {
 	# Build GHDL
 	make
 
-	# Some fixes to enable launching GHDL without installing it
 	cd "${srcdir}/ghdl"
-	patch -p0 -N -i "${startdir}"/Makefile.patch || true
 
-	# Build VHDL libraries
+	# Build VHDL libraries and runtime,
+	# with some tweaks to enable running GHDL without installing it
 	make \
-		GHDL="${srcdir}/gcc-build/gcc/ghdl" \
-		ANALYZE_OPTS="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
-		STD_GHDL_FLAGS="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
-		vhdl.libs.all libs.vhdl.standard
-
-	# Compile runtime stuff
-	make libgrt.a
+		GHDL_GCC_BIN="${srcdir}/gcc-build/gcc/ghdl" \
+		GHDL1_GCC_BIN="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
+		ghdllib
 }
 
 package() {
