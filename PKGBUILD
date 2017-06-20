@@ -26,7 +26,7 @@ build() {
   cd $pkgname
   export npm_config_target=$(</usr/lib/electron/version)
   export npm_config_disturl=https://atom.io/download/atom-shell
-  HOME=~/.electron-gyp npm install --production
+  HOME="$srcdir/.electron-gyp" npm install --production
 }
 
 package() {
