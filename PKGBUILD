@@ -8,6 +8,7 @@ url="http://tkatchev.bitbucket.org/tab/"
 license=('custom:boost')
 depends=('gcc-libs')
 makedepends=()
+checkdepends=('python2')
 source=("https://bitbucket.org/tkatchev/tab/get/${pkgver}.tar.bz2")
 sha256sums=('19edd1183ee0e3bb9d79e022141567779ef42d9ebddbfd09317aaf5bc700be8d')
 
@@ -16,6 +17,11 @@ _dirname="tkatchev-tab-efe6f906ae05"
 build() {
 	cd "$_dirname"
 	make
+}
+
+check() {
+	cd "$_dirname"
+	make test
 }
 
 package() {
