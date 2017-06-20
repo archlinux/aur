@@ -1,28 +1,32 @@
 pkgbase = nvidia-utils-vulkan-developer-beta
-	pkgver = 375.27.15
+	pkgver = 381.26.03
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
 	license = custom:NVIDIA
 	options = !strip
+	source = 10-nvidia-drm-outputclass.conf
 	source = 20-nvidia.conf
+	md5sums = 4f5562ee8f3171769e4638b35396c55d
 	md5sums = 2640eac092c220073f0668a7aaff61f7
-	source_i686 = https://developer.nvidia.com/linux-375271532bit
-	md5sums_i686 = 0a2e0a05ed1f5babba47b5d301a4e8fa
-	source_x86_64 = https://developer.nvidia.com/linux-3752715-64-bit
-	md5sums_x86_64 = a1f786592c91c97d654fec4e84e31e56
+	source_i686 = https://developer.nvidia.com/3812603-linux-32bit
+	md5sums_i686 = 07d6373f9d2672afacf11be1060bebb6
+	source_x86_64 = https://developer.nvidia.com/3812603-linux-64bit
+	md5sums_x86_64 = b41bddbe1a613f3c3a07591a276f3202
 
 pkgname = nvidia-utils-vulkan-developer-beta
 	pkgdesc = NVIDIA driver utilities and libraries (vulkan developer beta version)
 	install = nvidia-utils-vulkan-developer-beta.install
 	depends = xorg-server
+	depends = mesa>=17.0.2-2
 	optdepends = gtk2: nvidia-settings (GTK+ v2)
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
 	optdepends = opencl-nvidia-vulkan-developer-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
-	provides = nvidia-utils=375.27.15
-	provides = nvidia-settings
+	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)
+	provides = nvidia-utils=381.26.03
+	provides = nvidia-settings=381.26.03
 	provides = libglvnd
 	provides = vulkan-driver
 	conflicts = nvidia-utils
@@ -30,21 +34,29 @@ pkgname = nvidia-utils-vulkan-developer-beta
 	conflicts = libglvnd
 	backup = etc/X11/xorg.conf.d/20-nvidia.conf
 
+pkgname = nvidia-egl-wayland-vulkan-developer-beta
+	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for 'nvidia-utils-vulkan-developer-beta'
+	depends = nvidia-utils-beta
+	provides = egl-wayland
+	conflicts = egl-wayland
+
 pkgname = nvidia-libgl-vulkan-developer-beta
 	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-vulkan-developer-beta'
-	depends = nvidia>=375.27.10,
-	depends = mesa
+	depends = nvidia-utils-vulkan-developer-beta
+	provides = nvidia-libgl=381.26.03
 	provides = libgl
-	provides = nvidia-libgl
-	conflicts = libgl
+	provides = libegl
+	provides = libgles
 	conflicts = nvidia-libgl
-	conflicts = mesa<10.1.0-2
+	conflicts = libgl
+	conflicts = libegl
+	conflicts = libgles
 
 pkgname = opencl-nvidia-vulkan-developer-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-vulkan-developer-beta'
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia
+	provides = opencl-nvidia=381.26.03
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 

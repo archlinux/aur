@@ -1,10 +1,9 @@
 # Maintainer: whoseos <kristian mailbox.org>
 # Contributors: Det, Ng Oon-Ee, Dan Vratil
 # Based on [aur]'s nvidia-utils-beta: https://aur.archlinux.org/packages/nvidia-utils-beta/
-# Base for this PKGBUILD is not the latest AUR package, but the package from 2016-12-14 for nvidia version 375.26
 
-pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
-pkgver=375.27.15
+pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-egl-wayland-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
+pkgver=381.26.03
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -13,17 +12,19 @@ options=('!strip')
 
 # Installer name
 case "$CARCH" in
-  i686)   _pkg="linux-375271532bit"; _pkg_dir="NVIDIA-Linux-x86-$pkgver" ;;
-  x86_64) _pkg="linux-3752715-64-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
+  i686)   _pkg="${pkgver//./}-linux-32bit"; _pkg_dir="NVIDIA-Linux-x86-$pkgver" ;;
+  x86_64) _pkg="${pkgver//./}-linux-64bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
 esac
 
 # Source
-source=('20-nvidia.conf')
-source_i686=("https://developer.nvidia.com/linux-375271532bit")
-source_x86_64=("https://developer.nvidia.com/linux-3752715-64-bit")
-md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('0a2e0a05ed1f5babba47b5d301a4e8fa')
-md5sums_x86_64=('a1f786592c91c97d654fec4e84e31e56')
+source=('10-nvidia-drm-outputclass.conf'
+        '20-nvidia.conf')
+source_i686=("https://developer.nvidia.com/${pkgver//./}-linux-32bit")
+source_x86_64=("https://developer.nvidia.com/${pkgver//./}-linux-64bit")
+md5sums=('4f5562ee8f3171769e4638b35396c55d'
+         '2640eac092c220073f0668a7aaff61f7')
+md5sums_i686=('07d6373f9d2672afacf11be1060bebb6')
+md5sums_x86_64=('b41bddbe1a613f3c3a07591a276f3202')
 
 _create_links() {
   # create missing soname links
@@ -55,7 +56,7 @@ package_opencl-nvidia-vulkan-developer-beta() {
   pkgdesc="NVIDIA's OpenCL implemention for 'nvidia-utils-vulkan-developer-beta'"
   depends=('zlib')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('opencl-nvidia' 'opencl-driver')
+  provides=("opencl-nvidia=$pkgver" 'opencl-driver')
   conflicts=('opencl-nvidia')
   cd $_pkg_dir
 
@@ -74,59 +75,54 @@ package_opencl-nvidia-vulkan-developer-beta() {
 
 package_nvidia-libgl-vulkan-developer-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-vulkan-developer-beta'"
-  depends=("nvidia>=375.27.10", 'mesa')
-  provides=('libgl' 'nvidia-libgl')
-  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
+  depends=('nvidia-utils-vulkan-developer-beta')
+  provides=("nvidia-libgl=$pkgver" 'libgl' 'libegl' 'libgles')
+  conflicts=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
   cd $_pkg_dir
 
-  # GLX extension for X (link)
-  install -d "$pkgdir"/usr/lib/xorg/modules/extensions/
-  ln -s /usr/lib/nvidia/xorg/modules/extensions/libglx.so.$pkgver \
-        "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so.$pkgver
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so.1
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so
+  mkdir -p "${pkgdir}/usr/lib/"
 
   # libGL (link)
-  ln -s /usr/lib/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1.0.0
-  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1
-  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so
-
-  # GLX (link)
-  ln -s /usr/lib/nvidia/libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
-  ln -s libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.$pkgver
-  ln -s libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so
+  ln -s /usr/lib/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1
+  ln -s libGL.so.1 "$pkgdir"/usr/lib/libGL.so
 
   # EGL (link)
   ln -s /usr/lib/nvidia/libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.1
-  ln -s libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.$pkgver
   ln -s libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so
 
   # OpenGL ES 1 (link)
   ln -s /usr/lib/nvidia/libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so.1
-  ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so.$pkgver
   ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so
 
   # OpenGL ES 2 (link)
   ln -s /usr/lib/nvidia/libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so.2
-  ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so.$pkgver
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so
 
-  # VDPAU (link)
-  ln -s /usr/lib/vdpau/libvdpau_nvidia.so.$pkgver "$pkgdir"/usr/lib/libvdpau_nvidia.so
-  
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
   ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-libgl
 }
 
+package_nvidia-egl-wayland-vulkan-developer-beta() {
+  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for 'nvidia-utils-vulkan-developer-beta'"
+  depends=('nvidia-utils-beta')
+  provides=('egl-wayland')
+  conflicts=('egl-wayland')
+  cd $_pkg_dir
+
+  install -Dm755 libnvidia-egl-wayland.so.1.0.1 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.1
+  ln -s libnvidia-egl-wayland.so.1.0.1 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
+}
+
 package_nvidia-utils-vulkan-developer-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (vulkan developer beta version)"
-  depends=('xorg-server')
+  depends=('xorg-server' 'mesa>=17.0.2-2')
   optdepends=('gtk2: nvidia-settings (GTK+ v2)'
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-vulkan-developer-beta: OpenCL support'
-              'xorg-server-devel: nvidia-xconfig')
-  provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd' 'vulkan-driver')
+              'xorg-server-devel: nvidia-xconfig'
+              'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)')
+  provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
   install=$pkgname.install
@@ -136,25 +132,28 @@ package_nvidia-utils-vulkan-developer-beta() {
   install -Dm755 nvidia_drv.so "$pkgdir"/usr/lib/xorg/modules/drivers/nvidia_drv.so
 
   # GLX extension for X
-  install -Dm755 libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/modules/extensions/libglx.so.$pkgver
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/modules/extensions/libglx.so
+  install -Dm755 libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so.$pkgver
+  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so.1   # X doesn't find glx otherwise
+  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so     # X doesn't find glx otherwise
 
-  # OpenGL
+  # libGL & OpenGL
   install -Dm755 libGL.so.1.0.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.0.0
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glcore.so.$pkgver
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib/libOpenGL.so.0
 
   # GLX
-  install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/nvidia/libGLX.so.0
+  install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
   install -Dm755 libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_nvidia.so.$pkgver
+  # now in mesa driver
+  #ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
 
   # EGL
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-eglcore.so.$pkgver
-  install -Dm755 libnvidia-egl-wayland.so.$pkgver "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.$pkgver
   install -Dm644 10_nvidia.json "$pkgdir"/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+  install -Dm644 10_nvidia_wayland.json "$pkgdir"/usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json
 
   # OpenGL ES
   install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib/nvidia/libGLESv1_CM.so.1
@@ -267,5 +266,5 @@ package_nvidia-utils-vulkan-developer-beta() {
   install -Dm644 "$srcdir"/20-nvidia.conf "$pkgdir"/etc/X11/xorg.conf.d/20-nvidia.conf
 
   # Distro-specific files must be installed in /usr/share/X11/xorg.conf.d
-  install -Dm644 nvidia-drm-outputclass.conf "$pkgdir"/usr/share/X11/xorg.conf.d/nvidia-drm-outputclass.conf
+  install -Dm644 "$srcdir"/10-nvidia-drm-outputclass.conf "$pkgdir"/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 }
