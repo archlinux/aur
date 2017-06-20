@@ -1,0 +1,19 @@
+pkgbase = casync
+	pkgdesc = Content-Addressable Data Synchronization Tool
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/systemd/casync
+	arch = x86
+	arch = x86_64
+	license = LGPL
+	checkdepends = rsync
+	makedepends = meson
+	depends = acl
+	depends = libcurl.so
+	depends = libgcrypt
+	depends = xz
+	source = casync-1.tar.gz::https://github.com/systemd/casync/archive/v1.tar.gz
+	sha256sums = 34251880f06f4625b92ee0cbcd2aafc426e5e5367f43a1a3c0551484eef62b00
+
+pkgname = casync
+
