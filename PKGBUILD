@@ -8,7 +8,7 @@ arch=('any')
 url="https://pypi.python.org/pypi/$_name"
 license=('GPL3')
 optdepends=('python-ujson: faster json decoding' 'python-sphinx: documentation generator')
-depends=('python>=3.4' 'python-dateutil>=2.4.2' 'python-requests>=2.7.0' 'python-ripe-atlas-cousteau>=1.2' 'python-ripe-atlas-sagan>=1.1.10' 'python-tzlocal' 'python-yaml' 'python-pyopenssl>=0.13')
+depends=('python>=3.4' 'python-dateutil>=2.4.2' 'python-requests>=2.7.0' 'python-ripe-atlas-cousteau>=1.4' 'python-ripe-atlas-sagan>=1.2' 'python-tzlocal' 'python-yaml' 'python-pyopenssl>=0.13')
 makedepends=('python-setuptools')
 provides=('ripe-atlas-tools')
 source=("https://pypi.io/packages/source/r/$_name/$_name-$pkgver.tar.gz")
