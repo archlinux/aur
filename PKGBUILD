@@ -1,6 +1,6 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=tab
-pkgver=6.0
+pkgver=6.2.2
 pkgrel=1
 pkgdesc="A general-purpose query language for text files."
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ license=('custom:boost')
 depends=('gcc-libs')
 makedepends=()
 source=("https://bitbucket.org/tkatchev/tab/get/${pkgver}.tar.bz2")
-sha256sums=('e5b054c307d4b0ad2c026616e979af212ee1145d430a2422f98bcea74283cce9')
+sha256sums=('19edd1183ee0e3bb9d79e022141567779ef42d9ebddbfd09317aaf5bc700be8d')
 
-_dirname="tkatchev-tab-19b5a0ea71ae"
+_dirname="tkatchev-tab-efe6f906ae05"
 
 build() {
 	cd "$_dirname"
