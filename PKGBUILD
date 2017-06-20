@@ -1,7 +1,7 @@
 # Maintainer: Wouter de Vries <wouter@wouter-web.nl>
 _name=ripe.atlas.tools
 pkgname=ripe-atlas-tools
-pkgver=2.0.2
+pkgver=2.1
 pkgrel=1
 pkgdesc="The official command-line client for RIPE Atlas"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.4' 'python-dateutil>=2.4.2' 'python-requests>=2.7.0' 'python
 makedepends=('python-setuptools')
 provides=('ripe-atlas-tools')
 source=("https://pypi.io/packages/source/r/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a6a46fb85cb40f0f5644df3df5110cbdc0394b278f289cbe6462cbb10eda0d78')
+sha256sums=('85a6bac9a685d229a95f614131983e57c5c8d890c5c126c625bd81dbbb64091e')
 
 package() {
     cd "$srcdir/$_name-$pkgver"
