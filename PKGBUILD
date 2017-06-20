@@ -1,8 +1,8 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=2.13.2739.r3.gbbc8c91
-pkgrel=3
+pkgver=2.14.2744.r1.geb28115
+pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -10,7 +10,8 @@ license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('gendesk' 'grunt-cli' 'npm' 'python2')
-optdepends=('hunspell-en: for English spellcheck support')
+optdepends=('hunspell-en: for English spellcheck support'
+            'rust: for encryption speed improvements (optional makedep)')
 provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git")
 sha256sums=('SKIP')
