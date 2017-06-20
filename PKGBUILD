@@ -1,9 +1,9 @@
-# Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 # Contributor: Kent Fredric <kentnl@cpan.org>
 # Contributor: Petrenko Alexey <alexey-p at uralweb dot ru>
 
 pkgname=perl-devel-nytprof
-pkgver=6.03
+pkgver=6.04
 pkgrel=1
 _author='T/TI/TIMB'
 _perlmod='Devel-NYTProf'
@@ -21,37 +21,35 @@ checkdepends=(
 # perl-moose
 # perl-test-portability-files
 perl-test-pod-coverage
+perl-test-portability-files
 )
 makedepends=(perl-extutils-makemaker)
 arch=('i686' 'x86_64')
 license=('GPL')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha1sums=('85533c100cd89eb6cca640330db7ff0cb99e7b2b')
+unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-
-  /usr/bin/perl Makefile.PL
+  perl Makefile.PL
   make
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-  HARNESS_OPTIONS=j10 make test
+#   HARNESS_OPTIONS=j10 make test
+  make test
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-  make install
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 
   # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-  install -dm755 "$pkgdir"/usr/bin
+#   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+#   install -dm755 "$pkgdir"/usr/bin
   # for nytprofhtml
-  ln -s /usr/bin/vendor_perl/nytprofcalls "$pkgdir"/usr/bin/nytprofcalls
-  ln -s /usr/bin/vendor_perl/flamegraph.pl "$pkgdir"/usr/bin/flamegraph.pl
+#   ln -s /usr/bin/vendor_perl/nytprofcalls "$pkgdir"/usr/bin/nytprofcalls
+#   ln -s /usr/bin/vendor_perl/flamegraph.pl "$pkgdir"/usr/bin/flamegraph.pl
 }
+sha256sums=('c04c9f03663b7e4e9cc159f30bcdc0bab5652889c88c425ec157e831318d4891')
