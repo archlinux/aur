@@ -1,6 +1,6 @@
 pkgbase = simp_le-git
 	pkgdesc = Simple Let's Encrypt client.
-	pkgver = 0.2.0.r10.gd88af9d
+	pkgver = 0.2.0.r15.g09e5226
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/zenhack/simp_le
@@ -18,9 +18,7 @@ pkgbase = simp_le-git
 	provides = simp_le
 	conflicts = simp_le
 	source = simp_le::git+https://github.com/zenhack/simp_le.git
-	source = acme_0.15.patch
 	md5sums = SKIP
-	md5sums = 718c7d24821a24f92f7fa26401635f8c
 
 pkgname = simp_le-git
 
