@@ -1,12 +1,12 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thebeat
-pkgver=0.3
+pkgver=0.4
 pkgrel=0
 pkgdesc="Audio Player based on Phonon"
 arch=("x86_64")
 url="https://github.com/vicr123/thebeat"
 license=('GPL3')
-depends=('libmusicbrainz5' 'xdg-utils' 'phonon-qt5'  'qt5-base')
+depends=('libmusicbrainz5' 'xdg-utils' 'phonon-qt5'  'qt5-base' 'taglib')
 makedepends=('git' 'clang')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/thebeat.git')
 md5sums=('SKIP')
