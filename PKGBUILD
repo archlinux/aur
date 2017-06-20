@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.11.880.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -24,10 +24,10 @@ package() {
     cp -a {opt,usr} "$pkgdir"
 
     # suid sandbox
-    chmod 4755 "$pkgdir/opt/vivaldi-snapshot/vivaldi-sandbox"
+    chmod 4755 "$pkgdir/opt/$pkgname/vivaldi-sandbox"
 
     # make /usr/bin/vivaldi-snapshot available
-    binf="$pkgdir/usr/bin/vivaldi-snapshot"
+    binf="$pkgdir/usr/bin/$pkgname"
     if [[ ! -e "$binf" ]] && [[ ! -f "$binf" ]] && [[ ! -L "$binf" ]]; then
         install -dm755 "$pkgdir/usr/bin"
         ln -s /opt/$pkgname/$pkgname "$binf"
@@ -35,13 +35,13 @@ package() {
 
     # install icons
     for res in 16 22 24 32 48 64 128 256; do
-        install -Dm644 "$pkgdir/opt/vivaldi-snapshot/product_logo_${res}.png" \
-            "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vivaldi-snapshot.png"
+        install -Dm644 "$pkgdir/opt/$pkgname/product_logo_${res}.png" \
+            "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$pkgname.png"
     done
 
     # license
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    strings "$pkgdir/opt/vivaldi/locales/en-US.pak" \
+    strings "$pkgdir/opt/$pkgname/locales/en-US.pak" \
         | tr '\n' ' ' \
         | sed -rne 's/.*(<html lang.*>.*html>).*/\1/p' \
         | w3m -I 'utf-8' -T 'text/html' \
