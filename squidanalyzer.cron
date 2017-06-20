@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/squid-analyzer > /dev/null 2>&1
