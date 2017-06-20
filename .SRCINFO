@@ -8,6 +8,7 @@ pkgbase = casync-git
 	license = LGPL
 	checkdepends = rsync
 	makedepends = git
+	makedepends = meson
 	depends = acl
 	depends = libcurl.so
 	depends = libgcrypt
