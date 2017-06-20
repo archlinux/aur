@@ -1,0 +1,15 @@
+pkgbase = ct-submit
+	pkgdesc = A program for submitting X.509 certificate chains to Certificate Transparency log servers.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/grahamedgecombe/ct-submit
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = go
+	provides = ct-submit
+	source = ct-submit-1.1.2.tar.gz::https://github.com/grahamedgecombe/ct-submit/archive/v1.1.2.tar.gz
+	md5sums = e31f0c1db42045765ba196e58e58f8a2
+
+pkgname = ct-submit
+
