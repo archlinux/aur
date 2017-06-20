@@ -14,7 +14,7 @@ options=('!libtool')
 provides=('isl')
 conflicts=('isl')
 source=("${pkgname%-git}::git+http://repo.or.cz/isl.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
