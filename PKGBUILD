@@ -1,4 +1,5 @@
-# Maintainer: scan
+# Maintainer: Matt Harrison <matt@harrison.us.com>
+# Contributor: scan
 
 pkgname=obsidian-2-theme
 pkgver=20170619
