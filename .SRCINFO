@@ -1,6 +1,6 @@
 pkgbase = haskell-servant
 	pkgdesc = A family of combinators for defining webservices APIs
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://haskell-servant.readthedocs.io
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = haskell-servant
 	depends = haskell-vault
 	options = strip
 	options = staticlibs
-	source = https://hackage.haskell.org/packages/archive/servant/0.10/servant-0.10.tar.gz
-	sha256sums = e1daa9ba2b759615341345a17a95833729ae3200af12dacec07507a95a4b331e
+	source = https://hackage.haskell.org/packages/archive/servant/0.11/servant-0.11.tar.gz
+	sha256sums = c5b3f7af140fdafd3f646dcea6720c1b3b8a376f1f19a020b200acde64846b03
 
 pkgname = haskell-servant
 

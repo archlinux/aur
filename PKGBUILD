@@ -2,7 +2,7 @@
 
 _hkgname=servant
 pkgname=haskell-servant
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="A family of combinators for defining webservices APIs"
 url="https://haskell-servant.readthedocs.io"
@@ -25,7 +25,7 @@ depends=('ghc'
          'haskell-vault')
 options=('strip' 'staticlibs')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('e1daa9ba2b759615341345a17a95833729ae3200af12dacec07507a95a4b331e')
+sha256sums=('c5b3f7af140fdafd3f646dcea6720c1b3b8a376f1f19a020b200acde64846b03')
 
 build() {
   cd "${_hkgname}-${pkgver}"
