@@ -3,7 +3,7 @@
 
 pkgname=firefox-pentadactyl-signed
 pkgver=7309
-pkgrel=1
+pkgrel=2
 pkgdesc='Firefox for Vim and Links addicts (signed fork)'
 url=http://5digits.org/pentadactyl
 arch=('any')
