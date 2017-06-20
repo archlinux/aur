@@ -1,0 +1,9 @@
+[Unit]
+Description=Keycloak server
+After=network.target
+
+[Service]
+ExecStart=/opt/keycloak/bin/standalone.sh
+
+[Install]
+WantedBy=multi-user.target
