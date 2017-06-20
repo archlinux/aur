@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r129596
+pkgver=26.0.50.r129610
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
