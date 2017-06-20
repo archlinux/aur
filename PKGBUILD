@@ -13,6 +13,7 @@ license=('MIT')
 provides=('dogecoin-qt')
 depends=('miniupnpc' 'boost-libs' 'protobuf' 'openssl-1.0' 'db')
 makedepends=('boost' 'gcc' 'make' 'git' 'qt4' 'miniupnpc' 'boost-libs' 'protobuf' 'openssl' 'db')
+# Patches are from https://sources.debian.net/data/main/d/dogecoin/1.10.0-5/debian/patches/
 source=("https://github.com/dogecoin/dogecoin/archive/v${pkgver}.tar.gz"
 		"0001-configure.ac_use_PIC.patch"
 		"0002-rename-libbitcoinconsensus-to-libdogecoinconsensus.patch"
