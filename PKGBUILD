@@ -2,7 +2,7 @@
 
 pkgname=thunar-gtk3
 pkgver=1.6.90
-pkgrel=4
+pkgrel=5
 pkgdesc='Modern file manager for Xfce - GTK3 Version'
 arch=('i686' 'x86_64')
 license=('GPL')

@@ -1,7 +1,7 @@
 pkgbase = thunar-gtk3
 	pkgdesc = Modern file manager for Xfce - GTK3 Version
 	pkgver = 1.6.90
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/andreldm/thunar
 	install = thunar-gtk3.install
 	arch = i686
