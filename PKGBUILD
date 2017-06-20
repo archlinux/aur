@@ -5,7 +5,7 @@ pkgname=dump1090-mictronics-git
 _gitname=dump1090
 pkgver=3.3.0.r189.g18ac2cc
 pkgrel=1
-pkgdesc="FMictronics fork of dump1090, a simple Mode S decoder for RTLSDR devices."
+pkgdesc="Mictronics fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/Mictronics/dump1090"
 license=('BSD')
@@ -17,8 +17,8 @@ source=('dump1090::git+git://github.com/Mictronics/dump1090'
 	'dump1090.service'
 	'lighttpd.conf')
 md5sums=('SKIP'
-         'b0b8292df98aab3f514c43f03eb71d06'
-         'e01a5f1b57d5d553bf595f9c0f83ceb9')
+         '8f904fca438ad66287a8d6ddd991a2f4'
+         '2e261d49ace7de3d703e747f80479cad')
 install='dump1090-mictronics.install'
  
 pkgver() {
