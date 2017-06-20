@@ -3,7 +3,7 @@
 
 pkgname=netboot
 pkgver=20100119
-pkgrel=2
+pkgrel=3
 pkgdesc="a simple PXE-compatible DHCP and TFTP server"
 arch=(i686 x86_64)
 url="http://brokestream.com/netboot.html"
@@ -11,6 +11,7 @@ license=(BSD)
 depends=(glibc)
 makedepends=(gcc)
 source=(http://brokestream.com/netboot.c)
+install=netboot.install
 
 build() {
      cd $srcdir
