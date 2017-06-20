@@ -5,14 +5,12 @@ pkgname=icecat-bin
 _pkgname=icecat
 pkgver=52.1.0
 _pkgver=${pkgver}-gnu1
-pkgrel=2
+pkgrel=3
 pkgdesc="Binary build of the GNU version of the Mozilla Firefox browser"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gnuzilla/"
 license=('GPL' 'MPL' 'LGPL')
-depends=('gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'pango' 'freetype2' 'libxft' 'libx11')
+depends=('gtk2' 'gtk3' 'libxt' 'dbus-glib' 'nss')
 makedepends=()
 provides=('icecat')
 conflicts=('icecat')
