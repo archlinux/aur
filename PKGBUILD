@@ -2,7 +2,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=isl-git
-pkgver=0.18.148.gb19553a4
+pkgver=0.18.765.g2c2d5c36
 pkgrel=1
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints (development version)"
 arch=('i686' 'x86_64')
