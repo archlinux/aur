@@ -1,0 +1,34 @@
+pre_install() {
+
+  cat << EOM
+Edit /etc/httpd/conf/extra/pmos.conf and make sure you add the following
+line to your /etc/httpd/conf/httpd.conf file:
+
+Include conf/extra/pmos.conf
+
+Enable php56 in apache by adding the following line in your
+/etc/httpd/conf/httpd.conf file:
+
+Include conf/extra/php56_module.conf
+
+Also make sure the following modules are enabled in apache: php5_module,
+rewrite_module, expires_module, deflate_module, vhost_alias
+
+Make sure date.timezone is set appropriately in /etc/php56/php.ini and the
+following modules are enabled: curl, gd, ldap, mcrypt, mysql, pdo_mysql,
+and soap.
+
+In the [mysqld] section of /etc/mysql/my.cnf make sure you have the
+following lines:
+
+binlog_format=row
+sql_mode=""
+log_bin_trust_function_creators=1
+
+Otherwise the final query of the installation may fail.
+
+Finally, point your browser to http://localhost to complete your
+installation
+EOM
+
+}

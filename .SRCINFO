@@ -1,0 +1,24 @@
+pkgbase = processmaker
+	pkgdesc = Open source web based workflow software and Business Process Management software
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://www.processmaker.com
+	install = processmaker-3.2.install
+	arch = any
+	license = AGPLv3
+	depends = apache
+	depends = mysql55
+	depends = php56
+	depends = php56-apache
+	depends = php56-gd
+	depends = php56-ldap
+	depends = php56-mcrypt
+	noextract = processmaker-3.2-community.tar.gz
+	backup = etc/httpd/conf/extra/pmos.conf
+	source = https://downloads.sourceforge.net/project/processmaker/ProcessMaker/3.2/processmaker-3.2-community.tar.gz
+	source = pmos.conf
+	md5sums = 57caa5f467cfbe87e54c46714ce01e53
+	md5sums = 3d0be1a15ebf8e89b318fea3f4b64ba9
+
+pkgname = processmaker
+
