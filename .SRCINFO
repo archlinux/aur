@@ -1,0 +1,16 @@
+pkgbase = woeusb-git
+	pkgdesc = A Linux program to create Windows USB stick installer from a real Windows DVD or an image
+	pkgver = r484.b67b343
+	pkgrel = 1
+	url = https://github.com/slacka/WoeUSB
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = webkitgtk2
+	depends = wxgtk3
+	provides = woeusb
+	source = git+https://github.com/slacka/WoeUSB.git
+	md5sums = SKIP
+
+pkgname = woeusb-git
+
