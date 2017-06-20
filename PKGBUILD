@@ -12,7 +12,6 @@ license=('GPL3')
 depends=('gcc-libs')
 source=("https://github.com/friedrich/hans/archive/v${pkgver}.tar.gz")
 sha1sums=('8b5b5ad005afedf4a6bba5dd845c9ea40f2d6dd8')
-provides=('hans')
 
 build() {
 	make -C "${srcdir}/hans-${pkgver}"

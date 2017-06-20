@@ -7,7 +7,6 @@ pkgbase = hans
 	arch = x86_64
 	license = GPL3
 	depends = gcc-libs
-	provides = hans
 	source = https://github.com/friedrich/hans/archive/v1.0.tar.gz
 	sha1sums = 8b5b5ad005afedf4a6bba5dd845c9ea40f2d6dd8
 
