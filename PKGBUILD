@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Sinitsyn <bogdan.sinitsyn@gmail.com>
 pkgname=plasma5-applets-playbar2-git
-pkgver=2.5.r1.g68f506e
+pkgver=9999
 pkgrel=1
 pkgdesc="Applet that shows now playing music"
 arch=('i686' 'x86_64')
@@ -30,10 +30,14 @@ pkgver() {
   git describe --long --tags | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
+prepare() {
+  mkdir -p build
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
 
-  mkdir -p build && cd build
+  cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make
 }
