@@ -1,0 +1,16 @@
+pkgbase = gps-share
+	pkgdesc = Utility to share your GPS device on local network
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zeenix/gps-share
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cargo
+	makedepends = systemd
+	depends = dbus
+	source = gps-share-0.1.0.tar.gz::https://github.com/zeenix/gps-share/archive/0.1.0.tar.gz
+	sha256sums = 3af9f03d2be9c55a6f21e1d2360ced00e980d301e54525cf8d9b29ddc426a10e
+
+pkgname = gps-share
+
