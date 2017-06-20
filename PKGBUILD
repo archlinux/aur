@@ -24,6 +24,9 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
 
+  rm .npmignore .gitignore LICENSE package.json
+  rm -rf .git/ .idea/ Samples/ Scripts/
+
   IFS=$'\n'
   for file in `find -type f`
   do
