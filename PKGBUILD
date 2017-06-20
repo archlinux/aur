@@ -5,7 +5,7 @@
 
 pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.11
-pkgver=4.11.3
+pkgver=4.11.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -37,16 +37,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
+            '1686ea3200069acd7869075a208ad6771c651b4f9d942b4a340fb8606c75fe13'
             'SKIP'
-            'c479246846a98ca99e4116de44829b2f4bfd56506f3bd268c07d61f1f1e137d4'
-            '376cfe624987b477689b811ff7bc42a5eddf132a08e01f61fcc4ae2f0e88a584'
+            '300c0c48214bec689b875a6b7fec9f9bb97567aa4060e83c085396a17ca7d93b'
+            'ee121a59415c035c2a5fc7ac3632907ef4bc9bb7c902ae5b5b923760610882ae'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'ae7afa82f5cedbac1a4c6039624c856961a8986c01d29251de9cde6ed46367ad' # -- patches
             '3d5480edc8267c1f88c67bf57a97df628b500af1f1767dfe5dd9eee423ed39d2'
             '643c0b2b33ae4014f739359c8477e70ea8bb97fa7349970ce7c6e81704bac88a'
-            'df4a4bb8e3ee8f2b88490ceaf3c539486fb8a0c0b8cba88161e90b36854a9f5f' 
+            'df4a4bb8e3ee8f2b88490ceaf3c539486fb8a0c0b8cba88161e90b36854a9f5f'
             '91282b2cfae138b78b36b3efefd66514ee0cbdcc22f25b28568c2ca8e419a1aa'
 )
 
@@ -181,7 +181,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
