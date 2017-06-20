@@ -3,4 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !nvidia-vulkan-developer-beta.install
-!linux-4.10.patch
+!linux-4.11.patch
