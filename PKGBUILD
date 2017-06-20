@@ -2,7 +2,7 @@
 
 _gitname=Pokemon-Terminal
 pkgname=pokemon-terminal-git
-pkgver=r121.fd679eb
+pkgver=r127.489cd9e
 pkgrel=1
 pkgdesc="Pokemon terminal themes"
 arch=('any')
@@ -32,7 +32,7 @@ package() {
 
   chmod 755 "${pkgdir}/opt/pokemon-terminal/main.py"
 
-  mkdir "${pkgdir}/usr"
-  mkdir "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/pokemon-terminal/main.py" "${pkgdir}/usr/bin/pokemon"
+  ln -s "/opt/pokemon-terminal/main.py" "${pkgdir}/usr/bin/ichooseyou"
 }
