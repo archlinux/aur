@@ -1,15 +1,15 @@
 # Maintainer: Omri Mor <omri50@gmail.com>
 pkgname=libdispatch-git
-pkgver=2017.06.17.a.r0.g56f36b6
-pkgrel=1
+pkgver=2017.06.19.a.r0.g56f36b6
+pkgrel=2
 pkgdesc="Comprehensive support for concurrent code execution on multicore hardware"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="https://apple.github.io/swift-corelibs-libdispatch/"
 license=('Apache')
-depends=('libbsd')
+depends=('libbsd' 'libblocksruntime')
 makedepends=('git' 'clang')
-provides=('libdispatch' 'libdispatch-clang-git' 'libblocksruntime')
-conflicts=('libdispatch' 'libdispatch-clang-git' 'libblocksruntime' 'swift' 'swift-development')
+provides=('libdispatch' 'libdispatch-clang-git')
+conflicts=('libdispatch' 'libdispatch-clang-git' 'swift' 'swift-development')
 replaces=('libdispatch-clang-git')
 source=('libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch.git')
 md5sums=('SKIP')
@@ -26,7 +26,11 @@ prepare() {
 build() {
 	cd "$srcdir/libdispatch"
 	sh autogen.sh
-	OBJCFLAGS="$CFLAGS" OBJCXXFLAGS="$CXXFLAGS" ./configure --prefix=/usr
+	./configure \
+		--prefix=/usr \
+		--disable-embedded-blocks-runtime \
+		OBJCFLAGS="$CFLAGS" \
+		OBJCXXFLAGS="$CXXFLAGS"
 	make
 }
 
@@ -38,5 +42,4 @@ check() {
 package() {
 	cd "$srcdir/libdispatch"
 	make DESTDIR="$pkgdir/" install
-	ln -s "$pkgdir/usr/lib/libdispatch.so" "$pkgdir/usr/lib/libBlocksRuntime.so"
 }
