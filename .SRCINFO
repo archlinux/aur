@@ -12,7 +12,7 @@ pkgbase = isl-git
 	provides = isl
 	conflicts = isl
 	options = !libtool
-	source = git://repo.or.cz/isl.git
+	source = isl::git+http://repo.or.cz/isl.git
 	md5sums = SKIP
 
 pkgname = isl-git
