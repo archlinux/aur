@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/LazoCoder/$_gitname"
 license=('GPL3')
 depends=('python>=3.5')
-optdepends=('glib2: support changing GNOME wallpaper'
+optdepends=('gnome-shell: support changing GNOME wallpaper'
             'terminology: support changing Terminology background'
             'tilix: support changing Tilix background')
 makedepends=('git')

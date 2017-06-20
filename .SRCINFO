@@ -7,7 +7,7 @@ pkgbase = pokemon-terminal-git
 	license = GPL3
 	makedepends = git
 	depends = python>=3.5
-	optdepends = glib2: support changing GNOME wallpaper
+	optdepends = gnome-shell: support changing GNOME wallpaper
 	optdepends = terminology: support changing Terminology background
 	optdepends = tilix: support changing Tilix background
 	source = git://github.com/LazoCoder/Pokemon-Terminal.git
