@@ -2,7 +2,7 @@
 
 pkgname=clamav-light
 _pkgname=clamav
-pkgver=0.98.4
+pkgver=0.99.2
 pkgrel=1
 pkgdesc="ClamAV manual scanner"
 arch=('i686' 'x86_64')
@@ -11,11 +11,14 @@ license=('GPL')
 depends=('bzip2' 'gcc-libs' 'libltdl')
 makedepends=('intltool' 'autoconf')
 conflicts=('clamav')
-source=(http://downloads.sourceforge.net/$_pkgname/$_pkgname-${pkgver}.tar.gz)
-md5sums=('6d409eab6c311de05a0a591fccd2ec83')
+source=("https://www.clamav.net/downloads/production/${_pkgname}-${pkgver}.tar.gz"
+	'make_it_compile_against_openssl_1_1_0.patch')
+sha256sums=('167bd6a13e05ece326b968fdb539b05c2ffcfef6018a274a10aeda85c2c0027a'
+            '0a8e02a91bc3f2c99bd52dc475592637376baa991fe3f899b7745b840fc586c5')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
+	patch -Np1 -i ../make_it_compile_against_openssl_1_1_0.patch
 	sed -i '/clamsubmit/s/^/#/ ; /^pkgconfig/s/^/#/ ; /^bin_SCRIPTS/s/^/#/ ; s/^SUBDIRS.*/SUBDIRS = libclamav clamscan freshclam docs/' ./Makefile.am
 	sed -i 's/^man_MANS.*/man_MANS = man\/clamscan.1 man\/freshclam.1 man\/freshclam.conf.5/' ./docs/Makefile.am
 	autoreconf -fi
@@ -26,7 +29,7 @@ build() {
 	./configure --prefix=/usr --sysconfdir=/etc --with-dbdir=/var/lib/clamav \
 		    --disable-clamav --enable-dns-fix --with-gnu-ld --without-included-ltdl \
 		    --disable-milter --disable-ipv6 --disable-clamdtop --disable-fanotify \
-		    --disable-unrar --enable-llvm=no
+		    --disable-unrar --enable-llvm=no --disable-zlib-vcheck
 	make
 }
 
