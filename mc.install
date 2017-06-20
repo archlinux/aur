@@ -1,0 +1,5 @@
+pre_install() {
+   cat <<'EOF'
+NOTE: The binary is named minio-client
+EOF
+}
