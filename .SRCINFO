@@ -1,7 +1,7 @@
 pkgbase = openvpn-protonvpn
 	pkgdesc = OpenVPN configuration files and helper for protonvpn.com
-	pkgver = 20170520
-	pkgrel = 2
+	pkgver = 20170620
+	pkgrel = 1
 	url = https://protonvpn.com/
 	arch = any
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = openvpn-protonvpn
 	depends = openvpn
 	provides = protonvpn
 	noextract = zip
-	source = openvpn-protonvpn-20170520.zip::https://protonvpn.com/download/ProtonVPN_config.zip
-	sha256sums = f2e1829101f57e0ff900e5c36b22dae8915d8fbacd798d7bba3bfb85dde489fc
+	source = openvpn-protonvpn-20170620.zip::https://account.protonvpn.com/api/vpn/config?Category=Server&Platform=Linux&Protocol=udp&Tier=2
+	sha256sums = SKIP
 
 pkgname = openvpn-protonvpn
 
