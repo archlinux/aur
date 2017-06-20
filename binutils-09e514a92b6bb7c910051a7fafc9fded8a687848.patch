@@ -1,8 +1,75 @@
 diff --git a/bfd/ChangeLog b/bfd/ChangeLog
-index 85c6a817e5..17e7e3b9bf 100644
+index 85c6a817e5..a51642bd75 100644
 --- a/bfd/ChangeLog
 +++ b/bfd/ChangeLog
-@@ -1,3 +1,25 @@
+@@ -1,3 +1,92 @@
++2017-05-01  Palmer Dabbelt  <palmer@dabbelt.com>
++
++	* config.bfd (riscv32-*): Enable rv64.
++
++2017-04-03  Palmer Dabbelt  <palmer@dabbelt.com>
++
++	* elfnn-riscv.c (GP_NAME): Delete.
++	(riscv_global_pointer_value): Change GP_NAME to RISCV_GP_SYMBOL.
++	(_bfd_riscv_relax_lui): Likewise.
++
++2017-01-17  Kuan-Lin Chen  <kuanlinchentw@gmail.com>
++
++	* elfnn-riscv.c (riscv_elf_object_p): New function.
++
++2017-04-26  Maciej W. Rozycki  <macro@imgtec.com>
++
++	PR ld/21334
++	* elf-bfd.h (elf_backend_data): Add `always_renumber_dynsyms'
++	member.
++	* elfxx-target.h [!elf_backend_always_renumber_dynsyms]
++	(elf_backend_always_renumber_dynsyms): Define.
++	(elfNN_bed): Initialize `always_renumber_dynsyms' member.
++	* elfxx-mips.h (elf_backend_always_renumber_dynsyms): Define.
++	* elflink.c (bfd_elf_size_dynsym_hash_dynstr): Also call
++	`_bfd_elf_link_renumber_dynsyms' if the backend has requested
++	it.
++	(elf_gc_sweep): Likewise.
++
++2017-04-26  Maciej W. Rozycki  <macro@imgtec.com>
++
++	* elflink.c (elf_gc_sweep): Only call
++	`_bfd_elf_link_renumber_dynsyms' if dynamic sections have been
++	created.
++
++2017-04-24  H.J. Lu  <hongjiu.lu@intel.com>
++
++	PR ld/21425
++	* elf32-i386.c (ELF_MAXPAGESIZE): Set to 0x1000 for VxWorks.
++
++2017-03-28  Hans-Peter Nilsson  <hp@axis.com>
++
++	PR ld/16044
++	* elf32-cris.c (elf_cris_adjust_gotplt_to_got): Adjust BFD_ASSERT
++	to handle a local symbol with a hash-symbol-entry; without PLT.
++	Add BFD_ASSERT for an incidental case with GOT entry present.
++	(cris_elf_check_relocs): Increment PLT refcount only if the symbol
++	isn't forced-or-set local.
++
++2017-04-13  Alan Modra  <amodra@gmail.com>
++
++	* elf32-arm.c (arm_type_of_stub): Supply missing args to "long
++	branch veneers" error.  Fix double space and format message.
++	* elf32-avr.c (avr_add_stub): Do not pass NULL as %B arg.
++	* elf64-ppc.c (tocsave_find): Supply missing %B arg.
++
++2017-04-10  H.J. Lu  <hongjiu.lu@intel.com>
++
++	PR ld/19579
++	PR ld/21306
++	* elf32-s390.c (elf_s390_finish_dynamic_symbol): Check
++	ELF_COMMON_DEF_P for common symbols.
++	* elf64-s390.c (elf_s390_finish_dynamic_symbol): Likewise.
++	* elf64-x86-64.c (elf_x86_64_relocate_section): Likewise.
++	* elflink.c (_bfd_elf_merge_symbol): Revert commits
++	202ac193bbbecc96a4978d1ac3d17148253f9b01 and
++	07492f668d2173da7a2bda3707ff0985e0f460b6.
++
 +2017-03-07  Alan Modra  <amodra@gmail.com>
 +
 +	PR 21224
@@ -28,6 +95,22 @@ index 85c6a817e5..17e7e3b9bf 100644
  2017-03-02  Tristan Gingold  <gingold@adacore.com>
  
  	* version.m4: Bump version to 2.28
+diff --git a/bfd/config.bfd b/bfd/config.bfd
+index 1b28016b91..c0312162db 100644
+--- a/bfd/config.bfd
++++ b/bfd/config.bfd
+@@ -1439,10 +1439,9 @@ case "${targ}" in
+ #ifdef BFD64
+   riscv32-*-*)
+     targ_defvec=riscv_elf32_vec
+-    targ_selvecs="riscv_elf32_vec"
++    targ_selvecs="riscv_elf32_vec riscv_elf64_vec"
+     want64=true
+     ;;
+-
+   riscv64-*-*)
+     targ_defvec=riscv_elf64_vec
+     targ_selvecs="riscv_elf32_vec riscv_elf64_vec"
 diff --git a/bfd/configure b/bfd/configure
 index 97693870c4..f30bfabef3 100755
 --- a/bfd/configure
@@ -124,6 +207,161 @@ index b001a888ea..cd31410a8e 100644
  # Controls whether to enable development-mode features by default.
 -development=false
 +development=true
+diff --git a/bfd/elf-bfd.h b/bfd/elf-bfd.h
+index 5de9ab6ca6..dc4bd87f89 100644
+--- a/bfd/elf-bfd.h
++++ b/bfd/elf-bfd.h
+@@ -1478,6 +1478,10 @@ struct elf_backend_data
+   /* Address of protected data defined in the shared library may be
+      external, i.e., due to copy relocation.   */
+   unsigned extern_protected_data : 1;
++
++  /* True if `_bfd_elf_link_renumber_dynsyms' must be called even for
++     static binaries.  */
++  unsigned always_renumber_dynsyms : 1;
+ };
+ 
+ /* Information about reloc sections associated with a bfd_elf_section_data
+diff --git a/bfd/elf32-arm.c b/bfd/elf32-arm.c
+index 0a785951dc..e04caef5ac 100644
+--- a/bfd/elf32-arm.c
++++ b/bfd/elf32-arm.c
+@@ -4024,10 +4024,12 @@ arm_type_of_stub (struct bfd_link_info *info,
+ 	      if (!thumb_only)
+ 		{
+ 		  if (input_sec->flags & SEC_ELF_PURECODE)
+-		    _bfd_error_handler (_("\
+-%B(%A): warning: long branch  veneers used in section with SHF_ARM_PURECODE section \
+-attribute is only supported for M-profile targets that implement the movw instruction."),
+-					input_sec);
++		    _bfd_error_handler
++		      (_("%B(%A): warning: long branch veneers used in"
++			 " section with SHF_ARM_PURECODE section"
++			 " attribute is only supported for M-profile"
++			 " targets that implement the movw instruction."),
++		       input_bfd, input_sec);
+ 
+ 		  stub_type = (bfd_link_pic (info) | globals->pic_veneer)
+ 		    /* PIC stubs.  */
+@@ -4056,10 +4058,12 @@ attribute is only supported for M-profile targets that implement the movw instru
+ 		  else
+ 		    {
+ 		      if (input_sec->flags & SEC_ELF_PURECODE)
+-			_bfd_error_handler (_("\
+-%B(%A): warning: long branch  veneers used in section with SHF_ARM_PURECODE section \
+-attribute is only supported for M-profile targets that implement the movw instruction."),
+-					    input_sec);
++			_bfd_error_handler
++			  (_("%B(%A): warning: long branch veneers used in"
++			     " section with SHF_ARM_PURECODE section"
++			     " attribute is only supported for M-profile"
++			     " targets that implement the movw instruction."),
++			   input_bfd, input_sec);
+ 
+ 		      stub_type = (bfd_link_pic (info) | globals->pic_veneer)
+ 			/* PIC stub.  */
+@@ -4073,13 +4077,12 @@ attribute is only supported for M-profile targets that implement the movw instru
+ 	  else
+ 	    {
+ 	      if (input_sec->flags & SEC_ELF_PURECODE)
+-		_bfd_error_handler (_("%B(%s): warning: long branch "
+-				      " veneers used in section with "
+-				      "SHF_ARM_PURECODE section "
+-				      "attribute is only supported"
+-				      " for M-profile targets that "
+-				      "implement the movw "
+-				      "instruction."));
++		_bfd_error_handler
++		  (_("%B(%A): warning: long branch veneers used in"
++		     " section with SHF_ARM_PURECODE section"
++		     " attribute is only supported" " for M-profile"
++		     " targets that implement the movw instruction."),
++		   input_bfd, input_sec);
+ 
+ 	      /* Thumb to arm.  */
+ 	      if (sym_sec != NULL
+@@ -4126,13 +4129,12 @@ attribute is only supported for M-profile targets that implement the movw instru
+ 	   || r_type == R_ARM_TLS_CALL)
+     {
+       if (input_sec->flags & SEC_ELF_PURECODE)
+-	_bfd_error_handler (_("%B(%s): warning: long branch "
+-			      " veneers used in section with "
+-			      "SHF_ARM_PURECODE section "
+-			      "attribute is only supported"
+-			      " for M-profile targets that "
+-			      "implement the movw "
+-			      "instruction."));
++	_bfd_error_handler
++	  (_("%B(%A): warning: long branch veneers used in"
++	     " section with SHF_ARM_PURECODE section"
++	     " attribute is only supported for M-profile"
++	     " targets that implement the movw instruction."),
++	   input_bfd, input_sec);
+       if (branch_type == ST_BRANCH_TO_THUMB)
+ 	{
+ 	  /* Arm to thumb.  */
+diff --git a/bfd/elf32-avr.c b/bfd/elf32-avr.c
+index 56b143d414..0f6c18834c 100644
+--- a/bfd/elf32-avr.c
++++ b/bfd/elf32-avr.c
+@@ -3284,8 +3284,7 @@ avr_add_stub (const char *stub_name,
+   if (hsh == NULL)
+     {
+       /* xgettext:c-format */
+-      _bfd_error_handler (_("%B: cannot create stub entry %s"),
+-			  NULL, stub_name);
++      _bfd_error_handler (_("cannot create stub entry %s"), stub_name);
+       return NULL;
+     }
+ 
+diff --git a/bfd/elf32-cris.c b/bfd/elf32-cris.c
+index 97b8cc3eb8..d4bbcebecc 100644
+--- a/bfd/elf32-cris.c
++++ b/bfd/elf32-cris.c
+@@ -2714,8 +2714,9 @@ elf_cris_adjust_gotplt_to_got (struct elf_cris_link_hash_entry *h, void * p)
+   struct bfd_link_info *info = (struct bfd_link_info *) p;
+ 
+   /* A GOTPLT reloc, when activated, is supposed to be included into
+-     the PLT refcount.  */
++     the PLT refcount, when the symbol isn't set-or-forced local.  */
+   BFD_ASSERT (h->gotplt_refcount == 0
++	      || h->root.plt.refcount == -1
+ 	      || h->gotplt_refcount <= h->root.plt.refcount);
+ 
+   /* If nobody wanted a GOTPLT with this symbol, we're done.  */
+@@ -2741,6 +2742,7 @@ elf_cris_adjust_gotplt_to_got (struct elf_cris_link_hash_entry *h, void * p)
+       srelgot = elf_hash_table (info)->srelgot;
+ 
+       /* Put accurate refcounts there.  */
++      BFD_ASSERT (h->root.got.refcount >= 0);
+       h->root.got.refcount += h->gotplt_refcount;
+       h->reg_got_refcount = h->gotplt_refcount;
+ 
+@@ -3476,7 +3478,10 @@ cris_elf_check_relocs (bfd *abfd,
+ 	    continue;
+ 
+ 	  h->needs_plt = 1;
+-	  h->plt.refcount++;
++
++	  /* If the symbol is forced local, the refcount is unavailable.  */
++	  if (h->plt.refcount != -1)
++	    h->plt.refcount++;
+ 	  break;
+ 
+ 	case R_CRIS_8:
+diff --git a/bfd/elf32-i386.c b/bfd/elf32-i386.c
+index 24beba3e1d..f570253ee3 100644
+--- a/bfd/elf32-i386.c
++++ b/bfd/elf32-i386.c
+@@ -6576,6 +6576,8 @@ elf32_i386_nacl_elf_object_p (bfd *abfd)
+ #undef	TARGET_LITTLE_NAME
+ #define TARGET_LITTLE_NAME		"elf32-i386-vxworks"
+ #undef	ELF_OSABI
++#undef	ELF_MAXPAGESIZE
++#define ELF_MAXPAGESIZE			0x1000
+ #undef	elf_backend_plt_alignment
+ #define elf_backend_plt_alignment	4
+ 
 diff --git a/bfd/elf32-ppc.c b/bfd/elf32-ppc.c
 index 0f3eb68d35..10caa8a95b 100644
 --- a/bfd/elf32-ppc.c
@@ -137,10 +375,32 @@ index 0f3eb68d35..10caa8a95b 100644
    if (opcode == E_OR2I_INSN
        || opcode == E_AND2I_DOT_INSN
        || opcode == E_OR2IS_INSN
+diff --git a/bfd/elf32-s390.c b/bfd/elf32-s390.c
+index fd1bc13d5c..ddb6f5b255 100644
+--- a/bfd/elf32-s390.c
++++ b/bfd/elf32-s390.c
+@@ -3785,7 +3785,7 @@ elf_s390_finish_dynamic_symbol (bfd *output_bfd,
+ 	     RELATIVE reloc.  The entry in the global offset table
+ 	     will already have been initialized in the
+ 	     relocate_section function.  */
+-	  if (!h->def_regular)
++	  if (!(h->def_regular || ELF_COMMON_DEF_P (h)))
+ 	    return FALSE;
+ 	  BFD_ASSERT((h->got.offset & 1) != 0);
+ 	  rela.r_info = ELF32_R_INFO (0, R_390_RELATIVE);
 diff --git a/bfd/elf64-ppc.c b/bfd/elf64-ppc.c
-index e7d4792245..3381647c46 100644
+index e7d4792245..765bc6b2d8 100644
 --- a/bfd/elf64-ppc.c
 +++ b/bfd/elf64-ppc.c
+@@ -7627,7 +7627,7 @@ tocsave_find (struct ppc_link_hash_table *htab,
+   if (ent.sec == NULL || ent.sec->output_section == NULL)
+     {
+       _bfd_error_handler
+-	(_("%B: undefined symbol on R_PPC64_TOCSAVE relocation"));
++	(_("%B: undefined symbol on R_PPC64_TOCSAVE relocation"), ibfd);
+       return NULL;
+     }
+ 
 @@ -14798,8 +14798,10 @@ ppc64_elf_relocate_section (bfd *output_bfd,
  	    break;
  
@@ -154,13 +414,222 @@ index e7d4792245..3381647c46 100644
  	      : (h != NULL
  		 ? h->dyn_relocs != NULL
  		 : ELF_ST_TYPE (sym->st_info) == STT_GNU_IFUNC))
+diff --git a/bfd/elf64-s390.c b/bfd/elf64-s390.c
+index b5fd05f263..fbbf8d6e1d 100644
+--- a/bfd/elf64-s390.c
++++ b/bfd/elf64-s390.c
+@@ -3582,7 +3582,7 @@ elf_s390_finish_dynamic_symbol (bfd *output_bfd,
+ 	     RELATIVE reloc.  The entry in the global offset table
+ 	     will already have been initialized in the
+ 	     relocate_section function.  */
+-	  if (!h->def_regular)
++	  if (!(h->def_regular || ELF_COMMON_DEF_P (h)))
+ 	    return FALSE;
+ 	  BFD_ASSERT((h->got.offset & 1) != 0);
+ 	  rela.r_info = ELF64_R_INFO (0, R_390_RELATIVE);
+diff --git a/bfd/elf64-x86-64.c b/bfd/elf64-x86-64.c
+index e0e6c16fcd..e363eafc02 100644
+--- a/bfd/elf64-x86-64.c
++++ b/bfd/elf64-x86-64.c
+@@ -4926,7 +4926,8 @@ do_ifunc_pointer:
+ 		{
+ 		  /* Symbol is referenced locally.  Make sure it is
+ 		     defined locally or for a branch.  */
+-		  fail = !h->def_regular && !branch;
++		  fail = (!(h->def_regular || ELF_COMMON_DEF_P (h))
++			  && !branch);
+ 		}
+ 	      else if (!(bfd_link_pie (info)
+ 			 && (h->needs_copy || eh->needs_copy)))
+diff --git a/bfd/elflink.c b/bfd/elflink.c
+index 69b66f2831..cd03a13757 100644
+--- a/bfd/elflink.c
++++ b/bfd/elflink.c
+@@ -1543,16 +1543,13 @@ _bfd_elf_merge_symbol (bfd *abfd,
+      represent variables; this can cause confusion in principle, but
+      any such confusion would seem to indicate an erroneous program or
+      shared library.  We also permit a common symbol in a regular
+-     object to override a weak symbol in a shared object.  A common
+-     symbol in executable also overrides a symbol in a shared object.  */
++     object to override a weak symbol in a shared object.  */
+ 
+   if (newdyn
+       && newdef
+       && (olddef
+ 	  || (h->root.type == bfd_link_hash_common
+-	      && (newweak
+-		  || newfunc
+-		  || (!olddyn && bfd_link_executable (info))))))
++	      && (newweak || newfunc))))
+     {
+       *override = TRUE;
+       newdef = FALSE;
+@@ -6710,6 +6707,8 @@ bfd_boolean
+ bfd_elf_size_dynsym_hash_dynstr (bfd *output_bfd, struct bfd_link_info *info)
+ {
+   const struct elf_backend_data *bed;
++  unsigned long section_sym_count;
++  bfd_size_type dynsymcount;
+ 
+   if (!is_elf_hash_table (info->hash))
+     return TRUE;
+@@ -6717,24 +6716,30 @@ bfd_elf_size_dynsym_hash_dynstr (bfd *output_bfd, struct bfd_link_info *info)
+   bed = get_elf_backend_data (output_bfd);
+   (*bed->elf_backend_init_index_section) (output_bfd, info);
+ 
++  /* Assign dynsym indices.  In a shared library we generate a section
++     symbol for each output section, which come first.  Next come all
++     of the back-end allocated local dynamic syms, followed by the rest
++     of the global symbols.
++
++     This is usually not needed for static binaries, however backends
++     can request to always do it, e.g. the MIPS backend uses dynamic
++     symbol counts to lay out GOT, which will be produced in the
++     presence of GOT relocations even in static binaries (holding fixed
++     data in that case, to satisfy those relocations).  */
++
++  if (elf_hash_table (info)->dynamic_sections_created
++      || bed->always_renumber_dynsyms)
++    dynsymcount = _bfd_elf_link_renumber_dynsyms (output_bfd, info,
++						  &section_sym_count);
++
+   if (elf_hash_table (info)->dynamic_sections_created)
+     {
+       bfd *dynobj;
+       asection *s;
+-      bfd_size_type dynsymcount;
+-      unsigned long section_sym_count;
+       unsigned int dtagcount;
+ 
+       dynobj = elf_hash_table (info)->dynobj;
+ 
+-      /* Assign dynsym indicies.  In a shared library we generate a
+-	 section symbol for each output section, which come first.
+-	 Next come all of the back-end allocated local dynamic syms,
+-	 followed by the rest of the global symbols.  */
+-
+-      dynsymcount = _bfd_elf_link_renumber_dynsyms (output_bfd, info,
+-						    &section_sym_count);
+-
+       /* Work out the size of the symbol version section.  */
+       s = bfd_get_linker_section (dynobj, ".gnu.version");
+       BFD_ASSERT (s != NULL);
+@@ -12986,7 +12991,12 @@ elf_gc_sweep (bfd *abfd, struct bfd_link_info *info)
+   elf_link_hash_traverse (elf_hash_table (info), elf_gc_sweep_symbol,
+ 			  &sweep_info);
+ 
+-  _bfd_elf_link_renumber_dynsyms (abfd, info, &section_sym_count);
++  /* We need to reassign dynsym indices now that symbols may have
++     been removed.  See the call in `bfd_elf_size_dynsym_hash_dynstr'
++     for the details of the conditions used here.  */
++  if (elf_hash_table (info)->dynamic_sections_created
++      || bed->always_renumber_dynsyms)
++    _bfd_elf_link_renumber_dynsyms (abfd, info, &section_sym_count);
+   return TRUE;
+ }
+ 
+diff --git a/bfd/elfnn-riscv.c b/bfd/elfnn-riscv.c
+index ff25ebd32e..3c04507623 100644
+--- a/bfd/elfnn-riscv.c
++++ b/bfd/elfnn-riscv.c
+@@ -52,10 +52,6 @@
+ #define ELF_MAXPAGESIZE			0x1000
+ #define ELF_COMMONPAGESIZE		0x1000
+ 
+-/* The global pointer's symbol name.  */
+-
+-#define GP_NAME "__global_pointer$"
+-
+ /* The RISC-V linker needs to keep track of the number of relocs that it
+    decides to copy as dynamic relocs in check_relocs for each symbol.
+    This is so that it can later discard them if they are found to be
+@@ -1467,7 +1463,7 @@ riscv_global_pointer_value (struct bfd_link_info *info)
+ {
+   struct bfd_link_hash_entry *h;
+ 
+-  h = bfd_link_hash_lookup (info->hash, GP_NAME, FALSE, FALSE, TRUE);
++  h = bfd_link_hash_lookup (info->hash, RISCV_GP_SYMBOL, FALSE, FALSE, TRUE);
+   if (h == NULL || h->type != bfd_link_hash_defined)
+     return 0;
+ 
+@@ -2818,7 +2814,8 @@ _bfd_riscv_relax_lui (bfd *abfd,
+       /* If gp and the symbol are in the same output section, then
+ 	 consider only that section's alignment.  */
+       struct bfd_link_hash_entry *h =
+-	bfd_link_hash_lookup (link_info->hash, GP_NAME, FALSE, FALSE, TRUE);
++	bfd_link_hash_lookup (link_info->hash, RISCV_GP_SYMBOL, FALSE, FALSE,
++			      TRUE);
+       if (h->u.def.section->output_section == sym_sec->output_section)
+ 	max_alignment = (bfd_vma) 1 << sym_sec->output_section->alignment_power;
+     }
+@@ -3205,6 +3202,19 @@ riscv_elf_grok_psinfo (bfd *abfd, Elf_Internal_Note *note)
+   return TRUE;
+ }
+ 
++/* Set the right mach type.  */
++static bfd_boolean
++riscv_elf_object_p (bfd *abfd)
++{
++  /* There are only two mach types in RISCV currently.  */
++  if (strcmp (abfd->xvec->name, "elf32-littleriscv") == 0)
++    bfd_default_set_arch_mach (abfd, bfd_arch_riscv, bfd_mach_riscv32);
++  else
++    bfd_default_set_arch_mach (abfd, bfd_arch_riscv, bfd_mach_riscv64);
++
++  return TRUE;
++}
++
+ 
+ #define TARGET_LITTLE_SYM		riscv_elfNN_vec
+ #define TARGET_LITTLE_NAME		"elfNN-littleriscv"
+@@ -3230,6 +3240,7 @@ riscv_elf_grok_psinfo (bfd *abfd, Elf_Internal_Note *note)
+ #define elf_backend_plt_sym_val		     riscv_elf_plt_sym_val
+ #define elf_backend_grok_prstatus            riscv_elf_grok_prstatus
+ #define elf_backend_grok_psinfo              riscv_elf_grok_psinfo
++#define elf_backend_object_p                 riscv_elf_object_p
+ #define elf_info_to_howto_rel		     NULL
+ #define elf_info_to_howto		     riscv_info_to_howto_rela
+ #define bfd_elfNN_bfd_relax_section	     _bfd_riscv_relax_section
+diff --git a/bfd/elfxx-mips.h b/bfd/elfxx-mips.h
+index fa5b5d2de9..274129b2e5 100644
+--- a/bfd/elfxx-mips.h
++++ b/bfd/elfxx-mips.h
+@@ -196,3 +196,4 @@ literal_reloc_p (int r_type)
+ #define elf_backend_post_process_headers _bfd_mips_post_process_headers
+ #define elf_backend_compact_eh_encoding _bfd_mips_elf_compact_eh_encoding
+ #define elf_backend_cant_unwind_opcode _bfd_mips_elf_cant_unwind_opcode
++#define elf_backend_always_renumber_dynsyms TRUE
+diff --git a/bfd/elfxx-target.h b/bfd/elfxx-target.h
+index d063fb7f1b..d07600c15d 100644
+--- a/bfd/elfxx-target.h
++++ b/bfd/elfxx-target.h
+@@ -126,6 +126,9 @@
+ #ifndef elf_backend_extern_protected_data
+ #define elf_backend_extern_protected_data 0
+ #endif
++#ifndef elf_backend_always_renumber_dynsyms
++#define elf_backend_always_renumber_dynsyms FALSE
++#endif
+ #ifndef elf_backend_stack_align
+ #define elf_backend_stack_align 16
+ #endif
+@@ -866,7 +869,8 @@ static struct elf_backend_data elfNN_bed =
+   elf_backend_no_page_alias,
+   elf_backend_default_execstack,
+   elf_backend_caches_rawsize,
+-  elf_backend_extern_protected_data
++  elf_backend_extern_protected_data,
++  elf_backend_always_renumber_dynsyms
+ };
+ 
+ /* Forward declaration for use when initialising alternative_target field.  */
 diff --git a/bfd/version.h b/bfd/version.h
-index eda06e4ac6..3b637b569c 100644
+index eda06e4ac6..5e32eb6a4e 100644
 --- a/bfd/version.h
 +++ b/bfd/version.h
 @@ -1,4 +1,4 @@
 -#define BFD_VERSION_DATE 20170302
-+#define BFD_VERSION_DATE 20170322
++#define BFD_VERSION_DATE 20170506
  #define BFD_VERSION @bfd_version@
  #define BFD_VERSION_STRING  @bfd_version_package@ @bfd_version_string@
  #define REPORT_BUGS_TO @report_bugs_to@
@@ -273,10 +742,55 @@ index baddf348d0..82119efe72 100755
    with options \\"`$as_echo "$ac_configure_args" | sed 's/^ //; s/[\\""\`\$]/\\\\&/g'`\\"
  
 diff --git a/gas/ChangeLog b/gas/ChangeLog
-index 8a586ad7a0..d59472a737 100644
+index 8a586ad7a0..d6ab8a1e34 100644
 --- a/gas/ChangeLog
 +++ b/gas/ChangeLog
-@@ -1,3 +1,27 @@
+@@ -1,3 +1,72 @@
++2017-04-03  Palmer Dabbelt  <palmer@dabbelt.com>
++
++	* config/tc-riscv.c (riscv_clear_subsets): Cast argument to free to
++	avoid const warnings.
++
++2017-03-30  Palmer Dabbelt  <palmer@dabbelt.com>
++
++	* config/tc-riscv.c (riscv_clear_subsets): New function.
++	(riscv_add_subset): Call riscv_clear_subsets and riscv_set_rvc to
++	clear RVC when it's been previously set.
++
++2017-03-21  Palmer Dabbbelt  <palmer@dabbelt.com>
++
++	* config/tc-riscv.c (md_show_usage): Remove defuct -m32, -m64,
++	-msoft-float, -mhard-float, -mno-rvc, and -mrvc options; and don't
++	print an invalid default ISA string.
++	* doc/c-riscv.texi (OPTIONS): Add -fpic and -fno-pic options.
++
++2017-03-14  Kito Cheng  <kito.cheng@gmail.com>
++
++	* config/tc-riscv.c (validate_riscv_insn): Add 'o' RVC immediate
++	encoding format, which can accept 0-valued immediates.
++	(riscv_ip): Likewise.
++
++2017-03-02  Kuan-Lin Chen  <rufus@andestech.com>
++
++	* config/tc-riscv.h (HWARD2_USE_FIXED_ADVANCE_PC): New define.
++
++2017-03-02  Kuan-Lin Chen  <rufus@andestech.com>
++
++	* config/tc-riscv.c (md_apply_fix): Set fx_frag and
++	fx_next->fx_frag for CFA_advance_loc relocations.
++
++2017-03-02  Kuan-Lin Chen  <rufus@andestech.com>
++
++	* config/tc-riscv.c (md_apply_fix): Compute the correct offsets
++	for CFA relocations.
++
++2017-03-27  Alan Modra  <amodra@gmail.com>
++
++	PR 21303
++	* testsuite/gas/ppc/pr21303.d,
++	* testsuite/gas/ppc/pr21303.s: New test
++	* testsuite/gas/ppc/ppc.exp: Run it.
++
 +2017-03-21  Andreas Krebbel  <krebbel@linux.vnet.ibm.com>
 +
 +	Backport from mainline
@@ -304,6 +818,172 @@ index 8a586ad7a0..d59472a737 100644
  2017-03-02  Tristan Gingold  <gingold@adacore.com>
  
  	* configure: Regenerate.
+diff --git a/gas/config/tc-riscv.c b/gas/config/tc-riscv.c
+index ec5b0bb036..88457c6fd4 100644
+--- a/gas/config/tc-riscv.c
++++ b/gas/config/tc-riscv.c
+@@ -121,6 +121,18 @@ riscv_subset_supports (const char *feature)
+ }
+ 
+ static void
++riscv_clear_subsets (void)
++{
++  while (riscv_subsets != NULL)
++    {
++      struct riscv_subset *next = riscv_subsets->next;
++      free ((void *) riscv_subsets->name);
++      free (riscv_subsets);
++      riscv_subsets = next;
++    }
++}
++
++static void
+ riscv_add_subset (const char *subset)
+ {
+   struct riscv_subset *s = xmalloc (sizeof *s);
+@@ -139,6 +151,8 @@ riscv_set_arch (const char *s)
+   const char *extension = NULL;
+   const char *p = s;
+ 
++  riscv_clear_subsets();
++
+   if (strncmp (p, "rv32", 4) == 0)
+     {
+       xlen = 32;
+@@ -500,6 +514,7 @@ validate_riscv_insn (const struct riscv_opcode *opc)
+ 	  case 'c': break; /* RS1, constrained to equal sp */
+ 	  case 'i': used_bits |= ENCODE_RVC_SIMM3(-1U); break;
+ 	  case 'j': used_bits |= ENCODE_RVC_IMM (-1U); break;
++	  case 'o': used_bits |= ENCODE_RVC_IMM (-1U); break;
+ 	  case 'k': used_bits |= ENCODE_RVC_LW_IMM (-1U); break;
+ 	  case 'l': used_bits |= ENCODE_RVC_LD_IMM (-1U); break;
+ 	  case 'm': used_bits |= ENCODE_RVC_LWSP_IMM (-1U); break;
+@@ -1321,6 +1336,13 @@ rvc_imm_done:
+ 		  ip->insn_opcode |=
+ 		    ENCODE_RVC_LDSP_IMM (imm_expr->X_add_number);
+ 		  goto rvc_imm_done;
++		case 'o':
++		  if (my_getSmallExpression (imm_expr, imm_reloc, s, p)
++		      || imm_expr->X_op != O_constant
++		      || !VALID_RVC_IMM (imm_expr->X_add_number))
++		    break;
++		  ip->insn_opcode |= ENCODE_RVC_IMM (imm_expr->X_add_number);
++		  goto rvc_imm_done;
+ 		case 'K':
+ 		  if (my_getSmallExpression (imm_expr, imm_reloc, s, p)
+ 		      || imm_expr->X_op != O_constant
+@@ -1794,6 +1816,7 @@ riscv_after_parse_args (void)
+     riscv_set_arch (xlen == 64 ? "rv64g" : "rv32g");
+ 
+   /* Add the RVC extension, regardless of -march, to support .option rvc.  */
++  riscv_set_rvc (FALSE);
+   if (riscv_subset_supports ("c"))
+     riscv_set_rvc (TRUE);
+   else
+@@ -1837,6 +1860,7 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+   unsigned int subtype;
+   bfd_byte *buf = (bfd_byte *) (fixP->fx_frag->fr_literal + fixP->fx_where);
+   bfd_boolean relaxable = FALSE;
++  offsetT loc;
+ 
+   /* Remember value for tc_gen_reloc.  */
+   fixP->fx_addnumber = *valP;
+@@ -1922,30 +1946,31 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+ 
+ 	    case BFD_RELOC_RISCV_CFA:
+ 	      /* Load the byte to get the subtype.  */
+-	      subtype = bfd_get_8 (NULL, &fixP->fx_frag->fr_literal[fixP->fx_where]);
++	      subtype = bfd_get_8 (NULL, &((fragS *) (fixP->fx_frag->fr_opcode))->fr_literal[fixP->fx_where]);
++	      loc = fixP->fx_frag->fr_fix - (subtype & 7);
+ 	      switch (subtype)
+ 		{
+ 		case DW_CFA_advance_loc1:
+-		  fixP->fx_where++;
+-		  fixP->fx_next->fx_where++;
++		  fixP->fx_where = loc + 1;
++		  fixP->fx_next->fx_where = loc + 1;
+ 		  fixP->fx_r_type = BFD_RELOC_RISCV_SET8;
+ 		  fixP->fx_next->fx_r_type = BFD_RELOC_RISCV_SUB8;
+ 		  break;
+ 
+ 		case DW_CFA_advance_loc2:
+ 		  fixP->fx_size = 2;
+-		  fixP->fx_where++;
+ 		  fixP->fx_next->fx_size = 2;
+-		  fixP->fx_next->fx_where++;
++		  fixP->fx_where = loc + 1;
++		  fixP->fx_next->fx_where = loc + 1;
+ 		  fixP->fx_r_type = BFD_RELOC_RISCV_SET16;
+ 		  fixP->fx_next->fx_r_type = BFD_RELOC_RISCV_SUB16;
+ 		  break;
+ 
+ 		case DW_CFA_advance_loc4:
+ 		  fixP->fx_size = 4;
+-		  fixP->fx_where++;
+ 		  fixP->fx_next->fx_size = 4;
+-		  fixP->fx_next->fx_where++;
++		  fixP->fx_where = loc;
++		  fixP->fx_next->fx_where = loc;
+ 		  fixP->fx_r_type = BFD_RELOC_RISCV_SET32;
+ 		  fixP->fx_next->fx_r_type = BFD_RELOC_RISCV_SUB32;
+ 		  break;
+@@ -1954,6 +1979,8 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+ 		  if (subtype < 0x80 && (subtype & 0x40))
+ 		    {
+ 		      /* DW_CFA_advance_loc */
++		      fixP->fx_frag = (fragS *) fixP->fx_frag->fr_opcode;
++		      fixP->fx_next->fx_frag = fixP->fx_frag;
+ 		      fixP->fx_r_type = BFD_RELOC_RISCV_SET6;
+ 		      fixP->fx_next->fx_r_type = BFD_RELOC_RISCV_SUB6;
+ 		    }
+@@ -2069,7 +2096,6 @@ riscv_pre_output_hook (void)
+ 	  {
+ 	    if (frag->fr_type == rs_cfa)
+ 	      {
+-		fragS *loc4_frag;
+ 		expressionS exp;
+ 
+ 		symbolS *add_symbol = frag->fr_symbol->sy_value.X_add_symbol;
+@@ -2080,8 +2106,7 @@ riscv_pre_output_hook (void)
+ 		exp.X_add_number = 0;
+ 		exp.X_op_symbol = op_symbol;
+ 
+-		loc4_frag = (fragS *) frag->fr_opcode;
+-		fix_new_exp (loc4_frag, (int) frag->fr_offset, 1, &exp, 0,
++		fix_new_exp (frag, (int) frag->fr_offset, 1, &exp, 0,
+ 			     BFD_RELOC_RISCV_CFA);
+ 	      }
+ 	  }
+@@ -2455,15 +2480,10 @@ md_show_usage (FILE *stream)
+ {
+   fprintf (stream, _("\
+ RISC-V options:\n\
+-  -m32           assemble RV32 code\n\
+-  -m64           assemble RV64 code (default)\n\
+   -fpic          generate position-independent code\n\
+   -fno-pic       don't generate position-independent code (default)\n\
+-  -msoft-float   don't use F registers for floating-point values\n\
+-  -mhard-float   use F registers for floating-point values (default)\n\
+-  -mno-rvc       disable the C extension for compressed instructions (default)\n\
+-  -mrvc          enable the C extension for compressed instructions\n\
+-  -march=ISA     set the RISC-V architecture, RV64IMAFD by default\n\
++  -march=ISA     set the RISC-V architecture\n\
++  -mabi=ABI      set the RISC-V ABI\n\
+ "));
+ }
+ 
+diff --git a/gas/config/tc-riscv.h b/gas/config/tc-riscv.h
+index ae8d60eb21..e92b3879a9 100644
+--- a/gas/config/tc-riscv.h
++++ b/gas/config/tc-riscv.h
+@@ -112,4 +112,7 @@ extern int tc_riscv_regname_to_dw2regnum (char *);
+ #define elf_tc_final_processing riscv_elf_final_processing
+ extern void riscv_elf_final_processing (void);
+ 
++/* Adjust debug_line after relaxation.  */
++#define DWARF2_USE_FIXED_ADVANCE_PC 1
++
+ #endif /* TC_RISCV */
 diff --git a/gas/config/tc-s390.c b/gas/config/tc-s390.c
 index 7c8087e009..dccbe2c945 100644
 --- a/gas/config/tc-s390.c
@@ -414,6 +1094,25 @@ index ce7091e33b..e574cb8514 100755
  configured by $0, generated by GNU Autoconf 2.64,
    with options \\"`$as_echo "$ac_configure_args" | sed 's/^ //; s/[\\""\`\$]/\\\\&/g'`\\"
  
+diff --git a/gas/doc/c-riscv.texi b/gas/doc/c-riscv.texi
+index 0fa1b58356..2efba4b5cb 100644
+--- a/gas/doc/c-riscv.texi
++++ b/gas/doc/c-riscv.texi
+@@ -26,6 +26,14 @@ The following table lists all availiable RISC-V specific options
+ @c man begin OPTIONS
+ @table @gcctabopt
+ 
++@cindex @samp{-fpic} option, RISC-V
++@item -fpic
++Generate position-independent code
++
++@cindex @samp{-fno-pic} option, RISC-V
++@item -fno-pic
++Don't generate position-independent code (default)
++
+ @cindex @samp{-march=ISA} option, RISC-V
+ @item -march=ISA
+ Select the base isa, as specified by ISA.  For example -march=rv32ima.
 diff --git a/gas/testsuite/gas/ppc/altivec2.d b/gas/testsuite/gas/ppc/altivec2.d
 index fc10fb5a2e..26f9afa9a8 100644
 --- a/gas/testsuite/gas/ppc/altivec2.d
@@ -454,6 +1153,47 @@ index 27f1122018..4e3530fba9 100644
  	addpcis     3,0
  	subpcis     3,0
  	addpcis     4,1
+diff --git a/gas/testsuite/gas/ppc/ppc.exp b/gas/testsuite/gas/ppc/ppc.exp
+index 86db4553df..55367adc08 100644
+--- a/gas/testsuite/gas/ppc/ppc.exp
++++ b/gas/testsuite/gas/ppc/ppc.exp
+@@ -50,6 +50,7 @@ if { [istarget powerpc*-*-*] } then {
+ 	run_dump_test "common"
+ 	run_dump_test "476"
+ 	run_dump_test "a2"
++	run_dump_test "pr21303"
+ 	if { ![istarget powerpc*le-*-*] } then {
+ 	    run_dump_test "vle"
+ 	    run_dump_test "vle-reloc"
+diff --git a/gas/testsuite/gas/ppc/pr21303.d b/gas/testsuite/gas/ppc/pr21303.d
+new file mode 100644
+index 0000000000..64761a4d5d
+--- /dev/null
++++ b/gas/testsuite/gas/ppc/pr21303.d
+@@ -0,0 +1,12 @@
++#objdump: -d -Me200z4
++#as: -a32 -mbig -me200z4
++
++.*
++
++Disassembly of section \.text:
++
++0+ <\.text>:
++   0:	70 00 00 00 	e_li    r0,0
++   4:	7c 01 14 04 	lbdcbx  r0,r1,r2
++   8:	7c 01 14 44 	lhdcbx  r0,r1,r2
++   c:	7c 01 14 84 	lwdcbx  r0,r1,r2
+diff --git a/gas/testsuite/gas/ppc/pr21303.s b/gas/testsuite/gas/ppc/pr21303.s
+new file mode 100644
+index 0000000000..890ba94b08
+--- /dev/null
++++ b/gas/testsuite/gas/ppc/pr21303.s
+@@ -0,0 +1,5 @@
++ .text
++ e_li 0, 0
++ lbdcbx 0, 1, 2
++ lhdcbx 0, 1, 2
++ lwdcbx 0, 1, 2
 diff --git a/gprof/ChangeLog b/gprof/ChangeLog
 index cc57e0d872..0c25d519d6 100644
 --- a/gprof/ChangeLog
@@ -556,10 +1296,57 @@ index 43e0dac041..9e6b8f3525 100755
    with options \\"`$as_echo "$ac_configure_args" | sed 's/^ //; s/[\\""\`\$]/\\\\&/g'`\\"
  
 diff --git a/include/ChangeLog b/include/ChangeLog
-index af39f333d4..9dd5f75f77 100644
+index af39f333d4..dddecfb49b 100644
 --- a/include/ChangeLog
 +++ b/include/ChangeLog
-@@ -1,3 +1,11 @@
+@@ -1,3 +1,58 @@
++2017-04-03  Palmer Dabbelt  <palmer@dabbelt.com>
++
++	* elf/riscv.h (RISCV_GP_SYMBOL): New define.
++
++2017-03-27  Andrew Waterman  <andrew@sifive.com>
++
++	* opcode/riscv-opc.h (CSR_PMPCFG0): New define.
++	(CSR_PMPCFG1): Likewise.
++	(CSR_PMPCFG2): Likewise.
++	(CSR_PMPCFG3): Likewise.
++	(CSR_PMPADDR0): Likewise.
++	(CSR_PMPADDR1): Likewise.
++	(CSR_PMPADDR2): Likewise.
++	(CSR_PMPADDR3): Likewise.
++	(CSR_PMPADDR4): Likewise.
++	(CSR_PMPADDR5): Likewise.
++	(CSR_PMPADDR6): Likewise.
++	(CSR_PMPADDR7): Likewise.
++	(CSR_PMPADDR8): Likewise.
++	(CSR_PMPADDR9): Likewise.
++	(CSR_PMPADDR10): Likewise.
++	(CSR_PMPADDR11): Likewise.
++	(CSR_PMPADDR12): Likewise.
++	(CSR_PMPADDR13): Likewise.
++	(CSR_PMPADDR14): Likewise.
++	(CSR_PMPADDR15): Likewise.
++	(pmpcfg0): Declare register.
++	(pmpcfg1): Likewise.
++	(pmpcfg2): Likewise.
++	(pmpcfg3): Likewise.
++	(pmpaddr0): Likewise.
++	(pmpaddr1): Likewise.
++	(pmpaddr2): Likewise.
++	(pmpaddr3): Likewise.
++	(pmpaddr4): Likewise.
++	(pmpaddr5): Likewise.
++	(pmpaddr6): Likewise.
++	(pmpaddr7): Likewise.
++	(pmpaddr8): Likewise.
++	(pmpaddr9): Likewise.
++	(pmpaddr10): Likewise.
++	(pmpaddr11): Likewise.
++	(pmpaddr12): Likewise.
++	(pmpaddr13): Likewise.
++	(pmpaddr14): Likewise.
++	(pmpaddr15): Likewise.
++
 +2017-03-21  Andreas Krebbel  <krebbel@linux.vnet.ibm.com>
 +
 +	Backport from mainline
@@ -571,6 +1358,76 @@ index af39f333d4..9dd5f75f77 100644
  2017-02-28  Alan Modra  <amodra@gmail.com>
  
  	* elf/ppc64.h (R_PPC64_16DX_HA): New.  Expand fake reloc comment.
+diff --git a/include/elf/riscv.h b/include/elf/riscv.h
+index 526bc11f15..daa4463926 100644
+--- a/include/elf/riscv.h
++++ b/include/elf/riscv.h
+@@ -109,4 +109,7 @@ END_RELOC_NUMBERS (R_RISCV_max)
+ /* File uses the quad-float ABI.  */
+ #define EF_RISCV_FLOAT_ABI_QUAD 0x0006
+ 
++/* The name of the global pointer symbol.  */
++#define RISCV_GP_SYMBOL "__global_pointer$"
++
+ #endif /* _ELF_RISCV_H */
+diff --git a/include/opcode/riscv-opc.h b/include/opcode/riscv-opc.h
+index 9269c6be93..f80037b8f0 100644
+--- a/include/opcode/riscv-opc.h
++++ b/include/opcode/riscv-opc.h
+@@ -556,6 +556,26 @@
+ #define CSR_MCAUSE 0x342
+ #define CSR_MBADADDR 0x343
+ #define CSR_MIP 0x344
++#define CSR_PMPCFG0 0x3a0
++#define CSR_PMPCFG1 0x3a1
++#define CSR_PMPCFG2 0x3a2
++#define CSR_PMPCFG3 0x3a3
++#define CSR_PMPADDR0 0x3b0
++#define CSR_PMPADDR1 0x3b1
++#define CSR_PMPADDR2 0x3b2
++#define CSR_PMPADDR3 0x3b3
++#define CSR_PMPADDR4 0x3b4
++#define CSR_PMPADDR5 0x3b5
++#define CSR_PMPADDR6 0x3b6
++#define CSR_PMPADDR7 0x3b7
++#define CSR_PMPADDR8 0x3b8
++#define CSR_PMPADDR9 0x3b9
++#define CSR_PMPADDR10 0x3ba
++#define CSR_PMPADDR11 0x3bb
++#define CSR_PMPADDR12 0x3bc
++#define CSR_PMPADDR13 0x3bd
++#define CSR_PMPADDR14 0x3be
++#define CSR_PMPADDR15 0x3bf
+ #define CSR_TSELECT 0x7a0
+ #define CSR_TDATA1 0x7a1
+ #define CSR_TDATA2 0x7a2
+@@ -1014,6 +1034,26 @@ DECLARE_CSR(mepc, CSR_MEPC)
+ DECLARE_CSR(mcause, CSR_MCAUSE)
+ DECLARE_CSR(mbadaddr, CSR_MBADADDR)
+ DECLARE_CSR(mip, CSR_MIP)
++DECLARE_CSR(pmpcfg0, CSR_PMPCFG0)
++DECLARE_CSR(pmpcfg1, CSR_PMPCFG1)
++DECLARE_CSR(pmpcfg2, CSR_PMPCFG2)
++DECLARE_CSR(pmpcfg3, CSR_PMPCFG3)
++DECLARE_CSR(pmpaddr0, CSR_PMPADDR0)
++DECLARE_CSR(pmpaddr1, CSR_PMPADDR1)
++DECLARE_CSR(pmpaddr2, CSR_PMPADDR2)
++DECLARE_CSR(pmpaddr3, CSR_PMPADDR3)
++DECLARE_CSR(pmpaddr4, CSR_PMPADDR4)
++DECLARE_CSR(pmpaddr5, CSR_PMPADDR5)
++DECLARE_CSR(pmpaddr6, CSR_PMPADDR6)
++DECLARE_CSR(pmpaddr7, CSR_PMPADDR7)
++DECLARE_CSR(pmpaddr8, CSR_PMPADDR8)
++DECLARE_CSR(pmpaddr9, CSR_PMPADDR9)
++DECLARE_CSR(pmpaddr10, CSR_PMPADDR10)
++DECLARE_CSR(pmpaddr11, CSR_PMPADDR11)
++DECLARE_CSR(pmpaddr12, CSR_PMPADDR12)
++DECLARE_CSR(pmpaddr13, CSR_PMPADDR13)
++DECLARE_CSR(pmpaddr14, CSR_PMPADDR14)
++DECLARE_CSR(pmpaddr15, CSR_PMPADDR15)
+ DECLARE_CSR(tselect, CSR_TSELECT)
+ DECLARE_CSR(tdata1, CSR_TDATA1)
+ DECLARE_CSR(tdata2, CSR_TDATA2)
 diff --git a/include/opcode/s390.h b/include/opcode/s390.h
 index 7ce5616841..2e07664425 100644
 --- a/include/opcode/s390.h
@@ -586,10 +1443,32 @@ index 7ce5616841..2e07664425 100644
  /* The opcode table is an array of struct s390_opcode.  */
  
 diff --git a/ld/ChangeLog b/ld/ChangeLog
-index ba7d1d4ce1..f4fda0ca3a 100644
+index ba7d1d4ce1..682ac6cdb5 100644
 --- a/ld/ChangeLog
 +++ b/ld/ChangeLog
-@@ -1,3 +1,12 @@
+@@ -1,3 +1,34 @@
++2017-04-24  H.J. Lu  <hongjiu.lu@intel.com>
++
++	PR ld/20815
++	* testsuite/ld-i386/vxworks2.sd: Add space for program headers.
++
++2017-03-28  Hans-Peter Nilsson  <hp@axis.com>
++
++	PR ld/16044
++	* testsuite/ld-cris/pr16044.d, testsuite/ld-cris/dso-1c.s,
++	testsuite/ld-cris/dso-2b.s, testsuite/ld-cris/dso-4.s: New test.
++
++2017-04-10  H.J. Lu  <hongjiu.lu@intel.com>
++
++	PR ld/19579
++	PR ld/21306
++	* testsuite/ld-elf/pr19579a.c (main): Updated.
++
++2017-04-05  Maciej W. Rozycki  <macro@imgtec.com>
++
++	PR ld/21233
++	* ldlang.c (insert_undefined): Set `mark' for ELF symbols.
++
 +2017-03-07  Alan Modra  <amodra@gmail.com>
 +
 +	* ldlang.c (open_input_bfds): Check that lang_assignment_statement
@@ -689,7 +1568,7 @@ index 36af9695b1..a16c6db059 100755
    with options \\"`$as_echo "$ac_configure_args" | sed 's/^ //; s/[\\""\`\$]/\\\\&/g'`\\"
  
 diff --git a/ld/ldlang.c b/ld/ldlang.c
-index dafc3489fd..54f160c4db 100644
+index dafc3489fd..a8ff0a413e 100644
 --- a/ld/ldlang.c
 +++ b/ld/ldlang.c
 @@ -3377,7 +3377,8 @@ open_input_bfds (lang_statement_union_type *s, enum open_bfd_mode mode)
@@ -702,11 +1581,156 @@ index dafc3489fd..54f160c4db 100644
  	    /* This is from a --defsym on the command line.  */
  	    exp_fold_tree_no_dot (s->assignment_statement.exp);
  	  break;
+@@ -3431,6 +3432,8 @@ insert_undefined (const char *name)
+     {
+       h->type = bfd_link_hash_undefined;
+       h->u.undef.abfd = NULL;
++      if (is_elf_hash_table (link_info.hash))
++	((struct elf_link_hash_entry *) h)->mark = 1;
+       bfd_link_add_undef (link_info.hash, h);
+     }
+ }
+diff --git a/ld/testsuite/ld-cris/dso-1c.s b/ld/testsuite/ld-cris/dso-1c.s
+new file mode 100644
+index 0000000000..92ad4ee082
+--- /dev/null
++++ b/ld/testsuite/ld-cris/dso-1c.s
+@@ -0,0 +1,2 @@
++	.include "dso-1.s"
++	.hidden dsofn
+diff --git a/ld/testsuite/ld-cris/dso-2b.s b/ld/testsuite/ld-cris/dso-2b.s
+new file mode 100644
+index 0000000000..f1fbf14780
+--- /dev/null
++++ b/ld/testsuite/ld-cris/dso-2b.s
+@@ -0,0 +1,2 @@
++	.include "dso-2.s"
++	.hidden dsofn
+diff --git a/ld/testsuite/ld-cris/dso-4.s b/ld/testsuite/ld-cris/dso-4.s
+new file mode 100644
+index 0000000000..767a0d8226
+--- /dev/null
++++ b/ld/testsuite/ld-cris/dso-4.s
+@@ -0,0 +1,6 @@
++	.text
++	.global	export_2
++	.type	export_2,@function
++export_2:
++	.hidden dsofn
++	move.d dsofn:GOTOFF,$r4
+diff --git a/ld/testsuite/ld-cris/pr16044.d b/ld/testsuite/ld-cris/pr16044.d
+new file mode 100644
+index 0000000000..e5d373df8f
+--- /dev/null
++++ b/ld/testsuite/ld-cris/pr16044.d
+@@ -0,0 +1,43 @@
++#source: dso-4.s
++#source: dso-2b.s
++#source: dso-1c.s
++#as: --pic --no-underscore --em=criself -I$srcdir/$subdir
++#ld: --shared -m crislinux
++#readelf: -s -r
++
++# PR 16044 is about a (compile-time-non-local) hidden function symbol,
++# entered as an undef reference with a R_CRIS_32_PLT_GOTREL relocation
++# referring to a hidden symbol, later defined.  Here, we invalidly
++# incremented the h->plt.refcount (from -1) as part of that relocation
++# processing.  There are some PLTGOT relocations.  As there are no
++# circumstances requiring a PLT entry for this symbol, its PLT entry
++# can be eliminated and the PLTGOT relocations can be made to a static
++# element in the GOT, relocated with the absolute-to-relative
++# R_CRIS_RELATIVE relocation without symbol lookup.  As part of
++# eliminating unneeded PLT entries (and PLTGOT to "static" GOT
++# elimination), a later pass noticed the inconsistency through an
++# assert.
++#
++# The key points in this dump that may need future adjustments are the
++# single dynamic relocation, that the dsofn symbol it points to, is
++# local, its absence from the dynamic symbol table and that the
++# relocation and symbol values match.
++
++Relocation section '\.rela\.dyn' at offset 0x[0-9a-f]+ contains 1 entries:
++ Offset[ 	]+Info[ 	]+Type[ 	]+Sym\.Value  Sym\. Name \+ Addend
++[0-9a-f]+  0+[0-9a-f]+ R_CRIS_RELATIVE[ 	]+184
++
++Symbol table '\.dynsym' contains 7 entries:
++ +Num: +Value +Size +Type +Bind +Vis +Ndx +Name
++ +0: 0+ +0 +NOTYPE +LOCAL +DEFAULT +UND 
++ +1: [0-9a-f]+ +0 +SECTION +LOCAL +DEFAULT +5 
++ +2: [0-9a-f]+ +0 +FUNC +GLOBAL +DEFAULT +5 export_1
++ +3: [0-9a-f]+ +0 +NOTYPE +GLOBAL +DEFAULT +7 __bss_start
++ +4: [0-9a-f]+ +0 +NOTYPE +GLOBAL +DEFAULT +7 _edata
++ +5: [0-9a-f]+ +0 +NOTYPE +GLOBAL +DEFAULT +7 _end
++ +6: [0-9a-f]+ +0 +FUNC +GLOBAL +DEFAULT +5 export_2
++
++Symbol table '\.symtab' contains [0-9]+ entries:
++#...
++ +[0-9]+: 0+184  +2 FUNC + LOCAL + DEFAULT + 5 dsofn
++#...
+diff --git a/ld/testsuite/ld-elf/pr19579a.c b/ld/testsuite/ld-elf/pr19579a.c
+index e4a6eb1ea9..69d0f35898 100644
+--- a/ld/testsuite/ld-elf/pr19579a.c
++++ b/ld/testsuite/ld-elf/pr19579a.c
+@@ -9,7 +9,7 @@ extern int *bar_p (void);
+ int
+ main ()
+ {
+-  if (foo[0] == 0 && foo == foo_p () && bar[0] == 0 && bar == bar_p ())
++  if (foo[0] == 0 && foo == foo_p () && bar[0] == -1 && bar == bar_p ())
+     printf ("PASS\n");
+   return 0;
+ }
+diff --git a/ld/testsuite/ld-i386/vxworks2.sd b/ld/testsuite/ld-i386/vxworks2.sd
+index 5ff87d3bef..4f56f2ac7e 100644
+--- a/ld/testsuite/ld-i386/vxworks2.sd
++++ b/ld/testsuite/ld-i386/vxworks2.sd
+@@ -6,7 +6,7 @@ Program Headers:
+   Type .*
+   PHDR .*
+ #...
+-  LOAD .* 0x00080000 0x00080000 .* R E 0x1000
++  LOAD .* 0x0007f000 0x0007f000 .* R E 0x1000
+   LOAD .* 0x00081000 0x00081000 .* RW  0x1000
+   DYNAMIC .*
+ 
 diff --git a/opcodes/ChangeLog b/opcodes/ChangeLog
-index 7f01e54188..bdc6266602 100644
+index 7f01e54188..5dfe1661fa 100644
 --- a/opcodes/ChangeLog
 +++ b/opcodes/ChangeLog
-@@ -1,3 +1,38 @@
+@@ -1,3 +1,71 @@
++2017-05-01  Michael Clark  <michaeljclark@mac.com>
++
++	* riscv-opc.c (riscv_opcodes) <call>: Use RA not T1 as a temporary
++	register.
++
++2017-04-03  Palmer Dabbelt  <palmer@dabbelt.com>
++
++	* riscv-dis.c (riscv_disassemble_insn): Change "_gp" to
++	RISCV_GP_SYMBOL.
++
++2017-03-14  Kito Cheng  <kito.cheng@gmail.com>
++
++	* riscv-opc.c (riscv_opcodes> <c.li>: Use the 'o' immediate encoding.
++	<c.andi>: Likewise.
++	<c.addiw> Likewise.
++
++2017-03-14  Kito Cheng  <kito.cheng@gmail.com>
++
++	* riscv-opc.c (riscv_opcodes) <c.addi>: Use match_opcode.
++
++2017-03-13  Andrew Waterman  <andrew@sifive.com>
++
++	* riscv-opc.c (riscv_opcodes) <srli/C>: Use match_opcode.
++	<srl> Likewise.
++	<srai> Likewise.
++	<sra> Likewise.
++
++2017-03-27  Alan Modra  <amodra@gmail.com>
++
++	PR 21303
++	* ppc-dis.c (struct ppc_mopt): Comment.
++	(ppc_opts <e200z4>): Move PPC_OPCODE_VLE from .sticky to .cpu.
++
 +2017-03-21  Andreas Krebbel  <krebbel@linux.vnet.ibm.com>
 +
 +	Backport from mainline
@@ -832,10 +1856,30 @@ index be87eb22a5..0b352a454d 100755
    with options \\"`$as_echo "$ac_configure_args" | sed 's/^ //; s/[\\""\`\$]/\\\\&/g'`\\"
  
 diff --git a/opcodes/ppc-dis.c b/opcodes/ppc-dis.c
-index e0eff7a67b..38f7e55e6c 100644
+index e0eff7a67b..baa73880aa 100644
 --- a/opcodes/ppc-dis.c
 +++ b/opcodes/ppc-dis.c
-@@ -93,7 +93,7 @@ struct ppc_mopt ppc_opts[] = {
+@@ -45,8 +45,19 @@ struct dis_private
+   (((struct dis_private *) ((INFO)->private_data))->dialect)
+ 
+ struct ppc_mopt {
++  /* Option string, without -m or -M prefix.  */
+   const char *opt;
++  /* CPU option flags.  */
+   ppc_cpu_t cpu;
++  /* Flags that should stay on, even when combined with another cpu
++     option.  This should only be used for generic options like
++     "-many" or "-maltivec" where it is reasonable to add some
++     capability to another cpu selection.  The added flags are sticky
++     so that, for example, "-many -me500" and "-me500 -many" result in
++     the same assembler or disassembler behaviour.  Do not use
++     "sticky" for specific cpus, as this will prevent that cpu's flags
++     from overriding the defaults set in powerpc_init_dialect or a
++     prior -m option.  */
+   ppc_cpu_t sticky;
+ };
+ 
+@@ -93,7 +104,7 @@ struct ppc_mopt ppc_opts[] = {
  		| PPC_OPCODE_A2),
      0 },
    { "altivec", PPC_OPCODE_PPC,
@@ -844,7 +1888,18 @@ index e0eff7a67b..38f7e55e6c 100644
    { "any",     0,
      PPC_OPCODE_ANY },
    { "booke",   PPC_OPCODE_PPC | PPC_OPCODE_BOOKE,
-@@ -221,7 +221,7 @@ struct ppc_mopt ppc_opts[] = {
+@@ -108,8 +119,8 @@ struct ppc_mopt ppc_opts[] = {
+   { "e200z4",  (PPC_OPCODE_PPC | PPC_OPCODE_BOOKE| PPC_OPCODE_SPE
+ 		| PPC_OPCODE_ISEL | PPC_OPCODE_EFS | PPC_OPCODE_BRLOCK
+ 		| PPC_OPCODE_PMR | PPC_OPCODE_CACHELCK | PPC_OPCODE_RFMCI
+-		| PPC_OPCODE_E500 | PPC_OPCODE_E200Z4),
+-    PPC_OPCODE_VLE },
++		| PPC_OPCODE_E500 | PPC_OPCODE_VLE | PPC_OPCODE_E200Z4),
++    0 },
+   { "e300",    PPC_OPCODE_PPC | PPC_OPCODE_E300,
+     0 },
+   { "e500",    (PPC_OPCODE_PPC | PPC_OPCODE_BOOKE | PPC_OPCODE_SPE
+@@ -221,7 +232,7 @@ struct ppc_mopt ppc_opts[] = {
  		| PPC_OPCODE_E500),
      PPC_OPCODE_VLE },
    { "vsx",     PPC_OPCODE_PPC,
@@ -1334,6 +2389,75 @@ index 9ac779c96a..f7d1dcd7c2 100644
  
  {"xsiexpqp",	X(63,868),	X_MASK,	     PPCVSX3,	PPCVLE,		{VD, VA, VB}},
  
+diff --git a/opcodes/riscv-dis.c b/opcodes/riscv-dis.c
+index 070c96ec74..bdc961c317 100644
+--- a/opcodes/riscv-dis.c
++++ b/opcodes/riscv-dis.c
+@@ -383,7 +383,7 @@ riscv_disassemble_insn (bfd_vma memaddr, insn_t word, disassemble_info *info)
+ 	pd->hi_addr[i] = -1;
+ 
+       for (i = 0; i < info->symtab_size; i++)
+-	if (strcmp (bfd_asymbol_name (info->symtab[i]), "_gp") == 0)
++	if (strcmp (bfd_asymbol_name (info->symtab[i]), RISCV_GP_SYMBOL) == 0)
+ 	  pd->gp = bfd_asymbol_value (info->symtab[i]);
+     }
+   else
+diff --git a/opcodes/riscv-opc.c b/opcodes/riscv-opc.c
+index 867a02682c..8343198366 100644
+--- a/opcodes/riscv-opc.c
++++ b/opcodes/riscv-opc.c
+@@ -147,7 +147,7 @@ const struct riscv_opcode riscv_opcodes[] =
+ {"jal",       "32C", "Ca",  MATCH_C_JAL, MASK_C_JAL, match_opcode, INSN_ALIAS },
+ {"jal",       "I",   "a",  MATCH_JAL | (X_RA << OP_SH_RD), MASK_JAL | MASK_RD, match_opcode, INSN_ALIAS },
+ {"call",      "I",   "d,c", (X_T1 << OP_SH_RS1), (int) M_CALL,  match_never, INSN_MACRO },
+-{"call",      "I",   "c", (X_T1 << OP_SH_RS1) | (X_RA << OP_SH_RD), (int) M_CALL,  match_never, INSN_MACRO },
++{"call",      "I",   "c", (X_RA << OP_SH_RS1) | (X_RA << OP_SH_RD), (int) M_CALL,  match_never, INSN_MACRO },
+ {"tail",      "I",   "c", (X_T1 << OP_SH_RS1), (int) M_CALL,  match_never, INSN_MACRO },
+ {"jump",      "I",   "c,s", 0, (int) M_CALL,  match_never, INSN_MACRO },
+ {"nop",       "C",   "",  MATCH_C_ADDI, 0xffff, match_opcode, INSN_ALIAS },
+@@ -210,14 +210,14 @@ const struct riscv_opcode riscv_opcodes[] =
+ {"sll",       "C",   "d,CU,C>",  MATCH_C_SLLI, MASK_C_SLLI, match_rd_nonzero, INSN_ALIAS },
+ {"sll",       "I",   "d,s,t",   MATCH_SLL, MASK_SLL, match_opcode, 0 },
+ {"sll",       "I",   "d,s,>",   MATCH_SLLI, MASK_SLLI, match_opcode, INSN_ALIAS },
+-{"srli",      "C",   "Cs,Cw,C>",  MATCH_C_SRLI, MASK_C_SRLI, match_rd_nonzero, INSN_ALIAS },
++{"srli",      "C",   "Cs,Cw,C>",  MATCH_C_SRLI, MASK_C_SRLI, match_opcode, INSN_ALIAS },
+ {"srli",      "I",   "d,s,>",   MATCH_SRLI, MASK_SRLI, match_opcode, 0 },
+-{"srl",       "C",   "Cs,Cw,C>",  MATCH_C_SRLI, MASK_C_SRLI, match_rd_nonzero, INSN_ALIAS },
++{"srl",       "C",   "Cs,Cw,C>",  MATCH_C_SRLI, MASK_C_SRLI, match_opcode, INSN_ALIAS },
+ {"srl",       "I",   "d,s,t",   MATCH_SRL, MASK_SRL, match_opcode, 0 },
+ {"srl",       "I",   "d,s,>",   MATCH_SRLI, MASK_SRLI, match_opcode, INSN_ALIAS },
+-{"srai",      "C",   "Cs,Cw,C>",  MATCH_C_SRAI, MASK_C_SRAI, match_rd_nonzero, INSN_ALIAS },
++{"srai",      "C",   "Cs,Cw,C>",  MATCH_C_SRAI, MASK_C_SRAI, match_opcode, INSN_ALIAS },
+ {"srai",      "I",   "d,s,>",   MATCH_SRAI, MASK_SRAI, match_opcode, 0 },
+-{"sra",       "C",   "Cs,Cw,C>",  MATCH_C_SRAI, MASK_C_SRAI, match_rd_nonzero, INSN_ALIAS },
++{"sra",       "C",   "Cs,Cw,C>",  MATCH_C_SRAI, MASK_C_SRAI, match_opcode, INSN_ALIAS },
+ {"sra",       "I",   "d,s,t",   MATCH_SRA, MASK_SRA, match_opcode, 0 },
+ {"sra",       "I",   "d,s,>",   MATCH_SRAI, MASK_SRAI, match_opcode, INSN_ALIAS },
+ {"sub",       "C",   "Cs,Cw,Ct",  MATCH_C_SUB, MASK_C_SUB, match_opcode, INSN_ALIAS },
+@@ -562,10 +562,10 @@ const struct riscv_opcode riscv_opcodes[] =
+ {"c.nop",     "C",   "",  MATCH_C_ADDI, 0xffff, match_opcode, 0 },
+ {"c.mv",      "C",   "d,CV",  MATCH_C_MV, MASK_C_MV, match_c_add, 0 },
+ {"c.lui",     "C",   "d,Cu",  MATCH_C_LUI, MASK_C_LUI, match_c_lui, 0 },
+-{"c.li",      "C",   "d,Cj",  MATCH_C_LI, MASK_C_LI, match_rd_nonzero, 0 },
++{"c.li",      "C",   "d,Co",  MATCH_C_LI, MASK_C_LI, match_rd_nonzero, 0 },
+ {"c.addi4spn","C",   "Ct,Cc,CK", MATCH_C_ADDI4SPN, MASK_C_ADDI4SPN, match_opcode, 0 },
+ {"c.addi16sp","C",   "Cc,CL", MATCH_C_ADDI16SP, MASK_C_ADDI16SP, match_opcode, 0 },
+-{"c.addi",    "C",   "d,Cj",  MATCH_C_ADDI, MASK_C_ADDI, match_rd_nonzero, 0 },
++{"c.addi",    "C",   "d,Cj",  MATCH_C_ADDI, MASK_C_ADDI, match_opcode, 0 },
+ {"c.add",     "C",   "d,CV",  MATCH_C_ADD, MASK_C_ADD, match_c_add, 0 },
+ {"c.sub",     "C",   "Cs,Ct",  MATCH_C_SUB, MASK_C_SUB, match_opcode, 0 },
+ {"c.and",     "C",   "Cs,Ct",  MATCH_C_AND, MASK_C_AND, match_opcode, 0 },
+@@ -574,8 +574,8 @@ const struct riscv_opcode riscv_opcodes[] =
+ {"c.slli",    "C",   "d,C>",  MATCH_C_SLLI, MASK_C_SLLI, match_rd_nonzero, 0 },
+ {"c.srli",    "C",   "Cs,C>",  MATCH_C_SRLI, MASK_C_SRLI, match_opcode, 0 },
+ {"c.srai",    "C",   "Cs,C>",  MATCH_C_SRAI, MASK_C_SRAI, match_opcode, 0 },
+-{"c.andi",    "C",   "Cs,Cj",  MATCH_C_ANDI, MASK_C_ANDI, match_opcode, 0 },
+-{"c.addiw",   "64C", "d,Cj",  MATCH_C_ADDIW, MASK_C_ADDIW, match_rd_nonzero, 0 },
++{"c.andi",    "C",   "Cs,Co",  MATCH_C_ANDI, MASK_C_ANDI, match_opcode, 0 },
++{"c.addiw",   "64C", "d,Co",  MATCH_C_ADDIW, MASK_C_ADDIW, match_rd_nonzero, 0 },
+ {"c.addw",    "64C", "Cs,Ct",  MATCH_C_ADDW, MASK_C_ADDW, match_opcode, 0 },
+ {"c.subw",    "64C", "Cs,Ct",  MATCH_C_SUBW, MASK_C_SUBW, match_opcode, 0 },
+ {"c.ldsp",    "64C", "d,Cn(Cc)",  MATCH_C_LDSP, MASK_C_LDSP, match_rd_nonzero, 0 },
 diff --git a/opcodes/s390-mkopc.c b/opcodes/s390-mkopc.c
 index 8e0b332585..68c55a9499 100644
 --- a/opcodes/s390-mkopc.c
