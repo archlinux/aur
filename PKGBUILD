@@ -11,7 +11,7 @@
 # x86_64: all from i686 and ffmpeg-full-git
 
 pkgname=mpv-semifull-git
-pkgver=0.23.0.r164.g954625c165
+pkgver=0.25.0.r174.gf34e1a0dee
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -49,12 +49,12 @@ build() {
 	cd "${srcdir}/${pkgname}"
 	
 	# Add CUDA to the build if architecture is x86_64
-	if [ "$CARCH" = "x86_64" ] 
-	then
-	    _cuda="--enable-cuda-hwaccel"
-	else
+# 	if [ "$CARCH" = "x86_64" ] 
+# 	then
+# 	    _cuda="--enable-cuda-hwaccel"
+# 	else
 	    _cuda="--disable-cuda-hwaccel"
-	fi
+# 	fi
 	
 	msg2 "Running bootstrap. Please wait..."
 	./bootstrap.py
@@ -64,6 +64,7 @@ build() {
 	            --prefix=/usr \
 	            --confdir=/etc/mpv \
 	            --progress \
+	            --jobs=`echo $MAKEFLAGS | tr -d "j" | tr -d "-"` \
 	            \
 	            --enable-libmpv-shared \
 	            --disable-libmpv-static \
@@ -75,7 +76,6 @@ build() {
 	            --disable-pdf-build \
 	            \
 	            --enable-cplugins \
-	            --enable-vf-dlopen-filters \
 	            --enable-zsh-comp \
 	            --disable-test \
 	            --disable-clang-database \
@@ -121,11 +121,7 @@ build() {
 	            --enable-gbm \
 	            --enable-wayland \
 	            --enable-x11 \
-	            --enable-xss \
-	            --enable-xext \
 	            --enable-xv \
-	            --enable-xinerama \
-	            --enable-xrandr \
 	            --disable-gl-cocoa \
 	            --enable-gl-x11 \
 	            --enable-egl-x11 \
@@ -148,17 +144,14 @@ build() {
 	            --disable-direct3d \
 	            --disable-android \
 	            --disable-rpi \
-	            --enable-standard-gl \
-	            --disable-android-gl \
 	            --disable-ios-gl \
-	            --enable-any-gl \
 	            --enable-plain-gl \
 	            --disable-mali-fbdev \
 	            --enable-gl \
 	            \
 	            --enable-vaapi-hwaccel \
-	            --enable-vaapi-hwaccel-new \
-	            --disable-videotoolbox-hwaccel \
+	            --disable-videotoolbox-hwaccel-new \
+	            --disable-videotoolbox-hwaccel-old \
 	            --disable-videotoolbox-gl \
 	            --enable-vdpau-hwaccel \
 	            --disable-d3d-hwaccel \
