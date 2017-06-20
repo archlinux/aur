@@ -5,7 +5,7 @@
 
 _gemname=rest-client
 pkgname=ruby-${_gemname}
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Simple HTTP and REST client for Ruby, inspired by the Sinatra microframework style of specifying actions"
 arch=("any")
@@ -18,7 +18,7 @@ depends=('ruby>=1.9.2'
 options=("!emptydirs")
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('67c5503b4862a7ca6ad5ee0a3449654f399abcb2acdbe94faa59ac4ba3b852ec')
+sha256sums=('1295e486591f8ef7786451e28d24f8aa0a04cc47767cd1859b729575b2d0ecc3')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
