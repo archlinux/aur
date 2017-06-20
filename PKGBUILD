@@ -2,7 +2,7 @@
 
 _hkgname=servant-client
 pkgname=haskell-servant-client
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="automatical derivation of querying functions for servant webservices"
 url="https://haskell-servant.readthedocs.io"
@@ -32,7 +32,7 @@ depends=('ghc'
          'haskell-transformers-compat')
 options=('strip' 'staticlibs')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('55e411ac7e38a5c1b77d8d3c2320369be36a7b7181e27bb5ac4fba308ef93eaa')
+sha256sums=('ea6d2ba8183a9cc721e944659fc175a1e81ecac11dfcea9544ef07f7ccc92afa')
 
 build() {
   cd "${_hkgname}-${pkgver}"

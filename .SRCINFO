@@ -1,6 +1,6 @@
 pkgbase = haskell-servant-client
 	pkgdesc = automatical derivation of querying functions for servant webservices
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://haskell-servant.readthedocs.io
 	arch = i686
@@ -30,8 +30,8 @@ pkgbase = haskell-servant-client
 	depends = haskell-transformers-compat
 	options = strip
 	options = staticlibs
-	source = https://hackage.haskell.org/packages/archive/servant-client/0.10/servant-client-0.10.tar.gz
-	sha256sums = 55e411ac7e38a5c1b77d8d3c2320369be36a7b7181e27bb5ac4fba308ef93eaa
+	source = https://hackage.haskell.org/packages/archive/servant-client/0.11/servant-client-0.11.tar.gz
+	sha256sums = ea6d2ba8183a9cc721e944659fc175a1e81ecac11dfcea9544ef07f7ccc92afa
 
 pkgname = haskell-servant-client
 
