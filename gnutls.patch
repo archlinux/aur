@@ -1,4 +1,4 @@
-Copyright (c) 2014-2016 Savoir-faire Linux Inc.
+Copyright (c) 2014-2017 Savoir-faire Linux Inc.
 
 ssl_sock: add gnutls backend
 
@@ -469,7 +469,7 @@ new file mode 100644
 index 0000000..37bcaba
 --- /dev/null
 +++ b/pjlib/src/pj/ssl_sock_gtls.c
-@@ -0,0 +1,2887 @@
+@@ -0,0 +1,2877 @@
 +/* $Id$ */
 +/*
 + * Copyright (C) 2014-2016 Savoir-faire Linux. (https://www.savoirfairelinux.com)
@@ -504,7 +504,7 @@ index 0000000..37bcaba
 +#include <pj/timer.h>
 +#include <pj/file_io.h>
 +
-+#if GNUTLS_VERSION_NUMBER < 0x030306
++#if GNUTLS_VERSION_NUMBER < 0x030306 && !defined(_MSC_VER)
 +#include <dirent.h>
 +#endif
 +
@@ -535,7 +535,7 @@ index 0000000..37bcaba
 +#include <gnutls/abstract.h>
 +
 +#ifdef _MSC_VER
-+#  pragma comment( lib, "gnutls")
++#  pragma comment( lib, "libgnutls")
 +#endif
 +
 +
@@ -926,13 +926,6 @@ index 0000000..37bcaba
 +}
 +
 +
-+/* GnuTLS way of reporting internal operations. */
-+static void tls_print_logs(int level, const char* msg)
-+{
-+    PJ_LOG(3, (THIS_FILE, "GnuTLS [%d]: %s", level, msg));
-+}
-+
-+
 +/* Initialize GnuTLS. */
 +static pj_status_t tls_init(void)
 +{
@@ -947,9 +940,6 @@ index 0000000..37bcaba
 +    int ret = gnutls_global_init();
 +    if (ret < 0)
 +        return tls_status_from_err(NULL, ret);
-+
-+    gnutls_global_set_log_level(GNUTLS_LOG_LEVEL);
-+    gnutls_global_set_log_function(tls_print_logs);
 +
 +    /* Init available ciphers */
 +    if (!tls_available_ciphers) {
@@ -2134,7 +2124,7 @@ index 0000000..37bcaba
 +            /* Decrypt received data using GnuTLS (will read our input
 +             * circular buffer) */
 +            int decrypted_size = gnutls_record_recv(ssock->session,
-+                                                    app_read_data->data +
++                                                    ((read_data_t *)app_read_data->data) +
 +                                                    app_read_data->len,
 +                                                    app_data_size);
 +
@@ -2940,7 +2930,7 @@ index 0000000..37bcaba
 +     * (or fails in a fatal way). */
 +    while (total_written < size) {
 +        /* Try encrypting using GnuTLS */
-+        nwritten = gnutls_record_send(ssock->session, data + total_written,
++        nwritten = gnutls_record_send(ssock->session, ((read_data_t *)data) + total_written,
 +                                      size);
 +
 +        if (nwritten > 0) {
