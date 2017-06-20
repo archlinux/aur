@@ -1,7 +1,7 @@
 # Maintainer: Wouter de Vries <wouter@wouter-web.nl>
 _name=ripe.atlas.cousteau
 pkgname=python-ripe-atlas-cousteau
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A python wrapper around RIPE ATLAS API"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python>=3.4' 'python-requests>=2.7.0' 'python-dateutil' 'python-socket
 makedepends=('python-setuptools')
 provides=('python-ripe-atlas-cousteau')
 source=("https://pypi.io/packages/source/r/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('260c3effc0b11269ecb7fbd5fde790c51ff9e9e12ebfdca3ca1680ae4d9afd7f')
+sha256sums=('41e0c91ae4459a6c101448f5bafb043ba44b4abfd9a80a5ae0b4c3a1bb550a52')
 
 package() {
     cd "$srcdir/$_name-$pkgver"
