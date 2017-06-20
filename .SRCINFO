@@ -8,6 +8,7 @@ pkgbase = isl-git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = clang
 	depends = gmp
 	provides = isl
 	conflicts = isl

@@ -8,6 +8,7 @@ pkgdesc="Library for manipulating sets and relations of integer points bounded b
 arch=('i686' 'x86_64')
 url="http://isl.gforge.inria.fr/"
 depends=('gmp')
+makedepends=('clang')
 license=('MIT')
 options=('!libtool')
 provides=('isl')
@@ -23,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-clang=system
   make
 }
 
