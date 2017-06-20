@@ -1,0 +1,15 @@
+pkgbase = bijint-tokei
+	pkgdesc = A wallpaper changer that scrapes www.bijint.com to set your wallpaper to someone holding up the current time with many different actor sets
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/theredbaron1834/Scripts/blob/master/tokei
+	arch = i686
+	arch = x86_64
+	license = BSD 3 Clause
+	depends = curl
+	optdepends = libnotify
+	source = git+https://github.com/theredbaron1834/Scripts.git
+	sha256sums = SKIP
+
+pkgname = bijint-tokei
+
