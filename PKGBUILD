@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.25.0.r151.g0bac1a52e8
+pkgver=0.25.0.r174.gf34e1a0dee
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -106,7 +106,6 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --disable-html-build \
 	            --disable-pdf-build \
 	            --enable-cplugins \
-	            --enable-vf-dlopen-filters \
 	            --enable-zsh-comp \
 	            --disable-test \
 	            --disable-clang-database \
