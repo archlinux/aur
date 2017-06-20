@@ -1,3 +1,4 @@
+# Maintainer: Ouyang Jun<ouyangjun1999@gmail.com> 
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Jove Yu <yushijun110 [at] gmail.com>
 
