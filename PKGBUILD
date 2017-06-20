@@ -27,7 +27,7 @@ package() {
   cd "$_gitname"
 
   install -Dm755 build/"$_gitname" "$pkgdir/usr/bin/$_gitname"
-  mkdir -p "$pkgdir/usr/share/doc/$_gitname/"
+  install -d "$pkgdir/usr/share/doc/$_gitname/"
   cp -r docs/* "$pkgdir/usr/share/doc/$_gitname/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_gitname/LICENSE.txt"
 }
