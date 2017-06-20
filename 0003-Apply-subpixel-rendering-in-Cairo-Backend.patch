@@ -1,7 +1,7 @@
-From f713e421685ace6ac6515a347910fc51773f874c Mon Sep 17 00:00:00 2001
+From ebd6c3a630b4a773182b50ddcc5c0efed809cb33 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
-Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
+Subject: [PATCH 3/5] Apply subpixel rendering in Cairo Backend
 
 Source:
 https://github.com/zhou13/poppler-subpixel/blob/master/poppler/poppler-subpixel.patch
@@ -135,7 +135,7 @@ index 6676f898..3c8fe815 100644
    if (cairo_font_face_set_user_data (l->font_face,
  				     &_ft_cairo_key,
 diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
-index 89d0c996..b06f0da5 100644
+index 2946c924..78f85c0b 100644
 --- a/poppler/CairoOutputDev.cc
 +++ b/poppler/CairoOutputDev.cc
 @@ -204,6 +204,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
@@ -191,10 +191,10 @@ index 89d0c996..b06f0da5 100644
    glyphs = NULL;
    if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index a8f5be95..0ca1940a 100644
+index 37220280..1ae46f40 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4728,6 +4728,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
+@@ -4730,6 +4730,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
@@ -311,5 +311,5 @@ index 2aaabae9..a49d34f1 100644
    Object *getAnnots(Object *obj, XRef *xrefA = NULL) { return annotsObj.fetch((xrefA == NULL) ? xref : xrefA, obj); }
    // Add a new annotation to the page
 -- 
-2.11.1
+2.13.1
 
