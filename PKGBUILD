@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=svgcleaner-git
-pkgver=0.9.1r393.7f8f92c
+pkgver=0.9.1r394.db92ed2
 pkgrel=1
 pkgdesc="Program for reducing size of svg images without loss"
 arch=('i686' 'x86_64')
