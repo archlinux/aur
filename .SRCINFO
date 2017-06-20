@@ -1,12 +1,15 @@
 pkgbase = gonvim
 	pkgdesc = Neovim GUI written in Golang
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dzhou121/gonvim
 	arch = any
 	license = unknown
 	depends = neovim
 	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-multimedia
+	depends = qt5-svg
 	provides = gonvim
 	conflicts = gonvim-git
 	source = https://github.com/dzhou121/gonvim/releases/download/v0.1/gonvim-linux.zip

@@ -1,12 +1,12 @@
 # Maintainer: Wil Thomason <wbthomason@cs.cornell.edu>
 pkgname=gonvim
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Neovim GUI written in Golang"
 arch=('any')
 url="https://github.com/dzhou121/gonvim"
 license=('unknown')
-depends=('neovim' 'qt5-base')
+depends=('neovim' 'qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-svg')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/dzhou121/gonvim/releases/download/v${pkgver}/gonvim-linux.zip")
