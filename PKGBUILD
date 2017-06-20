@@ -2,7 +2,7 @@
 # Contributor: Alexander Baldeck <lex@tentriplenine.com>
 
 pkgname=charles
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="Web debugging proxy application"
 arch=(any)
@@ -10,7 +10,7 @@ url="http://www.charlesproxy.com"
 license=('custom' 'custom:bounce' 'APACHE')
 depends=('java-runtime>=8' 'hicolor-icon-theme')
 source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}.tar.gz)
-md5sums=('f0c63beecb97f3251bcf32529a4700c7')
+md5sums=('084455b4730abd7c50c54ac9dfeb48b7')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -40,6 +40,8 @@ package() {
     ${pkgdir}/usr/share/licenses/${pkgname}/bounce-license.txt
   install -D -m644 ${srcdir}/${pkgname}/etc/charles-proxy.desktop \
     ${pkgdir}/usr/share/applications/charles-proxy.desktop
+
+  sed -i 's/Icon=\.\..\+/Icon=charles/' ${pkgdir}/usr/share/applications/charles-proxy.desktop
 }
 
 # vim:set ts=2 sw=2 et:
