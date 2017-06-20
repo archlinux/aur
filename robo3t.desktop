@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Robo 3T
+Comment=Shell-centric MongoDB management tool
+Type=Application
+Categories=Development;
+Exec=robo3t
+Terminal=false
+StartupNotify=true
+Icon=robo3t
