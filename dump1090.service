@@ -1,0 +1,17 @@
+[Unit]
+Description=RtlSdr mode S decoder
+Wants=network-online.target
+After=syslog.target network-online.target lighttpd.service
+
+[Service]
+Restart=always
+RestartSec=30
+RuntimeDirectory=dump1090
+#PermissionsStartOnly=true
+#ExecStartPre=-/usr/bin/mkdir /var/run/dump1090
+#ExecStartPre=/usr/bin/chown -R nobody:nobody /var/run/dump1090/
+ExecStart=/usr/bin/dump1090 --quiet --net --gain -10 --write-json /var/run/dump1090
+
+[Install]
+Alias=dump1090-fa.service
+WantedBy=multi-user.target
