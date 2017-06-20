@@ -53,8 +53,8 @@ makedepends=('alsa-lib'
              'xorg-server-devel')
 makedepends_x86_64=('gcc-multilib' 'lib32-glibc')
 source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}.tar.bz2"
-        'virtualbox-host-dkms.conf'
-        'virtualbox-guest-dkms.conf'
+        'virtualbox-i3-host-dkms.conf'
+        'virtualbox-i3-guest-dkms.conf'
         'virtualbox.sysusers'
         'virtualbox-guest-utils.sysusers'
         '60-vboxdrv.rules'
