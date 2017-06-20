@@ -10,7 +10,7 @@
 # flite1
 
 pkgname=ffmpeg-semifull-git
-pkgver=N.83277.gc4a3526b57
+pkgver=N.86539.g155f071bad
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -20,18 +20,16 @@ depends=(
     'alsa-lib' 'zlib' 'bzip2' 'xz' 'libpng' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
     'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
     'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'freetype2' 'fribidi' 'libgme' 'gsm'
-    'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf' 'nut-multimedia-git'
+    'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'nut-multimedia-git'
     'opencore-amr' 'opencv' 'openh264' 'openjpeg2' 'libopenmpt-svn' 'opus' 'pulseaudio'
-    'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
+    'rubberband' 'rtmpdump' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
     'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc'
-    'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg-git'
+    'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
     'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver' 'opencl-icd-loader'
-    'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl2' 'java-environment' 'libmfx-git'
+    'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl2' 'libmfx-git'
     'libomxil-bellagio'
 )
-depends_x86_64=('cuda')
-optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)' 'khronos-ocl-icd-svn: opencl ICD loader from Khronos, non-conflicting.')
-makedepends=('git' 'yasm' 'opencl-headers' 'flite' 'java-environment')
+makedepends=('git' 'yasm' 'opencl-headers' 'flite')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-semifull' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
@@ -56,29 +54,27 @@ build() {
 	cd "${srcdir}/${pkgname}"
 	
 	# Add x86_64 depends and optdepends to the build if architecture is x86_64
-	if [ "$CARCH" = "x86_64" ]; then
-	    _cuda="--enable-cuda"
-	    _cudainc="-I/opt/cuda/include"
-	    _cudalib="-L/opt/cuda/lib64"
-	    _cuvid="--enable-cuvid"
-	    _libnpp="--enable-libnpp"
-	    _intelsdklib="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
-	else
+	#if [ "$CARCH" = "x86_64" ]; then
+	#    _cuda="--enable-cuda"
+	#    _cudainc="-I/opt/cuda/include"
+	#    _cudalib="-L/opt/cuda/lib64"
+	#    _cuvid="--enable-cuvid"
+	#    _libnpp="--enable-libnpp"
+	#    _intelsdklib="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
+	#else
 	    _cuda=""
 	    _cudainc=""
 	    _cudalib=""
 	    _cuvid=""
 	    _libnpp=""
 	    _intelsdklib=""
-	fi
+	#fi
 	
 	msg2 "Running ffmpeg configure script. Please wait..."
 	
 	./configure \
 	        --prefix=/usr \
-	        --extra-cflags="-I/usr/lib/jvm/$(archlinux-java get)/include \
-	                        -I/usr/lib/jvm/$(archlinux-java get)/include/linux \
-	                        ${_cudainc}" \
+	        --extra-cflags="${_cudainc}" \
 	        --extra-ldflags="${_cudalib} ${_intelsdklib}" \
 	        \
 	        --enable-rpath \
@@ -98,7 +94,6 @@ build() {
 	        --enable-gmp \
 	        --enable-gnutls \
 	        --enable-iconv \
-	        --enable-jni \
 	        --enable-ladspa \
 	        --enable-libass \
 	        --enable-libbluray \
@@ -118,7 +113,6 @@ build() {
 	        --enable-libkvazaar \
 	        --enable-libmodplug \
 	        --enable-libmp3lame \
-	        --enable-libnut \
 	        --enable-libopencore-amrnb \
 	        --enable-libopencore-amrwb \
 	        --enable-libopencv \
@@ -129,7 +123,6 @@ build() {
 	        --enable-libpulse \
 	        --enable-librubberband \
 	        --enable-librtmp  \
-	        --enable-libschroedinger \
 	        --enable-libshine \
 	        --enable-libsmbclient \
 	        --enable-libsnappy \
@@ -158,14 +151,11 @@ build() {
 	        --enable-libzmq \
 	        --enable-libzvbi \
 	        --enable-lzma \
-	        --enable-mediacodec \
-	        --enable-netcdf \
 	        --enable-openal \
 	        --enable-opencl \
 	        --enable-opengl \
 	        --enable-openssl \
 	        --enable-sdl2 \
-	        --enable-x11grab \
 	        --enable-xlib \
 	        --enable-zlib \
 	        \
