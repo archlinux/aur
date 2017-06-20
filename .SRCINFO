@@ -1,6 +1,6 @@
 pkgbase = andrei-desktop
 	pkgdesc = An openbox based desktop environment focused on productivity and speed
-	pkgver = r164.80c7d3a
+	pkgver = r170.280bfa1
 	pkgrel = 1
 	url = https://gitlab.com/webative-open-source/andrei-linux
 	install = andrei-desktop.install
@@ -138,6 +138,7 @@ pkgbase = andrei-desktop
 	depends = tint2
 	depends = transmission-cli
 	depends = transmission-qt
+	depends = ttf-dejavu
 	depends = ttf-freefont
 	depends = ttf-ms-fonts
 	depends = ttf-roboto
