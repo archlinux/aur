@@ -1,8 +1,8 @@
 # Maintainer: scan
 
 pkgname=obsidian-icon-theme
-pkgver=1
-pkgrel=20170617
+pkgver=20170617
+pkgrel=1
 pkgdesc="Obsidian Icon Theme"
 arch=('any')
 url="https://www.gnome-look.org/p/1169579"
