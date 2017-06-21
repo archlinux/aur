@@ -2,7 +2,7 @@
 
 pkgname=epfl-scripts-git
 _pkgname=epfl-scripts
-pkgver=r46.d6570b3
+pkgver=r47.b0979bf
 pkgrel=1
 pkgdesc="Collection of scripts for simplifying one's life at the EPFL"
 arch=('any')
@@ -11,6 +11,7 @@ license=('Apache')
 provides=(epfl-scripts)
 conflicts=(epfl-scripts)
 depends=(coreutils)
+changelog='changelog'
 source=('git+https://gitlab.gnugen.ch/mtweber/epfl-scripts.git')
 md5sums=('SKIP')
 
