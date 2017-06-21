@@ -2,7 +2,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gst-validate
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=0
 pkgdesc="GStreamer Validate testing Framework"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://gstreamer.freedesktop.org/"
 depends=('gstreamer' 'gst-plugins-base')
 makedepends=('intltool' 'pkgconfig' 'gtk-doc' 'gobject-introspection' 'python3')
 source=(${url}/src/gst-validate/gst-validate-${pkgver}.tar.xz)
-sha256sums=('73efaf123638b97159c1ff6575dd05ea0cf7dc6d71b07806b5a5f25188a67fbb')
+sha256sums=('150044e6aafb31447d0171f56d621671de0579328ee8f7122a671fad6e1e7182')
 
 build() {
   cd "${srcdir}/gst-validate-${pkgver}"
