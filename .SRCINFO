@@ -1,0 +1,10 @@
+pkgbase = flaketill-dotfiles
+	pkgdesc = A simple dotfiles restore for develop on Arch Linux x64
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://flaketill@bitbucket.org/flaketill/dotfiles.git
+	arch = x86_64
+	license = GPL
+
+pkgname = flaketill-dotfiles
+
