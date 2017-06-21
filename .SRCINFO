@@ -3,7 +3,7 @@
 pkgbase = runescape-launcher
 	pkgdesc = RuneScape Game Client (NXT)
 	pkgver = 2.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.runescape.com/
 	arch = x86_64
 	license = custom
@@ -12,6 +12,7 @@ pkgbase = runescape-launcher
 	depends = libpng12
 	depends = libvorbis
 	depends = sdl2
+	depends = gtk2
 	provides = runescape-launcher-nxt
 	conflicts = runescape-launcher-nxt
 	source = wrapper.sh

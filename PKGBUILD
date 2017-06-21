@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 _pkgbump=7
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
@@ -16,6 +16,7 @@ depends=(
     libpng12
     libvorbis
     sdl2
+    gtk2
 )
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
