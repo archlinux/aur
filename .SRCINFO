@@ -1,6 +1,6 @@
 pkgbase = ecflow-ui
 	pkgdesc = ECMWF GUI client for ecFlow
-	pkgver = 4.5.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/ECFLOW/Getting+Started+with+ecFlowUI
 	arch = i686
@@ -11,10 +11,8 @@ pkgbase = ecflow-ui
 	makedepends = boost
 	depends = qt5-base
 	depends = qt5-declarative
-	source = https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-4.5.0-Source.tar.gz
-	source = ecFlow-ptree.patch
-	md5sums = 6b6e0d7a30c65ce1224e18b58f86e1f2
-	md5sums = bcd6f0c578c4e1165d333e381cc77ae1
+	source = https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-4.6.1-Source.tar.gz
+	md5sums = 6c10be4694318eea695d85628869f16a
 
 pkgname = ecflow-ui
 

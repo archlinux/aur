@@ -1,6 +1,6 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
 pkgname=ecflow-ui
-pkgver=4.5.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="ECMWF GUI client for ecFlow"
 arch=(i686 x86_64)
@@ -15,14 +15,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=(https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-${pkgver}-Source.tar.gz ecFlow-ptree.patch)
+source=(https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-${pkgver}-Source.tar.gz)
 noextract=()
-md5sums=('6b6e0d7a30c65ce1224e18b58f86e1f2' 'bcd6f0c578c4e1165d333e381cc77ae1')
-
-prepare() {
-  cd ecFlow-${pkgver}-Source
-  patch --verbose -Np1 -i "../ecFlow-ptree.patch"
-}
+md5sums=('6c10be4694318eea695d85628869f16a')
 
 build() {
   cd ecFlow-${pkgver}-Source
@@ -31,14 +26,13 @@ build() {
     -DCMAKE_CXX_FLAGS=-w -DENABLE_SERVER=off -DENABLE_PYTHON=off -DENABLE_UI=on -DENABLE_GUI=off \
     -DBOOST_ROOT=/usr \
     -DECF_NO_PYTHON=1 ..
-  make -j$(grep processor /proc/cpuinfo | wc -l) ecflow_ui.x || return 1
 }
 
 package()
 {
   cd ecFlow-${pkgver}-Source/build
   echo "$pkgdir"
-  make DESTDIR="$pkgdir" install ecflow_ui.x || return 1
+  make DESTDIR="$pkgdir" -j$(grep processor /proc/cpuinfo | wc -l) install ecflow_ui.x || return 1
   cd ${pkgdir}/usr/bin/
   rm ecflow_logsvr.pl  ecflow_logsvr.sh  ecflow_migrate.py  ecflow_start.sh  ecflow_stop.sh  ecflow_test_ui.sh noconnect.sh
   rm -rf ${pkgdir}/usr/share/ecflow/cmake
