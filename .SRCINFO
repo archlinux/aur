@@ -1,6 +1,6 @@
 pkgbase = xmonad-git
 	pkgdesc = Lightweight X11 tiled window manager written in Haskell
-	pkgver = v0.13.r0.g76f4a16
+	pkgver = v0.13.r5.g2e63127
 	pkgrel = 1
 	url = http://xmonad.org/
 	install = xmonad.install
