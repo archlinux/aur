@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn
-pkgver=2.4.2
-pkgrel=2
+pkgver=2.4.3
+pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('i686' 'x86_64')
 url='http://openvpn.net/index.php/open-source.html'
@@ -12,18 +12,14 @@ makedepends=('systemd')
 license=('custom')
 install=openvpn.install
 validpgpkeys=('6D04F8F1B0173111F499795E29584D9F40864578'  # Samuli Seppänen <samuli@openvpn.net>
-              '7ACD56B74144925C6214329757DB9DAB613B8DA1') # David Sommerseth (OpenVPN Technologies, Inc) <davids@openvpn.net>
-source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc}
-        '0004-openssl-1-1-0.patch')
-sha256sums=('df5c4f384b7df6b08a2f6fa8a84b9fd382baf59c2cef1836f82e2a7f62f1bff9'
-            'SKIP'
-            '75259cb14ed8237c2ca5618eca902ed39f720df166e732911e21dd5abcc68b3e')
+              '7ACD56B74144925C6214329757DB9DAB613B8DA1'  # David Sommerseth (OpenVPN Technologies, Inc) <davids@openvpn.net>
+              'F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
+source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc})
+sha256sums=('7aa86167a5b8923e54e8795b814ed77288c793671f59fd830d9ab76d4b480571'
+            'SKIP')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
-
-  # allow to build against openssl 1.1.0
-  patch -Np1 < "${srcdir}"/0004-openssl-1-1-0.patch
 
   # regenerate configure script
   autoreconf -fi
