@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=free42-skins
-pkgver=20170517
+pkgver=20170529
 pkgrel=1
 pkgdesc='Skins for the free42 emulator'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('free42')
 _archivename="free42-skins-$pkgver.zip"
 source=("$_archivename::http://thomasokken.com/free42/skins/desktop-skins.zip")
-md5sums=('86764e67109130814f639c84135eeed9')
+md5sums=('5f9a11d4daa9a3555f671e6edb88c245')
 noextract=("$_archivename")
 
 package() {
