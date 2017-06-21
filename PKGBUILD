@@ -1,6 +1,6 @@
 # Maintainer: Okashi <okashi@fourchin.net>
 pkgname=owo-cli
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 epoch=
 pkgdesc="A bash based file uploader and URL shortener for owo.whats-th.is"
@@ -12,8 +12,8 @@ depends=('curl' 'xclip' 'maim' 'slop' 'grep' 'libnotify')
 changelog=
 source=("https://github.com/whats-this/owo.sh/raw/master/dist_pkgs/owo-cli-0.0.18.tar.gz")
 noextract=()
-sha256sums=('261c6ff4cde7b0d8dfd924e73e417c282c1f74bea9e2b5349694df7676de373c')
-validpgpkeys=('AB52DA8BF01D9D5C0614376243A450B5185ADAA2') # Okashi
+sha256sums=('0006e58d8394661aea91ab340265cb533c2c515a6a065760fa38b4a0c0feec6b')
+validpgpkeys=('BB7D46DCFBB23FBCB70D3F2A5831FF554202E5C2') # Okashi
 
 package() {
         tar zxf $pkgname-$pkgver.tar.gz
