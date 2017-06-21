@@ -1,118 +1,13 @@
 post_install()
 {
-	echo "Configuring PHP..."
-	
-	sed -i 's/;extension=curl.so/extension=curl.so/' /etc/php/php.ini
-	sed -i 's/;extension=pdo_sqlite.so/extension=pdo_sqlite.so/' /etc/php/php.ini
-	sed -i 's/;extension=posix.so/extension=posix.so/' /etc/php/php.ini
-	sed -i 's/;extension=sqlite3.so/extension=sqlite3.so/' /etc/php/php.ini
-	
-	echo "Configuring Apache..."
-	
-	sed -i 's/LoadModule mpm_event_module modules\/mod_mpm_event.so/#LoadModule mpm_event_module modules\/mod_mpm_event.so/' /etc/httpd/conf/httpd.conf
-
-	echo -e "\n# Start SpotCommander configuration" >> /etc/httpd/conf/httpd.conf
-	echo "LoadModule mpm_prefork_module modules/mod_mpm_prefork.so" >> /etc/httpd/conf/httpd.conf
-	echo "LoadModule php7_module modules/libphp7.so" >> /etc/httpd/conf/httpd.conf
-	echo "Include conf/extra/php7_module.conf" >> /etc/httpd/conf/httpd.conf
-	echo "Include conf/extra/spotcommander.conf" >> /etc/httpd/conf/httpd.conf
-	echo -e "# End SpotCommander configuration\n" >> /etc/httpd/conf/httpd.conf
-
-	echo -e "Alias /spotcommander /usr/share/webapps/spotcommander\n\n<Directory \"/usr/share/webapps/spotcommander\">\nAllowOverride AuthConfig\nRequire all granted\n</Directory>" > /etc/httpd/conf/extra/spotcommander.conf
-
-	systemctl enable httpd.service 1>/dev/null 2>&1
-
-	systemctl restart httpd.service 1>/dev/null 2>&1
-	
-	echo "Creating symlink..."
-	
-	ln -s /usr/share/webapps/spotcommander/bin/spotcommander /usr/bin/spotcommander
-	
-	echo "Adding daemon to startup applications..."
-	
-	echo -e "[Desktop Entry]\nType=Application\nName=SpotCommander\nExec=spotcommander start" > /etc/xdg/autostart/spotcommander.desktop
 
 echo "
  --------------------------------------------------------------
  | Installation complete!                                     |
  |                                                            |
- | YOU MUST NOW RE-LOGIN TO YOUR DESKTOP TO START THE DAEMON. |
+ | GO TO THIS WEB PAGE TO COMPLETE THE INSTALLATION:          |
  |                                                            |
- | You should then be able to control Spotify by going to:    |
- |                                                            |
- | http://this.computers.ip.address.or.hostname/spotcommander |
- --------------------------------------------------------------
-"
-
-}
-
-pre_upgrade()
-{
-	spotcommander stop
-	
-	echo "Backing up playlists and library in case of upgrade..."
-	
-	cp -p /usr/share/webapps/spotcommander/db/playlists.db /tmp/spotcommander-playlists.db
-	cp -p /usr/share/webapps/spotcommander/db/library.db /tmp/spotcommander-library.db
-
-	echo "Backing up Spotify authorization in case of upgrade..."
-
-	cp -p /usr/share/webapps/spotcommander/run/spotify.country /tmp/spotcommander-spotify.country
-	cp -p /usr/share/webapps/spotcommander/run/spotify.token /tmp/spotcommander-spotify.token
-	cp -p /usr/share/webapps/spotcommander/run/spotify.username /tmp/spotcommander-spotify.username
-	
-	echo "Backing up authentication configuration in case of upgrade..."
-	
-	cp -p /usr/share/webapps/spotcommander/.htaccess /tmp/spotcommander-htaccess
-	cp -p /usr/share/webapps/spotcommander/.htpasswd /tmp/spotcommander-htpasswd
-}
-
-post_upgrade()
-{	
-	if [ -e /tmp/spotcommander-playlists.db ]; then
-	
-		echo "Restoring playlists..."
-
-		cp -p /tmp/spotcommander-playlists.db /usr/share/webapps/spotcommander/db/playlists.db
-	
-	fi
-
-	if [ -e /tmp/spotcommander-library.db ]; then
-	
-		echo "Restoring library..."
-
-		cp -p /tmp/spotcommander-library.db /usr/share/webapps/spotcommander/db/library.db
-	
-	fi
-
-	if [ -e /tmp/spotcommander-spotify.token ]; then
-
-		echo "Restoring Spotify authorization..."
-
-		cp -p /tmp/spotcommander-spotify.country /usr/share/webapps/spotcommander/run/spotify.country
-		cp -p /tmp/spotcommander-spotify.token /usr/share/webapps/spotcommander/run/spotify.token
-		cp -p /tmp/spotcommander-spotify.username /usr/share/webapps/spotcommander/run/spotify.username
-
-	fi
-	
-	if [ -e /tmp/spotcommander-htaccess ]; then
-	
-		echo "Restoring authentication configuration..."
-
-		cp -p /tmp/spotcommander-htaccess /usr/share/webapps/spotcommander/.htaccess
-		cp -p /tmp/spotcommander-htpasswd /usr/share/webapps/spotcommander/.htpasswd
-	
-	fi
-
-echo "
- --------------------------------------------------------------
- | Upgrade complete!                                          |
- |                                                            |
- | YOU MUST NOW RE-LOGIN TO YOUR DESKTOP TO START THE DAEMON. |
- |                                                            |
- | You should then be able to control Spotify by going to:    |
- |                                                            |
- | http://this.computers.ip.address.or.hostname/spotcommander |
+ | http://www.olejon.net/code/spotcommander/?install_from_aur |
  --------------------------------------------------------------
 "
 
@@ -121,21 +16,9 @@ echo "
 pre_remove()
 {
 	spotcommander stop
-	
-	echo "Deleting files..."
-	
+
 	rm -f /usr/share/webapps/spotcommander/run/daemon-user-*.socket
-	rm /usr/bin/spotcommander
-	rm /etc/httpd/conf/extra/spotcommander.conf
-	rm /etc/xdg/autostart/spotcommander.desktop
-	
-	echo "Configuring Apache..."
-	
-	sed -i '/# Start SpotCommander configuration/,/# End SpotCommander configuration/d' /etc/httpd/conf/httpd.conf
-
-	sed -i 's/#LoadModule mpm_event_module modules\/mod_mpm_event.so/LoadModule mpm_event_module modules\/mod_mpm_event.so/' /etc/httpd/conf/httpd.conf
-
-	systemctl restart httpd.service 1>/dev/null 2>&1
-	
-	echo "Uninstallation complete!"
+	rm -f /usr/bin/spotcommander
+	rm -f /etc/httpd/conf/extra/spotcommander.conf
+	rm -f /etc/xdg/autostart/spotcommander.desktop	
 }
