@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd from git
-	pkgver = 233.r595.g4b57a2720
+	pkgver = 234.r171.gb1f24b75a
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = systemd-git
 	makedepends = shadow
 	makedepends = gnu-efi-libs
 	makedepends = git
+	makedepends = meson
 	options = strip
 	options = !distcc
 	options = !ccache
@@ -45,8 +46,8 @@ pkgbase = systemd-git
 	source = systemd-update.hook
 	sha512sums = SKIP
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
-	sha512sums = 52af734947a768758d5eb3f18e31a1cfec6699eca6fa10e40b90c7f11991509186c0a696e3490af3eaba80064ea4cb93e041579abf05addf072d294300aa4b28
-	sha512sums = fec639de0d99967ed3e67289eff5ff78fff0c5829d350e73bed536a8391f1daa1d118d72dbdc1f480ffd33fc22b72f4817d0973bd09ec7f182fd26ad87b24355
+	sha512sums = a70a779828e03c91275df1e046f78bdface08e2a8df0245a3f6e8d5904e3dbbe5d498cbf7f32d5ce61f2fb0d0a3d440d47ce9e41352a5547d80fa1bc29687159
+	sha512sums = a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
 	sha512sums = 5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75
@@ -63,6 +64,7 @@ pkgname = systemd-git
 	license = LGPL2.1
 	depends = acl
 	depends = bash
+	depends = cryptsetup
 	depends = dbus
 	depends = iptables
 	depends = kbd
@@ -78,23 +80,22 @@ pkgname = systemd-git
 	depends = libseccomp
 	depends = util-linux
 	depends = xz
-	optdepends = cryptsetup: required for encrypted block devices
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
-	provides = systemd=233.r595.g4b57a2720
-	provides = udev=233.r595.g4b57a2720
 	provides = nss-myhostname
-	provides = systemd-tools=233.r595.g4b57a2720
-	conflicts = systemd
+	provides = systemd-tools=234.r171.gb1f24b75a
+	provides = udev=234.r171.gb1f24b75a
+	provides = systemd=234.r171.gb1f24b75a
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
-	replaces = systemd
+	conflicts = systemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
+	replaces = systemd
 	backup = etc/pam.d/systemd-user
 	backup = etc/systemd/coredump.conf
 	backup = etc/systemd/journald.conf

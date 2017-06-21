@@ -5,7 +5,7 @@
 pkgbase=systemd-git
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd from git"
-pkgver=233.r595.g4b57a2720
+pkgver=234.r171.gb1f24b75a
 pkgrel=1
 branch='master'
 arch=('i686' 'x86_64')
@@ -13,7 +13,8 @@ url="https://www.github.com/systemd/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
-             'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
+             'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
+             'meson')
 options=('strip' '!distcc' '!ccache')
 source=("systemd-git::git://github.com/systemd/systemd.git#branch=${branch}"
 		    'initcpio-hook-udev'
@@ -29,8 +30,8 @@ source=("systemd-git::git://github.com/systemd/systemd.git#branch=${branch}"
         'systemd-update.hook')
 sha512sums=('SKIP'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '52af734947a768758d5eb3f18e31a1cfec6699eca6fa10e40b90c7f11991509186c0a696e3490af3eaba80064ea4cb93e041579abf05addf072d294300aa4b28'
-            'fec639de0d99967ed3e67289eff5ff78fff0c5829d350e73bed536a8391f1daa1d118d72dbdc1f480ffd33fc22b72f4817d0973bd09ec7f182fd26ad87b24355'
+            'a70a779828e03c91275df1e046f78bdface08e2a8df0245a3f6e8d5904e3dbbe5d498cbf7f32d5ce61f2fb0d0a3d440d47ce9e41352a5547d80fa1bc29687159'
+            'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
@@ -45,57 +46,45 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$pkgbase"
-
-  #_validate_tag || return
-
-  if (( ${#_backports[*]} > 0 )); then
-    git cherry-pick -n "${_backports[@]}"
-  fi
-
-  ./autogen.sh
-}
-
 build() {
-  cd "$pkgbase"
-
   local timeservers=({0..3}.arch.pool.ntp.org)
 
-  local configure_options=(
-    --libexecdir=/usr/lib
-    --localstatedir=/var
-    --sysconfdir=/etc
+  local meson_options=(
+    --buildtype=release
+    -Db_lto=true
 
-    --enable-lz4
-    --enable-gnuefi
-    --disable-audit
-    --disable-ima
+    -Daudit=false
+    -Dgnuefi=true
+    -Dima=false
+    -Dlz4=true
 
-    --with-sysvinit-path=
-    --with-sysvrcnd-path=
-    --with-ntp-servers="${timeservers[*]}"
-    --with-default-dnssec=no
-    --with-dbuspolicydir=/usr/share/dbus-1/system.d
-    --without-kill-user-processes
+    -Ddbuspolicydir=/usr/share/dbus-1/system.d
+    -Ddefault-dnssec=no
+    # TODO(dreisner): consider changing this to unified
+    -Ddefault-hierarchy=hybrid
+    -Ddefault-kill-user-processes=false
+    -Dfallback-hostname='archlinux'
+    -Dntp-servers="${timeservers[*]}"
+    -Drpmmacrosdir=no
+    -Dsysvinit-path=
+    -Dsysvrcnd-path=
   )
 
-  ./configure "${configure_options[@]}"
+  meson "$pkgbase" build "${meson_options[@]}"
 
-  make
+  ninja -C build
 }
 
 package_systemd-git() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+  depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd-git' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
-  provides=("systemd=$pkgver" "udev=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver")
-  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev' )
-  optdepends=('cryptsetup: required for encrypted block devices'
-              'libmicrohttpd: remote journald capabilities'
+  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
+  replaces=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
+  optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat-git: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user')
@@ -112,14 +101,12 @@ package_systemd-git() {
           etc/udev/udev.conf)
   install="systemd.install"
 
-  make -C "$pkgbase" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
   rm -r "$pkgdir/etc/systemd/system/"*.wants
-
-  # get rid of RPM macros
-  rm -r "$pkgdir/usr/lib/rpm"
+  rm -r "$pkgdir/etc/systemd/system/"*.service
 
   # add back tmpfiles.d/legacy.conf
   install -m644 "$pkgbase/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
@@ -141,17 +128,25 @@ package_systemd-git() {
   chown root:systemd-journal "$pkgdir/var/log/journal"
   chmod 2755 "$pkgdir/var/log/journal"
 
+  # match directory owner/group and mode from extra/polkit
+  chown root:102 "$pkgdir"/usr/share/polkit-1/rules.d
+  chmod 0750     "$pkgdir"/usr/share/polkit-1/rules.d
+
   # we'll create this on installation
   rmdir "$pkgdir/var/log/journal/remote"
 
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 
-  ### manpages shipped with systemd-sysvcompat
+  # manpages shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/share/man/man8/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
 
-  ### runtime libraries shipped with libsystemd
+  # runtime libraries shipped with libsystemd
   rm "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so*
+
+  # allow core/filesystem to pristine nsswitch.conf
+  rm "$pkgdir/usr/share/factory/etc/nsswitch.conf"
+  sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir/usr/lib/tmpfiles.d/etc.conf"
 
   # add example bootctl configuration
   install -Dm644 "$srcdir/arch.conf" "$pkgdir"/usr/share/systemd/bootctl/arch.conf
@@ -174,7 +169,12 @@ package_libsystemd-git() {
   provides=('libsystemd.so' 'libudev.so' 'libsystemd')
   conflicts=('libsystemd')
 
-  make -C "$pkgbase" DESTDIR="$pkgdir" install-rootlibLTLIBRARIES
+  # meson does not support installing subsets of files, no?
+  # So do a full install to temporary directory, then install what we need.
+  DESTDIR="$srcdir"/full-install ninja -C build install
+
+  install -dm755 "$pkgdir"/usr/lib/
+  cp --archive "$srcdir"/full-install/usr/lib/lib{nss_*,systemd,udev}.so* "$pkgdir"/usr/lib/
 }
 
 package_systemd-sysvcompat-git() {
@@ -187,7 +187,7 @@ package_systemd-sysvcompat-git() {
 
   install -dm755 "$pkgdir"/usr/share/man/man8
   cp -d --no-preserve=ownership,timestamp \
-    "$pkgbase"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
+    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
     "$pkgdir"/usr/share/man/man8
 
   install -dm755 "$pkgdir/usr/bin"
