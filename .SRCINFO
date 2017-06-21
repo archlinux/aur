@@ -10,7 +10,7 @@ pkgbase = alchemy-svn
 	makedepends = apache-ant
 	makedepends = imagemagick
 	depends = sh
-	depends = java-environment
+	depends = java-environment=7
 	depends = hicolor-icon-theme
 	depends = libxrender
 	depends = libxcomposite

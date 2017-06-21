@@ -7,7 +7,7 @@ pkgdesc="Nonorthodox painting software exploring and experimenting with alternat
 url="http://al.chemy.org/"
 license=('GPL')
 conflicts=('alchemy')
-depends=('sh' 'java-environment' 'hicolor-icon-theme' 'libxrender' 'libxcomposite' 'libxtst')
+depends=('sh' 'java-environment=7' 'hicolor-icon-theme' 'libxrender' 'libxcomposite' 'libxtst')
 makedepends=('subversion' 'apache-ant' 'imagemagick')
 source=("${pkgname}::svn+http://svn.al.chemy.org/svn/"
 	"alchemy.desktop"
@@ -22,6 +22,7 @@ pkgver() {
 }
 
 build() {
+export PATH=/usr/lib/jvm/java-7-openjdk/jre/bin/:$PATH
 	cd ${pkgname}/Alchemy
 	ant
 }
