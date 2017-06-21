@@ -1,7 +1,7 @@
 # Maintainer:  Xiaoxiao Pu <i@xiaoxiao.im>
 
-pkgname=nausoftphone6
-_pkgname=nausoftphone
+pkgname=nausoftphone
+_pkgname=nausoftphone6
 pkgver=6.3.40.2
 pkgrel=1482506341
 pkgdesc="Naumen SoftPhone. Software Phone from Naumen ISC"
@@ -31,17 +31,17 @@ package() {
   unlink ${srcdir}/data.tar.xz
   unlink ${srcdir}/debian-binary
   unlink ${srcdir}/nausoftphone_$pkgver-$pkgrel-trusty_amd64.deb
-  unlink ${srcdir}/usr/share/applications/nausoftphone.desktop
+  unlink ${srcdir}/usr/share/applications/${_pkgname}.desktop
   rm -Rf ${srcdir}/usr/share/doc
 
   # Install
   install -d -m755 "$pkgdir"/opt/
-  install -d -m755 "$pkgdir"/opt/naumen/${pkgname}
+  install -d -m755 "$pkgdir"/opt/naumen/${_pkgname}
   install -d -m755 "$pkgdir"/usr/
 
-  cp -a ${srcdir}/opt/naumen/${_pkgname}/* $pkgdir/opt/naumen/${pkgname}
+  cp -a ${srcdir}/opt/naumen/${_pkgname}/* $pkgdir/opt/naumen/${_pkgname}
   cp -a ${srcdir}/usr/ $pkgdir/usr/
 
-  install -D -m444 ${srcdir}/nauphone.png $pkgdir/opt/naumen/${pkgname}/res/icons/nauphone.png
-  install -D -m644 $srcdir/nausoftphone6.desktop $pkgdir/usr/share/applications/nausoftphone6.desktop
+  install -D -m444 ${srcdir}/nauphone.png $pkgdir/opt/naumen/${_pkgname}/res/icons/nauphone.png
+  install -D -m644 $srcdir/${_pkgname}.desktop $pkgdir/usr/share/applications/${_pkgname}.desktop
 }

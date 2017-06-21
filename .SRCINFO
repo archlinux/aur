@@ -1,4 +1,4 @@
-pkgbase = nausoftphone6
+pkgbase = nausoftphone
 	pkgdesc = Naumen SoftPhone. Software Phone from Naumen ISC
 	pkgver = 6.3.40.2
 	pkgrel = 1482506341
@@ -31,5 +31,5 @@ pkgbase = nausoftphone6
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = nausoftphone6
+pkgname = nausoftphone
 
