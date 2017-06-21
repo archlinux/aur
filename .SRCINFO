@@ -1,0 +1,15 @@
+pkgbase = gdax-desktop-portfolio-monitor-git
+	pkgver = r3.64b6340
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-websockets
+	source = git+https://gitlab.com/charliewolf/gdax-desktop-portfolio-monitor.git
+	source = gdax-monitor.desktop
+	sha256sums = SKIP
+	sha256sums = 8ed6f8f8b55f762786866e9c41a300d6d9b2a024c8aa5d3b6c6e30645b472f76
+
+pkgname = gdax-desktop-portfolio-monitor-git
+

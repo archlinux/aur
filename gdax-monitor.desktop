@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GDAX Portfolio Monitor
+Comment=GDAX Portfolio Monitor
+Exec=GDAXMonitor
+Icon=gdax.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Office;
