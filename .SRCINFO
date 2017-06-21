@@ -1,5 +1,4 @@
 pkgbase = linux-custom
-	pkgdesc = A generic build package for keeping a custom kernel configuration up-to-date without needing to manually keep track of kernel versions. Based off of the linux-mainline PKGBUILD
 	pkgver = 4.12rc6
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -27,7 +26,7 @@ pkgbase = linux-custom
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
 pkgname = linux-custom
-	pkgdesc = The Linux-custom kernel and modules
+	pkgdesc = A generic build package for keeping a custom kernel configuration up-to-date without needing to manually keep track of kernel versions. Based off of the linux-mainline PKGBUILD
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
