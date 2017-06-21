@@ -4,18 +4,17 @@
 
 _pkgname=android-sdk
 pkgname="${_pkgname}-dummy"
-pkgver=26.0.1
+pkgver=26.0.2
 pkgrel=1
 pkgdesc='Google Android SDK, dummy package'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/releases/sdk-tools.html'
 license=('custom')
-depends_i686=('java-environment' 'alsa-lib' 'openal' 'libstdc++5' 'libxv' 'sdl'
-              'ncurses' 'swt' 'zlib')
-depends_x86_64=('java-environment' 'lib32-alsa-lib' 'lib32-openal'
-               'lib32-libstdc++5' 'lib32-libxv' 'lib32-mesa' 'lib32-ncurses'
-               'lib32-sdl' 'lib32-zlib' 'lib32-fontconfig' 'lib32-libpulse'
-               'swt')
+depends_i686=('java-environment' 'libxtst' 'fontconfig' 'freetype2' 'gcc-libs'
+              'libx11' 'libxext' 'libxrender' 'zlib')
+depends_x86_64=('java-environment' 'libxtst' 'fontconfig' 'freetype2'
+                'lib32-gcc-libs' 'lib32-glibc' 'libx11' 'libxext' 'libxrender'
+                'zlib')
 optdepends=('android-emulator: emulator has become standalone since 25.3.0'
             'android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
             'android-udev: udev rules for Android devices')
