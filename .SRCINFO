@@ -1,0 +1,44 @@
+pkgbase = linux-custom
+	pkgdesc = A generic build package for keeping a custom kernel configuration up-to-date without needing to manually keep track of kernel versions. Based off of the linux-mainline PKGBUILD
+	pkgver = 4.12rc6
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://git.kernel.org/torvalds/t/linux-4.12-rc6.tar.gz
+	source = config.i686
+	source = config.x86_64
+	source = 90-linux.hook
+	source = linux.preset
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = ec614d30984df3cd492abb3435eee2edcea4587aa92487148357cf5c67311a7b
+	sha256sums = e4e928488d35ba2b4049bd224dee87be9eb574ed3c1882f22c8fd5d8674c9abd
+	sha256sums = 2e38528bd2f1be712f5a274b66882c41d2a9cf996b3a05b4a772c8ba7309b261
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+
+pkgname = linux-custom
+	pkgdesc = The Linux-custom kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-custom.preset
+
+pkgname = linux-custom-headers
+	pkgdesc = Header files and scripts for building modules for Linux-custom kernel
+
+pkgname = linux-custom-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-custom kernel
+
