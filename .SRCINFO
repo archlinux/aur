@@ -1,6 +1,6 @@
 pkgbase = indicator-remindor
 	pkgdesc = Schedule reminders easily from an indicator
-	pkgver = 15.06
+	pkgver = 15.09
 	pkgrel = 1
 	url = https://launchpad.net/indicator-remindor
 	install = indicator-remindor.install
@@ -9,7 +9,7 @@ pkgbase = indicator-remindor
 	makedepends = python2-distutils-extra
 	depends = gstreamer0.10
 	depends = gtk3
-	depends = libappindicator3
+	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = python2-dateutil
 	depends = python2-dbus
@@ -17,8 +17,8 @@ pkgbase = indicator-remindor
 	depends = python2-requests
 	depends = remindor-common
 	optdepends = yelp: Help stuff
-	source = http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/i/indicator-remindor/indicator-remindor_15.06-0ubuntu1~vivid.tar.gz
-	sha512sums = 8baf5761046b639a6e1ffa78076f852ac97814a45fc28363fd687907ab4199f0c6ad6344655c94c52de083b231ea2c89c832aa8b1f641dab08f19bbc558df6c1
+	source = http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/i/indicator-remindor/indicator-remindor_15.09-0ubuntu1~wily.tar.gz
+	sha512sums = 1a1dd41be1929b25bf09ffbc12ad779fe1ca8609ab0ab441b208920dff1294922039975b7c6afa3126b0aea56bfaa0ebd52f10c6e515e1a83e77bc0a306d8804
 
 pkgname = indicator-remindor
 
