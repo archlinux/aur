@@ -1,7 +1,7 @@
 pkgbase = puush-qt
 	pkgdesc = GUI frontend for puush which will create a system tray icon.
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/jplsek/puush-qt
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = puush-qt
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
-	source = git+https://github.com/jplsek/puush-qt.git#branch=more-install
+	source = git+https://github.com/jplsek/puush-qt.git
 	md5sums = SKIP
 
 pkgname = puush-qt
