@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.0.1
-pkgrel=4
+pkgrel=5
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.0.1a
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -252,7 +252,7 @@ package() {
   install -dm750 "$pkgdir"/etc/sudoers.d
   install -Dm440 $_pkgname-$pkgver/advanced/pihole.sudo "$pkgdir"/etc/sudoers.d/pihole
 
-  install -Dm644 pi-hole.tmpfile "$pkgdir"/etc/tmpfiles.d/pi-hole.conf
+  install -Dm644 pi-hole.tmpfile "$pkgdir"/usr/lib/tmpfiles.d/pi-hole.conf
 
   install -Dm644 "$_pkgname-gravity.timer" "$pkgdir/usr/lib/systemd/system/$_pkgname-gravity.timer"
   install -Dm644 "$_pkgname-gravity.service" $pkgdir/usr/lib/systemd/system/$_pkgname-gravity.service

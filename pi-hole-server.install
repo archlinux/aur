@@ -6,17 +6,12 @@ post_install() {
   touch /etc/dnsmasq.d/02-pihole-dhcp.conf
   touch /etc/dnsmasq.d/03-pihole-wildcard.conf
   chown -R http.http /srv/http/pihole
-  systemd-tmpfiles --create pi-hole.conf
   /opt/pihole/mimic_setupVars.conf.sh
 
   _dnsmasq_address_setup
 
   /usr/bin/pihole updateGravity > /dev/null
   /usr/bin/pihole -a setdns 8.8.8.8 8.8.4.4 > /dev/null
-
-  systemctl daemon-reload > /dev/null
-  systemctl is-active pi-hole-logtruncate.timer 2>&1 >/dev/null || systemctl start pi-hole-logtruncate.timer
-  systemctl is-active pi-hole-gravity.timer 2>&1 >/dev/null || systemctl start pi-hole-gravity.timer
 }
 
 post_upgrade() {
