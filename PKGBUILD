@@ -1,7 +1,7 @@
 
 # Maintainer: Haron Prime (Haron_Prime) <haron.prime@gmx.com>
 pkgname=gis-weather-git
-pkgver=0.8.2.60
+pkgver=0.8.2.61
 pkgrel=1
 pkgdesc="Customizable weather widget"
 arch=('i686' 'x86_64')
