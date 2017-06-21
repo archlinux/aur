@@ -1,6 +1,6 @@
 pkgbase = phalcon-devtools
 	pkgdesc = This tools provide you useful scripts to generate code helping to develop faster and easy applications that use with Phalcon framework.
-	pkgver = 3.1.2
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/phalcon/phalcon-devtools
 	install = .INSTALL
@@ -10,8 +10,8 @@ pkgbase = phalcon-devtools
 	depends = php
 	depends = php-phalcon>=3.1.0
 	provides = php-phalcon
-	source = https://github.com/phalcon/phalcon-devtools/archive/v3.1.2.tar.gz
-	sha256sums = 6caf575c5797f0dfadcb3aec648c6b7f4dde84c41145479fbc238055b3456d97
+	source = https://github.com/phalcon/phalcon-devtools/archive/v3.2.0.tar.gz
+	sha256sums = 48c4342f7722dc87f124fd55df1834a02cd07cc10dac5d793bf9957180e1b8567
 
 pkgname = phalcon-devtools
 
