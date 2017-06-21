@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.0.1a
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -15,8 +15,8 @@ conflicts=('pi-hole-standalone')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
 
-source=(pihole.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
-	admin.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
+source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
+	admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
 	configuration
 	dnsmasq.main
 	dnsmasq.include
