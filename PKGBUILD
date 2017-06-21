@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname=gst-transcoder-git
-pkgver=0.19.1ac6db5
+pkgver=0.58.7e6891c
 pkgrel=1
 pkgdesc="GStreamer Transcoding API"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('LGPL')
 provides=('gst-transcoder='$pkgver)
 conflicts=('gst-transcoder')
 url="http://gstreamer.freedesktop.org/"
-depends=('gstreamer>=1.7')
+depends=('gstreamer-git' 'gst-plugins-base-git')
 makedepends=('git' 'meson')
 options=(!libtool !emptydirs)
 
@@ -37,5 +37,5 @@ build() {
 package() {
   cd $_gitname
   make DESTDIR="${pkgdir}" install
-  mv ${pkgdir}/usr/lib64/ ${pkgdir}/usr/lib
+  # mv ${pkgdir}/usr/lib64/ ${pkgdir}/usr/lib
 }
