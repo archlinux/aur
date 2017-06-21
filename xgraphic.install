@@ -1,0 +1,4 @@
+post_install() {
+  echo ">>> You should execute XGraphic configuration file in ~/.xinitrc before 'exec' line"
+  echo ">>> /etc/xgraphic/xgraphic"
+}
