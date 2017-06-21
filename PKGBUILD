@@ -29,9 +29,10 @@ depends=(
     perl-mime-lite perl-mime-tools
 )
 makedepends=(
-    cmake make gcc netpbm
+    cmake netpbm git 
 )
 optdepends=(
+    'php-apcu-bci: Bring back the API for android control'
     netpbm
     cambozola
     perl-time-modules
@@ -59,7 +60,7 @@ prepare () {
     if [ ! -d "crud" ]; then
     git clone -b 3.0 https://github.com/FriendsOfCake/crud.git
     mkdir -p Crud
-    cp -Rv crud/* Crud/
+    mv  crud Crud
     fi
     patch $srcdir/ZoneMinder-$pkgver/src/zm_image.cpp < $srcdir/fabs.patch
 }
