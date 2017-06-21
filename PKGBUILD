@@ -1,7 +1,8 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
+
 pkgname=routeconverter
-pkgver=2.19
+pkgver=2.20
 pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints."
 arch=(i686 x86_64)
@@ -11,19 +12,14 @@ depends=('java-environment>=6' 'libwebkit3')
 optdepends=('gpsbabel: for some additional format support')
 changelog=ChangeLog
 sourcecommon=(routeconverter
-        routeconverter-cli
-        http://www.routeconverter.de/download/RouteConverterCmdLine.jar)
-source=(${sourcecommon[@]} http://www.routeconverter.de/download/RouteConverterLinux.jar)
-
-md5sumscommon=('4bc45e6a1a93656a0deb8956f71b6af8'
-         'fdf570309917df1c1536b7e3c7740b33'
-         'f2b6d764bfb8687705a04641207b37ae'
-)
+              routeconverter-cli
+              http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterCmdLine.jar)
+source=(${sourcecommon[@]} http://static.routeconverter.com/download/previous-releases/${pkgver}/RouteConverterLinux.jar)
 
 md5sums=('e4cdc9db82a9f8c550afb44f851d897f'
          'fdf570309917df1c1536b7e3c7740b33'
-         'b7cfe056ad0a8030af0d03dec356406e'
-         '4eb734fd15a4eab0782b29f0bd1179be')
+         '360708b4bd406d9efa34c16e5a49635e'
+         '416ddd7953cc4065afb0295d2aa90ef7')
 
 noextract=(RouteConverterCmdLine.jar
            RouteConverterLinux.jar
