@@ -1,6 +1,6 @@
 pkgbase = remindor-common
 	pkgdesc = Common files for indicator-remindor and remindor-qt
-	pkgver = 15.06.1
+	pkgver = 15.06.2
 	pkgrel = 1
 	url = http://bhdouglass.tk/remindor/indicator/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = remindor-common
 	depends = python2-dbus
 	depends = python2-feedparser
 	depends = python2-requests
-	source = http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/r/remindor-common/remindor-common_15.06.1-0ubuntu1~vivid.tar.gz
-	sha512sums = d782123e47757d4050944760b5ec92e2c27a30681ba4523a70616285d06ec8b099a4ea510badde1d7816dd6965804acaec0297fd9ae06dff3ff5c7349d40f452
+	source = http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/r/remindor-common/remindor-common_15.06.2-0ubuntu1~wily.tar.gz
+	sha512sums = 47b0dfe04dc868673c748d2b71da9fda478958d67576cec9e0ee51b86b30eeb481a3a58fd5e0c40d1b7395483d760b8d6107034fa794158f7852c0eecd9c1ed2
 
 pkgname = remindor-common
 
