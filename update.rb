@@ -26,7 +26,7 @@ def attempt_upgrade(version)
 	# Update PKGBUILD file.
 	pkgbuild = File.read "PKGBUILD"
 	pkgbuild.gsub!(/^pkgver=.*$/, "pkgver=#{version}")
-	
+
 	File.open "PKGBUILD", "w" do |file|
 		file.write pkgbuild
 	end
@@ -44,6 +44,7 @@ loop do
 	new_version = "#{v_num}b#{v_patch}"
 
 	if attempt_upgrade(new_version)
+		$new_version = new_version
 		success = true
 	else
 		break
@@ -51,7 +52,7 @@ loop do
 end
 
 if success
-	puts "Finishing update to version #{new_version}."
+	puts "Finishing update to version #{$new_version}."
 
 	# Clean old files.
 	system "git clean -fx"
@@ -64,7 +65,7 @@ if success
 	if ARGV.include? "--publish"
 		puts "Publishing update to AUR."
 		system "git add PKGBUILD .SRCINFO"
-		system "git commit -m 'Automatic upgrade to version #{FF_VERSION} (#{new_version}).'"
+		system "git commit -m 'Automatic upgrade to version #{$new_version}.'"
 		system "git push"
 	end
 else
