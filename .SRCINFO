@@ -1,0 +1,17 @@
+pkgbase = python-typing-gns3
+	pkgdesc = Type Hints for Python (GNS3)
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/typing
+	arch = any
+	groups = gns3
+	license = PSF
+	makedepends = python-setuptools
+	depends = python
+	provides = python-typing
+	conflicts = python-typing
+	source = https://files.pythonhosted.org/packages/source/t/typing/typing-3.6.1.tar.gz
+	md5sums = 3fec97415bae6f742fb3c3013dedeb89
+
+pkgname = python-typing-gns3
+
