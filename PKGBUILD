@@ -4,7 +4,7 @@
 
 pkgname=panda3d
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('desktop-file-utils' 'shared-mime-info' 'xorg-server' 'libgl'
          'openssl' 'libjpeg' 'libpng' 'libtiff' 'freetype2' 'gtk2'
          'openal' 'libxrandr' 'libxcursor' 'libxxf86dga')
-makedepends=('python2' 'bison' 'subversion' 'cmake')
+makedepends=('python2' 'bison' 'cmake')
 
 # NOTICE: please read http://www.panda3d.org/manual/index.php/Dependencies for
 # more information. Optdepends you want your package to support, need to be
@@ -67,9 +67,9 @@ JOBS=$(nproc)
 
 build() {
   cd "$srcdir/panda3d-$pkgver"
-
+  LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat/
   # disable broken extensions
-  python2 makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
+  python2 makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-openssl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
 }
 
 package() {

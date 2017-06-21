@@ -1,7 +1,7 @@
 pkgbase = panda3d
 	pkgdesc = A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d.
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.panda3d.org
 	install = panda3d.install
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = panda3d
 	license = BSD
 	makedepends = python2
 	makedepends = bison
-	makedepends = subversion
 	makedepends = cmake
 	depends = desktop-file-utils
 	depends = shared-mime-info
