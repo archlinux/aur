@@ -1,6 +1,6 @@
 pkgbase = xgraphic
 	pkgdesc = Switch between nvidia and bumblebee
-	pkgver = 0.1.2
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/erayaydin/xgraphic
 	install = xgraphic.install
@@ -8,8 +8,8 @@ pkgbase = xgraphic
 	license = MIT
 	makedepends = python-distribute
 	depends = python
-	source = https://github.com/erayaydin/xgraphic/archive/v0.1.2.tar.gz
-	sha256sums = b408c1b646530a40a4351142cfd34c2022f6f3691d91d1a24f1c2a35a3460c1b
+	source = https://github.com/erayaydin/xgraphic/archive/v0.1.5.tar.gz
+	sha256sums = 59b9a452fd199a05aec6442876adab3ac60ec5e21e41294559220ef73ee2d866
 
 pkgname = xgraphic
 
