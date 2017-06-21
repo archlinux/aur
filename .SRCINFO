@@ -1,6 +1,6 @@
 pkgbase = quiterss-git
 	pkgdesc = Fast and light RSS/Atom feed reader written in Qt/С++
-	pkgver = 0.18.5.r0.ge7165f6f
+	pkgver = 0.18.6.r0.gb92ad3e1
 	pkgrel = 1
 	url = https://quiterss.org
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = quiterss-git
 	license = GPL3
 	makedepends = git
 	makedepends = qt5-tools
-	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
 	depends = qt5-multimedia
 	depends = qt5-webkit
 	provides = quiterss
