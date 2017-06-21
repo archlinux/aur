@@ -17,7 +17,7 @@ install=.INSTALL
 source=(manual://nausoftphone_$pkgver-$pkgrel-trusty_amd64.deb \
 	nausoftphone6.desktop \
 	nauphone.png)
-DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually from you licence; exit 1;')
+DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually from you licence')
 sha256sums=('0d58d84735c3719df5747f9f38f43c513807849b12778fb4ed49e641ec397db5'
 	'SKIP'
 	'SKIP')
