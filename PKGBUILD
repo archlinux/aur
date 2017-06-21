@@ -7,14 +7,14 @@
 USE_ADL=1
 
 pkgname=dofus
-pkgver=2.41
-pkgrel=3
+pkgver=2.42
+pkgrel=1
 pkgdesc='A manga inspired, Massively Multiplayer Online Role-playing Game (MMORPG) for Adobe AIR .'
 arch=('i686' 'x86_64')
 url='http://www.dofus.com/'
 license=('custom:Dofus License')
 install='dofus.install'
-depends=('adobe-air-sdk qt5-base libpng12')
+depends=('adobe-air-sdk' 'qt5-base' 'libpng12')
 depends_x86_64+=('lib32-gtk2' 'lib32-alsa-lib' 'lib32-alsa-plugins')
 depends_i686+=('gtk2' 'alsa-lib' 'alsa-plugins')
 optdeppends=('pulseaudio-alsa: Required for the game to play sounds with PulseAudio')
