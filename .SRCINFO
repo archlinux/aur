@@ -1,7 +1,7 @@
 pkgbase = discord-cli-git
 	pkgdesc = Minimalistic Command-Line Interface for Discord
 	pkgver = r45.57f869f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Rivalo/discord-cli
 	arch = i686
 	arch = x86_64

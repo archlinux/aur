@@ -4,7 +4,7 @@
 pkgname=discord-cli-git
 _pkgname=discord-cli
 pkgver=r45.57f869f
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalistic Command-Line Interface for Discord"
 arch=('i686' 'x86_64')
 url="https://github.com/Rivalo/discord-cli"
@@ -20,18 +20,23 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p "$srcdir/go"
-  export GOPATH="$srcdir/go"
-  go get -v github.com/rivalo/discord-cli
+  export GOPATH=$srcdir
+  go get github.com/rivalo/discord-cli
+  go get github.com/fatih/color
+  go get github.com/chzyer/readline
+  go get github.com/rivalo/discordgo_cli
+  go get github.com/rivalo/discord-cli/DiscordState
 }
 
 build() {
-  cd "$pkgname"
+  export GOPATH=$srcdir
+  cd $pkgname
   go build
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm755 "go/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  echo packaging
+  cd $srcdir
+  install -Dm755 "$srcdir/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
