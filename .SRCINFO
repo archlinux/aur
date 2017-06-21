@@ -1,0 +1,21 @@
+pkgbase = spectmorph
+	pkgdesc = a free software project which allows to analyze samples of musical instruments, and to combine them (morphing).
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://spectmorph.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = lv2-plugins
+	license = LGPL3
+	makedepends = lv2
+	depends = fftw
+	depends = qt5-base
+	depends = python
+	depends = libao
+	depends = jack
+	source = http://spectmorph.org/downloads/spectmorph-0.3.3.tar.bz2
+	md5sums = b2569267b719c619c7507f53df5c0c04
+
+pkgname = spectmorph
+
