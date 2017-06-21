@@ -11,7 +11,7 @@
 # x86_64: all from i686 and ffmpeg-full-git
 
 pkgname=mpv-semifull-git
-pkgver=0.25.0.r174.gf34e1a0dee
+pkgver=0.25.0.r216.g33cfb71ed
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ makedepends=('git' 'mesa' 'python-docutils' 'ladspa')
 provides=('mpv')
 conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
-source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git')
+source=("$pkgname"::'git+https://github.com/kingtiger01/mpv.git')
 sha256sums=('SKIP')
 
 pkgver() {
