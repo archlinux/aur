@@ -4,7 +4,7 @@ _filename=rn-debugger-linux-x64.zip
 
 pkgname=react-native-debugger
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The standalone app for React Native Debugger, with React DevTools / Redux DevTools"
 arch=('x86_64')
 url='https://github.com/jhen0409/react-native-debugger'
@@ -18,7 +18,7 @@ depends=(
 )
 license=('MIT')
 source=(
-    "$url/releases/download/v$pkgver/$_filename"
+    "$pkgver-$_filename::$url/releases/download/v$pkgver/$_filename"
     "$pkgname.desktop"
     "icon.png"
 )
@@ -36,7 +36,7 @@ package() {
     install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
     install -m644 $srcdir/icon.png $pkgdir/opt/$pkgname/
     
-    rm $srcdir/$_filename
+    rm $srcdir/$pkgver-$_filename
     rm $srcdir/$pkgname.desktop
     rm $srcdir/icon.png
 

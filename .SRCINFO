@@ -1,7 +1,7 @@
 pkgbase = react-native-debugger
 	pkgdesc = The standalone app for React Native Debugger, with React DevTools / Redux DevTools
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jhen0409/react-native-debugger
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = react-native-debugger
 	depends = nss
 	depends = alsa-lib
 	depends = libxtst
-	source = https://github.com/jhen0409/react-native-debugger/releases/download/v0.7.1/rn-debugger-linux-x64.zip
+	source = 0.7.1-rn-debugger-linux-x64.zip::https://github.com/jhen0409/react-native-debugger/releases/download/v0.7.1/rn-debugger-linux-x64.zip
 	source = react-native-debugger.desktop
 	source = icon.png
 	sha512sums = 81b8595a7e238485bdbfa8387c8466bccf087995f0a12d766aa051049f1df6ce22f54c0efad077bb12829eb7783ac505fd412f0d1938358f8e95134efaa2dd1b
