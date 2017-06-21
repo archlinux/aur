@@ -6,13 +6,13 @@
 
 pkgname="flacon"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extracts individual tracks from one big audio file containing the \
  entire album of music and saves them as separate audio files."
 arch=('i686' 'x86_64')
 url="https://flacon.github.io/"
 license=('LGPL2.1')
-makedepends=('cmake' 'icu')
+makedepends=('cmake' 'icu' 'qt5-tools')
 depends=('hicolor-icon-theme' 'qt5-base' 'shntool' 'uchardet' 'ffmpeg')
 optdepends=('flac: For FLAC support'
             'vorbis-tools: For OGG support'
