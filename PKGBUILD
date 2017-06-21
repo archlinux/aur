@@ -12,7 +12,6 @@ pkgbase=linux-custom       # Sets default name, since this is a userbased kernel
 _srcname=linux-4.12-rc6
 pkgver=4.12rc6
 pkgrel=1
-pkgdesc="A generic build package for keeping a custom kernel configuration up-to-date without needing to manually keep track of kernel versions. Based off of the linux-mainline PKGBUILD"
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -87,7 +86,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="A generic build package for keeping a custom kernel configuration up-to-date without needing to manually keep track of kernel versions. Based off of the linux-mainline PKGBUILD"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
