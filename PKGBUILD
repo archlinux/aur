@@ -13,13 +13,13 @@ license=('BSD')
 ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-catkin-pkg
+  python2-catkin_pkg
   python2-empy
   python2)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-catkin-pkg
+  python2-catkin_pkg
   gtest
   python2-nose
   python2-empy
