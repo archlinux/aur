@@ -1,11 +1,12 @@
-# Maintainer: Ouyang Jun<ouyangjun1999@gmail.com> 
+# Maintainer: Ouyang Jun<ouyangjun1999@gmail.com>
+# Maintainer: Astro Benzene<universebenzene at sina dot com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Jove Yu <yushijun110 [at] gmail.com>
 
 pkgname=wps-office
 pkgver=10.1.0.5707_a21
 _pkgver=10.1.0.5707~a21
-pkgrel=1
+pkgrel=2
 pkgdesc="Kingsoft Office (WPS Office) is an office productivity suite"
 arch=('i686' 'x86_64')
 license=("custom")
@@ -27,6 +28,8 @@ prepare() {
   cd wps-office_${_pkgver}_$_archext
 
   sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' wps wpp et
+  sed -i 's|/office6/${gApp}  ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wps
+  sed -i 's|/office6/${gApp} ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wpp et
 }
 
 package() {
