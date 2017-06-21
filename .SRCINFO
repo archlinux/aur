@@ -1,0 +1,13 @@
+pkgbase = repeatr-bin
+	pkgdesc = Repeatr is a tool for sandboxing processes so they become guaranteed runable on another machine (at another time, at another place -- even offline).
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://repeatr.io
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	source_x86_64 = https://github.com/polydawn/repeatr/releases/download/release%2Fv0.15/repeatr-linux-amd64-v0.15.tar.gz
+	sha512sums_x86_64 = 9f5746b2e2e4981516b3272067fce6463420217fc1e0ce3c8949a87961f95bad9d4c5b1e9797daa4a0f47718e4b4d8b4538c63345ad1080d1350a90094e472e7
+
+pkgname = repeatr-bin
+
