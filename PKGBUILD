@@ -2,7 +2,7 @@
 # https://github.com/zellio/pkgbuild
 
 pkgname=kops
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 makedepends=()
 
 source=("https://github.com/kubernetes/kops/releases/download/${pkgver}/kops-linux-amd64")
-sha512sums=('4263e0a2dc69795cbae0b781ec2fa552fb941f3f443f1216b996f9d0bc1b577c0b090124ad4584f87db2e2fdab7f5bdcdb9162b154bebaa71753e660fff94f11')
+sha512sums=('a09f44c4d0e4ab0791f68a12493c690d54afde97413b8fcb4c6609f5a0605683637f328f573725ba04fc35818f2fbb85cb8f71462ca756191b7adf7fa0b8dab2')
 
 package() {
 	install -D -g root -m 0755 -o root "$srcdir/kops-linux-amd64" "$pkgdir/usr/bin/kops"
