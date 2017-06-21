@@ -3,8 +3,8 @@
 # Contributor: Brenton Horne
 
 pkgname=hugo
-pkgver=0.23
-pkgrel=2
+pkgver=0.24
+pkgrel=1
 pkgdesc="Fast and Flexible Static Site Generator in Go — built from source."
 arch=('i686' 'x86_64')
 url="https://gohugo.io/"
@@ -12,21 +12,22 @@ conflicts=("${pkgname}-src" "${pkgname}-bin")
 license=('Apache')
 depends=('glibc')
 optdepends=('pygmentize: syntax-highlight code snippets.')
-makedepends=('go' 'git' 'govendor')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gohugoio/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('4bc54b3ca3b126d6cf3761e78430f77dcf7ba0fad3c858573449c4e4b4e8842000a5e4d1a48589d4db18456eda327b634ff608afe7986b249380518eb755d93c')
+makedepends=('go' 'git')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gohugoio/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('cc8bfd976e424bc180ff1387f00e1dd79141aa79b14caaefea93358a2ebfed520326bb849be95faf9dd9d7f15f5dec5d3cce184235ca20dbe413ac72271ca0a7')
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  export GOPATH="$srcdir"
-  mkdir -p "$GOPATH/src/github.com/gohugoio"
-  ln -s "$(pwd)" "$GOPATH/src/github.com/gohugoio/hugo"
-  cd "$GOPATH/src/github.com/gohugoio/hugo"
-  make no-git-info
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"
+  export PATH="${PATH}:${srcdir}/bin"
+  mkdir -p "${GOPATH}/src/github.com/gohugoio"
+  ln -sf "$(pwd)" "${GOPATH}/src/github.com/gohugoio/hugo"
+  cd "${GOPATH}/src/github.com/gohugoio/hugo"
+  make hugo-no-gitinfo
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  install -Dm755 "${pkgname}" "$pkgdir/usr/bin/${pkgname}"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
