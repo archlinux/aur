@@ -18,6 +18,7 @@ pkgbase = wps-office
 	depends = shared-mime-info
 	depends = xdg-utils
 	depends = glu
+	depends = xorg-mkfontdir
 	optdepends = cups: for printing support
 	optdepends = pango: for complex (right-to-left) text support
 	conflicts = kingsoft-office
