@@ -5,7 +5,7 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname="flacon"
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Extracts individual tracks from one big audio file containing the \
  entire album of music and saves them as separate audio files."
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="https://flacon.github.io/"
 license=('LGPL2.1')
 makedepends=('cmake' 'icu')
-depends=('qt4' 'shntool' 'uchardet' 'ffmpeg')
+depends=('hicolor-icon-theme' 'qt5-base' 'shntool' 'uchardet' 'ffmpeg')
 optdepends=('flac: For FLAC support'
             'vorbis-tools: For OGG support'
             'mac: For APE support'
@@ -26,21 +26,21 @@ optdepends=('flac: For FLAC support'
 conflicts=('flacon-git')
 provides=("${pkgname}")
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('9ece812c0bd68828301d745fbdddaf9ff2d9e572cc205e20d2bbcb093de98a1b')
+sha256sums=('5349fdc29c6cb173e7d40260e7ea4ba13ae39f4a144c22028fbfa132ceef5bb3')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=Yes
+	mkdir build
+	
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
-check() {
-    cd "${srcdir}/${pkgname}-${pkgver}/tests"
-    ./flacon_test
-}
-
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}/build"
+    install -d ${pkgdir}/usr/share/licenses/${pkgname}
+    install -m 644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	make DESTDIR="${pkgdir}" install
 }
 

@@ -1,6 +1,6 @@
 pkgbase = flacon
 	pkgdesc = Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files.
-	pkgver = 2.1.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://flacon.github.io/
 	arch = i686
@@ -8,7 +8,8 @@ pkgbase = flacon
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = icu
-	depends = qt4
+	depends = hicolor-icon-theme
+	depends = qt5-base
 	depends = shntool
 	depends = uchardet
 	depends = ffmpeg
@@ -23,8 +24,8 @@ pkgbase = flacon
 	optdepends = vorbisgain: For OGG Replay Gain support
 	provides = flacon
 	conflicts = flacon-git
-	source = https://github.com/flacon/flacon/archive/v2.1.1.tar.gz
-	sha256sums = 9ece812c0bd68828301d745fbdddaf9ff2d9e572cc205e20d2bbcb093de98a1b
+	source = https://github.com/flacon/flacon/archive/v3.0.0.tar.gz
+	sha256sums = 5349fdc29c6cb173e7d40260e7ea4ba13ae39f4a144c22028fbfa132ceef5bb3
 
 pkgname = flacon
 
