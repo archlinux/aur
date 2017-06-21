@@ -1,6 +1,4 @@
 post_install() {
-  systemd-tmpfiles --create pi-hole-ftl.conf
-
   echo -e "\e[1;33m==>\e[0m Possible configurations in \e[1;31m/etc/pihole/pihole-FTL.conf\e[0m file"
   echo -e "\e[1;33m==>\e[0m Please read the instructions on the project page: \e[1;36mhttps://github.com/pi-hole/FTL#ftls-config-file\e[0m"
 }
