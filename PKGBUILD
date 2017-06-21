@@ -37,11 +37,13 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-	cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 }
 
 package() {
-	cd "$_pkgname"
+	cd "$_pkgname/build"
 	make
 	make DESTDIR="$pkgdir" install
 }
