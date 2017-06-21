@@ -1,7 +1,8 @@
-# Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=1.5.3
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
@@ -9,7 +10,7 @@ url='https://github.com/GNS3/gns3-server'
 license=('GPL3')
 groups=('gns3')
 makedepends=('python-setuptools')
-depends=('python-jsonschema' 'python-aiohttp' 'python-aiohttp-cors' 'python-jinja' 'python-raven' 'python-psutil' 'python-zipstream')
+depends=('python-jsonschema' 'python-aiohttp-135' 'python-aiohttp-cors-051' 'python-yarl' 'python-jinja' 'python-raven' 'python-psutil' 'python-zipstream' 'python-typing')
 optdepends=('dynamips: Cisco router emulator.'
             'gns3-gui: graphical user interface for GNS3 server.'
             'vboxwrapper: VirtualBox wrapper for GNS3.'
@@ -22,8 +23,14 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}@.service")
 
-md5sums=('547481b2b22bf98a18f376ae66e08d22'
+md5sums=('63ae2f4c276aa5f6bf07f38b46372f0f'
          'f7a8f3128a903179c5f17a6c242b3cf9')
+
+prepare() {
+  sed -i 's/yarl>=0.9.8,<0.10/yarl>=0.10.2,<0.11/g' ${srcdir}/${pkgname}-${pkgver}/requirements.txt
+#  sed -i 's/aiohttp>=1.3.5,<=1.4.0/aiohttp>=1.3.5/g' ${srcdir}/${pkgname}-${pkgver}/requirements.txt
+#  sed -i 's/aiohttp-cors==0.5.1/aiohttp-cors>=0.5.1/g' ${srcdir}/${pkgname}-${pkgver}/requirements.txt
+}
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
