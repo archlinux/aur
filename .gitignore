@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/*.tar.gz
+/*.xz
+/fly_linux_amd64
+/*.swp
