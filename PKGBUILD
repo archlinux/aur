@@ -1,16 +1,17 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 pkgname=transcribe
-pkgver=8.65
+pkgver=8.70
 pkgrel=1
 pkgdesc="software to help transcribe recorded music"
 arch=('i686' 'x86_64')
 url="http://www.seventhstring.com/xscribe"
 license=('GPL')
 depends=('libsm' 'gtk3' 'gst-plugins-base-libs')
+#depends=('glib2' 'gtk3')
 source_i686=(http://www.seventhstring.com/xscribe/downlinux32/xscsetup.tar.gz)
 source_x86_64=(http://www.seventhstring.com/xscribe/downlinux64/xsc64setup.tar.gz)
-md5sums_i686=('ea24ecf7f66446642a35d82dd2828e4f')
-md5sums_x86_64=('f817ae5bc54526175e8e066763689990')
+md5sums_i686=('31069cb5808b18553e3e0a6e79b23eb0')
+md5sums_x86_64=('acdccf60a944c591aee179eea8df8d37')
 
 package() {
 	cd "$srcdir/$pkgname"
