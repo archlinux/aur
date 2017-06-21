@@ -1,0 +1,58 @@
+diff -ur frama-c-Aluminium-20160501.old/src/kernel_services/plugin_entry_points/db.ml frama-c-Aluminium-20160501/src/kernel_services/plugin_entry_points/db.ml
+--- frama-c-Aluminium-20160501.old/src/kernel_services/plugin_entry_points/db.ml	2016-05-30 15:15:22.000000000 +0100
++++ frama-c-Aluminium-20160501/src/kernel_services/plugin_entry_points/db.ml	2016-11-08 14:08:20.571465782 +0000
+@@ -1071,9 +1071,12 @@
+           { state_opt: bool option;
+             ki_opt: (stmt * bool) option;
+             kf:Kernel_function.t }
+-      let mk_ctx_func_contrat = mk_fun "Interp.To_zone.mk_ctx_func_contrat"
+-      let mk_ctx_stmt_contrat = mk_fun "Interp.To_zone.mk_ctx_stmt_contrat"
+-      let mk_ctx_stmt_annot = mk_fun "Interp.To_zone.mk_ctx_stmt_annot"
++      let mk_ctx_func_contrat : (Cil_types.kernel_function -> state_opt:bool option -> t_ctx) ref
++        = mk_fun "Interp.To_zone.mk_ctx_func_contrat"
++      let mk_ctx_stmt_contrat : (Cil_types.kernel_function -> Cil_types.stmt -> state_opt:bool option -> t_ctx) ref
++        = mk_fun "Interp.To_zone.mk_ctx_stmt_contrat"
++      let mk_ctx_stmt_annot : (Cil_types.kernel_function -> Cil_types.stmt -> t_ctx) ref
++        = mk_fun "Interp.To_zone.mk_ctx_stmt_annot"
+       type t = {before:bool ; ki:stmt ; zone:Locations.Zone.t}
+       type t_zone_info = (t list) option
+       type t_decl =
+@@ -1082,15 +1085,29 @@
+       type t_pragmas =
+           { ctrl: Stmt.Set.t;
+             stmt: Stmt.Set.t }
+-      let from_term = mk_fun "Interp.To_zone.from_term"
+-      let from_terms= mk_fun "Interp.To_zone.from_terms"
+-      let from_pred = mk_fun "Interp.To_zone.from_pred"
+-      let from_preds= mk_fun "Interp.To_zone.from_preds"
+-      let from_zone = mk_fun "Interp.To_zone.from_zone"
+-      let from_stmt_annot= mk_fun "Interp.To_zone.from_stmt_annot"
+-      let from_stmt_annots= mk_fun "Interp.To_zone.from_stmt_annots"
+-      let from_func_annots= mk_fun "Interp.To_zone.from_func_annots"
+-      let code_annot_filter= mk_fun "Interp.To_zone.code_annot_filter"
++      let from_term : (Cil_types.term -> t_ctx -> t_zone_info * t_decl) ref
++        = mk_fun "Interp.To_zone.from_term"
++      let from_terms : (Cil_types.term list -> t_ctx -> t_zone_info * t_decl) ref
++        = mk_fun "Interp.To_zone.from_terms"
++      let from_pred : (Cil_types.predicate Cil_types.named -> t_ctx -> t_zone_info * t_decl) ref
++        = mk_fun "Interp.To_zone.from_pred"
++      let from_preds : (Cil_types.predicate Cil_types.named list -> t_ctx -> t_zone_info * t_decl) ref
++        = mk_fun "Interp.To_zone.from_preds"
++      let from_zone : (Cil_types.identified_term -> t_ctx -> t_zone_info * t_decl) ref
++        = mk_fun "Interp.To_zone.from_zone"
++      let from_stmt_annot : (Cil_types.code_annotation -> Cil_types.stmt * Cil_types.kernel_function -> (t_zone_info * t_decl) * t_pragmas) ref
++        = mk_fun "Interp.To_zone.from_stmt_annot"
++      let from_stmt_annots : ((Cil_types.code_annotation -> bool) option ->
++            Cil_types.stmt * Cil_types.kernel_function ->
++            (t_zone_info * t_decl) * t_pragmas)
++           ref
++        = mk_fun "Interp.To_zone.from_stmt_annots"
++      let from_func_annots : (((Cil_types.stmt -> unit) -> Cil_types.kernel_function -> unit) ->
++            (Cil_types.code_annotation -> bool) option ->
++            Cil_types.kernel_function -> (t_zone_info * t_decl) * t_pragmas)
++           ref
++        = mk_fun "Interp.To_zone.from_func_annots"
++      let code_annot_filter = mk_fun "Interp.To_zone.code_annot_filter"
+     end
+
+     let to_result_from_pred =
