@@ -9,7 +9,8 @@ arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
-         'python-dbus' 'python-gobject' 'python-yaml' 'python-evdev', 'lib32-sqlite')
+         'python-dbus' 'python-gobject' 'python-yaml' 'python-evdev'
+         'lib32-sqlite')
 makedepends=('python-setuptools')
 optdepends=(
   'python-pyinotify: Enhanced Steam integration.'
