@@ -1,7 +1,7 @@
 # Maintainer: Joshua Hardy <joshinsilico@gmail.com>
 pkgname=relion-git
 pkgver=r21.d401f24
-pkgrel=1
+pkgrel=2
 pkgdesc="REgularised LIkelihood OptimisatioN: employs an empirical Bayesian approach to refinement of 3D reconstructions or 2D class averages in electron cryo-microscopy"
 arch=(x86_64)
 url="https://github.com/3dem/relion"
