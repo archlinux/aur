@@ -5,15 +5,15 @@ _pkgname=jenkinsapi
 
 pkgbase=python-${_pkgname}
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A Python API for accessing resources on a Jenkins continuous-integration server."
 arch=('any')
 url="https://github.com/${_gituser}/${_pkgname}"
 license=('MIT')
 makedepends=("python-setuptools" "python2-setuptools")
-source=("https://github.com/${_gituser}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d3634c420360ce88f9ee55cd6dd9c1af1c395a5cec01cb2f2b832c19d6cf042d')
+source=("https://github.com/${_gituser}/${_pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('710131ac145505426b4d5e33428d96845620f95082d21597cf6063da2cb54eaa')
 
 prepare() {
   cp -a ${_pkgname}-${pkgver}{,-python2}
