@@ -4,7 +4,7 @@
 
 pkgbase=linux-lts41
 _srcname=linux-4.1
-pkgver=4.1.40
+pkgver=4.1.41
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"

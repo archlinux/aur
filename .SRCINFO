@@ -1,5 +1,5 @@
 pkgbase = linux-lts41
-	pkgver = 4.1.40
+	pkgver = 4.1.41
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-lts41
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.40.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.40.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.41.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.41.sign
 	source = config
 	source = config.x86_64
 	source = linux-lts41.preset
@@ -38,20 +38,20 @@ pkgname = linux-lts41
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-lts41=4.1.40
+	provides = kernel26-lts41=4.1.41
 	conflicts = kernel26-lts41
 	replaces = kernel26-lts41
 	backup = etc/mkinitcpio.d/linux-lts41.preset
 
 pkgname = linux-lts41-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts41 kernel
-	provides = kernel26-lts41-headers=4.1.40
+	provides = kernel26-lts41-headers=4.1.41
 	conflicts = kernel26-lts41-headers
 	replaces = kernel26-lts41-headers
 
 pkgname = linux-lts41-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts41 kernel
-	provides = kernel26-lts41-docs=4.1.40
+	provides = kernel26-lts41-docs=4.1.41
 	conflicts = kernel26-lts41-docs
 	replaces = kernel26-lts41-docs
 
