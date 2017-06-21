@@ -1,7 +1,7 @@
 # Maintainer: Eray Aydın <eray@labkod.com>
 pkgname=xgraphic
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Switch between nvidia and bumblebee"
 arch=('any')
 url="https://github.com/erayaydin/xgraphic"
@@ -10,7 +10,7 @@ depends=('python')
 makedepends=('python-distribute')
 install=${pkgname}.install
 source=("https://github.com/erayaydin/xgraphic/archive/v${pkgver}.tar.gz")
-sha256sums=('c8eff6010cdd894d1f3a8a711c8408a73008b911b0d02deb5d83e27eae6f5451')
+sha256sums=('b408c1b646530a40a4351142cfd34c2022f6f3691d91d1a24f1c2a35a3460c1b')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
