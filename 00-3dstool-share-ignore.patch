@@ -1,11 +1,11 @@
---- 3dstool-1.0.17/src/romfs.cpp.orig	2016-11-07 18:23:27.726819785 -0500
-+++ 3dstool-1.0.17/src/romfs.cpp	2016-11-07 18:24:35.120585958 -0500
+--- 3dstool/src/romfs.cpp.orig
++++ 3dstool/src/romfs.cpp
 @@ -265,7 +265,7 @@
  {
  	m_vIgnoreList.clear();
  	m_vRemapIgnoreList.clear();
--	String sIgnorePath = FGetModuleDir() + STR("/ignore_3dstool.txt");
-+	String sIgnorePath = STR("/usr/share/3dstool/ignore_3dstool.txt");
- 	FILE* fp = FFopenUnicode(sIgnorePath.c_str(), STR("rb"));
+-	UString sIgnorePath = UGetModuleDirName() + USTR("/ignore_3dstool.txt");
++	UString sIgnorePath = USTR("/usr/share/3dstool/ignore_3dstool.txt");
+ 	FILE* fp = UFopen(sIgnorePath.c_str(), USTR("rb"));
  	if (fp != nullptr)
  	{
