@@ -3,14 +3,14 @@
 
 pkgname=minetest-git
 _pkgname=minetest
-pkgver=20170325.22567d107
+pkgver=20170621.1425c6def
 pkgrel=1
 pkgdesc='Infiniminer/Minecraft inspired game'
 url='http://www.minetest.net/'
 license=('LGPL2.1' 'CCPL:by-sa')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
-depends=('bzip2' 'libpng' 'libjpeg' 'mesa' 'sqlite' 'openal' 'libvorbis' 'irrlicht')
+depends=('bzip2' 'libpng' 'libjpeg' 'mesa' 'sqlite' 'openal' 'libvorbis' 'irrlicht' 'freetype2')
 source=('git://github.com/minetest/'minetest{,_game}.git)
 sha256sums=('SKIP' 'SKIP')
 

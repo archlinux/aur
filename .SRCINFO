@@ -1,6 +1,6 @@
 pkgbase = minetest-git
 	pkgdesc = Infiniminer/Minecraft inspired game
-	pkgver = 20170325.22567d107
+	pkgver = 20170621.1425c6def
 	pkgrel = 1
 	url = http://www.minetest.net/
 	install = install
@@ -18,6 +18,7 @@ pkgbase = minetest-git
 	depends = openal
 	depends = libvorbis
 	depends = irrlicht
+	depends = freetype2
 	provides = minetest
 	provides = minetest-common
 	provides = minetest-server
