@@ -5,12 +5,12 @@
 # Contributor: Gabor Nyekhelyi (n0gabor) <n0gabor@vipmail.hu>
 
 pkgname=pitivi-git
-pkgver=0.96.0.1.7113.0bfa7db
+pkgver=0.98.7539.c7e8c309
 pkgrel=1
 pkgdesc='Pitivi allows users to easily edit audio/video projects based on the GStreamer framework (Git version)'
 arch=('any')
 license=('LGPL')
-depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gobject-introspection' 'python' 'python-gobject' 'goocanvas' 'gst-python' 'gst-editing-services' 'python-xdg' 'desktop-file-utils' 'hicolor-icon-theme' 'python-numpy' 'gst-transcoder-git' 'python-matplotlib' 'python-cairo')
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gobject-introspection' 'python' 'python-gobject' 'goocanvas' 'gst-python' 'gst-editing-services' 'python-xdg' 'desktop-file-utils' 'hicolor-icon-theme' 'python-numpy' 'gst-transcoder-git' 'python-matplotlib' 'python-cairo' 'gst-validate')
 makedepends=('automake' 'libtool' 'intltool' 'itstool' 'pygobject-devel' 'gtk-doc' 'gnome-doc-utils' 'yelp-tools')
 optdepends=('python-pycanberra-git: sound notifications')
 install=pitivi-git.install
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 pkgver() {
   cd $_gitname
   
-  version=$(grep AC_INIT configure.ac | sed 's/AC_INIT(Pitivi, //' | sed 's/,//')
+  version=$(git describe --abbrev=0)
   hash=$(git log --pretty=format:'%h' -n 1)
   revision=$(git rev-list --count HEAD)
   
@@ -34,12 +34,12 @@ pkgver() {
 
 build() {
   cd $_gitname
-  ./autogen.sh --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
 package() {
   cd $_gitname
   make DESTDIR="$pkgdir" install
-  install -D -m644 data/pitivi.desktop "$pkgdir/usr/share/applications/pitivi.desktop"
+  install -D -m644 mesonbuild/data/pitivi.desktop "$pkgdir/usr/share/applications/pitivi.desktop"
 }
