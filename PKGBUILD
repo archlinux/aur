@@ -1,16 +1,23 @@
 # Maintainer:  max.bra <max dot bra at alice dot it>
+# Maintainer:  graysky <graysky AT archlinux DOT us>
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.0.1
-pkgrel=3
+pkgrel=4
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.0.1a
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('EUPL-1.1')
 url="https://github.com/pi-hole/pi-hole"
-depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'perl' 'net-tools' 'logrotate' 'pi-hole-ftl')
+depends=('dnsmasq' 'bc' 'perl' 'net-tools' 'logrotate' 'pi-hole-ftl')
+optdepends=(
+'lighttpd: a secure, fast, compliant and very flexible web-server'
+'php-cgi: CGI and FCGI SAPI for PHP needed only for lighttpd'
+'nginx-mainline: lightweight http server'
+'php-fpm: FastCGI process manager for php needed for nginx'
+)
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
@@ -22,6 +29,7 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	dnsmasq.include
 	dnsmasq.local
 	lighttpd.conf
+  nginx.pi-hole.conf
 	$_pkgname.tmpfile
 	$_pkgname-gravity.service
 	$_pkgname-gravity.timer
@@ -38,6 +46,7 @@ md5sums=('e68ea77830554afe11c71055cec33dca'
          'f39fa3e607ff7346e93febfa2d0e565e'
          '2d10140f19f54015e6ab2807267e8aaf'
          'a8a64dc2ff89bb87d534c83189447abc'
+         'ebe0b0785fcc7b10accff3c1ae793cd2'
          '990b8abd0bfbba23a7ce82c59f2e3d64'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
@@ -223,54 +232,55 @@ prepare() {
 # -----------------
 
   # pi-hole sudoers file is now populated by install script
-  echo "http ALL=NOPASSWD: /usr/bin/pihole" >> ./$_pkgname-$pkgver/advanced/pihole.sudo
+  echo "http ALL=NOPASSWD: /usr/bin/pihole" >> $_pkgname-$pkgver/advanced/pihole.sudo
 }
 
 package() {
   cd "$srcdir"
-  install -Dm755 ./$_pkgname-$pkgver/pihole "$pkgdir"/usr/bin/pihole || return 1
+  install -Dm755 $_pkgname-$pkgver/pihole "$pkgdir"/usr/bin/pihole
 
   install -dm755 "$pkgdir"/opt/pihole
-  install -Dm755 ./$_pkgname-$pkgver/gravity.sh "$pkgdir"/opt/pihole/gravity.sh || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/version.sh "$pkgdir"/opt/pihole/version.sh || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh "$pkgdir"/opt/pihole/piholeLogFlush.sh || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/chronometer.sh "$pkgdir"/opt/pihole/chronometer.sh || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/list.sh "$pkgdir"/opt/pihole/list.sh || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/webpage.sh "$pkgdir"/opt/pihole/webpage.sh || return 1
+  install -Dm755 $_pkgname-$pkgver/gravity.sh "$pkgdir"/opt/pihole/gravity.sh
+  install -Dm755 $_pkgname-$pkgver/advanced/Scripts/version.sh "$pkgdir"/opt/pihole/version.sh
+  install -Dm755 $_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh "$pkgdir"/opt/pihole/piholeLogFlush.sh
+  install -Dm755 $_pkgname-$pkgver/advanced/Scripts/chronometer.sh "$pkgdir"/opt/pihole/chronometer.sh
+  install -Dm755 $_pkgname-$pkgver/advanced/Scripts/list.sh "$pkgdir"/opt/pihole/list.sh
+  install -Dm755 $_pkgname-$pkgver/advanced/Scripts/webpage.sh "$pkgdir"/opt/pihole/webpage.sh
 
-  install -Dm755 mimic_setupVars.conf.sh "$pkgdir"/opt/pihole/mimic_setupVars.conf.sh || return 1
+  install -Dm755 mimic_setupVars.conf.sh "$pkgdir"/opt/pihole/mimic_setupVars.conf.sh
 
   install -dm750 "$pkgdir"/etc/sudoers.d
-  install -Dm440 ./$_pkgname-$pkgver/advanced/pihole.sudo "$pkgdir"/etc/sudoers.d/pihole || return 1
+  install -Dm440 $_pkgname-$pkgver/advanced/pihole.sudo "$pkgdir"/etc/sudoers.d/pihole
 
-  install -Dm644 pi-hole.tmpfile "$pkgdir"/etc/tmpfiles.d/pi-hole.conf || return 1
+  install -Dm644 pi-hole.tmpfile "$pkgdir"/etc/tmpfiles.d/pi-hole.conf
 
   install -Dm644 "$_pkgname-gravity.timer" "$pkgdir/usr/lib/systemd/system/$_pkgname-gravity.timer"
   install -Dm644 "$_pkgname-gravity.service" $pkgdir/usr/lib/systemd/system/$_pkgname-gravity.service
   install -Dm644 "$_pkgname-logtruncate.timer" "$pkgdir/usr/lib/systemd/system/$_pkgname-logtruncate.timer"
   install -Dm644 "$_pkgname-logtruncate.service" $pkgdir/usr/lib/systemd/system/$_pkgname-logtruncate.service
   install -dm755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
-  ln -s ../$_pkgname-gravity.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-gravity.timer"
-  ln -s ../$_pkgname-logtruncate.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-logtruncate.timer"
+  ln -s $_pkgname-gravity.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-gravity.timer"
+  ln -s $_pkgname-logtruncate.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-logtruncate.timer"
 
   install -dm777 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/etc/pihole/configs
-  install -Dm644 ./$_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default || return 1
-  install -Dm644 ./$_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/pihole/logrotate || return 1
-  install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt || return 1
-  install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt || return 1
+  install -Dm644 $_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default
+  install -Dm644 $_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/pihole/logrotate
+  install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt
+  install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt
 
-  install -Dm644 configuration "$pkgdir"/usr/share/doc/pihole/configuration || return 1
+  install -Dm644 configuration "$pkgdir"/usr/share/doc/pihole/configuration
 
-  install -Dm644 dnsmasq.main "$pkgdir"/etc/pihole/configs/dnsmasq.main || return 1
-  install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf || return 1
-  install -Dm644 dnsmasq.local "$pkgdir"/etc/dnsmasq.d/02-pihole.conf || return 1
-  install -Dm644 lighttpd.conf "$pkgdir"/etc/pihole/configs/lighttpd.conf || return 1
+  install -Dm644 dnsmasq.main "$pkgdir"/etc/pihole/configs/dnsmasq.main
+  install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf
+  install -Dm644 dnsmasq.local "$pkgdir"/etc/dnsmasq.d/02-pihole.conf
+  install -Dm644 lighttpd.conf "$pkgdir"/etc/pihole/configs/lighttpd.conf
+  install -Dm644 nginx.pi-hole.conf "$pkgdir"/etc/pihole/configs/nginx.pi-hole.conf
 
-  install -dm755 "$pkgdir"/srv/http/pihole/admin || return 1
-  install -Dm644 ./$_pkgname-$pkgver/advanced/index.php "$pkgdir"/srv/http/pihole/pihole/index.php || return 1
-  install -Dm644 ./$_pkgname-$pkgver/advanced/index.js "$pkgdir"/srv/http/pihole/pihole/index.js || return 1
-  install -Dm644 ./$_pkgname-$pkgver/advanced/blockingpage.css "$pkgdir"/srv/http/pihole/pihole/blockingpage.css || return 1
+  install -dm755 "$pkgdir"/srv/http/pihole/admin
+  install -Dm644 $_pkgname-$pkgver/advanced/index.php "$pkgdir"/srv/http/pihole/pihole/index.php
+  install -Dm644 $_pkgname-$pkgver/advanced/index.js "$pkgdir"/srv/http/pihole/pihole/index.js
+  install -Dm644 $_pkgname-$pkgver/advanced/blockingpage.css "$pkgdir"/srv/http/pihole/pihole/blockingpage.css
   cp -dpr --no-preserve=ownership $_wwwpkgname-$_wwwpkgver/* "$pkgdir"/srv/http/pihole/admin/
 }
 
