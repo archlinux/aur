@@ -59,8 +59,8 @@ package () {
 
 #copy install files for use by user after install, and fix a path
   install -d ${pkgdir}/usr/share/$pkgname
-  install -m755 install/install.sh ${pkgdir}/usr/share/$pkgname/
-  install -m644 install/install.cfg ${pkgdir}/usr/share/$pkgname/
+  install -m755 installer/install.sh ${pkgdir}/usr/share/$pkgname/
+  install -m644 installer/install.cfg ${pkgdir}/usr/share/$pkgname/
   sed -i 's#./install/install.cfg#./install.cfg#' ${pkgdir}/usr/share/$pkgname/install.sh
 
 #install man pages - FS#13766 fixed
