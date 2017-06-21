@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=N.86510.g8a09325311
+pkgver=N.86563.g5cae5a1def
 pkgrel=1
 pkgdesc='Record, convert and stream audio and video (git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ optdepends_x86_64=(
 )
 makedepends=(
     # official repositories:
-        'git' 'yasm' 'opencl-headers'
+        'git' 'nasm' 'opencl-headers'
     # AUR:
         'blackmagic-decklink-sdk'
 )
