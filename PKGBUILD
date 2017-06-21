@@ -6,7 +6,7 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=20.0rc
+pkgver=20.0
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
@@ -21,10 +21,10 @@ optdepends=('erlang-unixodbc: database support'
             'lksctp-tools: for SCTP support')
 options=('staticlibs')
 source=("git+https://github.com/erlang/otp.git#tag=OTP-20.0-rc1"
-        "http://www.erlang.org/download/otp_doc_man_19.3.tar.gz"
+        "http://www.erlang.org/download/otp_doc_man_20.0.tar.gz"
         'epmd.service' 'epmd.socket' 'epmd.conf')
 sha256sums=('SKIP'
-            'f8192ffdd7367083c055695eeddf198155da43dcc221aed1d870d1e3871dd95c'
+            'b7f1542a94a170f8791f5d80a85706f9e8838924ea65d4301032d0c0cfb845cc'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
             '998a759e4cea4527f9d9b241bf9f32527d7378d63ea40afa38443c6c3ceaea34'
             '78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2')
