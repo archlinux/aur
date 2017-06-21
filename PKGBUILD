@@ -3,7 +3,7 @@
 pkgbase=linux-max98090
 _srcname=linux-4.11
 pkgver=4.11.6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -19,6 +19,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        'CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch'
         # patch for max98090 soundcard
         'max98090.patch'
         # patch to revert platform x86 enable atom pmc platform clocks
@@ -30,10 +31,11 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
             '00c0b804ccda18d6ed4a32ba0be049a80363aa2bc084733a22da03f435d992a4'
             'SKIP'
-            '267a603a0b4372004ca9cbe8cb27bbdb6234a55ee257bc7e33d3659f3c9ae832'
-            '77d87709d20ba2112758e226eb242866ab20ac4152f057e1d69fc7085ed968f5'
+            '03b7a210be81ee098647784fd053098ba47b3f581727d1e28657fe29bc969e7b'
+            'eb9df6c8cf9d1f634612402686d85d1a9e386ba91bc2ba83553c7150618d98ec'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            'e1b6a237894fb9e7bf142eb97b5e53c2e46a15ff69ef11593007f254b9faa160'
             '66f1e1a21ceecbad1efa892515e542323a2895fc5141663eeca7fc341bec35aa'
             '10ec161f83768e03dfded48e59c3cdf97d8bad1eea827804c472742e061a8e83'
             '22b144afef8249a616bf726d78dfae53f0ed67d8686c2fc4eb38892da88ce0c5')
@@ -49,6 +51,7 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
