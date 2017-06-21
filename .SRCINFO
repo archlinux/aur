@@ -18,7 +18,7 @@ pkgbase = social-engineer-toolkit
 	optdepends = metasploit
 	source = social-engineer-toolkit-7.6.3.tar.gz::https://github.com/trustedsec/social-engineer-toolkit/archive/7.6.3.tar.gz
 	source = setoolkit
-	sha512sums = 964329e68fce5271d94dc055aac6ee08f2d469c2960b6d0a377ed014133c5a1004a90b53521828a93aedf15c3fd871fa3ada28fabb463604e5a42931f84bd5f0
+	sha512sums = 08cc1a568141e0af94eacf9123a7059b318203e09a25e82019d66b1dd54fbde02207fb5b1164c0464f837a26152d7ce79cba4aa7034d743c3af21669a76162cd
 	sha512sums = 130df5c3be2a75466933c086a10194a8e276b699698389af1528d2aa0f445d1dd41a82bf27e01749d59481df3d1071ac37605c4ee3e57c8bf99dd2410dd23a0b
 
 pkgname = social-engineer-toolkit
