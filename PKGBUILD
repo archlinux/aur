@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at coredump dot fr>
 pkgname=powerdns-recursor-git
-pkgver=r11572.4f2f2d7bd
+pkgver=r12492.2db723203
 pkgrel=1
 pkgdesc='Resolving DNS server'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 source=("${pkgname}::git+https://github.com/PowerDNS/pdns")
 sha512sums=('SKIP')
 makedepends=('boost' 'git' 'pandoc' 'ragel' 'systemd')
-depends=('boost-libs' 'libsystemd' 'lua' 'openssl' 'protobuf' )
+depends=('boost-libs' 'libsodium' 'libsystemd' 'lua' 'openssl' 'protobuf' )
 provides=('powerdns-recursor')
 conflicts=('powerdns-recursor')
 backup=('etc/powerdns/recursor.conf')
@@ -29,7 +29,8 @@ build() {
       --disable-silent-rules \
       --enable-reproducible \
       --enable-systemd \
-      --enable-protobuf
+      --enable-protobuf \
+      --enable-libsodium
   make
 }
 
