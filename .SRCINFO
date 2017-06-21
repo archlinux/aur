@@ -9,5 +9,8 @@ pkgbase = libcs50
 	depends = glibc
 	conflicts = lib50-c-git
 	conflicts = lib50-c
-	source = https://github.com/cs50/lib50-c/archive/7.1.0.tar.gz
+	source = https://github.com/cs50/lib50-c/archive/7.1.2.tar.gz
 	md5sums = bab3f9a12a19ee799e5e1461c08d7117
+
+pkgname = libcs50
+
