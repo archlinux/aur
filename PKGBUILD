@@ -1,7 +1,7 @@
 # Maintainer: Chris Xiong <chirs241097@gmail.com>
 pkgname=qmidiplayer
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="A cross-platform midi file player based on libfluidsynth and Qt."
 arch=('i686' 'x86_64')
 url="https://chrisoft.org/QMidiPlayer/"
