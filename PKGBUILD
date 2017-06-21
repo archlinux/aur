@@ -5,7 +5,7 @@
 
 pkgname=xmonad-git
 pkgver=v0.13.r5.g2e63127
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight X11 tiled window manager written in Haskell"
 arch=('i686' 'x86_64')
 url="http://xmonad.org/"
@@ -44,6 +44,7 @@ build() {
     --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
     --libsubdir=\$compiler/site-local/\$pkgid
   runhaskell Setup build
+  runhaskell Setup haddock
   runhaskell Setup register --gen-script
   runhaskell Setup unregister --gen-script
   sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
@@ -60,6 +61,9 @@ package() {
   install -D -m644 LICENSE $pkgdir/usr/share/licenses/xmonad/LICENSE
   install -D -m644 $srcdir/xmonad.svg $pkgdir/usr/share/pixmaps/xmonad.svg
   install -D -m644 $srcdir/xmonad.desktop $pkgdir/usr/share/xsessions/xmonad.desktop
+
+  install -d -m755 ${pkgdir}/usr/share/doc/ghc/html/libraries
+  ln -s /usr/share/doc/$pkgname/html "$pkgdir/usr/share/doc/ghc/html/libraries/$pkgname"
 
   find "$pkgdir"/usr/lib -name "*.a" -delete
 }
