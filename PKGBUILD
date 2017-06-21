@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=pcf-unifont
-pkgver=9.0.06
+pkgver=10.0.01
 pkgrel=1
 pkgdesc="Bitmap version of the GNU Unifont"
 arch=('any')
@@ -9,8 +9,8 @@ license=('GPL')
 url="http://unifoundry.com/unifont.html"
 source=(http://unifoundry.com/pub/unifont-${pkgver}/font-builds/unifont-${pkgver}.pcf.gz
 "$pkgname.install")
-md5sums=('fc1de0fd5ce0f235906da98aefbd9517'
-         'b66d07781191b1266dd775722be14cff')
+sha256sums=('e644cd7ef7ee01d1f7247d49559435bc59e7f5f7e0886d3109d04e0250c9146a'
+            '4722b8c18c60ef36a1702b0dbbfbd723384b4cb04d30bdc324013a2a524936e3')
 install="$pkgname.install"
 noextract=(unifont-${pkgver}.pcf.gz)
 
