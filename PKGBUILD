@@ -1,4 +1,5 @@
-# Maintainer: Troy Will <troydwill at gmail dot com>
+# Maintainer: Mesmer <mesmer@fisica.if.uff.br>
+# Contributor: Troy Will <troydwill at gmail dot com>
 # Contributor: /dev/rs0                  </dev/rs0@secretco.de.com>
 # Contributor: Jacek Burghardt           <jacek@hebe.us>
 # Contributor: Vojtech Aschenbrenner     <v@asch.cz>
@@ -11,8 +12,8 @@
 # Orginally based on a Debian Squeeze package
 _pkgname=zoneminder
 pkgname=zoneminder-git
-pkgver=1.29.0
-pkgrel=3
+pkgver=1.30.4.r899.g36683d15d
+pkgrel=1
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -25,10 +26,12 @@ depends=(
     ffmpeg vlc perl-sys-mmap
     gnutls polkit
     perl-expect perl-archive-zip perl-date-manip
-    perl-mime-lite perl-mime-tools
+    perl-mime-lite perl-mime-tools perl-crypt-ssleay
+    perl-sys-meminfo
+    perl-sys-cpu
 )
 makedepends=(
-    cmake make gcc netpbm
+    cmake netpbm git
 )
 optdepends=(
     netpbm
