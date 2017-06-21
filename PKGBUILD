@@ -5,7 +5,7 @@
 pkgbase=systemd-git
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd from git"
-pkgver=232.r752.g1fb857974
+pkgver=233.r595.g4b57a2720
 pkgrel=1
 branch='master'
 arch=('i686' 'x86_64')
