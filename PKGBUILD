@@ -7,7 +7,7 @@ pkgname='ros-lunar-kdl-parser-py'
 pkgver='1.12.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-lunar-urdf
@@ -16,7 +16,7 @@ ros_makedepends=(ros-lunar-urdf
   ros-lunar-rostest)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-catkin-pkg)
+  python2-catkin_pkg)
 
 ros_depends=(ros-lunar-python-orocos-kdl
   ros-lunar-urdf
