@@ -2,12 +2,17 @@
 
 pkgname=android-emulator
 pkgver=26.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Android Emulator'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/releases/emulator.html'
 license=('custom')
-depends=('android-sdk')
+depends_i686=('android-sdk' 'gcc-libs' 'libpulse' 'libx11' 'libxcb'
+              'libxdamage' 'libxext' 'libxfixes' 'ncurses5-compat-libs'
+              'zlib')
+depends_x86_64=('android-sdk' 'lib32-gcc-libs' 'lib32-glibc' 'libpulse'
+                'libx11' 'libxcb' 'libxdamage' 'libxext' 'libxfixes'
+                'ncurses5-compat-libs' 'zlib')
 install="${pkgname}.install"
 source=('https://dl.google.com/android/repository/emulator-linux-3965150.zip'
         "${pkgname}.sh"
