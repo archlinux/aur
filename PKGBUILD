@@ -36,7 +36,7 @@ conflicts=(firefox-developer)
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
-prepare() {
+_verify_checksum() {
     # Check if hash of the source archive matches the one provided by Mozilla (which was signed with GPG).
     _checksum=`grep "linux-x86_64/$_lang/firefox-$pkgver.tar.bz2" "$srcdir/SHA512SUMS-$pkgver" | cut -f1 -d " "`
     _actual=`sha512sum $srcdir/firefox-$pkgver.tar.bz2 | cut -f1 -d " "`
@@ -53,6 +53,8 @@ prepare() {
 }
 
 package() {
+    _verify_checksum
+
     install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
     cp -r firefox $pkgdir/opt/firefox-$_channel
 
