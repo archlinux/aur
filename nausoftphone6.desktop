@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Naumen SoftPhone 6.3
+GenericName=NauSoftPhone63
+GenericName[ru]=Программный Телефон v.6.3
+Exec=/opt/naumen/nausoftphone63/nausoftphone %U
+Terminal=false
+Icon=/opt/naumen/nausoftphone63/res/icons/nauphone.png
+Type=Application
+Categories=Application;Network;
+Name[ru_RU]=nausoftphone6.desktop
