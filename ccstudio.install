@@ -1,0 +1,14 @@
+_dir=/opt/ccstudio/ccsv7
+
+post_install() {
+    echo ">>> To install software from within CCS, run ccstudio as root."
+    echo ">>> For normal usage, run as normal user."
+}
+
+post_remove() {
+    # Since CCS manages its own updates, and treats it's install directory
+    # as its working directory, there's cache and trash left over
+    # NOTE: other directories (${_dir}/tools) might have also been created, but
+    # some are owned by other packages (e.g. compiler), so be conservative.
+    rm -rf ${_dir}/eclipse
+}
