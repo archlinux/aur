@@ -2,8 +2,8 @@
 pkgname=archlabs-arc-themes-git
 _pkgname=archlabs-arc-themes
 _destname="/usr/share/themes/"
-pkgver=1.1
-pkgrel=9
+pkgver=1.2
+pkgrel=0
 pkgdesc="Arc themes created for ARCHLabs with Arc Colora script"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-arc-themes"
