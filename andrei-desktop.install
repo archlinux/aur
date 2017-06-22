@@ -14,8 +14,6 @@ post_install() {
 	rsync -qacAXb --suffix=.pacsave ./files/etc /
 	rsync -qacAXb --suffix=.pacsave ./files/root /
 
-	updatedb
-
 	echo "In order to update your home directory config files, please run:"
 	echo "# rsync -qacAXb --suffix=.pacsave --chown=user:group /etc/skel/ user_home_dir/"
 	echo "# updatedb"
