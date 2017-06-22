@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=2.8.3.2
+pkgver=2.8.3.4
 pkgrel=1
 pkgdesc="Lightweight Litecoin client"
 arch=(any)
@@ -24,7 +24,7 @@ makedepends=(python2-pycurl)
 source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz
         https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz.asc)
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
-sha256sums=(e3000130dc9e64a70d8ecacf604e2ebd36501e34ab8d53d7084e5be7c03126b2
+sha256sums=(f4ed9971458a2baa1dcfb322435c27a708d4fd66fff216fa06663e5af78e44ba
             SKIP)
 
 prepare() {
@@ -52,8 +52,8 @@ package() {
 
   ./setup.py install -O1 --root=$pkgdir
 
-  mkdir -p $pkgdir/usr/share/doc/$pkgname/
-  cp AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample $pkgdir/usr/share/doc/$pkgname/
+  mkdir -p $pkgdir/usr/share/doc/electrum-ltc/
+  cp AUTHORS README.rst RELEASE-NOTES electrum-ltc.conf.sample $pkgdir/usr/share/doc/electrum-ltc/
 
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   cp LICENCE $pkgdir/usr/share/licenses/$pkgname/
