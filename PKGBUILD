@@ -9,7 +9,7 @@ url="http://www.rocketeergames.com/site/rcf/"
 license=('LLC')
 # depends=()
 makedepends=('unzip')
-source=("http://cdn.rocketeergames.com/$pkgver/redcrucible_lin.zip" "rcf.desktop")
+source=("http://cdn.rocketeergames.com/rc3/redcrucible_lin.zip" "rcf.desktop")
 md5sums=('35e4dc0e970f48e38af260f0e7757be2' '2323cc5d4d853d932d3b7a84543a3ed4')
 
 package() {
