@@ -2,8 +2,8 @@
 # Contributor: johnLate
 pkgname=aspectc++-bin
 pkgver=2.2
-pkgrel=1
-pkgdesc="A set of C++ language extensions to facilitate aspect-oriented programming with C/C++."
+pkgrel=2
+pkgdesc="A set of C++ language extensions to facilitate aspect-oriented programming with C/C++"
 arch=('i686' 'x86_64')
 url="http://aspectc.org/"
 license=('GPL')
@@ -16,11 +16,13 @@ sha512sums_x86_64=('cfaf36d2b0c9ede5766abb98f09318a75de4befaff71d725b54bf594d053
 _dirname=aspectc++
 
 package() {
-	mkdir -p $pkgdir/usr/bin
+	#mkdir -p $pkgdir/usr/bin
+	install -dm755 $pkgdir/usr/bin
 	install -m755 "$srcdir/$_dirname/ac++" "$pkgdir/usr/bin"
 	install -m755 "$srcdir/$_dirname/ag++" "$pkgdir/usr/bin"
 
-	mkdir -p $pkgdir/usr/share/doc/aspectc++
+	#mkdir -p $pkgdir/usr/share/doc/aspectc++
+	install -dm755 $pkgdir/usr/share/doc/aspectc++
 	cp -r "$srcdir/$_dirname/examples" "$pkgdir/usr/share/doc/aspectc++"
 	install -dm755 "$pkgdir/usr/share/doc/aspectc++"
 }
