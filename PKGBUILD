@@ -1,7 +1,7 @@
 # Maintainer: Loic Blot <loic.blot@unix-experience.fr>
 pkgname=libluasandbox
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic Lua sandbox for dynamic data analysis"
 source=("https://github.com/mozilla-services/lua_sandbox/archive/v$pkgver.tar.gz")
 sha256sums=('9a63b37f1b9b6d40afa45f92e3777f3baf770d195cb41fad04a0e020d398ebed')
@@ -21,4 +21,5 @@ build() {
 package() {
 	cd lua_sandbox-${pkgver}/${_buildroot}
 	make install
+	mv ${pkgdir}/usr/lib64 ${pkgdir}/usr/lib
 }
