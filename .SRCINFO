@@ -2,9 +2,21 @@ pkgbase = flaketill-dotfiles
 	pkgdesc = A simple dotfiles restore for develop on Arch Linux x64
 	pkgver = 0.0.1
 	pkgrel = 2
-	url = https://flaketill@bitbucket.org/flaketill/dotfiles.git
+	url = https://github.com/flaketill/dotfiles
 	arch = x86_64
 	license = GPL
+	checkdepends = gdb
+	makedepends = git
+	makedepends = terminator
+	makedepends = namcap
+	makedepends = stow
+	depends = python2
+	depends = espeak
+	depends = dialog
+	optdepends = gksu: sudo-save support,
+	optdepends = alsa-lib: sound support
+	source = git+https://github.com/flaketill/dotfiles.git
+	md5sums = SKIP
 
 pkgname = flaketill-dotfiles
 

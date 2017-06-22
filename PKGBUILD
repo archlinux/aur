@@ -14,7 +14,7 @@ license=('GPL')
 
 depends=('python2' 'espeak' 'dialog')
 checkdepends=('gdb')
-makedepends=('git' 'terminator' 'namcap')
+makedepends=('git' 'terminator' 'namcap' 'stow')
 optdepends=('gksu: sudo-save support',
 		'alsa-lib: sound support')
 
