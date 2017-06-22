@@ -1,0 +1,11 @@
+--- CMakeLists.txt.old	2017-06-22 21:58:14.005408596 +0200
++++ CMakeLists.txt	2017-06-22 21:58:21.068781908 +0200
+@@ -31,7 +31,7 @@
+ 
+ add_subdirectory(isoimagewriter)
+ add_subdirectory(images)
+-add_subdirectory(signing-keys)
++#add_subdirectory(signing-keys)
+ 
+ feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ 
