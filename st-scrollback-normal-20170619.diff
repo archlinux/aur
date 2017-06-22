@@ -1,0 +1,429 @@
+diff --git a/config.def.h b/config.def.h
+index 877afab..0d83e00 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -156,8 +156,14 @@ unsigned int defaultattr = 11;
+  */
+ MouseShortcut mshortcuts[] = {
+ 	/* button               mask            string */
+-	{ Button4,              XK_ANY_MOD,     "\031" },
+-	{ Button5,              XK_ANY_MOD,     "\005" },
++	{ Button4,              XK_NO_MOD,      "\031" },
++	{ Button5,              XK_NO_MOD,      "\005" },
++};
++
++MouseKey mkeys[] = {
++	/* button               mask            function        argument */
++	{ Button4,              XK_NO_MOD,      kscrollup,      {.i =  1} },
++	{ Button5,              XK_NO_MOD,      kscrolldown,    {.i =  1} },
+ };
+ 
+ /* Internal keyboard shortcuts. */
+@@ -178,6 +184,8 @@ Shortcut shortcuts[] = {
+ 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
+ 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+ 	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
++	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
++	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+ };
+ 
+ /*
+diff --git a/st.c b/st.c
+index 8d4a9f2..b49191f 100644
+--- a/st.c
++++ b/st.c
+@@ -128,6 +128,8 @@ typedef struct {
+ /* function definitions used in config.h */
+ static void clipcopy(const Arg *);
+ static void clippaste(const Arg *);
++static void kscrolldown(const Arg *);
++static void kscrollup(const Arg *);
+ static void numlock(const Arg *);
+ static void selpaste(const Arg *);
+ static void zoom(const Arg *);
+@@ -174,8 +176,8 @@ static void tputtab(int);
+ static void tputc(Rune);
+ static void treset(void);
+ static void tresize(int, int);
+-static void tscrollup(int, int);
+-static void tscrolldown(int, int);
++static void tscrollup(int, int, int);
++static void tscrolldown(int, int, int);
+ static void tsetattr(int *, int);
+ static void tsetchar(Rune, Glyph *, int, int);
+ static void tsetscroll(int, int);
+@@ -235,6 +237,7 @@ static Rune utfmax[UTF_SIZ + 1] = {0x10FFFF, 0x7F, 0x7FF, 0xFFFF, 0x10FFFF};
+ /* config.h array lengths */
+ size_t colornamelen = LEN(colorname);
+ size_t mshortcutslen = LEN(mshortcuts);
++size_t mkeyslen = LEN(mkeys);
+ size_t shortcutslen = LEN(shortcuts);
+ size_t selmaskslen = LEN(selmasks);
+ 
+@@ -448,10 +451,10 @@ tlinelen(int y)
+ {
+ 	int i = term.col;
+ 
+-	if (term.line[y][i - 1].mode & ATTR_WRAP)
++	if (TLINE(y)[i - 1].mode & ATTR_WRAP)
+ 		return i;
+ 
+-	while (i > 0 && term.line[y][i - 1].u == ' ')
++	while (i > 0 && TLINE(y)[i - 1].u == ' ')
+ 		--i;
+ 
+ 	return i;
+@@ -513,7 +516,7 @@ selsnap(int *x, int *y, int direction)
+ 		 * Snap around if the word wraps around at the end or
+ 		 * beginning of a line.
+ 		 */
+-		prevgp = &term.line[*y][*x];
++		prevgp = &TLINE(*y)[*x];
+ 		prevdelim = ISDELIM(prevgp->u);
+ 		for (;;) {
+ 			newx = *x + direction;
+@@ -528,14 +531,14 @@ selsnap(int *x, int *y, int direction)
+ 					yt = *y, xt = *x;
+ 				else
+ 					yt = newy, xt = newx;
+-				if (!(term.line[yt][xt].mode & ATTR_WRAP))
++				if (!(TLINE(yt)[xt].mode & ATTR_WRAP))
+ 					break;
+ 			}
+ 
+ 			if (newx >= tlinelen(newy))
+ 				break;
+ 
+-			gp = &term.line[newy][newx];
++			gp = &TLINE(newy)[newx];
+ 			delim = ISDELIM(gp->u);
+ 			if (!(gp->mode & ATTR_WDUMMY) && (delim != prevdelim
+ 					|| (delim && gp->u != prevgp->u)))
+@@ -556,14 +559,14 @@ selsnap(int *x, int *y, int direction)
+ 		*x = (direction < 0) ? 0 : term.col - 1;
+ 		if (direction < 0) {
+ 			for (; *y > 0; *y += direction) {
+-				if (!(term.line[*y-1][term.col-1].mode
++				if (!(TLINE(*y-1)[term.col-1].mode
+ 						& ATTR_WRAP)) {
+ 					break;
+ 				}
+ 			}
+ 		} else if (direction > 0) {
+ 			for (; *y < term.row-1; *y += direction) {
+-				if (!(term.line[*y][term.col-1].mode
++				if (!(TLINE(*y)[term.col-1].mode
+ 						& ATTR_WRAP)) {
+ 					break;
+ 				}
+@@ -594,13 +597,13 @@ getsel(void)
+ 		}
+ 
+ 		if (sel.type == SEL_RECTANGULAR) {
+-			gp = &term.line[y][sel.nb.x];
++			gp = &TLINE(y)[sel.nb.x];
+ 			lastx = sel.ne.x;
+ 		} else {
+-			gp = &term.line[y][sel.nb.y == y ? sel.nb.x : 0];
++			gp = &TLINE(y)[sel.nb.y == y ? sel.nb.x : 0];
+ 			lastx = (sel.ne.y == y) ? sel.ne.x : term.col-1;
+ 		}
+-		last = &term.line[y][MIN(lastx, linelen-1)];
++		last = &TLINE(y)[MIN(lastx, linelen-1)];
+ 		while (last >= gp && last->u == ' ')
+ 			--last;
+ 
+@@ -844,6 +847,9 @@ ttyread(void)
+ 	if (buflen > 0)
+ 		memmove(buf, ptr, buflen);
+ 
++	if (term.scr > 0 && term.scr < HISTSIZE-1)
++		term.scr++;
++
+ 	return ret;
+ }
+ 
+@@ -853,6 +859,9 @@ ttywrite(const char *s, size_t n)
+ 	fd_set wfd, rfd;
+ 	ssize_t r;
+ 	size_t lim = 256;
++	Arg arg = (Arg) { .i = term.scr };
++
++	kscrolldown(&arg);
+ 
+ 	/*
+ 	 * Remember that we are using a pty, which might be a modem line.
+@@ -1055,13 +1064,53 @@ tswapscreen(void)
+ }
+ 
+ void
+-tscrolldown(int orig, int n)
++kscrolldown(const Arg* a)
++{
++	int n = a->i;
++
++	if (n < 0)
++		n = term.row + n;
++
++	if (n > term.scr)
++		n = term.scr;
++
++	if (term.scr > 0) {
++		term.scr -= n;
++		selscroll(0, -n);
++		tfulldirt();
++	}
++}
++
++void
++kscrollup(const Arg* a)
++{
++	int n = a->i;
++
++	if (n < 0)
++		n = term.row + n;
++
++	if (term.scr <= HISTSIZE-n) {
++		term.scr += n;
++		selscroll(0, n);
++		tfulldirt();
++	}
++}
++
++void
++tscrolldown(int orig, int n, int copyhist)
+ {
+ 	int i;
+ 	Line temp;
+ 
+ 	LIMIT(n, 0, term.bot-orig+1);
+ 
++	if (copyhist) {
++		term.histi = (term.histi - 1 + HISTSIZE) % HISTSIZE;
++		temp = term.hist[term.histi];
++		term.hist[term.histi] = term.line[term.bot];
++		term.line[term.bot] = temp;
++	}
++
+ 	tsetdirt(orig, term.bot-n);
+ 	tclearregion(0, term.bot-n+1, term.col-1, term.bot);
+ 
+@@ -1075,13 +1124,20 @@ tscrolldown(int orig, int n)
+ }
+ 
+ void
+-tscrollup(int orig, int n)
++tscrollup(int orig, int n, int copyhist)
+ {
+ 	int i;
+ 	Line temp;
+ 
+ 	LIMIT(n, 0, term.bot-orig+1);
+ 
++	if (copyhist) {
++		term.histi = (term.histi + 1) % HISTSIZE;
++		temp = term.hist[term.histi];
++		term.hist[term.histi] = term.line[orig];
++		term.line[orig] = temp;
++	}
++
+ 	tclearregion(0, orig, term.col-1, orig+n-1);
+ 	tsetdirt(orig+n, term.bot);
+ 
+@@ -1130,7 +1186,7 @@ tnewline(int first_col)
+ 	int y = term.c.y;
+ 
+ 	if (y == term.bot) {
+-		tscrollup(term.top, 1);
++		tscrollup(term.top, 1, 1);
+ 	} else {
+ 		y++;
+ 	}
+@@ -1295,14 +1351,14 @@ void
+ tinsertblankline(int n)
+ {
+ 	if (BETWEEN(term.c.y, term.top, term.bot))
+-		tscrolldown(term.c.y, n);
++		tscrolldown(term.c.y, n, 0);
+ }
+ 
+ void
+ tdeleteline(int n)
+ {
+ 	if (BETWEEN(term.c.y, term.top, term.bot))
+-		tscrollup(term.c.y, n);
++		tscrollup(term.c.y, n, 0);
+ }
+ 
+ int32_t
+@@ -1739,11 +1795,11 @@ csihandle(void)
+ 		break;
+ 	case 'S': /* SU -- Scroll <n> line up */
+ 		DEFAULT(csiescseq.arg[0], 1);
+-		tscrollup(term.top, csiescseq.arg[0]);
++		tscrollup(term.top, csiescseq.arg[0], 0);
+ 		break;
+ 	case 'T': /* SD -- Scroll <n> line down */
+ 		DEFAULT(csiescseq.arg[0], 1);
+-		tscrolldown(term.top, csiescseq.arg[0]);
++		tscrolldown(term.top, csiescseq.arg[0], 0);
+ 		break;
+ 	case 'L': /* IL -- Insert <n> blank lines */
+ 		DEFAULT(csiescseq.arg[0], 1);
+@@ -2293,7 +2349,7 @@ eschandle(uchar ascii)
+ 		return 0;
+ 	case 'D': /* IND -- Linefeed */
+ 		if (term.c.y == term.bot) {
+-			tscrollup(term.top, 1);
++			tscrollup(term.top, 1, 1);
+ 		} else {
+ 			tmoveto(term.c.x, term.c.y+1);
+ 		}
+@@ -2306,7 +2362,7 @@ eschandle(uchar ascii)
+ 		break;
+ 	case 'M': /* RI -- Reverse index */
+ 		if (term.c.y == term.top) {
+-			tscrolldown(term.top, 1);
++			tscrolldown(term.top, 1, 1);
+ 		} else {
+ 			tmoveto(term.c.x, term.c.y-1);
+ 		}
+@@ -2493,7 +2549,7 @@ check_control_code:
+ void
+ tresize(int col, int row)
+ {
+-	int i;
++	int i, j;
+ 	int minrow = MIN(row, term.row);
+ 	int mincol = MIN(col, term.col);
+ 	int *bp;
+@@ -2533,6 +2589,14 @@ tresize(int col, int row)
+ 	term.dirty = xrealloc(term.dirty, row * sizeof(*term.dirty));
+ 	term.tabs = xrealloc(term.tabs, col * sizeof(*term.tabs));
+ 
++	for (i = 0; i < HISTSIZE; i++) {
++		term.hist[i] = xrealloc(term.hist[i], col * sizeof(Glyph));
++		for (j = mincol; j < col; j++) {
++			term.hist[i][j] = term.c.attr;
++			term.hist[i][j].u = ' ';
++		}
++	}
++
+ 	/* resize each row to new width, zero-pad if needed */
+ 	for (i = 0; i < minrow; i++) {
+ 		term.line[i] = xrealloc(term.line[i], col * sizeof(Glyph));
+diff --git a/st.h b/st.h
+index 44d4938..ca90c31 100644
+--- a/st.h
++++ b/st.h
+@@ -2,6 +2,7 @@
+ 
+ /* Arbitrary sizes */
+ #define UTF_SIZ       4
++#define HISTSIZE      2000
+ 
+ /* macros */
+ #define MIN(a, b)		((a) < (b) ? (a) : (b))
+@@ -20,6 +21,9 @@
+ #define TRUECOLOR(r,g,b)	(1 << 24 | (r) << 16 | (g) << 8 | (b))
+ #define IS_TRUECOL(x)		(1 << 24 & (x))
+ 
++#define TLINE(y)		((y) < term.scr ? term.hist[((y) + term.histi - term.scr \
++				+ HISTSIZE + 1) % HISTSIZE] : term.line[(y) - term.scr])
++
+ enum glyph_attribute {
+ 	ATTR_NULL       = 0,
+ 	ATTR_BOLD       = 1 << 0,
+@@ -114,6 +118,9 @@ typedef struct {
+ 	int col;      /* nb col */
+ 	Line *line;   /* screen */
+ 	Line *alt;    /* alternate screen */
++	Line hist[HISTSIZE]; /* history buffer */
++	int histi;    /* history index */
++	int scr;      /* scroll back */
+ 	int *dirty;  /* dirtyness of lines */
+ 	GlyphFontSpec *specbuf; /* font spec buffer used for rendering */
+ 	TCursor c;    /* cursor */
+@@ -175,6 +182,13 @@ typedef union {
+ } Arg;
+ 
+ typedef struct {
++	uint b;
++	uint mask;
++	void (*func)(const Arg *);
++	const Arg arg;
++} MouseKey;
++
++typedef struct {
+ 	uint mod;
+ 	KeySym keysym;
+ 	void (*func)(const Arg *);
+@@ -264,6 +278,8 @@ extern unsigned int mousebg;
+ extern unsigned int defaultattr;
+ extern MouseShortcut mshortcuts[];
+ extern size_t mshortcutslen;
++extern MouseKey mkeys[];
++extern size_t mkeyslen;
+ extern Shortcut shortcuts[];
+ extern size_t shortcutslen;
+ extern uint forceselmod;
+diff --git a/x.c b/x.c
+index fbfd350..45af5f2 100644
+--- a/x.c
++++ b/x.c
+@@ -248,16 +248,26 @@ bpress(XEvent *e)
+ {
+ 	struct timespec now;
+ 	MouseShortcut *ms;
++	MouseKey *mk;
+ 
+ 	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forceselmod)) {
+ 		mousereport(e);
+ 		return;
+ 	}
+ 
+-	for (ms = mshortcuts; ms < mshortcuts + mshortcutslen; ms++) {
+-		if (e->xbutton.button == ms->b
+-				&& match(ms->mask, e->xbutton.state)) {
+-			ttysend(ms->s, strlen(ms->s));
++	if (IS_SET(MODE_ALTSCREEN))
++		for (ms = mshortcuts; ms < mshortcuts + mshortcutslen; ms++) {
++			if (e->xbutton.button == ms->b
++					&& match(ms->mask, e->xbutton.state)) {
++				ttysend(ms->s, strlen(ms->s));
++				return;
++			}
++		}
++
++	for (mk = mkeys; mk < mkeys + mkeyslen; mk++) {
++		if (e->xbutton.button == mk->b
++				&& match(mk->mask, e->xbutton.state)) {
++			mk->func(&mk->arg);
+ 			return;
+ 		}
+ 	}
+@@ -1412,11 +1422,11 @@ drawregion(int x1, int y1, int x2, int y2)
+ 		term.dirty[y] = 0;
+ 
+ 		specs = term.specbuf;
+-		numspecs = xmakeglyphfontspecs(specs, &term.line[y][x1], x2 - x1, x1, y);
++		numspecs = xmakeglyphfontspecs(specs, &TLINE(y)[x1], x2 - x1, x1, y);
+ 
+ 		i = ox = 0;
+ 		for (x = x1; x < x2 && i < numspecs; x++) {
+-			new = term.line[y][x];
++			new = TLINE(y)[x];
+ 			if (new.mode == ATTR_WDUMMY)
+ 				continue;
+ 			if (ena_sel && selected(x, y))
+@@ -1436,7 +1446,9 @@ drawregion(int x1, int y1, int x2, int y2)
+ 		if (i > 0)
+ 			xdrawglyphfontspecs(specs, base, i, ox, y);
+ 	}
+-	xdrawcursor();
++
++	if (term.scr == 0)
++		xdrawcursor();
+ }
+ 
+ void

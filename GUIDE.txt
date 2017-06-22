@@ -1,0 +1,45 @@
+*** DO NOT FORGET TO RUN 'updpkgsums' AFTER MODFIYING AND BEFORE 'makepkg' ***
+
+COLORSCHEME:
+	Modify colorscheme.h. 'alpha' is for tranparency in hex, must be set if alpha patch is to be enabled.
+	Defualt colorscheme shipped is 'Gruvbox'.
+
+PATCHES:
+	Modify '_patches' in the PKGBUILD to have different patchset. 
+	"st-scrollback-normal-20170619.diff" -> Can use shift + page up/down and mouse scroll up/down
+    "st-verticalcenter-20170619.diff" -> centers text in the middle
+    "st-hidecursor-20170619.diff" -> cursor hiding after certain time
+    "st-alpha-20170619.diff" -> Transsparency patch
+    "st-externalpipe-20170619.diff" -> externalpipe patch (see below for more)
+    "st-extra-config-20170620.diff" -> Some extra configs
+    "st-extra-config-NO_EXT_PIPE_20170620.diff" -> Some extra configs for someone with externalpipe patch disabled.
+
+	For external pipe patch ->
+	uncomment "st-externalpipe-20170619.diff" and "st-extra-config-20170620.diff" and comment "st-extra-config-NO_EXT_PIPE_20170620.diff"
+	(also see external pipe section) This will get st to build with external pipe.
+
+
+EXTERNAL PIPE:
+	External pipe grabs links from st and forwards them to desired applications.
+	For Grabbing 'xurls' needed. Can be found in AUR.
+	For url launching 'open' or 'piper' needed.
+	'piper' can be found with this AUR , modify(if you want) and put it in your $PATH'
+	If you want 'open' modify st-extra-config-20170620.diff to reflect that ( edit line 30 replace piper with open)  
+	For more details http://st.suckless.org/patches/externalpipe
+
+GIT VERSION:
+	st is cloned from official git repository and master is set to a specific commit number.
+	This is to make patches remain compatible in case there's update.
+
+
+KEYBINDINGS CHANGE:
+	Primary Selection Paste -> Shift-Insert
+	Unicode Input -> Ctrl-Shift-u 
+	Launch script with externalpipe -> Ctrl-Shift-i
+	Modify " st-extra-config* " if needed.
+
+.diff MODIFY:
+	Values from lines starting with + can be modifyable.
+
+terminfo:
+	Archlinux 'ncurses' ships a terminfo for st. To avoid conflicts terminfo is not compiled to Package.

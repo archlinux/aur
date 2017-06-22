@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Can also use 
+# xdg-open "$1"
+
+# A function containing a case list of options 
+open() {
+	case "$1" in
+		*youtube.com*|*youtu.be*|*vodlocker.com*|*.webm*|*.mp4*|*.avi)
+			mpv "$1"
+			;;
+		*.png|*.jpeg|*.gif*|*.jpg)
+			sxiv "$1"
+			;;
+		*)
+			firefox "$1";  # For everything else.;
+	esac
+}
+
+# Now a for loop to iterate the list of options, 
+for url; do
+	open "$url"
+done

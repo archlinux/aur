@@ -1,0 +1,12 @@
+post_install() {
+	echo '==================================================='
+	echo ' ** PLEASE read GUIDE.txt (comes with this AUR) ** '
+	echo ' ** To have your own colorscheme and more ** '
+	echo '==================================================='
+}
+
+post_remove() {
+	echo '==================================================='
+	echo ' ** You may want to remove open(or piper) and xurls'
+	echo '==================================================='
+}
