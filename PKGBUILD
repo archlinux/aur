@@ -2,7 +2,7 @@
 
 pkgname=xorgxrdp-git
 _gitname=xorgxrdp
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ md5sums=('SKIP')
 
 build() {
 	cd ${_gitname}
+	git checkout master
 	./bootstrap
 	./configure
 	make
