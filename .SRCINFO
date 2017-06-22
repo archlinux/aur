@@ -1,0 +1,16 @@
+pkgbase = rcf
+	pkgdesc = Red Crucible®: Firestorm - Free to play online FPS
+	pkgver = rc3
+	pkgrel = 1
+	url = http://www.rocketeergames.com/site/rcf/
+	arch = i686
+	arch = x86_64
+	license = LLC
+	makedepends = unzip
+	source = http://cdn.rocketeergames.com/rc3/redcrucible_lin.zip
+	source = rcf.desktop
+	md5sums = 35e4dc0e970f48e38af260f0e7757be2
+	md5sums = 2323cc5d4d853d932d3b7a84543a3ed4
+
+pkgname = rcf
+

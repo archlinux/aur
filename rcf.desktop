@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Red Crucible®: Firestorm
+GenericName=Red Crucible®: Firestorm
+Comment=Free to play online FPS
+Exec=rcf
+Icon=rcf
+Terminal=false
+Type=Application
+Categories=Game;
