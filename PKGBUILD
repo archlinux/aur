@@ -1,6 +1,6 @@
 # Maintainer: Jakob Tsar-Fox <jakob@memeware.net>
 pkgname=chandere2
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=2
 pkgdesc="An asynchronous image/file downloader and thread archiver for imageboards."
 arch=('any')
@@ -8,8 +8,8 @@ url="https://github.com/TsarFox/chandere2"
 license=('GPL3')
 depends=('python' 'python-aiohttp')
 makedepends=('python-setuptools')
-source=("https://github.com/TsarFox/chandere2/archive/v2.4.0.tar.gz")
-md5sums=('e7f87c49af0982e4da6d72377dd8e654')
+source=("https://github.com/TsarFox/chandere2/archive/v2.4.1.tar.gz")
+md5sums=('9d2c1959c688ddcb0643e216d9226eef')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
