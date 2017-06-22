@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('jack' 'libgl' 'sdl' 'tcl')
 makedepends=('boost' 'subversion')
 install=$pkgname.install
-source=('svn+svn://jagernot.xyz/home/svn/din/tags/27a'
+source=('svn+svn://jagernot.website/home/svn/din/tags/27a'
         din.png
         din.desktop)
 md5sums=('SKIP'
