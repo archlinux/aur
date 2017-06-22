@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=5.0.1.52150
-pkgrel=2
+pkgver=5.0.7.52912
+pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
@@ -26,8 +26,8 @@ source_x86_64=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-R
 sha256sums=('619153f3540ad48ec31c702086883a6adccacc70b384b300edaa6f7957f27232'
             '6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1'
             'b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530')
-sha256sums_i686=('e46a6db668afe8d22c42410a3a237dc23675d5a8da29e0b2636e3f75ee71bb6d')
-sha256sums_x86_64=('29af02ba017f99eb5a7eca51b580e21e692a9d5da5d22e554dac10141fb24797')
+sha256sums_i686=('40272fac6ba8346d9d031a1ce399d1d4a107784dcd15e59e1c69a4bbd8100514')
+sha256sums_x86_64=('240538c2cb7b8116fc938fa1218dda0d7fb0d4daa0c3454044995773bd3d60f2')
 
 prepare() {
   if [ "$CARCH" = "i686" ]; then
