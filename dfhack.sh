@@ -22,7 +22,11 @@ if [[ ! -d ~/.dwarffortress/hack ]] ; then
   ln -s /opt/dwarffortress/dfhack.init-example ~/.dwarffortress/dfhack.init-example
   cp -r /opt/dwarffortress/dfhack-config       ~/.dwarffortress/dfhack-config
 
+  cp /opt/dwarffortress/data/art/shadows.png    ~/.dwarffortress/data/art
+  cp /opt/dwarffortress/data/init/overrides.txt ~/.dwarffortress/data/init
+
   cp ~/.dwarffortress/dfhack.init{-example,}
+  
 fi
 
 # workaround for bug in Debian/Ubuntu SDL patch
