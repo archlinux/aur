@@ -1,18 +1,19 @@
-pkgbase = xmr-stak-cpu-git
-	pkgdesc = Monero CPU miner
-	pkgver = r127.d0f991c
-	pkgrel = 5
-	url = https://github.com/nicehash/xmr-stak-cpu
+pkgbase = xmr-stak-nvidia-git
+	pkgdesc = Monero nvidia miner
+	pkgver = r38.915ed85
+	pkgrel = 1
+	url = https://github.com/nicehash/xmr-stak-nvidia
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	depends = libmicrohttpd
 	depends = openssl
-	source = git+https://github.com/fireice-uk/xmr-stak-cpu.git
+	depends = cuda
+	source = git+https://github.com/fireice-uk/xmr-stak-nvidia.git
 	source = no-donate.patch
 	sha256sums = SKIP
 	sha256sums = b936a4db91f4c35e5ff0ac51c4c1590493ddf6427a82dd0e1f57ef931950e46f
 
-pkgname = xmr-stak-cpu-git
+pkgname = xmr-stak-nvidia-git
 
