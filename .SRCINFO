@@ -1,0 +1,16 @@
+pkgbase = luasandbox-extensions
+	pkgdesc = Extension packages (sandboxes and modules) for the lua_sandbox project
+	pkgver = 2017.06.11
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = cmake
+	makedepends = parquet-cpp
+	depends = libluasandbox
+	depends = parquet-cpp
+	source = https://github.com/mozilla-services/lua_sandbox_extensions/archive/sprint_May29_Jun11.tar.gz
+	sha256sums = 2ddd1015ca828c6e771a0100cf03aa7bc887674dd2d532113fcf0003ef216df5
+
+pkgname = luasandbox-extensions
+
