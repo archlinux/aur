@@ -1,7 +1,7 @@
 pkgbase = libluasandbox
 	pkgdesc = Generic Lua sandbox for dynamic data analysis
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 3
 	arch = i686
 	arch = x86_64
 	license = MPL
