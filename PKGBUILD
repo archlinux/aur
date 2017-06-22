@@ -3,7 +3,7 @@
 pkgname=apex-bin
 _pkgname=apex
 pkgdesc="Build, deploy, and manage AWS Lambda functions with ease (with Go support!)."
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 arch=('1686' 'x86_64')
 license=('MIT')
@@ -12,10 +12,10 @@ provides=('apex' 'apex.run')
 noextract=()
 makedepends=('binutils')
 if [[ "$CARCH" == "x86_64" ]]; then
-  sha256sums=('690a3a05931bee066052a667fd1ea3de5a9965b47b20d369e7758aeeaee47214')
+  sha256sums=('14ec8deceef3854a6cb0e48b3eb18cd29fcadd9175633561e3f7a52d1bdd95df')
   _arch="linux_amd64"
 else
-  sha256sums=('63fb2c97863cc0bdfc253013addee41a29a53ec3ba08a83fc121ac3d29c08415')
+  sha256sums=('14e6792335a96bf880b35388c15b30f61375e6e0e3d679d861649df80e824a55')
   _arch="linux_386"
 fi
 source=("https://github.com/apex/apex/releases/download/v${pkgver}/${_pkgname}_${_arch}")
