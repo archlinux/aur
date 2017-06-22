@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Monacoin
+Comment=Monacoin P2P Cryptocurrency
+Exec=monacoin-qt %u
+Terminal=false
+Type=Application
+Icon=monacoin
+MimeType=x-scheme-handler/monacoin;
+Categories=Office;Finance;
+Name[ja]=Monacoin
