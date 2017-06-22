@@ -1,0 +1,41 @@
+--- pkg/rts5227-dkms/usr/src/rts5227-1.07/Makefile	2017-06-22 14:42:38.212148541 +0200
++++ Makefile.new	2017-06-22 14:57:15.115095874 +0200
+@@ -1,6 +1,6 @@
+ # Driver for Realtek PCI-Express card reader
+ #
+-# Copyright(c) 2009 Realtek Semiconductor Corp. All rights reserved.  
++# Copyright(c) 2009 Realtek Semiconductor Corp. All rights reserved.
+ #
+ # This program is free software; you can redistribute it and/or modify it
+ # under the terms of the GNU General Public License as published by the
+@@ -22,9 +22,11 @@
+ # Makefile for the PCI-Express Card Reader drivers.
+ #
+ 
++KVERSION := $(shell uname -r)
++
+ TARGET_MODULE := rts5227
+ 
+-EXTRA_CFLAGS := -Idrivers/scsi 
++EXTRA_CFLAGS := -Idrivers/scsi
+ 
+ obj-m += $(TARGET_MODULE).o
+ 
+@@ -33,14 +35,12 @@
+ 
+ default:
+ 	cp -f ./define.release ./define.h
+-	make -C /lib/modules/$(shell uname -r)/build/ SUBDIRS=$(PWD) modules
++	make -C /lib/modules/$(KVERSION)/build/ SUBDIRS=$(PWD) modules
+ debug:
+ 	cp -f ./define.debug ./define.h
+-	make -C /lib/modules/$(shell uname -r)/build/ SUBDIRS=$(PWD) modules
++	make -C /lib/modules/$(KVERSION)/build/ SUBDIRS=$(PWD) modules
+ install:
+-	cp $(TARGET_MODULE).ko /lib/modules/$(shell uname -r)/kernel/drivers/scsi -f
++	cp $(TARGET_MODULE).ko /lib/modules/$(KVERSION)/kernel/drivers/scsi -f
+ clean:
+ 	rm -f *.o *.ko
+ 	rm -f $(TARGET_MODULE).mod.c
+-
+-
