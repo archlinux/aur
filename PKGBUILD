@@ -30,10 +30,10 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium-vaapi
-pkgver=59.0.3071.104
+pkgver=59.0.3071.109
 pkgrel=1
-_launcher_ver=4
-pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by your GPU"
+_launcher_ver=5
+pkgdesc="Chromium compiled with VA-API for Intel Graphics"
 arch=('i686' 'x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
@@ -43,14 +43,14 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
 depends+=(${_system_libs[@]})
 provides=('chromium')
 conflicts=('chromium')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'go' 'git')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        git+https://github.com/foutrelis/chromium-launcher.git#tag=v$_launcher_ver
+        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-system-ffmpeg-r6.patch
         0001-ClientNativePixmapFactoryDmabuf-uses-ioctl-instead-o.patch
@@ -59,8 +59,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-v8-gcc7.patch
         chromium-widevine.patch
         vaapi_patch_r2.patch)
-sha256sums=('a949fa166cdcdbd8419fbdb4583804613d9845130f0c851e4c647d79a4c300d0'
-            'SKIP'
+sha256sums=('83faeb3537428d83728258b28e907caaee6e6572bcd7d9b9a5f6009e7ea758d9'
+            '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'            
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '2fc21f48b95f9f2c2bd8576742fcf8028a8877c6b6e96c04d88184915982234e'
             '9c081c84a4f85dbef82a9edf34cf0b1e8377c563874fd9c1b4efddf1476748f9'
@@ -79,9 +79,6 @@ _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
-  cd chromium-launcher
-  git submodule update --init
-
   cd "$srcdir/chromium-$pkgver"
 
   # Enable support for the Widevine CDM plugin
@@ -140,7 +137,7 @@ prepare() {
 }
 
 build() {
-  make -C chromium-launcher
+  make -C chromium-launcher-$_launcher_ver
 
   cd "$srcdir/chromium-$pkgver"
 
@@ -182,8 +179,7 @@ build() {
 }
 
 package() {
-  cd chromium-launcher
-
+  cd chromium-launcher-$_launcher_ver
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
