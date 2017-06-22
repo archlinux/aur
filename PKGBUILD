@@ -6,7 +6,7 @@
 
 pkgname=luakit-git
 gitname=luakit
-pkgver=r3479.62509c14
+pkgver=r3503.aa8a1ec6
 pkgrel=1
 pkgdesc='fork of luakit using webkit2'
 arch=('x86_64' 'i686' 'armv7h')
@@ -33,11 +33,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "$srcdir/$gitname"
-  sed -i '1s,lua,luajit,' build-utils/gentokens.lua
 }
 
 build() {
