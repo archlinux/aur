@@ -7,7 +7,7 @@
 
 pkgname=erlang-nox
 pkgver=20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
@@ -20,7 +20,7 @@ optdepends=('erlang-unixodbc: database support'
             'java-environment: for Java support'
             'lksctp-tools: for SCTP support')
 options=('staticlibs')
-source=("git+https://github.com/erlang/otp.git#tag=OTP-20.0-rc1"
+source=("git+https://github.com/erlang/otp.git#tag=OTP-20.0"
         "http://www.erlang.org/download/otp_doc_man_20.0.tar.gz"
         'epmd.service' 'epmd.socket' 'epmd.conf')
 sha256sums=('SKIP'
