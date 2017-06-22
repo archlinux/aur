@@ -3,8 +3,8 @@
 pkgname=edimax_ac1750_8814au-dkms
 _pkgbase=${pkgname%-*}
 _reponame=rtl8814au_EW7833UAC
-pkgver=4.3.21_17997.20160531-p4.11
-pkgrel=1
+pkgver=4.3.21_17997.20160531_p4.11
+pkgrel=2
 pkgdesc="Kernel module for the Edimax AC1750 USB3 802.11ac adapter."
 url="https://github.com/bsdfirst/rtl8814au_EW7833UAC"
 license=("GPL")
