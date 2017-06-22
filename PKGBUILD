@@ -56,20 +56,20 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
-_utdicver=20170321
-_zipcoderel=201703
+_utdicver=20170529
+_zipcoderel=201704
 
 _fcitxver=2.18.2612.102.1
 
 _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
-pkgver=2.20.2673.102.20170321
+pkgver=2.20.2673.102.20170529
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
-depends=('qt4' 'fcitx' 'zinnia')
+depends=('qt5-base' 'fcitx' 'zinnia')
 makedepends=('python2' 'ruby' 'git' 'ninja' 'clang')
 replaces=('mozc-fcitx' 'fcitx-mozc' 'fcitx-mozc-ut')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-mozc' 'mozc-ut2')
@@ -85,11 +85,11 @@ source=(
   http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 )
 sha1sums=('SKIP'
-          '66b5ebb21625880d5a00e77d200111ba32455546'
-          '4a44c97c3eb68d538279dcf44beaa576d911bf0e'
+          '62cd3a980518f3b200b677343f50ab2aa1eb05f6'
+          'caaedb35ce7c303e841e8c151c6c67b48fb33004'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '170e0a08129b0c96fbac30ed2c1d00ca8c83d7c6'
-          'd2ba37f4bd5d20c85c7e732a4a1d50704d384319'
+          '39cd35e1a477dab43846e4a2d75fee9fc33f9ed1'
+          '5ae7b86083250d1923d46d995f25a0b968e0f683'
           '16574ba571784ff037022ecdab7f62c9d5bb4ce6'
           'afeef31bf3d640f9cc630c2187dbfd4507367d78'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
