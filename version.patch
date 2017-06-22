@@ -1,0 +1,72 @@
+diff -ur pi-hole-3.1/advanced/Scripts/version.sh pi-hole-3.1.a/advanced/Scripts/version.sh
+--- pi-hole-3.1/advanced/Scripts/version.sh	2017-06-20 23:17:41.000000000 +0200
++++ pi-hole-3.1.a/advanced/Scripts/version.sh	2017-06-22 13:52:36.293206505 +0200
+@@ -20,63 +20,21 @@
+     return 0
+   fi
+ 
+-  # Get the tagged version of the local repository
+-  local directory="${1}"
+-  local version
+-
+-  cd "${directory}" 2> /dev/null || { echo "${DEFAULT}"; return 1; }
+-  version=$(git describe --tags --always || echo "$DEFAULT")
+-  if [[ "${version}" =~ ^v ]]; then
+-    echo "${version}"
+-  elif [[ "${version}" == "${DEFAULT}" ]]; then
+-    echo "ERROR"
+-    return 1
++  if [[ "$1" == "pi-hole" ]]; then
++    echo "{{corever}}"
+   else
+-    echo "Untagged"
++    echo "{{webver}}"
+   fi
+   return 0
+ }
+ 
+ getLocalHash() {
+-  # Local FTL hash does not exist on filesystem
+-  if [[ "$1" == "FTL" ]]; then
+-    echo "N/A"
+-    return 0
+-  fi
+-  
+-  # Get the short hash of the local repository
+-  local directory="${1}"
+-  local hash
+-
+-  cd "${directory}" 2> /dev/null || { echo "${DEFAULT}"; return 1; }
+-  hash=$(git rev-parse --short HEAD || echo "$DEFAULT")
+-  if [[ "${hash}" == "${DEFAULT}" ]]; then
+-    echo "ERROR"
+-    return 1
+-  else
+-    echo "${hash}"
+-  fi
++  echo "N/A"
+   return 0
+ }
+ 
+ getRemoteHash(){
+-  # Remote FTL hash is not applicable
+-  if [[ "$1" == "FTL" ]]; then
+-    echo "N/A"
+-    return 0
+-  fi
+-
+-  local daemon="${1}"
+-  local branch="${2}"
+-
+-  hash=$(git ls-remote --heads "https://github.com/pi-hole/${daemon}" | \
+-         awk -v bra="$branch" '$0~bra {print substr($0,0,8);exit}')
+-  if [[ -n "$hash" ]]; then
+-    echo "$hash"
+-  else
+-    echo "ERROR"
+-    return 1
+-  fi
++  echo "N/A"
+   return 0
+ }
+ 
