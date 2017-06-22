@@ -1,0 +1,21 @@
+pkgbase = ofono-phonepi
+	pkgdesc = Infrastructure for building mobile telephony (GSM/UMTS) applications. Fork for PhonePi
+	pkgver = 1.19
+	pkgrel = 1
+	url = https://01.org/ofono
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL2
+	makedepends = git
+	depends = bluez
+	depends = dbus
+	depends = modemmanager
+	depends = glib2
+	depends = udev
+	depends = mobile-broadband-provider-info
+	source = git://github.com/PhonePi/ofono-phonepi.git
+	sha256sums = SKIP
+
+pkgname = ofono-phonepi
+
