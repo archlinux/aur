@@ -1,6 +1,6 @@
 # Maintainer: jynn <uaggz@student.kit.edu>
 pkgname=dnsblock-git
-pkgver=r39.cc00809
+pkgver=r43.5e4b1da
 pkgrel=1
 pkgdesc="get a list of servers to block ads using your dns"
 arch=('any')
@@ -26,6 +26,8 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/dnsblock/files"
-	make DESTDIR="$pkgdir/" install
+	mkdir -p $pkgdir/etc/dnsblock
+	install -m 0644 blocklist $pkgdir/etc/dnsblock
+	install -m 0644 dnsmasq $pkgdir/etc/dnsblock
 }
 
