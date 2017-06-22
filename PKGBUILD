@@ -4,7 +4,7 @@
 _model="9270cdn"
 pkgname="brother-dcp-$_model"
 pkgver="1.1.1"
-pkgrel=3
+pkgrel=4
 _lprver="1.1.1-5"
 _wrpver="1.1.1-5"
 pkgdesc="LPR and CUPS driver for the Brother DCP-9270CDN"
@@ -30,9 +30,8 @@ package() {
     for i in *.tar.gz ; do
         tar xfz $i -C dcp${_model}
     done
-    cd dcp${_model}/opt/brother/Printers/dcp${_model}
+    cd dcp${_model}/usr/local/Brother/Printer/dcp${_model}
     perl -i -pe 's#/etc/init.d#/etc/rc.d#g' ./cupswrapper/cupswrapperdcp${_model}
-    perl -i -pe 's#printcap\.local#printcap#g' $srcdir/dcp${_model}/opt/brother/Printers/dcp${_model}/inf/setupPrintcapij
+    perl -i -pe 's#printcap\.local#printcap#g' $srcdir/dcp${_model}/usr/local/Brother/Printer/dcp${_model}/inf/setupPrintcapij
     cp -rf $srcdir/dcp${_model}/usr/ $pkgdir/
-    cp -rf $srcdir/dcp${_model}/opt/ $pkgdir/
 }

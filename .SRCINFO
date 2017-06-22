@@ -1,7 +1,7 @@
 pkgbase = brother-dcp-9270cdn
 	pkgdesc = LPR and CUPS driver for the Brother DCP-9270CDN
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-dcp-9270cdn.install
 	arch = i686
