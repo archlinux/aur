@@ -121,7 +121,7 @@ backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/xmpp.conf')
 url="http://www.asterisk.org"
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject' 'openssl-1.0')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject-openssl-1.0' 'openssl-1.0')
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'iksemel' 'dahdi')
 source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
