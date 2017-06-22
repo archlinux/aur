@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20170528
+pkgver=3.0.0v20170622
 _pkgver=3.0.0
-_snapshot_=20170528
-_snapver_=0239
+_snapshot_=20170622
+_snapver_=0939
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -15,12 +15,12 @@ arch=("i686" "x86_64")
 url="http://www.videolan.org/vlc/"
 license=("LGPL2.1" "GPL2")
 _undetected_depends=()
-depends=('libmatroska' 'a52dec' 'libaom-git' 'libfdk-aac' 'faad2' 'ffmpeg' 'libdca' 'daala-git' 'libdvbpsi'
+depends=('libmatroska' 'a52dec' 'sidplay2-libs' 'libfdk-aac' 'faad2' 'ffmpeg' 'libdca' 'daala-git' 'libdvbpsi'
          'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
          'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'sndio' 'wayland' 'wayland-protocols'
          'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'libglvnd'
-         'hicolor-icon-theme' 'qt5-x11extras' "${_undetected_depends[@]}")
+         'hicolor-icon-theme' 'qt5-x11extras' "${_detected_depends[@]}")
 makedepends=('aalib' 'flac' 'git'
              'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
              'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
@@ -93,11 +93,10 @@ build() {
         --enable-fdkaac \
         --enable-archive \
         --enable-bluray \
-        --enable-aom \
         --enable-daala 
                 LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
               RCC=/usr/bin/rcc-qt5    
-	make -i
+	./compile
 }
 
 package() {
@@ -120,7 +119,7 @@ package() {
   depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('5ec8f49ee231049a4efa08b37d5c41df7e60de354f76e6d01be4aa7fbfa26da2'
+sha256sums=('9c944effeb6ae4cce0bd734152fd094b3f7638dfbc7e309cc7ddcaae246827ff'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
