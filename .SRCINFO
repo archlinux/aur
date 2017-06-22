@@ -1,7 +1,7 @@
 pkgbase = pseucoco
 	pkgdesc = A Pseuco compiler written in Java
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://liebe.cs.uni-saarland.de/gitlab/pseuco/pseuco-java-compiler
 	install = pseucoco.install
 	arch = i686

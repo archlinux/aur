@@ -2,7 +2,7 @@
 _pkgname=pseucoco
 pkgname="${_pkgname}"
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Pseuco compiler written in Java"
 arch=("i686" "x86_64")
 url="https://liebe.cs.uni-saarland.de/gitlab/pseuco/pseuco-java-compiler"
