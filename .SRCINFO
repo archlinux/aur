@@ -1,0 +1,14 @@
+pkgbase = zijiang-pos58-driver
+	pkgdesc = Driver for the Zijiang POS58 thermal printer
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.zjiang.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	source = linux-driver.zip::http://www.szzijiang.cn/plus/download.php?open=2&id=338&uhash=85b6c99ff5ce47653a22cb5f
+	sha256sums = 8faed310839377a479b62c1285ab3d9601270428e0b362ecd2e7cced02c24d92
+
+pkgname = zijiang-pos58-driver
+
