@@ -1,7 +1,7 @@
 # Maintainer: Dave Blair <mail@dave-blair.de>
 # Contributor: Nick Bair <njbair at gmail dot com>
 pkgname=bubbleupnpserver
-pkgver=0.9.24
+pkgver=0.9.25
 pkgrel=1
 pkgdesc="Stream content to Android devices over the Internet – requires UPNP/DNLA backend e.g. Mediatomb"
 arch=('any')
