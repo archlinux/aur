@@ -26,7 +26,8 @@ else
     else
         if [[ -e $1 ]]
         then
-            pseucoco -i $1
+            cat $1 | sed '/^#!/d' > /tmp/pseucotmp
+            pseucoco -i /tmp/pseucotmp
         else
             echo "Error: File \"$1\" not found."
         fi
