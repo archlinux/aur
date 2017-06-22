@@ -1,6 +1,6 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
-	pkgver = 2.5.0.r0.g445fc126
+	pkgver = 2.5.1.r7.g256d113a
 	pkgrel = 1
 	url = https://osquery.io
 	arch = i686
@@ -47,14 +47,14 @@ pkgbase = osquery-git
 	conflicts = gmock
 	options = !strip
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery#commit=445fc126482a1fa2bfb206defe45dac84bce48b0
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=256d113a74448ecfb0af024c0fdd1d8f1c54fec5
 	source = osqueryd.conf.d
 	source = osqueryd.service
 	source = arch-linux.patch
 	sha256sums = SKIP
 	sha256sums = 3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1
 	sha256sums = 7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104
-	sha256sums = e0dd9964a1754b28f2be014ee617cd99be13b1a6a14e025b3b2104f70e424fd8
+	sha256sums = f993130c1612474a692ec2bf6f853d47b283c94a52e90d1036c8ac60ddd0d3df
 
 pkgname = osquery-git
 
