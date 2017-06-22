@@ -6,13 +6,12 @@
 pkgname="google-cloud-sdk"
 pkgver=160.0.0
 pkgrel=1
-pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus kubectl and Python/PHP appengine SDK components"
+pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('i686' 'x86_64')
 # replaces() only works for sysupgrade, not normal install/upgrade
-provides=('kubectl-bin')
-conflicts=('kubectl-bin' 'google-appengine-python-php'
+conflicts=('google-appengine-python-php'
            'google-appengine-python' 'google-appengine-php')
 replaces=('google-appengine-python-php'
           'google-appengine-python' 'google-appengine-php')
@@ -56,14 +55,13 @@ package() {
   mkdir "$pkgdir/opt"
   cp -r "$srcdir/$pkgname" "$pkgdir/opt"
 
-  # kubectl is not in the tarball, add it to the package bootstrap
   # app-engine-python is actually the PHP+Python SDK widgets combined
   # NOTE: due to how Google is using argparse we must bare word the components
-  msg2 "Running bootstrapping script and adding kubectl, app-engine-python"
+  msg2 "Running bootstrapping script and adding app-engine-python"
   python2 "$pkgdir/opt/$pkgname/bin/bootstrapping/install.py" \
     --usage-reporting false --path-update false --bash-completion false \
     --rc-path="$srcdir/fake.bashrc" \
-    --additional-components kubectl app-engine-python
+    --additional-components app-engine-python
 
   # https://issuetracker.google.com/issues/35900282
   msg2 "Fixing appengine bug #35900282 (RAND_egd)"
