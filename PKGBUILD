@@ -3,12 +3,12 @@
 pkgname=isoimagewriter
 pkgver=0.1
 pkgrel=1
-pkgdesc=""
+pkgdesc="A program to write hybrid ISO files onto a USB disk from Linux, Mac or Windows ready to boot."
 arch=("x86_64" "i686")
-url=""
-license=('')
-depends=('qt5-base')
-makedepends=('cmake' 'extra-cmake-modules')
+url="https://community.kde.org/ISOImageWriter"
+license=('GPL3')
+depends=('ki18n' 'kauth' 'qgpgme')
+makedepends=('cmake' 'extra-cmake-modules' 'python')
 source=("https://download.kde.org/unstable/isoimagewriter/0.1/isoimagewriter-0.1.tar.xz"{,.sig}
         fix_build.patch)
 sha512sums=('3a11772b916438dd1683dec8e9bf60aa88e2db8cbd06dc5c8044531108baf6a01fbb37176b4722024a0c9a466394988dcd800ecad9b6f642093e988b85e39a2f'
