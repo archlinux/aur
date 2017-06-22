@@ -1,6 +1,6 @@
 # Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 pkgname=casync-git
-pkgver=1.r1.g75c8212
+pkgver=1.r17.ge1877ff
 pkgrel=1
 pkgdesc="Content-Addressable Data Synchronization Tool"
 arch=(x86 x86_64)
@@ -29,10 +29,10 @@ build() {
   ninja -C build/
 }
 
-#check() {
-#  cd "$srcdir/$pkgname"
-#  ninja -C build/ test
-#}
+check() {
+  cd "$srcdir/$pkgname"
+  ninja -C build/ test
+}
 
 package() {
   cd "$srcdir/$pkgname"
