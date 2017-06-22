@@ -18,6 +18,7 @@ pkgbase = asterisk-cisco
 	depends = jansson
 	depends = libxslt
 	depends = pjproject
+	depends = openssl-1.0
 	optdepends = lua51
 	optdepends = libsrtp
 	optdepends = postgresql
