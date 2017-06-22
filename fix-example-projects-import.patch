@@ -1,0 +1,199 @@
+diff -u -w -N -r a/examples/cc2650lp/simple_broadcaster/ccs/app/.cproject b/examples/cc2650lp/simple_broadcaster/ccs/app/.cproject
+--- a/examples/cc2650lp/simple_broadcaster/ccs/app/.cproject	2016-10-26 18:19:42.000000000 -0400
++++ b/examples/cc2650lp/simple_broadcaster/ccs/app/.cproject	2017-06-22 22:38:41.612064759 -0400
+@@ -145,6 +145,13 @@
+               </tool>
+             </toolChain>
+           </folderInfo>
++          <fileInfo id="com.ti.ccstudio.buildDefinitions.TMS470.Default.16373365.1798262868.375553373" name="app_ble.cfg" rcbsApplicability="disable" resourcePath="TOOLS/app_ble.cfg" toolsToInvoke="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.806945027.1064045539">
++            <tool id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.806945027.1064045539" name="XDCtools" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.806945027">
++              <option id="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.JAVA_PROPERTIES.609143556" superClass="com.ti.rtsc.buildDefinitions.XDC_3.16.tool.JAVA_PROPERTIES" valueType="stringList">
++                <listOptionValue builtIn="false" value="xdc.cfg.SourceDir.outputDir=&quot;.&quot;"/>
++              </option>
++            </tool>
++          </fileInfo>
+           <sourceEntries>
+             <entry excluding="Startup/ccfg_app_ble_rcosc.c|Application/rcosc_calibration.c|cc26x0f128.cmd" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+           </sourceEntries>
+diff -u -w -N -r a/examples/cc2650lp/simple_broadcaster/ccs/app/.project b/examples/cc2650lp/simple_broadcaster/ccs/app/.project
+--- a/examples/cc2650lp/simple_broadcaster/ccs/app/.project	2017-06-21 23:39:16.000000000 -0400
++++ b/examples/cc2650lp/simple_broadcaster/ccs/app/.project	2017-06-22 22:38:41.612064759 -0400
+@@ -269,12 +259,12 @@
+     <link>
+       <name>TOOLS/ccs_compiler_defines.bcfg</name>
+       <type>1</type>
+-      <locationURI>PARENT-2-ORG_PROJ_DIR/ccs/config/ccs_compiler_defines.bcfg</locationURI>
++      <locationURI>STACK_PROJECT_ROOT/ccs_compiler_defines.bcfg</locationURI>
+     </link>
+     <link>
+       <name>TOOLS/ccs_linker_defines.cmd</name>
+       <type>1</type>
+-      <locationURI>PARENT-2-ORG_PROJ_DIR/ccs/config/ccs_linker_defines.cmd</locationURI>
++      <locationURI>STACK_PROJECT_ROOT/ccs_linker_defines.cmd</locationURI>
+     </link>
+     <link>
+       <name>Drivers/Display/Display.c</name>
+@@ -395,11 +395,11 @@
+   <variableList>
+     <variable>
+       <name>CC26XXWARE</name>
+-      <value>${PARENT-7-ORG_PROJ_DIR}/tirtos_cc13xx_cc26xx_2_20_01_08/products/cc26xxware_2_24_02_17393</value>
++      <value>${COM_TI_RTSC_TIRTOSCC13XX_CC26XX__CC26XXWARE}</value>
+     </variable>
+     <variable>
+       <name>ORG_PROJ_DIR</name>
+       <value>${PARENT-2-PROJECT_LOC}/iar/stack</value>
+     </variable>
+     <variable>
+       <name>ROM</name>
+@@ -418,8 +422,12 @@
+       <value>${PARENT-5-ORG_PROJ_DIR}/src</value>
+     </variable>
++    <variable>
++      <name>STACK_PROJECT_ROOT</name>
++      <value>${WORKSPACE_LOC}/simple_broadcaster_cc2650lp_stack</value>
++    </variable>
+     <variable>
+       <name>TI_RTOS_DRIVERS_BASE</name>
+-      <value>${PARENT-7-ORG_PROJ_DIR}/tirtos_cc13xx_cc26xx_2_20_01_08/products/tidrivers_cc13xx_cc26xx_2_20_01_10/packages</value>
++      <value>${COM_TI_RTSC_TIRTOSCC13XX_CC26XX__TIDRIVERS_CC13XX_CC26XX}/packages</value>
+     </variable>
+     <variable>
+       <name>TOOLS_BLE</name>
+diff -u -w -N -r a/examples/cc2650lp/simple_broadcaster/ccs/stack/ccs_compiler_defines.bcfg b/examples/cc2650lp/simple_broadcaster/ccs/stack/ccs_compiler_defines.bcfg
+--- a/examples/cc2650lp/simple_broadcaster/ccs/stack/ccs_compiler_defines.bcfg	1969-12-31 19:00:00.000000000 -0500
++++ b/examples/cc2650lp/simple_broadcaster/ccs/stack/ccs_compiler_defines.bcfg	2017-06-22 23:10:22.572074505 -0400
+@@ -0,0 +1 @@
++
+diff -u -w -N -r a/examples/cc2650lp/simple_broadcaster/ccs/stack/ccs_linker_defines.cmd b/examples/cc2650lp/simple_broadcaster/ccs/stack/ccs_linker_defines.cmd
+--- a/examples/cc2650lp/simple_broadcaster/ccs/stack/ccs_linker_defines.cmd	1969-12-31 19:00:00.000000000 -0500
++++ b/examples/cc2650lp/simple_broadcaster/ccs/stack/ccs_linker_defines.cmd	2017-06-22 23:10:18.352074483 -0400
+@@ -0,0 +1 @@
++
+diff -u -w -N -r a/examples/cc2650lp/simple_broadcaster/ccs/stack/.cproject b/examples/cc2650lp/simple_broadcaster/ccs/stack/.cproject
+--- a/examples/cc2650lp/simple_broadcaster/ccs/stack/.cproject	2017-06-21 23:39:16.000000000 -0400
++++ b/examples/cc2650lp/simple_broadcaster/ccs/stack/.cproject	2017-06-22 22:38:41.612064759 -0400
+@@ -12,7 +12,7 @@
+         </extensions>
+       </storageModule>
+       <storageModule moduleId="cdtBuildSystem" version="4.0.0">
+-        <configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.TMS470.Default.1375801446" name="FlashROM" parent="com.ti.ccstudio.buildDefinitions.TMS470.Default" postbuildStep="${CG_TOOL_HEX} -order MS --memwidth=8 --romwidth=8 --intel -o ${ProjName}.hex ${ProjName}.out;python ${TOOLS_BLE}/frontier/src/frontier.py ccs ${PROJECT_LOC}/${ConfigName}/${ProjName}_linkInfo.xml ${ORG_PROJ_DIR}/../../ccs/config/ccs_compiler_defines.bcfg ${ORG_PROJ_DIR}/../../ccs/config/ccs_linker_defines.cmd " prebuildStep="python &quot;${TOOLS_BLE}/lib_search/src/lib_search.py&quot; ${ORG_PROJ_DIR}/build_config.opt &quot;${TOOLS_BLE}/lib_search/params_split_cc2640.xml&quot; ${SRC_BLE_CORE}/../blelib &quot;${ORG_PROJ_DIR}/../../ccs/config/lib_linker.cmd&quot;">
++         <configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.TMS470.Default.1375801446" name="FlashROM" parent="com.ti.ccstudio.buildDefinitions.TMS470.Default" postbuildStep="${CG_TOOL_HEX} -order MS --memwidth=8 --romwidth=8 --intel -o ${ProjName}.hex ${ProjName}.out;python2 ${TOOLS_BLE}/frontier/src/frontier.py ccs ${PROJECT_LOC}/${ConfigName}/${ProjName}_linkInfo.xml ${PROJECT_LOC}/ccs_compiler_defines.bcfg ${PROJECT_LOC}/ccs_linker_defines.cmd;" prebuildStep="python2 &quot;${TOOLS_BLE}/lib_search/src/lib_search.py&quot; ${ORG_PROJ_DIR}/build_config.opt &quot;${TOOLS_BLE}/lib_search/params_split_cc2640.xml&quot; ${SRC_BLE_CORE}/../blelib ${PROJECT_LOC}/lib_linker.cmd">
+           <folderInfo id="com.ti.ccstudio.buildDefinitions.TMS470.Default.1375801446." name="/" resourcePath="">
+             <toolChain id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.exe.DebugToolchain.674818852" name="TI Build Tools" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.exe.DebugToolchain" targetTool="com.ti.ccstudio.buildDefinitions.TMS470_5.2.exe.linkerDebug.472296000">
+               <option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.306531906" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+@@ -22,8 +23,10 @@
+                 <listOptionValue builtIn="false" value="CCS_MBS_VERSION=5.5.0"/>
+                 <listOptionValue builtIn="false" value="LINKER_COMMAND_FILE="/>
+                 <listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=&quot;libc.a&quot;"/>
+-                <listOptionValue builtIn="false" value="LINK_ORDER=TOOLS/ccs_linker_defines.cmd;TOOLS/cc26xx_ble_stack.cmd;"/>
++                <listOptionValue builtIn="false" value="LINK_ORDER=TOOLS/ccs_linker_defines.cmd;TOOLS/cc26xx_stack.cmd;"/>
+                 <listOptionValue builtIn="false" value="OUTPUT_TYPE=executable"/>
++                <listOptionValue builtIn="false" value="PRODUCTS=com.ti.rtsc.TIRTOSCC13XX_CC26XX:2.20.1.08;com.ti.rtsc.XDCtools:3.32.0.06_core;"/>
++                <listOptionValue builtIn="false" value="PRODUCT_MACRO_IMPORTS={&quot;com.ti.rtsc.XDCtools&quot;:[&quot;${XDC_INCLUDE_PATH}&quot;,&quot;${XDC_LIBRARY_PATH}&quot;,&quot;${XDC_LIBRARIES}&quot;,&quot;${XDC_SYMBOLS}&quot;],&quot;com.ti.rtsc.TIRTOSCC13XX_CC26XX&quot;:[&quot;${COM_TI_RTSC_TIRTOSCC13XX_CC26XX_INCLUDE_PATH}&quot;,&quot;${COM_TI_RTSC_TIRTOSCC13XX_CC26XX_LIBRARY_PATH}&quot;,&quot;${COM_TI_RTSC_TIRTOSCC13XX_CC26XX_LIBRARIES}&quot;,&quot;${COM_TI_RTSC_TIRTOSCC13XX_CC26XX_SYMBOLS}&quot;]}"/>
+               </option>
+               <option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.745158847" name="Compiler version" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="5.2.6" valueType="string"/>
+               <targetPlatform id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.exe.targetPlatformDebug.1242608345" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.exe.targetPlatformDebug"/>
+@@ -36,6 +39,8 @@
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.OPT_LEVEL.2101033812" name="Optimization level (--opt_level, -O)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.OPT_LEVEL" value="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.OPT_LEVEL.4" valueType="enumerated"/>
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.OPT_FOR_SPEED.110729688" name="Speed vs. size trade-offs (--opt_for_speed, -mf)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.OPT_FOR_SPEED" value="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.OPT_FOR_SPEED.0" valueType="enumerated"/>
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.INCLUDE_PATH.870771499" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.INCLUDE_PATH" valueType="includePath">
++                  <listOptionValue builtIn="false" value="&quot;${XDC_INCLUDE_PATH}&quot;"/>
++                  <listOptionValue builtIn="false" value="&quot;${COM_TI_RTSC_TIRTOSCC13XX_CC26XX_INCLUDE_PATH}&quot;"/>
+                   <listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
+                   <listOptionValue builtIn="false" value="${SRC_EX}/examples/simple_broadcaster/cc26xx/stack"/>
+                   <listOptionValue builtIn="false" value="${SRC_EX}/common/cc26xx"/>
+@@ -62,6 +67,8 @@
+                 </option>
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.C_DIALECT.823895002" name="C Dialect" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.C_DIALECT" value="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.C_DIALECT.C99" valueType="enumerated"/>
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.DEFINE.976149874" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.compilerID.DEFINE" valueType="definedSymbols">
++                  <listOptionValue builtIn="false" value="${XDC_SYMBOLS}"/>
++                  <listOptionValue builtIn="false" value="${COM_TI_RTSC_TIRTOSCC13XX_CC26XX_SYMBOLS}"/>
+                   <listOptionValue builtIn="false" value="CC26XX"/>
+                   <listOptionValue builtIn="false" value="CC26XXWARE"/>
+                   <listOptionValue builtIn="false" value="DATA="/>
+@@ -105,12 +112,15 @@
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.linkerID.MAP_FILE.1316655166" name="Link information (map) listed into &lt;file&gt; (--map_file, -m)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.linkerID.MAP_FILE" value="&quot;${ProjName}.map&quot;" valueType="string"/>
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.linkerID.OUTPUT_FILE.600580680" name="Specify output file name (--output_file, -o)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.linkerID.LIBRARY.215409611" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.linkerID.LIBRARY" valueType="libs">
++                  <listOptionValue builtIn="false" value="${XDC_LIBRARIES}"/>
++                  <listOptionValue builtIn="false" value="${COM_TI_RTSC_TIRTOSCC13XX_CC26XX_LIBRARIES}"/>
+                   <listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
+-                  <listOptionValue builtIn="false" value="${ORG_PROJ_DIR}/../../ccs/config/lib_linker.cmd"/>
+                   <listOptionValue builtIn="false" value="&quot;${ROM}/ble_rom_releases/04242014/ble_rom_patch.symbols&quot;"/>
+                   <listOptionValue builtIn="false" value="${CC26XXWARE}/driverlib/bin/ccs/driverlib.lib"/>
+                 </option>
+                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_5.2.linkerID.SEARCH_PATH.548088130" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_5.2.linkerID.SEARCH_PATH" valueType="libPaths">
++                  <listOptionValue builtIn="false" value="&quot;${XDC_LIBRARY_PATH}&quot;"/>
++                  <listOptionValue builtIn="false" value="&quot;${COM_TI_RTSC_TIRTOSCC13XX_CC26XX_LIBRARY_PATH}&quot;"/>
+                   <listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/lib"/>
+                   <listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
+                 </option>
+@@ -138,7 +138,7 @@
+             </toolChain>
+           </folderInfo>
+           <sourceEntries>
+-            <entry excluding="cc26x0f128.cmd" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
++            <entry excluding="TOOLS/ccs_linker_defines.cmd|ccs_linker_defines.cmd|cc26x0f128.cmd" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+           </sourceEntries>
+         </configuration>
+       </storageModule>
+diff -u -w -N -r a/examples/cc2650lp/simple_broadcaster/ccs/stack/lib_linker.cmd b/examples/cc2650lp/simple_broadcaster/ccs/stack/lib_linker.cmd
+--- a/examples/cc2650lp/simple_broadcaster/ccs/stack/lib_linker.cmd	1969-12-31 19:00:00.000000000 -0500
++++ b/examples/cc2650lp/simple_broadcaster/ccs/stack/lib_linker.cmd	2017-06-22 23:10:02.342074401 -0400
+@@ -0,0 +1 @@
++
+diff -u -w -N -r a/examples/cc2650lp/simple_broadcaster/ccs/stack/.project b/examples/cc2650lp/simple_broadcaster/ccs/stack/.project
+--- a/examples/cc2650lp/simple_broadcaster/ccs/stack/.project	2017-06-21 23:39:16.000000000 -0400
++++ b/examples/cc2650lp/simple_broadcaster/ccs/stack/.project	2017-06-22 22:38:41.612064759 -0400
+@@ -143,7 +143,7 @@
+ 		<link>
+ 			<name>LIB/lib_linker.cmd</name>
+ 			<type>1</type>
+-			<locationURI>PARENT-2-ORG_PROJ_DIR/ccs/config/lib_linker.cmd</locationURI>
++			<locationURI>$%7BPROJECT_LOC%7D/lib_linker.cmd</locationURI>
+ 		</link>
+ 		<link>
+ 			<name>NPI/npi.c</name>
+@@ -288,12 +288,12 @@
+ 		<link>
+ 			<name>TOOLS/ccs_compiler_defines.bcfg</name>
+ 			<type>1</type>
+-			<locationURI>PARENT-2-ORG_PROJ_DIR/ccs/config/ccs_compiler_defines.bcfg</locationURI>
++			<locationURI>$%7BPROJECT_LOC%7D/ccs_compiler_defines.bcfg</locationURI>
+ 		</link>
+ 		<link>
+ 			<name>TOOLS/ccs_linker_defines.cmd</name>
+ 			<type>1</type>
+-			<locationURI>PARENT-2-ORG_PROJ_DIR/ccs/config/ccs_linker_defines.cmd</locationURI>
++			<locationURI>$%7BPROJECT_LOC%7D/ccs_linker_defines.cmd</locationURI>
+ 		</link>
+ 		<link>
+ 			<name>TOOLS/onboard.c</name>
+@@ -419,15 +419,15 @@
+ 	<variableList>
+ 		<variable>
+ 			<name>BIOS_BASE</name>
+-			<value>${PARENT-7-ORG_PROJ_DIR}/tirtos_cc13xx_cc26xx_2_20_01_08/products/bios_6_46_01_38/packages</value>
++			<value>${COM_TI_RTSC_TIRTOSCC13XX_CC26XX__BIOS}/packages</value>
+ 		</variable>
+ 		<variable>
+ 			<name>CC26XXWARE</name>
+-			<value>${PARENT-7-ORG_PROJ_DIR}/tirtos_cc13xx_cc26xx_2_20_01_08/products/cc26xxware_2_24_02_17393</value>
++			<value>${COM_TI_RTSC_TIRTOSCC13XX_CC26XX__CC26XXWARE}</value>
+ 		</variable>
+ 		<variable>
+ 			<name>ORG_PROJ_DIR</name>
+ 			<value>${PARENT-2-PROJECT_LOC}/iar/stack</value>
+ 		</variable>
+ 		<variable>
+ 			<name>ROM</name>
+@@ -447,7 +451,7 @@
+ 		</variable>
+ 		<variable>
+ 			<name>TI_RTOS_DRIVERS_BASE</name>
+-			<value>${PARENT-7-ORG_PROJ_DIR}/tirtos_cc13xx_cc26xx_2_20_01_08/products/tidrivers_cc13xx_cc26xx_2_20_01_10/packages</value>
++			<value>${COM_TI_RTSC_TIRTOSCC13XX_CC26XX__TIDRIVERS_CC13XX_CC26XX}/packages</value>
+ 		</variable>
+ 		<variable>
+ 			<name>TOOLS_BLE</name>
