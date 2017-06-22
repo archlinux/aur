@@ -22,9 +22,9 @@ PATCHES:
 EXTERNAL PIPE:
 	External pipe grabs links from st and forwards them to desired applications.
 	For Grabbing 'xurls' needed. Can be found in AUR.
-	For url launching 'open' or 'piper' needed.
-	'piper' can be found with this AUR , modify(if you want) and put it in your $PATH'
-	If you want 'open' modify st-extra-config-20170620.diff to reflect that ( edit line 30 replace piper with open)  
+	For url launching 'open' or 'piping' needed.
+	'piping' can be found with this AUR , modify(if you want) and put it in your $PATH'
+	If you want 'open' modify st-extra-config-20170620.diff to reflect that ( edit line 30 replace piping with open)  
 	For more details http://st.suckless.org/patches/externalpipe
 
 GIT VERSION:

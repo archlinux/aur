@@ -17,7 +17,7 @@ makedepends=('ncurses' 'libxext' 'git')
 optdepends=('dmenu: for unicode input'
     'xurls:    for externalpipe url grab feature'
     'open:     for url opening in applications (perl executable)'
-    'piper:    for url opening in applications(bash script)'
+    'piping:    for url opening in applications(bash script)'
 )
 install='st-patched.install'
 

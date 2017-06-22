@@ -27,7 +27,7 @@ index 0d83e00..0d9a6be 100644
  static char *utmp = NULL;
  static char stty_args[] = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 +static char *openurlcmd[] = { "/bin/sh", "-c",
-+    "xurls | dmenu -l 10 -w $1 | xargs -r piper",
++    "xurls | dmenu -l 10 -w $1 | xargs -r piping",
 +    "externalpipe", winid, NULL };
  
  /* identification sequence returned in DA and DECID */
