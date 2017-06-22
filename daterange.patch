@@ -1,0 +1,314 @@
+diff -ur doc/SquidAnalyzer.pod doc/SquidAnalyzer.pod
+--- doc/SquidAnalyzer.pod	2017-05-07 20:33:37.000000000 +0530
++++ doc/SquidAnalyzer.pod	2017-06-21 21:02:08.518655671 +0530
+@@ -168,6 +168,8 @@
+     -h | --help                : show this message and exit.
+     -j | --jobs number         : number of jobs to run at same time. Default
+                                  is 1, run as single process.
++    -o | --outputdir name      : set output directory. If it does not start
++				 with / then prefixes Output from configfile
+     -p | --preserve number     : used to set the statistic obsolescence in
+ 				 number of month. Older stats will be removed.
+     -P | --pid_dir directory   : set directory where pid file will be stored.
+@@ -184,6 +186,8 @@
+     --no-year-stat             : disable years statistics, reports will start
+                                  from month level only.
+     --no-week-stat             : disable weekly statistics.
++    --startdate YYYYMMDDHHMMSS : log lines before this date and time will not be parsed.
++    --stopdate  YYYYMMDDHHMMSS : log lines after this date and time will not be parsed.
+ 
+ Log files to parse can be given as command line arguments or as a comma separated
+ list of file for the LogFile configuration directive. By default SquidAnalyer will
+diff -ur etc/squidanalyzer.conf etc/squidanalyzer.conf
+--- etc/squidanalyzer.conf	2017-05-07 20:33:37.000000000 +0530
++++ etc/squidanalyzer.conf	2017-06-21 20:26:10.425598427 +0530
+@@ -140,6 +140,12 @@
+ # Feel free to define your own header but take care to not break current design.
+ #CustomHeader	<a href="http://my.isp.dom/"><img src="http://my.isp.dom/logo.png" title="My ISP link" border="0" width="100" height="110"></a> My ISP Company
+ 
++# This directive allow you to replace the HTML page title by your custom title
++# The default value is defined as follow:
++# SquidAnalyzer $VERSION Report
++# Feel free to define your own title but take care to not break current design.
++#CustomTitle	My ISP Company Report
++
+ # This directive allow exclusion of some unwanted methods in report statistics
+ # like HEAD, POST, CONNECT, etc. Can be a comma separated list of methods.
+ #ExcludedMethods	HEAD
+diff -ur README README
+--- README	2017-05-07 20:33:37.000000000 +0530
++++ README	2017-06-21 21:01:27.530890311 +0530
+@@ -164,6 +164,8 @@
+         -h | --help                : show this message and exit.
+         -j | --jobs number         : number of jobs to run at same time. Default
+                                      is 1, run as single process.
++        -o | --outputdir name      : set output directory. If it does not start
++                                     with / then prefixes Output from configfile
+         -p | --preserve number     : used to set the statistic obsolescence in
+                                      number of month. Older stats will be removed.
+         -P | --pid_dir directory   : set directory where pid file will be stored.
+@@ -180,6 +182,8 @@
+         --no-year-stat             : disable years statistics, reports will start
+                                      from month level only.
+         --no-week-stat             : disable weekly statistics.
++        --startdate YYYYMMDDHHMMSS : log lines before this date and time will not be parsed.
++        --stopdate  YYYYMMDDHHMMSS : log lines after this date and time will not be parsed.
+ 
+     Log files to parse can be given as command line arguments or as a comma
+     separated list of file for the LogFile configuration directive. By
+diff -ur squid-analyzer squid-analyzer
+--- squid-analyzer	2017-05-07 20:33:37.000000000 +0530
++++ squid-analyzer	2017-06-21 22:30:18.433559240 +0530
+@@ -7,6 +7,7 @@
+ use Getopt::Long qw(:config no_ignore_case bundling);
+ use Benchmark;
+ use POSIX ":sys_wait_h";
++use Time::Local;
+ 
+ $| = 1;
+ 
+@@ -30,6 +31,9 @@
+ my $t0 = Benchmark->new;
+ my $start_time = '';
+ my $stop_time = '';
++my $start_date = '';
++my $stop_date = '';
++my $outputdir = '';
+ 
+ # get the command line parameters
+ my $result = GetOptions (
+@@ -39,6 +43,7 @@
+ 	"h|help"               => \$help,
+ 	"j|jobs=i"             => \$queue_size,
+ 	"l|logfile"            => \$obsolete,
++	"o|outputdir=s"        => \$outputdir,
+ 	"p|preserve=i"         => \$preserve,
+ 	"P|pid_dir=s"          => \$pid_dir,
+ 	"r|rebuild!"           => \$rebuild,
+@@ -48,6 +53,8 @@
+ 	"v|version!"           => \$version,
+ 	"no-year-stat!"        => \$no_year_stat,
+ 	"no-week-stat!"        => \$no_week_stat,
++	"startdate=s"          => \$start_date,
++	"stopdate=s"           => \$stop_date,
+ ); 
+ 
+ # Show warning for obsolete options
+@@ -75,6 +82,14 @@
+ if ($stop_time && $stop_time !~ /^[0-2]\d:[0-5]\d$/) {
+ 	die("FATAL: bad format on stop time, must be HH:MM.\n");
+ }
++if ($start_date && $start_date !~ /^\d{4}[-\\\/]?[0-1]\d[-\\\/]?[0-3]\d\s*[0-2]\d[-:]?[0-5]\d[-:]?[0-5]\d$/) {
++	die("FATAL: bad format on start date, must be YYYYMMDDHHMMSS.\n");
++}
++$start_date =~ s/[-\\\/:\s]//g if ($start_date);
++if ($stop_date && $stop_date !~ /^\d{4}[-\\\/]?[0-1]\d[-\\\/]?[0-3]\d\s*[0-2]\d[-:]?[0-5]\d[-:]?[0-5]\d$/) {
++	die("FATAL: bad format on stop date, must be YYYYMMDDHHMMSS.\n");
++}
++$stop_date =~ s/[-\\\/:\s]//g if ($stop_date);
+ 
+ # Add multiple log files given from command line
+ foreach my $f (@ARGV) {
+@@ -110,6 +125,33 @@
+ $sa->{TimeStart} = $start_time;
+ $sa->{TimeStop} = $stop_time;
+ 
++# Set start and end time (for custom date range reports)
++if ($start_date && $start_date =~ /^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/) {
++	my $t = timelocal($6, $5, $4, $3, $2-1, $1);
++	$sa->{report_starttime} = POSIX::strftime("%a %b %e %H:%M:%S %Y", localtime($t));
++	--$t; # 1 second less
++	$sa->{history_time} = $sa->{sg_history_time} = $sa->{ug_history_time} = "$t.999";
++	print STDERR "DEBUG: report start time set to $sa->{report_starttime}\n" if ($debug);
++}
++if ($stop_date && $stop_date =~ /^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/) {
++	my $t = timelocal($6, $5, $4, $3, $2-1, $1);
++	$sa->{report_endtime} = POSIX::strftime("%a %b %e %H:%M:%S %Y", localtime($t));
++	$sa->{history_endtime} = "$t.999";
++	print STDERR "DEBUG: report end time set to $sa->{report_endtime}\n" if ($debug);
++}
++
++# Set output directory
++if ($outputdir) {
++	die "ERROR: Invalid output directory name specified\n" if ($outputdir !~ /^[-\w\/]+$/);
++	$outputdir = "$sa->{Output}/$outputdir" if ($outputdir !~ /^\//);
++	if (! -e $outputdir) {
++		mkdir ($outputdir) || die "ERROR: can't create directory $outputdir, $!\n";
++	}
++	$sa->{Output} = $outputdir;
++	print STDERR "DEBUG: Output directory set to $outputdir\n" if ($debug);
++}
++
++
+ # Die cleanly on signal
+ sub terminate
+ {
+@@ -146,6 +188,7 @@
+ $SIG{'INT'} = \&terminate;
+ $SIG{'TERM'} = \&terminate;
+ $SIG{'CHLD'} = 'DEFAULT';
++$SIG{'HUP'} = 'IGNORE'; # don't die on HUP
+ 
+ my $t1;
+ # Run parsing only if we have a log file or that we are not in rebuild mode
+@@ -166,7 +209,7 @@
+ # In rebuild mode history time is not use and we must store the
+ # specific rebuild date if any is provided at command line.
+ if ($rebuild) {
+-	$sa->{history_time} = '';
++	$sa->{history_time} = $sa->{sg_history_time} = $sa->{ug_history_time} = '';
+ 	$sa->{build_date} = $build_date;
+ }
+ 
+@@ -202,6 +245,8 @@
+     -h | --help                : show this message and exit.
+     -j | --jobs number         : number of jobs to run at same time. Default
+                                  is 1, run as single process.
++    -o | --outputdir name      : set output directory. If it does not start
++				 with / then prefixes Output from configfile
+     -p | --preserve number     : used to set the statistic obsolescence in
+ 				 number of month. Older stats will be removed.
+     -P | --pid_dir directory   : set directory where pid file will be stored.
+@@ -218,6 +263,8 @@
+     --no-year-stat             : disable years statistics, reports will start
+                                  from month level only.
+     --no-week-stat             : disable weekly statistics.
++    --startdate YYYYMMDDHHMMSS : log lines before this date and time will not be parsed.
++    --stopdate  YYYYMMDDHHMMSS : log lines after this date and time will not be parsed.
+ 
+ Log files to parse can be given as command line arguments or as a comma separated
+ list of file for the LogFile configuration directive. By default SquidAnalyer will
+diff -ur SquidAnalyzer.pm SquidAnalyzer.pm
+--- SquidAnalyzer.pm	2017-05-07 20:33:37.000000000 +0530
++++ SquidAnalyzer.pm	2017-06-21 20:08:02.098171444 +0530
+@@ -100,6 +100,8 @@
+ 	'Denied_help' => 'Objects with denied access',
+ 	'Cost_help' => '1 Mega byte =',
+ 	'Generation' => 'Report generated on',
++	'Generation_from' => 'From %s ',
++	'Generation_to' => 'Upto %s',
+ 	'Main_cache_title' => 'Cache Statistics',
+ 	'Cache_title' => 'Cache Statistics on',
+ 	'Stat_label' => 'Stat',
+@@ -405,7 +407,7 @@
+ my $cidr_regex = qr/^[a-fA-F0-9\.\:]+\/\d+$/;
+ 
+ # Native log format squid %ts.%03tu %6tr %>a %Ss/%03>Hs %<st %rm %ru %un %Sh/%<A %mt
+-my $native_format_regex1 = qr/^(\d+\.\d{3})\s+(\d+)\s+([^\s]+)\s+([^\s]+)\s+(\d+)\s+([^\s]+)\s+(.*)/;
++my $native_format_regex1 = qr/^(\d{10}\.\d{3})\s+(\d+)\s+([^\s]+)\s+([^\s]+)\s+(\d+)\s+([^\s]+)\s+(.*)/;
+ my $native_format_regex2 = qr/^([^\s]+?)\s+([^\s]+)\s+([^\s]+\/[^\s]+)\s+([^\s]+)\s*/;
+ #logformat common     %>a %[ui %[un [%tl] "%rm %ru HTTP/%rv" %>Hs %<st %Ss:%Sh
+ #logformat combined   %>a %[ui %[un [%tl] "%rm %ru HTTP/%rv" %>Hs %<st "%{Referer}>h" "%{User-Agent}>h" %Ss:%Sh
+@@ -1322,6 +1324,9 @@
+ 		}
+ 		
+ 		if ($time) {
++			# end parsing if time range exceeded
++			last if ($self->{history_endtime} && ($time > $self->{history_endtime}));
++
+ 			# Do not parse some unwanted method
+ 			my $qm_method = quotemeta($method) || '';
+ 			next if (($#{$self->{ExcludedMethods}} >= 0) && grep(/^$qm_method$/, @{$self->{ExcludedMethods}}));
+@@ -1341,21 +1346,21 @@
+ 
+ 			# Register the last parsing time and last offset position in logfile
+ 			if (!$self->{is_squidguard_log} && !$self->{is_ufdbguard_log}) {
+-				$self->{end_time} = $time if (!$time || ($self->{end_time} < $time));
++				$self->{end_time} = $time if ($self->{end_time} < $time);
+ 				# Register the first parsing time
+ 				if (!$self->{begin_time} || ($self->{begin_time} > $time)) {
+ 					$self->{begin_time} = $time;
+ 					print STDERR "SQUID LOG SET START TIME: ", strftime("%a %b %e %H:%M:%S %Y", CORE::localtime($time)), "\n" if (!$self->{QuietMode});
+ 				}
+ 			} elsif (!$self->{is_squidguard_log}) {
+-				$self->{ug_end_time} = $time if (!$time || ($self->{ug_end_time} < $time));
++				$self->{ug_end_time} = $time if ($self->{ug_end_time} < $time);
+ 				# Register the first parsing time
+ 				if (!$self->{ug_begin_time} || ($self->{ug_begin_time} > $time)) {
+ 					$self->{ug_begin_time} = $time;
+ 					print STDERR "UFDBGUARD LOG SET START TIME: ", strftime("%a %b %e %H:%M:%S %Y", CORE::localtime($time)), "\n" if (!$self->{QuietMode});
+ 				}
+ 			} else {
+-				$self->{sg_end_time} = $time if (!$time || ($self->{sg_end_time} < $time));
++				$self->{sg_end_time} = $time if ($self->{sg_end_time} < $time);
+ 				# Register the first parsing time
+ 				if (!$self->{sg_begin_time} || ($self->{sg_begin_time} > $time)) {
+ 					$self->{sg_begin_time} = $time;
+@@ -1591,6 +1596,7 @@
+ 	}
+ 
+ 	$self->{CustomHeader} = $options{CustomHeader} || qq{<a href="$self->{WebUrl}"><img src="$self->{WebUrl}images/logo-squidanalyzer.png" title="SquidAnalyzer $VERSION" border="0"></a> SquidAnalyzer};
++	$self->{CustomTitle} = $options{CustomTitle} || qq{SquidAnalyzer $VERSION Report};
+ 	$self->{ExcludedMethods} = ();
+ 	if ($options{ExcludedMethods}) {
+ 		push(@{$self->{ExcludedMethods}}, split(/\s*,\s*/, $options{ExcludedMethods}));
+@@ -1691,6 +1697,9 @@
+ 	$self->{week_parsed} = ();
+ 	# Used to stored command line parameters from squid-analyzer
+ 	$self->{history_time} = 0;
++	$self->{history_endtime} = 0;
++	$self->{sg_history_time} = 0;
++	$self->{ug_history_time} = 0;
+ 	$self->{preserve} = 0;
+ 	$self->{sg_end_time} = 0;
+ 	$self->{sg_end_offset} = 0;
+@@ -1948,7 +1957,7 @@
+ 
+ 	# Extract the domainname part of the URL
+ 	$url =~ s/:\d+.*// if (!$self->{UseUrlPort});
+-	$url =~ m/^[^\/]+\/\/([^\/]+)/;
++	$url =~ m/^(?:[^\/]+\/\/|)([^\/:]+)/;
+ 	my $dest = $1 || $url;
+ 
+ 	# Replace username by his dnsname if there's no username
+@@ -3001,6 +3010,21 @@
+ 	$sortpos ||= 2;
+ 	my $sorttable = '';
+ 	$sorttable = "var myTH = document.getElementById('contenu').getElementsByTagName('th')[$sortpos]; sorttable.innerSortFunction.apply(myTH, []);";
++	my $reportrange = '';
++	if ($self->{report_starttime} || $self->{report_endtime}) {
++		$reportrange = '<br>';
++		if ($self->{report_starttime}) {
++			my $t1 = $Translate{'Generation_from'};
++			$t1 =~ s/\%s/$self->{report_starttime}/;
++			$reportrange .= $t1;
++		}
++		if ($self->{report_endtime}) {
++			my $t1 = $Translate{'Generation_to'};
++			$t1 =~ s/\%s/$self->{report_endtime}/;
++			$reportrange .= $t1;
++		}
++		$reportrange .= '.';
++	}
+ 	print $$fileout qq{
+ <html>
+ <head>
+@@ -3011,7 +3035,7 @@
+ <meta HTTP-EQUIV="Generator" CONTENT="SquidAnalyzer $VERSION" />
+ <meta HTTP-EQUIV="Date" CONTENT="$now" />
+ <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=$Translate{'CharSet'}" />
+-<title>SquidAnalyzer $VERSION Report</title>
++<title>$self->{CustomTitle}</title>
+ <link rel="stylesheet" type="text/css" href="$self->{WebUrl}squidanalyzer.css" media="screen" />
+ <!-- javascript to sort table -->
+ <script type="text/javascript" src="$self->{WebUrl}sorttable.js"></script>
+@@ -3028,7 +3052,7 @@
+ 		$self->{CustomHeader}
+ 		</h1>
+ 		<p class="sous-titre">
+-		$Translate{'Generation'} $now.
++		$Translate{'Generation'} $now.$reportrange
+ 		</p>
+ 		</div>
+ 		$calendar
+@@ -3099,8 +3123,8 @@
+ 	my $p_month = 0;
+ 	my $p_year = 0;
+ 	my $p_week = 0;
+-	if ($self->{history_time} || $self->{sg_history_time} || $self->{begin_time}) {
+-		my @ltime = CORE::localtime($self->{history_time} || $self->{sg_history_time} || $self->{begin_time});
++	if ($self->{history_time} || $self->{sg_history_time} || $self->{ug_history_time} || $self->{begin_time}) {
++		my @ltime = CORE::localtime($self->{history_time} || $self->{sg_history_time} || $self->{ug_history_time} || $self->{begin_time});
+ 		if ($self->{is_squidguard_log}) {
+ 			@ltime = CORE::localtime($self->{sg_history_time} || $self->{begin_time});
+ 		} elsif ($self->{is_ufdbguard_log}) {

@@ -2,7 +2,7 @@
 
 pkgname='squidanalyzer'
 pkgver='6.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Squid proxy native log analyser and reports generator"
 arch=('any')
 url='http://squidanalyzer.darold.net/'
@@ -11,9 +11,11 @@ options=('!emptydirs' 'purge')
 depends=('cron' 'perl')
 source=("http://downloads.sourceforge.net/project/squid-report/squid-report/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.cron"
+	daterange.patch
        )
 md5sums=('d70f5c747d0666a92410fdca734c494b'
-         'e8c2657f7a2eb544d6c246f5eca02e8b')
+         'e8c2657f7a2eb544d6c246f5eca02e8b'
+         '6849c57c38774b2c115f5421c7a3fd4f')
 backup=(
     'etc/squidanalyzer/excluded'
     'etc/squidanalyzer/included'
@@ -21,6 +23,11 @@ backup=(
     'etc/squidanalyzer/squidanalyzer.conf'
     'etc/squidanalyzer/user-aliases'
     )
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p0 -i ../daterange.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
