@@ -11,10 +11,10 @@ optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('systemd')
 license=('custom')
 install=openvpn.install
-validpgpkeys=('6D04F8F1B0173111F499795E29584D9F40864578'  # Samuli Seppänen <samuli@openvpn.net>
-              '7ACD56B74144925C6214329757DB9DAB613B8DA1'  # David Sommerseth (OpenVPN Technologies, Inc) <davids@openvpn.net>
-              'F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
-source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc})
+validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
+#source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc})
+source=("http://www.eurephia.net/openvpn/openvpn-${pkgver}.tar.xz"
+        "openvpn-${pkgver}.tar.xz")
 sha256sums=('7aa86167a5b8923e54e8795b814ed77288c793671f59fd830d9ab76d4b480571'
             'SKIP')
 
