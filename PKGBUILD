@@ -1,6 +1,6 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thebeat
-pkgver=0.4
+pkgver=0.5
 pkgrel=0
 pkgdesc="Audio Player based on Phonon"
 arch=("x86_64")
