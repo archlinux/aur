@@ -1,0 +1,16 @@
+pkgbase = kwin-scripts-tiling-git
+	pkgdesc = Tiling script for kwin
+	pkgver = r372.676b74d
+	pkgrel = 1
+	url = https://github.com/faho/kwin-tiling.git
+	arch = any
+	license = GPL
+	makedepends = plasma-framework
+	depends = kwin
+	provides = kwin-scripts-tiling
+	conflicts = kwin-scripts-tiling
+	source = kwin-scripts-tiling::git+https://github.com/faho/kwin-tiling.git
+	md5sums = SKIP
+
+pkgname = kwin-scripts-tiling-git
+
