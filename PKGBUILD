@@ -30,7 +30,7 @@ makedepends=('glibc<2.25' 'lib32-glibc<2.25' 'lib32-gcc-libs')
 
 _key="1498567832_371f115bafa0544a3f0554f3ada95299"
 _installer=ti_cgt_tms470_${pkgver}_linux_installer_x86.bin
-source=("https://downloads.ti.com/downloads/codegen/esd/cgt_registered_sw/TMS470/5.2.9/${_installer}?__gda__=${_key}")
+source=("${_installer}::https://downloads.ti.com/downloads/codegen/esd/cgt_registered_sw/TMS470/5.2.9/${_installer}?__gda__=${_key}")
 
 md5sums=('ca3b062fc108aa9ef89e6c2e12a0f051')
 
