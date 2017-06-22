@@ -2,7 +2,7 @@
 
 _pkgname=isoimagewriter
 pkgname=$_pkgname-git
-pkgver=v0.1.r0.gdd48057
+pkgver=0.1.r0.gdd48057
 pkgrel=1
 pkgdesc="A program to write hybrid ISO files onto a USB disk from Linux, Mac or Windows ready to boot."
 arch=("x86_64" "i686")
@@ -17,7 +17,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
