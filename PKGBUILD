@@ -1,4 +1,5 @@
-# Maintainer: Troy Engel <troyengel+arch@gmail.com>
+# Maintainer: Mansour Behabadi <mansour@oxplot.com>
+# Contributor: Troy Engel <troyengel+arch@gmail.com>
 # Contributor: Geoff Hill <geoff@geoffhill.org>
 # Contributor: Sebastien Bariteau <numkem@numkem.org>
 # Contributor: Justin Dray <justin@dray.be>
