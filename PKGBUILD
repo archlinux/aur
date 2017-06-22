@@ -53,7 +53,7 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname='freeswitch'
-pkgver='1.6.15'
+pkgver='1.6.17'
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
@@ -68,10 +68,11 @@ depends=('curl'
          'speex'
          'libjpeg-turbo'
          'postgresql-libs'
-     'libshout'
-     'lua'
-     'opus'
-     'freetype2')
+         'libshout'
+         'lua'
+         'openssl-1.0'
+         'opus'
+         'freetype2')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
 makedepends=('git'
              'libjpeg'
@@ -82,11 +83,11 @@ makedepends=('git'
              'unixodbc'
              'sed'
              'make'
-         'libyuv-git'
-         'yasm'
-         'mpg123'
-         'lame'
-         'libsndfile')
+             'libyuv-git'
+             'yasm'
+             'mpg123'
+             'lame'
+             'libsndfile')
 # per https://aur.archlinux.org/packages/freeswitch-fixed/ 2014-08-13 14:02 comment, enable this when freetdm is packaged.
 # freetdm will require libsangoma, wanpipe, libsng_isdn, libpri. see http://wiki.freeswitch.org/wiki/FreeTDM#Dependencies ; links below
 # http://wiki.sangoma.com/wanpipe-linux-drivers
@@ -106,12 +107,14 @@ source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git#tag=v${pkgver}"
          'run_log.freeswitch'
          'conf_log.freeswitch'
          'freeswitch.service'
-    'freeswitch.conf.d.sig'
-    'README.freeswitch.sig'
-    'run.freeswitch.sig'
-    'run_log.freeswitch.sig'
-    'conf_log.freeswitch.sig'
-    'freeswitch.service.sig')
+	 'freeswitch-arch.patch'  # required for 1.6.17
+         'freeswitch.conf.d.sig'
+         'README.freeswitch.sig'
+         'run.freeswitch.sig'
+         'run_log.freeswitch.sig'
+         'conf_log.freeswitch.sig'
+         'freeswitch.service.sig'
+	 'freeswitch-arch.patch.sig')  # required for 1.6.17
 changelog='ChangeLog'
 _pkgname="freeswitch"
 sha512sums=('SKIP'
@@ -121,6 +124,8 @@ sha512sums=('SKIP'
             'e0ad57847905d11540567512fb224587a96db086ecaefd949964bd7e5bf29e448497fb3d6df5d88dbedd69beb5ae4618bb0e8462cbbb9fad84947c6932fc0b46'
             'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
             '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
+	    '4d4f5237297b298010b8a0b264435cc2c04742ca313272e7558f164b19aef97afaace5cf005eeffcfa6be096daedace67931cc209bccdabd2f3d01a42b643036'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -164,7 +169,10 @@ build() {
   sleep 5
 
   # CONFIGURE
-  ./configure \
+  # We need to override some things for the ./configure for 1.6.17
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+  CFLAGS+=" -I/usr/include/openssl-1.0"
+  LDFLAGS+=" -I/usr/lib/openssl-1.0" ./configure \
     --prefix=/var/lib/freeswitch \
     --with-python=/usr/bin/python2 \
     --bindir=/usr/bin \
@@ -184,6 +192,8 @@ build() {
     --with-scriptdir=/usr/share/freeswitch/scripts \
     --with-certsdir=/etc/freeswitch/certs \
     --with-rundir=/run/freeswitch
+
+    patch -Np1 < ../freeswitch-arch.patch  # needed for 1.6.17
 
   # COMPILE
   make

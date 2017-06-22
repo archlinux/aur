@@ -1,0 +1,37 @@
+# Thanks, mal! [https://aur.archlinux.org/account/mal]
+diff -ura freeswitch-orig/src/switch_ivr_play_say.c freeswitch/src/switch_ivr_play_say.c
+--- freeswitch-orig/src/switch_ivr_play_say.c	2017-06-16 02:59:16.014037406 -0400
++++ freeswitch/src/switch_ivr_play_say.c	2017-06-16 03:05:49.060484516 -0400
+@@ -1665,7 +1665,7 @@
+ 				}
+ 			}
+ 
+-			buflen = FILE_STARTSAMPLES * sizeof(*abuf) * fh->cur_channels ? fh->cur_channels : fh->channels;
++			buflen = FILE_STARTSAMPLES * sizeof(*abuf) * (fh->cur_channels ? fh->cur_channels : fh->channels);
+ 
+ 			if (buflen > write_frame.buflen) {
+ 				abuf = realloc(abuf, buflen);
+diff -ura freeswitch-orig/libs/esl/fs_cli.c freeswitch/libs/esl/fs_cli.c
+--- freeswitch-orig/libs/esl/fs_cli.c	2017-06-21 12:52:54.490320046 -0400
++++ freeswitch/libs/esl/fs_cli.c	2017-06-21 12:49:53.456699573 -0400
+@@ -76,7 +76,7 @@
+ static int warn_stop = 0;
+ static int connected = 0;
+ static int allow_ctl_c = 0;
+-static char bare_prompt_str[512] = "";
++static char bare_prompt_str[514] = "";
+ static int bare_prompt_str_len = 0;
+ static char prompt_str[512] = "";
+ static char prompt_color[12] = {ESL_SEQ_DEFAULT_COLOR};
+diff -ura freeswitch-orig/libs/sofia-sip/libsofia-sip-ua/msg/msg_parser.c freeswitch/libs/sofia-sip/libsofia-sip-ua/msg/msg_parser.c
+--- freeswitch-orig/libs/sofia-sip/libsofia-sip-ua/msg/msg_parser.c	2017-06-21 15:55:33.568293668 -0400
++++ freeswitch/libs/sofia-sip/libsofia-sip-ua/msg/msg_parser.c	2017-06-21 15:56:42.057160786 -0400
+@@ -2017,7 +2017,7 @@
+     for (last = h; last->sh_succ; last = last->sh_succ) {
+       /* Ensure that chain is connected */
+       assert(last->sh_next == last->sh_succ);
+-      assert(last->sh_succ->sh_prev = &last->sh_succ);
++      assert(last->sh_succ->sh_prev == &last->sh_succ);
+     }
+     prev = &last->sh_succ;
+   }
