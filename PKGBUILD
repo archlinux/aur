@@ -29,11 +29,11 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgbase"
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr/bin
   make
 }
 
 package() {
   cd "$srcdir/$_pkgbase/build"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
