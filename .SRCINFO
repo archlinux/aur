@@ -1,7 +1,7 @@
 pkgbase = libphidget
 	pkgdesc = user-space access library for the Phidget devices
 	pkgver = 2.1.8
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL
 	makedepends = libusb
