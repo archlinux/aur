@@ -16,12 +16,10 @@ sha512sums_x86_64=('cfaf36d2b0c9ede5766abb98f09318a75de4befaff71d725b54bf594d053
 _dirname=aspectc++
 
 package() {
-	#mkdir -p $pkgdir/usr/bin
 	install -dm755 $pkgdir/usr/bin
 	install -m755 "$srcdir/$_dirname/ac++" "$pkgdir/usr/bin"
 	install -m755 "$srcdir/$_dirname/ag++" "$pkgdir/usr/bin"
 
-	#mkdir -p $pkgdir/usr/share/doc/aspectc++
 	install -dm755 $pkgdir/usr/share/doc/aspectc++
 	cp -r "$srcdir/$_dirname/examples" "$pkgdir/usr/share/doc/aspectc++"
 	install -dm755 "$pkgdir/usr/share/doc/aspectc++"
