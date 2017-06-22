@@ -1,7 +1,7 @@
 # Maintainer: Andrei Alexeyev <akari@alienslab.net>
 
 pkgname=envlinkfs-git
-pkgver=0.1.r1.5386f33
+pkgver=0.1.r2.b731de6
 pkgrel=1
 pkgdesc="FUSE filesystem that exposes environment variables as symbolic links"
 arch=('any')
