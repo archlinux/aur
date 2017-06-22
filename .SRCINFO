@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS and CBZ viewer
-	pkgver = 20170421.a59b4e9f
+	pkgver = 20170622.3b4bd73e
 	pkgrel = 1
 	url = http://mupdf.com/
 	arch = i686
@@ -14,13 +14,16 @@ pkgbase = mupdf-git
 	depends = libjpeg-turbo
 	depends = libxext
 	depends = openjpeg2
+	depends = lcms2
 	provides = mupdf
 	conflicts = mupdf
 	source = git://git.ghostscript.com/mupdf.git
 	source = git://git.ghostscript.com/mujs.git
+	source = cmm_ctx_gone.patch
 	source = desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 0989b34c68da7fe115e57f3050e45c4b3fd1e4ba13c9b9b4cbb80c4d073ffc1b
 	sha256sums = 3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd
 
 pkgname = mupdf-git

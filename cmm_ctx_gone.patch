@@ -1,0 +1,126 @@
+diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
+--- old/source/fitz/color-lcms.c	2017-06-22 17:13:06.561681566 +0200
++++ new/source/fitz/color-lcms.c	2017-06-22 18:11:29.183797391 +0200
+@@ -66,7 +66,7 @@
+ static int
+ fz_lcms_num_devcomps(cmsContext cmm_ctx, fz_iccprofile *profile)
+ {
+-	return cmsChannelsOf(cmm_ctx, cmsGetColorSpace(cmm_ctx, profile->cmm_handle));
++	return cmsChannelsOf(cmsGetColorSpace(profile->cmm_handle));
+ }
+ 
+ static void
+@@ -124,8 +124,8 @@
+ 	DEBUG_LCMS_MEM(("@@@@@@@ Transform Pixmap Start:: mupdf ctx = %p lcms ctx = %p link = %p \n", (void*)ctx, (void*)cmm_ctx, (void*)link->cmm_handle));
+ 
+ 	/* check the channels. */
+-	cmm_num_src = T_CHANNELS(cmsGetTransformInputFormat(cmm_ctx, hTransform));
+-	cmm_num_des = T_CHANNELS(cmsGetTransformOutputFormat(cmm_ctx, hTransform));
++	cmm_num_src = T_CHANNELS(cmsGetTransformInputFormat(hTransform));
++	cmm_num_des = T_CHANNELS(cmsGetTransformOutputFormat(hTransform));
+ 	if (cmm_num_src != sn - sa || cmm_num_des != dn - da || sa != da)
+ 		fz_throw(ctx, FZ_ERROR_GENERIC, "Mismatching color setup in cmm pixmap transformation: src: %d vs %d+%d, dst: %d vs %d+%d", cmm_num_src, sn-sa, sa, cmm_num_des, dn-da, da);
+ 
+@@ -139,7 +139,7 @@
+ 		for (; h > 0; h--)
+ 		{
+ 			fz_lcms_unmultiply_row(ctx, sn, sw, buffer, inputpos);
+-			cmsDoTransform(cmm_ctx, hTransform, inputpos, outputpos, sw);
++			cmsDoTransform(hTransform, inputpos, outputpos, sw);
+ 			fz_lcms_premultiply_row(ctx, dn, dw, outputpos);
+ 			inputpos += ss;
+ 			outputpos += ds;
+@@ -150,7 +150,7 @@
+ 	{
+ 		for (; h > 0; h--)
+ 		{
+-			cmsDoTransform(cmm_ctx, hTransform, inputpos, outputpos, sw);
++			cmsDoTransform(hTransform, inputpos, outputpos, sw);
+ 			inputpos += ss;
+ 			outputpos += ds;
+ 		}
+@@ -165,7 +165,7 @@
+ 	cmsContext cmm_ctx = (cmsContext)instance;
+ 	cmsHTRANSFORM hTransform = (cmsHTRANSFORM) link->cmm_handle;
+ 
+-	cmsDoTransform(cmm_ctx, hTransform, src, dst, 1);
++	cmsDoTransform(hTransform, src, dst, 1);
+ }
+ 
+ void
+@@ -183,19 +183,19 @@
+ 	DEBUG_LCMS_MEM(("@@@@@@@ Create Link Start:: mupdf ctx = %p lcms ctx = %p src = %p des = %p \n", (void*)ctx, (void*)cmm_ctx, (void*)src->cmm_handle, (void*)dst->cmm_handle));
+ 
+ 	/* src */
+-	src_cs = cmsGetColorSpace(cmm_ctx, src->cmm_handle);
+-	lcms_src_cs = _cmsLCMScolorSpace(cmm_ctx, src_cs);
++	src_cs = cmsGetColorSpace(src->cmm_handle);
++	lcms_src_cs = _cmsLCMScolorSpace(src_cs);
+ 	if (lcms_src_cs < 0)
+ 		lcms_src_cs = 0;
+-	src_num_chan = cmsChannelsOf(cmm_ctx, src_cs);
++	src_num_chan = cmsChannelsOf(src_cs);
+ 	src_data_type = (COLORSPACE_SH(lcms_src_cs) | CHANNELS_SH(src_num_chan) | DOSWAP_SH(src->bgr) | BYTES_SH(num_bytes) | EXTRA_SH(alpha));
+ 
+ 	/* dst */
+-	des_cs = cmsGetColorSpace(cmm_ctx, dst->cmm_handle);
+-	lcms_des_cs = _cmsLCMScolorSpace(cmm_ctx, des_cs);
++	des_cs = cmsGetColorSpace(dst->cmm_handle);
++	lcms_des_cs = _cmsLCMScolorSpace(des_cs);
+ 	if (lcms_des_cs < 0)
+ 		lcms_des_cs = 0;
+-	des_num_chan = cmsChannelsOf(cmm_ctx, des_cs);
++	des_num_chan = cmsChannelsOf(des_cs);
+ 	des_data_type = (COLORSPACE_SH(lcms_des_cs) | CHANNELS_SH(des_num_chan) | DOSWAP_SH(dst->bgr) | BYTES_SH(num_bytes) | EXTRA_SH(alpha));
+ 
+ 	/* flags */
+@@ -241,17 +241,17 @@
+ 			cmsUInt32Number prf_data_type;
+ 			cmsHPROFILE hProfiles[3];
+ 
+-			prf_cs = cmsGetColorSpace(cmm_ctx, prf->cmm_handle);
+-			lcms_prf_cs = _cmsLCMScolorSpace(cmm_ctx, prf_cs);
++			prf_cs = cmsGetColorSpace(prf->cmm_handle);
++			lcms_prf_cs = _cmsLCMScolorSpace(prf_cs);
+ 			if (lcms_prf_cs < 0)
+ 				lcms_prf_cs = 0;
+-			prf_num_chan = cmsChannelsOf(cmm_ctx, prf_cs);
++			prf_num_chan = cmsChannelsOf(prf_cs);
+ 			prf_data_type = (COLORSPACE_SH(lcms_prf_cs) | CHANNELS_SH(prf_num_chan) | BYTES_SH(num_bytes));
+ 			src_to_prf_link = cmsCreateTransformTHR(cmm_ctx, src->cmm_handle, src_data_type, prf->cmm_handle, prf_data_type, rend->ri, flag);
+ 			if (!src_to_prf_link)
+ 				fz_throw(ctx, FZ_ERROR_GENERIC, "cmsCreateTransform failed");
+-			src_to_prf_profile = cmsTransform2DeviceLink(cmm_ctx, src_to_prf_link, 3.4, flag);
+-			cmsDeleteTransform(cmm_ctx, src_to_prf_link);
++			src_to_prf_profile = cmsTransform2DeviceLink(src_to_prf_link, 3.4, flag);
++			cmsDeleteTransform(src_to_prf_link);
+ 			if (!src_to_prf_profile)
+ 				fz_throw(ctx, FZ_ERROR_GENERIC, "cmsTransform2DeviceLink failed");
+ 
+@@ -259,7 +259,7 @@
+ 			hProfiles[1] = prf->cmm_handle;
+ 			hProfiles[2] = dst->cmm_handle;
+ 			link->cmm_handle = cmsCreateMultiprofileTransformTHR(cmm_ctx, hProfiles, 3, src_data_type, des_data_type, INTENT_RELATIVE_COLORIMETRIC, flag);
+-			cmsCloseProfile(cmm_ctx, src_to_prf_profile);
++			cmsCloseProfile(src_to_prf_profile);
+ 			if (!link->cmm_handle)
+ 				fz_throw(ctx, FZ_ERROR_GENERIC, "cmsCreateMultiprofileTransform failed");
+ 		}
+@@ -274,7 +274,7 @@
+ 	cmsContext cmm_ctx = (cmsContext)instance;
+ 	DEBUG_LCMS_MEM(("Free Link:: link = %p \n", (void*)link->cmm_handle));
+ 	if (link->cmm_handle != NULL)
+-		cmsDeleteTransform(cmm_ctx, link->cmm_handle);
++		cmsDeleteTransform(link->cmm_handle);
+ 	link->cmm_handle = NULL;
+ }
+ 
+@@ -328,7 +328,7 @@
+ 	cmsContext cmm_ctx = (cmsContext)instance;
+ 	DEBUG_LCMS_MEM(("Free Profile:: profile = %p \n", (void*) profile->cmm_handle));
+ 	if (profile->cmm_handle != NULL)
+-		cmsCloseProfile(cmm_ctx, profile->cmm_handle);
++		cmsCloseProfile(profile->cmm_handle);
+ 	profile->cmm_handle = NULL;
+ }
+ 
