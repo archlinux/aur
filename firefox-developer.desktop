@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Firefox Developer
+GenericName=Web Browser
+Icon=/opt/firefox-developer/browser/icons/mozicon128.png
+Type=Application
+Categories=Network;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;
+Exec=firefox-developer --class=firefox-developer %u
+Terminal=false
+X-MultipleArgs=false
+StartupNotify=true
