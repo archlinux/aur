@@ -1,0 +1,25 @@
+pkgbase = winetricks-zh-git
+	pkgdesc = Wine Setup Wizard Winetricks Chinese Version
+	pkgver = r125.3012b9a
+	pkgrel = 1
+	url = https://github.com/hillwoodroc/winetricks-zh
+	install = winetricks-zh.install
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = wine
+	depends = curl
+	depends = cabextract
+	depends = unrar
+	depends = unzip
+	depends = p7zip
+	optdepends = zenity: For the GTK3 GUI.
+	optdepends = kdebase-kdialog: For the KDE GUI (less capable).
+	optdepends = sudo: For automatically mounting ISO images.
+	optdepends = xdg-utils: For opening manual download pages.
+	optdepends = perl: For installing Steam.
+	source = winetricks-zh-git::git+https://github.com/hillwoodroc/winetricks-zh.git
+	md5sums = SKIP
+
+pkgname = winetricks-zh-git
+

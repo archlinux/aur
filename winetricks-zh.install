@@ -1,0 +1,7 @@
+post_install() {
+    ln -s /opt/winetricks-zh/winetricks-zh /usr/bin/winetricks-zh
+}
+
+post_remove() {
+    rm /usr/bin/winetricks-zh
+}
