@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-ftl
 _pkgname=FTL
-pkgver=2.9.2
-pkgrel=3
+pkgver=2.9.3
+pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
