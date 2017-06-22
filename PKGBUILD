@@ -27,8 +27,7 @@ build() {
     cmake ../plasma-applet-thermal-monitor-${pkgver} \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -DKDE_INSTALL_LIBDIR=lib \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+        -DKDE_INSTALL_LIBDIR=lib
 }
 
 package() {
