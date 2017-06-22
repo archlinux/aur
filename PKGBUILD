@@ -45,26 +45,31 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=2.0.38.r0.g85153c7
+pkgver=2.1.20.r15.g4d2bebba
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
 arch=('i686' 'x86_64')
 url='https://www.urbackup.org/'
 license=('GPL')
 depends=('crypto++' 'fuse')
-makedepends=('python3' 'autoconf' 'git')
+makedepends=('python3' 'autoconf' 'git' 'unzip')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 _verwatch=("${url}/download.html" '//hndl\.urbackup\.org/Server/[0-9\.]\+/urbackup-server-\([0-9\.]\+\)\.tar\.gz' 'l')
-_scripts=('btrfs_create_filesystem_snapshot'
+_scripts=(
+  'btrfs_create_filesystem_snapshot'
   'btrfs_remove_filesystem_snapshot'
   'dattobd_create_filesystem_snapshot'
   'dattobd_remove_filesystem_snapshot'
   'lvm_create_filesystem_snapshot'
-  'lvm_remove_filesystem_snapshot')
-source=('git+https://github.com/uroni/urbackup_backend.git' 'git+https://github.com/uroni/urbackup_frontend_wx.git' "${_scripts[@]}"  'defaults_client')
-source+=('https://www.cryptopp.com/cryptopp563.zip')
+  'lvm_remove_filesystem_snapshot'
+)
+_branch='2.1.x' # git branch does not work correctly which breaks
+source=("git+https://github.com/uroni/urbackup_backend.git#branch=${_branch}" "git+https://github.com/uroni/urbackup_frontend_wx.git#branch=${_branch}" "${_scripts[@]}"  'defaults_client')
+_cryptopp='cryptopp565.zip'
+source+=("https://www.cryptopp.com/${_cryptopp}")
+noextract=("${_cryptopp}")
 sha256sums=('SKIP'
             'SKIP'
             '18b5eceb73086b86d904f80e9270df121d06d7c683f93c5449a82e7deb38e0ee'
@@ -74,7 +79,7 @@ sha256sums=('SKIP'
             'd5b462879e7c80139688c9d20ce1b1fe553386df9459def5e1d093d3a13d71fb'
             '0ffb3bbbf5faf939564681d24786767a4706132f2f081b7a870ecc718a8e9413'
             'd77fa6ad67141ae5cb4c3c6953783ce54aaaa3c1f2fe5bb28cd20948ddda12c4'
-            '9390670a14170dd0f48a6b6b06f74269ef4b056d4718a1a329f6f6069dc957c9')
+            'a75ef486fe3128008bbb201efee3dcdcffbe791120952910883b26337ec32c34')
 _srcdir='urbackup_backend'
 if [ "${_opt_BuildClient}" -ne 0 ]; then
   unset install
@@ -86,19 +91,22 @@ else
 fi
 
 _fn_getversion() {
-  #set > z
   export _urverdone='x'
   declare -gA _urversion
-  local _branch="$(git branch)"
-  _branch="${_branch##\* }"
+  #local _branch="$(git branch)"
+  #_branch="${_branch##\* }"
 
   local _line
   local _build
   while read -r _line; do
+    local _tab=$'\t'
     _line="${_line//\"/}"
     _line="${_line//,/}"
     _line="${_line//\{/}"
     _line="${_line//\}/}"
+    _line="${_line//${_tab}/}"
+    _line="${_line## *}"
+    printf '%q\n' "${_line}" 1>&2
     if [ ! -z "${_line}" ]; then
       case "${_line}" in
       [a-z]*':') _build="${_line%%:}";;
@@ -108,15 +116,27 @@ _fn_getversion() {
         _urversion["${_build}.${_key}"]="${_val}"
         ;;
       esac
-      echo "${_line}" 1>&2
     fi
   done < <(curl -s "http://buildserver.urbackup.org/urbackup_build_version_${_branch}.json")
   _urversion['server.full_rev']="${_urversion[server.full]} Rev. $(git rev-parse HEAD)"
+  echo "server.full_rev=${_urversion['server.full_rev']}"
+  local _clar
+  # _urversion['client.full']='03.000.02' # for testing zero trim
+  IFS='.' _clar=(${_urversion['client.full']}) # split
+  local _clarkey
+  for _clarkey in "${!_clar[@]}"; do
+    _clar["${_clarkey}"]=$((_clar[${_clarkey}]+0)) # trim leading zeros
+  done
+  _urversion['client.ver_major']="${_clar[0]}"
+  _urversion['client.ver_minor']=$(( ${_clar[1]}*1000 + ${_clar[2]}))
+  local _clarx="${_clar[@]}"
+  _urversion['client.num_short']="${_clarx// /.}" # join
 }
 
 pkgver() {
   set -u
   cd "${_srcdir}"
+  cd 'client' || :
   local _gitver="$(git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')"
   # The BUILDID is not supplied so is always zero
   local _filever="$(sed -n -e 's:^.*\[\([0-9\.]\+\)BUILDID.*$:\1:p' 'configure.ac_server')"
@@ -136,76 +156,110 @@ prepare() {
   cd "${_srcdir}"
   git reset --hard
 
-  _fn_getversion
   # Some patches
-  # sed -i -e 's:$PREFIX/sbin/:$PREFIX/bin/:g' start_urbackup_{client,server}
-  sed -i -e 's:/sbin/btrfs:/usr/bin/btrfs:g' 'snapshot_helper/main.cpp'
-  sed -i -e 's:/usr/sbin/:/usr/bin/:g' 'urbackupserver/doc/admin_guide.tex' 'urbackup-server.service'
-  sed -i -e 's,L"C:\\\\urbackup",\n#ifdef _WIN32\n&\n#else\nL"/urbackup"\n#endif\n,g' 'urbackupserver/server_settings.cpp' # Irksome bug!
+  local _sbinfiles
+  IFS=$'\n' _sbinfiles=($(grep --exclude-dir='.git' -lrF '/sbin/')) # IFS only word splits inside the array during an assignment
+  sed -e 's:/usr/sbin/:/usr/bin/:g' \
+      -e 's:/sbin/:/usr/bin/:g' \
+    -i "${_sbinfiles[@]}"
 
-if ! :; then
-  # Quick patches for gcc 6. These need to be fixed by upstream.
-  sed -i -e '# Always use static until you are forced to remove it!' \
-         -e 's:^const char array:static &:g' \
-         -e '# Something conflcts with gcc 6.0' \
-         -e 's:array\[:html_array\[:g' 'stringtools.cpp'
-  sed -i -e 's:^#define _exit exit:// &:g' 'cryptoplugin/dllmain.cpp'
-fi
-  # Simple assert errors, probably fixed soon
-  sed -i -e 's:^#include "AESGCMDecryption.h".*$:#include <assert.h>\r\n&:g' 'cryptoplugin/AESGCMDecryption.cpp'
-
-  # fix the build scripts
-  #sed -i -e 's:response.readall():response.read():g' 'build/replace_versions.py' # python was always a bad choice for these text replacements. As of Python 3.5 this script doesn't work at all and read() is not a proper replacement for readall().
-  #sed is the right tool for this job.
-
-  sed -i -e 's:\$version_short\$'":${_urversion[server.short]} Arch Linux:g" 'urbackupserver/www/index.htm'
-  sed -i -e 's:\$version_short\$'":${_urversion[server.short]}:g" 'urbackupserver_installer_win/urbackup_server.nsi' 'urbackupserver_installer_win/generate_msi.bat'
-  sed -i -e 's:\$version_full\$'":${_urversion[server.full_rev]}:g" 'urbackupserver/www/index.htm'
-  sed -i -e 's:\$version_full_numeric\$'":${_urversion[server.full_numeric]}:g" 'urbackupserver_installer_win/urbackup_server.wxs'
-  # replace_in_file("urbackupserver_installer_win/urbackup_server.wxi", "$product_id$", str(uuid.uuid1())) Don't need this!
+  sed -e 's,"C:\\\\urbackup",\n#ifdef _WIN32\n&\n#else\n"/urbackup"\n#endif\n,g' -i 'urbackupserver/server_settings.cpp' # Irksome bug!
 
   cp -p 'build_server.sh' 'build_server.Arch.sh'
   cp -p 'build_client.sh' 'build_client.Arch.sh'
-  sed -i -e '# Block make so makepkg -e so works properly' \
-         -e 's:^make:exit 0\n#&:g' \
-         -e "# We'll do git reset so we can make a few changes afterwards" \
-         -e 's:^git reset:#&:g' \
-         -e "# Version updates are now done here in PKGBUILD" \
-         -e 's:^python3 :#&:g' \
-         -e "# Instruct wget to resume our complete download" \
-         -e '#s:^\s\+wget :&--continue :g' \
-         -e 's:^\s\+wget :#&:g' \
-    'build_server.Arch.sh' 'build_client.Arch.sh'
 
-  # Dymanic downloads in configure are bad!
-  #ln -s "${srcdir}/cryptopp563.zip" 'cryptoplugin/cryptopp563.zip'
-  cp -p "${srcdir}/cryptopp563.zip" 'cryptoplugin/cryptopp563.zip'
+  sed -e '# Block make so makepkg -e so works properly' \
+      -e 's:^make:# &:g' \
+      -e "# We'll do git reset so we can make a few changes afterwards" \
+      -e 's:^git reset:#&:g' \
+      -e "# Version updates are now done here in PKGBUILD" \
+      -e '/replace_versions.py/ s:^:#&:g' \
+    -i 'build_server.Arch.sh' 'build_client.Arch.sh'
+
+  _fn_getversion
+  expand -i -t8 'build/replace_versions.py' | \
+  sed -e 's:\r$::g' > 'build/replace_versions.Arch.py'
+
+  sed -e 's:\$version_short\$'":${_urversion[server.short]} Arch Linux:g" -i 'urbackupserver/www/index.htm'
+
+  local _clientfiles
+  IFS=$'\n' _clientfiles=($(grep --exclude-dir='.git' --include '*client*' -lrF '$version_short$'))
+  sed -e 's:\$version_short\$'":${_urversion[client.short]}:g" -i "${_clientfiles[@]}"  # must be done first
+
+  local _verfiles
+  IFS=$'\n' _verfiles=($(grep --exclude-dir='.git' -lrF $'$version_short$\n$version_full_numeric$\n$version_full$\n$version_num_short$\n$version_maj$\n$version_min$'))
+  sed -e 's:\$version_short\$'":${_urversion[server.short]}:g" \
+      -e 's:\$version_full_numeric\$'":${_urversion[server.full_numeric]}:g" \
+      -e 's:\$version_full\$'":${_urversion[server.full_rev]}:g" \
+      -e 's:\$version_num_short\$'":${_urversion[client.num_short]}:g" \
+      -e 's:\$version_maj\$'":${_urversion[client.ver_major]}:g" \
+      -e 's:\$version_min\$'":${_urversion[client.ver_minor]}:g" \
+    -i "${_verfiles[@]}"
+  test -z "$(grep --exclude-dir='.git' -lrF '$version_')" || echo "${}" # more $versions were added
+  # replace_in_file("client/urbackup.wxi", "$product_id$", str(uuid.uuid1())) # Don't need this!
+
+  # Correct some CRLF
+  local _crlfs
+  IFS=$'\n' _crlfs=($(grep --exclude-dir='.git' -lrF $'\r'))
+  sed -e 's:\r$::g' -i "${_crlfs[@]}"
+
+  # Doing the hashes is easier in sed too. We catch a few that the py misses.
+  pushd 'urbackupserver/www' > /dev/null
+  local _hashfile _newhashfile _hashmd5
+  local _sedcmds=()
+  for _hashfile in css/* js/*; do
+    if grep -qF "${_hashfile}" 'help.htm' 'index.htm' 'license.htm'; then
+      _hashmd5="$(md5sum < "${_hashfile}" | cut -d' ' -f1)"
+      _newhashfile="${_hashfile/\./.chash-${_hashmd5}.}"
+      _sedcmds+=('-e' "s:${_hashfile}:${_newhashfile}:g")
+      cp -p "${_hashfile}" "${_newhashfile}"
+    fi
+  done
+  sed "${_sedcmds[@]}" -i 'help.htm' 'index.htm' 'license.htm'
+  popd > /dev/null
+
+  # Change wget to symlink
+  sed -e 's:^\s*wget '":ln -s '../../${_cryptopp}' # &:g" -i 'download_cryptopp.sh'
+
+  local CRYPTOPP_NAME=''
+  source <(grep '^CRYPTOPP_NAME=' 'download_cryptopp.sh')
+  test ! -z "${CRYPTOPP_NAME}" || echo "${}"
+  if ! [ "${CRYPTOPP_NAME}" = "${_cryptopp}" ]; then
+    set +u
+    msg "Update PKGBUILD with _cryptopp='${CRYPTOPP_NAME}'"
+    false
+  fi
 
   if [ "${_opt_BuildClient}" -ne 0 ]; then
     ln -sf '../urbackup_frontend_wx' 'client'
 
-    sed -i -e 's:\$version_short\$'":${_urversion[client.short]}:g" 'client_version.h' 'client/urbackup.nsi' 'client/urbackup_update.nsi' 'client/urbackup_notray.nsi' 'client/build_msi.bat'
-    sed -i -e 's:\$version_full_numeric\$'":${_urversion[client.full_numeric]}:g" 'client/urbackup.wxs'
-    # replace_in_file("client/urbackup.wxi", "$product_id$", str(uuid.uuid1())) # Don't need this!
+    # replace_in_file("urbackupserver_installer_win/urbackup_server.wxi", "$product_id$", str(uuid.uuid1())) Don't need this!
+    pushd 'client' > /dev/null
+    IFS=$'\n' _verfiles=($(grep --exclude-dir='.git' -lrF $'$version_short$\n$version_full_numeric$\n$version_full$\n$version_num_short$\n$version_maj$\n$version_min$'))
+    sed -e 's:\$version_short\$'":${_urversion[client.short]}:g" \
+        -e 's:\$version_full_numeric\$'":${_urversion[client.full_numeric]}:g" \
+      -i "${_verfiles[@]}"
+    test -z "$(grep --exclude-dir='.git' -lrF '$version_')" || echo "${}" # more $versions were added
+    popd > /dev/null
 
     if [ "${_opt_Headless}" -eq 0 ]; then
-      sed -i -e '# Fix configure line' \
-             -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --localstatedir="/var":g' \
-        'build_client.Arch.sh'
+      sed -e '# Fix configure line' \
+          -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --localstatedir="/var":g' \
+        -i 'build_client.Arch.sh'
     else
-      sed -i -e '# Fix configure line' \
-             -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --localstatedir="/var" --enable-headless:g' \
-        'build_client.Arch.sh'
+      sed -e '# Fix configure line' \
+          -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --localstatedir="/var" --enable-headless:g' \
+        -i 'build_client.Arch.sh'
     fi
-    sh 'build_client.Arch.sh'
+    sh -u -e 'build_client.Arch.sh'
   else
-    rm -f 'client' # to be pedantic
-    sed -i -e '# Fix configure line' \
-           -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --sysconfdir="/etc" --localstatedir="/var" --enable-packaging --with-mountvhd:g' \
-      'build_server.Arch.sh'
-    sh 'build_server.Arch.sh'
+    rm -f 'client' # in case we switch from client to server
+    sed -e '# Fix configure line' \
+        -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --sysconfdir="/etc" --localstatedir="/var" --enable-packaging --with-mountvhd:g' \
+      -i 'build_server.Arch.sh'
+    sh -u -e 'build_server.Arch.sh'
   fi
-  rm -f 'build_server.Arch.sh' 'build_client.Arch.sh'
+  rm 'build_server.Arch.sh' 'build_client.Arch.sh'
   set +u
 }
 
@@ -213,8 +267,8 @@ build() {
   set -u
   cd "${_srcdir}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j "${_nproc}"
-  make -s -j "${_nproc}" dist
+  nice make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}" dist
   set +u
 }
 
@@ -222,7 +276,7 @@ package() {
   set -u
   cd "${_srcdir}"
 
-  make -s DESTDIR="${pkgdir}" install
+  make -s -j1 DESTDIR="${pkgdir}" install
 
   if [ "${_opt_BuildClient}" -ne 0 ]; then
     # urbackup2 client uses a different service name. Changing the server name is not cool.
@@ -240,7 +294,7 @@ package() {
 
     local _serverkey
     for _serverkey in 'server_ident.key' 'server_ident.priv' 'server_ident.pub'; do
-      install -Dpm644 "${srcdir}/../${_serverkey}" "${pkgdir}/var/urbackup/${_serverkey}" || :
+      install -Dpm644 "${startdir}/${_serverkey}" "${pkgdir}/var/urbackup/${_serverkey}" || :
     done
 
     # special btrfs support
