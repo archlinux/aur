@@ -1,0 +1,13 @@
+pkgbase = libluasandbox
+	pkgdesc = Generic Lua sandbox for dynamic data analysis
+	pkgver = 1.2.5
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = cmake
+	source = https://github.com/mozilla-services/lua_sandbox/archive/v1.2.5.tar.gz
+	sha256sums = 9a63b37f1b9b6d40afa45f92e3777f3baf770d195cb41fad04a0e020d398ebed
+
+pkgname = libluasandbox
+
