@@ -1,0 +1,21 @@
+pkgbase = brother-dcp-9270cdn
+	pkgdesc = LPR and CUPS driver for the Brother DCP-9270CDN
+	pkgver = 1.1.1
+	pkgrel = 3
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-dcp-9270cdn.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf005575/dcp9270cdnlpr-1.1.1-5.i386.deb
+	source = http://download.brother.com/welcome/dlf005577/dcp9270cdncupswrapper-1.1.1-5.i386.deb
+	sha256sums = c385aafc8a7fcb89afbdc8b1af50284b30059beec0128d096a6099399a011f64
+	sha256sums = af538e452fdc2a91210d1a49469e08f65741192ca0d00ff8c004244b3630f149
+
+pkgname = brother-dcp-9270cdn
+
