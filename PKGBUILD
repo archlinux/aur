@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -278,7 +278,7 @@ package() {
   ln -s $_pkgname-gravity.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-gravity.timer"
   ln -s $_pkgname-logtruncate.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-logtruncate.timer"
 
-  install -dm777 "$pkgdir"/etc/pihole
+  install -dm755 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/etc/pihole/configs
   install -Dm644 $_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default
   install -Dm644 $_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/pihole/logrotate
