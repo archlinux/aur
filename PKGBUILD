@@ -17,6 +17,57 @@ depends=('glu' 'gtk2' 'gstreamer' 'ocl-icd' 'libpng12' 'log4cxx'
          'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
 options=('!strip')
 conflicts=('davinci-resolve')
+
+while [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]
+do
+  if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
+    ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
+  else
+# Not a good idea, but let's leave it here
+#    _dialog="$(command -v zenity kdialog Xdialog | awk -F/ '{print $NF}' | xargs)"
+#    case $_dialog in
+#    zenity)
+#        pkgzip=$(zenity --info --text="Please download a new beta $pkgver here: https://www.blackmagicdesign.com/products/davinciresolve and select this package archive."
+#                 zenity  --file-selection --title="Please select the package archive DaVinci_Resolve_${pkgver}_Linux.zip" --filename=$HOME/)
+#        if [ "$?" -eq 1 ]; then
+#          zenity --info --text="Installation canceled"
+#          exit 0
+#        else
+#          ln -s ${pkgzip} ${pkgdir}
+#          break
+#        fi
+#        ;;
+#    kdialog)
+#        pkgzip=$(kdialog --msgbox "Please download a new beta $pkgver here: https://www.blackmagicdesign.com/products/davinciresolve and select this package archive."
+#                 kdialog --getopenfilename $HOME/ '*.zip'
+#        if [ "$?" -eq 1 ]; then
+#          kdialog --msgbox "Installation canceled"
+#          exit 0
+#        else
+#          ln -s ${pkgzip} ${pkgdir}
+#          break
+#        fi
+#        ;;
+#    xdialog)
+#        pkgzip=$(Xdialog --msgbox "Please download a new beta $pkgver here: https://www.blackmagicdesign.com/products/davinciresolve and select this package archive."
+#                 Xdialog --title "Please select the package archive DaVinci_Resolve_${pkgver}_Linux.zip" --fselect $HOME 28 48 2>&1)
+#        if [ "$?" -eq 1 ]; then
+#          Xdialog --msgbox "Installation canceled"
+#          exit 0
+#        else
+#          ln -s ${pkgzip} ${pkgdir}
+#          break
+#        fi
+#        ;;
+#    *)
+        msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in to ${pkgdir}"
+        sleep 3
+        break
+#        ;;
+#    esac
+  fi
+done
+
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
 sha256sums=('1756c12c94af08a2b7a9d502aa63ab429ed756d47cdd0f1834f92add2f945191')
 
