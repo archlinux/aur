@@ -3,7 +3,7 @@
 pkgname=waterfox-kde-bin
 pkgver=54.0.0.1
 pkgrel=3
-pkgdesc="KDE Plasma Edition of the free, open and private browser, integrates better with KDE"
+pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 url="https://github.com/hawkeye116477/waterfox/tree/plasma"
 license=('MPL' 'GPL')
