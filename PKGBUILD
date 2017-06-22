@@ -1,9 +1,9 @@
-# Maintainer:  max.bra <max dot bra at alice dot it>
+# Maintainer:  max.bra <max dot bra dot gtalk at gmail dot com>
 
 pkgname=pi-hole-ftl
 _pkgname=FTL
-pkgver=2.9.3
-pkgrel=1
+pkgver=2.9.1
+pkgrel=2
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -24,6 +24,10 @@ md5sums=('SKIP'
 
 prepare() {
   _ssc="/tmp/sedcontrol"
+
+  # dirty version
+  sed -i "s|--always --dirty||w $_ssc" "$srcdir"/$_pkgname/Makefile
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: dirty version 1" && return 1 ; fi
 
   # setting up logs paths
   sed -i "s|/var/log/pihole-FTL.log|/run/log/pihole-ftl/pihole-FTL.log|w $_ssc" "$srcdir"/$_pkgname/structs.c
