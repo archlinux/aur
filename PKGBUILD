@@ -1,8 +1,10 @@
 # Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 
+_with_extra=y
+
 pkgname=arc-kde-git
-pkgver=20170306
-pkgrel=1
+pkgver=20170622
+pkgrel=2
 pkgdesc='Arc customization mainly for Plasma 5 (git version)'
 arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/arc-kde'
@@ -21,11 +23,26 @@ optdepends=(
   "konversation: For konversation theme"
   "yakuake: For Yakuake theme"
 )
+
+if [ -n "${_with_extra}" ]; then
+    optdepends+=(
+        "telegram-desktop"
+        "eclipse-common"
+        "firefox"
+    )
+    
+    prepare() {
+        if [ -n "${_with_extra}" ]; then
+            sed -i 's|^install:|install:\n\tmkdir -p $(DESTDIR)/usr/share/arc\n\tcp --no-preserve=mode,ownership -r extra $(DESTDIR)/usr/share/arc|' "${srcdir}/${pkgname}/Makefile"
+        fi
+    }
+fi
+
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 install=${pkgname}.install
 
-pkgver(){
+pkgver() {
     cd ${pkgname}
     git log -1 --format="%cd" --date=short | tr -d '-'
 }
