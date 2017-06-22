@@ -2,7 +2,7 @@
 
 pkgname=switchboard-plug-network
 pkgver=0.1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Network plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-networking'
@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'nm-connection-editor'
          'polkit'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('bzr' 'cmake' 'switchbooard' 'vala')
+makedepends=('bzr' 'cmake' 'switchboard' 'vala')
 source=("https://launchpad.net/switchboard-plug-networking/loki/${pkgver}/+download/switchboard-plug-networking-${pkgver}.tar.xz")
 sha256sums=('9436cc3ae1aa014b48bc0aba01096b929f21ec8bd7a1374ea9cd4c1144c3af15')
 
