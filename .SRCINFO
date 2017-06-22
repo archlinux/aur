@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve-beta
 	pkgdesc = Professional A/V post-production software suite
 	pkgver = 14.0b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blackmagicdesign.com/
 	arch = x86_64
 	license = Commercial

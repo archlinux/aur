@@ -8,7 +8,7 @@
 pkgname=davinci-resolve-beta
 _pkgname=resolve
 pkgver=14.0b4
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -18,12 +18,12 @@ depends=('glu' 'gtk2' 'gstreamer' 'ocl-icd' 'libpng12' 'log4cxx'
 options=('!strip')
 conflicts=('davinci-resolve')
 
-while [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]
-do
-  if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
-    ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
-  else
 # Not a good idea, but let's leave it here
+#while [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]
+#do
+#  if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
+#    ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
+#  else
 #    _dialog="$(command -v zenity kdialog Xdialog | awk -F/ '{print $NF}' | xargs)"
 #    case $_dialog in
 #    zenity)
@@ -60,13 +60,22 @@ do
 #        fi
 #        ;;
 #    *)
-        msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in to ${pkgdir}"
-        sleep 3
-        break
+#        msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in to ${pkgdir}"
+#        sleep 3
+#        break
 #        ;;
 #    esac
+#  fi
+#done
+
+if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
+  if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
+    ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
+  else
+    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in to ${pkgdir}"
+    sleep 3
   fi
-done
+fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
 sha256sums=('1756c12c94af08a2b7a9d502aa63ab429ed756d47cdd0f1834f92add2f945191')
