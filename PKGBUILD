@@ -11,7 +11,7 @@ depends=('java-runtime>=7' 'ffmpeg')
 makedepends=('unzip')
 install=${pkgname}.install
 source=("http://www.bubblesoftapps.com/bubbleupnpserver/BubbleUPnPServer-distrib.zip")
-md5sums=('83e4df8da91f577a138143ceecd6d120')
+sha256sums=('5053f208f9c61090f512a61069de8255f973a3d2abb55293f75fe9d831fe1b60')
 
 build() {
   cd ${srcdir}
