@@ -29,4 +29,3 @@ netfilter
 noroot
 
 include /etc/firejail/whitelist-common.inc
-include /etc/firejail/disable-devel.inc
