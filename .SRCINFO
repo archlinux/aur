@@ -1,7 +1,7 @@
 pkgbase = rabbitvcs-nemo
 	pkgdesc = Nemo front-end for rabbitvcs SVN GIT HG Extension.
 	pkgver = 0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rabbitvcs.org/
 	install = rabbitvcs-nemo.install
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = rabbitvcs-nemo
 	depends = nemo-python>=2.0
 	depends = python2-dbus
 	depends = rabbitvcs>=0.16
-	source = https://github.com/rabbitvcs/rabbitvcs/archive/v0.16.tar.gz
-	md5sums = 25376cff136ad2fac901ff88e07893ef
+	source = rabbitvcs-0.16-3.tar.gz::http://rabbitvcs.org//archive/4e94b82e34b409f0baced88521a6e03cb29c4155.tar.gz
+	md5sums = 9669132c6ef3f21ecfe1fd96b9be3e0d
 
 pkgname = rabbitvcs-nemo
 
