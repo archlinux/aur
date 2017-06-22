@@ -1,7 +1,7 @@
 # Maintainer: goetzc, napcok, jskier
 pkgname=ubuntu-mate-themes
 pkgver=17.04.12
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE."
 arch=('any')
 url="https://launchpad.net/ubuntu-mate/"
