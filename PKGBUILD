@@ -14,7 +14,7 @@ install=openvpn.install
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
 #source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc})
 source=("http://www.eurephia.net/openvpn/openvpn-${pkgver}.tar.xz"
-        "openvpn-${pkgver}.tar.xz")
+        "openvpn-${pkgver}.tar.xz.asc")
 sha256sums=('7aa86167a5b8923e54e8795b814ed77288c793671f59fd830d9ab76d4b480571'
             'SKIP')
 
