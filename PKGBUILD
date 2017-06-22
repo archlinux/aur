@@ -1,7 +1,7 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=rcf
-pkgver=rc3
+pkgver=1.6.3.1401
 pkgrel=1
 pkgdesc="Red Crucible®: Firestorm - Free to play online FPS"
 arch=('i686' 'x86_64')
