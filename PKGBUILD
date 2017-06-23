@@ -1,44 +1,37 @@
 # Maintainer: Samuel Mesa <samuelmesa at linuxmail.org>
 
 pkgname=taudem
-_pkgname=TauDEM-QGIS
-pkgver=5.1.2
-pkgrel=4
-pkgdesc="Suite of Digital Elevation Model (DEM) tools for the extraction and analysis of hydrologic information from topography as represented by a DEM"
+_pkgname=TauDEM
+pkgver=5.3.8
+pkgrel=1
+pkgdesc="TauDEM (Terrain Analysis Using Digital Elevation Models) is a suite of Digital Elevation Model (DEM) tools for the extraction and analysis of hydrologic information from topography as represented by a DEM."
 arch=(i686 x86_64)
 url="http://hydrology.uwrl.usu.edu/taudem"
 license=('GPL')
-depends=()
-makedepends=('mpich2' 'cmake')
+depends=('gdal')
+makedepends=('openmpi' 'cmake')
 optdepends=()
 provides=()
 conflicts=()
 replaces=()
 options=('!makeflags')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rozos/${_pkgname}/archive/v${pkgver}-lw.tar.gz")
-md5sums=('92bc9db36c9f1f44cc02f7f539969482')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dtarb/${_pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('593ffc11acd3d92d656863424f981a19')
 
 build() {   
-  srcdir=${srcdir}/${_pkgname}-${pkgver}-lw/src
-
-  cd ${srcdir}/shape
-  make all
-
-  cd ${srcdir}/shapelib
-  make all
-
-  cd ${srcdir}
-    make all
+  cd ${srcdir}/${_pkgname}-${pkgver}/src
+  
+  make
 }
 
 package() {
-  cd  ${srcdir}/${_pkgname}-${pkgver}-lw
+  cd ${srcdir}/${_pkgname}-${pkgver}/
 
   install -d ${pkgdir}/usr/local/bin
-  install -d ${pkgdir}/usr/lib/python2.7/site-packages
 
   install -Dm755 aread8 "${pkgdir}/usr/local/bin/aread8"
   install -Dm755 areadinf "${pkgdir}/usr/local/bin/areadinf"
+  install -Dm755 connectdown "${pkgdir}/usr/local/bin/connectdown"  
   install -Dm755 d8flowdir "${pkgdir}/usr/local/bin/d8flowdir"
   install -Dm755 d8flowpathextremeup "${pkgdir}/usr/local/bin/d8flowpathextremeup"
   install -Dm755 d8hdisttostrm "${pkgdir}/usr/local/bin/d8hdisttostrm"
@@ -52,6 +45,7 @@ package() {
   install -Dm755 dinftranslimaccum "${pkgdir}/usr/local/bin/dinftranslimaccum"
   install -Dm755 dinfupdependence "${pkgdir}/usr/local/bin/dinfupdependence"
   install -Dm755 dropanalysis "${pkgdir}/usr/local/bin/dropanalysis"
+  install -Dm755 gagewatershed "${pkgdir}/usr/local/bin/gagewatershed"
   install -Dm755 gridnet "${pkgdir}/usr/local/bin/gridnet"
   install -Dm755 lengtharea "${pkgdir}/usr/local/bin/lengtharea"
   install -Dm755 moveoutletstostrm "${pkgdir}/usr/local/bin/moveoutletstostrm"
@@ -62,7 +56,6 @@ package() {
   install -Dm755 slopeavedown "${pkgdir}/usr/local/bin/slopeavedown"
   install -Dm755 streamnet "${pkgdir}/usr/local/bin/streamnet"
   install -Dm755 threshold "${pkgdir}/usr/local/bin/threshold"
-  install -Dm755 TauDEM.py ${pkgdir}/usr/lib/python2.7/site-packages
 }  
 
 
