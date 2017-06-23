@@ -71,7 +71,6 @@ package() {
     rm -r lib/desktop/icons/LowContrast
     rm    lib/fontconfig.*.bfc
     rm    lib/fontconfig.*.properties.src
-    rm -r plugin/
 
     msg2 "Moving contents..."
     mv * "$pkgdir"/$_jvmdir
