@@ -1,0 +1,13 @@
+pkgbase = netclix
+pkgdesc = A simple cli tool to get movie streaming link.
+pkgver = 0.2.5
+pkgrel = 1
+url = https://github.com/stoneo/netclix
+arch = any
+license = MIT
+makedepends = npm
+depends = nodejs
+noextract = netclix-0.2.5.tgz
+source = https://registry.npmjs.org/netclix/-/netclix-0.2.5.tgz
+sha1sums = f30e3b50733e4d32df3ce08f9c2a92e9d318d1f4
+pkgname = netclix
