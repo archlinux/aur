@@ -99,7 +99,7 @@ package() {
 
     for _rule in "${_rules[@]}"
     do
-            install -D -m0644 $srcdir/$_rule $pkgdir/usr/lib/udev/rules.d/$_rule
+        install -D -m0644 $srcdir/$_rule $pkgdir/usr/lib/udev/rules.d/$(basename $_rule)
     done
 
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
