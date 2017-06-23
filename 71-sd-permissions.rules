@@ -1,0 +1,7 @@
+# Manually constructed from ccsv7/install_scripts/sd_emulation_install.sh
+
+SUBSYSTEM=="usb",ATTR{idVendor}=="0c55",ATTR{idProduct}=="0540",ATTR{manufacturer}=="Spectrum Digital, Inc.",MODE="0666"
+SUBSYSTEM=="usb",ATTR{idVendor}=="0c55",ATTR{idProduct}=="0510",ATTR{manufacturer}=="Spectrum Digital, Inc.",MODE="0666"
+SUBSYSTEM=="usb",ATTR{idVendor}=="0c55",ATTR{idProduct}=="2000",ATTR{manufacturer}=="Spectrum Digital, Inc.",MODE="0666"
+SUBSYSTEM=="usb",ATTR{idVendor}=="0c55",ATTR{idProduct}=="0562",MODE="0666"
+SUBSYSTEM=="usb",ATTR{idVendor}=="0c55",ATTR{idProduct}=="0566",MODE="0666"
