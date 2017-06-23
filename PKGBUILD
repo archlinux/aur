@@ -2,7 +2,7 @@
 
 pkgname=rooster
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple password manager for geeks"
 url="https://github.com/conradkdotcom/rooster"
 makedepends=('cargo' 'pkg-config' 'libx11' 'libxmu')
