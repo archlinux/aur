@@ -1,7 +1,7 @@
 pkgbase = python-sonnet-git
 	pkgdesc = TensorFlow-based neural network library.
 	pkgver = 20170515.170829
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/deepmind/sonnet
 	arch = x86_64
 	license = Apache2
