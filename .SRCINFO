@@ -1,0 +1,16 @@
+pkgbase = anjay-git
+	pkgdesc = C implementation of the client-side OMA LwM2M protocol, uses mbedtls
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/AVSystem/Anjay
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = coreutils
+	makedepends = cmake
+	makedepends = mbedtls
+	source = git://github.com/AVSystem/Anjay.git
+	md5sums = SKIP
+
+pkgname = anjay-git
+
