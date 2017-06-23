@@ -1,11 +1,10 @@
 pkgbase = xerox-docucentre-driver
 	pkgdesc = Driver for the Fuji-Xerox DocuCentre series. Also supports ApeosPort and DocuPrint series.
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://www.fujixerox.co.jp/download/docuprint/download/p450d/linux64/
 	arch = x86_64
 	license = custom
-	makedepends = rpmextract
 	depends = cups
 	source = http://download.fujixerox.co.jp/pub/exe/docuprint/p450d/fxlinuxprint-1.1.2-1.x86_64.rpm
 	md5sums = 79ec7134ec48d839b916b654331d53ca
