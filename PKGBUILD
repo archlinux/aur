@@ -1,6 +1,6 @@
 # Maintainer: Javier Torres <javier@javiertorres.eu>
 pkgname=carto-builder
-pkgver=4.0.0.r5241.1b704c98d2
+pkgver=4.1.0.r903.73e671bec4
 pkgrel=1
 pkgdesc="Location Intelligence & Data Visualization tool"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=('git+https://github.com/CartoDB/cartodb.git'
         'carto-resque.service')
 noextract=()
 sha256sums=('SKIP'
-            'fa05d876025e4174163a933671ca417c1978fd796f5274d3dbcb3be7e9b66ce9'
+            '2dafd022b290fb0c6a336429ba3519b7bb403b88e3e5a7c846be5a1a06aea45f'
             '8cdc2866713b4ae0df5e007d672033b48992382186e53c8cb53d15a58755e8ae'
             '9dd127fc44c767fa6d7ba4f508680991006c5691466f9adc35a84e02a615aec7')
 
@@ -51,7 +51,7 @@ package() {
   find "$pkgdir/opt/carto/builder" -name spec -type d -prune -exec rm -r {} \;
 
   # Link to config
-  rm "$pkgdir/opt/carto/builder/config/app_config.yml" "$pkgdir/opt/carto/builder/config/database.yml"
+  rm -f "$pkgdir/opt/carto/builder/config/app_config.yml" "$pkgdir/opt/carto/builder/config/database.yml"
   ln -s "/etc/carto/builder/config/app_config.yml" "/etc/carto/builder/config/database.yml" "$pkgdir/opt/carto/builder/config"
 
   install -Dm0644 "$srcdir/carto-builder.service" "$pkgdir/usr/lib/systemd/system/carto-builder.service"

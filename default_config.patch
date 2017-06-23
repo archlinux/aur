@@ -2,7 +2,10 @@ diff --git a/config/app_config.yml.sample b/config/app_config.yml.sample
 index f82b087198..408d668aa9 100644
 --- a/config/app_config.yml.sample
 +++ b/config/app_config.yml.sample
-@@ -9,15 +9,15 @@ defaults: &defaults
+@@ -7,15 +7,15 @@ defaults: &defaults
+   ogr2ogr:
+-    binary:           'which ogr2ogr2.1'
++    binary:           'which ogr2ogr'
      csv_guessing:     true
    debug_assets: true
    mandatory_keys:     [layer_opts, sql_api, varnish_management, redis, session_domain]
