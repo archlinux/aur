@@ -1,7 +1,7 @@
 pkgbase = mk_vpp
 	pkgdesc = mk and vpp, two tools for the cyclic process of editing, compiling, viewing, and printing a latex, xelatex, or plain tex document.
 	pkgver = 3.06
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ctan.org/pkg/mk
 	arch = any
 	license = GPL
@@ -14,8 +14,8 @@ pkgbase = mk_vpp
 	source = http://mirrors.ctan.org/support/view_print_ps_pdf/vpp.pdf
 	md5sums = b0c071c9d9d5951644cd65bd1b796add
 	md5sums = 1ad057c8983d726b12a9167996821662
-	md5sums = cb7006d4a75d625154b901741ce4ecdc
-	md5sums = a34d12a41e118db05d784f1dc5f87cb2
+	md5sums = bb3a64f8d0a8111091cd322dea8e9e98
+	md5sums = ffc7552d36e152556097764c0336a955
 
 pkgname = mk_vpp
 
