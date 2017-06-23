@@ -1,7 +1,7 @@
 pkgbase = luasandbox-extensions
 	pkgdesc = Extension packages (sandboxes and modules) for the lua_sandbox project
 	pkgver = 2017.06.11
-	pkgrel = 2
+	pkgrel = 4
 	arch = i686
 	arch = x86_64
 	license = MPL
