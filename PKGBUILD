@@ -53,7 +53,7 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname='freeswitch-git'
-pkgver=1.7.0.r31430.9407f89
+pkgver=1.7.16.r32469.cda7343841
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
@@ -70,6 +70,7 @@ depends=('curl'
          'postgresql-libs'
 	 'libshout'
 	 'lua'
+	 'openssl-1.0'
 	 'opus'
 	 'freetype2')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
@@ -100,17 +101,19 @@ backup=('etc/freeswitch/private/passwords.xml'
         'etc/freeswitch/vars.xml')
 source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git"
         'freeswitch.conf.d'
-         'README.freeswitch'
-         'run.freeswitch'
-         'run_log.freeswitch'
-         'conf_log.freeswitch'
-         'freeswitch.service'
+        'README.freeswitch'
+        'run.freeswitch'
+        'run_log.freeswitch'
+        'conf_log.freeswitch'
+        'freeswitch.service'
+	'freeswitch-arch.patch'  # required for 1.6.17
 	'freeswitch.conf.d.sig'
 	'README.freeswitch.sig'
 	'run.freeswitch.sig'
 	'run_log.freeswitch.sig'
 	'conf_log.freeswitch.sig'
-	'freeswitch.service.sig')
+	'freeswitch.service.sig'
+	'freeswitch-arch.patch.sig')  # required for 1.6.17
 changelog='ChangeLog'
 _pkgname="freeswitch"
 sha512sums=('SKIP'
@@ -120,12 +123,14 @@ sha512sums=('SKIP'
             'e0ad57847905d11540567512fb224587a96db086ecaefd949964bd7e5bf29e448497fb3d6df5d88dbedd69beb5ae4618bb0e8462cbbb9fad84947c6932fc0b46'
             'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
             '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
+	    '30adb4a387c3579ed2080ea6bd3f84062d8767d97e7c2c2cab645e637f34f28667754a2252668c0e0ce176ed48cafe59627ed93a46027d83af38ce440c8e906c'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+	    'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -171,7 +176,11 @@ build() {
   sleep 5
 
   # CONFIGURE
-  ./configure \
+  #./configure \
+  # We need to override some things for the ./configure for 1.6.17
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+  CFLAGS+=" -I/usr/include/openssl-1.0" \
+  LDFLAGS+=" -I/usr/lib/openssl-1.0" ./configure \
     --prefix=/var/lib/freeswitch \
     --with-python=/usr/bin/python2 \
     --bindir=/usr/bin \
@@ -191,6 +200,8 @@ build() {
     --with-scriptdir=/usr/share/freeswitch/scripts \
     --with-certsdir=/etc/freeswitch/certs \
     --with-rundir=/run/freeswitch
+
+    patch -Np1 < ../freeswitch-arch.patch  # needed for 1.6.17
 
   # COMPILE
   make
