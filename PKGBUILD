@@ -2,7 +2,7 @@
 
 pkgname=freefem++-hg
 pkgver=3.55.r4159.0fffb09a07ef
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
@@ -32,17 +32,14 @@ build() {
   cd "$srcdir/ff++"
   autoreconf -i 
   perl download/getall -a
-  ./configure CC=mpicc CXX=mpic++ FC=mpifort \
-	      --enable-download --enable-m64 --sysconfdir=/etc \
-	      --with-mpi --prefix=/usr 
   
-  ./configure CC=mpicc CXX=mpic++ FC=mpifort \
-	      CXXFLAGS=" -std=c++11" \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --enable-download \
-    --with-mpi 
-  make 
+  ./configure CC=mpicc CXX=mpic++ FC=mpifort CXXFLAGS=" -std=c++11" \
+	      --prefix=/usr \
+	      --sysconfdir=/etc \
+	      --enable-download \
+	      --with-mpi 
+
+  make
 }
 
 #check() {
