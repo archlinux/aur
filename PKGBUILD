@@ -1,10 +1,11 @@
 # Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Piotr Balcerowski <piotr@balcerowski.org>
+# Contributor: Florian Maunier <fmaunier@gmail.com>
 
 pkgname=libcurl-openssl-1.0
-pkgver=7.54.0
-pkgrel=2
+pkgver=7.54.1
+pkgrel=1
 pkgdesc='An URL retrieval library (build against openssl-1.0)'
 arch=('i686' 'x86_64')
 url='https://curl.haxx.se'
@@ -12,8 +13,9 @@ license=('MIT')
 depends=('curl' 'glibc' 'krb5' 'openssl-1.0' 'libpsl' 'zlib' 'libssh2.so')
 options=('strip')
 source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz"{,.asc})
-validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
-sha256sums=('a84b635941c74e26cce69dd817489bec687eb1f230e7d1897fc5b5f108b59adf'
+validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2'   # Daniel Stenberg
+              '914C533DF9B2ADA2204F586D78E11C6B279D5C91')  # Daniel Stenberg (old key)
+sha512sums=('59c236f46e13faf9124cecab991b139e57376b1b5a5db13005f55ffece67191f0f7ecb954ae14e382a561d34f8b652b532755746d0cda79713b56857833951c5'
             'SKIP')
 
 build() {
