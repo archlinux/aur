@@ -21,7 +21,9 @@ options=('!strip')
 
 prepare() {
     if [ -d "${srcdir}/media" ]; then
-        cd "${srcdir}/media" && git pull --depth=1 origin
+        cd "${srcdir}/media" && \
+        git fetch --depth=1 origin && \
+        git reset --hard origin/latest
     else
         git clone --depth=1 https://github.com/tbsdtv/linux_media.git -b latest "$srcdir/media"
     fi
