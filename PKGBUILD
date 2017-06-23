@@ -7,7 +7,7 @@ pkgdesc="CLI to interactively merge *.pacnew in /etc"
 pkgver=13723
 pkgrel=9
 arch=('any')
-url="http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=3&chap=4#doc_chap2"
+url="https://wiki.gentoo.org/wiki/Handbook:X86/Portage/Tools#etc-update"
 license=('GPL')
 depends=('diffutils')
 makedepends=('diffutils' 'patch')
