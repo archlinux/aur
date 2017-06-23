@@ -1,7 +1,7 @@
 pkgbase = eclipse-pmd
 	pkgdesc = PMD static source code analysis (Java, XML, ...) plugin for Eclipse IDE
-	pkgver = 4.0.13
-	pkgrel = 2
+	pkgver = 4.0.14
+	pkgrel = 1
 	url = http://pmd.sourceforge.net/
 	arch = any
 	license = BSD
@@ -11,11 +11,11 @@ pkgbase = eclipse-pmd
 	noextract = plugin.jar
 	noextract = license.txt
 	options = !strip
-	source = feature.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/4.0.13.v20170429-1921/features/net.sourceforge.pmd.eclipse_4.0.13.v20170429-1921.jar
-	source = plugin.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/4.0.13.v20170429-1921/plugins/net.sourceforge.pmd.eclipse.plugin_4.0.13.v20170429-1921.jar
+	source = feature.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/4.0.14.v20170528-1456/features/net.sourceforge.pmd.eclipse_4.0.14.v20170528-1456.jar
+	source = plugin.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/4.0.14.v20170528-1456/plugins/net.sourceforge.pmd.eclipse.plugin_4.0.14.v20170528-1456.jar
 	source = license.txt::http://sourceforge.net/p/pmd/code/ci/master/tree/LICENSE?format=raw
-	sha256sums = fbcfe4a3102ea78c294c61f4a88f6cfd9fd223fbc56f4785b6ec9ee1bffe7020
-	sha256sums = 59513e38b2dbca66d546e283431b0ba6effb1d79549a6c170009e6d647cbc8fb
+	sha256sums = e1e705a18d9738341a90ae97ed330ad91f990a9890a83f4239f190ef54c237c0
+	sha256sums = 9f23ab6ccf10de26a8673a0b8c1b02ce369a51c1830f54e79d494ddcb1fdabb5
 	sha256sums = bc61ca15a6e980814d4183a0d37713179a682a8376fe4304c0d99792af62025c
 
 pkgname = eclipse-pmd
