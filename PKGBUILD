@@ -5,7 +5,7 @@ _pkgname=jdk
 pkgname=jdk-devel
 _major=9
 #_minor=1
-_build=174
+_build=175
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -13,7 +13,7 @@ pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
 arch=('i686' 'x86_64')
-url=http://jdk.java.net/$_major/
+url="http://jdk.java.net/$_major/"
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
 optdepends=('alsa-lib: for basic sound support'
@@ -45,16 +45,16 @@ source=("jconsole-$_jname.desktop"
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
-        'OTN-Early-Adopter-License-Terms.txt')
-source_i686=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
-source_x86_64=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
+        'LICENSE-Early-Adopter-Terms.txt')
+source_i686=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x86_bin.tar.gz")
+source_x86_64=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x64_bin.tar.gz")
 sha256sums=('76a1e9a15e13bd62d953c1a4806be7821b2b09d974b6ed622b6d85c8d6dfc8b2'
             '9e557bacfc3b78272c71ccef8d3d45a2772e0f942eba0e16bfe86f6f59f4a5ab'
             'f5bf5f941a118d2db45a7e451e762e0f04ff38cea0f6674a09268daed09c4052'
             'e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013'
-            '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
-sha256sums_i686=('ee230c275ddbdc2123063f79c8e31af69e831cf4b4665dc29fff9866235c214c')
-sha256sums_x86_64=('6b2acdadf0d56cb0c56e802be4c8190f78f3afddacb39445c782626f7de83e07')
+            'a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335')
+sha256sums_i686=('84bd0a05155603bbb4948cc556bbc1c3b6c065438fbf29b75f7df6140ffd8ced')
+sha256sums_x86_64=('18621c516c4f4c84b8bf65d7e7cdadd5e2ae80f16dfe9faa4ff0b7e7fb81cbd9')
 
 package() {
     cd ${_pkgname}-${_major}
@@ -133,7 +133,7 @@ package() {
 
     # Move/link licenses
     mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
-    install -m644 "$srcdir"/OTN-Early-Adopter-License-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
     msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
