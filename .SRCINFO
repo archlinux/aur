@@ -1,0 +1,22 @@
+pkgbase = photoflare-git
+	pkgdesc = Quick, simple but powerful Cross Platform image editor.
+	pkgver = 1.4.0.r246.gc0e722b
+	pkgrel = 1
+	url = http://photoflare.io/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = desktop-file-utils
+	depends = graphicsmagick
+	depends = qt5-base
+	provides = photoflare
+	conflicts = photoflare
+	replaces = photofiltrelx
+	source = git+https://github.com/PhotoFlare/photoflare.git
+	source = photoflare.desktop
+	sha256sums = SKIP
+	sha256sums = b8d8a66f80b744efbd4bd30126dcce4c791662fbd831549d908aa047136240fb
+
+pkgname = photoflare-git
+
