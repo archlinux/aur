@@ -39,7 +39,7 @@ index f676166..9e42f3f 100644
  #include <linux/init.h>
  #if defined(__x86_64__) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
  #   include <linux/ioctl32.h>
-@@ -1467,12 +1468,19 @@ VMCIUserVALockPage(VA addr) // IN:
+@@ -1466,12 +1467,19 @@ VMCIUserVALockPage(VA addr) // IN:
     int retval;
  
     down_read(&current->mm->mmap_sem);
@@ -62,7 +62,7 @@ index f676166..9e42f3f 100644
     up_read(&current->mm->mmap_sem);
  
     if (retval != 1) {
-@@ -1687,7 +1695,11 @@ vmci_guest_init(void)
+@@ -1686,7 +1694,11 @@ vmci_guest_init(void)
     /* This should be last to make sure we are done initializing. */
     retval = pci_register_driver(&vmci_driver);
     if (retval < 0) {
@@ -74,7 +74,7 @@ index f676166..9e42f3f 100644
        data_buffer = NULL;
        return retval;
     }
-@@ -2474,7 +2486,11 @@ vmci_exit(void)
+@@ -2473,7 +2485,11 @@ vmci_exit(void)
  
     if (guestDeviceInit) {
        pci_unregister_driver(&vmci_driver);
@@ -86,7 +86,7 @@ index f676166..9e42f3f 100644
        guestDeviceInit = FALSE;
     }
  
-@@ -2483,7 +2499,7 @@ vmci_exit(void)
+@@ -2482,7 +2498,7 @@ vmci_exit(void)
  
        VMCI_HostCleanup();
  

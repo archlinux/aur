@@ -5,8 +5,8 @@ post_install() {
   In a terminal on root: "modprobe vmci vmmon"
 ==> You may also need to enable some services:
 - vmware-networks.service: to have network access in VMs
-- vmware-usbarbitrator.service: to use USB devices inside VMs
-- vmware-hostd.service: to start VMware as a server
+- vmware-usbarbitrator.service: to connect USB devices inside VMs
+- vmware-hostd.service: to share VMs on the network
 
 EOF
 }
@@ -14,7 +14,7 @@ EOF
 post_remove() {
   cat << EOF
 
-==> To uninstall your VMware settings, remove /etc/vmware and /etc/vmware-installer directories.
+==> To also remove VMware settings, delete /etc/vmware and /etc/vmware-installer directories.
 
 EOF
 }

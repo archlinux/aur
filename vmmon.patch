@@ -127,7 +127,7 @@ index 87cf45b..5390a93 100644
  LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
  {
     TSCDelta tscDelta;
-@@ -1979,7 +1975,7 @@ LinuxDriver_Ioctl(struct file *filp,    // IN:
+@@ -1976,7 +1972,7 @@ LinuxDriver_Ioctl(struct file *filp,    // IN:
        break;
     }
  
@@ -608,18 +608,7 @@ index fd32013..583d6da 100644
  HostIF_SemaphoreForceWakeup(VMDriver *vm,       // IN:
                              const VCPUSet *vcs) // IN:
  {
-@@ -2822,8 +2832,8 @@
-  *
-  * HostIF_ReadPage --
-  *
-- *      puts the content of a machine page into a kernel or user mode 
-- *      buffer. 
-+ *      puts the content of a machine page into a kernel or user mode
-+ *      buffer.
-  *
-  * Results:
-  *      0 on success
-@@ -2854,7 +2864,7 @@
+@@ -2920,7 +2930,7 @@
     if (ptr == NULL) {
        return -ENOMEM;
     }
@@ -628,16 +617,7 @@ index fd32013..583d6da 100644
     if (kernelBuffer) {
        memcpy(buf, ptr, PAGE_SIZE);
     } else {
-@@ -2871,7 +2881,7 @@
-  *
-  * HostIF_WritePage --
-  *
-- *      Put the content of a kernel or user mode buffer into a machine 
-+ *      Put the content of a kernel or user mode buffer into a machine
-  *      page.
-  *
-  * Results:
-@@ -3001,7 +3011,7 @@
+@@ -3106,7 +3116,7 @@
   * Side effects:
   *    None.
   *
@@ -646,7 +626,7 @@ index fd32013..583d6da 100644
   */
  
  uint32
-@@ -3019,18 +3029,18 @@
+@@ -3124,18 +3134,18 @@
   *
   *      Wake up the fast clock thread.  Can't do this from the timer
   *      callback, because it holds locks that the scheduling code
@@ -668,7 +648,7 @@ index fd32013..583d6da 100644
  HostIFWakeupClockThread(unsigned long data)  //IN:
  {
     wake_up_process(linuxState.fastClockThread);
-@@ -3041,7 +3051,7 @@
+@@ -3146,7 +3156,7 @@
   *----------------------------------------------------------------------
   *
   * HostIFTimerCallback --
@@ -677,7 +657,7 @@ index fd32013..583d6da 100644
   *      Schedule a tasklet to wake up the fast clock thread.
   *
   * Results:
-@@ -3052,8 +3062,8 @@
+@@ -3157,8 +3167,8 @@
   *
   *----------------------------------------------------------------------
   */
@@ -688,7 +668,7 @@ index fd32013..583d6da 100644
  HostIFTimerCallback(struct hrtimer *timer)  //IN:
  {
     tasklet_schedule(&timerTasklet);
-@@ -3066,7 +3076,7 @@
+@@ -3171,7 +3181,7 @@
   *----------------------------------------------------------------------
   *
   * HostIFScheduleHRTimeout --
@@ -697,7 +677,7 @@ index fd32013..583d6da 100644
   *      Schedule an hrtimer to wake up the fast clock thread.
   *
   * Results:
-@@ -3078,7 +3088,7 @@
+@@ -3183,7 +3193,7 @@
   *----------------------------------------------------------------------
   */
  
@@ -706,7 +686,7 @@ index fd32013..583d6da 100644
  HostIFScheduleHRTimeout(ktime_t *expires)  //IN:
  {
     struct hrtimer t;
-@@ -3096,7 +3106,7 @@
+@@ -3201,7 +3211,7 @@
     if (hrtimer_active(&t)) {
        schedule();
     }
@@ -715,7 +695,7 @@ index fd32013..583d6da 100644
     hrtimer_cancel(&t);
     __set_current_state(TASK_RUNNING);
  }
-@@ -3119,7 +3129,7 @@
+@@ -3224,7 +3234,7 @@
   * Side effects:
   *    none.
   *
@@ -724,7 +704,7 @@ index fd32013..583d6da 100644
   */
  
  static long
-@@ -3152,7 +3162,7 @@
+@@ -3257,7 +3267,7 @@
   */
  
  int
@@ -733,7 +713,7 @@ index fd32013..583d6da 100644
  		 unsigned int rate, //IN: current clock rate
                   struct file *filp) //IN: /dev/rtc descriptor
  {
-@@ -3162,14 +3172,14 @@
+@@ -3267,14 +3277,14 @@
     int timerPeriod;
  
     if (rateChanged) {
@@ -750,7 +730,7 @@ index fd32013..583d6da 100644
        slack = timerPeriod / 100;
     }
     set_current_state(TASK_INTERRUPTIBLE);
-@@ -3515,7 +3525,7 @@
+@@ -3620,7 +3630,7 @@
  
     printk(KERN_DEBUG "%s: p = 0x%p, offset = 0x%p, numPagesNeeded = %"FMTSZ"u,"
            " handleSize = %"FMTSZ"u, mappedAddr = 0x%p\n",
@@ -759,7 +739,7 @@ index fd32013..583d6da 100644
  
     newHandle->numPages = numPagesNeeded;
     newHandle->addr = mappedAddr;
-@@ -3551,7 +3561,7 @@
+@@ -3656,7 +3666,7 @@
     }
  
     printk(KERN_DEBUG "%s: numPages = %"FMTSZ"u, addr = 0x%p\n",

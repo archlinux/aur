@@ -14,8 +14,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=12.5.6_5528349
-pkgrel=2
+pkgver=12.5.7_5813279
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -58,7 +58,7 @@ backup=(
   'etc/pam.d/vmware-authd'
 )
 source=(
-  "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${pkgver/_/-}.x86_64.bundle"
+  "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${pkgver/_/-}.${CARCH}.bundle"
 
   'bootstrap'
   'config'
@@ -85,7 +85,7 @@ source=(
   'vsock.patch'
 )
 sha256sums=(
-  'd8c0cf3a22a322189b0546862bc1173b3a99d69a5370970df37b351a85473c46'
+  '82178c109f987bb6740171572516f533a725f3563a26d628c769a88bcd4a84f7'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   '55af509a4328fa88518e7008c65ff5598e6007e99ca2b4421a8f9b26126f6ff3'
@@ -104,11 +104,11 @@ sha256sums=(
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
   '71339774bf2b962735013e8683d80591a7cf073607cc992f94b75207f3337485'
-  'b9818230242a42a1bc4debc556febb7650cfcb95f9ac04dec051bd4ea8f12dc1'
+  '3a62d45f046b22d1fba9c34db42d8b2774b084f82356b9f18f05bd2cef214ace'
   '7a321d06f9caeb69015bb1fe6cbc8c7113365589b64f18344b12f92fa21e7ebd'
-  '5ffe492526293ca8fa1b573f54c96ca4d62f5d03ba79b8bc3dddfe33bd0ff6c3'
-  '2472275ad2afa32e1c771f3bdf1773e9cfab7c300bbb6c6e962f0e06271a5094'
-  'a4d98e2f7654c6324a04765ef95a16d7f230c34b4132b29fb5ba5bbc62c70014'
+  'e37923167e181f57be4eeec1adba27a42d0d2240ece6b29aca44a61708ca16dd'
+  '4339a98bd5aba421bc1043f2ee97ea00b082733c81bce321edc7bc72e16ce09b'
+  'c2eba38cc99534675e3c114ecf68cbb65cb14b3d52c95ff17dbf1273fc289947'
   'd7e6b21fef94b4d3fe655a68c20a9556a718a252826a899fb46c4f2475046954'
 )
 options=(!strip emptydirs)
@@ -118,7 +118,7 @@ _isoimages=(freebsd linux linuxPreGlibc25 netware solaris windows winPre2k winPr
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=8.5.7_5528452
+_vmware_fusion_ver=8.5.8_5824040
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
@@ -132,8 +132,8 @@ source+=(
   'unlocker.py'
 )
 sha256sums+=(
-  'dc614b0926f74c5b5384e509c423d4ff017520b6c4a47e7f54cc31ab04f6ac38'
-  'f36358e3d451e77e5eae198c6be2d86679c80686347c82902500eed08697a936'
+  '01b187cb9a951190eda545e5d0235a98b0018f50942b4485844b627c3617d8d2'
+  '86702271b192c6116dbfe107206b10c0ab39d10cbbfcb53756dc09009f54f765'
   '2ad5c0e7a31d7c2009e449fe16acfd5a9036b9d69258be82004cbd0ee41b42cf'
 )
 
@@ -169,7 +169,7 @@ prepare() {
   [[ -d "$extracted_dir" ]] && rm -r "$extracted_dir"
 
   bash \
-    "$(readlink -f "$srcdir/VMware-Workstation-Full-${pkgver/_/-}.x86_64.bundle")" \
+    "$(readlink -f "$srcdir/VMware-Workstation-Full-${pkgver/_/-}.${CARCH}.bundle")" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then

@@ -27,18 +27,6 @@ index 2d8e6f6..a14166b 100644
  EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/netdev_has_net.c,-DVMW_NETDEV_HAS_NET, )
  EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/netdev_has_dev_net.c,-DVMW_NETDEV_HAS_DEV_NET, )
  EXTRA_CFLAGS += $(call vm_check_build, $(SRCROOT)/nfhook_uses_skb.c,-DVMW_NFHOOK_USES_SKB, )
-diff --git a/vmnet/bridge.c b/vmnet/bridge.c
---- a/vmnet/bridge.c
-+++ b/vmnet/bridge.c
-@@ -1146,7 +1146,7 @@
-                  void *data)                  // IN: device pertaining to event
- {
-    VNetBridge *bridge = list_entry(this, VNetBridge, notifier);
--   struct net_device *dev = (struct net_device *) data;
-+ struct net_device *dev = netdev_notifier_info_to_dev(data);
- 
-    switch (msg) {
-    case NETDEV_UNREGISTER:
 diff --git a/vmnet/driver.c b/vmnet/driver.c
 index 7e7ad99..5f508f6 100644
 --- a/vmnet/driver.c

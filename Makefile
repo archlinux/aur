@@ -5,7 +5,7 @@ MODULES = \
 	vmci \
 	vmmon \
 	vmnet \
-	vsock
+	#vsock
 
 all: $(foreach m, $(MODULES), $m.ko)
 
