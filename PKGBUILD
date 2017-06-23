@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=2.8.3.4
+pkgver=2.8.3.5
 pkgrel=1
 pkgdesc="Lightweight Litecoin client"
 arch=(any)
@@ -24,7 +24,7 @@ makedepends=(python2-pycurl)
 source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz
         https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz.asc)
 validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
-sha256sums=(f4ed9971458a2baa1dcfb322435c27a708d4fd66fff216fa06663e5af78e44ba
+sha256sums=(b43ca7f86937e56acc35d6c507302ba9f44efe919a2ad6d51194455cc91581bc
             SKIP)
 
 prepare() {
