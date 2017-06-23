@@ -1,6 +1,6 @@
 pkgbase = 2plan-desktop
 	pkgdesc = A free closed-source project management system
-	pkgver = 2.5.2017
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://2-plan.com/free-project-management-software-2-plan-desktop.html
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Tim Diels <timdiels.m@gmail.com>
 pkgname=2plan-desktop
-pkgver=2.5.2017  # version displayed on splashscreen + year of release
+pkgver=2.6.0  # Look in Help > About > Installation details
 pkgrel=1
 pkgdesc="A free closed-source project management system"
 url='http://2-plan.com/free-project-management-software-2-plan-desktop.html'
