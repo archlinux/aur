@@ -36,7 +36,7 @@ pkgbase = linux-xps-9560
 	sha256sums = 93c200f7cd0f7a860440d6b5190b84014534346ff0fd5582b4554a4854945f08
 
 pkgname = linux-xps-9560
-	pkgdesc = The Linux-xps-9560 kernel and modules
+	pkgdesc = A custom linux kernel and modules for the Dell XPS 15 - 9560. Has ACPI override enabled and a wifi patch. Should be used with 'acpi_rev_override=1' in boot flags. WiFi bug: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1692836
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware

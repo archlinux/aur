@@ -87,7 +87,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="A custom linux kernel and modules for the Dell XPS 15 - 9560. Has ACPI override enabled and a wifi patch. Should be used with 'acpi_rev_override=1' in boot flags. WiFi bug: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1692836"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
