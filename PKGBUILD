@@ -1,7 +1,7 @@
-#Autor: Pablo Novara - Zaskar
-#Maintainer: mncarbone <mncarbone@gmail.com>
+# Maintainer: Miguel Useche <migueluseche@skatox.com>
+# Contributor: mncarbone <mncarbone@gmail.com>
 pkgname=pseint
-pkgver=20160413
+pkgver=20170523
 pkgrel=1
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('i686' 'x86_64')
@@ -11,24 +11,16 @@ groups=()
 depends=('libpng12')
 makedepends=()
 optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-download_url='http://ufpr.dl.sourceforge.net/project'
 if [ "${CARCH}" = 'x86_64' ]; then
-    pkgarch="l64"
-    md5="9c374028e25e6fca29a3fa4aad46a2af"
+    _pkgarch="l64"
+    _sha256sum="fa3f47c70ca96f895f212556ed62bda32abca09d20eace7dccf06d7d4e5a4c30"
 elif [ "${CARCH}" = 'i686' ]; then
-    pkgarch="l32"
-    md5="52a5842a1d5194039fae8df15d995395"
+    _pkgarch="l32"
+    _sha256sum="b10b8bffed0bc9981e8e01d31bc5200a2ba87ab858b041495e007310b87e9b67"
 fi
-source=(http://ufpr.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-${pkgarch}-${pkgver}.tgz)
+source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-${_pkgarch}-${pkgver}.tgz)
 noextract=()
-md5sums=("${md5}")
+sha256sums=("${_sha256sum}")
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
