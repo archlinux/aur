@@ -33,11 +33,15 @@ depends=('gconf' 'python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=('http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_2_0/exports/${_archive}.tar.gz'
-        'LICENSE')
+source=("http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_2_0/exports/${_archive}.tar.gz"
+        "LICENSE"
+        "61-msp430uif.rules"
+        "71-sd-permissions.rules")
 
 md5sums=('7c89745cd4f7067f9ba7b8851b4db0cf'
-         'cf7222e486f8f1d2a0f99d3d946e1f01')
+         'cf7222e486f8f1d2a0f99d3d946e1f01'
+         '7c570e9f93da6f01986285db81d497ef'
+         'af8a8c199be432919b4ca66106591c25')
 
 install=$pkgname.install
 
@@ -48,6 +52,7 @@ _desktop="Code Composer Studio 7.2.0.desktop"
 _destdir=opt
 _installdir=installdir
 _installpath=$_installdir/$_destdir/$pkgname
+_scriptsdir=$_installpath/ccsv7/install_scripts
 
 build() {
     cd $srcdir/${_archive}
@@ -80,6 +85,19 @@ package() {
     # Extract path to executable from .desktop
     mkdir -p $pkgdir/usr/bin
     ln -s $(grep 'Exec=' $srcdir/$pkgname.desktop | cut -d'=' -f2) $pkgdir/usr/bin/$pkgname
+
+    # Udev rules for hardware
+    # NOTE: not installing Blackhawk rules, since it also requires kernel module
+    _rules=("${_scriptsdir}/71-ti-permissions.rules"
+            "${_scriptsdir}/70-mm-no-ti-emulators.rules"
+            "${_scriptsdir}/99-jlink.rules"
+            "61-msp430uif.rules"
+            "71-sd-permissions.rules")
+
+    for _rule in "${_rules[@]}"
+    do
+            install -D -m0644 $srcdir/$_rule $pkgdir/usr/lib/udev/rules.d/$_rule
+    done
 
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
