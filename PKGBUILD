@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.55.r4155.c93a6fe39368
+pkgver=3.55.r4159.0fffb09a07ef
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/ff++/download"
   sed -i 's+e0af74476935c9ff6d971df8bb6b82fc+0a5b38af0016f009409a9606d2f1b555+' getall
+  sed -i 's+cc1244d656e8c37bbdd3e4e897d0e391+d41d8cd98f00b204e9800998ecf8427e+' getall
 }
 
 build() {
