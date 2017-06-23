@@ -1,7 +1,7 @@
 # Maintainer: yozi <es.mslj TA xunilhcra> backwards
 # Contributor: Bernd Amend <bernd.amend+extension_system gmail com>
 pkgname='libcatch-cpp-headers'
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc='C++-native framework for unit-tests using only a header file'
 arch=(any)
@@ -9,7 +9,7 @@ url='http://catch-lib.net'
 license=('custom:BSL')
 source=("https://raw.githubusercontent.com/philsquared/Catch/v${pkgver}/single_include/catch.hpp"
         "LICENSE::https://raw.githubusercontent.com/philsquared/Catch/v${pkgver}/LICENSE.txt")
-sha256sums=('c3715fad6576b6a1dad8f0e7ec86ab56346b543e9a700c161b7c360fb2e1465b'
+sha256sums=('8ee4d6701d28554422f9d25894599014c4eb63ca4c0ff578e766b5df1d2ad692'
             'c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566')
 
 pkgver() {
