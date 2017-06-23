@@ -1,7 +1,7 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=kdav-git
-pkgver=r989.8eefc09
+pkgver=r1005.ce77993
 pkgrel=1
 pkgdesc='A DAV protocol implementation with KJobs '
 arch=('i686' 'x86_64')
@@ -28,6 +28,7 @@ build() {
   cd "${srcdir}/build"
   cmake "${srcdir}/kdav" \
     -DENABLE_TESTING=OFF \
+    -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
