@@ -2,7 +2,7 @@
 
 pkgname='battlescribe'
 pkgver='2.01.02'
-pkgrel=1
+pkgrel=2
 pkgdesc="An army list builder for table-top games."
 arch=(any)
 url="http://battlescribe.net/?tab=downloads"
@@ -15,7 +15,7 @@ source=("http://battlescribe.net/files/BattleScribe_$pkgver""_Multi.zip"
 		"$pkgname.png"
 		'BattleScribe.sh')
 md5sums=('3a7db1daec0474714183861ad6f0b585'
-         '0d18577e61b1c6a90f3258905410b03b'
+         '33aafcfc46f7f1ada23015a830413763'
          'd0fef06c5b080003f84a0e148fbe9261'
          'cf0f2351b3241aa80cd80854fd73045f')
 
@@ -23,7 +23,8 @@ package() {
 	cd "$srcdir"
 
 	# Copy files to system
-	install -D -t "$pkgdir/usr/share/java/$pkgname/" *.sh *.jar
+	install -D -t "$pkgdir/usr/share/java/$pkgname/" *.jar
+        install -Dm755 BattleScribe.sh "$pkgdir/usr/bin/$pkgname"
 	mv lib "$pkgdir/usr/share/java/$pkgname/"
 
 	# Copy the licence
