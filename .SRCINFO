@@ -1,7 +1,7 @@
 pkgbase = vcash
 	pkgdesc = A decentralized currency for the internet.
 	pkgver = 0.6.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openvcash/vcash
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = vcash
 	source = https://github.com/openvcash/vcash/archive/0.6.0.4.tar.gz
 	source = https://www.openssl.org/source/openssl-1.0.2k.tar.gz
 	source = https://sourceforge.net/projects/boost/files/boost/1.53.0/boost_1_53_0.tar.gz
-	source = https://github.com/sum01/aur-packages/raw/master/vcash/db-6.1.29.NC.tar.gz
+	source = http://download.oracle.com/berkeley-db/db-6.1.29.NC.tar.gz
 	sha256sums = d72213fbecbe078e039d5a166fcba1bafe31fd17016ed4975b82894745786a2d
 	sha256sums = 6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0
 	sha256sums = 7c4d1515e0310e7f810cbbc19adb9b2d425f443cc7a00b4599742ee1bdfd4c39
