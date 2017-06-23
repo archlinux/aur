@@ -39,6 +39,8 @@ source=('http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_2_0/exports/${_archive}.t
 md5sums=('7c89745cd4f7067f9ba7b8851b4db0cf'
          'cf7222e486f8f1d2a0f99d3d946e1f01')
 
+install=$pkgname.install
+
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
 _desktop="Code Composer Studio 7.2.0.desktop"
@@ -48,7 +50,7 @@ _installdir=installdir
 _installpath=$_installdir/$_destdir/$pkgname
 
 build() {
-	cd $srcdir/${_archive}
+    cd $srcdir/${_archive}
 
     echo ">>> Executing installer. You can monitor progress with:"
     echo ">>>     tail -f ${srcdir}/${_installpath}/ccsv7/install_logs/*/ccs_setup_${pkgver}_install.log"
