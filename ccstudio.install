@@ -21,6 +21,10 @@ post_install() {
     echo ">>>    sudo usermod -a -G ${_grp} \$(whoami)"
 }
 
+post_upgrade() {
+    chgrp -R $_grp $_dir
+}
+
 post_remove() {
     # Since CCS treats its install direcotry as working directory, trash is left.
     # NOTE: other directories (${_dir}/tools) might have also been created, but
