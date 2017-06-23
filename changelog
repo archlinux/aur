@@ -1,3 +1,22 @@
+2017-06-23 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.3.2.0-1:
+    Added !stats command.
+    Added Steam Summer Sale 2017 badge with appID of 639900 to global blacklist.
+    Added workaround for possible ASF-Service crash (ref: #573).
+    Fixed small regression introduced in V2.3.1.7 that could make bot ignore valid commands if user didn't have access on that specific bot (proxy scenarios).
+    Misc code improvements, optimizations and bugfixes.
+  * 2.3.1.8:
+    ASF will now follow common *nix convention and ignore config files starting with a dot (ref: #554).
+    ASF will now respect permissions when distributing/forwarding keys and won't send keys to bots that given user doesn't have access to.
+    ASF will now try to avoid using HandleOfflineMessages if it can be sure that there is no offline message from any user permitted to use ASF commands, potentially making it possible to use for primary accounts.
+    !pause command will now properly deactivate also GamesPlayedWhileIdle.
+    Improved ShutdownOnFarmingFinished that previously didn't work properly with 0 IdleFarmingPeriod (ref: #557).
+    Improved Steam message splitting logic that should now always arrive in proper order when Bot is forced to split the message because of its size.
+    Fixed ASF attempting to start broken (config/database) bots.
+    Further fixed WCF maximum message length (ref: #484).
+    Usual code improvements, optimizations and bugfixes.
+  * 2.3.1.4:
+    Added workaround for recent Steam bug that could result in commands response duplication when using HandleOfflineMessages.
 2017-05-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.3.1.3-1:
     Fixed a small regression introduced in version 2.3.0.9 that could cause !redeem failures to be always displayed as Fail.
