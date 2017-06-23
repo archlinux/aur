@@ -1,6 +1,6 @@
 pkgname=ofono-phonepi
 pkgver=1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Infrastructure for building mobile telephony (GSM/UMTS) applications. Fork for PhonePi"
 url="https://01.org/ofono"
 arch=("i686" "x86_64" "armv6h")
