@@ -14,7 +14,7 @@ url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-environment-common' 'java32-runtime-common'
          'lib32-gcc-libs' 'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
-optdepends=('eclipse: "Oracle Java Mission Control" plugins for Eclipse'
+optdepends=('eclipse-java: "Oracle Java Mission Control" plugins for Eclipse'
             'lib32-alsa-lib: for basic sound support'
             'lib32-gtk2: for Gtk+ look and feel (desktop)')
 provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web-start=$_major" "java32-environment=$_major"
