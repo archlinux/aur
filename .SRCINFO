@@ -1,0 +1,28 @@
+pkgbase = nausoftphone-plugin-cef
+	pkgdesc = Naumen SoftPhone CEF plugin. Software Phone from Naumen ISC
+	pkgver = 6.3.20.41
+	pkgrel = 1
+	arch = x86_64
+	license = Commercial
+	depends = bash
+	depends = nausoftphone>=6.3.
+	depends = alsa-lib>=1.0.16
+	depends = boost
+	depends = bzip2
+	depends = gcc-libs>=4.6
+	depends = glibc>=2.16
+	depends = hicolor-icon-theme
+	depends = hplip
+	depends = krb5>=1.10.
+	depends = libidn>=1.13
+	depends = libldap>=2.4.7
+	depends = libpulse>=0.99.1
+	depends = libtiff>=4.0.3
+	depends = zlib>=1.1.4
+	optdepends = haveged: boost low entropy
+	provides = nausoftphone-plugin-cef
+	source = manual://nausoftphone-plugin-cef_6.3.20.41-1463657700-trusty_amd64.deb
+	sha256sums = 9298df3029c330e8f02ed1b6b2192d0f001b591af72103a9e245ac12e8714b79
+
+pkgname = nausoftphone-plugin-cef
+
