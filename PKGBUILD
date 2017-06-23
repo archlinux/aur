@@ -13,7 +13,7 @@ url="https://github.com/${_gituser}/${_pkgname}"
 license=('MIT')
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://github.com/${_gituser}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('710131ac145505426b4d5e33428d96845620f95082d21597cf6063da2cb54eaa')
+sha256sums=('d2bdc3f8949fd0efec11fbe30ea88f4dc89124639d79e922e14a28e6b2dc5c64')
 
 prepare() {
   cp -a ${_pkgname}-${pkgver}{,-python2}
