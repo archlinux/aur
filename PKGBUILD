@@ -1,9 +1,8 @@
 # $Id$
-# Contributor: Eric Bélanger <eric@archlinux.org>
-# Maintainer: Adria Arrufat <adria.arrufat@protonmail.ch>
+# Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.17.3
+pkgver=2.17.4
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
@@ -11,18 +10,17 @@ url="http://webkitgtk.org/"
 license=('custom')
 depends=(libxt libxslt enchant geoclue2 gst-plugins-base-libs
 	 libsecret libwebp harfbuzz-icu gtk3 libnotify hyphen)
-makedepends=(gtk2 gperf gobject-introspection ruby gtk-doc cmake python python2 ninja)
+makedepends=(gtk2 gperf gobject-introspection ruby gtk-doc cmake python python2 ninja gcc5)
 optdepends=('gtk2: Netscape plugin support'
             'gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
-options=(!emptydirs)
-source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha1sums=('defd4e5c06d3f277e4e0c194de359adb564b9864')
-sha256sums=('79f168c30953dbd273f984d3cc85482169e6822fcf7cf0031c86cf8aa1816b35')
-validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3')
+conflicts=(webkit2gtk)
+provides=(webkit2gtk)
+options=('!emptydirs')
 
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
+sha1sums=('8073cb71a794fee919c47ec092b1d1a5bac4dc84')
 
 prepare() {
   [ -d build ] && rm -rf build 
@@ -35,6 +33,7 @@ prepare() {
 
 build() {
   cd build
+  CC=gcc-5 CXX=g++-5 \
   cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=/usr \
         -DLIB_INSTALL_DIR=/usr/lib -DLIBEXEC_INSTALL_DIR=/usr/lib/webkit2gtk-4.0 \
@@ -47,11 +46,11 @@ package() {
   cd build
   DESTDIR="$pkgdir" ninja install
 
-  install -m755 -d "$pkgdir/usr/share/licenses/webkit2gtk-unstable"
+  install -m755 -d "$pkgdir/usr/share/licenses/webkit2gtk"
   cd "$srcdir/webkitgtk-$pkgver/Source"
   for f in $(find -name 'COPYING*' -or -name 'LICENSE*'); do
-    echo $f >> "$pkgdir/usr/share/licenses/webkit2gtk-unstable/LICENSE"
-    cat $f >> "$pkgdir/usr/share/licenses/webkit2gtk-unstable/LICENSE"
-    echo "" >> "$pkgdir/usr/share/licenses/webkit2gtk-unstable/LICENSE"
+    echo $f >> "$pkgdir/usr/share/licenses/webkit2gtk/LICENSE"
+    cat $f >> "$pkgdir/usr/share/licenses/webkit2gtk/LICENSE"
+    echo "" >> "$pkgdir/usr/share/licenses/webkit2gtk/LICENSE"
   done
 }
