@@ -10,6 +10,7 @@ pkgbase = rooster
 	makedepends = pkg-config
 	makedepends = libx11
 	makedepends = libxmu
+	makedepends = python3
 	source = rooster-2.6.0.tar.gz::https://crates.io/api/v1/crates/rooster/2.6.0/download
 	sha256sums = ad453e7f937b8482c94283ce26d4982386aba956b8f914f9e7b55c760378ef1f
 
