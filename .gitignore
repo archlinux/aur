@@ -2,3 +2,5 @@
 /pkg/
 *.tar.bz2
 *.pkg.tar.xz
+SHA512SUMS
+SHA512SUMS.asc
