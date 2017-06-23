@@ -1,0 +1,18 @@
+pkgbase = cover-thumbnailer-git
+	pkgdesc = Generates thumbnails for Nautilus folders (music album covers,...).
+	pkgver = 760a344
+	pkgrel = 1
+	url = https://github.com/flozz/cover-thumbnailer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gettext
+	depends = python2-pillow
+	depends = python2-gconf
+	provides = cover-thumbnailer
+	conflicts = cover-thumbnailer
+	source = cover-thumbnailer::git+https://github.com/flozz/cover-thumbnailer
+	sha256sums = SKIP
+
+pkgname = cover-thumbnailer-git
+
