@@ -1,6 +1,6 @@
 pkgbase = kimap2-git
-	pkgdesc = Job-based API for interacting with IMAP servers
-	pkgver = r765.df01ac2
+	pkgdesc = A job-based API for interacting with IMAP servers
+	pkgver = r779.71c30d2
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/pim/kimap2
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = kimap2-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = python
-	makedepends = boost
 	depends = kmime
+	conflicts = kimap2
 	source = git://anongit.kde.org/kimap2.git
 	md5sums = SKIP
 
