@@ -6,7 +6,7 @@ _pkgname=jre
 pkgname=bin32-jre-devel
 _major=9
 #_minor=1
-_build=174
+_build=175
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -14,7 +14,7 @@ pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot (32-bit)"
 arch=('x86_64')
-url=http://jdk.java.net/$_major/
+url="http://jdk.java.net/$_major/"
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-runtime-common' 'lib32-gcc-libs'
          'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
@@ -40,12 +40,12 @@ backup=("etc/java32-$_jname/management/jmxremote.access"
         "etc/java32-$_jname/psfontj2d.properties"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
-source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz"
+source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x86_bin.tar.gz"
         "policytool32-$_jname.desktop"
-        'OTN-Early-Adopter-License-Terms.txt')
-sha256sums=('2839575fd9359a80e9b99f9d1decfb3f8a618aea869ffd586e16d63e01683151'
+        'LICENSE-Early-Adopter-Terms.txt')
+sha256sums=('07b620ea3c8b1fdc6261515bc9abeec2ae48553cc685c9c6f67ed63e3e4749bd'
             '753adf70afa227029299d37b147c6368e3aa310523e673588d09f4f2ac756097'
-            '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
+            'a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335')
 
 package() {
     cd ${_pkgname}1.${_major}.0
@@ -120,7 +120,7 @@ package() {
 
     # Move/link licenses
     mv legal/ "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
-    install -m644 "$srcdir"/OTN-Early-Adopter-License-Terms.txt "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
+    install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
     ln -sf /usr/share/licenses/java${_major}-${_pkgname}32/ "$pkgdir"/usr/share/licenses/$pkgname
 
     msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
