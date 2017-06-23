@@ -43,7 +43,7 @@ EOF
   mkdir -p "${pkgdir}/usr/share/pixmaps/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  mv "${srcdir}/MPS ${pkgver}" "${pkgdir}/opt/${pkgname}"
+  mv "${srcdir}/MPS ${_pkgver}" "${pkgdir}/opt/${pkgname}"
   install -Dm 755 "${srcdir}/mps" "${pkgdir}/usr/bin/mps"
   install -m 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
   ln -s "/opt/${pkgname}/license/mps_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
