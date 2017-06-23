@@ -10,7 +10,7 @@ url="http://vertx.io"
 license=("APACHE")
 depends=("java-environment>=7")
 
-source=("https://bintray.com/artifact/download/vertx/downloads/${pkgname}-${pkgver}-full.tar.gz")
+source=("https://bintray.com/artifact/download/vertx/downloads/vert.x-${pkgver}-full.tar.gz")
 sha1sums=("da39a3ee5e6b4b0d3255bfef95601890afd80709")
 
 package() {
