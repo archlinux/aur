@@ -1,21 +1,16 @@
 pkgbase = jdk-devel-docs
-	pkgver = 9b174
+	pkgdesc = Documentation for Oracle Java 9 Development Kit Snapshot
+	pkgver = 9b175
 	pkgrel = 1
 	url = http://jdk.java.net/9/
 	arch = any
-	license = custom:Oracle BSD
+	license = custom
 	optdepends = java-environment>=9: Compile and run examples
 	options = !strip
-	source = http://download.java.net/java/jdk9/archive/174/binaries/jdk-9_doc-api-spec.tar.gz
-	source = http://download.java.net/java/jdk9/archive/174/binaries/javafx-9_doc.zip
-	source = LICENSE
-	sha256sums = aacda9d3f97c097e919f5e57976f4ec3b23e233e0d84c915d57e94b9e2f92084
-	sha256sums = dade998764183750157aefd4a6821c65defaaa4a0b5877ab9a545c66d7f55115
-	sha256sums = 5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370
+	source = http://download.java.net/java/jdk9/archive/175/binaries/jdk-9_doc-api-spec.tar.gz
+	source = LICENSE-Early-Adopter-Terms.txt
+	sha256sums = 56eacc940c3e8421e8e491725e9fb6eb780838fbf9dc1aab184d8bb195bef4bd
+	sha256sums = a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335
 
 pkgname = jdk-devel-docs
-	pkgdesc = Documentation for Oracle Java 9 Development Kit Snapshot
-
-pkgname = javafx-devel-docs
-	pkgdesc = Documentation for Oracle JavaFX 9 Development Kit Snapshot
 
