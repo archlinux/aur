@@ -5,8 +5,8 @@
 
 pkgbase=iproute2-cake
 pkgname=(iproute2-cake iproute2-cake-doc)
-pkgver=4.10.0
-pkgrel=2
+pkgver=4.11.0
+pkgrel=1
 pkgdesc="IP Routing Utilities"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -44,7 +44,7 @@ build() {
 }
 
 package_iproute2-cake() {
-  depends=('glibc' 'iptables')
+  depends=('glibc' 'iptables' 'libelf')
   optdepends=('linux-atm: ATM support')
   groups=('base')
   provides=('iproute' 'iproute2' 'iproute2-doc')
@@ -81,7 +81,7 @@ package_iproute2-cake-doc() {
   install -m0644 doc/*.html doc/*.pdf "${pkgdir}/usr/share/doc/iproute2/"
 }
 
-sha1sums=('9e578675f6938359a3036d7886b91d48c0403a40'
+sha1sums=('902a20629672ad39faf46c5312558ebb3d21d1fc'
           'SKIP'
           '1ed328854983b3f9df0a143aa7c77920916a13c1'
-          'ac4e728b094c07bc6843115ee7f3697fec67e415')
+          'f18cc3ee91bbdb9de3304399e83e5b97ed3864da')
