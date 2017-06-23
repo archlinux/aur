@@ -6,7 +6,7 @@ _pkgname=jdk
 pkgname=bin32-jdk-devel
 _major=9
 #_minor=1
-_build=174
+_build=175
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -14,7 +14,7 @@ pkgver=${_major}b${_build}
 pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot (32-bit)"
 arch=('x86_64')
-url=http://jdk.java.net/$_major/
+url="http://jdk.java.net/$_major/"
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-environment-common' 'java32-runtime-common'
          'lib32-gcc-libs' 'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
@@ -42,18 +42,18 @@ backup=("etc/java32-$_jname/management/jmxremote.access"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz"
+source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}+${_build}_linux-x86_bin.tar.gz"
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop"
-        'OTN-Early-Adopter-License-Terms.txt')
-sha256sums=('ee230c275ddbdc2123063f79c8e31af69e831cf4b4665dc29fff9866235c214c'
+        'LICENSE-Early-Adopter-Terms.txt')
+sha256sums=('84bd0a05155603bbb4948cc556bbc1c3b6c065438fbf29b75f7df6140ffd8ced'
             '4699009a941791cc82e6bcc85e80365b4c5b10f217e5f023a84f917abbe98ae1'
             '082c7594570133117e06f2b3a74c9e40ecea89384ab874fa1ef111e1c998302e'
             '653729575c23d7faaef6bb106fdc4889e9a2240723540ad92a74bf1972367faf'
             'ff17209204c70e8b637b8386327486c98e0b70b9b715970fa7a73093d1ef3f91'
-            '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
+            'a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335')
 
 package() {
     cd ${_pkgname}1.${_major}.0
@@ -131,7 +131,7 @@ package() {
 
     # Move/link licenses
     mv legal/ "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
-    install -m644 "$srcdir"/OTN-Early-Adopter-License-Terms.txt "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
+    install -m644 "$srcdir"/LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32/
     ln -sf /usr/share/licenses/java${_major}-${_pkgname}32/ "$pkgdir"/usr/share/licenses/$pkgname
 
     msg2 "Enabling Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy..."
