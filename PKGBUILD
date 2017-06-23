@@ -3,8 +3,8 @@
 
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
-pkgver=2.2.13
-pkgrel=2
+pkgver=2.2.14
+pkgrel=1
 pkgdesc="Microsoft Azure Linux Guest Agent"
 arch=('any')
 url="https://github.com/Azure/WALinuxAgent"
@@ -21,7 +21,7 @@ changelog=
 source=(
   "https://github.com/Azure/WALinuxAgent/archive/v${pkgver}.zip")
 sha256sums=(
-  '1cfecf29b03eaad7647e8a88fa0e1752a4ecf0414eadc63b51cf7e4e17487e0c')
+  'f07419d5ccbedb876a6c3ed24aa9ccb953d4930c0abac5fd846faa37a096ae0c')
 
 package() {
   cd "$_pkgname-$pkgver"
