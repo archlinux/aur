@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio-lts
 _srcname=linux-4.9
-pkgver=4.9.20
+pkgver=4.9.33
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'i915_317.patch')
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'fb856acd9195e7d83ef9971ec7be55eca0d6fdf0fbfbe9a8f3bb04590d44b51f'
+            '939006459d6bd9ac4374956353b795a746bd4a6b357eea1e349cd84638713ad2'
             'SKIP'
             'b5c2a685667a884477904c9fb337d944667b6144720ac2a67d1116f711e70768'
             'ab6c0fab5b147fab9ccef90c62b963510e92fbd068a6a33b9619537243fedca4'
