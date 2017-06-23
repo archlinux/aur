@@ -1,5 +1,4 @@
 pkgbase = jdk-docs
-	pkgdesc = Documentation for Oracle Java Development Kit
 	pkgver = 8u131
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -9,14 +8,16 @@ pkgbase = jdk-docs
 	options = !strip
 	source = http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-docs-all.zip
 	source = http://download.oracle.com/otn-pub/java/javafx/8.0.131-b11/d54c1d3a095b4ff2b6607d096fa80163/javafx-8u131-apidocs.zip
-	source = LICENSE-Documentation
-	source = LICENSE-Oracle-Legal-Notices
+	source = LICENSE-Documentation.txt
+	source = LICENSE-Oracle-Legal-Notices.txt
 	md5sums = 32df9c95f67e2983fdb4f3e722442d54
 	md5sums = 9ae377f4a4fce58a5fe959c01b3614bd
 	md5sums = 4d54057ca75b691366977dab2277e869
 	md5sums = 3137397f4dba13f4a79157819af583a3
 
 pkgname = jdk-docs
+	pkgdesc = Documentation for Oracle Java Development Kit
 
 pkgname = javafx-docs
+	pkgdesc = Documentation for Oracle JavaFX Development Kit
 
