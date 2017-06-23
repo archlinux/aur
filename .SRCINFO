@@ -1,6 +1,6 @@
 pkgbase = pascalcoin
 	pkgdesc = PascalCoin Wallet and Daemon
-	pkgver = 1.5.6
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/PascalCoin/PascalCoin
 	install = pascalcoin.install

@@ -1,7 +1,7 @@
 # Maintainer: Jeff Keyte <jeff@keyte.me>
 
 pkgname=pascalcoin
-pkgver=1.5.6
+pkgver=2.0
 pkgrel=1
 pkgdesc='PascalCoin Wallet and Daemon'
 arch=('i686' 'x86_64')
@@ -18,11 +18,6 @@ sha256sums=('SKIP'
 '547801a11497ee52220e4dc6cb6d2c43aeb6e94d989697cb0a54d26e4a4cad58'
 '74713e3702cbd13a8847de340029f6c3608f1dbae536e58cfa53c5035101d060'
 '5b308a22ea19b9b71b67cc5178b03bbcf1c90cc5d0abe42592e26b701649231a')
-
-pkgver() {
-cd "$srcdir/PascalCoin"
-git describe --tags
-}
 
 build() {
   cd "$srcdir/PascalCoin"
