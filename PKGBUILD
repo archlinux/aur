@@ -1,6 +1,6 @@
 # Maintainer: vsilv vsilv@posteo.eu
 
-pkgname=python-cexio-api-git
+pkgname=python-cexio-client
 pkgver=r2.7a3f1e0
 pkgrel=1
 pkgdesc="Codebase for WebSocket & REST client software for CEX.IO"
