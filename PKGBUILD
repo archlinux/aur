@@ -10,6 +10,7 @@ url="https://github.com/djenriquez/vault-ui"
 license=('BSD 2-Clause')
 depends=()
 makedepends=('p7zip')
+optdepends=('zenity' 'kdialog' 'xdialog')
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage")
 options=('!strip')
 source=("https://github.com/djenriquez/${_pkgname}/releases/download/${pkgver}/Vault-UI-${pkgver}-${arch}.AppImage")
