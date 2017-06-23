@@ -1,0 +1,14 @@
+pkgbase = python-cexio-api-git
+	pkgdesc = Codebase for WebSocket & REST client software for CEX.IO
+	pkgver = r2.7a3f1e0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python>=3.5
+	provides = python-cexio-client
+	source = cex.io-client::git+https://github.com/cexioltd/CEX.IO-Client-Python3.5.git
+	md5sums = SKIP
+
+pkgname = python-cexio-api-git
+
