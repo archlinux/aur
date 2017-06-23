@@ -1,5 +1,1803 @@
-2013-02-09 Boguslaw Ciastek <sq5tb (at) tlen.pl>
+Version 1.11 release rev.5434 (released on 13. April 2017)
 
-	* 1.5.2-r2930-1 :
-	new upstream release.
+  New features
+  * Added CadTools extension to OpenJUMP PLUS. A set of cad-like tools
+    and plugins mainly deriving from Kosmo 3.0 source code
+  * Added Matching extension to OpenJUMP PLUS. A plugin to perform vector
+    layers matching using advanced geometric or attribute criteria.
 
+  Improvements
+  * Upgrade csv-driver to 1.0.0 (encoding option to writer + other improvements)
+  * initial java9 support, still compiled w/ java8
+    workbench comes up, PLUS extensions throw some errors during startup still
+  * Small improvements in UpdateWithJoinPlugIn
+  * improve how MultiInputDialog is resized (let JTextArea increase its size)
+  * upgrade to jumpjgrapht 0.7.1 (fix a bug related to empty geometries)
+  
+  Bug fixes
+  * Fix #458 as well as a regression in RasterImageLayerPropertiesPlugIn
+  * Fix #456 possible NPE in AutoAssignAttributePlugIn
+  * Fix a bug in PostGIS writer happening in the evolution merging process
+  * Restore ZoomToWMSPlugIn capabilities in more recent ZoomToWMSLayerPlugIn
+  * WMSStylePlugIn dialog did not close (related to Fix #453)
+  * fix regression "#455 UI problem with decimal parameters and Locale" 
+    rendering MultiInputDialog based plugins using decimal values unusable for 
+    locales formatting decimal number w/ comma instead of dot
+    https://sourceforge.net/p/jump-pilot/bugs/455/
+  * Fix a NullPointerException in Dissolve2PlugIn (ConcatenateUnique)
+  * fix WFS in PLUS not working due too i18n error
+  * Fix a robustness problem in MakeValidOp
+
+
+Version 1.10 release rev.5336 (released on 27. January 2017)
+
+  Highlights
+  * Switch compiler source and target to java 1.7
+  * GeoJSON read/write support added, sponsored by Jukka Rahkonen
+  * SimpleQuery : spatial queries are now very fast (use of spatial indexes)
+  * Add zoom shortcuts to status bar.
+    a) Double clicking on scale section opens Zoom to scale plugin
+    b) Double clicking on coordinate section opens Zoom to coordinates plugin
+  * new option in EditOptionPanel to select the just drawn geometry
+  * PLUS - Add Sextante Data Explorer, Pick Coordinates plugin
+         - Enhanced Sextante Help
+
+  New Features
+  * Add a new PlugInClassLoader to keep all classes in one to circumvent issues
+    resulting in non working instanceof's or missing classes
+  * Extended Sextante Raster Capabilities to read Bitmap (BMP) and JP2000 
+   (JP2) raster files
+  * Add brand new shiny SaveWizardPlugin, which is supposed to eventually
+    replace the outdated SaveDatasetAsPlugIn adding the possibility to install
+    further datasource writers allowing to save easily to different datasource
+    stores, hopefully databases, WFS, archives or the likes in the future
+  * FR #237 : add an option in ViewOptionsPlugIn to synchronize/desynchronize
+    selection in LayerView AttributePanel (synchronized by default)
+  * GeometryFunctions : add Visvalingam-Whyatt simplifier
+  * Add two plugins to generate random values in an attribute
+  * Add a selection mode to select features with a Multi-Geometry type
+  * Add 3 functions in GeometryFunction plugin
+    - Simplifier (Remove small segments)
+    - Remove Holes (FR #248)
+    - Remove Small Holes
+  * Make GML/JML reader cancellable and show already parsed featcount
+  * Add a BeanTool to search for a plugin in the menus
+
+  Improvements
+  * Adopt java 5 style for feature package (generics, foreach loops)
+  * Improve RemoveSpike plugin an move RemoveSpike and MakeValid plugins
+    to Tools > QA submenu
+  * Enhanced version of RasterImageLayerPropertiesPlugIn:
+    1) New info HTML table "a la" GvSIG style
+    2) Faster info checker (all cell statistic related to Sextante raster 
+       image have been removed as alredy embedded into Raster Statistic 
+       plugin
+    3) Added a limited projection checker < see other details into 
+    org.openjump.core.ui.util.ProjUtils.class
+    4) Added a Raster Transparency panel
+  * Add build-helper-maven-plugin in maven to be able to run tests located
+    in jumptest package
+  * Update JDOM dependency to JDOM2 (used in java2xml)
+  * upgraded junit & imageio-ext to latest stable versions
+  * FR 233: wfs layer, add SRIDStyle using loading crs's epsg id
+  * Rename LineSimplifyJTS15AlgorithmPlugIn to SimplifyWithJTSAlgorithm
+    Now works for every kind of geometry and always use PreserveTopology version
+  * SpatialDatabase : small patch to avoid trying to read wkt as wkb
+  * Add an improved version of Layer Properties plugin
+  * Fix bugs in WritableDataStoreDataSource
+  * Postgis writer : deprecate vacuum analyze as it may takes too much time,
+    must be driven by the server, not the client
+  * Update TopologyExtension to 0.8.2.
+  * Update TopologyExtension to 0.9.0.
+  * Extended coordinate reference system detection on loading files 
+    (vector and image) if these have an auxiliary .prj or .aux file.
+    The SRID code is saved as SRIDStyle
+  * Extends WritableDataStoreDataSource capabilities to H2 DataStore
+  * File projection detection: Added IGNF and IGN Géoportail codes
+  * File projection detection: Added measure units
+  * FR #235 : Improved ExtractLayersByGeometryPlugIn
+  * Improve MoveSelectedLayerable to another category
+  * Refactoring of EditOptionsPanel + add single editable layer option
+  * EditOptions are now persistent except rolling back invalid edits which is
+    activated by default (in OpenJumpConfiguration)
+  * Update ImageIO-Ext to 1.1.16
+  * Downgrade ImageIO-Ext TIFF plugin to 0.1.13 because of a persisting bug
+    from 0.1.14-0.1.16 described on jpp-devel
+    https://sourceforge.net/p/jump-pilot/mailman/message/35425922/
+  * JoinTableFromExistingLayerPlugIn can now join on any attribute type
+  * autowrap Toolbar if the workbench frame gets too small to fit all entries
+    in one line
+  * Writable PostGIS driver apply a ST_Multi transformation to geometries
+    if it detected that the distant table has a MultiGeometry constraint
+  * Deactivate the misleading disjoint predicate in query and join plugins
+  * #FR 249 - add "intersects interior point" and "interior point intersects"
+    in query and join predicates
+  * New windows exe launcher (2nd trial), that plainly runs the batch file
+    w/o need for jre in path to do so
+  * Create new layer was not active in Aggregation PlugIn (extension analysis)
+  * Join Table : do not join null values any more
+  * Sort the list of SRS in WMS layer SRS chooser + fix some I18N
+  * RotateSelectedItemTool shows rotation center as point shape
+    if this has been set (shift option)
+  * upgrade commons-lang to version 3.5
+  * upgrade to commons-io 2.5, commons-codec 1.10, commons-compress 1.12
+    release notes assure backwards compatibility afa we are concerned
+  * Prevent addition of a second attribute with the same name in FeatureSchema
+
+  Bug Fixes
+  * Fix #414 "Image Layer Resizing lost after loading project"
+    jml save files for referenced images ignored their saved geometry on reopen
+  * Fix regression introduced after 1.9.1 release in shapefile (cpg) reader
+  * Improve MakeValid plugin (correction of geometries in place)
+  * Fix a bug preventing updates with WritableDataSource in some cases
+  * Handling of .aux.xml files associated to tiff files changed: now if the
+    .aux.xml file exists, the statistics are added to it, instead of just
+    replacing its content.
+  * Remove the 1.124 factor to compute -Xmx as the memory used by the os/jvm may
+    vary from one version to another and using that much memory may crash the jvm.
+  * Fix a problem with z interpolation in Noder plugin (note : there is still
+    a bug related to JTS when using a PrecisionModel of 0 decimal - scale=1)
+  * Fix #420 (many feature labels were lost with svg export)
+  * Fix bug: save dataset warns before overwriting an existing file now also
+    when the ok button is pressed only
+  * Save dataset now respects doubleclicking a file and enter
+    like open dialog did already
+  * Fix bug : old postgis driver could not save layer with pk != dbid
+  * Fix bug happening when modifying schema two times with InfoPanel opened
+    * Postgis writer : create the sequence in the same schema as the table
+  * Postgis writer : normalize index name
+  * Make RemoveSpikePlugIn more robust
+  * Dxf writer has been broken for a while. It is fixed with 0.8.1
+    but it can no more save several files at a time
+  * Fix bug introduced in r5032 in postgis reader
+  * Fix #431 : Save project with unsaved layers
+  * fix #428 (introduced during ProjUtil refactoring)
+  * Fix #433 throwing exception when applying scale limits in bad order
+  * Optimization : changeStyle was applying the new style two times
+  * Fix #432 Non-writable datasource (zipped, datastore...) :
+    add prompt to detach the source in EditablePlugIn
+  * Fix #436 : make invisible layers not editable.
+  * Fix editablePlugIn when AttributeTable or InfoFrame are opened
+  * Statistic tools : clean code, extend capabilities, null handling
+  * Fix dialog box in PlanarGraphPlugIn
+  * Fix #438 Exception while saving the project before closing application
+  * Fix #439 MakeValid now uses SymDifference instead of difference to
+    repair overlapping holes (which corresponds what is displayed on screen)
+  * Fix #442 Missing unsaved layers warning in SaveProjectPlugIn
+  * Fix #441 Missing file overwrite warning in SaveLayersWithoutDataSourcePlugIn
+  * Fix #353 Dialogs do not use preferred size on dual screen
+  * made toolbars nonfloatable, which never was supported properly anyway
+  * #447 fix illegal character writing in jml
+  * fix #440 about shift-selection problem between layerView and attributePanel
+  * fix #449 severe regression in "save project as" introduced in r5178
+  * fix #450: Zoombar/Edittoolbox checkbox menu item de-synchronized when
+        toolbar is closed manually
+  * fix #453 about closing ChangeRasterStyle dialog (related to #433)
+
+  PLUS edition
+  * upgrade set-attribute plugin to v0.7.1
+  * Upgrade cts plugin to 1.4.0 (add finnish projections, fix bugs)
+  * PLUS: update ImageIO-Ext to 1.1.15, GDAL binding to 2.1.0 
+  * Upgraded Sextante (Correct bug #410. Added Sextante Data Explorer)
+  * Upgrade graph extension to java1.7 and jgrapht0.9.2 (OpenJUMP PLUS)
+  * Add SkeletonPlugIn to graph extension (OpenJUMP PLUS)
+  * Add ViewManager extension (v0.3.4) in OpenJUMP PLUS version
+  * October Sextante sprint code:
+    - Added Sextante Data Explorer and Pick Coordinates plugins
+    - Better integration between OpenJUMP and Sextante data model
+    - Upgraded documentation with a new help dialog style
+    - Fix bugs #410 and #427
+  * Sextante: activated Sextante help for single algorithms
+  * Sextante: Sextante tables are decoded from OJ vector files
+    with all features with empy geometries
+  * new upgrade of Sextante OpenJUMP binding that solves bugs #445 and #446
+  * upgraded ColorChooser plugin to version 0.7. The plugin adds an extr
+   attribute ("COLOR") with indexed colors for Autocad export compatibility
+  * New version of ColorChooser (0.8)
+    - Added Color picker tool
+    - Rewrite color panel to extend to 255 autocad Index colors
+    - Tooltips now show correct color in 3 ways: 
+      autocad Index color, hexadecimal and decimal RGB
+  * Update Aggregation extension to 0.2.10 (fix bug in dialog initialization)
+  * PLUS add Map Coloring Plugin 0.5 (style by Five Color Theorem)
+  * Upgrade GraphToolBox to 0.4.0 for PLUS version
+
+
+Version 1.9.1 release rev.4840 (released on 13. March 2016)
+
+  New Features
+  * Add new GroupByPlugIn in Tools>Analysis menu
+  * Add a plugin to remove spikes from polygonal geometries
+  * Deactivate RemoveSpike plugin for 1.9.1 release
+
+  Improvements
+  * If a datastore table has several geometries, secondary geometries are
+    read as AttributeType.OBJECT attributes rather than STRING so that
+    datastore driver can easily write them back as a byte array.
+  * Better handling of readOnly attributes in PostGIS writer
+  * Add Boolean and Long AttributeType in AttributeCalculator (beanshell)
+  * Null boolean was not handled correctly in datastore datasources.
+  * Refactoring of DataStore framework. Prepare writing capabilities for
+    multiple kinds of drivers.
+
+  Bug Fixes
+  * Quick fix for NullPointerException when loading a project containing
+    raster(s) when no other projects (tasks) are open.
+  * Fix for missing layers problem when loading projects that include rasters.
+  * Fix bug #415 throwing exceptions in AttributeTablePanel
+  * Fix bug 416 in FillPolygonTool (regression due to JTS change)
+  * patch SpatialiteValueConverterFactory to transform ogc-wkb geometry z
+    to postgis ewkb, as this is the only way to parse geometry z with JTS
+    currently.
+  * JML format did not preserve null attribute values
+  * Fix new aggregation plugin for point and/or linestring unioning
+
+
+Version 1.9.0 release rev.4795 (released on 18. January 2016)
+
+  Highlights
+  - updated to JTS 1.14
+  - "Raster styler" to edit, load and save raster symbologies
+    (contributed by Alberto De Luca)
+  - RasterImageLayerPropertiesPlugIn (display file, raster properties
+    and cell data statistics)
+  - Layer tree info tooltips, Measure Toolbox, CutFeatures Tool
+    (courtesy of Giuseppe Aruta)
+  - introduce new commandline parameter to switch log verbosity '-v, -verbosity'
+    utilizing the new Logger
+  PLUS edition
+  - read support for MariaDB, MySQL, Oracle, Spatialite, Sqlite, H2GIS
+    DB Datastores in PLUS (mainly contributed by Nicolas Ribot)
+  - coordinate transformation with CTSPlugIn (Michaël Michaud)
+  - WFS 1.0,1.1 access via WFSPlugin (based on deegree2 by lat/lon)
+
+  New Features
+  * Add on Layer menu "Export layer envelope as geometry" which 
+    exports the envelope of any type of layer supported by OpenJUMP
+    (Layer.class, ReferencedImageStyle.class, WMSLayer.class, WFSLayer.class,
+    RasterImageLayer.class) as geometry. Layer name, layer datasource (if any)
+    and CRS (only for WMS and WFS) are saved as layer attributes
+  * Add a "Style" plugin to WMS Layer dialog. 
+    Currently only Visibility by scale is available
+  * Substituted ExportEnvelopeAsGeometryPlugIn Raster plugIn with
+    more general ExportLayerableEnvelopeAsGeometryPlugIn
+  * RASTER: Add Layer Statistics Plugin (on submenu "Statistics")
+  * Drivers for esri ASCII and Floating Point grids: added capability to write
+    asc and flt files. Some bugs fixed.
+  * RasterImageLayerProperties.class. Upgraded display as HTML instead of TXT
+    (used HTMLPanel.class), Info can be saved as HTML file
+  * Added very first version of Oracle Spatial Support in Data Store Layer 
+    Wizard, based on Geotools gt2-oracle-spatial.jar to load geometry from 
+    ORA structure efficiently.
+    Current features: 
+       - Lists geometry tables grouped by schemas (user connection schema is 
+         considered as the default schema)
+       - Loads Oracle geometry tables storing POINT, LINESTRING, POLYGON and
+         MULTI*. Does not manage other Oracle spatial types (topology, raster
+         etc.)
+       - Handles several geometry columns (other geometric columns are 
+         converted to WKT)
+       - Efficient data loading based on Larry Reader DB Plugin code
+  * Replaced DataStore Combobox displaying each layer in a DataStore by a 
+    TreeTable based on Netbeans Swing Outline component. Multiple layers can 
+    be selected in the tree.
+    Layers are grouped by schemas in the tree.
+    Limit, Where Clause and Caching properties can be edited in the table
+  * Extended inspection to multiband raster layers.
+    - Multiple measure are now displayed (and saved) by default.
+      Press SHIFT to cancel previous and display only last measure.
+    - Moving cursor on image shows raster cell value on lower panel
+  * Add new Compare Raster Grid layers to Raster plugins
+  * Add 2 new plugin to manage nodata values on monoband DEM
+    - Change No Data Value: it changes default nodata value of file
+    - Set input value to no dta;: it changes an arbitrary cell value to
+      default nodata
+  * FR 215 : don't open a new ViewAttributesFrame if there is already one
+    open for the selected layer Layer
+  * Manage new attribute types BOOLEAN and LONG in jml and shp drivers
+    (also manage other datatypes so that they can be written as one
+    of the well-known datatype instead of throwing an error message)
+  * Hide unused AttributeType from the schema.
+    Add a way to nullify attribute values in the Attribute panel :
+    - String and boolean : press left button, and click on null menu item
+    before releasing
+    - Date and numerics : just empty the field
+  * Added ChangeRangeValuesToNoDataPlugIn.
+    This plugin allows to change a range of cell values (of a Sextante single
+    band raster layer) to nodata value. An option allowas to extract only the
+    input range of value (and set the other values to nodata)
+  * Layer tree tooltip is now configurable via "Configure tooltip"
+    in Option panel - 2 options :
+    - original minimal JUMP/OpenJUMP tooltip
+    - advanced info tooltip
+    Use different colors (red and blue) to display layers with no datasource 
+    and modified layers with datasource in the tooltips
+  * FR #220 : add an option to snap on feature being edited. Indeed, the new
+    snap policy is applied on LineString edition only as snapping on a polygon
+    being edited tends to create invalid polygons
+  * Raster Color Editor Panel. Added an option to invert color range and an 
+    option to set values outside choosen range to transparent. Optimized color
+    ramp. Added more color ramps
+  * FR 218 : implement new attribute types in RandomTrianglesPlugIn
+  * new select tool to select one or several overlapping features
+  * Add WMS Legend plugin to WMS layer context menu
+  * read/write cpg file (codepage for shp/dbf)
+  * added Raster Styler to manage symbologies for 1-banded raster
+   (available from raster layer contextual menu)
+  * Add Measure Selected Features plugin to Select Items context menu->
+    Other tools submenu
+  * Add 4 morphologic indices to GeometryAttributes plugin :
+    - polygon width
+    - polygon length
+    - circularity (Miller)
+    - compacity (Gravélius)
+  * Added "Change Style" plugin to WMS Layers - currently only general 
+    transparency and scale visibility are available
+  * Added CutFeatures tool into the editing toolbox
+   - This tool partially derives from SplitPolygonPlugIn.class from Kosmo SAIG
+   - modified to be used both with selected Linestrings and Polygons
+  * add new plugin EraseLayerAWithLayerB in Tools>Analysis
+  * add MakeValidPlugIn in Tools>Analysis to repair invalid geometries
+  * Spatial Databases support enhanced: support for Oracle Spatial, 
+    MySQL/MariaDB, Spatialite added.
+    - FilterQuery and Adhoc queries supported for these databases
+    - Error detection in case of bad WHERE clause detected when loading a layer
+     (layer removed from Panel)
+    - New connection icons according to database type
+    - Oracle Spatial: reads SDO_GEOMETRY with geotools code, reflection used 
+      on com.oracle.* methods to avoid jar dependence (ede code)
+    - MariaDB: supports WKB and natives binary types,
+      thanks to code from Larry Reeder
+    - Spatialite: supports Spatialite binary type, WKB and WKT.
+      supports several geometry_column metadata table layout (code from 
+      Larry Reeder DB Plugin)
+  * Add support to H2GIS spatial database
+      of licensing restrictions
+  * add explicit mysql datastore for mysql jdbc
+  * Raster symbologies now saved in and restored from project file
+  * add support for spatial datastore layers to EditDataStoreQueryPlugIn
+    allows finetuning the SQL query created with Open->Data Store Layer
+  * Info feature tool: added a pane to show WMS info.
+  * EditWMSQueryPlugin allows now properly changing of _all_ parameters
+    of an existing wms layer
+  * new OJ Logger, abstracts the actually used logging framework from the
+    logging components 
+    - adapted existing log4j calls to the new logger
+    - streamline console & logfile formatting
+    - streamline WorkbenchFrame.log() methods to use new logger
+
+  Improvements
+  * now possible to use negative values in MultiRingBufferSelectedPlugin
+  * WFS respects global proxy settings now
+  * Rewrite ChangeRasterImagePropertiesPlugIn as a Multi dialog
+    Added Transparency, Scale transparency and Color Editor panels
+  * WFS dialog needs much less desktop space now
+  * fix WFS bbox issue
+  * disable autoprefixing WFS properties with 'app0' etc.
+  * fix WFS attributes had distorted chars due to wrong encoding issue
+    minor wfsclienthelper restructuring
+  * HTMLPanel. Added Option to save window to HTML page
+  * RasterImageLayerPropertiesPlugIn. Updated to advanced options.
+    - Displays File, Raster properties and and cells data statistics
+    - of Sextante Raster Layer. It allows and allows to save those
+      information as TXT file. Internationalized
+  * WorkbenchFrame. Add the list of layers with no datasource
+    when confirm the close of a TaskFrame or the close of the application 
+  * LayerNameRenderer. Add Layer name and extension of layer at layer tooltip
+  * WMS support
+    - added user/pass input fields
+    - url field linebreaks into multiple rows on long urls
+    - EditWMSQuery plugin can now change auth&url and reiitialize WMS service
+  * MultiInputDialog: fix doubleregistering listener, layout issues
+  * Reworked Sextante Raster Image handling:
+    - support for loading only the visible part of TIFF files;
+    - support for TIFF files overviews and subsampling;
+    - support for external .aux.xml statistics file;
+    - centralized symbology.
+  * Modified layerable tooltip, check if layerable has datasource and 
+    distinguish between Layer.class, ReferencedImageStyle.class
+    WMSLayer.class, WFSLayer.class and RasterImageLayer.class
+  * Extended "Zoom To Scale" PlugIn to any layerable
+  * TIFF rasters: added ability to read statistics saved as
+    GDAL_METADATA TIFF tag
+  * Add modified "palette" icon with semitransparency to Style plugins
+  * New icons to copy and paste style plugins
+  * TIFF rasters: replaced code for reading TIFF tags with
+    Apache Commons Imaging functions
+  * RASTER: Rearrenged Create Lattice and Create Polygon grid of
+    Raster images in a submenu ("Vectorialize")
+  * RasterImageIO: added a method to get the nodata value for a grid.
+  * RasterLayerStatistics.class. Upgraded statistics to all bands
+  * Add plugin icon. Change name to "Raster statistics"
+  * ProfileGraphPlugIn. Add new Icon
+  * ProfileGraphTool.class. Add new panel which display profile info: 
+    length, mean slope, coordinates of starting
+    and ending points, cell dimension, cell statistics.
+  * Add RasterImageIOUtils.class, with various methods to perform
+    some raster image  Input/Output operations
+  * SaveRasterImageAsImagePlugIn. Rewrite class using new RasterImage I/O 
+    components, allows to export no nodata cell value to the output tif
+  * RasterImage nodata management plugins: added layer statistics resume
+    panel and an output file chooser field
+  * RasterImageLayer Plugin: added Raster Layer statistics tab with several
+    info about cell values
+  * DEMStatistics: added header with the number of selected raster layers
+  * update commons-compress, xz libs
+  * unify archive listing, fix 7zip with new commons-compress version
+  * Use long/boolean attribute types in jdbc converter
+  * Recognize geometry type in more situations
+  * Reworked dialog for rasterimage layers with no georeference info.
+    Now images are opened into the view, by default, with original file 
+    width/height proportion. Option to warp image into the view
+  * oj_linux.sh
+    - java version check now more robust, warns only if version 
+      cannot be detected properly
+    - follow links to oj_linux.sh now indefinitely
+    - resolve JUMP_HOME now without . and ..
+  * Repair and improve SaveViewAsBeanTool
+  * Sextante raster layers: added ability to handle rasters with 
+    different x and y cell sizes.
+  * Arrows to go to next/previous row now also select next/previous feature
+  * Replace layerManager.remove by category.remove to sort layers :
+    much faster and partly solve FR 217
+  * increase readTimout delay of WMSService from 5 to 10
+  * LayerView / AttributePanel selection synchronization
+  * improved legend handling for rasters (via RasterStyler)
+    the legend is now integrated in the layer tree of the TOC
+  * AttributeTablePanel : simplify code, avoid useless selection clearing and 
+    avoid a recursive loop [could not reproduce a case where features can be 
+    deleted from the editing mode]
+  * Reorganized Select Item context menu: move some plugins to a new 
+    "Other tools" submenu
+  * Uniformed Plugin icon ("Palette.gif") and name ("Change Style") to 
+    Layer.class, RasterImage.class and WMSLayer.class Styling plugins 
+    ( DeeChangeStylesPlugIn, WMSStylePlugIn and ChangeRasterPropertiesPlugIn )
+  * Rearranged Style access on the main toolbar, now, depending to selected
+    layer (Layer, WMSLayer, RasterImageLayer), the plugin opens the 
+    corresponding style dialog
+  * Improve ColorThemingStyle : can now set transparency and lineWidth
+    globally or individually in ColorThemingPanel
+  * add Date in XmlBinder to be able to persist Dates in a project file
+  * Added "TXT" among the accepted extensions for raster loader.
+  * DatastoreDataSource now present tables in alphabetical order
+  * Raster styler: added options to save and load symbology as SLD file, 
+    added option to invert ramp for stretched symbology, added given interval
+    classification method, added some more default symbologies, fixed some bugs
+  * extensions can hold messages now (eg. tell why they are not activated)
+  * Improved CutFeatureTool
+  * moved editable, selectable, readonly attributes into (Abstract)Layerable
+    in order for Layerables to be editable etc. in the future
+  * Switch pom to official jts-1.14 release
+  * move WFS language files to language/wfs/
+  * added I18N support for giving a plain path as "category"
+  * added icons to the datastore query chooser's combobox
+  * "static"alized a part of ConnectionManagerPanel w/o redesign consequences
+  * Raster Styler: updated Italian and Spanish language files (thanks to Peppe)
+  * Raster Styler: added check to ensure a valid number of classes has been
+    selected.
+  * move dbquery dependency postgis into it's proper subfolder
+  * linewrap and overall cutification of the extensions about panel
+  * GenerateLogPlugIn shows last 1000 lines of all logger file appenders
+  * fix NPE in 
+    JUMPFeatureFactory.createFromDeegreeFC(JUMPFeatureFactory.java:415)
+  * updated log4j to latest stable 1.2.17
+  * update commons-io to latest commons-io-2.4
+  * update commons-logging to latest commons-logging-1.2
+  * update just released mariadb jdbc to 1.3.4
+
+  Bug Fixes
+  * fix #383 about project files and gml-fme files encoding (writing)
+  * fix #381 about angle constraint dialog box
+  * fr #212 add "exclude empty geometries" option to
+    "select feature by geometry type" tool
+  * fix #383 about project files and gml-fme files encoding (reading)
+  * fix "OpenJump NB 4256 - Bug on opening Option Dialog and clicking on 
+    "OK" button. The panel freezes." reported by Peppe
+  * Fixed WarpImageToFence. Now the plug-in creates a new, warped, raster.
+  * Fixed a bug in WarpImageToFencePlugIn (extension for temporary
+    output file wrong when input is not a TIFF file)
+  * fix WMS auth access
+  * fix #386: ExtractSelectedPartOfImage fails to work when extracting a part
+    of ASC or FLT monoband raster.
+  * fix #387: RasterImageLayer class seems not working anymore with JPG files,
+    occasionally also with some PNG.
+  * Some other bugs fixed in ExtractSelectePartOfImage
+  * Some other bugs fixed in RasterImageIO
+  * Fixed GIF format support in RasterImageLayer and ExtractSelectePartOfImage
+  * Fix Save dataset as Postgis Table (insert all Features as New Rows)
+  * RasterQueryPlugIn. Fix minor bug on lower panel
+  * Fix bug #388 shrinking columns in infoFrame and attributeTable
+    when the schema has changed.
+  * Fix a regression in kml driver introduced by a change in OJ API
+  * fix #393 : simple query plugin did not do a deep copy of features
+    improve boolean handling in simple query plugin
+  * fix #394 : bad geometries produced by CutPolygon Cursor tool
+  * fix #391: Regression on RasterImageLayer about alpha channel
+  * fix #392: Color transparency option on RasterImageLayer.class doesn't work
+  * fix #396 on ShapefileReader so that it can read shapefile from shx as
+    other GIS software do (committed in r4395)
+  * oj_linux.sh fix Gentoo java version '' insufficient bug
+    http://sourceforge.net/p/jump-pilot/feature-requests/221
+  * Fix a horrible bug in Buffer plugin (attributes were not preserved)
+  * #393 : SimpleQueryPlugIn : the bug was not completely fixed : features
+    must be cloned to be added to new Layer but not for Selection or InfoPanel
+  * Fix #400 : Layer changed category untimely
+  * Fix #401 : replicate selected features replicated 2 times
+  * #319 and #399 deactivate the ctrl feature used to limit selection
+    to the selected layers because it is buggy and it is not compatible
+    with quasi-mode tool (ctrl already used to switch to select tool)
+  * Fix #390 : selection lost if layer is moved
+  * Fix #402 : (regression after the fix of #390)
+  * shx file was not closed
+  * Sextante raster layers: fixed bug in nodata color handling when using
+    symbology.
+  * fix bug in dbf writer described in
+    http://sourceforge.net/p/jump-pilot/mailman/message/34210973/
+  * fix bug #406 wrong message "layers not saved"
+  * fix a bug in shapefile charset management (dbf field length was sometimes
+    too short to store strings with accentuated characters)
+  * Raster styles: some bugs fixed.
+  * SelectOneItemTool : fix #404 (could select a feature juset deleted)
+  * improve .cpg handling for shapefile/dbf format
+  * fix a bug with charset option (could be checked but not visible in 
+    "save dataset as" panel)
+  * fix #408 bug about ColorThemingStyle
+  * fix "WFS plugin does not set Content-Type for GetFeature"
+  * Fixed bug when reading ASCII grid cell value
+  * Fixed bug when reading esri ASCII grid with .txt extension
+  * Small fix in BeanshellAttributeCalculatorPlugIn
+  * workaround for OpenJUMP bug 410 (Sextante), If nodata value is
+    -3.40282346639E38 and min value -9999, -99999 or 1.70141E38. Those
+    two values are displayed in red on DEMStatistic table
+  * esri Floating Point grid header writer: bug fixed
+  * RasterImageLayer: fixed few bugs related to overall and single cell
+    transparency
+  * Removed reference to IndentingXMLStreamWriter class in SLDHandler class
+  * Fix bug #411 : plugins in attributeTable context menu was deactivated
+  * fix inconsistency between sld management and new XBasicStyle
+  * bugfix "renaming layers or editing attributes in attribtab executes 
+    plugin/cursortool erronously via shortcut" 
+    and 
+    bugfix #366 "Copy/paste not working in LayerNamePanel"
+  * bugfix #403 "Make layer editable from AttributeTable..."
+  * Fixed bug in GridFloat class: now channels and streams are closed 
+    after writing of grid is completed.
+  * fix FeatureInfoTool did not respect wms 1.3.0 axis order
+
+
+  PLUS edition
+  * add CTSPlugIn in PLUS distribution
+  * added WFS plugin to CORE and it's libs to PLUS, 
+    will hence be enabled in PLUS only
+  * Upgraded Sextante PlugIn
+  * update kml driver to 0.2.4
+    - reenable loading of kmz files
+  * update SetAttributes extension to version 0.6 : right-click on the
+    button now displays a rich text tooltip containing the button parameters.
+    Add a backgroundColor attribute for the buttons
+  * update SetAttributes extension to version 0.6.1 : shorter initial delay
+    for right-click tooltip
+  * update SetAttributes PlugIn to 0.7.0
+  * Added Measure Toolbox Extension version 11 to OpenJUMP Plus
+    Documentation is available here: http://sourceforge.net/projects/opensit
+    /files/Openjump/PlugIn/MeasureExtension/Measure%20toolbox_11.pdf/download
+  * added Nicolas Ribot's Oracle Spatial Datastore Extension to CORE
+    activates in PLUS as it needs DBQuery's *gt2-oracle-spatial-2.x.jar*
+    also *ojdbc6.jar* must be downloaded and installed manually because
+  * add MariaDB jdbc to lib/plus/dbdatastore/
+  * updated to sqlite-jdbc-3.8.11.2.jar
+  * updated to mysql-connector-java-5.1.38-bin.jar
+  * moved db datastore jars to lib/plus/dbdatastore/
+  * MySQL/MariaDB improvements added @r4687:
+    Added support for OGC spatial metadata layout 
+    (geometry_columns table listing geometric tables)
+    Kept native support if OGC tables not found (extent, srid)
+    Changed query to get layer extent, now based on aggregate query on table.
+    Changed native geometry binary format detection: 
+    MySQL format stores SRID in the first 4 bytes of the blob.
+  * SQLite OGC GeoPackage support added @r4701: binary geometry type and 
+    metadata tables support.
+  * finetuned wfs httpclient access, unified proxy and auth handling
+  * wfs request is now buffered to disk for optimal performance
+  * wfs item count is now limited by RAM only
+
+
+Version 1.8.0 release rev.4166 (released on 01. Dec 2014)
+
+  New Features
+  * Add DissolvePlugIn able to dissolve according to several attributes
+  * MapToolTipPlugIn can now interpret jpg/gif/png images from url or
+    filesystem paths (both relative or absolute).
+  * Small improvements in the AttributeQueryPlugIn
+    + add isEmpty, dimension and numHoles attributes
+    + add matches operator (using regex)
+    + add case insensitive option
+  * even more small improvements in the AttributeQueryPlugIn
+    namely icon, added endsWith condition, cleaned up case insensitivity
+  * FR #210 adds option "update source layer" for the buffer plugin
+  * add Proxy configuration (courtesy of Kosmo)
+  * added shortcuts
+    Alt+S - save selected datasets
+    Alt+Shift+S - save selected dataset as
+  
+  Work in progress
+  * Add 3 plugins for macro recording (needs adaptation in each plugin
+    to work effectively).
+  * Make the following plugins recordable within a macro
+    - BufferPlugIn
+    - DisposeSelectedPlugIn
+    - RemoveSelectedPlugIn
+    - ViewSchemaPlugIn
+    - DataSourceFileLayerLoader
+  
+  Improvements
+  * Add lineWidth option to ColorThemingPanel
+  * Add "display vertex" in ColorThemingPanel (vertexStyleEnabled attribute)
+  * Improve copy/paste style behaviour while copying from/to
+    ReferencedImageLayer
+  * AttributeTable sorting is now Locale sensitive for String attributes
+  * Add an option in SaveToPostGIS driver and WritableDataStoreDataSource
+    framework to write normalized lower case column names (see FR #206)
+  * Display date/times with a default 24h format, instead of 12h
+  * improve the way to guess AttributeType in JoinTableDataSourceCSV
+  * DeleteDuplicateGeometries now works also with empty geometries
+  * DeleteDuplicateGeometries save deleted features in another layer
+  * PostGISWriter : improve error handling
+  * Add an option to save to postgis driver to convert NaN Z values to
+    valid Z (requested by mail from Uwe on 2014-10-01/06)
+  * Patch RasterImageLayer according to Alberto de Luca patch sent by
+    mail on 2014-10-06
+  * replaced error dialog in PasteItemPlugin's EnableCheck with warning in
+    statusbar, the dialog disrupted the activation of the context menu
+    containing the plugin
+  * Improve LineStringSegmentStyles readability by removing symbols from
+    very small features and from segments very close to each others
+  * update Xerces as used by GML and WMS to latest stable 2.11
+  * iconified SaveDatasetAsPlugIn with dots
+  * iconified SaveLayersWithoutDataSourcePlugIn
+  * place attribute/info-windows initially on the left bottom
+  * start OJ maximized on the very first start, later restore latest state
+  * two new save as icons for single and multiple saving
+  * added missing save layer/dataset entries to Main->File
+  * oj_windows.bat: add java arch native path support for windows
+  * iconified DeleteAllFeaturesPlugIn, CombineSelectedLayersPlugIn
+  * moved CombineSelectedLayersPlugIn up within layerpopup menu
+  * reworked native lib support, read lib/native/readme.txt
+  * streamlined start script outputs on all 3 platforms
+  * beautified attribtab edit geom buttons, icons visualize (partly) empty 
+    geometries now with grayed out icons and pink background
+  * attribtab keeps selection order now
+  * add union/merge/geomconv to attribute table popup
+  * geometry converter converts empty geoms now
+  * disable wildcard extensions for image filelayerloaders
+  
+  Bug Fixes
+  * Fix a bug in PostGISDataStoreDataSource thanks to Francisco avalos
+    (tables in non public schema could not be read)
+  * Fix bug #371 on WritablePostgisDataStoreDataSource : null schema
+  * Fix bug #372 can't write a table with an old gid if "Create a primary
+    key column" is unchecked
+  * fix fail to startup on ubuntu 12.04 with openjdk java version "1.6.0_31"; 
+    OpenJDK Runtime Environment (IcedTea6 1.13.3) 
+    (6b31-1.13.3-1ubuntu1~0.12.04.2); OpenJDK 64-Bit Server VM (build 
+    23.25-b01, mixed mode); error was
+      java.lang.IllegalAccessError: tried to access class java.awt.
+      GraphicsDevice$WindowTranslucency from class com.vividsolutions.
+      jump.workbench.ui.GUIUtil
+  * limit 32bit jre xmx to 2GiB for compatibility reasons, osgeo's lubuntu 
+    32bit kernel with pae and openjdk 7 couldnt start OJ
+  * Fix #374 : PasteItemsPlugIn did not set target SRIDStyle to pasted items
+  * Fix bug #373 : image format chooser was not available in the
+    OneSRSWizardPanel
+  * Fix PasteItems : now set externalPK to null if it exists
+  * Fix a bug in DataStoreTransactionManager : LayerListener could be added
+    several times for the same Task in some circumstances
+  * Fix #374 : NormalizedColumnName is set to false if it is not defined
+    (ex. old jmp file)
+  * fix JML (GML/FME etc.) reader/writer did not properly read/write UTF-8
+  * Fix a problem in BeanShellAttributeCalculator with date attribute type
+  * Fix a regression introduced in buffer plugin (buffer selection -> NPE)
+  * Fix #380 FillPolygonTool did not always write into the correct project
+  * Fix #363 Shapefile charset chooser was not always updated in
+    SaveDatasetAsPlugIn
+  * Fix #360 SkyPrinter can now print a single layerable
+  * fix #339 Map Canvas & Attributes Window re-sizing 
+    to fit/match Application window
+  * fixpart #379 in PostGIS Driver (new) : delete was not working
+    for a table with special characters.
+  * JML/GML reader: fixed support for (empty) multigeometries and linearrings
+  * JML/GML write: fix writing empty point geoms
+  
+  PLUS edition
+  * graph-toolbox and csv-driver have been updated in PLUS distribution
+  * fix #376, #377 : kml driver is working again (plus edition)
+  * PLUS: update JumpDBQuery to 1.1.0 including new 3.8.6 SQLite JDBC driver
+  * PLUS: added Concave Hull plugin by Eric Grosso
+
+
+Version 1.7.1 release rev.4004 (released on 29. May 2014)
+
+  Fix
+  * fix nasty OSX bug preventing users to open files
+
+  PLUS version, OTHER extensions
+  * fix ProjectPointsOnLinesPlugIn (Topology extension)
+  * improves CSV reader (can now read csv in a zip file)
+
+Version 1.7.0 release rev.3977 (released on 11. May 2014)
+
+  New Features
+  * add printing capability to PDF, Printer in OJ CORE (SkyPrinter)
+  * add Calculate Distances plugin: calculate distances between two sets of
+    geometries
+  * add Move Selected Layer Plugin
+  * add new PostGIS driver with writable capabilities
+  * add plugins for Linear Referencing (menu tools > generate)
+  * enhance image loading support
+    - add new readers based on Image Commons (Apache) and ImageIO
+    - image readers should be able to open archives (images + worldfiles)
+    - readers gather supported formats internally :
+        IOGraphicImageFactory: [jpg, bmp, wbmp, jpeg, png, gif]
+        JAIGraphicImageFactory: [bmp, fpx, jpg, pnm, wbmp, tif, jpeg, png, 
+                                 gif, tiff, xtiff]
+        CommonsImageFactory: [psd and others], see
+          http://commons.apache.org/proper/commons-imaging/formatsupport.html
+    - with GDAL read support for Windows/Linux (slow/unstable in part)
+      [jp2, ecw, mrsid and others], see
+        https://github.com/geosolutions-it/imageio-ext/wiki/
+        GDAL-framework-and-plugins#gdal-supported-formats
+      needs downloadable extra libraries and OJ PLUS, see
+        http://sourceforge.net/apps/mediawiki/jump-pilot/
+        index.php?title=Working_with_Raster#Referenced_Image_reader
+  * add relate (DE-9IM) operator in Simple Query plugin
+  * Analysis > Geometry function: add 3 functions from JTS
+    - MinimumBoundingCircle
+    - MinimumDiameter
+    - MinimumBoundingRectangle
+  
+  Improvements
+  * #364 AutoAssignAttribute : make it possible to set a date
+  * add two options to extract segments to make it more usable
+  * FR 204: separate left/right single sided buffer option of Buffer PlugIn
+  * bug 88: replace vertex size slider by a logarithmic slider
+  * add an option to customize date display in attribute panel
+  * display an icon for null values in attribute panel
+  * beautify the logo splash
+  * add RAM size detection to mac/linux start scripts
+  * update JTS to 1.14(beta): fix bugs in spatiallite geometry handling and
+    in linear referencing
+  * save legend plugin : now prints the word "Project" in front of the 
+    projectname
+  * save legend plugin : many other enhancements
+  * add 2D/3D option for new Save As PostGIS Table
+  * renamed 'Referenced Image [legacy]' to 'GeoTIFF plus (JAI)'
+  * move most plugins from conf java file to default-plugins.xml
+  * reworked plugin management to be able to use default-plugins.xml extensively
+  * openfile much faster when loading many layers (ex. 100 images)
+  * enhance clone, undo, redo to manage PK and FID in a consistent way
+  * add database source in LayerProperties panel if datasource is a datastore
+  * enhance transaction management in GeometryFunctionPlugIn
+  * add external PK in FeatureSchema to manage PostGIS data
+  * ZoomToSelectedItemsPlugIn : better scale calculation
+  * can read inconsistent shapefile/dbf where shape number <> record number
+  * reference image loader is faster
+  * can read dbf files > 2 Gb
+  * attributes with type Object can now be saved to dbf using toString()
+  * enhance compressed files / archive open support
+      - add support for xz (xz, txz, tar.xz)
+      - add preliminary support for 7zip (only LZMA2 & BZIP compression for now)
+      - reworked naming of layers opened from compressed files or archives
+  * ExtractLayersByGeometry: can explode GeometryCollection recursively
+  * AutoAssignAttribute: changes are now undoable
+  * a csv file can now be saved to and read from a project file
+  * feature order is now preserved after transactions (ex. delete)
+  * update default addresses in the WMS chooser
+  * ScaleBar is now task dependant
+  * measurement tool: add relative distance between vertices
+  
+  Bug Fixes
+  * bug 359: AddDataStore & AddWritableDataStore panel not working with java 8
+  * bug 358: resizing a horizontal / vertival line was not possible
+  * bug 338: attribute window context menu shows while multi selecting on mac
+  * bug 320: mouse drag in the layerNamePanel could break the application
+  * bug 355: project containing both file-based and datastore-based layers
+  * bug 354: OpenRecentPlugIn broken.
+  * fix a NPE in non editable GeometryFunctionPlugIn (regression)
+  * bug 352: layers loaded from files could have duplicate names
+  * bug 199: save raster as can now save larger images if memory is available
+  * bug 327: header problem in WMS requests
+  * bug 347: about RangeColorTheming (aka equal intervals)
+  * bug 340 JTreeLayerName can now autoscroll when layers are moved up or down
+  * bug 348: in OpenFileWizard
+  * bug #345 : copy/paste to ReferencedImagesLayer now preserve min/max scale
+  * bug fixed in PostGISDSMetadata and DynamicFeatureCollection (some
+    data were never loaded because of the use of ST_Estimated_Extent)
+  * bug fixed in SpatiaQueryPlugIn (mask layer not always initialized)
+  * bug fixed in GeometryFunctionPlugIn (mask layer not always initialized)
+  * bug 295 and 326: better error handling in project persistence mechanism
+  * Union/Merge plugin: make it more reliable and faster
+
+  PLUS version, OTHER extensions
+  * Fix Road matcher to (make it compatible with OpenJUMP 1.7)
+  * add Jump DBQuery
+  * update dxf driver in PLUS (make it compatible with OpenJUMP 1.7)
+  * update jumpchart from cadplan in PLUS
+  * new OpenStreetMap (.osm) file reader in PLUS
+
+
+Version 1.6.3 release rev.3576 (released on 29. May 2013)
+
+  New Features
+  * Add RasterLayerProperties for Sextante raster layers
+  * Add RasterQueryPlugIn to inspect pixels on Sextante raster layer
+  * Add move to tool in attribute panel
+
+  Improvements
+  * menu Window, put 'Clone' before 'Synchronization'
+  * LayerNameTree selection : performance enhancement
+  * add 'Apply' button in change style dialog
+  * add project name (aka task name) in the ViewAttribute frame title.
+  * zoomPrevious/NextPlugIn have shortcuts Ctrl+Shift+Y/Z now
+  * re-order menus Edit, Layer and View
+  * searchAllAttributesPlugIn : shift (add to selection), zoom to selection
+  * move 'Combine Layers' to Layer main menu
+
+  Bug Fixes
+  * bug 3613870: cloning sextante raster layer was creating a unique name
+  * bug 3612322: NPE in "Create point grid", "Create lattice" and 
+    "Raster profile"
+  * fix NPE in add new DataStore (no spatial table in the DB)
+  * bug 3613603: NPE thrown by LayerNamePanel
+  * bug 3613234: sorting attributes did not respect comparator contract
+  * bug 3611503: FillPolygonTool
+  * fix a regression in windows .bat
+
+  New in PLUS
+  * upgrading Cadplan JumpPrinter to version 1.86 (PLUS version)
+
+
+Version 1.6.2 release rev.3528 (released on 23. April 2013)
+
+  New Features
+  * improved MrSID support now works for Linux and Windows
+  see http://sourceforge.net/apps/mediawiki/jump-pilot/index.php?title=MrSID
+  
+  Improvements
+  * Improve WMS parser to include WMS 1.3.0
+  
+  Bug Fixes
+  * several minor bugs, especially in wms and postgis support
+  * fix bug 3611412 happening after a MergeSelectedFeatures operation and caused
+    by a bad usage of dispose method in UndoableCommand
+  * fix a bug in MergeSelectedFeatures preventing the merge of MultiGeometries
+  * set the appropriate srid to the layer after AddDatastoreLayerPlugin
+  
+  
+Version 1.6.1 release rev.3501 (released on 12. April 2013)
+
+  Bug Fix 
+  * hotfix a NPE which prevented starting properly on Mac and sometimes Linux
+
+Version 1.6.0 release rev.3494 (released on 11. April 2013)
+ 
+  New Features
+  * adding support for GeoTIFF with transformation matrix georeferencing
+    courtesy of Nicolas Ribot
+  * add arrange view horizontally and vertically to the view menu
+  * add a PostGIS writer including 5 options to create a PostGIS table, to 
+    insert rows or to update an existing table.
+  * add a "selection" parameter option to RunDataStoreQueryPlugIn
+  * add Dynamic Attributes based on beanshell snippets + persistence in openjump
+    project files.
+  * add Tools > Generate > Create Point Layer from Attribute Table
+  * add Tools > Edit Attributes > Join Table... to attach attributes 
+    from an one layer to another layer based on a unique ID field
+  * add 6 plugins derived from Noder plugin and available in LayerView
+    context menu
+  * add Merge selected features in place in LayerView context menu (FR 3506380)
+  * add Offset curve plugin
+  * add View > Map decoration > NorthArrow plugin
+  * add densifier function in Tools > Analysis > Geometry functions (FR 3516240)
+  * add Tools > Edit Attributes > Add 3D Geometry Attributes plugin
+  * add Tools > Edit Attributes > Add Geometry Attributes plugin
+  * add detachable InternalFrame
+  * add Generate > Create Grid plugin
+  * add Generate > Voronoi Diagram plugin
+  * add Generate > Triangulation plugin
+  * added -h/-help, -v/-version, -p/-properties command line parameters
+  * load project and data files when given via command line
+  * Include CoverageCleanerPlugIn in Topology extension
+  * general shortcut support, shortcut documentation under Help
+  * Help > About > Info contains more details now 
+  * status bar: enhanced resizablity, tooltips and look
+  * windows starter automatically detects available ram now
+  
+  Improvements
+  * create a View > Map Decoration submenu including ScaleBarPlugin, 
+    ShowScalePlugIn and NorthArrowPlugin
+  * add or changed icons in many menu items
+  * improved command line parameters
+  * improved Layer Name presentation
+  * improved isSimple check in ValidateSelectedLayersPlugIn
+  * migration from jts-1.12 to jts-1.13
+  * clip to fence plugin : center dialog box and change default option
+  * improved PlanarGraphPlugIn code
+  * include csv-driver in the datasource framework
+  * improvements of ExtractLayersByAttribute and SIDLayer courtesy of L Becker
+  * improvement of SaveDatasetsPlugIn (ready for new drivers format persistence)
+  * FR 3491966 Improve performance of label rendering with very large polygons.
+  * Exceptions thrown by BeanshellTools are now shown to the user
+  * Select and activate SelectFeaturesTool the first time OpenJUMP is opened
+  * ViewAttributesPlugIn now saves/restores the window position and size
+  * file formats with lower case description are now capitalized so they do not 
+    get sorted to the end of the file format list in file chooser any more
+  * allow saving text based decoration styles in a project
+  * change default Open Wizard to Open File (was Open Project)
+  * Postgis Reader/Writer several important fixes
+  * Beantools are now properly sorted uneder MacOSX and Linux
+  
+  Bug Fixes
+  * create Lattice from Raster failed in some cases
+  * id 3590463 : in PlanarGraphPlugIn
+  * xtiff_en_US.properties was not found by org.libtiff.jai.util.PropertyUtil
+  * id 3077786 : makes referenced images resizable
+  * id 3525977 : PNG rasters with void pixels not displayed
+  * id 3570707 : LayerNameRenderer and Windows 7 issue
+  * id 3575323 : fixed and changed the whole layout of Attribute Calculator
+  * id 3571031 : Too long field names saved into dbf
+  * SavaDatasetAsPlugIn now check that it produces a valid file name
+  * id 3564137 : view containing a single RasterImageLayer can now be exported
+  * id 3564039 : infinite loop possible in the raster rendering engine
+  * id 3528917 : Open wizard looks weird with windows 64
+  * id 3526653 : SaveImageAsPlugIn did not always scale the RasterImage
+  * improved robustess of NoderPlugIn
+  * fix three small bugs in sld export
+  * fix an NPE in MergeSelectedPolygonsWithNeighbourPlugIn
+  * fixed bug in OpenUMPSextanteRasterLayer
+  * id 3526321 : bugfix  "switching L&F layout issues in OpenWizard"
+  * id 3526277 : create polygon from closed area sometimes displayed
+    the progressbar forever
+  * id 3446420 : fix import of zipped shapefiles with XML metadata file
+  * bug 3600776 : regression in LabelStyle (caused by jts update to 1.13)
+  * fix 1447907 : upgrade jdom.jar (1.0b8) to jdom-1.1.3.jar
+  * fix 1472782 : date is now shown with time in attribute table. It is 
+    persisted as timestamp in postgis database and jml files, but time is lost
+    in shapefiles.
+  * bug 3607970 : fix two problems in SimplifyPolygonCoveragePlugIn
+  * bug 3608648 : can now open a project including broken db connections.
+  * fix Screen Scale and SaveImageAsSVG problem
+  * bug 3610405 : CombineSelectedFeatures now return a GeometryCollection rather
+    than a invalid MultiPolygon
+  
+  New in PLUS edition
+  * add OSX 32bit ECW,JP2 libraries courtesy of gvsigce project
+  * upgrade from Sextante 0.6 to Sextante 1.0
+  * fix bug in DXF reader (text entities were unreadable)
+  * topology extension : improvement (ProjectPointOnLine) and plugin addition
+    (AdjustPolygonBoundaries)
+  * new csv driver with an automatic mode (guess separator) and a customizable 
+    mode. The driver creates empty geometries if no geometry is provided.
+  * add SkyJUMP pick Color integration to the PLUS version
+  * bump JumpPrinter to 1.85 (several bug fixes)
+  * featreq 3601072 : bump aggregation-0.2.5 to 0.2.7
+  * remove PostGIS plugin now replaced by the driver included in OpenJUMP-CORE
+
+--------------------------------------------------------
+Version 1.5.2 (released on 18.may.2012)
+  
+  Bug fixes
+  - PLUS edition finally starts at reasonable times even from network shares
+  - Bug 3521266 : open Raster image (Sextante) checkbox was now always available
+    when an image file was selected
+  - Bug 3521940 : Trouble with opening several shapefiles from one zip file
+  - Preserve z values in JML format, even if first coordinate has no z
+  - Write again z values in WKT format of Info viewer
+  - Improved icon display (internal changes + icon replacement)
+  - Bug 3515663 : Statistics > Classify attribute was throwing an exception
+  - Bug 3513864 : Raster Image layers (Sextante) have now an icon in the 
+    TreeLayerNamePanel and do not throw exception anymore
+  - Bug 3513741 : Analysis > Union : attribute used to dissolve was 
+    duplicated in the result layer
+  - Bug 3513735 : Sextante Raster visibility attribute was not saved in project
+  - Bug 3510832 : Changing schema with attribute table opened threw exception
+  - Bug 3510778 : EZ Button did not respect layer editability
+  - Bug 3497362 : Dialog box of "draw circle from center and radius" popped up
+  - Bug 3491956 : Union of overlapping lines could not be merged
+  - Bug 3489322 : Snapping on grid had rounding problems (snapped coordinate 
+    to 872939.1 could be 872939.1000000001)
+  - Bug 3489028 : FillPolygon ("Create polygon from closed area") could 
+    return a wrong area in the case of polygons with holes.
+  - Bug 3489026 : FillPolygon ("Create polygon from closed area") can be 
+    long : a work-in-progress dialog box has been added in this case
+  - Bug 3488976 : Noder plugin failed to split polygons
+  - Bug 3488974 : Buffer PlugIn : workaround a small problem of robustness 
+    by adding a simplify(geom,0) pre-process
+  - Bug 3488028 : A dataset read from zip could be tagged editable but could 
+    not be edited. It is now tagged read-only
+  - Bug 3486847 : Wrong message : When Closing a project with unsaved data, 
+    the message was asking if one want to close OpenJUMP
+  - SimpleQuery : change the definition of strict intersection from 
+    TFFTFF*** to TFF*FF*** so that closed linestring can also be found
+
+  in PLUS edition
+  - Bug in Network Topology Cleaning plugin (nodes inserted at the wrong place)
+  - Bug 3519929 : date management in PostGIS
+  - Bug 3492384 : DXF export of lines does not export z value
+  - Bug 3487686 : BeanshellEditor : Flying the mouse over the LayerViewPanel 
+    was automatically hiding the editor
+  
+  Small improvements
+  - improved PostGIS 2.0 compatibility
+  - New (vertical) logo in the windows installer
+  - FR 3511501 : Change FillPolygon ToolTip to "Create polygon from closed 
+    area"
+  - Status bar : Small improvements in the layout
+  - startup now more talkative and output of startup durations to console
+  - selected skins in options dialog are now persistent over restarts
+  - BZIP, GZ compressed files read support e.g. data.shp.gz
+  - BZIP, GZ compressed and uncompressed TAR archive read support
+  - new application wide info icon and cursor
+  - improved performance of complex polygon reading from shapefiles
+  - WMS : cache the label associated to each MapLayer in MapLayerPanel as it is
+    called very often and includes a costly calculation (getFullSRSList)
+
+--------------------------------------------------------
+Version 1.5.1 (released on 02.febr.2012)
+
+  New Features
+  - New multiplatform installers for linux, mac, windows made with IzPack 
+    and Launch4J
+  
+  Bug fixes
+  - ClipToFencePlugIn [3472008] clearer message in case of duplicate attribute 
+    names
+  - CombineSelectedLayer now accept non-default geometry attribute names
+  - AbstractCursorTool fix for the Linux painting/screen refresh problem
+  - more minor bug fixes
+  
+  Small improvements
+  - Optimization of DeleteDuplicateItemsPlugIn
+  - Windows Exe-launcher executes oj_windows.bat now
+
+--------------------------------------------------------
+Version 1.5.0 - svn2588 (released on 07.jan.2012)
+
+  New Features
+  - FillPolygonTool, an Edit Tool to create a polygon 
+    from a closed area
+  - Tools/Edit Geometries/Noder PlugIn : nodes/splits 
+    lines and polygons
+  - Improved LayerView context menu :
+    * new icons
+    * new reverse line orientation plugin
+    * add zoom tools, replicate and clone plugins
+  - Copy/Paste schema
+  - New i18n files for several Indian languages (partial)
+  - New Buffer PlugIn including all options of JTS API
+  - CORE and PLUS distributions replace normal and -s
+  - ECW package is refactored (PLUS distribution) and 
+    made linux-box compatible
+  
+  Small improvements
+  - Better layout of AttributeTablePanel
+  - Column width of AttributeTablePanel is now persistent
+  - Improved usability and consistency of right-click menu in AttributePanel
+    (fixes bug 3441486)
+  - Exended Pirol Attribute Calculator
+  - OpenProjectPlugIn is now used when OpenJUMP is started with a project file
+  - Now accept a zipped shapefile without dbf
+  - Many new icons and zoom plugins in LayerView context menu
+  - Removed Fill Patterns from core distribution
+  - deactivated SaveImageAsSVG and remove Batik from CORE distribution
+    (kept in PLUS)
+  - FR 3422848 : Added a "limit" parameter in addDataStorePlugIn
+  - label style : separation of position parameter and horizontal alignment
+  - Refactored AutoAssign PlugIn
+  - New Union/Dissolve/Merge plugin unifying old Union and Dissolve
+  - ShapefileWriter now prompts the user to accept to truncate fields > 255 char
+  - You now get layer colors in SimpleQuery PlugIn
+  - Improved readability of Layer names in MultiInputDialog (white foreground 
+    used with dark selection background)
+  - ReferencedImageFactoryFileLayerLoader does not create empty layers any more
+    if loading fails, and OpenFileWizard displays errors properly
+  - About panel now displays the readme file (which is improved)
+ 
+  API Changes
+  - Refactoring of selection package (improved memory usage, fixed bug 2792806)
+  - Refactoring of EditTransaction class and make some operations much more fast
+  
+  Bug Fixes
+  - 3469215 : OpenJUMP could become instable if layers were removed from 
+    LayerNamePanel while the AttributeTable was opened
+  - 3439132 : Open File dialog was too large because of long file extension list
+  - Fixed an NPE throwed by AddImageLayerPlugIn when there is no Project Window
+  - 3456437 : IndexOutOfBoundException in ViewAttriute and FeatureInfo PlugIns
+  - 3442147 : With several projects, SimpleQuery could show a wrong layer list
+  - 3440346 : AttributeCalculator parser is now more robust
+  - makes workbench-state encoding and parsing consistent
+  - EditSelectedFeaturePlugIn was broken
+  - 3434161 : OpenProject/SaveProjectAs now remember last used directoy
+  - 3434648 : AutoAssignPlugIn did not recognize negatives and decimals
+  - 3428076 : SaveDatasetAs fixed for MacOSX
+  - 3413805 : Toggle layer visibility is now java7 compatible
+  - Fixed NPE in SaveDatasetsPlugIn
+  - 3413619 : moving category up and down with only one category was buggy
+  - 3415409 : NoteStyle could not be deserialized
+  - 2728360 : UndoChain was broken by layer operation
+  - 3084927 : better error handling if ecw file is in an accented path
+  
+
+--------------------------------------------------------
+Version 1.4.2 - svn2383 (released on 11.Sept.2011)
+
+  New Features
+  - added a Geometry Conversion tool (callable from context menu or main menu)
+  - added new options to the BlendLineStrings tool
+  
+  Small improvements
+  - Better internationalization
+  - Clean View menu : Move "Run SQL Query..." and "Add Image (Test, ECW...)" 
+    from Layer Menu to File menu.
+  - Readme file in the InfoPanel 
+  
+  API Changes
+  - Removed MultiInputDialogWithoutCancel (use MultiInputDialog instead)
+  - added net.iharder.Base64 (making OJ free of native java code)
+  
+  Bug Fixes
+  - Include net package in the distribution (used for encrypted WMS URL)
+  - Bug 3303503 : Faulty handling of schemas in OJ 1.4.0.3
+  - Bug 3354118 : Changing L&F throws NPE
+  - Bug 3360102 : Reverse line direction applied to source layer
+  - Bug 3397856 : Decoration / display z value not working with points
+  - Bug 3398100 : Attribute based query throws NPE with null values 
+  
+--------------------------------------------------------
+Version 1.4.1 - svn2313 (released on 04.July.2011)
+  - Fix a bug preventing to read old project files
+
+--------------------------------------------------------
+Version 1.4.1 - svn2300 (released on 02.July.2011)
+
+  New Features :
+  - Add DataStoreQueryDataSource to save a Layer based on an SQL query
+  - Add RefreshDataStoreQuery to refresh a layer based on an SQL query
+  - Add EditDataStoreQueryPlugIn to edit a SQL query associated to a Layer
+  - SaveLayersWithoutDataSourcePlugIn : while saving a project, in-memory layers
+    can be saved in shapefile or jml format
+  - Add new AdvancedMeasurePlugin with more capabilities
+
+  Small improvements :
+  - InstallSkinsPlugIn : now find available l&f
+  - Improve user experience by adding new icons and reorganizing some menus
+  - Can now persist editable, selectable and readonly attributes
+  - ST_AsBinary(geom) is no more necessary to query the geometry of a 
+    PostGIS table
+  - Add two navigation buttons in attribute panel (previous/next without zoom)
+  - ShowScale is now a toggle menu item
+  - Optimisation of LineString drawing
+  - Added SaveDatasets plugin in the ToolBar
+  - LabelStyle now use LocalSettings for a better presentation
+  - LayerPropertiesPlugIn display layer extent
+  - Better user experience with FontChooser 
+  - Improvement of the status bar (now uses JSplitPane)
+
+  API changes
+  - now uses jts1.12
+  - Add a new MultiInputDialog with more flexibility
+  - Added a DropDownbutton from Netbeans project
+  - WorkbenchToolBar: addCursorTool() can add a DropDownToogleButton
+    to the Toolbar
+
+  Bug fixes :
+  - LayerStyle2SLDPlugin : fixes the namespace prefix in order 
+    to get rid of xalan
+  - MultiClickTool throwed a IndexOutOfBoundsExeption
+  - MergeSelectedPolygonsWithNeighbour : stop trying to merge a polygon
+    with itself
+  - StatisticOverViewPlugIn : fix a NPE
+  - RasterColorEditor : enable refreshing and setting back original colors
+  - ColorTheming can now use RenderingStylePanel (BasicStyle) initialization
+  - SaveFileDataSourceQueryChooser can now catch bad file names
+  - ColorThemingStylePanel : improved vertex styles drawing (avoid duplicate)
+  - ClassifyAttributes : better null values handling
+  - AttributePanel : delete key could delete a feature accidentally 
+  - AddRasterImageLayerWizard : now load an image without worldfile
+  - ColorThemingStyle : did not work with attributes containing nulls
+  - IntersectPolygonLayersPlugIn : could set a double value (NaN) to
+    an Integer attribute 
+  - Layer and feature statistics now recurse through GeometryCollections
+  - Layer statistic : mean of integer attributes (as #Points) 
+    is a double rather than int
+  - TreeLayerNamePanel : a layer could be deleted accidentally
+  - JoinTableDataSourceCSV : empty lines are now skipped silently 
+
+--------------------------------------------------------
+Version 1.4.0.3 - svn2178 (released on 02.December.2010)
+
+  Bug fix release:
+
+  - fixed a bug in the windows installer (.bat file and other bin resources
+    were installed in OpenJUMP directory instead of OpenJUMP/bin)
+  - Improvement in status bar (enable copy/paste to clipboard)
+    
+--------------------------------------------------------
+Version 1.4.0.2 (released on 07.November.2010)
+
+  Bug fix release:
+
+  - postgresql driver replaced by a newer one (for pgsql 9.0 compatibility)
+  - openjump bundled with Sextante and postgis plugin fixed :
+    (1) quick fix in linux/macos script (thanks to edgar soldin)
+    (2) postgis plugin made java5 compatible thanks to Uwe Dallüge
+  - see other small fixes in the ChangeLog file at
+    http://jump-pilot.svn.sourceforge.net/viewvc/jump-pilot/
+    core/trunk/ChangeLog?sortby=date&view=log
+
+--------------------------------------------------------
+
+Version 1.4.0.1 (released on 27.October.2010)
+
+  Bug fix release:
+  
+  - fixed a raster referencing problem (returning the wrong raster data for the
+    currently selected raster layer)
+
+
+--------------------------------------------------------
+
+Version 1.4.0 (released on 24.October.2010)
+
+  This release includes:
+  
+  - "EZ"-buttons that can be programmed with often used menu functions and
+    used with the "F#"-keys
+  - optional selection of the CHAR set (international code)
+    when loading shape files
+  - drawing of selections can be defined
+  - invert current selection
+  - five new statistical functions for vector data:
+    (i) Create Bar Plot,
+    (ii) Create Histogram,
+    (iii) Create Scatter Plot,
+    (iv) Classify Attributes,
+    (v) Calculate Mean and Variance per Class
+  - four new raster functions (for images load as "Sextante Raster"):
+    (i) Create Lattice from Image,
+    (ii) Create Polygon Grid from Image,
+    (iii) Profile Graph,
+    (iv) Raster Color Editor
+  - support of reading ESRI ASCII grid files as Sextante Raster
+  - functions to merge selected polygons with neighbor polygons (similar to
+    ArcGIS "eliminate"), and intersect all polygons within a layer
+  - OpenJUMP now remembers the window location, size, and maximized state in the
+    workbench-state.xml file and the project files
+  - better handling of null attributes and date attributes in queries
+  
+  Fixes and performance improvements:
+  
+  See the ChangeLog file at
+  http://jump-pilot.svn.sourceforge.net/viewvc/jump-pilot/
+  core/trunk/ChangeLog?sortby=date&view=log
+  
+
+--------------------------------------------------------
+
+Version 1.3.1 (released on 6.December.2009)
+
+  This release includes
+  
+  The OpenJUMP version 1.3.1 is primarily a maintenance release to solve a
+  problem with the tiff image file export. So there are is only one new feature
+  for working with PostGIS queries, compared to version 1.3. 
+
+--------------------------------------------------------
+
+Version 1.3.0 (released on 19.April.2009)
+
+  This release includes
+  
+  New Features:
+  
+  - new (cartographic) attribute classification methods for color theming added
+   to equal number and quantiles:
+   i) mean-standard deviation,
+   ii) maximal breaks,
+   iii) Jenks optimal
+  - new function that generates a layer attribute statistics table
+    (integrated from PirolJUMP)
+  - Jython/Python support as second scripting possibility besides BeanShell
+    (integrated from SkyJUMP)
+  - new raster image reader that allows to directly use Sextante raster/image
+    analysis tools (integrated from PirolJUMP)
+  - the list of functions available in the "tools" menu is now configurable
+    with the file "default-plugins.xml"
+  - new function that allows searching in all attribute values over all layers
+  - new function to simplify polygon within a tesselation/landscape of polygons
+  - new tool that allows to add notes in the Editing toolbox
+  - new Auto-Complete-Polygon tool
+  - new synchronization function for map views for panning and zooming
+    operations
+  - ...for more new functions see below... 
+  
+  Fixes and performance improvements:
+  
+  - New attribute classification methods work now with integer attributes too.
+  - WMS Encoding layer names and format properly.
+  - Add, remove and fix three small scripts in the BeanTools script directory
+  - Fixed issue/feature request 1938020 - selections generated with
+    the spatial query function can now be deleted
+  - Fixed issue (bugreport) 1786353 - improved Layer description for A/B,
+    i.e. what source and what target layer is.
+  - Fixed issue (bugreport) 1779771 - removed confusing scale units / label.
+  - Fixed bug 2673544 - made Cut Polygon Tool undo-able.
+  - Fixed bugs 2628678 and 2514296 - Auto Complete Polygons is now
+    undo-able and adds polygons only to an editable layer (i.e. the
+    tool choses the next editable layer for drawing or creates a new layer).
+  - Fixed bug 2660257 - enabled reading of LinearRing geometries from JML files.
+  - Added layer context menu functions for Pirol/Sextante raster images.
+  - Created new "statistics" menu in tools. Moved feature-, layer-,
+    and attribute statistics functions into the menu.
+  - Newly created layers are marked with featureCollectionModified=true.
+    So when OpenJUMP is closed, it should ask for saving the data.
+  - Integrated RasterImageLayer from Pirol - this will allow to
+     use Sextante with OpenJUMP directly (when Sextante bindings are changed too).
+  - Integrated Layer Statistics tool from Pirol.
+    To be found in /Tools/Analysis/One Layer/Attribute Statistic Overview
+  - Added further 1-D Classification methods for ColorTheming.
+    Besides using the equal-interval and equal-number methods,
+    class breaks can now be calculated using
+    i) Mean-Standard Deviation,
+    ii) maximal breaks,
+    iii) Jenks optimal breaks.
+    Note: The equal-number breaks calculation has been replace with one
+    contained in Classifier1D to keep consistent with API methods (however,
+    tests show that the old and the new method deliver slightly different 
+    results)
+  - Integrated Jython tools from ISA / SkyJUMP.
+  - Disabled plugin that allows panning with keys due to feedback with layer
+    navigation to re-enable add the following line to default-plugin.xml
+  - Added functions to sort categories by name and number of features
+  - Added changes to openjump.sh script from Peppe, so loading of JYthon should
+   work with Debian now (and not only with Windows)
+  - Replaced jts 1.9 with jts 1.10
+  - Added function to delete features from a layer that have the same geometry.
+  - Fixed bug 1821235 : with respect to loading *.ECW images
+  - New Function: Search All Attributes aims to add search engine capability to
+    a gis.
+  - Added function to simplify polygons if they are part of a tesselation in
+    Tools/Generalization.
+  - Added function to extract boundaries of polygons in 
+    Tools/Edit Geometry/Convert/.
+    This function can be used to simplify the boundaries and then to recreate
+    simplified polygons.
+  - Internationalization for Extract Point plugin.
+  - Removal of ISA simplification plugin (made init as comment in 
+    default-plugins.xml).
+  - Modified findMaxStringLength in Shape File Writer to not allow zero length
+    string fields
+  - Fixed bug with cutting polygon with hole and linestring did not go through
+    the hole.
+  - Make the original JUMP NoteTool available as a PlugIn.
+  - Fix the size of combo boxes in the simple query editor
+    to prevent the query dialog panel to become too large
+  - Applied a patch from Hisaji Ono to write 2 bytes character correctly in
+    dbf files
+  - Fixed bug in PlanarGraphPlugIn
+  - Added PlugIn to Combine Selected Layers both geometry and attributes
+    with automatic colour theming on created layer attribute.
+  - Display of number of features per layer for layer-name tooltip
+  - Re-ordering of menu items
+  - Added support to for extending multiple selected LineStrings or joining
+    two with a connection
+  - Added new tool to extract point features from other layer with other
+    geometry types
+  - Added Larry's Clip-To-Fence function from ISA Tools
+  - Extended Thiessen polygon creation to be aware of a delineating
+    background polygon (i.e. points are sorted out and polygon is used for
+    clipping)
+  - Added Larry's Auto-Assign-Attribute function from ISA Tools
+  - Enabled the Union check box when Get Distance from Attributes is checked.
+  - Added patch by Bing to parse single bytes in dbf files, which is better
+    for chinese characters [see email topic on googlegroups: "patchs for
+    reading dbf files with multi-bytes character columns"]
+  - Added error checking to prevent problems after pasting a Style
+    that refers to a missing Attribute.
+  - Updated snapping policy to allow snapping to lines of multi polygons
+    (and geometry collections in general).
+  - Changed BufferPlugIn to take advantage of new UnaryUnionOp.union()
+    method of JTS 1.9.
+  - Fixed null pointer when reading from project file.
+  - Set the default button for Enter key to the OK.
+  - Replace old progressiveUnion optimization by the new UnaryUnionOp of
+    JTS 1.9 which is much faster
+  - Replace string intern() by a local hashmap to avoid duplicating strings
+    when reading Shape/DBF files
+  - (Re-)Enabled the styling of basic style + vertex style.
+  - Added the Plume tool to the Tools->Generate menu. Select a single
+    LineString and enter start and end radii.
+  - Moved all "advanced" plugin functionality to the "default-plugins.xml" file.
+    Basic functionality (such as file i/o, viewing and styling) is still loaded
+    from the OpenJumpConfiguration file.
+  - Added new command-line parameter "-default-plugins" to load a "second"
+    properties file. Plugins read from a properties file with
+    "-default-plugins" will be loaded before the plugins from
+    "-workbench-properties". It is intended to deliver a "default-plugins.xml"
+    in the /bin/ directory of OpenJUMP. (Note: using two properties files
+    enables to separate general OJ plugins from own functions)
+  - Added Multi-Ring-Buffer Function for selected objects (a similar function
+    can be found in ArcGIS:
+    http://webhelp.esri.com/arcgisdesktop/
+    9.2/index.cfm?TopicName=multiple_ring_buffer_(analysis) )
+  - Added "Get distance from attribute" option to Buffer.
+    Currently it disables the Union option.
+  - Fixed a null pointer when selected layer is no WMS layer.
+  - Added capability to select image format for WMS layers/requests.
+  - Changed naming of rules for color theming styles.
+  - Added exporting of angle attribute for label styles.
+  - Improved/re-added SLD import of color theming styles.
+  - Added patch from Jakko which allows use of WMS servers protected
+    with basic HTTP authentication. Credentials are taken from URL,
+    which can be entered as 'http://user:password@server/path'
+  - Added new function to intersect two layers that contain
+    polygons under /Tools/Two Layers/. The function allows in
+    a second step to transfer the attributes from both
+    source layers.
+  - Enabled loading of Mr.SID layers using the new OpenFramework
+    (note: problems exist with deleting the temp-jpg-files in
+    MrSIDReferencedImage.paint)
+  - Fixed parsing of WMS capabilities without GetFeatureInfo section.
+  - Added wms-default url to http://openaerialmap.org/wms/, bug [1944641]
+  - Fixed bug [1729554] in extension manager
+  - Added Auto Complete Polygon Tool from Uni Hannover via Malte W.
+  - New Synchronization menu that allows to make a mosaic of several map windows
+    and to synchronize those map window when panning and zooming 
+
+--------------------------------------------------------
+
+Version 1.2.0 F (released on 6.April.2008)
+
+  This release includes
+
+  New Features:
+  
+  - enabled transfer of attributes when Thiessen polygons are created
+  - added category tools from Pirol Projekt
+  - added function to copy current bounding box to clipboard.
+  - added  Cut Polygon PlugIn from SIGLE
+  - added new point style modifier and fill/nofill capability to
+    custom symbols (like Triangle).
+  - Added ImportSLD plugin. 
+  - added SLD-Export of SVG images.
+  - added a Paste Items At Point menu item on the layer view context
+             menu that pastes the clipboard at the right-clicked point.  Note 
+             that there must be an editable layer highlighted.  
+  - added Replace attribute value by copy from an other attribute 
+            org.openjump.sigle.plugin.replace.ReplaceValuePlugIn.java   
+  - added Extract by Geometry Type on layer name context menu.         
+  - added the LayerPropertiesPlugIn which adds a menu item
+            "Layer Properties" to the Layer Name popup menu.  This
+            feature will display layer information such as name, number
+            of features, number of points, number of attributes, geometry type,
+            DataSource class, and source path.  It works on single or multiple
+            layer selections.  It also includes a transparency adjustment slider
+            that works for layer selections.
+  - added an option to "Write world file" in the Save Image As dialog.
+      I18N strings were added but need translation.
+      com.vividsolutions.jump.workbench.ui.plugin.SaveImageAsPlugIn.java
+      org.openjump.core.ui.plugin.file.WorldFileWriter.java
+  - Consolodated Label Style enhancements (from SkyJUMP).
+        * Finished implementation of horizontal alignment in LabelStyle.
+          Replaced the vertical alignment images (Above the line, etc.)
+          with I18N text.
+        * Added support for halo text. A halo is a surrounding outline in a
+          contrasting color to improve readability when using a mixed background
+        * Added support for hiding text below a specified scale.
+          This makes it possible to stop text from rendering when zoomed out
+          too far to actually read it
+  - added a Zoom Realtime tool to the toolbar.  This tool uses
+          image stretching to simulate the zoom before it occurs for an
+          accurate preview.
+                       
+  Changes in the user interface:
+  
+  - replaced "Transfer Attributes" from SIGLE with Spatial Join from JUMP
+  - renamed CutPolygonPlugIn to SplitPolygonPlugIn 
+  - added capability to use external graphics as fill patterns.
+  - added support for halos (text outlines).
+  - added a shift key mode to Move Selected Items cursor tool that 
+             turns it into Rotate Selected Items.
+  - added the new Open File, Open Project and Open Recent menus.
+  - added drag and drop support for loading files
+  - added mouse wheel zooming to the PanTool. 
+  - added the SelectablePlugIn to control selectability of layers.
+  - moved Layer Properties below Selectable menu item.
+  - added menu icons to MoveLayerablePlugIn, BufferPlugIn,
+    and RefreshDataStoreLayerPlugin
+  - added menu icons to EditablePlugIn and RotatePlugIn
+  - added menu icons to Save Selected Datasets,Save Dataset As,
+          Delete Selected Items, Delete All Features, Remove Selected Layers,
+    Add New Features, Zoom To Layer, and Cut Selected Items.
+  - improved Tools->Generate->Buffer.
+          Supports buffering the selection. Provides a convenience union option.
+          Sidebar picture  previews the current options.
+          It copies attributes by default, even from selections on multiple
+          layers, but this can beturned off.
+          Supports setting the number of segments in a quarter circle.
+  - added a VertexZValue style and 
+    internationalized the VertexXYLineSegment style
+  - Make snap points to the grid or to vertices possible
+  - Added a Segment Downhill Arrrow Style
+    
+          
+  Fixes and performance improvements:
+  
+  - workaround for warping bug [1920024]       
+  - replaced JTS version 1.72 by 1.9
+  - replaced old PostgreSQL driver (v.2) by newer Version 3.0 
+  - fixed bug of non-activation of Item-Info-Button in Attribute Table
+  - fixed bug when exporting svg symbols via menu item.
+  - fixed some issues with the importer and color theming styles,
+      made the exported SLD more robust against geometry types.     
+  - fixed smaller bugs concerning custom fill patterns from SVG.
+  - fixed small bugs in the styling panel.
+  - fixed/enhanced import/export of color theming styles.
+  - translations in enable check factory, fixing an item on Jukka's list.
+  - removed lib: jmath5m.jar
+       Updated to newer version of jmatharray library which works on double[][].
+  - external DTDs are not loaded automatically anymore for WMS, this
+       enables offline working with local WMSs.
+  - fixed File->Save View as Raster bug with the Metal L&F that caused
+    the save file name text box to dissappear.
+      Moved the Save World File check box to the top of the dialog.
+      Also added an X edit box that defaults to the view's X width,
+      but can be changed to any value up to 3800 to save a high resolution
+      image.  A fence icon appears to the left of the X box if there is a fence
+      layer, indicating that it will be used in place of the view window to
+      define the picture bounds.
+  - improved the PastePlugin to support point coordinates in the form (1.0,1,1)
+       or (1 1 1) with any amount of white space. Multiple points can be pasted
+       at the same time.
+  - added support for plug-ins to have their own I18N resource bundles.
+  - fixed styling bug [1691836] 
+  - fixed reading of TIFF rasters with world files.
+  - better error message for WMS Query bug: [1748657]
+  - added a new wizard for opening different types of data. Includes
+     functionality from the LoadDataset, AddWMSLayer and AddDataStoreLayer 
+     plugins
+  - optimizations to improve responsiveness with large selections of points
+  - improved the windows and UNIX startup scripts
+  - fixed conf directory location in openjump.sh and removed batik sub dir
+  - closed the shape file after it was read to allow it to be deleted.
+  - SchemaPanel height set to 20 to have a readable combo box
+          with the MetalLookAndFeel
+  - Bug fixed in SaveDatasetAsPlugIn [bug 1770783]: now display the
+          layer name in the file chooser
+  - Bug fixed in LoadDatasetPlugIn : refresh the file list each time the
+          plugin is called
+  - added -state command line option to specify a directory where
+          the workbench-state.xml file should be stored (or a file name).
+        * Updated the openjump.sh script to set the -state directory to
+          $HOME/.jump/.
+  - improvements to Simple Query: Put resulting layer in standard
+    Result category, and added a listener to update comboboxes when
+    layers are added to the task
+  - added right click on Layer View menu item 
+    "Select Layers with Selected Items".
+    Made setSelectedLayers() public in TreeLayerNamePanel to support
+    this function.
+  - fixed the internal string problem in DbfFile reader with large datasets
+    where every attribute value was different by adding exception handler
+    that stops further interns
+  - fixed the problem with the toolbar selection arrow tool
+          losing the feature selection when right clicking.
+  - fixed problem in Color Theming Style Panel with all cells
+          displaying a fill pattern when any one was set using Custom.
+  - fixed a problem with the Toggle Visibility Layer Name
+          popup menu item.  It was totally nonfunctional.
+
+--------------------------------------------------------
+
+Version 1.2.0 D (16.Aug.2007)
+
+this version is equivalent to following nightly built: openjump-20070816-0019
+
+Bugfixes and Improvements done since release of OpenJUMP 1.2 B:
+
+- fixed a problem with the window turning black when an Image Layer was added
+  due to the graphics context composite being changed.
+- added support for mouse wheel zooming when the zoom cursor is over 
+- set default SRID to -1 for PostGIS
+- fixed a bug (submitted by Hisaji Ono) where some edges had
+          wrong links to faces. The method has been entirely rewritten.
+- added a warning message in language files to manage the case where one
+  tries to transfer attributes from an heterogeneous layer with
+  PlanarGraphPlugIn
+- fixed a bug in Simple Query PlugIn (responsible of confusion between the
+  three static taget options : all layers / selection / selected layers
+- ShapefileWriter: added that an Exception is thrown, when layer geometries
+  are of different type. 
+  Data aren't saved then. (otherwise the user wonders when only polygons
+  are stored)
+- removed openjump-mac.sh file since the new openjump.sh
+  file works under MAC-OSX as well
+- set EditTransaction.ROLLING_BACK_INVALID_EDITS_KEY = true when starting up
+  OJUMP (i.e. invalid geometries are not alowed per default, switch
+  can be done in Edit Options Panel)
+- Tried to fix issue
+  http://sourceforge.net/tracker/
+    index.php?func=detail&aid=1246588&group_id=118054&atid=679906
+  instead fixed the issue for SaveImageAsSVGPlugin and SaveProjectAsPlugin.
+- Added context menu entry on layer list that allows changing the layer name.
+  Changed ToggleVisibilityPlugin to allow changing WMS layer visibility
+  toggling.
+- The WMS field remembers the last used server address.
+- resolved LoadDatasetPlugIn "ok" button problem on MacOSX.
+  The problem was caused by the validation method that always
+  returned false. The workaround does not use validation, but
+  only for MacOSX computers. To check the OS a new class was added.
+- WMS layers use the title now instead of the WMS layer name.
+  While editing WMS requests, moving layers up/down caused the SRS
+  box to switch back to the first available SRS, this was fixed.
+- updated the demo.deegree.org URL to a working value.
+- Default output is UTF-8 now instead of ISO-8859-1, fixing encoding
+          problems in resulting XML files.
+- added fix by Malte to avoid null-pointer excpetion when making a copy of a
+          FeatureCollection containing Features with null values for attributes.
+          (see jpp-devel email send by sstein on 24.July.2007)
+- replaced jmat_5.0.jar by the cleaned up version jmat_5.0m.jar wich does only
+          contain the org.jmat packages. 
+- Bug fix in LabelStyle : added trim() to avoid labels to be ex-centered
+- Bug fix : thick closed lines (and polygons) did not have a nice
+          join_bevel on the first/last point (tip from Larry Becker)
+- improvement: scripts/openjump.sh: Added improved startup script for Unix from
+          Paul Austin.
+- improvement: Add UnionByAttributePlugIn in the Tool/Analysis menu
+- Remove several plugins related to loading/saving files and which are
+          no more useful (two plugins in the workbench.ui.plugin package and
+          two other plugins in the datasource package)
+- improvement: Add automatic file extension in the main SaveDatasetAsPlugIn
+          and put the format chooser at the bottom of the dialog (as in SkyJUMP)
+- Fix a bug in the Comparator used to sort geometries and
+          improve union performance.
+- improvement: for expensive BasicStyle construction 
+  (slowed down colour theming a lot)
+- improvement: added dissolve beanshell script by Hisaji
+- Fix a problem with TaskFrame
+          closing (related to bug 1726629) : now, every internal frames
+          related to a TaskFrame (table view or info frame) are closed
+          before the TaskFrame (with a confirmation dialog)
+- Fix the "Closing Cloned Window" bug (1475013) : now, layer manager
+          resources are released only when the last internal frame using it
+          is closed.
+- Fix bug 1691834 about labelling (can label above, on are below
+          lines again)
+- improvement: Backport Larry's bug-fix to enable
+          workbench-properties file outside the IDE (see bug 1726102)
+- Fix     Add double-quotes around column names to be able to query
+          mixed-case column names. There may be a similar bug for schema
+          and table names (see bug report 1694304), but this happens
+          somewhere else in the code.
+- improvement:
+          Several optimization to be able to visualize data as wireframes
+          while dragging the zoombar, even with big features and large
+          dataset (use of Java2DConverter decimator, selection of large
+          data instead of random data, elimination of invisible layers in
+          the feature selection...)
+- improvement: Including SkyJUMP's improvements concerning
+  the rendering pipeline (point coordinates decimation, selection renderer)
+- Fix the memory leak problem
+          when removing a Layer (the LayerRender cache was not freed)
+- Improvement: Cache last WMS result with a SoftReference
+- Improvement: Union can now union a layer or a selection, like
+          in SkyJUMP
+- Improve segments extracter -> optionally removes segments
+          appearing several times like the JCS equivalent plugin and
+          optionally merge the result)
+- fixed bug: line width textField set on the same line as the line
+          width slider in the basic style panel
+- fixed bug: "End feathers" decoration appeared on wrong end
+- fixed bug 1713295 (Snap always on)
+- update brazilian language file
+- Fix BeanTools NPE : don't  load BeanTools plugin if the plugin directory
+  is missing
+
+--------------------------------------------------------
+
+Version 1.2.0 C (2007-08-11)
+
+  This release includes
+
+  New Features:
+  - Improve Tools > Edit Geometry > Segments extracter
+    Now, the plugin optionally removes segments appearing several times (as in
+    the JCS equivalent plugin) and optionally merges the result
+  - Improve Tools > Analysis > Union
+    Now, the plugin can union a layer or a selection, as in SkyJUMP
+  - Added Tools > Analysis > UnionByAttributePlugIn
+
+  
+  Changes in the user interface:
+  - JoinTablePlugIn now called from tools/edit attributes menu
+  - Fixed an alignment problem in the BasicStylePanel
+  - Now, every internal frames related to a TaskFrame (table view or info frame)
+    are closed before the TaskFrame (with a confirmation dialog)
+  - Removed File > Loading Dataset From File and
+                   Save Dataset As File
+    added automatic file extension in the main Save Dataset As
+    and put the format chooser at the bottom of the dialog (as in SkyJUMP)
+  - Add WMS Query : updated the demo.deegree.org URL to a working value
+  - The WMS field remembers the last used server address
+  - Added context menu entry on layer list that allows changing the layer name
+    Changed ToggleVisibilityPlugin to allow changing WMS layer
+    visibility toggling
+  - set EditTransaction.ROLLING_BACK_INVALID_EDITS_KEY = true when starting up
+    OJUMP (i.e. invalid geometries are not alowed per default, switch can be
+    done in Edit Options Panel)
+  - Changed the URL field to a editable combo box (OpenJUMP now stores a list of
+    urls instead of just one)
+  
+  Fixes and performance improvements:
+  - I18N (no more exception when a string is missing)
+  - Improved shapefilereader performances (memory use and loading time)
+  - Fixed error with length-constraint text field in ConstraintsOptionsPanel
+  - Several bug fixes with the new BeanToolsPlugIn
+  - Fixed bug 1713295 (Snap always on)
+  - Fixed bug 1367145 : "End feathers" decoration appeared on wrong end
+  - Fixed a bug in WMSLayer.java: Cache last WMS result with a SoftReference
+  - Fixed the memory leak problem when removing a Layer
+  - Improved the rendering pipeline
+  - Always construct WMSLayer so that they are fetched in parallel running
+    threads
+  - ZoomBar optimization to reduce UI latency
+  - Stop throwing an exception when there are several geometry column in a
+    postgis table (consider the first geometry column as the feature geometry)
+  - Read PostGIS geometry columns as if it was WKB instead of WKT as it seems
+    to be the standard now
+  - Backport Larry's bug-fix to enable workbench-properties file outside the IDE
+    (see bug 1726102)
+  - Fix bug 1691834 about labelling (can label above, on are below lines again)
+  - Fixed the "Closing Cloned Window" bug (1475013) : now, layer manager
+    resources are released only when the last internal frame using it is closed.
+  - Fixed a problem with TaskFrame closing (related to bug 1726629)
+  - Fixed for expensive BasicStyle construction (slowed down colour
+    theming a lot)
+  - Replacement for the old ThreadQueue. Now worker threads are kept alive for
+    at least 5 seconds waiting for new incomming jobs.
+  - Fixed a bug in the optimization code of UnionPlugIn
+  - SLD Size element is now next to the Mark element and not underneath it.
+    XSLUtility is now checking for null while constructing background
+  - Added improved startup script for Unix from Paul Austin
+  - Changed InfoModel to remove layers after the listeners are notified
+  - Fixed a bug in LabelStyle : added trim() to avoid labels to be ex-centered
+  - Fixed a bug where thick closed lines (and polygons) did not have a nice
+    join_bevel on the first/last point
+  - Replaced jmat_5.0.jar by the cleaned up version jmat_5.0m.jar
+  - Bug fixed thanks to Malte, to avoid null-pointer excpetion when making a copy
+    of a FeatureCollection containing Features with null values for attributes.
+    (see jpp-devel email send by sstein on 24.July.2007)
+  - SLD PlugIn : Default output is UTF-8 now instead of ISO-8859-1, fixing
+    encoding problems in resulting XML files
+  - WMS Layers use the title now instead of the WMS layer name.
+    While editing WMS requests, moving layers up/down caused the SRS
+    box to switch back to the first available SRS, this was fixed
+  - resolved LoadDatasetPlugIn "ok" button problem on MacOSX
+  - ShapefileWriter : an Exception is thrown if one try to save a shapefile with
+    mixed geometries (otherwise the user wonders when only polygons are stored)
+  - fixed a bug in Simple Query (responsible of confusion between the
+    three static taget options : all layers / selection / selected layers
+
+  Many new translations
+  
+  Code clean up (fixed javadoc tags, removed duplicated imports, unused files)
+  
+  Thanks to
+  - Andreas Schmitz
+  - Jon Aquino
+  - Landon Blake
+  - Larry Becker
+  - Martin Davis
+  - Michaël Michaud
+  - Paul Austin
+  - Sascha L. Teichmann
+  - Stefan Steiniger
