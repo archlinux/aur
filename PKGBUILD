@@ -12,5 +12,5 @@ md5sums=('SKIP')
 
 package() {
   cd "${srcdir}/bandcamp-downloader"
-  python setup.py install --root=${pkgsrc}
+  python setup.py install --root=${pkgdir}
 }
