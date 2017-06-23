@@ -1,6 +1,6 @@
 pkgbase = brave-bin
 	pkgdesc = A web browser that stops ads and trackers by default. Binary release.
-	pkgver = 0.17.6
+	pkgver = 0.17.7
 	pkgrel = 1
 	url = https://www.brave.com/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = brave-bin
 	provides = brave-browser
 	conflicts = brave
 	options = !strip
-	source = brave-bin-0.17.6.tar.bz2::https://github.com/brave/browser-laptop/releases/download/v0.17.6dev/Brave.tar.bz2
+	source = brave-bin-0.17.7.tar.bz2::https://github.com/brave/browser-laptop/releases/download/v0.17.7dev/Brave.tar.bz2
 	source = MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt
-	sha512sums = f240f33d899c56cbc8cd672070a32d4a4cd0a1e1519419374b1c7656b59da79e6fdecd16e4492c516b8dd00a4a560e1eaf77b7e9853d7aa29fcd3195ba91d433
+	sha512sums = 91cb0b45df708ac064a5be94009a3acc27c1326fc7a31670535329e8a2da5f3c9f53535264a2e56ce262f3a0deeba8259fc3effbed6d3c8ebbf8b442e6b3f8bd
 	sha512sums = c1e3a0c8f5267fb5c0b65733bda037c62d914ed989bee0f510d8196b1029eec00d40f415ce1514a4996d420ba02d856d04db0915b64573ef4a36033cc5efb94e
 
 pkgname = brave-bin
