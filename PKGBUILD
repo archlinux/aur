@@ -40,19 +40,25 @@ options=(!strip libtool staticlibs emptydirs !purge !zipman)
 _ccsdir=ccstudio
 _destdir=opt
 _installdir=installdir
-_installpath=$_installdir/$_destdir/ccstudio/ccsv7/tools/compiler
+_installloc=$_ccsdir/ccsv7/tools/compiler
+_installpath=$_installdir/$_destdir/$_installloc
+_tooldir=${pkgname}_${pkgver}
+
+prepare() {
+    cd $srcdir
+    chmod +x ./${_installer}
+}
 
 build() {
-	cd $srcdir/${_archive}
+    cd $srcdir
 
-    echo ">>> Executing installer. You can monitor progress with:"
-    echo ">>>     tail -f ${srcdir}/${_installpath}/ccsv7/install_logs/*/ccs_setup_${pkgver}_install.log"
-
-    # Assuming the same problem exists as for ccstudio installer (see ccstudio/PKGBUILD for details)
+    # Calling from build to avoid fakeroot, assuming the same problem exists as
+    # for ccstudio installer (see ccstudio/PKGBUILD for details)
     ./${_installer} --mode unattended --prefix $srcdir/$_installpath
 }
 
 package() {
+
     # Hardlink to avoid time and space overhead
     cp -ral $srcdir/$_installdir/$_destdir $pkgdir/
 
