@@ -28,7 +28,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share"
     cp -rp ${srcdir}/usr/share "${pkgdir}/usr/share"
     cp -rp ${srcdir}/opt "${pkgdir}/opt"
-    install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -D -m644 "${srcdir}/opt/${_pkgname}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     mkdir -p "${pkgdir}/usr/bin/"
     ln -s /opt/${_pkgname}/${_pkgname}.AppImage ${pkgdir}/usr/bin/${_pkgname}
 }
