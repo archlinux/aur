@@ -2,8 +2,8 @@
 # Maintainer: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio
-_srcname=linux-4.10
-pkgver=4.10.13
+_srcname=linux-4.11
+pkgver=4.11.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -17,23 +17,28 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches for pci passthrough
         'add-acs-overrides.patch'
         'i915-vga-arbiter.patch'
-        )
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+        CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch
+        CVE-2017-1000364.mm-fix-new-crash-in-unmapped_area_topdown.patch
+        CVE-2017-1000364.fixup.allow-stack-to-grow-up-to-address-space-limit.patch)
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'b1a7a98aa97cc0917fcab0def68032d5bf61838c79177b2222cee2485015458f'
+            '00c0b804ccda18d6ed4a32ba0be049a80363aa2bc084733a22da03f435d992a4'
             'SKIP'
-            '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
-            '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
+            'f330007da72867bb86556d1f8b84b8a4c8148a5ed5195ae25570a5da61428733'
+            '9dd9aa4a8ec613cc8261e40db897685d75e3d426219ed8d21fa3a6bc72a27a32'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
             '773b2a7db63dbc38336e04e25d5017a2a02c49e424cfa32beedb4e47a5027d2c'
-            '0bef31f6d1415398cb2e78d58798aa49e146b27c87764da181b6d41bd4e577eb')
+            'e82ea0c7752b5845655043bb209e39ca3a9fe9c0841b100a5d182261c1ab7068'
+            'e1b6a237894fb9e7bf142eb97b5e53c2e46a15ff69ef11593007f254b9faa160'
+            'beede1721c92bae39049be5bcb30e4274406dc53c41436bf75bd44238ee8efe4'
+            'de9c4f81b51c497de930b365f63633a005e3b8bcfbb21be93fe0cbab84ed9f76')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -46,6 +51,11 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # security patches
+  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch"
+  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-fix-new-crash-in-unmapped_area_topdown.patch"
+  patch -p1 < "${srcdir}/CVE-2017-1000364.fixup.allow-stack-to-grow-up-to-address-space-limit.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
