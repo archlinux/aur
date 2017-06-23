@@ -1,14 +1,32 @@
 _dir=/opt/ccstudio/ccsv7
+_grp=ccstudio
 
 post_install() {
-    echo ">>> To install software from within CCS, run ccstudio as root."
-    echo ">>> For normal usage, run as normal user."
+    # Since CCS manages its own updates, and treats it's install directory
+    # as its working directory, we can't leave it owned by root
+    #
+    # This is still hacky, since files that CCS creates will be
+    # created under user's group, not ccstudio group, and running
+    # CCS via newgrp is not a solution, since it would affect project
+    # files (which we do want created under user's group).
+
+    getent group ${_grp} &>/dev/null || {
+        echo ">>> Creating group ${_grp}"
+        groupadd $_grp
+    }
+
+    chgrp -R $_grp $_dir
+
+    echo ">>> Run this command as each user who will run CCS, to add to '${_grp}' group:"
+    echo ">>>    sudo usermod -a -G ${_grp} \$(whoami)"
 }
 
 post_remove() {
-    # Since CCS manages its own updates, and treats it's install directory
-    # as its working directory, there's cache and trash left over
+    # Since CCS treats its install direcotry as working directory, trash is left.
     # NOTE: other directories (${_dir}/tools) might have also been created, but
     # some are owned by other packages (e.g. compiler), so be conservative.
     rm -rf ${_dir}/eclipse
+
+    # NOTE: we do not remove the group, to not orphan files
+    # in case some files don't get removed.
 }

@@ -72,8 +72,10 @@ package() {
     # Hardlink to avoid time and space overhead
     cp -ral $srcdir/$_installdir/$_destdir $pkgdir/
 
-    #find $pkgdir -type f -exec chmod g+rw {} \;
-    #find $pkgdir -type d -exec chmod g+x {} \;
+    # Since CCS manages its own updates, and treats it's install directory as
+    # its working directory, we can't leave it owned by root, so we use a group.
+    chmod -R g+rw $pkgdir/$_destdir/$pkgname
+    find $pkgdir/$_destdir/$pkgname -type d -exec chmod g+x {} \;
 
     # Extract path to executable from .desktop
     mkdir -p $pkgdir/usr/bin
