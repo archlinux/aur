@@ -31,6 +31,9 @@ makedepends=('glibc<2.25' 'lib32-glibc<2.25' 'lib32-gcc-libs')
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
 depends=('gconf' 'python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib')
 
+# Without some ttf fonts installed, UI is ugly
+optdepends=('ttf-dejavu')
+
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
 source=("http://software-dl.ti.com/ccs/esd/CCSv7/CCS_7_2_0/exports/${_archive}.tar.gz"
