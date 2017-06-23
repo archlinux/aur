@@ -29,7 +29,7 @@ license=('custom:TSPA')
 makedepends=('glibc<2.25' 'lib32-glibc<2.25' 'lib32-gcc-libs')
 
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
-depends=('gconf')
+depends=('gconf' 'python2' 'gtk2' 'libxtst' 'nss' 'libxss' 'alsa-lib')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
