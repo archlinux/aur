@@ -1,0 +1,31 @@
+pkgbase = qreator
+	pkgdesc = Create your own QR codes
+	pkgver = 16.06.1
+	pkgrel = 1
+	url = http://davidplanella.org/project-showcase/qreator/
+	arch = any
+	license = GPL
+	makedepends = python2-distutils-extra
+	depends = geoclue2
+	depends = libchamplain
+	depends = libnm-glib
+	depends = python2-pillow
+	depends = python2-cairo
+	depends = python2-dbus
+	depends = python2-gobject
+	depends = python2-qrencode
+	depends = python2-requests
+	depends = python2-vobject
+	depends = python2-xdg
+	source = https://launchpad.net/qreator/trunk/16.06.1/+download/qreator_16.06.1.tar.gz
+	source = https://launchpad.net/qreator/trunk/16.06.1/+download/qreator_16.06.1.tar.gz.asc
+	source = Port-to-geoclue-2.0.patch
+	source = pil.patch
+	validpgpkeys = AA9019D554FC8466A675F46EBAE23342DCA278EF
+	sha256sums = 3e3608e48da6a3c88330c07766fb3f5ddcf32d2326524086e2fe7b44af117962
+	sha256sums = SKIP
+	sha256sums = 5e6c76315c62aa8731bb2241f6d8849e06be63e4022e661c6854d473b0fb8d61
+	sha256sums = 11223fc0e9767f2d6d62ab05a2f865d15691c8c9356003e2d78293b77a844c6e
+
+pkgname = qreator
+

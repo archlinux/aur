@@ -1,0 +1,14 @@
+diff -Naur qreator-16.06.1.orig/qreator/QRCode.py qreator-16.06.1/qreator/QRCode.py
+--- qreator-16.06.1.orig/qreator/QRCode.py	2016-06-13 21:11:25.000000000 +0200
++++ qreator-16.06.1/qreator/QRCode.py	2017-06-23 21:29:20.646268780 +0200
+@@ -20,8 +20,8 @@
+ except ImportError:
+     print "You need to install the python-qrencode package"
+     sys.exit(1)
+-import Image
+-import ImageOps
++from PIL import Image
++from PIL import ImageOps
+ import cairo
+ import array
+ 

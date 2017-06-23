@@ -1,0 +1,70 @@
+From: Chow Loong Jin <hyperair@debian.org>
+Date: Sun, 15 Jan 2017 23:45:17 +0800
+Subject: Port to geoclue-2.0
+
+geoclue has been removed from Debian.
+---
+ qreator/qrcodes/QRCodeLocationGtk.py | 46 ++++++++++--------------------------
+ 1 file changed, 12 insertions(+), 34 deletions(-)
+
+diff --git a/qreator/qrcodes/QRCodeLocationGtk.py b/qreator/qrcodes/QRCodeLocationGtk.py
+index 9adb634..c6b144f 100644
+--- a/qreator/qrcodes/QRCodeLocationGtk.py
++++ b/qreator/qrcodes/QRCodeLocationGtk.py
+@@ -14,6 +14,7 @@
+ # with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ### END LICENSE
+ 
++import gi
+ from gi.repository import Gtk, GtkChamplain, Clutter, Champlain
+ from qreator_lib.helpers import get_data_file
+ from gi.repository import GtkClutter
+@@ -83,37 +84,14 @@ class QRCodeLocationGtk(object):
+ 
+ 
+ def get_current_location():
+-    '''Gets the current location from geolocation via IP (only method
+-       currently supported)'''
+-    #import Geoclue
+-    #POS_PROVIDER = 'Ubuntu GeoIP'
+-    #location = Geoclue.DiscoverLocation()
+-    #location.init()
+-    #location.set_position_provider(POS_PROVIDER)
+-    #position = location.get_location_info()
+-
+-    import dbus
+-    bus = dbus.SessionBus()
+-
+-    # For now we default to the UbuntuGeoIP provider and we fall back to
+-    # Hostip. We should probably be cleverer about provider detection, but
+-    # this solution works for now and does not rely solely on UbuntuGeoIP,
+-    # which means qreator can run on other distros
+-    try:
+-        geoclue = bus.get_object(
+-            'org.freedesktop.Geoclue.Providers.UbuntuGeoIP',
+-            '/org/freedesktop/Geoclue/Providers/UbuntuGeoIP')
+-    except dbus.exceptions.DBusException:
+-        geoclue = bus.get_object(
+-            'org.freedesktop.Geoclue.Providers.Hostip',
+-            '/org/freedesktop/Geoclue/Providers/Hostip')
+-    position_info = geoclue.GetPosition(
+-        dbus_interface='org.freedesktop.Geoclue.Position')
+-
+-    position = {}
+-    position['timestamp'] = position_info[1]
+-    position['latitude'] = position_info[2]
+-    position['longitude'] = position_info[3]
+-    position['altitude'] = position_info[4]
+-
+-    return position['latitude'], position['longitude']
++    '''Gets the current location from geolocation via using Geoclue-2.0'''
++
++    gi.require_version('Geoclue', '2.0')
++    from gi.repository import Geoclue
++
++    geoclue_simple = Geoclue.Simple.new_sync(
++        'qreator', Geoclue.AccuracyLevel.EXACT)
++    location = geoclue_simple.get_location()
++
++    return (location.get_property('latitude'),
++            location.get_property('longitude'))
