@@ -7,12 +7,11 @@ url="http://www.latticesemi.com/"
 license=('custom')
 pkgver=3.9
 _revision="99-2"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 source=("http://files.latticesemi.com/Diamond/${pkgver}/diamond_${pkgver/"."/"_"}-base_x64-${_revision}-${arch}-linux.rpm"
 		"lattice-diamond.png"
 		"lattice-diamond.desktop")
-makedepends=('rpmextract')
 sha512sums=('ee4ef401f7e6db6b54061e612224666ee0f3218499653f82b66a2865a0fdf3e6c8986c7a70d6c92da7d1276b6e21081866603d544d6fdc0c60fcccbcfa7b683a'
 			'772fa260bb1a4ed7c4e328a99b3cd16b625e8880d7731abbe0cd59dbe4d743265e169a26ceba7b619a87c1cb9638a268a5501d3358863171ee808e59b2d3b0ac'
 			'376ff8219222f4cecec686356ccbbd19ee5e721ab991d4ec335a32248431e4a26433d29476cd900fb3dee7e441a875eaacbf2b197273482d7b39bff76c8db70c')
