@@ -12,7 +12,7 @@ depends=()
 makedepends=('p7zip')
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage")
 options=('!strip')
-source=("https://github.com/djenriquez/${pkgver}/releases/download/${pkgver}/Vault-UI-${pkgver}-${arch}.AppImage")
+source=("https://github.com/djenriquez/${_pkgname}/releases/download/${pkgver}/Vault-UI-${pkgver}-${arch}.AppImage")
 md5sums=('e54abc06601c5ebaf1c55fa4c1a8f9f5')
 
 prepare() {
