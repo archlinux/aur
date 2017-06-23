@@ -1,6 +1,6 @@
 pkgbase = kube-develop
 	pkgdesc = A modern groupware client based on QtQuick and Sink (development branch)
-	pkgver = r586.e5677f0
+	pkgver = r988.c605c01
 	pkgrel = 1
 	url = https://kube.kde.org/
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = kube-develop
 	makedepends = git
 	makedepends = clang
 	depends = sink-develop
-	depends = messagelib
 	depends = qgpgme
 	depends = kirigami
 	depends = qt5-quickcontrols2
