@@ -6,7 +6,7 @@
 
 pkgname=broadcom-wl
 pkgver=6.30.223.271
-pkgrel=5
+pkgrel=6
 
 pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver'
 url='https://www.broadcom.com/support/802.11'
@@ -22,6 +22,7 @@ source=('modprobe.d'
         'linux47.patch'
 	'linux48.patch'
 	'linux411.patch'
+	'linux412.patch'
 )
 
 source_i686=("https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
@@ -31,7 +32,8 @@ sha256sums=('b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32'
             '583335a6edb2ed1094977c401643d3e60471c6bc5c3ea81f45910a9cccb06032'
             '30ce1d5e8bf78aee487d0f3ac76756e1060777f70ed1a9cf95215c3a52cfbe2e'
             '833af3b209d6a101d9094db16480bda2ad9a85797059b0ae0b13235ad3818e9c'
-            '977b1663ce055860b0b60e7cf882658f507d81909f935d1a8b785896f64176e8')
+            '977b1663ce055860b0b60e7cf882658f507d81909f935d1a8b785896f64176e8'
+            'a3d13e8abb96ad440dbfae29acae82d31d1ced2ea62052f1efb2c3c4add347ce')
 sha256sums_i686=('4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058cd')
 sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be')
 
@@ -46,6 +48,7 @@ prepare() {
   patch -p1 -i linux47.patch
   patch -p1 -i linux48.patch
   patch -p1 -i linux411.patch
+  patch -p1 -i linux412.patch
 
   sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" \
       -i src/wl/sys/wl_linux.c
