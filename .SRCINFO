@@ -21,7 +21,7 @@ pkgbase = nausoftphone
 	depends = phonon-qt4>=4.2.0
 	depends = phonon-qt4-gstreamer
 	depends = qt4>=4.8.0
-	depends = qtwebkit>=2.3.
+	depends = qtwebkit-bin>=2.3.
 	depends = zlib>=1.1.4
 	optdepends = haveged: boost low entropy
 	source = manual://nausoftphone_6.3.40.2-1482506341-trusty_amd64.deb

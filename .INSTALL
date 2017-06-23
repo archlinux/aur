@@ -4,12 +4,12 @@ post_install() {
     if [ -L $LINK ]; then
     	rm -f $LINK
     fi
-    ln -s /opt/naumen/nausoftphone63/nausoftphone $LINK
+    ln -s /opt/naumen/nausoftphone6/nausoftphone $LINK
     update-desktop-database -q
 	# Libs alias
 	ln -s /usr/lib/libboost_system.so /opt/naumen/nausoftphone6/libboost_system.so.1.54.0
 	ln -s /usr/lib/libboost_thread.so /opt/naumen/nausoftphone6/libboost_thread.so.1.54.0
-    ln -s /usr/lib/libboost_filesystem.so /opt/naumen/nausoftphone63/libboost_filesystem.so.1.54.0
+    ln -s /usr/lib/libboost_filesystem.so /opt/naumen/nausoftphone6/libboost_filesystem.so.1.54.0
 }
 
 post_upgrade() {
@@ -21,7 +21,7 @@ post_remove() {
     if [ "$1" = "remove" ]; then
     	ldconfig
     fi
-	LINK=/usr/bin/nausoftphone63
+	LINK=/usr/bin/nausoftphone6
     if [ -L $LINK ]; then
     	rm -f $LINK
     fi

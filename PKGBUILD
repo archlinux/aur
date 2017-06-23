@@ -1,4 +1,4 @@
-# Maintainer:  Xiaoxiao Pu <i@xiaoxiao.im>
+# Maintainer:  Novikov Maxim <the.mlex@gmail.com>
 
 pkgname=nausoftphone
 _pkgname=nausoftphone6
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('Commercial')
 depends=('bash' 'alsa-lib>=1.0.16' 'boost' 'bzip2' 'gcc-libs>=4.6' 'glibc>=2.16' 'hicolor-icon-theme' 'hplip' 
 	'krb5>=1.10.' 'libidn>=1.13' 'libldap>=2.4.7' 'libpulse>=0.99.1' 'libtiff>=4.0.3' 'phonon-qt4>=4.2.0'
-	'phonon-qt4-gstreamer' 'qt4>=4.8.0' 'qtwebkit>=2.3.' 'zlib>=1.1.4'
+	'phonon-qt4-gstreamer' 'qt4>=4.8.0' 'qtwebkit-bin>=2.3.' 'zlib>=1.1.4'
 )
 optdepends=('haveged: boost low entropy')
 makedepends=()
@@ -31,7 +31,7 @@ package() {
   unlink ${srcdir}/data.tar.xz
   unlink ${srcdir}/debian-binary
   unlink ${srcdir}/nausoftphone_$pkgver-$pkgrel-trusty_amd64.deb
-  unlink ${srcdir}/usr/share/applications/${_pkgname}.desktop
+  unlink ${srcdir}/usr/share/applications/${pkgname}.desktop
   rm -Rf ${srcdir}/usr/share/doc
 
   # Install
@@ -39,7 +39,7 @@ package() {
   install -d -m755 "$pkgdir"/opt/naumen/${_pkgname}
   install -d -m755 "$pkgdir"/usr/
 
-  cp -a ${srcdir}/opt/naumen/${_pkgname}/* $pkgdir/opt/naumen/${_pkgname}
+  cp -a ${srcdir}/opt/naumen/${pkgname}/* $pkgdir/opt/naumen/${_pkgname}
   cp -a ${srcdir}/usr/ $pkgdir/usr/
 
   install -D -m444 ${srcdir}/nauphone.png $pkgdir/opt/naumen/${_pkgname}/res/icons/nauphone.png
