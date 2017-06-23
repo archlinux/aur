@@ -4,7 +4,7 @@
 pkgbase=linux-xps-9560               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
-pkgver=4.11.5
+pkgver=4.11.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -17,20 +17,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config.i686' 'config.x86_64'
-	'.config'
+        '.config'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-	'patch-ath10k.patch')
+        'patch-ath10k.patch')
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '1686ea3200069acd7869075a208ad6771c651b4f9d942b4a340fb8606c75fe13'
+            '00c0b804ccda18d6ed4a32ba0be049a80363aa2bc084733a22da03f435d992a4'
             'SKIP'
             'f23b751bc0ab63396569a63ad2511cceb9c4cc7dc469bd2b1c336ca9f1a5e564'
             'beed8d6a7d04ede44b47fac7ebf289bc96a9b98bccf4b6582480432627c3fca7'
-            '87f90e15a90f5b2f3dc36332a5b83df7caed6b1e9616bae5d28a056cf44bd372'
+            'e47f2eb97b9ec31637a5c9eea77420bd28529ea255a165e604ce14976bf415f4'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '93c200f7cd0f7a860440d6b5190b84014534346ff0fd5582b4554a4854945f08')
@@ -87,7 +87,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="A custom linux kernel and modules for the Dell XPS 15 - 9560.  Has ACPI override enabled and a wifi patch.  Should be used with 'acpi_rev_override=1' in boot flags. WiFi bug: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1692836"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
