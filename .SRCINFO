@@ -1,11 +1,12 @@
 pkgbase = msgviewer
-	pkgdesc = AT commands as input are sent to modem and responses given as output.
+	pkgdesc = MsgViewer is email-viewer utility for .msg e-mail messages, implemented in pure Java.
 	pkgver = 1.9
 	pkgrel = 1
-	url = http://https://sourceforge.net/projects/msgviewer/
+	url = https://sourceforge.net/projects/msgviewer/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = rpmextract
 	source = MSGViewer-1.9-1.noarch.rpm::http://sourceforge.net/projects/msgviewer/files/MSGViewer-1.9/MSGViewer-1.9-1.noarch.rpm/download
 	md5sums = 8a5c1581e9f774fd9a25d74a2cef554e
 
