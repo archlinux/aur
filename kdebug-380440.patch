@@ -1,0 +1,162 @@
+From c45e165514ec70314d721d6e0238431ab92bd441 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Fl=C3=B6ser?= <mgraesslin@kde.org>
+Date: Sun, 18 Jun 2017 13:36:27 +0200
+Subject: Fix switch desktop through edge when moving window
+
+Summary:
+There was a regression introduced in ScreenEdges when introducing the
+activatesForPointer method. It considered the switch desktop on edge,
+but not the special case of switch desktop when moving windows. Due to
+that the edges did not activate when moving the window.
+
+This change addresses the regression and extends the autotest to ensure
+it's properly covered.
+
+BUG: 380440
+FIXED-IN: 5.10.3
+
+Test Plan: Manual testing and extended auto test
+
+Reviewers: #kwin, #plasma
+
+Subscribers: plasma-devel, kwin
+
+Tags: #kwin
+
+Differential Revision: https://phabricator.kde.org/D6257
+---
+ autotests/mock_abstract_client.cpp | 11 +++++++++++
+ autotests/mock_abstract_client.h   |  3 +++
+ autotests/mock_client.cpp          |  5 -----
+ autotests/mock_client.h            |  2 --
+ autotests/test_screen_edges.cpp    | 21 +++++++++++++++++++++
+ screenedge.cpp                     |  6 ++++++
+ 6 files changed, 41 insertions(+), 7 deletions(-)
+
+diff --git a/autotests/mock_abstract_client.cpp b/autotests/mock_abstract_client.cpp
+index 20795fa..d270f63 100644
+--- a/autotests/mock_abstract_client.cpp
++++ b/autotests/mock_abstract_client.cpp
+@@ -30,6 +30,7 @@ AbstractClient::AbstractClient(QObject *parent)
+     , m_hiddenInternal(false)
+     , m_keepBelow(false)
+     , m_geometry()
++    , m_resize(false)
+ {
+ }
+ 
+@@ -103,4 +104,14 @@ void AbstractClient::setKeepBelow(bool keepBelow)
+     emit keepBelowChanged();
+ }
+ 
++bool AbstractClient::isResize() const
++{
++    return m_resize;
++}
++
++void AbstractClient::setResize(bool set)
++{
++    m_resize = set;
++}
++
+ }
+diff --git a/autotests/mock_abstract_client.h b/autotests/mock_abstract_client.h
+index a88f04f..8d7e825 100644
+--- a/autotests/mock_abstract_client.h
++++ b/autotests/mock_abstract_client.h
+@@ -47,6 +47,8 @@ public:
+     void setHiddenInternal(bool set);
+     void setGeometry(const QRect &rect);
+     void setKeepBelow(bool);
++    bool isResize() const;
++    void setResize(bool set);
+     virtual void showOnScreenEdge() = 0;
+ 
+ Q_SIGNALS:
+@@ -60,6 +62,7 @@ private:
+     bool m_hiddenInternal;
+     bool m_keepBelow;
+     QRect m_geometry;
++    bool m_resize;
+ };
+ 
+ }
+diff --git a/autotests/mock_client.cpp b/autotests/mock_client.cpp
+index 97d7e01..88b5fa6 100644
+--- a/autotests/mock_client.cpp
++++ b/autotests/mock_client.cpp
+@@ -35,9 +35,4 @@ void Client::showOnScreenEdge()
+     setHiddenInternal(false);
+ }
+ 
+-bool Client::isResize() const
+-{
+-    return false;
+-}
+-
+ }
+diff --git a/autotests/mock_client.h b/autotests/mock_client.h
+index df62ecd..17db3c8 100644
+--- a/autotests/mock_client.h
++++ b/autotests/mock_client.h
+@@ -34,8 +34,6 @@ class Client : public AbstractClient
+ public:
+     explicit Client(QObject *parent);
+     virtual ~Client();
+-
+-    bool isResize() const;
+     void showOnScreenEdge() override;
+ 
+ };
+diff --git a/autotests/test_screen_edges.cpp b/autotests/test_screen_edges.cpp
+index e26459e..8411781 100644
+--- a/autotests/test_screen_edges.cpp
++++ b/autotests/test_screen_edges.cpp
+@@ -392,6 +392,27 @@ void TestScreenEdges::testCreatingInitialEdges()
+         QCOMPARE(e->activatesForTouchGesture(), false);
+         QCOMPARE(e->approachGeometry(), expectedGeometries.at(i*2+1));
+     }
++
++    // let's start a move of window.
++    Client client(workspace());
++    workspace()->setMovingClient(&client);
++    for (int i = 0; i < 8; ++i) {
++        auto e = edges.at(i);
++        QVERIFY(!e->isReserved());
++        QCOMPARE(e->activatesForPointer(), true);
++        QCOMPARE(e->activatesForTouchGesture(), false);
++        QCOMPARE(e->approachGeometry(), expectedGeometries.at(i*2+1));
++    }
++    // not for resize
++    client.setResize(true);
++    for (int i = 0; i < 8; ++i) {
++        auto e = edges.at(i);
++        QVERIFY(!e->isReserved());
++        QCOMPARE(e->activatesForPointer(), false);
++        QCOMPARE(e->activatesForTouchGesture(), false);
++        QCOMPARE(e->approachGeometry(), expectedGeometries.at(i*2+1));
++    }
++    workspace()->setMovingClient(nullptr);
+ }
+ 
+ void TestScreenEdges::testCallback()
+diff --git a/screenedge.cpp b/screenedge.cpp
+index 589c1d0..7e4fc07 100644
+--- a/screenedge.cpp
++++ b/screenedge.cpp
+@@ -183,6 +183,12 @@ bool Edge::activatesForPointer() const
+     if (m_edges->isDesktopSwitching()) {
+         return true;
+     }
++    if (m_edges->isDesktopSwitchingMovingClients()) {
++        auto c = Workspace::self()->getMovingClient();
++        if (c && !c->isResize()) {
++            return true;
++        }
++    }
+     if (!m_callBacks.isEmpty()) {
+         return true;
+     }
+-- 
+cgit v0.11.2
+

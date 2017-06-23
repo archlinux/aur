@@ -1,0 +1,62 @@
+From a6dee74ee455d1da47dd5c9d55a84adbb5e1426a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Fl=C3=B6ser?= <mgraesslin@kde.org>
+Date: Sun, 18 Jun 2017 14:23:33 +0200
+Subject: Workaround Qt regression of no longer delivering events for the root
+ window
+
+Summary:
+With qtbase 2b34aefcf02f09253473b096eb4faffd3e62b5f4 we do no longer get
+events reported for the X11 root window. Our keyboard handling in effects
+like PresentWindows and DesktopGrid relied on that.
+
+This change works around the regression by calling winId() on
+qApp->desktop() as suggested in the change. This is a short term solution
+for the 5.10 branch.
+
+This needs to be addressed properly by no longer relying on Qt in this
+area. KWin already does not rely on Qt for Wayland in that area and is
+able to compose the QKeyEvents. This should also be done on X11. It just
+needs some more hook up code for xkb, but that's needed anyway to improve
+modifier only shortcuts and friends.
+
+BUG: 360841
+FIXED-IN: 5.10.3
+
+Reviewers: #kwin, #plasma
+
+Subscribers: plasma-devel, kwin
+
+Tags: #kwin
+
+Differential Revision: https://phabricator.kde.org/D6258
+---
+ effects.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/effects.cpp b/effects.cpp
+index d2c4768..8155de6 100644
+--- a/effects.cpp
++++ b/effects.cpp
+@@ -48,6 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "kwinglutils.h"
+ 
+ #include <QDebug>
++#include <QDesktopWidget>
+ 
+ #include <Plasma/Theme>
+ 
+@@ -599,6 +600,11 @@ bool EffectsHandlerImpl::grabKeyboard(Effect* effect)
+         bool ret = grabXKeyboard();
+         if (!ret)
+             return false;
++        // Workaround for Qt 5.9 regression introduced with 2b34aefcf02f09253473b096eb4faffd3e62b5f4
++        // we no longer get any events for the root window, one needs to call winId() on the desktop window
++        // TODO: change effects event handling to create the appropriate QKeyEvent without relying on Qt
++        // as it's done already in the Wayland case.
++        qApp->desktop()->winId();
+     }
+     keyboard_grab_effect = effect;
+     return true;
+-- 
+cgit v0.11.2
+
