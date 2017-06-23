@@ -2,7 +2,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=sink-develop
-pkgver=r1486.a213688
+pkgver=r1745.5cabc16
 pkgrel=1
 pkgdesc='An offline-caching, synchronization and indexing system for PIM data (development branch)'
 arch=('i686' 'x86_64')
@@ -29,6 +29,7 @@ build() {
   cd "${srcdir}/build"
   cmake "${srcdir}/sink" \
     -DENABLE_TESTING=OFF \
+    -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \

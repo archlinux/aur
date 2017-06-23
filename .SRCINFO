@@ -1,6 +1,6 @@
 pkgbase = sink-develop
 	pkgdesc = An offline-caching, synchronization and indexing system for PIM data (development branch)
-	pkgver = r1486.a213688
+	pkgver = r1745.5cabc16
 	pkgrel = 1
 	url = https://github.com/KDE/sink
 	arch = i686
