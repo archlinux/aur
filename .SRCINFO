@@ -1,0 +1,15 @@
+pkgbase = vim-pseuco
+	pkgdesc = Vim syntax highlighting for Pseuco
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = vim-runtime
+	source = syntax.vim
+	source = ftdetect.vim
+	sha256sums = 31871739da73a79f56df56f5570e0c17a8584c306bb409c0ee865d2066f53a19
+	sha256sums = eaf15b12b6dd29d16f9a28b67ee7a68bfccf4dc5ffce15f40a0d4b2c400963ec
+
+pkgname = vim-pseuco
+
