@@ -15,7 +15,7 @@ pkgbase = bin32-jdk-devel
 	depends = lib32-libxtst
 	depends = lib32-nss
 	depends = xdg-utils
-	optdepends = eclipse: "Oracle Java Mission Control" plugins for Eclipse
+	optdepends = eclipse-java: "Oracle Java Mission Control" plugins for Eclipse
 	optdepends = lib32-alsa-lib: for basic sound support
 	optdepends = lib32-gtk2: for Gtk+ look and feel (desktop)
 	provides = java32-runtime=9
