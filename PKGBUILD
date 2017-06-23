@@ -26,5 +26,5 @@ package() {
   mv docs/* "$pkgdir"/usr/share/doc/java$_major/
 
   # License
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE-Early-Adopter-Terms.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
