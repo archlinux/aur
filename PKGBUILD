@@ -1,7 +1,7 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=higan-git
 pkgver=103
-pkgrel=1
+pkgrel=2
 pkgdesc="Multisystem emulator by Byuu"
 arch=('x86_64' 'i686')
 url="https://byuu.org"
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 source=(
-	'https://download.byuu.org/higan_v103-source.7z'
+	'git+https://gitlab.com/higan/higan.git'
 	'allow_root.patch'
 	'getver.patch')
 noextract=()
@@ -24,7 +24,6 @@ md5sums=('SKIP'
          '0b32b7421da621785ee29070782cfb77')
 
 prepare() {
-	mv $srcdir/higan_v103-source $srcdir/higan
 	cd $srcdir/higan
 	patch -Np1 -i "${srcdir}/allow_root.patch"
 	patch -Np1 -i "${srcdir}/getver.patch"
