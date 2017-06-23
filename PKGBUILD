@@ -12,7 +12,7 @@ _lang=da
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Danish'
 url='http://www.mozilla.org/firefox/developer'
-pkgver='55.0b2'
+pkgver='55.0b3'
 pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -24,18 +24,27 @@ source=("${_url}/${_loc}/${_file}.tar.bz2"
         "${_url}/SHA512SUMS.asc"
         "${_name}-${_channel}.desktop"
         "vendor.js")
-sha512sums=('c0cf7ef6fcad94ba4ac44ca8b4d272fb88c0e63a477b4829a675585204e19c88086b8f21f89c52c1954624dfc1f0f9a836d3333ad8c6989fd398afe2eb92234a'
-            'b0012ba3bf452e75a0a0dcd1d10c4b09d73d3d95673b7b6a5522d7f451fed795186f7842d652ceb5c2d0f73c1a3b5bb32d1e2a15414e168b711bbb1dbb7a026e'
+sha512sums=('c3df66e0d85be99969fd3fad031e69dcd99eee36ef72680e8e0bbb174f5aaea45c95aff8df689c6ec340be59809d5db968288aed433c21f77b49e4150fe6db13'
+            'bfee5a37eb078b25536ff868c17b2c5d656037beadb12b207dc07abdc4dbc0eeeecb58072410d8488285ca49e2e42da3cc2aeb14a53324612de362620969806b'
             'SKIP'
             'b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
-depends=('alsa-lib' 'dbus-glib' 'gtk3' 'libnotify' 'libxt' 'mime-types' 'nss' 'sqlite3' 'ffmpeg')
+# Dependencies
+# https://www.archlinux.org/packages/extra/x86_64/firefox/
+depends=('dbus-glib' 'gtk3' 'libxt' 'mime-types' 'nss' 'sqlite')
 optdepends=(
-        'pulseaudio: audio/video playback'
-        'ffmpeg: h.254 video'
-        'hunspell: spell checking'
-        'hypen: hypenation'
+        'alsa-lib: An alternative implementation of Linux sound support'
+        'ffmpeg: Complete solution to record, convert and stream audio and video'
+        'gtk2: flash plugin support'
+        'gtk3-print-backends: Print support'
+        'hunspell: Spell checking'
+        'hypen: Hypenation'
+        'libnotify: Notification integration'
+        'networkmanager: Location detection via available WiFi networks'
+        'pulseaudio: Audio/video playback'
+        'speech-dispatcher: Text to Speech'
+        'startup-notification: Support for FreeDesktop Startup Notification'
 )
 
 prepare() {
@@ -56,10 +65,10 @@ prepare() {
 
 package() {
     install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
-    cp -r firefox $pkgdir/opt/firefox-$_channel
-    ln -s /opt/firefox-$_channel/firefox $pkgdir/usr/bin/firefox-$_channel
-    install -m644 $srcdir/firefox-$_channel.desktop $pkgdir/usr/share/applications/
-    install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/firefox-${_channel}-icon.png
-    install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+    cp -r firefox $pkgdir/opt/$_name-$_channel
+    ln -s $pkgdir/opt/$_name-$_channel/firefox $pkgdir/usr/bin/$_name-$_channel
+    install -m644 $srcdir/$_name-$_channel.desktop $pkgdir/usr/share/applications/
+    install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$_name-${_channel}-icon.png
+    install -Dm644 $srcdir/vendor.js $pkgdir/opt/$_name-$_channel/browser/defaults/preferences/vendor.js
 }
 
