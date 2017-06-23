@@ -1,26 +1,32 @@
 # Contributor: Berseker < berseker86 at gmail.com >
 pkgname=gphotoframe
-pkgver=2.0.3
-_realver=2.0-a3
+pkgver=2.0.2
+_gitrev=cafe98c74744df0c70d5d375889e4c88f9cdb078
 pkgrel=1
-pkgdesc="Gnome Photo Frame is a photo frame gadget for the GNOME Desktop."
-arch=('i686' 'x86_64')
-url="http://code.google.com/p/gphotoframe/"
+pkgdesc="Photo frame gadget for the GNOME Desktop"
+arch=('any')
+url="https://github.com/iblis17/gphotoframe"
 license=('GPL3')
-groups=()
-depends=('pygtk' 'twisted' 'pyxdg' 'python2-gdata' 'python2-oauth')
-makedepends=('python2-distutils-extra')
-optdepends=('python2-simplejson' 'python2-feedparser' 'python2-clutter' 
-'gnome-python-desktop')
-provides=('gphotoframe')
-conflicts=('gphotoframe-git')
-options=()
-source=(http://gphotoframe.googlecode.com/files/$pkgname-$_realver.tar.gz)
+depends=('libchamplain' 'python2-feedparser' 'python2-gobject' 'python2-oauth'
+         'python2-pyopenssl' 'python2-twisted' 'python2-xdg' 'webkit2gtk')
+makedepends=('gnome-doc-utils' 'python2-distutils-extra')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/iblis17/gphotoframe/archive/$_gitrev.tar.gz"
+        "webkit2.patch")
+sha256sums=('19e7c43a817381f8a93249d109c0b062970644cb6f7b069e7e5c1c798b874fb4'
+            'be7b536e986b8f55ba8481120dfaff644ee589aa98ea3e0e62649c2c2b5d2891')
 
-package() {
-  cd "$srcdir/$pkgname-$_realver"
-  python2 setup.py install --prefix=$pkgdir/usr/ || return 1
-  gconf-merge-schema gphotoframe.schemas
+prepare() {
+  cd $pkgname-$_gitrev
+  find . -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
+  patch -Np1 -i ../webkit2.patch
 }
 
-md5sums=('7fde61994803182c1af93e6b4f4cb5b4')
+build() {
+  cd $pkgname-$_gitrev
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname-$_gitrev
+  python2 setup.py install --root "$pkgdir" --optimize=1
+}

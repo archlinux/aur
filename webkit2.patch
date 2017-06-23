@@ -1,0 +1,44 @@
+diff -Naur gphotoframe.orig/lib/plugins/facebook/authdialog.py gphotoframe/lib/plugins/facebook/authdialog.py
+--- gphotoframe.orig/lib/plugins/facebook/authdialog.py	2015-03-27 02:40:55.000000000 +0100
++++ gphotoframe/lib/plugins/facebook/authdialog.py	2017-06-23 19:28:13.243446102 +0200
+@@ -9,7 +9,7 @@
+ import re
+ # from gettext import gettext as _
+ 
+-from gi.repository import GObject, Gtk, Gdk, WebKit
++from gi.repository import GObject, Gtk, Gdk, WebKit2
+ 
+ from ..flickr.authdialog import PluginFlickrDialog
+ from ...utils.urlgetautoproxy import urlget_with_autoproxy
+@@ -126,10 +126,10 @@
+                    'display': 'popup'}
+         uri = 'https://www.facebook.com/dialog/oauth?' + urllib.urlencode(values)
+ 
+-        w = WebKit.WebView.new()
++        w = WebKit2.WebView.new()
+         w.set_vexpand(True)
+         w.load_uri(uri)
+-        w.connect("document-load-finished", self._get_document_cb)
++        w.connect("load-changed", self._get_document_cb)
+ 
+         self.add(w)
+         self.show_all()
+diff -Naur gphotoframe.orig/lib/utils/authwebkit.py gphotoframe/lib/utils/authwebkit.py
+--- gphotoframe.orig/lib/utils/authwebkit.py	2015-03-27 02:40:55.000000000 +0100
++++ gphotoframe/lib/utils/authwebkit.py	2017-06-23 19:14:44.068992889 +0200
+@@ -1,5 +1,5 @@
+ import re
+-from gi.repository import Gtk, GObject, WebKit
++from gi.repository import Gtk, GObject, WebKit2
+ 
+ class AuthWebKitScrolledWindow(Gtk.ScrolledWindow):
+ 
+@@ -9,7 +9,7 @@
+        
+         url = self._get_auth_url()
+ 
+-        w = WebKit.WebView.new()
++        w = WebKit2.WebView.new()
+         w.set_vexpand(True)
+         w.load_uri(url)
+         w.connect("document-load-finished", self._get_document_cb)
