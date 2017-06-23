@@ -1,12 +1,12 @@
 pkgname=cerebro-phonepi
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Digispark power control daemon for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
 license=("GPL2")
-makedepends=("git" "cmake")
-depends=("i2c-tools")
+makedepends=("git" )
+depends=("i2c-tools" "xxoff-phonepi")
 source=(git://github.com/PhonePi/phonepi.git)
 sha256sums=("SKIP")
 
