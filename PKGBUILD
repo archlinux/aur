@@ -6,7 +6,7 @@ pkgdesc='A scalable, open source telephony platform'
 arch=('i686' 'x86_64')
 url='https://freeswitch.org/'
 license=('MPL')
-depends=('libedit' 'speex')
+depends=('libedit' 'speex' 'openssl-1.0')
 makedepends=('libjpeg-turbo' 'yasm')
 optdepends=()
 provides=('freeswitch')
@@ -131,7 +131,10 @@ build() {
   fi
 
   # Work around FreeSWITCH bug FS-10257
-  export CFLAGS="${CFLAGS} -Wno-parentheses -Wno-deprecated-declarations"
+  export CFLAGS="${CFLAGS} -Wno-parentheses -Wno-deprecated-declarations -Wno-int-in-bool-context"
+
+  # Use OpenSSL 1.0 until upstream supports 1.1.
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
   cp "${srcdir}"/modules.conf .
 

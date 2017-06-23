@@ -13,6 +13,7 @@ pkgbase = freeswitch-core
 	makedepends = opus
 	depends = libedit
 	depends = speex
+	depends = openssl-1.0
 	depends = ldns
 	optdepends = lua: for mod_lua module
 	optdepends = libjpeg-turbo: for mod_spandsp module
