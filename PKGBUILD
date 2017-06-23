@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname%-*}"
-  ver="$(grep "Version" src/main.cpp | awk -F '"' '{print $2}')"
+  ver="$(grep 'Version' src/main.cpp | awk -F '"' '{print $2}')"
   printf '%s.r%s.g%s' "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
