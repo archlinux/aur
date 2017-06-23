@@ -1,0 +1,18 @@
+pkgbase = qtwebkit-bin
+	pkgdesc = An open source web browser engine (Qt port) Bin
+	pkgver = 2.3.4
+	pkgrel = 5
+	url = http://trac.webkit.org/wiki/QtWebKit
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL3
+	makedepends = mesa
+	depends = qt4
+	depends = systemd
+	depends = gst-plugins-base-libs
+	conflicts = qt<4.8
+	source = https://download.sourceforge.net/project/arch-mod/aur-pkgs/qtwebkit-2.3.4-5-x86_64.pkg.tar.xz
+	sha256sums = d0dd78ed9e951204de123ab7f8648aa90cde35d462fdd69050f6c92c5cdd5b78
+
+pkgname = qtwebkit-bin
+
