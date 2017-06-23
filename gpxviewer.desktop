@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=GPX Viewer
-Comment=Viewer for GPX files
-Exec=gpx-viewer
-Terminal=false
-Type=Application
-Categories=Utility;DataVisualization;
-StartupNotify=true

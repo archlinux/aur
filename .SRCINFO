@@ -1,23 +1,18 @@
 pkgbase = gpxviewer
-	pkgdesc = a simple program to visualize a gpx file
-	pkgver = 0.4.0
+	pkgdesc = GPS trace viewer
+	pkgver = 0.5.3
 	pkgrel = 1
-	url = http://blog.sarine.nl/gpx-viewer/
-	install = gpxviewer.install
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	license = GPL2
-	makedepends = intltool
-	makedepends = vala
-	depends = gdl
-	depends = libchamplain
-	depends = hicolor-icon-theme
-	conflicts = gpxviewer-bzr
-	source = https://launchpad.net/gpx-viewer/trunk/0.4.0/+download/gpx-viewer-0.4.0.tar.gz
-	source = gpxviewer.desktop
-	md5sums = f019a8fdf27391ca568f022b60d381c6
-	md5sums = 8d5ed2f4f1f26a60d078a77f9fd5f2a3
+	url = http://andrewgee.org/blog/projects/gpxviewer/
+	arch = any
+	license = GPL3
+	makedepends = python2-distutils-extra
+	depends = gtk3
+	depends = osm-gps-map
+	depends = python2-cairo
+	depends = python2-gobject
+	depends = python2-gobject2
+	source = gpxviewer-0.5.3.tar.gz::https://github.com/andrewgee/gpxviewer/archive/0.5.3.tar.gz
+	sha256sums = 712632997213ccf150efe90079ad84e53c525d4b36dda68198e0e928e866cde4
 
 pkgname = gpxviewer
 
