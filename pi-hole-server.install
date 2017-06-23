@@ -12,12 +12,14 @@ post_install() {
   _dnsmasq_address_setup
 
   /usr/bin/pihole updateGravity > /dev/null
-  /usr/bin/pihole -a setdns 8.8.8.8 8.8.4.4 > /dev/null
+  /usr/bin/pihole -a setdns 8.8.8.8 > /dev/null
 }
 
 post_upgrade() {
+  # clean old/unused/deprecated files
   [ -e /etc/pihole/hosts ] && rm /etc/pihole/hosts
   [ -e /etc/pihole/.useIPv6 ] && rm /etc/pihole/.useIPv6
+
   post_install $1
 }
 
@@ -33,7 +35,7 @@ post_remove() {
 
 _dnsmasq_address_setup() {   # official code here
   . /etc/pihole/setupVars.conf
-  dnsmasq_pihole_01_location=/etc/dnsmasq.d/02-pihole.conf
+  dnsmasq_pihole_conf=/etc/dnsmasq.d/02-pihole.conf
 
   if [[ -f /etc/hostname ]]; then
     hostname=$(</etc/hostname)
@@ -44,22 +46,22 @@ _dnsmasq_address_setup() {   # official code here
   #Replace IPv4 and IPv6 tokens in 01-pihole.conf for pi.hole resolution.
   if [[ "${IPV4_ADDRESS}" != "" ]]; then
     tmp=${IPV4_ADDRESS%/*}
-    sed -i "s/@IPv4@/$tmp/" ${dnsmasq_pihole_01_location}
+    sed -i "s/@IPv4@/$tmp/" ${dnsmasq_pihole_conf}
   else
-    sed -i '/^address=\/pi.hole\/@IPv4@/d' ${dnsmasq_pihole_01_location}
-    sed -i '/^address=\/@HOSTNAME@\/@IPv4@/d' ${dnsmasq_pihole_01_location}
+    sed -i '/^address=\/pi.hole\/@IPv4@/d' ${dnsmasq_pihole_conf}
+    sed -i '/^address=\/@HOSTNAME@\/@IPv4@/d' ${dnsmasq_pihole_conf}
   fi
 
   if [[ "${IPV6_ADDRESS}" != "" ]]; then
-    sed -i "s/@IPv6@/$IPV6_ADDRESS/" ${dnsmasq_pihole_01_location}
+    sed -i "s/@IPv6@/$IPV6_ADDRESS/" ${dnsmasq_pihole_conf}
   else
-    sed -i '/^address=\/pi.hole\/@IPv6@/d' ${dnsmasq_pihole_01_location}
-    sed -i '/^address=\/@HOSTNAME@\/@IPv6@/d' ${dnsmasq_pihole_01_location}
+    sed -i '/^address=\/pi.hole\/@IPv6@/d' ${dnsmasq_pihole_conf}
+    sed -i '/^address=\/@HOSTNAME@\/@IPv6@/d' ${dnsmasq_pihole_conf}
   fi
 
   if [[ "${hostname}" != "" ]]; then
-    sed -i "s/@HOSTNAME@/$hostname/" ${dnsmasq_pihole_01_location}
+    sed -i "s/@HOSTNAME@/$hostname/" ${dnsmasq_pihole_conf}
   else
-    sed -i '/^address=\/@HOSTNAME@*/d' ${dnsmasq_pihole_01_location}
+    sed -i '/^address=\/@HOSTNAME@*/d' ${dnsmasq_pihole_conf}
   fi
 }
