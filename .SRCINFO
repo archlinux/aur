@@ -14,7 +14,7 @@ pkgbase = jdk
 	depends = nss
 	depends = xdg-utils
 	optdepends = alsa-lib: for basic sound support
-	optdepends = eclipse: to use "Oracle Java Mission Control" plugins in Eclipse
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
 	optdepends = gtk2: for Gtk+ look and feel (desktop)
 	provides = java-runtime=8
 	provides = java-runtime-headless=8

@@ -13,7 +13,7 @@ url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
 license=('custom')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-environment-common' 'java-runtime-common' 'nss' 'xdg-utils')
 optdepends=('alsa-lib: for basic sound support'
-            'eclipse: to use "Oracle Java Mission Control" plugins in Eclipse'
+            'eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse'
             'gtk2: for Gtk+ look and feel (desktop)')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major"
