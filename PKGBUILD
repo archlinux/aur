@@ -1,6 +1,6 @@
 # Maintainer: Javier Torres <jtorres@carto.com>
 pkgname=carto-crankshaft
-pkgver=0.4.2.onpremise.r120.154d1a6
+pkgver=0.5.2.r0.ce5d1f9
 pkgrel=1
 pkgdesc="CARTO Spatial Analysis extension for PostgreSQL "
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/CartoDB/crankshaft"
 license=('BSD')
 groups=()
 depends=('python2' 'python2-joblib' 'python2-pysal' 'python2-scikit-learn')
-makedepends=('git')
+makedepends=('git' 'python2-pip')
 provides=()
 conflicts=()
 replaces=()
