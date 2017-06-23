@@ -37,6 +37,7 @@ md5sums=('ca3b062fc108aa9ef89e6c2e12a0f051')
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
+_ccsdir=ccstudio
 _destdir=opt
 _installdir=installdir
 _installpath=$_installdir/$_destdir/ccstudio/ccsv7/tools/compiler
@@ -55,8 +56,8 @@ package() {
     # Hardlink to avoid time and space overhead
     cp -ral $srcdir/$_installdir/$_destdir $pkgdir/
 
-    #find $pkgdir -type f -exec chmod g+rw {} \;
-    #find $pkgdir -type d -exec chmod g+x  {} \;
+    # Match permissions to ccstudio package (see notes in ccstudio.install)
+    find $pkgdir/$_destdir/$_ccsdir -type d -exec chmod 0775 {} \;
 
     install -D -m0644 $srcdir/${_installpath}/${_tooldir}/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
