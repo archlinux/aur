@@ -3,7 +3,7 @@
 
 _pkgbase=tbs-linux_media-git
 pkgname=${_pkgbase}-dkms
-pkgver=r762.af5f7c7
+pkgver=r20170623.031410.f563cede
 pkgrel=1
 pkgdesc="TBS linux open source drivers (DKMS)"
 arch=('i686' 'x86_64')
@@ -28,8 +28,8 @@ prepare() {
 }
 
 pkgver() {
-    cd "$srcdir/media_build"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/media"
+    printf "r%s.%s" "$(git show -s --date=format:'%Y%m%d.%H%M%S' --format=%cd)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
