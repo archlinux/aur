@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.47.0
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
@@ -18,15 +18,17 @@ replaces=('flow-bin')
 source=(
 		"https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
 		'Makefile-no-flow-check.patch'
+		'no-intmap.patch'
 )
 sha256sums=(
-		'cf4bda660731c6d0731d1193fac458f590a1313172989b4a4561f64fbcc2cc1c'
+		'8772896075dc4028e62720fe18a6608f278f471931b2a8fff280d0efc0fd4f29'
 		'29e38d7412a920858945df56850bc227bd06d50965d620313912bf2fdeb3d045'
+		'badd6ed3d34b34a2ebe2b84599ceeece1d532516d08d534cd8d3b5c1e93438cd'
 )
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	for f in Makefile-no-flow-check.patch; do
+	for f in Makefile-no-flow-check.patch no-intmap.patch; do
 		msg "Applying patch ${f}"
 		patch -p0 <"${srcdir}/../${f}"
 	done

@@ -1,0 +1,12 @@
+diff --git i/src/commands/ideCommand.ml w/src/commands/ideCommand.ml
+index dfdde69e..c2fc8d0c 100644
+--- src/commands/ideCommand.ml
++++ src/commands/ideCommand.ml
+@@ -235,7 +235,6 @@ module PendingRequests : sig
+   val add_response: t -> Prot.response -> t
+   val ready_request: t -> (Prot.request option * t)
+ end = struct
+-  module IntMap = Map.Make(struct type t = int let compare = ( - ) end)
+ 
+   type t = {
+     queue: Prot.request ImmQueue.t;
