@@ -2,7 +2,7 @@
 
 pkgname=fastrpc-git
 _gitname=fastrpc
-pkgver=v8.0.5.r16.gd685a12
+pkgver=python8.0.1
 pkgrel=1
 pkgdesc="FastRPC library"
 url="https://github.com/seznam/fastrpc"
