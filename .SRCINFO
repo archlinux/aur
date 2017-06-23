@@ -1,6 +1,6 @@
 pkgbase = kshare-git
 	pkgdesc = A ShareX inspired cross platform utility written with Qt.
-	pkgver = cec739292745ad20e9c0883aadd7749ea5c1e6c92
+	pkgver = c98352375b4b94b203305ed921e58880bf606055d
 	pkgrel = 1
 	url = https://github.com/ArsenArsen/KShare
 	arch = i686
