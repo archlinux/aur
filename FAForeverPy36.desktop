@@ -2,8 +2,8 @@
 Type=Application
 Name=FAForever
 Comment=Supreme Commander Forged Alliance game lobby
-Exec=python /usr/lib/python3.6/site-packages/fafclient
-Icon=/usr/share/fafclient/window_icon.png
+Exec=python /usr/lib/python3.6/site-packages/fafclient/client
+Icon=/usr/lib/python3.6/site-packages/fafclient/res/window_icon.png
 Terminal=false
 Categories=Games
-Path=/usr/share/fafclient
+Path=/usr/lib/python3.6/site-packages/fafclient
