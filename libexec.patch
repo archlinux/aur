@@ -1,0 +1,78 @@
+diff -aur cvmfs-2.3.5-old/ChangeLog cvmfs-2.3.5-new/ChangeLog
+--- cvmfs-2.3.5-old/ChangeLog	2017-03-22 13:31:02.000000000 +0100
++++ cvmfs-2.3.5-new/ChangeLog	2017-06-12 22:09:24.338401420 +0200
+@@ -272,7 +272,7 @@
+   * Apply umask to the mode when creating files on the Stratum 0/1 (CVM-660)
+   * Make server transaction handling more robust against failures and
+     concurrent operations (CVM-665, CVM-666)
+-  * Install auto.cvmfs in /usr/libexec/cvmfs and make /etc/auto.cvmfs a
++  * Install auto.cvmfs in /usr/lib/cvmfs and make /etc/auto.cvmfs a
+     symlink (CVM-645)
+   * Restrict the number of in-flight file processing jobs in the server in
+     order to not exhaust file descriptor limit
+diff -aur cvmfs-2.3.5-old/cvmfs/CMakeLists.txt cvmfs-2.3.5-new/cvmfs/CMakeLists.txt
+--- cvmfs-2.3.5-old/cvmfs/CMakeLists.txt	2017-03-22 13:31:02.000000000 +0100
++++ cvmfs-2.3.5-new/cvmfs/CMakeLists.txt	2017-06-12 22:08:46.175549530 +0200
+@@ -644,7 +644,7 @@
+   install (
+     TARGETS      cvmfs_allow_helper cvmfs_deny_helper
+     RUNTIME
+-    DESTINATION  libexec/cvmfs/authz
++    DESTINATION  lib/cvmfs/authz
+   )
+ 
+   install (
+diff -aur cvmfs-2.3.5-old/cvmfs/cvmfs.cc cvmfs-2.3.5-new/cvmfs/cvmfs.cc
+--- cvmfs-2.3.5-old/cvmfs/cvmfs.cc	2017-03-22 13:31:02.000000000 +0100
++++ cvmfs-2.3.5-new/cvmfs/cvmfs.cc	2017-06-12 22:08:58.402061949 +0200
+@@ -2078,7 +2078,7 @@
+   bool shared_cache = false;
+   int64_t quota_limit = cvmfs::kDefaultCacheSizeMb;
+   string authz_helper = "";
+-  string authz_search_path = "/usr/libexec/cvmfs/authz";
++  string authz_search_path = "/usr/lib/cvmfs/authz";
+   string hostname = "";
+   string proxies = "";
+   string fallback_proxies = "";
+diff -aur cvmfs-2.3.5-old/mount/CMakeLists.txt cvmfs-2.3.5-new/mount/CMakeLists.txt
+--- cvmfs-2.3.5-old/mount/CMakeLists.txt	2017-03-22 13:31:02.000000000 +0100
++++ cvmfs-2.3.5-new/mount/CMakeLists.txt	2017-06-12 22:05:41.331215169 +0200
+@@ -152,7 +152,7 @@
+   add_executable (auto.cvmfs ${CVMFS_AUTO_SOURCES})
+ 
+   SET( autofsmap_link    /etc/auto.cvmfs)
+-  SET( autofsmap_dest    /usr/libexec/cvmfs)
++  SET( autofsmap_dest    /usr/lib/cvmfs)
+   SET( autofsmap_target  ${autofsmap_dest}/auto.cvmfs)
+   install (
+     TARGETS       auto.cvmfs
+diff -aur cvmfs-2.3.5-old/mount/default.d/10-osx.conf cvmfs-2.3.5-new/mount/default.d/10-osx.conf
+--- cvmfs-2.3.5-old/mount/default.d/10-osx.conf	2017-03-22 13:31:02.000000000 +0100
++++ cvmfs-2.3.5-new/mount/default.d/10-osx.conf	2017-06-12 22:04:43.265281323 +0200
+@@ -1,1 +1,1 @@
+-CVMFS_AUTHZ_SEARCH_PATH=/usr/local/libexec/cvmfs/authz
++CVMFS_AUTHZ_SEARCH_PATH=/usr/lib/cvmfs/authz
+diff -aur cvmfs-2.3.5-old/test/src/600-securecvmfs/main cvmfs-2.3.5-new/test/src/600-securecvmfs/main
+--- cvmfs-2.3.5-old/test/src/600-securecvmfs/main	2017-03-22 13:31:02.000000000 +0100
++++ cvmfs-2.3.5-new/test/src/600-securecvmfs/main	2017-06-12 22:07:13.783381879 +0200
+@@ -236,7 +236,7 @@
+   echo "create a fresh repository named $CVMFS_TEST_REPO with user $CVMFS_TEST_USER"
+   create_empty_repo $CVMFS_TEST_REPO $CVMFS_TEST_USER /dev/stdout -V "x509%cvmfs:/cvmfs" || return $?
+   echo "Make sure we don't lock out ourselves when publishing"
+-  echo "CVMFS_AUTHZ_HELPER=/usr/libexec/cvmfs/authz/cvmfs_allow_helper" | \
++  echo "CVMFS_AUTHZ_HELPER=/usr/lib/cvmfs/authz/cvmfs_allow_helper" | \
+     sudo tee -a /etc/cvmfs/repositories.d/$CVMFS_TEST_REPO/client.conf
+ 
+   echo "gather information about the just created repo"
+diff -aur cvmfs-2.3.5-old/test/src/632-authzhelpers/main cvmfs-2.3.5-new/test/src/632-authzhelpers/main
+--- cvmfs-2.3.5-old/test/src/632-authzhelpers/main	2017-03-22 13:31:02.000000000 +0100
++++ cvmfs-2.3.5-new/test/src/632-authzhelpers/main	2017-06-12 22:06:45.943733157 +0200
+@@ -46,7 +46,7 @@
+   local cache_base="$CVMFS_CACHE_BASE"
+ 
+   echo "Ensure that we can access the repo for editing"
+-  sudo sh -c "echo CVMFS_AUTHZ_HELPER=/usr/libexec/cvmfs/authz/cvmfs_allow_helper \
++  sudo sh -c "echo CVMFS_AUTHZ_HELPER=/usr/lib/cvmfs/authz/cvmfs_allow_helper \
+     >> ${spool_dir}/client.local" || return 10
+ 
+   echo "put some stuff into $CVMFS_TEST_REPO"

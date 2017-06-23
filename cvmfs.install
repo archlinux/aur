@@ -1,23 +1,26 @@
-# arg 1:  the new package version
 post_install() {
-  cvmfs_config setup
-  systemctl restart autofs
+  cvmfs_config setup nocfgmod nostart
+  echo "To complete the setup please follow these instructions:"
   echo "  - modify /etc/cvmfs/default.local according to your needs, cf. the Technical Report at http://cernvm.cern.ch/portal/sites/cernvm.cern.ch/files/cvmfstech-2.1-5.pdf"
-  echo "  - (re)start autofs (and enable it if you want persistency):"
-  echo "      sudo systemctl restart autofs"
+
+  # user_allow_other in /etc/fuse.conf does not seem to be necessary anymore? Or only for autofs?
+  echo "You can mount cvmfs shares manually like:"
+  echo "  # mkdir -p /cvmfs/domain.cern.ch"
+  echo "  # mount -t cvmfs domain.cern.ch /cvmfs/domain.cern.ch"
+  echo "Alternatively, to enable auto-mounting on demand we recommend to use systemd.automount (https://wiki.archlinux.org/index.php/Fstab#Automount_with_systemd), by simply adding lines to /etc/fstab like in this example:
+  echo "  # echo 'atlas.cern.ch /cvmfs/atlas.cern.ch cvmfs noauto,x-systemd.automount,x-systemd.requires=network-online.target,x-systemd.idle-timeout=5min,x-systemd.device-timeout=10 0 0' >> /etc/fstab"
+  echo "  Furthermore you (might?) need to add the following to /etc/fuse.conf:"
+  echo "  # echo 'user_allow_other # added by CernVM-FS' >> /etc/fuse.conf"
+  echo "Alternatively, if you plan on using AutoFS (read about the problems on the cvmfs AUR page), please run:"
+  echo "  # cvmfs_config setup"
+  echo "  # systemctl restart autofs"
 }
 
-# arg 1:  the old package version
 post_remove() {
-  sed -i '/cvmfs/d' /etc/autofs/auto.master
-  systemctl restart autofs
-  sed -i '/added by CernVM-FS/d' /etc/fuse.conf
+  echo "If you had enabled AutoFS for cvmfs, then please do:"
+  echo "  # sed -i '/cvmfs/d' /etc/autofs/auto.master"
+  echo "  # systemctl restart autofs"
+  echo "  # sed -i '/added by CernVM-FS/d' /etc/fuse.conf"
   userdel cvmfs
   rm -rf /var/lib/cvmfs /cvmfs
-}
-
-post_upgrade() {
-  if ! grep -q 'added by CernVM-FS' /etc/fuse.conf; then
-     echo "CernVM-FS modifications in /etc/fuse.conf not found. You might have to enable 'user_allow_other' by hand.";
-  fi
 }
