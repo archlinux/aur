@@ -58,5 +58,5 @@ package() {
     #find $pkgdir -type f -exec chmod g+rw {} \;
     #find $pkgdir -type d -exec chmod g+x  {} \;
 
-    #install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -D -m0644 $srcdir/${_installpath}/${_tooldir}/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
