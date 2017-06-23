@@ -1,5 +1,5 @@
 pkgname=shadowsocksr-libev
-pkgver=4.3.1-2017.6.1
+pkgver=4.3.1.2017.6.1
 pkgrel=1
 pkgdesc='A Shadowsocks branches'
 arch=('i686' 'x86_64')
