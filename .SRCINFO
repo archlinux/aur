@@ -1,0 +1,16 @@
+pkgbase = forego-git
+	pkgdesc = Foreman in Go
+	pkgver = 20170623
+	pkgrel = 1
+	url = https://github.com/ddollar/forego
+	arch = x86_64
+	arch = i686
+	license = UNLICENSED
+	makedepends = git
+	depends = go
+	provides = forego
+	options = !strip
+	options = !emptydirs
+
+pkgname = forego-git
+
