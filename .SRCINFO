@@ -1,0 +1,18 @@
+pkgbase = oragono
+	pkgdesc = A modern IRC server written in Go.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/oragono/oragono
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = zip
+	backup = opt/oragono/ircd.yaml
+	source = git+https://github.com/oragono/oragono#commit=f051b43f2737f5ec6b0c97e27f5227f525015c41
+	source = oragono.service
+	sha256sums = SKIP
+	sha256sums = f3a21d66d86d9e90bb080a10e05aef67c9541a6a3c4c4c2e1c963d374f83cb9e
+
+pkgname = oragono
+
