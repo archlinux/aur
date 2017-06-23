@@ -1,7 +1,7 @@
 # Maintainer: youngunix 
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
-pkgname=vert.x
+pkgname=vertx
 pkgver=3.4.2
 pkgrel=2
 pkgdesc="Effortless asynchronous application development for the modern web and enterprise"
