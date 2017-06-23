@@ -13,7 +13,7 @@ pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Danish'
 url='http://www.mozilla.org/firefox/developer'
 pkgver='55.0b3'
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${pkgver}"
@@ -39,7 +39,7 @@ optdepends=(
         'gtk2: flash plugin support'
         'gtk3-print-backends: Print support'
         'hunspell: Spell checking'
-        'hypen: Hypenation'
+        'hyphen: Hyphenation'
         'libnotify: Notification integration'
         'networkmanager: Location detection via available WiFi networks'
         'pulseaudio: Audio/video playback'
