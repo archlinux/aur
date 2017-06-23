@@ -1,13 +1,13 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=woeusb-git
-pkgver=r484.b67b343
-pkgrel=3
+pkgver=r485.5ac7e05
+pkgrel=1
 pkgdesc="A Linux program to create Windows USB stick installer from a real Windows DVD or an image"
 arch=('x86_64')
 url="https://github.com/slacka/WoeUSB"
 license=('GPL3')
 groups=()
-depends=('wxgtk2')
+depends=('wxgtk2' 'grub')
 makedepends=('git')
 provides=("woeusb")
 conflicts=("")
