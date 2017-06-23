@@ -1,6 +1,6 @@
 pkgbase = kasync-git
 	pkgdesc = A C++ library for controlling asynchronous tasks
-	pkgver = r111.7fa91ce
+	pkgver = r130.abc6d4d
 	pkgrel = 1
 	url = https://github.com/KDE/kasync
 	arch = i686

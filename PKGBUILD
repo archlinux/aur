@@ -2,7 +2,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=kasync-git
-pkgver=r111.7fa91ce
+pkgver=r130.abc6d4d
 pkgrel=1
 pkgdesc='A C++ library for controlling asynchronous tasks'
 arch=('i686' 'x86_64')
@@ -28,6 +28,7 @@ build() {
   cd build
   cmake ../kasync \
     -DENABLE_TESTING=OFF \
+    -DBUILD_TESTING=OFF \
     -DWITH_KJOB=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
