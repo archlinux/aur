@@ -8,7 +8,7 @@ pkgbase = dxreminders
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = wxgtk>=3.0.0
+	depends = wxgtk2
 	source = http://files.dxsolutions.org/dxreminders-1.10.1.tar.gz
 	md5sums = ccf770278ec8c580f8ca16c1b7ce6ad0
 

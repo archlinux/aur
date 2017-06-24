@@ -7,7 +7,7 @@ pkgdesc="A simple program for reminders"
 arch=('i686' 'x86_64')
 url="http://dxreminders.dxsolutions.org"
 license=('GPL')
-depends=('wxgtk>=3.0.0')
+depends=('wxgtk2')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(http://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
