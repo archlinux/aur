@@ -1,7 +1,7 @@
 # Maintainer: inso <insomniak.fr@gmail.com>
 pkgname=sakia
 pkgver=0.32.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Python/Qt client for Duniter network"
 arch=("x86_64" "i686")
@@ -24,7 +24,7 @@ noextract=()
 sha256sums=("64b0f809f2f21ec8a4c7da056f3e187511dbcaf3f481a3957d2e11c612ecc6c6")
 validpgpkeys=()
 
-PYENV_PYTHON_VERSION=3.5.2
+PYENV_PYTHON_VERSION=3.5.3
 
 prepare() {
 	cd "$pkgname-$pkgver"
