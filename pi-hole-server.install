@@ -30,7 +30,7 @@ post_remove() {
 
   # delete all temp files except those modified the user
   # TODO - make this more intelligent to save *.pacsave.# where # is a number
-  find /etc/pihole -type f ! -name '*.pacsave' -delete
+  find /etc/pihole -type f ! -name '*.pacsave' ! -name 'pihole-FTL.conf' -delete
 }
 
 _dnsmasq_address_setup() {   # official code here
