@@ -6,7 +6,7 @@ pkgbase=linux-amd-staging-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=$pkgbase
 _branch=amd-staging-4.11
-pkgver=4.11.665091.1bd5f82f7f25
+pkgver=4.11.665113.3e3a7c55b8de
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -21,8 +21,8 @@ source=("linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
-            'b5d5a6107d4e654705a1abc0e83e515b605ebfaceb16d69468c8179698d22812'
-            'e843b95d4562fc695380087a52dc01baa49bfad6e9d4e184ee5ca8adf4179b17'
+            'a20c952c4eeefef9346cb0edbeaf97dfe3bed10775bba6cb817dc712e9850a7c'
+            '475eb1b7c8fea7630be8379aef60979f381c461468f0a7ffac32d4bbc68d924c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
