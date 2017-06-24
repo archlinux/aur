@@ -1,6 +1,6 @@
 pkgname=settings-phonepi
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Settings application for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
