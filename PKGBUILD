@@ -11,7 +11,7 @@ depends=('jre8-openjdk' 'unzip')
 install=$pkgname.install
 source=("http://eve.nikr.net/${pkgname}/${pkgname}-${pkgver}.zip"
         "$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
-md5sums=('14e817094a95c4b3222479902060a6d2'
+md5sums=('582b96fb144e84bc80e11c572c8ef0ec'
          'fe76109bee617582dc94e35a572070d6'
          '706a6b2856a3aa9e26952078534faa8d'
          '349f0b0edae2c5df570142d43071a7f1')
