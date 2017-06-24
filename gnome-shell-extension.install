@@ -1,29 +1,13 @@
 post_install() {
-  instructions_install
+	echo "==> ****************************************************"
+  	echo "==> Don't forget to Restart GNOME Shell ([Alt]+[F2], r)."
+  	echo "==> ****************************************************"
 }
 
 post_upgrade() {
-  instructions_upgrade
+	post_install
 }
 
-instructions_install() {
-  # list enabled extensions
-  EXTENSION_LIST=$(gsettings get org.gnome.shell enabled-extensions | sed 's/^.\(.*\).$/\1/')
-
-  # check if extension is already enabled
-  EXTENSION_ENABLED=$(echo ${EXTENSION_LIST} | grep 'PersianCalendar@oxygenws.com')
-
-  if [ "$EXTENSION_ENABLED" = "" ]
-  then
-    # enable extension
-    gsettings set org.gnome.shell enabled-extensions "[${EXTENSION_LIST},'${EXTENSION_UUID}']"
-  fi 
-  
-  echo "*** Restart GNOME Shell ([Alt]+[F2], r)."
-  echo "*** For more informations, see https://github.com/omid/Persian-Calendar-for-Gnome-Shell."
-}
-
-instructions_upgrade() {
-  echo "*** Restart GNOME Shell ([Alt]+[F2], r)."
-  echo "*** For more informations, see https://github.com/omid/Persian-Calendar-for-Gnome-Shell."
+post_remove() {
+	post_install
 }

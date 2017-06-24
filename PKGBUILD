@@ -2,7 +2,7 @@
 # Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=gnome-shell-extension-persian-calendar-git
-pkgver=r126.c5d1618
+pkgver=r132.4629375
 pkgrel=1
 pkgdesc="Persian calendar for Gnome Shell."
 arch=(any)
