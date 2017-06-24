@@ -8,7 +8,7 @@ pkgver=6.3.0
 _pkgverpatch=6.2.1
 _pkgver=6
 _islver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -18,12 +18,14 @@ checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.bz2{,.sig}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        https://repo.hyperbola.info:50000/other/gcc/$_pkgverpatch/gcc-xtensa.patch)
+        https://repo.hyperbola.info:50000/other/gcc/$_pkgverpatch/gcc-xtensa.patch
+        fix-ubsan-defref.patch)
 validpgpkeys=('33C235A34C46AA3FFB293709A328C3A2C3C45C06') # Jakub Jelinek <jakub@redhat.com> # Note: (Weak DSA) :(
 sha512sums=('234dd9b1bdc9a9c6e352216a7ef4ccadc6c07f156006a59759c5e0e6a69f0abcdc14630eff11e3826dd6ba5933a8faa43043f3d1d62df6bd5ab1e82862f9bf78'
             'SKIP'
             'c188667a84dc5bdddb4ab7c35f89c91bf15a8171f4fcaf41301cf285fb7328846d9a367c096012fec4cc69d244f0bc9e95d84c09ec097394cd4093076f2a041b'
-            '7637408259cef4b14a2f41690bbc769ad0dc6cf4d1c782405526aeb58f68193269af6882b23fb57c3521174e45709ed2d54f0af1f835646e70a3bfd9f626aad9')
+            '7637408259cef4b14a2f41690bbc769ad0dc6cf4d1c782405526aeb58f68193269af6882b23fb57c3521174e45709ed2d54f0af1f835646e70a3bfd9f626aad9'
+            '85402b4bce543e6ba996f6fd99bcefac59ffeb1c1f8ab53c015686f5e1ea447ffeab5f1df1847b7952ad38306b43302d8e23859a614b6ccc62e0fc1f07538dca')
 
 # gcc-6.0 forces a changed triplet - need to address in pacman/devtools
 [[ $CARCH == "x86_64" ]] && CHOST=x86_64-pc-linux-gnu
@@ -44,6 +46,9 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+
+  # Fix comparison between pointer and integer
+  patch -p1 -i ${srcdir}/fix-ubsan-defref.patch
 
   # open-ath9k-htc-firmware patch
   patch -p1 -i ${srcdir}/gcc-xtensa.patch
