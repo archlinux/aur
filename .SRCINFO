@@ -1,6 +1,6 @@
 pkgbase = ruby-rubyzip
 	pkgdesc = rubyzip is a ruby module for reading and writing zip files
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://github.com/rubyzip/rubyzip
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = ruby-rubyzip
 	optdepends = ruby-pry: An IRB alternative and runtime developer console (Development dependency)
 	optdepends = ruby-minitest: minitest provides a complete suite of testing facilities supporting TDD, BDD, mo... (Development dependency)
 	optdepends = ruby-coveralls: A Ruby implementation of the Coveralls API. (Development dependency)
-	noextract = rubyzip-1.2.0.gem
+	noextract = rubyzip-1.2.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/gems/rubyzip-1.2.0.gem
-	sha256sums = 5a2c8ac7177acadfd7f7e98d0ad5a60e9010cca6e2a48bf945f652646ab84981
+	source = https://rubygems.org/gems/rubyzip-1.2.1.gem
+	sha256sums = 1f7f53c83752517fe764fe9451294d6f879d5e65b2ee46055308be6fff235a1a
 
 pkgname = ruby-rubyzip
 
