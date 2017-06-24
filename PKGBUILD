@@ -5,9 +5,10 @@
 pkgbase=linux-amd-staging-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=$pkgbase
-_branch=amd-staging-4.11
+_kernel_rel=4.11
+_branch=amd-staging-${_kernel_rel}
 pkgver=4.11.665113.3e3a7c55b8de
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=('GPL2')

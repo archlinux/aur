@@ -1,7 +1,7 @@
 pkgbase = linux-amd-staging-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
 	pkgver = 4.11.665113.3e3a7c55b8de
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = i686
 	arch = x86_64
