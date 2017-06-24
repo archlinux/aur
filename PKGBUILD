@@ -7,7 +7,7 @@ pkgdesc="Program pro vedeni danove evidence"
 arch=('i686' 'x86_64')
 url="http://dxde.dxsolutions.org"
 license=('GPL')
-depends=('wxgtk>=3.0.0' 'openssl' 'fontconfig')
+depends=('wxgtk2' 'openssl' 'fontconfig')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(http://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)

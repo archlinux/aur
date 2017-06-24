@@ -10,7 +10,7 @@ pkgbase = dxde
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = wxgtk>=3.0.0
+	depends = wxgtk2
 	depends = openssl
 	depends = fontconfig
 	source = http://files.dxsolutions.org/dxde-1.20.0.tar.gz
