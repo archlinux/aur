@@ -1,7 +1,7 @@
 pkgbase = freeswitch-core
 	pkgdesc = A scalable, open source telephony platform
 	pkgver = 1.6.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://freeswitch.org/
 	arch = i686
 	arch = x86_64

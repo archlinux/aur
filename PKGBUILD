@@ -1,7 +1,7 @@
 # Maintainer: David Matson <gitcoder at outlook dot com>
 pkgname=freeswitch-core
 pkgver=1.6.17
-pkgrel=3
+pkgrel=4
 pkgdesc='A scalable, open source telephony platform'
 arch=('i686' 'x86_64')
 url='https://freeswitch.org/'
@@ -135,6 +135,7 @@ build() {
 
   # Use OpenSSL 1.0 until upstream supports 1.1.
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
+  export CFLAGS="${CFLAGS} -I /usr/include/openssl-1.0"
 
   cp "${srcdir}"/modules.conf .
 
