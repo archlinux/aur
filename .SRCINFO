@@ -1,14 +1,23 @@
 pkgbase = blizcord
 	pkgdesc = A simple Discord bot which can play music from YouTube or local files
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/Bleuzen/Blizcord/
 	install = blizcord.install
 	arch = any
 	license = mit
 	depends = jre8-openjdk
-	source = blizcord-0.3.6.deb::https://github.com/Bleuzen/Blizcord/releases/download/0.3.6/blizcord-0.3.6.deb
-	md5sums = 971fdaef00941b906aaab90478aebe08
+	noextract = Blizcord.exe
+	source = Blizcord.exe::https://github.com/Bleuzen/Blizcord/releases/download/0.3.7/Blizcord.exe
+	source = Blizcord.sh
+	source = blizcord
+	source = blizcord-gui
+	source = blizcord.desktop
+	md5sums = 4b5211e209b400b1335f91049210741d
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = blizcord
 
