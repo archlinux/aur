@@ -2,7 +2,7 @@
 # Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-next-latest-git
-pkgver=0.2.7.r181.g048c9ea
+pkgver=0.2.7.r182.g13beb39
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, the latest version"
