@@ -1,7 +1,7 @@
 # Maintainer: Carlos E. Garcia <carlos@cgarcia.org>
 
 pkgname=jeveassets
-pkgver=4.0.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
