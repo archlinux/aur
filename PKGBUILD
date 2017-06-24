@@ -5,8 +5,8 @@ pkgbase="python-scipy-mkl"
 pkgname="python-scipy-mkl"
 true && pkgname=('python-scipy-mkl' 'python2-scipy-mkl')
 
-pkgver=0.19.0
-pkgrel=3
+pkgver=0.19.1
+pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering. Compiled with intel MKL"
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
@@ -15,7 +15,7 @@ makedepends=('intel-fortran-compiler' 'intel-compiler-base' 'intel-mkl' 'python-
 checkdepends=('python-nose' 'python2-nose')
 source=("https://github.com/scipy/scipy/archive/v${pkgver}.tar.gz" )
 
-sha256sums=( 'efa71d68ef0fa4a2836a3058fc1c5aa6b61d93ee0248a127cd862ea3bf22b69a' )
+sha256sums=( 'ac268fe92edd149c6f52fa138d2a03877c080981d7944e96bab8ef68764f71cc' )
 
 build() {
   unset LDFLAGS
