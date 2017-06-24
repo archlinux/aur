@@ -14,7 +14,7 @@ depends=('cairo' 'dbus' 'gdk-pixbuf2' 'libxdg-basedir' 'libxkbcommon-x11'
          'luajit' 'luajit-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
          'xcb-util-keysyms' 'xcb-util-xrm' 'xcb-util-wm')
 makedepends=('asciidoc' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc'
-             'xmlto')
+             'xmlto' 'lua-penlight-git')
 optdepends=('rlwrap: readline support for awesome-client'
             'dex: autostart your desktop files'
             'vicious: widgets for the Awesome window manager')

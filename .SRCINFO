@@ -13,6 +13,7 @@ pkgbase = awesome-luajit-git
 	makedepends = imagemagick
 	makedepends = ldoc
 	makedepends = xmlto
+	makedepends = lua-penlight-git
 	depends = cairo
 	depends = dbus
 	depends = gdk-pixbuf2
