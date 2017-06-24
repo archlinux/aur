@@ -1,5 +1,5 @@
 pkgbase = python-eddy
-	pkgver = 0.2.5
+	pkgver = 0.2.7
 	pkgrel = 1
 	arch = any
 	license = GPLv3

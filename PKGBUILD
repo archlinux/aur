@@ -1,6 +1,6 @@
-# Maintainer: joajfreitas <joao.freitas@gmail.com>
+# Maintainer: joajfreitas <joaj.freitas@gmail.com>
 pkgname=python-eddy
-pkgver=0.2.5
+pkgver=0.2.7
 pkgrel=1
 pkgdesc=""
 arch=('any')
