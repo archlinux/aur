@@ -2,8 +2,8 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86563.g5cae5a1def
-pkgrel=1
-pkgdesc='Record, convert and stream audio and video (git version with all possible libs)'
+pkgrel=2
+pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
