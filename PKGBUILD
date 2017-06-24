@@ -1,7 +1,7 @@
 # Maintainer: David Matson <gitcoder at outlook dot com>
 pkgname=freeswitch-core
-pkgver=1.6.17
-pkgrel=4
+pkgver=1.6.18
+pkgrel=1
 pkgdesc='A scalable, open source telephony platform'
 arch=('i686' 'x86_64')
 url='https://freeswitch.org/'
@@ -14,7 +14,7 @@ conflicts=('freeswitch')
 source=("https://files.freeswitch.org/releases/freeswitch/freeswitch-$pkgver.tar.xz"
         'freeswitch.service'
         'modules.conf')
-sha256sums=('709b3e43362d86b9682a7db14eb344b74362493d68244dfc4e6f40218089d4e1'
+sha256sums=('ac1b32f61e5c35680c5a2d6f145bc480cf26e6527af07d8b8b9fa2d5280252cd'
             '7eff153fdae3c99cd884c654335b32f484df5cb7e624bd6adc630372ea83e573'
             'SKIP')
 
@@ -131,7 +131,7 @@ build() {
   fi
 
   # Work around FreeSWITCH bug FS-10257
-  export CFLAGS="${CFLAGS} -Wno-parentheses -Wno-deprecated-declarations -Wno-int-in-bool-context"
+  export CFLAGS="${CFLAGS} -Wno-deprecated-declarations -Wno-int-in-bool-context"
 
   # Use OpenSSL 1.0 until upstream supports 1.1.
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
