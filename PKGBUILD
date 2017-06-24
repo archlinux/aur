@@ -4,7 +4,7 @@
 pkgname=ffmpeg-full
 _srcname=ffmpeg
 pkgver=3.3.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -23,7 +23,7 @@ depends=(
         'sdl2' 'libx11' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'libbs2b' 'flite1' 'libilbc' 'kvazaar' 'nut-multimedia-git'
-        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'libmfx-git'
+        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs'
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=(
@@ -34,7 +34,7 @@ makedepends=(
     # official repositories:
         'yasm' 'opencl-headers'
     # AUR:
-        'blackmagic-decklink-sdk'
+        'blackmagic-decklink-sdk' 'libmfx'
 )
 provides=(
     'ffmpeg' 'ffmpeg-full-nvenc' 'ffmpeg-nvenc' 'ffmpeg-libfdk_aac' 'ffmpeg-decklink'
