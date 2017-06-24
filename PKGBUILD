@@ -1,7 +1,7 @@
 # Maintainer: youngunix 
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
-pkgname=vertx
+pkgname=vert.x
 pkgver=3.4.2
 pkgrel=2
 pkgdesc="Effortless asynchronous application development for the modern web and enterprise"
@@ -10,7 +10,7 @@ url="http://vertx.io"
 license=("APACHE")
 depends=("java-environment>=7")
 
-source=("https://bintray.com/artifact/download/vertx/downloads/vert.x-${pkgver}-full.tar.gz")
+source=("https://bintray.com/artifact/download/vertx/downloads/${pkgname}-${pkgver}-full.tar.gz")
 sha1sums=("da39a3ee5e6b4b0d3255bfef95601890afd80709")
 
 package() {
