@@ -8,8 +8,8 @@ pkgname=(
 	hex-unifont
 	unifont-utils
 )
-pkgver=9.0.06
-pkgrel=2
+pkgver=10.0.01
+pkgrel=1
 pkgdesc="A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)"
 arch=(i686 x86_64)
 url="http://unifoundry.com/"
@@ -25,7 +25,7 @@ source=(
 )
 noextract=()
 sha512sums=(
-	'767dc107d9a33008116b6939facbf31db6c7942acad257ad52a1a249f04b6215b41da928ef00e8308c2cc19924257cb0219d4eddd2b99502621ebd82e8673988'
+	'd763feb37251aae6f9afb19b1bc884a373e597de28c85be4011e636eb8e2c59ebd0a279666568459e7eec864290aab8dd63ab8f92decb60a79351119dad80f44'
 	'SKIP'
 	'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
 	'dfbbcc9b81591471562431f6f6742dea2b98ea3095010ed821f05f900616ea6ceab3715da569a1c894715568387b7d35125e7a796ac6d859a0ba63f1ea24a65c'
