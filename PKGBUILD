@@ -2,10 +2,11 @@
 
 _pkgname=pandoc
 pkgname="${_pkgname}-dummy"
-pkgver=1.19.2.1
-pkgrel=79
+pkgver=0.0.1
+pkgrel=1
 pkgdesc='make archlinux believes you have pandoc installed'
 arch=('i686' 'x86_64')
+depends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
