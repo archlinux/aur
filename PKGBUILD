@@ -6,22 +6,22 @@ pkgname=kid3-cli
 pkgver=3.5.0
 pkgrel=1
 pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor, CLI version"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://kid3.sourceforge.net/"
-license=('GPL')
-depends=('chromaprint' 'id3lib' 'taglib' 'libmp4v2' 'qt5-multimedia')
-makedepends=('chromaprint' 'id3lib' 'taglib' 'libmp4v2' 'qt5-tools'
-             'hicolor-icon-theme' 'docbook-xsl' 'extra-cmake-modules' 'python')
-conflicts=('kid3-kde'' kid3-qt')
-provides=('kid3')
+license=(GPL)
+depends=(chromaprint id3lib taglib libmp4v2 qt5-multimedia)
+makedepends=(ninja chromaprint id3lib taglib libmp4v2 qt5-tools
+             hicolor-icon-theme docbook-xsl extra-cmake-modules python)
+conflicts=(kid3-kde kid3-qt)
+provides=(kid3)
 changelog=${pkgname/-cli/}.changelog
 source=(http://downloads.sourceforge.net/${pkgname/-cli/}/${pkgname/-cli/}-$pkgver.tar.gz)
-sha256sums=('0f1a3a003de180e58ef53c3db6f5caf07f5415cfd22ec2c57cbd9791d5a54fd6')
+sha256sums=(0f1a3a003de180e58ef53c3db6f5caf07f5415cfd22ec2c57cbd9791d5a54fd6)
 
 prepare() {
   mkdir -p ${srcdir}/build
   cd "${srcdir}"/build
-  cmake \
+  cmake -GNinja \
     ../${pkgname/-cli/}-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -35,11 +35,9 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"/build
-  make
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir"/build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
