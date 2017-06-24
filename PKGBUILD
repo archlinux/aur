@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=caffe2-cpu-git
-pkgver=0.7.0.r439.g8c9da8ef
+pkgver=0.7.0.r528.g437897b6
 pkgrel=1
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, cpu only)'
 arch=('i686' 'x86_64')
@@ -89,7 +89,7 @@ prepare() {
     for _submodule in $_submodule_list
     do
         local _submodule_dir="submodule-$(printf "%s" "${_submodule}" | tr '/' '-')"
-        git config "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule_dir}"
+        git config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule_dir}"
     done
     unset _submodule
     git submodule update
