@@ -1,0 +1,10 @@
+#!/bin/bash
+cd /opt/Blizcord
+
+RC=1
+
+while [ $RC -eq 1 ]
+do
+  ./Blizcord.sh --gui
+  RC=$?
+done

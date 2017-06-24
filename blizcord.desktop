@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Blizcord
+Comment=A Discord Bot
+Exec=blizcord-gui
+Type=Application
+StartupNotify=true
+Categories=Network;InstantMessaging;
+
