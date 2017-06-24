@@ -6,7 +6,7 @@
 
 pkgname=gnupg-large-rsa
 _pkgname=gnupg
-pkgver=2.1.19
+pkgver=2.1.21
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard - with fixes to make large RSA keys really work (and even bigger keys)'
 url='http://www.gnupg.org/'
@@ -21,10 +21,10 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               '46CC730865BB5C78EBABADCF04376F3EE0856959'
               '031EC2536E580D8EA286A9F22071B08A33BD3F06'
               'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
-source=("ftp://ftp.gnupg.org/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig} 
+source=("https://www.gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig} 
         "${pkgname}.patch"
        )
-sha256sums=('46cced1f5641ce29cc28250f52fadf6e417e649b3bfdec49a5a0d0b22a639bf0'
+sha256sums=('7aead8a8ba75b69866f583b6c747d91414d523bfdfbe9a8e0fe026b16ba427dd'
             'SKIP'
             '293e56dfd71ba2b51d9a2eeef20c4641bd15af7c384807466f385b87119b999c')
 
@@ -56,7 +56,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make check || [[ $CARCH = i686 ]]
+	make check 
     # https://lists.gnupg.org/pipermail/gnupg-devel/2016-December/032364.html
 }
 
