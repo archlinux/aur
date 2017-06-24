@@ -1,7 +1,7 @@
 # Maintainer: Artyom Aleksyuk <artyom.h31@gmail.com>
 
 pkgname=noxbit
-pkgver=20170618
+pkgver=20170614
 pkgrel=1
 pkgdesc='Live Video Streaming technology based on BitTorrent protocol'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,7 +30,7 @@ sha256sums_aarch64=('SKIP')
 
 pkgver() {
   local _source_name=source_$CARCH
-  local _date_text=$(curl --silent --head ${!_source_name} | tr -d '\r' | sed -En 's/^Date: (.*)/\1/p')
+  local _date_text=$(curl --silent --head ${!_source_name} | tr -d '\r' | sed -En 's/^Last-Modified: (.*)/\1/p')
   date -d"$_date_text" +%Y%m%d
 }
 

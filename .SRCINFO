@@ -1,6 +1,6 @@
 pkgbase = noxbit
 	pkgdesc = Live Video Streaming technology based on BitTorrent protocol
-	pkgver = 20170618
+	pkgver = 20170614
 	pkgrel = 1
 	url = https://noxbit.com/
 	install = noxbit.install
