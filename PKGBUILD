@@ -4,7 +4,7 @@
 
 pkgname=transmission-remote-cli-git
 _gitname=${pkgname%-git}
-pkgver=1.7.1.1.g844cc4e
+pkgver=1.7.1.3.g1e412a2
 pkgrel=1
 pkgdesc="Curses interface for the daemon of the BitTorrent client Transmission"
 arch=('any')
@@ -29,5 +29,6 @@ package() {
   
   install -D -m755 "transmission-remote-cli" "${pkgdir}/usr/bin/transmission-remote-cli"
   install -D -m644 "transmission-remote-cli.1" "${pkgdir}/usr/share/man/man1/transmission-remote-cli.1"
-  install -D -m755 "completion/bash/transmission-remote-cli-bash-completion.sh" "${pkgdir}/etc/bash_completion.d/transmission-remote-cli-bash-completion.sh"
+  install -D -m644 "completion/bash/transmission-remote-cli-bash-completion.sh" "${pkgdir}/etc/bash_completion.d/transmission-remote-cli-bash-completion.sh"
+  install -D -m644 "completion/zsh/_transmission-remote-cli" "${pkgdir}/usr/share/zsh/site-functions/_transmission-remote-cli"
 }
