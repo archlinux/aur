@@ -2,7 +2,7 @@
 
 pkgname="perl-cache-memcached-fast"
 pkgver="0.25"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Perl client for memcached, in C language"
 arch=('any')
 url="http://search.cpan.org/dist/Cache-Memcached-Fast"
