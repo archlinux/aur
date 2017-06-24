@@ -91,6 +91,7 @@ build() {
 
 	ttf-unifont)
 		msg2 "Building the TTF version"
+		make -j1 hex bdf
 		make -j1 ttf csurttf upperttf -o distclean
 	;;
 
