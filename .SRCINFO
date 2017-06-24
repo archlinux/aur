@@ -1,0 +1,20 @@
+pkgbase = pineapple
+	pkgdesc = wxWidgets frontend for Jupyter Notebook, fork of project abandoned by original author (https://nwhitehead.github.io/pineapple/)
+	pkgver = 0.8.0
+	pkgrel = 0
+	url = https://github.com/darthoctopus/pineapple/tree/thin-client
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = lessc
+	makedepends = git
+	depends = python
+	depends = wxgtk3
+	depends = webkit2gtk
+	options = !buildflags
+	source = git://github.com/darthoctopus/pineapple.git
+	sha256sums = SKIP
+
+pkgname = pineapple
+
