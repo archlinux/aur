@@ -12,6 +12,10 @@ depends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
+build() {
+	:
+}
+
 package() {
 	which pandoc > /dev/null  2>&1 && exit 0
 	echo "pandoc not found in PATH"
