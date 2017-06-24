@@ -1,6 +1,6 @@
 pkgname=dialer-phonepi
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Dialer application and call daemon for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
@@ -25,5 +25,5 @@ package() {
 	make DESTDIR=$pkgdir install
 
 	cd "$srcdir/phonepi/src/phone/qt"
-	make DESTDIR=$pkgdir install
+	install -Dm755 "./phone" "$pkgdir/usr/bin/phone"
 }
