@@ -12,7 +12,7 @@ groups=('selinux')
 arch=('i686' 'x86_64')
 url="https://github.com/TresysTechnology/setools3/wiki"
 license=('GPL' 'LGPL')
-depends=('flex' 'bison' 'libselinux>=2.4' 'libsepol>=2.4' 'sqlite3>=3.6.20' 'python2')
+depends=('flex' 'bison' 'libselinux>=2.4' 'libsepol>=2.4' 'libsepol<2.7' 'sqlite3>=3.6.20' 'python2')
 optdepends=('glib2: needed for graphical tools'
             'gtk2>=2.8: needed for graphical tools'
             'bwidget>=1.8: needed for graphical tools'

@@ -19,6 +19,7 @@ pkgbase = setools3-libs
 	depends = bison
 	depends = libselinux>=2.4
 	depends = libsepol>=2.4
+	depends = libsepol<2.7
 	depends = sqlite3>=3.6.20
 	depends = python2
 	optdepends = glib2: needed for graphical tools
