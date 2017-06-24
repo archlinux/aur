@@ -4,7 +4,7 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=2.1.0.r38.g13b035893
+pkgver=2.1.0.r61.ga161af444
 _branch=2.2
 pkgrel=1
 pkgdesc='git-version of the sheet music editor MuseScore'
@@ -28,12 +28,19 @@ makedepends=('cmake'
 	'texlive-core')
 optdepends=('lame: MP3 export')
 install=musescore.install
-source=("git+$url.git#branch=$_branch")
-md5sums=('SKIP')
+source=("git+$url.git#branch=$_branch"
+    'metronomeVolume.patch')
+md5sums=('SKIP'
+         '20d2d42d1a4b1510341f1fec2ef8d9b4')
 
 pkgver() {
   cd MuseScore
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd MuseScore
+    patch -p1 -i $srcdir/metronomeVolume.patch
 }
 
 build() {

@@ -1,0 +1,12 @@
+diff -rupN a/mscore/seq.cpp b/mscore/seq.cpp
+--- a/mscore/seq.cpp	2017-01-09 14:26:52.509086246 +0000
++++ b/mscore/seq.cpp	2017-01-09 21:07:26.844803149 +0000
+@@ -150,7 +150,7 @@ Seq::Seq()
+       playPos  = events.cbegin();
+ 
+       playTime  = 0;
+-      metronomeVolume = 0.3;
++      metronomeVolume = 0.1;
+       useJackTransportSavedFlag = false;
+ 
+       inCountIn         = false;
