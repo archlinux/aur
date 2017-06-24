@@ -11,7 +11,7 @@ depends=('xorg-xsetroot')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_pkgname/$pkgver/download")
-sha256sums=('6fe88c88af28269e21779517bbdc9e9f43c8752ac5abe086e58cfec7a30e580e')
+sha256sums=('40023afb8b1b06d897545035ea2488ba1637e5595caa4c1f867de283b04ba6b4')
 build() {
   cd "$_pkgname-$pkgver"
   cargo build --release
