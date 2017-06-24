@@ -12,7 +12,7 @@ _release=R2
 _sdkver=16.5.1
 pkgname=intel-media-sdk
 pkgver="${_year}.${_release}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Intel Media SDK (only SDK files, no kernel patches, no system modifications)'
 arch=('x86_64')
 url='https://software.intel.com/en-us/intel-media-server-studio/'
@@ -34,6 +34,7 @@ prepare() {
 
 package() {
     mkdir -p "$pkgdir"/opt/intel/mediasdk/{doc,include/mfx,lib/lin_x64,lib64,plugins,tools}
+    mkdir -p "$pkgdir"/usr/{include,lib}/intel-media-sdk
     
     # copy SDK files
     cd "MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic/opt/intel/mediasdk"
@@ -47,6 +48,10 @@ package() {
     
     cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic/opt/intel/common"
     install -D -m777 mdf/lib64/*         "${pkgdir}/opt/intel/mediasdk/lib64"
+    
+    cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic/usr"
+    cp -af include/* "${pkgdir}/usr/include/intel-media-sdk"
+    cp -af lib64/*   "${pkgdir}/usr/lib/intel-media-sdk"
     
     cd "${pkgdir}/opt/intel/mediasdk/include/mfx"
     for _file in *
