@@ -1,6 +1,6 @@
 pkgname=xxoff-phonepi
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc="Shutdown application for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
@@ -18,5 +18,5 @@ build() {
 
 package() {
 	cd "$srcdir/phonepi/src/XXoff"
-	make DESTDIR=$pkgdir install
+	install -Dm755 "./xxoff" "$pkgdir/usr/bin/xxoff"
 }
