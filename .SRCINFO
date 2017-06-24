@@ -1,0 +1,14 @@
+pkgbase = python-entrypoint2
+	pkgdesc = easy to use command-line interface for python modules, fork of entrypoint
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/ponty/entrypoint2
+	arch = any
+	license = BSD
+	depends = python-argparse
+	depends = python-decorator
+	source = https://pypi.python.org/packages/6f/12/ffea34bdecf8c43e4932897cbaa769068c8a1355b025d283707301fe40ad/entrypoint2-0.0.6.tar.gz
+	md5sums = ab268f561bb22471a83ca602c1921cbc
+
+pkgname = python-entrypoint2
+
