@@ -3,14 +3,14 @@
 # Contributors: Arkham, Christoph Zeiler, JD Steffen
 
 pkgname=eduke32-svn
-pkgver=r6191
+pkgver=r6263
 pkgrel=1
 pkgdesc="Advanced Duke Nukem 3D source port - svn version"
 arch=('i686' 'x86_64')
 url="http://eduke32.com"
 license=('GPL' 'custom: BUILD')
-depends=('sdl2_mixer' 'libgl' 'libvpx' 'flac' 'gtk2')
-makedepends=('subversion' 'gendesk' 'mesa' 'glu')
+depends=('sdl2_mixer' 'libvpx' 'gtk2')
+makedepends=('subversion' 'gendesk' 'glu')
 makedepends_i686=('nasm')
 optdepends=('timidity-freepats: a free soundfont for music'
             'fluidsynth: alternative midi sequencer'
