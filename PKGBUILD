@@ -2,8 +2,8 @@
 
 pkgname=json-simple
 pkgver=1.1.1
-pkgrel=1
-pkgdesc='JSON.simple - A simple Java toolkit for JSON.'
+pkgrel=2
+pkgdesc="JSON.simple - Simple, fast, extensible JSON encoder/decoder for Java"
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/json-simple'
 license=('APACHE')

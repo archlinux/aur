@@ -1,7 +1,7 @@
 pkgbase = json-simple
-	pkgdesc = JSON.simple - A simple Java toolkit for JSON.
+	pkgdesc = JSON.simple - Simple, fast, extensible JSON encoder/decoder for Java
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/json-simple
 	arch = i686
 	arch = x86_64
