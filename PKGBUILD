@@ -8,9 +8,9 @@ android_arch=armeabi-v7a
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL')
 makedepends=('libgl'
@@ -48,6 +48,7 @@ case "$android_arch" in
 esac
 
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
+options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:3}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "JavaScriptCore.pri.patch"
         "geoservices.pro.patch")
@@ -163,5 +164,35 @@ build() {
 
 package() {
     cd ${_pkgfqn}
+
     make INSTALL_ROOT=${pkgdir} install
+
+    case "$android_arch" in
+        arm64-v8a)
+            toolchain=aarch64-linux-android-4.9
+            stripFolder=aarch64-linux-android
+            ;;
+        armeabi*)
+            toolchain=arm-linux-androideabi-4.9
+            stripFolder=arm-linux-androideabi
+            ;;
+        mips)
+            toolchain=mipsel-linux-android-4.9
+            stripFolder=mipsel-linux-android
+            ;;
+        x86)
+            toolchain=x86-4.9
+            stripFolder=i686-linux-android
+            ;;
+        x86_64)
+            toolchain=x86_64-4.9
+            stripFolder=x86_64-linux-android
+            ;;
+    esac
+
+    export ANDROID_NDK_ROOT=/opt/android-ndk
+    STRIP=${ANDROID_NDK_ROOT}/toolchains/${toolchain}/prebuilt/linux-x86_64/${stripFolder}/bin/strip
+    find ${pkgdir}/opt/${_pkgname}/${pkgver}/${android_arch}/lib -name 'lib*.so' -exec ${STRIP} {} \;
+    find ${pkgdir}/opt/${_pkgname}/${pkgver}/${android_arch}/lib \( -name 'lib*.a' ! -name 'libQt5Bootstrap.a' ! -name 'libQt5QmlDevTools.a' \) -exec ${STRIP} {} \;
+    find ${pkgdir}/opt/${_pkgname}/${pkgver}/${android_arch}/plugins -name 'lib*.so' -exec ${STRIP} {} \;
 }
