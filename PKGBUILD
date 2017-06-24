@@ -1,12 +1,12 @@
 model="9140cdn"
 pkgname="brother-mfc-$model"
 pkgver="1.1.2"
-pkgrel=2
+pkgrel=3
 _revision=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-9140CDN"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
-license='unknown'
+license=('unknown')
 install="brother-mfc-${model}.install"
 if [ "$CARCH" == 'i686' ]; then
    depends=('deb2targz' 'perl')
