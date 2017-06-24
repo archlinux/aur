@@ -2,7 +2,7 @@
 
 pkgname=rust-dwm-status
 _pkgname=rust-dwm-status
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A status bar for tiling window managers with pretty unicode symbols written in rust"
 url="https://github.com/pierrechevalier83/rust-dwm-status"
