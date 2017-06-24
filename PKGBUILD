@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.3.0+23684.c84328c2a6c7
+pkgver=4.3.0+23687.315a3dcc229c
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 # Some of these may be optional, e.g. arpack, lapack, qhull but if they
 # are installed, octave will be linked against them.
-depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack'
+depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'openmp'
 	 'gl2ps' 'qt5-base' 'qhull' 'graphicsmagick' 'portaudio' 'mesa'
 	 'suitesparse' 'java-environment' 'qscintilla-qt5')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gettext'
@@ -47,8 +47,8 @@ build() {
   [[ $CARCH == "x86_64" ]] && _arch=amd64
   [[ $CARCH == "i686" ]] && _arch=i386
   export LD_PRELOAD=/usr/lib/libGL.so
-  
-  CC=clang CXX=clang++ ../configure \
+
+  ../configure \
     --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
     --with-umfpack --enable-java --with-hdf5 --without-osmesa \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
