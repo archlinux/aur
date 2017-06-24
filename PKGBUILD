@@ -177,7 +177,7 @@ package_hex-unifont() {
 
 	_hexdir=/usr/share/unifont
 
-	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/compiled"
 	install -D -m0644 "unifont-${pkgver}.hex" \
 		"${pkgdir}${_hexdir}/unifont.hex"
 	install -D -m0644 "unifont_upper-${pkgver}.hex" \
