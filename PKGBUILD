@@ -3,7 +3,7 @@
 pkgname=dxde
 pkgver=1.20.0
 pkgrel=1
-pkgdesc="Program pro vedeni danove evidence"
+pkgdesc="Program pro vedeni danove evidence (for czech tax records)"
 arch=('i686' 'x86_64')
 url="http://dxde.dxsolutions.org"
 license=('GPL')
