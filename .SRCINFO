@@ -3,7 +3,7 @@
 pkgbase = perl-file-libmagic
 	pkgdesc = Determine MIME types of data or files using libmagic
 	pkgver = 1.15
-	pkgrel = 3
+	pkgrel = 4
 	url = http://search.cpan.org/~drolsky/File-LibMagic
 	arch = any
 	license = GPL
