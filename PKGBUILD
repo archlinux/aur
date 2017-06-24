@@ -2,7 +2,7 @@
 
 pkgname=noxbit
 pkgver=20170614
-pkgrel=1
+pkgrel=2
 pkgdesc='Live Video Streaming technology based on BitTorrent protocol'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://noxbit.com/'
@@ -29,9 +29,7 @@ sha256sums_armv7h=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 pkgver() {
-  local _source_name=source_$CARCH
-  local _date_text=$(curl --silent --head ${!_source_name} | tr -d '\r' | sed -En 's/^Last-Modified: (.*)/\1/p')
-  date -d"$_date_text" +%Y%m%d
+  date -r "$srcdir"/STM-Hypervisor +%Y%m%d
 }
 
 package() {
