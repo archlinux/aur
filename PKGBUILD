@@ -4,7 +4,7 @@
 
 pkgbase="spl-dkms"
 pkgname=("spl-dkms" "spl-utils")
-pkgver=0.6.5.9
+pkgver=0.6.5.10
 pkgrel=1
 license=('GPL')
 makedepends=("git")
@@ -14,6 +14,12 @@ source=("git+https://github.com/zfsonlinux/spl.git#tag=spl-${pkgver}"
         "spl-utils.hostid")
 sha256sums=('SKIP'
             'ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e')
+
+prepare() {
+    cd "${srcdir}/spl"
+
+    git cherry-pick -n 4f8e643afe9d8cc558566e1dda05ef597cb2526e
+}
 
 build() {
     cd "${srcdir}/spl"
