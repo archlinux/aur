@@ -6,6 +6,7 @@ pkgbase = adhosts
 	arch = any
 	license = GPL
 	depends = git
+	depends = wget
 	source = git://github.com/levinit/adhosts.git
 	md5sums = SKIP
 
