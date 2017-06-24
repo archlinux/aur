@@ -33,7 +33,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' )
+pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-advisor' 'intel-vtune-amplifier-xe' 'intel-inspector' )
 PKGEXT='.pkg.tar.lzo'
 packager="Ignat Harczuk"
 
@@ -58,7 +58,7 @@ _v_b='196'
 
 _update='4'
 
-pkgrel=1
+pkgrel=2
 
 
 _sp=''
@@ -69,14 +69,16 @@ _mpi_ver='5.1.3' # intel-mpi-${_v_b}-${_ipp_ver}.${arch}.rpm
 # mpi ver not needed
 _mkl_ver="11.3.3" # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
 _tbb_ver='4.4.3' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
-_vtune_ver='2.0.499904' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
-_inspector_ver='1.2.497970' # intel-inspector-${year}-*-${_inspector_ver}.${arch}.rpm
-_advisor_ver='1.2.501009' # intel-advisor-${year}-*-${_advisor_ver}.${arch}.rpm
+
+_vtune_ver='3.0.510739' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
+_inspector_ver='1.3.510645' # intel-inspector-${year}-*-${_inspector_ver}.${arch}.rpm
+_advisor_ver='1.3.510716' # intel-advisor-${year}-*-${_advisor_ver}.${arch}.rpm
 
 # Different version for docs
-#_vtune_man_ver='2.0.499904'
-#_inspector_man_ver='1.2.497970'
-#_advisor_man_ver='1.2.501009'
+# Actually same version from update 4 2017
+_vtune_man_ver='3.0.510739'
+_inspector_man_ver='1.3.510645'
+_advisor_man_ver='1.3.510716'
 
 
 pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
