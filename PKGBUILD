@@ -2,7 +2,7 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc-stage1
-pkgver=6.3.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 url="http://www.gnu.org/software/gcc/"
@@ -13,7 +13,7 @@ makedepends=('gmp' 'mpfr')
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
 options=('!emptydirs' '!strip' )
 source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2")
-sha256sums=('f06ae7f3f790fbf0f018f6d40e844451e6bc3b7bc96e128e63b09825c1f8b29f')
+sha256sums=('8a8136c235f64c6fef69cac0d73a46a1a09bb250776a050aec8f9fc880bebc17')
 
 prepare() {
   cd gcc-${pkgver}
