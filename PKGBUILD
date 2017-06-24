@@ -54,7 +54,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch'
 pkgver='1.6.17'
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -146,7 +146,7 @@ disable_module() {
   sed -i -e "s|^${_fs_mod}|#${_fs_mod}|" modules.conf
 }
 
-build() {
+prepare() {
   cd ${srcdir}/${_pkgname}
 
   # BUILD BEGINS
@@ -170,9 +170,7 @@ build() {
 
   # CONFIGURE
   # We need to override some things for the ./configure for 1.6.17
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  CFLAGS+=" -I/usr/include/openssl-1.0"
-  LDFLAGS+=" -I/usr/lib/openssl-1.0" ./configure \
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig ./configure \
     --prefix=/var/lib/freeswitch \
     --with-python=/usr/bin/python2 \
     --bindir=/usr/bin \
@@ -194,6 +192,10 @@ build() {
     --with-rundir=/run/freeswitch
 
     patch -Np1 < ../freeswitch-arch.patch  # needed for 1.6.17
+}
+
+build() {
+  cd ${srcdir}/${_pkgname}
 
   # COMPILE
   make
