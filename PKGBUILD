@@ -60,7 +60,7 @@ prepare () {
     if [ ! -d "crud" ]; then
     git clone -b 3.0 https://github.com/FriendsOfCake/crud.git
     mkdir -p Crud
-    mv  crud Crud
+    mv  crud/* Crud
     fi
     patch $srcdir/ZoneMinder-$pkgver/src/zm_image.cpp < $srcdir/fabs.patch
 }
