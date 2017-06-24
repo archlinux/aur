@@ -1,0 +1,25 @@
+pkgbase = i3lock-fancy-git-fixed
+	pkgdesc = i3lock-color script: blurs background, adds lock icon and text, offers dark/light background detection.
+	pkgver = r126.765a37f
+	pkgrel = 1
+	url = https://github.com/meskarune/i3lock-fancy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = coreutils
+	depends = awk
+	depends = bash
+	depends = util-linux
+	depends = imagemagick
+	depends = i3lock
+	optdepends = wmctrl: minimize windows before locking
+	optdepends = scrot: alternative screenshot creator
+	optdepends = maim: alternative screenshot creator
+	optdepends = gnome-screenshot: alternative screenshot creator
+	provides = i3lock-fancy
+	source = git+https://github.com/meskarune/i3lock-fancy.git
+	md5sums = SKIP
+
+pkgname = i3lock-fancy-git-fixed
+
