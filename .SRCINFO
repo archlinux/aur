@@ -1,6 +1,6 @@
 pkgbase = andrei-desktop
 	pkgdesc = An openbox based desktop environment focused on productivity and speed
-	pkgver = r185.cae72b3
+	pkgver = r187.59dd61f
 	pkgrel = 1
 	url = https://gitlab.com/webative-open-source/andrei-linux
 	install = andrei-desktop.install
