@@ -1,4 +1,5 @@
 # Contributor: leonid <comdir@infonix.info>
+# Maint
 pkgname=nrserver2-free
 pkgver=2.3.1.4360
 pkgrel=1
