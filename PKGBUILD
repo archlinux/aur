@@ -11,7 +11,7 @@ options=()
 source=("https://ftp.gnu.org/gnu/cgicc/$pkgname-$pkgver.tar.gz"
         "fix_pc_file.patch")
 sha256sums=('912108160d5ccbd00a3d215c54a1d855cd9df7247bcf8cddbb1727a6bbfa7347'
-            '5a0b29ce1028cba8d7cc7d52244077c030ed8f447e169a7afa946b376150b35b')
+            'c1022b2529cc4264b9c8fef1b231c4e62507af293db759a8498d81adbaba193b')
 
 build() {
   cd "$pkgname-$pkgver"
