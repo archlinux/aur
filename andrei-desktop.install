@@ -18,7 +18,7 @@ post_install() {
 	echo
 	echo "Type \"andrei-desktop-install.sh -h\" for usage details."
 	echo
-	echo "For reviewing the new configuration files installed to "/etc", please run:
+	echo "For reviewing the new configuration files in "/etc", please run:"
 	echo
 	echo "# updatedb"
 	echo "# pacdiff -l"
