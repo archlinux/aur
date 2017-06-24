@@ -1,7 +1,7 @@
 # Maintainer: David Matson <gitcoder at outlook dot com>
 pkgname=freeswitch-core
 pkgver=1.6.17
-pkgrel=2
+pkgrel=3
 pkgdesc='A scalable, open source telephony platform'
 arch=('i686' 'x86_64')
 url='https://freeswitch.org/'
