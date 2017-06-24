@@ -39,12 +39,12 @@ sha256sums=('SKIP')
 case "$CARCH"
 in i686 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='f3435fc71c12c017f7b8031cdc2b199d'
-	sha256sums[0]='2e3c2de327cad2ee31cde314383f89bc9e21070778c3307adc7f339596e35de9'
+	md5sums[0]='debc085ecc77d948d202f646bbbb373d'
+	#sha256sums[0]='e195758b7872e0cb04ff9fe869587a1ce81d2216'
 ;; x86_64 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86-64_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='2a9d763a12ea449cba61eba97f126473'
-	sha256sums[0]='5a7b29cdb426b557629cdc979db4ab70551ce1366509f15b8b3d8c5b7ab5499c'
+	md5sums[0]='cb7326233b8f6cd04144bceacf538c26'
+	#sha256sums[0]='5a7b29cdb426b557629cdc979db4ab70551ce1366509f15b8b3d8c5b7ab5499c'
 esac
 
 _find_rpms() {
