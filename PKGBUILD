@@ -6,7 +6,7 @@ url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
 license=("GPL2")
 makedepends=("git")
-depends=("qt5-base" "qt5-tools")
+depends=("qt5-base" "qt5-tools" "qt5-3d")
 source=(git://github.com/PhonePi/phonepi.git)
 sha256sums=("SKIP")
 
