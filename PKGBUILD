@@ -2,7 +2,7 @@
 
 pkgname=lyx-git
 _pkgname=lyx
-pkgver=2.3.0alpha1.r275.gf6b0ccf99c
+pkgver=2.3.0alpha1.r307.g8910a8a1cc
 pkgrel=1
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('GPL')
 depends=(qt5-svg qt5-base python imagemagick enchant boost-libs libmythes file)
 makedepends=(glibc qt5-base git autoconf automake gcc bc)
 optdepends=(texlive-core rcs texlive-latexextra)
-provides=('lyx-git')
-conflicts=('lyx lyx-git')
-replaces=('lyx lyx-git')
+provides=('lyx')
+conflicts=('lyx')
+replaces=('')
 source=("${_pkgname}::git://git.lyx.org/${_pkgname}.git#branch=master")
 md5sums=('SKIP')
 
