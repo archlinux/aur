@@ -1,0 +1,68 @@
+diff --git a/data/gottengeography.ui b/data/gottengeography.ui
+index cbbdeeb..a37bf76 100644
+--- a/data/gottengeography.ui
++++ b/data/gottengeography.ui
+@@ -938,37 +938,31 @@ Marc Ordinas i Llopis &lt;mail@marcoil.org&gt;</property>
+   <object class="GtkSizeGroup" id="cameras_group">
+     <property name="mode">GTK_SIZE_GROUP_HORIZONTAL</property>
+     <widgets>
+-      <placeholder />
+     </widgets>
+   </object>
+   <object class="GtkSizeGroup" id="timezone_regions_group">
+     <property name="mode">GTK_SIZE_GROUP_HORIZONTAL</property>
+     <widgets>
+-      <placeholder />
+     </widgets>
+   </object>
+   <object class="GtkSizeGroup" id="timezone_cities_group">
+     <property name="mode">GTK_SIZE_GROUP_HORIZONTAL</property>
+     <widgets>
+-      <placeholder />
+     </widgets>
+   </object>
+   <object class="GtkSizeGroup" id="trackfiles_group">
+     <property name="mode">GTK_SIZE_GROUP_HORIZONTAL</property>
+     <widgets>
+-      <placeholder />
+     </widgets>
+   </object>
+   <object class="GtkSizeGroup" id="trackfile_colors_group">
+     <property name="mode">GTK_SIZE_GROUP_HORIZONTAL</property>
+     <widgets>
+-      <placeholder />
+     </widgets>
+   </object>
+   <object class="GtkSizeGroup" id="trackfile_unloads_group">
+     <property name="mode">GTK_SIZE_GROUP_HORIZONTAL</property>
+     <widgets>
+-      <placeholder />
+     </widgets>
+   </object>
+ </interface>
+diff --git a/gg/actor.py b/gg/actor.py
+index db6247e..4fe2cfc 100644
+--- a/gg/actor.py
++++ b/gg/actor.py
+@@ -62,7 +62,7 @@ for map_desc in [
+ 
+     c.push(Champlain.NetworkTileSource.new_full(
+         mapid, name, lic, lic_uri, min_zoom, max_zoom,
+-        size, Champlain.MapProjection.MAP_PROJECTION_MERCATOR,
++        size, Champlain.MapProjection.MERCATOR,
+         tile_uri, Champlain.ImageRenderer()))
+ 
+     c.push(Champlain.FileCache.new_full(1e8, None, Champlain.ImageRenderer()))
+diff --git a/gottengeography b/gottengeography
+index 34e3ee8..0a75b64 100755
+--- a/gottengeography
++++ b/gottengeography
+@@ -22,7 +22,7 @@ except:
+ 
+ try:
+     from dateutil.parser import parse
+-    parse('') # Suppress pyflakes warning.
++    parse('2017-05-14')  # Suppress pyflakes warning.
+ except:
+     need('python3-dateutil 2.0')
+ 
