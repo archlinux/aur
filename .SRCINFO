@@ -1,15 +1,16 @@
 pkgbase = hunspell-lt
 	pkgdesc = Lithuanian dictionary for Hunspell
-	pkgver = 1.3.1
-	pkgrel = 1
-	url = https://addons.mozilla.org/en-US/firefox/addon/lithuanian-spellcheck
+	pkgver = 1.3
+	pkgrel = 2
+	url = https://launchpad.net/ispell-lt
 	arch = any
 	license = GPL2
 	license = LGPL2.1
 	license = MPL
+	makedepends = unzip
 	optdepends = hunspell: Hunspell spell checking library and program
-	source = https://addons.mozilla.org/firefox/downloads/latest/3716/addon-3716-latest.xpi
-	md5sums = 859da55cde561a400cf869e700fe409b
+	source = https://launchpad.net/ispell-lt/main/1.3/+download/myspell-lt-1.3.zip
+	md5sums = 11320c87b4fd39726053fe7f6647a62c
 
 pkgname = hunspell-lt
 
