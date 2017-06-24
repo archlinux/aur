@@ -2,8 +2,8 @@
 # With help from Nicolas Porcel
 pkgbase=linux-max98090
 _srcname=linux-4.11
-pkgver=4.11.6
-pkgrel=3
+pkgver=4.11.7
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -19,9 +19,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch'
-        'CVE-2017-1000364.mm-fix-new-crash-in-unmapped_area_topdown.patch'
-        'CVE-2017-1000364.fixup.allow-stack-to-grow-up-to-address-space-limit.patch'
         # patch for max98090 soundcard
         'max98090.patch'
         # patch to revert platform x86 enable atom pmc platform clocks
@@ -31,15 +28,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '00c0b804ccda18d6ed4a32ba0be049a80363aa2bc084733a22da03f435d992a4'
+            '7d767998aa6a69df36f76d6343c03a45f190c7e8ddf9322c02493ceaa96a1aba'
             'SKIP'
             '72c8cdaed9c008a86d365a9be2195e89967d34a82a27a9d24e9fa5321635d193'
             '3724cfd9fdb9f5ff0258f9c89142a27051124934de877c0313395db74075dfdc'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'e1b6a237894fb9e7bf142eb97b5e53c2e46a15ff69ef11593007f254b9faa160'
-            'beede1721c92bae39049be5bcb30e4274406dc53c41436bf75bd44238ee8efe4'
-            'de9c4f81b51c497de930b365f63633a005e3b8bcfbb21be93fe0cbab84ed9f76'
             '66f1e1a21ceecbad1efa892515e542323a2895fc5141663eeca7fc341bec35aa'
             '10ec161f83768e03dfded48e59c3cdf97d8bad1eea827804c472742e061a8e83'
             '22b144afef8249a616bf726d78dfae53f0ed67d8686c2fc4eb38892da88ce0c5')
@@ -57,9 +51,6 @@ prepare() {
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # security patches
-  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch"
-  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-fix-new-crash-in-unmapped_area_topdown.patch"
-  patch -p1 < "${srcdir}/CVE-2017-1000364.fixup.allow-stack-to-grow-up-to-address-space-limit.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
