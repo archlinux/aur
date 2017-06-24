@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=c909944d04c1109f155dbfdeac424146e472ab3c4
+pkgver=cd67f59ec3e7fe2a9db24c854685a5130a4428840
 pkgrel=1
 pkgdesc="A ShareX inspired cross platform utility written with Qt."
 arch=('i686' 'x86_64')
@@ -22,10 +22,5 @@ package() {
   cd "${srcdir}/KShare"
   mkdir -p "$pkgdir/usr/bin"
   install ./KShare "$pkgdir/usr/bin/kshare"
-}
-
-pkgver() {
-  cd "${srcdir}/KShare"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
