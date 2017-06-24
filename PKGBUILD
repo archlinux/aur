@@ -26,7 +26,7 @@ build() {
   cd build
   cmake . -DCMAKE_CXX_FLAGS="-w" \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DWITH_UPNP=1 -DWITH_PCH=1 \
+	  -DWITH_UPNP=1 -DWITH_PCH=0 \
 	  -DCMAKE_BUILD_TYPE=Release
   make
 }
