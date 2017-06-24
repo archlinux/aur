@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts-max98090
 _srcname=linux-4.9
-pkgver=4.9.33
+pkgver=4.9.34
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -25,10 +25,10 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 	# https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '939006459d6bd9ac4374956353b795a746bd4a6b357eea1e349cd84638713ad2'
+            '5df86eaa1f16f785dbb02446c090e56f1b7dbe828860ff7fa60f6e3643242087'
             'SKIP'
-            'a4ad80fbde8bb825c936620a97b3b328801fa0b4743bac0bd4768154957b4f38'
-            '7557cafb542183aa4d8a910936dc51d6d301db0c919eb081130fad076271a0a3'
+            '44fd7d6f30152e1401e7c768fd27e90321460eb96f47c9f5f2f1800a5ffea69c'
+            'd7834771c5b690d2880ba16f8c8df06db1ff2aa8979720178e5495b1be6ceafe'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
