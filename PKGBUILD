@@ -2,7 +2,7 @@
 
 pkgname=perl-file-libmagic
 pkgver=1.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Determine MIME types of data or files using libmagic"
 arch=('any')
 url="http://search.cpan.org/~drolsky/File-LibMagic"
