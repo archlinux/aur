@@ -1,7 +1,7 @@
 pkgbase = raw-thumbnailer-entry
 	pkgdesc = add xdg desktop entry for raw-thumbnailer
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	depends = raw-thumbnailer
