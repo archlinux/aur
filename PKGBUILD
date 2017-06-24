@@ -2,7 +2,7 @@
 
 pkgname=clipster-git
 _pkgname=clipster
-pkgver=0.156.bac5833
+pkgver=1.0.1.r2.g9d66664
 pkgrel=1
 pkgdesc="python clipboard manager"
 arch=('any')
@@ -17,7 +17,7 @@ conflicts=('clipster')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
