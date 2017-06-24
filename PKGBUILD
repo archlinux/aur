@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 187460 2016-08-24 16:03:31Z jlichtblau $
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Maintainer: Adria Arrufat <adria.arrufat+AUR AT protonmail DOT ch>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Alois Nespor <alois.nespor@gmail.com>
 
 pkgname=kid3-cli
-pkgver=3.4.4
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor, CLI version"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('kid3-kde'' kid3-qt')
 provides=('kid3')
 changelog=${pkgname/-cli/}.changelog
 source=(http://downloads.sourceforge.net/${pkgname/-cli/}/${pkgname/-cli/}-$pkgver.tar.gz)
-sha256sums=('ab1f622e26e5d672eb078f93abdb51f1a2667a748be8a211fcd91d18e0db4de0')
+sha256sums=('0f1a3a003de180e58ef53c3db6f5caf07f5415cfd22ec2c57cbd9791d5a54fd6')
 
 prepare() {
   mkdir -p ${srcdir}/build
