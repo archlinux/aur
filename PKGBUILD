@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Babel randomly generates character strings based on context free grammars."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('ghc=8.0.1' 'haskell-random' 'haskell-parsec')
+depends=('ghc' 'haskell-random' 'haskell-parsec')
 source=("$pkgname-${pkgver//_/-}.tar.gz::https://github.com/quytelda/babel/archive/v${pkgver//_/-}.tar.gz")
 md5sums=('788494cc53283f35617db241bdd2ab08')
 
