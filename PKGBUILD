@@ -7,7 +7,7 @@ pkgdesc="Program for time tracking"
 arch=('i686' 'x86_64')
 url="http://dxtime.dxsolutions.org"
 license=('GPL')
-depends=('wxgtk>=3.0.0')
+depends=('wxgtk2')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)

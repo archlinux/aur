@@ -8,7 +8,7 @@ pkgbase = dxtime
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = wxgtk>=3.0.0
+	depends = wxgtk2
 	source = http://downloads.sourceforge.net/sourceforge/dxtime/dxtime-1.2.0.tar.gz
 	md5sums = 4612c5e17c8864eacf55de2a89c1f952
 
