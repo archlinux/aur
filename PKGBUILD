@@ -1,7 +1,7 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail dot com>
 
 pkgname=android-sdk-cmake
-pkgver=3.6.3155560
+pkgver=3.6.4111459
 pkgrel=1
 pkgdesc='CMake from Google Android SDK'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("https://dl-ssl.google.com/android/repository/cmake-${pkgver}-linux-x86_
 noextract=("cmake-${pkgver}-linux-x86_64.zip")
 install=android-sdk-cmake.install
 # sha1sum is from https://dl.google.com/android/repository/repository2-1.xml
-sha1sums=('0c218e6ee868a020b37418469f4657390f5493ac'
+sha1sums=('71c539b9c33f0943e9ad6251fea0b161c0b70782'
           '499d480538d4077f8e0c8c22b3bcdf809daf18ac')
 options=('!strip')
 
