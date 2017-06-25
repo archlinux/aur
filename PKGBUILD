@@ -1,6 +1,6 @@
 # Maintainer: 2ion
 pkgname=advancecomp
-pkgver=1.23
+pkgver=2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Recompression utilities for .zip .png .mng and .gz files using the 7-zip algorithm"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('zlib' 'gcc-libs')
 makedepends=()
 source=("https://github.com/amadvance/advancecomp/releases/download/v${pkgver}/advancecomp-${pkgver}.tar.gz")
-sha256sums=('75a2c97ab0cd53e71b6a3dd7f07c001fa02351c9d781a4c586718f7fea3e88ba')
+sha256sums=('10432e8e95395926723b6a7ef9bcf595eb2d53853a24f1e65154e80970122685')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -20,4 +20,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  install -Dm644 HISTORY "$pkgdir"/usr/share/doc/advancecomp/HISTORY
 }
