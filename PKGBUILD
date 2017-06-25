@@ -1,7 +1,7 @@
 # Maintainer: RubenKelevra <cyrond@gmail.com>
 
 pkgname=rk-server-basic
-pkgver=2016.11.09
+pkgver=2017.06.25
 pkgrel=3
 pkgdesc="Metapackage that installs basic server tools. Enables the following services: cronie preload ntpd haveged"
 url="http://notyetthere.com"
