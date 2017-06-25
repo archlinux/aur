@@ -1,6 +1,6 @@
 pkgbase = cinnamon-applet-starkmenu-git
 	pkgdesc = Cinnamon applet. Custom Menu for Linux Cinnamon based off of physics Windows 7 Menu.
-	pkgver = r184.b3a810b
+	pkgver = r227.3f4856d
 	pkgrel = 1
 	url = https://github.com/NikoKrause/CinnVIIStarkMenu
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: dobragab <dobragab@gmail.com>
 
 pkgname='cinnamon-applet-starkmenu-git'
-pkgver=r184.b3a810b
+pkgver=r227.3f4856d
 pkgrel=1
 pkgdesc='Cinnamon applet. Custom Menu for Linux Cinnamon based off of physics Windows 7 Menu.'
 arch=('any')
