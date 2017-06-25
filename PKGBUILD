@@ -19,7 +19,6 @@ pkgver() {
 	git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
-export LDFLAGS+=' -pie'
 build() {
 	cd "$srcdir/$_name"
 	autoheader
