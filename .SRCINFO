@@ -17,6 +17,8 @@ pkgbase = logitechmediaserver-git
 	makedepends = zlib
 	depends = perl>=5.26
 	depends = perl<5.27
+	depends = perl-anyevent
+	depends = perl-archive-zip
 	depends = perl-cgi
 	depends = perl-common-sense
 	depends = perl-data-dump
@@ -35,6 +37,7 @@ pkgbase = logitechmediaserver-git
 	depends = perl-template-toolkit
 	depends = perl-test-nowarnings
 	depends = perl-test-warn
+	depends = perl-uri
 	depends = perl-xml-parser
 	depends = perl-xml-simple
 	depends = ffmpeg
