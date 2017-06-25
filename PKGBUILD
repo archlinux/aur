@@ -8,7 +8,7 @@ arch=('any')
 url="http://github.com/graysky2/ovpngen"
 license=('MIT')
 source=(https://github.com/graysky2/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('4838e9886428afd532d6bccefa87130c8d067b5009f2e71f72c80f58aeb3eff2')
+sha256sums=('22846a62d34bbaa4536348e6ec098fb4fec9b1112ff619bc66202b96a34bef17')
 
 package() {
 	cd ${pkgname}-${pkgver}
