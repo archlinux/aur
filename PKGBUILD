@@ -3,7 +3,7 @@
 # Contributor: tomoaki/Tomoaki Hashizaki <thashisaki@yahoo.com>
 pkgname=lkeyholetv
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A client for KeyHoleTV, an online television portal that links to Japanese television channels, radio stations, and user-made channels."
 arch=('i686' 'x86_64')
 url="http://www.oiseyer.com/index-e.html"
@@ -16,13 +16,13 @@ source_i686=("http://www.oiseyer.com/Download/Ubuntu/LKeyHoleTV-32bits-Ubuntu.zi
 	'lkeyholetv.desktop'
 	'lkeyholetv')
 md5sums_i686=('d0ac2fa20a6c7c46ddfc2d95dfcf2a79'
-					'7a6d0d5ca7092918919431796787e574'
+					'59fdf1ff19320034a3797d823211e535'
 					'ae00db79eb19f3f1515f873852c903d2')
 source_x86_64=("http://www.oiseyer.com/Download/Linux64/LKeyHoleTV-64bits.zip"
 	'lkeyholetv.desktop'
 	'lkeyholetv')
 md5sums_x86_64=('bf5b14afa33d24ed9a002fe86c109c1e'
-         '7a6d0d5ca7092918919431796787e574'
+         '59fdf1ff19320034a3797d823211e535'
          'ae00db79eb19f3f1515f873852c903d2')
 _lang='en_US'
 [ "`echo $LANG | cut -d. -f1`" = "ja_JP" ] && _lang='ja_JP'
