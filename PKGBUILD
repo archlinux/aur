@@ -16,11 +16,13 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 source=('git+https://gitlab.com/jimdigriz/linux.git#branch=mssp4'
+        gcc7-ilog2.patch
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
+            '2d6a5e0a87cafeda120a509d90626579c0e857d3b277ebf1a0f5824c9376ddaf'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '356322a3fbb8c53d9d7002397537aa9614577ded430f27b6bc35793ba2e186f4'
             '6292681bf7aeead87d257f2fd95df1a2149effd5d5807aea40f0b1953e345efd')
@@ -36,6 +38,9 @@ pkgver() {
 prepare() {
   cd "${_srcname}"
 
+  # fix for GCC7
+  patch -Np1 < $startdir/gcc7-ilog2.patch
+  
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
