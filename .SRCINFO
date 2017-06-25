@@ -1,6 +1,6 @@
 pkgbase = cmus-in-bg-git
 	pkgdesc = A simple wrapper for GNU Screen and Cmus.
-	pkgver = r1.1bc065d
+	pkgver = r3.a7a50a4
 	pkgrel = 1
 	url = https://github.com/notramo/cmus-in-bg
 	arch = any
