@@ -6,8 +6,8 @@ _version=beta
 
 # Versions
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=3
-_pkgver=1.18.0
+_pkgrel=1
+_pkgver=1.19.0
 pkgver="${_pkgver}.beta${_pkgrel}"
 _ver=$_pkgver-beta${_pkgrel}
 pkgrel=1
