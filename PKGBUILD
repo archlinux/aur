@@ -1,5 +1,5 @@
 pkgname=alacritty-git
-pkgver=0.1.0.532.g3c8514b
+pkgver=0.1.0.542.gb4a839a
 pkgrel=1
 pkgdesc="A cross-platform, GPU enhanced terminal emulator"
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	cargo build --release
+	env CARGO_INCREMENTAL=0 cargo build --release
 }
 
 package() {
