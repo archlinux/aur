@@ -1,0 +1,12 @@
+diff -rup mathmap-1.3.5/Makefile mathmap-1.3.5-fix//Makefile
+--- mathmap-1.3.5/Makefile	2009-08-23 13:56:14.000000000 +0200
++++ mathmap-1.3.5-fix//Makefile	2010-11-11 16:48:13.308941852 +0100
+@@ -178,7 +178,7 @@ backends/lazy_creator.o : backends/lazy_
+ 	$(CXX) $(MATHMAP_CXXFLAGS) $(FORMATDEFS) -o $@ -c backends/lazy_creator.cpp
+ 
+ builtins/libnoise.o : builtins/libnoise.cpp builtins/libnoise.h
+-	$(CXX) $(MATHMAP_CXXFLAGS) -Ilibnoise/noise/include -o $@ -c builtins/libnoise.cpp
++	$(CXX) $(MATHMAP_CXXFLAGS) -Ilibnoise/noise/include -Ilibnoise/noise/src -o $@ -c builtins/libnoise.cpp
+ 
+ new_builtins.c opdefs.h opfuncs.h compiler_types.h llvm-ops.h : builtins.lisp ops.lisp
+ 	clisp builtins.lisp

@@ -1,0 +1,170 @@
+diff -rup mathmap-1.3.5/rwimg/rwpng.c mathmap-1.3.5.new/rwimg/rwpng.c
+--- mathmap-1.3.5/rwimg/rwpng.c	2009-08-23 13:56:14.000000000 +0200
++++ mathmap-1.3.5.new/rwimg/rwpng.c	2012-01-27 13:02:29.708023734 +0100
+@@ -58,34 +58,34 @@ open_png_file_reading (const char *filen
+     data->end_info = png_create_info_struct(data->png_ptr);
+     assert(data->end_info != 0);
+ 
+-    if (setjmp(data->png_ptr->jmpbuf))
++    if (setjmp(png_jmpbuf(data->png_ptr)))
+ 	assert(0);
+ 
+     png_init_io(data->png_ptr, data->file);
+ 
+     png_read_info(data->png_ptr, data->info_ptr);
+ 
+-    *width = data->info_ptr->width;
+-    *height = data->info_ptr->height;
++    *width = png_get_image_width(data->png_ptr, data->info_ptr);
++    *height = png_get_image_height(data->png_ptr, data->info_ptr);
+ 
+-    if (data->info_ptr->bit_depth != 8 && data->info_ptr->bit_depth != 16)
++    if (png_get_bit_depth(data->png_ptr, data->info_ptr) != 8 && png_get_bit_depth(data->png_ptr, data->info_ptr) != 16)
+     {
+ 	fprintf(stderr, "PNG files are only supported with bit depths 8 and 16.\n");
+ 	/* FIXME: free stuff */
+ 	return 0;
+     }
+ 
+-    if (data->info_ptr->color_type != PNG_COLOR_TYPE_RGB
+-	&& data->info_ptr->color_type != PNG_COLOR_TYPE_RGB_ALPHA
+-	&& data->info_ptr->color_type != PNG_COLOR_TYPE_GRAY
+-	&& data->info_ptr->color_type != PNG_COLOR_TYPE_GRAY_ALPHA)
++    if (png_get_color_type(data->png_ptr, data->info_ptr) != PNG_COLOR_TYPE_RGB
++	&& png_get_color_type(data->png_ptr, data->info_ptr) != PNG_COLOR_TYPE_RGB_ALPHA
++	&& png_get_color_type(data->png_ptr, data->info_ptr) != PNG_COLOR_TYPE_GRAY
++	&& png_get_color_type(data->png_ptr, data->info_ptr) != PNG_COLOR_TYPE_GRAY_ALPHA)
+     {
+ 	fprintf(stderr, "PNG files are only supported in RGB and Gray, with or without alpha.\n");
+ 	/* FIXME: free stuff */
+ 	return 0;
+     }
+ 
+-    if (data->info_ptr->interlace_type != PNG_INTERLACE_NONE)
++    if (png_get_interlace_type(data->png_ptr, data->info_ptr) != PNG_INTERLACE_NONE)
+     {
+ 	fprintf(stderr, "Interlaced PNG files are not supported.\n");
+ 	/* FIXME: free stuff */
+@@ -105,24 +105,24 @@ png_read_lines (void *_data, unsigned ch
+     int bps, spp;
+     unsigned char *row;
+ 
+-    if (setjmp(data->png_ptr->jmpbuf))
++    if (setjmp(png_jmpbuf(data->png_ptr)))
+ 	assert(0);
+ 
+-    if (data->info_ptr->color_type == PNG_COLOR_TYPE_GRAY)
++    if (png_get_color_type(data->png_ptr, data->info_ptr) == PNG_COLOR_TYPE_GRAY)
+ 	spp = 1;
+-    else if (data->info_ptr->color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
++    else if (png_get_color_type(data->png_ptr, data->info_ptr) == PNG_COLOR_TYPE_GRAY_ALPHA)
+ 	spp = 2;
+-    else if (data->info_ptr->color_type == PNG_COLOR_TYPE_RGB)
++    else if (png_get_color_type(data->png_ptr, data->info_ptr) == PNG_COLOR_TYPE_RGB)
+ 	spp = 3;
+     else
+ 	spp = 4;
+ 
+-    if (data->info_ptr->bit_depth == 16)
++    if (png_get_bit_depth(data->png_ptr, data->info_ptr) == 16)
+ 	bps = 2;
+     else
+ 	bps = 1;
+ 
+-    row = (unsigned char*)malloc(data->info_ptr->width * spp * bps);
++    row = (unsigned char*)malloc(png_get_image_width(data->png_ptr, data->info_ptr) * spp * bps);
+ 
+     for (i = 0; i < num_lines; ++i)
+     {
+@@ -131,13 +131,13 @@ png_read_lines (void *_data, unsigned ch
+ 	png_read_row(data->png_ptr, (png_bytep)row, 0);
+ 
+ 	if (spp <= 2)
+-	    for (j = 0; j < data->info_ptr->width; ++j)
++	    for (j = 0; j < png_get_image_width(data->png_ptr, data->info_ptr); ++j)
+ 		for (channel = 0; channel < 3; ++channel)
+-		    lines[i * data->info_ptr->width * 3 + j * 3 + channel] = row[j * spp * bps];
++		    lines[i * png_get_image_width(data->png_ptr, data->info_ptr) * 3 + j * 3 + channel] = row[j * spp * bps];
+ 	else
+-	    for (j = 0; j < data->info_ptr->width; ++j)
++	    for (j = 0; j < png_get_image_width(data->png_ptr, data->info_ptr); ++j)
+ 		for (channel = 0; channel < 3; ++channel)
+-		    lines[i * data->info_ptr->width * 3 + j * 3 + channel]
++		    lines[i * png_get_image_width(data->png_ptr, data->info_ptr) * 3 + j * 3 + channel]
+ 			= row[j * spp * bps + channel * bps];
+     }
+ 
+@@ -151,7 +151,7 @@ png_free_reader_data (void *_data)
+ {
+     png_data_t *data = (png_data_t*)_data;
+ 
+-    if (setjmp(data->png_ptr->jmpbuf))
++    if (setjmp(png_jmpbuf(data->png_ptr)))
+ 	assert(0);
+ 
+     if (data->have_read)
+@@ -180,7 +180,7 @@ open_png_file_writing (const char *filen
+     data->info_ptr = png_create_info_struct(data->png_ptr);
+     assert(data->info_ptr != 0);
+ 
+-    if (setjmp(data->png_ptr->jmpbuf))
++    if (setjmp(png_jmpbuf(data->png_ptr)))
+ 	assert(0);
+ 
+     if (pixel_stride == 4)
+@@ -188,18 +188,9 @@ open_png_file_writing (const char *filen
+ 
+     png_init_io(data->png_ptr, data->file);
+ 
+-    data->info_ptr->width = width;
+-    data->info_ptr->height = height;
+-    data->info_ptr->valid = 0;
+-    data->info_ptr->rowbytes = width * 3;
+-    data->info_ptr->palette = 0;
+-    data->info_ptr->num_palette = 0;
+-    data->info_ptr->num_trans = 0;
+-    data->info_ptr->bit_depth = 8;
+-    data->info_ptr->color_type = PNG_COLOR_TYPE_RGB;
+-    data->info_ptr->compression_type = PNG_COMPRESSION_TYPE_DEFAULT;
+-    data->info_ptr->filter_type = PNG_FILTER_TYPE_DEFAULT;
+-    data->info_ptr->interlace_type = PNG_INTERLACE_NONE;
++    png_set_IHDR(data->png_ptr, data->info_ptr, width, height,
++    8, PNG_COLOR_TYPE_RGB, PNG_INTERLACE_NONE,
++    PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
+ 
+     png_write_info(data->png_ptr, data->info_ptr);
+ 
+@@ -216,12 +207,12 @@ png_write_lines (void *_data, unsigned c
+     unsigned char *packed_line;
+     int i;
+ 
+-    if (setjmp(data->png_ptr->jmpbuf))
++    if (setjmp(png_jmpbuf(data->png_ptr)))
+ 	assert(0);
+ 
+     if (data->pixel_stride != 3)
+     {
+-	packed_line = (unsigned char*)malloc(data->info_ptr->width * 3);
++	packed_line = (unsigned char*)malloc(png_get_image_width(data->png_ptr, data->info_ptr) * 3);
+ 	assert(packed_line != 0);
+     }
+     else
+@@ -235,7 +226,7 @@ png_write_lines (void *_data, unsigned c
+ 	{
+ 	    int j;
+ 
+-	    for (j = 0; j < data->info_ptr->width; ++j)
++	    for (j = 0; j < png_get_image_width(data->png_ptr, data->info_ptr); ++j)
+ 	    {
+ 		packed_line[j * 3 + 0] = p[j * data->pixel_stride + 0];
+ 		packed_line[j * 3 + 1] = p[j * data->pixel_stride + 1];
+@@ -257,7 +248,7 @@ png_free_writer_data (void *_data)
+ {
+     png_data_t *data = (png_data_t*)_data;
+ 
+-    if (setjmp(data->png_ptr->jmpbuf))
++    if (setjmp(png_jmpbuf(data->png_ptr)))
+ 	assert(0);
+ 
+     png_write_end(data->png_ptr, data->info_ptr);
+Only in mathmap-1.3.5.new/rwimg: rwpng.c.orig

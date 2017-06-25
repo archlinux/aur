@@ -1,0 +1,11 @@
+--- mathmap-1.3.5/opmacros.h.orig	2016-02-21 10:14:31.347636550 +0000
++++ mathmap-1.3.5/opmacros.h	2016-02-21 10:15:03.544184507 +0000
+@@ -103,7 +103,7 @@
+ #define ELL_INT_F(phi,k)      gsl_sf_ellint_F((phi), (k), GSL_PREC_SINGLE)
+ #define ELL_INT_E(phi,k)      gsl_sf_ellint_E((phi), (k), GSL_PREC_SINGLE)
+ #define ELL_INT_P(phi,k,n)    gsl_sf_ellint_P((phi), (k), (n), GSL_PREC_SINGLE)
+-#define ELL_INT_D(phi,k,n)    gsl_sf_ellint_D((phi), (k), (n), GSL_PREC_SINGLE)
++#define ELL_INT_D(phi,k,n)    gsl_sf_ellint_D((phi), (k), GSL_PREC_SINGLE)
+ 
+ #define ELL_INT_RC(x,y)       gsl_sf_ellint_RC((x), (y), GSL_PREC_SINGLE)
+ #define ELL_INT_RD(x,y,z)     gsl_sf_ellint_RD((x), (y), (z), GSL_PREC_SINGLE)
