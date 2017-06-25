@@ -89,6 +89,7 @@ EOF
 
 	msg2 "Making sure file ownership is 'correct'..."
 	chown -R root:root "${pkgdir}/opt"
+	chmod 0777 "${pkgdir}/opt/${_pkgname}/configs"
 	chmod 0777 "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Any final tweaks..."
