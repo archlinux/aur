@@ -6,37 +6,35 @@
 
 pkgname=spin
 pkgver=6.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for the formal verification of distributed software systems'
 arch=('i686' 'x86_64')
 url='https://spinroot.com/'
-license=('custom:SPIN')
+license=('custom:BSD3')
 depends=('glibc')
 optdepends=('tcl: ispin graphical interface'
             'swarm: improved performance on large verification problems'
             'modex: extract verification models from implementation C code'
             'ispin: GUI for Spin')
-source=(https://spinroot.com/spin/Src/spin${pkgver//./}.tar.gz
-        LICENSE.txt)
-sha512sums=('4ce720a1234c3bfe37320b6a41ee27346237592ca0a9437a67a13078b9ae0f8f1ad321c6715329799d6295084649c4dab5164cb32682bf1033a94c8ee960e1de'
-            'a5b63fc7136a2631c9a27619953abe2e9d6cab179042dd56bb76afbffe1966ad7edb41a131af5d6663f3cdbf77128833232e9174c0ef817b8522bfd978add595')
+source=(https://github.com/freswa/spin/archive/${pkgver}.tar.gz)
+sha512sums=('5c59d8af7e8f73c855aa1be7059cb7881829ef3d9b0a8775c182d6536bf4250f966cf13efad5ec1926d8b32a34e7b8428022e1c52346015bcb6056774da5818f')
 
 build() {
-  cd "${srcdir}/Spin/Src${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}/Src${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/Spin/Src${pkgver}"
-
+  cd "${srcdir}/${pkgname}-${pkgver}/Src${pkgver}"
   # install binary and license file
-  install -D spin "${pkgdir}/usr/bin/spin"
-  install -D -m644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -Dm755 spin "${pkgdir}/usr/bin/spin"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
+  cd "${srcdir}/${pkgname}-${pkgver}"
   # install manpage and docs
   install -d "${pkgdir}/usr/share/man/man1/"
   install -d "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
-  gzip -9c "${srcdir}/Spin/Man/spin.1" > "${pkgdir}/usr/share/man/man1/spin.1.gz"
-  cp -a "${srcdir}/Spin/Examples/"* "${pkgdir}/usr/share/doc/${pkgname}/examples/"
+  gzip -9c Man/spin.1 > "${pkgdir}/usr/share/man/man1/spin.1.gz"
+  cp -a Examples/* "${pkgdir}/usr/share/doc/${pkgname}/examples/"
 }
