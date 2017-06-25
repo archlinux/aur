@@ -4,12 +4,12 @@
 _gemname=mini_magick
 pkgname=ruby-$_gemname-4.5
 pkgver=4.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick'
 arch=(any)
 url='https://github.com/minimagick/minimagick'
 license=(MIT)
-provides=("ruby-mini_magick=$pkgver")
+provides=('ruby-mini_magick=4.5')
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
