@@ -4,8 +4,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=opensimulator-osgrid
-pkgver=20170603.v0.9.1.4320758
-_realpkgver=06032017.v0.9.1.4320758
+pkgver=20170616.v0.9.1.4df19ec
+_realpkgver=06162017.v0.9.1.4df19ec
 pkgrel=1
 pkgdesc="OSGrid's distribution of OpenSimulator, preconfigured to connect with OSGrid"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ backup=('opt/opensimulator-osgrid/bin/OpenSim.ini'
 		'opt/opensimulator-osgrid/bin/config-include/GridCommon.ini')
 source=("http://danbanner.onikenkon.com/osgrid//osgrid-opensim-${_realpkgver}.zip" \
 	"osgrid.sh")
-md5sums=('0211ae5c1b7f2fc8f41c8b965f2ff7f9'
+md5sums=('e2ffb6b2978e35e2b2771c7d4ec7f696'
          '8ad5aab5c434aef00d12b08343a5da5a')
 
 package() {
@@ -36,7 +36,7 @@ find $pkgdir/opt/$pkgname/bin -name "*.exe" -exec chmod 755 {} +
 find $pkgdir/opt/$pkgname/bin -name "*.ini" -exec chmod 666 {} +
 find $pkgdir/opt/$pkgname/bin -name "*.xml" -exec chmod 666 {} +
 chmod 777 $pkgdir/opt/$pkgname/bin/{,*/}
-chmod 755 $pkgdir/opt/$pkgname/bin/opensim-ode.sh
+chmod 755 $pkgdir/opt/$pkgname/bin/opensim.sh
 # chmod 666 "$pkgdir"/opt/$pkgname/bin/OpenSim.log
 # install launch script
 install -m755 -D ../osgrid.sh $pkgdir/usr/bin/osgrid
