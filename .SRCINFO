@@ -13,6 +13,7 @@ pkgbase = clightd-git
 	depends = libxrandr
 	depends = libxext
 	depends = polkit
+	depends = libxss
 	optdepends = clight-git: user service to automagically change screen backlight matching ambient brightness.
 	source = git://github.com/FedeDP/Clightd.git
 	sha256sums = SKIP
