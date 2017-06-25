@@ -82,7 +82,7 @@ EOF
 
 	cat > "${srcdir}/start-resolve" << EOF
 #!/bin/sh
-mkdir -p /tmp/resolve/{logs,GPUCache}
+mkdir -p /tmp/${_pkgname}/{logs,GPUCache}
 cd /opt/${_pkgname}
 exec bin/resolve "\$@"
 EOF
@@ -94,8 +94,8 @@ EOF
 	chmod 0777 "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Any final tweaks..."
-	ln -s /tmp/resolve/logs "${pkgdir}/opt/${_pkgname}/logs"
-	ln -s /tmp/resolve/GPUCache "${pkgdir}/opt/${_pkgname}/GPUCache"
+	ln -s "/tmp/${_pkgname}/logs" "${pkgdir}/opt/${_pkgname}/logs"
+	ln -s "/tmp/${_pkgname}/GPUCache" "${pkgdir}/opt/${_pkgname}/GPUCache"
 
 	msg2 "Done!"
 }
