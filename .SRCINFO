@@ -20,7 +20,6 @@ pkgbase = rk-server-basic
 	depends = wget
 	depends = ntp
 	depends = acpid
-	depends = abs
 	depends = p7zip
 	depends = zip
 	depends = unrar
