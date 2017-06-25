@@ -1,5 +1,5 @@
---- qt-linux/ts3soundboard_linux.pro_orig	2017-04-25 08:23:53.644282489 +0200
-+++ qt-linux/ts3soundboard_linux.pro	2017-04-25 08:26:55.262605010 +0200
+--- qt-linux/ts3soundboard_linux.pro_orig	2017-06-25 13:04:17.367485782 +0200
++++ qt-linux/ts3soundboard_linux.pro	2017-06-25 13:05:46.234153803 +0200
 @@ -20,7 +20,12 @@
  CONFIG(debug, release|debug):DEFINES += _DEBUG
  CONFIG(release, release|debug):DEFINES += NDEBUG
@@ -19,44 +19,30 @@
      -lswresample
  
 -QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
-+# QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
++#QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
  
  
  include(./ts3soundboard.pri)
---- qt-linux/ts3soundboard.pri_orig	2017-04-16 11:03:52.417682394 +0200
-+++ qt-linux/ts3soundboard.pri	2017-04-16 11:04:47.759031973 +0200
-@@ -22,6 +22,7 @@
-     ../src/SampleSource.h \
-     ../src/SampleVisualizerThread.h \
-     ../src/SoundInfo.h \
-+    ../src/TalkStateManager.h \
-     ../src/ts3log.h \
-     ../src/version/version.h \
-     ../vs2015/resource.h \
-@@ -43,7 +44,7 @@
-     ../src/main.cpp \
-     ../src/HighResClock.cpp \
-     ../src/inputfileffmpeg.cpp \
--    ../src/plugin.c \
-+    ../src/plugin.cpp \
-     ../src/SampleBuffer.cpp \
-     ../src/SampleProducerThread.cpp \
-     ../src/samples.cpp \
-@@ -53,6 +54,7 @@
-     ../src/soundsettings_qt.cpp \
-     ../src/soundview_qt.cpp \
-     ../src/SpeechBubble.cpp \
-+    ../src/TalkStateManager.cpp \
-     ../src/ts3log.cpp \
-     ../src/UpdateChecker.cpp \
-     ../src/updater_qt.cpp
---- src/samples.cpp_orig	2017-04-16 11:05:06.014146183 +0200
-+++ src/samples.cpp	2017-04-16 11:05:27.003276895 +0200
-@@ -18,6 +18,7 @@
- #include <queue>
- #include <vector>
- #include <cassert>
+--- src/main.cpp_orig	2017-06-25 13:05:05.209847399 +0200
++++ src/main.cpp	2017-06-25 13:05:22.744978748 +0200
+@@ -169,8 +169,8 @@
+ 
+ 	configModel->notifyAllEvents();
+ 
+-	updateChecker = new UpdateChecker();
+-	updateChecker->startCheck();
++//	updateChecker = new UpdateChecker();
++//	updateChecker->startCheck();
+ }
+ 
+ 
+--- src/peakmeter.h_orig	2017-06-25 13:09:23.183737983 +0200
++++ src/peakmeter.h	2017-06-25 13:10:14.383142304 +0200
+@@ -5,6 +5,7 @@
+ // All rights reserved
+ // Contact: rp_soundboard@mgraefe.de
+ //----------------------------------
 +#include <math.h>
  
- 
- #define USE_SSE2
+ #pragma once
+ #ifndef rpsbsrc__peakmeter_H__
