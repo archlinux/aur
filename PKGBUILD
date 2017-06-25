@@ -1,7 +1,7 @@
 # Maintainer: Pig Monkey <pm@pig-monkey.com>
 
 pkgname=hostsctl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="block advertisements, trackers, and other malicious activity by manipulating /etc/hosts"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/pigmonkey/hostsctl"
 license=("GPLv3")
 conflicts=("hostsctl-git")
 source=(${pkgname}-v${pkgver}.tar.gz::https://github.com/pigmonkey/${pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=("bd8498bf40f8a9e4d873ae61181ea26c")
+md5sums=("3a7ac6ae71f38fc5675ceeafd0b788a3")
 install=hostsctl.install
 
 package() {
