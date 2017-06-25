@@ -1,9 +1,9 @@
 pkgname=kmozillahelper
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Mozilla KDE Integration."
-url="https://build.opensuse.org/package/show/openSUSE:Factory/mozilla-kde4-integration"
+url="https://github.com/openSUSE/kmozillahelper"
 arch=("i686" "x86_64")
 license=('MIT')
 depends=("kio" "knotifications" "kwindowsystem" "ki18n")
@@ -22,4 +22,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-build"
 	make DESTDIR="$pkgdir" install
+    install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
