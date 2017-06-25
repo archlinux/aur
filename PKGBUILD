@@ -3,14 +3,15 @@
 
 pkgname=gcompris-qt
 pkgver=0.70
-pkgrel=2
+pkgrel=3
 pkgdesc="Educational software suite comprising of numerous activities for children aged 2 to 10"
 arch=('i686' 'x86_64')
 url="http://gcompris.net/"
 license=('GPL3')
-depends=('qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-sensors'
-         'qt5-quickcontrols' 'qt5-graphicaleffects' 'qml-box2d')
-makedepends=('cmake' 'git' 'qt5-tools')
+depends=('qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-sensors'
+         'qt5-quickcontrols' 'qt5-graphicaleffects' 'qml-box2d'
+         'hicolor-icon-theme')
+makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools' 'kdoctools')
 replaces=('gcompris' 'gcompris-data')
 source=(http://gcompris.net/download/qt/src/$pkgname-$pkgver.tar.xz
         0001-chess-Qt-bug-in-5.8-with-do-while-loop-https-bugrepo.patch
@@ -45,8 +46,6 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make -C build DESTDIR="$pkgdir" install
-  install -Dm644 org.kde.gcompris.desktop "$pkgdir/usr/share/applications/gcompris.desktop"
-  install -Dm644 GCompris80.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
 # vim:set ts=2 sw=2 et:
