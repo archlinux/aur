@@ -1,0 +1,11 @@
+pkgbase = libmpack
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/libmpack/libmpack
+	arch = any
+	license = MIT
+	source = https://github.com/libmpack/libmpack/archive/1.0.5.tar.gz
+	sha256sums = 4ce91395d81ccea97d3ad4cb962f8540d166e59d3e2ddce8a22979b49f108956
+
+pkgname = libmpack
+
