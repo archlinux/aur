@@ -1,21 +1,24 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail dot com>
 
 pkgname=android-sdk-cmake
-pkgver=3.6.4111459
-pkgrel=1
+_major=3
+_minor=6
+_micro=4111459
+pkgver=$_major.$_minor.$_micro
+pkgrel=2
 pkgdesc='CMake from Google Android SDK'
 arch=('x86_64')
 url="http://developer.android.com/sdk/index.html"
 license=('custom:android-sdk-license')
-depends=('bash' 'openssl-1.0')
+depends=('bash')
 makedepends=('libxml2') # xmllint
 source=("https://dl-ssl.google.com/android/repository/cmake-${pkgver}-linux-x86_64.zip"
-        package.xml)
+        package.xml.in)
 noextract=("cmake-${pkgver}-linux-x86_64.zip")
 install=android-sdk-cmake.install
 # sha1sum is from https://dl.google.com/android/repository/repository2-1.xml
 sha1sums=('71c539b9c33f0943e9ad6251fea0b161c0b70782'
-          '499d480538d4077f8e0c8c22b3bcdf809daf18ac')
+          '5ca8c4e61ee3a3294865afbd5d16e83662871e06')
 options=('!strip')
 
 prepare() {
@@ -23,6 +26,11 @@ prepare() {
     mkdir -p cmake-pkg
     cd cmake-pkg
     bsdtar -x -f ../cmake-$pkgver-linux-x86_64.zip
+}
+
+build() {
+    cd "$srcdir"
+    sed "s#%MAJOR%#$_major#g;s#%MINOR%#$_minor#g;s#%MICRO%#$_micro#g" package.xml.in > package.xml
 }
 
 package() {
