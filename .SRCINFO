@@ -1,0 +1,13 @@
+pkgbase = diceware-gen
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://gitlab.com/jmatthin/diceware-gen
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = rust
+	source = diceware-gen-0.2.2.tar.gz::https://gitlab.com/jmatthin/diceware-gen/repository/archive.tar.gz?ref=0.2.2
+	sha512sums = 668ea749b3841b9a3cc265fe1ff186950b8fcb141d6e824e5fd44d662d233bedc6b4bd6d0584bda35a4d22d9b47c7251b94190dd53a33a6df513964fec120d09
+
+pkgname = diceware-gen
+
