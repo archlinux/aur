@@ -1,7 +1,7 @@
 # Maintainer: Falco Preiseni <apfelkomplott2014 at mailbox dot org>
 pkgname=ende
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An english<->german dictionary for your command line"
 arch=('any')
 url="https://git.codecoop.org/iceflower/ende"

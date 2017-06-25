@@ -1,7 +1,7 @@
 pkgbase = ende
 	pkgdesc = An english<->german dictionary for your command line
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.codecoop.org/iceflower/ende
 	arch = any
 	license = GPL3
