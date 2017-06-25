@@ -1,7 +1,7 @@
-pkgbase = linux-amd-staging-git
-	pkgdesc = Linux kernel with AMD DC patches
-	pkgver = 4.11.665002.cad2d1111e12
-	pkgrel = 2
+pkgbase = linux-amd-mainline-git
+	pkgdesc = Linux kernel with AMD DC and ROCm patches
+	pkgver = 4.11.665483.7ccf5ab3da7a
+	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linux-amd-staging-git
 	makedepends = libelf
 	makedepends = git
 	options = !strip
-	source = linux-amd-staging-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-staging-4.11
+	source = linux-amd-mainline-git::git://people.freedesktop.org/~agd5f/linux#branch=amd-mainline-hybrid-4.11
 	source = config.x86_64
 	source = config.i686
 	source = 90-linux.hook
@@ -25,19 +25,19 @@ pkgbase = linux-amd-staging-git
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 
-pkgname = linux-amd-staging-git
-	pkgdesc = The Linux-amd-staging-git kernel and modules with AMD DC patches
+pkgname = linux-amd-mainline-git
+	pkgdesc = The Linux-amd-mainline-git kernel and modules with AMD DC and ROCm patches
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-amd-staging-git.preset
+	backup = etc/mkinitcpio.d/linux-amd-mainline-git.preset
 
-pkgname = linux-amd-staging-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-amd-staging-git kernel with AMD DC patches
+pkgname = linux-amd-mainline-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux-amd-mainline-git kernel with AMD and ROCm patches
 
-pkgname = linux-amd-staging-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-amd-staging-git kernel with AMD DC patches
+pkgname = linux-amd-mainline-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-amd-mainline-git kernel with AMD DC and ROCm patches
 

@@ -1,7 +1,7 @@
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod 4.11.0-1-amd-staging-git
+  depmod 4.11.0-2-amd-mainline-git
 }
 
 post_upgrade() {
@@ -11,7 +11,7 @@ post_upgrade() {
 
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod 4.11.0-1-amd-staging-git
+  depmod 4.11.0-2-amd-mainline-git
 
   if [ $(vercmp $2 3.13) -lt 0 ]; then
     echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
@@ -22,6 +22,6 @@ post_upgrade() {
 
 post_remove() {
   # also remove the compat symlinks
-  rm -f boot/initramfs-linux-amd-staging-git.img
-  rm -f boot/initramfs-linux-amd-staging-git-fallback.img
+  rm -f boot/initramfs-linux-amd-mainline-git.img
+  rm -f boot/initramfs-linux-amd-mainline-git-fallback.img
 }
