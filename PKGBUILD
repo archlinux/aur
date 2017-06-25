@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=4.0
-pkgrel=1
+pkgver=4.1
+pkgrel=2
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven Bash script"
 depends=('dialog' 'expac')
 arch=('any')
@@ -30,15 +30,15 @@ optdepends=(
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
 
-md5sums=('dda1ba6ea5976c5f7cf5145725ba778a')
+md5sums=('0084cee14d743ea569fd72ccf7dd48af')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
-    install -D -m644 Readme.md "$pkgdir/usr/share/doc/${pkgname}/Readme.md"
+    install -D -m644 README.md "$pkgdir/usr/share/doc/${pkgname}/Readme.md"
 
     install -D -m644 documentation/cylon.7   "$pkgdir/usr/share/man/man7/cylon.7"
     install -D -m644 documentation/changelog.md "$pkgdir/usr/share/doc/${pkgname}/changelog.md"
-    install -D -m644 documentation/License.md "$pkgdir/usr/share/licenses/${pkgname}/License.md"
+    install -D -m644 documentation/LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/License.md"
 
     install -D  -m644 desktop/cylon.desktop "$pkgdir/usr/share/applications/cylon.desktop"
     install -D  -m644 desktop/cylonicon.png "$pkgdir/usr/share/pixmaps/cylonicon.png"
