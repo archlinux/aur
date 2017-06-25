@@ -1,5 +1,5 @@
 # Maintainer: Brian <brian@bamonroe.com>
-# Auther: ftilmann at github.com
+# Author: ftilmann at github.com
 # https://github.com/ftilmann/latexdiff/issues/104
 pkgname=latexdiff-git
 pkgver=1.2.1.r0.g32ef94d
