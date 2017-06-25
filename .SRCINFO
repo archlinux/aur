@@ -1,0 +1,20 @@
+pkgbase = r-cran-tidyr
+	pkgdesc = Functions to easily tidy data.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/tidyr/index.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=3.1.0
+	depends = r-cran-dplyr>=0.4
+	depends = r-cran-lazyeval
+	depends = r-cran-rcpp
+	depends = r-cran-tibble
+	depends = r-magrittr
+	depends = r-stringi
+	source = http://cran.r-project.org/src/contrib/tidyr_0.6.3.tar.gz
+	md5sums = 48e1bef9b0af15bed3a09c255ab4e4b5
+
+pkgname = r-cran-tidyr
+
