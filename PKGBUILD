@@ -1,8 +1,8 @@
 pkgname=anki
 pkgver=2.1.0a15
 alpha=15
-pkgrel=1
-pkgdesc="Friendly, intelligent flash cards"
+pkgrel=2
+pkgdesc="WARNING: THIS BUILDS ALPHA SOFTWARE. Friendly, intelligent flash cards"
 url="https://ankisrs.net/"
 license=('AGPL3')
 arch=('any')

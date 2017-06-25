@@ -1,7 +1,7 @@
 pkgbase = anki
-	pkgdesc = Friendly, intelligent flash cards
+	pkgdesc = WARNING: THIS BUILDS ALPHA SOFTWARE. Friendly, intelligent flash cards
 	pkgver = 2.1.0a15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ankisrs.net/
 	arch = any
 	license = AGPL3
