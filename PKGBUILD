@@ -21,9 +21,9 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium-vaapi-bin
-pkgver=59.0.3071.104
+pkgver=59.0.3071.109
 pkgrel=1
-pkgdesc='Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by your GPU (binary package)'
+pkgdesc='Chromium compiled with VA-API support for Intel Graphics'
 url='https://www.chromium.org/Home'
 arch=('x86_64')
 license=('BSD')
@@ -40,7 +40,7 @@ optdepends=('kdialog: needed for file dialogs in KDE'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 
 source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/chromium-vaapi-$pkgver-$pkgrel-$arch.pkg.tar.xz")
-sha256sums_x86_64=('3c200186e952f9447999128295fb49921a96105475d88b29ebcadfe32c709079')
+sha256sums_x86_64=('71b3d42fc88e20308bfb52a4f91dd69fb3ac806dc3655efc5fff383ca124d78c')
 
 package() {
   cp -ar "$srcdir/usr" "$pkgdir/usr"

@@ -1,6 +1,6 @@
 pkgbase = chromium-vaapi-bin
-	pkgdesc = Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by your GPU (binary package)
-	pkgver = 59.0.3071.104
+	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
+	pkgver = 59.0.3071.109
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -36,8 +36,8 @@ pkgbase = chromium-vaapi-bin
 	provides = chromium
 	conflicts = chromium
 	conflicts = chromium-vaapi
-	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-59.0.3071.104-1-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = 3c200186e952f9447999128295fb49921a96105475d88b29ebcadfe32c709079
+	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-59.0.3071.109-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 71b3d42fc88e20308bfb52a4f91dd69fb3ac806dc3655efc5fff383ca124d78c
 
 pkgname = chromium-vaapi-bin
 
