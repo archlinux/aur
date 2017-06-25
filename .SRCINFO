@@ -1,0 +1,14 @@
+pkgbase = r-cran-pkgconfig
+	pkgdesc = Set R package configuration options on a per-package basis.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/pkgconfig/index.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r
+	source = http://cran.r-project.org/src/contrib/pkgconfig_2.0.1.tar.gz
+	md5sums = a20fd9588e37995995fa62dc4828002e
+
+pkgname = r-cran-pkgconfig
+
