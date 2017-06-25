@@ -1,31 +1,29 @@
 # Contributor/Maintainer: ilikenwf/Matt Parnell <parwok@gmail.com>
 # Contributor: liliff/Musee U <icelandisbeingcolouredbywrens@gmail.com>
-
+# Contributor: tomoaki/Tomoaki Hashizaki <thashisaki@yahoo.com>
 pkgname=lkeyholetv
-pkgver=2.1
-pkgrel=8
+pkgver=2.3
+pkgrel=1
 pkgdesc="A client for KeyHoleTV, an online television portal that links to Japanese television channels, radio stations, and user-made channels."
 arch=('i686' 'x86_64')
-url="http://www.v2p.jp/video/english/"
+url="http://www.oiseyer.com/index-e.html"
 license=('custom')
 depends=('alsa-lib' 'gtk2' 'cairo' 'pango' 'libx11' 'libpng')
 optdepends=('sdl: SDL video support')
 provides=('lkeyholetv')
 install=lkeyholetv.install
-source=("http://www.oiseyer.com/Download/Ubuntu/LinuxKeyHoleTV${pkgver}-Ubuntu.tar.gz"
+source_i686=("http://www.oiseyer.com/Download/Ubuntu/LKeyHoleTV-32bits-Ubuntu.zip"
 	'lkeyholetv.desktop'
 	'lkeyholetv')
-md5sums=('d60b1fc652605cebc4a5fe478e3ab32b'
-         '59fdf1ff19320034a3797d823211e535'
+md5sums_i686=('d0ac2fa20a6c7c46ddfc2d95dfcf2a79'
+					'7a6d0d5ca7092918919431796787e574'
+					'ae00db79eb19f3f1515f873852c903d2')
+source_x86_64=("http://www.oiseyer.com/Download/Linux64/LKeyHoleTV-64bits.zip"
+	'lkeyholetv.desktop'
+	'lkeyholetv')
+md5sums_x86_64=('bf5b14afa33d24ed9a002fe86c109c1e'
+         '7a6d0d5ca7092918919431796787e574'
          'ae00db79eb19f3f1515f873852c903d2')
-
-[ "$CARCH" = "x86_64" ] && source=("http://www.oiseyer.com/Download/Linux64/LinuxKeyHoleTV${pkgver}-64.bit.tar.gz"
-				   'lkeyholetv.desktop'
-				   'lkeyholetv') \
-			&& md5sums=('56a221e76dbcdcdf7b98d304a48cfb65'
-						'59fdf1ff19320034a3797d823211e535'
-						'ae00db79eb19f3f1515f873852c903d2')
-
 _lang='en_US'
 [ "`echo $LANG | cut -d. -f1`" = "ja_JP" ] && _lang='ja_JP'
 
@@ -54,17 +52,17 @@ package()
 	make install || return 1 # Similar to the last install.
 
 	# Some cleanup
-	rm -v ${srcdir}/KeyHoleTV/.KeyHoleTV/KeyHoleTVAddr.dat~ || return 1 #backup file in the 64bit tarball
-	rm -v ${srcdir}/KeyHoleTV/.KeyHoleTV/ESDObj.so || #esound unsupported/is in AUR
+	#rm -v ${srcdir}/KeyHoleTV/.KeyHoleTV/KeyHoleTVAddr.dat~ || return 1 #backup file in the 64bit tarball
+	#rm -v ${srcdir}/KeyHoleTV/.KeyHoleTV/ESDObj.so || #esound unsupported/is in AUR
 
 	# Time to install the program itself
 
-	install -c ${srcdir}/KeyHoleTV/.KeyHoleTV ${pkgdir}/opt/LKeyHoleTV/
-	install -c ${srcdir}/KeyHoleTV/lkeyholetv ${pkgdir}/opt/LKeyHoleTV/
+	install -d ${srcdir}/KeyHoleTV/.KeyHoleTV ${pkgdir}/opt/LKeyHoleTV/
+	install ${srcdir}/KeyHoleTV/lkeyholetv ${pkgdir}/opt/LKeyHoleTV/
 	cp -r ${srcdir}/KeyHoleTV/.KeyHoleTV ${pkgdir}/opt/LKeyHoleTV/
-	install -c ${srcdir}/lkeyholetv ${pkgdir}/usr/bin/
+	install ${srcdir}/lkeyholetv ${pkgdir}/usr/bin/
 
 	install -m644 ${srcdir}/lkeyholetv.desktop ${pkgdir}/usr/share/applications/ || return 1
-	install -m644 ${srcdir}/KeyHoleTV/keyholetv.xpm ${pkgdir}/usr/share/pixmaps/keyholetv.xpm || return 1
+	install -m644 ${srcdir}/KeyHoleTV/Lkeyholetv.png ${pkgdir}/usr/share/pixmaps/Lkeyholetv.png || return 1
 	install -m644 ${srcdir}/KeyHoleTV/License.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
