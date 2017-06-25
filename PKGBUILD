@@ -1,7 +1,7 @@
 # Maintainer: inso <insomniak.fr@gmail.com>
 pkgname=sakia
 pkgver=0.32.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A Python/Qt client for Duniter network"
 arch=("x86_64" "i686")
@@ -39,7 +39,7 @@ prepare() {
         pip install pyinstaller
         pip install PyQt5==5.8.2
 	pip install -r requirements.txt
-	rm "$PYENV_ROOT/versions/3.5.2/bin/pyuic5"
+	rm "$PYENV_ROOT/versions/$PYENV_PYTHON_VERSION/bin/pyuic5"
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = sakia
 	pkgdesc = A Python/Qt client for Duniter network
 	pkgver = 0.32.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	arch = i686
 	license = GPL
