@@ -3,7 +3,7 @@
 _pkgname=pandoc
 pkgname="${_pkgname}-dummy"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='make archlinux believes you have pandoc installed'
 url='https://github.com/jgm/pandoc'
 license=('GPL')
@@ -13,9 +13,9 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 build() {
-	echo "building..."
+	:
 }
 
 package() {
-	echo "packaging..."
+	which pandoc > /dev/null 2>&1 || warning "pandoc not found in PATH"
 }
