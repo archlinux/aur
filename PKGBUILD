@@ -1,8 +1,9 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2148,SC2154
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
+# 2.0-pre1
 pkgname=blt4l
-pkgver=1.3
+pkgver=1.3_r1_1
 pkgrel=1
 pkgdesc="Mod loader for Payday 2 (non-Steam runtime only)"
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ replaces=()
 backup=()
 options=()
 install=blt4l.install
-source=("blt4l::git+https://github.com/blt4linux/blt4l#tag=${pkgver/_/-}")
+source=("blt4l::git+https://github.com/blt4linux/blt4l#tag=${pkgver//_/-}")
 noextract=()
 md5sums=('SKIP')
 
