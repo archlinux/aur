@@ -12,5 +12,5 @@ sha256sums=("SKIP")
 
 package() {
 	cd "$srcdir/phonepi/src/daemonRTC"
-	install -Dm755 "./rtc.serivce" "$pkgdir/usr/lib/system.d/system/rtc.service"
+	install -Dm755 "./rtc.service" "$pkgdir/usr/lib/system.d/system/rtc.service"
 }
