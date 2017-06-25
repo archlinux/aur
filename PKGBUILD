@@ -1,6 +1,6 @@
 # Maintainer: Márton Szabó <notramo@vipmail.hu>
 pkgname='cmus-in-bg-git'
-pkgver=r1.1bc065d
+pkgver=r3.a7a50a4
 pkgrel=1
 pkgdesc="A simple wrapper for GNU Screen and Cmus."
 arch=('any')
