@@ -7,9 +7,23 @@ post_install() {
 
 	chown -R root:radicale /etc/radicale/
 }
- 
-post_update() {
-	chown -R root:radicale /etc/radicale/
+
+pre_upgrade() {
+    # Export to new storage format
+    if [[ $2 == "1."* ]]
+    then
+        radicale --export-storage /tmp/radicale2
+        mv /tmp/radicale2 /var/lib/radicale2
+    fi
+}
+
+post_upgrade() {
+        chown -R root:radicale /etc/radicale/
+        if [[ $2 == "1."* ]]
+        then
+            echo "The upgrade to 2.x.x requires manual intervention: http://radicale.org/1to2/"
+            echo "Your data was exported to /var/lib/radicale2"
+        fi
 }
  
 pre_remove() {
