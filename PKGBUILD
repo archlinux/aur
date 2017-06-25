@@ -2,18 +2,17 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r762.af5f7c7_4.11.5_1_ARCH
+pkgver=r762.af5f7c7_4.11.6_3_ARCH
 _extramodules=extramodules-4.11-ARCH
 pkgrel=1
-pkgdesc="TBS linux open source drivers + proprietary firmware"
+pkgdesc="TBS linux open source drivers"
 arch=('i686' 'x86_64')
 url="https://github.com/tbsdtv/linux_media"
-license=('GPL2, custom:firmware')
-makedepends=('git' 'linux-headers' 'linux-firmware' 'patchutils' 'perl-proc-processtable')
+license=('GPL2')
+depends=('tbs-firmware')
+makedepends=('git' 'linux-headers' 'patchutils' 'perl-proc-processtable')
 provides=("$_pkgname")
 conflicts=('tbs-dvb-drivers')
-source=("http://www.tbsdtv.com/download/document/linux/tbs-tuner-firmwares_v1.0.tar.bz2")
-sha256sums=('4a9e2f55396fdfc4d952949fa5bf5dc7b4134831e9f84a8fc79c0926aa1605b6')
 install=tbs-linux_media-git.install
 
 prepare() {
@@ -48,11 +47,6 @@ package() {
 
     mkdir -p "$pkgdir"/usr/lib/modules/"${_extramodules}"/tbs
     mkdir -p "$pkgdir"/usr/lib/firmware
-
-    install -m0644 "$srcdir/$_gitname"/linux/firmware/*.fw  "$pkgdir"/usr/lib/firmware
-    install -m0644 "$srcdir"/*.fw  "$pkgdir"/usr/lib/firmware
-
-    cd "${pkgdir:?}"/usr/lib/firmware && rm -f $(basename -a \"$(pacman -Qlq linux-firmware)\")
 
     find "$srcdir/$_gitname" -name '*.ko' -exec cp "{}" "$pkgdir"/usr/lib/modules/"${_extramodules}"/tbs \;
     msg "Compressing modules, this will take awhile..."
