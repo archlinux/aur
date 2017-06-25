@@ -4,7 +4,7 @@
 pkgname=("python-dill" "python2-dill")
 pkgbase=python-dill
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Serialize all of python (almost)'
 arch=('any')
 url='http://pypi.python.org/pypi/dill/'
@@ -20,6 +20,7 @@ build() {
 
 package_python-dill() {
     depends=('python')
+    makedepends=('python-setuptools')
     cd "$srcdir/dill-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -27,6 +28,7 @@ package_python-dill() {
 
 package_python2-dill() {
     depends=('python2')
+    makedepends=('python2-setuptools')
     install=python2-dill.install
     cd "$srcdir/dill-$pkgver"
     find . -name "*.py" -exec sed -i 's#/usr/bin/env python#/usr/bin/env python2#' {} \;
