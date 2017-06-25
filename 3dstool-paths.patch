@@ -1,6 +1,7 @@
---- 3dstool/src/romfs.cpp.orig
-+++ 3dstool/src/romfs.cpp
-@@ -265,7 +265,7 @@
+diff -rupN 3dstool-1.0.25.orig/src/romfs.cpp 3dstool-1.0.25/src/romfs.cpp
+--- 3dstool-1.0.25.orig/src/romfs.cpp	2017-06-19 23:30:45.261905149 +0200
++++ 3dstool-1.0.25/src/romfs.cpp	2017-06-19 23:32:12.444834329 +0200
+@@ -266,7 +266,7 @@ void CRomFs::buildIgnoreList()
  {
  	m_vIgnoreList.clear();
  	m_vRemapIgnoreList.clear();
