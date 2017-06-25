@@ -9,7 +9,7 @@
 pkgname=davinci-resolve
 _pkgname=resolve
 pkgver=12.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -56,7 +56,7 @@ package() {
 	done
 	mv resolve bin/resolve
 	mv rsf/Control Control
-	cp rsf/default-config-linux.dat configs/config.dat
+	install -Dm666 rsf/default-config-linux.dat "${pkgdir}/opt/${_pkgname}/configs/config.dat"
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
@@ -73,7 +73,7 @@ package() {
 Type=Application
 Name=DaVinci Resolve
 Comment=Professional non-linear editing
-Exec=/opt/${_pkgname}/bin/resolve
+Exec=/opt/${_pkgname}/bin/start-resolve
 Icon=/opt/${_pkgname}/rsf/DV_Resolve.png
 Terminal=false
 Categories=Multimedia;AudioVideo;Application;
@@ -82,8 +82,9 @@ EOF
 
 	cat > "${srcdir}/start-resolve" << EOF
 #!/bin/sh
-export LD_LIBRARY_PATH=/opt/${_pkgname}/libs
-exec /opt/${_pkgname}/bin/resolve "\$@"
+mkdir -p /tmp/resolve/{logs,GPUCache}
+cd /opt/${_pkgname}
+exec bin/resolve "\$@"
 EOF
 	install -Dm755 start-resolve "${pkgdir}/opt/${_pkgname}/bin/start-resolve"
 
@@ -93,7 +94,8 @@ EOF
 	chmod 0777 "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Any final tweaks..."
-	ln -s /tmp "${pkgdir}/opt/${_pkgname}/logs"
+	ln -s /tmp/resolve/logs "${pkgdir}/opt/${_pkgname}/logs"
+	ln -s /tmp/resolve/GPUCache "${pkgdir}/opt/${_pkgname}/GPUCache"
 
 	msg2 "Done!"
 }
