@@ -1,101 +1,64 @@
+Version 2.13.0 - 22 Jun 2017
+- Update translations.
+- Fix for finestories.com using Modern theme rather than Classic, thanks,
+  davidfor!
+- Fix for adapter_fimfictionnet -- missed the "st" ordinal case when parsing
+  dates, thanks FaceDeer!
+- Fix for webnovel.com site change, thanks Etana!
+- Fix for storiesonline.net site change, thanks davidfor!
+- Allow multiple range URLs (url[1-5]) for same story in one download.
+- Change adapter_fimfictionnet to use makeDate for non-USEnglish locales.
+- Add keep_prequel_in_description option for fimfiction.net.
+- Fix base_xenforoforum_adapter for QQ--it doesn't have threadmark categories
+  or reader mode.
+- Fix fimfiction datePublished (Merge pull request #190 from FaceDeer/master)
+- http->https for adapter_midnightwhispers
+- Update adapter_webnovelcom for site changes. Thanks, Ser4nb2LUY6e
+- Tweak skip_threadmarks_categories comments in INI.
+- Special error msg for storiesonline.net about Listing Theme.
+- Change adapter_fanfiktionde to https.
+- Extend base_xenforoforum_adapter Reader Mode to other Threadmark Categories.
+- Correct an error log message.
+- Additional updates for fimfiction.net for changes, thanks FaceDeer!
+2017-06-06
+- Add skip_threadmarks_categories option to base_xenforoforum_adapter.
+- Update adapter_fimfictionnet for site changes.
+- Fix for get-story-urls from page, affected adapter_adultfanfictionorg.
+2017-06-04
+- Fix for RoyalRoadL adapter - thanks, cryzed!
+- Update translations.
+2017-05-31
+- Reduce debug output from replace_br_with_p.
+- Apply minimum_threadmarks in base_xenforoforum based on all threadmarks, not
+  marks per category.
+- Change AO3 to https, normalize chapter URLs, remove view_adult from chapter
+  URLs.
+- Update translations.
+2017-05-28
+- Add rating for starslibrarynet, fix [www.starslibrary.net] as section name.
+- Add apocrypha_to_omake option for base_xenforoforum_adapter threadmark
+  category.
+2017-05-26
+- wattpad - Separate category from tags, include rags in genre by default, use
+  larger cover image. - Thanks, botmtl!
+- wattpad - need to pass utf8FromSoup a soup...
+- Add comma_entries option to add commas to metadata entries--numbers only.
+- wattpad - add defaults slow_down_sleep_time:2 and comma reads.
+- Update translations.
+2017-05-25
+- adapter_storiesofardacom - td->div in description, catch parse excpetion
+  after bad html in description.
+- Adapters' getSiteExampleURLs() value has to be able to pass their own
+  getSiteURLPattern() for geturls.get_urls_from_page() to work correctly.
+2017-05-24
+- Add xenforoforum Categorized threadmarks after regular threadmarks.
+- Fix processing for <center> <u> etc, soup.recursiveChildGenerator() not
+  working anymore.
+- Take image .ext from end of whole URL if not found at end of path.
+2017-05-21
+- Fix for asianfanficscom site change.
+- New site wattpad.com -- thanks, botmtl!
+
 Version 2.12.0 - 20 May 2017
 - FIX for issue with Epub Update discarding existing images in Epub. Oops. :-(
   (Came from ffnet img referer fix.)
-
-Version 2.11.0 - 17 May 2017
-- Change fanficauthors.net to https.
-- Catch other common complete/in-progress statuses for calibre yes/no columns.
-- adapter_wwwaneroticstorycom: 'Complete'->'Completed'
-- Reorder sections in defaults.ini files alphabetically, save script that does it.
-- Remove a debug output from adapter_fanficauthorsnet
-- One-off normalize Reject List URLs to save doing it all the time. Also,
-  automatically save plugin version in prefs.
-- Update translations. (For: Let PI search inside zip(html) and txt formats
-  for story URLs.)
-- Clear extratags: for tgstorytime.com and fictionmania.tv.
-- Fix error with std_cols_newonly if user has never saved config.
-- Adapt to masseffect2.in redesign - thanks PlushBeaver
-- Let PI search inside zip(html) and txt formats for story URLs.
-- Fix AO3 use_view_full_work feature for 1 chapter works.
-- New site alternatehistory.com as a base_xenforoforum_adapter. Plus
-  base_xenforoforum_adapter fixes.
-- Add site specific extracategories to new sites.
-- Fix for PI suppressauthorsort/suppresstitlesort interacting wrong with
-  Author/Title New Only. (PI only)
-- Fix CLI -f option help for text vs txt.
-- Add AO3 feature use_view_full_work -- true by default.
-- Update included dependency packages
-- Update html5lib from 0.9x7 to 0.9x9.
-- Update to BeautifulSoup 4.5.3.
-- Update six.py to 1.10.0.
-- Update chardet to 3.0.2.
-- Update html2text to (2016, 9, 19).
-- Add chardet_confidence_limit option for 'auto' encoding setting.
-- Add webencodings to included_dependencies. Needed by in web service with
-  newer html5lib.
-- Don't include html5lib(and webencodings) and six in PI zip--uses calibre's
-  versions anyway.
-- New sites from GComyn:
-- Add calibre_series_meta optional feature to include series metadata like
-  calibre in epubs. For CLI & Web Service.
-- Updated date added to webnovel by cryzed
-- AO3 site-specific metadata bookmarktags bookmarksummary and option
-  always_login added.
-- Fixes for adapter_gravitytalescom from GComyn.
-- New sites from GComyn:
-  inkbunny.net
-  lcfanfic.com
-  noveltrove.com
-  gravitytales.com
-  imrightbehindyou.com
-  mtt.just-once.net
-  obidala.net
-  sword.borderline-angel.com
-  tasteofpoison.inkubation.net
-  unknowableroom.org
-  www.13hours.org
-  www.aneroticstory.com
-  www.deandamage.com
-  www.fiction.thebrokenworld.org
-  www.narutofic.org
-  www.starskyhutcharchive.net
-  www.thedelphicexpanse.com
-  www.thundercatsfans.org
-  www.webnovel.com
-- Add Story Notes to base_efiction_adapter.
-- Don't send Referer:None -- hpfanficarchive.com doesn't like it.
-- Additional tags collected for wuxiaworld--thanks GComyn
-- Add download.archiveofourown.org for AO3 due to old downloaded AO3 epubs
-- Fix for author including Updated in desc in
-  adapter_ashwindersycophanthexcom.
-- Fix "got more than 100 headers"-issue adapter_royalroadl.py only.
-- Fix ffnet referer for cover images.
-- Fix for a mistaken Norwegian Bokmål translation.
-- Fix ffnet referer for cover images.
-
-Version 2.10.0 - 14 Apr 2017
-- Bump release version.
-- Update translations.
-- Remove defunct sites: restrictedsection.org, lucifael.com,
-  onedirectionfanfiction.com, samdean.archive.nu, hpfandom.net, ficsite.com,
-  sinful-desire.org, thehexfiles.net, portkey.org and psychfic.com.
-- Fix for adapter_asianfanficscom, thanks 444555.
-- Enhancements for Storiesonline and Literotica, thanks davidfor.
-- Add option chapter_categories_use_all for Literotica, thanks davidfor.
-- Can't skip numChapters - adapter_trekfanfictionnet
-- Refactor to move fetches to Configuration class for _filelist feature
-- Remove self.decode to defaults.ini, fix use_pagecache().
-- Add *_filelist feature
-- Add titleHTML to mirror authorHTML
-- Change ncisfiction.net to ncisfiction.com - users & storyIDs *not* the same.
-- Add <meta charset="UTF-8"> to html output by default.
-- Add use_archived_author option for archiveofourown.org.
-- Add --progressbar option for CLI.
-- Change http to https for FimF - thanks baggins41
-- Improve metadata caching for performance.
-- Remove unnecessary line that can cause problems with abbreviated ffnet URL.
-- Renamed midnightwhispers.ca domain midnightwhispers.net.
-- Fix for authors and New Only.
-- Fix for base_xenforoforum cached post used more than once.
-- Normalize anthology URLs both from page and from epub.
-- Allow https in adapter_hpfanficarchivecom
