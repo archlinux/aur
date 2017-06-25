@@ -1,7 +1,7 @@
     # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=openvpn-xor-git
 _pkgname=openvpn
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 optdepends=('easy-rsa')
 makedepends=('git' 'systemd')
 conflicts=('openvpn' 'openvpn-dev' 'openvpn-git')
-provides=('openvpn=2.4.2' 'openvpn-dev')
+provides=('openvpn=2.4.3' 'openvpn-dev')
 license=('custom')
 source=("https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
 	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/02-tunnelblick-openvpn_xorpatch-a.diff"
@@ -18,20 +18,15 @@ source=("https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
 	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/04-tunnelblick-openvpn_xorpatch-c.diff"
 	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/05-tunnelblick-openvpn_xorpatch-d.diff"
 	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/06-tunnelblick-openvpn_xorpatch-e.diff"
-          "openssl-1-1-0.patch"
           "openvpn-xor-watermark.diff"
           "systemd.diff")
-sha256sums=('f5a86964655d056a007c9de3d5ace3c9052d2114e92f8bceeba9bd31db7c2ad0'
+sha256sums=('d2d0e65ecdc5a69ddf4a34c41cd0ec4b7e5bc1806897f78df99c9c6e3133a294'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'd801b1118d64c0667eae87ab1da920179f339614da22c5c8bed75d17650fad03'
             '3eb01176fff1d3b450b15f280a536323fc5161f3cfa0ee5fcccadeacc7ad97c9'
             '6d341005060488af7f4961262819a9fbfe5fbe59ac0d31de4368074a506d9dec')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"/
-
-    # patch for OpenSSL 1.0 compatibility
-    patch -Np1 < "${startdir}/openssl-1-1-0.patch"
 
     # patch systemd
     git apply "${startdir}/systemd.diff"
