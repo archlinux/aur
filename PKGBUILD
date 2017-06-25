@@ -5,8 +5,8 @@
 pkgname=my-little-investigations
 _gitrepo=https://github.com/mdevlamynck/${pkgname}.git
 #_gitrepo=https://github.com/GabuEx/${pkgname}.git
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="An Ace Attorney like game based on My Little Pony : Friendship is Magic"
 arch=('i686' 'x86_64')
 url="http://www.equestriandreamers.com/"
