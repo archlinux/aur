@@ -7,7 +7,7 @@ _gitname='libmpack-lua'
 pkgname=('lua51-mpack-git')
 #pkgname=('lua51-mpack-git' 'lua52-mpack-git' 'lua-mpack-git')
 pkgver=1.0.6.r4.g5d34594
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/libmpack/${_gitname}"
 license=('MIT')
@@ -44,7 +44,7 @@ build() {
 }
 
 package_lua51-mpack-git() {
-  depends=('lua51')
+  depends=('libmpack' 'lua51')
   provides=("lua51-mpack=${pkgver}")
   conflicts=('lua51-mpack')
   cd "${srcdir}/${_gitname}-git"
@@ -57,7 +57,7 @@ package_lua51-mpack-git() {
 }
 
 # package_lua52-mpack-git() {
-#   depends=('lua52')
+#   depends=('libmpack' 'lua52')
 #   provides=("lua52-mpack=${pkgver}")
 #   conflicts=('lua52-mpack')
 #   cd "${srcdir}/${_gitname}52-git"
@@ -70,7 +70,7 @@ package_lua51-mpack-git() {
 # }
 # 
 # package_lua-mpack-git() {
-#   depends=('lua')
+#   depends=('libmpack' 'lua')
 #   provides=("lua-mpack=${pkgver}")
 #   conflicts=('lua-mpack')
 #   cd "${srcdir}/${_gitname}53-git"
