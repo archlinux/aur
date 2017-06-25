@@ -2,7 +2,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.20.6
-pkgrel=1
+pkgrel=2
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='http://git.musicpd.org/cgit/manisiutkin/mpd.git/'
 license=('GPL')
