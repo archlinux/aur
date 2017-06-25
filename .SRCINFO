@@ -1,0 +1,16 @@
+pkgbase = r-cran-forcats
+	pkgdesc = Tools for working with categorical variables.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/forcats/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = r>=2.10
+	depends = r-magrittr
+	depends = r-cran-tibble
+	source = http://cran.r-project.org/src/contrib/forcats_0.2.0.tar.gz
+	md5sums = e4ba2c0a59dcdfcc02274c519bf3dbfc
+
+pkgname = r-cran-forcats
+
