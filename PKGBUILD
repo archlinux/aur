@@ -20,6 +20,7 @@ build() {
   ./configure
   # optional optimization for your machine
   #make CXXFLAGS="-O3 -march=native"
+  make
 }
 
 
