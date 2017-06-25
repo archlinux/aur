@@ -3,7 +3,7 @@ post_install() {
   echo 'Installed. Run lnp to launch.'
   echo 'You may have to delete ~/.dwarffortress-lnp-git to get latest version (you will have to manually back up saves)'
   echo 'Refer to ~./dwarffortress-lnp-git/LNP/ for local LNP base directory'
-  echo 'Optional utilites can be installed by adding a symlink to /opt/dwarffortress-lnp-git/LNP/Utilities'
+  echo 'Optional utilites can be installed by adding a symlink to /opt/dwarffortress-lnp-git/LNP/utilities'
   echo 'If you run into issues, try examining ~/.dwarffortress-lnp-git/df_linux/distro_specific_fixes.sh for distro related problems.'
   echo 'NOTE: For certain graphics packs, you may have to manually edit the df_maxversion value in manifest.json files in the pack subfolders of ~/.dwarffortress-lnp-git/LNP/graphics'
 }

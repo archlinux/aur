@@ -4,60 +4,57 @@
 
 
 pkgname=dwarffortress-lnp-git
-pkgver=43.03
-_pkgver=43_03
+pkgver=43.05
+_pkgver=43_05
 _dfhack_pkgrel=r1
-pkgrel=8
+pkgrel=1
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
-arch=(x86_64)
+arch=('x86_64')
 url=""
 license=('custom')
 groups=()
 depends=(python gtk2 glu sdl_image libsndfile sdl_ttf glew tk
-        hicolor-icon-theme)
+        hicolor-icon-theme gcc-libs gtk2 glu sdl_image libsndfile openal
+		libxdamage ncurses libjpeg6-turbo libpng12)
 
-optdepends=('lib32-nvidia-utils: If you have nvidia graphics'
-           'lib32-catalyst-utils: If you have ATI graphics'
-           'lib32-alsa-lib: for alsa sound'
-           'lib32-libpulse: for pulse sound'
+optdepends=('nvidia-utils: If you have nvidia graphics'
+           'catalyst-utils: If you have ATI graphics'
+           'alsa-lib: for alsa sound'
+           'libpulse: for pulse sound'
            'java-environment: for announcement filter')
 
 optdepends+=("dwarftherapist-git: call dwarftherapist through gui"
             "soundsense: call soundsense through gui")
-# For 64 bits:
-depends_x86_64=(gcc-libs-multilib lib32-gtk2 lib32-glu lib32-sdl_image lib32-libsndfile lib32-openal
-        lib32-libxdamage lib32-ncurses lib32-sdl_ttf lib32-glew
-        lib32-libjpeg6-turbo lib32-libpng12)
 
 # For the LNP
-makedepends=(git mercurial rsync perl-libxml perl-xml-libxslt cmake)
+makedepends=(gcc git mercurial rsync perl-libxml perl-xml-libxslt cmake)
 
-makedepends_x86_64=(gcc-multilib)
 options=(!strip !buildflags)
 install=${pkgname}.install
 changelog=
 source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
         git+"https://github.com/DFgraphics/Afro-Graphics.git"#tag=${pkgver}
-        git+"https://github.com/DFgraphics/CLA.git"#tag=43.04-v23
+        git+"https://github.com/DFgraphics/CLA.git"#tag=${pkgver}-v23
         git+"https://github.com/DFgraphics/GemSet.git"#tag=${pkgver}
         git+"https://github.com/DFgraphics/Ironhand.git"#tag=${pkgver}
         git+"https://github.com/DFgraphics/Jolly-Bastion.git"#tag=${pkgver}
-        git+"https://github.com/DFgraphics/Mayday.git"#tag=43.04
-        git+"https://github.com/DFgraphics/Obsidian.git"#tag=${pkgver}
-        git+"https://github.com/DFgraphics/Phoebus.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Mayday.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Obsidian.git"#tag=${pkgver}c
+        git+"https://github.com/DFgraphics/Phoebus.git"#tag=${pkgver}c
         git+"https://github.com/DFgraphics/Spacefox.git"#tag=${pkgver}
         git+"https://github.com/DFgraphics/Taffer.git"
         git+"https://github.com/DFgraphics/Tergel.git"#tag=${pkgver}
-        git+"https://github.com/DFgraphics/Wanderlust.git"#tag=43.04
+        git+"https://github.com/DFgraphics/Wanderlust.git"#tag=${pkgver}
         git+"https://github.com/DFHack/dfhack.git"#tag=0.${pkgver}-${_dfhack_pkgrel}
         git+"https://github.com/svenstaro/dwarf_fortress_unfuck.git"#tag=0.${pkgver}
-        git+"https://github.com/mifki/df-twbt.git"#tag=v5.70
+        git+"https://github.com/mifki/df-twbt.git"#tag=v5.84
         hg+"https://bitbucket.org/Pidgeot/python-lnp"
         "http://bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2"
         'DFAnnouncementFilter.zip'::'http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip'
         "dfhack-twbt.patch"
         "dfhack-visualizers.patch"
+        "distro-fixes-64-bit.patch"
         "lnp"
         "${pkgname}.desktop"
         "${pkgname}.install"
@@ -82,13 +79,14 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '17d9ceb486fd476b4c6e8f0834d21d2e'
+         '5b8ee45e906d021c053f816e443c2983'
          'affd6273731c321d364c55a8da314fea'
          '856c54681faed3608cd951bf286d12d5'
          '5cc79b5dc202d8faa02086293badfcee'
+         'f0bfe1fb2c806289b9970da3e07e4d7b'
          '389e34b6937f843c8f635d5e7326c9fc'
          'bba8ab4d3f70cea8b812e78445fef1f0'
-         '6a87f6069f54645847b846833ff62d5a')
+         '1c3b794a7becda3b6ce9ac453de300e6')
 
 
 
@@ -115,6 +113,12 @@ prepare() {
   cd $srcdir/dfhack/plugins
   patch -uN CMakeLists.txt $srcdir/dfhack-visualizers.patch
 
+  cd $srcdir/Lazy-Newb-Pack-Linux/pack/df_linux
+  patch -uN distro_fixes.sh $srcdir/distro-fixes-64-bit.patch
+
+  cd $srcdir/dfhack/plugins/stonesense
+  git checkout 00f0782
+
   mkdir -p $srcdir/dfhack/plugins/df-twbt
   cd $srcdir/df-twbt
   rsync -av --progress $srcdir/df-twbt $srcdir/dfhack/plugins \
@@ -128,7 +132,8 @@ prepare() {
     -DCMAKE_C_FLAGS:STRING="${CFLAGS} ${CPPFLAGS} -fPIC" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CPPFLAGS} -fPIC" \
     -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-    -DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}"
+    -DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}" \
+    -DDFHACK_BUILD_ARCH:STRING="64"
 
   cd $srcdir/dwarf_fortress_unfuck
   mkdir -p build && cd build
@@ -142,7 +147,7 @@ prepare() {
 }
 build() {
 
-  export DFHACKVER="${pkgver}-r3"
+  export DFHACKVER="${pkgver}-${_dfhack_pkgrel}"
 
   cd $srcdir/dwarf_fortress_unfuck
   cd build
@@ -180,7 +185,7 @@ package() {
 
   ln -s "/opt/$pkgname/python-lnp/launch.py" "$pkgdir/opt/$pkgname/PyLNP"
 
-  rsync -ap $srcdir/DFgraphics/graphics-packs/* "$pkgdir/opt/$pkgname/LNP/Graphics" \
+  rsync -ap $srcdir/DFgraphics/graphics-packs/* "$pkgdir/opt/$pkgname/LNP/graphics" \
     --exclude .git \
     --exclude .gitmodules \
     --exclude .gitignore
@@ -235,18 +240,18 @@ package() {
 
 
   test ! -z "$(which dwarftherapist)" \
-    && mkdir -p "$pkgdir/opt/$pkgname/LNP/Utilities/dwarf_therapist" \
-    && ln -s "$(which dwarftherapist)" "$pkgdir/opt/$pkgname/LNP/Utilities/dwarf_therapist/DwarfTherapist"
+    && mkdir -p "$pkgdir/opt/$pkgname/LNP/utilities/dwarf_therapist" \
+    && ln -s "$(which dwarftherapist)" "$pkgdir/opt/$pkgname/LNP/utilities/dwarf_therapist/DwarfTherapist"
 
   test ! -z "$(which soundsense)" \
-    && mkdir -p "$pkgdir/opt/$pkgname/LNP/Utilities/soundsense" \
+    && mkdir -p "$pkgdir/opt/$pkgname/LNP/utilities/soundsense" \
     && ln -s "$(which soundsense)" \
-  "$pkgdir/opt/$pkgname/LNP/Utilities/soundsense/soundSense.sh"
+  "$pkgdir/opt/$pkgname/LNP/utilities/soundsense/soundSense.sh"
 
-  mkdir -p "$pkgdir/opt/$pkgname/LNP/Utilities/df_announcement_filter"
-  install -dm755 "$pkgdir/opt/$pkgname/LNP/Utilities/df_announcement_filter"
+  mkdir -p "$pkgdir/opt/$pkgname/LNP/utilities/df_announcement_filter"
+  install -dm755 "$pkgdir/opt/$pkgname/LNP/utilities/df_announcement_filter"
   install -Dm755 "$srcdir/DFAnnouncementFilter.jar" \
-    "$pkgdir/opt/$pkgname/LNP/Utilities/df_announcement_filter"
+    "$pkgdir/opt/$pkgname/LNP/utilities/df_announcement_filter"
 
 
   install -Dm644 "${srcdir}/${pkgname}.desktop" \
