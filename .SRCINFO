@@ -1,13 +1,14 @@
 pkgbase = latexdiff-git
 	pkgdesc = Compares two latex files and marks up significant differences between them. Git version.
 	pkgver = 1.2.1.r0.g32ef94d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ftilmann/latexdiff/
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = texlive-core
 	depends = perl
+	depends = perl-algorithm-diff
 	source = git+https://github.com/ftilmann/latexdiff/
 	md5sums = SKIP
 
