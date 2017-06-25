@@ -1,6 +1,6 @@
 pkgbase = wrld
 	pkgdesc = simplified bash loops (or, xargs -I on steroids)
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/ninjaaron/wrld
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = wrld
 	makedepends = python-pip
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.python.org/packages/a4/3f/4e3692af943e9e36a6d4f9134c5da6229c7a0416703a7421c9002e01438f/wrld-0.6.tar.gz
-	md5sums = 9f09fbbe4c5b9cbb9822267e76dcc2ce
+	source = https://pypi.python.org/packages/48/a7/355f48846a9fdfc1846efd2e1211c30b0cae5718eeaecb1cf4ab02646f70/wrld-0.7.tar.gz
+	md5sums = a3725858eec064edd5e321610e2a7bff
 
 pkgname = wrld
 	depends = python
