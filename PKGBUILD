@@ -2,17 +2,16 @@
 
 pkgname=ttf-selawik
 pkgver=1
-pkgrel=2
-_commit="3cb4c3bdf75cfa850ad25d34d233779aa7c7aa34"
+pkgrel=3
+_commit="11fb35582ac3b9f750738da93c44293ffaaa0294"
 pkgdesc="Selawik font as a fallback to Segoe UI"
 arch=('any')
 url="https://github.com/winjs/bootstrap-winjs/tree/master/src/fonts"
 license=('custom')
 makedepends=('fontconfig' 'xorg-font-utils')
 
-install=ttf.install
 source=(https://github.com/winjs/bootstrap-winjs/archive/${_commit}.zip)
-md5sums=('a313125537fe0f9d59e2726a5c125635')
+md5sums=('03eea616523d7a315dd87e6d625a6f7f')
 
 package() {
     cd $srcdir/winstrap-${_commit}/src/fonts
