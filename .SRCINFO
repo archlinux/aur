@@ -1,0 +1,14 @@
+pkgbase = r-cran-rlang
+	pkgdesc = A toolbox for working with base types, R and Tidyverse core features.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/rlang/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = r>=3.1.0
+	source = http://cran.r-project.org/src/contrib/rlang_0.1.1.tar.gz
+	md5sums = 38a51a0b8f8487eb52b4f3d986313682
+
+pkgname = r-cran-rlang
+
