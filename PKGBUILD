@@ -3,7 +3,7 @@
 # Contributor: tomoaki/Tomoaki Hashizaki <thashisaki@yahoo.com>
 pkgname=lkeyholetv
 pkgver=2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A client for KeyHoleTV, an online television portal that links to Japanese television channels, radio stations, and user-made channels."
 arch=('i686' 'x86_64')
 url="http://www.oiseyer.com/index-e.html"
