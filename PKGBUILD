@@ -10,11 +10,11 @@ _nginxver=1.13.1
 pkgdesc='nginScript module for mainline nginx'
 arch=('i686' 'x86_64')
 depends=('nginx-mainline')
-url="http://nginx.org/en/docs/njs_about.html"
+url="https://nginx.org/en/docs/njs_about.html"
 license=('CUSTOM')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	njs-$pkgver.tar.gz::http://hg.nginx.org/njs/archive/$pkgver.tar.gz
 )
 
