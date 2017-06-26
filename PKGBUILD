@@ -15,18 +15,15 @@ optdepends=('gst-plugins-good: Webm codec support')
 conflicts=(qt5-webkit)
 provides=(qt5-webkit)
 source=("https://github.com/annulen/webkit/releases/download/qtwebkit-$_qtver/qtwebkit-$_qtver.tar.xz"
-        qt5-webkit-icu59.patch qt5-webkit-ng-gcc7.patch qt5-webkit-ng-functional.patch qt5-webkit-pdf_scaling.patch qt5-webkit-solid_background_PDF.patch)
+        qt5-webkit-pdf_scaling.patch qt5-webkit-solid_background_PDF.patch)
 sha256sums=('f70fea4623a0f1df6ec535358f9c431d6ead9c04742a85258aaabcd0805d2719'
-            'e1306e696ad7125fa00083aa966be0ea6fe6de555c9e1d119957f208f258edfe'
-            '58ecbd8708f5afe4e974fdcd6c1f32fea61ccc55dc9bb711768f2d0da6963fb8'
-            'c85344edcc23930c0190b2f8ec3847bf8bdbbf7f1d4fa877c502e354e5f4233e'
             '3118595e764bec08960518c07eb5c321d7195b23adc634ba7a50987aeec642b0'
             '339876e8dfdaabdc974d2b2f095d85691d339aef16abe97b472268dae462d0cf')
 
 prepare() {
   mkdir -p build
 
-  cd qtwebkit-$pkgver-alpha
+  cd qtwebkit-$_qtver
 # Fix build with ICU 59 (PLD linux)
   patch -p1 -i ../qt5-webkit-icu59.patch
 # Fix build with GCC 7
@@ -42,7 +39,7 @@ prepare() {
 build() {
   cd build
 
-  cmake ../qtwebkit-$pkgver-alpha \
+  cmake ../qtwebkit-$_qtver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DPORT=Qt \
