@@ -1,14 +1,15 @@
+# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _gitname=telepathy-morse
 pkgname=telepathy-morse-git
-pkgver=r145.9429155
+pkgver=r166.c061bdf
 pkgrel=1
 pkgdesc="Telepathy Connection Manager for the Telegram network"
 arch=(i686 x86_64)
 url="https://projects.kde.org/telepathy-morse/"
 license=(GPL)
-depends=(telepathy-qt telegram-qt)
+depends=(telepathy-qt telegram-qt-git)
 makedepends=(cmake git)
 provides=(telepathy-morse)
 conflicts=(telepathy-morse)
