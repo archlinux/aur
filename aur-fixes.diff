@@ -43,6 +43,27 @@ index 80160d16..68a0622c 100644
        '<(submodules_loc)/GSL/include',
        '<(submodules_loc)/variant/include',
      ],
+diff --git a/Telegram/gyp/list_sources.py b/Telegram/gyp/list_sources.py
+index c8fd21f6..a653846a 100644
+--- a/Telegram/gyp/list_sources.py
++++ b/Telegram/gyp/list_sources.py
+@@ -23,6 +23,7 @@ import sys
+ import os
+ import re
+ import time
++import codecs
+ 
+ def eprint(*args, **kwargs):
+   print(*args, file=sys.stderr, **kwargs)
+@@ -32,7 +33,7 @@ def check_non_empty_moc(file_path):
+   if not os.path.isfile(file_path):
+     return False
+   if re.search(r'\.h$', file_path):
+-    with open(file_path, "r") as f:
++    with codecs.open(file_path, mode="r", encoding="utf-8") as f:
+       for line in f:
+         if re.search(r'(^|\s)Q_OBJECT(\s|$)', line):
+           return True
 diff --git a/Telegram/gyp/qt.gypi b/Telegram/gyp/qt.gypi
 index 81c13a18..caa93b5b 100644
 --- a/Telegram/gyp/qt.gypi
