@@ -2,7 +2,7 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-devel
-pkgver=4.13.1
+pkgver=4.13.2
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.xfce.org/"
 license=('GPL2')
 depends=('libxfce4util' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
          'hicolor-icon-theme' 'gtk3')
-makedepends=('intltool' 'gtk-doc')
+makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 #replaces=('libxfcegui4') - later when all is ported
@@ -37,4 +37,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('2a257d73ccf30c1939df2e6ba879c925a1290ae2877a79b27d389e09e01c917d')
+sha256sums=('8d881273e6be286f0c6c6f1aa1df2dbd3d92114b2e7fbe02979043fc80d8f4f1')
