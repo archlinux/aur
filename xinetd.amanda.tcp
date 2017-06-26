@@ -1,0 +1,18 @@
+# http://wiki.zmanda.com/index.php/How_To:Configure_bsdtcp_authentication
+
+# After editing:
+#   systemctl restart xinetd
+
+service amanda
+{
+  #only_from       = amandaserver.example.com amandaclient1.example.com amandaclient2.example.com
+  socket_type     = stream
+  protocol        = tcp
+  wait            = no
+  user            = amanda
+  group           = storage
+  groups          = yes
+  server          = /usr/libexec/amanda/amandad
+  server_args     = -auth=bsdtcp amdump amindexd amidxtaped
+  disable         = no
+}

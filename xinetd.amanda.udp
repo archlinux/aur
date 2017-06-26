@@ -1,0 +1,18 @@
+# https://wiki.zmanda.com/index.php/How_To:Configure_Backward-compatible_Authentication_Methods
+
+# After editing:
+#   systemctl restart xinetd
+
+service amanda
+{
+  #only_from       = amandaserver.example.com amandaclient1.example.com amandaclient2.example.com
+  socket_type     = dgram
+  protocol        = udp
+  wait            = yes
+  user            = amanda
+  group           = storage
+  groups          = yes
+  server          = /usr/libexec/amanda/amandad
+  server_args     = -auth=bsdudp amdump amindexd amidxtaped
+  disable         = no
+}

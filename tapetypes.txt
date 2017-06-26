@@ -1,0 +1,35 @@
+># Amanda v3.4.5
+
+# sudo -u amanda amtapetype -p -f /dev/st0
+#Checking for FSF_AFTER_FILEMARK requirement
+>#device-property "FSF_AFTER_FILEMARK" "false"
+
+# sudo -u amanda amtapetype -p -f /dev/st0
+#Checking for FSF_AFTER_FILEMARK requirement
+#device-property "FSF_AFTER_FILEMARK" "false"
+# sudo -u amanda amtapetype -f /dev/st0           :(
+#Checking for FSF_AFTER_FILEMARK requirement
+#Applying heuristic check for compression.
+#Wrote random (uncompressible) data at 54993836.0655738 bytes/sec
+#Wrote fixed (compressible) data at 95846400 bytes/sec
+#Compression: enabled
+#Writing one file to fill the volume.
+#Wrote 406297739264 bytes at 55860 kb/sec
+#Writing smaller files (4062969856 bytes) to determine filemark.
+>define tapetype HP-ULTRIUM-920 {
+>    comment "HP Ultrium 3 920 SAS LTO-3, IBM Tape, compression enabled"
+>    length 396775136 kbytes
+>    filemark 682 kbytes
+>    speed 55860 kps
+>    blocksize 32 kbytes
+>}
+># LEOM is not supported for this drive and kernel
+>
+#sudo -u amanda amtapetype -f /dev/st0  2410.15s user 196.76s system 17% cpu 4:10:07.07 total
+# uname -r
+#4.9.33-1-lts
+# lsscsi | grep Ultrium
+#[0:0:4:0]    tape    HP       Ultrium 3-SCSI   Q51D  /dev/st0
+# lspci | grep Marvell
+#04:00.0 RAID bus controller: Marvell Technology Group Ltd. MV64460/64461/64462 System Controller, Revision B (rev 01)
+
