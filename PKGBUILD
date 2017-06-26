@@ -1,7 +1,7 @@
 # Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=dotgit-git
 pkgver=26.06.2017
-pkgrel=4
+pkgrel=5
 pkgdesc="Development version of dotgit"
 url="http://github.com/Cube777/dotgit"
 arch=('any')
@@ -14,6 +14,7 @@ package()
 {
 	install -Dm 755 "$srcdir/dotgit/bin/dotgit" "$pkgdir/usr/bin/dotgit"
 	cp -r "$srcdir/dotgit/bin/dotgit_headers" "$pkgdir/usr/bin/dotgit_headers"
+	chmod 555 "$pkgdir/usr/bin/dotgit_headers"
 	install -Dm644 "$srcdir/dotgit/bin/bash_completion" \
 		"$pkgdir/usr/share/bash-completion/completions/dotgit"
 }
