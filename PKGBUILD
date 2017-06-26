@@ -1,19 +1,19 @@
 # Maintainer: Oliver Rümpelein <arch@pheerai.de>
 pkgname=mergerfs
-pkgver=2.22.0
+pkgver=2.22.1
 pkgrel=1
 pkgdesc="Another FUSE union filesystem"
 arch=('i686' 'x86_64')
 url="https://github.com/trapexit/mergerfs"
-source=("https://github.com/trapexit/mergerfs/archive/2.22.0.tar.gz")
+source=("https://github.com/trapexit/mergerfs/archive/2.22.1.tar.gz")
 options=("!emptydirs")
 license=('MIT')
 depends=(fuse)
-sha512sums=('0a28de087fcd59ea4b5066c266f893a0c30db90314c3d790de403fe481f94bcaa8eb3f02ccf88544248f7ac18dcf20ac40894c21318b957d3e13fcceb6bd4bf8')
+sha512sums=('f66df0796ac359976f0bdbe3acc0218596f170e186fdfbc26ce13ed39560d2118c94fd7be25f0fa2249a6eb73de597f4a0822e85dadc0e264e1e9c6d2bbcfbd0')
 
 package()
 {
-    cd "${srcdir}/mergerfs-2.22.0" || exit
+    cd "${srcdir}/mergerfs-2.22.1" || exit
     mkdir -p "${pkgdir}"/usr/{share,bin}
     mkdir -p "${pkgdir}"/usr/share/licenses/mergerfs
     make DESTDIR=${pkgdir} PREFIX=/usr SBINDIR="/usr/bin" install
@@ -22,7 +22,7 @@ package()
 
 build()
 {
-    cd ./"mergerfs-2.22.0" || exit
+    cd ./"mergerfs-2.22.1" || exit
     make DESTDIR="${pkgdir}" PREFIX="/usr" SBINDIR="/usr/bin"
 }
 
