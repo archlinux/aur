@@ -22,8 +22,8 @@ install=
 changelog=
 source=('moneydance.sh'
         'moneydance.patch')
-source_i686=(${pkgname}-${pkgver}-${pkgrel}::http://infinitekind.com/stabledl/current/Moneydance_linux_x86.tar.gz)
-source_x86_64=(${pkgname}-${pkgver}-${pkgrel}::http://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz)
+source_i686=(${pkgname}_x86-${pkgver}-${pkgrel}.tar.gz::http://infinitekind.com/stabledl/current/Moneydance_linux_x86.tar.gz)
+source_x86_64=(${pkgname}_amd64-${pkgver}-${pkgrel}.tar.gz::http://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz)
 
 package() {
   # generate directories in $pkgdir
@@ -52,4 +52,4 @@ package() {
 md5sums=('5f95567e5a015721c6a80292d173a9e7'
          'a2c3a2f8a672ca93d52cd8d207aef3a5')
 md5sums_i686=('5ac41256ba2bba1f7c825524d64d6239')
-md5sums_x86_64=('5ac41256ba2bba1f7c825524d64d6239')
+md5sums_x86_64=('ce433d328edfd1b99e5f50a1922d56fb')
