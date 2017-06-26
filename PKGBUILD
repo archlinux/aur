@@ -2,7 +2,7 @@
 
 _pkgname=libbuddy
 pkgname=$_pkgname-git
-pkgver=0.3.1.r8.g75f323f
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Simple library for managing iBuddy and Blync devices"
 arch=("i686" "x86_64" "armv6h" "armv7h")
