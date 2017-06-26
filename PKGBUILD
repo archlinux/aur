@@ -5,7 +5,7 @@
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=19.1.r121.g66b60035
+pkgver=20
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -22,25 +22,12 @@ optdepends=(
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-
-source=(
-  "git+$url#branch=crashey"
-  'build-fix.patch'
-)
-
-sha512sums=(
-  'SKIP'
-  'f8effe23cde89aed048a796bc181fac0a5dc272132d819d91b7c777ec30e00cf7682e4f7e50413d6b2ecab366d5eb8925fb91f6b2ab063faebf5604004f3ec09'
-)
+source=("git+$url#branch=crashey")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --tags | sed 's|^[^-]*-v||;s|-|.r|;s|-|.|g'
-}
-
-prepare() {
-  cd $_pkgname
-  patch -p1 < ../build-fix.patch
 }
 
 build() {
