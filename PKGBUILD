@@ -1,6 +1,6 @@
 # Maintainer: defkeh <defkeh@gmail.com>
 pkgname=rivalcfg-git
-pkgver=r59.8287e23
+pkgver=r94.4fef996
 pkgrel=1
 pkgdesc="SteelSeries Rival gaming mouse configuration utility"
 arch=("any")
@@ -11,7 +11,7 @@ makedepends=('git')
 conflicts=("rivalctl")
 provides=("${pkgname%-git}")
 source=("${pkgname%-git}"::'git+https://github.com/flozz/rivalcfg#branch=master')
-install=${pkgname%-git}.install
+install=${pkgname}.install
 md5sums=('SKIP') 
 
 
