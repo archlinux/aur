@@ -21,7 +21,7 @@ depends=('qt5-tools' 'qt5-x11extras'  'qt5-xmlpatterns'
          'ffmpeg' 'boost' 'glew' 'protobuf'
          'expat' 'freetype2' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib'
          'ospray' 'cgns')
-makedepends=('cmake' 'mesa' 'gcc-fortran')
+makedepends=('cmake' 'mesa' 'gcc-fortran' 'ninja')
 source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${_pkgver}.tar.gz")
 sha1sums=('d1bc9112d76f603d3232069b4ea9c507c4e1b1a7')
 
@@ -69,15 +69,16 @@ build() {
     -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=OpenMP \
     -DVTK_USE_TK:BOOL=ON \
     ${VTK_USE_SYSTEM_LIB} \
+    -GNinja \
     ../ParaView-v${_pkgver}
 
-  make
+  ninja ${MAKEFLAGS}
 }
 
 package() {
   cd "${srcdir}/build"
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 
   #Install license
   install -Dm644 "${srcdir}/ParaView-v${_pkgver}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/paraview/LICENSE"
