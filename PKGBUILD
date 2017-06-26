@@ -8,21 +8,42 @@ _major=6
 _minor=45
 _build=b06
 pkgver=${_major}u${_minor}
-pkgrel=4
+pkgrel=5
 pkgdesc="Oracle Java $_major Development Kit (public release - end of support)"
 arch=('i686' 'x86_64')
 url=https://www.java.com/en/download/faq/java_6.xml
 license=('custom')
-depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java-environment-common'
-         'java-runtime-common' 'libx11' 'libxrender' 'libxslt' 'libxtst' 'shared-mime-info' 'xdg-utils')
-optdepends=('alsa-lib: for basic sound support'
-            'derby: for Oracle Apache Derby Java database (AUR)'
-            'eclipse: "Oracle Java Mission Control" plugins for Eclipse'
-            'gtk2: for Gtk+ look and feel (desktop)'
-            'ttf-font: fonts'
-            'visualvm: for lightweight profiling capabilities')
-provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
-          "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major")
+depends=(
+	'ca-certificates-java'
+	'desktop-file-utils'
+	'hicolor-icon-theme'
+	'java-environment-common'
+        'java-runtime-common'
+	'libx11'
+	'libxrender'
+	'libxslt'
+	'libxtst'
+	'shared-mime-info'
+	'xdg-utils'
+)
+optdepends=(
+	'alsa-lib: for basic sound support'
+	'derby: for Oracle Apache Derby Java database (AUR)'
+	'eclipse: "Oracle Java Mission Control" plugins for Eclipse'
+	'gtk2: for Gtk+ look and feel (desktop)'
+	'ttf-font: fonts'
+	'visualvm: for lightweight profiling capabilities'
+)
+provides=(
+	"java-runtime=$_major"
+	"java-runtime-headless=$_major"
+	"java-web-start=$_major"
+	"java-environment=$_major"
+	"java-runtime-jre=$_major"
+	"java-runtime-headless-jre=$_major"
+	"java-web-start-jre=$_major"
+	"java-environment-jdk=$_major"
+)
 
 # Variables
 DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
@@ -64,8 +85,14 @@ source=('javaws-launcher'
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop"
         "http://download.oracle.com/otn-pub/java/jce_policy/$_major/jce_policy-$_major.zip")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin")
+source_i686=(
+	"https://www.dropbox.com/s/a6jvq5acpm8xk3b/$_pkgname-$pkgver-linux-i586.bin"
+	#"http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.bin"
+)
+source_x86_64=(
+	"https://www.dropbox.com/s/ym5k71ftapaq4um/$_pkgname-$pkgver-linux-x64.bin"
+	#"http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-x64.bin"
+)
 md5sums=('45c15a6b4767288f2f745598455ea2bf'
          '4ecc28010b77b31c101e61f420a415fa'
          '6ab27fa31a5a83f98f4a36ec3bd47911'
