@@ -1,9 +1,9 @@
 [Unit]
-Description=CacheFiles Userspace Management Daemon
+Description=Local network file caching management daemon
 
 [Service]
 Type=forking
-ExecStartPre=-/usr/bin/modprobe cachefiles
+ExecStartPre=-/usr/bin/modprobe -qab cachefiles
 ExecStart=/usr/bin/cachefilesd -f /etc/cachefilesd.conf
 
 [Install]

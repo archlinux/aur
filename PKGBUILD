@@ -2,7 +2,7 @@
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 
 pkgname=cachefilesd
-pkgver=0.10.9
+pkgver=0.10.10
 pkgrel=1
 pkgdesc="Userspace daemon acting as a backend for FS-Cache"
 arch=('i686' 'x86_64')
@@ -11,14 +11,9 @@ license=('GPL')
 depends=('glibc')
 source=(https://people.redhat.com/~dhowells/fscache/${pkgname}-${pkgver}.tar.bz2
         cachefilesd.service)
-sha256sums=('c897ec6704615f26de3ddc20ff30a191ce995cb8973d2cde88b4b28c1a1e6bca'
-            'aa889fcbc2ca59aed2be4ef586c3039ceadc6bc5969398a175a77c63ccbe11e0')
+sha256sums=('0d0309851efabd02b7c849f73535b8ad3f831570e83e4f65e42354da18e11a02'
+            '29a6110608dda5b13549bdf6975307151643d203455c0fd3f3707272df5850ac')
 backup=(etc/cachefilesd.conf)
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i "s#/sbin/#/usr/bin/#g" cachefilesd.{c,service}
-}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -28,6 +23,8 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" SBINDIR=/usr/bin install
+
+  # at least Type=forking provides a ready notification
   install -D -m 644 "$srcdir/cachefilesd.service" "$pkgdir/usr/lib/systemd/system/cachefilesd.service"
 }
 
