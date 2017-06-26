@@ -3,6 +3,7 @@
 pkgname=qt5-webkit-print
 _qtver=5.212.0-alpha2
 pkgver=${_qtver/-/}
+# pkgver=5.212.0-alpha2
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/annulen/webkit/wiki'
@@ -13,7 +14,7 @@ makedepends=(cmake ruby gperf python2 qt5-doc qt5-tools)
 optdepends=('gst-plugins-good: Webm codec support')
 conflicts=(qt5-webkit)
 provides=(qt5-webkit)
-source=("https://github.com/annulen/webkit/releases/download/qtwebkit-$pkgver/qtwebkit-$pkgver-alpha.tar.xz"
+source=("https://github.com/annulen/webkit/releases/download/qtwebkit-$_qtver/qtwebkit-$_qtver.tar.xz"
         qt5-webkit-icu59.patch qt5-webkit-ng-gcc7.patch qt5-webkit-ng-functional.patch qt5-webkit-pdf_scaling.patch qt5-webkit-solid_background_PDF.patch)
 sha256sums=('f70fea4623a0f1df6ec535358f9c431d6ead9c04742a85258aaabcd0805d2719'
             'e1306e696ad7125fa00083aa966be0ea6fe6de555c9e1d119957f208f258edfe'
