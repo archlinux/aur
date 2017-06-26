@@ -1,0 +1,19 @@
+pkgbase = libnabo-git
+	pkgdesc = A fast K Nearest Neighbor library for low-dimensional spaces
+	pkgver = 1.0.6.r37.g9c0e1c2
+	pkgrel = 1
+	url = https://github.com/ethz-asl/libnabo
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = eigen
+	depends = boost
+	depends = boost-libs
+	provides = libnabo
+	conflicts = libnabo
+	source = git+https://github.com/ethz-asl/libnabo.git
+	sha256sums = SKIP
+
+pkgname = libnabo-git
+
