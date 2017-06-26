@@ -1,0 +1,15 @@
+pkgbase = r-cran-lattice
+	pkgdesc = Read data stored by other statistical analysis software.
+	pkgver = 0.20_35
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/lattice/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	depends = r>=3.0.0
+	source = http://cran.r-project.org/src/contrib/lattice_0.20-35.tar.gz
+	md5sums = 07f1814623b3da6278ca61554ff7bfe6
+
+pkgname = r-cran-lattice
+
