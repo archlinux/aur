@@ -2,8 +2,8 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=rabbitvcs
-pkgver=0.16
-pkgrel=2
+pkgver=0.17
+pkgrel=1
 pkgdesc="A project with the goal of developing a collection of utilities to allow for better client integration with some of the popular version control systems (core)"
 arch=('any')
 #url="http://rabbitvcs.org/"
@@ -14,13 +14,13 @@ depends=('git' 'pygtk' 'python2-pysvn' 'python2-dulwich' 'python2-gobject2' 'pyt
 optdepends=('meld: graphical diff viewer')
 makedepends=('python2-setuptools')
 license=('GPL')
-_gitcommit="4e94b82e34b409f0baced88521a6e03cb29c4155"
+_gitcommit="a508bee84cbffab7ae9bc86d1569e08ad54361a8"
 if [ "${_gitcommit}" != "" ]; then
   source=("rabbitvcs-$pkgver-$pkgrel.tar.gz::$url/archive/$_gitcommit.tar.gz")
 else
   source=("rabbitvcs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
-md5sums=('9669132c6ef3f21ecfe1fd96b9be3e0d')
+md5sums=('f34ba22c17bd487838a9f0db764d52c1')
 #md5sums=('SKIP')
 
 
