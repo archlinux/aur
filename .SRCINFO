@@ -1,7 +1,7 @@
 pkgbase = dotgit-git
 	pkgdesc = Development version of dotgit
 	pkgver = 26.06.2017
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/Cube777/dotgit
 	arch = any
 	depends = git
