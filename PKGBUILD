@@ -14,7 +14,7 @@ url="https://github.com/mtorromeo/ngx_cache_purge"
 license=('CUSTOM')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/mtorromeo/ngx_cache_purge/archive/$pkgver/ngx_cache_purge-$pkgver.tar.gz
 )
 
