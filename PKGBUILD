@@ -3,7 +3,7 @@
 # (Co-)Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=libreswan
-pkgver=3.19
+pkgver=3.20
 pkgrel=1
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
@@ -15,14 +15,14 @@ conflicts=('freeswan' 'openswan' 'strongswan' 'ipsec-tools')
 backup=('etc/ipsec.conf' 'etc/ipsec.secrets' 'etc/pam.d/pluto')
 source=(https://download.libreswan.org/${pkgname}-${pkgver}.tar.gz
         tmpfiles.conf)
-md5sums=('f2abcdcdccb2ec42f226a6dbb0528cad'
+md5sums=('72aecdf8314c0c47546d5ae2cf918191'
          '77399a739ee99f8bc54837684d7c39d5')
 
 build() {
   cd $pkgname-$pkgver
 
   # Disable new warning introduced with GCC 6 (-Wunused-const-variable=)
-  export CFLAGS="$CFLAGS -Wno-error=sign-compare -Wno-error=unused-const-variable "
+  export CFLAGS="$CFLAGS -Wno-error=sign-compare -Wno-error=unused-const-variable -Wno-error=implicit-fallthrough -Wno-error=maybe-uninitialized -Wno-error=pointer-compare -Wno-error=format-truncation"
 
   make \
     USE_XAUTH=true USE_LIBCAP_NG=true USE_LEAK_DETECTIVE=false \
