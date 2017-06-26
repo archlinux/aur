@@ -19,6 +19,7 @@ ac_add_options --libdir=/opt
 
 ac_add_options --enable-release
 ac_add_options --enable-application=browser
+ac_add_options --enable-eme=widevine
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
 ac_add_options --with-branding=browser/branding/official
@@ -68,6 +69,5 @@ ac_add_options --disable-mobile-optimize
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-profiling
-ac_add_options --disable-rust 
 
 # vim:set ft=sh:

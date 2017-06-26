@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=53.0.3+e3beff3683bf
+pkgver=54.0.0.1+f60534e75859
 _realpkgver=49.0b10
 _rcbuild=1
 pkgrel=1
@@ -24,18 +24,14 @@ source=(git://github.com/MrAlex94/Waterfox
         mozconfig
         waterfox.desktop
         firefox-install-dir.patch
-        rhbz-966424.patch
         clang-profile.patch
-        vendor.js
-        webgl-nowebrtc-fix.patch::https://bug1335515.bmoattachments.org/attachment.cgi?id=8832179)
+        vendor.js)
 sha512sums=('SKIP'
-            'dad95521ed25ea525b19ad16f2092947aa24271db870e19713368183dde40b086f63d8ea050c32c70459387998bbe9a16fcf0e29a57aff5d76e82d2ab2bcc1b5'
+            '897218e7d2e66846aa2686570f947d9eddc53e2ed9243e78fd8f1316a823591df0e4c5f5f6b545f1d9e48b8ec1425c86e68c37505b3ad051d8b860f673b3a32b'
             '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
-            '0d69183bbfdceee89b3059c913c95e316c03b14b6b302675e16a03c32b74f30b7058344d8c6f2f5a4cfd33db9c7e6f52bf0f52d1c047a224b75e1745d0711c07'
             'c17dceeefd58447917e27a33d6688a28158b919c41867909b11478d8be7f155b61ae8fda2e0381c14210583f1c6ecf678dfb469c4826f34e24b8ee0b96a8aaa5'
-            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
-            '8072035ad22d73d6abc9f98bf15b5d3c7104ab5499b6288c46f02035a546729a2130093fc518e7a91033144303cda56fe86478f35818894f23972855ed696734') 
+            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
 # don't compress the package - we're just going to uncompress during install in a moment
 PKGEXT='.pkg.tar'   
 
@@ -51,17 +47,14 @@ prepare() {
   cd Waterfox
 
   cp ../mozconfig .mozconfig
+
+  # lcrmf breaks stuff
+  sed -i 's/ \-lcrmf//g' "${srcdir}/Waterfox/old-configure.in"
   
   # alter the install dir
   patch -Np1 -i ../firefox-install-dir.patch
-  
-  # fix addon update issue - happens in arch and redhat, at the least
-  patch -Np0 -i ../rhbz-966424.patch
-  
-  # fix error that arises when building with webrtc disabled
-  patch -Np1 -i ../webgl-nowebrtc-fix.patch
-  
-  # these fix PGO
+
+  # these fix PGO partially
   # patch -Np1 -i ../clang-profile.patch
 
   #if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
