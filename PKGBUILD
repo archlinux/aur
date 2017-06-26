@@ -3,7 +3,7 @@
 pkgname=icet
 _pkgname=IceT
 pkgver=2.1.1
-_pkgver=2-1-1
+_pkgver=${pkgver//./-}
 pkgrel=3
 pkgdesc="High-performance sort-last parallel rendering library"
 arch=('i686' 'x86_64')
@@ -16,15 +16,18 @@ source=("http://icet.sandia.gov/_assets/files/${_pkgname}-${_pkgver}.tar.gz")
 sha256sums=('6eaf0442bf6832ce6c8a50805cf9279894fbcd5886cf6ea214b09d24f111fa33')
 
 prepare(){
-  cd "${srcdir}/${_pkgname}-${_pkgver}"
-  rm -rf build
-  mkdir -p build
+  cd "${srcdir}"
+
+  # Out out of source build
+  #rm -rf -- build
+  mkdir -p -- build
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${_pkgver}/build"
+  cd "${srcdir}/build"
 
-  cmake ..\
+  cmake ../${_pkgname}-${_pkgver} \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DICET_USE_OPENGL=ON \
@@ -34,12 +37,12 @@ build() {
 }
 
 #check(){
-  #cd "${srcdir}/${_pkgname}-${_pkgver}/build"
+  #cd "${srcdir}/build"
   #make test
 #}
 
 package(){
-  cd "${srcdir}/${_pkgname}-${_pkgver}/build"
+  cd "${srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
 }
