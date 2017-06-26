@@ -1,6 +1,6 @@
 pkgbase = spm12
 	pkgdesc = A MATLAB toolbox for the analysis of brain imaging data sequences
-	pkgver = 12.6906
+	pkgver = 6906
 	pkgrel = 1
 	url = http://www.fil.ion.ucl.ac.uk/spm/
 	arch = i686
