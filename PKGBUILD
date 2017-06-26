@@ -16,5 +16,5 @@ sha256sums_x86_64=('a5144562e8b9049ccd1c9eb2003a358ef7837a80adb8e034b836b4d27bcb
 
 package() {
   cd "$srcdir"
-  install -Dm755 usr/bin/gopass "$pkgdir"/usr/bin/gopass
+  install -Dm755 gopass-"$pkgver"-linux-amd64/gopass "$pkgdir"/usr/bin/gopass
 }
