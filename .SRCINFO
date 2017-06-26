@@ -1,7 +1,7 @@
 pkgbase = xde-panel
 	pkgdesc = PerlPanel wrapper for the X Desktop Environment
 	pkgver = 0.01.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbidulock/xde-panel
 	arch = any
 	license = PerlArtistic
@@ -10,6 +10,7 @@ pkgbase = xde-panel
 	depends = perl
 	optdepends = xde-ctools: for XDE provided menus
 	optdepends = xde-menu: for XDE applications menu
+	options = !emptydirs
 	source = xde-panel::git+https://github.com/bbidulock/xde-panel.git
 	md5sums = SKIP
 

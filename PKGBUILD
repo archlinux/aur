@@ -2,11 +2,11 @@
 pkgname=xde-panel
 cpanname=XDE-Panel
 pkgver=0.01.7
-pkgrel=1
+pkgrel=2
 pkgdesc="PerlPanel wrapper for the X Desktop Environment"
 arch=('any')
 license=('PerlArtistic' 'GPL')
-#options=('!emptydirs')
+options=('!emptydirs')
 depends=('perl')
 makedepends=('git')
 optdepends=('xde-ctools: for XDE provided menus'
@@ -25,7 +25,7 @@ build() {
   export -n PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   PERL_MM_USE_DEFAULT=1 \
   PERL_AUTOINSTALL='--skipdeps' \
-  perl Makefile.PL INSTALLDIRS=vendor
+  perl Makefile.PL INSTALLDIRS=vendor INSTALLVENDORSCRIPT=/usr/bin
   make
 }
 
@@ -33,9 +33,10 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
   find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
-  find "$pkgdir" -depth -type d -exec rmdir --ignore-fail-on-non-empty '{}' \;
-# find "$pkgdir" -type d -empty -delete
-  find "$pkgdir" -type d -empty |while read f; do echo "WARNING: $f is empty!"; done
+  rm -fr "$pkgdir"/usr/lib/perl5/vendor_perl
+#  find "$pkgdir" -depth -type d -exec rmdir --ignore-fail-on-non-empty '{}' \;
+#  find "$pkgdir" -type d -empty -delete
+#  find "$pkgdir" -type d -empty |while read f; do echo "WARNING: $f is empty!"; done
 }
 
 
