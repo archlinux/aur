@@ -1,7 +1,7 @@
 pkgbase = hakuneko
 	pkgdesc = Manga Downloader for Linux and Windows
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/hakuneko/
 	install = hakuneko.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = hakuneko
 	depends = wxgtk
 	depends = curl
 	depends = webkitgtk2
-	source = http://downloads.sourceforge.net/hakuneko/hakuneko_1.4.2_src.tar.gz
+	source = http://downloads.sourceforge.net/legacy.hakuneko.p/hakuneko_1.4.2_src.tar.gz
 	md5sums = 0c278c2525038e2eb74487ac9fa5b5a7
 
 pkgname = hakuneko

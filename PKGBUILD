@@ -2,14 +2,14 @@
 
 pkgname=hakuneko
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manga Downloader for Linux and Windows"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/hakuneko/"
 license=('MIT')
 depends=('wxgtk' 'curl' 'webkitgtk2')
 install=hakuneko.install
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}_${pkgver}_src.tar.gz)
+source=(http://downloads.sourceforge.net/legacy.${pkgname}.p/${pkgname}_${pkgver}_src.tar.gz)
 md5sums=('0c278c2525038e2eb74487ac9fa5b5a7')
 
 build() {
