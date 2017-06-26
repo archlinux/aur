@@ -1,0 +1,12 @@
+pkgbase = jsonc
+	pkgdesc = A simple JSON library written in C.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/desolt/jsonc
+	arch = any
+	license = MIT
+	source = git+https://github.com/desolt/jsonc.git
+	sha256sums = SKIP
+
+pkgname = jsonc
+
