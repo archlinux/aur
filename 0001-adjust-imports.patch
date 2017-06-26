@@ -1,4 +1,4 @@
-From 20c2f88b73a24e1154af82f2e26b2a4421ce5960 Mon Sep 17 00:00:00 2001
+From b6956f1d6f234936b45e6123c9170407a905c715 Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
 Date: Fri, 17 Mar 2017 14:53:05 -0500
 Subject: [PATCH] adjust imports
@@ -10,6 +10,7 @@ Subject: [PATCH] adjust imports
  sickbeard/clients/deluge.py         | 2 +-
  sickbeard/clients/generic.py        | 2 +-
  sickbeard/event_queue.py            | 2 +-
+ sickbeard/helpers.py                | 2 +-
  sickbeard/indexermapper.py          | 2 +-
  sickbeard/network_timezones.py      | 2 +-
  sickbeard/notifiers/emby.py         | 2 +-
@@ -18,6 +19,7 @@ Subject: [PATCH] adjust imports
  sickbeard/notifiers/pushbullet.py   | 2 +-
  sickbeard/notifiers/tweet.py        | 2 +-
  sickbeard/nzbget.py                 | 2 +-
+ sickbeard/processTV.py              | 2 +-
  sickbeard/providers/alpharatio.py   | 2 +-
  sickbeard/providers/beyondhd.py     | 2 +-
  sickbeard/providers/bithdtv.py      | 2 +-
@@ -55,7 +57,8 @@ Subject: [PATCH] adjust imports
  sickbeard/providers/zooqle.py       | 2 +-
  sickbeard/rssfeeds.py               | 2 +-
  sickbeard/webapi.py                 | 2 +-
- 51 files changed, 52 insertions(+), 52 deletions(-)
+ sickbeard/webserve.py               | 2 +-
+ 54 files changed, 55 insertions(+), 55 deletions(-)
 
 diff --git a/SickBeard.py b/SickBeard.py
 index 5d6276d3..e55b11b6 100755
@@ -140,6 +143,19 @@ index fe246b3e..88daf104 100644
 +from six import moves
  
  import threading
+ 
+diff --git a/sickbeard/helpers.py b/sickbeard/helpers.py
+index 99e7f093..054f990f 100644
+--- a/sickbeard/helpers.py
++++ b/sickbeard/helpers.py
+@@ -58,7 +58,7 @@ from sickbeard.common import USER_AGENT, mediaExtensions, subtitleExtensions, cp
+ from sickbeard import encodingKludge as ek
+ 
+ from lib.cachecontrol import CacheControl, caches
+-from lib.scandir.scandir import scandir
++import scandir
+ from itertools import izip, cycle
+ 
  
 diff --git a/sickbeard/indexermapper.py b/sickbeard/indexermapper.py
 index b905356a..ae4e6836 100644
@@ -245,6 +261,19 @@ index de232028..8749cf4c 100644
  from base64 import standard_b64encode
  from common import Quality
  from sickbeard import logger
+diff --git a/sickbeard/processTV.py b/sickbeard/processTV.py
+index 50f86c0e..d2d85c4e 100644
+--- a/sickbeard/processTV.py
++++ b/sickbeard/processTV.py
+@@ -39,7 +39,7 @@ from sickbeard.history import reset_status
+ 
+ from sickbeard import failedProcessor
+ 
+-import lib.rarfile.rarfile as rarfile
++import rarfile
+ 
+ try:
+     import json
 diff --git a/sickbeard/providers/alpharatio.py b/sickbeard/providers/alpharatio.py
 index 375a44bb..b1ae31aa 100644
 --- a/sickbeard/providers/alpharatio.py
@@ -272,7 +301,7 @@ index f4c42f31..a22c8935 100644
  
  class BeyondHDProvider(generic.TorrentProvider):
 diff --git a/sickbeard/providers/bithdtv.py b/sickbeard/providers/bithdtv.py
-index 478e3e51..81c902e2 100644
+index fea6ab86..174ab4e3 100644
 --- a/sickbeard/providers/bithdtv.py
 +++ b/sickbeard/providers/bithdtv.py
 @@ -22,7 +22,7 @@ from . import generic
@@ -726,6 +755,19 @@ index 3e5635d0..acf61a25 100644
  
              _call_dispatcher = profile(_call_dispatcher, immediate=True)
              del kwargs["profile"]
+diff --git a/sickbeard/webserve.py b/sickbeard/webserve.py
+index cf9aff6f..a2c4eb56 100644
+--- a/sickbeard/webserve.py
++++ b/sickbeard/webserve.py
+@@ -62,7 +62,7 @@ from tornado.web import RequestHandler, StaticFileHandler, authenticated
+ from lib import adba
+ from lib import subliminal
+ from lib.dateutil import tz
+-import lib.rarfile.rarfile as rarfile
++import rarfile
+ from unidecode import unidecode
+ 
+ from lib.libtrakt import TraktAPI
 -- 
-2.13.0
+2.13.1
 
