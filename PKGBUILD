@@ -40,7 +40,7 @@ optdepends=('kdialog: needed for file dialogs in KDE'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 
 source_x86_64=("https://github.com/maximbaz/$pkgname/raw/master/$arch/chromium-vaapi-$pkgver-$pkgrel-$arch.pkg.tar.xz")
-sha256sums_x86_64=('71b3d42fc88e20308bfb52a4f91dd69fb3ac806dc3655efc5fff383ca124d78c')
+sha256sums_x86_64=('f62f581c21aabfd61fe8215e17c75db877c0d97ffaa675d6f1c633a1b2bc4b46')
 
 package() {
   cp -ar "$srcdir/usr" "$pkgdir/usr"
