@@ -3,7 +3,7 @@
 
 pkgname=rabbitvcs
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A project with the goal of developing a collection of utilities to allow for better client integration with some of the popular version control systems (core)"
 arch=('any')
 #url="http://rabbitvcs.org/"
@@ -31,6 +31,7 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	sed -i "s#env python#env python2#" setup.py
 	sed -i "s#!= 'Darwin'#== 'toto'#" setup.py
+	sed -i "s#import hashlib#import hashlib, urllib#" ./rabbitvcs/util/helper.py
 	find . -name "*.py" | xargs grep -l sys.executable | xargs sed -i 's|sys\.executable|"/usr/bin/python2"|g'
 	python2 setup.py build 
 }
