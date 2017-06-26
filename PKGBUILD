@@ -1,14 +1,15 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _gitname=telegram-qt
 pkgname=telegram-qt-git
-pkgver=r716.a0e5734
+pkgver=r879.63aa028
 pkgrel=1
 pkgdesc="Qt bindings for the Telegram protocol"
 arch=(i686 x86_64)
-url="https://projects.kde.org/telegram-qt/"
+url="https://github.com/Kaffeine/telegram-qt"
 license=(GPL)
-depends=(qt5-base)
+depends=(qt5-declarative)
 makedepends=(cmake git)
 provides=(telegram-qt)
 conflicts=(telegram-qt)
