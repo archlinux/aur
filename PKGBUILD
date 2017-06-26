@@ -5,7 +5,7 @@
 # Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=mysql-connector-c++
-pkgver=1.1.7
+pkgver=1.1.9
 pkgrel=1
 pkgdesc='A MySQL database connector for C++'
 arch=('i686' 'x86_64')
@@ -13,14 +13,14 @@ url='http://dev.mysql.com/doc/connector-cpp/en/'
 license=('GPL')
 depends=('libmariadbclient')
 makedepends=('cmake' 'boost')
-validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
+validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5') # MySQL Release Engineering <mysql-build@oss.oracle.com>
 source=("http://cdn.mysql.com/Downloads/Connector-C++/${pkgname}-${pkgver}.tar.gz"{,.asc}
 	'0001-mysql-connector-c++-mariadb-api.patch'
 	'0002-mysql-connector-c++-no-JSON.patch')
-sha256sums=('5b353fbcd26f607a2a0987ce78a4b811f8971813d46b0f4ae6fa07887e9fc763'
+sha256sums=('3e31847a69a4e5c113b7c483731317ec4533858e3195d3a85026a0e2f509d2e4'
             'SKIP'
             '1694ead0b9c9cb7803a76f56e3871b4f64f045a07fa390cf18bc15be798035ee'
-            '6000a9a74fb65d5f4fb07b4560cd2021e662272405f02b079661495e8fdb0cb3')
+            '92de10ee54cb8f8c5b98a85ce441372375a6056d7180f584aaa223a7513812e2')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}/"
@@ -33,9 +33,11 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}/"
+	mkdir build/
+	cd build/
 
-	cmake . -Wno-dev \
+	cmake "../${pkgname}-${pkgver}/" \
+		 -Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -45,10 +47,10 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}/"
+	cd build/
 
 	make DESTDIR="${pkgdir}" install
 
-	rm "${pkgdir}"/usr/{ANNOUNCEMENT,COPYING,README,INSTALL,Licenses_for_Third-Party_Components.txt,lib/libmysqlcppconn-static.a}
+	rm "${pkgdir}"/usr/{COPYING,README,Licenses_for_Third-Party_Components.txt,lib/libmysqlcppconn-static.a}
 }
 

@@ -13,7 +13,7 @@ index 593ec02..63de3ec 100644
  };
  
 diff --git a/driver/mysql_ps_resultset.cpp b/driver/mysql_ps_resultset.cpp
-index 572beda..6f4cbca 100644
+index 6e9d373..9d35ef7 100644
 --- a/driver/mysql_ps_resultset.cpp
 +++ b/driver/mysql_ps_resultset.cpp
 @@ -446,7 +446,6 @@ MySQL_Prepared_ResultSet::getDouble(const uint32_t columnIndex) const
@@ -23,7 +23,7 @@ index 572beda..6f4cbca 100644
 -        case sql::DataType::JSON:
          {
              CPP_INFO("It's a string");
-             long double ret = sql::mysql::util::strtold(getString(columnIndex).c_str(), NULL);
+             long double ret = sql::mysql::util::strtonum(getString(columnIndex).c_str());
 @@ -615,7 +614,6 @@ MySQL_Prepared_ResultSet::getInt64_intern(const uint32_t columnIndex, bool /* cu
          case sql::DataType::LONGVARBINARY:
          case sql::DataType::SET:
@@ -49,31 +49,32 @@ index 572beda..6f4cbca 100644
              return  sql::SQLString(static_cast<char *>(result_bind->rbind[columnIndex - 1].buffer), *result_bind->rbind[columnIndex - 1].length);
          default:
 diff --git a/driver/mysql_resultbind.cpp b/driver/mysql_resultbind.cpp
-index 003b44b..e597ac6 100644
+index 8acc7ba..ba3c408 100644
 --- a/driver/mysql_resultbind.cpp
 +++ b/driver/mysql_resultbind.cpp
-@@ -86,7 +86,6 @@ static struct st_buffer_size_type
+@@ -86,7 +86,7 @@ static struct st_buffer_size_type
      case MYSQL_TYPE_BLOB:
      case MYSQL_TYPE_STRING:
      case MYSQL_TYPE_VAR_STRING:
--    case MYSQL_TYPE_JSON:
+-#if LIBMYSQL_VERSION_ID > 50700
++#if not defined MARIADB_BASE_VERSION && LIBMYSQL_VERSION_ID > 50700
+     case MYSQL_TYPE_JSON:
        return st_buffer_size_type(new char[field->max_length + 1], field->max_length + 1, field->type);
- 
-     case MYSQL_TYPE_DECIMAL:
+ #endif //LIBMYSQL_VERSION_ID > 50700
 diff --git a/driver/mysql_util.cpp b/driver/mysql_util.cpp
-index e4aaa6c..81af5c4 100644
+index afdc904..04f60d3 100644
 --- a/driver/mysql_util.cpp
 +++ b/driver/mysql_util.cpp
-@@ -431,8 +431,6 @@ mysql_type_to_datatype(const MYSQL_FIELD * const field)
+@@ -431,7 +431,7 @@ mysql_type_to_datatype(const MYSQL_FIELD * const field)
        return sql::DataType::SET;
      case MYSQL_TYPE_GEOMETRY:
        return sql::DataType::GEOMETRY;
--    case MYSQL_TYPE_JSON:
--      return sql::DataType::JSON;
-     default:
-       return sql::DataType::UNKNOWN;
-   }
-@@ -498,8 +496,6 @@ mysql_string_type_to_datatype(const sql::SQLString & name)
+-#if LIBMYSQL_VERSION_ID > 50700
++#if not defined MARIADB_BASE_VERSION && LIBMYSQL_VERSION_ID > 50700
+     case MYSQL_TYPE_JSON:
+       return sql::DataType::JSON;
+ #endif //LIBMYSQL_VERSION_ID > 50700
+@@ -500,8 +500,6 @@ mysql_string_type_to_datatype(const sql::SQLString & name)
      return sql::DataType::SET;
    } else if (!name.compare("geometry")) {
      return sql::DataType::GEOMETRY;
@@ -82,12 +83,12 @@ index e4aaa6c..81af5c4 100644
    } else {
      return sql::DataType::UNKNOWN;
    }
-@@ -645,8 +641,6 @@ mysql_type_to_string(const MYSQL_FIELD * const field, boost::shared_ptr< sql::my
+@@ -647,7 +645,7 @@ mysql_type_to_string(const MYSQL_FIELD * const field, boost::shared_ptr< sql::my
        return "SET";
      case MYSQL_TYPE_GEOMETRY:
        return "GEOMETRY";
--    case MYSQL_TYPE_JSON:
--      return "JSON";
-     default:
-       return "UNKNOWN";
-   }
+-#if LIBMYSQL_VERSION_ID > 50700
++#if not defined MARIADB_BASE_VERSION && LIBMYSQL_VERSION_ID > 50700
+     case MYSQL_TYPE_JSON:
+       return "JSON";
+ #endif //LIBMYSQL_VERSION_ID > 50700
