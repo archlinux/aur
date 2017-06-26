@@ -3,12 +3,12 @@
 
 pkgname='flow-tools'
 pkgver='0.68.5.1'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="Netflow collector, analyser and report generator."
 arch=('i686' 'x86_64')
 url="https://code.google.com/archive/p/${pkgname}"
 license=('BSD 3')
-makedepends=('make' 'zlib' 'openssl' 'libmariadbclient' 'postgresql-libs' 'tcp-wrappers' 'bison' 'doxygen')
+makedepends=('make' 'zlib' 'libmariadbclient' 'postgresql-libs' 'tcp-wrappers' 'bison' 'doxygen')
 source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	"flow-capture.service"
 	"flow-capture.conf"
@@ -19,7 +19,6 @@ sha256sums=('80bbd3791b59198f0d20184761d96ba500386b0a71ea613c214a50aa017a1f67'
             '842e0c6d1734494c13c5a99fb643b44d8d3bfd49d8d069c5c397a4c799628e64'
             '3bb79f03e1e83e74ea1abd0d39dc6d3c72943a7b281275e33f69e5d9640b4ac3'
             'd961522f40350107a2869c68fa8315498b57a26a13d9519b2cd5905b9e306124')
-install="${pkgname}.install"
 backup=("etc/${pkgname}/flow-capture.conf")
 
 prepare() {
@@ -38,10 +37,10 @@ prepare() {
     --datarootdir=/usr/share \
     --datadir=/usr/share \
     --infodir=/usr/share/info \
-    --with-openssl \
     --with-mysql \
     --with-postgresql
 }
+
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make
