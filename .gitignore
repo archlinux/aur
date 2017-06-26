@@ -4,3 +4,4 @@
 *.pkg.tar.xz
 SHA512SUMS
 SHA512SUMS.asc
+/update-aur.sh
