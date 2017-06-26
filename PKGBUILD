@@ -5,7 +5,7 @@
 
 _gitname=ctags
 pkgname=universal-ctags-git
-pkgver=0.r4870.2e447bfd
+pkgver=0.r5294.cb4476eb
 pkgrel=1
 pkgdesc="Multilanguage reimplementation of the Unix ctags utility"
 arch=('i686' 'x86_64')
@@ -37,7 +37,8 @@ build() {
 check() {
   cd "${srcdir}/${_gitname}"
 
-  make -k check
+  mkdir "${srcdir}/testhome"
+  HOME="${srcdir}/testhome" make -k check
 }
 
 package() {
