@@ -14,7 +14,7 @@ url="https://github.com/simpl/ngx_devel_kit"
 license=('BSD')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/simpl/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz
 )
 
