@@ -3,7 +3,7 @@
 
 pkgname=arxlibertatis-git
 _installname=arx
-pkgver=1.1.2+r7538.gef39441
+pkgver=1.1.2+r8695.g9f5a3597f
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only; latest git revision)'
 url='http://arx-libertatis.org/'
@@ -15,8 +15,9 @@ optdepends=('arxfatalis-data-gog: game data from GOG.com installer'
             'arxfatalis-data-demo: game data from official freeware demo'
             'qt5-base: enable built-in crash handler (Qt5 version; recompile needed)'
             'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
-            'gdb: generate detailed crash reports')
-makedepends=('git' 'cmake' 'boost')
+            'gdb: generate detailed crash reports'
+            'blender: edit the game assets (see http://wiki.arx-libertatis.org/Blender)')
+makedepends=('git' 'cmake' 'boost' 'pacman')
 provides=('arx')
 replaces=('arx-git')
 conflicts=('arx' 'arx-git' 'arxlibertatis')
@@ -30,20 +31,24 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd $_gitname
-    _version=$(git describe --tags $(git rev-list --tags --max-count=1))
-    _commits=$(git log $_version..master --pretty=oneline | wc -l)
-    _rev=$(git log -1 --format="%h")
+    _version="$(git describe --tags $(git rev-list --tags --max-count=1))"
+    _version="${_version/-*/}"
+    _commits="$(git log $_version..master --pretty=oneline | wc -l)"
+    _rev="$(git log -1 --format="%h")"
     echo "$_version+r$_commits.g$_rev"
 }
 
 build() {
     cd $_gitname
     
+    _blender_version="$(pacman -Si blender | grep -Po 'Version\s+\:\s+(?:\d+\:)?\K\d+\.\d+')"
+    
     cmake . -DDATA_FILES=../$_data_gitname \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_INSTALL_LIBDIR=lib \
             -DCMAKE_INSTALL_LIBEXECDIR=lib/$_installname \
             -DINSTALL_DATADIR=share/$_installname \
+            -DINSTALL_BLENDER_PLUGINDIR="/usr/share/blender/$_blender_version/scripts/addons/$_installname" \
             -DWITH_SDL=2 \
             -DCMAKE_BUILD_TYPE=Release \
             -DUNITY_BUILD=ON
