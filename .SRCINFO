@@ -1,0 +1,15 @@
+pkgbase = r-cran-nlme
+	pkgdesc = Linear and nonlinear mixed effects models.
+	pkgver = 3.1_131
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/nlme/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	depends = r>=3.0.2
+	source = http://cran.r-project.org/src/contrib/nlme_3.1-131.tar.gz
+	md5sums = 0f1215ec4d4e3bca939282d122f4d1fa
+
+pkgname = r-cran-nlme
+
