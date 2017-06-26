@@ -5,8 +5,8 @@
 
 pkgbase=linux-userns
 _srcname=linux-4.11
-pkgver=4.11.5
-pkgrel=1
+pkgver=4.11.6
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -22,17 +22,23 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'ubuntu-unprivileged-overlayfs.patch')
+        'ubuntu-unprivileged-overlayfs.patch'
+        CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch
+        CVE-2017-1000364.mm-fix-new-crash-in-unmapped_area_topdown.patch
+        CVE-2017-1000364.fixup.allow-stack-to-grow-up-to-address-space-limit.patch)
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '1686ea3200069acd7869075a208ad6771c651b4f9d942b4a340fb8606c75fe13'
+            '00c0b804ccda18d6ed4a32ba0be049a80363aa2bc084733a22da03f435d992a4'
             'SKIP'
-            'c6cd82d752eafc62d383db71f8cc6ad34630d86b83677ae4e50b5993c6f6875a'
-            '15df5086374d77676177cf9f89a59d3ebf3542457df436913d0ce09f10f893f5'
+            'f330007da72867bb86556d1f8b84b8a4c8148a5ed5195ae25570a5da61428733'
+            '9dd9aa4a8ec613cc8261e40db897685d75e3d426219ed8d21fa3a6bc72a27a32'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa')
+            '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa'
+            'e1b6a237894fb9e7bf142eb97b5e53c2e46a15ff69ef11593007f254b9faa160'
+            'beede1721c92bae39049be5bcb30e4274406dc53c41436bf75bd44238ee8efe4'
+            'de9c4f81b51c497de930b365f63633a005e3b8bcfbb21be93fe0cbab84ed9f76')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -45,6 +51,11 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # security patches
+  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch"
+  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-fix-new-crash-in-unmapped_area_topdown.patch"
+  patch -p1 < "${srcdir}/CVE-2017-1000364.fixup.allow-stack-to-grow-up-to-address-space-limit.patch"
 
   # enable unprivileged overlayfs
   patch -p1 -i "${srcdir}/ubuntu-unprivileged-overlayfs.patch"
