@@ -4,8 +4,8 @@
 # Contributor: maoserr
 
 pkgname=iup
-pkgver=3.21
-pkgrel=2
+pkgver=3.22
+pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"
@@ -18,8 +18,8 @@ source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
 )
 
-md5sums=('146fa386c212892a5fe917c671056aeb'
-         '78ab12cd403409930dc00abfd2165685')
+md5sums=('26058d6ce10ba57a2494bd66640d74a3'
+         'fa83211e0e9a510e21602c86dbf02ff1')
 
 build() {
   cd "$pkgname"

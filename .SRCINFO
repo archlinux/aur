@@ -1,7 +1,7 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
-	pkgver = 3.21
-	pkgrel = 2
+	pkgver = 3.22
+	pkgrel = 1
 	url = http://www.tecgraf.puc-rio.br/iup/
 	arch = i686
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = iup
 	depends = webkitgtk
 	depends = openmotif
 	depends = libxpm
-	source = http://downloads.sourceforge.net/project/iup/3.21/Docs%20and%20Sources/iup-3.21_Sources.tar.gz
-	source = http://downloads.sourceforge.net/project/iup/3.21/Docs%20and%20Sources/iup-3.21_Docs.pdf
-	md5sums = 146fa386c212892a5fe917c671056aeb
-	md5sums = 78ab12cd403409930dc00abfd2165685
+	source = http://downloads.sourceforge.net/project/iup/3.22/Docs%20and%20Sources/iup-3.22_Sources.tar.gz
+	source = http://downloads.sourceforge.net/project/iup/3.22/Docs%20and%20Sources/iup-3.22_Docs.pdf
+	md5sums = 26058d6ce10ba57a2494bd66640d74a3
+	md5sums = fa83211e0e9a510e21602c86dbf02ff1
 
 pkgname = iup
 
