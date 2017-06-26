@@ -1,7 +1,7 @@
 # Maintainer: Charlie Li <vishwin AT vishwin POINT info>
 
 pkgname=cockroachdb
-_basever=1.0.1
+_basever=1.0.2
 pkgver=${_basever}
 pkgrel=1
 epoch=1
@@ -11,6 +11,7 @@ url="https://www.cockroachlabs.com/"
 license=('Apache')
 depends=('gcc-libs>=6.0')
 makedepends=('gcc>=6.0' 'git>=1.8' 'go' 'make' 'cmake' 'xz')
+options=('!buildflags')
 source=("git+https://github.com/cockroachdb/cockroach.git#tag=v${_basever}")
 sha256sums=('SKIP')
 
