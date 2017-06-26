@@ -9,7 +9,7 @@
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-beta-bin
-pkgver=1.18.0.beta0
+pkgver=1.19.0.beta1
 pkgver() {
   curl -sS https://github.com/atom/atom/releases.atom | grep -Eo 'v.*?beta([0-9]+)' | head -n 1 | sed -e 's/-/./' -e 's/v//'
 }
