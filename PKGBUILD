@@ -1,31 +1,35 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 
 pkgname=oragono
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
 license=('MIT')
-makedepends=('go' 'git' 'zip')
-source=("git+$url#commit=f051b43f2737f5ec6b0c97e27f5227f525015c41"
-        "oragono.service")
+install=install
+makedepends=('go' 'git')
+source=("git+$url#commit=325ed3e112f076aa0d717437a18ef331281db821"
+        "oragono.service"
+        "path.patch")
 sha256sums=('SKIP'
-            'f3a21d66d86d9e90bb080a10e05aef67c9541a6a3c4c4c2e1c963d374f83cb9e')
-backup=('opt/oragono/ircd.yaml')           
+            '131097e2803dee6f0b00de41b80fb790a44dd6c90bf1b1004078535150ff64cc'
+            '25a1c0f764283059e95088f3b9cb66fe6a0c95df0d9dc8375856f41097c04fb0')
+backup=('etc/oragono.conf')
 build() {
     cd ${srcdir}/$pkgname
+    patch -p0 < ../../path.patch
     export GOPATH=$(pwd)
     go get -v -d
-    sed -i "s/DanielOaks/oragono/g" oragono.go
-    ./build.sh
+    make linux
+    echo "Arch Linux AUR: $pkgver-$pkgrel" >> build/linux/oragono.motd
 }
 
 package() {
-    local _opt=/opt/oragono/
+    local _conf=/var/lib/oragono/
     install -Dm 644 oragono.service $pkgdir/usr/lib/systemd/system/oragono.service
     cd ${srcdir}/$pkgname/build/linux
-    install -Dm 755 oragono $pkgdir/$_opt/oragono
-    install -Dm 644 oragono.motd $pkgdir/$_opt/oragono.motd
-    install -Dm 644 oragono.yaml $pkgdir/$_opt/ircd.yaml
+    install -Dm 755 oragono $pkgdir/usr/bin/oragono
+    install -Dm 644 oragono.motd $pkgdir/$_conf/ircd.motd
+    install -Dm 644 oragono.yaml $pkgdir/etc/oragono.conf
 }

@@ -2,9 +2,8 @@
 Description=A modern IRC server written in Go
 
 [Service]
-WorkingDirectory=/opt/oragono
 Type=simple
-ExecStart=/opt/oragono/oragono run
+ExecStart=/usr/bin/oragono run --conf /etc/oragono.conf
 
 [Install]
 WantedBy=multi-user.target

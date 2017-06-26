@@ -1,0 +1,4 @@
+post_install() {
+    /usr/bin/oragono initdb --conf /etc/oragono.conf
+    cd /var/lib/oragono/ && /usr/bin/oragono mkcerts --conf /etc/oragono.conf
+}
