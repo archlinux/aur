@@ -7,8 +7,8 @@ pkgdesc="Wrapper for quandl-python"
 arch=('x86_64')
 url="https://github.com/quandl/quandl-python"
 license=('MIT')
-depends=('python>=3.6', 'python-numpy', 'python-more-itertools')
-makedepends=('git')
+depends=('python-numpy' 'python-more-itertools')
+makedepends=('python>=3.6' 'git')
 provides=('python-quandl')
 source=('python-quandl::git+https://github.com/quandl/quandl-python.git')
 

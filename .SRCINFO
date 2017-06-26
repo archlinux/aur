@@ -5,9 +5,9 @@ pkgbase = python-quandl
 	url = https://github.com/quandl/quandl-python
 	arch = x86_64
 	license = MIT
+	makedepends = python>=3.6
 	makedepends = git
-	depends = python>=3.6,
-	depends = python-numpy,
+	depends = python-numpy
 	depends = python-more-itertools
 	provides = python-quandl
 	source = python-quandl::git+https://github.com/quandl/quandl-python.git
