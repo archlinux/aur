@@ -24,11 +24,6 @@ prepare() {
   mkdir -p build
 
   cd qtwebkit-$_qtver
-# Fix build with ICU 59 (PLD linux)
-  patch -p1 -i ../qt5-webkit-icu59.patch
-# Fix build with GCC 7
-  patch -p1 -i ../qt5-webkit-ng-gcc7.patch
-  patch -p1 -i ../qt5-webkit-ng-functional.patch
   # aleray fixes (https://github.com/annulen/webkit/compare/qtwebkit-stable...aleray:ospkit2)
   patch -p1 -i ../qt5-webkit-pdf_scaling.patch
   patch -p1 -i ../qt5-webkit-solid_background_PDF.patch
