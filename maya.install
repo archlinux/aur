@@ -1,4 +1,4 @@
-post_install() {
+show_msg() {
     echo -e 'MAYA_LICENSE=unlimited\nMAYA_LICENSE_METHOD=standalone' > /usr/autodesk/maya2017/bin/License.env
 
     /opt/Autodesk/Adlm/FLEXnet/bin/install_fnp.sh /opt/Autodesk/Adlm/FLEXnet/bin/FNPLicensingService
@@ -33,4 +33,12 @@ $ maya2017
 EOF
 
     echo "$POSTINSTALLMGG"
+}
+
+post_install() {
+    show_msg
+}
+
+post_upgrade() {
+    show_msg
 }
