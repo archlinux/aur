@@ -1,12 +1,11 @@
 pkgbase = cutepeaks
 	pkgdesc = A simple viewer for Sanger sequencing files
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/labsquare/CutePeaks
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = karchive
 	depends = qt5-svg
 	depends = hicolor-icon-theme
 	source = https://github.com/labsquare/CutePeaks/archive/0.1.0.tar.gz

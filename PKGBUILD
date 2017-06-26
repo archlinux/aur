@@ -3,12 +3,12 @@
 pkgname=cutepeaks
 _up_pkgname=CutePeaks
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple viewer for Sanger sequencing files"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/labsquare/${_up_pkgname}"
-depends=('karchive' 'qt5-svg' 'hicolor-icon-theme')
+depends=('qt5-svg' 'hicolor-icon-theme')
 source=(https://github.com/labsquare/${_up_pkgname}/archive/${pkgver}.tar.gz)
 sha256sums=('87aa3e77a9bb2cb01fe3e4684c2d4b7bd753ec833330bb38a3aa1b727c2a71ba')
 
