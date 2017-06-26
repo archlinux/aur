@@ -19,7 +19,7 @@ url="https://github.com/google/ngx_brotli"
 license=('CUSTOM')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/google/$_modname/archive/$_modver/$_modname-$_modver.tar.gz
 	https://github.com/google/brotli/archive/$_brotliver/brotli-$_brotliver.tar.gz
 )
