@@ -14,7 +14,7 @@ url="https://github.com/sto/ngx_http_auth_pam_module"
 license=('BSD')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/sto/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz
 	$_modname-critlog.patch::https://patch-diff.githubusercontent.com/raw/sto/ngx_http_auth_pam_module/pull/11.patch
 )
