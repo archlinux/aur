@@ -1,7 +1,7 @@
 # Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=dotgit-git
 pkgver=26.06.2017
-pkgrel=1
+pkgrel=2
 pkgdesc="Development version of dotgit"
 url="http://github.com/Cube777/dotgit"
 arch=('any')
