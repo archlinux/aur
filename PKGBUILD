@@ -16,7 +16,7 @@ conflicts=(qt5-webkit)
 provides=(qt5-webkit)
 source=("https://github.com/annulen/webkit/releases/download/qtwebkit-$_qtver/qtwebkit-$_qtver.tar.xz"
         qt5-webkit-pdf_scaling.patch qt5-webkit-solid_background_PDF.patch)
-sha256sums=('f70fea4623a0f1df6ec535358f9c431d6ead9c04742a85258aaabcd0805d2719'
+sha256sums=('f8f901de567e11fc5659402b6b827eac75505ff9c5072d8e919aa306003f8f8a'
             '3118595e764bec08960518c07eb5c321d7195b23adc634ba7a50987aeec642b0'
             '339876e8dfdaabdc974d2b2f095d85691d339aef16abe97b472268dae462d0cf')
 
