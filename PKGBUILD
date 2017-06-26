@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.48.0
+pkgver=0.49.0
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
@@ -15,21 +15,22 @@ license=('BSD')
 provides=('flow')
 conflicts=('flow-bin')
 replaces=('flow-bin')
+_patches=(
+		'Makefile-no-flow-check.patch'
+)
 source=(
 		"https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
-		'Makefile-no-flow-check.patch'
-		'no-intmap.patch'
 )
+source+=( "${_patches[@]}" )
 sha256sums=(
-		'8772896075dc4028e62720fe18a6608f278f471931b2a8fff280d0efc0fd4f29'
+		'f682e87c95baba37f8303534a91b7518b9281299bc78fd4c568f893e4b7bd3c5'
 		'29e38d7412a920858945df56850bc227bd06d50965d620313912bf2fdeb3d045'
-		'badd6ed3d34b34a2ebe2b84599ceeece1d532516d08d534cd8d3b5c1e93438cd'
 )
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	for f in Makefile-no-flow-check.patch no-intmap.patch; do
-		msg "Applying patch ${f}"
+	for f in "${_patches[@]}"; do
+		msg2 "Applying patch ${f}"
 		patch -p0 <"${srcdir}/../${f}"
 	done
 }
@@ -37,7 +38,6 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	msg 'Building...'
 	make
 }
 
@@ -66,13 +66,13 @@ check() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	msg 'Installing license...'
+	msg2 'Installing license...'
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	msg 'Installing documentation...'
+	msg2 'Installing documentation...'
 	install -dm 755 "${pkgdir}/usr/share/doc/${pkgname}"
 	cp -dpr --no-preserve=ownership examples "${pkgdir}/usr/share/doc/${pkgname}"
 
-	msg 'Installing...'
+	msg2 'Installing...'
 	install -Dm 755 bin/flow "${pkgdir}/usr/bin/flow"
 }
