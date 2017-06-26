@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi-git
-pkgver=r190.2f7a9af
+pkgver=r213.b230c03
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -25,18 +25,17 @@ optdepends=('dnf: build Fedora images'
             'sbsigntools: sign EFI binaries for UEFI SecureBoot')
 provides=('mkosi')
 conflicts=('mkosi')
-source=("git://github.com/systemd/mkosi.git")
+source=('git://github.com/systemd/mkosi.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "mkosi"
+  cd 'mkosi'
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "mkosi"
+  cd 'mkosi'
 
   python setup.py install --root="$pkgdir"
 }
-
