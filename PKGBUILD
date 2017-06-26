@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv
-pkgver=0.8.7
+pkgver=0.9
 pkgrel=1
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
 arch=('any')
@@ -35,7 +35,7 @@ backup=(
   'etc/default/rtorrent@.conf'
 )
 source=("https://git.sleepmap.de/software/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e4b4724ac9a6c5cd77992be7c41b195c')
+md5sums=('10ded84d6ae5c296cebc52ee1a6c151c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
