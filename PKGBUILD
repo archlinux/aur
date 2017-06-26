@@ -14,7 +14,7 @@ url="https://github.com/openresty/lua-nginx-module"
 license=('BSD')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 	$pkgname-nginx-1.11.11.patch::https://github.com/openresty/lua-nginx-module/commit/0459a285ca0159d45e73da8bd1164edb5c57cde3.patch
 )
