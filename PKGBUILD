@@ -7,7 +7,7 @@ arch=('any')
 license=('GPL3')
 url="http://tvlinker.ozmartians.com"
 source=(https://github.com/ozmartian/${pkgname}/archive/${pkgver}.tar.gz)
-depends=('python-pyqt5' 'python-beautifulsoup4' 'python-lxml' 'python-requests' 'python-cfscrape')
+depends=('python-pyqt5' 'python-beautifulsoup4' 'python-lxml' 'python-requests' 'python-cfscrape' 'nodejs')
 makedepends=('python-setuptools')
 md5sums=('812e1d6b0e4057a6b6f5e80f90d4c044')
 

@@ -11,6 +11,7 @@ pkgbase = tvlinker
 	depends = python-lxml
 	depends = python-requests
 	depends = python-cfscrape
+	depends = nodejs
 	source = https://github.com/ozmartian/tvlinker/archive/4.0.0.tar.gz
 	md5sums = 812e1d6b0e4057a6b6f5e80f90d4c044
 
