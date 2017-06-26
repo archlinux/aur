@@ -15,7 +15,7 @@ url="https://github.com/SpiderLabs/ModSecurity-nginx"
 license=('GPL3')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	git+https://github.com/SpiderLabs/ModSecurity-nginx.git
 )
 
