@@ -12,9 +12,9 @@ md5sums=('SKIP')
 
 package()
 {
-	install -Dm 755 "$srcdir/$pkgname/bin/dotgit" "$pkgdir/usr/bin/dotgit"
-	install -Dm 555 -d "$srcdir/$pkgname/bin/dotgit_headers" \
+	install -Dm 755 "$srcdir/dotgit/bin/dotgit" "$pkgdir/usr/bin/dotgit"
+	install -Dm 555 -d "$srcdir/dotgit/bin/dotgit_headers" \
 		"$pkgdir/usr/bin/dotgit_headers"
-	install -Dm644 "$srcdir/$pkgname/bin/bash_completion" \
+	install -Dm644 "$srcdir/dotgit/bin/bash_completion" \
 		"$pkgdir/usr/share/bash-completion/completions/dotgit"
 }
