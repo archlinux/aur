@@ -1,0 +1,22 @@
+pkgbase = blackbird-git
+	pkgdesc = Bitcoin arbitrage with a long/short market-neutral strategy
+	pkgver = r346.8be66d8
+	pkgrel = 1
+	url = https://github.com/butor/blackbird
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = curl
+	makedepends = jansson
+	makedepends = openssl
+	makedepends = sqlite
+	depends = curl
+	depends = jansson
+	depends = openssl
+	depends = sqlite
+	optdepends = sendemail
+	source = https://github.com/butor/blackbird
+	sha256sums = SKIP
+
+pkgname = blackbird-git
+
