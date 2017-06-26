@@ -1,0 +1,10 @@
+#!/usr/bin/ash
+
+run_hook() {
+    if [ -z "${rotate_all}" ] || ! [ "${rotate_all}" -ge 0 -a "${rotate_all}" -le 3 ]; then
+        rotate_all=0
+    fi
+    echo "${rotate_all}" >/sys/class/graphics/fbcon/rotate_all || :
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

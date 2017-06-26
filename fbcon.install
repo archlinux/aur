@@ -1,0 +1,17 @@
+#!/bin/bash
+
+build() {
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook causes the init process to write a number to rotate all frame-buffer
+consoles by the specified amount: 0, none; 1, right; 2, invert; 3, left.  The
+default is none(0).  If a rotate_all= command line parameter is specified, the
+value of the parameter is used for the rotation.  This is because kernel-magic
+associated with this function does not work.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

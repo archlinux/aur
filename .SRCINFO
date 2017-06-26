@@ -1,0 +1,15 @@
+pkgbase = mkinitcpio-fbcon
+	pkgdesc = A hook to rotate the console at startup.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	arch = any
+	license = GPL
+	depends = bash
+	source = fbcon.hook
+	source = fbcon.install
+	md5sums = c03097e0e22d539b58476e67a8cea1d9
+	md5sums = 40d8ecd9880d72cd515c446be033f0fd
+
+pkgname = mkinitcpio-fbcon
+
