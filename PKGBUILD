@@ -14,7 +14,7 @@ url="https://www.nginx.com/resources/wiki/modules/redis/"
 license=('CUSTOM')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	http://people.freebsd.org/~osa/ngx_http_redis-$pkgver.tar.gz
 )
 
