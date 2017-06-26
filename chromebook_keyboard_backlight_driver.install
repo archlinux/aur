@@ -1,24 +1,32 @@
 
 _spit() {
-	local _zero="$(tput sgr0)"
-	local _bd=${_zero}"$(tput bold)"
-	local _bl="$(tput setaf 4)"
-	local _yl=${_bd}"$(tput setaf 3)"
-	if (( "$#" == 2 )); then
-		echo ${_bl}'=>'${_yl} "$1"':'${_bd} "$2"${_zero}
+	local _zero _bd _bl _yl
+	if command -v tput &> /dev/null; then
+		_zero="$(tput sgr0 2> /dev/null)"
+		_bd=${_zero}"$(tput bold)"
+		_bl="$(tput setaf 4)"
+		_yl=${_bd}"$(tput setaf 3)"
+	fi
+	if (( $# == 2 )); then
+		echo "$_bl=>$_yl $1:$_bd ${2}$_zero"
 	else
-		echo ${_bl}'=>'${_bd} "$1"${_zero}
+		echo "$_bl=>$_bd ${1}$_zero"
 	fi
 }
 
 post_install() {
-	local _confd='/etc/modules-load.d'
-	local _conf='chromebook_keyboard_backlight_driver.conf'
+	local _confd=/etc/modules-load.d
+	local _conf=chromebook_keyboard_backlight_driver.conf
+    local _multi=$pkgdir/multi-kernel.install
 	depmod -a
-	_spit 'note' "Added $_conf to ${_confd}."
+	_spit 'note' "Added $_conf to $_confd."
 	_spit "For 'backlight' variant, toggle commented lines where appropriate."
 	_spit "Or, delete file to prevent auto-loading entirely. Otherwise, reboot."
 	_spit "Afterwards, check dmesg, lsmod, or '/sys/class/leds' to verify."
+	if (( $(wc -l "$_multi" | awk '{print $1}') > 1 )); then
+		cp -v "$_multi" /tmp
+		_spit "To use on multiple kernels, run \`sudo bash /tmp/${_multi##*/}\`"
+	fi
 }
 
 post_upgrade() {
