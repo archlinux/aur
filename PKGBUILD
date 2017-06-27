@@ -4,8 +4,8 @@
 
 pkgname=libpoco-basic
 pkgver=1.7.8
-_subrel=p2
-pkgrel=1
+_subrel=p3
+pkgrel=2
 pkgdesc="C++ class libraries for network-centric, portable applications, basic edition"
 arch=('i686' 'x86_64')
 url="http://www.pocoproject.org"
@@ -17,21 +17,21 @@ source=(
 	${url}/releases/poco-${pkgver}/poco-${pkgver}${_subrel}.tar.gz
 #	RegularExpression.h.patch
 )
-sha256sums=('8609931f419bbf79b42bd67bda99b341f7753cd26ff3d9a612d04e8e4c969c01')
+sha256sums=('40743cf18fadea6992e0ad7f668a75d46f08364a7f3ff748420fa080bbaaa3d1')
 prepare() {
 	# apply patch for static build
-	cd poco-$pkgver
+	cd poco-${pkgver}${_subrel}
 #	patch Foundation/include/Poco/RegularExpression.h < ../RegularExpression.h.patch
 }
 
 build() {
-	cd poco-${pkgver}
+	cd poco-${pkgver}${_subrel}
 	./configure --prefix=/usr --no-samples --no-tests --unbundled --static --shared
 	make
 }
 
 package() {
-	cd poco-${pkgver}
+	cd poco-${pkgver}${_subrel}
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	# remove debug libraries
