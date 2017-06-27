@@ -8,7 +8,7 @@ _major=6
 _minor=45
 _build=b06
 pkgver=${_major}u${_minor}
-pkgrel=5
+pkgrel=6
 pkgdesc="Oracle Java $_major Development Kit (public release - end of support)"
 arch=('i686' 'x86_64')
 url=https://www.java.com/en/download/faq/java_6.xml
@@ -46,7 +46,10 @@ provides=(
 )
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
+DLAGENTS=(
+	'http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u'
+	'https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
+)
 if [[ $CARCH = x86_64 ]]; then
 _arch=x64
 _arch2=amd64
