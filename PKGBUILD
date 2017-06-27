@@ -5,7 +5,7 @@ _pkgmaintainer=jorgenschaefer
 _pkgdestdirname=elpy
 _versionprefix=
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs Python Development Environment"
 pkgname=emacs-${_pkgdestdirname}
 arch=(any)
@@ -23,6 +23,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
+  mkdir -p "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/snippets/python-mode"
   install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/"
+  install -m644 snippets/python-mode/* "${pkgdir}/usr/share/emacs/site-lisp/${_pkgdestdirname}/snippets/python-mode"
 }
