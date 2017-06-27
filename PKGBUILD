@@ -3,9 +3,9 @@
 
 _pkgname=freetype2
 pkgname=${_pkgname}-v35
-pkgver=2.7.1
-pkgrel=2
-pkgdesc="TrueType font rendering library with v35 bytecode interpreter only"
+pkgver=2.8
+pkgrel=1
+pkgdesc="Font rasterization library with v35 bytecode interpreter only"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.freetype.org/"
@@ -16,23 +16,21 @@ provides=('libfreetype.so' 'freetype2')
 conflicts=('freetype2')
 install=freetype2.install
 backup=('etc/profile.d/freetype2.sh')
-source=(https://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
-        https://download.savannah.gnu.org/releases/freetype/freetype-doc-${pkgver}.tar.bz2{,.sig}
+source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
+        https://download-mirror.savannah.gnu.org/releases/freetype/freetype-doc-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
         0003-Enable-v35-subpixel-hinting.patch
-        CVE-2017-8105.patch
-        CVE-2017-8287.patch
+        0004-Enable-long-PCF-family-names.patch
         freetype2.sh)
-sha1sums=('4d08a9a6567c6332d58e9a5f9a7e9e3fbce66789'
+sha1sums=('42c6b1f733fe13a3eba135f5025b22cb68450f91'
           'SKIP'
-          'd8ce472cd775b8ce50d127689acab59181e72ecf'
+          '5b221ee14fe674cd5f6db0193d55360bc0bd3655'
           'SKIP'
-          'b31882ef5e8447e761acee1c4a44c0630cd4d465'
-          'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
+          'c3e91e668936206d3c158bffde0f69788a086a5b'
+          '4ff958229a7f87e04a9894d5a6ed2df227071931'
           '5237bd234d7bb359dadb28e804115f07bbbdfb13'
-          '9ff76b0d0a079872279a62300af7806b15b6a51a'
-          '049ed3cb4471596396660896a8ccd95288001d8f'
+          '334f229875039794adeb574e27d365bb445fb314'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -44,9 +42,7 @@ prepare() {
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-v35-subpixel-hinting.patch
-
-  patch -Np1 -i ../CVE-2017-8105.patch
-  patch -Np1 -i ../CVE-2017-8287.patch
+  patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
 }
 
 build() {
@@ -66,6 +62,8 @@ package() {
   install -Dm644 ../freetype2.sh "${pkgdir}/etc/profile.d/freetype2.sh"
 
   # Package docs
-  install -dm755 "${pkgdir}/usr/share/doc"
-  cp -a docs "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -d "${pkgdir}/usr/share/doc"
+  cp -a docs "${pkgdir}/usr/share/doc/freetype2"
 }
+
+# vim:set ts=2 sw=2 et:

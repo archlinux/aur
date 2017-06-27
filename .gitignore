@@ -2,5 +2,5 @@
 /pkg/
 *.bz2
 *.sig
-*.pkg.tar.xz
+*.pkg.tar*
 

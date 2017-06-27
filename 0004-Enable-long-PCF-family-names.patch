@@ -1,22 +1,22 @@
-From a8f7f3068a8a5f94adfc77f4ddf03bf08da38f9b Mon Sep 17 00:00:00 2001
+From 62da6a0f7f5cb77859a793863c386c452411e2a6 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
-Date: Tue, 23 Jun 2015 08:43:07 +0200
-Subject: [PATCH 2/4] Enable subpixel rendering
+Date: Sun, 14 May 2017 18:09:31 +0200
+Subject: [PATCH 4/4] Enable long PCF family names
 
 ---
  include/freetype/config/ftoption.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 1bf6e8f534ff0734..1126716626b570df 100644
+index ebb44acdbbef9a47..0b39b417162707e4 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -122,7 +122,7 @@ FT_BEGIN_HEADER
-   /* This is done to allow FreeType clients to run unmodified, forcing     */
-   /* them to display normal gray-level anti-aliased glyphs.                */
+@@ -865,7 +865,7 @@ FT_BEGIN_HEADER
+   /* If this option is activated, it can be controlled with the            */
+   /* `no-long-family-names' property of the pcf driver module.             */
    /*                                                                       */
--/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
-+#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+-/* #define PCF_CONFIG_OPTION_LONG_FAMILY_NAMES */
++#define PCF_CONFIG_OPTION_LONG_FAMILY_NAMES
  
  
    /*************************************************************************/
