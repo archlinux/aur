@@ -1,16 +1,14 @@
 pkgname=digikam-git
-pkgver=r35552.3da1520f9c
+pkgver=r36468.5efd13702a
 pkgrel=1
 pkgdesc='Digital photo management application for KDE'
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-depends=('libkipi-git' 'knotifyconfig' 'kfilemetadata' 'libgphoto2' 'liblqr' 'lensfun' \
-	 'qt5-multimedia' 'akonadi-contacts' 'libksane-git' 'threadweaver' 'kcalcore')
-makedepends=('git' 'extra-cmake-modules-git' 'eigen' 'doxygen' 'boost' 'mariadb' 'kdoctools' 'qtav')
-optdepends=('kipi-plugins: more tools and plugins'
-	    'hugin: panorama tool'
-            'qtav: Media Player support')
+depends=('marble-common' 'libksane-git' 'liblqr' 'libkipi-git' 'kcalcore' 'qtav' 'lensfun' 'knotifyconfig' 'akonadi-contacts' 'kfilemetadata' 'opencv' 'threadweaver')
+makedepends=('git' 'extra-cmake-modules-git' 'eigen' 'doxygen' 'boost' 'mariadb' 'kdoctools')
+optdepends=('kipi-plugins-git: more tools and plugins'
+	    'hugin: panorama tool')
 conflicts=('digikam')
 provides=('digikam')
 install=digikam-git.install
@@ -39,8 +37,7 @@ build() {
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 		-DBUILD_TESTING=OFF -DENABLE_AKONADICONTACTSUPPORT=ON -DENABLE_KFILEMETADATASUPPORT=ON \
 		-DENABLE_MYSQLSUPPORT=ON -DENABLE_INTERNALMYSQL=ON -DENABLE_MEDIAPLAYER=ON \
-		-DENABLE_OPENCV3=ON -DENABLE_APPSTYLES=ON \
-		-DQTAV_CORE_INCLUDE_DIR:PATH="/usr/include/qt/" -DQTAV_WIDGETS_INCLUDE_DIR:PATH="/usr/include/qt/"
+		-DENABLE_OPENCV3=ON -DENABLE_APPSTYLES=ON
   make
 }
 
