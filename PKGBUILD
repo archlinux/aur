@@ -1,7 +1,7 @@
-# Maintainer: Alif Rachmawadi <code@subosito.com>
+# Maintainer: Alif Rachmawadi <arch@subosito.com>
 
 pkgname=wavebox-bin
-pkgver=3.1.8
+pkgver=3.1.12
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=('x86_64' 'i686')
@@ -18,8 +18,8 @@ source_x86_64=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_
 source_i686=("${_repourl}/releases/download/v${pkgver}/Wavebox_${pkgver//./_}_linux_ia32.tar.gz")
 
 sha512sums=('a6a55a0b0597eea63e2869ab27e3ddab802b020c89059b0b32399b63e64f0271e4685e363448da71c6ba90c810b83542cd0c9f40e2ce49057a8e33c54b82663b')
-sha512sums_x86_64=('5c950c81699b9213e2d3e9118b5267fc8e5fd4c8883d66cd2266d9c897e36f9b77be4c3929a80a2ab7850534308af44c742771109c35005c70895654384f30f7')
-sha512sums_i686=('793906862d5ef12f43eeddc66b44b2c9f4c448cbbc974bd2ee523d5fe8c30a6de370cba2241f09a13dd6d3e84e10fa6190077df4c7b3bed08e2043aa57a9003e')
+sha512sums_x86_64=('e26e966faefc551964d43b9cc75e12c13a2aadb676bc0b95eea26d6fdacbe726e76f627ffa0530e0d5d5541d23b584b7e3586e18adaa91e37d75ae59a16ee584')
+sha512sums_i686=('3e733ff6ec58921c9a3de9151a4e39be8662b527408f0003a11cfa32ff2af431606a8f929e43db13bf44feeaea960cda9a29836738a7c297b0fbc535077bfd6c')
 
 package() {
   if [ ${CARCH} == "x86_64" ]; then
