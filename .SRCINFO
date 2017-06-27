@@ -1,26 +1,17 @@
 pkgbase = python-wstool
 	pkgdesc = workspace multi-SCM commands
 	pkgver = 0.1.13
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ros.org/wstool
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/w/wstool/wstool-0.1.13.tar.gz
-	md5sums = 7e41a0e4f92389a6b4e115c80dd5cf10
-
-pkgname = python-wstool
-	depends = 
 	depends = python
 	depends = python-vcstools
 	depends = python-yaml
 	conflicts = python2-wstool
+	source = https://files.pythonhosted.org/packages/source/w/wstool/wstool-0.1.13.tar.gz
+	md5sums = 7e41a0e4f92389a6b4e115c80dd5cf10
 
-pkgname = python2-wstool
-	depends = 
-	depends = python2
-	depends = python2-vcstools
-	depends = python2-yaml
-	conflicts = python-wstool
+pkgname = python-wstool
 
