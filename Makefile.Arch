@@ -3,6 +3,7 @@
 
 export CXX= g++-6.3
 export GCJ= gcj-6.3
+export GIJ= gij-6.3
 export GCJH= gcjh-6.3
 export GJAR= gjar-6.3
 export CC1PLUS= cc1plus-6.3

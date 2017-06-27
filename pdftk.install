@@ -1,0 +1,10 @@
+post_install() {
+    echo "The pdftk binary needs LD_LIBRARY_PATH=/lib/gcc/x86_64-pc-linux-gnu/6.3.1"
+    echo "You thus need to relogin in order for pdftk to work properly"
+}
+
+post_upgrade() {
+  if [ $(vercmp $2 2.02-13) -lt 0 ]; then
+    post_install
+  fi
+}
