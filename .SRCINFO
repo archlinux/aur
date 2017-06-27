@@ -1,7 +1,7 @@
 pkgbase = mp3blaster
 	pkgdesc = A console based mp3 and OGG player
-	pkgver = 3.2.5
-	pkgrel = 4
+	pkgver = 3.2.6
+	pkgrel = 1
 	url = http://mp3blaster.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,8 @@ pkgbase = mp3blaster
 	depends = libvorbis
 	depends = sdl
 	depends = libsidplay
-	source = https://downloads.sourceforge.net/mp3blaster/mp3blaster-3.2.5.tar.gz
-	source = mp3blaster-gcc43.patch
-	sha256sums = 129115742c77362cc3508eb7782702cfb44af2463a5453e8d19ea68abccedc29
-	sha256sums = 31a25e544874fc93851dfcae3f3c8e96856c304877d00807401ea0ffbfdb20af
+	source = mp3blaster-3.2.6.tar.gz::https://github.com/stragulus/mp3blaster/archive/v3.2.6.tar.gz
+	sha256sums = 2b8902a220fee43ee76bd55d5a7f7fd51a3faf8db721a3402b442f1b6e1ef518
 
 pkgname = mp3blaster
 

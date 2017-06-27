@@ -5,23 +5,15 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=mp3blaster
-pkgver=3.2.5
-pkgrel=4
+pkgver=3.2.6
+pkgrel=1
 pkgdesc="A console based mp3 and OGG player"
 arch=('i686' 'x86_64')
 url="http://mp3blaster.sourceforge.net"
 license=('GPL')
 depends=('ncurses' 'libvorbis' 'sdl' 'libsidplay')
-source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-        'mp3blaster-gcc43.patch')
-sha256sums=('129115742c77362cc3508eb7782702cfb44af2463a5453e8d19ea68abccedc29'
-            '31a25e544874fc93851dfcae3f3c8e96856c304877d00807401ea0ffbfdb20af')
-
-prepare() {
-  cd $pkgname-$pkgver
-
-  patch -p0 -i ../mp3blaster-gcc43.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/stragulus/mp3blaster/archive/v$pkgver.tar.gz")
+sha256sums=('2b8902a220fee43ee76bd55d5a7f7fd51a3faf8db721a3402b442f1b6e1ef518')
 
 build() {
   cd $pkgname-$pkgver
