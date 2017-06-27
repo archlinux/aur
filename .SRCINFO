@@ -1,0 +1,17 @@
+pkgbase = pablodraw
+	pkgdesc = An ANSI/ASCII art editor and viewer with multi-user capabilities
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://picoe.ca/products/pablodraw/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = mono
+	depends = gtk-sharp-2
+	source = http://download.picoe.ca/pablodraw/3.2/PabloDraw-3.2.1.zip
+	source = pablodraw.sh
+	sha256sums = 8fc4a6787062b52bfba481d689d7410788b60bab4efeeabc0b94b3e47cc82f02
+	sha256sums = f07cfccdce30e64b87ae06f90674ab5aa46943ef5790c1f0f2c004a2692e4553
+
+pkgname = pablodraw
+
