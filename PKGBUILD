@@ -1,7 +1,7 @@
 # Contributor: Hugo Ideler <hugo at hugoideler dot com>
 pkgname=jaxx
 pkgver=1.2.13
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Multi-chain cryptocurrency wallet"
 arch=('x86_64')

@@ -1,7 +1,7 @@
 pkgbase = jaxx
 	pkgdesc = Multi-chain cryptocurrency wallet
 	pkgver = 1.2.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jaxx.io/
 	arch = x86_64
 	license = unknown
