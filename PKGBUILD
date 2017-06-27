@@ -1,14 +1,14 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-uasf-git
-pkgver=v0.14.1.uasfsegwit0.3.r0.g1809845d9
+pkgver=v0.14.2.uasfsegwit0.3.r6.g5c1fdcbc1
 pkgrel=1
 pkgdesc='EXPERIMENTAL! Signal support for BIP148, a User Activated Soft Fork (UASF) activating segwit'
 arch=('i686' 'x86_64')
 url="https://github.com/UASF/bitcoin"
 license=('MIT')
 depends=('boost-libs' 'desktop-file-utils' 'libevent' 'protobuf' 'qrencode' 'qt5-base' 'zeromq')
-makedepends=('git' 'boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf' 'zeromq')
+makedepends=('git' 'boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf' 'zeromq' 'python')
 optdepends=('db4.8: Wallet portability/compatibility w/official binaries')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
