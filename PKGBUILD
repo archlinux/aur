@@ -4,10 +4,12 @@ pkgbase=('python-catkin_pkg')
 pkgname=('python-catkin_pkg')
 _module='catkin_pkg'
 pkgver='0.3.5'
-pkgrel=1
+pkgrel=2
 pkgdesc="catkin package library"
 url="http://wiki.ros.org/catkin_pkg"
-depends=()
+depends=('python' 'python-argparse' 'python-dateutil' 'python-docutils')
+provides=('python-catkin-pkg')
+conflicts=('python2-catkin_pkg' 'python-catkin-pkg')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
@@ -19,10 +21,7 @@ build() {
     python setup.py build
 }
 
-package_python-catkin_pkg() {
-    depends+=('python' 'python-argparse' 'python-dateutil' 'python-docutils')
-    provides=('python-catkin-pkg')
-    conflicts=('python2-catkin_pkg' 'python-catkin-pkg')
+package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
