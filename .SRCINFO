@@ -1,17 +1,11 @@
 pkgbase = python-rosinstall
 	pkgdesc = The installer for ROS
 	pkgver = 0.7.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ros.org/rosinstall
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/r/rosinstall/rosinstall-0.7.8.tar.gz
-	md5sums = b52ea80b199efdb94e35229eb427965f
-
-pkgname = python-rosinstall
-	depends = 
 	depends = python
 	depends = python-catkin_pkg
 	depends = python-rosdistro
@@ -19,14 +13,8 @@ pkgname = python-rosinstall
 	depends = python-wstool
 	depends = python-yaml
 	conflicts = python2-rosinstall
+	source = https://files.pythonhosted.org/packages/source/r/rosinstall/rosinstall-0.7.8.tar.gz
+	md5sums = b52ea80b199efdb94e35229eb427965f
 
-pkgname = python2-rosinstall
-	depends = 
-	depends = python2
-	depends = python2-catkin_pkg
-	depends = python2-rosdistro
-	depends = python2-vcstools
-	depends = python2-wstool
-	depends = python2-yaml
-	conflicts = python-rosinstall
+pkgname = python-rosinstall
 
