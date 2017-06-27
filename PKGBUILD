@@ -8,17 +8,15 @@
 
 pkgname=stumpwm
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
 license=('GPL2')
 provides=('stumpwm')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v1.0.0.tar.gz"
-       https://github.com/stumpwm/stumpwm-contrib.git)
-md5sums=('40b3def66afc2aacff818936e06ce74c'
-         'c4e10706feee5799fb97f6531db3592a')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v1.0.0.tar.gz")
+md5sums=('40b3def66afc2aacff818936e06ce74c')
 
 makedepends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre')
 optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
