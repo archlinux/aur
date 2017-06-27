@@ -12,25 +12,25 @@ source=("git+https://bitbucket.org/plas/thonny.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$srcdir/thonny"
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
     cd "$srcdir"
 
-    install -Dm 755 "$pkgname/packaging/linux/thonny" "$pkgdir/usr/bin/thonny"
+    install -Dm 755 "thonny/packaging/linux/thonny" "$pkgdir/usr/bin/thonny"
 
-    sed -i 's|$target_dir|/usr|' "$pkgname/packaging/linux/Thonny.desktop"
-    install -Dm 644 "$pkgname/packaging/linux/Thonny.desktop" \
+    sed -i 's|$target_dir|/usr|' "thonny/packaging/linux/Thonny.desktop"
+    install -Dm 644 "thonny/packaging/linux/Thonny.desktop" \
             "$pkgdir/usr/share/applications/thonny.desktop"
 
-    install -Dm 644 "$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 "thonny/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install.py currently does not allow for setting root for creating a package
     # Files must by copied manually for now in section below.
     install -d  644 "$pkgdir/usr/lib/python3.6/site-packages/thonny"
-    cp -dr --no-preserve=ownership "$pkgname/thonny" \
+    cp -dr --no-preserve=ownership "thonny/thonny" \
             "$pkgdir/usr/lib/python3.6/site-packages"
 
     pip3 install --install-option="--prefix=$pkgdir/usr" --force distro tkinterhtml
