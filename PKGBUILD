@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="zfs-utils-linux-git"
-pkgver=0.7.0_rc4_r67_g7e35ea783_4.11.6_3
+pkgver=0.7.0_rc4_r71_g82710e993_4.11.6_3
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-git" "linux=4.11.6-3")
