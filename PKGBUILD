@@ -2,59 +2,59 @@
 
 pkgname=raine-artwork
 pkgver=20050917
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional background graphics for roms in the Raine emulator"
 arch=('any')
-url="http://rainemu.swishparty.co.uk/html/download/extras.html"
+url="http://raine.1emulation.com/download/extras.html"
 license=('unknown')
 depends=('raine')
-source=("http://rainemu.swishparty.co.uk/html/archive/artwork/1941.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/19xx.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/arbalest.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/arkanoid.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/arknoid2.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/batrider.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/bjtwin.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/block.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/darius2.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/ddonpach.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/dfeveron.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/dkong.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/dogyuun.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/donpachi.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/downtown.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/driftout.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/extrmatn.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/fireshrk.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/frogger.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/ghoulsu.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/gunbird.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/majest12.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/matmania.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/mercs.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/msh.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/mspacman.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/msword.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/ninjaw.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/outzone.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/pacman.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/pacplus.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/pengo.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/puckman.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/s1945.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/sf2ce.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/slammast.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/ssi.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/superman.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/tdragon.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/terracre.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/thunderl.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/tknight.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/tndrcade.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/varth.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/vimana.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/warriorb.zip"
-        "http://rainemu.swishparty.co.uk/html/archive/artwork/xmcota.zip")
+source=("http://raine.1emulation.com/archive/artwork/1941.zip"
+        "http://raine.1emulation.com/archive/artwork/19xx.zip"
+        "http://raine.1emulation.com/archive/artwork/arbalest.zip"
+        "http://raine.1emulation.com/archive/artwork/arkanoid.zip"
+        "http://raine.1emulation.com/archive/artwork/arknoid2.zip"
+        "http://raine.1emulation.com/archive/artwork/batrider.zip"
+        "http://raine.1emulation.com/archive/artwork/bjtwin.zip"
+        "http://raine.1emulation.com/archive/artwork/block.zip"
+        "http://raine.1emulation.com/archive/artwork/darius2.zip"
+        "http://raine.1emulation.com/archive/artwork/ddonpach.zip"
+        "http://raine.1emulation.com/archive/artwork/dfeveron.zip"
+        "http://raine.1emulation.com/archive/artwork/dkong.zip"
+        "http://raine.1emulation.com/archive/artwork/dogyuun.zip"
+        "http://raine.1emulation.com/archive/artwork/donpachi.zip"
+        "http://raine.1emulation.com/archive/artwork/downtown.zip"
+        "http://raine.1emulation.com/archive/artwork/driftout.zip"
+        "http://raine.1emulation.com/archive/artwork/extrmatn.zip"
+        "http://raine.1emulation.com/archive/artwork/fireshrk.zip"
+        "http://raine.1emulation.com/archive/artwork/frogger.zip"
+        "http://raine.1emulation.com/archive/artwork/ghoulsu.zip"
+        "http://raine.1emulation.com/archive/artwork/gunbird.zip"
+        "http://raine.1emulation.com/archive/artwork/majest12.zip"
+        "http://raine.1emulation.com/archive/artwork/matmania.zip"
+        "http://raine.1emulation.com/archive/artwork/mercs.zip"
+        "http://raine.1emulation.com/archive/artwork/msh.zip"
+        "http://raine.1emulation.com/archive/artwork/mspacman.zip"
+        "http://raine.1emulation.com/archive/artwork/msword.zip"
+        "http://raine.1emulation.com/archive/artwork/ninjaw.zip"
+        "http://raine.1emulation.com/archive/artwork/outzone.zip"
+        "http://raine.1emulation.com/archive/artwork/pacman.zip"
+        "http://raine.1emulation.com/archive/artwork/pacplus.zip"
+        "http://raine.1emulation.com/archive/artwork/pengo.zip"
+        "http://raine.1emulation.com/archive/artwork/puckman.zip"
+        "http://raine.1emulation.com/archive/artwork/s1945.zip"
+        "http://raine.1emulation.com/archive/artwork/sf2ce.zip"
+        "http://raine.1emulation.com/archive/artwork/slammast.zip"
+        "http://raine.1emulation.com/archive/artwork/ssi.zip"
+        "http://raine.1emulation.com/archive/artwork/superman.zip"
+        "http://raine.1emulation.com/archive/artwork/tdragon.zip"
+        "http://raine.1emulation.com/archive/artwork/terracre.zip"
+        "http://raine.1emulation.com/archive/artwork/thunderl.zip"
+        "http://raine.1emulation.com/archive/artwork/tknight.zip"
+        "http://raine.1emulation.com/archive/artwork/tndrcade.zip"
+        "http://raine.1emulation.com/archive/artwork/varth.zip"
+        "http://raine.1emulation.com/archive/artwork/vimana.zip"
+        "http://raine.1emulation.com/archive/artwork/warriorb.zip"
+        "http://raine.1emulation.com/archive/artwork/xmcota.zip")
 sha256sums=('c6e43c3f2db9d6e984ef8d9e82fc8d3e6bca75b0927c3d0db8d29cb2198f5ae9'
             'c818128f3c173f4ed74e2541c825cb6ba9fea14b40730b74fe3d45e90a2ce8d3'
             '6329da91dfceeeaf69ccd7565b635ec06c60352a5b3f14ee2385c0014eb1481e'
@@ -110,7 +110,8 @@ noextract=(1941.zip 19xx.zip arbalest.zip arkanoid.zip arknoid2.zip batrider.zip
            pacplus.zip pengo.zip puckman.zip s1945.zip sf2ce.zip slammast.zip ssi.zip
            superman.zip tdragon.zip terracre.zip thunderl.zip tknight.zip tndrcade.zip
            varth.zip vimana.zip warriorb.zip xmcota.zip)
-DLAGENTS='http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --referer $url -o %o %u'
+# The page blocks downloads without referer
+DLAGENTS="http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --referer $url -o %o %u"
 
 package() {
   install -d "$pkgdir"/usr/share/raine/artwork
