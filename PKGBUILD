@@ -3,27 +3,26 @@
 # Contributor: HabarNam <habarnam@gmail.com>
 
 pkgname=orion
-pkgver=1.5.1rc
-_dversion=1.5.1-rc
-pkgrel=3
+pkgver=1.6.0_beta
+pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'i686')
 url="https://github.com/alamminsalo/orion/"
 license=('GPL')
-depends=('qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'gst-libav')
+depends=('qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols2' 'gst-libav')
 provides=("${pkgname}")
 conflicts=("$pkgname-git")
-source=("https://github.com/alamminsalo/orion/archive/${_dversion}.tar.gz")
-sha256sums=('8c4e311b6667ca76b121655bf6f9891adc70b9344d3d1bce7adf1664adadc30f')
+source=("https://github.com/alamminsalo/orion/archive/v${pkgver//_/\-}.tar.gz")
+sha256sums=('d7ad6670285ca75c53fe899215f0f847e0cda86b7b32a55cdaa3470a750fa77f')
 
 build() {
-	cd "$srcdir/${pkgname}-${_dversion}"
+	cd $srcdir/${pkgname}-${pkgver//_/\-}
 	qmake CONFIG+=multimedia
 	make
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${_dversion}"
+    cd $srcdir/${pkgname}-${pkgver//_/\-}
     
     sed -e "s|Icon=/usr/local/share/icons/orion.svg|Icon=orion|" -i distfiles/Orion.desktop
 
