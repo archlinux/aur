@@ -1,6 +1,6 @@
 pkgbase = gdevelop
 	pkgdesc = A full featured, open source game development software, allowing to create HTML5 and native games without knowing a programming language. All the game logic is made thanks to an intuitive and powerful event based system.
-	pkgver = 4.0.95
+	pkgver = 4.0.94
 	pkgrel = 1
 	url = http://www.compilgames.net
 	install = gdevelop.install
@@ -23,8 +23,8 @@ pkgbase = gdevelop
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	provides = gdevelop
-	source = https://github.com/4ian/GD/archive/4.0.95.tar.gz
-	md5sums = b5f10fe989a2e1969449fde683428e80
+	source = https://github.com/4ian/GD/archive/4.0.94.tar.gz
+	md5sums = 0f5319dc324dbd4454dac1d735963280
 
 pkgname = gdevelop
 

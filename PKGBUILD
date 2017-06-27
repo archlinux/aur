@@ -1,7 +1,7 @@
 # Maintainer: JKA Network <contacto@jkanetwork.com>
 # Before maintainer: Todor Imreorov for github <blurymind@gmail.com>
 pkgname=gdevelop
-pkgver=4.0.95
+pkgver=4.0.94
 pkgrel=1
 pkgdesc="A full featured, open source game development software, allowing to create HTML5 and native games without knowing a programming language. All the game logic is made thanks to an intuitive and powerful event based system."
 arch=('x86_64')
@@ -13,9 +13,9 @@ install='gdevelop.install'
 makedepends=('rsync' 'cmake' 'git' 'curl')
 depends=('gcc' 'wxgtk' 'openal' 'p7zip' 'glew' 'libsndfile' 'systemd' 'libjpeg-turbo' 'desktop-file-utils' 'gtk-update-icon-cache')
 source=("https://github.com/4ian/GD/archive/$pkgver.tar.gz")
-md5sums=('b5f10fe989a2e1969449fde683428e80')
+md5sums=('0f5319dc324dbd4454dac1d735963280')
 build() {
-  cd "$srcdir"/GD
+  cd "$srcdir"/GD-$pkgver
   cd Binaries
   rm -rf build
   mkdir build
@@ -25,7 +25,7 @@ build() {
   make -j4
 }
 package() {
-  cd "$srcdir"/GD
+  cd "$srcdir"/GD-$pkgver
   cd Binaries/build
   make install DESTDIR="$pkgdir"
   #Remove sfml installed libs
