@@ -8,7 +8,7 @@ pkgbase = python2-msrplib
 	depends = python2-application>=1.5.0
 	depends = python2-gnutls
 	depends = python2-zope-interface
-	depends = twisted
+	depends = python2-twisted
 	source = http://download.ag-projects.com/MSRP/python-msrplib-0.19.0.tar.gz
 	md5sums = 41ace0d9dc4454f652ae826073450ebe
 
