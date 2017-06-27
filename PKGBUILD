@@ -2,7 +2,7 @@
 
 pkgname=switchboard-plug-desktop
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Switchboard Desktop Plug'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/switchboard-plug-pantheon-shell'
@@ -15,7 +15,7 @@ source=("switchboard-plug-desktop-${pkgver}.tar.gz::https://github.com/elementar
 sha256sums=('857b7996573ede801b297c2dc6beb3b86b37e985a90f151475ea1683259ff5c4')
 
 prepare() {
-  cd switchboard-plug-pantheon-shell-switchboard-plug-pantheon-shell-${pkgver}
+  cd switchboard-plug-pantheon-shell-${pkgver}
 
   if [[ -d build ]]; then
     rm -rf build
@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd switchboard-plug-pantheon-shell-switchboard-plug-pantheon-shell-${pkgver}/build
+  cd switchboard-plug-pantheon-shell-${pkgver}/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  cd switchboard-plug-pantheon-shell-switchboard-plug-pantheon-shell-${pkgver}/build
+  cd switchboard-plug-pantheon-shell-${pkgver}/build
 
   make DESTDIR="${pkgdir}" install
 }
