@@ -15,7 +15,7 @@ makedepends=(unzip zip diffutils python2 yasm mesa gconf inetutils xorg-server-x
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         "fix-wifi-scanner.diff")
-sha256sums=('1e76675e06cea21379c454a862754c4133f293aac08eca30e0dbd4fc993132a1'
+sha256sums=('7ee4ef2ce237a38b29ddae7c44201b8ba26f06a08e62376fe30b10d01848a317'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 options=(!emptydirs !makeflags !strip)
 
