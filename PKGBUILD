@@ -2,10 +2,10 @@
 _pkgname='hamster-gtk'
 pkgname='python-hamster-gtk'
 pkgver='0.11.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="[In heavy development] A GTK interface to the hamster time tracker."
 url="https://github.com/projecthamster/hamster-gtk"
-depends=('gtk3' 'python' 'python-gobject' 'python-hamster-lib')
+depends=('gtk3' 'python' 'python-gobject' 'python-hamster-lib<0.13')
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
