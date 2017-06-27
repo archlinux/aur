@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=61.0.3128.3
+pkgver=61.0.3135.4
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -38,7 +38,6 @@ depends=(
          'xdg-utils'
          'libcups'
          'harfbuzz-icu'
-         'opus'
 #          'protobuf'
 #          'libevent'
          'ffmpeg'
@@ -78,12 +77,13 @@ optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
             )
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
-        "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
+        "git+https://github.com/foutrelis/chromium-launcher.git#tag=v${_launcher_ver}"
+        'git+https://github.com/mattn/go-shellwords.git'
         'chromium-dev.svg'
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-icu-r2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r10.patch'
         # Misc Patches
         'minizip.patch'
         'vaapi_patch_r2.patch'
@@ -92,12 +92,13 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
-            '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
+            'SKIP'
+            'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
-            'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
+            '07df380530299b0450045edd655f924f0e0442abccb05c2336ed2aea9d5ee044'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            '65c89853c132e3a61e17ba3157ba3ad1352e53bf39480889a2d766de4a0c409f'
+            '648dae208ef1968ae686d42a2ad51909df21e6080e508c8b357410642cbbf35f'
             # Misc Patches
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce'
@@ -174,10 +175,10 @@ _keeplibs=(
   'third_party/analytics'
   'third_party/angle'
   'third_party/angle/src/common/third_party/base'
+  'third_party/angle/src/common/third_party/murmurhash'
   'third_party/angle/src/third_party/compiler'
-  'third_party/angle/src/third_party/murmurhash'
-  'third_party/angle/src/third_party/trace_event'
   'third_party/angle/src/third_party/libXNVCtrl'
+  'third_party/angle/src/third_party/trace_event'
   'third_party/boringssl'
   'third_party/brotli'
   'third_party/cacheinvalidation'
@@ -301,13 +302,9 @@ _flags=(
   'use_gconf=false'
   "use_gio=false"
   "use_gnome_keyring=${_gnome_keyring}"
-  "use_pulseaudio=true"
-  "link_pulseaudio=true"
-  'use_kerberos=true'
-  'use_cups=true'
+  'link_pulseaudio=true'
   'use_sysroot=false'
   'use_gold=false'
-  "use_allocator=\"tcmalloc\""
   'linux_use_bundled_binutils=false'
   'fatal_linker_warnings=false'
   'treat_warnings_as_errors=false'
@@ -323,14 +320,14 @@ _use_system=(
   'flac'
 #  'freetype'   # https://bugs.chromium.org/p/pdfium/issues/detail?id=733
   'harfbuzz-ng'
-#  'hunspell'   # need ustream changes
+#  'hunspell'   # Needs ustream changes
 #  'icu'        # https://crbug.com/678661
   'libdrm'
 #  'libevent'   # Get segfaults and other problems https://bugs.gentoo.org/593458
   'libjpeg'
   'libpng'
 #  'libsrtp'    # https://bugs.gentoo.org/459932
-#  'libvpx'
+#  'libvpx'     # Needs update
   'libwebp'
 #  'libxml'     # https://bugs.gentoo.org/616818
   'libxslt'
@@ -369,6 +366,7 @@ prepare() {
   # Use custom toolchain.
   _flags+=(
     "custom_toolchain=\"${srcdir}:default\""
+    "host_toolchain=\"${srcdir}:default\""
   )
 
   # Set Python2 path.
@@ -376,7 +374,11 @@ prepare() {
   ln -sf /usr/bin/python2 "${srcdir}/python-path/python"
   export PATH="${srcdir}/python-path:$PATH"
 
-  cd "chromium-${pkgver}"
+  cd "${srcdir}/chromium-launcher"
+  git config submodule.vendor/src/github.com/mattn/go-shellwords.url "file:///${srcdir}/go-shellwords"
+  git submodule update --init
+
+  cd "${srcdir}/chromium-${pkgver}"
 
   # Fix to save configuration in ~/.config/chromium-dev.
   sed -e 's|filename = "chromium-browser"|filename = "chromium-dev"|' \
@@ -388,7 +390,7 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "${srcdir}/chromium-system-icu-r2.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r10.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -490,13 +492,16 @@ _set_gcc() {
 build() {
 
   msg2 "Build the Launcher"
-  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr GTK=3
+  make -C "chromium-launcher" \
+     PREFIX=usr \
+     CHROMIUM_SUFFIX="-dev" \
+     GTK=3
 
   cd "chromium-${pkgver}"
 
   msg2 "Starting building Chromium..."
   # Configure the builder.
-  python2 tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${_flags[*]} ${_debug_flag}"
+  python2 tools/gn/bootstrap/bootstrap.py -v -s --no-clean
   out/Release/gn gen out/Release -v --args="${_flags[*]} ${_debug_flag}" --script-executable=/usr/bin/python2
 
   # Build all with ninja.
@@ -505,14 +510,18 @@ build() {
 
 package() {
   # Install launcher.
-  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr DESTDIR="${pkgdir}" GTK=3 install-strip
-  install -Dm644 "chromium-launcher-${_launcher_ver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
+  make -C "chromium-launcher" \
+    PREFIX=/usr \
+    CHROMIUM_SUFFIX="-dev" \
+    DESTDIR="${pkgdir}" \
+    install
+  install -Dm644 "chromium-launcher/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
 
   if [ "${_debug_mode}" = "1" ]; then
     # Build with debug needs a tons of space. remove this save that space, but break the rebuild process.
-    rm -fr "chromium-launcher-${_launcher_ver}/third_party"
+    rm -fr "chromium-${pkgver}/third_party"
   fi
 
   # Install binaries.

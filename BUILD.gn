@@ -17,3 +17,21 @@ gcc_toolchain("default") {
     current_os = current_os
   }
 }
+
+gcc_toolchain("host") {
+  cc = getenv("CC")
+  cxx = getenv("CXX")
+  ar = "ar"
+  nm = "nm"
+  ld = cxx
+
+  extra_cflags = getenv("CFLAGS")
+  extra_cppflags = getenv("CPPFLAGS")
+  extra_cxxflags = getenv("CXXFLAGS")
+  extra_ldflags = getenv("LDFLAGS")
+
+  toolchain_args = {
+    current_cpu = current_cpu
+    current_os = current_os
+  }
+}
