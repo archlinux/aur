@@ -2,7 +2,7 @@
 
 pkgname=vibrancy-full-dark-blue
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, clean and customizable flat icon theme [Full-Dark-Blue only version!]"
 arch=('any')
 makedepends=('binutils' 'tar')
@@ -36,6 +36,16 @@ prepare() {
     rm -rf ${srcdir}/usr/share/icons/Vibrancy-Full-Dark-Red
     rm -rf ${srcdir}/usr/share/icons/Vibrancy-Full-Dark-Teal
     rm -rf ${srcdir}/usr/share/icons/Vibrancy-Full-Dark-Yellow
+
+    #fix icon for keepassxc
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/16/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/16/keepassxc.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/22/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/22/keepassxc.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/24/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/24/keepassxc.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/32/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/32/keepassxc.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/48/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/48/keepassxc.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/64/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/64/keepassxc.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/96/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/96/keepassxc.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/256/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/256/keepassxc.png
 }
 
 
