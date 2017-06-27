@@ -1,14 +1,14 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-gui-git
-pkgver=v0.14.1.r1.gf2a96e7d0
+pkgver=v0.14.2.r0.gfc61c8322
 pkgrel=1
 pkgdesc='Most recent stable branch, UPNP disabled, w/ Bitcoin binaries, dev tools, GUI, and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoin.org/en/download"
 license=('MIT')
 depends=('boost-libs' 'desktop-file-utils' 'libevent' 'protobuf' 'qrencode' 'qt5-base' 'zeromq')
-makedepends=('git' 'boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf' 'zeromq')
+makedepends=('git' 'boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf' 'zeromq' 'python')
 optdepends=('db4.8: Wallet portability/compatibility w/official binaries')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
@@ -31,12 +31,14 @@ build() {
   CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
 	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5 --without-miniupnpc
+  make -j$(nproc)
   make -j$(nproc) check
+
 }
 
 package() {
 	cd "$srcdir/bitcoin"
-  make install DESTDIR="$pkgdir"
+  make -j$(nproc) install DESTDIR="$pkgdir"
   install -Dm644 "$srcdir/bitcoin/share/pixmaps/bitcoin128.png"\
 								 "$pkgdir/usr/share/pixmaps/bitcoin128.png"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
