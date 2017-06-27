@@ -24,3 +24,4 @@ package() {
   install -d $pkgdir/usr/share/licenses/$pkgname/
   install -m644 'SF Pro Font License.rtf' $pkgdir/usr/share/licenses/$pkgname/LICENSE.rtf
 }
+sha256sums=('1235856837d0123a4ea3f434933381c90f808e0e05e04af965c873a5d7ce3bd6')
