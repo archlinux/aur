@@ -3,22 +3,22 @@
 
 pkgname=raine-emudx
 pkgver=20080514
-pkgrel=1
+pkgrel=2
 pkgdesc="Improved graphic and sound files for some games in the Raine emulator"
 arch=('any')
-url="http://rainemu.swishparty.co.uk"
+url="http://raine.1emulation.com/download/extras.html"
 license=('unknown')
 depends=('raine')
-source=("http://rainemu.swishparty.co.uk/html/archive/emudx/dkongg.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/froggerg.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/galdxg.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/mspacmang.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/pacmang.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/dkongm.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/froggerm.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/galdxm.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/mspacmanm.dx2"
-        "http://rainemu.swishparty.co.uk/html/archive/emudx/pacmanm.dx2")
+source=("http://raine.1emulation.com/archive/emudx/dkongg.dx2"
+        "http://raine.1emulation.com/archive/emudx/froggerg.dx2"
+        "http://raine.1emulation.com/archive/emudx/galdxg.dx2"
+        "http://raine.1emulation.com/archive/emudx/mspacmang.dx2"
+        "http://raine.1emulation.com/archive/emudx/pacmang.dx2"
+        "http://raine.1emulation.com/archive/emudx/dkongm.dx2"
+        "http://raine.1emulation.com/archive/emudx/froggerm.dx2"
+        "http://raine.1emulation.com/archive/emudx/galdxm.dx2"
+        "http://raine.1emulation.com/archive/emudx/mspacmanm.dx2"
+        "http://raine.1emulation.com/archive/emudx/pacmanm.dx2")
 sha256sums=('9d59d7e5742c7c7d8d140488acf9e1f6c718ff8552f6a9bafcd5fd828e33edfc'
             'ede281a1c328d577b81fdf29b66f5c055f58e8a0a347e69ab2519ecca34ce167'
             'f867a7c7a3dde51d5ae870f1c55e63d4c23f43b5351cf4c8aa4ad60ea8091ab5'
