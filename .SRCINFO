@@ -8,7 +8,7 @@ pkgbase = jaxx
 	source = https://jaxx.io/files/1.2.13/Jaxx-v1.2.13-linux-x64.zip
 	source = jaxx.desktop
 	md5sums = 2ed538aada0d361a6970e566e2ebb1ca
-	md5sums = bc59f36f36eab2af570228c3de7ba1ae
+	md5sums = 6c5a513df8f5b65af59512dace0f20e7
 
 pkgname = jaxx
 

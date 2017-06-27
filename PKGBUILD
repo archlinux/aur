@@ -23,7 +23,8 @@ changelog=
 source=("https://jaxx.io/files/$pkgver/Jaxx-v$pkgver-linux-x64.zip" "jaxx.desktop")
 noextract=()
 md5sums=('2ed538aada0d361a6970e566e2ebb1ca'
-         'bc59f36f36eab2af570228c3de7ba1ae')
+         '6c5a513df8f5b65af59512dace0f20e7')
+
 validpgpkeys=()
 
 prepare() {
