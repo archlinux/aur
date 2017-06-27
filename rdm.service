@@ -3,7 +3,9 @@ Description=RTags Server
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/rdm
+ExecStart=/usr/bin/rdm --verbose --inactivity-timeout 300 --log-flush
+Nice=19
+CPUSchedulingPolicy=idle
 
 [Install]
 WantedBy=default.target
