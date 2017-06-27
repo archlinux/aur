@@ -9,12 +9,39 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/stefansielaff/slimserver'
 license=('GPL' 'custom')
 provides=('logitechmediaserver')
-depends=('perl>=5.26' 'perl<5.27' 'perl-anyevent' 'perl-archive-zip' 'perl-cgi' 'perl-common-sense' 'perl-data-dump'
-	 'perl-dbd-sqlite' 'perl-dbi' 'perl-digest-sha1' 'perl-ev' 'perl-yaml-libyaml'
-	 'perl-html-parser' 'perl-html-form' 'perl-html-tree'
-	 'perl-json-xs' 'perl-module-build' 'perl-sub-name' 'perl-sub-uplevel'
-	 'perl-template-toolkit' 'perl-test-nowarnings' 'perl-test-warn'
-	 'perl-uri' 'perl-xml-parser' 'perl-xml-simple'
+depends=('perl>=5.26'
+	 'perl<5.27'
+	 'perl-anyevent'
+	 'perl-archive-zip'
+	 'perl-cgi'
+	 'perl-common-sense'
+	 'perl-data-dump'
+	 'perl-dbd-sqlite'
+	 'perl-dbi'
+	 'perl-digest-sha1'
+	 'perl-ev'
+	 'perl-html-form'
+	 'perl-html-parser'
+	 'perl-html-tree'
+	 'perl-http-cookies'
+	 'perl-http-daemon'
+	 'perl-http-date'
+	 'perl-http-message'
+	 'perl-json-xs'
+	 'perl-lwp-mediatypes'
+	 'perl-lwp-protocol-https'
+	 'perl-module-build'
+	 'perl-net-upnp'
+	 'perl-soap-lite'
+	 'perl-sub-name'
+	 'perl-sub-uplevel'
+	 'perl-template-toolkit'
+	 'perl-test-nowarnings'
+	 'perl-test-warn'
+	 'perl-uri'
+	 'perl-xml-parser'
+	 'perl-xml-simple'
+	 'perl-yaml-libyaml'
 	 'ffmpeg' 'giflib' 'libexif' 'libjpeg-turbo' 'libpng')
 makedepends=('yasm' 'rsync' 'gd' 'zlib')
 optdepends=('perl-io-socket-ssl: support for https streams')
@@ -38,7 +65,7 @@ prepare() {
 	mkdir _PRESERVE
 	cp -p --parents URI/Find.pm _PRESERVE
 	rm -f {AE.pm,AnyEvent.pm,DBI.pm,JSON/XS.pm,Template.pm,URI.pm,version.pm}
-	rm -rf {AnyEvent,Archive,CGI,common,DBI,DBD,Digest,HTML,Sub,Template,URI,version,XML,YAML}
+	rm -rf {AnyEvent,Archive,CGI,common,DBI,DBD,Digest,HTML,HTTP,Net,SOAP,Sub,Template,URI,version,XML,YAML}
 	cp -rf _PRESERVE/* .
 }
 
