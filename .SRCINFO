@@ -6,7 +6,6 @@ pkgbase = python-catkin_pkg
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/c/catkin_pkg/catkin_pkg-0.3.5.tar.gz
 	md5sums = de01650bbec245d53f72682ed7ab13e5
 
@@ -16,17 +15,7 @@ pkgname = python-catkin_pkg
 	depends = python-argparse
 	depends = python-dateutil
 	depends = python-docutils
-	conflicts = python-catkin-pkg
+	provides = python-catkin-pkg
 	conflicts = python2-catkin_pkg
-	replaces = python-catkin-pkg
-
-pkgname = python2-catkin_pkg
-	depends = 
-	depends = python2
-	depends = python2-argparse
-	depends = python2-dateutil
-	depends = python2-docutils
-	conflicts = python2-catkin-pkg
-	conflicts = python-catkin_pkg
-	replaces = python2-catkin-pkg
+	conflicts = python-catkin-pkg
 
