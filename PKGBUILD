@@ -31,7 +31,8 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-201
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gamecube-tools-$_gamecubetoolsver.tar.bz2"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
         "devkitppc-skip-libs.patch"
-        "devkitppc-use-in-tree-isl.patch"
+        "devkitppc-add-patches.patch"
+        "fix-gcc-6.3.0-compilation-on-gcc-7.patch"
         "devkitppc.sh"
         "devkitppc.fish")
 sha256sums=('6b142f265bc9c7fc9449f5b539198f140d231725b2ed0828749d8a1e0fad73ff'
@@ -42,10 +43,11 @@ sha256sums=('6b142f265bc9c7fc9449f5b539198f140d231725b2ed0828749d8a1e0fad73ff'
             '67501030b8d5496ae3157e1c53c9b40fffbd794f210144064fcd18d2538f5a84'
             '95557ecae364d189fb771702af56c1c6f9ee076696046b78e7a2e931974533cc'
             '09474dfc1537e1008ee95b1a39a53715b8a740ee5ee37f4376607d6b110343c4'
-            '6144c82539c28fed9eb06780e27e39f954d3da42d9250daa4b20692c4d52ff32'
+            'fdcb06fcdfb06e61ffe69848633758ae0df015ccb1e86d21ada2a89139de9f1c'
             '412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2'
             '62e9f2730a81a71efc7bc5f958d7186f48a6468ea3b5481ea8331418cc40cb7b'
-            '745fdf40c11829044c02dedd39371163cdd0952d13cd88fd9cb32a8bd8e5dfa9'
+            '25eaebb546beed574f29dd62b566edc8f683f6dc781f035b004201146641549d'
+            'e7013af51af0cb1e088f7fc25576471076780bc97e05e7921fe819a3c87fce8b'
             '3e7ab84e123f76c65a92c27932b4f80df598b9da6b0f44745d8d465120449d1d'
             'ab0c74e766fab7ada98541c530593b9f717a72d386f9bb9dad2779a080c66b9d')
 noextract=("binutils-$_binutilsver.tar.bz2" "binutils-$_mnbinutilsver.tar.bz2"
@@ -78,7 +80,9 @@ END
     buildscripts/build-devkit.sh
 
   # use in-tree isl
-  patch -Np0 < devkitppc-use-in-tree-isl.patch
+  # add patch to build gcc 6.3.0 on gcc >7
+  # disable guile for gdb
+  patch -Np0 < devkitppc-add-patches.patch
   # isl needlessly wants automake-14, upgrading
   autoreconf -Wnone -fi isl-$_islver
 

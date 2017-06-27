@@ -1,0 +1,32 @@
+diff -Naur buildscripts.orig/build-devkit.sh buildscripts/build-devkit.sh
+--- buildscripts.orig/build-devkit.sh	2017-01-25 20:10:12.000000000 +0100
++++ buildscripts/build-devkit.sh	2017-06-27 18:58:41.025226487 +0200
+@@ -232,6 +232,8 @@
+ 
+ extract_and_patch binutils $BINUTILS_VER bz2
+ extract_and_patch gcc $GCC_VER bz2
++cp -ru "$SRCDIR/isl-0.16.1" gcc-$GCC_VER/isl
++patch -Np0 < "$SRCDIR/fix-gcc-6.3.0-compilation-on-gcc-7.patch"
+ extract_and_patch newlib $NEWLIB_VER gz
+ extract_and_patch gdb $GDB_VER bz2
+ 
+diff -Naur buildscripts.orig/dkppc/scripts/build-gcc.sh buildscripts/dkppc/scripts/build-gcc.sh
+--- buildscripts.orig/dkppc/scripts/build-gcc.sh	2017-01-25 17:52:19.000000000 +0100
++++ buildscripts/dkppc/scripts/build-gcc.sh	2017-06-27 19:07:01.208248542 +0200
+@@ -91,6 +91,7 @@
+ 	--disable-libstdcxx-verbose \
+ 	--enable-cxx-flags='-ffunction-sections -fdata-sections' \
+ 	--target=$target \
++	--with-isl \
+ 	--with-newlib \
+ 	--with-headers=../../newlib-$NEWLIB_VER/newlib/libc/include \
+ 	--prefix=$prefix\
+@@ -179,7 +180,7 @@
+ if [ ! -f configured-gdb ]
+ then
+ 	CFLAGS="$cflags" LDFLAGS="$ldflags" ../../gdb-$GDB_VER/configure \
+-	--disable-nls --prefix=$prefix --target=$target --disable-werror \
++	--disable-nls --prefix=$prefix --target=$target --disable-werror --with-guile=no \
+ 	$CROSS_PARAMS || { echo "Error configuring gdb"; exit 1; }
+ 	touch configured-gdb
+ fi

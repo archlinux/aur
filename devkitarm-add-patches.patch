@@ -1,0 +1,35 @@
+diff -Naur buildscripts.orig/build-devkit.sh buildscripts/build-devkit.sh
+--- buildscripts.orig/build-devkit.sh	2017-01-25 20:10:12.000000000 +0100
++++ buildscripts/build-devkit.sh	2017-06-27 18:11:47.033227074 +0200
+@@ -232,8 +232,11 @@
+ 
+ extract_and_patch binutils $BINUTILS_VER bz2
+ extract_and_patch gcc $GCC_VER bz2
++cp -ru "$SRCDIR/isl-0.16.1" gcc-$GCC_VER/isl
++patch -Np0 < "$SRCDIR/fix-gcc-6.3.0-compilation-on-gcc-7.patch"
+ extract_and_patch newlib $NEWLIB_VER gz
+ extract_and_patch gdb $GDB_VER bz2
++patch -d gdb-$GDB_VER -Np1 < "$SRCDIR/fix-gdb-7.12-compilation-on-gcc-7.patch"
+ 
+ if [ $VERSION -eq 2 ]; then
+ 	extract_and_patch binutils $MN_BINUTILS_VER bz2
+diff -Naur buildscripts.orig/dkarm-eabi/scripts/build-gcc.sh buildscripts/dkarm-eabi/scripts/build-gcc.sh
+--- buildscripts.orig/dkarm-eabi/scripts/build-gcc.sh	2017-01-25 17:51:43.000000000 +0100
++++ buildscripts/dkarm-eabi/scripts/build-gcc.sh	2017-06-27 17:51:30.771359311 +0200
+@@ -61,6 +61,7 @@
+ 		--disable-libmudflap --disable-libssp --disable-libgomp \
+ 		--disable-libstdcxx-pch \
+ 		--target=$target \
++		--with-isl \
+ 		--with-newlib \
+ 		--with-headers=../../newlib-$NEWLIB_VER/newlib/libc/include \
+ 		--prefix=$prefix \
+@@ -158,7 +159,7 @@
+ 	CXXFLAGS="$cflags" \
+ 	LDFLAGS="$ldflags" \
+ 	../../gdb-$GDB_VER/configure \
+-	--disable-nls --prefix=$prefix --target=$target --disable-werror \
++	--disable-nls --prefix=$prefix --target=$target --disable-werror --with-guile=no \
+ 	$CROSS_PARAMS \
+ 	|| { echo "Error configuring gdb"; exit 1; }
+ 	touch configured-gdb
