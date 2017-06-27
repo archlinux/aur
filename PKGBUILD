@@ -7,21 +7,21 @@ pkgname='ros-kinetic-catkin'
 pkgver='0.7.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  python2-catkin-pkg
+  python2-catkin_pkg
   python2-empy
   python2)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-catkin-pkg
   gtest
   python2-nose
+  python2-catkin_pkg
   python2-empy
   python2)
 
