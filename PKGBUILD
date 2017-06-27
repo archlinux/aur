@@ -11,7 +11,6 @@ url='https://rubygems.org/gems/${_gemname}/versions/${pkgver}'
 license=(MIT)
 depends=(ruby
     ruby-i18n
-    ruby-json
     ruby-minitest
     ruby-thread_safe
     ruby-tzinfo
