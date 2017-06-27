@@ -2,8 +2,8 @@
 pkgname=archlabs-openbox-themes-git
 _pkgname=archlabs-openbox-themes
 _destname="/usr/share/themes/"
-pkgver=1.1
-pkgrel=6
+pkgver=1.2
+pkgrel=0
 pkgdesc="Openbox themes created for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Openbox-Themes"
