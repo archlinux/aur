@@ -1,7 +1,7 @@
 # Contributor: Hugo Ideler <hugo at hugoideler dot com>
 pkgname=jaxx
 pkgver=1.2.13
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Multi-chain cryptocurrency wallet"
 arch=('x86_64')
@@ -20,28 +20,32 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://jaxx.io/files/$pkgver/Jaxx-v$pkgver-linux-x64.tar.gz")
+source=("https://jaxx.io/files/$pkgver/Jaxx-v$pkgver-linux-x64.zip" "jaxx.desktop")
 noextract=()
-md5sums=('2ed538aada0d361a6970e566e2ebb1ca')
+md5sums=('2ed538aada0d361a6970e566e2ebb1ca'
+         'bc59f36f36eab2af570228c3de7ba1ae')
 validpgpkeys=()
 
 prepare() {
-	true
+        true
 }
 
 build() {
-	true
+        true
 }
 
 check() {
-	true
+        true
 }
 
 package() {
-	mkdir -p $pkgdir/opt/$pkgname
-	cp -a Jaxx-vv${pkgver}_linux-x64/jaxx-assets/* $pkgdir/opt/$pkgname
+        mkdir -p $pkgdir/opt/$pkgname
+        cp -a Jaxx-vv${pkgver}_linux-x64/jaxx-assets/* $pkgdir/opt/$pkgname
 
-	mkdir -p $pkgdir/usr/bin
-	ln -s ../../opt/$pkgname/Jaxx $pkgdir/usr/bin/$pkgname
+        mkdir -p $pkgdir/usr/bin
+        ln -s ../../opt/$pkgname/Jaxx $pkgdir/usr/bin/$pkgname
+
+        install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
+# vim: et

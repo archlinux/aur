@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Jaxx
+GenericName=Multi-chain cryptocurrency wallet
+Exec=jaxx %u
+Comment=Multi-chain cryptocurrency wallet
+Type=Application
+Categories=Finance;
