@@ -2,12 +2,12 @@
 
 pkgname=magic-wormhole
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely transfer data between computers"
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}/${pkgver}"
 license=('MIT')
-depends=('python' 'python-click' 'python-cffi' 'python-autobahn' 'python-tqdm' 'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize' 'python-idna' 'python-service-identity' 'python-ipaddress') 
+depends=('python' 'python-click' 'python-cffi' 'python-autobahn' 'python-tqdm' 'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize' 'python-idna' 'python-service-identity' 'python-ipaddress' 'txtorcon')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/b2/7e/f26ad2aa90a84019bf1f3ef6f9ee48785096f9abe1812dfcba71cb59ae53/magic-wormhole-0.10.0.tar.gz")
 conflicts=("wormhole" "wormhole-server")
