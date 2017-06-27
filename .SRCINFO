@@ -1,23 +1,16 @@
 pkgbase = python-osrf_pycommon
 	pkgdesc = Commonly needed Python modules, used by Python software developed at OSRF
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://osrf-pycommon.readthedocs.org/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
+	provides = python-osrf-pycommon
+	conflicts = python-osrf-pycommon
 	source = https://files.pythonhosted.org/packages/source/o/osrf_pycommon/osrf_pycommon-0.1.3.tar.gz
 	md5sums = c86d8f1603cc8c24fb19c7cd244387e9
 
 pkgname = python-osrf_pycommon
-	depends = 
-	depends = python
-
-pkgname = python2-osrf_pycommon
-	depends = 
-	depends = python2
-	depends = python2-trollius
-	conflicts = python2-osrf-pycommon
-	replaces = python2-osrf-pycommon
 
