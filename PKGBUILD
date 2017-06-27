@@ -2,7 +2,7 @@
 # Contributor: Anthony C <kurodroid.1@gmail.com>
 
 pkgname=psad
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ source=("http://cipherdyne.org/psad/download/$pkgname-$pkgver.tar.gz"{,.asc}
         "responses"
         "psad-systemdinit.archlinux"
         "psad.patch")
-sha256sums=('a9dbe56a06813b9befe1dff906584527994b0ef3c2bfe2258c1842f94673b03c'
+sha256sums=('c61bd5c7766798dbaf2cd5e11d4b07b941e8188be4e0176423fe7bcabc676147'
             'SKIP'
             '0092963c506769f0bc1895ede687975dae0c3d256aaa1891f7e354b7c4a19958'
             '9db280ba745205b188333267f05cf7cf1a75300789c92c48075625e64f37ff34'
