@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
 license=('Apache')
-url="https://github.com/letsencrypt/letsencrypt"
+url="https://github.com/certbot/certbot"
 makedepends=('python-setuptools' 'python2-setuptools' 'python-pyopenssl' 'python2-pyopenssl'
              'python-pyrfc3339' 'python2-pyrfc3339' 'python-pytz' 'python2-pytz' 'python-requests'
              'python2-requests' 'python-six' 'python2-six' 'python-werkzeug' 'python2-werkzeug'
