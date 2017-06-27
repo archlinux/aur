@@ -1,7 +1,7 @@
 pkgbase = thonny-git
 	pkgdesc = Python IDE for beginners.
-	pkgver = r1403.40455c1
-	pkgrel = 2
+	pkgver = r1529.2c7e555
+	pkgrel = 1
 	url = http://thonny.org/
 	arch = any
 	license = MIT

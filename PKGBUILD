@@ -1,6 +1,6 @@
 pkgname=thonny-git
-pkgver=r1403.40455c1
-pkgrel=2
+pkgver=r1529.2c7e555
+pkgrel=1
 pkgdesc="Python IDE for beginners."
 arch=('any')
 url="http://thonny.org/"
