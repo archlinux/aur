@@ -12,9 +12,6 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
          'python-dbus' 'python-gobject' 'python-yaml' 'python-evdev'
          'lib32-sqlite')
 makedepends=('python-setuptools')
-optdepends=(
-  'python-pyinotify: Enhanced Steam integration.'
-  )
 source=("https://lutris.net/releases/lutris_${pkgver}.tar.xz")
 sha256sums=('3033dbef271d3d9bcf20f0cc9df472a82733eba66b4364a09e94115f225d194c')
 
