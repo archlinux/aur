@@ -2,7 +2,7 @@
 #Co-maintainer: dudez <manuel.bua@gmail.com>
 pkgname=caret-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Premium Markdown Editor http://caret.io"
 arch=('x86_64')
 url="https://github.com/careteditor/caret"
@@ -37,4 +37,4 @@ package() {
     rm ${pkgdir}/opt/caret/after-install.tpl
     rm ${pkgdir}/opt/caret/after-remove.tpl
 }
-md5sums=('b06e101e58938605d89c470a7ed55b7d')
+md5sums=('0de98c977bb9ddbda3460fb7dd3e79cd')
