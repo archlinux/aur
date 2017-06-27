@@ -12,7 +12,7 @@ pkgbase = kshare
 	depends = ffmpeg
 	depends = libxfixes
 	provides = kshare=$pkgver
-	conflicts = kshare
+	conflicts = kshare-git
 	source = git+https://github.com/ArsenArsen/KShare.git#tag=v4.0
 	sha1sums = SKIP
 

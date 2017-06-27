@@ -2,7 +2,7 @@
 pkgname=kshare
 pkgver=4.0
 pkgrel=1
-conflicts=("kshare")
+conflicts=("kshare-git")
 pkgdesc="A ShareX inspired cross platform utility written with Qt."
 arch=('i686' 'x86_64')
 url="https://github.com/ArsenArsen/KShare"
