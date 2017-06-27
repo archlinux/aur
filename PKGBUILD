@@ -1,7 +1,7 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 #Co-maintainer: dudez <manuel.bua@gmail.com>
 pkgname=caret-bin
-pkgver=2.1.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Premium Markdown Editor http://caret.io"
 arch=('x86_64')
@@ -25,16 +25,16 @@ build() {
 }
 package() {
     cd "$srcdir"
-    
+
     mkdir -p ${pkgdir}/opt/caret
     cp -ra opt/caret/* ${pkgdir}/opt/caret
     mkdir -p ${pkgdir}/usr/share
     cp -ra usr/share/* ${pkgdir}/usr/share
-    
+
     mkdir -p ${pkgdir}/usr/bin
     cp Caret ${pkgdir}/usr/bin/Caret
-    
+
     rm ${pkgdir}/opt/caret/after-install.tpl
-    rm ${pkgdir}/opt/caret/after-remove.tpl 
+    rm ${pkgdir}/opt/caret/after-remove.tpl
 }
-md5sums=('244d778cf9a49efb3d20576087849274')
+md5sums=('b06e101e58938605d89c470a7ed55b7d')
