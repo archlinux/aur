@@ -1,8 +1,8 @@
 #Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-pmd
-pkgver=4.0.14
-_buildtime=v20170528-1456
+pkgver=4.0.15
+_buildtime=v20170624-2134
 pkgrel=1
 pkgdesc='PMD static source code analysis (Java, XML, ...) plugin for Eclipse IDE'
 arch=('any')
@@ -16,8 +16,8 @@ source=(
 	"license.txt::http://sourceforge.net/p/pmd/code/ci/master/tree/LICENSE?format=raw"
 )
 noextract=(feature.jar plugin.jar license.txt)
-sha256sums=('e1e705a18d9738341a90ae97ed330ad91f990a9890a83f4239f190ef54c237c0'
-            '9f23ab6ccf10de26a8673a0b8c1b02ce369a51c1830f54e79d494ddcb1fdabb5'
+sha256sums=('d3197e9e18b80048b96e4e73b0e5a63f5d9c49b16009165b95fef83dc3fc8c7d'
+            'ea6edf64e1770936f7f1b6fd85fc902bcbefe34ea9bb13741955031c681ecaab'
             'bc61ca15a6e980814d4183a0d37713179a682a8376fe4304c0d99792af62025c')
 
 package() {
