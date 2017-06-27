@@ -1,6 +1,6 @@
 pkgbase = gpgit
 	pkgdesc = A Python script that automates the process of signing Git sources via GPG
-	pkgver = 2.0.4
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/NicoHood/gpgit
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = gpgit
 	depends = python-pygithub
 	depends = python-gitpython
 	depends = python-gnupg
-	source = gpgit-2.0.4.tar.xz::https://github.com/NicoHood/gpgit/releases/download/2.0.4/gpgit-2.0.4.tar.xz
-	source = gpgit-2.0.4.tar.xz.asc::https://github.com/NicoHood/gpgit/releases/download/2.0.4/gpgit-2.0.4.tar.xz.asc
+	source = gpgit-2.0.7.tar.xz::https://github.com/NicoHood/gpgit/releases/download/2.0.7/gpgit-2.0.7.tar.xz
+	source = gpgit-2.0.7.tar.xz.asc::https://github.com/NicoHood/gpgit/releases/download/2.0.7/gpgit-2.0.7.tar.xz.asc
 	validpgpkeys = 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
-	sha512sums = ddca12c7e9a565d8e11a4aa739fc46dbb230d3605a1338097036f5218440487ed099a78da5bd56f79c955412142ea7713180bdfc72d181a2056dbdc95168c95a
+	sha512sums = 8571176f883d51859f0e25fe037be0dc70a0d9b6d719305fbc9cc858a752263c1fcaac908dd89d5ff3094704a85f463e839a436bd3b66eb33653aca93280cbd2
 	sha512sums = SKIP
 
 pkgname = gpgit
