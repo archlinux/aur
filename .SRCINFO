@@ -1,7 +1,7 @@
 pkgbase = libbiosig
 	pkgdesc = Provides reading and writing routines for different biosignal data formats
-	pkgver = 1.8.4
-	pkgrel = 4
+	pkgver = 1.8.5
+	pkgrel = 1
 	url = http://biosig.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = libbiosig
 	depends = zlib
 	depends = suitesparse
 	options = staticlibs
-	source = https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig4c%2B%2B-1.8.4b.src.tar.gz
+	source = https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig4c%2B%2B-1.8.5.src.tar.gz
 	source = libbiosig.patch
-	sha1sums = 52ca4d0ffc5abd0647efe9dbb5e22d237dc76439
+	sha1sums = bd53f1948b5779fd95830d9142651dc354b5149e
 	sha1sums = 15de767cea2d33bbabf1bb0166527f790de074d3
 
 pkgname = libbiosig
