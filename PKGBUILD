@@ -1,0 +1,27 @@
+# Maintainer: Kartik Mohta <kartikmohta@gmail.com>
+
+pkgbase=('python-catkin_tools')
+pkgname=('python-catkin_tools')
+_module='catkin_tools'
+pkgver='0.4.4'
+pkgrel=1
+pkgdesc="Command line tools for working with catkin."
+url="http://catkin-tools.readthedocs.org/"
+depends=('python' 'python-catkin_pkg' 'python-osrf_pycommon' 'python-yaml')
+provides=('python-catkin-tools')
+conflicts=('python2-catkin_tools' 'python-catkin-tools')
+makedepends=('python-setuptools')
+license=('Apache')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/c/catkin_tools/catkin_tools-${pkgver}.tar.gz")
+md5sums=('5150b435c79bd952a24dc8c67cc091bc')
+
+build() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
+}
+
+package() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}

@@ -1,0 +1,20 @@
+pkgbase = python-catkin_tools
+	pkgdesc = Command line tools for working with catkin.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://catkin-tools.readthedocs.org/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-catkin_pkg
+	depends = python-osrf_pycommon
+	depends = python-yaml
+	provides = python-catkin-tools
+	conflicts = python2-catkin_tools
+	conflicts = python-catkin-tools
+	source = https://files.pythonhosted.org/packages/source/c/catkin_tools/catkin_tools-0.4.4.tar.gz
+	md5sums = 5150b435c79bd952a24dc8c67cc091bc
+
+pkgname = python-catkin_tools
+
