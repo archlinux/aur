@@ -6,9 +6,26 @@
 # Contributor: Andreas W. Hauser <andy-aur@splashground.de>
 # Contributor: Marco Crosio <marco.crosio@gmail.com>
 
+# Set packages you want built to 1
+# If no packages are selected, build java by default
+# If more than 1 package is selected, create an eclipse-common-devel package
+_build_java=1
+_build_cpp=1
+_build_jee=1
+_build_php=1
+
 pkgbase=eclipse-devel
-pkgname=(eclipse-{common,java,cpp,jee,php}-devel)
-_milestone=RC3
+pkgname=()
+[[ "${_build_cpp}" == '1' ]] && pkgname+=('eclipse-cpp-devel')
+[[ "${_build_jee}" == '1' ]] && pkgname+=('eclipse-jee-devel')
+[[ "${_build_php}" == '1' ]] && pkgname+=('eclipse-php-devel')
+# If no packages are selected, build java by default
+[[ "${_build_java}" == '1' || ${#pkgname[@]} -eq 0 ]] && pkgname+=('eclipse-java-devel')
+# If we're building more than one package, create a common package
+[[ ${#pkgname[@]} -gt 1 ]] && pkgname=('eclipse-common-devel' "${pkgname[@]}")
+
+epoch=1
+_milestone=R
 pkgver=4.7.0.${_milestone}
 pkgrel=1
 _release=oxygen-${_milestone}
@@ -16,7 +33,8 @@ pkgdesc="Highly extensible IDE"
 license=(EPL)
 arch=(i686 x86_64)
 url="https://eclipse.org"
-makedepends=(ruby)
+makedepends=()
+[[ ${#pkgname[@]} -gt 1 ]] && makedepends+=('ruby')
 options=(!emptydirs)
 source=(commonify eclipse.sh eclipse.desktop)
 source_i686=()
@@ -46,7 +64,8 @@ for _file in "${source_x86_64[@]}" ; do
 done
 
 prepare() {
-  mkdir eclipse-common
+
+  [[ ${#pkgname[@]} -gt 1 ]] && mkdir eclipse-common
 
   for _pkg in ${pkgname[@]/-devel/}; do
     [[ $_pkg == 'eclipse-common' ]] && continue
@@ -62,36 +81,53 @@ prepare() {
 }
 
 build() {
-  ./commonify ${pkgname[@]/-devel/}
+  if [[ ${#pkgname[@]} -gt 1 ]] ; then
+    ./commonify ${pkgname[@]/-devel/}
 
-  mkdir -p eclipse-common/dropins
-  touch eclipse-common/dropins/.keep
+    mkdir -p eclipse-common/dropins
+    touch eclipse-common/dropins/.keep
+  else
+    touch ${pkgname[0]%%-devel}/dropins/.keep
+  fi
+}
+
+_package_files() {
+  install -Dm755 eclipse.sh "$pkgdir/usr/bin/eclipse-devel"
+  install -Dm644 eclipse.desktop "$pkgdir/usr/share/applications/eclipse-devel.desktop"
+
+  for _i in 16 32 48 256; do
+    install -Dm644 "$1"/plugins/org.eclipse.platform_*/eclipse${_i}.png \
+      "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/eclipse-devel.png"
+  done
 }
 
 package_eclipse-common-devel() {
   pkgdesc+=" (common files) Development Version"
   depends=("java-environment>=8" webkit2gtk unzip)
-  provides=("eclipse-common=$pkgver-$pkgrel")
+  provides=("eclipse-common=$pkgver-$pkgrel" "eclipse-common-devel=$pkgver-$pkgrel")
   install=eclipse.install
 
   install -d "$pkgdir/opt"
   cp -a eclipse-common "$pkgdir/opt/eclipse-devel"
 
-  install -Dm755 eclipse.sh "$pkgdir/usr/bin/eclipse-devel"
-  install -Dm644 eclipse.desktop "$pkgdir/usr/share/applications/eclipse-devel.desktop"
-
-  for _i in 16 32 48 256; do
-    install -Dm644 eclipse-common/plugins/org.eclipse.platform_*/eclipse${_i}.png \
-      "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/eclipse-devel.png"
-  done
+  _package_files 'eclipse-common'
 }
 
 _package() {
   _variant=${1#eclipse-}
-  pkgdesc+=" (${_variant^^} variant) Development Version"
-  depends=(eclipse-common-devel=$pkgver)
-  provides=("eclipse-$_variant=$pkgver-$pkgrel")
+  pkgdesc+=" (${_variant} variant) Development Version"
+  conflicts=('eclipse-devel')
+  if [[ ${#pkgname[@]} -gt 1 ]] ; then
+    depends=(eclipse-common-devel=$pkgver)
+  else
+    conflicts+=('eclipse-common-devel')
+  fi
+  provides=(eclipse-devel "eclipse-$_variant=$pkgver-$pkgrel")
 
   install -d "$pkgdir/opt"
-  cp -a $1 "$pkgdir/opt/eclipse-devel"
+  cp -a ${1%%-devel} "$pkgdir/opt/eclipse-devel"
+
+  if [[ ${#pkgname[@]} -eq 1 ]] ; then
+    _package_files "eclipse-$_variant"
+  fi
 }
