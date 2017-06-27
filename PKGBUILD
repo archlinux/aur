@@ -2,9 +2,9 @@
 pkgname=archlabs-tint2-themes-git
 _pkgname=archlabs-tint2-themes
 _destname="/usr/share/tint2/"
-pkgver=1.1
-pkgrel=11
-pkgdesc="Tint2 Themes created for ARCHLabs"
+pkgver=1.2
+pkgrel=0
+pkgdesc="Tint2 Themes created for ArchLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Tint2-Themes"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
