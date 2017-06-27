@@ -13,8 +13,9 @@ pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
 license=('Commercial')
-depends=('glu' 'gtk2' 'gstreamer' 'ocl-icd' 'libpng12' 'log4cxx'
-         'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets')
+depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'lib32-libpng12' 'ocl-icd' 'openssl-1.0'
+         'opencl-driver' 'qt4' 'qt5-base' 'qt5-svg' 'qt5-webkit'
+         'qt5-webengine' 'qt5-websockets')
 options=('!strip')
 conflicts=('davinci-resolve')
 
@@ -114,14 +115,14 @@ package() {
 	done
 	mv resolve bin/resolve
 	mv rsf/Control Control
-	cp rsf/default-config-linux.dat configs/config.dat
+	install -Dm666 rsf/default-config-linux.dat "${pkgdir}/opt/${_pkgname}/configs/config.dat"
 
 	msg2 "Add lib symlinks..."
 	cd "${pkgdir}/opt/${_pkgname}/" || exit
-	ln -s /usr/lib/libcrypto-compat.so.1.0.0 libs/libcrypto.so.10
-	ln -s /usr/lib/libssl-compat.so.1.0.0    libs/libssl.so.10
-	ln -s /usr/lib/libgstbase-1.0.so         libs/libgstbase-0.10.so.0
-	ln -s /usr/lib/libgstreamer-1.0.so       libs/libgstreamer-0.10.so.0
+	ln -s /usr/lib/libcrypto.so.1.0.0  libs/libcrypto.so.10
+	ln -s /usr/lib/libssl.so.1.0.0     libs/libssl.so.10
+	ln -s /usr/lib/libgstbase-1.0.so   libs/libgstbase-0.10.so.0
+	ln -s /usr/lib/libgstreamer-1.0.so libs/libgstreamer-0.10.so.0
 
 	msg2 "Creating launchers..."
 	cd "${srcdir}" || exit
@@ -140,17 +141,20 @@ EOF
 
 	cat > "${srcdir}/start-resolve" << EOF
 #!/bin/sh
-export LD_LIBRARY_PATH=/opt/${_pkgname}/libs
-exec /opt/${_pkgname}/bin/resolve "\$@"
+mkdir -p /tmp/${_pkgname}/{logs,GPUCache}
+cd /opt/${_pkgname}
+exec bin/resolve "\$@"
 EOF
 	install -Dm755 start-resolve "${pkgdir}/opt/${_pkgname}/bin/start-resolve"
 
-	msg2 "Making sure file ownership is correct..."
+	msg2 "Making sure file ownership is 'correct'..."
 	chown -R root:root "${pkgdir}/opt"
+	chmod 0777 "${pkgdir}/opt/${_pkgname}/configs"
 	chmod 0777 "${pkgdir}/opt/${_pkgname}/Media"
 
 	msg2 "Any final tweaks..."
-	ln -s /tmp "${pkgdir}/opt/${_pkgname}/logs"
+	ln -s "/tmp/${_pkgname}/logs" "${pkgdir}/opt/${_pkgname}/logs"
+	ln -s "/tmp/${_pkgname}/GPUCache" "${pkgdir}/opt/${_pkgname}/GPUCache"
 
 	msg2 "Done!"
 }
