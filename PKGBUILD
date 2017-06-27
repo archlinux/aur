@@ -1,10 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz-bin
-_pkgname=cliqz
-_vendorname=CLIQZ
-pkgver=1.13.6
-_pkgver=20170522183742
-_mozver=53.0.3
+_vendorname=cliqz
+pkgver=1.14.0
+_cqzbuildid=20170625170852
+_mozver=54.0
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser, build from debian package"
 arch=('x86_64')
@@ -16,22 +15,20 @@ depends=('alsa-lib' 'dbus-glib' 'ffmpeg' 'gtk2' 'gtk3' 'hunspell'
          'icu' 'libevent' 'libvpx' 'libxt' 'mime-types'
          'mozilla-common' 'nss' 'sqlite' 'startup-notification'
          'ttf-font')
-source=("http://repository.cliqz.com.s3.amazonaws.com/dist/release/${pkgver}/${_pkgver}/CLIQZ-${pkgver}-release.${_pkgver}.x86_64.deb"
+source=("http://repository.cliqz.com.s3.amazonaws.com/dist/release/${pkgver}/${_cqzbuildid}/${_vendorname}-${pkgver}-release.${_cqzbuildid}.x86_64.deb"
         "LICENSE")
-sha256sums=('8bdbfc172b9f381830b8b511b80866f0ee2b8daa611d687217bf00c1a900e1e7'
+sha256sums=('5676264963f2e6a8bdfdb918e0d2239a751089074e6e66a5ea25b3201b9f90c5'
             '684cef8a799f7f9a3dbffaaad9398b5cd7fd89b2c162cef0d02195bbf18fbe36')
 
 prepare() {
   cd $srcdir
-
   tar xJf data.tar.xz
-  sed -i "s/Exec=CLIQZ/Exec=cliqz/" usr/local/share/applications/${_vendorname}.desktop
 }
 
 package() {
   cd $srcdir
 
-  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
+  install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${_vendorname}/LICENSE
 
   install -D -m644 usr/local/share/applications/${_vendorname}.desktop \
 		  ${pkgdir}/usr/share/applications/${_vendorname}.desktop
@@ -45,5 +42,5 @@ package() {
   cp -R usr/local/lib/${_vendorname}-${_mozver} ${pkgdir}/usr/lib/${_vendorname}
 
   install -d -m755 ${pkgdir}/usr/bin
-  ln -s /usr/lib/${_vendorname}/${_vendorname} ${pkgdir}/usr/bin/${_pkgname}
+  ln -s /usr/lib/${_vendorname}/${_vendorname} ${pkgdir}/usr/bin/${_vendorname}
 }
