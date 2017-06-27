@@ -1,0 +1,9 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=openssh
+
+[Action]
+When=PostTransaction
+Exec=/usr/share/libalpm/scripts/freeipa-client-update-sshd_config

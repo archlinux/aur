@@ -11,50 +11,25 @@ post_upgrade() {
         fi
     fi
 
-    if [ -f '/etc/sysconfig/ntpd' -a $restore -ge 2 ]; then
-        if grep -E -q 'OPTIONS=.*-u ntp:ntp' /etc/sysconfig/ntpd 2>/dev/null; then
-            sed -r '/OPTIONS=/ { s/\s+-u ntp:ntp\s+/ /; s/\s*-u ntp:ntp\s*// }' /etc/sysconfig/ntpd >/etc/sysconfig/ntpd.ipanew
-            mv -Z /etc/sysconfig/ntpd.ipanew /etc/sysconfig/ntpd
+    if [ $restore -ge 2 ]; then
+        if grep -E -q '\s*pkinit_anchors = FILE:/etc/ipa/ca.crt$' /etc/krb5.conf 2>/dev/null; then
+            sed -E 's|(\s*)pkinit_anchors = FILE:/etc/ipa/ca.crt$|\1pkinit_anchors = FILE:/var/lib/ipa-client/pki/kdc-ca-bundle.pem\n\1pkinit_pool = FILE:/var/lib/ipa-client/pki/ca-bundle.pem|' /etc/krb5.conf >/etc/krb5.conf.ipanew
+            mv -Z /etc/krb5.conf.ipanew /etc/krb5.conf
+            cp /etc/ipa/ca.crt /var/lib/ipa-client/pki/kdc-ca-bundle.pem
+            cp /etc/ipa/ca.crt /var/lib/ipa-client/pki/ca-bundle.pem
+        fi
+    fi
+
+    if [ -f '/etc/conf.d/ntpd.conf' -a $restore -ge 2 ]; then
+        if grep -E -q 'OPTIONS=.*-u ntp:ntp' /etc/conf.d/ntpd.conf 2>/dev/null; then
+            sed -r '/OPTIONS=/ { s/\s+-u ntp:ntp\s+/ /; s/\s*-u ntp:ntp\s*// }' /etc/conf.d/ntpd.conf >/etc/conf.d/ntpd.conf.ipanew
+            mv -Z /etc/conf.d/ntpd.conf.ipanew /etc/conf.d/ntpd.conf
 
             /bin/systemctl condrestart ntpd.service 2>&1 || :
         fi
     fi
 
     if [ $restore -ge 2 ]; then
-        python2 -c 'from ipapython.certdb import update_ipa_nssdb; update_ipa_nssdb()' >/var/log/ipaupgrade.log 2>&1
-    fi
-
-    # Has the client been configured?
-    restore=0
-    test -f '/var/lib/ipa-client/sysrestore/sysrestore.index' && restore=$(wc -l '/var/lib/ipa-client/sysrestore/sysrestore.index' | awk '{print $1}')
-
-    if [ -f '/etc/ssh/sshd_config' -a $restore -ge 2 ]; then
-        if grep -E -q '^(AuthorizedKeysCommand /usr/bin/sss_ssh_authorizedkeys|PubKeyAgent /usr/bin/sss_ssh_authorizedkeys %u)$' /etc/ssh/sshd_config 2>/dev/null; then
-            sed -r '
-                /^(AuthorizedKeysCommand(User|RunAs)|PubKeyAgentRunAs)[ \t]/ d
-            ' /etc/ssh/sshd_config >/etc/ssh/sshd_config.ipanew
-
-            if /usr/sbin/sshd -t -f /dev/null -o 'AuthorizedKeysCommand=/usr/bin/sss_ssh_authorizedkeys' -o 'AuthorizedKeysCommandUser=nobody' 2>/dev/null; then
-                sed -ri '
-                    s/^PubKeyAgent (.+) %u$/AuthorizedKeysCommand \1/
-                    s/^AuthorizedKeysCommand .*$/\0\nAuthorizedKeysCommandUser nobody/
-                ' /etc/ssh/sshd_config.ipanew
-            elif /usr/sbin/sshd -t -f /dev/null -o 'AuthorizedKeysCommand=/usr/bin/sss_ssh_authorizedkeys' -o 'AuthorizedKeysCommandRunAs=nobody' 2>/dev/null; then
-                sed -ri '
-                    s/^PubKeyAgent (.+) %u$/AuthorizedKeysCommand \1/
-                    s/^AuthorizedKeysCommand .*$/\0\nAuthorizedKeysCommandRunAs nobody/
-                ' /etc/ssh/sshd_config.ipanew
-            elif /usr/sbin/sshd -t -f /dev/null -o 'PubKeyAgent=/usr/bin/sss_ssh_authorizedkeys %u' -o 'PubKeyAgentRunAs=nobody' 2>/dev/null; then
-                sed -ri '
-                    s/^AuthorizedKeysCommand (.+)$/PubKeyAgent \1 %u/
-                    s/^PubKeyAgent .*$/\0\nPubKeyAgentRunAs nobody/
-                ' /etc/ssh/sshd_config.ipanew
-            fi
-
-            mv -Z /etc/ssh/sshd_config.ipanew /etc/ssh/sshd_config
-            chmod 600 /etc/ssh/sshd_config
-
-            /bin/systemctl condrestart sshd.service 2>&1 || :
-        fi
+        python2 -c 'from ipaclient.install.client import update_ipa_nssdb; update_ipa_nssdb()' >/var/log/ipaupgrade.log 2>&1
     fi
 }

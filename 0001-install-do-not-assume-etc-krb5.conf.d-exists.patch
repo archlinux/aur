@@ -1,0 +1,196 @@
+From c2a9ff7a7d5384bdb036b8679b71527f5ff64bbd Mon Sep 17 00:00:00 2001
+From: Jan Cholasta <jcholast@redhat.com>
+Date: Mon, 20 Mar 2017 06:56:53 +0000
+Subject: [PATCH 1/2] install: do not assume /etc/krb5.conf.d exists
+
+Add `includedir /etc/krb5.conf.d` to /etc/krb5.conf only if
+/etc/krb5.conf.d exists.
+
+Do not rely on /etc/krb5.conf.d to enable the certauth plugin.
+
+This fixes install on platforms which do not have /etc/krb5.conf.d.
+
+https://pagure.io/freeipa/issue/6589
+
+Reviewed-By: Martin Babinsky <mbabinsk@redhat.com>
+Reviewed-By: Christian Heimes <cheimes@redhat.com>
+Reviewed-By: Lukas Slebodnik <lslebodn@redhat.com>
+---
+ daemons/ipa-kdb/Makefile.am         |  6 ------
+ daemons/ipa-kdb/ipa-certauth        |  5 -----
+ freeipa.spec.in                     |  1 -
+ install/share/krb5.conf.template    |  7 ++++++-
+ ipaclient/install/client.py         | 16 ++++++++++------
+ ipaserver/install/krbinstance.py    |  8 +++++++-
+ ipaserver/install/server/upgrade.py | 33 +++++++++++++++++++++++++++++++++
+ 8 files changed, 56 insertions(+), 21 deletions(-)
+ delete mode 100644 daemons/ipa-kdb/ipa-certauth
+
+diff --git a/daemons/ipa-kdb/Makefile.am b/daemons/ipa-kdb/Makefile.am
+index 259bc3b20..5669349af 100644
+--- a/daemons/ipa-kdb/Makefile.am
++++ b/daemons/ipa-kdb/Makefile.am
+@@ -44,12 +44,6 @@ dist_noinst_DATA = ipa_kdb.exports
+ 
+ if BUILD_IPA_CERTAUTH_PLUGIN
+ ipadb_la_SOURCES += ipa_kdb_certauth.c
+-
+-
+-krb5confdir = $(sysconfdir)/krb5.conf.d
+-krb5conf_DATA = ipa-certauth
+-else
+-dist_noinst_DATA += ipa-certauth
+ endif
+ 
+ ipadb_la_LDFLAGS = 		\
+diff --git a/daemons/ipa-kdb/ipa-certauth b/daemons/ipa-kdb/ipa-certauth
+deleted file mode 100644
+index 6fde08284..000000000
+--- a/daemons/ipa-kdb/ipa-certauth
++++ /dev/null
+@@ -1,5 +0,0 @@
+-[plugins]
+- certauth = {
+-  module = ipakdb:kdb/ipadb.so
+-  enable_only = ipakdb
+- }
+diff --git a/freeipa.spec.in b/freeipa.spec.in
+index a8b5ce81f..80f302130 100644
+--- a/freeipa.spec.in
++++ b/freeipa.spec.in
+@@ -1207,7 +1207,6 @@ fi
+ %attr(0755,root,root) %{_libexecdir}/ipa/oddjob/org.freeipa.server.conncheck
+ %config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.freeipa.server.conf
+ %config(noreplace) %{_sysconfdir}/oddjobd.conf.d/ipa-server.conf
+-%config(noreplace) %{_sysconfdir}/krb5.conf.d/ipa-certauth
+ %dir %{_libexecdir}/ipa/certmonger
+ %attr(755,root,root) %{_libexecdir}/ipa/certmonger/*
+ # NOTE: systemd specific section
+diff --git a/install/share/krb5.conf.template b/install/share/krb5.conf.template
+index 1f18ff90d..e3420e537 100644
+--- a/install/share/krb5.conf.template
++++ b/install/share/krb5.conf.template
+@@ -1,4 +1,4 @@
+-includedir /etc/krb5.conf.d/
++$INCLUDES
+ includedir /var/lib/sss/pubconf/krb5.include.d/
+ 
+ [logging]
+@@ -35,3 +35,8 @@ $OTHER_DOMAIN_REALM_MAPS
+     db_library = ipadb.so
+   }
+ 
++[plugins]
++ certauth = {
++  module = ipakdb:kdb/ipadb.so
++  enable_only = ipakdb
++ }
+diff --git a/ipaclient/install/client.py b/ipaclient/install/client.py
+index c88061320..2d64a4494 100644
+--- a/ipaclient/install/client.py
++++ b/ipaclient/install/client.py
+@@ -640,14 +640,18 @@ def configure_krb5_conf(
+             'value': 'File modified by ipa-client-install'
+         },
+         krbconf.emptyLine(),
+-        {
+-            'name': 'includedir',
+-            'type': 'option',
+-            'value': paths.COMMON_KRB5_CONF_DIR,
+-            'delim': ' '
+-        }
+     ]
+ 
++    if os.path.exists(paths.COMMON_KRB5_CONF_DIR):
++        opts.extend([
++            {
++                'name': 'includedir',
++                'type': 'option',
++                'value': paths.COMMON_KRB5_CONF_DIR,
++                'delim': ' '
++            }
++        ])
++
+     # SSSD include dir
+     if configure_sssd:
+         opts.extend([
+diff --git a/ipaserver/install/krbinstance.py b/ipaserver/install/krbinstance.py
+index 6b51e65d1..f0875fbc9 100644
+--- a/ipaserver/install/krbinstance.py
++++ b/ipaserver/install/krbinstance.py
+@@ -249,6 +249,11 @@ class KrbInstance(service.Service):
+             root_logger.critical("krb5kdc service failed to start")
+ 
+     def __setup_sub_dict(self):
++        if os.path.exists(paths.COMMON_KRB5_CONF_DIR):
++            includes = 'includedir {}'.format(paths.COMMON_KRB5_CONF_DIR)
++        else:
++            includes = ''
++
+         self.sub_dict = dict(FQDN=self.fqdn,
+                              IP=self.ip,
+                              PASSWORD=self.kdc_password,
+@@ -264,7 +269,8 @@ class KrbInstance(service.Service):
+                              KDC_KEY=paths.KDC_KEY,
+                              CACERT_PEM=paths.CACERT_PEM,
+                              KDC_CA_BUNDLE_PEM=paths.KDC_CA_BUNDLE_PEM,
+-                             CA_BUNDLE_PEM=paths.CA_BUNDLE_PEM)
++                             CA_BUNDLE_PEM=paths.CA_BUNDLE_PEM,
++                             INCLUDES=includes)
+ 
+         # IPA server/KDC is not a subdomain of default domain
+         # Proper domain-realm mapping needs to be specified
+diff --git a/ipaserver/install/server/upgrade.py b/ipaserver/install/server/upgrade.py
+index 732776f2c..9c28c22fc 100644
+--- a/ipaserver/install/server/upgrade.py
++++ b/ipaserver/install/server/upgrade.py
+@@ -1549,6 +1549,38 @@ def setup_pkinit(krb):
+         aug.close()
+ 
+ 
++def enable_certauth(krb):
++    root_logger.info("[Enable certauth]")
++
++    aug = Augeas(flags=Augeas.NO_LOAD | Augeas.NO_MODL_AUTOLOAD,
++                 loadpath=paths.USR_SHARE_IPA_DIR)
++    try:
++        aug.transform('IPAKrb5', paths.KRB5_CONF)
++        aug.load()
++
++        path = '/files{}/plugins/certauth'.format(paths.KRB5_CONF)
++        modified = False
++
++        if not aug.match(path):
++            aug.set('{}/module'.format(path), 'ipakdb:kdb/ipadb.so')
++            aug.set('{}/enable_only'.format(path), 'ipakdb')
++            modified = True
++
++        if modified:
++            try:
++                aug.save()
++            except IOError:
++                for error_path in aug.match('/augeas//error'):
++                    root_logger.error('augeas: %s', aug.get(error_path))
++                raise
++
++            if krb.is_running():
++                krb.stop()
++            krb.start()
++    finally:
++        aug.close()
++
++
+ def disable_httpd_system_trust(http):
+     ca_certs = []
+ 
+@@ -1842,6 +1874,7 @@ def upgrade_configuration():
+                         CA_BUNDLE_PEM=paths.CA_BUNDLE_PEM)
+     krb.add_anonymous_principal()
+     setup_pkinit(krb)
++    enable_certauth(krb)
+ 
+     if not ds_running:
+         ds.stop(ds_serverid)
+-- 
+2.13.3
+
