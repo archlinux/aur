@@ -1,13 +1,13 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=kube-develop
-pkgver=r988.c605c01
+pkgver=r992.30bb56c
 pkgrel=1
 pkgdesc='A modern groupware client based on QtQuick and Sink (development branch)'
 arch=('i686' 'x86_64')
 url='https://kube.kde.org/'
 license=('GPL')
-depends=('sink-develop' 'qgpgme' 'kirigami' 'qt5-quickcontrols2')
+depends=('sink-develop' 'qgpgme' 'qt5-quickcontrols2')
 makedepends=('extra-cmake-modules' 'git' 'clang')
 conflicts=(kube)
 provides=(kube)
