@@ -1,0 +1,18 @@
+pkgbase = vim-razer-git
+	pkgdesc = vim + razer RGB keyboards
+	pkgver = 0.2.r1.ga312770
+	pkgrel = 1
+	url = https://github.com/DanManN/vim-razer
+	arch = any
+	groups = vim-plugins
+	license = GNU GPLv3
+	makedepends = git
+	depends = vim
+	depends = openrazer-meta
+	provides = vim-razer
+	conflicts = vim-razer
+	source = git+https://github.com/DanManN/vim-razer.git
+	md5sums = SKIP
+
+pkgname = vim-razer-git
+
