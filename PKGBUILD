@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
 license=('Apache')
-url="https://letsencrypt.org/"
+url="https://certbot.eff.org"
 depends=('ca-certificates' "python-acme=$pkgver" 'python-configargparse' 'python-configobj'
          'python-cryptography' 'python-pyopenssl' 'python-mock' 'python-parsedatetime'
          'python-pytz' 'python-setuptools' 'python-six' 'python-zope-component'
