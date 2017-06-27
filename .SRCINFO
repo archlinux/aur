@@ -1,7 +1,7 @@
 pkgbase = gonvim
 	pkgdesc = Neovim GUI written in Golang
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dzhou121/gonvim
 	arch = any
 	license = unknown
@@ -13,7 +13,7 @@ pkgbase = gonvim
 	provides = gonvim
 	conflicts = gonvim-git
 	source = https://github.com/dzhou121/gonvim/releases/download/v0.1/gonvim-linux.zip
-	sha256sums = efbc78c8a09c164caec7e1149d0d5d4f3cb772b200883fefcc7eb354fcd32cc9
+	sha256sums = a0869e5e72a567a12b0f3a7cc3c7ce4d7d436824f1bb8ecce56c57c0fdb03a62
 
 pkgname = gonvim
 
