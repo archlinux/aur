@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=blackbird-git
-pkgver=r346.8be66d8
+pkgver=r354.b438ce5
 pkgrel=1
 pkgdesc="Bitcoin arbitrage with a long/short market-neutral strategy"
 arch=('i686' 'x86_64')
@@ -36,4 +36,10 @@ package() {
 
   install -dm755 "${pkgdir}"/etc/
   install -m755 blackbird.conf "${pkgdir}"/etc/
+
+  install -dm755 "${pkgdir}"/usr/share/ca-certificates/trust-source/anchors/
+  install -m755 curl-ca-bundle.crt "${pkgdir}"/usr/share/ca-certificates/trust-source/anchors/blackbird.crt
+
+  sed 's#curl-ca-bundle.crt#/usr/share/ca-certificates/trust-source/anchors/blackbird.crt#' \
+    -i "${pkgdir}"/etc/blackbird.conf
 }
