@@ -1,23 +1,26 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=openmvs-git
-pkgver=0.7.r9.g8cbeda1
+pkgver=0.7.r19.ga5b1cc3
 pkgrel=1
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=('i686' 'x86_64')
 url="http://cdcseacave.github.io/openMVS"
 license=('GPL')
-depends=('opencv' 'cgal')
-makedepends=('git' 'cmake' 'boost' 'eigen' 'ceres-solver')
-optdepends=('cuda: GPU optimized mesh reconstruction code'
-            'nvidia-utils: Nvidia driver API is needed for cuda code')
+depends=('glew' 'glfw' 'suitesparse' 'blas' 'google-glog' 'opencv' 'boost-libs')
+makedepends=('git' 'cmake' 'cuda' 'boost' 'gflags' 'eigen' 'ceres-solver' 'cgal' 'nvidia-utils')
+optdepends=('nvidia-utils: GPU optimized mesh reconstruction code'
+            )
+
 options=()
 source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git"
         "vcglib::git+https://github.com/cdcseacave/VCG.git"
         "cuda.patch"
+        "gcc7.patch"
         )
 md5sums=('SKIP'
          'SKIP'
-         '39ab7cf21b8ca42ad9dd28d80e71b323')
+         '39ab7cf21b8ca42ad9dd28d80e71b323'
+         'f0fbb53989068e6e6fbede6fb1fa613a')
 
 pkgver() {
   cd "$pkgname"
@@ -29,6 +32,7 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   patch -Np1 -i ../cuda.patch
+  patch -Np1 -i ../gcc7.patch 
 }
 
 
@@ -36,12 +40,7 @@ build() {
   cd ${srcdir}
   mkdir -p build
   cd build
-  if $(pacman -Qq cuda nvidia-utils &>/dev/null)
-    then OpenMVS_USE_CUDA=ON
-    else OpenMVS_USE_CUDA=OFF
-         warning "For CUDA optimized rutines installing (cuda, nvidia-utils) and rebuild the packages"
-  fi
-  cmake ../${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib" -DOpenMVS_USE_CUDA=$OpenMVS_USE_CUDA
+  cmake ../${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib"
   make
 }
 
