@@ -13,20 +13,22 @@ license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake')
 optdepends=('chocolate-doom' 'prboom' 'zdoom' 'prboom-plus')
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/sdcofer70/enyo-doom/repository/archive.tar.gz?ref=$pkgver")
+source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/sdcofer70/enyo-doom/repository/archive.tar.gz?ref=${pkgver}")
 sha256sums=('7dfe9eb50cc043c40af95cfe67121458998f3e762d5876711cf6b341b3bd5d02')
 
-build() {
-  cd $pkgname-$pkgver-$_commit
+prepare() {
+  mkdir -p build
+}
 
-  cmake . \
+build() {
+  cd build
+  cmake ../${pkgname}-${pkgver}-${_commit} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd $pkgname-$pkgver-$_commit
-
-  make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="${pkgdir}" install
 }
