@@ -17,8 +17,8 @@ source=("git+${url}.git"
         rdm.service
         rdm.socket)
 sha256sums=('SKIP'
-            'de5199dba756137c9f689879ab2e842f7d7477f7f6a9091178a72888484d1102'
-            '25d1842a4187a1933ff27833201cfd0879da71a50241860e32edecfc7e75f14f')
+            '2a530156b5cb7637cb94e8bd91b31141f30f8041d56cf6aa076000d15307f3aa'
+            '56bf4f3e8208ea142c61ed6f80b4907f15e2bab8d690763cff8fb15f893ad16d')
 
 pkgver() {
     cd rtags
