@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=c9900268c0b214f8287cbd07b5f47ee438c14225c
+pkgver=c178b1fdf6c14d9b34454ce316d74d38932402ec8
 pkgrel=1
 conflicts=("kshare")
 pkgdesc="A ShareX inspired cross platform utility written with Qt."
@@ -13,8 +13,8 @@ source=(git+https://github.com/ArsenArsen/KShare.git)
 sha1sums=('SKIP')
 
 build() {
-  git checkout dev
   cd "${srcdir}/KShare"
+  git checkout dev
   git submodule update --init --recursive  
   qmake
   make
