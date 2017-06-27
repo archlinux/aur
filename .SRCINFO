@@ -17,3 +17,24 @@ pkgbase = weatherbot
 
 pkgname = weatherbot
 
+pkgbase = weatherbot
+	pkgdesc = Lightweight weather GTK tray application.
+	pkgver = 20170604
+	pkgrel = 1
+	url = https://github.com/sid-the-sloth/weatherbot
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-gobject
+	depends = python2-dateutil
+	depends = python2-requests
+	depends = python2-cairo
+	depends = pygtk
+	depends = gtk2
+	source = https://raw.githubusercontent.com/sid-the-sloth/weatherbot/eb3eb3bb962f2bf100eb505bb9c3a0fa2b40d7d9/weatherbot.py
+	source = https://raw.githubusercontent.com/sid-the-sloth/weatherbot/eb3eb3bb962f2bf100eb505bb9c3a0fa2b40d7d9/weatherbot-owm.py
+	md5sums = fd70bd8d00065d08f59bda094e3808f8
+	md5sums = c0d058d2639dc130efca1025b8052c00
+
+pkgname = weatherbot
+
