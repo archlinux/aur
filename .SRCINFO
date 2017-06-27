@@ -1,7 +1,7 @@
 pkgbase = gonvim
 	pkgdesc = Neovim GUI written in Golang
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dzhou121/gonvim
 	arch = any
 	license = unknown

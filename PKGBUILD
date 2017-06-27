@@ -1,7 +1,7 @@
 # Maintainer: Wil Thomason <wbthomason@cs.cornell.edu>
 pkgname=gonvim
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Neovim GUI written in Golang"
 arch=('any')
 url="https://github.com/dzhou121/gonvim"
