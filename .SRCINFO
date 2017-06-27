@@ -1,0 +1,25 @@
+pkgbase = task-context-env
+	pkgdesc = A command-line todo list manager
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = http://taskwarrior.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = util-linux
+	depends = gnutls
+	optdepends = bash-completion: for bash completion
+	optdepends = python: for python export addon
+	optdepends = ruby: for ruby export addon
+	optdepends = perl: for perl export addon
+	optdepends = perl-json: for perl export addon
+	provides = task
+	conflicts = task
+	source = https://taskwarrior.org/download/task-2.5.1.tar.gz
+	source = env.patch
+	sha256sums = d87bcee58106eb8a79b850e9abc153d98b79e00d50eade0d63917154984f2a15
+	sha256sums = c9d3dacb79a0cfcfc7101d98edc6239d8b1a8c912b79a1fcec5b39496bdb22cd
+
+pkgname = task-context-env
+
