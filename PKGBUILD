@@ -3,21 +3,23 @@
 # Contributor: Sergei Lebedev <superbobry at gmail dot com>
 
 pkgname=rutorrent
-_pkgname=ruTorrent-master
-pkgver=3.7
-pkgrel=4
+_pkgname=ruTorrent
+pkgver=3.8
+pkgrel=1
 pkgdesc="Yet another web front-end for rTorrent"
 arch=('any')
-url="http://code.google.com/p/rutorrent/"
+# url="http://code.google.com/p/rutorrent/"
+url='https://github.com/Novik/ruTorrent'
 license=('GPL')
 depends=(php curl gzip coreutils)
 optdepends=('mod_scgi: for SCGI protocol')
 conflicts=(rutorrent-plugins)
 source=(
-$pkgname-$pkgver.zip::"http://dl.bintray.com/novik65/generic/ruTorrent-$pkgver.zip"
+# $pkgname-$pkgver.zip::"http://dl.bintray.com/novik65/generic/ruTorrent-$pkgver.zip"
+$pkgname-$pkgver.tar.gz::https://github.com/Novik/ruTorrent/archive/v${pkgver}.tar.gz
 apache.example.conf
 apache.example.site.conf)
-sha256sums=('c1fb86317231c8e8fa9e1a7dea450ce4687d94caad22d763bc68d90c56d0749f'
+sha256sums=('610fc5df350fe7915b4413067fea8657eb6f26b1cc5212de97a4af98439b2e2c'
             '79b5aab7ef928727b3ec2aa0f1b0869310adde11cd774d148c03025deb6dec0c'
             '9afe7d2a9aadb5fd6a0fcd907f7f46bdc3630c369a5a684c51bbeeb5b4d354aa')
 backup=(
@@ -26,13 +28,16 @@ etc/webapps/rutorrent/conf/plugins.ini
 etc/webapps/rutorrent/conf/access.ini
 )
 options=(emptydirs !strip)
-prepare() {
-  cd $srcdir/$_pkgname
-  rm .gitignore
-}
 
+prepare() {
+  cd $srcdir/$_pkgname-$pkgver
+  rm -f .gitignore
+  msg2 "Removing files with Russian letters in filenames"
+  cd plugins/tracklabels/labels
+  find . -print0 | perl -MFile::Path=remove_tree -n0e 'chomp; remove_tree($_, {verbose=>1}) if /[[:^ascii:][:cntrl:]]/'
+}
 package() {
-  cd $srcdir/$_pkgname
+  cd $srcdir/$_pkgname-$pkgver
 
   install -d "$pkgdir"/usr/share/webapps
   install -d "$pkgdir"/etc/webapps/$pkgname
@@ -51,5 +56,4 @@ package() {
   #fix perms
   #chown http\: $pkgdir/usr/share/webapps/$pkgname/share/{settings,torrents,users}
   chmod 0777 $pkgdir/usr/share/webapps/$pkgname/share/{settings,torrents,users}
-
 }
