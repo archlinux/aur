@@ -48,7 +48,9 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-201
         "http://downloads.sourceforge.net/sourceforge/devkitpro/3dstools-$_3dstoolsver.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/picasso-$_picassover.tar.bz2"
         "devkitarm-skip-libs.patch"
-        "devkitarm-use-in-tree-isl.patch"
+        "devkitarm-add-patches.patch"
+        "fix-gcc-6.3.0-compilation-on-gcc-7.patch"
+        "fix-gdb-7.12-compilation-on-gcc-7.patch"
         "devkitarm.sh"
         "devkitarm.fish")
 sha256sums=('6b142f265bc9c7fc9449f5b539198f140d231725b2ed0828749d8a1e0fad73ff'
@@ -71,7 +73,9 @@ sha256sums=('6b142f265bc9c7fc9449f5b539198f140d231725b2ed0828749d8a1e0fad73ff'
             'b54002b86e3a6005a204153d7567876f920a1a5c0a2bc288d95d98189ef0f5e3'
             '2af6d351b8b1d3c107ab31463eca8e73f88f201e580c448bfc71876f4ebe314d'
             '3ba88e36a690f45baf642afbb49bd40e7fc7fb53e3f2eb69b594057cd6071e6d'
-            'df823a3344aa91ce8f2fa706c9918f95a99e71e0c65f0d281c8e59cef858280a'
+            'c525872f266457e2e8195781193fb59c302b6fb920ad7b1ed227b8f126395526'
+            'e7013af51af0cb1e088f7fc25576471076780bc97e05e7921fe819a3c87fce8b'
+            'bd61f5c2a9edcf899a1640d18ba0f858b4ecd800b6311e17e53838405a7b3748'
             '9448465b2de6b6aefc5e0a8404f780f737cb86b4b1280d653712271b892908f9'
             'c4cc42b085be7c48f06f75c934e846a61749d9ba5e31ee463a03ba27a01c8afd')
 noextract=("binutils-$_binutilsver.tar.bz2" "gcc-$_gccver.tar.bz2"
@@ -109,7 +113,10 @@ END
     buildscripts/build-devkit.sh
 
   # use in-tree isl
-  patch -Np0 < devkitarm-use-in-tree-isl.patch
+  # add patch to build gcc 6.3.0 on gcc >7
+  # disable guile for gdb
+  patch -Np0 < devkitarm-add-patches.patch
+
   # isl needlessly wants automake-14, upgrading
   autoreconf -Wnone -fi isl-$_islver
 

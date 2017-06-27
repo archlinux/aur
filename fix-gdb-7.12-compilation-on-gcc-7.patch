@@ -1,0 +1,32 @@
+From 909de2c5cc91b815d671f7018da2a925fbd19aaf Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tom@tromey.com>
+Date: Mon, 24 Oct 2016 12:06:39 +0100
+Subject: [PATCH] PR gdb/20653 - small cleanup in string_to_explicit_location
+
+This bug points out that string_to_explicit_location compares a char*
+against '\0'; whereas comparing against NULL is more normal.
+
+2016-10-24  Tom Tromey  <tom@tromey.com>
+
+	PR breakpoints/20653:
+	* location.c (string_to_explicit_location): Use NULL, not '\0'.
+---
+ gdb/location.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/location.c b/gdb/location.c
+index 65116c7..8dce21a 100644
+--- a/gdb/location.c
++++ b/gdb/location.c
+@@ -524,7 +524,7 @@ string_to_explicit_location (const char **argp,
+      character is an explicit location.  "-p" is reserved, though,
+      for probe locations.  */
+   if (argp == NULL
+-      || *argp == '\0'
++      || *argp == NULL
+       || *argp[0] != '-'
+       || !isalpha ((*argp)[1])
+       || ((*argp)[0] == '-' && (*argp)[1] == 'p'))
+-- 
+2.9.3
+
