@@ -4,10 +4,10 @@ pkgbase=('python-vcstools')
 pkgname=('python-vcstools')
 _module='vcstools'
 pkgver='0.1.39'
-pkgrel=1
+pkgrel=2
 pkgdesc="VCS/SCM source control library for svn, git, hg, and bzr"
 url="http://wiki.ros.org/vcstools"
-depends=()
+depends=('python' 'python-dateutil' 'python-yaml')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
@@ -19,9 +19,7 @@ build() {
     python setup.py build
 }
 
-package_python-vcstools() {
-    depends+=('python' 'python-dateutil' 'python-yaml')
-    conflicts=('python2-vcstools')
+package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
