@@ -2,13 +2,13 @@
 # Contributor: Maximilian Berger <snowdragon92@gmail.com>
 
 pkgname=atlauncher
-pkgrel=2
-pkgver=3.2.3.1
+pkgrel=1
+pkgver=3.2.3.7
 pkgdesc="ATLauncher is a Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install ModPacks easily and quickly. Installs latest released jar."
 arch=('any')
 url="http://www.atlauncher.com/"
 license=('CCPL')
-depends=('java-runtime' 'xorg-server-utils' 'openal')
+depends=('java-runtime' 'openal')
 makedepends=('unzip')
 provides=('atlauncher')
 
