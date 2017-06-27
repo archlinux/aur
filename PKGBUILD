@@ -7,7 +7,7 @@ pkgname='ros-kinetic-rospack'
 pkgver='2.3.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-cmake-modules
@@ -22,9 +22,9 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  python2-catkin-pkg
   python2-rosdep
   tinyxml
+  python2-catkin_pkg
   python2
   boost
   pkg-config)
