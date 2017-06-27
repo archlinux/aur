@@ -3,8 +3,7 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=raine
-pkgver=0.64.5
-_gitver=c09ecd56ce834bf602107960697a74d6977d0958
+pkgver=0.64.13
 pkgrel=1
 pkgdesc="A multiple arcade emulator focused on 680x0 machines like NeoCD and Neo Geo"
 url="http://raine.1emulation.com/"
@@ -20,10 +19,12 @@ optdepends=('raine-artwork: additional background graphics for some games'
             'raine-blend: transparency information for some games'
             'arcade-history-dat: database with various information about the loaded rom'
             'arcade-command-dat: database with button combinations for special moves in (mostly fighting) games')
-source=(raine-$pkgver.tar.gz::"https://github.com/zelurker/raine/archive/$_gitver.tar.gz"
-        "$url/archive/debian/dists/unstable/main/binary-i386/raine_${pkgver}-2_i386.deb")
-sha256sums=('b43acd7c23f742148bf73fe57fc49e344e6392a50c1548590aeceafa04ff5147'
-            'c917d1c17f23901cd160c24f1be0b504590f773b7f791e5a890875162d813d8f')
+source=(raine-$pkgver.tar.gz::"https://github.com/zelurker/raine/archive/$pkgver.tar.gz"
+        "$url/archive/debian/dists/unstable/main/binary-i386/raine_${pkgver}_i386.deb"
+        "raine-gcc7-abs.patch")
+sha256sums=('0af13e67744ac81f987687a3f83703bc844897a6a1b828a19d82f96dfe8ab719'
+            '71414fc61c1d26eeccfab4f7319ba9efce19b8276151d3a119fd86c3db0a172b'
+            '396eecb13c8546b55f98094a69dbe8ccab79855e2a3eca58397aedc72308bd59')
 options=('emptydirs')
 
 prepare() {
@@ -31,7 +32,7 @@ prepare() {
   mkdir -p raine-bin
   bsdtar xf data.tar.xz -C raine-bin
 
-  cd raine-$_gitver
+  cd raine-$pkgver
   # copy bitmaps and fonts from raine's deb package
   cp -rup "$srcdir"/raine-bin/usr/share/games/raine/bitmaps .
   cp -rup "$srcdir"/raine-bin/usr/share/games/raine/fonts .
@@ -49,14 +50,17 @@ prepare() {
   # 'detect-cpu' script does not recognize most recent cpus, use generic optimizing
   echo "_MARCH=-march=${CARCH/x86_64/x86-64} -mtune=generic" > cpuinfo
   echo "CPU=generic" >> cpuinfo
+
+  # gcc7 compatibility
+  patch -p1 < "$srcdir"/raine-gcc7-abs.patch
 }
 
 build() {
-  make -C "$srcdir"/raine-$_gitver #VERBOSE=1
+  make -C "$srcdir"/raine-$pkgver #VERBOSE=1
 }
 
 package() {
-  cd "$srcdir"/raine-$_gitver
+  cd "$srcdir"/raine-$pkgver
   make DESTDIR="$pkgdir" install
   # doc + license
   install -d "$pkgdir"/usr/share/{doc,licenses}/raine
