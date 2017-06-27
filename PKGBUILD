@@ -3,12 +3,15 @@
 pkgname=mikutter
 #pkgver=3.5.0_alpha2
 pkgver=3.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
 license=('MIT')
-depends=('ruby-gtk2>=2.2.3' 'ruby-moneta' 'ruby-nokogiri' 'ruby-httpclient' 'ruby-mini_portile2' 'ruby-totoridipjp')
+depends=(
+'ruby-gtk2>=2.2.3' 'ruby-moneta' 'ruby-nokogiri' 'ruby-httpclient' 'ruby-mini_portile2' 'ruby-totoridipjp'
+'ruby-gettext' 'ruby-native-package-installer'
+)
 optdepends=('libnotify: notify support')
 source=(
 #http://mikutter.hachune.net/bin/$pkgname.$pkgver.tar.gz
@@ -17,25 +20,9 @@ mikutter.desktop
 )
 
 package() {
-  # for ruby2.4
-  rm -f "$srcdir/$pkgname/vendor/atk.rb"
-  rm -f "$srcdir/$pkgname/vendor/atk.so"
-  rm -f "$srcdir/$pkgname/vendor/cairo.rb"
-  rm -f "$srcdir/$pkgname/vendor/cairo.so"
-  rm -fr "$srcdir/$pkgname/vendor/cairo/"
-  rm -f "$srcdir/$pkgname/vendor/gdk_pixbuf2.rb"
-  rm -f "$srcdir/$pkgname/vendor/gdk_pixbuf2.so"
-  rm -f "$srcdir/$pkgname/vendor/glib2.rb"
-  rm -f "$srcdir/$pkgname/vendor/glib2.so"
-  rm -fr "$srcdir/$pkgname/vendor/glib2"
-  rm -f "$srcdir/$pkgname/vendor/gobject-introspection.rb"
-  rm -f "$srcdir/$pkgname/vendor/gobject_introspection.so"
-  rm -fr "$srcdir/$pkgname/vendor/gobject-introspection"
-  rm -f "$srcdir/$pkgname/vendor/gtk2.rb"
-  rm -f "$srcdir/$pkgname/vendor/gtk2.so"
-  rm -fr "$srcdir/$pkgname/vendor/gtk2"
-  rm -f "$srcdir/$pkgname/vendor/pango.rb"
-  rm -f "$srcdir/$pkgname/vendor/pango.so"
+  # mikutter require cairo-gobject 3.1.6 but https://aur.archlinux.org/packages/ruby-cairo-gobject/ is old (3.1.3)
+  mkdir "$srcdir/$pkgname/gems"
+  gem install --no-user-install -i "$srcdir/$pkgname/gems" cairo-gobject
 
   mkdir "$pkgdir/opt"
   cp -r "$srcdir/$pkgname" "$pkgdir/opt"
