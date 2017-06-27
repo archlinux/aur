@@ -10,6 +10,7 @@ pkgbase = gonvim
 	depends = qt5-tools
 	depends = qt5-multimedia
 	depends = qt5-svg
+	depends = qt5-declarative
 	provides = gonvim
 	conflicts = gonvim-git
 	source = https://github.com/dzhou121/gonvim/releases/download/v0.1/gonvim-linux.zip
