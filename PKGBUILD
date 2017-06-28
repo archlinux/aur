@@ -3,7 +3,7 @@
 pkgname=logitechmediaserver-git
 pkgver=7.9.1
 _gitver=7.9
-pkgrel=3
+pkgrel=4
 pkgdesc='Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server. (Git-Version, if you prefer stability consider using logitechmediaserver instead)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/stefansielaff/slimserver'
@@ -28,16 +28,21 @@ depends=('perl>=5.26'
 	 'perl-http-date'
 	 'perl-http-message'
 	 'perl-json-xs'
+	 'perl-log-log4perl'
 	 'perl-lwp-mediatypes'
 	 'perl-lwp-protocol-https'
 	 'perl-module-build'
+	 'perl-net-ipv4addr'
 	 'perl-net-upnp'
+	 'perl-path-class'
 	 'perl-soap-lite'
+	 'perl-readonly'
 	 'perl-sub-name'
 	 'perl-sub-uplevel'
 	 'perl-template-toolkit'
 	 'perl-test-nowarnings'
 	 'perl-test-warn'
+	 'perl-text-glob'
 	 'perl-uri'
 	 'perl-xml-parser'
 	 'perl-xml-simple'
@@ -45,7 +50,7 @@ depends=('perl>=5.26'
 	 'ffmpeg' 'giflib' 'libexif' 'libjpeg-turbo' 'libpng')
 makedepends=('yasm' 'rsync' 'gd' 'zlib')
 optdepends=('perl-io-socket-ssl: support for https streams')
-optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems' 'perl-io-socket-ssl: support for https streams')
+optdepends_x86_64=('lib32-glibc: transcoding on 64-bit systems' 'lib32-gcc-libs: transcoding on 64-bit systems')
 install=install
 source=("slimserver.tar.gz::${url}/archive/public/${_gitver}.tar.gz"
         "slimserver-vendor.tar.gz::${url}-vendor/archive/public/${_gitver}.tar.gz"
@@ -64,9 +69,10 @@ prepare() {
 	cd "${srcdir}/slimserver-public-${_gitver}/CPAN"
 	mkdir _PRESERVE
 	cp -p --parents URI/Find.pm _PRESERVE
-	rm -f {AE.pm,AnyEvent.pm,DBI.pm,JSON/XS.pm,Template.pm,URI.pm,version.pm}
-	rm -rf {AnyEvent,Archive,CGI,common,DBI,DBD,Digest,HTML,HTTP,Net,SOAP,Sub,Template,URI,version,XML,YAML}
+	rm -f {AE.pm,AnyEvent.pm,CGI.pm,DBI.pm,Error.pm,JSON/XS.pm,LWP.pm,Readonly.pm,Template.pm,Text/Glob.pm,URI.pm,version.pm}
+	rm -rf {AnyEvent,Archive,CGI,common,DBI,DBD,Digest,EV,HTML,HTTP,I18N,Mac,Log,LWP,Net,Path,SOAP,Sub,Template,Test,URI,version,XML,YAML}
 	cp -rf _PRESERVE/* .
+	rm -rf _PRESERVE
 }
 
 build() {
