@@ -9,19 +9,15 @@ url="https://github.com/rliou92/umonitor"
 license=('MIT')
 depends=('libconfig' 'libxcb')
 makedepends=('git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
 install=${_gitname}.install
-changelog=
 source=("git://github.com/rliou92/${_gitname}.git")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
+
+pkgver() {
+	cd $srcdir/$_gitname
+	# Git, no tags available
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd $srcdir/$_gitname

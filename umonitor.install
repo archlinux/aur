@@ -1,5 +1,5 @@
 post_install(){
-	echo 'To enable autostart of umonitor, run systemctl --user enable umonitor.service'
-	echo 'To enable refreshing of screen configuration after suspend or hibernation, run systemctl enable udev_trigger.service'
+	# echo 'To enable autostart of umonitor, run systemctl --user enable umonitor.service'
+	# echo 'To enable refreshing of screen configuration after suspend or hibernation, run systemctl enable udev_trigger.service'
 
 }
