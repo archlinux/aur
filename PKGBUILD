@@ -4,7 +4,7 @@
 # Contributor: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
 
 pkgname=monetdb
-pkgver=11.25.9
+pkgver=11.25.23
 pkgrel=1
 pkgdesc="MonetDB: an open source database system"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://www.monetdb.org/Home"
 license=('custom')
 makedepends=('python' 'apache-ant' 'r')
 source=("http://dev.monetdb.org/downloads/sources/Latest/MonetDB-$pkgver.tar.xz")
-sha256sums=('45bacc0c674060eb1d2ec3dff2a36520d3f42b6c2461d2dd06a19f239a05ab6e')
+sha256sums=('8f3a39cfcd11dc81746e062795a8e46eb9b1ca9fdf03a3dbd5290826f62d1c07')
 
 build() {
   cd "$srcdir/MonetDB-$pkgver"
