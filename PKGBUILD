@@ -7,7 +7,7 @@
 
 pkgname=hpltt
 pkgver=4.22
-pkgrel=1
+pkgrel=2
 pkgdesc="HP Library & Tape Tools - diagnostics for HP tape drives"
 arch=('i686' 'x86_64')
 url="https://www.hpe.com/us/en/product-catalog/storage/storage-software/pip.406729.html"
