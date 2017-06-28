@@ -1,0 +1,18 @@
+pkgbase = phoxi
+	pkgdesc = PhoXi camera software suite
+	pkgver = 1.1.32
+	pkgrel = 1
+	url = http://www.photoneo.com/product-detail/phoxi-control-application/
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = opencv
+	depends = openssl
+	depends = pcl
+	depends = vtk
+	options = !strip
+	source = http://photoneo.com/files/PhotoneoPhoXiControl-1.1.32-Ubuntu16.04-LTS-64-gcc5.4.tar
+	sha512sums = b38815e8dcb29205ae352e214db193635b0ec7c1b6f934e2e27b677426111cbcabb0789aa24fd6cc0d7cb27c0a3bc71436b01ff669642eae8d424a860a6d411c
+
+pkgname = phoxi
+
