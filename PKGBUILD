@@ -1,14 +1,14 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 name=colmap
 pkgname=${name}-git
-pkgver=2.1.r145.g2789ca2
+pkgver=3.1.r20.gb1af506
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
 license=('GPL')
 groups=()
-depends=('lapack' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'boost-libs' 'qt5-base')
+depends=('gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'boost-libs' 'qt5-base')
 makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen')
 optdepends=('cuda: for cuda sfm/mvs acceleration')
 provides=()
@@ -23,7 +23,7 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git"
         "vocabulary-tree-1M.bin::http://cvg.ethz.ch/research/jschoenb/colmap/vocab_tree-1048576.bin"
         )
 md5sums=('SKIP'
-         'a59344b125e438a446f4ae1e747ea150'
+         '8a9f76c21ae93e5f5571f372f5401423'
          'ebb1dc43e014a1e720a06422c6248a40'
          '55d81534d969cf706719007462f20443'
          '3521ff3c601596473c6ce5256772f606'
