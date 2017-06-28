@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xreader
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ url='https://github.com/linuxmint/xreader'
 install=xreader.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('687581e2973ac9ec1fb63c50b493cb54')
+md5sums=('f528263d7d491e976d819e65cf3930f9')
 
 build() {
     if [ -d /usr/include/nemo/libnemo-extension ]; then NEMO_EXT_FLAG=""; else NEMO_EXT_FLAG="--disable-nemo"; fi
