@@ -1,6 +1,6 @@
 pkgname=settings-phonepi
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Settings application for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
@@ -19,4 +19,6 @@ build() {
 package() {
 	cd "$srcdir/phonepi/src/settings-app"
 	make DESTDIR=$pkgdir install
+	install -Dm600 "./entry/settings-pi.desktop" "$HOME/.local/share/applications"
+	install -Dm600 "./entry/settings-pi.png" "$HOME/.local/share/icons"
 }
