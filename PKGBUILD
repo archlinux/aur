@@ -1,13 +1,14 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
-#  EX-Maintainer: Yaron de Leeuw < me@jarondl.net >
-# Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
+# Ex-Maintainer: Yaron de Leeuw < me@jarondl.net >
+# Maintained at : https://github.com/funilrys/PKGBUILD/tree/master/pidgin-light
+# Lately maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 # Contributor: J. W. Birdsong <jwbirdsong AT gmail DOT com>
 # Contributor: Frikilinux <frikilinux at frikilinux.com.ar>
 # Contributor: Adriano Foschi <adriano.src gmail com>
 # Contributor: Ismael Carnales <icarnales@gamail.com
 
 pkgname=pidgin-light
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="A light pidgin version: msn, jabber, irc supported protocols without gstreamer, tcl, tk, xscreensaver support.No video/voice.  Includes finch "
 arch=('i686' 'x86_64')
@@ -24,7 +25,7 @@ options=('!libtool')
 install='pidgin-light.install'
 source=("http://downloads.sourceforge.net/project/pidgin/Pidgin/${pkgver}/pidgin-${pkgver}.tar.bz2" )
 
-sha512sums=('d6a9bb8075b475e5204d730075b432ca0f1cb91b6337f98e506587132581e6928a826b47e0b94fb9eaedc79c5be0a8237c4671fc26dba97dedad1adb74c9abfa')
+sha512sums=('e87b39888432982ee36332fd14b272f49f7974de9e8694f7fe3bec2821748d6e6026ac5a63615a93386a033d6ee7c4de5ae0a86b725f63b9cc55650f0ab94b06')
 
 build() {
 
