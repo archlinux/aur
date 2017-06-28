@@ -7,13 +7,13 @@
 
 pkgname=twinkle-qt5
 _pkgname=twinkle
-pkgver=1.9.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Softphone for voice over IP and IM communication using SIP"
 arch=('x86_64' 'i686')
 url="http://www.twinklephone.com/"
 license=('GPL')
-depends=('file' 'qt5-quick1' 'ccrtp' 'ilbc')
+depends=('file' 'libsndfile' 'gsm' 'speex' 'qt5-quick1' 'ccrtp' 'ilbc' 'libzrtpcpp')
 makedepends=('pkg-config' 'boost' 'cmake' 'git' 'qt5-tools')
 source=("git+https://github.com/LubosD/$_pkgname.git#tag=v${pkgver}")
 md5sums=('SKIP')
@@ -22,8 +22,7 @@ build() {
   cd "$_pkgname"
   mkdir -p build
   cd build
-
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DWITH_ALSA=On -DWITH_SPEEX=On -DWITH_ILBC=On -DWITH_QT5=On # -DWITH_ZRTP=On -DWITH_G729=On
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DWITH_QT5=ON -DWITH_ALSA=ON -DWITH_GSM=ON -DWITH_SPEEX=ON -DWITH_ZRTP=ON -DWITH_ILBC=ON # -DWITH_G729=On
   make
 }
 
