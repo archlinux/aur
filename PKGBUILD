@@ -1,7 +1,7 @@
 # Maintainer: Patrik Karlsson <pata.karlsson@gmail.com>
 
 pkgname=jotasync
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="rsync GUI with integrated scheduler"
 arch=('any')
@@ -17,7 +17,7 @@ source=(
 	'jotasync.desktop'
 )
 sha256sums=(
-	'4be13abb2bb3875199d813c9aed3c1b7b998c7530feac18256931428d26938bc'
+	'2631ce6ea9635741650978f55dc55bf57f060ff70d921c2555898294105b0fc9'
 	'fa3eb8adf913d5e4a72087dd99e826dedf38792ce229499c70f329a651f08f9c'
 	'a81db2e919a697669a58a119a6bcf11570422abb6f67b0f381a4b65f5246b6af'
 	'1bbbe11c32dba035dce9cd8737a9cc333a6559842d2721abcd5e5614b343c705'
