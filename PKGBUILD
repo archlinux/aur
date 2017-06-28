@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-player
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('wine: for installing the run time packages (RTP)'
             'libxmp: decoder for tracker music, used by few games')
 install=$pkgname.install
 source=("https://easyrpg.org/downloads/player/$pkgname-$pkgver.tar.gz")
-sha256sums=('a5f6d1615dca2ebf7178009ccb5d274b7220c59a917554a4bd524a0fbffd4c48')
+sha256sums=('87175a70620d860c8a7d9258039d74c1d74aadfb2a4577d18e319a8b88be916e')
 
 build () {
   cd $pkgname-$pkgver
