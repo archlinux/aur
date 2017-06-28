@@ -1,0 +1,12 @@
+post_install() {
+  systemctl try-reload-or-restart org.cups.cupsd
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+
