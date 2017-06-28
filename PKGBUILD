@@ -1,12 +1,12 @@
 pkgname=dialer-phonepi
 pkgver=1
-pkgrel=8
+pkgrel=9
 pkgdesc="Dialer application and call daemon for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
 license=("GPL2")
 makedepends=("git" "cmake")
-depends=("qt5-base" "qt5-tools" "qt5-declarative" "qt5-wayland" "glib2" "dbus" "dbus-glib")
+depends=("qt5-base" "qt5-tools" "qt5-declarative" "qt5-quickcontrols" "qt5-wayland" "glib2" "dbus" "dbus-glib")
 source=(git://github.com/PhonePi/phonepi.git)
 sha256sums=("SKIP")
 
