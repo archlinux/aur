@@ -10,7 +10,7 @@ pkgbase = leocad
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	source = leocad-17.02.tar.gz::https://github.com/leozide/leocad/archive/v17.02.tar.gz
-	source = https://github.com/leozide/leocad/releases/download/v17.02/Library-Linux-9781.zip
+	source = leocad-17.02-library.zip::https://github.com/leozide/leocad/releases/download/v17.02/Library-Linux-9781.zip
 	sha256sums = 5d3d00a559dc74aed4b2605a8e0ab30722b34267102c57d34d9f0c9f5369df25
 	sha256sums = e3af3ca4eb1ba1c4ee820343876a8be5f8c39bf69c51400a1db176a188f780a8
 
