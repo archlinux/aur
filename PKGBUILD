@@ -15,9 +15,8 @@ optdepends=('icu48: Rendering from HTML uses unicode character encoding')
 
 # Debian packages are already stripped, so don't bother re-attempting
 options=('!strip')
-
-source_x86_64=("http://download.gna.org/wkhtmltopdf/0.12/${pkgver}/wkhtmltox-${pkgver}_linux-generic-amd64.tar.xz")
-source_i686=("http://download.gna.org/wkhtmltopdf/0.12/${pkgver}/wkhtmltox-${pkgver}_linux-generic-i386.tar.xz")
+source_x86_64=("https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/${pkgver}/wkhtmltox-${pkgver}_linux-generic-amd64.tar.xz")
+source_i686=("https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/${pkgver}/wkhtmltox-${pkgver}_linux-generic-i386.tar.xz")
 md5sums_i686=('ce1a2c0b2cf786ccc5d5828c42c99ddd')
 md5sums_x86_64=('96b7306cebb9e65355f69f7ab63df68b')
 
