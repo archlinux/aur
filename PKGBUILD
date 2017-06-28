@@ -6,10 +6,16 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
+_opt_CPP_ONLY=0
+_opt_ADA=0
+_opt_JAVA=0 # this compiles with my packages but not in a clean-chroot. There are more dependencies I can't find.
+_opt_SSP=1  # Stack Smashing Protection
+#_cloogver='0.18.4'  # comment out to disable
+
 set -u
 _pkgver='6.3'
 pkgname="gcc${_pkgver//\./}-multilib"
-_snapshot='6-20170614'
+_snapshot='6-20170621'
 pkgver="${_pkgver}_${_snapshot#*-}"
 _islver='0.17'
 #_commit='4fc407888a30c5d953816b05c8a8e98ec2ab3101' # Pulling commits this big is too slow!
@@ -18,12 +24,30 @@ pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
 url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('zlib')
-# removed ada, don't know where to get ada-multilib
-makedepends=('binutils>=2.28' 'libmpc' 'doxygen')
+depends=('zlib' 'gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath')
+makedepends=( # https://gcc.gnu.org/install/prerequisites.html
+  'binutils>=2.28'
+  'gcc-libs-multilib'
+  'bash'
+  'gzip>=1.2.4'
+  'bzip2>=1.0.2'
+  'gawk>=3.1.5'
+  'gmp>=4.3.2'
+  'mpfr>=2.4.2'
+  'gettext>=0.14.5'
+  'doxygen'
+)
+if [ "${_opt_JAVA}" -ne 0 ]; then
+  makedepends+=('jack') # gcc63
+  depends+=('gtk2' 'libxtst' 'alsa-lib') # from gcc63
+fi
+if [ "${_opt_ADA}" -ne 0 ]; then
+  makedepends+=('gcc-ada-multilib') # GNAT
+fi
 makedepends+=('lib32-glibc>=2.25')
-
-makedepends+=('git')
+if [ ! -z "${_commit:-}" ]; then
+  makedepends+=('git')
+fi
 checkdepends=('dejagnu' 'inetutils')
 provides=("gcc${_pkgver//\./}") # no version as it is completely contained in the name
 conflicts=("gcc${_pkgver//\./}")
@@ -34,7 +58,10 @@ source=(
   "http://mirrors.concertpass.com/gcc|snapshots/LATEST-6/gcc-${_snapshot}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
-sha256sums=('ec36462b9a8388accca91ffae190eb696e5fade4a5e1c573be349448ee4b31ac'
+if [ ! -z "${_cloogver:=}" ]; then
+  source+=("http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
+fi
+sha256sums=('dcc81ad0ee8a67fab24269016b3830e7708addfc872db675198611181c711437'
             '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb')
 
 PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
@@ -112,6 +139,9 @@ prepare() {
 
   # link isl for in-tree build
   ln -s "../isl-${_islver}" 'isl'
+  if [ ! -z "${_cloogver}" ]; then
+    ln -s "../cloog-${_cloogver}" 'cloog'
+  fi
 
   # Do not run fixincludes
   sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
@@ -136,13 +166,31 @@ build() {
   cd "${_basedir}/gcc-build"
 
   if [ ! -s 'Makefile' ]; then
+    local _languages=''
+    local _cfgopts=()
+    if [ ! -z "${_cloogver}" ]; then
+      _cfgopts+=(--enable-cloog-backend='isl')
+    fi
+    if [ "${_opt_ADA}" -ne 0 ]; then
+      _languages+=',ada' # new languages always start with a comma
+    fi
+    if [ "${_opt_JAVA}" -ne 0 ]; then
+      _languages+=',java'
+      _cfgopts+=(--enable-java-awt='gtk' --enable-libgcj-multifile)
+      #_cfgopts+=(--with-java-home="${JAVA_HOME}")
+    fi
+    if [ "${_opt_SSP}" -eq 0 ]; then
+      _cfgopts+=(--disable-libssp)
+    fi
+    if [ "${_opt_CPP_ONLY}" -eq 0 ]; then
+      _languages+=',fortran,go,lto,objc,obj-c++'
+    fi
     # using -pipe causes spurious test-suite failures
     # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
     CFLAGS="${CFLAGS/-pipe/}" \
     CXXFLAGS="${CXXFLAGS/-pipe/}" \
-    ../configure \
+    ../configure "${_cfgopts[@]}" \
       --build="${CHOST}" \
-      --disable-libssp \
       --disable-libstdcxx-pch \
       --disable-libunwind-exceptions \
       --enable-multilib \
@@ -153,7 +201,7 @@ build() {
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
       --enable-install-libiberty \
-      --enable-languages='c,c++,fortran,go,lto,objc,obj-c++' \
+      --enable-languages="c,c++${_languages}" \
       --enable-libmpx \
       --enable-linker-build-id \
       --enable-lto \
@@ -166,17 +214,19 @@ build() {
       --libexecdir='/usr/lib' \
       --mandir='/usr/share/man' \
       --program-suffix="-${_pkgver}" \
-      --with-bugurl='https://bugs.archlinux.org/' \
+      --with-bugurl='https://aur.archlinux.org/packages/gcc63-multilib/' \
       --with-isl \
       --with-linker-hash-style='gnu' \
+      --with-pkgversion='Arch' \
       --with-system-zlib \
+      --with-tune='generic' \
       --prefix='/usr'
 #      CXX='g++-4.9' CC='gcc-4.9'
   fi
 
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  nice make -s -j "${_nproc}"
+  nice make -j "${_nproc}" # -s
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
