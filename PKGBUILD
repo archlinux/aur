@@ -1,6 +1,6 @@
 pkgname=desktop-phonepi
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop application for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
@@ -21,4 +21,6 @@ build() {
 package() {
 	cd "$srcdir/phonepi/src/desktop"
 	make DESTDIR=$pkgdir install
+	install -Dm600 "./config.ini" "$HOME/.config/desktop-pi"
+	install -Dm666 "./resourses/background.png" "/usr/share/desktop-pi/"
 }
