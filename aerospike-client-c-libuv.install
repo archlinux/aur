@@ -1,0 +1,10 @@
+post_install(){
+  echo
+  echo ":: Node.js Aerospike client install:"
+  echo "--------------------------------"
+  echo "   export PREFIX='/usr'"
+  echo "   export AEROSPIKE_LUA_PATH='/opt/aerospike/client/sys/udf/lua'"
+  echo "   npm install aerospike"
+  echo "--------------------------------"
+
+}
