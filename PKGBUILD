@@ -14,7 +14,7 @@ source=("https://github.com/B00merang-Project/Windows-10/archive/v1.0.0.tar.gz")
 sha1sums=('d91bcaef6347faf99afd906bbf5c503c962a1b3d')
 
 package() {
-  	cd Windows-10-$pkgver/Windows\ 10\ Light
+  	cd Windows-10-$pkgver
 
   	# create theme dir
   	install -d -m 755 "$pkgdir/usr/share/themes/Windows10"
