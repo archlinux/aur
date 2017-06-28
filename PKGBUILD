@@ -1,7 +1,7 @@
 # Maintainer: Atnanasi <ys2000pro@gmail.com>
 pkgname=angolmois
 pkgver=2.0_alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="the simple BMS player"
 arch=('i686' 'x86_64')
 url="https://github.com/lifthrasiir/angolmois"
@@ -23,4 +23,6 @@ package() {
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "INTERNALS.md" "$pkgdir/usr/share/doc/$pkgname/INTERNALS.md"
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	mkdir -p "$pkgdir/usr/share/angolmois" && chmod 755 "$pkgdir/usr/share/angolmois"
+	cp -R "test" "$pkgdir/usr/share/angolmois" && chmod 755 "$pkgdir/usr/share/angolmois/test" && chmod 644 "$pkgdir/usr/share/angolmois/test/"*
 }
