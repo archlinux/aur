@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
 
 pkgname='lightdm-settings'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A configuration tool for the LightDM display manager "
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'lightdm-slick-greeter' 'lsb-release' 'polkit' 'python-gobject' 'python-setproctitle' 'python-xapp')
 makedepends=('desktop-file-utils' 'gettext')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('f47c218e5c0bcfbe49b1847fbedb748f73a055ae171a2eb3139267a6a786f76f')
+sha256sums=('be1c5a1db4e0c89e573bfc7aec39a067f9c32b4798e0b4e5dbdca6db3a5ce6ee')
 
 build() {
   cd $pkgname-$pkgver
