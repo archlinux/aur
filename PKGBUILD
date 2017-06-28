@@ -18,9 +18,9 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git"
         "nvm-export.patch"
         "${pkgname}.install"
         "${name}.desktop"
-        "vocabulary-tree-64K.bin::http://cvg.ethz.ch/research/jschoenb/colmap/vocab_tree-65536.bin"
-        "vocabulary-tree-256K.bin::http://cvg.ethz.ch/research/jschoenb/colmap/vocab_tree-262144.bin"
-        "vocabulary-tree-1M.bin::http://cvg.ethz.ch/research/jschoenb/colmap/vocab_tree-1048576.bin"
+        "vocabulary-tree-64K.bin::https://demuc.de/colmap/vocab_tree-65536.bin"
+        "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree-262144.bin"
+        "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree-1048576.bin"
         )
 md5sums=('SKIP'
          '8a9f76c21ae93e5f5571f372f5401423'
