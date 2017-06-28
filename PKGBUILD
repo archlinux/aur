@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
 # libpng and libgl are already fetched by sdl2
 # xdg-utils for icon cache
-depends=('sdl2' 'libjpeg-turbo' 'glew' 'openal' 'hicolor-icon-theme' 'xdg-utils')
+depends=('sdl2' 'libjpeg-turbo' 'glew' 'openal' 'hicolor-icon-theme' 'xdg-utils' 'libmad')
 makedepends=('git' 'scons')
 license=('GPL3' 'CCPL' 'custom:public domain')
 pkgdesc="A space exploration and combat game similar to Escape Velocity"
