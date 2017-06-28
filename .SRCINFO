@@ -1,0 +1,14 @@
+pkgbase = pgjwt-git
+	pkgdesc = PostgreSQL implementation of JWT (JSON Web Tokens)
+	pkgver = r28.546a291
+	pkgrel = 1
+	url = https://github.com/michelp/pgjwt
+	arch = any
+	license = MIT
+	makedepends = postgresql-libs
+	depends = postgresql
+	source = git+https://github.com/michelp/pgjwt
+	sha1sums = SKIP
+
+pkgname = pgjwt-git
+
