@@ -7,15 +7,14 @@
 # -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
-# -sample_c_lz stub (see https://bugs.winehq.org/show_bug.cgi?id=42863 )
 
 pkgname=wine-gaming-nine
-pkgver=2.10
-pkgrel=2
+pkgver=2.11
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
-_d3d9ver=$_pkgbasever
-#_d3d9ver=2.9
+#_d3d9ver=$_pkgbasever
+_d3d9ver=2.10
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
@@ -25,18 +24,16 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         30-win32-aliases.conf
 	gcc_7_fix.patch
 	keybindings.patch
-	sample_c_lz-stub.patch
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('097e19e65873afe8be3ce877361b70bc5e423c25'
+sha1sums=('e2ab125518b4c80176163bddb0685f1fac88b075'
 	  '9639666c62feddc12138791e43390bb15b3ba3fb'
 	  '0c45c2e050a7642acd5c7dec6fd5b03f8b5cd658'
 	  'b9ca93f8afcd01cf12460d40022df733010069d2'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 	  '0663651dd32b1537055bf560e6ec098623785238'
 	  'f3febb8836f38320742a546c667106608d4c4395'
-	  'f864ae0323f2196d143ee2f4b89e9312d9f0f65b'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
           )
@@ -153,7 +150,6 @@ prepare()
     patch -p1 < ../wine-patches-master/0006-Ensure-16-byte-alignment-of-data.patch
     
     patch -p1 < ../wbemprox_query_v2.patch
-    patch -p1 < ../sample_c_lz-stub.patch
 
     patch -p1 -R < ../keybindings.patch
 
