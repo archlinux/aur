@@ -1,7 +1,7 @@
 # Maintainer: Lex Black <autumn-wind at web dot de>
 
 pkgname=canto-curses
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="ncurses user interface for canto-daemon"
 url="https://codezen.org/canto-ng/"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('ncurses' 'readline' 'canto-daemon>=0.9.2')
 optdepends=('xdg-utils: xdg-open is used as default browser')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/themoken/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('b612707bc0727f031a031ffea60dd8af')
+md5sums=('3f3e13e0ee60e264102b850ebc179c77')
 
 
 build() {
