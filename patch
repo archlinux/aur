@@ -1,0 +1,17 @@
+--- a/src/Widgets/TorrentListRow.vala	2017-06-25 20:12:33.000000000 +0200
++++ b/src/Widgets/TorrentListRow.vala	2017-06-28 13:17:43.307055347 +0200
+@@ -131,10 +131,10 @@
+         uint hours = (totalSeconds % 86400) / 3600;
+         uint days = (totalSeconds % (86400 * 30)) / 86400;
+ 
+-        var str_days = ngettext ("%d day", "%d days", days).printf (days);
+-        var str_hours = ngettext ("%d hour", "%d hours", hours).printf (hours);
+-        var str_minutes = ngettext ("%d minute", "%d minutes", minutes).printf (minutes);
+-        var str_seconds = ngettext ("%d second", "%d seconds", seconds).printf (seconds);
++        var str_days = ngettext ("%u day", "%u days", days).printf (days);
++        var str_hours = ngettext ("%u hour", "%u hours", hours).printf (hours);
++        var str_minutes = ngettext ("%u minute", "%u minutes", minutes).printf (minutes);
++        var str_seconds = ngettext ("%u second", "%u seconds", seconds).printf (seconds);
+ 
+         var formatted = "";
+         if (days > 0) {
