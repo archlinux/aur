@@ -1,6 +1,6 @@
 pkgname=dialer-phonepi
 pkgver=1
-pkgrel=7
+pkgrel=8
 pkgdesc="Dialer application and call daemon for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
@@ -26,6 +26,6 @@ package() {
 
 	cd "$srcdir/phonepi/src/phone/qt"
 	install -Dm755 "./phone" "$pkgdir/usr/bin/phone"
-	install -Dm600 "./phone.desktop" "$HOME/.local/share/applications"
-	install -Dm600 "./phoneicon.ico" "$HOME/.local/share/icons"
+	install -Dm600 --owner=$USER "./phone.desktop" "$pkgdir/$HOME/.local/share/applications"
+	install -Dm600 --owner=$USER "./phoneicon.ico" "$pkgdir/$HOME/.local/share/icons"
 }
