@@ -8,9 +8,9 @@ pkgbase = valentina
 	license = GPL3
 	makedepends = qt5-tools
 	makedepends = unzip
-	makedepends = awk
 	depends = qt5-svg
 	depends = poppler
+	depends = qt5-xmlpatterns
 	source = https://bitbucket.org/dismine/valentina/get/v0.5.0.zip
 	md5sums = 8733c30cc8e6ca18874c37b28be6eab8
 
