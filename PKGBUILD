@@ -18,15 +18,17 @@ optdepends=('phonon-qt5-gstreamer: gstreamer backend'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/flaviotordini/musique/archive/$pkgver.tar.gz")
 sha256sums=('82600f4e3d58900df1cc11acd77efbf11e8eac94f8c7382d57f953cadcd49d54')
 
-build() {
-  cd $pkgname-$pkgver
+prepare() {
+  mkdir -p build
+}
 
-  qmake-qt5 PREFIX=/usr
+build() {
+  cd build
+  qmake-qt5 ../$pkgname-$pkgver PREFIX=/usr
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-
+  cd build
   make INSTALL_ROOT="$pkgdir" install
 }
