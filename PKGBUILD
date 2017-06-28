@@ -1,6 +1,6 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=da2013ctl-git
-pkgver=20151116.8775611
+pkgver=20170628.7b90d3f
 pkgrel=1
 pkgdesc="Alternative to razercfg for the DeathAdder 2013"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libsystemd')
 provides=('da2013ctl')
 conflicts=('da2013ctl')
-makedepends=('git')
+makedepends=('git' 'cargo')
 source=('git+https://github.com/Streetwalrus/da2013ctl.git')
 md5sums=('SKIP')
 install='da2013ctl.install'
@@ -21,12 +21,16 @@ pkgver() {
 
 build() {
   cd "${srcdir}/da2013ctl"
-  make
+  cargo build --release
 }
 
 package() {
   cd "${srcdir}/da2013ctl"
-  make install ROOT="${pkgdir}" PREFIX="/usr"
+  cargo install --root ${pkgdir}/usr
+  rm ${pkgdir}/usr/.crates.toml
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -d ${pkgdir}/usr/lib/udev/rules.d
+  install -m644 50-da2013.rules ${pkgdir}/usr/lib/udev/rules.d
 }
 
 # vim:set ts=2 sw=2 et:

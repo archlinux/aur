@@ -1,4 +1,4 @@
 da2013ctl/
-*.pkg.tar.xz
+*.pkg.tar*
 src/
 pkg/
