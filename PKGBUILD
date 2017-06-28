@@ -1,17 +1,17 @@
-# Maintainer: Vaporeon <vaporeon@tfwno.gf>
+# Maintainer: dudemanguy <random342@openmailbox.org>
+# Contributor: Vaporeon <vaporeon@tfwno.gf>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gtk2-patched-filechooser-icon-view
 pkgname=gtk2-patched-filechooser-icon-view
-pkgver=2.24.30
-_patchver=d60e3f1330f3044aeffad8516adc3c444e751b2f
-pkgrel=3
+pkgver=2.24.31
+_patchver=96d5d611d0a2e586f50e7accb7fbb6aaf44f7940
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch."
-url="https://gist.github.com/ahodesuka/01213036b58e510dc074"
+url="https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/"
 provides=("gtk2=$pkgver")
 conflicts=('gtk2')
-install=gtk2.install
 depends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcomposite' 'libxdamage'
          'shared-mime-info' 'cairo' 'libcups' 'gtk-update-icon-cache' 'librsvg'
          'desktop-file-utils' 'glib2-patched-thumbnailer')
@@ -20,31 +20,39 @@ optdepends=('gnome-themes-standard: Default widget theme'
             'gnome-icon-theme: Default icon theme')
 replaces=('gtk2-docs')
 license=('LGPL')
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-$pkgver.tar.xz
-        https://gist.githubusercontent.com/ahodesuka/01213036b58e510dc074/raw/$_patchver/gtk2-filechooser-icon-view.patch
+install=gtk2.install
+_commit=09c0b9c8a0f3dad599c179829ffb3a2e81f6efde
+source=("git://git.gnome.org/gtk+#commit=$_commit"
+        https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/raw/$_patchver/gtk2-filechooser-icon-view.patch
         gtkrc
         gtk-query-immodules-2.0.hook
         xid-collision-debug.patch)
-sha256sums=('0d15cec3b6d55c60eac205b1f3ba81a1ed4eadd9d0f8e7c508bc7065d0c4ca50'
-            '2e15a62578f152d040d716b356411825efe222743f6e813ed7dd1d0c1a12bb50'
+sha256sums=('SKIP'
+            'c79c596c7b56b4df44885da7111799b1c56ec77357daec9f81a17276bef2826f'
             'b77a427df55a14182c10ad7e683b4d662df2846fcd38df2aa8918159d6be3ae2'
             '9656a1efc798da1ac2dae94e921ed0f72719bd52d4d0138f305b993f778f7758'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
+pkgver() {
+    cd gtk+
+    git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-    cd gtk+-$pkgver
+    cd gtk+
     patch -Np1 -i ../xid-collision-debug.patch
     patch -Np1 -i $srcdir/gtk2-filechooser-icon-view.patch
     sed -i '1s/python$/&2/' gtk/gtk-builder-convert
+    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-    cd gtk+-$pkgver
+    cd gtk+
 
     CXX=/bin/false ./configure --prefix=/usr \
         --sysconfdir=/etc \
         --localstatedir=/var \
-        --with-xinput=yes
+        --with-xinput=yes \
+	--enable-gtk-doc
 
     # https://bugzilla.gnome.org/show_bug.cgi?id=655517
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -53,7 +61,7 @@ build() {
 }
 
 package() {
-    cd gtk+-$pkgver
+    cd gtk+
     make DESTDIR="$pkgdir" install
 
     install -Dm644 ../gtkrc "$pkgdir/usr/share/gtk-2.0/gtkrc"
