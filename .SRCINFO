@@ -1,12 +1,11 @@
 pkgbase = kover
 	pkgdesc = Easy to use WYSIWYG CD cover printer with CDDB and CDTEXT support
 	pkgver = 6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://lisas.de/kover/
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	makedepends = pkgconfig
+	license = GPL
 	makedepends = cmake
 	makedepends = automoc4
 	depends = kdebase-runtime
