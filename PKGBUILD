@@ -2,27 +2,34 @@
 
 pkgbase=julia-mkl
 pkgname=('julia-mkl' 'julia-mkl-docs')
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)'
 url='http://julialang.org/'
 license=('MIT')
-makedepends=('python2' 'libuv' 'libunwind' 'mpfr' 'zlib' 'suitesparse-mkl' 'patchelf' 'cmake' 'pcre2' 'openssl' 'intel-mkl' 'intel-compiler-base' 'intel-fortran-compiler' 'libgit2')
+makedepends=('python2' 'libuv' 'libunwind' 'mpfr' 'zlib' 'suitesparse-mkl' 'patchelf' 'cmake' 'pcre2' 'openssl' 'intel-mkl' 'intel-compiler-base' 'intel-fortran-compiler' 'libgit2' 'llvm')
 options=('!emptydirs' 'staticlibs')
-source=("https://github.com/JuliaLang/julia/releases/download/v$pkgver/julia-$pkgver.tar.gz")
-md5sums=('9a80cd43a07790bde8f159e8ce79187b')
+source=("https://github.com/JuliaLang/julia/releases/download/v$pkgver/julia-$pkgver.tar.gz" julia-libunwind-version.patch)
+sha256sums=('1c62bfce8075acf2b5b02355520a61210690324eceb021030681459d18a3a665'
+            '16009ce454f58463464027cbaf6186ccfab84c37660a52fb1ec3a0f514df64f9')
 
 conflicts=('julia-git' 'julia')
 
 prepare() {
   # For /etc/ld.so.conf.d/
   echo '/usr/lib/julia' > julia.conf
+
+  cd julia-$pkgver
+  patch -p1 -i ../julia-libunwind-version.patch
 }
 
 build() {
-  source /opt/intel/mkl/bin/mklvars.sh intel64
+
   source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
+  source /opt/intel/composerxe/linux/bin/iccvars.sh intel64
+  source /opt/intel/composerxe/linux/bin/ifortvars.sh intel64
+  source /opt/intel/mkl/bin/mklvars.sh intel64
   
   make -C julia-$pkgver prefix=/usr sysconfdir=/etc \
     USEICC=1 \
@@ -35,7 +42,8 @@ build() {
     USE_SYSTEM_PCRE=1 \
     USE_SYSTEM_LIBGIT2=1 \
     USE_SYSTEM_PATCHELF=1 \
-    USE_SYSTEM_SUITESPARSE=1
+    USE_SYSTEM_SUITESPARSE=1 \
+    USE_SYSTEM_LLVM=1
 }
 
 package_julia-mkl() {
@@ -44,9 +52,11 @@ package_julia-mkl() {
   optdepends=('gnuplot: If using the Gaston Package from julia')
   install='sysfix.install'
 
-  source /opt/intel/mkl/bin/mklvars.sh intel64
   source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
-
+  source /opt/intel/composerxe/linux/bin/iccvars.sh intel64
+  source /opt/intel/composerxe/linux/bin/ifortvars.sh intel64
+  source /opt/intel/mkl/bin/mklvars.sh intel64
+  
   make -C julia-$pkgver DESTDIR="$pkgdir" \
     prefix=/usr sysconfdir=/etc \
     USEICC=1 \
@@ -55,11 +65,12 @@ package_julia-mkl() {
     USE_INTEL_MKL_FFT=1 \
     USE_INTEL_LIBM=1 \
     USE_SYSTEM_CURL=1 \
-    USE_SYSTEM_LIBUNWIND=1 \
+    USE_SYSTEM_LIBUNWIND=1\
     USE_SYSTEM_PCRE=1 \
     USE_SYSTEM_LIBGIT2=1 \
     USE_SYSTEM_PATCHELF=1 \
     USE_SYSTEM_SUITESPARSE=1 \
+    USE_SYSTEM_LLVM=1 \
     install
 
   # Remove duplicate man-page from julia/doc
