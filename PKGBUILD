@@ -1,12 +1,12 @@
 # Maintainer: Ramana Kumar <first dot last at gmail.com>
 pkgname=xcursor-ghost
 pkgver=20040711
-pkgrel=1
+pkgrel=2
 pkgdesc='Subtle grey cursors with soft edges'
 arch=('any')
 url='http://gnome-look.org/content/show.php/Ghost+Cursors?content=13090'
 license=('GPL')
-source=('http://gnome-look.org/CONTENT/content-files/13090-ghost.tar.bz2')
+source=('https://dl.opendesktop.org/api/files/download/id/1460735219/13090-ghost.tar.bz2')
 md5sums=('0090c9f3cfca07a1110964790a0084d2')
 
 package() {
