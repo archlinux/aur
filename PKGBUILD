@@ -12,7 +12,7 @@ pkgdesc="HP Library & Tape Tools - diagnostics for HP tape drives"
 arch=('i686' 'x86_64')
 url="https://www.hpe.com/us/en/product-catalog/storage/storage-software/pip.406729.html"
 license=('custom:HPLTT')
-makedepends=('rpmextract')
+makedepends=('libarchive')
 depends=('ncurses')
 options=(!strip)
 
@@ -36,7 +36,7 @@ case "$CARCH" in
 esac
 
 package() {
-	rpmextract.sh ltt-*.rpm
+	bsdtar -x -f ltt-*.rpm || (error "Multiple .rpm files in source folder, please clean remnants from earlier build (delete $srcdir and use makepkg -c in future)" ; exit 1)
 	mv opt "$pkgdir/"
 	ln -s "/usr/lib/libncursesw.so.6" "$pkgdir/opt/ltt/libncurses.so.5"
 	install -d "$pkgdir/usr/bin"
