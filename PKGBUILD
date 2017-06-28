@@ -4,7 +4,7 @@ pkgname=canto-curses
 pkgver=0.9.8
 pkgrel=1
 pkgdesc="ncurses user interface for canto-daemon"
-url="http://codezen.org/canto-ng/"
+url="https://codezen.org/canto-ng/"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('ncurses' 'readline' 'canto-daemon>=0.9.2')
