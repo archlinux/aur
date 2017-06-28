@@ -3,11 +3,11 @@
 
 pkgname=kanboard
 pkgver=1.0.45
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple visual task board'
 arch=('any')
 url='http://kanboard.net/'
-license=('AGL3')
+license=('MIT')
 depends=('php' 'php-gd')
 optdepends=('mariadb: For MySQL storage' 'php-sqlite: For sqlite storage' 'php-pgsql: For postgres storage')
 backup=('etc/webapps/kanboard/config.php' 'etc/webapps/kanboard/kanboard-apache.conf' 'etc/webapps/kanboard/kanboard-nginx.conf' 
@@ -25,6 +25,7 @@ source=("http://kanboard.net/kanboard-$pkgver.zip"
 package() {
     mkdir -p ${pkgdir}/usr/share/webapps
     mkdir -p ${pkgdir}/usr/lib/systemd/system
+    mkdir -p ${pkgdir}/usr/share/licenses/kanboard
     cp -R ${srcdir}/${pkgname} ${pkgdir}/usr/share/webapps/${pkgname}
     install -D "${srcdir}/kanboard-apache.conf" ${pkgdir}/etc/webapps/${pkgname}/kanboard-apache.conf
     install -D "${srcdir}/kanboard-nginx.conf" ${pkgdir}/etc/webapps/${pkgname}/kanboard-nginx.conf
@@ -32,8 +33,8 @@ package() {
     install -D "${srcdir}/kanboard-cron" ${pkgdir}/etc/webapps/${pkgname}/kanboard-cron
     install -D "${srcdir}/kanboard.service" ${pkgdir}/usr/lib/systemd/system/kanboard.service
     install -D "${srcdir}/kanboard.timer" ${pkgdir}/usr/lib/systemd/system/kanboard.timer
+    install -D "${srcdir}/${pkgname}/LICENSE" ${pkgdir}/usr/share/licenses/kanboard/LICENSE
     cp ${pkgdir}/usr/share/webapps/${pkgname}/config.default.php ${pkgdir}/etc/webapps/${pkgname}/config.php
-    ln -s /etc/webapps/${pkgname}/config.php ${pkgdir}/usr/share/webapps/${pkgname}/config.php
 }
 
 sha256sums=('4364ca31a6905919264e89cc9229a4439fcb93fa53a5170242ba109cc223828a'
