@@ -22,5 +22,5 @@ package() {
 	cd "$srcdir/phonepi/src/desktop"
 	make DESTDIR=$pkgdir install
 	install -Dm600 "./config.ini" "$HOME/.config/desktop-pi"
-	install -Dm666 "./resourses/background.png" "/usr/share/desktop-pi/"
+	install -Dm666 "./resourses/background.png" "/usr/share/desktop-pi/background.png"
 }
