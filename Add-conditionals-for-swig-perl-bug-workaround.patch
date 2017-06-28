@@ -1,0 +1,33 @@
+From 75fa844d8c3658c01b286f5c72d87fce373cfe0b Mon Sep 17 00:00:00 2001
+From: Michael Schroeder <mls@suse.de>
+Date: Mon, 19 Jun 2017 11:09:43 +0200
+Subject: [PATCH] Add conditionals for swig perl bug workaround
+
+It was fixed in swig-2.0.5 and gets in the way with newer perl
+versions.
+---
+ bindings/solv.i | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/bindings/solv.i b/bindings/solv.i
+index 043c5491..354cde70 100644
+--- a/bindings/solv.i
++++ b/bindings/solv.i
+@@ -330,7 +330,8 @@ typedef struct {
+ 
+ #if defined(SWIGPERL)
+ 
+-/* work around a swig bug */
++/* work around a swig bug for swig versions < 2.0.5 */
++#if SWIG_VERSION < 0x020005
+ %{
+ #undef SWIG_CALLXS
+ #ifdef PERL_OBJECT
+@@ -343,6 +344,7 @@ typedef struct {
+ #  endif
+ #endif
+ %}
++#endif
+ 
+ 
+ %define perliter(class)

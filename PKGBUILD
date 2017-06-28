@@ -1,6 +1,6 @@
 pkgname=libsolv
 pkgver=0.6.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/$pkgname"
@@ -10,11 +10,14 @@ makedepends=('cmake' 'perl' 'python' 'rpm-org' 'ruby' 'swig')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
-source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('04803110f87fe3840e611f902f18d8dc')
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+        'Add-conditionals-for-swig-perl-bug-workaround.patch')
+md5sums=('04803110f87fe3840e611f902f18d8dc'
+         '1bb37f36b749a6174d6960c2f188d8aa')
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	patch -p1 -i "$srcdir"/Add-conditionals-for-swig-perl-bug-workaround.patch
 	rm -rf build
 	mkdir build
 }
