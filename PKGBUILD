@@ -11,7 +11,7 @@ url="https://www.gnu.org/software/libtasn1/"
 license=(LGPL2.1)
 depends=(glibc)
 
-_debver=deb7u3
+_debver=deb7u4
 _deburl="http://security.debian.org/debian-security/pool/updates/main/libt/libtasn1-3"
 
 if [ "${CARCH}" = "x86_64" ] ; then
@@ -25,8 +25,8 @@ fi
 source=()
 source_i686=("${_deburl}/libtasn1-3_${pkgver}-${pkgrel}+${_debver}_i386.deb")
 source_x86_64=("${_deburl}/libtasn1-3_${pkgver}-${pkgrel}+${_debver}_amd64.deb")
-md5sums_i686=('2247bdd066e7241aefe622186ecfdf85')
-md5sums_x86_64=('709f6c8c4d523de919b9ea51f41996b1')
+md5sums_i686=('0620041e9810d7a5cbd4c488e63ac611')
+md5sums_x86_64=('275825c0aa875dd0f540b314f99aeec2')
 
 
 package() {
