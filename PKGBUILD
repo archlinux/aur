@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -24,14 +24,9 @@ optdepends=('dnf: build Fedora images'
             'edk2-ovmf: run bootable images in QEMU'
             'sbsigntools: sign EFI binaries for UEFI SecureBoot')
 source=("https://github.com/systemd/mkosi/archive/v$pkgver.tar.gz")
-sha256sums=('1b1df95a95cd02ed4d2473d7be147da0829e24b5f84cea91995d76dab2f90de6')
+sha256sums=('3bb606f16a26e08ce071e673cb935e62cecb3559db6b41c620f240666d7c5734')
 
 package() {
   cd "mkosi-$pkgver"
-
-  # temporarily fix package version, forgotten in v2 release (remove for next release!)
-  sed -i '/__version__/ s/1/2/' mkosi
-  sed -i '/version/ s/1/2/' setup.py
-
   python setup.py install --root="$pkgdir"
 }
