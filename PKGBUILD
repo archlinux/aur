@@ -19,6 +19,6 @@ build() {
 package() {
 	cd "$srcdir/phonepi/src/settings-app"
 	make DESTDIR=$pkgdir install
-	install -Dm600 --owner=$USER "./entry/settings-pi.desktop" "$pkgdir/$HOME/.local/share/applications"
-	install -Dm600 --owner=$USER "./entry/settings-pi.png" "$pkgdir/$HOME/.local/share/icons"
+	install -Dm600 --owner=$USER "./entry/settings-pi.desktop" "$pkgdir/$HOME/.local/share/applications/settings-pi.desktop"
+	install -Dm600 --owner=$USER "./entry/settings-pi.png" "$pkgdir/$HOME/.local/share/icons/settings-pi.png"
 }
