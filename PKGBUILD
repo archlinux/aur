@@ -3,7 +3,7 @@
 # Contributor: Tor Krill <tor@krill.nu>
 
 pkgname=nautilus-sendto
-pkgver=3.8.4+41+gf790d15
+pkgver=3.8.5
 pkgrel=1
 pkgdesc="Easily send files via mail"
 url="https://git.gnome.org/browse/nautilus-sendto"
@@ -12,7 +12,7 @@ license=(GPL)
 depends=(glib2)
 makedepends=(gettext intltool gobject-introspection python2 gnome-common git)
 groups=('gnome-extra')
-_commit=f790d1583452bb5e934a919d98095ec4147f94d2  # master
+_commit=e4499a30188adc29825f97ba3227ec96afbaf391  # tags/NAUTILUS_SENDTO_3_8_5^0
 source=("git+https://git.gnome.org/browse/nautilus-sendto#commit=$_commit")
 sha256sums=('SKIP')
 
