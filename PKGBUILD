@@ -6,8 +6,8 @@ _appname_=vlc
 pkgname=${_appname_}-nightly
 pkgver=3.0.0v20170622
 _pkgver=3.0.0
-_snapshot_=20170622
-_snapver_=0939
+_snapshot_=20170627
+_snapver_=0241
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -16,7 +16,7 @@ url="http://www.videolan.org/vlc/"
 license=("LGPL2.1" "GPL2")
 _undetected_depends=()
 depends=('libmatroska' 'a52dec' 'sidplay2-libs' 'libfdk-aac' 'faad2' 'ffmpeg' 'libdca' 'daala-git' 'libdvbpsi'
-         'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
+         'libdvdnav' 'libmad' 'libmpcdec' 'libmpeg2'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
          'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'sndio' 'wayland' 'wayland-protocols'
          'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'libglvnd'
@@ -119,7 +119,7 @@ package() {
   depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('9c944effeb6ae4cce0bd734152fd094b3f7638dfbc7e309cc7ddcaae246827ff'
+sha256sums=('5a2b5b6b88cdde3bcc7c64acdaf2b9143ec0b08f0d8ca5ae8c9c78ab48fe8612'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
