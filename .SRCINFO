@@ -1,0 +1,23 @@
+pkgbase = ivre
+	pkgdesc = Network recon framework
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://ivre.rocks/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-crypto
+	depends = python-pymongo
+	optdepends = python-py2neo: flow analysis support
+	optdepends = python-sqlalchemy: PostgreSQL backend support
+	optdepends = python-psycopg2: PostgreSQL backend support
+	optdepends = python-pillow: Screenshots
+	optdepends = python-dbus: 3D traceroute graphs
+	optdepends = python-matplotlib: Plots
+	source = https://github.com/cea-sec/ivre/archive/v0.9.6.tar.gz
+	sha256sums = d82d20ec0dc8fcb8e521061636b99367faf5c2bf2051c6dfaa85fac8abf72f3b
+
+pkgname = ivre
+
