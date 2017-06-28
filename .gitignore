@@ -1,0 +1,5 @@
+*.orig
+*.pkg.tar.xz
+pkg
+src
+qtcreator-cmakeprojectmanager2-plugin-opt-git
