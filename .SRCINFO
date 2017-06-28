@@ -1,6 +1,6 @@
 pkgbase = zig-git
 	pkgdesc = a programming language prioritizing robustness, optimality, and clarity
-	pkgver = 0.0.0r1395.7f0620a
+	pkgver = 0.0.0r1417.3e8af78
 	pkgrel = 1
 	url = http://ziglang.org
 	arch = i686
