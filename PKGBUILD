@@ -26,6 +26,6 @@ package() {
 
 	cd "$srcdir/phonepi/src/phone/qt"
 	install -Dm755 "./phone" "$pkgdir/usr/bin/phone"
-	install -Dm600 --owner=$USER "./phone.desktop" "$pkgdir/$HOME/.local/share/applications"
-	install -Dm600 --owner=$USER "./phoneicon.ico" "$pkgdir/$HOME/.local/share/icons"
+	install -Dm600 --owner=$USER "./phone.desktop" "$pkgdir/$HOME/.local/share/applications/phone.desktop"
+	install -Dm600 --owner=$USER "./phoneicon.ico" "$pkgdir/$HOME/.local/share/icons/phoneicon.ico"
 }
