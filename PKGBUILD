@@ -1,6 +1,6 @@
 # Maintainer: Damian Poddebniak <poddebniak at fh-muenster dot de>
 pkgname=hexlify-git
-pkgver=r7.290674e
+pkgver=r9.e1e2771
 pkgrel=1
 pkgdesc="Python's {un,}hexlify for the command-line."
 arch=('x86_64' 'i686' )
