@@ -16,9 +16,6 @@ makedepends=('rpmextract')
 depends=('ncurses')
 options=(!strip)
 
-# Fail if retrieval is attempted of any of the manual:// URLs
-DLAGENTS+=('manual::/usr/bin/false');
-
 # These are the only files we want to include in the source package
 source=(launcher.sh)
 md5sums=('4fe63395dbf71d288ab459e51dcbbb80')
