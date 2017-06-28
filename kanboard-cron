@@ -1,2 +1,2 @@
-0 8 * * * cd /usr/share/webapps/kanboard && ./kanboard cronjob >/dev/null 2>&1
+0 8 * * * cd /usr/share/webapps/kanboard && ./cli cronjob >/dev/null 2>&1
 # Runs Cron tasks every day at 8AM

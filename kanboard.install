@@ -14,7 +14,8 @@ post_install() {
     More info:
     * http://kanboard.net/documentation/mysql-configuration
     * http://kanboard.net/documentation/postgresql-configuration
-- Configure the background tasks via a crontab job
+- Configure the background tasks either by enabling the systemd timer service or by creating a crontab job
+    * The SystemD service and timer are named 'kanboard.service' and 'kanboard.timer'
     * Example crontab config is located in /etc/webapps/kanboard
     * http://kanboard.net/documentation/cronjob
 - Configure kanboard to send out emails
