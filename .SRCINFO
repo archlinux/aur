@@ -1,14 +1,14 @@
 pkgbase = lfm
 	pkgdesc = A powerful file manager for the UNIX console. Based on curses and written in Python.
-	pkgver = 3.0
-	pkgrel = 3
+	pkgver = 3.1
+	pkgrel = 1
 	url = https://bitbucket.org/inigoserna/lfm3
 	arch = any
 	license = GPL3
 	depends = ncurses
 	depends = python
-	source = https://bitbucket.org/inigoserna/lfm3/downloads/lfm-3.0.tar.gz
-	sha256sums = 01afadd56aded43887c40dec7c81394e5361ba390a3604bd510d69cafe36e3b8
+	source = https://bitbucket.org/inigoserna/lfm3/downloads/lfm-3.1.tar.gz
+	sha256sums = 2f731a26940db168f9c8830ce186d876995c48577572888052f6bce0377abfca
 
 pkgname = lfm
 
