@@ -1,7 +1,7 @@
 pkgbase = opentx-companion
 	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.open-tx.org/
 	arch = x86_64
 	license = GPL
@@ -14,6 +14,10 @@ pkgbase = opentx-companion
 	makedepends = sed
 	makedepends = qt5-tools
 	makedepends = python-pyqt5
+	makedepends = arm-none-eabi-gcc
+	makedepends = arm-none-eabi-binutils
+	makedepends = arm-none-eabi-newlib
+	makedepends = fox
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-svg
@@ -22,9 +26,9 @@ pkgbase = opentx-companion
 	conflicts = companion
 	conflicts = companion9x-svn
 	source = https://github.com/opentx/opentx/archive/2.2.0.tar.gz
-	source = cmake_version.diff
+	source = installprefix.patch
 	sha256sums = 27a07efcbb7d5759bafea7d8a6d97f910c2830881c0d4c71cbbc7da65446b2cd
-	sha256sums = 3c2777a7f5261851150652dd0c15aa8900c5f07ab20b19322e6be7dc5450d3c4
+	sha256sums = 886818bd63ac415751b9355ad695b01cf2ab2d57e094e3792010a00bc7ce2020
 
 pkgname = opentx-companion
 
