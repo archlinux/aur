@@ -4,27 +4,29 @@
 
 pkgname=abakus
 pkgver=0.92
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple calculator for KDE. Think of it as bc (the command-line calculator) with a nice GUI"
 arch=('i686' 'x86_64')
 url="http://purinchu.net/abakus"
-license=('GPL2')
-depends=('kdebase-runtime' 'mpfr')
-makedepends=('cmake' 'automoc4' 'flex' 'bison')
+license=('GPL')
+depends=('kdebase-runtime')
+makedepends=('cmake' 'automoc4')
 source=("https://purinchu.net/abakus/$pkgname-$pkgver.tar.bz2")
 sha256sums=('9c873307bdcc8ab06a73de8bbc80fa933bf58ed64d3e1958f46635b61df39c5d')
 
-build() {
-  cd $pkgname-$pkgver
+prepare() {
+  mkdir -p build
+}
 
-  cmake \
+build() {
+  cd build
+  cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-
+  cd build
   make DESTDIR="$pkgdir" install
 }
