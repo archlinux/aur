@@ -1,6 +1,6 @@
 [Unit]
 Description=Duplicati
-After=network.target
+After=network.target,graphical.target
 
 [Service]
 ExecStart=/usr/bin/mono /opt/duplicati-latest/Duplicati.GUI.TrayIcon.exe --webservice-port=8200
