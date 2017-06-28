@@ -1,6 +1,6 @@
 pkgbase = ats2-postiats
 	pkgdesc = Statically typed programming language
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = http://www.ats-lang.org/
 	install = ats2-postiats.install
@@ -12,8 +12,8 @@ pkgbase = ats2-postiats
 	options = staticlibs
 	options = !emptydirs
 	options = !makeflags
-	source = https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-0.3.5/ATS2-Postiats-0.3.5.tgz
-	sha256sums = 5328f65d54fcb74a2accc0a9eee08fb2aa5f79633b3520953d8d3a4c744d8e28
+	source = https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-0.3.6/ATS2-Postiats-0.3.6.tgz
+	sha256sums = 934ea6e1b909048b66e9a479087ea8ba3ff493aaeeee1404379c14e8bb38ab23
 
 pkgname = ats2-postiats
 
