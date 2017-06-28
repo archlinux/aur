@@ -3,12 +3,12 @@
 
 pkgname=winswitch
 pkgver=0.12.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Window-Switch is a client server tool to start and control virtual desktops"
 arch=('any')
 url="https://winswitch.org/"
 license=('GPL3')
-depends=('pygtk' 'python2-crypto' 'twisted' 'python2-pyasn1' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('pygtk' 'python2-crypto' 'python2-twisted' 'python2-pyasn1' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('nautilus: nautilus sendto'
             'thunar: thunar sendto'
             'parti-all: xpra support'
