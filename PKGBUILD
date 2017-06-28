@@ -69,7 +69,7 @@ prepare() {
 	cd "${srcdir}/slimserver-public-${_gitver}/CPAN"
 	mkdir _PRESERVE
 	cp -p --parents URI/Find.pm _PRESERVE
-	rm -f {AE.pm,AnyEvent.pm,CGI.pm,DBI.pm,Error.pm,JSON/XS.pm,LWP.pm,Readonly.pm,Template.pm,Text/Glob.pm,URI.pm,version.pm}
+	rm -f {AE.pm,AnyEvent.pm,CGI.pm,DBI.pm,Error.pm,EV.pm,JSON/XS.pm,LWP.pm,Readonly.pm,Template.pm,Text/Glob.pm,URI.pm,version.pm}
 	rm -rf {AnyEvent,Archive,CGI,common,DBI,DBD,Digest,EV,HTML,HTTP,I18N,Mac,Log,LWP,Net,Path,SOAP,Sub,Template,Test,URI,version,XML,YAML}
 	cp -rf _PRESERVE/* .
 	rm -rf _PRESERVE
