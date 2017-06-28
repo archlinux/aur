@@ -1,7 +1,7 @@
-# Maintainer: TrekDev <trekdev0 at gmail dot com>
+# Maintainer: Cycloheptan <carl.schneider+archlinux at rub dot de>
 pkgname=ethereumjs-testrpc-git
-pkgver=2.0.1
-pkgrel=1
+pkgver=4.0.0
+pkgrel=0
 pkgdesc='Fast Ethereum RPC client for testing and development'
 url='https://github.com/ethereumjs/testrpc'
 arch=('any')
