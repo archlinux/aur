@@ -21,7 +21,7 @@ package() {
   cp -R "${srcdir}/testrpc" "${pkgdir}/usr/lib/"
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/testrpc/bin/testrpc" "${pkgdir}/usr/bin/testrpc"
+  ln -s "/usr/lib/testrpc/build/cli.node.js" "${pkgdir}/usr/bin/testrpc"
 
   install -D -m644 "${srcdir}/testrpc/LICENSE" "${pkgdir}/usr/share/licenses/testrpc/LICENSE"
 }
