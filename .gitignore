@@ -1,0 +1,6 @@
+*.orig
+*.pkg.tar.xz
+pkg
+src
+qbs
+qt-creator

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/qtcreator-git/bin/qtcreator.sh %F
+Icon=QtProject-qtcreator-opt-git
+Type=Application
+Terminal=false
+Name=Qt Creator Git [opt]
+GenericName=Integrated Development Environment
+MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;application/vnd.nokia.qt.qmakeprofile;application/vnd.nokia.xml.qt.resource;
+Categories=Qt;Development;IDE;
+InitialPreference=9

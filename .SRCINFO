@@ -1,0 +1,40 @@
+pkgbase = qtcreator-opt-git
+	pkgdesc = Lightweight, cross-platform integrated development environment
+	pkgver = 4.3.0.r592.g345680a159
+	pkgrel = 1
+	url = https://www.qt.io/ide/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = llvm
+	makedepends = mesa
+	depends = clang
+	depends = qbs
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-webengine
+	optdepends = bzr: bazaar support
+	optdepends = cmake: cmake project support
+	optdepends = cvs: cvs support
+	optdepends = gdb: debugger
+	optdepends = git: git support
+	optdepends = mercurial: mercurial support
+	optdepends = qt5-doc: integrated Qt documentation
+	optdepends = qt5-examples: welcome page examples
+	optdepends = qt5-translations: other languages
+	optdepends = subversion: subversion support
+	optdepends = valgrind: analyze support
+	optdepends = x11-ssh-askpass: ssh support
+	options = docs
+	source = git+https://code.qt.io/qt-creator/qt-creator.git#commit=345680a159b4c09ee40411f81cd9b2151675312f
+	source = QtProject-QtCreator-opt-git.xml
+	source = qtcreator-opt-git.1
+	source = qtcreator-opt-git.desktop
+	sha256sums = SKIP
+	sha256sums = 95e5f65d0e68a386bdd338f7daa502c76f080f3c619e1337592bbdfe0f6fe958
+	sha256sums = b1d1e17aee668d96dcd4fd1ee8a2574b41d92dfb9b40568c0b5679a3c89617fe
+	sha256sums = 9d273c3fb3600ef51a3659138b4bf5d4f46dafce777dd4e654c0328c5870b514
+
+pkgname = qtcreator-opt-git
+

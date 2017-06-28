@@ -1,0 +1,118 @@
+# Maintainer: Alexander Drozdov <adrozdoff@gmail.com>
+# Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Contributor: delor <bartekpiech@gmail com>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Contributor: Dan Vratil <progdan@progdansoft.com>
+# Contributor: thotypous <matiasΘarchlinux-br·org>
+# Contributor: Imanol Celaya <ornitorrincos@archlinux-es.org>
+# Contributor: heinz from #qt-creator
+# Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
+
+pkgname=qtcreator-opt-git
+pkgver=4.3.0.r592.g345680a159
+_pkgcommit=345680a159b4c09ee40411f81cd9b2151675312f
+pkgrel=1
+pkgdesc='Lightweight, cross-platform integrated development environment'
+arch=('i686' 'x86_64')
+url='https://www.qt.io/ide/'
+license=('LGPL')
+depends=('clang' 'qbs' 'qt5-svg' 'qt5-tools' 'qt5-webengine')
+makedepends=('git' 'llvm' 'mesa')
+options=('docs')
+optdepends=('bzr: bazaar support'
+            'cmake: cmake project support'
+            'cvs: cvs support'
+            'gdb: debugger'
+            'git: git support'
+            'mercurial: mercurial support'
+            'qt5-doc: integrated Qt documentation'
+            'qt5-examples: welcome page examples'
+            'qt5-translations: other languages'
+            'subversion: subversion support'
+            'valgrind: analyze support'
+            'x11-ssh-askpass: ssh support')
+#provides=('qtcreator-opt')
+#conflicts=('qtcreator-opt')
+source=("git+https://code.qt.io/qt-creator/qt-creator.git#commit=${_pkgcommit}"
+        'git+https://code.qt.io/qt-labs/qbs.git'
+        'QtProject-QtCreator-opt-git.xml'
+        'qtcreator-opt-git.1'
+        'qtcreator-opt-git.desktop')
+sha256sums=('SKIP'
+            'SKIP'
+            '95e5f65d0e68a386bdd338f7daa502c76f080f3c619e1337592bbdfe0f6fe958'
+            'b1d1e17aee668d96dcd4fd1ee8a2574b41d92dfb9b40568c0b5679a3c89617fe'
+            '9d273c3fb3600ef51a3659138b4bf5d4f46dafce777dd4e654c0328c5870b514')
+
+pkgver() {
+    cd qt-creator
+
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s|^v||'
+}
+
+prepare() {
+    [[ -d build ]] && rm -r build
+    mkdir build
+
+    (
+	cd qt-creator
+	git submodule init
+	git config submodule.qbs.url $srcdir/qbs
+	git submodule update
+    )
+
+    # fix hardcoded libexec path
+    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qt-creator/qtcreator.pri
+}
+
+build() {
+    cd build
+
+    qmake -r LLVM_INSTALL_DIR=/usr QMAKE_CFLAGS_ISYSTEM=-I  "$srcdir"/qt-creator/qtcreator.pro
+    make
+    make docs
+}
+
+package() {
+
+    (
+        cd build
+        make INSTALL_ROOT="${pkgdir}/opt/qtcreator-git" install
+        make INSTALL_ROOT="${pkgdir}/opt/qtcreator-git" install_docs
+    )
+
+    cd qt-creator
+
+    # Private development files. Needed for plugin building.
+    mkdir -p "${pkgdir}/usr/src/qtcreator-opt-git/"
+    find | egrep -v '^\.\/doc\|^\.\/share\|^\.\/\.pc\|^\.\/debian\|^\.\/build\|^\.\/tests\|^\.\/share\|^\.\/builddir' | \
+           grep '\.pri$\|\.h$\|\.hpp$\|\.inc$\|\.xsl$' | xargs -I{} cp --parents -r "{}" "${pkgdir}/usr/src/qtcreator-opt-git/"
+
+    # Icons
+    mkdir -p ${pkgdir}/usr/share/icons
+    mv ${pkgdir}/opt/qtcreator-git/share/icons/hicolor ${pkgdir}/usr/share/icons/
+    mv ${pkgdir}/usr/share/icons/hicolor/128x128/apps/QtProject-qtcreator.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/QtProject-qtcreator-opt-git.png
+    mv ${pkgdir}/usr/share/icons/hicolor/16x16/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/16x16/apps/QtProject-qtcreator-opt-git.png
+    mv ${pkgdir}/usr/share/icons/hicolor/24x24/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/24x24/apps/QtProject-qtcreator-opt-git.png
+    mv ${pkgdir}/usr/share/icons/hicolor/256x256/apps/QtProject-qtcreator.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/QtProject-qtcreator-opt-git.png
+    mv ${pkgdir}/usr/share/icons/hicolor/32x32/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/32x32/apps/QtProject-qtcreator-opt-git.png
+    mv ${pkgdir}/usr/share/icons/hicolor/48x48/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/48x48/apps/QtProject-qtcreator-opt-git.png
+    mv ${pkgdir}/usr/share/icons/hicolor/512x512/apps/QtProject-qtcreator.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/QtProject-qtcreator-opt-git.png
+    mv ${pkgdir}/usr/share/icons/hicolor/64x64/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/64x64/apps/QtProject-qtcreator-opt-git.png
+
+    # License
+    install -Dm644 "${srcdir}/qt-creator/LICENSE.GPL3-EXCEPT" \
+        "${pkgdir}/usr/share/licenses/qtcreator-opt-git/LICENSE.GPL3-EXCEPT"
+
+    # Launcher
+    mkdir -p ${pkgdir}/usr/share/applications/
+    install -Dm644 ${srcdir}/qtcreator-opt-git.desktop ${pkgdir}/usr/share/applications/qtcreator-opt-git.desktop
+
+    # Mime
+    mkdir -p ${pkgdir}/usr/share/mime/packages/
+    install -Dm644 ${srcdir}/QtProject-QtCreator-opt-git.xml ${pkgdir}/usr/share/mime/packages/QtProject-QtCreator-opt-git.xml
+
+    # Manpage
+    mkdir -p ${pkgdir}/usr/man/man1
+    install -Dm644 ${srcdir}/qtcreator-opt-git.1 ${pkgdir}/usr/man/man1/qtcreator-opt-git.1
+}
