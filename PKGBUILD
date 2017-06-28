@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.182
+pkgver=0.187
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -14,9 +14,11 @@ depends=('sdl2_ttf'
          'lua'
          'flac'
          'portmidi'
+         'portaudio'
          'libjpeg-turbo'
          'fontconfig'
-         'libuv'
+         'sqlite'
+         'libutf8proc'
          )
 makedepends=('nasm'
              'mesa'
@@ -28,7 +30,7 @@ source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
         'extras.tar.gz'
         )
-sha256sums=('9ecb35afaa6006ccf027f4dfc91ac818d3a894e6e4c3732b6f3706ee40ed240b'
+sha256sums=('5ac6950158ba6f550b3c5f19434752e837f17edf0d83c41ab07d0f02cca787b0'
             '201e9cc3d0d7397e15a4aaf7477f8b32a379a9ba2134b94180cdaf2067d1f859'
             '5ba55ce8c33743207a12a7509efdf13dd98f5d87fa12f0e471ea523d3ae4f4ac'
             )
@@ -64,7 +66,8 @@ build() {
        USE_SYSTEM_LIB_LUA=1 \
        USE_SYSTEM_LIB_PORTMIDI=1 \
        USE_SYSTEM_LIB_PORTAUDIO=1 \
-       USE_SYSTEM_LIB_UV=1
+       USE_SYSTEM_LIB_UTF8PROC=1 \
+       USE_SYSTEM_LIB_SQLITE3=1
 }
 
 package() {
