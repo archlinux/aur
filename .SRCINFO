@@ -11,6 +11,7 @@ pkgbase = ly2video-git
 	depends = python2-imaging
 	depends = python2-midi
 	depends = python2-pypdf
+	depends = python2-pip
 	depends = timidity++
 	provides = ly2video
 	conflicts = ly2video

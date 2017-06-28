@@ -10,7 +10,7 @@ conflicts=(ly2video)
 arch=(any)
 url=https://github.com/aspiers/ly2video
 license=(GPL3)
-depends=(ffmpeg 'lilypond>=2.15.41' python2-imaging python2-midi python2-pypdf timidity++)
+depends=(ffmpeg 'lilypond>=2.15.41' python2-imaging python2-midi python2-pypdf python2-pip timidity++)
 makedepends=(git)
 source=('ly2video::git+https://github.com/aspiers/ly2video.git')
 md5sums=('SKIP')
