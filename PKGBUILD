@@ -2,7 +2,7 @@
 
 pkgname=resin-cli-git
 pkgdesc='Resin.io command line interface, development version'
-pkgver=5.10.1.r2.gec386b8
+pkgver=6.0.0.r2.gcb550f6
 pkgrel=1
 arch=('any')
 url='https://resin.io/'
