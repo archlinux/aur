@@ -3,7 +3,7 @@
 
 _gemname=commander-fastlane
 pkgname=ruby-$_gemname
-pkgver=4.4.4
+pkgver=4.4.5
 pkgrel=1
 pkgdesc='The complete solution for Ruby command-line executables'
 arch=(any)
@@ -16,7 +16,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('1ee8c8dcb3ed0d79b5735c9d1afa84dcdc935562')
+sha1sums=('cbcff2e53e2660eb3081a35ddc5cd7581939a469')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
