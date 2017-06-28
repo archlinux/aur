@@ -18,6 +18,7 @@ sha512sums=('e3b29ae3ef013835cdeea29c2e53de5cf1703aeafdd35c83ddc431ed3459ecfd770
 build() {
   cd "${srcdir}/drupal-console-launcher-${pkgver//_/-}"
   php /usr/bin/composer install --no-dev
+  ulimit -Sn 2048
   php -d phar.readonly=Off /usr/bin/php-box build
 }
 
