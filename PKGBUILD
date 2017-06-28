@@ -3,7 +3,7 @@
 # Contributors: Arkham, Christoph Zeiler, JD Steffen
 
 pkgname=eduke32-svn
-pkgver=r6287
+pkgver=r6307
 pkgrel=1
 pkgdesc="Advanced Duke Nukem 3D source port - svn version"
 arch=('i686' 'x86_64')
@@ -32,9 +32,6 @@ pkgver() {
 prepare() {
   gendesk -f -n --pkgname=${pkgname/-svn} --pkgdesc="${pkgdesc/ -*}" \
     --name=EDuke32 --categories="Application;Game"
-
-  # fix build error
-  sed -i 's|char \*dot =|const char \*dot =|'  eduke32-svn/source/duke3d/src/anim.cpp
 }
 
 build() {
