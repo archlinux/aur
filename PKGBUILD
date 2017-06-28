@@ -5,9 +5,10 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor
-_version=5.6.1
+_version=5.6.2
 _build=f1
-_buildtag=20170511
+_buildtag=20170628
+_randomstring=ddd95e743b51
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 epoch=1
@@ -35,18 +36,18 @@ optdepends=('ffmpeg: for WebGL exporting'
             'android-udev: for Android Remote')
 conflicts=('unity3d')
 replaces=('unity3d')
-source=("http://beta.unity3d.com/download/6a86e542cf5c/unity-editor-installer-5.6.1xf1Linux.sh"
+source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installer-${_version}x${_build}Linux.sh"
         'EULA'
         'unity-editor'
         'monodevelop-unity'
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
-sha1sums=('7c1c9da60fdc448dc71bf436dc8c96cd9f47c17c'
+sha1sums=('92a6156be59b4be708d687981f36cb19ba305eb7'
           '53092e4526533baf3e76db454b7b07ba3557d159'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
           'd1ecf758c9816f964febf601d065b0354940d866')
-sha512sums=('2f58af0d917aca55addc059be1ce1e0a0d4989e85618e7e553d22d8cf413ec1c3f8cbd17849682e3c1204446adb77889c90b4b759addd33e21711428d560446e'
+sha512sums=('a4ad734422d4370155c07a6831f0882009b5f112a7a0e03274aeb90251526ef78192695b2c620e04b333251a953c8ec27e3fb4930d5b72c65fd2327aa66dac07'
             'e512c7fa28207d39a968eda2ef9dc67f6b91dc91cd7fd5133a44232a5d73b2c29851be146d842dfcf2e6d932eb205beb6ee8eae689ac37643afec74b4f015a5e'
             'ef907b215996354dd4f76cae79687952e11937510823ec836bc984180803b5deb3fd5a055092e258ca3a2293b90ce0da7f0c8cdb7862d546d843e092b3dbc3a0'
             '26946ad2c759699763c1284a1f30380072da2911659992fa2471b436df1f0535b6eef61007f11c2e010e4a002663324e42ef5ae1417aa45e0ec99f4e3f0aafb7'
