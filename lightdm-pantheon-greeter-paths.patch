@@ -1,22 +1,38 @@
-diff -rupN lightdm-pantheon-greeter/CMakeLists.txt lightdm-pantheon-greeter.new/CMakeLists.txt
---- lightdm-pantheon-greeter/CMakeLists.txt	2016-11-17 10:15:21.079847000 +0100
-+++ lightdm-pantheon-greeter.new/CMakeLists.txt	2016-11-17 10:14:22.832088457 +0100
-@@ -8,7 +8,7 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_S
+From 889bc96e75eb5f2f3d5da9fb110ce092b8e1a395 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Wed, 28 Jun 2017 10:32:15 -0400
+Subject: [PATCH] updating the patch
+
+---
+ CMakeLists.txt                                               | 12 ++++++------
+ .../{pantheon-greeter.conf => lightdm-pantheon-greeter.conf} |  0
+ ...heon-greeter.desktop => lightdm-pantheon-greeter.desktop} |  4 ++--
+ src/PantheonGreeter.vala                                     |  2 +-
+ src/Widgets/Wallpaper.vala                                   |  2 +-
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+ rename data/{pantheon-greeter.conf => lightdm-pantheon-greeter.conf} (100%)
+ rename data/{pantheon-greeter.desktop => lightdm-pantheon-greeter.desktop} (64%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd290ff..83f270b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
  
  set (CONF_DIR "/etc/lightdm")
  set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 -set (PKGDATADIR "${DATADIR}/pantheon-greeter")
 +set (PKGDATADIR "${DATADIR}/lightdm-pantheon-greeter")
  set (CMAKE_INSTALL_PREFIX /usr)
- set (VERSION "3.0.0")
+ set (VERSION "3.1.1")
  
-@@ -61,10 +61,10 @@ add_subdirectory (po)
+@@ -93,10 +93,10 @@ include (GSettings)
+ include (GResource)
+ glib_compile_resources (GLIB_RESOURCES_CSS SOURCE data/css.gresource.xml)
  
- include (GSettings)
- 
--add_executable (pantheon-greeter ${VALA_C})
+-add_executable (pantheon-greeter ${VALA_C} ${GLIB_RESOURCES_CSS})
 -target_link_libraries(pantheon-greeter m)
-+add_executable (lightdm-pantheon-greeter ${VALA_C})
++add_executable (lightdm-pantheon-greeter ${VALA_C} ${GLIB_RESOURCES_CSS})
 +target_link_libraries(lightdm-pantheon-greeter m)
  
 -install (TARGETS pantheon-greeter RUNTIME DESTINATION sbin)
@@ -26,52 +42,32 @@ diff -rupN lightdm-pantheon-greeter/CMakeLists.txt lightdm-pantheon-greeter.new/
 +install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/lightdm-pantheon-greeter.desktop DESTINATION share/xgreeters)
 +install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/lightdm-pantheon-greeter.conf DESTINATION ${CONF_DIR})
  install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/fingerprint.svg DESTINATION ${PKGDATADIR})
-diff -rupN lightdm-pantheon-greeter/data/lightdm-pantheon-greeter.conf lightdm-pantheon-greeter.new/data/lightdm-pantheon-greeter.conf
---- lightdm-pantheon-greeter/data/lightdm-pantheon-greeter.conf	1970-01-01 01:00:00.000000000 +0100
-+++ lightdm-pantheon-greeter.new/data/lightdm-pantheon-greeter.conf	2016-11-17 10:11:53.252671426 +0100
-@@ -0,0 +1,6 @@
-+[greeter]
-+#activate-numlock=true
-+#default-wallpaper=/usr/share/backgrounds/elementaryos-default
-+#high-contrast=false
-+#onscreen-keyboard=false
-+#screensaver-timeout=60
-diff -rupN lightdm-pantheon-greeter/data/lightdm-pantheon-greeter.desktop lightdm-pantheon-greeter.new/data/lightdm-pantheon-greeter.desktop
---- lightdm-pantheon-greeter/data/lightdm-pantheon-greeter.desktop	1970-01-01 01:00:00.000000000 +0100
-+++ lightdm-pantheon-greeter.new/data/lightdm-pantheon-greeter.desktop	2016-11-17 10:11:53.252671426 +0100
-@@ -0,0 +1,7 @@
-+[Desktop Entry]
-+Name=Pantheon Greeter
-+Comment=Pantheon Greeter
-+Exec=lightdm-pantheon-greeter
-+Type=Application
-+X-Ubuntu-Gettext-Domain=pantheon-greeter
-+Name[en_US]=lightdm-pantheon-greeter
-diff -rupN lightdm-pantheon-greeter/data/pantheon-greeter.conf lightdm-pantheon-greeter.new/data/pantheon-greeter.conf
---- lightdm-pantheon-greeter/data/pantheon-greeter.conf	2016-11-17 10:15:21.079847000 +0100
-+++ lightdm-pantheon-greeter.new/data/pantheon-greeter.conf	1970-01-01 01:00:00.000000000 +0100
-@@ -1,6 +0,0 @@
--[greeter]
--#activate-numlock=true
--#default-wallpaper=/usr/share/backgrounds/elementaryos-default
--#high-contrast=false
--#onscreen-keyboard=false
--#screensaver-timeout=60
-diff -rupN lightdm-pantheon-greeter/data/pantheon-greeter.desktop lightdm-pantheon-greeter.new/data/pantheon-greeter.desktop
---- lightdm-pantheon-greeter/data/pantheon-greeter.desktop	2016-11-17 10:15:21.079847000 +0100
-+++ lightdm-pantheon-greeter.new/data/pantheon-greeter.desktop	1970-01-01 01:00:00.000000000 +0100
-@@ -1,7 +0,0 @@
--[Desktop Entry]
--Name=Pantheon Greeter
--Comment=Pantheon Greeter
+diff --git a/data/pantheon-greeter.conf b/data/lightdm-pantheon-greeter.conf
+similarity index 100%
+rename from data/pantheon-greeter.conf
+rename to data/lightdm-pantheon-greeter.conf
+diff --git a/data/pantheon-greeter.desktop b/data/lightdm-pantheon-greeter.desktop
+similarity index 64%
+rename from data/pantheon-greeter.desktop
+rename to data/lightdm-pantheon-greeter.desktop
+index 225cd40..3e40fc7 100644
+--- a/data/pantheon-greeter.desktop
++++ b/data/lightdm-pantheon-greeter.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Pantheon Greeter
+ Comment=Pantheon Greeter
 -Exec=pantheon-greeter
--Type=Application
--X-Ubuntu-Gettext-Domain=pantheon-greeter
++Exec=lightdm-pantheon-greeter
+ Type=Application
+ X-Ubuntu-Gettext-Domain=pantheon-greeter
 -Name[en_US]=pantheon-greeter
-diff -rupN lightdm-pantheon-greeter/src/PantheonGreeter.vala lightdm-pantheon-greeter.new/src/PantheonGreeter.vala
---- lightdm-pantheon-greeter/src/PantheonGreeter.vala	2016-11-17 10:15:21.079847000 +0100
-+++ lightdm-pantheon-greeter.new/src/PantheonGreeter.vala	2016-11-17 10:11:53.252671426 +0100
-@@ -104,7 +104,7 @@ public class PantheonGreeter : Gtk.Windo
++Name[en_US]=lightdm-pantheon-greeter
+diff --git a/src/PantheonGreeter.vala b/src/PantheonGreeter.vala
+index d984635..194a259 100644
+--- a/src/PantheonGreeter.vala
++++ b/src/PantheonGreeter.vala
+@@ -104,7 +104,7 @@ public class PantheonGreeter : Gtk.Window {
          
          settings = new KeyFile ();
          try {
@@ -80,19 +76,11 @@ diff -rupN lightdm-pantheon-greeter/src/PantheonGreeter.vala lightdm-pantheon-gr
          } catch (Error e) {
              warning (e.message);
          }
-@@ -433,7 +433,7 @@ public class PantheonGreeter : Gtk.Windo
- }
- 
- public static int main (string [] args) {
--    message ("Starting pantheon-greeter...");
-+    message ("Starting lightdm-pantheon-greeter...");
-     /* Protect memory from being paged to disk, as we deal with passwords */
-     Posix.mlockall (Posix.MCL_CURRENT | Posix.MCL_FUTURE);
- 
-diff -rupN lightdm-pantheon-greeter/src/Wallpaper.vala lightdm-pantheon-greeter.new/src/Wallpaper.vala
---- lightdm-pantheon-greeter/src/Wallpaper.vala	2016-11-17 10:15:21.079847000 +0100
-+++ lightdm-pantheon-greeter.new/src/Wallpaper.vala	2016-11-17 10:11:53.252671426 +0100
-@@ -53,7 +53,7 @@ public class Wallpaper : GtkClutter.Acto
+diff --git a/src/Widgets/Wallpaper.vala b/src/Widgets/Wallpaper.vala
+index 9b6cde1..dcecd1f 100644
+--- a/src/Widgets/Wallpaper.vala
++++ b/src/Widgets/Wallpaper.vala
+@@ -49,7 +49,7 @@ public class Wallpaper : Gtk.Stack {
          var settings = new KeyFile ();
          string default_wallpaper = "/usr/share/backgrounds/elementaryos-default";
          try {
