@@ -1,0 +1,19 @@
+*** startgui.cpp	2017-03-03 14:14:36.000000000 +0100
+--- fixed-startgui.cpp	2017-06-28 18:44:58.171398441 +0200
+***************
+*** 1387,1393 ****
+  
+  	i18n->SetContext("Menu::Help");
+  
+! 	S::System::System::OpenURL(String("file://").Append(GUI::Application::GetApplicationDirectory()).Append(Config::Get()->documentationPath).Append("manual/").Append(i18n->TranslateString("index_en.html")));
+  }
+  
+  Void freac::freacGUI::ShowTipOfTheDay()
+--- 1387,1393 ----
+  
+  	i18n->SetContext("Menu::Help");
+  
+! 	S::System::System::OpenURL(String("file://").Append(Config::Get()->documentationPath).Append("manual/").Append(i18n->TranslateString("index_en.html")));
+  }
+  
+  Void freac::freacGUI::ShowTipOfTheDay()
