@@ -1,7 +1,7 @@
 pkgbase = ring-kde
 	pkgdesc = KDE client for Ring (ring.cx)
-	pkgver = 2.3.0.r287.ga18fdff
-	pkgrel = 2
+	pkgver = 2.3.0.r424.gb1992bb
+	pkgrel = 1
 	url = https://commits.kde.org/ring-kde
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,15 @@ pkgbase = ring-kde
 	makedepends = python
 	makedepends = glu
 	makedepends = kinit
-	depends = libringclient
+	makedepends = qt5-quickcontrols2
+	makedepends = qt5-tools
+	depends = ring-daemon
 	depends = knotifyconfig
-	depends = hicolor-icon-theme
-	source = ring-kde-2.3.0.r287.ga18fdff.tar.gz::https://github.com/KDE/ring-kde/archive/a18fdff652cd8e94ef026c06e5f7f606ab47dbc3.tar.gz
-	sha256sums = b3de2841b373d8c38478f6f63df975c52ee1b75a3edf75cc26e8fbcc09681ded
+	depends = kdeclarative
+	source = ring-kde-2.3.0.r424.gb1992bb.tar.gz::https://github.com/KDE/ring-kde/archive/b1992bb2e0254f6dab69333d31a52f8b9842d619.tar.gz
+	source = lrc-7eaaed91db929644674f8a12b28c4e8122a69b16.tar.gz::https://github.com/elv13/ring-lrc/archive/7eaaed91db929644674f8a12b28c4e8122a69b16.tar.gz
+	sha256sums = 0b320c692f4bab0163da3209501fb24e46484cdc1747f096a2cba2e92dd7054b
+	sha256sums = b855a27698d248e1557517b9fdc32bb71bda1c100889df7b5300ddf651b24f75
 
 pkgname = ring-kde
 
