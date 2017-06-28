@@ -1,6 +1,6 @@
 # Maintainer: McNoggins
 pkgname=pagmo2
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (version 2)"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('gsl: Mathematical operations (symbolic)'
 	    'python: PyGMO support')
 makedepends=('cmake')
 source=(https://github.com/esa/pagmo2/archive/v${pkgver}.tar.gz)
-sha512sums=('9c2e5bab47495ce1b03aae5c1bd4d617f9136feaf1854f29230690ffb7a30e675b21b3bc041c8e0bdd1988631d25b77324f7642f60f7cf4b32222339811f891f')
+sha512sums=('a89c460841076cbd9de38b04bf4e9ed7d4f2a9ab0948011ba550c83c2bd909f35c042d7a05920ba5291f8004edaef40eb54ca461a1bdb9f2800ba3fbcc32946f')
 
 build() {
 
