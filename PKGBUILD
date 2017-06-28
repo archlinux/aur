@@ -1,6 +1,6 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab-git
-pkgver=2016.12.r145.gd26b0446
+pkgver=2016.12.r170.gb4103dc0
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -22,6 +22,8 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "meshlabserver_GLU.patch"
         "mpir.patch"
         "rpath.patch"
+        "import_bundle_out.patch"
+        "patch.patch"
         "meshlab.desktop")
 md5sums=('SKIP'
          'SKIP'
@@ -34,6 +36,8 @@ md5sums=('SKIP'
          'ca962601b06fac1fb2b6bf0b408777ad'
          'cb5a75c2f2cdf154ad61f753439f226f'
          '07da2fc11c1667e6c6a07f0042a2757d'
+         '765a59b64dd05b74f6a4bdf3962a1d93'
+         '7cb2aa39c2b4a6e7abbec40201df9c7e'
          '18aed0a21276a22325bf8c32166fb110')
 
 pkgver() {
@@ -65,6 +69,9 @@ prepare() {
   patch -Np0 -i plugin_dir.patch
   msg "put shaders in /usr/shade/meshlab"
   patch -Np0 -i shaders_dir.patch
+  msg "fix import bundler/nvm"
+  patch -Np0 -i import_bundle_out.patch
+  patch -Np0 -i patch.patch
 }
 
 build() {
