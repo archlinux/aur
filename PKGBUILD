@@ -1,8 +1,8 @@
 # Maintainer: yuhr <sdn.pate(at)gmail.com>
 
 pkgname=macrodown-git
-pkgver=1.0
-pkgrel=3
+pkgver=0.0.0
+pkgrel=4
 pkgdesc="The translator for Macrodown, a markup language wrapping other markup languages such as TeX/LaTeX or HTML."
 url="https://github.com/gfngfn/Macrodown"
 license=('MIT')
