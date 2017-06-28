@@ -10,6 +10,7 @@ pkgbase = monodevelop-stable
 	makedepends = cmake
 	makedepends = git
 	makedepends = nuget
+	makedepends = openssl-1.0
 	depends = mono>=5.0.0
 	depends = mono-addins>=0.6.2
 	depends = gtk-sharp-2
