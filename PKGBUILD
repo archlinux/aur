@@ -2,7 +2,7 @@
 # Contributer: Sam Burgos <jsbm1089 at gmail dot com>
 
 pkgname=blueberry
-pkgver=1.1.13
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="Bluetooth configuration tool"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/linuxmint/blueberry"
 license=('GPL')
 depends=('bluez-tools' 'gnome-bluetooth' 'python2-dbus' 'python2-gobject' 'python2-setproctitle' 'rfkill')
 source=($pkgname-$pkgver.tar.gz::https://github.com/linuxmint/blueberry/archive/$pkgver.tar.gz)
-sha256sums=('6a1e53d1d543417ec788e1f3dc89126a3e1a4392812977095be383f111cc915c')
+sha256sums=('30f895c5b3ee971ba4c5ab9d956ca0665c9e669663c3e85c989bc245dac7ee99')
 
 prepare() {
   cd $pkgname-$pkgver
