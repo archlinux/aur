@@ -1,0 +1,301 @@
+Index: src/helpers/imdb.py
+===================================================================
+--- src/helpers/imdb.py	(revision 11608)
++++ src/helpers/imdb.py	(working copy)
+@@ -53,19 +53,19 @@
+     parser = OptionParser(version='%prog 1.0', conflict_handler='resolve', usage="""
+ Search IMDB for a movie or a TV show
+ 
+-freevo imdb [options] <search> [<output> <video file> [<video file>]]
++freevo imdb [options] | [<result> <fxd file> <video file> [<video file>]]
+ 
+-Generate <output>.fxd for the movie.  Files is a list of files that belongs to
+-this movie.  Use [dvd|vcd] to add the whole disc or use [dvd|vcd][title] to add
+-a special DVD or VCD title to the list of files""")
++Generate a fxd for the movie.  Files is a list of files that belongs to this
++movie.  Use [dvd|vcd] to add the whole disc or use [dvd|vcd][title] to add a
++special DVD or VCD title to the list of files""")
+     parser.add_option('-v', '--verbose', action='count', default=0,
+         help='set the level of verbosity [default:%default]')
+     parser.add_option('-s', '--search', action='store_true', dest='search', default=False,
+         help='search imdb for string [default:%default]')
+     parser.add_option('-g', '--guess', action='store_true', dest='guess', default=False,
+         help='search imdb for possible filename match [default:%default]')
+-    parser.add_option('--tv', action='store_true', dest='tv', default=False,
+-        help='specify the search is a tv programme [default:%default]')
++    parser.add_option('--tv', action='store', dest='tv', default=None,
++        help='specify the id of a tv programme for a eipsode search [default:%default]')
+     parser.add_option('--season', dest='season', default=None,
+         help='specify the season in the search [default:%default]')
+     parser.add_option('--episode', dest='episode', default=None,
+@@ -116,7 +116,9 @@
+         sys.exit(u'--search requires <search pattern>')
+     elif opts.guess and len(args) < 1:
+         sys.exit(u'--guess requires <guess pattern>')
+-    tv_marker = (opts.tv or opts.season or opts.episode) and '"' or ''
++    #elif opts.tv and len(args) < 1:
++    #    sys.exit(u'--tv requires <imdb id>')
++    tv_marker = (opts.season or opts.episode) and '"' or ''
+ 
+     if opts.rom_drive is not None:
+         driveset = True
+@@ -176,6 +178,23 @@
+             print '%s' % title.encode(opts.encoding)
+         sys.exit(0)
+ 
++    if opts.tv:
++        print "Searching IMDB for '%s' season:%s episode:%s..." % (opts.tv, opts.season, opts.episode)
++        results = fxd.getIMDBid(opts.tv, opts.season, opts.episode)
++        if len(results) == 0:
++            print 'No results'
++        #for result in results:
++        #    if result[3]:
++        #        title = 'http://www.imdb.com/title/tt%s/  %s  %s (%s) %s' % (result[:1] + result[:4])
++        #    elif result[2]:
++        #        title = 'http://www.imdb.com/title/tt%s/  %s  %s (%s)' % (result[:1] + result[:3])
++        #    else:
++        #        title = 'http://www.imdb.com/title/tt%s/  %s  %s' % (result[:1] + result[:2])
++        #    title = results
++        title = 'http://www.imdb.com/title/tt%s/  %s' % (results, results)
++        print '%s' % title.encode(opts.encoding)
++        sys.exit(0)
++
+     # normal usage
+     if len(args) < 3:
+         sys.exit(u'requires <imdb id> <fxd filename> <video file>|<cd id>')
+Index: src/util/fxdimdb.py
+===================================================================
+--- src/util/fxdimdb.py	(revision 11608)
++++ src/util/fxdimdb.py	(working copy)
+@@ -48,8 +48,15 @@
+ import codecs
+ import os
+ import traceback
+-from BeautifulSoup import BeautifulSoup, NavigableString
+-import HTMLParser
++from pprint import pprint, pformat
++try:
++    from html5lib import HTMLParser, treebuilders
++    from html5lib.treebuilders.soup import NavigableString
++    using_html5lib = True
++except ImportError:
++    import HTMLParser
++    from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup, NavigableString
++    using_html5lib = False
+ 
+ import config
+ import util
+@@ -232,6 +239,7 @@
+         response.close()
+ 
+         _debug_('id_list has %s items' % (len(self.id_list)))
++        #print 'id_list=%s' % (pformat(self.id_list))
+         if len(self.id_list) > 20:
+             # too many results, check if there are stupid results in the list
+             words = []
+@@ -311,7 +319,11 @@
+         dvd = 0
+ 
+         try:
+-            soup = BeautifulSoup(results.read(), convertEntities='xml')
++            if using_html5lib:
++                parser = HTMLParser(tree=treebuilders.getTreeBuilder('beautifulsoup'))
++                soup = parser.parse(results.read())
++            else:
++                soup = BeautifulSoup(results.read(), convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
+         except UnicodeDecodeError:
+             print "Unicode error: check that /usr/lib/python2.x/site.py has the correct default encoding"
+             traceback.print_exc()
+@@ -336,68 +348,61 @@
+             self.info['year'] = y[1:-1]
+         except (AttributeError, TypeError, ValueError):
+             self.info['title'] = self.title
+-            self.info['year'] = title.find('a').string.strip()
++            try:
++                self.info['year'] = title.find('a').contents[0].strip()
++            except AttributeError:
++                self.info['year'] = ''
+ 
+         # Find the <div> with class info, each <h5> under this provides info
++        wanted_keys = ('release_date', 'genre', 'tagline', 'plot', 'plot_keywords',
++                       'also_known_as', 'mpaa', 'runtime', 'country', 'language', 
++                       'color', 'aspect_ratio', 'sound_mix', 'certification',
++                       )
++        
+         for info in main.findAll('div', {'class' : 'info'}):
+             infoh5 = info.find('h5')
+             if not infoh5:
+                 continue
+             try:
+-                infostr = infoh5.next
+-                key = infostr.string.strip(':').lower().replace(' ', '_')
+-                nextsibling = nextsibling = infoh5.nextSibling.strip()
+-                sections = info.findAll('a', { 'href' : re.compile('/Sections') })
+-                lists = info.findAll('a', { 'href' : re.compile('/List') })
+-                if len(nextsibling) > 0:
+-                    self.info[key] = nextsibling
++                infostr = infoh5.find(text=True)
++                key = infostr.strip().strip(':').lower().replace(' ', '_')
++                if key not in wanted_keys:
++                    continue
++                content = info.find('div', {'class' : 'info-content'})
++                infocontent = content.find(text=True)
++                if infocontent:
++                    infocontent = infocontent.strip()
++                sections = info.findAll('a', { 'href' : re.compile('^/Sections') })
++                lists = info.findAll('a', { 'href' : re.compile('^/List') })
++                keywords = info.findAll('a', { 'href' : re.compile('^/keyword') })
++                #print 'key=%s content=%r keywords=%r sections=%r lists=%r' % (key, infocontent, keywords, sections, lists)
++                if len(infocontent) > 0:
++                    self.info[key] = infocontent
+                 elif len(sections) > 0:
+                     items = []
+                     for item in sections:
+-                        items.append(item.string)
++                        items.append(item.contents[0].strip())
+                     self.info[key] = ' / '.join(items)
+                 elif len(lists) > 0:
+                     items = []
+                     for item in lists:
+-                        items.append(item.string)
++                        items.append(item.contents[0].strip())
+                     self.info[key] = ' / '.join(items)
++                elif len(keywords) > 0:
++                    items = []
++                    for item in keywords:
++                        items.append(item.contents[0].strip())
++                    self.info[key] = ' / '.join(items)
+             except:
+                 pass
+ 
+-        # Find Plot Outline/Summary:
+-        # Normally the tag is named "Plot Outline:" - however sometimes
+-        # the tag is "Plot Summary:" or just "Plot:". Search for all strings.
+-        imdb_result = soup.find(text='Plot Outline:')
+-        if not imdb_result:
+-            imdb_result = soup.find(text='Plot Summary:')
+-        if not imdb_result:
+-            imdb_result = soup.find(text='Plot:')
+-        if imdb_result:
+-            self.info['plot'] = imdb_result.next.strip()
+-        else:
+-            self.info['plot'] = u''
+-
+-        # Find tagline - sometimes the tagline is missing.
+-        # Use an empty string if no tagline could be found.
+-        imdb_result = soup.find(text='Tagline:')
+-        if imdb_result:
+-            self.info['tagline'] = imdb_result.next.strip()
+-        else:
+-            self.info['tagline'] = u''
+-
+         rating = soup.find(text='User Rating:').findNext(text=re.compile('/10'))
+-        if rating:
++        try:
+             votes = rating.findNext('a')
+-            self.info['rating'] = rating.strip() + ' (' + votes.string.strip() + ')'
+-        else:
++            self.info['rating'] = rating.strip() + ' (' + votes.contents[0].strip() + ')'
++        except AttributeError:
+             self.info['rating'] = ''
+ 
+-        runtime = soup.find(text='Runtime:')
+-        if runtime and runtime.next:
+-            self.info['runtime'] = runtime.next.strip()
+-        else:
+-            self.info['runtime'] = ''
+-
+         # Replace special characters in the items
+         for (k,v) in self.info.items():
+             self.info[k] = self.convert_entities(v)
+@@ -794,10 +799,14 @@
+         _debug_('parsesearchdata(results=%r, url=%r, id=%r)' % (results, url, id))
+ 
+         self.id_list = []
+-        m = re.compile('/title/tt([0-9]*)/')
+-        y = re.compile('\(([^)]+)\)')
++        m = re.compile('/title/tt(\d+)/')
++        y = re.compile('\((\d+)\) *(.*)')
+         try:
+-            soup = BeautifulSoup(results.read(), convertEntities='xml')
++            if using_html5lib:
++                parser = HTMLParser(tree=treebuilders.getTreeBuilder('beautifulsoup'))
++                soup = parser.parse(results.read())
++            else:
++                soup = BeautifulSoup(results.read(), convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
+         except HTMLParser.HTMLParseError, why:
+             traceback.print_exc()
+             _debug_('Cannot parse %r: %s' % (url, why), DWARNING)
+@@ -806,28 +815,37 @@
+             traceback.print_exc()
+             _debug_('Cannot parse %r: %s' % (url, why), DWARNING)
+             return self.id_list
+-        items = soup.findAll('a', href=re.compile('/title/tt'))
++        items = soup.findAll('a', href=re.compile('^/title/tt'))
+         ids = set([])
+         for item in items:
+-            idm = m.search(item['href'])
++            idm = item.attrMap['href']
+             if not idm:
+                 continue
+-            if isinstance(item.next.next, NavigableString):
+-                yrm = y.findall(item.next.next)
+-
+-            id = idm.group(1)
+-            name = item.string
+-            # skip empty names
+-            if not name:
++            m_match = m.match(idm)
++            if not m_match:
++                # skip invalid titles
+                 continue
+-            # skip duplicate ids
++            id = m_match.group(1)
+             if id in ids:
++                # skip duplicate ids
+                 continue
++            name = item.contents[0]
++            if not isinstance(name, NavigableString):
++                # skip empty names
++                continue
++            if isinstance(item.next.next, NavigableString):
++                yrm = item.next.next.strip()
+             ids.add(id)
+-            year = len(yrm) > 0 and yrm[0] or '0000'
+-            type = len(yrm) > 1 and yrm[1] or ''
++            y_match = y.match(yrm)
++            if y_match:
++                year = y_match.group(1)
++                type = y_match.group(2)
++            else:
++                year = '0000'
++                type = ''
+             #print 'url', item['href']
+             #print item.parent.findChildren(text=re.compile('[^ ]'))
++            #print 'id=%s name=%s year=%s type=%s' % (id, name, year, type)
+             self.id_list += [ ( id, name, year, type ) ]
+ 
+         for item in self.id_list:
+@@ -840,7 +858,11 @@
+         Returns a new id for getIMDBid with TV series episode data
+         """
+         try:
+-            soup = BeautifulSoup(results.read(), convertEntities='xml')
++            if using_html5lib:
++                parser = HTMLParser(tree=treebuilders.getTreeBuilder('beautifulsoup'))
++                soup = parser.parse(results.read())
++            else:
++                soup = BeautifulSoup(results.read(), convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
+         except UnicodeDecodeError:
+             print "Unicode error; check that /usr/lib/python2.x/site.py has the correct default encoding"
+             pass
+@@ -968,9 +990,6 @@
+         self.image = vfs.basename(self.image)
+ 
+         _debug_('Downloaded cover image from %s' % (self.image_url))
+-        print "Freevo knows nothing about the copyright of this image, please"
+-        print "go to %s to check for more information about private." % self.image_url
+-        print "use of this image"
+ 
+ 
+     def str2XML(self, line):
