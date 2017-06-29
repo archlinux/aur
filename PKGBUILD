@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-ja
-pkgver=2.40
+pkgver=2.46
 pkgrel=1
 _lang=ja
 pkgdesc="Japanese language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha256sums=('73c868aad2fdcc3ddf3cbb84bdca2ec7e43c7fcf0ac1d5ec243717123dcaf353')
+sha256sums=('b3f8a0e23cbd3e235d33d1fb083ff6b5b4d0abdd4697d89be444f90e657afea5')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
