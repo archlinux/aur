@@ -1,4 +1,5 @@
 # NiceHash equihash miner. Tromp GPU/CUDAsolver build
+# Maintainer: Hui Yiqun <huiyiqun@gmail.com>
 _flavour="cuda"
 pkgname="nheqminer-aayanl-${_flavour}-git"
 pkgver=0.5c.r4.g7d2238d
