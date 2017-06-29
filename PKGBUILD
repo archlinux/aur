@@ -2,8 +2,8 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-stable-bin
-pkgver=17.03.1
-pkgrel=2
+pkgver=17.06.0
+pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -12,23 +12,33 @@ provides=('docker' 'docker-bin' 'docker-ce')
 conflicts=('docker' 'docker-bin' 'docker-ce' 'docker-git')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd' 'libseccomp')
 makedepends=('go-md2man')
+makedepends=('make' 'git' 'go')
 optdepends=('btrfs-progs: btrfs backend support'
             'lxc: lxc backend support')
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip')
-install=$pkgname.install
 source=(
-  "https://get.docker.com/builds/Linux/x86_64/docker-${pkgver}-ce.tgz"
-  "https://github.com/moby/moby/archive/v${pkgver}-ce.tar.gz"
-  "docker.sysusers")
-md5sums=('c815623b6f2f9fab21c1c9a471b3c6df'
-         'e9692eaf80c78fcc860643e3468c6c76'
-         '8cf9900ebada61f352a03465a088da34')
+  "https://download.docker.com/linux/static/stable/x86_64/docker-${pkgver}-ce.tgz"
+  "https://github.com/docker/docker-ce/archive/v${pkgver}-ce.tar.gz"
+  "docker.sysusers"
+)
+md5sums=('ecc2f2d99b64b35d8ad478eafcc6f502'
+         '1eb7761b77dc328e6b0a9c481bcd7514'
+         '9a8b2744db23b14ca3cd350fdf73c179')
 
 build() {
-  cd moby-$pkgver-ce
-  # man pages
-  man/md2man-all.sh 2>/dev/null
+  ### go magics
+  export GOPATH="$srcdir"
+  export PATH="$GOPATH/bin:$PATH"
+
+  # mock go packages so we can generate the man pages
+  mkdir -p src/github.com/docker
+  ln -rsfT docker-ce-$pkgver-ce/components/cli src/github.com/docker/cli
+
+  msg2 'Building man pages'
+  pushd src/github.com/docker/cli >/dev/null
+  make manpages 2>/dev/null
+  popd >/dev/null
 }
 
 package() {
@@ -46,23 +56,28 @@ package() {
   # docker binary
   install -Dm755 'docker' "$pkgdir/usr/bin/docker"
   install -Dm755 'dockerd' "$pkgdir/usr/bin/dockerd"
-  # completion
-  install -Dm644 'completion/bash/docker' "$pkgdir/usr/share/bash-completion/completions/docker"
-  install -Dm644 'completion/zsh/_docker' "$pkgdir/usr/share/zsh/site-functions/_docker"
-  install -Dm644 'completion/fish/docker.fish' "$pkgdir/usr/share/fish/vendor_completions.d/docker.fish"
 
-  cd ../moby-$pkgver-ce
+  cd $srcdir/docker-ce-$pkgver-ce/components/cli
+  # completion
+  install -Dm644 'contrib/completion/bash/docker' "$pkgdir/usr/share/bash-completion/completions/docker"
+  install -Dm644 'contrib/completion/zsh/_docker' "$pkgdir/usr/share/zsh/site-functions/_docker"
+  install -Dm644 'contrib/completion/fish/docker.fish' "$pkgdir/usr/share/fish/vendor_completions.d/docker.fish"
+
+  # man
+  install -dm755 "$pkgdir/usr/share/man"
+  cp -r man/man* "$pkgdir/usr/share/man"
+
+  cd $srcdir/docker-ce-$pkgver-ce/components/packaging
   # systemd
-  install -Dm644 'contrib/init/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
-  install -Dm644 'contrib/init/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
-  install -Dm644 'contrib/udev/80-docker.rules' "$pkgdir/usr/lib/udev/rules.d/80-docker.rules"
+  install -Dm644 'deb/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
+  install -Dm644 'deb/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
   install -Dm644 "$srcdir/docker.sysusers" "$pkgdir/usr/lib/sysusers.d/docker.conf"
+
+  cd $srcdir/docker-ce-$pkgver-ce/components/engine
+  install -Dm644 'contrib/udev/80-docker.rules' "$pkgdir/usr/lib/udev/rules.d/80-docker.rules"
   # vim syntax
   install -Dm644 'contrib/syntax/vim/syntax/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/syntax/dockerfile.vim"
   install -Dm644 'contrib/syntax/vim/ftdetect/dockerfile.vim' "$pkgdir/usr/share/vim/vimfiles/ftdetect/dockerfile.vim"
-  # man
-  install -dm755 "$pkgdir/usr/share/man"
-  mv man/man* "$pkgdir/usr/share/man"
 }
 
 # vim:set ts=2 sw=2 et:
