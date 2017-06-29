@@ -3,12 +3,13 @@
 
 pkgname=yamagi-quake2-ctf
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Three Wave Capture The Flag for yamagi-quake2"
 url="http://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
+makedepends=('cmake')
 changelog=$pkgname.ChangeLog
 source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
         "$pkgname.sh" "$pkgname.desktop")
