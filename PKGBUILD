@@ -1,17 +1,17 @@
 # NiceHash equihash miner. Tromp GPU/CUDAsolver build
-# Maintainer: Sebastian Stammler <base64 -d<<<c2ViQGhkZG4uc3BhY2UK>
 _flavour="cuda"
-pkgname="nheqminer-${_flavour}-git"
-pkgver=0.5c.r1.gb9900ff
+pkgname="nheqminer-aayanl-${_flavour}-git"
+pkgver=0.5c.r4.g7d2238d
 pkgrel=1
-pkgdesc="zcash equihash miner by NiceHash. Djezo GPU/CUDA solver build."
+pkgdesc="zcash equihash miner by NiceHash. Djezo GPU/CUDA solver build. Forked by aayanl."
 arch=('x86_64')
 url="https://github.com/nicehash/nheqminer/"
 license=('MIT')
 depends=('boost' 'cuda')
 makedepends=('git' 'cmake' 'gcc5')
 optdepends=('zcash: zcash node and tools')
-source=("${pkgname}::git+https://github.com/nicehash/nheqminer.git")
+conflicts=("nheqminer-${_flavour}-git")
+source=("${pkgname}::git+https://github.com/aayanl/nheqminer.git")
 md5sums=('SKIP')
 
 pkgver() {
