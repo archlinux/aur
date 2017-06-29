@@ -1,0 +1,21 @@
+pkgbase = mariadb-connector-c
+	pkgdesc = MariaDB connector libraries for C/C++
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://mariadb.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = zlib
+	makedepends = libaio
+	makedepends = libxml2
+	makedepends = openssl
+	makedepends = pcre
+	makedepends = lz4
+	depends = lib32-openssl
+	conflicts = lib32-libmysqlclient
+	source = https://downloads.mariadb.org/interstitial/connector-c-2.3.3/mariadb-connector-c-2.3.3-src.tar.gz
+	sha256sums = 82a5710134e7654b9cad58964d6a25ed91b3dc1804ff51e8be2def0032914089
+
+pkgname = lib32-mariadb-connector-c
+
