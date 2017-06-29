@@ -1,7 +1,7 @@
 pkgbase = nodejs-hexo-cli
 	pkgdesc = Command line interface for Hexo: a fast, simple & powerful blog framework.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hexo.io
 	arch = any
 	license = MIT
