@@ -1,0 +1,14 @@
+pkgbase = nodejs-node-lambda
+	pkgdesc = Command line tool to locally run and deploy your node.js application to Amazon Lambda
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/motdotla/node-lambda
+	arch = any
+	license = BSD
+	depends = npm
+	noextract = node-lambda-0.11.0.tgz
+	source = http://registry.npmjs.org/node-lambda/-/node-lambda-0.11.0.tgz
+	md5sums = 59452acc357fcc13ec5af2c0f23a8072
+
+pkgname = nodejs-node-lambda
+
