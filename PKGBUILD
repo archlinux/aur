@@ -1,4 +1,4 @@
-# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Maintainer: fusion809
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 _pkgname=atom
