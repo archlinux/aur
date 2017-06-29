@@ -11,16 +11,14 @@ license=('GPL2')
 depends=('python2' 'glib2')
 arch=('i686' 'x86_64')
 source=(http://downloads.sourceforge.net/freevo/$pkgname-$pkgver.tar.gz)
-md5sums=('5fdac0492dbbb412c2cafe32ea8c60a8')
+sha256sums=('04fb0f610ec19a1aad1698d20829fb8caa34a97fe9cd4d9acf9f4f9f918d79b0')
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
   # python2 fix
-  for file in $(find . -name '*.py' -print); do
-    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-    sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-  done
+  find . -name '*.py' -exec \
+    sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_;s_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' '{}' \;
 
   python2 setup.py install --prefix=${pkgdir}/usr --optimize=1
 }
