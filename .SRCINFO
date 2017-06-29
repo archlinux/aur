@@ -1,0 +1,16 @@
+pkgbase = python2-beautifulsoup3
+	pkgdesc = A Python HTML/XML parser designed for quick turnaround projects like screen-scraping
+	pkgver = 3.2.1
+	pkgrel = 3
+	url = http://www.crummy.com/software/BeautifulSoup/index.html
+	arch = any
+	license = PSF
+	depends = python2
+	provides = python-beautifulsoup=3.2.1
+	conflicts = python-beautifulsoup
+	replaces = python-beautifulsoup
+	source = http://www.crummy.com/software/BeautifulSoup/download/3.x/BeautifulSoup-3.2.1.tar.gz
+	sha1sums = b23e78f058240eb8779dbc1b8a8d76bba4916df1
+
+pkgname = python2-beautifulsoup3
+
