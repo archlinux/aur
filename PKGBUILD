@@ -27,9 +27,9 @@ pkgver() {
 }
 
 prepare() {
+    # TODO: to complete build directory clean up user must run 'makepkg -C'
     #[[ -d builddir ]] && rm -r builddir
-    #mkdir builddir
-    true
+    mkdir builddir || true
 }
 
 build() {
