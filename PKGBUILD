@@ -1,7 +1,7 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 _shortname=easylogging
 pkgname=${_shortname}pp
-pkgver=9.92
+pkgver=9.94.2
 pkgrel=1
 pkgdesc='Robust, thread-safe lightweight single header only C++ logging library'
 arch=('any')
@@ -18,13 +18,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/${_shortname}/${pkgname}/releases/download/${pkgver}/${pkgname}_v${pkgver}.tar.gz")
+source=("https://github.com/${_shortname}/${pkgname}/releases/download/v${pkgver}/${pkgname}_v${pkgver}.tar.gz")
 noextract=()
-sha1sums=('27436c2bd48b9870e08938aa220319ea161566f8')
+sha1sums=('fbd4ac4d3c2b7a341c3d88c6e5d47a6cd79303d7')
 
 package() {
     install -Dm644 "${srcdir}/LICENCE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/easylogging++.h" "${pkgdir}/usr/include/easylogging++.h"
     install -Dm644 "${srcdir}/easylogging++.cc" "${pkgdir}/usr/include/easylogging++.cc"
-    install -Dm644 "${srcdir}/RELEASE-NOTES.txt" "${pkgdir}/usr/share/doc/${pkgname}/RELEASE-NOTES"
+    install -Dm644 "${srcdir}/CHANGELOG.txt" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
 }
