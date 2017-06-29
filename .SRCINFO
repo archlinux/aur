@@ -1,0 +1,31 @@
+pkgbase = cnijfilter-mg8100series
+	pkgdesc = Canon IJ Printer Driver (for mg8100 series)
+	pkgver = 3.40
+	pkgrel = 1
+	url = http://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mg_series/pixma_mg8150.aspx?type=drivers&os=LINUX
+	install = cnijfilter-mg8100.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = autoconf>=2.13
+	makedepends = automake>=1.6
+	makedepends = findutils
+	makedepends = gawk
+	depends = cups
+	depends = ghostscript
+	depends = popt
+	depends = gtk2
+	conflicts = cnijfilter-common
+	source = http://files.canon-europe.com/files/soft40245/Software/cnijfilter-source-3.40-1.tar.gz
+	source = build-fixes.patch
+	source = cups.patch
+	source = id.po.patch
+	source = libpng.patch
+	sha256sums = a95dd4ca491a9e8acc3e4ee35cc84904680e82d89ff04a23dda1b0ccffbb8a7a
+	sha256sums = 2fac6cca681320ea248abb73a5d17c7a1f69176b594aeb2cb5c67bd4ace1fd37
+	sha256sums = 28a1cb7495b0e0689c1629d57130bcb020413431d6ffd0c1057cef2f7f16f72e
+	sha256sums = df6ff8ef9d8bf825c170b3d5957a93eb7c20b6b4cc39a4944dc74d2852bef1a9
+	sha256sums = d4b52edbb4cc6a56d93b176341277935357acc0c52ac48abcf0e7e7e9d3c0a7c
+
+pkgname = cnijfilter-mg8100series
+
