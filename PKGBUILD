@@ -2,7 +2,7 @@
 # Contributor: Andreas Wagner <andreas.wagner@lowfatcomputing.org>
 
 pkgname=teensy-loader-cli-git
-pkgver=r57.f5b6d7a
+pkgver=2.1.r14.gf5b6d7a
 pkgrel=1
 pkgdesc="Command line loader for the teensy microprocessor boards"
 arch=('i686' 'x86_64')
