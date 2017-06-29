@@ -1,0 +1,15 @@
+pkgbase = kaa-base
+	pkgdesc = KAA base package
+	pkgver = 0.6.0
+	pkgrel = 5
+	url = http://freevo.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	depends = glib2
+	source = http://downloads.sourceforge.net/freevo/kaa-base-0.6.0.tar.gz
+	md5sums = 5fdac0492dbbb412c2cafe32ea8c60a8
+
+pkgname = kaa-base
+
