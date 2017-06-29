@@ -4,7 +4,7 @@
 pkgname=z-stack-gateway
 pkgver=1.0.1
 _under_pkgver=${pkgver//./_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Z-Stack Linux Gateway is TI's ZigBee Home Gateway solution for Linux systems."
 arch=(i686 x86_64)
 url="https://github.com/greyltc/bitrock-unpacker/"
@@ -76,6 +76,6 @@ package() {
   mv "${srcdir}/unpacked.vfs/default/programfileslinux/Firmware" "${pkgdir}/opt/z-stack-gateway/."
 
   msg2 "Edit /opt/z-stack-gateway/servers/NPI_Gateway.cfg as needed"
-  msg2 'Then run "/opt/z-stack-gateway/servers/zigbeeHAgw x86"'
-  msg2 'Then run "/opt/z-stack-gateway/servers/start_application"'
+  msg2 'Then run "cd /opt/z-stack-gateway/servers && LD_LIBRARY_PATH=/opt/z-stack-gateway/protobuf ./zigbeeHAgw x86"'
+  msg2 'Then run "cd /opt/z-stack-gateway/servers && LD_LIBRARY_PATH=/opt/z-stack-gateway/protobuf ./start_application"'
 }
