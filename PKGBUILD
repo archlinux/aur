@@ -2,8 +2,8 @@
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 
 pkgname=pharo
-pkgver=5.0.759
-pkgrel=3
+pkgver=6.0.504
+pkgrel=1
 pkgdesc="a fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk"
 arch=(i686 x86_64)
 url="http://www.pharo-project.org/"
@@ -15,45 +15,46 @@ else
 fi
 
 _imageversion=${pkgver//./}
-_vmversion=480
+_vmversion="20170531"
 
-source=(http://files.pharo.org/vm/pharo-spur32/linux/${_vmversion}.zip \
-	http://files.pharo.org/image/50/${_imageversion}.zip\
+source=(http://files.pharo.org/vm/pharo-spur64/linux/stable-${_vmversion}.zip \
+	http://files.pharo.org/image/60/${_imageversion}-64.zip\
 	http://files.pharo.org/media/logo/icon-512x512.png\
-	http://files.pharo.org/sources/PharoV50.sources.zip\
+	http://files.pharo.org/sources/PharoV60.sources.zip\
 	$pkgname.sh
 	 $pkgname.desktop)
 
-sha256sums=('f960f54c3a20fb11bab534da36c8401f6487075ac134d6033e9d3831e79379d6'
-            '4f5dbb9a61011ca96d94e5d08c8811512e91e2c0e99fdeb58e9e98bdc3bcc2d4'
+sha256sums=('8294e58a477704c0f8a237bae04c9c9217c12c7eebf6f412e67143d2687d9006'
+            'bbd0cb99b04c36054501c7e6d2be745374e09ba261fc43442a1948f1502f3853'
             '5a6f40722264a2befc9aea1dace399f2491cd45a98987458660f8a39d4e6887e'
-            '2f99195e93e3b70f2915197080d3c69758e6109d1c7cee90c5c57ba2800f747a'
-            '3c5ec6c4807df853d3b448d867a1d369a01475015e5dabb4dfdd4a64746c1d87'
+            '4a7ca4ecf26fcbff1cc4a38a4457bd405021e0fcc67711c8fb62f99c8e896d75'
+            '1cb3cc70da68096fa03e5f261cdfc169b3c97f7d26e17919aed1fef5e07df9fe'
             'ad37a9c7d05b72a1d0375de7b7056dfcb220e2bef6358a99b6075ae6f66905f6')
 
 package() {
-	cd $srcdir
-	unzip ${_vmversion}.zip -d bin
-
-	mkdir -p $pkgdir/opt/pharo/shared
-	mkdir -p $pkgdir/usr/bin
-
-	cp -R bin $pkgdir/opt/pharo
-	install $pkgname.sh $pkgdir/opt/pharo/pharo
-	install Pharo-${_imageversion}.changes $pkgdir/opt/pharo/shared/Pharo5.0.changes
-	install Pharo-${_imageversion}.image $pkgdir/opt/pharo/shared/Pharo5.0.image
-	install PharoV50.sources $pkgdir/opt/pharo/shared/PharoV50.sources
-
-	ln -s /opt/pharo/pharo $pkgdir/usr/bin/pharo
-
 	#desktop icons
 	mkdir -p $pkgdir/usr/share/pixmaps
 	mkdir -p $pkgdir/usr/share/applications
+	mkdir -p $pkgdir/usr/bin
+	mkdir -p $pkgdir/opt
+
+	umask 002
+	cd $srcdir
+	mkdir -p $pkgdir/opt/pharo/shared
+
+	cp -R bin $pkgdir/opt/pharo
+	cp -R lib $pkgdir/opt/pharo
+	install $pkgname.sh $pkgdir/opt/pharo/pharo
+	install -m777 Pharo64-${_imageversion}.changes $pkgdir/opt/pharo/shared/Pharo6.0.changes
+	install Pharo64-${_imageversion}.image $pkgdir/opt/pharo/shared/Pharo6.0.image
+	install PharoV60.sources $pkgdir/opt/pharo/shared/PharoV60.sources
+	install -m777 -d $pkgdir/opt/pharo/shared/pharo-local
+
+	ln -s /opt/pharo/pharo $pkgdir/usr/bin/pharo
 
 	install icon-512x512.png $pkgdir/usr/share/pixmaps/$pkgname.png
 
 	install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
 	chgrp -R users $pkgdir/opt/pharo/
-	chmod -R 775 $pkgdir/opt/pharo
 }
