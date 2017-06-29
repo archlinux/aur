@@ -1,8 +1,8 @@
 # former Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=jameica
-pkgver=2.6.4
+pkgver=2.6.5
 _pkgver=2.6
-pkgrel=3
+pkgrel=1
 pkgdesc="free runtime environment for java applications"
 arch=('i686' 'x86_64')
 url="https://www.willuhn.de/products/jameica/"
@@ -13,15 +13,15 @@ makedepends=('unzip')
 install="jameica.install"
 # See https://willuhn.de/products/jameica/download.php for checksums
 source_i686=("${pkgname}-${pkgver}.zip::https://www.willuhn.de/projects/jameica/releases/$_pkgver/jameica/$pkgname-linux.zip")
-sha1sums_i686=('f659abd95ac062846f14c067fea5061bd5c4cd54')
+sha1sums=('9aa6aed3ffc50c8f01497d0332ff24d21f7189bf'
+          '79be8955392bf3dfade9c0118ee4d72f081e07b8'
+          '39c008050c7f90f3fde05b849cba80559207bdb5')
+sha1sums_i686=('794f42ff28f38a8d133cbc2537b9d7839dae9ad0')
+sha1sums_x86_64=('794f42ff28f38a8d133cbc2537b9d7839dae9ad0')
 source_x86_64=("${pkgname}-${pkgver}.zip::https://www.willuhn.de/projects/jameica/releases/$_pkgver/jameica/$pkgname-linux64.zip")
-sha1sums_x86_64=('7d3d6104b75d41b0baebdf7cbbdf3fca64012e13')
 source=("jameica-start-script.patch"
         "jameicaserver-start-script.patch"
         "jameica.install")
-sha1sums=('a6a696d465929f373d6c0d469463aa28b0f4c11f'
-        '05ca5cf474523db10789eea9cb483cdf12d8549b'
-        '39c008050c7f90f3fde05b849cba80559207bdb5')
 
 prepare() {
     patch jameica/jameica.sh jameica-start-script.patch

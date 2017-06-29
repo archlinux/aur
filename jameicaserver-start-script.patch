@@ -1,15 +1,18 @@
-6,8c6
-< link=$(readlink -f "$0")
-< dir=$(dirname "$link")
-< cd "$dir" 
----
-> cd /opt/jameica
-14c12,17
-< java -Djava.net.preferIPv4Stack=true -Xmx256m $_JCONSOLE -jar jameica-linux.jar -d $@
----
-> # enable to use the default version of java provided by java-runtime-common
-> #_java=/usr/bin/java
-> # use java 8 for mashup plugin
-> _java=/usr/lib/jvm/java-8-openjdk/jre/bin/java
-> 
-> $_java -Djava.net.preferIPv4Stack=true -Xmx256m $_JCONSOLE -jar jameica-linux.jar -d $@
+diff --git a/jameicaserver b/jameicaserver
+index 8c2e5ff..4f232cc 100755
+--- a/jameicaserver
++++ b/jameicaserver
+@@ -3,12 +3,8 @@
+ # Linux Start-Script fuer Server-Betrieb.
+ # Jameica wird hierbei OHNE GUI gestartet.
+ 
+-link=$(readlink -f "$0")
+-dir=$(dirname "$link")
+-cd "$dir" 
++cd /opt/jameica
+ 
+ #_JCONSOLE="-Dcom.sun.management.jmxremote"
+ 
+-# https://www.willuhn.de/bugzilla/show_bug.cgi?id=798
+-
+ java -Djava.net.preferIPv4Stack=true -Xmx512m $_JCONSOLE -jar jameica-linux.jar -d $@
