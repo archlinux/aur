@@ -1,0 +1,16 @@
+pkgbase = sqlite2
+	pkgdesc = A C library that implements an SQL database engine
+	pkgver = 2.8.17
+	pkgrel = 8
+	url = http://www.sqlite.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = readline>=6.0.00
+	source = http://www.sqlite.org/sqlite-2.8.17.tar.gz
+	source = LICENSE
+	md5sums = 838dbac20b56d2c4292e98848505a05b
+	md5sums = 5d3b333e59a37747284f66081660f8a1
+
+pkgname = sqlite2
+
