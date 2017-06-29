@@ -1,0 +1,42 @@
+pkgbase = gnucash-gtk3-git
+	pkgdesc = A personal and small-business financial-accounting application (GTK3 development version)
+	pkgver = 2.6.9.r1784.g6fbfb8222
+	pkgrel = 1
+	url = http://www.gnucash.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gcc
+	makedepends = pkgconfig
+	makedepends = git
+	makedepends = boost
+	makedepends = swig
+	makedepends = gmock
+	makedepends = gtest
+	makedepends = gconf
+	depends = guile
+	depends = slib
+	depends = goffice
+	depends = libdbi-drivers
+	depends = libmariadbclient
+	depends = postgresql-libs
+	depends = aqbanking
+	depends = desktop-file-utils
+	depends = webkit2gtk
+	depends = libgnome-keyring
+	depends = dconf
+	depends = boost-libs
+	optdepends = evince: for print preview
+	optdepends = yelp: help browser
+	optdepends = perl-finance-quote: for stock information lookups
+	optdepends = perl-date-manip: for stock information lookups
+	provides = gnucash
+	conflicts = gnucash
+	options = !makeflags
+	options = !emptydirs
+	source = gnucash-gtk3-git::git+https://github.com/Bob-IT/gnucash#branch=gtk3
+	sha1sums = SKIP
+
+pkgname = gnucash-gtk3-git
+
