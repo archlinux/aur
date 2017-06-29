@@ -1,0 +1,16 @@
+pkgbase = kaa-metadata
+	pkgdesc = KAA metadata package
+	pkgver = 0.7.7
+	pkgrel = 5
+	url = http://freevo.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libdvdread
+	depends = python2
+	depends = kaa-base
+	source = http://downloads.sourceforge.net/freevo/kaa-metadata-0.7.7.tar.gz
+	md5sums = 4bca23a0c695b4281ae2220022cdeb77
+
+pkgname = kaa-metadata
+
