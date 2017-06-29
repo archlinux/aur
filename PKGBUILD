@@ -1,5 +1,5 @@
 pkgname=rhvoice-git
-pkgver=20161213
+pkgver=20170622
 pkgrel=1
 pkgdesc="free and open source speech synthesizer for Russian and other languages"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ build() {
     msg "Connecting to GIT server...."
 
     if [[ -d "$_gitname" ]]; then
-        cd "$_gitname" && git pull origin
+        cd "$_gitname" && git checkout SConstruct && git pull origin
         msg "The local files are updated."
     else
         git clone --depth 1 "$_gitroot" "$_gitname"
@@ -29,11 +29,11 @@ build() {
     msg "GIT checkout done or server timeout"
     msg "Starting build..."
 cat << EOF | patch "$srcdir/$_gitname/SConstruct"
-157c157
+161c161
 <         env.AppendUnique(CXXFLAGS=["-std=c++03"])
 ---
 >         env.AppendUnique(CXXFLAGS=["-std=c++11"])
-212c212
+216c216
 < #        has_giomm=conf.CheckPKG("giomm-2.4")
 ---
 >         has_giomm=conf.CheckPKG("giomm-2.4")
