@@ -1,13 +1,13 @@
 pkgbase = lib32-nvidia-utils-vulkan-developer-beta
-	pkgver = 381.26.03
+	pkgver = 381.10.10
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
 	makedepends = nvidia-libgl-vulkan-developer-beta
 	options = !strip
-	source = https://developer.nvidia.com/3812603-linux-32bit
-	md5sums = 07d6373f9d2672afacf11be1060bebb6
+	source = https://developer.nvidia.com/3811010-linux-32bit
+	md5sums = e218ceb370583186b9dc4e0c09d141ad
 
 pkgname = lib32-nvidia-utils-vulkan-developer-beta
 	pkgdesc = NVIDIA driver utilities and libraries (vulkan developer beta version) (32-bit)
@@ -16,7 +16,7 @@ pkgname = lib32-nvidia-utils-vulkan-developer-beta
 	depends = nvidia-utils-vulkan-developer-beta
 	depends = lib32-mesa>=17.0.2-1
 	optdepends = lib32-opencl-nvidia-vulkan-developer-beta: OpenCL support
-	provides = lib32-nvidia-utils=381.26.03
+	provides = lib32-nvidia-utils=381.10.10
 	provides = lib32-libglvnd
 	provides = lib32-vulkan-driver
 	conflicts = lib32-nvidia-utils
@@ -27,7 +27,7 @@ pkgname = lib32-nvidia-libgl-vulkan-developer-beta
 	depends = lib32-nvidia-utils-vulkan-developer-beta
 	depends = nvidia-libgl-vulkan-developer-beta
 	depends = lib32-libgles
-	provides = lib32-nvidia-libgl=381.26.03
+	provides = lib32-nvidia-libgl=381.10.10
 	provides = lib32-libgl
 	provides = lib32-libegl
 	provides = lib32-libgles
@@ -35,14 +35,14 @@ pkgname = lib32-nvidia-libgl-vulkan-developer-beta
 	conflicts = lib32-libgl
 	conflicts = lib32-libegl
 	conflicts = lib32-libgles
-	replaces = lib32-nvidia-utils<=381.26.03-1
+	replaces = lib32-nvidia-utils<=381.10.10-1
 
 pkgname = lib32-opencl-nvidia-vulkan-developer-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-vulkan-developer-beta'
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-nvidia=381.26.03
+	provides = lib32-opencl-nvidia=381.10.10
 	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia
 
