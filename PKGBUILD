@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-git
-pkgver=16.0.0.r6.gc85faa30
+pkgver=16.0.1
 pkgrel=1
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
 license=('GPL')
 depends=('wxgtk')
-makedepends=('git')
+makedepends=('git' 'gcc63')
 provides=('gambit')
 conflicts=('gambit')
 source=(git+https://github.com/gambitproject/gambit.git)
@@ -26,9 +26,9 @@ build() {
   libtoolize
   automake --add-missing
   autoconf
-
+  
   CXXFLAGS+=" -std=c++11" ./configure --prefix=/usr --disable-enumpoly
-  make 
+  make LANG=C
 }
 
 package() {
