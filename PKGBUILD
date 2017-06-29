@@ -3,7 +3,7 @@
 # Based on [aur]'s nvidia-utils-beta: https://aur.archlinux.org/packages/nvidia-utils-beta/
 
 pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-egl-wayland-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
-pkgver=381.26.03
+pkgver=381.10.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -18,13 +18,15 @@ esac
 
 # Source
 source=('10-nvidia-drm-outputclass.conf'
-        '20-nvidia.conf')
+        '20-nvidia.conf'
+        'nvidia_icd.json')
 source_i686=("https://developer.nvidia.com/${pkgver//./}-linux-32bit")
 source_x86_64=("https://developer.nvidia.com/${pkgver//./}-linux-64bit")
 md5sums=('4f5562ee8f3171769e4638b35396c55d'
-         '2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('07d6373f9d2672afacf11be1060bebb6')
-md5sums_x86_64=('b41bddbe1a613f3c3a07591a276f3202')
+         '2640eac092c220073f0668a7aaff61f7'
+         '58cb234fd413dd7f1ccec0d096c6c37c')
+md5sums_i686=('e218ceb370583186b9dc4e0c09d141ad')
+md5sums_x86_64=('2d808105048db815994264d3ab117c31')
 
 _create_links() {
   # create missing soname links
@@ -192,8 +194,8 @@ package_nvidia-utils-vulkan-developer-beta() {
   # GPU monitoring and management (1/2)
   install -Dm755 libnvidia-ml.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ml.so.$pkgver
 
-  # Vulkan icd
-  install -Dm644 nvidia_icd.json "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
+  # Vulkan icd (termporary from package)
+  install -Dm644 "$srcdir"/nvidia_icd.json "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
 
   # Helper libs for approved partners' GRID remote apps
   install -Dm755 libnvidia-ifr.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ifr.so.$pkgver
