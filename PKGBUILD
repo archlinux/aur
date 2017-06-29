@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r11944.4e87ad6ac
+pkgver=r11950.b39723a0a
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
@@ -31,7 +31,7 @@ build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_TESTS=on ..
+    -DWITH_TESTS=on -DDISABLE_RCT2_TESTS=on ..
   make all g2
 }
 
