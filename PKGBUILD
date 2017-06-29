@@ -2,7 +2,7 @@
 
 pkgname=vault-client
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vault-Client is a command-line interface to HashiCorp's Vault inspired by pass."
 arch=(i686 x86_64)
 url="https://github.com/adfinis-sygroup/vault-client.git"
@@ -24,5 +24,5 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -Dm755 vc "${pkgdir}/usr/bin/vc"
-    install -Dm644 sample/vc-completion.bash "${pkgdir}/usr/share/bash-completion/completion/vc"
+    install -Dm644 sample/vc-completion.bash "${pkgdir}/usr/share/bash-completion/completions/vc"
 }
