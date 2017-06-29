@@ -2,9 +2,9 @@
 # With help from Nicolas Porcel
 pkgbase=linux-max98090
 _srcname=linux-4.11
-pkgver=4.11.7
+pkgver=4.11.8
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'patch' 'make')
@@ -14,7 +14,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config.i686' 'config.x86_64'
+        'config.x86_64'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
@@ -28,9 +28,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '7d767998aa6a69df36f76d6343c03a45f190c7e8ddf9322c02493ceaa96a1aba'
+            'c390540524e9647efa3752550cb04b02f47a60a5d45f26d56a07cd8a67501929'
             'SKIP'
-            '72c8cdaed9c008a86d365a9be2195e89967d34a82a27a9d24e9fa5321635d193'
             '3724cfd9fdb9f5ff0258f9c89142a27051124934de877c0313395db74075dfdc'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
