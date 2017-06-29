@@ -1,0 +1,19 @@
+pkgbase = python-pam
+	pkgdesc = Module that provides an authenticate function that allows the caller to authenticate a given username / password against the PAM system on Linux.
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/FirefighterBlu3/python-pam
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = pam
+	source = http://pypi.python.org/packages/source/p/python-python-pam/python-pam-1.8.2.tar.gz
+	sha256sums = 26efe4e79b869b10f97cd8c4a6bbb04a4e54d41186364e975b4108c9c071812c
+
+pkgname = python-pam
+	depends = python
+
+pkgname = python2-pam
+	depends = python2
+
