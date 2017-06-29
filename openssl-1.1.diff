@@ -1,0 +1,58 @@
+diff -Naur omniORB-4.1.6.orig/src/lib/omniORB/orbcore/ssl/sslConnection.cc omniORB-4.1.6/src/lib/omniORB/orbcore/ssl/sslConnection.cc
+--- omniORB-4.1.6.orig/src/lib/omniORB/orbcore/ssl/sslConnection.cc	2017-06-29 20:11:59.268438073 +0200
++++ omniORB-4.1.6/src/lib/omniORB/orbcore/ssl/sslConnection.cc	2017-06-29 20:14:19.166827790 +0200
+@@ -421,7 +421,11 @@
+     else {
+       int len = ASN1_STRING_length(asn1_str);
+       CORBA::ULong(len+1) >>= stream;
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+       stream.put_octet_array(ASN1_STRING_data(asn1_str), len);
++#else
++      stream.put_octet_array(ASN1_STRING_get0_data(asn1_str), len);
++#endif      
+       stream.marshalOctet(0);
+     }
+ 
+diff -Naur omniORB-4.1.6.orig/src/lib/omniORB/orbcore/ssl/sslContext.cc omniORB-4.1.6/src/lib/omniORB/orbcore/ssl/sslContext.cc
+--- omniORB-4.1.6.orig/src/lib/omniORB/orbcore/ssl/sslContext.cc	2017-06-29 20:11:59.268438073 +0200
++++ omniORB-4.1.6/src/lib/omniORB/orbcore/ssl/sslContext.cc	2017-06-29 20:15:16.196170531 +0200
+@@ -354,12 +354,20 @@
+     0x02
+   };
+ 
+-  dh->p = BN_bin2bn(dh512_p, sizeof(dh512_p), 0);
+-  dh->g = BN_bin2bn(dh512_g, sizeof(dh512_g), 0);
+-  if( !dh->p || !dh->g) {
++  BIGNUM* p = BN_bin2bn(dh512_p, sizeof(dh512_p), 0);
++  BIGNUM* g = BN_bin2bn(dh512_g, sizeof(dh512_g), 0);
++  
++  if (!p || !g) {
+     OMNIORB_THROW(INITIALIZE,INITIALIZE_TransportError,CORBA::COMPLETED_NO);
+   }
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++  dh->p = p;
++  dh->g = g;
++#else
++  DH_set0_pqg(dh, p, 0, g);
++#endif
++
+   SSL_CTX_set_tmp_dh(pd_ctx, dh);
+   DH_free(dh);
+ }
+diff -Naur omniORB-4.1.6.orig/update.log omniORB-4.1.6/update.log
+--- omniORB-4.1.6.orig/update.log	2017-06-29 20:11:59.295104433 +0200
++++ omniORB-4.1.6/update.log	2017-06-29 20:16:26.068698038 +0200
+@@ -1,3 +1,12 @@
++Thu  5 Jan 11:27:32 GMT 2017 dgrisby and mickele
++====================================
++
++- Support changed API in OpenSSL 1.1.0.
++
++src/lib/omniORB/orbcore/ssl/sslConnection.cc
++src/lib/omniORB/orbcore/ssl/sslContext.cc
++
++
+ Fri Jul  1 15:57:00 BST 2011 dgrisby
+ ====================================
+ 

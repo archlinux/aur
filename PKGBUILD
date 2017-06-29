@@ -6,7 +6,7 @@
 
 pkgname=omniorb416
 pkgver=4.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A CORBA object request broker for C++ and Python. Legacy version."
 arch=('i686' 'x86_64')
 url="http://omniorb.sourceforge.net/"
@@ -15,16 +15,22 @@ provides=('omniorb=4.1.6')
 conflicts=('omniorb')
 depends=('python2' 'openssl')
 makedepends=('pkgconfig')
-source=(http://downloads.sourceforge.net/omniorb/omniORB-${pkgver}.tar.bz2)
+source=("http://downloads.sourceforge.net/omniorb/omniORB-${pkgver}.tar.bz2" "openssl-1.1.diff")
 
-build() {
+prepare() {
   cd "${srcdir}/omniORB-${pkgver}"
+
+  patch -Np1 -i "${srcdir}/openssl-1.1.diff"
 
   # python2 fix
   for file in $(find . -name '*.py' -print); do
     sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' "$file"
     sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "$file"
   done
+}
+
+build() {
+  cd "${srcdir}/omniORB-${pkgver}"
 
   PYTHON=/usr/bin/python2.7 ./configure \
          --prefix=/usr \
@@ -47,4 +53,5 @@ package() {
   done
   chmod 755 "${pkgdir}"/{usr,usr/bin,usr/lib,usr/share,usr/include,usr/share/idl,usr/lib/pkgconfig,usr/lib/python2.7,usr/lib/python2.7/site-packages}
 }
-md5sums=('44990f8139c349b53ab43110de6c629b')
+md5sums=('44990f8139c349b53ab43110de6c629b'
+         'cfd55fea5a6442e1c9b2230db616d0b8')
