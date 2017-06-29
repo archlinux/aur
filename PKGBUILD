@@ -9,13 +9,14 @@ pkgname='vtk-visit'
 _pkgname=vtk
 _PKGNAME=VTK
 pkgver=6.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (legacy version for VisIt).'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('boost' 'cmake' 'java-environment' 'doxygen' 'gnuplot'
+makedepends=('boost' 'cmake' 'ninja'
+             'java-environment' 'doxygen' 'gnuplot'
              'tk' 'wget'
              'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn'
              'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' 'gl2ps'
@@ -80,6 +81,7 @@ build() {
   done
 
   cmake \
+    -GNinja \
     -Wno-dev \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_BUILD_TYPE:STRING=Release \
@@ -97,13 +99,13 @@ build() {
     -DVTK_WRAP_TCL:BOOL=ON \
     "${srcdir}/${_PKGNAME}-${pkgver}"
 
-  make
+    ninja ${MAKEFLAGS}
 }
 
 package() {
   cd "${srcdir}/build"
 
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 
   # Install license
   install -dv "${pkgdir}/usr/share/licenses/${pkgname}"
