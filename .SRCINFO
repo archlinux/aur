@@ -1,6 +1,6 @@
-pkgbase = nheqminer-cuda-git
-	pkgdesc = zcash equihash miner by NiceHash. Djezo GPU/CUDA solver build.
-	pkgver = 0.5c.r1.gb9900ff
+pkgbase = nheqminer-aayanl-cuda-git
+	pkgdesc = zcash equihash miner by NiceHash. Djezo GPU/CUDA solver build. Forked by aayanl.
+	pkgver = 0.5c.r4.g7d2238d
 	pkgrel = 1
 	url = https://github.com/nicehash/nheqminer/
 	arch = x86_64
@@ -11,8 +11,9 @@ pkgbase = nheqminer-cuda-git
 	depends = boost
 	depends = cuda
 	optdepends = zcash: zcash node and tools
-	source = nheqminer-cuda-git::git+https://github.com/nicehash/nheqminer.git
+	conflicts = nheqminer-cuda-git
+	source = nheqminer-aayanl-cuda-git::git+https://github.com/aayanl/nheqminer.git
 	md5sums = SKIP
 
-pkgname = nheqminer-cuda-git
+pkgname = nheqminer-aayanl-cuda-git
 
