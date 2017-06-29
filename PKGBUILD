@@ -2,12 +2,12 @@
 
 pkgname=torrential
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 pkgdesc="A simple torrent client for elementary OS"
 url="https://github.com/davidmhewitt/torrential"
 license=(GPL2)
-depends=(gtk3 libarchive libunity granite openssl miniupnpc)
+depends=(gtk3 libarchive libevent libunity granite openssl miniupnpc)
 makedepends=(cmake vala)
 source=("https://github.com/davidmhewitt/torrential/archive/$pkgver.tar.gz"
 	patch)
