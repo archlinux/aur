@@ -1,7 +1,7 @@
 pkgbase = cepl-git
-	pkgdesc = CEPL is a command-line C Read-Eval-Print Loop, supporting readline key-bindings/tab-completion and the ability to specify additional shared libraries to link against
+	pkgdesc = CEPL is a command-line C11 Read-Eval-Print Loop, supporting readline key-bindings/tab-completion and the ability to specify additional shared libraries to link against
 	pkgver = 0.2.3.r3.gc28063a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alyptik/cepl
 	arch = i686
 	arch = x86_64
