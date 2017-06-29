@@ -3,12 +3,13 @@
 
 pkgname=yamagi-quake2-rogue
 pkgver=2.04
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2"
 url="http://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
+makedepends=('cmake')
 install=$pkgname.install
 changelog=$pkgname.ChangeLog
 source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
