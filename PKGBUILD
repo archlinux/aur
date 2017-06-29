@@ -14,11 +14,10 @@ provides=("gtk2=$pkgver")
 conflicts=('gtk2')
 depends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcomposite' 'libxdamage'
          'shared-mime-info' 'cairo' 'libcups' 'gtk-update-icon-cache' 'librsvg'
-         'desktop-file-utils' 'glib2-patched-thumbnailer')
+         'desktop-file-utils' 'gtk-doc' 'glib2-patched-thumbnailer')
 makedepends=('gobject-introspection' 'python2')
 optdepends=('gnome-themes-standard: Default widget theme' 
             'gnome-icon-theme: Default icon theme')
-replaces=('gtk2-docs')
 license=('LGPL')
 install=gtk2.install
 _commit=09c0b9c8a0f3dad599c179829ffb3a2e81f6efde
