@@ -1,7 +1,7 @@
 pkgbase = texlive-minionpro-git
 	pkgdesc = generate all necessary files to use Adobe Minion Pro and Adobe Myriad Pro with (pdf)latex.
 	pkgver = r129.ee53cd4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sebschub/FontPro.git
 	arch = any
 	license = GPL
@@ -10,8 +10,6 @@ pkgbase = texlive-minionpro-git
 	depends = texlive-core
 	depends = texlive-latexextra
 	depends = texlive-genericextra
-	provides = minionpro
-	conflicts = minionpro
 	source = git+https://github.com/sebschub/FontPro.git
 	source = minionpro.maps
 	source = myriadpro.maps
@@ -20,6 +18,10 @@ pkgbase = texlive-minionpro-git
 	md5sums = 88f9e84c9f4e8418fbbfa1cc3c534b93
 
 pkgname = texlive-minionpro-git
+	provides = minionpro
+	conflicts = minionpro
 
 pkgname = texlive-myriadpro-git
+	provides = myriadpro
+	conflicts = myriadpro
 

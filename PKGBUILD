@@ -2,15 +2,13 @@
 
 pkgname=('texlive-minionpro-git' 'texlive-myriadpro-git')
 pkgver=r129.ee53cd4
-pkgrel=2
+pkgrel=3
 pkgdesc="generate all necessary files to use Adobe Minion Pro and Adobe Myriad Pro with (pdf)latex."
 arch=('any')
 url="https://github.com/sebschub/FontPro.git"
 license=('GPL')
 depends=('texlive-core' 'texlive-latexextra' 'texlive-genericextra')
 makedepends=('git' 'acroread-fonts-systemwide')
-provides=('minionpro')
-conflicts=('minionpro')
 source=("git+https://github.com/sebschub/FontPro.git" minionpro.maps myriadpro.maps)
 _gitname="FontPro"
 md5sums=('SKIP'
@@ -30,6 +28,8 @@ prepare() {
 }
 
 package_texlive-minionpro-git() {
+  provides=('minionpro')
+  conflicts=('minionpro')
   cd "$_gitname"
   yes | ./scripts/makeall MinionPro
   yes | ./scripts/install "$pkgdir"/usr/share/texmf
@@ -39,6 +39,8 @@ package_texlive-minionpro-git() {
 }
 
 package_texlive-myriadpro-git() {
+  provides=('myriadpro')
+  conflicts=('myriadpro')
   cd "$_gitname"
   yes | ./scripts/makeall MyriadPro
   yes | ./scripts/install $pkgdir/usr/share/texmf
