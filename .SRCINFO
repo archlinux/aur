@@ -1,4 +1,4 @@
-pkgbase = mariadb-connector-c
+pkgbase = lib32-mariadb-connector-c
 	pkgdesc = MariaDB connector libraries for C/C++
 	pkgver = 2.3.3
 	pkgrel = 1
