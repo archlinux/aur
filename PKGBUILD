@@ -32,8 +32,6 @@ optdepends=('bzr: bazaar support'
             'subversion: subversion support'
             'valgrind: analyze support'
             'x11-ssh-askpass: ssh support')
-#provides=('qtcreator-opt')
-#conflicts=('qtcreator-opt')
 source=("git+https://code.qt.io/qt-creator/qt-creator.git#commit=${_pkgcommit}"
         'git+https://code.qt.io/qt-labs/qbs.git'
         'QtProject-QtCreator-opt-git.xml'
@@ -69,9 +67,10 @@ prepare() {
 build() {
     cd build
 
-    qmake -r LLVM_INSTALL_DIR=/usr QMAKE_CFLAGS_ISYSTEM=-I  "$srcdir"/qt-creator/qtcreator.pro
+    qmake -r LLVM_INSTALL_DIR=/usr QMAKE_CFLAGS_ISYSTEM=-I \
+        "$srcdir"/qt-creator/qtcreator.pro
     make
-    make docs
+    make docs -j1
 }
 
 package() {
@@ -92,14 +91,11 @@ package() {
     # Icons
     mkdir -p ${pkgdir}/usr/share/icons
     mv ${pkgdir}/opt/qtcreator-git/share/icons/hicolor ${pkgdir}/usr/share/icons/
-    mv ${pkgdir}/usr/share/icons/hicolor/128x128/apps/QtProject-qtcreator.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/QtProject-qtcreator-opt-git.png
-    mv ${pkgdir}/usr/share/icons/hicolor/16x16/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/16x16/apps/QtProject-qtcreator-opt-git.png
-    mv ${pkgdir}/usr/share/icons/hicolor/24x24/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/24x24/apps/QtProject-qtcreator-opt-git.png
-    mv ${pkgdir}/usr/share/icons/hicolor/256x256/apps/QtProject-qtcreator.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/QtProject-qtcreator-opt-git.png
-    mv ${pkgdir}/usr/share/icons/hicolor/32x32/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/32x32/apps/QtProject-qtcreator-opt-git.png
-    mv ${pkgdir}/usr/share/icons/hicolor/48x48/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/48x48/apps/QtProject-qtcreator-opt-git.png
-    mv ${pkgdir}/usr/share/icons/hicolor/512x512/apps/QtProject-qtcreator.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/QtProject-qtcreator-opt-git.png
-    mv ${pkgdir}/usr/share/icons/hicolor/64x64/apps/QtProject-qtcreator.png   ${pkgdir}/usr/share/icons/hicolor/64x64/apps/QtProject-qtcreator-opt-git.png
+    for size in 128 16 24 256 32 48 512 64
+    do
+        resolution=${size}x${size}
+        mv ${pkgdir}/usr/share/icons/hicolor/${resolution}/apps/QtProject-qtcreator.png ${pkgdir}/usr/share/icons/hicolor/${resolution}/apps/QtProject-qtcreator-opt-git.png
+    done
 
     # License
     install -Dm644 "${srcdir}/qt-creator/LICENSE.GPL3-EXCEPT" \
