@@ -45,6 +45,7 @@ patch_plugins() {
 prepare() {
     cd $_repo-$pkgver
     mkdir -p src/$_provider.$_tld/$_project
+    rm -f src/$_import
     ln -s ../../.. src/$_import
 }
 
