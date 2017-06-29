@@ -9,7 +9,7 @@
 _pack=splines
 pkgname=octave-$_pack
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional spline functions."
 arch=(any)
 url="http://octave.sourceforge.net/${_pack}/"
