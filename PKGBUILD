@@ -3,9 +3,9 @@
 
 pkgbase=linux-lts-max98090
 _srcname=linux-4.9
-pkgver=4.9.34
+pkgver=4.9.35
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'patch' 'make')
@@ -13,21 +13,21 @@ options=('!strip')
 source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.x86_64'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         linux-lts.preset
         change-default-console-loglevel.patch
+# https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
         # patch for max98090 soundcard
 	'max98090.patch')
 
 	# https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '5df86eaa1f16f785dbb02446c090e56f1b7dbe828860ff7fa60f6e3643242087'
+            '486c696cda001157d12948bb6ecbc60d270a112da41e1153906a24645d855b13'
             'SKIP'
-            '44fd7d6f30152e1401e7c768fd27e90321460eb96f47c9f5f2f1800a5ffea69c'
             'd7834771c5b690d2880ba16f8c8df06db1ff2aa8979720178e5495b1be6ceafe'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
