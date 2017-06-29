@@ -1,9 +1,9 @@
 # Maintainer: Alexander Drozdov <adrozdoff@gmail.com>
 pkgname=qtcreator-cmakeprojectmanager2-plugin-opt-git
-pkgver=20170629.r706.1945b3a
+pkgver=4.3.82.r706.1945b3a
 _pkgcommit=1945b3a0e9dc95c387eed057f2228e25c56e9a58
 _pkgbranch=master
-pkgrel=2
+pkgrel=1
 pkgdesc="Enhanced CMake Project Manager plugin for Qt Creator."
 arch=(i686 x86_64)
 url="https://github.com/h4tr3d/cmakeprojectmanager2"
@@ -21,9 +21,9 @@ pkgver() {
 
     local REV=$(git rev-parse --short HEAD)
     local CNT=$(git rev-list --count $_pkgbranch)
-    local DAT=$(date +%Y%m%d)
+    local QTC_VER=$(cat /usr/src/qtcreator-opt-git/qtcreator.pri | grep '^QTCREATOR_VERSION' | awk '{print $3}')
 
-    printf "%s" $DAT.r$CNT.$REV
+    printf "%s" ${QTC_VER}.r${CNT}.${REV}
 }
 
 prepare() {
