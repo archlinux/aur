@@ -1,0 +1,16 @@
+pkgbase = ttyvideo
+	pkgdesc = ttyvideo displays videos in the terminal.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jamesthoughton/ttyvideo
+	arch = any
+	license = MIT
+	depends = opencv,
+	depends = gsteamer,
+	depends = gst-plugins-base,
+	depends = cmake
+	source = https://github.com/jamesthoughton/ttyvideo/archive/0.0.1.tar.gz
+	md5sums = 862c8cf756ad896f82654565ffc7f5ad
+
+pkgname = ttyvideo
+
