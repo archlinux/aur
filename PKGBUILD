@@ -11,15 +11,9 @@ license=('GPL')
 groups=('qtcreator-opt-git')
 depends=('qtcreator-opt-git>=4.3.0.r592')
 makedepends=('git')
-#provides=("${pkgname%-VCS}")
-#conflicts=("${pkgname%-VCS}")
-#replaces=()
-#backup=()
 # debug+strip to provide ${pkgname}-debug package
 options=('docs' 'debug' 'strip')
-#install=
 source=("$pkgname::git+https://github.com/h4tr3d/cmakeprojectmanager2.git#commit=${_pkgcommit}")
-#noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
