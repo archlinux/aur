@@ -1,0 +1,16 @@
+pkgbase = kaa-imlib2
+	pkgdesc = KAA imlib2 package
+	pkgver = 0.2.3
+	pkgrel = 6
+	url = http://freevo.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = imlib2
+	depends = python2
+	depends = kaa-base
+	source = http://downloads.sourceforge.net/freevo/kaa-imlib2-0.2.3.tar.gz
+	md5sums = 64828ede785ab0dd2d3c1f2f36c99342
+
+pkgname = kaa-imlib2
+
