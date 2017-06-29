@@ -27,7 +27,7 @@ build() {
   automake --add-missing
   autoconf
   
-  CXXFLAGS+=" -std=c++11" CXX=gcc-6.3 ./configure --prefix=/usr --disable-enumpoly
+  CXX=g++-6.3 ./configure --prefix=/usr --enable-enumpoly
   make LANG=C
 }
 
