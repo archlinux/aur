@@ -1,10 +1,6 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
-_provider=github
-_tld=com
-_project=mholt
-_repo=caddy
-_import="$_provider.$_tld/$_project/$_repo"
+_gopkgname='github.com/mholt/caddy'
 
 pkgname=caddy
 pkgver=0.10.4
@@ -16,7 +12,7 @@ license=('Apache')
 backup=('etc/caddy/caddy.conf')
 install='caddy.install'
 makedepends=('go>=1.8.1' 'git')
-source=("https://$_import/archive/v$pkgver/$_repo-$pkgver.tar.gz"
+source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
         'index.html'
         'caddy.service'
@@ -36,31 +32,31 @@ patch_plugins() {
     n=0
     while read -r line; do
         echo "$line"
-        if [[ $line =~ ^import && $n = 0 ]]; then
+        if [[ $n = 0 && $line =~ ^import ]]; then
             go run $srcdir/plugins.go "${plugins[@]}"
             n=1
         fi
     done
 }
+
 prepare() {
-    cd $_repo-$pkgver
-    mkdir -p src/$_provider.$_tld/$_project
-    rm -f src/$_import
-    ln -s ../../.. src/$_import
+    export GOPATH="$srcdir/build"
+    rm -rf "$GOPATH/src/$gopkgname"
+    mkdir --parents `dirname "$GOPATH/src/$_gopkgname"`
+    mv -Tv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$_gopkgname"
+
+    if [ ${#plugins[@]} -gt 0 ]; then
+        echo enabled plugins: ${plugins[@]}
+        cd $GOPATH/src/$_gopkgname/caddy/caddymain/
+        patch_plugins < run.go > run1.go
+        mv run1.go run.go
+        go get -v -d $_gopkgname/caddy/caddymain
+    fi
 }
 
 build() {
-    cd $_repo-$pkgver
-    export GOPATH=$(pwd)
-    cd $GOPATH/src/$_import/caddy/caddymain/
-    if [ ${#plugins[@]} -gt 0 ]; then
-        echo enable plugins ${plugins[@]}
-        patch_plugins < run.go > run1.go
-        mv run1.go run.go
-        go get -v -d $_import/caddy/caddymain
-    fi
-    cd $GOPATH
-    go build -v -o ../caddy -ldflags "-X $_import/caddy/caddymain.gitTag=v$pkgver" $_import/caddy
+    export GOPATH="$srcdir/build"
+    go build -v -o $srcdir/caddy -ldflags "-X $_gopkgname/caddy/caddymain.gitTag=v$pkgver" $_gopkgname/caddy
 }
 
 package() {
