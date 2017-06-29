@@ -11,12 +11,12 @@ url='https://github.com/jamesthoughton/ttyvideo'
 md5sums=('862c8cf756ad896f82654565ffc7f5ad')
 
 build() {
-    cd $srcdir/ttyvideo
+    cd $srcdir/$pkgname-$pkgver
     cmake .
     make
 }
 
 package() {
-    cd $srcdir/ttyvideo
+    cd $srcdir/$pkgname-$pkgver
     install -Dm 755 ttyvideo $pkgdir/usr/bin/ttyvideo
 }
