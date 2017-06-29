@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=52.2.0
+pkgver=52.2.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -25,7 +25,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         0001-Bug-1338655-Don-t-try-to-build-mp4parse-bindings.-r-.patch
         0001-Bug-54395-remove-hardcoded-flag-lcrmf.patch
         firefox-install-dir.patch fix-wifi-scanner.diff)
-sha256sums=('a2f180e4109b15d86d58444134996c1d49eb52e7702d89510508fbd7bddb9381'
+sha256sums=('8ee3ae10e8e782d867e9164eaed4613783959266fd7d01daf972159ca426efdb'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '413cd6d366d78f325d80ebebccfd0afa0d266b40b2e54b66ba2fa03c15f3ea67'
