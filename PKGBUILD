@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-git
-pkgver=5.30.r2.g0b9ac6c
+pkgver=7.01.r1.g815bc34
 pkgrel=1
 pkgdesc="Enhanced Quake II engine optimized for modern systems (development version)"
 url="http://www.yamagi.org/quake2/"
@@ -10,7 +10,7 @@ license=('custom: Info-ZIP' 'GPL2')
 depends=('sdl2' 'libvorbis')
 optdepends=('quake2-demo: shareware data files'
             'openal: alternative audio backend')
-makedepends=('openal' 'mesa' 'chrpath')
+makedepends=('openal' 'mesa' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname%-*}.install
@@ -24,25 +24,37 @@ pkgver() {
   git describe --long --tags | sed 's/^QUAKE2_//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  rm -rf build
+  mkdir -p build
+}
+
 build() {
-  make -C ${pkgname%-*} WITH_SYSTEMWIDE=yes WITH_SYSTEMDIR=/usr/share/${pkgname%-*}
+  cd build
+  cmake ../${pkgname%-*} -DCMAKE_BUILD_TYPE=Release -DSYSTEMWIDE_SUPPORT=ON
+  make
 }
 
 package() {
-  cd ${pkgname%-*}
+  cd build
 
   # client + server binaries
-  install -Dm755 release/quake2 "$pkgdir"/usr/bin/${pkgname%-*}
-  install -m755 release/q2ded "$pkgdir"/usr/bin/yamagi-q2ded
+  install -Dm755 release/quake2 "$pkgdir"/usr/lib/${pkgname%-*}/quake2
+  install -m755 release/q2ded "$pkgdir"/usr/lib/${pkgname%-*}
 
-  # remove rpath, not needed
-  chrpath -d "$pkgdir"/usr/bin/${pkgname%-*}
+  # symlinks to make the commands available
+  install -d "$pkgdir"/usr/bin
+  ln -s /usr/lib/${pkgname%-*}/quake2 "$pkgdir"/usr/bin/${pkgname%-*}
+  ln -s /usr/lib/${pkgname%-*}/q2ded "$pkgdir"/usr/bin/yamagi-q2ded
 
-  # game library
-  install -Dm644 release/baseq2/game.so "$pkgdir"/usr/share/${pkgname%-*}/baseq2/game.so
+  # game libraries
+  install -m644 release/*.so "$pkgdir"/usr/lib/${pkgname%-*}
+  install -Dm644 release/baseq2/game.so "$pkgdir"/usr/lib/${pkgname%-*}/baseq2/game.so
+
+  cd ../${pkgname%-*}
 
   # doc
-  install -Dm644 README "$pkgdir"/usr/share/doc/${pkgname%-*}/README
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/${pkgname%-*}/README.md
   install -m644 stuff/yq2.cfg "$pkgdir"/usr/share/doc/${pkgname%-*}
 
   # desktop entry
