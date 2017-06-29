@@ -21,7 +21,7 @@ install=
 changelog=
 source=("git+https://github.com/FAForever/client.git#branch=474-feature-py3" 'FAForeverPy36.desktop')
 sha256sums=('SKIP'
-            '09a99ecf8aadaea6d2d45d2e7c3b28e7b42e270117f6c0f0cde80c3fc1cb8b9b')
+            '4b748a04d4d37744ff7ba81101d4ac08bd26daeea06df87fc7e1b55205931eca')
 noextract=()
 validpgpkeys=()
 
@@ -32,8 +32,8 @@ pkgver() {
 prepare() {
   cd "client"
   mkdir -p fafclient
-  mv src fafclient/client
-  echo "import client" >> fafclient/__init__.py
+  mv src fafclient/src
+  echo "import src" >> fafclient/__init__.py
 }
 
 build() {
