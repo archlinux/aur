@@ -1,6 +1,6 @@
 pkgbase = python-nodeenv
 	pkgdesc = Node.js virtual environment builder
-	pkgver = 0.13.5
+	pkgver = 1.1.4
 	pkgrel = 0
 	url = https://github.com/ekalinin/nodeenv
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-nodeenv
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-nodeenv-0.13.5.tar.gz::https://pypi.python.org/packages/source/n/nodeenv/nodeenv-0.13.5.tar.gz
-	md5sums = 3589277efa3fd90d6c58e2022de6af62
+	source = https://pypi.python.org/packages/f9/7e/499dc78da542865f9f3d91e8b660883eb6a55fb40a10aa9407af0be66242/nodeenv-1.1.4.tar.gz
+	sha256sums = 1c3f83a794dcb35df357104c1c87310e24f9a73d45a6518fd932c30f27a8f163
 
 pkgname = python-nodeenv
 	depends = python
