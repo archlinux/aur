@@ -1,7 +1,7 @@
 pkgbase = qtwebkit-bin
 	pkgdesc = An open source web browser engine (Qt port) Bin
 	pkgver = 2.3.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://trac.webkit.org/wiki/QtWebKit
 	arch = x86_64
 	license = LGPL2.1
