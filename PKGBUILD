@@ -1,14 +1,14 @@
 # Maintainer: Kaan Genç <SeriousBug at Gmail dot com>
 
 pkgname=python-gist
-pkgver=0.4.1
+pkgver=0.4.7
 pkgrel=1
 pkgdesc='Command line interface for working with GitHub gists.'
 arch=(any)
 url='https://github.com/jdowner/gist'
 license=('MIT')
 source=("https://pypi.org/packages/source/p/python-gist/python-gist-${pkgver}.tar.gz")
-md5sums=('c3bb628e13c6d456cfc1de87edcfd860')
+sha256sums=('f2fb022071fc26466f95ec69024d45fc83a6b296916ced73a2c26ac1f8994ef0')
 depends=('python'
          'python-docopt'
          'python-gnupg'
