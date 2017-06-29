@@ -1,0 +1,14 @@
+pkgbase = raylib
+	pkgdesc = raylib is a simple and easy-to-use library to learn videogames programming.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://raylib.com
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	depends = libxrandr
+	source = https://github.com/raysan5/raylib/archive/1.7.0.tar.gz
+	md5sums = 87a8c073afbf4c6e7e0adf1479e1437e
+
+pkgname = raylib
+
