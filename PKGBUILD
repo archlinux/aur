@@ -193,7 +193,7 @@ package_nvidia-utils-beta() {
   install -Dm755 libnvidia-ml.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ml.so.$pkgver
 
   # Vulkan icd
-  install -Dm644 nvidia_icd.json "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
+  install -Dm644 nvidia_icd.json.template "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
 
   # Helper libs for approved partners' GRID remote apps
   install -Dm755 libnvidia-ifr.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ifr.so.$pkgver
