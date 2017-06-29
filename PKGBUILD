@@ -11,14 +11,13 @@ license=('Apache')
 provides=('docker' 'docker-ce')
 conflicts=('docker' 'docker-ce' 'docker-git')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd' 'libseccomp')
-#makedepends=('git' 'go' 'go-md2man')
 makedepends=('make' 'git' 'go')
 optdepends=('btrfs-progs: btrfs backend support'
             'lxc: lxc backend support')
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip')
 source=(
-  "https://download.docker.com/linux/static/stable/x86_64/docker-${pkgver}-ce.tgz"
+  "https://download.docker.com/linux/static/edge/x86_64/docker-${pkgver}-ce.tgz"
   "https://github.com/docker/docker-ce/archive/v${pkgver}-ce.tar.gz"
   "docker.sysusers"
 )
