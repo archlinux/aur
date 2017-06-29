@@ -115,4 +115,9 @@ package() {
     install -Dm644 ${srcdir}/qtcreator-opt-git.1 ${pkgdir}/usr/man/man1/qtcreator-opt-git.1
     sed -i 's|/usr/share/qtcreator/doc|/opt/qtcreator-git/share/doc/qtcreator|' \
         ${pkgdir}/usr/man/man1/qtcreator-opt-git.1
+
+    # Make binary link
+    mkdir -p ${pkgdir}/usr/bin
+    ln -s ../../opt/qtcreator-git/bin/qtcreator.sh \
+        ${pkgdir}/usr/bin/qtcreator-opt-git
 }
