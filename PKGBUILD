@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=c0438b7ac82dfdb3262232ad2724ba4605d1927da
+pkgver=c53a21bb2f1c6bca4bb72d0929719d0af1f25f2de
 pkgrel=1
 conflicts=("kshare")
 pkgdesc="A ShareX inspired cross platform utility written with Qt."
