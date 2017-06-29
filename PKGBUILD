@@ -26,8 +26,10 @@ depends_x86_64=('lib32-glibc')
 # sed grep awk
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
 # Printing a text file fails when Liberation is the only TrueType font available
-optdepends=('ttf-dejavu: printing text files from lpr')
-#install="${pkgname}.install"
+optdepends=(
+  'ttf-dejavu: Printing text files from lpr'
+  'brscan4: Scanner support'
+)
 # The cups wrapper uses the lpr driver.
 _brsource="${_brotherlnd}_cupswrapper_GPL_source_${pkgver}-${pkgrel}"
 source=(
@@ -37,13 +39,12 @@ source=(
   'cupswrapper-license.txt'
   'lpr-license.txt'
 )
-
 md5sums=(
-	'4f1c504c42e457771f4398cda38759a4'
-	'564727c54c3691a630cc172f7e086aa0'
-	'1e2b3fe6939096730c2d7f150e23ea66'
-	'97ad0cffd216059e9d1d3121899d8646'
-    '5e87a3dc0f3e3438c088eda0f3565f0d'
+  '4f1c504c42e457771f4398cda38759a4'
+  '564727c54c3691a630cc172f7e086aa0'
+  '1e2b3fe6939096730c2d7f150e23ea66'
+  '97ad0cffd216059e9d1d3121899d8646'
+  '5e87a3dc0f3e3438c088eda0f3565f0d'
 )
 
 build() {
