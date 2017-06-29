@@ -11,13 +11,14 @@
 pkgname=qtcreator-opt-git
 pkgver=4.3.0.r592.g345680a159
 _pkgcommit=345680a159b4c09ee40411f81cd9b2151675312f
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
 url='https://www.qt.io/ide/'
 license=('LGPL')
-depends=('clang' 'qbs' 'qt5-svg' 'qt5-tools' 'qt5-webengine')
+depends=('clang' 'qt5-svg' 'qt5-tools' 'qt5-webengine')
 makedepends=('git' 'llvm' 'mesa')
+# debug+strip to produce ${pkgname}-debug package with debug symbols
 options=('docs' 'debug' 'strip')
 optdepends=('bzr: bazaar support'
             'cmake: cmake project support'
