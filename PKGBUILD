@@ -31,7 +31,7 @@ pkgver() {
 }
 prepare() {
   cd "client"
-  mkdir fafclient
+  mkdir -p fafclient
   mv src fafclient/client
   echo "import client" >> fafclient/__init__.py
 }
