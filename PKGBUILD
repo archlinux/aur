@@ -194,6 +194,7 @@ package_nvidia-utils-beta() {
 
   # Vulkan icd
   install -Dm644 nvidia_icd.json.template "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
+  sed -i 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
 
   # Helper libs for approved partners' GRID remote apps
   install -Dm755 libnvidia-ifr.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ifr.so.$pkgver
