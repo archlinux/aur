@@ -2,7 +2,7 @@
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2-rogue
-pkgver=2.03
+pkgver=2.04
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2"
@@ -14,22 +14,29 @@ changelog=$pkgname.ChangeLog
 source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('e7a045469d2034791e95be47cafd248693531e26a26171af4e22adecabd7a6b8'
+sha256sums=('87d742f5f80011f5feb164f5cc7eb3f1efe5d3b6782f19b483801a66137ea47b'
             '7d43bd0ca15a6c82560153deea1df1109d0a448b226e316b6b7b5daae256241a'
             'e7ee884b1e015743659cf668afa521976de64345872acf8e4c1e6932355c2959')
 
+prepare() {
+  rm -rf build
+  mkdir -p build
+}
+
 build() {
-  make -C ${pkgname#*-}-$pkgver
+  cd build
+  cmake ../${pkgname#*-}-$pkgver -DCMAKE_BUILD_TYPE=Release
+  make
 }
 
 package() {
+  # game library
+  install -Dm644 build/Release/game.so "$pkgdir"/usr/share/yamagi-quake2/rogue/game.so
+
   cd ${pkgname#*-}-$pkgver
 
   # game launcher
   install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname
-
-  # game library
-  install -Dm644 release/game.so "$pkgdir"/usr/share/yamagi-quake2/rogue/game.so
 
   # doc
   install -Dm644 README "$pkgdir"/usr/share/doc/$pkgname/README
