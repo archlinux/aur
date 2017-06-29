@@ -1,7 +1,7 @@
 pkgbase = caddy
-	pkgdesc = HTTP/2 web server with automatic HTTPS
+	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caddyserver.com
 	install = caddy.install
 	arch = i686
@@ -18,14 +18,14 @@ pkgbase = caddy
 	source = caddy.service
 	source = caddy.tmpfiles
 	source = caddy.conf
-	source = enable-dnsproviders.patch
+	source = plugins.go
 	sha256sums = 411e6bf10520e938712887a31f2132bfd19e2c79543e7aef158f7c77d03ae2bf
 	sha256sums = e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85
 	sha256sums = 6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7
 	sha256sums = 69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9
 	sha256sums = bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce
 	sha256sums = 80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64
-	sha256sums = 158c9a0f4327384c244846badc5295eab2a4cf16c354a3669fc0cce1c34e4a91
+	sha256sums = f5a0fbb961e7c9ecf99e88d0959a3164cbea54660c1c08c3ba3cdf1d45563929
 
 pkgname = caddy
 
