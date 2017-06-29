@@ -18,8 +18,8 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=61.0.3135.4
-_launcher_ver=3
+pkgver=61.0.3141.7
+_launcher_ver=5
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -30,7 +30,6 @@ depends=(
          'libxslt'
          'libxss'
          'minizip'
-         'perl-file-basedir'
          'nss'
          'pciutils'
          're2'
@@ -59,7 +58,6 @@ makedepends=('libexif'
              'hwids'
              'nodejs'
              'wget'
-             'sandbox'
              )
 optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
             'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
@@ -78,12 +76,11 @@ optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "git+https://github.com/foutrelis/chromium-launcher.git#tag=v${_launcher_ver}"
-        'git+https://github.com/mattn/go-shellwords.git'
         'chromium-dev.svg'
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r10.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r11.patch'
         # Misc Patches
         'minizip.patch'
         'vaapi_patch_r2.patch'
@@ -93,12 +90,11 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             'SKIP'
-            'SKIP'
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             '07df380530299b0450045edd655f924f0e0442abccb05c2336ed2aea9d5ee044'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            '648dae208ef1968ae686d42a2ad51909df21e6080e508c8b357410642cbbf35f'
+            'feeacc5ec4a2d16487c27cc8d68a8ae394f1e37e8bced04d956f0ac6b90204e9'
             # Misc Patches
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce'
@@ -374,10 +370,6 @@ prepare() {
   ln -sf /usr/bin/python2 "${srcdir}/python-path/python"
   export PATH="${srcdir}/python-path:$PATH"
 
-  cd "${srcdir}/chromium-launcher"
-  git config submodule.vendor/src/github.com/mattn/go-shellwords.url "file:///${srcdir}/go-shellwords"
-  git submodule update --init
-
   cd "${srcdir}/chromium-${pkgver}"
 
   # Fix to save configuration in ~/.config/chromium-dev.
@@ -390,7 +382,7 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r10.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r11.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -493,9 +485,7 @@ build() {
 
   msg2 "Build the Launcher"
   make -C "chromium-launcher" \
-     PREFIX=usr \
      CHROMIUM_SUFFIX="-dev" \
-     GTK=3
 
   cd "chromium-${pkgver}"
 
