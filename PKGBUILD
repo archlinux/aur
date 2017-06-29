@@ -113,4 +113,6 @@ package() {
     # Manpage
     mkdir -p ${pkgdir}/usr/man/man1
     install -Dm644 ${srcdir}/qtcreator-opt-git.1 ${pkgdir}/usr/man/man1/qtcreator-opt-git.1
+    sed -i 's|/usr/share/qtcreator/doc|/opt/qtcreator-git/share/doc/qtcreator|' \
+        ${pkgdir}/usr/man/man1/qtcreator-opt-git.1
 }
