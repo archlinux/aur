@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.1
-pkgrel=5
+pkgrel=6
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -44,7 +44,7 @@ md5sums=('e24ce6a12ee97cd7de2c5ab13af99511'
          '2c0bf61ec96bdb85edeb9fd2cc2f330b'
          '3acf27ca01d931db363634dbfc95a061'
          '3f1aeea43af0b192edb36b9e5484ff87'
-         'f39fa3e607ff7346e93febfa2d0e565e'
+         '7ac346581ada71187b7fd18f164bbee9'
          '2d10140f19f54015e6ab2807267e8aaf'
          'a8a64dc2ff89bb87d534c83189447abc'
          'ebe0b0785fcc7b10accff3c1ae793cd2'
@@ -136,8 +136,10 @@ prepare() {
   # change log and bin location to logrotate
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/logrotate
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log and bin location to logrotate 1" && return 1 ; fi
-  sed -i "s|/usr/sbin|/usr/bin|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh
+  sed -i "s|/var/log/pihole-FTL.log|/run/log/pihole-ftl/pihole-FTL.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/logrotate
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log and bin location to logrotate 2" && return 1 ; fi
+  sed -i "s|/usr/sbin|/usr/bin|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log and bin location to logrotate 3" && return 1 ; fi
 
 # -----------------
 

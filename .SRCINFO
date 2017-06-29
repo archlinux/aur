@@ -1,7 +1,7 @@
 pkgbase = pi-hole-server
 	pkgdesc = The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.
 	pkgver = 3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/pi-hole/pi-hole
 	install = pi-hole-server.install
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = pi-hole-server
 	md5sums = 2c0bf61ec96bdb85edeb9fd2cc2f330b
 	md5sums = 3acf27ca01d931db363634dbfc95a061
 	md5sums = 3f1aeea43af0b192edb36b9e5484ff87
-	md5sums = f39fa3e607ff7346e93febfa2d0e565e
+	md5sums = 7ac346581ada71187b7fd18f164bbee9
 	md5sums = 2d10140f19f54015e6ab2807267e8aaf
 	md5sums = a8a64dc2ff89bb87d534c83189447abc
 	md5sums = ebe0b0785fcc7b10accff3c1ae793cd2
