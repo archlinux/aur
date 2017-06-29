@@ -4,14 +4,15 @@
 pkgname=z-stack-gateway
 pkgver=1.0.1
 _under_pkgver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Z-Stack Linux Gateway is TI's ZigBee Home Gateway solution for Linux systems."
 arch=(i686 x86_64)
 url="https://github.com/greyltc/bitrock-unpacker/"
 license=('custom')
 makedepends=(bitrock-unpacker)
 
-# go to http://www.ti.com/tool/z-stack-archive and manually download the Z-STACK-LINUX-GATEWAY archive and put it in the build folder
+# go to http://www.ti.com/tool/z-stack-archive and manually download the Z-STACK-LINUX-GATEWAY archive and put it in /tmp
+ln -f -s /tmp/Z-Stack_Linux_Gateway-${_under_pkgver}-src-linux-installer.run .
 source=(local://Z-Stack_Linux_Gateway-${_under_pkgver}-src-linux-installer.run
 	https://github.com/google/protobuf/archive/v2.5.0.tar.gz
 	https://launchpad.net/ubuntu/+archive/primary/+files/protobuf-c_0.15.orig.tar.gz
