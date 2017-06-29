@@ -1,0 +1,15 @@
+pkgbase = wps-office-lang-fr-git
+	pkgdesc = WPS Office lang fr
+	pkgver = 20160201
+	pkgrel = 1
+	url = https://github.com/Elrondo46/wps-fr-precompiled.git
+	arch = any
+	license = GPL3
+	depends = wps-office
+	depends = git
+	depends = ttf-wps-fonts
+	source = git://github.com/Elrondo46/wps-fr-precompiled.git
+	sha256sums = SKIP
+
+pkgname = wps-office-lang-fr-git
+
