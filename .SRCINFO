@@ -1,0 +1,16 @@
+pkgbase = python2-pysqlite-legacy
+	pkgdesc = Python DB-API 2.0 interface for the legacy SQLite 2
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = https://initd.org/tracker/pysqlite
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = python2
+	depends = sqlite2
+	replaces = python-pysqlite-legacy
+	source = https://www.mirrorservice.org/sites/www.ibiblio.org/gentoo/distfiles/pysqlite-1.0.1.tar.gz
+	sha256sums = 9ceed0af9e94b2f8701d4f36d7e86715d8ca64283e0b311e1816c031c3658f08
+
+pkgname = python2-pysqlite-legacy
+
