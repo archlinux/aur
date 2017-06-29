@@ -45,19 +45,20 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd qt-creator
-
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s|^v||'
 }
 
 prepare() {
-    [[ -d build ]] && rm -r build
-    mkdir build
+    # TODO: seems that this action is not needed, user can request full rebulding by call `makepkg -C`
+    #[[ -d build ]] && rm -r build
+    #mkdir build
 
+    # prepare submodules
     (
-	cd qt-creator
-	git submodule init
-	git config submodule.qbs.url $srcdir/qbs
-	git submodule update
+        cd qt-creator
+        git submodule init
+        git config submodule.qbs.url $srcdir/qbs
+        git submodule update
     )
 
     # fix hardcoded libexec path
