@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/tsonntig/Fanicontrol"
 license=('GPL2 only')
 depends=(python3)
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 source=('git+https://github.com/tsonntig/Fanicontrol.git')
 md5sums=('SKIP')
 
