@@ -8,6 +8,7 @@ arch=(any)
 url="https://github.com/Tuplanolla/cheat"
 license=('BSD')
 source=("https://github.com/Tuplanolla/cheat/archive/1.0.3.tar.gz")
+sha256sums=('2795b98230fb20cddf305ad1ff126518f82babfcb938be8fadd20ed80d45e979')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
