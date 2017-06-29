@@ -2,14 +2,14 @@
 
 pkgname=oragono
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
 license=('MIT')
 install=install
 makedepends=('go' 'git')
-source=("git+$url#commit=325ed3e112f076aa0d717437a18ef331281db821"
+source=("git+$url#tag=v$pkgver"
         "oragono.service"
         "path.patch")
 sha256sums=('SKIP'
@@ -21,6 +21,8 @@ build() {
     patch -p0 < ../../path.patch
     export GOPATH=$(pwd)
     go get -v -d
+    local _oragono_git=$GOPATH/src/github.com/$pkgname/$pkgname
+    git --git-dir=$_oragono_git/.git --work-tree=$_oragono_git checkout tags/v$pkgver
     make linux
     echo "Arch Linux AUR: $pkgver-$pkgrel" >> build/linux/oragono.motd
 }
