@@ -1,8 +1,8 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=radiotray-ng
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/ebruck/radiotray-ng"
@@ -13,7 +13,7 @@ makedepends=('cmake' 'boost')
 optdepends=('python2-lxml: Convert radiotray bookmarks to radiotray-ng format')
 options=('!libtool')
 source=("${pkgname}.tar.gz::https://github.com/ebruck/radiotray-ng/archive/v${pkgver}.tar.gz")
-sha256sums=('8610c18d1cfad3510d7377a7d963486bf9b82c469f6184231f61d04e46eaae46')
+sha256sums=('7f07029e410da1087785fae8d373b18f21de9c770be8291a87c299468f5d029c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
