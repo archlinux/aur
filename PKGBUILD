@@ -2,7 +2,7 @@
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2
-pkgver=6.00
+pkgver=7.01
 pkgrel=1
 pkgdesc="Enhanced Quake II engine optimized for modern systems"
 url="http://www.yamagi.org/quake2/"
@@ -11,34 +11,42 @@ license=('custom: Info-ZIP' 'GPL2')
 depends=('sdl2' 'libvorbis')
 optdepends=('quake2-demo: shareware data files'
             'openal: alternative audio backend')
-makedepends=('openal' 'mesa')
+makedepends=('openal' 'mesa' 'cmake')
 install=$pkgname.install
 changelog=$pkgname.ChangeLog
 source=("http://deponie.yamagi.org/quake2/quake2-$pkgver.tar.xz"
         "$pkgname.desktop")
-sha256sums=('37b6bb7a21d43b17f66ef908b172a3b918b967fafba59c13eecb147d75c45d4c'
+sha256sums=('972f77867093b3c162dfb28ca930585cb71d1b7b183d676d8659d2fc97137ef7'
             '7049a1798e38a263fb2660b94fb70f5154fad1f807259d41649e12cea1a6757c')
 
 prepare() {
-  # skip rpath, not needed
-  sed '/rpath/d' -i quake2-$pkgver/Makefile
+  rm -rf build
+  mkdir -p build
 }
 
 build() {
-  cd quake2-$pkgver
-
-  make WITH_SYSTEMWIDE=yes WITH_SYSTEMDIR=/usr/share/$pkgname
+  cd build
+  cmake ../quake2-$pkgver -DCMAKE_BUILD_TYPE=Release -DSYSTEMWIDE_SUPPORT=ON
+  make
 }
 
 package() {
-  cd quake2-$pkgver
+  cd build
 
   # client + server binaries
-  install -Dm755 release/quake2 "$pkgdir"/usr/bin/$pkgname
-  install -m755 release/q2ded "$pkgdir"/usr/bin/yamagi-q2ded
+  install -Dm755 release/quake2 "$pkgdir"/usr/lib/$pkgname/quake2
+  install -m755 release/q2ded "$pkgdir"/usr/lib/$pkgname
 
-  # game library
-  install -Dm644 release/baseq2/game.so "$pkgdir"/usr/share/$pkgname/baseq2/game.so
+  # symlinks to make the commands available
+  install -d "$pkgdir"/usr/bin
+  ln -s /usr/lib/$pkgname/quake2 "$pkgdir"/usr/bin/$pkgname
+  ln -s /usr/lib/$pkgname/q2ded "$pkgdir"/usr/bin/yamagi-q2ded
+
+  # game libraries
+  install -m644 release/*.so "$pkgdir"/usr/lib/$pkgname
+  install -Dm644 release/baseq2/game.so "$pkgdir"/usr/lib/$pkgname/baseq2/game.so
+
+  cd ../quake2-$pkgver
 
   # doc
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
