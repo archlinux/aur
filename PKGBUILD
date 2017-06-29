@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 114712 2014-07-03 08:15:48Z fyan $
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Maintainer: twa022 <twa022 at gmail dot com>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: DonVla <donvla@users.sourceforge.net>
 
 pkgname=kaa-base
