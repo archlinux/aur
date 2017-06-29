@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Markdown previewer
+Comment=Preview Markdown file
+Type=Application
+Exec=markdown_previewer
+MimeType=text/markdown;text/x-markdown;
+NoDisplay=true

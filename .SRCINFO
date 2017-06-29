@@ -1,0 +1,16 @@
+pkgbase = markdown_previewer
+	pkgdesc = Simple Markdown files previewer.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/TomaszGasior/markdown_previewer
+	arch = i686
+	arch = x86_64
+	depends = php
+	depends = zenity
+	source = git+https://github.com/TomaszGasior/markdown_previewer.git
+	source = markdown_previewer.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = markdown_previewer
+
