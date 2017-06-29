@@ -16,32 +16,20 @@ Philippe Proulx <philippe.proulx@savoirfairelinux.com> and
 Adrien Béraud <adrien.beraud@savoirfairelinux.com>
 on behalf of Savoir-faire Linux.
 
- .../aconfigure                                     |  184 +-
- .../aconfigure.ac                                  |  101 +-
- .../pjlib/build/Makefile                           |    3 +-
- .../pjlib/include/pj/compat/os_auto.h.in           |    3 +
- .../pjlib/include/pj/config.h                      |   14 +-
- .../pjlib/include/pj/ssl_sock.h                    |    5 +
- .../pjlib/src/pj/ssl_sock_common.c                 |    5 +
- .../pjlib/src/pj/ssl_sock_gtls.c                   | 2887 ++++++++++++++++++++
- .../pjlib/src/pj/ssl_sock_ossl.c                   |    6 +-
- .../pjmedia/src/pjmedia/transport_srtp.c           |    6 +-
- 10 files changed, 3147 insertions(+), 67 deletions(-)
 ---
-diff --git a/aconfigure b/aconfigure
-index 78601ca..3589f5a 100755
---- a/aconfigure
-+++ b/aconfigure
-@@ -640,6 +640,8 @@ ac_no_opencore_amrnb
+diff -ru a/aconfigure b/aconfigure
+--- a/aconfigure	2017-01-25 06:23:08.000000000 -0500
++++ b/aconfigure	2017-06-08 13:51:11.146810527 -0400
+@@ -644,6 +644,8 @@
  libcrypto_present
  libssl_present
  openssl_h_present
 +libgnutls_present
 +gnutls_h_present
+ ac_ssl_has_aes_gcm
  ac_no_ssl
- ac_webrtc_ldflags
- ac_webrtc_cflags
-@@ -1491,8 +1493,8 @@ Optional Features:
+ ac_openh264_ldflags
+@@ -1482,8 +1484,8 @@
                            package and samples location using IPPROOT and
                            IPPSAMPLES env var or with --with-ipp and
                            --with-ipp-samples options
@@ -52,7 +40,7 @@ index 78601ca..3589f5a 100755
    --disable-opencore-amr  Exclude OpenCORE AMR support from the build
                            (default: autodetect)
  
-@@ -7826,33 +7828,160 @@ fi
+@@ -7787,17 +7789,149 @@
  
  # Check whether --enable-ssl was given.
  if test "${enable_ssl+set}" = set; then :
@@ -61,29 +49,27 @@ index 78601ca..3589f5a 100755
 -		 ac_no_ssl=1
 -		 { $as_echo "$as_me:${as_lineno-$LINENO}: result: Checking if SSL support is disabled... yes" >&5
 +  enableval=$enable_ssl;  if test "x$enableval" = "xgnutls"; then
-+                    ssl_backend="gnutls"
-+                else
-+                    ssl_backend="openssl"
-+
-+                fi
-+
++		  ssl_backend="gnutls"
++		else
++			ssl_backend="openssl"
++		fi
 +fi
 +
 +
 +if test "x$enable_ssl" = "xno"; then
-+    ac_no_ssl=1
-+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: Checking if SSL support is disabled... yes" >&5
++   ac_no_ssl=1
++   { $as_echo "$as_me:${as_lineno-$LINENO}: result: Checking if SSL support is disabled... yes" >&5
  $as_echo "Checking if SSL support is disabled... yes" >&6; }
 -	        fi
 +else
-+    if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
-+        CFLAGS="$CFLAGS -I$with_ssl/include"
-+        LDFLAGS="$LDFLAGS -L$with_ssl/lib"
-+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: Using SSL prefix... $with_ssl" >&5
++	if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
++	   CFLAGS="$CFLAGS -I$with_ssl/include"
++	   LDFLAGS="$LDFLAGS -L$with_ssl/lib"
++	   { $as_echo "$as_me:${as_lineno-$LINENO}: result: Using SSL prefix... $with_ssl" >&5
 +$as_echo "Using SSL prefix... $with_ssl" >&6; }
-+    fi
-+    if test "x$ssl_backend" = "xgnutls"; then
-+        for ac_prog in $host-pkg-config pkg-config "python pkgconfig.py"
++	fi
++	if test "x$ssl_backend" = "xgnutls"; then
++	   for ac_prog in $host-pkg-config pkg-config "python pkgconfig.py"
 +do
 +  # Extract the first word of "$ac_prog", so it can be a program name with args.
 +set dummy $ac_prog; ac_word=$2
@@ -120,39 +106,38 @@ index 78601ca..3589f5a 100755
 +  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 +$as_echo "no" >&6; }
 +fi
- 
++
 +
 +  test -n "$PKG_CONFIG" && break
 +done
 +test -n "$PKG_CONFIG" || PKG_CONFIG="none"
 +
-+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: checking for GnuTLS installations.." >&5
++       { $as_echo "$as_me:${as_lineno-$LINENO}: result: checking for GnuTLS installations.." >&5
 +$as_echo "checking for GnuTLS installations.." >&6; }
 +
 +
-+        ac_fn_c_check_header_mongrel "$LINENO" "gnutls/gnutls.h" "ac_cv_header_gnutls_gnutls_h" "$ac_includes_default"
++	   ac_fn_c_check_header_mongrel "$LINENO" "gnutls/gnutls.h" "ac_cv_header_gnutls_gnutls_h" "$ac_includes_default"
 +if test "x$ac_cv_header_gnutls_gnutls_h" = xyes; then :
 +  gnutls_h_present=1
 +fi
 +
+ 
 +
-+
-+        if test "$PKG_CONFIG" != "none"; then
-+            if $PKG_CONFIG --exists gnutls; then
-+                LIBS="$LIBS `$PKG_CONFIG --libs gnutls`"
-+                libgnutls_present=1
-+            else
-+                { $as_echo "$as_me:${as_lineno-$LINENO}: checking for gnutls_certificate_set_x509_system_trust in -lgnutls" >&5
++	   if test "$PKG_CONFIG" != "none"; then
++	   	   if $PKG_CONFIG --exists gnutls; then
++		       LIBS="$LIBS `$PKG_CONFIG --libs gnutls`"
++			   libgnutls_present=1
++		   else
++			   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for gnutls_certificate_set_x509_system_trust in -lgnutls" >&5
 +$as_echo_n "checking for gnutls_certificate_set_x509_system_trust in -lgnutls... " >&6; }
 +if ${ac_cv_lib_gnutls_gnutls_certificate_set_x509_system_trust+:} false; then :
 +  $as_echo_n "(cached) " >&6
- else
++else
 +  ac_check_lib_save_LIBS=$LIBS
 +LIBS="-lgnutls  $LIBS"
 +cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 +/* end confdefs.h.  */
- 
--		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: checking for OpenSSL installations.." >&5
++
 +/* Override any GCC internal prototype to avoid an error.
 +   Use char because int might match the return type of a GCC
 +   builtin and then its argument prototype would still apply.  */
@@ -170,7 +155,7 @@ index 78601ca..3589f5a 100755
 +_ACEOF
 +if ac_fn_c_try_link "$LINENO"; then :
 +  ac_cv_lib_gnutls_gnutls_certificate_set_x509_system_trust=yes
-+else
+ else
 +  ac_cv_lib_gnutls_gnutls_certificate_set_x509_system_trust=no
 +fi
 +rm -f core conftest.err conftest.$ac_objext \
@@ -181,87 +166,40 @@ index 78601ca..3589f5a 100755
 +$as_echo "$ac_cv_lib_gnutls_gnutls_certificate_set_x509_system_trust" >&6; }
 +if test "x$ac_cv_lib_gnutls_gnutls_certificate_set_x509_system_trust" = xyes; then :
 +  libgnutls_present=1 &&
-+                              LIBS="$LIBS -lgnutls"
++							 LIBS="$LIBS -lgnutls"
 +fi
-+
-+            fi
-+        else
-+            { $as_echo "$as_me:${as_lineno-$LINENO}: result: *** Warning: neither pkg-config nor python is available, disabling gnutls. ***" >&5
+ 
++		   fi
++	   else
++			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: *** Warning: neither pkg-config nor python is available, disabling gnutls. ***" >&5
 +$as_echo "*** Warning: neither pkg-config nor python is available, disabling gnutls. ***" >&6; }
-+        fi
++	   fi
 +
-+        if test "x$gnutls_h_present" = "x1" -a "x$libgnutls_present" = "x1"; then
-+            { $as_echo "$as_me:${as_lineno-$LINENO}: result: GnuTLS library found, SSL support enabled" >&5
++	   if test "x$gnutls_h_present" = "x1" -a "x$libgnutls_present" = "x1"; then
++	   	   { $as_echo "$as_me:${as_lineno-$LINENO}: result: GnuTLS library found, SSL support enabled" >&5
 +$as_echo "GnuTLS library found, SSL support enabled" >&6; }
-+            # PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
-+            #AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
-+            $as_echo "#define PJ_HAS_SSL_SOCK 1" >>confdefs.h
++		   # PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
++		   #AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
++		   $as_echo "#define PJ_HAS_SSL_SOCK 1" >>confdefs.h
 +
-+            $as_echo "#define PJ_HAS_TLS_SOCK 1" >>confdefs.h
++		   $as_echo "#define PJ_HAS_TLS_SOCK 1" >>confdefs.h
 +
-+        else
-+            { $as_echo "$as_me:${as_lineno-$LINENO}: result: ** No GnuTLS libraries found, disabling SSL support **" >&5
++	   else
++		   { $as_echo "$as_me:${as_lineno-$LINENO}: result: ** No GnuTLS libraries found, disabling SSL support **" >&5
 +$as_echo "** No GnuTLS libraries found, disabling SSL support **" >&6; }
-+        fi
-+    else
-+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: checking for OpenSSL installations.." >&5
++	   fi
++	else
+ 		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: checking for OpenSSL installations.." >&5
  $as_echo "checking for OpenSSL installations.." >&6; }
--                if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
--                    CFLAGS="$CFLAGS -I$with_ssl/include"
--                    LDFLAGS="$LDFLAGS -L$with_ssl/lib"
--                    { $as_echo "$as_me:${as_lineno-$LINENO}: result: Using SSL prefix... $with_ssl" >&5
--$as_echo "Using SSL prefix... $with_ssl" >&6; }
--                fi
- 
- 
- 
--		ac_fn_c_check_header_mongrel "$LINENO" "openssl/ssl.h" "ac_cv_header_openssl_ssl_h" "$ac_includes_default"
-+        ac_fn_c_check_header_mongrel "$LINENO" "openssl/ssl.h" "ac_cv_header_openssl_ssl_h" "$ac_includes_default"
- if test "x$ac_cv_header_openssl_ssl_h" = xyes; then :
-   openssl_h_present=1
- fi
- 
- 
--		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for ERR_load_BIO_strings in -lcrypto" >&5
-+        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ERR_load_BIO_strings in -lcrypto" >&5
- $as_echo_n "checking for ERR_load_BIO_strings in -lcrypto... " >&6; }
- if ${ac_cv_lib_crypto_ERR_load_BIO_strings+:} false; then :
-   $as_echo_n "(cached) " >&6
-@@ -7892,7 +8021,7 @@ if test "x$ac_cv_lib_crypto_ERR_load_BIO_strings" = xyes; then :
-   libcrypto_present=1 && LIBS="-lcrypto $LIBS"
- fi
- 
--		{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for SSL_library_init in -lssl" >&5
-+        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for SSL_library_init in -lssl" >&5
- $as_echo_n "checking for SSL_library_init in -lssl... " >&6; }
- if ${ac_cv_lib_ssl_SSL_library_init+:} false; then :
-   $as_echo_n "(cached) " >&6
-@@ -7932,22 +8061,23 @@ if test "x$ac_cv_lib_ssl_SSL_library_init" = xyes; then :
-   libssl_present=1 && LIBS="-lssl $LIBS"
- fi
- 
--		if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
--	        	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: OpenSSL library found, SSL support enabled" >&5
-+        if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
-+            { $as_echo "$as_me:${as_lineno-$LINENO}: result: OpenSSL library found, SSL support enabled" >&5
- $as_echo "OpenSSL library found, SSL support enabled" >&6; }
--			# PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
--			#AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
--			$as_echo "#define PJ_HAS_SSL_SOCK 1" >>confdefs.h
-+            # PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
-+            #AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
-+            $as_echo "#define PJ_HAS_SSL_SOCK 1" >>confdefs.h
- 
--		else
--			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ** OpenSSL libraries not found, disabling SSL support **" >&5
--$as_echo "** OpenSSL libraries not found, disabling SSL support **" >&6; }
--		fi
-+            $as_echo "#define PJ_HAS_TLS_SOCK 0" >>confdefs.h
- 
-+        else
-+            { $as_echo "$as_me:${as_lineno-$LINENO}: result: ** No OpenSSL libraries found, disabling SSL support **" >&5
-+$as_echo "** No OpenSSL libraries found, disabling SSL support **" >&6; }
-+        fi
++
+                 if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
+                     CFLAGS="$CFLAGS -I$with_ssl/include"
+                     LDFLAGS="$LDFLAGS -L$with_ssl/lib"
+@@ -7971,11 +8105,10 @@
+ 			{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ** OpenSSL libraries not found, disabling SSL support **" >&5
+ $as_echo "** OpenSSL libraries not found, disabling SSL support **" >&6; }
+ 		fi
+-
 +    fi
  fi
  
@@ -270,14 +208,13 @@ index 78601ca..3589f5a 100755
  # Check whether --with-opencore-amrnb was given.
  if test "${with_opencore_amrnb+set}" = set; then :
    withval=$with_opencore_amrnb; as_fn_error $? "This option is obsolete and replaced by --with-opencore-amr=DIR" "$LINENO" 5
-diff --git a/aconfigure.ac b/aconfigure.ac
-index 3c80efa..808fd07 100644
---- a/aconfigure.ac
-+++ b/aconfigure.ac
-@@ -1566,38 +1566,77 @@ fi
- 
+diff -ru a/aconfigure.ac b/aconfigure.ac
+--- a/aconfigure.ac	2017-01-25 06:23:08.000000000 -0500
++++ b/aconfigure.ac	2017-06-08 13:28:17.138135490 -0400
+@@ -1533,18 +1533,59 @@
  dnl # Include SSL support
  AC_SUBST(ac_no_ssl)
+ AC_SUBST(ac_ssl_has_aes_gcm,0)
 -AC_ARG_ENABLE(ssl,
 -	      AS_HELP_STRING([--disable-ssl],
 -			     [Exclude SSL support the build (default: autodetect)])
@@ -289,118 +226,88 @@ index 3c80efa..808fd07 100644
 -	        fi
 -	      ],
 -	      [
--		AC_MSG_RESULT([checking for OpenSSL installations..])
--                if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
--                    CFLAGS="$CFLAGS -I$with_ssl/include"
--                    LDFLAGS="$LDFLAGS -L$with_ssl/lib"
--                    AC_MSG_RESULT([Using SSL prefix... $with_ssl])
 +AC_ARG_ENABLE([ssl],
-+              AS_HELP_STRING([--enable-ssl[=backend]],
-+                             [Select 'gnutls' or 'openssl' (default) to provide SSL support (autodetect)]),
-+              [ if test "x$enableval" = "xgnutls"; then
-+                    [ssl_backend="gnutls"]
-+                else
-+                    [ssl_backend="openssl"]
-+
-                 fi
--		AC_SUBST(openssl_h_present)
--		AC_SUBST(libssl_present)
--		AC_SUBST(libcrypto_present)
--		AC_CHECK_HEADER(openssl/ssl.h,[openssl_h_present=1])
--		AC_CHECK_LIB(crypto,ERR_load_BIO_strings,[libcrypto_present=1 && LIBS="-lcrypto $LIBS"])
--		AC_CHECK_LIB(ssl,SSL_library_init,[libssl_present=1 && LIBS="-lssl $LIBS"])
--		if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
--	        	AC_MSG_RESULT([OpenSSL library found, SSL support enabled])
--			# PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
--			#AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
--			AC_DEFINE(PJ_HAS_SSL_SOCK, 1)
--		else
--			AC_MSG_RESULT([** OpenSSL libraries not found, disabling SSL support **])
--		fi
--	      ])
-+              ])
-+
++	AS_HELP_STRING([--enable-ssl[=backend]],
++                   [Select 'gnutls' or 'openssl' (default) to provide SSL support (autodetect)]),
++		[ if test "x$enableval" = "xgnutls"; then
++		  [ssl_backend="gnutls"]
++		else
++			[ssl_backend="openssl"]
++		fi ])
++		
 +if test "x$enable_ssl" = "xno"; then
-+    [ac_no_ssl=1]
-+    AC_MSG_RESULT([Checking if SSL support is disabled... yes])
++   [ac_no_ssl=1]
++   AC_MSG_RESULT([Checking if SSL support is disabled... yes])
 +else
-+    if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
-+        CFLAGS="$CFLAGS -I$with_ssl/include"
-+        LDFLAGS="$LDFLAGS -L$with_ssl/lib"
-+        AC_MSG_RESULT([Using SSL prefix... $with_ssl])
-+    fi
-+    if test "x$ssl_backend" = "xgnutls"; then
-+        AC_CHECK_PROGS(PKG_CONFIG,
-+                       $host-pkg-config pkg-config "python pkgconfig.py",
-+                       none)
-+        AC_MSG_RESULT([checking for GnuTLS installations..])
-+        AC_SUBST(gnutls_h_present)
-+        AC_SUBST(libgnutls_present)
-+        AC_CHECK_HEADER(gnutls/gnutls.h, [gnutls_h_present=1])
++	if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
++	   CFLAGS="$CFLAGS -I$with_ssl/include"
++	   LDFLAGS="$LDFLAGS -L$with_ssl/lib"
++	   AC_MSG_RESULT([Using SSL prefix... $with_ssl])
++	fi
++	if test "x$ssl_backend" = "xgnutls"; then
++	   AC_CHECK_PROGS(PKG_CONFIG,
++	                  $host-pkg-config pkg-config "python pkgconfig.py",
++					  none)
++       AC_MSG_RESULT([checking for GnuTLS installations..])
++	   AC_SUBST(gnutls_h_present)
++	   AC_SUBST(libgnutls_present)
++	   AC_CHECK_HEADER(gnutls/gnutls.h, [gnutls_h_present=1])
 +
-+        if test "$PKG_CONFIG" != "none"; then
-+            if $PKG_CONFIG --exists gnutls; then
-+                LIBS="$LIBS `$PKG_CONFIG --libs gnutls`"
-+                libgnutls_present=1
-+            else
-+                AC_CHECK_LIB(gnutls,
-+                             gnutls_certificate_set_x509_system_trust,
-+                             [libgnutls_present=1 &&
-+                              LIBS="$LIBS -lgnutls"])
-+            fi
-+        else
-+            AC_MSG_RESULT([*** Warning: neither pkg-config nor python is available, disabling gnutls. ***])
-+        fi
++	   if test "$PKG_CONFIG" != "none"; then
++	   	   if $PKG_CONFIG --exists gnutls; then
++		       LIBS="$LIBS `$PKG_CONFIG --libs gnutls`"
++			   libgnutls_present=1
++		   else
++			   AC_CHECK_LIB(gnutls,
++							gnutls_certificate_set_x509_system_trust,
++							[libgnutls_present=1 &&
++							 LIBS="$LIBS -lgnutls"])
++		   fi
++	   else
++			AC_MSG_RESULT([*** Warning: neither pkg-config nor python is available, disabling gnutls. ***])
++	   fi
 +
-+        if test "x$gnutls_h_present" = "x1" -a "x$libgnutls_present" = "x1"; then
-+            AC_MSG_RESULT([GnuTLS library found, SSL support enabled])
-+            # PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
-+            #AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
-+            AC_DEFINE(PJ_HAS_SSL_SOCK, 1)
-+            AC_DEFINE(PJ_HAS_TLS_SOCK, 1)
-+        else
-+            AC_MSG_RESULT([** No GnuTLS libraries found, disabling SSL support **])
-+        fi
-+    else
-+        AC_MSG_RESULT([checking for OpenSSL installations..])
-+        AC_SUBST(openssl_h_present)
-+        AC_SUBST(libssl_present)
-+        AC_SUBST(libcrypto_present)
-+        AC_CHECK_HEADER(openssl/ssl.h, [openssl_h_present=1])
-+        AC_CHECK_LIB(crypto,ERR_load_BIO_strings,[libcrypto_present=1 && LIBS="-lcrypto $LIBS"])
-+        AC_CHECK_LIB(ssl,SSL_library_init,[libssl_present=1 && LIBS="-lssl $LIBS"])
-+        if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
-+            AC_MSG_RESULT([OpenSSL library found, SSL support enabled])
-+            # PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
-+            #AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
-+            AC_DEFINE(PJ_HAS_SSL_SOCK, 1)
-+            AC_DEFINE(PJ_HAS_TLS_SOCK, 0)
-+        else
-+            AC_MSG_RESULT([** No OpenSSL libraries found, disabling SSL support **])
-+        fi
++	   if test "x$gnutls_h_present" = "x1" -a "x$libgnutls_present" = "x1"; then
++	   	   AC_MSG_RESULT([GnuTLS library found, SSL support enabled])
++		   # PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
++		   #AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
++		   AC_DEFINE(PJ_HAS_SSL_SOCK, 1)
++		   AC_DEFINE(PJ_HAS_TLS_SOCK, 1)
++	   else
++		   AC_MSG_RESULT([** No GnuTLS libraries found, disabling SSL support **])
++	   fi
++	else
+ 		AC_MSG_RESULT([checking for OpenSSL installations..])
++		
+                 if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
+                     CFLAGS="$CFLAGS -I$with_ssl/include"
+                     LDFLAGS="$LDFLAGS -L$with_ssl/lib"
+@@ -1578,7 +1619,8 @@
+ 		else
+ 			AC_MSG_RESULT([** OpenSSL libraries not found, disabling SSL support **])
+ 		fi
+-	      ])
 +    fi
 +fi
  
  dnl # Obsolete option --with-opencore-amrnb
  AC_ARG_WITH(opencore-amrnb,
-diff --git a/pjlib/build/Makefile b/pjlib/build/Makefile
-index 1e64950..529e0ff 100644
---- a/pjlib/build/Makefile
-+++ b/pjlib/build/Makefile
-@@ -35,7 +35,7 @@ export PJLIB_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
+diff -ru a/pjlib/build/Makefile b/pjlib/build/Makefile
+--- a/pjlib/build/Makefile	2016-10-05 05:52:39.000000000 -0400
++++ b/pjlib/build/Makefile	2017-06-08 13:30:20.702138591 -0400
+@@ -35,7 +35,7 @@
  	guid.o hash.o ip_helper_generic.o list.o lock.o log.o os_time_common.o \
  	os_info.o pool.o pool_buf.o pool_caching.o pool_dbg.o rand.o \
- 	rbtree.o sock_common.o sock_qos_common.o sock_qos_bsd.o \
+ 	rbtree.o sock_common.o sock_qos_common.o \
 -	ssl_sock_common.o ssl_sock_ossl.o ssl_sock_dump.o \
 +	ssl_sock_common.o ssl_sock_ossl.o ssl_sock_gtls.o ssl_sock_dump.o \
  	string.o timer.o types.o
  export PJLIB_CFLAGS += $(_CFLAGS)
  export PJLIB_CXXFLAGS += $(_CXXFLAGS)
-diff --git a/pjlib/include/pj/compat/os_auto.h.in b/pjlib/include/pj/compat/os_auto.h.in
-index 849bd09..a6f7767 100644
---- a/pjlib/include/pj/compat/os_auto.h.in
-+++ b/pjlib/include/pj/compat/os_auto.h.in
-@@ -209,6 +209,9 @@
+diff -ru a/pjlib/include/pj/compat/os_auto.h.in b/pjlib/include/pj/compat/os_auto.h.in
+--- a/pjlib/include/pj/compat/os_auto.h.in	2017-01-24 00:36:50.000000000 -0500
++++ b/pjlib/include/pj/compat/os_auto.h.in	2017-06-08 13:31:04.976064779 -0400
+@@ -219,6 +219,9 @@
  #ifndef PJ_HAS_SSL_SOCK
  #undef PJ_HAS_SSL_SOCK
  #endif
@@ -410,32 +317,33 @@ index 849bd09..a6f7767 100644
  
  
  #endif	/* __PJ_COMPAT_OS_AUTO_H__ */
-diff --git a/pjlib/include/pj/config.h b/pjlib/include/pj/config.h
-index 9909b33..7d2c689 100644
---- a/pjlib/include/pj/config.h
-+++ b/pjlib/include/pj/config.h
-@@ -855,13 +861,15 @@
+diff -ru a/pjlib/include/pj/config.h b/pjlib/include/pj/config.h
+--- a/pjlib/include/pj/config.h	2017-01-25 21:29:59.000000000 -0500
++++ b/pjlib/include/pj/config.h	2017-06-08 13:34:27.642149351 -0400
+@@ -888,7 +888,7 @@
  
  /**
   * Enable secure socket. For most platforms, this is implemented using
 - * OpenSSL, so this will require OpenSSL to be installed. For Symbian
-+ * OpenSSL, so this will require OpenSSL or GnuTLS to be installed. For Symbian
++ * OpenSSL or GnuTLS, so this will require OpenSSL or GnuTLS to be installed. For Symbian
   * platform, this is implemented natively using CSecureSocket.
   *
   * Default: 0 (for now)
-  */
+@@ -896,6 +896,10 @@
  #ifndef PJ_HAS_SSL_SOCK
  #  define PJ_HAS_SSL_SOCK	    0
-+   // When set to 1 secure sockets will use the GnuTLS backend
-+#  define PJ_HAS_TLS_SOCK	    0
  #endif
++// When set to 1 secure sockets will use the GnuTLS backend than OpenSSL
++#ifndef PJ_HAS_TLS_SOCK
++#  define PJ_HAS_TLS_SOCK	    0
++#endif
  
  
-diff --git a/pjlib/include/pj/ssl_sock.h b/pjlib/include/pj/ssl_sock.h
-index b698131..ed39fa6 100644
---- a/pjlib/include/pj/ssl_sock.h
-+++ b/pjlib/include/pj/ssl_sock.h
-@@ -184,6 +184,11 @@ typedef struct pj_ssl_cert_info {
+ /**
+diff -ru a/pjlib/include/pj/ssl_sock.h b/pjlib/include/pj/ssl_sock.h
+--- a/pjlib/include/pj/ssl_sock.h	2016-10-27 03:58:01.000000000 -0400
++++ b/pjlib/include/pj/ssl_sock.h	2017-06-08 13:36:16.448510381 -0400
+@@ -184,6 +184,10 @@
      pj_str_t raw;		    /**< Raw certificate in PEM format, only
  					 available for remote certificate. */
  
@@ -443,15 +351,13 @@ index b698131..ed39fa6 100644
 +        unsigned    cnt;        /**< # of entry     */
 +        pj_str_t* cert_raw;
 +    } raw_chain;
-+
  } pj_ssl_cert_info;
  
  
-diff --git a/pjlib/src/pj/ssl_sock_common.c b/pjlib/src/pj/ssl_sock_common.c
-index 9cbfef7..9e43ddf 100644
---- a/pjlib/src/pj/ssl_sock_common.c
-+++ b/pjlib/src/pj/ssl_sock_common.c
-@@ -35,7 +35,12 @@ PJ_DEF(void) pj_ssl_sock_param_default(pj_ssl_sock_param *param)
+diff -ru a/pjlib/src/pj/ssl_sock_common.c b/pjlib/src/pj/ssl_sock_common.c
+--- a/pjlib/src/pj/ssl_sock_common.c	2016-10-27 03:58:01.000000000 -0400
++++ b/pjlib/src/pj/ssl_sock_common.c	2017-06-08 13:37:17.171037628 -0400
+@@ -35,7 +35,12 @@
      param->async_cnt = 1;
      param->concurrency = -1;
      param->whole_data = PJ_TRUE;
@@ -3347,10 +3253,9 @@ index 0000000..37bcaba
 +}
 +
 +#endif /* PJ_HAS_SSL_SOCK */
-diff --git a/pjlib/src/pj/ssl_sock_ossl.c b/pjlib/src/pj/ssl_sock_ossl.c
-index 1e276ab..1661ac9 100644
---- a/pjlib/src/pj/ssl_sock_ossl.c
-+++ b/pjlib/src/pj/ssl_sock_ossl.c
+diff -ru a/pjlib/src/pj/ssl_sock_ossl.c b/pjlib/src/pj/ssl_sock_ossl.c
+--- a/pjlib/src/pj/ssl_sock_ossl.c	2017-01-24 00:41:05.000000000 -0500
++++ b/pjlib/src/pj/ssl_sock_ossl.c	2017-06-08 13:42:15.188809557 -0400
 @@ -32,8 +32,10 @@
  #include <pj/timer.h>
  
@@ -3364,10 +3269,9 @@ index 1e276ab..1661ac9 100644
  
  #define THIS_FILE		"ssl_sock_ossl.c"
  
-diff --git a/pjmedia/src/pjmedia/transport_srtp.c b/pjmedia/src/pjmedia/transport_srtp.c
-index 27daff3..d7f044f 100644
---- a/pjmedia/src/pjmedia/transport_srtp.c
-+++ b/pjmedia/src/pjmedia/transport_srtp.c
+diff -ru a/pjmedia/src/pjmedia/transport_srtp.c b/pjmedia/src/pjmedia/transport_srtp.c
+--- a/pjmedia/src/pjmedia/transport_srtp.c	2017-01-10 23:38:29.000000000 -0500
++++ b/pjmedia/src/pjmedia/transport_srtp.c	2017-06-08 13:43:29.727001721 -0400
 @@ -30,7 +30,8 @@
  
  #if defined(PJMEDIA_HAS_SRTP) && (PJMEDIA_HAS_SRTP != 0)
@@ -3378,7 +3282,7 @@ index 27daff3..d7f044f 100644
  #  include <openssl/rand.h>
  
  /* Suppress compile warning of OpenSSL deprecation (OpenSSL is deprecated
-@@ -1113,7 +1114,8 @@ static pj_status_t generate_crypto_attr_value(pj_pool_t *pool,
+@@ -1147,7 +1148,8 @@
  	    key_ok = PJ_TRUE;
  
  
@@ -3388,3 +3292,4 @@ index 27daff3..d7f044f 100644
  
  /* Include OpenSSL libraries for MSVC */
  #  ifdef _MSC_VER
+

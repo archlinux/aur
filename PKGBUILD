@@ -1,8 +1,8 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 _pkgname=pjproject
 pkgname=${_pkgname}-savoirfairelinux
-pkgver=2.5.5
-pkgrel=9
+pkgver=2.6
+pkgrel=1
 pkgdesc="Open source SIP stack and media stack, built with patches from SavoirFaire Linux (mostly GnuTLS support)"
 arch=('i686' 'x86_64')
 url="http://www.pjsip.org/"
@@ -22,13 +22,13 @@ source=("http://www.pjsip.org/release/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
         fix_turn_fallback.patch
         fix_ioqueue_ipv6_sendto.patch
         add_dtls_transport.patch)
-sha256sums=('ab39207b761d3485199cd881410afeb2d171dff7c2bf75e8caae91c6dca508f3'
+sha256sums=('2f5a1da1c174d845871c758bd80fbb580fca7799d3cfaa0d3c4e082b5161c7b4'
             '294d9fba18a8c903979de2c9b531a3ca32a28f90658bf0613a32ebfa7d5e3a69'
-            '0b31fdba1cb507c52ab54603f8d894bbca93451dcabed6d23e6d44770507865c'
+            '8dedb243a390af62741d4e3c0ea6b7f970cd6d67934f03d7ef8b69c745a6523b'
             'f88f3e73d2f62ae60d93e84e08f98da7d5febe93f1f390286cafa106178c4f27'
             '25c808206aa5028f29f66ea5364b93be94d0d5feac7d97165cd4ba3493aae6ec'
             'fdf64f3260aecbbc5433ae784e12dde462f1a15361f14c5cd0f7be0a3d13f802'
-            'b15829c960bf7b58b4b7660e5ce98f59c72b71fce714602bca479b58891621db'
+            'f2c135c655a0bc7d9cea80fff9a059293c540bbbd0c0f23eb77723cd902beb9d'
             '7aabc43556456085ca1bb9e17ef11ae5f4701dd392028335a65c06fd2bc1f6f8'
             '6eb446817c9a1e1c1c2922da18a2fb98c4acecb85aa0e2f9981ded1a6bf32b1f'
             '5289671ee86618d665556e5591ef5409354611a6cc0512bfe4100bc6b94fea67'
