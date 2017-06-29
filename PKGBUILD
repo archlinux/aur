@@ -2,7 +2,6 @@
 # Contributor: Vaporeon <vaporeon@tfwno.gf>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=gtk2-patched-filechooser-icon-view
 pkgname=gtk2-patched-filechooser-icon-view
 pkgver=2.24.31
 _patchver=96d5d611d0a2e586f50e7accb7fbb6aaf44f7940
@@ -15,7 +14,7 @@ conflicts=('gtk2')
 depends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcomposite' 'libxdamage'
          'shared-mime-info' 'cairo' 'libcups' 'gtk-update-icon-cache' 'librsvg'
          'desktop-file-utils' 'gtk-doc' 'glib2-patched-thumbnailer')
-makedepends=('gobject-introspection' 'python2')
+makedepends=('gobject-introspection' 'python2' 'git' 'gtk-doc')
 optdepends=('gnome-themes-standard: Default widget theme' 
             'gnome-icon-theme: Default icon theme')
 license=('LGPL')
