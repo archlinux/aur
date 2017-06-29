@@ -1,7 +1,7 @@
 pkgbase = qtcreator-opt-git
 	pkgdesc = Lightweight, cross-platform integrated development environment
 	pkgver = 4.3.0.r592.g345680a159
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.qt.io/ide/
 	arch = i686
 	arch = x86_64

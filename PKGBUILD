@@ -11,7 +11,7 @@
 pkgname=qtcreator-opt-git
 pkgver=4.3.0.r592.g345680a159
 _pkgcommit=345680a159b4c09ee40411f81cd9b2151675312f
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
 url='https://www.qt.io/ide/'
@@ -51,7 +51,7 @@ pkgver() {
 prepare() {
     # TODO: seems that this action is not needed, user can request full rebulding by call `makepkg -C`
     #[[ -d build ]] && rm -r build
-    #mkdir build
+    mkdir build || true
 
     # prepare submodules
     (
