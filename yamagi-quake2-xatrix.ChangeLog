@@ -1,3 +1,9 @@
+2017-06-29 carstene1ns <arch carsten-teibes de>
+
+	* 2.05-1 :
+	new upstream release.
+	switch to cmake build
+
 2016-06-30 carstene1ns <arch carsten-teibes de>
 
 	* 2.04-1 :
