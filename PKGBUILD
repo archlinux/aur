@@ -2,7 +2,7 @@
 
 pkgname=gambit-git
 pkgver=16.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
@@ -27,7 +27,7 @@ build() {
   automake --add-missing
   autoconf
   
-  CXXFLAGS+=" -std=c++11" ./configure --prefix=/usr --disable-enumpoly
+  CXXFLAGS+=" -std=c++11" CXX=gcc-6.3 ./configure --prefix=/usr --disable-enumpoly
   make LANG=C
 }
 
