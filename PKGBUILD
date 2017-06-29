@@ -1,10 +1,10 @@
 _npmname=hexo-cli
-_npmver=1.0.2
+_npmver=1.0.3
 
 pkgname=nodejs-hexo-cli
-pkgver=1.0.2
-pkgrel=3
-pkgdesc="Command line interface for Hexo."
+pkgver=1.0.3
+pkgrel=1
+pkgdesc="Command line interface for Hexo: a fast, simple & powerful blog framework."
 arch=('any')
 url="https://hexo.io"
 license=('MIT')
