@@ -1,6 +1,6 @@
 pkgbase = libksi
 	pkgdesc = Guardtime KSI C SDK
-	pkgver = 3.13.2043
+	pkgver = 3.14.2207
 	pkgrel = 1
 	url = https://github.com/guardtime/libksi
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = libksi
 	depends = curl
 	depends = openssl
 	provides = libksi
-	source = https://github.com/guardtime/libksi/archive/v3.13.2043.tar.gz
+	source = https://github.com/guardtime/libksi/archive/v3.14.2207.tar.gz
 	source = openssl.1.1.0f.patch
-	md5sums = e0d99dc30db4889a39249fbc76f65459
+	md5sums = a01d022140bfa01a0423f8d97fc8dcf3
 	md5sums = b9fb84b5a027a948628dfe36046f7b3f
 
 pkgname = libksi
