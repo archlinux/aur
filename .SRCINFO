@@ -1,7 +1,7 @@
 pkgbase = proxy
 	pkgdesc = automate your installation process
-	pkgver = 1.0.9
-	pkgrel = 9
+	pkgver = 1.0.10
+	pkgrel = 10
 	url = http://torben.website/proxy
 	arch = any
 	license = CC-BY-3.0

@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=proxy
-pkgver=1.0.9
-pkgrel=9
+pkgver=1.0.10
+pkgrel=10
 pkgdesc='automate your installation process'
 arch=('any')
 url='http://torben.website/proxy'
