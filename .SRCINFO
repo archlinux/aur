@@ -1,6 +1,6 @@
 pkgbase = zbectl-git
 	pkgdesc = script for managing boot environments using zfs
-	pkgver = v0.2.r3.g2db68d6
+	pkgver = v0.2.r6.ge272cd8
 	pkgrel = 1
 	url = https://github.com/Finic8/zbectl
 	arch = any
