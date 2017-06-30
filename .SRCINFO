@@ -1,0 +1,22 @@
+pkgbase = goffice0.8
+	pkgdesc = A library of document-centric objects and utilities built on top of GLib and Gtk+
+	pkgver = 0.8.17
+	pkgrel = 3
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = gtk2
+	depends = gconf
+	depends = libgsf
+	conflicts = goffice<0.10
+	source = https://download.gnome.org/sources/goffice/0.8/goffice-0.8.17.tar.xz
+	source = use-apiver-for-dirs.patch
+	sha256sums = 165070beb67b84580afe80a8a100b674a81d553ab791acd72ac0c655f4fadb15
+	sha256sums = 4507a49f6ccb13e55c0b3cc6831b7e0dcec7badb58a3661190e843f8607fa270
+
+pkgname = goffice0.8
+
