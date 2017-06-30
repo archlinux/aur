@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 url="https://commits.kde.org/${pkgname}"
 license=('GPL3')
 groups=('ring')
-depends=('ring-daemon' 'knotifyconfig' 'kdeclarative')
-makedepends=('extra-cmake-modules' 'python' 'glu' 'kinit' 'qt5-quickcontrols2' 'qt5-tools')
+depends=('ring-daemon' 'knotifyconfig' 'kdeclarative' 'qt5-quickcontrols2')
+makedepends=('extra-cmake-modules' 'python' 'glu' 'kinit' 'qt5-tools')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/KDE/${pkgname}/archive/${_commit}.tar.gz"
         lrc-${_commitlrc}.tar.gz::"https://github.com/elv13/ring-lrc/archive/${_commitlrc}.tar.gz")
 sha256sums=('0b320c692f4bab0163da3209501fb24e46484cdc1747f096a2cba2e92dd7054b'
