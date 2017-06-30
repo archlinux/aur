@@ -3,7 +3,7 @@
 pkgname=ladon
 pkgver=1.0.6
 pkgrel=1
-pkgdesc="Utility to process mary files in parallel"
+pkgdesc="Utility to process many files in parallel"
 url="https://github.com/danielgtaylor/ladon"
 arch=('any')
 license=('MIT')
