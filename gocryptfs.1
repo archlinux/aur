@@ -64,6 +64,20 @@ filesytem without user interaction.
 Stay in the foreground instead of forking away.
 Implies "\-nosyslog".
 For compatability, "\-f" is also accepted, but "\-fg" is preferred.
+.SS \-force_owner string
+.PP
+If given a string of the form "uid:gid" (where both "uid" and "gid" are
+substituted with positive integers), presents all files as owned by the
+given uid and gid, regardless of their actual ownership.
+Implies "allow_other".
+.PP
+This is rarely desired behavior: One should \f[I]usually\f[] run
+gocryptfs as the account which owns the backing\-store files, which
+should \f[I]usually\f[] be one and the same with the account intended to
+access the decrypted content.
+An example of a case where this may be useful is a situation where
+content is stored on a filesystem that doesn\[aq]t properly support UNIX
+ownership and permissions.
 .SS \-forcedecode
 .PP
 Force decode of encrypted files even if the integrity check fails,
@@ -94,6 +108,20 @@ By default, CIPHERDIR is used.
 .SS \-fusedebug
 .PP
 Enable fuse library debug output
+.SS \-h, \-help
+.PP
+Print a short help text that shows the more\-often used options.
+.SS \-hh
+.PP
+Long help text, shows all available options.
+.SS \-hkdf
+.PP
+Use HKDF to derive separate keys for content and name encryption from
+the master key.
+.SS \-info
+.PP
+Pretty\-print the contents of the config file for human consumption,
+stripping out sensitive data.
 .SS \-init
 .PP
 Initialize encrypted directory
@@ -248,6 +276,10 @@ Run crypto speed test.
 Benchmark Go\[aq]s built\-in GCM against OpenSSL (if available).
 The library that will be selected on "\-openssl=auto" (the default) is
 marked as such.
+.SS \-trace string
+.PP
+Write execution trace to file.
+View the trace using "go tool trace FILE".
 .SS \-version
 .PP
 Print version and exit.
