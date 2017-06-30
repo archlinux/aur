@@ -6,15 +6,7 @@ pkgdesc="A domain-specific language for specifying cryptographic algorithms."
 url="http://www.cryptol.net"
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=(
-  'cvc4' 
-  'gmp4'
-  'libtinfo'
-)
-optdepends=(
-  'mathsat-5: theorem proving'
-  'yices-bin: theorem proving'
-)
+depends=('gmp4' 'ncurses5-compat-libs' 'z3')
 makedepends=()
 conflicts=()
 replaces=()
@@ -31,11 +23,11 @@ fi
 source=("https://github.com/GaloisInc/cryptol/releases/download/$pkgver/cryptol-${pkgver}-CentOS6-$_MYARCH.tar.gz")
 
 package() {
-  cd "$srcdir/cryptol-${pkgver}-CentOS6-${_MYARCH}"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/cryptol"
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-  cp bin/cryptol "$pkgdir/usr/bin"
-  cp -r share/cryptol/* "$pkgdir/usr/share/cryptol"
-  cp share/doc/cryptol/LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+    cd "$srcdir/cryptol-${pkgver}-CentOS6-${_MYARCH}"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/cryptol"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+    cp bin/cryptol "$pkgdir/usr/bin"
+    cp -r share/cryptol/* "$pkgdir/usr/share/cryptol"
+    cp share/doc/cryptol/LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
