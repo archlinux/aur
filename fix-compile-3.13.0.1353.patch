@@ -1,0 +1,11 @@
+--- src/src/crypto/Connect.cpp	2017-06-14 16:45:01.000000000 +0300
++++ src/src/crypto/Connect.cpp.new	2017-06-30 11:02:51.189677609 +0300
+@@ -30,6 +30,8 @@
+ #include <zlib.h>
+
+ #include <thread>
++#include <functional>
++#include <cstring>
+
+ #ifdef __ANDROID__
+ #include <sys/select.h>
