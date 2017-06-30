@@ -1,13 +1,13 @@
 # Maintainer: Max Liebkies <mail at maxliebkies dot de>
 
-pkgname=dotnet-sdk
+pkgname=dotnet-sdk-1.1
 pkgver="1.0.4"
 pkgrel=1
 pkgdesc="Provides the .NET core software development kit (sdk)."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
-depends=('dotnet' 'dotnet-cli')
+depends=('dotnet-runtime-1.1' 'dotnet-host')
 makedepends=()
 conflicts=('dotnet-bin')
 options=('staticlibs')
