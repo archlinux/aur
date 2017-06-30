@@ -1,4 +1,5 @@
 # Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Marius Knaust <marius.knaust@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: kevin <kevin@archlinux.org>
