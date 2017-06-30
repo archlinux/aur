@@ -2,15 +2,17 @@
 # Contributor: Lukasz Kszonowski <archlinux at kszonek dot pl>
 
 pkgname=e-deklaracje
-pkgrel=0
+pkgrel=1
 pkgver=9.0.5
 pkgdesc="Application for submitting tax return in Poland"
 arch=('any')
 url="http://www.finanse.mf.gov.pl/systemy-informatyczne/e-deklaracje"
-license=(unknown)
+license=('custom')
 depends=('acroread' 'adobe-air')
-
-source=('e-DeklaracjeDesktop.air::http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air' 'e-deklaracje.desktop')
+source=('http://www.finanse.mf.gov.pl/documents/766655/1196444/e-DeklaracjeDesktop.air'
+        'e-deklaracje.desktop')
+sha256sums=('d434c88999003f94ef6c77ea4ba1f3395dee4dbb37d83d56181c1ef9d1e56d89'
+            'ca9f9337fb40301d34f3e853dd9d7a83374caa0b0bb27fa95310f4dbeeb83743')
 noextract=(e-DeklaracjeDesktop.air)
 
 package() {
@@ -19,5 +21,4 @@ package() {
   install -D -m 644 "$srcdir/assets/icons/icon128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -D -m 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-md5sums=('664c94cb4bd4c5f006167eb07292e9b0'
-         'f9532049b12814ffe6b84fa57bac52e4')
+
