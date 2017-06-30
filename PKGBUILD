@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.1
-pkgrel=7
+pkgrel=8
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -140,8 +140,9 @@ prepare() {
 # -----------------
 
   # change log location to piholeLogFlush.sh
-  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh
+  sed -n "/\/var\/log\/pihole.log/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location to piholeLogFlush.sh" && return 1 ; fi
+  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|g" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh
 
 # -----------------
 
