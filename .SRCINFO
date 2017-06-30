@@ -1,0 +1,15 @@
+pkgbase = urbanterror-data
+	pkgdesc = A team-based tactical shooter based on the Quake 3 Engine (data files)
+	pkgver = 4.3.2
+	pkgrel = 2
+	epoch = 2
+	url = http://www.urbanterror.info
+	arch = any
+	license = custom:freeware
+	backup = opt/urbanterror/q3ut4/server.cfg
+	backup = opt/urbanterror/q3ut4/mapcycle.txt
+	source = http://www.happyurtday.com/releases/4x/UrbanTerror432_full.zip
+	sha512sums = 6611fd9c6309a95e479015764b082934f072a17394764491d8b025ab0eb977954807cc942ca5bd54bc9cfa512850e0f4d3994c94e91eb27eeffbde805a749d2a
+
+pkgname = urbanterror-data
+
