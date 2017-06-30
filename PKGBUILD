@@ -2,7 +2,7 @@
 
 pkgname=('dlangide')
 pkgver=0.7.30
-pkgrel=1
+pkgrel=2
 pkgdesc="D language IDE based on DlangUI "
 arch=('i686' 'x86_64')
 url="https://github.com/buggins/dlangide"
@@ -21,7 +21,7 @@ sha256sums=('5255ac4dfd70bf0d2f2a9306fbb1338f1c03f8ae5015dfe10d5fb8a942ab8225'
 
 build() {
 	cd $srcdir/dlangide-$pkgver
-	dub build
+	dub build --build=release
 }
 
 package() {

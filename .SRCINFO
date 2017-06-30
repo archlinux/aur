@@ -1,7 +1,7 @@
 pkgbase = dlangide
 	pkgdesc = D language IDE based on DlangUI
 	pkgver = 0.7.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buggins/dlangide
 	arch = i686
 	arch = x86_64
