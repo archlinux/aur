@@ -2,23 +2,28 @@
 
 pkgname=tibia
 pkgver=11.32.5246
-pkgrel=2
+pkgrel=3
 pkgdesc="fast-paced free massively multiplayer online role-playing game"
 arch=('x86_64')
 url="http://www.tibia.com"
 license=('custom')
-depends=('glu' 'libgl' 'libice' 'libxext' 'pcre' 'qt5-base' 'qt5-declarative')
+depends=('glu' 'libgl' 'libice' 'libxext' 'openssl-1.0' 'pcre' 'qt5-base' 'qt5-declarative')
 makedepends=('gendesk' 'python-html2text')
 
 source=("${pkgname}-${pkgver}.tar.gz::http://static.tibia.com/download/tibia.x64.tar.gz"
-        "${pkgname}-agreement.php::http://www.tibia.com/support/agreement.php")
+        "${pkgname}-agreement.php::http://www.tibia.com/support/agreement.php"
+        "01_openssl102.patch")
 
 sha256sums=('907421de4de759f424c00bd8c1fa836568ff2fc80b9a0ca792bef1876747cdae'
-            '965edf1cf67698f9dcfcbced495e0e96a666207a9a0b91fb769ed386a5f1efe5')
+            '965edf1cf67698f9dcfcbced495e0e96a666207a9a0b91fb769ed386a5f1efe5'
+            '32eed70b7460908498e111e181ae5c2080ef0027cb5dc6fbea9e621b96f8ed0c')
 
 prepare() {
   gendesk -f -n
   html2text "${pkgname}-agreement.php" > LICENSE
+
+  # Tibia relies on openssl 1.0.x
+  patch -Np0 -i "${srcdir}/01_openssl102.patch"
 }
 
 package() {

@@ -1,0 +1,9 @@
+--- tibia-11.32.5246/start-tibia.sh
++++ tibia-11.32.5246/start-tibia.sh
+@@ -7,4 +7,4 @@
+ PATH=$(dirname "$SCRIPT")
+ BIN_PATH="$PATH/bin"
+ 
+-LD_LIBRARY_PATH="$BIN_PATH" exec "$BIN_PATH/client"
++LD_LIBRARY_PATH="$BIN_PATH:/usr/lib/openssl-1.0/" exec "$BIN_PATH/client"
+
