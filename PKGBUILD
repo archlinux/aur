@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=gnome-shell-extension-radio-git
-pkgver=1.4.r25.gd6d6eb3
-pkgrel=2
+pkgver=1.6.r6.g87e8cd3
+pkgrel=1
 pkgdesc="Gnome shell extension for listening to internet radio streams."
 arch=(any)
 url="https://github.com/hslbck/gnome-shell-extension-radio"
