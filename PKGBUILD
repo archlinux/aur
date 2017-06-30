@@ -1,26 +1,32 @@
+# $Id$
+# Original Community Repo
+# =======================
+# Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: fancris3 <fancris3 at gmail.com>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+
+# Modifications to Use Bzr Trunk Source
+# =====================================
 # Maintainer: Quan Guo <guotsuan@gamil.com>, James Harvey <jamespharvey20@gmail.com>
-# Contributor:  TDY <tdy@gmx.com>
-# Contributor: zhuqin <zhuqin83@gmail.com>
+#    * This .PKGFILE as closely as possible matches community's terminator 0.98-2
 
 pkgname=terminator-bzr
+_pkgname=terminator
 pkgver=1.0.r1776
 pkgrel=1
-pkgdesc="A tool for arranging multiple terminals in a single window"
-arch=('i686' 'x86_64')
-url="http://www.tenshu.net/terminator/"
-license=('GPL')
-depends=('pygtk' 'python2-keybinder2' 'python2-notify'
-         'vte' 'xdg-utils' 'python2-psutil')
-makedepends=('bzr' 'desktop-file-utils' 'gettext' 'intltool')
-optdepends=('gnome-python: gnome-terminal profile support')
+pkgdesc='Terminal emulator that supports tabs and grids (bzr trunk developmental version)'
+arch=('any')
+url='http://gnometerminator.blogspot.fr/p/introduction.html'
+license=('GPL2')
+# Note: the package named 'vte3' is actually vte for GTK 3
+# and terminator seems to require vte for GTK 2
+depends=('vte' 'pygtk' 'dbus-glib' 'xdg-utils' 'python2-notify' 'python2-keybinder2' 'python2-psutil')
+makedepends=('desktop-file-utils' 'gettext' 'intltool' 'bzr')
 provides=('terminator')
 conflicts=('terminator')
-_pkgname=terminator
 source=("${_pkgname}::bzr+https://code.launchpad.net/~gnome-terminator/terminator/trunk")
 md5sums=('SKIP')
-
-install=terminator.install
-
 
 pkgver() {
    cd ${srcdir}/${_pkgname}
@@ -28,17 +34,21 @@ pkgver() {
 }
 
 build() {
-  rm -rf "$srcdir/${_pkgname}-build"
-  cp -r "$srcdir/${_pkgname}" "$srcdir/${_pkgname}-build"
-  cd "$srcdir/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
 
-  msg "Starting make..."
-  find -type f -name '*.py' -exec sed -i '1s,python,&2,' '{}' \;
-  python2 setup.py build
+    # python2 fix
+    for file in terminatorlib/{,plugins/}*.py; do
+        sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' $file
+        sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
+    done
+
+    python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-build"
-  python2 setup.py install --prefix=/usr --root="$pkgdir"
-  rm -f "$pkgdir/usr/share/icons/hicolor/icon-theme.cache"
+    cd "${srcdir}/${_pkgname}"
+
+    python2 setup.py install --skip-build --root="${pkgdir}"
+
+    rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }
