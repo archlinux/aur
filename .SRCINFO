@@ -1,6 +1,6 @@
 pkgbase = vim-razer-git
 	pkgdesc = vim + razer RGB keyboards
-	pkgver = 0.2.r1.ga312770
+	pkgver = 1.0.r0.g0739038
 	pkgrel = 1
 	url = https://github.com/DanManN/vim-razer
 	arch = any
