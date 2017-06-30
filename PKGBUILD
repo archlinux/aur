@@ -1,6 +1,6 @@
 # Maintainer: Leonhard Rose <kolonigulus@gmail.com>
 pkgname=storjshare-daemon
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 epoch=
 pkgdesc="A CLI Client for running a farming node"
@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/Storj/storjshare-daemon/archive/v${pkgver}.tar.gz")
 noextract=("v${pkgver}.tar.gz")
 validpgpkeys=()
-md5sums=('2bab0af3ea74d15f5b0fd643fc3f07fc')
+md5sums=('cc2a0db8f9b529fd286368d451ac2543')
 
 package() {
 cd "$srcdir"
