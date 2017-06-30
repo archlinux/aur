@@ -3,7 +3,7 @@
 
 _pkgname=robo
 pkgname=${_pkgname}
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Modern task runner for PHP."
 arch=("any")
@@ -11,7 +11,7 @@ url="http://robo.li"
 license=("MIT")
 depends=("php")
 makedepends=("php-composer" "git")
-source=("${_pkgname}"::"git+https://github.com/Codegyre/Robo.git")
+source=("${_pkgname}"::"git+https://github.com/Codegyre/Robo.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
 build() {
