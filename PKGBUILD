@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=2.1.r0.g29d851bf+wine.2.1.r0.ge08ed6cac2
-pkgrel=2
+pkgver=2.11.r0.gaa00b404+wine.2.11.r0.g4005e6e659
+pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/wine-compholio/wine-staging/'
@@ -125,7 +125,7 @@ prepare() {
 
 pkgver() {
     cd "$pkgname"
-    local _staging_tag="$(git tag | sort -r | head -n1 | sed 's/-/./g;s/^v//')"
+    local _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//')"
     local _staging_version="$(git describe --long --tags \
                                 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' \
                                 | sed "s/^latest.release/${_staging_tag}/")"
