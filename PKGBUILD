@@ -1,22 +1,23 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=bookworm-git
-pkgver=0.6.0.r6.gf7626cd
+pkgver=0.9.r147.g5180472
 pkgrel=1
 pkgdesc='A simple user centric eBook reader which displays multiple eBooks formats uniformly'
 arch=('i686' 'x86_64')
-url='https://github.com/babluboy/bookworm'
+url='https://babluboy.github.io/bookworm'
 license=('GPL3')
-depends=('granite' 'poppler-glib' 'unrar' 'unzip' 'webkit2gtk')
+depends=('granite' 'p7zip' 'poppler-glib' 'python' 'unrar' 'webkit2gtk')
 makedepends=('cmake' 'git' 'vala')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("git+$url.git")
+source=('git+https://github.com/babluboy/bookworm.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  ver=$(grep -oP -m 1 'VERSION "\K[^"]+' CMakeLists.txt)
+  printf "%s.r%s.g%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
