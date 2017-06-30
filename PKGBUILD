@@ -4,7 +4,7 @@
 _pkgbase=r8101
 pkgname=r8101-dkms
 pkgver=1.031.02
-pkgrel=1
+pkgrel=2
 pkgdesc="r8101 realtek lan drivers (DKMS)"
 arch=('i686' 'x86_64')
 url="http://www.realtek.com.tw/"
@@ -15,7 +15,14 @@ provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 
 source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0007-${_pkgbase}-${pkgver}.tar.bz2"
+	"linux-4.11.patch"
         'dkms.conf')
+
+prepare() {
+  cd "r8101-$pkgver"
+  
+  patch -p1 -i ../linux-4.11.patch
+}
 
 package() {
 
@@ -32,4 +39,5 @@ package() {
         "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
 sha256sums=('00d292b0a4147b0686878e6281ec98e197dc45bbf71e1e1bbc2ae67b048a14de'
+            '09dcd7909cc15aa99715dfb70f1a1347a23369650122a33e6570cecc00127767'
             '2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5')

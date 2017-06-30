@@ -1,0 +1,12 @@
+--- r8101-1.031.02/src/r8101_n.c.old
++++ r8101-1.031.02/src/r8101_n.c
+@@ -12605,7 +12605,9 @@
+                         if (rtl8101_rx_vlan_skb(tp, desc, skb) < 0)
+                                 rtl8101_rx_skb(tp, skb);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+                         dev->last_rx = jiffies;
++#endif
+                         RTLDEV->stats.rx_bytes += pkt_size;
+                         RTLDEV->stats.rx_packets++;
+                 }
