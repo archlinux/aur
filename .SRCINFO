@@ -1,6 +1,6 @@
 pkgbase = tbs-linux_media-git
 	pkgdesc = TBS linux open source drivers
-	pkgver = r762.af5f7c7_4.11.6_3_ARCH
+	pkgver = r762.af5f7c7_4.11.7_1_ARCH
 	pkgrel = 1
 	url = https://github.com/tbsdtv/linux_media
 	install = tbs-linux_media-git.install
