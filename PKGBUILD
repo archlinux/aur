@@ -6,7 +6,7 @@
 
 pkgname=plymouth
 pkgver=0.9.2
-pkgrel=12
+pkgrel=13
 pkgdesc="A graphical boot splash screen with kernel mode-setting support"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
 
@@ -37,6 +37,7 @@ source=("http://www.freedesktop.org/software/${pkgname}/releases/${pkgname}-${pk
 	'plymouth-start.path'
 	'plymouth.initcpio_hook'
 	'plymouth.initcpio_install'
+	'sd-plymouth.initcpio_install'
 	'plymouth-quit.service.in.patch'
 	'plymouth-set-default-theme.in.patch'
 	'plymouth-update-initrd.patch')
@@ -55,6 +56,7 @@ md5sums=('ff420994deb7ea203df678df92e7ab7d'
          '672ad913e2383483bcb4599a0a6bee48'
          '32f04fdbd1eb94ade30d1e63fdcdd9b5'
          'a6dca3d57fd38b875d0520ec033dbf66'
+         '83b3b4384593d8bbc43bd21d88eba3e4'
          '165a39dbedcc6e123c8ca05d5b4b2e25'
          'f79edbbb30c71b0dbcd102c7dd31660b'
          '0357775c16b5f90f1af485e6a4c80a9e')
@@ -69,7 +71,8 @@ prepare() {
 build() {
 	cd "$srcdir"/${pkgname}-${pkgver}
 
-	LDFLAGS="$LDFLAGS -ludev" ./configure --prefix=/usr \
+	LDFLAGS="$LDFLAGS -ludev" ./configure \
+		--prefix=/usr \
 		--exec-prefix=/usr \
 		--sysconfdir=/etc \
 		--localstatedir=/var \
@@ -103,6 +106,7 @@ package() {
   install -Dm644 "$srcdir/plymouth.encrypt_install" "$pkgdir/usr/lib/initcpio/install/plymouth-encrypt"
   install -Dm644 "$srcdir/plymouth.initcpio_hook" "$pkgdir/usr/lib/initcpio/hooks/plymouth"
   install -Dm644 "$srcdir/plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/plymouth"
+  install -Dm644 "$srcdir/sd-plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/sd-plymouth"
 
   for i in {gdm,sddm,lxdm,slim,lightdm}-plymouth.service; do
     install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
