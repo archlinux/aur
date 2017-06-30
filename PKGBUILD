@@ -1,5 +1,7 @@
 # Maintainer Frede Hundewadt <f at hundewadt dot dk>
 # Based on PKGBUILD:
+# * `firefox-developer`
+# * `firefox-developer-es-mx`
 # * `firefox-developer-de`
 # Vigtigt: Det er nødvendigt at importere PGP nøgle for "Mozilla Sofware Releases <release@mozilla.com>"
 #   Mere information kan findes her: https://wiki.archlinux.org/index.php/GnuPG#Import_a_public_key
@@ -13,7 +15,7 @@ pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Danish'
 url='http://www.mozilla.org/firefox/developer'
 pkgver='55.0b6'
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${pkgver}"
@@ -48,17 +50,23 @@ optdepends=(
 )
 
 prepare() {
+    msg2 "!> Vigtigt: Det er nødvendigt at importere"
+    msg2 "!>   PGP nøgle for 'Mozilla Sofware Releases' <release@mozilla.com>"
+    msg2 "!> Mere information kan findes her:"
+    msg2 "!>   <https://wiki.archlinux.org/index.php/GnuPG#Import_a_public_key>"
+    msg2 "!> $ gpg --keyserver pgp.mit.edu --recv-keys D98F0353"
+
     # Check if hash of the source archive matches the one provided by Mozilla (which was signed with GPG).
     _checksum=`grep "linux-x86_64/$_lang/firefox-$pkgver.tar.bz2" $srcdir/SHA512SUMS | cut -f1 -d " "`
     _actual=`sha512sum $srcdir/firefox-$pkgver.tar.bz2 | cut -f1 -d " "`
 
-    msg2 "Checking integrity of firefox-$pkgver.tar.bz2"
+    msg2 "!> Checking integrity of firefox-$pkgver.tar.bz2"
 
     if [[ $_checksum == $_actual ]];
     then
-        msg2 "Checksum verified successfully."
+        msg2 "!> Integrity verified successfully."
     else
-        msg2 "Checksum verification failed!"
+        msg2 "!> Integrity verification failed!"
         exit 1
     fi
 }
@@ -77,4 +85,3 @@ package() {
     # install vendor.js file
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/$_name-$_channel/browser/defaults/preferences/vendor.js
 }
-
