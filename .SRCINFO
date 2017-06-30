@@ -1,6 +1,6 @@
 pkgbase = js52
 	pkgdesc = JavaScript interpreter and libraries
-	pkgver = 52.2.0esr
+	pkgver = 52.2.1esr
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = js52
 	depends = readline
 	depends = zlib
 	options = !staticlibs
-	source = https://ftp.mozilla.org/pub/firefox/releases/52.2.0esr/source/firefox-52.2.0esr.source.tar.xz
+	source = https://ftp.mozilla.org/pub/firefox/releases/52.2.1esr/source/firefox-52.2.1esr.source.tar.xz
 	source = link-mozglue.patch
-	md5sums = 512594d84c9aec3fb094eb4bba10e441
+	md5sums = 148418b75a026e3f7fe09c9f76e7fb78
 	md5sums = 31bf0b1a043169bd1c651331ef9c9dd8
 
 pkgname = js52
