@@ -10,7 +10,7 @@ license=('MIT')
 depends=('flake8' 'pydocstyle' 'python-flake8-polyfill')
 makedepends=('python-setuptools')
 source=("https://github.com/PyCQA/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('37747c85be3b7b5d09a858b513e4f366c1a709c4114661bb2b3af558ac708f7c')
+sha256sums=('3b2348201a7cf9f0268cd7b8d09f9bc6a158f67b3c93d008761b70c1d890bba2')
 
 package() {
   cd "$pkgname-$pkgver"
