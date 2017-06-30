@@ -1,6 +1,6 @@
 pkgbase = fastlane
 	pkgdesc = The easiest way to automate beta deployments and releases for your iOS and Android apps
-	pkgver = 2.41.0
+	pkgver = 2.44.1
 	pkgrel = 1
 	url = https://fastlane.tools
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = fastlane
 	depends = ruby-cfpropertylist<3
 	depends = ruby-colored
 	depends = ruby-commander-fastlane<5
-	depends = ruby-commander-fastlane>=4.4
+	depends = ruby-commander-fastlane>=4.4.5
 	depends = ruby-dotenv<3
 	depends = ruby-dotenv>=2.1.1
 	depends = ruby-excon<1
@@ -27,7 +27,8 @@ pkgbase = fastlane
 	depends = ruby-faraday-cookie_jar<0.1
 	depends = ruby-faraday_middleware<1
 	depends = ruby-faraday_middleware>=0.9
-	depends = ruby-fastimage>=1.6
+	depends = ruby-fastimage>=2.1.0
+	depends = ruby-fastimage<3
 	depends = ruby-gh_inspector<2
 	depends = ruby-gh_inspector>=1.0.1
 	depends = ruby-google-api-client-0.12
@@ -59,10 +60,10 @@ pkgbase = fastlane
 	depends = ruby-xcpretty<1
 	depends = ruby-xcpretty>=0.2.4
 	depends = ruby-xcpretty-travis-formatter>=0.0.3
-	noextract = fastlane-2.41.0.gem
+	noextract = fastlane-2.44.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fastlane-2.41.0.gem
-	sha1sums = d9c846c40c7e78bc528ad68eabeb251da5469bd4
+	source = https://rubygems.org/downloads/fastlane-2.44.1.gem
+	sha1sums = 92e68eee5524026ace29431f037b3302ab0bfa30
 
 pkgname = fastlane
 
