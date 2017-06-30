@@ -13,12 +13,14 @@ _build_java=1
 _build_cpp=1
 _build_jee=1
 _build_php=1
+_build_javascript=1
 
 pkgbase=eclipse-devel
 pkgname=()
-[[ "${_build_cpp}" == '1' ]] && pkgname+=('eclipse-cpp-devel')
-[[ "${_build_jee}" == '1' ]] && pkgname+=('eclipse-jee-devel')
-[[ "${_build_php}" == '1' ]] && pkgname+=('eclipse-php-devel')
+[[ "${_build_cpp}" == '1' ]]        && pkgname+=('eclipse-cpp-devel')
+[[ "${_build_jee}" == '1' ]]        && pkgname+=('eclipse-jee-devel')
+[[ "${_build_php}" == '1' ]]        && pkgname+=('eclipse-php-devel')
+[[ "${_build_javascript}" == '1' ]] && pkgname+=('eclipse-javascript-devel')
 # If no packages are selected, build java by default
 [[ "${_build_java}" == '1' || ${#pkgname[@]} -eq 0 ]] && pkgname+=('eclipse-java-devel')
 # If we're building more than one package, create a common package
@@ -27,14 +29,14 @@ pkgname=()
 epoch=1
 _milestone=R
 pkgver=4.7.0.${_milestone}
-pkgrel=1
+pkgrel=2
 _release=oxygen-${_milestone}
 pkgdesc="Highly extensible IDE"
 license=(EPL)
 arch=(i686 x86_64)
 url="https://eclipse.org"
 makedepends=()
-[[ ${#pkgname[@]} -gt 1 ]] && makedepends+=('ruby')
+[[ ${#pkgname[@]} -gt 1 ]] && makedepends+=('python')
 options=(!emptydirs)
 source=(commonify eclipse.sh eclipse.desktop)
 source_i686=()
@@ -120,6 +122,8 @@ _package() {
   if [[ ${#pkgname[@]} -gt 1 ]] ; then
     depends=(eclipse-common-devel=$pkgver)
   else
+    # If no -common pkg is build, we still need to depend on stuff
+    depends=("java-environment>=8" webkit2gtk unzip)
     conflicts+=('eclipse-common-devel')
   fi
   provides=(eclipse-devel "eclipse-$_variant=$pkgver-$pkgrel")
