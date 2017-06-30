@@ -16,7 +16,7 @@
 #
 #
 pkgname="spl-utils-linux-lts-git"
-pkgver=0.7.0_rc4_r4_gac48361_4.9.34_1
+pkgver=0.7.0_rc4_r5_g7a35f2b_4.9.35_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
@@ -26,7 +26,7 @@ sha256sums=("SKIP")
 groups=("archzfs-linux-lts-git")
 license=("GPL")
 provides=("spl-utils")
-makedepends=("linux-lts-headers=4.9.34-1" "git")
+makedepends=("linux-lts-headers=4.9.35-1" "git")
 conflicts=('spl-utils-linux' 'spl-utils-linux-git' 'spl-utils-linux-lts')
 
 build() {
