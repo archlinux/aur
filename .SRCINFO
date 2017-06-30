@@ -1,0 +1,19 @@
+pkgbase = stack-static
+	pkgdesc = The Haskell Tool Stack (linked statically)
+	pkgver = 1.4.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom:BSD3
+	provides = stack
+	conflicts = stack
+	conflicts = haskell-stack
+	replaces = stack
+	replaces = haskell-stack
+	source = https://github.com/commercialhaskell/stack/releases/download/v1.4.0/stack-1.4.0-linux-x86_64-static.tar.gz
+	source = https://github.com/commercialhaskell/stack/releases/download/v1.4.0/stack-1.4.0-linux-x86_64-static.tar.gz.asc
+	validpgpkeys = C5705533DA4F78D8664B5DC0575159689BEFB442
+	sha256sums = 8cc2bb0da1e5f77de7257662c63c82ed289b09a37c72c2fc7a8a81983dbe30ba
+	sha256sums = 65471f5165d5aa87cbe4bc32ce0e895481fa824211c44f24c107fb2ac58e9b7b
+
+pkgname = stack-static
+
