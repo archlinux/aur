@@ -1,7 +1,7 @@
 pkgbase = python-gnupg-isis
 	pkgdesc = A modified version of python-gnupg, including security patches, extensive documentation, and extra features. The gnupg module allows Python programs to make use of the functionality provided by the GNU Privacy Guard.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isislovecruft/python-gnupg
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = python-gnupg-isis
 	depends = python-psutil
 	provides = python-gnupg
 	conflicts = python-gnupg
+	replaces = python-gnupg-ng
 	source = git://github.com/isislovecruft/python-gnupg.git
 	md5sums = SKIP
 
