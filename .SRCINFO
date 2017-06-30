@@ -1,7 +1,7 @@
 pkgbase = firefox-developer-da
 	pkgdesc = Standalone web browser from mozilla.org, developer build - Danish
 	pkgver = 55.0b6
-	pkgrel = 3
+	pkgrel = 1
 	url = http://www.mozilla.org/firefox/developer
 	arch = x86_64
 	license = MPL
@@ -31,7 +31,7 @@ pkgbase = firefox-developer-da
 	source = vendor.js
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = aeb0d26b878769cbb5e3748151072942cc92cccc456b2f5e066483e4744d8faa086bc77d223a9810463478b25d22b33acce54726a0431a33b6038ee6a8c478ea
-	sha512sums = 1a8e9dba4a7e8b89ef1cb09b888e1811cf1f2a8e2dd8bba028ae6869949e5945fc45fab5fdbbb0dcc4132cee1bd64954e7ccd98e8e026f4e2f0286bb2f7bf6df
+	sha512sums = 3f2ac3b9ad5f509acca49c4de616706a475c1a06c559296703ea54db28f1442b64bf0fece3b75b4df7c4b7a39350b8077b9efb47dae057464c56d5df274c479d
 	sha512sums = SKIP
 	sha512sums = b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
