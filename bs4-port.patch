@@ -1,0 +1,32 @@
+From fb84b57f4300b32be2c8d96610e70efaf3c1ddf8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Gy=C3=B6rgy=20Ball=C3=B3?= <ballogyor@gmail.com>
+Date: Sat, 24 Jun 2017 23:00:56 +0200
+Subject: [PATCH] Port to Beautiful Soup 4
+
+It's a replacement for Beautiful Soup 3, which has no further development.
+---
+ epubview/jobs.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/epubview/jobs.py b/epubview/jobs.py
+index 152455f..a877c47 100644
+--- a/epubview/jobs.py
++++ b/epubview/jobs.py
+@@ -21,7 +21,7 @@
+ import widgets
+ import math
+ import os.path
+-import BeautifulSoup
++import bs4
+ 
+ import threading
+ 
+@@ -62,7 +62,7 @@ def _start_search(self):
+         return False
+ 
+     def _searchfile(self, fileobj):
+-        soup = BeautifulSoup.BeautifulSoup(fileobj)
++        soup = bs4.BeautifulSoup(fileobj)
+         body = soup.find('body')
+         tags = body.findChildren(True)
+         for tag in tags:

@@ -1,14 +1,19 @@
 pkgbase = sugar-activity-read
-	pkgdesc = Sugar book reader
-	pkgver = 116
-	pkgrel = 1
-	url = http://www.sugarlabs.org/
+	pkgdesc = Sugar activity to read books
+	pkgver = 118
+	pkgrel = 2
+	url = https://wiki.sugarlabs.org/go/Activities/Read
 	arch = any
-	groups = fructose
+	groups = sugar-fructose
 	license = GPL
-	depends = sugar
-	source = http://download.sugarlabs.org/sources/sucrose/fructose/Read/Read-116.tar.bz2
-	md5sums = bad023b3ebe8049fba3b4ef611a5a919
+	depends = evince
+	depends = python2-beautifulsoup4
+	depends = sugar-toolkit-gtk3
+	depends = webkitgtk
+	source = https://download.sugarlabs.org/sources/sucrose/fructose/Read/Read-118.tar.bz2
+	source = bs4-port.patch
+	sha256sums = 652c66a08c0f6b98e25c1e4d51ac7caffd4a2beefae8c3fd1209e8a432ec0052
+	sha256sums = dab39eb8658c850a684856a698934791e79e8e68b20132a462583da3f12c1d1c
 
 pkgname = sugar-activity-read
 
