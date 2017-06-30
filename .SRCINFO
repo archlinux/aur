@@ -1,17 +1,31 @@
 pkgbase = python-plotly
-	pkgdesc = An interactive, browser-based charting library for python
-	pkgver = 2.0.7
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://plot.ly/python/
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = python
 	makedepends = python-setuptools
-	depends = python-requests
-	depends = python-pytz
-	source = https://pypi.python.org/packages/8c/4a/9e42d13f74a2c7872ba6e7a868b152bd815c01038144570ec729ff13c065/plotly-2.0.7.tar.gz
-	md5sums = SKIP
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = python-plotly-2.0.11.tar.gz::https://pypi.org/packages/source/p/plotly/plotly-2.0.11.tar.gz
+	source = LICENSE
+	sha512sums = 6fd89d962fc73d365b189788132c2a6fe7fc35454fb1086a659a87ec5acc3778adcec0025b0c5c864627365a5aee334c8f0c65ca746ca5705375d7a84b980d91
+	sha512sums = 1f27d546f594955e443a3d8a72aa4f18afa9d946336a9fd0585de3c8120e3ef262ce109eea0ee8d97510616864b8d01f8e4d48ebc0fc1486fd490bf8ba3a7f89
 
 pkgname = python-plotly
+	pkgdesc = An interactive, browser-based graphing library for Python3
+	depends = python
+	depends = python-requests
+	depends = python-pytz
+	depends = python-six
+	depends = python-numpy
+
+pkgname = python2-plotly
+	pkgdesc = An interactive, browser-based graphing library for Python2
+	depends = python2
+	depends = python2-requests
+	depends = python2-pytz
+	depends = python2-six
+	depends = python2-numpy
 
