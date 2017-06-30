@@ -13,7 +13,7 @@ pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, developer build - Danish'
 url='http://www.mozilla.org/firefox/developer'
 pkgver='55.0b6'
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${pkgver}"
@@ -64,11 +64,17 @@ prepare() {
 }
 
 package() {
+    opt_path="opt/${pkgname}"
+    # install binaries
     install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
-    cp -r firefox $pkgdir/opt/$_name-$_channel
-    ln -s $pkgdir/opt/$_name-$_channel/firefox $pkgdir/usr/bin/$_name-$_channel
-    install -m644 $srcdir/$_name-$_channel.desktop $pkgdir/usr/share/applications/
+    cp -r firefox $pkgdir/${opt_path}
+    # symlink binary
+    ln -s /${opt_path}/firefox $pkgdir/usr/bin/$_name-$_channel
+    # install icon
     install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$_name-${_channel}-icon.png
+    # install desktop file
+    install -m644 $srcdir/$_name-$_channel.desktop $pkgdir/usr/share/applications/
+    # install vendor.js file
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/$_name-$_channel/browser/defaults/preferences/vendor.js
 }
 
