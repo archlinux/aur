@@ -1,7 +1,7 @@
 diff --git i/launcher/et w/launcher/et
-index 63daec5..50d3ce1 100755
---- launcher/et
-+++ launcher/et
+index f46cd34..fd01b1c 100755
+--- i/launcher/et
++++ w/launcher/et
 @@ -5,7 +5,6 @@ USER=${USER}
  ET_COMMAND=""
  SSH_COMMAND=""
@@ -9,8 +9,8 @@ index 63daec5..50d3ce1 100755
 -LOG_DIR=$TMP_DIR
  VERBOSITY=""
  INITIAL_COMMAND=""
- 
-@@ -24,10 +23,6 @@ do
+ TUNNEL=""
+@@ -27,10 +26,6 @@ do
              USER="${i#*=}"
              shift
              ;;
@@ -21,7 +21,7 @@ index 63daec5..50d3ce1 100755
          -v)
              VERBOSITY="--v=9"
              shift
-@@ -44,7 +39,6 @@ Options:
+@@ -51,7 +46,6 @@ Options:
  -s Special ssh command if necessary, otherwise set to user@hostname:22
  -p Port for etserver to run on.  Don't set to the same port as ssh.  Default: 2022
  -u Username to connect to ssh & ET
@@ -29,10 +29,10 @@ index 63daec5..50d3ce1 100755
  -v verbose log files
  -c Initial command to execute upon connecting
  "
-@@ -116,5 +110,5 @@ else
+@@ -120,5 +114,5 @@ else
      echo "${PASSKEY}" > "${TMPFILE}"
      PASSKEY=""
      SSH_OUTPUT=""
--    $CLIENT_BINARY --idpasskeyfile="$TMPFILE" $VERBOSITY --host="$HOSTNAME" --port="$PORT" --log_dir="$LOG_DIR" --command="$INITIAL_COMMAND" 2> /tmp/etclient_err
-+    $CLIENT_BINARY --idpasskeyfile="$TMPFILE" $VERBOSITY --host="$HOSTNAME" --port="$PORT" --command="$INITIAL_COMMAND" 2> /tmp/etclient_err
+-    $CLIENT_BINARY --idpasskeyfile="$TMPFILE" $VERBOSITY --host="$HOSTNAME" --port="$PORT" --log_dir="$LOG_DIR" --command="$INITIAL_COMMAND" --portforward="$TUNNEL" 2> /tmp/etclient_err
++    $CLIENT_BINARY --idpasskeyfile="$TMPFILE" $VERBOSITY --host="$HOSTNAME" --port="$PORT" --command="$INITIAL_COMMAND" --portforward="$TUNNEL" 2> /tmp/etclient_err
  fi

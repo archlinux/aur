@@ -4,7 +4,7 @@ _ghname='EternalTCP'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='3.0.6'
+pkgver='3.1.0'
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -22,8 +22,8 @@ source=(
 		'et.patch'
 )
 sha256sums=(
-		'34860a8f75b3d1ed406a3d9eb73c1cf85435f639c0de4ef77d4b78e4b7812efc'
-		'a09f0b1f607e61e8242d42170a5abd8a76258dcfc1d11902e8a1b20a295bbfcd'
+		'4194132b3c1f0a965ae8dc3651b1d1d4e197b8ffd193ffc05ab541bdf0145cd8'
+		'35961939cf852c327913e9fea698168966c7b492cb6f19e19321d9f9fa4fb292'
 )
 
 prepare() {
@@ -33,7 +33,7 @@ prepare() {
 	mkdir -p build
 
 	msg2 'Applying patches'
-	patch -p0 <"${srcdir}/et.patch"
+	patch -p1 <"${srcdir}/et.patch"
 }
 
 build() {
