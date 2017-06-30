@@ -3,8 +3,8 @@
 # Contributor: Jesus Jerez <jhuss@archlinux.org.ve>
 
 pkgname=eclipse-platform
-pkgver=4.6.3
-_pkgbuild=201703010400
+pkgver=4.7
+_pkgbuild=201706120950
 pkgrel=1
 pkgdesc="A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager"
 url="https://www.eclipse.org"
@@ -24,14 +24,14 @@ source=(
 )
 
 sha512sums=(
-    "199ab997bc93d164668edb66096bada2ae07f38bacd075fdcc103cd6686d61244efd8a892ee246ce1cc407aff0556704406fa2a57dfa18f36351ec4fb29144fd"
+    "9328a817fbc4c327caa4fe578583e0146d7b97fcc852207b86b6eb93518e9f1de2536af78b8d98901ba82a7a8ef8b970d3e51b6ca2e07e34a9e1b8b4691be8c7"
     "71393b01c2774654e1b3348ceedd6b110c7f1b26da93da40dac653ce2103a34997ec0e9e7fd4e977d869c149d19ef39f59738717cc6762e39b0bc0e7d53df4ac"
-    "34bae62e7428dec7ceb4fee73f4b5b846be1fe16e4bbd5958ef6684ae7340bda0d5bc3c6ea55c0d3fd87cadcc80f2570c2b0b85e0c60863ea139cadf5744c0c8"
+    "0c556325621888765d8aa41187e0d2f1dcc3ce81ca20fd8fe7bb678d61e322bc8de30519962dfeefc3d707836275010b0369c5a304405c20737b622487f1fc6c"
 )
 
 if [ "$CARCH" = "x86_64" ]; then
     source[0]=${source/linux-gtk/linux-gtk-x86_64}
-    sha512sums[0]="b271af421938fa3210aca482fbe7468a2f8935d15c5ab4efc95ded76fec4ece9a83d9acec19060624412c9a75c2b23daf0d5f05c800fb4f4becc2279f7218cca"
+    sha512sums[0]="76b12aecede6c6cffc38ffc7a91419cdcd819f19b2d2f49017ce3abc892d8ce0e104c92325146977af0fd3ffed863069f808969443c6b86db1c8fca49b8b9fe8"
 fi
 
 package() {

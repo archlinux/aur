@@ -1,6 +1,6 @@
 pkgbase = eclipse-platform
 	pkgdesc = A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager
-	pkgver = 4.6.3
+	pkgver = 4.7
 	pkgrel = 1
 	url = https://www.eclipse.org
 	install = eclipse-platform.install
@@ -12,15 +12,15 @@ pkgbase = eclipse-platform
 	depends = webkit2gtk
 	depends = libxtst
 	depends = hicolor-icon-theme
-	provides = eclipse=4.6.3
+	provides = eclipse=4.7
 	conflicts = eclipse
 	options = !strip
-	source = http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.6.3-201703010400/eclipse-platform-4.6.3-linux-gtk-x86_64.tar.gz&r=1
+	source = http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.7-201706120950/eclipse-platform-4.7-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.sh
 	source = eclipse.desktop
-	sha512sums = b271af421938fa3210aca482fbe7468a2f8935d15c5ab4efc95ded76fec4ece9a83d9acec19060624412c9a75c2b23daf0d5f05c800fb4f4becc2279f7218cca
+	sha512sums = 76b12aecede6c6cffc38ffc7a91419cdcd819f19b2d2f49017ce3abc892d8ce0e104c92325146977af0fd3ffed863069f808969443c6b86db1c8fca49b8b9fe8
 	sha512sums = 71393b01c2774654e1b3348ceedd6b110c7f1b26da93da40dac653ce2103a34997ec0e9e7fd4e977d869c149d19ef39f59738717cc6762e39b0bc0e7d53df4ac
-	sha512sums = 34bae62e7428dec7ceb4fee73f4b5b846be1fe16e4bbd5958ef6684ae7340bda0d5bc3c6ea55c0d3fd87cadcc80f2570c2b0b85e0c60863ea139cadf5744c0c8
+	sha512sums = 0c556325621888765d8aa41187e0d2f1dcc3ce81ca20fd8fe7bb678d61e322bc8de30519962dfeefc3d707836275010b0369c5a304405c20737b622487f1fc6c
 
 pkgname = eclipse-platform
 
