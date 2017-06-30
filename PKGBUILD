@@ -3,7 +3,7 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 # 2.0-pre1
 pkgname=blt4l
-pkgver=1.3_r1_1
+pkgver=2.0_pre1
 pkgrel=1
 pkgdesc="Mod loader for Payday 2 (non-Steam runtime only)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/blt4linux/blt4l"
 license=('GPL3')
 groups=()
 depends=('curl' 'openssl' 'zlib')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'libc++')
 provides=()
 conflicts=("blt4l-git")
 replaces=()
@@ -31,7 +31,7 @@ prepare() {
 build() {
 	mkdir -p "$srcdir/build"
 	cd "$srcdir/build" || exit
-	cmake "$srcdir/blt4l"
+	cmake -DUSE_LIBCXX=ON "$srcdir/blt4l"
 	make
 }
 
