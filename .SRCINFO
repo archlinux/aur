@@ -1,0 +1,36 @@
+pkgbase = klfc
+	pkgdesc = Tool to create advanced keyboard layouts in various formats
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/39aldo39/klfc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cabal-install
+	depends = haskell-base-prelude
+	depends = haskell-text
+	depends = haskell-bytestring
+	depends = haskell-semigroups
+	depends = haskell-containers
+	depends = haskell-unordered-containers
+	depends = haskell-vector
+	depends = haskell-aeson>=0.8.1.0
+	depends = haskell-time>=1.5
+	depends = haskell-mtl
+	depends = haskell-microlens-platform
+	depends = haskell-base-unicode-symbols
+	depends = haskell-megaparsec
+	depends = haskell-filepath
+	depends = haskell-filepath
+	depends = haskell-directory
+	depends = haskell-optparse-applicative
+	depends = haskell-transformers
+	depends = haskell-file-embed
+	depends = haskell-xml
+	depends = haskell-chunked-data
+	depends = haskell-process>=1.2.0.0
+	source = https://github.com/39aldo39/klfc/archive/v1.4.1.tar.gz
+	md5sums = 05c1bbfc425de4a0401b360c51d5a3ba
+
+pkgname = klfc
+
