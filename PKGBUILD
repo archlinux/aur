@@ -1,28 +1,28 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-beta-ffmpeg-codecs
-pkgver=59.0.3071.86
+pkgver=60.0.3112.20
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gtk2' 'gtk3' 'libexif' 'libpulse' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
+  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
   'xdg-utils'
 )
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-dma-buf-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch'
 )
-sha512sums=('1b92956435dcc422f3edf0ccd031007a19d291620d5af284ac2c1d2578b8524691713927b47130d2fd7c9acb7d9cd0376e9f5e3821b5feece7529b8b7bddf193'
+sha512sums=('93da55ec8171f7ebcba7732db149178a717c8f627664752b6d5bd12aa51fb3d928bc4a1369a0bee34730a98829aaba8c5a90d59136d39a5b7eddf15b8da6bba2'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
-            '279185af77d504a9be7fb3f0f8c85ebbb422fa15a716614989288921d546179ed04d238c7b176a8eb64e6e4a7ae5147d200d694d7df1647fc0382c884a53f3cd'
-            'd404976ebeca7ffe4e07770055aa9ec8db8761fcbbbf1e463523232a135e11d201c6263d468124190372b3178fda4ea36bdf9be34c50183b7ca93f14ab9d83b0')
+            'ab16fdbae0bbbb5756d46492025c7f29a0c78648026ae4bfcca77bf400fea4fb6b4f5ac45b40351c36dd17c81a3a636a13622a7791370c753a112f36418f841b'
+            '792b436802fda8427312ef482fb7dc78c1ec6a6c1e39f2637cc379cd5b8bb2dd1b17d495fdaea2beec35305e3e910bed67c9f1824155131def708c923a4cf1c6')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -40,8 +40,8 @@ prepare() {
   touch chrome/test/data/webui/i18n_process_css_test.html
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
-  patch -p1 -i "$srcdir/chromium-dma-buf-r1.patch"
-  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE.patch"
+  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r1.patch"
+  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r8.patch"
 }
 
 build() {
@@ -49,7 +49,7 @@ build() {
 
   export PATH="$srcdir/python2-path:$PATH"
 
-  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gconf=false use_gio=false use_gnome_keyring=false use_kerberos=false use_cups=false use_sysroot=false use_gold=false linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false is_clang=false is_component_build=true is_debug=false symbol_level=0"
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gconf=false use_gio=false use_gnome_keyring=false use_pulseaudio=false link_pulseaudio=false use_kerberos=false use_cups=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=false clang_use_chrome_plugins=false is_component_build=true is_debug=false symbol_level=0"
   python2 tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "$args"
   out/Release/gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python2
 
