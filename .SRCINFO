@@ -1,0 +1,27 @@
+pkgbase = urbanterror
+	pkgdesc = A team-based tactical shooter based on the Quake 3 Engine
+	pkgver = 4.3.2
+	pkgrel = 2
+	epoch = 2
+	url = http://www.urbanterror.info
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mesa
+	depends = sdl
+	depends = openal
+	depends = curl
+	depends = urbanterror-data
+	source = http://www.happyurtday.com/releases/4x/UrbanTerror432_full.zip
+	source = urbanterror.sh
+	source = urbanterror-server.sh
+	source = urbanterror.desktop
+	source = urbanterror.png
+	sha512sums = 6611fd9c6309a95e479015764b082934f072a17394764491d8b025ab0eb977954807cc942ca5bd54bc9cfa512850e0f4d3994c94e91eb27eeffbde805a749d2a
+	sha512sums = d296cee59c9a344b03485b2400278f05d4a4edd8f782f72b10857d4654d46ff1b6f181c51abb5a718d6b4a7227601d67fb2ba2b3fe7876bfec17b7c9827525a0
+	sha512sums = 6f444b1203b8c1a66c86a2112f3565059ba1135940cef37208ea05933290e1b3b9d8325c7fc86466fd8646338c8deaa168a22049104bda0631eab76a21a77e51
+	sha512sums = 33cb13820002f6620075143a1729018caf70a7cceb9b606db295fd621833add127474f1399626d722a3a8a7d9ba001b6dada4ca877ec87251a32d616367991d4
+	sha512sums = aad7cf50335d7d1a1bcb03be0cf52f8e8214e91d7ff1c76045ffed57ba599023468341a3ae07abb8b06ef2857deeae8610defdd2dc8a3e5fb48eeb3ca2033074
+
+pkgname = urbanterror
+
