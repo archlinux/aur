@@ -2,7 +2,7 @@
 
 pkgname=astroml-examples-git
 _gitname=astroML
-pkgver=2016.07.26.g0287fe0
+pkgver=2017.05.03.g33b2006
 pkgrel=1
 
 
