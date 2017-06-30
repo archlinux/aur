@@ -2,7 +2,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=libass-git
-pkgver=0.12.0.308.g6a61a7a
+pkgver=0.13.7.0.g9fb3840
 pkgrel=1
 pkgdesc="A portable library for SSA/ASS subtitles rendering. (GIT version)"
 arch=('i686' 'x86_64')
@@ -14,14 +14,16 @@ depends=('fontconfig'
 makedepends=('git'
              'yasm'
              )
-provides=('libass' 'libass.so')
+provides=('libass'
+          'libass.so'
+          )
 conflicts=('libass')
 source=('git+https://github.com/libass/libass.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libass
-  echo "$(git describe --always | tr - .)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
@@ -33,6 +35,7 @@ build() {
   cd libass
   ./configure \
     --prefix=/usr
+
   make
 }
 
