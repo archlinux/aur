@@ -1,0 +1,15 @@
+pkgbase = gnucash-docs
+	pkgdesc = GnuCash documentation package
+	pkgver = 2.6.16
+	pkgrel = 1
+	url = http://www.gnucash.org/docs.phtml
+	arch = any
+	license = GPL
+	makedepends = rarian
+	makedepends = libxslt
+	depends = yelp
+	source = gnucash-docs-2.6.16.tar.gz::http://sourceforge.net/projects/gnucash/files/gnucash-docs/2.6.16/gnucash-docs-2.6.16.tar.gz/download
+	sha1sums = ea7dc41476b28f2b67897e183ebd77f04d55be98
+
+pkgname = gnucash-docs
+
