@@ -1,6 +1,6 @@
-diff -aur ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth
---- ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth	2016-02-25 10:51:32.000000000 +0330
-+++ ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth	2016-08-01 19:43:23.329247234 +0430
+diff -aur ./a/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth ./b/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth
+--- ./a/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth	2016-07-04 21:19:27.000000000 +0430
++++ ./b/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth	2017-06-30 13:08:34.790444850 +0430
 @@ -1,8 +1,8 @@
  [Plymouth Theme]
 -Name=Ubuntu GNOME Logo
@@ -14,15 +14,9 @@ diff -aur ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/them
 -ScriptFile=/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script
 +ImageDir=/usr/share/plymouth/themes/gnome-logo
 +ScriptFile=/usr/share/plymouth/themes/gnome-logo/gnome-logo.script
-diff -aur ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script
---- ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script	2015-10-06 12:52:18.000000000 +0330
-+++ ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script	2016-08-01 19:43:43.862581227 +0430
-@@ -1,4 +1,4 @@
--#  ubuntu-gnome-logo.script - boot splash plugin
-+#  gnome-logo.script - boot splash plugin
- # 
- #  Copyright (C) 2013 Canonical Ltd.
- # 
+diff -aur ./a/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script ./b/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script
+--- ./a/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script	2016-07-04 21:19:27.000000000 +0430
++++ ./b/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script	2017-06-30 13:10:02.557658354 +0430
 @@ -215,7 +215,7 @@
  }
  
@@ -32,9 +26,9 @@ diff -aur ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/them
  spinner = centered_sprite("spinner.png");
  draw_bg ();
  
-diff -aur ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in
---- ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in	2016-07-05 12:43:34.000000000 +0430
-+++ ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in	2016-08-01 19:48:08.755923151 +0430
+diff -aur ./a/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in ./b/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in
+--- ./a/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in	2016-08-22 08:10:42.000000000 +0430
++++ ./b/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in	2017-06-30 13:10:42.411238482 +0430
 @@ -1,10 +1,10 @@
  [Plymouth Theme]
 -Name=Ubuntu GNOME Text

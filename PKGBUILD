@@ -4,27 +4,26 @@
 
 pkgname=plymouth-theme-gnome-logo
 _srcname=ubuntu-gnome-default-settings
-pkgver=16.10.5
+pkgver=17.10.1
 pkgrel=1
 pkgdesc="GNOME plymouth theme based on Ubuntu-gnome plymouth theme."
 arch=('any')
-url="http://packages.ubuntu.com/yakkety/plymouth-theme-ubuntu-gnome-logo"
+url="http://packages.ubuntu.com/artful/plymouth-theme-ubuntu-gnome-logo"
 license=('GPL')
 depends=('plymouth')
 install='plymouth-theme-gnome-logo.install'
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/u/${_srcname}/${_srcname}_${pkgver}.tar.xz"
-		'gnome_logo.png'
-		'gnome.patch')
-md5sums=('37bd24b9b37f0ec7b0f41b468679d827'
-         '91f82e0f9baa432f621574425193047e'
-         'fe3398ef0a9f9eb0de25a6e664523bd4')
+	'gnome_logo.png'
+	'gnome.patch')
+sha256sums=('8f3096173318ce7b94fb5f204238c7c67da2abb0e8863ec290d0f6b3c26d725e'
+            '408170cb37475e95ab47bcf7b0c69a89d7246308c19627e0f5f978888fa083aa'
+            '6c8d5f08a0a8d0e5bc90e2ef04e073770ba9e80cadd18ddc11041a347320cdab')
 
 prepare() {
-	cd $srcdir/${_srcname}-${pkgver}
-	patch -p1 -i "${srcdir}/gnome.patch"
+    cd $srcdir/${_srcname}-${pkgver}/usr/share/plymouth
+    patch -p2 -i "${srcdir}/gnome.patch"
 	
-    cd $srcdir/${_srcname}-${pkgver}/usr/share/plymouth/themes
-    
+    cd $srcdir/${_srcname}-${pkgver}/usr/share/plymouth/themes    
     mv ubuntu-gnome-logo gnome-logo
     mv ubuntu-gnome-text gnome-text
     
@@ -40,7 +39,7 @@ prepare() {
 }
 
 package() {
-	cd $srcdir/${_srcname}-${pkgver}/usr/share/plymouth/themes/gnome-logo
+    cd $srcdir/${_srcname}-${pkgver}/usr/share/plymouth/themes/gnome-logo
     mkdir -p $pkgdir/usr/share/plymouth/themes/gnome-logo
     install -Dm644 * "${pkgdir}"/usr/share/plymouth/themes/gnome-logo
     
