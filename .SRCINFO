@@ -1,0 +1,21 @@
+pkgbase = blt4l-git
+	pkgdesc = Mod loader for Payday 2 (non-Steam runtime only)
+	pkgver = r147.95e1458
+	pkgrel = 1
+	url = https://github.com/blt4linux/blt4l
+	install = blt4l.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = libc++
+	depends = curl
+	depends = openssl
+	depends = zlib
+	conflicts = blt4l
+	source = blt4l::git+https://github.com/blt4linux/blt4l
+	md5sums = SKIP
+
+pkgname = blt4l-git
+
