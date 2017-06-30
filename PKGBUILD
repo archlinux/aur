@@ -1,6 +1,6 @@
 # Maintainer: Mihai Bişog <mihai.bisog at [gmail] d0t com>
 pkgname=fmt
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Open-source formatting library for C++."
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ license=("BSD")
 makedepends=("cmake")
 
 source=("https://github.com/fmtlib/fmt/archive/$pkgver.tar.gz")
-md5sums=(b2c97427a696182b013d2cc0a2f939fe)
+md5sums=('c9be9a37bc85493d1116b0af59a25eba')
 
 build() {
     cd "$pkgname-$pkgver"
