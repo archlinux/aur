@@ -1,4 +1,4 @@
-pkgbase = dotnet
+pkgbase = dotnet-runtime-1.1
 	pkgdesc = Provides the .NET core shared framework, i.e. coreclr and corefx.
 	pkgver = 1.1.2
 	pkgrel = 1
@@ -15,12 +15,13 @@ pkgbase = dotnet
 	depends = icu
 	depends = lttng-ust
 	depends = libcurl-openssl-1.0
+	depends = dotnet-host
 	provides = dotnet=1.1.1
 	conflicts = dotnet-bin
 	options = staticlibs
 	source = coreclr-1.1.2.tar.gz::https://github.com/dotnet/coreclr/archive/v1.1.2.tar.gz
 	source = corefx-1.1.2.tar.gz::https://github.com/dotnet/corefx/archive/v1.1.2.tar.gz
-	source = dotnet-1.1.2.tar.gz::https://download.microsoft.com/download/D/7/A/D7A9E4E9-5D25-4F0C-B071-210CB8267943/dotnet-ubuntu.16.10-x64.1.1.2.tar.gz
+	source = dotnet-runtime-1.1-1.1.2.tar.gz::https://download.microsoft.com/download/D/7/A/D7A9E4E9-5D25-4F0C-B071-210CB8267943/dotnet-ubuntu.16.10-x64.1.1.2.tar.gz
 	source = llvm-39-github-pull-8311.patch
 	source = llvm-39-move.patch
 	source = lttng-uts-40.patch
@@ -35,5 +36,5 @@ pkgbase = dotnet
 	sha256sums = 2b884b4cd850027f95cba5deda32226e27ceaa962f0ab2879adc5180cf37c32a
 	sha256sums = a32dea005f5379ae59d31e579f4ea13bad03228a8ca39b439b94767541c44450
 
-pkgname = dotnet
+pkgname = dotnet-runtime-1.1
 

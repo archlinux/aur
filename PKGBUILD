@@ -1,6 +1,6 @@
 # Maintainer: Max Liebkies <mail at maxliebkies dot de>
 
-pkgname=dotnet
+pkgname=dotnet-runtime-1.1
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="Provides the .NET core shared framework, i.e. coreclr and corefx."
@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
 groups=()
-depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'libcurl-openssl-1.0')
+depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'libcurl-openssl-1.0' 'dotnet-host')
 makedepends=('cmake' 'make' 'clang' 'llvm' 'gettext')
 provides=('dotnet=1.1.1')
 conflicts=('dotnet-bin')
