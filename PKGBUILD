@@ -12,7 +12,7 @@
 pkgname=gdal1
 _pkgname=gdal
 pkgver=1.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster geospatial data formats"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -51,6 +51,7 @@ prepare() {
 build() {
   cd "${srcdir}"/$_pkgname-$pkgver
   export CFLAGS="$CFLAGS -fno-strict-aliasing"
+  export CXXFLAGS="$CXXFLAGS -fpermissive"
 
 # bug #23654
   export LDFLAGS="$LDFLAGS -Wl,--as-needed"
