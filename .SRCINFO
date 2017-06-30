@@ -1,7 +1,7 @@
 pkgbase = chrome-token-signing
 	pkgdesc = Estonian ID Card signing for Chrome. Chrome extension and native messaging client.
-	pkgver = 1.0.4.464
-	pkgrel = 3
+	pkgver = 1.0.5.468
+	pkgrel = 1
 	epoch = 1
 	url = http://www.id.ee/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = chrome-token-signing
 	depends = qt5-base
 	depends = pcsclite
 	depends = ccid
-	source = https://installer.id.ee/media/ubuntu/pool/main/c/chrome-token-signing/chrome-token-signing_1.0.4.464.orig.tar.xz
+	source = https://installer.id.ee/media/ubuntu/pool/main/c/chrome-token-signing/chrome-token-signing_1.0.5.468.orig.tar.xz
 	validpgpkeys = 43650273CE9516880D7EB581B339B36D592073D4
-	sha256sums = 06acea0bd9f5c0a361956c06edbb479de93fe47cf2b7c261c105624ee01b7748
+	sha256sums = 2bdca471480ce8a4556580a8e90adc9ce93ca6edf396d4deeaab4ad255f6ea66
 
 pkgname = chrome-token-signing
 
