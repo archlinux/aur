@@ -1,18 +1,18 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
 pkgname=lastpass
-pkgver=4.1.53
+pkgver=4.1.54a
+pkgrel=1
 _universalver=4.1.44
 _chromever=4.1.52
-pkgrel=1
-_amo_file=650260
+_amo_file=670270
 _crx_id=hdokiejnpimakedhajhdlcegeplioahd
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
 license=('custom')
-optdepends=('chromium'
-            'firefox'
+optdepends=('firefox'
+            'chromium'
             'google-chrome'
             'opera')
 # Apparently, API endpoints are all the rage -- so this isn't actually a file...
@@ -24,8 +24,8 @@ source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/
         "lastpass_policy_install.json"
         "License.txt")
 noextract=("${pkgname}-${pkgver}.xpi"
-"lpchrome-${_chromever}.crx")
-sha256sums=('927a56376751e75e6bbfb29eec6a13defd06e991cfa79116bf2e8aaadb0b2c9d'
+           "lpchrome-${_chromever}.crx")
+sha256sums=('66a4b391e0cea5b0785967da19ab091c421393399d7c8e93631a0a3ba05c7dd8'
             '47937f48972b73f024a1e616547405d41e368cb3756f97958423d20d2196762d'
             'adb0e91f8d212d34dbb85db0b11738fe36db1a741ad5674d7070c4019a9fc75e'
             'e8eb3b585809d6644807727c5bd0a74ead96dd2c5a7e6d2ce29e0b6ea28b9e59'
