@@ -2,7 +2,7 @@
 # Maintainer: Quan Guo <guotsuan@gmail.com>
 
 pkgname=fpp-git
-pkgver=0.7.1.r468
+pkgver=0.7.2.r495
 pkgrel=1
 pkgdesc='Facebook PathPicker is a simple command line tool that solves the perpetual problem of selecting files out of bash output.'
 url='https://github.com/facebook/PathPicker'
