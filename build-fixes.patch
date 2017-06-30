@@ -1,0 +1,28 @@
+--- scangearmp-source-1.60-1/scangearmp/autogen.sh	2010-02-17 02:22:34.000000000 +0000
++++ scangearmp-source-1.60-1.new/scangearmp/autogen.sh	2017-03-31 22:27:27.366847243 +0100
+@@ -136,7 +136,7 @@
+       fi
+       echo "Running aclocal $aclocalinclude ..."
+       aclocal $aclocalinclude
+-      if grep "^AM_CONFIG_HEADER" configure.in >/dev/null; then
++      if grep "^AC_CONFIG_HEADERS" configure.in >/dev/null; then
+ 	echo "Running autoheader..."
+ 	autoheader
+       fi
+--- scangearmp-source-1.60-1/scangearmp/configure.in	2010-02-17 02:22:34.000000000 +0000
++++ scangearmp-source-1.60-1.new/scangearmp/configure.in	2017-03-31 22:38:28.210219752 +0100
+@@ -13,13 +13,12 @@
+ AC_SUBST(enable_libpath)
+ 
+ AM_INIT_AUTOMAKE(scangearmp, 1.60-1)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AC_PROG_LIBTOOL
+ AM_MAINTAINER_MODE
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AC_PROG_RANLIB
+ 

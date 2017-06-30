@@ -1,0 +1,30 @@
+pkgbase = scangearmp-mg8100series
+	pkgdesc = Canon IJ Scanner Driver (for mg8100 series)
+	pkgver = 1.60
+	pkgrel = 1
+	url = http://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mg_series/pixma_mg8150.aspx?type=drivers'&'os=LINUX
+	install = scangearmp-mg8100series.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = autoconf>=2.13
+	makedepends = automake>=1.6
+	makedepends = findutils
+	makedepends = gawk
+	makedepends = gimp>=2.0
+	depends = sane
+	depends = gtk2
+	depends = libpng
+	optdepends = xsane
+	conflicts = scangearmp-common
+	source = http://files.canon-europe.com/files/soft40247/Software/scangearmp-source-1.60-1.tar.gz
+	source = build-fixes.patch
+	source = scanfile.patch
+	source = rules.patch
+	sha256sums = fab6b764409f17a674ba31e45a515353cdf027562b2daee96c316bb86d6d6340
+	sha256sums = eeec0bbba93e054842bf1375502192c368cf92e86b6bcee2d114adeb14bbf8b3
+	sha256sums = d1b16bab6ac1f235fb42b14fff9e78a1bd395ddda56d21a8f13aabb0c4e8e83c
+	sha256sums = 55a40593e79e85edc2365440097971f7b61748a3aa3d12a8365cea093da6af23
+
+pkgname = scangearmp-mg8100series
+

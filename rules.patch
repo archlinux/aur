@@ -1,0 +1,100 @@
+--- scangearmp-source-1.60-1/scangearmp/etc/80-canon_mfp.rules	2010-02-17 02:22:35.000000000 +0000
++++ scangearmp-source-1.60-1.new/scangearmp/etc/80-canon_mfp.rules	2017-04-19 21:23:36.502478965 +0100
+@@ -7,68 +7,68 @@
+ 
+ LABEL="canon_mfp_start"
+ # Canon MP160
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1714", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1714", MODE="666"
+ # Canon MP510
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1717", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1717", MODE="666"
+ # Canon MP600
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1718", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1718", MODE="666"
+ 
+ # Canon MP140 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="172b", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="172b", MODE="666"
+ # Canon MP210 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1721", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1721", MODE="666"
+ # Canon MP520 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1724", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1724", MODE="666"
+ # Canon MP610 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1725", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1725", MODE="666"
+ 
+ #MP190 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1734", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1734", MODE="666"
+ #MP240 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1732", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1732", MODE="666"
+ #MP540 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1730", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1730", MODE="666"
+ #MP630 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="172e", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="172e", MODE="666"
+ 
+ #MX320 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1736", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1736", MODE="666"
+ #MX330 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1737", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1737", MODE="666"
+ #MX860 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1735", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1735", MODE="666"
+ 
+ #MP250 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173a", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="173a", MODE="666"
+ #MP270 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173b", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="173b", MODE="666"
+ #MP490 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173c", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="173c", MODE="666"
+ #MP550 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173d", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="173d", MODE="666"
+ #MP560 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173e", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="173e", MODE="666"
+ #MP640 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="173f", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="173f", MODE="666"
+ 
+ #MX340 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1741", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1741", MODE="666"
+ #MX350 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1742", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1742", MODE="666"
+ #MX870 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1743", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1743", MODE="666"
+ 
+ #MP280 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1746", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1746", MODE="666"
+ #MP495 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1747", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1747", MODE="666"
+ #MG5100 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1748", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1748", MODE="666"
+ #MG5200 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="1749", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="1749", MODE="666"
+ #MG6100 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="174a", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="174a", MODE="666"
+ #MG8100 series
+-SYSFS{idVendor}=="04a9", SYSFS{idProduct}=="174b", MODE="666"
++ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="174b", MODE="666"
+ 
+ LABEL="canon_mfp_end"
