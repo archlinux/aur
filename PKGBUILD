@@ -3,8 +3,8 @@
 
 pkgname=urbanterror-data
 pkgver=4.3.2
-pkgrel=2
-epoch=2
+pkgrel=1
+epoch=1
 pkgdesc="A team-based tactical shooter based on the Quake 3 Engine (data files)"
 arch=('any')
 url="http://www.urbanterror.info"
