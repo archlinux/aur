@@ -1,35 +1,27 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libmysofa
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc='C library to read HRTFs if they are stored in the AES69-2015 SOFA format'
 arch=('i686' 'x86_64')
 url='https://hoene.github.io/libmysofa/'
-license=('APACHE')
-makedepends=(
-    # official repositories:
-        'cmake'
-    # AUR:
-        'libresample' 'bcunit-cunit-compat'
-)
+license=('BSD')
+depends=('glibc' 'zlib')
+makedepends=('cmake')
 conflicts=('libmysofa-git')
-source=("${pkgname}-${pkgver}.tar.gz"::'https://github.com/hoene/libmysofa/archive/v0,.4.tar.gz')
-noextract=("${pkgname}-${pkgver}.tar.gz")
-options=('staticlibs')
-sha256sums=('db843d03361839a523984db3ccdf03426d636b4637fc040001c7a6aabaafee98')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/hoene/libmysofa/archive/v${pkgver}.tar.gz")
+sha256sums=('c4ffef39c24b14ea91f5631058adfd192e491e2d5c48bf7f5678e6fb02daa814')
 
 build() {
-    # extract sources (version 0.4 has wrongly typed characters in filename)
-    mkdir -p "${pkgname}-${pkgver}"
-    cd "${pkgname}-${pkgver}"
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -s'|[^/]*/||'
-    
-    cd build
+    cd "${pkgname}-${pkgver}/build"
     cmake \
-        -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_COLOR_MAKEFILE:BOOL=ON \
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DBUILD_SHARED_LIBS:BOOL='ON' \
+        -DBUILD_TESTS:BOOL='OFF' \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -Wno-dev \
         ..
     make all
 }
@@ -41,7 +33,7 @@ package() {
     
     # library
     cd "${srcdir}/${pkgname}-${pkgver}/build/src"
-    install -D -m644 libmysofa.a "${pkgdir}/usr/lib/libmysofa.a"
+    install -D -m755 libmysofa.so "${pkgdir}/usr/lib/libmysofa.so"
     
     # license
     cd "${srcdir}/${pkgname}-${pkgver}"
