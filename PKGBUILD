@@ -16,11 +16,11 @@
 #
 #
 pkgname="spl-linux-lts-git"
-pkgver=0.7.0_rc4_r4_gac48361_4.9.34_1
+pkgver=0.7.0_rc4_r5_g7a35f2b_4.9.35_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
-depends=("spl-utils-linux-lts-git" "kmod" "linux-lts=4.9.34-1")
-makedepends=("linux-lts-headers=4.9.34-1" "git")
+depends=("spl-utils-linux-lts-git" "kmod" "linux-lts=4.9.35-1")
+makedepends=("linux-lts-headers=4.9.35-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
@@ -35,8 +35,8 @@ build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.9.34-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.34-1-lts/build \
+                --with-linux=/usr/lib/modules/4.9.35-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.35-1-lts/build \
                 --with-config=kernel
     make
 }
@@ -46,5 +46,5 @@ package() {
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.34-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.35-1-lts/Module.symvers
 }
