@@ -1,6 +1,6 @@
 pkgbase = kile-git
 	pkgdesc = A TeX/LaTeX frontend for KDE
-	pkgver = v2.1.r662.g6a3e6a6e
+	pkgver = v2.1.r673.g6c824b81
 	pkgrel = 1
 	url = http://kile.sourceforge.net/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = kile-git
 	depends = texlive-core
 	depends = okular>16.12.0
 	depends = ktexteditor
+	depends = khtml
 	provides = kile
 	conflicts = kile
 	replaces = kile-svn
