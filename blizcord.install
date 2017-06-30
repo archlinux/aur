@@ -1,13 +1,8 @@
 post_install() {
-    chmod +x /opt/Blizcord/Blizcord.sh
     chmod +x /usr/bin/blizcord
     chmod +x /usr/bin/blizcord-gui
 }
 
 post_upgrade() {
     post_install
-}
-
-post_remove() {
-    rm -r /opt/Blizcord/
 }

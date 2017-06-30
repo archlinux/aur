@@ -5,6 +5,6 @@ RC=1
 
 while [ $RC -eq 1 ]
 do
-  ./Blizcord.sh --gui
+  java -jar Blizcord.exe --disable-update-checker --gui
   RC=$?
 done
