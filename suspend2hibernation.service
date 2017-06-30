@@ -1,0 +1,28 @@
+[Unit]
+Description=Suspend to hibernation / delayed hibernation
+Documentation=https://bbs.archlinux.org/viewtopic.php?pid=1420279#p1420279
+Documentation=https://wiki.archlinux.org/index.php/Power_management
+Before=suspend.target
+Conflicts=hibernate.target hybrid-sleep.target
+StopWhenUnneeded=true
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment="WAKEALARM=/sys/class/rtc/rtc0/wakealarm"
+Environment="SLEEPLENGTH=+20minute"
+ExecStart=-/usr/bin/sh -c 'echo -n "alarm set for "; date +%%s -d$SLEEPLENGTH | tee $WAKEALARM'
+ExecStop=-/usr/bin/sh -c '\
+  alarm=$(cat $WAKEALARM); \
+  now=$(date +%%s); \
+  if [ -z "$alarm" ] || [ "$now" -ge "$alarm" ]; then \
+     echo "hibernate triggered"; \
+     systemctl hibernate; \
+  else \
+     echo "normal wakeup"; \
+  fi; \
+  echo 0 > $WAKEALARM; \
+'
+
+[Install]
+WantedBy=sleep.target

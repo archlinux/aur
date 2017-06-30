@@ -1,0 +1,13 @@
+pkgbase = suspend2hibernation
+	pkgdesc = Enables delayed hibernation. After 20 minutes of sleep, your device automatically wakes up and enters hibernation to prevent too much battery drain through extended sleep state.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	depends = systemd
+	source = suspend2hibernation.install
+	source = suspend2hibernation.service
+	sha1sums = 88fcb3252d36e754b1fc3c03fb793c223ccdcfd8
+	sha1sums = 04bba93122b2ca2c3a3100333cf1b7d6c24bca01
+
+pkgname = suspend2hibernation
+
