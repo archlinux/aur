@@ -1,0 +1,16 @@
+pkgbase = dotnet-host
+	pkgdesc = A command line utility for building, testing, packaging and running .NET Core applications and libraries
+	pkgver = 2.0.0_preview2_25407_01
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	conflicts = dotnet-bin
+	conflicts = dotnet-cli
+	replaces = dotnet-cli
+	options = staticlibs
+	source = https://download.microsoft.com/download/8/5/8/85896F6E-C7F5-4ECA-ADF7-CCE8EFAD9AA6/dotnet-runtime-2.0.0-preview2-25407-01-linux-x64.tar.gz
+	sha256sums = 1fe615f179fef606b97d43ce07a491da9067716ff594f929b82d8772d461c027
+
+pkgname = dotnet-host
+
