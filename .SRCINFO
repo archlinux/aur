@@ -1,7 +1,7 @@
 pkgbase = vim-razer-git
-	pkgdesc = vim + razer RGB keyboards
-	pkgver = 1.0.r0.g0739038
-	pkgrel = 1
+	pkgdesc = Makes RGB Razer keyboards change key colors to complement what you do in vim.
+	pkgver = 1.0
+	pkgrel = 3
 	url = https://github.com/DanManN/vim-razer
 	arch = any
 	groups = vim-plugins
