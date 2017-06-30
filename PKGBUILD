@@ -107,7 +107,6 @@ package_eclipse-common-devel() {
   pkgdesc+=" (common files) Development Version"
   depends=("java-environment>=8" webkit2gtk unzip)
   provides=("eclipse-common=$pkgver-$pkgrel" "eclipse-common-devel=$pkgver-$pkgrel")
-  install=eclipse.install
 
   install -d "$pkgdir/opt"
   cp -a eclipse-common "$pkgdir/opt/eclipse-devel"
