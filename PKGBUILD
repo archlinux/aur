@@ -1,7 +1,7 @@
 # Maintainer: Heorhi Valakhanovich <valahanovich@tut.by>
 
 pkgname=('dlangide-git')
-pkgver=r556.3bc212e
+pkgver=r601.3b869a2
 pkgrel=1
 pkgdesc="D language IDE based on DlangUI "
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
 	cd $srcdir/dlangide
-	dub build
+	dub build --build=release
 }
 
 package() {
