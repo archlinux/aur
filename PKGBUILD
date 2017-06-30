@@ -2,13 +2,13 @@
 
 pkgname=dotnet
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package to pull in the latest stable dotnet package"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
 groups=()
-depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'libcurl-openssl-1.0')
+depends=('dotnet-runtime-1.1')
 conflicts=('dotnet-bin')
 replaces=('dotnet-cli')
 
