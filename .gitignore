@@ -6,3 +6,4 @@ linux.install.pkg
 *.src.tar.gz
 *.log
 *.part
+*.sig
