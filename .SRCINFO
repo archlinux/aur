@@ -1,0 +1,26 @@
+pkgbase = ethminer-ocl-git
+	pkgdesc = Ethereum GPU miner, with roots in Genoil's cpp-ethereum fork. Pure OpenCl version.
+	pkgver = 0.11.0.0.20170701.7b678d8a4
+	pkgrel = 1
+	url = https://github.com/ethereum-mining/ethminer
+	arch = i686
+	arch = x86_64
+	groups = ethereum
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	makedepends = opencl-headers
+	depends = crypto++
+	depends = leveldb
+	depends = ocl-icd
+	optdepends = solidity: The Solidity Contract-Oriented Programming Language
+	provides = ethminer
+	conflicts = ethereum
+	conflicts = cpp-ethereum
+	replaces = ethereum-genoil-ocl-git
+	source = ethminer-ocl-git::git+https://github.com/ethereum-mining/ethminer.git
+	sha256sums = SKIP
+
+pkgname = ethminer-ocl-git
+
