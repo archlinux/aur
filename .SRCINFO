@@ -1,0 +1,13 @@
+pkgbase = bullsandcows
+	pkgdesc = A simple implementation of the classic 'Bulls and Cows' game written in Python
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/hadenodom/games/tree/master/Bulls%20and%20Cows
+	arch = any
+	license = MIT
+	depends = python3
+	source = bullsandcows::git+https://github.com/hadenodom/Bulls-and-Cows#branch=master
+	md5sums = SKIP
+
+pkgname = bullsandcows
+
