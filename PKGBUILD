@@ -1,7 +1,7 @@
-# Maintainer: Sum01 https://github.com/sum01
+# Maintainer: sum01 <sum01@protonmail.com>
 pkgname=('vcash-electron')
 pkgver=0.33.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-platform and multi-node GUI for Vcash."
 arch=('i686' 'x86_64')
 url="https://github.com/openvcash/vcash-electron"
@@ -11,8 +11,8 @@ makedepends=('npm' 'sed')
 optdepends=('vcash: the vcash daemon')
 source=("https://github.com/openvcash/vcash-electron/archive/v$pkgver.tar.gz"
 "vcash-electron.desktop")
-sha256sums=('8aa260e8129f245a67fb09c11d24a7f9a2c729ece2a361c5658946ac1e3d57ae'
-'304cb81792e2854b9c5e6faa4663b76eb2f6dcabb007789cc29aa5d3109c30c0')
+sha512sums=('52fb396ac0fc22b6c6ed3c3334b04c927a012df2bf6e9b40f30beaba44359a45081e036816d6c17afe34d6f1749cf81244ef7a766ed033e4220da72e626ad894'
+'339a50892e4c4af228e58471d185a9ff014a23efc3a1f45ac4b6880b25d9f1937bd9aa406979d7f21396856637e79d70c46320220786d43ae84dfdf3e6292c1b')
 prepare(){
 	sed -i '/"deb",/d' "$srcdir/$pkgname-$pkgver/package.json"
 	sed -i 's/"zip"/"dir"/' "$srcdir/$pkgname-$pkgver/package.json"
