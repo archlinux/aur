@@ -9,20 +9,17 @@ arch=('i686' 'x86_64')
 url='https://github.com/calleerlandsson/pick'
 license=('MIT')
 depends=('ncurses')
-source=("https://github.com/calleerlandsson/pick/releases/download/v$pkgver/pick-$pkgver.tar.gz"{,.asc}
-        "pick-gcc7.patch")
+source=("https://github.com/calleerlandsson/pick/releases/download/v$pkgver/pick-$pkgver.tar.gz"{,.asc})
 validpgpkeys=('47B22252BF6914DF964BB50C24735DD835689C84') # Carl Olof Erlandsson
 sha256sums=('950531c56edc4be375fe4e89291caa807322b298143043e2e2963de34e96de15'
-            'SKIP'
-            'ac677ccf6c7d8bc5b4202248cfb180705403a1a39870417af9470e29bfb505cc')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 -i ../pick-gcc7.patch
-}
+            'SKIP')
 
 build() {
   cd $pkgname-$pkgver
+
+  # gcc7
+  CFLAGS+=' -Wimplicit-fallthrough=1'
+
   ./configure --prefix=/usr
   make
 }

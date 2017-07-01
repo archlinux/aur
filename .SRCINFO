@@ -9,11 +9,9 @@ pkgbase = pick
 	depends = ncurses
 	source = https://github.com/calleerlandsson/pick/releases/download/v1.7.0/pick-1.7.0.tar.gz
 	source = https://github.com/calleerlandsson/pick/releases/download/v1.7.0/pick-1.7.0.tar.gz.asc
-	source = pick-gcc7.patch
 	validpgpkeys = 47B22252BF6914DF964BB50C24735DD835689C84
 	sha256sums = 950531c56edc4be375fe4e89291caa807322b298143043e2e2963de34e96de15
 	sha256sums = SKIP
-	sha256sums = ac677ccf6c7d8bc5b4202248cfb180705403a1a39870417af9470e29bfb505cc
 
 pkgname = pick
 
