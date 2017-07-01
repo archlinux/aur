@@ -3,8 +3,8 @@
 # Contributor: GordonGR <ntheo1979@gmail.com>
 
 pkgname=lib32-libmodplug
-pkgver=0.8.8.5
-pkgrel=6
+pkgver=0.8.9.0
+pkgrel=1
 pkgdesc='A MOD playing library'
 arch=('x86_64')
 url='http://modplug-xmms.sourceforge.net/'
@@ -12,7 +12,7 @@ license=('custom')
 depends=('lib32-gcc-libs' 'lib32-glibc' 'libmodplug')
 makedepends=('gcc-multilib')
 source=("http://downloads.sourceforge.net/project/modplug-xmms/libmodplug/${pkgver}/libmodplug-${pkgver}.tar.gz")
-sha256sums=('77462d12ee99476c8645cb5511363e3906b88b33a6b54362b4dbc0f39aa2daad')
+sha256sums=('457ca5a6c179656d66c01505c0d95fafaead4329b9dbaa0f997d00a3508ad9de')
 
 build() {
   cd libmodplug-${pkgver}
