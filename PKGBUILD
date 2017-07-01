@@ -9,16 +9,16 @@ arch=('i686' 'x86_64')
 url="http://www.dockapps.net/wmload"
 license=('GPL')
 depends=('libxpm')
-source=("http://www.dockapps.net/download/wmload-$pkgver.tar.gz")
-sha256sums=('efaf701799ca187e4f45ac11240db9461253d4b34158d50d2fdb6693a8ddb6b1')
+source=("dockapps-$pkgname-$pkgver.tar.gz::https://github.com/d-torrance/dockapps/archive/wmload-$pkgver.tar.gz")
+sha256sums=('2471ff43465908c1dde098818a7d54504584f7f2c90b34707c64b4faa95b5900')
 
 build() {
-  cd dockapps-dc20366
+  cd dockapps-$pkgname-$pkgver/$pkgname
   make
 }
 
 package() {
-  cd dockapps-dc20366
+  cd dockapps-$pkgname-$pkgver/$pkgname
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 README "$pkgdir"/usr/share/doc/wmload/README
 }
