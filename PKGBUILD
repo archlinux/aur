@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab2
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
 url="http://www.openhab.org/"
@@ -22,11 +22,11 @@ source=("openhab-${pkgver}.tar.gz::https://bintray.com/openhab/mvn/download_file
 
 noextract=("openhab-${pkgver}.tar.gz")
 
-sha256sums=('b40ba9bae69326cbb36af87e7f335bb90af02b11bce638a7c3838aed64f3ce8b'
+sha256sums=('19a5f7dd5a130392b79bcd7348c0b1e54bf4d8a4d0cf4398b56a561f15e213f1'
   	'c1774dc42bbc1b166fc3823351c1d73edf1a40dae628aa33400f585cdd6487ad'
 	'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
 	'a5ef3d048ab20e73bbb2684fcb3a8b64f9fd1d437bde54b7e51b379d1dacd79e'
-	'd2e5481eebc6da6f612699c6dcbd9b32f06cf672a17b95dbdd4f3bbdc04d5e23')
+	'188ae4cc4e519fbbf5c370cf39bc2a7788d5ab2aab5d766e2adf1b84aeedd9e9')
 
 prepare() {
 	mkdir ${srcdir}/openhab2
