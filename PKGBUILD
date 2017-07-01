@@ -5,7 +5,7 @@ pkgver=0.1
 pkgrel=1
 pkgdesc="A simple implementation of the classic 'Bulls and Cows' game written in Python"
 arch=('any')
-url="https://github.com/hadenodom/games/tree/master/Bulls%20and%20Cows"
+url="https://github.com/hadenodom/Bulls-and-Cows"
 license=('MIT')
 depends=('python3')
 
