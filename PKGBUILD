@@ -3,23 +3,23 @@
 
 pkgname=perl-file-homedir
 _cpanname=File-HomeDir
-pkgver=1.00
-pkgrel=3
+pkgver=1.002
+pkgrel=1
 pkgdesc="Find your home and other directories on any platform"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-file-which')
-makedepends=()
+makedepends=('perl-module-install')
 url="https://metacpan.org/release/$_cpanname"
-source=("http://cpan.metacpan.org/authors/id/A/AD/ADAMK/$_cpanname-$pkgver.tar.gz")
-md5sums=('aa290cab9db52e2f76280fd1febf794e')
+source=("https://cpan.metacpan.org/authors/id/R/RE/REHSACK/$_cpanname-$pkgver.tar.gz")
+md5sums=('1e999956661fbee165b088eedb5fee3c')
 
 build() {
   cd $_cpanname-$pkgver
 
   # why isn't makepkg doing this?
-  export -n PERL_MM_OPT PERL5LIB pERL_LOCAL_LIB_ROOT
+  export -n PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
 
   # install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 \
