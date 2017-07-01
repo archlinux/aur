@@ -16,15 +16,15 @@ makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface'
             'sqlite: SQLite database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz"
-        "https://trac.osgeo.org/grass/raw-attachment/ticket/3331/ctypesgencore_preprocessor_fix.diff")
+        "changeset_71219.diff::https://trac.osgeo.org/grass/changeset/71219?format=diff&new=71219")
 md5sums=('5c858c718d40a4f3e82741e60c9f7b97'
-         '2b70a7ddece3563dc5cf4b95b5b45665')
+         '107f39c90d40f566edff5095cc1264a1')
 
 prepare() {
   cd $pkgname-$pkgver
 
   # GCC7 patch
-  patch -Np0 -i ../ctypesgencore_preprocessor_fix.diff
+  patch -Np4 -i ../changeset_71219.diff
 
   # Change everything to use python2
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
