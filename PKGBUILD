@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webview
-_qtver=5.9.0
+_qtver=5.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('1ca7f10aa42b9fb2e2c49237791b24aef1c54c3a0c78617dce30bdea7dd3d22b')
+sha256sums=('d6f77bfa60033561d123b1224679178c956319549666e84d4736c5e109ccbd62')
 
 prepare() {
   mkdir -p build
