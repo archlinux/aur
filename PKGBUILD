@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-cvs
-pkgver=5.3r20170630
+pkgver=5.3r20170701
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
@@ -14,8 +14,6 @@ makedepends=('cvs' 'emacs' 'texlive-core' 'texlive-latexextra' 'qt5-base' 'qt5-t
 options=('!makeflags')
 conflicts=('gnuplot')
 provides=('gnuplot')
-source=('docs.patch')
-md5sums=('bae9bd4ee96f75b64760a97786735120')
 _cvsmod="gnuplot"
 _cvsroot=":pserver:anonymous:@gnuplot.cvs.sourceforge.net:/cvsroot/$_cvsmod"
 
@@ -64,7 +62,7 @@ build() {
 	 --with-qt=qt5 
 
   LANG=C make pkglibexecdir=/usr/bin
-  patch -Np1 < $srcdir/docs.patch
+
   cd docs
   LANG=C make info
 }
