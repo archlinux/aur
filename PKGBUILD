@@ -1,12 +1,12 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 pkgname=neovim-remote
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Support --remote and friends for Neovim"
 arch=(any)
 url="https://github.com/mhinz/neovim-remote"
 license=('GPL')
-depends=('python-neovim')
+depends=('python-neovim' 'python-psutil')
 source=("git+https://github.com/mhinz/neovim-remote.git#tag=v${pkgver}")
 sha1sums=('SKIP')
 
