@@ -1,7 +1,7 @@
 pkgbase = blizcord
 	pkgdesc = A simple Discord bot which can play music from YouTube or local files
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bleuzen/Blizcord/
 	install = blizcord.install
 	arch = any
