@@ -1,6 +1,6 @@
 pkgbase = python-graphviz
 	pkgdesc = Simple Python interface for Graphviz.
-	pkgver = 0.7.1
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/xflr6/graphviz
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-graphviz
 	makedepends = python2-setuptools
 	depends = graphviz
 	options = !emptydirs
-	source = https://github.com/xflr6/graphviz/archive/0.7.1.tar.gz
-	sha256sums = ddf783e5e75a9621950f1492e253d8502c732c8bdffc7a30295a5d046e1d4056
+	source = https://github.com/xflr6/graphviz/archive/0.8.tar.gz
+	sha256sums = f4e4c96a52848c531557b2fd6f45aa2e588ef8b32c40949bd876362f0bf2187f
 
 pkgname = python-graphviz
 
