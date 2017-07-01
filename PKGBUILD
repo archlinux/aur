@@ -11,7 +11,7 @@
 set -u
 _pkgname='pom-ng'
 pkgname="${_pkgname}-git"
-pkgver=0.0.18.r53.g497861c
+pkgver=0.0.18.r83.g6bd33ac
 pkgrel=1
 pkgdesc='Packet-o-Matic real time network packet capture forensic tool'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _srcdir="${pkgname^^}"
 _giturl="https://github.com/gmsoft-tuxicoman/${_pkgname}"
-_verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
+_verwatch=("${_giturl}/releases.atom" '\s\+<title>v\([^<]\+\).*' 'f') # RSS
 source=("${_srcdir}::${_giturl//https:/git:}.git")
 sha256sums=('SKIP')
 
@@ -47,6 +47,8 @@ prepare() {
   set -u
   cd "${_srcdir}"
   autoreconf -f -i
+  lua_CFLAGS="$(pkg-config --cflags lua51)" \
+  lua_LIBS="$(pkg-config --libs lua51)" \
   ./configure --prefix='/usr'
   #cp -p '/usr/include/libexif/exif-data.h' .
   set +u
@@ -55,14 +57,19 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j "$(nproc)"
+  if [ ! -z "${MAKEFLAGS:-}" ] && [ "${MAKEFLAGS}" != "${MAKEFLAGS//-j/}" ]; then
+    nice make -s
+  else
+    local _nproc="$(lscpu -p | grep '^[0-9]' | cut -d',' -f2-3 | sort -u | wc -l)"; _nproc=$((_nproc>4?4:_nproc))
+    nice make -s -j "${_nproc}"
+  fi
   set +u
 }
 
 package() {
   set -u
   cd "${_srcdir}"
-  make DESTDIR="${pkgdir}" install
+  make -j1 DESTDIR="${pkgdir}" install
   install -d "${pkgdir}/usr/share/${_pkgname}/addons"
   set +u
 }
