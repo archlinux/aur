@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-_pkgver=2.1.1
+_pkgver=2.1.2
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -18,7 +18,7 @@ backup=('etc/dnf/plugins/debuginfo-install.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('11c557390007dd7e95cd6b84f442205d')
+md5sums=('0ed39b15a99647e721f81a31f99b2fd4')
 
 prepare() {
 	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
