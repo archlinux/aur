@@ -1,0 +1,19 @@
+diff -aru a/build.js b/build.js
+--- a/build.js	2017-07-01 13:02:22.299833000 +0430
++++ b/build.js	2017-07-01 13:33:22.375616961 +0430
+@@ -84,7 +84,7 @@
+ });
+ 
+ // Get extension path.
+-const installationDirectory = (systemFlag ? "/usr/" : "~/.") + "local/share/gnome-shell/extensions/" + uuid;
++const installationDirectory = process.env.PWD + "/pkg/usr/share/gnome-shell/extensions/" + uuid;
+ 
+ console.log(`Removing '${installationDirectory}' if it exists.`);
+ ChildProcess.execSync(`rm -rf ${installationDirectory}`);
+@@ -147,4 +147,4 @@
+ // TODO: May want to restart gnome-shell? (gnome-shell --replace)
+ console.log("To complete installation, restart gnome-shell by pressing Alt+F2, typing 'r', and pressing 'Enter'.");
+ 
+-console.log("Done!");
+\ No newline at end of file
++console.log("Done!");
