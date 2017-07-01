@@ -1,8 +1,8 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libbluray
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
 url='http://www.videolan.org/developers/libbluray.html'
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 #makedepends=('apache-ant' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 #optdepends=('java-environment: BD-J library')
 source=("ftp://ftp.videolan.org/pub/videolan/libbluray/${pkgver}/libbluray-${pkgver}.tar.bz2")
-sha256sums=('f7e3add335c7bbef45824fcd2249a9bf293868598c13f8479352c44ec95374cc')
+sha256sums=('0f9f9a1db2f48cafc70ed2596ff3594b597e2027408f5f2be6191c245d67853a')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -21,7 +21,7 @@ build() {
     mkdir -p ${srcdir}/libbluray-${pkgver}/build-${_arch} && cd ${srcdir}/libbluray-${pkgver}/build-${_arch}
 
     ${_arch}-configure \
-      --disable-bdjava
+      --disable-bdjava-jar
     make
   done
 }
