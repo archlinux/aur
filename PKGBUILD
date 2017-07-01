@@ -4,7 +4,7 @@
 pkgname=waterfox-kde-git
 _pkgname=Waterfox
 pkgver=54.0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -24,7 +24,8 @@ conflicts=('waterfox')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=53443ffb496a
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-source=("waterfox-$pkgver.source.tar.gz::https://github.com/hawkeye116477/Waterfox/archive/v$pkgver.tar.gz"
+_commit=f60534e75859c8bf4cbc16cdbc63958795e6842b
+source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_commit.tar.gz"
         "waterfox.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.desktop"
         waterfox-install-dir.patch 
         no-crmf.diff
@@ -48,7 +49,7 @@ prepare() {
   sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde.patch
   sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde.patch
   
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$_commit
   patch -Np1 -i ../waterfox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
@@ -157,13 +158,13 @@ END
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$_commit
   export PATH="$srcdir/path:$PATH"
     make -f client.mk build
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$_commit
 
   cp "$srcdir/kde.js" obj-$CARCH-pc-linux-gnu/dist/bin/defaults/pref
 
@@ -235,7 +236,7 @@ END
   ln -srf "$pkgdir/usr/bin/waterfox" \
     "$pkgdir/opt/waterfox/waterfox-bin"
 }
-sha256sums=('7bee306e271428d9a2bef35b061b08405433674a0f91e61f3e288400a53c7e53'
+sha256sums=('2ba44287e84c9785cd5143600ec52a129b339734dde4cf50e995a447b4893ba4'
             '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
