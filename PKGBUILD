@@ -4,7 +4,7 @@
 
 pkgname=flex-git
 pkgver=2.6.4.20.g8bd14f1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for generating text-scanning programs - from git"
 arch=('i686' 'x86_64')
 url="https://github.com/westes/flex"
@@ -12,7 +12,7 @@ license=('custom')
 conflicts=('flex')
 provides=('flex')
 depends=('glibc' 'm4' 'sh')
-makedepends=('help2man')
+makedepends=('help2man' 'git')
 source=('git+https://github.com/westes/flex.git')
 md5sums=('SKIP')
 
