@@ -1,7 +1,7 @@
 pkgbase = goffice0.8
 	pkgdesc = A library of document-centric objects and utilities built on top of GLib and Gtk+
 	pkgver = 0.8.17
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gnome.org
 	arch = i686
 	arch = x86_64

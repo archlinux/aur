@@ -3,7 +3,7 @@
 
 pkgname=goffice0.8
 pkgver=0.8.17
-pkgrel=3
+pkgrel=4
 pkgdesc="A library of document-centric objects and utilities built on top of GLib and Gtk+"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org"
@@ -23,7 +23,7 @@ build() {
   autoreconf -fi
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static
-  make
+  make CFLAGS="${CFLAGS} -Wno-error=format-nonliteral"
 }
 
 package() {
