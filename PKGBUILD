@@ -34,13 +34,12 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding sirocco
   mcqd coxeter3 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        env.patch cython-sys-path.patch package.patch latte-count.patch
+        env.patch package.patch latte-count.patch
         jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch r-no-readline.patch fes02.patch
         create_extension.patch include_dirs_from_externs.patch
         sagemath-ecl-no-sigfpe.patch)
 sha256sums=('SKIP'
             'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
-            '4a411b6253f54e610523440acf86526390a09b05ebff10ec0008fa046ee1ac66'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
             'c6836783251d94c00f0229c1e671de86c58c6c6fb0f6959725317817abc64ca8'
             '889b65598d2a15e73eb482f543ec9b28d8992eeb57b07883c2e9627dfee15a9b'
@@ -69,8 +68,6 @@ prepare(){
   patch -p0 -i ../test-optional.patch
 # set jupyter path
   patch -p0 -i ../jupyter-path.patch
-# search system paths for cython includes
-  patch -p1 -i ../cython-sys-path.patch
 # fix freezes in R interface with readline 7 (Debian)
   patch -p1 -i ../r-no-readline.patch
 # use correct latte-count binary name
