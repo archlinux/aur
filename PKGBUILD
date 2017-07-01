@@ -1,6 +1,6 @@
 pkgname=blocks-phonepi
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen block/unblock applications for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
@@ -11,13 +11,11 @@ source=(git://github.com/PhonePi/phonepi.git)
 sha256sums=("SKIP")
 
 build() {
-	cd "$srcdir/phonepi/src/block-apps/block"
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr
-	make
-
 	cd "$srcdir/phonepi/src/block-apps/unblock"
 	git submodule init
 	git submodule update
+
+	cd "$srcdir/phonepi/src/block-apps"
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
