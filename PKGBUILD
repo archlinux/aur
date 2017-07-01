@@ -1,5 +1,5 @@
 # Upstream: RuneScape Linux <noreply@jagex.com>
-# Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
+# Contributor: Ivan Puntiy <ivan.puntiy-at-gmail>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher
