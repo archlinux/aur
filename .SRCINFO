@@ -1,0 +1,14 @@
+pkgbase = geo-bash
+	pkgdesc = A simple Bash utility for wan, lan, router, dns, mac, and ip geodata, with clean output for piping
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/jakewmeyer/Geo
+	arch = any
+	license = MIT
+	depends = bash
+	depends = dnsutils
+	source = https://github.com/jakewmeyer/Geo/archive/v0.1.9.tar.gz
+	sha256sums = 738a3c141c5399b8af108a58b7728e7627e4e8d1a11cbc84c8a50656735c92a2
+
+pkgname = geo-bash
+
