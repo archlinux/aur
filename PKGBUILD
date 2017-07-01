@@ -15,8 +15,6 @@ depends=(
   'libmicrohttpd'
   'miniupnpc'
   'opencl-headers'
-  'libjson-rpc-cpp-git'
-  'ethminer-ocl-git'
 )
 makedepends=(
   'gcc'
