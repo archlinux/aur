@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 8.0.beta11.r0.g61fa91ff0b
+	pkgver = 8.0.rc0.r0.g7de256c24f
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = i686
@@ -161,4 +161,6 @@ pkgname = sagemath-jupyter-git
 	depends = python2-ipywidgets
 	depends = mathjax
 	optdepends = sage-notebook-exporter: convert flask notebooks to Jupyter
+	provides = sagemath-jupyter
+	conflicts = sagemath-jupyter
 

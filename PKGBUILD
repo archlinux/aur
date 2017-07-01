@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.0.beta11.r0.g61fa91ff0b
+pkgver=8.0.rc0.r0.g7de256c24f
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -159,6 +159,8 @@ package_sagemath-jupyter-git() {
   pkgdesc='Jupyter kernel for SageMath'
   depends=(sagemath python2-jupyter_client python2-ipywidgets mathjax)
   optdepends=('sage-notebook-exporter: convert flask notebooks to Jupyter')
+  conflicts=(sagemath-jupyter)
+  provides=(sagemath-jupyter)
 
   cd sage/src
 
