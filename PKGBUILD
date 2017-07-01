@@ -1,9 +1,9 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=kubernetes
-pkgver=1.6.6
+pkgver=1.7.0
 _contribver=0.7.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Container Cluster Manager for Docker"
 depends=('glibc' 'bash')
 makedepends=('go' 'rsync' 'go-bindata')
@@ -21,7 +21,7 @@ backup=('etc/kubernetes/apiserver'
 	'etc/kubernetes/proxy'
 	'etc/kubernetes/scheduler')
 install=kubernetes.install
-sha256sums=('13e9cd0753fd8227e1a8588af984005499bedb3916a594eab8d4e873387c464c'
+sha256sums=('0fe34180a4bb61384894616b1d348cc6350d1ebcbc071c67748864ffd2deb026'
             'ab36d4243baf8cd47aba94f22f4c41a2980cf2ffca51ccda28b1e7685f500282'
             'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
 
