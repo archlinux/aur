@@ -1,0 +1,44 @@
+From 269d3628b09e7ed339acc6d99092f3de9d6c0d2b Mon Sep 17 00:00:00 2001
+From: Valentin Vidic <Valentin.Vidic@CARNet.hr>
+Date: Thu, 29 Jun 2017 22:46:07 +0200
+Subject: [PATCH 2125/2125] Makefile: allow parallel builds
+
+Split SUBDIRS into groups that can be built in parallel,
+so that something like 'make -j8' now works correctly.
+---
+ Makefile | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9519a4e2..955fab9c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -20,13 +20,22 @@ CHKCONFIG_DEP = chkconfig
+ COMPILE_PY = 1
+ endif
+ 
+-SUBDIRS = include libtools-internal libo2dlm libo2cb libocfs2 fsck.ocfs2 mkfs.ocfs2 mounted.ocfs2 tunefs.ocfs2 debugfs.ocfs2 o2cb_ctl ocfs2_hb_ctl mount.ocfs2 ocfs2_controld o2image o2info o2monitor extras fswreck patches
++SUBDIRS1 = include
++SUBDIRS2 = libtools-internal libo2dlm libo2cb
++SUBDIRS3 = libocfs2
++SUBDIRS4 = fsck.ocfs2 mkfs.ocfs2 mounted.ocfs2 tunefs.ocfs2 debugfs.ocfs2 o2cb_ctl ocfs2_hb_ctl mount.ocfs2 ocfs2_controld o2image o2info o2monitor extras fswreck patches
+ 
+ ifdef BUILD_OCFS2CONSOLE
+-SUBDIRS += ocfs2console
++SUBDIRS4 += ocfs2console
+ endif
+ 
+-SUBDIRS += vendor
++SUBDIRS4 += vendor
++
++$(SUBDIRS2): $(SUBDIRS1)
++$(SUBDIRS3): $(SUBDIRS2)
++$(SUBDIRS4): $(SUBDIRS3)
++
++SUBDIRS = $(SUBDIRS1) $(SUBDIRS2) $(SUBDIRS3) $(SUBDIRS4)
+ 
+ PKGCONFIG_SOURCES =	\
+ 	o2cb.pc.in	\
+-- 
+2.13.2
+
