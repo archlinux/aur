@@ -2,7 +2,7 @@
 pkgname=('serious-engine-git')
 pkgver=r396.dce3915
 _srcname="Serious-Engine"
-pkgrel=2
+pkgrel=3
 pkgdesc="A game engine developed by Croteam for the classic Serious Sam games."
 arch=('i686' 'x86_64')
 url="https://github.com/ptitSeb/Serious-Engine"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('sdl2' 'python' 'bash')
 makedepends=('cmake' 'make' 'sed')
 source=("git+https://github.com/ptitSeb/Serious-Engine.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 pkgver(){
   cd "$srcdir/$_srcname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -18,10 +18,12 @@ pkgver(){
 prepare(){
   cd "$srcdir/$_srcname/Sources/"
   if [[ $CARCH = "i686" ]]; then
-      sed 's/cmake -DCMAKE_BUILD_TYPE=Debug/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Debug/g' build-linux32.sh > build-linux32-tfe.sh
+      sed -i 's/cmake -DCMAKE_BUILD_TYPE=Debug/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux32.sh
+      sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux32.sh > build-linux32-tfe.sh
       chmod 755 build-linux32-tfe.sh
   else
-    sed 's/cmake -DCMAKE_BUILD_TYPE=Debug/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Debug/g' build-linux64.sh > build-linux64-tfe.sh
+    sed -i 's/cmake -DCMAKE_BUILD_TYPE=Debug/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux64.sh
+    sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux64.sh > build-linux64-tfe.sh
     chmod 755 build-linux64-tfe.sh
   fi
 }
@@ -30,21 +32,21 @@ build(){
   if [[ $CARCH = "i686" ]]; then
     ./build-linux32.sh
     cp cmake-build/ssam ../Bin/
-    cp cmake-build/Debug/* ../Bin/Debug/
+    cp cmake-build/Debug/* ../Bin/
 
     rm -rf cmake-build
     ./build-linux32-tfe.sh
     cp cmake-build/ssam-tfe ../Bin/
-    cp cmake-build/Debug/* ../Bin/Debug/
+    cp cmake-build/Debug/* ../Bin/
   else
       ./build-linux64.sh
       cp cmake-build/ssam ../Bin/
-      cp cmake-build/Debug/* ../Bin/Debug/
+      cp cmake-build/Debug/* ../Bin/
 
       rm -rf cmake-build
       ./build-linux64-tfe.sh
       cp cmake-build/ssam-tfe ../Bin/
-      cp cmake-build/Debug/* ../Bin/Debug/
+      cp cmake-build/Debug/* ../Bin/
   fi
 }
 package(){
