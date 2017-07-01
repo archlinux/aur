@@ -1,0 +1,8 @@
+post_install() {
+  echo "==> Additional setup is required"
+  echo "  -> See http://wiki.navit-project.org/index.php/Configuration"
+  echo
+  echo "==> No maps are bundled with the install"
+  echo "  -> See http://wiki.navit-project.org/index.php/Maps"
+  echo
+}
