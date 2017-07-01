@@ -25,6 +25,7 @@ build() {
     -DGDCM_BUILD_TESTING:BOOL=OFF \
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DGDCM_BUILD_DOCBOOK_MANPAGES:BOOL=OFF \
+    -DGDCM_USE_SYSTEM_OPENJPEG:BOOL=ON \
     ../"$pkgname-$pkgver" 
     make
 }
