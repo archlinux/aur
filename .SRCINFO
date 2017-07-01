@@ -1,0 +1,15 @@
+pkgbase = aether-icons-git
+	pkgdesc = Aether icon set inspired by Kirigami and Material Design
+	pkgver = r
+	pkgrel = 1
+	url = https://kver.wordpress.com/2017/04/29/aether-icon-theme/
+	arch = any
+	license = CC BY-SA 3.0
+	provides = aether-icons
+	conflicts = aether-icons
+	conflicts = aether-icons-git
+	source = git://anongit.kde.org/scratch/kvermette/aether-icons.git
+	sha256sums = SKIP
+
+pkgname = aether-icons-git
+
