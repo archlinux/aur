@@ -1,7 +1,7 @@
 pkgbase = mroonga
 	pkgdesc = Fast fulltext search on MySQL(MariaDB and groonga bundled package).
 	pkgver = 7.04
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mroonga.org/
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = mroonga
 	source = mariadb.service
 	source = mariadb-post.sh
 	source = mariadb-tmpfile.conf
-	sha1sums = b00717483afa7ab6a90169610cf87643a4ef7100
+	sha1sums = 6976065891192430326a6d02e9351e6e46755c58
 	sha1sums = 4bc34244fc4b578c155c8cd569d952a97a476f10
 	sha1sums = 206e9f7ba5357027becc2491e0987442f684d63e
 	sha1sums = c2a86c745002923234f9d6d79b3b462d5ab55e8d
