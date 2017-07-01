@@ -10,7 +10,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
-makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
+makedepends=(xmlto docbook-xsl kmod inetutils bc libelf)
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}."{xz,sign}
