@@ -1,0 +1,18 @@
+pkgbase = weechat-eventc-git
+	pkgdesc = WeeChat plugin client for eventd http://weechat-eventc.eventd.org/
+	pkgver = bdbd5eb
+	pkgrel = 1
+	url = https://github.com/sardemff7/weechat-eventc
+	arch = any
+	license = GPL3
+	license = LGPL3
+	license = MIT
+	makedepends = git
+	depends = eventd
+	provides = weechat-eventc-git
+	conflicts = weechat-eventc
+	source = weechat-eventc::git+https://github.com/sardemff7/weechat-eventc.git#branch=master
+	sha256sums = SKIP
+
+pkgname = weechat-eventc-git
+
