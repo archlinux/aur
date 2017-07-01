@@ -3,7 +3,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-remoteobjects
-_qtver=5.9.0
+_qtver=5.9.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(i686 x86_64)
@@ -11,11 +11,12 @@ url='http://qt-project.org/'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Inter-process communication (IPC) module developed for Qt'
 depends=(qt5-base)
-makedepends=()
+makedepends=(qt5-declarative)
+optdepends=('qt5-declarative: QML bindings')
 groups=(qt qt5)
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d9f73293f41cef01a18098fc184dada4c4bd1821f487560505937daef5d90d39')
+sha256sums=('a04ef16017903050a4afefb64f1d6a88fadb3c9b3668b320d6dfc4fa1cc07c82')
 
 prepare() {
   mkdir -p build
