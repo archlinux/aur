@@ -1,18 +1,18 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mpage
 pkgver=2.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Print several pages on a single sheet of paper."
 url="http://www.mesa.nl/download.html"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc')
 source=("http://www.mesa.nl/pub/mpage/$pkgname-$pkgver.tgz")
-md5sums=('9287f30c9b077f7e47e4b632ef5448e8')
+md5sums=('8d94338445345a554fd3bc664d48525a')
 
 build() {
   cd $pkgname-$pkgver
-  make DESTDIR=/usr
+  make PREFIX=/usr
 }
 
 package() {
