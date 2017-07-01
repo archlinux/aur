@@ -1,0 +1,20 @@
+pkgbase = ttf-soutane
+	pkgdesc = Soutane TTF typeface
+	pkgver = 20150207
+	pkgrel = 1
+	url = http://www.webpagefonts.com/
+	arch = any
+	license = custom
+	source = http://www.webpagepublicity.com/free-fonts/s/Soutane%20Regular.ttf
+	source = http://www.webpagepublicity.com/free-fonts/s/Soutane%20Bold.ttf
+	source = http://www.webpagepublicity.com/free-fonts/s/Soutane%20Italic.ttf
+	source = http://www.webpagepublicity.com/free-fonts/s/Soutane%20Bold%20Italic.ttf
+	source = http://www.webpagepublicity.com/free-fonts/s/SoutaneBlack%20Regular.ttf
+	sha256sums = d28114931256495a45b96fc3a833bbba2169c84e7543a0d16367424e4b1faff3
+	sha256sums = ec923856a2f5c88ea667d5ac0d7c90cd60ffce538efe39182e13abd96b2de613
+	sha256sums = 44dc858666f5df9d726869413ea34f0298b8eedf5dd125fc394a7e0e612293d8
+	sha256sums = 0a4de3907dbda0eb487e9152d03d9aa69c1915620f666bd33ae3a0c2b1f1ae92
+	sha256sums = fc0f2e8c6ab17f510dcab260c2b8af041743646cb87689f155ff88222222ea38
+
+pkgname = ttf-soutane
+
