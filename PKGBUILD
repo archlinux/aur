@@ -3,7 +3,7 @@ _pkgname=pwntools
 
 pkgname="python2-${_pkgname}-git"
 pkgver='3.8.0beta0.r4.g08b31609'
-pkgrel=1
+pkgrel=2
 pkgdesc='The CTF framework used by Gallopsled in every CTF'
 arch=('any')
 url='http://pwntools.com/'
@@ -16,6 +16,9 @@ depends=('python2>=2.7'
          'python2-pyelftools'
          'python2-capstone'
          'python2-pyserial'
+         'python2-unicorn'
+         'python2-intervaltree'
+         'python2-pip'
          'python2-requests'
          'python2-psutil'
          'python2-tox'
