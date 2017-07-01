@@ -46,11 +46,6 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # security patches
-  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-larger-stack-guard-gap-between-vmas.patch"
-  patch -p1 < "${srcdir}/CVE-2017-1000364.mm-fix-new-crash-in-unmapped_area_topdown.patch"
-  patch -p1 < "${srcdir}/CVE-2017-1000364.fixup.allow-stack-to-grow-up-to-address-space-limit.patch"
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
