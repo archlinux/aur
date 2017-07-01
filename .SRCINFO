@@ -1,0 +1,13 @@
+pkgbase = i3langlayout
+	pkgdesc = i3 language layout manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Minizinger/i3langlayout-rs
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/Minizinger/i3langlayout-rs.git
+	sha256sums = SKIP
+
+pkgname = i3langlayout
+
