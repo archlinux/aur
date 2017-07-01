@@ -1,0 +1,21 @@
+pkgbase = beebem
+	pkgdesc = BBC Micro Emulator
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = http://beebem-unix.bbcmicro.com/
+	arch = x86_64
+	license = custom
+	makedepends = patch
+	depends = sdl
+	depends = gtk2
+	source = http://beebem-unix.bbcmicro.com/download/beebem-0.0.13.tar.gz
+	source = http://beebem-unix.bbcmicro.com/download/beebem-0.0.13_64bit.patch
+	source = http://beebem-unix.bbcmicro.com/download/beebem-0.0.13-keys.patch
+	source = http://beebem-unix.bbcmicro.com/download/beebem-0.0.13_menu_crash.patch
+	md5sums = 44e6edc5c3e5fca9a84e2cddc4bf4858
+	md5sums = fb4b26c4b0189dbf0407816314a42ec6
+	md5sums = 05d373f8c295039b62f9b48cc4dad9fa
+	md5sums = 32de835139acabb7b919c18a9ebad830
+
+pkgname = beebem
+
