@@ -1,5 +1,5 @@
-#Maintainer: Quentin Glidic <sardemff7@eventd.org>
-#Packager: teraflops <cprieto.ortiz@gmail.com>
+# Maintainer: Quentin Glidic <sardemff7@eventd.org>
+# Packager: teraflops <cprieto.ortiz@gmail.com>
 
 pkgname=weechat-eventc-git
 _gitname=weechat-eventc
@@ -24,7 +24,7 @@ pkgver() {
 
 build(){
     cd "$_gitname"
-    meson "$srcdir"/build 
+    meson --prefix=/usr "$srcdir"/build
     ninja -C "$srcdir"/build
 
 }
