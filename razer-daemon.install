@@ -1,0 +1,12 @@
+msg() {
+  echo "==> You might want to enable razer-daemon.service with the command \"systemctl --user enable --now razer-daemon.service\""
+}
+
+post_upgrade() {
+  msg
+}
+
+post_install() {
+  msg
+}
+

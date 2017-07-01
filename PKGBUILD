@@ -15,7 +15,7 @@ if $build_kernel_modules; then
     _linux_next=4.12
     pkgname+=('razer-driver-arch')
 fi
-pkgver=1.1.13
+pkgver=1.1.14
 #_commit=6ae1f7d55bf10cc6b5cb62a5ce99ff22c43e0701
 pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
@@ -31,7 +31,7 @@ if [ -z $_commit ]; then
 else
   source=("https://github.com/terrycain/razer-drivers/archive/$_commit.tar.gz")
 fi
-sha256sums=('33938e72e8815db90f08001ce3e34fa6cc7e78979f57a914ab5f152c8c90a42e')
+sha256sums=('a8ca390f29ecc5d220df8ef00b2bebb54b0ef4551ba2e0245296bb72eb461f41')
 
 package_python-razer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
@@ -48,6 +48,7 @@ package_razer-daemon() {
   pkgdesc="Userspace daemon that abstracts access to the kernel driver. Provides a DBus service for applications to use."
   depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3' 'dbus-glib')
   # gtk3 for "gi.require_version('Gdk', '3.0')"
+  install=razer-daemon.install
 
   if [ -z $_commit ]; then
     cd $srcdir/$pkgbase-$pkgver
