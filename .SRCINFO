@@ -1,6 +1,6 @@
 pkgbase = aether-icons-git
 	pkgdesc = Aether icon set inspired by Kirigami and Material Design
-	pkgver = r
+	pkgver = 20170701
 	pkgrel = 1
 	url = https://kver.wordpress.com/2017/04/29/aether-icon-theme/
 	arch = any

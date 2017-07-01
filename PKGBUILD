@@ -1,6 +1,6 @@
 pkgname=aether-icons-git
 _pkgname=aether-icons
-pkgver=r
+pkgver=20170701
 pkgrel=1
 pkgdesc="Aether icon set inspired by Kirigami and Material Design"
 arch=('any')
