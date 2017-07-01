@@ -2,20 +2,18 @@
 
 _pkgname=audiotk
 pkgname="${_pkgname}-git"
-pkgver=2.0.2.r1502.305ee21
+pkgver=2.1.1.r1728.ca00f43
 pkgrel=1
 pkgdesc="A C++ library plus Python 3 bindings with a set of audio filters (git version)"
 arch=('i686' 'x86_64')
 license=('BSD')
 url='https://github.com/mbrucher/AudioTK'
-depends=('fftw' 'libsndfile' 'python')
+depends=('eigen' 'fftw' 'libsndfile' 'python')
 makedepends=('git' 'cmake')
-source=("${_pkgname}::git+https://github.com/mbrucher/AudioTK.git"
-        'audiotk-cmakelists.diff')
+source=("${_pkgname}::git+https://github.com/mbrucher/AudioTK.git")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-md5sums=('SKIP'
-         '9ba195731f5d64b58e668639b7e0bfe8')
+md5sums=('SKIP')
 
 
 pkgver() {
@@ -35,27 +33,35 @@ prepare() {
 
   mkdir build
   git checkout develop
-  patch -p1 -i "${srcdir}/audiotk-cmakelists.diff"
+  git pull
+  git submodule init
+  git submodule update
 }
 
 build() {
   cd "${srcdir}/${_pkgname}/build"
 
-  local py_ver=$(python -c 'import sys; print("%s.%s" % sys.version_info[:2])')
+  local py_ver=$(python -c 'import sys; print("%s.%s.%s" % sys.version_info[:3])')
+  local py_maj_ver=$(python -c 'import sys; print("%s.%s" % sys.version_info[:2])')
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="-std=c++11" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDISABLE_EIGEN_WARNINGS=1 \
     -DENABLE_PYTHON=1 \
-    -DPYTHON_INSTALL_FOLDER=/usr/lib/python${py_ver} \
+    -DPYTHON_VERSION=${py_maj_ver} \
+    -DPYTHON=python${py_maj_ver} \
+    -DPython_ADDITIONAL_VERSIONS=${py_ver} \
+    -DPYTHON_INSTALL_FOLDER=/usr/lib/python${py_maj_ver} \
     -DENABLE_TESTS=1 \
-    -DBUILD_DOC=1
+    -DBUILD_DOC=1 \
+    -DENABLE_GPL=1
   make
 }
 
 check() {
   cd "${srcdir}/${_pkgname}/build"
 
+  return 0  # Skip tests for now
   make test
 }
 
@@ -67,7 +73,7 @@ package() {
   cd ..
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -r Examples "${pkgdir}/usr/share/doc/${pkgname}"
+  #cp -r Examples "${pkgdir}/usr/share/doc/${pkgname}"
   cp -r Doxygen/html "${pkgdir}/usr/share/doc/${pkgname}/API"
 }
 
