@@ -1,8 +1,8 @@
 pkgname=mroonga
-pkgver=7.03
+pkgver=7.04
 pkgrel=1
 pkgdesc="Fast fulltext search on MySQL(MariaDB and groonga bundled package)."
-mariadbver=10.1.23
+mariadbver=10.1.24
 groongaver=7.0.4
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
@@ -78,7 +78,7 @@ package() {
     install -Dm644 ../mariadb.service "$pkgdir"/usr/lib/systemd/system/mysqld.service
     install -Dm644 ../mariadb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/mysql.conf
 }
-sha1sums=('8ce8069eb42cbe870cf91e7739cf4ddb731580ea'
+sha1sums=('b00717483afa7ab6a90169610cf87643a4ef7100'
           '4bc34244fc4b578c155c8cd569d952a97a476f10'
           '206e9f7ba5357027becc2491e0987442f684d63e'
           'c2a86c745002923234f9d6d79b3b462d5ab55e8d')
