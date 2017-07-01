@@ -1,27 +1,28 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=neofetch-git
 _pkgname=neofetch
-pkgver=1.0.r26.g9bde0eb
+pkgver=3.2.0.r28.g2eca41d
 pkgrel=1
-pkgdesc="CLI script to show your system's info and display an image using w3m."
+pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
-url="https://github.com/dylanaraps/neofetch"
+url="https://github.com/dylanaraps/${_pkgname}"
 license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('bash')
 optdepends=(
-  'cmus: Current Song'
   'feh: Wallpaper Display'
-  'imagemagick: Image cropping / Thumbnail creation'
-  'mpc: Current Song'
-  'moc: Current Song'
+  'imagemagick: Image cropping / Thumbnail creation / Take a screenshot'
   'nitrogen: Wallpaper Display'
-  'scrot: Take a screenshot'
   'w3m: Display Images'
+  'catimg: Display Images'
+  'jp2a: Display Images'
+  'libcaca: Display Images'
+  'xdotool: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
   'xorg-xdpyinfo: Resolution detection (Single Monitor)'
-  'xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)'
   'xorg-xprop: Desktop Environment and Window Manager'
+  'xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)'
+  'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
 makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git")
@@ -34,6 +35,6 @@ pkgver() {
 
 package() {
   cd $pkgname
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ./install.sh
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/neofetch/LICENSE.md"
 }
