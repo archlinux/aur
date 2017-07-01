@@ -3,7 +3,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-genoil-ocl-git
-pkgver=.20170528.83cb02125
+pkgver=.20170701.83cb02125
 pkgrel=1
 pkgdesc="Genoil's Ethereum GPU miner, built with OpenCL support"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ depends=(
   'miniupnpc'
   'opencl-headers'
   'libjson-rpc-cpp-git'
+  'ethminer-ocl-git'
 )
 makedepends=(
   'gcc'

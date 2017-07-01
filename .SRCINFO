@@ -1,6 +1,6 @@
 pkgbase = ethereum-genoil-ocl-git
 	pkgdesc = Genoil's Ethereum GPU miner, built with OpenCL support
-	pkgver = .20170528.83cb02125
+	pkgver = .20170701.83cb02125
 	pkgrel = 1
 	url = https://github.com/gemoil/cpp-ethereum
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = ethereum-genoil-ocl-git
 	depends = miniupnpc
 	depends = opencl-headers
 	depends = libjson-rpc-cpp-git
+	depends = ethminer-ocl-git
 	optdepends = solidity: The Solidity Contract-Oriented Programming Language
 	provides = ethminer
 	conflicts = ethereum
