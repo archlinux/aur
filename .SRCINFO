@@ -1,0 +1,32 @@
+pkgbase = ethminer-git
+	pkgdesc = Ethereum miner with CUDA and stratum support. chfast's version.
+	pkgver = 0.11.0.0.20170630.7b678d8a4
+	pkgrel = 1
+	url = https://github.com/ethereum-mining/ethminer
+	arch = i686
+	arch = x86_64
+	groups = ethereum
+	license = GPL
+	makedepends = gcc5
+	makedepends = cmake
+	makedepends = git
+	makedepends = opencl-headers
+	depends = boost
+	depends = crypto++
+	depends = cuda
+	depends = leveldb
+	depends = ocl-icd
+	depends = libmicrohttpd
+	depends = miniupnpc
+	depends = libjson-rpc-cpp-git
+	optdepends = solidity: The Solidity Contract-Oriented Programming Language
+	provides = ethminer
+	conflicts = ethminer
+	conflicts = ethereum
+	conflicts = ethereum-git
+	conflicts = cpp-ethereum
+	source = ethminer-git::git+https://github.com/ethereum-mining/ethminer
+	sha256sums = SKIP
+
+pkgname = ethminer-git
+
