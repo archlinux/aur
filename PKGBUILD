@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=pfring-kmod-dev-git
-pkgver=v6.4.0.r192.g08749c2
+pkgver=v6.4.0.r605.gd4d3a6c
 _pkgname=PF_RING
 pkgrel=1
 pkgdesc="High-speed packet processing framework (dev branch)"

@@ -1,6 +1,6 @@
 pkgbase = pfring-kmod-dev-git
 	pkgdesc = High-speed packet processing framework (dev branch)
-	pkgver = v6.4.0.r192.g08749c2
+	pkgver = v6.4.0.r605.gd4d3a6c
 	pkgrel = 1
 	url = http://www.ntop.org
 	arch = x86_64
