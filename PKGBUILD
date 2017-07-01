@@ -1,4 +1,4 @@
-# Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
+# Contributor: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=unix-runescape-client
 pkgver=4.3.5
 pkgrel=1
