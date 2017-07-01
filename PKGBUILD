@@ -3,7 +3,7 @@
 
 pkgname=inkscape-git
 pkgver=20170701
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
