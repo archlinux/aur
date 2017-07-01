@@ -1,18 +1,18 @@
 # Maintainer: Nemanja Nedeljkovic <nemanjan00@gmail.com>
 
 pkgname=teamsql
-pkgver=0.9.106
+pkgver=1.0.108
 pkgrel=1
 pkgdesc="Multi-Platform SQL Client"
 arch=('x86_64')
 license=()
-depends=("libappindicator" "libnotify")
+depends=("libappindicator" "libnotify", "gconf")
 optdepends=()
 options=()
 install=$pkgname.install
 source=("TeamSQL-${pkgver}.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/${pkgver}/TeamSQL-${pkgver}.deb"
         'teamsql.sh')
-md5sums=('f7e715c97a4a03414cf580ac781f7b3d'
+md5sums=('a474ce38b9f6bf5b311f8fc7c0a588a5'
          '7262cf67a1e2634401d6012d8d34e7d8')
 
 package() {
