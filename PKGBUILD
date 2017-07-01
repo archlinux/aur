@@ -4,7 +4,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libproxy
-pkgver=0.4.13
+pkgver=0.4.15
 pkgrel=1
 pkgdesc='A library that provides automatic proxy configuration management'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('lib32-gcc-libs' 'libproxy')
 makedepends=('cmake' 'gcc-multilib' 'lib32-zlib')
 source=("https://github.com/libproxy/libproxy/archive/${pkgver}.tar.gz")
-md5sums=('de293bb311f185a2ffa3492700a694c2')
+md5sums=('21ebe5b4ea2a04f5f468bf5d08c40d2c')
 
 build() {
   cd libproxy-${pkgver}
@@ -31,11 +31,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_C_FLAGS="${CFLAGS}" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
-    -DCMAKE_SKIP_RPATH='TRUE' \
+    -DCMAKE_SKIP_RPATH='ON' \
     -DLIBEXEC_INSTALL_DIR='/usr/lib32/libproxy' \
     -DLIB_SUFFIX='32' \
-    -DPERL_VENDORINSTALL='FALSE' \
-    -DWITH_{GNOME3,MOZJS,NATUS,NM,KDE4,PERL,PYTHON,WEBKIT}='FALSE'
+    -DWITH_{GNOME3,KDE,MOZJS,NATUS,NM,PERL,WEBKIT}='OFF'
   make
 }
 
