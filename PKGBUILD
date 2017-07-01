@@ -1,21 +1,25 @@
-# Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
-
-pkgname=python-ws4py
-_pkgname=ws4py
-pkgver=0.3.4
+# Maintainer: ValHue <vhuelamo at gmail dot com>
+# https://github.com/ValHue/AUR-PKGBUILDs
+#
+# Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
+#
+_pkgname="ws4py"
+pkgname="python-${_pkgname}"
+pkgver=0.4.2
 pkgrel=1
-pkgdesc='WebSocket client and server library for Python.'
-arch=('any')
-url='https://pypi.python.org/pypi/ws4py'
+pkgdesc="WebSocket client and server library for Python."
+url="https://github.com/Lawouach/WebSocket-for-Python"
 license=('BSD')
-makedepends=('python-setuptools')
+arch=('any')
 depends=('python')
-source=("https://pypi.python.org/packages/source/w/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('6b47e33cbd13f5c134b04f2a44a480ad')
+makedepends=('python-setuptools')
+provides=("${_pkgname}")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Lawouach/WebSocket-for-Python/archive/${pkgver}.tar.gz")
+sha256sums=('eb47a057863ec789611091c22480f0333e746fe01ce3df34525ab0c12d52bc2b')
 
 package() {
-  cd $srcdir/${_pkgname}-${pkgver}
-  python setup.py install --root=${pkgdir} --optimize=1
+	cd "${srcdir}/WebSocket-for-Python-${pkgver}"
+	python setup.py install --root=${pkgdir} --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=2 ft=sh et:
