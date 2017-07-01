@@ -1,6 +1,6 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=oxipng
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="A lossless PNG compression optimiser"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'arm' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shssoichiro/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6b350c2732eba1cbf8edde54b82b8b6a84e5b5e53fd6718f225ceba3c1491ad8')
+sha256sums=('aea3a6d8cf9297471117e5891b6b26c3572d33117b854afd1aa354ad2098d16b')
 
 build() {
   cd "$pkgname-$pkgver"
