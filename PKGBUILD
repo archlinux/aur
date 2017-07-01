@@ -3,8 +3,8 @@
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=jetty
-pkgver=9.4.5
-_timestamp=v20170502
+pkgver=9.4.6
+_timestamp=v20170531
 pkgrel=1
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
@@ -18,7 +18,7 @@ source=("$_distname.tar.gz::$_dluri"
 	jetty.default
 	jetty.logrotate
 	jetty.service)
-sha256sums=('7fc0dbc7faf17994d349f38ff8e7ee5384e631d3e1d36dd6a09ab8f426977fd9'
+sha256sums=('da3d16c62b5ceeb81523a8f551fa4d5a75e1e5c25126659d9c3fd3408359018b'
             'e5b425043a379bde57fd37c498ff8efb822325b7606b149cc09a53737ab4297d'
             'da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb'
             '36266b7f4daf20871f4bf5636686e37fa5ffd173fd51303f2569fc8d453fa17a')
