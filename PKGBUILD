@@ -2,7 +2,7 @@
 _pkgname=pwntools
 
 pkgname="python2-${_pkgname}-git"
-pkgver=3.5.0beta1.r34.g930f2a4a
+pkgver='3.8.0beta0.r4.g08b31609'
 pkgrel=1
 pkgdesc='The CTF framework used by Gallopsled in every CTF'
 arch=('any')
