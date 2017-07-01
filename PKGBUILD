@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=fmt-git
-pkgver=3.0.2.r2320.569c5bd
+pkgver=4.0.0.r2327.3983438
 pkgrel=1
 pkgdesc='An open-source formatting library for C++'
 url='http://fmtlib.net'
