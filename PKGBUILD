@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
-url="https://github.com/hawkeye116477/Waterfox/tree/plasma"
+url="https://www.waterfoxproject.org/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
          nss hunspell sqlite ttf-font icu libvpx kwaterfoxhelper)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
