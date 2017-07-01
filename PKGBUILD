@@ -1,6 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 
 pkgname=ttf-soutane
+_pkgname=soutane
 pkgver=20150207
 pkgrel=1
 pkgdesc="Soutane TTF typeface"
@@ -20,15 +21,18 @@ sha256sums=('d28114931256495a45b96fc3a833bbba2169c84e7543a0d16367424e4b1faff3'
 
 prepare() {
 	cd "${srcdir}"
+	mkdir out
 	for font in *ttf; do
-		mv -fv "${font}" "$(echo "${font}" | sed -e 's/%20/-/g' - )"
+		mv -fv "${font}" out/"$(echo "${font}" | sed -e 's/%20/-/g' - )"
 	done
+	mv out/* ./
+	rmdir out
 }
 
 package() {
 	cd "${srcdir}"
-	mkdir -p "${pkgdir}"/usr/share/fonts/soutane
-	install -m644 Soutane*.ttf "${pkgdir}"/usr/share/fonts/soutane
+	mkdir -p "${pkgdir}"/usr/share/fonts/${_pkgname}
+	install -m644 ./*.ttf "${pkgdir}"/usr/share/fonts/${_pkgname}
 
 	# TODO find license
 	# install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
