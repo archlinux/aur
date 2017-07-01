@@ -1,0 +1,15 @@
+pkgbase = telegnome
+	pkgdesc = GNOME Teletext viewer
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://telegnome.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = itstool
+	depends = gtk3
+	source = https://download.gnome.org/sources/telegnome/0.3/telegnome-0.3.3.tar.xz
+	sha256sums = 8446e10508802520d47f34fe10a4ddb032f556e522d8dba474226559637a58bf
+
+pkgname = telegnome
+
