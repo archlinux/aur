@@ -5,6 +5,7 @@ pkgbase = aether-icons-git
 	url = https://kver.wordpress.com/2017/04/29/aether-icon-theme/
 	arch = any
 	license = CC BY-SA 3.0
+	depends = breeze-icons
 	provides = aether-icons
 	conflicts = aether-icons
 	conflicts = aether-icons-git

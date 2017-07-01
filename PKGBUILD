@@ -6,6 +6,7 @@ pkgdesc="Aether icon set inspired by Kirigami and Material Design"
 arch=('any')
 url="https://kver.wordpress.com/2017/04/29/aether-icon-theme/"
 license=('CC BY-SA 3.0')
+depends=('breeze-icons')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$pkgname")
 source=("git://anongit.kde.org/scratch/kvermette/aether-icons.git")
