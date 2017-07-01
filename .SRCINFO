@@ -1,0 +1,20 @@
+pkgbase = libusbmuxd-rr-compatible
+	pkgdesc = USB Multiplex Daemon
+	pkgver = 1.0.9.r51.gc71612c
+	pkgrel = 1
+	url = http://marcansoft.com/blog/iphonelinux/usbmuxd/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL2
+	makedepends = git
+	depends = libusb
+	depends = libplist
+	provides = libusbmuxd
+	conflicts = usbmuxd<1.0.9
+	conflicts = libusbmuxd
+	source = git+https://github.com/oleavr/libusbmuxd#branch=eliminate-pthread-cancel
+	md5sums = SKIP
+
+pkgname = libusbmuxd-rr-compatible
+
