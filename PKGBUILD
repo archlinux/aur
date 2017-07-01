@@ -36,6 +36,7 @@ provides=(
 conflicts=(
   'ethereum'
   'cpp-ethereum'
+  'ethereum-genoil-ocl-git'
 )
 replaces=(
   'ethereum-genoil-ocl-git'
