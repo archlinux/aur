@@ -1,0 +1,19 @@
+pkgbase = pcc-cvs
+	pkgdesc = A Portable C Compiler.
+	pkgver = 20170701
+	pkgrel = 1
+	url = http://pcc.ludd.ltu.se/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = bison
+	makedepends = flex
+	makedepends = cvs
+	depends = pcc-libs
+	provides = pcc
+	conflicts = pcc
+	source = license
+	md5sums = 51f6cc02b26af53f26cfe87494ca5c87
+
+pkgname = pcc-cvs
+
