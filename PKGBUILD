@@ -3,7 +3,7 @@
 # Upstream: https://github.com/bitpay/bitpay
 
 pkgname=bitpay
-pkgver=3.4.0
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="BitPay Bitcoin Wallet"
 arch=('x86_64')
@@ -19,13 +19,11 @@ source=('bitpay.desktop')
 
 
 md5sums=('0506f49c065177fc829f8f0a75aab19b')
-md5sums_x86_64=('89f348a2f25f192ab3cdae8c86d519f0'
-                'SKIP')
+md5sums_x86_64=('92c247719f0fda51d5b321d59673c3df')
 
-source_x86_64=("https://github.com/bitpay/copay/releases/download/v3.4.0/BitPay-linux.zip"
-               
-"https://github.com/bitpay/copay/releases/download/v3.4.0/BitPay-linux.zip.sig"
-              )
+source_x86_64=("https://github.com/bitpay/copay/releases/download/3.6.2/BitPay-linux.zip"
+  )             
+#"https://github.com/bitpay/copay/releases/download/3.6.2/BitPay-linux.zip.sig"
 
 
 #gpg --recv-keys 5CD600A61112CFA1
