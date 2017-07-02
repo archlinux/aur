@@ -1,8 +1,8 @@
 pkgbase = simsu
 	pkgdesc = A basic Sudoku game
 	pkgver = 1.3.3
-	pkgrel = 2
-	url = http://gottcode.org/simsu/
+	pkgrel = 3
+	url = https://gottcode.org/simsu/
 	arch = i686
 	arch = x86_64
 	license = GPL3
