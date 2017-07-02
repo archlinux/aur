@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Quest For Infamy
+GenericName=Quest For Infamy
+Comment=Quest For Infamy
+Icon=/opt/gog/quest-for-infamy/support/icon.png
+Exec="/opt/gog/quest-for-infamy/start.sh" ""
+Categories=Game;
+Path=/opt/gog/quest-for-infamy/
+Name[fr_FR]=gog-quest-for-infamy.desktop
