@@ -1,8 +1,8 @@
 # Contributor: Egor Malyutin <egorcod.tk@gmail.com>
 
 pkgname="colors-pacmans"
-pkgver="1.0"
-pkgrel="1"
+pkgver="1.1"
+pkgrel="2"
 pkgdesc="Pacmans displays terminal's color pallete."
 arch=('i686' 'x86_64')
 url='https://crunchbang.org/forums/viewtopic.php?pid=126921%23p126921#p126921'
@@ -41,7 +41,7 @@ then
 	echo
 	echo	"	USAGE:"
 	echo        
-	echo	"		color-pacmans"
+	echo	"		colors-pacmans"
 	echo
 	echo	"	DESCRIPTION:"
 	echo
