@@ -3,12 +3,12 @@
 pkgname=auracle-git
 _pkgname=auracle
 pkgver=r8.89398f2
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation cower'
 arch=('any')
 url="https://github.com/falconindy/auracle.git"
 license=('MIT')
-makedepends=('meson' 'ragel')
+makedepends=('meson' 'ragel' 'curl' 'libarchive')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/falconindy/auracle.git")
@@ -21,7 +21,7 @@ pkgver() {
 
 build () {
   cd "$_pkgname"
-  meson build -D buildtype=release
+  meson build --prefix /usr -D buildtype=release
   ninja -C build
 }
 
