@@ -2,8 +2,8 @@
 pkgname=archlabs-plank-themes-git
 _pkgname=archlabs-plank-themes
 _destname="/usr/share/plank/themes/"
-pkgver=1.1
-pkgrel=4
+pkgver=2.0
+pkgrel=0
 pkgdesc="Plank themes for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Plank-Themes"
