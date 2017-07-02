@@ -1,15 +1,15 @@
 pkgbase = teleport
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
-	pkgver = 2.2.0
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://gravitational.com/teleport
 	install = teleport.install
 	arch = x86_64
 	license = Apache
 	depends = glibc
-	source = https://github.com/gravitational/teleport/releases/download/v2.2.0/teleport-v2.2.0-linux-amd64-bin.tar.gz
+	source = https://github.com/gravitational/teleport/releases/download/v2.2.3/teleport-v2.2.3-linux-amd64-bin.tar.gz
 	source = teleport.service
-	sha256sums = ee6913cb9948ecae0cde9c269024f0a56e82a36b55da78f2a02e17f8d3da9bff
+	sha256sums = 00fe54b48fb5265f6b8a92038338766d76f89b81d48d5e3715432c02aa8fe7e8
 	sha256sums = 3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc
 
 pkgname = teleport
