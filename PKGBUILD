@@ -1,6 +1,6 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 pkgname=('python-telegram-bot-git')
-pkgver=6.1.0.r66.cbafdc2
+pkgver=6.1.0.r67.94ed4cb
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
@@ -17,8 +17,11 @@ source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
+    msg2 "Updating dependencies..."
     cd "$srcdir/$pkgname"
     git submodule update --init --recursive
+    msg2 "Updating changelog..."
+    cp ./CHANGES.rst ../../
 }
 
 pkgver() {
