@@ -5,7 +5,7 @@
 pkgname=f3-test
 _pkgname=f3
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised"
 arch=('i686' 'x86_64')
 url="http://oss.digirati.com.br/f3/"
