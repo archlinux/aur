@@ -4,12 +4,12 @@ pkgname=xperia-flashtool
 _realname=flashtool
 pkgver=0.9.23.2
 _pkg_main_ver=0.9.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A S1 protocol flashing software for Sony Xperia phones"
 arch=('i686' 'x86_64')
 url="http://www.flashtool.net/"
 license=('unknown')
-depends=('libselinux' 'libsystemd' 'glib2')
+depends=('libselinux' 'libsystemd' 'glib2' 'mono')
 makedepends=('p7zip')
 source=("http://url.muflone.com/${pkgname}-${_pkg_main_ver}-linux.tar.7z"
         "${pkgname}-${pkgver}-x10flasher.jar"::"http://www.flashtool.net/torrents/patches/linux/x10flasher.jar"
