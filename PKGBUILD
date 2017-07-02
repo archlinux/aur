@@ -3,6 +3,7 @@
 # Contributor: z3ntu <luca.emanuel.weiss@gmail.com>
 
 pkgname=f3-test
+_pkgname=f3
 pkgver=6.0
 pkgrel=2
 pkgdesc="Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised"
@@ -15,17 +16,17 @@ options=('!buildflags'
          'strip' 'debug')
 conflicts=()
 provides=()
-source=(https://github.com/AltraMayor/${pkgname}/archive/v${pkgver}.zip)
+source=(https://github.com/AltraMayor/f3/archive/v${pkgver}.zip)
 md5sums=('b38abfb1c35996e4d193d3be694b4448')
 
 build() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${_pkgname}-${pkgver}
     make
     make experimental
 }
 
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${_pkgname}-${pkgver}
     install -m 755 -d ${pkgdir}/usr/bin ${pkgdir}/usr/share/man/man1
     install -m 755 f3brew f3fix f3probe f3read f3write f3write.h2w log-f3wr ${pkgdir}/usr/bin/
     install -m 644 f3read.1 ${pkgdir}/usr/share/man/man1/    
