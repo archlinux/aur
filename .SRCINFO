@@ -1,8 +1,8 @@
 pkgbase = peg-e
 	pkgdesc = Peg elimination game
 	pkgver = 1.2.2
-	pkgrel = 2
-	url = http://gottcode.org/peg-e/
+	pkgrel = 3
+	url = https://gottcode.org/peg-e/
 	arch = i686
 	arch = x86_64
 	license = GPL3
