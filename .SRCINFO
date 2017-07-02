@@ -1,8 +1,8 @@
 pkgbase = tetzle
 	pkgdesc = A tetromino jigsaw puzzle game
 	pkgver = 2.1.0
-	pkgrel = 2
-	url = http://gottcode.org/tetzle/
+	pkgrel = 3
+	url = https://gottcode.org/tetzle/
 	arch = i686
 	arch = x86_64
 	license = GPL3
