@@ -1,0 +1,17 @@
+pkgbase = gopro-tools-git
+	pkgdesc = Tools for post production with GoPro cameras
+	pkgver = 1.0.r0.g5c6bd4e
+	pkgrel = 1
+	url = https://github.com/KonradIT/gopro-linux
+	arch = any
+	groups = gopro-git
+	license = GPL3
+	depends = mencoder
+	depends = ffmpeg
+	depends = imagemagick
+	conflicts = gopro-tools
+	source = git+https://github.com/KonradIT/gopro-linux.git
+	md5sums = SKIP
+
+pkgname = gopro-tools-git
+
