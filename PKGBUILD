@@ -2,20 +2,20 @@
 
 _gitname=wpgtk
 pkgname="${_gitname}-git"
-_gitbranch=master
+_gitbranch=testing
 _gitauthor=deviantfero # deviantfero
-pkgver='r224.a60f637'
+pkgver=r247.1610c3f
 pkgrel=1
 pkgdesc="A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme"
 url="https://github.com/${_gitauthor}/${_gitname}"
-license=('BSD')
+license=('MIT')
 source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
 sha512sums=('SKIP')
 arch=('any')
-depends=('python' 'python2' 'python2-pillow' 'feh' 'python-gobject' 'gtk3' 'libxslt')
+depends=('python' 'python-pillow' 'feh' 'python-gobject' 'gtk3' 'libxslt' 'xsltproc')
 makedepends=('git')
 optdepends=()
-conflicts=("${_gitname}" 'nitrogen')
+conflicts=("${_gitname}")
 provides=("${_gitname}")
 
 pkgver() {
@@ -27,16 +27,16 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_gitname}"
+  wget https://raw.githubusercontent.com/deviantfero/wal/master/wal
   mkdir -p ${pkgdir}/usr/bin/wpgtk/py
   mkdir -p ${pkgdir}/usr/bin/wpgtk/gui
   mkdir -p ${pkgdir}/usr/bin/wpgtk/data
-  install -D -m755 ./wpgtk/py/* ${pkgdir}/usr/bin/wpgtk/py
   install -D -m755 ./wpgtk/wpg.py ${pkgdir}/usr/bin/wpgtk/
   install -D -m755 ./wpgtk/gui/* ${pkgdir}/usr/bin/wpgtk/gui/
   install -D -m755 ./wpgtk/data/* ${pkgdir}/usr/bin/wpgtk/data/
-  install -D -m775 ./wpcscript ${pkgdir}/usr/bin/wpcscript
   install -D -m775 ./wpg ${pkgdir}/usr/bin/wpg
-  install -D -m755 ./functions ${pkgdir}/usr/bin/wpgtk/functions
+  install -D -m775 ./wal ${pkgdir}/usr/bin/wal
+  rm ./wal
   bash ./installaur.sh
   echo
   echo "Remember to add sh ~/.wallpapers/wp_init.sh"
