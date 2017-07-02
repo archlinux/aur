@@ -1,8 +1,8 @@
 pkgbase = kapow
 	pkgdesc = Punch clock to track time spent on projects
 	pkgver = 1.5.2
-	pkgrel = 2
-	url = http://gottcode.org/kapow/
+	pkgrel = 3
+	url = https://gottcode.org/kapow/
 	arch = i686
 	arch = x86_64
 	license = GPL3
