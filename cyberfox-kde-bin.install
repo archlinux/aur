@@ -3,4 +3,8 @@ post_remove()
     if [ -d "/opt/cyberfox/browser/features" ]; then 
         rm -rf /opt/cyberfox/browser/features/
     fi
+    
+    if [ -d "/opt/cyberfox/.installer" ]; then
+        rm -rf /opt/cyberfox/.installer/
+    fi
 }
