@@ -2,8 +2,8 @@
 pkgname=archlabs-wallpapers-git
 _pkgname=archlabs-wallpapers
 _destname="/usr/share/backgrounds/archlabs/"
-pkgver=1.3
-pkgrel=3
+pkgver=2.0
+pkgrel=0
 pkgdesc="Wallpapers for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Wallpapers"
