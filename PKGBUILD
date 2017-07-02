@@ -4,7 +4,7 @@
 pkgbase=linux-xps-9560               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
-pkgver=4.11.6
+pkgver=4.11.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -26,13 +26,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '00c0b804ccda18d6ed4a32ba0be049a80363aa2bc084733a22da03f435d992a4'
+            '7d767998aa6a69df36f76d6343c03a45f190c7e8ddf9322c02493ceaa96a1aba'
             'SKIP'
-            'f23b751bc0ab63396569a63ad2511cceb9c4cc7dc469bd2b1c336ca9f1a5e564'
-            'beed8d6a7d04ede44b47fac7ebf289bc96a9b98bccf4b6582480432627c3fca7'
+            '80167778d7853d534b871509b903288ab5a05eeceaec79623c8aa054f551cf6b'
+            '42cb501a6f6fbbc06d7f81aa71995c2756310ec56b1d4e8a722739b57d160961'
             'e47f2eb97b9ec31637a5c9eea77420bd28529ea255a165e604ce14976bf415f4'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
             '93c200f7cd0f7a860440d6b5190b84014534346ff0fd5582b4554a4854945f08')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -261,7 +261,8 @@ _package-headers() {
   done
 
   # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  rm -rf
+"${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 
   # remove a files already in linux-docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
