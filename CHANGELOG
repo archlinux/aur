@@ -1,3 +1,24 @@
+3.4.2
+-----
+
+ - New module :py:mod:`pyteomics.ms1` for parsing of MS1 files.
+
+ - :py:class:`mass.Composition` constructor now accepts `ion_type` and `charge` parameters.
+
+ - New functions :py:func:`pyteomics.mzid.DataFrame` and :py:func:`pyteomics.mzid.filter_df`.
+   Their behavior may be refined later on.
+
+ - Changes in behavior of :py:func:`pyteomics.auxiliary.filter` and :py:func:`pyteomics.auxiliary.qvalues`:
+
+   - both functions now always return DataFrames with :py:class:`pandas.DataFrame` input and `full_output=True`.
+
+   - string values of `key`, `is_decoy` and `pep` are substituted with simple itemgetter functions for
+     non-pandas, non-numpy input;
+
+   - additional parameters `score_label`, `decoy_label`, `pep_label`, and `q_label` for output control.
+
+ - Performance optimizations in XML parsing code.
+
 3.4.1
 -----
 
