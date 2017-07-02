@@ -32,17 +32,6 @@ Configs are a compromise between vanilla Linode and Arch. Most drivers are disab
 
    Take extra care to make sure you're booting from the correct device name. Xen devices are called /dev/xvda while KVM devices are called /dev/sda. If you're running grub inside your old Xen linode, it will automatically add "root=/dev/xvda" to your kernel line in /boot/grub/grub.cfg. Once you migrate to KVM, this will no longer work. You'll have to either edit this file by hand before shutting down to migrate, or edit it using the interactive grub command line afterwards. Once you've migrated, running grub-mkconfig again should fix it. Also be sure to check /etc/fstab or /etc/crypttab for any other device names that might give you boot problems.
 
-# CPU ARCHITECTURE
-
-By default, the kernel is compiled with `-march=sandybridge -mtune=sandybridge`. This seems to be most common in my (limited) experience, but some linodes may have haswell, corei7 or other CPUs, in which case you can edit CFLAGS and CXXFLAGS in the PKGBUILD. To find yours:
-
-```
-$ gcc -c -Q -march=native --help=target 2>&1 | grep -e march -e mtune
--march=                               sandybridge
--mtune-ctrl=
--mtune=                               sandybridge
-```
-
 # STEPS TO USE
 
 1. pacman -Syu
