@@ -1,7 +1,7 @@
 
 pkgname=mingw-w64-lapack
 pkgname=('mingw-w64-lapack' 'mingw-w64-blas' 'mingw-w64-cblas' 'mingw-w64-lapacke')
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 arch=('any')
 pkgdesc="Linear Algebra PACKage (mingw-w64)"
@@ -9,15 +9,14 @@ makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('LGPL')
 url="http://www.netlib.org/lapack"
-source=("http://www.netlib.org/lapack/lapack-${pkgver}.tgz" conversion.patch)
-sha1sums=('27dbd06bedc76619150f8e28de6412f7df0c649a' SKIP)
+source=("http://www.netlib.org/lapack/lapack-${pkgver}.tgz")
+sha1sums=('e71584cc334a7f711b215261c2a35adee49df2f0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare()
 {
   cd "$srcdir/lapack-${pkgver}"
-  patch -p1 -i "${srcdir}/conversion.patch"
 }
 
 build()
