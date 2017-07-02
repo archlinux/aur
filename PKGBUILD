@@ -2,7 +2,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 pkgname=extcalc
 pkgver=0.9.3_1
-pkgrel=3
+pkgrel=4
 pkgdesc="A multifunctional scientific graphic calculator"
 arch=('i686' 'x86_64')
 url="http://extcalc-linux.sourceforge.net"
@@ -13,11 +13,12 @@ source=("http://downloads.sourceforge.net/$pkgname-linux/$pkgname-${pkgver//_/-}
 
 build() {
 	cd $srcdir/$pkgname-${pkgver/_/-}
+	CXXFLAGS="$CXXFLAGS -Wno-write-strings -Wno-unused-result"
 	sed -i 's|${QT_LIBRARIES}|${QT_LIBRARIES} ${OPENGL_LIBRARIES}|' CMakeLists.txt
 	sed -i "s|FIND_PACKAGE|FIND_PACKAGE(OpenGL REQUIRED)\nFIND_PACKAGE|" CMakeLists.txt
 	sed -i 's|/usr/local|/usr|' CMakeLists.txt
 	cmake -DCMAKE_INSTALL_PREFIX="/usr"
-	make
+	make -Wno-write-strings
 }
 
 package()

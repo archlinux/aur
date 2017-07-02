@@ -1,7 +1,7 @@
 pkgbase = extcalc
 	pkgdesc = A multifunctional scientific graphic calculator
 	pkgver = 0.9.3_1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://extcalc-linux.sourceforge.net
 	arch = i686
 	arch = x86_64
