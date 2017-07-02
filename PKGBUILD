@@ -1,6 +1,6 @@
 # Maintainer: Marcelo Garlet Millani <marcelogmillani at gmail dot com>
 pkgname=boomange
-pkgver=0.1.3.2
+pkgver=0.1.3.3
 pkgrel=1
 pkgdesc='A Bookmarks manager with a HTML generator'
 url="http://hackage.haskell.org/package/${pkgname}"
@@ -14,7 +14,7 @@ depends=('gmp' 'libffi')
 makedepends=('haskell-simtreelo' 'haskell-descrilo' 'ghc')
 ###
 source=( "http://hackage.haskell.org/package/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz" )
-sha256sums=('0a0d3eab319a67e76c0552a6d7bee457b7e102a2b10a9ba56b186dccfa008069')
+sha256sums=('c6d13cf86c5000653d526c4ce7bf513a3a2113b5bed730d484f310655c59a22a')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
@@ -23,6 +23,7 @@ build() {
 	#runhaskell Setup configure --prefix=/usr -O --enable-executable-dynamic
 	# STATIC LINKAGE
 	runhaskell Setup configure --prefix=/usr -O --disable-executable-dynamic
+	#
 	runhaskell Setup build
 }
 package() {
