@@ -3,7 +3,7 @@
 # Based on [aur]'s lib32-nvidia-utils-beta: https://aur.archlinux.org/packages/lib32-nvidia-utils-beta/
 
 pkgname=('lib32-nvidia-utils-vulkan-developer-beta' 'lib32-nvidia-libgl-vulkan-developer-beta' 'lib32-opencl-nvidia-vulkan-developer-beta')
-pkgver=381.10.10
+pkgver=381.26.06
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -13,7 +13,7 @@ options=('!strip')
 _pkg="${pkgver//./}-linux-32bit"
 _pkg_dir="NVIDIA-Linux-x86-$pkgver"
 source=("https://developer.nvidia.com/${pkgver//./}-linux-32bit")
-md5sums=('e218ceb370583186b9dc4e0c09d141ad')
+md5sums=('ebf836c206ed4a57cabd689987983582')
 
 _create_links() {
   # create missing soname links
