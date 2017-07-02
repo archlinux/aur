@@ -2,8 +2,8 @@
 pkgname=archlabs-docs-git
 _pkgname=archlabs-docs
 _destname="/usr/share/archlabs/docs/"
-pkgver=1.1
-pkgrel=2
+pkgver=2.0
+pkgrel=0
 pkgdesc="Documentation created for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Docs"
