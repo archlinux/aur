@@ -1,8 +1,8 @@
 pkgbase = cutemaze
 	pkgdesc = Top-down maze game
 	pkgver = 1.2.0
-	pkgrel = 2
-	url = http://gottcode.org/cutemaze/
+	pkgrel = 3
+	url = https://gottcode.org/cutemaze/
 	arch = i686
 	arch = x86_64
 	license = GPL3
