@@ -1,6 +1,6 @@
 diff -Naur fotoxx-17.04.1.orig/fotoxx-17.04.1.cc fotoxx-17.04.1.new/fotoxx-17.04.1.cc
---- fotoxx-17.04.2.orig/fotoxx-17.04.2.cc	2017-04-12 21:04:08.630207362 +0200
-+++ fotoxx-17.04.2.new/fotoxx-17.04.2.cc	2017-04-12 21:08:28.118440955 +0200
+--- fotoxx-17.04.2.orig/fotoxx-17.04.3.cc	2017-04-12 21:04:08.630207362 +0200
++++ fotoxx-17.04.2.new/fotoxx-17.04.3.cc	2017-04-12 21:08:28.118440955 +0200
 @@ -375,7 +375,7 @@
  
  int initzfunc(void *)
