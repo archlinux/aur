@@ -3,7 +3,7 @@
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://kubernetes.io"
 license=('apache')
