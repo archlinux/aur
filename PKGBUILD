@@ -1,7 +1,7 @@
 pkgname=file-commander-git
 pkgver=0.9.3.2.r33.g7efe4eb
-pkgrel=2
-pkgdesc='A simple fullscreen word processorQt-based cross-platform Total Commander-like orthodox file manager for Windows, Mac and Linux'
+pkgrel=3
+pkgdesc='Qt-based cross-platform Total Commander-like orthodox file manager for Windows, Mac and Linux'
 arch=('i686' 'x86_64')
 url="https://github.com/VioletGiraffe/file-commander"
 license=('GPL3')
