@@ -1,14 +1,14 @@
 # Maintainer: Konarev Alexander <avkonarev@gmail.com>
 
 pkgname=ehaspd
-pkgver=3.3.5
+pkgver=7.40.10
 pkgrel=1
 pkgdesc="Etersoft daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
 url="http://etersoft.ru"
 license=('custom')
 source=(
-  "http://ftp.etersoft.ru/pub/Etersoft/HASP/last/ArchLinux/CUR/haspd-3.3-5-i686.pkg.tar.xz"
+  "http://ftp.etersoft.ru/pub/Etersoft/HASP/last/ArchLinux/CUR/haspd-7.40-10-i686.pkg.tar.xz"
 	"$pkgname.service"
   )
 
@@ -39,7 +39,7 @@ package() {
 	install -Dm644 ${srcdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
 }
 
-md5sums=('91cb772f0973a48535263594c32bc643'
+md5sums=('79d703c66b73fb8ea6064d801076a2af'
          '49ffda07eaf5c034bb9409ea56f26fea')
 
 # vim: set noet ci pi sts=0 sw=4 ts=4:
