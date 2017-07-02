@@ -1,8 +1,8 @@
 pkgbase = gottet
 	pkgdesc = A tetris clone using the Qt GUI toolkit
 	pkgver = 1.1.3
-	pkgrel = 2
-	url = http://gottcode.org/gottet/
+	pkgrel = 3
+	url = https://gottcode.org/gottet/
 	arch = i686
 	arch = x86_64
 	license = GPL3
