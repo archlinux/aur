@@ -1,15 +1,18 @@
 pkgbase = python-tkcolorpicker
 	pkgdesc = Color picker dialog for Tkinter, alternative to tkinter.colorchooser.
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/j4321/tkColorPicker
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
-	depends = python
-	depends = tk
-	source = tkColorPicker-1.0.0.tar.gz::https://github.com/j4321/tkColorPicker/archive/v1.0.0.tar.gz
-	sha512sums = 743f14f84eb20c30742341c10ba4073709b456fd321aedcf4e1072b376aebf9eec8d85adc5d3f468f1e451bef3f58b2419a68e041404a838220de160455976e7
+	source = tkcolorpicker-2.0.0.tar.gz::https://github.com/j4321/tkColorPicker/archive/v2.0.0.tar.gz
+	sha512sums = 0548dca78863dc19a49dcdd4fd935aabf1d19c17e115be7c60c989f9d4c9881d8c1a249051729b369c386d660bba6735169f3c5c830029b81286dc09d809bde6
 
 pkgname = python-tkcolorpicker
+	depends = python
+	depends = tk
+
+pkgname = python2-tkcolorpicker
+	depends = python2
+	depends = tk
 
