@@ -7,7 +7,7 @@ pkgdesc="Fast, stable & reliable x64-bit web browser with openSUSE's patches for
 arch=('x86_64')
 url="https://cyberfox.8pecxstudios.com/"
 license=('MPL')
-depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kcyberfoxhelper' 'wget')
+depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kcyberfoxhelper>=5.0.1.5' 'wget')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
