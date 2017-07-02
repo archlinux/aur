@@ -2,7 +2,7 @@
 pkgname=archlabs-rofi-themes-git
 _pkgname=archlabs-rofi-themes
 _destname="/usr/share/rofi/themes/"
-pkgver=1.2
+pkgver=2.0
 pkgrel=0
 pkgdesc="Rofi Themes for ArchLabs"
 arch=('any')
