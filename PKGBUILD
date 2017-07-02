@@ -2,8 +2,9 @@
 pkgname=archlabs-pipemenus-git
 _pkgname=archlabs-pipemenus
 _destname="/usr/bin/"
+_licensedir="/usr/share/archlabs/licenses/"
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Pipemenu's for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-pipemenus"
@@ -18,6 +19,8 @@ package() {
 	rm -f "${srcdir}/${_pkgname}/"README.md
 	rm -f "${srcdir}/${_pkgname}/"git-v*
 	rm -f "${srcdir}/${_pkgname}/"cleanup.sh
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"	
 	mkdir -p "${pkgdir}${_destname}"
 	cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}${_destname}"
 }
