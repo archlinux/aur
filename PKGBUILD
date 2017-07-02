@@ -2,8 +2,8 @@
 pkgname=archlabs-wallpapers-4k-git
 _pkgname=archlabs-wallpapers-4k
 _destname="/usr/share/backgrounds/archlabs-4k/"
-pkgver=1.1
-pkgrel=3
+pkgver=2.0
+pkgrel=0
 pkgdesc="4k Wallpapers for ArchLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/archlabs-wallpapers-4k"
