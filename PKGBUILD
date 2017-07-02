@@ -1,11 +1,11 @@
-# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Maintainer: fusion809 <CONTACT via comments at https://aur.archlinux.org/packages/jucipp>
 # Contributor: archshift
 
 pkgname=jucipp
 ghub="https://github.com"
 cpp="$ghub/cppit"
 pkgdesc='A lightweight cross-platform C++ IDE'
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="$cpp/jucipp"
