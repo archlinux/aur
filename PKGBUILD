@@ -3,7 +3,7 @@
 pkgname=kubernetes-cni-bin
 pkgdesc="Kubernetes.io kubernetes-cni binary"
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://kubernetes.io"
 license=('apache')
@@ -13,5 +13,5 @@ sha256sums_x86_64=('08cbe5c42366ec3184cc91a4353f6e066f2d7325b4db1cb4f87c7dcc8c0e
 
 package() {
   tar -vxf data.tar.xz
-  install -D -d -m0755"./opt/cni/bin" "${pkgdir}/opt/cni/bin"
+  install -D -d -m0755 "./opt/cni/bin" "${pkgdir}/opt/cni/bin"
 }
