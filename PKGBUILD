@@ -5,7 +5,7 @@
 
 pkgname=tilda-git
 _gitname=tilda
-pkgver=1.3.2.r31.g727aed8
+pkgver=1.3.2.r34.gd3842ed
 pkgrel=1
 pkgdesc="Linux terminal based on classic terminals from first person shooter games"
 arch=('i686' 'x86_64')
