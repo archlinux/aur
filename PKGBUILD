@@ -3,23 +3,12 @@
 _pyname=mbed-cli
 pkgname=python-${_pyname}
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="ARM mbed Command Line Interface"
 arch=('any')
 url="https://developer.mbed.org"
 license=('Apache')
-depends=(
-  'python2'
-  'python2-beautifulsoup4'
-  'python2-colorama'
-  'python2-fuzzywuzzy'
-  'python2-intelhex'
-  'python2-jinja'
-  'python2-prettytable'
-  'python2-pyserial'
-  'python2-requests'
-  'python2-yaml'
-)
+depends=('python2')
 optdepends=(
   'git: support git-based mbed projects'
   'mercurial: support mercurial-based mbed projects'
