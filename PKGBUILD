@@ -1,6 +1,6 @@
 pkgname=file-commander-git
 pkgver=0.9.3.2.r33.g7efe4eb
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple fullscreen word processorQt-based cross-platform Total Commander-like orthodox file manager for Windows, Mac and Linux'
 arch=('i686' 'x86_64')
 url="https://github.com/VioletGiraffe/file-commander"
@@ -22,7 +22,7 @@ prepare(){
 
 build() {
   cd "$srcdir/$pkgname"
-  qmake PREFIX=/usr
+  qmake PREFIX=/opt/$pkgname
   make
 }
 
@@ -31,6 +31,6 @@ package() {
   mkdir -p $pkgdir/opt/$pkgname
   cp $srcdir/$pkgname/bin/release/* $pkgdir/opt/$pkgname
   mkdir -p $pkgdir/usr/bin/
-  ln -s $pkgdir/opt/$pkgname/FileCommander $pkgdir/usr/bin
+  install -Dm755 $pkgdir/opt/$pkgname/FileCommander $pkgdir/usr/bin
 
 }
