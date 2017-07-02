@@ -1,7 +1,7 @@
 pkgbase = kubernetes-cni-bin
 	pkgdesc = Kubernetes.io kubernetes-cni binary
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kubernetes.io
 	arch = x86_64
 	license = apache
