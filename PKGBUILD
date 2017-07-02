@@ -2,8 +2,8 @@
 pkgname=archlabs-oblogout-themes-git
 _pkgname=archlabs-oblogout-themes
 _destname="/usr/share/themes/"
-pkgver=1.1
-pkgrel=6
+pkgver=2.0
+pkgrel=0
 pkgdesc="Oblogout themes created for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-oblogout-themes"
