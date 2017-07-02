@@ -2,8 +2,9 @@
 pkgname=archlabs-docs-git
 _pkgname=archlabs-docs
 _destname="/usr/share/archlabs/docs/"
+_licensedir="/usr/share/archlabs/licenses/"
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Documentation created for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Docs"
@@ -18,5 +19,7 @@ package() {
 	rm -f "${srcdir}/${_pkgname}/"README.md
 	rm -f "${srcdir}/${_pkgname}/"git-v*
 	mkdir -p "${pkgdir}${_destname}"
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"	
 	cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}${_destname}"
 }
