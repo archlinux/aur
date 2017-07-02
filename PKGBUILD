@@ -2,8 +2,8 @@
 pkgname=archlabs-common-git
 _pkgname=archlabs-common
 _destname="/usr/lib/archlabs/common/"
-pkgver=1.1
-pkgrel=2
+pkgver=2.0
+pkgrel=0
 pkgdesc="Arc themes created for ARCHLabs with Arc Colora script"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-Common"
