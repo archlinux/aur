@@ -14,5 +14,5 @@ sha256sums_x86_64=('b7c9be22a6379d8cc47ba1183bbc9de0acf49ad1418ffa8ae57628ad1d7c
 package() {
   tar -vxf data.tar.xz
   install -D -m0644 "./lib/systemd/system/kubelet.service" "${pkgdir}/usr/lib/systemd/system/kubelet.service"
-  install -D -m0644 "./usr/bin/kubelet" "${pkgdir}/usr/bin/kubelet"
+  install -D -m0755 "./usr/bin/kubelet" "${pkgdir}/usr/bin/kubelet"
 }
