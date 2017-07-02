@@ -1,0 +1,83 @@
+commit 810e01e9d63717a8f41df27781af4b1ce8a013c0
+Author: Daniel Maslowski <daniel.maslowski@shop.co>
+Date:   Sun Jul 2 17:24:21 2017 +0200
+
+    Changes needed for Qt5
+    - QApplication & QLabel moved to QtWidgets
+    - Remove setting text codec (hoping it just defaults to UTF-8 now)
+    - Replace qInstallMsgHandler with InstallMessageHandler
+
+diff --git a/src/configwindow.cpp b/src/configwindow.cpp
+index dd1df7e..c60d657 100644
+--- a/src/configwindow.cpp
++++ b/src/configwindow.cpp
+@@ -63,10 +63,10 @@ const std::unordered_map<QString, const QVariant> ConfigWindow::config_defaults
+ static DebugWindow* log_class = nullptr;
+ static bool debug = false;
+ 
+-void handle_message(QtMsgType type, const char *msg)
++void handle_message(QtMsgType type, const QMessageLogContext &, const QString & str)
+ {
+     if(log_class && debug){
+-        log_class->handle_message(type,msg);
++        log_class->handle_message(type,str.toStdString().c_str());
+     }
+ }
+ 
+@@ -80,7 +80,7 @@ ConfigWindow::ConfigWindow(QWidget *parent) :
+     ui_debug = std::unique_ptr<DebugWindow>(new DebugWindow());
+     log_class = ui_debug.get();
+ 
+-    qInstallMsgHandler(handle_message);
++    qInstallMessageHandler(handle_message);
+ 
+ #ifndef Q_WS_X11
+     // Do not show X11 specific options on other platforms
+diff --git a/src/effect.h b/src/effect.h
+index 682c71c..c81b598 100644
+--- a/src/effect.h
++++ b/src/effect.h
+@@ -21,7 +21,7 @@
+ #define EFFECT_H
+ 
+ #include <QtGui/QMovie>
+-#include <QtGui/QLabel>
++#include <QtWidgets/QLabel>
+ #include <QMainWindow>
+ #include <QVariant>
+ #include <QMovie>
+diff --git a/src/main.cpp b/src/main.cpp
+index a5dd427..2e6c0d5 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -17,7 +17,7 @@
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include <QtGui/QApplication>
++#include <QtWidgets/QApplication>
+ #include <QtCore/QLocale>
+ #include <QTranslator>
+ #include <QDebug>
+@@ -54,8 +54,6 @@ int main(int argc, char *argv[])
+     app.installTranslator(&translator);
+ 
+     app.setQuitOnLastWindowClosed(false);
+-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+     QSettings::setDefaultFormat(QSettings::IniFormat);
+ 
+     if ( app.isRunning() ) {
+diff --git a/src/pony.h b/src/pony.h
+index 3c32801..e6d4d92 100644
+--- a/src/pony.h
++++ b/src/pony.h
+@@ -21,7 +21,7 @@
+ #define PONY_H
+ 
+ #include <QtGui/QMovie>
+-#include <QtGui/QLabel>
++#include <QtWidgets/QLabel>
+ #include <QMainWindow>
+ #include <QMouseEvent>
+ #include <QHash>
