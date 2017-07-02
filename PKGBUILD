@@ -2,7 +2,7 @@
 
 PN=Cyberfox
 pkgname=cyberfox
-pkgver=52.2.0
+pkgver=52.2.1
 pkgrel=2
 pkgdesc="Fast and privacy oriented fork of Mozilla Firefox"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}.desktop"
         "http://downloads.sourceforge.net/project/cyberfox/Zipped%20Format/${PN}-$pkgver.en-US.linux-${arch}.tar.bz2")
 
 md5sums=('66568212abb7563bf390db5762924815'
-         '3f71651d0cc6e7d750ac8815e6037271')
+         'b105399289572dd02a256b4015ddf55c')
 
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
 
