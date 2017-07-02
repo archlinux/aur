@@ -3,7 +3,7 @@
 pkgname=kubelet-bin
 pkgdesc="Kubernetes.io kubelet binary"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://kubernetes.io"
 license=('apache')
