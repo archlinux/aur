@@ -2,8 +2,8 @@
 
 pkgname=zpdic
 pkgver=1.18.0
-pkgrel=1
-pkgdesc="A modern solution for editing dictionaries."
+pkgrel=2
+pkgdesc="A modern solution for dictionary editing."
 url="http://ziphil.web.fc2.com/application/download/2.html"
 license=('custom')
 arch=('any')
@@ -21,6 +21,7 @@ md5sums=('0ba7110da857a88c0ab5e0efa6a9ce85'
 package() {
   install -Dm755 {,"${pkgdir}/usr/bin/"}zpdic
   install -Dm644 {,"${pkgdir}/usr/share/licenses/${pkgname}/"}LICENSE
+  install -Dm755 {,"${pkgdir}/usr/share/applications/"}ZpDIC.desktop
 
   unzip "v${pkgver}-full.zip" -d "v${pkgver}-full"
   cd "v${pkgver}-full"

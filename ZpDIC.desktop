@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=ZpDIC
+GenericName=ZpDIC
+Comment=A modern solution for dictionary editing.
+Icon=accessories-dictionary
+Exec=zpdic
+Keywords=zpdic;dictionary;conlang;language;
+X-AppInstall-Keywords=zpdic;dictionary;conlang;language;
+X-GNOME-Keywords=zpdic;dictionary;conlang;language;
+Terminal=false
+Categories=Office;Dictionary;Languages;Java;
