@@ -33,7 +33,7 @@ prepare() {
   cd $srcdir/$_buildname
   
   echo "Creating Makefile"
-  qmake R_HOME=/usr/lib/R PREFIX=/usr ../$_pkgname
+  qmake PREFIX=/usr ../$_pkgname
 }
 
 build() {
