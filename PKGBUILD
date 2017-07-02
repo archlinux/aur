@@ -2,7 +2,7 @@
 # Previous Maintainer: Denis Meiswinkel <denis.meiswinkel@gmail.com>
 # Contributor: Balló György <ballogyor+arch@gmail.com>
 
-pkgname=dee
+pkgname=dee-test
 pkgver=1.2.7
 pkgrel=9
 pkgdesc="Model to synchronize multiple instances over DBus."
