@@ -4,7 +4,7 @@
 # Contributor: Étienne Deparis <etienne [at] depar [dot] is>
 
 pkgname=khal
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-urwid' "python-tzlocal>=1.0"
 optdepends=('python-setproctitle' 'vdirsyncer')
 checkdepends=('python-pytest' 'python-freezegun' 'vdirsyncer')
 source=("https://lostpackets.de/khal/downloads/khal-${pkgver}.tar.gz")
-sha256sums=('b945894cb4ededa6711989814bd4866815f322aa25dff581d808a7eae5047b3b')
+sha256sums=('6ec7ce0202764839521f47805e10ac1f54e9adfae3f82e7c1e67ad88eefd6772')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -47,6 +47,8 @@ package() {
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -D -m644 doc/build/man/khal.1 "${pkgdir}/usr/share/man/man1/khal.1"
+  install -Dm 755 bin/khal "$pkgdir/usr/bin/khal"
+  install -Dm 755 bin/ikhal "$pkgdir/usr/bin/ikhal"
 
   # You can comment the following to disable zsh completion (if you do
   # not plan to use zsh for example)
