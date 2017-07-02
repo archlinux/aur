@@ -1,4 +1,4 @@
-From cc7d7a770c85fc208d4d727a3d9efafd8316db70 Mon Sep 17 00:00:00 2001
+From cd68269a531ce4e600f3a99d1687219e0959af84 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Sep 2016 16:51:15 +0200
 Subject: [PATCH 3/3] Use fopen rather than fopen_s for XP compatibility
@@ -25,7 +25,7 @@ index cd4a0f1..abca4ae 100644
            (void) fprintf(stderr, ERR_OPEN, cs->process, name);
            perror("");
 diff --git a/libmariadb/my_fopen.c b/libmariadb/my_fopen.c
-index 5c0fb40..ad2deb9 100644
+index c99b753..a3b485d 100644
 --- a/libmariadb/my_fopen.c
 +++ b/libmariadb/my_fopen.c
 @@ -36,11 +36,7 @@ FILE *my_fopen(const char *FileName, int Flags, myf MyFlags)
@@ -41,5 +41,5 @@ index 5c0fb40..ad2deb9 100644
      /*
        The test works if MY_NFILE < 128. The problem is that fileno() is char
 -- 
-2.9.3
+2.13.0
 

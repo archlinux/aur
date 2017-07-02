@@ -4,8 +4,10 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# All patches are managed at https://github.com/Martchus/mariadb-connector-c
+
 pkgname=mingw-w64-mariadb-connector-c
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases (mingw-w64)'
 arch=('any')
@@ -21,10 +23,10 @@ source=("https://downloads.mariadb.org/interstitial/connector-c-${pkgver}/mariad
         '0001-Fix-libnames-for-mingw-w64.patch'
         '0002-Fix-_SIZE_T_DEFINED-under-mingw-w64.patch'
         '0003-Use-fopen-rather-than-fopen_s-for-XP-compatibility.patch')
-sha1sums=('7c12d46799e270a14ea414ea23a79aff48bf24e6'
-          '1409632ae308a84fcb02bbec67b7c25851f9a0cf'
-          'f0d680703b019b7aaf7ca3b9580a5e39b8482ba4'
-          'dd7b5e0dc58178773c37ee846dad93e71af21554')
+sha1sums=('6fbf541a4465cd729c7f790a3d9cd337e8dd2666'
+          '12a2d0b8d521dc097cecc3ea32efcaee0e7f9781'
+          'f07a59cdd02ad89e60edcb18a1cdc3ccda93fc2b'
+          '3aa503bb7ad9b84c21cdef94f3a55d96a7fa8811')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
