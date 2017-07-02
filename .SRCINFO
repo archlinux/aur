@@ -12,7 +12,6 @@ pkgbase = wpgtk-git
 	depends = python-gobject
 	depends = gtk3
 	depends = libxslt
-	depends = xsltproc
 	provides = wpgtk
 	conflicts = wpgtk
 	source = git://github.com/deviantfero/wpgtk#branch=testing
