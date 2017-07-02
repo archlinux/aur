@@ -2,7 +2,7 @@
 
 pkgname="sickgear"
 pkgver=0.12.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate your TV enjoyment with innovation, proven stability and reliability."
 arch=("any")
 url="https://github.com/SickGear/SickGear"
@@ -18,7 +18,7 @@ sha256sums=('e862efcfc157502ab8d20e6e5828655b176816a40b2e19d44d708cfeb5a7c35c'
             '91cd5e6bb57f23321926757497ba6cc8d4ac82784c73795279d17eab1d26a1dc'
             '8421dae047549f0db56278e8e2a0a46762804ac4552a5438c9093840fef0f57d'
             '43ed9ebfcda9e254084cc1bd43d3bca988139267406654f96a5f78ab223a323c'
-            'f7e044642a7a8044d589ef806fbdc48777cac7450d6d702c72bf7583ec7c1aa1')
+            'f9f293547506d9cb3532d291c076bf975659bc853b31005ca938e0550db48177')
 
 prepare() {
     cd "SickGear-release_$pkgver"

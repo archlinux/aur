@@ -1,4 +1,4 @@
-From b6956f1d6f234936b45e6123c9170407a905c715 Mon Sep 17 00:00:00 2001
+From 16f8ac11d79db9ccd9e8c89d74a56df67b3dc063 Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
 Date: Fri, 17 Mar 2017 14:53:05 -0500
 Subject: [PATCH] adjust imports
@@ -145,7 +145,7 @@ index fe246b3e..88daf104 100644
  import threading
  
 diff --git a/sickbeard/helpers.py b/sickbeard/helpers.py
-index 99e7f093..054f990f 100644
+index 99e7f093..629b4a5a 100644
 --- a/sickbeard/helpers.py
 +++ b/sickbeard/helpers.py
 @@ -58,7 +58,7 @@ from sickbeard.common import USER_AGENT, mediaExtensions, subtitleExtensions, cp
@@ -153,7 +153,7 @@ index 99e7f093..054f990f 100644
  
  from lib.cachecontrol import CacheControl, caches
 -from lib.scandir.scandir import scandir
-+import scandir
++from scandir import scandir
  from itertools import izip, cycle
  
  
@@ -769,5 +769,5 @@ index cf9aff6f..a2c4eb56 100644
  
  from lib.libtrakt import TraktAPI
 -- 
-2.13.1
+2.13.2
 
