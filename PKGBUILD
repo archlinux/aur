@@ -3,13 +3,13 @@
 pkgname=pi-hole-ftl
 _pkgname=FTL
 pkgver=2.9.4
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
 license=('EUPL-1.1')
 depends=()
-makedepends=('git' 'sqlite')
+makedepends=('sqlite')
 install=$pkgname.install
 backup=('etc/pihole/pihole-FTL.conf')
 source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"

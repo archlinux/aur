@@ -1,7 +1,7 @@
 pkgbase = pi-hole-ftl
 	pkgdesc = The Pi-hole FTL engine
 	pkgver = 2.9.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pi-hole/FTL
 	install = pi-hole-ftl.install
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = pi-hole-ftl
 	arch = armv7h
 	arch = aarch64
 	license = EUPL-1.1
-	makedepends = git
 	makedepends = sqlite
 	backup = etc/pihole/pihole-FTL.conf
 	source = https://github.com/pi-hole/FTL/archive/v2.9.4.tar.gz
