@@ -1,0 +1,15 @@
+--- configure.ac.orig	2011-07-25 07:18:18.000000000 -0400
++++ configure.ac	2017-07-02 13:52:20.045049112 -0400
+@@ -73,11 +73,11 @@ AC_TYPE_INT8_T
+ AC_TYPE_UINT16_T
+ AC_TYPE_UINT8_T
+ AC_SYS_LARGEFILE
+ 
+ date=`date "+%B %G"`
+-unamem=`uname -m | sed -e 's/i.86/i686/' -e 's/^armv.*/arm/'`
++unamem=`uname -m | sed 's/i.86/i686/'`
+ 
+ AC_SUBST(CONFIG_DATE, "$date")
+ AC_SUBST(CONFIG_SYSDEP_DIR, "$unamem")
+ AC_SUBST(CONFIG_VERSION, "AC_PACKAGE_VERSION")
+ 
