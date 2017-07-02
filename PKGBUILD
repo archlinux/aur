@@ -10,7 +10,7 @@ url="http://www.gnome.org"
 license=('GPL')
 depends=('gtk2' 'gconf' 'libgsf')
 conflicts=('goffice<0.10')
-makedepends=('pkgconfig' 'intltool' 'gtk-doc')
+makedepends=('intltool' 'gtk-doc')
 source=(https://download.gnome.org/sources/goffice/${pkgver%.*}/goffice-${pkgver}.tar.xz
         use-apiver-for-dirs.patch)
 sha256sums=('165070beb67b84580afe80a8a100b674a81d553ab791acd72ac0c655f4fadb15'
