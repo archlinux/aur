@@ -2,7 +2,7 @@
 
 pkgname=focuswriter
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple fullscreen word processor'
 arch=('i686' 'x86_64')
 url="https://gottcode.org/$pkgname/"
@@ -22,5 +22,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
+  qmake-qt5 PREFIX=/usr
   make INSTALL_ROOT="$pkgdir/" install
 }
