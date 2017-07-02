@@ -2,8 +2,8 @@
 pkgname=archlabs-pipemenus-git
 _pkgname=archlabs-pipemenus
 _destname="/usr/bin/"
-pkgver=1.1
-pkgrel=5
+pkgver=2.0
+pkgrel=0
 pkgdesc="Pipemenu's for ARCHLabs"
 arch=('any')
 url="https://github.com/ARCHLabs/Archlabs-pipemenus"
