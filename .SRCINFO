@@ -1,12 +1,13 @@
 pkgbase = gambit
 	pkgdesc = Tools for doing computation in game theory - git version
 	pkgver = 15.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gambit-project.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = gcc5
 	depends = wxgtk
 	provides = gambit
 	conflicts = gambit
