@@ -5,12 +5,12 @@
 pkgname="turbovnc"
 pkgdesc="An optimized version of TightVNC"
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.turbovnc.org/"
 license=('GPL')
 makedepends=('cmake' 'rsync' 'jdk8-openjdk')
-depends=('libxaw' 'libxt' 'libxcursor' 'libjpeg-turbo' 'java-runtime')
+depends=('libxaw' 'libxt' 'libxcursor' 'libjpeg-turbo' 'java-runtime' 'openssl-1.0')
 sha256sums=('969abaeffd8f0ea8f635031e21d62755a54c2616541c8f1d6d981e2138aa0fca'
             'ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b')
 conflicts=('turbovnc-bin' 'tigervnc' 'tigervnc-svn' 'tightvnc')
@@ -21,6 +21,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/${pkgname}
 build() {
   mkdir -p "${srcdir}"/${pkgname}-${pkgver}/build
   export JAVA_HOME=/usr/lib/jvm/default/
+  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/openssl-1.0/pkgconfig
   cd "${srcdir}"/${pkgname}-${pkgver}/build
   ln -sf ../CMakeLists.txt
   cmake -G "Unix Makefiles" \
