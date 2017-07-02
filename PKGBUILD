@@ -12,9 +12,11 @@ provides=('zpdic')
 depends=('java-environment>=8' 'java-openjfx>=8' 'sh')
 source=("v${pkgver}-full.zip::https://www.dropbox.com/sh/g75rqn97sdlpp0b/AAAHY5hnjSeqSnuhIywmDqR3a/v1.18.0-full.zip?dl=1"
         'zpdic'
-        'LICENSE')
+        'LICENSE'
+        'ZpDIC.desktop')
 noextract=("v${pkgver}-full.zip")
 md5sums=('0ba7110da857a88c0ab5e0efa6a9ce85'
+         SKIP
          SKIP
          SKIP)
 
