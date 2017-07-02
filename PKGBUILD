@@ -1,5 +1,5 @@
 pkgname="cabal-install-git"
-pkgver=Cabal.1.20.0.0.release.r3843.g0f41001bd
+pkgver=Cabal.1.20.0.0.release.r3914.ge2cacc17d
 pkgrel=1
 
 pkgdesc="The command-line interface for Cabal and Hackage."
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://hackage.haskell.org/package/cabal-install"
 license=('custom:BSD3')
 depends=('gmp' 'zlib' 'libffi')
-makedepends=('ghc' 'git' 'cabal-install')
+makedepends=('ghc' 'git' 'ghc-static')
 provides=('cabal-install')
 conflicts=('cabal-install')
 
@@ -21,7 +21,18 @@ pkgver() {
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+bootstrap() {
+	echo "Need to bootstrap a cabal version first."
+	echo "This will probably take a while"
+	cd ${srcdir}/cabal/cabal-install
+
+	HOME="${srcdir}" EXTRA_CONFIGURE_OPTS="--enable-shared" ./bootstrap.sh
+	export PATH=${srcdir}/cabal/cabal-install/dist/build/cabal/:${PATH}
+}
+
 build() {
+	command -v cabal >/dev/null 2>&1 || bootstrap
+	echo ${PATH}
 	CONFIGF="${srcdir}/cabal/.cabal/config"
 	SANDCONFIG="--sandbox-config-file=${srcdir}/cabal/cabal.sandbox.config"
 	CCONFIG="--config=${CONFIGF}"
