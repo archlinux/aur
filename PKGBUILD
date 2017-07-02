@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 license=('GPL3' 'LGPL3')
 url="http://oscript.io/"
 depends=('mono')
-makedepens=('unzip')
+makedepens=('tar ar xz')
 
 source=(
         "source.deb::http://oscript.io/downloads/$_pkgver/deb"
