@@ -2,13 +2,13 @@
 
 pkgname=auracle-git
 _pkgname=auracle
-pkgver=r7.2742b12
+pkgver=r8.89398f2
 pkgrel=1
 pkgdesc='Next generation cower'
 arch=('any')
 url="https://github.com/falconindy/auracle.git"
 license=('MIT')
-makedepends=('meson' 'ninja')
+makedepends=('meson' 'ragel')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/falconindy/auracle.git")
@@ -27,7 +27,8 @@ build () {
 
 package () {
   cd "$_pkgname"
-  DESTDIR="$pkgdi" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: et ts=2 sw=2
