@@ -1,8 +1,8 @@
 # Maintainer: yuhr <sdn.pate(at)gmail.com>
 
 pkgname=zpdic
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.18.1
+pkgrel=1
 pkgdesc="A modern solution for dictionary editing."
 url="http://ziphil.web.fc2.com/application/download/2.html"
 license=('custom')
@@ -10,12 +10,12 @@ arch=('any')
 conflicts=('zpdic')
 provides=('zpdic')
 depends=('java-environment>=8' 'java-openjfx>=8' 'sh')
-source=("v${pkgver}-full.zip::https://www.dropbox.com/sh/g75rqn97sdlpp0b/AAAHY5hnjSeqSnuhIywmDqR3a/v1.18.0-full.zip?dl=1"
+source=("v${pkgver}-full.zip::https://www.dropbox.com/sh/g75rqn97sdlpp0b/AADBhINbJSipEZvtcS6IPTNDa/v1.18.1-full.zip?dl=1"
         'zpdic'
         'LICENSE'
         'ZpDIC.desktop')
 noextract=("v${pkgver}-full.zip")
-md5sums=('0ba7110da857a88c0ab5e0efa6a9ce85'
+md5sums=('603adedebfb38f49b175dd8a32e88bbe'
          SKIP
          SKIP
          SKIP)
