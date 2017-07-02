@@ -1,0 +1,3 @@
+#!/bin/sh
+digilent-agent &
+xdg-open /usr/share/webapps/digilent-waveforms-live/index.html

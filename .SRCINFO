@@ -1,0 +1,24 @@
+pkgbase = digilent-waveforms-live
+	pkgdesc = browser app to control the OpenScopeMZ hardware
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://reference.digilentinc.com/reference/software/waveforms-live/start
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = unzip
+	depends = digilent-agent
+	depends = xdg-utils
+	noextract = waveforms-live-1.0.6.zip
+	source = https://s3-us-west-2.amazonaws.com/digilent/Software/WaveForms+Live/1.0.6/waveforms-live-1.0.6.zip
+	source = https://github.com/Digilent/waveforms-live/raw/6923c91afc7bc3402b10bf56179ad1e070bee925/LICENSE
+	source = waveforms-live.desktop
+	source = waveforms-live
+	sha256sums = 0a1300a011afc71c6eeb4e94385299000177a147ac3e5482d3e48ea587d057ee
+	sha256sums = fbdfae05e542ea6ad7e11e3818076b46d2b6bd81dac49c59bc9ac78025ba5339
+	sha256sums = 74ada5e32ece8b7746f181c2dd46ecebc5017c804252b8315bb8022b062f7954
+	sha256sums = e205e254ea747ca6b5aa6eb72a60d35e00006db5aa16f327aa40005e3988d397
+
+pkgname = digilent-waveforms-live
+

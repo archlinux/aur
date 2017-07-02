@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=waveforms-live
+Type=Application
+Exec=/usr/bin/waveforms-live
+Icon=/usr/share/webapps/digilent-waveforms-live/assets/img/waveforms-live.svg
