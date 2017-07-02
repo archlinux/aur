@@ -1,6 +1,6 @@
 # Maintainer: Matthieu Froment <thieume2 {at} hotmail {dot} com>
 pkgname=keepass-fr
-pkgver=2.35
+pkgver=2.36
 pkgrel=1
 pkgdesc="French locale for keepass"
 license=('GPL2')
@@ -9,7 +9,7 @@ makedepends=('unzip')
 url="http://keepass.info/translations.html"
 source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-French.zip)
 arch=(any)
-md5sums=('03c0df90b8290522497ad038dc598941')
+md5sums=('789e7733587b46059e2afa99540a790c')
 
 package(){
    mkdir -p "${pkgdir}"/usr/share/keepass
