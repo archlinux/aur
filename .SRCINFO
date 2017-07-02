@@ -1,4 +1,4 @@
-pkgbase = python-pyteomics
+pkgbase = python2-pyteomics
 	pkgdesc = A framework for proteomics data analysis.
 	pkgver = 3.4.2
 	pkgrel = 1
@@ -6,16 +6,16 @@ pkgbase = python-pyteomics
 	changelog = CHANGELOG
 	arch = any
 	license = Apache
-	depends = python
-	depends = python-setuptools
-	optdepends = python-matplotlib: for pylab_aux module
-	optdepends = python-sqlalchemy: for mass.unimod module
-	optdepends = python-pandas: for convenient filtering of CSV tables from search engines
-	optdepends = python-lxml: for XML parsing modules
-	optdepends = python-numpy: for most of features, highly recommended
+	depends = python2
+	depends = python2-setuptools
+	optdepends = python2-matplotlib: for pylab_aux module
+	optdepends = python2-sqlalchemy: for mass.unimod module
+	optdepends = python2-pandas: for convenient filtering of CSV tables from search engines
+	optdepends = python2-lxml: for XML parsing modules
+	optdepends = python2-numpy: for most of features, highly recommended
 	options = !emptydirs
 	source = https://pypi.io/packages/source/p/pyteomics/pyteomics-3.4.2.tar.gz
 	md5sums = 36cc4c3bab653fdbe22aec71858a461f
 
-pkgname = python-pyteomics
+pkgname = python2-pyteomics
 
