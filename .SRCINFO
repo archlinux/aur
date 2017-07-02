@@ -1,0 +1,27 @@
+pkgbase = headphones-git
+	pkgdesc = Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.
+	pkgver = 0.5.18.r88.g8e1cd31
+	pkgrel = 1
+	url = https://github.com/rembo10/headphones
+	install = headphones.install
+	arch = any
+	license = GPL3
+	depends = python2
+	optdepends = sabnzbd: NZB downloader
+	optdepends = python2-notify: desktop notifications
+	optdepends = unrar: automatic decompression
+	optdepends = git: pull new versions from git
+	conflicts = headphones
+	replaces = headphones
+	options = !strip
+	source = git://github.com/rembo10/headphones.git
+	source = headphones-system.service
+	source = headphones-user.service
+	source = headphones.tmpfile
+	sha256sums = SKIP
+	sha256sums = 14f00904135940e00a6af5742116d950be07248a578c2562373413155f768d01
+	sha256sums = 22d2a8da5cc8da149ddac086e52c0e30b51671644e039d435f853cf383f15317
+	sha256sums = b8f7030f570e7707eb9c0f41c382e37d54244e7885c795a9f31788efdd45914e
+
+pkgname = headphones-git
+

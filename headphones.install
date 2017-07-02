@@ -1,0 +1,29 @@
+_NAME=headphones
+
+post_install() {
+	getent passwd ${_NAME} > /dev/null || useradd -d /opt/${_NAME} -s /bin/false -r ${_NAME} > /dev/null
+	chown -R ${_NAME}. /opt/${_NAME}
+
+	# Create a directory in /run if it does not exist
+	if [ ! -d /run/${_NAME} ]; then
+		mkdir /run/${_NAME}
+		chown ${_NAME}. /run/${_NAME}
+		chmod 775 /run/${_NAME}
+	fi
+
+    echo ""
+    echo "To fill the configuration file (/opt/headphones/config.ini), do:"
+    echo "  systemctl start headphones; systemctl stop headphones"
+    echo ""
+    echo "It should dump the initial configuration that you can now modify."
+    echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	echo "Some files have not been removed because they are created by ${_NAME} itself, e.g. the music database."
+	userdel -f ${_NAME}
+}
