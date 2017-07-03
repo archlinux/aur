@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('tegaki-pygtk>=0.2')
 makedepends=('python2')
 optdepends=('tegaki-models-wagomu-japanese' 'tegaki-models-zinnia-japanese' 'tegaki-models-wagomu-simplified-chinese' 'tegaki-models-zinnia-simplified-chinese' 'tegaki-models-zinnia-traditional-chinese' 'tegaki-train' 'tegaki-tools')
-source=("http://www.tegaki.org/releases/0.3.1/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/tegaki/tegaki/releases/download/v0.3.1/$pkgname-$pkgver.tar.gz")
 md5sums=('c9f09bccd6f621908c666d54cbe01805')
 
 prepare() {
