@@ -1,7 +1,7 @@
 # Maintainer: Timothée Ravier <tim@siosm.fr>
 
 pkgname=(python2-dulwich python-dulwich)
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc='Pure-Python implementation of the Git file formats and protocols'
 arch=('any')
@@ -11,7 +11,7 @@ depends=()
 options=(!emptydirs)
 source=("https://www.dulwich.io/releases/dulwich-${pkgver}.tar.gz"{,.asc})
 validpgpkeys=('DC837EE14A7E37347E87061700806F2BD729A457') # Jelmer Vernooĳ
-sha256sums=('5d61812a810038b260ee88807fdb39b4d827e2f00fe5907dad22d2733008f3ea'
+sha256sums=('90b5c1025f60c68b98980f85950860b980692053c7c5dd93c19cc3cb87f186b2'
             'SKIP')
 
 build() {
