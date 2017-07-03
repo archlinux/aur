@@ -1,0 +1,15 @@
+pkgbase = tictactoe-gtk
+	pkgdesc = A basic TicTacToe game written in C using Gtk+3.0
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JannikHv/tictactoe-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtk3
+	source = tictactoe-gtk::git://github.com/JannikHv/TicTacToe-Gtk.git
+	md5sums = SKIP
+
+pkgname = tictactoe-gtk
+
