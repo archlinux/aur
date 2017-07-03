@@ -1,6 +1,6 @@
 pkgbase = pipman-git
 	pkgdesc = Generate PKGBUILD from pip packages
-	pkgver = 0.9.1.r3.g66d9436
+	pkgver = 1.0.r1.g34bd8a5
 	pkgrel = 1
 	url = http://github.com/sollidsnake/pipman
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = pipman-git
 	depends = python
 	depends = python-pip
 	depends = python-docopt
+	depends = python-colorama
 	source = git+https://github.com/sollidsnake/pipman
 	md5sums = SKIP
 
