@@ -5,7 +5,7 @@
 
 pkgbase=lib32-mesa-noglvnd
 pkgname=('lib32-vulkan-intel-noglvnd' 'lib32-vulkan-radeon-noglvnd' 'lib32-mesa-vdpau-noglvnd' 'lib32-mesa-noglvnd' 'lib32-mesa-libgl-noglvnd')
-pkgver=17.1.0
+pkgver=17.1.4
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
@@ -15,19 +15,15 @@ makedepends=('python2-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glprot
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
-	LICENSE
-	remove-gbm_bo_create_with_modifiers.patch)
-sha256sums=('cf234a6ed4764673886b6661553b54675776ef0898f774716173cec890ac3b17'
+	LICENSE)
+sha256sums=('06f3b0e6a28f0d20b7f3391cf67fe89ae98ecd0a686cd545da76557b6cec9cad'
             'SKIP'
-            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
-            '0ee964bfd975b6b19e74be5f9a9fe6215ea171d0f895ffc7e9f73ee728d576ae')
+            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
 validpgpkeys+=('946D09B5E4C9845E63075FF1D961C596A7203456') # "Andres Gomez <tanty@igalia.com>"
 
 prepare() {
   cd ${srcdir}/mesa-${pkgver}
-
-  patch -Np1 -i ../remove-gbm_bo_create_with_modifiers.patch
 
   autoreconf -fiv
 }
@@ -160,7 +156,7 @@ package_lib32-mesa-libgl-noglvnd() {
   pkgdesc="Mesa 3-D graphics library (32-bit) - non-libglvnd version"
   depends=('lib32-mesa')
   provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-mesa-libgl')
-  conflicts=('lib32-mesa-libgl' 'lib32-mesa-libgl-git')
+  conflicts=('lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-libglvnd')
   replaces=('lib32-mesa-libgl' 'lib32-mesa-libgl-git')
 
   install -m755 -d ${pkgdir}/usr/lib32

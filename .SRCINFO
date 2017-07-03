@@ -1,5 +1,5 @@
 pkgbase = lib32-mesa-noglvnd
-	pkgver = 17.1.0
+	pkgver = 17.1.4
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -22,14 +22,12 @@ pkgbase = lib32-mesa-noglvnd
 	makedepends = lib32-libvdpau
 	makedepends = lib32-wayland
 	makedepends = lib32-lm_sensors
-	source = https://mesa.freedesktop.org/archive/mesa-17.1.0.tar.xz
-	source = https://mesa.freedesktop.org/archive/mesa-17.1.0.tar.xz.sig
+	source = https://mesa.freedesktop.org/archive/mesa-17.1.4.tar.xz
+	source = https://mesa.freedesktop.org/archive/mesa-17.1.4.tar.xz.sig
 	source = LICENSE
-	source = remove-gbm_bo_create_with_modifiers.patch
-	sha256sums = cf234a6ed4764673886b6661553b54675776ef0898f774716173cec890ac3b17
+	sha256sums = 06f3b0e6a28f0d20b7f3391cf67fe89ae98ecd0a686cd545da76557b6cec9cad
 	sha256sums = SKIP
 	sha256sums = 7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2
-	sha256sums = 0ee964bfd975b6b19e74be5f9a9fe6215ea171d0f895ffc7e9f73ee728d576ae
 
 pkgname = lib32-vulkan-intel-noglvnd
 	pkgdesc = Intel's Vulkan mesa driver (32-bit) - non-libglvnd version
@@ -114,6 +112,7 @@ pkgname = lib32-mesa-libgl-noglvnd
 	provides = lib32-mesa-libgl
 	conflicts = lib32-mesa-libgl
 	conflicts = lib32-mesa-libgl-git
+	conflicts = lib32-libglvnd
 	replaces = lib32-mesa-libgl
 	replaces = lib32-mesa-libgl-git
 
