@@ -2,11 +2,11 @@
 
 pkgname=waterfox-kde-bin
 pkgver=54.0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
-url="https://github.com/hawkeye116477/waterfox/tree/plasma"
-license=('MPL' 'GPL')
+url="https://www.waterfoxproject.org/"
+license=('MPL')
 depends=('alsa-lib' 'libxt' 'mime-types' 'dbus-glib' 'hunspell' 'gtk2' 'gtk3' 'nss' 'kwaterfoxhelper>=5.0.1.5')
 makedepends=('wget')
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -17,7 +17,7 @@ conflicts=('waterfox')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 
-source=("waterfox-kde_${pkgver}_amd64.deb::https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox-kde/waterfox-kde_${pkgver}_amd64.deb")
+source=("waterfox-kde_${pkgver}.1_amd64.deb::https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox-kde/waterfox-kde_${pkgver}.1_amd64.deb")
 
 
 package() {
@@ -57,31 +57,33 @@ fi
 if [ ! -f "$_settings" ]; then
 # Download and install language pack
 echo "Do you wish to download and install language pack (if you want to have en-US - this is not needed)?"
-
             select yn in "Yes" "No"; do
                 case $yn in
                     Yes )
 _download_language=yes
 echo -e "Available languages:
-  (ach) Acholi;	(af) Afrikaans;	(an) Aragonese;	(ar) Arabic;	(as) Assamese;	
-  (ast) Asturian;	(az) Azerbaijani;	(bg) Bulgarian;	(bn) Bengali; 
-  (br) Breton;	(bs) Bosnian;	(ca) Catalan;	(cak) Maya Kaqchikel;
-  (cs) Czech;	(cy) Welsh;	(da) Danish;	(de) German;	(dsb) Lower Sorbian; (el) Greek;
-  (en) English; (eo) Esperanto; (es) Spanish; (et) Estonian; (eu) Basque;
-  (fa) Persian; (ff) Fulah; (fi) Finnish; (fr) French; (fy) Western Frisian; (ga) Irish (Ireland);
-  (gd) Gaelic (Scotland); (gl) Galician; (gn) Guarani; (gu) Gujarati (India); 
-  (he) Hebrew; (hi) Hindi (India); (hr) Croatian; (hsb) Upper Sorbian; (hu) Hungarian; 
-  (hy) Armenian (Armenia); (id) Indonesian; (is) Icelandic; (it) Italian; (ja) Japanese; 
-  (kk) Kazakh; (km) Khmer; (kn) Kannada; (ko) Korean; (lij) Ligurian; (lt) Lithuanian; 
-  (lv) Latvian; (mai) Maithili; (mk) Macedonian; (ml) Malayalam; (mr) Marathi; (ms) Malay;
-  (nb) Norwegian (Bokmål); (nl) Dutch; (nn) Norwegian (Nynorsk); (or) Oriya; 
-  (pa) Punjabi (India); (pl) Polish; (pt) Portuguese; (rm) Romansh; (ro) Romanian; (ru) Russian; 
+  (ach) Acholi; (af) Afrikaans; (an) Aragonese; (ar) Arabic; (as) Assamese; 
+  (ast) Asturian; (az) Azerbaijani; (bg) Bulgarian; (bn) Bengali; (br) Breton; 
+  (bs) Bosnian; (ca) Catalan; (cak) Maya Kaqchikel; (cs) Czech; (cy) Welsh; 
+  (da) Danish; (de) German; (dsb) Lower Sorbian; (el) Greek; (en) English; 
+  (eo) Esperanto; (es) Spanish; (et) Estonian; (eu) Basque; (fa) Persian; 
+  (ff) Fulah; (fi) Finnish; (fr) French; (fy) Western Frisian; (ga) Irish - Ireland; 
+  (gd) Gaelic - Scotland; (gl) Galician; (gn) Guarani; (gu) Gujarati - India; 
+  (he) Hebrew; (hi) Hindi - India; (hr) Croatian; (hsb) Upper Sorbian; (hu) Hungarian; 
+  (hy) Armenian - Armenia; (id) Indonesian; (is) Icelandic; (it) Italian; 
+  (ja) Japanese; (kk) Kazakh; (km) Khmer; (kn) Kannada; (ko) Korean;
+  (lij) Ligurian; (lt) Lithuanian; (lv) Latvian; (mai) Maithili; 
+  (mk) Macedonian; (ml) Malayalam; (mr) Marathi; (ms) Malay; (nb) Norwegian - Bokmål; 
+  (nl) Dutch; (nn) Norwegian - Nynorsk; (or) Oriya; (pa) Punjabi - India; 
+  (pl) Polish; (pt) Portuguese; (rm) Romansh; (ro) Romanian; (ru) Russian; 
   (si) Sinhala; (sk) Slovak; (sl) Slovenian; (son) Songhai; (sq) Albanian; 
   (sr) Serbian; (sv) Swedish; (ta) Tamil; (te) Telugu; (th) Thai; 
-  (tr) Turkish; (uk) Ukrainian; (uz) Uzbek; (vi) Vietnamese; (xh) Xhosa; 
-  (zh-hans) Chinese (Simplified); (zh-hant) Chinese (Traditional)
+  (tr) Turkish; (uk) Ukrainian; (uz) Uzbek; (vi) Vietnamese; 
+  (xh) Xhosa; (zh-hans) Simplified Chinese; (zh-hant) Traditional Chinese
 "
-printf "Type language code of language you wish to download and install (for example: en or pl): "
+printf "Type language code of language you wish to download and install 
+(language code is acronym that is inside the parentheses () before your language, 
+for example - for Polish, type pl): "
 read _chosen_language
 
     wget -O $srcdir/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb https://hawkeye116477.github.io/waterfox-deb/pool/main/w/waterfox/waterfox-locale-${_chosen_language}_${pkgver}_amd64.deb;
@@ -112,4 +114,4 @@ No ) break;;
 fi
 
 }
-sha256sums=('8a65dcd16f66fecb6d44f6667cbc8a22f215fb4fd4a5bce8529442bd685c720c')
+sha256sums=('de27de9c4faad7050514ade77dc69c225358c1a3eb2cb2542c46b6604a0db464')
