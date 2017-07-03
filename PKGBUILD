@@ -2,7 +2,7 @@
 # Contributor: Karel Louwagie <karel@louwagie.net>
 
 pkgname=toggldesktop
-pkgver=7.4.47
+pkgver=7.4.52
 pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/toggl/toggldesktop/arch
         "production.patch"
         )
 
-sha512sums=('4bc634caaa02ff8b53c918768e7b04c8aa241517a1738e15d72e87fe86367715c67639ca70220442031dfe583a65a8bcd1b177b12be522f1edb42cd400e59317'
+sha512sums=('811464598d776744721607fc442e716521eaf631cac78bcc00ebe9c1968c22d6ab37d85777f1ed6b90b0c7c54b3de91a2889fb10058921b3cbcfade35ca37b66'
             '484c6e3ba73e2f2ccbe9737424bee68624bd8d46a06735937b3ca134aa34ad9e335b260f7d22bcd3e351ae9d8b989ef048e78cf7ed52bac363bb651a7d229428')
 
 conflicts=('toggldesktop-bin' 'toggl-bin')
