@@ -1,6 +1,6 @@
 pkgbase = albert-pass
 	pkgdesc = Albert extension for pass
-	pkgver = r11.64b6107
+	pkgver = r11.b798ac9
 	pkgrel = 1
 	url = https://github.com/Tyilo/albert-extensions
 	arch = any
