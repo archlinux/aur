@@ -19,7 +19,7 @@ source=("https://github.com/smarty-gettext/smarty-gettext/archive/${pkgver}.tar.
 md5sums=('ea0728f159d2c3cf42f62156fd9c4ef7')
 
 prepare() {
-  cd ${pkgname}-${pkgver}/
+  cd smarty-gettext-${pkgver}/
 
   # Right for executables 
   chmod 750 ./tsmarty2c.php
@@ -27,7 +27,7 @@ prepare() {
 
 
 package() {
-  cd ${pkgname}-${pkgver}/
+  cd smarty-gettext-${pkgver}/
   
   mkdir -p ${pkgdir}/usr/share/php/smarty3/plugins/
   cp ./block.t.php ${pkgdir}/usr/share/php/smarty3/plugins/
