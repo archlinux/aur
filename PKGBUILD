@@ -7,7 +7,7 @@ pkgdesc="Generate PKGBUILD from pip packages"
 arch=('any')
 url="http://github.com/sollidsnake/pipman"
 license=('GPL')
-depends=('python' 'python-pip' 'python-docopt')
+depends=('python' 'python-pip' 'python-docopt' 'python-colorama')
 source=(git+https://github.com/sollidsnake/pipman)
 md5sums=('SKIP')
 
