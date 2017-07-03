@@ -1,8 +1,8 @@
 # Maintainer: Tobias Rueetschi <tr+archlinux at brief dot li>
 
 pkgname=vault-client
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Vault-Client is a command-line interface to HashiCorp's Vault inspired by pass."
 arch=(i686 x86_64)
 url="https://github.com/adfinis-sygroup/vault-client.git"
@@ -11,7 +11,7 @@ depends=()
 makedepends=(git go)
 source=("https://github.com/adfinis-sygroup/vault-client/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('6928d0d59d7791e3cc5917b6418b19d6cc81201bcc3de768f3a4a41bf852b76e')
+sha256sums=('194626fff19f22d0ace16d8a9695103aee86119981e3e3cde58d9ee9c3179796')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,6 +23,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    install -Dm755 vc "${pkgdir}/usr/bin/vc"
-    install -Dm644 sample/vc-completion.bash "${pkgdir}/usr/share/bash-completion/completions/vc"
+    make DESTDIR="${pkgdir}" bindir="${pkgdir}/usr/bin" install
 }

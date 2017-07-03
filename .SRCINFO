@@ -1,15 +1,15 @@
 pkgbase = vault-client
 	pkgdesc = Vault-Client is a command-line interface to HashiCorp's Vault inspired by pass.
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/adfinis-sygroup/vault-client.git
 	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
 	makedepends = go
-	source = https://github.com/adfinis-sygroup/vault-client/archive/v1.1.1.tar.gz
-	sha256sums = 6928d0d59d7791e3cc5917b6418b19d6cc81201bcc3de768f3a4a41bf852b76e
+	source = https://github.com/adfinis-sygroup/vault-client/archive/v1.1.2.tar.gz
+	sha256sums = 194626fff19f22d0ace16d8a9695103aee86119981e3e3cde58d9ee9c3179796
 
 pkgname = vault-client
 
