@@ -1,0 +1,27 @@
+pkgbase = polo
+	pkgdesc = GTK file manager, currently in beta
+	pkgver = 17.7
+	pkgrel = 1
+	url = http://www.teejeetech.in/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk3
+	depends = libgee
+	depends = libsoup
+	depends = vte3
+	optdepends = mediainfo
+	optdepends = fish
+	optdepends = perl-image-exiftool
+	optdepends = pv
+	optdepends = pdftk
+	optdepends = ffmpeg
+	optdepends = polo-donation-plugins
+	provides = polo
+	conflicts = polo
+	options = emptydirs
+	source = https://github.com/teejee2008/polo/archive/v17.7-beta.8.tar.gz
+	md5sums = 77d58e5d66f9a85f6dce529046009cd9
+
+pkgname = polo
+
