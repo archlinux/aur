@@ -1,6 +1,6 @@
 pkgbase = fanicontrol
 	pkgdesc = a new way controling your fans
-	pkgver = 0.28
+	pkgver = 0.30
 	pkgrel = 1
 	url = https://github.com/tsonntig/Fanicontrol
 	arch = any
