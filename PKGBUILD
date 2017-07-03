@@ -1,6 +1,6 @@
 # Maintainer: Eike Baran <eikebaran89@gmail.com>
 pkgname=jdigitalsimulator
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="JDigitalSimulator is a platform independent open source Electronic Design Automation software entirely written in Java by Kristian Kraljic."
 arch=('any')
