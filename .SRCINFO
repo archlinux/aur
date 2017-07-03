@@ -15,6 +15,7 @@ pkgbase = green-recorder-git
 	depends = python2-urllib3
 	depends = python2-pydbus
 	depends = xorg-xdpyinfo
+	depends = xorg-xwininfo
 	provides = green-recorder
 	conflicts = green-recorder
 	options = !emptydirs
