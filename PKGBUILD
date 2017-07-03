@@ -2,7 +2,7 @@
 # Contributors: Igor Duarte Cardoso, haagch, Olivier Médoc
 
 pkgname=vmware-patch
-pkgver=12.5.6
+pkgver=12.5.7
 pkgrel=1
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
