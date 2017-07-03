@@ -5,7 +5,7 @@
 
 pkgname=opsu-git
 _pkgname=opsu
-pkgver=0.15.0.r0.g0507374
+pkgver=0.16.0.r0.gcf52c2f
 pkgrel=1
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
