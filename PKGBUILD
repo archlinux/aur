@@ -6,7 +6,7 @@ pkgdesc="FusionDirectory is a combination of system-administrator and end-user w
 arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
-depends=("apache" "smarty3" "smarty3-i18n" "prototype" "scriptaculous" "schema2ldif" "javascript-common"
+depends=("apache" "smarty3" "smarty3-gettext" "prototype" "scriptaculous" "schema2ldif" "javascript-common"
 "perl-path-class" "perl-ldap" "perl-mime-base64" "perl-digest-sha" "perl-term-readkey" "perl-crypt-rijndael"
 "perl-crypt-cbc" "perl-file-copy-recursive" "perl-xml-twig" "perl-archive-extract" "perl-extutils-makemaker"
 "php-imagick" "php-ldap" "php-pear" "php-gd" "php-imap" "php-apache" "php-cas")
