@@ -11,6 +11,7 @@ depends=("apache" "smarty3" "smarty3-gettext" "prototype" "scriptaculous" "schem
 "perl-crypt-cbc" "perl-file-copy-recursive" "perl-xml-twig" "perl-archive-extract" "perl-extutils-makemaker"
 "php-imagick" "php-ldap" "php-pear" "php-gd" "php-imap" "php-apache" "php-cas")
 install=${pkgname}.install
+conflicts=('smarty3-i18n')
 
 backup=('etc/fusiondirectory-apache.conf')
 
