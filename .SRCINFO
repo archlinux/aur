@@ -1,13 +1,14 @@
 pkgbase = twonky
 	pkgdesc = A DLNA-compliant UPnP AV server software from PacketVideo.
 	pkgver = 8.4.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://twonky.com/
 	install = twonky.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = custom
 	depends = imagemagick
 	optdepends = ffmpeg: video transcoding
@@ -27,6 +28,7 @@ pkgbase = twonky
 	md5sums_armv6h = c45a7c6324a578208c574c3862654db3
 	source_armv7h = twonky-armv7h-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-armel-glibc-2.15-hf-8.4.1.zip
 	md5sums_armv7h = c45a7c6324a578208c574c3862654db3
+	source_aarch64 = twonky-aarch64-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-armel-glibc-2.15-hf-8.4.1.zip
 
 pkgname = twonky
 
