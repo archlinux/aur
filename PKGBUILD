@@ -1,13 +1,13 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=60.0.3112.20
+pkgver=61.0.3128.0
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
 url="https://ffmpeg.org/"
 license=('LGPL2.1')
-depends=('gcc-libs' 'zlib')
+depends=('glibc')
 makedepends=(
   'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
   'xdg-utils'
@@ -16,13 +16,11 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r1.patch'
-  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r8.patch'
+  'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
 )
-sha512sums=('93da55ec8171f7ebcba7732db149178a717c8f627664752b6d5bd12aa51fb3d928bc4a1369a0bee34730a98829aaba8c5a90d59136d39a5b7eddf15b8da6bba2'
+sha512sums=('e07a1acf9179db45b4980170740e12e0d28fb37a5a383b9b5784c753003e192f35915425aba624493b9920fb915d7b27ef0b9fce099cdc0796947aac6fd7e134'
             '8f63366ca998e3ee06a79c6df5b4454707bd9865913ecde2f79fcb49fdd86d291f678b9f21807e4eb61d15497cdbe4a4bdc06637882e708f34f6804453bdfd41'
-            'ab16fdbae0bbbb5756d46492025c7f29a0c78648026ae4bfcca77bf400fea4fb6b4f5ac45b40351c36dd17c81a3a636a13622a7791370c753a112f36418f841b'
-            '792b436802fda8427312ef482fb7dc78c1ec6a6c1e39f2637cc379cd5b8bb2dd1b17d495fdaea2beec35305e3e910bed67c9f1824155131def708c923a4cf1c6')
+            '2d78092a700788c74b86db636af303fdb63a28ce5b7b0431dd81f6b7ce501e5d0234a6327a1b49bc23e1c1d00ba98fd5334dd07d9a20bb0d81d1a4ca4487a26c')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -40,8 +38,7 @@ prepare() {
   touch chrome/test/data/webui/i18n_process_css_test.html
 
   patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
-  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r1.patch"
-  patch -p1 -i "$srcdir/chromium-gn-bootstrap-r8.patch"
+  patch -p1 -i "$srcdir/chromium-FORTIFY_SOURCE-r2.patch"
 }
 
 build() {
