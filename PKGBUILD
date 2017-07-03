@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <cerebro@maximbaz.com>
 pkgname=cerebro
 pkgver=0.3.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Open-source productivity booster with a brain.'
 arch=('x86_64' 'i686')
 url='https://cerebroapp.com/'
