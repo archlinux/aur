@@ -8,8 +8,8 @@ conflicts=('spotifyd-bin')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/spotifyd"
 source_x86_64=("spotifyd::git+https://github.com/Spotifyd/spotifyd" "spotifyd.service")
-md5sums_x86_64=('SKIP'
-                'eb95cf4735565e0c596d7e0118fd1e6e')
+sha256sums_x86_64=('SKIP'
+                '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
 pkgver() {
 	cd $srcdir/spotifyd;
 	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
