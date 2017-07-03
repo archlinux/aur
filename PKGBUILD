@@ -1,0 +1,49 @@
+# Maintainer: Dominic Meiser dosm dot mail at gmail
+
+pkgname=slic3r-dev
+_pkgver=1.3.0_dev
+pkgver=$_pkgver
+pkgrel=1
+pkgdesc="Development build of Slic3r, a 3D Printer Toolpath Generator"
+arch=('x86_64')
+url="https://slic3r.org"
+license=('AGPL3')
+depends=('freeglut' 'glu' 'perl')
+makedepends=('jq' 'wget')
+conflicts=('slic3r' 'slic3r-git' 'slic3r-bin')
+provides=('slic3r')
+source=("master.json::https://api.github.com/repos/alexrj/slic3r/branches/master"
+        "slic3r.desktop")
+sha512sums=('SKIP'
+            'a99dc387ab7ff4612158dcb30e47b483efa51efe7e3c2fb528a54883f272fe0c0af97ad97c7a4229536cefe4e5da4381a0471f244cb6d1475a4dc1506a5443ee')
+
+pkgver()
+{
+	cd $srcdir
+	time=$(date --date=$(jq '.commit.commit.committer.date' master.json | tr -d '"') '+%Y%m%dT%H%M%S')
+	sha=$(jq '.commit.sha' master.json | tr -d '"')
+	echo "${_pkgver}.${time}.${sha:0:7}"
+}
+
+prepare()
+{
+	cd $srcdir
+	sha=$(jq '.commit.sha' master.json | tr -d '"')
+	wget -q --show-progress -O slic3r.tar.bz2 "https://dl.slic3r.org/dev/linux/slic3r-${_pkgver//_/-}-${sha:0:7}-linux-x64.tar.bz2"
+}
+
+package()
+{
+	cd $srcdir
+	
+	install -d "$pkgdir/opt"
+	tar xfj slic3r.tar.bz2 -C "$pkgdir/opt/"
+	sed -i "$pkgdir/opt/Slic3r/Slic3r" -e 's/DIR=.*$/DIR=\/opt\/Slic3r/'
+	sed -i "$pkgdir/opt/Slic3r/Slic3r" -e 's/LD_LIBRARY_PATH=.*$/LD_LIBRARY_PATH=\/opt\/Slic3r\/bin/'
+	
+	install -d "$pkgdir/usr/bin"
+	ln -s "/opt/Slic3r/Slic3r" "$pkgdir/usr/bin/slic3r"
+	
+	install -d "$pkgdir/usr/share/applications"
+	install -m 644 $srcdir/slic3r.desktop "$pkgdir/usr/share/applications/"
+}
