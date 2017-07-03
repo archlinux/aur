@@ -1,0 +1,9 @@
+diff -uprNEBZ --suppress-blank-empty c/PythonQt.pro d/PythonQt.pro
+--- c/PythonQt.pro	2009-04-09 04:32:52.000000000 -0500
++++ d/PythonQt.pro	2017-07-02 22:43:46.132328898 -0500
+@@ -1,4 +1,4 @@
+ TEMPLATE = subdirs
+ 
+ CONFIG += ordered
+-SUBDIRS = generator src extensions tests examples
++SUBDIRS = generator src extensions
