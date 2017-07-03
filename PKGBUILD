@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mkinitcpio-ykfde
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Full disk encryption with Yubikey (Yubico key)'
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ depends=('yubikey-personalization' 'cryptsetup' 'iniparser' 'libarchive' 'keyuti
 makedepends=('markdown')
 install=mkinitcpio-ykfde.install
 backup=('etc/ykfde.conf')
-source=("http://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
+source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
-sha256sums=('e5dbd1c585c2b5c9be1e3fb5a52cd62386a3ffebda1ef95fc79b427725354ce4'
+sha256sums=('f97da3d1b4d449bbc6515b0169e4fd7c773c6462b8c46e5d9e6abf59078e3354'
             'SKIP')
 
 build() {
