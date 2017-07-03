@@ -1,0 +1,20 @@
+pkgbase = qcomicbook
+	pkgdesc = A reader of comic book archives
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://qcomicbook.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt5-x11extras
+	depends = poppler-qt5
+	optdepends = p7zip
+	optdepends = unace
+	optdepends = unrar
+	optdepends = rar
+	source = https://github.com/stolowski/QComicBook/archive/0.9.1.tar.gz
+	md5sums = d8762ff0698652cd2c383dbaa30cc132
+
+pkgname = qcomicbook
+
