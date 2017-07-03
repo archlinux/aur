@@ -5,13 +5,13 @@
 
 pkgname=golly
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 _wxver=3.0.2
 pkgdesc="A simulator for Conway's Game of Life and other cellular automata"
 arch=('i686' 'x86_64')
 url="http://golly.sourceforge.net/"
 license=('GPL')
-makedepends=('gendesk' 'perl' 'python2')
+makedepends=('gendesk' 'perl' 'python2' 'gtk2' 'glu')
 optdepends=('perl: for Perl scripting support'
             'python2: for Python scripting support')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-src.tar.gz"
