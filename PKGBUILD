@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-applications
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Management plugin for applications"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("fusiondirectory>=$pkgver")
 install=fusiondirectory-plugin-applications.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('1df851a6489d220cb136dbc8a0b03046' 'a74181098ebbee7b30245238974ef142')
+md5sums=('b5e96dc4deaed932868a809769ef8a71' '5447138f0e37bebd9c2dbed41b787f27')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
