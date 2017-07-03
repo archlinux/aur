@@ -3,7 +3,7 @@
 
 _pkgname=scilab
 pkgname=scilab-git
-pkgver=6.0.0.beta.2.r789.g97b14661ee1
+pkgver=6.0.0.r101.gac588401314
 pkgrel=1
 pkgdesc='A scientific software package for numerical computations'
 arch=('i686' 'x86_64')
@@ -28,14 +28,17 @@ source=("git://git.scilab.org/scilab"
         "${_pkgname}-strict-jar.patch"
         "${_pkgname}-lucene-6.patch"
         "${_pkgname}-hdf5-type.patch"
-        "${_pkgname}-hdf5-1.8.10.patch")
+        "${_pkgname}-hdf5-1.8.10.patch"
+        "${_pkgname}-type.patch")
+
 sha256sums=('SKIP'
             'f19f173e989f72bd55bda35e271b3c180ecef4e29da964df3f230fce8b1330fc'
             '37f649fea0196b255e5a8576dd1e8c5fd219c6e8c600b703b35303fb90b6a7e0'
             '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'
             'ba7969fff7f839562120534222fbb6421e204f6a382654d80bbab19e0c7a2c66'
             'c992a4f230dac60c3e217efee04b678c58d856f2aafa6173f742d4c5b050ab9d'
-            '2dee1346c240d09ce7870bbbeb3318e0ac5d78f249d855df313e9cb7a2ef7fc0')
+            '2dee1346c240d09ce7870bbbeb3318e0ac5d78f249d855df313e9cb7a2ef7fc0'
+            '93597034c6866c3a4aaa7ef92b4588d2753383545ed3366be6cdb404edf949bd')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}/${_pkgname}"
@@ -58,6 +61,8 @@ prepare(){
   patch -p0 < "${srcdir}"/${_pkgname}-hdf5-type.patch
   # Fix for LD_LIBRARY_PATH
   patch bin/scilab "${srcdir}"/${_pkgname}-LD_LIBRARY_PATH.patch
+  # Fix type
+  patch -p0 < "${srcdir}"/${_pkgname}-type.patch
 }
 
 build() {
@@ -71,7 +76,7 @@ build() {
     --with-matio \
     --with-umfpack \
     --with-fftw \
-    --without-modelica \
+    --with-modelica \
     --without-emf \
     --with-install-help-xml \
     --enable-build-help \
@@ -79,7 +84,7 @@ build() {
     --disable-static-system-lib
 
   make
-  #make doc
+  make doc
 }
 
 package() {
