@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-redis
 pkgver=0.3.8
-pkgrel=4
+pkgrel=5
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.1
+_nginxver=1.13.2
 
 pkgdesc='Redis caching module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	http://people.freebsd.org/~osa/ngx_http_redis-$pkgver.tar.gz
 )
 
-sha256sums=('a5856c72a6609a4dc68c88a7f3c33b79e6693343b62952e021e043fe347b6776'
+sha256sums=('d77f234d14989d273a363f570e1d892395c006fef2ec04789be90f41a1919b70'
             '95d0ed7be40da2efc88883d72e52e5e272d2c34463583b7078e8fd6d55004934')
 
 build() {
