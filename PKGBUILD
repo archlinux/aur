@@ -5,16 +5,15 @@
 pkgname=eclipse-platform
 pkgver=4.7
 _pkgbuild=201706120950
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager"
 url="https://www.eclipse.org"
 arch=("i686" "x86_64")
 license=("EPL")
-depends=("java-environment>=8" "unzip" "webkit2gtk" "libxtst" "hicolor-icon-theme")
+depends=("java-environment>=8" "unzip" "webkit2gtk")
 optdepends=()
 conflicts=("eclipse")
 provides=("eclipse=$pkgver")
-install=${pkgname}.install
 options=(!strip)
 
 source=(

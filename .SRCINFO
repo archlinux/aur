@@ -1,17 +1,14 @@
 pkgbase = eclipse-platform
 	pkgdesc = A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager
 	pkgver = 4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eclipse.org
-	install = eclipse-platform.install
 	arch = i686
 	arch = x86_64
 	license = EPL
 	depends = java-environment>=8
 	depends = unzip
 	depends = webkit2gtk
-	depends = libxtst
-	depends = hicolor-icon-theme
 	provides = eclipse=4.7
 	conflicts = eclipse
 	options = !strip
