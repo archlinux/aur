@@ -17,7 +17,7 @@ pkgver() {
 
 build() {
   cd $srcdir/spotifyd;
-  cargo build --release --features "pulseaudio"
+  cargo build --release --features "pulseaudio_backend"
 }
 
 package() {
