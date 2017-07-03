@@ -5,7 +5,7 @@
 php_suffix="70" # This mutation
 php_ext="phalcon"
 pkgname="php${php_suffix}-${php_ext}"
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="PHP Extension package for a faster web site framework."
 url="http://phalconphp.com"
@@ -22,7 +22,7 @@ source=(
 )
 
 sha256sums=(
-  '1c67b31b9ec767585933ecdd5bdd6f229d5ed2b5814361ebafcdc5bcb8866420')
+  '1e253bc34e07145838548eee3e52cc9d60abc60fce191d662ac153771f587bd7')
 
 
 
