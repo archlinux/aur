@@ -1,0 +1,24 @@
+pkgbase = headset-bin
+	pkgdesc = An Electron-based music player for the busy ones
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = http://headsetapp.co/
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gconf
+	depends = gnuplot
+	depends = nodejs
+	depends = nss
+	depends = libxtst
+	depends = libxss
+	depends = gcc-libs-multilib
+	provides = headset
+	conflicts = headset
+	source = https://github.com/headsetapp/headset-electron/releases/download/v1.5.4-deb/Headset_1.5.4_amd64.deb
+	source = MIT::https://github.com/headsetapp/headset-electron/raw/master/LICENSE
+	md5sums = c0619b1508545ac25fa7722aa9b6a0c0
+	md5sums = SKIP
+
+pkgname = headset-bin
+
