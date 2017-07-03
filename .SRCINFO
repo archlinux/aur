@@ -1,9 +1,8 @@
 pkgbase = denarius-git
-	pkgdesc = Denarius [DNR] is an anonymous, untraceable, energy efficient, Proof-of-Work (New Tribus Algorithm) and Proof-of-Stake cryptocurrency.
-	pkgver = 20170627.b3cd0cf
+	pkgdesc = Denarius (DNR) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency.
+	pkgver = 1.0.0.0.r42.gb3cd0cf
 	pkgrel = 1
 	url = https://denarius.io
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -14,7 +13,7 @@ pkgbase = denarius-git
 	depends = boost-libs
 	provides = denarius
 	conflicts = denarius
-	source = git+https://github.com/carsenk/denarius.git#commit=b3cd0cf
+	source = git+https://github.com/carsenk/denarius.git
 	source = util-patch.diff
 	source = denariusd.service
 	sha512sums = SKIP
