@@ -1,0 +1,15 @@
+pkgbase = connect-four-gtk
+	pkgdesc = A basic Connect Four game written in C using Gtk+3.0
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JannikHv/connect-four-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtk3
+	source = connect-four-gtk::git://github.com/JannikHv/connect-four-gtk.git
+	md5sums = SKIP
+
+pkgname = connect-four-gtk
+
