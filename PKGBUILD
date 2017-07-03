@@ -1,6 +1,6 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=mqttfx-bin
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A MQTT Client written in Java based on Eclipse Paho"
 arch=('x86_64')
@@ -10,9 +10,9 @@ options=('!strip' '!upx')
 source=(
   "http://www.jensd.de/apps/mqttfx/${pkgver}/mqttfx-${pkgver}-64bit.deb"
   "mqttfx.desktop")
-md5sums=(
-  "b17b8339f85c2052cf9447c9caa0149d"
-  "0ce12491a9910a9c889356b04922f0f9"
+sha256sums=(
+  "f350eb74b60b77ac8f2ce258216223f3a0f2aaa27ef55c2d7799a401a42efcca"
+  "7037ab12fe192a62ef745e93a7661d9f5dc40a2ad5b07624201eac04f5ed070c"
 )
 
 package() {
