@@ -1,6 +1,6 @@
 # Maintainer: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=V3.4.r34.18f4606
+pkgver=v3.5.DEV1705X.r70.ac18d98a
 pkgrel=1
 pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
 computer of their choice, analyze it in whatever way they see fit, and share their methods of
