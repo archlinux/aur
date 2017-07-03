@@ -9,7 +9,7 @@ arch=('any')
 url='http://pypi.python.org/pypi/Nevow'
 license=('custom')
 makedepends=('python2-setuptools')
-depends=('python2' 'twisted')
+depends=('python2' 'python2-twisted')
 
 source=("https://pypi.python.org/packages/d1/7b/fb5906c29c2397177e7df12febcd8049610258c97add082131779d0bf49a/Nevow-${pkgver}.tar.gz")
 md5sums=('d35d9aaac3f0004c5df2233ec8dfa080')
