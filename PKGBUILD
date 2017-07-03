@@ -14,6 +14,7 @@ sha256sums=('78aa82928930acb3bcb5a614df87f5af4d27f1984b2e3c18168d3c0a1b955efc' '
 package() {
   #Copy
   cp -r ${srcdir}/iaca-lin64/ ${pkgdir}/usr/
+  chmod -R 755 ${pkgdir}/usr/
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
