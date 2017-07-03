@@ -9,6 +9,7 @@ pkgbase = roficlip
 	depends = clipster
 	depends = gawk
 	depends = rofi
+	depends = fzf
 	source = https://github.com/gilbertw1/roficlip/archive/0.1.3.tar.gz
 	sha256sums = 3ecebd3870e23b9ae977c8db1b80028fb969ea67006616cdcc61ef5c148d1003
 
