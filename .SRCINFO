@@ -1,6 +1,6 @@
 pkgbase = irccd
 	pkgdesc = IRC client daemon
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = http://projects.malikania.fr/irccd/
 	changelog = ChangeLog
@@ -11,8 +11,8 @@ pkgbase = irccd
 	makedepends = openssl
 	backup = etc/irccd.conf
 	backup = etc/irccdctl.conf
-	source = http://releases.malikania.fr/irccd/2.1.1/irccd-2.1.1.tar.xz
-	md5sums = 5f5337901e4eaef927a1c7ce4e9001fa
+	source = http://releases.malikania.fr/irccd/2.1.2/irccd-2.1.2.tar.xz
+	md5sums = df6d2ef53e61c56bfdf71b815de7b900
 
 pkgname = irccd
 

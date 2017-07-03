@@ -19,7 +19,7 @@
 # THE SOFTWARE.
 
 pkgname=irccd
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 epoch=
 pkgdesc="IRC client daemon"
@@ -39,21 +39,21 @@ options=()
 changelog="ChangeLog"
 source=("http://releases.malikania.fr/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('5f5337901e4eaef927a1c7ce4e9001fa')
+md5sums=('df6d2ef53e61c56bfdf71b815de7b900')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
 	mkdir -p _build
 	cd _build
 	cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX='/' \
-    -DWITH_BINDIR='usr/bin' \
-    -DWITH_CONFDIR='etc' \
-    -DWITH_MANDIR='usr/share/man' \
-    -DWITH_DOCDIR='usr/share/doc/irccd' \
-    -DWITH_PLUGINDIR='usr/share/irccd/plugins' \
-    -DWITH_PLUGIN_DEBUGNATIVE=Off
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX='/' \
+	-DWITH_BINDIR='usr/bin' \
+	-DWITH_CONFDIR='etc' \
+	-DWITH_MANDIR='usr/share/man' \
+	-DWITH_DOCDIR='usr/share/doc/irccd' \
+	-DWITH_PLUGINDIR='usr/share/irccd/plugins' \
+	-DWITH_PLUGIN_DEBUGNATIVE=Off
 	make
 }
 
