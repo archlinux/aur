@@ -1,0 +1,57 @@
+--- webmin-1.850/miniserv.pl	2017-06-25 04:15:46.000000000 +0530
++++ webmin-1.850/miniserv.pl	2017-07-03 10:06:43.628276915 +0530
+@@ -159,8 +159,11 @@
+ 		}
+ 	}
+ if ($config{'pam_only'} && !$use_pam) {
+-	print STDERR $startup_msg[0],"\n";
++	foreach $msg (@startup_msg) {
++	     print STDERR $msg,"\n";
++	}
+ 	print STDERR "PAM use is mandatory, but could not be enabled!\n";
++	print STDERR "no_pam and pam_only both are set!\n" if ($config{no_pam});
+ 	exit(1);
+ 	}
+ elsif ($pam_msg && !$use_pam) {
+--- webmin-1.850/setup.sh	2017-06-25 04:15:46.000000000 +0530
++++ webmin-1.850/setup.sh	2017-07-03 11:45:18.708245816 +0530
+@@ -76,6 +76,7 @@
+ if [ "$perllib" != "" ]; then
+ 	PERLLIB="$PERLLIB:$perllib"
+ fi
++export PERLLIB
+ 
+ # Validate source directory
+ allmods=`cd "$srcdir"; echo */module.info | sed -e 's/\/module.info//g'`
+--- webmin-1.850/ldap-useradmin/ldap-useradmin-lib.pl	2017-06-25 04:18:11.000000000 +0530
++++ webmin-1.850/ldap-useradmin/ldap-useradmin-lib.pl	2017-07-03 11:21:16.726941477 +0530
+@@ -417,7 +417,7 @@
+ 			'warn' => $_[0]->get_value("shadowWarning") || "",
+ 			'inactive' => $_[0]->get_value("shadowInactive") || "",
+ 		      );
+-	$user{'pass'} =~ s/^(\!?){[a-z0-9]+}/$1/i;
++	$user{'pass'} =~ s/^(\!?)\{[a-z0-9]+\}/$1/i;
+ 	$user{'all_ldap_attrs'} = { map { lc($_), scalar($_[0]->get_value($_)) }
+ 					$_[0]->attributes() };
+ 	$user{'ldap_class'} = [ $_[0]->get_value('objectClass') ];
+--- webmin-1.850/logrotate/logrotate-lib.pl	2017-06-25 04:18:13.000000000 +0530
++++ webmin-1.850/logrotate/logrotate-lib.pl	2017-07-03 11:38:03.985727637 +0530
+@@ -49,7 +49,7 @@
+ while(<$fh>) {
+ 	s/\r|\n//g;
+ 	s/#.*$//;
+-	if (/^\s*(.*){\s*$/) {
++	if (/^\s*(.*)\{\s*$/) {
+ 		# Start of a section
+ 		push(@name, &split_words($1));
+ 		$section = { 'name' => [ @name ],
+--- webmin-1.850/system-status/enable-collection.pl	2017-06-25 04:18:35.000000000 +0530
++++ webmin-1.850/system-status/enable-collection.pl	2017-07-03 12:25:34.567937034 +0530
+@@ -1,6 +1,7 @@
+ #!/usr/local/bin/perl
+ # Command-line script to enable status collection
+ 
++BEGIN { push(@INC, '.'); };
+ use strict;
+ use warnings;
+ our (%config);
