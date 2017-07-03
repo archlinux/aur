@@ -1,6 +1,6 @@
 pkgbase = spotifyd
 	pkgdesc = A spotify playing daemon
-	pkgver = 55.e786111
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64

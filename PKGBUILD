@@ -2,7 +2,7 @@
 # Maintainer: Florian Klink <flokli@flokli.de>
 
 pkgname=spotifyd
-pkgver=55.e786111
+pkgver=0.1
 pkgrel=1
 arch=('x86_64' 'armv7h')
 depends=('pulseaudio' 'flac' 'libogg' 'libpulse' 'libsndfile' 'libvorbis')
@@ -14,8 +14,8 @@ source=("spotifyd::git+https://github.com/Spotifyd/spotifyd" "spotifyd.service")
 sha256sums=('SKIP'
             '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
 pkgver() {
-	cd $srcdir/spotifyd;
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd $srcdir/spotifyd;
+  echo $(git describe --tags --match 'v*' | sed 's/^v//')
 }
 
 build() {
