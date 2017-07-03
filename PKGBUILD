@@ -1,4 +1,5 @@
-# Maintainer: Juergen Hoetzel <juergen@archlinux.org>
+# Maintainer: Jörg Schuck <joerg_schuck@web.de>
+# Contributor: Juergen Hoetzel <juergen@archlinux.org>
 pkgname=gnucash-docs
 pkgver=2.6.16
 pkgrel=1
