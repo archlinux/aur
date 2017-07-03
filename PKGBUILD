@@ -2,7 +2,7 @@
 pkgname=ocproxy-git
 _pkgname=ocproxy
 pkgver=1.60.r8.g8f15425
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A user-level SOCKS and port forwarding proxy for OpenConnect based on lwIP"
 depends=('libevent')
