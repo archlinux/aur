@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+if [ "$(basename $(pwd))" != "seafile-server" ]; then
+	echo "Must be run from within a seafile server instance's 'seafile-server' subdirectory"
+	exit 1
+fi
+
+echo "Please ensure that the seafile server is stopped, then press [ENTER] to proceed"
+read
+
+echo "Preparing local seahub for upgrade..."
+
+# Ensure newest upgrade scripts are available
+# Symlink will not help, because upgrade scripts uses relative to self paths. So make copy, same for seahub
+rm -rf ./upgrade
+cp -r --preserve=mode,timestamps --reflink=auto /usr/share/seafile-server/scripts/upgrade ./
+
+# Backup old seahub version
+rm -rf seahub-old
+mv seahub seahub-old
+
+# Copy new seahub
+cp -r --preserve=mode,timestamps --reflink=auto /usr/share/seafile-server/seahub ./
+
+echo "Done, you should now execute the appropriate upgrade script by calling './upgrade/SCRIPT'."
+echo "More on https://wiki.archlinux.org/index.php/Seafile#Upgrading"
