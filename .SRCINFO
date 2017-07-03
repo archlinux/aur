@@ -1,0 +1,15 @@
+pkgbase = kio-stash
+	pkgdesc = A kio slave and daemon to stash discontinuous file selections
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.kde.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	depends = kio
+	source = https://download.kde.org/stable/kio-stash/kio-stash-1.0.tar.xz
+	sha256sums = d8ef422924e24317122524fb1d1e439d45ff9281a502a6258a782cfe0d8c8eaa
+
+pkgname = kio-stash
+
