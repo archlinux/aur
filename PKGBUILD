@@ -3,7 +3,7 @@
 pkgname=nuvolaplayer_3.0
 _pkgname=nuvolaruntime
 pkgver=3.0.8
-pkgrel=1
+pkgrel=2
 
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,6 +15,7 @@ sha256sums=('d160ab23db432ac8ddaa75e3be931a7eb8e70d66f762acc283cb4cb1946dcd30')
 
 depends=('diorite_0.2.x' 'webkit2gtk' 'libarchive')
 makedepends=('python' 'vala')
+provides=('nuvolaplayer=3.0.8')
 optdepends=(
 	'nuvola-app-8tracks:               8tracks.com integration'
 	'nuvola-app-amazon-cloud-player:   Amazon Cloud Player integration'
