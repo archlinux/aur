@@ -48,13 +48,13 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   #make -k check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/src"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
+  make DESTDIR="${pkgdir}/" install
 }
 
 # EOF
