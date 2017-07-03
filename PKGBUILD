@@ -5,7 +5,7 @@
 
 pkgbase=mesa-noglvnd
 pkgname=('opencl-mesa-noglvnd' 'vulkan-intel-noglvnd' 'vulkan-radeon-noglvnd' 'libva-mesa-driver-noglvnd' 'mesa-vdpau-noglvnd' 'mesa-noglvnd' 'mesa-libgl-noglvnd')
-pkgver=17.1.0
+pkgver=17.1.4
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -15,7 +15,7 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-sha256sums=('cf234a6ed4764673886b6661553b54675776ef0898f774716173cec890ac3b17'
+sha256sums=('06f3b0e6a28f0d20b7f3391cf67fe89ae98ecd0a686cd545da76557b6cec9cad'
             'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
@@ -201,7 +201,7 @@ package_mesa-libgl-noglvnd() {
   pkgdesc="Mesa 3-D graphics library - non-libglvnd version"
   depends=('mesa')
   provides=('libgl' 'libgles' 'libegl' 'mesa-libgl')
-  conflicts=('mesa-libgl' 'mesa-libgl-git')
+  conflicts=('mesa-libgl' 'mesa-libgl-git' 'libglvnd')
   replaces=('mesa-libgl' 'mesa-libgl-git')
 
   install -m755 -d "${pkgdir}/usr/lib/"

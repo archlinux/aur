@@ -1,5 +1,5 @@
 pkgbase = mesa-noglvnd
-	pkgver = 17.1.0
+	pkgver = 17.1.4
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = i686
@@ -26,10 +26,10 @@ pkgbase = mesa-noglvnd
 	makedepends = clang
 	makedepends = libunwind
 	makedepends = lm_sensors
-	source = https://mesa.freedesktop.org/archive/mesa-17.1.0.tar.xz
-	source = https://mesa.freedesktop.org/archive/mesa-17.1.0.tar.xz.sig
+	source = https://mesa.freedesktop.org/archive/mesa-17.1.4.tar.xz
+	source = https://mesa.freedesktop.org/archive/mesa-17.1.4.tar.xz.sig
 	source = LICENSE
-	sha256sums = cf234a6ed4764673886b6661553b54675776ef0898f774716173cec890ac3b17
+	sha256sums = 06f3b0e6a28f0d20b7f3391cf67fe89ae98ecd0a686cd545da76557b6cec9cad
 	sha256sums = SKIP
 	sha256sums = 7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2
 
@@ -151,6 +151,7 @@ pkgname = mesa-libgl-noglvnd
 	provides = mesa-libgl
 	conflicts = mesa-libgl
 	conflicts = mesa-libgl-git
+	conflicts = libglvnd
 	replaces = mesa-libgl
 	replaces = mesa-libgl-git
 
