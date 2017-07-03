@@ -1,0 +1,18 @@
+pkgbase = polo-donation-plugins
+	pkgdesc = Complimentary package for users who have donated to Polo or contributed in other ways such as translations, code changes, etc.
+	pkgver = 17.7
+	pkgrel = 1
+	url = http://www.teejeetech.in/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = polo
+	provides = polo-donations-plugins
+	conflicts = polo-donations-plugins
+	source_i686 = local://polo-donation-plugins-v17.7-beta.8-i386.deb
+	md5sums_i686 = 61df636b4dc16f3196cf54d519f31d6a
+	source_x86_64 = local://polo-donation-plugins-v17.7-beta.8-amd64.deb
+	md5sums_x86_64 = 5133b8020b51e1b2d4154fd3f4f2d328
+
+pkgname = polo-donation-plugins
+

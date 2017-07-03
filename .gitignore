@@ -1,0 +1,12 @@
+*.gz
+*.xz
+*.zip
+*.tar*
+*.tgz
+*.bz2
+*.deb
+*.rpm
+*.run
+pkg
+src
+
