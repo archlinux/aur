@@ -3,7 +3,7 @@
 pkgname=twonky
 pkgver=8.4.1
 _pkgver=8.4.1
-pkgrel=9
+pkgrel=10
 pkgdesc="A DLNA-compliant UPnP AV server software from PacketVideo."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url="http://twonky.com/"

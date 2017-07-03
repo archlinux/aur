@@ -1,7 +1,7 @@
 pkgbase = twonky
 	pkgdesc = A DLNA-compliant UPnP AV server software from PacketVideo.
 	pkgver = 8.4.1
-	pkgrel = 9
+	pkgrel = 10
 	url = http://twonky.com/
 	install = twonky.install
 	arch = i686
