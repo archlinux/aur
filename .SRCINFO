@@ -1,11 +1,11 @@
 pkgbase = teamsql
 	pkgdesc = Multi-Platform SQL Client
 	pkgver = 1.0.108
-	pkgrel = 1
+	pkgrel = 2
 	install = teamsql.install
 	arch = x86_64
 	depends = libappindicator
-	depends = libnotify,
+	depends = libnotify
 	depends = gconf
 	source = TeamSQL-1.0.108.deb::https://dlpuop5av9e02.cloudfront.net/linux/stable/1.0.108/TeamSQL-1.0.108.deb
 	source = teamsql.sh

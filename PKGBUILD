@@ -2,11 +2,11 @@
 
 pkgname=teamsql
 pkgver=1.0.108
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Platform SQL Client"
 arch=('x86_64')
 license=()
-depends=("libappindicator" "libnotify", "gconf")
+depends=("libappindicator" "libnotify" "gconf")
 optdepends=()
 options=()
 install=$pkgname.install
