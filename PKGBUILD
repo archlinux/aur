@@ -2,15 +2,14 @@
 
 pkgname=radeon-profile-git
 pkgver=20161221.r13.g4385106
-pkgrel=3
+pkgrel=4
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('qt5-base' 'libxkbcommon-x11' 'libxrandr')
+depends=('qt5-base' 'qt5-charts' 'libxkbcommon-x11' 'libxrandr')
 makedepends=('qt5-tools')
 optdepends=('radeon-profile-daemon: system daemon for reading card info'
-	'lm_sensors: to show gpu temperature'
 	'sudo: start with root privilages without password'
 	'mesa-demos: for glxinfo'
 	'xorg-xdriinfo: display driver name'
