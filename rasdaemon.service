@@ -1,9 +1,0 @@
-[Unit]
-Description=Platform Reliability, Availability and Serviceability (RAS) Logging Daemon
-
-[Service]
-Type=forking
-ExecStart=/usr/bin/rasdaemon
-
-[Install]
-WantedBy=multi-user.target
