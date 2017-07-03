@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=17.06.0.dev.32627.c8141a1fb1
+pkgver=17.06.0.dev.32959.7117d5ef25
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -31,7 +31,7 @@ options=('!strip')
 source=('moby::git+https://github.com/moby/moby.git'
         'cli::git+https://github.com/docker/cli.git'
         'containerd::git+https://github.com/containerd/containerd.git'
-        'runc::git+https://github.com/opencontainers/runc.git'
+        'runc::git+https://github.com/docker/runc.git'
         'libnetwork::git+https://github.com/docker/libnetwork.git'
         'docker.install')
 md5sums=('SKIP'
@@ -113,6 +113,9 @@ build() {
   ln -sf "$srcdir/cli" "$GOPATH/src/github.com/docker/"
   pushd cli >/dev/null
     LDFLAGS= make dynbinary
+    # cherry-picked commit does not yet have manpages!
+    git checkout master
+    man/md2man-all.sh 2>/dev/null
   popd
 
   # docker
@@ -120,9 +123,6 @@ build() {
   pushd moby >/dev/null
     export AUTO_GOPATH=1
     ./hack/make.sh dynbinary
-    for i in man/*.md; do
-      go-md2man -in "$i" -out "${i%.md}"
-    done
   popd
 }
 
@@ -133,52 +133,73 @@ build() {
 # }
 
 package() {
-  # runc binary and man pages
-  pushd "$GOPATH/src/github.com/opencontainers/runc" >/dev/null
-    install -Dm755 runc "$pkgdir/usr/bin/runc"
-    install -dm755 "$pkgdir/usr/share/man"
-    mv man/man*/ "$pkgdir/usr/share/man"
+  msg 'runc binary'
+  install -Dm755 "$GOPATH/src/github.com/opencontainers/runc/runc" "$pkgdir/usr/bin/runc"
+  msg 'runc manpages'
+  pushd "$srcdir/runc/man/man8" >/dev/null
+    for i in *; do
+      install -Dm644 "$i" "$pkgdir/usr/share/man/man8/$i"
+    done
   popd
 
-  # containerd binaries
+  msg 'containerd binaries'
   pushd "$GOPATH/src/github.com/containerd/containerd/bin" >/dev/null
     for file in $(find . -type f -print); do
       install -Dm755 "$file" "$pkgdir/usr/bin/$file"
     done
   popd
 
-  # docker-proxy binary (from libnetwork)
+  msg 'docker-proxy binary'
+  # (from libnetwork)
   install -Dm755 "$GOPATH/src/github.com/docker/libnetwork/bin/docker-proxy" "$pkgdir/usr/bin/docker-proxy"
 
   # dockerd
-  cd moby
-  _dockerver="$(cat VERSION)"
-  install -Dm755 "bundles/$_dockerver/dynbinary-daemon/dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
+  pushd 'moby' >/dev/null
+    _dockerver="$(cat VERSION)"
+    install -Dm755 "bundles/$_dockerver/dynbinary-daemon/dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
+  popd
 
-  # docker cli
+  msg 'docker cli binary'
   install -Dm755 "$GOPATH/src/github.com/docker/cli/build/docker" "$pkgdir/usr/bin/docker"
+  msg 'docker cli manpages'
+  pushd "$srcdir/cli/man/man1" >/dev/null
+    for i in *; do
+      install -Dm644 "$i" "$pkgdir/usr/share/man/man8/$i"
+    done
+  popd
+  pushd "$srcdir/cli/man/man5" >/dev/null
+    for i in *; do
+      install -Dm644 "$i" "$pkgdir/usr/share/man/man8/$i"
+    done
+  popd
+  pushd "$srcdir/cli/man/man8" >/dev/null
+    for i in *; do
+      install -Dm644 "$i" "$pkgdir/usr/share/man/man8/$i"
+    done
+  popd
 
+  msg 'additional softlinks'
   # symlink containerd/run (nice integration...)
   ln -s containerd "$pkgdir/usr/bin/docker-containerd"
   ln -s containerd-shim "$pkgdir/usr/bin/docker-containerd-shim"
   ln -s ctr "$pkgdir/usr/bin/docker-containerd-ctr"
   ln -s runc "$pkgdir/usr/bin/docker-runc"
 
-  # completion
-  install -Dm644 "contrib/completion/bash/docker" "$pkgdir/usr/share/bash-completion/completions/docker"
-  install -Dm644 "contrib/completion/zsh/_docker" "$pkgdir/usr/share/zsh/site-functions/_docker"
+  msg 'completion files'
+  # (from docker/cli master as the pinned commit does not yet have them)
+  pushd "$srcdir/cli" >/dev/null
+    git checkout master
+    install -Dm644 "contrib/completion/bash/docker" "$pkgdir/usr/share/bash-completion/completions/docker"
+    install -Dm644 "contrib/completion/zsh/_docker" "$pkgdir/usr/share/zsh/site-functions/_docker"
+  popd
 
   # systemd
-  install -Dm644 'contrib/init/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
-  install -Dm644 'contrib/init/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
+  msg 'systemd files'
+  pushd "$srcdir/moby" >/dev/null
+    install -Dm644 'contrib/init/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
+    install -Dm644 'contrib/init/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
+  popd
   install -Dm644 "$startdir/docker.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-
-  cd man
-  for section in 1 5; do
-    for i in *.$section; do
-      install -Dm644 "$i" "$pkgdir/usr/share/man/man$section/$i"
-    done
-  done
 }
 
 # vim:set ts=2 sw=2 et:
