@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hp-snmp-agents
-pkgver=10.40_2847.17
+pkgver=10.50_2926.49
 pkgrel=1
 pkgdesc="Insight Management SNMP Agents for HP ProLiant Systems"
 arch=(i686 x86_64)
@@ -10,13 +10,13 @@ depends=(bash hp-health ethtool pciutils net-snmp)
 groups=(hpproliant)
 license=("CUSTOM")
 
-_i686ver=10.30_2819.17
+_i686ver=10.50_2926.42
 
 source_i686=("http://downloads.linux.hpe.com/SDR/repo/mcp/centos/6/i686/current/$pkgname-${_i686ver//_/-}.rhel6.i686.rpm")
 source_x86_64=("http://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/$pkgname-${pkgver//_/-}.rhel7.x86_64.rpm")
 
-sha256sums_i686=('4ebe3e253c1a35a004d43c265990be0f15b8d1cb565409c1e97105cafae9396c')
-sha256sums_x86_64=('ed0c8da5be26549dba1aa6dff5dbbf3002857678b6a30379efa5e8f4613b887f')
+sha256sums_i686=('8f9567ddebc88956e53ddcd1298c3b7ca37492fefefc36b53015340781adbf60')
+sha256sums_x86_64=('d5908d5629f439ff1cf6f5cbfa3900b4c7bf48613226e5dd2ccfcefa2a90f43c')
 
 package() {
 	mv sbin usr/bin
