@@ -10,8 +10,8 @@ url="http://voximp.googlecode.com"
 license=("GPL")
 depends=("gstreamer0.10-python" "gstreamer0.10-base-plugins" "python2" "pygtk" "pocketsphinx" "xdotool")
 install=voximp.install
-source=("http://voximp.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-md5sums=("4e2b0d3a88257999866ad0028dd69c04")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('4e2b0d3a88257999866ad0028dd69c04')
 
 prepare() {
   sed -i -e "s/python/python2/" "$srcdir/voximp.py"
