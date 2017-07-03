@@ -31,6 +31,10 @@ package() {
 
   export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/}"
   ./configure  --prefix=/usr
+
+  # add SSL libs
+  sed -i -e "s|LIBS = -lz -ldl -lutil|LIBS = -lz -ldl -lutil -lssl -lcrypto|g" ${srcdir}/shellinabox/Makefile
+
   make
 
   make DESTDIR="$pkgdir/" install
