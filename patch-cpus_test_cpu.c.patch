@@ -1,0 +1,11 @@
+--- cpus/test/cpu.c.orig	2017-07-03 22:42:42.091904513 +0200
++++ cpus/test/cpu.c	2017-07-03 22:46:05.875845459 +0200
+@@ -188,7 +188,7 @@
+   size_t size=instruction_size(p,sec,pc);
+   dblock *db=new_dblock();
+   int c=opt_inst(p,sec,pc);
+-  char *d;
++  unsigned char *d;
+   taddr val;
+   db->size=size;
+   d=db->data=mymalloc(size);
