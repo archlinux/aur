@@ -2,12 +2,12 @@
 pkgname=intel-power-gadget
 _pkgalias=power_gadget
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Intel Power Gadget Linux Version"
 arch=('x86_64' 'x86')
 url="https://software.intel.com/en-us/articles/intel-power-gadget-20"
-license=('unknown')
+license=('custom')
 groups=()
 depends=('glibc')
 makedepends=()
