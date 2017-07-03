@@ -1,6 +1,6 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 pkgname=pebble-tool-git
-pkgver=v4.0.1
+pkgver=v4.5.3.g8b4771b
 pkgrel=1
 pkgdesc="The pebble tool that goes with libpebble2"
 arch=('any')
@@ -8,6 +8,7 @@ url="https://github.com/pebble/pebble-tool"
 license=('MIT')
 depends=('python2'
          'python2-libpebble2-git'
+         'python2-enum34'
          'python2-httplib2'
          'python2-oauth2client'
          'python2-progressbar2-old'
@@ -19,9 +20,11 @@ depends=('python2'
          'python2-rsa'
          'python2-pyserial'
          'python2-six'
+         'python2-sourcemap-git'
          'python2-websocket-client'
          'python2-wheel'
-         'python2-colorama')
+         'python2-colorama'
+         'python2-packaging')
 optdepends=('python2-virtualenv: Required for installing SDK'
             'arm-none-eabi-gcc: Required for installing SDK'
             'arm-none-eabi-newlib: Required for installing SDK'
