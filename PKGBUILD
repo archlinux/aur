@@ -9,7 +9,7 @@ url="http://www.tegaki.org/"
 license=('GPL2')
 depends=('python2' 'pygtk>=2.10' 'tegaki-python>=0.2')
 makedepends=('python2')
-source=("http://www.tegaki.org/releases/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/tegaki/tegaki/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('db7c662482dad10d3d979957edf4b3c2')
 
 build() {
