@@ -1,6 +1,6 @@
 pkgbase = vale-bin
 	pkgdesc = A customizable, syntax-aware linter for prose.
-	pkgver = 0.7.2
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/ValeLint/vale
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = vale-bin
 	provides = vale
 	conflicts = vale
 	options = !emptydirs
-	source = https://github.com/ValeLint/vale/releases/download/0.7.2/Linux-64bit.tar.gz
-	source = https://raw.githubusercontent.com/ValeLint/vale/0.7.2/LICENSE
-	sha256sums = a0541fb30832f0bb00ef2bed84975b7a81f59045d5bc0d65cb07b2e0970493a7
-	sha256sums = d31c15ed03ff47d177c941c6ad8ed836d1cdcce5b7933509a1f1b744583eb95e
+	source = https://github.com/ValeLint/vale/releases/download/0.8.1/vale_0.8.1_Linux_64-bit.tar.gz
+	md5sums = dbf8c66ede04c9309ecb476584f5de01
+	sha256sums = 190562cd85418b16e9829802aa9133fa721a1fa8af002e53653a0838a24c75d1
 
 pkgname = vale-bin
 

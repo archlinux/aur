@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale-bin
 _pkgname=vale
-pkgver=0.7.2
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose."
 provides=('vale')
@@ -12,14 +12,14 @@ license=('MIT')
 depends=('')
 makedepends=('')
 options=('!emptydirs')
-source=("https://github.com/ValeLint/${_pkgname}/releases/download/${pkgver}/Linux-64bit.tar.gz"
-        "https://raw.githubusercontent.com/ValeLint/${_pkgname}/${pkgver}/LICENSE")
-sha256sums=('a0541fb30832f0bb00ef2bed84975b7a81f59045d5bc0d65cb07b2e0970493a7'
-            'd31c15ed03ff47d177c941c6ad8ed836d1cdcce5b7933509a1f1b744583eb95e')
+source=("https://github.com/ValeLint/${_pkgname}/releases/download/${pkgver}/${_pkgname}_${pkgver}_Linux_64-bit.tar.gz")
+
+md5sums=('dbf8c66ede04c9309ecb476584f5de01')
+sha256sums=('190562cd85418b16e9829802aa9133fa721a1fa8af002e53653a0838a24c75d1')
 
 package() {
     # cd "${srcdir}/build"
     msg2 'Installing...'
     install -Dm755 "${srcdir}/vale" "${pkgdir}/usr/bin/vale"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/vale/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
