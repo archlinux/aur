@@ -2,7 +2,7 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.15.0.r0.g968b416
+pkgver=0.16.0.r4.g37a1eb2
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
@@ -59,7 +59,7 @@ check(){
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 docs/_build/man/${_pkgname}.1 \
