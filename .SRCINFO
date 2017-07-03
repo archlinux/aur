@@ -1,0 +1,25 @@
+pkgbase = denarius-git
+	pkgdesc = Denarius [DNR] is an anonymous, untraceable, energy efficient, Proof-of-Work (New Tribus Algorithm) and Proof-of-Stake cryptocurrency.
+	pkgver = 20170627.b3cd0cf
+	pkgrel = 1
+	url = https://denarius.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	depends = miniupnpc
+	depends = libevent
+	depends = openssl-1.0
+	depends = boost-libs
+	provides = denarius
+	conflicts = denarius
+	source = git+https://github.com/carsenk/denarius.git#commit=b3cd0cf
+	source = util-patch.diff
+	source = denariusd.service
+	sha512sums = SKIP
+	sha512sums = c7a121b537bf612cf7e99b5bae4f8fdab1ef86c22a632e2068ddd8956d78e09e3271c80409bc62bfce9f1601023a4d91387d80094b391ebf4a10198b2e8a2d43
+	sha512sums = 0bbdf08df9f7cd15cebd01df55415ebe9ee35034e81e3cf18a2f9754c9709d1efd347bfa0a5f0badde73d4d79df43c642ee018af025ab9069e804ab8007043e2
+
+pkgname = denarius-git
+
