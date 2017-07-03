@@ -11,3 +11,5 @@ updpkgsums
 makepkg --printsrcinfo >.SRCINFO
 
 makepkg -scf
+
+rm SHA512SUMS-*
