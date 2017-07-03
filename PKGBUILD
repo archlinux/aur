@@ -1,3 +1,6 @@
+# Maintainer: Alexander Schäferdiek <alexander@schaeferdiek.eu>
+# Maintainer: Florian Klink <flokli@flokli.de>
+
 pkgname=spotifyd
 pkgver=55.e786111
 pkgrel=1
