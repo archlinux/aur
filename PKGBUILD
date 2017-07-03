@@ -9,7 +9,7 @@ url="http://kra.lc/projects/jdigitalsimulator/index.html"
 license=('GPL3')
 depends=('java-runtime>=7')
 makedepends=('maven')
-changelog="$srcdir/$pkgrname/CHANGELOG.md"
+#changelog="$srcdir/$pkgrname-$pkgver/CHANGELOG.md"
 source=("https://github.com/kristian/$pkgrname/archive/$pkgver.zip")
 md5sums=('2ca18f12da2cbf9e58938e342d62e179')
 
