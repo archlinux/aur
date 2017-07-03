@@ -13,7 +13,7 @@ source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondire
         'fixes-openldap-path.patch')
 
 md5sums=('5447138f0e37bebd9c2dbed41b787f27'
-         'd1126008d8486f24f4c081256ac2a7e4')
+         'd7eb89aed8063c2814d33673c1182c0a')
 
 prepare() {
   # In srcdir
