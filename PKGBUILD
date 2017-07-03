@@ -2,12 +2,12 @@
 
 pkgname=sysdweb
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Control systemd services through Web or REST API'
 arch=('any')
 url='https://github.com/ogarcia/sysdweb'
 license=('GPL')
-depends=('python-bottle' 'python-dbus' 'python-pam' 'python-systemd')
+depends=('python-bottle' 'python-dbus' 'python-pam' 'python-setuptools' 'python-systemd')
 makedepends=('python-setuptools')
 backup=("etc/${pkgname}.conf")
 source=("https://github.com/ogarcia/${pkgname}/archive/${pkgver}.tar.gz")

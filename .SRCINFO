@@ -1,7 +1,7 @@
 pkgbase = sysdweb
 	pkgdesc = Control systemd services through Web or REST API
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ogarcia/sysdweb
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = sysdweb
 	depends = python-bottle
 	depends = python-dbus
 	depends = python-pam
+	depends = python-setuptools
 	depends = python-systemd
 	backup = etc/sysdweb.conf
 	source = https://github.com/ogarcia/sysdweb/archive/1.1.tar.gz
