@@ -13,14 +13,19 @@ makedepends=('python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('0ca65f7fe00baed5db03a915f891b54a18cc5bb1f4821a08767ece9c1871571da2395b180675e82eace1aa6cbb0dec3b1475cffdf78363e49df677f1de9b9ef2')
 
+build() {
+  cd $_pkgname-$pkgver
+  python setup.py build
+}
+
 check() {
   cd $_pkgname-$pkgver
-  python setup.py test
+  python tests/test_bugbear.py
 }
 
 package() {
   cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
