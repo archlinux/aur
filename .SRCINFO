@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 232
-	pkgrel = 8
+	pkgver = 233
+	pkgrel = 7
 	url = https://www.github.com/systemd/systemd
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = systemd-selinux
 	makedepends = git
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd.git#tag=v232
+	source = git+https://github.com/systemd/systemd.git#tag=v233
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
@@ -42,14 +42,11 @@ pkgbase = systemd-selinux
 	source = systemd-sysusers.hook
 	source = systemd-tmpfiles.hook
 	source = systemd-update.hook
-	source = 0001-disable-RestrictAddressFamilies-on-i686.patch
-	source = 0001-Revert-nspawn-try-to-bind-mount-resolved-s-resolv.co.patch
-	source = 0001-nspawn-don-t-hide-bind-tmp-mounts.patch
 	validpgpkeys = 63CDA1E5D3FC22B998D20DD6327F26951A015CC4
 	sha512sums = SKIP
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
-	sha512sums = 52af734947a768758d5eb3f18e31a1cfec6699eca6fa10e40b90c7f11991509186c0a696e3490af3eaba80064ea4cb93e041579abf05addf072d294300aa4b28
-	sha512sums = fec639de0d99967ed3e67289eff5ff78fff0c5829d350e73bed536a8391f1daa1d118d72dbdc1f480ffd33fc22b72f4817d0973bd09ec7f182fd26ad87b24355
+	sha512sums = 691acebb243b9cd7fb63272662f34bdb9aead710c69aee9361ab2322f9f108600ad5b0214fc00b7cb2d9c95db8abd748030625d60d6567efd98663c56ba28c65
+	sha512sums = a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
 	sha512sums = 5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75
@@ -58,9 +55,6 @@ pkgbase = systemd-selinux
 	sha512sums = 9d27d97f172a503f5b7044480a0b9ccc0c4ed5dbb2eb3b2b1aa929332c3bcfe38ef0c0310b6566f23b34f9c05b77035221164a7ab7677784c4a54664f12fca22
 	sha512sums = 0f4efddd25256e09c42b953caeee4b93eb49ecc6eaebf02e616b4dcbfdac9860c3d8a3d1a106325b2ebc4dbc6e08ac46702abcb67a06737227ccb052aaa2a067
 	sha512sums = 10190fba9f39a8f4b620a0829e0ba8ed63bb4dbeca712966011ee7807880d01ab2abff1a80baafeb6674db70526a473fe585db8190e864f318fc4d6068552618
-	sha512sums = 89f9b2d3918c679ce4f76c2b10dc7fcb7e04f1925a5f92542f06891de2a123a91df7eb67fd4ce71506a8132f5440b3560b7bb667e1c1813944b115c1dfe35e3f
-	sha512sums = b993a42c5534582631f7b379d54f6abc37e3aaa56ecf869a6d86ff14ae5a52628f4e447b6a30751bc1c14c30cec63a5c6d0aa268362d235ed477b639cac3a219
-	sha512sums = 68478403433aafc91a03fda5d83813d2ed1dfc6ab7416b2927a803314ecf826edcb6c659587e74df65de3ccb1edf958522f56ff9ac461a1f696b6dede1d4dd35
 
 pkgname = systemd-selinux
 	pkgdesc = system and service manager with SELinux support
@@ -91,9 +85,9 @@ pkgname = systemd-selinux
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=232
-	provides = udev=232
-	provides = systemd=232-8
+	provides = systemd-tools=233
+	provides = udev=233
+	provides = systemd=233-7
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -122,15 +116,15 @@ pkgname = libsystemd-selinux
 	depends = libselinux
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = libsystemd=232-8
+	provides = libsystemd=233-7
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=232-8
-	provides = selinux-systemd-sysvcompat=232-8
+	provides = systemd-sysvcompat=233-7
+	provides = selinux-systemd-sysvcompat=233-7
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
