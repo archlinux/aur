@@ -1,0 +1,11 @@
+--- src/Makefile.in	2013-04-18 22:12:59.000000000 -0400
++++ src/Makefile.in	2017-06-22 11:19:27.539125916 -0400
+@@ -29,7 +29,7 @@
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -DLIBFTDI1=$(LIBFTDI1) -c mpsse.c
+ 
+ fast.o: support.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) -c fast.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -DLIBFTDI1=$(LIBFTDI1) -c fast.c
+ 
+ support.o:
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -DLIBFTDI1=$(LIBFTDI1) -c support.c
