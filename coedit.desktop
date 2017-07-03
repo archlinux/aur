@@ -1,12 +1,10 @@
 [Desktop Entry]
-Version=1.0;
-Type=Application
-Categories=Development;IDE;
-Exec=coedit
-Terminal=false
-MimeType=text/x-dsrc;
-Patterns=*.d;*.D;
-GenericName=D Language IDE
-X-MultipleArgs=false
+Categories=Application;IDE;Development;
+Exec=coedit %f
+GenericName=coedit
 Icon=coedit
-Name=Coedit
+Keywords=editor;Dlang;IDE;dmd;
+Name=coedit
+StartupNotify=true
+Terminal=false
+Type=Application
