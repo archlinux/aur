@@ -1,12 +1,20 @@
 [Desktop Entry]
 Name=Firefox Développeur
 GenericName=Web Browser
+Comment[fr]=Naviguer sur le Web
 Icon=firefox-developer-icon
 Type=Application
-Categories=Application;Network;
-MimeType=text/html
+Categories=Application;Network;WebBroswer;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
 Encoding=UTF-8
-Exec=firefox-developer %u
+Exec=firefox-developer --class=firefox-developer %u
 Terminal=false
 MultipleArgs=false
 StartupNotify=false
+StartupWMClass=firefox-developer
+Keywords=web;browser;internet;
+Actions=new-private-window;
+
+[Desktop Action new-private-window]
+Name=Nouvelle fenêtre de navigation privée
+Exec=firefox-developer --class=firefox-developer --private-window %u
