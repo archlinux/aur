@@ -1,6 +1,6 @@
 pkgbase = sylpheed-beta-iconmod
 	pkgdesc = Lightweight e-mail client. Latest official beta with the coonsden.com icon theme.
-	pkgver = 3.6.0beta1
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = http://sylpheed.sraoss.jp/en/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = sylpheed-beta-iconmod
 	conflicts = sylpheed
 	conflicts = sylpheed-beta
 	options = libtool
-	source = http://sylpheed.sraoss.jp/sylpheed/v3.6beta/sylpheed-3.6.0beta1.tar.bz2
-	source = http://sylpheed.sraoss.jp/sylpheed/v3.6beta/sylpheed-3.6.0beta1.tar.bz2.asc
+	source = http://sylpheed.sraoss.jp/sylpheed/v3.6/sylpheed-3.6.0.tar.bz2
+	source = http://sylpheed.sraoss.jp/sylpheed/v3.6/sylpheed-3.6.0.tar.bz2.asc
 	source = Sylpheed3.0_icon-set.tar.gz
-	md5sums = d3ac79af944758a9da07d2c97cba54fe
+	md5sums = 5b72a9173963be38efe5fb0b3f5cc44b
 	md5sums = SKIP
 	md5sums = f0fa7317216cf4f159f1cd1edfa1af39
 
