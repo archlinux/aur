@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qgo2-git
-pkgver="2.1.0".2016.06.23.1e65b0c
+pkgver="2.1.0".2017.07.02.b829eee
 pkgrel=1
 pkgdesc='Go client and full featured SGF editor; svn-snapshot of the next major version'
 arch=('i686' 'x86_64')
