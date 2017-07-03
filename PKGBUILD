@@ -3,7 +3,7 @@
 pkgname=twonky
 pkgver=8.4.1
 _pkgver=8.4.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A DLNA-compliant UPnP AV server software from PacketVideo."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://twonky.com/"
@@ -20,7 +20,7 @@ source=("twonky.service"
 source_x86_64=("twonky-x86_64-${_pkgver}.zip::http://www.twonkyforum.com/downloads/${_pkgver}/twonky-x86-64-glibc-2.22-${_pkgver}.zip")
 source_i686=("twonky-i686-${_pkgver}.zip::http://www.twonkyforum.com/downloads/${_pkgver}/twonky-i686-glibc-2.9-${_pkgver}.zip")
 source_armv6h=("twonky-armv6h-${_pkgver}.zip::http://www.twonkyforum.com/downloads/${_pkgver}/twonky-armel-glibc-2.15-hf-${_pkgver}.zip")
-source_armv7h=("twonky-armv67-${_pkgver}.zip::http://www.twonkyforum.com/downloads/${_pkgver}/twonky-armel-glibc-2.15-hf-${_pkgver}.zip")
+source_armv7h=("twonky-armv7-${_pkgver}.zip::http://www.twonkyforum.com/downloads/${_pkgver}/twonky-armel-glibc-2.15-hf-${_pkgver}.zip")
 
 md5sums=('4c89bcaef67cc11f02dca29aea10de1e'
          '0c06f9de4f2510186dc50e548bb1e760')
