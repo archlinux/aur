@@ -1,10 +1,11 @@
 pkgbase = dotnet-host
 	pkgdesc = A command line utility for building, testing, packaging and running .NET Core applications and libraries
 	pkgver = 2.0.0_preview2_25407_01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT
+	provides = dotnet-cli
 	conflicts = dotnet-bin
 	conflicts = dotnet-cli
 	replaces = dotnet-cli

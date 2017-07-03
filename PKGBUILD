@@ -2,7 +2,7 @@
 
 pkgname=dotnet-host
 pkgver=2.0.0_preview2_25407_01
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -11,6 +11,7 @@ depends=()
 options=('staticlibs')
 conflicts=('dotnet-bin' 'dotnet-cli')
 replaces=('dotnet-cli')
+provides=('dotnet-cli')
 
 source=("https://download.microsoft.com/download/8/5/8/85896F6E-C7F5-4ECA-ADF7-CCE8EFAD9AA6/dotnet-runtime-2.0.0-preview2-25407-01-linux-x64.tar.gz")
 
