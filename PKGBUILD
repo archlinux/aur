@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 299071 2017-06-20 16:53:25Z juergen $
-# Maintainer: Juergen Hoetzel <juergen@archlinux.org>
+# Maintainer: Jörg Schuck <joerg_schuck@web.de>
+# Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash
