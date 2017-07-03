@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+PIDFILE=/run/mediaserver.pid
 ExecStart=/usr/lib/twonky/twonkyserver \
     -inifile /etc/twonky.ini \
     -logfile /var/log/twonky.log \
