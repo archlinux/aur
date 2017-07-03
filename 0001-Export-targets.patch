@@ -1,17 +1,17 @@
-From 431986f951f5f5b3028e9262eed0e56d0f861dee Mon Sep 17 00:00:00 2001
+From ef1474e0c587bb528532932c1db7e244755e5d49 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 23 Mar 2017 20:50:21 +0100
-Subject: [PATCH 2/2] Export targets
+Subject: [PATCH] Export targets
 
 ---
  CMakeLists.txt              |  2 +-
- src/CMakeLists.txt          | 29 +++++++++++++++++++++++++++--
- src/PistacheConfig.cmake.in |  4 ++++
- 3 files changed, 32 insertions(+), 3 deletions(-)
+ src/CMakeLists.txt          | 20 ++++++++++++++++++++
+ src/PistacheConfig.cmake.in |  3 +++
+ 3 files changed, 24 insertions(+), 1 deletion(-)
  create mode 100644 src/PistacheConfig.cmake.in
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e2c9916..0197e24 100644
+index de5716d..25e3d7c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,4 +1,4 @@
@@ -21,35 +21,22 @@ index e2c9916..0197e24 100644
  include(CheckCXXCompilerFlag)
  
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 60902dd..c1d88e4 100644
+index 639ed0d..06cdb78 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -10,9 +10,34 @@ set(SOURCE_FILES
- 
- add_library(pistache_static ${SOURCE_FILES})
- target_link_libraries(pistache_static pthread)
--install(TARGETS pistache_static DESTINATION lib)
-+install(TARGETS pistache_static
-+        EXPORT PistacheStaticTargets
-+        DESTINATION lib)
-+install(EXPORT PistacheStaticTargets
-+        DESTINATION "lib/cmake/pistache"
-+        EXPORT_LINK_INTERFACE_LIBRARIES
-+        COMPONENT cmake-config
-+)
- 
- add_library(pistache SHARED ${SOURCE_FILES})
- target_link_libraries(pistache pthread)
--install(TARGETS pistache DESTINATION lib)
+@@ -40,3 +40,23 @@ install(
+   DIRECTORY "${PROJECT_SOURCE_DIR}/include/pistache"
+   DESTINATION ${include_install_dir}
+   FILES_MATCHING PATTERN "*.*h")
 +install(TARGETS pistache
-+        EXPORT PistacheSharedTargets
++        EXPORT PistacheTargets
 +        DESTINATION lib)
-+install(EXPORT PistacheSharedTargets
++install(EXPORT PistacheTargets
 +        DESTINATION "lib/cmake/pistache"
 +        EXPORT_LINK_INTERFACE_LIBRARIES
 +        COMPONENT cmake-config
 +)
- 
++
 +include(CMakePackageConfigHelpers)
 +configure_package_config_file(
 +    "PistacheConfig.cmake.in"
@@ -63,14 +50,13 @@ index 60902dd..c1d88e4 100644
 +)
 diff --git a/src/PistacheConfig.cmake.in b/src/PistacheConfig.cmake.in
 new file mode 100644
-index 0000000..a5dca28
+index 0000000..e8e92f0
 --- /dev/null
 +++ b/src/PistacheConfig.cmake.in
-@@ -0,0 +1,4 @@
+@@ -0,0 +1,3 @@
 +@PACKAGE_INIT@
 +
-+include("${CMAKE_CURRENT_LIST_DIR}/PistacheSharedTargets.cmake")
-+include("${CMAKE_CURRENT_LIST_DIR}/PistacheStaticTargets.cmake")
++include("${CMAKE_CURRENT_LIST_DIR}/PistacheTargets.cmake")
 -- 
-2.12.1
+2.13.2
 

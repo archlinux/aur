@@ -5,7 +5,7 @@
 
 pkgname=pistache-git
 _name=${pkgname%-git}
-pkgver=176.8604968
+pkgver=189.9827cda
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Modern and elegant HTTP and REST framework for C++'
@@ -16,11 +16,9 @@ provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/oktal/${_name}"
 source=("${_name}::git://github.com/oktal/${_name}.git"
-        '0001-Call-library-target-pistache-to-avoid-conflict-with-.patch'
-        '0002-Export-targets.patch')
+        '0001-Export-targets.patch')
 sha256sums=('SKIP'
-            '28383926baaa5f8b57f3513d21cafe8997dc779cff8170676904c39e20e7a71e'
-            '4e2a5cc2bd0c1c85d9bbff03325af03fb1742aefed7dbada231e76b4ad2d20e7')
+            '68140dc3747b36e3287913cdb4e4ae1a2cc85d69e28560dee3937f6143e0cc5f')
 
 pkgver() {
   cd "${srcdir}/${_name}"
@@ -30,12 +28,15 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_name}"
 
-  patch -p1 -i "${srcdir}/0001-Call-library-target-pistache-to-avoid-conflict-with-.patch"
-  patch -p1 -i "${srcdir}/0002-Export-targets.patch"
+  patch -p1 -i "${srcdir}/0001-Export-targets.patch"
 }
 
 build() {
   cd "${srcdir}/${_name}"
+
+  # since this is only a small lib and ABI seems very unstable at this point
+  # it should be ok to build it only as a static lib for now
+
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr"
