@@ -1,6 +1,6 @@
 # Maintainer: Bryan Gilbert <gilbertw1 at gmail dot com>
 pkgname=roficlip
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A simple shell script that surfaces clipboard history from clipster in Rofi"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/gilbertw1/roficlip"
 license=('GPL')
 depends=('clipster' 'gawk' 'rofi')
 source=("https://github.com/gilbertw1/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('f72d81fddfe8823340d18d83ce2ca6f4492f024cbfa6dabb7961c38d69062ffd')
+sha256sums=('3ecebd3870e23b9ae977c8db1b80028fb969ea67006616cdcc61ef5c148d1003')
 
 package() {
   cd "$pkgname-$pkgver"
