@@ -6,7 +6,7 @@
 #
 pkgname=libmpsse
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Open source library for SPI/I2C control via FTDI chips"
 arch=('i686' 'x86_64')
