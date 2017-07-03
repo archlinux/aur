@@ -3,8 +3,8 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash
-pkgver=2.6.16
-pkgrel=3
+pkgver=2.6.17
+pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -17,7 +17,7 @@ optdepends=('evince: for print preview'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('b7b3ffce1c05996ee1c4505a5fd8e44dd4c9bfa3')
+sha1sums=('d970d876f1fc7cd3fad9155463cdda348bcf0c7e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
