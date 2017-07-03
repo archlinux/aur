@@ -1,7 +1,7 @@
 # Maintainer: Ken Enda <buhibuhidog@gmail.com>
 
 pkgname=tym
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A tiny term for minimalists"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/endaaman/tym"
 license=('MIT')
 depends=('vte3' 'lua')
 source=("https://github.com/endaaman/${pkgname}/releases/download/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha1sums=('df5e04386b2571a35513a4acd2de6db75f8e87c8')
+sha1sums=('7b473a2ae0c26902f207a45bf45003101c783644')
 
 build() {
 	cd "$pkgname-$pkgver"
