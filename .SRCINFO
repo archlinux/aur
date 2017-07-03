@@ -1,11 +1,12 @@
 pkgbase = polo
 	pkgdesc = GTK file manager, currently in beta
 	pkgver = 17.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.teejeetech.in/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = vala
 	depends = gtk3
 	depends = libgee
 	depends = libsoup

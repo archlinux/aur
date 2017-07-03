@@ -2,7 +2,7 @@
 # https://github.com/FabioLolix
 
 pkgname=polo
-pkgrel=1
+pkgrel=2
 pkgver=17.7
 _betaver=beta.8
 pkgdesc="GTK file manager, currently in beta"
@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.teejeetech.in/"
 license=('GPL2')
 depends=('gtk3' 'libgee' 'libsoup' 'vte3')
+makedepends=('vala')
 optdepends=('mediainfo'
             'fish'
             'perl-image-exiftool'
