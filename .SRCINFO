@@ -30,6 +30,7 @@ pkgbase = twonky
 	source_armv7h = twonky-armv7h-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-armel-glibc-2.15-hf-8.4.1.zip
 	md5sums_armv7h = c45a7c6324a578208c574c3862654db3
 	source_aarch64 = twonky-aarch64-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-armel-glibc-2.15-hf-8.4.1.zip
+	md5sums_aarch64 = c45a7c6324a578208c574c3862654db3
 	source_arm = twonky-arm-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-armel-glibc-2.15-hf-8.4.1.zip
 	md5sums_arm = c45a7c6324a578208c574c3862654db3
 

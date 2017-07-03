@@ -31,7 +31,7 @@ md5sums_x86_64=('13903989f6d854269587e449a798be76')
 md5sums_armv6h=('c45a7c6324a578208c574c3862654db3')
 md5sums_armv7h=('c45a7c6324a578208c574c3862654db3')
 md5sums_arm=('c45a7c6324a578208c574c3862654db3')
-md5sum_aarch64=('c45a7c6324a578208c574c3862654db3')
+md5sums_aarch64=('c45a7c6324a578208c574c3862654db3')
 
 package() {
     # twonky base install
