@@ -2,7 +2,7 @@
 
 pkgname=nomad
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Distributed, Highly Available, Datacenter-Aware Scheduler"
 arch=('i686' 'x86_64')
 url="https://www.nomadproject.io/"
@@ -48,7 +48,8 @@ build() {
 	fi
 
 	make bootstrap
-	make release
+	mkdir -p bin
+	CGO_ENABLED=1 go build -o bin/nomad
 }
 
 package() {
