@@ -3,7 +3,7 @@
 pkgbase = f3-test
 	pkgdesc = Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised
 	pkgver = 6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://oss.digirati.com.br/f3/
 	arch = i686
 	arch = x86_64
