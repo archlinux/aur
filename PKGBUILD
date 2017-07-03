@@ -35,6 +35,10 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}"
+    # these have spaces in their names
+    rm -f Lib/site-packages/setuptools/command/launcher\ manifest.xml
+    rm -f Lib/site-packages/setuptools/script\ \(dev\).tmpl
+
     install -d "$pkgdir"/usr/${_arch}/lib
     install -m644 libs/libpython${_pybasever}*.a "$pkgdir"/usr/${_arch}/lib
     install -d "$pkgdir"/usr/${_arch}/bin
