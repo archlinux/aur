@@ -1,14 +1,14 @@
 pkgbase = jdigitalsimulator
 	pkgdesc = JDigitalSimulator is a platform independent open source Electronic Design Automation software entirely written in Java by Kristian Kraljic.
-	pkgver = 2.0.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://kra.lc/projects/jdigitalsimulator/index.html
 	arch = any
 	license = GPL3
 	makedepends = maven
 	depends = java-runtime>=7
-	source = jdigitalsimulator::git+https://github.com/kristian/JDigitalSimulator.git#tag=2.0.0
-	md5sums = SKIP
+	source = https://github.com/kristian/JDigitalSimulator/archive/2.0.2.zip
+	md5sums = 2ca18f12da2cbf9e58938e342d62e179
 
 pkgname = jdigitalsimulator
 
