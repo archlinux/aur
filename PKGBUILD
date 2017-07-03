@@ -24,7 +24,7 @@ source_armv7h=("twonky-armv7h-${_pkgver}.zip::http://www.twonkyforum.com/downloa
 source_arm=("twonky-arm-${_pkgver}.zip::http://www.twonkyforum.com/downloads/${_pkgver}/twonky-armel-glibc-2.15-hf-${_pkgver}.zip")
 source_aarch64=("twonky-aarch64-${_pkgver}.zip::http://www.twonkyforum.com/downloads/${_pkgver}/twonky-armel-glibc-2.15-hf-${_pkgver}.zip")
 
-md5sums=('615b3c34946d3aebf93ab57d9ceb53ec'
+md5sums=('4c89bcaef67cc11f02dca29aea10de1e'
          '0c06f9de4f2510186dc50e548bb1e760')
 md5sums_i686=('320b320911f6698e2dafa7fe447d9664')
 md5sums_x86_64=('13903989f6d854269587e449a798be76')
