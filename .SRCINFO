@@ -1,7 +1,7 @@
 pkgbase = twonky
 	pkgdesc = A DLNA-compliant UPnP AV server software from PacketVideo.
 	pkgver = 8.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://twonky.com/
 	install = twonky.install
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = twonky
 	source = twonky.ini
 	md5sums = 4c89bcaef67cc11f02dca29aea10de1e
 	md5sums = 0c06f9de4f2510186dc50e548bb1e760
-	source_i686 = twonky-i686-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-x86-64-glibc-2.22-8.4.1.zip
-	md5sums_i686 = 13903989f6d854269587e449a798be76
-	source_x86_64 = twonky-x86_64-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-i686-glibc-2.9-8.4.1.zip
-	md5sums_x86_64 = 320b320911f6698e2dafa7fe447d9664
+	source_i686 = twonky-i686-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-i686-glibc-2.9-8.4.1.zip
+	md5sums_i686 = 320b320911f6698e2dafa7fe447d9664
+	source_x86_64 = twonky-x86_64-8.4.1.zip::http://www.twonkyforum.com/downloads/8.4.1/twonky-x86-64-glibc-2.22-8.4.1.zip
+	md5sums_x86_64 = 13903989f6d854269587e449a798be76
 
 pkgname = twonky
 
