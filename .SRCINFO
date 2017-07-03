@@ -1,0 +1,15 @@
+pkgbase = libusbgx-git
+	pkgdesc = C library encapsulating the kernel USB gadget-configfs userspace API functionality
+	pkgver = r325.b8941d1
+	pkgrel = 1
+	url = https://github.com/libusbgx/libusbgx
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = LGPL
+	depends = libconfig
+	source = libusbgx::git+https://github.com/libusbgx/libusbgx.git
+	sha256sums = SKIP
+
+pkgname = libusbgx-git
+
