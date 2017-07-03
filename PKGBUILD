@@ -2,7 +2,7 @@
 
 pkgname='battlescribe'
 pkgver='2.01.03'
-pkgrel=2
+pkgrel=1
 pkgdesc="An army list builder for table-top games."
 arch=(any)
 url="http://battlescribe.net/?tab=downloads"
