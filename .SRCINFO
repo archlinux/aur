@@ -1,7 +1,7 @@
 pkgbase = ncmpvc-git
 	pkgdesc = A ncurses client for mpv which connects to existing mpv instances through sockets, written in Rust. WARNING: Early development stage, for bug-hunters only!
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/freijon/ncmpvc
 	arch = x86_64
 	license = MIT
