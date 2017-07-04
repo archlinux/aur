@@ -15,9 +15,12 @@ pkgbase = brlcad-bin
 	depends = flex
 	depends = libgl
 	depends = libpng
+	depends = libpng12
 	depends = mesa
 	depends = tk
 	depends = zlib
+	source = http://downloads.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.26.0/BRL-CAD_7.26.0.2_Linux_x86_64.tar.gz
+	md5sums = c0f30ca1d5f982292f2988fa798950c6
 
 pkgname = brlcad-bin
 

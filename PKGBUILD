@@ -8,7 +8,7 @@ license=('LGPL' 'BSD' 'custom:BDL')
 arch=('x86_64')
 # install=$pkgname.install
 makedepends=('bc' 'cmake' 'libxslt')
-depends=('rpmextract' 'boost' 'flex' 'libgl' 'libpng' 'mesa' 'tk' 'zlib')
+depends=('rpmextract' 'boost' 'flex' 'libgl' 'libpng' 'libpng12' 'mesa' 'tk' 'zlib')
 
 if [ "$CARCH" = "x86_64" ]; then
 	    source=(http://downloads.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/$pkgver/BRL-CAD_$pkgver.2_Linux_x86_64.tar.gz)
