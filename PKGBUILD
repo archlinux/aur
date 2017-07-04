@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-gnome
-pkgver=20170626.1.1335994
+pkgver=20170703.1.9773832
 pkgrel=1
 epoch=3
 pkgdesc="The GNOME client for ring.cx (formerly known as SFLphone)"
