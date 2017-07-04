@@ -2,7 +2,7 @@
 pkgname=acme-tiny
 commit=7ef9164dc141f369f5f92a1132b3ef9e12e95b73
 pkgver=0.0.1.1.$(echo $commit | cut -c1-7)
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny script to issue and renew TLS certs from Let's Encrypt"
 url="https://github.com/diafygi/acme-tiny"
 depends=('python' 'openssl')

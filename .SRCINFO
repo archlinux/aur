@@ -1,13 +1,13 @@
 pkgbase = acme-tiny
 	pkgdesc = A tiny script to issue and renew TLS certs from Let's Encrypt
 	pkgver = 0.0.1.1.7ef9164
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diafygi/acme-tiny
 	arch = any
 	license = MIT
 	depends = python
 	depends = openssl
-	source = https://raw.githubusercontent.com/diafygi/acme-tiny/7ef9164dc141f369f5f92a1132b3ef9e12e95b73/acme_tiny.py
+	source = acme_tiny_7ef9164dc141f369f5f92a1132b3ef9e12e95b73.py::https://raw.githubusercontent.com/diafygi/acme-tiny/7ef9164dc141f369f5f92a1132b3ef9e12e95b73/acme_tiny.py
 	sha256sums = 1abae6ea2045dd2490b8671c98e24bc82706df125fd171ce82b76d89c2bf3f46
 
 pkgname = acme-tiny
