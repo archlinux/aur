@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.1
-pkgrel=8
+pkgrel=9
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -35,8 +35,6 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	$_pkgname-gravity.timer
 	$_pkgname-logtruncate.service
 	$_pkgname-logtruncate.timer
-	whitelist.txt
-	blacklist.txt
 	mimic_setupVars.conf.sh
 	version.patch)
 
@@ -53,8 +51,6 @@ md5sums=('e24ce6a12ee97cd7de2c5ab13af99511'
          'd42a864f88299998f8233c0bc0dd093d'
          '94d5aa0e8aa3d4170bcea71078a9da25'
          '291d3c95e445fe65caf40c3605efd186'
-         'd41d8cd98f00b204e9800998ecf8427e'
-         'd41d8cd98f00b204e9800998ecf8427e'
          '966a61aee3948cdfd92f1eb1a8180f1d'
          '93fe5e50cf3fcb08b24cf29b0cace85b')
 
@@ -294,24 +290,37 @@ package() {
   ln -s $_pkgname-logtruncate.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-logtruncate.timer"
 
   install -dm755 "$pkgdir"/etc/pihole
-  install -dm755 "$pkgdir"/etc/pihole/configs
+  install -dm755 "$pkgdir"/usr/share/pihole/configs
+  install -dm755 "$pkgdir"/usr/share/pihole/doc
   install -Dm644 $_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default
   install -Dm644 $_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/pihole/logrotate
-  install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt
-  install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt
+  install -Dm644 /dev/null "$pkgdir"/etc/pihole/whitelist.txt
+  install -Dm644 /dev/null "$pkgdir"/etc/pihole/blacklist.txt
 
-  install -Dm644 configuration "$pkgdir"/usr/share/doc/pihole/configuration
+  install -Dm644 configuration "$pkgdir"/usr/share//pihole/doc/configuration
 
-  install -Dm644 dnsmasq.main "$pkgdir"/etc/pihole/configs/dnsmasq.main
+  install -Dm644 dnsmasq.main "$pkgdir"/usr/share/pihole/configs/dnsmasq.main
   install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf
   install -Dm644 dnsmasq.local "$pkgdir"/etc/dnsmasq.d/02-pihole.conf
-  install -Dm644 lighttpd.conf "$pkgdir"/etc/pihole/configs/lighttpd.conf
-  install -Dm644 nginx.pi-hole.conf "$pkgdir"/etc/pihole/configs/nginx.pi-hole.conf
+  install -Dm644 lighttpd.conf "$pkgdir"/usr/share/pihole/configs/lighttpd.example.conf
+  install -Dm644 nginx.pi-hole.conf "$pkgdir"/usr/share/pihole/configs/nginx.example.conf
 
   install -dm755 "$pkgdir"/srv/http/pihole/admin
   install -Dm644 $_pkgname-$pkgver/advanced/index.php "$pkgdir"/srv/http/pihole/pihole/index.php
   install -Dm644 $_pkgname-$pkgver/advanced/index.js "$pkgdir"/srv/http/pihole/pihole/index.js
   install -Dm644 $_pkgname-$pkgver/advanced/blockingpage.css "$pkgdir"/srv/http/pihole/pihole/blockingpage.css
   cp -dpr --no-preserve=ownership $_wwwpkgname-$_wwwpkgver/* "$pkgdir"/srv/http/pihole/admin/
+
+  install -dm755 "$pkgdir"/usr/share/licenses/pihole
+  install -Dm644 ${pkgname%-*}-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/pihole/Pi-hole
+  install -Dm644 AdminLTE-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/pihole/AdminLTE
+  install -Dm644 AdminLTE-$pkgver/style/vendor/SourceSansPro/OFL.txt \
+    "$pkgdir"/usr/share/licenses/pihole/SourceSansPro
+
+  rm "$pkgdir"/srv/http/pihole/admin/*.md
+  rm "$pkgdir"/srv/http/pihole/admin/LICENSE
+  rm "$pkgdir"/srv/http/pihole/admin/style/vendor/LICENSE
+  rm "$pkgdir"/srv/http/pihole/admin/scripts/vendor/LICENSE
+  rm "$pkgdir"/srv/http/pihole/admin/style/vendor/SourceSansPro/OFL.txt
 }
 
