@@ -11,8 +11,8 @@ source=("linux-files.zip::https://s3-us-west-1.amazonaws.com/heartbleed/linux/li
         "template"
         "purevpn")
 sha256sums=('32ee473d414691438618d68740c7060ad1218719e13b41561b18c3d0a659ae01'
-            '7d89dab51332eb5fb3cc31524d4979582610f2d4ea4a4cc30b16255c5ff318c6'
-            '9e7f192635522a8b7e91b99ce5d5b496902d11add1263674ad9ea81293507b81')
+            '7b724c0bcd60e71d81083443529d46018c795d3b9dedc21c477529f004497ee7'
+            '175a6b855e3da1a59cbbf3b2a0840086c564c0670ba3f1365911e6365b5e1307')
 noextract=("linux-files.zip")
 install="${pkgname}".install
 
