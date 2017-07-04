@@ -46,6 +46,14 @@ ln -s $CLONED_DIR/iosevka-generate /usr/local/bin/iosevka-generate
 
 On Arch, use the `PKGBUILD` script in this repo.
 
+On macOS, use the contained brew formula:
+```sh
+brew install https://raw.githubusercontent.com/OJFord/iosevka-generate/blob/master/iosevka-generate.rb
+
+# Or, from my `brew tap OJFord/formulae`:
+brew install OJFord/formulae/iosevka-generate
+```
+
 ## Licence
 
 The helper tool in this repository is licensed according to the [LICENCE.md](/LICENCE.md) contained within.
