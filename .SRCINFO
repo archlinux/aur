@@ -1,0 +1,15 @@
+pkgbase = httpdiff
+	pkgdesc = Perform the same request against two HTTP servers and diff the results
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jgrahamc/httpdiff
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = go
+	source = httpdiff::git+https://github.com/jgrahamc/httpdiff.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = httpdiff
+
