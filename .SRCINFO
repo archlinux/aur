@@ -1,6 +1,6 @@
 pkgbase = qgis
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats
-	pkgver = 2.18.6
+	pkgver = 2.18.10
 	pkgrel = 1
 	url = http://qgis.org/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = qgis
 	depends = qt4
 	depends = qca-qt4
 	depends = qscintilla-qt4
-	depends = qwt
-	depends = qwtpolar
+	depends = qwt-qt4
+	depends = qwtpolar-qt4
 	depends = spatialindex
 	depends = sqlite
 	depends = python2
@@ -42,9 +42,9 @@ pkgbase = qgis
 	optdepends = python2-psycopg2: Processing plugin
 	optdepends = python2-pyspatialite: Processing plugin
 	optdepends = python2-yaml: Processing plugin
-	source = https://qgis.org/downloads/qgis-2.18.6.tar.bz2
+	source = https://qgis.org/downloads/qgis-2.18.10.tar.bz2
 	source = qgis_sip-ftbfs.patch::https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch?id=25b8f81ccabbfdb183d4850a66e884c183444f14
-	md5sums = ea6d736f1b73d3e02867002fa7fabdb1
+	md5sums = 2919028c987dcb364cd28964d0f12ad7
 	md5sums = 0575d848604f0fc6dda0a643523e7e48
 
 pkgname = qgis

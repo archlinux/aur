@@ -12,14 +12,14 @@
 # You will also need to install osgearth-qt4 or fcgi, respectively, before building.
 
 pkgname=qgis
-pkgver=2.18.6
+pkgver=2.18.10
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-libs' 'proj'
-         'qt4' 'qca-qt4' 'qscintilla-qt4' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
+         'qt4' 'qca-qt4' 'qscintilla-qt4' 'qwt-qt4' 'qwtpolar-qt4' 'spatialindex' 'sqlite'
          'python2' 'python2-httplib2' 'python2-future' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
 makedepends=('cmake' 'gsl' 'perl' 'txt2tags')
 optdepends=('gpsbabel: GPS Tool plugin'
@@ -35,7 +35,7 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-yaml: Processing plugin')
 source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
         "qgis_sip-ftbfs.patch::https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch?id=25b8f81ccabbfdb183d4850a66e884c183444f14")
-md5sums=('ea6d736f1b73d3e02867002fa7fabdb1'
+md5sums=('2919028c987dcb364cd28964d0f12ad7'
          '0575d848604f0fc6dda0a643523e7e48')
 
 prepare() {
@@ -43,6 +43,10 @@ prepare() {
 
   # Fedora patch to fix with newer sip/pyqt4
   patch -Np1 -i <(sed '184,$d' ../qgis_sip-ftbfs.patch)
+
+  # Make sure we find the -qt4 versions of qwt and qwtpolar
+  sed -i '/QWT_LIBRARY_NAMES/ s/qwt /qwt-qt4 /' cmake/FindQwt.cmake
+  sed -i '/PATH_SUFFIXES/ s/qwt$/&-qt4/;/LIBRARY NAMES/ s/qwtpolar/&-qt4/' cmake/FindQwtPolar.cmake
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
