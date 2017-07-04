@@ -1,0 +1,115 @@
+#!/usr/bin/env python3.6
+# pylint: disable=C0103,C0111
+
+import os
+from os import path as osp
+import shutil
+import subprocess
+
+import configparser
+
+from typing import Dict
+from typing import Set
+from typing import Tuple
+
+from git import Repo
+from xdg import XDG_CACHE_HOME
+from xdg import XDG_CONFIG_HOME
+
+IOSEVKA_REPO = 'https://github.com/be5invis/iosevka'
+
+
+def get_repo(repo_dir: os.PathLike) -> Repo:
+    if osp.exists(repo_dir):
+        repo = Repo(repo_dir)
+        repo.remote().pull()
+    else:
+        repo = Repo.clone_from(IOSEVKA_REPO, repo_dir, depth=1)
+    return repo
+
+
+def install_iosevka(repo_dir: os.PathLike):
+    get_repo(repo_dir)
+    subprocess.run(['npm', 'install'], cwd=repo_dir).check_returncode()
+
+
+def generate_font(
+        iosevka_dir: os.PathLike,
+        font_name: str,
+        font_styles: Dict[str, Set[str]]
+):
+    options = {
+        mode: ' '.join(styles) for mode, styles in font_styles.items()
+    }
+
+    subprocess.run([
+        'make',
+        'custom-config',
+        f'set={font_name}',
+        f'design={options["common"]}',
+        f'upright={options["upright"]}',
+        f'italic={options["italic"]}',
+        f'oblique={options["oblique"]}',
+    ], cwd=iosevka_dir).check_returncode()
+
+    subprocess.run([
+        'make',
+        'custom',
+        f'set={font_name}'
+    ], cwd=iosevka_dir).check_returncode()
+
+
+def parse_config(config_file: os.PathLike) -> Tuple[str, Dict[str, Set[str]]]:
+    config = configparser.ConfigParser(
+        allow_no_value=True,
+        inline_comment_prefixes=(';')
+    )
+    config.read_dict({
+        'options': {
+            'name': 'myosevka',
+        },
+    })
+    config.read(config_file)
+
+    font_styles = {
+        section: {
+            f'v-{char}-{style}' for char, style in config[section].items()
+        } for section in {
+            'common',
+            'upright',
+            'italic',
+            'oblique',
+        }
+    }
+
+    for option, value in config['options'].items():
+        if option == 'name':
+            font_name = value
+        elif value is None:
+            font_styles['common'].update(option)
+        else:
+            font_styles['common'].update(f'{option}-{value}')
+
+    return (font_name, font_styles)
+
+
+def store_fonts(dest: os.PathLike, source: os.PathLike):
+    os.makedirs(dest, exist_ok=True)
+    for font in os.listdir(source):
+        shutil.move(osp.join(source, font), osp.join(dest, osp.basename(font)))
+
+    subprocess.run(['fc-cache', '--force', '--verbose']).check_returncode()
+
+
+if __name__ == '__main__':
+    config_dir = osp.join(XDG_CONFIG_HOME, 'iosevka')
+    install_dir = osp.join(XDG_CACHE_HOME, 'iosevka')
+
+    install_iosevka(install_dir)
+    name, styles = parse_config(osp.join(config_dir, 'config'))
+    generate_font(install_dir, name, styles)
+
+    gen_dir = osp.join(install_dir, 'dist', f'iosevka-{name}', 'ttf')
+    font_dir = osp.expanduser(osp.join('~', '.local', 'share', 'fonts'))
+
+    store_fonts(font_dir, gen_dir)
