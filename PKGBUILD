@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kimap2
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Job-based API for interacting with IMAP servers"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(kcoreaddons kmime)
 makedepends=(extra-cmake-modules)
 source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
-sha256sums=('c51c7b0546020dc112b1f5d402e3c082196fb3c968b7145acae53015bcbc6842')
+sha256sums=('b99125de1f8170c62d79dcc4baa456b64340d428e127ee993df470ce76a7ea33')
 
 prepare() {
   mkdir -p build
