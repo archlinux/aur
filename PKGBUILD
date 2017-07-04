@@ -41,6 +41,7 @@ package() {
   msg "Copying TIM to /opt/deepinwine/apps/Deepin-TIM ..."
   mkdir -p opt/deepinwine/apps/Deepin-TIM
   cp ${srcdir}/{files.7z,run.sh,TIM$pkgver.exe} -i opt/deepinwine/apps/Deepin-TIM/
+  chmod +x opt/deepinwine/apps/Deepin-TIM/run.sh
   popd
 }
 
