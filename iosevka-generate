@@ -13,8 +13,8 @@ from typing import Set
 from typing import Tuple
 
 from git import Repo
-from xdg import XDG_CACHE_HOME
-from xdg import XDG_CONFIG_HOME
+from xdg.BaseDirectory import xdg_cache_home
+from xdg.BaseDirectory import xdg_config_home
 
 IOSEVKA_REPO = 'https://github.com/be5invis/iosevka'
 
@@ -102,8 +102,8 @@ def store_fonts(dest: os.PathLike, source: os.PathLike):
 
 
 if __name__ == '__main__':
-    config_dir = osp.join(XDG_CONFIG_HOME, 'iosevka')
-    install_dir = osp.join(XDG_CACHE_HOME, 'iosevka')
+    config_dir = osp.join(xdg_config_home, 'iosevka')
+    install_dir = osp.join(xdg_cache_home, 'iosevka')
 
     install_iosevka(install_dir)
     name, styles = parse_config(osp.join(config_dir, 'config'))
