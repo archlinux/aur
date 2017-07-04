@@ -3,7 +3,7 @@
 
 pkgname=jlink-systemview
 pkgver=2.50
-pkgrel=1
+pkgrel=2
 epoch=4
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
@@ -11,13 +11,15 @@ license=('custom')
 groups=('jlink')
 depends=('qt4' 'jlink-software-and-documentation')
 source=("cookie::https://www.segger.com/downloads/login")
-source_x86_64=("SystemView_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/free_tools/SystemView_Linux_V${pkgver/./}_x86_64.tgz")
-source_i686=("SystemView_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/free_tools/SystemView_Linux_V${pkgver/./}_i386.tgz")
+source_x86_64=("SystemView_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/systemview_linux_tgz64")
+source_i686=("SystemView_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/systemview_linux_tgz32")
 md5sums=('SKIP')
 md5sums_i686=('ca44e256eb026693e4834a83f2648e49')
 md5sums_x86_64=('54ce078fe00cb38d2f2cf0a6b0d3961f')
 url="https://www.segger.com/downloads/free_tools"
 DLAGENTS=("https::/usr/bin/env curl -c cookie -d name=archsegger@free.fr -d password=QfNDbvDUa7 %u -o %o")
+
+
 
 package(){
     # Cleanup
