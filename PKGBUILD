@@ -10,7 +10,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=('LGPL')
 url="http://www.netlib.org/lapack"
 source=("http://www.netlib.org/lapack/lapack-${pkgver}.tgz")
-sha1sums=('e71584cc334a7f711b215261c2a35adee49df2f0')
+sha1sums=('84c4f7163b52b1bf1f6ca2193f6f48ed3dec0fab')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
