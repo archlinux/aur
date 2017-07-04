@@ -73,10 +73,10 @@ fi
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _pkgvermajmin="5.9"
-_pkgverpatch=".0"
+_pkgverpatch=".1"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=91
+pkgrel=1
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -202,7 +202,7 @@ _core_configure_options="\
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
-  sha256sums=("SKIP" "f70b5c66161191489fc13c7b7eb69bf9df3881596b183e7f6d94305a39837517")
+  sha256sums=("SKIP" "7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795")
 fi
 
 options=('!strip')
