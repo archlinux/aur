@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.5.0.r2017.99180f5af
+pkgver=1.5.0.r2136.bab9826fb
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=('i686' 'x86_64')
@@ -36,6 +36,11 @@ pkgver() {
   cd pcsx2
 
   git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
+}
+
+prepare() {
+  # Disable ZZOgl-PG
+  rm -rf pcsx2/plugins/zzogl-pg
 }
 
 build() {
