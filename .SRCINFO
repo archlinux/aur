@@ -1,21 +1,21 @@
 pkgbase = sink
 	pkgdesc = An offline-caching, synchronization and indexing system for PIM data
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://community.kde.org/KDE_PIM
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules
-	makedepends = flatbuffers
 	makedepends = libgit2
 	depends = curl
 	depends = kcontacts
 	depends = kasync
 	depends = kimap2
+	depends = kdav2
 	depends = lmdb
-	source = https://download.kde.org/unstable/sink/0.2.0/src/sink-0.2.0.tar.xz
-	sha256sums = b9e4d8a8f9cc3922da60d25366a6b2b29c5fab110724dedf7d47ccbc12080119
+	source = https://download.kde.org/unstable/sink/0.3.0/src/sink-0.3.0.tar.xz
+	sha256sums = b9f618316a60aae83174188aac63220cf77eb51f32238a55a998cb1db0f81534
 
 pkgname = sink
 
