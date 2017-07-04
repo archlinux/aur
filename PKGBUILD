@@ -7,7 +7,7 @@ pkgdesc="Qt Widgets for Technical Applications (mingw-w64)"
 arch=('any')
 license=('custom:qwt')
 url="http://qwt.sourceforge.net"
-depends=('mingw-w64-qt4')
+depends=('mingw-w64-qt5-svg')
 makedepends=('mingw-w64-gcc')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://downloads.sourceforge.net/qwt/qwt-${pkgver}.tar.bz2")
@@ -16,15 +16,13 @@ md5sums=('19d1f5fa5e22054d22ee3accc37c54ba')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-    
   for _arch in ${_architectures}; do
-
-    export QTDIR=/usr/${_arch}/
+    export QTDIR=/usr/${_arch}/lib/qt
     export PATH=${QTDIR}/bin:${PATH}
+    mkdir -p "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
     cd "${srcdir}"
-    mkdir -p ${pkgname}-${pkgver}-build-${_arch}
     cp -r "qwt-${pkgver}/" "${pkgname}-${pkgver}-build-${_arch}"
-    cd ${pkgname}-${pkgver}-build-${_arch}/qwt-${pkgver}
+    cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}/qwt-${pkgver}"
     
 
     # Build release only
@@ -45,6 +43,7 @@ build() {
     sed -i "s|= target doc|= target|" src/src.pro
 
     ${QTDIR}/bin/qmake qwt.pro
+
     make
   done
 
@@ -67,7 +66,7 @@ package() {
     ${_target}-strip -g "$pkgdir"/usr/${_target}/lib/*.a
     # Move features to share/qt/mkspecs
     rm -rf "$pkgdir"/usr/${_target}/share
-    mkdir -p share/qt4/mkspecs
-    mv features share/qt4/mkspecs
+    mkdir -p lib/qt/mkspecs
+    mv features lib/qt/mkspecs
   done
 }
