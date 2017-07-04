@@ -4,7 +4,7 @@
 # Contributor: Themaister    <maister@archlinux.us>
 
 pkgname=retroarch-rbp-git
-pkgver=1.6.1
+pkgver=1.6.1.139.g3a141cb89
 pkgrel=1
 pkgdesc="Reference frontend for the libretro API."
 arch=('arm' 'armv6h' 'armv7h')
@@ -12,6 +12,7 @@ url="http://www.libretro.com"
 license=('GPL')
 groups=('libretro')
 depends=('mesa' 'mesa-libgl' 'libusb' 'openal' 'sdl2')
+makedepends=('git')
 provides=('retroarch' 'retroarch-git')
 optdepends=('libretro-desmume: Nintendo DS core'
             'libretro-gambatte: Nintendo Game Boy/Game Boy Color core'
@@ -29,11 +30,20 @@ optdepends=('libretro-desmume: Nintendo DS core'
             'retroarch-autoconfig-udev: udev joypad autoconfig')
 conflicts=('retroarch')
 backup=('etc/retroarch.cfg')
-source=("retroarch-${pkgver}.tar.gz::https://github.com/libretro/RetroArch/archive/v${pkgver}.tar.gz")
-sha256sums=('80ea147e679d1012dd4c05ac287ecb783b78973f8ed4bd4b0959ee778a4c3088')
+_gitname=RetroArch
+source=("git+https://github.com/libretro/${_gitname}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_gitname}"
+  local version=$(git describe --tags)
+  local version=${version/v/}
+  local version=${version//-/.}
+  echo $version
+}
 
 build() {
-  cd RetroArch-${pkgver}
+  cd "${_gitname}"
 
   ./configure --prefix=/usr --enable-neon --enable-dispmanx --enable-floathard --enable-udev --disable-ffmpeg \
     --disable-cg \
@@ -44,7 +54,7 @@ build() {
 }
 
 package() {
-  cd RetroArch-${pkgver}
+  cd "${_gitname}"
 
   make install DESTDIR="${pkgdir}"
 }
