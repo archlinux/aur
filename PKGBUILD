@@ -1,21 +1,21 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kube
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A modern groupware client based on QtQuick and Sink"
 arch=(i686 x86_64)
 url="https://community.kde.org/KDE_PIM"
 license=(LGPL)
-depends=(hicolor-icon-theme messagelib sink kirigami qt5-quickcontrols2)
-makedepends=(extra-cmake-modules)
+depends=(sink qgpgme kpackage qt5-quickcontrols2 qt5-webengine)
+makedepends=(extra-cmake-modules python)
 source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
-sha256sums=('8040346cfce803f63aac75bf5bf1d97edbc8dcfb6f1ec8b09f5e9cb47c768055')
+sha256sums=('ac1058cb702d0ee3b929b9f522cfddd982dc3e36c6d2416078264cbbcf347723')
 
 prepare() {
   mkdir -p build
 
-  sed -e '/QGpgme/d' -i kube-$pkgver/framework/CMakeLists.txt
+#  sed -e '/QGpgme/d' -i kube-$pkgver/framework/CMakeLists.txt
 }
 
 build() {
