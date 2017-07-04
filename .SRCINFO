@@ -1,6 +1,6 @@
 pkgbase = linux-bfq
 	pkgver = 4.11.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://algo.ing.unimo.it
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = linux-bfq
 	source = config.x86_64
 	source = 90-linux.hook
 	source = linux.preset
+	source = 0005-BFQ-update-to-v8r12.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = 6610eed97ffb7207c71771198c36179b8244ace7222bebb109507720e26c5f17d918079a56d5febdd8605844d67fb2df0ebe910fa2f2f53690daf6e2a8ad09c3
@@ -37,6 +38,7 @@ pkgbase = linux-bfq
 	sha512sums = 57addf780fc68d8e2914514e47d2edd27600cc0d1bf0c7d3786bc3e16ec9c6527eb8e9d95f156da8b77c11a53ac2a8f0d23360547a26350ebc3dca93721ebc42
 	sha512sums = d6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
+	sha512sums = b1f6306a27d7e25eb4ff3eb51cb1fe38b0ca035cff229537d1b9f68bdc25861f2fecdeeeb1582e34cd166ee4275e49e4c679247a4c36109b2dcd6d4fa9456d60
 
 pkgname = linux-bfq
 	pkgdesc = Linux Kernel and modules with the BFQ scheduler.
