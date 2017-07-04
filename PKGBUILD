@@ -1,29 +1,23 @@
-# Maintainer chron <chronischzuspaet at gmail dot com>
+# Maintainer chron <chron at posteo dot de>
 pkgname=httpdiff-git
-_pkgname=httpdiff
 pkgver=git
 pkgrel=1
-pkgdesc='Perform the same request against two HTTP servers and diff the results'
-arch=('i686' 'x86_64')
-url='https://github.com/jgrahamc/httpdiff'
-license=('GPL2')
-makedepends=('git' 'go')
-source=('git://github.com/jgrahamc/httpdiff')
+pkgdesc="Perform the same request against two HTTP servers and diff the results"
+arch=("i686" "x86_64")
+url="https://github.com/jgrahamc/httpdiff"
+license=("GPL2")
+makedepends=("git" "go")
+source=("${pkgname}::git+https://github.com/jgrahamc/httpdiff.git")
 
-sha256sums=('SKIP')
+sha256sums=("SKIP")
 
 build() {
-    cd ${srcdir}/${_pkgname}
+    cd ${srcdir}/${pkgname}
     make all
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}
-    install -Dm 755 "${srcdir}/${_pkgname}/httpdiff" "${pkgdir}/usr/bin/httpdiff"
-    install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-}
-
-pkgver() {
-    cd $srcdir/${_pkgname}
-    echo $(git rev-list --count master).$(git rev-parse --short master)
+    cd ${srcdir}/${pkgname}
+    install -Dm 755 "${srcdir}/${pkgname}/httpdiff" "${pkgdir}/usr/bin/httpdiff"
+    install -Dm 644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
