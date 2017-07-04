@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.1
-pkgrel=9
+pkgrel=10
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -20,7 +20,8 @@ optdepends=(
 )
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
-backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
+backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
+'etc/dnsmasq.d/01-pihole.conf' 'etc/dnsmasq.d/02-pihole.conf')
 
 source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
@@ -297,11 +298,16 @@ package() {
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/whitelist.txt
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/blacklist.txt
 
-  install -Dm644 configuration "$pkgdir"/usr/share//pihole/doc/configuration
+  install -Dm644 configuration "$pkgdir"/usr/share/pihole/doc/configuration
 
-  install -Dm644 dnsmasq.main "$pkgdir"/usr/share/pihole/configs/dnsmasq.main
+  install -Dm644 dnsmasq.main "$pkgdir"/usr/share/pihole/configs/dnsmasq.example.conf
+
+  # note the redundancy is due to sed magic post-install
+  install -Dm644 dnsmasq.include "$pkgdir"/usr/share/pihole/configs/01-pihole.example.conf
   install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf
+  install -Dm644 dnsmasq.local "$pkgdir"/usr/share/pihole/configs/02-pihole.example.conf
   install -Dm644 dnsmasq.local "$pkgdir"/etc/dnsmasq.d/02-pihole.conf
+
   install -Dm644 lighttpd.conf "$pkgdir"/usr/share/pihole/configs/lighttpd.example.conf
   install -Dm644 nginx.pi-hole.conf "$pkgdir"/usr/share/pihole/configs/nginx.example.conf
 
