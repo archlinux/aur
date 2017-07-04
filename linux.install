@@ -1,0 +1,37 @@
+post_install () {
+  # updating module dependencies
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod %KERNVER%
+}
+
+post_upgrade() {
+  if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
+    echo "WARNING: /boot appears to be a separate partition but is not mounted."
+  fi
+
+  # updating module dependencies
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod %KERNVER%
+
+  if [ $(vercmp $2 3.13) -lt 0 ]; then
+    echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
+    echo ">>>          In order to use your keyboard during early init, you MUST"
+    echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
+  fi
+
+  if [ $(vercmp $2 4.8.8) -lt 0 ]; then
+    grep -q repo-ck] /etc/pacman.conf
+    if [ $? -eq 0 ]; then
+      echo ">>> WARNING: if you are using one of the CPU optimized kernel from [repo-ck],"
+      echo ">>>          make sure that your bootloader points to the correctly named"
+      echo ">>>          initramfs images since they have been renamed with the 4.8.8-2 release!"
+      echo
+    fi
+  fi
+}
+
+post_remove() {
+  # also remove the compat symlinks
+  rm -f boot/initramfs-%PKGBASE%.img
+  rm -f boot/initramfs-%PKGBASE%-fallback.img
+}

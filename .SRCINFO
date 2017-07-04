@@ -1,0 +1,44 @@
+pkgbase = linux-ck-bcachefs
+	pkgver = 4.11.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Linux-ck
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = git+https://evilpiepirate.org/git/bcachefs.git
+	source = http://ck.kolivas.org/patches/4.0/4.11/4.11-ck2/patch-4.11-ck2.xz
+	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
+	source = config.i686
+	source = config.x86_64
+	source = 90-linux.hook
+	source = linux.preset
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-ck-bcachefs
+	pkgdesc = The Linux-ck-bcachefs kernel and modules with the ck2 patchset featuring MuQSS CPU scheduler v0.156
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux=4.11.0
+	backup = etc/mkinitcpio.d/linux-ck-bcachefs.preset
+
+pkgname = linux-ck-bcachefs-headers
+	pkgdesc = Header files and scripts for building modules for Linux-ck-bcachefs kernel
+	depends = linux-ck-bcachefs
+	provides = linux-ck-bcachefs-headers=4.11.0
+	provides = linux-headers=4.11.0
+
