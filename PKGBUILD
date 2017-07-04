@@ -7,7 +7,7 @@
 
 _pkgname=taglib
 pkgname=lib32-taglib
-pkgver=1.11
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats (32 bit)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=($_pkgname 'lib32-zlib' 'lib32-gcc-libs')
 makedepends=('cmake')
 options=('!libtool')
 source=("http://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
-md5sums=('be39fa2054df40664cb557126ad7cf7c')
+md5sums=('cee7be0ccfc892fa433d6c837df9522a')
 
 prepare() {
   mkdir -p build
