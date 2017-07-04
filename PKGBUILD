@@ -2,7 +2,7 @@
 
 pkgname='perl-module-scandeps'
 _pkgname='Module-ScanDeps'
-pkgver='1.23'
+pkgver='1.24'
 pkgrel='1'
 pkgdesc="Scan file prerequisites"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('perl>=5.008')
 makedepends=('perl-extutils-makemaker>=6.57' 'perl-test-requires')
 url="http://search.cpan.org/dist/Module-ScanDeps"
 source=("http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('7ceb1705aa9be7601a44dea2521a0952de70eb294a88939147d254c3af7056602bbfab97fd117ac4f4184da92354aa1f83f1207d84bf502eb02b0c60fc417ba8')
+sha512sums=('7f3d9821aa863d8ebc78fb5fb3c7172ce133169ec54ed91b90e05ba50654b4bd0282b3a760adfc8b6bd553dda4116dbf51972bb2af94b59f6f04daeba996e889')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
