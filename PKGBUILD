@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=purevpn-openvpn
 pkgver=2017.07.04
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVPN hackery to add PureVPN to NetworkManager'
 arch=('any')
 url='https://www.purevpn.com/'

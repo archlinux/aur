@@ -7,7 +7,7 @@ secondaries=
 
 [vpn]
 auth=SHA1
-ca=/etc/openvpn/ca.crt
+ca=/usr/lib/purevpn/ca.crt
 cipher=AES-256-CBC
 comp-lzo=yes
 connection-type=password
@@ -16,7 +16,7 @@ dev-type=tun
 password-flags=1
 port=
 remote=
-ta=/etc/openvpn/Wdc.key
+ta=/usr/lib/purevpn/Wdc.key
 ta-dir=1
 username=
 service-type=org.freedesktop.NetworkManager.openvpn

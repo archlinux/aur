@@ -117,8 +117,8 @@ else
   exit 1;
 fi
       
-if [ -z "$uname" ] && [ -z "$passw"]; then 
-  echo "Neither user nor password were specified. So we can't add that information right now."
+if [ -z "$uname" ] || [ -z "$passw"]; then 
+  echo "Either user or password were not specified. So we can't add that information right now."
 else
   addpass
 fi
