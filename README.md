@@ -46,5 +46,12 @@ ln -s $CLONED_DIR/iosevka-generate /usr/local/bin/iosevka-generate
 
 On Arch, use the `PKGBUILD` script in this repo.
 
+## Licence
+
+The helper tool in this repository is licensed according to the [LICENCE.md](/LICENCE.md) contained within.
+
+This tool retrieves and makes use of the Iosevka font and supporting build tooling, which are copyright of [Belle Invis][Invis] and licensed as described in [that project's repository][Iosevka].
+
+
 [Invis]: https://github.com/be5invis
 [Iosevka]: https://github.com/be5invis/iosevka
