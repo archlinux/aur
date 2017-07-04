@@ -1,0 +1,16 @@
+pkgbase = postgrest-bin
+	pkgdesc = REST API for any Postgres database
+	pkgver = 0.4.2.0
+	pkgrel = 1
+	url = https://github.com/begriffs/postgrest
+	arch = x86_64
+	license = MIT
+	depends = postgresql-libs
+	provides = postgrest
+	provides = postgrest-bin
+	conflicts = postgrest
+	source = https://github.com/begriffs/postgrest-bin/releases/download/v0.4.2.0/postgrest-bin-0.4.2.0-ubuntu.tar.xz
+	sha512sums = e6e208345b83ed6a7113dfbc6cd30ac12bfa5cff1c97d2c94ba94981827560c178ae7402742e13a1892710dab3c443260fda8966e67622540afab2ad1fc6cc3c
+
+pkgname = postgrest-bin
+
