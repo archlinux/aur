@@ -1,19 +1,19 @@
 #Maintainer: naruto522ru <itachi522ru@gmail.com>
 pkgname=eleet
-pkgver=1.3.10
+pkgver=1.5.7
 pkgrel=1
 pkgdesc='Eleet private messenger'
 arch=('x86_64')
 url='https://github.com/ELMessenger/Desktop'
 license=('GPL2')
 makedepends=('wget')
-depends=('libnotify' 'libappindicator')
+depends=('libnotify' 'libappindicator' 'gconf' 'libxtst' 'lib32-nss' 'lib32-libxss')
 options=(!strip)
 
 install=eleet.install
-source_x86_64=("https://www.dropbox.com/s/4qc8koqurc1mz6q/eleet.deb")
-sha256sums_x86_64=('fee3b22a0f266ab713dece82683d82bceb6c38526a75d3e80425fb5605a445e0')
-md5sums_x86_64=('f92299b192080937ad9e91382a0cb403')
+source_x86_64=("https://www.dropbox.com/s/8gr1dg8nrzzclgj/ELEET.deb")
+sha256sums_x86_64=('69b54ad30e48c164f65a37953f69a782a7548346d667b5d5ae03dc77199d14a0')
+md5sums_x86_64=('e5ddfd15dbf3df5c0f526d4c8ead8839')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
