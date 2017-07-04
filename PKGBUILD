@@ -12,14 +12,14 @@
 
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
-pkgver=2.14.13
+pkgver=2.14.16
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-libs' 'proj'
-         'qt4' 'qca-qt4' 'qscintilla-qt4' 'qtwebkit' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
+         'qt4' 'qca-qt4' 'qscintilla-qt4' 'qtwebkit' 'qwt-qt4' 'qwtpolar-qt4' 'spatialindex' 'sqlite'
          'python2' 'python2-httplib2' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
 makedepends=('cmake' 'gsl' 'perl' 'txt2tags')
 optdepends=('gpsbabel: GPS Tool plugin'
@@ -37,7 +37,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         "qgis_sip-ftbfs.patch::https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch?id=25b8f81ccabbfdb183d4850a66e884c183444f14")
-md5sums=('6d34c123ef04f23c43758b1bfad1da89'
+md5sums=('364851be6a7c64b7f3b5902179902a68'
          '0575d848604f0fc6dda0a643523e7e48')
 
 prepare() {
@@ -45,6 +45,10 @@ prepare() {
 
   # Fedora patch to fix with newer sip/pyqt4
   patch -Np1 -i <(sed '184,$d' ../qgis_sip-ftbfs.patch)
+
+  # Make sure we find the -qt4 versions of qwt and qwtpolar
+  sed -i '/QWT_LIBRARY_NAMES/ s/qwt /qwt-qt4 /' cmake/FindQwt.cmake
+  sed -i '/PATH_SUFFIXES/ s/qwt$/&-qt4/;/LIBRARY NAMES/ s/qwtpolar/&-qt4/' cmake/FindQwtPolar.cmake
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
