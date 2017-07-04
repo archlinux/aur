@@ -1,7 +1,7 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
 	pkgver = 3.1.2_b2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://slade.mancubus.net/
 	arch = i686
 	arch = x86_64
@@ -21,13 +21,14 @@ pkgbase = slade
 	depends = libgl
 	depends = sfml>=2.4
 	depends = sfml<2.5
-	depends = webkitgtk2
 	depends = wxgtk2>=3.0
 	depends = zlib
 	source = https://github.com/sirjuddington/SLADE/archive/3.1.2_b2.tar.gz
 	source = slade.desktop
+	source = 0001-NO_WEBVIEW-fix-742.patch
 	sha256sums = 7b473853acbddfc03b1821ebec13e61f0caf26a6718f88bc4136989df15f853c
 	sha256sums = e69d6e0da523c5d649bd51316fa827175b5858cb91b4ad311b2f0d0dedd8b9bb
+	sha256sums = 8df409857161d3b72097326f574daa778efde945edc2373d435537e05be5dc8e
 
 pkgname = slade
 

@@ -3,7 +3,7 @@
 _name=slade
 pkgname=${_name}
 pkgver=3.1.2_b2
-pkgrel=2
+pkgrel=3
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -20,22 +20,30 @@ depends=('bzip2'
          'libgl'
          'sfml>=2.4'
          'sfml<2.5'
-         'webkitgtk2'
          'wxgtk2>=3.0'
          'zlib')
 makedepends=('cmake'
              'imagemagick'
              'p7zip')
 source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz"
-        "${_name}.desktop")
+        "${_name}.desktop"
+        '0001-NO_WEBVIEW-fix-742.patch')
 sha256sums=('7b473853acbddfc03b1821ebec13e61f0caf26a6718f88bc4136989df15f853c'
-            'e69d6e0da523c5d649bd51316fa827175b5858cb91b4ad311b2f0d0dedd8b9bb')
+            'e69d6e0da523c5d649bd51316fa827175b5858cb91b4ad311b2f0d0dedd8b9bb'
+            '8df409857161d3b72097326f574daa778efde945edc2373d435537e05be5dc8e')
+
+prepare() {
+    cd SLADE-${pkgver}
+
+    patch -p1 -i"$srcdir"/0001-NO_WEBVIEW-fix-742.patch
+}
 
 build() {
     cd SLADE-${pkgver}
 
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DNO_WEBVIEW=ON \
           .
     make
 

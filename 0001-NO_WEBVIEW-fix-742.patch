@@ -1,0 +1,47 @@
+From 097d5be38f27e8d829fcb394877c1db623f066f6 Mon Sep 17 00:00:00 2001
+From: Jacendi <jacendi@protonmail.com>
+Date: Fri, 23 Jun 2017 03:06:19 +0400
+Subject: [PATCH] NO_WEBVIEW fix (#742)
+
+* Update MainEditor.cpp
+
+* Update MainWindow.cpp
+
+* Update MainEditor.cpp
+---
+ src/MainEditor/MainEditor.cpp    | 3 ++-
+ src/MainEditor/UI/MainWindow.cpp | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/MainEditor/MainEditor.cpp b/src/MainEditor/MainEditor.cpp
+index 0c024de2..cb219265 100644
+--- a/src/MainEditor/MainEditor.cpp
++++ b/src/MainEditor/MainEditor.cpp
+@@ -94,8 +94,9 @@ EntryPanel* MainEditor::currentEntryPanel()
+ {
+ 	return main_window->getArchiveManagerPanel()->currentArea();
+ }
+-
++#ifdef USE_WEBVIEW_STARTPAGE
+ void MainEditor::openDocs(string page_name)
+ {
+ 	main_window->openDocs(page_name);
+ }
++#endif
+diff --git a/src/MainEditor/UI/MainWindow.cpp b/src/MainEditor/UI/MainWindow.cpp
+index ecb0f875..92e183bd 100644
+--- a/src/MainEditor/UI/MainWindow.cpp
++++ b/src/MainEditor/UI/MainWindow.cpp
+@@ -921,7 +921,8 @@ void MainWindow::onHTMLLinkClicked(wxEvent& e)
+ 		string rs = href.Mid(9);
+ 		unsigned long index = 0;
+ 		rs.ToULong(&index);
+-		SActionHandler::doAction("aman_recent", index);
++		SActionHandler::setWxIdOffset(index);
++		SActionHandler::doAction("aman_recent");
+ 		createStartPage();
+ 	}
+ 	else if (href.StartsWith("action://"))
+-- 
+2.13.2
+
