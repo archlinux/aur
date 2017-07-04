@@ -2,18 +2,20 @@
 
 pkgname=acpi_call-dkms
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A linux kernel module that enables calls to ACPI methods through /proc/acpi/call'
 arch=('any')
-url='http://github.com/mkottman/acpi_call'
+url='https://github.com/mkottman/acpi_call'
 license=('GPL')
 depends=('dkms')
 makedepends=('markdown')
 optdepends=('linux-headers: needed if using archlinux default kernel'
-	    'linux-lts-headers: needed if using the archlinux lts kernel')
+	    'linux-lts-headers: needed if using the archlinux lts kernel'
+	    'linux-zen-headers: needed if using the archlinux zen kernel'
+	    'linux-hardened-headers: needed if using the archlinux hardened kernel')
 provides=('acpi_call')
 conflicts=('acpi_call')
-source=("acpi_call-v${pkgver}.tar.gz::http://github.com/mkottman/acpi_call/archive/v${pkgver}.tar.gz")
+source=("acpi_call-v${pkgver}.tar.gz::https://github.com/mkottman/acpi_call/archive/v${pkgver}.tar.gz")
 sha256sums=('d0d14b42944282724fca76f57d598eed794ef97448f387d1c489d85ad813f2f0')
 
 prepare() {
