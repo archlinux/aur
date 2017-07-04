@@ -1,0 +1,16 @@
+pkgbase = kdav2
+	pkgdesc = A DAV protocol implementation with KJobs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://community.kde.org/KDE_PIM
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	depends = qt5-xmlpatterns
+	depends = kcoreaddons
+	source = https://download.kde.org/unstable/kdav2/0.1.0/src/kdav2-0.1.0.tar.xz
+	sha256sums = 0e4028c4f1f76b315bb54eb7d3e216e7456a445085c47cdca0f7a58368fe6c36
+
+pkgname = kdav2
+
