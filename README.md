@@ -44,5 +44,7 @@ If you clone this repo, you can just create a symbolic link to the contained scr
 ln -s $CLONED_DIR/iosevka-generate /usr/local/bin/iosevka-generate
 ```
 
+On Arch, use the `PKGBUILD` script in this repo.
+
 [Invis]: https://github.com/be5invis
 [Iosevka]: https://github.com/be5invis/iosevka

@@ -1,10 +1,18 @@
 pkgbase = iosevka-generate
 	pkgdesc = A tool to generate custom Iosevka fonts from a configuration file
 	pkgver = 0.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/OJFord/iosevka-generate
 	arch = any
 	license = GPL
+	depends = make
+	depends = npm
+	depends = otfcc
+	depends = python-gitpython
+	depends = python-xdg
+	depends = ttfautohint
+	source = https://github.com/OJFord/iosevka-generate/archive/v0.1.0.tar.gz
+	md5sums = 11b237c10a50c7a28e09f71499a3ab0f
 
 pkgname = iosevka-generate
 
