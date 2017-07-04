@@ -1,0 +1,12 @@
+pkgbase = contemporary-cursors
+	pkgdesc = Contemporary Cursors
+	pkgver = 1.0
+	pkgrel = 0
+	url = http://vicr123.github.io/contemporary
+	arch = any
+	license = cc-by-sa-4.0
+	source = contemporary-cursors-1.0::git+https://github.com/vicr123/contemporary-cursors.git
+	sha256sums = SKIP
+
+pkgname = contemporary-cursors
+
