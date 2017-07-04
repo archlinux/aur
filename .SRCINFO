@@ -18,3 +18,43 @@ pkgbase = firejail-extras
 
 pkgname = firejail-extras
 
+pkgbase = firejail-extras
+	pkgdesc = Extra profiles for firejail
+	pkgver = 0.9.445
+	pkgrel = 4
+	url = https://github.com/triceratops1/fe
+	arch = any
+	license = GPL2
+	source = git+https://github.com/chiraag-nataraj/firejail-profiles.git
+	source = git+https://github.com/triceratops1/fe.git
+	sha224sums = SKIP
+	sha224sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha384sums = SKIP
+	sha384sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = firejail-extras
+
+pkgbase = firejail-extras
+	pkgdesc = Extra profiles for firejail
+	pkgver = 0.9.445
+	pkgrel = 5
+	url = https://github.com/triceratops1/fe
+	arch = any
+	license = GPL2
+	source = git+https://github.com/chiraag-nataraj/firejail-profiles.git
+	source = git+https://github.com/triceratops1/fe.git
+	sha224sums = SKIP
+	sha224sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha384sums = SKIP
+	sha384sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = firejail-extras
+

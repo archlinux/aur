@@ -1,3 +1,4 @@
+# Maintainer: Hannes Eichblatt aur at hanneseichblatt.de
 # Maintainer: Juan Perez gatitofeliz at protonmail at com
 
 # ALERT: These profiles are taken from github and couldn't work 
@@ -5,7 +6,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.445
-pkgrel=4
+pkgrel=5
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/triceratops1/fe"
@@ -56,14 +57,30 @@ package() {
         rm   ${srcdir}/firejail-profiles/luminance-hdr.profile
         rm   ${srcdir}/firejail-profiles/mupdf.profile
         rm   ${srcdir}/firejail-profiles/pidgin.profile
-     
+        rm   ${srcdir}/firejail-profiles/akregator.profile
+        rm   ${srcdir}/firejail-profiles/blender.profile
+        rm   ${srcdir}/firejail-profiles/hugin.profile
+        rm   ${srcdir}/firejail-profiles/scribus.profile
+        rm   ${srcdir}/firejail-profiles/viewnior.profile
+        rm   ${srcdir}/firejail-profiles/dia.profile
+        rm   ${srcdir}/firejail-profiles/youtube-dl.profile
+        rm   ${srcdir}/firejail-profiles/darktable.profile
 
         rm   ${srcdir}/fe/7z.profile
         rm   ${srcdir}/fe/feh.profile
         rm   ${srcdir}/fe/keepass.profile
         rm   ${srcdir}/fe/keepassx.profile
         rm   ${srcdir}/fe/zathura.profile
-        
+        rm   ${srcdir}/fe/cvlc.profile
+        rm   ${srcdir}/fe/fossamail.profile
+        rm   ${srcdir}/fe/gjs.profile
+        rm   ${srcdir}/fe/gpa.profile
+        rm   ${srcdir}/fe/kino.profile
+        rm   ${srcdir}/fe/lynx.profile
+        rm   ${srcdir}/fe/pluma.profile
+        rm   ${srcdir}/fe/qupzilla.profile
+        rm   ${srcdir}/fe/uzbl-browser.profile
+
         msg2 create package
        
 	mkdir -p "${pkgdir}/etc/firejail"
