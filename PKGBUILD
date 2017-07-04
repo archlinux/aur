@@ -2,7 +2,7 @@
 
 _name=slade
 pkgname=${_name}-git
-pkgver=3.1.2_b2+11+ga99ec7c5
+pkgver=3.1.2_b2+19+gc4bfa47f
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -20,7 +20,6 @@ depends=('bzip2'
          'libgl'
          'sfml>=2.4'
          'sfml<2.5'
-         'webkitgtk2'
          'wxgtk2>=3.0'
          'zlib')
 makedepends=('cmake'
@@ -45,6 +44,7 @@ build() {
 
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DNO_WEBVIEW=ON \
           .
     make
 
