@@ -1,7 +1,7 @@
 # Maintainer: Bian Jiaping <ssbianjp@gmail.com>
 
 pkgname=reflector-timer-weekly
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Update pacman mirrorlist regularly'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
   'reflector-timer.sh'
 )
 md5sums=(
-  'f291f5b06fb914527bcb3250e4911629'
+  '82f955fc067815525ca0010f79aa7d43'
   'b50a7229d7102d520f9360ded92b771c'
   '4e9e78b1b0ec81b54fdf368583ad4257'
   '9aeefdf1c7778bcabd0ba926109e1328'
