@@ -4,7 +4,7 @@
 # Contributor: Themaister    <maister@archlinux.us>
 
 pkgname=retroarch-rbp-git
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Reference frontend for the libretro API."
 arch=('arm' 'armv6h' 'armv7h')
@@ -30,7 +30,7 @@ optdepends=('libretro-desmume: Nintendo DS core'
 conflicts=('retroarch')
 backup=('etc/retroarch.cfg')
 source=("retroarch-${pkgver}.tar.gz::https://github.com/libretro/RetroArch/archive/v${pkgver}.tar.gz")
-sha256sums=('5de6385d4a0031709ef133d04a8573309e1090f0fda2917678be8e1147576de5')
+sha256sums=('80ea147e679d1012dd4c05ac287ecb783b78973f8ed4bd4b0959ee778a4c3088')
 
 build() {
   cd RetroArch-${pkgver}
