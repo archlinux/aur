@@ -1,0 +1,7 @@
+post_install() {
+	chown $USER:$USER -R /nxfilter
+	chmod 755 /nxfilter/bin/*.sh
+}
+post_remove() {
+	rm -r /nxfilter
+}
