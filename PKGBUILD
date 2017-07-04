@@ -299,7 +299,7 @@ if $_patching; then
 
   cd ${_waylanddir}
   #patch -p1 < ${startdir}/0001-Fix-brcm-egl-build-by-correcting-commit-usage.patch
-  patch -p1 < ${startdir}/0001-Avoid-double-deletion-of-mBuffer.patch
+  #patch -p1 < ${startdir}/0001-Avoid-double-deletion-of-mBuffer.patch
 
   #cd ${_webenginedir}
   # reverse patch which breaks dynamic loading of EGL/GLESvs with rpi proprietary drivers
