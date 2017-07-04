@@ -1,0 +1,481 @@
+From 463bdf6f4bf02080f52de8987ca61b8b16c059bf Mon Sep 17 00:00:00 2001
+From: Paolo Valente <paolo.valente@linaro.org>
+Date: Thu, 4 May 2017 17:47:13 +0200
+Subject: [PATCH 1/5] block, bfq: update wr_busy_queues if needed on a queue
+ split
+
+This commit fixes a bug triggered by a non-trivial sequence of
+events. These events are briefly described in the next two
+paragraphs. The impatiens, or those who are familiar with queue
+merging and splitting, can jump directly to the last paragraph.
+
+On each I/O-request arrival for a shared bfq_queue, i.e., for a
+bfq_queue that is the result of the merge of two or more bfq_queues,
+BFQ checks whether the shared bfq_queue has become seeky (i.e., if too
+many random I/O requests have arrived for the bfq_queue; if the device
+is non rotational, then random requests must be also small for the
+bfq_queue to be tagged as seeky). If the shared bfq_queue is actually
+detected as seeky, then a split occurs: the bfq I/O context of the
+process that has issued the request is redirected from the shared
+bfq_queue to a new non-shared bfq_queue. As a degenerate case, if the
+shared bfq_queue actually happens to be shared only by one process
+(because of previous splits), then no new bfq_queue is created: the
+state of the shared bfq_queue is just changed from shared to non
+shared.
+
+Regardless of whether a brand new non-shared bfq_queue is created, or
+the pre-existing shared bfq_queue is just turned into a non-shared
+bfq_queue, several parameters of the non-shared bfq_queue are set
+(restored) to the original values they had when the bfq_queue
+associated with the bfq I/O context of the process (that has just
+issued an I/O request) was merged with the shared bfq_queue. One of
+these parameters is the weight-raising state.
+
+If, on the split of a shared bfq_queue,
+1) a pre-existing shared bfq_queue is turned into a non-shared
+bfq_queue;
+2) the previously shared bfq_queue happens to be busy;
+3) the weight-raising state of the previously shared bfq_queue happens
+to change;
+the number of weight-raised busy queues changes. The field
+wr_busy_queues must then be updated accordingly, but such an update
+was missing. This commit adds the missing update.
+
+Signed-off-by: Paolo Valente <paolo.valente@linaro.org>
+---
+ block/bfq-iosched.c | 47 +++++++++++++++++++++++++++++++++++++++--------
+ block/bfq-sched.c   |  9 +++++++--
+ 2 files changed, 46 insertions(+), 10 deletions(-)
+
+diff --git a/block/bfq-iosched.c b/block/bfq-iosched.c
+index 158628392d92..9c7d6c4fe2f8 100644
+--- a/block/bfq-iosched.c
++++ b/block/bfq-iosched.c
+@@ -682,8 +682,12 @@ static unsigned int bfq_wr_duration(struct bfq_data *bfqd)
+ }
+ 
+ static void
+-bfq_bfqq_resume_state(struct bfq_queue *bfqq, struct bfq_io_cq *bic)
++bfq_bfqq_resume_state(struct bfq_queue *bfqq, struct bfq_data *bfqd,
++		      struct bfq_io_cq *bic, bool bfq_already_existing)
+ {
++	unsigned int old_wr_coeff;
++	bool busy = bfq_already_existing && bfq_bfqq_busy(bfqq);
++
+ 	if (bic->saved_idle_window)
+ 		bfq_mark_bfqq_idle_window(bfqq);
+ 	else
+@@ -694,6 +698,9 @@ bfq_bfqq_resume_state(struct bfq_queue *bfqq, struct bfq_io_cq *bic)
+ 	else
+ 		bfq_clear_bfqq_IO_bound(bfqq);
+ 
++	if (unlikely(busy))
++		old_wr_coeff = bfqq->wr_coeff;
++
+ 	bfqq->wr_coeff = bic->saved_wr_coeff;
+ 	bfqq->wr_start_at_switch_to_srt = bic->saved_wr_start_at_switch_to_srt;
+ 	BUG_ON(time_is_after_jiffies(bfqq->wr_start_at_switch_to_srt));
+@@ -702,8 +709,8 @@ bfq_bfqq_resume_state(struct bfq_queue *bfqq, struct bfq_io_cq *bic)
+ 	BUG_ON(time_is_after_jiffies(bfqq->last_wr_start_finish));
+ 
+ 	if (bfqq->wr_coeff > 1 && (bfq_bfqq_in_large_burst(bfqq) ||
+-	    time_is_before_jiffies(bfqq->last_wr_start_finish +
+-				   bfqq->wr_cur_max_time))) {
++				   time_is_before_jiffies(bfqq->last_wr_start_finish +
++							  bfqq->wr_cur_max_time))) {
+ 		bfq_log_bfqq(bfqq->bfqd, bfqq,
+ 			     "resume state: switching off wr (%lu + %lu < %lu)",
+ 			     bfqq->last_wr_start_finish, bfqq->wr_cur_max_time,
+@@ -711,8 +718,20 @@ bfq_bfqq_resume_state(struct bfq_queue *bfqq, struct bfq_io_cq *bic)
+ 
+ 		bfqq->wr_coeff = 1;
+ 	}
++
+ 	/* make sure weight will be updated, however we got here */
+ 	bfqq->entity.prio_changed = 1;
++
++	if (likely(!busy))
++		return;
++
++	if (old_wr_coeff == 1 && bfqq->wr_coeff > 1) {
++		bfqd->wr_busy_queues++;
++		BUG_ON(bfqd->wr_busy_queues > bfqd->busy_queues);
++	} else if (old_wr_coeff > 1 && bfqq->wr_coeff == 1) {
++		bfqd->wr_busy_queues--;
++		BUG_ON(bfqd->wr_busy_queues < 0);
++	}
+ }
+ 
+ static int bfqq_process_refs(struct bfq_queue *bfqq)
+@@ -1460,6 +1479,7 @@ static void bfq_add_request(struct request *rq)
+ 			bfqq->wr_cur_max_time = bfq_wr_duration(bfqd);
+ 
+ 			bfqd->wr_busy_queues++;
++			BUG_ON(bfqd->wr_busy_queues > bfqd->busy_queues);
+ 			bfqq->entity.prio_changed = 1;
+ 			bfq_log_bfqq(bfqd, bfqq,
+ 				     "non-idle wrais starting, "
+@@ -1702,8 +1722,10 @@ static void bfq_bfqq_end_wr(struct bfq_queue *bfqq)
+ {
+ 	BUG_ON(!bfqq);
+ 
+-	if (bfq_bfqq_busy(bfqq))
++	if (bfq_bfqq_busy(bfqq)) {
+ 		bfqq->bfqd->wr_busy_queues--;
++		BUG_ON(bfqq->bfqd->wr_busy_queues < 0);
++	}
+ 	bfqq->wr_coeff = 1;
+ 	bfqq->wr_cur_max_time = 0;
+ 	bfqq->last_wr_start_finish = jiffies;
+@@ -2082,8 +2104,11 @@ bfq_merge_bfqqs(struct bfq_data *bfqd, struct bfq_io_cq *bic,
+ 		new_bfqq->last_wr_start_finish = bfqq->last_wr_start_finish;
+ 		new_bfqq->wr_start_at_switch_to_srt =
+ 			bfqq->wr_start_at_switch_to_srt;
+-		if (bfq_bfqq_busy(new_bfqq))
++		if (bfq_bfqq_busy(new_bfqq)) {
+ 			bfqd->wr_busy_queues++;
++			BUG_ON(bfqd->wr_busy_queues > bfqd->busy_queues);
++		}
++
+ 		new_bfqq->entity.prio_changed = 1;
+ 		bfq_log_bfqq(bfqd, new_bfqq,
+ 			     "wr start after merge with %d, rais_max_time %u",
+@@ -2094,8 +2119,11 @@ bfq_merge_bfqqs(struct bfq_data *bfqd, struct bfq_io_cq *bic,
+ 	if (bfqq->wr_coeff > 1) { /* bfqq has given its wr to new_bfqq */
+ 		bfqq->wr_coeff = 1;
+ 		bfqq->entity.prio_changed = 1;
+-		if (bfq_bfqq_busy(bfqq))
++		if (bfq_bfqq_busy(bfqq)) {
+ 			bfqd->wr_busy_queues--;
++			BUG_ON(bfqd->wr_busy_queues < 0);
++		}
++
+ 	}
+ 
+ 	bfq_log_bfqq(bfqd, new_bfqq, "merge_bfqqs: wr_busy %d",
+@@ -4564,7 +4592,7 @@ static int bfq_set_request(struct request_queue *q, struct request *rq,
+ 	const int is_sync = rq_is_sync(rq);
+ 	struct bfq_queue *bfqq;
+ 	unsigned long flags;
+-	bool split = false;
++	bool bfqq_already_existing = false, split = false;
+ 
+ 	spin_lock_irqsave(q->queue_lock, flags);
+ 	bfq_check_ioprio_change(bic, bio);
+@@ -4624,6 +4652,8 @@ static int bfq_set_request(struct request_queue *q, struct request *rq,
+ 			split = true;
+ 			if (!bfqq)
+ 				goto new_queue;
++			else
++				bfqq_already_existing = true;
+ 		}
+ 	}
+ 
+@@ -4649,7 +4679,8 @@ static int bfq_set_request(struct request_queue *q, struct request *rq,
+ 			 * queue, restore the idle window and the possible
+ 			 * weight raising period.
+ 			 */
+-			bfq_bfqq_resume_state(bfqq, bic);
++			bfq_bfqq_resume_state(bfqq, bfqd, bic,
++					      bfqq_already_existing);
+ 		}
+ 	}
+ 
+diff --git a/block/bfq-sched.c b/block/bfq-sched.c
+index 8311bdbeceea..d8efd6bad965 100644
+--- a/block/bfq-sched.c
++++ b/block/bfq-sched.c
+@@ -1932,8 +1932,10 @@ static void bfq_del_bfqq_busy(struct bfq_data *bfqd, struct bfq_queue *bfqq,
+ 		bfq_weights_tree_remove(bfqd, &bfqq->entity,
+ 					&bfqd->queue_weights_tree);
+ 
+-	if (bfqq->wr_coeff > 1)
++	if (bfqq->wr_coeff > 1) {
+ 		bfqd->wr_busy_queues--;
++		BUG_ON(bfqd->wr_busy_queues < 0);
++	}
+ 
+ 	bfqg_stats_update_dequeue(bfqq_group(bfqq));
+ 
+@@ -1962,6 +1964,9 @@ static void bfq_add_bfqq_busy(struct bfq_data *bfqd, struct bfq_queue *bfqq)
+ 			bfq_weights_tree_add(bfqd, &bfqq->entity,
+ 					     &bfqd->queue_weights_tree);
+ 
+-	if (bfqq->wr_coeff > 1)
++	if (bfqq->wr_coeff > 1) {
+ 		bfqd->wr_busy_queues++;
++		BUG_ON(bfqd->wr_busy_queues > bfqd->busy_queues);
++	}
++
+ }
+
+From 671d03329dc0fbbac634f4fcfee11be26b5cccb6 Mon Sep 17 00:00:00 2001
+From: Paolo Valente <paolo.valente@linaro.org>
+Date: Tue, 9 May 2017 12:52:16 +0200
+Subject: [PATCH 2/5] block, bfq: stress that low_latency must be off to get
+ max throughput
+
+The introduction of the BFQ and Kyber I/O schedulers has triggered a
+new wave of I/O benchmarks. Unfortunately, comments and discussions on
+these benchmarks confirm that there is still little awareness that it
+is very hard to achieve, at the same time, a low latency and a high
+throughput. In particular, virtually all benchmarks measure
+throughput, or throughput-related figures of merit, but, for BFQ, they
+use the scheduler in its default configuration. This configuration is
+geared, instead, toward a low latency. This is evidently a sign that
+BFQ documentation is still too unclear on this important aspect. This
+commit addresses this issue by stressing how BFQ configuration must be
+(easily) changed if the only goal is maximum throughput.
+
+Signed-off-by: Paolo Valente <paolo.valente@linaro.org>
+---
+ Documentation/block/bfq-iosched.txt | 17 ++++++++++++++++-
+ block/bfq-iosched.c                 |  5 +++++
+ 2 files changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/block/bfq-iosched.txt b/Documentation/block/bfq-iosched.txt
+index 13b5248eba7e..0539e87962ed 100644
+--- a/Documentation/block/bfq-iosched.txt
++++ b/Documentation/block/bfq-iosched.txt
+@@ -11,6 +11,13 @@ controllers), BFQ's main features are:
+   groups (switching back to time distribution when needed to keep
+   throughput high).
+ 
++In its default configuration, BFQ privileges latency over
++throughput. So, when needed for achieving a lower latency, BFQ builds
++schedules that may lead to a lower throughput. If your main or only
++goal, for a given device, is to achieve the maximum-possible
++throughput at all times, then do switch off all low-latency heuristics
++for that device, by setting low_latency to 0. Full details in Section 3.
++
+ On average CPUs, the current version of BFQ can handle devices
+ performing at most ~30K IOPS; at most ~50 KIOPS on faster CPUs. As a
+ reference, 30-50 KIOPS correspond to very high bandwidths with
+@@ -374,11 +381,19 @@ default, low latency mode is enabled. If enabled, interactive and soft
+ real-time applications are privileged and experience a lower latency,
+ as explained in more detail in the description of how BFQ works.
+ 
+-DO NOT enable this mode if you need full control on bandwidth
++DISABLE this mode if you need full control on bandwidth
+ distribution. In fact, if it is enabled, then BFQ automatically
+ increases the bandwidth share of privileged applications, as the main
+ means to guarantee a lower latency to them.
+ 
++In addition, as already highlighted at the beginning of this document,
++DISABLE this mode if your only goal is to achieve a high throughput.
++In fact, privileging the I/O of some application over the rest may
++entail a lower throughput. To achieve the highest-possible throughput
++on a non-rotational device, setting slice_idle to 0 may be needed too
++(at the cost of giving up any strong guarantee on fairness and low
++latency).
++
+ timeout_sync
+ ------------
+ 
+diff --git a/block/bfq-iosched.c b/block/bfq-iosched.c
+index 9c7d6c4fe2f8..82b1545e655c 100644
+--- a/block/bfq-iosched.c
++++ b/block/bfq-iosched.c
+@@ -36,6 +36,11 @@
+  * boost the throughput), and yet guarantee a low latency to
+  * interactive and soft real-time applications.
+  *
++ * NOTE: if the main or only goal, with a given device, is to achieve
++ * the maximum-possible throughput at all times, then do switch off
++ * all low-latency heuristics for that device, by setting low_latency
++ * to 0.
++ *
+  * BFQ is described in [1], where also a reference to the initial, more
+  * theoretical paper on BFQ can be found. The interested reader can find
+  * in the latter paper full details on the main algorithm, as well as
+
+From 5da1dcad659cf3c043c9b062f8800060147dcf5a Mon Sep 17 00:00:00 2001
+From: Paolo Valente <paolo.valente@linaro.org>
+Date: Fri, 12 May 2017 10:19:52 +0200
+Subject: [PATCH 3/5] Fix commit "don't dereference bic before null checking
+ it"
+
+Signed-off-by: Paolo Valente <paolo.valente@linaro.org>
+---
+ block/bfq-iosched.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/block/bfq-iosched.c b/block/bfq-iosched.c
+index 82b1545e655c..877a5068e2c1 100644
+--- a/block/bfq-iosched.c
++++ b/block/bfq-iosched.c
+@@ -4600,7 +4600,6 @@ static int bfq_set_request(struct request_queue *q, struct request *rq,
+ 	bool bfqq_already_existing = false, split = false;
+ 
+ 	spin_lock_irqsave(q->queue_lock, flags);
+-	bfq_check_ioprio_change(bic, bio);
+ 
+ 	if (!bic)
+ 		goto queue_fail;
+
+From 5ca5a4edf9a316c92da3f6917de6efbeb474be96 Mon Sep 17 00:00:00 2001
+From: Paolo Valente <paolo.valente@linaro.org>
+Date: Wed, 14 Jun 2017 15:35:44 +0200
+Subject: [PATCH 4/5] block, bfq: don't change ioprio class for a bfq_queue on
+ a service tree
+
+On each deactivation or re-scheduling (after being served) of a
+bfq_queue, BFQ invokes the function __bfq_entity_update_weight_prio(),
+to perform pending updates of ioprio, weight and ioprio class for the
+bfq_queue. BFQ also invokes this function on I/O-request dispatches,
+to raise or lower weights more quickly when needed, thereby improving
+latency. However, the entity representing the bfq_queue may be on the
+active (sub)tree of a service tree when this happens, and, although
+with a very low probability, the bfq_queue may happen to also have a
+pending change of its ioprio class. If both conditions hold when
+__bfq_entity_update_weight_prio() is invoked, then the entity moves to
+a sort of hybrid state: the new service tree for the entity, as
+returned by bfq_entity_service_tree(), differs from service tree on
+which the entity still is. The functions that handle activations and
+deactivations of entities do not cope with such a hybrid state (and
+would need to become more complex to cope).
+
+This commit addresses this issue by just making
+__bfq_entity_update_weight_prio() not perform also a possible pending
+change of ioprio class, when invoked on an I/O-request dispatch for a
+bfq_queue. Such a change is thus postponed to when
+__bfq_entity_update_weight_prio() is invoked on deactivation or
+re-scheduling of the bfq_queue.
+
+Reported-by: Marco Piazza <mpiazza@gmail.com>
+Reported-by: Laurentiu Nicola <lnicola@dend.ro>
+Signed-off-by: Paolo Valente <paolo.valente@linaro.org>
+Tested-by: Marco Piazza <mpiazza@gmail.com>
+---
+ block/bfq-iosched.c | 14 ++++++++++----
+ block/bfq-sched.c   | 38 ++++++++++++++++++++++++++++++++++----
+ 2 files changed, 44 insertions(+), 8 deletions(-)
+
+diff --git a/block/bfq-iosched.c b/block/bfq-iosched.c
+index 877a5068e2c1..572d007f6981 100644
+--- a/block/bfq-iosched.c
++++ b/block/bfq-iosched.c
+@@ -3701,11 +3701,17 @@ static void bfq_update_wr_data(struct bfq_data *bfqd, struct bfq_queue *bfqq)
+ 			}
+ 		}
+ 	}
+-	/* Update weight both if it must be raised and if it must be lowered */
++	/*
++	 * To improve latency (for this or other queues), immediately
++	 * update weight both if it must be raised and if it must be
++	 * lowered. Since, entity may be on some active tree here, and
++	 * might have a pending change of its ioprio class, invoke
++	 * next function with the last parameter unset (see the
++	 * comments on the function).
++	 */
+ 	if ((entity->weight > entity->orig_weight) != (bfqq->wr_coeff > 1))
+-		__bfq_entity_update_weight_prio(
+-			bfq_entity_service_tree(entity),
+-			entity);
++		__bfq_entity_update_weight_prio(bfq_entity_service_tree(entity),
++						entity, false);
+ }
+ 
+ /*
+diff --git a/block/bfq-sched.c b/block/bfq-sched.c
+index d8efd6bad965..90d2856358a1 100644
+--- a/block/bfq-sched.c
++++ b/block/bfq-sched.c
+@@ -765,9 +765,28 @@ static void bfq_forget_idle(struct bfq_service_tree *st)
+ 		bfq_put_idle_entity(st, first_idle);
+ }
+ 
++/*
++ * Update weight and priority of entity. If update_class_too is true,
++ * then update the ioprio_class of entity too.
++ *
++ * The reason why the update of ioprio_class is controlled through the
++ * last parameter is as follows. Changing the ioprio class of an
++ * entity implies changing the destination service trees for that
++ * entity. If such a change occurred when the entity is already on one
++ * of the service trees for its previous class, then the state of the
++ * entity would become more complex: none of the new possible service
++ * trees for the entity, according to bfq_entity_service_tree(), would
++ * match any of the possible service trees on which the entity
++ * is. Complex operations involving these trees, such as entity
++ * activations and deactivations, should take into account this
++ * additional complexity.  To avoid this issue, this function is
++ * invoked with update_class_too unset in the points in the code where
++ * entity may happen to be on some tree.
++ */
+ static struct bfq_service_tree *
+ __bfq_entity_update_weight_prio(struct bfq_service_tree *old_st,
+-			 struct bfq_entity *entity)
++				struct bfq_entity *entity,
++				bool update_class_too)
+ {
+ 	struct bfq_service_tree *new_st = old_st;
+ 
+@@ -812,9 +831,15 @@ __bfq_entity_update_weight_prio(struct bfq_service_tree *old_st,
+ 				  bfq_weight_to_ioprio(entity->orig_weight);
+ 		}
+ 
+-		if (bfqq)
++		if (bfqq && update_class_too)
+ 			bfqq->ioprio_class = bfqq->new_ioprio_class;
+-		entity->prio_changed = 0;
++
++		/*
++		 * Reset prio_changed only if the ioprio_class change
++		 * is not pending any longer.
++		 */
++		if (!bfqq || bfqq->ioprio_class == bfqq->new_ioprio_class)
++			entity->prio_changed = 0;
+ 
+ 		/*
+ 		 * NOTE: here we may be changing the weight too early,
+@@ -963,7 +988,12 @@ static void bfq_update_fin_time_enqueue(struct bfq_entity *entity,
+ 	struct bfq_queue *bfqq = bfq_entity_to_bfqq(entity);
+ 	struct bfq_sched_data *sd = entity->sched_data;
+ 
+-	st = __bfq_entity_update_weight_prio(st, entity);
++	/*
++	 * When this function is invoked, entity is not in any service
++	 * tree, then it is safe to invoke next function with the last
++	 * parameter set (see the comments on the function).
++	 */
++	st = __bfq_entity_update_weight_prio(st, entity, true);
+ 	bfq_calc_finish(entity, entity->budget);
+ 
+ 	/*
+
+From 7994bcf9f58d20baa8fbab76d28ab2de6fe19e27 Mon Sep 17 00:00:00 2001
+From: Paolo Valente <paolo.valente@linaro.org>
+Date: Mon, 3 Jul 2017 22:00:29 +0200
+Subject: [PATCH 5/5] BFQ-v8r12
+
+Signed-off-by: Paolo Valente <paolo.valente@linaro.org>
+---
+ block/bfq-iosched.c | 2 +-
+ block/bfq.h         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/block/bfq-iosched.c b/block/bfq-iosched.c
+index 572d007f6981..d15ef0b87d12 100644
+--- a/block/bfq-iosched.c
++++ b/block/bfq-iosched.c
+@@ -5311,7 +5311,7 @@ static struct blkcg_policy blkcg_policy_bfq = {
+ static int __init bfq_init(void)
+ {
+ 	int ret;
+-	char msg[60] = "BFQ I/O-scheduler: v8r11";
++	char msg[60] = "BFQ I/O-scheduler: v8r12";
+ 
+ #ifdef CONFIG_BFQ_GROUP_IOSCHED
+ 	ret = blkcg_policy_register(&blkcg_policy_bfq);
+diff --git a/block/bfq.h b/block/bfq.h
+index a521ac40cac0..6269fd7ac5ae 100644
+--- a/block/bfq.h
++++ b/block/bfq.h
+@@ -1,5 +1,5 @@
+ /*
+- * BFQ v8r11 for 4.9.0: data structures and common functions prototypes.
++ * BFQ v8r12 for 4.9.0: data structures and common functions prototypes.
+  *
+  * Based on ideas and code from CFQ:
+  * Copyright (C) 2003 Jens Axboe <axboe@kernel.dk> 

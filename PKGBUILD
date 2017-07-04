@@ -55,7 +55,7 @@ _pkgver=4.9.33
 _rtver=23
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -90,7 +90,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0005-BFQ-update-to-v8r8.patch'
         '0006-BFQ-update-to-v8r9.patch'
         '0007-BFQ-update-to-v8r10.patch'
-        '0008-BFQ-update-to-v8r11.patch')
+        '0008-BFQ-update-to-v8r11.patch'
+        '0009-BFQ-update-to-v8r12.patch')
         
 _kernelname=${pkgbase#linux}
 
@@ -118,7 +119,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5,6,7,8}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4,5,6,7,8,9}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -480,7 +481,8 @@ sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3
             'dab3dba300e276dd552cb86c903af5cac9f7c7954b938ac9c300745a175198c553d84cd3a5e58c350d83160f33b07f6dd20a570da4afdce178464c402ac7829b'
             'ee41c3d94f16ad34077a84a1bdb49789e5d7979c75abb46970707929627542f7c78e35ae93833b45030ea03ec4ee52f21e410dad37fa967d02d1aeb72f0b5cd8'
             'f57ec6fcdb9554a9e6f9e59168d7a39e93df9b48030f4fad1e4e7d15814ddc0314200ba1d08a6a9171ca1593689d0a710cdfdb4f997c5c65bb74325173fc94bb'
-            '554c5a9b3ed415f42f8ba0e25e6d0449b378ab10933e7628ce1fad07bcfcffe3a2319df05360aed4761ac3388e8f05b36e237e2ff1847128672e3461c99fe2c7')
+            '554c5a9b3ed415f42f8ba0e25e6d0449b378ab10933e7628ce1fad07bcfcffe3a2319df05360aed4761ac3388e8f05b36e237e2ff1847128672e3461c99fe2c7'
+            'eb0baed8a2afa5f948e17a22194e871856ce44982772e571a1ef0ea9bb0d418dfab7901811b04106c9cc5a09f01d1a7467e5c39861087ac7204cabed2012bc8a')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
