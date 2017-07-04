@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
-pkgver=4.1.0.110
-pkgrel=2
+pkgver=4.1.0.114
+pkgrel=1
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=("https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d1
 # at https://gist.github.com/phiresky/1e2cbd30bed4e5978771af232d11afd1
 # so they are correctly versioned and old versions still exist
 noextract=()
-sha1sums=('1f5384ef02fd0ee42b33efb7e4aa0d9adf342cfd')
+sha1sums=('e3e7118b890719eb4020222c5beddbac564911ab')
 validpgpkeys=()
 
 prepare() {
