@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=ecryptfs-simple
 pkgver=2017
-pkgrel=1
+pkgrel=2
 pkgdesc='A very simple utility for working with eCryptfs.'
 arch=(i686 x86_64)
 license=(GPL)
@@ -14,11 +14,11 @@ source=(
 )
 sha512sums=(
   2144a09227c28e1dc66eafb747f73c85f22a9da8a45bf6bf92af0b670ae8148387f4ef0fc25b9bdd385fd47ffb76169adb69556cec967b84cc37c1e092495ef2
-  f3c6e1bcef61586fb3abc6b261debeb44c83a4c3e4b447bd119f0f3fcb0d2f344587f803254af47ec8735253015eb6a7920d23687e6b79b5978b6c53bb63b7ac
+  5fc7b9fcee732dcb8ad4e2860b72ec4916c81ef4485a4ba422bdbee8965749f60e4983a8499ecca47b3317651d6ad26c049b01bb4db7ec1c7f6b54d6a0dbda10
 )
 md5sums=(
   e8b398ddedbc78bc275c584a9eba6d84
-  9dc122d57532da252305fb5c02f04d39
+  046f70ee71a11d3c43a7c7514465c5fe
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
