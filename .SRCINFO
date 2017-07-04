@@ -5,9 +5,9 @@ pkgbase = animation-nodes-git
 	url = https://github.com/JacquesLucke/animation_nodes
 	arch = any
 	license = GPL
+	makedepends = sed
+	makedepends = cython
 	depends = blender
-	depends = python
-	depends = cython
 	depends = python-numpy
 	source = git+https://github.com/JacquesLucke/animation_nodes.git#branch=cython
 	md5sums = SKIP

@@ -6,7 +6,8 @@ pkgdesc="Node based visual scripting system designed for motion graphics in Blen
 arch=('any')
 url="https://github.com/JacquesLucke/animation_nodes"
 license=('GPL')
-depends=('blender' 'python' 'cython' 'python-numpy')
+depends=('blender' 'python-numpy')
+makedepends=('sed' 'cython')
 source=('git+https://github.com/JacquesLucke/animation_nodes.git#branch=cython')
 md5sums=('SKIP')
 
