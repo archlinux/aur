@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=fotowall-git
-pkgver=0.98.beta.r17.g7b4b595
-pkgrel=2
+pkgver=1.0.r796.g3445edd
+pkgrel=1
 pkgdesc="A creative tool that allows you to layout your photos or pictures in a personal way"
 arch=('i686' 'x86_64')
 url="https://github.com/enricoros/fotowall"
@@ -17,16 +17,17 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  ver=$(grep "ApplicationVersion(" main.cpp | awk -F '"' '{print $2}')
+  printf "%s.r%s.g%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "${pkgname%-*}"
+  sed -i 's|Icon=fotowall|Icon=/usr/share/pixmaps/fotowall.png|' "${pkgname%-*}.desktop"
   qmake-qt5 PREFIX=/usr
   make
 }
 
 package() {
-  cd "${pkgname%-*}"
-  make INSTALL_ROOT="${pkgdir}/" install
+  make -C "${pkgname%-*}" INSTALL_ROOT="${pkgdir}/" install
 }
