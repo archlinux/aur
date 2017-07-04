@@ -1,15 +1,16 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=libinput-git
-pkgver=1.7.0.r102.ga2a8db2
+pkgver=1.8.0.r7.gca9d6a8
 pkgrel=1
-pkgdesc='A library to handle input devices in Wayland compositors'
+pkgdesc='Input device management and event handling library'
 arch=(i686 x86_64)
 url='http://freedesktop.org/wiki/Software/libinput/'
 provides=("libinput=${pkgver}")
 license=('MIT')
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
-makedepends=('git' 'doxygen' 'graphviz' 'gtk3')
+checkdepends=('valgrind')
+makedepends=('git' 'meson' 'doxygen' 'graphviz' 'gtk3')
 conflicts=('libinput')
 source=(git://anongit.freedesktop.org/wayland/libinput)
 sha1sums=('SKIP')
@@ -21,16 +22,21 @@ pkgver() {
 
 build() {
 	cd libinput
+	meson build --prefix=/usr \
+	      --buildtype=release \
+	      --libexecdir=/usr/lib \
+	      -Dtests=false
+	ninja -C build
+}
 
-	./autogen.sh --prefix=/usr --disable-static --disable-tests
-	make
+check() {
+	cd libinput/build
+	mesontest
 }
 
 package() {
 	cd libinput
-	make DESTDIR="${pkgdir}" install
+	DESTDIR="$pkgdir" ninja -C build install
 
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-	# install doc - no Makefile target
-	install -v -dm755 ${pkgdir}/usr/share/doc/libinput
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
