@@ -1,0 +1,14 @@
+pkgbase = git-recover-git
+	pkgdesc = recover deleted files in your repository
+	pkgver = 1_f7ee394a3ecce2b5b8b0ac94da109058e48678ba
+	pkgrel = 1
+	url = https://github.com/ethomson/git-recover
+	arch = any
+	license = MIT
+	depends = bash
+	source = https://github.com/ethomson/git-recover/archive/f7ee394a3ecce2b5b8b0ac94da109058e48678ba.zip
+	md5sums = 06360d1467627317489ed6bb3bbe89b2
+	sha1sums = 56c6e8738e9b43e8d5b2c68678fb4039f99d9248
+
+pkgname = git-recover-git
+
