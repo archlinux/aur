@@ -1,7 +1,7 @@
 # Maintainer Daniel Perez <tuvistavie@gmail.com>
 
 pkgname=fundle-git
-pkgver=20160617
+pkgver=20170704
 pkgrel=1
 pkgdesc='A minimalist package manager for fish shell'
 arch=('i686' 'x86_64')
