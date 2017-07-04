@@ -1,5 +1,5 @@
 # Maintainer: Hannes Eichblatt aur at hanneseichblatt.de
-# Maintainer: Juan Perez gatitofeliz at protonmail at com
+# Contributor: Juan Perez gatitofeliz at protonmail at com
 
 # ALERT: These profiles are taken from github and couldn't work 
 # ALERTA: Estos perfiles son inestbles y pueden fallar.
