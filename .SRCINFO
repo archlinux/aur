@@ -1,7 +1,7 @@
 pkgbase = qt5gtk2
 	pkgdesc = GTK+2.0 integration plugins for Qt5
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/trialuser02/qt5gtk2
 	arch = i686
 	arch = x86_64
