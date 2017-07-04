@@ -1,32 +1,102 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]
+  then 
+  echo "This script must be run as root."
+  exit 1
+fi
+
 usage() {
   cat <<EOF
 usage: ${0##*/} [OPTION]
 
 Options:
     -h            Print this help message
+    -l            List the available config files
+    -c [config]   Choose an OpenVPN config to install
     -u [username] Set the username
     -p [password] Set the password
+    -x            Purge all the PureVPN files in /etc/NetworkManager
 
 If 'OPTION' is unspecified, ${0##*/} will not make any changes.
 
 EOF
 }
 
-while getopts "hu:p:" opt
+list() {
+  list=$(ls /usr/lib/purevpn/vpn-configs/TCP)
+  echo "==> The following VPN configs are available"
+  echo ${list} | sed -E "s/-(tcp|udp).ovpn//g" | sort -u
+}
+
+process() {
+  echo "Creating VPN config for $config"
+  mkdir -p /tmp/purevpn
+  cd /usr/lib/purevpn/vpn-configs
+  for proto in TCP UDP; do
+    find "${proto}/${config}-$(echo ${proto} | tr  '[:upper:]' '[:lower:]').ovpn" -print0 | while read -d $'\0' file
+    do
+      filename="${file/#${proto}\//}"
+      filename=$(echo ${filename/%.ovpn/} | tr '[:lower:]' '[:upper:]')
+      cp "/usr/lib/purevpn/template" "/tmp/purevpn/${filename}-PUREVPN"
+      host=$(grep -Eo ".*\.pointtoserver\.com" "$file" | sed 's/^remote //')
+      if [ "$proto" == "UDP" ]
+      then
+        port=53
+      elif [ "$proto" == "TCP" ]
+      then
+        port=80
+        sed -i '/port=/a \proto-tcp=yes' "/tmp/purevpn/${filename}-PUREVPN"
+      fi
+      sed -i "s/\bid=/&${filename}/" "/tmp/purevpn/${filename}-PUREVPN" #id
+      sed -i "s/\buuid=/&$(uuidgen)/" "/tmp/purevpn/${filename}-PUREVPN" #uuid
+      sed -i "s/\bport=/&${port}/" "/tmp/purevpn/${filename}-PUREVPN" #port
+      sed -i "s/\bremote=/&$host:${port}/" "/tmp/purevpn/${filename}-PUREVPN" #host
+      chmod 600 "/tmp/purevpn/${filename}-PUREVPN" #permissions
+      mv "/tmp/purevpn/${filename}-PUREVPN" /etc/NetworkManager/system-connections
+    done
+  done
+}
+
+addpass() {
+  echo "Updating installed config files with username and password."
+  cd /etc/NetworkManager/system-connections
+  find *-PUREVPN -print0 | while read -d $'\0' file
+  do
+    sed -i "s/\busername=.*/username=${uname}/g" "$file" #username
+    sed -i "s/\bpassword=.*/password=${passw}/g" "$file" #username
+  done
+}
+
+clean() {
+  echo "Purging all PUREVPN files!"
+  find /etc/NetworkManager/system-connections -name "*PUREVPN" -exec rm -v {} \;
+}
+
+while getopts "hlc:u:p:x" opt
   do
     case $opt in
       h) 
         usage
         exit 0
         ;;
+      l)
+        list
+        exit 0
+        ;;
+      c)
+        config=$OPTARG
+        ;;
       u)
         uname=$OPTARG
         ;;
       p) 
         passw=$OPTARG
-	;;
+	    ;;
+      x)
+        clean
+        exit 0
+        ;;
       \?)
         usage
         exit 1
@@ -34,20 +104,25 @@ while getopts "hu:p:" opt
     esac
   done
 
+## Main script
+
+if [ -z "$config" ];
+then
+  echo "No config specified. None will be installed."
+elif list | grep "${config}" > /dev/null; then
+  process
+else
+  echo "We couldn't find the config."
+  echo "Try running purevpn -l to list available configs."
+  exit 1;
+fi
+      
 if [ -z "$uname" ] && [ -z "$passw"]; then 
-  echo "Neither user nor password were specified. Nothing to do!"
-  usage
-  exit 1; 
+  echo "Neither user nor password were specified. So we can't add that information right now."
+else
+  addpass
 fi
 
-echo "Updating configuration files"
-cd /etc/NetworkManager/system-connections
-find *-PUREVPN -print0 | while read -d $'\0' file
-do
-  sed -i "s/\busername=.*/username=${uname}/g" "$file" #username
-  sed -i "s/\bpassword=.*/password=${passw}/g" "$file" #username
-done
-echo "done"
 echo "Restarting NetworkManager"
 systemctl restart NetworkManager
 

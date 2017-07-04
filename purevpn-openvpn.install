@@ -1,5 +1,10 @@
-post_install() {
-  echo "==> Please run \"purevpn -u <username> -p <password>\" as root to update the VPN config files."
+post_install() { cat <<EOF
+<=================================================>
+| To install the Network Manager config files you |
+| must run the included "purevpn" script as root  |
+| See "purevpn --help" for help.                  |
+<=================================================>
+EOF
 }
 
 post_upgrade() {
