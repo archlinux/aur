@@ -46,7 +46,7 @@ build() {
 
     # rename to qwt-qt4
     make sub-src-qmake_all
-    sed -i "s|lib/libqwt.a|lib/libqwt-qt4.a|g" src/Makefile.Release
+    sed -i "s|lib/libqwt.a|lib/libqwt-qt4.dll.a|g" src/Makefile.Release
     sed -i "s|qwt.dll|qwt-qt4.dll|g" src/Makefile.Release
 
     make
@@ -58,7 +58,7 @@ package() {
   for _target in ${_architectures}; do
     cd "${srcdir}/${pkgname}-${pkgver}-build-${_target}/qwt-${pkgver}"
     install -d "$pkgdir"/usr/${_target}/{lib,bin}
-    install -m 644 lib/libqwt-qt4.a "$pkgdir"/usr/${_target}/lib
+    install -m 644 lib/libqwt-qt4.dll.a "$pkgdir"/usr/${_target}/lib/
     install -m 755 lib/qwt-qt4.dll "$pkgdir"/usr/${_target}/bin
     ${_target}-strip --strip-unneeded "$pkgdir"/usr/${_target}/bin/*.dll
     ${_target}-strip -g "$pkgdir"/usr/${_target}/lib/*.a
