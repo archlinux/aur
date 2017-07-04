@@ -44,7 +44,7 @@ If you clone this repo, you can just create a symbolic link to the contained scr
 ln -s $CLONED_DIR/iosevka-generate /usr/local/bin/iosevka-generate
 ```
 
-On Arch, use the `PKGBUILD` script in this repo.
+On Arch, use the `PKGBUILD` script in this repo or from the [AUR][aur/iosevka-generate].
 
 ## Licence
 
@@ -53,5 +53,6 @@ The helper tool in this repository is licensed according to the [LICENCE.md](/LI
 This tool retrieves and makes use of the Iosevka font and supporting build tooling, which are copyright of [Belle Invis][Invis] and licensed as described in [that project's repository][Iosevka].
 
 
+[aur/iosevka-generate]: https://aur.archlinux.org/packages/iosevka-generate
 [Invis]: https://github.com/be5invis
 [Iosevka]: https://github.com/be5invis/iosevka
