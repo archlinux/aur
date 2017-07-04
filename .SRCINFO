@@ -1,6 +1,6 @@
 pkgbase = kasync
 	pkgdesc = A C++ library for controlling asynchronous tasks
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://community.kde.org/KDE_PIM
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = kasync
 	license = GPL
 	makedepends = extra-cmake-modules
 	depends = qt5-base
-	source = https://download.kde.org/unstable/kasync/0.1.1/src/kasync-0.1.1.tar.xz
-	sha256sums = a7fceb7ed16ec1785eee418602b040989122ee6be43e2727e996f8bf19d50d0d
+	source = https://download.kde.org/unstable/kasync/0.2.0/src/kasync-0.2.0.tar.xz
+	sha256sums = 0ff75cf4cbef3baff2ffd061bac737e7b05bd0f24f7a89ac83c4ea17a5ba4ac3
 
 pkgname = kasync
 

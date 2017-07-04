@@ -2,7 +2,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=kasync
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A C++ library for controlling asynchronous tasks'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(qt5-base)
 makedepends=(extra-cmake-modules)
 source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
-sha256sums=('a7fceb7ed16ec1785eee418602b040989122ee6be43e2727e996f8bf19d50d0d')
+sha256sums=('0ff75cf4cbef3baff2ffd061bac737e7b05bd0f24f7a89ac83c4ea17a5ba4ac3')
 
 prepare() {
   mkdir -p build
