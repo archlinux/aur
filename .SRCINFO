@@ -8,6 +8,7 @@ pkgbase = sink
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = libgit2
+	makedepends = flatbuffers
 	depends = curl
 	depends = kcontacts
 	depends = kasync

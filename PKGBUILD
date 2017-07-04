@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="https://community.kde.org/KDE_PIM"
 license=(LGPL)
 depends=(curl kcontacts kasync kimap2 kdav2 lmdb)
-makedepends=(extra-cmake-modules libgit2)
+makedepends=(extra-cmake-modules libgit2 flatbuffers)
 source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
 sha256sums=('b9f618316a60aae83174188aac63220cf77eb51f32238a55a998cb1db0f81534')
 
