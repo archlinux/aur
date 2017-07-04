@@ -1,6 +1,6 @@
 pkgname=sks
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc='Synchronizing OpenPGP Key Server'
@@ -13,15 +13,20 @@ backup=('etc/sks/sksconf'
         'etc/sks/mailsync'
         'etc/sks/membership'
         'etc/sks/procmail')
-source=(https://bitbucket.org/skskeyserver/sks-keyserver/downloads/${pkgname}-${pkgver}.tgz{,.asc}
-        '500_debian_fhs.patch'
-        'sks-db.service'
-        'sks-recon.service')
-md5sums=('43f0cc8b4b43d798d453fedad840f926'
-         'SKIP'
-         '9cf5495b95e84ed91788c04c9ce1b8c1'
-         'e8c7dcbb7db3ad879d391a7c0127a068'
-         'f28a2d0b151996a99bb006b8e1d29408')
+source=(
+  https://bitbucket.org/skskeyserver/sks-keyserver/downloads/${pkgname}-${pkgver}.tgz{,.asc}
+  '500_debian_fhs.patch'
+  'sks-db.service'
+  'sks-recon.service'
+  'cryptokit-1.7-sks-uint32.patch')
+sha512sums=(
+  'f7c54194274834840b9701bf827b81add0f807dd4c6019968a6b0c755c9117519433ebb1161da38d23c465b163dd31a766700023afa13174e4dc82542fa98099'
+  SKIP
+  '0fd57ccd86f289cf51638995555988a572ee00d6f28f3797092ffda19a0f668ee950be1ef381e94c64301db2dd1ad308834a45b7eaec148e9d8c01ed0a1829bc'
+  '5628e6a0065ec9bab4df84e77bed0af51379e70021543dfee4d4181f55b2779735fcea7848b51e2ab555f9f988da5aff8f0f15e522b801d7330e4bb2e53701fc'
+  '41352e9862996170c70ed8e546ad89e26c94bf3c4ef7e91b64f330273b94c2666cf3f11f13a54e66b1a29b3ef46b75c8c6dfbe49fe12e2b11451e8311faf68a9'
+  '6ee333ce8aec0b103a36be376da43a569ed455f554fe853d007afc1d2e3a30d29735f515d22646832a8b4efa1ffdbfadb4a85ec22f2e5159180fc8373252c171'
+)
 validpgpkeys=(C90EF1430B3AC0DFD00E6EA541259773973A612A) # SKS Keyserver Signing Key
 
 
@@ -50,6 +55,9 @@ build() {
   cd "$pkgname-$pkgver"
   unset MAKEFLAGS
   make dep
+  make "cryptokit-1.7/README.txt"
+
+  patch -Np0 -i "$srcdir/cryptokit-1.7-sks-uint32.patch"
 
   # XXX Parallel compiling not supporting for Bdb module, force -j1 always.
   make CFLAGS="$CFLAGS -I`ocamlc -where` -I ." -j1 all
