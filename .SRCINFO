@@ -1,20 +1,24 @@
 pkgbase = buildbot
-	pkgver = 0.9.5
-	pkgrel = 2
+	pkgver = 0.9.9.post1
+	pkgrel = 1
 	url = http://buildbot.net
 	arch = any
 	license = GPL
 	makedepends = python-pip
-	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot/buildbot-0.9.5-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_www/buildbot_www-0.9.5-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_worker/buildbot_worker-0.9.5-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_waterfall_view/buildbot_waterfall_view-0.9.5-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_console_view/buildbot_console_view-0.9.5-py2.py3-none-any.whl
-	md5sums = 0ae7989f497d21d78dcadc2f360934bb
-	md5sums = fbe69f0f3c62a2d564511093e91c4e96
-	md5sums = cc1c0b5b35ac22bdc3b7b63cff28f7c9
-	md5sums = 3f008d1051f8b6c3d621056cb99d67e5
-	md5sums = 5e1375648c2398d277ccffaea7473fa8
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot/buildbot-0.9.9.post1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_www/buildbot_www-0.9.9.post1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_worker/buildbot_worker-0.9.9.post1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_waterfall_view/buildbot_waterfall_view-0.9.9.post1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_console_view/buildbot_console_view-0.9.9.post1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_grid_view/buildbot_grid_view-0.9.9.post1-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_wsgi_dashboards/buildbot_wsgi_dashboards-0.9.9.post1-py2.py3-none-any.whl
+	md5sums = 4e74a966914178db8320992a86bedde0
+	md5sums = 65aae565b3ec7d478e8ab9977979976a
+	md5sums = 55e854bab69a8793db8e4324eebadbcf
+	md5sums = 4441d4fd901d3adb3e91bc5daace0834
+	md5sums = d1da769afd886de31c4de18c3d987c8e
+	md5sums = 7563f7a8ee845a9bb4d91d8adb4ea886
+	md5sums = bf4e8b18343419c61b33f11ee0293b91
 
 pkgname = buildbot
 	pkgdesc = The Continuous Integration Framework
@@ -46,5 +50,13 @@ pkgname = python-buildbot-waterfall-view
 
 pkgname = python-buildbot-console-view
 	pkgdesc = Buildbot Console View plugin
+	depends = buildbot
+
+pkgname = python-buildbot-grid-view
+	pkgdesc = Buildbot Grid View plugin
+	depends = buildbot
+
+pkgname = python-buildbot-wsgi-dashboards
+	pkgdesc = Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
 	depends = buildbot
 
