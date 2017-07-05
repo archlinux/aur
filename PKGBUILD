@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=3.1
-pkgrel=11
+pkgrel=12
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -21,14 +21,13 @@ optdepends=(
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
-'etc/dnsmasq.d/01-pihole.conf' 'etc/dnsmasq.d/02-pihole.conf')
+'etc/dnsmasq.d/01-pihole.conf')
 
 source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
 	configuration
 	dnsmasq.main
 	dnsmasq.include
-	dnsmasq.local
 	lighttpd.conf
 	nginx.pi-hole.conf
 	$_pkgname.tmpfile
@@ -44,7 +43,6 @@ md5sums=('e24ce6a12ee97cd7de2c5ab13af99511'
          '3acf27ca01d931db363634dbfc95a061'
          '3f1aeea43af0b192edb36b9e5484ff87'
          '7ac346581ada71187b7fd18f164bbee9'
-         '2d10140f19f54015e6ab2807267e8aaf'
          'a8a64dc2ff89bb87d534c83189447abc'
          '9618204d16333873136e65f886db2ab3'
          '990b8abd0bfbba23a7ce82c59f2e3d64'
@@ -301,7 +299,6 @@ package() {
   install -Dm644 configuration "$pkgdir"/usr/share/pihole/doc/configuration
   install -Dm644 dnsmasq.main "$pkgdir"/usr/share/pihole/configs/dnsmasq.example.conf
   install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf
-  install -Dm644 dnsmasq.local "$pkgdir"/etc/dnsmasq.d/02-pihole.conf
   install -Dm644 lighttpd.conf "$pkgdir"/usr/share/pihole/configs/lighttpd.example.conf
   install -Dm644 nginx.pi-hole.conf "$pkgdir"/usr/share/pihole/configs/nginx.example.conf
 

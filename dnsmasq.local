@@ -1,5 +1,0 @@
-address=/pi.hole/@IPv4@
-address=/pi.hole/@IPv6@
-
-address=/@HOSTNAME@/@IPv4@
-address=/@HOSTNAME@/@IPv6@
