@@ -1,9 +1,8 @@
 pkgbase = yamagi-quake2-ctf
 	pkgdesc = Quake II - Three Wave Capture The Flag for yamagi-quake2
 	pkgver = 1.05
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.yamagi.org/quake2/
-	changelog = yamagi-quake2-ctf.ChangeLog
 	arch = i686
 	arch = x86_64
 	license = GPL
