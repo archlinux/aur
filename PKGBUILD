@@ -1,7 +1,8 @@
-# Maintainer: vitamin1980 <vitamin.novgorod @ yandex.ru>
+# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
 
 pkgname='tor-browser-ru'
-pkgver='7.0.1'
+pkgver='7.0.2'
 _language='ru'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -28,8 +29,8 @@ source=("${pkgname}.desktop"
 sha256sums=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
             '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
             '1e5c48a957de2df3470c82873b59663fb2b682dfc38a53d508002e59f53effaa')
-sha256sums_x86_64=('e61368bd2f719548f77c59334c10c4211d35bb419df7bd86ac88ef78ce2b305d')
-sha256sums_i686=('21cb3c3e53e52ad21dbaa219dbe12980505933cd481ffe7a251691ddd55e3d99')
+sha256sums_x86_64=('fea7fb43258eb135d3fe975981f2cae06065be7b29aef8ed1258d5ebfd4acb42')
+sha256sums_i686=('32b30a5c41ebcd3d831fc3c70e8d1978ab7d595e965904104e01077a274d9a56')
 
 noextract=("tor-browser-linux${_pkgarch}-${pkgver}_${_language}.tar.xz")
 
