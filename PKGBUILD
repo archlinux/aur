@@ -1,14 +1,14 @@
 # Maintainer: Bram Swenson <bram@amplified.work>
 
 pkgname='concourse'
-pkgver=v3.2.1
+pkgver=v3.3.1
 pkgrel=1
 pkgdesc="Concourse is a pipeline-based CI system written in Go."
 arch=(x86_64)
 url="https://concourse.ci/introduction.html"
 license=('Apache')
 source=(concourse-${pkgver}::https://github.com/concourse/concourse/releases/download/${pkgver}/concourse_linux_amd64)
-sha512sums=('7e74fc736d2e7ea21b08101097893c461c981f3ef39a3f0ba23504059e8793042fac3474376cd6a64a172a75294ebd456952c2961aa4b92fe0a7c812764e1363')
+sha512sums=('9fa3bd4ae0c0e8e22a498633625e69040a66ea3f4f4c9c072cbc19963a6947c4a2d12d9f3cdbe368d730469f8ebf1dabcb242c40cb702804bd6d0363b296f1c1')
 provides=('concourse')
 depends=('linux-userns')
 
