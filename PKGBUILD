@@ -1,8 +1,8 @@
-# Maintainer: Aleksandr Boiko <brdcom@ya.ru>
+# Maintainer: Aleksandr Boiko <4le34n at gmail dot com>
 
 _pkgbase=ipt-netflow
 pkgname=ipt-netflow-dkms-git
-pkgver=r310.fc4f5f3
+pkgver=r328.8d85227
 pkgrel=1
 url=https://github.com/aabc/ipt-netflow
 pkgdesc="High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel"
