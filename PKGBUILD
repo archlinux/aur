@@ -2,8 +2,8 @@
 # Contributor: JokerBoy <jokerboy at punctweb dot ro>
 
 pkgname=ls++
-pkgver=0.348
-_gitcommit=47c63f357a5de80f9cbcfb7214cd6e82f88156d8
+pkgver=0.36
+_gitcommit=e17221c78f398fc9180631c684cdefabb45d1595
 pkgrel=1
 pkgdesc='Colorized LS on steroids'
 url='https://github.com/trapd00r/ls--/'
@@ -13,18 +13,8 @@ depends=('perl-term-extendedcolor')
 makedepends=('git')
 backup=('etc/ls++.conf')
 options=('!emptydirs')
-source=(${pkgname}::"git+https://github.com/trapd00r/ls--#commit=${_gitcommit}"
-        fix-user-group-align.patch
-        make-destdir.patch)
-sha512sums=('SKIP'
-            '80123d9e11e55643c96ac5e2866cca75ae4197023a16719671d55251ed74cca95f4970c0b07ca0f049edbd96aec6c1c8a6bdbff4b44b4697ee8afb79d8777e28'
-            'b4fff9fff1233130dca795ec9a0d7abf1bddb8cc94b2e5ed2b6784e6379ae15d12094a9cfe2b21e8d98f68278903f7726f98d0b3d9861c9e75224de631ea049f')
-
-prepare() {
-  cd ${pkgname}
-  patch -p1 < "${srcdir}/fix-user-group-align.patch"
-  patch -p1 < "${srcdir}/make-destdir.patch"
-}
+source=(${pkgname}::"git+https://github.com/trapd00r/ls--#commit=${_gitcommit}")
+sha512sums=('SKIP')
 
 build() {
   cd ${pkgname}
