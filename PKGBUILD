@@ -1,7 +1,7 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=freecad-drawingdimensioning
-pkgver=0.r108.g8e1cd66
+pkgver=0.r156.g0cc9f7c
 pkgrel=1
 pkgdesc="Drawing dimensioning workbench for FreeCAD"
 arch=('any')
@@ -34,6 +34,6 @@ build() {
 
 package() {
     cd "${pkgdir}"
-    install -d "${pkgdir}"/usr/share/freecad/Mod/${_gitname}
-    mv -f "${srcdir}"/${_gitname}/* "${pkgdir}"/usr/share/freecad/Mod/${_gitname}
+    install -d "${pkgdir}"/usr/lib/freecad/Mod/${_gitname}
+    mv -f "${srcdir}"/${_gitname}/* "${pkgdir}"/usr/lib/freecad/Mod/${_gitname}
 }
