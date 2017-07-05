@@ -1,0 +1,29 @@
+pkgbase = mediaconch-gui
+	pkgdesc = Implementation checker and policy checker for video and audio files (GUI)
+	pkgver = 17.05
+	pkgrel = 1
+	url = http://mediaarea.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = desktop-file-utils
+	makedepends = libxml2
+	makedepends = libxslt
+	makedepends = sqlite
+	makedepends = qt5-base
+	makedepends = qt5-webkit
+	makedepends = libzen>=0.4.35
+	makedepends = libmediainfo>=0.7.97
+	depends = libxml2
+	depends = libxslt
+	depends = sqlite
+	depends = jansson
+	depends = libevent
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = libzen>=0.4.35
+	source = https://mediaarea.net/download/source/mediaconch/17.05/mediaconch_17.05.tar.bz2
+	sha256sums = 4e36c4953ebae09b2b434a29f2496962c06e51295ce71f058964c60e6928ff39
+
+pkgname = mediaconch-gui
+
