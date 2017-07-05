@@ -10,7 +10,7 @@
 
 # 0: No changes -- cannot be _coinstalled with the GTK2 version
 # 1: Change dockbarx to dockbarm -- install alongside dockbarx (GTK2 version)
-_coinstall=1
+_coinstall=0
 
 _pkgname=dockbarx
 pkgname=${_pkgname}-gtk3-git
