@@ -1,16 +1,17 @@
 # Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 
 _themename=urbanlifestyle
-pkgname=sddm-${_themename}-theme
+pkgname=${_themename}-sddm-theme
 pkgver=0.4.1
 pkgrel=1
 pkgdesc='A simple and colorful SDDM theme'
 arch=('any')
-url='https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme'
+url='https://github.com/AlfredoRamos/urbanlifestyle-sddm-theme'
 license=('GPL3')
 
 optdepends=('sddm: to use this theme')
 provides=("${pkgname}=${pkgver}")
+replaces=("sddm-${_themename}-theme")
 
 install=${pkgname}.install
 
@@ -19,7 +20,7 @@ source=(
 )
 
 sha512sums=(
-	'08dba142deb282976e8d4f56e7eb1ca0b8c39bed2c2446c3e5a74393c896d3b2c9874910e625e272f07b5394566b24150b0349d5e7c2c884ed141e44ae79920f'
+	'46a4c00144c71605ebee72f589b00db05243effa801e9920609581e7352249c946e0d9ae54bd13bf27df2125a310c7276ed80a7f331849c102b4ff05f7fedfc4'
 )
 
 package() {

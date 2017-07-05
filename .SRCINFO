@@ -1,15 +1,16 @@
-pkgbase = sddm-urbanlifestyle-theme
+pkgbase = urbanlifestyle-sddm-theme
 	pkgdesc = A simple and colorful SDDM theme
 	pkgver = 0.4.1
 	pkgrel = 1
-	url = https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme
-	install = sddm-urbanlifestyle-theme.install
+	url = https://github.com/AlfredoRamos/urbanlifestyle-sddm-theme
+	install = urbanlifestyle-sddm-theme.install
 	arch = any
 	license = GPL3
 	optdepends = sddm: to use this theme
-	provides = sddm-urbanlifestyle-theme=0.4.1
-	source = sddm-urbanlifestyle-theme-0.4.1.tar.gz::https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme/archive/0.4.1.tar.gz
-	sha512sums = 08dba142deb282976e8d4f56e7eb1ca0b8c39bed2c2446c3e5a74393c896d3b2c9874910e625e272f07b5394566b24150b0349d5e7c2c884ed141e44ae79920f
+	provides = urbanlifestyle-sddm-theme=0.4.1
+	replaces = sddm-urbanlifestyle-theme
+	source = urbanlifestyle-sddm-theme-0.4.1.tar.gz::https://github.com/AlfredoRamos/urbanlifestyle-sddm-theme/archive/0.4.1.tar.gz
+	sha512sums = 46a4c00144c71605ebee72f589b00db05243effa801e9920609581e7352249c946e0d9ae54bd13bf27df2125a310c7276ed80a7f331849c102b4ff05f7fedfc4
 
-pkgname = sddm-urbanlifestyle-theme
+pkgname = urbanlifestyle-sddm-theme
 
