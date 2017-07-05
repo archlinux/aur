@@ -1,14 +1,14 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Maintainer: Alexander Boyko <brdcom@ya.ru>
+# Maintainer: Alexander Boyko <4le34n at gmail dot com>
 pkgname=activemq
-pkgver=5.14.2
+pkgver=5.14.5
 pkgrel=1
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
 url="http://activemq.apache.org"
 license=('Apache 2.0')
 depends=('java-runtime' 'lsb-release')
-source=(http://archive.apache.org/dist/activemq/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz
+source=("http://archive.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
 	profile.sh
 	profile.csh
 	service)
@@ -36,7 +36,7 @@ package() {
     rm -rf "${pkgdir}/opt/activemq/bin/macosx"
 }
 
-md5sums=('5350de685069ba79cb4e0d5bc1f07abd'
+md5sums=('3d28a422e05544a4c6764ad0d91718ee'
          '0a1b2ac8850b833a5926f393069eee72'
          '86a4b3f9117acb83ba653859b053f966'
          'c819c4a17a9db352ea24bd90ce032b59')
