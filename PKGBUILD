@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Waldrep <spartan074 at gmail dot com>
 
 pkgname=zsh-fast-syntax-highlighting-git
-pkgver=r23.7901611
+pkgver=r32.aa0c9ac
 pkgrel=1
 pkgdesc='Optimized and extended zsh-syntax-highlighting'
 arch=('any')
