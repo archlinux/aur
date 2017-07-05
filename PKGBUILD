@@ -2,8 +2,8 @@
 
 pkgname=("nabi-git")
 _gitname="nabi"
-pkgver=20140519.786.f3276ce
-pkgrel=3
+pkgver=20140519.1.f3276ce
+pkgrel=1
 pkgdesc="Nabi - The Easy Hangul XIM"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
 url="http://code.google.com/p/nabi/"
