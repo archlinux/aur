@@ -2,7 +2,7 @@ post_install() {
 	chmod 755 /nxfilter/bin/*.sh
 }
 
-post_install() {
+post_upgrade() {
 	chmod 755 /nxfilter/bin/*.sh
 }
 

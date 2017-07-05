@@ -1,7 +1,7 @@
 # Maintainer: Erwin
 pkgname=nxfilter
 pkgver=4.1.3.p1
-pkgrel=2
+pkgrel=3
 pkgdesc="NxFilter DNS filter"
 arch=('x86_64')
 url=http://nxfilter.org/p3/
