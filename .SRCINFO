@@ -1,6 +1,6 @@
 pkgbase = i3lock-fancy-git-fixed
 	pkgdesc = i3lock-color script: blurs background, adds lock icon and text, offers dark/light background detection.
-	pkgver = r126.765a37f
+	pkgver = r134.4d3931a
 	pkgrel = 1
 	url = https://github.com/meskarune/i3lock-fancy
 	arch = i686
