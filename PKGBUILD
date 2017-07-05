@@ -1,7 +1,7 @@
 # Maintainer: coldBug <coldBug at e.mail dot de>
 
 pkgname=folder-color-nautilus-bzr
-pkgver=0.0.79
+pkgver=0.0.81
 pkgrel=1
 pkgdesc="Folder color switcher for nautilus with gnome icon- numix, vibrancy or humanity skin."
 arch=(any)

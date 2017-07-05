@@ -1,6 +1,6 @@
 pkgbase = folder-color-nautilus-bzr
 	pkgdesc = Folder color switcher for nautilus with gnome icon- numix, vibrancy or humanity skin.
-	pkgver = 0.0.79
+	pkgver = 0.0.81
 	pkgrel = 1
 	url = http://foldercolor.tuxfamily.org/
 	install = folder-color-nautilus-bzr.install
