@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-beta
 	pkgdesc = The official GUI for MongoDB (beta version)
 	pkgver = 1.8.0beta.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	license = custom
@@ -13,6 +13,8 @@ pkgbase = mongodb-compass-beta
 	depends = libsecret
 	depends = gcc-libs-multilib
 	depends = libxss
+	optdepends = gnome-keyring
+	optdepends = libgnome-keyring
 	source = https://downloads.mongodb.com/compass/beta/mongodb-compass-beta-1.8.0-beta.1.x86_64.rpm
 	md5sums = c0b885dde07e1bac16aaecd15671387b
 
