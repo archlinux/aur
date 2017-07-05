@@ -1,19 +1,18 @@
 pkgbase = mayday
 	pkgdesc = A workbench for visualization, analysis and storage of microarray data.
-	pkgver = 2.14
+	pkgver = 2.30
 	pkgrel = 1
 	url = http://it.inf.uni-tuebingen.de/?page_id=248
 	install = mayday.install
 	arch = any
 	license = GPL
-	depends = sh
 	depends = java-runtime
-	source = http://it.informatik.uni-tuebingen.de/software/mayday/mayday-download/mayday-2.14_stable.zip
+	source = http://it.informatik.uni-tuebingen.de/software/mayday/mayday-2.30/Mayday-2.30.zip
 	source = mayday
 	source = mayday.desktop
-	md5sums = 343ac5fb6ab62abf7789223546f66590
-	md5sums = 0ef9f9cd41bfa8664f27606eec4126fe
-	md5sums = 13d6a6b666f9c6523e776942fdaa3d04
+	md5sums = 338f0ca3c633814ee11e8be530447d64
+	md5sums = d3b494541b7da3c7840c91e9072fbde2
+	md5sums = 67e0901b1ec823f21f1e6673f5783ec3
 
 pkgname = mayday
 

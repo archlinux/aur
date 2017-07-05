@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/java -Xms512m -Xmx2G -jar '/usr/share/java/mayday/core-2.14.jar' "$@"
+exec /usr/bin/java -Xms512m -Xmx8G -jar '/usr/share/java/mayday/plugins/core-2.30.jar' "$@"
