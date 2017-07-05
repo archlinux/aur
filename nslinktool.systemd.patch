@@ -1,161 +1,103 @@
-*** nslinktool.orig	Tue Dec 20 16:30:33 2016
---- nslinktool	Tue Dec 20 16:30:52 2016
-***************
-*** 980,1001 ****
-  
-      def configDriver(self):
-          ConfigEditor(root,"/etc/nslink.conf")
-  
-      def runScript(self,cmdString):
-!         # figure out where the driver control shellscript is
-!         scriptPath = None;
-!         for path in ("/etc/rc.d/init.d/nslink", "/etc/rc.d/nslink", "/etc/init.d/nslink", "/etc/nslink"):
-!             if os.access(path,os.X_OK):
-!                 scriptPath = path
-!                 break
-!         if not scriptPath:
-!             MessageDialogOK(self.root,"\n\nCan't %s the driver\nThe script isn't installed in any of the usual places.\n\n" % cmdString,)
-!             return
-!         status,output = commands.getstatusoutput("%s %s" % (scriptPath,cmdString))
-!         if status:
-!             MessageDialogOK(self.root,"\n\n  Error trying to %s driver  \n\n%s\n\n" % (cmdString,output))
-  
-      def startDriver(self):
-          self.runScript("start")
-          self.driverStatus()
-  
---- 980,990 ----
-  
-      def configDriver(self):
-          ConfigEditor(root,"/etc/nslink.conf")
-  
-      def runScript(self,cmdString):
-!         commands.getstatusoutput("systemctl %s 'nslink.service'" % (cmdString))
-  
-      def startDriver(self):
-          self.runScript("start")
-          self.driverStatus()
-  
-***************
-*** 1006,1046 ****
-      def restartDriver(self):
-          self.runScript("restart")
-          self.driverStatus()
-  
-      def findSymlinks(self):
-!         enabledSymlinks = []
-!         disabledSymlinks = []
-!         rcDir = None
-!         for path in ("/etc/rc.d/rc%d.d","/etc/rc%d.d"):
-!             if os.access(path % 2,os.R_OK):
-!                 rcDir = path
-!         if not rcDir:
-!             raise "rcN.d directories not found\nYou must have a non-standard installation"
-!         else:
-!             for n in (2,3,4,5):
-!                 path = (rcDir % n) + "/S95nslink"
-!                 if os.access(path,os.R_OK):
-!                     enabledSymlinks.append(path)
-!                 path = (rcDir % n) + "/K05nslink"
-!                 if os.access(path,os.R_OK):
-!                     disabledSymlinks.append(path)
-          return (enabledSymlinks,disabledSymlinks)
-  
-      def disableDriver(self):
-          try:
-              enabledLinks,disabledLinks = self.findSymlinks()
-              if (not enabledLinks) and disabledLinks:
-                  MessageDialogOK(self.root,"\n\n  Driver already disabled  \n\n")
-              elif (not enabledLinks) and (not disabledLinks):
-                  MessageDialogOK(self.root,"\n\n  Driver symlinks not installed in standard locations  \n\n")
-              else:
-!                 for l in enabledLinks:
-!                     i = string.find(l,"S95nslink")
-!                     if i >= 0:
-!                         nl = l[:i] + "K05" + l[i+3:]
-!                         os.rename(l,nl)
-          except:
-              MessageDialogOK(self.root,["\n\n  Error disabling driver\n"] + traceback.format_exception_only(sys.exc_type,sys.exc_value))
-          self.driverStatus()
-  
-      def enableDriver(self):
---- 995,1019 ----
-      def restartDriver(self):
-          self.runScript("restart")
-          self.driverStatus()
-  
-      def findSymlinks(self):
-!         (disabledSymlinks,enabledSymlinks) = commands.getstatusoutput("systemctl -q is-enabled 'nslink.service'")
-!         disabledSymlinks = min(1,disabledSymlinks)
-!         enabledSymlinks = 1-disabledSymlinks
-!         #print "Enable=%d Disable=%d\n" % (enabledSymlinks,disabledSymlinks)
-          return (enabledSymlinks,disabledSymlinks)
-  
-      def disableDriver(self):
-          try:
-              enabledLinks,disabledLinks = self.findSymlinks()
-              if (not enabledLinks) and disabledLinks:
-                  MessageDialogOK(self.root,"\n\n  Driver already disabled  \n\n")
-              elif (not enabledLinks) and (not disabledLinks):
-                  MessageDialogOK(self.root,"\n\n  Driver symlinks not installed in standard locations  \n\n")
-              else:
-!                 commands.getstatusoutput("systemctl disable 'nslink.service'")
-          except:
-              MessageDialogOK(self.root,["\n\n  Error disabling driver\n"] + traceback.format_exception_only(sys.exc_type,sys.exc_value))
-          self.driverStatus()
-  
-      def enableDriver(self):
-***************
-*** 1049,1063 ****
-              if (not disabledLinks) and enabledLinks:
-                  MessageDialogOK(self.root,"\n\n  Driver already enabled  \n\n")
-              elif (not enabledLinks) and (not disabledLinks):
-                  MessageDialogOK(self.root,"\n\n  Driver symlinks not installed in standard locations  \n\n")
-              else:
-!                 for l in disabledLinks:
-!                     i = string.find(l,"K05nslink")
-!                     if i >= 0:
-!                         nl = l[:i] + "S95" + l[i+3:]
-!                         os.rename(l,nl)
-          except:
-              MessageDialogOK(self.root,["\n\n  Error enabling driver  \n"] + traceback.format_exception_only(sys.exc_type,sys.exc_value))
-          self.driverStatus()
-  
-      def driverStatus(self):
---- 1022,1032 ----
-              if (not disabledLinks) and enabledLinks:
-                  MessageDialogOK(self.root,"\n\n  Driver already enabled  \n\n")
-              elif (not enabledLinks) and (not disabledLinks):
-                  MessageDialogOK(self.root,"\n\n  Driver symlinks not installed in standard locations  \n\n")
-              else:
-!                 commands.getstatusoutput("systemctl enable 'nslink.service'")
-          except:
-              MessageDialogOK(self.root,["\n\n  Error enabling driver  \n"] + traceback.format_exception_only(sys.exc_type,sys.exc_value))
-          self.driverStatus()
-  
-      def driverStatus(self):
-***************
-*** 1089,1099 ****
-              elif disabledLinks and (not enabledLinks):
-                  self.enableStatus.set("Driver startup: disabled")
-              else:
-                  self.enableStatus.set("Driver startup: unknown")
-          except:
-!             self.enableStatus.set("Driver startup: unknown")
-  
-      def showHelp(self):
-          s,o = commands.getstatusoutput(r"(echo '.pl 1000i'; cat /usr/share/man/man8/nslinktool.8; echo '.pl \n(nlu+8') | groff -man -Tascii | col -b | expand")
-          if s:
-              MessageDialog("\n\n  Error formatting nslinktool man page:  \n" + o + "\n\n")
---- 1058,1068 ----
-              elif disabledLinks and (not enabledLinks):
-                  self.enableStatus.set("Driver startup: disabled")
-              else:
-                  self.enableStatus.set("Driver startup: unknown")
-          except:
-!             self.enableStatus.set("Driver startup: error")
-  
-      def showHelp(self):
-          s,o = commands.getstatusoutput(r"(echo '.pl 1000i'; cat /usr/share/man/man8/nslinktool.8; echo '.pl \n(nlu+8') | groff -man -Tascii | col -b | expand")
-          if s:
-              MessageDialog("\n\n  Error formatting nslinktool man page:  \n" + o + "\n\n")
+--- nslinktool.orig	2017-07-04 06:21:14.834141672 -0400
++++ nslinktool	2017-07-04 06:21:14.834141672 -0400
+@@ -980,22 +980,11 @@ class NSLinkTool:
+ 
+     def configDriver(self):
+         ConfigEditor(root,"/etc/nslink.conf")
+ 
+     def runScript(self,cmdString):
+-        # figure out where the driver control shellscript is
+-        scriptPath = None;
+-        for path in ("/etc/rc.d/init.d/nslink", "/etc/rc.d/nslink", "/etc/init.d/nslink", "/etc/nslink"):
+-            if os.access(path,os.X_OK):
+-                scriptPath = path
+-                break
+-        if not scriptPath:
+-            MessageDialogOK(self.root,"\n\nCan't %s the driver\nThe script isn't installed in any of the usual places.\n\n" % cmdString,)
+-            return
+-        status,output = commands.getstatusoutput("%s %s" % (scriptPath,cmdString))
+-        if status:
+-            MessageDialogOK(self.root,"\n\n  Error trying to %s driver  \n\n%s\n\n" % (cmdString,output))
++        commands.getstatusoutput("systemctl %s 'nslink.service'" % (cmdString))
+ 
+     def startDriver(self):
+         self.runScript("start")
+         self.driverStatus()
+ 
+@@ -1006,41 +995,25 @@ class NSLinkTool:
+     def restartDriver(self):
+         self.runScript("restart")
+         self.driverStatus()
+ 
+     def findSymlinks(self):
+-        enabledSymlinks = []
+-        disabledSymlinks = []
+-        rcDir = None
+-        for path in ("/etc/rc.d/rc%d.d","/etc/rc%d.d"):
+-            if os.access(path % 2,os.R_OK):
+-                rcDir = path
+-        if not rcDir:
+-            raise "rcN.d directories not found\nYou must have a non-standard installation"
+-        else:
+-            for n in (2,3,4,5):
+-                path = (rcDir % n) + "/S95nslink"
+-                if os.access(path,os.R_OK):
+-                    enabledSymlinks.append(path)
+-                path = (rcDir % n) + "/K05nslink"
+-                if os.access(path,os.R_OK):
+-                    disabledSymlinks.append(path)
++        (disabledSymlinks,enabledSymlinks) = commands.getstatusoutput("systemctl -q is-enabled 'nslink.service'")
++        disabledSymlinks = min(1,disabledSymlinks)
++        enabledSymlinks = 1-disabledSymlinks
++        #print "Enable=%d Disable=%d\n" % (enabledSymlinks,disabledSymlinks)
+         return (enabledSymlinks,disabledSymlinks)
+ 
+     def disableDriver(self):
+         try:
+             enabledLinks,disabledLinks = self.findSymlinks()
+             if (not enabledLinks) and disabledLinks:
+                 MessageDialogOK(self.root,"\n\n  Driver already disabled  \n\n")
+             elif (not enabledLinks) and (not disabledLinks):
+                 MessageDialogOK(self.root,"\n\n  Driver symlinks not installed in standard locations  \n\n")
+             else:
+-                for l in enabledLinks:
+-                    i = string.find(l,"S95nslink")
+-                    if i >= 0:
+-                        nl = l[:i] + "K05" + l[i+3:]
+-                        os.rename(l,nl)
++                commands.getstatusoutput("systemctl disable 'nslink.service'")
+         except:
+             MessageDialogOK(self.root,["\n\n  Error disabling driver\n"] + traceback.format_exception_only(sys.exc_type,sys.exc_value))
+         self.driverStatus()
+ 
+     def enableDriver(self):
+@@ -1049,15 +1022,11 @@ class NSLinkTool:
+             if (not disabledLinks) and enabledLinks:
+                 MessageDialogOK(self.root,"\n\n  Driver already enabled  \n\n")
+             elif (not enabledLinks) and (not disabledLinks):
+                 MessageDialogOK(self.root,"\n\n  Driver symlinks not installed in standard locations  \n\n")
+             else:
+-                for l in disabledLinks:
+-                    i = string.find(l,"K05nslink")
+-                    if i >= 0:
+-                        nl = l[:i] + "S95" + l[i+3:]
+-                        os.rename(l,nl)
++                commands.getstatusoutput("systemctl enable 'nslink.service'")
+         except:
+             MessageDialogOK(self.root,["\n\n  Error enabling driver  \n"] + traceback.format_exception_only(sys.exc_type,sys.exc_value))
+         self.driverStatus()
+ 
+     def driverStatus(self):
+@@ -1089,11 +1058,11 @@ class NSLinkTool:
+             elif disabledLinks and (not enabledLinks):
+                 self.enableStatus.set("Driver startup: disabled")
+             else:
+                 self.enableStatus.set("Driver startup: unknown")
+         except:
+-            self.enableStatus.set("Driver startup: unknown")
++            self.enableStatus.set("Driver startup: error")
+ 
+     def showHelp(self):
+         s,o = commands.getstatusoutput(r"(echo '.pl 1000i'; cat /usr/share/man/man8/nslinktool.8; echo '.pl \n(nlu+8') | groff -man -Tascii | col -b | expand")
+         if s:
+             MessageDialog("\n\n  Error formatting nslinktool man page:  \n" + o + "\n\n")

@@ -1,0 +1,16 @@
+--- nslink.c.orig	2016-06-28 14:41:57.000000000 -0400
++++ nslink.c	2017-07-04 06:30:22.858780058 -0400
+@@ -111,10 +111,13 @@
+ #include <linux/timer.h>
+ #include <linux/init.h>
+ #include <linux/tty.h>
+ #include <linux/tty_flip.h>
+ #include <linux/serial.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
++#include <linux/sched/signal.h>
++#endif
+ #include <asm/uaccess.h>
+ #include <linux/slab.h>
+ #include <linux/time.h>
+ #include <linux/delay.h>
+ #if LINUX_VERSION_CODE >= VERSION_CODE(2,6,36) && LINUX_VERSION_CODE < VERSION_CODE(2,6,39)

@@ -15,20 +15,24 @@ _opt_DKMS=1            # This can be toggled between installs
 # Todo: separate firmware updater
 # Todo: Comtrol icons for nslinktool and the firmware updater
 # Todo: The IP is backwards in /proc/driver/nslink/status
+# Todo: nslinktool set the mouse pointer to a spinning circle far too long after startup
 
 # Uninstall cleanup: sudo rm -f /etc/nslink.conf*
 
 set -u
 pkgname='nslink'
-pkgver=7.15
-pkgrel=1
-pkgdesc='TTY driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial Hub console terminal device server'
-# UP is not explicitly supported by NS-Link
+pkgver='7.15'
+pkgrel='2'
+pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial Hub console terminal device server'
+# UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
 url='http://www.comtrol.com/'
 license=('GPL')
-depends=('glibc' 'openssl' 'python2' 'sed' 'groff' 'tcl' 'tk' 'util-linux')
+depends=('glibc' 'openssl' 'python2' 'sed' 'groff' 'tcl' 'tk' 'util-linux') # python is also needed for the firmware updater
+optdepends=(
+  'gksu: Digi RealPort Manager GUI'
+)
 makedepends=()
 backup=("etc/nslink.conf")
 options=('!zipman')
@@ -40,11 +44,12 @@ _srcdir2="DM-Firmware-Updater-1.06"
 source=("http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz")
 #source+=('ftp://ftp.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
-source+=('dmupdate.py.usage.patch' 'nslinktool.systemd.patch')
+source+=('dmupdate.py.usage.patch' 'nslinktool.systemd.patch' 'nslink-patch-signal_pending-kernel-4-11.patch')
 sha256sums=('f166dc53d53c856a790b4c21f40f3f9df66684aa687fa84b502a795a8130dafc'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
-            '5fb100b904cd9af08f8af57a95b3d7a336e09183e8449eaace4c65ecc7b9685a'
-            '84e7cdfda9e077d904f8cc3e981b9e330d3851ee6edf4529fcbeac61cd53e029')
+            '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
+            'c6e4b4c3ee31cbad8f18db5973d0b0c677443ce9d55f86326557e51e94752097'
+            '20c01753d9d32fdc88853a42ead7c5e8cffb1f4c9ab1c2ba028b3c5e89e1d711')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -71,36 +76,36 @@ prepare() {
   unset _ver
 
   # Minor fixes to Makefile
-  sed -i -e '# Fix a path' \
-         -e 's:/lib/:/usr/lib/:g' \
-         -e '# These lines look dangerous so well disable them' \
-         -e 's:^ifneq "$(wildcard /usr/src/.*$:ifneq "ArchLinux" "ArchLinux":g' \
-         -e '# We can force this one true' \
-         -e 's:^ifneq "$(wildcard /usr/lib/.*$:ifneq "ArchLinux" "0":g' \
-    'Makefile'
+  sed -e '# Fix a path' \
+      -e 's:/lib/:/usr/lib/:g' \
+      -e '# These lines look dangerous so well disable them' \
+      -e 's:^ifneq "$(wildcard /usr/src/.*$:ifneq "ArchLinux" "ArchLinux":g' \
+      -e '# We can force this one true' \
+      -e 's:^ifneq "$(wildcard /usr/lib/.*$:ifneq "ArchLinux" "0":g' \
+    -i 'Makefile'
 
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison
-  sed -i -e '# Fix some paths' \
-         -e 's: /lib/: /usr/lib/:g' \
-         -e 's: /sbin: /usr/bin:g' \
-         -e 's:"/sbin:"/usr/bin:g' \
-         -e 's:/usr/sbin:/usr/bin:g' \
-         -e 's:/usr/local/man:/usr/share/man:g' \
-         -e '# I suspect this folder for systemd is wrong even on RedHat' \
-         -e 's:/etc/systemd/system:/usr/lib/systemd/system:g' \
-         -e '# make package compatible' \
-         -e 's:"/etc/:"${DESTDIR}/etc/:g' \
-         -e 's: /etc/: "${DESTDIR}"/etc/:g' \
-         -e 's:"/usr/:"${DESTDIR}/usr/:g' \
-         -e 's: /usr/: "${DESTDIR}"/usr/:g' \
-         -e '# Disable module management and message' \
-         -e 's:^\s\+echo\s-n\s"Rebuilding:# &:g' \
-         -e 's:^.*depmod -a:# &:g' \
-         -e '# Disable systemd management' \
-         -e 's:^\s\+systemctl:# &:g' \
-         -e '# Get rid of the start messages lest someone believes them' \
-         -e 's:^\s\+if\s\[\s"$WillStart"\s=\syes\s\]:return\n&:g' \
-    'install.sh'
+  sed -e '# Fix some paths' \
+      -e 's: /lib/: /usr/lib/:g' \
+      -e 's: /sbin: /usr/bin:g' \
+      -e 's:"/sbin:"/usr/bin:g' \
+      -e 's:/usr/sbin:/usr/bin:g' \
+      -e 's:/usr/local/man:/usr/share/man:g' \
+      -e '# I suspect this folder for systemd is wrong even on RedHat' \
+      -e 's:/etc/systemd/system:/usr/lib/systemd/system:g' \
+      -e '# make package compatible' \
+      -e 's:"/etc/:"${DESTDIR}/etc/:g' \
+      -e 's: /etc/: "${DESTDIR}"/etc/:g' \
+      -e 's:"/usr/:"${DESTDIR}/usr/:g' \
+      -e 's: /usr/: "${DESTDIR}"/usr/:g' \
+      -e '# Disable module management and message' \
+      -e 's:^\s\+echo\s-n\s"Rebuilding:# &:g' \
+      -e 's:^.*depmod -a:# &:g' \
+      -e '# Disable systemd management' \
+      -e 's:^\s\+systemctl:# &:g' \
+      -e '# Get rid of the start messages lest someone believes them' \
+      -e 's:^\s\+if\s\[\s"$WillStart"\s=\syes\s\]:return\n&:g' \
+    -i 'install.sh'
   if [ -s 'install.sh.Arch' ]; then
     echo 'Disable testmode to build'
     set +u
@@ -108,15 +113,15 @@ prepare() {
   fi
 
   # Switch to python2
-  sed -i -e '# Why using local on just this one?' \
-         -e 's:/usr/local/bin/python:/usr/bin/python:g' \
-         -e 's:/usr/bin/python:&2:g' \
-    *.py 'nslinktool'
+  sed -e '# Why using local on just this one?' \
+      -e 's:/usr/local/bin/python:/usr/bin/python:g' \
+      -e 's:/usr/bin/python:&2:g' \
+    -i *.py 'nslinktool'
 
   # The command line tool is unusable without the proper ethernet card in it.
   # There's a parameter but who would know! We'll add a searchable string
   # that a launcher can modify.
-  sed -i -e 's:"eth0":"'"${_opt_ethernet_data}${_opt_ethernet_keystring}"'":g' 'nslinkadmin.c'
+  sed -e 's:"eth0":"'"${_opt_ethernet_data}${_opt_ethernet_keystring}"'":g' -i 'nslinkadmin.c'
 
   # nslinktool has the same problem but it's a GUI app. The best we can
   # do is start with the right network card. It really needs to become
@@ -143,8 +148,15 @@ prepare() {
   unset _neweth _neweths
 
   # Patch systemd code into the GUI tool
-  ##diff -c5 'nslinktool.orig' 'nslinktool' > '../../nslinktool.systemd.patch'
-  patch -c -b -p0 < "${srcdir}/nslinktool.systemd.patch"
+  #diff -pNau5 nslinktool{.orig,} > '../nslinktool.systemd.patch'
+  patch -Nbup0 < "${srcdir}/nslinktool.systemd.patch"
+
+  # Convert the live config entries to samples. This eliminates
+  # special handling for detecting a blank configuration.
+  sed -e 's:^:#&:g' -i 'nslink.conf'
+
+  #diff -pNau5 nslink.c{.orig,} > '../nslink-patch-signal_pending-kernel-4-11.patch'
+  patch -Nbup0 < "${srcdir}/nslink-patch-signal_pending-kernel-4-11.patch"
 
   # Fix up the firmware downloaders
   cd "${srcdir}/${_srcdir2}"
@@ -153,15 +165,15 @@ prepare() {
   find -type 'f' -perm '/111' -exec chmod 644 '{}' '+'
   chmod 755 *.py
 
-  sed -i -e '# Cosmetic cleanup for simpler patch editing' \
-         -e 's:\s\+$::g' \
-         -e '# Switch to python2' \
-         -e 's:/usr/bin/python:&2:g' \
-    *.py
+  sed -e '# Cosmetic cleanup for simpler patch editing' \
+      -e 's:\s\+$::g' \
+      -e '# Switch to python2' \
+      -e 's:/usr/bin/python:&2:g' \
+    -i *.py
 
   # Patch usage and help into command line tool
-  ##diff -c5 'dmupdate.py.orig' 'dmupdate.py' > '../../dmupdate.py.usage.patch'
-  patch -c -b -p0 < "${srcdir}/dmupdate.py.usage.patch"
+  #diff -pNau5 dmupdate.py{.orig,} > '../dmupdate.py.usage.patch'
+  patch -Nbup0 < "${srcdir}/dmupdate.py.usage.patch"
 
   set +u
 }
@@ -169,7 +181,7 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make -j1 QUIET=0
+  make -s -j1 QUIET=0
   set +u
 }
 
@@ -179,9 +191,11 @@ package() {
 
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
-    local _kernelversionsmall="$(pacman -Q linux)" # this differs from uname -r. pacman: 4.0, uname: 4.0.0
-    _kernelversionsmall="${_kernelversionsmall#* }"
-    _kernelversionsmall="${_kernelversionsmall%-*}"
+    local _kernelversionsmall="$(uname -r)"
+    _kernelversionsmall="${_kernelversionsmall%%-*}"
+    if [ "${_kernelversionsmall%\.0\.0}" != "${_kernelversionsmall}" ]; then # trim 4.0.0 -> 4.0
+      _kernelversionsmall="${_kernelversionsmall%\.0}"
+    fi
     # prevent the mksrcinfo bash emulator from getting these vars!
     eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
@@ -195,7 +209,7 @@ package() {
   sh -e -u 'install.sh' "$(uname -r)" install
 
   # Fix paths in the service file
-  sed -i -e 's:/sbin/:/usr/bin/:g' "${pkgdir}/usr/lib/systemd/system/nslink.service"
+  sed -e 's:/sbin/:/usr/bin/:g' -i "${pkgdir}/usr/lib/systemd/system/nslink.service"
 
   # Root only permissions on executables. Easier than hacking UID 0 into them.
   find "${pkgdir}/usr/bin/" -type 'f' -perm /111 -exec chmod 744 '{}' '+'
@@ -223,7 +237,7 @@ EOF
   install -Dm755 <(cat << EOF
 #!/bin/bash
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 # A launcher to detect UP ethernet interfaces and sed the selected on into a temp executable.
 # The executable has been compiled with a special string that we can replace.
@@ -316,11 +330,12 @@ EOF
   # DKMS
   if [ "${_opt_DKMS}" -ne 0 ]; then
     rm -rf "${pkgdir}/usr/lib/modules/"
-    install -d "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-    install -Dpm644 'nslink.h' 'nslink_int.h' 'version.h' 'nslink.c' 'Makefile' -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
+    local _dkms="${pkgdir}/usr/src/${pkgname}-${pkgver}"
+    #install -d "${_dkms}"
+    install -Dpm644 'nslink.h' 'nslink_int.h' 'version.h' 'nslink.c' 'Makefile' -t "${_dkms}/"
     install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 PACKAGE_NAME="${pkgname}"
 PACKAGE_VERSION="${pkgver}"
@@ -334,15 +349,15 @@ CLEAN[0]="make -j1 clean"
 # Placing the DKMS generated module in a different location than the standard install prevents conflicts when PKGBUILD _opt_DKMS is toggled
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
-    ) "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
-    #make -C "${pkgdir}/usr/src/${pkgname}-${pkgver}/" clean
-    sed -i -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-           -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
-           -e 's:`uname -r`:$(KERNELRELEASE):g' \
-           -e 's:$(KVER):$(KERNELRELEASE):g' \
-           -e '# Get rid of make lines so make all makes the module' \
-           -e 's:^\s\+make\s:#&:g' \
-       "${pkgdir}/usr/src/${pkgname}-${pkgver}/Makefile"
+    ) "${_dkms}/dkms.conf"
+    #make -C "${_dkms}/" clean
+    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+        -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
+        -e 's:`uname -r`:$(KERNELRELEASE):g' \
+        -e 's:$(KVER):$(KERNELRELEASE):g' \
+        -e '# Get rid of make lines so make all makes the module' \
+        -e 's:^\s\+make\s:#&:g' \
+       -i "${_dkms}/Makefile"
   fi
 
   # Install firmware updaters

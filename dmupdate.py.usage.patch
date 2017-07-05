@@ -1,36 +1,24 @@
-*** dmupdate.py.orig	Tue Dec 20 17:11:29 2016
---- dmupdate.py	Tue Dec 20 17:15:37 2016
-***************
-*** 257,268 ****
-      del args[0]
-  
-  if e is None:
-      e = b
-  
-! host = args[0]
-! filename = args[1]
-  
-  if not zipfile.is_zipfile(filename):
-      binfile = open(filename,"rb")
-  else:
-      archsuffix = {3:".bin", 5:".nxbin"}
---- 257,275 ----
-      del args[0]
-  
-  if e is None:
-      e = b
-  
-! try:
-!     host = args[0]
-!     filename = args[1]
-! except:
-!     print "Usage:  dmupdate.py [-rqsg] [-b <addr] [-e <addr>] <hostname> <filename>"
-!     print "filename as .cmtl is preferred. .bin (ARM7) and .nxbin (Cortex-M) also work"
-!     print "For more help:"
-!     print "less +96 -S /usr/share/nslink/README.txt"
-!     sys.exit(1)
-  
-  if not zipfile.is_zipfile(filename):
-      binfile = open(filename,"rb")
-  else:
-      archsuffix = {3:".bin", 5:".nxbin"}
+--- dmupdate.py.orig	2017-07-04 06:21:14.850810096 -0400
++++ dmupdate.py	2017-07-04 06:21:14.854143781 -0400
+@@ -257,12 +257,19 @@ while args and args[0].startswith('-'):
+     del args[0]
+ 
+ if e is None:
+     e = b
+ 
+-host = args[0]
+-filename = args[1]
++try:
++    host = args[0]
++    filename = args[1]
++except:
++    print "Usage:  dmupdate.py [-rqsg] [-b <addr] [-e <addr>] <hostname> <filename>"
++    print "filename as .cmtl is preferred. .bin (ARM7) and .nxbin (Cortex-M) also work"
++    print "For more help:"
++    print "less +96 -S /usr/share/nslink/README.txt"
++    sys.exit(1)
+ 
+ if not zipfile.is_zipfile(filename):
+     binfile = open(filename,"rb")
+ else:
+     archsuffix = {3:".bin", 5:".nxbin"}
