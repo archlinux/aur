@@ -1,7 +1,7 @@
 # Maintainer: Stephen Lester <stephen@lester.codes>
 pkgname=wire-desktop-bin
 pkgver=2.14.2744
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
 url='https://wire.com/'
