@@ -1,0 +1,18 @@
+pkgbase = aerospike-tools-bin
+	pkgdesc = Tools for Aerospike
+	pkgver = 3.13.0.1
+	pkgrel = 1
+	url = http://www.aerospike.com/
+	arch = x86_64
+	license = AGPLv3
+	makedepends = binutils
+	depends = python2-argparse
+	depends = python2-bcrypt
+	depends = python2-pyopenssl
+	depends = python2-pexpect
+	depends = python2-ply
+	source = http://www.aerospike.com/download/tools/3.13.0.1/artifact/ubuntu16
+	sha256sums = b08b9e9fc5fea95f7e851559790cae8a4e5c025847c83b2e4729e7cb08a327dd
+
+pkgname = aerospike-tools-bin
+
