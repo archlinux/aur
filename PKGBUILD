@@ -32,7 +32,6 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  export QMAKEFEATURES="/usr/share/qt5/mkspecs/features/"
   qmake-qt5 qwtpolar.pro
   make
 }
