@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application, from git
-	pkgver = 3.0.0.r30.g1829e698f5
+	pkgver = 3.2.1.r51.ga060fae673
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = calibre-git
 	makedepends = qt5-x11extras
 	makedepends = xdg-utils
 	makedepends = rapydscript-ng
+	makedepends = python2-sphinx
 	depends = chmlib
 	depends = icu
 	depends = libmtp

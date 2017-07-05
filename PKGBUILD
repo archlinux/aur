@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.0.0.r30.g1829e698f5
+pkgver=3.2.1.r51.ga060fae673
 pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
@@ -22,7 +22,7 @@ depends=('chmlib' 'icu' 'libmtp' 'libusbx' 'libwmf' 'mtdev' 'optipng' 'podofo'
          'python2-dukpy' 'python2-lxml' 'python2-mechanize' 'python2-msgpack'
          'python2-netifaces' 'python2-unrardll' 'python2-pillow' 'python2-psutil'
          'python2-pygments' 'python2-pyqt5' 'python2-regex' 'qt5-svg' 'qt5-webkit')
-makedepends=('git' 'qt5-x11extras' 'xdg-utils' 'rapydscript-ng')
+makedepends=('git' 'qt5-x11extras' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx')
 optdepends=('ipython2: to use calibre-debug')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -67,9 +67,10 @@ build() {
   LANG='en_US.UTF-8' python2 setup.py build
   LANG='en_US.UTF-8' python2 setup.py iso639
   LANG='en_US.UTF-8' python2 setup.py iso3166
-#  LANG='en_US.UTF-8' python2 setup.py translations
+  LANG='en_US.UTF-8' python2 setup.py translations
   LANG='en_US.UTF-8' python2 setup.py gui
   LANG='en_US.UTF-8' python2 setup.py resources
+  LANG='en_US.UTF-8' python2 setup.py man_pages
   # This tries to download new user-agent data, so pre-seed a
   # recently-generated copy to allow offline builds.
   cp ../user-agent-data.json resources/
@@ -87,6 +88,8 @@ package() {
 
   XDG_DATA_DIRS="${pkgdir}/usr/share" LANG='en_US.UTF-8' python2 setup.py install \
     --staging-root="${pkgdir}/usr" --prefix=/usr
+
+  cp -a man-pages/ "${pkgdir}/usr/share/man"
 
   install -Dm644 resources/calibre-mimetypes.xml "${pkgdir}/usr/share/mime/packages/calibre-mimetypes.xml"
 
