@@ -5,7 +5,7 @@
 
 pkgname=pdftk
 pkgver=2.02
-pkgrel=15
+pkgrel=16
 pkgdesc="Pdftk is a simple tool for doing everyday things with PDF documents"
 arch=('i686' 'x86_64')
 url="http://www.pdfhacks.com/pdftk"
@@ -18,7 +18,7 @@ source=("http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/${pkgname}-${pkgver}
 )
 sha1sums=('a4a27e984c5e1401cfa44b8e92a64113d7396a06'
           '50da68be80a2ed9cf9ae2c24d0016ea19f0eec0d'
-          '31b2ffd8775bf08c9aaf4afe89a7706763d1452d')
+          '9ccacd5bf6a759563f2548a5ecb66fbe5132d1e7')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver-dist/$pkgname"
