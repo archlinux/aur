@@ -1,0 +1,28 @@
+From 7b1d4f3fb9635c21abc4221c008cfa9849fe53ff Mon Sep 17 00:00:00 2001
+From: Patrick Griffis <tingping@tingping.se>
+Date: Wed, 10 May 2017 17:38:54 -0400
+Subject: [PATCH] Append solid suffix to non-transparent variant
+
+This allows distributions to easily pacakge both without conflicts.
+This will also help with Flatpak being able to match the host theme.
+---
+ common/Makefile.am | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/common/Makefile.am b/common/Makefile.am
+index 0421c5de1..58f54d840 100644
+--- a/common/Makefile.am
++++ b/common/Makefile.am
+@@ -1,6 +1,12 @@
++if !ENABLE_TRANSPARENCY
++themedir        = $(datadir)/themes/Arc-solid
++themedarkerdir  = $(datadir)/themes/Arc-Darker-solid
++themedarkdir    = $(datadir)/themes/Arc-Dark-solid
++else
+ themedir        = $(datadir)/themes/Arc
+ themedarkerdir  = $(datadir)/themes/Arc-Darker
+ themedarkdir    = $(datadir)/themes/Arc-Dark
++endif
+ 
+ ithemedir       = $(DESTDIR)$(themedir)
+ ithemedarkerdir   = $(DESTDIR)$(themedarkerdir)
