@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'arm' 'armv7h')
 url="http://www.haguichi.net"
 license=('GPL3')
 depends=('gtk3' 'libnotify' 'logmein-hamachi')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'meson' 'vala')
 conflicts=('haguichi')
 provides=('haguichi')
 source=('bzr+lp:haguichi')
@@ -17,20 +17,20 @@ sha256sums=('SKIP')
 _pkg=haguichi
 
 pkgver() {
-  cd $srcdir/$_pkg
+  cd $_pkg
 
   echo "r$(bzr revno)"
 }
 
 build() {
-  rm -rf $srcdir/$_pkg/build
-  mkdir $srcdir/$_pkg/build
-  cd $srcdir/$_pkg/build
+  cd $_pkg
+  rm -rf build
+  mkdir build && cd build
 
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DICON_UPDATE=OFF -DGSETTINGS_COMPILE=OFF
-  make
+  meson ..
+  ninja
 }
 
 package() {
-  make -C $srcdir/$_pkg/build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C $_pkg/build install
 }
