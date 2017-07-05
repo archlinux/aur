@@ -5,7 +5,7 @@
 
 pkgname=microchip-mplabx-bin
 pkgver=3.65
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url='http://www.microchip.com/mplabx'
@@ -101,18 +101,22 @@ EOF
   mv "${pkgdir}"/usr/local/lib/*.so{,.*} "${pkgdir}"/usr/lib/
   rm -rf "${pkgdir}/usr/local/"
 
+  _mplabcomm_pkgdir=("${pkgdir}${_mplabcomm_dir}"/v*)
+  _mplabcomm_version=$(basename "${_mplabcomm_pkgdir}")
+  _mplabcomm_srcdir="${_mplabcomm_dir}/${_mplabcomm_version}"
+
   # Symlink executables
   ln -sf "${_mplabx_dir}/mplab_ide/bin/mplab_ide" "${pkgdir}/usr/bin/"
   ln -sf "${_mplabx_dir}/mplab_ide/bin/mdb.sh" "${pkgdir}/usr/bin/mdb"
   ln -sf "${_mplabx_dir}/mplab_ide/bin/prjMakefilesGenerator.sh" "${pkgdir}/usr/bin/prjMakefilesGenerator"
   ln -sf "${_mplabx_dir}/mplab_ipe/mplab_ipe" "${pkgdir}/usr/bin/"
-  ln -sf "${_mplabcomm_dir}"/v*/lib/mchplinusbdevice "${pkgdir}/etc/.mplab_ide/"
+  ln -sf "${_mplabcomm_srcdir}/lib/mchplinusbdevice" "${pkgdir}/etc/.mplab_ide/"
 
   # Symlink libs from MPLABCOMM
   local lib
-  for lib in "${pkgdir}${_mplabcomm_dir}"/v*/lib/*.so{,.*}; do
+  for lib in "${_mplabcomm_pkgdir}/lib/"*.so{,.*}; do
     local bname=$(basename "$lib")
-    ln -sf "${_mplabcomm_dir}"/v*/lib/"${bname}"  "${pkgdir}/usr/lib/"
+    ln -sf "${_mplabcomm_srcdir}/lib/${bname}"  "${pkgdir}/usr/lib/"
   done
 
   # Correctly link .so.* -> .so for all libs
