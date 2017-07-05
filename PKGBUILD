@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -11,26 +11,21 @@ url="https://github.com/pi-hole/pi-hole"
 depends=('dnsmasq' 'openresolv' 'net-tools')
 conflicts=('pi-hole-server')
 install=$pkgname.install
-backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
+backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
+'etc/dnsmasq.d/01-pihole.conf')
 
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
-	configuration
 	dnsmasq.main
 	dnsmasq.include
 	$_pkgname-gravity.service
 	$_pkgname-gravity.timer
-	whitelist.txt
-	blacklist.txt
 	mimic_setupVars.conf.sh)
 
 md5sums=('e24ce6a12ee97cd7de2c5ab13af99511'
-         '630a24a3ca258005d11c4a59659f76ed'
          'b955136ef15be29a468e8d9f85f24b8c'
-         '796a8c6321e671af80fe884948e466f1'
+         '0bab89977a2d4357ec8befb4ff85ee3d'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
-         'd41d8cd98f00b204e9800998ecf8427e'
-         'd41d8cd98f00b204e9800998ecf8427e'
          'e3bb1980b565e4d504e0235353f2b2dc')
 
 prepare() {
@@ -180,15 +175,14 @@ package() {
   install -dm755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
   install -Dm644 "$_pkgname-gravity.timer" "$pkgdir/usr/lib/systemd/system/$_pkgname-gravity.timer"
   install -Dm644 "$_pkgname-gravity.service" $pkgdir/usr/lib/systemd/system/$_pkgname-gravity.service
-  ln -s ../$_pkgname-gravity.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-gravity.timer"
+  ln -s $_pkgname-gravity.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-gravity.timer"
 
-  install -dm777 "$pkgdir"/etc/pihole
-  install -dm755 "$pkgdir"/etc/pihole/configs
+  install -dm755 "$pkgdir"/etc/pihole
+  install -dm755 "$pkgdir"/usr/share/pihole/configs
   install -Dm644 $_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default
-  install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt
-  install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt
-  install -Dm644 dnsmasq.main "$pkgdir"/etc/pihole/configs/dnsmasq.main
+  install -Dm644 /dev/null "$pkgdir"/etc/pihole/whitelist.txt
+  install -Dm644 /dev/null "$pkgdir"/etc/pihole/blacklist.txt
+  install -Dm644 dnsmasq.main "$pkgdir"/usr/share/pihole/configs/dnsmasq.example.conf
   install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf
-  install -Dm644 configuration "$pkgdir"/usr/share/doc/pihole/configuration
 }
 
