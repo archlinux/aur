@@ -1,6 +1,6 @@
 # Maintainer: Erwin
 pkgname=nxfilter
-pkgver=4.1.3
+pkgver=4.1.3.p1
 pkgrel=1
 pkgdesc="NxFilter DNS filter"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('java-runtime' 'unzip')
 provides=("nxfilter")
 source=("https://github.com/Erwinovitch/NxFilter/archive/master.zip")
 install='nxfilter.install'
-md5sums=('ab6b75807e71046d3cf88e262161aad6')
+md5sums=('56c85c2718a85607fced582900e7052f')
 
 package() {
 	cd "$srcdir"
@@ -25,3 +25,5 @@ package() {
 	# Provides the program itself
 	cp -dr --no-preserve=ownership "$srcdir/NxFilter-master/nxfilter"	"$pkgdir"
 }
+
+
