@@ -1,6 +1,6 @@
-# Maintainer: Fernando Barillas <fbis251@mailbox.org>
+# Maintainer: Stephen Lester <stephen@lester.codes>
 pkgname=wire-desktop-bin
-pkgver=2.13.2741
+pkgver=2.14.2744
 pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
@@ -8,12 +8,12 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-# https://wire-app.wire.com/linux/wire_2.13.2739_amd64.deb
+# https://wire-app.wire.com/linux/wire_2.14.2744_amd64.deb
 source_i686=("https://wire-app.wire.com/linux/wire_${pkgver}_i386.deb")
 source_i686=("https://wire-app.wire.com/linux/wire_${pkgver}_i386.deb")
 source_x86_64=("https://wire-app.wire.com/linux/wire_${pkgver}_amd64.deb")
-sha256sums_i686=('f2cd5d6db4c51d5673fd6153217bdeca3c49ae1492a017e854d27f0dfdfc7d2b')
-sha256sums_x86_64=('fa17278b9c9ebd9b66464b5230dc9c1187e7c7b34050ac5b2a756725d6836d8f')
+sha256sums_i686=('5649aabb24ad8f1054b3d77a8d33b0b30e7f02f3b56ba1fe685d3eafcf89935b')
+sha256sums_x86_64=('e2f10e5f2d8ea2e4e9d8db59e55a2d417d53d2b49dc68495eaeda77cf1bceb43')
 
 package() {
   if [ "$CARCH" = "i686" ] ; then
