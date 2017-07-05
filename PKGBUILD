@@ -1,5 +1,5 @@
 pkgname=gnudos
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="Library designed to help new users of the GNU system, who are coming from a DOS background, fit into the picture and start using the GNU system with ease"
 arch=('x86_64' 'i686')
@@ -7,7 +7,7 @@ url="https://www.gnu.org/software/gnudos/"
 license=('GPL')
 depends=('glibc')
 source=(https://ftp.gnu.org/gnu/gnudos/gnudos-$pkgver.tar.gz)
-sha1sums=('49df5660f564b3c4ce73bf5341b6a37dbac427dd')
+sha256sums=('b263670df092b77068bb4a9368ed42efdb8953fb732d12c1091e2a75135fc8aa')
 
 build() {
   cd $pkgname-$pkgver
