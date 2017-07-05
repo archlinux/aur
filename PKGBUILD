@@ -5,7 +5,7 @@
 
 pkgname=pdftk
 pkgver=2.02
-pkgrel=13
+pkgrel=14
 pkgdesc="Pdftk is a simple tool for doing everyday things with PDF documents"
 arch=('i686' 'x86_64')
 url="http://www.pdfhacks.com/pdftk"
@@ -14,12 +14,11 @@ depends=('gcc63-gcj' 'gcc-gcj-ecj')
 options=('!makeflags')
 source=("http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/${pkgname}-${pkgver}-src.zip"
 	"Makefile.Arch"
-	"pdftk.sh"
+	"pdftk"
 )
-install=pdftk.install
 sha1sums=('a4a27e984c5e1401cfa44b8e92a64113d7396a06'
           '50da68be80a2ed9cf9ae2c24d0016ea19f0eec0d'
-          '764ed416147731567a0876b835204f4469b39ea1')
+          'e63351c2054c9a1bea16f6dfd5913d97304116e0')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver-dist/$pkgname"
@@ -35,7 +34,7 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver-dist/$pkgname"
 
 	# Install binary
-	install -D -m 755 pdftk $pkgdir/usr/bin/pdftk
+	install -D -m 755 pdftk $pkgdir/usr/bin/pdftk-bin
 
 	# Install licenses and adjust permissions
 	cd ..
@@ -48,6 +47,6 @@ package() {
 	# Install manpage
 	install -D -m 644 "pdftk.1" "$pkgdir/usr/share/man/man1/pdftk.1"
 
-        # Install script to set env variables.
-	install -D -m 755 "${srcdir}/pdftk.sh" "${pkgdir}/etc/profile.d/pdftk.sh" 
+        # Install wrapper that sets the proper environment variables.
+	install -D -m 755 "${srcdir}/pdftk" "${pkgdir}/usr/bin/pdftk" 
 }
