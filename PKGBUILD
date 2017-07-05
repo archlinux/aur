@@ -2,12 +2,12 @@
 # Maintainer: Devin Buhl <devin.kray@gmail.com>
 pkgname="radarr"
 pkgver="0.2.0.778"
-pkgrel=1
+pkgrel=2
 pkgdesc="Movie downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/galli-leo/Radarr"
 license=('GPL3')
-depends=('mono' 'libmediainfo' 'sqlite' 'libgdiplus')
+depends=('mono' 'libmediainfo' 'sqlite')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
@@ -15,7 +15,8 @@ optdepends=('sabnzbd: usenet downloader'
             'transmission-qt: torrent downloader (Qt)'
             'deluge: torrent downloader'
             'rtorrent: torrent downloader'
-            'jackett: torrent indexer proxy')
+            'jackett: torrent indexer proxy'
+            'libgdiplus: provides a gdi+ compatible api')
 install='radarr.install'
 source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}/Radarr.develop.${pkgver}.linux.tar.gz"
         "radarr.service"
