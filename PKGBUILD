@@ -1,12 +1,13 @@
 # Maintainer: Jonas Frei freijon <freijon@gmail.com>
-# Contributor: : carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Stephen Brandt <stephen@stephenbrandt.com>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi-bzr
-pkgver=r68
+pkgver=r211
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux. Development version."
 arch=('x86_64' 'i686' 'arm' 'armv7h')
-url="http://www.haguichi.net"
+url="https://www.haguichi.net"
 license=('GPL3')
 depends=('gtk3' 'libnotify' 'logmein-hamachi')
 makedepends=('bzr' 'meson' 'vala')
