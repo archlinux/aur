@@ -1,6 +1,6 @@
 pkgname="launch4j"
-pkgver="3.9"
-pkgrel="2"
+pkgver="3.11"
+pkgrel="1"
 arch=('i686' 'x86_64')
 license=('custom')
 pkgdesc="Cross-platform Java executable wrapper"
@@ -9,7 +9,7 @@ depends=('java-runtime' 'glibc')
 # for 64bit
 [ "$CARCH" = "x86_64" ] && depends[1]='lib32-glibc'
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-linux.tgz")
-sha256sums=('e6e9a83927585d16efcb82f41d4ae480f14eccc19ced611a59f31fffb5ca549b')
+sha256sums=('fd1b654e5024d3f58419e05da2170d44dc5e924f1f369ebee8d2fb2e9cbd2b68')
 options=('!strip' 'staticlibs')
 
 package()
