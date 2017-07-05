@@ -3,7 +3,7 @@
 
 pkgname=lollypop-git
 _gitname=lollypop
-pkgver=0.9.240.r19.g9e24463b
+pkgver=0.9.242.r2.gcdfd1319
 _portal_pkgver=0.9.1
 pkgrel=1
 pkgdesc='Music player for GNOME'
@@ -11,14 +11,13 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/gnumdk/${_gitname}"
 depends=('desktop-file-utils' 'gst-python' 'gtk3' 'python-cairo'
-         'python-dbus' 'python-gobject' 'totem-plparser')
-makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools' 'gobject-introspection')
+         'python-dbus' 'python-gobject' 'totem-plparser' 'python-pylast')
+makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools' 'gobject-introspection' 'meson' 'appstream-glib')
 optdepends=('easytag: tag editing'
 	    'flatpak: Flatpak Portal'
             'gst-libav: FFmpeg plugin for GStreamer'
             'kid3-qt: Store covers in tags'
             'libsecret: Last.FM support'
-            'python-pylast: Last.FM support'
             'python-wikipedia: Wikipedia support'
             'youtube-dl: YouTube playback')
 options=('!emptydirs')
@@ -42,8 +41,9 @@ build() {
     make
  
 	cd "$srcdir/${_gitname}"
-	./autogen.sh --prefix=/usr --disable-schemas-compile
-	make
+    rm -rf _build
+	/usr/bin/meson _build --prefix=/usr 
+	ninja -C _build
 }
 
 package() {
@@ -51,6 +51,5 @@ package() {
     make DESTDIR="${pkgdir}" install
 
 	cd "$srcdir/${_gitname}"
-	make DESTDIR="${pkgdir}" install
-	#chmod +x $pkgdir/usr/share/lollypop/lollypop-sp
+	env DESTDIR="$pkgdir" ninja -C _build install
 }
