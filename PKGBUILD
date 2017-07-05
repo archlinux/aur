@@ -1,4 +1,4 @@
-# Maintainer: Alexandr Boiko <brdcom@ya.ru>
+# Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
 pkgver=r1411.e8dda21
 pkgrel=1
