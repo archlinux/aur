@@ -11,7 +11,7 @@ pkgbase = python-mal-git
 	depends = python-appdirs
 	depends = python-decorating
 	depends = python-argparse
-	source = git+https://github.com/ryukinix/mal.git#tag=v0.3.0
+	source = git+https://github.com/ryukinix/mal.git#tag=v0.3.1
 	md5sums = SKIP
 
 pkgname = python-mal-git
