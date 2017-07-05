@@ -1,8 +1,8 @@
 # Maintainer: Artyom Aleksyuk <artyom.h31@gmail.com>
 
 pkgname=noxbit
-pkgver=20170614
-pkgrel=2
+pkgver=20170703
+pkgrel=1
 pkgdesc='Live Video Streaming technology based on BitTorrent protocol'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://noxbit.com/'
@@ -20,7 +20,7 @@ source_armv6h=("http://download.noxbit.com/ARMhf/noxbit-pa-ARMhf-32.tar.gz")
 source_armv7h=("http://download.noxbit.com/ARMhf/noxbit-pa-ARMhf-32.tar.gz")
 source_aarch64=("http://download.noxbit.com/AArch64/noxbit-pa-ARM-64.tar.gz")
 sha256sums=('fb84aa86b9bef64365e16efa7090504a03cebb3fd1eb02f3e021114eca3c9070'
-            'a9ed99ba5fc696965acbe35803a43637ddff54ce4a09fcb8905d8205d4ea244a')
+            '087c3e20b5e8a1102bcadcf391171a2587653efdc59c32a3bb90e55cba56869b')
 sha256sums_i686=('SKIP') # Changes too ofter
 sha256sums_x86_64=('SKIP')
 sha256sums_arm=('SKIP')
