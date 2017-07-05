@@ -22,16 +22,20 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+	
 	#CPU optimizations
-	_use_sse="OFF"
-	_use_neon="OFF"
-	if $(grep -q 'sse' -i /proc/cpuinfo); then
-		_use_sse="ON"
+	if $(grep -q 'sse3' -i /proc/cpuinfo); then
+		_sse3="ON"
+	else
+		_sse3="OFF"
 	fi
 	if $(grep -q 'neon' -i /proc/cpuinfo); then
-		_use_neon="ON"
+		_neon="ON"
+	else
+		_neon="OFF"
 	fi
-	cmake -DUSE_NEON="${_use_neon}" -DUSE_SSE="${_use_sse}" -DCMAKE_INSTALL_PREFIX=/usr
+
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_NEON="${_neon}" -DUSE_SSE="${_sse3}"
 	make
 }
 
