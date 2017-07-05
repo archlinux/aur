@@ -1,9 +1,9 @@
-# Maintainer: Alexandr Boiko <brdcom@ya.ru>
+# Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 
 pkgname=accel-ppp-ipoe-dkms
 _pkgname=accel-ppp
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Accel-ppp ipoe kernel module sources'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/apps/trac/accel-ppp/'
