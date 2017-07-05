@@ -1,5 +1,5 @@
 # Maintainer: sasvari
-pkgname="pubs"
+pkgname="pubs-git"
 pkgver=d7e25d0
 pkgrel=1
 pkgdesc="Your bibliography on the command line"
