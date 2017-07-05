@@ -4,7 +4,7 @@
 pkgname=waterfox-kde-git
 _pkgname=Waterfox
 pkgver=54.0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -33,7 +33,7 @@ source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/ar
         "mozilla-kde.patch::$_patchurl/mozilla-kde.patch"
         "firefox-kde.patch::$_patchurl/firefox-kde.patch"
         "fix_waterfox_browser-kde_xul.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/fix_waterfox_browser-kde_xul.patch"
-        "pgo_fix_missing_kdejs.patch::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/pgo_fix_missing_kdejs.patch"
+        pgo_fix_missing_kdejs.patch
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
         "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1")
@@ -41,7 +41,9 @@ source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/ar
 prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
-
+  
+  mv $srcdir/Waterfox-f60534e75859c8bf4cbc16cdbc63958795e6842b $srcdir/Waterfox-$pkgver
+  
   # Fix openSUSE's patches for Waterfox
   sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde.patch
   sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde.patch
@@ -49,7 +51,7 @@ prepare() {
   sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde.patch
   sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde.patch
   
-  cd $_pkgname-$_commit
+  cd $_pkgname-$pkgver
   patch -Np1 -i ../waterfox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
@@ -158,13 +160,13 @@ END
 }
 
 build() {
-  cd $_pkgname-$_commit
+  cd $_pkgname-$pkgver
   export PATH="$srcdir/path:$PATH"
     make -f client.mk build
 }
 
 package() {
-  cd $_pkgname-$_commit
+  cd $_pkgname-$pkgver
 
   cp "$srcdir/kde.js" obj-$CARCH-pc-linux-gnu/dist/bin/defaults/pref
 
@@ -244,7 +246,7 @@ sha256sums=('2ba44287e84c9785cd5143600ec52a129b339734dde4cf50e995a447b4893ba4'
             '193f7a6e0f422e24b1a3c1f02fa445c088e3c0665841a689511a95e923c1db29'
             'a8b49c56f4dfe371af6c3e1b214fb8274258823d702d334dbdec55e5a43671cd'
             '774d13c0d319b83a3f90d15ceed093e80ff07a2794038c95ffa79539ca2819cc'
-            'c440a962881cc9af190db1f1b22ae9a86a456f6fb9d073068482e9dd62bc9bb6'
+            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
             '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6')
