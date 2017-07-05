@@ -2,7 +2,7 @@
 
 pkgname=vibrancy-full-dark-blue
 pkgver=2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern, clean and customizable flat icon theme [Full-Dark-Blue only version!]"
 arch=('any')
 makedepends=('binutils' 'tar')
@@ -46,6 +46,18 @@ prepare() {
     cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/64/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/64/keepassxc.png
     cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/96/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/96/keepassxc.png
     cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/256/keepass.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/256/keepassxc.png
+
+
+    #fix icon for gnome-mpv
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/16/parole.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/16/gnome-mpv.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/22/parole.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/22/gnome-mpv.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/24/parole.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/24/gnome-mpv.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/32/parole.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/32/gnome-mpv.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/48/parole.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/48/gnome-mpv.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/64/parole.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/64/gnome-mpv.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/96/parole.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/96/gnome-mpv.png
+    cp ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/256/parole.png ${srcdir}/usr/share/icons/Vibrancy-Colors/apps/256/gnome-mpv.png
+
 }
 
 
