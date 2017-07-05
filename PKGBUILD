@@ -12,7 +12,7 @@
 
 pkgname='tor-browser'
 pkgver='7.0.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor (language-agnostic PKGBUILD)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -75,9 +75,9 @@ source=("${pkgname}.desktop"
 	"${pkgname}.sh")
 
 md5sums=('f294787c2d7993b2f6022e6014e582e7'
-	'ef1de5f4e269f1084f20122d2703e954'
-	'494afbfa60fb4ce21840244cc3f7208c'
-	'3ef08aff0e2afebb1a2a7ffbf8f65897')
+         'ef1de5f4e269f1084f20122d2703e954'
+         '494afbfa60fb4ce21840244cc3f7208c'
+         '89c79b0578782225b7a8ae1dedcc3365')
 md5sums_i686=('SKIP'
 	'SKIP')
 md5sums_x86_64=('SKIP'
@@ -94,6 +94,7 @@ package() {
 
 	sed -i "s/REPL_NAME/${pkgname}/g"	"${pkgname}.sh"
 	sed -i "s/REPL_VERSION/${pkgver}/g"	"${pkgname}.sh"
+	sed -i "s/REPL_RELEASE/${pkgrel}/g"	"${pkgname}.sh"
 	sed -i "s/REPL_LANGUAGE/${_language}/g" "${pkgname}.sh"
 
 	install -Dm 644 "${pkgname}.desktop"	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
