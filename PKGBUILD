@@ -2,7 +2,7 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.0.r3579.24ae37d1
+pkgver=0.7.0.r3762.f22be1e2
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
@@ -29,6 +29,12 @@ prepare() {
     curl -so OpenOrienteering_$lang.ts https://hosted.weblate.org/download/${_orgname}/${_pkgname}/$lang/
   done
   rename Hans.ts CN.ts OpenOrienteering_zh_Hans.ts
+  for lang in `ls map_symbols_*.ts | sed 's/map_symbols_\(.*\)\.ts/\1/;/template/d'`; do
+    curl -so map_symbols_$lang.ts https://hosted.weblate.org/download/${_orgname}/map-symbols/$lang/
+  done
+  for lang in `ls qt_*.ts | sed 's/qt_\(.*\)\.ts/\1/;/template/d'`; do
+    curl -so qt_$lang.ts https://hosted.weblate.org/download/${_orgname}/qt/$lang/
+  done
 }
 
 build() {
