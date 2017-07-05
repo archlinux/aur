@@ -1,0 +1,21 @@
+pkgbase = dbus-broker-git
+	pkgdesc = Linux D-Bus Message Broker
+	pkgver = r760.c167477
+	pkgrel = 1
+	url = https://github.com/bus1/dbus-broker
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	depends = libsystemd
+	depends = expat
+	depends = glib2
+	provides = dbus-broker
+	conflicts = dbus-broker
+	source = dbus-broker-git::git+https://github.com/bus1/dbus-broker
+	sha256sums = SKIP
+
+pkgname = dbus-broker-git
+
