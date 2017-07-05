@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2 et:
 
 pkgname=journalwatch
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Filter error messages from systemd journal, similar to logcheck/logwatch."
 arch=(any)
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python' 'python-systemd')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('5355ac40b45ab223ec79b28ad1cbb6a1')
+md5sums=('c06619d5ece24510d6ec334febfbdef9')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
