@@ -1,0 +1,14 @@
+pkgbase = pubs
+	pkgdesc = Your bibliography on the command line
+	pkgver = d7e25d0
+	pkgrel = 1
+	url = https://github.com/pubs/pubs
+	arch = any
+	makedepends = git
+	depends = python
+	provides = pubs
+	source = git+https://github.com/pubs/pubs.git
+	md5sums = SKIP
+
+pkgname = pubs
+
