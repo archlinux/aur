@@ -2,7 +2,7 @@
 
 _pkgbasename=pcre
 pkgname=lib32-$_pkgbasename
-pkgver=8.39
+pkgver=8.40
 pkgrel=1
 pkgdesc="A library that implements Perl 5-style regular expressions (32-bit)"
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="http://pcre.sourceforge.net"
 license=('custom')
 depends=('lib32-gcc-libs' $_pkgbasename)
 makedepends=('gcc-multilib')
-source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${_pkgbasename}-${pkgver}.tar.bz2{,.sig})
-md5sums=('e3fca7650a0556a2647821679d81f585'
+source=("https://ftp.csx.cam.ac.uk/pub/software/programming/pcre/$_pkgbasename-$pkgver.tar.bz2"{,.sig})
+md5sums=('41a842bf7dcecd6634219336e2167d1d'
          'SKIP')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
 
@@ -21,8 +21,8 @@ prepare() {
   local filename
   for filename in "${source[@]}"; do
     if [[ "$filename" =~ \.patch$ ]]; then
-      msg2 "Applying patch $filename"
-      patch -p1 -N -i "$srcdir/$filename"
+      msg2 "Applying patch ${filename##*/}"
+      patch -p1 -N -i "$srcdir/${filename##*/}"
     fi
   done
   :
