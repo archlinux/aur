@@ -2,7 +2,7 @@
 
 pkgname=acpi_call-dkms
 pkgver=1.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A linux kernel module that enables calls to ACPI methods through /proc/acpi/call'
 arch=('any')
 url='https://github.com/mkottman/acpi_call'
@@ -23,6 +23,9 @@ prepare() {
 
 	# Fix build with Linux >= 3.17
 	sed -i 's|acpi/acpi.h|linux/acpi.h|' acpi_call.c
+
+	# Fix build with Linux >= 4.12
+	sed -i 's|asm/uaccess.h|linux/uaccess.h|' acpi_call.c
 
 	# create dkms.conf
 	cat > dkms.conf <<EOF
