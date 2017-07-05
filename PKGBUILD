@@ -3,12 +3,13 @@
 _srcname=screencast
 pkgname=screencast-git
 pkgver=1.3.0.r0.ga2b0872
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line interface to record a X11 desktop (git version)'
 arch=('any')
 url='https://github.com/dbermond/screencast/'
 license=('GPL')
 depends=('ffmpeg' 'xorg-xdpyinfo' 'libnotify')
+makedepends=('git')
 optdepends=('slop: graphical screen region selection support'
             'bc: fade effect support'
             'imagemagick: watermark effect support'
