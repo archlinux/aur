@@ -1,0 +1,20 @@
+pkgbase = rutracker-proxy
+	pkgdesc = Tool for proxying client's announces to blocked rutracker servers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/zhulik/rutracker-proxy
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/zhulik/rutracker-proxy/archive/0.2.0.tar.gz
+	source = rutracker-proxy.conf
+	source = rutracker-proxy.service
+	sha256sums = c06702971f45bcfee32987b40df1c73004e02a57c052e9fb3c18b28f231ac9c5
+	sha256sums = e79f961e069637ea548a3b7729eb3a51891a28bdf20815a418674d16954eaaad
+	sha256sums = 903e72b3adda53c4d4833996a37a56d34d447a3f51982d13c4d2891d78f39e09
+
+pkgname = rutracker-proxy
+

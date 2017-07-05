@@ -1,0 +1,11 @@
+[Unit]
+Description=rutracker-proxy Server
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/rutracker-proxy/rutracker-proxy.conf
+Type=simple
+ExecStart=/usr/bin/rutracker-proxy -p ${PROXY_PORT} -r ${ROTATION_TIMEOUT} -t ${PROXY_TYPE}
+
+[Install]
+WantedBy=multi-user.target
