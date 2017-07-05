@@ -1,6 +1,6 @@
 pkgbase = yamagi-quake2-ctf-git
 	pkgdesc = Quake II - Three Wave Capture The Flag for yamagi-quake2 (development version)
-	pkgver = 1.02.r5.ge2b397d
+	pkgver = 1.05.r1.g6f1b2f1
 	pkgrel = 1
 	url = http://www.yamagi.org/quake2/
 	arch = i686
