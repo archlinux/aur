@@ -1,0 +1,32 @@
+diff --git a/accel-pppd/extra/chap-secrets.c b/accel-pppd/extra/chap-secrets.c
+index b693a32..b8bdc1a 100644
+--- a/accel-pppd/extra/chap-secrets.c
++++ b/accel-pppd/extra/chap-secrets.c
+@@ -129,7 +129,7 @@ static struct cs_pd_t *create_pd(struct ap_session *ses, const char *username)
+ 	char username_hash[EVP_MAX_MD_SIZE * 2 + 1];
+ 	uint8_t hash[EVP_MAX_MD_SIZE];
+ 	struct hash_chain *hc;
+-	EVP_MD_CTX md_ctx;
++	EVP_MD_CTX *md_ctx = NULL;
+ 	char c;
+ #endif
+ 
+@@ -140,11 +140,13 @@ static struct cs_pd_t *create_pd(struct ap_session *ses, const char *username)
+ 	if (conf_encrypted && !list_empty(&hash_chain)) {
+ 		unsigned int size = 0;
+ 		list_for_each_entry(hc, &hash_chain, entry) {
+-			EVP_MD_CTX_init(&md_ctx);
+-			EVP_DigestInit_ex(&md_ctx, hc->md, NULL);
+-			EVP_DigestUpdate(&md_ctx, size == 0 ? (void *)username : (void *)hash, size == 0 ? strlen(username) : size);
+-			EVP_DigestFinal_ex(&md_ctx, hash, &size);
+-			EVP_MD_CTX_cleanup(&md_ctx);
++			md_ctx = EVP_MD_CTX_new();
++			EVP_MD_CTX_init(md_ctx);
++			EVP_DigestInit_ex(md_ctx, hc->md, NULL);
++			EVP_DigestUpdate(md_ctx, size == 0 ? (void *)username : (void *)hash, size == 0 ? strlen(username) : size);
++			EVP_DigestFinal_ex(md_ctx, hash, &size);
++			EVP_MD_CTX_free(md_ctx);
++			md_ctx = NULL;
+ 		}
+ 
+ 		for (n = 0; n < size; n++)
