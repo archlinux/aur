@@ -1,25 +1,31 @@
-# Maintainer: m4sk1n <m4sk1n@o2.pl>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: m4sk1n <m4sk1n@o2.pl>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
-pkgname=libxfce4ui-git
-pkgver=4.13.1.r38.gccb432c
+_pkgname=libxfce4ui
+pkgname=${_pkgname}-git
+pkgver=4.13.3.r5.gb7e544b
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications - git checkout"
 arch=('i686' 'x86_64')
 url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
-depends=('libxfce4util>=4.12.0' 'gtk2>=2.24.0' 'xfconf>=4.12.0' 'libsm' 'hicolor-icon-theme')
-makedepends=('intltool' 'gtk-doc')
-optdepends=('gtk3>=3.2.0: GTK+ 3 support'
-            'startup-notification>=0.4: startup notification library')
-provides=("libxfce4ui=${pkgver}")
-conflicts=("libxfce4ui")
-source=($pkgname::git://git.xfce.org/xfce/libxfce4ui)
+depends=('libxfce4util' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
+         'hicolor-icon-theme' 'gtk3')
+makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools' 'gobject-introspection' 'git')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}" "${_pkgname}-devel")
+source=("${_pkgname}::git+https://git.xfce.org/xfce/libxfce4ui")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
+}
+
 build() {
-  cd "libxfce4ui-git"
+  cd "${_pkgname}"
 
   ./autogen.sh \
     --prefix=/usr \
@@ -29,12 +35,13 @@ build() {
     --disable-static \
     --enable-gtk-doc \
     --disable-debug \
-#    --with-vendor-info='Arch Linux'
+    --with-vendor-info='Arch Linux'
   make
 }
 
 package() {
-  cd "libxfce4ui-git"
+  cd "${_pkgname}"
+
   make DESTDIR="$pkgdir" install
 }
 
