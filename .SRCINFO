@@ -1,0 +1,28 @@
+pkgbase = mediaconch-server
+	pkgdesc = Implementation checker and policy checker for video and audio files (Server)
+	pkgver = 17.05
+	pkgrel = 1
+	url = http://mediaarea.net
+	arch = i686
+	arch = x86_64
+	license = custom:MPL2
+	license = GPL3
+	makedepends = libxml2
+	makedepends = libxslt
+	makedepends = sqlite
+	makedepends = libevent
+	makedepends = libzen>=0.4.35
+	makedepends = libmediainfo>=0.7.97
+	depends = jansson
+	depends = libxml2
+	depends = libxslt
+	depends = sqlite
+	depends = libevent
+	depends = libzen>=0.4.35
+	depends = libmediainfo>=0.7.97
+	backup = etc/mediaconch/MediaConch.rc
+	source = https://mediaarea.net/download/source/mediaconch/17.05/mediaconch_17.05.tar.bz2
+	sha256sums = 4e36c4953ebae09b2b434a29f2496962c06e51295ce71f058964c60e6928ff39
+
+pkgname = mediaconch-server
+
