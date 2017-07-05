@@ -1,15 +1,15 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-beta'
-pkgver=1.7.0beta.1
-_pkgver=1.7.0-beta.1
-pkgrel=2
+pkgver=1.8.0beta.1
+_pkgver=1.8.0-beta.1
+pkgrel=1
 pkgdesc='The official GUI for MongoDB (beta version)'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
 license=('custom')
 depends=('nss' 'gconf' 'libxtst' 'alsa-lib' 'gtk2' 'libsecret' 'gcc-libs-multilib' 'libxss')
 source=("https://downloads.mongodb.com/compass/beta/$pkgname-$_pkgver.$arch.rpm")
-md5sums=('4d63b794e0bdde2c1faa2813762ce807')
+md5sums=('c0b885dde07e1bac16aaecd15671387b')
 
 package() {
 	rm -r "$srcdir/usr/share/doc/"
