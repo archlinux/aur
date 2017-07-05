@@ -1,0 +1,14 @@
+--- driver/snx_common.h.orig	2017-07-03 20:34:17.129581538 -0400
++++ driver/snx_common.h	2017-07-03 20:34:17.129581538 -0400
+@@ -40,7 +40,11 @@
+ #endif
+ 
+ #include <linux/errno.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
++#include <linux/sched/signal.h>
++#else
+ #include <linux/signal.h>
++#endif
+ #include <linux/tty.h>
+ #include <linux/tty_flip.h>
+ #include <linux/serial.h>
