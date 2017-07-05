@@ -1,6 +1,7 @@
+# Maintainer: Azat Abdullin <abdullin@kspt.icc.spbstu.ru>
 pkgname=sound-daemon-phonepi
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Sound control daemon for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
