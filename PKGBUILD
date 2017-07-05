@@ -1,6 +1,6 @@
 # Maintainer: Stewart Webb <stew@rtwebb.com>
 pkgname=mediaconch-server
-pkgver=17.05
+pkgver=17.06
 pkgrel=1
 pkgdesc="Implementation checker and policy checker for video and audio files (Server)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('custom:MPL2' 'GPL3')
 depends=('jansson' 'libxml2' 'libxslt' 'sqlite' 'libevent' 'libzen>=0.4.35' 'libmediainfo>=0.7.97')
 makedepends=('libxml2' 'libxslt' 'sqlite' 'libevent' 'libzen>=0.4.35' 'libmediainfo>=0.7.97')
 source=(https://mediaarea.net/download/source/mediaconch/$pkgver/mediaconch_$pkgver.tar.bz2)
-sha256sums=('4e36c4953ebae09b2b434a29f2496962c06e51295ce71f058964c60e6928ff39')
+sha256sums=('911ddf541e8ce540ef3e2346c3381ed207927b60ff9d15982fdb00af1b54ea69')
 backup=('etc/mediaconch/MediaConch.rc')
 
 prepare() {
