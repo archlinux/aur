@@ -1,6 +1,6 @@
 plainname=kotlin-native
 pkgname="$plainname-git"
-pkgver=r2055.305dbd30
+pkgver=r2571.56c1f2b0
 pkgrel=1
 pkgdesc="A LLVM backend for the Kotlin compiler"
 arch=('x86_64')
@@ -34,4 +34,5 @@ package() {
   ln -s /opt/kotlin-native/bin/kotlinc-native ${pkgdir}/usr/bin/kotlinc-native
   ln -s /opt/kotlin-native/bin/konanc ${pkgdir}/usr/bin/konanc
   ln -s /opt/kotlin-native/bin/cinterop ${pkgdir}/usr/bin/cinterop
+  ln -s /opt/kotlin-native/bin/run_konan ${pkgdir}/usr/bin/run_konan
 }

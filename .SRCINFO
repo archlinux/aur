@@ -1,6 +1,6 @@
 pkgbase = kotlin-native-git
 	pkgdesc = A LLVM backend for the Kotlin compiler
-	pkgver = r2055.305dbd30
+	pkgver = r2571.56c1f2b0
 	pkgrel = 1
 	url = https://github.com/JetBrains/kotlin-native
 	arch = x86_64
