@@ -1,7 +1,7 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=freecad-assembly2
-pkgver=0.r117.g1804b71
+pkgver=0.r217.g41c899e
 pkgrel=1
 pkgdesc="Assembly workbench for FreeCAD v0.15"
 arch=('any')
@@ -32,6 +32,6 @@ build() {
 
 package() {
     cd "${pkgdir}"
-    install -d "${pkgdir}"/usr/share/freecad/Mod/${_gitname}
-    mv -f "${srcdir}"/${_gitname}/* "${pkgdir}"/usr/share/freecad/Mod/${_gitname}
+    install -d "${pkgdir}"/usr/lib/freecad/Mod/${_gitname}
+    mv -f "${srcdir}"/${_gitname}/* "${pkgdir}"/usr/lib/freecad/Mod/${_gitname}
 }
