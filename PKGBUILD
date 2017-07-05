@@ -1,6 +1,6 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-git
-pkgver=r1376.810d234
+pkgver=r1411.e8dda21
 pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
