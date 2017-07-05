@@ -1,6 +1,7 @@
+# Maintainer: Azat Abdullin <abdullin@kspt.icc.spbstu.ru>
 pkgname=settings-phonepi
 pkgver=1
-pkgrel=6
+pkgrel=7
 pkgdesc="Settings application for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
