@@ -1,6 +1,7 @@
+# Maintainer: Azat Abdullin <abdullin@kspt.icc.spbstu.ru>
 pkgname=xxoff-phonepi
 pkgver=1
-pkgrel=7
+pkgrel=8
 pkgdesc="Shutdown application for PhonePi project"
 url="https://github.com/PhonePi"
 arch=("i686" "x86_64" "armv6h")
