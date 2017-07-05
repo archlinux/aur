@@ -3,7 +3,7 @@
 pkgname=ptokax
 _pkgname=PtokaX
 pkgver=0.5.2.2
-pkgrel=3
+pkgrel=1
 pkgdesc="PtokaX Direct Connect Hub is a multi-platform server application for Neo-Modus Direct Connect Peer-To-Peer sharing network."
 arch=('x86_64')
 url="http://www.PtokaX.org"
