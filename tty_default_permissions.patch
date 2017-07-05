@@ -1,44 +1,26 @@
-*** trueportd.c.orig	2016-12-02 14:09:01.383822650 -0500
---- trueportd.c	2016-12-02 14:10:46.453902417 -0500
-***************
-*** 1285,1301 ****
-  	{
-  		// if the device nodes do not exist, then create them
-  		if( lstat( slave_ttyname, &stat_buf ) < 0 )
-  		{
-  			trace( tl_status, "Creating slave device node: %s \n", slave_ttyname );
-! 			sprintf( buf, "mknod %s c %d %d", slave_ttyname, PTYX_SLAVE_MAJOR, minor_number );
-  			if( system( buf ) == -1 ) 
-  			{
-  				trace( tl_error, "Could not create slave device node: %s\n", slave_ttyname  );
-  				trace( tl_error, "  - %s\n", strerror( errno ) );
-  				exit(-1);
-  			}
-  		}
-  
-  		if( lstat( master_ttyname, &stat_buf ) < 0 )
-  		{
-  			trace( tl_status, "Creating master device node: %s \n", master_ttyname );
---- 1285,1306 ----
-  	{
-  		// if the device nodes do not exist, then create them
-  		if( lstat( slave_ttyname, &stat_buf ) < 0 )
-  		{
-  			trace( tl_status, "Creating slave device node: %s \n", slave_ttyname );
-! 			sprintf( buf, "mknod -m@TRUEPORT_TTY_PERMISSIONS@ %s c %d %d", slave_ttyname, PTYX_SLAVE_MAJOR, minor_number );
-  			if( system( buf ) == -1 ) 
-  			{
-  				trace( tl_error, "Could not create slave device node: %s\n", slave_ttyname  );
-  				trace( tl_error, "  - %s\n", strerror( errno ) );
-  				exit(-1);
-  			}
-+ #include <grp.h>
-+ {
-+   struct group *g=getgrnam("uucp");
-+   if (g) chown(slave_ttyname,-1,g->gr_gid);
-+ }
-  		}
-  
-  		if( lstat( master_ttyname, &stat_buf ) < 0 )
-  		{
-  			trace( tl_status, "Creating master device node: %s \n", master_ttyname );
+--- trueportd.c.orig	2017-07-03 22:10:37.742810625 -0400
++++ trueportd.c	2017-07-03 22:10:37.752810626 -0400
+@@ -1292,17 +1292,22 @@ int open_tty()
+ 	{
+ 		// if the device nodes do not exist, then create them
+ 		if( lstat( slave_ttyname, &stat_buf ) < 0 )
+ 		{
+ 			trace( tl_status, "Creating slave device node: %s \n", slave_ttyname );
+-			sprintf( buf, "mknod %s c %d %d", slave_ttyname, PTYX_SLAVE_MAJOR, minor_number );
++			sprintf( buf, "mknod -m@TRUEPORT_TTY_PERMISSIONS@ %s c %d %d", slave_ttyname, PTYX_SLAVE_MAJOR, minor_number );
+ 			if( system( buf ) == -1 ) 
+ 			{
+ 				trace( tl_error, "Could not create slave device node: %s\n", slave_ttyname  );
+ 				trace( tl_error, "  - %s\n", strerror( errno ) );
+ 				exit(-1);
+ 			}
++#include <grp.h>
++{
++  struct group *g=getgrnam("@TRUEPORT_TTY_GROUP@");
++  if (g) chown(slave_ttyname,-1,g->gr_gid);
++}
+ 		}
+ 
+ 		if( lstat( master_ttyname, &stat_buf ) < 0 )
+ 		{
+ 			trace( tl_status, "Creating master device node: %s \n", master_ttyname );

@@ -93,27 +93,40 @@ _opt_masterttypfx='px' # default px (this isn't very useful to users)
 
 set -u
 pkgname='trueport'
-pkgver='6.8.0'
-_pkgverrel='2'
+pkgver='6.8.3_1'
+#_dlver="${pkgver//_/-}"
+_dlver='6.8.0-2' # only use this with a version change patch set
+_srcdir="${pkgname}-${_dlver%%-*}"
 pkgrel='1'
 pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial console terminal device servers'
 _pkgdescshort='Perle TruePort driver for Ethernet serial servers'
 arch=('i686' 'x86_64')
 url='http://www.perle.com/'
 license=('GPL' 'custom')
-depends=('openssl' 'systemd')
-makedepends=('awk')
+depends=('glibc' 'systemd')
+if [ "${_opt_SSL}" -ne 0 ]; then
+  depends+=('openssl')
+fi
+makedepends=('awk' 'sed' 'diffutils' 'patch')
 conflicts=('dgrp') # running together with dgrp eventually jams up trueport
 backup=(etc/trueport/{config.tp,pktfwdcfg.tp,sslcfg.tp})
 options=('!docs' '!emptydirs' '!strip')
 install="${pkgname}-install.sh"
 _verwatch=('https://www.perle.com/downloads/server_ds1.shtml' '\s\+<a.*trueport-linux-tgz">\([^<]\+\)<.*' 'f')
 source=(
-  "https://www.perle.com/downloads/drivers/trueport/linux2.6/${pkgname}-${pkgver}-${_pkgverrel}.tgz"
+  "https://www.perle.com/downloads/drivers/trueport/linux2.6/${pkgname}-${_dlver}.tgz"
   'tty_default_permissions.patch'
+  'trueport-patch-6.8.0-6.8.3-stack-smashing.patch'
+  # http://dpdk.org/dev/patchwork/patch/22003/ [dpdk-dev] kni: fix build with kernel 4.11 lib/librte_eal/linuxapp/kni/compat.h lib/librte_eal/linuxapp/kni/kni_dev.h
+  # http://dpdk.org/dev/patchwork/patch/22037/
+  # http://rglinuxtech.com/?p=1930
+  # https://forum.manjaro.org/t/error-with-rtl8812au/24066
+  'trueport-patch-signal_pending-kernel-4-11.patch'
 )
 sha256sums=('c03dc972166fb693411cafcc7fb01478022dbc5da19d4db0f505591df819a72e'
-            '83eddfb8616aa27c2fbf6924bb91fdb0ba366b22668f72c51219779cd1ec258b')
+            '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639'
+            '12e94a054970784e8b75548f8a60eaa1372aeaf92adee911854db1163488c6ad'
+            '76157d41c665f36eddd4063aad05e75c53881b14d6a4218982da14b6aac9836e')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -123,7 +136,13 @@ fi
 
 prepare() {
   set -u
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
+
+  # diff -pNaru5 'trueport-6.8.0' 'trueport-6.8.3' > 'trueport-patch-6.8.0-6.8.3-stack-smashing.patch'
+  patch -Nup1 < '../trueport-patch-6.8.0-6.8.3-stack-smashing.patch'
+  # diff -pNau5 ptyx/ptys.c{.orig,} > '../trueport-patch-signal_pending-kernel-4-11.patch'
+  patch -Nup0 < '../trueport-patch-signal_pending-kernel-4-11.patch'
+
   # insert parameters and make install script non interactive.
   sed -e 's:^\(DONE\)=.*$:'"\1='done';SSL='${_opt_SSL}':g" \
       -e 's:^\(MAXINSTPORTS\)=.*$:'"DONE='done';MAXINSTPORTS='${_opt_MAXINSTPORTS}':g" \
@@ -158,17 +177,16 @@ prepare() {
   sed -e "s:@TRUEPORT_TTY_PERMISSIONS@:${_opt_defaultmode}:g" \
       -e "s:@TRUEPORT_TTY_GROUP@:uucp:g" \
     "${srcdir}/tty_default_permissions.patch" | \
-  patch -b -c -p0
-  # diff -c5 'trueportd.c.orig' 'trueportd.c' > '../../tty_default_permissions.patch'
+  patch -Nbup0
+  # diff -pNau5 trueportd.c{.orig,} > '../tty_default_permissions.patch' # Then change the two @@ items above
 
-  local _mk='ma''ke' # keep git-aurcheck quiet
-  ${_mk} -j1 clean
+  'ma'ke -s -j1 clean # keep git-aurcheck quiet
   set +u
 }
 
 build() {
   set -u
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   local _cflags=('-s' '-g -rdynamic')
   #_cflags[0]+=' -fno-stack-protector'
   local _makeflags=('-s' '')
@@ -179,19 +197,21 @@ build() {
 
 package() {
   set -u
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
 
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
-    local _kernelversionsmall="$(pacman -Q linux)" # this differs from uname -r. pacman: 4.0, uname: 4.0.0
-    _kernelversionsmall="${_kernelversionsmall#* }"
-    _kernelversionsmall="${_kernelversionsmall%-*}"
+    local _kernelversionsmall="$(uname -r)"
+    _kernelversionsmall="${_kernelversionsmall%%-*}"
+    if [ "${_kernelversionsmall%\.0\.0}" != "${_kernelversionsmall}" ]; then # trim 4.0.0 -> 4.0
+      _kernelversionsmall="${_kernelversionsmall%\.0}"
+    fi
     # prevent the mksrcinfo bash emulator from getting these vars!
     eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
   fi
 
-  make DESTDIR="${pkgdir}" install
+  make -s -j1 DESTDIR="${pkgdir}" install
   rm -f '/tmp/files' # Not used by postinstall. Probably used in the rpm_build.
 
   # Fix postinstall to generate modprobe.conf. Stop after the first section.
@@ -222,9 +242,10 @@ package() {
   # /lib is deprecated in Arch Linux
   mv -f "${pkgdir}/lib" "${pkgdir}/usr/lib/"
 
+  # systemd service
   install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 [Unit]
 Description=${_pkgdescshort}
@@ -244,9 +265,10 @@ EOF
 
   if [ "${_opt_DKMS}" -ne 0 ]; then
     rm -rf "${pkgdir}/usr/lib/modules/"
+    local _dkms="${pkgdir}/usr/src/${pkgname}-${pkgver}"
     install -Dm644 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 PACKAGE_NAME="${pkgname}"
 PACKAGE_VERSION="${pkgver}"
@@ -260,11 +282,10 @@ CLEAN[0]="make -j1 -C 'ptyx' clean"
 # Placing the DKMS generated module in a different location than the standard install prevents conflicts when PKGBUILD _opt_DKMS is toggled
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
-    ) "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
-    install -Dpm644 ptyx/* -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/"
-    make -C "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/" clean
-    rm "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/modules.order"
-    install -pm644 'tp_ver.h' 'tp.h' -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
+    ) "${_dkms}/dkms.conf"
+    install -Dpm644 ptyx/* -t "${_dkms}/ptyx/"
+    rm "${_dkms}/ptyx/modules.order"
+    install -pm644 'tp_ver.h' 'tp.h' -t "${_dkms}/"
     sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
         -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
         -e 's:`uname -r`:$(KERNELRELEASE):g' \
@@ -272,7 +293,8 @@ EOF
         -e '# Fix by changing the detection var.' \
         -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
         -e 's:^ifeq ($(KERNELRELEASE):ifeq ($(SUBDIRS):g' \
-       -i "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/Makefile"
+       -i "${_dkms}/ptyx/Makefile"
+    make -s -C "${_dkms}/ptyx/" clean
   fi
   set +u
 }
