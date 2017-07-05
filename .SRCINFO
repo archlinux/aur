@@ -1,4 +1,4 @@
-pkgbase = pubs
+pkgbase = pubs-git
 	pkgdesc = Your bibliography on the command line
 	pkgver = d7e25d0
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = pubs
 	source = git+https://github.com/pubs/pubs.git
 	md5sums = SKIP
 
-pkgname = pubs
+pkgname = pubs-git
 
