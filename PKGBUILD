@@ -1,25 +1,32 @@
-# Maintainer: m4sk1n <m4sk1n vivaldi net>
+# Maintainer: twa022 <twa022 at gmail dot com>
+# Contributor: m4sk1n <m4sk1n vivaldi net>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: tobias <tobias funnychar archlinux.org>
 
-pkgname=xfce4-panel-git
-pkgver=4.12.1.r205.ga7f3157c
-pkgrel=2
+_pkgname=xfce4-panel
+pkgname=${_pkgname}-git
+pkgver=4.13.0.r81.g327ba0be
+pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment - git checkout"
 arch=('i686' 'x86_64')
 url="http://docs.xfce.org/xfce/xfce4-panel/start"
 license=('GPL2')
 groups=('xfce4-git')
-conflicts=(xfce4-panel)
-provides=(xfce4-panel="${pkgver%%.r*}")
-depends=('exo>=0.11.0' 'garcon>=0.5.0' 'libxfce4ui>=4.13.0' 'libwnck3' 'hicolor-icon-theme'
+conflicts=("${_pkgname}" "${_pkgname}-devel")
+provides=("${_pkgname}=${pkgver%%.r*}")
+depends=('exo>=0.11.2' 'garcon' 'libxfce4ui>=4.13.0' 'libwnck3' 'hicolor-icon-theme'
          'desktop-file-utils')
-makedepends=('intltool' 'gtk-doc>=1.9' 'git' 'xfce4-dev-tools>=4.12.0')
-source=("$pkgname::git://git.xfce.org/xfce/xfce4-panel")
+makedepends=('intltool' 'gtk-doc' 'git' 'xfce4-dev-tools')
+source=("${_pkgname}::git://git.xfce.org/xfce/xfce4-panel")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
+}
+
 build() {
-  cd "$pkgname"
+  cd "${_pkgname}"
 
   ./autogen.sh \
     --prefix=/usr \
@@ -35,8 +42,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "${_pkgname}"
+
   make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
