@@ -1,8 +1,8 @@
-# Maintainer: Matthew Ellison <matt+aur@arroyonetworks.com>
+# Maintainer: Matthew Ellison <seglberg@gmail.com>
 
 _pkgname='pyroute2'
 pkgname="python-${_pkgname}"
-pkgver=0.4.4
+pkgver=0.4.17
 pkgrel=1
 pkgdesc='A pure Python netlink and Linux network configuration library.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL2' 'Apache')
 depends=()
 makedepends=('python' 'python-setuptools')
 source=("https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('794cafb9f1b7fe9f2d74be888b6cd3093a6fc2fb727fa0537319f906f9f196b8')
+sha256sums=('8ae522eaf46281df32f54632b1015b02f650304d5107e56b96912fb7cf1734e6')
 
 check() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

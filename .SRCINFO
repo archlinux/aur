@@ -1,6 +1,6 @@
 pkgbase = python-pyroute2
 	pkgdesc = A pure Python netlink and Linux network configuration library.
-	pkgver = 0.4.4
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = http://docs.pyroute2.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pyroute2
 	license = Apache
 	makedepends = python
 	makedepends = python-setuptools
-	source = https://pypi.io/packages/source/p/pyroute2/pyroute2-0.4.4.tar.gz
-	sha256sums = 794cafb9f1b7fe9f2d74be888b6cd3093a6fc2fb727fa0537319f906f9f196b8
+	source = https://pypi.io/packages/source/p/pyroute2/pyroute2-0.4.17.tar.gz
+	sha256sums = 8ae522eaf46281df32f54632b1015b02f650304d5107e56b96912fb7cf1734e6
 
 pkgname = python-pyroute2
 
