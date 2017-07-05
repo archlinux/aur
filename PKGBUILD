@@ -1,6 +1,6 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=python-sphinx-autobuild
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Watch a Sphinx directory and rebuild the documentation when a change is detected. Also includes a livereload enabled web server."
 arch=('any')
@@ -24,9 +24,9 @@ backup=()
 options=(!emptydirs)
 install=
 source=(
-  https://pypi.python.org/packages/source/s/sphinx-autobuild/sphinx-autobuild-$pkgver.tar.gz
+  https://files.pythonhosted.org/packages/source/s/sphinx-autobuild/sphinx-autobuild-$pkgver.tar.gz
 )
-sha256sums=('2f9262d7a35f80a18c3bcb03b2bf5a83f0a5e88b75ad922b3b1cee512c7e5cd2')
+sha256sums=('66388f81884666e3821edbe05dd53a0cfb68093873d17320d0610de8db28c74e')
 
 package() {
   cd "$srcdir/sphinx-autobuild-$pkgver"
