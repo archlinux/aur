@@ -1,7 +1,7 @@
 pkgbase = dotnet-runtime-1.1
 	pkgdesc = Provides the .NET core shared framework, i.e. coreclr and corefx.
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT
@@ -14,10 +14,9 @@ pkgbase = dotnet-runtime-1.1
 	depends = libunwind
 	depends = icu
 	depends = lttng-ust
-	depends = libcurl-compat
-	depends = openssl-1.0
+	depends = libcurl-openssl-1.0
 	depends = dotnet-host
-	provides = dotnet=1.1.1
+	provides = dotnet=1.1.2
 	conflicts = dotnet-bin
 	options = staticlibs
 	source = coreclr-1.1.2.tar.gz::https://github.com/dotnet/coreclr/archive/v1.1.2.tar.gz
@@ -27,6 +26,7 @@ pkgbase = dotnet-runtime-1.1
 	source = llvm-39-move.patch
 	source = lttng-uts-40.patch
 	source = clang-4-patchset.patch
+	source = libcurl.patch
 	sha256sums = 3dcc98d981b85008b44c994c2805bdbe30a650bfe7ef665a21ce6e36da807435
 	sha256sums = 6d7c4598433843129a48ab106b029f5d9f9572c283cbc522114d8fbe3bff04ea
 	sha256sums = 0a4d4061931e0154c9186446dbc8d4c3e69ba49537699be98185d55fc24a1b56
@@ -34,6 +34,7 @@ pkgbase = dotnet-runtime-1.1
 	sha256sums = 84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d
 	sha256sums = d7c6bbc24e8464dcfb4fd86cb76fa3a55f4822f5e8196e41a2c39650432aa401
 	sha256sums = 2b884b4cd850027f95cba5deda32226e27ceaa962f0ab2879adc5180cf37c32a
+	sha256sums = a32dea005f5379ae59d31e579f4ea13bad03228a8ca39b439b94767541c44450
 
 pkgname = dotnet-runtime-1.1
 

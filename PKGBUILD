@@ -2,15 +2,15 @@
 
 pkgname=dotnet-runtime-1.1
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides the .NET core shared framework, i.e. coreclr and corefx."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
 groups=()
-depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'libcurl-compat' 'openssl-1.0' 'dotnet-host')
+depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'libcurl-openssl-1.0' 'dotnet-host')
 makedepends=('cmake' 'make' 'clang' 'llvm' 'gettext')
-provides=('dotnet=1.1.1')
+provides=('dotnet=1.1.2')
 conflicts=('dotnet-bin')
 replaces=()
 backup=()
@@ -25,7 +25,7 @@ source=(
   'llvm-39-move.patch'
   'lttng-uts-40.patch'
   'clang-4-patchset.patch'
-)
+  'libcurl.patch')
 
 sha256sums=('3dcc98d981b85008b44c994c2805bdbe30a650bfe7ef665a21ce6e36da807435'
             '6d7c4598433843129a48ab106b029f5d9f9572c283cbc522114d8fbe3bff04ea'
@@ -34,7 +34,7 @@ sha256sums=('3dcc98d981b85008b44c994c2805bdbe30a650bfe7ef665a21ce6e36da807435'
             '84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d'
             'd7c6bbc24e8464dcfb4fd86cb76fa3a55f4822f5e8196e41a2c39650432aa401'
             '2b884b4cd850027f95cba5deda32226e27ceaa962f0ab2879adc5180cf37c32a'
-)
+            'a32dea005f5379ae59d31e579f4ea13bad03228a8ca39b439b94767541c44450')
 
 prepare() {
   cd "${srcdir}/coreclr-${pkgver}"
@@ -44,6 +44,7 @@ prepare() {
   patch -p1 < "${srcdir}/clang-4-patchset.patch"
   
   cd "${srcdir}/corefx-${pkgver}"
+  patch -p0 < "${srcdir}/libcurl.patch"
 }
 
 build() {
@@ -51,7 +52,7 @@ build() {
   ./build.sh x64 release skiptests
 
   cd "${srcdir}/corefx-${pkgver}"
-  CPLUS_INCLUDE_PATH=/usr/include/openssl-1.0 C_INCLUDE_PATH=/usr/include/openssl-1.0 ./src/Native/build-native.sh x64 release cmakeargs -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 cmakeargs -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so cmakeargs -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so cmakeargs -DCURL_LIBRARIES=/usr/lib/libcurl-compat.so.4.4.0
+  CPLUS_INCLUDE_PATH=/usr/include/openssl-1.0 C_INCLUDE_PATH=/usr/include/openssl-1.0 ./src/Native/build-native.sh x64 release cmakeargs -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 cmakeargs -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so cmakeargs -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so cmakeargs -DCURL_LIBRARIES=/usr/lib/libcurl-openssl-1.0/libcurl.so
 }
 
 _coreclr_files=(
