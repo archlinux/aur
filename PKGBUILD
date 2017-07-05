@@ -2,7 +2,7 @@
 
 pkgname=flameshot
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64')
 url="https://github.com/lupoDharkael/flameshot"
@@ -20,5 +20,9 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/flameshot" "${pkgdir}/usr/bin/flameshot"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 "./flameshot" "${pkgdir}/usr/bin/flameshot"
+  install -Dm644 "./dbus/org.dharkael.Flameshot.service" "${pkgdir}/usr/share/dbus-1/services/org.dharkael.Flameshot.service"
+  install -Dm644 "./dbus/org.dharkael.Flameshot.xml" "${pkgdir}/usr/share/dbus-1/interfaces/org.dharkael.Flameshot.xml"
+  install -Dm644 "./docs/desktopEntry/package/flameshot.desktop" "${pkgdir}/usr/share/applications/flameshot.desktop"
 }
