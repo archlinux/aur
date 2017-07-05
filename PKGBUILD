@@ -1,8 +1,8 @@
-# Maintainer: Aleksandr Boiko <brdcom@ya.ru>
+# Maintainer: Aleksandr Boiko <4le34n at gmail dot com>
 pkgname=sc-tool
 _pkgname=sc
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Administration tool for Linux-based ISP traffic shaper"
 arch=('any')
