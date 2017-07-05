@@ -1,12 +1,13 @@
 # Maintainer: Jonas Frei freijon <freijon@gmail.com>
-# Contributor: : carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Stephen Brandt <stephen@stephenbrandt.com>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi-indicator-bzr
-pkgver=r23
+pkgver=r31
 pkgrel=1
 pkgdesc="Provides an indicator for Haguichi. Development version."
 arch=('x86_64' 'i686' 'arm' 'armv7h')
-url="http://www.haguichi.net"
+url="https://www.haguichi.net"
 license=('GPL3')
 depends=('gtk3' 'libappindicator-gtk3' 'haguichi')
 makedepends=('bzr' 'meson' 'vala')

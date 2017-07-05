@@ -1,8 +1,8 @@
 pkgbase = haguichi-indicator-bzr
 	pkgdesc = Provides an indicator for Haguichi. Development version.
-	pkgver = r23
+	pkgver = r31
 	pkgrel = 1
-	url = http://www.haguichi.net
+	url = https://www.haguichi.net
 	arch = x86_64
 	arch = i686
 	arch = arm
