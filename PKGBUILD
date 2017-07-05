@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=faf-uid
-pkgver=3.0.0
+pkgver=4.0.5
 pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Anti-smurfing binary for the lobby client."
@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/FAForever/uid/releases/download/v$pkgver/faf-uid")
-sha256sums=('6222494c7e295b1a57d637247505ce1961a6ffa7ed84e3234c67a15bd33045c7')
+sha256sums=('492022a0abad7c5b805dfa2b77505e9f535c6664b19f3efbccc3fbae4281e6f5')
 noextract=()
 validpgpkeys=()
 
