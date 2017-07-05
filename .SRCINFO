@@ -1,20 +1,16 @@
 pkgbase = ucon64
 	pkgdesc = A ROM backup tool and emulator's Swiss Army knife program.
-	pkgver = 2.0.0
-	pkgrel = 4
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = http://ucon64.sourceforge.net/index.php
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = zlib
-	source = http://downloads.sourceforge.net/ucon64/ucon64-2.0.0-src.tar.gz
-	source = patch-backup-lynxit.c
-	source = patch-libdiscimage-misc_z.c
-	source = patch-libdiscimage-unzip.h
-	source = patch-misc-archive.c
-	source = patch-misc-unzip.h
-	source = patch-ucon64.c
+	source = https://downloads.sourceforge.net/ucon64/ucon64-2.0.3-src.tar.gz
 	source = patch-ucon64_misc.c
+	sha256sums = fdf158a4bc7c3a7d45a60ef495151f635ce39938799d373a29628f5985790bd2
+	sha256sums = f52d6e0cb307a2c0bc4e4ede0673139f5ddd704199ee12d15f58d2e394f25c80
 
 pkgname = ucon64
 

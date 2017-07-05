@@ -2,49 +2,35 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=ucon64
-pkgver=2.0.0
-pkgrel=4
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="A ROM backup tool and emulator's Swiss Army knife program."
 arch=('i686' 'x86_64')
 url="http://ucon64.sourceforge.net/index.php"
-license="GPL"
+license=('GPL')
 depends=('zlib')
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-src.tar.gz \
-        patch-backup-lynxit.c \
-        patch-libdiscimage-misc_z.c \
-        patch-libdiscimage-unzip.h \
-        patch-misc-archive.c \
-        patch-misc-unzip.h \
-        patch-ucon64.c \
+source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-src.tar.gz \
         patch-ucon64_misc.c)
-md5sums=('33804256edb265d43bc3dbb9ada4441a'
-         '0c315bce4b590749b7451b33f86d5b2d'
-         '3a405c6696069b8799dce85c21c6c6e9'
-         '249aaa950fba7bc9983b4dafdeaf37ab'
-         '42057845212bf93dee24584912316494'
-         'fbd555b1fa8b0d6a1547fcca5110e8a9'
-         'a991ce0999b9724dec816fb1747b1237'
-         'edac4423575708755e7dc1a603538c01')
+sha256sums=('fdf158a4bc7c3a7d45a60ef495151f635ce39938799d373a29628f5985790bd2'
+            'f52d6e0cb307a2c0bc4e4ede0673139f5ddd704199ee12d15f58d2e394f25c80')
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}-src/src
-  for i in ../../patch*; do patch -p0 < $i; echo $i; done
+  cd ${pkgname}-${pkgver}-src/src
+
+  patch -p0 < ../../patch-ucon64_misc.c
+  sed -i 's|$(CFLAGS0)|"$(CFLAGS0)"|g' Makefile
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}-src/src
+  cd ${pkgname}-${pkgver}-src/src
+
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}-src/src
+  cd ${pkgname}-${pkgver}-src/src
 
-  install -Dm775 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-
-  if [ -f libdiscmage/discmage.so ]; then
-    install -Dm755 libdiscmage/discmage.so ${pkgdir}/usr/lib/discmage.so
-  elif [ -f discmage.so ]; then
-    install -Dm755 discmage.so ${pkgdir}/usr/lib/discmage.so
-  fi
+  install -Dm775 ucon64 "${pkgdir}"/usr/bin/ucon64
+  install -Dm755 libdiscmage/discmage.so "${pkgdir}"/usr/lib/discmage.so
 }
