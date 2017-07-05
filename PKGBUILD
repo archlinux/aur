@@ -1,6 +1,6 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
-pkgname=bitsquare-bin
+pkgname=bisq-bin
 pkgver=0.5.1
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
@@ -16,7 +16,7 @@ prepare() {
 }
 
 package() {
-  install -d "$pkgdir"/{opt/,usr/bin/,usr/share/applications,/usr/share/pixmaps,/usr/share/licenses/bitsquare}
+  install -d "$pkgdir"/{opt/,usr/bin/,usr/share/applications,/usr/share/pixmaps,/usr/share/licenses/bisq}
 
   # Install all .deb files into /opt.
   cp -r "$srcdir/opt" "$pkgdir"
