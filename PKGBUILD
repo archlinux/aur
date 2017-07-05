@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-rollbar
-pkgver=0.13.11
+pkgver=0.13.12
 pkgrel=1
 pkgdesc="Easy and powerful exception tracking with rollbar"
 arch=(any)
@@ -21,4 +21,4 @@ package() {
     python setup.py install -O1 --skip-build --root="$pkgdir"
 }
 
-sha256sums=('bdc71fd383e47dc458ed5eebb58b5fd0bc04d207cb587e661afae661195f6804')
+sha256sums=('b7194d63b618233ca72d8158ce57b12af6f3ad37fdd6b8ccc98e317efde0e33f')
