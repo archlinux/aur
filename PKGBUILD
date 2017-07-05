@@ -1,17 +1,18 @@
 # Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Ivan Petruk <localizator@ukr.net>
+# Comaintainer:  daniruiz <daniruizdealegria@gmail.com>
 
 _pkgname=gnome-shell-theme-super-flat-remix
 pkgname="${_pkgname}-git"
-pkgver=r29.4b6bb1f
+pkgver=r58.4540417
 pkgrel=1
-pkgdesc="Super Flat remix GNOME theme is a pretty simple shell theme, derived from Paper theme. (Git version)"
+pkgdesc="Flat Remix GNOME theme is a pretty simple shell theme inspired on material design (git version)"
 arch=('any')
-url="https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme/"
+url="https://github.com/daniruiz/Flat-Remix-GNOME-theme/"
 groups=('gnome-shell-extensions')
-license=('CCPL:cc-by-nc-sa-3.0')
+license=('CC-BY-SA-4.0')
 depends=('gnome-shell')
-source=("${_pkgname}::git+https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme.git")
+source=("${_pkgname}::git+https://github.com/daniruiz/Flat-Remix-GNOME-theme.git")
 sha256sums=('SKIP')
 
 pkgver() {

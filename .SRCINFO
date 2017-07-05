@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-theme-super-flat-remix-git
-	pkgdesc = Super Flat remix GNOME theme is a pretty simple shell theme, derived from Paper theme. (Git version)
-	pkgver = r29.4b6bb1f
+	pkgdesc = Flat Remix GNOME theme is a pretty simple shell theme inspired on material design (git version)
+	pkgver = r58.4540417
 	pkgrel = 1
-	url = https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme/
+	url = https://github.com/daniruiz/Flat-Remix-GNOME-theme/
 	arch = any
 	groups = gnome-shell-extensions
-	license = CCPL:cc-by-nc-sa-3.0
+	license = CC-BY-SA-4.0
 	depends = gnome-shell
-	source = gnome-shell-theme-super-flat-remix::git+https://github.com/daniruiz/Super-Flat-Remix-GNOME-theme.git
+	source = gnome-shell-theme-super-flat-remix::git+https://github.com/daniruiz/Flat-Remix-GNOME-theme.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-theme-super-flat-remix-git
