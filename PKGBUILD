@@ -41,7 +41,7 @@ _use_current=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
-pkgver=4.11.8
+pkgver=4.11.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
@@ -65,7 +65,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'c390540524e9647efa3752550cb04b02f47a60a5d45f26d56a07cd8a67501929'
+            'a112d1330817bac401dbbd1e2c8aacb1b725bc28239e2ca58281ea3754deceb5'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '1503a068ff8760db1ba94cf32b9be4af492ab4c3d8b250ccd3d3a0d2ba5c5e69'
