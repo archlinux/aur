@@ -12,7 +12,6 @@ depends=('gtk3' 'libnotify' 'logmein-hamachi')
 makedepends=('bzr' 'cmake' 'vala')
 conflicts=('haguichi')
 provides=('haguichi')
-install=$pkgname.install
 source=('bzr+lp:haguichi')
 sha256sums=('SKIP')
 _pkg=haguichi
