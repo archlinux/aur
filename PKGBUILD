@@ -1,13 +1,14 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-ctf-git
-pkgver=1.02.r5.ge2b397d
+pkgver=1.05.r1.g6f1b2f1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Three Wave Capture The Flag for yamagi-quake2 (development version)"
 url="http://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
+makedepends=('cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=(${pkgname%-*}::"git+https://github.com/yquake2/ctf.git"
@@ -15,25 +16,32 @@ source=(${pkgname%-*}::"git+https://github.com/yquake2/ctf.git"
         "${pkgname%-*}.desktop")
 sha256sums=('SKIP'
             '9a9abd8d720a719180713163261fed154ec34787c82dda2b9465aefd9890b64c'
-            'da8c69eb05eb9aab8526616b2808c7535ae38c1e28b5e7db341ff633bc09be31')
+            '1191c20ea0e7609d28b44d678ff02b2f06b95a7037d1adfd02e963a62b8f3af2')
 
 pkgver() {
   cd ${pkgname%-*}
   git describe --long --tags | sed 's/^CTF_//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  rm -rf build
+  mkdir -p build
+}
+
 build() {
-  make -C ${pkgname%-*}
+  cd build
+  cmake ../${pkgname%-*} -DCMAKE_BUILD_TYPE=Release
+  make
 }
 
 package() {
+  # game library
+  install -Dm644 build/Release/game.so "$pkgdir"/usr/lib/yamagi-quake2/ctf/game.so
+
   cd ${pkgname%-*}
 
   # game launcher
   install -Dm755 ../${pkgname%-*}.sh "$pkgdir"/usr/bin/${pkgname%-*}
-
-  # game library
-  install -Dm644 release/game.so "$pkgdir"/usr/share/yamagi-quake2/ctf/game.so
 
   # doc
   install -Dm644 README "$pkgdir"/usr/share/doc/${pkgname%-*}/README
