@@ -1,0 +1,19 @@
+diff -aur cni-plugin-1.11.2-orig/Makefile cni-plugin-1.11.2/Makefile
+--- cni-plugin-1.11.2-orig/Makefile	2017-12-12 16:50:09.000000000 -0800
++++ cni-plugin-1.11.2/Makefile	2018-01-12 14:47:44.816686112 -0800
+@@ -81,13 +81,13 @@
+ ## Build the Calico network plugin
+ dist/calico: $(SRCFILES) vendor
+ 	mkdir -p $(@D)
+-	CGO_ENABLED=0 go build -v -i -o dist/calico \
++	CGO_ENABLED=0 go build -v -o dist/calico \
+ 	-ldflags "-X main.VERSION=$(CALICO_CNI_VERSION) -s -w" calico.go
+ 
+ ## Build the Calico ipam plugin
+ dist/calico-ipam: $(SRCFILES) vendor
+ 	mkdir -p $(@D)
+-	CGO_ENABLED=0 go build -v -i -o dist/calico-ipam  \
++	CGO_ENABLED=0 go build -v -o dist/calico-ipam  \
+ 	-ldflags "-X main.VERSION=$(CALICO_CNI_VERSION) -s -w" ipam/calico-ipam.go
+ 
+ .PHONY: test
