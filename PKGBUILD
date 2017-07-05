@@ -1,16 +1,16 @@
 # Maintainer: Aleksander Boiko <brdcom@ya.ru>
 pkgname=bgbilling
 _pkgname=BGBillingServer
-_major=6.2
-_minor=1047
+_major=7.1
+_minor=885
 pkgver=$_major.$_minor
-pkgrel=3
+pkgrel=1
 pkgdesc="The billing system BGBilling"
 arch=('i686' 'x86_64') 
 url="http://bgbilling.ru"
 license=('custom')
-depends=('activemq' 'java-runtime=7' 'pbzip2' 'percona-server-clients')
-optdepends=('percona-server')
+depends=('activemq' 'java-runtime=7' 'pbzip2' 'libmariadbclient')
+optdepends=('mariadb')
 makedepends=('unzip' 'dos2unix' 'patch')
 backup=("opt/${pkgname}/data/lic.properties")
 source=("ftp://bgbilling.ru/pub/${pkgname}/${_major}/data/${_pkgname}_${_major}_${_minor}.zip"
@@ -43,8 +43,8 @@ package() {
   chmod 0744 *.sh
 
 # patch
-  patch -p0 <"${srcdir}/setenv.sh.patch"
-  patch -p0 <"${srcdir}/update.sh.patch"
+#  patch -p0 <"${srcdir}/setenv.sh.patch"
+#  patch -p0 <"${srcdir}/update.sh.patch"
 
 # converting files to Unix format
   dos2unix *.sh
@@ -58,4 +58,10 @@ package() {
   rm -rf ./script
 }
 
-# vim:set ts=2 sw=2 ft=sh et:
+md5sums=('b1ba4f459f27c558a83793663d22f9fc'
+         '1004f74c6e4b9551a23132ae1e936c3e'
+         'c49adcd6d778558eff1545f5c79db760'
+         'dcfc1eb1310ef5a1319ed6a5777f4111'
+         'c3f6c6b3e7e02595d7009d59ad47b3ea'
+         '0f7f773fb2e39637f1db752e439561e9'
+         'd772aa7395ff3d07fcaf46b106b06a3b')
