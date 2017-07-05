@@ -1,9 +1,9 @@
-# Maintainer: Alexandr Boiko <brdcom@ya.ru>
+# Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 
 pkgname=ptokax
 _pkgname=PtokaX
 pkgver=0.5.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="PtokaX Direct Connect Hub is a multi-platform server application for Neo-Modus Direct Connect Peer-To-Peer sharing network."
 arch=('x86_64')
 url="http://www.PtokaX.org"
