@@ -1,6 +1,7 @@
 # Maintainer: sasvari
-pkgname="pubs-git"
-pkgver=d7e25d0
+pkg="pubs"
+pkgname="$pkg-git"
+pkgver=20170524.d7e25d0
 pkgrel=1
 pkgdesc="Your bibliography on the command line"
 arch=(any)
@@ -11,18 +12,19 @@ provides=("pubs")
 source=("git+https://github.com/pubs/pubs.git")
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkg"
 	#git describe | sed 's/^v//; s/-/.r/; s/-/./'
-	git rev-parse --short HEAD
+	#git rev-parse --short HEAD
+	git log -1 --format=%cd.%h --date=short|tr -d -
 }
 
 build () {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkg"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkg"
 	python setup.py install --root="$pkgdir/" --prefix="/usr"
 }
 md5sums=('SKIP')
