@@ -4,18 +4,16 @@ post_install() {
   chown -R http:http /srv/http/pihole
   /opt/pihole/mimic_setupVars.conf.sh
 
+  # sed magic to setup /etc/dnsmasq.d/02-pihole.conf and thus protect it from
+  # getting overwritten by package updates
   _dnsmasq_address_setup
-
-  # best solution to managing script-created files I can think of
-  # is to install them to /usr/share/pihole/configs/ using sed magic
-  # and copy them into /etc/dnsmasq.d/ on the first install only
-  # from then on users can edit these and not have them overwritten
-  # by an update
-  install -Dm644 /usr/share/pihole/configs/01-pihole.example.conf /etc/dnsmasq.d/01-pihole.conf
-  install -Dm644 /usr/share/pihole/configs/02-pihole.example.conf /etc/dnsmasq.d/02-pihole.conf
-
+  
   # update lists on first run
   pihole -g > /dev/null
+
+  # setup dns server which by definition modifies /etc/dnsmasq.d/01-pihole.conf
+  # and thus protects it from getting overwritten by package updates
+  /usr/bin/pihole -a setdns 8.8.8.8,8.8.4.4 > /dev/null
 }
 
 post_upgrade() {
@@ -23,13 +21,30 @@ post_upgrade() {
   [ -e /etc/pihole/hosts ] && rm /etc/pihole/hosts
   [ -e /etc/pihole/.useIPv6 ] && rm /etc/pihole/.useIPv6
 
-  # if neither file is present, bash throws an non-0 exit
+  # if we run _dnsmasq_address_setup now and if the user has modified
+  # /etc/dnsmasq.d/02-pihole.conf it will be overwritten
+  # 
+  # pacman will install the sed magic version of this file as
+  # /etc/dnsmasq.d/02-pihole.pacnew which we do not want on the file system
+  # so short of changing $dnsmasq_pihole_conf in the _dnsmasq_address_setup
+  # function, let's just delete it in post_upgrade
+  #
+  # users will see pacman output indicating there is a pacnew but I don't
+  # know an elegant way to provide a script processed config file without
+  # installing it to a temp file and pointing the sed magic on that temp file
+  # yet having pacman keep it in the BACKUP array for management to keep it
+  # from getting overwritten on updates
+  [ -e /etc/dnsmasq.d/02-pihole.conf.pacnew ] && rm /etc/dnsmasq.d/02-pihole.conf.pacnew
+
+  # maybe the KISS solution is simply not to provide
+  # /etc/dnsmasq.d/02-pihole.conf at all and let the user make it from the wiki
+  
+  # finally, this shouldn't be the case but keep pacman from throwing errors should
+  # none of the three checks be true
   return 0
 }
 
 post_remove() {
-  [ -e /run/log/pihole/pihole.log ] && rm /run/log/pihole/pihole.log
-
   # delete all temp files except those modified the user
   # TODO - make this more intelligent to save *.pacsave.# where # is a number
   find /etc/pihole -type f ! -name '*.pacsave' ! -name 'pihole-FTL.conf' ! -name 'pihole-FTL.db' -delete
@@ -37,7 +52,7 @@ post_remove() {
 
 _dnsmasq_address_setup() {   # official code here
   . /etc/pihole/setupVars.conf
-  dnsmasq_pihole_conf=/usr/share/pihole/configs/02-pihole.example.conf
+  dnsmasq_pihole_conf=/etc/dnsmasq.d/02-pihole.conf
 
   if [[ -f /etc/hostname ]]; then
     hostname=$(</etc/hostname)
