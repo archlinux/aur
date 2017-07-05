@@ -288,7 +288,6 @@ package() {
 
   install -dm755 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/usr/share/pihole/configs
-  install -dm755 "$pkgdir"/usr/share/pihole/doc
   install -Dm644 $_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default
   install -Dm644 $_pkgname-$pkgver/advanced/logrotate "$pkgdir"/etc/pihole/logrotate
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/whitelist.txt
