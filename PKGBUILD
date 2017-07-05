@@ -2,7 +2,7 @@
 
 pkgname=ib-tws
 pkgver=966.1a
-pkgrel=3
+pkgrel=4
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -40,8 +40,8 @@ build() {
   cd ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
-  unzip xf jts4launch-${majorVer}.jar trader/common/images/ibapp_icon_48x48.gif
-  unzip xf jts4launch-${majorVer}.jar trader/common/images/quote_details_48x48.jpg
+  unzip jts4launch-${majorVer}.jar trader/common/images/ibapp_icon_48x48.gif
+  unzip jts4launch-${majorVer}.jar trader/common/images/quote_details_48x48.jpg
   convert trader/common/images/ibapp_icon_48x48.gif ${pkgname}.png
   convert trader/common/images/ibapp_icon_48x48.gif -resize 66.666% ${pkgname}-32x32.png
   convert trader/common/images/ibapp_icon_48x48.gif -resize 33.333% ${pkgname}-16x16.png
