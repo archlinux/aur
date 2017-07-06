@@ -1,0 +1,22 @@
+pkgbase = openstack-guest-agents-unix
+	pkgdesc = This is the Unix Guest Agent for Openstack
+	pkgver = 1.39.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/rackerlabs/openstack-guest-agents-unix
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2-simplejson
+	depends = python2-crypto
+	depends = patchelf
+	depends = python2-xenstore
+	options = !emptydirs
+	source = openstack-guest-agents-unix::git://github.com/rackerlabs/openstack-guest-agents-unix#tag=1.39.1
+	source = default-source.patch
+	md5sums = SKIP
+	md5sums = b23830e3ea12db0b5e9568df02629e7e
+
+pkgname = openstack-guest-agents-unix
+

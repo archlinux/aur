@@ -1,0 +1,13 @@
+diff --git a/lib/agentlib.c b/lib/agentlib.c
+index cced430..9398ca1 100644
+--- a/lib/agentlib.c
++++ b/lib/agentlib.c
+@@ -17,7 +17,7 @@
+  *    under the License.
+  */
+ 
+-#define _BSD_SOURCE
++#define _DEFAULT_SOURCE
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
