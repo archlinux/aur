@@ -1,0 +1,16 @@
+[Unit]
+Description=YP Bind
+Requires=rpcbind.service domainname.service
+After=rpcbind.service domainname.service network.target
+Before=systemd-user-sessions.service
+
+[Service]
+Type=forking
+PIDFile=/run/ypbind.pid
+ExecStart=/usr/bin/ypbind
+# Terrible hack, upstream ypbind should sort something out
+# Wait for at most 10 seconds for a NIS master to become available
+ExecStartPost=/bin/sh -c "for i in 1 2 3 4 5 6 7 8 9 10; do ypwhich && break; sleep 1; done"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+pkgbase = ypbind-mt
+	pkgdesc = Linux NIS daemon
+	pkgver = 1.38
+	pkgrel = 1
+	url = http://www.linux-nis.org/nis/ypbind-mt/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = networkmanager
+	depends = rpcbind
+	depends = openslp
+	depends = yp-tools
+	depends = systemd
+	backup = etc/yp.conf
+	source = http://www.linux-nis.org/download/ypbind-mt/ypbind-mt-1.38.tar.bz2
+	source = ypbind.service
+	md5sums = 094088c0e282fa7f3b3dd6cc51d0a4e1
+	md5sums = 5ea205756731c2978cca4934141424bd
+
+pkgname = ypbind-mt
+
