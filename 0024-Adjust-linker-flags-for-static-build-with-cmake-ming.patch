@@ -1,4 +1,4 @@
-From 1f6fc1094a08c20ac78cc75e6667693676d10907 Mon Sep 17 00:00:00 2001
+From ba3345c986d4d9b43f90b44b143ba515e7795bf9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
 Subject: [PATCH 24/31] Adjust linker flags for static build with
@@ -10,10 +10,10 @@ Change-Id: I33b88976d8f5ce87ce431a6f422fe87785bf5b8d
  1 file changed, 7 insertions(+)
 
 diff --git a/src/corelib/Qt5CoreConfigExtras.cmake.in b/src/corelib/Qt5CoreConfigExtras.cmake.in
-index 42a3c557aa..fd5c947b5f 100644
+index ebe6644dfe..687d611b3f 100644
 --- a/src/corelib/Qt5CoreConfigExtras.cmake.in
 +++ b/src/corelib/Qt5CoreConfigExtras.cmake.in
-@@ -194,3 +194,10 @@ get_filename_component(_Qt5CoreConfigDir ${CMAKE_CURRENT_LIST_FILE} PATH)
+@@ -190,3 +190,10 @@ get_filename_component(_Qt5CoreConfigDir ${CMAKE_CURRENT_LIST_FILE} PATH)
  set(_Qt5CTestMacros \"${_Qt5CoreConfigDir}/Qt5CTestMacros.cmake\")
  
  _qt5_Core_check_file_exists(${_Qt5CTestMacros})
@@ -25,5 +25,5 @@ index 42a3c557aa..fd5c947b5f 100644
 +unset(_isExe)
 +!!ENDIF
 -- 
-2.13.0
+2.13.2
 

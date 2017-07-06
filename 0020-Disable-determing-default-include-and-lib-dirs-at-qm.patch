@@ -1,4 +1,4 @@
-From 7d3b433e7a103e2f26cf183e1d9910b4d33a97ec Mon Sep 17 00:00:00 2001
+From 8dda97434f6aa975741278347f873f479bf856c0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:20:25 +0200
 Subject: [PATCH 20/31] Disable determing default include and lib dirs at qmake
@@ -9,7 +9,7 @@ Subject: [PATCH 20/31] Disable determing default include and lib dirs at qmake
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mkspecs/features/toolchain.prf b/mkspecs/features/toolchain.prf
-index 46a9c5707a..e82383f9ff 100644
+index 34bd8f1d78..9e5f361d16 100644
 --- a/mkspecs/features/toolchain.prf
 +++ b/mkspecs/features/toolchain.prf
 @@ -21,7 +21,7 @@ isEmpty($${target_prefix}.INCDIRS) {
@@ -22,5 +22,5 @@ index 46a9c5707a..e82383f9ff 100644
              cmd_prefix = "LC_ALL=C"
              cmd_suffix = "</dev/null >/dev/null"
 -- 
-2.13.0
+2.13.2
 
