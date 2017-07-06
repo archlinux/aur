@@ -1,0 +1,18 @@
+pkgbase = lib32-libevent
+	pkgdesc = An event notification library
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = http://libevent.org/
+	arch = x86_64
+	license = BSD
+	depends = libevent
+	depends = lib32-openssl
+	source = https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz
+	source = https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz.asc
+	validpgpkeys = B35BF85BF19489D04E28C33C21194EBB165733EA
+	validpgpkeys = 9E3AC83A27974B84D1B3401DB86086848EF8686D
+	sha256sums = 965cc5a8bb46ce4199a47e9b2c9e1cae3b137e8356ffdad6d94d3b9069b71dc2
+	sha256sums = SKIP
+
+pkgname = lib32-libevent
+
