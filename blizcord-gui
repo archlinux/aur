@@ -1,9 +1,9 @@
 #!/bin/bash
 cd /opt/Blizcord
 
-RC=1
+RC=2
 
-while [ $RC -eq 1 ]
+while [ $RC -eq 2 ]
 do
   java -jar Blizcord.exe --disable-update-checker --gui
   RC=$?
