@@ -2,7 +2,7 @@
 
 pkgname=pinegrow
 pkgver=3.01
-pkgrel=2
+pkgrel=3
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
 url="https://pinegrow.com"
@@ -26,8 +26,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/pinegrow"
   mkdir -p "${pkgdir}/usr/share/applications"
 
-  cp -p "./Pinegrow_EULA.pdf" "${pkgdir}/usr/share/pinegrow"
-  cp -pdr "./Pinegrow-${pkgver}" "${pkgdir}/usr/share/pinegrow"
-  ln -fs "${pkgdir}/usr/share/pinegrow/Pinegrow-${pkgver}/Pinegrow.desktop" "${pkgdir}/usr/share/applications/pinegrow.desktop"
-  ln -fs "${pkgdir}/usr/share/pinegrow/Pinegrow-${pkgver}/PinegrowLibrary" "${pkgdir}/usr/bin/pinegrow"
+  cp -p "./Pinegrow_EULA.pdf" "/usr/share/pinegrow"
+  cp -pdr "./Pinegrow-${pkgver}" "/usr/share/pinegrow"
+  ln -fs "/usr/share/pinegrow/Pinegrow-${pkgver}/Pinegrow.desktop" "/usr/share/applications/pinegrow.desktop"
+  ln -fs "/usr/share/pinegrow/Pinegrow-${pkgver}/PinegrowLibrary" "/usr/bin/pinegrow"
 }
