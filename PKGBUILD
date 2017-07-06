@@ -2,7 +2,7 @@
 
 pkgname=ini_file_manager
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ini configuration file reader and manipulator package for Ada."
 
 arch=('i686' 'x86_64')
