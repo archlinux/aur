@@ -3,7 +3,7 @@
 
 pkgname=ahven
 pkgver=2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Ahven is a simple unit test framework for the Ada programming language."
 
 arch=('i686' 'x86_64')
