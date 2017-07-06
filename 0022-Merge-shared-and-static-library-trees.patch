@@ -1,11 +1,9 @@
-From 842da3facc0a4e3269d391b57bd1207a796b8628 Mon Sep 17 00:00:00 2001
+From aacc349ec8e9241ff95678d9730d71805289256b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 22/31] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
-
-Change-Id: Ie60ddbe967cb553d5d92d5a706398a1e7385344a
 ---
  configure.pri                     |  7 +++++++
  mkspecs/features/default_post.prf | 11 +++++++++++
@@ -15,10 +13,10 @@ Change-Id: Ie60ddbe967cb553d5d92d5a706398a1e7385344a
  5 files changed, 47 insertions(+), 6 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index be1b166080..9a5c6cb30d 100644
+index 76bb27e4ae..7dd19be845 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -1181,3 +1181,10 @@ defineTest(createConfigStatus) {
+@@ -1212,3 +1212,10 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -30,7 +28,7 @@ index be1b166080..9a5c6cb30d 100644
 +    QT_CONFIG -= shared
 +}
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index d6caf870f7..7bff3d32ba 100644
+index 7e027325bd..ad0db62b78 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -1,5 +1,16 @@
@@ -51,7 +49,7 @@ index d6caf870f7..7bff3d32ba 100644
  
  !have_target:!force_qt: CONFIG -= qt
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 3ccbbe7061..20b02d5ca9 100644
+index 3ccbbe7061..afaac3dbc4 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
 @@ -255,6 +255,21 @@ for(ever) {
@@ -66,7 +64,7 @@ index 3ccbbe7061..20b02d5ca9 100644
 +            } else:isEqual(MODULE_NAME, QtGui) {
 +                LIBS$$var_sfx += $$QMAKE_LIBS_GUI
 +            } else:isEqual(MODULE_NAME, QtNetwork) {
-+                LIBS$$var_sfx += $$QMAKE_LIBS_NETWORK
++                LIBS$$var_sfx += $$QMAKE_LIBS_NETWORK_STATIC $$QMAKE_LIBS_NETWORK
 +            } else:isEqual(MODULE_NAME, QtDBus) {
 +                LIBS$$var_sfx += $$QMAKE_LIBS_DBUS
 +            } else:isEqual(MODULE_NAME, QtOpenGL) {
@@ -99,10 +97,10 @@ index 51ea3a8321..275e080ae4 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 55e25d596a..990d10a286 100644
+index c7e075b5bc..d61f7b05e5 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3169,6 +3169,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3163,6 +3163,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -112,7 +110,7 @@ index 55e25d596a..990d10a286 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3342,9 +3345,9 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3336,9 +3339,9 @@ MakefileGenerator::writePkgConfigFile()
      t << endl;
  
      // requires
@@ -126,5 +124,5 @@ index 55e25d596a..990d10a286 100644
  
      t << endl;
 -- 
-2.13.0
+2.13.2
 

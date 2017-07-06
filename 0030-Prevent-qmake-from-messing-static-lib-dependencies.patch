@@ -1,4 +1,4 @@
-From 9ef6d62307288a6a1656aee01835b4c368678e55 Mon Sep 17 00:00:00 2001
+From a24b99d6679a8ca39fdaa90e35a4fd4c4e3d60c8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Feb 2017 18:25:28 +0100
 Subject: [PATCH 30/31] Prevent qmake from messing static lib dependencies
@@ -11,10 +11,10 @@ static freetype2 and harfbuzz
  2 files changed, 6 insertions(+)
 
 diff --git a/qmake/generators/unix/unixmake.cpp b/qmake/generators/unix/unixmake.cpp
-index 20318f120c..d113216f55 100644
+index 30f99174f8..154edd67d4 100644
 --- a/qmake/generators/unix/unixmake.cpp
 +++ b/qmake/generators/unix/unixmake.cpp
-@@ -410,6 +410,9 @@ UnixMakefileGenerator::fixLibFlag(const ProString &lib)
+@@ -414,6 +414,9 @@ UnixMakefileGenerator::fixLibFlag(const ProString &lib)
  bool
  UnixMakefileGenerator::findLibraries(bool linkPrl, bool mergeLflags)
  {
@@ -25,7 +25,7 @@ index 20318f120c..d113216f55 100644
      int libidx = 0, fwidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index d9388e8518..090c576bc6 100644
+index 2e6d5d94a9..a8320bae09 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -87,6 +87,9 @@ Win32MakefileGenerator::findLibraries(bool linkPrl, bool mergeLflags)
@@ -39,5 +39,5 @@ index d9388e8518..090c576bc6 100644
    static const char * const lflags[] = { "QMAKE_LIBS", "QMAKE_LIBS_PRIVATE", 0 };
    for (int i = 0; lflags[i]; i++) {
 -- 
-2.13.0
+2.13.2
 

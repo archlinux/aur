@@ -1,4 +1,4 @@
-From 7a6384756287b07c0e3a6e18ed07414a7672feee Mon Sep 17 00:00:00 2001
+From 76a624154113a86a11459b3c331e23a14ec5b255 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
 Subject: [PATCH 03/31] Use external ANGLE library
@@ -66,7 +66,7 @@ index 718a886809..89965709ed 100644
  HEADERS += qgl.h \
             qgl_p.h \
 diff --git a/src/plugins/platforms/windows/windows.pri b/src/plugins/platforms/windows/windows.pri
-index 73677311f5..05a1dc2e6e 100644
+index 6d01d05fcc..181ac2cb3b 100644
 --- a/src/plugins/platforms/windows/windows.pri
 +++ b/src/plugins/platforms/windows/windows.pri
 @@ -4,6 +4,7 @@ LIBS += -lole32 -luser32 -lwinspool -limm32 -lwinmm -loleaut32
@@ -93,5 +93,5 @@ index 43fc06f2e5..4188d4ea6b 100644
          SUBDIRS += src_3rdparty_libpng
          src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.13.0
+2.13.2
 
