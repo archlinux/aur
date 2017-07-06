@@ -1,7 +1,7 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=sealcrypto
 
-pkgver=2.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Simple Encrypted Arithmetic Library'
 arch=('x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  git checkout f91ae940
+  git checkout v2.2-1
   cd SEAL
   autoreconf -i || true
   bash configure

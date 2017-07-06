@@ -1,6 +1,6 @@
 pkgbase = sealcrypto
 	pkgdesc = Simple Encrypted Arithmetic Library
-	pkgver = 2.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://sealcrypto.codeplex.com/
 	arch = x86_64
