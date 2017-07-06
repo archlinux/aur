@@ -1,15 +1,15 @@
 pkgbase = rtl8812au-v5-dkms-git
-	pkgdesc = rtl8812AU Chipset driver
+	pkgdesc = rtl8812AU chipset driver with firmware v5.1.5
 	pkgver = 5.1.5
-	pkgrel = 3
-	url = https://github.com/uminokoe/rtl8812AU/tree/driver-5.1.5
+	pkgrel = 4
+	url = https://github.com/zebulon2/rtl8812au/tree/v5.1.5
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = dkms
 	conflicts = rtl8812au-v5
-	source = git+https://github.com/uminokoe/rtl8812AU.git#branch=driver-5.1.5
+	source = git+https://github.com/zebulon2/rtl8812au.git
 	source = dkms.conf
 	md5sums = SKIP
 	md5sums = SKIP
