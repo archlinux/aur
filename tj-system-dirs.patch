@@ -1,0 +1,43 @@
+From af46d6b1a731a3e2c3dc7aedcaf8dfe8291a4ab7 Mon Sep 17 00:00:00 2001
+From: Maxime Gauduin <alucryd@gmail.com>
+Date: Wed, 25 Sep 2013 10:42:57 +0200
+Subject: [PATCH] Look for data and manual in system dirs
+
+Signed-off-by: Maxime Gauduin <alucryd@gmail.com>
+---
+ lib/taskjuggler/AppConfig.rb   | 2 ++
+ lib/taskjuggler/apps/Tj3Man.rb | 5 ++---
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/lib/taskjuggler/AppConfig.rb b/lib/taskjuggler/AppConfig.rb
+index 11a214b..2051a17 100644
+--- a/lib/taskjuggler/AppConfig.rb
++++ b/lib/taskjuggler/AppConfig.rb
+@@ -137,6 +137,8 @@ class AppConfig
+     # This one is for Debian based distros
+     dirs << rubyLibDir + '/gems/' \
+         + @@packageName + '-' + @@version + "/#{baseDir}/"
++    # Also look in system share directory
++    dirs << '/usr/share/' + @@packageName + "/#{baseDir}/"
+ 
+     dirs
+   end
+diff --git a/lib/taskjuggler/apps/Tj3Man.rb b/lib/taskjuggler/apps/Tj3Man.rb
+index 6337dcd..a51f7eb 100644
+--- a/lib/taskjuggler/apps/Tj3Man.rb
++++ b/lib/taskjuggler/apps/Tj3Man.rb
+@@ -105,9 +105,8 @@ EOT
+     # Start the web browser with either the entry page or the page for the
+     # specified keyword.
+     def startBrowser(keyword = nil)
+-      # Find the manual relative to this file.
+-      manualDir = File.join(File.dirname(__FILE__), '..', '..', '..',
+-                            'manual', 'html')
++      # Find the manual in system doc directory.
++      manualDir = '/usr/share/doc/taskjuggler/html'
+       file = "#{manualDir}/#{keyword || 'index'}.html"
+       # Make sure the file exists.
+       unless File.exists?(file)
+-- 
+1.8.4
+

@@ -1,0 +1,150 @@
+From 6202972e46c95b6e2db6a8deab6e18eb3b3fa3cc Mon Sep 17 00:00:00 2001
+From: Chris Schlaeger <chris@linux.com>
+Date: Tue, 31 Dec 2013 13:37:44 +0100
+Subject: [PATCH] New: Ruby 2.1 compatibility fixes
+
+---
+ lib/taskjuggler/AppConfig.rb           | 2 +-
+ lib/taskjuggler/SheetHandlerBase.rb    | 2 +-
+ lib/taskjuggler/StatusSheetSender.rb   | 4 ++--
+ lib/taskjuggler/TaskJuggler.rb         | 2 +-
+ lib/taskjuggler/TimeSheetSummary.rb    | 2 +-
+ lib/taskjuggler/apps/Tj3Man.rb         | 2 +-
+ lib/taskjuggler/reports/Report.rb      | 6 +++---
+ lib/taskjuggler/reports/TraceReport.rb | 2 +-
+ 8 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/lib/taskjuggler/AppConfig.rb b/lib/taskjuggler/AppConfig.rb
+index 11a214b..eb49ca3 100644
+--- a/lib/taskjuggler/AppConfig.rb
++++ b/lib/taskjuggler/AppConfig.rb
+@@ -109,7 +109,7 @@ class AppConfig
+     dirs = dataSearchDirs(baseDir)
+     # Remove non-existing directories from the list again
+     dirs.delete_if do |dir|
+-      !File.exists?(dir.untaint)
++      !File.exist?(dir.untaint)
+     end
+     dirs
+   end
+diff --git a/lib/taskjuggler/SheetHandlerBase.rb b/lib/taskjuggler/SheetHandlerBase.rb
+index 723c4a1..ed08564 100644
+--- a/lib/taskjuggler/SheetHandlerBase.rb
++++ b/lib/taskjuggler/SheetHandlerBase.rb
+@@ -246,7 +246,7 @@ class TaskJuggler
+       auxSrcDir = AppConfig.dataDirs('data/css')[0]
+       cssFileName = (auxSrcDir ? auxSrcDir + '/tjreport.css' : '')
+       # Raise an error if we haven't found the data directory
+-      if auxSrcDir.nil? || !File.exists?(cssFileName)
++      if auxSrcDir.nil? || !File.exist?(cssFileName)
+         dataDirError(cssFileName)
+       end
+       cssFile = IO.read(cssFileName)
+diff --git a/lib/taskjuggler/StatusSheetSender.rb b/lib/taskjuggler/StatusSheetSender.rb
+index 3219521..68a443a 100644
+--- a/lib/taskjuggler/StatusSheetSender.rb
++++ b/lib/taskjuggler/StatusSheetSender.rb
+@@ -94,7 +94,7 @@ EOT
+ 
+       missingFile = "#{tsDir}/missing-reports"
+       # Check if it's got a missing-reports file.
+-      return [] if !File.exists?(missingFile)
++      return [] if !File.exist?(missingFile)
+ 
+       # The sheet could have been submitted after tj3ts_summary was run. We
+       # ignore the entry if a time sheet file now exists. There is a race
+@@ -106,7 +106,7 @@ EOT
+       list = File.readlines(missingFile)
+       list.delete_if do |resource|
+         tsDate = tsDir[-10..-1]
+-        File.exists?("#{tsDir}/#{resource.chomp}_#{tsDate}.tji")
++        File.exist?("#{tsDir}/#{resource.chomp}_#{tsDate}.tji")
+       end
+ 
+       # Return the content of the file.
+diff --git a/lib/taskjuggler/TaskJuggler.rb b/lib/taskjuggler/TaskJuggler.rb
+index 1a635c0..80dfca4 100644
+--- a/lib/taskjuggler/TaskJuggler.rb
++++ b/lib/taskjuggler/TaskJuggler.rb
+@@ -232,7 +232,7 @@ class TaskJuggler
+       bookingsFileBase = masterFileBase + '-bookings'
+       bookingsFile = bookingsFileBase + '.tji'
+ 
+-      if !File.exists?(bookingsFile) || !File.exists?(headerFile)
++      if !File.exist?(bookingsFile) || !File.exist?(headerFile)
+         info('incl_freeze_files',
+              "Please make sure you include #{headerFile} at " +
+              "the end of the project header and " +
+diff --git a/lib/taskjuggler/TimeSheetSummary.rb b/lib/taskjuggler/TimeSheetSummary.rb
+index b3f5758..8105df9 100644
+--- a/lib/taskjuggler/TimeSheetSummary.rb
++++ b/lib/taskjuggler/TimeSheetSummary.rb
+@@ -78,7 +78,7 @@ EOT
+         templateFile = "#{@templateDir}/#{@date}/#{resourceId}_#{@date}.tji"
+         sheetFile = "#{@sheetDir}/#{@date}/#{resourceId}_#{@date}.tji"
+         if File.exist?(templateFile)
+-          if File.exists?(sheetFile)
++          if File.exist?(sheetFile)
+             # If there are no recipients specified, we don't need to compile
+             # the summary.
+             unless @digestRecipients.empty? && @sheetRecipients.empty?
+diff --git a/lib/taskjuggler/apps/Tj3Man.rb b/lib/taskjuggler/apps/Tj3Man.rb
+index 6337dcd..6ab9312 100644
+--- a/lib/taskjuggler/apps/Tj3Man.rb
++++ b/lib/taskjuggler/apps/Tj3Man.rb
+@@ -110,7 +110,7 @@ EOT
+                             'manual', 'html')
+       file = "#{manualDir}/#{keyword || 'index'}.html"
+       # Make sure the file exists.
+-      unless File.exists?(file)
++      unless File.exist?(file)
+         $stderr.puts "Cannot open manual file #{file}"
+         exit 1
+       end
+diff --git a/lib/taskjuggler/reports/Report.rb b/lib/taskjuggler/reports/Report.rb
+index 5e18065..5105fa8 100644
+--- a/lib/taskjuggler/reports/Report.rb
++++ b/lib/taskjuggler/reports/Report.rb
+@@ -187,7 +187,7 @@ class TaskJuggler
+         auxSrcDir = AppConfig.dataDirs('data/css')[0]
+         cssFileName = (auxSrcDir ? auxSrcDir + '/tjreport.css' : '')
+         # Raise an error if we haven't found the data directory
+-        if auxSrcDir.nil? || !File.exists?(cssFileName)
++        if auxSrcDir.nil? || !File.exist?(cssFileName)
+           dataDirError(cssFileName, AppConfig.dataSearchDirs('data/css'))
+         end
+         cssFile = IO.read(cssFileName)
+@@ -403,7 +403,7 @@ EOT
+       # Find the data directory that came with the TaskJuggler installation.
+       auxSrcDir = AppConfig.dataDirs("data/#{dirName}")[0].untaint
+       # Raise an error if we haven't found the data directory
+-      if auxSrcDir.nil? || !File.exists?(auxSrcDir)
++      if auxSrcDir.nil? || !File.exist?(auxSrcDir)
+         dataDirError(dirName, AppConfig.dataSearchDirs("data/#{dirName}"))
+       end
+       # Don't copy directory if all files are up-to-date.
+@@ -419,7 +419,7 @@ EOT
+     end
+ 
+     def directoryUpToDate?(auxSrcDir, auxDstDir)
+-      return false unless File.exists?(auxDstDir.untaint)
++      return false unless File.exist?(auxDstDir.untaint)
+ 
+       Dir.entries(auxSrcDir).each do |file|
+         next if file == '.' || file == '..'
+diff --git a/lib/taskjuggler/reports/TraceReport.rb b/lib/taskjuggler/reports/TraceReport.rb
+index 26a74d9..ce7c425 100644
+--- a/lib/taskjuggler/reports/TraceReport.rb
++++ b/lib/taskjuggler/reports/TraceReport.rb
+@@ -86,7 +86,7 @@ class TaskJuggler
+                 generatePropertyListHeader(taskList, query)
+ 
+       discontinuedColumns = 0
+-      if File.exists?(@fileName)
++      if File.exist?(@fileName)
+         begin
+           @table = CSVFile.new(nil, nil).read(@fileName)
+         rescue
+-- 
+1.8.5.2
+

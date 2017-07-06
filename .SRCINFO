@@ -1,0 +1,19 @@
+pkgbase = taskjuggler3
+	pkgdesc = Project Management Software
+	pkgver = 3.5.0
+	pkgrel = 13
+	url = http://www.taskjuggler.org
+	arch = any
+	license = GPL
+	depends = ruby-mail
+	depends = ruby-term-ansicolor
+	noextract = taskjuggler-3.5.0.gem
+	source = http://rubygems.org/downloads/taskjuggler-3.5.0.gem
+	source = tj-ruby2.1.patch
+	source = tj-system-dirs.patch
+	sha256sums = 42f2e81470be9b2486fc074ba6ff04180258f462fed5c46cba871b7518cd0465
+	sha256sums = e59b510acd1d176ef384101b7eba541713775c8da06c503b48020e8726f8629c
+	sha256sums = 973f9b2d538e5caf7f05bccfe8c16cafba2222703315ab7ee7569738063eea6c
+
+pkgname = taskjuggler3
+
