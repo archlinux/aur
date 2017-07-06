@@ -3,7 +3,7 @@
 
 pkgname=libgpr
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Ada library to handle GPRbuild project files"
 
 arch=('i686' 'x86_64')
