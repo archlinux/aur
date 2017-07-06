@@ -1,0 +1,23 @@
+pkgbase = xmind
+	pkgdesc = Brainstorming and Mind Mapping Software
+	pkgver = 3.6.51
+	pkgrel = 1
+	url = http://www.xmind.net
+	arch = i686
+	arch = x86_64
+	license = EPL
+	license = LGPL
+	depends = desktop-file-utils
+	depends = fontconfig
+	depends = libxrender
+	depends = java-runtime
+	depends = shared-mime-info
+	depends = libxext
+	optdepends = lame: needed for the feature audio notes
+	source_i686 = http://www.xmind.net/xmind/downloads/xmind-7.5-update1-linux_i386.deb
+	sha512sums_i686 = 27b5b1eea2f5b2b085aa0ebbcb046e0aa8f146ec4619fc3b9c926021a93cd840fea0a8242975d96eabb0f5aaab95156624d6f369074dbf5f0af52d0eca07f3f4
+	source_x86_64 = http://www.xmind.net/xmind/downloads/xmind-7.5-update1-linux_amd64.deb
+	sha512sums_x86_64 = 899c30e654396f2fea6b5e4218edddfed73729b6c733726a8a5c0c0b873f8cfd5e417e7cacdffaff25a18823458921e1d994faca6bc6cdcc0733c9a1487c7dc1
+
+pkgname = xmind
+
