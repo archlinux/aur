@@ -9,7 +9,7 @@
 
 _qt_module=qtwinextras
 pkgname="mingw-w64-qt5-winextras"
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('any')
 pkgdesc="Classes and functions that enable you to use Windows-specific functions (mingw-w64)"
@@ -22,8 +22,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-condition-for-_WIN32_IE-SHCreateItemFromParsingN.patch')
-sha256sums=('7280ae2a5d7cb563f23c48b5f8c37e340ce63950c6ab9f8fdf95072b3137b08b'
-            '6af1bdabab3ea822c398082abd32c0749ab4a1ef9a56eece75ca19c4e5c8d546')
+sha256sums=('1acc9ebd85146c75ae8dde20dcf5ffadd04da5d998a452eba055bce10849eef4'
+            '5617949df83ce9f378d1043bb8823b0003e8e31ec65b4948b305d59424e42285')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -31,7 +31,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"

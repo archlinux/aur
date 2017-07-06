@@ -1,4 +1,4 @@
-From f00d75eaf8c61607543563d50630bf8084bf936d Mon Sep 17 00:00:00 2001
+From 91fb69ece1a43dd153ba17b11e08c01b19fe5313 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 9 Feb 2017 01:07:46 +0100
 Subject: [PATCH] Fix condition for _WIN32_IE/SHCreateItemFromParsingName
@@ -8,7 +8,7 @@ Subject: [PATCH] Fix condition for _WIN32_IE/SHCreateItemFromParsingName
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/winextras/qwinjumplist.cpp b/src/winextras/qwinjumplist.cpp
-index 9274cc5..962481e 100644
+index 12fa2e5..94b8e81 100644
 --- a/src/winextras/qwinjumplist.cpp
 +++ b/src/winextras/qwinjumplist.cpp
 @@ -41,7 +41,7 @@
@@ -21,5 +21,5 @@ index 9274cc5..962481e 100644
  #  endif
  #  ifndef _WIN32_IE
 -- 
-2.11.1
+2.13.2
 
