@@ -1,8 +1,8 @@
 # Maintainer: Engine Feeder <enginefeeder101@archlinux.info>
 pkgname=getxbook
 pkgver=1.2
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="getxbook is a collection of tools to download books from Google Books' \"Book Preview\" (getgbook), Amazon's \"Look Inside the Book\" (getabook) and Barnes & Noble's \"Book Viewer\" (getbnbook)."
 arch=('x86_64')
 url="https://njw.me.uk/getxbook/"
 license=('custom:ISC')
