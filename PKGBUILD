@@ -6,8 +6,12 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=233
-pkgrel=7
+# latest commit on stable branch
+_commit='27c7bc970d9e7ffe060688a8dd77b7747503a564'
+# Bump this to latest major release for signed tag verification,
+# the commit count is handled by pkgver() function.
+pkgver=233.75
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
@@ -19,7 +23,8 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
 options=('strip')
 # Retrieve the splash-arch.bmp image from systemd package sources, as this
 # file is too big to fit in the AUR.
-source=("git+https://github.com/systemd/systemd.git#tag=v$pkgver"
+source=("git+https://github.com/systemd/systemd-stable.git#commit=${_commit}"
+        'git+https://github.com/systemd/systemd.git' # pull in for tags
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -32,6 +37,7 @@ source=("git+https://github.com/systemd/systemd.git#tag=v$pkgver"
         'systemd-tmpfiles.hook'
         'systemd-update.hook')
 sha512sums=('SKIP'
+            'SKIP'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             '691acebb243b9cd7fb63272662f34bdb9aead710c69aee9361ab2322f9f108600ad5b0214fc00b7cb2d9c95db8abd748030625d60d6567efd98663c56ba28c65'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
@@ -54,14 +60,19 @@ _backports=(
   '2c7ef56459bf6fe7761595585aa4eed5cd183f27^..2c7ef56459bf6fe7761595585aa4eed5cd183f27^2'
   # networkd: RFC compliant autonomous prefix handling (#5636)
   '6554550f35a7976f9110aff94743d3576d5f02dd'
-  # shared: fix keyring handling in ask-password-api
-  '2c390a919055af01b3ab6cce6dd0f97fb4784460'
-  # resolved: bugfix of null pointer p->question dereferencing (#6020) (CVE-2017-9217)
-  'a924f43f30f9c4acaf70618dd2a055f8b0f166be'
+  # core: do not print color console message about gc-ed jobs
+  '047d7219fde661698d3487fc49e9878c61eefd77'
+)
+
+_reverts=(
+  # core: store the invocation ID in the per-service keyring
+  'b3415f5daef49642be3d5f417b8880c078420ff7'
+  # core: run each system service with a fresh session keyring
+  '74dd6b515fa968c5710b396a7664cac335e25ca8'
 )
 
 _validate_tag() {
-  local success fingerprint trusted status tag=v$pkgver
+  local success fingerprint trusted status tag=v${pkgver%.*}
 
   parse_gpg_statusfile /dev/stdin < <(git verify-tag --raw "$tag" 2>&1)
 
@@ -87,8 +98,21 @@ _validate_tag() {
   return 0
 }
 
+pkgver() {
+  local version count
+
+  cd "${pkgbase/-selinux}-stable"
+
+  version="$(git describe --abbrev=0 --tags)"
+  count="$(git rev-list --count ${version}..)"
+  printf '%s.%s' "${version#v}" "${count}"
+}
+
 prepare() {
-  cd "${pkgbase/-selinux}"
+  cd "${pkgbase/-selinux}-stable"
+  
+  git remote add upstream ../systemd/
+  git fetch --all
 
   _validate_tag || return
 
@@ -96,10 +120,13 @@ prepare() {
   for _commit in "${_backports[@]}"; do
     git cherry-pick -n "$_commit"
   done
+  for _commit in "${_reverts[@]}"; do
+    git revert -n "$_commit"
+  done
 
   # nss-resolve: drop the internal fallback to libnss_dns
-  git show 5486a31d287f26bcd7c0a4eb2abfa4c074b985f1 -- \
-    Makefile.am src/nss-resolve/nss-resolve.c | git apply --index
+  git show '5486a31d287f26bcd7c0a4eb2abfa4c074b985f1' -- \
+    'Makefile.am' 'src/nss-resolve/nss-resolve.c' | git apply --index
   
   # Resolved packet size (#6214) (FS#54619, CVE-2017-9445)
   git show '751ca3f1de316ca79b60001334dbdf54077e1d01' \
@@ -112,7 +139,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgbase/-selinux}"
+  cd "${pkgbase/-selinux}-stable"
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
@@ -146,15 +173,14 @@ build() {
 package_systemd-selinux() {
   pkgdesc="system and service manager with SELinux support"
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+  depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd-selinux' 'libidn' 'lz4' 'pam-selinux' 'libelf' 'libseccomp'
            'util-linux-selinux' 'xz' 'audit')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('nss-myhostname' 'systemd-tools' 'udev'
              "${pkgname/-selinux}" 'selinux-systemd')
-  optdepends=('cryptsetup: required for encrypted block devices'
-              'libmicrohttpd: remote journald capabilities'
+  optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user')
@@ -171,14 +197,15 @@ package_systemd-selinux() {
           etc/udev/udev.conf)
   install="systemd.install"
 
-  make -C "${pkgbase/-selinux}" DESTDIR="$pkgdir" install
+  make -C "${pkgbase/-selinux}-stable" DESTDIR="$pkgdir" install
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
   rm -r "$pkgdir/etc/systemd/system/"*.wants
+  rm -r "$pkgdir/etc/systemd/system/"*.service
 
   # add back tmpfiles.d/legacy.conf
-  install -m644 "${pkgbase/-selinux}/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
+  install -m644 "${pkgbase/-selinux}-stable/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
 
   # Replace dialout/tape/cdrom group in rules with uucp/storage/optical group
   sed -i 's#GROUP="dialout"#GROUP="uucp"#g;
@@ -239,7 +266,7 @@ package_libsystemd-selinux() {
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=("${pkgname/-selinux}")
 
-  make -C "${pkgbase/-selinux}" DESTDIR="$pkgdir" install-rootlibLTLIBRARIES
+  make -C "${pkgbase/-selinux}-stable" DESTDIR="$pkgdir" install-rootlibLTLIBRARIES
 }
 
 package_systemd-sysvcompat-selinux() {
@@ -252,7 +279,7 @@ package_systemd-sysvcompat-selinux() {
 
   install -dm755 "$pkgdir"/usr/share/man/man8
   cp -d --no-preserve=ownership,timestamp \
-    "${pkgbase/-selinux}"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
+    "${pkgbase/-selinux}-stable"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
     "$pkgdir"/usr/share/man/man8
 
   install -dm755 "$pkgdir/usr/bin"
