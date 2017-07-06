@@ -2,7 +2,7 @@
 
 pkgname=adacurses
 pkgver=20170415
-pkgrel=1
+pkgrel=2
 pkgdesc="An Ada binding to the 'ncurses' C library."
 
 arch=('i686' 'x86_64')
