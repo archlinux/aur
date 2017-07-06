@@ -2,7 +2,7 @@
 
 pkgname=polyorb
 pkgver=252702
-pkgrel=1
+pkgrel=2
 pkgdesc="PolyOrb provides the Distributed Systems Annex (DSA) to build distributed applications with Ada."
 
 arch=('i686' 'x86_64')
