@@ -1,6 +1,6 @@
 # Maintainer: Clar Charr <clar@charr.xyz>
 pkgname=swc-hosts
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Safely parse /etc/hosts from Someone Who Cares."
 arch=(i686 x86_64)
