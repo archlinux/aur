@@ -108,7 +108,7 @@ if [ "${_opt_SSL}" -ne 0 ]; then
   depends+=('openssl')
 fi
 makedepends=('awk' 'sed' 'diffutils' 'patch')
-conflicts=('dgrp') # running together with dgrp eventually jams up trueport
+#conflicts=('dgrp') # running together with dgrp eventually jams up trueport
 backup=(etc/trueport/{config.tp,pktfwdcfg.tp,sslcfg.tp})
 options=('!docs' '!emptydirs' '!strip')
 install="${pkgname}-install.sh"
@@ -166,7 +166,7 @@ prepare() {
   sed -e 's:\( fixed_ttyname,"\)px\(" \):'"\1${_opt_masterttypfx}\2:g" \
       -e 's:\( slave_ttyname, "/dev/\%s\%04d","\)tx\(",\):'"\1${_opt_slavettypfx}\2:g" \
     -i 'trueportd.c'
-  sed -e 's:^\(FORMAT\)=tx:'"\1=${_opt_slavettypfx}:g" 'addports'
+  sed -e 's:^\(FORMAT\)=tx:'"\1=${_opt_slavettypfx}:g" -i 'addports'
   sed -e 's:^\(FULLTTYNAME\="\)tx:'"\1${_opt_slavettypfx}:g" \
       -e 's:\(grep "\)tx:'"\1${_opt_slavettypfx}:g" \
     -i 'tplogin'
@@ -203,9 +203,7 @@ package() {
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
     local _kernelversionsmall="$(uname -r)"
     _kernelversionsmall="${_kernelversionsmall%%-*}"
-    if [ "${_kernelversionsmall%\.0\.0}" != "${_kernelversionsmall}" ]; then # trim 4.0.0 -> 4.0
-      _kernelversionsmall="${_kernelversionsmall%\.0}"
-    fi
+    _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
     eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
