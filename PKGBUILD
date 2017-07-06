@@ -50,23 +50,23 @@ optdepends=(
 )
 
 prepare() {
-    msg2 "!> Vigtigt: Det er nødvendigt at importere"
-    msg2 "!>   PGP nøgle for 'Mozilla Sofware Releases' <release@mozilla.com>"
-    msg2 "!> Mere information kan findes her:"
-    msg2 "!>   <https://wiki.archlinux.org/index.php/GnuPG#Import_a_public_key>"
-    msg2 "!> $ gpg --keyserver pgp.mit.edu --recv-keys D98F0353"
+    msg "!> Vigtigt: Det er nødvendigt at importere"
+    msg "!>   PGP nøgle for 'Mozilla Sofware Releases' <release@mozilla.com>"
+    msg "!> Mere information kan findes her:"
+    msg "!>   <https://wiki.archlinux.org/index.php/GnuPG#Import_a_public_key>"
+    msg "!> $ gpg --keyserver pgp.mit.edu --recv-keys D98F0353"
 
     # Check if hash of the source archive matches the one provided by Mozilla (which was signed with GPG).
     _checksum=`grep "linux-x86_64/$_lang/firefox-$pkgver.tar.bz2" $srcdir/SHA512SUMS | cut -f1 -d " "`
     _actual=`sha512sum $srcdir/firefox-$pkgver.tar.bz2 | cut -f1 -d " "`
 
-    msg2 "!> Checking integrity of firefox-$pkgver.tar.bz2"
+    msg "!> Checking integrity of firefox-$pkgver.tar.bz2"
 
     if [[ $_checksum == $_actual ]];
     then
-        msg2 "!> Integrity verified successfully."
+        msg "!> Integrity verified successfully."
     else
-        msg2 "!> Integrity verification failed!"
+        msg "!> Integrity verification failed!"
         exit 1
     fi
 }
