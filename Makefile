@@ -4,7 +4,7 @@
 
 PHOHY = clean release
 
-BASEURL:=http://storage.googleapis.com/kubernetes-release/release
+BASEURL:=https://storage.googleapis.com/kubernetes-release/release
 
 
 check:
@@ -18,8 +18,8 @@ endif
 
 prepare: check
 	@mkdir -p tmp
-	@curl -s ${BASEURL}/v${VERSION}/bin/linux/amd64/kubectl > tmp/kubectl_amd64
-	@curl -s ${BASEURL}/v${VERSION}/bin/linux/386/kubectl > tmp/kubectl_386
+	curl -s ${BASEURL}/v${VERSION}/bin/linux/amd64/kubectl > tmp/kubectl_amd64
+	curl -s ${BASEURL}/v${VERSION}/bin/linux/386/kubectl > tmp/kubectl_386
 
 release: prepare
 	set -e; \
