@@ -21,7 +21,7 @@ pre_upgrade() {
 
 post_upgrade() {
  systemctl daemon-reload
- post_install
+ systemctl start devolonetsvc.service
 }
 
 

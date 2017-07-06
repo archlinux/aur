@@ -4,7 +4,7 @@
 
 pkgname=devolo-dlan-cockpit
 pkgver=4.3.3
-pkgrel=1
+pkgrel=2
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('i686' 'x86_64')
