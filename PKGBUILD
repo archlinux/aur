@@ -9,7 +9,7 @@
 
 _qt_module=qt3d
 pkgname="mingw-w64-qt5-3d"
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9efbef578afb31556a20baccf70137858b975c38cad60ca4d6b163bd35381ba9')
+sha256sums=('4f1fe5b812d78987341b854e7f2907f0375dc188cfa6cf9db101b26e9dfd4996')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -29,7 +29,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
