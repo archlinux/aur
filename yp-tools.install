@@ -1,0 +1,5 @@
+post_upgrade() {
+	if [ "$(vercmp 2.14-2 "$2")" -eq 1 ]; then
+		printf '===> Configure your NIS domain name in /etc/nisdomainname\n'
+	fi
+}
