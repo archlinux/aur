@@ -1,15 +1,15 @@
 # Maintainer: louipc base64:TG91aSBDaGFuZyA8bG91aXBjLmlzdEBnbWFpbC5jb20+
 
 pkgname=turses-git
-pkgver=778.f0952f9
+pkgver=780.b9992b7
 pkgrel=1
 pkgdesc="ncurses Twitter client"
 arch=('any')
-url="https://github.com/dialelo/turses"
+url="https://github.com/louipc/turses"
 license=('GPLv3')
 depends=('ncurses' 'python' 'python-future' 'python-setuptools' 'python-tweepy' 'python-urwid')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/dialelo/turses.git")
+source=("$pkgname::git+https://github.com/louipc/turses.git")
 sha1sums=('SKIP')
 
 pkgver() {
