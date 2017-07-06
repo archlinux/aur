@@ -1,4 +1,4 @@
-From 7ccfcf6a364c00f5ec0204b4614ae78dd2296c0e Mon Sep 17 00:00:00 2001
+From 049d164d606149cb8b7052dfa8fd67c55e135fa8 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 21/31] Use *.dll.a as import lib extension
@@ -27,7 +27,7 @@ index 146e83ae67..15fc070008 100644
      } else {
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}d.lib
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index b6b8dda397..d9388e8518 100644
+index 737f3abc3a..2e6d5d94a9 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -80,10 +80,14 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
@@ -49,7 +49,7 @@ index b6b8dda397..d9388e8518 100644
    static const char * const lflags[] = { "QMAKE_LIBS", "QMAKE_LIBS_PRIVATE", 0 };
    for (int i = 0; lflags[i]; i++) {
      ProStringList &l = project->values(lflags[i]);
-@@ -231,9 +235,12 @@ void Win32MakefileGenerator::fixTargetExt()
+@@ -234,9 +238,12 @@ void Win32MakefileGenerator::fixTargetExt()
      if (!project->values("QMAKE_APP_FLAG").isEmpty()) {
          project->values("TARGET_EXT").append(".exe");
      } else if (project->isActiveConfig("shared")) {
@@ -64,5 +64,5 @@ index b6b8dda397..d9388e8518 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.13.0
+2.13.2
 

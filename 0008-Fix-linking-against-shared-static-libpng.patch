@@ -1,4 +1,4 @@
-From 4fb07cf7290b97694586f3f30489165f114ca439 Mon Sep 17 00:00:00 2001
+From dcc3c951ab71f84f0cc32ffd75ac375b56de1e1a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 26 Jan 2017 17:51:31 +0100
 Subject: [PATCH 08/31] Fix linking against shared/static libpng
@@ -9,10 +9,10 @@ Change-Id: Ic7a0ec9544059b8e647a5d0186f1b88c00911dcf
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index 73e59a7ad9..6dee7d18aa 100644
+index 2fb03a452a..3f07fba4d5 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
-@@ -162,7 +162,8 @@
+@@ -176,7 +176,8 @@
              "sources": [
                  { "type": "pkgConfig", "args": "libpng" },
                  { "libs": "-llibpng", "condition": "config.msvc" },
@@ -23,5 +23,5 @@ index 73e59a7ad9..6dee7d18aa 100644
              "use": [
                  { "lib": "zlib", "condition": "features.system-zlib" }
 -- 
-2.13.0
+2.13.2
 

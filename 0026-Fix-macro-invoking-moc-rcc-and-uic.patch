@@ -1,4 +1,4 @@
-From 27d8249c25041e18ae3168a733d34208b42f436d Mon Sep 17 00:00:00 2001
+From 71b84a64a7f28891ba493d1e8bfd079dfb635bac Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
 Subject: [PATCH 26/31] Fix macro invoking moc, rcc and uic
@@ -70,5 +70,5 @@ index f5e7b7f050..18d120f0c7 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          list(APPEND ${outfiles} ${outfile})
 -- 
-2.13.0
+2.13.2
 

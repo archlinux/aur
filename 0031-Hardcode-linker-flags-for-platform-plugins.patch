@@ -1,4 +1,4 @@
-From 7f5e0ffbc26a67ba4bc3c0868fdd492641846a23 Mon Sep 17 00:00:00 2001
+From 738bee43dfef8244cd811c293a90c43b58c2ab20 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
 Subject: [PATCH 31/31] Hardcode linker flags for platform plugins
@@ -15,7 +15,7 @@ Change-Id: I594ddcc15599c63bb8ac5e998f59c4561a18eb26
  3 files changed, 40 insertions(+), 8 deletions(-)
 
 diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
-index 8cfb68824e..c3fd4c73f2 100644
+index 8cfb68824e..46834a71fc 100644
 --- a/src/plugins/platforms/minimal/minimal.pro
 +++ b/src/plugins/platforms/minimal/minimal.pro
 @@ -1,8 +1,19 @@
@@ -34,14 +34,14 @@ index 8cfb68824e..c3fd4c73f2 100644
 +    -lfreetype -lole32 -lgdi32 -luuid
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/5.9.0 \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/5.9.0
++    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}
 +
  
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/offscreen/offscreen.pro b/src/plugins/platforms/offscreen/offscreen.pro
-index 6652cefd86..03c30f4a96 100644
+index 6652cefd86..a322b17cc5 100644
 --- a/src/plugins/platforms/offscreen/offscreen.pro
 +++ b/src/plugins/platforms/offscreen/offscreen.pro
 @@ -1,8 +1,18 @@
@@ -60,13 +60,13 @@ index 6652cefd86..03c30f4a96 100644
 +    -lfreetype -lole32 -lgdi32 -luuid
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/5.9.0 \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/5.9.0
++    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION}
  
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/windows/windows.pro b/src/plugins/platforms/windows/windows.pro
-index 23168c10dc..07d0f16a88 100644
+index 23168c10dc..eb4af726ca 100644
 --- a/src/plugins/platforms/windows/windows.pro
 +++ b/src/plugins/platforms/windows/windows.pro
 @@ -1,11 +1,22 @@
@@ -89,13 +89,13 @@ index 23168c10dc..07d0f16a88 100644
 +    -lfreetype -lole32 -lgdi32 -ldwmapi
 +# However, this workaround leads to the necessity of specifying include dirs manually
 +INCLUDEPATH += \
-+    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/5.9.0 \
-+    $$QT_SOURCE_TREE/include/QtAccessibilitySupport/5.9.0 \
-+    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/5.9.0 \
-+    $$QT_SOURCE_TREE/include/QtThemeSupport/5.9.0
++    $$QT_SOURCE_TREE/include/QtEventDispatcherSupport/$${QT_VERSION} \
++    $$QT_SOURCE_TREE/include/QtAccessibilitySupport/$${QT_VERSION} \
++    $$QT_SOURCE_TREE/include/QtFontDatabaseSupport/$${QT_VERSION} \
++    $$QT_SOURCE_TREE/include/QtThemeSupport/$${QT_VERSION}
  
  include(windows.pri)
  
 -- 
-2.13.0
+2.13.2
 

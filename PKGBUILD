@@ -19,33 +19,40 @@
 # The variants listed above only contain dynamic libraries. For building static libraries
 # just append '-static' to the package name, eg. mingw-w64-qt5-base-static or mingw-w64-qt5-base-angle-static.
 # The static variants rely on the corresponding dynamic variant for headers and tools.
-# I only tested the static version using native OpenGL so far (mingw-w64-qt5-base-static).
+# I only tested the static variant using native OpenGL so far (mingw-w64-qt5-base-static).
 # Note that ANGLE will still be loaded as dynamic library in mingw-w64-qt5-base-dynamic-static.
 
 # By default CMake and qmake will link against the dynamic Qt libraries.
 
-# To use the static Qt libraries with CMake prefix the Qt module with Static:
+# To use the static Qt libraries with CMake prepend the Qt module name with Static:
 #  eg. find_package(Qt5Core) becomes find_package(StaticQt5Core)
 # To use a static module, add the corresponding imported target, eg.
-#  target_link_libraries(target ... Qt5::static::Core)
-# This approach allows installing dynamic and static Qt in the same prefix and using
-# both variants in the same CMake project.
+#  target_link_libraries(target ... StaticQt5::Core)
+#  and using
+# This approach allows installing dynamic and static Qt in the same prefix
+# and using both variants in the same CMake project.
 
 # To use a static plugin, add the corresponding imported target, eg.
-#  target_link_libraries(target ... Qt5::static::QWindowsIntegrationPlugin)
+#  target_link_libraries(target ... StaticQt5::QWindowsIntegrationPlugin)
 # Automatically importing static plugins is currently not possible, though. Hence it is required to use Q_IMPORT_PLUGIN, eg.
 #  #include<QtPlugin>
 #  Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
 
-# To use the static Qt libraries with qmake set the following variables (either inside the *.pro file or as qmake argument):
+# It is also possible to use static Qt libraries with CMake by setting the
+# variable USE_STATIC_QT_BY_DEFAULT: set(USE_STATIC_QT_BY_DEFAULT ON)
+# In this case the regular imported targets (eg. Qt5::Core) will be static.
+# This approach does *not* allow to use dynamic and static Qt in the same
+# CMake project.
+
+# To use the static Qt libraries with qmake add 'static' to the project config (either inside the *.pro file or as qmake argument):
 #  CONFIG+=static
 
 # Further Qt modules (those not found in the base repository and hence not included in this package) include by default
-# static and dynamic libraries; if only one version is requried, just set $NO_STATIC_LIBS or $NO_SHARED_LIBS when building
-# the package.
+# static and dynamic libraries; if only one version is requried, just set NO_STATIC_LIBS or NO_SHARED_LIBS when building
+# the package, eg. by adding 'NO_STATIC_LIBS=1' to /etc/makepkg.conf.
 
 # By default, executables will not be removed because I find them useful when testing. To remove executables
-# set $NO_EXECUTABLES (or $NO_STATIC_EXECUTABLES to remove statically linked executables only) when building the package.
+# set NO_EXECUTABLES (or NO_STATIC_EXECUTABLES to remove statically linked executables only) when building the package.
 # If Qt modules containing tools are built as static and as dynamic library only the dynamically linked tools will be present
 # in the package.
 
@@ -77,7 +84,7 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
@@ -124,38 +131,38 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         '0029-Ignore-failing-pkg-config-test.patch'
         '0030-Prevent-qmake-from-messing-static-lib-dependencies.patch'
         '0031-Hardcode-linker-flags-for-platform-plugins.patch')
-sha256sums=('267eb2af1a203c087f2113f43b08014d0e2d2cb269295b8602d869a2fad5296c'
-            'b4406bba39ee7c8cf74c3b8a98b936b46772ca1798ef6884b7b1574ece80fbdc'
-            '86cf470f1694abf6973f7b0f8e6cb75dd8a58e9335bab075b25229d26064adab'
-            '670b6cd7a6ee49f12ccf4121e997055daec887d080baf0269793b1d0243d1d89'
-            '878c08a1e9d0c8d639ddbdbc944ac8647ff204e9f078ddd9337737b2b929c2ed'
-            '38533dba16df99074e8c3f5d52bc15fabdbaffe0a56dbed79683c47f08342587'
-            '5ef3a569f4c53e848750ff655342e92a103abe78495905a5ef47afea9da8d1fb'
-            'd21ebc9465a19e01912ebccb365b4f7ecfd3a95787c1de2640f29bdbc161983c'
-            '0622a2e606d9edbea23d3a5724ea9d4ed3958e60296b85134176c3980d590a41'
-            '90f1347e5c41b9e447c0339715d19e0434a0b58c36fd8405e850190fe17369dc'
-            '6b6ebfdf598658172680e4e83d2c3de24dcbc93233b0f48d5ccbf760d8f59a5c'
-            '11ce05f79174440406d84b38023d81c1fa87034119360fa2f0bd3887429fa694'
-            'c30c558ea413c986aec2ffe86e34dd8e99f96cbc615e3963f711ec1628888114'
-            'b9fbfc213089e3b44ed888f4e628030e78dd84c8030ba7a2a9f79fbf31312934'
-            '94ebedf699ebc0a5c6fed307eecd3dfabf9f864c696f3cf17bd8462789c1fae2'
-            'df05b0f65dcafede1f83ce190895e6c6f4a22feecb1c5b1a0ba03f4948e56220'
-            '0acae3adb542d6ea0b405a947adf087826b4971df133b984d9166a9872e5cc98'
-            'bb825226ca1e97cb49c3ac3a0c03a7db9f3e1eca632628d344201fcf9816376d'
-            'e74fb8219bf599fbe5fbd1b08ff89d717089f1fa4d9e488a60e6097b212b7391'
-            'cf3f90b69feb98e42ede770828db4538a3dd31dd02b2b15f55ea1743db5868ad'
-            '813cd1c22e3211133337231e1df754b5560159eecf1cf3eef0408d335e186190'
-            'a0feb7b5a9747d6a88058360fc34f8ac8fb3cdeb2b343a5a2b28a88fdabb45b3'
-            '82f8f1eba6ac63c9a8749e20eb57fad80e92ddd5a58912a60a8c2fad9e83d6eb'
-            '34652aec17d7511815db59b438b0597e52b7f43c19d068e7e417325897a72254'
-            'dcfe2103ace81898960316dd691fae38d05b2b6a79dc0ae0f245ae402f1101a8'
-            '0682dcc62b44717fa850700cec183cd856ce7335f26884ab15d4d0e7d3543bfe'
-            'cecf5ff2916d95ffdbcf60ba3e18297a6107e17e9766a5e4d8b9ae748d99ba52'
-            '79bc920bb539fc68001b5def07eea3e45eb3d2c6aa3f2a949823236adf8e4633'
-            '80757f614fe02bfb85d00292d4f84c9f2ab2c39a512c21e956df135f3fbfdd81'
-            'cc46ffc3a2183539aba923fb256045464eaae37a666034172138f4689a5c9bd3'
-            'f0e63e022d1e52b82a7622828b568c57d1422f9726e116902cd2be81fec45da4'
-            '28b11e63f570891212073b3739a20489304d3c7205ae38471cbd6b15c651fabc')
+sha256sums=('bc9a21e9f6fff9629019fdf9f989f064751d5073c3a28dc596def92f4d4275c6'
+            'f52c581e355a7da69c96c0b31dd42f13b298f11bb616945e6215804fef06866b'
+            'e540286f502a72dc55649006d671c9bcca5eef174ad4c275087a88f56bc40bfd'
+            'dc6d77dfa426aabcebbbda7e05f0bf8746a1700519a9bcbc4bf590b47af51eee'
+            'cb799952f673b18ab9e81528f31b0748adc9313335eccc2a8a3b30cb202d458f'
+            '79634ff2647f5c7c93462ea97e9fca5b2be386450a2c9b27c26ec6f6cfc1f0ee'
+            'c447040e2fbaae9aae2bda5c8ed21e71cf2f83f9aa57ceba9cce6e1d1386ed12'
+            '99735144a8437b8bc03141e998c5f750b6b5f82490cca5e31c67c013ec7f5b36'
+            '7866105da64a96722a2676318e90951d2ac3e7bbe5793557af2ea5a73d0f321a'
+            '37397374c1e373c74a69c4608834dc642832b51ef5532baad5313889ad477fc4'
+            'd67c33f9b990ebbd486ad38f5d5907a0f2d4989e5c2c5057ff017ee06e6493b1'
+            '1a4f497ca54cecbb055303d4dd25eb63f5b2261d32d0b045eea4ae8f4e3bbbe5'
+            '11e329848dbfe42abda9c9531370437ee5a0d69483c333766655e847d2b05a62'
+            'd3b395a536afb2986a0fc4aabaddc9c5ac465b4f7eb7a58a30c9918be07f2f62'
+            '864ba163f331620ecc4df00132dc7fd9b85427038a8209571ddf7b43e5bb2ecd'
+            '68220dc824e0294e604512cec9e6d40e55184d86bf7577dcb5b1af6462da9c66'
+            '1ba5e6862f81456c94e3f57cc37a303d67912269661028357c716de8bf21aeb9'
+            'a4c60391632d84a085896db61aa4e94f1742be34448c23a97a1aa0910cd2e29a'
+            '3db5c1fe5f6957cecdaef9ce767f27e4d5fdd4d9d775d527dba6c093808f371d'
+            'd3e0d6d4daea62fd710416f4549c943f601b7c0e5e84c5cc8c524fabb1dd402b'
+            '569a2f1d7e07d439c82754703b1b007ce6907b12743211b10138a394965258c4'
+            '589955c161c1e975536ee6e21ab1470cf6f8d3a5c50f170ba9ee9d855e347c59'
+            'b1b43064960ca3eb35eb3baed7abf28b00f606d32baeb38d53ffbf96c21dc716'
+            'cbfbb01f52c17cd37d6724e5fad0708d8337d4ba11b87f59dbbe108863aca7dd'
+            'f9b1e01c870a1640865d2d57cb756a9c754c047c66ef78f8cadc6e609677ede0'
+            '25138daad7bfc00cb6f6556da53e6efb2ad0c7b09743cfc3633c86b46ad538cc'
+            '19809d59b5b1fd9ffea8bee6afeca0a3992170f362d0cb99d9f20b2148b859a4'
+            'e0841bd69b6037303bfba1de3072bd55a31ca12c57b8d4e01c28d4ef447b1bed'
+            '4d9204b4e4d634391704954ba152651ccfdd0a00efaabc892c62c710fc6068b4'
+            'b0e505ceef8cf052a9ceef9a508c9c1f5e4c1b4d49e08f954bcb42e4c1aed79e'
+            '389bee66acc6aa9d36f6ab206d217e43b0aca8ba290dc7b1d170c98b79d64cf2'
+            'e2dde7f878d8b5176d5aa925aedeaf60e7b3bf14f98a55327af5f7adcff2eb8c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -222,10 +229,6 @@ build() {
 
   for _arch in ${_architectures}; do
     echo "INCLUDEPATH += /usr/${_arch}/include/openssl-1.0" >> src/network/network.pro
-    export OPENSSL_LIBS='-L/usr/${_arch}/lib/openssl-1.0 -lssl -lcrypto'
-
-    # Phonon is disabled for now because we lack the directx headers
-    # FIXME: check whether this is still the case
 
     # To prevent conflicts with the mingw-w64-qt4 package we have
     # to put tools in a dedicated folder
@@ -253,12 +256,10 @@ build() {
       -sql-mysql \
       -sql-psql \
       -sql-sqlite \
-      -openssl \
       -dbus-linked \
       -no-glib \
       -no-icu \
       -iconv \
-      -release \
       -nomake examples \
       -make tools \
       -hostprefix /usr/${_arch} \
@@ -276,10 +277,16 @@ build() {
       -sysconfdir /usr/${_arch}/etc \
       -translationdir /usr/${_arch}/share/qt/translations \
       -device-option CROSS_COMPILE=${_arch}- \
+      -device-option CROSS_COMPILE_PREFIX=/usr/${_arch} \
       -device-option CROSS_COMPILE_CFLAGS=-fpch-preprocess"
 
     # Fix include directory of freetype2 and dbus
     qt_configure_args+=" $(${_arch}-pkg-config --cflags-only-I freetype2 dbus-1)"
+
+    # Enable debug build if MINGW_W64_QT_DEBUG_BUILD is set (in /etc/makepkg.config)
+    [[ $MINGW_W64_QT_DEBUG_BUILD ]] \
+      && qt_configure_args+=' -debug-and-release' \
+      || qt_configure_args+=' -release'
 
     # Configure usage of ANGLE/OpenGL
     if isOpenGL; then
@@ -305,13 +312,20 @@ build() {
 
     mkdir -p ../build-${_arch} && pushd ../build-${_arch}
     if isStatic; then
-      ../${_pkgfqn}/configure -static $qt_configure_args
+      export OPENSSL_LIBS="/usr/${_arch}/lib/openssl-1.0/libssl.a /usr/${_arch}/lib/openssl-1.0/libcrypto.a -lws2_32 -lgdi32 -lcrypt32"
+      ../${_pkgfqn}/configure \
+        $qt_configure_args \
+        -static \
+        -openssl-linked
       make
     else
       # The LD_LIBRARY_PATH override is needed because libQt5Bootstrap* are shared
       # libraries which various compiled tools (like moc) use. As the libQt5Bootstrap*
       # libraries aren't installed at this point yet, we have to workaround this
-      ../${_pkgfqn}/configure -shared $qt_configure_args
+      ../${_pkgfqn}/configure $qt_configure_args \
+        -shared \
+        -openssl-runtime \
+        -device-option 'CROSS_COMPILE_CUSTOM_CONFIG=actually_a_shared_build'
       LD_LIBRARY_PATH="$PWD/lib" LDFLAGS="-L$PWD/lib" make
     fi
     popd
@@ -329,7 +343,8 @@ package() {
 
       # Drop Qt5Bootstrap and libraries which are only provided as static lib
       # and are hence already present in shared build (such as Qt5OpenGLExtensions)
-      rm -f "${pkgdir}/usr/${_arch}/lib/"{lib,}qt5main* \
+      rm -f \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}qt5main* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5AccessibilitySupport* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5DeviceDiscoverySupport* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5EventDispatcherSupport* \
