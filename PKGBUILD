@@ -2,7 +2,7 @@
 # Maintainer: Paul Gideon Dann <pdgiddie_at_gmail.com>
 
 pkgname=poppler-qt-lcd
-pkgver=0.55.0
+pkgver=0.56.0
 pkgrel=1
 pkgdesc="Poppler Qt bindings, with patches to allow subpixel rendering via Cairo"
 license=('GPL')
@@ -16,14 +16,12 @@ source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz
         0001-Cairo-backend-added-to-Qt4-wrapper.patch
         0002-Setting-default-Qt4-backend-to-Cairo.patch
         0003-Apply-subpixel-rendering-in-Cairo-Backend.patch
-        0004-Don-t-built-qt4-and-qt5-tests-and-demos-in-CMake.patch
-        0005-Don-t-build-the-main-poppler-library.patch)
-md5sums=('f7a8230626b6d2061acfdc852930b7dd'
-         '9e27a60d8ee57d586eb3a9565e2bf657'
-         '37b7f814b5b031a93f5f793f0c4205f7'
-         '1e25830964a43bd4866ee67f5016b926'
-         '9ec71413b6c5a1261adff39cd878677c'
-         'c0355a4a51e4fa239f07341732eb132d')
+        0004-Don-t-build-the-main-poppler-library.patch)
+md5sums=('31260c06e139d7270be4567cc8a4af97'
+         'e4167980e2d3e76b0a99539f2ed77d73'
+         'b9a4b76e5150511c92e203c2d107cfbc'
+         '0d8f664d28aa701a7ae51b71dcb3083f'
+         '2e884975ff13425e5577a7c7ada26f66')
 
 build() {
   cd "${srcdir}/poppler-${pkgver}"
@@ -37,7 +35,7 @@ build() {
   cmake -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt4 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DENABLE_CPP=OFF -DENABLE_UTILS=OFF \
-        -DWITH_GLIB=OFF -DBUILD_QT4_TESTS=OFF \
+        -DWITH_GLIB=OFF \
         ..
   make poppler-qt4
 }

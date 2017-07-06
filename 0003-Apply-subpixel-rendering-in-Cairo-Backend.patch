@@ -1,7 +1,7 @@
-From ebd6c3a630b4a773182b50ddcc5c0efed809cb33 Mon Sep 17 00:00:00 2001
+From 77ce75d01fbd1b560dffe28de12b175d4338224b Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
-Subject: [PATCH 3/5] Apply subpixel rendering in Cairo Backend
+Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
 
 Source:
 https://github.com/zhou13/poppler-subpixel/blob/master/poppler/poppler-subpixel.patch
