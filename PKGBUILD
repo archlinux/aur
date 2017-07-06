@@ -3,7 +3,7 @@
 
 pkgname=offlineimap-git
 _pkgname=offlineimap
-pkgver=7.0.6.4.gc58d62c
+pkgver=7.1.1.24.g4b103d6
 pkgrel=1
 pkgdesc="A powerful IMAP/Maildir synchronization tool"
 url="http://offlineimap.org/"
@@ -44,11 +44,12 @@ package() {
   install -D -m644 offlineimap.conf.minimal ${pkgdir}/usr/share/offlineimap/offlineimap.conf.minimal
 
 #systemd files
-  install -Dm644 contrib/systemd/mail.target "${pkgdir}"/usr/lib/systemd/user/mail.target
   install -Dm644 contrib/systemd/$_pkgname.service "${pkgdir}"/usr/lib/systemd/user/$_pkgname.service
-  install -Dm644 contrib/systemd/$_pkgname.timer "${pkgdir}"/usr/lib/systemd/user/_$pkgname.timer
+  install -Dm644 contrib/systemd/$_pkgname-oneshot.service "${pkgdir}"/usr/lib/systemd/user/$_pkgname.service
+  install -Dm644 contrib/systemd/$_pkgname-oneshot.timer "${pkgdir}"/usr/lib/systemd/user/_$pkgname.timer
+  install -Dm644 contrib/systemd/$_pkgname-oneshot@.service "${pkgdir}"/usr/lib/systemd/user/$_pkgname.service
   install -Dm644 contrib/systemd/$_pkgname@.service "${pkgdir}"/usr/lib/systemd/user/$_pkgname@.service
-  install -Dm644 contrib/systemd/$_pkgname@.timer "${pkgdir}"/usr/lib/systemd/user/$_pkgname@.timer
+  install -Dm644 contrib/systemd/$_pkgname-oneshot@.timer "${pkgdir}"/usr/lib/systemd/user/$_pkgname@.timer
 }
 
 # vim:set ts=2 sw=2 et:
