@@ -1,6 +1,6 @@
 pkgname=gtkada
 pkgver=2017
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Ada bindings for the Gtk+ library.'
 url='https://github.com/AdaCore/gtkada'
