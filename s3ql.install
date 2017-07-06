@@ -1,0 +1,7 @@
+post_upgrade() {
+  echo 'Starting in s3ql v2.22, S3 bucket URLs must be prefixed with the AWS region.'
+  echo 'For example, to mount a bucket "foo" created in the region us-east-1, you'
+  echo 'would run "mount.s3ql s3://us-east-1/foo <mount point>".'
+  echo
+  echo 'You must also update any bucket URLs in your authfile (usually ~/.s3ql/authinfo2.)'
+}
