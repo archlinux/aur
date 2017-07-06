@@ -9,7 +9,7 @@
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
@@ -24,9 +24,9 @@ _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch'
         '0002-Enforce-use-of-ANGLE-in-Mapbox-GL-plugin.patch')
-sha256sums=('e3ee0ba44b1d3df4a958cdf9c9b70d8f41fd05d5f56580504d944679830f2af6'
-            '1e006906a649177edae0a9e4d712d90940771f929997a9ceeec920b497ffae49'
-            'ff67ff7c940268b31abe0b3fadc71a50aa02821134ce440e13a4a6086e86ceac')
+sha256sums=('4bc43c1df69c5322f982588711d4a65f8408b71a36e43ba19b39d1aae87e1515'
+            'a25cb16e76921eb7f5a6d36f420d797716516036338bc3df8773fdd8525e0baa'
+            'ee4c4d8ede233cfe470dad61523b4474baafb234fe498e5e5a92d4fee7c4247b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -34,7 +34,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"

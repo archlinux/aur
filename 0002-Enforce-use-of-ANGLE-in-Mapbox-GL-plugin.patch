@@ -1,4 +1,4 @@
-From e3adbcbab4927d061607bdca92a93551a27605fe Mon Sep 17 00:00:00 2001
+From 1aaa451470d40b51317c2f3d889cfa19bad68747 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Jun 2017 00:37:16 +0200
 Subject: [PATCH 2/2] Enforce use of ANGLE in Mapbox GL plugin
@@ -30,5 +30,5 @@ index f35f26dc..2ff41608 100644
      else: LIBS_PRIVATE += -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME}
  }
 -- 
-2.13.0
+2.13.2
 
