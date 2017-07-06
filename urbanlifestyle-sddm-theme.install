@@ -1,6 +1,6 @@
 post_install() {
 	echo ':: Add urbanlifestyle as your current theme in your sddm.conf file'
-	echo ':: More info at https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme'
+	echo ':: More info at https://github.com/AlfredoRamos/urbanlifestyle-sddm-theme'
 }
 
 post_upgrade() {
@@ -9,5 +9,5 @@ post_upgrade() {
 
 post_remove() {
 	echo ':: Remove urbanlifestyle as your current theme in your sddm.conf file'
-	echo ':: More info at https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme'
+	echo ':: More info at https://github.com/AlfredoRamos/urbanlifestyle-sddm-theme'
 }
