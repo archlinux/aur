@@ -1,7 +1,8 @@
 pkgbase = dell-smm-hwmon-i8kutils
-	pkgdesc = Redshift plasmoid provides a configuration interface and allows to start/stop Redshift daemon either manually or automatically based on the current activity. Plasma5 development version.
+	pkgdesc = Patched version of the dell-smm-hwmon kernel module and smm executable. This allows to disable the bios fan controller on some dell laptops so that the i8kutils driver can work without conflicts.
 	pkgver = 4.9.34
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/vitorafsr/i8kutils/issues/6/
 	install = dell-smm-hwmon-i8kutils.install
 	arch = any
 	license = GPL
