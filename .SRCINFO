@@ -1,0 +1,18 @@
+pkgbase = python2-xenstore
+	pkgdesc = Python XenStore Module
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = https://pypi.python.org/pypi/pyxenstore
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = xenstore
+	provides = python2-pyxenstore
+	replaces = python2-pyxenstore
+	source = https://pypi.python.org/packages/source/p/pyxenstore/pyxenstore-0.0.2.tar.gz
+	md5sums = 4da2524ed0ec9439afc5c9a46ac21c6c
+
+pkgname = python2-xenstore
+
