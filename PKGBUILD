@@ -3,8 +3,8 @@
 
 pkgname=libpurple-carbons-git
 _pkgname=carbons
-pkgver=r5.2136d9e
-pkgrel=2
+pkgver=r16.35dd48d
+pkgrel=1
 pkgdesc='Experimental XEP-0280: Message Carbons plugin for libpurple (Pidgin, Finch, etc.)'
 arch=('i686' 'x86_64')
 url="https://github.com/gkdr/carbons"
