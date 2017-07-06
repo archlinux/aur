@@ -10,7 +10,7 @@
 
 _qt_module=qtquickcontrols
 pkgname="mingw-w64-qt5-quickcontrols"
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('any')
 pkgdesc="Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)"
@@ -22,7 +22,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('173dfffeb20315dceedeb22c19812752c07e25916044be5444fe00522e1754fe')
+sha256sums=('520ed0e110f9d0977eb873ea0e05a3d205c9c1b1ad2dd606875708848b21ec2e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -30,7 +30,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
