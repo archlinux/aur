@@ -77,7 +77,7 @@ source=("${pkgname}.desktop"
 md5sums=('914bc94601657ac143f21acd8ed75747'
          'd7aa692701859b7ab6cd55f48e44e5e7'
          '494afbfa60fb4ce21840244cc3f7208c'
-         '45aad9b5bb9697724f824e0eec52e406')
+         '688fb4382e55ed0c6108a3d9df2ac8ef')
 md5sums_i686=('SKIP'
 	'SKIP')
 md5sums_x86_64=('SKIP'
@@ -93,14 +93,14 @@ package() {
 	msg "Packaging ${pkgname} (language: ${_language})..."
 
 	if [ -z "${TORBROWSER_PKGLANG}" ]; then
-		msg ''
-		msg "Note: if you want to package ${pkgname} in a different language, please"
-		msg 'set a `TORBROWSER_PKGLANG` environment variable before running `makepkg`.'
-		msg ''
-		msg 'For instance:'
-		msg ''
-		msg "   TORBROWSER_PKGLANG='en-US' makepkg"
-		msg ''
+		echo
+		echo -e "  \e[1;34m->\e[0m \e[1;31mNOTE:\e[0m If you want to package ${pkgname} in a different language, please"
+		echo '     set a `TORBROWSER_PKGLANG` environment variable before running makepkg.'
+		echo
+		echo '     For instance:'
+		echo
+		echo -e "        \e[0;33mTORBROWSER_PKGLANG='en-US' makepkg\e[0m"
+		echo
 	fi
 
 	sed -i "s/__REPL_LANGUAGE__/${_language}/g"	"${pkgname}.desktop"

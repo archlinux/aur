@@ -2,9 +2,9 @@
 
 # Copyright (C) 2009 Benjamin Drung <bdrung at ubuntu dot com>
 # Copyright (C) 2012 Alessio Sergi <al3hex at gmail dot com>
+# Copyright (C) 2017 grufo <madmurphy333 at gmail dot com> (Arch User Repository version)
 # modified 2012 for tor-browser (Max Roder <maxroder at web dot de>)
 # modified 2014 by Yardena Cohen <yardenack at gmail dot com>
-# modified 2017 by grufo <madmurphy333 at gmail dot com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -103,13 +103,13 @@ _aur_update_() {
 	local AUR_RELEASE="$(grep 'pkgrel' '.SRCINFO' | cut -d = -f2 | sed -e 's/^[[:space:]]*//')"
 
 	if _compare_ver_ "${_TB_VERSION_}" "${AUR_VERSION}"; then
-		echo 'Found new version.'
+		echo "Found new version (${AUR_VERSION})..."
 		local DO_UPDATE=1
 	elif [[ "${_TB_VERSION_}" == "${AUR_VERSION}" ]] && [[ "${_TB_RELEASE_}" != "${AUR_RELEASE}" ]] && [[ "${_TB_RELEASE_}" == "`echo -e "${_TB_RELEASE_}\n${AUR_RELEASE}" | sort | head -n1`" ]]; then
-		echo 'Found new PKGBUILD.'
+		echo 'Found new PKGBUILD...'
 		local DO_UPDATE=1
 	else
-		echo "Everything is up to date (version: ${_TB_VERSION_})"
+		echo "Everything is up to date (current version: ${_TB_VERSION_})."
 	fi
 
 	[[ ${DO_UPDATE} -eq 1 ]] && makepkg -si
