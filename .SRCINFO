@@ -1,0 +1,33 @@
+pkgbase = firefox-developer-it
+	pkgdesc = Standalone web browser from mozilla.org, Developer Edition - Italian
+	pkgver = 55.0b6
+	pkgrel = 1
+	url = https://www.mozilla.org/firefox/developer/
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = alsa-lib
+	depends = libxt
+	depends = libnotify
+	depends = mime-types
+	depends = nss
+	depends = gtk2
+	depends = gtk3
+	depends = sqlite
+	depends = dbus-glib
+	optdepends = pulseaudio: audio/video playback
+	optdepends = ffmpeg: h.264 video
+	optdepends = hunspell: spell checking
+	optdepends = hyphen: hyphenation
+	provides = firefox-developer
+	conflicts = firefox-developer
+	source = https://ftp.mozilla.org/pub/devedition/releases/55.0b6/linux-x86_64/it/firefox-55.0b6.tar.bz2
+	source = firefox-developer.desktop
+	source = vendor.js
+	sha512sums = a4198b115b96605ae7e698637ae3ef7ce7f913cba1c4edaf2a70f978f6e1ffb8ea308bfce29a48db743755d5f4dbc575ec5e8bf95f15216967c17f02b5480ca3
+	sha512sums = 3360768d46a6ac57430f5b5182fa5198dc68d6d65401dde6d33f4fb3a3553b5bceaefc18dcde8b035405265e7ba9e262ebbade6f064465d0e248f5976600ffbc
+	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
+
+pkgname = firefox-developer-it
+
