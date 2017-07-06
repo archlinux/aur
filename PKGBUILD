@@ -1,13 +1,15 @@
+# Maintainer: Albert Westra <odyssyewestra@gmail.com>
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
+_basever=2.0.0.alpha
 pkgname=libmypaint-git
-pkgver=1.3.0.33.ge5becee
+pkgver=2.0.0.alpha+git.1672d09
 pkgrel=1
-pkgdesc="a library for making brushstrokes which is used by MyPaint and other projects, with GEGL support"
+pkgdesc="A library for making brushstrokes which is used by MyPaint and other projects."
 arch=('i686' 'x86_64')
 url="http://mypaint.org/"
 license=('ISC')
-depends=('gobject-introspection' 'json-c' 'gegl')
+depends=('gobject-introspection' 'json-c')
 makedepends=('git' 'intltool' 'python')
 provides=("libmypaint=${pkgver}")
 conflicts=('libmypaint')
@@ -18,7 +20,7 @@ build() {
   cd "$srcdir/libmypaint"
 
   ./autogen.sh
-  ./configure --prefix=/usr --enable-gegl
+  ./configure --prefix=/usr
   make
 }
 
@@ -32,7 +34,7 @@ package() {
 pkgver() {
   cd "$srcdir/libmypaint"
 
-  git describe --tags | sed 's/^v//g;s/-/./g'
+  printf "${_basever}+git.%s" "$(git rev-parse --short HEAD)" | sed 's/^v//g;s/-/./g'
 }
 
 # vim:set ts=2 sw=2 et:
