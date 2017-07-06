@@ -2,8 +2,8 @@ post_install() {
     pkgname=gincamalarm
 
     # Fixing membership
-    chown root: /var/log/$pkgname
-    chown -R root: /etc/$pkgname
+    chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
 
     # Reload systemctl
     systemctl daemon-reload
