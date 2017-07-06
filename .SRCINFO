@@ -1,0 +1,39 @@
+pkgbase = gdc
+	pkgver = 6.2.1
+	pkgrel = 2
+	url = https://github.com/D-Programming-GDC/GDC
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = binutils>=2.26
+	makedepends = git
+	source = git+https://gcc.gnu.org/git/gcc.git#commit=c2103c1
+	source = http://isl.gforge.inria.fr/isl-0.16.1.tar.bz2
+	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git#tag=v2.068.2_gcc6
+	source = git+https://github.com/D-Programming-GDC/GDMD.git
+	source = paths.diff
+	sha256sums = SKIP
+	sha256sums = 412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = e04cea391007ebab5d9b0ff33179c1fded0afcf43059b811290472ea52222361
+
+pkgname = gdc
+	pkgdesc = Compiler for D programming language which uses gcc backend
+	depends = gcc
+	depends = perl
+	depends = binutils
+	depends = libgphobos-devel
+	provides = d-compiler
+
+pkgname = libgphobos-devel
+	pkgdesc = Standard library for D programming language, GDC port
+	provides = d-runtime
+	provides = d-stdlib
+	options = staticlibs
+
+pkgname = libgphobos
+	pkgdesc = Shared standard library for D programming language, GDC port
+	provides = d-runtime
+	provides = d-stdlib
+
