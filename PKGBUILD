@@ -4,7 +4,7 @@
 
 pkgname=sphinxcontrib-adadomain
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="adadomain sphinxcontrib extension"
 arch=('any')
 url="http://bitbucket.org/birkenfeld/sphinx-contrib"
