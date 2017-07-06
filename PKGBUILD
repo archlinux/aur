@@ -3,7 +3,7 @@
 _pkgname=aws
 pkgname=ada-web-server
 pkgver=2016
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete embeddable Web application framework for Ada."
 
 arch=(i686 x86_64)
