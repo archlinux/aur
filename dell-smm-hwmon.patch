@@ -1,0 +1,67 @@
+--- drivers/hwmon/dell-smm-hwmon.c	2017-06-17 06:43:47.000000000 +0200
++++ drivers/hwmon/dell-smm-hwmon.c.modded	2017-06-22 17:56:45.768725404 +0200
+@@ -41,6 +41,8 @@
+ 
+ #include <linux/i8k.h>
+ 
++#define I8K_SMM		_IOWR('i', 0x88, size_t)
++
+ #define I8K_SMM_FN_STATUS	0x0025
+ #define I8K_SMM_POWER_STATUS	0x0069
+ #define I8K_SMM_SET_FAN		0x01a3
+@@ -409,6 +411,18 @@
+ 	return (regs.eax & 0xff) == I8K_POWER_AC ? I8K_AC : I8K_BATTERY;
+ }
+ 
++static int i8k_smm_raw(int eax,int ebx,int ecx,int edx,int esi,int edi)
++{
++	struct smm_regs regs = { .eax=eax, .ebx=ebx, .ecx=ecx, .edx=edx, .esi=esi, .edi=edi};
++	int rc;
++
++	rc = i8k_smm(&regs);
++	if (rc < 0)
++		return rc;
++
++	return 0;
++}
++
+ /*
+  * Procfs interface
+  */
+@@ -420,6 +434,7 @@
+ 	int speed;
+ 	unsigned char buff[16];
+ 	int __user *argp = (int __user *)arg;
++	int eax; int ebx; int ecx; int edx; int esi; int edi;
+ 
+ 	if (!argp)
+ 		return -EINVAL;
+@@ -481,6 +496,28 @@
+ 		val = i8k_set_fan(val, speed);
+ 		break;
+ 
++	case I8K_SMM:
++		if (copy_from_user(&eax, argp, sizeof(int)))
++			return -EFAULT;
++
++		if (copy_from_user(&ebx, argp+1, sizeof(int)))
++			return -EFAULT;
++
++		if (copy_from_user(&ecx, argp+2, sizeof(int)))
++			return -EFAULT;
++
++		if (copy_from_user(&edx, argp+3, sizeof(int)))
++			return -EFAULT;
++
++		if (copy_from_user(&esi, argp+4, sizeof(int)))
++			return -EFAULT;
++
++		if (copy_from_user(&edi, argp+5, sizeof(int)))
++			return -EFAULT;
++
++		val = i8k_smm_raw(eax,ebx,ecx,edx,esi,edi);	
++		break;		
++
+ 	default:
+ 		return -EINVAL;
+ 	}

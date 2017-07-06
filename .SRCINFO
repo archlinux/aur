@@ -1,0 +1,18 @@
+pkgbase = dell-smm-hwmon-i8kutils
+	pkgdesc = Redshift plasmoid provides a configuration interface and allows to start/stop Redshift daemon either manually or automatically based on the current activity. Plasma5 development version.
+	pkgver = 4.9.34
+	pkgrel = 1
+	install = dell-smm-hwmon-i8kutils.install
+	arch = any
+	license = GPL
+	makedepends = linux49-headers
+	depends = linux49
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.34.tar.xz
+	source = dell-smm-hwmon.patch
+	source = smm.c
+	md5sums = 92aaa07c90e1c7de60fcdd8a9726dd59
+	md5sums = ccfe8a74d9cbf587d5a9cb395cae2834
+	md5sums = a5e33f4c632c3055bd51853edeef51fc
+
+pkgname = dell-smm-hwmon-i8kutils
+

@@ -1,0 +1,12 @@
+post_install() {
+    echo "Running depmod.."
+    depmod
+    echo --------------------------------------------------------
+    echo After install, reboot the system in order to be able
+    echo to use the command smm.
+    echo --------------------------------------------------------
+}
+
+post_upgrade () {
+    post_install
+}
