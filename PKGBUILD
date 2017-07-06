@@ -9,7 +9,7 @@
 
 _qt_module=qtserialport
 pkgname="mingw-w64-qt5-serialport"
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
@@ -21,7 +21,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/$pkgver/submodules/qtserialport-opensource-src-$pkgver.tar.xz")
-sha256sums=('80022e3e6d5652502891fec3774615a36d51901dacc4fbb2dfe6e562fd729d7f')
+sha256sums=('e1fe85bf292929c3a62cb4d21efaaa4e89f70f48ea10914da07d0670ec617a69')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -29,7 +29,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
