@@ -1,7 +1,7 @@
 # Maintainer: Felix Igelbrink
 pkgname=roboware-studio
-pkgver=0.5.1
-pkgrel=1493340874
+pkgver=0.7.0
+pkgrel=1498718847
 pkgdesc="IDE for ROS(Robot Operating System) developers based on VSCode"
 arch=('i686' 'x86_64')
 url="http://www.roboware.me"
@@ -17,9 +17,9 @@ install=$pkgname.install
 source=(https://github.com/tonyrobotics/RoboWare/raw/master/${pkgname}_${_debver}_${_debarch}.deb)
 
 if [ "$_debarch" = 'i386' ]; then
-  md5sums=('cef079774660cd512e9a92fd36ad8cef')
+  md5sums=('1ad222f8c9426e088dc8b6c55c4494c4')
 elif [ "$_debarch" = 'amd64' ]; then
-  md5sums=('cce2580e67b2e33b2e53dfb3294cf2e5')
+  md5sums=('8d4436bc4ec8c4e4cdf195eac2dddb55')
 fi
 
 prepare() {
