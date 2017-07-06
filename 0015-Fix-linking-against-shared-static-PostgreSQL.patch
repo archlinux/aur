@@ -1,16 +1,16 @@
-From cb4fbac9533065928a6c839da4675c60cb7fe6c0 Mon Sep 17 00:00:00 2001
+From b40b9c32be9f991b907493b43c42ba94ee29852c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:58:25 +0200
 Subject: [PATCH 15/31] Fix linking against shared/static PostgreSQL
 
 ---
- src/sql/configure.json | 5 +++--
+ src/plugins/sqldrivers/configure.json | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/src/sql/configure.json b/src/sql/configure.json
-index d162d7bc09..0f86b23f22 100644
---- a/src/sql/configure.json
-+++ b/src/sql/configure.json
+diff --git a/src/plugins/sqldrivers/configure.json b/src/plugins/sqldrivers/configure.json
+index ba74280e8c..78169f46ca 100644
+--- a/src/plugins/sqldrivers/configure.json
++++ b/src/plugins/sqldrivers/configure.json
 @@ -73,9 +73,10 @@
              "label": "PostgreSQL",
              "test": "unix/psql",
@@ -25,5 +25,5 @@ index d162d7bc09..0f86b23f22 100644
              ]
          },
 -- 
-2.13.0
+2.13.2
 
