@@ -28,6 +28,6 @@ package() {
 
   cp -p "./Pinegrow_EULA.pdf" "${pkgdir}/usr/share/pinegrow"
   cp -pdr "./Pinegrow-${pkgver}" "${pkgdir}/usr/share/pinegrow"
-  ln -fs "${pkgdir}/usr/share/pinegrow/Pinegrow.desktop" "${pkgdir}/usr/share/applications/pinegrow.desktop"
-  ln -fs "${pkgdir}/usr/share/pinegrow/PinegrowLibrary" "${pkgdir}/usr/bin/pinegrow"
+  ln -fs "${pkgdir}/usr/share/pinegrow/Pinegrow-${pkgver}/Pinegrow.desktop" "${pkgdir}/usr/share/applications/pinegrow.desktop"
+  ln -fs "${pkgdir}/usr/share/pinegrow/Pinegrow-${pkgver}/PinegrowLibrary" "${pkgdir}/usr/bin/pinegrow"
 }
