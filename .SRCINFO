@@ -1,0 +1,27 @@
+pkgbase = ypserv
+	pkgdesc = Linux NIS Server
+	pkgver = 2.31
+	pkgrel = 2
+	url = http://www.linux-nis.org/nis/ypserv/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gdbm
+	depends = openslp
+	depends = inetutils
+	depends = yp-tools
+	optdepends = gawk: for printcap support
+	backup = etc/ypserv.conf
+	backup = etc/netgroup
+	backup = var/yp/securenets
+	source = http://www.linux-nis.org/download/ypserv/ypserv-2.31.tar.bz2
+	source = ypxfrd.service
+	source = yppasswdd.service
+	source = ypserv.service
+	md5sums = 4537b8f0e917edca8f57b70b9cbc37f3
+	md5sums = 0639cc2e8f667272335649eeede77206
+	md5sums = 9ff147310a5b83749357b6587cccdf34
+	md5sums = 89b8b608c81fd01bb81cdb551854833f
+
+pkgname = ypserv
+
