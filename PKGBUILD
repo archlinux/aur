@@ -1,6 +1,6 @@
 pkgname=gnatcoll
 pkgver=2017
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Gnat components collection.'
 url='http://libre.adacore.com/tools/gnat-component-collection/'
@@ -54,6 +54,8 @@ build()
     #
     export PATH=$srcdir/gnatcoll-gpl-2017-src/temp_bin:$PATH    
 
+    export OS=unix
+
     ./configure --prefix=/usr     \
                 --libexecdir=/lib \
                 --enable-shared   \
@@ -63,9 +65,11 @@ build()
 }
 
 
-package() 
+package()
 {
     cd gnatcoll-gpl-2017-src
+
+    export OS=unix
 
     make prefix="$pkgdir"/usr install
 }
