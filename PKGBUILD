@@ -180,9 +180,7 @@ package() {
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
     local _kernelversionsmall="$(uname -r)"
     _kernelversionsmall="${_kernelversionsmall%%-*}"
-    if [ "${_kernelversionsmall%\.0\.0}" != "${_kernelversionsmall}" ]; then # trim 4.0.0 -> 4.0
-      _kernelversionsmall="${_kernelversionsmall%\.0}"
-    fi
+    _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
     eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
