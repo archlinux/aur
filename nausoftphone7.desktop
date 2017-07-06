@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Naumen SoftPhone 7
+GenericName=NauSoftPhone7
+GenericName[ru]=Программный Телефон v.7
+Exec=/opt/naumen/nausoftphone7/nausoftphone %U
+Terminal=false
+Icon=/opt/naumen/nausoftphone7/res/icons/nauphone.png
+Type=Application
+Categories=Application;Network;
+Name[ru_RU]=nausoftphone7.desktop

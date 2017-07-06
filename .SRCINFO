@@ -1,0 +1,35 @@
+pkgbase = nausoftphone7
+	pkgdesc = Naumen SoftPhone. Software Phone from Naumen ISC
+	pkgver = 7.0.38.6
+	pkgrel = 1496912899
+	install = .INSTALL
+	arch = x86_64
+	license = Commercial
+	depends = bash
+	depends = alsa-lib>=1.0.16
+	depends = boost
+	depends = bzip2
+	depends = gcc-libs>=4.6
+	depends = glibc>=2.16
+	depends = hicolor-icon-theme
+	depends = hplip
+	depends = krb5>=1.10.
+	depends = libidn>=1.13
+	depends = libldap>=2.4.7
+	depends = libpulse>=0.99.1
+	depends = libtiff>=4.0.3
+	depends = phonon-qt4>=4.2.0
+	depends = phonon-qt4-gstreamer
+	depends = qt4>=4.8.0
+	depends = qtwebkit-bin>=2.3.
+	depends = zlib>=1.1.4
+	optdepends = haveged: boost low entropy
+	source = manual://nausoftphone_7.0.38.6-1496912899-trusty_amd64.deb
+	source = nausoftphone7.desktop
+	source = nauphone.png
+	sha256sums = 22bb6525af54895915ba5c5a1612a689f2a8902ae01f256e0ef94ec2be18c56c
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nausoftphone7
+
