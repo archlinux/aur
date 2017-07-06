@@ -10,7 +10,7 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
@@ -24,9 +24,9 @@ _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch')
-sha256sums=('0bb370923ba2e6d122940b07352a1a2f52ebbb061bec72e30df22a9e2edd60ee'
-            '641bdc0c11d274fa5db0223ca122079d6f417c531ab0030825796f67fd36ec0f'
-            'f26232dae274cef92a2b9b2e885c0196afb3a061e58f06f28969b2ad79ac90ee')
+sha256sums=('e48fbe71b4418eb7caba5ef5aa422483fb28d0e894cbc41f3d8b73b3d7fee6e4'
+            'ff8e64fe13e55fde72e1dcc45e8956a9edeb20074d3579141f466e4c64e2cc0e'
+            '8ca27442871abf48c4a4cefcff9be614487941af14132a8877b035052ba25d68')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -34,7 +34,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 link_header_files() {
   for header in "$@"; do

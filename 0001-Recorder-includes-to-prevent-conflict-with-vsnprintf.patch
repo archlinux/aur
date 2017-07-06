@@ -1,4 +1,4 @@
-From 6d06f53c95a7c3e3b47578714d12a14eac26a72d Mon Sep 17 00:00:00 2001
+From ed6607aa3800d4f640723c5f2d6128f0ac1a8da7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:36:56 +0200
 Subject: [PATCH 1/2] Recorder includes to prevent conflict with vsnprintf
@@ -37,5 +37,5 @@ index 5f391710..3ae3b8aa 100644
  
  QT_BEGIN_NAMESPACE
 -- 
-2.13.0
+2.13.2
 
