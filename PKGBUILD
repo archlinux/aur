@@ -2,7 +2,7 @@
 
 pkgname=libadalang
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="A high performance semantic engine for the Ada programming language."
 
 arch=('i686' 'x86_64')
