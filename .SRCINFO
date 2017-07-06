@@ -1,0 +1,13 @@
+pkgbase = getxbook
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://njw.me.uk/getxbook/
+	arch = x86_64
+	license = custom:ISC
+	source = https://njw.me.uk/getxbook/getxbook-1.2.tar.xz
+	source = error.patch
+	sha512sums = fec397d4fd979421658f7ef9535f3c25369c8bd4ea2f9adcd719f760fd01265ed789f9eca34374b245c24acd485b951c91fa92a36d5b6401a0e0bf4db746788d
+	sha512sums = fe157499158205d97abdb3a0923fea709707d73a20f507f042c125de11012257165c66900de4439f1d68f5d63182ebc450598679f9e3ca4b5b6a88b3a6970ceb
+
+pkgname = getxbook
+

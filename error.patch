@@ -1,0 +1,11 @@
+--- config.mk	2015-07-28 17:52:40.000000000 +0200
++++ config.mk	2017-07-06 16:46:38.961046964 +0200
+@@ -8,7 +8,7 @@
+ 
+ LIBS = -lssl -lcrypto
+ 
+-CFLAGS = -std=c99 -pedantic -Wall -Wextra -Werror -g -D_POSIX_C_SOURCE=200112L \
++CFLAGS = -std=c99 -pedantic -Wall -Wextra -g -D_POSIX_C_SOURCE=200112L \
+          -DVERSION=\"$(VERSION)\"
+ 
+ W32TCLKIT = tclkit-8.5.9-win32.upx.exe
