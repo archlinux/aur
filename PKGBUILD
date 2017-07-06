@@ -9,10 +9,10 @@ pkgdesc="Free, open and private browser with openSUSE's patches for better integ
 arch=('x86_64')
 license=('MPL')
 url="https://www.waterfoxproject.org/"
-depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font icu libvpx kwaterfoxhelper)
-makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
-             autoconf2.13 cargo rust clang llvm)
+depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
+         'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'libvpx' 'kwaterfoxhelper' 'libevent' 'nspr' 'hicolor-icon-theme')
+makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
+             'autoconf2.13' 'cargo' 'rust' 'clang' 'llvm')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -144,7 +144,7 @@ ac_add_options --disable-necko-wifi
 # If you have some problems with Skype Web or other web chat, comment this line:
 ac_add_options --disable-webrtc
 
- # If you want to have gamepad support, comment this line:
+# If you want to have gamepad support, comment this line:
 ac_add_options --disable-gamepad
 
 # vim:set ft=sh:
