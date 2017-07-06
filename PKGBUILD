@@ -8,15 +8,16 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=20170614
-pkgrel=1
+pkgver=20170626
+pkgrel=2
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
 url="https://github.com/google/fonts"
 license=('various')
-# About why "cantarell-fonts" is a dependency see comment in package() function.
+# About why "cantarell-fonts" and "noto-fonts" is a dependency see comment in package() function.
 depends=('cantarell-fonts'
          'fontconfig'
+         'noto-fonts'
          'xorg-fonts-encodings'
          'xorg-mkfontdir'
          'xorg-mkfontscale')
@@ -26,7 +27,6 @@ conflicts=('adobe-source-code-pro-fonts'
            'googlefontdirectory'
            'jsmath-fonts'
            'lohit-fonts'
-           'noto-fonts'
            'oldstand-font'
            'openarch_fonts'
            'otf-bitter'
@@ -94,4 +94,7 @@ package() {
     # cantarell-fonts package installs its fonts into /usr/share/fonts/cantarell/
     # and because cantarell-fonts installs .otf files instead of .ttf files
     find ${pkgdir}/usr/share/fonts/TTF -type f -name "Cantarell-*.ttf" -delete
+    # remove Noto fonts because noto-fonts package have more fonts than this package
+    # and also noto-fonts install it's fonts in /usr/share/fonts/noto.
+    find ${pkgdir}/usr/share/fonts/TTF -type f -name "Noto*.ttf" -delete
     }
