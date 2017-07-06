@@ -4,47 +4,49 @@
 #    tty devices, and configuration files on servers not running xWindows.
 #    From drpadmin written by Digi for SCO, HP UX, and Solaris
 
-. /usr/bin/dgrp/config/file_locations
-if [ "$DGRP_STORE" = "" ]; then
+set -u
+
+. '/usr/bin/dgrp/config/file_locations'
+if [ -z "${DGRP_STORE}" ]; then
   echo "$0: Can't find backing store from file locations."
   exit 2
 fi
 
-ttyname=tty # driver prefix
-procdir=`dirname "$DGRP_PROCCONFIG"`
-distro="Linux" # Originally made for Arch Linux
-# Installers can use sed -i to change this next line to the appropriate distro name
-#distro=:::
+g_ttyname='tty' # driver prefix
+g_procdir="$(dirname "${DGRP_PROCCONFIG}")"
+g_distro='Linux' # Originally made for Arch Linux
+# Packagers can use sed -i to change these next lines to the appropriate distro name
+#g_distro=:::
 
+# return 0 if the the device id $1 is acceptable for use
 check_devid() {
-  case $1 in
-  [a-o,q-z]|[a-z][a-z]);;
-  p)printf "**** p cannot be used. p is reserved for psuedo devices!"
-    return 1
-    ;;
-  *)printf "**** Please enter 1 or 2 alpha characters"
-    return 1
-    ;;
+  case "$1" in
+  [a-o,q-z]|[a-z][a-z]) return 0;;
+  p)printf '**** p cannot be used. p is reserved for psuedo devices!';;
+  *)printf '**** Please enter 1 or 2 alpha characters';;
   esac
-  return 0
+  return 1
 }
 
+# return 0 if the kernel is running. We try to start it if possible.
 check_kernel() {
-  if [ ! -d "$procdir" ]; then
-    modprobe dgrp
+  if [ "${EUID}" -eq 0 ] && [ ! -d "${g_procdir}" ]; then
+    modprobe 'dgrp'
   fi
-  if [ -d "$procdir" ]; then
-    lines=`wc -l "$DGRP_PROCCONFIG" | cut -d " " -f 1`
-    if [ "$lines" -eq 0 ]; then
-      echo "The kernel module is loaded but no devices are active" 
+  if [ -d "${g_procdir}" ]; then
+    local lines
+    lines="$(wc -l "${DGRP_PROCCONFIG}" | cut -d ' ' -f 1)"
+    if [ "${lines}" -eq 0 ]; then
       # this is not possible because the config file is removed and the kernel module is unloaded when the last device is uninit
+      echo 'The kernel module is loaded but no devices are active'
     fi
   else
-    echo "The kernel module is not loaded"
-    if [ -s "$DGRP_STORE" ]; then
-      echo "A configuration exists but will not be active until the kernel module is loaded"
+    echo 'The kernel module is not loaded'
+    if [ -s "${DGRP_STORE}" ]; then
+      echo 'A configuration exists but will not be active until the kernel module is loaded'
     else
-      echo "Add any device to load the kernel module"
+      echo '  systemctl start dgrp_daemon.service'
+      echo 'to load the kernel module'
     fi
     return 1
   fi
@@ -55,110 +57,168 @@ check_kernel() {
 # add a PortServer entry
 #
 add_ps() {
+  local node val ndev devid secureopt wan ans
   check_kernel
-  while true; do
-    printf "\nEnter the host name or IP address: "
+
+  local line linea available ttyused ipused
+  declare -A ttyused
+  declare -A ipused
+  while IFS='' read -r line || [[ -n "${line}" ]]; do
+    read -ra linea <<<"${line}"
+    case "${linea[0]:-}" in
+    [a-z]|[a-z][a-z])
+      ttyused[${linea[0]}]='used'
+      ipused[${linea[1]}]='used'
+      ;;
+    esac
+  done < "${DGRP_STORE}"
+
+  declare -A available
+  while IFS='' read -r line || [[ -n "${line}" ]]; do
+    printf '%s\n' "${line}"
+    read -ra linea <<<"${line}"
+    case "${linea[0]}" in
+    '*'*);;
+    '0.0.0.0');;
+    [0-9]*'.'[0-9]*'.'[0-9]*'.'[0-9]*)available[${linea[0]}]="${line}";; # crude IP detection
+    esac
+  done < <(addp.pl -Q --backing-store "${DGRP_STORE}" --timeout=1 --query-short --limit-query=10 | sort)
+  unset line linea
+
+  echo 'Answer 0 for any prompt to stop'
+  while :; do
+    printf '\nEnter the host name or IP address: '
     read node
-    if [ "$node" = "" -o "$node" = "0" ]; then
+    if [ -z "${node}" ]; then
+      echo 'Enter 0 to abort'
+      continue
+    fi
+    if [ "${node}" = '0' ]; then
       return
     fi
+    if [ ! -z "${ipused[${node}]:-}" ]; then
+      echo "${node} is already configured"
+      continue
+    fi
 
-    ping -c 4 "$node"
+    ping -n -w4 -c3 "${node}"
 
-    while true; do
-      printf "Enter the number of ports: "
-      read ndev
-      if [ "$ndev" = "" -o "$ndev" = "0" ]; then
-        return
+    ndev=''
+    secureopt=''
+    if [ ! -z "${available[${node}]:-}" ]; then
+      local linea
+      read -ra linea <<<"${available[${node}]}"
+      ndev="${linea[1]}"
+      if [ "${linea[2]}" = 'N' ]; then
+        secureopt='never'
       fi
-      if [ "$ndev" -ge 1 -a "$ndev" -le 64 ]; then
-        break
-      fi
-      printf "\n**** Please enter a number from 1 to 64\n\n"
-    done
+      unset linea
+    fi
 
-    while true; do
-      printf "Enter the tty device ID (1 or 2 lower case alpha characters) : "
-      read devid
-      if [ "$devid" = "" -o "$devid" = "0" ]; then
-        return
+    while :; do
+      if [ -z "${ndev}" ]; then
+        printf "Enter the number of ports: "
+      else
+        printf "Enter the number of ports [${ndev}]: "
       fi
-      check_devid $devid
-      if [ $? -ne 0 ]; then
+      read val
+      if [ ! -z "${val}" ]; then
+        ndev="${val}"
+      fi
+      if [ -z "${ndev}" ]; then
+        echo 'Enter 0 to abort'
         continue
       fi
-
-      while true; do
-        printf "\n\nWould you like this RealPort session to be encrypted?\n\n"
-        printf "NOTE: Not all RealPort products support encrypted RealPort sessions.\n"
-        printf "Please check your RealPort product's firmware release notes\n"
-        printf "or product literature before selecting \"always\".\n"
-        printf "If in doubt, select \"never\".\n\n"
-        printf "(always/never) : (never): "
-
-        read secure
-        if [ -z "$secure" ]; then
-          secure="never"
-        fi
-
-        case $secure in
-        [aA])
-          secure="always"
-          secureopt="always"
-          ;;
-        always)
-          secureopt="always"
-          ;;
-        [nN])
-          secure="never"
-          secureopt="never"
-          ;;
-        never)
-          secureopt="never"
-          ;;
-        *)
-          printf "\nPlease answer (a)lways or (n)ever.\n" >&2
-          ;;
-        esac
-
-        if [ ! -z "$secureopt" ]; then
-          break
-        fi
-      done
-
-      while true; do
-        printf "\nIf the network connection between your Server system\n"
-        printf "and the remote device includes a WAN link slower than 1 MBit,\n"
-        printf "see the drpd manual page and enter the WAN speed here : "
-        read wan
-        if [ -z "$wan" ]; then 
-          break
-        fi
-        printf "\n**** "
-        #expr "$s" : '.*:\(.*\)'
-      done
-
-      printf "\nThe following device will be configured,\n"
-      printf "$node\t$ndev\t$ttyname$devid$start-$ttyname$devid$p\t\tsecure ($secureopt)\t$wan\n"
-      printf "\nIs this correct (y to add or x to abort) ? "
-      read ans
-      if [ -z "$ans" ]; then
-        printf "\nEmpty response, not configuring this device.\n"
+      if [ "${ndev}" = '0' ]; then
         return
       fi
-      if [ $ans = 'x' ]; then
-        printf "\nx pressed, not configuring this device.\n"
-        return
+      if [ "${ndev}" -ge 1 ] && [ "${ndev}" -le 64 ]; then
+        break
       fi
-      if [ $ans = 'y' ]; then
-        if [ "$wan" != "" ]; then
-          $wan = "-s $wan"
-        fi
-        echo "$DGRP_CFG" -v -e $secureopt $wan init $devid $node $ndev
-        "$DGRP_CFG" -v -e $secureopt $wan init $devid $node $ndev
-        return
-      fi
+      printf '\n**** Please enter a number from 1 to 64\n\n'
     done
+
+    while :; do
+      printf 'Enter the tty device ID (1 or 2 lower case alpha characters) : '
+      read devid
+      if [ -z "${devid}" ]; then
+        echo 'Enter 0 to abort'
+        continue
+      fi
+      if [ "${devid}" = '0' ]; then
+        return
+      fi
+      if ! check_devid "${devid}"; then
+        continue
+      fi
+      if [ ! -z "${ttyused[${devid}]:-}" ]; then
+        echo "${devid} is already used, try another"
+        continue
+      fi
+      break
+    done
+
+    if [ -z "${secureopt}" ]; then
+      while :; do
+        printf '\n\nWould you like this RealPort session to be encrypted?\n\n'
+        printf 'NOTE: Not all RealPort products support encrypted RealPort sessions.\n'
+        printf "Please check your RealPort product's firmware release notes\n"
+        printf 'or product literature before selecting "always".\n'
+        printf 'If in doubt, select "never".\n\n'
+        printf '(always/never) : (never): '
+
+        read secureopt
+        secureopt="${secureopt,,}"
+        if [ -z "${secureopt}" ]; then
+          secureopt='never'
+        fi
+        if [ -z "${secureopt}" ] || [ "${secureopt}" = '0' ]; then
+          return
+        fi
+        if [ "${secureopt}" = 'never' ] || [ "${secureopt}" = 'always' ]; then
+          break
+        fi
+        printf '\nPlease answer always or never.\n'
+      done
+    fi
+
+    while :; do
+      printf '\nIf the network connection between your Server system\n'
+      printf 'and the remote device includes a WAN link slower than 1 MBit,\n'
+      printf 'see the drpd manual page and enter the WAN speed here : '
+      read wan
+      if [ "${wan}" = '0' ]; then
+        return
+      fi
+      if [ -z "${wan}" ] || [[ "${wan}" =~ [0-9]+ ]]; then
+        break
+      fi
+      printf '\nPlease enter a numeric answer or blank for none\n'
+    done
+
+    printf '\nThe following device will be configured,\n'
+    printf "${node}\t${ndev}\t${g_ttyname}${devid}\t\tsecure (${secureopt})\t${wan}\n"
+    printf '\nIs this correct (y to add, 0 to abort, n to start again) ? '
+    read ans
+    if [ -z "${ans}" ]; then
+      printf '\nEmpty response, not configuring this device.\n'
+      return
+    fi
+    if [ "${ans}" = 'x' ] || [ "${ans}" = '0' ]; then
+      printf '\nx pressed, not configuring this device.\n'
+      return
+    fi
+    if [ "${ans}" = 'y' ]; then
+      if [ ! -z "${wan}" ]; then
+        wan="-s ${wan}"
+      fi
+      # -m mode and -g group id don't work any more. It's all done with /etc/udev/rules.d/10-dgrp.rules
+      echo "$DGRP_CFG" -v -e "${secureopt}" ${wan} init "${devid}" "${node}" "${ndev}"
+      if "$DGRP_CFG" -v -e "${secureopt}" ${wan} init "${devid}" "${node}" "${ndev}"; then
+        systemctl restart 'dgrp_daemon.service' # can be removed when dgrp gets systemd compatible
+      fi
+      return
+    fi
   done
 }
 
@@ -166,19 +226,20 @@ add_ps() {
 # delete a PortServer device
 #
 delete_ps() {
-  check_kernel
-  if [ $? -ne 0 ]; then
+  if ! check_kernel; then
     return
   fi
   show_ps
-  printf "\nEnter the 2 letter id of the device to delete: "
+  printf '\nEnter the 2 letter id of the device to delete: '
+  local devid
   read devid
-  check_devid $devid
-  if [ $? -ne 0 ]; then
+  if ! check_devid "${devid}"; then
     return
   fi
-  echo "$DGRP_CFG" -v uninit "$devid"
-  "$DGRP_CFG" -v uninit "$devid"
+  echo "$DGRP_CFG" -v uninit "${devid}"
+  if "$DGRP_CFG" -v uninit "${devid}"; then
+    systemctl restart 'dgrp_daemon.service' # can be removed when dgrp gets systemd compatible
+  fi
 }
 
 #
@@ -189,145 +250,157 @@ delete_ps() {
 # $3 = word to display like "reset" or "move"
 # $4 = word to display like "" or "new"
 resetmove_ps() {
-  check_kernel
-  if [ $? -ne 0 ]; then
+  if ! check_kernel; then
     return
   fi
   show_ps
   printf "\nWarning: $2 a device will disconnect all active connections!\n"
   printf "Enter the 1 or 2 letter device to $3: "
+  local devid
   read devid
-  check_devid $devid
-  if [ $? -ne 0 ]; then
+  if ! check_devid "${devid}"; then
     return
   fi
-  node=`grep "^$devid[^0-9]" "$DGRP_STORE" | cut -d " " -f 2`
-  if [ "$node" = "" ]; then
-    printf "Device $devid not found"
+  local node
+  node="$(grep "^${devid}[^0-9]" "${DGRP_STORE}" | cut -d ' ' -f 2)"
+  if [ -z "${node}" ]; then
+    printf "Device ${devid} not found"
+    return
   fi
-  if [ "$1" -eq 1 ]; then
+  if [ "$1" -eq 1 ]; then # move
     printf "\nEnter the $4 host name or IP address: "
     read node
-    if [ "$node" = "" -o "$node" = "0" ]; then
+    if [ -z "${node}" ] || [ "${node}" = "0" ]; then
       return
     fi
-    echo ping -w 4 -c 4 "$node"
-    ping -w 4 -c 4 "$node"
+    echo ping -w 4 -c 4 "${node}"
+    ping -w 4 -c 4 "${node}"
   fi
-  echo "$DGRP_CFG" -v stop "$devid"
-  "$DGRP_CFG" -v stop "$devid"
-  echo "$DGRP_CFG" -v start "$devid" "$node"
-  "$DGRP_CFG" -v start "$devid" "$node"
+  echo "$DGRP_CFG" -v stop "${devid}"
+  "$DGRP_CFG" -v stop "${devid}"
+  echo "$DGRP_CFG" -v start "${devid}" "${node}"
+  if "$DGRP_CFG" -v start "${devid}" "${node}"; then
+    systemctl restart 'dgrp_daemon.service' # can be removed when dgrp gets systemd compatible
+  fi
 }
 
 show_ps() {
   check_kernel
-  if [ -s "$DGRP_STORE" ]; then
-    lines=`wc -l "$DGRP_STORE" | cut -d " " -f 1`
+  local lines
+  if [ -s "${DGRP_STORE}" ]; then
+    lines="$(wc -l "${DGRP_STORE}" | cut -d ' ' -f 1)"
   else
     lines=0
   fi
-  if [ "$lines" -eq 0 ]; then
-    echo ""
-    echo "No devices are configured."
-  elif [ "$lines" -lt 20 ]; then
-    echo `grep PortCount "$DGRP_STORE" | cut -d " " -f3-`
-    grep "^[a-z]" "$DGRP_STORE"
+  if [ "${lines}" -eq 0 ]; then
+    printf '\nNo devices are configured.\n'
+  elif [ "${lines}" -lt 20 ]; then
+    echo "$(grep 'PortCount' "${DGRP_STORE}" | cut -d ' ' -f3-)"
+    grep "^[a-z]" "${DGRP_STORE}"
   else
-    less "$DGRP_STORE"
+    less -S "${DGRP_STORE}"
   fi
 }
 
 show_info() {
-  check_kernel
-  if [ $? -eq 0 ]; then
-    if [ "$lines" -lt 20 ]; then
-      cat "$DGRP_PROCCONFIG"
+  if check_kernel; then
+    if [ "$(wc -l "${DGRP_PROCCONFIG}" | cut -d ' ' -f 1)" -lt 20 ]; then
+      cat "${DGRP_PROCCONFIG}"
     else
-      less "$DGRP_PROCCONFIG"
+      less "${DGRP_PROCCONFIG}"
     fi
   fi
 }
 
 show_node() {
-  check_kernel
-  if [ $? -eq 0 ]; then
-    if [ "`wc -l "$procdir/nodeinfo" | cut -d " " -f 1`" -lt 20 ]; then
-      cat "$procdir/nodeinfo"
+  if check_kernel; then
+    if [ "$(wc -l "${g_procdir}/nodeinfo" | cut -d ' ' -f 1)" -lt 20 ]; then
+      cat "${g_procdir}/nodeinfo"
     else
-      less "$procdir/nodeinfo"
+      less "${g_procdir}/nodeinfo"
     fi
   fi
 }
 
 show_version() {
-  check_kernel
-  if [ $? -eq 0 ]; then
-    if [ "`wc -l "$procdir/info" | cut -d " " -f 1`" -lt 20 ]; then
-      cat "$procdir/info"
-    elif [ "$lines < 20" ]; then
-      less "$procdir/info"
+  if check_kernel; then
+    if [ "$(wc -l "${g_procdir}/info" | cut -d ' ' -f 1)" -lt 20 ]; then
+      cat "${g_procdir}/info"
+    else
+      less "${g_procdir}/info"
     fi
   fi
 }
 
 # main body
 
-echo ""
+echo ''
 
-if [ "$EUID" -ne 0 ]; then
-  printf "\nDigi Realport Current Configuration:\n"
+if [ "${EUID}" -ne 0 ]; then
+  printf '\nDigi Realport Current Configuration:\n'
   show_ps
 else
-  echo "Digi Realport Configuration Menu for $distro"
-  echo ""
-  echo "Add     - add a new device configuration (init)"
-  echo "Delete  - delete a device configuration (uninit)"
-  echo "Reset   - reset a single device by stopping and starting it"
-  echo "Move    - change IP address for a device without losing configuration"
-  echo "Show    - display set configuration $DGRP_STORE"
-  echo "Kernel  - display active configuration $DGRP_PROCCONFIG"
-  echo "Node    - display active nodes $procdir/nodeinfo"
-  echo "Version - display kernel version and debugging info $procdir/info"
+  echo "Digi Realport Configuration Menu for ${g_distro}"
+  echo ''
+  echo 'Add     - add a new device configuration (init)'
+  echo 'Delete  - delete a device configuration (uninit)'
+  echo 'Reset   - reset a single device by stopping and starting it'
+  #echo 'Move    - change IP address for a device without losing configuration'
+  echo "Show    - display set configuration ${DGRP_STORE}"
+  echo "Kernel  - display active configuration ${DGRP_PROCCONFIG}"
+  echo "Node    - display active nodes ${g_procdir}/nodeinfo"
+  echo "Version - display kernel version and debugging info ${g_procdir}/info"
+  echo ''
 fi
 
 check_kernel
 
-if [ -d "$procdir" ]; then
-  echo ""
-  echo "Kernel Status: Running"
-  lines=`grep "^[^#].*" "$procdir/config" | wc -l | cut -d " " -f 1`
-  if [ "$lines" -eq 0 ]; then
-    echo "Device Count : $lines"
-    echo "systemctl start dgrp_daemon.service"
-    systemctl start dgrp_daemon.service
-    echo "systemctl start dgrp_ditty.service"
-    systemctl start dgrp_ditty.service
-    lines=`grep "^[^#].*" "$procdir/config" | wc -l | cut -d " " -f 1`
+echo "Service at boot: $(systemctl is-enabled 'dgrp_daemon.service')"
+echo "Service status: $(systemctl is-active 'dgrp_daemon.service')"
+
+if [ -d "${g_procdir}" ]; then
+  echo 'Kernel status: running'
+  lines="$(grep "^[^#].*" "${g_procdir}/config" | wc -l | cut -d ' ' -f 1)"
+  if [ "${lines}" -eq 0 ]; then
+    if [ "${EUID}" -eq 0 ]; then
+      echo "Device count : ${lines}"
+      echo 'systemctl start dgrp_daemon.service'
+      systemctl start 'dgrp_daemon.service'
+      echo 'systemctl start dgrp_ditty.service'
+      systemctl start 'dgrp_ditty.service'
+      lines="$(grep "^[^#].*" "${g_procdir}/config" | wc -l | cut -d ' ' -f 1)"
+    fi
+  elif ! pgrep -c 'drpd' > /dev/null; then
+    echo 'Daemon status: NOT RUNNING'
+    echo 'to fix:'
+    echo '  systemctl restart dgrp_daemon.service'
+  else
+    echo 'Daemon status: running'
   fi
-  echo "Device Count : $lines"
+  echo "Device Count : ${lines}"
+  unset lines
 else
-  echo ""
-  echo "Kernel status: NOT RUNNING"
+  echo ''
+  echo 'Kernel status: NOT RUNNING'
 fi
 
-if [ "$EUID" -ne 0 ]; then
+if [ "${EUID}" -ne 0 ]; then
   printf "\nMust be root to use $0\n"
   exit 2
 fi
 
-while true; do
-  printf "\nOp: (a)dd (d)elete (r)eset (s)how (k)ernel (n)ode (v)ersion (q)uit:"
+while :; do
+  printf '\nOp: (a)dd (d)elete (r)eset (s)how (k)ernel (n)ode (v)ersion (q)uit:'
   read opt
-  case $opt in
+  case "${opt,,}" in
   'a') add_ps ;;
   'd') delete_ps;;
-  'r') resetmove_ps 0 "Resetting" "reset" "";;
-  #'m') resetmove_ps 1 "Moving" "move" "new";; # Doesn't work according to the instructions
+  'r') resetmove_ps 0 'Resetting' 'reset' '';;
+  #'m') resetmove_ps 1 'Moving' 'move' 'new';; # Doesn't work according to the instructions
   's') show_ps;;
   'k') show_info;;
   'n') show_node;;
   'v') show_version;;
-  'q') echo "man `basename $DGRP_CFG` for advanced configuration options"; exit 0;;
+  'q') echo "man $(basename "${DGRP_CFG}") for advanced configuration options"; exit 0;;
   esac
 done

@@ -1,0 +1,39 @@
+diff -pNaru5 src.old/dgrp-1.9/driver/2.6.27/dgrp_common.c src/dgrp-1.9/driver/2.6.27/dgrp_common.c
+--- src.old/dgrp-1.9/driver/2.6.27/dgrp_common.c	2016-11-09 22:47:19.000000000 -0500
++++ src/dgrp-1.9/driver/2.6.27/dgrp_common.c	2017-07-04 03:25:02.157171810 -0400
+@@ -52,11 +52,15 @@
+ #include <linux/errno.h>
+ #include <linux/tty.h>
+ 
+ #include "dgrp_common.h"
+ #include "dgrp_tty.h"
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
++#include <linux/sched/signal.h>
++#else
+ #include <linux/sched.h>	/* For in_egroup_p() */
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
+ #include <linux/slab.h>	/* For in_egroup_p() */
+ #endif
+ 
+ 
+diff -pNaru5 src.old/dgrp-1.9/driver/2.6.27/dgrp_tty.c src/dgrp-1.9/driver/2.6.27/dgrp_tty.c
+--- src.old/dgrp-1.9/driver/2.6.27/dgrp_tty.c	2016-11-09 22:47:20.000000000 -0500
++++ src/dgrp-1.9/driver/2.6.27/dgrp_tty.c	2017-07-04 03:25:26.950917569 -0400
+@@ -53,12 +53,15 @@
+ 
+ #include "linux_ver_fix.h"
+ 
+ #include <linux/tty.h>
+ #include <linux/tty_flip.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
++#include <linux/sched/signal.h>
++#else
+ #include <linux/sched.h>
+-#include <linux/sched.h>
++#endif
+ 
+ #include <linux/serial.h>
+ #include <linux/termios.h>
+ #include <linux/delay.h>
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
