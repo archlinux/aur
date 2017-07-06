@@ -1,7 +1,7 @@
 pkgbase = golly
 	pkgdesc = A simulator for Conway's Game of Life and other cellular automata
 	pkgver = 2.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://golly.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,20 +9,13 @@ pkgbase = golly
 	makedepends = gendesk
 	makedepends = perl
 	makedepends = python2
-	makedepends = gtk2
-	makedepends = glu
+	depends = wxgtk
 	optdepends = perl: for Perl scripting support
 	optdepends = python2: for Python scripting support
 	source = https://downloads.sourceforge.net/golly/golly-2.8-src.tar.gz
-	source = https://downloads.sourceforge.net/wxwindows/wxWidgets-3.0.2.tar.bz2
-	source = make-abicheck-non-fatal.patch
-	source = wxgtk-gcc6.patch
-	source = gst1.0.patch
-	sha1sums = 6c41ae2bfd762bb39d556eb7c342412cbb7f9787
-	sha1sums = 6461eab4428c0a8b9e41781b8787510484dea800
-	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
-	sha1sums = 498202334c69d49c1ebbc9d36ad382cfa237f3f8
-	sha1sums = 8702e148ac8a49cc334f19acf19af9bb2c975952
+	source = golly.desktop
+	sha256sums = 0488724715bae228e88d0a819d8ed311f964c70f37f228f6218bc053a1b09b28
+	sha256sums = 3bc28f142f9f7abb47ce06a1194aecf91ee1286e442f1b59e03fbfd9fcaecea4
 
 pkgname = golly
 

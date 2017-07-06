@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Golly
+Comment=A simulator for Conway's Game of Life and other cellular automata
+Exec=golly
+Icon=golly
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
