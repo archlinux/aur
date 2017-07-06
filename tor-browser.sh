@@ -34,7 +34,7 @@ _TB_HOME_DIR_=~/".${_TB_PKGNAME_}"
 _TB_APP_DIR_="${_TB_HOME_DIR_}/app"
 _TB_VER_FILE_="${_TB_HOME_DIR_}/VERSION"
 _TB_LOG_FILE_="${_TB_HOME_DIR_}/LOG"
-_TB_UPDATE_=0
+_TB_REFRESH_=0
 
 
 # syntax: _notify_ "${TITLE}" "${MESSAGE}"
@@ -79,15 +79,9 @@ _refresh_local_() {
 _aur_update_() {
 
 	local DO_UPDATE=0
-	local AUR_URL="https://aur.archlinux.org/cgit/aur.git/snapshot/${_TB_PKGNAME_}.tar.gz"
 
 	if [[ "$(id -u)" == '0' ]]; then
 		echo 'It is not a good idea to do this as root. Abort.' 1>&2
-		exit 1
-	fi
-
-	if ! curl --output /dev/null --silent --head --fail "${AUR_URL}"; then
-		echo 'Unable to retrieve the PKGBUILD. Abort.'
 		exit 1
 	fi
 
@@ -95,7 +89,11 @@ _aur_update_() {
 
 	cd "${TMP_PKGBUILD}"
 
-	curl --silent "${AUR_URL}" | tar xz
+	if ! { curl --silent --fail "https://aur.archlinux.org/cgit/aur.git/snapshot/${_TB_PKGNAME_}.tar.gz" | tar xz ;} 2>/dev/null; then
+		echo 'Unable to retrieve the PKGBUILD. Abort.'
+		rm -rf "${TMP_PKGBUILD}"
+		exit 1
+	fi
 
 	cd "${TMP_PKGBUILD}/${_TB_PKGNAME_}"
 
@@ -146,7 +144,7 @@ for arg; do
 	case "${arg}" in
 		-h|--help) _usage_; exit 0 ;;
 		-u|--update) _aur_update_; exit 0 ;;
-		-f|--refresh) _TB_UPDATE_=1 ;;
+		-f|--refresh) _TB_REFRESH_=1 ;;
 		--dir=*) _TB_HOME_DIR_="${arg#*=}" ;;
 		*) args+=("$arg") ;;
 	esac
@@ -160,13 +158,13 @@ cd "${_TB_HOME_DIR_}"
 [[ ! -f "${_TB_VER_FILE_}" ]] && echo 0 > "${_TB_VER_FILE_}"
 
 # get the installed version
-while read line
+while read _TB_VER_LINE_
 do
-	TB_INSTALLED_VERSION="${line}"
+	_TB_INSTALLED_VERSION_="${_TB_VER_LINE_}"
 done < "${_TB_VER_FILE_}"
 
 # start update if old or no tor-browser is installed
-if [[ "${TB_INSTALLED_VERSION}" == "${_TB_VERSION_}" ]] && [[ ${_TB_UPDATE_} -eq 0 ]]; then
+if [[ "${_TB_INSTALLED_VERSION_}" == "${_TB_VERSION_}" ]] && [[ ${_TB_REFRESH_} -eq 0 ]]; then
 	# clear log
 	> "${_TB_LOG_FILE_}"
 else
@@ -175,5 +173,5 @@ else
 fi
 
 # start tor-browser
-cd "${_TB_APP_DIR_}/Browser" && ./start-tor-browser "${args[@]}"
+"${_TB_APP_DIR_}/Browser/start-tor-browser" "${args[@]}"
 
