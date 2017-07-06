@@ -4,13 +4,12 @@
 _gemname=glib2
 pkgname=ruby-$_gemname
 pkgver=3.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/GLib2 is a Ruby binding of GLib-2.x.'
 arch=(i686 x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
 license=(LGPL2.1)
-depends=(ruby glib2 ruby-pkg-config)
-makedepends=(ruby-native-package-installer)
+depends=(ruby glib2 ruby-pkg-config ruby-native-package-installer)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
