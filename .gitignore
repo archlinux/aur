@@ -1,0 +1,5 @@
+matterhorn/
+mattermost-api/
+pkg/
+src/
+*.tar.xz
