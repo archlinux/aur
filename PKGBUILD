@@ -16,7 +16,7 @@
 
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
@@ -29,8 +29,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch')
-sha256sums=('64fe968e35f9d9f6617b48027957761cf76c20d43721ee6e2855a965afa285ee'
-            'a86d95ee626174001a89cd2dd9ae86082a554f593cb5411c672b85253ade63e8')
+sha256sums=('c4eb56cf24a75661b8317b566be37396c90357b4f6730ef12b8c97a7079ca0e8'
+            'de1f0114b723d07f1c7a2c11c15e8c5b05852c690e3a36d3f65f3a411fd81127')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -38,7 +38,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
