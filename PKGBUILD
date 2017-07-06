@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=vazir-fonts
-pkgver=12.0.0
+pkgver=13.0.0
 pkgrel=1
 pkgdesc="A beautiful Persian font based on DejaVu font."
 url="https://rastikerdar.github.io/vazir-font/"
@@ -13,7 +13,7 @@ provides=('ttf-vazir' "$pkgname")
 conflicts=('ttf-vazir' "$pkgname")
 replaces=('ttf-vazir')
 source=("$pkgname-${pkgver//_/-}.zip::https://github.com/rastikerdar/vazir-font/releases/download/v${pkgver//_/-}/vazir-font-v${pkgver//_/-}.zip")
-sha256sums=('3105717417d58d2df92ef90e381745be95d976a359d2e49989c89a5e288da7bf')
+sha256sums=('dc75a2090ee132e334295695bc7b87c34153948eddf77b71be91c8a59fc41d60')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
