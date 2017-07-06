@@ -40,6 +40,7 @@ else
   cd $SCRIPT_HOME
   rm -rf *.jar *.xz *.gz tws-latest-standalone-*.sh pkg src
   sed -i "s/pkgver=.*/pkgver=${VER}/" PKGBUILD
+  sed -i "s/pkgrel=.*/pkgrel=1/" PKGBUILD
   # Next line from https://bugs.archlinux.org/task/15051
   { rm PKGBUILD; awk '$0 ~ /^md5sums/ {i = 1; system("makepkg -g 2>/dev/null")}; !i {print}; $0 ~ /\)/ {i = 0}' > PKGBUILD; } < PKGBUILD
   makepkg
