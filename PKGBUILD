@@ -2,7 +2,7 @@
 
 pkgname='quex-for_libadalang'
 pkgver=0.65.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Generator of lexical analyzers in C and C++. Unicode Supported."
 
 arch=('any')
