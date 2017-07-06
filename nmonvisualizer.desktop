@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=NMONVisualizer
+GenericName=Nmon analyzer for AIX and Linux
+Comment=Java GUI tool for analyzing nmon system files
+Exec=nmonvisualizer %F
+Terminal=false
+StartupNotify=true
+Categories=System;Viewer;
+Keywords=nmon
