@@ -25,9 +25,9 @@ source=('http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-b
 	'vmware-horizon-usb.service'
 	'vmware-horizon-virtual-printing.service')
 source_x86_64=("${pkgbase}-${pkgver}-${_build}-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x64.bundle"
-	'http://de.archive.ubuntu.com/ubuntu/pool/main/g/glibmm2.4/libglibmm-2.4-1c2a_2.39.93-0ubuntu1_amd64.deb')
+	'http://archive.ubuntu.com/ubuntu/pool/main/g/glibmm2.4/libglibmm-2.4-1c2a_2.39.93-0ubuntu1_amd64.deb')
 source_i686=("${pkgbase}-${pkgver}-${_build}-i686.bundle::https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x86.bundle"
-	'http://de.archive.ubuntu.com/ubuntu/pool/main/g/glibmm2.4/libglibmm-2.4-1c2a_2.39.93-0ubuntu1_i386.deb')
+	'http://archive.ubuntu.com/ubuntu/pool/main/g/glibmm2.4/libglibmm-2.4-1c2a_2.39.93-0ubuntu1_i386.deb')
 sha256sums=('d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
             '9f34fd9b3d1ef5822f3927829d6f28db6197d72896bb4a1108233db3731f064c'
             '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
