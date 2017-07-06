@@ -2,7 +2,7 @@
 
 pkgname=pinegrow
 pkgver=3.01
-pkgrel=1
+pkgrel=2
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
 url="https://pinegrow.com"
