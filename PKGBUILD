@@ -7,7 +7,7 @@ url='http://libre.adacore.com/tools/gnat-component-collection/'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('gcc-ada' 'readline' 'libgpr' 'gtkada')
+depends=('gcc-ada' 'readline' 'libgpr' 'gtkada' 'xmlada')
 makedepends=('git' 'gprbuild' 'postgresql' 'sqlite3')
 optdepends=('postgresql' 'sqlite3')
 
