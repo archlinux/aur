@@ -8,7 +8,7 @@
 
 _qt_module=qtwebchannel
 pkgname=mingw-w64-qt5-webchannel
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)'
@@ -21,7 +21,7 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 groups=('mingw-w64-qt5')
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('12ef7ac86b9da0eb6f0140f402e180de95a1f9bfa9f408c2a366279da078e1b9')
+sha256sums=('80425f5a6df8784f5221809ffd664486ed38427f514ab4ec174e20456b027000')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -29,7 +29,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
