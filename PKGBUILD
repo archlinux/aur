@@ -2,7 +2,7 @@
 
 pkgname=magic-wormhole-git
 _pkgname=${pkgname%-*}
-pkgver=0.10.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Securely transfer data between computers"
 arch=('any')
