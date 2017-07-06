@@ -1,6 +1,6 @@
 pkgname=xmlada
 pkgver=2017
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Xml parsing and schema based validation.'
 url='http://libre.adacore.com/tools/xmlada/'
