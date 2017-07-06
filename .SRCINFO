@@ -1,19 +1,13 @@
 pkgbase = ironpython
 	pkgdesc = Python implementation for the .NET framework
 	pkgver = 2.7.5
-	pkgrel = 1
+	pkgrel = 3
 	url = http://ironpython.net
 	arch = any
 	license = Apache
-	makedepends = xz
-	depends = mono>=2.10.0
-	options = !strip
-	options = emptydirs
-	options = libtool
+	depends = mono
 	source = https://github.com/IronLanguages/main/archive/ipy-2.7.5.zip
-	source = site.patch
 	md5sums = 85951a4125fb733cdeaced19f3ff7157
-	md5sums = dd484ca6dfe03277d8a13e7b1cfe6662
 
 pkgname = ironpython
 
