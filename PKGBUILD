@@ -1,6 +1,6 @@
 pkgname=gprbuild-bootstrap
 pkgver=2017
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Static gprbuild to bootstrap xmlada and gprbuild proper.'
 url='http://www.adacore.com/gnatpro/toolsuite/gprbuild/'
