@@ -7,8 +7,8 @@
 
 pkgname=davinci-resolve-beta
 _pkgname=resolve
-pkgver=14.0b4
-pkgrel=3
+pkgver=14.0b5
+pkgrel=0
 pkgdesc='Professional A/V post-production software suite'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/"
@@ -73,13 +73,13 @@ if [ ! -f ${pkgdir}/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
   if [ -f $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ]; then
     ln -s $HOME/Downloads/DaVinci_Resolve_${pkgver}_Linux.zip ${pkgdir}
   else
-    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in to ${pkgdir}"
+    msg2 "Please remember to put a package archive DaVinci_Resolve_${pkgver}_Linux.zip in ${pkgdir}"
     sleep 3
   fi
 fi
 
 source=("local://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('1756c12c94af08a2b7a9d502aa63ab429ed756d47cdd0f1834f92add2f945191')
+sha256sums=('a2989ccdb03fcd3107f2f538e7fb7cd8096961627139e5b42df68bd334cb506e')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${_pkgname}/"{bin,configs,Media}
