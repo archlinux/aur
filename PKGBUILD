@@ -13,7 +13,7 @@ pkgver=4.5.0
 _build=5650368
 _cart='CART17Q2'
 _docver=45
-pkgrel=5
+pkgrel=6
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('i686' 'x86_64')
 url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/4_0'
@@ -31,7 +31,7 @@ source_i686=("${pkgbase}-${pkgver}-${_build}-i686.bundle::https://download3.vmwa
 sha256sums=('d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
             '9f34fd9b3d1ef5822f3927829d6f28db6197d72896bb4a1108233db3731f064c'
             '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
-            '5e737d69e49ea7e039bc94f358b45c8e6d9071b7c041a53800555d3dc21c8dac'
+            'f0944ca74a44292e7f853792335d3bbd1a89a1d4964d6d74a7e9485a8b068b0b'
             'e47e770a1e19ed321de7c2765b2d682f59ac466aef92b2e4ea5e65cacf56de36')
 sha256sums_x86_64=('70281bcac267e72b816e62cb0742c8707a5f29dccae977613d6b837e3248d429'
                    'fe0c8d8a71ab4261f73469871c06665941a04c2e26c71cd6cbb3c2dd42faa2b9')
