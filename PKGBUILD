@@ -3,10 +3,10 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-dev
-pkgver=17.11.0_0pre1
+pkgver=17.11.0.0pre1
 # Hyphens (-) are prohibited however they are used by the package author
-# therefore it is necessary to invoke ${pkgver} like ${pkgver//_/-}
-# this will substituet any underscores (_) with hyphens
+# therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
+# this will substitute any full stops (.) with hyphens
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
@@ -38,16 +38,16 @@ source=("slurm-tmpfiles.conf"
 	"slurmctld.service"
 	"slurmd.service"
 	"slurmdbd.service"
-	"https://www.schedmd.com/download/total/slurm-${pkgver//_/-}.tar.bz2")
+	"https://github.com/SchedMD/slurm/archive/slurm-${pkgver//./-}.tar.gz")
 sha512sums=('61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e263179f7def932660acefd34c790c9d2b301cd6a49d92b8b80deeb1c7b8011'
             'f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710'
             'a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5'
             'ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c'
             '56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304'
-            'aaa9ae9b965a5d58b30b93c968c0206912ad37b5357fa65c03adc98a1a51aeacef9211d8c8fc109327a1bb677e18b1b5d025af556605e23dabf718937c19d9ab')
+            '18468cce37b4ea15f0a7b4b564bff70a1138b24c8f34c7b94a4056e7e4dd22caa37d25328660f5e04e75c715cb060e78b9525dca52b4e41ef93d5502f1829a4f')
 
 build() {
-	cd "${srcdir}/slurm-${pkgver//_/-}"
+	cd "${srcdir}/slurm-${pkgver//./-}"
 
 	# If required libraries or header files are in non-standard locations,
 	# set CFLAGS and LDFLAGS environment variables accordingly.
@@ -74,7 +74,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/slurm-${pkgver//_/-}"
+	cd "${srcdir}/slurm-${pkgver//./-}"
 
 	make DESTDIR="${pkgdir}" install
 
