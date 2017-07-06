@@ -1,0 +1,11 @@
+[Unit]
+Description=xen linux distribution service
+Before=xend.service
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/usr/bin/xe-linux-distribution /var/cache/xe-linux-distribution
+
+[Install]
+WantedBy=multi-user.target

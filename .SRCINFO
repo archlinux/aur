@@ -1,0 +1,35 @@
+pkgbase = xe-guest-utilities
+	pkgdesc = Citrix XenServer Tools
+	pkgver = 6.2.0
+	pkgrel = 2
+	url = http://citrix.com/English/ps2/products/product.asp?contentID=683148&ntref=hp_nav_US
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = python2
+	options = staticlibs
+	source = https://sources.archlinux.org/other/community/xe-guest-utilities/xe-guest-utilities_6.2.0-1120.tar.gz
+	source = ip_address.patch
+	source = xe-linux-distribution.service
+	source = xe-daemon.service
+	source = proc-xen.mount
+	source = tmpfile
+	md5sums = 98644da204b18b695ede0ba45f4df22d
+	md5sums = 9bd39e95384056069f7faa870a28413a
+	md5sums = 95064a7d8a32cd3aaca14e3b48c69599
+	md5sums = 173fed74c76817702b062ed653002db0
+	md5sums = 3252fa21362fd55246f9d8b923070151
+	md5sums = cadad1eb5b1fa6d5fe463a1a0fd82fff
+
+pkgname = xe-guest-utilities
+	depends = xenstore
+	depends = bash
+	depends = lsb-release
+
+pkgname = xenstore
+	depends = bzip2
+	depends = lzo
+	depends = zlib
+	depends = xz
+
