@@ -1,6 +1,6 @@
 pkgname=gprbuild
 pkgver=2017
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Multi-language build system.'
 url='http://www.adacore.com/gnatpro/toolsuite/gprbuild/'
