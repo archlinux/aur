@@ -8,7 +8,7 @@
 
 _qt_module=qtdatavis3d
 pkgname="mingw-w64-qt5-datavis3d"
-pkgver=5.9.0
+pkgver=5.9.1
 pkgrel=1
 arch=('any')
 pkgdesc="Qt Data Visualization module (mingw-w64)"
@@ -21,7 +21,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('696baff081c7aebf42ca6f618d8c1ee122bd80ca623028f6379c4a4414a571f3')
+sha256sums=('233cab90fa35c926717bf697e7259b4e5bc7af6a26183657b006dac80fc0a191')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -29,7 +29,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=shared')
+  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
