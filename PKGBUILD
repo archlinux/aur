@@ -2,7 +2,7 @@
 
 pkgname=asis
 pkgver=2017
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows Ada programs access to the syntactic and semantic structure of source code. Also provides extra tools such as gnatpp."
 
 arch=(i686 x86_64)
