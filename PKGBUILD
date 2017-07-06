@@ -220,7 +220,7 @@ END
     "$pkgdir/usr/share/man/man1/waterfox.1"
     
   install -Dm644 $srcdir/distribution.ini \
-    "$pkgdir/opt/waterfox//distribution/distribution.ini"
+    "$pkgdir/opt/waterfox/distribution/distribution.ini"
 
   # Use system-provided dictionaries
   rm -r "$pkgdir"/opt/waterfox/dictionaries
