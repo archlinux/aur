@@ -1,0 +1,21 @@
+pkgbase = xbase
+	pkgdesc = A compatible C++ class library
+	pkgver = 2.0.0
+	pkgrel = 4
+	url = http://linux.techass.com/projects/xdb/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = bash
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/xdb/xbase-2.0.0.tar.gz
+	source = fix-build.patch
+	source = gcc43.patch
+	source = gcc47.patch
+	md5sums = 9b29362031716a12491beb9f8cc882f2
+	md5sums = f66c1d19a51552b1748ab9158156b103
+	md5sums = 0d5a59a59eb2c79d172bd4339de35372
+	md5sums = 879bf5107605eee2cbec2dca116edac6
+
+pkgname = xbase
+

@@ -1,0 +1,11 @@
+--- xbase-2.0.0/xbase/ntx.h.orig	2006-04-09 07:40:43.000000000 -0400
++++ xbase-2.0.0/xbase/ntx.h	2006-04-09 07:40:53.000000000 -0400
+@@ -218,7 +218,7 @@ class XBDLLEXPORT xbNtx : public xbIndex
+    xbShort  KeyExists( char * Key ) { return FindKey( Key, strlen( Key ), 0 ); }
+    xbShort  KeyExists( xbDouble );
+ 
+-   xbShort xbNtx::AllocKeyBufs(void);
++   xbShort AllocKeyBufs(void);
+ 
+    virtual void GetExpression(char *buf, int len);
+ };

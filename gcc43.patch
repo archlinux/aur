@@ -1,0 +1,573 @@
+diff -up xbase-2.0.0/xbase/xbstring.h.gcc43 xbase-2.0.0/xbase/xbstring.h
+--- xbase-2.0.0/xbase/xbstring.h.gcc43	2001-01-27 06:00:32.000000000 +0100
++++ xbase-2.0.0/xbase/xbstring.h	2008-03-11 20:21:20.000000000 +0100
+@@ -56,7 +56,7 @@
+ #endif
+ 
+ #include <stdlib.h>
+-#include <iostream.h>
++#include <iostream>
+ 
+ /*! \file xbstring.h
+ */
+@@ -119,7 +119,7 @@ public:
+   bool operator <= ( const xbString& ) const;
+   bool operator >= ( const xbString& ) const;
+ 
+-  friend ostream& operator << ( ostream&, const xbString& );
++  friend std::ostream& operator << ( std::ostream&, const xbString& );
+ 
+   xbString &remove(size_t pos = 0, int n = npos);
+   xbString mid(size_t pos = 0, int n = npos) const;
+diff -up xbase-2.0.0/xbase/dbf.cpp.gcc43 xbase-2.0.0/xbase/dbf.cpp
+--- xbase-2.0.0/xbase/dbf.cpp.gcc43	2008-03-11 20:24:01.000000000 +0100
++++ xbase-2.0.0/xbase/dbf.cpp	2008-03-11 20:25:01.000000000 +0100
+@@ -79,6 +79,9 @@
+ 
+ #include <xbase/xbexcept.h>
+ 
++using std::cout;
++using std::endl;
++
+ /*! \file dbf.cpp
+ */
+ 
+diff -up xbase-2.0.0/xbase/xbstring.cpp.gcc43 xbase-2.0.0/xbase/xbstring.cpp
+--- xbase-2.0.0/xbase/xbstring.cpp.gcc43	2008-03-11 20:33:00.000000000 +0100
++++ xbase-2.0.0/xbase/xbstring.cpp	2008-03-11 20:33:00.000000000 +0100
+@@ -582,7 +582,7 @@ bool xbString::operator>=( const xbStrin
+ //! Short description.
+ /*!
+ */
+-XBDLLEXPORT ostream& operator << ( ostream& os, const xbString& xbs ) {
++XBDLLEXPORT std::ostream& operator << ( std::ostream& os, const xbString& xbs ) {
+   return os << xbs.data;
+ }
+ 
+diff -up xbase-2.0.0/xbase/exp.cpp.gcc43 xbase-2.0.0/xbase/exp.cpp
+--- xbase-2.0.0/xbase/exp.cpp.gcc43	2008-03-11 20:23:54.000000000 +0100
++++ xbase-2.0.0/xbase/exp.cpp	2008-03-11 20:24:30.000000000 +0100
+@@ -64,6 +64,8 @@
+ 
+ #include <xbase/xbexcept.h>
+ 
++using std::cout;
++
+ /*! \file exp.cpp
+ */
+ 
+diff -up xbase-2.0.0/xbase/html.cpp.gcc43 xbase-2.0.0/xbase/html.cpp
+--- xbase-2.0.0/xbase/html.cpp.gcc43	2008-03-11 20:27:18.000000000 +0100
++++ xbase-2.0.0/xbase/html.cpp	2008-03-11 20:28:56.000000000 +0100
+@@ -68,6 +68,9 @@
+ 
+ #include <xbase/xbexcept.h>
+ 
++using std::cout;
++using std::endl;
++
+ /*! \file html.cpp
+ */
+ 
+diff -up xbase-2.0.0/xbase/ntx.cpp.gcc43 xbase-2.0.0/xbase/ntx.cpp
+--- xbase-2.0.0/xbase/ntx.cpp.gcc43	2008-03-11 20:33:48.000000000 +0100
++++ xbase-2.0.0/xbase/ntx.cpp	2008-03-11 20:33:59.000000000 +0100
+@@ -75,6 +75,9 @@
+ 
+ #include <xbase/xbexcept.h>
+ 
++using std::cout;
++using std::endl;
++
+ /*! \file ntx.cpp
+ */
+ 
+diff -up xbase-2.0.0/xbase/xbase.cpp.gcc43 xbase-2.0.0/xbase/xbase.cpp
+--- xbase-2.0.0/xbase/xbase.cpp.gcc43	2008-03-11 20:32:08.000000000 +0100
++++ xbase-2.0.0/xbase/xbase.cpp	2008-03-11 20:32:08.000000000 +0100
+@@ -62,6 +62,9 @@
+ 
+ #include <xbase/xbexcept.h>
+ 
++using std::cout;
++using std::endl;
++
+ /*! \file xbase.cpp
+ */
+ 
+diff -up xbase-2.0.0/xbase/stack.cpp.gcc43 xbase-2.0.0/xbase/stack.cpp
+--- xbase-2.0.0/xbase/stack.cpp.gcc43	2000-11-10 20:04:17.000000000 +0100
++++ xbase-2.0.0/xbase/stack.cpp	2008-03-11 20:31:16.000000000 +0100
+@@ -59,10 +59,12 @@
+ 
+ #include <string.h>
+ #include <stdlib.h>
+-#include <iostream.h>
++#include <iostream>
+ 
+ #include <xbase/xstack.h>
+ 
++using std::cout;
++
+ /*! \file stack.cpp
+ */
+ 
+diff -up xbase-2.0.0/xbase/ndx.cpp.gcc43 xbase-2.0.0/xbase/ndx.cpp
+--- xbase-2.0.0/xbase/ndx.cpp.gcc43	2001-03-21 01:28:53.000000000 +0100
++++ xbase-2.0.0/xbase/ndx.cpp	2008-03-11 20:21:20.000000000 +0100
+@@ -66,7 +66,9 @@
+ #endif
+ 
+ #include <xbase/xbase.h>
+-#include <iostream.h>
++#include <iostream>
++
++using std::cout; 
+ 
+ #ifdef XB_INDEX_NDX
+ 
+diff -up xbase-2.0.0/xbase/expfunc.cpp.gcc43 xbase-2.0.0/xbase/expfunc.cpp
+--- xbase-2.0.0/xbase/expfunc.cpp.gcc43	2008-03-11 20:26:54.000000000 +0100
++++ xbase-2.0.0/xbase/expfunc.cpp	2008-03-11 20:26:54.000000000 +0100
+@@ -64,6 +64,7 @@
+ #include <xbase/exp.h>
+ #include <xbase/xbexcept.h>
+ 
++using std::cout;
+ 
+ /*! \file expfunc.cpp
+ */
+diff -up xbase-2.0.0/xbase/memo.cpp.gcc43 xbase-2.0.0/xbase/memo.cpp
+--- xbase-2.0.0/xbase/memo.cpp.gcc43	2008-03-11 20:30:29.000000000 +0100
++++ xbase-2.0.0/xbase/memo.cpp	2008-03-11 20:30:40.000000000 +0100
+@@ -59,6 +59,8 @@
+ #include <stdio.h>
+ #include <xbase/xbexcept.h>
+ 
++using std::cout;
++
+ /*! \file memo.cpp
+ */
+ 
+diff -up xbase-2.0.0/xbase/xbfilter.cpp.gcc43 xbase-2.0.0/xbase/xbfilter.cpp
+--- xbase-2.0.0/xbase/xbfilter.cpp.gcc43	2008-03-11 20:34:21.000000000 +0100
++++ xbase-2.0.0/xbase/xbfilter.cpp	2008-03-11 20:34:25.000000000 +0100
+@@ -60,6 +60,9 @@
+ #include <xbase/xbase.h>
+ #include <xbase/xbexcept.h>
+ 
++using std::cout;
++using std::endl;
++
+ /*! \file xbfilter.cpp
+ */
+ 
+diff -up xbase-2.0.0/xbase/html.h.gcc43 xbase-2.0.0/xbase/html.h
+--- xbase-2.0.0/xbase/html.h.gcc43	2008-03-11 20:25:52.000000000 +0100
++++ xbase-2.0.0/xbase/html.h	2008-03-11 20:26:22.000000000 +0100
+@@ -66,6 +66,8 @@
+ 
+ #include <xbase/xtypes.h>
+ 
++#include <iostream>
++
+ /*! \file html.h
+ */
+ 
+@@ -92,28 +94,28 @@ public:
+    //! Short description.
+    /*!
+    */
+-   void   BoldOff( void ) { cout << "</b>\n"; };
++   void   BoldOff( void ) { std::cout << "</b>\n"; };
+    //! Short description.
+    /*!
+    */
+-   void   BoldOn( void ) { cout << "<b>"; };
++   void   BoldOn( void ) { std::cout << "<b>"; };
+    //! Short description.
+    /*!
+    */
+-   void   Bullet( void ) { cout << "<li>"; };
++   void   Bullet( void ) { std::cout << "<li>"; };
+    void   DumpArray( void );
+    //! Short description.
+    /*!
+    */
+-   void   EmphasizeOff( void ) { cout << "</em>\n"; };
++   void   EmphasizeOff( void ) { std::cout << "</em>\n"; };
+    //! Short description.
+    /*!
+    */
+-   void   EmphasizeOn( void ) { cout << "<em>"; };
++   void   EmphasizeOn( void ) { std::cout << "<em>"; };
+    //! Short description.
+    /*!
+    */
+-   void   EndHtmlPage( void ) { cout << "</BODY>\n</HTML>\n"; }
++   void   EndHtmlPage( void ) { std::cout << "</BODY>\n</HTML>\n"; }
+    xbShort  GenFormFields(xbDbf *d, xbShort Option,const char * Title,xbFieldList *fl);
+    xbShort  GetArrayNo( const char * FieldName );
+    const  char * GetCookie( const char *CookieName );
+@@ -124,47 +126,47 @@ public:
+    //! Short description.
+    /*!
+    */
+-   void   HeaderOff( xbShort i ){ cout << "</h" << i << ">\n"; };
++   void   HeaderOff( xbShort i ){ std::cout << "</h" << i << ">\n"; };
+    //! Short description.
+    /*!
+    */
+-   void   HeaderOn( xbShort i ){ cout << "<h" << i << ">\n"; };
++   void   HeaderOn( xbShort i ){ std::cout << "<h" << i << ">\n"; };
+    //! Short description.
+    /*!
+    */
+-   void   ItalicOff( void ) { cout << "</i>\n"; };
++   void   ItalicOff( void ) { std::cout << "</i>\n"; };
+    //! Short description.
+    /*!
+    */
+-   void   ItalicOn( void ) { cout << "<i>"; };
++   void   ItalicOn( void ) { std::cout << "<i>"; };
+    //! Short description.
+    /*!
+    */
+-   void   NewLine( void ) { cout << "<br>"; }
++   void   NewLine( void ) { std::cout << "<br>"; }
+    xbShort  PostMethod( void );
+    void   PrintEncodedChar( char );
+    void   PrintEncodedString( const char *s );
+    //! Short description.
+    /*!
+    */
+-   void   PrintHtml( char * s ) { cout << s; };
++   void   PrintHtml( char * s ) { std::cout << s; };
+    //! Short description.
+    /*!
+    */
+-   void   PrintHtml( xbLong l ) { cout << l; };
++   void   PrintHtml( xbLong l ) { std::cout << l; };
+    //! Short description.
+    /*!
+    */
+-   void   PrintHtml( xbShort i ) { cout << i; };
++   void   PrintHtml( xbShort i ) { std::cout << i; };
+    //! Short description.
+    /*!
+    */
+-   void   PrintHtml( int i ) { cout << i; };
++   void   PrintHtml( int i ) { std::cout << i; };
+    void   StartHtmlPage( const char *Title );
+    //! Short description.
+    /*!
+    */
+-   void   StartTextPage( void ) { cout << "Content-type: text/plain\n\n"; }
++   void   StartTextPage( void ) { std::cout << "Content-type: text/plain\n\n"; }
+    void   TextOut( const char *String );
+    xbLong   Tally( const char *FileName );
+    xbShort  SetCookie(const char *Name, const char *Value, const char *ExpDate,
+diff -up xbase-2.0.0/xbase/dbf.h.gcc43 xbase-2.0.0/xbase/dbf.h
+--- xbase-2.0.0/xbase/dbf.h.gcc43	2001-01-13 21:20:53.000000000 +0100
++++ xbase-2.0.0/xbase/dbf.h	2008-03-11 20:21:20.000000000 +0100
+@@ -65,7 +65,6 @@
+ #include <xbase/xtypes.h>
+ #include <xbase/xdate.h>
+ 
+-#include <iostream.h>
+ #include <stdio.h>
+ 
+ /*! \file dbf.h
+diff -up xbase-2.0.0/examples/sample1.cpp.gcc43 xbase-2.0.0/examples/sample1.cpp
+--- xbase-2.0.0/examples/sample1.cpp.gcc43	2008-03-11 20:35:01.000000000 +0100
++++ xbase-2.0.0/examples/sample1.cpp	2008-03-11 20:36:40.000000000 +0100
+@@ -47,6 +47,8 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++
+ /* set the stack large for dos compiles */
+ #ifdef __XBDOS
+ #include <stdio.h>
+diff -up xbase-2.0.0/examples/sample2.cpp.gcc43 xbase-2.0.0/examples/sample2.cpp
+--- xbase-2.0.0/examples/sample2.cpp.gcc43	2008-03-11 20:36:03.000000000 +0100
++++ xbase-2.0.0/examples/sample2.cpp	2008-03-11 20:36:41.000000000 +0100
+@@ -53,6 +53,8 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++
+ /* set the stack large for dos compiles */
+ #ifdef __XBDOS
+ #include <stdio.h>
+diff -up xbase-2.0.0/examples/sample5.cpp.gcc43 xbase-2.0.0/examples/sample5.cpp
+--- xbase-2.0.0/examples/sample5.cpp.gcc43	2008-03-11 20:36:36.000000000 +0100
++++ xbase-2.0.0/examples/sample5.cpp	2008-03-11 20:36:40.000000000 +0100
+@@ -45,6 +45,8 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++
+ /* set the stack large for dos compiles */
+ #ifdef __XBDOS
+ #include <stdio.h>
+diff -up xbase-2.0.0/examples/sample4.cpp.gcc43 xbase-2.0.0/examples/sample4.cpp
+--- xbase-2.0.0/examples/sample4.cpp.gcc43	2008-03-11 20:36:25.000000000 +0100
++++ xbase-2.0.0/examples/sample4.cpp	2008-03-11 20:36:47.000000000 +0100
+@@ -51,6 +51,8 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++
+ #ifdef __XBDOS
+ #include <stdio.h>
+ extern unsigned _stklen = 100000;
+diff -up xbase-2.0.0/examples/exfilter.cpp.gcc43 xbase-2.0.0/examples/exfilter.cpp
+--- xbase-2.0.0/examples/exfilter.cpp.gcc43	2008-03-11 20:37:14.000000000 +0100
++++ xbase-2.0.0/examples/exfilter.cpp	2008-03-11 20:37:28.000000000 +0100
+@@ -50,6 +50,8 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
+ 
+ int main()
+ {
+diff -up xbase-2.0.0/examples/sample3.cpp.gcc43 xbase-2.0.0/examples/sample3.cpp
+--- xbase-2.0.0/examples/sample3.cpp.gcc43	2008-03-11 20:36:10.000000000 +0100
++++ xbase-2.0.0/examples/sample3.cpp	2008-03-11 20:36:46.000000000 +0100
+@@ -54,6 +54,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ /* set the stack large for dos compiles */
+ #ifdef __XBDOS
+ #include <stdio.h>
+diff -up xbase-2.0.0/bin/undelall.cpp.gcc43 xbase-2.0.0/bin/undelall.cpp
+--- xbase-2.0.0/bin/undelall.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/undelall.cpp	2008-03-11 20:40:33.000000000 +0100
+@@ -45,6 +45,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main(int ac,char** av)
+ {
+     if (ac <= 1) {
+diff -up xbase-2.0.0/bin/checkndx.cpp.gcc43 xbase-2.0.0/bin/checkndx.cpp
+--- xbase-2.0.0/bin/checkndx.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/checkndx.cpp	2008-03-11 20:40:29.000000000 +0100
+@@ -45,6 +45,8 @@
+ 
+ #include "xbase/xbase.h"
+ 
++using std::cout;
++
+ int main(int ac,char** av)
+ {
+ #ifdef XBASE_DEBUG
+diff -up xbase-2.0.0/bin/packdbf.cpp.gcc43 xbase-2.0.0/bin/packdbf.cpp
+--- xbase-2.0.0/bin/packdbf.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/packdbf.cpp	2008-03-11 20:40:32.000000000 +0100
+@@ -46,6 +46,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main(int ac,char** av)
+ {
+     if (ac <= 1) {
+diff -up xbase-2.0.0/bin/zap.cpp.gcc43 xbase-2.0.0/bin/zap.cpp
+--- xbase-2.0.0/bin/zap.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/zap.cpp	2008-03-11 20:40:33.000000000 +0100
+@@ -45,6 +45,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main(int ac,char** av)
+ {
+    if (ac <= 1) {
+diff -up xbase-2.0.0/bin/reindex.cpp.gcc43 xbase-2.0.0/bin/reindex.cpp
+--- xbase-2.0.0/bin/reindex.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/reindex.cpp	2008-03-11 20:40:32.000000000 +0100
+@@ -47,6 +47,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ static void
+ showStatus(xbLong itemNum, xbLong numItems)
+ {
+diff -up xbase-2.0.0/bin/copydbf.cpp.gcc43 xbase-2.0.0/bin/copydbf.cpp
+--- xbase-2.0.0/bin/copydbf.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/copydbf.cpp	2008-03-11 20:40:29.000000000 +0100
+@@ -44,6 +44,8 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++
+ int main(int ac,char** av)
+ {
+    if (3 != ac) {
+diff -up xbase-2.0.0/bin/deletall.cpp.gcc43 xbase-2.0.0/bin/deletall.cpp
+--- xbase-2.0.0/bin/deletall.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/deletall.cpp	2008-03-11 20:40:30.000000000 +0100
+@@ -45,6 +45,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main(int ac,char** av)
+ {
+     if (ac <= 1) {
+diff -up xbase-2.0.0/bin/dumphdr.cpp.gcc43 xbase-2.0.0/bin/dumphdr.cpp
+--- xbase-2.0.0/bin/dumphdr.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/dumphdr.cpp	2008-03-11 20:40:31.000000000 +0100
+@@ -47,6 +47,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main( int ac, char ** av )
+ {
+ #ifdef XBASE_DEBUG
+diff -up xbase-2.0.0/bin/dumprecs.cpp.gcc43 xbase-2.0.0/bin/dumprecs.cpp
+--- xbase-2.0.0/bin/dumprecs.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/dumprecs.cpp	2008-03-11 20:40:31.000000000 +0100
+@@ -52,6 +52,9 @@
+ #include <xbase/xbexcept.h>
+ #endif
+ 
++using std::cout;
++using std::endl;
++
+ int main(int ac,char** av)
+ {
+     if (ac <= 1) {
+diff -up xbase-2.0.0/bin/dumpdbt.cpp.gcc43 xbase-2.0.0/bin/dumpdbt.cpp
+--- xbase-2.0.0/bin/dumpdbt.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/dumpdbt.cpp	2008-03-11 20:40:31.000000000 +0100
+@@ -47,6 +47,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main( int ac, char **av )
+ {
+ #ifdef XB_MEMO_FIELDS
+diff -up xbase-2.0.0/bin/dbfxtrct.cpp.gcc43 xbase-2.0.0/bin/dbfxtrct.cpp
+--- xbase-2.0.0/bin/dbfxtrct.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/dbfxtrct.cpp	2008-03-11 20:40:30.000000000 +0100
+@@ -47,6 +47,9 @@
+ 
+ #include "xbase/xbase.h"
+ 
++using std::cout;
++using std::endl;
++
+ /*************************************************************************/
+ void Usage();
+ void Usage()
+diff -up xbase-2.0.0/bin/dbfutil1.cpp.gcc43 xbase-2.0.0/bin/dbfutil1.cpp
+--- xbase-2.0.0/bin/dbfutil1.cpp.gcc43	2008-03-11 20:39:22.000000000 +0100
++++ xbase-2.0.0/bin/dbfutil1.cpp	2008-03-11 20:41:22.000000000 +0100
+@@ -42,6 +42,10 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::cin;
++using std::endl;
++
+ xbXBase x;
+ xbDbf d( &x );
+ xbIndex *ix;
+diff -up xbase-2.0.0/libtest/indextst.cpp.gcc43 xbase-2.0.0/libtest/indextst.cpp
+--- xbase-2.0.0/libtest/indextst.cpp.gcc43	2008-03-11 20:41:46.000000000 +0100
++++ xbase-2.0.0/libtest/indextst.cpp	2008-03-11 20:42:30.000000000 +0100
+@@ -31,6 +31,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ /* set the stack large for dos compiles */
+ #ifdef __XBDOS
+ #include <stdio.h>
+diff -up xbase-2.0.0/libtest/exptest.cpp.gcc43 xbase-2.0.0/libtest/exptest.cpp
+--- xbase-2.0.0/libtest/exptest.cpp.gcc43	2008-03-11 20:41:46.000000000 +0100
++++ xbase-2.0.0/libtest/exptest.cpp	2008-03-11 20:42:30.000000000 +0100
+@@ -27,6 +27,9 @@
+ 
+ #include "xbase/xbase.h"
+ 
++using std::cout;
++using std::endl;
++
+ class ExpTestor{
+  public:
+   ExpTestor( xbDbf * );
+diff -up xbase-2.0.0/libtest/locktest.cpp.gcc43 xbase-2.0.0/libtest/locktest.cpp
+--- xbase-2.0.0/libtest/locktest.cpp.gcc43	2008-03-11 20:41:46.000000000 +0100
++++ xbase-2.0.0/libtest/locktest.cpp	2008-03-11 20:42:31.000000000 +0100
+@@ -7,6 +7,9 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main(int, char**)
+ {
+ #if 0 // FIXME - seriously
+diff -up xbase-2.0.0/libtest/testdate.cpp.gcc43 xbase-2.0.0/libtest/testdate.cpp
+--- xbase-2.0.0/libtest/testdate.cpp.gcc43	2008-03-11 20:41:46.000000000 +0100
++++ xbase-2.0.0/libtest/testdate.cpp	2008-03-11 20:42:32.000000000 +0100
+@@ -56,6 +56,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main()
+ {
+    xbString StringDate( "19601007" );      /* oct 7 1960 */
+diff -up xbase-2.0.0/libtest/testhtml.cpp.gcc43 xbase-2.0.0/libtest/testhtml.cpp
+--- xbase-2.0.0/libtest/testhtml.cpp.gcc43	2008-03-11 20:41:46.000000000 +0100
++++ xbase-2.0.0/libtest/testhtml.cpp	2008-03-11 20:42:33.000000000 +0100
+@@ -48,6 +48,9 @@
+ 
+ #include <xbase/xbase.h>
+ 
++using std::cout;
++using std::endl;
++
+ int main()
+ {
+ #ifdef XB_HTML

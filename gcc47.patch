@@ -1,0 +1,11 @@
+--- xbase-2.0.0/bin/dumprecs.cpp~	2012-04-14 15:39:16.524933225 +0000
++++ xbase-2.0.0/bin/dumprecs.cpp	2012-04-14 15:39:59.264599200 +0000
+@@ -77,7 +77,7 @@
+      }
+ 
+      cout << "\nLoop through forwards...\n";
+-     int i = 0;
++     i = 0;
+      while(i<MyFile.NoOfRecords()) {
+        MyFile.DumpRecord(i+1);
+        i++;
