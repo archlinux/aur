@@ -3,7 +3,7 @@
 
 pkgname=florist
 pkgver=2017
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding."
 
 arch=('any')
