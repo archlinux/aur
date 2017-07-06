@@ -4,7 +4,7 @@
 
 pkgname=duckietv
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="DuckieTV is an application that takes care of TV-Show addicts by providing a personalized TV-Show calendar."
 url="https://schizoduckie.github.io/DuckieTV/"
 arch=('i686' 'x86_64')
@@ -14,8 +14,11 @@ source=('https://github.com/SchizoDuckie/DuckieTV/releases/download/1.1.4/Duckie
 md5sums=('b837a9a782ace35077e7688d0eab1dbc')
 
 package() {
-	install -d "$pkgdir"/opt
-	#Main Program
+    
+    install -d "$pkgdir"/opt
+	
+    #Main Program
+    mkdir -p "${pkgdir}"/opt
 	cp -r "$srcdir"/DuckieTV "$pkgdir"/opt
     #Shortcut
     mkdir -p "${pkgdir}"/usr/share/applications

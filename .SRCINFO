@@ -1,7 +1,7 @@
 pkgbase = duckietv
 	pkgdesc = DuckieTV is an application that takes care of TV-Show addicts by providing a personalized TV-Show calendar.
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://schizoduckie.github.io/DuckieTV/
 	arch = i686
 	arch = x86_64
