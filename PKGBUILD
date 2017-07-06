@@ -1,9 +1,10 @@
 # Maintainer: Clar Charr <clar@charr.xyz>
 pkgname=rrun-ssh
 _pkgbase=rrun
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Remote run utility; runs a command in an SSHFS-mounted directory."
+depends=(openssh)
 arch=(i686 x86_64)
 url="https://github.com/clarcharr/$_pkgbase"
 license=(CC0)
