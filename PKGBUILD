@@ -1,6 +1,6 @@
 # Maintainer: Clar Charr <clar@charr.xyz>
 pkgname=forever
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Program which loops forever."
 arch=(i686 x86_64)
