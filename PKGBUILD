@@ -1,7 +1,7 @@
 # Maintainer: Daneel <aur@gnoulibre.org>
 
 pkgname='grammalecte-fr'
-pkgver='0.5.17'
+pkgver='0.5.17.2'
 pkgrel=1
 pkgdesc="A grammar checker dedicated to the French language"
 arch=('any')
@@ -13,7 +13,7 @@ backup=()
 options=(!emptydirs)
 source=("http://www.dicollecte.org/grammalecte/oxt/Grammalecte-fr-v$pkgver.zip"
         'grammalecte.sh')
-md5sums=('c506b6ff75c9ed5285a911396595e201'
+md5sums=('7ff8317290a847f6f2498ad1fa1e7f11'
          'affa04d4aa27559b07afa2c6607ede75')
 
 package() {

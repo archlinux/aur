@@ -1,6 +1,6 @@
 pkgbase = grammalecte-fr
 	pkgdesc = A grammar checker dedicated to the French language
-	pkgver = 0.5.17
+	pkgver = 0.5.17.2
 	pkgrel = 1
 	url = https://dicollecte.org/grammalecte/index.php
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = grammalecte-fr
 	makedepends = unzip
 	depends = python
 	options = !emptydirs
-	source = http://www.dicollecte.org/grammalecte/oxt/Grammalecte-fr-v0.5.17.zip
+	source = http://www.dicollecte.org/grammalecte/oxt/Grammalecte-fr-v0.5.17.2.zip
 	source = grammalecte.sh
 	md5sums = c506b6ff75c9ed5285a911396595e201
 	md5sums = affa04d4aa27559b07afa2c6607ede75
