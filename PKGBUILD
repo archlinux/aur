@@ -4,7 +4,7 @@
 
 pkgname=gnat-gps
 pkgver=2017
-pkgrel=3
+pkgrel=4
 pkgdesc="GPS, the GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
