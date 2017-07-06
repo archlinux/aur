@@ -1,7 +1,7 @@
 # Maintainer: RubenKelevra <cyrond@gmail.com>
 
 pkgname=rk-server-basic
-pkgver=2017.06.25
+pkgver=2017.07.06
 pkgrel=3
 pkgdesc="Metapackage that installs basic server tools. Enables the following services: cronie preload ntpd haveged"
 url="http://notyetthere.com"
@@ -11,6 +11,7 @@ install=rk-server-basic.install
 makedepends=("yaourt")
 depends=("pkgtools"
 "preload"
+"netsniff-ng"
 "openssl"
 "net-tools"
 "sudo"
