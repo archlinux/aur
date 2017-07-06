@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=kcyberfoxhelper
-pkgver=5.0.1.5
+pkgver=5.0.1.6
 pkgrel=1
 pkgdesc="Cyberfox KDE Plasma Integration"
 url="https://github.com/hawkeye116477/kcyberfoxhelper"
