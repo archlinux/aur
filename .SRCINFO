@@ -1,0 +1,15 @@
+pkgbase = chomik_downloader
+	pkgdesc = Downloading files from yaour account at chomikuj.pl
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/Grycek/ChomikDownloader
+	arch = any
+	groups = chomik,
+	groups = chomik_downloader
+	license = GPL
+	depends = python2>=2.6
+	source = http://przyczajony.zza.pl/owncloud/index.php/s/5gwLxuqQGBjbHLy/download
+	md5sums = aa72c500e8247d6e4619cd67556a87fa
+
+pkgname = chomik_downloader
+

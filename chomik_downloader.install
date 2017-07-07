@@ -1,0 +1,9 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+echo "Aby uzyskać pomoc:"
+echo "chomik_downloader -h"
+echo "Wysokich transferow!"
+}
