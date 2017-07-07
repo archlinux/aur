@@ -1,16 +1,16 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=anbox-image
-pkgver=2017.04.12
-_pkgver=2017/04/12
-pkgrel=1
+pkgver=2
+_pkgdate=2017/07/07
+pkgrel=2
 pkgdesc="Android image for running in Anbox"
 arch=('x86_64')
 url="http://anbox.io/"
 license=('custom')
-source=("http://build.anbox.io/android-images/${_pkgver}/android_1_amd64.img")
-sha256sums=('9784841c382957f0581d05dacc5f43f11c347dd7daecefdeedbfcb6d9ff96bee')
+source=("http://build.anbox.io/android-images/${_pkgdate}/android_${pkgver}_amd64.img")
+sha256sums=('48375f2753319a206743f3cbbdfe2f2e063385f1d0484cd66740939b1258de77')
 
 package() {
-  install -Dm 644 $srcdir/android_1_amd64.img $pkgdir/var/lib/anbox/android.img
+  install -Dm 644 $srcdir/android_${pkgver}_amd64.img $pkgdir/var/lib/anbox/android.img
 }
