@@ -2,7 +2,7 @@
 
 pkgname=eidklient
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
