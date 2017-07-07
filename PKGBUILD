@@ -26,6 +26,6 @@ package() {
 }
 
 md5sums=('810a4200a3c8568257b66b6bdea5c29c'
-         '256ec24f7ad2d39ac8da0f1c03d3cafe')
+         '958e9c06bd684e812b6d27515b88b97c')
 md5sums_i686=('0793b75e0ea5a554a01739c25740743c')
 md5sums_x86_64=('adae8184a3821619fb56a55846ef50b5')
