@@ -22,8 +22,8 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-filedaemon-python-plugin"
          "${pkgbase}-storage-python-plugin")
 
-source=("git+https://github.com/bareos/bareos.git#tag=Release/16.2.5"
+source=("git+https://github.com/bareos/bareos.git#tag=Release/16.2.6"
         "PKGBUILD.common")
 
 md5sums=('SKIP'
-         '2a416eabe98767f1da9d2ffc3aa65424')
+         '408330e61eba6a1c2add1eeea308dc25')

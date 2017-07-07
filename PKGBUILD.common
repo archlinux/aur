@@ -1,9 +1,9 @@
 # Maintainer: Michael Spradling <mike@mspradling.com>
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
-pkgver=16.2.5
-_pkgver=16.2.5
-pkgrel=3
+pkgver=16.2.6
+_pkgver=16.2.6
+pkgrel=1
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -65,10 +65,6 @@ prepare() {
 }
 
 build() {
-  # bug: openssl 1.0 isue
-  export CFLAGS="${CFLAGS} -L /usr/include/openssl-1.0"
-  export LIBS="${LIBS} -I /usr/include/openssl-1.0"
-
   pushd "${_pkgsrc}" &> /dev/null
   QMAKE="/usr/bin/qmake-qt4" DISTNAME="debian" ./configure $_configure_args
   make DESTDIR="$_instdir" install
