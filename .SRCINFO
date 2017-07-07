@@ -1,6 +1,6 @@
 pkgbase = mopidy-git
 	pkgdesc = A music server which can play music from Spotify
-	pkgver = 1.1.1.r120.gcc3ec5e
+	pkgver = 2.1.0.r36.g616f9ff1
 	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
@@ -11,15 +11,15 @@ pkgbase = mopidy-git
 	depends = python2-requests
 	depends = python2-setuptools
 	depends = python2-tornado
-	depends = gstreamer0.10-python
-	depends = gstreamer0.10-base-plugins
-	depends = gstreamer0.10-good-plugins
-	depends = gstreamer0.10-ugly-plugins
-	optdepends = gstreamer0.10-ffmpeg: AAC+ and WMA support.
+	depends = gst-python
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	optdepends = gst-libav: AAC+ and WMA support.
 	optdepends = mopidy-spotify: Spotify backend
 	optdepends = mopidy-scrobbler: Last.FM scrobbler
 	optdepends = mopidy-MPRIS: MPRIS frontend
-	provides = mopidy=1.1.1.r120.gcc3ec5e-1
+	provides = mopidy=2.1.0.r36.g616f9ff1-1
 	conflicts = mopidy
 	source = git+https://github.com/mopidy/mopidy.git
 	source = mopidy@.service
