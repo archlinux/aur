@@ -1,11 +1,11 @@
 pkgbase = aide-selinux
 	pkgdesc = A file integrity checker and intrusion detection program.
 	pkgver = 0.16
-	pkgrel = 3
+	pkgrel = 4
 	url = http://aide.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	groups = selinux-extra
+	groups = selinux
 	license = GPL
 	depends = acl
 	depends = audit

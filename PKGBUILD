@@ -7,12 +7,12 @@
 pkgname=aide-selinux
 _srcname=aide
 pkgver=0.16
-pkgrel=3
+pkgrel=4
 pkgdesc='A file integrity checker and intrusion detection program.'
 arch=('i686' 'x86_64')
 url="http://aide.sourceforge.net/"
 license=('GPL')
-groups=('selinux-extra')
+groups=('selinux')
 depends=('acl' 'audit' 'libelf' 'libselinux' 'mhash')
 conflicts=('aide')
 provides=('aide')
