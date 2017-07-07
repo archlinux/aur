@@ -1,0 +1,15 @@
+pkgbase = chomik
+	pkgdesc = Uploading files to chomikuj.pl
+	pkgver = 0.5.4.3
+	pkgrel = 1
+	url = https://github.com/Grycek/ChomikUploader
+	arch = any
+	groups = chomik,
+	groups = chomik_downloader
+	license = GPL
+	depends = python2>=2.6
+	source = http://przyczajony.zza.pl/owncloud/index.php/s/p5ZOwiTKCRNFPHp/download
+	md5sums = 743232fe60046cd8e1a87c4c561feaed
+
+pkgname = chomik
+
