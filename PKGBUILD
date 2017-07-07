@@ -1,7 +1,7 @@
 # Maintainer: Moritz Hilscher <m0r13@mapcrafter.org>
 
 pkgname=mapcrafter
-pkgver=2.3.1
+pkgver=2.4
 pkgrel=1
 pkgdesc="A High Performance Minecraft Map Renderer"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ optdepends=(
 )
 source=("https://github.com/mapcrafter/mapcrafter/archive/v.${pkgver}.tar.gz")
 
-sha256sums=('b88e53ccffc00f83717f2e686dbed047b95f011187af2b7a23ba7f5cd3537679')
+sha256sums=('f3b698d34c02c2da0c4d2b7f4e251bcba058d0d1e4479c0418eeba264d1c8dae')
 
 build() {
     cd "${srcdir}/${pkgname}-v.${pkgver}"
