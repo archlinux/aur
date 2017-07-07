@@ -1,6 +1,6 @@
 pkgname=bandcamp-dl
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="cli application for downloading albums from bandcamp"
 arch=(any)
 license=('GPL3')
