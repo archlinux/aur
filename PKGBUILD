@@ -1,40 +1,49 @@
 # Maintainer: Sapphira Armageddos <shadowkyogre.public@gmail.com>
+# Maintainer: Albert Westra <odysseywestra@gmail.com>
 # Contributor: Jon Nordby <jononor@gmail.com>
 # Contributor: mosra <mosra@centrum.cz>
 
+_pkgverbase=1.3.0
 pkgname=mypaint-git
-pkgver=1.2.0.r237.gf2e1648
+pkgver=1.3.0.alpha+git.922f73df
 pkgrel=1
-pkgdesc="A fast and easy painting application for digital painters, with brush dynamics"
+pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
 url="http://mypaint.org/"
-license=('GPL')
-depends=('desktop-file-utils' 'gtk3' 'gegl' 'babl' 'json-c' 'python2-cairo' 'python2-gobject' 'python2-numpy' 'libmypaint-git')
-makedepends=('git' 'scons' 'swig')
-provides=('mypaint')
+license=('GPL2')
+depends=('desktop-file-utils' 'gtk3' 'json-c' 'lcms2' 'librsvg' 'python2-cairo' 'python2-gobject' 'python2-numpy' 'libmypaint-git')
+makedepends=('git' 'swig' 'pygobject-devel' 'python2' 'python2-setuptools')
+provides=("mypaint=${pkgver}")
 conflicts=('mypaint')
 install=mypaint-git.install
 source=('git+https://github.com/mypaint/mypaint.git'
-        'mypaint-git.install'
-)
+        'mypaint-git.install')
 
 pkgver() {
-	cd "$srcdir/mypaint"
-	git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/mypaint"
+    eval `python2 lib/meta.py`
+    echo "$MYPAINT_VERSION_CEREMONIAL" \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+    | sed 's/gitexport/git/g'
 }
 
 prepare() {
-	cd "$srcdir/mypaint"
+    cd "${srcdir}/mypaint"
+    
 }
 
 build() {
-	cd "$srcdir/mypaint"
-	scons prefix="/usr" enable_gegl=true use_sharedlib=yes
+    cd "${srcdir}/mypaint"
+    python2 setup.py clean --all
+    python2 setup.py build
 }
 
 package() {
-	cd "$srcdir/mypaint"
-	scons prefix="/usr" enable_gegl=true use_sharedlib=yes --install-sandbox="$pkgdir" "$pkgdir"
+    cd "${srcdir}/mypaint"
+    echo "root: ${pkgdir}"
+	
+    python2 setup.py install \
+     --root="${pkgdir}" --skip-build
 }
 
 sha256sums=('SKIP'
