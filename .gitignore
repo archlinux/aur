@@ -1,6 +1,6 @@
 *.log*
 *.xz
-*.gz
+*.gz*
 pkg
 src
 *.png
