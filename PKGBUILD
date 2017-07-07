@@ -1,15 +1,15 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=menuconfig-git
-pkgver=r25.e9798c2
+pkgver=r687.2f3597f
 pkgrel=1
 pkgdesc='Standalone version of the mconf tool from the linux kernel'
-url='https://github.com/TheGeorge/menuconfig'
+url='https://github.com/anatol/menuconfig'
 arch=(i686 x86_64)
 license=(GPL2)
 depends=(ncurses)
-makedepends=(git cmake)
-source=(git://github.com/TheGeorge/menuconfig.git)
+makedepends=(git gperf)
+source=(git://github.com/anatol/menuconfig.git)
 sha1sums=('SKIP')
 
 pkgver() {
@@ -19,13 +19,12 @@ pkgver() {
 
 prepare() {
   cd menuconfig
-  sed -e 's|ncursesw/curses.h|curses.h|' -i lxdialog/dialog.h
+  sed -e 's|register unsigned int len|register size_t len|' -i zconf.gperf
 }
 
 build() {
   cd menuconfig
-  cmake .
-  make
+  make conf mconf
 }
 
 package() {
