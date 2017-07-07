@@ -1,7 +1,7 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=netsniff-ng-git
 _gitname=netsniff-ng
-pkgver=v0.6.3.5.gb25a51fa
+pkgver=v0.6.3.23.g551aa0ee
 pkgrel=1
 pkgdesc='A high performance Linux network sniffer for packet inspection (git version).'
 arch=('i686' 'x86_64')
@@ -21,10 +21,10 @@ pkgver() {
 build() {
   cd "${srcdir}"/${_gitname}
   NACL_INC_DIR=/usr/include/sodium NACL_LIB=sodium ./configure
-  make DISTRO=1 allbutmausezahn
+  make DISTRO=1 all
 }
 
 package() {
   cd "${srcdir}"/${_gitname}
-  make PREFIX="/usr" DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install_allbutmausezahn
+  make PREFIX="/usr" DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install_all
 }
