@@ -29,8 +29,6 @@ pkgname = zfs-encryption-dkms-git
 
 pkgname = zfs-utils-encryption-dkms-git
 	pkgdesc = Kernel module support files for the Zettabyte File System build with support for native encryption. (Git version)
-	depends = spl-linux-git
-	depends = linux=4.11.9-1
 	provides = zfs-utils
 	conflicts = zfs-utils-git
 	conflicts = zfs-utils-lts

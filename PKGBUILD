@@ -60,7 +60,6 @@ package_zfs-encryption-dkms-git() {
 
 package_zfs-utils-encryption-dkms-git() {
     pkgdesc="Kernel module support files for the Zettabyte File System build with support for native encryption. (Git version)"
-    depends=("spl-linux-git" "linux=4.11.9-1")
     provides=("zfs-utils")
     conflicts=("zfs-utils-git" "zfs-utils-lts" "zfs-utils" "zfs-utils-dkms-git")
 
