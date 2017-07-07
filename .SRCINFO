@@ -1,0 +1,18 @@
+pkgbase = archlabs-compiz-compatibility
+	pkgdesc = Compiz Compatibility Package for ARCHLabs
+	pkgver = 1.01
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = compiz
+	depends = emerald
+	depends = compiz-boxmenu
+	provides = obr-compiz-compatibility
+	conflicts = obr-compiz-compatibility
+	source = git+https://github.com/addy-dclxvi/archlabs-compiz-compatibility.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = archlabs-compiz-compatibility
+
