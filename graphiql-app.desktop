@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GraphiQL App
+Comment=GraphiQL App
+GenericName=A light, Electron-based wrapper around GraphiQL.
+Exec=/usr/bin/graphiql-app
+Icon=graphiql-app
+Type=Application
+Categories=Network;Development;
