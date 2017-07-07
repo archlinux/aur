@@ -1,0 +1,3 @@
+post_install() {
+  ln -s /usr/share/pinegrow/PinegrowLibrary /usr/bin/pinegrow
+}
