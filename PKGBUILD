@@ -9,7 +9,7 @@ set -u
 _pkgname='pcre'
 pkgname="${_pkgname}-svn"
 _srcdir="${pkgname}"
-pkgver=8.40.r1675
+pkgver=8.41.r1707
 pkgrel=1
 pkgdesc='A regex library that implements Perl 5-style regular expressions, includes pcregrep'
 arch=('i686' 'x86_64')
@@ -56,14 +56,15 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j $(nproc)
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  nice make -s -j "${_nproc}"
   set +u
 }
 
 check() {
   set -u
   cd "${_srcdir}"
-  make -s -j $(nproc) check
+  make -s -j1 check
   set +u
 }
 
@@ -74,17 +75,6 @@ package() {
 
   install -Dpm644 'LICENCE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   set +u
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
-  ! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
-  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  #! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; } # 1 script has /bin/sh
 }
 set +u
 
