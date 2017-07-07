@@ -212,14 +212,14 @@ check() {
     make check-polly
 }
 
-package_llvm-svn() {
+package_llvm-svn-polly() {
     pkgdesc='The LLVM Compiler Infrastructure'
     depends=(
         "llvm-libs-svn=${pkgver}-${pkgrel}"
     )
-    groups=('llvm-toolchain-svn')
+    groups=('llvm-toolchain-svn-polly')
     provides=('llvm')
-    conflicts=('llvm')
+    conflicts=('llvm', 'llvm-svn')
 
     cd "${srcdir}/build"
 
@@ -254,15 +254,15 @@ package_llvm-svn() {
     _install_licenses "${srcdir}/llvm"
 }
 
-package_llvm-libs-svn() {
+package_llvm-libs-svn-polly() {
     pkgdesc='The LLVM Compiler Infrastructure (runtime libraries)'
     depends=(
         'libffi'
         'zlib'
     )
-    groups=('llvm-toolchain-svn')
+    groups=('llvm-toolchain-svn-polly')
     provides=('llvm-libs')
-    conflicts=('llvm-libs')
+    conflicts=('llvm-libs', 'llvm-libs-svn')
 
     cd "${srcdir}/build"
 
@@ -289,7 +289,7 @@ package_llvm-libs-svn() {
     _install_licenses "${srcdir}/llvm"
 }
 
-package_llvm-ocaml-svn() {
+package_llvm-ocaml-svn-polly() {
     pkgdesc='OCaml bindings for LLVM'
     depends=(
         "llvm-svn=${pkgver}-${pkgrel}"
@@ -297,7 +297,7 @@ package_llvm-ocaml-svn() {
         'ocaml-ctypes'
     )
     provides=('llvm-ocaml')
-    conflicts=('llvm-ocaml')
+    conflicts=('llvm-ocaml', 'llvm-ocaml-svn')
 
     cd "${srcdir}/build"
 
@@ -309,14 +309,14 @@ package_llvm-ocaml-svn() {
     _install_licenses "${srcdir}/llvm"
 }
 
-package_lld-svn() {
+package_lld-svn-polly() {
     pkgdesc='A linker from the LLVM project'
     depends=(
         "llvm-libs-svn=${pkgver}-${pkgrel}"
     )
-    groups=('llvm-toolchain-svn')
+    groups=('llvm-toolchain-svn-polly')
     provides=('lld')
-    conflicts=('lld')
+    conflicts=('lld', 'lld-svn')
 
     cd "${srcdir}/build/tools/lld"
 
@@ -329,7 +329,7 @@ package_lld-svn() {
     _install_licenses "${srcdir}/lld"
 }
 
-package_clang-svn() {
+package_clang-svn-polly() {
     pkgdesc='C language family frontend for LLVM'
     url='http://clang.llvm.org/'
     depends=(
@@ -341,9 +341,9 @@ package_clang-svn() {
         'clang-tools-extra-svn: standalone tools: syntax checking, formatting, refactoring, etc.'
         'python2: git-clang-format and clang-format-diff.py support'
     )
-    groups=('llvm-toolchain-svn')
+    groups=('llvm-toolchain-svn-polly')
     provides=('clang')
-    conflicts=('clang')
+    conflicts=('clang', 'clang-svn')
 
     cd "${srcdir}/build/tools/clang"
 
@@ -412,7 +412,7 @@ package_clang-svn() {
     _install_licenses "${srcdir}/clang"
 }
 
-package_clang-analyzer-svn() {
+package_clang-analyzer-svn-polly() {
     pkgdesc='Source code analysis tool for Clang, supporting C, C++, and Objective-C'
     url='http://clang-analyzer.llvm.org/'
     depends=(
@@ -420,9 +420,9 @@ package_clang-analyzer-svn() {
         'perl'
         'python2'
     )
-    groups=('llvm-toolchain-svn')
+    groups=('llvm-toolchain-svn-polly')
     provides=('clang-analyzer')
-    conflicts=('clang-analyzer')
+    conflicts=('clang-analyzer', 'clang-analyzer-svn')
 
     cd "${srcdir}"
 
@@ -438,15 +438,15 @@ package_clang-analyzer-svn() {
     _install_licenses "${srcdir}/clang"
 }
 
-package_clang-compiler-rt-svn() {
+package_clang-compiler-rt-svn-polly() {
     pkgdesc='The "compiler-rt" set of runtime libraries for Clang and LLVM'
     url='http://compiler-rt.llvm.org/'
     depends=(
         "clang-svn=${pkgver}-${pkgrel}"
     )
-    groups=('llvm-toolchain-svn')
+    groups=('llvm-toolchain-svn-polly')
     provides=('clang-compiler-rt')
-    conflicts=('clang-compiler-rt')
+    conflicts=('clang-compiler-rt', 'clang-compiler-rt-svn')
 
     cd "${srcdir}/build/projects/compiler-rt"
 
@@ -455,15 +455,15 @@ package_clang-compiler-rt-svn() {
     _install_licenses "${srcdir}/compiler-rt"
 }
 
-package_clang-tools-extra-svn() {
+package_clang-tools-extra-svn-polly() {
     pkgdesc='Standalone tools for Clang: syntax checking, formatting, refactoring, etc.'
     url='http://clang.llvm.org/docs/ClangTools.html'
     depends=(
         "clang-svn=${pkgver}-${pkgrel}"
     )
-    groups=('llvm-toolchain-svn')
+    groups=('llvm-toolchain-svn-polly')
     provides=('clang-tools-extra')
-    conflicts=('clang-tools-extra')
+    conflicts=('clang-tools-extra', 'clang-tools-extra-svn')
 
     cd "${srcdir}/build/tools/clang/tools/extra"
 
