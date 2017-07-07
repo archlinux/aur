@@ -3,7 +3,8 @@
 pkgname=anbox-image
 pkgver=2
 _pkgdate=2017/07/07
-pkgrel=2
+pkgrel=1
+epoch=1
 pkgdesc="Android image for running in Anbox"
 arch=('x86_64')
 url="http://anbox.io/"
