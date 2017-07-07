@@ -37,12 +37,24 @@ source=("waterfox-$pkgver.source.tar.gz::https://github.com/MrAlex94/Waterfox/ar
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/Waterfox/plasma/_Plasma_Build/kde.js"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/distribution.ini"
         "waterfox.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/BUILD/waterfox-kde/debian/waterfox.1")
+sha256sums=('2ba44287e84c9785cd5143600ec52a129b339734dde4cf50e995a447b4893ba4'
+            '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
+            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
+            'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
+            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
+            '193f7a6e0f422e24b1a3c1f02fa445c088e3c0665841a689511a95e923c1db29'
+            'a8b49c56f4dfe371af6c3e1b214fb8274258823d702d334dbdec55e5a43671cd'
+            '774d13c0d319b83a3f90d15ceed093e80ff07a2794038c95ffa79539ca2819cc'
+            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
+            '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
+            'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
+            '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6')
 
 prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
   
-  mv $srcdir/Waterfox-f60534e75859c8bf4cbc16cdbc63958795e6842b $srcdir/Waterfox-$pkgver
+  mv $srcdir/$_pkgname-$_commit $srcdir/$pkgname-$pkgver
   
   # Fix openSUSE's patches for Waterfox
   sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde.patch
@@ -51,7 +63,7 @@ prepare() {
   sed -i 's/kmozillahelper/kwaterfoxhelper/g' $srcdir/mozilla-kde.patch
   sed -i 's/firefox/waterfox/g' $srcdir/firefox-kde.patch
   
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
   patch -Np1 -i ../waterfox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1371991
@@ -160,13 +172,13 @@ END
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
   export PATH="$srcdir/path:$PATH"
     make -f client.mk build
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   cp "$srcdir/kde.js" obj-$CARCH-pc-linux-gnu/dist/bin/defaults/pref
 
@@ -238,15 +250,3 @@ END
   ln -srf "$pkgdir/usr/bin/waterfox" \
     "$pkgdir/opt/waterfox/waterfox-bin"
 }
-sha256sums=('2ba44287e84c9785cd5143600ec52a129b339734dde4cf50e995a447b4893ba4'
-            '2a17f68e86c2c871a1ff32f0a012c7ad20ac542b935044e5ffd9716874641f4d'
-            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
-            'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
-            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
-            '193f7a6e0f422e24b1a3c1f02fa445c088e3c0665841a689511a95e923c1db29'
-            'a8b49c56f4dfe371af6c3e1b214fb8274258823d702d334dbdec55e5a43671cd'
-            '774d13c0d319b83a3f90d15ceed093e80ff07a2794038c95ffa79539ca2819cc'
-            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
-            '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
-            'e144a6fac4466acdba86194b43fb41c185c38e296d6262f26c3bff3d2b6db3be'
-            '03a25b7bde971ecfa35326b3c6e45450da325babed29d9cc2e10dd639f816ef6')
