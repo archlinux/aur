@@ -12,8 +12,8 @@ _configure_args="$_configure_args \
 pkgname=("bareos-traymonitor"
          "bareos-bat")
 
-source=("git+https://github.com/bareos/bareos.git#tag=Release/16.2.5"
+source=("git+https://github.com/bareos/bareos.git#tag=Release/16.2.6"
         "PKGBUILD.common")
 
 sha256sums=('SKIP'
-            '192c5714b1d26a35cd32437effb7745e0d52c39600aea87e069b84bf32230797')
+            'f63eb850f4ac25ef5d9539b5e03163d58445c66bc29bd11649c4580e612d44ac')
