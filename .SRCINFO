@@ -1,7 +1,7 @@
 pkgbase = colors-pacmans
 	pkgdesc = Pacmans displays terminal's color pallete.
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	url = https://crunchbang.org/forums/viewtopic.php?pid=126921%23p126921#p126921
 	arch = i686
 	arch = x86_64
