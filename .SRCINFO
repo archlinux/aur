@@ -1,6 +1,6 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
-	pkgver = 0.97.2.raging.gyarados
+	pkgver = 0.97.4.roaring.entai
 	pkgrel = 1
 	url = https://pokemon-revolution-online.net
 	install = INSTALL
