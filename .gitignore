@@ -1,0 +1,6 @@
+checksums
+checksums.sig
+*.tar.xz
+ttnctl-linux-*.tar.gz
+pkg/
+src/
