@@ -5,7 +5,8 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Old WW2 era font used for creating historical documents and artwork"
 arch=('any')
-url="http://www.dafont.com/tannenberg-fett.font"
+url=("http://www.1001fonts.com/tannenberg-font.html"
+      "https://aur.archlinux.org/packages/ttf-tannenberg")
 license=('SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-mkfontdir' 'xorg-mkfontscale')
 install=ttf-tannenberg.install
