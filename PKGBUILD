@@ -8,7 +8,7 @@ pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
 url='http://github.com/sddm/sddm'
 license=('GPL')
-depends=('qt5-declarative')
+depends=('qt5-declarative' 'xorg-xauth')
 makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools')
 install="${pkgname}.install"
 backup=('usr/share/sddm/scripts/Xsetup'
@@ -17,8 +17,8 @@ backup=('usr/share/sddm/scripts/Xsetup'
 provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         sddm-fix-avatars.patch::"https://github.com/sddm/sddm/commit/ecb903e4.patch")
-md5sums=('393fbed2f2e9d030e1717949867e96c8'
-         'f929c400807144f3bc53d8ed6ed74f21')
+sha256sums=('a551551a6ba324e9c384c89bc63e871de65fea3740eadbea2d63df86045f8205'
+            'a2bcdc20bb8915ed4eae810832266ff3bd22a523813ef1674eb25a28800e4368')
 
 prepare() {
   mkdir -p build
