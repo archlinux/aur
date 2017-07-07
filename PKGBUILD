@@ -1,4 +1,5 @@
-# Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+# Maintainer: Sean Haugh <seanphaugh@gmail.com>
+# Contributor: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 # Contributor: Trygve Aaberge <trygveaa+aur at gmail dot com>
 
 pkgname=mopidy-git
