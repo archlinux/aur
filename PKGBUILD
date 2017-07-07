@@ -5,7 +5,7 @@
 
 pkgname=gnucash
 pkgver=2.6.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A personal and small-business financial-accounting application"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -24,7 +24,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
     --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking
-  make
+  make GUILD=/usr/bin/guild2.0
 }
 
 package() {
