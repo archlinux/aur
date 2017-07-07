@@ -2,13 +2,13 @@
 
 pkgname=upterm
 pkgver=0.2.158
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
 url='https://github.com/railsware/upterm'
 license=('MIT')
 depends=('electron')
-makedepends=('apm' 'git' 'npm' 'typescript')
+makedepends=('apm' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'upterm.desktop'
         'upterm.js')
@@ -31,7 +31,9 @@ build() {
     types=('@types/chokidar' '@types/enzyme' '@types/fs-extra' '@types/klaw' '@types/lodash' '@types/node' '@types/react')
     npm install "${types[@]}"
     npm install --ignore-scripts electron
-    tsc
+    npm install typescript
+    npm run tsc
+    npm uninstall typescript
     npm uninstall electron
     npm uninstall "${types[@]}"
 
