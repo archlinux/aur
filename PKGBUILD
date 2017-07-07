@@ -2,7 +2,7 @@
 
 pkgname=hdd-spindown.sh-git
 pkgver=20170707
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic Disk Standby using Kernel diskstats and hdparm"
 url="https://github.com/lynix/hdd-spindown.sh"
 arch=('any')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  make PREFIX="${pkgdir}/usr" install
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
