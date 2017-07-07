@@ -1,6 +1,6 @@
 pkgbase = sink-develop
 	pkgdesc = An offline-caching, synchronization and indexing system for PIM data (development branch)
-	pkgver = r1745.5cabc16
+	pkgver = r1758.691a11e
 	pkgrel = 1
 	url = https://github.com/KDE/sink
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = sink-develop
 	depends = qt5-base
 	depends = kimap2-git
 	depends = kasync-git
-	depends = kdav-git
+	depends = kdav2
 	depends = flatbuffers
 	provides = sink
 	conflicts = sink

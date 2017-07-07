@@ -2,13 +2,13 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=sink-develop
-pkgver=r1745.5cabc16
+pkgver=r1758.691a11e
 pkgrel=1
 pkgdesc='An offline-caching, synchronization and indexing system for PIM data (development branch)'
 arch=('i686' 'x86_64')
 url='https://github.com/KDE/sink'
 license=('GPL')
-depends=('qt5-base' 'kimap2-git' 'kasync-git' 'kdav-git' 'flatbuffers')
+depends=('qt5-base' 'kimap2-git' 'kasync-git' 'kdav2' 'flatbuffers')
 makedepends=('extra-cmake-modules' 'git' 'clang')
 conflicts=(sink)
 provides=(sink)
