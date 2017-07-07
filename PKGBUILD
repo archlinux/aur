@@ -1,17 +1,19 @@
+# Maintainer: Marco Pompili <pompilimrc (at) gmail (dot) com>
+
 _npmname=lumo-cljs
-_npmver=1.5.0
+_npmver=1.6.0
 pkgname=nodejs-lumo-cljs # All lowercase
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Fast, cross-platform, standalone ClojureScript REPL"
 arch=(any)
 url="https://github.com/anmonteiro/lumo"
-license=()
-depends=('nodejs' 'npm' )
+license=("EPL")
+depends=('nodejs>=8.1.3' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(93af1b9cfccc12edfd495d64aec1748d4145f8dc)
+sha256sums=('cccc997f1acf9733c2e4e4b40fe7632132da29b575b1f6fd9b97fbfa22352f48')
 
 package() {
   cd $srcdir
