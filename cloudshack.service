@@ -2,9 +2,15 @@
 Description=CloudShack Server
 
 [Service]
-ExecStart=/usr/bin/cloudshack
+ExecStart=/usr/lib/cloudshack/bin/cloudshack foreground
 User=cloudshack
+Type=simple
 WorkingDirectory=/var/lib/cloudshack
+ProtectSystem=true
+ProtectHome=true
+NoNewPrivileges=true
+PrivateTmp=true
+Environment=RELEASE_MUTABLE_DIR=/var/lib/cloudshack
 
 [Install]
 WantedBy=multi-user.target

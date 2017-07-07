@@ -1,0 +1,2 @@
+d /var/lib/cloudshack 0755 cloudshack cloudshack
+x /var/lib/cloudshack
