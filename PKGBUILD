@@ -5,9 +5,10 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor-beta
-_version=2017.1.0
-_build=f1
-_buildtag=20170628
+_version=2017.2.0
+_build=b2
+_buildtag=20170707
+_randomstring=b6e0e521da90
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -32,13 +33,13 @@ optdepends=('ffmpeg: for WebGL exporting'
             'java-environment: for Android and Tizen exporting'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote')
-noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
-source=("http://beta.unity3d.com/download/427038f4b57e/unity-editor-installer-2017.1.0xf1Linux.sh"
+noextract=("unity-editor-installer-${_version}${_build}.sh")
+source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installer-${_version}${_build}.sh"
         'EULA'
         'unity-editor-beta'
         'monodevelop-unity-beta'
         'unity-monodevelop-beta.png')
-sha256sums=('b36a049734ca10ce989afd700549564c5097263ac5ca32d96441c3ee5ef7e3ca'
+sha256sums=('470c8254b66a74bd38215907bff3f303705ff87630eedddf127d63af049e7487'
             'fb53c6aacb86603f751d710a77e53a5a6ee2a8f34099b7707b0e287b6a57cb2e'
             'a6183b216e30a472b9592059f64a3a6279a9d3e56c5c343c93713b03fa863c4c'
             '336ffc3f63e622aa394e1022c15a58ce94865d7b6d9465cbcca4ce943285763a'
@@ -61,7 +62,7 @@ build() {
 }
 
 package() {
-  local extraction_dir="${srcdir}/unity-editor-${_version}x${_build}Linux"
+  local extraction_dir="${srcdir}/unity-editor-${_version}${_build}"
 
   mkdir -p "${pkgdir}/opt/"
   mv ${extraction_dir} ${pkgdir}/opt/UnityBeta
