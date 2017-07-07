@@ -2,12 +2,12 @@
 
 pkgname=pinegrow
 pkgver=3.01
-pkgrel=5
+pkgrel=6
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
 url="https://pinegrow.com"
 license=('custom')
-depends_x86_64+=(gtk2 glib alsa-lib nss libxss linxtst)
+depends_x86_64+=(gtk2 glib alsa-lib nss libxss libxtst)
 source=("https://pinegrow.s3.amazonaws.com/PinegrowLinux64.${pkgver}.zip"
         "${url}/Pinegrow_EULA.pdf")
 noextract=("Pinegrow_EULA.pdf")
