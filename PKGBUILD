@@ -1,7 +1,7 @@
 # Maintainer: Charlie Li <vishwin AT vishwin POINT info>
 
 pkgname=cockroachdb
-_basever=1.0.2
+_basever=1.0.3
 pkgver=${_basever}
 pkgrel=1
 epoch=1
