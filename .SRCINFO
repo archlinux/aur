@@ -1,7 +1,7 @@
 pkgbase = weston-eglstream
 	pkgdesc = Reference implementation of a Wayland compositor with EGLStream support
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wayland.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -43,6 +43,7 @@ pkgbase = weston-eglstream
 	source = 0006-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch
 	source = 0007-Add-nvidia-release-notes-file.patch
 	source = 0008-compositor-drm-Release-current-next-fb-when-deactiva.patch
+	source = 0009-compositor-Process-stream-attach-requests-with-wl_eg.patch
 	sha256sums = b4e446ac27f118196f1609dab89bb3cb3e81652d981414ad860e733b355365d8
 	sha256sums = c81d07f0a2b26e772faa02e4b088ff979206216652a4c30beb9aa24631d9d648
 	sha256sums = c32048c7b1e57c24ca7fa665c9e70bc3c12dec338aea3643b637bf8d30188335
@@ -52,6 +53,7 @@ pkgbase = weston-eglstream
 	sha256sums = 3bb9b0a354aa07fb3eb89ad9b7e425b1ce980b1bd0b90166a41795a80acc78ca
 	sha256sums = 47fc9f44083096299e1502cf15c93d9f8670e1a4e4784870d7a843d4de09d502
 	sha256sums = ca6c3a6fef381c6c7dd05e6d1bfda97b221fd90fc78ebf7b7ade9cfad2b38b63
+	sha256sums = d9f0bb2ac862017d0a1f0bddd3fedb5d4e7be3b5af6dd579d75442f9f88acf63
 
 pkgname = weston-eglstream
 
