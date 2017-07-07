@@ -1,14 +1,16 @@
 # Maintainer: lynix <lynix47@gmail.com>
 
 pkgname=hdd-spindown.sh-git
-pkgver=20150524
+pkgver=20170707
 pkgrel=1
 pkgdesc="Automatic Disk Standby using Kernel diskstats and hdparm"
 url="https://github.com/lynix/hdd-spindown.sh"
 arch=('any')
 license=('MIT')
-depends=('awk' 'coreutils' 'grep' 'systemd' 'hdparm' 'util-linux')
-optdepends=('smartmontools: recognizing SMART self-tests')
+depends=('coreutils' 'grep' 'systemd' 'hdparm')
+optdepends=('smartmontools: recognizing SMART self-tests' \
+            'iputils: host monitoring feature' \
+            'util-linux: logging to syslog')
 makedepends=()
 conflicts=()
 replaces=()
