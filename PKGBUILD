@@ -2,7 +2,7 @@
 
 _pkgname=virtualgl
 pkgname=$_pkgname-git
-pkgver=2.4.r54.ga22ca6c
+pkgver=2.4.r138.ga930d056
 pkgrel=1
 pkgdesc='Redirects 3D commands from an OpenGL application onto a server-side 3D graphics card'
 arch=('i686' 'x86_64')
@@ -29,12 +29,9 @@ build() {
     cd "$srcdir/build"
 
     cmake "$srcdir/$_pkgname" \
-        -DCMAKE_INSTALL_PREFIX=/usr/share \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DTJPEG_INCLUDE_DIR=/usr/include \
-        -DTJPEG_LIBRARY=/usr/lib/libturbojpeg.so \
-        -DVGL_LIBDIR=/usr/lib \
-        -DVGL_BINDIR=/usr/bin \
-        -DVGL_DOCDIR=/usr/share/doc/${pkgname}
+        -DTJPEG_LIBRARY=/usr/lib/libturbojpeg.so
 
     make
 }
@@ -45,5 +42,6 @@ package() {
     make install DESTDIR="$pkgdir"
 
     mv "$pkgdir"/usr/bin/glxinfo "$pkgdir"/usr/bin/vglxinfo
+    mv "$pkgdir"/usr/lib64 "$pkgdir"/usr/lib
 }
 
