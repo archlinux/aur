@@ -3,7 +3,7 @@
 
 pkgname=mopidy-git
 _gitname=mopidy
-pkgver=1.1.1.r120.gcc3ec5e
+pkgver=2.1.0.r36.g616f9ff1
 pkgrel=1
 pkgdesc="A music server which can play music from Spotify"
 arch=('any')
