@@ -9,9 +9,11 @@ url="http://www.keycloak.org/"
 license=('Apache')
 depends=('jdk8-openjdk')
 source=(
-"https://downloads.jboss.org/keycloak/$pkgver.Final/keycloak-$pkgver.Final.tar.gz"
-"keycloak.service")
-md5sums=('665d35b40ec4d3eee163cee88beb7085' '22aba60bbc3811d5a02148c69fe67630')
+  "https://downloads.jboss.org/keycloak/$pkgver.Final/keycloak-$pkgver.Final.tar.gz"
+  "keycloak.service")
+md5sums=(
+  '665d35b40ec4d3eee163cee88beb7085'
+  '22aba60bbc3811d5a02148c69fe67630')
 
 package() {
    install -Dm644 keycloak.service $pkgdir/usr/lib/systemd/system/keycloak.service
