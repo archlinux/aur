@@ -47,6 +47,8 @@ build() {
       -DWITH_EXTERNAL_ZLIB=ON \
       -DWITH_SQLITE=OFF \
       -DWITH_OPENSSL=ON \
+      -DLIB_EAY=/usr/${_arch}/lib/libcrypto.dll.a \
+      -DSSL_EAY=/usr/${_arch}/lib/libssl.dll.a \
       -DWITH_MYSQLCOMPAT=ON \
       ..
     make
