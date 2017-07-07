@@ -7,7 +7,7 @@ _pkgbase=kate
 pkgbase=kate-root
 pkgname=('kwrite-root'
          'kate-root')
-pkgver=17.04.1
+pkgver=17.04.2
 pkgrel=1
 arch=('armv7h' 'i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
@@ -15,7 +15,7 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'plasma-framework' 'knew
              'threadweaver' 'kitemmodels' 'kactivities')
 source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgbase}-${pkgver}.tar.xz"{,.sig}
         "https://gitlab.com/Megver83/kdebase-root-patches/raw/master/0001-Defuse-root-block.patch"{,.sig})
-sha256sums=('34eee6c384e2c2776c7d0ab65e7217e730cdbdecb82578c9dc90380cb82affd2'
+sha256sums=('1045c5bee48ade8c229096eeaa8696eba4dac118bccc2a535f9ac553602fcaaf'
             'SKIP'
             '97926a28409205bff73df7788afcbce5229a60734db26704ffb10535c74bb96c'
             'SKIP')
@@ -43,7 +43,6 @@ build() {
 
 package_kwrite-root() {
   pkgdesc="Text Editor, patched to be able to run as root"
-  groups=('kde-applications' 'kdebase')
   url="https://www.kde.org/applications/utilities/kwrite/"
   depends=('ktexteditor' 'kactivities' 'hicolor-icon-theme')
   replaces=('kdebase-kwrite' 'kwrite')
@@ -63,7 +62,6 @@ package_kwrite-root() {
 
 package_kate-root() {
   pkgdesc="Advanced Text Editor, patched to be able to run as root"
-  groups=('kde-applications' 'kdebase')
   url="https://www.kde.org/applications/utilities/kate/"
   depends=('knewstuff' 'ktexteditor' 'threadweaver' 'kitemmodels' 'kactivities' 'hicolor-icon-theme')
   replaces=('kdesdk-kate' 'kate')
