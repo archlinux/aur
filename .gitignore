@@ -1,0 +1,4 @@
+pkg/
+src/
+vysor/
+*.pkg.tar.xz

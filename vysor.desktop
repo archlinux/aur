@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Vysor
+Comment=Android Remote Control
+Exec=/usr/bin/vysor
+Icon=vysor
+Type=Application
+Terminal=false
+Categories=Development;Emulator;
+StartupWMClass=Vysor
+Keywords=Android;Emulator;
