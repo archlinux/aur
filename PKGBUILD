@@ -2,7 +2,7 @@
 
 pkgname=pinegrow
 pkgver=3.02
-pkgrel=3
+pkgrel=4
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
 url="https://pinegrow.com"
@@ -27,7 +27,6 @@ prepare() {
 package() {
   cd ${srcdir}
   install -D -m644 Pinegrow_EULA.pdf ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
-  cd "Pinegrow-${pkgver}"
   install -d ${pkgdir}/usr/share/pinegrow/
   cp -R * ${pkgdir}/usr/share/pinegrow/
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
