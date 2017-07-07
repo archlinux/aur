@@ -14,12 +14,12 @@ depends=('python2'
          'python2-requests'
          'python2-setuptools'
          'python2-tornado'
-         'gstreamer0.10-python'
-         'gstreamer0.10-base-plugins'
-         'gstreamer0.10-good-plugins'
-         'gstreamer0.10-ugly-plugins')
+         'gst-python'
+         'gst-plugins-base'
+         'gst-plugins-good'
+         'gst-plugins-ugly')
 makedepends=('git')
-optdepends=('gstreamer0.10-ffmpeg: AAC+ and WMA support.'
+optdepends=('gst-libav: AAC+ and WMA support.'
             'mopidy-spotify: Spotify backend'
             'mopidy-scrobbler: Last.FM scrobbler'
             'mopidy-MPRIS: MPRIS frontend')
