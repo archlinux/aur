@@ -8,7 +8,7 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=2.9.0.r54145.931892e8a6
+pkgver=2.9.0.r54386.b113658675
 pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
@@ -100,6 +100,7 @@ package_qemu-headless-git() {
   pkgdesc="QEMU without GUI. Git version."
   depends=("${_headlessdeps[@]}")
   optdepends=('qemu-headless-arch-extra-git: extra architectures support')
+  conflicts=('qemu-headless')
 
   _package headless
 }
@@ -184,8 +185,8 @@ _package() {
 package_qemu-arch-extra-git() {
   pkgdesc="QEMU for foreign architectures. Git version."
   depends=(qemu)
-  provides=(qemu-headless-arch-extra)
-  conflicts=(qemu-headless-arch-extra)
+  provides=(qemu-arch-extra)
+  conflicts=(qemu-arch-extra)
   options=(!strip)
 
   mv $srcdir/$_gitname/extra-arch-full/usr "$pkgdir"
