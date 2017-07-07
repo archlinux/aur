@@ -6,7 +6,7 @@
 
 _pkgname=dolphin
 pkgname=dolphin-root
-pkgver=17.04.1
+pkgver=17.04.2
 pkgrel=1
 pkgdesc="File Manager, patched to be able to run as root"
 arch=('armv7h' 'i686' 'x86_64')
@@ -16,12 +16,11 @@ depends=(baloo-widgets knewstuff kio-extras kuiserver kcmutils)
 makedepends=(extra-cmake-modules kdoctools python)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails' 
             'ruby: installing new service menus from KDE Store' 'kdegraphics-thumbnailers: PDF and PS thumbnails' 'konsole: terminal panel')
-provides=(dolphin)
 conflicts=('kdebase-dolphin<15.08' 'dolphin')
 replaces=(kdebase-dolphin dolphin)
 source=("https://download.kde.org/stable/applications/$pkgver/src/${_pkgname}-$pkgver.tar.xz"{,.sig}
         "https://gitlab.com/Megver83/kdebase-root-patches/raw/master/0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch"{,.sig})
-sha256sums=('27ae075eeb5811c4a3b2f64edb7316c17ac114bb1fa7ee866cc04def99352be7'
+sha256sums=('45ac5454ec6f2e1382ab250be16871a3184804b91f23839a7ec4d8f4b972a0f9'
             'SKIP'
             'a82476fd2b95aab513e7d80fd50b62a361167b9847584a530570bf84758bd76c'
             'SKIP')
