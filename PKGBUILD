@@ -215,7 +215,7 @@ check() {
 package_llvm-svn-polly() {
     pkgdesc='The LLVM Compiler Infrastructure'
     depends=(
-        "llvm-libs-svn=${pkgver}-${pkgrel}"
+        "llvm-libs-svn-polly=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-svn-polly')
     provides=('llvm')
@@ -292,7 +292,7 @@ package_llvm-libs-svn-polly() {
 package_llvm-ocaml-svn-polly() {
     pkgdesc='OCaml bindings for LLVM'
     depends=(
-        "llvm-svn=${pkgver}-${pkgrel}"
+        "llvm-svn-polly=${pkgver}-${pkgrel}"
         "ocaml=$(_ocamlver)"
         'ocaml-ctypes'
     )
@@ -312,7 +312,7 @@ package_llvm-ocaml-svn-polly() {
 package_lld-svn-polly() {
     pkgdesc='A linker from the LLVM project'
     depends=(
-        "llvm-libs-svn=${pkgver}-${pkgrel}"
+        "llvm-libs-svn-polly=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-svn-polly')
     provides=('lld')
@@ -333,7 +333,7 @@ package_clang-svn-polly() {
     pkgdesc='C language family frontend for LLVM'
     url='http://clang.llvm.org/'
     depends=(
-        "llvm-svn=${pkgver}-${pkgrel}"
+        "llvm-svn-polly=${pkgver}-${pkgrel}"
     )
     optdepends=(
         'clang-analyzer-svn: source code analysis for Clang, supporting C, C++, and Objective-C'
@@ -416,7 +416,7 @@ package_clang-analyzer-svn-polly() {
     pkgdesc='Source code analysis tool for Clang, supporting C, C++, and Objective-C'
     url='http://clang-analyzer.llvm.org/'
     depends=(
-        "clang-svn=${pkgver}-${pkgrel}"
+        "clang-svn-polly=${pkgver}-${pkgrel}"
         'perl'
         'python2'
     )
@@ -442,7 +442,7 @@ package_clang-compiler-rt-svn-polly() {
     pkgdesc='The "compiler-rt" set of runtime libraries for Clang and LLVM'
     url='http://compiler-rt.llvm.org/'
     depends=(
-        "clang-svn=${pkgver}-${pkgrel}"
+        "clang-svn-polly=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-svn-polly')
     provides=('clang-compiler-rt')
@@ -459,7 +459,7 @@ package_clang-tools-extra-svn-polly() {
     pkgdesc='Standalone tools for Clang: syntax checking, formatting, refactoring, etc.'
     url='http://clang.llvm.org/docs/ClangTools.html'
     depends=(
-        "clang-svn=${pkgver}-${pkgrel}"
+        "clang-svn-polly=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-svn-polly')
     provides=('clang-tools-extra')
