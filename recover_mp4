@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# This is a shim for recover_mp4.exe. WINEDLLOVERRIDES avoids the annoying
+# popups about not having Gecko/Mono libs installed.
+
+WINEDLLOVERRIDES="mscoree,mshtml=" exec wine /opt/windows/recover_mp4.exe "$@"

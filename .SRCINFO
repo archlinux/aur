@@ -1,0 +1,15 @@
+pkgbase = recover_mp4
+	pkgdesc = Recover damaged MP4 files
+	pkgver = 1.92
+	pkgrel = 1
+	url = http://slydiman.me/eng/mmedia/recover_mp4.htm
+	arch = x86_64
+	license = Proprietary
+	depends = wine
+	source = http://slydiman.me/download/recover_mp4.zip
+	source = recover_mp4
+	md5sums = fab39058223d468fbc9ebd0aa2db0d8b
+	md5sums = 9c57acf4db1f5164e26b528e9075ad16
+
+pkgname = recover_mp4
+
