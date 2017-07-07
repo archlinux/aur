@@ -2,7 +2,7 @@
 
 pkgname=hdd-spindown.sh-git
 pkgver=20170707
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Disk Standby using Kernel diskstats and hdparm"
 url="https://github.com/lynix/hdd-spindown.sh"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('smartmontools: recognizing SMART self-tests' \
 makedepends=()
 conflicts=()
 replaces=()
-backup=()
+backup=('etc/hdd-spindown.rc')
 source=("git://github.com/lynix/hdd-spindown.sh.git")
 md5sums=('SKIP')
 
