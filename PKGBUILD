@@ -2,11 +2,11 @@
 
 pkgname=libfreehand
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for parsing Aldus/Macromedia/Adobe FreeHand documents"
 arch=('i686' 'x86_64')
 url="https://wiki.documentfoundation.org/DLP/Libraries/libfreehand"
-license=('GPL')
+license=('MPL 2.0')
 depends=('boost-libs' 'icu' 'lcms2' 'librevenge' 'zlib')
 makedepends=('doxygen' 'boost' 'gperf')
 source=("https://dev-www.libreoffice.org/src/${pkgname}/${pkgname}-${pkgver}.tar.xz")
@@ -21,4 +21,6 @@ build() {
 package() {
     cd ${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
+
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
 }
