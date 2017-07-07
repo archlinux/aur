@@ -1,0 +1,23 @@
+pkgbase = esp-open-sdk-git
+	pkgdesc = Free and open (as much as possible) integrated SDK for ESP8266 chips
+	pkgver = 20170528090946
+	pkgrel = 1
+	url = https://github.com/pfalcon/esp-open-sdk
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = gperf
+	makedepends = help2man
+	depends = python
+	depends = python2
+	depends = python-pyserial
+	depends = python2-pyserial
+	depends = esptool
+	provides = esp-open-sdk
+	conflicts = esp-open-sdk
+	options = !strip
+	source = git+https://github.com/pfalcon/esp-open-sdk.git
+	md5sums = SKIP
+
+pkgname = esp-open-sdk-git
+

@@ -1,0 +1,22 @@
+--- Makefile.old	2017-02-09 22:44:09.998928546 +0000
++++ Makefile	2017-02-09 22:44:35.886338414 +0000
+@@ -72,11 +72,6 @@
+ 
+ 
+ all: esptool libcirom standalone sdk sdk_patch $(TOOLCHAIN)/xtensa-lx106-elf/sysroot/usr/lib/libhal.a $(TOOLCHAIN)/bin/xtensa-lx106-elf-gcc lwip
+-	@echo
+-	@echo "Xtensa toolchain is built, to use it:"
+-	@echo
+-	@echo 'export PATH=$(TOOLCHAIN)/bin:$$PATH'
+-	@echo
+ ifneq ($(STANDALONE),y)
+ 	@echo "Espressif ESP8266 SDK is installed. Toolchain contains only Open Source components"
+ 	@echo "To link external proprietary libraries add:"
+@@ -118,7 +113,6 @@
+ 
+ 
+ esptool: toolchain
+-	cp esptool/esptool.py $(TOOLCHAIN)/bin/
+ 
+ toolchain: $(TOOLCHAIN)/bin/xtensa-lx106-elf-gcc
+ 

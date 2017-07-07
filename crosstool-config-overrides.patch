@@ -1,0 +1,9 @@
+--- crosstool-config-overrides.old	2017-02-09 20:31:35.367784868 +0000
++++ crosstool-config-overrides	2017-02-09 20:31:40.017802432 +0000
+@@ -1,5 +1,5 @@
+ # Building static toolchain causes problems on some distros which
+ # by default don't install static libs for all required dependencies
+-#CT_STATIC_TOOLCHAIN=y
++CT_STATIC_TOOLCHAIN=y
+ CT_LIBC_NEWLIB_ENABLE_TARGET_OPTSPACE=y
+ 
