@@ -1,0 +1,12 @@
+pkgbase = jamrouter-git
+	pkgdesc = A low-latency low-jitter ALSA MIDI to Jack MIDI bridge, hardware MIDI compatibility layer and event processor
+	pkgver = r46.23527ae
+	pkgrel = 1
+	url = https://github.com/williamweston/jamrouter.git
+	arch = any
+	license = GPL
+	source = jamrouter-git::git+https://github.com/williamweston/jamrouter.git#branch=master
+	md5sums = SKIP
+
+pkgname = jamrouter-git
+
