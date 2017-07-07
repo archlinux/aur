@@ -30,8 +30,8 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=5.6.30
-pkgrel=5
+pkgver=5.6.31
+pkgrel=1
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -45,7 +45,7 @@ source=("https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
-sha512sums=('fdf503925c236a79cc09bc9e5c06ce5afa7497ccf20ab486389b818a7d84db1b84ac119523b35586f64fff7d198b6c20164910fbf33254b35ec2f41015d9feef'
+sha512sums=('b5d3bc306167c851460036aa21194a2f74a50a26aa5c46159394bddbff94e4a418b557d68d5e1315672b3571b13a231ef7810d5346f57c0094acfe29c2e70495'
             'SKIP'
             'e742d6e3e43bce75e11b4646cdbf06c5661c66cc22d5615caff1e293ed35e95973290940c93d6abeec2d43f02761baabf24e6954720d7df8f2bd7de2c3f9ba0d'
             'a20711e301648c0e7080688d2a2522f8b6a94d35dc4a09169795618f7b09613490b46ae1805ffffca63bc29f3f4b1d36705dec1bcc55e293fc51a31a6c346d8c'
