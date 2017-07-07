@@ -1,11 +1,12 @@
 #Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=bareos-webui
-pkgver=16.2.5
+pkgver=16.2.6
 pkgrel=1
 pkgdesc="A PHP-Frontend to manage Bareos over the web."
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 license=('AGPLv3')
+url='https://github.com/bareos/bareos-webui/'
 depends=('php' 'php-fpm')
 optdepend=('nginx' 'apache')
 source=("https://github.com/bareos/bareos-webui/archive/Release/${pkgver}.tar.gz")
@@ -13,7 +14,7 @@ backup=('etc/bareos-webui/configuration.ini'
         'etc/bareos-webui/directors.ini'
         'etc/bareos/bareos-dir.d/console/admin.conf.example'
         'etc/bareos/bareos-dir.d/profile/webui-admin.conf')
-sha256sums=('261fa5c38f5e75510e23b9e533eb84cacd8b1664eb473846aa26a774bb169a8f')
+sha256sums=('bf40ad8465380dba6458d979860c5a768a15a50c2f64135f6edc1239ab51a71b')
 
 build() {
         cd "${srcdir}/bareos-webui-Release-${pkgver}"
