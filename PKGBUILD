@@ -1,7 +1,7 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
-pkgname=python-vobject
-pkgver=0.9.4.1
+pkgname="python-vobject"
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='Module for parsing and generating vCard and vCalendar files'
 url='https://eventable.github.io/vobject/'
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python-dateutil' 'python-pyicu')
 makedepends=('python-setuptools')
 source=("https://github.com/eventable/vobject/archive/${pkgver}.tar.gz")
-sha256sums=('accc36d227ce02f3b258e666d504745e21a149a33c307a8d32d9fd439d2f5efb')
+sha256sums=('344bd0e2b95c507a1b99fee44f4f2bf3e12991f14b6f181bf98eed42162db764')
 
 package() {
   cd "vobject-${pkgver}"
