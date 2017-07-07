@@ -1,9 +1,9 @@
 pkgbase = hand-network
 	pkgdesc = The application can auto login hand-china company network.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/xausky/hand-network
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python-gobject
 	depends = python-requests
