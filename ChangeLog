@@ -1,0 +1,7 @@
+2017-07-07 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.14.0-2 :
+	Added -Wno-error to CXXFLAGS as a workaround for code in JUCE sources
+	causing warnings and compilation failure.
+	Remove obsolete 'giada.install' file.
+
