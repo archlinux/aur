@@ -1,13 +1,13 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-git
-pkgver=0.5.Beta.r163.geba9061
+pkgver=0.5.Beta.r178.g89e87a1
 pkgrel=1
 pkgdesc='Tiny Qt Music Player to keep your favorite songs at hand'
 arch=('i686' 'x86_64')
 url="https://babe.kde.org/"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'ki18n' 'knotifications' 'taglib')
+depends=('desktop-file-utils' 'gtk-update-icon-cache' 'ki18n' 'knotifications' 'taglib')
 makedepends=('extra-cmake-modules' 'git' 'python')
 optdepends=('youtube-dl: youtube support')
 provides=("${pkgname%-*}")
@@ -29,7 +29,5 @@ build() {
 }
  
 package() {
-  cd babe
-  make DESTDIR="${pkgdir}/" install
-  install -Dm755 data/babe.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/babe.svg"
+  make -C babe DESTDIR="${pkgdir}/" install
 }
