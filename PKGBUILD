@@ -13,7 +13,7 @@ pkgver=4.5.0
 _build=5650368
 _cart='CART17Q2'
 _docver=45
-pkgrel=6
+pkgrel=7
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('i686' 'x86_64')
 url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/4_0'
@@ -29,7 +29,7 @@ source_x86_64=("${pkgbase}-${pkgver}-${_build}-x86_64.bundle::https://download3.
 source_i686=("${pkgbase}-${pkgver}-${_build}-i686.bundle::https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build}.x86.bundle"
 	'http://archive.ubuntu.com/ubuntu/pool/main/g/glibmm2.4/libglibmm-2.4-1c2a_2.39.93-0ubuntu1_i386.deb')
 sha256sums=('d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
-            '9f34fd9b3d1ef5822f3927829d6f28db6197d72896bb4a1108233db3731f064c'
+            '7b1cc8b0029ae2c7fd81cda09f12cdea4328eea1e714bd61083b1b4a929cc443'
             '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
             'f0944ca74a44292e7f853792335d3bbd1a89a1d4964d6d74a7e9485a8b068b0b'
             'e47e770a1e19ed321de7c2765b2d682f59ac466aef92b2e4ea5e65cacf56de36')
