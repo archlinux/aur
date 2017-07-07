@@ -1,4 +1,4 @@
-# Maintainer: Fedor Piecka <teplavoda@gmail.com>
+# Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=eidklient
 pkgver=1.9.4
@@ -15,12 +15,17 @@ md5sums_x86_64=('SKIP')
 options=("!strip")
 
 pkgver() {
+	# Match Debian package version
 	ar p ${srcdir}/eID_klient/eidklient_amd64_debian.deb control.tar.gz | tar -Oxz ./control | grep ^Version: | cut -f2 -d" "
 }
 
 package() {
 	ar p ${srcdir}/eID_klient/eidklient_amd64_debian.deb data.tar.gz | tar -xz -C "${pkgdir}"
 	
+	# Update script is for Debian. Update from AUR in Arch.
+	rm ${pkgdir}/usr/bin/eIdKlient-update
+
+	# The application requires the libraries in a specific location
 	ln -sf /usr/lib/qt/plugins/imageformats/libqtga.so ${pkgdir}/usr/lib/eidklient/
 	ln -sf /usr/lib/qt4/plugins/imageformats/libqgif.so ${pkgdir}/usr/lib/eidklient/
 	ln -sf /usr/lib/qt4/plugins/imageformats/libqico.so ${pkgdir}/usr/lib/eidklient/
