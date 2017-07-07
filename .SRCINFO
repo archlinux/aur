@@ -1,7 +1,7 @@
 pkgbase = pinegrow
 	pkgdesc = A website development tool for building responsive websites
 	pkgver = 3.02
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pinegrow.com
 	install = pinegrow.install
 	arch = x86_64
