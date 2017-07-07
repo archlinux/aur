@@ -3,8 +3,8 @@
 
 pkgbase="zfs-encryption-dkms-git"
 pkgname=("zfs-encryption-dkms-git" "zfs-utils-encryption-dkms-git")
-pkgver=r2954.1d6e61f4e
-pkgrel=2
+pkgver=0.6.5_r1076_g6ee2ebb08
+pkgrel=1
 license=('CDDL')
 makedepends=("git" "spl-dkms-git")
 arch=("i686" "x86_64")
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/zfs"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --match "zfs-*" --long --tags | sed -e 's|zfs-||' -e 's|-\([0-9]*-g\)|-r\1|' -e 's|[-: ]|_|g'
 }
 
 build() {
