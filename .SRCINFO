@@ -1,0 +1,15 @@
+pkgbase = lib32-zvbi
+	pkgdesc = VBI capture and decoding library
+	pkgver = 0.2.35
+	pkgrel = 1
+	url = http://zapping.sourceforge.net/cgi-bin/view/ZVBI/WebHome
+	arch = x86_64
+	license = GPL
+	depends = lib32-libpng
+	depends = lib32-libx11
+	depends = zvbi
+	source = http://downloads.sourceforge.net/sourceforge/zapping/zvbi-0.2.35.tar.bz2
+	md5sums = 95e53eb208c65ba6667fd4341455fa27
+
+pkgname = lib32-zvbi
+
