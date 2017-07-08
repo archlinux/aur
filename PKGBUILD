@@ -1,6 +1,6 @@
 #Maintainer: Sam Bazley <samb1999@hotmail.co.uk>
 pkgname=esp-open-sdk-git
-pkgver=20170528090946
+pkgver=20170708154850
 pkgrel=1
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
@@ -33,6 +33,7 @@ prepare() {
 build() {
     cd "$srcdir"/esp-open-sdk
     CPPFLAGS= CFLAGS= CXXFLAGS= LDFLAGS= LD_LIBRARY_PATH= make
+    cp sdk/lib/libgcc.a xtensa-lx106-elf/lib/gcc/xtensa-lx106-elf/4.8.5
 }
 
 package() {
