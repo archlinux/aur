@@ -1,7 +1,7 @@
 pkgbase = lib32-suitesparse
 	pkgdesc = A collection of sparse matrix libraries (32-bit)
 	pkgver = 4.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://faculty.cse.tamu.edu/davis/suitesparse.html
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = lib32-suitesparse
 	depends = lib32-metis
 	depends = lib32-lapack
 	depends = lib32-intel-tbb
+	depends = suitesparse
 	options = staticlibs
 	source = http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.5.4.tar.gz
 	source = suitesparse-link-tbb.patch

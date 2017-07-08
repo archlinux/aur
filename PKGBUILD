@@ -3,11 +3,11 @@
 pkgname=lib32-suitesparse
 _basename=suitesparse
 pkgver=4.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of sparse matrix libraries (32-bit)"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 arch=('x86_64')
-depends=('lib32-metis' 'lib32-lapack' 'lib32-intel-tbb')
+depends=('lib32-metis' 'lib32-lapack' 'lib32-intel-tbb' 'suitesparse')
 makedepends=('gcc-fortran-multilib' 'cmake' 'chrpath')
 license=('GPL')
 options=('staticlibs')
