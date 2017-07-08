@@ -1,0 +1,20 @@
+pkgbase = bzrtp-git
+	pkgdesc = Opensource implementation of ZRTP keys exchange protocol
+	pkgver = 1.0.5.r32.g3735b88
+	pkgrel = 1
+	url = https://github.com/BelledonneCommunications/bzrtp
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = libxml2
+	depends = mbedtls
+	depends = bctoolbox-git
+	provides = bzrtp
+	conflicts = bzrtp
+	source = git+https://github.com/BelledonneCommunications/bzrtp.git
+	validpgpkeys = 9774BC1725758EB16D639F8B3ECD52DEE2F56985
+	sha256sums = SKIP
+
+pkgname = bzrtp-git
+
