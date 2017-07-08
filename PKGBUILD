@@ -1,10 +1,12 @@
-# Maintainer: Franz Rogar <franzrogar@gmail.com>
+# Maintainer: auruser <>
+# Ex-maintainer: Franz Rogar <franzrogar@gmail.com>
 # Modified AUR [brother-mfc-j220] package by Franz Rogar <franzrogar@gmail.com>
 # Original AUR [brother-hll2300d] package maintained by Mykola Bespaliuk (kolkabes [at] gmail [dot] com)
 pkgname="brother-mfc-j220"
 _model="j220"
 pkgver="1.1.3"
 pkgrel=1
+epoch=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-J220"
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
@@ -38,7 +40,7 @@ package() {
 
   mkdir -p "${pkgdir}/usr/lib/cups/filter"
   echo "#! /opt/brother/Printers/mfcj220/lpd/filtermfcj220" > "${srcdir}/filter-shim"
-  install -m 0755 -o root -g root "${srcdir}/filter-shim" "${pkgdir}/usr/lib/cups/filter/filtermfcj220"
+  install -m 0755 -o root -g root "${srcdir}/filter-shim" "${pkgdir}/usr/lib/cups/filter/brlpdwrappermfcj220"
 
   mkdir -p "${pkgdir}/usr/share/ppd/cupsfilters"
   install -m 0644 -o root -g root "${srcdir}/opt/brother/Printers/mfcj220/cupswrapper/brother_mfcj220_printer_en.ppd" "${pkgdir}/usr/share/ppd/cupsfilters"
