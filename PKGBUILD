@@ -3,14 +3,23 @@ _pkgname=SimpleITK
 pkgname=simpleitk
 pkgver=1.0.0
 _pypkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 depends=('gcc-libs' 'insight-toolkit>=4.11.0')
-makedepends=('clang' 'cmake' 'git' 'lua51' 'mono' 'python' 'python-pip' 'python-virtualenv' 'python-numpy' 'r' 'ruby' 'swig' 'tcl' 'tk')
+makedepends=(
+    'clang' 'cmake' 'git' 'swig'
+    'java-environment'
+    'lua51'
+    'mono'
+    'python' 'python-pip' 'python-virtualenv' 'python-numpy'
+    'r'
+    'ruby'
+    'tcl' 'tk')
 optdepends=(
+    'java-runtime: Java bindings'
     'lua51: Lua bindings'
     'mono: C# bindings'
     'python: Python bindings'
@@ -50,7 +59,7 @@ build() {
         -DBUILD_TESTING:BOOL=OFF \
         -DBUILD_EXAMPLES:BOOL=OFF \
         -DSimpleITK_PYTHON_WHEEL:BOOL=ON \
-        -DWRAP_JAVA:BOOL=OFF \
+        -DWRAP_JAVA:BOOL=ON \
         ..
 
     make all PythonVirtualEnv dist
@@ -74,4 +83,7 @@ package() {
 
     install -d -Dm755 "$pkgdir/usr/lib/R/library/"
     cp -dr --no-preserve=ownership "$_builddir/Wrapping/R/Packaging/$_pkgname" "$pkgdir/usr/lib/R/library/"
+
+    install -d -Dm755 "$pkgdir/usr/share/java/SimpleITK/"
+    cp -dr --no-preserve=ownership "$_builddir/Wrapping/Java/dist/SimpleITK-$pkgver"*/* "$pkgdir/usr/share/java/SimpleITK/"
 }
