@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.12
 pkgver=4.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -24,8 +24,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '7de71e0380b135b604ae90861b8d0f03f1ce993204dcefedb143d45afab3864b'
-            'dd0b43ff2ae2be601823ca0001d9004ad728836f7da6c02780b11cdf3ee39e83'
+            '130c3e505315d4405cc1ba9235ab8cd075e1122e0f1fa50b66eceab4eb268faa'
+            'd2271b1dfae30f38d70549e1d142da9d03eade0fd4620bbc4bd757b9c7a27422'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
