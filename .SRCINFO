@@ -1,0 +1,18 @@
+pkgbase = lib32-vcdimager
+	pkgdesc = A full-featured mastering suite for authoring disassembling and analyzing Video CD's and Super Video CD's (32-bit)
+	pkgver = 0.7.24
+	pkgrel = 1
+	url = http://www.vcdimager.org/
+	arch = x86_64
+	license = GPL
+	depends = lib32-libcdio
+	depends = lib32-libxml2
+	depends = lib32-popt
+	depends = vcdimager
+	source = ftp://ftp.gnu.org/gnu/vcdimager/vcdimager-0.7.24.tar.gz
+	source = vcdimager-0.7.24-libcdio-0.83.patch
+	md5sums = 3af22978fd79c79d5fda6513b6811145
+	md5sums = f4e7376fd9d975951d2b93a5e9123fdc
+
+pkgname = lib32-vcdimager
+
