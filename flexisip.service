@@ -1,10 +1,10 @@
 [Unit]
-Description=Flexisip server
-After=network.target
+Description=Flexisip proxy server
+After=syslog.target network.service network.target redis.service mysqld.service
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/flexisip --daemon -p /run/flexisip.pid
+ExecStart=/usr/bin/flexisip --server proxy --daemon -p /run/flexisip.pid
 PIDFile=/run/flexisip.pid
 
 [Install]

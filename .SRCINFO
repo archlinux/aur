@@ -1,24 +1,27 @@
 pkgbase = flexisip
 	pkgdesc = A general purpose SIP proxy with media capabilities
 	pkgver = 1.0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://flexisip.org
 	arch = i686
 	arch = x86_64
 	license = AGPL3
-	depends = belle-sip
-	depends = boost-libs
+	makedepends = cmake
+	depends = belle-sip-git
 	depends = hiredis
-	depends = mediastreamer
+	depends = mediastreamer-git
+	depends = ortp-git
 	depends = protobuf
+	depends = soci
 	depends = sofia-sip-bc
 	depends = unixodbc
 	depends = xsd
-	depends = soci
-	source = git+https://github.com/BelleDonneCommunications/flexisip.git#commit=cf47b79bd656
+	source = git+https://github.com/BelleDonneCommunications/flexisip.git#commit=d915601df292742c61b188d1184b376eabf47c83
 	source = flexisip.service
+	source = flexisip-presence.service
 	sha256sums = SKIP
-	sha256sums = 2a96c6604c62ea6b70f0bd6e96c6910afef6e17ac8d44ce0a50cce60279946be
+	sha256sums = 5c16f7a064ad93d75b9bc4401a5c651ca303ff2b92452e86b9a53ef674db93e4
+	sha256sums = 7f658cc393ef2feab587aaacc7cb62c1211620aa846c6b860c775272d698675c
 
 pkgname = flexisip
 
