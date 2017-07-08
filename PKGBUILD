@@ -2,12 +2,13 @@
 
 pkgname=ib-tws
 pkgver=966.1b
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
 license=('custom')
 depends=(bash)
+optdepends=(ffmpeg2.8)
 makedepends=(gtk2 imagemagick unzip)
 
 source=('LICENSE'
