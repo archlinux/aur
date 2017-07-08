@@ -4,17 +4,21 @@
 # Contributor: Max Roder <maxroder AT web DOT de>
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
 
-# This PKGBUILD is based on https://aur.archlinux.org/packages/tor-browser/
-
 #
 # Before running makepkg, you must do this:
 #
 # gpg --keyserver hkp://pgp.mit.edu:11371 --recv-keys D1483FA6C3C07136
 #
 
-pkgname='tor-browser-nl'
-_pkgname='tor-browser'
+# To port this PKGBUILD to another language of tor-browser you
+# have to change ONLY the variable ${_language} in PKGBUILD
+
 _language='nl'
+
+# This PKGBUILD is based on https://aur.archlinux.org/packages/tor-browser/
+
+_pkgname='tor-browser'
+pkgname="${_pkgname}-${_language}"
 pkgver='7.0.2'
 pkgrel='1'
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
