@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -60,13 +60,13 @@ prepare() {
 	npm config set cache "$srcdir/npm_cache"
 	msg2 "Cache changed from $_cache to `npm config get cache`"
 
-	msg2 "Install missing dependencies"
-	missing_ones="thepiratebay@1.4.0"
-	for package in $missing_ones
-	do
-		msg2 "Installing missing dependency $package"
-		npm install "$package"
-	done
+	#msg2 "Install missing dependencies"
+	#missing_ones="thepiratebay@1.4.0"
+	#for package in $missing_ones
+	#do
+	#	msg2 "Installing missing dependency $package"
+	#	npm install "$package"
+	#done
 
 	# Actually install the stuff
 	msg2 "Installing normal dependencies"
