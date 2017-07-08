@@ -7,7 +7,7 @@ pkgdesc="Neovim frontend built on Electron"
 arch=(any)
 url="https://www.npmjs.com/package/nyaovim"
 license=("MIT")
-depends=('nodejs' 'libnotify' 'neovim')
+depends=('gconf' 'nodejs' 'libnotify' 'neovim')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
 "$pkgname.desktop")
