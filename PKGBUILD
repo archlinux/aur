@@ -3,7 +3,7 @@
 pkgname=lib32-imagemagick
 _basename=imagemagick
 pkgver=6.9.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (32-bit)"
 arch=('x86_64')
 url="http://www.imagemagick.org/"
@@ -67,10 +67,10 @@ package() {
 
 #Cleaning
   rm -f "${pkgdir}"/usr/lib32/*.la
-  rm -f "${pkgdir}"/usr/bin
-  rm -f "${pkgdir}"/usr/include
-  rm -f "${pkgdir}"/usr/share
-  rm -f "${pkgdir}"/etc
+  rm -rf "${pkgdir}"/usr/bin
+  rm -rf "${pkgdir}"/usr/include
+  rm -rf "${pkgdir}"/usr/share
+  rm -rf "${pkgdir}"/etc
 
 # template end;
 }
