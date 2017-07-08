@@ -2,12 +2,12 @@
 
 pkgname=aftershotpro3
 pkgver=3.3.0.234
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional Workflow and RAW Conversion (3rd version)"
 url="http://www.aftershotpro.com/en/products/aftershot/pro"
 arch=('x86_64')
 license=('custom')
-depends=('qt5-webkit' 'qt5-tools' 'qt5-svg' 'ocl-icd')
+depends=('gstreamer0.10-base' 'ocl-icd')
 optdepends=('opencl-nvidia' 'opencl-mesa' 'opencl-catalyst')
 source=(AfterShotPro_${pkgver}.rpm::http://dwnld.aftershotpro.com/trials/3/AfterShotPro3.rpm license.txt)
 sha1sums=('ad55e95805210919eb102e6fbef84ff19779a034'
@@ -22,11 +22,6 @@ package() {
 	install -d ${pkgdir}/usr/share/mime/packages/
 	mv ${srcdir}/usr/share/mime/packages/* ${pkgdir}/usr/share/mime/packages/
 
-	# deleting bundled libs
-	rm -rf ${pkgdir}/opt/AfterShot3\(64-bit\)/lib
-	# updating exec script
-	sed -i 's|export LD_LIBRARY_PATH|export QT_PLUGIN_PATH=/usr/lib/qt/plugins\n#export LD_LIBRARY_PATH|' ${pkgdir}/usr/bin/AfterShot3X64
-	
 	# install license
 	install -Dm644 license.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
 }
