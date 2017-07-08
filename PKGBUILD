@@ -6,12 +6,12 @@
 pkgname=soulseekqt
 pkgver=20170220
 _pkgver=2017-2-20
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
 arch=('i686' 'x86_64')
 url="http://www.soulseekqt.net/news/"
 license=('custom')
-depends=( 'libxext' 'fontconfig' 'libxrender' )
+depends=('double-conversion' 'fontconfig' 'libxext' 'libxrender')
 source=($pkgname.desktop 
         $pkgname.png )
 
