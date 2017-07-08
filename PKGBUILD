@@ -5,8 +5,8 @@
 pkgname=mopidy-git
 _gitname=mopidy
 pkgver=2.1.0.r36.g616f9ff1
-pkgrel=1
-pkgdesc="A music server which can play music from Spotify"
+pkgrel=2
+pkgdesc="An extensible music server written in Python"
 arch=('any')
 url="http://www.mopidy.com"
 license=('APACHE')
@@ -15,6 +15,7 @@ depends=('python2'
          'python2-requests'
          'python2-setuptools'
          'python2-tornado'
+         'python2-gobject'
          'gst-python'
          'gst-plugins-base'
          'gst-plugins-good'
