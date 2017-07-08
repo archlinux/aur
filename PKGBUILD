@@ -6,7 +6,7 @@
 
 pkgname=lib32-imlib2
 _pkgname=imlib2
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="Library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, lib32"
 url="http://sourceforge.net/projects/enlightenment/"
@@ -14,7 +14,7 @@ arch=('x86_64')
 license=('BSD')
 depends=('lib32-libtiff' 'lib32-giflib' 'lib32-bzip2' 'lib32-freetype2' 'lib32-libxext' 'lib32-libpng' 'lib32-libid3tag' 'lib32-libjpeg-turbo' "${_pkgname}")
 source=("http://downloads.sourceforge.net/enlightenment/${_pkgname}-$pkgver.tar.bz2")
-md5sums=('23ef8b49f2793bc63b16839a2062298b')
+sha1sums=('664df65c6265a2825d685d2f3a4f0d072eb626ac')
 
 prepare() {
   cd "$_pkgname-$pkgver"
