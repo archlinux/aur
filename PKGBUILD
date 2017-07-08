@@ -4,8 +4,8 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=11384
-pkgrel=2
+pkgver=11390
+pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,6 +14,7 @@ depends=('libusb' 'openssl')
 makedepends=('git' 'pcsclite')
 optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
+conflicts=('oscam-svn')
 install='oscam.install'
 source=("git+http://www.oscam.cc/git/oscam-mirror"
         'oscam.service'
