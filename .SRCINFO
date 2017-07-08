@@ -1,13 +1,15 @@
 pkgbase = python-telegram-send
 	pkgdesc = Send messages and files over Telegram from the command-line.
-	pkgver = 0.8.4
-	pkgrel = 2
+	pkgver = 0.9.3
+	pkgrel = 1
 	url = https://github.com/rahiel/telegram-send
 	arch = any
 	license = GPLv3
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/2d/6f/3080be3b230d3b949e790126d4f557869e7aa1bcaed5c0af87ec0484a498/telegram-send-0.8.4.tar.gz
-	md5sums = 8bb6dd91973304dba5b169f191e4eb56
+	depends = python-telegram-bot
+	depends = python-colorama
+	source = https://pypi.python.org/packages/48/1c/274096c8e0ac37dae8e548f54188d8b246a9cc399dc79cfeddce9589a94c/telegram-send-0.9.3.tar.gz
+	md5sums = 05b7dded3e9be2a59d76b5075d99fd97
 
 pkgname = python-telegram-send
 
