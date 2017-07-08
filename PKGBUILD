@@ -2,7 +2,7 @@
 # Maintainer: 2GMon <t_2gmon@yahoo.co.jp>
 pkgname=mikutter
 #pkgver=3.5.0_alpha2
-pkgver=3.5.8
+pkgver=3.5.9
 pkgrel=2
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
@@ -40,5 +40,5 @@ EOF
 }
 
 
-md5sums=('75d601ec00081204fb06b49782fd71f7'
+md5sums=('0f01f08d5ee137a97853f04465a62381'
          '18e28a76097af88457462b08752382df')
