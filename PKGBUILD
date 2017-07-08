@@ -1,6 +1,6 @@
 pkgname=cloudshack-git
 _pkgname=cloudshack
-pkgver=20170707
+pkgver=20170708
 pkgrel=1
 pkgdesc="Amateur Radio logbook server with web interface"
 url="https://github.com/7h0ma5/CloudShack"
@@ -47,12 +47,12 @@ build() {
 package() {
   install -dm755 ${pkgdir}/usr/lib
 
-  cd "${srcdir}/${pkgname}/rel/cloudshack"
+  cd "${srcdir}/${pkgname}/_build/prod/rel/cloudshack"
   rm -f releases/*/cloudshack.tar.gz
   chmod 755 bin/{cloudshack,nodetool}
   chmod 755 releases/*/cloudshack.sh
 
-  cp -r ${srcdir}/${pkgname}/rel/cloudshack/ ${pkgdir}/usr/lib
+  cp -r ${srcdir}/${pkgname}/_build/prod/rel/cloudshack/ ${pkgdir}/usr/lib
 
   cd "${srcdir}"
   install -Dm644 cloudshack.service -t "${pkgdir}"/usr/lib/systemd/system/
