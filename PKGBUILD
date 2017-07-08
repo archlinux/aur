@@ -1,13 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - OpenCV 3.x."
-url='http://opencvg.org'
+url='http://opencv.org'
 
 pkgname='ros-kinetic-opencv3'
-pkgver='3.1.0'
-_pkgver_patch=18
+pkgver='3.2.0'
+_pkgver_patch=4
 arch=('any')
-pkgrel=19
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=()
@@ -46,7 +46,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="opencv3-release-release-kinetic-opencv3-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/opencv3-release/archive/release/kinetic/opencv3/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('433174200f82e09fdcdce4d2779eb850b0bfd28bd85be9a7bbbbfda3e9afa2f9')
+sha256sums=('2e2e35fe81f5764915ec998eeb1a4fc82053b46862662bf2b291328436653237')
 
 build() {
   # Use ROS environment variables
