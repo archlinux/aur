@@ -1,6 +1,6 @@
 pkgbase = esp-open-sdk-git
 	pkgdesc = Free and open (as much as possible) integrated SDK for ESP8266 chips
-	pkgver = 20170708154850
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/pfalcon/esp-open-sdk
 	arch = i686
