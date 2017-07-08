@@ -1,26 +1,17 @@
 # Maintainer: cherti <aur@letopolis.de>
 
 pkgname=robustirc-bridge
-pkgver=1.7
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Bridge to robustirc.net-IRC-Network'
 arch=(i686 x86_64)
 url='https://github.com/robustirc/bridge'
 license=('BSD-3-clause')
-groups=()
-depends=()
 makedepends=('go')
-checkdepends=()
-optdepends=()
-provides=()
 conflicts=('robustirc-bridge-git')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=('https://github.com/robustirc/bridge/archive/v1.7.tar.gz')
-sha256sums=('1c5f1ead6ecba25459503b23206677779c08e61d4310f469156e7c94f502826a')
+source=('https://github.com/robustirc/bridge/archive/v1.7.1.tar.gz')
+sha256sums=('68cfadb639c484ed35db2b0c5d6fff85a4ad567a8e67468b758c2c0523db04d1')
+md5sums=('adc494b55d83df8a580b820206f00af4')
 
 
 prepare() {
