@@ -1,8 +1,8 @@
+# Maintainer: Wes Barnett <wes at wbarnett dot us>
 pkgname=anki
-pkgver=2.1.0a15
-alpha=15
-pkgrel=2
-pkgdesc="WARNING: THIS BUILDS ALPHA SOFTWARE. Friendly, intelligent flash cards"
+pkgver=2.1.0beta1
+pkgrel=1
+pkgdesc="Friendly, intelligent flash cards"
 url="https://ankisrs.net/"
 license=('AGPL3')
 arch=('any')
@@ -12,8 +12,8 @@ checkdepends=('python-nose' 'python-coverage' 'texlive-core')
 optdepends=('lame: record sound'
             'mplayer: play sound'
             'texlive-core: use latex markup')
-source=(https://apps.ankiweb.net/downloads/alpha/alpha$alpha/$pkgname-$pkgver-source.tgz)
-sha512sums=('1ad41354be4a79e56f0f81e4e7e352d99120f04fcec4eb8c839a823d80a4800a5364190128988960d0218a3d68d9105463120334d16a182944e589f204641e4d')
+source=(https://apps.ankiweb.net/downloads/beta/$pkgname-$pkgver-source.tgz)
+sha512sums=('0dd4e8e91be3b97e19a9ac5f854708e625e3aa19734455454ab258efc6f57305d3670fd57aa6072f1c1862fd68933f44aa61fa789207a402cc5ae196bca52239')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
