@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=171.4456.199
+_buildver=171.4456.902
 _pkgver=1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
@@ -14,7 +14,7 @@ arch=('any')
 options=('!strip')
 url="https://www.jetbrains.com/rider/"
 license=("custom")
-optdepends=('mono: .NET runtime')
+optdepends=('mono: .NET runtime' 'msbuild-15-bin: build .NET Core projects')
 makedepends=("wget")
 provides=("rider")
 conflicts=("rider")
