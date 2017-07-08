@@ -1,7 +1,7 @@
 pkgbase = firefox-dev-da
 	pkgdesc = Standalone web browser from mozilla.org, developer build - Danish
-	pkgver = 55.0b2.20170616
-	pkgrel = 1
+	pkgver = 55.0b7.20170708
+	pkgrel = 2
 	url = http://www.mozilla.org/firefox/developer
 	arch = i686
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = firefox-dev-da
 	optdepends = ffmpeg: h.264 video
 	optdepends = hunspell: spell checking
 	optdepends = hyphen: hyphenation
-	source = https://download-installer.cdn.mozilla.net/pub/devedition/releases/55.0b2/linux-x86_64/da/firefox-55.0b2.tar.bz2
+	source = https://download-installer.cdn.mozilla.net/pub/devedition/releases/55.0b7/linux-x86_64/da/firefox-55.0b7.tar.bz2
 	source = firefox-dev-da.desktop
 	source = vendor.js
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = SKIP
-	sha512sums = bb7db547b9b211f1b30a9cb4b6f41ffcfa6250a2f1dd9e6c21b7c1401cd2ff1521f1a6136600c72bedc8411aebd1e230a56f6a104467ba20422bac18f8cb16d3
-	sha512sums = 583fe266f5498bdedb5988848901624cf5990e0cc5426143121c8d0c7ad0438ed790b3396891659a3d1bb319114710892d656457bbed5b40a9503d6aad97eb0f
+	sha512sums = 2ddb9dc05fae77c5a22adfc0f2366a7569ec5df26b507f0ee61c3ef33560bf1a7d77461626fffe29242f4da514df03704e4c8ae470dddb011b3415f50a33bc38
+	sha512sums = 44594e0cf71a259351a28933d89cecafc65e5967764133247f7a371e800e4e10a40131a627a740173ea0e980451cc4632676947d676cde8a836be45abcf861b7
 
 pkgname = firefox-dev-da
 
