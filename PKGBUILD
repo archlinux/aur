@@ -1,4 +1,4 @@
-# Maintainer: cherti <aur@letopolis.de>
+# Maintainer: Jonas Große Sundrup/cherti <aur@letopolis.de>
 
 pkgname=robustirc-bridge
 pkgver=1.7.1
