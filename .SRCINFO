@@ -1,6 +1,6 @@
 pkgbase = masterpdfeditor-qt4
 	pkgdesc = A complete solution for creation and editing PDF files - Qt4 version
-	pkgver = 4.2.30
+	pkgver = 4.2.60
 	pkgrel = 1
 	url = https://code-industry.net/free-pdf-editor/
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = masterpdfeditor-qt4
 	conflicts = masterpdfeditor
 	source = masterpdfeditor.desktop
 	sha1sums = 5b3a0392390e49d4f7f4e478dd336476436f5cfa
-	source_i686 = http://get.code-industry.net/public/master-pdf-editor-4.2.30_i386.tar.gz
-	sha1sums_i686 = 1dd863494945efa52285ce2dad30cef70d6704d3
-	source_x86_64 = http://get.code-industry.net/public/master-pdf-editor-4.2.30_qt4.amd64.tar.gz
-	sha1sums_x86_64 = 72c847cd0b845a83d6856ed7b344b80ddb5d5959
+	source_i686 = http://get.code-industry.net/public/master-pdf-editor-4.2.60_i386.tar.gz
+	sha1sums_i686 = bd8ca6c418b0c85676e62577f79518a2a390e979
+	source_x86_64 = http://get.code-industry.net/public/master-pdf-editor-4.2.60_qt4.amd64.tar.gz
+	sha1sums_x86_64 = f405f6f20bf2a0b8298b5c8e23ed1d1e1aa91bf2
 
 pkgname = masterpdfeditor-qt4
 	depends = gcc-libs
