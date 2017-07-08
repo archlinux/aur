@@ -2,7 +2,7 @@
 
 _gitname="python-azlyrics"
 pkgname="${_gitname}-git"
-pkgver=eecf20e
+pkgver=f55454e
 pkgrel=1
 pkgdesc="api & cli app for azlyrics.com"
 arch=("any")
