@@ -9,7 +9,7 @@
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 _commit=379d2efb5539b09112c793d3d9a413017d736f89
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
@@ -21,10 +21,11 @@ conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("vscode::git+https://github.com/Microsoft/vscode#commit=${_commit}"
-        "startup_script.patch"
+        "startup_script.patch" "ts-compat.patch"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
             '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
+            '91da6c2f2036813ba3d3ae5ce17cc4b437fadc6f18c693459bba2d7f68331e5b'
             'f853d7d998251223b0516928a2189e1e68a312bd732f18dc8d59892659beeae9')
 
 if (( VSCODE_NONFREE )); then
@@ -52,6 +53,9 @@ esac
 
 prepare() {
     cd "${srcdir}/vscode"
+
+    # Typescript 2.4 breaks some parts of the build
+    patch -p1 -i "${srcdir}/ts-compat.patch"
 
     if (( VSCODE_NONFREE )); then
         patch -p1 -i "${srcdir}/product_json.patch"
