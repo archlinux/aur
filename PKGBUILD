@@ -5,7 +5,7 @@
 _pkgname=QuiteRSS
 pkgname=quiterss
 pkgver=0.18.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and light RSS/Atom feed reader written in Qt/С++"
 arch=('i686' 'x86_64')
 url="https://quiterss.org"
@@ -29,5 +29,8 @@ build() {
 package() {
   cd $pkgname-$pkgver/_build
   make INSTALL_ROOT="$pkgdir/" install
+
+  # Patch: install language files
+  cp -rpv release/target/lang/* "$pkgdir/usr/share/quiterss/lang/"
 }
 
