@@ -2,7 +2,7 @@
 # Maintainer: David C. Rankin <drankinatty @ gmail.com>
 
 pkgname=gtkwrite_git
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=2
 pkgdesc="GTKwrite Text Editor with Syntax Highlight written in C, GTK+2 & GtkSourceView2 (development version)"
 url="https://github.com/drankinatty/${pkgname%_git}"
@@ -33,7 +33,9 @@ package() {
     install -d -m755 ${pkgdir}/usr/bin
     install -m755 bin/${pkgname%_git} ${pkgdir}/usr/bin/${pkgname}
 
-    install -D -m644 gtkwrite.xml "${pkgdir}/usr/share/gtksourceview-2.0/styles/gtkwrite.xml"
+    install -D -m644 styles/gtkwrite.xml "${pkgdir}/usr/share/gtksourceview-2.0/styles/gtkwrite.xml"
+    install -m644 styles/gtkwrite_light.xml "${pkgdir}/usr/share/gtksourceview-2.0/styles"
+
     install -D -m644 gpl-2.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/gpl-2.0.txt"
     install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
