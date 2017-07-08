@@ -2,16 +2,15 @@
 
 _pkgname=feeluown
 pkgname="${_pkgname}-git"
-pkgver=9.3a.2.ga3d9cf9
+pkgver=9.5.14.g02782d6
 pkgrel=1
 epoch=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
 url="https://github.com/cosven/FeelUOwn"
 license=('GPL3')
-depends=('python-pyqt5' 'python-requests' 'python-quamash' 'qt5-multimedia' 'python-crypto' 'xdg-utils' 'sh' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-plugins-good' 'python-beautifulsoup4')
-optdepends=('vlc'
-            'feeluown-mpris2-plugin-git: MPRIS support')
+depends=('python-pyqt5' 'python-requests' 'python-quamash' 'qt5-multimedia' 'python-crypto' 'xdg-utils' 'sh' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-plugins-good' 'python-beautifulsoup4' 'python-fuocore')
+optdepends=('feeluown-mpris2-plugin-git: MPRIS support')
 makedepends=('git' 'python-setuptools')
 provides=("${_pkgname}==${pkgver}")
 conflicts=("${_pkgname}")
