@@ -1,7 +1,7 @@
 pkgbase = perl-musicbrainz-discid
 	pkgdesc = This packages the MusicBrainz-DiscID distribution, containing the MusicBrainz::DiscID module!
-	pkgver = 0.03
-	pkgrel = 2
+	pkgver = 0.04
+	pkgrel = 1
 	url = https://metacpan.org/release/MusicBrainz-DiscID
 	arch = any
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = perl-musicbrainz-discid
 	depends = perl-module-build
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/N/NJ/NJH/MusicBrainz-DiscID-0.03.tar.gz
-	md5sums = 4b775f38604f15fd20298d5b443d6900
+	source = http://search.cpan.org/CPAN/authors/id/N/NJ/NJH/MusicBrainz-DiscID-0.04.tar.gz
+	md5sums = d9fa75c2aba97df9d938df424bb0284f
 
 pkgname = perl-musicbrainz-discid
 
