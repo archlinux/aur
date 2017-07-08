@@ -1,7 +1,7 @@
 # Contributor: Hugo Ideler <hugo at hugoideler dot com>
 pkgname=jaxx
-pkgver=1.2.13
-pkgrel=3
+pkgver=1.2.18
+pkgrel=1
 epoch=
 pkgdesc="Multi-chain cryptocurrency wallet"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://jaxx.io/files/$pkgver/Jaxx-v$pkgver-linux-x64.zip" "jaxx.desktop")
 noextract=()
-md5sums=('2ed538aada0d361a6970e566e2ebb1ca'
+md5sums=('f7a7def6aa139b5662d4954296ef6cff'
          '6c5a513df8f5b65af59512dace0f20e7')
 
 validpgpkeys=()
