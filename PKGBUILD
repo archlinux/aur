@@ -5,7 +5,7 @@
 
 pkgname=logrotate-nosystemd
 _pkgname=logrotate
-pkgver=3.12.2
+pkgver=3.12.3
 pkgrel=1
 pkgdesc="Rotates system logs automatically"
 arch=('i686' 'x86_64')
@@ -16,12 +16,11 @@ depends=('popt' 'gzip' 'acl')
 optdepends=('cron: scheduled log rotation')
 provides=('logrotate')
 conflicts=('logrotate')
-replaces=('logrotate')
 backup=('etc/logrotate.conf')
 source=("https://github.com/logrotate/logrotate/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc}
         'logrotate.conf'
         'logrotate.cron.daily')
-md5sums=('923e753825405280aebcc4e73b4b2b55'
+md5sums=('a560c57fac87c45b2fc17406cdf79288'
          'SKIP'
          '94dae4d3eded2fab9ae879533d3680db'
          'dd5fd26724274fd9c827eadad60ff4c5')
