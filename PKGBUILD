@@ -3,7 +3,7 @@
 
 pkgname=bctoolbox-git
 _pkgname=bctoolbox
-pkgver=0.5.1.108.ga21cab9
+pkgver=0.5.1.r108.ga21cab9
 pkgrel=1
 pkgdesc="Utilities library for Belledonne Communications software"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/^v//; s/-/./g'
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
