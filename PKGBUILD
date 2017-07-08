@@ -5,7 +5,7 @@ pkgbase="zfs-encryption-dkms-git"
 pkgname=("zfs-encryption-dkms-git" "zfs-utils-encryption-dkms-git")
 _ver=0.7.0
 pkgver=0.7.0_r2959.13283607c
-pkgrel=2
+pkgrel=3
 license=('CDDL')
 makedepends=("git" "spl-dkms-git")
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ source=("git+https://github.com/tcaputi/zfs.git"
 sha256sums=('SKIP'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
             '17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77'
-            'eb6785d9a59f3d81baf09fcb3a7d1cf6b040a14e52dccf74e67666b9e1a1cdd5')
+            '623723a5a05d949dbd6c12e4b884c51e7c5a73fdedfba853f2c7164fdfece0ac')
 
 pkgver() {
     cd "${srcdir}/zfs"
