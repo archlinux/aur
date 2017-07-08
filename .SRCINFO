@@ -1,0 +1,33 @@
+pkgbase = eigen-multilib
+	pkgdesc = Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. (multilib version)
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = http://eigen.tuxfamily.org
+	arch = any
+	license = GPL3
+	license = LGPL2.1
+	license = BSD
+	license = custom:MPL2
+	license = custom:MINPACK
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = freeglut
+	makedepends = lib32-freeglut
+	makedepends = gcc-fortran
+	makedepends = fftw
+	makedepends = lib32-fftw
+	makedepends = qt4
+	makedepends = lib32-fftw
+	makedepends = suitesparse
+	makedepends = lib32-suitesparse
+	makedepends = boost
+	makedepends = lib32-boost-libs
+	optdepends = qt4: for example programs
+	provides = eigen
+	conflicts = eigen
+	replaces = eigen
+	source = eigen-multilib-3.3.4.tar.bz2::http://bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2
+	sha1sums = e52d7d7a8c81f5ee0699e63ae3b78fe8214380a5
+
+pkgname = eigen-multilib
+
