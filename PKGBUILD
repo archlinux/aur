@@ -1,8 +1,9 @@
-# Maintainer: Ainola
+# Maintainer: Guillaume Hayot <ghayot@postblue.info>
+# Contributor: Ainola
 
 pkgname=gog-hyper-light-drifter
 pkgver=2.7.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Explore a beautiful, vast and ruined world riddled with unknown dangers and lost technologies."
 url="http://www.heart-machine.com/"
 license=('custom')
