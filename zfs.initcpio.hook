@@ -28,7 +28,7 @@ zfs_get_bootfs () {
 zfs_decrypt_fs() {
     dataset=$1
     
-    # if 'zfs load-key' is available
+    # check if 'zfs load-key' is available
     zfs 2>&1 | grep load-key > /dev/null || return 0
     
     # check if dataset is encrypted
@@ -58,7 +58,7 @@ zfs_mount_handler () {
     local pool="${ZFS_DATASET%%/*}"
     local rwopt_exp="${rwopt:-ro}"
 
-    if ! zpool list -H "${pool}" 2&>1 > /dev/null ; then
+    if ! zpool list -H "${pool}" 2>1 > /dev/null ; then
         if [ ! "${rwopt_exp}" = "rw" ]; then
             msg "ZFS: Importing pool ${pool} readonly."
             ZPOOL_IMPORT_FLAGS="${ZPOOL_IMPORT_FLAGS} -o readonly=on"
@@ -68,7 +68,7 @@ zfs_mount_handler () {
 
         if ! zpool import ${ZPOOL_IMPORT_FLAGS} -N "${pool}" ${ZPOOL_FORCE} ; then
             die "ZFS: Unable to import pool ${pool}."
-	fi            
+        fi
     fi
 
     local node="$1"
