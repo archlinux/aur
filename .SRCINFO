@@ -10,7 +10,7 @@ pkgbase = python-azlyrics-git
 	depends = python-beautifulsoup4
 	provides = python-azlyrics
 	conflicts = python-azlyrics
-	source = git+https://github.com/ffmarcos/python-azlyrics
+	source = git+https://github.com/mracos/python-azlyrics
 	md5sums = SKIP
 
 pkgname = python-azlyrics-git

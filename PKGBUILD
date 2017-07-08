@@ -12,7 +12,7 @@ depends=("python" "python-beautifulsoup4")
 makedepends=("git")
 provides=("${_gitname}")
 conflicts=("${_gitname}")
-source=("git+https://github.com/ffmarcos/${_gitname}")
+source=("git+https://github.com/mracos/${_gitname}")
 md5sums=("SKIP")
 
 pkgver() {
