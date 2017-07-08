@@ -49,11 +49,7 @@ zfs_mount_handler () {
 
         if ! zpool import ${ZPOOL_IMPORT_FLAGS} -N "${pool}" ${ZPOOL_FORCE} ; then
             die "ZFS: Unable to import pool ${pool}."
-        else
-            # load keys for all encrypted datasets
-            zfs load-key -a
-        fi
-            
+	fi            
     fi
 
     local node="$1"

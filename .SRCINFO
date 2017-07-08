@@ -1,6 +1,6 @@
 pkgbase = zfs-encryption-dkms-git
-	pkgver = 0.7.0_r2959.6ee2ebb08
-	pkgrel = 1
+	pkgver = 0.7.0_r2959.13283607c
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = i686
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = zfs-encryption-dkms-git
 	sha256sums = SKIP
 	sha256sums = b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540
 	sha256sums = 17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77
-	sha256sums = 25912d14d4091b1e705046b558be498df5c18bf040f272b620cc1b8085cb36a4
+	sha256sums = eb6785d9a59f3d81baf09fcb3a7d1cf6b040a14e52dccf74e67666b9e1a1cdd5
 
 pkgname = zfs-encryption-dkms-git
 	pkgdesc = Kernel modules for the Zettabyte File System build with support for native encryption. (Git version)
 	depends = spl-dkms-git
-	depends = zfs-utils-encryption-dkms-git=0.7.0_r2959.6ee2ebb08-1
+	depends = zfs-utils-encryption-dkms-git=0.7.0_r2959.13283607c-2
 	depends = dkms
 	provides = zfs
 	conflicts = zfs-git
