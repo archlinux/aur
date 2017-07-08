@@ -3,7 +3,7 @@
 
 _name=firefox
 _channel=dev-da
-_version='55.0b2'
+_version='55.0b7'
 _file="${_name}-${_version}"
 _srcurl="https://download-installer.cdn.mozilla.net/pub/devedition/releases/${_version}/"
 pkgname="${_name}-${_channel}"
@@ -19,15 +19,15 @@ if [[ "$CARCH" == "i686" ]]; then
 	source=("${_srcurl}linux-i686/da/${_file}.tar.bz2" "${_name}-${_channel}.desktop" "vendor.js")
 	sha512sums=(
 		'SKIP'
-		'c18e9941eaf869c05568477c24b44a6d11231fde046809baa07ce4e3d457427f9c702133c55961bd7b759b6ec019042d372ee235bea254e193beb1875276733a'
-		'583fe266f5498bdedb5988848901624cf5990e0cc5426143121c8d0c7ad0438ed790b3396891659a3d1bb319114710892d656457bbed5b40a9503d6aad97eb0f'
+		'2ddb9dc05fae77c5a22adfc0f2366a7569ec5df26b507f0ee61c3ef33560bf1a7d77461626fffe29242f4da514df03704e4c8ae470dddb011b3415f50a33bc38'
+		'44594e0cf71a259351a28933d89cecafc65e5967764133247f7a371e800e4e10a40131a627a740173ea0e980451cc4632676947d676cde8a836be45abcf861b7'
 	)
 elif [[ "$CARCH" == "x86_64" ]]; then
 	source=("${_srcurl}linux-x86_64/da/${_file}.tar.bz2" "${_name}-${_channel}.desktop" "vendor.js")
 	sha512sums=(
 		'SKIP'
-		'bb7db547b9b211f1b30a9cb4b6f41ffcfa6250a2f1dd9e6c21b7c1401cd2ff1521f1a6136600c72bedc8411aebd1e230a56f6a104467ba20422bac18f8cb16d3'
-		'583fe266f5498bdedb5988848901624cf5990e0cc5426143121c8d0c7ad0438ed790b3396891659a3d1bb319114710892d656457bbed5b40a9503d6aad97eb0f'
+		'2ddb9dc05fae77c5a22adfc0f2366a7569ec5df26b507f0ee61c3ef33560bf1a7d77461626fffe29242f4da514df03704e4c8ae470dddb011b3415f50a33bc38'
+		'44594e0cf71a259351a28933d89cecafc65e5967764133247f7a371e800e4e10a40131a627a740173ea0e980451cc4632676947d676cde8a836be45abcf861b7'
 	)
 fi
 
