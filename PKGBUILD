@@ -14,7 +14,7 @@ url="http://courier-mta.org/authlib/"
 backup=('etc/authlib/authdaemonrc' 'etc/authlib/authldaprc' \
         'etc/authlib/authmysqlrc' 'etc/authlib/authpgsqlrc')
 depends=('openssl' 'gdbm' 'perl' 'libtool' 'expect' 'courier-unicode>=2.0')
-makedepends=('expect' 'pam' 'libldap' 'libmysqlclient' 'postgresql-libs>=8.3.0')
+makedepends=('expect' 'pam' 'libldap' 'libmariadbclient' 'postgresql-libs>=8.3.0')
 optdepends=('sqlite: With support for the authsqlite authentication module'
 	    'libmariadbclient: With support for the authmysql authentication module'
 	    'libldap: With support for the authldap authentication module'
