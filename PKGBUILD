@@ -3,9 +3,9 @@
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
 pkgname=telegram-desktop-bin-dev
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
-_dev=0 # If it is a dev-only version, set this to 1
+_dev=1 # If it is a dev-only version, set this to 1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries, developement version"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org"
@@ -53,8 +53,8 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032'
             '871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76'
             'a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d')
-sha256sums_i686=('4b751a34d3226994666c35e7760652451f29d7d83d88e02bc79da268cafc1432')
-sha256sums_x86_64=('9024a2e1df7eecb49ad503ffa9ea2d9ccc6729dac7600c1a13c255a7db09c39e')
+sha256sums_i686=('871b480b6c7c588c6c7d4605a38a01fd0992b0e6a3b10af9be1e7cd50eebab59')
+sha256sums_x86_64=('f8567ca46e6e20042d6b5fc9a9c995039d659e751092091751bb6db1ec1a5b1f')
 # Some installation information
 install="$pkgname.install"
 
