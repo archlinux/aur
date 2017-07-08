@@ -1,35 +1,38 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
-_name="pdir2"
-_module="${_name%2}"
+_name="pdir"
 
-pkgname=("python-$_module" "python2-$_module")
-pkgver=0.2.1
+#pkgname=("python-$_name" "python2-$_name")
+pkgbase="python-$_name"
+pkgname=("python2-$_name")
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="Pretty dir printing with joy"
+pkgdesc="A selective pretty dir printing utility for Python"
 arch=("any")
-url="https://github.com/laike9m/$_name"
-license=("MIT")
+url="https://github.com/pramttl/$_name"
+license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('baaf07033f71efddb1d1d8f63c4b3a3e66415ed91fb4f8895e746c0cc5c89238')
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
+        "https://raw.githubusercontent.com/pramttl/pdir/master/LICENSE.txt")
+sha256sums=('43e7fdd73807b17c58f548db04eabba8cbea4033582a42b9d3c98ceda1fbfffb'
+            '4c43622e8623588a38649c02856603b9fbe932c2c9f9cd7694278bc36a332c16')
 
 build() {
     cd "$_name-$pkgver"
-    python setup.py build
+    #python setup.py build
     python2 setup.py build
 }
 
-package_python-pdir() {
-    depends=("python")
-    cd "$_name-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-}
+#package_python-pdir() {
+#    depends=("python")
+#    cd "$_name-$pkgver"
+#    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+#    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/LICENSE.txt"
+#}
 
 package_python2-pdir() {
-    depends=("python2" "python2-enum34")
+    depends=("python2")
     cd "$_name-$pkgver"
     python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/LICENSE.txt"
 }
