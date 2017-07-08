@@ -1,0 +1,27 @@
+#! /usr/bin/env sh
+
+# Dustmod segfaults when it can't write to its install dir, so it's horrible
+# hack time: create a temp dir, symlink all the game files to it, and run from
+# there
+
+temp_dir=
+
+cleanup () {
+    test -n "$temp_dir" && rm -rf "$temp_dir"
+    exit "$1"
+}
+trap 'cleanup 1' INT TERM
+
+
+temp_dir="$(mktemp -d)" || cleanup 1
+cd "$temp_dir"
+for f in /opt/dustforce-dustmod/*; do
+    if [ "$(basename "$f")" = "dustmod.bin.x86_64" ]; then
+        cp "$f" .
+    else
+        ln -s "$f" || cleanup 1
+    fi
+done
+
+./dustmod.bin.x86_64
+cleanup "$?"
