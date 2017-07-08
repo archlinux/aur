@@ -72,11 +72,20 @@ zfs_mount_handler () {
                     if findmnt -snero source -F "${tab_file}" -S "${dataset}" > /dev/null 2>&1; then
                         opt=$(findmnt -snero options -F "${tab_file}" -S "${dataset}")
                         mnt=$(findmnt -snero target -F "${tab_file}" -S "${dataset}")
+                        
+                        # load key if dataset is encrypted
+                        encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
+                        zfs load-key "${encryptionroot}"
+                        
                         mount -t zfs -o "${opt}" "${dataset}" "${node}${mnt}"
                     fi
                 fi
                 ;;
             *)
+                # load key if dataset is encrypted
+                encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
+                zfs load-key "${encryptionroot}"
+
                 mount -t zfs -o "zfsutil,${rwopt_exp}" "${dataset}" "${node}${mountpoint}"
                 ;;
         esac
