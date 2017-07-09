@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostics."
 url='http://www.ros.org/wiki/diagnostics'
 
 pkgname='ros-kinetic-diagnostics'
-pkgver='1.8.10'
+pkgver='1.9.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-kinetic-diagnostics-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/kinetic/diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6aca5ad0e651a5be4035c593fdfd02da86a02b77186abea9455394ed84d38934')
+sha256sums=('94179e13963f7c1f0d86975ce4516226c2aad68188aad0a4d4df2e567fa8eaf0')
 
 build() {
   # Use ROS environment variables
