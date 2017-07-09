@@ -1,0 +1,18 @@
+pkgbase = python-gdax
+	pkgdesc = The unofficial Python client for the GDAX API
+	pkgver = r2.7a3f1e0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python>=3.5
+	depends = python-bintrees>=2.0
+	depends = python-requests>=2.13
+	depends = python-six>=1.10
+	depends = python-websocket-client>0.40
+	provides = python-gdax
+	source = python-gdax::git+https://github.com/acontry/GDAX-Python.git
+	md5sums = SKIP
+
+pkgname = python-gdax
+
