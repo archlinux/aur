@@ -4,7 +4,7 @@
 pkgbase=linux-xps-9560               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.11
-pkgver=4.11.7
+pkgver=4.11.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -26,7 +26,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '7d767998aa6a69df36f76d6343c03a45f190c7e8ddf9322c02493ceaa96a1aba'
+            'a112d1330817bac401dbbd1e2c8aacb1b725bc28239e2ca58281ea3754deceb5'
             'SKIP'
             '80167778d7853d534b871509b903288ab5a05eeceaec79623c8aa054f551cf6b'
             '42cb501a6f6fbbc06d7f81aa71995c2756310ec56b1d4e8a722739b57d160961'
