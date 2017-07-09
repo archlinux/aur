@@ -1,7 +1,7 @@
 # Maintainer: Daniel Greve <greve.daniel.l@gmail.com>
 
 pkgname=zsh-pure-prompt-git
-pkgver=1.4.0.r8.gecae2cc
+pkgver=1.5.2.r10.g58db107
 pkgrel=1
 pkgdesc='Pretty, minimal and fast ZSH prompt'
 arch=('any')
