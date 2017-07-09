@@ -4,10 +4,10 @@ pkgdesc="ROS - This library provides a standardized interface for processing dat
 url='http://ros.org/wiki/filters'
 
 pkgname='ros-kinetic-filters'
-pkgver='1.7.4'
-_pkgver_patch=1
+pkgver='1.7.5'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-pluginlib
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="filters-release-release-kinetic-filters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/filters-release/archive/release/kinetic/filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('11702e182c25da6068a8f8f3f1fb5146f50d5b350d46d0b9bca638aa18fcb662')
+sha256sums=('e71a4de4b78ed4f14b4ef07a599f1b82c2e71e429ec41fdf4e2e36d160c7e5e2')
 
 build() {
   # Use ROS environment variables
