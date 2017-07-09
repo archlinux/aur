@@ -1,0 +1,96 @@
+diff -ruN ParMGridGen-1.0_orig/Makefile.in ParMGridGen-1.0/Makefile.in
+--- ParMGridGen-1.0_orig/Makefile.in	2001-12-04 19:30:33.000000000 -0500
++++ ParMGridGen-1.0/Makefile.in	2010-10-31 16:18:41.000000000 -0400
+@@ -12,7 +12,7 @@
+ OPTFLAGS = -O3
+ 
+ # What options to be used by the compiler
+-COPTIONS = 
++COPTIONS = -fPIC
+ 
+ # Which loader to use
+ LD = cc
+@@ -33,22 +33,24 @@
+ 
+ # In which directories to look for any additional libraries
+ LIBDIR = -L../.. \
++         -L../Lib \
++         -L/usr/lib/
+-         -L/usr/lib32/
+ 
+ # Set some flags
+ DEBUGFLAGS =
+ 
+ # What additional libraries to link the programs with (eg., -lmpi)
++LIBEXT = so
+ LIBS = -lmgrid -lm
+ PARLIBS = -lparmgrid -lmgrid -lmpi -lm
+
+ 
+ # What archiving to use
+-AR = ar rv
++AR = gcc -shared -o
+ 
+ # What to use for indexing the archive
+ #RANLIB = ranlib
+-RANLIB = ar -ts
++RANLIB = true
+ 
+ #--------------------------------------------------------------------------
+ # 
+diff -ruN ParMGridGen-1.0_orig/MGridGen/IMlib/Makefile ParMGridGen-1.0/MGridGen/IMlib/Makefile
+--- ParMGridGen-1.0_orig/MGridGen/IMlib/Makefile	2001-12-04 17:46:56.000000000 -0500
++++ ParMGridGen-1.0/MGridGen/IMlib/Makefile	2010-10-31 16:16:54.000000000 -0400
+@@ -33,7 +33,7 @@
+ .c.o:
+ 	$(CC) $(CFLAGS) -c $*.c
+ 
+-./libIMlib.a: $(OBJS)
++./libIMlib.$(LIBEXT): $(OBJS)
+ 	$(AR) $@ $(OBJS)
+ 	$(RANLIB) $@
+ 
+@@ -41,4 +41,4 @@
+ 	rm -f *.o
+ 
+ realclean:
+-	rm -f *.o ; rm -f ./libIMlib.a
++	rm -f *.o ; rm -f ./libIMlib.$(LIBEXT)
+diff -ruN ParMGridGen-1.0_orig/MGridGen/Lib/Makefile ParMGridGen-1.0/MGridGen/Lib/Makefile
+--- ParMGridGen-1.0_orig/MGridGen/Lib/Makefile	2001-12-04 18:01:00.000000000 -0500
++++ ParMGridGen-1.0/MGridGen/Lib/Makefile	2010-10-31 16:16:54.000000000 -0400
+@@ -22,7 +22,7 @@
+ INCLUDES = -I./ -I$(IMLIBDIR) $(INCDIR)
+ CFLAGS = $(COPTIONS) $(OPTFLAGS) $(DEBUGFLAGS) $(INCLUDES)
+ 
+-OBJS = coarsen.o kwayfm.o match.o merge.o mgridgen.o refine.o setup.o 
++OBJS = aratio.o coarsen.o kwayfm.o match.o merge.o mgridgen.o refine.o setup.o 
+ IOBJS = blas.o dfkeysort.o dkeysort.o file.o ifkeysort.o ifloatsort.o \
+        iintsort.o ikeysort.o memory.o  sort.o util.o
+ IMOBJS = $(addprefix ../IMlib/, $(IOBJS)) 
+@@ -31,7 +31,7 @@
+ .c.o:
+ 	$(CC) $(CFLAGS) -c $*.c
+ 
+-../../libmgrid.a: $(OBJS) $(IMOBJS)
++../../libmgrid.$(LIBEXT): $(OBJS) $(IMOBJS)
+ 	$(AR) $@  $(OBJS) $(IMOBJS)
+ 	$(RANLIB) $@
+ 
+@@ -39,4 +39,4 @@
+ 	rm -f *.o
+ 
+ realclean:
+-	rm -f *.o ; rm -f ../../libmgrid.a
++	rm -f *.o ; rm -f ../../libmgrid.$(LIBEXT)
+diff -ruN ParMGridGen-1.0_orig/MGridGen/Programs/Makefile ParMGridGen-1.0/MGridGen/Programs/Makefile
+--- ParMGridGen-1.0_orig/MGridGen/Programs/Makefile	2001-12-04 18:02:26.000000000 -0500
++++ ParMGridGen-1.0/MGridGen/Programs/Makefile	2010-10-31 16:16:54.000000000 -0400
+@@ -1,6 +1,6 @@
+ include ../../Makefile.in
+ 
+-MGRIDLIB  = ../../libmgrid.a
++MGRIDLIB  = ../../libmgrid.$(LIBEXT)
+ 
+ ifeq ($(ddmalloc),yes)
+   DEBUGFLAGS := $(DEBUGFLAGS) -DDMALLOC -DDEBUG
