@@ -1,6 +1,6 @@
 pkgname=spectator-git
 pkgver=v0.6.r73.g1da9894
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application to monitor router Turris"
 arch=('i686' 'x86_64')
 url="https://gitlab.labs.nic.cz/turris/spectator"
