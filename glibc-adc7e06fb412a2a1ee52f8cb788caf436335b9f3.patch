@@ -1,8 +1,162 @@
 diff --git a/ChangeLog b/ChangeLog
-index f140ee67de..8aaf9f825d 100644
+index f140ee67de..73546da9e9 100644
 --- a/ChangeLog
 +++ b/ChangeLog
-@@ -1,3 +1,61 @@
+@@ -1,3 +1,215 @@
++2017-06-14  Florian Weimer  <fweimer@redhat.com>
++
++	* sysdeps/i386/i686/multiarch/strcspn-c.c: Add IS_IN (libc) guard.
++	* sysdeps/i386/i686/multiarch/varshift.c: Likewise.
++
++2017-03-07  Siddhesh Poyarekar  <siddhesh@sourceware.org>
++
++	[BZ #21209]
++	* elf/rtld.c (process_envvars): Ignore LD_HWCAP_MASK for
++	AT_SECURE processes.
++	* sysdeps/generic/unsecvars.h: Add LD_HWCAP_MASK.
++	* elf/tst-env-setuid.c (test_parent): Test LD_HWCAP_MASK.
++	(test_child): Likewise.
++	* elf/Makefile (tst-env-setuid-ENV): Add LD_HWCAP_MASK.
++
++2017-06-19  Florian Weimer  <fweimer@redhat.com>
++
++	* elf/rtld.c (audit_list_string): New variable.
++	(audit_list): Update comment.
++	(struct audit_list_iter): Define.
++	(audit_list_iter_init, audit_list_iter_next): New function.
++	(dl_main): Use struct audit_list_iter to process audit modules.
++	(process_dl_audit): Call dso_name_valid_for_suid.
++	(process_envvars): Set audit_list_string instead of calling
++	process_dl_audit.
++
++2017-06-19  Florian Weimer  <fweimer@redhat.com>
++
++	* elf/rtld.c (SECURE_NAME_LIMIT, SECURE_PATH_LIMIT): Define.
++	(dso_name_valid_for_suid): New function.
++	(handle_ld_preload): Likewise.
++	(dl_main): Call it.  Remove alloca.
++
++2017-06-19  Florian Weimer  <fweimer@redhat.com>
++
++	[BZ #21624]
++	CVE-2017-1000366
++	* elf/rtld.c (process_envvars): Ignore LD_LIBRARY_PATH for
++	__libc_enable_secure.
++
++2017-05-12  Florian Weimer  <fweimer@redhat.com>
++
++	[BZ #21386]
++	* sysdeps/nptl/fork.c (__libc_fork): Remove assertions on the
++	parent PID.  The assertion in the child is incorrect with PID
++	namespaces.
++
++2017-03-15  Joseph Myers  <joseph@codesourcery.com>
++
++	* sysdeps/x86/fpu/test-math-vector-sincos.h (INIT_VEC_PTRS_LOOP):
++	Use a union when storing pointers.
++	(VECTOR_WRAPPER_fFF_2): Do not take address of integer vector and
++	cast result when passing to INIT_VEC_PTRS_LOOP.
++	(VECTOR_WRAPPER_fFF_3): Likewise.
++	(VECTOR_WRAPPER_fFF_4): Likewise.
++
++2017-05-01  Adhemerval Zanella  <adhemerval.zanella@linaro.org>
++
++	[BZ# 21182]
++	* string/test-memchr.c (do_test): Add BZ#21182 checks for address
++	near end of a page.
++	* sysdeps/i386/i686/multiarch/memchr-sse2.S (__memchr): Fix
++	overflow calculation.
++
++2017-04-28  H.J. Lu  <hongjiu.lu@intel.com>
++
++	[BZ #21396]
++	* sysdeps/x86/cpu-features.c (init_cpu_features): Set
++	Prefer_No_AVX512 if AVX512ER isn't available.
++	* sysdeps/x86/cpu-features.h (bit_arch_Prefer_No_AVX512): New.
++	(index_arch_Prefer_No_AVX512): Likewise.
++	* sysdeps/x86_64/multiarch/memcpy.S (__new_memcpy): Don't use
++	AVX512 version if Prefer_No_AVX512 is set.
++	* sysdeps/x86_64/multiarch/memcpy_chk.S (__memcpy_chk):
++	Likewise.
++	* sysdeps/x86_64/multiarch/memmove.S (__libc_memmove): Likewise.
++	* sysdeps/x86_64/multiarch/memmove_chk.S (__memmove_chk):
++	Likewise.
++	* sysdeps/x86_64/multiarch/mempcpy.S (__mempcpy): Likewise.
++	* sysdeps/x86_64/multiarch/mempcpy_chk.S (__mempcpy_chk):
++	Likewise.
++	* sysdeps/x86_64/multiarch/memset.S (memset): Likewise.
++	* sysdeps/x86_64/multiarch/memset_chk.S (__memset_chk):
++	Likewise.
++
++2017-04-28  H.J. Lu  <hongjiu.lu@intel.com>
++
++	* sysdeps/x86/cpu-features.c (init_cpu_features): Set
++	Prefer_No_VZEROUPPER if AVX512ER is available.
++	* sysdeps/x86/cpu-features.h
++	(bit_cpu_AVX512PF): New.
++	(bit_cpu_AVX512ER): Likewise.
++	(bit_cpu_AVX512CD): Likewise.
++	(bit_cpu_AVX512BW): Likewise.
++	(bit_cpu_AVX512VL): Likewise.
++	(index_cpu_AVX512PF): Likewise.
++	(index_cpu_AVX512ER): Likewise.
++	(index_cpu_AVX512CD): Likewise.
++	(index_cpu_AVX512BW): Likewise.
++	(index_cpu_AVX512VL): Likewise.
++	(reg_AVX512PF): Likewise.
++	(reg_AVX512ER): Likewise.
++	(reg_AVX512CD): Likewise.
++	(reg_AVX512BW): Likewise.
++	(reg_AVX512VL): Likewise.
++
++2017-04-11  Adhemerval Zanella  <adhemerval.zanella@linaro.org>
++
++	* posix/globtest.sh: Add cleanup routine on trap 0.
++
++2017-04-07  H.J. Lu  <hongjiu.lu@intel.com>
++
++	[BZ #21258]
++	* sysdeps/x86_64/dl-trampoline.S (_dl_runtime_resolve_opt):
++	Define only if _dl_runtime_resolve is defined to
++	_dl_runtime_resolve_sse_vex.
++	* sysdeps/x86_64/dl-trampoline.h (_dl_runtime_resolve_opt):
++	Fallthrough to _dl_runtime_resolve_sse_vex.
++
++2017-04-03  Mike Frysinger  <vapier@gentoo.org>
++
++	[BZ #21253]
++	* sysdeps/unix/sysv/linux/spawni.c (__spawnix): Increase argv_size
++	slack space by 32KiB.
++
++2017-04-03  Wladimir van der Laan  <laanwj@gmail.com>
++
++	[BZ# 21338]
++	* malloc/malloc.c: Call do_set_arena_max for M_ARENA_MAX
++	instead of incorrect do_set_arena_test
++
++2017-03-31  Slava Barinov  <v.barinov@samsung.com>
++
++	[BZ #21289]
++	* io/fts.h (fts_set): Replace __REDIRECT with __REDIRECT_NTH.
++
++2017-03-20  Mike Frysinger  <vapier@gentoo.org>
++
++	[BZ #21275]
++	* sysdeps/unix/sysv/linux/spawni.c [__ia64__] (CLONE): Rename
++	__stack to __stackbase.
++	(STACK): Invert _STACK_GROWS_DOWN and _STACK_GROWS_UP order of
++	checks so we can include defined(__ia64__) first.
++
++2017-03-15  Mike Frysinger  <vapier@gentoo.org>
++
++	* sysdeps/x86_64/mempcpy_chk.S (__mempcpy_chk): Check for SHARED
++	instead of PIC.
++
++2017-03-15  John David Anglin  <danglin@gcc.gnu.org>
++
++	* sysdeps/hppa/dl-machine.h (DL_STACK_END): Define.
++	(RTLD_START): Don't record stack end address in _dl_start_user.
++
 +2017-03-02  Florian Weimer  <fweimer@redhat.com>
 +
 +	[BZ #21015]
@@ -134,10 +288,10 @@ index e9194e54cf..7f0eef8096 100644
  	| sed -n -f $< > $@.new
  	test -s $@.new
 diff --git a/NEWS b/NEWS
-index ec15dde761..9bf8c10926 100644
+index ec15dde761..7be238c404 100644
 --- a/NEWS
 +++ b/NEWS
-@@ -5,6 +5,15 @@ See the end for copying conditions.
+@@ -5,6 +5,19 @@ See the end for copying conditions.
  Please send GNU C library bug reports via <http://sourceware.org/bugzilla/>
  using `glibc' in the "product" field.
  
@@ -145,14 +299,31 @@ index ec15dde761..9bf8c10926 100644
 +
 +The following bugs are resolved with this release:
 +
-+  [21109] Tunables broken on big-endian
-+  [21115] sunrpc: Use-after-free in error path in clntudp_call
 +  [20257] sunrpc: clntudp_call does not enforce timeout when receiving data
 +  [21015] Document and fix --enable-bind-now
++  [21109] Tunables broken on big-endian
++  [21115] sunrpc: Use-after-free in error path in clntudp_call
++  [21209] Ignore and remove LD_HWCAP_MASK for AT_SECURE programs
++  [21289] Fix symbol redirect for fts_set
++  [21386] Assertion in fork for distinct parent PID is incorrect
++  [21624] Unsafe alloca allows local attackers to alias stack and heap (CVE-2017-1000366)
 +
  Version 2.25
  
  * The feature test macro __STDC_WANT_LIB_EXT2__, from ISO/IEC TR
+diff --git a/elf/Makefile b/elf/Makefile
+index 61abeb59ee..cc4aeb25b6 100644
+--- a/elf/Makefile
++++ b/elf/Makefile
+@@ -1398,6 +1398,7 @@ $(objpfx)tst-nodelete-dlclose: $(objpfx)tst-nodelete-dlclose-dso.so
+ $(objpfx)tst-nodelete-dlclose.out: $(objpfx)tst-nodelete-dlclose-dso.so \
+ 				   $(objpfx)tst-nodelete-dlclose-plugin.so
+ 
+-tst-env-setuid-ENV = MALLOC_CHECK_=2 MALLOC_MMAP_THRESHOLD_=4096
++tst-env-setuid-ENV = MALLOC_CHECK_=2 MALLOC_MMAP_THRESHOLD_=4096 \
++		     LD_HWCAP_MASK=0xffffffff
+ tst-env-setuid-tunables-ENV = \
+ 	GLIBC_TUNABLES=glibc.malloc.check=2:glibc.malloc.mmap_threshold=4096
 diff --git a/elf/dl-tunable-types.h b/elf/dl-tunable-types.h
 index a986f0b593..37a4e8021f 100644
 --- a/elf/dl-tunable-types.h
@@ -188,6 +359,342 @@ index a8d53d6a31..e42aa67003 100644
    if (valp == NULL)
      goto cb;
  
+diff --git a/elf/rtld.c b/elf/rtld.c
+index a036ece956..9362a21e73 100644
+--- a/elf/rtld.c
++++ b/elf/rtld.c
+@@ -99,14 +99,121 @@ uintptr_t __pointer_chk_guard_local
+ strong_alias (__pointer_chk_guard_local, __pointer_chk_guard)
+ #endif
+ 
++/* Length limits for names and paths, to protect the dynamic linker,
++   particularly when __libc_enable_secure is active.  */
++#ifdef NAME_MAX
++# define SECURE_NAME_LIMIT NAME_MAX
++#else
++# define SECURE_NAME_LIMIT 255
++#endif
++#ifdef PATH_MAX
++# define SECURE_PATH_LIMIT PATH_MAX
++#else
++# define SECURE_PATH_LIMIT 1024
++#endif
++
++/* Check that AT_SECURE=0, or that the passed name does not contain
++   directories and is not overly long.  Reject empty names
++   unconditionally.  */
++static bool
++dso_name_valid_for_suid (const char *p)
++{
++  if (__glibc_unlikely (__libc_enable_secure))
++    {
++      /* Ignore pathnames with directories for AT_SECURE=1
++	 programs, and also skip overlong names.  */
++      size_t len = strlen (p);
++      if (len >= SECURE_NAME_LIMIT || memchr (p, '/', len) != NULL)
++	return false;
++    }
++  return *p != '\0';
++}
+ 
+-/* List of auditing DSOs.  */
++/* LD_AUDIT variable contents.  Must be processed before the
++   audit_list below.  */
++const char *audit_list_string;
++
++/* Cyclic list of auditing DSOs.  audit_list->next is the first
++   element.  */
+ static struct audit_list
+ {
+   const char *name;
+   struct audit_list *next;
+ } *audit_list;
+ 
++/* Iterator for audit_list_string followed by audit_list.  */
++struct audit_list_iter
++{
++  /* Tail of audit_list_string still needing processing, or NULL.  */
++  const char *audit_list_tail;
++
++  /* The list element returned in the previous iteration.  NULL before
++     the first element.  */
++  struct audit_list *previous;
++
++  /* Scratch buffer for returning a name which is part of
++     audit_list_string.  */
++  char fname[SECURE_NAME_LIMIT];
++};
++
++/* Initialize an audit list iterator.  */
++static void
++audit_list_iter_init (struct audit_list_iter *iter)
++{
++  iter->audit_list_tail = audit_list_string;
++  iter->previous = NULL;
++}
++
++/* Iterate through both audit_list_string and audit_list.  */
++static const char *
++audit_list_iter_next (struct audit_list_iter *iter)
++{
++  if (iter->audit_list_tail != NULL)
++    {
++      /* First iterate over audit_list_string.  */
++      while (*iter->audit_list_tail != '\0')
++	{
++	  /* Split audit list at colon.  */
++	  size_t len = strcspn (iter->audit_list_tail, ":");
++	  if (len > 0 && len < sizeof (iter->fname))
++	    {
++	      memcpy (iter->fname, iter->audit_list_tail, len);
++	      iter->fname[len] = '\0';
++	    }
++	  else
++	    /* Do not return this name to the caller.  */
++	    iter->fname[0] = '\0';
++
++	  /* Skip over the substring and the following delimiter.  */
++	  iter->audit_list_tail += len;
++	  if (*iter->audit_list_tail == ':')
++	    ++iter->audit_list_tail;
++
++	  /* If the name is valid, return it.  */
++	  if (dso_name_valid_for_suid (iter->fname))
++	    return iter->fname;
++	  /* Otherwise, wrap around and try the next name.  */
++	}
++      /* Fall through to the procesing of audit_list.  */
++    }
++
++  if (iter->previous == NULL)
++    {
++      if (audit_list == NULL)
++	/* No pre-parsed audit list.  */
++	return NULL;
++      /* Start of audit list.  The first list element is at
++	 audit_list->next (cyclic list).  */
++      iter->previous = audit_list->next;
++      return iter->previous->name;
++    }
++  if (iter->previous == audit_list)
++    /* Cyclic list wrap-around.  */
++    return NULL;
++  iter->previous = iter->previous->next;
++  return iter->previous->name;
++}
++
+ #ifndef HAVE_INLINED_SYSCALLS
+ /* Set nonzero during loading and initialization of executable and
+    libraries, cleared before the executable's entry point runs.  This
+@@ -716,6 +823,42 @@ static const char *preloadlist attribute_relro;
+ /* Nonzero if information about versions has to be printed.  */
+ static int version_info attribute_relro;
+ 
++/* The LD_PRELOAD environment variable gives list of libraries
++   separated by white space or colons that are loaded before the
++   executable's dependencies and prepended to the global scope list.
++   (If the binary is running setuid all elements containing a '/' are
++   ignored since it is insecure.)  Return the number of preloads
++   performed.  */
++unsigned int
++handle_ld_preload (const char *preloadlist, struct link_map *main_map)
++{
++  unsigned int npreloads = 0;
++  const char *p = preloadlist;
++  char fname[SECURE_PATH_LIMIT];
++
++  while (*p != '\0')
++    {
++      /* Split preload list at space/colon.  */
++      size_t len = strcspn (p, " :");
++      if (len > 0 && len < sizeof (fname))
++	{
++	  memcpy (fname, p, len);
++	  fname[len] = '\0';
++	}
++      else
++	fname[0] = '\0';
++
++      /* Skip over the substring and the following delimiter.  */
++      p += len;
++      if (*p != '\0')
++	++p;
++
++      if (dso_name_valid_for_suid (fname))
++	npreloads += do_preload (fname, main_map, "LD_PRELOAD");
++    }
++  return npreloads;
++}
++
+ static void
+ dl_main (const ElfW(Phdr) *phdr,
+ 	 ElfW(Word) phnum,
+@@ -1238,11 +1381,13 @@ of this helper program; chances are you did not intend to run this program.\n\
+     GL(dl_rtld_map).l_tls_modid = _dl_next_tls_modid ();
+ 
+   /* If we have auditing DSOs to load, do it now.  */
+-  if (__glibc_unlikely (audit_list != NULL))
++  bool need_security_init = true;
++  if (__glibc_unlikely (audit_list != NULL)
++      || __glibc_unlikely (audit_list_string != NULL))
+     {
+-      /* Iterate over all entries in the list.  The order is important.  */
+       struct audit_ifaces *last_audit = NULL;
+-      struct audit_list *al = audit_list->next;
++      struct audit_list_iter al_iter;
++      audit_list_iter_init (&al_iter);
+ 
+       /* Since we start using the auditing DSOs right away we need to
+ 	 initialize the data structures now.  */
+@@ -1253,9 +1398,14 @@ of this helper program; chances are you did not intend to run this program.\n\
+ 	 use different values (especially the pointer guard) and will
+ 	 fail later on.  */
+       security_init ();
++      need_security_init = false;
+ 
+-      do
++      while (true)
+ 	{
++	  const char *name = audit_list_iter_next (&al_iter);
++	  if (name == NULL)
++	    break;
++
+ 	  int tls_idx = GL(dl_tls_max_dtv_idx);
+ 
+ 	  /* Now it is time to determine the layout of the static TLS
+@@ -1264,7 +1414,7 @@ of this helper program; chances are you did not intend to run this program.\n\
+ 	     no DF_STATIC_TLS bit is set.  The reason is that we know
+ 	     glibc will use the static model.  */
+ 	  struct dlmopen_args dlmargs;
+-	  dlmargs.fname = al->name;
++	  dlmargs.fname = name;
+ 	  dlmargs.map = NULL;
+ 
+ 	  const char *objname;
+@@ -1277,7 +1427,7 @@ of this helper program; chances are you did not intend to run this program.\n\
+ 	    not_loaded:
+ 	      _dl_error_printf ("\
+ ERROR: ld.so: object '%s' cannot be loaded as audit interface: %s; ignored.\n",
+-				al->name, err_str);
++				name, err_str);
+ 	      if (malloced)
+ 		free ((char *) err_str);
+ 	    }
+@@ -1381,10 +1531,7 @@ ERROR: ld.so: object '%s' cannot be loaded as audit interface: %s; ignored.\n",
+ 		  goto not_loaded;
+ 		}
+ 	    }
+-
+-	  al = al->next;
+ 	}
+-      while (al != audit_list->next);
+ 
+       /* If we have any auditing modules, announce that we already
+ 	 have two objects loaded.  */
+@@ -1462,23 +1609,8 @@ ERROR: ld.so: object '%s' cannot be loaded as audit interface: %s; ignored.\n",
+ 
+   if (__glibc_unlikely (preloadlist != NULL))
+     {
+-      /* The LD_PRELOAD environment variable gives list of libraries
+-	 separated by white space or colons that are loaded before the
+-	 executable's dependencies and prepended to the global scope
+-	 list.  If the binary is running setuid all elements
+-	 containing a '/' are ignored since it is insecure.  */
+-      char *list = strdupa (preloadlist);
+-      char *p;
+-
+       HP_TIMING_NOW (start);
+-
+-      /* Prevent optimizing strsep.  Speed is not important here.  */
+-      while ((p = (strsep) (&list, " :")) != NULL)
+-	if (p[0] != '\0'
+-	    && (__builtin_expect (! __libc_enable_secure, 1)
+-		|| strchr (p, '/') == NULL))
+-	  npreloads += do_preload (p, main_map, "LD_PRELOAD");
+-
++      npreloads += handle_ld_preload (preloadlist, main_map);
+       HP_TIMING_NOW (stop);
+       HP_TIMING_DIFF (diff, start, stop);
+       HP_TIMING_ACCUM_NT (load_time, diff);
+@@ -1663,7 +1795,7 @@ ERROR: ld.so: object '%s' cannot be loaded as audit interface: %s; ignored.\n",
+   if (tcbp == NULL)
+     tcbp = init_tls ();
+ 
+-  if (__glibc_likely (audit_list == NULL))
++  if (__glibc_likely (need_security_init))
+     /* Initialize security features.  But only if we have not done it
+        earlier.  */
+     security_init ();
+@@ -2294,9 +2426,7 @@ process_dl_audit (char *str)
+   char *p;
+ 
+   while ((p = (strsep) (&str, ":")) != NULL)
+-    if (p[0] != '\0'
+-	&& (__builtin_expect (! __libc_enable_secure, 1)
+-	    || strchr (p, '/') == NULL))
++    if (dso_name_valid_for_suid (p))
+       {
+ 	/* This is using the local malloc, not the system malloc.  The
+ 	   memory can never be freed.  */
+@@ -2360,7 +2490,7 @@ process_envvars (enum mode *modep)
+ 	      break;
+ 	    }
+ 	  if (memcmp (envline, "AUDIT", 5) == 0)
+-	    process_dl_audit (&envline[6]);
++	    audit_list_string = &envline[6];
+ 	  break;
+ 
+ 	case 7:
+@@ -2404,7 +2534,8 @@ process_envvars (enum mode *modep)
+ 
+ 	case 10:
+ 	  /* Mask for the important hardware capabilities.  */
+-	  if (memcmp (envline, "HWCAP_MASK", 10) == 0)
++	  if (!__libc_enable_secure
++	      && memcmp (envline, "HWCAP_MASK", 10) == 0)
+ 	    GLRO(dl_hwcap_mask) = __strtoul_internal (&envline[11], NULL,
+ 						      0, 0);
+ 	  break;
+@@ -2418,7 +2549,8 @@ process_envvars (enum mode *modep)
+ 
+ 	case 12:
+ 	  /* The library search path.  */
+-	  if (memcmp (envline, "LIBRARY_PATH", 12) == 0)
++	  if (!__libc_enable_secure
++	      && memcmp (envline, "LIBRARY_PATH", 12) == 0)
+ 	    {
+ 	      library_path = &envline[13];
+ 	      break;
+diff --git a/elf/tst-env-setuid.c b/elf/tst-env-setuid.c
+index 6ec3fa5874..eec408eb5d 100644
+--- a/elf/tst-env-setuid.c
++++ b/elf/tst-env-setuid.c
+@@ -213,6 +213,12 @@ test_child (void)
+       return 1;
+     }
+ 
++  if (getenv ("LD_HWCAP_MASK") != NULL)
++    {
++      printf ("LD_HWCAP_MASK still set\n");
++      return 1;
++    }
++
+   return 0;
+ }
+ #endif
+@@ -233,6 +239,12 @@ test_parent (void)
+       return 1;
+     }
+ 
++  if (getenv ("LD_HWCAP_MASK") == NULL)
++    {
++      printf ("LD_HWCAP_MASK lost\n");
++      return 1;
++    }
++
+   return 0;
+ }
+ #endif
 diff --git a/iconvdata/Makefile b/iconvdata/Makefile
 index 04157b25c5..e4845871f5 100644
 --- a/iconvdata/Makefile
@@ -656,6 +1163,136 @@ index 0000000000..ed04345c35
 +}
 +
 +#include <support/test-driver.c>
+diff --git a/io/fts.h b/io/fts.h
+index b9cff534e9..ab15567001 100644
+--- a/io/fts.h
++++ b/io/fts.h
+@@ -193,7 +193,7 @@ FTS	*__REDIRECT (fts_open, (char * const *, int,
+ 				int (*)(const FTSENT **, const FTSENT **)),
+ 		     fts64_open);
+ FTSENT	*__REDIRECT (fts_read, (FTS *), fts64_read);
+-int	 __REDIRECT (fts_set, (FTS *, FTSENT *, int), fts64_set) __THROW;
++int	 __REDIRECT_NTH (fts_set, (FTS *, FTSENT *, int), fts64_set);
+ # else
+ #  define fts_children fts64_children
+ #  define fts_close fts64_close
+diff --git a/localedata/ChangeLog b/localedata/ChangeLog
+index 0cdb097ab6..127c1cfb35 100644
+--- a/localedata/ChangeLog
++++ b/localedata/ChangeLog
+@@ -1,3 +1,11 @@
++2017-06-11  Santhosh Thottingal  <santhosh.thottingal@gmail.com>
++
++	[BZ #19922]
++	* locales/iso14651_t1_common: Add collation rules for U+07DA to U+07DF.
++
++	[BZ #19919]
++	* locales/iso14651_t1_common: Correct collation of U+0D36 and U+0D37.
++
+ 2017-01-01  Joseph Myers  <joseph@codesourcery.com>
+ 
+ 	* All files with FSF copyright notices: Update copyright dates
+diff --git a/localedata/locales/iso14651_t1_common b/localedata/locales/iso14651_t1_common
+index eef75ba65e..0e64f26a12 100644
+--- a/localedata/locales/iso14651_t1_common
++++ b/localedata/locales/iso14651_t1_common
+@@ -1042,9 +1042,9 @@ collating-element <ml-bh> from "<U0D2D><U0D4D>"
+ collating-element <ml-m> from "<U0D2E><U0D4D>"
+ collating-element <ml-y> from "<U0D2F><U0D4D>"
+ collating-element <ml-v> from "<U0D35><U0D4D>"
+-collating-element <ml-s> from "<U0D38><U0D4D>"
+ collating-element <ml-ss> from "<U0D36><U0D4D>"
+ collating-element <ml-sh> from "<U0D37><U0D4D>"
++collating-element <ml-s> from "<U0D38><U0D4D>"
+ collating-element <ml-h> from "<U0D39><U0D4D>"
+ collating-element <ml-zh> from "<U0D34><U0D4D>"
+ collating-element <ml-rr> from "<U0D31><U0D4D>"
+@@ -1103,8 +1103,8 @@ collating-symbol <ml-rra>
+ collating-symbol <ml-la>
+ collating-symbol <ml-lla>
+ collating-symbol <ml-va>
+-collating-symbol <ml-sha>
+ collating-symbol <ml-ssa>
++collating-symbol <ml-sha>
+ collating-symbol <ml-sa>
+ collating-symbol <ml-ha>
+ collating-symbol <ml-avagrah>
+@@ -1126,6 +1126,12 @@ collating-symbol <mlvs-o>
+ collating-symbol <mlvs-au>
+ collating-symbol <ml-visarga>
+ collating-symbol <ml-virama>
++collating-symbol <ml-atomic-chillu-k>
++collating-symbol <ml-atomic-chillu-n>
++collating-symbol <ml-atomic-chillu-nn>
++collating-symbol <ml-atomic-chillu-l>
++collating-symbol <ml-atomic-chillu-ll>
++collating-symbol <ml-atomic-chillu-r>
+ #
+ # <BENGALI>
+ #
+@@ -4552,6 +4558,12 @@ collating-symbol <TIB-subA>
+ <mlvs-o>
+ <mlvs-au>
+ <ml-visarga>
++<ml-atomic-chillu-k>
++<ml-atomic-chillu-n>
++<ml-atomic-chillu-nn>
++<ml-atomic-chillu-l>
++<ml-atomic-chillu-ll>
++<ml-atomic-chillu-r>
+ #
+ # <BENGALI>
+ #
+@@ -7252,6 +7264,7 @@ order_start <MALAYALAM>;forward;forward;forward;forward,position
+ <U0D13> <mlvw-o>;<BAS>;<MIN>;IGNORE
+ <U0D14> <mlvw-au>;<BAS>;<MIN>;IGNORE
+ <ml-chillu-k>  "<ml-ka><ml-virama>";<BAS>;<MIN>;IGNORE
++<U0D7F>	"<ml-ka><ml-virama>";<ml-atomic-chillu-k>;<MIN>;IGNORE
+ <U0D15>	"<ml-ka><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-kh>	"<ml-kha><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D16>	"<ml-kha><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+@@ -7280,6 +7293,7 @@ order_start <MALAYALAM>;forward;forward;forward;forward,position
+ <ml-dh>	"<ml-dha><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D22>	"<ml-dha><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-chillu-nn> "<ml-nna><ml-virama>";<BAS>;<MIN>;IGNORE # ണ്‍ = ണ  + ്  + zwj
++<U0D7A>	"<ml-nna><ml-virama>";<ml-atomic-chillu-nn>;<MIN>;IGNORE
+ <U0D23>	"<ml-nna><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE # ണ = ണ + ് + അ
+ <ml-th>	"<ml-tha><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D24>	"<ml-tha><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+@@ -7290,6 +7304,7 @@ order_start <MALAYALAM>;forward;forward;forward;forward,position
+ <ml-ddh> "<ml-ddha><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D27>	"<ml-ddha><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-chillu-n> "<ml-na><ml-virama>";<BAS>;<MIN>;IGNORE # ന്‍= ന  + ്  + zwj
++<U0D7B>	"<ml-na><ml-virama>";<ml-atomic-chillu-n>;<MIN>;IGNORE
+ <U0D28>	"<ml-na><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE  #ന = ന + ് + അ
+ <ml-p>	"<ml-pa><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D2A>	"<ml-pa><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+@@ -7305,20 +7320,23 @@ order_start <MALAYALAM>;forward;forward;forward;forward,position
+ <ml-y>  "<ml-ya><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D2F>	"<ml-ya><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-chillu-r> "<ml-ra><ml-virama>";<BAS>;<MIN>;IGNORE # ര = ര + ്  + zwj
++<U0D7C>	"<ml-ra><ml-virama>";<ml-atomic-chillu-r>;<MIN>;IGNORE
+ <U0D30>	"<ml-ra><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE # ര = ര + ് + അ
+ <ml-chillu-l> <ml-la>;<BAS>;<MIN>;IGNORE # ല്‍ = ല + ്  + zwj
++<U0D7D>	"<ml-la><ml-virama>";<ml-atomic-chillu-l>;<MIN>;IGNORE
+ <U0D32>	"<ml-la><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE # ല = ല + ് + അ
+ <ml-v>	"<ml-va><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D35>	"<ml-va><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-ss>	"<ml-ssa><ml-virama>";<BAS>;<MIN>;IGNORE
+-<U0D37>	"<ml-ssa><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
++<U0D36>	"<ml-ssa><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-sh>	"<ml-sha><ml-virama>";<BAS>;<MIN>;IGNORE
+-<U0D36>	"<ml-sha><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
++<U0D37>	"<ml-sha><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-s>	"<ml-sa><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D38>	"<ml-sa><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-h>	"<ml-ha><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D39>	"<ml-ha><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
+ <ml-chillu-ll> "<ml-lla><ml-virama>";<BAS>;<MIN>;IGNORE # ള്‍ = ള  + ്  + zwj
++<U0D7E>	"<ml-lla><ml-virama>";<ml-atomic-chillu-ll>;<MIN>;IGNORE
+ <U0D33>	"<ml-lla><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE # ള = ള + ് + അ
+ <ml-zh>	"<ml-zha><ml-virama>";<BAS>;<MIN>;IGNORE
+ <U0D34>	"<ml-zha><ml-virama><mlvw-shorta>";<BAS>;<MIN>;IGNORE
 diff --git a/malloc/arena.c b/malloc/arena.c
 index b91d7d6b16..d49e4a21c8 100644
 --- a/malloc/arena.c
@@ -684,6 +1321,19 @@ index b91d7d6b16..d49e4a21c8 100644
    do_ ## __name (value);						      \
  }
  
+diff --git a/malloc/malloc.c b/malloc/malloc.c
+index 4885793905..4e076638b0 100644
+--- a/malloc/malloc.c
++++ b/malloc/malloc.c
+@@ -4902,7 +4902,7 @@ __libc_mallopt (int param_number, int value)
+ 
+     case M_ARENA_MAX:
+       if (value > 0)
+-	do_set_arena_test (value);
++	do_set_arena_max (value);
+       break;
+     }
+   __libc_lock_unlock (av->mutex);
 diff --git a/manual/install.texi b/manual/install.texi
 index 266add8ba9..3398cfab02 100644
 --- a/manual/install.texi
@@ -701,6 +1351,50 @@ index 266add8ba9..3398cfab02 100644
  @pindex pt_chown
  @findex grantpt
  @item --enable-pt_chown
+diff --git a/posix/globtest.sh b/posix/globtest.sh
+index f9cc80b4b5..73f7ae31cc 100755
+--- a/posix/globtest.sh
++++ b/posix/globtest.sh
+@@ -47,7 +47,12 @@ testout=${common_objpfx}posix/globtest-out
+ rm -rf $testdir $testout
+ mkdir $testdir
+ 
+-trap 'chmod 777 $testdir/noread; rm -fr $testdir $testout' 1 2 3 15
++cleanup() {
++    chmod 777 $testdir/noread
++    rm -fr $testdir $testout
++}
++
++trap cleanup 0 HUP INT QUIT TERM
+ 
+ echo 1 > $testdir/file1
+ echo 2 > $testdir/file2
+@@ -811,8 +816,6 @@ if test $failed -ne 0; then
+ fi
+ 
+ if test $result -eq 0; then
+-    chmod 777 $testdir/noread
+-    rm -fr $testdir $testout
+     echo "All OK." > $logfile
+ fi
+ 
+diff --git a/string/test-memchr.c b/string/test-memchr.c
+index d62889ff8f..6431605c7e 100644
+--- a/string/test-memchr.c
++++ b/string/test-memchr.c
+@@ -208,6 +208,12 @@ test_main (void)
+       do_test (0, i, i + 1, i + 1, 0);
+     }
+ 
++  /* BZ#21182 - wrong overflow calculation for i686 implementation
++     with address near end of the page.  */
++  for (i = 2; i < 16; ++i)
++    /* page_size is in fact getpagesize() * 2.  */
++    do_test (page_size / 2 - i, i, i, 1, 0x9B);
++
+   do_random_tests ();
+   return ret;
+ }
 diff --git a/sunrpc/Makefile b/sunrpc/Makefile
 index 0c1e6124ff..7e5d2955a0 100644
 --- a/sunrpc/Makefile
@@ -1870,6 +2564,118 @@ index 0000000000..db9943a03e
 +/* The minimum run time is around 17 seconds.  */
 +#define TIMEOUT 25
 +#include <support/test-driver.c>
+diff --git a/sysdeps/generic/unsecvars.h b/sysdeps/generic/unsecvars.h
+index a74083786e..5ea8a4a259 100644
+--- a/sysdeps/generic/unsecvars.h
++++ b/sysdeps/generic/unsecvars.h
+@@ -16,6 +16,7 @@
+   "LD_DEBUG\0"								      \
+   "LD_DEBUG_OUTPUT\0"							      \
+   "LD_DYNAMIC_WEAK\0"							      \
++  "LD_HWCAP_MASK\0"							      \
+   "LD_LIBRARY_PATH\0"							      \
+   "LD_ORIGIN_PATH\0"							      \
+   "LD_PRELOAD\0"							      \
+diff --git a/sysdeps/hppa/dl-machine.h b/sysdeps/hppa/dl-machine.h
+index 339c7bb771..787b95f502 100644
+--- a/sysdeps/hppa/dl-machine.h
++++ b/sysdeps/hppa/dl-machine.h
+@@ -302,6 +302,10 @@ elf_machine_runtime_setup (struct link_map *l, int lazy, int profile)
+ #define ARCH_LA_PLTENTER hppa_gnu_pltenter
+ #define ARCH_LA_PLTEXIT hppa_gnu_pltexit
+ 
++/* Adjust DL_STACK_END to get value we want in __libc_stack_end.  */
++#define DL_STACK_END(cookie) \
++  ((void *) (((long) (cookie)) + 0x160))
++
+ /* Initial entry point code for the dynamic linker.
+    The C function `_dl_start' is the real entry point;
+    its return value is the user program's entry point.  */
+@@ -401,11 +405,6 @@ asm (									\
+ 	/* Save the entry point in %r3. */				\
+ "	copy	%ret0,%r3\n"						\
+ 									\
+-	/* Remember the lowest stack address. */			\
+-"	addil	LT'__libc_stack_end,%r19\n"				\
+-"	ldw	RT'__libc_stack_end(%r1),%r20\n"			\
+-"	stw	%sp,0(%r20)\n"						\
+-									\
+ 	/* See if we were called as a command with the executable file	\
+ 	   name as an extra leading argument. */			\
+ "	addil	LT'_dl_skip_args,%r19\n"				\
+diff --git a/sysdeps/i386/i686/multiarch/memchr-sse2.S b/sysdeps/i386/i686/multiarch/memchr-sse2.S
+index 910679cfc0..e41f324a77 100644
+--- a/sysdeps/i386/i686/multiarch/memchr-sse2.S
++++ b/sysdeps/i386/i686/multiarch/memchr-sse2.S
+@@ -117,7 +117,6 @@ L(crosscache):
+ 
+ # ifndef USE_AS_RAWMEMCHR
+ 	jnz	L(match_case2_prolog1)
+-	lea	-16(%edx), %edx
+         /* Calculate the last acceptable address and check for possible
+            addition overflow by using satured math:
+            edx = ecx + edx
+@@ -125,6 +124,7 @@ L(crosscache):
+ 	add	%ecx, %edx
+ 	sbb	%eax, %eax
+ 	or	%eax, %edx
++	sub	$16, %edx
+ 	jbe	L(return_null)
+ 	lea	16(%edi), %edi
+ # else
+diff --git a/sysdeps/i386/i686/multiarch/strcspn-c.c b/sysdeps/i386/i686/multiarch/strcspn-c.c
+index 6d61e190a8..ec230fb383 100644
+--- a/sysdeps/i386/i686/multiarch/strcspn-c.c
++++ b/sysdeps/i386/i686/multiarch/strcspn-c.c
+@@ -1,2 +1,4 @@
+-#define __strcspn_sse2 __strcspn_ia32
+-#include <sysdeps/x86_64/multiarch/strcspn-c.c>
++#if IS_IN (libc)
++# define __strcspn_sse2 __strcspn_ia32
++# include <sysdeps/x86_64/multiarch/strcspn-c.c>
++#endif
+diff --git a/sysdeps/i386/i686/multiarch/varshift.c b/sysdeps/i386/i686/multiarch/varshift.c
+index 7760b966e2..6742a35d41 100644
+--- a/sysdeps/i386/i686/multiarch/varshift.c
++++ b/sysdeps/i386/i686/multiarch/varshift.c
+@@ -1 +1,3 @@
+-#include <sysdeps/x86_64/multiarch/varshift.c>
++#if IS_IN (libc)
++# include <sysdeps/x86_64/multiarch/varshift.c>
++#endif
+diff --git a/sysdeps/nptl/fork.c b/sysdeps/nptl/fork.c
+index db6d721fce..4bb87e2331 100644
+--- a/sysdeps/nptl/fork.c
++++ b/sysdeps/nptl/fork.c
+@@ -131,10 +131,6 @@ __libc_fork (void)
+       call_function_static_weak (__malloc_fork_lock_parent);
+     }
+ 
+-#ifndef NDEBUG
+-  pid_t ppid = THREAD_GETMEM (THREAD_SELF, tid);
+-#endif
+-
+ #ifdef ARCH_FORK
+   pid = ARCH_FORK ();
+ #else
+@@ -147,8 +143,6 @@ __libc_fork (void)
+     {
+       struct pthread *self = THREAD_SELF;
+ 
+-      assert (THREAD_GETMEM (self, tid) != ppid);
+-
+       /* See __pthread_once.  */
+       if (__fork_generation_pointer != NULL)
+ 	*__fork_generation_pointer += __PTHREAD_ONCE_FORK_GEN_INCR;
+@@ -230,8 +224,6 @@ __libc_fork (void)
+     }
+   else
+     {
+-      assert (THREAD_GETMEM (THREAD_SELF, tid) == ppid);
+-
+       /* Release acquired locks in the multi-threaded case.  */
+       if (multiple_threads)
+ 	{
 diff --git a/sysdeps/unix/sysv/linux/alpha/localplt.data b/sysdeps/unix/sysv/linux/alpha/localplt.data
 index cca17f1e34..1f0e3b494e 100644
 --- a/sysdeps/unix/sysv/linux/alpha/localplt.data
@@ -1896,6 +2702,251 @@ index 2c2584956d..8ea4333846 100644
  # The main malloc is interposed into the dynamic linker, for
  # allocations after the initial link (when dlopen is used).
  ld.so: malloc + REL R_386_GLOB_DAT
+diff --git a/sysdeps/unix/sysv/linux/spawni.c b/sysdeps/unix/sysv/linux/spawni.c
+index 2daf0c5ef0..29d8f25ab5 100644
+--- a/sysdeps/unix/sysv/linux/spawni.c
++++ b/sysdeps/unix/sysv/linux/spawni.c
+@@ -61,17 +61,18 @@
+ #define SPAWN_ERROR	127
+ 
+ #ifdef __ia64__
+-# define CLONE(__fn, __stack, __stacksize, __flags, __args) \
+-  __clone2 (__fn, __stack, __stacksize, __flags, __args, 0, 0, 0)
++# define CLONE(__fn, __stackbase, __stacksize, __flags, __args) \
++  __clone2 (__fn, __stackbase, __stacksize, __flags, __args, 0, 0, 0)
+ #else
+ # define CLONE(__fn, __stack, __stacksize, __flags, __args) \
+   __clone (__fn, __stack, __flags, __args)
+ #endif
+ 
+-#if _STACK_GROWS_DOWN
+-# define STACK(__stack, __stack_size) (__stack + __stack_size)
+-#elif _STACK_GROWS_UP
++/* Since ia64 wants the stackbase w/clone2, re-use the grows-up macro.  */
++#if _STACK_GROWS_UP || defined (__ia64__)
+ # define STACK(__stack, __stack_size) (__stack)
++#elif _STACK_GROWS_DOWN
++# define STACK(__stack, __stack_size) (__stack + __stack_size)
+ #endif
+ 
+ 
+@@ -318,6 +319,11 @@ __spawnix (pid_t * pid, const char *file,
+ 
+   /* Add a slack area for child's stack.  */
+   size_t argv_size = (argc * sizeof (void *)) + 512;
++  /* We need at least a few pages in case the compiler's stack checking is
++     enabled.  In some configs, it is known to use at least 24KiB.  We use
++     32KiB to be "safe" from anything the compiler might do.  Besides, the
++     extra pages won't actually be allocated unless they get used.  */
++  argv_size += (32 * 1024);
+   size_t stack_size = ALIGN_UP (argv_size, GLRO(dl_pagesize));
+   void *stack = __mmap (NULL, stack_size, prot,
+ 			MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, -1, 0);
+diff --git a/sysdeps/x86/cpu-features.c b/sysdeps/x86/cpu-features.c
+index 1c714a4017..9afd74c42e 100644
+--- a/sysdeps/x86/cpu-features.c
++++ b/sysdeps/x86/cpu-features.c
+@@ -139,8 +139,6 @@ init_cpu_features (struct cpu_features *cpu_features)
+ 
+ 	    case 0x57:
+ 	      /* Knights Landing.  Enable Silvermont optimizations.  */
+-	      cpu_features->feature[index_arch_Prefer_No_VZEROUPPER]
+-		|= bit_arch_Prefer_No_VZEROUPPER;
+ 
+ 	    case 0x5c:
+ 	    case 0x5f:
+@@ -226,6 +224,16 @@ init_cpu_features (struct cpu_features *cpu_features)
+ 	cpu_features->feature[index_arch_AVX_Fast_Unaligned_Load]
+ 	  |= bit_arch_AVX_Fast_Unaligned_Load;
+ 
++      /* Since AVX512ER is unique to Xeon Phi, set Prefer_No_VZEROUPPER
++         if AVX512ER is available.  Don't use AVX512 to avoid lower CPU
++	 frequency if AVX512ER isn't available.  */
++      if (CPU_FEATURES_CPU_P (cpu_features, AVX512ER))
++	cpu_features->feature[index_arch_Prefer_No_VZEROUPPER]
++	  |= bit_arch_Prefer_No_VZEROUPPER;
++      else
++	cpu_features->feature[index_arch_Prefer_No_AVX512]
++	  |= bit_arch_Prefer_No_AVX512;
++
+       /* To avoid SSE transition penalty, use _dl_runtime_resolve_slow.
+          If XGETBV suports ECX == 1, use _dl_runtime_resolve_opt.  */
+       cpu_features->feature[index_arch_Use_dl_runtime_resolve_slow]
+diff --git a/sysdeps/x86/cpu-features.h b/sysdeps/x86/cpu-features.h
+index 95f0fcff87..a409db67d8 100644
+--- a/sysdeps/x86/cpu-features.h
++++ b/sysdeps/x86/cpu-features.h
+@@ -39,6 +39,7 @@
+ #define bit_arch_Prefer_ERMS			(1 << 19)
+ #define bit_arch_Use_dl_runtime_resolve_opt	(1 << 20)
+ #define bit_arch_Use_dl_runtime_resolve_slow	(1 << 21)
++#define bit_arch_Prefer_No_AVX512		(1 << 22)
+ 
+ /* CPUID Feature flags.  */
+ 
+@@ -62,6 +63,11 @@
+ #define bit_cpu_AVX2		(1 << 5)
+ #define bit_cpu_AVX512F		(1 << 16)
+ #define bit_cpu_AVX512DQ	(1 << 17)
++#define bit_cpu_AVX512PF	(1 << 26)
++#define bit_cpu_AVX512ER	(1 << 27)
++#define bit_cpu_AVX512CD	(1 << 28)
++#define bit_cpu_AVX512BW	(1 << 30)
++#define bit_cpu_AVX512VL	(1u << 31)
+ 
+ /* XCR0 Feature flags.  */
+ #define bit_XMM_state		(1 << 1)
+@@ -111,6 +117,7 @@
+ # define index_arch_Prefer_ERMS		FEATURE_INDEX_1*FEATURE_SIZE
+ # define index_arch_Use_dl_runtime_resolve_opt FEATURE_INDEX_1*FEATURE_SIZE
+ # define index_arch_Use_dl_runtime_resolve_slow FEATURE_INDEX_1*FEATURE_SIZE
++# define index_arch_Prefer_No_AVX512	FEATURE_INDEX_1*FEATURE_SIZE
+ 
+ 
+ # if defined (_LIBC) && !IS_IN (nonlib)
+@@ -236,6 +243,11 @@ extern const struct cpu_features *__get_cpu_features (void)
+ # define index_cpu_AVX2		COMMON_CPUID_INDEX_7
+ # define index_cpu_AVX512F	COMMON_CPUID_INDEX_7
+ # define index_cpu_AVX512DQ	COMMON_CPUID_INDEX_7
++# define index_cpu_AVX512PF	COMMON_CPUID_INDEX_7
++# define index_cpu_AVX512ER	COMMON_CPUID_INDEX_7
++# define index_cpu_AVX512CD	COMMON_CPUID_INDEX_7
++# define index_cpu_AVX512BW	COMMON_CPUID_INDEX_7
++# define index_cpu_AVX512VL	COMMON_CPUID_INDEX_7
+ # define index_cpu_ERMS		COMMON_CPUID_INDEX_7
+ # define index_cpu_RTM		COMMON_CPUID_INDEX_7
+ # define index_cpu_FMA		COMMON_CPUID_INDEX_1
+@@ -254,6 +266,11 @@ extern const struct cpu_features *__get_cpu_features (void)
+ # define reg_AVX2		ebx
+ # define reg_AVX512F		ebx
+ # define reg_AVX512DQ		ebx
++# define reg_AVX512PF		ebx
++# define reg_AVX512ER		ebx
++# define reg_AVX512CD		ebx
++# define reg_AVX512BW		ebx
++# define reg_AVX512VL		ebx
+ # define reg_ERMS		ebx
+ # define reg_RTM		ebx
+ # define reg_FMA		ecx
+@@ -283,6 +300,7 @@ extern const struct cpu_features *__get_cpu_features (void)
+ # define index_arch_Prefer_ERMS		FEATURE_INDEX_1
+ # define index_arch_Use_dl_runtime_resolve_opt FEATURE_INDEX_1
+ # define index_arch_Use_dl_runtime_resolve_slow FEATURE_INDEX_1
++# define index_arch_Prefer_No_AVX512	FEATURE_INDEX_1
+ 
+ #endif	/* !__ASSEMBLER__ */
+ 
+diff --git a/sysdeps/x86/fpu/test-math-vector-sincos.h b/sysdeps/x86/fpu/test-math-vector-sincos.h
+index 5043b32563..95282a3ac7 100644
+--- a/sysdeps/x86/fpu/test-math-vector-sincos.h
++++ b/sysdeps/x86/fpu/test-math-vector-sincos.h
+@@ -17,14 +17,14 @@
+    License along with the GNU C Library; if not, see
+    <http://www.gnu.org/licenses/>.  */
+ 
+-#define INIT_VEC_PTRS_LOOP(vec, val, len)			\
+-  do								\
+-    {								\
+-      for (i = 0; i < len; i++)					\
+-        {							\
+-          vec[i] = &val[i];					\
+-        }							\
+-    }								\
++#define INIT_VEC_PTRS_LOOP(vec, val, len)				\
++  do									\
++    {									\
++      union { VEC_INT_TYPE v; __typeof__ ((val)[0]) *a[(len)]; } u;	\
++      for (i = 0; i < len; i++)						\
++	u.a[i] = &(val)[i];						\
++      (vec) = u.v;							\
++    }									\
+   while (0)
+ 
+ /* Wrapper for vector sincos/sincosf compatible with x86_64 and x32 variants
+@@ -40,8 +40,8 @@ void scalar_func (FLOAT x, FLOAT * r, FLOAT * r1)		\
+   VEC_TYPE mx;							\
+   VEC_INT_TYPE mr, mr1;						\
+   INIT_VEC_LOOP (mx, x, VEC_LEN);				\
+-  INIT_VEC_PTRS_LOOP (((FLOAT **) &mr), r_loc, VEC_LEN);	\
+-  INIT_VEC_PTRS_LOOP (((FLOAT **) &mr1), r1_loc, VEC_LEN);	\
++  INIT_VEC_PTRS_LOOP (mr, r_loc, VEC_LEN);			\
++  INIT_VEC_PTRS_LOOP (mr1, r1_loc, VEC_LEN);			\
+   vector_func (mx, mr, mr1);					\
+   TEST_VEC_LOOP (r_loc, VEC_LEN);				\
+   TEST_VEC_LOOP (r1_loc, VEC_LEN);				\
+@@ -63,8 +63,8 @@ void scalar_func (FLOAT x, FLOAT * r, FLOAT * r1)		\
+   VEC_TYPE mx;							\
+   VEC_INT_TYPE mr, mr1;						\
+   INIT_VEC_LOOP (mx, x, VEC_LEN);				\
+-  INIT_VEC_PTRS_LOOP (((FLOAT **) &mr), r_loc, VEC_LEN/2);	\
+-  INIT_VEC_PTRS_LOOP (((FLOAT **) &mr1), r1_loc, VEC_LEN/2);	\
++  INIT_VEC_PTRS_LOOP (mr, r_loc, VEC_LEN/2);			\
++  INIT_VEC_PTRS_LOOP (mr1, r1_loc, VEC_LEN/2);			\
+   vector_func (mx, mr, mr, mr1, mr1);				\
+   TEST_VEC_LOOP (r_loc, VEC_LEN/2);				\
+   TEST_VEC_LOOP (r1_loc, VEC_LEN/2);				\
+@@ -87,8 +87,8 @@ void scalar_func (FLOAT x, FLOAT * r, FLOAT * r1)		\
+   VEC_TYPE mx;							\
+   VEC_INT_TYPE mr, mr1;						\
+   INIT_VEC_LOOP (mx, x, VEC_LEN);				\
+-  INIT_VEC_PTRS_LOOP (((FLOAT **) &mr), r_loc, VEC_LEN/4);	\
+-  INIT_VEC_PTRS_LOOP (((FLOAT **) &mr1), r1_loc, VEC_LEN/4);	\
++  INIT_VEC_PTRS_LOOP (mr, r_loc, VEC_LEN/4);			\
++  INIT_VEC_PTRS_LOOP (mr1, r1_loc, VEC_LEN/4);			\
+   vector_func (mx, mr, mr, mr, mr, mr1, mr1, mr1, mr1);		\
+   TEST_VEC_LOOP (r_loc, VEC_LEN/4);				\
+   TEST_VEC_LOOP (r1_loc, VEC_LEN/4);				\
+diff --git a/sysdeps/x86_64/dl-trampoline.S b/sysdeps/x86_64/dl-trampoline.S
+index 33d7fcf7d0..c14c61aa58 100644
+--- a/sysdeps/x86_64/dl-trampoline.S
++++ b/sysdeps/x86_64/dl-trampoline.S
+@@ -87,11 +87,9 @@
+ #endif
+ #define VEC(i)			zmm##i
+ #define _dl_runtime_resolve	_dl_runtime_resolve_avx512
+-#define _dl_runtime_resolve_opt	_dl_runtime_resolve_avx512_opt
+ #define _dl_runtime_profile	_dl_runtime_profile_avx512
+ #include "dl-trampoline.h"
+ #undef _dl_runtime_resolve
+-#undef _dl_runtime_resolve_opt
+ #undef _dl_runtime_profile
+ #undef VEC
+ #undef VMOV
+@@ -145,4 +143,5 @@
+ # define VMOV			vmovdqu
+ #endif
+ #define _dl_runtime_resolve	_dl_runtime_resolve_sse_vex
++#define _dl_runtime_resolve_opt	_dl_runtime_resolve_avx512_opt
+ #include "dl-trampoline.h"
+diff --git a/sysdeps/x86_64/dl-trampoline.h b/sysdeps/x86_64/dl-trampoline.h
+index b27fa06974..8db24c16ac 100644
+--- a/sysdeps/x86_64/dl-trampoline.h
++++ b/sysdeps/x86_64/dl-trampoline.h
+@@ -129,19 +129,20 @@ _dl_runtime_resolve_opt:
+ 	# YMM state isn't in use.
+ 	PRESERVE_BND_REGS_PREFIX
+ 	jz _dl_runtime_resolve_sse_vex
+-# elif VEC_SIZE == 64
++# elif VEC_SIZE == 16
+ 	# For ZMM registers, check if YMM state and ZMM state are in
+ 	# use.
+ 	andl $(bit_YMM_state | bit_ZMM0_15_state), %r11d
+ 	cmpl $bit_YMM_state, %r11d
+-	# Preserve %xmm0 - %xmm7 registers with the zero upper 384 bits if
+-	# neither YMM state nor ZMM state are in use.
++	# Preserve %zmm0 - %zmm7 registers if ZMM state is in use.
+ 	PRESERVE_BND_REGS_PREFIX
+-	jl _dl_runtime_resolve_sse_vex
++	jg _dl_runtime_resolve_avx512
+ 	# Preserve %ymm0 - %ymm7 registers with the zero upper 256 bits if
+ 	# ZMM state isn't in use.
+ 	PRESERVE_BND_REGS_PREFIX
+ 	je _dl_runtime_resolve_avx
++	# Preserve %xmm0 - %xmm7 registers with the zero upper 384 bits if
++	# neither YMM state nor ZMM state are in use.
+ # else
+ #  error Unsupported VEC_SIZE!
+ # endif
 diff --git a/sysdeps/x86_64/localplt.data b/sysdeps/x86_64/localplt.data
 index 014a9f4554..a1840cff31 100644
 --- a/sysdeps/x86_64/localplt.data
@@ -1909,3 +2960,120 @@ index 014a9f4554..a1840cff31 100644
  # The main malloc is interposed into the dynamic linker, for
  # allocations after the initial link (when dlopen is used).
  ld.so: malloc + RELA R_X86_64_GLOB_DAT
+diff --git a/sysdeps/x86_64/mempcpy_chk.S b/sysdeps/x86_64/mempcpy_chk.S
+index f8a9260e6e..f912291576 100644
+--- a/sysdeps/x86_64/mempcpy_chk.S
++++ b/sysdeps/x86_64/mempcpy_chk.S
+@@ -19,7 +19,7 @@
+ #include <sysdep.h>
+ #include "asm-syntax.h"
+ 
+-#ifndef PIC
++#ifndef SHARED
+ 	/* For libc.so this is defined in memcpy.S.
+ 	   For libc.a, this is a separate source to avoid
+ 	   mempcpy bringing in __chk_fail and all routines
+diff --git a/sysdeps/x86_64/multiarch/memcpy.S b/sysdeps/x86_64/multiarch/memcpy.S
+index 1f83ee3e84..af2770397c 100644
+--- a/sysdeps/x86_64/multiarch/memcpy.S
++++ b/sysdeps/x86_64/multiarch/memcpy.S
+@@ -32,6 +32,8 @@ ENTRY(__new_memcpy)
+ 	lea	__memcpy_erms(%rip), %RAX_LP
+ 	HAS_ARCH_FEATURE (Prefer_ERMS)
+ 	jnz	2f
++	HAS_ARCH_FEATURE (Prefer_No_AVX512)
++	jnz	1f
+ 	HAS_ARCH_FEATURE (AVX512F_Usable)
+ 	jz	1f
+ 	lea	__memcpy_avx512_no_vzeroupper(%rip), %RAX_LP
+diff --git a/sysdeps/x86_64/multiarch/memcpy_chk.S b/sysdeps/x86_64/multiarch/memcpy_chk.S
+index 54923420f1..8737fb9755 100644
+--- a/sysdeps/x86_64/multiarch/memcpy_chk.S
++++ b/sysdeps/x86_64/multiarch/memcpy_chk.S
+@@ -30,6 +30,8 @@
+ ENTRY(__memcpy_chk)
+ 	.type	__memcpy_chk, @gnu_indirect_function
+ 	LOAD_RTLD_GLOBAL_RO_RDX
++	HAS_ARCH_FEATURE (Prefer_No_AVX512)
++	jnz	1f
+ 	HAS_ARCH_FEATURE (AVX512F_Usable)
+ 	jz	1f
+ 	lea	__memcpy_chk_avx512_no_vzeroupper(%rip), %RAX_LP
+diff --git a/sysdeps/x86_64/multiarch/memmove.S b/sysdeps/x86_64/multiarch/memmove.S
+index 2021bfc30c..8c534e83e0 100644
+--- a/sysdeps/x86_64/multiarch/memmove.S
++++ b/sysdeps/x86_64/multiarch/memmove.S
+@@ -30,6 +30,8 @@ ENTRY(__libc_memmove)
+ 	lea	__memmove_erms(%rip), %RAX_LP
+ 	HAS_ARCH_FEATURE (Prefer_ERMS)
+ 	jnz	2f
++	HAS_ARCH_FEATURE (Prefer_No_AVX512)
++	jnz	1f
+ 	HAS_ARCH_FEATURE (AVX512F_Usable)
+ 	jz	1f
+ 	lea	__memmove_avx512_no_vzeroupper(%rip), %RAX_LP
+diff --git a/sysdeps/x86_64/multiarch/memmove_chk.S b/sysdeps/x86_64/multiarch/memmove_chk.S
+index 8a252adcae..7870dd0247 100644
+--- a/sysdeps/x86_64/multiarch/memmove_chk.S
++++ b/sysdeps/x86_64/multiarch/memmove_chk.S
+@@ -29,6 +29,8 @@
+ ENTRY(__memmove_chk)
+ 	.type	__memmove_chk, @gnu_indirect_function
+ 	LOAD_RTLD_GLOBAL_RO_RDX
++	HAS_ARCH_FEATURE (Prefer_No_AVX512)
++	jnz	1f
+ 	HAS_ARCH_FEATURE (AVX512F_Usable)
+ 	jz	1f
+ 	lea	__memmove_chk_avx512_no_vzeroupper(%rip), %RAX_LP
+diff --git a/sysdeps/x86_64/multiarch/mempcpy.S b/sysdeps/x86_64/multiarch/mempcpy.S
+index 79c840d075..b8b2b28094 100644
+--- a/sysdeps/x86_64/multiarch/mempcpy.S
++++ b/sysdeps/x86_64/multiarch/mempcpy.S
+@@ -32,6 +32,8 @@ ENTRY(__mempcpy)
+ 	lea	__mempcpy_erms(%rip), %RAX_LP
+ 	HAS_ARCH_FEATURE (Prefer_ERMS)
+ 	jnz	2f
++	HAS_ARCH_FEATURE (Prefer_No_AVX512)
++	jnz	1f
+ 	HAS_ARCH_FEATURE (AVX512F_Usable)
+ 	jz	1f
+ 	lea	__mempcpy_avx512_no_vzeroupper(%rip), %RAX_LP
+diff --git a/sysdeps/x86_64/multiarch/mempcpy_chk.S b/sysdeps/x86_64/multiarch/mempcpy_chk.S
+index 6927962e81..072b22c49f 100644
+--- a/sysdeps/x86_64/multiarch/mempcpy_chk.S
++++ b/sysdeps/x86_64/multiarch/mempcpy_chk.S
+@@ -30,6 +30,8 @@
+ ENTRY(__mempcpy_chk)
+ 	.type	__mempcpy_chk, @gnu_indirect_function
+ 	LOAD_RTLD_GLOBAL_RO_RDX
++	HAS_ARCH_FEATURE (Prefer_No_AVX512)
++	jnz	1f
+ 	HAS_ARCH_FEATURE (AVX512F_Usable)
+ 	jz	1f
+ 	lea	__mempcpy_chk_avx512_no_vzeroupper(%rip), %RAX_LP
+diff --git a/sysdeps/x86_64/multiarch/memset.S b/sysdeps/x86_64/multiarch/memset.S
+index c958b2f49f..9d33118cf8 100644
+--- a/sysdeps/x86_64/multiarch/memset.S
++++ b/sysdeps/x86_64/multiarch/memset.S
+@@ -41,6 +41,8 @@ ENTRY(memset)
+ 	jnz	L(AVX512F)
+ 	lea	__memset_avx2_unaligned(%rip), %RAX_LP
+ L(AVX512F):
++	HAS_ARCH_FEATURE (Prefer_No_AVX512)
++	jnz	2f
+ 	HAS_ARCH_FEATURE (AVX512F_Usable)
+ 	jz	2f
+ 	lea	__memset_avx512_no_vzeroupper(%rip), %RAX_LP
+diff --git a/sysdeps/x86_64/multiarch/memset_chk.S b/sysdeps/x86_64/multiarch/memset_chk.S
+index 79eaa37bb6..7e08311cdf 100644
+--- a/sysdeps/x86_64/multiarch/memset_chk.S
++++ b/sysdeps/x86_64/multiarch/memset_chk.S
+@@ -38,6 +38,8 @@ ENTRY(__memset_chk)
+ 	jnz	L(AVX512F)
+ 	lea	__memset_chk_avx2_unaligned(%rip), %RAX_LP
+ L(AVX512F):
++	HAS_ARCH_FEATURE (Prefer_No_AVX512)
++	jnz	2f
+ 	HAS_ARCH_FEATURE (AVX512F_Usable)
+ 	jz	2f
+ 	lea	__memset_chk_avx512_no_vzeroupper(%rip), %RAX_LP

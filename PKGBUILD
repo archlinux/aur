@@ -7,8 +7,8 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-headers
 pkgver=2.25
-pkgrel=1
-_commit=69e0a87cc4c570e3b7218392fc3e743b5bddcce2
+pkgrel=5
+_commit=adc7e06fb412a2a1ee52f8cb788caf436335b9f3  # release/2.25/master
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
@@ -20,7 +20,7 @@ source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig}
         glibc-${_commit}.patch)
 md5sums=('1496c3bf41adf9db0ebd0af01f202eed'
          'SKIP'
-         'ead76a671d598295114b07c11bee79ba')
+         '0fa9776db7ab22c15a4767d841fc2eb2')
 validpgpkeys=('BC7C7372637EC10C57D7AA6579C43DFBF1CF2187')  # Siddhesh Poyarekar
 
 prepare() {
