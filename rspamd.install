@@ -2,6 +2,7 @@
 post_install() {
 	systemd-sysusers rspamd.conf
 	systemd-tmpfiles --create rspamd.conf
+	install --directory --mode=0750 --owner=_rspamd --group=_rspamd /var/lib/rspamd
 }
 
 ## arg 1:  the old package version
