@@ -1,6 +1,6 @@
-# Maintainer: Yardena Cohen <yardenack AT gmail DOT com>
-# Contributor: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 # Contributor: TrialnError <autumn-wind AT web DOT de>
+# Contributor: Yardena Cohen <yardenack AT gmail DOT com>
 # Contributor: Max Roder <maxroder AT web DOT de>
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
 
