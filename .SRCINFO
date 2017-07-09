@@ -1,0 +1,19 @@
+pkgbase = fc5025
+	pkgdesc = Utilities for FC5025 USB 5.25" floppy controller by Device Side Data
+	pkgver = 1309
+	pkgrel = 1
+	url = http://www.deviceside.com/drivers.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = libusb-compat
+	depends = gtk2
+	source = http://www.deviceside.com/FC5025_Driver_Source_Code_v1309.tar.gz
+	source = fc5025.desktop
+	source = fc5025.png
+	md5sums = 1a80528ea7b90ab4bf7210387d8b2e0a
+	md5sums = 6b4cc572399100ef1c784f32bf3a8fb9
+	md5sums = 8a95b61613d3a52d6d2b09f376544209
+
+pkgname = fc5025
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FC5025 XDIB
+Comment=Utility for FC5025 USB 5.25" floppy controller
+Exec=xdib
+Terminal=false
+Icon=fc5025
+Type=Application
+Categories=Utility;
+Version=1309
