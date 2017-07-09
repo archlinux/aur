@@ -6,7 +6,7 @@
 
 pkgname=gimagereader-qt5
 _pkgbase=gimagereader
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A graphical frontend to tesseract-ocr - Qt5 version"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=(
   "https://github.com/manisandro/gImageReader/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
 )
-sha256sums=('8dc08ca6f36f4c226203fa7fdb2709953d69309dcc78263621231d89d1c1c26e')
+sha256sums=('8ca6b8900671eba7a00fe1f9a728fee6c2ea3ed1ae10cc62dafb0e3f08574420')
 
 build() {
   cd "$_pkgbase-$pkgver"
