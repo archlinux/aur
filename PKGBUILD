@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.86685.gac8ad8d098
-pkgrel=1
+pkgrel=2
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -62,21 +62,21 @@ build() {
     # set x86_64 specific options
     if [ "$CARCH" = 'x86_64' ] 
     then
-        _cuda='--enable-cuda'
-        _cudasdk='--enable-cuda-sdk'
-        _cuvid='--enable-cuvid'
-        _libnpp='--enable-libnpp'
-        _cflags='--extra-cflags=-I/opt/cuda/include'
+        local _cuda='--enable-cuda'
+        local _cudasdk='--enable-cuda-sdk'
+        local _cuvid='--enable-cuvid'
+        local _libnpp='--enable-libnpp'
+        local _cflags='--extra-cflags=-I/opt/cuda/include'
         
         # '-L/usr/lib/nvidia' (for cuda_sdk) needs to be enabled only on
         # systems with nvidia-340xx-utils or nvidia-304xx-utils
         if pacman -Qqs '^nvidia-340xx-utils$' | grep -q '^nvidia-340xx-utils$' ||
            pacman -Qqs '^nvidia-304xx-utils$' | grep -q '^nvidia-304xx-utils$'
         then
-            _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
+            local _nvidia_340xx_ldflags='-L/usr/lib/nvidia'
         fi
-        _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
-        _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
+        local _ldflags="--extra-ldflags=-L/opt/cuda/lib64 ${_nvidia_340xx_ldflags}"
+        local _ldflags="${_ldflags} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
         
         # strictly specifying nvcc path is needed if package is installing
         # cuda for the first time
@@ -86,7 +86,7 @@ build() {
     msg2 'Running ffmpeg configure script. Please wait...'
     
     ./configure \
-        --prefix=/usr \
+        --prefix='/usr' \
         $_cflags \
         "$_ldflags" \
         \
