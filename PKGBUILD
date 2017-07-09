@@ -2,7 +2,7 @@
 
 pkgname=mattermost-git
 _pkgname="${pkgname%-git}"
-pkgver=3.9.0.rc1.r0.g52b5c74a0
+pkgver=4.0.0.rc2.r0.ge5912d4f9
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
@@ -27,6 +27,10 @@ source=(
     # The mattermost repo is quite huge. Consider manually cloning the
     # repository first, either a full clone or with the --dept argument. You
     # can also specify the --depth git argument in your in makepkg.conf file.
+    # For local tests, simply replace this git URL by
+    # For the URL syntax, please check this link:
+    # https://wiki.archlinux.org/index.php/VCS_package_guidelines#VCS_sources
+    # platform::git+file:///home/whatever/repo
     'git+https://github.com/mattermost/platform'
     'mattermost.service'
     'mattermost.sh'
@@ -71,6 +75,10 @@ prepare() {
     rm -f platform
     ln -s "$srcdir"/platform platform
     cd platform
+
+    # Prevent the build to crash when some dependencies are not met or
+    # outdated.
+    make clean
 
     # Remove platform specific lines from the Makefile from the line beginning
     # with "cp README.md" to the line beginning with run-server
