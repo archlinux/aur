@@ -21,7 +21,7 @@ fi
 _ver=${pkgver//_/-}
 _ver=${_ver//+/%2B}
 install='zotero-beta.install'
-source=("https://download.zotero.org/standalone/beta/${_ver}/Zotero-${_ver}_linux-${_arch}.tar.bz2"
+source=("https://download.zotero.org/client/beta/${_ver}/Zotero-${_ver}_linux-${_arch}.tar.bz2"
         "zotero-beta.desktop")
 
 package() {
@@ -34,3 +34,5 @@ package() {
   install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zotero.png
   install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zotero.png
 }
+md5sums=('e123b9f8d52762364a72ccc5ada412bc'
+         '3bfed397fb9d060af469eaacfe8add63')
