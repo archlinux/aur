@@ -4,14 +4,14 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-kinetic-cv-bridge'
-pkgver='1.12.3'
+pkgver='1.12.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-catkin
-  opencv
+  ros-kinetic-opencv3
   ros-kinetic-rosconsole
   ros-kinetic-sensor-msgs)
 makedepends=('cmake' 'ros-build-tools'
@@ -19,7 +19,7 @@ makedepends=('cmake' 'ros-build-tools'
   boost
   python2)
 
-ros_depends=(opencv
+ros_depends=(ros-kinetic-opencv3
   ros-kinetic-rosconsole
   ros-kinetic-sensor-msgs)
 depends=(${ros_depends[@]}
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-kinetic-cv_bridge-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/kinetic/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7559068ede840c0b2c7f5024d4a31c610ef4098bff059eb3fc24508a2ac6101a')
+sha256sums=('62b23b120aee993704ad2928dd4ad9b4fde04a05ad187504ece4e4e52a5816e2')
 
 build() {
   # Use ROS environment variables
