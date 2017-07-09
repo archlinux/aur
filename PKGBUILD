@@ -1,5 +1,8 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 
+# As of 4.11 repowering the serial server crashes the kernel on TCP connection loss
+# The 4.11 patch is disabled to prevent it from compiling on 4.11
+
 _opt_DKMS=1            # This can be toggled between installs
 #_opt_defaultmode='666' # default: 660
 
@@ -19,10 +22,13 @@ _opt_DKMS=1            # This can be toggled between installs
 
 # Uninstall cleanup: sudo rm -f /etc/nslink.conf*
 
+# Configure with the NS-Link Manager GUI, Config Driver
+# Ports are /dev/ttySI0 through /dev/ttySI31
+
 set -u
 pkgname='nslink'
 pkgver='7.15'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -31,7 +37,7 @@ url='http://www.comtrol.com/'
 license=('GPL')
 depends=('glibc' 'openssl' 'python2' 'sed' 'groff' 'tcl' 'tk' 'util-linux') # python is also needed for the firmware updater
 optdepends=(
-  'gksu: Digi RealPort Manager GUI'
+  'gksu: NS-Link Manager GUI'
 )
 makedepends=()
 backup=("etc/nslink.conf")
@@ -123,6 +129,9 @@ prepare() {
   # that a launcher can modify.
   sed -e 's:"eth0":"'"${_opt_ethernet_data}${_opt_ethernet_keystring}"'":g' -i 'nslinkadmin.c'
 
+  # Branding in dmesg
+  sed -e '/^int nrp_init(/,/^}/ s:version %s %s:& Arch Linux:g' -i 'nslink.c'
+
   # nslinktool has the same problem but it's a GUI app. The best we can
   # do is start with the right network card. It really needs to become
   # a dropdown.
@@ -156,7 +165,7 @@ prepare() {
   sed -e 's:^:#&:g' -i 'nslink.conf'
 
   #diff -pNau5 nslink.c{.orig,} > '../nslink-patch-signal_pending-kernel-4-11.patch'
-  patch -Nbup0 < "${srcdir}/nslink-patch-signal_pending-kernel-4-11.patch"
+  #patch -Nbup0 < "${srcdir}/nslink-patch-signal_pending-kernel-4-11.patch"
 
   # Fix up the firmware downloaders
   cd "${srcdir}/${_srcdir2}"
@@ -193,9 +202,7 @@ package() {
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
     local _kernelversionsmall="$(uname -r)"
     _kernelversionsmall="${_kernelversionsmall%%-*}"
-    if [ "${_kernelversionsmall%\.0\.0}" != "${_kernelversionsmall}" ]; then # trim 4.0.0 -> 4.0
-      _kernelversionsmall="${_kernelversionsmall%\.0}"
-    fi
+    _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
     eval 'conf''licts=("linux>${_kernelversionsmall}" "linux<${_kernelversionsmall}")'
     eval 'dep''ends+=("linux=${_kernelversionsmall}")'
