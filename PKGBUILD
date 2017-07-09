@@ -2,14 +2,14 @@ pkgname=toxygen-git
 _pkgname=toxygen
 pkgdesc="Toxygen is cross-platform Tox client written in Python3"
 pkgrel=1
-pkgver=0.2.8.0.561
+pkgver=0.3.0.0.608
 arch=('i686' 'x86_64')
 conflicts=("toxygen")
 provides=("toxygen")
 url="https://github.com/toxygen-project/toxygen"
 license=('GPL-3.0')
-depends=('python' 'toxcore' 'python-pyside' 'python-pyaudio')
-source=('git://github.com/toxygen-project/toxygen.git')
+depends=('python' 'toxcore' 'python-pyaudio' 'python-pyqt5' 'python-numpy' 'opencv')
+source=('git://github.com/toxygen-project/toxygen.git#branch=develop')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	# ..
+	python setup.py build
 }
 
 package() {
