@@ -4,7 +4,7 @@
 
 pkgname=radiotray
 pkgver=0.7.3
-pkgrel=10
+pkgrel=11
 _commit=1717a0e8c143
 pkgdesc="An online radio streaming player that runs on a Linux system tray."
 arch=(any)
@@ -20,14 +20,16 @@ source=("${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/carlmig/radio-tray/g
         "encoding.patch"
         "02_compatibility_glib-2.41.patch"
         "03_upstream_repo.patch"
-        "04_gtk3_issues.patch")
+        "04_gtk3_issues.patch"
+        "reduce-logging.patch")
 conflicts=(radiotray-hg radiotray-python3-git)
 
 sha256sums=('464c555b8d9278e918d3718f81a1c0cfa7d9a54018d1a2f6b04b33dc40ea825c'
             'a73badc0ddbf726d3f554e328b8836883bf816751cd0dc2034795a03466cd2df'
             'b6d1d7fe74be1ec2ecad653262111f509d6fd60b8e666eb5e15d7bcb21e7a58b'
             '04748958923e3c2cac8944700a0786d066ab17d8284155adf316adab78dd0c55'
-            'c67845683a6d7d63eb26bbefe3c06921e0e6cbc2a5cb32c58b47377fdeb83644')
+            'c67845683a6d7d63eb26bbefe3c06921e0e6cbc2a5cb32c58b47377fdeb83644'
+            '231ec3fb848069cf909f704e0e129fd649a9f8955178fe5407c7457d94ab0663')
 
 prepare() {
     cd "${srcdir}/carlmig-radio-tray-${_commit}"
@@ -35,6 +37,7 @@ prepare() {
     patch -p1 < "${srcdir}/02_compatibility_glib-2.41.patch"
     patch -p1 < "${srcdir}/03_upstream_repo.patch"
     patch -p1 < "${srcdir}/04_gtk3_issues.patch"
+    patch -p1 < "${srcdir}/reduce-logging.patch"
 }
 
 build() {
