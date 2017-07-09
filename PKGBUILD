@@ -4,7 +4,7 @@
 _pkgname=Color-UI-theme-project
 pkgname=colorui-themes
 pkgver=r22.52d038e
-pkgrel=1
+pkgrel=2
 pkgdesc="Package contains 3 version of gtk3,gtk2,metacity,unity,xfwm4 and openbox theme."
 arch=('any')
 url="https://github.com/UserContributer/${_pkgname}"
@@ -21,5 +21,5 @@ pkgver() {
 package() {
 	cd "$srcdir/${pkgname}/Color-UI"
 	install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	find . -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+	find . -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/Color-UI/{}" \;
 } 

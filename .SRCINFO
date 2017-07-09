@@ -1,7 +1,7 @@
 pkgbase = colorui-themes
 	pkgdesc = Package contains 3 version of gtk3,gtk2,metacity,unity,xfwm4 and openbox theme.
 	pkgver = r22.52d038e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UserContributer/Color-UI-theme-project
 	arch = any
 	license = GPL3
