@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=ffmpeg-full-git
-pkgver=N.86685.gac8ad8d098
-pkgrel=2
+pkgver=3.4.r86744.gfe9242204d
+pkgrel=1
 pkgdesc='Record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -51,9 +51,10 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$pkgname"
-    
-    # use FFmpeg internal git versioning
-    printf '%s' "$(git describe --tags --match N | tr '-' '.')"
+    local _version="$(  git describe  --tags --long      | cut -d'-' -f1 | sed 's/^n//')"
+    local _revision="$( git describe  --tags --match 'N' | cut -d'-' -f2)"
+    local _shorthash="$(git rev-parse --short HEAD)"
+    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
