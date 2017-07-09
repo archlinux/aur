@@ -1,12 +1,12 @@
 pkgbase = rlipython
-	pkgdesc = Readline Interface for IPython 3.4+
+	pkgdesc = Readline Interface for IPython 5.4+
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipython/rlipython
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = ipython>=6.0
+	depends = ipython>=5.4
 	source = git+https://github.com/ipython/rlipython.git#commit=e218435e396a5798e001f732afa5b5e5fdc93ce0
 	md5sums = SKIP
 
