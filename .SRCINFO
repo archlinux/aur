@@ -1,7 +1,7 @@
 pkgbase = fc5025
 	pkgdesc = Utilities for FC5025 USB 5.25" floppy controller by Device Side Data
 	pkgver = 1309
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.deviceside.com/drivers.html
 	arch = i686
 	arch = x86_64

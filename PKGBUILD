@@ -1,7 +1,7 @@
 # Maintainer: Guilherme Calé <gui@cabritacale.eu>
 pkgname=fc5025
 pkgver=1309
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for FC5025 USB 5.25\" floppy controller by Device Side Data"
 arch=('i686' 'x86_64')
 url="http://www.deviceside.com/drivers.html"
