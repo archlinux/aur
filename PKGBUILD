@@ -12,7 +12,7 @@ license=('GPL')
 conflicts=('bctoolbox')
 provides=('bctoolbox')
 depends=('mbedtls')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git://github.com/BelledonneCommunications/$_pkgname.git")
 sha256sums=('SKIP')
 
