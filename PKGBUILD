@@ -2,7 +2,7 @@
 # Maintainer: Isaac Curtis <isaaccurtis1@gmail.com>
 
 pkgname=zotero-beta
-pkgver="5.0_beta.235+55b2dc39b"
+pkgver="5.0_beta.236+e55177798"
 pkgrel=1
 pkgdesc="Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('zotero')
 if [[ $CARCH == "x86_64" ]]
 then
   _arch=x86_64
-md5sums=('8e0c09785c1ee0fe40e596b9732df53c'
+md5sums=('2b5460c5158675eaa174b8faa53e830c'
          '3bfed397fb9d060af469eaacfe8add63')
 else
   _arch=i686
@@ -34,5 +34,3 @@ package() {
   install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zotero.png
   install -Dm644 "$pkgdir"/usr/lib/zotero/chrome/icons/default/default48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zotero.png
 }
-md5sums=('e123b9f8d52762364a72ccc5ada412bc'
-         '3bfed397fb9d060af469eaacfe8add63')
