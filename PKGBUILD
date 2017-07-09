@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Unified Robot Descript
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-kinetic-urdf'
-pkgver='1.12.8'
+pkgver='1.12.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-kinetic-urdf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/urdf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a9997f1962937ae349d9643f5c715c8714c26d7533c404e5b3f316804f3deb4c')
+sha256sums=('0daae3e609cd81cdf99b9d014c64ef8160225f0e5bb263a58380d4d5bbbe02e0')
 
 build() {
   # Use ROS environment variables
