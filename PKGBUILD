@@ -4,8 +4,8 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=3.4.r86744.gfe9242204d
-pkgrel=2
+pkgver=3.4.r86745.gb406f387c8
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -14,7 +14,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
          'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
          'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
-         'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+         'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
          'libass.so' 'libbluray.so' 'libfreetype.so' 'libvidstab.so'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so')
