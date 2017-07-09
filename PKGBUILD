@@ -1,6 +1,6 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: Yardena Cohen <yardenack AT gmail DOT com>
+# Contributor: grufo <madmurphy333 AT gmail DOT com>
 # Contributor: TrialnError <autumn-wind AT web DOT de>
-# Contributor: Yardena Cohen <yardenack AT gmail DOT com>
 # Contributor: Max Roder <maxroder AT web DOT de>
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
 
@@ -10,15 +10,15 @@
 # gpg --keyserver hkp://pgp.mit.edu:11371 --recv-keys D1483FA6C3C07136
 #
 
-# To port this PKGBUILD to another language of tor-browser you
-# have to change ONLY the variable ${_language} in PKGBUILD
+# To port this PKGBUILD to another language of tor-browser you have to
+# change ONLY the variable ${_language} in PKGBUILD and tor-browser.install
 
 _language='pl'
 
 # This PKGBUILD is based on https://aur.archlinux.org/packages/tor-browser/
 
-pkgname="tor-browser-${_language}"
 _pkgname='tor-browser'
+pkgname="${_pkgname}-${_language}"
 pkgver='7.0.2'
 pkgrel='1'
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -50,7 +50,7 @@ source=("${_pkgname}.desktop"
 	"${_pkgname}.sh")
 
 md5sums=('9178c9325979377f7ec57569b15fcb61'
-	'80e4b01673024885aa2a505e795b0463'
+	'4fb2e7f6af59aeec3ff6074ebb7a7950'
 	'494afbfa60fb4ce21840244cc3f7208c'
 	'ac6ee6d201ae0fa14250fbaf13959130')
 md5sums_i686=('SKIP'
