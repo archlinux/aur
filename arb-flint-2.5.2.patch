@@ -1,0 +1,22 @@
+diff --git a/arb_fmpz_poly/gauss_period_minpoly.c b/arb_fmpz_poly/gauss_period_minpoly.c
+index 3ce304aa..2fba47ea 100644
+--- a/arb_fmpz_poly/gauss_period_minpoly.c
++++ b/arb_fmpz_poly/gauss_period_minpoly.c
+@@ -87,7 +87,7 @@ arb_fmpz_poly_gauss_period_minpoly(fmpz_poly_t res, ulong q, ulong n)
+             {
+                 for (e = 0; e < d / 2; e++)
+                 {
+-                    acb_dirichlet_root(t, zeta, n_mulmod2(gk, es[e], 2 * q), prec);
++                    acb_dirichlet_root(t, zeta, n_mulmod2_preinv(gk, es[e], 2 * q, n_preinvert_limb(2 * q)), prec);
+                     acb_mul_2exp_si(t, t, 1);  /* compute conjugates */
+                     acb_add(u, u, t, prec);
+                 }
+@@ -98,7 +98,7 @@ arb_fmpz_poly_gauss_period_minpoly(fmpz_poly_t res, ulong q, ulong n)
+             {
+                 for (e = 0; e < d; e++)
+                 {
+-                    acb_dirichlet_root(t, zeta, n_mulmod2(gk, es[e], 2 * q), prec);
++                    acb_dirichlet_root(t, zeta, n_mulmod2_preinv(gk, es[e], 2 * q, n_preinvert_limb(2 * q)), prec);
+                     acb_add(u, u, t, prec);
+                 }
+ 
