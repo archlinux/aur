@@ -8,7 +8,7 @@ url="http://flexisip.org"
 license=('AGPL3')
 groups=()
 depends=('belle-sip-git' 'hiredis' 'mediastreamer-git' 'ortp-git' 'protobuf' 'soci' 'sofia-sip-bc' 'unixodbc' 'xsd')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/BelleDonneCommunications/$pkgname.git#commit=d915601df292742c61b188d1184b376eabf47c83"
     "flexisip.service"
     "flexisip-presence.service")

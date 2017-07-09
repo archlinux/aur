@@ -7,6 +7,7 @@ pkgbase = flexisip
 	arch = x86_64
 	license = AGPL3
 	makedepends = cmake
+	makedepends = git
 	depends = belle-sip-git
 	depends = hiredis
 	depends = mediastreamer-git
