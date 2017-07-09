@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains nodelets for processing depth images such as those produ
 url='http://ros.org/wiki/depth_image_proc'
 
 pkgname='ros-kinetic-depth-image-proc'
-pkgver='1.12.19'
+pkgver='1.12.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="image_pipeline-release-release-kinetic-depth_image_proc-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/kinetic/depth_image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e608f82ef0422e59d354f947021af8ce4168c5390f4d0f791dbc3d785933ed3f')
+sha256sums=('16de76f9ffeba910201a1b21f4e472ee01827abb85b73703f8c488e8fc2da783')
 
 build() {
   # Use ROS environment variables
