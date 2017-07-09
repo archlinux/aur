@@ -4,7 +4,7 @@ pkgdesc="ROS - Python implementation of bond, a mechanism for checking when anot
 url='http://www.ros.org/wiki/bondpy'
 
 pkgname='ros-kinetic-bondpy'
-pkgver='1.7.18'
+pkgver='1.7.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="bond_core-release-release-kinetic-bondpy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/kinetic/bondpy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('dd80c254dbf87942612f581cd71cbb862ea86e4e94d5c5472f15fe453f571551')
+sha256sums=('e27756ecff9c94018ba3e8a9138065031498117b0f258ae5a54003febf5827a8')
 
 build() {
   # Use ROS environment variables
