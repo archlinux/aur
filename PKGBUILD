@@ -13,7 +13,7 @@ url="https://wiki.gnome.org/Apps/Nautilus"
 arch=(i686 x86_64)
 license=(GPL)
 depends=(libexif gnome-desktop exempi gvfs dconf libtracker-sparql nautilus-sendto gnome-autoar)
-makedepends=(intltool gobject-introspection python packagekit python2 gnome-common git gtk-doc)
+makedepends=(intltool gobject-introspection python packagekit python2 gnome-common git gtk-doc meson ninja)
 options=(!emptydirs)
 _commit=1bab05578caf4c6eab15d385b95358efd3354c8b  # tags/3.24.1
 source=("git://git.gnome.org/nautilus#commit=$_commit"
@@ -24,6 +24,7 @@ sha256sums=('SKIP'
             '0610a7e3eea32028b3660309be761489b45dcc49da79a4a7d2f4ab275ee5bfc3')
 
 prepare() {
+  mkdir -p build libne/usr/{lib,share}
   cd $_pkgbase
 
   git submodule init
@@ -31,7 +32,6 @@ prepare() {
   git submodule update
 
   patch -p1 -i ../nautilus-restore-typeahead.patch
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 pkgver() {
@@ -40,15 +40,15 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgbase
-  ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static \
-      --libexecdir=/usr/lib/nautilus \
-      --disable-update-mimedb \
-      --disable-schemas-compile \
-      --disable-selinux --enable-gtk-doc
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  cd build
+  export LANG=en_US.UTF-8
+  meson --prefix=/usr --buildtype=release ../nautilus \
+    --sysconfdir=/etc \
+    -Denable-exif=true \
+    -Denable-xmp=true \
+    -Denable-gtk-doc=true \
+    -Denable-selinux=false
+  ninja
 }
 
 package_nautilus-typeahead() {
@@ -58,12 +58,14 @@ package_nautilus-typeahead() {
   provides=(nautilus)
   groups=(gnome)
 
-  cd $_pkgbase
-  make DESTDIR="$pkgdir" install
+  cd build
+  DESTDIR="$pkgdir" ninja install
 
 ### Split libnautilus-extension
-  make DESTDIR="$pkgdir" -C libnautilus-extension uninstall
-  make DESTDIR="$pkgdir" -C docs/reference/libnautilus-extension uninstall
+  cd ../libne
+  mv "$pkgdir"/usr/include usr
+  mv "$pkgdir"/usr/lib/{girepository-1.0,libnautilus-extension*,pkgconfig} usr/lib
+  mv "$pkgdir"/usr/share/{gir-1.0,gtk-doc} usr/share
 }
 
 package_libnautilus-extension-typeahead() {
@@ -72,7 +74,5 @@ package_libnautilus-extension-typeahead() {
   provides=(libnautilus-extension)
   depends=(gtk3)
 
-  cd $_pkgbase
-  make DESTDIR="$pkgdir" -C libnautilus-extension install
-  make DESTDIR="$pkgdir" -C docs/reference/libnautilus-extension install
+  mv libne/usr "$pkgdir"
 }
