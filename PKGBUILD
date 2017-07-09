@@ -1,8 +1,9 @@
-# Maintainer: archtux <antonio dot arias99999 at gmail dot com>
+# Maintainer: Pixx <pixx AT pixx DOT cz>
+# Contributor: archtux <antonio dot arias99999 AT gmail DOT com>
 
 pkgname=4chan-downloader
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to download images from 4chan, 2chan and more!"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/fourchan-dl/"

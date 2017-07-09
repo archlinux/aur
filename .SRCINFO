@@ -1,7 +1,7 @@
 pkgbase = 4chan-downloader
 	pkgdesc = A tool to download images from 4chan, 2chan and more!
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/fourchan-dl/
 	arch = i686
 	arch = x86_64
