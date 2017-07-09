@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_common_diagnostics."
 url='http://ros.org/wiki/diagnostic_common_diagnostics'
 
 pkgname='ros-kinetic-diagnostic-common-diagnostics'
-pkgver='1.8.10'
+pkgver='1.9.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="diagnostics-release-release-kinetic-diagnostic_common_diagnostics-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/kinetic/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('de87e1e6f80bc556ca5b71266c7cd8112477ff02e6be687a7f813418474c5fce')
+sha256sums=('a488870a43cbc655eb41e0f0a2ffaf3f410233918d37161f07f16491510bea87')
 
 build() {
   # Use ROS environment variables
