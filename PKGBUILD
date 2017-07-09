@@ -22,7 +22,7 @@ sha256sums=('1a9f50c3cf2eb00e5148bc21a209b0c7c275b6c36c8cae8b4d9b2469bee7ff33'
             '63b8d4718e8cc61016ef415ff418e6180102b077315f5ce77bfcab9c03433565'
             '183d7c2f93ca8ca95e00523c4920275e52ad83d049af95610b7cc0672983421c'
             '1948780515929c7fc8ffa6033bc79a55cbae375a1397326ef9dba0dfbe91cc56'
-            'df5d5558e20a4164bc20f5b44e267baebb382c49d7289a2bbdd6c5544143182b')
+            '883373be23f6f49ae597f61c1310d8cd45bce7c3ee1b5d456ffc9fedbe7dd486')
 
 package() {
     install -d -m 755 "${pkgdir}/opt/${pkgname}"
