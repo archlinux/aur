@@ -1,5 +1,5 @@
 pkgbase = linux-surftab-wintron-7
-	pkgver = 4.11.3
+	pkgver = 4.12
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = linux-surftab-wintron-7
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#tag=v4.11.3
+	source = linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#tag=v4.12
 	source = config.x86_64
 	source = 90-linux.hook
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
-	sha256sums = 8ba2c708ae9b6626044f4845c8d16ea9c8d6bf852ecc0d68c8ed5bb7a886f8ff
+	sha256sums = fea92a74108cb93e2f1e8144c99b212ea66563cf21e1eef90c8f3a9e01dd7a5a
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 

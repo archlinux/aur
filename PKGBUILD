@@ -1,10 +1,10 @@
-# $Id: PKGBUILD 296472 2017-05-23 14:11:16Z tpowa $
+# $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-surftab-wintron-7
 _srcname=linux
-pkgver=4.11.3
+pkgver=4.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -20,7 +20,7 @@ source=("linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux
         'linux.preset')
 
 sha256sums=('SKIP'
-            '8ba2c708ae9b6626044f4845c8d16ea9c8d6bf852ecc0d68c8ed5bb7a886f8ff'
+            'fea92a74108cb93e2f1e8144c99b212ea66563cf21e1eef90c8f3a9e01dd7a5a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -35,6 +35,8 @@ prepare() {
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -145,7 +147,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
