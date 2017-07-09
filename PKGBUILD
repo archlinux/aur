@@ -5,9 +5,9 @@ url='http://www.ros.org/'
 
 pkgname='ros-kinetic-geneus'
 pkgver='2.2.6'
-_pkgver_patch=1
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-genmsg
@@ -19,16 +19,15 @@ ros_depends=(ros-kinetic-genmsg)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
-#_tag=release/kinetic/geneus/${pkgver}-${_pkgver_patch}
-#_dir=${pkgname}
-#source=("${_dir}"::"git+https://github.com/tork-a/geneus-release.git"#tag=${_tag})
-#sha256sums=('SKIP')
+# _tag=release/kinetic/geneus/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/tork-a/geneus-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
 
 # Tarball version (faster download)
-#_dir="geneus-release-release-kinetic-geneus-${pkgver}-${_pkgver_patch}"
-_dir="geneus-release-release-kinetic-geneus"
+_dir="geneus-release-release-kinetic-geneus-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/tork-a/geneus-release/archive/release/kinetic/geneus/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9cf18e6336a55584ba0be116c1cbcaab0766e3f50f3860bb99334f5d86645a27')
+sha256sums=('53c761b8f93977f6290596a545abd30b772781bb97b0cd4e1a7285c00d0dc232')
 
 build() {
   # Use ROS environment variables
