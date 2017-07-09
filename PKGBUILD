@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_updater contains tools for easily updating diagnostics
 url='http://www.ros.org/wiki/diagnostic_updater'
 
 pkgname='ros-kinetic-diagnostic-updater'
-pkgver='1.8.10'
+pkgver='1.9.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-kinetic-diagnostic_updater-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/kinetic/diagnostic_updater/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8f69c7b8c575be80e1b75bc0257f5a55f8ac7900d195c29cd7ebf2568230e833')
+sha256sums=('3c4c3d401e0d12a7ee7401572b3c7d22ac6cccd2eff69246c62806ceb27ef567')
 
 build() {
   # Use ROS environment variables
