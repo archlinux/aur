@@ -2,3 +2,4 @@ pkg
 src
 htop
 *.pkg.tar
+*.pkg.tar.xz

@@ -1,5 +1,5 @@
 diff --git a/Action.c b/Action.c
-index ee34a4b..b0c8013 100644
+index f5d7de4..b19de0c 100644
 --- a/Action.c
 +++ b/Action.c
 @@ -382,7 +382,7 @@ static Htop_Reaction actionRedraw() {
@@ -20,7 +20,7 @@ index ee34a4b..b0c8013 100644
     { .key = "   F7 ]: ", .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
  #if (HAVE_LIBHWLOC || HAVE_LINUX_AFFINITY)
-@@ -411,11 +411,11 @@ static struct { const char* key; const char* info; } helpRight[] = {
+@@ -411,7 +411,7 @@ static struct { const char* key; const char* info; } helpRight[] = {
  #endif
     { .key = "      e: ", .info = "show process environment" },
     { .key = "      i: ", .info = "set IO priority" },
@@ -28,12 +28,7 @@ index ee34a4b..b0c8013 100644
 +   { .key = "      L: ", .info = "list open files with lsof" },
     { .key = "      s: ", .info = "trace syscalls with strace" },
     { .key = "         ", .info = "" },
-    { .key = "   F2 S: ", .info = "setup" },
--   { .key = "   F1 h: ", .info = "show this help screen" },
-+   { .key = "   F1 ?: ", .info = "show this help screen" },
-    { .key = "  F10 q: ", .info = "quit" },
-    { .key = NULL, .info = NULL }
- };
+    { .key = " F2 C S: ", .info = "setup" },
 @@ -543,6 +543,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['I'] = actionInvertSortOrder;
     keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
