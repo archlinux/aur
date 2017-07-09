@@ -1,12 +1,13 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=scribus-git
-pkgver=lates
-pkgrel=1
+pkgver=latest
+pkgrel=2
 pkgdesc="Desktop publishing software built from git mirror"
 arch=('i386' 'x86_64')
 url="https://www.scribus.net/"
 license=('GPL')
-makedepends=('git')
+depends=('qt5-base' 'qt5-tools' 'librevenge' 'harfbuzz-icu')
+makedepends=('git' 'cmake')
 conflicts=('scribus')
 
 _gitroot="https://github.com/scribusproject/scribus.git"

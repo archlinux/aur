@@ -1,12 +1,17 @@
 pkgbase = scribus-git
 	pkgdesc = Desktop publishing software built from git mirror
-	pkgver = lates
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
 	url = https://www.scribus.net/
 	arch = i386
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-tools
+	depends = librevenge
+	depends = harfbuzz-icu
 	conflicts = scribus
 
 pkgname = scribus-git
