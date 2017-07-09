@@ -1,4 +1,5 @@
 pkgname='tor-browser'
+_language='nl'
 
 pre_install() {
 	echo
@@ -14,7 +15,7 @@ pre_install() {
 
 post_install() {
 	echo
-	echo "==> ${pkgname} will be extracted to ~/.${pkgname}"
+	echo "==> ${pkgname} will be extracted to ~/.${pkgname}-${_language}"
 	echo "==> the first time you run ${pkgname} as your normal user!"
 	echo "==> Just start it and have fun."
 	echo
@@ -33,6 +34,6 @@ post_remove() {
 	echo "==> You have to remove the tor-brower directory in your home"
 	echo "==> directory by hand: As your normal user, do:"
 	echo "==> "
-	echo "==> rm -rf ~/.${pkgname}"
+	echo "==> rm -rf ~/.${pkgname}-${_language}"
 	echo
 }
