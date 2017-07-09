@@ -1,0 +1,19 @@
+include "/usr/share/themes/Hedera/gtk-2.0/gtkrc"
+gtk-toolbar-style=GTK_TOOLBAR_ICONS
+gtk-theme-name="Hedera"
+gtk-fallback-icon-theme="hicolor"
+gtk-icon-theme-name="Hedera"
+gtk-menu-popup-delay=50
+gtk-tooltip-timeout=1000
+gtk-enable-mnemonics=1
+gtk-auto-mnemonics=1
+gtk-alternative-button-order=1
+gtk-recent-files-enabled=0
+gtk-enable-animations=1
+gtk-menu-images=1
+gtk-error-bell=0
+gtk-button-images=1
+gtk-cursor-theme-name="breeze_cursors"
+gtk-menu-images=1
+gtk-xft-dpi=96
+gtk-font-name="Noto Sans Regular 10"
