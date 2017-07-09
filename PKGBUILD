@@ -4,7 +4,7 @@ pkgdesc="ROS - The diagnostic_analysis package can convert a log of diagnostics 
 url='http://www.ros.org/wiki/diagnostics_analysis'
 
 pkgname='ros-kinetic-diagnostic-analysis'
-pkgver='1.8.10'
+pkgver='1.9.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-kinetic-diagnostic_analysis-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/kinetic/diagnostic_analysis/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bebd8e8e389e2ac672e97970a08695504f864bb66f69b7a5f2590486f5d23e9a')
+sha256sums=('c3c5cc22236f7ff0b1ca916b0c6cd38218638e8589170d661f5e6708b8e438f3')
 
 build() {
   # Use ROS environment variables
