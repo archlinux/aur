@@ -4,7 +4,7 @@ pkgdesc="ROS - C++ implementation of bond, a mechanism for checking when another
 url='http://www.ros.org/wiki/bondcpp'
 
 pkgname='ros-kinetic-bondcpp'
-pkgver='1.7.18'
+pkgver='1.7.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -36,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="bond_core-release-release-kinetic-bondcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/bond_core-release/archive/release/kinetic/bondcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('bec642c066bc6986f352569337e78f674ac5ca27f556f403dca008ce37bfdeb4')
+sha256sums=('9016d2037b9a388c3ada973988b750a70dd3fd26e06aaa19305c6a30988fa5b2')
 
 build() {
   # Use ROS environment variables
