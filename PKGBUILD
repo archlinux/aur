@@ -4,7 +4,7 @@ pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple 
 url='http://ros.org/wiki/nodelet'
 
 pkgname='ros-kinetic-nodelet'
-pkgver='1.9.8'
+pkgver='1.9.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,8 +22,7 @@ ros_makedepends=(ros-kinetic-cmake-modules
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   util-linux
-  boost
-  tinyxml)
+  boost)
 
 ros_depends=(ros-kinetic-bondcpp
   ros-kinetic-roscpp
@@ -33,8 +32,7 @@ ros_depends=(ros-kinetic-bondcpp
   ros-kinetic-rosconsole)
 depends=(${ros_depends[@]}
   util-linux
-  boost
-  tinyxml)
+  boost)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/nodelet/${pkgver}-${_pkgver_patch}
@@ -45,7 +43,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="nodelet_core-release-release-kinetic-nodelet-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/kinetic/nodelet/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e3364796c04d51af007f85bf1b5dab5861a236a13c974d14defb43b114f702db')
+sha256sums=('935a03d21d7bbb23e9010f3c1fec784c155481c71d98a39331bf0129ad9584d2')
 
 build() {
   # Use ROS environment variables
