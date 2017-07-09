@@ -6,13 +6,13 @@ pkgname=foxitreader
 pkgver=2.4.1.0609
 _frrev_i686=r08f07f8
 _frrev_x86_64=${_frrev_i686}
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, secure and complete PDF viewer"
 arch=('i686' 'x86_64')
 url="https://www.foxitsoftware.com/products/pdf-reader/"
 license=('custom:EULA')
 makedepends=('qt-installer-framework' 'qt5-tools' 'p7zip')
-depends=('libsecret' 'fcitx-qt5' 'qt5-webkit')
+depends=('libsecret' 'qt5-webkit')
 source=("https://www.foxitsoftware.com/products/pdf-reader/eula.html"
         "${pkgname}.patch")
 source_i686=("http://cdn09.foxitsoftware.com/pub/foxit/reader/desktop/linux/2.x/${pkgver%.*.*}/en_us/FoxitReader${pkgver}_Server_x86_enu_Setup.run.tar.gz"
