@@ -18,10 +18,10 @@ _language='nl'
 # This PKGBUILD is based on https://aur.archlinux.org/packages/tor-browser/
 
 _pkgname='tor-browser'
-pkgname="${_pkgname}-${_language}"
+pkgname="${_pkgname}-${_language,,}"
 pkgver='7.0.2'
 pkgrel='1'
-pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
+pkgdesc="Tor Browser Bundle: Anonymous browsing using firefox and tor (${_language})"
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
 _idstr32='linux32'
@@ -50,7 +50,7 @@ source=("${_pkgname}.desktop"
 	"${_pkgname}.sh")
 
 md5sums=('9178c9325979377f7ec57569b15fcb61'
-	'ffd64e19a6804d8c6daedba6c293372b'
+	'd9eb0ba57d702a4d2657cac7f72d827f'
 	'494afbfa60fb4ce21840244cc3f7208c'
 	'ac6ee6d201ae0fa14250fbaf13959130')
 md5sums_i686=('SKIP'
