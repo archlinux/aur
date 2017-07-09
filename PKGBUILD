@@ -4,7 +4,7 @@
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 pkgname=cvmfs
 pkgver=2.3.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64' 'i686')
 url="http://cernvm.cern.ch/portal/filesystem"
