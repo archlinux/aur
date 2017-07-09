@@ -4,7 +4,7 @@ pkgdesc="ROS - self_test."
 url='http://www.ros.org/wiki/self_test'
 
 pkgname='ros-kinetic-self-test'
-pkgver='1.8.10'
+pkgver='1.9.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="diagnostics-release-release-kinetic-self_test-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/kinetic/self_test/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1b7893d550a338d1be9ba40397729de2842018fa4fe225d01f9fbed6f5ee17e6')
+sha256sums=('faac75bd1166a10ab4ceb39c59694f5ba31a19a45a48e15d0bd61e70e111c2d0')
 
 build() {
   # Use ROS environment variables
