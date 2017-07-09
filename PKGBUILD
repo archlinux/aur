@@ -1,9 +1,8 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: Carl George < carl at george dot computer >
 
 pkgname='pop-gtk-theme'
-pkgver=1.3.1.12
-# Upstream sometimes forgets to tag.
-_commit=66b247399ad92e58dfea6cb75b2e36a980e3698d
+pkgver='1.3.1.13'
+_tag='1.3.1r13'
 pkgrel=1
 pkgdesc='System76 Pop GTK+ Theme (GNOME, Budgie, XFCE, MATE)'
 arch=('any')
@@ -23,13 +22,11 @@ makedepends=(
     'sassc>=3.3.2'
     'parallel'
 )
-#source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-source=("$url/archive/$_commit/$pkgname-$_commit.tar.gz")
-sha256sums=('5bf501060b1b948f8ffda8ef4fddbddf31996522a116167567d51a6f08d76eea')
+source=("$url/archive/$_tag/$pkgname-$_tag.tar.gz")
+sha256sums=('50e06154571b850e2e0a319ddabe979046069100eb1b434b406a2f24fad62d40')
 
 prepare() {
-    #cd "$pkgname-$pkgver"
-    cd "$pkgname-$_commit"
+    cd "$pkgname-$_tag"
     ./autogen.sh \
         --disable-flashback \
         --disable-unity \
@@ -41,8 +38,7 @@ prepare() {
 }
 
 build() {
-    #cd "$pkgname-$pkgver"
-    cd "$pkgname-$_commit"
+    cd "$pkgname-$_tag"
     make
 }
 
@@ -59,7 +55,6 @@ package() {
         'xfdesktop>=4.12.2: XFCE desktop'
         'mate-desktop>=1.14.0: MATE desktop'
     )
-    #cd "$pkgname-$pkgver"
-    cd "$pkgname-$_commit"
+    cd "$pkgname-$_tag"
     make DESTDIR="$pkgdir" install
 }
