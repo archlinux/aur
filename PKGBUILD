@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=megasync
-pkgver=3.1.2.0
+pkgver=3.1.4.0
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. Official app"
 arch=('i686' 'x86_64')
