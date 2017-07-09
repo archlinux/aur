@@ -37,6 +37,7 @@ package() {
     install -D -m755 ./cmd/fcimage "$pkgdir/usr/bin/fcimage"
     install -D -m644 ./cmd/fcimage.1 "$pkgdir/usr/share/man/man1/fcimage.1"
     install -D -m755 ./xdib/xdib "$pkgdir/usr/bin/xdib"
+    install -D -m644 ./025_fc5025.rules "$pkgdir/etc/udev/rules.d/025_fc5025.rules"
     cd ..
     install -D -m644 ./fc5025.png "$pkgdir/usr/share/pixmaps/fc5025.png"
     install -Dm644 ./fc5025.desktop "$pkgdir/usr/share/applications/fc5025.desktop"
