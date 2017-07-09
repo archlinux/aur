@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-git
 pkgver=3.4.r86744.gfe9242204d
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('i686' 'x86_64')
 url='http://www.ffmpeg.org/'
@@ -24,7 +24,7 @@ provides=('ffmpeg' 'qt-faststart' 'libavcodec.so' 'libavdevice.so' 'libavfilter.
           'libavformat.so' 'libavresample.so' 'libavutil.so' 'libpostproc.so'
           'libswresample.so' 'libswscale.so')
 conflicts=('ffmpeg' 'ffmpeg-decklink' 'ffmpeg-libfdk_aac' 'ffmpeg-nvenc'
-           'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-git''ffmpeg-full-nvenc'
+           'ffmpeg-qsv-git' 'ffmpeg-full' 'ffmpeg-full-git' 'ffmpeg-full-nvenc'
            'ffmpeg-semifull-git')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 sha256sums=('SKIP')
