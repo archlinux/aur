@@ -1,15 +1,14 @@
 # Maintainer: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.30.0.r95.536edb6
+pkgver=0.41.1.r97.138a8b22
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
 url="http://mesonbuild.com/"
 license=('Apache')
-depends=(python ninja)
+depends=('python' 'ninja')
 makedepends=('git')
-optdepends=('python-pyqt5: GUI support')
 #checkdepends=(gcc-objc gnustep-make vala rust gcc-fortran mono boost qt5-base) #gtest or googletest
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
