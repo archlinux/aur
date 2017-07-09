@@ -1,19 +1,26 @@
 pkgbase = lib32-gst-libav
 	pkgdesc = Gstreamer libav Plugin (32-bit)
-	pkgver = 1.8.3
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = GPL
 	makedepends = python
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = valgrind-multilib
 	depends = lib32-gst-plugins-base-libs
 	depends = bzip2
 	depends = lib32-ffmpeg
 	depends = gst-libav
-	provides = lib32-gst-ffmpeg=1.8.3-1
+	provides = lib32-gst-ffmpeg=1.12.1-1
 	options = !emptydirs
-	source = http://gstreamer.freedesktop.org//src/gst-libav/gst-libav-1.8.3.tar.xz
-	sha256sums = 9006a05990089f7155ee0e848042f6bb24e52ab1d0a59ff8d1b5d7e33001a495
+	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-libav#commit=717fc7c3bde7d2f6da41ff8299fd4564d802065c
+	source = gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common
+	source = git://source.ffmpeg.org/ffmpeg
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lib32-gst-libav
 
