@@ -1,11 +1,11 @@
-# Maintainer: Austin Haedicke
+# Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
 
 # If you find errors or have suggestions feel free to file an issue
 # or submit a pull request @ https://gtbjj.com/gtbjj/pkgbuild 
 
 _pkgname=phoronix-test-suite
 pkgname=phoronix-test-suite-git
-pkgver=v6.6.1.20.g01b3030
+pkgver=v7.2.1.1.g38b36330d
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=('i686' 'x86_64')
@@ -27,5 +27,5 @@ pkgver() {
 
 package() {
     cd $srcdir/$_pkgname
-    sudo ./install-sh
+    ./install-sh $pkgdir/usr
 }
