@@ -4,17 +4,17 @@
 
 pkgname=radiotray
 pkgver=0.7.3
-pkgrel=11
+pkgrel=12
 _commit=1717a0e8c143
 pkgdesc="An online radio streaming player that runs on a Linux system tray."
 arch=(any)
 url="https://radiotray.wordpress.com/"
 license=(GPL)
-depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-python2' \
-         'pygtk' 'python2-notify' 'python2-xdg' 'python2-dbus' \
-         'python2-gobject' 'python2-lxml')
-optdepends=('gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav') 
-makedepends=(python2)
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' \
+         'python2-dbus' 'python2-gobject' 'python2-lxml' 'python2-notify' 'python2-xdg')
+optdepends=('gst-plugins-bad' 'gst-plugins-ugly'
+            'gst-libav: nonfree media decoding'
+            'libappindicator-gtk3: indicator applet support')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/carlmig/radio-tray/get/${pkgname}-${pkgver}.tar.gz"
         "encoding.patch"
