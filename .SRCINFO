@@ -1,6 +1,6 @@
 pkgbase = slip
-	pkgdesc = dmenu/rofi (optional) interface to select and upload screen(shots) to imgur with the help of slop. (Screencasts too)
-	pkgver = 1.0.19
+	pkgdesc = dmenu/rofi (optional) interface to select and upload screenshots and gifs to imgur with the help of slop. (Screencasts too).
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://github.com/Toqozz/slip
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = slip
 	optdepends = ffmpeg: taking screencasts
 	optdepends = libnotify: upload notification
 	optdepends = xsel: copy link to clipboard
-	source = https://github.com/Toqozz/slip/archive/1.0.19.tar.gz
-	sha256sums = ae23805aba618a862a2d6273cad0dad60b35287efcde1d0665e06a51cbfe4636
+	source = https://github.com/Toqozz/slip/archive/1.0.21.tar.gz
+	sha256sums = 248fa6da2a407759c633576285f4ac9b98cd29c10e72bfba6bae62bea392ba56
 
 pkgname = slip
 
