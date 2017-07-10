@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=r111721.f98b92ea6c8
+pkgver=r111932.57239e923f3
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
@@ -47,95 +47,99 @@ sha256sums=(
 pkgver() {
 	cd "${_gitname}"
 
-    # Tags are 'broken' for now, use revisions since the beginning of
-    # history:
-      printf "r%s.%s"                       \
-          "$(git rev-list --count HEAD)"    \
-          "$(git rev-parse --short HEAD)"
+  # Tags are 'broken' for now, use revisions since the beginning of
+  # history:
+  printf "r%s.%s"                  \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "${_gitname}"
+  cd "${_gitname}"
 
-    local submodules=(
-        'aspnetwebstack'
-        'Newtonsoft.Json'
-        'cecil'
-        'rx'
-        'ikvm'
-        'ikdasm'
-        'binary-reference-assemblies'
-        'nunit-lite'
-        'nuget-buildtasks'
-        'cecil-legacy'
-        'boringssl'
-        'corefx'
-        'bockbuild'
-        'linker'
-        'roslyn-binaries'
-        'corert'
-        'xunit-binaries'
-        'api-doc-tools' 'api-snapshot'
-    )
+  local submodules=(
+    'aspnetwebstack'
+    'Newtonsoft.Json'
+    'cecil'
+    'rx'
+    'ikvm'
+    'ikdasm'
+    'binary-reference-assemblies'
+    'nunit-lite'
+    'nuget-buildtasks'
+    'cecil-legacy'
+    'boringssl'
+    'corefx'
+    'bockbuild'
+    'linker'
+    'roslyn-binaries'
+    'corert'
+    'xunit-binaries'
+    'api-doc-tools'
+    'api-snapshot'
+  )
 
-    for module in "${submodules[@]}"; do
-        local submodule="external/${module}"
-        git submodule init "${submodule}"
-        git config "submodule.${submodule}.url" "${srcdir}/${module}"
-        git submodule update "${submodule}"
-    done
+  for module in "${submodules[@]}"; do
+    local submodule="external/${module}"
+    git submodule init "${submodule}"
+    git config "submodule.${submodule}.url" "${srcdir}/${module}"
+    git submodule update "${submodule}"
+  done
 }
 
 build() {
-    cd "${_gitname}"
+  cd "${_gitname}"
 
-    # Default prefix is /usr/local/
-    # Default sysconfdir is /usr/local/etc/
-    # Default sbindir is /usr/local/sbin/
-    ./autogen.sh            \
-        --prefix=/usr       \
-        --sbindir=/usr/bin  \
-        --sysconfdir=/etc   \
-        --with-mcs-docs=no
+  # Default prefix is /usr/local/
+  # Default sysconfdir is /usr/local/etc/
+  # Default sbindir is /usr/local/sbin/
+  ./autogen.sh         \
+    --prefix=/usr      \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc  \
+    --with-mcs-docs=no
 
-    if ! hash mono; then
-        # If a working installation of mono is not found, attempt to
-        # bootstrap the project:
-        make get-monolite-latest
-    fi
-	make
+  # If a working installation of mono is not found, attempt to
+  # bootstrap the project:
+  if ! hash mono; then
+    make get-monolite-latest
+  fi
+  
+  make
 
-    cd mcs/jay
+  cd mcs/jay
 
-    make
+  make
 }
 
 package() {
-    install -D -m 644               \
-        "${srcdir}/mono.binfmt.d"   \
-        "${pkgdir}/usr/lib/binfmt.d/mono.conf"
+  install -D -m 644           \
+    "${srcdir}/mono.binfmt.d" \
+    "${pkgdir}/usr/lib/binfmt.d/mono.conf"
 
-    cd "${_gitname}"
+  cd "${_gitname}"
 
-	make DESTDIR="${pkgdir}" install
-	install	-D -m 644   \
-        "LICENSE"       \
-        "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+  make DESTDIR="${pkgdir}" install
+  install	-D -m 644 \
+    "LICENSE"       \
+    "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
 
-    cd mcs/jay
+  cd mcs/jay
 
-    make                            \
-        DESTDIR="${pkgdir}"         \
-        prefix=/usr                 \
-        INSTALL=../../install-sh    \
-        install
+  make                       \
+    DESTDIR="${pkgdir}"      \
+    prefix=/usr              \
+    INSTALL=../../install-sh \
+    install
 
-	# Fix .pc file to be able to request mono on what it depends, fixes
-    # go-oo build:
-    sed -i -e               \
-        "s:/2.0/:/4.5/:g"   \
-        "${pkgdir}/usr/lib/pkgconfig/mono-nunit.pc"
-	sed -i -e                   \
-        "s:#Requires:Requires:" \
-        "${pkgdir}/usr/lib/pkgconfig/mono.pc"
+  # Fix .pc file to be able to request mono on what it depends, fixes
+  # go-oo build:
+  sed -i -e           \
+    "s:/2.0/:/4.5/:g" \
+    "${pkgdir}/usr/lib/pkgconfig/mono-nunit.pc"
+  sed -i -e                 \
+    "s:#Requires:Requires:" \
+    "${pkgdir}/usr/lib/pkgconfig/mono.pc"
 }
+
+# vim: ts=2 sw=2 et:
