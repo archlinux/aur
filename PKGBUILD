@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=rapid-photo-downloader-bzr
-pkgver=0.9.1.r954
+pkgver=0.9.1.r961
 pkgrel=1
 pkgdesc="Photo and video downloader"
 arch=('any')
@@ -34,5 +34,5 @@ build() {
 
 package() {
   cd rapid
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1
 }
