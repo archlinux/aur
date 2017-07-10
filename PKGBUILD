@@ -12,12 +12,12 @@ pkgdesc="Obsidian Icon Theme - Gray Color"
 arch=('any')
 url="https://www.gnome-look.org/p/1169579"
 license=('GPL')
-_git_sha=3c1b132b8a0c7de393a67280b7d2b733dfb2e00c
+_git_sha=bc9d5dc3ca1edd411ae01a7aebd0b00483861de1
 source=(
 	"https://github.com/madmaxms/iconpack-obsidian/archive/$_git_sha.tar.gz"
 )
 sha256sums=(
-	'133d578a58c2ed9436b855efd0ee0a3e5ecf3e5b902e7cc4ccfb22962041baff'
+	'36e15a54c4def904d2dcbf87c7dffefed79dc149c23f031e4c24fad457862030'
 )
 
 package() {
