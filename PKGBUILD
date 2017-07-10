@@ -1,6 +1,6 @@
 # Maintainer: Radu Birzu <radu@webative.net>
 pkgname=andrei-desktop
-pkgver=r190.bd6fc2a
+pkgver=r198.0a5617f
 pkgrel=1
 pkgdesc="An openbox based desktop environment focused on productivity and speed"
 arch=('any')
