@@ -8,11 +8,19 @@ pkgbase = dbus-broker
 	license = Apache
 	makedepends = git
 	makedepends = meson
-	depends = glibc
+	makedepends = systemd
 	depends = libsystemd
 	depends = expat
 	depends = glib2
-	source = dbus-broker-1rc1-git::git+https://github.com/bus1/dbus-broker#tag=v1rc1
+	source = git+https://github.com/bus1/dbus-broker#commit=c167477902e6a6e32aff5e818b21783006699834
+	source = git+https://github.com/c-util/c-rbtree
+	source = git+https://github.com/c-util/c-sundry
+	source = git+https://github.com/c-util/c-list
+	source = git+https://github.com/c-util/c-dvar
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dbus-broker

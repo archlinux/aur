@@ -1,5 +1,10 @@
 *.gz
 *.xz
-*-git/
+
+c-dvar/
+c-list/
+c-rbtree/
+c-sundry/
+dbus-broker/
 pkg/
 src/

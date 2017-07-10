@@ -1,30 +1,56 @@
 # Maintainer: David Herrmann <dh.herrmann@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
-_pkgorg=bus1
-_pkgname=dbus-broker
-pkgdesc='Linux D-Bus Message Broker'
+pkgname=dbus-broker
 pkgver=1rc1
 pkgrel=1
 
-pkgname=$_pkgname
+pkgdesc='Linux D-Bus Message Broker'
 arch=('i686' 'x86_64')
-url="https://github.com/$_pkgorg/$_pkgname"
+url='https://github.com/bus1/dbus-broker'
 license=('Apache')
-depends=('glibc' 'libsystemd' 'expat' 'glib2')
-makedepends=('git' 'meson')
-source=("$pkgname-$pkgver-git::git+https://github.com/$_pkgorg/$_pkgname#tag=v$pkgver")
-sha256sums=('SKIP')
+depends=('libsystemd' 'expat' 'glib2')
+makedepends=('git' 'meson' 'systemd')
+
+_commit=c167477902e6a6e32aff5e818b21783006699834 # v1rc1
+source=("git+https://github.com/bus1/dbus-broker#commit=$_commit"
+        "git+https://github.com/c-util/c-rbtree"
+        "git+https://github.com/c-util/c-sundry"
+        "git+https://github.com/c-util/c-list"
+        "git+https://github.com/c-util/c-dvar")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+prepare() {
+  rm -Rf build
+  mkdir build
+  cd $pkgname
+
+  git submodule init
+  git config --local submodule.subprojects/c-rbtree.url "$srcdir/c-rbtree"
+  git config --local submodule.subprojects/c-sundry.url "$srcdir/c-sundry"
+  git config --local submodule.subprojects/c-list.url   "$srcdir/c-list"
+  git config --local submodule.subprojects/c-dvar.url   "$srcdir/c-dvar"
+  git submodule update
+}
 
 build() {
-  rm -Rf "build"
-  meson --prefix=/usr --buildtype=release "$pkgname-$pkgver-git" "build"
-  ninja -v -C "build"
+  cd build
+  meson --prefix=/usr --buildtype=release ../$pkgname
+  ninja
 }
 
 check() {
-  ninja -v -C "build" test
+  cd build
+  mesontest
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -v -C "build" install
+  cd build
+  DESTDIR="$pkgdir" ninja install
 }
+
+# vim:set sw=2 et:
