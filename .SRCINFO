@@ -1,7 +1,7 @@
 pkgbase = gcc63
 	pkgdesc = The GNU Compiler for Java
 	pkgver = 6.3.1
-	pkgrel = 1
+	pkgrel = 4
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = gcc63
 	makedepends = gcc-go
 	makedepends = gcc-fortran
 	makedepends = git
+	makedepends = gcc-gcj-ecj
 	depends = gtk2
 	depends = libxtst
 	depends = alsa-lib

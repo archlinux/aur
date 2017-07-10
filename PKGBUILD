@@ -9,7 +9,7 @@ pkgbase=gcc63
 _ver=6.3
 pkgname=('gcc63' 'gcc63-fortran' 'gcc63-objc' 'gcc63-ada' 'gcc63-go' 'gcc63-gcj')
 pkgver=6.3.1
-pkgrel=1
+pkgrel=4
 _islver=0.17
 _cloogver=0.18.4
 _commit=4ca53f06ff7d346ef8021a23108f23a5406a0417
@@ -18,7 +18,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=('gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath')
-makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'libart-lgpl' 'gcc-ada' 'gcc-objc' 'gcc-go' 'gcc-fortran' 'git')
+makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'libart-lgpl' 'gcc-ada' 'gcc-objc' 'gcc-go' 'gcc-fortran' 'git' 'gcc-gcj-ecj')
 optdepends=('python2: for running /usr/bin/aot-compile'
   'java-environment: for runnig some jars')
 options=('!libtool' '!makeflags')
@@ -34,7 +34,7 @@ if [ "${CARCH}" = "x86_64" ]; then
 elif [ "${CARCH}" = "i686" ]; then
     export CHOST=i686-pc-linux-gnu
 fi
-export _libdir="usr/lib/gcc/$CHOST/$pkgver"
+_libdir="usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
   cd "$srcdir"/gcc-${_commit}/
@@ -330,17 +330,17 @@ package_gcc63-gcj() {
   ln -sf libgcj-tools-${pkgver}.jar ${pkgdir}/usr/share/java/libgcj-tools-${pkgver%.?}.jar
   ln -sf libgcj-tools-${pkgver}.jar ${pkgdir}/usr/share/java/libgcj-tools.jar
   
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/libgcc_eh.a
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbeginS.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbeginT.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtendS.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtfastmath.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtprec32.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtprec64.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtprec80.o
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/include/unwind.h
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/libgcc.a
-  rm ${pkgdir}/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/libgcov.a
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/libgcc_eh.a
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtbegin.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtbeginS.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtbeginT.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtend.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtendS.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtfastmath.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtprec32.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtprec64.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/crtprec80.o
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/include/unwind.h
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/libgcc.a
+  rm ${pkgdir}/usr/lib/gcc/${CHOST}/6.3.1/libgcov.a
 }
