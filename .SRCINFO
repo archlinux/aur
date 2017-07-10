@@ -1,14 +1,12 @@
 pkgbase = gnucash-gtk3-git
 	pkgdesc = A personal and small-business financial-accounting application (GTK3 development version)
-	pkgver = 2.6.9.r1784.g6fbfb8222
+	pkgver = 2.6.17b.r1411.g0bb51ffa9
 	pkgrel = 1
 	url = http://www.gnucash.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
-	makedepends = gcc
-	makedepends = pkgconfig
 	makedepends = git
 	makedepends = boost
 	makedepends = swig
@@ -35,7 +33,7 @@ pkgbase = gnucash-gtk3-git
 	conflicts = gnucash
 	options = !makeflags
 	options = !emptydirs
-	source = gnucash-gtk3-git::git+https://github.com/Bob-IT/gnucash#branch=gtk3
+	source = git+https://github.com/Gnucash/gnucash
 	sha1sums = SKIP
 
 pkgname = gnucash-gtk3-git

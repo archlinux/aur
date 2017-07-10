@@ -4,7 +4,7 @@
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
 pkgname=gnucash-gtk3-git
-pkgver=2.6.9.r1784.g6fbfb8222
+pkgver=2.6.17b.r1411.g0bb51ffa9
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application (GTK3 development version)"
 arch=('i686' 'x86_64')
@@ -13,25 +13,25 @@ license=("GPL")
 conflicts=('gnucash')
 provides=('gnucash')
 depends=('guile' 'slib' 'goffice' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkit2gtk' 'libgnome-keyring' 'dconf' 'boost-libs')
-makedepends=('intltool' 'gcc' 'pkgconfig' 'git' 'boost' 'swig' 'gmock' 'gtest' 'gconf')
+makedepends=('intltool' 'git' 'boost' 'swig' 'gmock' 'gtest' 'gconf')
 optdepends=('evince: for print preview'
 	    'yelp: help browser'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
-source=("$pkgname::git+https://github.com/Bob-IT/gnucash#branch=gtk3")
+source=("git+https://github.com/Gnucash/gnucash")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/gnucash"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/gnucash"
 
-  # the line in boost includes is actually correct.
-  # the check fails for a different reason
+  # the line in the boost includes is actually correct.
+  # the check fails for a different reason (-D_FORTIFY_SOURCE without -O)
   sed -i '203s#-Werror ##' configure.ac
 
   autoreconf -fi
@@ -44,13 +44,13 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/gnucash"
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
   cd src/doc/design
   make DESTDIR="${pkgdir}" install-info
 
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" --domain gnucash "${pkgdir}"/etc/gconf/schemas/*.schemas
+  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/gnucash.schemas" --domain gnucash "${pkgdir}"/etc/gconf/schemas/*.schemas
   rm -f "${pkgdir}"/etc/gconf/schemas/*.schemas
 
   # Delete the gnucash-valgrind executable because the source files
