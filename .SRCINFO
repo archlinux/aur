@@ -1,13 +1,13 @@
 pkgbase = transfersh
 	pkgdesc = unofficial command-line client for https://github.com/dutchcoders/transfer.sh (https://transfer.sh) Share a file easy with >transfersh filepath<
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/AlpixTM/transfersh
 	arch = any
 	license = AGPL
 	depends = python
 	depends = python-requests
-	source = https://github.com/AlpixTM/transfersh/archive/v1.1.tar.gz
+	source = https://github.com/AlpixTM/transfersh/archive/v1.2.tar.gz
 	md5sums = SKIP
 
 pkgname = transfersh
