@@ -21,32 +21,34 @@ source=('git+https://github.com/cristicbz/rust-doom.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_gitname}"
+  cd "${_gitname}"
 
-	printf "r%s.%s"                     \
-        "$(git rev-list --count HEAD)"  \
-        "$(git rev-parse --short HEAD)"
+  printf "r%s.%s"                  \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${_gitname}"
+  cd "${_gitname}"
 
-	cargo build --release
+  cargo build --release
 }
 
 check() {
-    cd "${_gitname}"
+  cd "${_gitname}"
 
-    cargo test
+  cargo test
 }
 
 package() {
-	cd "${_gitname}"
+  cd "${_gitname}"
 
-    install -D -m 755                   \
-        "target/release/${_execname}"   \
-        "${pkgdir}/usr/bin/${_gitname}"
-    install -D -m 644   \
-        LICENSE         \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 755               \
+    "target/release/${_execname}" \
+    "${pkgdir}/usr/bin/${_gitname}"
+  install -D -m 644 \
+    LICENSE         \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
