@@ -1,7 +1,7 @@
 pkgbase = nxfilter
 	pkgdesc = NxFilter DNS filter
-	pkgver = 4.1.3.p1
-	pkgrel = 3
+	pkgver = 4.1.4.p1
+	pkgrel = 1
 	url = http://nxfilter.org/p3/
 	install = nxfilter.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nxfilter
 	depends = unzip
 	provides = nxfilter
 	source = https://github.com/Erwinovitch/NxFilter/archive/master.zip
-	md5sums = 56c85c2718a85607fced582900e7052f
+	md5sums = 2369562236cd622fbf9ca2e39726ecd7
 
 pkgname = nxfilter
 
