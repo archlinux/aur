@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=3.7.2
+Encoding=UTF-8
+Name=XMind
+Comment=Launch XMind 8 Update 2
+Icon=XMind
+Exec=XMind
+Terminal=false
+StartupNotify=true
+Categories=Office;
+MimeType=application/xmind;x-scheme-handler/xmind;
