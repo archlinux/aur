@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=abcl-svn
-pkgver=r15090
+pkgver=r15094
 pkgrel=1
 pkgdesc="Full implementation of the Common Lisp language in the JVM"
 arch=('any')
