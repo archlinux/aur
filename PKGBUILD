@@ -1,29 +1,25 @@
 # Maintainer: Morten Linderd <morten@linderud.pw>
-
 pkgname=bmusb
-pkgver=0.5.2
-pkgrel=2
-
-pkgdesc="bmusb is a free driver for BlackMagic's Intensity Shuttle andUltraStudio SDI USB3 cards"
-arch=(x86_64)
+_commit=32043c95d3b9f8cb97d6d28b9996fa1bec2ce11b
+pkgver=0.7.0
+pkgrel=1
+pkgdesc="a free driver for BlackMagic's Intensity Shuttle andUltraStudio SDI USB3 cards"
+arch=('x86_64')
 url="http://git.sesse.net/bmusb"
-license=('GPLv2')
-
+license=('GPL2')
 depends=('libusb')
 makedepends=('gcc')
-optdepends=()
 provides=('bmusb')
-
-source=("$pkgname.tar.gz::https://git.sesse.net/?p=bmusb;a=snapshot;h=1066d2975e1c824bef6b9c9555c7d9f4f1a890a9;sf=tgz")
-sha256sums=('a10c1373aac3441cf70b5f7c103cba2edcb0303ca6277d35f23afdd1aeec4bdc')
+source=("$pkgname.tar.gz::https://git.sesse.net/?p=bmusb;a=snapshot;h=${_commit};sf=tgz")
+sha256sums=('85360f4a8ace6f7ee836c4062843bd873c3a25cd8266dc3fda8afe110bbddc08')
 
 build() {
-  cd "$pkgname"-1066d29
+  cd "$pkgname"-"${_commit:0:7}"
   make
 }
 
 package() {
-  cd "$pkgname"-1066d29
+  cd "$pkgname"-"${_commit:0:7}"
   make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
 
