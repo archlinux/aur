@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-uasf-git
-pkgver=v0.14.2.uasfsegwit0.3.r6.g5c1fdcbc1
+pkgver=v0.14.2.uasfsegwit1.0.r0.g2e7690fc8
 pkgrel=1
 pkgdesc='EXPERIMENTAL! Signal support for BIP148, a User Activated Soft Fork (UASF) activating segwit'
 arch=('i686' 'x86_64')
