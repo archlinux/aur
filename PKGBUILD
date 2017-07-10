@@ -7,16 +7,16 @@ pkgrel=1
 pkgdesc='Persian dictionaries for hunspell'
 url='http://ftp.gnu.org/gnu/aspell/dict/0index.html'
 arch=('any')
-license=('LGPL2')
+license=('LGPL2' 'GPL2')
 depends=()
 makedepends=('hunspell' 'aspell')
-optdepends=('hunspell: the spell checking libraries and apps')
-provides=('${pkgname}')
-source=('http://ftp.gnu.org/gnu/aspell/dict/fa/aspell6-fa-${pkgver}-0.tar.bz2')
+optdepends=('hunspell:  the spell checking libraries and apps')
+provides=("${pkgname}")
+source=("http://ftp.gnu.org/gnu/aspell/dict/fa/aspell6-fa-${pkgver}-0.tar.bz2")
 sha256sums=('482d26ea879a8ea02d9373952205f67e07c85a7550841b13b5079bb2f9f2e15b')
 
 prepare() {
-    cd '${srcdir}/aspell6-fa-${pkgver}-0'
+    cd "${srcdir}/aspell6-fa-${pkgver}-0"
     
     msg 'converting aspell dictionaries...'
     LANG=fa_IR.utf8 preunzip -d *.cwl
@@ -25,7 +25,7 @@ prepare() {
 }
 
     package() {
-    cd '${srcdir}/aspell6-fa-${pkgver}-0'
+    cd "${srcdir}/aspell6-fa-${pkgver}-0"
     
     install -dm755 $pkgdir/usr/share/hunspell
     install -m644 fa_IR.dic fa_IR.aff $pkgdir/usr/share/hunspell
