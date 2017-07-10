@@ -2,7 +2,7 @@
 
 pkgname=cpp-hocon
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ port of the Typesafe Config library"
 arch=('i686' 'x86_64')
 url="https://github.com/puppetlabs/cpp-hocon"
