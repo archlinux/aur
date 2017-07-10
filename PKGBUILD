@@ -12,7 +12,7 @@ license=('Apache')
 depends=('libsystemd' 'expat' 'glib2')
 makedepends=('git' 'meson' 'systemd')
 
-_commit=c167477902e6a6e32aff5e818b21783006699834 # v1rc1
+_commit=1a36b8727f08cd8400a07026364a251a40a2a256 # v1rc2
 source=("git+https://github.com/bus1/dbus-broker#commit=$_commit"
         "git+https://github.com/c-util/c-rbtree"
         "git+https://github.com/c-util/c-sundry"
