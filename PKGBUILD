@@ -1,9 +1,9 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.14.0
-pkgrel=2
-_cqzbuildid=20170625170852
+pkgver=1.14.1
+pkgrel=1
+_cqzbuildid=20170706154045
 pkgdesc="Firefox-based privacy aware web browser"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
@@ -15,7 +15,7 @@ makedepends=(unzip zip diffutils python2 yasm mesa gconf inetutils xorg-server-x
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         "fix-wifi-scanner.diff")
-sha256sums=('7ee4ef2ce237a38b29ddae7c44201b8ba26f06a08e62376fe30b10d01848a317'
+sha256sums=('f56d5759d2f2d589269903350d7acc37899007f5ed8568186f74e9a9e403da60'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 options=(!emptydirs !makeflags !strip)
 
@@ -69,6 +69,9 @@ END
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
+
+  # Quickfix only for 1.14.1
+  echo "$pkgver" > mozilla-release/browser/config/version_display.txt
 
   # Rewrite to avoid multiple -pipe
   march=$(gcc -Q --help=target | grep march | sed -nr 's/^.*\s+([^\s]+)$/\1/p')
