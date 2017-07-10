@@ -1,6 +1,6 @@
 pkgbase = evolus-pencil-bin
 	pkgdesc = An open-source GUI prototyping tool - Evolus release
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = http://pencil.evolus.vn/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = evolus-pencil-bin
 	provides = evolus-pencil
 	conflicts = evolus-pencil
 	conflicts = pencil
-	source = http://pencil.evolus.vn/dl/V3.0.3/Pencil_3.0.3_amd64.deb
+	source = http://pencil.evolus.vn/dl/V3.0.4/Pencil_3.0.4_amd64.deb
 	source = pencil.desktop
 	source = evolus-pencil-mime.xml
-	sha1sums = 26c846759639514dfe2bf7637e13a91b09de5ae2
+	sha1sums = 13baebb94d552789338eaa6cec260d0d39afa059
 	sha1sums = fd1a937f77388e46917fa566000acd89c5d181c3
 	sha1sums = 975e4818189aa041bfe4df6e20c69d82cd130298
 
