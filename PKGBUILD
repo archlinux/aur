@@ -13,7 +13,7 @@ provides=('tgui')
 conflicts=('tgui')
 replaces=()
 
-source=("git+https://github.com/texus/TGUI.git")
+source=("git+https://github.com/texus/TGUI.git#branch=0.7")
 sha256sums=('SKIP')
 
 pkgver() {
