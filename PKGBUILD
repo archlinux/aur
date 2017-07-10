@@ -11,27 +11,36 @@ depends=('mesa' 'openal')
 makedepends=('cmake')
 provides=('cen64')
 conflicts=('cen64')
-source=('https://github.com/tj90241/cen64/archive/v0.3.tar.gz')
-sha256sums=('0e6330a51b606805ff4224d88f17940936cb5dc4c27a64e11e2fcfe240e496b5')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/tj90241/${pkgname}/archive/v${pkgver}.tar.gz"
+)
+sha256sums=(
+  '0e6330a51b606805ff4224d88f17940936cb5dc4c27a64e11e2fcfe240e496b5'
+)
 
 prepare() {
-    mkdir -p build
+  cd "${pkgname}-${pkgver}"
+
+  mkdir -p build
 }
 
 build() {
-    cd "${pkgname}-${pkgver}/build"
+  cd "${pkgname}-${pkgver}/build"
 
-    cmake ..
-    make cen64
+  cmake ..
+  make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-    install -D -m 755   \
-        build/cen64     \
-        "${pkgdir}/usr/bin/cen64"
-    install -D -m 644   \
-        LICENSE         \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 755 \
+    build/cen64     \
+    "${pkgdir}/usr/bin/cen64"
+
+  install -D -m 644 \
+    LICENSE         \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
