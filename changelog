@@ -1,3 +1,6 @@
+2017-07-10 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.3.2.0-2:
+    package: solved a bug in systemd-sysusers by removing an empty line
 2017-06-23 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.3.2.0-1:
     Added !stats command.
