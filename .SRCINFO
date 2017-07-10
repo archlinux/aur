@@ -1,0 +1,16 @@
+pkgbase = gamebox-gtk
+	pkgdesc = Gamebox is a collection of minigames written in C using Gtk+-3.0
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JannikHv/gamebox-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	depends = gtk3
+	source = gamebox-gtk::git://github.com/JannikHv/gamebox-gtk.git
+	md5sums = SKIP
+
+pkgname = gamebox-gtk
+
