@@ -15,7 +15,7 @@ package() {
         cd "${srcdir}/${pkgname}"
         make
         install -Dm 0755 gamebox-gtk "${pkgdir}/usr/bin/gamebox-gtk"
-        install -Dm 0644 gamebox-gtk.desktop "${pkgdir}/usr/share/applications/gamebox-gtk.desktop"
-        install -Dm 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        install -Dm 0644 gamebox.desktop "${pkgdir}/usr/share/applications/gamebox.desktop"
+        install -Dm 0644 LICENSE "${pkgdir}/usr/share/licenses/gamebox/LICENSE"
         install -Dm 0644 images/mill.png "${pkgdir}/usr/share/gamebox/images/mill.png"
 }
