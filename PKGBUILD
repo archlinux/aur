@@ -1,20 +1,27 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=loadlibrary-git
-pkgver=r15.ca6dce8
+pkgver=r30.a0bc678
 pkgrel=1
 pkgdesc="Porting Windows Dynamic Link Libraries to Linux "
 url="https://github.com/taviso/loadlibrary"
 arch=('x86_64')
 license=('GPL2')
 depends=("lib32-glibc")
+makedepends=("cabextract")
+noextract=("mpam-fe.exe")
 source=("loadlibrary::git+https://github.com/taviso/loadlibrary.git"
         "mpam-fe.exe::http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86")
 md5sums=('SKIP'
-         'b385d0d1f931f269988fef14dc9fa27a')
+         '886e3e4ee014db2d8938a4b8529dfa63')
 
 pkgver(){
     cd loadlibrary
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+    cd "$srcdir"
+    cabextract mpam-fe.exe
 }
 
 build(){
