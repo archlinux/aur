@@ -22,7 +22,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 sha256sums=('a4dbdc577450e89c32aaca155f9b7d4864d8fb3b0ed524bb8fe48e919da39e99'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'dd0b43ff2ae2be601823ca0001d9004ad728836f7da6c02780b11cdf3ee39e83')
+            'd2271b1dfae30f38d70549e1d142da9d03eade0fd4620bbc4bd757b9c7a27422')
 
 _kernelname=${pkgbase#linux}
 
