@@ -1,9 +1,9 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=ttnctl-bin
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line tool for The Things Network (TTN)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm')
 url="https://www.thethingsnetwork.org/docs/network/cli/quick-start.html"
 license=('MIT')
 depends=()
