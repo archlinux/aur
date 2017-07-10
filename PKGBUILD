@@ -18,7 +18,7 @@ sha512sums=(
 )
 
 package() {
-  install -Dm644 "${srcdir}/unifont-${pkgver}.hex" \
-    "${pkgdir}/usr/share/unifont/unifont.hex"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/unifont-${pkgver}.hex" \
+		"${pkgdir}/usr/share/unifont/unifont.hex"
+	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
