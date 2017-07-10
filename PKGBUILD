@@ -15,24 +15,26 @@ source=('git+https://evilpiepirate.org/git/bcachefs-tools.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+  cd "${pkgname}"
 
-    printf "r%s.%s"                     \
-        "$(git rev-list --count HEAD)"  \
-        "$(git rev-parse --short HEAD)"
+  printf "r%s.%s"                   \
+    "$(git rev-list --count HEAD)"  \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${pkgname}"
+  cd "${pkgname}"
 
-    make
+  make
 }
 
 package() {
-    cd "${pkgname}"
+  cd "${pkgname}"
 
-    make                        \
-        DESTDIR="${pkgdir}/usr" \
-        ROOT_SBINDIR=/bin       \
-        install
+  make                      \
+    DESTDIR="${pkgdir}/usr" \
+    ROOT_SBINDIR=/bin       \
+    install
 }
+
+# vim: ts=2 sw=2 et:
