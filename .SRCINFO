@@ -1,0 +1,18 @@
+pkgbase = perl-test-more-git
+	pkgdesc = Test2, Test::More, Test::Simple and Test::Builder Perl modules for writing tests
+	pkgver = r2096.816b2b12
+	pkgrel = 1
+	url = https://github.com/Test-More/test-more/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = perl
+	provides = perl-test-more
+	conflicts = perl-test-more
+	options = !emptydirs
+	options = purge
+	source = perl-test-more-git::git://github.com/Test-More/test-more.git
+	md5sums = SKIP
+
+pkgname = perl-test-more-git
+
