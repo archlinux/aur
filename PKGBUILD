@@ -7,7 +7,7 @@ pkgdesc="A vector graphics library - build with minimal dependencies"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
 url="http://cairographics.org/"
-depends=('libpng' 'sh' 'fontconfig' 'pixman>=0.30.0' 'glib2' 'lzo2' 'gcc-libs')
+depends=('libpng' 'sh' 'fontconfig' 'pixman>=0.30.0' 'glib2' 'lzo' 'gcc-libs')
 provides=('cairo-xcb' 'cairo')
 replaces=('cairo-xcb' 'cairo')
 source=(http://cairographics.org/releases/${pkgname:0:5}-$pkgver.tar.xz)
