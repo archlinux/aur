@@ -4,7 +4,7 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Free and open traffic simulation suite which allows modelling of intermodal traffic systems including road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ source=("${pkgbase}-src-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${p
         "${pkgbase}.desktop"
         "${pkgbase}.sh")
 
-sha256sums=('50b627869f829343cc874879317d238615e68b91083f7c401aac198235a690d1'
-            '9be7669e26a15f9da78fa4386ad4e45b68f1664e2a87c92f1f0296ce1ceb2a93'
+sha256sums=('2f0825507d756979658061847f47c5d91ec2e5c07e7ebd8839a31ab08ecde742'
+            'c0b6b23435233c6dfa0c1c7cb5e536cb67d6e41fa504d52c54365ebeb56d7789'
             '0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
             '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f')
 
