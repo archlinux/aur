@@ -1,6 +1,6 @@
 pkgbase = ags-git
 	pkgdesc = Adventure Game Studio, a development tool that is primarily used to create graphical adventure games
-	pkgver = 3.4.1.4.r40.g8e66a52d
+	pkgver = 3.4.1.6.r56.g234c69ef
 	pkgrel = 1
 	url = http://www.adventuregamestudio.co.uk/
 	arch = i686
