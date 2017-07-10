@@ -82,8 +82,9 @@ build() {
       fi
   fi
 
-  # Skip some warnings that appear if Trilinos uses OpenMP pragmas in headers:
-  extra_warning_flags=" -Wno-unknown-pragmas"
+  # Skip some warnings that appear if Trilinos uses OpenMP pragmas in headers
+  # and also the new GCC7 warnings:
+  extra_warning_flags=" -Wno-unknown-pragmas -Wno-implicit-fallthrough"
 
   # the deal.II GCC flags are already well-chosen for speed (and O3 is known to
   # be slightly slower than O2), so do not use flags in /etc/makepkg.conf by
