@@ -12,18 +12,24 @@ license=('unknown')
 groups=('cs50')
 conflicts=('libcs50')
 provides=('libcs50')
-source=("https://github.com/cs50/libcs50/archive/v${pkgver}.tar.gz")
-sha256sums=('3559225ddc6b4619572c3672e4ac68cf4c5757917a7b92f20e1c48b1b80565e5')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/cs50/${pkgname}/archive/v${pkgver}.tar.gz"
+)
+sha256sums=(
+  '3559225ddc6b4619572c3672e4ac68cf4c5757917a7b92f20e1c48b1b80565e5'
+)
 
 build() {
-    cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-	make build
+  make build
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-    install -d -m 755 "${pkgdir}/usr/"
-    cp -rp build/* "${pkgdir}/usr/"
+  install -d -m 755 "${pkgdir}/usr/"
+  cp -rp build/* "${pkgdir}/usr/"
 }
+
+# vim: ts=2 sw=2 et:
