@@ -28,7 +28,9 @@ pkgbase = deal-ii
 	optdepends = suitesparse: A collection of sparse matrix libraries
 	optdepends = zlib: Compression library implementing the deflate compression method found in gzip and PKZIP
 	source = https://github.com/dealii/dealii/releases/download/v8.5.0/dealii-8.5.0.tar.gz
+	source = fix-compilation-with-BOOST-1.64.patch
 	sha1sums = 75076beddfd4a1b590cba9fbc78eea901c7f3ddb
+	sha1sums = 183c71c04acf715c1e2ceceb685c34d497db075c
 
 pkgname = deal-ii
 

@@ -32,12 +32,21 @@ optdepends=(
       )
 makedepends=('cmake')
 install=deal-ii.install
-source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('75076beddfd4a1b590cba9fbc78eea901c7f3ddb')
+source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz
+        fix-compilation-with-BOOST-1.64.patch)
+sha1sums=('75076beddfd4a1b590cba9fbc78eea901c7f3ddb'
+          '183c71c04acf715c1e2ceceb685c34d497db075c')
 
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 installation_prefix=/usr
+
+prepare() {
+    cd "${srcdir}/${_realname}-${pkgver}/"
+
+    pwd
+    patch -Np1 -i ../../fix-compilation-with-BOOST-1.64.patch
+}
 
 build() {
   # Since deal.II relies on a relatively large number of packages that are
@@ -98,7 +107,7 @@ build() {
 
   # deal.II needs about 2 GB/compilation process so use fewer jobs if your
   # machine does not have the memory to support the maximum number.
-  make $MAKEFLAGS
+  make -j10 $MAKEFLAGS
 
   cd "${srcdir}/build"
   echo "export DEAL_II_DIR=$installation_prefix" > ./deal-ii.sh

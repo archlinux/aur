@@ -1,0 +1,99 @@
+
+---
+ include/deal.II/base/aligned_vector.h  | 10 +++++++++-
+ include/deal.II/lac/la_vector.h        | 10 +++++++++-
+ include/deal.II/lac/sparsity_pattern.h | 11 ++++++++++-
+ include/deal.II/lac/vector.h           | 10 +++++++++-
+ 4 files changed, 37 insertions(+), 4 deletions(-)
+
+diff --git a/include/deal.II/base/aligned_vector.h b/include/deal.II/base/aligned_vector.h
+index b8c52c0699..9ba473de83 100644
+--- a/include/deal.II/base/aligned_vector.h
++++ b/include/deal.II/base/aligned_vector.h
+@@ -23,7 +23,15 @@
+ #include <deal.II/base/memory_consumption.h>
+ #include <deal.II/base/utilities.h>
+ #include <deal.II/base/parallel.h>
+-#include <boost/serialization/array.hpp>
++
++// boost::serialization::make_array used to be in array.hpp, but was
++// moved to a different file in BOOST 1.64
++#include <boost/version.hpp>
++#if BOOST_VERSION >= 106400
++#  include <boost/serialization/array_wrapper.hpp>
++#else
++#  include <boost/serialization/array.hpp>
++#endif
+ #include <boost/serialization/split_member.hpp>
+
+ #include <cstring>
+diff --git a/include/deal.II/lac/la_vector.h b/include/deal.II/lac/la_vector.h
+index 18dbcf5d02..10927eb0a5 100644
+--- a/include/deal.II/lac/la_vector.h
++++ b/include/deal.II/lac/la_vector.h
+@@ -24,7 +24,15 @@
+ #include <deal.II/lac/read_write_vector.h>
+ #include <deal.II/lac/vector_space_vector.h>
+ #include <deal.II/lac/vector_type_traits.h>
+-#include <boost/serialization/array.hpp>
++
++// boost::serialization::make_array used to be in array.hpp, but was
++// moved to a different file in BOOST 1.64
++#include <boost/version.hpp>
++#if BOOST_VERSION >= 106400
++#  include <boost/serialization/array_wrapper.hpp>
++#else
++#  include <boost/serialization/array.hpp>
++#endif
+ #include <boost/serialization/split_member.hpp>
+
+ #include <cstdio>
+diff --git a/include/deal.II/lac/sparsity_pattern.h b/include/deal.II/lac/sparsity_pattern.h
+index 2db0dd3009..8a77764ed2 100644
+--- a/include/deal.II/lac/sparsity_pattern.h
++++ b/include/deal.II/lac/sparsity_pattern.h
+@@ -20,11 +20,20 @@
+ #include <deal.II/base/config.h>
+ #include <deal.II/base/exceptions.h>
+ #include <deal.II/base/subscriptor.h>
+-#include <boost/serialization/array.hpp>
++
++// boost::serialization::make_array used to be in array.hpp, but was
++// moved to a different file in BOOST 1.64
++#include <boost/version.hpp>
++#if BOOST_VERSION >= 106400
++#  include <boost/serialization/array_wrapper.hpp>
++#else
++#  include <boost/serialization/array.hpp>
++#endif
+ #include <boost/serialization/split_member.hpp>
+
+ #include <vector>
+ #include <iostream>
++#include <algorithm>
+
+ DEAL_II_NAMESPACE_OPEN
+
+diff --git a/include/deal.II/lac/vector.h b/include/deal.II/lac/vector.h
+index 4c63d2aa68..79e56bb7a2 100644
+--- a/include/deal.II/lac/vector.h
++++ b/include/deal.II/lac/vector.h
+@@ -23,7 +23,15 @@
+ #include <deal.II/base/subscriptor.h>
+ #include <deal.II/base/index_set.h>
+ #include <deal.II/lac/vector_type_traits.h>
+-#include <boost/serialization/array.hpp>
++
++// boost::serialization::make_array used to be in array.hpp, but was
++// moved to a different file in BOOST 1.64
++#include <boost/version.hpp>
++#if BOOST_VERSION >= 106400
++#  include <boost/serialization/array_wrapper.hpp>
++#else
++#  include <boost/serialization/array.hpp>
++#endif
+ #include <boost/serialization/split_member.hpp>
+
+ #include <cstdio>
+--
+2.13.1
