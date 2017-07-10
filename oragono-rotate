@@ -5,4 +5,7 @@
     missingok
     notifempty
     rotate 12
+    postrotate
+        /bin/systemctl restart oragono.service
+    endscript
 }
