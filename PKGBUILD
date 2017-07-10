@@ -1,9 +1,8 @@
 # Maintainer    : Dan Beste <dan.ray.beste@gmail.com>
-# Contributor   : Jestine Paul <jestine dot paul at gmail dot com>
 
 pkgname='libcs50-git'
 _gitname='libcs50'
-pkgver=7.1.2.r3.g8a353ba
+pkgver=7.1.2.r64.g8157c87
 pkgrel=1
 pkgdesc="CS50 Library for C"
 arch=('x86_64' 'i686')
@@ -17,21 +16,23 @@ source=('git+https://github.com/cs50/libcs50.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${_gitname}"
+  cd "${_gitname}"
 
-    git describe --tags                     \
-        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  \
-        | sed 's/v//'
+  git describe --tags                  \
+    | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+    | sed 's/v//'
 }
 
 build() {
-    cd "${_gitname}"
+  cd "${_gitname}"
 
-    make build
+  make build
 }
 
 package() {
-    cd "${_gitname}"
+  cd "${_gitname}"
 
-    cp -rp build/* "${pkgdir}"
+  cp -rp build/* "${pkgdir}"
 }
+
+# vim: ts=2 sw=2 et:
