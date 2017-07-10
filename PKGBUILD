@@ -6,7 +6,7 @@
 pkgname=libqglviewer
 _pkgname=libQGLViewer
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library based on Qt that eases the creation of OpenGL 3D viewers"
 url="http://www.libqglviewer.com/"
 depends=('qt5-base' 'glu' 'mesa' 'qt5-tools')
@@ -15,8 +15,7 @@ arch=('i686' 'x86_64')
 license=('GPL2' 'GPL3' 'custom')
 source=("http://www.libqglviewer.com/src/${_pkgname}-${pkgver}.tar.gz")
 
-md5sums=('ae006ca4cd1e894bb8719fc213f43e71')
-
+md5sums=('e6f1c37d2dc8343b4c74c88d65eb77c6')
 
 options=(!makeflags)
 
