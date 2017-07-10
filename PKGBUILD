@@ -37,7 +37,7 @@ package() {
   # Upstream systemd unit
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/contrib/systemd/etcd.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
   # Adding 'EnvironmentFile=-/etc/conf.d/etcd' option to the unit
-  install -Dm644 ${srcdir}/10-EnvironmentFile.conf ${pkgdir}/etc/systemd/system/${pkgname}.service.d/10-EnvironmentFile.conf
+  install -Dm644 ${srcdir}/10-EnvironmentFile.conf ${pkgdir}/usr/lib/systemd/system/${pkgname}.service.d/10-EnvironmentFile.conf
   # env file itself
   install -Dm644 ${srcdir}/etcd.env ${pkgdir}/etc/conf.d/${pkgname}
   # License
