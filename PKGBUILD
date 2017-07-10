@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "armv6h")
 license=("GPL2")
 makedepends=("git")
 depends=("bluez" "dbus" "modemmanager" "glib2" "udev" "mobile-broadband-provider-info")
-source=(git://github.com/PhonePi/ofono-phonepi.git)
+source=('git+https://gitlab.com/PhonePi/ofono')
 sha256sums=("SKIP")
 
 build() {
