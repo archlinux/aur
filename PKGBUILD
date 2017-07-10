@@ -2,7 +2,7 @@
 pkgname=git-mediate-git
 _gitname=git-mediate
 pkgver=r94.07b1a7b
-pkgrel=1
+pkgrel=2
 pkgdesc="Resolve trivial conflicts automatically when merging branches in git repositories."
 arch=(i686 x86_64)
 url="https://github.com/Peaker/git-mediate"
@@ -10,7 +10,7 @@ license=(GPL)
 provides=(git-mediate)
 conflicts=(git-mediate resolve-trivial-conflicts)
 replaces=(resolve-trivial-conflicts resolve-trivial-conflicts-git)
-makedepends=(git cabal-install chrpath)
+makedepends=(git cabal-install chrpath ghc-static)
 depends=(gmp libffi)
 source=(git+https://github.com/Peaker/git-mediate)
 md5sums=(SKIP)
@@ -27,8 +27,14 @@ build() {
     cd "$_gitname"
     cabal update
     cabal sandbox init
-    cabal install --dependencies-only
-    cabal configure --prefix /usr --disable-executable-dynamic
+    local _pkgdb=(/usr/lib/ghc-*/static-package.conf.d)
+    cabal install           \
+        --dependencies-only \
+        --ghc-pkg-option=--global-package-db="$_pkgdb"
+    cabal configure                                     \
+        --prefix /usr                                   \
+        --disable-executable-dynamic                    \
+        --ghc-pkg-option=--global-package-db="$_pkgdb"
     cabal build
 }
 
