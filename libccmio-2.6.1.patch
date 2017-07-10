@@ -1,0 +1,24 @@
+diff -ruN libccmio-2.6.1_orig/libadf/adf.pro libccmio-2.6.1/libadf/adf.pro
+--- libccmio-2.6.1_orig/libadf/adf.pro	2006-06-30 14:00:17.000000000 -0400
++++ libccmio-2.6.1/libadf/adf.pro	2010-12-18 13:32:43.000000000 -0500
+@@ -1,7 +1,7 @@
+ TEMPLATE = lib
+ windows-vc.net:TEMPLATE = vclib
+ windows-vc.net:config += release
+-TARGET = adf
++TARGET = adf_ccmio
+ PATHTOSRC = ../
+ 
+ include($$PATHTOSRC/config/ccm.pro)
+diff -ruN libccmio-2.6.1_orig/libcgns/cgns.pro libccmio-2.6.1/libcgns/cgns.pro
+--- libccmio-2.6.1_orig/libcgns/cgns.pro	2006-06-30 14:00:18.000000000 -0400
++++ libccmio-2.6.1/libcgns/cgns.pro	2010-12-18 13:33:29.000000000 -0500
+@@ -1,7 +1,7 @@
+ TEMPLATE = lib
+ windows-vc.net:TEMPLATE = vclib
+ windows-vc.net:config += release
+-TARGET = cgns
++TARGET = cgns_ccmio
+ PATHTOSRC = ../
+ 
+ include($$PATHTOSRC/config/ccm.pro)
