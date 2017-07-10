@@ -1,9 +1,10 @@
 pkgbase = nxfilter
 	pkgdesc = NxFilter DNS filter
 	pkgver = 4.1.4.p1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nxfilter.org/p3/
 	install = nxfilter.install
+	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-runtime

@@ -1,9 +1,9 @@
 # Maintainer: Erwin
 pkgname=nxfilter
 pkgver=4.1.4.p1
-pkgrel=1
+pkgrel=2
 pkgdesc="NxFilter DNS filter"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url=http://nxfilter.org/p3/
 license=('custom')
 depends=('java-runtime' 'unzip')
