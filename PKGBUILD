@@ -11,8 +11,10 @@ arch=('i686' 'x86_64')
 url="http://www.libtom.net/LibTomCrypt/"
 license=('custom:PublicDomain')
 depends=('libtommath' 'gmp')
-source=("https://github.com/libtom/${pkgname}/releases/download/v${_pkgver}/${pkgname#libtom}-${_pkgver}.tar.xz")
-sha256sums=('943af136e6c624371659dc6c98a2d749ea45912628717b72e4f8894339709b20')
+source=("https://github.com/libtom/${pkgname}/releases/download/v${_pkgver}/${pkgname#libtom}-${_pkgver}.tar.xz"{,.asc})
+sha256sums=('943af136e6c624371659dc6c98a2d749ea45912628717b72e4f8894339709b20'
+            'SKIP')
+validpgpkeys=('C4386A237ED43A475541B9427B2CD0DD4BCFF59B') # Steffen Jaeckel <s_jaeckel@gmx.de>
 
 build() {
   cd "${pkgname}-${_pkgver}"
