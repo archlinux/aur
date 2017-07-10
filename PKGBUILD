@@ -10,7 +10,7 @@
 # Maintainer: Stanislaw Datskevich < me AT nek0.net >
 
 pkgname=strongswan-pkcs11
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=0
 provides=("${pkgname/-pkcs11}=${pkgver}-${pkgrel}")
 pkgdesc="The best OpenSource IPsec implementation with PKCS11 support"
@@ -42,7 +42,7 @@ source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
 
 # md5 is broken. We use sha256 now. Alternatively, we could check the signature of the file, but that
 # doesn't yield any more security and just increases the work users initially have to invest.
-sha256sums=('da976fca836f05fc7b7a38baab299745f960cb7640319969d239d8aa4ace9f6a'
+sha256sums=('c5ea54b199174708de11af9b8f4ecf28b5b0743d4bc0e380e741f25b28c0f8d4'
             '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7')
 
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
