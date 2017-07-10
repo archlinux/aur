@@ -1,0 +1,17 @@
+pkgbase = arc-limon-icon-theme-git
+	pkgdesc = Arc icon theme. Latest commit from the master branch on Github.
+	pkgver = 20160605.r8.gb76ac83
+	pkgrel = 1
+	url = https://github.com/eti0/arc-limon-icon-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = automake
+	depends = gtk-update-icon-cache
+	optdepends = moka-icon-theme-git: Arc icon theme was built to be used on top of Moka icon theme
+	conflicts = arc-limon-icon-theme
+	source = git://github.com/eti0/arc-limon-icon-theme.git
+	md5sums = SKIP
+
+pkgname = arc-limon-icon-theme-git
+
