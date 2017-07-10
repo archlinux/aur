@@ -24,6 +24,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
 prepare() {
   rm -Rf build
   mkdir build
