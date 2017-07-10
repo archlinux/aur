@@ -1,0 +1,38 @@
+pkgbase = thunar-gtk3-git
+	pkgdesc = Modern file manager for Xfce - GTK3 Version
+	pkgver = 1.6.90
+	pkgrel = 6
+	url = https://github.com/andreldm/thunar
+	install = thunar-gtk3-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = xfce4-panel
+	makedepends = git
+	makedepends = xfce4-dev-tools
+	makedepends = python
+	depends = desktop-file-utils
+	depends = libexif
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libgudev
+	depends = gtk3
+	depends = exo>=0.11.2
+	depends = libxfce4util
+	depends = libxfce4ui
+	depends = libpng
+	optdepends = gvfs: for trash support, mounting with udisk and remote filesystems
+	optdepends = xfce4-panel: for trash applet
+	optdepends = tumbler: for thumbnail previews
+	optdepends = thunar-volman: manages removable devices
+	optdepends = thunar-archive-plugin: create and deflate archives
+	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
+	provides = thunar=1.6.90
+	conflicts = thunar
+	replaces = thunar-gtk3
+	source = thunar-gtk3-git::git://github.com/andreldm/thunar
+	sha256sums = SKIP
+
+pkgname = thunar-gtk3-git
+

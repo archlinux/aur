@@ -1,0 +1,13 @@
+post_install() {
+    x=`pacman -Qs xfdesktop`
+    if [ -n "$x" ]; then cat << EOF
+ 
+    xfdesktop users note:
+  -----------------------------------------------------------------------------
+    xfdesktop from official repositories depends on libthunarx-2 while this
+    package provides libthunarx-3. You should rebuild your xfdesktop package
+    against this thunar version.
+ 
+EOF
+  fi
+}
