@@ -1,18 +1,24 @@
-pkgbase = plantuml
-	pkgdesc = Component that allows to quickly write uml diagrams
+pkgbase = plantuml-pdf
+	pkgdesc = Component that allows to quickly write uml diagrams, with PDF support.
 	pkgver = 1.2017.15
 	pkgrel = 1
 	url = http://plantuml.com/
 	arch = any
 	license = GPL
 	makedepends = apache-ant
-	makedepends = java-environment
-	depends = java-runtime
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
 	depends = graphviz
+	provides = plantuml
+	conflicts = plantuml
 	source = http://downloads.sourceforge.net/project/plantuml/1.2017.15/plantuml-1.2017.15.tar.gz
+	source = http://apache.mirror.digionline.de/xmlgraphics/batik/binaries/batik-bin-1.9.tar.gz
+	source = http://apache.mirror.digionline.de/xmlgraphics/fop/binaries/fop-2.2-bin.tar.gz
 	source = plantuml.run
 	sha256sums = f33a1d0781eaa3eb101043a965053ac44f1e12cc277b60fc8a5046f766b3a38b
-	sha256sums = dff39e4d8dd8eedb58c1b0a0cf64ab2c404b713e3a42fa5fdf0b6792ca382ed5
+	sha256sums = 349bf6a4f02ce9f631248b224994e20ffc263fe65c1673c9180daa3584418b75
+	sha256sums = 9dc1f9d1cb9acf5b3352116924c0b7678a88703b1214d537bc027c6867ec4dfe
+	sha256sums = 7c5fec987bd3030dc9efa4ca65719e43edaaba631f1e6f0b5af8e1578d9c4f69
 
-pkgname = plantuml
+pkgname = plantuml-pdf
 
