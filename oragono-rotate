@@ -1,4 +1,5 @@
 /var/log/oragono.log {
+    create
     monthly
     compress
     missingok
