@@ -1,4 +1,4 @@
-# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 
 pkgname=hex-unifont
