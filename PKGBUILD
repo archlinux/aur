@@ -17,6 +17,7 @@ pkgname=(
     'llvm-libs-polly-svn'
     'llvm-ocaml-polly-svn'
     'lld-polly-svn'
+    'lldb-polly-svn'
     'clang-polly-svn'
     'clang-analyzer-polly-svn'
     'clang-compiler-rt-polly-svn'
@@ -24,7 +25,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=5.0.0svn_r307530
+pkgver=5.0.0svn_r307598
 
 pkgver() {
   cd "$pkgname"
@@ -57,11 +58,13 @@ source=(
     'clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
     'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
     'lld::svn+http://llvm.org/svn/llvm-project/lld/trunk'
+    'lldb::svn+http://llvm.org/svn/llvm-project/lldb/trunk'
     'polly::svn+http://llvm.org/svn/llvm-project/polly/trunk'
     'llvm-Config-llvm-config.h'
 )
 
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -121,6 +124,7 @@ _install_licenses() {
         \( \
             -path "${srcdir}/${_pkgname}/tools/lld" -o \
             -path "${srcdir}/${_pkgname}/tools/clang" -o \
+            -path "${srcdir}/${_pkgname}/tools/lldb" -o \
             -path "${srcdir}/${_pkgname}/projects/compiler-rt" \
         \) -prune -o \
         \( \
@@ -160,6 +164,7 @@ prepare() {
     svn export --force "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
     svn export --force "${srcdir}/lld" tools/lld
+    svn export --force "${srcdir}/lldb" tools/lldb
     svn export --force "${srcdir}/polly" tools/polly
 
     mkdir -p "${srcdir}/build"
@@ -259,6 +264,32 @@ package_llvm-polly-svn() {
 
     _install_licenses "${srcdir}/llvm"
 }
+
+package_lldb-polly-svn() {
+    pkgdesc='Next generation, high-performance debugger'
+    url='http://lldb.llvm.org/'
+    depends=(
+        "llvm-libs-polly-svn=${pkgver}-${pkgrel}"
+        'libedit'
+        'libxml2'
+        'python2'
+    )
+    groups=('llvm-toolchain-polly-svn')
+    provides=('lldb')
+    conflicts=('lldb')
+
+    cd "${srcdir}/build/tools/lldb"
+
+    make DESTDIR="${pkgdir}" install
+
+    _fix_python_exec_path \
+        "${pkgdir}${_py_sitepkg_dir}/lldb/utils/symbolication.py"
+
+    _compile_python_files "${pkgdir}${_py_sitepkg_dir}/lldb"
+
+    _install_licenses "${srcdir}/lldb"
+}
+
 
 package_llvm-libs-polly-svn() {
     pkgdesc='The LLVM Compiler Infrastructure (runtime libraries)'
