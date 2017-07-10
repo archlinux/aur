@@ -7,8 +7,8 @@
 android_arch=arm64-v8a
 _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
-pkgver=5.9.0
-pkgrel=2
+pkgver=5.9.1
+pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('x86_64')
 url='https://www.qt.io'
@@ -52,7 +52,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:3}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "JavaScriptCore.pri.patch"
         "geoservices.pro.patch")
-sha256sums=('f70b5c66161191489fc13c7b7eb69bf9df3881596b183e7f6d94305a39837517'
+sha256sums=('7b41a37d4fe5e120cdb7114862c0153f86c07abbec8db71500443d2ce0c89795'
             '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455'
             'f0770923c55725417b7f334b7558371fc9833ae914b81a456d9beee7a3eeab8b')
 
