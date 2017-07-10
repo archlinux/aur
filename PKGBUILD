@@ -10,8 +10,7 @@ depends=('java-runtime' 'unzip')
 provides=("nxfilter")
 source=("https://github.com/Erwinovitch/NxFilter/archive/master.zip")
 install='nxfilter.install'
-md5sums=('2369562236cd622fbf9ca2e39726ecd7'
-	 'SKIP')
+md5sums=('SKIP')
 
 package() {
 	cd "$srcdir"
