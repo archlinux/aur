@@ -3,7 +3,7 @@
 
 pkgname=zulucrypt
 pkgver=5.2.0
-pkgrel=2
+pkgrel=3
 _altpkgname=zuluCrypt
 pkgdesc="A cli and gui frontend to cryptsetup"
 url="http://mhogomchungu.github.io/${_altpkgname}"
@@ -25,7 +25,7 @@ build() {
   cd "${srcdir}/${_altpkgname}-${pkgver}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=true -DHOMEMOUNTPREFIX=false -D5CMAKE_BUILD_TYPE=release . ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=true -DHOMEMOUNTPREFIX=false -DCMAKE_BUILD_TYPE=release . ..
   make
 }
 
