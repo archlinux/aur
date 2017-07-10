@@ -2,7 +2,7 @@
 
 pkgname=flatcc
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="FlatBuffers Compiler and Library in C for C"
 arch=('i686' 'x86_64')
 makedepends=('cmake' 'make')
@@ -20,6 +20,7 @@ build() {
   cmake \
     ../.. \
     -DBUILD_SHARED_LIBS=on \
+    -DFLATCC_ALLOW_WERROR=off \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFLATCC_INSTALL=on
