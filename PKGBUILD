@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flatcc-git
-pkgver=20170330
+pkgver=20170703
 pkgrel=1
 pkgdesc="FlatBuffers Compiler and Library in C for C"
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ build() {
   cmake \
     ../.. \
     -DBUILD_SHARED_LIBS=on \
+    -DFLATCC_ALLOW_WERROR=off \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFLATCC_INSTALL=on
