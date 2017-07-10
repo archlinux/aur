@@ -8,7 +8,7 @@ license=("BSD")
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-speexdsp' 'mingw-w64-libogg')
 options=('staticlibs' '!strip' '!buildflags')
-source=("http://downloads.us.xiph.org/releases/speex/speex-$pkgver.tar.gz")
+source=("http://downloads.xiph.org/releases/speex/speex-$pkgver.tar.gz")
 md5sums=('8ab7bb2589110dfaf0ed7fa7757dc49c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
