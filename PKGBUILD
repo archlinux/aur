@@ -2,7 +2,7 @@
 
 pkgname=oragono
 pkgver=0.8.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
 url="https://github.com/oragono/oragono"
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
             'SKIP'
             '131097e2803dee6f0b00de41b80fb790a44dd6c90bf1b1004078535150ff64cc'
             '25a1c0f764283059e95088f3b9cb66fe6a0c95df0d9dc8375856f41097c04fb0'
-            'ac9c5ef5c64ba12e5abdd1289835fafc591ec7ad0f677a918f331256230c602b')
+            '896f394a7c62ce7961778c4664a02ffe0370ccec9a7f2569fb7d0b9119632d4b')
 backup=('etc/oragono.conf')
 build() {
     export GOPATH=$(pwd)/..
