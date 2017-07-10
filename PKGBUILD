@@ -2,10 +2,10 @@
 
 pkgname=audenc
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='a batch shell script for encoding audio files in directories from one format to another.'
 arch=(any)
-url='http://sourceforge.net/projects/audenc/'
+url='https://sourceforge.net/projects/audenc/'
 license=(GPL2)
 depends=(mediainfo
          mplayer)
@@ -23,7 +23,8 @@ optdepends=('lame: MP3 encoder'
             'amrenc: AMR encoder'
             'aften: A/52 encoder'
             'dcaenc: DTS encoder')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('33638422463f92e9ba3815d89b3b84cfb9425a2ca3f3e8896cd5ad63b4cfbdcd')
 
 prepare()
 {
@@ -38,4 +39,3 @@ package()
     ./install
     rm "$pkgdir/usr/share/doc/audenc/uninstall"
 }
-md5sums=('3512fec9a70eb20a9bc8fdcd229a0eba')
