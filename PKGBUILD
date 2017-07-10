@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=c2nim-git
-pkgver=20151005
+pkgver=20170708
 pkgrel=1
 pkgdesc="Tool to translate Ansi C code to Nim"
 arch=('i686' 'x86_64')
