@@ -2,7 +2,7 @@
 
 pkgname=remarshal
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert between TOML, YAML and JSON"
 arch=('any')
 depends=('python' 'python-dateutil' 'python-pytoml' 'python-yaml')
@@ -12,6 +12,7 @@ license=('MIT')
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/dbohdan/$pkgname/tar.gz/v$pkgver)
 sha256sums=('19e85b010ada81f3094ce4e607d6f26aeb2ea40c92c4c704fe1cdb8fd8f637ee')
+conflicts=('haskell-yaml')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
