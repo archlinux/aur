@@ -1,10 +1,14 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
 # Contributor: scan
 
+# Default color: https://aur.archlinux.org/packages/obsidian-icon-theme/
+# Green color: https://aur.archlinux.org/packages/obsidian-icon-theme-green/
+# Gray color: https://aur.archlinux.org/packages/obsidian-icon-theme-gray/
+
 pkgname=obsidian-icon-theme
 pkgver=20170626
 pkgrel=1
-pkgdesc="Obsidian Icon Theme"
+pkgdesc="Obsidian Icon Theme - Default Color"
 arch=('any')
 url="https://www.gnome-look.org/p/1169579"
 license=('GPL')
