@@ -4,7 +4,7 @@
 # Contributor: Funkmuscle
 
 pkgname=guitarix-git
-pkgver=0.35.3.r12.g0a71e304
+pkgver=0.35.4.r0.g5980862d
 pkgrel=1
 pkgdesc="A virtual guitar amplifier for Linux"
 arch=('i686' 'x86_64')
@@ -34,8 +34,7 @@ build() {
                         --no-faust \
                         --optimization \
                         --lib-dev	\
-                        --install-roboto-font \
-                        --no-webkit
+                        --install-roboto-font
   python2 waf build
 }
 
