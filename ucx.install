@@ -1,5 +1,5 @@
 post_install() {
-  post-desktop-database -q
+  update-desktop-database -q
 }
 
 post_upgrade() {
