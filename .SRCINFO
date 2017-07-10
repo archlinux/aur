@@ -1,0 +1,16 @@
+pkgbase = hunspell-fa
+	pkgdesc = Persian dictionaries for hunspell
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://ftp.gnu.org/gnu/aspell/dict/0index.html
+	arch = any
+	license = LGPL2
+	makedepends = hunspell
+	makedepends = aspell
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-fa
+	source = http://ftp.gnu.org/gnu/aspell/dict/fa/aspell6-fa-0.11-0.tar.bz2
+	sha256sums = 482d26ea879a8ea02d9373952205f67e07c85a7550841b13b5079bb2f9f2e15b
+
+pkgname = hunspell-fa
+
