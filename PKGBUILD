@@ -1,7 +1,7 @@
 # Maintainer: Nick Burrett <nick@sqrt.co.uk>
 # lizardfs is a fork of moosefs and as such is a replacement for it.
 pkgname=lizardfs
-pkgver=3.11.0
+pkgver=3.11.2
 pkgrel=1
 pkgdesc='LizardFS is a highly reliable, scalable and efficient distributed file system. It spreads data over a number of physical servers, making it visible to an end user as a single file system.'
 url='http://lizardfs.com'
@@ -12,7 +12,7 @@ depends=('asciidoc' 'boost' 'zlib' 'fuse' 'python2' 'bash' 'cmake')
 install="$pkgname.install"
 source=("http://github.com/lizardfs/lizardfs/archive/v${pkgver}.tar.gz"
         "cmath.patch")
-sha256sums=('f2b73a56b8900066468ea9feb002a338dcce6c3d41bc4140e898f6e659854919'
+sha256sums=('e3a8414f3daab948d40bcd356b54e145b4ea88667189ef7828e7d39785136bf4'
             'fd9e8e3e0bfbb3d1befb3a6136d9257dcebb60cd49012051773e35b355ce0d5c')
 
 prepare() {
