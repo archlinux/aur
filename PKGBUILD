@@ -2,7 +2,7 @@
 
 pkgname=cairo-minimal
 pkgver=1.14.8
-pkgrel=2
+pkgrel=1
 pkgdesc="A vector graphics library - build with minimal dependencies"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
