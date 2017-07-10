@@ -1,7 +1,7 @@
 pkgbase = intellij-idea-ce
 	pkgdesc = Intellij Idea IDE (community version) with Intellij JDK
 	pkgver = 2017.1.5
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
 	license = Apache2
