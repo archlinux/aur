@@ -7,7 +7,7 @@
 
 pkgbase=nim-git
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git')
-pkgver=20170312
+pkgver=20170710
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
@@ -15,9 +15,8 @@ makedepends=('git' 'texlive-bin' 'texlive-core' 'texlive-fontsextra')
 source=(git+https://github.com/nim-lang/Nim
         git+https://github.com/nim-lang/Nim.wiki
         git+https://github.com/nim-lang/csources
-        git+https://github.com/nim-lang/nimble
-        git+https://github.com/nim-lang/nimsuggest)
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        git+https://github.com/nim-lang/nimble)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/Nim"
@@ -142,14 +141,6 @@ package_nimsuggest-git() {
   license=('MIT')
   provides=('nimsuggest')
   conflicts=('nimsuggest')
-
-  cd "$srcdir/nimsuggest"
-
-  msg2 'Installing Nimsuggest license...'
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/nimsuggest"
-
-  msg2 'Installing Nimsuggest documentation...'
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/nimsuggest"
 
   msg2 'Installing Nimsuggest...'
   install -Dm 755 "$srcdir/Nim/bin/nimsuggest" -t "$pkgdir/usr/bin"
