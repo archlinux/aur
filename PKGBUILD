@@ -8,10 +8,8 @@ pkgdesc='Persian dictionaries for hunspell'
 url='http://ftp.gnu.org/gnu/aspell/dict/0index.html'
 arch=('any')
 license=('LGPL2' 'GPL2')
-depends=()
-makedepends=('hunspell' 'aspell')
-optdepends=('hunspell:  the spell checking libraries and apps')
-provides=("${pkgname}")
+depends=('hunspell')
+makedepends=('aspell')
 source=("http://ftp.gnu.org/gnu/aspell/dict/fa/aspell6-fa-${pkgver}-0.tar.bz2")
 sha256sums=('482d26ea879a8ea02d9373952205f67e07c85a7550841b13b5079bb2f9f2e15b')
 

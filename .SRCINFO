@@ -6,10 +6,8 @@ pkgbase = hunspell-fa
 	arch = any
 	license = LGPL2
 	license = GPL2
-	makedepends = hunspell
 	makedepends = aspell
-	optdepends = hunspell: the spell checking libraries and apps
-	provides = hunspell-fa
+	depends = hunspell
 	source = http://ftp.gnu.org/gnu/aspell/dict/fa/aspell6-fa-0.11-0.tar.bz2
 	sha256sums = 482d26ea879a8ea02d9373952205f67e07c85a7550841b13b5079bb2f9f2e15b
 
