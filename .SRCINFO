@@ -1,0 +1,14 @@
+pkgbase = file-encryptor
+	pkgdesc = User-freindly file-encryption tool
+	pkgver = 1.1.33
+	pkgrel = 1
+	url = https://github.com/AWildBeard/FileEncryptor
+	arch = any
+	license = Apache License 2.0
+	depends = jre8-openjdk
+	depends = java-openjfx
+	source = https://github.com/AWildBeard/FileEncryptor/releases/download/v1.1.33/file-encryptor.tar
+	md5sums = 3c7128118badca26a5b5b0188193ca6a
+
+pkgname = file-encryptor
+
