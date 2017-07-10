@@ -7,7 +7,7 @@ pkgdesc="The official Last.fm desktop application suite"
 arch=('any')
 url="http://www.last.fm/"
 license=('GPL3')
-depends=('qt4>4.8' 'ruby' 'liblastfm' 'pkg-config' 'fftw' 'taglib' 'libsamplerate' 'libmad' 'libgpod' 'sqlite' 'phonon' 'phonon-qt4-vlc' 'ffmpeg' 'qtwebkit')
+depends=('qt4>4.8' 'ruby' 'liblastfm' 'pkg-config' 'fftw' 'taglib' 'libsamplerate' 'libmad' 'libgpod' 'sqlite' 'phonon-qt4' 'phonon-qt4-vlc' 'ffmpeg' 'qtwebkit')
 makedepends=()
 source=(Last.fm-$pkgver.tar.zip::https://github.com/lastfm/lastfm-desktop/archive/$pkgver.zip
     lastfm-scrobbler
