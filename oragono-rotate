@@ -1,0 +1,7 @@
+/var/log/oragono.log {
+    monthly
+    compress
+    missingok
+    notifempty
+    rotate 12
+}
