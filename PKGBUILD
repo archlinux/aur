@@ -7,10 +7,10 @@ pkgdesc="A C++ library to read and write the Apache Parquet columnar data format
 arch=('i686' 'x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('gcc-libs' 'boost-libs' 'arrow')
+depends=('gcc-libs' 'brotli' 'boost-libs' 'arrow')
 checkdepends=()
 optdepends=()
-makedepends=('boost' 'brotli' 'cmake' 'git' 'snappy-static' 'thrift-static')
+makedepends=('boost' 'cmake' 'git' 'snappy-static' 'thrift-static')
 source=("git+https://github.com/apache/parquet-cpp.git#commit=ce5e1e7dd6799df5411148479f0eb2626e3fff72")
 sha256sums=('SKIP')
 

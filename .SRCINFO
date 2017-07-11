@@ -7,12 +7,12 @@ pkgbase = parquet-cpp
 	arch = x86_64
 	license = Apache
 	makedepends = boost
-	makedepends = brotli
 	makedepends = cmake
 	makedepends = git
 	makedepends = snappy-static
 	makedepends = thrift-static
 	depends = gcc-libs
+	depends = brotli
 	depends = boost-libs
 	depends = arrow
 	source = git+https://github.com/apache/parquet-cpp.git#commit=ce5e1e7dd6799df5411148479f0eb2626e3fff72
