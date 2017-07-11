@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=logstash
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='A tool for managing events and logs'
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://artifacts.elastic.co/downloads/$pkgname/$pkgname-$pkgver.tar.gz
         "logstash@.service"
         "user.conf"
         "bundle.config")
-sha256sums=('a1bdd182f5b35e428b16089d3872ae10f6b0e4900238991e51e1adb5ac862b05'
+sha256sums=('f7ec9cffdcfeec2db7e289b7b6c5d30c9262fded3342ba1c1edcdb639f88a6d9'
             '48a0f2ddb54fb3a4039cbd97ad10e4a0a10ac79ae917bc6ecf29ce10109e2710'
             'a01ea29d4f53d785f6eb926ebfe445e64ed5b3dab5d0418848589dd79502d876'
             '18a68a59ddb0ce19778e83b65e68dd568d65b7180bf45b4cf298fb332d69eb26'
