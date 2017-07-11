@@ -1,7 +1,7 @@
 # Maintainer:  <gucong@gc-desktop>
 pkgname=zoltan
 pkgver=3.83
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel Partitioning, Load Balancing and Data-Management Services"
 arch=('i686' 'x86_64')
 url="http://www.cs.sandia.gov/zoltan"
@@ -30,7 +30,8 @@ build() {
       --with-scotch-libdir="/usr/lib" \
       --with-parmetis \
       --with-parmetis-incdir="/usr/include" \
-      --with-parmetis-libdir="/usr/lib"
+      --with-parmetis-libdir="/usr/lib" \
+      --with-cflags="-fPIC"
 
   make
 }
