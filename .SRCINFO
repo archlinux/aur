@@ -1,0 +1,14 @@
+pkgbase = dash-core-components
+	pkgdesc = A dash components starter pack.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://plot.ly/dash/dash-core-components
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/70/79/8785f5e7341a711e37741f6ee4cde674ab3725e69ffd3d3a20fc5315b6dd/dash_core_components-0.5.3rc1.tar.gz
+	sha256sums = SKIP
+
+pkgname = dash-core-components
+
