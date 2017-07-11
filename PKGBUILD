@@ -17,7 +17,7 @@ source=("git+https://github.com/tcaputi/zfs.git"
 sha256sums=('SKIP'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
             'aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca'
-            'becba6f8a02001d791d0ce6961cde466ebdd31ba821c9a4670ed2fd8545109e6')
+            '4b66b694f72d9028b2bd0bafe789be327e2d894f9dcddd7b5a71f955f4205601')
 
 pkgver() {
     cd "${srcdir}/zfs"
