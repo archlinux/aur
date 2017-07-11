@@ -2,7 +2,7 @@
 
 pkgname=vagrant-libvirt
 pkgver=0.0.40
-pkgrel=3
+pkgrel=4
 _foglibvirtver=0.3.0
 _fogcorever=1.43.0
 _fogjsonver=1.0.2
@@ -63,7 +63,7 @@ package() {
     local GEM_HOME=/opt/vagrant/embedded/gems
 
     for gem in ${noextract[@]}; do
-        CONFIGURE_ARGS="with-ldflags='-L/opt/vagrant/embedded/lib -l:libruby.so.2.2' with-libvirt-include=/usr/include with-libvirt-lib=/usr/lib" \
+        CONFIGURE_ARGS="with-ldflags='-L/opt/vagrant/embedded/lib -l:libruby.so.2.3' with-libvirt-include=/usr/include with-libvirt-lib=/usr/lib" \
         GEM_HOME=$GEM_HOME \
         GEM_PATH=$GEM_HOME \
         PATH=/opt/vagrant/embedded/bin:$PATH \
