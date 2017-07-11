@@ -1,7 +1,7 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
 pkgver=r3963.cf5cf025
-pkgrel=2
+pkgrel=3
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://riot.im"
 _url="https://github.com/vector-im/riot-web"
 license=('Apache')
 makedepends=('git' 'npm')
-conflicts=('riot-desktop' 'riot-web' 'electron')
+conflicts=('riot-desktop' 'riot-web')
 backup=("etc/riot/config.json")
 source=('riot-desktop-git::git://github.com/vector-im/riot-web.git'
         "riot-desktop.desktop"
