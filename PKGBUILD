@@ -17,8 +17,8 @@ sha1sums=('9aa6aed3ffc50c8f01497d0332ff24d21f7189bf'
           '79be8955392bf3dfade9c0118ee4d72f081e07b8'
           '39c008050c7f90f3fde05b849cba80559207bdb5')
 sha1sums_i686=('199906592010216ed49d681b0e821d24371415f1')
-sha1sums_x86_64=('199906592010216ed49d681b0e821d24371415f1')
-source_x86_64=("${pkgname}-${pkgver}.zip::https://www.willuhn.de/projects/jameica/releases/$_pkgver/jameica/$pkgname-linux64.zip")
+sha1sums_x86_64=('a08a3dc7ec4c6b902def4bdc9e3650636d7c04b8')
+source_x86_64=("${pkgname}_64-${pkgver}.zip::https://www.willuhn.de/projects/jameica/releases/$_pkgver/jameica/$pkgname-linux64.zip")
 source=("jameica-start-script.patch"
         "jameicaserver-start-script.patch"
         "jameica.install")
