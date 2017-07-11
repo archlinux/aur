@@ -1,7 +1,7 @@
 #Maintainer: naruto522ru <itachi522ru@gmail.com>
 pkgname=eleet
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Eleet private messenger'
 arch=('x86_64')
 url='https://github.com/ELMessenger/Desktop'
