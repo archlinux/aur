@@ -25,7 +25,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=5.0.0svn_r307609
+pkgver=5.0.0svn_r307611
 
 pkgver() {
   cd "$pkgname"
@@ -211,28 +211,29 @@ build() {
     #     -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
     #     -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
     #     "../${_pkgname}"
-    cmake -G Ninja \
+    cmake -G 'Ninja' \
         -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \ 
+        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DLLVM_APPEND_VC_REV:BOOL=ON \
-        -DLLVM_ENABLE_RTTI:BOOL=ON \  
-        -DLLVM_ENABLE_FFI:BOOL=ON \ 
+        -DLLVM_ENABLE_RTTI:BOOL=ON \
+        -DLLVM_ENABLE_FFI:BOOL=ON \
         -DFFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
         -DFFI_LIBRARY_DIR:PATH="$(pkg-config --variable=libdir libffi)" \
         -DLLVM_BUILD_DOCS:BOOL=ON \
         -DLLVM_ENABLE_SPHINX:BOOL=ON \
         -DSPHINX_OUTPUT_HTML:BOOL=ON \
-        -DSPHINX_OUTPUT_MAN:BOOL=ON \ 
+        -DSPHINX_OUTPUT_MAN:BOOL=ON \
         -DSPHINX_WARNINGS_AS_ERRORS:BOOL=OFF \
         -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
         -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
-        -C "../clang/cmake/caches/PGO.cmake" "../${_pkgname}"
+        -C "../clang/cmake/caches/PGO.cmake" \
+        "../${_pkgname}"
 
     ninja stage2
     ninja ocaml_doc
-    #make
-    #make ocaml_doc
+    # make
+    # make ocaml_doc
 }
 
 check() {
@@ -242,7 +243,7 @@ check() {
     #[[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
     [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja stage2-check
     ninja stage2-check-clang
-    #ninja stage2-check-polly
+    ninja check-polly
     #make check-clang
     #make check-polly
 }
@@ -261,7 +262,8 @@ package_llvm-polly-svn() {
     # Disable automatic installation of components that go into subpackages
     sed -i '/\(clang\|lld\|lldb\)\/cmake_install.cmake/d' tools/cmake_install.cmake
 
-    make DESTDIR="${pkgdir}" install
+    #make DESTDIR="${pkgdir}" install
+    ninja DESTDIR="${pkgdir}" install
 
     # The runtime libraries get installed in llvm-libs-svn
     rm -f "${pkgdir}"/usr/lib/lib{LLVM,LTO}{,-*}.so{,.*}
