@@ -23,7 +23,7 @@
 
 pkgname=conky-cairo
 pkgver=1.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc='conky - built for nvidia n (tolua++_5.3 in AUR) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
@@ -75,6 +75,10 @@ build() {
 	       -e 's|\(LUA REQUIRED\) lua5.1 lua-5.1 lua51 lua|\1 lua>=5.3|' \
 	       -e 's|\(NOT LUA_VERSION VERSION_LESS\) 5.2.0|\1 5.4.0|' \
 	    cmake/ConkyPlatformChecks.cmake
+
+	sed -i \
+	       -e 's|#include <string>|#include <string>\n#include <functional>|' \
+	    src/luamm.hh
 ################################################################
 
 	cmake \
