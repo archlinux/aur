@@ -7,12 +7,12 @@
 pkgname=xmind
 pkgver=3.7.2
 _filename=$pkgname-8-update2-linux
-pkgrel=1
+pkgrel=2
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=('i686' 'x86_64')
 url="http://www.xmind.net"
 license=('EPL' 'LGPL')
-depends=('desktop-file-utils' 'fontconfig' 'libxrender' 'java-runtime' 'shared-mime-info' 'libxext')
+depends=('gtk3' 'java-runtime')
 optdepends=('lame: needed for the feature audio notes')
 source=("http://www.xmind.net/xmind/downloads/${_filename}.zip"
         "XMind.ini"
