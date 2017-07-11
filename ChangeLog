@@ -1,3 +1,9 @@
+2017-07-11 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 0.9.0.r1876.927d2ed2-1
+	Added -Wno-error to CXXFLAGS as a workaround for code in JUCE sources
+	causing warnings and compilation failure.
+	Fixed path of JUCE source file due to Introjucer being renamed to Projucer
+
 2016-07-22 Christopher Arndt <aur -at- chrisarndt -dot- de>
 	* 0.8.5.r1458.6dbcd64-1:
 	use steinberg-vst36 AUR package instead of including VST3 SDK in sources

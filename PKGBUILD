@@ -2,7 +2,7 @@
 
 _pkgname=helm
 pkgname="${_pkgname}-git"
-pkgver=0.8.5.r1458.6dbcd64
+pkgver=0.9.0.r1876.927d2ed2
 pkgrel=1
 pkgdesc="a cross-platform, polyphonic synthesizer LV2 and VST plugin"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ prepare() {
 
   msg2 "Fixing VST3 SDK include paths in JUCE sources..."
   for file in \
-      JUCE/extras/Introjucer/Source/Utility/jucer_StoredSettings.cpp \
+      JUCE/extras/Projucer/Source/Utility/jucer_StoredSettings.cpp \
       JUCE/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp \
       JUCE/modules/juce_audio_processors/format_types/juce_VST3Headers.h; do
     sed -i -e 's|public.sdk/source/vst2.x|vst36|g' "$file"
@@ -50,14 +50,14 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  CXXFLAGS="${CXXFLAGS} -DHAVE_LROUND"
+  CXXFLAGS="${CXXFLAGS} -DHAVE_LROUND -Wno-error"
   make PREFIX="/usr" all vst
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  CXXFLAGS="${CXXFLAGS} -DHAVE_LROUND"
+  CXXFLAGS="${CXXFLAGS} -DHAVE_LROUND -Wno-error"
   make DESTDIR="$pkgdir" install
   install -D builds/linux/VST/build/helm.so "$pkgdir/usr/lib/vst/helm.so"
 }
