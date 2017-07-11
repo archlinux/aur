@@ -3,7 +3,7 @@
 
 pkgname=nodejs-pageres
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Get screenshots of websites in different resolutions"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/sindresorhus/pageres-cli"
 license=("MIT")
 depends=('nodejs' 'npm')
 source=(
-    "http://registry.npmjs.org/${pkgname/nodejs-/}-cli/-/${pkgname/nodejs-/}-cli-${pkgver}.tgz"
+    "https://registry.npmjs.org/${pkgname/nodejs-/}-cli/-/${pkgname/nodejs-/}-cli-${pkgver}.tgz"
     "LICENSE"
 )
 noextract=("${pkgname/nodejs-/}-cli-${pkgver}.tgz")
