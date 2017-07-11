@@ -4,7 +4,7 @@
 
 pkgname=gambit-c
 pkgver=4.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Scheme R5RS interpreter and compiler (via C)'
 arch=('x86_64' 'i686')
 url='http://gambitscheme.org/'
