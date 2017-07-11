@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 url="http://port389.org/"
 license=(GPL)
 depends=(cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp libsystemd
-         openldap perl-mozldap perl-netaddr-ip perl-socket 'svrcore>=4.1.2')
+         openldap perl-netaddr-ip perl-socket 'svrcore>=4.1.2' libevent)
 makedepends=(doxygen)
 
 if [[ "${BUILD_SELINUX}" = "true" ]]; then

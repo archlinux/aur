@@ -15,10 +15,10 @@ pkgbase = 389-ds-base
 	depends = net-snmp
 	depends = libsystemd
 	depends = openldap
-	depends = perl-mozldap
 	depends = perl-netaddr-ip
 	depends = perl-socket
 	depends = svrcore>=4.1.2
+	depends = libevent
 	options = !libtool
 	backup = etc/default/dirsrv
 	backup = etc/default/dirsrv.systemd
