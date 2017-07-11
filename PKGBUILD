@@ -33,16 +33,14 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-psycopg2: Processing plugin'
             'python2-pyspatialite: Processing plugin'
             'python2-yaml: Processing plugin')
-source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
-        "qgis_sip-ftbfs.patch::https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch?id=25b8f81ccabbfdb183d4850a66e884c183444f14")
-md5sums=('2919028c987dcb364cd28964d0f12ad7'
-         '0575d848604f0fc6dda0a643523e7e48')
+source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
+md5sums=('2919028c987dcb364cd28964d0f12ad7')
 
 prepare() {
   cd $pkgname-$pkgver
 
-  # Fedora patch to fix with newer sip/pyqt4
-  patch -Np1 -i <(sed '184,$d' ../qgis_sip-ftbfs.patch)
+  # Build with current sip
+  sed -i '18 s|^|//|' python/core/qgscoordinatetransform.sip
 
   # Make sure we find the -qt4 versions of qwt and qwtpolar
   sed -i '/QWT_LIBRARY_NAMES/ s/qwt /qwt-qt4 /' cmake/FindQwt.cmake
@@ -72,7 +70,7 @@ build() {
     -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DWITH_QTWEBKIT=FALSE \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE}=FALSE \
+    -DWITH_INTERNAL_{MARKUPSAFE,OWSLIB,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE}=FALSE \
 #    -DWITH_SERVER=TRUE \
 #    -DWITH_GLOBE=TRUE
 
