@@ -2,15 +2,15 @@
 
 _pkgname=national-geographic-wallpaper
 pkgname=$_pkgname-git
-pkgver=r19.2953b52
+pkgver=r29.e9e5e6d
 pkgrel=1
-pkgdesc="Change wallpaper automatically, for example, with the National Geographic's 'Photo of The Day'"
+pkgdesc="Change wallpaper automatically, for example, with the Photo of The Day of National Geographic"
 arch=('any')
 url="https://github.com/atareao/national-geographic-wallpaper"
 license=('GPL3')
 makedepends=('git')
 #'python-crontab' 'python-crontab2'
-depends=('gtk-update-icon-cache' 'gtk3' 'python-cssselect' 'python-gobject' 'python-lxml' 'python-requests')
+depends=('gtk-update-icon-cache' 'gtk3' 'libnotify' 'python-cssselect' 'python-gobject' 'python-lxml' 'python-requests')
 #optdepends=('cron: automatic download')
 provides=($_pkgname)
 conflicts=($_pkgname)
