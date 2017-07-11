@@ -10,7 +10,7 @@ license=('GPL')
 groups=()
 provides=()
 depends=('zenity' 'gksu')
-source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
+source=("$url/archive/$pkgver.tar.gz")
 
 md5sums=()
 
