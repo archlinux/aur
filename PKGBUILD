@@ -1,6 +1,6 @@
 # Maintainer: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc=".NET development platform based on on Roslyn workspaces."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mono')
 noextract=('$pkgname-$pkgver.tar.gz')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v$pkgver/omnisharp-mono.tar.gz"
-	"LICENSE::https://raw.githubusercontent.com/OmniSharp/omnisharp-roslyn/dev/license.md")
+	"LICENSE::https://raw.githubusercontent.com/OmniSharp/omnisharp-roslyn/master/license.md")
 
 
 
@@ -21,5 +21,5 @@ package() {
 #license
 	  install -D -m644 $srcdir/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('551e277097017e36bea839a2a33eb627'
+md5sums=('32afe48e39df8feb3ba3da3a2a954445'
          '19a620e118d664537fb9dac578810f8d')
