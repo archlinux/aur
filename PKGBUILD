@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url="http://www.govpn.info/"
 makedepends=('go')
 license=('GPL')
-source=(http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.xz)
+source=(http://www.govpn.info/download/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('c3a273534a44811209c4cb1dca26ebfe56644d5ad51c8216ba22ec18150a4ee8')
 
 build() {
