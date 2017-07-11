@@ -1,7 +1,7 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
 pkgver=r3963.cf5cf025
-pkgrel=3
+pkgrel=4
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('any')
@@ -16,7 +16,7 @@ source=('riot-desktop-git::git://github.com/vector-im/riot-web.git'
         "riot-desktop.sh")
 sha256sums=('SKIP'
 	    'ae0654027f0646178961f6397322aefdc817d052625772dd297d636fe9726aff'
-            '0f8d896793e6f6f677febb5921b2256c9786fad67294cb32efd6d059ed21e04c')
+            'ab641a40b485f98c8f2ae58d353857b05533625e22220357e0c4d624fcdd5396')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -38,6 +38,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname}"
 	npm install -g --user root --prefix "$pkgdir/usr" electron --cache "${srcdir}/npm-cache"
+	mv "$pkgdir"/usr/bin/electron "$pkgdir"/usr/bin/electron-1_6_11
 	chmod -R go-w "$pkgdir"/usr
 
 	install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/riot
