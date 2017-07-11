@@ -17,11 +17,11 @@
 #
 #
 pkgname="zfs-linux-hardened"
-pkgver=0.6.5.11_4.12.d.0_1
+pkgver=0.6.5.11_4.12.e.0_1
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
-depends=("kmod" "spl-linux-hardened" "zfs-utils-linux-hardened" "linux-hardened=4.12.d-1")
-makedepends=("linux-hardened-headers=4.12.d-1")
+depends=("kmod" "spl-linux-hardened" "zfs-utils-linux-hardened" "linux-hardened=4.12.e-1")
+makedepends=("linux-hardened-headers=4.12.e-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.11/zfs-0.6.5.11.tar.gz")
