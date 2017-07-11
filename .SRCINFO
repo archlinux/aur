@@ -1,0 +1,32 @@
+pkgbase = polo-bin
+	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta (.deb binary version)
+	pkgver = 17.7.1
+	pkgrel = 1
+	url = http://www.teejeetech.in/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk3
+	depends = libgee
+	depends = vte3
+	depends = rsync
+	optdepends = mediainfo: read media properties from audio and video files
+	optdepends = fish: terminal shell
+	optdepends = perl-image-exiftool: read EXIF properties from JPG/TIFF/PNG/PDF files
+	optdepends = pv: get prograss info for compression and extraction
+	optdepends = pdftk: converting PDF files
+	optdepends = ffmpeg: generate thumbnails for video
+	optdepends = p7zip: read and extract multiple archive formats
+	optdepends = ghostscript: converting PDF files
+	optdepends = pngcrush: reduce file size of PNG files
+	optdepends = polo-donation-plugins
+	provides = polo
+	conflicts = polo
+	conflicts = polo-bin
+	source_i686 = https://github.com/teejee2008/polo/releases/download/v17.7.1-beta.9/polo-file-manager-17.7.1-beta.9-i386.deb
+	md5sums_i686 = 0e2e3c93ecffb92124520ea3cc6384d8
+	source_x86_64 = https://github.com/teejee2008/polo/releases/download/v17.7.1-beta.9/polo-file-manager-17.7.1-beta.9-amd64.deb
+	md5sums_x86_64 = 8dc062afc6730fca3ae6e1a383d7d465
+
+pkgname = polo-bin
+
