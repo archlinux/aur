@@ -5,7 +5,7 @@
 # Contributor: Alexander <chronischzuspaet at gmail dot com> Kempen
 
 pkgname=scidavis
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot"
 arch=('i686' 'x86_64')
@@ -15,17 +15,13 @@ makedepends=('boost' 'cmake')
 depends=('gsl' 'glu' 'mesa' 'muparser' 'python2-pyqt4' 'shared-mime-info'
          'qwt5' 'qwtplot3d')
 source=("http://prdownloads.sourceforge.net/sourceforge/scidavis/${pkgname}-${pkgver}.tar.gz"
-        "https://sourceforge.net/p/scidavis/scidavis-bugs/_discuss/thread/fa133ad9/b8d8/attachment/scidavis-qwt5.patch"
         "scidavis-python2.patch")
-md5sums=('4d5356c64bf103e4c1dd06f8a35b8a50'
-         '4166c8637deb81bce31d5ee511586245'
+md5sums=('3479b7805517630a9b5aeb6254adb9ed'
          '70665013c8f456c0ebbff8373d4c8d30')
 install="${pkgname}.install"
 
 prepare() {
-  # fix qwt
   cd "${pkgname}-${pkgver}"
-  patch -p1 -i "../scidavis-qwt5.patch"
 
   # replace to python2
   find . -name '*.py' -type f -exec \
