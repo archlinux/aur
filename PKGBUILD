@@ -15,7 +15,7 @@
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
 pkgver=12.5.7_5813279
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -32,6 +32,10 @@ provides=(
 )
 depends=(
   dkms
+  fuse2
+  gksu
+  gtkmm
+  libcanberra
   hicolor-icon-theme
   # needed to replace internal libs:
   fontconfig
@@ -76,7 +80,7 @@ source=(
   'vmware-networks.service'
   'vmware-usbarbitrator.service'
 
-  'dkms.conf'
+  'dkms.conf.in'
   'Makefile'
   'vmblock.patch'
   'vmci.patch'
@@ -105,8 +109,8 @@ sha256sums=(
 
   '71339774bf2b962735013e8683d80591a7cf073607cc992f94b75207f3337485'
   '3a62d45f046b22d1fba9c34db42d8b2774b084f82356b9f18f05bd2cef214ace'
-  '7a321d06f9caeb69015bb1fe6cbc8c7113365589b64f18344b12f92fa21e7ebd'
-  'e37923167e181f57be4eeec1adba27a42d0d2240ece6b29aca44a61708ca16dd'
+  '0a5aa819ca73513407acaf67779d95745314f7222afbd3fc2eadc80f24054d47'
+  '7c666fa2c09c19d8af7b97227ee564ce0d5e044897167db583ecd67217a36394'
   '4339a98bd5aba421bc1043f2ee97ea00b082733c81bce321edc7bc72e16ce09b'
   'c2eba38cc99534675e3c114ecf68cbb65cb14b3d52c95ff17dbf1273fc289947'
   'd7e6b21fef94b4d3fe655a68c20a9556a718a252826a899fb46c4f2475046954'
@@ -159,7 +163,7 @@ _create_database_file() {
 if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
-	sqlite3 $database_filename "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"0\",\"${_vmware_fusion_ver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 $database_filename "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
   done
 fi
 }
@@ -186,13 +190,15 @@ fi
 }
 
 package() {
+  local vmware_installer_version=$(cat "$srcdir/extracted/vmware-installer/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
+
   # Make directories and copy files.
 
   mkdir -p \
     "$pkgdir/etc"/{cups,pam.d,modprobe.d,profile.d,thnuclnt,vmware} \
     "$pkgdir/usr"/{share,bin} \
     "$pkgdir/usr/include/vmware-vix" \
-    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/2.1.0,cups/filter,modules-load.d} \
+    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
     "$pkgdir/usr/share"/{doc/vmware-vix,licenses/"$pkgname"} \
     "$pkgdir/var/lib/vmware/Shared VMs"
 
@@ -251,7 +257,7 @@ package() {
 
   cp -r \
     vmware-installer/{python,sopython,vmis,vmis-launcher,vmware-installer,vmware-installer.py} \
-    "$pkgdir/usr/lib/vmware-installer/2.1.0"
+    "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version"
 
   cp -r \
     vmware-player-app/etc/cups/* \
@@ -277,7 +283,7 @@ package() {
   mv "$pkgdir/usr/lib/vmware-ovftool/vmware.eula" "$pkgdir/usr/share/licenses/$pkgname/VMware OVF Tool component for Linux - EULA.txt"
   rm "$pkgdir/usr/lib/vmware-ovftool"/{vmware-eula.rtf,open_source_licenses.txt,manifest.xml}
 
-  install -Dm 755 "$srcdir/configure-initscript.sh" "$pkgdir/usr/lib/vmware-installer/2.1.0/bin/configure-initscript.sh"
+  install -Dm 755 "$srcdir/configure-initscript.sh" "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version/bin/configure-initscript.sh"
 
   install -Dm 644 "vmware-vmx/etc/modprobe.d/modprobe-vmware-fuse.conf" "$pkgdir/etc/modprobe.d/vmware-fuse.conf"
 
@@ -315,7 +321,7 @@ package() {
     "$pkgdir/usr/lib/vmware/setup"/* \
     "$pkgdir/usr/lib/vmware/lib"/{wrapper-gtk24.sh,libgksu2.so.0/gksu-run-helper} \
     "$pkgdir/usr/lib/vmware-ovftool"/{ovftool,ovftool.bin} \
-    "$pkgdir/usr/lib/vmware-installer/2.1.0"/{vmware-installer,vmis-launcher} \
+    "$pkgdir/usr/lib/vmware-installer/$vmware_installer_version"/{vmware-installer,vmis-launcher} \
     "$pkgdir/usr/lib/cups/filter"/* \
     "$pkgdir/usr/lib/vmware-vix/setup"/*
 
@@ -372,8 +378,8 @@ package() {
   sed -i 's,@@AUTHD_PORT@@,902,' "$pkgdir/usr/lib/vmware/hostd/docroot/client/clients.xml"
 
   sed \
-    -e 's/@@VERSION@@/2.1.0/' \
-    -e 's,@@VMWARE_INSTALLER@@,/usr/lib/vmware-installer/2.1.0,' \
+    -e "s/@@VERSION@@/$vmware_installer_version/" \
+    -e "s,@@VMWARE_INSTALLER@@,/usr/lib/vmware-installer/$vmware_installer_version," \
     -i "$pkgdir/etc/vmware-installer/bootstrap"
 
 
@@ -382,7 +388,7 @@ package() {
   dkms_dir="$pkgdir/usr/src/$pkgname-$pkgver"
 
   install -Dm 644 "$srcdir/Makefile" "$dkms_dir/Makefile"
-  install -Dm 644 "$srcdir/dkms.conf" "$dkms_dir/dkms.conf"
+  install -Dm 644 "$srcdir/dkms.conf.in" "$dkms_dir/dkms.conf"
 
   sed \
     -e "s/@PKGNAME@/$pkgname/g" \

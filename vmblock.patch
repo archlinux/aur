@@ -329,10 +329,14 @@ index 098c94c..7aed6e7 100644
  {
     char *filename;
     struct inode *inode;
-@@ -135,7 +154,12 @@ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
+@@ -135,7 +154,16 @@ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
     inode->i_size = INODE_TO_IINFO(inode)->nameLen;
     inode->i_version = 1;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 12, 0)
     inode->i_atime = inode->i_mtime = inode->i_ctime = CURRENT_TIME;
++#else
++   inode->i_atime = inode->i_mtime = inode->i_ctime = current_kernel_time();
++#endif
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
     inode->i_uid = inode->i_gid = 0;
 +#else
