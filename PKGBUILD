@@ -25,7 +25,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=5.0.0svn_r307611
+pkgver=5.0.0svn_r307640
 
 pkgver() {
   cd "$pkgname"
@@ -212,6 +212,8 @@ build() {
     #     -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
     #     "../${_pkgname}"
     cmake -G 'Ninja' \
+        -DPGO_INSTRUMENT_LTO:BOOL=ON \
+        -C "../clang/cmake/caches/PGO.cmake" \
         -DCMAKE_BUILD_TYPE:STRING=Release \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DLLVM_APPEND_VC_REV:BOOL=ON \
@@ -227,7 +229,9 @@ build() {
         -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
         -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
-        -C "../clang/cmake/caches/PGO.cmake" \
+        -DLLVM_ENABLE_LTO=Thin \
+        -DLLVM_PARALLEL_LINK_JOBS=1 \
+        -DBOOTSTRAP_LLVM_ENABLE_LLD:BOOL=ON \
         "../${_pkgname}"
 
     ninja stage2
@@ -241,9 +245,10 @@ check() {
     # Dirty fix for unittests failing because the shared lib is not in the library path.
     # Also, disable the LLVM tests on i686 as they seem to fail too often there.
     #[[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
-    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja stage2-check
+    
+    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja stage2-check-llvm
+    
     ninja stage2-check-clang
-    ninja check-polly
     #make check-clang
     #make check-polly
 }
