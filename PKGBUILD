@@ -70,12 +70,10 @@ _language="$(_localetor)"
 source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/${pkgname}-${_idstr32}-${pkgver}_${_language}.tar.xz"{,.asc})
 source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/${pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz"{,.asc})
 source=("${pkgname}.desktop"
-	"${pkgname}.install"
 	"${pkgname}.png"
 	"${pkgname}.sh")
 
 md5sums=('914bc94601657ac143f21acd8ed75747'
-	'80e4b01673024885aa2a505e795b0463'
 	'494afbfa60fb4ce21840244cc3f7208c'
 	'ac6ee6d201ae0fa14250fbaf13959130')
 md5sums_i686=('SKIP'
