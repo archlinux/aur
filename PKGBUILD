@@ -2,7 +2,7 @@
 
 _pkgname=feeluown-mpris2-plugin
 pkgname="${_pkgname}-git"
-pkgver=r7.ecac35e
+pkgver=r8.d63e63d
 pkgrel=1
 pkgdesc="mpris dbus interface implementation for feeluown"
 arch=("any")
