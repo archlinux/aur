@@ -3,24 +3,24 @@
 # Contributor: PAblo Lezaeta <prflr88@gmail.com>
 
 _pkgname=xfce4-whiskermenu-plugin
-pkgname=xfce4-whiskermenu-plugin-git
-pkgver=2.0.0.42.g8e015
+pkgname=${_pkgname}-git
+pkgver=2.1.0.r24.gc326f6f
 pkgrel=1
 pkgdesc="Alternate Xfce menu"
 arch=("i686" "x86_64")
 url="http://gottcode.org/${_pkgname}/"
 license=("GPL2")
-depends=("xfce4-panel")
-makedepends=("cmake" "exo>=0.11" "" "git")
+depends=("xfce4-panel" "exo>=0.11")
+makedepends=("cmake" "git")
 groups=("xfce4-goodies" "xfce4-goodies-git")
-provides=("xfce4-whiskermenu-plugin")
-conflicts=("xfce4-whiskermenu-plugin")
-source=("$_pkgname::git+http://github.com/gottcode/xfce4-whiskermenu-plugin")
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+http://github.com/gottcode/xfce4-whiskermenu-plugin")
 md5sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --always | sed 's|-|.|g' | grep -o '[0-9]..*[0-9]'
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/([^-]*-g)/r\1/;s/-/./g"
 }
 
 build() {
