@@ -1,0 +1,3 @@
+post_install() {
+    echo "Note: replace the 'zfs' hook with 'plymouth-zfs' in '/etc/mkinitpcio.conf'"
+}
