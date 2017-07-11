@@ -1,0 +1,172 @@
+From c4f1bc8e2e9e6303a33e1babfffafef9aa628c49 Mon Sep 17 00:00:00 2001
+From: Guillem Jover <guillem@hadrons.org>
+Date: Tue, 11 Jul 2017 12:22:41 +0200
+Subject: [PATCH] telnetd: Fix buffer overflows
+
+Increate the data buffers so that the terminating NUL fits. Use strlen
+instead of sizeof to cope with the buffers size increase and to make
+the code future-proof.
+---
+ ChangeLog          |  7 +++++++
+ telnetd/telnetd.c  |  6 +++---
+ telnetd/termstat.c | 34 +++++++++++++++++-----------------
+ 3 files changed, 27 insertions(+), 20 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index ea93a846..99157ea1 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,10 @@
++2017-07-11  Guillem Jover  <guillem@hadrons.org>
++
++	* telnetd/telnetd.c (telnetd_run): Increate the data buffer so that
++	the terminating NUL fits. Use strlen instead of sizeof to cope with
++	the buffer size increase and make the code future-proof.
++	* telnetd/termstat.c (localstat, flowstat, clientstat): Likewise.
++
+ 2017-07-10  Omer Anson <oaanson@gmail.com>  (tiny change)
+ 
+ 	* src/hostname.c (parse_file): Free name and allocate one extra
+diff --git a/telnetd/telnetd.c b/telnetd/telnetd.c
+index 5e13e23d..917a3355 100644
+--- a/telnetd/telnetd.c
++++ b/telnetd/telnetd.c
+@@ -706,15 +706,15 @@ telnetd_run (void)
+ 	      int newflow = (c & TIOCPKT_DOSTOP) ? 1 : 0;
+ 	      if (newflow != flowmode)
+ 		{
+-		  char data[6];
++		  char data[7];
+ 
+ 		  sprintf (data, "%c%c%c%c%c%c",
+ 			   IAC, SB, TELOPT_LFLOW,
+ 			   flowmode ? LFLOW_ON : LFLOW_OFF,
+ 			   IAC, SE);
+-		  net_output_datalen (data, sizeof (data));
++		  net_output_datalen (data, strlen (data));
+ 		  DEBUG (debug_options, 1,
+-			 printsub ('>', data + 2, sizeof (data) - 2));
++			 printsub ('>', data + 2, strlen (data) - 2));
+ 		}
+ 	    }
+ 
+diff --git a/telnetd/termstat.c b/telnetd/termstat.c
+index a3e37d03..167fff1e 100644
+--- a/telnetd/termstat.c
++++ b/telnetd/termstat.c
+@@ -306,7 +306,7 @@ localstat (void)
+ 	}
+       else if (lmodetype == REAL_LINEMODE)
+ 	{
+-	  char data[7];
++	  char data[8];
+ 
+ 	  send_do (TELOPT_LINEMODE, 1);
+ 	  /* send along edit modes */
+@@ -314,9 +314,9 @@ localstat (void)
+ 		   IAC, SB, TELOPT_LINEMODE,
+ 		   LM_MODE, useeditmode,
+ 		   IAC, SE);
+-	  net_output_datalen (data, sizeof (data));
++	  net_output_datalen (data, strlen (data));
+ 	  DEBUG (debug_options, 1,
+-		 printsub ('>', data + 2, sizeof (data) - 2));
++		 printsub ('>', data + 2, strlen (data) - 2));
+ 
+ 	  editmode = useeditmode;
+ 	}
+@@ -341,15 +341,15 @@ localstat (void)
+ 	  /*
+ 	   * Send along appropriate edit mode mask.
+ 	   */
+-	  char data[7];
++	  char data[8];
+ 
+ 	  sprintf (data, "%c%c%c%c%c%c%c",
+ 		   IAC, SB, TELOPT_LINEMODE,
+ 		   LM_MODE, useeditmode,
+ 		   IAC, SE);
+-	  net_output_datalen (data, sizeof (data));
++	  net_output_datalen (data, strlen (data));
+ 	  DEBUG (debug_options, 1,
+-		 printsub ('>', data + 2, sizeof (data) - 2));
++		 printsub ('>', data + 2, strlen (data) - 2));
+ 
+ 	  editmode = useeditmode;
+ 	}
+@@ -393,7 +393,7 @@ flowstat (void)
+ {
+   if (his_state_is_will (TELOPT_LFLOW))
+     {
+-      char data[6];
++      char data[7];
+ 
+       if (tty_flowmode () != flowmode)
+ 	{
+@@ -402,9 +402,9 @@ flowstat (void)
+ 		   IAC, SB, TELOPT_LFLOW,
+ 		   flowmode ? LFLOW_ON : LFLOW_OFF,
+ 		   IAC, SE);
+-	  net_output_datalen (data, sizeof (data));
++	  net_output_datalen (data, strlen (data));
+ 	  DEBUG (debug_options, 1,
+-		 printsub ('>', data + 2, sizeof (data) - 2));
++		 printsub ('>', data + 2, strlen (data) - 2));
+ 	}
+       if (tty_restartany () != restartany)
+ 	{
+@@ -413,9 +413,9 @@ flowstat (void)
+ 		   IAC, SB, TELOPT_LFLOW,
+ 		   restartany ? LFLOW_RESTART_ANY : LFLOW_RESTART_XON,
+ 		   IAC, SE);
+-	  net_output_datalen (data, sizeof (data));
++	  net_output_datalen (data, strlen (data));
+ 	  DEBUG (debug_options, 1,
+-		 printsub ('>', data + 2, sizeof (data) - 2));
++		 printsub ('>', data + 2, strlen (data) - 2));
+ 	}
+     }
+ }
+@@ -478,7 +478,7 @@ clientstat (register int code, register int parm1, register int parm2)
+ 	  if (lmodetype == REAL_LINEMODE && uselinemode)
+ 	    if (uselinemode)
+ 	      {
+-		char data[7];
++		char data[8];
+ 
+ 		useeditmode = 0;
+ 		if (tty_isediting ())
+@@ -494,9 +494,9 @@ clientstat (register int code, register int parm1, register int parm2)
+ 			 IAC, SB, TELOPT_LINEMODE,
+ 			 LM_MODE, useeditmode,
+ 			 IAC, SE);
+-		net_output_datalen (data, sizeof (data));
++		net_output_datalen (data, strlen (data));
+ 		DEBUG (debug_options, 1,
+-		       printsub ('>', data + 2, sizeof (data) - 2));
++		       printsub ('>', data + 2, strlen (data) - 2));
+ 
+ 		editmode = useeditmode;
+ 	      }
+@@ -555,15 +555,15 @@ clientstat (register int code, register int parm1, register int parm2)
+ 
+ 	    if (!ack)
+ 	      {
+-		char data[7];
++		char data[8];
+ 
+ 		sprintf (data, "%c%c%c%c%c%c%c",
+ 			 IAC, SB, TELOPT_LINEMODE,
+ 			 LM_MODE, useeditmode | MODE_ACK,
+ 			 IAC, SE);
+-		net_output_datalen (data, sizeof (data));
++		net_output_datalen (data, strlen (data));
+ 		DEBUG (debug_options, 1,
+-		       printsub ('>', data + 2, sizeof (data) - 2));
++		       printsub ('>', data + 2, strlen (data) - 2));
+ 	      }
+ 
+ 	    editmode = useeditmode;
+-- 
+2.13.2
+

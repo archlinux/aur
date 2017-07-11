@@ -6,7 +6,7 @@
 set -u
 _pkgname='inetutils'
 pkgname="${_pkgname}-git"
-pkgver=1.9.4.r25.g3d64a8c7
+pkgver=1.9.4.r38.g91960071
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='A collection of common network programs'
@@ -24,8 +24,9 @@ options=('!emptydirs' '!strip')
 install="${_pkgname}.install"
 _verwatch=('http://ftp.gnu.org/gnu/inetutils/' 'inetutils-\([0-9\.]\+\)\.tar\.gz' 'l')
 source=(
-  "git://git.savannah.gnu.org/${_pkgname}.git#commit=3d64a8c7280e7d218c4b607aa25352be1d6c4ded"
+  "git://git.savannah.gnu.org/${_pkgname}.git" #commit=3d64a8c7280e7d218c4b607aa25352be1d6c4ded"
   'git://git.sv.gnu.org/gnulib'
+  '0001-telnetd-Fix-buffer-overflows.patch'
 ) # This link must be the same as the one in bootstrap
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 _archsource=(
@@ -41,6 +42,7 @@ done
 unset _src _archlink
 sha256sums=('SKIP'
             'SKIP'
+            '1eacb0bdb4496f12e7a0593278aa4ae1eadf271a263bf27285acb1c03015c4de'
             'f1b9b4e57f484070366444a649f1be151d01d5bc965b9b192c242e4b7cc4beeb'
             '428367b148033c7fa865e92bdd73b06cb58e6909488649adebf8d2253a022f1f'
             '6112bcdb595937a8c7940dc158a97fd48b8cce6526a9fb017f347f614b9d6548'
@@ -68,11 +70,14 @@ pkgver() {
 prepare() {
   set -u
   cd "${_srcdir}"
-  ln -sf '../gnulib'
+  ln -s '../gnulib'
   # telnetd disconnects without banner on 90% of connections
   # http://lists.gnu.org/archive/html/bug-inetutils/2015-07/msg00006.html
   # http://lists.gnu.org/archive/html/bug-inetutils/2015-08/index.html
-  sed -i -e 's:if (pty_read () <= 0):if (pty_read () < 0):g' 'telnetd/telnetd.c'
+  sed -e 's:if (pty_read () <= 0):if (pty_read () < 0):g' -i 'telnetd/telnetd.c'
+
+  # http://lists.gnu.org/archive/html/bug-inetutils/2017-07/msg00005.html
+  patch -Nbup1 < '../0001-telnetd-Fix-buffer-overflows.patch'
   set +u
 }
 
@@ -99,7 +104,7 @@ _configure() {
       --disable-logger --disable-syslogd \
       --disable-inetd --disable-whois \
       --disable-uucpd --disable-ifconfig --disable-traceroute
-    sed -i -e '/INSTALL_STRIP_PROGRAM/ s: -s::g' 'Makefile'
+    sed -e '/INSTALL_STRIP_PROGRAM/ s: -s::g' -i 'Makefile'
   fi
   cd "${srcdir}"
   set +u
