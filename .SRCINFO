@@ -2,6 +2,7 @@ pkgbase = epson-inkjet-printer-workforce-wf7610-series
 	pkgdesc = EPSON Workforce WF-7610 Series printer driver
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://www.openprinting.org/printer/Epson/Epson-WF-7610_Series
 	arch = x86_64
 	license = GPL
 	license = custom:Epson Licence Agreement
