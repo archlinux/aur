@@ -1,0 +1,14 @@
+pkgbase = python-dash-renderer
+	pkgdesc = Dash front-end
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://plot.ly/products/dash
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/2f/84/6a7c8359fb36bf0f53af754fda66507fc10cfc2d8852bf2f0fcb87e9e23f/dash_renderer-0.7.3.tar.gz
+	sha256sums = 4c3247fe18cf99d4c66218822f501a6cf617c88d0b8b13da537ea255628095cc
+
+pkgname = python-dash-renderer
+
