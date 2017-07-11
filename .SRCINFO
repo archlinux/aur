@@ -1,7 +1,7 @@
 pkgbase = eleet
 	pkgdesc = Eleet private messenger
 	pkgver = 1.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ELMessenger/Desktop
 	install = eleet.install
 	arch = x86_64
