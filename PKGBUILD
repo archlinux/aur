@@ -17,7 +17,7 @@
 #
 #
 pkgname="spl-utils-linux-hardened"
-pkgver=0.6.5.11_4.12.d.0_1
+pkgver=0.6.5.11_4.12.e.0_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
@@ -27,7 +27,7 @@ sha256sums=("ebab87a064985f93122ad82721ca54569a5ef20dc3579f84d18075210cf316ac")
 groups=("archzfs-linux-hardened")
 license=("GPL")
 provides=("spl-utils")
-makedepends=("linux-hardened-headers=4.12.d-1")
+makedepends=("linux-hardened-headers=4.12.e-1")
 conflicts=('spl-utils-linux' 'spl-utils-linux-git' 'spl-utils-linux-lts' 'spl-utils-linux-lts-git' 'spl-utils-linux-hardened-git')
 
 build() {
