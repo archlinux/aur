@@ -1,11 +1,10 @@
 pkgbase = alienfx
 	pkgdesc = AlienFX Configuration Utility
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trackmastersteve/alienfx
 	arch = any
 	license = GPLv3
-	makedepends = python2
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-cairo
