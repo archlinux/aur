@@ -45,12 +45,10 @@ validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/${_pkgname}-${_idstr32}-${pkgver}_${_language}.tar.xz"{,.asc})
 source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/${_pkgname}-${_idstr64}-${pkgver}_${_language}.tar.xz"{,.asc})
 source=("${_pkgname}.desktop"
-	"${_pkgname}.install"
 	"${_pkgname}.png"
 	"${_pkgname}.sh")
 
 md5sums=('9178c9325979377f7ec57569b15fcb61'
-	'b97eb146f24c15289d3b4518c0608c7e'
 	'494afbfa60fb4ce21840244cc3f7208c'
 	'ac6ee6d201ae0fa14250fbaf13959130')
 md5sums_i686=('SKIP'
