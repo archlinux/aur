@@ -1,0 +1,16 @@
+pkgbase = python2-pyang
+	pkgdesc = A YANG (RFC 6020) validator and converter
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pyang
+	arch = any
+	license = custom:BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/mbj4668/pyang/archive/pyang-1.7.3.tar.gz
+	sha256sums = 67131553cf54e6228aeda9ceb9878bc9ec870cc41cbe74e7764393ec9056b971
+
+pkgname = python-pyang
+
+pkgname = python2-pyang
+
