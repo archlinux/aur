@@ -1,0 +1,21 @@
+# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+
+pkgname=racktables
+pkgver=0.20.13
+pkgrel=1
+pkgdesc="Datacenter and server room asset management web-software"
+arch=('any')
+url="http://racktables.org/"
+license=('GPL2')
+depends=('mariadb-clients' 'php' 'php-gd')
+optdepends=('php-snmp')
+source=("https://downloads.sourceforge.net/project/racktables/RackTables-${pkgver}.tar.gz")
+md5sums=('3f752aa6cf689c47abdfb1bceb0bec6e')
+
+package() {
+  cd "${srcdir}/RackTables-${pkgver}"
+  # note: override datadir var to use Arch-specific 'webapps' directory
+  make DESTDIR="${pkgdir}" prefix=/usr datadir='$(prefix)/share/webapps' install install-docs
+}
+
+# vim: ft=sh syn=sh
