@@ -10,10 +10,10 @@ pkgbase = ckb-next
 	makedepends = git
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	provides = ckb-next
 	conflicts = ckb-git
 	conflicts = ckb-git-latest
-	conflicts = ckb-next-git
-	conflicts = ckb-next-latest-git
+	conflicts = ckb-next
 	source = https://github.com/mattanger/ckb-next/archive/v0.2.8.tar.gz
 	md5sums = bb2f354559fedc6883acc0a478e7e59a
 
