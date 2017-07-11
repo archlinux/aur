@@ -3,14 +3,14 @@ _pkgname=SimpleITK
 pkgname=simpleitk
 pkgver=1.0.0
 _pypkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 depends=('gcc-libs' 'insight-toolkit>=4.11.0')
 makedepends=(
-    'cmake' 'git' 'swig'
+    'clang' 'cmake' 'git' 'swig'
     'java-environment'
     'lua51'
     'mono'
@@ -50,6 +50,7 @@ prepare() {
 build() {
     cd "$_pkgname/build"
 
+    CC=clang CXX=clang++ \
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_RPATH:BOOL=ON \
