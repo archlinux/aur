@@ -34,14 +34,16 @@ zfs_decrypt_fs() {
     # check if dataset is encrypted
     [ "$(zfs get -H -o value encryption "${dataset}")" != "off" ] || return 0
     
-    # get the encryption root
-    encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
-    
     # check if key is already loaded
     [ "$(zfs get -H -o value encryption "${dataset}")" != "available" ] || return 0
     
-    # finally load the key
-    zfs load-key "${encryptionroot}"
+    # get the encryption root
+    encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
+    
+    # loop until we get the correct password
+     while ! eval zfs load-key "${encryptionroot}"; do
+        sleep 2
+    done
 }
 
 zfs_mount_handler () {
