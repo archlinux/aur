@@ -3,7 +3,7 @@
 # Co-maintainer: lilydjwg <lilydjwg@gmail.com>
 
 pkgname=nvchecker-git
-pkgver=0.5dev.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="a tool for checking if a new version of some software has been released."
 arch=('any')
@@ -23,7 +23,7 @@ _gitroot=nvchecker
 
 pkgver() {
   cd "$srcdir/$_gitroot"
-  echo $(awk '$1 == "__version__" { gsub(/\x27/, "", $3); print $3 }' nvchecker/__init__.py).$(git describe --long | cut -d. -f2)
+  echo $(awk '$1 == "__version__" { gsub(/\x27/, "", $3); print $3 }' nvchecker/__init__.py).$(git describe --long | cut -d- -f2)
 }
 
 build() {
