@@ -1,0 +1,9 @@
+[Unit]
+Description=Remote traffic capture daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rpcapd -4 -n -p 2002
+
+[Install]
+WantedBy=multi-user.target

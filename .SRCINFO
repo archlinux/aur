@@ -1,0 +1,16 @@
+pkgbase = rpcapd-git
+	pkgdesc = Remote Packet Capture Daemon
+	pkgver = r12.924fc55
+	pkgrel = 1
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = rpcapd-git
+	conflicts = rpcapd-git
+	source = rpcapd::git+https://github.com/frgtn/rpcapd-linux.git
+	source = rpcapd.service
+	md5sums = SKIP
+	md5sums = 9327c94b8a0557f2204a51d5f2863b24
+
+pkgname = rpcapd-git
+
