@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-dim-on-battery-git
+	pkgdesc = An extension for gnome shell that will change the screen brightness when the machine is running on battery power
+	pkgver = 43.ebba9f2
+	pkgrel = 1
+	url = http://github.com/nailfarmer/gnome-shell-dim-on-battery-extension
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell>=3.14
+	provides = gnome-shell-extension-dim-on-battery-git
+	source = git+http://github.com/nailfarmer/gnome-shell-dim-on-battery-extension.git
+	sha1sums = SKIP
+
+pkgname = gnome-shell-extension-dim-on-battery-git
+
