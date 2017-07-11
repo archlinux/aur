@@ -1,0 +1,16 @@
+pkgbase = dash-html-components
+	pkgdesc = HTML components for dash.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://plot.ly/dash/dash-html-components
+	arch = any
+	license = MIT
+	checkdepends = python-dash
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/cf/05/a33843c06643a492ae593f98cdcaaa5674ec4ad5025e53c0ff2918d60840/dash_html_components-0.6.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = dash-html-components
+
