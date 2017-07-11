@@ -2,7 +2,7 @@
 # Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-next-git
-pkgver=0.2.8.r83.g6a0745a
+pkgver=0.2.8.r103.gc375b5a
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver"
@@ -11,7 +11,7 @@ url="https://github.com/mattanger/ckb-next"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
-conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next-latest-git')
+conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next' 'ckb-next-latest-git')
 install=ckb-next-git.install
 source=('ckb-next-git::git+https://github.com/mattanger/ckb-next.git')
 md5sums=('SKIP')

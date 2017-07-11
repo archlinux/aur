@@ -1,6 +1,6 @@
 pkgbase = ckb-next-git
 	pkgdesc = Corsair Keyboard and Mouse Input Driver
-	pkgver = 0.2.8.r83.g6a0745a
+	pkgver = 0.2.8.r103.gc375b5a
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mattanger/ckb-next
@@ -13,6 +13,7 @@ pkgbase = ckb-next-git
 	depends = hicolor-icon-theme
 	conflicts = ckb-git
 	conflicts = ckb-git-latest
+	conflicts = ckb-next
 	conflicts = ckb-next-latest-git
 	source = ckb-next-git::git+https://github.com/mattanger/ckb-next.git
 	md5sums = SKIP
