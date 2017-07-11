@@ -1,0 +1,13 @@
+pkgbase = aut
+	pkgdesc = ArchLinux Upgrade Tool
+	pkgver = 11_07_2017
+	pkgrel = 1
+	url = https://github.com/Andrew-Bezzubtsev/aut.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = zenity
+	depends = gksu
+
+pkgname = aut
+
