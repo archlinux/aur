@@ -15,7 +15,8 @@ source=("$url/archive/$pkgver.tar.gz")
 md5sums=()
 
 package() {
-	cd $srcdir/$pkgname-$pkgver/
+	cd $srcdir/$pkgname-$pkgver/src
 	mkdir -p $pkgdir/usr/bin/
 	install aut $pkgdir/usr/bin/
 }
+md5sums=('2ddb7f8782668727bd16564609ac0b79')
