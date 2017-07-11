@@ -1,12 +1,12 @@
 # Maintainer:  <gucong@gc-desktop>
 pkgname=zoltan
 pkgver=3.83
-pkgrel=2
+pkgrel=3
 pkgdesc="Parallel Partitioning, Load Balancing and Data-Management Services"
 arch=('i686' 'x86_64')
 url="http://www.cs.sandia.gov/zoltan"
 license=('LGPL')
-depends=('scotch' 'metis' 'openmpi')
+depends=('scotch' 'parmetis' 'openmpi')
 source=(http://www.cs.sandia.gov/~kddevin/Zoltan_Distributions/${pkgname}_distrib_v${pkgver}.tar.gz)
 md5sums=('1ff1bc93f91e12f2c533ddb01f2c095f')
 
@@ -31,8 +31,11 @@ build() {
       --with-parmetis \
       --with-parmetis-incdir="/usr/include" \
       --with-parmetis-libdir="/usr/lib" \
-      --with-cflags="-fPIC"
-
+      --with-ar='$(CXX) -shared $(LDFLAGS) -o' \
+      --with-cflags="-fPIC" \
+      --with-cxxflags="-fPIC" \
+      RANLIB=echo
+      
   make
 }
 
@@ -40,6 +43,7 @@ package() {
   cd "${srcdir}/build"
 
   make DESTDIR="$pkgdir/" install
+  mv "$pkgdir/usr/lib/libzoltan.a" "$pkgdir/usr/lib/libzoltan.so"
 }
 
 # vim:set ts=2 sw=2 et:
