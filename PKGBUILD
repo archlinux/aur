@@ -2,7 +2,7 @@
 
 pkgname=couchbase-server-community
 pkgver=4.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
 url="http://www.couchbase.com/"
@@ -11,17 +11,19 @@ source=(
   "couchbase-server.service"
 )
 install=couchbase-server.install
-makedepends=(chrpath)
-depends=(glibc gcc-libs sqlite openssl ncurses5-compat-libs zlib python2 libopenssl-1.0-compat)
+depends=(glibc gcc-libs sqlite openssl zlib python2 openssl-1.0 ncurses5-compat-libs)
 conflicts=(couchbase3-server-community)
 
 package() {
-  msg2 "Extracting the data.tar.gz"
+  msg2 "Extracting the data.tar.gz file"
   tar -xf data.tar.xz -C "${pkgdir}/"
 
-  chrpath -r "/usr/lib/openssl-1.0-compat:/usr/lib:/usr/local/lib" "${pkgdir}/opt/couchbase/lib/erlang/lib/crypto-3.2/priv/lib/crypto.so"
+  # fix python binaries
+  msg2 "Fixing couchbase binaries to use python2"
+  grep -lrnz '^#!/usr/bin/env python' "${pkgdir}/opt/couchbase/"{bin,lib/python} | xargs sed -i 's/env python$/env python2/'
 
   # remove init.d and replace by systemd definition
+  msg2 "Installing systemd service file"
   rm -Rf "${pkgdir}/etc"
   install -D couchbase-server.service "${pkgdir}/usr/lib/systemd/system/couchbase-server.service"
 }
