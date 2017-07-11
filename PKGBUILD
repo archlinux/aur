@@ -3,7 +3,7 @@
 
 pkgname=php-pdo_sqlsrv
 _extname=${pkgname#php-}
-pkgver=4.3.0RC1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Microsoft Drivers for PHP for SQL Server"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://pecl.php.net/package/$_extname"
 license=('MIT')
 depends=('php' 'msodbcsql')
 source=("https://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('8b29210c298a9234b48886d8a98cd2373251dfbdf600cbe15b5069870764c195')
+sha256sums=('e79a0e86d02cafcc63e611b31e48b5b0593820b8348e9420919babccb65730ab')
 backup=("etc/php/conf.d/$_extname.ini")
 
 build() {
