@@ -4,8 +4,8 @@
 pkgbase="zfs-encryption-dkms-git"
 pkgname=("zfs-encryption-dkms-git" "zfs-utils-encryption-dkms-git")
 _ver=0.7.0
-pkgver=0.7.0_r2959.13283607c
-pkgrel=4
+pkgver=0.7.0_r2965.076800258
+pkgrel=1
 license=('CDDL')
 makedepends=("git" "spl-dkms-git")
 arch=("i686" "x86_64")
@@ -63,6 +63,7 @@ package_zfs-utils-encryption-dkms-git() {
     pkgdesc="Kernel module support files for the Zettabyte File System build with support for native encryption. (Git version)"
     provides=("zfs-utils")
     conflicts=("zfs-utils-git" "zfs-utils-lts" "zfs-utils" "zfs-utils-dkms-git")
+    optdepends=('plymouth-zfs: plymouth support for encrypted root')
 
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
