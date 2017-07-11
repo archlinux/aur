@@ -4,8 +4,8 @@
 
 pkgname=uim-debian
 pkgver=1.8.6+gh20161003.0.d63dadd
-_debrel=2
-pkgrel=2
+_debrel=2.1
+pkgrel=2.1
 pkgdesc='Multilingual input method library with Debian patches (supports gtk3 and qt5)'
 url='https://packages.debian.org/sid/uim'
 license=('custom:BSD')
@@ -22,7 +22,7 @@ install=${pkgname}.install
 source=("http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}.orig.tar.gz"
         "http://http.debian.net/debian/pool/main/u/uim/uim_${pkgver}-${_debrel}.debian.tar.xz")
 sha256sums=('7a2d1667553afc0bca4cc33f9bc8fb01a6867177d2a3e13b1b85c7add16110e9'
-            '322d1ba023e6d2697c8c2410d6c0e0f1713be47ac08b60d5fdf289307eabbe70')
+            'dcb22e33d1891932da6a3d8a35fee758535d080fda78312afd79d201ad5fb31d')
 
 prepare() {
     cd "${srcdir}/uim-${pkgver}"
@@ -44,8 +44,6 @@ prepare() {
 
     sed -i.bak 's/load(qt_plugin)/TEMPLATE = lib\nCONFIG += plugin/' \
         "${srcdir}/uim-${pkgver}/qt5/immodule/quimplatforminputcontextplugin.pro.in"
-
-    msg "prepare() done."
 }
 
 build() {
