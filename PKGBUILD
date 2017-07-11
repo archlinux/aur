@@ -1,23 +1,22 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
 pkgbase=riot-desktop-git
 pkgver=r3963.cf5cf025
-pkgrel=1
+pkgrel=2
 pkgname=riot-desktop-git
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('any')
 url="https://riot.im"
 _url="https://github.com/vector-im/riot-web"
 license=('Apache')
-depends=('electron')
 makedepends=('git' 'npm')
-conflicts=('riot-desktop' 'riot-web')
+conflicts=('riot-desktop' 'riot-web' 'electron')
 backup=("etc/riot/config.json")
 source=('riot-desktop-git::git://github.com/vector-im/riot-web.git'
         "riot-desktop.desktop"
         "riot-desktop.sh")
-md5sums=('SKIP'
-	 'SKIP'
-	 'SKIP')
+sha256sums=('SKIP'
+	    'ae0654027f0646178961f6397322aefdc817d052625772dd297d636fe9726aff'
+            '0f8d896793e6f6f677febb5921b2256c9786fad67294cb32efd6d059ed21e04c')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -38,6 +37,9 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname}"
+	npm install -g --user root --prefix "$pkgdir/usr" electron --cache "${srcdir}/npm-cache"
+	chmod -R go-w "$pkgdir"/usr
+
 	install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/riot
 
 	cp -r webapp/* "${pkgdir}"/usr/share/webapps/riot/
