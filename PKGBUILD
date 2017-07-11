@@ -5,13 +5,14 @@ pkgname=ckb-next-latest-git
 pkgver=0.2.7.r182.g13beb39
 pkgrel=1
 epoch=1
-pkgdesc="Corsair Keyboard and Mouse Input Driver, the latest version"
+pkgdesc="Corsair Keyboard and Mouse Input Driver, git newdev branch"
 arch=('i686' 'x86_64')
 url="https://github.com/mattanger/ckb-next"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
-conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next-git')
+conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next')
+provides=('ckb-next')
 install=ckb-next-latest-git.install
 source=('ckb-next-latest-git::git+https://github.com/mattanger/ckb-next.git#branch=newdev')
 md5sums=('SKIP')

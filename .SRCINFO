@@ -1,5 +1,5 @@
 pkgbase = ckb-next-latest-git
-	pkgdesc = Corsair Keyboard and Mouse Input Driver, the latest version
+	pkgdesc = Corsair Keyboard and Mouse Input Driver, git newdev branch
 	pkgver = 0.2.7.r182.g13beb39
 	pkgrel = 1
 	epoch = 1
@@ -11,9 +11,10 @@ pkgbase = ckb-next-latest-git
 	makedepends = git
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	provides = ckb-next
 	conflicts = ckb-git
 	conflicts = ckb-git-latest
-	conflicts = ckb-next-git
+	conflicts = ckb-next
 	source = ckb-next-latest-git::git+https://github.com/mattanger/ckb-next.git#branch=newdev
 	md5sums = SKIP
 
