@@ -3,12 +3,12 @@
 # Contributor: Sergio A. Morales <sergiomorales@archlinux.cl>
 pkgname=389-adminutil
 pkgver=1.1.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility library for 389 administration"
 arch=('i686' 'x86_64')
 url="http://directory.fedoraproject.org/"
 license=('GPL')
-depends=('389-ds-base' 'mozldap')
+depends=('389-ds-base')
 source=("http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2")
 sha256sums=('d5844b95a8bec9fb5e677e4b5c78489959386fd73d061f13b2096159c0726fec')
 
@@ -21,8 +21,7 @@ build() {
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --disable-rpath \
-              --with-ldapsdk-inc=/usr/include/mozldap \
-              --with-ldapsdk-lib=/usr/lib/mozldap
+	      --with-openldap
 
   msg2 "Running make..."
   make
