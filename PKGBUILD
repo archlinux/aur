@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=quiterss-git
-pkgver=0.18.6.r8.g243d40f6
+pkgver=0.18.6.r12.g944a0a76
 pkgrel=1
 pkgdesc="Fast and light RSS/Atom feed reader written in Qt/С++"
 arch=('i686' 'x86_64')
@@ -19,12 +19,6 @@ pkgver() {
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${pkgname%-*}"
-  # revert commit so it builds on qt5-5.9.0
-  git revert --no-edit --no-commit 66b8b01a2281a85c4d84d6a78626faab00e643ea
-}
-
 build() {
   cd "${pkgname%-*}"
   qmake-qt5 QuiteRSS.pro \
@@ -36,8 +30,5 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-*}"
-  make INSTALL_ROOT="$pkgdir/" install
-  # makefile doesn't install translations?
-  cp release/target/lang/*.qm "$pkgdir"/usr/share/quiterss/lang/
+  make -C "${pkgname%-*}" INSTALL_ROOT="$pkgdir/" install
 }
