@@ -1,84 +1,45 @@
-From c1bf21c75d0c4fe3a8f70a5c86a75f1992bf2b9f Mon Sep 17 00:00:00 2001
-From: Benjamin Tissoires <benjamin.tissoires@redhat.com>
-Date: Tue, 24 May 2016 22:30:49 +0200
-Subject: [PATCH 1/2] power: MSHW0011 rev-eng implementation
-
-MSHW0011 replaces the battery firmware by using ACPI operation regions.
-The values have been obtained by reverse engineering, and are subject to
-errors. Looks like it works on overall pretty well.
-
-I couldn't manage to get the IRQ correctly triggered, so I am using a
-good old polling thread to check for changes.
-
-The acpica bits need their own patch with a little more love.
-
-Signed-off-by: Benjamin Tissoires <benjamin.tissoires@redhat.com>
----
- drivers/acpi/acpica/exfield.c         |  11 +
- drivers/power/supply/Kconfig          |   8 +
- drivers/power/supply/Makefile         |   1 +
- drivers/power/supply/surface3_power.c | 674 ++++++++++++++++++++++++++++++++++
- 4 files changed, 694 insertions(+)
- create mode 100644 drivers/power/supply/surface3_power.c
-
-diff --git a/drivers/acpi/acpica/exfield.c b/drivers/acpi/acpica/exfield.c
-index d7d3ee3..eec84dd 100644
---- a/drivers/acpi/acpica/exfield.c
-+++ b/drivers/acpi/acpica/exfield.c
-@@ -413,6 +413,17 @@ acpi_ex_write_data_to_field(union acpi_operand_object *source_desc,
- 			 *     Data[x-1]: (Bytes 2-x of the arbitrary length data buffer)
- 			 */
- 			length += 2;
-+
-+			/*
-+			 * bug? in the MS Surface 3: length is 2 but the command
-+			 * needs 3 parameters.
-+			 * Functions like BIX requires a lot of in/out data,
-+			 * so just take the incoming buffer length as the
-+			 * reference.
-+			 */
-+			if (accessor_type == 0xf)
-+				length = source_desc->buffer.length;
-+
- 			function = ACPI_WRITE | (accessor_type << 16);
- 		} else {	/* IPMI */
+diff --git a/drivers/acpi/Kconfig b/drivers/acpi/Kconfig
+index 1ce52f8..ac29170 100644
+--- a/drivers/acpi/Kconfig
++++ b/drivers/acpi/Kconfig
+@@ -488,6 +488,12 @@ config ACPI_EXTLOG
+ 	  driver adds support for that functionality with corresponding
+ 	  tracepoint which carries that information to userspace.
  
-diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index 76806a0..d6047ea 100644
---- a/drivers/power/supply/Kconfig
-+++ b/drivers/power/supply/Kconfig
-@@ -511,4 +511,12 @@ config AXP20X_POWER
- 	  This driver provides support for the power supply features of
- 	  AXP20x PMIC.
- 
-+config SURFACE3_POWER
-+	tristate "Surface 3 power management driver"
-+	depends on I2C
-+	depends on GPIOLIB
++config ACPI_SURFACE3_POWER_OPREGION
++	tristate "Surface 3 battery platform operation region support"
 +	help
-+	  This driver provides support for the power supply features of
-+	  the Surface 3.
++	  Select this option to enable support for ACPI operation
++	  region of the Surface 3 battery platform driver.
 +
- endif # POWER_SUPPLY
-diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-index 36c599d..1bca67a 100644
---- a/drivers/power/supply/Makefile
-+++ b/drivers/power/supply/Makefile
-@@ -72,3 +72,4 @@ obj-$(CONFIG_CHARGER_TPS65090)	+= tps65090-charger.o
- obj-$(CONFIG_CHARGER_TPS65217)	+= tps65217_charger.o
- obj-$(CONFIG_AXP288_FUEL_GAUGE) += axp288_fuel_gauge.o
- obj-$(CONFIG_AXP288_CHARGER)	+= axp288_charger.o
-+obj-$(CONFIG_SURFACE3_POWER)	+= surface3_power.o
-diff --git a/drivers/power/supply/surface3_power.c b/drivers/power/supply/surface3_power.c
+ menuconfig PMIC_OPREGION
+ 	bool "PMIC (Power Management Integrated Circuit) operation region support"
+ 	help
+diff --git a/drivers/acpi/Makefile b/drivers/acpi/Makefile
+index b1aacfc..459a1aa 100644
+--- a/drivers/acpi/Makefile
++++ b/drivers/acpi/Makefile
+@@ -98,6 +98,8 @@ obj-$(CONFIG_ACPI_APEI)		+= apei/
+ 
+ obj-$(CONFIG_ACPI_EXTLOG)	+= acpi_extlog.o
+ 
++obj-$(CONFIG_ACPI_SURFACE3_POWER_OPREGION) += surface3_power.o
++
+ obj-$(CONFIG_PMIC_OPREGION)	+= pmic/intel_pmic.o
+ obj-$(CONFIG_CRC_PMIC_OPREGION) += pmic/intel_pmic_crc.o
+ obj-$(CONFIG_XPOWER_PMIC_OPREGION) += pmic/intel_pmic_xpower.o
+diff --git a/drivers/acpi/surface3_power.c b/drivers/acpi/surface3_power.c
 new file mode 100644
-index 0000000..eee21d3
+index 0000000..6d59c7f
 --- /dev/null
-+++ b/drivers/power/supply/surface3_power.c
-@@ -0,0 +1,674 @@
++++ b/drivers/acpi/surface3_power.c
+@@ -0,0 +1,702 @@
 +/*
 + * Supports for the power IC on the Surface 3 tablet.
 + *
-+ * (C) Copyright 2016 Red Hat, Inc
++ * (C) Copyright 2016-2017 Red Hat, Inc
++ * (C) Copyright 2016-2017 Benjamin Tissoires <benjamin.tissoires@gmail.com>
++ * (C) Copyright 2016 Stephen Just <stephenjust@gmail.com>
 + *
 + * This program is free software; you can redistribute it and/or
 + * modify it under the terms of the GNU General Public License
@@ -112,16 +73,16 @@ index 0000000..eee21d3
 + *     dumps.
 + */
 +
-+#include <linux/kernel.h>
-+#include <linux/i2c.h>
-+#include <linux/slab.h>
-+#include <linux/acpi.h>
-+#include <linux/kthread.h>
-+#include <linux/freezer.h>
-+
 +#include <asm/unaligned.h>
++#include <linux/acpi.h>
++#include <linux/freezer.h>
++#include <linux/i2c.h>
++#include <linux/kernel.h>
++#include <linux/kthread.h>
++#include <linux/slab.h>
++#include <linux/uuid.h>
 +
-+#define POLL_INTERVAL		(HZ * 2)
++#define POLL_INTERVAL		(2 * HZ)
 +
 +static bool dump_registers;
 +module_param_named(dump_registers, dump_registers, bool, 0644);
@@ -138,6 +99,7 @@ index 0000000..eee21d3
 +	bool			charging;
 +	bool			bat_charging;
 +	u8			trip_point;
++	s32			full_capacity;
 +};
 +
 +struct mshw0011_lookup {
@@ -199,6 +161,10 @@ index 0000000..eee21d3
 +	} __packed;
 +} __packed;
 +
++#define ACPI_BATTERY_STATE_DISCHARGING	0x1
++#define ACPI_BATTERY_STATE_CHARGING	0x2
++#define ACPI_BATTERY_STATE_CRITICAL	0x4
++
 +#define MSHW0011_CMD_DEST_BAT0		0x01
 +#define MSHW0011_CMD_DEST_ADP1		0x03
 +
@@ -210,18 +176,21 @@ index 0000000..eee21d3
 +#define MSHW0011_CMD_BAT0_BTP		0x06
 +#define MSHW0011_CMD_ADP1_PSR		0x07
 +#define MSHW0011_CMD_BAT0_PSOC		0x09
-+#define MSHW0011_CMD_BAT0_PMAX		0x0A
-+#define MSHW0011_CMD_BAT0_PSRC		0x0B
-+#define MSHW0011_CMD_BAT0_CHGI		0x0C
-+#define MSHW0011_CMD_BAT0_ARTG		0x0D
++#define MSHW0011_CMD_BAT0_PMAX		0x0a
++#define MSHW0011_CMD_BAT0_PSRC		0x0b
++#define MSHW0011_CMD_BAT0_CHGI		0x0c
++#define MSHW0011_CMD_BAT0_ARTG		0x0d
 +
 +#define MSHW0011_NOTIFY_GET_VERSION	0x00
 +#define MSHW0011_NOTIFY_ADP1		0x01
-+#define MSHW0011_NOTIFY_BAT0		0x02
++#define MSHW0011_NOTIFY_BAT0_BST	0x02
++#define MSHW0011_NOTIFY_BAT0_BIX	0x05
 +
-+#define MSHW0011_ADP1_REG_PSR		0x03
++#define MSHW0011_ADP1_REG_PSR		0x04
 +
-+#define MSHW0011_BAT0_REG_CAPACITY	0x0c
++#define MSHW0011_BAT0_REG_CAPACITY		0x0c
++#define MSHW0011_BAT0_REG_FULL_CHG_CAPACITY	0x0e
++#define MSHW0011_BAT0_REG_DESIGN_CAPACITY	0x40
 +#define MSHW0011_BAT0_REG_VOLTAGE	0x08
 +#define MSHW0011_BAT0_REG_RATE		0x14
 +#define MSHW0011_BAT0_REG_OEM		0x45
@@ -253,10 +222,9 @@ index 0000000..eee21d3
 +mshw0011_notify(struct mshw0011_data *cdata, u8 arg1, u8 arg2,
 +		unsigned int *ret_value)
 +{
-+	static const u8 mshw0011_guid[] = {
-+		0x67, 0xE3, 0x99, 0x3F, 0x20, 0x62, 0x55, 0x49,
-+		0x8b, 0x0f, 0x06, 0xef, 0x2a, 0xe7, 0x94, 0x12,
-+	};
++	static const uuid_le mshw0011_guid =
++		GUID_INIT(0x3F99E367, 0x6220, 0x4955,
++			  0x8B, 0x0F, 0x06, 0xEF, 0x2A, 0xE7, 0x94, 0x12);
 +	union acpi_object *obj;
 +	struct acpi_device *adev;
 +	acpi_handle handle;
@@ -266,7 +234,7 @@ index 0000000..eee21d3
 +	if (!handle || acpi_bus_get_device(handle, &adev))
 +		return -ENODEV;
 +
-+	obj = acpi_evaluate_dsm_typed(handle, mshw0011_guid, arg1, arg2, NULL,
++	obj = acpi_evaluate_dsm_typed(handle, &mshw0011_guid, arg1, arg2, NULL,
 +				      ACPI_TYPE_BUFFER);
 +	if (!obj) {
 +		dev_err(&cdata->adp1->dev, "device _DSM execution failed\n");
@@ -291,11 +259,11 @@ index 0000000..eee21d3
 +	.design_capacity_of_warning = 0x8f,
 +	.design_capacity_of_low = 0x47,
 +	.cycle_count = 0xffffffff,
-+	.measurement_accuracy = 0x00015F90,
-+	.max_sampling_time = 0x03E8,
-+	.min_sampling_time = 0x03E8,
-+	.max_average_interval = 0x03E8,
-+	.min_average_interval = 0x03E8,
++	.measurement_accuracy = 0x00015f90,
++	.max_sampling_time = 0x03e8,
++	.min_sampling_time = 0x03e8,
++	.max_average_interval = 0x03e8,
++	.min_average_interval = 0x03e8,
 +	.battery_capacity_granularity_1 = 0x45,
 +	.battery_capacity_granularity_2 = 0x11,
 +	.model = "P11G8M",
@@ -307,10 +275,30 @@ index 0000000..eee21d3
 +static int mshw0011_bix(struct mshw0011_data *cdata, struct bix *bix)
 +{
 +	struct i2c_client *client = cdata->bat0;
-+	int ret;
 +	char buf[10];
++	int ret;
 +
 +	*bix = default_bix;
++
++	/* get design capacity */
++	ret = i2c_smbus_read_word_data(client,
++				       MSHW0011_BAT0_REG_DESIGN_CAPACITY);
++	if (ret < 0) {
++		dev_err(&client->dev, "Error reading design capacity: %d\n",
++			ret);
++		return ret;
++	}
++	bix->design_capacity = le16_to_cpu(ret);
++
++	/* get last full charge capacity */
++	ret = i2c_smbus_read_word_data(client,
++				       MSHW0011_BAT0_REG_FULL_CHG_CAPACITY);
++	if (ret < 0) {
++		dev_err(&client->dev,
++			"Error reading last full charge capacity: %d\n", ret);
++		return ret;
++	}
++	bix->last_full_charg_capacity = le16_to_cpu(ret);
 +
 +	/* get serial number */
 +	ret = mshw0011_i2c_read_block(client, MSHW0011_BAT0_REG_SERIAL_NO,
@@ -346,7 +334,7 @@ index 0000000..eee21d3
 +static int mshw0011_bst(struct mshw0011_data *cdata, struct bst *bst)
 +{
 +	struct i2c_client *client = cdata->bat0;
-+	int rate, capacity, voltage;
++	int rate, capacity, voltage, state;
 +	s16 tmp;
 +
 +	rate = i2c_smbus_read_word_data(client, MSHW0011_BAT0_REG_RATE);
@@ -362,8 +350,15 @@ index 0000000..eee21d3
 +		return voltage;
 +
 +	tmp = le16_to_cpu(rate);
-+	bst->battery_present_rate = (s32)tmp;
-+	bst->battery_state = bst->battery_present_rate < 0 ? 0x01 : 0x02;
++	bst->battery_present_rate = abs((s32)tmp);
++
++	state = 0;
++	if ((s32) tmp > 0)
++		state |= ACPI_BATTERY_STATE_CHARGING;
++	else if ((s32) tmp < 0)
++		state |= ACPI_BATTERY_STATE_DISCHARGING;
++	bst->battery_state = state;
++
 +	bst->battery_remaining_capacity = le16_to_cpu(capacity);
 +	bst->battery_present_voltage = le16_to_cpu(voltage);
 +
@@ -385,6 +380,7 @@ index 0000000..eee21d3
 +static int mshw0011_isr(struct mshw0011_data *cdata)
 +{
 +	struct bst bst;
++	struct bix bix;
 +	int ret;
 +	bool status, bat_status;
 +
@@ -404,13 +400,22 @@ index 0000000..eee21d3
 +	if (ret < 0)
 +		return ret;
 +
-+	bat_status = bst.battery_present_rate >= 0;
++	bat_status = bst.battery_state;
 +
 +	if (bat_status != cdata->bat_charging)
 +		mshw0011_notify(cdata, cdata->notify_version,
-+				MSHW0011_NOTIFY_BAT0, &ret);
++				MSHW0011_NOTIFY_BAT0_BST, &ret);
 +
 +	cdata->bat_charging = bat_status;
++
++	ret = mshw0011_bix(cdata, &bix);
++	if (ret < 0)
++		return ret;
++	if (bix.last_full_charg_capacity != cdata->full_capacity)
++		mshw0011_notify(cdata, cdata->notify_version,
++				MSHW0011_NOTIFY_BAT0_BIX, &ret);
++
++	cdata->full_capacity = bix.last_full_charg_capacity;
 +
 +	return 0;
 +}
@@ -429,10 +434,9 @@ index 0000000..eee21d3
 +		try_to_freeze();
 +		ret = mshw0011_isr(data);
 +		if (ret)
-+			goto out;
++			break;
 +	}
 +
-+out:
 +	cdata->kthread_running = false;
 +	return ret;
 +}
@@ -490,20 +494,16 @@ index 0000000..eee21d3
 +
 +	switch (gsb->cmd.arg1) {
 +	case MSHW0011_CMD_BAT0_STA:
-+		status = 1;
 +		ret = 0;
 +		break;
 +	case MSHW0011_CMD_BAT0_BIX:
-+		status = 1;
 +		ret = mshw0011_bix(cdata, &gsb->bix);
 +		break;
 +	case MSHW0011_CMD_BAT0_BTP:
-+		status = 1;
 +		ret = 0;
 +		cdata->trip_point = gsb->cmd.arg2;
 +		break;
 +	case MSHW0011_CMD_BAT0_BST:
-+		status = 1;
 +		ret = mshw0011_bst(cdata, &gsb->bst);
 +		break;
 +	default:
@@ -562,11 +562,9 @@ index 0000000..eee21d3
 +
 +static void mshw0011_remove_space_handler(struct i2c_client *client)
 +{
-+	acpi_handle handle;
++	acpi_handle handle = ACPI_HANDLE(&client->dev);
 +	struct mshw0011_handler_data *data;
 +	acpi_status status;
-+
-+	handle = ACPI_HANDLE(&client->dev);
 +
 +	if (!handle)
 +		return;
@@ -622,34 +620,22 @@ index 0000000..eee21d3
 +}
 +
 +static void mshw0011_dump_registers(struct i2c_client *client,
-+				    struct i2c_client *bat0)
++				    struct i2c_client *bat0, u8 end_register)
 +{
-+	char rd_buf[60];
-+	int error, i, c;
-+	char buff[17 * 3 * 2] = {0};
++	char *rd_buf;
++	char prefix[128];
++	unsigned int length = end_register + 1;
++	int error;
 +
-+	dev_info(&client->dev, "dumping registers 0x00 to 0x7F:\n");
++	snprintf(prefix, ARRAY_SIZE(prefix), "%s: ", bat0->name);
++	prefix[127] = '\0';
 +
-+	for (i = 0; i < 0x80; i += 0x20) {
-+		memset(rd_buf, 0, sizeof(rd_buf));
-+		error = mshw0011_i2c_read_block(bat0, i, rd_buf, 0x20);
-+		dev_info(&client->dev, " read 0x%02x: %*ph|%*ph\n",
-+			 i,
-+			 0x10, rd_buf,
-+			 0x10, rd_buf + 0x10);
-+		for (c = 0; c < 0x20; c++) {
-+			if (rd_buf[c] >= 0x20 && rd_buf[c] <= 0x7e) {
-+				buff[c * 3 + 0] = ' ';
-+				buff[c * 3 + 1] = rd_buf[c];
-+			} else {
-+				buff[c * 3 + 0] = '-';
-+				buff[c * 3 + 1] = '-';
-+			}
-+			buff[c * 3 + 2] = (c + 1) % 0x10 ? ' ' : '|';
-+		}
-+		buff[0x1f * 3 + 2] = '\0';
-+		dev_info(&client->dev, "ascii 0x%02x: %s\n", i, buff);
-+	}
++	rd_buf = kzalloc(length, GFP_KERNEL);
++	error = mshw0011_i2c_read_block(bat0, 0, rd_buf, length);
++	print_hex_dump(KERN_INFO, prefix, DUMP_PREFIX_OFFSET, 16, 1,
++		       rd_buf, length, true);
++
++	kfree(rd_buf);
 +}
 +
 +static int mshw0011_probe(struct i2c_client *client,
@@ -678,8 +664,10 @@ index 0000000..eee21d3
 +	data->bat0 = bat0;
 +	i2c_set_clientdata(bat0, data);
 +
-+	if (dump_registers)
-+		mshw0011_dump_registers(client, bat0);
++	if (dump_registers) {
++		mshw0011_dump_registers(client, client, 0xFF);
++		mshw0011_dump_registers(client, bat0, 0x80);
++	}
 +
 +	error = mshw0011_notify(data, 1, MSHW0011_NOTIFY_GET_VERSION, &version);
 +	if (error)
@@ -722,7 +710,6 @@ index 0000000..eee21d3
 +}
 +
 +static const struct i2c_device_id mshw0011_id[] = {
-+	{ "MSHW0011:00", 0 },
 +	{ }
 +};
 +MODULE_DEVICE_TABLE(i2c, mshw0011_id);
@@ -749,6 +736,3 @@ index 0000000..eee21d3
 +MODULE_AUTHOR("Benjamin Tissoires <benjamin.tissoires@gmail.com>");
 +MODULE_DESCRIPTION("mshw0011 driver");
 +MODULE_LICENSE("GPL v2");
--- 
-2.9.3
-
