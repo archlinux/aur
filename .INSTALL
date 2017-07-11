@@ -1,0 +1,8 @@
+post_install() {
+    printf "\n\033[1m" # Bold text
+    printf "\033[93m" # Color "warning"
+    printf "aswrap requires getch & setproctitle:\n"
+    printf "\033[4m" # Underlined text
+    printf "pip install --user getch setproctitle\n"
+    printf "\033[0m" # Default color
+}

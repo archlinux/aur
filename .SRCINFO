@@ -1,0 +1,18 @@
+pkgbase = aswrap-git
+	pkgdesc = Simple Python wrapper for Archlinux's ASP, git & makepkg
+	pkgver = r40.fa4435a
+	pkgrel = 1
+	url = https://github.com/mradermaxlol/aswrapper
+	install = .INSTALL
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = asp
+	provides = aswrap
+	conflicts = aswrap
+	source = git+https://github.com/mradermaxlol/aswrapper.git
+	md5sums = SKIP
+
+pkgname = aswrap-git
+
