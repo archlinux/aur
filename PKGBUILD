@@ -4,7 +4,7 @@
 pkgname=deal-ii
 _realname=dealii
 pkgver=8.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -44,8 +44,7 @@ installation_prefix=/usr
 prepare() {
     cd "${srcdir}/${_realname}-${pkgver}/"
 
-    pwd
-    patch -Np1 -i ../../fix-compilation-with-BOOST-1.64.patch
+    patch -Np1 -i ${srcdir}/fix-compilation-with-BOOST-1.64.patch
 }
 
 build() {
@@ -107,7 +106,7 @@ build() {
 
   # deal.II needs about 2 GB/compilation process so use fewer jobs if your
   # machine does not have the memory to support the maximum number.
-  make -j10 $MAKEFLAGS
+  make $MAKEFLAGS
 
   cd "${srcdir}/build"
   echo "export DEAL_II_DIR=$installation_prefix" > ./deal-ii.sh
