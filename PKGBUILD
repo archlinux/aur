@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r129676
+pkgver=26.0.50.r129825
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -43,6 +43,8 @@ build() {
     --without-gconf \
     --with-xft \
     --without-xwidgets \
+    --without-pop \
+    --with-mailutils \
     --with-gameuser=:games 
   make
   make pdf
