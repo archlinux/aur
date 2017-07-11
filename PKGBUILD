@@ -1,5 +1,5 @@
 # Maintainer: Marcel Radzio <info@nordgedanken.de>
-pkgbase=riot-desktop
+pkgbase=riot-desktop-git
 pkgver=r3963.cf5cf025
 pkgrel=1
 pkgname=riot-desktop-git
@@ -13,8 +13,8 @@ makedepends=('git' 'npm')
 conflicts=('riot-desktop' 'riot-web')
 backup=("etc/riot/config.json")
 source=('riot-desktop-git::git://github.com/vector-im/riot-web.git'
-        "${pkgbase}.desktop"
-        "${pkgbase}.sh")
+        "riot-desktop.desktop"
+        "riot-desktop.sh")
 md5sums=('SKIP'
 	 'SKIP'
 	 'SKIP')
@@ -60,8 +60,8 @@ package() {
 	install -Dm644 electron_app/img/riot.png -t "${pkgdir}"/usr/lib/riot/electron_app/img
 	install -Dm644 electron_app/riot.im/config.json -t "${pkgdir}"/etc/riot
 
-	install -Dm644 "${srcdir}"/${pkgbase}.desktop "${pkgdir}"/usr/share/applications/riot.desktop
-	install -Dm755 "${srcdir}"/${pkgbase}.sh "${pkgdir}"/usr/bin/riot-desktop
+	install -Dm644 "${srcdir}"/riot-desktop.desktop "${pkgdir}"/usr/share/applications/riot.desktop
+	install -Dm755 "${srcdir}"/riot-desktop.sh "${pkgdir}"/usr/bin/riot-desktop
 
 	install -Dm644 src/skins/vector/img/logos/riot-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/riot.svg
 	for i in 16 24 48 64 96 128 256 512; do
