@@ -3,7 +3,7 @@
 
 pkgname=vivaldi
 pkgver=1.10.867.46
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -38,6 +38,9 @@ package() {
         install -Dm644 "$pkgdir/opt/vivaldi/product_logo_${res}.png" \
             "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vivaldi.png"
     done
+
+    # exo provides the vivaldi helper now
+    rm -r "$pkgdir/usr/share/xfce4"
 
     # license
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
