@@ -25,7 +25,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=5.0.0svn_r307598
+pkgver=5.0.0svn_r307605
 
 pkgver() {
   cd "$pkgname"
@@ -40,6 +40,7 @@ license=('custom:University of Illinois')
 
 makedepends=(
     'cmake'
+    'ninja'
     'libffi'
     'ocaml-ctypes'
     'ocaml-findlib'
@@ -125,6 +126,7 @@ _install_licenses() {
             -path "${srcdir}/${_pkgname}/tools/lld" -o \
             -path "${srcdir}/${_pkgname}/tools/clang" -o \
             -path "${srcdir}/${_pkgname}/tools/lldb" -o \
+            -path "${srcdir}/${_pkgname}/tools/polly" -o \
             -path "${srcdir}/${_pkgname}/projects/compiler-rt" \
         \) -prune -o \
         \( \
@@ -192,35 +194,57 @@ build() {
     # LLVM_BUILD_LLVM_DYLIB: Build the dynamic runtime libraries (e.g. libLLVM.so).
     # LLVM_LINK_LLVM_DYLIB:  Link our own tools against the libLLVM dynamic library, too.
     # LLVM_BINUTILS_INCDIR:  Set to binutils' plugin-api.h location in order to build LLVMgold.
-    cmake -G 'Unix Makefiles' \
+    # cmake -G 'Unix Makefiles' \
+    #     -DCMAKE_BUILD_TYPE:STRING=Release \
+    #     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    #     -DLLVM_APPEND_VC_REV:BOOL=ON \
+    #     -DLLVM_ENABLE_RTTI:BOOL=ON \
+    #     -DLLVM_ENABLE_FFI:BOOL=ON \
+    #     -DFFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
+    #     -DFFI_LIBRARY_DIR:PATH="$(pkg-config --variable=libdir libffi)" \
+    #     -DLLVM_BUILD_DOCS:BOOL=ON \
+    #     -DLLVM_ENABLE_SPHINX:BOOL=ON \
+    #     -DSPHINX_OUTPUT_HTML:BOOL=ON \
+    #     -DSPHINX_OUTPUT_MAN:BOOL=ON \
+    #     -DSPHINX_WARNINGS_AS_ERRORS:BOOL=OFF \
+    #     -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
+    #     -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
+    #     -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
+    #     "../${_pkgname}"
+    cmake -G Ninja \
+        -C ../clang/cmake/caches/PGO.cmake \
         -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DCMAKE_INSTALL_PREFIX:PATH=/usr \ 
         -DLLVM_APPEND_VC_REV:BOOL=ON \
-        -DLLVM_ENABLE_RTTI:BOOL=ON \
-        -DLLVM_ENABLE_FFI:BOOL=ON \
+        -DLLVM_ENABLE_RTTI:BOOL=ON \  
+        -DLLVM_ENABLE_FFI:BOOL=ON \ 
         -DFFI_INCLUDE_DIR:PATH="$(pkg-config --variable=includedir libffi)" \
         -DFFI_LIBRARY_DIR:PATH="$(pkg-config --variable=libdir libffi)" \
         -DLLVM_BUILD_DOCS:BOOL=ON \
         -DLLVM_ENABLE_SPHINX:BOOL=ON \
         -DSPHINX_OUTPUT_HTML:BOOL=ON \
-        -DSPHINX_OUTPUT_MAN:BOOL=ON \
+        -DSPHINX_OUTPUT_MAN:BOOL=ON \ 
         -DSPHINX_WARNINGS_AS_ERRORS:BOOL=OFF \
         -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
         -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
         "../${_pkgname}"
-
-    make
-    make ocaml_doc
+    ninja stage2
+    ninja ocaml_doc
+    #make
+    #make ocaml_doc
 }
 
 check() {
     cd "${srcdir}/build"
     # Dirty fix for unittests failing because the shared lib is not in the library path.
     # Also, disable the LLVM tests on i686 as they seem to fail too often there.
-    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
-    make check-clang
-    make check-polly
+    #[[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
+    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja stage2-check
+    ninja stage2-check-clang
+    #ninja stage2-check-polly
+    #make check-clang
+    #make check-polly
 }
 
 package_llvm-polly-svn() {
