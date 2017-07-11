@@ -1,0 +1,15 @@
+pkgbase = epson-inkjet-printer-workforce-wf7610-series
+	pkgdesc = EPSON Workforce WF-7610 Series printer driver
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	license = custom:Epson Licence Agreement
+	makedepends = deb2targz
+	depends = cups
+	depends = epson-inkjet-printer-escpr
+	source = http://download.ebz.epson.net/dsc/op/stable/debian/dists/lsb3.2/main/binary-amd64/epson-inkjet-printer-escpr_1.4.1-1lsb3.2_amd64.deb
+	md5sums = dddfdf90ab9322e7316d1ce859b3a26b
+
+pkgname = epson-inkjet-printer-workforce-wf7610-series
+
