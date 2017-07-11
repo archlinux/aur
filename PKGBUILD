@@ -55,7 +55,7 @@ prepare() {
     # repeatedly without generating an error.
     rm -rf build
   fi
-  
+
   mkdir -p build
 }
 
