@@ -14,7 +14,7 @@ pkgbase = retrosmart-openbox-themes
 	optdepends = retrosmart-x11-cursors: The corresponding X11 cursor theme
 	optdepends = retrosmart-xfwm4-themes: The corresponding XFwm4 themes
 	source = https://github.com/mdomlop/retrosmart-openbox-themes/archive/0.2.tar.gz
-	md5sums = 8cd73bf2e15c583d964ac2355d08d705
+	md5sums = 4e10ceef110577df40878e3e604661b8
 
 pkgname = retrosmart-openbox-themes
 
