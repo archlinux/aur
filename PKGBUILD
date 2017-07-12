@@ -6,7 +6,7 @@
 pkgname=cairo-infinality
 _name=cairo
 _commit=36b60ecefe1fd0e042cad51105b0ffb29315e577
-pkgver=1.14.8
+pkgver=1.14.10
 pkgrel=1
 pkgdesc="Cairo vector graphics library"
 arch=('armv7h' 'i686' 'x86_64')
@@ -30,7 +30,7 @@ source=("https://cairographics.org/releases/cairo-${pkgver}.tar.xz"
         "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-respect-fontconfig_pb.patch"
         "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-server-side-gradients.patch"
         "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-webkit-html5-fix.patch")
-sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e'
+sha1sums=('28c59d85d6b790c21b8b59ece73a6a1dda28d69a'
           'b0cc2466cc5479f055ca2148cfa37fe13a1e78a6'
           'd8ffcb4c4745f7e61671109362a80a872ac989d3'
           '72ecf2dda8462e1588512de257ccbe18642d507f'
