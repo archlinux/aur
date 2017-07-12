@@ -3,9 +3,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop
-pkgver=3.0.0_rc9
+pkgver=3.1.0_pre2
 _pkgver=${pkgver//_/-}
-pkgrel=3
+pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -13,13 +13,13 @@ depends=('bigloo')
 install=hop.install
 url='http://hop.inria.fr'
 source=("ftp://ftp-sop.inria.fr/indes/fp/Hop/$pkgname-${_pkgver}.tar.gz" hop)
-md5sums=('530ee3a07e8c79b001821eb3c0565f3a'
-         'c01ff06ad4faca90e6da4a2ee9b8e533')
+sha256sums=('22aa60b558e6c5da6879c6eff2e153d6a520562a39444eefd26325fbceeff1fa'
+            'd1b40876e3a3d06c32f17c2a50dc950ab8c6ec68d7eea0754fe284ca4c226e5b')
 options=('!makeflags')
 
 build() {
   cd ${srcdir}/$pkgname-$_pkgver
-  ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man
+  ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man 
   make
   make doc
 }
@@ -34,7 +34,6 @@ package() {
   make DESTDIR=${pkgdir} install
 
   install -Dm644 arch/archlinux/conf.d/hop.in $pkgdir/etc/conf.d/hop
-  install -Dm755 arch/archlinux/rc.d/hop.in $pkgdir/etc/rc.d/hop
   install -Dm644 arch/archlinux/systemd/hop.service.in \
 	  $pkgdir/usr/lib/systemd/system/hop.service
   install -Dm644 arch/archlinux/systemd/hop.socket.in \
