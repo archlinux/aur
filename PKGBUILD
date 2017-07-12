@@ -1,17 +1,17 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: <development[at]kondorgulasch[dot]de>
 
-#TODO
 pkgname=pidgin-xmpp-receipts
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
-pkgdesc="This pidgin-plugin implements xmpp message delivery receipts (XEP-0184)"
-url="http://devel.kondorgulasch.de/pidgin-xmpp-receipts/"
+pkgdesc='This pidgin-plugin implements xmpp message delivery receipts (XEP-0184)'
+url='http://devel.kondorgulasch.de/pidgin-xmpp-receipts/'
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('pidgin' 'libpurple')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/noonien-d/pidgin-xmpp-receipts/archive/release_${pkgver}.tar.gz)
-sha512sums=('3aa9c8defaac784a05e9d2cd8a315c951e5f2d09a8471e16d7d50644d9bc94bd81ac2e64563b7e20ea2b98cd699310a6dbcb3e05b459f32bee43e45e60bc5c20')
+sha256sums=('0bceff237c6eb23e0564f7560d0ff491b37c01c8f6e3a3a7d8c4fdd6781d6524')
+sha512sums=('04113236d46066211d7e0f3c66f4bf1b6fb8a33ac675203f3cff15300eb97ffd3ee627e03fcc3ab3d1e9431fc107a9f7e9fca319f3debb773603d311b167b5a8')
 
 build() {
 	cd ${pkgname}-release_${pkgver}
