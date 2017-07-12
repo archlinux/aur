@@ -5,7 +5,6 @@ pkgbase = python-pywal
 	url = https://github.com/dylanaraps/pywal/
 	arch = any
 	license = MIT
-	makedepends = python-pip
 	depends = python
 	depends = imagemagick
 	optdepends = feh: set wallpaper
