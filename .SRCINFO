@@ -5,7 +5,7 @@ pkgbase = git-flow-completion-git
 	url = http://github.com/bobthecow/git-flow-completion
 	arch = any
 	license = MIT
-	depends = gitflow-git
+	depends = gitflow-avh
 	source = git://github.com/bobthecow/git-flow-completion.git
 	md5sums = SKIP
 

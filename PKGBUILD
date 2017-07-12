@@ -1,11 +1,11 @@
 pkgname=git-flow-completion-git
-pkgver=0.4.2.2.a467274
+pkgver=1.1.0.44e4872
 pkgrel=1
 pkgdesc='git-flow shell completions'
 arch=('any')
 url='http://github.com/bobthecow/git-flow-completion'
 license=('MIT')
-depends=('gitflow-git')
+depends=('gitflow-avh')
  
 _gitname='git-flow-completion'
 source=(git://github.com/bobthecow/${_gitname}.git)
