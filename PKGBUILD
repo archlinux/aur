@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-database-git
-pkgver=713.8e27203
+pkgver=1420.400b69f
 pkgrel=1
 pkgdesc="Repository containing cheatcode files, content data files, etc."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
