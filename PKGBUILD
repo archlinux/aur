@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-release-${pkgver}"
   npm install
-  grunt 'clean:linux' 'update-keys' 'release-internal'
+  grunt 'clean:linux' 'update-keys' 'release-internal' 'bundle'
   if [ $CARCH == 'x86_64' ]; then
     build_arch="x64"
   elif [ $CARCH == 'i686' ]; then
