@@ -1,5 +1,5 @@
 pkgname=binfmt-support
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="register interpreters for various binary formats"
 arch=(i686 x86_64)
@@ -9,8 +9,8 @@ depends=('libpipeline')
 makedepends=()
 source=(http://ftp.de.debian.org/debian/pool/main/b/binfmt-support/binfmt-support_$pkgver.orig.tar.gz
 	binfmt-support.service)
-md5sums=('b3389857d88f35c93b45f99a19a24698'
-         '72df6ac607ebfe9eface932b76b66291')
+sha256sums=('7ca0d0009220b9213e4637f4bbdc3c0030b0548eb9bbcd56e0a99876fa879a55'
+            'efba2300b9f0c8c5c14696d2b25836d91edaaad8d30c64ed7d3eab0163b2553e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
