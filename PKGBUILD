@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
@@ -24,7 +24,7 @@ source=("http://d3kbcqa49mib13.cloudfront.net/spark-${pkgver}-bin-without-hadoop
         'spark-daemon-run.sh'
         'run-master.sh'
         'run-slave.sh')
-sha1sums=('f06ab5276efa77224ae320a032e909309fc7f1b6'
+sha1sums=('15b9577049638fc1afe8d2843ac1ae9dec470962'
           'ac71d12070a9a10323e8ec5aed4346b1dd7f21c6'
           'a191e4f8f7f8bbc596f4fadfb3c592c3efbc4fc0'
           '05372135ef26de3c75231731d1a56a11431f5496'
