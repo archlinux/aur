@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2016-git
-pkgver=44390.e976a28b35
+pkgver=44396.68b234d888
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Late 2016 version of MAME (0.174) for libretro. Compatible with MAME 0.174 romsets. (Arcade)"
