@@ -1,6 +1,6 @@
 pkgbase = julia-git
 	pkgdesc = High-level, high-performance, dynamic programming language
-	pkgver = 0.6.0.dev.r33116.ge4b5233
+	pkgver = 0.7.0.DEV.r37655.gc492a7d762
 	pkgrel = 1
 	url = http://julialang.org
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = julia-git
 	makedepends = lapack>=3.5.0
 	makedepends = libgit2
 	makedepends = libunwind
-	makedepends = llvm
+	makedepends = llvm39
 	makedepends = mbedtls
 	makedepends = mpfr
 	makedepends = openlibm
@@ -41,7 +41,7 @@ pkgname = julia-git
 	depends = lapack>=3.5.0
 	depends = libgit2
 	depends = libunwind
-	depends = llvm
+	depends = llvm39
 	depends = mbedtls
 	depends = mpfr
 	depends = openlibm
