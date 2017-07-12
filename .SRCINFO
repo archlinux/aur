@@ -9,8 +9,10 @@ pkgbase = julia-git
 	makedepends = gcc-fortran
 	makedepends = git
 	makedepends = arpack
+	makedepends = blas>=3.5.0
 	makedepends = fftw
 	makedepends = gmp
+	makedepends = lapack>=3.5.0
 	makedepends = libgit2
 	makedepends = libunwind
 	makedepends = llvm
@@ -33,8 +35,10 @@ pkgbase = julia-git
 
 pkgname = julia-git
 	depends = arpack
+	depends = blas>=3.5.0
 	depends = fftw
 	depends = gmp
+	depends = lapack>=3.5.0
 	depends = libgit2
 	depends = libunwind
 	depends = llvm
@@ -49,6 +53,7 @@ pkgname = julia-git
 	depends = xdg-utils
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
+	optdepends = openblas-lapack: multithreaded replacement for lapack
 	optdepends = gnuplot: If using the Gaston Package from julia
 	provides = julia
 	conflicts = julia
