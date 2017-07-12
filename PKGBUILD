@@ -1,10 +1,10 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 pkgname=epaste-git
-pkgver=v1.0.0.r0.7e961c5
+pkgver=v1.0.2.r13.4f453c8
 pkgrel=1
 pkgdesc="encrypts given text and turns encrypted bytes into base64 text which can be easily pasted/retrieved on pastebin websites"
 arch=('i686' 'x86_64')
-url="https://github.com/zetok/epaste"
+url="https://gitlab.com/zetok/epaste"
 license=('GPL3')
 groups=()
 depends=('gcc-libs' 'libsodium')
