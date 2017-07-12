@@ -2,27 +2,27 @@
 # Contributor: Saleem Rashid <spudowiar@outlook.com>
 
 pkgname=trezord
-pkgrel=2
-pkgver=1.2.0
-_commitcrypto=3d364aac3618ca7cca1e7687a7a3d99f7981ccd6
-_commitcommon='f50db0e6640b4a0ee1734b27e12304c318578c33'
+pkgver=1.2.1
+pkgrel=1
+_commitcrypto='cfe8f39cd436bf98e864775a9131e81e554e7bf1'
+_commitcommon='fac66c686735246f32fe6b1f276a5a8e2d9c61d8'
 pkgdesc='TREZOR Communication Daemon'
 arch=('i686' 'x86_64')
 url='https://github.com/trezor'
 license=('LGPL3')
 depends=('boost-libs' 'protobuf' 'libmicrohttpd' 'jsoncpp' 'libusb')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('boost' 'cmake' 'git')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/trezor/$pkgname/archive/v$pkgver.tar.gz
         git+https://github.com/trezor/trezor-crypto.git#commit=$_commitcrypto
         git+https://github.com/trezor/trezor-common.git#commit=$_commitcommon
         $pkgname.sysusers
         $pkgname.patch)
-sha256sums=('883c68e5794b308a139706fea4549c9f8a7573d7e17d82f0fd3e7c0c8c36b6e7'
+sha256sums=('2ca6cffe9326a3bd29cf455abc58165c6193ff9090bf7d13e3908b48d7750408'
             'SKIP'
             'SKIP'
             'a4106f04d8322836905c6d300c0fb54849063bbc258ef76e28acdbec7c1c4df4'
-            '3101ef63935ca2e07457e0eccbd01e58b111f0194e998f541dbd503b1c393d8c')
+            'dac0d34ec64cd10b7c8e38d3b4edbf761b1fc29e70af3f07427c4cbae5cbf87f')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver/vendor

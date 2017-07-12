@@ -22,11 +22,11 @@ index b51a2db..e4a3b7c 100644
 --- a/cmake/modules/Findjsoncpp.cmake
 +++ b/cmake/modules/Findjsoncpp.cmake
 @@ -4,7 +4,7 @@
- 
+
  find_path(JSONCPP_INCLUDE_DIR json
    HINTS "${CMAKE_SOURCE_DIR}/vendor/jsoncpp/include")
 -find_library(JSONCPP_LIBRARY NAMES json
 +find_library(JSONCPP_LIBRARY NAMES jsoncpp
    HINTS "${CMAKE_BINARY_DIR}/lib/jsoncpp/lib")
- 
+
  set(JSONCPP_LIBRARIES ${JSONCPP_LIBRARY})
