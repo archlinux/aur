@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=remarshal
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Convert between TOML, YAML and JSON"
 arch=('any')
 depends=('python' 'python-dateutil' 'python-pytoml' 'python-yaml')
@@ -11,7 +11,7 @@ url="https://github.com/dbohdan/remarshal"
 license=('MIT')
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/dbohdan/$pkgname/tar.gz/v$pkgver)
-sha256sums=('19e85b010ada81f3094ce4e607d6f26aeb2ea40c92c4c704fe1cdb8fd8f637ee')
+sha256sums=('785f1928e3522671a21eb2e0ce7b6882e8589ccb195b4ee49dec2403fe3d6f4b')
 conflicts=('haskell-yaml')
 
 build() {
