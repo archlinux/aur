@@ -1,6 +1,6 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
-pkgname=libretro-meowpc98
+pkgname=libretro-meowpc98-git
 pkgver=81.f941d01
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
