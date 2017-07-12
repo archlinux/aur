@@ -1,15 +1,15 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 _pyname=oletools
 pkgname=python2-oletools
-pkgver=0.46
+pkgver=0.51
 pkgrel=1
 pkgdesc="Python tools to analyze security characteristics of MS Office and OLE files"
 depends=('python2')
 arch=('any')
-url="https://bitbucket.org/decalage/oletools"
+url="https://github.com/decalage2/oletools"
 license=('BSD')
-source=("${_pyname}-${pkgver}.tar.gz::https://bitbucket.org/decalage/oletools/downloads/${_pyname}-${pkgver}.tar.gz")
-sha512sums=('6995948b0b67f7d8bd41c0f0fba0f84dd92349c2b348ab7efcf1d8ad99827ea7d6d5f9bc5911f1b0dfccf8815a2ca58f9b8e875c9f9dfcb79d314725a5df2a45')
+source=("${_pyname}-${pkgver}.tar.gz::https://github.com/decalage2/oletools/archive/v${pkgver}.tar.gz")
+sha512sums=('030da6195af1554ca8725eb41f7c0974aa26028340d296d165f7797179bc6b076e31a5cc061addc6b357115ed62976bcf7fe9369c67d7b6629baa17ff12f535d')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
