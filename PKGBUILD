@@ -1,11 +1,12 @@
 # Maintainer: sasvari
 pkg="pubs"
 pkgname="$pkg-git"
-pkgver=20170709.2465f82
+pkgver=20170712.7e3cd61
 pkgrel=1
 pkgdesc="Your bibliography on the command line"
 arch=(any)
 url="https://github.com/pubs/pubs"
+license=('LGPL-3.0')
 depends=("python")
 makedepends=("git")
 provides=("pubs")
