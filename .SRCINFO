@@ -1,0 +1,21 @@
+pkgbase = gnome-blog
+	pkgdesc = A gnome application that allows you to post entries to many different blog formats
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://projects.gnome.org/gnome-blog/
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = python2-gconf
+	depends = python2-gdata
+	depends = python2-gtkspell
+	options = !emptydirs
+	source = https://download.gnome.org/sources/gnome-blog/0.9/gnome-blog-0.9.2.tar.bz2
+	source = drop-gnomevfs.patch
+	source = drop-gnome.patch
+	sha256sums = d2b68017d31af7dcb29cddc16a1ad8f33f58bcc2834bb1740c47b4ef75856e80
+	sha256sums = 1082249b34c1e44ed14c1b359bc009160178b7fb1025455b71fa5717ef3ff53e
+	sha256sums = 232a9e98033865d1b7c011057e909916c7ab68244bfea577b73afd7c90fa5582
+
+pkgname = gnome-blog
+

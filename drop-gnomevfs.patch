@@ -1,0 +1,36 @@
+diff -Naur gnome-blog-0.9.2.orig/rich_entry.py gnome-blog-0.9.2/rich_entry.py
+--- gnome-blog-0.9.2.orig/rich_entry.py	2012-02-25 12:06:49.000000000 +0100
++++ gnome-blog-0.9.2/rich_entry.py	2012-02-25 14:11:17.716138556 +0100
+@@ -3,7 +3,7 @@
+ import pango
+ import gobject
+ import gnome
+-import gnomevfs
++import gio
+ 
+ import gettext
+ _ = gettext.gettext
+@@ -138,9 +138,11 @@
+                 loader = gtk.gdk.PixbufLoader()
+ 
+                 try:
+-                    file_info = gnomevfs.get_file_info(uri, gnomevfs.FILE_INFO_GET_MIME_TYPE)
+-                    file_contents = gnomevfs.read_entire_file(uri)
+-                except gnomevfs.Error, e:
++                    myfile = gio.File(uri=uri)
++                    file_info = myfile.query_info(gio.FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE)
++                    content_type = file_info.get_content_type()
++                    file_contents, length, etag = myfile.load_contents()
++                except gio.Error, e:
+                     hig_alert.reportError(_("Could not load dragged in image"),
+                                           _("Error loading %s was: %s") % (hig_alert.italic(uri), e))
+                 loader.write(file_contents)
+@@ -160,7 +162,7 @@
+                     image_tag.file_contents = file_contents
+                     paths = uri.split('/')
+                     image_tag.name = paths[len(paths) - 1]
+-                    image_tag.mime_type = file_info.mime_type
++                    image_tag.mime_type = content_type
+ 
+                     self.images.append(image_tag)
+                     
