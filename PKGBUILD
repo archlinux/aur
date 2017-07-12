@@ -2,7 +2,7 @@
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=yle-dl-git
-pkgver=2.18.r4.g7696802
+pkgver=2.19.r0.g7696802
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=("any")
@@ -19,7 +19,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
