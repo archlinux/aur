@@ -23,7 +23,7 @@ package() {
   python setup.py install --optimize=1 --root="${pkgdir}"
 
   # Place systemd user service
-  install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+  install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
   # Install License
   # MIT/X11 license
