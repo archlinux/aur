@@ -5,7 +5,6 @@ pkgbase = iwant
 	url = https://github.com/nirvik/iWant
 	arch = any
 	license = MIT
-	makedepends = python2
 	depends = python2-twisted
 	depends = python2-netifaces
 	depends = python2-watchdog
