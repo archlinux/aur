@@ -1,0 +1,5 @@
+*.gz
+*.log
+*.xz
+pkg
+encarne
