@@ -1,0 +1,22 @@
+pkgbase = python-linearmodels
+	pkgdesc = Linear models in Python.
+	pkgver = 3.5
+	pkgrel = 1
+	url = https://bashtage.github.io/linearmodels/doc
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	checkdepends = python-pytest
+	checkdepends = python-xarray
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-scipy
+	depends = python-patsy
+	optdepends = python-xarray
+	source = https://github.com/bashtage/linearmodels/archive/3.5.tar.gz
+	sha256sums = 1ca6fbc8ba130277e7f55d06145efde1f64320a7c40146ed059d67e84d93d564
+
+pkgname = python-linearmodels
+
