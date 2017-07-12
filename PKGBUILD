@@ -3,7 +3,7 @@
 _themename=urbanlifestyle
 pkgname=${_themename}-sddm-theme
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and colorful SDDM theme'
 arch=('any')
 url='https://github.com/AlfredoRamos/urbanlifestyle-sddm-theme'
@@ -11,6 +11,7 @@ license=('GPL3')
 
 optdepends=('sddm: to use this theme')
 provides=("${pkgname}=${pkgver}")
+conflicts=("sddm-${_themename}-theme")
 replaces=("sddm-${_themename}-theme")
 
 install=${pkgname}.install
