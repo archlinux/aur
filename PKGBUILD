@@ -8,7 +8,6 @@ pkgdesc="CLI based decentralized peer to peer file sharing"
 arch=('any')
 url="https://github.com/nirvik/iWant"
 license=('MIT')
-makedepends=("python2")
 depends=('python2-twisted' 'python2-netifaces' 'python2-watchdog'
          'python2-time_uuid' 'python2-fuzzywuzzy' 'python2-tabulate'
          'python2-service-identity' 'python2-cryptography'
