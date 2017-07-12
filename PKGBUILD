@@ -12,7 +12,7 @@ _pid_path="/run"
 _lock_path="/var/lock"
 _log_path="/var/log/${_pkgname}"
 
-### 3d party modules:
+# 3d party modules
 _cachepurge_ver="2.3"
 _cachepurge_dirname="ngx_cachepurge"
 _slowfscache_ver="1.10"
@@ -41,28 +41,30 @@ _accesskey_ver="2.0.4"
 _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom
-pkgver=1.12.0
-pkgrel=3
+pkgver=1.12.1
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server (with standard, additional and 3rd party modules)'
 arch=('i686' 'x86_64')
 
 depends=('pcre' 'zlib' 'openssl' 'pam' 'geoip' 'geoip-database' 'gd' 'libxslt')
-makedepends=('libxslt' 'gd' 'git' 'hardening-wrapper')
+#checkdepends=('perl' 'perl-gd' 'perl-io-socket-ssl' 'perl-fcgi' 'perl-cache-memcached'
+#              'memcached' 'ffmpeg' 'inetutils')
+makedepends=('libxslt' 'gd' 'git')
 
 url='https://nginx.org'
 license=('custom')
 conflicts=('nginx' 'nginx-unstable' 'nginx-svn' 'nginx-devel' 'nginx-custom-dev' 'nginx-full')
 provides=('nginx')
-backup=("${_conf_path}/nginx.conf"
-  "${_conf_path}/koi-win"
-  "${_conf_path}/koi-utf"
-  "${_conf_path}/win-utf"
-  "${_conf_path}/mime.types"
-  "${_conf_path}/fastcgi.conf"
-  "${_conf_path}/fastcgi_params"
-  "${_conf_path}/scgi_params"
-  "${_conf_path}/uwsgi_params"
-  "etc/logrotate.d/nginx")
+backup=("${_conf_path}/fastcgi.conf"
+        "${_conf_path}/fastcgi_params"
+        "${_conf_path}/koi-win"
+        "${_conf_path}/koi-utf"
+        "${_conf_path}/mime.types"
+        "${_conf_path}/nginx.conf"
+        "${_conf_path}/scgi_params"
+        "${_conf_path}/uwsgi_params"
+        "${_conf_path}/win-utf"
+        "etc/logrotate.d/nginx")
 _user=http
 _group=http
 
@@ -85,13 +87,14 @@ source=("nginx.sh"
         "${_davext_dirname}.tar.gz::https://github.com/arut/nginx-dav-ext-module/archive/${_davext_ver}.tar.gz"
         "${_naxsi_dirname}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
         "${_accesskey_dirname}.tar.gz::https://github.com/Martchus/nginx-accesskey/archive/v${_accesskey_ver}.tar.gz"
+#        hg+http://hg.nginx.org/nginx-tests#revision=8821e405b91e
 )
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '845cab784b50f1666bbf89d7435ac7af'
          'b50a547d387c4af8e9b89a5e79d22fed'
-         '6696dc228a567506bca3096b5197c9db'
-         '995eb0a140455cf0cfc497e5bd7f94b3'
+         '4d8529216812e5cc35a28c721e239b9e'
+         'a307e74aca95403e5ee00f153807ce58'
          'SKIP'
          'e1dd79f0ec82415bbf8a1cb938988955'
          '3d4ec04bbc16c3b555fa20392c1119d1'
@@ -125,6 +128,11 @@ prepare() {
   mv naxsi* ${_naxsi_dirname}
 }
 
+#check() {
+#  cd nginx-tests
+#  TEST_NGINX_BINARY="$srcdir/$pkgname-$pkgver/objs/nginx" prove .
+#}
+
 build() {
   local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
   cd $_src_dir
@@ -154,7 +162,6 @@ build() {
     --with-stream \
     --with-stream_ssl_module \
     --with-threads \
-    --add-module=../${_naxsi_dirname}/naxsi_src/ \
     --with-http_ssl_module \
     --with-http_stub_status_module \
     --with-http_dav_module \
@@ -181,6 +188,7 @@ build() {
     --with-http_geoip_module \
     --with-http_gunzip_module \
     --with-http_auth_request_module \
+    --add-module=../${_naxsi_dirname}/naxsi_src/ \
     --add-module=../${_cachepurge_dirname} \
     --add-module=../${_echo_dirname} \
     --add-module=../${_headersmore_dirname} \
@@ -192,7 +200,9 @@ build() {
     --add-module=../${_pagespeed_dirname} \
     --add-module=../${_accesskey_dirname} \
     --add-module=../${_rtmp_dirname} \
-    --add-module=../${_davext_dirname}
+    --add-module=../${_davext_dirname} \
+    --with-cc-opt="$CFLAGS $CPPFLAGS" \
+    --with-ld-opt="$LDFLAGS"
   make
 }
 
