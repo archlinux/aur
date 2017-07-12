@@ -15,7 +15,7 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=("git+https://github.com/GalliumOS/linux.git#branch=v${pkgver}"
+source=("git+https://github.com/GalliumOS/linux.git#branch=v${pkgver}-galliumos"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         "dmi_product_family.diff"
