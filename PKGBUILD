@@ -2,13 +2,13 @@
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
-arch=('x86_64' 'i686' 'mips64el')
+arch=('x86_64' 'i686')
 url="https://rspamd.com"
 license=('BSD')
-depends=('libevent' 'glib2' 'gmime' 'lua' 'sqlite' 'lua-lpeg' 'libfann' 'gd')
+depends=('file' 'glib2' 'icu' 'libevent' 'libfann' 'luajit' 'sqlite')
 makedepends=('cmake' 'pkgconfig' 'ragel')
 
 backup=('etc/rspamd/2tld.inc'
@@ -80,11 +80,19 @@ install="rspamd.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/archive/${pkgver}.tar.gz"
 		"${pkgname}.tmpfile"
 		"${pkgname}.sysuser"
+		"fixes-${pkgver}.diff"
 		)
 
 sha256sums=('815e709e018d5cb0fcc6153c67f4809f77de5599341ad62c97bc56b90a6660fb'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
-            '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f')
+            '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
+            'af27419ad519a5c6931109a564b4f337be38e258969ade7d910fe7db5d1d0270')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	patch -Np1 <../fixes-${pkgver}.diff
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -100,7 +108,7 @@ build() {
 		-DWANT_SYSTEMD_UNITS=ON \
 		.
 
-	make -j$(nproc)
+	cmake --build .
 }
 
 package() {

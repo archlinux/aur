@@ -1,0 +1,187 @@
+diff --git a/interface/js/app/history.js b/interface/js/app/history.js
+index 3e8010de4..378c3cf7b 100644
+--- a/interface/js/app/history.js
++++ b/interface/js/app/history.js
+@@ -26,7 +26,24 @@ define(['jquery', 'footable', 'humanize'],
+ function($, _, Humanize) {
+     var interface = {};
+     var ft = {};
+-
++    var htmlEscapes = {
++      '&': '&amp;',
++      '<': '&lt;',
++      '>': '&gt;',
++      '"': '&quot;',
++      "'": '&#39;',
++      '/': '&#x2F;',
++      '`': '&#x60;',
++      '=': '&#x3D;'
++    };
++    var htmlEscaper = /[&<>"'\/]/g;
++ 
++    EscapeHTML = function(string) {
++      return ('' + string).replace(htmlEscaper, function(match) {
++        return htmlEscapes[match];
++      });
++    };
++ 
+     function unix_time_format(tm) {
+         var date = new Date(tm ? tm * 1000 : 0);
+         return date.toLocaleString();
+@@ -145,7 +162,8 @@ function($, _, Humanize) {
+                     "textOverflow": "ellipsis",
+                     "wordBreak": "break-all",
+                     "whiteSpace": "normal"
+-                }
++                },
++                "formatter": EscapeHTML
+             }, {
+                 "name": "ip",
+                 "title": "IP address",
+@@ -178,7 +196,8 @@ function($, _, Humanize) {
+                     "font-size": "11px",
+                     "word-break": "break-all",
+                     "minWidth": 150
+-                }
++                },
++                "formatter": EscapeHTML
+             }, {
+                 "name": "action",
+                 "title": "Action",
+diff --git a/rules/headers_checks.lua b/rules/headers_checks.lua
+index 8ee28e40b..7932afc90 100644
+--- a/rules/headers_checks.lua
++++ b/rules/headers_checks.lua
+@@ -177,7 +177,7 @@ rspamd_config:register_symbol{
+ }
+ 
+ local function get_raw_header(task, name)
+-  return ((task:get_header_full(name) or {})[1] or {})['raw']
++  return ((task:get_header_full(name) or {})[1] or {})['value']
+ end
+ 
+ local check_replyto_id = rspamd_config:register_callback_symbol('CHECK_REPLYTO', 1.0,
+@@ -185,21 +185,19 @@ local check_replyto_id = rspamd_config:register_callback_symbol('CHECK_REPLYTO',
+     local replyto = get_raw_header(task, 'Reply-To')
+     if not replyto then return false end
+     local rt = util.parse_mail_address(replyto)
+-    if not (rt and rt[1]) then
++    if not (rt and rt[1] and (string.len(rt[1].addr) > 0)) then
+       task:insert_result('REPLYTO_UNPARSEABLE', 1.0)
+       return false
+     else
+-      task:insert_result('HAS_REPLYTO', 1.0)
+       local rta = rt[1].addr
+-      if rta then
+-        -- Check if Reply-To address starts with title seen in display name
+-        local sym = task:get_symbol('FROM_NAME_HAS_TITLE')
+-        local title = (((sym or E)[1] or E).options or E)[1]
+-        if title then
+-          rta = rta:lower()
+-          if rta:find('^' .. title) then
+-            task:insert_result('REPLYTO_EMAIL_HAS_TITLE', 1.0)
+-          end
++      task:insert_result('HAS_REPLYTO', 1.0, rta)
++      -- Check if Reply-To address starts with title seen in display name
++      local sym = task:get_symbol('FROM_NAME_HAS_TITLE')
++      local title = (((sym or E)[1] or E).options or E)[1]
++      if title then
++        rta = rta:lower()
++        if rta:find('^' .. title) then
++          task:insert_result('REPLYTO_EMAIL_HAS_TITLE', 1.0)
+         end
+       end
+     end
+diff --git a/rules/html.lua b/rules/html.lua
+index 85eea48df..7c88928eb 100644
+--- a/rules/html.lua
++++ b/rules/html.lua
+@@ -174,12 +174,13 @@ rspamd_config.R_WHITE_ON_WHITE = {
+     local ret = false
+     local diff = 0.0
+     local normal_len = 0
+-    local transp_len = 0
++    local transp_rate = 0
+     local arg
+ 
+     for _,p in ipairs(tp) do -- iterate over text parts array using `ipairs`
+       if p:is_html() and p:get_html() then -- if the current part is html part
+         normal_len = p:get_length()
++        local transp_len = 0
+         local hc = p:get_html() -- we get HTML context
+ 
+         hc:foreach_tag({'font', 'span', 'div', 'p'}, function(tag)
+@@ -197,10 +198,12 @@ rspamd_config.R_WHITE_ON_WHITE = {
+ 
+               if diff < 0.1 then
+                 ret = true
+-                transp_len = (transp_len + tag:get_content_length()) *
++                transp_len = (tag:get_content_length()) *
+                   (0.1 - diff) * 5.0
+                 normal_len = normal_len - tag:get_content_length()
+-                if not arg then
++                local tr = transp_len / (normal_len + transp_len)
++                if tr > transp_rate then
++                  transp_rate = tr
+                   arg = string.format('%s color #%x%x%x bgcolor #%x%x%x',
+                     tostring(tag:get_type()),
+                     color[1], color[2], color[3],
+@@ -217,9 +220,6 @@ rspamd_config.R_WHITE_ON_WHITE = {
+     end
+ 
+     if ret then
+-      if normal_len < 0 then normal_len = 0 end
+-      local transp_rate = transp_len / (normal_len + transp_len)
+-
+       if transp_rate > 0.1 then
+         return true,(transp_rate * 2.0),arg
+       end
+diff --git a/src/lua/lua_util.c b/src/lua/lua_util.c
+index ef2adfe81..2e98d64fd 100644
+--- a/src/lua/lua_util.c
++++ b/src/lua/lua_util.c
+@@ -1973,8 +1973,8 @@ lua_util_is_utf_spoofed (lua_State *L)
+ 			uspoof_setChecks (spc_sgl,
+ 					USPOOF_ALL_CHECKS & ~USPOOF_WHOLE_SCRIPT_CONFUSABLE,
+ 					&uc_err);
+-			uspoof_setAllowedChars (spc_sgl, allowed, &uc_err);
+ #if U_ICU_VERSION_MAJOR_NUM >= 51
++			uspoof_setAllowedChars (spc_sgl, allowed, &uc_err);
+ 			uspoof_setRestrictionLevel (spc_sgl, USPOOF_MODERATELY_RESTRICTIVE);
+ #endif
+ 		}
+diff --git a/src/plugins/lua/milter_headers.lua b/src/plugins/lua/milter_headers.lua
+index dcf8e9ffd..d5b4c4909 100644
+--- a/src/plugins/lua/milter_headers.lua
++++ b/src/plugins/lua/milter_headers.lua
+@@ -344,7 +344,7 @@ local function milter_headers(task)
+           add[k] = v
+         end
+         for k, v in pairs(to_remove) do
+-          add[k] = v
++          remove[k] = v
+         end
+         for k, v in pairs(common_in) do
+           if type(v) == 'table' then
+diff --git a/src/plugins/lua/ratelimit.lua b/src/plugins/lua/ratelimit.lua
+index beb9eb283..2c42c2876 100644
+--- a/src/plugins/lua/ratelimit.lua
++++ b/src/plugins/lua/ratelimit.lua
+@@ -509,7 +509,7 @@ local function rate_test_set(task, func)
+             table.insert(args, {settings[k], rk})
+           elseif type(settings[k]) == 'string' and
+               (custom_keywords[settings[k]] and type(custom_keywords[settings[k]]['get_limit']) == 'function') then
+-            local res = custom_keywords[settings[k]]['get_limit']()
++            local res = custom_keywords[settings[k]]['get_limit'](task)
+             if type(res) == 'table' then
+               table.insert(args, {res, rate_key})
+             elseif type(res) == 'string' then
+@@ -525,7 +525,7 @@ local function rate_test_set(task, func)
+           table.insert(args, {settings[k], rate_key})
+         elseif type(settings[k]) == 'string' and
+             (custom_keywords[settings[k]] and type(custom_keywords[settings[k]]['get_limit']) == 'function') then
+-          local res = custom_keywords[settings[k]]['get_limit']()
++          local res = custom_keywords[settings[k]]['get_limit'](task)
+           if type(res) == 'table' then
+             table.insert(args, {res, rate_key})
+           elseif type(res) == 'string' then
