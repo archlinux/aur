@@ -8,11 +8,11 @@ pkgdesc='A tunneling, reverse proxy for developing and understanding networked, 
 url='https://ngrok.com'
 license=('Apache')
 source_x86_64=("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip")
-sha256sums_x86_64=('0165a266388e80b467d6f97fcc42baa51da262c467b99bfb79305d7b6dd22b94')
+sha256sums_i686=('f1e795ec225d808e240ad7d9831454aaf63e7d54525c9fde5743b85fd93fab9b')
+sha256sums_x86_64=('a3f667e7b9f3c9e10abb5e277154a0b5e09a011a7f561a2a789fecb34407e108')
+sha256sums_armv7h=('4420e1fe2278b1ba32dcf5718bbaacfc410720fd42404d72611a40792abcef5b')
 source_i686=("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip")
-sha256sums_i686=('97746f160088a8fffd79a3897225b58ba62a1bb72cbbcce1d3542a786622fba6')
 source_armv7h=("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip")
-sha256sums_armv7h=('f2bf6e1c4221e7847a0c4fd3728f2140d7af80a8e0ab2072ae6c919d893bb254')
 arch=('i686' 'x86_64' 'armv7h')
 
 package() {
