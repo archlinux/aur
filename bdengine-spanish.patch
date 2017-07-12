@@ -1,0 +1,311 @@
+--- bdengine.c	2006-01-10 18:27:53.000000000 +0100
++++ bdengine.new	2017-07-06 10:27:10.693588000 +0200
+@@ -23,7 +23,7 @@
+     this program.
+ 
+    $Id: bdengine.c,v 1.4 2006/01/10 17:27:53 andymort Exp $
+-   
++
+    We're getting there. At the moment, the file used by default is ~/.birthdays
+    under UNIX, or C:\PERSONAL\BDAYS.LST under DOS, but this can be overridden on
+    the command line. The file has the following format:
+@@ -31,7 +31,7 @@
+    name/event/whatever=date flags
+    where:
+      date is dd/mm, dd/mm/yy (assumes 20th century!) or dd/mm/yyyy
+-     flags is ONE or ZERO of 
++     flags is ONE or ZERO of
+        o  bd  for a birthday (default)
+        o  bir for a birthday (exactly equivalent to `bd')
+        o  ann for an anniversary
+@@ -45,7 +45,7 @@
+ 	       holiday.
+ 
+      Comment lines are preceeded by #.
+-     
++
+      Note: If you deviate from this format, I cannot guarantee anything about
+      it's behaviour. In most cases, it will just quietly ignore the error,
+      which probably isn't ideal behaviour. Oh, well.
+@@ -143,20 +143,20 @@
+   char *buf = xmalloc(128);
+   int size = 128;
+   *buf = 0;
+-  
++
+   switch (delta(d, today)) {
+   case 0:
+-    append(buf, "today");
++    append(buf, "hoy");
+     return buf;
+   case 1:
+-    append(buf, "tomorrow");
++    append(buf, "mañana");
+     return buf;
+   default:
+     /* like delta(), we ignore the year */
+     yr=-before(*d,*today);
+     mn=d->month - today->month;
+     dy=d->day - today->day;
+-    
++
+     if (dy < 0) {
+       dy += mlen(today->month, today->year);
+       mn--;
+@@ -168,18 +168,20 @@
+ 
+     wk = (dy/7);
+     dy%=7;
+-    
+-    append(buf, "in ");
++
++    append(buf, "dentro de ");
+     tmp = ttime(yr, mn, wk, dy);
+     append(buf, tmp);
+     free(tmp);
+-    
+-    if (*(buf + strlen(buf) - 1) == 's')
++
++/* No used in spanish: */
++
++/*  if (*(buf + strlen(buf) - 1) == 's')
+       append(buf, "'");
+     else
+       append(buf, "'s");
+ 
+-    append(buf, " time");
++    append(buf, " time"); */
+ 
+     return buf;
+   }
+@@ -202,24 +204,27 @@
+          terms--;                                  \
+          if (orgterms > 1) {                       \
+ 	         if (terms == 1)                        \
+-               append(buf, " and ");               \
++               append(buf, " y ");               \
+             else if (terms > 1)                    \
+                append(buf, ", ");                  \
+          }                                         \
+       }                                            \
+    } while(0)
+ #else /* NUMS_AS_WORDS */
+-#define donum(n,txt) do {                       \
+-      if (n > 0) {                              \
+-         snprintf(tmp, sizeof(tmp), "%d", n);   \
+-         append(buf, tmp);                      \
+-         append(buf, " " txt);                  \
+-         if (n != 1)                            \
+-            append(buf, "s");                   \
++#define donum(n,txt) do {                         \
++      if (n > 0) {                                \
++         snprintf(tmp, sizeof(tmp), "%d", n);     \
++         append(buf, tmp);                        \
++         append(buf, " " txt);                    \
++         if (n != 1) {                            \
++            if (*(buf + strlen(buf) - 1) == 's')  \
++                append(buf, "es");                \
++            else                                  \
++                append(buf, "s"); }               \
+          terms--;                               \
+          if (orgterms > 1) {                    \
+             if (terms == 1)                     \
+-               append(buf, " and ");            \
++               append(buf, " y ");            \
+             else if (terms > 1)                 \
+                append(buf, ", ");               \
+          }                                      \
+@@ -233,14 +238,14 @@
+   int size = 128;
+   int terms, orgterms;
+   char tmp[128];
+-  
++
+   *buf = 0; /* Initialize buffer */
+   terms = orgterms = (yr!=0) + (mn!=0) + (wk!=0) + (dy!=0);
+ 
+-  donum(yr, "year");
+-  donum(mn, "month");
+-  donum(wk, "week");
+-  donum(dy, "day");
++  donum(yr, "año");
++  donum(mn, "mes");
++  donum(wk, "semana");
++  donum(dy, "día");
+ 
+   return buf;
+ }
+@@ -252,12 +257,12 @@
+    int i,j;
+    char *buf, *tmp;
+    int size;
+-   
++
+    for (i = 0; evl[i].text != NULL; i++) {
+       buf = xmalloc(128);
+       *buf = '\0';
+       size = 128;
+-      
++
+       if (evl[i].warn == -1 && delta(&(evl[i].date), today)==0) {
+          append(buf, evl[i].text);
+       } else if (evl[i].enddate.day == 0) {
+@@ -292,7 +297,7 @@
+                free(tmp);
+                append(buf, " longer");
+ 	         } else {
+-               append(buf, "finishes today");
++               append(buf, "acaba hoy");
+ 	         }
+          }
+       }
+@@ -318,7 +323,7 @@
+   return strdup(DOSDEFDIR DEFAULT_FILE);
+ #endif
+ }
+-  
++
+ /* sort the events by the time before the next time they come up, putting those
+    where the start has passed but we are still in the time-period first */
+ int
+@@ -331,13 +336,13 @@
+   /* if the delta for the enddate is less than that for the start date, then we
+      have passed the start date but not yet the end date, and so we should
+      display the enddate; otherwise, we should display the start date */
+-  
++
+   d1 = e1->fromtoday;
+   d2 = e2->fromtoday;
+ 
+   if (d1 < d2) return -1;
+   if (d1 > d2) return  1;
+-  
++
+   return strcmp(e1->text, e2->text);
+ }
+ 
+@@ -352,7 +357,7 @@
+   /* make working copies */
+   d1=*D1;
+   d2=*D2;
+-  
++
+   /* sort out zero years */
+   if (d1.year == 0 || d2.year==0) {
+     if (d1.year != d2.year) {
+@@ -381,7 +386,7 @@
+ 
+   /* now we can actually do the comparison ... */
+   dd=0;
+-  
++
+   /* to start with, we work in months */
+   for (m=d1.month; m < d2.month + (d2.year-d1.year)*12; m++)
+     dd += mlen(((m-1)%12)+1, d1.year + m/12);
+@@ -400,23 +405,23 @@
+ {
+   struct date d;
+   unsigned dt, mn;
+-  
++
+   memcpy(&d, date, sizeof(struct date));
+-  
++
+   if (before(d, *today)) /* past the end of the year */
+     {
+       d.year = 1;
+     } else {
+       d.year = 0;
+     }
+-    
++
+   for (mn = today->month, dt=0; mn < d.month + 12*d.year; mn++)
+     dt += mlen(((mn-1)%12) + 1,today->year + mn/12);
+-  
++
+   dt -= today->day;
+   dt += d.day;
+-  
+-  return dt;  
++
++  return dt;
+ }
+ 
+ void scan_date( const char *str, struct date *date) {
+@@ -445,7 +450,7 @@
+   if (fname==NULL) {
+     fname=deffname();
+   }
+-  
++
+   if (fname[0] == '-' && fname[1] == 0) {
+     /* read from stdin */
+     file=stdin;
+@@ -487,7 +492,7 @@
+ 	    break;
+ 	  }
+       }
+-      
++
+       if (nevl != NULL) {
+ 	for (j=0; nevl[j].text != NULL; j++);
+ 	i+=j-1;
+@@ -503,7 +508,7 @@
+       continue;
+     }
+ 
+-    /* parse string in buf */ 
++    /* parse string in buf */
+     ptr = strrchr(buf, '='); /* allow '=' in text */
+     if(ptr==NULL) /* not a valid line, so ignore it! Cool, huh? */
+       {
+@@ -511,8 +516,8 @@
+ 	i--;
+ 	continue;
+       }
+-      
+-    *(ptr++) = 0;  
++
++    *(ptr++) = 0;
+ 
+     scan_date( ptr, &(evl[i].date) );
+ 
+@@ -566,9 +571,9 @@
+       if (evl[i].date.year != 0) {
+ 	int tmp_age=ydelta(evl[i].date, *today);
+ 	if (tmp_age!=1) {
+-	  sprintf(buf2, "%s is %d years old", buf, tmp_age);
++	  sprintf(buf2, "%s cumplirá %d años", buf, tmp_age);
+ 	} else {
+-	  sprintf(buf2, "%s is %d year old", buf, tmp_age);
++	  sprintf(buf2, "%s cumplirá %d año", buf, tmp_age);
+ 	}
+       } else {
+ 	sprintf(buf2, "%s has a birthday", buf);
+@@ -576,7 +581,7 @@
+       break;
+     case F_TANNIVERSARY:
+       if (evl[i].date.year != 0) {
+-	sprintf(buf2, "%s %d years ago", buf, ydelta(evl[i].date, *today));
++	sprintf(buf2, "%s hará %d años", buf, ydelta(evl[i].date, *today));
+       } else {
+ 	strcpy(buf2, buf);
+       }
+@@ -600,7 +605,7 @@
+       strcpy(buf2, buf);
+       evl[i].warn=-1; /* special code! */
+       break;
+-    }      
++    }
+     evl[i].text = strdup(buf2);
+ 
+     /* precalculate the "priority", the time until we next need to
+@@ -631,7 +636,7 @@
+ {
+   for (; ptr[j] != 0 &&  ptr[j] != ' ' && ptr[j] != '\t' ; j++);
+   for (; ptr[j] != 0 && (ptr[j] == ' ' || ptr[j] == '\t'); j++);
+-  
++
+   return j;
+ }
+ 
