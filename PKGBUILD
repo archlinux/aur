@@ -2,8 +2,8 @@
 # Put icons always in folder with version and release
 
 pkgname=sardi-icons
-pkgver=9.2
-pkgrel=8
+pkgver=9.3
+pkgrel=0
 _destname="/usr/share/icons/"
 pkgdesc="Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders. "
 arch=('any')
