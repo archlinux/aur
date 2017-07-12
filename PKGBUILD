@@ -5,7 +5,7 @@ _pkgname='bigloo'
 pkgname="${_pkgname}-devel"
 epoch=27
 _pkgver=4.3b
-_pkgsuffix=alpha03Jul17
+_pkgsuffix=alpha12Jul17
 pkgver=${_pkgver}_${_pkgsuffix}
 pkgrel=1
 pkgdesc="Fast scheme compiler"
@@ -19,16 +19,13 @@ optdepends=('emacs: for bee'
 provides=('bigloo=$pkgver')
 conflicts=('bigloo')
 options=('!makeflags' 'libtool' 'staticlibs' '!strip')
-source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh" "comptime.patch")
-sha256sums=('dbbf73f42299c48e6e9f29344f4dd266380ea8e63018322d66468595fe4a4854'
-            'b45d2dc176f2b8c6496da9bfaad76d9398172dbef288984f6415824c1c93a4c2'
-            '7dce688592e3a502cfd2acd87f37d683f3f461f1c5c84aa2e6756a285b985ba9')
+source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
+sha256sums=('b4789ee2f55cfcaab54154d7daae143cacc036094bab8c0ab9fe9331886fbcd1'
+            'b45d2dc176f2b8c6496da9bfaad76d9398172dbef288984f6415824c1c93a4c2')
 
 prepare() {
   cd "${srcdir}/${_pkgname}${_pkgver}"
   sed -ri 's/ ?-Wl,-rpath=[^"]+"/"/' configure
-  cd comptime
-  patch -p0 < $srcdir/comptime.patch
 }
 
 build() {
