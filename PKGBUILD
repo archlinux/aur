@@ -12,11 +12,6 @@ makedepends=('git')
 source=(${pkgname}::git+"${url}.git")
 md5sums=('SKIP')
 
-pkgver() {
-	cd "${srcdir}/${pkgname}"
-	echo "0.$(git rev-list --count HEAD)"
-}
-
 build() {
 	true
 }
