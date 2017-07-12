@@ -3,7 +3,7 @@
 
 pkgname=transmission-remote-gui-gtk2
 _pkgname=transgui
-pkgver=5.5.1
+pkgver=5.8.1
 pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ conflicts=(transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-
 install=transmission-remote-gui.install
 source=(https://github.com/leonsoft-kras/transmisson-remote-gui/archive/v${pkgver}.zip
         ${_pkgname}.desktop)
-md5sums=(61fb49634d4c5d6c0d8124f030cda573
+md5sums=(cd9a83712607d7709bf87afdd284c108
          c0504cb6d4e970892ac7be9206c787b5)
 _ws=gtk2
 
@@ -38,7 +38,7 @@ package() {
   rm "${pkgdir}/usr/share/${_pkgname}/lang/transgui.template"
 
   install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}"
-  install -D -m 644 readme.txt history.txt LICENSE.txt "${pkgdir}/usr/share/doc/${pkgname}"
+  install -D -m 644 README.md history.txt LICENSE.txt "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -D -m 644 "${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -D -m 644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
