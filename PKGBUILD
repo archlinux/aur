@@ -10,7 +10,7 @@ depends=('python-daemonize' 'python-terminaltables-git' 'python-colorclass-git' 
 makedepends=('python-setuptools')
 provides=('encarne')
 url='https://github.com/nukesor/encarne'
-source=("https://github.com/Nukesor/encarnearchive/${pkgver}.tar.gz")
+source=("https://github.com/Nukesor/encarne/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
