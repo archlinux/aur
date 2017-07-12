@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='http://www.persosim.de'
 license=('GPL3')
 depends=('pcsclite' 'pcsc-tools')
-source=("http://www.persosim.de/sites/default/files/PersoSim_Driver_Linux_${pkgver}.tgz" Makefile.patch)
+source=("https://persosim.secunet.com/fileadmin/user_upload/Persosim_Microsite/Files/PersoSim_Driver_Linux_$pkgver.tgz" Makefile.patch)
 
 prepare()
 {
