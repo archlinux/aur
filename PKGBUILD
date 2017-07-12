@@ -2,7 +2,7 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
 url='https://www.blackmagicdesign.com/support/family/capture-and-playback'
@@ -20,20 +20,22 @@ _expected_sha256sum='ce7e925f862633cbec79c302c10eba672bbed773a56349f09e86eefb8c4
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/58.0.3029.110 \
+                        Chrome/59.0.3071.115 \
                         Safari/537.36"
 _reqjson="{ \
-    \"country\": \"us\", \
     \"platform\": \"Linux\", \
+    \"country\": \"us\", \
     \"firstname\": \"Arch\", \
     \"lastname\": \"Linux\", \
     \"email\": \"someone@archlinux.org\", \
     \"phone\": \"202-555-0194\", \
-    \"city\": \"pacman\", \
     \"state\": \"AUR\", \
-    \"terms\": true, \
+    \"city\": \"pacman\", \
+    \"hasAgreedToTerms\": true, \
     \"product\": \"Desktop Video ${pkgver} SDK\" \
 }"
+_useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
+_reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
 
 _exit_makepkg() {
     printf '%s\n' "error: failed to ${1} ${_srcfile}"
@@ -51,7 +53,7 @@ prepare() {
             -H 'Host: sw.blackmagicdesign.com' \
             -H 'Upgrade-Insecure-Requests: 1' \
             -H "$_useragent" \
-            -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' \
+            -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' \
             -H 'Accept-Language: en-US,en;q=0.8' \
             --compressed \
             "$(curl \
@@ -61,9 +63,10 @@ prepare() {
                 -H 'Origin: https://www.blackmagicdesign.com' \
                 -H "$_useragent" \
                 -H 'Content-Type: application/json;charset=UTF-8' \
-                -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
+                -H "Referer: https://www.blackmagicdesign.com/support/family/capture-and-playback/download/${_referid}/Linux" \
                 -H 'Accept-Language: en-US,en;q=0.8' \
-                --data-binary "$_reqjson"\
+                -H 'Cookie: _ga=GA1.3.853760154.1498322710; _gid=GA1.3.606965387.1499872692; _gat=1' \
+                --data-binary "$_reqjson" \
                 --compressed \
                 "$_srcurl" \
             )" || _exit_makepkg 'download'
