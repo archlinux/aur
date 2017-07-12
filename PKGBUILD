@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=winetricks-zh-git
-pkgver=r125.3012b9a
+pkgver=r127.02900ad
 pkgrel=1
 pkgdesc="Wine Setup Wizard Winetricks Chinese Version"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = winetricks-zh-git
 	pkgdesc = Wine Setup Wizard Winetricks Chinese Version
-	pkgver = r125.3012b9a
+	pkgver = r127.02900ad
 	pkgrel = 1
 	url = https://github.com/hillwoodroc/winetricks-zh
 	install = winetricks-zh.install
