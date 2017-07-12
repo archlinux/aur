@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Retrosmart icon theme."
 url="https://github.com/mdomlop/${pkgname}"
 source=("https://github.com/mdomlop/retrosmart-icon-theme/archive/0.2.tar.gz")
-md5sums=('47d3a4d706ea0be84154879fb3da38ef')
+md5sums=('9f141aaed7b2ff0193586802fc7e2864')
 license=('GPL3')
 optdepends=('retrosmart-gtk-themes: The corresponding GTK themes'
             'retrosmart-openbox-themes: The corresponding Openbox themes'

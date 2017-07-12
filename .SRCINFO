@@ -13,7 +13,7 @@ pkgbase = retrosmart-icon-theme
 	optdepends = retrosmart-x11-cursors: The corresponding X11 cursor theme
 	optdepends = retrosmart-xfwm4-themes: The corresponding XFwm4 themes
 	source = https://github.com/mdomlop/retrosmart-icon-theme/archive/0.2.tar.gz
-	md5sums = 47d3a4d706ea0be84154879fb3da38ef
+	md5sums = 9f141aaed7b2ff0193586802fc7e2864
 
 pkgname = retrosmart-icon-theme
 
