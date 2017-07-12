@@ -18,7 +18,7 @@ sha256sums=('2b8902a220fee43ee76bd55d5a7f7fd51a3faf8db721a3402b442f1b6e1ef518')
 build() {
   cd $pkgname-$pkgver
 
-  CXXFLAGS+=' -std=gnu++98'
+  CXXFLAGS+=' -Wno-narrowing'
 
   ./configure --prefix=/usr
   make
