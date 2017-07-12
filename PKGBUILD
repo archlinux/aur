@@ -30,5 +30,5 @@ pkgver() {
 #}
 package() {
 	cd "$srcdir/matplotlib2tikz"
-	python setup.py install --root="$pkgdir/" --prefix="/usr"
+	python2 setup.py install --root="$pkgdir/" --prefix="/usr"
 }
