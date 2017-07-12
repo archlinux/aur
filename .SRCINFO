@@ -8,9 +8,7 @@ pkgbase = pinpoint
 	arch = x86_64
 	license = LGPL2.1
 	depends = clutter-gst
-	depends = gdk-pixbuf2
-	depends = pango
-	depends = librsvg
+	depends = clutter-gtk
 	source = http://ftp.gnome.org/pub/gnome/sources/pinpoint/0.1/pinpoint-0.1.8.tar.xz
 	sha256sums = 5a207dd1a35681b7268e6aa5ff9b2c5381f4cc63e5f2e5695997ca9d3264e8ca
 
