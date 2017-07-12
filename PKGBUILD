@@ -1,20 +1,15 @@
 # Maintainer: Simon Désaulniers <rostydela@gmail.com>
 pkgname='dpaste'
-pkgver=20170712
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A simple pastebin for light values (max 64KB) using OpenDHT distributed hash table."
 arch=('x86_64')
 license=('GPL3')
 url='https://github.com/sim590/dpaste'
-source=('git://github.com/sim590/dpaste')
+source=('git://github.com/sim590/dpaste#tag=0.3.3')
 depends=('gnutls' 'libb64' 'libcurlpp>=0.8.1' 'opendht-git' 'glibmm')
 makedepends=('git' 'nlohmann_json-git')
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/dpaste"
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
-}
 
 prepare () {
   cd "${srcdir}/dpaste"
