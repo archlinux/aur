@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-craft-git
-pkgver=957.3d4485e
+pkgver=1017.a662b3b
 pkgrel=1
 pkgdesc="A simple Minecraft clone written in C using modern OpenGL (shaders)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ _gitname=Craft
 source=("git+https://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
 sha256sums=('SKIP'
-	    'SKIP')
+	'SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -30,6 +30,6 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
   install -Dm644 "${_gitname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
