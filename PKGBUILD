@@ -2,7 +2,7 @@
 # With help from Nicolas Porcel
 pkgbase=linux-max98090
 _srcname=linux-4.12
-pkgver=4.12
+pkgver=4.12.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -11,8 +11,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf' 'patch' 'mak
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -27,7 +27,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '4cfda47a7b4226d7a134650ed75a7384864684f121b7c56fc6e4a2cd0a2eb6d1'
+            '466ad7caf26aac66fdf299dbe6b23d0cf1729e363a4ee37738938e3be563946b'
+            'SKIP'
+            '635c6595d963856e489775af79311e722250bb14f72e47ee1bfc650577713583'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '66f1e1a21ceecbad1efa892515e542323a2895fc5141663eeca7fc341bec35aa'
@@ -43,7 +45,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-#  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # security patches
 
