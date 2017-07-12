@@ -1,14 +1,14 @@
 # Maintainer: levinit <levinit@outlook.com>
 pkgname=adhosts
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 epoch=
 pkgdesc="google hosts and blocking ads hosts.用于科学上网和屏蔽广告的hosts."
 arch=(any)
 url="https://github.com/levinit/$pkgname"
 license=('GPL')
 groups=()
-depends=('git' 'wget')
+depends=('git' 'curl')
 makedepends=()
 checkdepends=()
 optdepends=()
