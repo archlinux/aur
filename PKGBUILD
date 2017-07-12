@@ -1,23 +1,24 @@
 # Maintainer: Marius Nestor <marius at softpedia dot com>
 
 pkgname=gnome-directory-thumbnailer
-pkgver=0.1.6
-pkgrel=2
-pkgdesc="A GNOME thumbnailer utility that will generate a thumbnail for a directory"
-arch=('any')
+pkgver=0.1.9
+pkgrel=1
+pkgdesc="GNOME thumbnailer to generate thumbnails for directories"
+arch=('x86_64' 'i686')
 url="https://wiki.gnome.org/GnomeDirectoryThumbnailer"
 license=('LGPL2.1')
 depends=('gnome-desktop')
-makedepends=('glib2' 'gdk-pixbuf2')
-source=(http://ftp.acc.umu.se/pub/GNOME/sources/gnome-directory-thumbnailer/0.1/$pkgname-$pkgver.tar.xz)
-md5sums=('dac98a3becbc71015a927fa3a1621038')
+makedepends=('intltool')
+source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
+sha256sums=('f1e7bf8b70833e9601532468b8d80254e0bc43909b6e6860e819ff239161a6e4')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  ./configure --prefix=/usr
-  make
+	cd $pkgname-$pkgver
+	./configure --prefix=/usr
+	make
 }
+
 package() {
-  install -D -m644 "$srcdir"/$pkgname-$pkgver/src/gnome-directory-thumbnailer.thumbnailer "$pkgdir"/usr/share/thumbnailers/gnome-directory-thumbnailer.thumbnailer
+	cd $pkgname-$pkgver
+	make DESTDIR="$pkgdir" install
 }
