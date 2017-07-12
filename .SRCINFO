@@ -1,0 +1,20 @@
+pkgbase = python-time_uuid
+	pkgdesc = A sensible class for dealing with UUIDv1
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/samuraisam/time_uuid
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python2
+	source = https://pypi.python.org/packages/eb/2c/033a19c31c5ca828104cd8666623904b9f64c1ff0858fa7ac6789130df3e/time-uuid-0.2.0.tar.gz
+	source = license.txt
+	md5sums = 1483a8d84e5938f3efed1d71d91e27f3
+	md5sums = 5c2857983bc7c937295d85e97aa776bb
+
+pkgname = python-time_uuid
+	depends = python
+
+pkgname = python2-time_uuid
+	depends = python2
+
