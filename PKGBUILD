@@ -2,7 +2,7 @@
 
 pkgname=kicad-git
 pkgver=r8082.d4e41c4f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
@@ -27,7 +27,7 @@ build() {
   cd build
   cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr \
-              -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+              -DCMAKE_INSTALL_LIBDIR=lib \
               -DKICAD_USE_OCE=ON \
               -DOCE_DIR=`dirname $(pacman -Ql oce | grep OCEConfig.cmake | awk '{ print $2 }' )` \
               -DBUILD_GITHUB_PLUGIN=ON \
