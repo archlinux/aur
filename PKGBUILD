@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mrboom-git
-pkgver=89.e68c2d3
+pkgver=170.3235393
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="Mr.Boom is a 8 players Bomberman clone for RetroArch/Libretro"
