@@ -26,8 +26,8 @@ source=('googleearth.sh'
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
-source_i686=("google-earth-stable_${pkgver}_i386.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_i386.deb")
-source_x86_64=("google-earth-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_amd64.deb")
+source_i686=("google-earth-stable_${pkgver}_i386.deb::https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-stable/google-earth-stable_7.1.8.3036-r0_i386.deb")
+source_x86_64=("google-earth-stable_${pkgver}_amd64.deb::https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-stable/google-earth-stable_7.1.8.3036-r0_amd64.deb")
 md5sums=('e84f5d51ea3545c131d1794f89f6464a'
          '598d579a1c3199c77850d86ba78f7b44'
          'SKIP'
@@ -36,6 +36,13 @@ md5sums=('e84f5d51ea3545c131d1794f89f6464a'
          'SKIP')
 md5sums_i686=('bf6ccc911ce09a9ec5dc0e6ee98e92d5')
 md5sums_x86_64=('77cb0eacde195c224767a77ccf54c8ef')
+
+# For new crashy version:
+#pkgver=7.3.0.3827
+#source_i686=("google-earth-stable_${pkgver}_i386.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_i386.deb")
+#source_x86_64=("google-earth-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_amd64.deb")
+#md5sums_i686=('7f4eb5dc6a30ccb8015216adf2517e5c')
+#md5sums_x86_64=('c92a95342789e2202efc42a619970034')
 
 _instdir=/opt/google/earth/free/
 
