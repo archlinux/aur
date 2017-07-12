@@ -47,7 +47,7 @@ sha512sums=('61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e2
             '18468cce37b4ea15f0a7b4b564bff70a1138b24c8f34c7b94a4056e7e4dd22caa37d25328660f5e04e75c715cb060e78b9525dca52b4e41ef93d5502f1829a4f')
 
 build() {
-	cd "${srcdir}/slurm-${pkgver//./-}"
+	cd "${srcdir}/slurm-slurm-${pkgver//./-}"
 
 	# If required libraries or header files are in non-standard locations,
 	# set CFLAGS and LDFLAGS environment variables accordingly.
@@ -74,7 +74,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/slurm-${pkgver//./-}"
+	cd "${srcdir}/slurm-slurm-${pkgver//./-}"
 
 	make DESTDIR="${pkgdir}" install
 
