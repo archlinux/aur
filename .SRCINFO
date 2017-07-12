@@ -1,7 +1,7 @@
 pkgbase = easytether-bin
 	pkgdesc = Internet access via smartphone
-	pkgver = 0.8.5
-	pkgrel = 2
+	pkgver = 0.8.8
+	pkgrel = 1
 	url = http://www.mobile-stream.com/easytether/drivers.html
 	changelog = CHANGELOG
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = easytether-bin
 	depends = libusb
 	depends = udev
 	conflicts = easytether-rpm
-	source = http://www.mobile-stream.com/beta/arch/easytether-0.8.5-2-x86_64.pkg.tar.xz
-	sha256sums = fbfda985cea4ba5f56a971132a8155d02f0986ad0629887f1e0075b39f58cbb0
+	source = http://www.mobile-stream.com/beta/arch/easytether-0.8.8-1-x86_64.pkg.tar.xz
+	sha256sums = 392b01904aa37eb2d497f3bef459cc467f25466ed60247d596d9577e2a9b4008
 
 pkgname = easytether-bin
 

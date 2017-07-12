@@ -1,8 +1,8 @@
 # Maintainer: jackusm <jackusm95@gmail.com>
 
 pkgname=easytether-bin
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.8.8
+pkgrel=1
 pkgdesc="Internet access via smartphone"
 arch=('i686' 'x86_64')
 url=http://www.mobile-stream.com/easytether/drivers.html
@@ -14,16 +14,16 @@ source=("http://www.mobile-stream.com/beta/arch/easytether-${pkgver}-${pkgrel}-$
 changelog=CHANGELOG
 case "$CARCH" in
 	armv6h) _pkgarch="armv6"
-			sha256sums+=('cb43bdceb98e06160ecc851475e9499f2ebdfe248cf64cc6516e6d71fc5efc8c')
+			sha256sums+=('f918fc5ed31811fb0390ebdfb50afd59795e3f82503813aa6d5c4279f7dcf89b')
 			;;
 	armv7h) _pkgarch="armv7"
-			sha256sums+=('cee3948b867fdc21caccf3db9d2c6b896a935ec5f5ff4aa0db375894f6cd0409')
+			sha256sums+=('0bc017027a8bf3c2efafd8597532b53b2c40791d61c8a9c9c6c8641bf0e84add')
 			;;
 	i686) _pkgarch="386"
-			sha256sums+=('26e7b27391fe9b83e83865c6343f56795606e55b5efb412a593dd6d16d9a6f7c')
+			sha256sums+=('a3f50f42cbfa24833d5c686edb3841912fc46b304947f046e59ec5cd7b77409d')
 			;;
 	x86_64) _pkgarch="amd64"
-			sha256sums+=('fbfda985cea4ba5f56a971132a8155d02f0986ad0629887f1e0075b39f58cbb0')
+			sha256sums+=('392b01904aa37eb2d497f3bef459cc467f25466ed60247d596d9577e2a9b4008')
 			;;
 esac
 
