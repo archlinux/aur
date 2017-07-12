@@ -1,0 +1,15 @@
+pkgbase = office-runner
+	pkgdesc = Office game for laptop owners
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://git.gnome.org/browse/office-runner/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = intltool
+	depends = gnome-settings-daemon
+	source = https://download.gnome.org/sources/office-runner/1.0/office-runner-1.0.2.tar.xz
+	sha256sums = ea42d84960773bd3ec7bb412df61cbfb617a42f69db09ed337eef91ff94a8a97
+
+pkgname = office-runner
+
