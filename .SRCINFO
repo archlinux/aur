@@ -12,6 +12,8 @@ pkgbase = yle-dl-git
 	depends = python2-crypto
 	optdepends = python2-youtube-dl: an alternative downloader backend
 	optdepends = rtmpdump: for downloading Areena audio streams
+	provides = yle-dl=2.18.r4.g7696802
+	conflicts = yle-dl
 	source = yle-dl-git::git+https://github.com/aajanki/yle-dl.git
 	md5sums = SKIP
 

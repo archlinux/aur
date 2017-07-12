@@ -12,6 +12,8 @@ depends=('ffmpeg' 'php' 'php-mcrypt' 'python2-crypto')
 optdepends=('python2-youtube-dl: an alternative downloader backend'
             'rtmpdump: for downloading Areena audio streams')
 makedepends=("git")
+provides=(${pkgname%-git}=$pkgver)
+conflicts=(${pkgname%-git})
 source=("$pkgname::git+https://github.com/aajanki/yle-dl.git")
 md5sums=("SKIP")
 
