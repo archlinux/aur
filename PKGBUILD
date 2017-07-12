@@ -1,7 +1,7 @@
 # Maintainer: Simon Désaulniers <rostydela@gmail.com>
 pkgname='dpaste'
 pkgver=0.3.3
-epoch=
+epoch=1
 pkgrel=1
 pkgdesc="A simple pastebin for light values (max 64KB) using OpenDHT distributed hash table."
 arch=('x86_64')
