@@ -1,0 +1,13 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index 9ba90c1..2cd13dd 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -37,7 +37,7 @@
+ #include <curlpp/Options.hpp>
+ #include <curlpp/Exception.hpp>
+ #include <curlpp/Infos.hpp>
+-#include <json.hpp>
++#include <nlohmann/json.hpp>
+ #include <b64/decode.h>
+ 
+ #include "node.h"
