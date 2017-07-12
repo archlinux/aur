@@ -8,7 +8,6 @@ pkgbase = birthday-es
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = glibc
 	provides = birthday
 	conflicts = birthday
 	source = http://downloads.sourceforge.net/project/birthday/birthday/1.6.2/birthday-1.6.2.tar.bz2
