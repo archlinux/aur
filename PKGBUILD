@@ -43,5 +43,6 @@ package() {
   cd "${_plug}"
   install -Dm755 "libvs${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/libvs${_plug}.so"
 
+  install -Dm644 README.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${pkgname}/README.rst"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
