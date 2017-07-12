@@ -12,13 +12,13 @@ source=('git+https://gitlab.com/PhonePi/ofono')
 sha256sums=("SKIP")
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/ofono"
 	./bootstrap-configure
 	make CFLAGS="$CFLAGS -Wimplicit-fallthrough=0"
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/ofono"
 	make DESTDIR="$pkgdir" install
 	install -Dm755 "$srcdir/$pkgname/src/ofono.conf" "$pkgdir/etc/dbus-1/system.d/ofono.conf"
 	install -Dm755 "$srcdir/$pkgname/src/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
