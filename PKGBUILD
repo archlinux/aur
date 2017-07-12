@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-pkgver=3.0.0r1075.b56d1cd
+pkgver=3.1.0r1076.d7e49de
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
@@ -19,23 +19,22 @@ options=('!makeflags')
 
 pkgver() {
   cd "$srcdir"/$_gitname
-  printf "%sr%s.%s" "3.0.0" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%sr%s.%s" "3.1.0" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  LANG=C
   cd ${srcdir}/${pkgname%-git}
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
-	      --bigloolibdir=/usr/lib/bigloo/4.3b
+	      --bigloolibdir=/usr/lib/bigloo/4.3b 
   make
   make doc
 }
 
-# check() {
-#   cd ${srcdir}/${pkgname%-git}
-#   make test
-# }
+check() {
+  cd ${srcdir}/${pkgname%-git}
+  make test
+}
   
 package() {
   cd ${srcdir}/${pkgname%-git}
@@ -48,5 +47,5 @@ package() {
 	  $pkgdir/usr/lib/systemd/system/hop.socket
 
   install -Dm755 arch/archlinux/bin/hop.sh $pkgdir/usr/bin/hop.sh
-  cd ${pkgdir}/usr/bin; rm hop; ln -s hop-3.0.0 hop
+  cd ${pkgdir}/usr/bin; rm hop; ln -s hop-3.1.0 hop
 }
