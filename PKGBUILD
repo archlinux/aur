@@ -2,18 +2,18 @@
 #Contributor: Ivan Kuraj
 
 pkgname=scala-ide
-pkgver=4.5.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="Scala IDE for Eclipse, stand-alone version"
 arch=('x86_64')
 url="http://www.scala-ide.org/"
 license=('custom')
-source=($pkgname-$pkgver.zip::"http://downloads.typesafe.com/scalaide-pack/$pkgver-vfinal-neon-211-20161213/scala-SDK-$pkgver-vfinal-2.11-linux.gtk.$CARCH.tar.gz"
+source=($pkgname-$pkgver.zip::"http://downloads.typesafe.com/scalaide-pack/$pkgver-vfinal-neon-212-20170609/scala-SDK-$pkgver-vfinal-2.12-linux.gtk.$CARCH.tar.gz"
 	"LICENSE" "scala-ide.desktop" "product.png" "scala-ide.sh"
 )
 depends=("java-environment>=8" webkitgtk unzip)
 provides=('scala-ide')
-md5sums=('a2eaf2c41bce5a27641d9a484162083c'
+md5sums=('1f7d24c68397b0c761666796bed781c8'
          '58b225f304aaf42c8b8738894a10cb96'
          '6a7d702fc49dd5b6895f7161ad7f0574'
          'c95b1920928f10d2c982afd7f5827a2c'
