@@ -2,7 +2,7 @@
 
 pkgname=flowblade
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a multitrack non-linear video editor for Linux"
 arch=('any')
 url="https://github.com/jliljebl/$pkgname"
@@ -12,7 +12,7 @@ depends=('dbus-glib'
          'gmic'
          'gtk3'
          'librsvg'
-         'mlt'
+         'mlt-git'
          'mlt-python-bindings'
          'movit'
          'pygtk'
