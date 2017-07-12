@@ -1,0 +1,33 @@
+pkgbase = linux-galliumos
+	pkgver = 4.12.0
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://github.com/GalliumOS/linux.git#branch=v4.12.0-galliumos
+	source = linux-galliumos.preset
+	sha256sums = SKIP
+	sha256sums = 2c8a0e7bea719c82005fd7158a4a7ca344b7af5a37fedce44b9fda488a9116c2
+
+pkgname = linux-galliumos
+	pkgdesc = The Linux kernel and modules with GalliumOS patches for chromebooks
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-galliumos.preset
+
+pkgname = linux-galliumos-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel with GalliumOS patches for chromebooks
+	provides = linux-headers
+
