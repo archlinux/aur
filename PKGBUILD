@@ -7,16 +7,16 @@
 
 pkgname=rofi-git
 _gitname=rofi
-pkgver=1.3.1.r688.g0d6bff93
+pkgver=1.3.1.r689.g5996303c
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('i686' 'x86_64')
 url='https://davedavenport.github.io/rofi/'
 license=('MIT')
 depends=(
-  'cairo' 'freetype2' 'librsvg' 'libx11' 'libxcb' 'libxdg-basedir'
-  'libxft' 'libxkbcommon' 'libxkbcommon-x11' 'pango'
-  'startup-notification' 'xcb-util' 'xcb-util-wm' 'xcb-util-xrm'
+  'cairo' 'flex' 'freetype2' 'librsvg' 'libx11' 'libxcb' 'libxdg-basedir'
+  'libxft' 'libxkbcommon' 'libxkbcommon-x11' 'pango' 'startup-notification'
+  'xcb-util' 'xcb-util-wm' 'xcb-util-xrm'
 )
 optdepends=('i3-wm: use as a window switcher')
 makedepends=('check' 'git' 'meson')
