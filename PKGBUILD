@@ -1,10 +1,12 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 pkgname=epaste
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
+_commit=7eb82903bd207d4655a53c688148319b50cd5586
+_dirname="$pkgname-v$pkgver-$_commit"
 pkgdesc="encrypts given text and turns encrypted bytes into base64 text which can be easily pasted/retrieved on pastebin websites"
 arch=('i686' 'x86_64')
-url="https://github.com/zetok/epaste"
+url="https://gitlab.com/zetok/epaste"
 license=('GPL3')
 groups=()
 depends=('gcc-libs' 'libsodium')
@@ -15,16 +17,16 @@ replaces=()
 backup=()
 options=()
 install=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zetok/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("$_dirname.tar.gz::${url}/repository/archive.tar.gz?ref=v${pkgver}")
 noextract=()
-sha512sums=('3d26cbc95267008b75958ff9d54f972943f6f2c4a931cf7314b7eb7641a989fb6f07fa39c88c15724fc8b7f7bfd46cb4f76497ad8bb39ead143f29b3ae9bae97')
+sha512sums=('48131bfd87244a64c17ee83682d9d70ca676235052b651e5f47578dd1b476732bea8f7db43d50ea769a9434b07cae23d327620d683a6414119180203aa520c82')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_dirname"
 	cargo build --release
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	cd "$srcdir/$_dirname"
+	install -Dm755 "$srcdir/$_dirname/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
