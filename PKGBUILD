@@ -12,7 +12,10 @@ arch=('i686' 'x86_64')
 url="http://julialang.org"
 license=('MIT')
 makedepends=('gcc-fortran' 'git')
-makedepends+=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mbedtls' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme' 'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
+makedepends+=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm'
+              'mbedtls' 'mpfr' 'openlibm' 'openspecfun' 'pcre2'
+              'suitesparse' 'patchelf' 'hicolor-icon-theme'
+              'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
 # Needed if building the documentation
 #makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
 options=('!emptydirs')
@@ -59,7 +62,10 @@ build() {
 
 package_julia-git() {
   backup=('etc/ld.so.conf.d/julia.conf' 'etc/julia/juliarc.jl')
-  depends=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mbedtls' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme' 'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
+  depends=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm'
+           'mbedtls' 'mpfr' 'openlibm' 'openspecfun' 'pcre2'
+           'suitesparse' 'patchelf' 'hicolor-icon-theme'
+           'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
   optdepends=('gnuplot: If using the Gaston Package from julia')
   provides=('julia')
   conflicts=('julia')
