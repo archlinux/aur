@@ -1,6 +1,6 @@
 # Maintainer: Wes Barnett <wes at wbarnett dot us>
 pkgname=anki
-pkgver=2.1.0beta2
+pkgver=2.1.0beta3
 pkgrel=1
 pkgdesc="Friendly, intelligent flash cards"
 url="https://ankisrs.net/"
@@ -13,7 +13,7 @@ optdepends=('lame: record sound'
             'mplayer: play sound'
             'texlive-core: use latex markup')
 source=(https://apps.ankiweb.net/downloads/beta/$pkgname-$pkgver-source.tgz)
-sha512sums=('8e72e51dd05af41c363ecaff89e313ceb83b9ddfaafedb64b65faa6a51ad621e752be6617101cd791cc986d72bb16c61f6e4bd629bb0a707a6cc0b22246f4f78')
+sha512sums=('d901effa5fac10a337f7073cc9ded2319b1c6677981439d013a46cf48c88ddc4b7f2c3af43c052c69f01aadbcebb647157e030a0d7e4e855f080525576698e9c')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
