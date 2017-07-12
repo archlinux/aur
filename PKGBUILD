@@ -2,7 +2,7 @@
 
 _gitname=pueue
 pkgname=${_gitname}-git
-pkgver='r123.f19b9b9'
+pkgver='r256.8867929'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
