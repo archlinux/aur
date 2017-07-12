@@ -1,6 +1,6 @@
---- Makefile.libretro.org	2015-11-10 07:14:36.000000000 +0100
-+++ Makefile.libretro	2015-11-10 16:46:48.000000000 +0100
-@@ -114,6 +114,9 @@
+--- Makefile.libretro.org	2017-07-12 11:57:28.037188401 +0200
++++ Makefile.libretro	2017-07-12 12:01:08.095944312 +0200
+@@ -121,6 +121,9 @@
  
  include Makefile.common
  
@@ -10,12 +10,12 @@
  OBJECTS := $(SOURCES_C:.c=.o)
  
  all: $(TARGET)
-@@ -133,7 +136,7 @@
- 	$(CC) $(fpic) $(SHARED) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz
+@@ -128,7 +131,7 @@
+ 	$(AR) rcs $@ $(OBJECTS) 
  else
  $(TARGET): $(OBJECTS)
--	$(CC) $(fpic) $(SHARED) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz -lpthread
-+	$(CC) $(fpic) $(SHARED) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz -lpthread -L/usr/lib64 -lcapsimage
- 
+-	$(CC) $(fpic) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz $(SHARED)
++	$(CC) $(fpic) $(INCLUDES) -o $@ $(OBJECTS)  -lm -lz $(SHARED) -lpthread -L/usr/lib64 -lcapsimage
  endif
  
+ %.o: %.c

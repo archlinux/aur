@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-hatari-enhanced-git
-pkgver=5423.4930236
+pkgver=5430.bd035e8b
 pkgrel=1
 pkgdesc="libretro implementation of Hatari v1.8 (Atari ST/STE/TT/Falcon) with IPF support"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("git+https://github.com/libretro/${_gitname}.git"
 
 sha256sums=('SKIP'
 	'SKIP'
-	'c564cd23d6639ad146c52c6cc1767cc50b27a029a12f2e3ddfc9db1c4063f627')
+	'a1bc0ece68ac1b0cf67492916a4b53975cb0d01e348bde49e69caa158a147f1f')
 
 pkgver() {
   cd "${_gitname}"
@@ -35,5 +35,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libnewname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libnewname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libnewname}.info"
 }
