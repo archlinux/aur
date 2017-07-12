@@ -12,7 +12,7 @@ depends=("gajim" "python2-qrcode" "python2-setuptools" "python2-cryptography" "p
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo-git')
 source=("${_pkgname}-${pkgver}.zip::https://ftp.gajim.org/plugins_0.16_zip/${_pkgname}.zip")
-sha512sums=('b3eae8d9089b72d758bbfe73b6cecb29a543b11a977088b5af595754af3afc513a0b9db521e24486c7a4a98db13d01cb508b0b63012fd2a50c543f7e38d2a941')
+sha512sums=('0c2612261ecb607ac024f671306c4d82575f0b82e26ce3c4ee2788f9ef4c4c21ad0c813acf53fa461cda71f81363d7ca307dc863cfa47458587ae7a71c9f0af4')
 
 package() {
   cd ${srcdir}/${_pkgname}
