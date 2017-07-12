@@ -7,7 +7,7 @@
 _attempt_fix=0
 
 pkgname=google-earth-pro
-pkgver=7.3.0.3825
+pkgver=7.3.0.3827
 pkgrel=1
 pkgdesc="A 3D interface to view satellite images of Earth and other objects - Pro"
 arch=('i686' 'x86_64')
@@ -34,8 +34,8 @@ md5sums=('34c413a93b06010e66a1a1c4c9386696'
          'SKIP'
          'SKIP'
          'SKIP')
-md5sums_i686=('263214154143a1b011782d37858ed266')
-md5sums_x86_64=('59cd00341585896bfb54a84f9817dd0a')
+md5sums_i686=('7f4eb5dc6a30ccb8015216adf2517e5c')
+md5sums_x86_64=('c92a95342789e2202efc42a619970034')
 
 _instdir=/opt/google/earth/pro/
 
