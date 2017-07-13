@@ -1,11 +1,11 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
 
-_nginxver=1.12.0
+_nginxver=1.12.1
 _passengerver=5.1.5
 
 pkgname=nginx-passenger
-pkgver=1.12.0
-pkgrel=4
+pkgver=1.12.1
+pkgrel=1
 pkgdesc="HTTP Server with Passenger Module"
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -35,7 +35,7 @@ source=($url/download/nginx-$_nginxver.tar.gz{,.asc}
         packaging.patch)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
               'D5F0851426939232F437AB722AC745A50A212A8C') # Phusion Software Signing <software-signing@phusion.nl>
-sha256sums=('b4222e26fdb620a8d3c3a3a8b955e08b713672e1bc5198d1e4f462308a795b30'
+sha256sums=('8793bf426485a30f91021b6b945a9fd8a84d87d17b566562c3797aba8fac76fb'
             'SKIP'
             'ea4139d2f0d9f7aa6488be966ffbfe602f80764a47b7077892d92324bff5eb47'
             'SKIP'
