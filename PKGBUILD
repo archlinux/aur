@@ -1,6 +1,6 @@
 _pkgbasename=jsoncpp
 pkgname=lib32-${_pkgbasename}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='A C++ library for interacting with JSON'
 url='https://github.com/open-source-parsers/jsoncpp'
@@ -9,7 +9,7 @@ arch=('x86_64')
 depends=("${_pkgbasename}" 'lib32-gcc-libs')
 makedepends=('cmake')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/open-source-parsers/${_pkgbasename}/archive/${pkgver}.tar.gz")
-sha256sums=('5deb2462cbf0c0121c9d6c9823ec72fe71417e34242e3509bc7c003d526465bc')
+sha256sums=('858db2faf348f89fdf1062bd3e79256772e897e7f17df73e0624edf004f2f9ac')
 
 build() {
   cd ${_pkgbasename}-${pkgver}
