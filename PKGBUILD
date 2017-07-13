@@ -1,3 +1,5 @@
+# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+
 pkgname=yzis-git
 pkgver=r2887.cea35396
 pkgrel=1
