@@ -19,5 +19,5 @@ build() {
 }
 
 package() {
-	install -Dv $srcdir/$pkgname-$pkgver/target/release/mpvc $pkgdir/usr/bin/mpvc
+	install -Dv $srcdir/$pkgname-v$pkgver*/target/release/mpvc $pkgdir/usr/bin/mpvc
 }
