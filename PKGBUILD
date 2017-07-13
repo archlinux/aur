@@ -5,9 +5,9 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-pkgver=4.12.0
-xanmod=1_rev2
-pkgrel=2
+pkgver=4.12.1
+xanmod=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
@@ -19,7 +19,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset" "config.x86_64")
-sha256sums=('a4dbdc577450e89c32aaca155f9b7d4864d8fb3b0ed524bb8fe48e919da39e99'
+sha256sums=('ace093997a636454c4bbf2a25bebbe462c18296fc174bee9cc41e642c75a0eca'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'd2271b1dfae30f38d70549e1d142da9d03eade0fd4620bbc4bd757b9c7a27422')
