@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python2-llvmlite
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Lightweight LLVM python binding for writing JIT compilers"
 url="https://github.com/numba/llvmlite"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python2-enum34' 'llvm>=4.0.0' 'llvm<4.1.0')
 makedepends=('cython2')
 source=("https://github.com/numba/llvmlite/archive/v$pkgver.tar.gz")
-md5sums=('b3d0266caa0b9f209f6d93d0ec641d00')
+md5sums=('77fdc74d1451a10e89f16394d91f118e')
 
 build() {
   cd "$srcdir/llvmlite-$pkgver"
