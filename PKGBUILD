@@ -19,6 +19,9 @@ md5sums=('66268b92bda923735f2e3afc87dcb58a'
 prepare() {
   cd "$pkgname-$pkgver"
   patch -p1 -i "$srcdir/blitz-0.10-gcc47.patch"
+  sed -i -e 's/python/python2/g' \
+      blitz/generate/Makefile* \
+      blitz/generate/genstencils.py
 }
 
 build() {
