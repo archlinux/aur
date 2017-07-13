@@ -2,7 +2,7 @@
 
 _pkgname=MooltiApp
 pkgname=mooltiapp
-pkgver=2.0.80
+pkgver=2.0.82
 pkgrel=1
 pkgdesc="Mooltiapp Desktop"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=()
 makedepends=('desktop-file-utils')
 source=("https://github.com/limpkin/mooltiapp/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('a3452356e26929e387dd2cca27cc8d94e75ea62eaea6bcd3087bb7282363a57d')
+sha256sums=('b2d37bebef04152fe79b5f8da1741ad9cc66e092e41f14641cf8c151630fb9d8')
 
 package() {
     bsdtar -O -xf "${_pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
