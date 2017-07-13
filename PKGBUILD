@@ -5,16 +5,18 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.18.0beta1.49353.g4352747
+pkgver=1.20.99.55194.gc51f35d42a
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
-license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
-depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'wayland-protocols' 'luajit' 'libexif'
-         'libgl' 'libinput' 'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
-         'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'libunwind'
-         'mesa' 'openjpeg' 'poppler' 'wayland')
+license=('BSD' 'LGPL2.1' 'GPL2' 'MIT' 'custom')
+depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
+         'gst-plugins-base-libs' 'luajit' 'libexif' 'libgl' 'libinput'
+         'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
+         'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr'
+         'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler' 'wayland'
+         'shared-mime-info' 'ttf-font' 'scim' 'libibus' 'glib2')
 makedepends=('git' 'python2')
 optdepends=('geoclue: For elocation'
             'gst-plugins-base: Video and thumbnail codecs'
@@ -48,12 +50,16 @@ build() {
   ./autogen.sh \
     --prefix=/usr \
     --with-tests=none \
-    --with-opengl=full \
-    --disable-egl \
+    --with-opengl=es \
+    --enable-egl \
     --enable-wayland \
     --enable-drm \
+    --enable-gl-drm \
+    --enable-drm-hw-accel \
     --enable-elput \
+    --enable-libinput \
     --enable-fb \
+    --enable-ibus \
     --disable-tslib \
     --enable-image-loader-webp \
     --enable-systemd \
