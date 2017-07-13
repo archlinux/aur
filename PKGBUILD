@@ -19,7 +19,6 @@ pkgname=(
     'lld-polly-svn'
     'lldb-polly-svn'
     'clang-polly-svn'
-    'clang-analyzer-polly-svn'
     'clang-compiler-rt-polly-svn'
     'clang-tools-extra-polly-svn'
 )
@@ -251,11 +250,12 @@ check() {
     # Also, disable the LLVM tests on i686 as they seem to fail too often there.
     #[[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
     
-    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja check
+    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja check-llvm
     
-    ninja check-all
-    #ninja check-lld
-    #ninja check-polly
+    ninja check-clang
+    ninja check-lld
+    ninja check-lldb
+    ninja check-polly
     #make check-clang
     #make check-polly
 }
@@ -320,11 +320,11 @@ package_lldb-polly-svn() {
 
     DESTDIR="${pkgdir}" ninja install-lldb
     
-    cd "${srcdir}/build/tools/lldb"
-    _fix_python_exec_path \
-        "${pkgdir}${_py_sitepkg_dir}/lldb/utils/symbolication.py"
+    #cd "${srcdir}/build/tools/lldb"
+    #_fix_python_exec_path \
+    #    "${pkgdir}${_py_sitepkg_dir}/lldb/utils/symbolication.py"
 
-    _compile_python_files "${pkgdir}${_py_sitepkg_dir}/lldb"
+    #_compile_python_files "${pkgdir}${_py_sitepkg_dir}/lldb"
 
     _install_licenses "${srcdir}/lldb"
 }
@@ -412,9 +412,8 @@ package_clang-polly-svn() {
         "llvm-polly-svn=${pkgver}-${pkgrel}"
     )
     optdepends=(
-        'clang-analyzer-svn: source code analysis for Clang, supporting C, C++, and Objective-C'
-        'clang-compiler-rt-svn: sanitizer runtimes, builtins, profile library and BlocksRuntime'
-        'clang-tools-extra-svn: standalone tools: syntax checking, formatting, refactoring, etc.'
+        'clang-compiler-rt-polly-svn: sanitizer runtimes, builtins, profile library and BlocksRuntime with polly'
+        'clang-tools-extra-polly-svn: standalone tools: syntax checking, formatting, refactoring, etc. with polly'
         'python2: git-clang-format and clang-format-diff.py support'
     )
     groups=('llvm-toolchain-polly-svn')
@@ -433,83 +432,57 @@ package_clang-polly-svn() {
     # The Clang Static Analyzer is installed in a separate package
     # TODO: Probably there's more elegant way to achieve this.
 
-    rm -rf "${srcdir}/clang-analyzer.tmp"
+    #rm -rf "${srcdir}/clang-analyzer.tmp"
 
-    install -m 0755 -d \
-        "${srcdir}/clang-analyzer.tmp/usr/bin" \
-        "${srcdir}/clang-analyzer.tmp/usr/share/man/man1" \
-        "${srcdir}/clang-analyzer.tmp/usr/share/scan-build" \
-        "${srcdir}/clang-analyzer.tmp/usr/share/scan-view"
+    #install -m 0755 -d \
+    #    "${srcdir}/clang-analyzer.tmp/usr/bin" \
+    #    "${srcdir}/clang-analyzer.tmp/usr/share/man/man1" \
+    #    "${srcdir}/clang-analyzer.tmp/usr/share/scan-build" \
+    #    "${srcdir}/clang-analyzer.tmp/usr/share/scan-view"
 
-    mv \
-        "${pkgdir}/usr/bin/scan-build" \
-        "${pkgdir}/usr/bin/scan-view" \
-        "${pkgdir}/usr/libexec/c++-analyzer" \
-        "${pkgdir}/usr/libexec/ccc-analyzer" \
-        \
-        "${srcdir}/clang-analyzer.tmp/usr/bin/"
+    #mv \
+    #    "${pkgdir}/usr/bin/scan-build" \
+    #    "${pkgdir}/usr/bin/scan-view" \
+    #    "${pkgdir}/usr/libexec/c++-analyzer" \
+    #    "${pkgdir}/usr/libexec/ccc-analyzer" \
+    #    \
+    #    "${srcdir}/clang-analyzer.tmp/usr/bin/"
 
-    mv \
-        "${pkgdir}/usr/share/man/man1/scan-build.1" \
-        \
-        "${srcdir}/clang-analyzer.tmp/usr/share/man/man1/"
+    #mv \
+    #    "${pkgdir}/usr/share/man/man1/scan-build.1" \
+    #    \
+    #    "${srcdir}/clang-analyzer.tmp/usr/share/man/man1/"
 
-    mv \
-        "${pkgdir}/usr/share/scan-build/scanview.css" \
-        "${pkgdir}/usr/share/scan-build/sorttable.js" \
-        \
-        "${srcdir}/clang-analyzer.tmp/usr/share/scan-build/"
+    #mv \
+    #    "${pkgdir}/usr/share/scan-build/scanview.css" \
+    #    "${pkgdir}/usr/share/scan-build/sorttable.js" \
+    #    \
+    #    "${srcdir}/clang-analyzer.tmp/usr/share/scan-build/"
 
-    mv \
-        "${pkgdir}/usr/share/scan-view/FileRadar.scpt" \
-        "${pkgdir}/usr/share/scan-view/GetRadarVersion.scpt" \
-        "${pkgdir}/usr/share/scan-view/Reporter.py" \
-        "${pkgdir}/usr/share/scan-view/ScanView.py" \
-        "${pkgdir}/usr/share/scan-view/bugcatcher.ico" \
-        "${pkgdir}/usr/share/scan-view/startfile.py" \
-        \
-        "${srcdir}/clang-analyzer.tmp/usr/share/scan-view/"
+    #mv \
+    #    "${pkgdir}/usr/share/scan-view/FileRadar.scpt" \
+    #    "${pkgdir}/usr/share/scan-view/GetRadarVersion.scpt" \
+    #    "${pkgdir}/usr/share/scan-view/Reporter.py" \
+    #    "${pkgdir}/usr/share/scan-view/ScanView.py" \
+    #    "${pkgdir}/usr/share/scan-view/bugcatcher.ico" \
+    #    "${pkgdir}/usr/share/scan-view/startfile.py" \
+    #    \
+    #    "${srcdir}/clang-analyzer.tmp/usr/share/scan-view/"
 
-    rmdir \
-        "${pkgdir}/usr/libexec" \
-        "${pkgdir}/usr/share/scan-build" \
-        "${pkgdir}/usr/share/scan-view"
+    #rmdir \
+    #    "${pkgdir}/usr/libexec" \
+    #    "${pkgdir}/usr/share/scan-build" \
+    #    "${pkgdir}/usr/share/scan-view"
 
     # Clean up documentation
     # TODO: This may not be needed any more.
     rm -rf "${pkgdir}/usr/share/doc/clang/html/_sources"
 
-    _fix_python_exec_path \
-        "${pkgdir}/usr/bin/git-clang-format" \
-        "${pkgdir}/usr/share/clang/clang-format-diff.py"
+    #_fix_python_exec_path \
+    #    "${pkgdir}/usr/bin/git-clang-format" \
+    #    "${pkgdir}/usr/share/clang/clang-format-diff.py"
 
     _install_python_bindings "${srcdir}/llvm/tools/clang/bindings/python/clang"
-
-    _install_licenses "${srcdir}/clang"
-}
-
-package_clang-analyzer-polly-svn() {
-    pkgdesc='Source code analysis tool for Clang, supporting C, C++, and Objective-C'
-    url='http://clang-analyzer.llvm.org/'
-    depends=(
-        "clang-polly-svn=${pkgver}-${pkgrel}"
-        'perl'
-        'python2'
-    )
-    groups=('llvm-toolchain-polly-svn')
-    provides=('clang-analyzer')
-    conflicts=('clang-analyzer', 'clang-analyzer-svn')
-
-    cd "${srcdir}"
-
-    mv "${srcdir}/clang-analyzer.tmp"/* "${pkgdir}"/
-
-    sed -i 's|/libexec/|/bin/|' "${pkgdir}/usr/bin/scan-build"
-
-    _fix_python_exec_path \
-        "${pkgdir}/usr/bin/scan-view"
-
-    _compile_python_files "${pkgdir}/usr/share/scan-view"
 
     _install_licenses "${srcdir}/clang"
 }
@@ -524,9 +497,9 @@ package_clang-compiler-rt-polly-svn() {
     provides=('clang-compiler-rt')
     conflicts=('clang-compiler-rt', 'clang-compiler-rt-svn')
 
-    cd "${srcdir}/build/projects/compiler-rt"
+    cd "${srcdir}/build"
 
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" ninja install-compiler-rt
 
     _install_licenses "${srcdir}/compiler-rt"
 }
@@ -541,9 +514,10 @@ package_clang-tools-extra-polly-svn() {
     provides=('clang-tools-extra')
     conflicts=('clang-tools-extra', 'clang-tools-extra-svn')
 
-    cd "${srcdir}/build/tools/clang/tools/extra"
+    cd "${srcdir}/build"
 
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="${pkgdir}" ninja install-clang-tidy
+    DESTDIR="${pkgdir}" ninja install-clang-format
 
     _install_licenses "${srcdir}/clang-tools-extra"
 }
