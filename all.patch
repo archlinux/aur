@@ -1,0 +1,269 @@
+diff -rNu OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/ccm/ccmToFoam/Make/options OpenFOAM-v1706/applications/utilities/mesh/conversion/ccm/ccmToFoam/Make/options
+--- OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/ccm/ccmToFoam/Make/options	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/applications/utilities/mesh/conversion/ccm/ccmToFoam/Make/options	2017-07-11 04:04:26.664661123 -0500
+@@ -9,4 +9,4 @@
+     -lfiniteVolume \
+     -lgenericPatchFields \
+     -lmeshTools \
+-    -lconversion -lccm
++    -lconversion -lccm -ladf_ccmio
+diff -rNu OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/ccm/foamToCcm/Make/options OpenFOAM-v1706/applications/utilities/mesh/conversion/ccm/foamToCcm/Make/options
+--- OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/ccm/foamToCcm/Make/options	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/applications/utilities/mesh/conversion/ccm/foamToCcm/Make/options	2017-07-11 04:04:45.394406761 -0500
+@@ -7,4 +7,4 @@
+ EXE_LIBS = \
+     -lfiniteVolume \
+     -lgenericPatchFields \
+-    -lconversion -lccm
++    -lconversion -lccm -ladf_ccmio
+diff -rNu OpenFOAM-v1706.orig/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H OpenFOAM-v1706/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H
+--- OpenFOAM-v1706.orig/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H	2017-07-10 18:12:31.231409489 -0500
+@@ -33,6 +33,7 @@
+ 
+ // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+ 
++#include "CGAL/number_utils.h"
+ #include "CGAL/Delaunay_triangulation_2.h"
+ 
+ #ifdef CGAL_INEXACT
+diff -rNu OpenFOAM-v1706.orig/applications/utilities/mesh/manipulation/renumberMesh/Allwmake OpenFOAM-v1706/applications/utilities/mesh/manipulation/renumberMesh/Allwmake
+--- OpenFOAM-v1706.orig/applications/utilities/mesh/manipulation/renumberMesh/Allwmake	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/applications/utilities/mesh/manipulation/renumberMesh/Allwmake	2017-07-11 20:20:41.461710843 -0500
+@@ -25,7 +25,7 @@
+ 
+     for libdir in lib "lib${WM_COMPILER_LIB_ARCH}"
+     do
+-        if [ -f "$ZOLTAN_ARCH_PATH/$libdir/libzoltan.a" ]
++        if [ -f "$ZOLTAN_ARCH_PATH/$libdir/libzoltan.so" ]
+         then
+             echo "    found libzoltanRenumber  --  enabling zoltan renumbering support."
+             export COMP_FLAGS="-DFOAM_USE_ZOLTAN"
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/ccmio OpenFOAM-v1706/etc/config.sh/ccmio
+--- OpenFOAM-v1706.orig/etc/config.sh/ccmio	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/ccmio	2017-07-10 17:07:41.535179045 -0500
+@@ -37,8 +37,8 @@
+ #------------------------------------------------------------------------------
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ 
+-ccmio_version=libccmio-2.6.1
+-export CCMIO_ARCH_PATH=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/$ccmio_version
++ccmio_version=libccmio-system
++export CCMIO_ARCH_PATH=/usr
+ 
+ # END OF (NORMAL) USER EDITABLE PART
+ #------------------------------------------------------------------------------
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/CGAL OpenFOAM-v1706/etc/config.sh/CGAL
+--- OpenFOAM-v1706.orig/etc/config.sh/CGAL	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/CGAL	2017-07-10 01:17:30.506026688 -0500
+@@ -50,11 +50,11 @@
+ #------------------------------------------------------------------------------
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ 
+-boost_version=boost_1_64_0
+-cgal_version=CGAL-4.9.1
++boost_version=boost-system
++export BOOST_ARCH_PATH=/usr
+ 
+-export BOOST_ARCH_PATH=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/$boost_version
+-export CGAL_ARCH_PATH=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/$cgal_version
++cgal_version=CGAL-system
++export CGAL_ARCH_PATH=/usr
+ 
+ # END OF (NORMAL) USER EDITABLE PART
+ #------------------------------------------------------------------------------
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/FFTW OpenFOAM-v1706/etc/config.sh/FFTW
+--- OpenFOAM-v1706.orig/etc/config.sh/FFTW	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/FFTW	2017-07-10 01:18:21.025416486 -0500
+@@ -48,8 +48,8 @@
+ #------------------------------------------------------------------------------
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ 
+-fftw_version=fftw-3.3.6-pl1
+-export FFTW_ARCH_PATH=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/$fftw_version
++fftw_version=fftw-system
++export FFTW_ARCH_PATH=/usr
+ 
+ # END OF (NORMAL) USER EDITABLE PART
+ #------------------------------------------------------------------------------
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/gperftools OpenFOAM-v1706/etc/config.sh/gperftools
+--- OpenFOAM-v1706.orig/etc/config.sh/gperftools	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/gperftools	2017-07-10 01:18:39.245196410 -0500
+@@ -48,8 +48,8 @@
+ #------------------------------------------------------------------------------
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ 
+-gperftools_version=gperftools-2.5
+-GPERFTOOLS_ARCH_PATH=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/$gperftools_version
++gperftools_version=gperftools-system
++export GPERFTOOLS_ARCH_PATH=/usr
+ 
+ # END OF (NORMAL) USER EDITABLE PART
+ #------------------------------------------------------------------------------
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/metis OpenFOAM-v1706/etc/config.sh/metis
+--- OpenFOAM-v1706.orig/etc/config.sh/metis	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/metis	2017-07-10 01:18:57.024981647 -0500
+@@ -54,8 +54,8 @@
+ #------------------------------------------------------------------------------
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ 
+-METIS_VERSION=metis-5.1.0
+-export METIS_ARCH_PATH=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER$WM_PRECISION_OPTION$WM_LABEL_OPTION/$METIS_VERSION
++METIS_VERSION=metis-system
++export METIS_ARCH_PATH=/usr
+ 
+ # END OF (NORMAL) USER EDITABLE PART
+ #------------------------------------------------------------------------------
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/mgridgen OpenFOAM-v1706/etc/config.sh/mgridgen
+--- OpenFOAM-v1706.orig/etc/config.sh/mgridgen	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/mgridgen	2017-07-10 01:19:24.904644882 -0500
+@@ -54,8 +54,8 @@
+ #------------------------------------------------------------------------------
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ 
+-MGRIDGEN_VERSION=ParMGridGen-1.0
+-export MGRIDGEN_ARCH_PATH=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER$WM_PRECISION_OPTION$WM_LABEL_OPTION/$MGRIDGEN_VERSION
++MGRIDGEN_VERSION=mgridgen-system
++export MGRIDGEN_ARCH_PATH=/usr
+ 
+ # END OF (NORMAL) USER EDITABLE PART
+ #------------------------------------------------------------------------------
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/paraview OpenFOAM-v1706/etc/config.sh/paraview
+--- OpenFOAM-v1706.orig/etc/config.sh/paraview	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/paraview	2017-07-11 17:04:55.804362913 -0500
+@@ -55,28 +55,16 @@
+ #------------------------------------------------------------------------------
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ 
+-ParaView_VERSION=5.4.0
+-ParaView_MAJOR=detect                   # Automatically determine major version
++ParaView_MAJOR=5.4
++export ParaView_DIR=/usr
++export ParaView_INCLUDE_DIR=$ParaView_DIR/include/paraview-$ParaView_MAJOR
++export PV_PLUGIN_PATH=$FOAM_LIBBIN/paraview-$ParaView_MAJOR
++unset ParaView_VERSION        # avoid using ThirdParty settings
+ cmake_version=cmake-system
+ 
+ # END OF (NORMAL) USER EDITABLE PART
+ #------------------------------------------------------------------------------
+ 
+-# Clean PATH and LD_LIBRARY_PATH
+-cleaned=$($WM_PROJECT_DIR/bin/foamCleanPath "$PATH" \
+-    "$ParaView_DIR \
+-    $WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/cmake- \
+-    $WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/ParaView-" \
+-) && PATH="$cleaned"
+-
+-if [ -n "$LD_LIBRARY_PATH" ]
+-then
+-    cleaned=$($WM_PROJECT_DIR/bin/foamCleanPath "$LD_LIBRARY_PATH" \
+-        "$ParaView_DIR \
+-        $WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/ParaView-" \
+-    ) && LD_LIBRARY_PATH="$cleaned"
+-fi
+-
+ # ThirdParty cmake
+ cmake=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER/$cmake_version
+ if [ -r $cmake/bin/cmake ]
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/scotch OpenFOAM-v1706/etc/config.sh/scotch
+--- OpenFOAM-v1706.orig/etc/config.sh/scotch	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/scotch	2017-07-10 01:19:54.564286610 -0500
+@@ -54,8 +54,8 @@
+ #------------------------------------------------------------------------------
+ # USER EDITABLE PART: Changes made here may be lost with the next upgrade
+ 
+-SCOTCH_VERSION=scotch_6.0.3
+-export SCOTCH_ARCH_PATH=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER$WM_PRECISION_OPTION$WM_LABEL_OPTION/$SCOTCH_VERSION
++SCOTCH_VERSION=scotch-system
++export SCOTCH_ARCH_PATH=/usr
+ 
+ # END OF (NORMAL) USER EDITABLE PART
+ #------------------------------------------------------------------------------
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/settings OpenFOAM-v1706/etc/config.sh/settings
+--- OpenFOAM-v1706.orig/etc/config.sh/settings	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/etc/config.sh/settings	2017-07-11 14:54:23.600802510 -0500
+@@ -154,7 +154,7 @@
+ export FOAM_LIBBIN=$WM_PROJECT_DIR/platforms/$WM_OPTIONS/lib
+ 
+ # External (ThirdParty) libraries
+-export FOAM_EXT_LIBBIN=$WM_THIRD_PARTY_DIR/platforms/$WM_ARCH$WM_COMPILER$WM_PRECISION_OPTION$WM_LABEL_OPTION/lib
++unset FOAM_EXT_LIBBIN
+ 
+ # Site-specific directory
+ siteDir="${WM_PROJECT_SITE:-$WM_PROJECT_INST_DIR/site}"
+diff -rNu OpenFOAM-v1706.orig/etc/config.sh/zoltan OpenFOAM-v1706/etc/config.sh/zoltan
+--- OpenFOAM-v1706.orig/etc/config.sh/zoltan	1969-12-31 18:00:00.000000000 -0600
++++ OpenFOAM-v1706/etc/config.sh/zoltan	2017-07-10 20:01:11.541460648 -0500
+@@ -0,0 +1,3 @@
++#----------------------------------*-sh-*--------------------------------------
++zoltan_version=zoltan-system
++export ZOLTAN_ARCH_PATH=/usr
+diff -rNu OpenFOAM-v1706.orig/src/conversion/ccm/Allwmake OpenFOAM-v1706/src/conversion/ccm/Allwmake
+--- OpenFOAM-v1706.orig/src/conversion/ccm/Allwmake	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/src/conversion/ccm/Allwmake	2017-07-10 16:19:02.467726852 -0500
+@@ -19,7 +19,7 @@
+ 
+ # Link with static libccmio only (possibly fewer issues)
+ if [ -e $CCMIO_ARCH_PATH/include/libccmio/ccmio.h \
+-  -a -e $CCMIO_ARCH_PATH/lib/libccmio.a ]
++  -a -e $CCMIO_ARCH_PATH/lib/libccmio.so ]
+ then
+     # The libccmio uses int32_t.
+     # The OpenFOAM adapter thus requires additional work for 64-bit labels.
+diff -rNu OpenFOAM-v1706.orig/src/fvAgglomerationMethods/Allwmake OpenFOAM-v1706/src/fvAgglomerationMethods/Allwmake
+--- OpenFOAM-v1706.orig/src/fvAgglomerationMethods/Allwmake	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/src/fvAgglomerationMethods/Allwmake	2017-07-11 18:35:13.391528072 -0500
+@@ -35,7 +35,7 @@
+ 
+     # Library
+     [ -r $FOAM_EXT_LIBBIN/libMGridGen.so ] || \
+-    [ -r $MGRIDGEN_ARCH_PATH/lib/libmgrid.a ] || \
++    [ -r $MGRIDGEN_ARCH_PATH/lib/libmgrid.so ] || \
+     [ -r $MGRIDGEN_ARCH_PATH/lib$WM_COMPILER_LIB_ARCH/libmgrid.a ] || \
+     [ "${MGRIDGEN_ARCH_PATH##*-}" = system ] || {
+         # ignore silently# echo "$warning (missing library)"
+diff -rNu OpenFOAM-v1706.orig/src/parallel/decompose/Allwmake OpenFOAM-v1706/src/parallel/decompose/Allwmake
+--- OpenFOAM-v1706.orig/src/parallel/decompose/Allwmake	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/src/parallel/decompose/Allwmake	2017-07-11 12:14:56.383276740 -0500
+@@ -46,19 +46,7 @@
+         return 2
+     }
+ 
+-    # Ensure consistent sizes between OpenFOAM and metis header
+-    # Extract IDXTYPEWIDTH from metis.h: regex as per ThirdParty Allwmake
+-    local label=$(sed -ne 's/^.*#define  *IDXTYPEWIDTH  *\([1-9][0-9]\).*/\1/p' $header)
+-    : ${label:=unknown}
+-
+-    if [ "$WM_LABEL_SIZE" = "$label" ]
+-    then
+-        echo "Metis (label=$label) - $METIS_ARCH_PATH"
+-        export METIS_ARCH_PATH
+-    else
+-        echo "$warning (label=$WM_LABEL_SIZE, metis.h has '$label')"
+-        return 1
+-    fi
++    export METIS_ARCH_PATH
+ }
+ 
+ 
+@@ -82,7 +70,7 @@
+     fi
+ 
+     # Header
+-    local header=$SCOTCH_ARCH_PATH/include/scotch.h
++    local header=$SCOTCH_ARCH_PATH/include/scotch/scotch.h
+     if [ "${SCOTCH_ARCH_PATH##*-}" = system ]
+     then
+         [ -f "$header" ] || header=/usr/include/scotch.h
+diff -rNu OpenFOAM-v1706.orig/src/parallel/decompose/metisDecomp/metisDecomp.C OpenFOAM-v1706/src/parallel/decompose/metisDecomp/metisDecomp.C
+--- OpenFOAM-v1706.orig/src/parallel/decompose/metisDecomp/metisDecomp.C	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/src/parallel/decompose/metisDecomp/metisDecomp.C	2017-07-10 16:27:48.198959247 -0500
+@@ -30,6 +30,8 @@
+ extern "C"
+ {
+     #define OMPI_SKIP_MPICXX
++    #undef METIS_USE_LONGINDEX
++    #define METIS_USE_DOUBLEPRECISION
+     #include "metis.h"
+ }
+ 
