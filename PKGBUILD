@@ -72,6 +72,17 @@ package() {
 
   # Fix permissions
   chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/*
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/WindowsStoreApps/*
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/HolographicSimulation/Rooms
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/AudioPluginOculusSpatializer.bundle
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/AudioPluginOculusSpatializer.bundle/Contents
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/AudioPluginOculusSpatializer.bundle/Contents/MacOS
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/OVRPlugin.bundle
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/OVRPlugin.bundle/Contents
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/UnityExtensions/Unity/VR/OSXUniversal/OVRPlugin.bundle/Contents/MacOS
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/0.10.18_64bit
+  chmod ga+rx ${pkgdir}/opt/UnityBeta/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/0.10.18_64bit/bin
 
   mv "${pkgdir}/opt/UnityBeta/unity-editor.desktop" "${pkgdir}/opt/UnityBeta/unity-editor-beta.desktop"
   mv "${pkgdir}/opt/UnityBeta/unity-monodevelop.desktop" "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
