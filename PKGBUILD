@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=2.14.2744.r1.geb28115
+pkgver=2.15.2749.r3.gc327586
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -28,7 +28,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
   npm install
-  grunt 'clean:linux' 'update-keys' 'release-prod'
+  grunt 'clean:linux' 'update-keys' 'release-prod' 'bundle'
   if [ $CARCH == 'x86_64' ]; then
     build_arch="x64"
   elif [ $CARCH == 'i686' ]; then
