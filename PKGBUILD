@@ -7,7 +7,7 @@ pkgbase=linux-zen           # Build -zen kernel
 _srcname=linux-4.12
 _zenpatch=zen-4.12.1-dde60eb8082fba3cdd70659560a491eea150e613.diff
 pkgver=4.12.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -32,8 +32,8 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
             '5efea5430fc3b14ae2b039159ec001c6f0666f51293f69c5a026afb966dcc6af'
             'SKIP'
-            '96f8d787fc93d83c89e1160808264a14ebb11b50810de009080b9e7915e3a749'
-            'a09e0770138e7613b7a067688264eda405ade55086eba1279a858fe17c2f10f9'
+            '9e178afa70a129ac2edbc814f6fa75d0ee2f886c766b7b57cdeed33ea1f26e9a'
+            '3f02013a427a846ea22082229c5660a86a40f6d6abeb7f1401e36cdb15a61f00'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
