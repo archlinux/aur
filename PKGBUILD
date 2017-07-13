@@ -1,8 +1,8 @@
 # Maintainer: lynix <lynix47@gmail.com>
 
 pkgname=hdd-spindown.sh-git
-pkgver=20170707
-pkgrel=3
+pkgver=20170713
+pkgrel=1
 pkgdesc="Automatic Disk Standby using Kernel diskstats and hdparm"
 url="https://github.com/lynix/hdd-spindown.sh"
 arch=('any')
