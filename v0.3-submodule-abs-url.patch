@@ -1,0 +1,15 @@
+commit 86c3f522e71734ec02639d6dfc827380ee502f05
+Author: Ilya Terentyev <bacondropped@gmail.com>
+Date:   Thu Jul 13 20:33:35 2017 +0300
+
+    .gitmodules: convert URL to an absolute path
+
+diff --git a/.gitmodules b/.gitmodules
+index 5dcfd56..e7312e4 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -1,3 +1,3 @@
+ [submodule "lol"]
+ 	path = lol
+-	url = ../../lolengine/lol.git
++	url = https://github.com/lolengine/lol.git
