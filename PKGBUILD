@@ -1,7 +1,7 @@
 # Maintainer:  <gucong@gc-desktop>
 pkgname=zoltan
 pkgver=3.83
-pkgrel=3
+pkgrel=5
 pkgdesc="Parallel Partitioning, Load Balancing and Data-Management Services"
 arch=('i686' 'x86_64')
 url="http://www.cs.sandia.gov/zoltan"
@@ -34,6 +34,7 @@ build() {
       --with-ar='$(CXX) -shared $(LDFLAGS) -o' \
       --with-cflags="-fPIC" \
       --with-cxxflags="-fPIC" \
+      --with-ldflags="-L/usr/lib/openmpi -lptscotch  -lptscotcherr -lptscotcherrexit -lscotch -lscotcherr -lscotcherrexit -lparmetis -lmetis -lmpi  -lm" \
       RANLIB=echo
       
   make
@@ -43,7 +44,7 @@ package() {
   cd "${srcdir}/build"
 
   make DESTDIR="$pkgdir/" install
-  mv "$pkgdir/usr/lib/libzoltan.a" "$pkgdir/usr/lib/libzoltan.so"
+  install -Dm777 "$pkgdir/usr/lib/libzoltan.a" "$pkgdir/usr/lib/libzoltan.so"
 }
 
 # vim:set ts=2 sw=2 et:
