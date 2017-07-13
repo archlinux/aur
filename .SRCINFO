@@ -1,6 +1,6 @@
 pkgbase = midori-bzr
 	pkgdesc = Lightweight web browser based on WebKit and GTK3 (development version)
-	pkgver = r7162
+	pkgver = r7163
 	pkgrel = 1
 	url = http://www.twotoasts.de/index.php/midori/
 	install = midori.install
