@@ -1,16 +1,12 @@
 # Maintainer: Manuel Domínguez López <mdomlop at gmail dot com>
 
-_pkgver_year=2017
-_pkgver_month=07
-_pkgver_day=12
-
 pkgname=retrosmart-openbox-themes
 pkgver=1
 pkgrel=1
 pkgdesc="Retrosmart Openbox themes."
 url="https://github.com/mdomlop/${pkgname}"
 source=("https://github.com/mdomlop/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('4e10ceef110577df40878e3e604661b8')
+md5sums=('1693d857f5151dc083e162b6f36de126')
 license=('GPL3')
 makedepends=('python')
 optdepends=('retrosmart-gtk-themes: The corresponding GTK themes'
