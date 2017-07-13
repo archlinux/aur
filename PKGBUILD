@@ -1,4 +1,4 @@
-# Maintainer:  <gucong@gc-desktop>
+# Maintainer:  <gucong43216@gmail.com>
 pkgname=openfoam-plus
 pkgver=v1706
 _distname=OpenFOAM
