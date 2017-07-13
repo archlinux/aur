@@ -2,9 +2,9 @@
 
 pkgname=nginx-mainline-mod-nchan
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 
-_nginxver=1.13.1
+_nginxver=1.13.3
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
