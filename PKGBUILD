@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-http-xslt-filter
 pkgver=1.13.3
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -18,7 +18,9 @@ sha256sums=('5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
-	./configure $(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@') --with-http_xslt_module=dynamic
+	opts=$(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@')
+	IFS=$'\n' opts=( $(xargs -n1 <<< "$opts") )
+	./configure "${opts[@]}" --with-http_xslt_module=dynamic
 	make modules
 }
 
