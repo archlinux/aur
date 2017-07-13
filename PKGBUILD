@@ -1,36 +1,30 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 pkgname=rhvoice-dictionary-git
-pkgver=20160713
+pkgver=r821.20170712
 pkgrel=1
 pkgdesc="Русский словарь для RHVoice"
 arch=('i686' 'x86_64')
 url="https://github.com/vantu5z/RHVoice-dictionary"
 license=('GPL3')
 depends=('rhvoice')
-provides=('rhvoice-dictionary')
-replaces=('rhvoice-dictionary')
+makedepends=('git')
 
-_gitroot='https://github.com/vantu5z/RHVoice-dictionary.git'
-_gitname='RHVoice-dictionary'
+source=($pkgname::git+https://github.com/vantu5z/RHVoice-dictionary.git)
+sha256sums=('SKIP')
 
-build() {
-    cd "$srcdir"
-    msg "Connecting to GIT server...."
-
-    if [[ -d "$_gitname" ]]; then
-        cd "$_gitname" && git pull origin
-        msg "The local files are updated."
-    else
-        git clone "$_gitroot" "$_gitname"
-    fi
-
-    msg "GIT checkout done or server timeout"
-    msg "Starting build..."
+pkgver() {
+	cd $pkgname
+	# get number of last git commit
+	_commitCount=$(git rev-list --count HEAD)
+	# get time of last git commit
+	_commitTime=$(git show -s --format="%ci" | grep -o "....-..-.." | sed "s/-//g")
+	# add "r*.*" from package version
+	echo "r$_commitCount.$_commitTime"
 }
 
 package()
 {
-    cd "$srcdir/$_gitname"
+    cd $pkgname
     mkdir -p ${pkgdir}/etc/RHVoice/dicts/Russian/
     cp -R phrase_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
     cp -R locations_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
