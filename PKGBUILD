@@ -25,7 +25,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=5.0.0svn_r307640
+pkgver=5.0.0svn_r307868
 
 pkgver() {
   cd "$pkgname"
@@ -211,9 +211,11 @@ build() {
     #     -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
     #     -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
     #     "../${_pkgname}"
+#        -DPGO_INSTRUMENT_LTO:BOOL=ON \
+#        -C "../clang/cmake/caches/PGO.cmake" \
+#	-DBOOTSTRAP_LLVM_ENABLE_LLD:BOOL=ON \
+
     cmake -G 'Ninja' \
-        -DPGO_INSTRUMENT_LTO:BOOL=ON \
-        -C "../clang/cmake/caches/PGO.cmake" \
         -DCMAKE_BUILD_TYPE:STRING=Release \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
         -DLLVM_APPEND_VC_REV:BOOL=ON \
@@ -231,13 +233,16 @@ build() {
         -DLLVM_BINUTILS_INCDIR:PATH=/usr/include \
         -DLLVM_ENABLE_LTO=Thin \
         -DLLVM_PARALLEL_LINK_JOBS=1 \
-        -DBOOTSTRAP_LLVM_ENABLE_LLD:BOOL=ON \
+	-DCMAKE_C_COMPILER=/usr/bin/clang \
+	-DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+	-DCMAKE_RANLIB=/usr/bin/llvm-ranlib \
+	-DCMAKE_AR=/usr/bin/llvm-ar \
         "../${_pkgname}"
 
-    ninja stage2
+    ninja
     ninja ocaml_doc
-    # make
-    # make ocaml_doc
+    #make stage2 -j6
+    #make ocaml_doc -j6
 }
 
 check() {
@@ -246,9 +251,11 @@ check() {
     # Also, disable the LLVM tests on i686 as they seem to fail too often there.
     #[[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
     
-    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja stage2-check-llvm
+    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" ninja check
     
-    ninja stage2-check-clang
+    ninja check-all
+    #ninja check-lld
+    #ninja check-polly
     #make check-clang
     #make check-polly
 }
@@ -268,7 +275,7 @@ package_llvm-polly-svn() {
     sed -i '/\(clang\|lld\|lldb\)\/cmake_install.cmake/d' tools/cmake_install.cmake
 
     #make DESTDIR="${pkgdir}" install
-    ninja DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
 
     # The runtime libraries get installed in llvm-libs-svn
     rm -f "${pkgdir}"/usr/lib/lib{LLVM,LTO}{,-*}.so{,.*}
@@ -309,10 +316,11 @@ package_lldb-polly-svn() {
     provides=('lldb')
     conflicts=('lldb')
 
+    cd "${srcdir}/build"
+
+    DESTDIR="${pkgdir}" ninja install-lldb
+    
     cd "${srcdir}/build/tools/lldb"
-
-    make DESTDIR="${pkgdir}" install
-
     _fix_python_exec_path \
         "${pkgdir}${_py_sitepkg_dir}/lldb/utils/symbolication.py"
 
@@ -334,7 +342,7 @@ package_llvm-libs-polly-svn() {
 
     cd "${srcdir}/build"
 
-    make DESTDIR="${pkgdir}" install-{LLVM,LTO}
+    DESTDIR="${pkgdir}" ninja install-{LLVM,LTO}
 
     # Moved from the llvm-svn package here
     mv "${srcdir}"/{BugpointPasses,LLVMgold,LLVMHello}.so "${pkgdir}/usr/lib/"
@@ -386,9 +394,9 @@ package_lld-polly-svn() {
     provides=('lld')
     conflicts=('lld', 'lld-svn')
 
-    cd "${srcdir}/build/tools/lld"
+    cd "${srcdir}/build"
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install-lld
 
     # Clean up documentation
     # TODO: This may at some point not be needed any more.
@@ -419,8 +427,8 @@ package_clang-polly-svn() {
     sed -i \
         "s|^\([[:blank:]]*include(\"${srcdir}/build/tools/clang/tools/extra/cmake_install.cmake\")\)$|#\1|" \
         tools/cmake_install.cmake
-
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/build"
+    DESTDIR="${pkgdir}" ninja install-clang
 
     # The Clang Static Analyzer is installed in a separate package
     # TODO: Probably there's more elegant way to achieve this.
@@ -518,7 +526,7 @@ package_clang-compiler-rt-polly-svn() {
 
     cd "${srcdir}/build/projects/compiler-rt"
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
 
     _install_licenses "${srcdir}/compiler-rt"
 }
@@ -535,7 +543,7 @@ package_clang-tools-extra-polly-svn() {
 
     cd "${srcdir}/build/tools/clang/tools/extra"
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
 
     _install_licenses "${srcdir}/clang-tools-extra"
 }
