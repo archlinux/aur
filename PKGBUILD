@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "armv6h")
 license=("GPL2")
 makedepends=("git")
 depends=("qt5-base" "qt5-tools")
-source=('git+https://gitlab.com/PhonePi/Phone)
+source=('git+https://gitlab.com/PhonePi/Phone')
 sha256sums=("SKIP")
 
 build() {
