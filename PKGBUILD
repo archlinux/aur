@@ -11,22 +11,23 @@ license=('BSD')
 depends=('boost')
 makedepends=()
 conflicts=('blitz-cppqed-hg')
-source=("https://github.com/blitzpp/$pkgname/archive/$pkgver.tar.gz"
+source=("git://github.com/blitzpp/blitz.git#commit=9b74367da3b095f141ea19a186fef702dc30fd0c"
         "blitz-0.10-gcc47.patch")
-md5sums=('971c43e22318bbfe8da016e6ef596234'
+md5sums=('SKIP'
          '3f1d36d804e0de97b8f090cf2826ca61')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   patch -p1 -i "$srcdir/blitz-0.10-gcc47.patch"
   sed -i -e 's/python/python2/g' \
       blitz/generate/Makefile* \
       blitz/generate/genstencils.py
+  autoreconf -i
 }
 
 build() {
   local _conditional_options
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   if [ "$CARCH" = "x86_64" ]; then
     _conditional_options=--enable-64bit
@@ -50,12 +51,12 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make -k check-testsuite
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -D -m644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
   make DESTDIR="$pkgdir/" install || return 1
 }
