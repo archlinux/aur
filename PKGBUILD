@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-pkgver=3.1.0r1076.d7e49de
+pkgver=3.1.0r1077.5cb5f59
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
@@ -31,10 +31,10 @@ build() {
   make doc
 }
 
-check() {
-  cd ${srcdir}/${pkgname%-git}
-  make test
-}
+# check() {
+#   cd ${srcdir}/${pkgname%-git}
+#   make tes
+# }
   
 package() {
   cd ${srcdir}/${pkgname%-git}
@@ -47,5 +47,5 @@ package() {
 	  $pkgdir/usr/lib/systemd/system/hop.socket
 
   install -Dm755 arch/archlinux/bin/hop.sh $pkgdir/usr/bin/hop.sh
-  cd ${pkgdir}/usr/bin; rm hop; ln -s hop-3.1.0 hop
+  cd ${pkgdir}/usr/bin; rm hop; ln -s hop-3.0.0 hop
 }
