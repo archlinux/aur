@@ -1,6 +1,6 @@
 pkgbase = kde-thumbnailer-epub
 	pkgdesc = Thumbnailer to show ePub cover previews in KDE file managers.
-	pkgver = 1.1
+	pkgver = 1.1.9b
 	pkgrel = 1
 	url = http://kde-apps.org/content/show.php/KDE+ePub+Thumbnailer?content=151210
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kde-thumbnailer-epub
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = kio
-	source = https://github.com/Caig/kde-thumbnailer-epub/archive/v1.1.tar.gz
+	source = https://github.com/Caig/kde-thumbnailer-epub/archive/v1.1.9b.tar.gz
 	md5sums = SKIP
 
 pkgname = kde-thumbnailer-epub
