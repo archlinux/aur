@@ -136,6 +136,26 @@ index 85eea48df..7c88928eb 100644
        if transp_rate > 0.1 then
          return true,(transp_rate * 2.0),arg
        end
+diff --git a/src/libmime/mime_parser.c b/src/libmime/mime_parser.c
+index ab83c09ac..0c293f9a6 100644
+--- a/src/libmime/mime_parser.c
++++ b/src/libmime/mime_parser.c
+@@ -280,11 +280,12 @@ rspamd_mime_part_get_cte (struct rspamd_task *task,
+ 	else {
+ 		for (i = 0; i < hdrs_cte->len; i ++) {
+ 			gsize hlen;
++			gchar lc_buf[128];
+ 
+ 			hdr = g_ptr_array_index (hdrs_cte, i);
+-			hlen = strlen (hdr->value);
+-			rspamd_str_lc (hdr->value, hlen);
+-			cte = rspamd_mime_parse_cte (hdr->value, hlen);
++			hlen = rspamd_snprintf (lc_buf, sizeof (lc_buf), "%s", hdr->value);
++			rspamd_str_lc (lc_buf, hlen);
++			cte = rspamd_mime_parse_cte (lc_buf, hlen);
+ 
+ 			if (cte != RSPAMD_CTE_UNKNOWN) {
+ 				part->cte = cte;
 diff --git a/src/lua/lua_util.c b/src/lua/lua_util.c
 index ef2adfe81..2e98d64fd 100644
 --- a/src/lua/lua_util.c
