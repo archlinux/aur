@@ -11,7 +11,7 @@
 # @see https://wiki.archlinux.org/index.php/Unreal_Engine_4
 
 pkgname='unrealtournament4'
-pkgver=3510431
+pkgver=3525360
 pkgrel=1
 pkgdesc='A first-person shooter by Epic Games based on Unreal Engine 4.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 )
 noextract=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip")
 sha512sums=(
-  'e0541e557234533453e70fcaa285bef8e956c46aa57c55d3f940b438ffd675b1a8846289e948f62c4ccc6f252e6c0bebd5f1b11a335776f2818b60e33612c6c3'
+  'ad721074726bb108719b9a2ff1060f2f1b6fbe5eb27b5d95488505848aeb497c33db32e0e2dfbf9ab22ef3d1e06a7e3f9e156873025e6e21942154f3fcaed542'
   '135f8635aec1a1c1edb6183c362233aef337e5a8a73911835344abcacf57b0e8d86966334999e2882e5c6c4bef2842d5fa70a010384e5d1473375cc9d6bd4d4b'
   '0182493a86ee18274c77a4d89776425e1a1e0d0b40c2a797f0fee75bdaad8d9c4511ccab7ad2dd39fbd2fb1aa811d7706677b08a09c553b1348822c1265aa846'
   '44088e2eb5231d509fe943bd72afad80df7ae63200df190097e78a02c6e0412f61fdea465ebf1a6a29025a1b7e65fbb6bab06ca83f43543d273246bfe736858d'
