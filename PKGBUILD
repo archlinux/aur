@@ -1,0 +1,29 @@
+# Maintainer: Erik Dubois <erik.dubois@gmail.com>
+pkgname=sardi-colora-variations-icons-git
+_pkgname=sardi-colora-variations-icons
+_destname="/usr/share/icons/"
+_pkggithub="https://github.com/erikdubois/Sardi-Colora-Variations"
+pkgdesc="Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders. With scripts you can change the colours of the Sardi icons "
+pkgver=9.3
+pkgrel=0
+arch=('any')
+url="${pkggithub}"
+license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
+makedepends=('git')
+#depends=('sardi-icons')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+options=(!strip !emptydirs)
+source=("${_pkgname}"::git+"${_pkggithub}")
+sha256sums=('SKIP')
+
+
+package() {
+  rm -f "${srcdir}/${_pkgname}/"README.md
+  rm -f "${srcdir}/${_pkgname}/"git-v*
+  rm -f "${srcdir}/${_pkgname}/"setup*
+  install -dm 755 "${pkgdir}"/"${_destname}"
+  cp -dr --no-preserve='ownership' ${_pkgname}/* "${pkgdir}"/usr/share/icons/
+}
+
+
