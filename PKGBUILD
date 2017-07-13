@@ -20,7 +20,7 @@ build() {
 package() {
 	cd "$srcdir/ofono"
 	make DESTDIR="$pkgdir" install
-	install -Dm755 "$srcdir/$pkgname/src/ofono.conf" "$pkgdir/etc/dbus-1/system.d/ofono.conf"
-	install -Dm755 "$srcdir/$pkgname/src/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
-	install -Dm755 "$srcdir/$pkgname/src/ofono.rules" "$pkgdir/etc/udev/rules.d/ofono.rules"
+	install -Dm755 "./src/ofono.conf" "$pkgdir/etc/dbus-1/system.d/ofono.conf"
+	install -Dm755 "./src/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
+	install -Dm755 "./src/ofono.rules" "$pkgdir/etc/udev/rules.d/ofono.rules"
 }
