@@ -2,8 +2,8 @@
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
-pkgver=13.5
-pkgrel=2
+pkgver=13.6
+pkgrel=1
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64' 'i686')
 url="https://www.citrix.com/products/receiver/"
@@ -27,8 +27,8 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-md5sums_x86_64=('ea1fd28fde956d5cda03bed74a578b4c')
-md5sums_i686=('aad1c99baed2821921188cc49700466e')
+md5sums_x86_64=('04ee9bea74efca3dc2e3f69d736007ae')
+md5sums_i686=('7efbc350a21ee47cd8a3cf950805034b')
 install=citrix-client.install
 
 package() {
