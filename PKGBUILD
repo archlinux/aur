@@ -1,6 +1,6 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=nrsc5-git 
-pkgver=r86.87b9c38
+pkgver=r79.89b155a
 pkgrel=3
 pkgdesc="NRSC-5 (HD Radio) receiver for rtl-sdr"
 arch=('i686' 'x86_64' 'armv7h')
