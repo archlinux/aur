@@ -1,18 +1,18 @@
 # Maintainer: Jack Frost <fbt@fleshless.org>
 # % Trigger: 1483567654 %
 
-pkgname='watchman-sm-services-git'
-pkgdesc='Service scripts for watchman'
+pkgname='ssm-services-git'
+pkgdesc='Service scripts for ssm'
 license=( 'BSD' )
 pkgver=1.2.r59.gd259153
 pkgrel=1
 arch=( 'any' )
-url='https://git.fleshless.org/watchman-services/about'
+url='https://git.fleshless.org/ssm-services/about'
 
-provides=( 'watchman-sm-services' )
-conflicts=( 'watchman-sm-services' )
+provides=( 'ssm-services' )
+conflicts=( 'ssm-services' )
 
-source=( "${pkgname}::git+https://git.fleshless.org/watchman-services" )
+source=( "${pkgname}::git+https://git.fleshless.org/ssm-services" )
 md5sums=( 'SKIP' )
 
 pkgver() {
@@ -29,13 +29,13 @@ pkgver() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	mkdir -pm755 "$pkgdir/etc/watchman/init.d"
-	cp -a init.d/* "$pkgdir/etc/watchman/init.d/"
+	mkdir -pm755 "$pkgdir/etc/ssm/init.d"
+	cp -a init.d/* "$pkgdir/etc/ssm/init.d/"
 
-	mkdir -pm755 "$pkgdir/etc/watchman/conf.d"
-	cp -a conf.d/* "$pkgdir/etc/watchman/conf.d/"
+	mkdir -pm755 "$pkgdir/etc/ssm/conf.d"
+	cp -a conf.d/* "$pkgdir/etc/ssm/conf.d/"
 
 	cd "${pkgdir}"
-	backup+=( etc/watchman/init.d/* )
-	backup+=( etc/watchman/conf.d/* )
+	backup+=( etc/ssm/init.d/* )
+	backup+=( etc/ssm/conf.d/* )
 }
