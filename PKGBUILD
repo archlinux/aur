@@ -7,7 +7,7 @@ pkgver=5.1
 pkgrel=1
 pkgdesc="Generic C++ finite element library."
 arch=('i686' 'x86_64')
-url="http://download.gna.org/getfem/html/homepage/"
+url="http://getfem.org/"
 license=('LGPL3')
 depends=('python2-numpy' 'python2-scipy'
          'boost' 'qhull' 'qd'
@@ -16,7 +16,7 @@ checkdepends=('perl')
 makedepends=('gcc-fortran')
 conflicts=('gmm')
 provides=('getfem++' 'gmm')
-source=("http://download.gna.org/getfem/stable/${_pkgname}-${pkgver}.tar.gz")
+source=("http://download-mirror.savannah.gnu.org/releases/getfem/stable/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('d768ff0da08536e8291d6e85e8600d285efa9e10e939709a810cdcd5935a7203')
 
 prepare(){
