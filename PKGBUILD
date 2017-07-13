@@ -1,7 +1,8 @@
+# Maintainer: Philipp Joram < mail [at] phijor [dot] me>
+
 pkgname=mopidy-soundcloud
-_pkgpyname=Mopidy-SoundCloud
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Mopidy extension for playing music from SoundCloud"
 arch=('any')
 url="https://github.com/mopidy/mopidy-soundcloud"
@@ -13,12 +14,12 @@ depends=(
   'gst-plugins-ugly'
   'mopidy>=1.0'
 )
-makedepends=('python2')
-source=("https://pypi.python.org/packages/source/M/${_pkgpyname}/${_pkgpyname}-${pkgver}.tar.gz")
-sha512sums=('d517ec4e1fcb27cee1910fb7a580fcda2ab8aa28f8c8e31e2a4dfa40ebd99e8b5e69b85b5d023d9c4a052e832c506596bcd48aeb0e0baf52d09174a29a74fabe')
+makedepends=('python2-setuptools')
+source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('ee694a66f9ed701b224011c8cb25e0882000b3ea12137fed6bf83a4a82885cfb50759c18e2ff4de7109b1ec32320aeb9603dc5c77979468d7259a067fe55c827')
 
 package() {
-  cd "$srcdir/$_pkgpyname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
