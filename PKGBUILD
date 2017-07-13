@@ -20,7 +20,6 @@ optdepends=('evince: for print preview'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
-provides=('gnucash')
 conflicts=('gnucash')
 source=(http://downloads.sourceforge.net/sourceforge/${_realname}/${_realname}-${pkgver}.tar.gz)
 sha1sums=('d970d876f1fc7cd3fad9155463cdda348bcf0c7e')
