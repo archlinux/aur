@@ -1,48 +1,51 @@
+# $Id: PKGBUILD 299071 2017-06-20 16:53:25Z juergen $
 # Maintainer: Jörg Schuck <joerg_schuck@web.de>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 # Contributor: David Madl <xuphiexu@abanbytes.eu>
 
+
 pkgname=gnucash-python
-pkgver=2.6.13
+_realname=gnucash
+pkgver=2.6.17
 pkgrel=1
-pkgdesc="A personal and small-business financial-accounting application. Includes Python2 support."
+pkgdesc="A personal and small-business financial-accounting application with enabled python bindings."
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('slib' 'goffice0.8' 'libgnomeui' 'libdbi-drivers' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'python2' 'sqlite2')
+depends=('guile' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas' 'dconf' 'python2')
 makedepends=('intltool')
 optdepends=('evince: for print preview'
+	    'yelp: help browser'
             'perl-finance-quote: for stock information lookups'
             'perl-date-manip: for stock information lookups')
 options=('!makeflags' '!emptydirs')
-install=gnucash.install
-source=(http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-${pkgver}.tar.bz2)
-sha512sums=('daad6d55485de6ce3ca6affe232c51252d853c803734f4737ab2477e7724c42fa2ea764f5fdeea00d956bcbaad338a30fe21c62a578a818d5e8b4f5878f060b5')
-provides=("gnucash=${pkgver}")
+provides=('gnucash')
 conflicts=('gnucash')
-
-prepare() {
-  cd "${srcdir}/gnucash-${pkgver}"
-  sed -i 's|guile-config|guile-config1.8|g' configure
-}
+source=(http://downloads.sourceforge.net/sourceforge/${_realname}/${_realname}-${pkgver}.tar.gz)
+sha1sums=('d970d876f1fc7cd3fad9155463cdda348bcf0c7e')
 
 build() {
-  cd "${srcdir}/gnucash-${pkgver}"
-  export GUILE=/usr/bin/guile1.8
-  export PYTHON=python2.7
+  cd "${srcdir}/${_realname}-${pkgver}"
+  export PYTHON=$(which python2)
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
     --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking --enable-python
-  make
+  make GUILD=/usr/bin/guild2.0
 }
 
 package() {
-  cd "${srcdir}/gnucash-${pkgver}"
+  cd "${srcdir}/${_realname}-${pkgver}"
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
   cd src/doc/design
   make DESTDIR="${pkgdir}" install-info
 
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/gnucash.schemas" --domain gnucash "${pkgdir}"/etc/gconf/schemas/*.schemas
+  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${_realname}.schemas" --domain gnucash "${pkgdir}"/etc/gconf/schemas/*.schemas
   rm -f "${pkgdir}"/etc/gconf/schemas/*.schemas
+
+  # Delete the gnucash-valgrind executable because the source files
+  # are not included with the package and the executable is hardlinked
+  # to the location that it was built at.
+  rm -f "${pkgdir}"/usr/bin/gnucash-valgrind
+
 }
