@@ -12,9 +12,9 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 #use this for experimental branch
-source=('nrsc5::git+https://github.com/theori-io/nrsc5.git#branch=experimental')
+#source=('nrsc5::git+https://github.com/theori-io/nrsc5.git#branch=experimental')
 #or this for the master branch 
-#source=('nrsc5::git+https://github.com/theori-io/nsc5.git#branch=master')
+source=('nrsc5::git+https://github.com/theori-io/nsc5.git#branch=master')
 md5sums=('SKIP')
 
 
