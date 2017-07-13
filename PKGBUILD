@@ -2,7 +2,7 @@
 # Contributor: fanglingsu
 # Maintainer: <aksr at t-com dot me>
 pkgname=vimb-git
-pkgver=3.0.r1426.782acb5
+pkgver=3.0.0.r1461.46d6f0d
 pkgrel=1
 epoch=
 arch=('i686' 'x86_64')
@@ -41,12 +41,12 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make V=1
+  make DEXTENSIONDIR=/usr/lib/vimb V=1 DESTDIR="$pkgdir" PREFIX="/usr"
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  make DEXTENSIONDIR=/usr/lib/vimb V=1 DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
