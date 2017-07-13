@@ -1,6 +1,6 @@
 # Maintainer=alive4ever
 pkgname=libressl-netcat
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Low level UDP/TCP connection tool with support for TLS protocol"
@@ -11,11 +11,18 @@ provides=('netcat')
 conflicts=('openbsd-netcat' 'gnu-netcat')
 source=("https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz"
 	"https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz.asc")
-sha256sums=('107a5b522fbb8318d4c3be668075e5e607296f0a9255d71674caa94571336efa'
+sha256sums=('e57f5e3d5842a81fe9351b6e817fcaf0a749ca4ef35a91465edba9e071dce7c4'
             'SKIP')
-## To automatically validate the gpg key during build, add 'keyserver_options auto_key_retrieve' line to your local build account ~/.gnupg/gpg.conf
-## Alternatively, fetch the key manually before running makepkg: 'gpg --keyserver pgp.mit.edu --receive-key A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5'
-## Note that building package should not be run as root. Run the build on standard account or run the build inside chroot or systemd-nspawn container.
+
+## To verify the package signature, import the public key manually before
+## building the package.
+# curl -LO https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl.asc 
+# gpg --import ./libressl.asc
+
+## Note that building package should not be run as root. Run the build using
+## standard user, either locally or inside container (systemd-nspawn, docker, or
+## lxc)
+
 validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@openbsd.org>
 
 build() {
