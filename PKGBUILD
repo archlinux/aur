@@ -2,13 +2,15 @@
 
 # Watch new releases at https://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
 
-# Prevent compression of the final package since it would take too long (sereausly!)
+# Prevent compression of the final package since it would take too long (seriously!)
 PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
 _version=5.6.2
-_build=f1
-pkgver="${_version}x${_build}"
+_build=f3
+_buildtag=2017.1.0
+_nonce=061bcf22327f
+pkgver="${_version}x${_build}+${_buildtag}"
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
@@ -25,8 +27,8 @@ optdepends=('ffmpeg: for WebGL exporting'
 provides=("unity-editor=${pkgver}")
 conflicts=('unity-editor')
 options=(!strip)
-source=("http://beta.unity3d.com/download/ddd95e743b51/unity-editor_amd64-${pkgver}Linux.deb")
-sha512sums=('a892897fd7234b40b21075112938b6ee4bcfd518943ecd5ea337611e692173834024f5229f12d0fb37ea42c6849cc1c4640ca09d1eea970882938f70a617911c')
+source=("http://beta.unity3d.com/download/${_nonce}/unity-editor_amd64-${_buildtag}x${_build}Linux.deb")
+sha512sums=('246e2c6e9248551f875bf5176b3206988835b86ad9e61b6f7ec1cc436615bc894bfc78fccc29bf6528d4e27a0ceee4e92a31f285616ee96ac4fb3d09137aa92b')
 
 prepare() {
 	if [[ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]]; then
