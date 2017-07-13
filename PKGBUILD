@@ -3,7 +3,7 @@
 _hkgname=gtk
 pkgname=haskell-gtk2
 pkgver=0.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The core library of the Gtk2Hs suite of libraries for Haskell based on Gtk+."
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('LGPL-2.1')
@@ -22,7 +22,7 @@ sha256sums=('707906120cb8f0aa704fb2045a33600b7636166d74442a9c27c4262bac708327')
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
 
-    runhaskell Setup configure -O --enable-library-profiling --enable-shared \
+    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic \
         --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
         --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
@@ -43,4 +43,7 @@ package() {
     runhaskell Setup copy --destdir="${pkgdir}"
     install -D -m644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
     rm -f "${pkgdir}/usr/share/doc/${pkgname}/COPYING"
+
+    # Remove static libs
+    find "$pkgdir"/usr/lib -name "*.a" -delete
 }

@@ -1,7 +1,7 @@
 pkgbase = haskell-gtk2
 	pkgdesc = The core library of the Gtk2Hs suite of libraries for Haskell based on Gtk+.
 	pkgver = 0.14.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/gtk
 	arch = i686
 	arch = x86_64
