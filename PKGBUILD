@@ -11,7 +11,7 @@ license=('custom')
 depends=()
 makedepends=('desktop-file-utils')
 source=("https://github.com/limpkin/mooltiapp/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('b2d37bebef04152fe79b5f8da1741ad9cc66e092e41f14641cf8c151630fb9d8')
+sha256sums=('a3c61bcff3555af0d00a461908cfc58dfc2b43cde265a47e7583192347a34794')
 
 package() {
     bsdtar -O -xf "${_pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
