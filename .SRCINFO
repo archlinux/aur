@@ -12,7 +12,7 @@ pkgbase = sound-daemon-phonepi
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-tools
-	source = git://github.com/PhonePi/phonepi.git
+	source = git+https://gitlab.com/PhonePi/Phone.git
 	sha256sums = SKIP
 
 pkgname = sound-daemon-phonepi
