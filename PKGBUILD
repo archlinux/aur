@@ -12,7 +12,8 @@ noextract=("mpam-fe.exe")
 source=("loadlibrary::git+https://github.com/taviso/loadlibrary.git"
         "mpam-fe.exe::http://go.microsoft.com/fwlink/?LinkID=121721&arch=x86")
 md5sums=('SKIP'
-         '886e3e4ee014db2d8938a4b8529dfa63')
+         'SKIP' # ever changing checksum
+         )
 
 pkgver(){
     cd loadlibrary
