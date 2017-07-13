@@ -2,4 +2,4 @@
 
 set -e
 cd /usr/share/realtimeconfigquickscan
-exec perl ./realTimeConfigQuickScan.pl
+exec perl -I ./ ./realTimeConfigQuickScan.pl

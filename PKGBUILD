@@ -3,7 +3,7 @@
 
 pkgname=realtimeconfigquickscan-git
 pkgver=r20.95fed14
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux configuration checker for systems to be used for real-time audio"
 arch=('any')
 url="https://github.com/raboof/realtimeconfigquickscan"
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}"::"git://github.com/raboof/realtimeconfigquickscan"
         'realTimeConfigQuickScan'
         'QuickScan')
-md5sums=('SKIP' '45847f5cbc4880b6e724fa4fafbdc3c7' '8e3ff9238a56c66fb2f50f4f36259a95')
+md5sums=('SKIP' '9ba860e66b4c53868fa874a4e00aba0f' 'fab72296c27305b0c8c36b6f88efa36b')
 
 pkgver() {
   cd "${pkgname%-*}"
