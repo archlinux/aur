@@ -1,0 +1,17 @@
+pkgbase = openrct2-cli
+	pkgdesc = OpenRCT2, command line interface (headless).
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://openrct2.website
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = libopenrct2
+	source = https://github.com/OpenRCT2/OpenRCT2/archive/v0.1.0.tar.gz
+	sha256sums = 0347a47d380fc18ea543928c92a13d1bdb4431573154afeb80fa33f1149e6992
+
+pkgname = openrct2-cli
+
