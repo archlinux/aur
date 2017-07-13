@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/nirvik/iWant"
 license=('MIT')
 depends=('python2-twisted' 'python2-netifaces' 'python2-watchdog'
-         'python2-time_uuid' 'python2-fuzzywuzzy' 'python2-tabulate'
+         'python2-time_uuid' 'python2-fuzzywuzzy' 'python2-tabulate>=0.7.7'
          'python2-service-identity' 'python2-cryptography'
          'python2-levenshtein' 'python2-progressbar' 'python2-pyasn1'
          'python2-docopt')

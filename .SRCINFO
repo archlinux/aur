@@ -10,7 +10,7 @@ pkgbase = iwant
 	depends = python2-watchdog
 	depends = python2-time_uuid
 	depends = python2-fuzzywuzzy
-	depends = python2-tabulate
+	depends = python2-tabulate>=0.7.7
 	depends = python2-service-identity
 	depends = python2-cryptography
 	depends = python2-levenshtein
