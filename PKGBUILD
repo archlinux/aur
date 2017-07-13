@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.49.1
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=(
 )
 source+=( "${_patches[@]}" )
 sha256sums=(
-		'd72a3470e7e0879d37f242aa0ec561ed0e60ff9fba676156392e46fd5e27a180'
+		'859b6f5e1fce4d5813591fbc08e60605630d0b15e1825f877876ecd1476b8fdd'
 		'29e38d7412a920858945df56850bc227bd06d50965d620313912bf2fdeb3d045'
 )
 
