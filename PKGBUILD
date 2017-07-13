@@ -1,9 +1,9 @@
-# Maintainer: Sandor Nagy < sanya868 at gmail dot com >
+# Maintainer: Sandor Nagy < sandor dot nagy at gmail dot com >
 # Contributor: Igor R. Dejanovic igor.dejanovic@gmail.com
 
 pkgname=protobuf-java
 _xpkgname=protobuf
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Google's data interchange format utility (Java API)."
 url="https://github.com/google/protobuf"
@@ -12,7 +12,7 @@ arch=('any')
 depends=("java-environment")
 makedepends=('java-environment' 'maven' "${_xpkgname}>=${pkgver}")
 source=(https://github.com/google/protobuf/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz protobuf-java.patch)
-md5sums=('d8bfa09d3235a6f7a72ab3830176d579'
+md5sums=('66326b088086a557856f86b41164f15e'
          'e11f35927e78878e8b9354362591402f')
 
 build() {
