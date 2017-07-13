@@ -1,6 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC2034,SC2164
-# Maintainer: Alexandre Bouvier <contact AT amb DOT tf>
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=php-libsodium
 pkgver=2.0.0
 pkgrel=1
