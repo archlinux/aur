@@ -1,0 +1,14 @@
+pkgbase = nali
+	pkgdesc = qqwry
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://code.google.com/archive/p/qqwry/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sh
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/qqwry/nali-0.2.tar.gz
+	md5sums = 314f611dd72bdbbcf53c8a182fb20cc1
+
+pkgname = nali
+
