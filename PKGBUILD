@@ -1,7 +1,7 @@
 # Maintainer: Charles Brunet <charles AT cbrunet DOT net>
 # Contributor: Okki <okki666@free.fr>
 pkgname=dolibarr
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="ERP/CRM for small and medium companies"
 arch=('any')
@@ -17,7 +17,7 @@ install=dolibarr.install
 source=("http://downloads.sourceforge.net/project/$pkgname/Dolibarr%20ERP-CRM/$pkgver/$pkgname-$pkgver.tgz"
         nginx.conf.example
         apache.conf.example)
-md5sums=('073e019c89ca5a15d5eaff567c6603c6'
+md5sums=('9af4e3855b3a229095149ae91fe5473e'
          '7ba6f2def8caabbd8321d91067c01b16'
          'd468572a7aa663d958c302b3e15147f1')
 
