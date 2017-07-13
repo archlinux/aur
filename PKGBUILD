@@ -3,7 +3,7 @@
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname=libtomcrypt
-pkgver=1.18.0rc1
+pkgver=1.18.0rc2
 _pkgver="${pkgver/rc/-rc}"
 pkgrel=1
 pkgdesc="A fairly comprehensive, modular and portable cryptographic toolkit"
@@ -12,7 +12,7 @@ url="http://www.libtom.net/LibTomCrypt/"
 license=('custom:PublicDomain')
 depends=('libtommath' 'gmp')
 source=("https://github.com/libtom/${pkgname}/releases/download/v${_pkgver}/${pkgname#libtom}-${_pkgver}.tar.xz"{,.asc})
-sha256sums=('943af136e6c624371659dc6c98a2d749ea45912628717b72e4f8894339709b20'
+sha256sums=('064e9d17911ddb8c1a82e945e3ebcab986e345e52410c6a1ca0003f7ded6555c'
             'SKIP')
 validpgpkeys=('C4386A237ED43A475541B9427B2CD0DD4BCFF59B') # Steffen Jaeckel <s_jaeckel@gmx.de>
 
