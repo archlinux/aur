@@ -4,8 +4,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.12
-pkgver=4.12
-pkgrel=2
+pkgver=4.12.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -13,8 +13,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -23,6 +23,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset')
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
+            'SKIP'
+            '466ad7caf26aac66fdf299dbe6b23d0cf1729e363a4ee37738938e3be563946b'
             'SKIP'
             '130c3e505315d4405cc1ba9235ab8cd075e1122e0f1fa50b66eceab4eb268faa'
             'd2271b1dfae30f38d70549e1d142da9d03eade0fd4620bbc4bd757b9c7a27422'
@@ -39,7 +41,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # security patches
 
