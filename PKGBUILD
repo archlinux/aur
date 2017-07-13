@@ -1,6 +1,6 @@
 # Maintainer: JannikHv <JannikHv@gmail.com>
 pkgname=gamebox-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Gamebox is a collection of minigames written in C using Gtk+-3.0"
 arch=('i686' 'x86_64')
