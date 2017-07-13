@@ -1,0 +1,3 @@
+post_install() {
+	echo ">>> Sample SID files can be found at '/usr/share/sidplayer/PSID Demo'"
+}
