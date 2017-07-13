@@ -1,5 +1,6 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2148,SC2154
+# Co-Maintainer: Daemon Lee Schmidt <DaemonLeeSchmidt@gmail.com>
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=fargo-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r19.2dd84e1
@@ -9,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/DaemonLee/fargo"
 license=('GPL3')
 groups=()
-depends=('vips')
+depends=('libvips-git')
 makedepends=('git' 'perl')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
