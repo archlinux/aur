@@ -21,8 +21,7 @@ source=(
 build() {
     cd "$srcdir"/nginx-$_nginxver
     _module_dir="$srcdir"/nchan-$pkgver
-    _nginx_configure_options=$(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@')
-    ./configure ${_nginx_configure_options} --add-dynamic-module=${_module_dir}
+    ./configure --with-compat --add-dynamic-module=${_module_dir}
     make modules
 }
 
