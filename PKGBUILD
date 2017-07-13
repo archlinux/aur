@@ -5,10 +5,10 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor
-_version=5.6.2
-_build=f1
-_buildtag=20170628
-_randomstring=ddd95e743b51
+_version=2017.1.0
+_build=f3
+_buildtag=20170711
+_randomstring=061bcf22327f
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 epoch=1
@@ -42,12 +42,12 @@ source=("http://beta.unity3d.com/download/${_randomstring}/unity-editor-installe
         'monodevelop-unity'
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
-sha1sums=('92a6156be59b4be708d687981f36cb19ba305eb7'
+sha1sums=('a494c8191738ed0cf2b2024d93b7154af2fefea6'
           '53092e4526533baf3e76db454b7b07ba3557d159'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
           'd1ecf758c9816f964febf601d065b0354940d866')
-sha512sums=('a4ad734422d4370155c07a6831f0882009b5f112a7a0e03274aeb90251526ef78192695b2c620e04b333251a953c8ec27e3fb4930d5b72c65fd2327aa66dac07'
+sha512sums=('edcd35eaa416cee67017bcf6634066f13d8981519c975de810eeeb98587107794a0fe8d98fb7e05e80f3ab5279b545d27b1ae81ef84d542b4a8663a1d5abd0ac'
             'e512c7fa28207d39a968eda2ef9dc67f6b91dc91cd7fd5133a44232a5d73b2c29851be146d842dfcf2e6d932eb205beb6ee8eae689ac37643afec74b4f015a5e'
             'ef907b215996354dd4f76cae79687952e11937510823ec836bc984180803b5deb3fd5a055092e258ca3a2293b90ce0da7f0c8cdb7862d546d843e092b3dbc3a0'
             '26946ad2c759699763c1284a1f30380072da2911659992fa2471b436df1f0535b6eef61007f11c2e010e4a002663324e42ef5ae1417aa45e0ec99f4e3f0aafb7'
@@ -77,6 +77,14 @@ package() {
 
   # HACK: fixes WebGL builds by adding a symlink (python -> python2) to the PATH
   ln -s /usr/bin/python2 ${pkgdir}/opt/Unity/Editor/python
+
+  # Fix permissions
+  chmod ga+rx ${pkgdir}/opt/Unity/Editor/Data/UnityExtensions/Unity/VR/*
+  chmod ga+rx ${pkgdir}/opt/Unity/Editor/Data/UnityExtensions/Unity/VR/WindowsStoreApps/*
+  chmod ga+rx ${pkgdir}/opt/Unity/Editor/Data/UnityExtensions/Unity/VR/HolographicSimulation/Rooms/
+  chmod ga+rx ${pkgdir}/opt/Unity/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/
+  chmod ga+rx ${pkgdir}/opt/Unity/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/0.10.18_64bit
+  chmod ga+rx ${pkgdir}/opt/Unity/Editor/Data/PlaybackEngines/WebGLSupport/BuildTools/Emscripten_Linux/node/0.10.18_64bit/bin
 
   # Use the launch scripts in the .desktop files
   sed -i "/^Exec=/c\Exec=/usr/bin/unity-editor" "${pkgdir}/opt/Unity/unity-editor.desktop"
