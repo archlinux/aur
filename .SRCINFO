@@ -1,13 +1,12 @@
 pkgbase = haskell-ghc-events
 	pkgdesc = Parses .eventlog files emitted by GHC 6.12.1 and later. Includes the ghc-events tool permitting, in particular, to dump an event log file as text.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/ghc-events
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
 	depends = ghc>=8.0.1
-	options = strip
 	source = https://hackage.haskell.org/package/ghc-events-0.6.0/ghc-events-0.6.0.tar.gz
 	sha256sums = 277da9dcd9a1910e530c76b2ad8875868f5e2d8acff44091623dc97255ce0769
 
