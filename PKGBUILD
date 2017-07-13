@@ -1,7 +1,7 @@
 # Maintainer: Ilya Terentyev <bacondropped@gmail.com>
 
 pkgname=colm-dev
-pkgver=0.13.0.4
+pkgver=0.13.0.5
 pkgrel=1
 pkgdesc='Programming language designed for analysis and transformation of computer languages (development version)'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 provides=('colm')
 conflicts=('colm')
 source=("https://www.colm.net/files/colm/colm-$pkgver.tar.gz")
-sha1sums=('73664e259a5199beed87db57e9d87b7255a9c9b5')
+sha1sums=('c915b9a05bdcdd4bde2bfd57425450dfc8fa95d7')
 
 build() {
 	cd "$srcdir/colm-$pkgver"
