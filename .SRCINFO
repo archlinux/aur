@@ -9,7 +9,7 @@ pkgbase = nginx-mainline-mod-nchan
 	depends = nginx-mainline
 	source = http://nginx.org/download/nginx-1.13.3.tar.gz
 	source = https://github.com/slact/nchan/archive/v1.1.6.tar.gz
-	sha256sums = a5856c72a6609a4dc68c88a7f3c33b79e6693343b62952e021e043fe347b6776
+	sha256sums = 5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72
 	sha256sums = df037766e3a152d8cf2a8b644dd10db8cac3679523adc3c063d41ffeb20d43bc
 
 pkgname = nginx-mainline-mod-nchan
