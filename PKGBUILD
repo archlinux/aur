@@ -2,9 +2,9 @@
 
 pkgname=nginx-mod-nchan
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 
-_nginxver=1.12.0
+_nginxver=1.12.1
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
@@ -33,6 +33,5 @@ package() {
     done
 }
 
-sha256sums=('b4222e26fdb620a8d3c3a3a8b955e08b713672e1bc5198d1e4f462308a795b30'
+sha256sums=('8793bf426485a30f91021b6b945a9fd8a84d87d17b566562c3797aba8fac76fb'
             'df037766e3a152d8cf2a8b644dd10db8cac3679523adc3c063d41ffeb20d43bc')
-
