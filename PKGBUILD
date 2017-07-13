@@ -21,7 +21,7 @@
 
 set -u
 pkgname='openmeetings'
-pkgver='3.2.1'
+pkgver='3.3.0'
 pkgrel='1'
 #pkgdesc='Multi-Language Cross-Platform Customizable Web-Conferencing and Collaboration'
 pkgdesc='provides video conferencing, instant messaging, white board, collaborative document editing and other groupware tools using the Red5 Streaming Server'
@@ -47,7 +47,7 @@ source=("${_closest}/${pkgname}/${pkgver}/bin/${_srczip}"
 )
 _verwatch=("https://archive.apache.org/dist/${pkgname}/" "\([0-9\.]\+\)/" 'l')
 noextract=("${_srczip}")
-sha256sums=('3a2b31f2b8ee5cf79fd470412c7f417fa879764d1da8a4700a199e600bc1620f'
+sha256sums=('f3f7883bcea0731436f8f08006829d033135fd6216b9b31ec5149292ad0143da'
             'SKIP'
             'a22001d137e7adf92d9f52985a1497967ada421f14f1d697df1823d74cbbce87')
 
