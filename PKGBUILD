@@ -1,6 +1,6 @@
 pkgname=hatexmpp-git
 pkgver=r255.a03e9d8
-pkgrel=1
+pkgrel=2
 pkgdesc="XMPP fuse filesystem"
 arch=(i686 x86_64)
 url="https://github.com/l29ah/hatexmpp"
@@ -23,4 +23,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm0755 hatexmpp "$pkgdir"/usr/bin/hatexmpp
+	install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/hatexmpp/LICENSE
 }
