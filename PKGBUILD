@@ -1,12 +1,12 @@
 # Maintainer:  Ilya Terentyev <bacondropped at gmail dot com>
 pkgname=lolremez-git
 pkgver=0.3.r5.g5ff460f
-pkgrel=1
+pkgrel=2
 pkgdesc="Polynomial Approximations using the Remez Algorithm by Sam Hocevar"
 arch=("i686" "x86_64")
 url="https://github.com/samhocevar/lolremez"
-license=("GPL")
-makedepends=("git")
+license=("unknown")
+makedepends=("git" "autoconf" "automake")
 depends=()
 conflicts=()
 source=(
