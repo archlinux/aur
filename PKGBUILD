@@ -2,30 +2,27 @@
 # Maintainer: Juanma Hernandez <juanmah@gmail.com>
 
 pkgname=zotero
-pkgver=5.0.1
-pkgrel=1
+pkgver=5.0.2
+pkgrel=3
 pkgdesc="Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
 url="http://www.zotero.org/download"
 license=('GPL3')
 depends=('dbus-glib' 'alsa-lib' 'gtk2' 'gcc-libs' 'nss')
-if [[ $CARCH == "x86_64" ]]
-then
-  _arch=x86_64
-  md5sums=('969dbbc0bfaf1385d455d7fcae22e109'
-           'f227abe95940abd63367716928c6e379')
-else
-  _arch=i686
-  md5sums=('a8dc90f2c894581afd0afb11294f8882'
-           'f227abe95940abd63367716928c6e379')
-fi
+
+md5sums=('f227abe95940abd63367716928c6e379')
+md5sums_i686=('1dd4fba22dc4718359e789d9df2b4afd')
+md5sums_x86_64=('b154fa051050c6cb4431dacca0278ba8')
+
 install='zotero.install'
-source=("http://download.zotero.org/standalone/$pkgver/Zotero-${pkgver}_linux-${_arch}.tar.bz2"
-        "zotero.desktop")
+
+source=("zotero.desktop")
+source_i686=("Zotero-${pkgver}_linux_$CARCH.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-$CARCH&version=${pkgver}")
+source_x86_64=("Zotero-${pkgver}_linux_$CARCH.tar.bz2::https://www.zotero.org/download/client/dl?channel=release&platform=linux-$CARCH&version=${pkgver}")
         
 package() {
   mkdir -p "$pkgdir"/usr/{bin,lib/zotero}
-  mv "$srcdir"/Zotero_linux-$_arch/* "$pkgdir"/usr/lib/zotero
+  mv "$srcdir"/Zotero_linux-$CARCH/* "$pkgdir"/usr/lib/zotero
   ln -s /usr/lib/zotero/zotero "$pkgdir"/usr/bin/zotero
   install -Dm644 "$srcdir"/zotero.desktop "$pkgdir"/usr/share/applications/zotero.desktop
   # Copy zotero icons to a standard location
