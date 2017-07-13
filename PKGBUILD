@@ -2,14 +2,14 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=fargo-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r7.f58f58f
+pkgver=r19.2dd84e1
 pkgrel=1
 pkgdesc="Removes unseeable and ghost alpha from PNG images."
 arch=('i686' 'x86_64')
 url="https://github.com/DaemonLee/fargo"
 license=('GPL3')
 groups=()
-depends=('imagemagick')
+depends=('vips')
 makedepends=('git' 'perl')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")

@@ -1,6 +1,6 @@
 pkgbase = fargo-git
 	pkgdesc = Removes unseeable and ghost alpha from PNG images.
-	pkgver = r7.f58f58f
+	pkgver = r19.2dd84e1
 	pkgrel = 1
 	url = https://github.com/DaemonLee/fargo
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = fargo-git
 	license = GPL3
 	makedepends = git
 	makedepends = perl
-	depends = imagemagick
+	depends = vips
 	provides = fargo-git
 	conflicts = fargo-git
 	source = fargo::git+https://github.com/DaemonLee/fargo
