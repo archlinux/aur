@@ -14,7 +14,7 @@ url="https://github.com/aperezdc/ngx-fancyindex"
 license=('BSD')
 
 source=(
-	http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://nginx.org/download/nginx-$_nginxver.tar.gz
 	https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz
 )
 
