@@ -1,7 +1,7 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=nrsc5-git 
 pkgver=r86.87b9c38
-pkgrel=2
+pkgrel=3
 pkgdesc="NRSC-5 (HD Radio) receiver for rtl-sdr"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/theori-io/nrsc5"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 #use this for experimental branch
 #source=('nrsc5::git+https://github.com/theori-io/nrsc5.git#branch=experimental')
 #or this for the master branch 
-source=('nrsc5::git+https://github.com/theori-io/nsc5.git#branch=master')
+source=('nrsc5::git+https://github.com/theori-io/nrsc5.git#branch=master')
 md5sums=('SKIP')
 
 
