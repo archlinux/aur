@@ -2,14 +2,14 @@
 
 pkgname='vimiv-git'
 pkgrel=1
-pkgver=r594.a4c302c
+pkgver=r810.cedbeac
 pkgdesc="An image viewer with vim-like keybindings"
 arch=('any')
 url="https://github.com/karlch/vimiv"
 license=('MIT')
-depends=('python3' 'python-gobject' 'gtk3' 'python-pillow')
+depends=('python3' 'python-gobject' 'gtk3')
 makedepends=('git' 'python-setuptools')
-optdepends=('jhead: for much better autorotation depending on EXIF data')
+optdepends=('libgexiv2: for exif support')
 conflicts=('vimiv')
 provides=('vimiv')
 backup=('etc/vimiv/vimivrc' 'etc/vimiv/keys.conf')
