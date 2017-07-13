@@ -4,7 +4,7 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=fargo-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r19.2dd84e1
-pkgrel=1
+pkgrel=2
 pkgdesc="Removes unseeable and ghost alpha from PNG images."
 arch=('i686' 'x86_64')
 url="https://github.com/DaemonLee/fargo"
