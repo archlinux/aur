@@ -1,6 +1,6 @@
 pkgbase = envview
 	pkgdesc = A simple graphical viewer for (inherited) environment variables
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/oliver-anhuth/envview
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = envview
 	makedepends = qt5-base
 	makedepends = gcc-multilib
 	depends = qt5-base
-	source = envview-1.0.0.tar.gz::https://github.com/oliver-anhuth/envview/archive/1.0.0.tar.gz
+	source = envview-1.0.1.tar.gz::https://github.com/oliver-anhuth/envview/archive/1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = envview
