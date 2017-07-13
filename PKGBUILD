@@ -1,6 +1,6 @@
 # Maintainer: Robin McCorkell <robin@mccorkell.me.uk>
 pkgname=haxor-news
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A Hacker News command line interface"
 arch=(any)
@@ -17,15 +17,12 @@ depends=(
 )
 source=(
   "$url/archive/$pkgver.tar.gz"
-  "0001-prompt-toolkit.patch"
 )
 
-md5sums=('2adcbb65e4ecc8bc87084fed8b7d7713'
-         '24001b78e3030c3b580807a001b31b80')
+md5sums=('03307fccd2d4eb13b8af57203ec28696')
 
 prepare() {
   cd "$srcdir"/"$pkgname-$pkgver"
-  patch -Np1 < "${srcdir}/0001-prompt-toolkit.patch"
 }
 
 build() {
