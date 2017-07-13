@@ -1,15 +1,15 @@
 pkgbase = tslint
 	pkgdesc = A Linter for the TypeScript language.
-	pkgver = 5.4.3
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://palantir.github.io/tslint/
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = typescript
-	noextract = tslint-5.4.3.tgz
-	source = http://registry.npmjs.org/tslint/-/tslint-5.4.3.tgz
-	sha256sums = c37e70fc6ae8501d0fc64597c43d78ca9f890750459ac813049c1c158d56db3c
+	noextract = tslint-5.5.0.tgz
+	source = http://registry.npmjs.org/tslint/-/tslint-5.5.0.tgz
+	sha256sums = f0d3bec6e76fe5980f7c8486543178b2948195df7a6eb7c3c2b629be9bbb506d
 
 pkgname = tslint
 
