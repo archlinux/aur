@@ -4,7 +4,7 @@
 
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
-pkgver=0.6.5.10
+pkgver=0.6.5.11
 pkgrel=1
 license=('CDDL')
 makedepends=("git" "spl-dkms=${pkgver}")
@@ -16,7 +16,7 @@ source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-${pkgver}"
         "zfs.initcpio.hook")
 sha256sums=('SKIP'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
-            '17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77'
+            'aa5706bf08b36209a318762680f3c9fb45b3fc4b8e4ef184c8a5370b2c3000ca'
             '138964b43d7a282e1ed5f7fcf1f8dc9baa4f664655b628eeac1912a3017a787b')
 
 build() {
