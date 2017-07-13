@@ -1,7 +1,7 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=neofetch-git
 _pkgname=neofetch
-pkgver=3.2.0.r28.g2eca41d
+pkgver=3.2.0.r47.gc3c6404
 pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
@@ -35,6 +35,6 @@ pkgver() {
 
 package() {
   cd $pkgname
-  DESTDIR="${pkgdir}" ./install.sh
+  make DESTDIR="$pkgdir" install
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/neofetch/LICENSE.md"
 }
