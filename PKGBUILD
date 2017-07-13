@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lariza
-pkgver=17.02
+pkgver=17.07
 pkgrel=1
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://www.uninformativ.de/projects/lariza/"
 license=('custom:PIZZA-WARE')
 depends=('webkit2gtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vain/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('729232a06bb1d197f1dfb6addbd4bf92b7cf99cc07a1b9debf8675f9c16c0692fe05e29152d19daabea190eecc84ff31b6985d7fa174b4dbece10888f35651e1')
+sha512sums=('83084d83039ed2e96f5f12022c1840380d1293c3c7427ceb23448b59372da771d9dbfc6eb67771dfb154d5320309fda0dfa255791baaf286a7490def6328aea3')
 
 build() {
   cd $pkgname-$pkgver
