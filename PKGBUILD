@@ -16,7 +16,7 @@ license=('MIT')
 arch=(i686 x86_64)
 depends=('gtk2' 'libmad' 'mesa' 'glew' 'libpng' 'libvorbis')
 replaces=('sm-ssc')
-makedepends=('pkgconfig' 'yasm' 'cmake' 'gcc5')
+makedepends=('pkgconfig' 'yasm' 'cmake' 'gcc5' 'git')
 install='stepmania.install'
 source=(stepmania.sh
         stepmania.install
