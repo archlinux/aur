@@ -8,9 +8,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.13.1
-pkgrel=2
-_commit=379d2efb5539b09112c793d3d9a413017d736f89
+pkgver=1.14.0
+pkgrel=1
+_commit=c887dd955170aebce0f6bb160b146f2e6e10a199
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -21,11 +21,10 @@ conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("vscode::git+https://github.com/Microsoft/vscode#commit=${_commit}"
-        "startup_script.patch" "ts-compat.patch"
+        "startup_script.patch"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
             '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
-            '91da6c2f2036813ba3d3ae5ce17cc4b437fadc6f18c693459bba2d7f68331e5b'
             'f853d7d998251223b0516928a2189e1e68a312bd732f18dc8d59892659beeae9')
 
 if (( VSCODE_NONFREE )); then
@@ -54,9 +53,6 @@ esac
 prepare() {
     cd "${srcdir}/vscode"
 
-    # Typescript 2.4 breaks some parts of the build
-    patch -p1 -i "${srcdir}/ts-compat.patch"
-
     if (( VSCODE_NONFREE )); then
         patch -p1 -i "${srcdir}/product_json.patch"
         _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
@@ -65,16 +61,43 @@ prepare() {
     fi
 }
 
+# npm.sh wrapper puts things in the user's home directory...
+# To avoid that, we perform its environment setup manually instead
+npm_wrap() {
+  (
+    ROOT="${srcdir}/vscode"
+    ELECTRON_VERSION=$(
+        cat "$ROOT"/package.json |
+        grep electronVersion |
+        sed -e 's/[[:space:]]*"electronVersion":[[:space:]]*"\([0-9.]*\)"\(,\)*/\1/'
+    )
+
+    ELECTRON_GYP_HOME="${srcdir}/electron-gyp"
+    mkdir -p $ELECTRON_GYP_HOME
+
+    npm_config_disturl=https://atom.io/download/electron \
+    npm_config_target=$ELECTRON_VERSION \
+    npm_config_runtime=electron \
+    HOME=$ELECTRON_GYP_HOME \
+    npm $*
+  )
+}
+
 build() {
     cd "${srcdir}/vscode"
 
-    ./scripts/npm.sh install --arch=${_vscode_arch}
+    # The provided shrinkwrap file doesn't work correctly with npm 5.x
+    # Therefore, we install an older version and use that for the build
+    ( cd "${srcdir}" && /usr/bin/npm install 'npm@4.6.1' )
+    PATH="${srcdir}/node_modules/.bin":$PATH
+
+    npm_wrap install --arch=${_vscode_arch}
 
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Uncomment this to set it to 2GB, or
     # change it if this number still doesn't work for your system.
     #mem_limit="--max_old_space_size=2048"
-    node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}
+    /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}
 
     # Patch the startup script to know where the app is installed, rather
     # than guessing...
