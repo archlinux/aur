@@ -1,6 +1,6 @@
 pkgbase = php-libsodium
 	pkgdesc = Simple, low-level PHP extension for libsodium
-	pkgver = 1.0.6
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/jedisct1/libsodium-php
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = php-libsodium
 	depends = php<7.2
 	depends = libsodium
 	backup = etc/php/conf.d/libsodium.ini
-	source = https://github.com/jedisct1/libsodium-php/archive/1.0.6.tar.gz
-	md5sums = 30584a13fda5d4767cffb52c641ffc9b
+	source = https://github.com/jedisct1/libsodium-php/archive/2.0.0.tar.gz
+	md5sums = f80b63495136bcb565aa1eef986e519f
 
 pkgname = php-libsodium
 
