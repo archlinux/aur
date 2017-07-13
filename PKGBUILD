@@ -1,4 +1,5 @@
-# Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
+# Maintainer: Runnytu < runnytu at gmail dot com >
+# Old Maintainer: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=ubridge
 pkgver=0.9.11
@@ -24,4 +25,3 @@ package() {
   install -Dm644 README.rst "${pkgdir}"/usr/share/doc/ubridge/README.rst
 }
 
-# vim:set ts=2 sw=2 et:
