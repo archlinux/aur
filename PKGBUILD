@@ -1,7 +1,7 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=python-aioimaplib
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc='Python asyncio IMAP4rev1 client library'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/bamthomas/${pkgname#python-}/archive/${pkgver}.tar.gz")
-sha256sums=('ca3b85df3befb4839edabc60ff4b01ee56cc5992f467c8e37bc8b4e74a17d735')
+sha256sums=('62657f98ab1e973efce1478f4ef6c742826cbd8779a9a3fe15d51ab77ec4d793')
 
 package() {
   cd "${pkgname#python-}-${pkgver}"
