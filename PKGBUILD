@@ -7,7 +7,7 @@
 pkgname=cataclysm-dda-tiles
 pkgver=0.C.2017.07.14
 _pkgver=0.C
-pkgrel=1
+pkgrel=2
 pkgdesc="A post-apocalyptic roguelike,tiles only"
 url="http://en.cataclysmdda.com/"
 arch=('x86_64')
@@ -19,7 +19,6 @@ optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
             'freetype2: for tiles'
             'sdl2_mixer: for tiles')
-install=cataclysm-dda.install
 conflicts=('cataclysm-dda', 'cataclysm-dda-ncurses' 'cataclysm-dda-sdl-git')
 source=('https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip'
 	'fix_locale_and_build_error.patch')
