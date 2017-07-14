@@ -12,7 +12,7 @@
 
 pkgname='tor-browser'
 pkgver='7.0.2'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor (international PKGBUILD)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -75,7 +75,7 @@ source=("${pkgname}.desktop"
 
 md5sums=('914bc94601657ac143f21acd8ed75747'
 	'494afbfa60fb4ce21840244cc3f7208c'
-	'ac6ee6d201ae0fa14250fbaf13959130')
+	'6b4b27ce2b925eef724cb3ea78a6f003')
 md5sums_i686=('SKIP'
 	'SKIP')
 md5sums_x86_64=('SKIP'
