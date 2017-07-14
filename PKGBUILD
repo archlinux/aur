@@ -1,19 +1,17 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 
 pkgname=ironpython-git
-pkgver=2.7.2.a2.471.g7be8b73
+pkgver=ac72964d7
 pkgrel=1
 pkgdesc="Python implementation for the .NET framework"
 arch=("any")
 url="http://ironpython.net"
 license=("Apache")
-depends=('mono')
+depends=('mono' 'msbuild-bin')
 makedepends=('git')
 options=('!strip' 'emptydirs' 'libtool')
-source=($pkgname::git://github.com/IronLanguages/main.git
-        site.patch)
-md5sums=('SKIP'
-         'dd484ca6dfe03277d8a13e7b1cfe6662')
+source=($pkgname::git://github.com/IronLanguages/ironpython2.git)
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -22,8 +20,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  sed -i "/NoWarn/s|444;||" Solutions/Common.proj
-  xbuild Solutions/IronPython.sln /p:Mono=true /p:Configuration="Release"
+  export LC_ALL="en_US.UTF-8"
+  export LANG="en_US.UTF-8"
+  git submodule update --init
+  msbuild.exe Build.proj /t:Build /p:Mono=true /p:BuildFlavour=Release /p:Platform="Any CPU" /verbosity:minimal /nologo
 }
 
 package() {
@@ -33,8 +33,4 @@ package() {
     echo -e "#!/bin/sh\nmono /opt/ipy/$bin.exe $*" > "$pkgdir/usr/bin/$bin"
     chmod +x "$pkgdir/usr/bin/$bin"
   done
-
-  cd "$pkgdir/opt/ipy/Lib"
-  patch -p0 < "$srcdir/site.patch"
 }
-
