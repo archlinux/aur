@@ -1,0 +1,18 @@
+pkgbase = python-traittypes
+	pkgdesc = Traitlet types for NumPy, SciPy and friends.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/jupyter-widgets/traittypes
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-traitlets
+	depends = python-numpy
+	depends = python-pandas
+	source = https://github.com/jupyter-widgets/traittypes/archive/0.0.6.tar.gz
+	sha256sums = 8b2a8a68ef83aa8dc11a0e3b91f83cb3b9709089db85e3ca49aec990f644748c
+
+pkgname = python-traittypes
+
