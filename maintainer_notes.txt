@@ -1,0 +1,18 @@
+== Make Package ==
+
+In PKGBUILD, update pkgver to the new nessus version, and update the first md5sums to match
+the one on the website for Fedora.
+
+Then run `mksrcinfo`.
+
+Then edit .SRCINFO, removing the line that was just added about 'source = Nessus-...', but keeping the rest of the changes.
+If we kept that line, we'd be packaging the rpm with the package, but we want it instead to be downloaded.
+(For license reasons, or size reasons, or something...)
+
+Commit and push!
+
+
+== Test Locally ==
+
+You can do this using the `makepkg` command in the directory containing the PKGBUILD file
+`pacman -U /root/Download/packagename.tar.gz`

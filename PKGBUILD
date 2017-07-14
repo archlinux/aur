@@ -3,7 +3,7 @@
 
 _retoken='.*<div id="timecheck" class="hidden">(\w+)<.*'
 pkgname=nessus
-pkgver=6.10.8
+pkgver=6.10.9
 pkgrel=1
 _filename="${pkgname^}-${pkgver}-fc20.x86_64.rpm"
 pkgdesc="Vulnerability scanner"
@@ -33,7 +33,7 @@ source=("${_filename}::${_pkgurl}"
         nessus.sh
         LICENSE)
 
-md5sums=('ea16b0857668e51e460def739ead459d'
+md5sums=('2e8a750b50fd803b8fa533dba98d1731'
          '388578bf980efe6e6d3f33fcc289543a'
          '8c5772ac63f97d94475fe03e80d6ba5c'
          '1db6df5a39009ace46c7ee40141ece1b')
