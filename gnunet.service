@@ -1,0 +1,10 @@
+[Unit]
+Description=A framework for secure peer-to-peer networking
+
+[Service]
+User=nobody
+Type=forking
+ExecStart=/usr/bin/gnunet-arm -s -c /etc/gnunetd.conf
+
+[Install]
+WantedBy=multi-user.target
