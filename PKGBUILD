@@ -3,9 +3,9 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 # Contributor: mosra <mosra@centrum.cz>
 
-_pkgverbase=1.3.0
+_basever=1.3.0-alpha
 pkgname=mypaint-git
-pkgver=1.3.0.alpha+git.922f73df
+pkgver=1.3.0.alpha.r4825.f03e5ec5
 pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://mypaint.org/"
 license=('GPL2')
 depends=('desktop-file-utils' 'gtk3' 'json-c' 'lcms2' 'librsvg' 'python2-cairo' 'python2-gobject' 'python2-numpy' 'libmypaint-git')
 makedepends=('git' 'swig' 'pygobject-devel' 'python2' 'python2-setuptools')
-provides=("mypaint=${pkgver}")
+provides=("mypaint=${_basever}")
 conflicts=('mypaint')
 install=mypaint-git.install
 source=('git+https://github.com/mypaint/mypaint.git'
@@ -21,10 +21,7 @@ source=('git+https://github.com/mypaint/mypaint.git'
 
 pkgver() {
     cd "${srcdir}/mypaint"
-    eval `python2 lib/meta.py`
-    echo "$MYPAINT_VERSION_CEREMONIAL" \
-    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-    | sed 's/gitexport/git/g'
+    printf "${_basever}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/^v//g;s/-/./g'
 }
 
 prepare() {
