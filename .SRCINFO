@@ -1,0 +1,15 @@
+pkgbase = roy
+	pkgdesc = With the roy tool you can build custom signature files for siegfried, the signature-based file format identification tool.
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = http://www.itforarchivists.com/siegfried
+	arch = x86_64
+	arch = i686
+	license = APACHE
+	makedepends = git
+	depends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = roy
+
