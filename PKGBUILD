@@ -3,12 +3,12 @@
 _target=arm-frc-linux-gnueabi
 pkgname=$_target-gdb
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger (${_target})"
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
-groups=('frc-2017')
+groups=('frc-toolchain')
 depends=(ncurses expat xz gdb-common)
 makedepends=(texinfo python guile2.0 xz)
 optdepends=('openocd: for debugging JTAG targets'
