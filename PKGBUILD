@@ -14,6 +14,7 @@ optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")
 sha256sums=('75f64b0bbfaad42d2215e131acc4f5914e618ec99f75f03a86ad00e98bef0924')
+options=('!strip')
 
 prepare() {
   gendesk -f -n --name=Wire --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
