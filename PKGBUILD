@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-dash-renderer' 'python-flask' 'python-flask-compress' 'python-flask-seasurf' 'python-plotly' 'python-requests')
 optdepends=()
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/5d/10/74b7c71faa68e89a1c693ea102a1638451cb476daca61ac3cfeaad886329/dash-$pkgver.tar.gz")
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('1414157e4161d246066d2fa4b322d61871e38cb8d808705ea2694c3ab074ccf2')
 
 package(){
