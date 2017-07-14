@@ -2,7 +2,7 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
 url='https://www.blackmagicdesign.com/support/family/capture-and-playback'
@@ -29,8 +29,8 @@ _reqjson="{ \
     \"lastname\": \"Linux\", \
     \"email\": \"someone@archlinux.org\", \
     \"phone\": \"202-555-0194\", \
-    \"state\": \"AUR\", \
-    \"city\": \"pacman\", \
+    \"state\": \"New York\", \
+    \"city\": \"AUR\", \
     \"hasAgreedToTerms\": true, \
     \"product\": \"Desktop Video ${pkgver} SDK\" \
 }"
@@ -63,9 +63,9 @@ prepare() {
                 -H 'Origin: https://www.blackmagicdesign.com' \
                 -H "$_useragent" \
                 -H 'Content-Type: application/json;charset=UTF-8' \
-                -H "Referer: https://www.blackmagicdesign.com/support/family/capture-and-playback/download/${_referid}/Linux" \
+                -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
                 -H 'Accept-Language: en-US,en;q=0.8' \
-                -H 'Cookie: _ga=GA1.3.853760154.1498322710; _gid=GA1.3.606965387.1499872692; _gat=1' \
+                -H 'Cookie: _ga=GA1.3.853760154.1498322710; _gid=GA1.3.1693019090.1500064482' \
                 --data-binary "$_reqjson" \
                 --compressed \
                 "$_srcurl" \
