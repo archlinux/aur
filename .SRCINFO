@@ -1,6 +1,6 @@
 pkgbase = siegfried
 	pkgdesc = Siegfried is a signature-based file format identification tool, implementing the National Archives UK's PRONOM file format signatures and freedesktop.org's MIME-info file format signatures.
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = http://www.itforarchivists.com/siegfried
 	arch = x86_64

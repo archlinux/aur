@@ -1,7 +1,7 @@
 # Maintainer: Steffen Fritz <aur AT fritz DOT wtf>
 
 pkgname=siegfried
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Siegfried is a signature-based file format identification tool, implementing the National Archives UK's PRONOM
 file format signatures and freedesktop.org's MIME-info file format signatures.
