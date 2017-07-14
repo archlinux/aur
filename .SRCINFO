@@ -1,5 +1,5 @@
 pkgbase = spotify-dl-git
-	pkgdesc = Script that allows you to download Spotify songs or playlists
+	pkgdesc = Script that allows you to download Spotify songs or playlists from Youtube
 	pkgver = r9.97bdc5c
 	pkgrel = 1
 	url = https://github.com/invicnaper/spotify-dl
