@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
-pkgver=2.15.2748
+pkgver=2.15.2750
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'gendesk' 'grunt-cli' 'npm' 'python2')
 optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")
-sha256sums=('75f64b0bbfaad42d2215e131acc4f5914e618ec99f75f03a86ad00e98bef0924')
+sha256sums=('c1f7a667b29400006fc5b39d6ac82ac621677e28c708b5c033238ae4e9271244')
 options=('!strip')
 
 prepare() {
