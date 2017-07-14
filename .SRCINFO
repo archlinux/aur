@@ -1,18 +1,18 @@
 pkgbase = bandcamp-dl
 	pkgdesc = cli application for downloading albums from bandcamp
 	pkgver = 1.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Granitosaurus/bandcamp-downloader
 	arch = any
 	license = GPL3
-	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-setuptools
 	depends = python-requests
 	depends = python-parsel
 	depends = python-click
 	source = https://github.com/Granitosaurus/bandcamp-downloader/archive/v1.11.tar.gz
-	md5sums = SKIP
+	md5sums = bafdee3dac0b61870ab7ff085e7b762d
 
 pkgname = bandcamp-dl
 
