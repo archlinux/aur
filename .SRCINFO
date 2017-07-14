@@ -1,18 +1,19 @@
-pkgbase = nuget3
+pkgbase = nuget4
 	pkgdesc = Package manager for .NET.
-	pkgver = 3.5.0
-	pkgrel = 3
+	pkgver = 4.1.0
+	pkgrel = 0
 	url = http://www.nuget.org
-	install = nuget3.install
+	install = nuget4.install
 	arch = any
 	license = APACHE
-	depends = mono>=4.0.0
+	depends = mono>=5.0.0
 	depends = sh
-	conflicts = nuget
-	source = https://dist.nuget.org/win-x86-commandline/v3.5.0/NuGet.exe
+	conflicts = nuget,
+	conflicts = nuget3
+	source = https://dist.nuget.org/win-x86-commandline/v4.1.0/nuget.exe
 	source = nuget
-	md5sums = 406324e1744923a530a3f45b8e4fe1eb
-	md5sums = d78ac3ef24bebbf942d63ad3b1e205fe
+	sha384sums = c88f175201cef01aac7eadaad8d077523cc9d8f6eb053e4c7ac6dffe810d5c36dac370de008707828193b4df330edade
+	sha384sums = 8cb9ce863e6b0669e28e7710a844985baf0c11626deed243d62995a2406eb135e634a4c381a757a26072edd017ea3232
 
-pkgname = nuget3
+pkgname = nuget4
 
