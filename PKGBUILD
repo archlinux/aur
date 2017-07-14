@@ -2,7 +2,7 @@
 # Contributor: Leonidas Spyropoulos <artafinde@gmail.com>
 
 pkgname=neomutt
-pkgver=20170609
+pkgver=20170714
 pkgrel=3
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
