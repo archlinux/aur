@@ -1,0 +1,12 @@
+pkgbase = rustup-dummy
+	pkgdesc = Makes pacman think that rust et. al is installed for users using the official rustup install procedure.
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	provides = cargo
+	provides = rust
+	provides = rustup
+
+pkgname = rustup-dummy
+
