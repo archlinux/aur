@@ -1,0 +1,18 @@
+pkgbase = lib32-pcre2
+	pkgdesc = A library that implements Perl 5-style regular expressions. 2nd version (32-bit)
+	pkgver = 10.23
+	pkgrel = 1
+	url = http://www.pcre.org/
+	arch = x86_64
+	license = BSD
+	depends = lib32-gcc-libs
+	depends = lib32-readline
+	depends = lib32-zlib
+	depends = lib32-bzip2
+	depends = bash
+	depends = pcre2
+	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-10.23.tar.bz2
+	md5sums = b2cd00ca7e24049040099b0a46bb3649
+
+pkgname = lib32-pcre2
+
