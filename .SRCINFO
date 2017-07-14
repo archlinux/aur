@@ -1,5 +1,5 @@
 pkgbase = linux-cubei7
-	pkgver = 4.10.8
+	pkgver = 4.11.9-1
 	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = linux-cubei7
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.10.4.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.10.4.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.11.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.11.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.11.9.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.11.9.sign
 	source = config.x86_64
 	source = 90-linux.hook
 	source = linux-cubei7.preset
@@ -40,7 +40,4 @@ pkgname = linux-cubei7
 
 pkgname = linux-cubei7-headers
 	pkgdesc = Header files and scripts for building modules for Linux-cubei7 kernel
-
-pkgname = linux-cubei7-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-cubei7 kernel
 

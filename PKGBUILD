@@ -4,8 +4,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-cubei7       # Build kernel with a different name
-_srcname=linux-4.10
-pkgver=4.10.8
+_srcname=linux-4.11
+pkgver=4.11.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,11 +24,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-cubei7.preset'
         )
 
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'ceb385486e34084dd53425e5ba50b9fba4a8e380d8f2815bfde142852d797da0'
+            'a112d1330817bac401dbbd1e2c8aacb1b725bc28239e2ca58281ea3754deceb5'
             'SKIP'
-            '7dd1489bf5e448b237271e5bd06a96fa68ecef39e6982175b6704a88b0dece91'
+            '7520bf9d2ea58c7bc2ddafd1eb71664eba59dc0f38c840dadf0525d179ed6679'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -264,21 +264,7 @@ _package-headers() {
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
-_package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-
-  cd "${srcdir}/${_srcname}"
-
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}" -type f -exec chmod 444 {} \;
-  find "${pkgdir}" -type d -exec chmod 755 {} \;
-
-  # remove a file already in linux package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
-}
-
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+pkgname=("${pkgbase}" "${pkgbase}-headers")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
