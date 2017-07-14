@@ -1,0 +1,14 @@
+pkgbase = jupyter_dashboards
+	pkgdesc = Extension for deploying jupyter notebooks as dynamic dashboards
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/jupyter_dashboards/
+	arch = any
+	license = BSD
+	depends = git
+	depends = jupyter-notebook
+	source = https://pypi.org/packages/source/j/jupyter_dashboards/jupyter_dashboards-0.7.0.tar.gz
+	sha256sums = 69a8dcb85acda20862bd2c52b97f9c5b5f0fbc23c73c2824460269d0622b0b20
+
+pkgname = jupyter_dashboards
+
