@@ -1,11 +1,11 @@
 pkgbase = lib32-libxdg-basedir
 	pkgdesc = An implementation of the XDG Base Directory specifications (32-bit).
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/devnev/libxdg-basedir
 	arch = x86_64
 	license = MIT
-	depends = lib32-glibc
+	depends = lib32-glibc libxdg-basedir
 	source = https://github.com/devnev/libxdg-basedir/archive/libxdg-basedir-1.2.0.tar.gz
 	source = xdgGetRelativeHome-overflow.patch
 	source = LICENSE

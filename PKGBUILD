@@ -3,13 +3,13 @@
 pkgname=lib32-libxdg-basedir
 _basename=libxdg-basedir
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of the XDG Base Directory specifications (32-bit)."
 arch=('x86_64')
 #url="http://n.ethz.ch/student/nevillm/download/libxdg-basedir"
 url="https://github.com/devnev/$_basename"
 license=('MIT')
-depends=('lib32-glibc')
+depends=('lib32-glibc libxdg-basedir')
 source=(https://github.com/devnev/$_basename/archive/$_basename-$pkgver.tar.gz
         'xdgGetRelativeHome-overflow.patch'
         'LICENSE')
