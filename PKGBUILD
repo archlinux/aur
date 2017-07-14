@@ -50,10 +50,10 @@ build() {
         -DENABLE_VALGRIND=0 \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_INSTALL_SBINDIR='bin' \
-        -DCMAKE_INSTALL_LIBDIR='lib' \
-        -DCMAKE_INSTALL_LIBEXECDIR='lib/rdma' \
-        -DCMAKE_INSTALL_SYSCONFDIR='/etc' \
+        -DCMAKE_INSTALL_SBINDIR:PATH='/usr/bin' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib' \
+        -DCMAKE_INSTALL_LIBEXECDIR:PATH='/usr/lib/rdma' \
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
         ..
     ninja
 }
@@ -82,7 +82,6 @@ package() {
     install -D --mode=0644 rdma.fixup-mtrr.awk "${pkgdir}/usr/lib/rdma/rdma-fixup-mtrr.awk"
     install -D --mode=0755 rdma.mlx4-setup.sh "${pkgdir}/usr/lib/rdma/mlx4-setup.sh"
     install -D --mode=0644 ibacm.service "${pkgdir}/usr/lib/systemd/system/ibacm.service"
-    install -D --mode=0644 srp_daemon.service "${pkgdir}/usr/lib/systemd/system/srp_daemon.service"
 
     cd "${srcdir}/${_srcname}"
     install -D --mode=0644 COPYING.BSD_MIT "${pkgdir}/usr/share/licenses/${pkgname[0]%-git}/COPYING.BSD_MIT"
