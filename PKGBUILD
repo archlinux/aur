@@ -1,6 +1,6 @@
 _name=vlc
 pkgname=vlc-clang-git
-pkgver=3.0.r70783.gc6554d4dc9
+pkgver=3.0.r71254.g3ba7de2ed2
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player. Development GIT Version."
 arch=('i686' 'x86_64')
@@ -73,8 +73,12 @@ build() {
   ./bootstrap
   msg 'Done. Configuring VLC...'
 
-   CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" CXXFLAGS+=" -std=gnu++11" \
-  CC=clang CXX=clang++ ./configure --prefix=/usr \
+   export CFLAGS+=" -I/usr/include/samba-4.0" 
+   export CPPFLAGS+=" -I/usr/include/samba-4.0" 
+   export CXXFLAGS+=" -std=gnu++11" \
+  export CC=clang 
+   export CXX=clang++
+   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --disable-rpath \
               --enable-bluray \
@@ -121,7 +125,6 @@ build() {
               --disable-oss \
               --enable-postproc \
               --enable-pulse \
-              --disable-pvr \
               --disable-run-as-root \
               --disable-schroedinger \
               --disable-shine \
@@ -143,11 +146,17 @@ build() {
               RCC=/usr/bin/rcc-qt5
 
   msg 'Done. Starting make...'
-  make
+  ./compile
 }
 
 package() {
   cd "${srcdir}/${_name}"
   make DESTDIR="${pkgdir}" install
+
+  for res in 16 32 48 128; do
+    install -Dm 644 "${srcdir}/vlc/share/icons/${res}x${res}/vlc.png" \
+                     "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
+  done
+
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 }
