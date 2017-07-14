@@ -1,7 +1,7 @@
 # Maintainer: Sean Haugh <seanphaugh@gmail.com>
 
 pkgname=python-pywal
-pkgver=0.4.0.r1.g84b3725
+pkgver=0.4.0.r7.g9c871ec
 pkgrel=1
 pkgdesc="Generate and change colorschemes on the fly"
 arch=('any')
