@@ -1,11 +1,11 @@
 pkgbase = arm-frc-linux-gnueabi-gcc
 	pkgdesc = The GNU Compiler Collection (arm-frc-linux-gnueabi)
 	pkgver = 4.9.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
-	groups = frc-2017
+	groups = frc-toolchain
 	license = GPL
 	license = LGPL
 	depends = arm-frc-linux-gnueabi-binutils
