@@ -116,7 +116,9 @@ pkgname = virtualbox-i3
 	optdepends = virtualbox-i3-guest-iso: Guest Additions CD image
 	optdepends = virtualbox-i3-ext-vnc: VNC server support
 	optdepends = virtualbox-i3-sdk: Developer kit
+	conflicts = virtualbox
 	conflicts = virtualbox-ose
+	replaces = virtualbox
 	replaces = virtualbox-ose
 	backup = etc/vbox/vbox.cfg
 

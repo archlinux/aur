@@ -153,8 +153,8 @@ package_virtualbox-i3() {
                 'virtualbox-i3-ext-vnc: VNC server support'
                 'virtualbox-i3-sdk: Developer kit')
     backup=('etc/vbox/vbox.cfg')
-    replaces=('virtualbox-ose')
-    conflicts=('virtualbox-ose')
+    replaces=('virtualbox' 'virtualbox-ose')
+    conflicts=('virtualbox' 'virtualbox-ose')
     install=virtualbox.install
 
     source "VirtualBox-$pkgver/env.sh"
