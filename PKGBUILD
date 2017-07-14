@@ -3,20 +3,17 @@
 _target_arch=arm
 _target=${_target_arch}-frc-linux-gnueabi
 pkgname=${_target}-linux-api-headers
-pkgver=3.19
-_basever=3.19-r0.36
-pkgrel=2
+pkgver=4.4
+_basever=4.4-r0.22
+_year=2017
+pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace (${_target})"
 arch=(any)
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
 groups=('frc-toolchain')
-provides=("${_target}-linux-api-headers=${pkgver}"
-  "${_target}-linux-api-headers30")
-conflicts=("${_target}-linux-api-headers26")
-options=('!emptydirs')
-source=("http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/linux-libc-headers-dev_${_basever}_cortexa9-vfpv3.ipk")
-sha512sums=('038f4922e3c05d4882292fc8437266debda5860e79f119f4ec73f0aa2814011cd187dc6505e79693ba15b6d0eabfbbe5c2f0263c60654dbd5a93e8763c4b75cc')
+source=("http://download.ni.com/ni-linux-rt/feeds/${_year}/arm/ipk/cortexa9-vfpv3/linux-libc-headers-dev_${_basever}_cortexa9-vfpv3.ipk")
+sha512sums=('a4d835afce21bbaff5e04720191e2059eedf05a9bfd833e6a1002866ad6db5bdb451de73e8952fbd63e67f5bc6bd3bd3409e457d7e2a0620e84fdf3ff0cde9fd')
 
 package() {
   cd "${srcdir}"
