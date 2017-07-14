@@ -2,7 +2,7 @@
 # Co-Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname="bcwc-pcie-git"
-pkgver=r252.fcdcc9a
+pkgver=r254.a22f248
 pkgrel=1
 pkgdesc="Reverse engineered Linux driver for the Broadcom 1570 PCIe webcam."
 arch=('x86_64')
@@ -29,10 +29,6 @@ pkgver() {
 
 package() {
   cd $srcdir/$pkgname
-
-  # add dkms config
-  git cherry-pick 76945312a9d2e786bebc9bb5711f5962365c5c20
-  git cherry-pick 4901c363e8688a46b83bfcbee92c1588dca6054c
 
   for FILE in dkms.conf Makefile *.[ch]; do
     install -Dm 644 "$FILE" "$pkgdir/usr/src/${pkgname/-dkms/}-${pkgver}/$FILE"
