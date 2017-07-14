@@ -1,0 +1,6 @@
+
+post_upgrade() {
+  echo "Save formats are almost always incompatible"
+  echo "Please delete all files in ~/.cataclysm-dda/save/"
+}
+

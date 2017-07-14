@@ -1,0 +1,47 @@
+diff -Naur Cataclysm-DDA-master.orig/Makefile Cataclysm-DDA-master/Makefile
+--- Cataclysm-DDA-master.orig/Makefile	2017-07-13 13:39:52.000000000 +0800
++++ Cataclysm-DDA-master/Makefile	2017-07-14 15:23:47.780860342 +0800
+@@ -224,7 +224,7 @@
+   endif
+   DEFINES += -DRELEASE
+   # Check for astyle or JSON regressions on release builds.
+-  CHECKS = astyle-check lint-check
++  CHECKS = lint-check
+ endif
+ 
+ ifdef CLANG
+@@ -389,7 +389,7 @@
+     CXXFLAGS += -DMAPSIZE=$(MAPSIZE)
+ endif
+ 
+-ifeq ($(shell git rev-parse --is-inside-work-tree),true)
++ifeq ([ -e ".git" ],true)
+   # We have a git repository, use git version
+   DEFINES += -DGIT_VERSION
+ endif
+diff -Naur Cataclysm-DDA-master.orig/src/translations.cpp Cataclysm-DDA-master/src/translations.cpp
+--- Cataclysm-DDA-master.orig/src/translations.cpp	2017-07-13 13:39:52.000000000 +0800
++++ Cataclysm-DDA-master/src/translations.cpp	2017-07-14 15:24:39.930856915 +0800
+@@ -79,10 +79,10 @@
+ #endif
+ 
+     // Step 2. Bind to gettext domain.
+-    const char *locale_dir;
++    std::string locale_dir;
+ #if (defined __linux__ || (defined MACOSX && !defined TILES))
+     if( !FILENAMES["base_path"].empty() ) {
+-        locale_dir = std::string( FILENAMES["base_path"] + "share/locale" ).c_str();
++        locale_dir = FILENAMES["base_path"] + "share/locale";
+     } else {
+         locale_dir = "lang/mo";
+     }
+@@ -90,7 +90,8 @@
+     locale_dir = "lang/mo";
+ #endif // __linux__
+ 
+-    bindtextdomain( "cataclysm-dda", locale_dir );
++    const char *locale_dir_char = locale_dir.c_str();
++    bindtextdomain( "cataclysm-dda", locale_dir_char );
+     bind_textdomain_codeset( "cataclysm-dda", "UTF-8" );
+     textdomain( "cataclysm-dda" );
+ 
