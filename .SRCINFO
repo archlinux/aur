@@ -1,5 +1,5 @@
 pkgbase = lib32-double-conversion
-	pkgdesc = Binary-decimal and decimal-binary routines for IEEE doubles
+	pkgdesc = Binary-decimal and decimal-binary routines for IEEE doubles (32-bit)
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/google/double-conversion
