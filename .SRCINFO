@@ -1,7 +1,7 @@
 pkgbase = arm-frc-linux-gnueabi-eglibc
 	pkgdesc = Embedded GNU C Library (arm-frc-linux-gnueabi)
-	pkgver = 2.21
-	pkgrel = 2
+	pkgver = 2.23
+	pkgrel = 1
 	url = http://www.eglibc.org
 	arch = any
 	groups = frc-toolchain
@@ -10,16 +10,16 @@ pkgbase = arm-frc-linux-gnueabi-eglibc
 	options = !strip
 	options = staticlibs
 	options = !emptydirs
-	source = http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libc6_2.21-r0.83_cortexa9-vfpv3.ipk
-	source = http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libc6-dev_2.21-r0.83_cortexa9-vfpv3.ipk
-	source = http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libcidn1_2.21-r0.83_cortexa9-vfpv3.ipk
-	source = http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libc6-thread-db_2.21-r0.83_cortexa9-vfpv3.ipk
-	source = http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libc6-extra-nss_2.21-r0.83_cortexa9-vfpv3.ipk
-	md5sums = b0ebbf81bf8967e3c4cb4015e377c96c
-	md5sums = 1f69e9ef7f61edad53bf325e2a83f6b2
-	md5sums = 9e1a5b62312d0dba50a07b79c237e4ac
-	md5sums = 49e2138e2d36ba014a891a5a41d628b9
-	md5sums = 2fea5da4b5dbfc52dfc387d64935b9e1
+	source = http://download.ni.com/ni-linux-rt/feeds/2017/arm/ipk/cortexa9-vfpv3/libc6_2.23-r0.47_cortexa9-vfpv3.ipk
+	source = http://download.ni.com/ni-linux-rt/feeds/2017/arm/ipk/cortexa9-vfpv3/libc6-dev_2.23-r0.47_cortexa9-vfpv3.ipk
+	source = http://download.ni.com/ni-linux-rt/feeds/2017/arm/ipk/cortexa9-vfpv3/libcidn1_2.23-r0.47_cortexa9-vfpv3.ipk
+	source = http://download.ni.com/ni-linux-rt/feeds/2017/arm/ipk/cortexa9-vfpv3/libc6-thread-db_2.23-r0.47_cortexa9-vfpv3.ipk
+	source = http://download.ni.com/ni-linux-rt/feeds/2017/arm/ipk/cortexa9-vfpv3/libc6-extra-nss_2.23-r0.47_cortexa9-vfpv3.ipk
+	md5sums = 3b99022865f148ed4a846ee0d7693160
+	md5sums = ba4d47fc0090395805f79e7e2d79b769
+	md5sums = 7886688bd23948702c0956216228d51c
+	md5sums = 9461c536f1eb2cc3ea3f47fdacc8c0cc
+	md5sums = 806ccabe20694def89af3e44fdf6fd03
 
 pkgname = arm-frc-linux-gnueabi-eglibc
 
