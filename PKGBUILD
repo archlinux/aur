@@ -1,21 +1,21 @@
-# Maintainer: 
-# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=uperf
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A network performance tool that supports modelling and replay of various networking patterns"
 arch=('i686' 'x86_64')
 url="http://www.uperf.org/"
 license=('GPL3')
 depends=('lksctp-tools')
-source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname-$pkgver.tar.bz2 
+makedepends=('git' 'automake' 'patch')
+source=(git+https://github.com/uperf/uperf.git#commit=9a22199e2197d9a3f8c474a91e1dfa7285a09e1b
         lpthread.patch)
-md5sums=('ccbc52686451c14c5532d7ccd67b699c'
-         'bad43924882b7ed98ed429bf365f3375')
+sha256sums=('SKIP'
+            'b2194ec13cc9ff62195246390a18200527fd842f97b53e2af6e6da21aad5e4d1')
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname
 
   patch -p1 -i ../lpthread.patch
   ./configure --prefix=/usr --datadir=/usr/share/uperf
@@ -24,7 +24,7 @@ build() {
 
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname
 
   make DESTDIR="${pkgdir}" install
 }
