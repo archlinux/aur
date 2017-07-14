@@ -3,7 +3,7 @@
 _pkgname=wechat_web_devtools
 pkgname=wechat-web-devtools-git
 pkgver=0.19.191100
-pkgrel=1
+pkgrel=2
 pkgdesc="Wechat Web Developer Tools"
 arch=("any")
 url="https://github.com/BruceZhang1993/${_pkgname}"
