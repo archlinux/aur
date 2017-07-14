@@ -1,0 +1,23 @@
+pkgbase = eolie
+	pkgdesc = Simple web browser for GNOME
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://gnumdk.github.io/eolie-web/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = itstool
+	depends = gtkspell3
+	depends = python-beautifulsoup4
+	depends = python-cairo
+	depends = python-gobject
+	depends = webkit2gtk
+	source = https://github.com/gnumdk/eolie/releases/download/0.9/eolie-0.9.0.tar.xz
+	source = 0001-Install-webextension-into-libdir.patch
+	sha256sums = 4ad882ed899cfa88a24851443a879a1bb9f720ad3639e688c05b04ad44cb63d1
+	sha256sums = 3d93e35a917b8101da541e73162dcbe51889c1aa3799e058ec207d59fa6976cc
+
+pkgname = eolie
+

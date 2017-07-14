@@ -1,0 +1,48 @@
+From 7bed9e4b7aa7fec8ca16f47f647b8d04674299e9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=83=C2=B3=20Gy=C3=83=C2=B6rgy?= <ballogyor@gmail.com>
+Date: Fri, 14 Jul 2017 09:41:37 +0200
+Subject: [PATCH] Install webextension into libdir
+
+Only platform-independent data is allowed in datadir.
+---
+ eolie.in                        | 3 ++-
+ python-webextension/Makefile.am | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/eolie.in b/eolie.in
+index ea0dfea..b2ffedc 100644
+--- a/eolie.in
++++ b/eolie.in
+@@ -19,6 +19,7 @@ from gi.repository import Gio
+ 
+ localedir = '@localedir@'
+ pkgdatadir = '@pkgdatadir@'
++pkglibdir = '@pkglibdir@'
+ 
+ from eolie.application import Application
+ 
+@@ -45,7 +46,7 @@ if __name__ == "__main__":
+     resource = Gio.resource_load(os.path.join(pkgdatadir, 'eolie.gresource'))
+     Gio.Resource._register(resource)
+ 
+-    app = Application("@VERSION@", os.path.join(pkgdatadir, 'webkitextension'))
++    app = Application("@VERSION@", os.path.join(pkglibdir, 'webkitextension'))
+     signal.signal(signal.SIGINT, signal.SIG_DFL)
+     if 'EOLIE_TRACE' in os.environ:
+         graphviz = GraphvizOutput()
+diff --git a/python-webextension/Makefile.am b/python-webextension/Makefile.am
+index 6b4bf4c..c3cb5f3 100644
+--- a/python-webextension/Makefile.am
++++ b/python-webextension/Makefile.am
+@@ -3,7 +3,7 @@
+ # Adrian Perez, 2015-08-25 11:58
+ #
+ 
+-webkitextensiondir = $(datadir)/eolie/webkitextension
++webkitextensiondir = $(libdir)/eolie/webkitextension
+ webkitextension_DATA = extension.py
+ 
+ extension.py: extension.py.in Makefile
+-- 
+2.13.2
+
