@@ -1,11 +1,11 @@
 pkgbase = arm-frc-linux-gnueabi-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (arm-frc-linux-gnueabi)
 	pkgver = 2.29
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sources.redhat.com/binutils
 	arch = i686
 	arch = x86_64
-	groups = frc-2017
+	groups = frc-toolchain
 	license = GPL
 	depends = glibc
 	options = !libtool
