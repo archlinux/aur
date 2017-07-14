@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20170622
+pkgver=3.0.0v20170713
 _pkgver=3.0.0
-_snapshot_=20170627
-_snapver_=0241
+_snapshot_=20170713
+_snapver_=0242
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -112,14 +112,14 @@ package() {
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 
   # Update dependencies automatically based on dynamic libraries
-  _detected_depends=($(find "$pkgdir"/usr -name "*.so" | xargs python "$srcdir"/find-deps.py))
+ # _detected_depends=($(find "$pkgdir"/usr -name "*.so" | xargs python "$srcdir"/find-deps.py))
 
-  msg 'Auto-detected dependencies:'
-  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
-  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
+#  msg 'Auto-detected dependencies:'
+#  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
+#  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('5a2b5b6b88cdde3bcc7c64acdaf2b9143ec0b08f0d8ca5ae8c9c78ab48fe8612'
+sha256sums=('f5310f5c2afe7651480517a3a1c288f6cb440ba2ddafdd7faefa71201332d7b0'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
