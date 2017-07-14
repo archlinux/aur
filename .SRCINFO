@@ -1,6 +1,6 @@
 pkgbase = mnemosyne
 	pkgdesc = A flash-card tool with a sophisticated card review algorithm
-	pkgver = 2.4.1
+	pkgver = 2.5
 	pkgrel = 4
 	url = http://www.mnemosyne-proj.org
 	install = mnemosyne.install
@@ -18,8 +18,8 @@ pkgbase = mnemosyne
 	optdepends = ttf-ms-fonts: support for non-latin labels on statistic plots
 	optdepends = python-cheroot: support for starting a sync server
 	conflicts = mnemosyne-bzr
-	source = http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-2.4.1.tar.gz
-	md5sums = 6282a92604e4082b75312e72fc1ae297
+	source = http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-2.5.tar.gz
+	sha256sums = e7d5e1ac64f5a89346a9aa604955cd002d05ce9ef1424ba3b7ca11152ff1c948
 
 pkgname = mnemosyne
 
