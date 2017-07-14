@@ -1,7 +1,7 @@
 # Maintainer : M0Rf30
 
 pkgname=torrential
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="A simple torrent client for elementary OS"
@@ -24,4 +24,4 @@ package() {
   make DESTDIR=$pkgdir install
 }
 
-md5sums=('470a7b05cf7a09f933408fca6dbbf15e')
+md5sums=('042ef84409ae2d8d3ed8c4ace211ded3')
