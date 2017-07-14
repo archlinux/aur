@@ -1,4 +1,5 @@
-# Maintainer: Mark Weiman <mark dot weiman at markzz dot com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Mark Weiman <mark dot weiman at markzz dot com>
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync-nemo
@@ -13,11 +14,7 @@ depends=("insync" "nemo-python")
 makedepends=('gtk-doc')
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}-precise_all.deb")
 sha256sums=('e3b9ac6be0a2f0488aea05753c37b271763cc2f145ff860f5615a79bf2dc2113')
-noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
-   cd $srcdir
-   ar x ${pkgname}-${pkgver}.deb
-   tar xvf data.tar.gz
-   cp -rp usr $pkgdir
+  tar -zxf "${srcdir}"/data.tar.gz -C "${pkgdir}"
 }
