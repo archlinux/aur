@@ -9,7 +9,7 @@ arch=('x86_64')
 #url="http://n.ethz.ch/student/nevillm/download/libxdg-basedir"
 url="https://github.com/devnev/$_basename"
 license=('MIT')
-depends=('lib32-glibc libxdg-basedir')
+depends=('lib32-glibc' 'libxdg-basedir')
 source=(https://github.com/devnev/$_basename/archive/$_basename-$pkgver.tar.gz
         'xdgGetRelativeHome-overflow.patch'
         'LICENSE')
