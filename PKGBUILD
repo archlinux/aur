@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=2.15.2749.r3.gc327586
+pkgver=2.15.2750.r0.gd08a6f5
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
