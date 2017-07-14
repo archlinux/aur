@@ -1,7 +1,7 @@
 # Maintainer: ngld <ngld@tproxy.de>
 _pyname=semantic_version
 pkgname=python-semantic-version
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A library implementing the 'SemVer' scheme."
 arch=('any')
@@ -10,8 +10,8 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-$pkgver.tar.gz")
-sha256sums=('3baad35dcb074a49419539cea6a33b484706b6c2dd03f05b67763eba4c1bb65c')
+source=("https://pypi.python.org/packages/72/83/f76958017f3094b072d8e3a72d25c3ed65f754cc607fdb6a7b33d84ab1d5/semantic_version-2.6.0.tar.gz")
+sha256sums=('2a4328680073e9b243667b201119772aefc5fc63ae32398d6afafff07c4f54c0')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
