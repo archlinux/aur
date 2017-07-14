@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=libringclient
-pkgver=20170706.4.345fc2b
+pkgver=20170713.2.1ac583e
 pkgrel=1
 epoch=2
 pkgdesc="Client communication library for ring.cx (formerly known as SFLphone)"
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=("ring")
 depends=("ring-daemon" "qt5-base")
 makedepends=('git' 'cmake' 'qt5-tools')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-lrc#commit=b474cc628f6ad8202eff6347c7c775307b3e6d37")
+source=("git+https://gerrit-ring.savoirfairelinux.com/ring-lrc#commit=a57c7e17a654b221e851076678f668c776a62c32")
 md5sums=('SKIP')
 
 build() {
