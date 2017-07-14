@@ -12,7 +12,7 @@
 
 pkgname=('llvm38' 'llvm-libs38' 'llvm-ocaml38' 'lldb38' 'clang38' 'clang-tools-extra38')
 pkgver=3.8.1
-pkgrel=2
+pkgrel=3
 #_ocaml_ver=4.02.3
 _ocaml_ver=4.04.1
 arch=('i686' 'x86_64')
@@ -63,6 +63,9 @@ prepare() {
   # https://llvm.org/bugs/show_bug.cgi?id=23529
   patch -d tools/clang -Np2 <../D17567-PR23529-Sema-part-of-attrbute-abi_tag-support.patch
   patch -d tools/clang -Np0 <../D18035-PR23529-Mangler-part-of-attrbute-abi_tag-support.patch
+
+  # fix some compile errors
+  sed -i 's/#include <cassert>/#include <cassert>\n#include <functional>/' tools/lldb/include/lldb/Utility/TaskPool.h
 
   mkdir build
 }
