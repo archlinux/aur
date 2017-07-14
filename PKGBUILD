@@ -4,7 +4,7 @@
 # Contributor: American_Jesus
 pkgname=palemoon
 pkgver=27.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
@@ -28,6 +28,10 @@ prepare() {
 
 build() {
   cd Pale-Moon
+
+  # gcc5 doesn't understand the -fno-plt flag, strip it out of C{,XX}FLAGS
+  export CFLAGS="${CFLAGS//-fno-plt/}"
+  export CXXFLAGS="${CFLAGS//-fno-plt/}"
 
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZCONFIG="$srcdir/mozconfig"
