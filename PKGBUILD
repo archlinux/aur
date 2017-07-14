@@ -15,7 +15,7 @@ makedepends=('cmake' 'flex' 'bison')
 source=("https://svwh.dl.sourceforge.net/project/openfoamplus/$pkgver/$_dist.tgz"
         all.patch)
 md5sums=('630d30770f7b54d6809efbf94b7d7c8f'
-         'a8d286aa9e0fdeacbadadf7a7d545bed')
+         '70e3dcc738f880e77e9724f33af1692c')
 
 prepare() {
   cd "$srcdir/$_dist"

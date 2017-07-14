@@ -16,6 +16,33 @@ diff -rNu OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/ccm/foamToC
      -lgenericPatchFields \
 -    -lconversion -lccm
 +    -lconversion -lccm -ladf_ccmio
+diff -rNu OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/Optional/Allwmake OpenFOAM-v1706/applications/utilities/mesh/conversion/Optional/Allwmake
+--- OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/Optional/Allwmake	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/applications/utilities/mesh/conversion/Optional/Allwmake	2017-07-13 18:17:45.476286068 -0500
+@@ -20,13 +20,12 @@
+ fi
+ 
+ # Build libccmio (.a|.so) - use static linkage for fewer issues
+-$WM_THIRD_PARTY_DIR/makeCCMIO lib
+ 
+ : ${FOAM_EXT_LIBBIN:=/usr/lib$WM_COMPILER_LIB_ARCH}  # Extra safety
+ export FOAM_EXT_LIBBIN
+ 
+ if [ -e $CCMIO_ARCH_PATH/include/libccmio/ccmio.h \
+-  -a \( -e $CCMIO_ARCH_PATH/lib/libccmio.a -o -e $FOAM_EXT_LIBBIN/libccmio.so \) ]
++  -a \( -e $CCMIO_ARCH_PATH/lib/libccmio.so -o -e $FOAM_EXT_LIBBIN/libccmio.so \) ]
+ then
+     wmake $targetType ccm26ToFoam
+ else
+diff -rNu OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/Optional/ccm26ToFoam/Make/options OpenFOAM-v1706/applications/utilities/mesh/conversion/Optional/ccm26ToFoam/Make/options
+--- OpenFOAM-v1706.orig/applications/utilities/mesh/conversion/Optional/ccm26ToFoam/Make/options	2017-06-30 03:50:14.000000000 -0500
++++ OpenFOAM-v1706/applications/utilities/mesh/conversion/Optional/ccm26ToFoam/Make/options	2017-07-13 16:47:11.308034767 -0500
+@@ -6,4 +6,4 @@
+ EXE_LIBS = \
+     -lfiniteVolume \
+     -lmeshTools \
+-    -L$(CCMIO_ARCH_PATH)/lib -L$(FOAM_EXT_LIBBIN) -lccmio
++    -L$(CCMIO_ARCH_PATH)/lib -L$(FOAM_EXT_LIBBIN) -lccmio -ladf_ccmio
 diff -rNu OpenFOAM-v1706.orig/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H OpenFOAM-v1706/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H
 --- OpenFOAM-v1706.orig/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H	2017-06-30 03:50:14.000000000 -0500
 +++ OpenFOAM-v1706/applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/CGALTriangulation2DKernel.H	2017-07-10 18:12:31.231409489 -0500
