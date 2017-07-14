@@ -24,7 +24,7 @@ provides=('spotify-dl')
 # shellcheck disable=SC2034
 conflicts=('spotify-dl')
 # shellcheck disable=SC2034
-license=('LGPL3')
+license=('GPL3')
 url="https://github.com/invicnaper/spotify-dl"
 
 ##
@@ -32,10 +32,10 @@ url="https://github.com/invicnaper/spotify-dl"
 # pulled from git so skip the verification check
 ##
 # shellcheck disable=SC2034
-sha256sums=('SKIP'
-            '34b8600fd2c39707ab481373e9feee8a7f0acd3ac06cad64966224fe276f44c4')
 # shellcheck disable=SC2034
 source=("${_gitname}::git+${url}#branch=master" "01-change-hashbang.patch")
+sha256sums=('SKIP'
+            '34b8600fd2c39707ab481373e9feee8a7f0acd3ac06cad64966224fe276f44c4')
 
 ###############################################################################
 
