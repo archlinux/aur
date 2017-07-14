@@ -1,21 +1,19 @@
 # Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: kusakata <shohei atmark kusakata period com>
 
-pkgname=freeminer
+pkgbase='freeminer'
+pkgname=("${pkgbase}" "${pkgbase}-server" "${pkgbase}-common")
 pkgver=0.4.14.8
-pkgrel=2
-pkgdesc='An open source sandbox game inspired by Minecraft.'
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
 license=('GPL3' 'CCPL:cc-by-sa-3.0')
 
-depends=(
-	'leveldb' 'curl' 'hiredis' 'sqlite' 'luajit' 'irrlicht'
-	'openal' 'enet' 'jsoncpp' 'libvorbis' 'hicolor-icon-theme' 'freetype2'
+makedepends=(
+	'leveldb' 'curl' 'hiredis' 'sqlite' 'luajit'
+	'irrlicht' 'openal' 'enet' 'jsoncpp' 'libvorbis'
+	'hicolor-icon-theme' 'freetype2' 'cmake' 'msgpack-c' 'clang'
 )
-makedepends=('cmake' 'msgpack-c' 'clang')
-provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}-git")
 
 source=(
 	"https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.zip"
@@ -29,7 +27,7 @@ sha512sums=(
 )
 
 prepare() {
-	cd "${srcdir}"/${pkgname}-${pkgver}
+	cd "${srcdir}"/${pkgbase}-${pkgver}
 
 	# Use Arch's enet lib
 	patch -Np1 < ../enet_shared_lib.patch
@@ -38,24 +36,91 @@ prepare() {
 	patch -Np1 < ../fix_msgpack.patch
 
 	# Create build directory
-	mkdir -p "${srcdir}"/build
+	mkdir -p "${srcdir}"/build-{client,server}
 }
 
 build() {
-	# Building package
-	cd "${srcdir}"/build
-	cmake ../${pkgname}-${pkgver} \
+	# Building client
+	cd "${srcdir}"/build-client
+	cmake ../${pkgbase}-${pkgver} \
 		-DCMAKE_C_COMPILER=clang \
 		-DCMAKE_CXX_COMPILER=clang++ \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_CLIENT=1 \
+		-DBUILD_SERVER=0 \
+		-DRUN_IN_PLACE=0 \
+		-DENABLE_SYSTEM_JSONCPP=1 \
+		-DENABLE_SYSTEM_MSGPACK=1
+	make
+
+	# Building server
+	cd "${srcdir}"/build-server
+	cmake ../${pkgbase}-${pkgver} \
+		-DCMAKE_C_COMPILER=clang \
+		-DCMAKE_CXX_COMPILER=clang++ \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_CLIENT=0 \
+		-DBUILD_SERVER=1 \
 		-DRUN_IN_PLACE=0 \
 		-DENABLE_SYSTEM_JSONCPP=1 \
 		-DENABLE_SYSTEM_MSGPACK=1
 	make
 }
 
-package() {
-	# Installing package
-	cd "${srcdir}"/build
+package_freeminer() {
+	pkgdesc='An open source sandbox game inspired by Minecraft'
+	depends=(
+		"${pkgbase}-common" 'leveldb' 'curl' 'hiredis' 'sqlite'
+		'luajit' 'irrlicht' 'openal' 'enet' 'jsoncpp'
+		'libvorbis' 'hicolor-icon-theme' 'freetype2'
+	)
+	provides=("${pkgbase}=${pkgver}")
+	conflicts=("${pkgbase}-git")
+
+	# Installing client
+	cd "${srcdir}"/build-client
 	make DESTDIR="${pkgdir}" install
+
+	# Translations
+	cp -R locale "${pkgdir}"/usr/share/
+
+	# Provided by freeminer-common
+	rm -fR "${pkgdir}"/usr/share/{${pkgbase},doc}
+
+	# Provided by freeminer-server
+	rm -f "${pkgdir}"/usr/share/man/man6/${pkgbase}server.6
+}
+
+package_freeminer-server() {
+	pkgdesc='Server of an open source sandbox game inspired by Minecraft'
+	depends=(
+		"${pkgbase}-common" 'leveldb' 'curl' 'hiredis' 'sqlite'
+		'luajit' 'enet' 'jsoncpp'
+	)
+	provides=("${pkgbase}-server=${pkgver}")
+	conflicts=("${pkgbase}-server-git")
+
+	# Installing server
+	cd "${srcdir}"/build-server
+	make DESTDIR="${pkgdir}" install
+
+	# Provided by freeminer
+	rm -fR "${pkgdir}"/usr/share/{metainfo,appdata,applications,icons}
+	rm -f "${pkgdir}"/usr/share/man/man6/${pkgbase}.6
+
+	# Provided by freeminer-common
+	rm -fR "${pkgdir}"/usr/share/{${pkgbase},doc}
+}
+
+package_freeminer-common() {
+	pkgdesc="Common data files for ${pkgbase} and ${pkgbase}-server"
+	arch=('any')
+	provides=("${pkgbase}-common=${pkgver}")
+	conflicts=("${pkgbase}-common-git")
+
+	# Install common data files
+	cd "${srcdir}"/${pkgbase}-${pkgver}
+	mkdir -p "${pkgdir}"/usr/share/${pkgbase}/{,doc}
+	cp -R {games,builtin,client,fonts,textures} "${pkgdir}"/usr/share/${pkgbase}/
+	cp doc/*.txt "${pkgdir}"/usr/share/${pkgbase}/doc/
 }
