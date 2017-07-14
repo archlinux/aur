@@ -1,6 +1,4 @@
-# $Id: PKGBUILD 299739 2017-07-06 04:40:31Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-kpatch         # Build kernel with a different name
@@ -27,7 +25,7 @@ sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
             'a112d1330817bac401dbbd1e2c8aacb1b725bc28239e2ca58281ea3754deceb5'
             'SKIP'
-            'd385485a08e5b0669a1888c70dd132c0defccb7be477ecf2010df43886da0b9c'
+            '5a154d6a8b6769ff6bc7fb9140ccfe741395677c1c54471044e764eb172fb5b0'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -61,7 +59,8 @@ prepare() {
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
+  #make localmodconfig # current module configuration
+  make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
@@ -74,7 +73,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make ${MAKEFLAGS} -j8 LOCALVERSION= bzImage modules
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
