@@ -9,9 +9,8 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop' 'wire-desktop-git')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-makedepends=('gendesk' 'grunt-cli' 'npm' 'python2')
-optdepends=('hunspell-en: for English spellcheck support'
-            'cargo: for encryption speed improvements (optional makedep)')
+makedepends=('gendesk' 'grunt-cli' 'npm' 'python2' 'cargo')
+optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")
 sha256sums=('75f64b0bbfaad42d2215e131acc4f5914e618ec99f75f03a86ad00e98bef0924')
