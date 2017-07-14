@@ -1,7 +1,7 @@
 # Maintainer: Leonhard Rose <kolonigulus@gmail.com>
 pkgname=storjshare-daemon
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A CLI Client for running a farming node"
 arch=('any')
@@ -27,6 +27,8 @@ sha256sums=('887f34729db306d61611ff26929c971f1a8bb05f88ab2b0ac1128f4126e04c30')
 package() {
 	cd "$srcdir"
 	npm install --user root -g --prefix "$pkgdir/usr" "v${pkgver}.tar.gz"
+
+	chmod -R o-w "$pkgdir"
 }
 
 
