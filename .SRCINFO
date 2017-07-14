@@ -1,0 +1,14 @@
+pkgbase = republicanywhere-bin
+	pkgdesc = Republic Anywhere desktop client.
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = republicwireless.com
+	arch = x86_64
+	license = EULA
+	depends = libappindicator-gtk2
+	noextract = republicanywhere_1.1.8_amd64.deb
+	source = http://files.republicwireless.com/public/apps/anywhere/debian/pool/main/r/republicanywhere/republicanywhere_1.1.8_amd64.deb
+	sha256sums = d57474f318521a174cc8236e4361de0fa4564ea29b167f37ec3d1ce219b1d481
+
+pkgname = republicanywhere-bin
+

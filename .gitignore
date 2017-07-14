@@ -1,0 +1,6 @@
+*.deb
+*.log.*
+*.tar.gz
+*.xz
+*.log
+*.tar
