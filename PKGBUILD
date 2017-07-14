@@ -2,7 +2,7 @@
 
 pkgname=hogc
 pkgver=0.0.1
-pkgrel=13
+pkgrel=14
 pkgdesc="human detection in C++ and opencv"
 arch=('any')
 url="https://github.com/Chipsterjulien/hogc"
@@ -34,4 +34,4 @@ package() {
       "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('85631e6e5f59e8492283ec8898076a42b92421eff032471f2c89d11a0c83699bcafb1f744d6935cf2d2aafb55876baa414548d38646ad690c0b731a330c672bb')
+sha512sums=('c6672a7c61ccd4f0b0730664862586c5c832190c2e4098fd2d9cfb459cc5fe50521ff9a8353eeb5ab6765c0299cbc8394dfe318ec8ea79f480a6f266cc145bf7')
