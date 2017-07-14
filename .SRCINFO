@@ -22,9 +22,9 @@ pkgbase = neomutt
 	provides = mutt
 	conflicts = mutt
 	source = https://github.com/neomutt/neomutt/archive/neomutt-20170714.tar.gz
-	source = https://github.com/neomutt/neomutt/archive/neomutt-20170714.tar.gz
+	source = https://github.com/neomutt/neomutt/releases/download/neomutt-20170707/neomutt-20170707.tar.gz.sig
 	validpgpkeys = 86C2397270DD7A561263CA4E5FAF0A6EE7371805
-	sha256sums = feaaf7ac230cbf397f028fac5498e38b5d662078083e0cf3329ba04d1bb4b0cd
+	sha256sums = 40d48920f95ca49ab96eb109b658f5cf6e1c222320c58bdd03769c1355d7a383
 	sha256sums = SKIP
 
 pkgname = neomutt
