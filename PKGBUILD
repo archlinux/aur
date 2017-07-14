@@ -1,7 +1,7 @@
 # Maintainer: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=zxing-cpp-git
-pkgver=r35.5ce91bb
+pkgver=r55.6b3cbe0
 pkgrel=1
 pkgdesc="A command-line tool to decode QRCode"
 arch=('any')
@@ -22,7 +22,8 @@ build() {
   mkdir build
   cd build
   cmake -G "Unix Makefiles" \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_CXX_FLAGS=-fPIC \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     ..
   make
