@@ -1,0 +1,13 @@
+pkgbase = webp-thumbnailer
+	pkgdesc = Creates a thumbnail for the webp.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/gabrielmoura/webp-thumbnailer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = webp-thumbnailer-master.tar.gz::https://github.com/gabrielmoura/webp-thumbnailer/archive/master.tar.gz
+	sha512sums = 752ba1753d17de00b79329830d3443528afefe167e2282becdde17049c2a4f0f3998821c936959ec537c0077d357bf6a419b489407719f48eb234bffbfa71190
+
+pkgname = webp-thumbnailer
+
