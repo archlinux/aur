@@ -2,15 +2,16 @@
 
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-eigen
-pkgver=3.2.0
-_basever=3.2.0-r0.15
-pkgrel=2
+pkgver=3.2.6
+_basever=3.2.6-r0.5
+_year=2017
+pkgrel=1
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra (${_target})"
 arch=('any')
 url='http://eigen.tuxfamily.org'
 license=('GPL3' 'LGPL2.1' 'BSD' 'custom:MPL2' 'custom:MINPACK')
-source=("http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libeigen-dev_${_basever}_cortexa9-vfpv3.ipk")
-sha1sums=('f20621d4b872bbb1ced012e7c27eb701991cd4aa')
+source=("http://download.ni.com/ni-linux-rt/feeds/${_year}/arm/ipk/cortexa9-vfpv3/libeigen-dev_${_basever}_cortexa9-vfpv3.ipk")
+sha1sums=('c5e475aaaa540f39e4a0cce350bb04351512952e')
 
 package() {
   cd "${srcdir}"
