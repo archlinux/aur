@@ -1,0 +1,15 @@
+pkgbase = lib32-freetds
+	pkgdesc = Library for accessing Sybase and MS SQL Server databases (32-bit)
+	pkgver = 1.00.44
+	pkgrel = 1
+	url = http://www.freetds.org
+	arch = x86_64
+	license = LGPL
+	depends = lib32-openssl
+	depends = lib32-unixodbc
+	depends = freetds
+	source = ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.44.tar.bz2
+	sha256sums = 7fb252f84651816abb1663ce4c5b4b8ae077e8f1e30bde43be4eb776182764b5
+
+pkgname = lib32-freetds
+
