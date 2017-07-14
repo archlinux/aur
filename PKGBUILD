@@ -8,7 +8,7 @@ pkgname=spotify-dl-git
 # shellcheck disable=SC2034
 pkgdesc="Script that allows you to download Spotify songs or playlists"
 # shellcheck disable=SC2034
-pkgver=r8.0fad56e
+pkgver=r9.97bdc5c
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -71,7 +71,7 @@ package() {
 
   # shellcheck disable=SC2154
   install -Dm 755 "spotify-dl.py" "${pkgdir}/usr/bin/${_gitname}"
-  install -Dm 644 "LGPLv3.txt" "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
+  install -Dm 644 "GPLv3.txt" "${pkgdir}/usr/share/doc/${_gitname}/LICENSE"
   install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${_gitname}/README"
 }
 
