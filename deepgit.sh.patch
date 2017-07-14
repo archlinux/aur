@@ -1,0 +1,87 @@
+--- deepgit.orig/bin/deepgit.sh	2017-07-14 08:40:36.915613668 +0200
++++ deepgit.new/bin/deepgit.sh	2017-07-14 09:13:07.743455655 +0200
+@@ -45,57 +45,33 @@
+         ;;
+ esac
+ 
+-# Resolve the location of the DeepGit installation.
+-# This includes resolving any symlinks.
+-PRG=$0
+-while [ -h "$PRG" ]; do
+-  ls=`ls -ld "$PRG"`
+-  link=`expr "$ls" : '^.*-> \(.*\)$' 2>/dev/null`
+-  if expr "$link" : '^/' 2> /dev/null >/dev/null; then
+-    PRG="$link"
+-  else
+-    PRG="`dirname "$PRG"`/$link"
+-  fi
+-done
+-
+-DEEPGIT_BIN=`dirname "$PRG"`
+-
+-# Absolutize dir
+-oldpwd=`pwd`
+-cd "${DEEPGIT_BIN}";
+-DEEPGIT_BIN=`pwd`
+-cd "${oldpwd}";
+-unset oldpwd
++DEEPGIT_HOME=/usr/share/java/deepgit-preview
+ 
+-DEEPGIT_HOME=`dirname "$DEEPGIT_BIN"`
+-
+-parseVmOptions $DEEPGIT_BIN/deepgit.vmoptions
++parseVmOptions /etc/deepgit-preview/deepgit.vmoptions
+ parseVmOptions ~/.deepgit/deepgit.vmoptions
+ 
+ # Determine Java Runtime
+ if [ "$DEEPGIT_JAVA_HOME" = "" ] ; then
+ 	DEEPGIT_JAVA_HOME=$DEEPGITHG_JAVA_HOME
+ fi
+-if [ "$DEEPGIT_JAVA_HOME" = "" ] && [ -f "/usr/lib/jvm/java-7-openjdk-i386/jre/bin/java" ] ; then
+-	DEEPGIT_JAVA_HOME="/usr/lib/jvm/java-7-openjdk-i386/jre"
+-fi
+ if [ "$DEEPGIT_JAVA_HOME" = "" ] ; then
+-	DEEPGIT_JAVA_HOME=$JAVA_HOME
++	_JAVA_EXEC=/usr/bin/java
++else
++  _JAVA_EXEC="java"
++  if [ "$DEEPGIT_JAVA_HOME" != "" ] ; then
++      _TMP="$DEEPGIT_JAVA_HOME/bin/java"
++      if [ -f "$_TMP" ] ; then
++          if [ -x "$_TMP" ] ; then
++              _JAVA_EXEC="$_TMP"
++          else
++              echo "Warning: $_TMP is not executable"
++          fi
++      else
++          echo "Warning: $_TMP does not exist"
++      fi
++  fi  
+ fi
+ 
+-_JAVA_EXEC="java"
+-if [ "$DEEPGIT_JAVA_HOME" != "" ] ; then
+-    _TMP="$DEEPGIT_JAVA_HOME/bin/java"
+-    if [ -f "$_TMP" ] ; then
+-        if [ -x "$_TMP" ] ; then
+-            _JAVA_EXEC="$_TMP"
+-        else
+-            echo "Warning: $_TMP is not executable"
+-        fi
+-    else
+-        echo "Warning: $_TMP does not exist"
+-    fi
+-fi
+ 
+ if ! which "$_JAVA_EXEC" >/dev/null 2>&1 ; then
+     echo "Error: No java environment found (JRE 1.7 or higher required)."
+@@ -109,9 +85,6 @@
+     echoJreConfigurationAndExit
+ fi
+ 
+-# this seems necessary for Solaris to find the Cairo-library
+-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/gnome-private/lib
+-
+ if type "lsb_release" > /dev/null 2> /dev/null ; then
+     if [ "$XDG_CURRENT_DESKTOP" == "Unity" ] ; then
+         # work-around for https://bugs.eclipse.org/bugs/show_bug.cgi?id=419729

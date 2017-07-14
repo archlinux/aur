@@ -1,0 +1,20 @@
+pkgbase = deepgit-preview
+	pkgdesc = A tool to investigate the history of source code. This is preview software intended to provide you with an opportunity to test-drive new builds of the next DeepGit release.
+	pkgver = 3.preview.1
+	pkgrel = 1
+	url = http://www.syntevo.com/deepgit/preview
+	arch = any
+	license = custom
+	depends = java-environment>=8
+	depends = hicolor-icon-theme
+	depends = bash
+	conflicts = deepgit
+	source = http://www.syntevo.com/static/smart/download/deepgit/deepgit-linux-3-preview-1.tar.gz
+	source = deepgit.desktop
+	source = deepgit.sh.patch
+	sha1sums = a2fd88b334e3ac50305b4bba68efd3c786b1fc10
+	sha1sums = 8ab2e36b3cb2e6f7b5af70a4ddbe2e9d307d3988
+	sha1sums = 01b2845c29b507d011ac251625a746b7bd03b11f
+
+pkgname = deepgit-preview
+
