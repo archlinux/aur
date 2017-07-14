@@ -1,6 +1,6 @@
-diff -ru FreeDoko-orig/Makefile FreeDoko/Makefile
---- FreeDoko-orig/Makefile	2017-06-13 10:46:43.240013128 +0200
-+++ FreeDoko/Makefile	2017-06-13 10:51:15.007148812 +0200
+diff -ru --no-dereference FreeDoko-orig/Makefile FreeDoko/Makefile
+--- FreeDoko-orig/Makefile	2017-07-13 16:49:07.085302628 +0200
++++ FreeDoko/Makefile	2017-07-13 16:51:38.287585354 +0200
 @@ -78,8 +78,12 @@
  .PHONY: compile
  compile:
@@ -10,13 +10,13 @@ diff -ru FreeDoko-orig/Makefile FreeDoko/Makefile
 +	$(MAKE) \
 +	  "USE_UI_TEXT=false" \
 +	  "USE_UI_GTKMM=true" \
-+	  "USE_NETWORK=true" \
-+	  "CPPFLAGS+= -DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"'" \
-+	  -C src/ $(PROGRAM)
++	  "USE_NETWORK=false" \
++	  "CPPFLAGS+= -DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' -DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
++	  -C src $(PROGRAM)
  	@echo "---"
  	@echo "* Program 'FreeDoko' created"
  
-@@ -280,22 +284,11 @@
+@@ -281,22 +285,11 @@
  ifeq ($(OPERATING_SYSTEM), Linux)
  .PHONY: install
  install :
@@ -24,9 +24,9 @@ diff -ru FreeDoko-orig/Makefile FreeDoko/Makefile
 -	  --always-make \
 -	  "USE_UI_TEXT=false" \
 -	  "USE_UI_GTKMM=true" \
--	  "USE_NETWORK=true" \
+-	  "USE_NETWORK=false" \
 -	  "CXXFLAGS=-Wall -Werror -Wno-parentheses -pipe -Os -std=c++14" \
--	  "CPPFLAGS=-DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"'" \
+-	  "CPPFLAGS=-DRELEASE -DVERSION_DESCRIPTION='\"$(OPERATING_SYSTEM_NAME) binary\"' -DPUBLIC_DATA_DIRECTORY_VALUE='\"$(DATA_DIRECTORY)\"' -DMANUAL_DIRECTORY_VALUE='\"$(HELP_DIRECTORY)/manual\"' -DLOCALE_DIRECTORY='\"$(LOCALE_DIRECTORY)\"'" \
 -	  -C src \
 -	  $(PROGRAM)
 -	$(MAKE) -C src strip
@@ -40,7 +40,7 @@ diff -ru FreeDoko-orig/Makefile FreeDoko/Makefile
  	cd $(DESTDIR)$(BIN_DIRECTORY) && ln -sf FreeDoko freedoko
  #	Copying the data files
  	echo "Copying the data files"
-@@ -312,15 +305,13 @@
+@@ -315,15 +308,13 @@
  	a2x -f manpage doc/freedoko.asciidoc
  	mkdir -p $(DESTDIR)$(MAN_DIRECTORY)
  	cp doc/freedoko.6 $(DESTDIR)$(MAN_DIRECTORY)/
@@ -58,10 +58,10 @@ diff -ru FreeDoko-orig/Makefile FreeDoko/Makefile
  
  .PHONY: uninstall
  uninstall :
-diff -ru FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
---- FreeDoko-orig/Makefile.install.directories	2017-06-13 10:46:43.240013128 +0200
-+++ FreeDoko/Makefile.install.directories	2017-06-13 10:52:04.639959037 +0200
-@@ -4,13 +4,13 @@
+diff -ru --no-dereference FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.directories
+--- FreeDoko-orig/Makefile.install.directories	2017-07-13 16:49:07.085302628 +0200
++++ FreeDoko/Makefile.install.directories	2017-07-13 16:50:26.458118481 +0200
+@@ -4,14 +4,14 @@
  # the different directories for the files
  
  # installing in /usr/local
@@ -71,6 +71,7 @@ diff -ru FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.di
 -HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/FreeDoko
 -MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
 -ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
+-LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 -DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
 +#MAIN_DIRECTORY         = /usr/local
 +#BIN_DIRECTORY          = $(MAIN_DIRECTORY)/games
@@ -78,11 +79,12 @@ diff -ru FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.di
 +#HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/FreeDoko
 +#MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
 +#ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
++#LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 +#DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
  
  # debian
  #MAIN_DIRECTORY         = /usr
-@@ -49,13 +49,13 @@
+@@ -54,14 +54,14 @@
  #DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
  
  # Arch Linux
@@ -92,6 +94,7 @@ diff -ru FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.di
 -#HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/freedoko
 -#MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
 -#ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
+-#LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 -#DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
 +MAIN_DIRECTORY         = /usr
 +BIN_DIRECTORY          = $(MAIN_DIRECTORY)/bin
@@ -99,13 +102,14 @@ diff -ru FreeDoko-orig/Makefile.install.directories FreeDoko/Makefile.install.di
 +HELP_DIRECTORY         = $(MAIN_DIRECTORY)/share/doc/freedoko
 +MAN_DIRECTORY          = $(MAIN_DIRECTORY)/share/man/man6
 +ICON_DIRECTORY         = $(MAIN_DIRECTORY)/share/pixmaps
++LOCALE_DIRECTORY       = $(MAIN_DIRECTORY)/share/locale
 +DESKTOP_FILE_DIRECTORY = $(MAIN_DIRECTORY)/share/applications
  
  
  # release
-diff -ru FreeDoko-orig/bin/FreeDoko.desktop FreeDoko/bin/FreeDoko.desktop
---- FreeDoko-orig/bin/FreeDoko.desktop	2017-06-13 10:46:43.240013128 +0200
-+++ FreeDoko/bin/FreeDoko.desktop	2017-06-13 10:52:24.906412104 +0200
+diff -ru --no-dereference FreeDoko-orig/bin/FreeDoko.desktop FreeDoko/bin/FreeDoko.desktop
+--- FreeDoko-orig/bin/FreeDoko.desktop	2017-07-13 16:49:07.085302628 +0200
++++ FreeDoko/bin/FreeDoko.desktop	2017-07-13 16:49:19.431888615 +0200
 @@ -6,7 +6,7 @@
  Comment=game of Doppelkopf
  Comment[de]=Doppelkopf-Spiel
@@ -115,10 +119,10 @@ diff -ru FreeDoko-orig/bin/FreeDoko.desktop FreeDoko/bin/FreeDoko.desktop
  Path=
  Icon=FreeDoko
  Categories=Application;Game;CardGame;
-diff -ru FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
---- FreeDoko-orig/data/Makefile	2017-06-13 10:46:43.870006488 +0200
-+++ FreeDoko/data/Makefile	2017-06-13 10:52:51.502798457 +0200
-@@ -40,8 +40,7 @@
+diff -ru --no-dereference FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
+--- FreeDoko-orig/data/Makefile	2017-07-13 16:49:07.781964743 +0200
++++ FreeDoko/data/Makefile	2017-07-13 16:49:49.281693559 +0200
+@@ -32,8 +32,7 @@
  	for d in cardsets iconsets backgrounds sounds; do \
  	  $(MAKE) -C $$d install; \
  	done
@@ -128,9 +132,9 @@ diff -ru FreeDoko-orig/data/Makefile FreeDoko/data/Makefile
  endif
  
  ifeq ($(SHELLTYPE), sh)
-diff -ru FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
---- FreeDoko-orig/doc/Makefile	2017-06-13 10:46:44.733330723 +0200
-+++ FreeDoko/doc/Makefile	2017-06-13 10:53:14.319224649 +0200
+diff -ru --no-dereference FreeDoko-orig/doc/Makefile FreeDoko/doc/Makefile
+--- FreeDoko-orig/doc/Makefile	2017-07-13 16:49:08.661958992 +0200
++++ FreeDoko/doc/Makefile	2017-07-13 16:50:05.354921861 +0200
 @@ -34,8 +34,7 @@
  	fi
  	cp -a Bugs GPL Roadmap hpux.required_libs-ia64.txt $(DESTDIR)$(HELP_DIRECTORY)/

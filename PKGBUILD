@@ -2,20 +2,21 @@
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko-git
-pkgver=0.7.16.r190.gb44d3e1d
+pkgver=0.7.16.r224.gd9be3801
 pkgrel=1
 pkgdesc="Free version of the german card game Doppelkopf - git version"
 arch=('i686' 'x86_64')
 url="http://free-doko.sourceforge.net/en/FreeDoko.html"
 license=('GPL')
-depends=('gtkmm3' 'gnet' 'freealut')
+#depends=('gtkmm3' 'gnet' 'freealut')
+depends=('gtkmm3' 'freealut') # network currently disabled upstream
 makedepends=('git' 'asciidoc' 'texlive-latexextra' 'w3m' 'dos2unix')
 conflicts=('freedoko')
 provides=('freedoko')
 source=("git+https://gitlab.com/dknof/FreeDoko.git"
         "freedoko-git-archlinux.patch")
 sha256sums=('SKIP'
-            '70019b53b80ff01d666259c0d995a27a5bcca23d433337a887a6e9e7e6ce2df3')
+            'be7c58874cfcf882a7a56dafc1b77ecd1cc37b038572608ba61182f42431bed7')
 
 pkgver() {
   cd FreeDoko
