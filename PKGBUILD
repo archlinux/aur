@@ -4,7 +4,7 @@
 
 pkgname=lib32-tcl
 pkgver=8.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc='The Tcl scripting language'
 arch=('x86_64')
 url='http://tcl.sourceforge.net/'
