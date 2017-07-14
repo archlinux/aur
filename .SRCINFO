@@ -1,31 +1,27 @@
 pkgbase = freeminer-git
-	pkgdesc = An open source sandbox game inspired by Minecraft. Development version.
-	pkgver = 0.4.14.8.769.ge9e73d7
+	pkgver = 0.4.14.8.897.gb72980e7c
 	pkgrel = 2
 	url = http://freeminer.org/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = CCPL:cc-by-sa-3.0
+	makedepends = leveldb
+	makedepends = curl
+	makedepends = hiredis
+	makedepends = sqlite
+	makedepends = luajit
+	makedepends = irrlicht
+	makedepends = openal
+	makedepends = enet
+	makedepends = jsoncpp
+	makedepends = libvorbis
+	makedepends = hicolor-icon-theme
+	makedepends = freetype2
 	makedepends = cmake
-	makedepends = git
 	makedepends = msgpack-c
 	makedepends = clang
-	depends = leveldb
-	depends = curl
-	depends = hiredis
-	depends = sqlite
-	depends = luajit
-	depends = xdg-utils
-	depends = irrlicht
-	depends = openal
-	depends = enet
-	depends = jsoncpp
-	depends = libvorbis
-	depends = hicolor-icon-theme
-	depends = freetype2
-	provides = freeminer=0.4.14.8.769.ge9e73d7
-	conflicts = freeminer
+	makedepends = git
 	source = git+https://github.com/freeminer/freeminer.git
 	source = git+https://github.com/freeminer/default.git
 	source = git+https://github.com/kaadmy/pixture.git
@@ -36,4 +32,39 @@ pkgbase = freeminer-git
 	sha512sums = 8bdd0226cce1a8773feb840f90c392481d5486ef2bca5b144c1626df33a0bda861d93ccfb451eb5013aa42ab6fe2b029f44c02e9b85b32ed80a6668985deeb62
 
 pkgname = freeminer-git
+	pkgdesc = An open source sandbox game inspired by Minecraft
+	depends = freeminer-common-git
+	depends = leveldb
+	depends = curl
+	depends = hiredis
+	depends = sqlite
+	depends = luajit
+	depends = irrlicht
+	depends = openal
+	depends = enet
+	depends = jsoncpp
+	depends = libvorbis
+	depends = hicolor-icon-theme
+	depends = freetype2
+	provides = freeminer=0.4.14.8.897.gb72980e7c
+	conflicts = freeminer
+
+pkgname = freeminer-server-git
+	pkgdesc = Server of an open source sandbox game inspired by Minecraft
+	depends = freeminer-common-git
+	depends = leveldb
+	depends = curl
+	depends = hiredis
+	depends = sqlite
+	depends = luajit
+	depends = enet
+	depends = jsoncpp
+	provides = freeminer-server=0.4.14.8.897.gb72980e7c
+	conflicts = freeminer-server
+
+pkgname = freeminer-common-git
+	pkgdesc = Common data files for freeminer-git and freeminer-server-git
+	arch = any
+	provides = freeminer-common=0.4.14.8.897.gb72980e7c
+	conflicts = freeminer-common
 
