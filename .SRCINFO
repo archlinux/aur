@@ -1,0 +1,17 @@
+pkgbase = lib32-double-conversion
+	pkgdesc = Binary-decimal and decimal-binary routines for IEEE doubles
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/google/double-conversion
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = lib32-gcc-libs
+	depends = double-conversion
+	source = double-conversion-2.0.1.tar.gz::https://github.com/google/double-conversion/archive/v2.0.1.tar.gz
+	source = double-conversion-shared-lib.patch
+	sha1sums = a590b4e9e1509bcf48da79a9c0571cfe218920f4
+	sha1sums = 54abeec2090908c7ed229986826e8cce400edd1b
+
+pkgname = lib32-double-conversion
+
