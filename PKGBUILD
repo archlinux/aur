@@ -11,9 +11,9 @@ license=('MIT')
 depends=('python')
 optdepends=()
 checkdepends=('python-dash')
-makedepends=('git' 'python-setuptools')
-source=("https://pypi.python.org/packages/cf/05/a33843c06643a492ae593f98cdcaaa5674ec4ad5025e53c0ff2918d60840/dash_html_components-$pkgver.tar.gz")
-sha256sums=('SKIP')
+makedepends=('python-setuptools')
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('9c8be2773d878cd4bdeb71a4918c77578bb19aff6198447eb1aa9640e855be73')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
