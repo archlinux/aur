@@ -1,0 +1,86 @@
+From 73a6d28417871bd5b7535e88a50a3ce60fa1ecfc Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Wed, 5 Jul 2017 14:15:18 +0200
+Subject: [PATCH 1/1] linux 4.12
+---
+ src/VBox/Additions/linux/drm/vbox_ttm.c           |  6 ++++++
+ src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c | 19 +++++++++++++++++++
+ src/VBox/Runtime/r0drv/linux/the-linux-kernel.h   |  5 +++++
+ 3 files changed, 30 insertions(+)
+
+diff --git a/src/VBox/Additions/linux/drm/vbox_ttm.c b/src/VBox/Additions/linux/drm/vbox_ttm.c
+index 57dd087..83f8122 100644
+--- a/src/VBox/Additions/linux/drm/vbox_ttm.c
++++ b/src/VBox/Additions/linux/drm/vbox_ttm.c
+@@ -275,11 +275,17 @@ struct ttm_bo_driver vbox_bo_driver = {
+     .ttm_tt_populate = vbox_ttm_tt_populate,
+     .ttm_tt_unpopulate = vbox_ttm_tt_unpopulate,
+     .init_mem_type = vbox_bo_init_mem_type,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 10, 0)
++    .eviction_valuable = ttm_bo_eviction_valuable,
++#endif
+     .evict_flags = vbox_bo_evict_flags,
+     .move = vbox_bo_move,
+     .verify_access = vbox_bo_verify_access,
+     .io_mem_reserve = &vbox_ttm_io_mem_reserve,
+     .io_mem_free = &vbox_ttm_io_mem_free,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++    .io_mem_pfn = ttm_bo_default_io_mem_pfn,
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 7, 0) && LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+     .lru_tail = &ttm_bo_default_lru_tail,
+     .swap_lru_tail = &ttm_bo_default_swap_lru_tail,
+diff --git a/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c b/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+index 4bc2a9b..0f74ada 100644
+--- a/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
++++ b/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+@@ -902,6 +902,9 @@ static struct page *rtR0MemObjLinuxVirtToPage(void *pv)
+     union
+     {
+         pgd_t       Global;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++        p4d_t       Four;
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 11)
+         pud_t       Upper;
+ #endif
+@@ -919,7 +922,23 @@ static struct page *rtR0MemObjLinuxVirtToPage(void *pv)
+         return NULL;
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 11)
++# if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++    u.Four  = *p4d_offset(&u.Global, ulAddr);
++    if (RT_UNLIKELY(p4d_none(u.Four)))
++        return NULL;
++    if (p4d_large(u.Four))
++    {
++        pPage = p4d_page(u.Four);
++        AssertReturn(pPage, NULL);
++        pfn   = page_to_pfn(pPage);      /* doing the safe way... */
++        AssertCompile(P4D_SHIFT - PAGE_SHIFT < 31);
++        pfn  += (ulAddr >> PAGE_SHIFT) & ((UINT32_C(1) << (P4D_SHIFT - PAGE_SHIFT)) - 1);
++        return pfn_to_page(pfn);
++    }
++    u.Upper = *pud_offset(&u.Four, ulAddr);
++# else /* < 4.12 */
+     u.Upper = *pud_offset(&u.Global, ulAddr);
++# endif /* < 4.12 */
+     if (RT_UNLIKELY(pud_none(u.Upper)))
+         return NULL;
+ # if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+diff --git a/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h b/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+index 5a7ccb2..3a17bd1 100644
+--- a/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
++++ b/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+@@ -159,6 +159,11 @@
+ # include <asm/tlbflush.h>
+ #endif
+ 
++/* for set_pages_x() */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++# include <asm/set_memory.h>
++#endif
++
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 7, 0)
+ # include <asm/smap.h>
+ #else

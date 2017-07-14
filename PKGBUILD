@@ -11,7 +11,7 @@ pkgname=('virtualbox-i3'
          'virtualbox-i3-guest-utils-nox'
          'virtualbox-i3-ext-vnc')
 pkgver=5.1.22
-pkgrel=2
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL' 'custom')
@@ -53,8 +53,8 @@ makedepends=('alsa-lib'
              'xorg-server-devel')
 makedepends_x86_64=('gcc-multilib' 'lib32-glibc')
 source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}.tar.bz2"
-        'virtualbox-i3-host-dkms.conf'
-        'virtualbox-i3-guest-dkms.conf'
+        'virtualbox-host-dkms.conf'
+        'virtualbox-guest-dkms.conf'
         'virtualbox.sysusers'
         'virtualbox-guest-utils.sysusers'
         '60-vboxdrv.rules'
@@ -70,7 +70,9 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         '006-rdesktop-vrdp-keymap-path.patch'
         '007-python2-path.patch'
         '008-no-vboxvideo.patch'
-        '009-i3wm.patch'
+        '009-gcc-7.patch'
+        '010-linux-4.12.patch'
+        '011-i3wm.patch'
         )
 sha256sums=('fcc918000b8c5ece553541ec10a9182410a742b7266257c76dda895dcd389899'
             'deb03efa7ad0376aa55a087f2e882afe00935f10b0e7aa853ba9147090d341ec'
@@ -90,6 +92,8 @@ sha256sums=('fcc918000b8c5ece553541ec10a9182410a742b7266257c76dda895dcd389899'
             '5d5af2de5b1f1c61ec793503350f2440661cf8fd640f11b8a86f10bce499c0dc'
             '6bdb017459532537199c399eefd3d84d8dc7f1786e79997caebd3b6eb5c75d9f'
             '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
+            '0f5cb04362be022bba71295867aac9eaddf9ece0d3ce82c083d70829564ec8d2'
+            'e606144f6629070b6aefddf93c44173cd87bc2fa0a7c3512e6296a805705b90b'
             '24d33c00da2d79ce578b5a35e816d11f9e61c5317fe4415fc08a2cbcd5f1c001')
 
 prepare() {
@@ -275,12 +279,12 @@ package_virtualbox-i3-host-dkms() {
     install -Dm644 "$srcdir/VirtualBox-$pkgver/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # module loading
-    local _p="$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+    local _p="$pkgdir/usr/lib/modules-load.d/virtualbox-host-dkms.conf"
     install -Dm644 /dev/null "$_p"
     printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" > "$_p"
     # starting vbox 5.1, dkms.conf file was dropped
     local _p="$pkgdir/usr/src/vboxhost-${pkgver}_OSE/dkms.conf"
-    install -Dm644 "$srcdir/$pkgname.conf" "$_p"
+    install -Dm644 "$srcdir/virtualbox-host-dkms.conf" "$_p"
     sed -i "s,@VERSION@,$pkgver," "$_p"
 }
 
@@ -305,12 +309,12 @@ package_virtualbox-i3-guest-dkms() {
     install -Dm644 "$srcdir/VirtualBox-$pkgver/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # module loading
-    local _p="$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+    local _p="$pkgdir/usr/lib/modules-load.d/virtualbox-guest-dkms.conf"
     install -Dm644 /dev/null "$_p"
     printf "vboxguest\nvboxsf\nvboxvideo\n" > "$_p"
     # starting vbox 5.1, dkms.conf file was dropped
     local _p="$pkgdir/usr/src/vboxguest-${pkgver}_OSE/dkms.conf"
-    install -Dm644 "$srcdir/$pkgname.conf" "$_p"
+    install -Dm644 "$srcdir/virtualbox-guest-dkms.conf" "$_p"
     sed -i "s,@VERSION@,$pkgver," "$_p"
 }
 
