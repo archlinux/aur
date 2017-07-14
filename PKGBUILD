@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=hotspot-git
-pkgver=r259.ddcce26
+pkgver=r289.ec0cf00
 pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/build-hotspot"
-	cmake "-DCMAKE_INSTALL_PREFIX=$pkgdir/usr" "$srcdir/${pkgname%-git}"
+	env CC=gcc CXX=g++ cmake "-DCMAKE_INSTALL_PREFIX=$pkgdir/usr" "$srcdir/${pkgname%-git}"
 	make
 }
 
