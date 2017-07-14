@@ -3,7 +3,7 @@
 pkgname=('rdma-core')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='13'
+pkgver='14'
 _tag="v${pkgver}"
 pkgrel='1'
 arch=('x86_64')
@@ -21,7 +21,7 @@ replaces=("${_provides[@]:1}")
 
 source=("${_srcname}::git+${url}.git#tag=${_tag}")
 sha512sums=('SKIP')
-validpgpkeys=('AE6B1BDA122B23B4265B1274B826A3330E572FDD')
+validpgpkeys=('921AFFAF83A9D7FD38CAA681E4637B88367258A7')
 
 _validate_tag() {
   local success fingerprint trusted status
@@ -72,10 +72,10 @@ build() {
         -DENABLE_VALGRIND=0 \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_INSTALL_SBINDIR='bin' \
-        -DCMAKE_INSTALL_LIBDIR='lib' \
-        -DCMAKE_INSTALL_LIBEXECDIR='lib/rdma' \
-        -DCMAKE_INSTALL_SYSCONFDIR='/etc' \
+        -DCMAKE_INSTALL_SBINDIR:PATH='/usr/bin' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib' \
+        -DCMAKE_INSTALL_LIBEXECDIR:PATH='/usr/lib/rdma' \
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
         ..
     ninja
 }
@@ -104,7 +104,6 @@ package() {
     install -D --mode=0644 rdma.fixup-mtrr.awk "${pkgdir}/usr/lib/rdma/rdma-fixup-mtrr.awk"
     install -D --mode=0755 rdma.mlx4-setup.sh "${pkgdir}/usr/lib/rdma/mlx4-setup.sh"
     install -D --mode=0644 ibacm.service "${pkgdir}/usr/lib/systemd/system/ibacm.service"
-    install -D --mode=0644 srp_daemon.service "${pkgdir}/usr/lib/systemd/system/srp_daemon.service"
 
     cd "${srcdir}/${_srcname}"
     install -D --mode=0644 COPYING.BSD_MIT "${pkgdir}/usr/share/licenses/${pkgname[0]%-git}/COPYING.BSD_MIT"

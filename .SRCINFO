@@ -1,6 +1,6 @@
 pkgbase = rdma-core
 	pkgdesc = RDMA core userspace libraries and daemons
-	pkgver = 13
+	pkgver = 14
 	pkgrel = 1
 	url = https://github.com/linux-rdma/rdma-core
 	arch = x86_64
@@ -63,8 +63,8 @@ pkgbase = rdma-core
 	replaces = libnes
 	replaces = libocrdma
 	replaces = srptools
-	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git#tag=v13
-	validpgpkeys = AE6B1BDA122B23B4265B1274B826A3330E572FDD
+	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git#tag=v14
+	validpgpkeys = 921AFFAF83A9D7FD38CAA681E4637B88367258A7
 	sha512sums = SKIP
 
 pkgname = rdma-core
