@@ -6,6 +6,7 @@ pkgbase = lineageos-devel
 	arch = x86_64
 	license = None
 	depends = aosp-devel
+	depends = ninja
 	depends = xml2
 	depends = lzop
 	depends = pngcrush

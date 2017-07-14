@@ -6,6 +6,6 @@ pkgdesc='Metapackage to pull all dependencies required to build LineageOS'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Android#Building_Android'
 license=('None')
-depends=('aosp-devel' 'xml2' 'lzop' 'pngcrush' 'imagemagick')
+depends=('aosp-devel' 'ninja' 'xml2' 'lzop' 'pngcrush' 'imagemagick')
 optdepends=('maven' 'gradle')
 
