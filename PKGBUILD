@@ -2,8 +2,8 @@
 # Contributor: Andreas Hübner <andhu@gmx.de>
 
 pkgname=unicode
-pkgver=2.4
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 pkgdesc='Display unicode character properties on the command line'
 url='https://github.com/garabik/unicode'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 source=("https://github.com/garabik/${pkgname}/archive/v${pkgver}.tar.gz"
         'http://www.unicode.org/Public/UNIDATA/UnicodeData.txt'
         'http://www.unicode.org/Public/UNIDATA/Blocks.txt')
-sha256sums=('0e3dbf8ae9b136e1799d3ed59628d2908cd89cf4ee8f3a8277d5cffc6e12e8e4'
+sha256sums=('e2dc3c85b2848ad0463f88f24501cb614207ef94e8e015850b918d879250fd8c'
             '52423e4d7492167b62f518f68d54db88930abbbff7f11edfcaec8f726498cab1'
             '5ae1649a42ed8ae8cb885af79563f00a9ae17e602405a56ed8aca214da14eea7')
 
