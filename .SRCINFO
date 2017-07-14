@@ -1,6 +1,6 @@
 pkgbase = rdma-core-git
 	pkgdesc = RDMA core userspace libraries and daemons
-	pkgver = r1
+	pkgver = r3435
 	pkgrel = 1
 	url = https://github.com/linux-rdma/rdma-core
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgname=('rdma-core-git')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='r1'
+pkgver='r3435'
 pkgrel='1'
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
