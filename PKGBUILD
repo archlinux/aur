@@ -47,9 +47,6 @@ pkgver() {
 }
 
 prepare() {
-# move _pyver inside preapre to allow build in clean chroot which is missing python package
-
-  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive
@@ -61,6 +58,7 @@ build() {
   mkdir -p "$srcdir/blender-build"
   cd "$srcdir/blender-build"
   
+  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
   cmake "$srcdir/blender" \
