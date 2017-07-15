@@ -21,7 +21,6 @@ pkgbase = wire-desktop-git
 	provides = wire-desktop
 	conflicts = wire-desktop-bin
 	conflicts = wire-desktop
-	options = !strip
 	source = git://github.com/wireapp/wire-desktop.git
 	sha256sums = SKIP
 

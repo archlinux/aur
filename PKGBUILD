@@ -14,7 +14,6 @@ optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git")
 sha256sums=('SKIP')
-options=('!strip')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
