@@ -2,7 +2,7 @@
 
 pkgname='power.sh'
 pkgver='5'
-pkgrel=1
+pkgrel=2
 pkgdesc='tiny automated power settings'
 license=('CC0')
 source=('power.sh' 'power.sh.rules' 'power.sh.service' 'power.sh.sleep.service')
@@ -17,5 +17,7 @@ package() {
 	install -Dm755 "${srcdir}/power.sh" "${pkgdir}/usr/share/power.sh"
 	install -Dm644 "${srcdir}/power.sh.rules" "${pkgdir}/usr/lib/udev/rules.d/power.sh.rules"
 	install -Dm644 "${srcdir}/power.sh.service" "${pkgdir}/usr/lib/systemd/system/power.sh.service"
-	install -Dm644 "${srcdir}/power.sh.sleep.service" "${pkgdir}/usr/lib/systemd/system/sleep.target.wants/power.sh.sleep.service"
+	install -Dm644 "${srcdir}/power.sh.sleep.service" "${pkgdir}/usr/lib/systemd/system/power.sh.sleep.service"
+	mkdir "${pkgdir}/usr/lib/systemd/system/sleep.target.wants"
+	ln -s "/usr/lib/systemd/system/power.sh.sleep.service" "${pkgdir}/usr/lib/systemd/system/sleep.target.wants/power.sh.sleep.service"
 }

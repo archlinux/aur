@@ -1,7 +1,7 @@
 pkgbase = power.sh
 	pkgdesc = tiny automated power settings
 	pkgver = 5
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = CC0
 	depends = systemd
