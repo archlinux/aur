@@ -1,0 +1,9 @@
+post_remove() {
+	rm -f /usr/share/alilang/*.p12
+	rm -f /usr/share/alilang/*.pem
+	rm -f /var/alilang/alilang.db
+	rm -f /etc/NetworkManager/system-connections/ALI-alibaba-inc
+	rm -rf /var/alilang
+	rm -rf /usr/share/alilang
+	rm -f /var/opt/alilang.ini
+}
