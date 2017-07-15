@@ -6,7 +6,7 @@
 
 pkgname=deluge-git
 pkgver=2.0.0.dev983.g0353b82c0
-pkgrel=3
+pkgrel=4
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
 url='http://deluge-torrent.org/'
@@ -37,7 +37,7 @@ source=("$pkgname"::'git://deluge-torrent.org/deluge.git#branch=develop'        
         'deluge-web.service')
 sha256sums=('SKIP'
             '58a451bb6cf4fe6ff78a4fb71d51c5910340a2de032ff435c3c7365015ab538f'
-            'c3f2d6ad5bc9de5ffd9973d92badbe04a9ecf12c0c575e13d505a96add03275a')
+            '26e4d01003804afb197c570175d44ed4dddd443cc1b88ab2d0230ceacfac90c5')
 
 prepare() {
     cd "${pkgname}/deluge/ui/data/icons"
@@ -68,8 +68,8 @@ package() {
     install -D -m644 "${srcdir}/deluged.service"    "${pkgdir}/usr/lib/systemd/system/deluged.service"
     install -D -m644 "${srcdir}/deluge-web.service" "${pkgdir}/usr/lib/systemd/system/deluge-web.service"
     
-    install -d       "${pkgdir}/srv"
-    install -d -m664 "${pkgdir}/srv/deluge"
+    install -d                   "${pkgdir}/srv"
+    install -d -m775 -o125 -g125 "${pkgdir}/srv/deluge"
     
     install -D -m644 'deluge/ui/data/pixmaps/deluge.svg' "${pkgdir}/usr/share/pixmaps/deluge.svg"
 }
