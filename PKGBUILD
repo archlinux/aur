@@ -1,6 +1,7 @@
-# Contributor: Giovanni Harting <539 at idlegandalf dot com>
+# Maintainer: Giovanni Harting <539 at idlegandalf dot com>
+
 pkgname=perl-net-ftpssl
-pkgver=0.35
+pkgver=0.38
 pkgrel=1
 pkgdesc='NET::FTPSSL perl module.'
 _dist=Net-FTPSSL
@@ -10,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=(perl perl-net-ssleay perl-io-socket-ssl)
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/C/CL/CLEACH/$_dist-$pkgver.tar.gz")
-sha256sums=('cab8ca7b7d954849d0bf9e26ee84ff2995cc69154c27a9d936be0cdeb7d70228')
+sha256sums=('3220483144d1acfdef0722081d478863b4afcc63b49555d59b6dc3245ae93cd6')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
