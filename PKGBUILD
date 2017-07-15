@@ -6,14 +6,11 @@
 
 pkgname=deluge-git
 pkgver=2.0.0.dev983.g0353b82c0
-pkgrel=1
+pkgrel=2
 pkgdesc="A bittorrent client written with python and pygtk (git version, 'develop' branch)"
 arch=('any')
-url="http://deluge-torrent.org/"
+url='http://deluge-torrent.org/'
 license=('GPL3')
-provides=('deluge')
-conflicts=('deluge' 'deluge-stable-git')
-install='deluge.install'
 depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'libtorrent-rasterbar'
         'python2-service-identity' 'python2-chardet' 'python2-pyopenssl'
@@ -31,8 +28,11 @@ optdepends=('python2-pillow'
             'python2-mako: needed for web ui'
             'python2-notify: libnotify notifications'
             'geoip: display peer locations')
-source=("$pkgname"::"git://deluge-torrent.org/deluge.git#branch=develop" # official repository
-        #"$pkgname"::"git+https://github.com/deluge-torrent/deluge.git#branch=develop" # mirror
+provides=('deluge')
+conflicts=('deluge' 'deluge-stable-git')
+install='deluge.install'
+source=("$pkgname"::'git://deluge-torrent.org/deluge.git#branch=develop'               # official repository
+        #"$pkgname"::'git+https://github.com/deluge-torrent/deluge.git#branch=develop' # mirror
         'deluged.service'
         'deluge-web.service')
 sha256sums=('SKIP'
@@ -49,7 +49,7 @@ pkgver() {
     
     local _internalver="$(python2 version.py)"
     local _shorthash="$(git rev-parse --short HEAD)"
-    printf "%s.g%s" "$_internalver" "$_shorthash"
+    printf '%s.g%s' "$_internalver" "$_shorthash"
     
     # alternative
     #git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^deluge\.//;s/dev[[:digit:]]*\.//'
@@ -63,11 +63,13 @@ build() {
 
 package() {
     cd "$pkgname"
-    python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-
-    install -d     "${pkgdir}/srv"
-    install -dm664 "${pkgdir}/srv/deluge"
-    install -Dm644 "deluge/ui/data/pixmaps/deluge.svg" "${pkgdir}/usr/share/pixmaps/deluge.svg"
-    install -Dm644 "${srcdir}/deluged.service"         "${pkgdir}/usr/lib/systemd/system/deluged.service"
-    install -Dm644 "${srcdir}/deluge-web.service"      "${pkgdir}/usr/lib/systemd/system/deluge-web.service"
+    python2 setup.py install --prefix='/usr' --root="$pkgdir" --optimize='1'
+    
+    install -D -m644 "${srcdir}/deluged.service"    "${pkgdir}/usr/lib/systemd/system/deluged.service"
+    install -D -m644 "${srcdir}/deluge-web.service" "${pkgdir}/usr/lib/systemd/system/deluge-web.service"
+    
+    install -d       "${pkgdir}/srv"
+    install -d -m664 "${pkgdir}/srv/deluge"
+    
+    install -D -m644 'deluge/ui/data/pixmaps/deluge.svg' "${pkgdir}/usr/share/pixmaps/deluge.svg"
 }
