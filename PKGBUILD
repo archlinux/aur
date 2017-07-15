@@ -4,7 +4,7 @@
 pkgname=firefox-wayland-git
 _pkgname=firefox
 pkgver=ea5f69b51549
-pkgrel=5
+pkgrel=6
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -65,7 +65,7 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
   cat >.mozconfig <<END
-. $topsrcdir/browser/config/mozconfig
+. \$topsrcdir/browser/config/mozconfig
 
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 
