@@ -1,0 +1,19 @@
+pkgbase = archmaker
+	pkgdesc = Quickly and easily create your own arch-based GNU/Linux-distribution
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://archmaker.guidedlinux.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = vte
+	depends = gtk3
+	depends = gtkmm3
+	depends = archiso
+	provides = archmaker
+	conflicts = archmaker
+	source = archmaker-0.0.1::git+https://github.com/guidedlinux/archmaker#branch=master
+	md5sums = SKIP
+
+pkgname = archmaker
+
