@@ -4,14 +4,18 @@
 
 pkgname=mpd-sima
 pkgver=0.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
 url="http://kaliko.me/code/mpd-sima/"
 license=('GPL')
 depends=('python>=3.2' 'python-musicpd>=0.4.0' 'python-requests>=2.2.0')
 makedepends=('python-setuptools')
-source=("http://media.kaliko.me/src/sima/releases/MPD_sima-$pkgver.tar.xz" "mpd-sima@.service")
+source=("http://media.kaliko.me/src/sima/releases/MPD_sima-$pkgver.tar.xz" "service")
+
+prepare() {
+  sed 's/multi-user.target/default.target/;/User=%i/d' service > user.service
+}
 
 package() {
 
@@ -20,9 +24,11 @@ package() {
     /usr/bin/env python setup.py install --prefix=/usr --root="$pkgdir" || return 1
 
     # Install systemd service
-    install -D -m644 "${srcdir}/mpd-sima@.service" \
-      "${pkgdir}/usr/lib/systemd/system/mpd-sima@.service"
+	install -Dm644 "${srcdir}"/service \
+	    "${pkgdir}"/usr/lib/systemd/system/mpdsima@.service
+	install -Dm644 "${srcdir}"/user.service \
+	    "${pkgdir}"/usr/lib/systemd/user/mpdsima.service
 }
 
-md5sums=('c8a21d4845a59bd7b1472e87a1c6780a'
-         '04e80db177aa9b0a2ea6da0d8fa99201')
+sha256sums=('2e14fdbf9e5346eb5fd88c2db57f2634fca5efefbd9c01865ef842736e95caa8'
+            'bf039031f697f612aa19dececc5615e24a818af2da193b2bcabf209d21b24266')
