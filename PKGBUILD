@@ -2,11 +2,12 @@
 
 pkgname=abricotine
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor with inline preview"
 arch=('i686' 'x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
+depends=('gconf')
 makedepends=('npm')
 source=("https://github.com/brrd/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop")
@@ -16,7 +17,7 @@ sha256sums=('6e84be88c8b4d791024d45ba6310374d7dd50a5a36f8dd472d62c50412a2f899'
 build() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
 
-  npm install --cache ../cache
+  npm install --cache ../cache --devdir="${srcdir}/devdir"
   npm run packager
 }
 
