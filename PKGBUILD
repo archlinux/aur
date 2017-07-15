@@ -25,6 +25,7 @@ url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
 license=("GPL")
+depends=("spl-utils-common-git" "kmod" "linux-hardened=4.12.1.b-1")
 
 build() {
     cd "${srcdir}/spl"
@@ -38,7 +39,6 @@ build() {
 
 package_spl-linux-hardened-git() {
     pkgdesc="Solaris Porting Layer kernel modules."
-    depends=("spl-utils-common-git" "kmod" "linux-hardened=4.12.1.b-1")
     install=spl.install
     provides=("spl")
     groups=("archzfs-linux-hardened-git")
