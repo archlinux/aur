@@ -2,7 +2,7 @@
 # Contributor: Andras Czigany <andras dot czigany dot 'thirteen with digits' at gmail dot com>
 
 pkgname=qtcreator-cppcheck-plugin-git
-pkgver=r83.dff7bcd
+pkgver=r99.dee404f
 pkgrel=1
 pkgdesc="QtCreator plugin using cppcheck"
 groups=('qt' 'qt5')
@@ -13,22 +13,14 @@ depends=('qtcreator' 'cppcheck')
 provides=('qtcreator-cppcheck-plugin')
 conflicts=('qtcreator-cppcheck-plugin')
 makedepends=('git' 'qtcreator-src')
-source=("$pkgname"::git+https://github.com/OneMoreGres/qtc-cppcheck.git
-        'binary_default.patch')
-sha256sums=('SKIP'
-            'e417e53be8f58a8107008129253c20d9426f54d718ae3b07cbd64cc20ecfe9e5')
+source=("$pkgname"::git+https://github.com/OneMoreGres/qtc-cppcheck.git)
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
 
     # use the revision count.hash
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-
-    git am --signoff < ../binary_default.patch
 }
 
 build() {
