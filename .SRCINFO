@@ -1,6 +1,6 @@
 pkgbase = python-importanize
 	pkgdesc = Utility for organizing Python imports using PEP8 or custom rules
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/importanize/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-importanize
 	makedepends = python2
 	makedepends = python-pathlib2
 	makedepends = python2-pathlib2
-	source = https://pypi.io/packages/source/i/importanize/importanize-0.5.2.tar.gz
-	md5sums = 93d0212941f9cd734a088742ec1122a0
+	source = https://pypi.io/packages/source/i/importanize/importanize-0.5.3.tar.gz
+	md5sums = 950e0aeb191df70533b1fac240cdbb76
 
 pkgname = python-importanize
 	pkgdesc = Python 3 client for importanize
