@@ -1,7 +1,7 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=mons
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='POSIX Shell script to quickly manage 2-monitors display.'
 arch=('any')
