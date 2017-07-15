@@ -22,4 +22,7 @@ package() {
 	# Translation.xml: Bad naming for the /etc directory,
 	# moving this to /usr/share/XMLTreeEdit to be optionally used
 	mv "${pkgdir}/etc/Translation.xml" "${pkgdir}/usr/share/XMLTreeEdit/Translation.xml"
+
+	# The file is executable for some reason
+	chmod a-x "${pkgdir}/usr/share/XMLTreeEdit/Translation.xml"
 }
