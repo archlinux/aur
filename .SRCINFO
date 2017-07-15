@@ -22,7 +22,6 @@ pkgbase = wire-desktop-beta
 	conflicts = wire-desktop-bin
 	conflicts = wire-desktop
 	conflicts = wire-desktop-git
-	options = !strip
 	source = 2.15.2750.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/2.15.2750.tar.gz
 	sha256sums = c1f7a667b29400006fc5b39d6ac82ac621677e28c708b5c033238ae4e9271244
 
