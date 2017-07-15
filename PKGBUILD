@@ -6,7 +6,7 @@
 
 pkgname=deluge-git
 pkgver=2.0.0.dev983.g0353b82c0
-pkgrel=4
+pkgrel=5
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
 url='http://deluge-torrent.org/'
@@ -39,26 +39,17 @@ sha256sums=('SKIP'
             '58a451bb6cf4fe6ff78a4fb71d51c5910340a2de032ff435c3c7365015ab538f'
             '26e4d01003804afb197c570175d44ed4dddd443cc1b88ab2d0230ceacfac90c5')
 
-prepare() {
-    cd "${pkgname}/deluge/ui/data/icons"
-    ln -sf hicolor/scalable scalable
-}
-
 pkgver() {
     cd "$pkgname"
-    
     local _internalver="$(python2 version.py)"
     local _shorthash="$(git rev-parse --short HEAD)"
-    printf '%s.g%s' "$_internalver" "$_shorthash"
     
-    # alternative
-    #git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^deluge\.//;s/dev[[:digit:]]*\.//'
+    printf '%s.g%s' "$_internalver" "$_shorthash"
 }
 
 build() {
     cd "$pkgname"
     python2 setup.py build
-    python2 minify_web_js.py deluge/ui/web/js/deluge-all
 }
 
 package() {
@@ -70,6 +61,4 @@ package() {
     
     install -d                   "${pkgdir}/srv"
     install -d -m775 -o125 -g125 "${pkgdir}/srv/deluge"
-    
-    install -D -m644 'deluge/ui/data/pixmaps/deluge.svg' "${pkgdir}/usr/share/pixmaps/deluge.svg"
 }
