@@ -5,31 +5,32 @@
 
 _pkgname=xmlm
 pkgname=ocaml-${_pkgname}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="OCaml xml manipulation module"
+pkgdesc="An OCaml streaming codec to decode and encode the XML data format"
 arch=('i686' 'x86_64')
 url="http://erratique.ch/software/xmlm/"
-license=('BSD')
+license=('ISC')
 depends=('ocaml')
-makedepends=('opam')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg' 'opam')
 options=('!strip' 'staticlibs')
-source=(http://erratique.ch/software/${_pkgname}/releases/${_pkgname}-${pkgver}.tbz)
-md5sums=('7e6d3363c2395d84274f1b480e4b6003')
+source=("http://erratique.ch/software/${_pkgname}/releases/${_pkgname}-${pkgver}.tbz")
+md5sums=('d63ce15d913975211196b5079e86a797')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  pkg/build true
+  ocaml pkg/pkg.ml build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  opam-installer --prefix=$pkgdir/usr \
-    --libdir=$pkgdir$(ocamlc -where) \
-    --docdir=$pkgdir/usr/share/doc
+  opam-installer "--prefix=${pkgdir}/usr" \
+    "--libdir=${pkgdir}$(ocamlc -where)" \
+    "--docdir=${pkgdir}/usr/share/doc"
+
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  mv "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE.md" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
-
-# vim:set ts=2 sw=2 et:
-
