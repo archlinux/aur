@@ -25,7 +25,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=5.0.0svn_r308054
+pkgver=5.0.0svn_r308070
 
 pkgver() {
   cd "$pkgname"
@@ -237,6 +237,7 @@ build() {
 	-DCMAKE_CXX_COMPILER="/usr/bin/clang++" \
 	-DCMAKE_RANLIB="/usr/bin/llvm-ranlib" \
 	-DCMAKE_AR="/usr/bin/llvm-ar" \
+	-DPOLLY_ENABLE_GPGPU_CODEGEN:BOOL=ON \
         "../${_pkgname}"
 
     #ninja
