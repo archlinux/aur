@@ -175,7 +175,7 @@ package() {
   install -dm755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
   install -Dm644 "$_pkgname-gravity.timer" "$pkgdir/usr/lib/systemd/system/$_pkgname-gravity.timer"
   install -Dm644 "$_pkgname-gravity.service" $pkgdir/usr/lib/systemd/system/$_pkgname-gravity.service
-  ln -s $_pkgname-gravity.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-gravity.timer"
+  ln -s ../$_pkgname-gravity.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_pkgname-gravity.timer"
 
   install -dm755 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/usr/share/pihole/configs
