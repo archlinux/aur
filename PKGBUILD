@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 
 pkgname=liggghts
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software"
 arch=('any')
