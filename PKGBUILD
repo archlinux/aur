@@ -4,7 +4,7 @@
 pkgname=poseidon
 pkgver=0.6.7
 _pkgver=0.6.7-1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, minimal and lightweight web browser"
 arch=('x86_64' 'i686')
 url="https://github.com/sidus-dev/poseidon"
@@ -24,7 +24,7 @@ prepare() {
 	sed -i 's|lib_path = "lib"|lib_path = "/usr/lib/poseidon"|' include/settings.py
 	sed -i 's|cd "$(dirname "$0")"|cd "/usr/share/poseidon/"|' poseidon
 	sed -i 's|Exec=/opt/poseidon-browser-git/poseidon %U|Exec=poseidon %U|
-		s|/opt/poseidon-browser-git/|/usr/share/poseidon/|' poseidon.desktop
+		s|/opt/poseidon-browser-git|/usr/share/poseidon|' poseidon.desktop
 }
 
 build() {
