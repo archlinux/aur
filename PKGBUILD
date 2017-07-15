@@ -1,4 +1,4 @@
-# Contributor: Tilman Blumenbach <tilman [AT] ax86 [DOT] net>
+# Maintainer: Tilman Blumenbach <tilman [AT] ax86 [DOT] net>
 
 pkgname='terminus-font-ttf'
 pkgver=4.46.0
