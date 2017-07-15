@@ -6,8 +6,8 @@
 
 pkgname=deluge-git
 pkgver=2.0.0.dev983.g0353b82c0
-pkgrel=2
-pkgdesc="A bittorrent client written with python and pygtk (git version, 'develop' branch)"
+pkgrel=3
+pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
 url='http://deluge-torrent.org/'
 license=('GPL3')
