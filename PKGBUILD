@@ -37,7 +37,6 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DENABLE_LTO='TRUE' \
     -DENABLE_QT2='TRUE' \
     -DUSE_SHARED_ENET='TRUE' \
     -DDISTRIBUTOR='aur.archlinux.org'
