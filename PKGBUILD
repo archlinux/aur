@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=lsp-plugins-lxvst-bin
-pkgver=1.0.24
+pkgver=1.0.26
 pkgrel=1
 pkgdesc="Linux Studio Plugins: VST format"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source_i686=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-i586.tar.gz")
 source_x86_64=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-x86_64.tar.gz")
-sha1sums_i686=('8bd2c581b7390e04cb0e4424e6444912025f56c7')
-sha1sums_x86_64=('b21daf21426f3231114beb1e2f937aac4100316d')
+sha1sums_i686=('0337106ae8f43e36c29c687f7492f145c01d0fd3')
+sha1sums_x86_64=('c127dc9c34a25ead2b904d0fe2a898adde81b18f')
 
 package() {
 	cd $srcdir
