@@ -2,11 +2,11 @@
 
 pkgname='handbrake-gtk2'
 pkgver=0.9.9
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://handbrake.fr/"
 license=('GPL')
-pkgdesc="Multithreaded video transcoder"
+pkgdesc="Multithreaded video transcoder (Unmaintaned - use handbrake or ffmpeg instead)"
 depends=('bzip2' 'gcc-libs' 'gst-plugins-base' 'libnotify' 'dbus-glib' 'libgudev'
 		 'fribidi' 'libass' 'lame' 'gtk2' 'fontconfig' 'freetype2' 'libxml2'
 		 'libogg' 'libvorbis' 'libtheora' 'libsamplerate' 'libbluray'
@@ -25,6 +25,8 @@ sha256sums=('a71dd774104cda00cfb51a813550351d638253791f2f419d04a66f3158a835b3')
 
 prepare() {
 	cd "$srcdir/HandBrake-$pkgver"
+
+	echo $CFLAGS
 
 	# Force use of gtk2
 	sed -i 's/PKG_CHECK_MODULES(Gtk3.*/use_gtk3=no/' gtk/configure.ac
@@ -55,6 +57,9 @@ prepare() {
 }
 
 build() {
+	# Workaround for build error in mp4v2
+	export CFLAGS="$CFLAGS -fpermissive"
+
 	cd "$srcdir/HandBrake-$pkgver"
 
 	./configure \
