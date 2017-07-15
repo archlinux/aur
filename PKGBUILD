@@ -8,7 +8,7 @@
 # Contributor: Andrew Mcclain <tananod@mega.zik.dj>
 
 pkgname=midori-bzr
-pkgver=r7164
+pkgver=r7165
 pkgrel=1
 pkgdesc='Lightweight web browser based on WebKit and GTK3 (development version)'
 arch=('x86_64' 'i686')
