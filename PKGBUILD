@@ -1,8 +1,8 @@
 # Maintainer: Sebba <sebba at cock dot li>
 pkgname=transmission-remote-gui-bin
 _pkgname=transgui
-pkgver=5.8
-_pkgver=5.8.0
+pkgver=5.8.1
+_pkgver=5.8.1
 pkgrel=1
 pkgdesc="Cross platform remote GUI for the Transmission daemon"
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=(transmission-remote-gui)
 conflicts=(transmission-remote-gui-gtk2 transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui)
 source=(https://github.com/leonsoft-kras/transmisson-remote-gui/releases/download/v$_pkgver/$_pkgname-$pkgver-$arch-linux.zip
         ${_pkgname}.desktop)
-md5sums=('0b43fe90daba63443426b0d7a32880a9'
+md5sums=('40c887b531a60cbc55f8ff73234c0eac'
          'c8d5f3b951261ef8568291007f976a0a')
 
 package() {
@@ -23,7 +23,7 @@ package() {
   install -D -m 644 lang/transgui.* ${pkgdir}/usr/share/${_pkgname}/lang
   rm ${pkgdir}/usr/share/${_pkgname}/lang/transgui.template
   install -d -m 755 ${pkgdir}/usr/share/doc/${_pkgname}
-  install -D -m 644 readme.txt history.txt LICENSE.txt ${pkgdir}/usr/share/doc/${_pkgname}
+  install -D -m 644 README.md history.txt LICENSE.txt ${pkgdir}/usr/share/doc/${_pkgname}
   install -D -m 644 ${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
   install -D -m 644 ${srcdir}/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 }
