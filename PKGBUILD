@@ -6,7 +6,7 @@ pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
-depends=('python' 'python-pexpect' 'python-psutil' 'python-pyqt5' 'python-distorm' 'gdb')
+depends=('python' 'python-pexpect' 'python-psutil' 'python-pyqt5' 'python-distorm' 'gdb' 'sudo')
 makedepends=()
 source=("$pkgname::git+https://github.com/korcankaraokcu/PINCE.git")
 md5sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
     sed -i 's/\.\/gdb_pince\/gdb-7\.11\.1\/bin\/gdb/\/usr\/bin\/gdb/g' libPINCE/type_defs.py
-    sed -i 's/\ssudo python3 PINCE.py/cd \/usr\/share\/PINCE \&\& python PINCE.py/' PINCE.sh
+    sed -i 's/\ssudo python3 PINCE.py/cd \/usr\/share\/PINCE \&\& sudo python PINCE.py/' PINCE.sh
     sed -i 's/OS=.*/OS="Arch"/' PINCE.sh
     install -d "$pkgdir/usr/bin"
     install PINCE.sh "$pkgdir/usr/bin/pince"
