@@ -1,62 +1,72 @@
 # Maintainer: Michael Moroni <michael DOT moroni AT openmailbox DOT org >
+# Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
-# Contributor: di72nn <di72nn @ gmail.com>
-# Contributor: Det <nimetonmaili @ gmail.com>
-# Contributor: coderoar <coderoar @ gmail.com>
-# Contributor: kang <kang @ mozilla.com>
-# Contributor: John Reese <jreese @ noswap.com>
 
 _name=firefox
 _channel=nightly
 _lang=it
-pkgname="${_name}-${_channel}-${_lang}"
-pkgdesc='Standalone web browser from mozilla.org, nightly build - Italian language'
-url='http://www.mozilla.org/projects/firefox'
-pkgver=56.0a1.
+pkgname=${_name}-${_channel}-${_lang}
+pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
+url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=56.0a1
+pkgver=56.0a1.20170613
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_file="${_name}-${_version}.${_lang}.linux"
-_fileus="${_name}-${_version}.en-US.linux"
-_srcurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central"
-_srcurll10n="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n"
-source=(
-  'firefox-nightly.desktop' 'firefox-nightly-safe.desktop' 'vendor.js'
-  "${_srcurll10n}/${_file}-${CARCH}.tar.bz2" "${_srcurl}/${_fileus}-${CARCH}.txt"
-  "${_srcurll10n}/${_file}-${CARCH}.checksums"{,.asc})
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+optdepends=('pulseaudio: audio support'
+            'ffmpeg: h.264 video'
+            'gtk2: flash plugin support'
+            'hunspell: spell checking'
+            'hyphen: hyphenation'
+            'libnotify: notification integration'
+            'networkmanager: location detection via available WiFi networks'
+            'speech-dispatcher: text-to-speech'
+            'startup-notification: support for FreeDesktop Startup Notification')
+_url="https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n"
+_urlUS="https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central"
+_src="${_name}-${_version}.${_lang}.linux"
+_srcUS="${_name}-${_version}.en-US.linux"
+source=("${pkgname}.desktop" 'vendor.js')
+source_i686=("${_url}/${_src}-i686.tar.bz2"{,.asc} "${_urlUS}/${_srcUS}-i686.txt")
+source_x86_64=("${_url}/${_src}-x86_64.tar.bz2"{,.asc} "${_urlUS}/${_srcUS}-x86_64.txt")
 sha512sums=(
-  '2d8feaf128775efbab958e2614613cd45a7a172a3c687b6af054d61eabd3592cf1dd1c85ca92bff82834f43eb7ebedeb4f8c2fe6f116b6a22eb14a7ff98a1f25'
-  '88510ea986776bb8ed9fc8c1217728f8cf0f8b3a8aa4dbc07608e7b2803cd13dcb6809363208fd9531ccee5a9ba2cee39af498a1279d3e1268511982ecb559ec'
-  'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
-
-prepare() {
-  grep -e "${_file}-${CARCH}.tar.bz2" -e "${_file}-${CARCH}.txt" "${srcdir}/${_file}-${CARCH}.checksums" \
-    | grep " sha512 " | cut -d " " -f1,4 > "${srcdir}/checksums"
-
-
-  sha512sum -c --strict "${srcdir}/checksums"
-}
+    'b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
+    'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
+)
+sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
+sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 pkgver() {
-  echo "${_version}.$(head -n1 "${srcdir}/${_file}-${CARCH}.txt" | cut -c-8)"
+  echo "${_version}.$(head -n1 ${_srcUS}-${CARCH}.txt | cut -c-8)"
 }
 
 package() {
-  #  uncomment this line to remove these
-  #  rm -rf firefox/{extensions,plugins,searchplugins}
-  install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
-  cp -r firefox "${pkgdir}/opt/firefox-${_version}"
+  OPT_PATH="opt/${pkgname}"
 
-  ln -s /opt/firefox-${_version}/firefox "${pkgdir}/usr/bin/firefox-nightly"
-  install -m644 "${srcdir}"/{firefox-nightly.desktop,firefox-nightly-safe.desktop} "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/firefox/browser/icons/mozicon128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-icon.png"
-  install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/opt/firefox-${_version}/browser/defaults/preferences/vendor.js"
+  # Install the package files
+  install -d "${pkgdir}"/{usr/bin,opt}
+  cp -r ${_name} "${pkgdir}"/${OPT_PATH}
+  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${pkgname}
+
+  # Install .desktop files
+  install -Dm644 "${srcdir}"/${pkgname}.desktop -t "${pkgdir}"/usr/share/applications
+
+  # Install icons
+  SRC_LOC="${srcdir}"/${_name}/browser
+  DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
+  for i in 16 32 48
+  do
+      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
+  done
+  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${pkgname}.png
+
+  # Disable auto-updates
+  install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
+
+  # Use system-provided dictionaries
+  rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
+  ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
 }
-
