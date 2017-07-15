@@ -1,8 +1,9 @@
 pkgbase = wt-cli
 	pkgdesc = Webtask Command Line Interface
 	pkgver = 6.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/auth0/wt-cli
+	install = wt-cli.install
 	arch = any
 	license = MIT
 	depends = nodejs

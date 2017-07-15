@@ -1,0 +1,11 @@
+function post_install () {
+    cat <<'EOM'
+The pacman package 'wiredtiger', a dependency of 'mongodb', uses `wt` for its
+binary, making `wt-cli` conflict in its unaltered form.  for this reason, the
+binary of this package is called `webtask`.  It's recommended that you add the
+following aliases to your shell's rc file:
+
+alias wiredtiger=env wt
+alias wt=webtask
+EOM
+}
