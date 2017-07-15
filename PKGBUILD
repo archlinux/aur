@@ -1,6 +1,6 @@
 # Maintainer: Rob Lynn <rob22uk at gmail dot com>
 
-pkgname=stremio-3
+pkgname=stremio-legacy
 pkgver=3.6.5
 pkgrel=1
 pkgdesc="Watch instantly all the video content you enjoy in one place."
