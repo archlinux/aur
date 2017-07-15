@@ -2,7 +2,7 @@
 # Former maintainer: Florian Schweikert <kelvan at ist-total.org>
 pkgname=qpid-proton
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proton is a high-performance, lightweight messaging library"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://qpid.apache.org/releases/"
@@ -40,8 +40,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/qpid-proton-${pkgver}/build"
+	cd "${srcdir}/qpid-proton-${pkgver}/build"
 
-  make DESTDIR="${pkgdir}/" install
+	make DESTDIR="${pkgdir}/" install
 }
 
