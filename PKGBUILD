@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=upterm
-pkgver=0.2.158
-pkgrel=2
+pkgver=0.2.159
+pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
 url='https://github.com/railsware/upterm'
@@ -12,7 +12,7 @@ makedepends=('apm' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'upterm.desktop'
         'upterm.js')
-sha256sums=('805975c7bfcfd838649358f4bc87858a6489895940fa5ba1abcf9288e5db91fc'
+sha256sums=('f9a3f66a71c39d1d635f682a31e130425344bd6ba8718fa6ca4f35a6f6ae3b82'
             '2d55728dcd4f0b25195474d8676f8994c266f24e8e928ddbb9ff86959c3ac96f'
             '5522f5f78c0686d5e419661f4264e2d2f5f0856582f1494010e457c150f67910')
 
