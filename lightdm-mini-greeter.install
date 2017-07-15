@@ -4,7 +4,6 @@ post_install() {
     echo "==>"
     echo "==>  /etc/lightdm/lightdm.conf"
     echo "==>    greeter-session = lightdm-mini-greeter"
-    echo "==>    user-session = gnome     # Or anything from /usr/share/xsessions"
     echo "==>"
     echo "==>  /etc/lightdm/lightdm-mini-greeter.conf"
     echo "==>    user = <your_username>"
