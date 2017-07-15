@@ -1,12 +1,11 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=papirus-filezilla-themes-git
 pkgver=20170310
-pkgrel=1
+pkgrel=2
 pkgdesc="Papirus theme for Filezilla (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
-license=('GPL')
+license=('LGPL3')
 depends=('filezilla')
 makedepends=('git')
 conflicts=('papirus-filezilla-theme' 'filezilla-papirus-theme' 'filezilla-papirus-theme-git')
