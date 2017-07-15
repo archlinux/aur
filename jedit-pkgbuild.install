@@ -1,0 +1,12 @@
+post_install() {
+	ln -s /usr/share/java/jedit/modes/catalog /usr/share/jedit-pkgbuild/catalog.xml
+
+	xmlstarlet sel -Q -t -c //MODE[@FILE_NAME_GLOB=\"PKGBUILD\"] /usr/share/jedit-pkgbuild/catalog.xml && xmlstarlet ed -L -d //MODE[@FILE_NAME_GLOB=\"PKGBUILD\"] /usr/share/jedit-pkgbuild/catalog.xml
+	xmlstarlet ed -L -s /MODES -t elem -n MODE -i //MODE[last\(\)] -t attr -n NAME -v PKGBUILD -i //MODE[last\(\)] -t attr -n FILE -v pkgbuild.xml -i //MODE[last\(\)] -t attr -n FILE_NAME_GLOB -v PKGBUILD /usr/share/jedit-pkgbuild/catalog.xml
+}
+
+pre_remove() {
+	xmlstarlet ed -L -d //MODE[@FILE_NAME_GLOB=\"PKGBUILD\"] /usr/share/jedit-pkgbuild/catalog.xml
+
+	rm /usr/share/jedit-pkgbuild/catalog.xml
+}
