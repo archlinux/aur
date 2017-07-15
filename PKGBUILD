@@ -1,7 +1,7 @@
 # Maintainer: Yosef Langer (vasilevich1234 dot gmail dot ...)
 
 pkgname=nginxbeautifier
-pkgver=Stable
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Nginx config formatter and beautifier.'
 arch=('any')
