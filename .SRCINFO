@@ -1,0 +1,13 @@
+pkgbase = xmltreeedit-bin
+	pkgdesc = Basic cross-platform tree view XML editor
+	pkgver = 0.1.0.30
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xmltreeeditor/
+	install = xmltreeedit-bin.install
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = gtk-engine-murrine
+
+pkgname = xmltreeedit-bin
+

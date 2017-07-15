@@ -1,0 +1,7 @@
+post_install(){
+	echo "INFO: Binary is named 'XMLTreeEdit' (caps)"
+}
+
+post_upgrade(){
+    post_install
+}
