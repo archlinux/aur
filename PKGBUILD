@@ -4,7 +4,7 @@
 pkgname=firefox-wayland-git
 _pkgname=firefox
 pkgver=ea5f69b51549
-pkgrel=4
+pkgrel=5
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -25,7 +25,7 @@ source=('git+https://github.com/stransky/gecko-dev.git'
         firefox.desktop firefox-symbolic.svg
         firefox-install-dir.patch no-crmf.diff fix-wifi-scanner.diff)
 sha256sums=('SKIP'
-            'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
+            '75c526e9669b91b4fe5dcea650a1e8419220abb2e9564184f0d984c71eae82e8'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'fb85a538044c15471c12cf561d6aa74570f8de7b054a7063ef88ee1bdfc1ccbb'
