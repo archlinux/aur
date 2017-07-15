@@ -3,7 +3,7 @@
 # Contributor: TuxSpirit <tuxspirit AT archlinux DOT fr>
 
 pkgname=rar-beta
-pkgver=5.4.b3
+pkgver=5.5.b5
 pkgrel=1
 pkgdesc="A command-line port of the rar compression utility (beta 
 version)"
@@ -30,7 +30,7 @@ package() {
     cd "$srcdir/rar"
     install -Dm755 rar                  "${pkgdir}/usr/bin/rar"
     install -Dm755 unrar                "${pkgdir}/usr/bin/unrar"
-    install -Dm755 rar_static           "${pkgdir}/usr/bin/rar_static"
+#    install -Dm755 rar_static           "${pkgdir}/usr/bin/rar_static"
     install -Dm755 default.sfx          "${pkgdir}/usr/lib/default.sfx"
     install -Dm644 license.txt          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 rarfiles.lst         "${pkgdir}/etc/rarfiles.lst"
