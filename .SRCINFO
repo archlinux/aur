@@ -1,0 +1,16 @@
+pkgbase = python-autograd
+	pkgdesc = Efficiently computes derivatives of numpy code
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = https://github.com/HIPS/autograd
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	source = https://pypi.org/packages/source/a/autograd/autograd-1.1.11.tar.gz
+	sha256sums = 6a50cc28a17a1411b8e817b9c1e171e6d7a9b3fef1568622f87fe184c471b14c
+
+pkgname = python-autograd
+
