@@ -13,7 +13,7 @@ depends=('python'
 checkdepends=()
 makedepends=('python-setuptools')
 license=('Apache')
-arch=('i686' 'x86_64')
+arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('3cfb480f31d757d2133676fffcade83230062052eba55421087af867fe044e8f')
 
