@@ -1,0 +1,139 @@
+From efc0041ca08e73f97e68cbab5e7eff8d30fef7b9 Mon Sep 17 00:00:00 2001
+From: Stephen Just <stephenjust@gmail.com>
+Date: Tue, 28 Jun 2016 23:37:11 -0600
+Subject: [PATCH 2/2] power: surface3_power: Improve battery capacity reporting
+
+Read additional registers from the battery device to get more
+accurate status reading. Also properly report battery (dis)charge
+state and current.
+---
+ drivers/power/supply/surface3_power.c | 55 ++++++++++++++++++++++++++++++-----
+ 1 file changed, 48 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/power/supply/surface3_power.c b/drivers/power/supply/surface3_power.c
+index eee21d3..ac8155b 100644
+--- a/drivers/power/supply/surface3_power.c
++++ b/drivers/power/supply/surface3_power.c
+@@ -61,6 +61,7 @@ struct mshw0011_data {
+ 	bool			charging;
+ 	bool			bat_charging;
+ 	u8			trip_point;
++	s32			full_capacity;
+ };
+ 
+ struct mshw0011_lookup {
+@@ -122,6 +123,10 @@ struct gsb_buffer {
+ 	} __packed;
+ } __packed;
+ 
++#define ACPI_BATTERY_STATE_DISCHARGING	0x1
++#define ACPI_BATTERY_STATE_CHARGING	0x2
++#define ACPI_BATTERY_STATE_CRITICAL	0x4
++
+ #define MSHW0011_CMD_DEST_BAT0		0x01
+ #define MSHW0011_CMD_DEST_ADP1		0x03
+ 
+@@ -140,11 +145,14 @@ struct gsb_buffer {
+ 
+ #define MSHW0011_NOTIFY_GET_VERSION	0x00
+ #define MSHW0011_NOTIFY_ADP1		0x01
+-#define MSHW0011_NOTIFY_BAT0		0x02
++#define MSHW0011_NOTIFY_BAT0_BST	0x02
++#define MSHW0011_NOTIFY_BAT0_BIX	0x05
+ 
+ #define MSHW0011_ADP1_REG_PSR		0x03
+ 
+-#define MSHW0011_BAT0_REG_CAPACITY	0x0c
++#define MSHW0011_BAT0_REG_CAPACITY		0x0c
++#define MSHW0011_BAT0_REG_FULL_CHG_CAPACITY	0x0e
++#define MSHW0011_BAT0_REG_DESIGN_CAPACITY	0x40
+ #define MSHW0011_BAT0_REG_VOLTAGE	0x08
+ #define MSHW0011_BAT0_REG_RATE		0x14
+ #define MSHW0011_BAT0_REG_OEM		0x45
+@@ -235,6 +243,22 @@ static int mshw0011_bix(struct mshw0011_data *cdata, struct bix *bix)
+ 
+ 	*bix = default_bix;
+ 
++	/* get design capacity */
++	ret = i2c_smbus_read_word_data(client, MSHW0011_BAT0_REG_DESIGN_CAPACITY);
++	if (ret < 0) {
++		dev_err(&client->dev, "Error reading design capacity: %d\n", ret);
++		return ret;
++	}
++	bix->design_capacity = le16_to_cpu(ret);
++
++	/* get last full charge capacity */
++	ret = i2c_smbus_read_word_data(client, MSHW0011_BAT0_REG_FULL_CHG_CAPACITY);
++	if (ret < 0) {
++		dev_err(&client->dev, "Error reading last full charge capacity: %d\n", ret);
++		return ret;
++	}
++	bix->last_full_charg_capacity = le16_to_cpu(ret);
++
+ 	/* get serial number */
+ 	ret = mshw0011_i2c_read_block(client, MSHW0011_BAT0_REG_SERIAL_NO,
+ 				      buf, 10);
+@@ -269,7 +293,7 @@ static int mshw0011_bix(struct mshw0011_data *cdata, struct bix *bix)
+ static int mshw0011_bst(struct mshw0011_data *cdata, struct bst *bst)
+ {
+ 	struct i2c_client *client = cdata->bat0;
+-	int rate, capacity, voltage;
++	int rate, capacity, voltage, state;
+ 	s16 tmp;
+ 
+ 	rate = i2c_smbus_read_word_data(client, MSHW0011_BAT0_REG_RATE);
+@@ -285,8 +309,15 @@ static int mshw0011_bst(struct mshw0011_data *cdata, struct bst *bst)
+ 		return voltage;
+ 
+ 	tmp = le16_to_cpu(rate);
+-	bst->battery_present_rate = (s32)tmp;
+-	bst->battery_state = bst->battery_present_rate < 0 ? 0x01 : 0x02;
++	bst->battery_present_rate = abs((s32)tmp);
++
++	state = 0;
++	if ((s32) tmp > 0)
++		state |= ACPI_BATTERY_STATE_CHARGING;
++	else if ((s32) tmp < 0)
++		state |= ACPI_BATTERY_STATE_DISCHARGING;
++	bst->battery_state = state;
++
+ 	bst->battery_remaining_capacity = le16_to_cpu(capacity);
+ 	bst->battery_present_voltage = le16_to_cpu(voltage);
+ 
+@@ -308,6 +339,7 @@ static int mshw0011_adp_psr(struct mshw0011_data *cdata)
+ static int mshw0011_isr(struct mshw0011_data *cdata)
+ {
+ 	struct bst bst;
++	struct bix bix;
+ 	int ret;
+ 	bool status, bat_status;
+ 
+@@ -327,14 +359,23 @@ static int mshw0011_isr(struct mshw0011_data *cdata)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	bat_status = bst.battery_present_rate >= 0;
++	bat_status = bst.battery_state;
+ 
+ 	if (bat_status != cdata->bat_charging)
+ 		mshw0011_notify(cdata, cdata->notify_version,
+-				MSHW0011_NOTIFY_BAT0, &ret);
++				MSHW0011_NOTIFY_BAT0_BST, &ret);
+ 
+ 	cdata->bat_charging = bat_status;
+ 
++	ret = mshw0011_bix(cdata, &bix);
++	if (ret < 0)
++		return ret;
++	if (bix.last_full_charg_capacity != cdata->full_capacity)
++		mshw0011_notify(cdata, cdata->notify_version,
++				MSHW0011_NOTIFY_BAT0_BIX, &ret);
++
++	cdata->full_capacity = bix.last_full_charg_capacity;
++
+ 	return 0;
+ }
+ 
+-- 
+2.9.3
+
