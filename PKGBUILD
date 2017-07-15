@@ -11,7 +11,7 @@ url="https://github.com/karulis/pybluez"
 license=('GPL2')
 makedepends=('python' 'bluez-libs' 'mercurial' 'boost')
 depends=('python' 'bluez-libs')
-conflicts="python-pybluez"
+conflicts=("python-pybluez")
 source=("git+https://github.com/karulis/pybluez.git" "hg+https://bitbucket.org/OscarAcena/pygattlib")
 md5sums=('SKIP' 'SKIP')
 
