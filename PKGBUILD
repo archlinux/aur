@@ -2,14 +2,15 @@
 
 pkgname="mira"
 pkgver="0.2.0_beta"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An abstract workflow assistant for Git"
 
 arch=("any")
 url="https://github.com/north-crescent/$pkgname"
 license=("GPL3")
 
-depends=("lua>=5.3.0")
+depends=("lua>=5.3.0" "luarocks")
+install="$pkgname.install"
 source=("$pkgname::git+$url.git#tag=${pkgver//_/-}")
 md5sums=("SKIP")
 

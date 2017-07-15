@@ -1,0 +1,14 @@
+# Maintainer: North Crescent <north-crescent@tuta.io>
+
+pre_install() {
+    luarocks install "luaposix"
+}
+
+pre_upgrade() {
+    luarocks remove "luaposix" &> "/dev/null"
+    luarocks install "luaposix"
+}
+
+post_remove() {
+    luarocks remove "luaposix"
+}
