@@ -11,7 +11,18 @@ url='https://www.knot-dns.cz/'
 arch=('i686' 'x86_64')
 license=('GPL3')
 install=install
-depends=('liburcu>=0.5.4' 'gnutls>=3.0' 'zlib' 'lmdb' 'jansson' 'protobuf-c' 'fstrm')
+depends=('fstrm'
+         'gnutls>=3.0'
+         'jansson'
+         'libcap-ng'
+         'libedit'
+         'libsystemd'
+         'liburcu>=0.5.4'
+         'lmdb'
+         'protobuf-c'
+         'python'
+         'zlib')
+makedepends=('systemd')
 source=("https://secure.nic.cz/files/knot-dns/${srcname}-${pkgver}.tar.xz"
         'knot.service'
         'knot.tmpfiles')
