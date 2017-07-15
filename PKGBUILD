@@ -5,8 +5,9 @@
 # PKGBUILD based on extra\deluge's PKGBUILD, adapted for -git version by Berseker
 
 pkgname=deluge-git
-pkgver=2.0.0.dev983.g0353b82c0
-pkgrel=5
+pkgver=2.0b2.dev15.ge3f537770
+pkgrel=1
+epoch=1
 pkgdesc="A BitTorrent client with multiple user interfaces in a client/server model (git version, 'develop' branch)"
 arch=('any')
 url='http://deluge-torrent.org/'
