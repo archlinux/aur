@@ -1,21 +1,17 @@
+# Maintainer: foxcub <archlinux "at" foxcub {dot} org>
+# Contributor: calegria  <calegria "at" gmail {dot} com>
 pkgname=cgal-ipelets
-pkgver=4.9
-pkgrel=2
-ipever=7.2.7
+pkgver=4.10
+pkgrel=1
+_ipever=7.2.7
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
 url="http://www.cgal.org"
-source=(https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-${pkgver}/CGAL-${pkgver}.tar.xz
-        no-skeleton.patch)
+source=(https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-${pkgver}/CGAL-${pkgver}.tar.xz)
 depends=('cgal' 'ipe')
 makedepends=('cmake' 'boost' 'cgal' 'ipe')
-license=('GPL' 'QPL')
-
-prepare() {
-  # Remove this once we switch to CGAL 4.8 (it's a problem with Boost)
-  cd "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets"
-  patch < $srcdir/no-skeleton.patch
-}
+license=('GPL')
+md5sums=('0a60a756b6885580945122ee178dd8db')
 
 build() {
   cd "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets"
@@ -25,9 +21,7 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/lib/ipe/$ipever/ipelets/"
-  cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/"*.so "$pkgdir/usr/lib/ipe/$ipever/ipelets/"
-  cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/lua/"* "$pkgdir/usr/lib/ipe/$ipever/ipelets/"
+  mkdir -p "$pkgdir/usr/lib/ipe/$_ipever/ipelets/"
+  cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/"*.so "$pkgdir/usr/lib/ipe/$_ipever/ipelets/"
+  cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/lua/"* "$pkgdir/usr/lib/ipe/$_ipever/ipelets/"
 }
-md5sums=('ee31343dbc4bf7b5b7501ec1650e9233'
-         'f9e230e8c7f787f9eeccb2ed302dca66')
