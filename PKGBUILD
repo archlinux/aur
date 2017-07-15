@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-kde-bin
-pkgver=54.0.0.1.2
+pkgver=54.0.1
 pkgrel=1
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -114,4 +114,4 @@ No ) break;;
 fi
 
 }
-sha256sums=('b19cee82d77a57e3d023e94443ea6005fc24259c351da39acf8035a40385ff9f')
+sha256sums=('b9ebd2fb4671b17b408cdb320ede0ec3623dc88d0fa45816dfc358d3bfef4e2b')
