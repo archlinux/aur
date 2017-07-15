@@ -2,7 +2,7 @@
 
 pkgname=liggghts-lpp #t1
 pkgver=20170223.093837
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software - Post Processing (Pizza.py)"
 arch=('any')
 url="https://github.com/CFDEMproject/LPP"
