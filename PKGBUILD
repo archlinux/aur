@@ -6,7 +6,7 @@
 # URL used for version checking: http://dustkid.com/backend8/dustmod_version.php
 
 pkgname=dustforce-hib-dustmod
-pkgver=1.0+h20141222_7.6.1
+pkgver=1.0+h20141222_7.7.1
 _hibver=2014-12-22
 _hibver_windows=07012015
 pkgrel=1
@@ -24,13 +24,12 @@ _installer_windows="dustforce_dx_${_hibver_windows}.zip"
 source=("hib://${_installer}"
         "hib://${_installer_windows}"
         'http://dustkid.com/getdustmod/linux64_drmfree'
-        'dustmod-patch::http://dustkid.com/backend8/dustmod_package4.php?platform=linux64_drmfree'
+#        'dustmod-patch::http://dustkid.com/backend8/dustmod_package4.php?platform=linux64_drmfree'
         'dustforce-dustmod'
         'dustforce-hib-dustmod.desktop')
 md5sums=('e2fa7efd5b9ec64fc453f32480f63ad4'
          'fed1b6d82bdbea66d242eaaaf7d3a2f2'
-         '724ee25c5266f36258d8d93269e4f8a6'
-         'a3f83d73264d14c212d0be249b593235'
+         'cff083c9613db72f6537b58df3134f0a'
          '7b30db080ff59c0eba443b14da7c39bc'
          'cc98a6127bc6d6cbdcfced14c69327cf')
 # zip with no top-level directory - will extract manually
@@ -76,7 +75,7 @@ package() {
       # install Dustmod
       unzip -q "$srcdir"/linux64_drmfree -d "$pkgdir"/"$_installdir"/
       # Apply Dustmod updates, which aren't distributed in the main download
-      unarchive-patch "$srcdir"/dustmod-patch "$pkgdir"/"$_installdir"
+#      unarchive-patch "$srcdir"/dustmod-patch "$pkgdir"/"$_installdir"
 
       # Dustmod expects a version of curl we can't really obtain, but works with
       # the version distributed with Dustforce
