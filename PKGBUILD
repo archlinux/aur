@@ -18,7 +18,7 @@ options=()
 install=
 changelog=
 source=(https://p7.planet-casio.com/pub/p7utils-${pkgver}.tar.gz)
-md5sums=('ebd3b91c6d51d9932bab00cb9ef45914')
+md5sums=('4af3e7a6e1776483f670d56fbdf9f9cb')
 noextract=()
 
 build() {
