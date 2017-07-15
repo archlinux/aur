@@ -1,14 +1,14 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/palopezv>
 pkgname=brave
-pkgver=0.17.13
+pkgver=0.17.16
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
 license=('custom')
-depends=('gtk3' 'gconf' 'nss' 'alsa-lib' 'libgnome-keyring' 'libxss' 'ttf-font' 'wget')
+depends=('gtk3' 'gconf' 'nss' 'alsa-lib' 'libgnome-keyring' 'libxss' 'ttf-font')
 makedepends=('npm' 'python2' 'git')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
@@ -166,4 +166,4 @@ END
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
-md5sums=('06736ce415ccbbca6d1717d5dc1a7544')
+md5sums=('10239717049e7eb73cc4d820fa98c1d2')
