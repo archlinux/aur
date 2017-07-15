@@ -1,7 +1,7 @@
 # Contributor: Tilman Blumenbach <tilman [AT] ax86 [DOT] net>
 
 pkgname='terminus-font-ttf'
-pkgver=4.40.1
+pkgver=4.46.0
 pkgrel=1
 pkgdesc="Monospaced bitmap font designed for long work with computers (TTF version, mainly for Java applications)"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://files.ax86.net/terminus-ttf"
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 install='terminus-font-ttf.install'
-source=("http://files.ax86.net/terminus-ttf/files/${pkgver}/terminus-ttf-${pkgver}.zip")
+source=("https://files.ax86.net/terminus-ttf/files/${pkgver}/terminus-ttf-${pkgver}.zip")
 
 package()
 {
@@ -23,5 +23,4 @@ package()
     install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
-md5sums=('a61328c79bcc85deb029e36d0c2e52cd')
-sha384sums=('aa8333023162f4c7e61a04615c10659f3e7ae009b75e296ad034eccbf4e66bbe4a5e2e22b2ca3aa3bab278fc4bd99d36')
+sha384sums=('c134df563057c9c41499830ab2e000fbb34e69f2df72a3dfa79eec250e6392141176a81ca411e53034f7e7e2ec245844')
