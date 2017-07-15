@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://p7.planet-casio.com/pub/${pkgname}-${pkgver}.tar.gz)
 noextract=()
-md5sums=('66ea73a4ff29fa502422a465ce28888d')
+md5sums=('778891e9e816c905c78b6750d8dc7ec7')
 
 build() {
   cd "$pkgname-$pkgver"
