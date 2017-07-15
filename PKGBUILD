@@ -5,7 +5,7 @@
 
 _reponame=cpp-utilities
 pkgname=c++utilities
-pkgver=4.8.0
+pkgver=4.9.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities'
@@ -15,14 +15,11 @@ optdepends=("$pkgname-doc: API documentation")
 makedepends=('cmake')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
-        '0001-Make-check-target-depend-on-.clang-format-file.patch')
-sha256sums=('a569f51e367f372dfbfe1903944e848e54de7eeee400c20ed527d7a2c3bea8ef'
-            '2c965ecaad6557cbe4367f09801f4cdc78602de4c8c3eed38838943a9423bb66')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('b04bcb29c3dcb2ab63b76b9bc2d1f27022826dc9db387745b06c278b27b1faec')
 
 prepare() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  patch -p1 -i "$srcdir/0001-Make-check-target-depend-on-.clang-format-file.patch"
 }
 
 build() {
