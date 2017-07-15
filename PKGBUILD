@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r38.0.g540a82a
+pkgver=r38.29.ge25a845
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
@@ -60,7 +60,8 @@ build() {
     --prefix=/usr
 
   make
-  make -C doc html man
+  make -C doc html
+  make -C doc man
 }
 
 package() {
