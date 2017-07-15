@@ -25,6 +25,7 @@ url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
+depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git" "linux-hardened=4.12.1.b-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -39,7 +40,6 @@ build() {
 
 package_zfs-linux-hardened-git() {
     pkgdesc="Kernel modules for the Zettabyte File System."
-    depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git" "linux-hardened=4.12.1.b-1")
     install=zfs.install
     provides=("zfs")
     groups=("archzfs-linux-hardened-git")
