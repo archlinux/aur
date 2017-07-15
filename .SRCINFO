@@ -8,7 +8,10 @@ pkgbase = gnudos
 	license = GPL
 	depends = glibc
 	source = https://ftp.gnu.org/gnu/gnudos/gnudos-1.10.tar.gz
+	source = https://ftp.gnu.org/gnu/gnudos/gnudos-1.10.tar.gz.sig
+	validpgpkeys = 893ECEDAE0BA2F86C2333F9928229E699E9C841A
 	sha256sums = b263670df092b77068bb4a9368ed42efdb8953fb732d12c1091e2a75135fc8aa
+	sha256sums = SKIP
 
 pkgname = gnudos
 

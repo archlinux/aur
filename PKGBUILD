@@ -6,8 +6,15 @@ arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/gnudos/"
 license=('GPL')
 depends=('glibc')
-source=(https://ftp.gnu.org/gnu/gnudos/gnudos-$pkgver.tar.gz)
-sha256sums=('b263670df092b77068bb4a9368ed42efdb8953fb732d12c1091e2a75135fc8aa')
+source=(
+	"https://ftp.gnu.org/gnu/gnudos/gnudos-$pkgver.tar.gz"
+	"https://ftp.gnu.org/gnu/gnudos/gnudos-$pkgver.tar.gz.sig"
+)
+sha256sums=(
+	'b263670df092b77068bb4a9368ed42efdb8953fb732d12c1091e2a75135fc8aa'
+	'SKIP'
+)
+validpgpkeys=('893ECEDAE0BA2F86C2333F9928229E699E9C841A') # Mohammed Isam <yahoo: mohammed_isam1984>
 
 build() {
   cd $pkgname-$pkgver
