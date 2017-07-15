@@ -1,6 +1,6 @@
 pkgbase = toxygen-git
 	pkgdesc = Toxygen is cross-platform Tox client written in Python3
-	pkgver = 0.3.0.0.608
+	pkgver = 0.3.1.0.618
 	pkgrel = 1
 	url = https://github.com/toxygen-project/toxygen
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = toxygen-git
 	depends = opencv
 	provides = toxygen
 	conflicts = toxygen
-	source = git://github.com/toxygen-project/toxygen.git#branch=develop
+	source = git://github.com/toxygen-project/toxygen.git
 	sha256sums = SKIP
 
 pkgname = toxygen-git
