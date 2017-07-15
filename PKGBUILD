@@ -12,17 +12,28 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gnatutil"
 license=('GPL V3.0 without any Runtime Exception')
 
-#depends=('gcc-ada' 'prepare_gnat_util')
 depends=('gcc-ada')
 makedepends=('gcc-ada' 'gprbuild')
 
 
-source=('http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed037')
-sha1sums=('00a231b45e25ea524a144111a524262184ceb876')
+source=('http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed037'
+        'targparm.adb-patch')
+sha1sums=('00a231b45e25ea524a144111a524262184ceb876'
+          'fb3d1496b5ea382b6272355a97a31485f1272c36')
 
 
 _pkg_src_dir="$pkgname-gpl-$pkgver-src"
 #_make_flags='ENABLE_SHARED=yes'
+
+
+
+prepare()
+{
+  cd "$srcdir/$_pkg_src_dir" 
+
+  patch -p0 -i ../targparm.adb-patch
+}
+
 
 
 build()
