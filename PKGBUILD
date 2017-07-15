@@ -44,6 +44,8 @@ build()
 {
   cd $srcdir/gps-gpl-2017-src
 
+  export OS=unix
+
   ## Force use of pyhon2
   #
   export PATH=$srcdir/gps-gpl-2017-src/temp_bin:$PATH
@@ -58,6 +60,8 @@ build()
 package() 
 {
   cd $srcdir/gps-gpl-2017-src
+
+  export OS=unix
 
   ## Force use of pyhon2
   #
