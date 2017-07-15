@@ -1,4 +1,6 @@
 /knot-*.tar.*
+/knot-*.log
+/PKGBUILD-namcap.log
 /src/
 /pkg/
 *~
