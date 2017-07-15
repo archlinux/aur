@@ -2,7 +2,7 @@
 
 _name=teeworlds-ddnet
 pkgname=${_name}-git
-pkgver=10.6.2.r7158.ec5ede763
+pkgver=10.6.5.r4.f3a44995c
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
@@ -24,7 +24,10 @@ md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
 pkgver() {
   cd $pkgname
   v=$(grep GAME_RELEASE_VERSION src/game/version.h | cut -d\" -f2)
-  printf $v.r%s.%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  _commit=$(git log --pretty=oneline | grep "Version $v" | cut -d' ' -f1)
+  r=$(git log $_commit..HEAD --pretty=oneline | wc -l)
+  h=$(git rev-parse --short HEAD)
+  printf $v.r$r.$h
 }
 
 prepare() {
