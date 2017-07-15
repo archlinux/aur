@@ -1,4 +1,4 @@
-pkgbase = stremio-3
+pkgbase = stremio-legacy
 	pkgdesc = Watch instantly all the video content you enjoy in one place.
 	pkgver = 3.6.5
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = stremio-3
 	sha512sums = 58fcbb09a2f8b8c83102b62449f5e483f6d6e60a764f728bd54ece313908622e32b27e3fa4909047ec54850b50322af5d1315abdb3740e60d75049faab913467
 	sha512sums = ae61a03eb6b1318e92d159de8e2c09a45b5fb4a665089aa11c3c99225978b0f864b84d6587b30fca96c559c2e8384db5140a41a23193790937ca654eb67821ff
 
-pkgname = stremio-3
+pkgname = stremio-legacy
 
