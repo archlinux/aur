@@ -1,7 +1,7 @@
 # Author: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=retroarch-standalone-service
 pkgver=1
-pkgrel=11
+pkgrel=12
 pkgdesc="Systemd service and user to run Retroarch in stand-alone mode"
 url=""
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ source=('retroarch-standalone.service'
         'retroarch-standalone.cfg')
 md5sums=('f73e83f0b6d17f06354d7c3db840afa1'
          'dff58d483453816a80dcdbc8d272e8b8'
-         '4eaa52c40e7cc6247bb8a7d890b50a8a')
+         '560492141cfd3737f20c73ed15fe9475')
 
 package() {
   # Copy additional configuration file to /etc
