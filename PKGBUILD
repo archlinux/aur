@@ -4,7 +4,7 @@
 
 pkgname=mpd-sima
 pkgver=0.14.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
 url="http://kaliko.me/code/mpd-sima/"
@@ -31,4 +31,4 @@ package() {
 }
 
 sha256sums=('2e14fdbf9e5346eb5fd88c2db57f2634fca5efefbd9c01865ef842736e95caa8'
-            'bf039031f697f612aa19dececc5615e24a818af2da193b2bcabf209d21b24266')
+            '864b997cbf53864120aba183f2642ad6a632a0bcde3c4701779cc9a25cc0f448')
