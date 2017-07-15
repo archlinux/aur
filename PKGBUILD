@@ -3,6 +3,9 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# if tests fail due to timeout, you can try to increase the timeout
+# by setting SYNCTHING_TEST_TIMEOUT_FACTOR
+
 # set the web view provider: either webkit, webengine, auto or none
 _webview_provider=webkit
 
@@ -12,7 +15,7 @@ _enable_kio_plugin=1
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tray application for Syncthing'
@@ -27,7 +30,7 @@ checkdepends=('cppunit' 'syncthing')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('97940ce14b9480583da1d0a71c5797458a2d29f203d54ecd1ccd2b30065dbdf4')
+sha256sums=('70a08663ec70f69fc45c9fa8fe205b55d650124d522b357d52529f6d2e179e60')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
