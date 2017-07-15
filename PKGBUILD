@@ -2,7 +2,7 @@
 # With help from Nicolas Porcel
 pkgbase=linux-max98090
 _srcname=linux-4.12
-pkgver=4.12.1
+pkgver=4.12.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -27,9 +27,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '466ad7caf26aac66fdf299dbe6b23d0cf1729e363a4ee37738938e3be563946b'
+            '8447d28c88834bac75653a0370a6f30615688db4756b953720e9b024537e34ac'
             'SKIP'
-            '635c6595d963856e489775af79311e722250bb14f72e47ee1bfc650577713583'
+            '1eef3123e62b9d345e27548f05f1b2cdf1aac2115fbbfc4d67a1413e23a91eec'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '66f1e1a21ceecbad1efa892515e542323a2895fc5141663eeca7fc341bec35aa'
