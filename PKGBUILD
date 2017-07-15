@@ -3,7 +3,7 @@
 
 pkgname=marsyas
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Music Analysis, Retrieval and Synthesis for Audio Signals"
 arch=('i686' 'x86_64')
 license=('GPL')
