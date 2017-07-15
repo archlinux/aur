@@ -7,7 +7,7 @@ pkgbase = terminus-font-ttf
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	depends = xorg-font-utils
+	depends = xorg-mkfontdir
 	source = https://files.ax86.net/terminus-ttf/files/4.46.0/terminus-ttf-4.46.0.zip
 	sha384sums = c134df563057c9c41499830ab2e000fbb34e69f2df72a3dfa79eec250e6392141176a81ca411e53034f7e7e2ec245844
 
