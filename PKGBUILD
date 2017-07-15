@@ -3,7 +3,7 @@
 pkgname='blink'
 _reponame='blink-qt'
 pkgver='3.0.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
 url='http://icanblink.com'
@@ -19,7 +19,8 @@ depends=('icu'
          'python2-zope-interface'
          'qt5-webkit'
          'qt5-svg')
-optdepends=('python2-service-identity: for TLS certificate hostname verification')
+optdepends=('python2-service-identity: for TLS certificate hostname verification'
+            'x11vnc: for screen sharing')
 
 source=("https://github.com/AGProjects/${_reponame}/archive/release-${pkgver}/${_reponame}-${pkgver}.tar.gz")
 sha256sums=('26bf454c1db3407c4f6c16e0edece31d2cbbbd4e45d61fd11eb319c695f8b277')
