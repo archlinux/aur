@@ -7,7 +7,7 @@ pkgname='ros-kinetic-opencv3'
 pkgver='3.2.0'
 _pkgver_patch=4
 arch=('any')
-pkgrel=5
+pkgrel=6
 license=('BSD')
 
 ros_makedepends=()
@@ -35,7 +35,9 @@ depends=(${ros_depends[@]}
   jasper
   ffmpeg
   libpng
-  python2)
+  python2
+  qt5-base
+  libxt)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/opencv3/${pkgver}-${_pkgver_patch}
@@ -69,7 +71,8 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DENABLE_PRECOMPILED_HEADERS=OFF
   make
 }
 
