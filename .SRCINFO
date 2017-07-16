@@ -1,7 +1,7 @@
 pkgbase = stremio-legacy
-	pkgdesc = Watch instantly all the video content you enjoy in one place.
+	pkgdesc = Legacy version (3.x) of Stremio. Watch instantly all the video content you enjoy in one place.
 	pkgver = 3.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://strem.io
 	install = stremio.install
 	arch = x86_64

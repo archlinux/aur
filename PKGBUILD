@@ -2,8 +2,11 @@
 
 pkgname=stremio-legacy
 pkgver=3.6.5
-pkgrel=1
-pkgdesc="Watch instantly all the video content you enjoy in one place."
+pkgrel=2
+pkgdesc="Legacy version (3.x) of Stremio. Watch instantly all the video 
+content 
+you enjoy 
+in one place."
 arch=('x86_64')
 url="https://strem.io"
 depends=('ffmpeg' 'gconf' 'gtk2' 'nss')
