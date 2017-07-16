@@ -14,21 +14,21 @@ url="http://mmottl.github.io/${_pkgname}/"
 license=('LGPL')
 depends=('ocaml')
 makedepends=('ocaml-findlib')
+options=('!strip')
 source=("https://github.com/mmottl/${_pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('4c5f30d1fcaced42df03c858b2be5c3a')
-options=(!strip)
 
 build() {
-  cd "$srcdir/res-$pkgver"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  ./configure --disable-debug --prefix /usr --destdir "$pkgdir"
+  ./configure --disable-debug --prefix /usr --destdir "${pkgdir}"
    make all
 }
 
 package(){
-  cd "$srcdir/res-$pkgver"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
+  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
   mkdir -p "${OCAMLFIND_DESTDIR}"
   make install
 }
