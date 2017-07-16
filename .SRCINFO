@@ -1,13 +1,13 @@
 pkgbase = git-extras
 	pkgdesc = GIT utilities -- repo summary, commit counting, repl, changelog population and more
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/tj/git-extras
 	arch = any
 	license = MIT
 	depends = git
-	source = git-extras-4.3.0.tar.gz::https://github.com/tj/git-extras/archive/4.3.0.tar.gz
-	sha256sums = 25e608ba17b49d38e1f1f9938cceb9a7406f4e2a5e9488898c193e82ac42e3be
+	source = git-extras-4.4.0.tar.gz::https://github.com/tj/git-extras/archive/4.4.0.tar.gz
+	sha256sums = 16c2184f13272dd032717ebd22a88762759cd10d2b9357e4ac7bd992bdd7686d
 
 pkgname = git-extras
 

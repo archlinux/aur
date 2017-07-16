@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=git-extras
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, commit counting, repl, changelog population and more"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/tj/${pkgname}"
 license=('MIT')
 depends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('25e608ba17b49d38e1f1f9938cceb9a7406f4e2a5e9488898c193e82ac42e3be')
+sha256sums=('16c2184f13272dd032717ebd22a88762759cd10d2b9357e4ac7bd992bdd7686d')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
