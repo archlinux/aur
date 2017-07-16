@@ -3,14 +3,14 @@
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 
 pkgname=liblscp
-pkgver=0.5.7
-pkgrel=3
+pkgver=0.5.8
+pkgrel=1
 pkgdesc="LinuxSampler Control Protocol C++ library"
 arch=('i686' 'x86_64')
 url="http://www.linuxsampler.org/"
 license=('LGPL')
 source=(http://download.linuxsampler.org/packages/$pkgname-$pkgver.tar.gz)
-md5sums=('c5409c61bc7242fcb3c009fef88bd899')
+md5sums=('c9ef8ba50765784b544904b854c68c00')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
