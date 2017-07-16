@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=i3status-rust-git
-pkgver=0.1.0.r298.g264fe15
+pkgver=0.9.0.r307.gcc79921
 pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status, written in pure Rust'
 arch=('i686' 'x86_64')

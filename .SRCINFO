@@ -1,6 +1,6 @@
 pkgbase = i3status-rust-git
 	pkgdesc = Very resourcefriendly and feature-rich replacement for i3status, written in pure Rust
-	pkgver = 0.1.0.r298.g264fe15
+	pkgver = 0.9.0.r307.gcc79921
 	pkgrel = 1
 	url = https://github.com/greshake/i3status-rust
 	install = i3status-rust.install
