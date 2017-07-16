@@ -1,7 +1,7 @@
 pkgbase = ocamlnet
 	pkgdesc = A library for Web and Internet programming in OCaml
 	pkgver = 4.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://projects.camlcity.org/projects/ocamlnet.html
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = ocamlnet
 	options = !makeflags
 	options = staticlibs
 	source = http://download.camlcity.org/download/ocamlnet-4.1.2.tar.gz
+	source = netsys_posix.ml
 	md5sums = cc8b3434119e51b0e855b33a687e9c4b
+	md5sums = fdf36378ab1d29585c33a1a9a9aeb0c8
 
 pkgname = ocamlnet
 
