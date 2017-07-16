@@ -1,6 +1,6 @@
 pkgbase = indicator-kdeconnect
 	pkgdesc = Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)
-	pkgver = 0.9.0.r3.g7be7fca
+	pkgver = 0.9.0.r23.g8301cc2
 	pkgrel = 1
 	url = https://github.com/bajoja/indicator-kdeconnect
 	arch = any
