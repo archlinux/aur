@@ -5,7 +5,7 @@
 
 pkgname=libmfx
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel Media SDK dispatcher library'
 arch=('i686' 'x86_64')
 url='https://github.com/lu-zero/mfx_dispatch/'
