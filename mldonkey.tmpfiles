@@ -1,2 +1,2 @@
-d /var/lib/mldonkey - mldonkey mldonkey -
 d /run/mldonkey 0755 mldonkey mldonkey -
+d /var/lib/mldonkey 0750 mldonkey mldonkey -

@@ -20,12 +20,13 @@ source=('git+http://repo.or.cz/r/mldonkey.git#branch=next'
         'mldonkey.service'
         'mldonkey@.service'
         'mldonkey.tmpfiles'
-        'mldonkey.sysuser')
+        'mldonkey.sysuser'
+        )
 sha256sums=('SKIP'
             'fe6227ec1a54278226ca6d6a5b0e1bb23224bf7b90e2ea107f014cc9518b0ed3'
             '3a25e71992aa0ab5caabed81b96ebcf313f1d93ccd7a182b1c57bf3f9571b8e8'
             'c970430ca0fb50869dd1bab01b13ef451899455bb9dcaab6956fcab225423012'
-            'ef13984c7802a4ffe7b024a8aef08e33c0025bed4975b07b2b7ccf6773e97012'
+            '7a7d4d4c9eccadca24cf7970bd26847369c81a16163f8d15923011357e227990'
             'ef14b4c8dcb9e64a1026630463313139171d2682d4ad80965e4a39e5021b93a5'
             )
 install=mldonkey-daemon.install
