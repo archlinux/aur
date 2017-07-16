@@ -11,8 +11,8 @@ arch=('i686' 'x86_64')
 url='https://github.com/diml/utop'
 license=('BSD')
 depends=('ocaml' 'cppo' 'ocaml-lambda-term' 'ocaml-lwt' 'ocaml-findlib' 'ocaml-react' 'camlp4')
-source=("https://github.com/diml/utop/archive/${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/diml/utop/archive/${pkgver}.tar.gz")
 md5sums=('280f9a1062c53be8bae41cfd57ce29dd')
 
 build() {
