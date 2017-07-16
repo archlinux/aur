@@ -1,0 +1,16 @@
+pkgbase = intel-hybrid-codec-driver
+	pkgdesc = Libva support for VP9 decode and VP8 encode on Skylake and Braswell
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://01.org/linuxmedia/vaapi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libva
+	depends = libcmrt
+	optdepends = libva-intel-driver-hybrid: To be able to use the full hw codecs with hybrid codecs
+	source = intel-hybrid-driver-1.0.2.tar.gz::https://github.com/01org/intel-hybrid-driver/archive/1.0.2.tar.gz
+	sha256sums = 16cd66872e8043ce6c0e9a016a043c460e8a180fdc520f31c1f97ffef7828d7b
+
+pkgname = intel-hybrid-codec-driver
+
