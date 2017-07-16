@@ -3,14 +3,14 @@
 pkgname=ocaml-schroedinger
 pkgver=0.1.1
 pkgrel=1
-license=('GPL2')
+pkgdesc="OCaml bindings to libschroedinger"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings to libschroedinger")
 url="https://github.com/savonet/ocaml-schroedinger"
+license=('GPL2')
 depends=('ocaml' 'schroedinger' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-schroedinger/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-schroedinger/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('fa6974277a389d0ef5e4a92cbcf416f0')
 
 build() {
