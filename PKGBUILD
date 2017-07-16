@@ -3,7 +3,7 @@
 _hkgname=ghc-exactprint
 pkgname=haskell-ghc-exactprint
 pkgver=0.5.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Using the API Annotations available from GHC 7.10.2, this library provides a means to round trip any code that can be compiled by GHC, currently excluding lhs files."
 arch=('i686' 'x86_64')
 url="https://hackage.haskell.org/package/${_hkgname}"
