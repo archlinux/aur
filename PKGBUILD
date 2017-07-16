@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
 pkgname=jedit-pkgbuild 
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='jEdit PKGBUILD edit mode'
 arch=('any')
 url='https://bitbucket.org/ur6lad/jedit-pkgbuild'
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('jedit' 'xmlstarlet')
 install=jedit-pkgbuild.install
 source=($pkgname-$pkgver.tar.bz2::https://bitbucket.org/ur6lad/$pkgname/get/$pkgver.tar.bz2)
-noextract=($pkgver.tar.bz2)
+noextract=($pkgname-$pkgver.tar.bz2)
 md5sums=('f9ab018b0a281d18e1ead326c4654757')
 sha256sums=('c0b6f9360a8f7e4f6dc20ebdb0af286c5cd137c4fb73c1ed0b4eff245f52f0e8')
 
