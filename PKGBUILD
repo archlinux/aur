@@ -25,7 +25,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=5.0.0svn_r308070
+pkgver=5.0.0svn_r308112
 
 pkgver() {
   cd "$pkgname"
@@ -238,6 +238,7 @@ build() {
 	-DCMAKE_RANLIB="/usr/bin/llvm-ranlib" \
 	-DCMAKE_AR="/usr/bin/llvm-ar" \
 	-DPOLLY_ENABLE_GPGPU_CODEGEN:BOOL=ON \
+        -DLINK_POLLY_INTO_TOOLS:BOOL=ON \
         "../${_pkgname}"
 
     #ninja
@@ -268,7 +269,7 @@ package_llvm-polly-svn() {
         "llvm-libs-polly-svn=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('llvm')
+    provides=('llvm', 'llvm-svn')
     conflicts=('llvm', 'llvm-svn')
 
     cd "${srcdir}/build"
@@ -315,8 +316,8 @@ package_lldb-polly-svn() {
         'python2'
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('lldb')
-    conflicts=('lldb')
+    provides=('lldb', 'lldb-svn')
+    conflicts=('lldb', 'lldb-svn')
 
     #cd "${srcdir}/build"
     cd "${srcdir}/build/tools/lldb"
@@ -341,7 +342,7 @@ package_llvm-libs-polly-svn() {
         'zlib'
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('llvm-libs')
+    provides=('llvm-libs', 'llvm-libs-svn')
     conflicts=('llvm-libs', 'llvm-libs-svn')
 
     cd "${srcdir}/build"
@@ -377,7 +378,7 @@ package_llvm-ocaml-polly-svn() {
         "ocaml=$(_ocamlver)"
         'ocaml-ctypes'
     )
-    provides=('llvm-ocaml')
+    provides=('llvm-ocaml', 'llvm-ocaml-svn')
     conflicts=('llvm-ocaml', 'llvm-ocaml-svn')
 
     cd "${srcdir}/build"
@@ -396,7 +397,7 @@ package_lld-polly-svn() {
         "llvm-libs-polly-svn=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('lld')
+    provides=('lld', 'lld-svn')
     conflicts=('lld', 'lld-svn')
 
     #cd "${srcdir}/build"
@@ -424,7 +425,7 @@ package_clang-polly-svn() {
         'python2: git-clang-format and clang-format-diff.py support'
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('clang')
+    provides=('clang', 'clang-svn')
     conflicts=('clang', 'clang-svn')
 
     cd "${srcdir}/build/tools/clang"
@@ -531,7 +532,7 @@ package_clang-compiler-rt-polly-svn() {
         "clang-polly-svn=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('clang-compiler-rt')
+    provides=('clang-compiler-rt', 'clang-compiler-rt-svn')
     conflicts=('clang-compiler-rt', 'clang-compiler-rt-svn')
 
     #cd "${srcdir}/build"
@@ -552,7 +553,7 @@ package_clang-tools-extra-polly-svn() {
         "clang-polly-svn=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('clang-tools-extra')
+    provides=('clang-tools-extra', 'clang-tools-extra-svn')
     conflicts=('clang-tools-extra', 'clang-tools-extra-svn')
 
     #cd "${srcdir}/build"
