@@ -1,7 +1,7 @@
 pkgbase = iconthemebrowser
 	pkgdesc = A small application to browse icon themes available in Qt
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/IconThemeBrowser
 	arch = i686
 	arch = x86_64
