@@ -5,21 +5,19 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=qbittorrent-git
-pkgver=3.3.13.r1465.g3d970399d
+pkgver=3.3.13.r1488.gc964f0c49
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
 license=('custom' 'GPL')
-depends=('libtorrent-rasterbar' 'qt5-base')
+depends=('libtorrent-rasterbar' 'qt5-base' 'qt5-svg')
 makedepends=('boost' 'git' 'qt5-tools')
 optdepends=('python: needed for torrent search tab')
 conflicts=('qbittorrent')
 provides=('qbittorrent')
-source=("${pkgname%-*}::git+https://github.com/qbittorrent/qBittorrent.git"
-        "https://github.com/qbittorrent/qBittorrent/pull/7017.patch")
-sha256sums=('SKIP'
-            '83844864e7010c1f5c45eb5798c607e421e46a277270f78fa6b9c5fe93fe101a')
+source=("${pkgname%-*}::git+https://github.com/qbittorrent/qBittorrent.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-*}
@@ -28,14 +26,6 @@ pkgver() {
   _rev=$(git rev-list --count release-${_tag}..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
-}
-
-prepare() {
-  cd ${pkgname%-*}
-
-  # New feature exposed bug that is now fixed in libtorrent-rasterbar 1.1.4
-  # (flagged on archweb)
-  patch -Np1 < ../7017.patch
 }
 
 build() {
