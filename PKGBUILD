@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=gnome-shell-extension-blyr-git
-pkgver=r9.3ab5360
+pkgver=r11.9874117
 pkgrel=1
 pkgdesc="Adds a Blur Effect to GNOME Shell UI Elements."
 arch=(any)
@@ -25,5 +25,4 @@ pkgver() {
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions/"
   cp -a "$srcdir/${pkgname%-git}/blyr@yozoon.dev.gmail.com" "$pkgdir/usr/share/gnome-shell/extensions/"
-  chmod 666 "$pkgdir/usr/share/gnome-shell/extensions/blyr@yozoon.dev.gmail.com/shader.glsl"
 }
