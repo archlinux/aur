@@ -1,13 +1,13 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=bookworm-git
-pkgver=0.9.r147.g5180472
+pkgver=0.9.r162.g2e5b702
 pkgrel=1
 pkgdesc='A simple user centric eBook reader which displays multiple eBooks formats uniformly'
 arch=('i686' 'x86_64')
 url='https://babluboy.github.io/bookworm'
 license=('GPL3')
-depends=('granite' 'p7zip' 'poppler-glib' 'python' 'unrar' 'webkit2gtk')
+depends=('granite' 'poppler-glib' 'python' 'unrar' 'unzip' 'webkit2gtk')
 makedepends=('cmake' 'git' 'vala')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
