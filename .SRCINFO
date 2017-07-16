@@ -1,14 +1,15 @@
 pkgbase = ddate
 	pkgdesc = PERPETUAL DATE CONVERTER FROM GREGORIAN TO POEE CALENDAR
-	pkgver = 0.2
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/bo0ts/ddate
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	license = GPL
-	source = ddate-0.2.tar.gz::https://github.com/bo0ts/ddate/tarball/v0.2
-	md5sums = b450f228c61ba2abd86641f11c5db27e
+	depends = glibc
+	source = ddate-0.2.2.tar.gz::https://github.com/bo0ts/ddate/archive/v0.2.2.tar.gz
+	md5sums = 154ead3444d60806c97919b4f3d69e19
 
 pkgname = ddate
 

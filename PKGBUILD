@@ -1,21 +1,26 @@
-# Maintainer: Philipp Moeller <bootsarehax@gmail.com>
+# Maintainer: Arvedui <arvedui@posteo.de>
+# Contributer: Philipp Moeller <bootsarehax@gmail.com>
+
 pkgname=ddate
-pkgver=0.2
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="PERPETUAL DATE CONVERTER FROM GREGORIAN TO POEE CALENDAR"
 arch=('x86_64' 'i686' 'armv6h')
 url="https://github.com/bo0ts/ddate"
 license=(GPL)
-depends=()
-source=($pkgname-$pkgver.tar.gz::https://github.com/bo0ts/ddate/tarball/v0.2)
+depends=(glibc)
+source=($pkgname-$pkgver.tar.gz::https://github.com/bo0ts/ddate/archive/v${pkgver}.tar.gz)
+
+md5sums=('154ead3444d60806c97919b4f3d69e19')
 
 build() {
-  cd $srcdir/bo0ts-ddate-4724229/
+  cd $srcdir/ddate-${pkgver}/
+  cmake -DCMAKE_INSTALL_PREFIX=/usr
   make PREFIX="/usr"
 }
 
 package() {
-  cd $srcdir/bo0ts-ddate-4724229/
-  make PREFIX="$pkgdir/usr" install
+  cd $srcdir/ddate-${pkgver}/
+  make DESTDIR="$pkgdir" install
 }
-md5sums=('b450f228c61ba2abd86641f11c5db27e')
+
