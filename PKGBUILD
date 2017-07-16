@@ -3,14 +3,14 @@
 pkgname=ocaml-shine
 pkgver=0.2.1
 pkgrel=1
-license=('GPL2')
+pkgdesc="OCaml binding to the fixed-point mp3 encoding library shine"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml binding to the fixed-point mp3 encoding library shine")
 url="https://github.com/savonet/ocaml-shine"
+license=('GPL2')
 depends=('ocaml' 'shine')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-shine/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-shine/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('0f8921966ac445295425cc52af3a84a6')
 
 build() {
