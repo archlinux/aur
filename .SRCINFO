@@ -1,0 +1,12 @@
+pkgbase = phasex
+	pkgdesc = A high-precision MIDI software synthesizer built around flexible phase modulation and oscillator sources
+	pkgver = 0.14.97
+	pkgrel = 1
+	url = https://github.com/williamweston/phasex.git
+	arch = x86_64
+	license = GPL
+	source = phasex::git+https://github.com/williamweston/phasex.git#tag=0.14.97
+	md5sums = SKIP
+
+pkgname = phasex
+
