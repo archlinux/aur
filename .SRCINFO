@@ -47,7 +47,7 @@ pkgbase = osquery-git
 	conflicts = gmock
 	options = !strip
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery#commit=a36d634246c48f223aa37ff01f77ead2a93d44ae
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=e17584f44f86b14ee6638ddb23a3a38fa7a0c7e7
 	source = osqueryd.conf.d
 	source = osqueryd.service
 	source = arch-linux.patch

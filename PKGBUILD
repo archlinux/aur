@@ -17,7 +17,7 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 conflicts=('gtest' 'gmock')
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
-_gitcommit="a36d634246c48f223aa37ff01f77ead2a93d44ae"
+_gitcommit="e17584f44f86b14ee6638ddb23a3a38fa7a0c7e7"
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
