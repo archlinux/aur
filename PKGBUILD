@@ -3,14 +3,14 @@
 pkgname=ocaml-voaacenc
 pkgver=0.1.1
 pkgrel=2
-license=('LGPL2.1')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml bindings for the vo-aacenc AAC encoder"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-voaacenc"
+license=('LGPL2.1')
 depends=('ocaml' 'vo-aacenc')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-voaacenc/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-voaacenc/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('9fc233686c26a0ec96b8a9144dc8d95b')
 
 build() {
