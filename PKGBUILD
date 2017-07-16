@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
 pkgname=jedit-pkgbuild 
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='jEdit PKGBUILD edit mode'
 arch=('any')
 url='https://bitbucket.org/ur6lad/jedit-pkgbuild'
@@ -21,10 +21,11 @@ prepare() {
 
 package() {
 	#  catalog.dtd is required to edit the edit mode catalog (XML)
-	mkdir -p "$pkgdir"/usr/share/$pkgname
+	install -d "$pkgdir"/usr/share/$pkgname
 	install -m 644 "$srcdir"/catalog.dtd "$pkgdir"/usr/share/$pkgname/catalog.dtd
+	ln -s /usr/share/java/jedit/modes/catalog "$pkgdir"/usr/share/$pkgname/catalog.xml
 
 	# edit mode file
-	mkdir -p "$pkgdir"/usr/share/java/jedit/modes
+	install -d "$pkgdir"/usr/share/java/jedit/modes
 	install -m 644 "$srcdir"/pkgbuild.xml "$pkgdir"/usr/share/java/jedit/modes/pkgbuild.xml
 }
