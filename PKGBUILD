@@ -3,14 +3,14 @@
 pkgname=ocaml-taglib
 pkgver=0.3.2
 pkgrel=2
-license=('LGPL2.1')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml bindings to taglib"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-taglib"
+license=('LGPL2.1')
 depends=('ocaml' 'taglib')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-taglib/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-taglib/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('67d7274db0626d21f8a2f780d413616b')
 
 build() {
