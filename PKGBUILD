@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=arrayfire
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
-url='http://arrayfire.com'
+url='https://arrayfire.com'
 pkgver=3.5.0
 arch=('x86_64')
 pkgrel=2
