@@ -1,0 +1,668 @@
+diff --git a/Makefile b/Makefile
+index 6c3f866..1e04cc2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,4 +19,15 @@ clean:
+ test:
+ 	@echo hello;
+ 
++lib:
++	cd wrapper; $(MAKE) libvmaf.a; cd ..;
++
++install:
++	cd wrapper; $(MAKE) install; cd ..;
++
++uninstall:
++	cd wrapper; $(MAKE) uninstall; cd ..;
++
+ .PHONY: clean $(TARGETS)
++
++
+diff --git a/wrapper/.gitignore b/wrapper/.gitignore
+index 24c4e1c..f6b2ab0 100644
+--- a/wrapper/.gitignore
++++ b/wrapper/.gitignore
+@@ -1,5 +1,6 @@
+ *.o
+ vmafossexec
++libvmaf.a
+ .cproject
+ .project
+ .DS_Store
+diff --git a/wrapper/Makefile b/wrapper/Makefile
+index 3d672e7..f0296a2 100644
+--- a/wrapper/Makefile
++++ b/wrapper/Makefile
+@@ -29,6 +29,7 @@ OBJS = \
+     $(OBJDIR)/combo.o \
+     $(OBJDIR)/vmaf.o \
+ 	$(OBJDIR)/darray.o \
++	$(OBJDIR)/libvmaf.o \
+     $(OBJDIR)/main.o \
+ 	$(OBJDIR)/pugixml.o \
+ 
+@@ -108,6 +109,9 @@ $(OBJDIR)/ms_ssim.o: $(FEATURESRCDIR)/ms_ssim.c
+ $(OBJDIR)/svm.o: $(SRCDIR)/svm.cpp
+ 	$(CXX) -c -o $@ $(CXXFLAGS) $(CPPFLAGS) $<
+ 
++$(OBJDIR)/libvmaf.o: $(SRCDIR)/libvmaf.cpp
++	$(CXX) -c -o $@ $(CXXFLAGS) $(CPPFLAGS) -I $(SRCDIR) -I $(FEATURESRCDIR)/common $<
++ 
+ $(OBJDIR)/main.o: $(SRCDIR)/main.cpp
+ 	$(CXX) -c -o $@ $(CXXFLAGS) $(CPPFLAGS) -I $(FEATURESRCDIR) -I $(FEATURESRCDIR)/common $<
+ 
+@@ -129,8 +133,34 @@ else
+ 	$(CXX) -o $@ $(LDFLAGS) $^ -L$(PTOOLSDIR) $(LIBS) -Wl,-rpath=$(PTOOLSDIR)
+ endif
+ 
++
++PREFIX = /usr/local
++
++lib = libvmaf.a
++obj =  $(wildcard ../ptools/*.o) $(wildcard obj/*.o)
++
++$(lib): $(obj)
++	ar rcs $@ $^
++
++.PHONY: install
++install:
++	ar -dv $(lib) main.o
++	mkdir -p $(DESTDIR)$(PREFIX)/lib
++	mkdir -p $(DESTDIR)$(PREFIX)/include
++	cp $(lib) $(DESTDIR)$(PREFIX)/lib/$(lib)
++	cp src/libvmaf.h $(DESTDIR)$(PREFIX)/include/
++	cp -r ../model $(DESTDIR)$(PREFIX)/share/
++
++.PHONY: uninstall
++uninstall:
++	rm -f $(lib)
++	rm -f $(DESTDIR)$(PREFIX)/lib/$(lib)
++	rm -f $(DESTDIR)$(PREFIX)/include/libvmaf.h
++	rm -fr $(DESTDIR)$(PREFIX)/share/model
++
+ clean:
+ 	rm -f $(OBJDIR)/*.o
++	rm -f libvmaf.a
+ 	rm -f vmafossexec
+ 
+ .PHONY: all clean
+diff --git a/wrapper/src/combo.c b/wrapper/src/combo.c
+index 2087418..d908b33 100644
+--- a/wrapper/src/combo.c
++++ b/wrapper/src/combo.c
+@@ -50,7 +50,7 @@ int compute_psnr(const float *ref, const float *dis, int w, int h, int ref_strid
+ int compute_ssim(const number_t *ref, const number_t *cmp, int w, int h, int ref_stride, int cmp_stride, double *score, double *l_score, double *c_score, double *s_score);
+ int compute_ms_ssim(const number_t *ref, const number_t *cmp, int w, int h, int ref_stride, int cmp_stride, double *score, double* l_scores, double* c_scores, double* s_scores);
+ 
+-int combo(const char *ref_path, const char *dis_path, int w, int h, const char *fmt,
++int combo(int (*read_frame)(float *ref_data, float *main_data, float *temp_data, int stride, double *score, void *user_data), void *user_data, int w, int h, const char *fmt,
+         DArray *adm_num_array,
+         DArray *adm_den_array,
+         DArray *adm_num_scale0_array,
+@@ -93,9 +93,8 @@ int combo(const char *ref_path, const char *dis_path, int w, int h, const char *
+     number_t *prev_blur_buf = 0;
+     number_t *blur_buf = 0;
+     number_t *temp_buf = 0;
++    
+ 
+-    FILE *ref_rfile = 0;
+-    FILE *dis_rfile = 0;
+     size_t data_sz;
+     int stride;
+     int ret = 1;
+@@ -146,90 +145,19 @@ int combo(const char *ref_path, const char *dis_path, int w, int h, const char *
+         goto fail_or_end;
+     }
+ 
+-    if (!(ref_rfile = fopen(ref_path, "rb")))
+-    {
+-        sprintf(errmsg, "fopen ref_path %s failed.\n", ref_path);
+-        goto fail_or_end;
+-    }
+-    if (!(dis_rfile = fopen(dis_path, "rb")))
+-    {
+-        sprintf(errmsg, "fopen dis_path %s failed.\n", dis_path);
+-        goto fail_or_end;
+-    }
+-
+-    size_t offset;
+-    if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv420p10le"))
+-    {
+-        if ((w * h) % 2 != 0)
+-        {
+-            sprintf(errmsg, "(w * h) %% 2 != 0, w = %d, h = %d.\n", w, h);
+-            goto fail_or_end;
+-        }
+-        offset = w * h / 2;
+-    }
+-    else if (!strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv422p10le"))
+-    {
+-        offset = w * h;
+-    }
+-    else if (!strcmp(fmt, "yuv444p") || !strcmp(fmt, "yuv444p10le"))
+-    {
+-        offset = w * h * 2;
+-    }
+-    else
+-    {
+-        sprintf(errmsg, "unknown format %s.\n", fmt);
+-        goto fail_or_end;
+-    }
+-
+     int frm_idx = 0;
+     while (1)
+-    {
+-
+-        // read ref y
+-        if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv444p"))
+-        {
+-            ret = read_image_b(ref_rfile, ref_buf, 0, w, h, stride);
+-        }
+-        else if (!strcmp(fmt, "yuv420p10le") || !strcmp(fmt, "yuv422p10le") || !strcmp(fmt, "yuv444p10le"))
+-        {
+-            ret = read_image_w(ref_rfile, ref_buf, 0, w, h, stride);
+-        }
+-        else
+-        {
+-            sprintf(errmsg, "unknown format %s.\n", fmt);
++    {   
++        ret = read_frame(ref_buf, dis_buf, temp_buf, stride, &score, user_data);
++        
++        if(ret == 1){
+             goto fail_or_end;
+         }
+-        if (ret)
++        if (ret == 2)
+         {
+-            if (feof(ref_rfile))
+-            {
+-                ret = 0; // OK if end of file
+-            }
+-            goto fail_or_end;
+-        }
++            break;
++        }    
+ 
+-        // read dis y
+-        if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv444p"))
+-        {
+-            ret = read_image_b(dis_rfile, dis_buf, 0, w, h, stride);
+-        }
+-        else if (!strcmp(fmt, "yuv420p10le") || !strcmp(fmt, "yuv422p10le") || !strcmp(fmt, "yuv444p10le"))
+-        {
+-            ret = read_image_w(dis_rfile, dis_buf, 0, w, h, stride);
+-        }
+-        else
+-        {
+-            sprintf(errmsg, "unknown format %s.\n", fmt);
+-            goto fail_or_end;
+-        }
+-        if (ret)
+-        {
+-            if (feof(dis_rfile))
+-            {
+-                ret = 0; // OK if end of file
+-            }
+-            goto fail_or_end;
+-        }
+ 
+ #ifdef PRINT_PROGRESS
+         printf("frame: %d, ", frm_idx);
+@@ -309,7 +237,7 @@ int combo(const char *ref_path, const char *dis_path, int w, int h, const char *
+ 
+         offset_image(ref_buf, OPT_RANGE_PIXEL_OFFSET, w, h, stride);
+         offset_image(dis_buf, OPT_RANGE_PIXEL_OFFSET, w, h, stride);
+-
++        
+         /* =========== adm ============== */
+         if ((ret = compute_adm(ref_buf, dis_buf, w, h, stride, stride, &score, &score_num, &score_den, scores, ADM_BORDER_FACTOR)))
+         {
+@@ -341,7 +269,7 @@ int combo(const char *ref_path, const char *dis_path, int w, int h, const char *
+         insert_array(adm_den_scale2_array, scores[5]);
+         insert_array(adm_num_scale3_array, scores[6]);
+         insert_array(adm_den_scale3_array, scores[7]);
+-
++        
+ #ifdef COMPUTE_ANSNR
+ 
+         /* =========== ansnr ============== */
+@@ -366,7 +294,7 @@ int combo(const char *ref_path, const char *dis_path, int w, int h, const char *
+             sprintf(errmsg, "compute_ansnr failed.\n");
+             goto fail_or_end;
+         }
+-
++        
+ #ifdef PRINT_PROGRESS
+         printf("ansnr: %.3f, ", score);
+         printf("anpsnr: %.3f, ", score_psnr);
+@@ -437,52 +365,6 @@ int combo(const char *ref_path, const char *dis_path, int w, int h, const char *
+         insert_array(vif_den_scale3_array, scores[7]);
+         insert_array(vif_array, score);
+ 
+-        // ref skip u and v
+-        if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv444p"))
+-        {
+-            if (fread(temp_buf, 1, offset, ref_rfile) != (size_t)offset)
+-            {
+-                sprintf(errmsg, "ref fread u and v failed.\n");
+-                goto fail_or_end;
+-            }
+-        }
+-        else if (!strcmp(fmt, "yuv420p10le") || !strcmp(fmt, "yuv422p10le") || !strcmp(fmt, "yuv444p10le"))
+-        {
+-            if (fread(temp_buf, 2, offset, ref_rfile) != (size_t)offset)
+-            {
+-                sprintf(errmsg, "ref fread u and v failed.\n");
+-                goto fail_or_end;
+-            }
+-        }
+-        else
+-        {
+-            sprintf(errmsg, "unknown format %s.\n", fmt);
+-            goto fail_or_end;
+-        }
+-
+-        // dis skip u and v
+-        if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv444p"))
+-        {
+-            if (fread(temp_buf, 1, offset, dis_rfile) != (size_t)offset)
+-            {
+-                sprintf(errmsg, "dis fread u and v failed.\n");
+-                goto fail_or_end;
+-            }
+-        }
+-        else if (!strcmp(fmt, "yuv420p10le") || !strcmp(fmt, "yuv422p10le") || !strcmp(fmt, "yuv444p10le"))
+-        {
+-            if (fread(temp_buf, 2, offset, dis_rfile) != (size_t)offset)
+-            {
+-                sprintf(errmsg, "dis fread u and v failed.\n");
+-                goto fail_or_end;
+-            }
+-        }
+-        else
+-        {
+-            sprintf(errmsg, "unknown format %s.\n", fmt);
+-            goto fail_or_end;
+-        }
+-
+ #ifdef PRINT_PROGRESS
+         printf("\n");
+ #endif
+@@ -493,17 +375,9 @@ int combo(const char *ref_path, const char *dis_path, int w, int h, const char *
+     ret = 0;
+ 
+ fail_or_end:
+-    if (ref_rfile)
+-    {
+-        fclose(ref_rfile);
+-    }
+-    if (dis_rfile)
+-    {
+-        fclose(dis_rfile);
+-    }
+     aligned_free(ref_buf);
+     aligned_free(dis_buf);
+-
++    
+     aligned_free(prev_blur_buf);
+     aligned_free(blur_buf);
+     aligned_free(temp_buf);
+diff --git a/wrapper/src/combo.h b/wrapper/src/combo.h
+index d03d1fd..3a02166 100644
+--- a/wrapper/src/combo.h
++++ b/wrapper/src/combo.h
+@@ -27,7 +27,7 @@ extern "C" {
+ 
+ #include "darray.h"
+ 
+-int combo(const char *ref_path, const char *dis_path, int w, int h, const char *fmt,
++int combo(int (*read_frame)(float *ref_data, float *main_data, float *temp_data, int stride, double *score, void *user_data), void *user_data, int w, int h, const char *fmt,
+         DArray *adm_num_array,
+         DArray *adm_den_array,
+         DArray *adm_num_scale0_array,
+diff --git a/wrapper/src/main.cpp b/wrapper/src/main.cpp
+index 3e3312e..f689986 100644
+--- a/wrapper/src/main.cpp
++++ b/wrapper/src/main.cpp
+@@ -17,14 +17,132 @@
+  */
+ 
+ #include <cstdio>
++#include <stdlib.h>
+ #include <exception>
+ #include <string>
+ #include <algorithm>
++#include <cstring>
++#include "libvmaf.h"
+ 
+-#include "cpu.h"
+-#include "vmaf.h"
++extern "C" {
++#include "common/file_io.h"
++}
+ 
+-enum vmaf_cpu cpu; // global
++#define read_image_b       read_image_b2s
++#define read_image_w       read_image_w2s
++
++struct data{
++    char* format;
++    int width;
++    int height;
++    size_t offset;
++    FILE *ref_rfile;
++    FILE *dis_rfile;
++};
++
++int read_frame(float *ref_data, float *dis_data, float *temp_data, int stride, double *score, void *s){
++    struct data *user_data = (struct data *)s;
++    char *fmt = user_data->format;
++    int w = user_data->width;
++    int h = user_data->height;
++    int ret;
++    
++    // read ref y
++    if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv444p"))
++    {
++        ret = read_image_b(user_data->ref_rfile, ref_data, 0, w, h, stride);
++    }
++    else if (!strcmp(fmt, "yuv420p10le") || !strcmp(fmt, "yuv422p10le") || !strcmp(fmt, "yuv444p10le"))
++    {
++        ret = read_image_w(user_data->ref_rfile, ref_data, 0, w, h, stride);
++    }
++    else
++    {
++        fprintf(stderr, "unknown format %s.\n", fmt);
++        return 1;
++    }
++    if (ret)
++    {
++        if (feof(user_data->ref_rfile))
++        {
++            ret = 2; // OK if end of file
++        }
++        return ret;
++    }
++ 
++    // read dis y
++    if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv444p"))
++    {
++        ret = read_image_b(user_data->dis_rfile, dis_data, 0, w, h, stride);
++    }
++    else if (!strcmp(fmt, "yuv420p10le") || !strcmp(fmt, "yuv422p10le") || !strcmp(fmt, "yuv444p10le"))
++    {
++        ret = read_image_w(user_data->dis_rfile, dis_data, 0, w, h, stride);
++    }
++    else
++    {
++        fprintf(stderr, "unknown format %s.\n", fmt);
++        return 1;
++    }
++    if (ret)
++    {
++        if (feof(user_data->dis_rfile))
++        {
++            ret = 2; // OK if end of file
++        }
++        return ret;
++    }
++    
++    // ref skip u and v
++    if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv444p"))
++    {
++        if (fread(temp_data, 1, user_data->offset, user_data->ref_rfile) != (size_t)user_data->offset)
++        {
++            fprintf(stderr, "ref fread u and v failed.\n");
++            goto fail_or_end;
++        }
++    }
++    else if (!strcmp(fmt, "yuv420p10le") || !strcmp(fmt, "yuv422p10le") || !strcmp(fmt, "yuv444p10le"))
++    {
++        if (fread(temp_data, 2, user_data->offset, user_data->ref_rfile) != (size_t)user_data->offset)
++        {
++            fprintf(stderr, "ref fread u and v failed.\n");
++            goto fail_or_end;
++        }
++    }
++    else
++    {
++        fprintf(stderr, "unknown format %s.\n", fmt);
++        goto fail_or_end;
++    }
++
++    // dis skip u and v
++    if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv444p"))
++    {
++        if (fread(temp_data, 1, user_data->offset, user_data->dis_rfile) != (size_t)user_data->offset)
++        {
++            fprintf(stderr, "dis fread u and v failed.\n");
++            goto fail_or_end;
++        }
++    }
++    else if (!strcmp(fmt, "yuv420p10le") || !strcmp(fmt, "yuv422p10le") || !strcmp(fmt, "yuv444p10le"))
++    {
++        if (fread(temp_data, 2, user_data->offset, user_data->dis_rfile) != (size_t)user_data->offset)
++        {
++            fprintf(stderr, "dis fread u and v failed.\n");
++            goto fail_or_end;
++        }
++    }
++    else
++    {
++        fprintf(stderr, "unknown format %s.\n", fmt);
++        goto fail_or_end;
++    }
++   
++   
++fail_or_end:   
++    return ret;
++}
+ 
+ char* getCmdOption(char ** begin, char ** end, const std::string & option)
+ {
+@@ -62,6 +180,7 @@ int main(int argc, char *argv[])
+     bool disable_clip = false;
+     bool disable_avx = false;
+     bool enable_transform = false;
++    bool phone_model = false;
+     bool do_psnr = false;
+     bool do_ssim = false;
+     bool do_ms_ssim = false;
+@@ -110,11 +229,15 @@ int main(int argc, char *argv[])
+             disable_avx = true;
+         }
+ 
+-        if (cmdOptionExists(argv + 7, argv + argc, "--enable-transform") ||
+-            cmdOptionExists(argv + 7, argv + argc, "--phone-model"))
++        if (cmdOptionExists(argv + 7, argv + argc, "--enable-transform"))
+         {
+             enable_transform = true;
+         }
++        
++        if (cmdOptionExists(argv + 7, argv + argc, "--phone-model"))
++        {
++            phone_model = true;
++        }        
+ 
+         if (cmdOptionExists(argv + 7, argv + argc, "--psnr"))
+         {
+@@ -137,16 +260,60 @@ int main(int argc, char *argv[])
+             fprintf(stderr, "Error: pool_method must be min, harmonic_mean or mean, but is %s\n", pool_method);
+             return -1;
+         }
+-
+-        cpu = cpu_autodetect();
+-
+-        if (disable_avx)
++        
++        struct data *s;
++        s = (struct data *)malloc(sizeof(struct data));
++        s->format = fmt;
++        s->width = width;
++        s->height = height;
++        
++        if (!strcmp(fmt, "yuv420p") || !strcmp(fmt, "yuv420p10le"))
+         {
+-            cpu = VMAF_CPU_NONE;
++            if ((width * height) % 2 != 0)
++            {
++                fprintf(stderr, "(width * height) %% 2 != 0, width = %d, height = %d.\n", width, height);
++                goto fail_or_end;
++            }
++            s->offset = width * height / 2;
+         }
+-
++        else if (!strcmp(fmt, "yuv422p") || !strcmp(fmt, "yuv422p10le"))
++        {
++            s->offset = width * height;
++        }
++        else if (!strcmp(fmt, "yuv444p") || !strcmp(fmt, "yuv444p10le"))
++        {
++            s->offset = width * height * 2;
++        }
++        else
++        {
++            fprintf(stderr, "unknown format %s.\n", fmt);
++            goto fail_or_end;
++        }
++        
++        
++        if (!(s->ref_rfile = fopen(ref_path, "rb")))
++        {
++            fprintf(stderr, "fopen ref_path %s failed.\n", ref_path);
++            goto fail_or_end;
++        }
++        if (!(s->dis_rfile = fopen(dis_path, "rb")))
++        {
++            fprintf(stderr, "fopen ref_path %s failed.\n", dis_path);
++            goto fail_or_end;
++        }        
++            
+         /* Run VMAF */
+-        score = RunVmaf(fmt, width, height, ref_path, dis_path, model_path, log_path, log_fmt, disable_clip, enable_transform, do_psnr, do_ssim, do_ms_ssim, pool_method);
++        score = compute_vmaf(fmt, width, height, read_frame, s, model_path, log_path, log_fmt, disable_clip, disable_avx, enable_transform, phone_model, do_psnr, do_ssim, do_ms_ssim, pool_method);
++                
++fail_or_end:
++        if (s->ref_rfile)
++        {
++            fclose(s->ref_rfile);
++        }
++        if (s->dis_rfile)
++        {
++            fclose(s->dis_rfile);
++        }
+ 
+     }
+     catch (const std::exception &e)
+@@ -155,6 +322,6 @@ int main(int argc, char *argv[])
+         print_usage(argc, argv);
+         return -1;
+     }
+-
++    
+     return 0;
+ }
+diff --git a/wrapper/src/vmaf.cpp b/wrapper/src/vmaf.cpp
+index 5e14868..eeb9f78 100644
+--- a/wrapper/src/vmaf.cpp
++++ b/wrapper/src/vmaf.cpp
+@@ -135,7 +135,7 @@ void _read_and_assert_model(const char *model_path, Val& feature_names,
+ 
+ }
+ 
+-Result VmafRunner::run(Asset asset, bool disable_clip, bool enable_transform,
++Result VmafRunner::run(Asset asset, int (*read_frame)(float *ref_data, float *main_data, float *temp_data, int stride, double *score, void *user_data), void *user_data, bool disable_clip, bool enable_transform,
+                        bool do_psnr, bool do_ssim, bool do_ms_ssim)
+ {
+ 
+@@ -163,8 +163,6 @@ Result VmafRunner::run(Asset asset, bool disable_clip, bool enable_transform,
+ 
+     int w = asset.getWidth();
+     int h = asset.getHeight();
+-    const char* ref_path = asset.getRefPath();
+-    const char* dis_path = asset.getDisPath();
+     const char* fmt = asset.getFmt();
+     char errmsg[1024];
+ 
+@@ -251,7 +249,7 @@ Result VmafRunner::run(Asset asset, bool disable_clip, bool enable_transform,
+     printf("Extract atom features...\n");
+ #endif
+ 
+-    int ret = combo(ref_path, dis_path, w, h, fmt,
++    int ret = combo(read_frame, user_data, w, h, fmt,
+             &adm_num_array,
+             &adm_den_array,
+             &adm_num_scale0_array,
+@@ -629,20 +627,20 @@ Result VmafRunner::run(Asset asset, bool disable_clip, bool enable_transform,
+ static const char VMAFOSS_XML_VERSION[] = "0.3.2"; // fix slopes and intercepts to match nflxall_vmafv4.pkl
+ 
+ double RunVmaf(const char* fmt, int width, int height,
+-               const char *ref_path, const char *dis_path, const char *model_path,
+-               const char *log_path, const char *log_fmt,
++               int (*read_frame)(float *ref_data, float *main_data, float *temp_data, int stride, double *score, void *user_data), 
++               void *user_data, const char *model_path, const char *log_path, const char *log_fmt,
+                bool disable_clip, bool enable_transform,
+                bool do_psnr, bool do_ssim, bool do_ms_ssim,
+                const char *pool_method)
+ {
+     printf("Start calculating VMAF score...\n");
+ 
+-    Asset asset(width, height, ref_path, dis_path, fmt);
++    Asset asset(width, height, fmt);
+     VmafRunner runner{model_path};
+     Timer timer;
+ 
+     timer.start();
+-    Result result = runner.run(asset, disable_clip, enable_transform, do_psnr, do_ssim, do_ms_ssim);
++    Result result = runner.run(asset, read_frame, user_data, disable_clip, enable_transform, do_psnr, do_ssim, do_ms_ssim);
+     timer.stop();
+ 
+     if (pool_method != NULL && (strcmp(pool_method, "min")==0))
+diff --git a/wrapper/src/vmaf.h b/wrapper/src/vmaf.h
+index 434d7ba..44f5993 100644
+--- a/wrapper/src/vmaf.h
++++ b/wrapper/src/vmaf.h
+@@ -30,8 +30,8 @@
+ #include <cstring>
+ 
+ double RunVmaf(const char* fmt, int width, int height,
+-               const char *ref_path, const char *dis_path, const char *model_path,
+-               const char *log_path, const char *log_fmt,
++               int (*read_frame)(float *ref_data, float *main_data, float *temp_data, int stride, double *score, void *user_data),
++               void *user_data, const char *model_path, const char *log_path, const char *log_fmt,
+                bool disable_clip, bool enable_transform,
+                bool do_psnr, bool do_ssim, bool do_ms_ssim,
+                const char *pool_method);
+@@ -39,18 +39,16 @@ double RunVmaf(const char* fmt, int width, int height,
+ class Asset
+ {
+ public:
+-    Asset(int w, int h, const char *ref_path, const char *dis_path, const char *fmt):
+-        w(w), h(h), ref_path(ref_path), dis_path(dis_path), fmt(fmt) {}
+-    Asset(int w, int h, const char *ref_path, const char *dis_path):
+-        w(w), h(h), ref_path(ref_path), dis_path(dis_path), fmt("yuv420p") {}
++    Asset(int w, int h, const char *fmt):
++        w(w), h(h), fmt(fmt) {}
++    Asset(int w, int h):
++        w(w), h(h), fmt("yuv420p") {}
+     int getWidth() { return w; }
+     int getHeight() { return h; }
+-    const char* getRefPath() { return ref_path; }
+-    const char* getDisPath() { return dis_path; }
+     const char* getFmt() { return fmt; }
+ private:
+     const int w, h;
+-    const char *ref_path, *dis_path, *fmt;
++    const char *fmt;
+ };
+ 
+ class StatVector
+@@ -167,7 +165,7 @@ class VmafRunner
+         sprintf(libsvm_model_path, "%s.model", model_path);
+     }
+     ~VmafRunner() { delete[] libsvm_model_path; }
+-    Result run(Asset asset, bool disable_clip, bool enable_transform, bool do_psnr, bool do_ssim, bool do_ms_ssim);
++    Result run(Asset asset, int (*read_frame)(float *ref_data, float *main_data, float *temp_data, int stride, double *score, void *user_data), void *user_data, bool disable_clip, bool enable_transform, bool do_psnr, bool do_ssim, bool do_ms_ssim);
+ private:
+     const char *model_path;
+     char *libsvm_model_path;

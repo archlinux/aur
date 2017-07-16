@@ -1,0 +1,15 @@
+diff -Naur a/wrapper/Makefile b/wrapper/Makefile
+--- a/wrapper/Makefile	2017-07-16 16:34:41.000000000 -0300
++++ b/wrapper/Makefile	2017-07-16 16:34:22.226291997 -0300
+@@ -147,9 +147,10 @@
+ 	ar -dv $(lib) main.o
+ 	mkdir -p $(DESTDIR)$(PREFIX)/lib
+ 	mkdir -p $(DESTDIR)$(PREFIX)/include
++	mkdir -p $(DESTDIR)$(PREFIX)/share
+ 	cp $(lib) $(DESTDIR)$(PREFIX)/lib/$(lib)
+ 	cp src/libvmaf.h $(DESTDIR)$(PREFIX)/include/
+-	cp -r ../model $(DESTDIR)$(PREFIX)/share/
++	cp -r ../resource/model $(DESTDIR)$(PREFIX)/share/
+ 
+ .PHONY: uninstall
+ uninstall:
