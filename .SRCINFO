@@ -1,7 +1,7 @@
 pkgbase = paxchange
 	pkgdesc = A tool to synchronize installed packages across multiple machines
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Baum42/paxchange
 	arch = i686
 	arch = x86_64
