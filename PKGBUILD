@@ -3,7 +3,7 @@
 
 pkgname=lib32-tk
 pkgver=8.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A windowing toolkit for use with tcl"
 arch=('x86_64')
 url="http://tcl.sourceforge.net/"
