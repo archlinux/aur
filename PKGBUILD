@@ -18,11 +18,14 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset" "config.x86_64" "config.i686")
+        "${pkgbase}.preset")
+source_x86_64=("config.x86_64")
+source_i686=("config.i686")
 sha256sums=('e034d170f2acddd9c3a4c1545421b3fbc20f8ca2830e6f62b47eb310b99b091d'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'd2271b1dfae30f38d70549e1d142da9d03eade0fd4620bbc4bd757b9c7a27422')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+sha256sums_i686=('130c3e505315d4405cc1ba9235ab8cd075e1122e0f1fa50b66eceab4eb268faa')
+sha256sums_x86_64=('d2271b1dfae30f38d70549e1d142da9d03eade0fd4620bbc4bd757b9c7a27422')
 
 _kernelname=${pkgbase#linux}
 
@@ -133,7 +136,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel (git version)"
+  pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
   provides=('linux-headers' 'linux-xanmod-git-headers')
   replaces=('linux-xanmod-git-headers')
   conflicts=('linux-xanmod-git-headers')
@@ -264,7 +267,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel"
   provides=('linux-docs')
 
   cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
