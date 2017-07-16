@@ -1,0 +1,13 @@
+pkgbase = urxvt-vtwheel-vte
+	pkgdesc = VTE-like scroll wheel support for urxvt
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://aur.archlinux.org/
+	arch = any
+	license = unknown
+	depends = rxvt-unicode-cvs
+	source = vtwheel
+	md5sums = 6c4802c76fb22f92285f875fdb0d7bad
+
+pkgname = urxvt-vtwheel-vte
+

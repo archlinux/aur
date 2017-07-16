@@ -1,0 +1,50 @@
+#! perl
+
+=head1 NAME
+
+vtwheel - emulate scroll wheel for secondary screen
+
+=head1 DESCRIPTION
+
+Emulate scroll wheel on secondary screen by simulating key presses.
+
+With the latest rxvt-unicode, it mirrors the scrolling behavior of VTE-based
+terminals by not overriding the scroll wheel while in applications supporting
+mouse-reporting (e.g. in vim).
+
+=cut
+
+my $scroll_lines = 3;
+my $key_scroll_up = 111;
+my $key_scroll_down = 116;
+
+sub simulate_keypress {
+    my ($self, $keycode) = @_;
+
+    for (my $i = 0; $i < $scroll_lines; $i++) {
+        $self->key_press(0, $keycode);
+        $self->key_release(0, $keycode);
+    }
+}
+
+sub on_button_release {
+    my ($self, $event) = @_;
+
+    # Don't change scrolling on primary screen
+    !$self->current_screen and return ();
+
+    # Don't change scrolling when mouse report is on (e.g. inside vim)
+    eval {
+        $self->priv_modes & urxvt::PrivMode_mouse_report
+    } && return ();
+
+    if ($event->{button} eq "4") {
+        $self->simulate_keypress($key_scroll_up);
+        return 1;
+    } elsif ($event->{button} eq "5") {
+        $self->simulate_keypress($key_scroll_down);
+        return 1;
+    }
+
+    return ();
+}
