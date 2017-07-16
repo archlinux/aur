@@ -23,6 +23,31 @@ index ee72ebe..e347047 100644
  	case pci_fixup_enable:
  		start = __start_pci_fixups_enable;
  		end = __end_pci_fixups_enable;
+@@ -4551,6 +4551,24 @@ static void quirk_intel_qat_vf_cap(struct pci_dev *pdev)
+ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x443, quirk_intel_qat_vf_cap);
+
+ /*
++ * On Mac Pro 11, the allocation of pci bridge memory resource
++ * broke ACPI Sleep Type register region.
++ */
++static void quirk_mac_disable_mmio_bar(struct pci_dev *dev)
++{
++	struct resource *b_res;
++
++	dev_info(&dev->dev, "[Quirk] Disable mmio on Mac Pro 11\n");
++	if ((dev->class >> 8) != PCI_CLASS_BRIDGE_PCI)
++		return;
++
++	b_res = &dev->resource[PCI_BRIDGE_RESOURCES];
++	b_res[1].flags = 0;
++	b_res[2].flags = 0;
++}
++DECLARE_PCI_FIXUP_ASSIGN(PCI_VENDOR_ID_INTEL, 0x8c10, quirk_mac_disable_mmio_bar);
++
++/*
+  * VMD-enabled root ports will change the source ID for all messages
+  * to the VMD device. Rather than doing device matching with the source
+  * ID, the AER driver should traverse the child device tree, reading
 diff --git a/drivers/pci/setup-bus.c b/drivers/pci/setup-bus.c
 index 55641a3..730d6fd 100644
 --- a/drivers/pci/setup-bus.c
@@ -36,6 +61,7 @@ index 55641a3..730d6fd 100644
  		/* Fall through */
  	default:
  		pbus_size_io(bus, realloc_head ? 0 : additional_io_size,
+diff --git a/include/asm-generic/vmlinux.lds.h b/include/asm-generic/vmlinux.lds.h
 index 6a67ab9..3ba05f0 100644
 --- a/include/asm-generic/vmlinux.lds.h
 +++ b/include/asm-generic/vmlinux.lds.h
@@ -82,3 +108,4 @@ index 48958d3..248acdb 100644
 +	".pci_fixup_assign", \
  	".pci_fixup_enable", ".pci_fixup_resume", \
  	".pci_fixup_resume_early", ".pci_fixup_suspend"
+

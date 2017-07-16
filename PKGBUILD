@@ -1,9 +1,9 @@
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
-#pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-macbook        # Build kernel with a different name
-_srcname=linux-4.11
-pkgver=4.11.9
+pkgbase=linux               # Build stock -ARCH kernel
+pkgbase=linux-macbook       # Build kernel with a different name
+_srcname=linux-4.12
+pkgver=4.12.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -22,29 +22,33 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         # service file for suspend/resume events
         'macbook-wakeup.service'
-        # macbook specific patches
+        # linux-macbook specific patches
         'apple-gmux.patch'
-        'macbook-suspend.patch'
-        'poweroff-quirk-workaround.patch'
+        'PCI-Work-around-poweroff-suspend-to-RAM-issue-on-Mac.patch'
+        'RFC-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch'
+        'RFC-v2-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch'
         'intel-pstate-backport.patch'
         )
 
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            'a112d1330817bac401dbbd1e2c8aacb1b725bc28239e2ca58281ea3754deceb5'
+            '8447d28c88834bac75653a0370a6f30615688db4756b953720e9b024537e34ac'
             'SKIP'
-            '21da1c7d0dc1ef8201e7961977c80c4c0d72073141591018da9abe386c4bd985'
-            'b115305791bfdd49a8dddd952e0b6bcaa6c522fddf476677fe846bbf26696499'
+            'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1'
+            'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c5a714823c3418692bc5c212dd5d094a0e2ae6147d6726822911f1c26e3a1d1b'
             'e74dbeaa3fd04dbf93ef4498015234bdb65351857e07c03c00cee69fcfc844b4'
-            '8f91c4b8b30fb0db3fdf92223618b4a399041f4be399bc8eacbbcbbe646ca678'
-            'ad800989f9cf2fd04e6db09409b9a531e883eeb825f430d14df8c6ee7870621a'
+            '43bcb45f99da0242ec5b340631d0777f302a5f356ef3ccec8d1d30de5a3a025a'
+            '6c046234fcca75d0334f3f92d245be02b5a5fd202273af9d393602a4140df372'
+            '09189eb269a9fd16898cf90a477df23306236fb897791e8d04e5a75d5007bbff'
             '3d9fdbb4bee270efa6eef1d8e40a5ae562a87d5a2edae629e0829cc51714de13')
+
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+              'A55A1B6C098962D84AE9B57016A33C9959A40DED' # Tony Lambiris
              )
 
 _kernelname=${pkgbase#linux}
@@ -55,14 +59,26 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
+  # security patches
+
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # macbook specific patches
+  # start of macbook specific patches
   patch -p1 -F1 -i "${srcdir}/apple-gmux.patch"
-  # patch components below grabbed from https://patchwork.kernel.org/patch/9140867/
-  patch -p1 -F1 -i "${srcdir}/macbook-suspend.patch"
-  patch -p1 -F1 -i "${srcdir}/poweroff-quirk-workaround.patch"
+
+  # https://patchwork.kernel.org/patch/9821773/
+  patch -p1 -F1 -i \
+    "${srcdir}/PCI-Work-around-poweroff-suspend-to-RAM-issue-on-Mac.patch"
+
+  # https://patchwork.kernel.org/patch/9140867/
+  patch -p1 -F1 -i \
+    "${srcdir}/RFC-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch"
+
+  # https://patchwork.kernel.org/patch/9288825/
+  patch -p1 -F1 -i \
+    "${srcdir}/RFC-v2-PCI-Workaround-to-enable-poweroff-on-Mac-Pro-11.patch"
+
   # backported changes to the intel-pstate driver from master branch
   #patch -p0 -F3 -i "${srcdir}/intel-pstate-backport.patch"
 
@@ -175,7 +191,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
