@@ -3,14 +3,14 @@
 pkgname=ocaml-samplerate
 pkgver=0.1.4
 pkgrel=1
-license=('LGPL2.1')
-arch=('i686' 'x86_64')
 pkgdesc="OCaml bindings for libsamplerate"
+arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-samplerate"
+license=('LGPL2.1')
 depends=('ocaml' 'libsamplerate')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-samplerate/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-samplerate/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('d1d893965ba6f4e83054574447da9e00')
 
 build() {
