@@ -68,7 +68,7 @@ package() {
 
   install -Dm644 "${srcdir}/amuled.service" "${pkgdir}/usr/lib/systemd/system/amuled.service"
   install -Dm644 "${srcdir}/amuled@.service" "${pkgdir}/usr/lib/systemd/user/amuled.service"
-  install -Dm644 "${srcdir}/amulewebd.service" "${pkgdir}/usr/lib/systemd/system/amuleweb.service"
+  install -Dm644 "${srcdir}/amulewebd.service" "${pkgdir}/usr/lib/systemd/system/amulewebd.service"
   install -Dm644 "${srcdir}/amule.sysuser" "${pkgdir}/usr/lib/sysusers.d/amule.conf"
   install -Dm644 "${srcdir}/amule.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/amule.conf"
 
