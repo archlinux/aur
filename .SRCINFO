@@ -1,0 +1,19 @@
+pkgbase = jsonrpc-glib
+	pkgdesc = JSON-RPC library for GLib
+	pkgver = 3.25.3
+	pkgrel = 1
+	url = https://github.com/GNOME/jsonrpc-glib
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = json-glib
+	source = git+https://git.gnome.org/browse/jsonrpc-glib#commit=
+	sha256sums = SKIP
+
+pkgname = jsonrpc-glib
+
