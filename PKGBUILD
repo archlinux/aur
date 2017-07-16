@@ -24,7 +24,7 @@ source=('git+https://github.com/ppy/osu.git'
         'x-osu-lazer.xml')
 sha256sums=('SKIP'
             'c499dbff1d9a8f382e7b3cf4a95b58b9f02fb98e66e50cddb5d7d6c8a5223d2d'
-            '5a74a559d4dbeaa31063131d86a2bbb4ca80a14255111458d3c4a916843e52c5'
+            '11d29c2654896607f37bc5c8e558ea245d8e3b1b412dcba03033bf1db6580ebe'
             '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
             'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
 
