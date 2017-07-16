@@ -1,5 +1,5 @@
 pkgbase = gdc
-	pkgver = 6.2.1
+	pkgver = 7.1.0
 	pkgrel = 2
 	url = https://github.com/D-Programming-GDC/GDC
 	arch = i686
@@ -7,16 +7,16 @@ pkgbase = gdc
 	license = GPL
 	makedepends = binutils>=2.26
 	makedepends = git
-	source = git+https://gcc.gnu.org/git/gcc.git#commit=c2103c1
+	source = https://ftp.gnu.org/pub/gnu/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2
 	source = http://isl.gforge.inria.fr/isl-0.16.1.tar.bz2
-	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git#tag=v2.068.2_gcc6
+	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	source = git+https://github.com/D-Programming-GDC/GDMD.git
 	source = paths.diff
-	sha256sums = SKIP
+	sha256sums = 8a8136c235f64c6fef69cac0d73a46a1a09bb250776a050aec8f9fc880bebc17
 	sha256sums = 412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e04cea391007ebab5d9b0ff33179c1fded0afcf43059b811290472ea52222361
+	sha256sums = fefe9298f8d5859758ca63bab084984baa8adbbd85b3b3b8798283731321df7b
 
 pkgname = gdc
 	pkgdesc = Compiler for D programming language which uses gcc backend
