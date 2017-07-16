@@ -1,6 +1,6 @@
 pkgname=mcg
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A covergrid for the Music Player Daemon."
 url="https://www.coderkun.de/codes/mcg"
 arch=(any)
