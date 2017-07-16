@@ -1,4 +1,5 @@
-# Maintainer:	Ondřej Surý <ondrej@sury.
+# Maintainer:	Ondřej Surý <ondrej@sury.org>
+# Maintainer:	Julian Brost <julian@0x4a42.net>
 # Contributor:	Oleander Reis <oleander@oleander.cc>
 # Contributor:	Otto Sabart <seberm[at]gmail[dot]com>
 
