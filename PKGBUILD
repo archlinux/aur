@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nnpack-git
-pkgver=r230.32c1a9d
+pkgver=r252.feb7b50
 pkgrel=1
 pkgdesc="An acceleration package for neural network computations (git version)"
 arch=('i386' 'x86_64')
