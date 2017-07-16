@@ -1,18 +1,18 @@
 pkgbase = gog-owlboy
 	pkgdesc = Owlboy is a 'hi-bit' adventure game, where you can fly and explore a brand new world in the clouds!
-	pkgver = 2.0.0.1
+	pkgver = 2.2.0.3
 	pkgrel = 1
 	url = http://www.owlboygame.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	optdepends = firejail: Automatically sandbox this application from your OS
-	source = gog://gog_owlboy_2.0.0.1.sh
-	source = gog-owlboy.desktop
 	source = gog-owlboy
-	sha256sums = 76958e0bb434d2514873aaddb892bc6c7055c39799ecde5f62a56345136853fc
-	sha256sums = 8574e2463800004ddf97e49d2760d834413bf51fda4b1a57ead8cc10b07ac4f2
+	source = gog-owlboy.desktop
+	source = file://gog_owlboy_2.2.0.3.sh
 	sha256sums = 160b4d0fb275d3c1d4d6d574ca4085579e944e67dd32bd0a0c6e79f2e3d105a6
+	sha256sums = 8574e2463800004ddf97e49d2760d834413bf51fda4b1a57ead8cc10b07ac4f2
+	sha256sums = 41cc985f9399bb59a4da78a0ffbeae9d8ec7fda8dee3f409b93c9d978a8f8562
 
 pkgname = gog-owlboy
 
