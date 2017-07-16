@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=iortcw-git
-pkgver=1.51.r30.ga868a263
+pkgver=1.51.r32.g87b51011
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
@@ -18,11 +18,20 @@ optdepends=(
 )
 install='iortcw-git.install'
 source=("git+https://github.com/iortcw/iortcw.git"
-	'iortcwsp.launcher'
-	'iortcwmp.launcher'
-	'iortcwded.launcher'
-	'iortcw.desktop'
-	'iortcw.png')
+# Classic renderer
+	'iortcw-sp.launcher'
+	'iortcw-mp.launcher'
+	'iortcw-ded.launcher'
+# Alternative renderer launchers
+        'iortcw-sp-rend2.launcher'
+        'iortcw-mp-rend2.launcher'
+# Desktop entries
+	'iortcw-sp.desktop'
+        'iortcw-mp.desktop'
+        'iortcw-sp-rend2.desktop'
+        'iortcw-mp-rend2.desktop'
+	'iortcw.png'
+)
 
 pkgver() {
   cd "$srcdir/iortcw"
@@ -76,36 +85,62 @@ package() {
         # x86_64 Systems
         #
         sed -i "s:ARCH:x86_64:" \
-            $srcdir/iortcwsp.launcher
+            $srcdir/iortcw-sp.launcher
         sed -i "s:ARCH:x86_64:" \
-            $srcdir/iortcwmp.launcher
+            $srcdir/iortcw-mp.launcher
         sed -i "s:ARCH:x86_64:" \
-            $srcdir/iortcwded.launcher
+            $srcdir/iortcw-sp-rend2.launcher
+        sed -i "s:ARCH:x86_64:" \
+            $srcdir/iortcw-mp-rend2.launcher
+        sed -i "s:ARCH:x86_64:" \
+            $srcdir/iortcw-ded.launcher
     else
         #
         # i686 Systems
         #
         sed -i "s:ARCH:x86:" \
-            $srcdir/iortcwsp.launcher
+            $srcdir/iortcw-sp.launcher
         sed -i "s:ARCH:x86:" \
-            $srcdir/iortcwmp.launcher
+            $srcdir/iortcw-mp.launcher
         sed -i "s:ARCH:x86:" \
-            $srcdir/iortcwded.launcher
+            $srcdir/iortcw-sp-rend2.launcher
+        sed -i "s:ARCH:x86:" \
+            $srcdir/iortcw-mp-rend2.launcher
+        sed -i "s:ARCH:x86:" \
+            $srcdir/iortcw-ded.launcher
     fi
   
   # Install Launcher Script (Single Player Client)
-    install -D -m 755 $srcdir/iortcwsp.launcher \
-        $pkgdir/usr/bin/iortcwsp
+    install -D -m 755 $srcdir/iortcw-sp.launcher \
+        $pkgdir/usr/bin/iortcw-sp
+  # Install Launcher Script (Single Player Client Rend2)
+    install -D -m 755 $srcdir/iortcw-sp-rend2.launcher \
+        $pkgdir/usr/bin/iortcw-sp-rend2
+
   # Install Launcher Script (Multi Player Client)
-    install -D -m 755 $srcdir/iortcwmp.launcher \
-        $pkgdir/usr/bin/iortcwmp
+    install -D -m 755 $srcdir/iortcw-mp.launcher \
+        $pkgdir/usr/bin/iortcw-mp
+  # Install Launcher Script (Multi Player Client Rend2)
+    install -D -m 755 $srcdir/iortcw-mp-rend2.launcher \
+        $pkgdir/usr/bin/iortcw-mp-rend2
+
   # Install Launcher Script (Dedicated Server)
-    install -D -m 755 $srcdir/iortcwded.launcher \
-        $pkgdir/usr/bin/iortcwded
+    install -D -m 755 $srcdir/iortcw-ded.launcher \
+        $pkgdir/usr/bin/iortcw-ded
   
   # Install Desktop File (Single Player)
-    install -D -m 644 $srcdir/iortcw.desktop \
-        $pkgdir/usr/share/applications/iortcw.desktop
+    install -D -m 644 $srcdir/iortcw-sp.desktop \
+        $pkgdir/usr/share/applications/iortcw-sp.desktop
+  # Install Desktop File (Single Player Rend2)
+    install -D -m 644 $srcdir/iortcw-sp-rend2.desktop \
+        $pkgdir/usr/share/applications/iortcw-sp-rend2.desktop
+
+  # Install Desktop File (Multi Player)
+    install -D -m 644 $srcdir/iortcw-mp.desktop \
+        $pkgdir/usr/share/applications/iortcw-mp.desktop
+  # Install Desktop File (Multi Player Rend2)
+    install -D -m 644 $srcdir/iortcw-mp-rend2.desktop \
+        $pkgdir/usr/share/applications/iortcw-mp-rend2.desktop
 
   # Install Icon File (Single Player)
     install -D -m 644 $srcdir/iortcw.png \
@@ -116,5 +151,10 @@ md5sums=('SKIP'
          'adea2fbf4a63d89306d2c209b441704d'
          '1406929a04621267f4aa02fb661b154a'
          '1cb1d7fda29d223a57003d097a1a4a31'
-         '30c95f4d2b130703d36345ebd259d738'
+         'e400094c42766cb2b130d4d95bbe1caf'
+         'bbc343567fa9a2f0101bdbd07cc9d32a'
+         'fd1788b7f7773d6606fda7d0560ca430'
+         'ca2d65654738b48153e9994646986b8b'
+         'fa5e3831c252f2996a422662d81cd8bf'
+         '951ebc7745c939ae7df1d59f9d6458c1'
          'bf26dc4c10d4bbfbd0c7a052a00c3cdf')
