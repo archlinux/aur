@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.2
+Type=Application
+Name=Cyberfox
+Exec=cyberfox %u
+Icon=cyberfox-icon
+Categories=Network;WebBrowser;
+Comment=Cyberfox: Fast and privacy oriented fork of Mozilla firefox.
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+Actions=NewTab;NewWindow;NewPrivateWindow;
+StartupNotify=true
+Terminal=false
