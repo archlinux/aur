@@ -3,14 +3,14 @@
 pkgname=ocaml-xmlplaylist
 pkgver=0.1.4
 pkgrel=1
-license=('LGPL2.1')
+pkgdesc="OCaml module to parse various RSS playlist formats"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml module to parse various RSS playlist formats")
 url="https://github.com/savonet/ocaml-xmlplaylist"
+license=('LGPL2.1')
 depends=('ocaml' 'ocaml-xmlm')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-xmlplaylist/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-xmlplaylist/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('99117433dacb84117af7f01bac67df81')
 
 build() {
