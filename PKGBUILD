@@ -8,15 +8,10 @@ arch=('any')
 license=(custom)
 url='http://www.racedepartment.com/threads/chevrolet-camaro-z-28-1969.29105/'
 depends=('racer-cg')
-makedepends=('unrar')
-source=("https://xbqz4w-bn1ap000.files.1drv.com/y4mRAidfaOjgToEPQW0EMSoWbx7UhRP8m2DWIhYWtMYTpAt15N7WApmql3HO6LVlXc7X6QUfqZ_RdyB0Tt2rtLKZwZWbDIxc5sgYTR7HBHzVmokusvclOmphIVsRjpXPRjPe4qz5QtDuutO1Qy2iU1E_S9rHMRb4wW7vlEMuukwwEvIpERzmVdp9uluNp7RHlZJ/corvette69.rar")
-noextract=("corvette69.rar")
-md5sums=('c64abafebceceae5115891d6316dd59a')
+source=("http://www.tracciontrasera.net/descargas/racer/coches/69ccz28.7z")
+md5sums=('2a930f07aaca33e2d2f96233b6f62f83')
 
-prepare(){
-	unrar x -y "$srcdir/corvette69.rar"
-}
 package(){
 	install -d -m755 "$pkgdir/opt/racer-cg/cars/"
-	cp -drT "$srcdir/corvette69" "$pkgdir/opt/racer-cg/cars/69ccz28"
+	cp -dr "$srcdir/69ccz28" "$pkgdir/opt/racer-cg/cars/"
 }
