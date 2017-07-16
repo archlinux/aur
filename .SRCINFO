@@ -7,7 +7,6 @@ pkgbase = nxengine-evo
 	arch = x86_64
 	license = GPL3
 	makedepends = libpng
-	makedepends = gcc
 	makedepends = cmake
 	depends = sdl2_ttf
 	source = https://github.com/isage/nxengine-evo/archive/v2.4.1.tar.gz

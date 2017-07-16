@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/isage/nxengine-evo"
 license=('GPL3')
 depends=(sdl2_ttf)
-makedepends=(libpng gcc cmake)
+makedepends=(libpng cmake)
 
 source=("https://github.com/isage/nxengine-evo/archive/v${pkgver}.tar.gz"
         "http://www.cavestory.org/downloads/cavestoryen.zip"
@@ -31,8 +31,6 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/
-  mkdir -p $pkgdir/usr/bin/
-  cp -r CaveStory/ $pkgdir/usr/share/nxengine-evo
-  cp nx-evo $pkgdir/usr/bin/nx-evo
+  install -Ddm655 CaveStory "$pkgdir"/usr/share/nxengine-evo
+  install -Dm755 nx-evo "$pkgdir"/usr/bin/nx-evo
 }
