@@ -9,17 +9,17 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=3.2.1.r51.ga060fae673
-pkgrel=1
+pkgver=3.4.0.r16.gba6438efda
+pkgrel=2
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
 depends=('chmlib' 'icu' 'libmtp' 'libusbx' 'libwmf' 'mtdev' 'optipng' 'podofo'
-         'poppler' 'python2-apsw' 'python2-chardet' 'python2-cssselect'
+         'poppler' 'python2-apsw' 'python2-cssselect'
          'python2-cssutils' 'python2-dateutil' 'python2-dbus' 'python2-dnspython'
-         'python2-dukpy' 'python2-lxml' 'python2-mechanize' 'python2-msgpack'
+         'python2-dukpy' 'python2-html5-parser' 'python2-mechanize' 'python2-msgpack'
          'python2-netifaces' 'python2-unrardll' 'python2-pillow' 'python2-psutil'
          'python2-pygments' 'python2-pyqt5' 'python2-regex' 'qt5-svg' 'qt5-webkit')
 makedepends=('git' 'qt5-x11extras' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx')
