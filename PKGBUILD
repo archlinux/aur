@@ -1,7 +1,7 @@
 # Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 pkgname=nxengine-evo
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A somewhat upgraded/refactored version of nxengine"
 arch=('i686' 'x86_64')
 url="https://github.com/isage/nxengine-evo"
@@ -31,6 +31,7 @@ build() {
 }
 
 package() {
-  install -Ddm655 CaveStory "$pkgdir"/usr/share/nxengine-evo
+  mkdir -p "$pkgdir"/usr/share
+  cp -r CaveStory/ "$pkgdir"/usr/share/nxengine-evo
   install -Dm755 nx-evo "$pkgdir"/usr/bin/nx-evo
 }
