@@ -3,14 +3,14 @@
 pkgname=ocaml-type_conv
 pkgver=113.00.02
 pkgrel=1
-license=('Apache')
-arch=('i686' 'x86_64')
 pkgdesc="Support library for preprocessor type conversions"
+arch=('i686' 'x86_64')
 url="https://github.com/janestreet/type_conv"
+license=('Apache')
 depends=('ocaml' 'camlp4')
 makedepends=('ocaml-findlib')
-source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz")
 md5sums=('62b64cf98ad2685a718dd7d1706497f5')
 
 build() {
