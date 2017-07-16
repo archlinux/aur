@@ -1,7 +1,7 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=woeusb-git
 pkgver=r486.57a510b
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux program to create Windows USB stick installer from a real Windows DVD or an image"
 arch=('x86_64')
 url="https://github.com/slacka/WoeUSB"
@@ -26,7 +26,6 @@ pkgver() {
 }
 
 prepare() {
-	mkdir "$srcdir/WoeUSB/m4"
 	cd "$srcdir/WoeUSB"
 	autoreconf --force --install
 }
