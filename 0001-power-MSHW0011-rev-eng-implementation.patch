@@ -74,7 +74,7 @@ new file mode 100644
 index 0000000..eee21d3
 --- /dev/null
 +++ b/drivers/power/supply/surface3_power.c
-@@ -0,0 +1,674 @@
+@@ -0,0 +1,673 @@
 +/*
 + * Supports for the power IC on the Surface 3 tablet.
 + *
@@ -253,10 +253,9 @@ index 0000000..eee21d3
 +mshw0011_notify(struct mshw0011_data *cdata, u8 arg1, u8 arg2,
 +		unsigned int *ret_value)
 +{
-+	static const u8 mshw0011_guid[] = {
-+		0x67, 0xE3, 0x99, 0x3F, 0x20, 0x62, 0x55, 0x49,
-+		0x8b, 0x0f, 0x06, 0xef, 0x2a, 0xe7, 0x94, 0x12,
-+	};
++	static const uuid_le mshw0011_guid =
++		GUID_INIT(0x3F99E367, 0x6220, 0x4955,
++			  0x8B, 0x0F, 0x06, 0xEF, 0x2A, 0xE7, 0x94, 0x12);
 +	union acpi_object *obj;
 +	struct acpi_device *adev;
 +	acpi_handle handle;
@@ -266,7 +265,7 @@ index 0000000..eee21d3
 +	if (!handle || acpi_bus_get_device(handle, &adev))
 +		return -ENODEV;
 +
-+	obj = acpi_evaluate_dsm_typed(handle, mshw0011_guid, arg1, arg2, NULL,
++	obj = acpi_evaluate_dsm_typed(handle, &mshw0011_guid, arg1, arg2, NULL,
 +				      ACPI_TYPE_BUFFER);
 +	if (!obj) {
 +		dev_err(&cdata->adp1->dev, "device _DSM execution failed\n");
