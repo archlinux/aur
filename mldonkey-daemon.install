@@ -7,19 +7,20 @@ green="${bold}$(tput setaf 2)"
 _instructions() {
   printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
   ${blue}->${all_off} Service '${bold}mldonkey${all_off}' can be started as '${bold}systemctl start mldonkey${all_off}'
-  ${blue}->${all_off} Service '${bold}mldonkey@${all_off}' (by user) can be started as '${bold}systemctl start mldonkey@>USER<${all_off}'\n"
+  ${blue}->${all_off} Service '${bold}mldonkey${all_off}' (by user) can be started as '${bold}systemctl --user start mldonkey${all_off}'\n"
 }
 
 _downloads_ini_not_found() {
   printf "${green}==>${all_off} ${bold}Configure you Daemon client:
   ${blue}->${all_off} Please put this content:
 
-     ${bold}temp_directory = \"/var/cache/mldonkey\"
+     ${bold}temp_directory = \"/var/lib/mldonkey/temp\"
      incoming_directory = \"/var/lib/mldonkey/incoming\"
-     mldonkey_bin = \"/usr/bin/mldonkey\"
-     log_file = \"/var/log/mldonkey/mldonkey.log\"${all_off}
+     mldonkey_bin = \"/usr/bin/mldonkey\"${all_off}
 
-     in this file: '${bold}/var/lib/mldonkey/.mldonkey/downloads.ini${all_off}'\n"
+     in this file: '${bold}/var/lib/mldonkey/.mldonkey/downloads.ini${all_off}'
+     or: '${bold}"\/$\HOME/".mldonkey/downloads.ini${all_off}'
+     if the service is run as user.\n"
 }
 
 post_install() {
@@ -32,9 +33,7 @@ post_upgrade() {
   if [ ! -f /var/lib/mldonkey/.mldonkey/downloads.ini ]; then
     _downloads_ini_not_found
   fi
-
-  install -dm744 -o mldonkey -g mldonkey /var/lib/mldonkey
-  install -dm744 -o mldonkey -g mldonkey /var/log/mldonkey
+  true
 }
 
 post_remove() {

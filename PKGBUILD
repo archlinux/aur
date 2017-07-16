@@ -1,5 +1,5 @@
 pkgname=mldonkey-ed2kad-daemon-git
-pkgver=3.1.4.249.gf8d595df
+pkgver=3.1.5.250.g06b2c18a
 pkgrel=1
 pkgdesc="A multi-network P2P client. Daemon function, only ED2K/KAD. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -21,12 +21,13 @@ source=('git+http://repo.or.cz/r/mldonkey.git#branch=next'
         'mldonkey@.service'
         'mldonkey.tmpfiles'
         'mldonkey.sysuser')
-sha1sums=('SKIP'
-          '489d9cd16885e85036b51103f56ea1413f293a1d'
-          'b7f152e116eb98005df1e7aaf88378ac82b46372'
-          '5384a01d909b45ea09112bbeca7b225efc90bed8'
-          'c6e4bb5dbca6e3e0a2942e6e2483b0d688f7ecdb'
-          'f7ca95475ae9c65260aa45d30ce7af4c6d2ef280')
+sha256sums=('SKIP'
+            'fe6227ec1a54278226ca6d6a5b0e1bb23224bf7b90e2ea107f014cc9518b0ed3'
+            '3a25e71992aa0ab5caabed81b96ebcf313f1d93ccd7a182b1c57bf3f9571b8e8'
+            'c970430ca0fb50869dd1bab01b13ef451899455bb9dcaab6956fcab225423012'
+            'ef13984c7802a4ffe7b024a8aef08e33c0025bed4975b07b2b7ccf6773e97012'
+            'ef14b4c8dcb9e64a1026630463313139171d2682d4ad80965e4a39e5021b93a5'
+            )
 install=mldonkey-daemon.install
 
 pkgver() {
@@ -47,7 +48,7 @@ build() {
     --enable-checks \
     --enable-pthread
   make depend
-  make -j1
+  make
   make utils
 }
 
@@ -57,10 +58,10 @@ package() {
 
   install -Dm755 mld_hash "${pkgdir}/usr/bin/ed2k_hash"
 
-  install -Dm644 ../mldonkey.service "${pkgdir}/usr/lib/systemd/system/mldonkey.service"
-  install -Dm644 ../mldonkey@.service "${pkgdir}/usr/lib/systemd/system/mldonkey@.service"
-  install -Dm644 ../mldonkey.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/mldonkey.conf"
-  install -Dm644 ../mldonkey.sysuser "${pkgdir}/usr/lib/sysusers.d/mldonkey.conf"
+  install -Dm644 "${srcdir}/mldonkey.service" "${pkgdir}/usr/lib/systemd/system/mldonkey.service"
+  install -Dm644 "${srcdir}/mldonkey@.service" "${pkgdir}/usr/lib/systemd/user/mldonkey.service"
+  install -Dm644 "${srcdir}/mldonkey.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/mldonkey.conf"
+  install -Dm644 "${srcdir}/mldonkey.sysuser" "${pkgdir}/usr/lib/sysusers.d/mldonkey.conf"
 
-  install -Dm644 ../mldonkey.logrotate "${pkgdir}/etc/logrotate.d/mldonkey"
+  install -Dm644 "${srcdir}/mldonkey.logrotate" "${pkgdir}/etc/logrotate.d/mldonkey"
 }
