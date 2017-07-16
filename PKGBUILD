@@ -2,8 +2,8 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=2.6.15
-pkgrel=1
+pkgver=2.6.17
+pkgrel=3
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -17,9 +17,9 @@ optdepends=('evince: for print preview'
 options=('!makeflags' '!emptydirs')
 conflicts=('gnucash' 'gnucash-devel')
 provides=('gnucash')
-source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
+source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 		"xbt.patch")
-sha1sums=('2d977a73b163b30c5e3b27d234d1d8521a035d26'
+sha1sums=('d970d876f1fc7cd3fad9155463cdda348bcf0c7e'
 		  '7244b9cc71d0d03c43055c062f3eeba5e3544630')
 
 prepare() {
@@ -31,7 +31,7 @@ build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
     --libexecdir=/usr/lib --disable-schemas-compile --enable-ofx --enable-aqbanking
-  make
+  make GUILD=/usr/bin/guild2.0
 }
 
 package() {
