@@ -1,12 +1,13 @@
 # Maintainer: Camille <onodera@rizon>
 
 pkgname=mvwm-git
-pkgver=r5713.f23f011
+pkgver=r5713.f23f011f
 pkgrel=1
 pkgdesc="A clean-up effort of FVWM (with rounded corner patch)"
 url="https://github.com/ThomasAdam/mvwm"
 arch=('i686' 'x86_64')
 license=('GPL')
+makedepends=('git' 'libxt')
 depends=('fribidi' 'libxrandr' 'libpng')
 options=('!emptydirs' '!makeflags')
 source=("$pkgname::git+https://github.com/ThomasAdam/mvwm.git" 'rounded.patch' 'mvwm.desktop')
@@ -21,7 +22,7 @@ build() {
 	cd $pkgname
 
 	# Comment the next line to disable rounded corner patch
-	patch -p0 < $startdir/rounded.patch
+	patch -p0 < ../rounded.patch
 
 	./autogen.sh
 	./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --disable-xrender --disable-xft --disable-freetypetest --disable-fontconfigtest --disable-xfttest --disable-perllib --with-x 

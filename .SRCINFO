@@ -1,11 +1,13 @@
 pkgbase = mvwm-git
 	pkgdesc = A clean-up effort of FVWM (with rounded corner patch)
-	pkgver = r5713.f23f011
+	pkgver = r5713.f23f011f
 	pkgrel = 1
 	url = https://github.com/ThomasAdam/mvwm
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
+	makedepends = libxt
 	depends = fribidi
 	depends = libxrandr
 	depends = libpng
