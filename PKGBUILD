@@ -8,7 +8,7 @@ depends=('libva')
 url='https://01.org/linuxmedia/vaapi'
 license=('MIT')
 source=("cmrt-${pkgver}.tar.gz::https://github.com/01org/cmrt/archive/${pkgver}.tar.gz")
-sha256sums=(SKIP)
+sha256sums=("ca22e905a2717fc740e703e65a0061a0e11f4ea513ba970bbc10b3bd6d28e6e0")
 
 prepare() {
   cd ${srcdir}/cmrt-${pkgver}
