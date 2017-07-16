@@ -1,6 +1,6 @@
 pkgbase = mariadb-jdbc
 	pkgdesc = The official JDBC driver (Java library) for MariaDB
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://downloads.mariadb.org/client-java/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = mariadb-jdbc
 	depends = java-runtime
 	provides = mysql-jdbc
 	replaces = mysql-jdbc
-	source = https://downloads.mariadb.com/enterprise/x18t-d36g/connectors/java/connector-java-2.0.2/mariadb-java-client-2.0.2.jar
-	md5sums = a497e823f1ae080485e3c2e41a7b9b5c
+	source = https://downloads.mariadb.com/enterprise/x18t-d36g/connectors/java/connector-java-2.0.3/mariadb-java-client-2.0.3.jar
+	md5sums = b121220765c00a9890eb64153d15d223
 
 pkgname = mariadb-jdbc
 
