@@ -9,6 +9,7 @@ pkgbase = aswrap-git
 	makedepends = git
 	depends = python
 	depends = asp
+	depends = python-pygit2
 	provides = aswrap
 	conflicts = aswrap
 	source = git+https://github.com/mradermaxlol/aswrapper.git
