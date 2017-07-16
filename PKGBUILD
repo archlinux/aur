@@ -2,7 +2,7 @@
 pkgname=ssr-git
 _pkgname=ssr
 pkgver=0.4.2.r78.g989568c
-pkgrel=1
+pkgrel=2
 pkgdesc="The SoundScape Renderer (SSR) is a tool for real-time spatial audio
 reproduction providing a variety of rendering algorithms, e.g. Wave Field
 Synthesis, Higher-Order Ambisonics and binaural techniques."
@@ -32,6 +32,8 @@ build() {
   patch -i "$srcdir/${_pkgname}-qt4.patch"
   patch -p1 -i "$srcdir/${_pkgname}-ip-interface-gcc7.patch"
   export QT_SELECT=4
+  export CPPFLAGS="${CPPFLAGS} -D_REENTRANT"
+  export LIBS="${LIBS} -lpthread"
   ./configure --prefix=/usr
   make
 }
