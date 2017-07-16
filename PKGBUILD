@@ -4,36 +4,36 @@
 # Contributor: Jerome Berger <jeberger@free.fr>
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Elijah Stone <elronnd@protonmail.ch>
 
 pkgname=('gdc' 'libgphobos-devel' 'libgphobos')
-pkgver=6.2.1
+pkgver=7.1.0
 pkgrel=2
 _islver=0.16.1
-_gcc_commit=c2103c1
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/D-Programming-GDC/GDC"
 makedepends=('binutils>=2.26' 'git')
 
 source=(
-    git+https://gcc.gnu.org/git/gcc.git#commit=$_gcc_commit
+    https://ftp.gnu.org/pub/gnu/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2
     http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
-    gdc::git+https://github.com/D-Programming-GDC/GDC.git#tag=v2.068.2_gcc6
+    gdc::git+https://github.com/D-Programming-GDC/GDC.git
     git+https://github.com/D-Programming-GDC/GDMD.git
     paths.diff
 )
 sha256sums=(
-    'SKIP'
+    '8a8136c235f64c6fef69cac0d73a46a1a09bb250776a050aec8f9fc880bebc17'
     '412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2'
     'SKIP'
     'SKIP'
-    'e04cea391007ebab5d9b0ff33179c1fded0afcf43059b811290472ea52222361'
+    'fefe9298f8d5859758ca63bab084984baa8adbbd85b3b3b8798283731321df7b'
 )
 
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
-    cd $srcdir/gcc
+    cd $srcdir/gcc-$pkgver
 
     # link isl for in-tree build
     ln -s ../isl-$_islver isl
@@ -49,8 +49,9 @@ prepare() {
 
     # GDC setup
     cd $srcdir/gdc
+    git checkout gdc-7
     git apply $srcdir/paths.diff
-    ./setup-gcc.sh ../gcc
+    ./setup-gcc.sh ../gcc-$pkgver
 
     mkdir $srcdir/gcc-build
 }
@@ -63,7 +64,7 @@ build() {
     CFLAGS=${CFLAGS/-pipe/}
     CXXFLAGS=${CXXFLAGS/-pipe/}
 
-    $srcdir/gcc/configure --prefix=/usr \
+    $srcdir/gcc-$pkgver/configure --prefix=/usr \
         --libdir=/usr/lib \
         --libexecdir=/usr/lib \
         --mandir=/usr/share/man \
@@ -90,6 +91,7 @@ build() {
         --enable-default-pie \
         --disable-multilib \
         --disable-werror \
+        --enable-gold \
         --enable-languages=d \
         gdc_include_dir=/usr/include/dlang/gdc
 
