@@ -1,8 +1,8 @@
-# Maintainer: Omar Pakker <omar.pakker@oracle.com>
+# Maintainer: Omar Pakker <archlinux@opakker.nl>
 
 pkgname=spflashtool-bin
 _pkgname=spflashtool
-pkgver="5.1716"
+pkgver="5.1724"
 pkgrel=1
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone."
 arch=('x86_64')
