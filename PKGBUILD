@@ -18,7 +18,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset" "config.x86_64")
+        "${pkgbase}.preset" "config.x86_64" "config.i686")
 sha256sums=('e034d170f2acddd9c3a4c1545421b3fbc20f8ca2830e6f62b47eb310b99b091d'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -29,24 +29,19 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/linux-${pkgver}-xanmod${xanmod}"
 
-  # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  if [ "${CARCH}" = "x86_64" ]; then
-    msg2 "What config you want?"
-    echo -en "     1. upstream Xanmod\n     2. Archlinux stock\n     Selection: "
-    read answer
-    case $answer in
-      1) true ;;
-      2) cat "${srcdir}/config.x86_64" > ./.config ;;
-      *) echo "Please choose 1 or 2"; exit 1 ;;
-    esac
-#  else
-#    cat "${srcdir}/config" > ./.config
-  fi
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+  msg2 "What config you want?"
+  echo -en "     1. upstream Xanmod\n     2. Archlinux stock\n     Selection: "
+  read answer
+  case $answer in
+    1) true ;;
+    2) if [ "${CARCH}" = "x86_64" ]; then
+         cat "${srcdir}/config.x86_64" > ./.config
+       else
+         cat "${srcdir}/config.i686" > ./.config
+       fi
+       ;;
+    *) echo "Please choose 1 or 2"; exit 1 ;;
+  esac
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config

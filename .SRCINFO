@@ -16,6 +16,7 @@ pkgbase = linux-xanmod
 	source = 90-linux.hook
 	source = linux-xanmod.preset
 	source = config.x86_64
+	source = config.i686
 	sha256sums = e034d170f2acddd9c3a4c1545421b3fbc20f8ca2830e6f62b47eb310b99b091d
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
