@@ -4,7 +4,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r3918.8bf09b5
+pkgver=r4916.e634b757
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -19,8 +19,11 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra"
         'git+https://github.com/philsquared/Catch'
         'git+https://github.com/MerryMage/dynarmic'
         'git+https://github.com/fmtlib/fmt'
-        'git+https://github.com/herumi/xbyak')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'git+https://github.com/herumi/xbyak'
+        'git+https://github.com/whoshuu/cpr'
+        'git+https://github.com/lsalzman/enet'
+        'git+https://github.com/nlohmann/json')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -38,6 +41,9 @@ prepare() {
 	git config submodule.soundtouch.url "$srcdir/ext-soundtouch"
 	git config submodule.catch.url "$srcdir/Catch"
 	git config submodule.dynarmic.url "$srcdir/dynarmic"
+	git config submodule.cpr.url "$srcdir/cpr"
+	git config submodule.enet.url "$srcdir/enet"
+	git config submodule.json.url "$srcdir/json"
 	git submodule update
 
 	cd externals/dynarmic
@@ -48,7 +54,10 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgbase/build"
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	cmake .. \
+	  -DCMAKE_INSTALL_PREFIX=/usr \
+	  -DCMAKE_BUILD_TYPE=Release \
+	  -DUSE_SYSTEM_CURL=ON
 	make
 }
 
