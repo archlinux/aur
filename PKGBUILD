@@ -1,0 +1,42 @@
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: DavidK <david_king at softhome dot net>
+# Contributor: Arkham <arkham at archlinux dot us>
+# Contributor: Christoph Zeiler <rabyte*gmail>
+
+pkgname=deutex-git
+pkgver=4.4.902.r52.ge4b97dd
+pkgrel=1
+pkgdesc="A WAD file composer for Doom, Heretic, Hexen and Strife"
+arch=('i686' 'x86_64')
+url="http://www.teaser.fr/~amajorel/deutex/"
+license=('GPL2')
+depends=('glibc' 'autoconf' 'automake' 'libpng')
+makedepends=('git' 'asciidoc')
+provides=('deutex' 'deutex-devel')
+conflicts=('deutex' 'deutex-devel')
+source=(git+https://github.com/Doom-Utils/deutex.git)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/deutex"
+  git describe | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+ cd "$srcdir/deutex"
+ ./bootstrap
+}
+
+build() {
+    # Configure
+    cd "$srcdir/deutex"
+    ./configure  --prefix=/usr
+
+    # Compile and install
+    make 
+}
+
+package() {
+    cd "$srcdir/deutex"
+    make DESTDIR="$pkgdir" install
+}
