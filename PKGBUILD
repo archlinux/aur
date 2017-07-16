@@ -4,7 +4,7 @@
 _gitname=zuluCrypt
 _build=build
 pkgname=zulucrypt-git
-pkgver=5.0.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="a cli and gui frontend to cryptsetup."
 arch=('x86_64' 'i686')
@@ -42,7 +42,7 @@ build() {
     fi
     mkdir -p ${_build}
     cd ${_build}
-    cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=true -DHOMEMOUNTPREFIX=false -DNOKDE=true -DCMAKE_BUILD_TYPE=release . ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=true -DHOMEMOUNTPREFIX=false -DCMAKE_BUILD_TYPE=release . ..
     make
 }
  

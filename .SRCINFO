@@ -1,6 +1,6 @@
 pkgbase = zulucrypt-git
 	pkgdesc = a cli and gui frontend to cryptsetup.
-	pkgver = 5.0.0
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/mhogomchungu/zuluCrypt/
 	install = zulucrypt-git.install
