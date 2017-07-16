@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=onlyoffice-desktopeditors-portable
-pkgver=4.3.2.48
+pkgver=4.4.1.338
 pkgrel=1
 pkgdesc='Open-source office suite that combines text, spreadsheet and presentation editors.'
 url="https://www.onlyoffice.com/"
@@ -14,7 +14,7 @@ options=(!strip)
 source=("${pkgname%-*}-${pkgver}-x64.tar.gz::http://download.onlyoffice.com/install/desktop/editors/linux/${pkgname%-*}-x64.tar.gz"
         "${pkgname%-*}.desktop")
 noextract=("${pkgname%-*}-${pkgver}-x64.tar.gz")
-sha256sums=('74ca44eb4196b5c28858de9d1c68b0b4f9883fc8dacd07c9348186cfbb7f9bee'
+sha256sums=('2e744ea93e542b53dda1c92107f05bc2d8cf650da7e83eff4fad0e2400bcd752'
             '4d26e775fba828e7c39fcd088c76bc03dfbf82e53b122863b122905ab027fa66')
 
 #PKGEXT=".pkg.tar"
