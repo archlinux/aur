@@ -1,13 +1,13 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=buildnotify-hg
-pkgver=0.3.5.r120.56282fc2b49f
-pkgrel=3
+pkgver=0.3.5.r136.585a05ab77f8
+pkgrel=1
 pkgdesc="Cruise Control build monitor for Windows/Linux/Mac"
 arch=('any')
 url="http://bitbucket.org/Anay/buildnotify/"
 license=('GPL3')
-depends=('python2' 'python2-pyqt4' 'python2-pytz' 'python2-dateutil')
+depends=('python2' 'python2-pyqt4' 'python2-pytz' 'python2-dateutil' 'python2-keyring')
 makedepends=('mercurial' 'python2-setuptools')
 source=("hg+https://bitbucket.org/Anay/buildnotify"
         "buildnotify.desktop")
