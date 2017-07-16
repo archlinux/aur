@@ -1,6 +1,6 @@
 pkgbase = ccminer-git
 	pkgdesc = Coin miner using CUDA for nVidia GPUs.
-	pkgver = r866.05abaf2
+	pkgver = r876.5aa50a4
 	pkgrel = 1
 	url = http://ccminer.org/
 	arch = x86_64

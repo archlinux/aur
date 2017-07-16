@@ -1,7 +1,7 @@
-# Maintainer: Omar Pakker <omar.pakker@oracle.com>
+# Maintainer: Omar Pakker <archlinux@opakker.nl>
 
 pkgname=ccminer-git
-pkgver=r866.05abaf2
+pkgver=r876.5aa50a4
 pkgrel=1
 pkgdesc="Coin miner using CUDA for nVidia GPUs."
 arch=('x86_64')
@@ -28,6 +28,7 @@ build() {
 	./autogen.sh
 
 	./configure CPPFLAGS='-I/usr/include/openssl-1.0' LDFLAGS='-L/usr/lib/openssl-1.0' \
+		CUDA_CFLAGS='--shared --compiler-options "-fPIC"' \
 		--prefix=/usr --sysconfdir=/etc --libdir=/usr/lib --with-cuda=/opt/cuda
 
 	make
