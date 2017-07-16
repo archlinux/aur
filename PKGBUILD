@@ -14,7 +14,7 @@
 #
 
 pkgname=ceph-git
-pkgver=12.0.0.140.g2ed28407e7
+pkgver=12.1.0.1018.g171104cb93
 pkgrel=1
 epoch=1
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
@@ -29,6 +29,7 @@ depends=('libedit'
          'crypto++'
          'gperftools>=1.8.3-2'
          'python2'
+         'python2-prettytable'
          'fuse'
          'keyutils'
          'libatomic_ops'
@@ -42,6 +43,8 @@ depends=('libedit'
 makedepends=('git'
              'boost'
              'boost-libs'
+             'babeltrace'
+             'gperf'
              'yasm'
              'cmake'
              'python-sphinx'
@@ -67,11 +70,17 @@ source=("git+https://github.com/ceph/ceph.git"
         "git+https://github.com/boostorg/boost.git"
         "git+https://github.com/ceph/dpdk"
         "git+https://github.com/facebook/zstd"
+        "git+https://github.com/01org/isa-l_crypto"
+        "git+https://github.com/ceph/blkin"
+        "git+https://github.com/ceph/rapidjson"
         "ceph-osd@.service"
         "ceph-mon@.service"
         "ceph-mds@.service"
         "ceph.install")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
