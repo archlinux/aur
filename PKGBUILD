@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard-standalone
 pkgname=${_pkgname}-git
-pkgver=v0.2.5.r0.gfd65bbc
+pkgver=v0.2.6.r3.gd7d9878
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest git for 1.x standalone)"
 arch=(any)
@@ -33,7 +33,7 @@ msg2 "Fix for zope.interface..."
   mkdir -p env/lib/python2.7/site-packages/zope
   touch env/lib/python2.7/site-packages/zope/__init__.py
 
-msg2 "Activating virtualenv2..."  
+msg2 "Activating virtualenv..."  
   source env/bin/activate
   pip2 install -r requirements.txt
   pip2 install https://github.com/pyinstaller/pyinstaller/archive/master.zip
@@ -63,4 +63,4 @@ md5sums=('SKIP'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          '58f846fbc1742fea9d245b6f93f6db15'
          'e4d7b1c3fdceca262a517dd103f59260'
-         '7514454b8aaa3d286ff020d78babd96f')
+         '6d413c8f8b7a6def6f39b3ebc681b90c')
