@@ -23,7 +23,7 @@ depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
 		 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
 		 'libx264.so' 'libx265.so' 'libxvidcore.so'
 		 'rtmpdump')
-makedepends=('hardening-wrapper' 'yasm')
+makedepends=('yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' "ffmpeg")
