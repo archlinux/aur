@@ -4,6 +4,7 @@
 !PKGBUILD
 !amule-daemon.install
 !amule.sysuser
+!amule.tmpfiles
 !amuled.service
 !amuled@.service
 !amuleweb.service
