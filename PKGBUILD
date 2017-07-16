@@ -1,9 +1,10 @@
-# Maintainer:  TDY <tdy@archlinux.info>
+# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
+# Contributor: TDY <tdy@archlinux.info>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 
 pkgname=udunits
-pkgver=2.2.24
+pkgver=2.2.25
 pkgrel=1
 pkgdesc="A tool for calculations of physical quantities"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ depends=('expat')
 options=('!libtool')
 install=udunits.install
 source=(ftp://ftp.unidata.ucar.edu/pub/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('20bac512f2656f056385429a0e44902fdf02fc7fe01c14d56f3c724336177f95')
+sha256sums=('ad486f8f45cba915ac74a38dd15f96a661a1803287373639c17e5a9b59bfd540')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
