@@ -4,13 +4,13 @@
 pkgname=firefox-wayland-git
 _pkgname=firefox
 pkgver=ea5f69b51549
-pkgrel=6
+pkgrel=7
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg
-         nss hunspell sqlite ttf-font libpulse icu libvpx)
+         nss-hg hunspell sqlite ttf-font libpulse icu libvpx)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf inetutils xorg-server-xvfb
              autoconf2.13 cargo mercurial)
 optdepends=('networkmanager: Location detection via available WiFi networks'
