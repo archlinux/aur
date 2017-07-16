@@ -1,0 +1,193 @@
+diff --git a/config.def.h b/config.def.h
+index 877afab..20f592b 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -1,12 +1,13 @@
+ /* See LICENSE file for copyright and license details. */
+ 
++#include "colorscheme.h"
+ /*
+  * appearance
+  *
+  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+  */
+-char font[] = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+-int borderpx = 2;
++char font[] = "FantasqueSansMono-Regular:pixelsize=14:antialias=true:autohint=true";
++int borderpx = 0;
+ 
+ /*
+  * What program is execed by st depends of these precedence rules:
+@@ -16,7 +17,7 @@ int borderpx = 2;
+  * 4: value of shell in /etc/passwd
+  * 5: value of shell in config.h
+  */
+-static char shell[] = "/bin/sh";
++static char shell[] = "/bin/zsh";
+ static char *utmp = NULL;
+ static char stty_args[] = "stty raw pass8 nl -echo -iexten -cstopb 38400";
+ 
+@@ -32,38 +33,38 @@ float chscale = 1.0;
+  *
+  * More advanced example: " `'\"()[]{}"
+  */
+-static char worddelimiters[] = " ";
++static char worddelimiters[] = " '`\"()[]{}<>|-";
+ 
+ /* selection timeouts (in milliseconds) */
+-unsigned int doubleclicktimeout = 300;
+-unsigned int tripleclicktimeout = 600;
++unsigned int doubleclicktimeout = 300;
++unsigned int tripleclicktimeout = 600;
+ 
+ /* alt screens */
+ int allowaltscreen = 1;
+ 
+ /* frames per second st should at maximum draw to the screen */
+-unsigned int xfps = 120;
+-unsigned int actionfps = 30;
++unsigned int xfps = 120;
++unsigned int actionfps = 30;
+ 
+ /*
+  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
+  * attribute.
+  */
+-unsigned int blinktimeout = 800;
++unsigned int blinktimeout = 800;
+ 
+ /*
+  * thickness of underline and bar cursors
+  */
+-unsigned int cursorthickness = 2;
++unsigned int cursorthickness = 2;
+ 
+ /*
+  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
+  * it
+  */
+-static int bellvolume = 0;
++static int bellvolume = 0;
+ 
+ /* default TERM value */
+-char termname[] = "st-256color";
++char termname[] = "st-256color";
+ 
+ /*
+  * spaces per tab
+@@ -80,46 +81,7 @@ char termname[] = "st-256color";
+  *
+  *	stty tabs
+  */
+-static unsigned int tabspaces = 8;
+-
+-/* Terminal colors (16 first used in escape sequence) */
+-const char *colorname[] = {
+-	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
+-
+-	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
+-
+-	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
+-	"#555555",
+-};
+-
+-
+-/*
+- * Default colors (colorname index)
+- * foreground, background, cursor, reverse cursor
+- */
+-unsigned int defaultfg = 7;
+-unsigned int defaultbg = 0;
+-unsigned int defaultcs = 256;
+-unsigned int defaultrcs = 257;
++static unsigned int tabspaces = 4;
+ 
+ /*
+  * Default shape of cursor
+@@ -128,27 +90,27 @@ unsigned int defaultrcs = 257;
+  * 6: Bar ("|")
+  * 7: Snowman ("☃")
+  */
+-unsigned int cursorshape = 2;
++unsigned int cursorshape = 4;
+ 
+ /*
+  * Default columns and rows numbers
+  */
+ 
+-unsigned int cols = 80;
+-unsigned int rows = 24;
++unsigned int cols = 80;
++unsigned int rows = 24;
+ 
+ /*
+  * Default colour and shape of the mouse cursor
+  */
+ unsigned int mouseshape = XC_xterm;
+-unsigned int mousefg = 7;
+-unsigned int mousebg = 0;
++unsigned int mousefg = 7;
++unsigned int mousebg = 0;
+ 
+ /*
+  * Color used to display font attributes when fontconfig selected a font which
+  * doesn't match the ones requested.
+  */
+-unsigned int defaultattr = 11;
++unsigned int defaultattr = 11;
+ 
+ /*
+  * Internal mouse shortcuts.
+@@ -175,9 +137,9 @@ Shortcut shortcuts[] = {
+ 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+ 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
+ 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
+-	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
++	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+ 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+-	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
++	{ TERMMOD,              XK_U,           iso14755,       {.i =  0} },
+ };
+ 
+ /*
+diff --git a/st.1 b/st.1
+index bbca7e5..185b2eb 100644
+--- a/st.1
++++ b/st.1
+@@ -151,7 +151,7 @@ Decrease font size.
+ .B Ctrl-Shift-Home
+ Reset to default font size.
+ .TP
+-.B Ctrl-Shift-y
++.B Shift-Insert
+ Paste from primary selection (middle mouse button).
+ .TP
+ .B Ctrl-Shift-c
+@@ -160,7 +160,7 @@ Copy the selected text to the clipboard selection.
+ .B Ctrl-Shift-v
+ Paste from the clipboard selection.
+ .TP
+-.B Ctrl-Shift-i
++.B Ctrl-Shift-u
+ Launch dmenu to enter a unicode codepoint and send the corresponding glyph
+ to st.
+ .SH CUSTOMIZATION

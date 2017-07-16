@@ -1,0 +1,78 @@
+*** DO NOT FORGET TO RUN 'updpkgsums' AFTER MODFIYING AND BEFORE 'makepkg' ***
+
+ScrollBack:
+	Use Terminal Multiplexers ( tmux , screen , etc).
+	Scrollback patch is buggy at times and not to mension redundant.
+
+COLORSCHEME:
+	Modify colorscheme.h. 'alpha' is for tranparency in hex, must be set if alpha patch is to be enabled.
+	Defualt colorscheme shipped is 'Gruvbox'.
+
+	Opacity/alpha Values: 
+	100% — FF				50% — 80
+	95% — F2				45% — 73
+	90% — E6				40% — 66
+	85% — D9				35% — 59
+	80% — CC				30% — 4D
+	75% — BF				25% — 40
+	70% — B3				20% — 33
+	65% — A6				15% — 26
+	60% — 99				10% — 1A
+	55% — 8C				5% — 0D
+				0% — 00
+
+KEYBINDINGS CHANGE:
+	Primary Selection Paste -> Shift-Insert
+	Unicode Input -> Ctrl-Shift-u 
+	Modify " st-extra-config* " if needed.
+
+.diff MODIFY:
+	Values from lines starting with + can be modifyable.
+
+terminfo:
+	Archlinux 'ncurses' ships a terminfo for st. To avoid conflicts terminfo is not compiled to Package.
+
+
+Sample colorscheme:
+
+/* gruvbox colorscheme: Copy to colorscheme.h if needed */
+/* bg opacity */
+unsigned int alpha = 0xff; /* full opaque */
+
+/* Terminal colors (16 first used in escape sequence) */
+const char *colorname[] = {
+
+  "#282828",
+  "#cc241d",
+  "#98971a",
+  "#d79921",
+  "#458588",
+  "#b16286",
+  "#689d6a",
+  "#a89984",
+  "#928374",
+  "#fb4934",
+  "#b8bb26",
+  "#fabd2f",
+  "#83a598",
+  "#d3869b",
+  "#8ec07c",
+  "#ebdbb2",
+
+  [255] = 0,
+
+  "#cccccc",
+  "#555555",
+  "white",
+  "#282828",
+};
+
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
+unsigned int defaultfg = 15;
+unsigned int defaultbg = 0;
+unsigned int defaultcs = 256;
+unsigned int defaultrcs = 257;
