@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-cvs
-pkgver=5.3r20170711
+pkgver=5.3r20170714
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
@@ -36,7 +36,7 @@ pkgver() {
 prepare() {
   if [ -d $_cvsmod/CVS ]; then
       cd "$srcdir/$_cvsmod"
-      sed -i 's+-fPIE+-fPIC+' configure.ac
+      sed -i 's+-fPIE+-fPIE -fPIC+' configure.ac
   fi
 }
 
