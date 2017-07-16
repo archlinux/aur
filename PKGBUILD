@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-topkg
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A packager for distributing OCaml software"
 arch=('i686' 'x86_64')
@@ -10,12 +10,12 @@ license=('BSD')
 depends=('ocaml' 'ocaml-result')
 makedepends=('ocaml-findlib' 'ocamlbuild' 'opam')
 source=("http://erratique.ch/software/topkg/releases/topkg-${pkgver}.tbz")
-md5sums=('f7c0922d5f9fe698e96804312ec068ed')
+md5sums=('1700991f570b9aaf49e6aad7d886e154')
 
 build() {
   cd "${srcdir}/topkg-${pkgver}"
 
-  pkg/pkg.ml build
+  pkg/pkg.ml build --pkg-name topkg
 }
 
 package() {
