@@ -3,14 +3,14 @@
 pkgname=ocaml-speex
 pkgver=0.2.1
 pkgrel=1
-license=('GPL2')
+pkgdesc="OCaml bindings to libspeex"
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings to libspeex")
 url="https://github.com/savonet/ocaml-speex"
+license=('GPL2')
 depends=('ocaml' 'speex' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
-source=("https://github.com/savonet/ocaml-speex/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
+source=("https://github.com/savonet/ocaml-speex/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('68e3596edc35ce7c4fa010e44abc8770')
 
 build() {
