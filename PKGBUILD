@@ -2,16 +2,16 @@
 
 _pkgname=metakernel
 pkgname=jupyter-$_pkgname
-pkgver=0.13.4
-pkgrel=1
+pkgver=0.20.4
+pkgrel=2
 pkgdesc="A Jupyter/IPython kernel template."
 arch=('any')
 url="https://github.com/Calysto/metakernel"
 license=('BSD')
-depends=('python' 'jupyter' 'ipython')
+depends=('jupyter' 'ipython' 'python-pexpect')
 makedepends=('python-setuptools')
-source=(https://pypi.python.org/packages/42/40/45cdf097e7c9445ad43ce6b61bc4cbae8c4994367f8ef015ed1bb14550a9/metakernel-0.13.4.tar.gz)
-md5sums=('6e38ae9d55df804f22e50b5631ceac5f')
+source=("https://github.com/Calysto/metakernel/archive/v${pkgver}.tar.gz")
+md5sums=('6059e4407476ffbb06106ee7d54b9795')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
