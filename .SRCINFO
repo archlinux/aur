@@ -1,15 +1,18 @@
 pkgbase = python-tkfilebrowser
 	pkgdesc = File browser for Tkinter, alternative to tkinter.filedialog in linux with GTK bookmarks support.
-	pkgver = 1.1.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/j4321/tkFileBrowser
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
-	depends = python-psutil
-	depends = tk
-	source = tkFileBrowser-1.1.2.tar.gz::https://github.com/j4321/tkFileBrowser/archive/v1.1.2.tar.gz
-	sha512sums = adf19a3eedad9879519d3d6b139c23fb3b3deaa71ed4fbde33da054c5a62217ec39b2547f676f45e2ec1f0ce08c6d8a316193ea7585fa2d9beedf4f2cea41261
+	source = tkfilebrowser-2.0.0.tar.gz::https://github.com/j4321/tkFileBrowser/archive/v2.0.0.tar.gz
+	sha512sums = d1d144d3bdc9e4be308936e1c5b6cccdbf1cb2c7543510a4a7d11fcad8721fe797fbcc66f35444bae40250c1828fb1788a00bc132123b147531cb814b9f63e6a
 
 pkgname = python-tkfilebrowser
+	depends = python-psutil
+	depends = tk
+
+pkgname = python2-tkfilebrowser
+	depends = python2-psutil
+	depends = tk
 
