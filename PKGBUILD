@@ -1,8 +1,8 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=pthreadpool-git
-pkgver=r36.9e17903
-pkgrel=1
+pkgver=r37.097a0c8
+pkgrel=2
 pkgdesc="A pthread-based thread pool implementation for C/C++ (git version)"
 arch=('i386' 'x86_64')
 url="https://github.com/Maratyszcza/pthreadpool/"
