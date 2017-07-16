@@ -11,8 +11,8 @@ _instructions() {
   ${blue}->${all_off} You also need to specify amuleweb password.
      Please follow ${bold}https://wiki.archlinux.org/index.php/AMule${all_off} for more information.
   ${blue}->${all_off} Service '${bold}amuled${all_off}' can be started as '${bold}systemctl start amuled${all_off}'.
-  ${blue}->${all_off} Service '${bold}amuled@${all_off}' (by user) can be started as '${bold}systemctl start amuled@USER${all_off}'
-  ${blue}->${all_off} Service '${bold}amuleweb${all_off}' can be started as '${bold}systemctl start amuleweb${all_off}'.\n"
+  ${blue}->${all_off} Service '${bold}amuled${all_off}' (by user) can be started as '${bold}systemctl --user start amuled${all_off}'
+  ${blue}->${all_off} Service '${bold}amulewebd${all_off}' can be started as '${bold}systemctl start amulewebd${all_off}'.\n"
 }
 
 _notice_if_amuled_exist() {

@@ -3,7 +3,6 @@ Description=aMule Daemon
 After=network.target
 
 [Service]
-User=%I
 ExecStart=/usr/bin/amuled
 
 [Install]
