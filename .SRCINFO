@@ -8,7 +8,7 @@ pkgbase = gdc
 	makedepends = binutils>=2.26
 	makedepends = git
 	source = https://ftp.gnu.org/pub/gnu/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2
-	source = http://isl.gforge.inria.fr/isl-0.16.1.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.18.tar.bz2
 	source = gdc::git+https://github.com/D-Programming-GDC/GDC.git
 	source = git+https://github.com/D-Programming-GDC/GDMD.git
 	source = paths.diff

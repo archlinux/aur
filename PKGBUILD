@@ -9,7 +9,7 @@
 pkgname=('gdc' 'libgphobos-devel' 'libgphobos')
 pkgver=7.1.0
 pkgrel=2
-_islver=0.16.1
+_islver=0.18
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/D-Programming-GDC/GDC"
