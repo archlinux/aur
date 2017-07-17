@@ -10,7 +10,7 @@ license=("MIT")
 depends=("qt5-base")
 makedepends=("qt5-base" "gcc-multilib")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oliver-anhuth/envview/archive/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=("a951446c878c7dc5b608ac36d0f02b6484cb8116bb6479eca44b40eaafa9b266")
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}

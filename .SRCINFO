@@ -10,7 +10,7 @@ pkgbase = envview
 	makedepends = gcc-multilib
 	depends = qt5-base
 	source = envview-1.0.1.tar.gz::https://github.com/oliver-anhuth/envview/archive/1.0.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = a951446c878c7dc5b608ac36d0f02b6484cb8116bb6479eca44b40eaafa9b266
 
 pkgname = envview
 
