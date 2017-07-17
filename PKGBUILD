@@ -5,13 +5,13 @@
 
 pkgname=liblo-git
 _basename=liblo
-pkgver=0.28.r52.g58665a3
-pkgrel=2
+pkgver=0.28.r86.ge0ec177
+pkgrel=1
 pkgdesc="A lightweight OSC (Open Sound Control) implementation"
 arch=('i686' 'x86_64')
 url="http://liblo.sourceforge.net/"
 license=('GPL')
-provides=('liblo')
+provides=('liblo=0.28')
 conflicts=('liblo' 'liblo-ipv6')
 makedepends=('doxygen')
 source=("$_basename::git://liblo.git.sourceforge.net/gitroot/${_basename}/${_basename}")
