@@ -1,16 +1,16 @@
 # Maintainer: Simon Boulay <simon.boulay@alkeona.net>
 
-pkgbase=python-sphinxcontrib-tikz
-pkgname=('python-sphinxcontrib-tikz' 'python2-sphinxcontrib-tikz')
-pkgver=0.4.2
-pkgrel=2
+_name=sphinxcontrib-tikz
+pkgname=("python-${_name}" "python2-${_name}")
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="TikZ extension for Sphinx."
 arch=('any')
 url="https://bitbucket.org/philexander/tikz"
 license=('BSD')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/s/sphinxcontrib-tikz/sphinxcontrib-tikz-$pkgver.tar.gz")
-sha1sums=('e7828e2f1dfbb190eb37374905356cfd29ff83d3')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('755a88072f7d3591846a3190f208d662bde84640b18bdea358a1358e895757ff')
 
 prepare() {
   cp -a "sphinxcontrib-tikz-$pkgver" "sphinxcontrib-tikz2-$pkgver"
