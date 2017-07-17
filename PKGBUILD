@@ -15,36 +15,47 @@
 # archzfs github page.
 #
 #
-pkgname="spl-linux-lts"
-pkgver=0.6.5.9_4.9.30_1
+pkgbase="spl-linux-lts"
+pkgname=("spl-linux-lts" "spl-linux-lts-headers")
+pkgver=0.6.5.11_4.9.37_1
 pkgrel=1
-pkgdesc="Solaris Porting Layer kernel modules."
-depends=("spl-utils-linux-lts" "kmod" "linux-lts=4.9.30")
-makedepends=("linux-lts-headers=4.9.30")
+makedepends=("linux-lts-headers=4.9.37" "libelf")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.9/spl-0.6.5.9.tar.gz")
-sha256sums=("d9ccd24786bb5a8616748a93a3c0b1270aa891175e2f5d726195b416f5c03b9c")
-groups=("archzfs-linux-lts")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.11/spl-0.6.5.11.tar.gz")
+sha256sums=("ebab87a064985f93122ad82721ca54569a5ef20dc3579f84d18075210cf316ac")
 license=("GPL")
-install=spl.install
-provides=("spl")
-conflicts=('spl-utils-linux' 'spl-utils-linux-git')
+depends=("spl-utils-common" "kmod" "linux-lts=4.9.37")
 
 build() {
-    cd "${srcdir}/spl-0.6.5.9"
+    cd "${srcdir}/spl-0.6.5.11"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.9.30-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.30-1-lts/build \
+                --with-linux=/usr/lib/modules/4.9.37-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.37-1-lts/build \
                 --with-config=kernel
     make
 }
 
-package() {
-    cd "${srcdir}/spl-0.6.5.9"
+package_spl-linux-lts() {
+    pkgdesc="Solaris Porting Layer kernel modules."
+    install=spl.install
+    provides=("spl")
+    groups=("archzfs-linux-lts")
+    conflicts=('spl-linux-lts-git')
+    cd "${srcdir}/spl-0.6.5.11"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
+    # Remove src dir
+    rm -r "${pkgdir}"/usr/src
+}
+
+package_spl-linux-lts-headers() {
+    pkgdesc="Solaris Porting Layer kernel headers."
+    conflicts=('spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers')
+    cd "${srcdir}/spl-0.6.5.11"
+    make DESTDIR="${pkgdir}" install
+    rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.30-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.37-1-lts/Module.symvers
 }
