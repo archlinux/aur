@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethminer-git
-pkgver=0.11.0.0.20170630.7b678d8a4
+pkgver=0.12.0.0.20170716.f99ca9822
 pkgrel=1
 pkgdesc="Ethereum miner with CUDA and stratum support. chfast's version."
 arch=('i686' 'x86_64')
@@ -70,12 +70,8 @@ build() {
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}/build"
 
   msg 'Installing...'
-  make DESTDIR="$pkgdir" install -C build
-
-  msg 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
+  DESTDIR="${pkgdir}" cmake -P cmake_install.cmake
 }
