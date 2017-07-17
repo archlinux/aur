@@ -4,7 +4,7 @@ _srcname='shotcut'
 pkgdesc='Video editor'
 pkgver='17.06'
 _commit='b38ae67876faf6764550f38690f7f2684e5f1dd3'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.shotcut.org/'
 license=('GPL3')
@@ -51,7 +51,9 @@ prepare() {
 build() {
     cd "${srcdir}/${_srcname}"
 
-    qmake PREFIX='/usr/'
+    qmake PREFIX='/usr' \
+        QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+        QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"
     make
 }
 

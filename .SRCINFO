@@ -1,7 +1,7 @@
 pkgbase = shotcut
 	pkgdesc = Video editor
 	pkgver = 17.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.shotcut.org/
 	arch = i686
 	arch = x86_64
