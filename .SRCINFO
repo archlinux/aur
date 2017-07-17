@@ -1,6 +1,6 @@
 pkgbase = kio-extras-light
 	pkgdesc = Additional components to increase the functionality of KIO, without SMB/Samba support
-	pkgver = 17.04.2
+	pkgver = 17.04.3
 	pkgrel = 1
 	url = https://www.kde.org/applications/internet/
 	arch = i686
@@ -32,10 +32,11 @@ pkgbase = kio-extras-light
 	optdepends = khtml: man kioslave
 	provides = kio-extras
 	conflicts = kio-extras
-	source = https://download.kde.org/stable/applications/17.04.2/src/kio-extras-17.04.2.tar.xz
-	source = https://download.kde.org/stable/applications/17.04.2/src/kio-extras-17.04.2.tar.xz.sig
+	source = https://download.kde.org/stable/applications/17.04.3/src/kio-extras-17.04.3.tar.xz
+	source = https://download.kde.org/stable/applications/17.04.3/src/kio-extras-17.04.3.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-	sha256sums = d071e1a33108c73c4716bdb7da81bdd06a7bd39fb9649781d21cf08293f504cd
+	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
+	sha256sums = e18f76631611d9ef74394e204207feaeaf4fa9f6c089f5719a966beed41bf983
 	sha256sums = SKIP
 
 pkgname = kio-extras-light
