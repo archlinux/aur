@@ -2,7 +2,7 @@
 pkgname=sc-tool
 _pkgname=sc
 pkgver=1.5.7
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Administration tool for Linux-based ISP traffic shaper"
 arch=('any')
