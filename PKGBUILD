@@ -2,7 +2,7 @@
 
 pkgname=checkmate
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to compare theoretical models against many recent experimental analyses"
 url="http://checkmate.hepforge.org/"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("http://www.hepforge.org/archive/checkmate/CheckMATE-${pkgver}.tar.gz"
         "fastjet.patch"
         "path.patch"
         "PythiaHandler.patch")
-sha256sums=('05eda2ddb4775408d4c6a193b529c8e43cdfb025b161c4b98fa69922e54c8927'
+sha256sums=('36a6426841c1ae5c268298b13c6674ddf3f3f6d6cdb4b2463c6d36b580074879'
             '0318bd33ae752a914e1af6102f5c648a4bcb72d87922f30561f7f9e44c80e169'
             'c5be604f8cc3edcfd69c58b3c56c431ff2d8329e8a3ef1afea39ffd1d4f194f5'
             '7069aaf2bfa0ad620e268f106c85f3b32688f78f5f122824ea9b4c665603c7cf'
