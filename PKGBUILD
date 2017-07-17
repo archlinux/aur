@@ -11,6 +11,7 @@ url="https://launchpad.net/ayatana-scrollbar"
 license=('LGPL')
 groups=('unity')
 options=('!emptydirs')
+makedepends=('bzr')
 extrafiles=('overlay-scrollbar.install')
 source=('bzr+lp:overlay-scrollbar#revision=391')
 sha512sums=('SKIP')
@@ -58,7 +59,7 @@ package_overlay-scrollbar-bzr() {
 package_liboverlay-scrollbar-gtk3-bzr() {
   pkgdesc+=" gtk3"
   depends=('cairo' 'gtk3' 'dconf' 'overlay-scrollbar-bzr')
-  makedepends=('gtk3')
+  makedepends+=('gtk3')
   provides=(liboverlay-scrollbar{3,-gtk3}{,-bzr}="${pkgver}")
   conflicts=('liboverlay-scrollbar3')
   install=overlay-scrollbar.install
@@ -73,7 +74,7 @@ package_liboverlay-scrollbar-gtk3-bzr() {
 package_liboverlay-scrollbar-gtk2-bzr() {
   pkgdesc+=" gtk2"
   depends=('gtk2-ubuntu' 'overlay-scrollbar-bzr')
-  makedepends=('gtk2-ubuntu')
+  makedepends+=('gtk2-ubuntu')
   provides=(liboverlay-scrollbar{,-gtk2}{,-bzr}="${pkgver}")
   conflicts=('liboverlay-scrollbar')
   install=overlay-scrollbar.install
