@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-ss01
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: Andale Mono.'
 arch=('any')
@@ -21,12 +21,11 @@ conflicts=('ttf-iosevka-pack'
            'ttf-iosevka-term-ss11')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-term-ss01-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('5717ce933ab0cfedce2e96841491c27408d41062db046042dfd726f6fc42590b'
+sha256sums=('b757ee0038de9211dfac08acb4e6a16b5f52bc82ac03dc840c6e6931dead0d7d'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
-  cd ${srcdir}
-  install -d ${pkgdir}/usr/share/fonts/TTF/
-  install -m644 ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
-  install -D -m644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
+    install -d ${pkgdir}/usr/share/fonts/TTF/
+    install -m644 ${srcdir}/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
+    install -D -m644 ${srcdir}/LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
