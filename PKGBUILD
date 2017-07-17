@@ -12,7 +12,7 @@ depends=('libva')
 optdepends=('libva-intel-driver: Hardware Video Acceleration on Intel x86 GPU')
 options=('!emptydirs')
 changelog=
-source=($url/archive/$pkgname-$pkgver.tar.gz)
+source=($url/archive/$pkgver.tar.gz)
 sha256sums=('fdc3025f828c065a4434e73f5629e7ab8af593f1abbe097449dd5a13fa7d465f')
 
 build() {
