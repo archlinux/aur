@@ -25,7 +25,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=5.0.0svn_r308112
+pkgver=5.0.0svn_r308149
 
 pkgver() {
   cd "$pkgname"
@@ -269,8 +269,8 @@ package_llvm-polly-svn() {
         "llvm-libs-polly-svn=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('llvm', 'llvm-svn')
-    conflicts=('llvm', 'llvm-svn')
+    provides=('llvm' 'llvm-svn')
+    conflicts=('llvm' 'llvm-svn')
 
     cd "${srcdir}/build"
 
@@ -316,8 +316,8 @@ package_lldb-polly-svn() {
         'python2'
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('lldb', 'lldb-svn')
-    conflicts=('lldb', 'lldb-svn')
+    provides=('lldb' 'lldb-svn')
+    conflicts=('lldb' 'lldb-svn')
 
     #cd "${srcdir}/build"
     cd "${srcdir}/build/tools/lldb"
@@ -342,8 +342,8 @@ package_llvm-libs-polly-svn() {
         'zlib'
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('llvm-libs', 'llvm-libs-svn')
-    conflicts=('llvm-libs', 'llvm-libs-svn')
+    provides=('llvm-libs' 'llvm-libs-svn')
+    conflicts=('llvm-libs' 'llvm-libs-svn')
 
     cd "${srcdir}/build"
 
@@ -378,8 +378,8 @@ package_llvm-ocaml-polly-svn() {
         "ocaml=$(_ocamlver)"
         'ocaml-ctypes'
     )
-    provides=('llvm-ocaml', 'llvm-ocaml-svn')
-    conflicts=('llvm-ocaml', 'llvm-ocaml-svn')
+    provides=('llvm-ocaml' 'llvm-ocaml-svn')
+    conflicts=('llvm-ocaml' 'llvm-ocaml-svn')
 
     cd "${srcdir}/build"
 
@@ -397,8 +397,8 @@ package_lld-polly-svn() {
         "llvm-libs-polly-svn=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('lld', 'lld-svn')
-    conflicts=('lld', 'lld-svn')
+    provides=('lld' 'lld-svn')
+    conflicts=('lld' 'lld-svn')
 
     #cd "${srcdir}/build"
     cd "${srcdir}/build/tools/lld"
@@ -425,8 +425,8 @@ package_clang-polly-svn() {
         'python2: git-clang-format and clang-format-diff.py support'
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('clang', 'clang-svn')
-    conflicts=('clang', 'clang-svn')
+    provides=('clang' 'clang-svn')
+    conflicts=('clang' 'clang-svn')
 
     cd "${srcdir}/build/tools/clang"
 
@@ -507,8 +507,8 @@ package_clang-analyzer-polly-svn() {
         'python2'
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('clang-analyzer')
-    conflicts=('clang-analyzer')
+    provides=('clang-analyzer' 'clang-analyzer-svn')
+    conflicts=('clang-analyzer' 'clang-analyzer-svn')
 
     cd "${srcdir}"
 
@@ -532,8 +532,8 @@ package_clang-compiler-rt-polly-svn() {
         "clang-polly-svn=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('clang-compiler-rt', 'clang-compiler-rt-svn')
-    conflicts=('clang-compiler-rt', 'clang-compiler-rt-svn')
+    provides=('clang-compiler-rt' 'clang-compiler-rt-svn')
+    conflicts=('clang-compiler-rt' 'clang-compiler-rt-svn')
 
     #cd "${srcdir}/build"
 
@@ -553,8 +553,8 @@ package_clang-tools-extra-polly-svn() {
         "clang-polly-svn=${pkgver}-${pkgrel}"
     )
     groups=('llvm-toolchain-polly-svn')
-    provides=('clang-tools-extra', 'clang-tools-extra-svn')
-    conflicts=('clang-tools-extra', 'clang-tools-extra-svn')
+    provides=('clang-tools-extra' 'clang-tools-extra-svn')
+    conflicts=('clang-tools-extra' 'clang-tools-extra-svn')
 
     #cd "${srcdir}/build"
 
