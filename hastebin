@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+# Project: hastebin
+# Author: kevr <kevr@nixcode.us>
+# Description: A tool which uploads data from stdin to hastebin.us
+# Copyright (C) 2014 Kevin Morris
+import sys
+import requests
+import json
+from select import select
+
+## Voila hardcoded settings~
+url = "https://hastebin.com"
+timeout = 5 # Change this to any http request timeout you desire
+
+## Immediately timed out select poll
+def has_data(fd):
+    return select([fd], [], [], 0.0) == ([fd], [], [])
+
+def quit(code, msg):
+    print(msg)
+    return code
+
+## Sorry for the C-style functions, I prefer them
+def main():
+    if not has_data(sys.stdin):
+        return quit(1, "hastebin: no data given via stdin")
+
+    try:
+        stdin = sys.stdin.read()
+    except UnicodeDecodeError:
+        return quit(2, "hastebin: an error occured reading stdin")
+        
+    response = requests.post("%s/documents" % url, headers={
+      "Accept": "application/json"}, data=stdin)
+    if response.status_code != requests.codes.ok:
+      return quit(3, "hastebin: error submitting POST data to hastebin")
+
+    content = response.content.decode("UTF-8").rstrip()
+    data = json.loads(content)
+
+    print("%s/%s" % (url, data["key"]))
+
+    return 0
+
+# main execution
+if __name__ == "__main__":
+    e = main()
+    exit(e)
+
