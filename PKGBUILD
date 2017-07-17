@@ -19,6 +19,7 @@ md5sums_x86_64=('SKIP')
 package() {
     tar -xvf data.tar.xz -C ${pkgdir}
     mv ${pkgdir}/usr/bin/MockingBot ${pkgdir}/usr/bin/mockingbot
+    sed -i 's/Exec=MockingBot/Exec=mockingbot/' ${pkgdir}/usr/share/applications/MockingBot.desktop
     chmod -R go-w "${pkgdir}"/usr
     install -dm755 "${pkgdir}/usr/bin"
 }
