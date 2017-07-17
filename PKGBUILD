@@ -2,7 +2,7 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 pkgname=lhapdf
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files."
 arch=('x86_64' 'i686')
 url="http://lhapdf.hepforge.org/"
@@ -13,7 +13,7 @@ makedepends=()
 install=lhapdf.install
 source=("http://www.hepforge.org/archive/lhapdf/LHAPDF-$pkgver.tar.gz")
 noextract=()
-md5sums=('16d844ba4ac5cf531e5ead01b51d927a')
+md5sums=('a7c695803b01a31e19b81b73a824f021')
 
 build() {
 	cd "$srcdir/LHAPDF-$pkgver"
@@ -23,7 +23,7 @@ build() {
 
 check() {
 	cd "$srcdir/LHAPDF-$pkgver"
-	#make -k check  # disabled due to spurious boost dependency in 6.2.0
+	make -k check
 }
 
 package() {
