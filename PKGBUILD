@@ -2,19 +2,19 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.2.4
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=("any")
 url="https://cryptomator.org/"
-license=('MIT/X Consortium License')
+license=('GPL3')
 depends=('java-runtime=8' 'java-openjfx')
 makedepends=('java-runtime-openjdk=8' 'apache-ant')
 source=("antkit-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/antkit.tar.gz"
         'cryptomator.sh'
         'cryptomator.desktop'
         'cryptomator-vault.xml')
-sha256sums=('cb33e4cb9d6ff399d9971e137528d7c64e1d64e6ba86f325d778140df9830919'
+sha256sums=('ceb34e70a9f68544d8ff7be524bfb597238183adcd0a29d50e4509bc1dfa3a57'
             'c4c69b9e364469e7f1fa95fa2acaac269fb9ae18a5b9ff606b47511935a58cfc'
             '1193f85b545298f6d474c7f17865433f25c73995b00894e0d7d7bc873c696464'
             '78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad')
