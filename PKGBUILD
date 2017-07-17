@@ -1,7 +1,7 @@
-# Maintainer: Aleksandr Boiko <brdcom@ya.ru>
+# Maintainer: Aleksandr Boiko <4le34n at gmail dot com>
 pkgname=kalkun
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web based SMS management"
 arch=('any')
 url="http://kalkun.sourceforge.net/"
