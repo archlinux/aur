@@ -1,0 +1,16 @@
+pkgbase = rocket-git
+	pkgdesc = An intuitive sync-tracker tool for realtime audiovisual productions
+	pkgver = r750.3324c3f
+	pkgrel = 1
+	url = https://github.com/rocket/rocket
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = qt5-base
+	source = rocket::git+https://github.com/rocket/rocket
+	md5sums = SKIP
+
+pkgname = rocket-git
+	depends = qt5-base
+
