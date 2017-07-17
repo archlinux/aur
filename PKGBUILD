@@ -15,36 +15,47 @@
 # archzfs github page.
 #
 #
-pkgname="spl-linux-lts-git"
-pkgver=0.7.0_rc4_r5_g7a35f2b_4.9.36_1
+pkgbase="spl-linux-lts-git"
+pkgname=("spl-linux-lts-git" "spl-linux-lts-git-headers")
+pkgver=0.7.0_rc5_r0_gae42190_4.9.37_1
 pkgrel=1
-pkgdesc="Solaris Porting Layer kernel modules."
-depends=("spl-utils-linux-lts-git" "kmod" "linux-lts=4.9.36-1")
-makedepends=("linux-lts-headers=4.9.36-1" "git")
+makedepends=("linux-lts-headers=4.9.37-1" "libelf" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
-groups=("archzfs-linux-lts-git")
 license=("GPL")
-install=spl.install
-provides=("spl")
-conflicts=('spl-utils-linux' 'spl-utils-linux-git' 'spl-utils-linux-lts')
+depends=("spl-utils-common-git" "kmod" "linux-lts=4.9.37-1")
 
 build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.9.36-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.36-1-lts/build \
+                --with-linux=/usr/lib/modules/4.9.37-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.37-1-lts/build \
                 --with-config=kernel
     make
 }
 
-package() {
+package_spl-linux-lts-git() {
+    pkgdesc="Solaris Porting Layer kernel modules."
+    install=spl.install
+    provides=("spl")
+    groups=("archzfs-linux-lts-git")
+    conflicts=('spl-linux-lts')
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
+    # Remove src dir
+    rm -r "${pkgdir}"/usr/src
+}
+
+package_spl-linux-lts-git-headers() {
+    pkgdesc="Solaris Porting Layer kernel headers."
+    conflicts=('spl-linux-lts-headers' 'spl-linux-headers' 'spl-linux-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers')
+    cd "${srcdir}/spl"
+    make DESTDIR="${pkgdir}" install
+    rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.36-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.37-1-lts/Module.symvers
 }
