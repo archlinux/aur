@@ -2,14 +2,14 @@
 
 
 pkgname=blender-2.8-git
-pkgver=70412.78e2238fe4c
+pkgver=70444.4c835b9168d
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="http://blender.org/"
 depends=('libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
-         'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
+         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 provides=('blender-2.8')
@@ -90,6 +90,8 @@ package() {
   make DESTDIR="$pkgdir" install
   
   msg "add -2.8 sufix to desktop shortcut"
+  sed -i 's/=blender/=blender-2.8/g' ${pkgdir}/usr/share/applications/blender.desktop
+  sed -i 's/=Blender/=Blender-2.8/g' ${pkgdir}/usr/share/applications/blender.desktop
   mv ${pkgdir}/usr/share/applications/blender.desktop ${pkgdir}/usr/share/applications/blender-2.8.desktop
 
   msg "add -2.8 sufix to binaries"

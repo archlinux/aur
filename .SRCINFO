@@ -1,6 +1,6 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 70412.78e2238fe4c
+	pkgver = 70444.4c835b9168d
 	pkgrel = 1
 	url = http://blender.org/
 	install = blender.install
@@ -23,6 +23,8 @@ pkgbase = blender-2.8-git
 	depends = libxi
 	depends = openimageio
 	depends = opencolorio
+	depends = openvdb
+	depends = opencollada
 	depends = opensubdiv
 	depends = openshadinglanguage
 	depends = libtiff
