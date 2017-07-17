@@ -4,3 +4,4 @@
 *.zip
 *.gz
 /mpv
+id_aur_rsa*
