@@ -2,8 +2,8 @@
 pkgname=bginetaccess
 _basename=bgbilling
 _pkgname=BGInetAccess
-_major=6.1
-_minor=23
+_major=7.0
+_minor=39
 pkgver=$_major.$_minor
 pkgrel=1
 pkgdesc="Access server for BGBilling"
@@ -13,8 +13,7 @@ license=('custom')
 depends=('bgbilling')
 makedepends=('unzip' 'dos2unix')
 source=("ftp://bgbilling.ru/pub/${_basename}/${_major}/data/${_pkgname}_${_major}_${_minor}.zip"
-        'bginetaccess.service'
-        'setenv.sh.patch')
+        'bginetaccess.service')
 
 package() {
   install -d -m0755 ${pkgdir}/opt
@@ -27,7 +26,7 @@ package() {
   chmod 0744 *.sh
 
 # patch
-  patch -p0 <"${srcdir}/setenv.sh.patch"
+#  patch -p0 <"${srcdir}/setenv.sh.patch"
 
 # converting files to Unix format
   dos2unix *.sh
@@ -42,6 +41,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
-md5sums=('f2bae56657087a2e1e431465e7d96a04'
-         'acb8868e7ee91338d3395cc536e2a52a'
-         'dae4f113fa23e562270e1d935a2a3a12')
+md5sums=('d0abbb62f999c67b6b8ebc4d610cdae8'
+         'acb8868e7ee91338d3395cc536e2a52a')
