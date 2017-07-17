@@ -2,15 +2,15 @@
 
 pkgname=mpvc-rs
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An mpc-like cli tool for mpv which connects to existing mpv instances through sockets, written in Rust"
 arch=('x86_64')
-url="https://gitlab.com/mpv-ipc/mpvc-rs"
+url="https://gitlab.com/mpv-ipc/mpvc"
 license=('GPL3')
 depends=('mpv')
 makedepends=('cargo')
 source=("mpvc-${pkgver}.tar.gz::https://gitlab.com/mpv-ipc/mpvc-rs/repository/archive.tar.gz?ref=v${pkgver}")
-sha512sums=('2b50b68fc252f7c5cbe312cd5395e20f860df48e335f578092cc7899e09486bc2f1bf2d110809db4b9685f4aafd8a04d48aa4b7e879566d801d88b676c86d96a')
+sha512sums=('c625ba52065d130d680c413878f353608bf82b11790d579c496ce3a8ca3701dfa037260e2e2f1707f9d1bf85d44cfc5f4fe5')
 provides=('mpvc')
 
 build() {
