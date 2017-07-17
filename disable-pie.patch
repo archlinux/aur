@@ -1,0 +1,3 @@
+406a407,408
+> 			// disable PIE which is on by default in Arch since July 2017
+> 			Result += " -fno-pie";

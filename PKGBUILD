@@ -7,13 +7,12 @@
 
 pkgname='unreal-engine'
 pkgver=4.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
 makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
 depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
-conflicts=('hardening-wrapper')
 license=('custom:UnrealEngine')
 
 source=(
@@ -21,6 +20,7 @@ source=(
   'UE4Editor.desktop'
   'ignore-return-value-error.patch'
   'LMStats.patch'
+  'disable-pie.patch'
 )
 
 md5sums=(
@@ -28,11 +28,13 @@ md5sums=(
   'c7fc35a7eb9e23c0a9b7c593f7f9878d'
   'f1a95777bea1abc3f4731d9f0f68b610'
   'abe70f602445e9465c1eff2769bc7d61'
+  '3e1b1332a94871bb8dfe7489677778ee'
 )
 
 prepare() {
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealLightmass/Private/LightmassCore/Misc/LMStats.h" LMStats.patch
+  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" disable-pie.patch
 
   cd $srcdir/UnrealEngine
 
@@ -44,15 +46,13 @@ prepare() {
 }
 
 build() {
-
   cd $srcdir/UnrealEngine
 
   # this should work instead of "git clean", but something leftover causes crashes
   #make ARGS=-clean
 
-  # first build fails with more than one process
+  # -j1 to force one  make job; the first time fails if there are multiple jobs
   make -j1
-
 }
 
 package() {
