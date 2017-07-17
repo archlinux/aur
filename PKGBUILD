@@ -1,7 +1,7 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=greenpak-designer
-_pkgver=6.04
+_pkgver=6.05
 _pkgrel=3
 pkgver=$_pkgver.$(printf "%03d" $_pkgrel)
 pkgrel=1
@@ -17,7 +17,7 @@ options=('!strip')
 install=${pkgname}.install
 
 source=("http://www.silego.com/uploads/resources/GP1-5_Designer_v${pkgver}_LNX_Setup.zip")
-sha256sums=('2997cf49acd0bd7085346520bc6fc0f7012e93c1dbb5914ec1be1804c318a0ea')
+sha256sums=('fc15db4f8cd393be03ccec8e91091e7e21dc5f3925d3b2eb82a6ad84c3f89765')
 
 if [[ $CARCH == 'i686' ]]; then
   _arch='i386'
@@ -36,21 +36,23 @@ package() {
   rm -r "${pkgdir}"/lib
 
   # Remove unneeded binaries
-  rm -r "${pkgdir}/usr/local/${pkgname}/bin"/{platforms,QtWebEngineProcess}
+  rm -r "${pkgdir}"/usr/bin
+  rm -r "${pkgdir}/usr/local/${pkgname}/bin"/{platforms,QtWebEngineProcess,slgspicebackend}
 
   # Move binaries to /usr/bin
-  mv "${pkgdir}/usr/local/${pkgname}/bin"/* "${pkgdir}"/usr/bin
+  mv "${pkgdir}/usr/local/${pkgname}/bin" "${pkgdir}"/usr/bin
+  ln -s "../lib/${pkgname}/slgspicebackend" "${pkgdir}"/usr/bin/slgspicebackend
 
   # Remove unneeded libraries
   rm -r "${pkgdir}/usr/local/${pkgname}/lib"/{libQt5*,libqwt*,libusb-1.0.so*}
 
   # Move libraries to subdirectory in /usr/lib
   install -dm 755 "${pkgdir}/usr/lib/${pkgname}"
-  mv "${pkgdir}/usr/local/${pkgname}/lib"/* "${pkgdir}/usr/lib/${pkgname}"
-  rm -r "${pkgdir}/usr/local/${pkgname}/lib"
+  mv "${pkgdir}/usr/local/${pkgname}/lib"{,exec}/* "${pkgdir}/usr/lib/${pkgname}"
+  rm -r "${pkgdir}/usr/local/${pkgname}/lib"{,exec}
 
   # Remove unneeded support files
-  rm -r "${pkgdir}/usr/local/${pkgname}"/{bin,plugins,qml,resources,translations}
+  rm -r "${pkgdir}/usr/local/${pkgname}"/{plugins,qml,resources,translations}
 
   # Move supporting files to /usr/share
   mv "${pkgdir}/usr/local/${pkgname}" "${pkgdir}/usr/share/${pkgname}"
@@ -58,10 +60,10 @@ package() {
 
   # Redefine library search paths
   for _exec in "${pkgdir}/usr/bin"/*; do
-    patchelf --set-rpath "\$ORIGIN/../lib:/usr/lib/${pkgname}" $_exec
+    patchelf --set-rpath "\$ORIGIN/../lib/${pkgname}:\$ORIGIN/../lib" $_exec
   done
-  for _lib in "${pkgdir}/usr/lib/${pkgname}"/*; do
-    patchelf --set-rpath "\$ORIGIN/..:/usr/lib/${pkgname}" $_lib
+  for _lib in "${pkgdir}/usr/lib/${pkgname}"/{lib*,slgspicebackend}; do
+    patchelf --set-rpath "\$ORIGIN:\$ORIGIN/.." $_lib
   done
 
   # Fix desktop launchers
