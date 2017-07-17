@@ -16,15 +16,16 @@ source=("git+https://github.com/3ximus/$_repo.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_repo
+  cd ${srcdir}/$_repo
 
   local _ver=$(awk -F '=' '/Version/ {print $2}' metadata.desktop)
   printf '%s.r%s.g%s' "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
-  cd $_repo
+  cd ${srcdir}/$_repo
+  sh generate_playlist.sh  
   rm preview*.gif
 }
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/sddm/themes/aerial/" $_repo/*
+  install -Dm644 -t "$pkgdir/usr/share/sddm/themes/aerial/" ${srcdir}/$_repo/*
 }
