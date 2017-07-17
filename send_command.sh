@@ -13,6 +13,7 @@ password="${password#rcon.password=}"
 
 if [ "$rcon" != true -o -z "$password" ]; then
   echo "RCON must be enabled to operate the server."
+  exit
 fi
 
 # Issue command passed to this script as and argument

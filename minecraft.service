@@ -3,9 +3,12 @@ Description=Minecraft server
 Conflicts=craftbukkit.service spigot.service
 
 [Service]
+User=craftbukkit
+Group=craftbukkit
+RuntimeDirectory=craftbukkit
+PIDFile=/run/craftbukkit/minecraft.pid
 ExecStart=/srv/craftbukkit/start_server.sh minecraft
 ExecStop=/srv/craftbukkit/stop_server.sh
-PIDFile=/var/run/minecraft.pid
 Type=forking
 
 [Install]
