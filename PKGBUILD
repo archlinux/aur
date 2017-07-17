@@ -3,7 +3,7 @@
 
 pkgname=libyami
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Media Infrastructure: Intel VA-API Media codecs with hardware acceleration"
 arch=('i686' 'x86_64')
 url="https://github.com/01org/libyami"
