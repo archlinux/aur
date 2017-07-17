@@ -2,13 +2,13 @@
 
 _pkgbase=pytouhou
 pkgname="$_pkgbase-hg"
-pkgver=634
+pkgver=636
 pkgrel=1
 pkgdesc='Libre reimplementation of the Touhou 6 engine.'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://pytouhou.linkmauve.fr/'
 license=('GPL3')
-depends=('python' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libepoxy' 'libgl')
+depends=('python' 'glfw' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libepoxy' 'libgl')
 makedepends=('mercurial' 'cython')
 provides=("pytouhou=$pkgver")
 conflicts=('pytouhou')
