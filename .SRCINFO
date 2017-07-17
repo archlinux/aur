@@ -8,7 +8,6 @@ pkgbase = wire-desktop-git
 	license = GPL3
 	makedepends = cargo
 	makedepends = gendesk
-	makedepends = grunt-cli
 	makedepends = npm
 	makedepends = python2
 	depends = alsa-lib
