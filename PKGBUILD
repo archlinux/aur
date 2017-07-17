@@ -25,8 +25,10 @@ package() {
 	install -Dm600 --owner=$USER "./qt/phoneicon.ico" "$pkgdir/$HOME/.local/share/icons/phoneicon.ico"
 	for file in ./qt/pics/*; do
 		fname=$(basename $file)
-		install -Dm644 "$file" "$pkgdir/usr/share/desktop-phonepi/$fname"
+		install -Dm644 "$file" "$pkgdir/usr/share/dialer-phonepi/$fname"
 	done
 	install -Dm755 "./daemon/calls-daemon.service" "$pkgdir/usr/lib/systemd/system/calls-daemon.service"
 	sed -i -e "s/User=.*/User=$USER/" "$pkgdir/usr/lib/systemd/system/calls-daemon.service"
+
+	mkdir -p -m 777 "$pkgdir/usr/share/phonepi"
 }
