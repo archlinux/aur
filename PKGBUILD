@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=3.10.0
+pkgver=4.0.0
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://mattermost.org"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'yarn' 'python2' 'git' 'mercurial' 'libpng12')
+makedepends=('go' 'yarn' 'npm' 'python2' 'git' 'mercurial' 'libpng12')
 backup=('etc/webapps/mattermost/config.json')
 optdepends=('mariadb: SQL server storage'
             'percona-server: SQL server storage'
@@ -19,7 +19,7 @@ source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgv
         user.conf
         tmpfile.conf
         mattermost.sh)
-sha256sums=('6691cd17cd30c7299f203da32daf2a54ea54a7b72a96068c418d230b4d9d3199'
+sha256sums=('08b8fd8081a73ee15dd9ca6c020c41fcf1b345ee0b35302ec813512e4e2f2431'
             'b3fbb2d04e72396677b2c8e34df089ff135796f7a0e8a42d45e989773d6d5b07'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd'
             '42277f740be74081126e5ac20a90bdf11cc9588f9b16e6bc1e2f6f106bedb8a6'
