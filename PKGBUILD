@@ -4,7 +4,7 @@ _srcname='qtstyleplugins'
 pkgdesc='Additional style plugins for Qt5'
 pkgver='5.0.0'
 _commit='84b443109729664c7a0bd124b42c493f28069efc'
-pkgrel='9'
+pkgrel='10'
 arch=('i686' 'x86_64')
 url="https://code.qt.io/cgit/qt/${_srcname}"
 license=('LGPL')
@@ -22,7 +22,10 @@ install='install.sh'
 build() {
     cd "${srcdir}/${_srcname}"
 
-    qmake PREFIX='/usr' LIBDIR='/usr/lib'
+    qmake PREFIX='/usr' \
+        LIBDIR='/usr/lib' \
+        QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
+        QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"
     make
 }
 
