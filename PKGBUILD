@@ -2,7 +2,7 @@
 
 pkgname=rolisteam
 _pkgname=rolisteam
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Virtual tabletop software. It helps you to manage tabletop role playing games with remote friends/players."
 arch=('i686' 'x86_64')
