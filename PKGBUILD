@@ -9,7 +9,7 @@ license=('custom:starleaf')
 # depends=('libappindicator3' 'libnotify4')
 makedepends=('pacman>=4.2.0')
 options=('!emptydirs' '!strip')
-source=("${pkgname}_${pkgver}.deb::http://downloads.starleaf.com/breeze_downloads/StarLeaf-Breeze-Installer-Ubuntu.deb")
+source=("${pkgname}_${pkgver}.deb::https://dl.starleaf.com/breeze_downloads/StarLeaf-Breeze-Installer-Ubuntu.deb")
 md5sums=('ea07fdd1a213dc30fbb51edc8e54331e')
 
 package() {
