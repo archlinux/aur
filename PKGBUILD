@@ -1,14 +1,12 @@
-# Maintainer: Egor Panfilov <multicolor{dot}mood{at}gmail{dot}com>
-
 pkgbase=python-hmmlearn-git
 pkgname=('python2-hmmlearn-git' 'python-hmmlearn-git')
-pkgver=0.2.0.r18.gb8391fc
+pkgver=0.2.0.r30.g7dc4397
 pkgrel=1
 
 pkgdesc="Algorithms for unsupervised learning and inference of Hidden Markov Models for Python."
 arch=('i686' 'x86_64')
 url="http://hmmlearn.readthedocs.io/en/latest/"
-license=('Custom: Copyright (c) 2015, hmmlearn authors and contributors')
+license=('Custom: Copyright (c) 2014, hmmlearn authors and contributors')
 
 makedepends=('git')
 
@@ -41,4 +39,3 @@ package_python-hmmlearn-git() {
   cd "$srcdir/hmmlearn"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-
