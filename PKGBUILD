@@ -4,7 +4,7 @@
 # Contributor: s1gma,shirokuro
 
 pkgname=scapy-git
-pkgver=2.3.3.dev206
+pkgver=2.3.3.dev519
 pkgrel=1
 pkgdesc="A powerful interactive packet manipulation program written in Python"
 url="http://www.secdev.org/projects/scapy/"
