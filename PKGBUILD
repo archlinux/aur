@@ -5,7 +5,7 @@
 
 _pkgname=okular
 pkgname=${_pkgname}-light
-pkgver=17.04.2
+pkgver=17.04.3
 pkgrel=1
 pkgdesc='KDE document viewer, without Mobi/ePub/CHM and Text-to-Speech'
 arch=('i686' 'x86_64')
@@ -22,8 +22,9 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python') #ebook-tools kdegraphic
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('ee0b2c474cdcf14707cc63f35fb9ac96d3fd1499bf0c746bae1a91f507340c67' 'SKIP')
-validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
+sha256sums=('3b9e34d6f03d54b8ba17bab7be67109b8974c4f0465087fb8ad09be889aa0530' 'SKIP')
+validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7'  # Albert Astals Cid <aacid@kde.org>
+              'F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87') # Christoph Feck <cfeck@kde.org>
 
 prepare() {
     mkdir -p build
