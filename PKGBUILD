@@ -5,7 +5,7 @@
 
 _basever=1.3.0-alpha
 pkgname=mypaint-git
-pkgver=1.3.0.alpha.r4825.f03e5ec5
+pkgver=1.3.0.alpha.r4832.e2bb20b5
 pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
