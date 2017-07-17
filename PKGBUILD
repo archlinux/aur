@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-decklink
 pkgver=3.3.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libx264.so' 'libx265.so' 'libxvidcore.so')
 makedepends=(
     # binary repositories:
-        'hardening-wrapper' 'ladspa' 'libvdpau' 'yasm'
+       'ladspa' 'yasm'
     # AUR:
         'blackmagic-decklink-sdk'
 )
