@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-cc
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc='A slender monospace typeface. Shape: default.'
 arch=('any')
@@ -10,12 +10,11 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-iosevka-pack')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/04-iosevka-cc-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('f719ebca9cc71bd365a58a97d87631e675841b6958b3f64a03ec1d0a6707f5d8'
+sha256sums=('ce2abb966379ed912be2440d0832648237fe9973f7fdf023963394172c406ab5'
             'a7a0e1da98ab1bae99a1f246f45e51720e0cc13a53b4a5b0692f64991d2191af')
 
 package() {
-  cd ${srcdir}
-  install -d ${pkgdir}/usr/share/fonts/TTF/
-  install -m644 ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
-  install -D -m644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
+    install -d ${pkgdir}/usr/share/fonts/TTF/
+    install -m644 ${srcdir}/ttf/*.ttf ${pkgdir}/usr/share/fonts/TTF/
+    install -D -m644 ${srcdir}/LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
