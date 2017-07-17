@@ -1,0 +1,18 @@
+pkgbase = ddrescueview
+	pkgdesc = Graphical viewer for GNU ddrescue log files
+	pkgver = 0.4_alpha_3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/ddrescueview
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xz
+	makedepends = lazarus-gtk2
+	depends = gtk2
+	provides = ddrescueview
+	conflicts = ddrescueview
+	source = https://downloads.sourceforge.net/project/ddrescueview/Test builds/v0.4 alpha 3/ddrescueview-source-0.4~alpha3.tar.xz
+	md5sums = c936b77ca781a0b7b082cf6a5e994be8
+
+pkgname = ddrescueview
+
