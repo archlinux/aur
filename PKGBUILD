@@ -4,8 +4,8 @@
 # libmfx defaults to build only the static library.
 
 pkgname=libmfx
-pkgver=1.21
-pkgrel=2
+pkgver=1.23
+pkgrel=1
 pkgdesc='Intel Media SDK dispatcher library'
 arch=('i686' 'x86_64')
 url='https://github.com/lu-zero/mfx_dispatch/'
@@ -15,7 +15,7 @@ conflicts=('libmfx-git')
 options=('staticlibs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/lu-zero/mfx_dispatch/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1ab803892193d4e8e3b0f5911e8612010a7fdfa8ff0a5c9f2b1aa534af87d41b')
+sha256sums=('d84db51a9d3ec6b5282fc681fba6b2c721814a6154cfc35feb422903a8d4384b')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
