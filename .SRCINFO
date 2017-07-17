@@ -1,6 +1,6 @@
 pkgbase = zezenia
 	pkgdesc = Zezenia Online is an actively developed free-to-play 2D MMORPG.
-	pkgver = 590
+	pkgver = 600
 	pkgrel = 1
 	url = http://zezeniaonline.com/
 	install = zezenia.install
@@ -8,9 +8,9 @@ pkgbase = zezenia
 	arch = x86_64
 	license = custom
 	provides = zezenia
-	noextract = zezenia_590_linux.zip
-	source = https://s3-eu-west-1.amazonaws.com/zezeniamedia/client/zezenia_590_linux.zip
-	md5sums = 229d4148ff955099c22517d5a8fba333
+	noextract = zezenia_600_linux.zip
+	source = https://s3-eu-west-1.amazonaws.com/zezeniamedia/client/zezenia_600_linux.zip
+	md5sums = 1212898b370f87ef35aea5c160ad89c9
 
 pkgname = zezenia
 
