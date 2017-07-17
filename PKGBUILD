@@ -83,7 +83,6 @@ build() {
 		--disable-libssp \
 		--enable-gnu-unique-object \
 		--enable-linker-build-id \
-		--enable-lto \
 		--enable-plugin \
 		--enable-install-libiberty \
 		--with-linker-hash-style=gnu \
@@ -91,9 +90,11 @@ build() {
 		--enable-default-pie \
 		--disable-multilib \
 		--disable-werror \
-		--enable-gold \
 		--enable-languages=d \
 		gdc_include_dir=/usr/include/dlang/gdc
+
+		#--enable-lto \
+		#--enable-gold \
 
 	make -j 8
 }
