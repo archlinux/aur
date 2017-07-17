@@ -22,12 +22,14 @@ build() {
 
 package_python-dulwich() {
   depends=('python')
+  conflicts=('python2-dulwich')
   cd "dulwich-${pkgver}"
   python setup.py install --root="$pkgdir/" --skip-build --optimize=1
 }
 
 package_python2-dulwich() {
   depends=('python2')
+  conflicts=('python-dulwich')
   cd "dulwich-${pkgver}"
   python2 setup.py install --root="$pkgdir/" --skip-build --optimize=1
 }
