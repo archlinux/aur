@@ -1,6 +1,6 @@
 pkgbase = krunner-pass
 	pkgdesc = A krunner plugin to retrieve a password from the password-store (https://www.passwordstore.org/)
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/akermu/krunner-pass
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = krunner-pass
 	depends = krunner
 	depends = qt5-base
 	depends = ki18n
-	source = https://github.com/akermu/krunner-pass/archive/v1.2.0.tar.gz
-	md5sums = 9fee9463a9c13cf90b196873cd5c1278
+	source = https://github.com/akermu/krunner-pass/archive/v1.3.0.tar.gz
+	md5sums = e10bb44258b0f8a230c4a1dc0bca63c5
 
 pkgname = krunner-pass
 
