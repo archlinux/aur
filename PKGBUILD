@@ -10,8 +10,8 @@ url="https://downloads.chef.io/chef-client/"
 license=('Apache')
 depends=()
 conflicts=( chef chef-solo )
-source=("https://packages.chef.io/files/stable/chef/13.1.31/ubuntu/16.04/chef_13.1.31-1_amd64.deb")
-sha256sums=('d8b0a8c012945cda9a2ff1b6b93bd852b06b81c71b4604250dac7c90143fd14d')
+source=("https://packages.chef.io/files/stable/chef/13.2.20/ubuntu/16.04/chef_13.2.20-1_amd64.deb")
+sha256sums=('88cd274a694bfe23d255937794744d50af972097958fa681a544479e2bfb7f6b')
 
 package() {
   cd "$srcdir"
