@@ -27,7 +27,7 @@ pkgbase = image_optim-git
 	provides = image_optim=v0.25.0.r0.g4334309
 	conflicts = image_optim
 	options = !emptydirs
-	source = image_optim-git::git+https://github.com/toy/image_optim.git
+	source = image_optim::git+https://github.com/toy/image_optim.git
 	md5sums = SKIP
 
 pkgname = image_optim-git

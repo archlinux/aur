@@ -30,21 +30,21 @@ makedepends=('git' 'ruby')
 provides=(${_pkgname}=$pkgver)
 conflicts=(${_pkgname})
 options=('!emptydirs')
-source=("$pkgname::git+https://github.com/toy/image_optim.git")
+source=("${_pkgname}::git+https://github.com/toy/image_optim.git")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   gem build $_pkgname.gemspec
 }
 
 package() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
   gem install --no-user-install --ignore-dependencies \
     -i "${pkgdir}${_gemdir}" \
