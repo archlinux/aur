@@ -3,8 +3,8 @@
 # Contributor: Alistair Dutton <kelveden at gmail.com>
 
 pkgname=eclipse-checkstyle
-pkgver=7.6.0
-_buildtime=201703111252
+pkgver=8.0.0
+_buildtime=201707161819
 pkgrel=1
 pkgdesc="Checkstyle plugin for Eclipse IDE"
 arch=('any')
