@@ -1,3 +1,21 @@
-406a407,408
-> 			// disable PIE which is on by default in Arch since July 2017
-> 			Result += " -fno-pie";
+--- Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs.orig	2017-07-17 14:53:24.847599080 -0400
++++ Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs	2017-07-17 14:53:33.137529047 -0400
+@@ -404,6 +404,8 @@
+             Result += " -Wno-invalid-offsetof";
+             // we use this feature to allow static FNames.
+             Result += " -Wno-gnu-string-literal-operator-template";
++            // disable PIE which is on by default in Arch since July 2017
++            Result += " -fno-pie";
+ 
+             if (CompileEnvironment.bEnableShadowVariableWarnings)
+             {
+@@ -593,6 +595,9 @@
+                 Result += string.Format(" -Wl,--unresolved-symbols=ignore-in-shared-libs");
+             }
+ 
++            // disable PIE which is on by default in Arch since July 2017
++            Result += " -nopie";
++
+             // RPATH for third party libs
+             Result += " -Wl,-rpath=${ORIGIN}";
+             Result += " -Wl,-rpath-link=${ORIGIN}";
