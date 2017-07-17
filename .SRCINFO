@@ -1,6 +1,6 @@
 pkgbase = libmypaint-git
 	pkgdesc = A library for making brushstrokes which is used by MyPaint and other projects.
-	pkgver = 2.0.0.alpha.r777.831b2a0
+	pkgver = 2.0.0.alpha.r778.08c4236
 	pkgrel = 1
 	url = http://mypaint.org/
 	arch = i686
