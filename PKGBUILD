@@ -2,8 +2,8 @@
 pkgname=bginetaccounting
 _basename=bgbilling
 _pkgname=BGInetAccounting
-_major=6.1
-_minor=22
+_major=7.0
+_minor=39
 pkgver=$_major.$_minor
 pkgrel=2
 pkgdesc="Accounting server for BGBilling"
@@ -13,8 +13,7 @@ license=('custom')
 depends=('bgbilling')
 makedepends=('unzip' 'dos2unix')
 source=("ftp://bgbilling.ru/pub/${_basename}/${_major}/data/${_pkgname}_${_major}_${_minor}.zip"
-        'bginetaccounting.service'
-        'setenv.sh.patch')
+        'bginetaccounting.service')
 
 package() {
   install -d -m0755 ${pkgdir}/opt
@@ -42,6 +41,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
-md5sums=('d64d30fc7fc20d70b152005151d3d3b2'
-         'd16caf1cc2f0701d3e4625ce21075a50'
-         'dae4f113fa23e562270e1d935a2a3a12')
+md5sums=('d8c2b7c7345586deab2d108b5b57f64d'
+         'd16caf1cc2f0701d3e4625ce21075a50')
