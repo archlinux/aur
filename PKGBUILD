@@ -1,18 +1,18 @@
 # Maintainer: Johannes Loher <johannes dor loher at fg4f dot de>
 _gitname=dfix
 pkgname="${_gitname}-git"
-pkgver=0.3.1.r6.g05daf62
+pkgver=0.3.2.r0.g396fd6b
 pkgrel=1
 pkgdesc='Tool for automatically upgrading D source code - git version'
 arch=('i686' 'x86_64')
-url='https://github.com/Hackerpilot/dfix'
+url='https://github.com/dlang-community/dfix'
 license=('custom: BSL')
 groups=('dlang')
 depends=('gcc-libs')
 makedepends=('dmd' 'git')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
-source=("git://github.com/Hackerpilot/${_gitname}.git"
+source=("git://github.com/dlang-community/${_gitname}.git"
 'http://www.boost.org/LICENSE_1_0.txt')
 md5sums=('SKIP'
          'e4224ccaecb14d942c71d31bef20d78c')
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
-	git submodule update --init --recursive
+	git submodule update --init
 }
 
 build() {
