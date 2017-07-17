@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides a C++ interface for camera calibration info
 url='http://ros.org/wiki/camera_info_manager'
 
 pkgname='ros-kinetic-camera-info-manager'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="image_common-release-release-kinetic-camera_info_manager-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_common-release/archive/release/kinetic/camera_info_manager/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('eed3fbc93efd2a66a97c8596bab21a593233a9bf3ff1dc4d91b29ab6b8a82768')
+sha256sums=('5b7ab6f930d30b94dbc4ef58e23658ee20614c4e71b47a4feff11eef78120877')
 
 build() {
   # Use ROS environment variables
