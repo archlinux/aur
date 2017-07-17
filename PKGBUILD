@@ -2,7 +2,7 @@
 # Maintainer: Alexander Boyko <4le34n at gmail dot com>
 pkgname=activemq
 pkgver=5.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Popular and powerful open source messaging and Integration Patterns provider"
 arch=('x86_64')
 url="http://activemq.apache.org"
