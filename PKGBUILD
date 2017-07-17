@@ -2,8 +2,8 @@
 
 _pkgname=macOS-Sierra
 pkgname=gtk-theme-macos-sierra-archers-git
-pkgver=v0.9.r138.gb518d74
-pkgrel=2
+pkgver=v0.9.r141.g9ac10d5
+pkgrel=1
 pkgdesc='macOS and OS X 10.11 GTK theme for Gnome Shell and GTK-based desktops.'
 arch=('any')
 url="https://github.com/B00merang-Project/${_pkgname}"
