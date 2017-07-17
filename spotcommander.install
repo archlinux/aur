@@ -2,13 +2,13 @@ post_install()
 {
 
 echo "
- --------------------------------------------------------------
- | Installation complete!                                     |
- |                                                            |
- | GO TO THIS WEB PAGE TO COMPLETE THE INSTALLATION:          |
- |                                                            |
- | http://www.olejon.net/code/spotcommander/?install_from_aur |
- --------------------------------------------------------------
+ ---------------------------------------------------------------
+ | Installation complete!                                      |
+ |                                                             |
+ | GO TO THIS WEB PAGE TO COMPLETE THE INSTALLATION:           |
+ |                                                             |
+ | https://www.olejon.net/code/spotcommander/?install_from_aur |
+ ---------------------------------------------------------------
 "
 
 }
