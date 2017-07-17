@@ -2,31 +2,23 @@
 # Contributor:
 
 pkgname=fotowall
-pkgver=0.9
-pkgrel=3
+pkgver=1.0
+pkgrel=1
 pkgdesc="A creative tool that allows you to layout your photos or pictures in a personal way"
 arch=('i686' 'x86_64')
 url="http://www.enricoros.com/opensource/fotowall/"
-license=('GPL2')
-depends=('qt4' 'v4l-utils')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/fotowall/Fotowall-${pkgver}.tar.bz2")
-sha256sums=('e4d0c005d2cb1d7c09438bfc3098eadebc08946e4fbc0655b7fc8b046de3810d')
-
-prepare() {
-  cd Fotowall-${pkgver}
-  # for hidden-file-or-dir warning 
-  sed -i -e "s/\.build/build/" ${pkgname}.pro
-  # for v4l1 compatibility
-  sed -i -e 's/linux\/videodev.h/libv4l1-videodev.h/' 3rdparty/videocapture/VideoDevice.h
-}
+license=('LGPL3')
+depends=('desktop-file-utils' 'qt5-svg')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/enricoros/fotowall/archive/v$pkgver.tar.gz")
+sha256sums=('8dc42262dd5220a12e92181ff82bd363a6506a4c3ab1ea3841281f2971e1b289')
 
 build() {
-  cd Fotowall-${pkgver}
-  qmake-qt4 PREFIX=/usr
+  cd $pkgname-$pkgver
+  sed -i 's|Icon=fotowall|Icon=/usr/share/pixmaps/fotowall.png|' $pkgname.desktop
+  qmake-qt5 PREFIX=/usr $pkgname.pro
   make
 }
 
 package() {
-  cd Fotowall-${pkgver}
-  make INSTALL_ROOT="${pkgdir}/" install
+  make -C $pkgname-$pkgver INSTALL_ROOT="${pkgdir}/" install
 }
