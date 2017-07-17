@@ -1,6 +1,6 @@
 # Maintainer: Taekyung Kim (Taekyung.Kim.Maths@gmail.com)
 pkgname=pari-elldata
-pkgver=20160215
+pkgver=20161017
 pkgrel=1
 pkgdesc="pari package of J. E. Cremona Elliptic Curve Data."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('pari>=2.2.11')
 makedepends=()
 source=("http://pari.math.u-bordeaux.fr/pub/pari/packages/elldata.tgz")
-md5sums=(a6a062a0c2f71bd69afc5bf7a30bd5ac)
+md5sums=(0ae49b7aa6a012ccd2804bfb831d3686)
 package() {
   mkdir -p $pkgdir/usr/share/pari
   mv data/elldata $pkgdir/usr/share/pari
