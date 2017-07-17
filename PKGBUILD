@@ -3,7 +3,7 @@
 _pkgbase=ipt-netflow
 pkgname=ipt-netflow-dkms
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 url=https://sourceforge.net/projects/ipt-netflow
 pkgdesc="High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel"
 arch=('i686' 'x86_64')
