@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=greenpak-designer
-_pkgver=6.05
-_pkgrel=3
+_pkgver=6.06
+_pkgrel=2
 pkgver=$_pkgver.$(printf "%03d" $_pkgrel)
 pkgrel=1
 pkgdesc="GreenPAK1-5 Designer"
@@ -16,8 +16,10 @@ replaces=('greenpak-designer-dev')
 options=('!strip')
 install=${pkgname}.install
 
-source=("http://www.silego.com/uploads/resources/GP1-5_Designer_v${pkgver}_LNX_Setup.zip")
-sha256sums=('fc15db4f8cd393be03ccec8e91091e7e21dc5f3925d3b2eb82a6ad84c3f89765')
+source_i686=("http://www.silego.com/uploads/resources/gpd_LNX/GP1-5_Designer_v${pkgver}_Debian8.5_i386_Setup.deb")
+sha256sums_i686=('6fea40f19acf7f30c6bdab2a6aaa030e58ee5c24c2b22cd0c28983d180eb2de7')
+source_x86_64=("http://www.silego.com/uploads/resources/gpd_LNX/GP1-5_Designer_v${pkgver}_Debian8.5_amd64_Setup.deb")
+sha256sums_x86_64=('4234eda51a3849e1d761a38a694fcec4740fbc7fb903147aec8f7685309a184c')
 
 if [[ $CARCH == 'i686' ]]; then
   _arch='i386'
@@ -27,7 +29,7 @@ fi
 
 package() {
   # Extract the proper package
-  ar p ${pkgname}_${_pkgver}-${_pkgrel}~Debian~jessie_${_arch}.deb data.tar.xz | \
+  ar p GP1-5_Designer_v${pkgver}_Debian8.5_${_arch}_Setup.deb data.tar.xz | \
     tar -xJ --exclude="usr/share/doc-base" --exclude="usr/share/lintian" -C "${pkgdir}"/
 
   # Move /lib files to /usr/lib
