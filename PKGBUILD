@@ -13,11 +13,11 @@ license=('BSD')
 ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  libusb-1.0-dev)
+  libusb)
 
 ros_depends=(ros-kinetic-catkin)
 depends=(${ros_depends[@]}
-  libusb-1.0-dev)
+  libusb)
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/libuvc/${pkgver}-${_pkgver_patch}
