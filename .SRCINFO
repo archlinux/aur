@@ -1,6 +1,6 @@
 pkgbase = osbuddy
 	pkgdesc = Launcher for the OldSchool RuneScape toolkit
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://rsbuddy.com/osbuddy
 	install = osbuddy.install
@@ -15,7 +15,7 @@ pkgbase = osbuddy
 	source = osbuddy.png
 	source = osbuddy.install
 	source = LICENSE
-	md5sums = 61ed8172507131e64f77fcd5c8e1e880
+	md5sums = 48ca98f1a53879b5ed28127cef3e8fb5
 	md5sums = fe21c768c3e41ef6e74773082d1d94f0
 	md5sums = 96ee5f2ec6e827516b9e557c08729cde
 	md5sums = 5edc1b9aef7d753402180df474bb391f
