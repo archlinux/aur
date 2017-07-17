@@ -12,21 +12,17 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=stenc
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="SCSI Tape Encryption Manager"
 arch=('i686' 'x86_64')
 license=('GPLv2')
 url="http://stenc.sourceforge.net/"
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        'include-unistd-h.patch')
-md5sums=('310664c64cf3f9a1007367072bccb5b8'
-         'f58feb684189a14afda06859337181f3')
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('30a1032cecd1b79a3fa43a297461923a')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
-
-  patch -p0 < "$srcdir"/include-unistd-h.patch
 
   # configure
   ./configure \
