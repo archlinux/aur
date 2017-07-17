@@ -2,7 +2,7 @@
 
 pkgname="perl-cache-memcached-fast"
 pkgver="0.25"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Perl client for memcached, in C language"
 arch=('any')
 url="http://search.cpan.org/dist/Cache-Memcached-Fast"
@@ -24,7 +24,10 @@ prepare_environment() {
 build() {
   prepare_environment
   /usr/bin/perl Makefile.PL
-  make
+
+  # parallel builds break due to a race during generation of a header
+  # file
+  make -j1
 }
 
 check() {
