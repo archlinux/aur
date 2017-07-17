@@ -5,7 +5,7 @@
 
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
-pkgver=1.35.5
+pkgver=1.36.0
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -17,8 +17,6 @@ makedepends=('boost' 'git' 'perl-alien-wxwidgets' 'perl-devel-checklib' 'perl-ex
              'perl-extutils-typemaps-default' 'perl-module-build-withxspp')
 checkdepends=('perl-io-stringy')
 optdepends=('perl-net-dbus: notifications support via any dbus-based notifier'
-            'perl-xml-sax-expatxs: make AMF parsing faster'
-            'perl-xml-sax: Additive Manufacturing File Format (AMF) support'
             'perl-net-bonjour: support for autodiscovery of printers on network (octoprint)'
             'perl-class-xsaccessor: creating faster accessor methods')
 source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_$pkgver"
