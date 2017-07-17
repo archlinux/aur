@@ -1,0 +1,9 @@
+[Unit]
+Description=Let’s Encrypt certificate renewal
+
+[Service]
+Type=oneshot
+User=certbot
+Group=certbot
+PermissionsStartOnly=True
+ExecStart=/usr/bin/certbot renew
