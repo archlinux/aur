@@ -1,0 +1,34 @@
+pkgbase = image_optim-git
+	pkgdesc = Optimize (lossless compress, optionally lossy) images (jpeg, png, gif, svg) using external utilities.
+	pkgver = v0.25.0.r0.g4334309
+	pkgrel = 1
+	url = https://github.com/toy/image_optim
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = ruby
+	depends = advancecomp
+	depends = gifsicle
+	depends = jhead
+	depends = jpegoptim
+	depends = libjpeg-turbo
+	depends = optipng
+	depends = pngcrush
+	depends = pngquant
+	depends = ruby
+	depends = ruby-exifr
+	depends = ruby-fspath
+	depends = ruby-image_size
+	depends = ruby-in_threads
+	depends = ruby-progress
+	optdepends = pngout: for lossless PNG compress
+	optdepends = nodejs-svgo: for optimizing SVG vector graphics files
+	optdepends = jpeg-archive: for lossy JPEG compression with jpeg-recompress
+	provides = image_optim=v0.25.0.r0.g4334309
+	conflicts = image_optim
+	options = !emptydirs
+	source = image_optim-git::git+https://github.com/toy/image_optim.git
+	md5sums = SKIP
+
+pkgname = image_optim-git
+
