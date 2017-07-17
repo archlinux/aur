@@ -1,6 +1,6 @@
 pkgbase = jdk-devel
 	pkgdesc = Oracle Java 9 Development Kit Snapshot
-	pkgver = 9b177
+	pkgver = 9b178
 	pkgrel = 1
 	url = http://jdk.java.net/9/
 	install = jdk-devel.install
@@ -47,10 +47,10 @@ pkgbase = jdk-devel
 	sha256sums = f5bf5f941a118d2db45a7e451e762e0f04ff38cea0f6674a09268daed09c4052
 	sha256sums = e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013
 	sha256sums = a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335
-	source_i686 = http://download.java.net/java/jdk9/archive/177/binaries/jdk-9+177_linux-x86_bin.tar.gz
-	sha256sums_i686 = 3e97e5f96fe4278e441bafc9386618b71f78aa1477db8cbe1b9dbef3fb667872
-	source_x86_64 = http://download.java.net/java/jdk9/archive/177/binaries/jdk-9+177_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = a6905f3a4245a071880e1793b8d3d6100ef7b171ea1d6ebfe6312c25c2fca8bb
+	source_i686 = http://download.java.net/java/jdk9/archive/178/binaries/jdk-9+178_linux-x86_bin.tar.gz
+	sha256sums_i686 = 15166b2de4b8137652908fe26a1d1ef449c13a4117896bd960831880e7ce5018
+	source_x86_64 = http://download.java.net/java/jdk9/archive/178/binaries/jdk-9+178_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 9cc01f39efb4fb5ead4625884999c0ab37a8da9d33bd42fdc65cefa376853431
 
 pkgname = jdk-devel
 
