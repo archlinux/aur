@@ -1,7 +1,7 @@
 # Maintainer: Michiru Saito <urihcim at gmail dot com>
 pkgname=brother-mfc-930cdn
 pkgver='1.1.2_2'
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-930CDN / MFC-930CDWN"
 arch=('i686' 'x86_64')
 url='http://support.brother.co.jp/j/b/downloadlist.aspx?c=jp&lang=ja&prod=mfc930cdn&os=127'
@@ -24,21 +24,22 @@ prepare() {
   sed -i \
     -e '/stop\|restart\|sleep\|lpadmin/s/^/: /' \
     -e 's@/usr@./usr@g' \
-    -e 's@/model/Brother@/model@g' \
     -e 's/lpinfo/echo/g' \
+    -e 's/"`/"\\`/g' \
+    -e 's/`"/\\`"/g' \
     $_wrapper
   $_wrapper
   rm $_wrapper
   find . -type f -name 'setupPrintcap*' -delete
   sed -i 's@\./@/@' ./usr/lib/cups/filter/*lpdwrapper*
-  sed -i 's@/usr/local/Brother@/usr/share/brother@g' $(grep -lr '/usr/local/Brother' ./)
+  sed -i 's@/usr/local/@/usr/share/@g' $(grep -lr '/usr/local/Brother' ./)
 }
 
 package() {
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  cp -R "$srcdir/usr/bin" "$pkgdir/usr"
-  cp -R "$srcdir/usr/lib" "$pkgdir/usr"
-  cp -R "$srcdir/usr/share/cups" "$pkgdir/usr/share"
-  cp -R "$srcdir/usr/local/Brother" "$pkgdir/usr/share/brother"
+  cp -Rp "$srcdir/usr/bin" "$pkgdir/usr"
+  cp -Rp "$srcdir/usr/lib" "$pkgdir/usr"
+  cp -Rp "$srcdir/usr/share/cups" "$pkgdir/usr/share"
+  cp -Rp "$srcdir/usr/local/Brother" "$pkgdir/usr/share/Brother"
   install -m 644 agree_*.html "$pkgdir/usr/share/licenses/$pkgname"
 }
