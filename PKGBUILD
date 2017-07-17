@@ -1,6 +1,7 @@
 # Maintainer: Jonas Frei <freijon@gmail.com>
 
 pkgname=mpvc-rs
+repname=mpvc
 pkgver=1.0.6
 pkgrel=2
 pkgdesc="An mpc-like cli tool for mpv which connects to existing mpv instances through sockets, written in Rust"
@@ -14,10 +15,10 @@ sha512sums=('c625ba52065d130d680c413878f353608bf82b11790d579c496ce3a8ca3701dfa03
 provides=('mpvc')
 
 build() {
-	cd $srcdir/$pkgname-v$pkgver*
+	cd $srcdir/$repname-v$pkgver*
 	cargo build --release
 }
 
 package() {
-	install -Dv $srcdir/$pkgname-v$pkgver*/target/release/mpvc $pkgdir/usr/bin/mpvc
+	install -Dv $srcdir/$repname-v$pkgver*/target/release/mpvc $pkgdir/usr/bin/mpvc
 }
