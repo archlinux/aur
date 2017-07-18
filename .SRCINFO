@@ -1,0 +1,20 @@
+pkgbase = notes-tree
+	pkgdesc = Note taking (knowledge base) app with tree like notes structure
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/baltic/notestree/src
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = ZLIB
+	makedepends = boost
+	depends = qt5-svg
+	depends = qt5-webkit
+	depends = boost-libs
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	source = https://bitbucket.org/baltic/notestree/downloads/notes-tree-1.0.tar.xz
+	sha256sums = ad81cd9e064e9640783a260e4f19f30e971a7fd5f22ed06272c7c7b04d1ef711
+
+pkgname = notes-tree
+
