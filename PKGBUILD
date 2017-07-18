@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Neef <aur AT gehaxelt DOT IN>
 pkgbase=theharvester-git
 pkgname=theharvester-git
-pkgver=r44.761d26b
+pkgver=r56.eb08d32
 pkgrel=1
 pkgdesc="A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)."
 arch=('any')
