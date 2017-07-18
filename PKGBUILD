@@ -1,4 +1,5 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
+# Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=habitat
 pkgver=0.24.1
@@ -9,6 +10,8 @@ url="https://www.habitat.sh/"
 license=('Apache')
 depends=('libarchive' 'libsodium')
 makedepends=('cargo')
+provides=('habitat')
+conflicts=('habitat-bin' 'habitat-git')
 source=("${pkgname}::git+https://github.com/habitat-sh/habitat.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
