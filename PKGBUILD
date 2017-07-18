@@ -2,7 +2,7 @@
 
 pkgname=streamlink-twitch-gui-git
 _pkgname=streamlink-twitch-gui
-pkgver=1632.a06b601
+pkgver=1741.49431a5b
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -17,18 +17,17 @@ depends=(
 	"gtk2"
 	"libxtst"
 	"nss"
-	"xdg-utils"
 	"streamlink"
 )
 makedepends=(
 	"git"
 	"nodejs"
-	"npm"
+	"yarn"
 	"bower"
 	"grunt-cli"
+	"rsync"
 )
 options=(!strip)
-install=${pkgname}.install
 source=(${_pkgname}::"git+https://github.com/streamlink/${_pkgname}.git")
 sha256sums=("SKIP")
 
@@ -39,29 +38,60 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	npm install
+	yarn install --pure-lockfile --non-interactive
 	grunt release
 }
 
 package() {
-	# go to folder of the built application
-	cd "${srcdir}/${_pkgname}/build/releases/${_pkgname}/$(echo ${CARCH} | sed -e 's/x86_64/linux64/' -e 's/i686/linux32/')/"
+	# the dir of the built application
+	builddir="${srcdir}/${_pkgname}/build/releases/${_pkgname}/$(echo ${CARCH} | sed -e 's/x86_64/linux64/' -e 's/i686/linux32/')"
 
-	# replace executable path in the menuitem and disable checking for new versions
-	sed -i "s:Exec=\$HERE/start.sh:Exec=/usr/bin/${_pkgname}:g" add-menuitem.sh
-	sed -i "s:CHECKNEWVERSIONS=true:CHECKNEWVERSIONS=false:g" start.sh
+	# set up package directories
+	install -d \
+		"${pkgdir}/opt/${_pkgname}/" \
+		"${pkgdir}/usr/bin/" \
+		"${pkgdir}/usr/share/applications/"
 
-	# create package folders and copy application content
-	install -d "${pkgdir}/opt/${_pkgname}"
-	install -d "${pkgdir}/usr/bin/"
-	cp -R * "${pkgdir}/opt/${_pkgname}"
+	# copy application content and ignore certain files and dirs
+	rsync -a \
+		--exclude "start.sh" \
+		--exclude "add-menuitem.sh" \
+		--exclude "remove-menuitem.sh" \
+		--exclude "credits.html" \
+		--exclude "icons" \
+		"${builddir}/" \
+		"${pkgdir}/opt/${_pkgname}/"
 
-	# sym link from /usr/bin/${_pkgname} to start.sh
-	ln -s "/opt/${_pkgname}/start.sh" "${pkgdir}/usr/bin/${_pkgname}"
-	# workaround for missing libudev.so (see start.sh)
-	ln -s "/usr/lib/libudev.so" "${pkgdir}/opt/${_pkgname}/libudev.so.0"
+	# create custom start script and disable version check
+	cat > "${pkgdir}/usr/bin/${_pkgname}" <<-EOF
+		#!/usr/bin/env bash
+		/opt/${_pkgname}/${_pkgname} "\$@" --no-version-check
+	EOF
+	chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 
-	# copy the license file
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	cp "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+	# copy icons
+	for res in 16 32 48 64 128 256; do
+		install -Dm644 \
+			"${builddir}/icons/icon-${res}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
+	done
+
+	# create menu shortcut
+	cat > "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<-EOF
+		[Desktop Entry]
+		Type=Application
+		Name=Streamlink Twitch GUI
+		GenericName=Twitch.tv browser for Streamlink
+		Comment=Browse Twitch.tv and watch streams in your videoplayer of choice
+		Keywords=streamlink;livestreamer;twitch;
+		Categories=AudioVideo;
+		Exec=/usr/bin/${_pkgname}
+		Icon=${_pkgname}
+	EOF
+
+	# copy licenses
+	install -Dm644 \
+		-t "${pkgdir}/usr/share/licenses/${_pkgname}/" \
+		"${srcdir}/${_pkgname}/LICENSE" \
+		"${builddir}/credits.html"
 }
