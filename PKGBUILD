@@ -1,6 +1,6 @@
 pkgname=python-pydrive
 pkgver=1.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Google Drive API made easy.'
 url='https://pypi.python.org/pypi/PyDrive'
 license=('Apache')
@@ -14,7 +14,7 @@ sha256sums=('83890dcc2278081c6e3f6a8da1f8083e25de0bcc8eb7c91374908c5549a20787')
 build() {
     cd "${srcdir}/PyDrive-${pkgver}"
 
-    python2 setup.py build
+    python setup.py build
 }
 
 
