@@ -1,21 +1,7 @@
---- LinuxToolChain.cs	2017-07-17 20:25:14.590741366 -0400
-+++ LinuxToolChain.cs.orig	2017-07-17 20:19:16.482922293 -0400
-@@ -404,8 +404,6 @@
- 			Result += " -Wno-invalid-offsetof";
- 			// we use this feature to allow static FNames.
- 			Result += " -Wno-gnu-string-literal-operator-template";
--			// disable PIE which is on by default in Arch since July 2017
--			Result += " -fno-pie";
- 
- 			if (CompileEnvironment.bEnableShadowVariableWarnings)
- 			{
-@@ -595,9 +593,6 @@
- 				Result += string.Format(" -Wl,--unresolved-symbols=ignore-in-shared-libs");
- 			}
- 
--			// disable PIE which is on by default in Arch since July 2017
--			Result += " -nopie";
--
- 			// RPATH for third party libs
- 			Result += " -Wl,-rpath=${ORIGIN}";
- 			Result += " -Wl,-rpath-link=${ORIGIN}";
+406a407,408
+> 			// disable PIE which is on by default in Arch since July 2017
+> 			Result += " -fno-pie";
+594a597,599
+> 
+> 			// disable PIE which is on by default in Arch since July 2017
+> 			Result += " -nopie";
