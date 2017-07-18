@@ -146,8 +146,8 @@ optdepends=(kate
             plasma-workspace)
 makedepends=()
 source=(org.kde.development.appdata.xml kdesdk-devenv-dependencies.svg)
-sha256sums=('67b3db866d04b2c900045dbd51490e097b20906d432297fd641b9c649bce8564
-             92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238')
+sha256sums=(67b3db866d04b2c900045dbd51490e097b20906d432297fd641b9c649bce8564
+            92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238)
 noextract=()
 
 package() {
