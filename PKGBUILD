@@ -3,11 +3,10 @@
 _gemname=powerpack
 pkgname=ruby-${_gemname}
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A few useful extensions to core Ruby classes."
 arch=('any')
 depends=('ruby')
-makedepends=(ruby)
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 license=('MIT')
