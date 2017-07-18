@@ -1,4 +1,4 @@
-# Maintainer: Papajoker <papajoke [at] archlinux [dot] info>
+# Maintainer: Papajoker <papajoke [at] webstratege [dot] fr>
 # Based on PKGBUILDs:
 #   `firefox-developer-de` by Leo Schwarz (evotopid) <mail@leoschwarz.com>
 # Pour ajouter la clé : Mozilla Software
@@ -11,8 +11,8 @@ _lang=fr
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc="Standalone (${_lang}) web browser from mozilla.org, developer build - French Francais"
 url='https://www.mozilla.org/fr/firefox/developer/'
-pkgver=55.0b6
-pkgrel=2
+pkgver=55.0b9
+pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 source=("https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/$_lang/firefox-$pkgver.tar.bz2"
@@ -61,8 +61,8 @@ package() {
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-sha512sums=('acae37988a2762fd525927fbe2a95afe8a1f7a07f8e701615b600359ad99250820f8ee24e48dc217a673bf8035a862ea53777c6bd4f1f867a0f30a0b2e265329'
-            '3f2ac3b9ad5f509acca49c4de616706a475c1a06c559296703ea54db28f1442b64bf0fece3b75b4df7c4b7a39350b8077b9efb47dae057464c56d5df274c479d'
+sha512sums=('29bec8a48666b4ae911cecec6928d5aaa9d35310d9e125fcb785c66b5207b2d3169585a77ba96f2990621a4d6375b1c0844da16416308cb8862ae4d7e4ce5bf3'
+            '4f8d0c63d74bc3ca5b4f48eaa12ac7846408cbcda71f7d91f4847bdd10365ed298021c38bd972e5da851e5f1f6a497299c97cb2d5a2702839eb4461e34651226'
             'SKIP'
             '59eb730388f7d2601f40bc3c42ae203e3b65820435adfdfb18cef5d530119304762779b2e493acfdf7bcadb60e2eac3d23304dcf379a1d583d677399ba654456'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
