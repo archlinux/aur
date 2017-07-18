@@ -4,7 +4,7 @@
 
 pkgname=bitcoin-unlimited
 _pkgbase=BitcoinUnlimited
-pkgver=1.0.2.0
+pkgver=1.0.3.0
 pkgrel=1
 pkgdesc='Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64' 'armv7h')
