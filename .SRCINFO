@@ -1,0 +1,15 @@
+pkgbase = viento-git
+	pkgdesc = Daemon and CLI interface for cloud storage management.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tgsachse/viento
+	arch = any
+	license = GPLv3
+	depends = python
+	depends = rclone
+	depends = python-termcolor
+	source = git+https://github.com/tgsachse/viento.git
+	md5sums = SKIP
+
+pkgname = viento-git
+
