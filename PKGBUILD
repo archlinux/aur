@@ -11,14 +11,14 @@ pkgname=('libmega-git'
          'python2-megasync-git'
          'fuse-megasync-git'
          )
-pkgver=v3.0.1.0.0.g06d9ffec
+pkgver=v3.1.4.0.0.g11a7ede0
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. (GIT Version)"
 arch=('i686' 'x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
 source=('git+https://github.com/meganz/MEGAsync.git'
-        'git+https://github.com/meganz/sdk.git#branch=develop'
+        'git+https://github.com/meganz/sdk.git'
         'mega.svg'
         'megasync.conf'
         'megasyncd.service'
@@ -54,13 +54,12 @@ pkgver() {
 }
 
 prepare() {
-  (git clone --depth 1 "file://${srcdir}/sdk" build; cd build; ./autogen.sh)
-  (git clone --depth 1 "file://${srcdir}/sdk" build-python2; cd build-python2; ./autogen.sh)
+  (git clone "${srcdir}/sdk" build; cd build; ./autogen.sh)
+  (git clone "${srcdir}/sdk" build-python2; cd build-python2; ./autogen.sh)
 
   cd MEGAsync
-  git config submodule.src/MEGASync/mega.url "file://${srcdir}/sdk"
-  git submodule update --init
-  (cd src/MEGASync/mega; git pull origin HEAD)
+  git config submodule.src/MEGASync/mega.url "${srcdir}/sdk"
+  git submodule update --init # --remote
 
   cd src/MEGASync/mega
   ./autogen.sh
