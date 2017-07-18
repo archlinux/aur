@@ -1,6 +1,6 @@
 pkgbase = rippled
 	pkgdesc = Ripple peer-to-peer network daemon
-	pkgver = 0.60.0
+	pkgver = 0.70.1
 	pkgrel = 1
 	url = https://github.com/ripple/rippled
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = rippled
 	depends = boost-libs
 	backup = etc/rippled/rippled.cfg
 	backup = etc/rippled/validators.txt
-	source = https://github.com/ripple/rippled/archive/0.60.0.tar.gz
-	md5sums = a18cc9503cd6cd3b90882a547d4b0134
+	source = https://github.com/ripple/rippled/archive/0.70.1.tar.gz
+	md5sums = 77118fd3dff37b070f363a1bf5c4bb5e
 
 pkgname = rippled
 
