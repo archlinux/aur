@@ -4,7 +4,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r4916.e634b757
+pkgver=r4944.5621a650
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -21,9 +21,8 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra"
         'git+https://github.com/fmtlib/fmt'
         'git+https://github.com/herumi/xbyak'
         'git+https://github.com/whoshuu/cpr'
-        'git+https://github.com/lsalzman/enet'
-        'git+https://github.com/nlohmann/json')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'git+https://github.com/lsalzman/enet')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -43,7 +42,6 @@ prepare() {
 	git config submodule.dynarmic.url "$srcdir/dynarmic"
 	git config submodule.cpr.url "$srcdir/cpr"
 	git config submodule.enet.url "$srcdir/enet"
-	git config submodule.json.url "$srcdir/json"
 	git submodule update
 
 	cd externals/dynarmic
