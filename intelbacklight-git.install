@@ -1,0 +1,23 @@
+post_install() {
+    getent group backlight >/dev/null 2>&1 ||  groupadd backlight &>/dev/null
+
+    chown root:backlight usr/bin/intelbacklight
+    chmod 754 usr/bin/intelbacklight
+    chmod u+s usr/bin/intelbacklight
+    echo -e "############\n#\n# NOTE: To run intelbacklight as normal user you have to add yourself into the backlight group\n#\n#############"
+
+}
+
+post_upgrade() {
+    getent group backlight >/dev/null 2>&1 ||  groupadd backlight &>/dev/null
+
+    chown root:backlight usr/bin/intelbacklight
+    chmod 754 usr/bin/intelbacklight
+    chmod u+s usr/bin/intelbacklight
+}
+
+post_remove() {
+    if getent group backlight >/dev/null 2>&1; then
+        groupdel backlight
+    fi
+}
