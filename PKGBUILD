@@ -2,26 +2,18 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vapoursynth-editor
-pkgver=R12
+pkgver=R16
 pkgrel=1
 pkgdesc='VapourSynth script editor'
 arch=('i686' 'x86_64')
 url='https://bitbucket.org/mystery_keeper/vapoursynth-editor'
 license=('CCPL' 'MIT')
-depends=('desktop-file-utils' 'qt5-base' 'vapoursynth')
+depends=('qt5-base' 'vapoursynth')
 makedepends=('git')
-install='vapoursynth-editor.install'
-#source=("git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git#tag=${pkgver,}"
-source=("git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git#tag=r⑨"
+source=("git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git#tag=${pkgver,}"
         'vsedit.desktop')
 sha256sums=('SKIP'
             'b6d24441cf5746ea4dc08ecf379c67695bac663deb394db4334ba6aba9474c0f')
-
-prepare() {
-  cd vapoursynth-editor
-
-  sed 's|QCoreApplication::applicationDirPath() + "/fonts"|"/usr/share/vsedit"|g' -i src/mainwindow.cpp
-}
 
 build() {
   cd vapoursynth-editor/pro
