@@ -4,8 +4,8 @@
 _pkgname=jdk
 pkgname=bin32-jdk
 _major=8
-_minor=131
-_build=b11
+_minor=141
+_build=b15
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (32-bit)"
@@ -43,13 +43,13 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
-source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/d54c1d3a095b4ff2b6607d096fa80163/$_pkgname-$pkgver-linux-i586.tar.gz"
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/336fa29ff2bb4ef291e347e091f7f4a7/$_pkgname-$pkgver-linux-i586.tar.gz"
         "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "jconsole32-$_jname.desktop"
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop")
-md5sums=('a6741fd674372366546bd8480be735c7'
+md5sums=('016e3389363cce74b2d756b626e949c6'
          'b3c7031bc65c28c2340302065e7d00d3'
          '30d35416b403c621fb02d0dc0b115c05'
          '9dfed511010a54eb377b692638d17585'
