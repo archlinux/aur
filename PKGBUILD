@@ -2,8 +2,8 @@
 # Original script by: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.1.22
-_build=115126
+pkgver=5.1.24
+_build=117012
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -19,10 +19,14 @@ depends=(
   'libxcursor'
   'libxinerama'
   'libxmu'
-  'linux-headers'
   'python2'
   'sdl'
 )
+
+makedepends=(
+  'linux-headers'
+)
+
 optdepends=('virtualbox-ext-oracle: for Oracle extensions')
 provides=("virtualbox=${pkgver}")
 conflicts=('virtualbox' 'virtualbox-host-dkms' 'virtualbox-host-modules-arch')
@@ -42,7 +46,7 @@ source=(
 )
 
 
-md5sums=('60789fef6862ecb5f3b43aef905bc48c'
+md5sums=('f9cd434b3fe19f7d45e7008f17c56824'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
