@@ -3,7 +3,7 @@
 
 pkgname=gns3-server
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-server'
@@ -27,7 +27,7 @@ md5sums=('63ae2f4c276aa5f6bf07f38b46372f0f'
          'f7a8f3128a903179c5f17a6c242b3cf9')
 
 prepare() {
-  sed -i 's/yarl>=0.9.8,<0.10/yarl>=0.10.2,<0.11/g' ${srcdir}/${pkgname}-${pkgver}/requirements.txt
+  sed -i 's/yarl>=0.9.8,<0.10/yarl>=0.9.8/g' ${srcdir}/${pkgname}-${pkgver}/requirements.txt
 #  sed -i 's/aiohttp>=1.3.5,<=1.4.0/aiohttp>=1.3.5/g' ${srcdir}/${pkgname}-${pkgver}/requirements.txt
 #  sed -i 's/aiohttp-cors==0.5.1/aiohttp-cors>=0.5.1/g' ${srcdir}/${pkgname}-${pkgver}/requirements.txt
 }
