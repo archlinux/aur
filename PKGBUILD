@@ -1,9 +1,9 @@
-# Maintainer: Det <nimetonmaili g-mail>
-# Contributors: t3ddy, Lex Rivera aka x-demon, ruario
+# Maintainer: sunnaryt <joshd@protonmail.com>
+# Contributors: Det, t3ddy, Lex Rivera aka x-demon, ruario
 
 
 pkgname=iridium-bin
-pkgver=54.0
+pkgver=58.0
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
 arch=('x86_64')
@@ -18,10 +18,9 @@ options=('!emptydirs' '!strip')
 
 source=("https://downloads.iridiumbrowser.de/ubuntu/iridium-browser_current_amd64.deb"
 )
-sha256sums=('fc241c0deda42e98d4e10bd5d194255b6887ecf680d5f7d83c0e13d3212a2246')
-sha384sums=('40128dd662535e7465498e452591e9b8e1fd40529cb05e08c20d100b96218349ca8344844cf94b307366180ba68accaa')
-sha512sums=('c34404d4bc9a754d7bb9212c2bc59921054c5538f6835b371e1969a690c06243b3ba804e8c1d0eed3d2f10622620129d08e945283430b24f2282c486d6f3c961')
-
+sha256sums=('b40fb9b599234fe2c7ff555f534621043591d06140cd71b5bbe1b5b17194a7f3')
+sha384sums=('68a17ec5b0f8e99cfa04b9a5d97f960db3e92c211781563ce9e058b33be5842795a5da53d092f71eeea2cab1b617fe7d')
+sha512sums=('796a7f4bd37a2f5508920935381d1b8d53b53b3564cc01076716af1cf3798dc906431da32c733aa37822d8fe62dca81222f4678976fe4841f7bdb817499e2567')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
