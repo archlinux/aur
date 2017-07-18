@@ -1,5 +1,5 @@
 pkgbase = wyeb-git
-	pkgdesc = A vim-like keybind webkit2gtk browser which focused to be simple.
+	pkgdesc = A vim-like webkit2gtk browser
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/jun7/wyeb
