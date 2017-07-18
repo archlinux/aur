@@ -5,7 +5,7 @@
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-2.0+</project_license>
     <name>KDE Development</name>
-    <icon type="stock">applications-development</icon>
+    <icon type="remote">https://cgit.kde.org/breeze-icons.git/plain/icons/categories/32/applications-development.svg</icon>
     <summary>A development environment for Qt and KDE Applications</summary>
     <description>
         <p>Install everything you need for a full KDE development system for developing your own software or extending existing one.</p>

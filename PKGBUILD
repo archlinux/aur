@@ -2,7 +2,7 @@
 # Don't manually edit the PKGBUILD, edit the upstream template instead
 
 pkgname=kde-development-environment-meta
-pkgver=20170602
+pkgver=20170718
 pkgrel=1
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
@@ -17,6 +17,7 @@ depends=(akonadi
          attica-qt5
          baloo
          baloo-widgets
+         bash-completion
          bluez-qt
          calendarsupport
          clang
@@ -25,7 +26,6 @@ depends=(akonadi
          extra-cmake-modules
          frameworkintegration
          gcc
-         gdb
          gettext
          git
          grantleetheme
@@ -145,10 +145,12 @@ optdepends=(kate
             plasma-sdk
             plasma-workspace)
 makedepends=()
-source=(org.kde.development.appdata.xml)
-md5sums=('fb880c7f491576bd4a5c107f871a63d8')
+source=(org.kde.development.appdata.xml kdesdk-devenv-dependencies.svg)
+sha256sums=('67b3db866d04b2c900045dbd51490e097b20906d432297fd641b9c649bce8564
+             92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238')
 noextract=()
 
 package() {
-    install -Dm644 org.kde.development.appdata.xml "$pkgdir"/usr/share/metainfo/org.kde.development.appdata.xml
+    install -Dm644 org.kde.development.appdata.xml "$pkgdir"/usr/share/metainfo/
+    install -Dm644 kdesdk-devenv-dependencies.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/
 }
