@@ -1,13 +1,13 @@
-# Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
+# Maintainer: farwayer <farwayer@gmail.com>
 
 _gemname=powerpack
 pkgname=ruby-${_gemname}
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A few useful extensions to core Ruby classes."
 arch=('any')
 depends=('ruby')
-makedepends=('ruby-bundler' 'ruby-rspec' 'ruby-yard')
+makedepends=(ruby)
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 license=('MIT')
