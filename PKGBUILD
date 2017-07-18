@@ -1,12 +1,21 @@
-# Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
+# Maintainer: farwayer <farwayer@gmail.com>
 
 _gemname=rubocop
 pkgname=ruby-${_gemname}
 pkgver=0.49.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Ruby code style checking tool."
 arch=('any')
-depends=('ruby' 'ruby-parser' 'ruby-powerpack' 'ruby-rainbow' 'ruby-ruby-progressbar' 'ruby-unicode-display_width')
+depends=(
+  ruby
+# uncomment when ruby-parallel will be updated
+#  'ruby-parallel>=1.10' 'ruby-parallel<2'
+  'ruby-parser>=2.3.3.1' 'ruby-parser<3'
+  'ruby-powerpack>=0.1' 'ruby-powerpack<1'
+  'ruby-rainbow>=1.99.1' 'ruby-rainbow<3'
+  'ruby-ruby-progressbar>=1.7' 'ruby-ruby-progressbar<2'
+  'ruby-unicode-display_width>=1.0.1' 'ruby-unicode-display_width<2'
+)
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 license=('MIT')
