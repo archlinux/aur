@@ -4,8 +4,8 @@
 
 pkgname=('pidgin-hg' 'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r38247.107c6c2342ff
-pkgrel=2
+pkgver=3.r38582.878de3ba891b
+pkgrel=1
 pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -16,7 +16,7 @@ makedepends=('mercurial' 'python2' 'avahi' 'tk' 'ca-certificates' 'intltool'
              'hicolor-icon-theme' 'dbus-glib' 'webkitgtk' 'json-glib'
              'farstream' 'libsasl' 'libidn' 'dbus-glib' 'nss'
              'libgnome-keyring' 'gplugin')
-makedepends+=('libx11' 'python')
+makedepends+=('libx11' 'python' 'meson')
 options=('!libtool')
 source=('pidgin::hg+https://bitbucket.org/pidgin/main#branch=default')
 sha256sums=('SKIP')
@@ -28,21 +28,23 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir"/$_hgname
+  cd "$srcdir"/"$_hgname"
+  rm -rf ../build
+  mkdir ../build
+  NOCONFIGURE=1 ./autogen.sh
+ 
 
-  ./autogen.sh \
-    --prefix=/usr \
+build() {
+  cd "$srcdir"/build
+   meson --prefix=/usr \ --builtype=release ../${_hgname}
     --sysconfdir=/etc \
     --disable-meanwhile \
-    --disable-gnutls \
     --enable-cyrus-sasl \
     --disable-kwallet \
     --with-python=/usr/bin/python \
     --with-system-ssl-certs=/etc/ssl/certs
-}
-
-build() {
-  cd "$srcdir"/$_hgname
+  ninja
+  }
   make
 }
 
