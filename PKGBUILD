@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
 pkgname=oomox
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc='Graphical application for generating different color variations of Numix theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
@@ -18,6 +18,8 @@ depends=(
     'python-gobject'
     'gtk-engine-murrine'
     'gtk-engines'
+    'procps-ng'
+    'polkit'
 )
 optdepends=(
     'xorg-xrdb: for the `xresources` theme'
@@ -25,7 +27,7 @@ optdepends=(
     'inkscape: for icon theme generation'
     'gnome-colors-common-icon-theme: for using the generated icon theme'
     'breeze-icons: more fallback icons'
-    'gksu: for applying Spotify theme from GUI'
+    'gksu: for applying Spotify theme from GUI without polkit'
 )
 provides=('oomox')
 conflicts=('oomox-git')
@@ -50,6 +52,7 @@ package() {
     make -C ${srcdir}/${pkgname}-${pkgver} -f po.mk install
     install -d "${pkgdir}/opt/oomox"
     mv "${srcdir}/${pkgname}-${pkgver}"/* "${pkgdir}/opt/oomox"
+    python -O -m compileall ${pkgdir}/opt/oomox/oomox_gui
     install -d "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/usr/share/applications/"
 
