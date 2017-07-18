@@ -1,4 +1,5 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
+# Maintainer: Trevor Bramble <inbox@trevorbramble.com>
 
 pkgname=habitat-git
 pkgver=0.20.0.r64.g232f7c63
@@ -8,7 +9,9 @@ arch=('x86_64')
 url="https://www.habitat.sh/"
 license=('Apache')
 depends=('libarchive' 'libsodium')
-makedepends=('cargo')
+makedepends=('git' 'cargo')
+provides=('habitat')
+conflicts=('habitat-bin' 'habitat-git')
 source=("${pkgname}::git+https://github.com/habitat-sh/habitat.git")
 sha256sums=('SKIP')
 
