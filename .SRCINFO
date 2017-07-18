@@ -1,0 +1,20 @@
+pkgbase = geni-tools
+	pkgdesc = Omni is a GENI command line tool for reserving resources at GENI aggregate managers via the GENI AM API using user accounts issued by a GENI clearinghouse.
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://github.com/GENI-NSF/geni-tools
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-dateutil
+	depends = python2-pyopenssl
+	depends = python2-m2crypto
+	source = https://github.com/GENI-NSF/geni-tools/archive/v2.10.tar.gz
+	source = omni.run
+	source = omni-configure.run
+	sha256sums = add9bf5a8fe0b4e9d01ee26a99c6f58d1b34b2c88077690ce5165fc3121b8e1e
+	sha256sums = b60b09ef7a9bf22b3daf09fef1c4b8d604b343149846a29aae3a4805a3402687
+	sha256sums = 07d56412fb374c976309df9d8f549438fa2d2c320c7b2aac06f8e7c8fee8f2c0
+
+pkgname = geni-tools
+

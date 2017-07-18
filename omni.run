@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PYTHONPATH="/opt/geni-tools/lib/python2.7/site-packages:$PYTHONPATH"
+
+/usr/bin/python2 /opt/geni-tools/bin/omni $@
