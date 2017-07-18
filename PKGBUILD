@@ -1,14 +1,13 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v5.3.2.r0.ae98485
+pkgver=v5.4.2.r3.61ef0f33
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
 license=('Apache')
-groups=()
-depends=('qscintilla-qt5' 'qt5-multimedia' 'qt5-script')
-makedepends=('git')
+depends=('qt5-multimedia' 'qt5-script')
+makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Bionus/imgbrd-grabber.git')
@@ -16,17 +15,24 @@ md5sums=('SKIP')
 
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "$srcdir/${pkgname%-git}"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	qmake PREFIX=/usr Grabber.pro
-	make
+    mkdir -p "$srcdir/build"
+    cd "$srcdir/build"
+
+    cmake -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 \
+    -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so \
+    -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "$srcdir/${pkgname%-git}"
+    make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make INSTALL_ROOT="$pkgdir" install
+    cd "$srcdir/build"
+    make DESTDIR="$pkgdir/" install
+    touch "$pkgdir/usr/share/Grabber/settings.ini"
 }
