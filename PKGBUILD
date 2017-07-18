@@ -3,12 +3,12 @@
 
 pkgname=cepl-git
 _pkgname=${pkgname%-*}
-pkgver=0.8.1.r0.g56fc962
+pkgver=0.8.4.r1.g13a9d6c
 pkgrel=1
 pkgdesc='CEPL is a command-line C11 Read-Eval-Print Loop supporting multiple compilers, readline key-bindings/tab-completion, and the ability to specify additional shared libraries to link against.'
 url='https://github.com/alyptik/cepl'
 arch=('i686' 'x86_64')
-license=('Apache')
+license=('GPL3')
 depends=('gcc' 'readline')
 source=("${_pkgname}::git+http://github.com/alyptik/cepl")
 sha256sums=('SKIP')
