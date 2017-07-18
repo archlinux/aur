@@ -1,6 +1,6 @@
 pkgbase = mssql-server
 	pkgdesc = Microsoft SQL Server for Linux
-	pkgver = 14.0.600.250
+	pkgver = 14.0.800.90
 	pkgrel = 1
 	url = https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux
 	install = mssql-server.install
@@ -9,13 +9,13 @@ pkgbase = mssql-server
 	depends = python2-configparser
 	depends = numactl
 	depends = sssd
-	depends = openssl-1.0>=1.0.2.k-4
+	depends = openssl-1.0>=1.0.2.l
 	noextract = libjemalloc1_3.6.0-9ubuntu1_amd64.deb
 	noextract = libc++1_3.7.0-1_amd64.deb
-	source = https://packages.microsoft.com/ubuntu/16.04/mssql-server/pool/main/m/mssql-server/mssql-server_14.0.600.250-2_amd64.deb
+	source = https://packages.microsoft.com/ubuntu/16.04/mssql-server/pool/main/m/mssql-server/mssql-server_14.0.800.90-2_amd64.deb
 	source = http://mirrors.kernel.org/ubuntu/pool/universe/j/jemalloc/libjemalloc1_3.6.0-9ubuntu1_amd64.deb
 	source = http://mirrors.kernel.org/ubuntu/pool/universe/libc/libc++/libc++1_3.7.0-1_amd64.deb
-	sha256sums = c8d30b898f02c9f0eb2a5268f693bd87ed68bb553b454a632a8c00745d761bbd
+	sha256sums = d6090108af8788df23fd54fffc41876a39372a51a7abf2afed58fc8978c7b9cb
 	sha256sums = 50fd3720d129ad7d659b311bb8436169b851f3671112ef53bf5d03580d4947f1
 	sha256sums = 416f5c17bd9ac8727808918dd2e1af04078691772c5f3f16afb497e33dfc9fd6
 
