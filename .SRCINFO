@@ -1,0 +1,15 @@
+pkgbase = git-annex-remote-gdrive
+	pkgdesc = A git-annex special remote using gdrve
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/Lykos153/git-annex-remote-gdrive
+	arch = any
+	license = GPL3
+	depends = git-annex
+	depends = gdrive>=2.1.0
+	depends = bash
+	source = https://github.com/Lykos153/git-annex-remote-gdrive/archive/v0.6.tar.gz
+	sha512sums = be63be0e0619490a019c5cd3638bf0e10f212786ea3588f6b3f6d615d6659672bfbd19b7bfc4c60bf2a3e50dc7053687b378810b57dac1d47f6ec7e844d6fab5
+
+pkgname = git-annex-remote-gdrive
+
