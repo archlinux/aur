@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=flexisip
 pkgver=1.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A general purpose SIP proxy with media capabilities"
 arch=('i686' 'x86_64')
 url="http://flexisip.org"
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 build() {
     cd "$pkgname"
-    cmake -DCMAKE_INTALL_PREFIX=/usr \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DENABLE_REDIS=YES \
         -DENABLE_PROTOBUF=YES \

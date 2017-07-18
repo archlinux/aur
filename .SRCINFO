@@ -1,7 +1,7 @@
 pkgbase = flexisip
 	pkgdesc = A general purpose SIP proxy with media capabilities
 	pkgver = 1.0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://flexisip.org
 	arch = i686
 	arch = x86_64
