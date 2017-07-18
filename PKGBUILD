@@ -2,8 +2,8 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.23.0.r3.g2fea1fd18
-_last_release="0.23.0-1"
+pkgver=0.23.0.r13.g9a8586c5c
+_last_release="0.23.1-3"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -70,9 +70,11 @@ package() {
   install -Dm644 etc/completion.bash "$pkgdir/usr/share/bash-completion/completions/crystal"
   install -Dm644 etc/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_crystal"
 
+  install -Dm644 man/crystal.1 "$pkgdir/usr/share/man/man1/crystal.1"
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha256sums=('SKIP')
-sha256sums_i686=('0a758770e6cb277bc5ed38fb6edafbf820b99527b65d6a44fd9f3a4c4743b70f')
-sha256sums_x86_64=('1d0348e1df3c56f9c29a3a76254c074846389fe5bed659c2cc1051bab83e1a5a')
+sha256sums_i686=('268a39b8d37385ff60d113d4d9fc966472160faa1e3bbf7ae58860ab6678aceb')
+sha256sums_x86_64=('6a84cc866838ffa5250e28c3ce1a918a93f89c06393fe8cfd4068fcbbc66f3ab')
