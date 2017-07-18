@@ -3,8 +3,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=3.1
-pkgrel=14
+pkgver=3.1.4
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -37,7 +37,7 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	mimic_setupVars.conf.sh
 	version.patch)
 
-md5sums=('e24ce6a12ee97cd7de2c5ab13af99511'
+md5sums=('e231722332116b7ffab316d5c66a828e'
          '2c0bf61ec96bdb85edeb9fd2cc2f330b'
          '3f1aeea43af0b192edb36b9e5484ff87'
          '7ac346581ada71187b7fd18f164bbee9'
@@ -48,7 +48,7 @@ md5sums=('e24ce6a12ee97cd7de2c5ab13af99511'
          'd42a864f88299998f8233c0bc0dd093d'
          '94d5aa0e8aa3d4170bcea71078a9da25'
          '291d3c95e445fe65caf40c3605efd186'
-         '966a61aee3948cdfd92f1eb1a8180f1d'
+         'e364945acb83d6bec021a40a8642aca6'
          '93fe5e50cf3fcb08b24cf29b0cace85b')
 
 prepare() {
@@ -302,12 +302,13 @@ package() {
   install -Dm644 $_pkgname-$pkgver/advanced/index.php "$pkgdir"/srv/http/pihole/pihole/index.php
   install -Dm644 $_pkgname-$pkgver/advanced/index.js "$pkgdir"/srv/http/pihole/pihole/index.js
   install -Dm644 $_pkgname-$pkgver/advanced/blockingpage.css "$pkgdir"/srv/http/pihole/pihole/blockingpage.css
+
   cp -dpr --no-preserve=ownership $_wwwpkgname-$_wwwpkgver/* "$pkgdir"/srv/http/pihole/admin/
 
   install -dm755 "$pkgdir"/usr/share/licenses/pihole
   install -Dm644 ${pkgname%-*}-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/pihole/Pi-hole
-  install -Dm644 AdminLTE-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/pihole/AdminLTE
-  install -Dm644 AdminLTE-$pkgver/style/vendor/SourceSansPro/OFL.txt \
+  install -Dm644 $_wwwpkgname-$_wwwpkgver/LICENSE "$pkgdir"/usr/share/licenses/pihole/AdminLTE
+  install -Dm644 $_wwwpkgname-$_wwwpkgver/style/vendor/SourceSansPro/OFL.txt \
     "$pkgdir"/usr/share/licenses/pihole/SourceSansPro
 
   rm "$pkgdir"/srv/http/pihole/admin/*.md

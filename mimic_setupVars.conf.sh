@@ -28,8 +28,8 @@ getIPv6stuff()
 		# Determine type of found IPv6 addresses
 		for i in "${IPV6_ADDRESSES[@]}"; do
 			result=$(testIPv6 "$i")
-			[[ "${result}" == "ULA" ]] && ULA_ADDRESS="$i"
-			[[ "${result}" == "GUA" ]] && GUA_ADDRESS="$i"
+			[[ "${result}" == "ULA" ]] && ULA_ADDRESS="${i%/*}"
+			[[ "${result}" == "GUA" ]] && GUA_ADDRESS="${i%/*}"
 		done
 
 		# Determine which address to be used: Prefer ULA over GUA or don't use any if none found
