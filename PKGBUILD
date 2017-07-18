@@ -2,9 +2,9 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.7.0.r3762.f22be1e2
+pkgver=0.7.0.r3794.15492ba8
 pkgrel=1
-pkgdesc="Orienteering mapmaking program"
+pkgdesc="Map drawing program from OpenOrienteering"
 arch=('i686' 'x86_64')
 url="http://www.openorienteering.org/apps/mapper/"
 license=('GPL3')
@@ -57,5 +57,4 @@ package() {
   cd ${srcdir}/${_pkgname}/build
 
   make DESTDIR=${pkgdir}/ install
-  rm -fr ${pkgdir}/DEBIAN
 }
