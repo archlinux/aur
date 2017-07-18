@@ -1,17 +1,17 @@
 pkgbase = jdk-docs
-	pkgver = 8u131
+	pkgver = 8u141
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	arch = any
 	license = custom:Oracle
 	optdepends = java-environment>=8: Compile and run examples
 	options = !strip
-	source = http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-docs-all.zip
-	source = http://download.oracle.com/otn-pub/java/javafx/8.0.131-b11/d54c1d3a095b4ff2b6607d096fa80163/javafx-8u131-apidocs.zip
+	source = http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-docs-all.zip
+	source = http://download.oracle.com/otn-pub/java/javafx/8.0.141-b15/336fa29ff2bb4ef291e347e091f7f4a7/javafx-8u141-apidocs.zip
 	source = LICENSE-Documentation.txt
 	source = LICENSE-Oracle-Legal-Notices.txt
-	md5sums = 32df9c95f67e2983fdb4f3e722442d54
-	md5sums = 9ae377f4a4fce58a5fe959c01b3614bd
+	md5sums = fa55f38231a4fe86d5265c07b0c1b002
+	md5sums = 78ec6d01a354558117a7c17028fb6da1
 	md5sums = 4d54057ca75b691366977dab2277e869
 	md5sums = 3137397f4dba13f4a79157819af583a3
 
