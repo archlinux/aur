@@ -1,6 +1,6 @@
 # Maintainer: Hsiu-Ming Chang <cges30901 at gmail dot com>
 pkgname=hmtimer
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="graphical shutdown timer"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install="$pkgname.install"
 changelog=
 source=("https://sourceforge.net/projects/hsiumingstimer/files/hmtimer-$pkgver/hmtimer-$pkgver-src.tar.bz2")
 noextract=()
-md5sums=('3ecb49f21231d39e48ed3405b153e0b7')
+md5sums=('42b3d0f833d1002f7c526158e97b9a50')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -34,6 +34,7 @@ package() {
   install -D -m0644 src/language/hmtimer_zh_TW.qm $pkgdir/usr/share/hmtimer/hmtimer_zh_TW.qm
   install -D -m0644 src/language/hmtimer_ar.qm $pkgdir/usr/share/hmtimer/hmtimer_ar.qm
   install -D -m0644 src/language/hmtimer_ru.qm $pkgdir/usr/share/hmtimer/hmtimer_ru.qm
+  install -D -m0644 src/language/hmtimer_ru.be $pkgdir/usr/share/hmtimer/hmtimer_be.qm
   install -D -m0644 hmtimer.desktop $pkgdir/usr/share/applications/hmtimer.desktop
   install -D -m0644 src/hmtimer.png $pkgdir/usr/share/icons/hicolor/128x128/apps/hmtimer.png
   install -D -m0644 src/hmtimer48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/hmtimer.png
