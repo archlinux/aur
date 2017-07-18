@@ -1,6 +1,6 @@
 pkgbase = frust-git
 	pkgdesc = A find replacement with SQL-like syntax
-	pkgver = 0.0.2.43
+	pkgver = 0.0.2.45
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/tbehner/frust
