@@ -33,7 +33,7 @@ sha256sums=('5e2d5ee094ce35b4b57506fee1ac1116a4872a7bd3e62f0668e0766d59d4b934'
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
-conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
+conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 install=bitcoin.install
 
 # half of available processing units or one if only one is available
