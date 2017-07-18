@@ -1,6 +1,6 @@
 pkgbase = iridium-bin
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
-	pkgver = 54.0
+	pkgver = 58.0
 	pkgrel = 1
 	url = iridiumrowser.de
 	arch = x86_64
