@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-msm
-_pkgver=16.11.00-03
+_pkgver=17.05.00-02
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
@@ -56,25 +56,27 @@ source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. 
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch'
+        'http://pkgs.fedoraproject.org/cgit/rpms/tog-pegasus.git/plain/pegasus-2.14.1-openssl-1.1-fix.patch'
         )
-source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_installer-${_pkgver}.tar.gz")
-source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${_pkgver}.tar.gz")
+source_i686=("${pkgver}_Linux-x86_MSM.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Linux-32_MSM.gz")
+source_x86_64=("${pkgver}_Linux-x64_MSM.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Linux-64_MSM.gz")
 sha256sums=('72d24d357601b9df8a418a7e7851d3b55c32614394e5507146fe961e4712c5e8'
             '9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
             '11892783bc2569ad1f4bac0ec8f91f1e7e54c795f9b6454e93348a6ca0cf2a5b'
             '605adcb662fb457609e81fb8916da7e88541e81dd0c112a8bb569d84df189bff'
             'c33714f33698ab2aebb28b040ed78dba5efbda0429be51662fc635ba49fd235a'
             '98bfc8d174cd2b056353742dc52c40f56bb77676e816f33184ab1de3e8108cfd'
-            '5c6e66b0d8f4ce479d6d5c8f4d841ed022d8207c7a4fdbab9d7423fb867ab0e2'
+            '633c100edb3323eed256ea1247791104ad4622b4f234ccbc6723b0afd67706d5'
             '9be6a8818ea1dccec65d48b86dd0cc62009dc3886229e3dce41192a241bd55c3'
             'e3924bdb81a4dd2cedfb9c7ba669cb01b32f4c4e16b3af4c06f9a2426a9274d1'
             '66141323d6de100d9a1805f614a950944e223a36026b62b1a823c8aa148f26df'
             '8a68ecbd383f9121e54bd32f6094b2793367c15d8960ea5f92691e5b9bbcad99'
             '5863314f2ff17c32bc340efd5241f809bc1372b8e2fde0b3a2e22c7ab9b64281'
             '5de02253442ef8cb3b6f744fa4dd3237b66d96911ab8badd63336a7e1d28a429'
+            'deb3e52e5406419cc42d15f1a668ed291ef8337217bb5bc9cefd01ef3b804371'
             )
-sha256sums_i686=('e00e8418fcc6e991525686de30dcbae8581595cc8a640eaf75a70dde0422c72b')
-sha256sums_x86_64=('f7ab9dd104ca4c6ed64b9a44be3fe2760328874c89ef46d8ccb92f67a750b012')
+sha256sums_i686=('1a61f3e0099aa962d07303555cfdb1265b2dd83348d3e1b3f1d6c36d53babd36')
+sha256sums_x86_64=('63f0d87feba33a7602cdd7488317519edc33442037e1bbaef9f55ce9bd5ea3dd')
 install=lsi-msm.install
 backup=('etc/lsi_mrdsnmp/LSI_StorSNMP.ini'
         'etc/lsi_mrdsnmp/sas/sas_TrapDestination.conf'
@@ -108,13 +110,15 @@ _create_links() {
 
 prepare() {
   # Patch pegasus-toc sources
-  patch -d pegasus -p1 -i ../pegasus-2.7.0-PIE.patch
-  patch -d pegasus -p1 -i ../pegasus-2.9.0-no-rpath.patch
-  patch -d pegasus -p1 -i ../pegasus-2.13.0-gcc5-build.patch
-  patch -d pegasus -p1 -i ../pegasus-2.14.1-build-fixes.patch
-  patch -d pegasus -p1 -i ../pegasus-2.14.1-ssl-include.patch
+  cd pegasus
+  patch -p1 -i "${srcdir}/pegasus-2.7.0-PIE.patch"
+  patch -p1 -i "${srcdir}/pegasus-2.9.0-no-rpath.patch"
+  patch -p1 -i "${srcdir}/pegasus-2.13.0-gcc5-build.patch"
+  patch -p1 -i "${srcdir}/pegasus-2.14.1-build-fixes.patch"
+  patch -p1 -i "${srcdir}/pegasus-2.14.1-ssl-include.patch"
+  patch -p1 -i "${srcdir}/pegasus-2.14.1-openssl-1.1-fix.patch"
 
-  sed 's|libbase=lib64|libbase=lib|g' -i pegasus/configure
+  sed 's|libbase=lib64|libbase=lib|g' -i configure
 }
 
 build() {
