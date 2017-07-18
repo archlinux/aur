@@ -151,6 +151,6 @@ sha256sums=(67b3db866d04b2c900045dbd51490e097b20906d432297fd641b9c649bce8564
 noextract=()
 
 package() {
-    install -Dm644 org.kde.development.appdata.xml "$pkgdir"/usr/share/metainfo/
-    install -Dm644 kdesdk-devenv-dependencies.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/
+    install -Dm644 org.kde.development.appdata.xml "$pkgdir"/usr/share/metainfo/org.kde.development.appdata.xml
+    install -Dm644 kdesdk-devenv-dependencies.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/kdesdk-devenv-dependencies.svg
 }
