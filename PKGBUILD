@@ -1,13 +1,12 @@
-# Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
+# Maintainer: farwayer <farwayer@gmail.com>
 
 _gemname=unicode-display_width
 pkgname=ruby-${_gemname}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Determines the monospace display width of a string"
 arch=('any')
 depends=('ruby')
-makedepends=('ruby-rspec')
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 license=('MIT')
