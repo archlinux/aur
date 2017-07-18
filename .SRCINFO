@@ -1,7 +1,7 @@
 pkgbase = emacs-mmm-mode
 	pkgdesc = minor mode for Emacs that allows Multiple Major Modes to coexist in one buffer
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mmm-mode.sourceforge.net/
 	install = mmm-mode.install
 	arch = any

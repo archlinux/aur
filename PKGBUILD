@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-mmm-mode  
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="minor mode for Emacs that allows Multiple Major Modes to \
 coexist in one buffer"
 url="http://mmm-mode.sourceforge.net/"
@@ -16,6 +16,8 @@ sha256sums=('db55529ba95f841826bee952e73e55b87d9c191004e7c985a9582eea2cd57c82')
 
 build() {
   cd "$srcdir/${pkgname#emacs-}-$pkgver"
+  mv configure.in configure.ac
+  ./autogen.sh
   ./configure --prefix=/usr --infodir=/usr/share/info
   make
 }
