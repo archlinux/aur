@@ -3,7 +3,7 @@
 
 pkgname=ruby-ruby2ruby
 _pkgname="${pkgname#ruby-}"
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Easily generate pure ruby code from RubyParser compatible Sexps.'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(rubygems)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_pkgname}-${pkgver}.gem")
 noextract=("${_pkgname}-${pkgver}.gem")
-sha256sums=('17cefcd766567087b0f53f1a7c541f07dd3bd9b708dc9de67b7eaf91d2228a91')
+sha256sums=('f28a18931bb71c4819b56ad809f72aeccef2667115acdeaf15f031e91e471ccd')
 
 package() {
   # install gem
@@ -29,7 +29,7 @@ package() {
   # point, because the readme file has not yet been extracted from the gem.
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   sed -n '/LICENSE/,$p' \
-    "${pkgdir}"/usr/lib/ruby/gems/*/gems/"${_pkgname}-${pkgver}"/README.txt > \
+    "${pkgdir}"/usr/lib/ruby/gems/*/gems/"${_pkgname}-${pkgver}"/README.rdoc > \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
