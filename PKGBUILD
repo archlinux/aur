@@ -1,6 +1,6 @@
 # Maintainer : Gabe Gordon gabegordon123@gmail.com
 pkgname=parsec
-pkgver=1.3.1.1
+pkgver=1.3.1
 pkgrel=1
 url=http://parsec.tv
 arch=('x86_64')
