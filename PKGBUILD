@@ -5,10 +5,10 @@
 _gemname=dotenv
 pkgname=ruby-${_gemname}
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Loads environment variables from '.env'."
 arch=('any')
-depends=('ruby' 'ruby-rspec' 'ruby-rubocop')
+depends=(ruby)
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 options=(!emptydirs)

@@ -1,13 +1,11 @@
 pkgbase = ruby-dotenv
 	pkgdesc = Loads environment variables from '.env'.
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/dotenv
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-rspec
-	depends = ruby-rubocop
 	noextract = dotenv-2.2.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/dotenv-2.2.1.gem
