@@ -7,7 +7,7 @@
 _attempt_fix=0
 
 pkgname=google-earth-pro
-pkgver=7.1.8.3036 # Downgraded, see below
+pkgver=7.3.0.3830
 pkgrel=1
 pkgdesc="A 3D interface to view satellite images of Earth and other objects - Pro"
 arch=('i686' 'x86_64')
@@ -26,23 +26,16 @@ source=('googleearth.sh'
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
-source_i686=("google-earth-pro-stable_${pkgver}_i386.deb::https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_${pkgver}-r0_i386.deb")
-source_x86_64=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stable/google-earth-pro-stable_${pkgver}-r0_amd64.deb")
+source_i686=("google-earth-pro-stable_${pkgver}_i386.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_i386.deb")
+source_x86_64=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb")
 md5sums=('34c413a93b06010e66a1a1c4c9386696'
          '598d579a1c3199c77850d86ba78f7b44'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
-md5sums_i686=('07e9422fb0606b17a78547841c2287a8')
-md5sums_x86_64=('c72280cff52cf0fb13deac5bf0899d0e')
-
-# The latest one should crash at startup, but if you'd like to have a go:
-#pkgver=7.3.0.3827
-#source_i686=("google-earth-pro-stable_${pkgver}_i386.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_i386.deb")
-#source_x86_64=("google-earth-pro-stable_${pkgver}_amd64.deb::https://dl.google.com/earth/client/current/google-earth-pro-stable_current_amd64.deb")
-#md5sums_i686=('7f4eb5dc6a30ccb8015216adf2517e5c')
-#md5sums_x86_64=('c92a95342789e2202efc42a619970034')
+md5sums_i686=('b66ba870bf4edd26887ffbf6677cbec5')
+md5sums_x86_64=('679ac1417275d1804b7dc6a920cb03d2')
 
 _instdir=/opt/google/earth/pro/
 
