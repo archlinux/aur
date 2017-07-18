@@ -7,8 +7,8 @@ pkgver=58.0
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
 arch=('x86_64')
-url="iridiumrowser.de"
-license=('GPL3')
+url="https://iridiumbrowser.de/"
+license=('BSD')
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gnome-themes-standard' 'gtk2' 'harfbuzz' 'harfbuzz-icu'
          'hicolor-icon-theme' 'icu' 'libpng' 'libxss' 'libxtst' 'nss' 'opus' 'snappy' 'speech-dispatcher'
          'ttf-font' 'xdg-utils')
