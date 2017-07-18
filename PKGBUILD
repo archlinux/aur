@@ -5,7 +5,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=storcli
 _pkgname=StorCLI
-pkgver=1.21.16
+pkgver=1.23.02
 pkgrel=1
 _pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
@@ -32,7 +32,7 @@ fi
 source=("http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_${_pkgname}.zip"
 #source=("http://ftp2.za.freebsd.org/pub/FreeBSD/distfiles/${pkgver}_${_pkgname}.zip"
 	"${pkgver}_${_pkgname}.zip.sig")
-sha512sums=('714d8588566d2baf51cd67e958c9dfdb3f2eb0776a7fa2a9cb46ddad74b8e8a5e1515bf6e3746184b70187c83323b040bf902a2a357e928ad7d3525d3005c71e'
+sha512sums=('2018c8b40d7371077f01bbe586ed1135d683823b9d243fde14d45404c8bab8328f36e19ac91eb876666a174a7cce7e95a2a75485f70681460cda4c9b65d4d579'
             'SKIP')
 
 build() {
