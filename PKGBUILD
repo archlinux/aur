@@ -1,14 +1,15 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
 _pkgname=vidcutter
-pkgver=4.0.0.r54.g7c6d206
-_pkgver=master
+pkgver=4.0.0.r76.g79e7381
+_pkgver=feature-add-externals
 pkgrel=1
 pkgdesc="the simplest + fastest video cutter & joiner"
 arch=('any')
 license=('GPL3')
 url="http://vidcutter.ozmartians.com"
-source=(https://github.com/ozmartian/${_pkgname}/archive/master.tar.gz)
+# source=(https://github.com/ozmartian/${_pkgname}/archive/master.tar.gz)
+source=(https://github.com/ozmartian/vidcutter/archive/feature/add-externals.tar.gz)
 depends=('python-pyqt5' 'mpv' 'ffmpeg' 'mediainfo' 'python-opengl')
 makedepends=('python-setuptools')
 install=${pkgname}.install
