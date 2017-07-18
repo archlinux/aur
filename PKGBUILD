@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=3.1
-pkgrel=2
+pkgver=3.1.4
+pkgrel=1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.1')
@@ -21,7 +21,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	$_pkgname-gravity.timer
 	mimic_setupVars.conf.sh)
 
-md5sums=('e24ce6a12ee97cd7de2c5ab13af99511'
+md5sums=('e231722332116b7ffab316d5c66a828e'
          'b955136ef15be29a468e8d9f85f24b8c'
          '0bab89977a2d4357ec8befb4ff85ee3d'
          '047f13d4ac97877f724f87b002aaee63'
@@ -184,5 +184,7 @@ package() {
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/blacklist.txt
   install -Dm644 dnsmasq.main "$pkgdir"/usr/share/pihole/configs/dnsmasq.example.conf
   install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf
+  install -dm755 "$pkgdir"/usr/share/licenses/pihole
+  install -Dm644 ${pkgname%-*}-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/pihole/Pi-hole
 }
 
