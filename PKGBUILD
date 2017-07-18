@@ -4,7 +4,7 @@
 
 _pkgorigname=kwin
 pkgname=kwin-presentwindows-close
-pkgver=5.10.3.1
+pkgver=5.10.4
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 groups=('plasma')
 conflicts=('kdebase-workspace')
 provides=('kwin')
-source=("https://download.kde.org/stable/plasma/${pkgver%.*}/${_pkgorigname}-${pkgver}.tar.xz"{,.sig}
+source=("https://download.kde.org/stable/plasma/${pkgver}/${_pkgorigname}-${pkgver}.tar.xz"{,.sig}
         "presentwindows-close.patch")
-sha256sums=('199e3a2593e9e66bbd6521ee8a25a012003d15f6b4bf2f102c70b798c9abd03a'
+sha256sums=('69e450d2bf4b299b7128e052c47198eaea3fae57e8cf93ab3f686b1cd4d8fe5c'
             'SKIP'
             'a42e050f873632240595026b0f0f98ce4e109dd36a7768ba6b361d1b4854aefb')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
@@ -48,4 +48,3 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 }
-
