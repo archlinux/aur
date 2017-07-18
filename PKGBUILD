@@ -9,7 +9,7 @@ url="http://rungoterminal.com"
 license=('APSL 2.0')
 options=(!strip)
 noextract=("$pkgname-$pkgver.tar.gz")
-source=("$pkgname-$pkgver.tar.gz::http://googledrive.com/host/0BzGSc4zrBAtEekRqVGM4Z01CRGc"
+source=("$pkgname-$pkgver.tar.gz::ssh://aur@aur.archlinux.org/goterminal.git"
 	"sophiware-$pkgname.desktop")
 md5sums=('74acaa13daa54c1185d255bbc5422758'
 	 'dd96df7c8bbc48398b1d4d8ffd856d17')
