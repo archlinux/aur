@@ -8,7 +8,7 @@ _USE_GNU_EFI="1"
 #######
 
 pkgname="refind-efi-bin"
-pkgver="0.10.7"
+pkgver="0.10.8"
 pkgrel="1"
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - Precompiled binary"
 url="http://www.rodsbooks.com/refind/index.html"
