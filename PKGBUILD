@@ -2,7 +2,7 @@
 # Contributor: Andreas B. Wagner <AndreasBWagner@pointfree.net>
 _pkgname='vim-easymotion'
 pkgname=${_pkgname}-git
-pkgver=v3.0.1.r29.g19d00af
+pkgver=v3.0.1.r37.ge4d71c7
 pkgrel=1
 pkgdesc="simpler and faster vim motions"
 arch=('any')
@@ -19,7 +19,8 @@ options=()
 install=vimdoc.install
 noextract=()
 source=("$pkgname::git+https://github.com/easymotion/vim-easymotion.git")
-md5sums=('SKIP')
+sha1sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -30,4 +31,5 @@ package() {
   cd "${srcdir}/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/vim/vimfiles/"
   cp -r autoload doc plugin t "${pkgdir}/usr/share/vim/vimfiles/"
+  rm -f "$pkgdir/usr/share/vim/vimfiles/autoload/vital.vim"
 }
