@@ -5,7 +5,7 @@
 _pkgname=aiohttp
 pkgname=python-aiohttp-135
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP client/server for asyncio'
 url='https://aiohttp.readthedocs.io'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ conflicts=('python-aiohttp')
 provides=('python-aiohttp')
 
 prepare() {
-  sed -i 's/yarl>=0.9.8,<0.10/yarl>=0.10.2,<0.11.0/g' ${srcdir}/${_pkgname}-${pkgver}/setup.py
+  sed -i 's/yarl>=0.9.8,<0.10/yarl>=0.9.8/g' ${srcdir}/${_pkgname}-${pkgver}/setup.py
 }
 
 
