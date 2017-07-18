@@ -1,0 +1,56 @@
+#!/bin/bash
+
+echo -e "Initializing local workspace for openFrameworks..."
+
+WS=${1:-~/of-workspace}
+
+mkdir -p $WS
+cd $WS
+
+cp -R /opt/openFrameworks/addons .
+
+OFPATH="/opt/openFrameworks/"
+
+if [ -d "${OFPATH}/projectGenerator-linux64" ]; then
+  PG="projectGenerator-linux64"
+  PLATFORM="linux64"
+elif [ -d "${OFPATH}/projectGenerator" ]; then
+  PG="projectGenerator"
+  PLATFORM="linux"
+fi
+
+OFWSPATH=`pwd`
+
+cp -R $OFPATH/$PG .
+
+touch $PG/resources/app/settings.json
+
+echo -e "{\n\t\"advancedMode\": false,\n\t \
+\"defaultOfPath\": \"$OFWSPATH\",\n\t \
+\"defaultPlatform\": \"$PLATFORM\",\n\t \
+\"defaultRelativeProjectPath\": \"apps/myApps\",\n\t \
+\"showConsole\": false,\n\t \
+\"showDeveloperTools\": false, \n\t \
+\"useDictionaryNameGenerator\": true,\n\t \
+\"verboseOutput\": false\n}" > $PG/resources/app/settings.json
+
+mkdir -p apps/myApps
+
+cd apps/myApps
+
+ln -s /opt/openFrameworks/apps/myApps/emptyExample
+
+cd ../..
+
+ln -s /opt/openFrameworks/CHANGELOG.md
+ln -s /opt/openFrameworks/docs
+ln -s /opt/openFrameworks/examples
+ln -s /opt/openFrameworks/export
+ln -s /opt/openFrameworks/INSTALL.md
+cp -R /opt/openFrameworks/libs .
+ln -s /opt/openFrameworks/LICENSE.md
+ln -s /opt/openFrameworks/other
+ln -s /opt/openFrameworks/README.md
+ln -s /opt/openFrameworks/scripts
+
+ln -s $PG/projectGenerator
