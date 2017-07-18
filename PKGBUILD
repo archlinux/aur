@@ -2,14 +2,14 @@
 # Contributor: Jan Keith Darunday <jkcdarunday@gmail.com>
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
-pkgver=20160923_154728
-pkgrel=1
+pkgver=20170407_083525
+pkgrel=2
 pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
 arch=('any')
 url="https://foldoc.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
-makedepends=('dictd')
+makedepends=('dictd' 'sed')
 provides=('dictd-foldoc')
 conflicts=('dictd-foldoc')
 install=$pkgname.install
