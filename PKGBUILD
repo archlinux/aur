@@ -1,7 +1,7 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 #Co-maintainer: dudez <manuel.bua@gmail.com>
 pkgname=caret-bin
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Premium Markdown Editor http://caret.io"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/careteditor/caret"
 license=('unknown')
 depends=('gconf' 'nss' 'libxss' 'alsa-lib' 'libxtst' 'gtk2')
 source=("https://github.com/careteditor/caret/releases/download/$pkgver/Caret.deb")
-md5sums=('1637f6f4219dec8d87936766e16601c6')
+md5sums=('6cd25e285ddb308d6e0f5de3da15b224')
 
 prepare() {
     cat > "Caret" << EOF
