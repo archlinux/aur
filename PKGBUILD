@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
  
 pkgname=skypeforlinux-bin
-pkgver=5.3.0.1
+pkgver=5.4.0.1
 pkgrel=1
 pkgdesc="Skype for Linux WebRTC Beta"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('gnome-keyring')
 conflicts=('skypeforlinux')
 provides=('skypeforlinux')
 source=("https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_${pkgver}_amd64.deb")
-sha256sums=('3fdb61292cfdeef42ddb473d019884a4a8c5798f871793086f5edb6fb14d4e23')
+sha256sums=('1f31c0e9379f680f2ae2b4db3789e936627459fe0677306895a7fa096c7db2c5')
 
 package() {
   cd "${srcdir}"
