@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='Upload data to hastebin.com via stdin'
 license=('GPL2')
 
-arch=('i686' 'x86_64' 'armv6h')
+arch=('any')
 depends=('python' 'python-requests')
 source=('hastebin')
 sha256sums=(
