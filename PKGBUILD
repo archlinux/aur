@@ -23,12 +23,12 @@ build() {
   export LDFLAGS="${LDFLAGS//,--as-needed}"
   mkdir -p build_cxx
   cd build_cxx
-  ../configure --prefix=/usr --enable-shared --with-cxx --enable-maintainer-mode --without-guile
+  ../configure --prefix=/usr --enable-shared --with-cxx --enable-maintainer-mode --without-guile --without-matlab
   make
   cd ..
   mkdir -p build
   cd build
-  ../configure --prefix=/usr --enable-shared --without-python --without-guile 
+  ../configure --prefix=/usr --enable-shared --without-python --without-guile --without-matlab
   make
 }
 
