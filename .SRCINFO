@@ -1,0 +1,13 @@
+pkgbase = candy-gtk-theme
+	pkgdesc = A flat style gtk&gnome-shell theme.Based on flat-plat and adapta
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/levinit/candy-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git://github.com/levinit/candy-gtk-theme
+	sha512sums = SKIP
+
+pkgname = candy-gtk-theme
+
