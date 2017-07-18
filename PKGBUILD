@@ -1,14 +1,14 @@
 
 # Maintainer: Bachir Soussi Chiadmi (scbh at g-u-i dot me)
 pkgname=ospkit-git
-pkgver=r19.7fe30da
+pkgver=r32.7f46ee9
 pkgrel=1
 pkgdesc="Webkit based html browser for printing."
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://osp.kitchen/tools/ospkit/"
 license=('AGPL')
-depends=('desktop-file-utils')
-makedepends=('git' 'qt5-webkit')
+depends=('desktop-file-utils' 'qt5-webkit')
+makedepends=('git')
 provides=('ospkit')
 source=('git+http://gitlab.constantvzw.org/osp/tools.ospkit.git' 'ospkit.desktop' 'ospkit.png')
 md5sums=('SKIP' 'b921f154668105b891a8eac7e12ce94d' '908a48e767b3286fa6e9a1d8b571ef65')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/tools.ospkit/src/"
-	qmake
+	qmake prefix=/usr
 	make
 }
 
