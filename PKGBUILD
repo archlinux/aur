@@ -2,8 +2,8 @@
 
 pkgname=firefox-extension-unity-launcher-api-e10s
 _gitpkgname=firefox-extension-unity-launcher-api-e10s
-pkgver=1.1.3
-_xpipkgname="unity_launcher_api_addon_e10s-$pkgver-linux.xpi"
+pkgver=1.1.4
+_xpipkgname="unity_launcher_api_addon_e10s-$pkgver-an+fx-linux.xpi"
 pkgrel=1
 pkgdesc="Unity Launcher API add-on, compatible with e10s."
 url="https://github.com/kotelnik/$_gitpkgname"
@@ -12,12 +12,12 @@ license=('GPL3')
 depends=('firefox' 'python3')
 makedepends=('git')
 source=(
-    "https://addons.mozilla.org/firefox/downloads/file/639891/$_xpipkgname"
+    "https://addons.mozilla.org/firefox/downloads/file/678923/$_xpipkgname"
     "https://github.com/kotelnik/$_gitpkgname/archive/v$pkgver.tar.gz")
 noextract=("$_xpipkgname")
 sha512sums=(
-    'ee14db7c73c2ba23cbdd89201bb5d229ed130d42dfc953521f6dbf61adb2c3d8dd8a3cbebf5e547d54378d16a70c554b2451c00351c5f5d6fd78699d2af5cf8a'
-    'f28dc36aece7e9f24dd6e769088733a789f63a9b7869934758a665ffb525ada7b032336d1f0f350cccaab6b0835c2e87c13b2fe9ce343bb8800f330e7a2c8802')
+    '87d525350097b65627fed31581f28b3ad87f8f9aadf7b1a42e4876e8cdbb25df6d18645dfa27ef2b8e842d5fc8796faa9eea56ca6895c268490b21cc1315b8fe'
+    '1a8e9da2af7f139b937f9ceada9975840047e92fa964d608d77a0975aa781a3623cb57d222ca6350bddc152bcf11e6c83f3c171c06775e0fe04703bffe92754d')
 
 package() {
     install -Dm644 "$_xpipkgname" "$pkgdir/usr/lib/firefox/browser/extensions/firefox_extension_unity_launcher_api_e10s@kotelnik.xpi"
