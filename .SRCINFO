@@ -1,7 +1,7 @@
 pkgbase = git-annex-remote-pcloud-git
 	pkgdesc = A git-annex special remote using pCloud
 	pkgver = 0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tochev/git-annex-remote-pcloud
 	arch = any
 	license = MIT
