@@ -1,6 +1,6 @@
 pkgbase = enlightenment-git
 	pkgdesc = Enlightenment window manager - Development version
-	pkgver = 0.21.99.22859.g55e13da65
+	pkgver = 0.21.99.23005.gcc5eec5cc
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = enlightenment-git
 	makedepends = git
 	depends = efl-git
 	depends = xcb-util-keysyms
-	depends = shared-mime-info
-	depends = desktop-file-utils
 	depends = udisks2
-	depends = ttf-font
+	depends = wayland
 	depends = xorg-server-xwayland
+	depends = bluez-libs
 	optdepends = acpid: power events on laptop lid close
 	optdepends = bc: calculator in everything module
 	optdepends = bluez4: bluetooth module
@@ -21,7 +20,7 @@ pkgbase = enlightenment-git
 	optdepends = gdb: create backtraces on crash
 	optdepends = geoclue2: geolocation module
 	optdepends = packagekit: packagekit module
-	provides = enlightenment=0.21.99.22859.g55e13da65
+	provides = enlightenment=0.21.99.23005.gcc5eec5cc
 	provides = notification-daemon
 	conflicts = enlightenment
 	options = debug

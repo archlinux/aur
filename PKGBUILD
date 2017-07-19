@@ -5,15 +5,14 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.21.99.21577.g6548fae
+pkgver=0.21.99.23005.gcc5eec5cc
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('efl-git' 'xcb-util-keysyms' 'shared-mime-info'
-         'desktop-file-utils' 'udisks2' 'ttf-font'
-	 'xorg-server-xwayland')
+depends=('efl-git' 'xcb-util-keysyms' 'udisks2' 'wayland'
+         'xorg-server-xwayland')
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git')
 optdepends=('acpid: power events on laptop lid close'
@@ -34,11 +33,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_pkgname
 
-  for _i in v_maj v_min v_mic; do
-    local v_ver=${v_ver#.}.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
-  done
-
-  v_ver=$(awk -F , -v v_ver=$v_ver '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+  local v_ver=$(grep version meson.build | head -1 | sed s/version//g | tr ":'," "   " | awk '{print $1}')
 
   printf "%s.%s.g%s" "$v_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -48,20 +43,19 @@ build() {
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --enable-wayland \
-    --enable-xwayland
+  rm -rf build
+  meson --prefix=/usr \
+    -Dwayland=true \
+    . build
 
-  make
+  ninja -C build
 }
 
 package() {
   cd $_pkgname
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
