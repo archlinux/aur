@@ -1,7 +1,7 @@
 # Maintainer: Marcos Ferreira <merkkp at gmail dot com>
 
 pkgname="iqoption-bin"
-pkgver=752.10.1239
+pkgver=764.3.5959
 pkgrel=1
 pkgdesc="Ultimate trading experience"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("custom:iqoption")
 depends=("sdl2" "sdl2_image" "sdl2_mixer" "mesa" "libnotify")
 makedepends=("binutils" "tar")
 source=("iqoption.deb::https://updates.iqoption.com/api/v1/build/current/pkg/LinuxGL")
-sha256sums=("a221465ba7e585db01e3c8788a778b8382af99ef836fbfb75dd2645311809fde")
+sha256sums=("0d5bce0786c99ddfbe9f88d3b407e343e73457e44f0a6d074f8bef1e4624d2d3")
 
 prepare() {
   tar xf control.tar.gz
