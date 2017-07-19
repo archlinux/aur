@@ -1,6 +1,6 @@
 pkgbase = reflow
 	pkgdesc = coordinate your multi-language projects with ease
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://gitlab.com/rytone/reflow
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = reflow
 	makedepends = npm
 	makedepends = git
 	depends = nodejs
-	noextract = reflow-build-2.0.0.tgz
-	source = https://registry.npmjs.org/reflow-build/-/reflow-build-2.0.0.tgz
+	noextract = reflow-build-2.1.0.tgz
+	source = https://registry.npmjs.org/reflow-build/-/reflow-build-2.1.0.tgz
 	md5sums = SKIP
 
 pkgname = reflow
