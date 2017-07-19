@@ -7,7 +7,6 @@ arch=('any')
 url="http://apparmor.net/"
 license=('GPL2')
 depends=('apparmor' 'openrc')
-install='apparmor.install'
 _filename='apparmor-init'
 source=("https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-apps/apparmor/files/$_filename")
 sha256sums=('f1c9ef2737012475f7fe7b943533b5d9345df1814a16a5c8d1929d835482f802')
