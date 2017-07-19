@@ -25,7 +25,6 @@ package() {
   rm 'beetsplug/__init__.py'
   python2 setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 README.rst "$pkgdir/usr/share/doc/${_pkgname}/README.rst"
 }
 
