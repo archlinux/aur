@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=image-bootstrap-git
-pkgver=r422.4614f45
+pkgver=r423.d4c97e1
 pkgrel=1
 pkgdesc="Command line tool to generate bootable virtual machine images and write them to a block device"
 arch=('any')
