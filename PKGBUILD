@@ -1,49 +1,41 @@
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+
 pkgname=crate
-pkgver=1.1.6
+pkgver=2.0.5
 pkgrel=1
-pkgdesc="shared nothing, fully searchable, document oriented cluster datastore."
-arch=('any')
+pkgdesc="Shared nothing, fully searchable, document oriented cluster datastore."
+arch=('i686' 'x86_64')
 url='http://crate.io'
 license=('custom:APACHE')
-depends=('java-runtime=8')
+depends=('java-runtime=8' 'python')
 install='crate.install'
 source=(https://cdn.crate.io/downloads/releases/$pkgname-$pkgver.tar.gz
         crate.service
         crate.env)
+sha256sums=('1809a4a32d3fed61eb5e5c6ae4751d1b7676342744cbf1dc39bcaf2bd1ffa02b'
+	    '04b36b561498332b1b569e49b42d0bedf04141de07b7b16ff1b06072673cfd21'
+            '6182b8d527d52de4fc80023827518b2e8d873afdda873ef6bd2ed92b91982f75')
 
 backup=('etc/crate/crate.yml'
         'etc/crate/logging.yml')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
-    # create dirs
-    install -dm755 "$pkgdir/etc/$pkgname/"
-    install -dm755 "$pkgdir/var/log/$pkgname/"
-    install -dm755 "$pkgdir/usr/share/$pkgname/"
-    cp -R bin lib plugins "$pkgdir/usr/share/$pkgname/"
+  # Create dirs
+  install -dm755 "$pkgdir/etc/$pkgname/"
+  install -dm755 "$pkgdir/var/log/$pkgname/"
+  install -dm755 "$pkgdir/usr/share/$pkgname/"
+  cp -R bin lib plugins "$pkgdir/usr/share/$pkgname/"
 
-    rm $pkgdir/usr/share/$pkgname/plugins/sigar/lib/*
-    cp plugins/sigar/lib/*.jar $pkgdir/usr/share/$pkgname/plugins/sigar/lib/
+  cp config/* $pkgdir/etc/$pkgname
 
-    if [ $CARCH = 'x86_64' ]; then
-        install -Dm644 plugins/sigar/lib/libsigar-amd64-linux.so "$pkgdir/usr/share/crate/plugins/sigar/lib/libsigar-amd64-linux.so"
-    else
-        install -Dm644 plugins/sigar/lib/libsigar-x86-linux.so "$pkgdir/usr/share/crate/plugins/sigar/lib/libsigar-x86-linux.so"
-    fi
+  # Documentation
+  install -dm755 $pkgdir/usr/share/doc/$pkgname/
+  cp LICENSE.txt $pkgdir/usr/share/doc/$pkgname/LICENSE
+  cp NOTICE $pkgdir/usr/share/doc/$pkgname/NOTICE
+  cp CHANGES.txt $pkgdir/usr/share/doc/$pkgname/CHANGES
 
-    cp config/* $pkgdir/etc/$pkgname
-
-    # documentation
-    install -dm755 $pkgdir/usr/share/doc/$pkgname/
-    cp LICENSE.txt $pkgdir/usr/share/doc/$pkgname/LICENSE
-    cp NOTICE $pkgdir/usr/share/doc/$pkgname/NOTICE
-    cp CHANGES.txt $pkgdir/usr/share/doc/$pkgname/CHANGES
-
-    install -Dm644 "$srcdir/crate" "$pkgdir/etc/conf.d/crate"
-    install -Dm644 "$srcdir/crate.service" "$pkgdir/usr/lib/systemd/system/crate.service"
-    # sphinx generated text docs
-    if [ -d docs ]; then
-        cp -r docs/ $pkgdir/usr/share/doc/$pkgname/
-    fi
+  install -Dm644 "$srcdir/crate.env" "$pkgdir/etc/$pkgname/crate.env"
+  install -Dm644 "$srcdir/crate.service" "$pkgdir/usr/lib/systemd/system/crate.service"
 }
