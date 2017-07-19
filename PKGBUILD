@@ -2,12 +2,13 @@
 
 pkgname=go-megaannex-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="A git-annex special remote using mega"
 arch=("x86_64" "i686")
 url="https://github.com/dxtr/megaannex-go"
 license=("MIT")
-depends=("git-annex" "go")
+depends=("go")
+optdepends=("git-annex" "git-annex-git")
 options=("!strip" "!emptydirs")
 source=("git+https://github.com/dxtr/megaannex-go")
 sha512sums=("SKIP")

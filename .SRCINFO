@@ -1,7 +1,7 @@
 pkgbase = go-megaannex-git
 	pkgdesc = A git-annex special remote using mega
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dxtr/megaannex-go
 	arch = x86_64
 	arch = i686
