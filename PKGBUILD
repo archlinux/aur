@@ -1,8 +1,8 @@
 # Maintainer: Max Beck <rytonemail@gmail.com>
 _npmname=reflow-build
-_npmver=1.0.1
+_npmver=2.0.0
 pkgname=reflow
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="coordinate your multi-language projects with ease"
 arch=(any)
