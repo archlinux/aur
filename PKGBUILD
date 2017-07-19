@@ -73,7 +73,7 @@ sha256sums=("$(curl -s ${_digest} | grep -A5 "${_srcname}-${_srcverregex}\.tar\.
 
 build() {
 	cd "$_srcname"-"$_srcver"
-	
+
 	CPPFLAGS="-I/usr/include/FLIF" \
 	./configure \
 	        --prefix=/usr \
@@ -130,15 +130,15 @@ build() {
 	        --with-windows-font-dir="$_windows_font_dir" \
 	        --with-apple-font-dir="$_1st_apple_font_dir" \
 	        --with-fontpath="$_2nd_apple_font_dir"
-	        
+
 	make
 }
 
 package() {
 	cd "$_srcname"-"$_srcver"
-	
+
 	make DESTDIR="$pkgdir/" install
-	
+
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 
