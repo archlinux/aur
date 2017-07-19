@@ -1,11 +1,11 @@
 pkgbase = boostnote
 	pkgdesc = Open source note-taking app for programmers
 	pkgver = 0.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://boostnote.io/
 	arch = any
 	license = GPL3
-	makedepends = npm
+	makedepends = yarn
 	makedepends = grunt-cli
 	makedepends = git
 	depends = electron

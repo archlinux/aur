@@ -7,13 +7,13 @@ pkgname=boostnote
 _pkgname=Boostnote
 pkgver=0.8.11
 _pkgver=v.0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
 url="https://boostnote.io/"
 license=('GPL3')
 depends=('electron' 'nodejs')
-makedepends=('npm' 'grunt-cli' 'git')
+makedepends=('yarn' 'grunt-cli' 'git')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/BoostIO/"${_pkgname}"/archive/"${_pkgver}".tar.gz"
@@ -37,11 +37,9 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${_pkgver}"
-  npm install --no-optional
+  yarn --ignore-optional
   grunt compile
-  # Kind of silly way of avoiding an npm warning
-  npm uninstall eslint-config-standard
-  npm prune --production
+  yarn install --production --ignore-scripts --prefer-offline
 }
 
 package() {
