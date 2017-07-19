@@ -1,11 +1,11 @@
 pkgbase = indicator-kdeconnect
 	pkgdesc = Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)
-	pkgver = 0.9.1.r0.gfe9624b
+	pkgver = 0.9.1
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/bajoja/indicator-kdeconnect
 	arch = any
 	license = GPL
-	makedepends = git
 	makedepends = cmake
 	depends = libappindicator-gtk3
 	depends = kdeconnect
@@ -13,8 +13,8 @@ pkgbase = indicator-kdeconnect
 	depends = python-requests-oauthlib
 	depends = python-gobject
 	conflicts = indicator-kdeconnect-git
-	source = git://github.com/bajoja/indicator-kdeconnect.git
-	md5sums = SKIP
+	source = indicator-kdeconnect-0.9.1.tar.gz::https://github.com/Bajoja/indicator-kdeconnect/archive/0.9.1.tar.gz
+	sha256sums = 9263239df0b1300e93d25a64a2f8972487aa6047c99318b31de6b1973a0760bd
 
 pkgname = indicator-kdeconnect
 
