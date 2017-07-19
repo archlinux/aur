@@ -2,7 +2,7 @@
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>
 
 pkgname=fs2_open-git
-pkgver=3.7.5.r2485
+pkgver=3.7.5.98af9dd90
 pkgrel=1
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
@@ -25,8 +25,8 @@ version=3.7.5
 
 pkgver () {
 	cd "$srcdir/$pkgname"
-	rev=`git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
-	echo ${version}.${rev:10:5}
+	rev=`git rev-parse --short HEAD`
+	echo ${version}.${rev}
 }
 
 build()
@@ -50,10 +50,10 @@ package () {
 	cd "$srcdir/$pkgname/build/bin"
 	binary=`find fs2_open*`
 	cd ../..
-	rev=`git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
+	rev=`git rev-parse --short HEAD`
 	install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -D -m755 build/bin/${binary} "$pkgdir/opt/fs2_open/${binary}_${rev:10:5}"
-	msg "The output binary will be called '${binary}_${rev:10:5}'"
+	install -D -m755 build/bin/${binary} "$pkgdir/opt/fs2_open/${binary}_${rev}"
+	msg "The output binary will be called '${binary}_${rev}'"
 }
 
