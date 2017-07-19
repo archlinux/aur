@@ -3,8 +3,8 @@
 
 # Maintainer: Pavle <xpio at tut.by>
 pkgname=klooni1010-git
-pkgver=0.6.r1.g6781e49
-pkgrel=1
+pkgver=0.6.1.r13.gb0abab1
+pkgrel=2
 pkgdesc="Puzzle game based on the original 1010!"
 arch=('any')
 url="https://lonamiwebs.github.io/klooni"
@@ -36,10 +36,11 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
+  _jarname=$(basename $(ls desktop/build/libs/desktop-*.jar))
   mkdir -p "$pkgdir/usr/share/java/klooni1010" "$pkgdir/usr/bin"
-  install -m644 desktop/build/libs/desktop-0.6.jar "$pkgdir/usr/share/java/klooni1010"
+  install -m644 desktop/build/libs/$_jarname "$pkgdir/usr/share/java/klooni1010"
   # shell script
-  echo -e '#!/bin/sh\ncd\nexec /usr/bin/java -jar /usr/share/java/klooni1010/desktop-0.6.jar "$@"' > "$pkgdir/usr/bin/klooni1010"
+  echo -e "#!/bin/sh\ncd\nexec /usr/bin/java -jar /usr/share/java/klooni1010/$_jarname \"\$@\"" > "$pkgdir/usr/bin/klooni1010"
   chmod 755 "$pkgdir/usr/bin/klooni1010"
   # .desktop file
   install -Dm644 "../klooni1010.desktop" "$pkgdir/usr/share/applications/klooni1010.desktop"

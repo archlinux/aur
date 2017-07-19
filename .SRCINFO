@@ -1,7 +1,7 @@
 pkgbase = klooni1010-git
 	pkgdesc = Puzzle game based on the original 1010!
-	pkgver = 0.6.r1.g6781e49
-	pkgrel = 1
+	pkgver = 0.6.1.r13.gb0abab1
+	pkgrel = 2
 	url = https://lonamiwebs.github.io/klooni
 	arch = any
 	license = GPL3
