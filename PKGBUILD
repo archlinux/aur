@@ -4,7 +4,7 @@
 pkgname=firefox-wayland-git
 _pkgname=firefox
 pkgver=ea5f69b51549
-pkgrel=7
+pkgrel=8
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -127,7 +127,7 @@ build() {
   # Do PGO
   #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
   #  make -f client.mk build MOZ_PGO=1
-  make -f client.mk build
+  MOZ_SOURCE_CHANGESET=c89cd5371520 make -f client.mk build
 }
 
 package() {
