@@ -10,7 +10,7 @@ pkgname=firefox-always-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build, always updating'
 url='https://blog.nightly.mozilla.org/'
 pkgver=99.0a1
-pkgrel=12
+pkgrel=13
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _srcurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
@@ -32,14 +32,18 @@ sha512sums=("${_sumbz2}"
             '4c318df0ac89dc273f0c1c6a7dcb4e943634bae8c532b4646e833ee5ee2fdd3eaed8da490385b11705e7f7bb6e0679dfd1dc9e070b3b0f9d3f9af7801a934962'
             '00caf982c072c7499433c494ecf2096542c4ddf368c4b97fb22672fd669683911d009a65a498b8a03da61ae9aa5a4e8bdaa6e58b148c2a5d7c008910b2af26a5'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-depends=('alsa-lib'
-         'dbus-glib'
-         'gtk2'
-         'libnotify'
-         'libxt'
-         'mime-types'
-         'nss'
-         'sqlite')
+
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+optdepends=('pulseaudio: audio support'
+            'ffmpeg: h.264 video'
+            'gtk2: flash plugin support'
+            'hunspell: spell checking'
+            'hyphen: hyphenation'
+            'libnotify: notification integration'
+            'networkmanager: location detection via available WiFi networks'
+            'speech-dispatcher: text-to-speech'
+            'startup-notification: support for FreeDesktop Startup Notification')
+
 provides=('firefox-nightly')
 conflicts=('firefox-nightly')
 
