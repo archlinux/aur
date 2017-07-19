@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 depends=('bzip2' 'bash')
 source=("http://download.savannah.gnu.org/releases/lzip/lunzip/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('274d12503a4e4e1a92b8dd68e15bd6e8f63e4da7')
+sha1sums=('cc24cbd3ea3bfdc443e6e37442a0ad47b35db0d6')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
