@@ -40,7 +40,7 @@ source=(
     'oomoxify-cli'
     'oomox.desktop'
 )
-md5sums=('42ad3c65b0e5a73fc451566e9e30740c'
+md5sums=('939659c4f61220b2822d484eca35e9a1'
          'cf96db21684e4e0df1f9a14b3aae65bb'
          '0d156463416bbc2260c073c15b7f2a70'
          '57cfcc4141ce6e346da7ab8bab411b14'
