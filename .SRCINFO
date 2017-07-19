@@ -1,13 +1,13 @@
 pkgbase = jdk-docs
 	pkgver = 8u141
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	arch = any
 	license = custom:Oracle
 	optdepends = java-environment>=8: Compile and run examples
 	options = !strip
 	source = http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-docs-all.zip
-	source = http://download.oracle.com/otn-pub/java/javafx/8.0.141-b15/336fa29ff2bb4ef291e347e091f7f4a7/javafx-8u141-apidocs.zip
+	source = http://download.oracle.com/otn-pub/java/javafx/8.0.141-b14/336fa29ff2bb4ef291e347e091f7f4a7/javafx-8u141-apidocs.zip
 	source = LICENSE-Documentation.txt
 	source = LICENSE-Oracle-Legal-Notices.txt
 	md5sums = fa55f38231a4fe86d5265c07b0c1b002
