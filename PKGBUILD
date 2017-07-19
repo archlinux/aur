@@ -1,6 +1,6 @@
 # Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 pkgname=albert-pass
-pkgver=r13.73bf327
+pkgver=r15.eac451c
 pkgrel=1
 pkgdesc="Albert extension for pass"
 arch=('any')
