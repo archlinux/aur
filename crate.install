@@ -1,10 +1,13 @@
 post_install() {
-    useradd -r -g daemon -d /usr/share/crate -s /bin/false crate
-    chown -R crate:daemon /usr/share/crate
-    chown -R crate:daemon /var/lib/crate
-    chown -R crate:daemon /var/log/crate
+  useradd -r -g daemon -d /usr/share/crate -s /bin/false crate
+  chown -R crate:daemon /usr/share/crate
+  chown -R crate:daemon /var/log/crate
+}
+
+pre_remove() {
+  systemctl stop crate
 }
 
 post_remove() {
-    userdel crate
+  userdel crate
 }
