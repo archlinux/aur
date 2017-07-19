@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis-git
-pkgver=0.2.1.131.g0e58ba1b
+pkgver=0.2.2.28.g13175c5f
 pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('i686' 'x86_64')
