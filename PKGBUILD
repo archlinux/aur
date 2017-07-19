@@ -5,7 +5,7 @@ _passengerver=5.1.5
 
 pkgname=nginx-passenger
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP Server with Passenger Module"
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -15,7 +15,7 @@ optdepends=('python: Support for python web apps'
             'nodejs: Support for node.js web apps'
             'geoip-database: For country geolocation'
             'geoip-database-extra: For city/ASN geolocation')
-makedepends=('hardening-wrapper' 'apache')
+makedepends=('apache')
 conflicts=('nginx' 'passenger')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
@@ -39,7 +39,7 @@ sha256sums=('8793bf426485a30f91021b6b945a9fd8a84d87d17b566562c3797aba8fac76fb'
             'SKIP'
             'ea4139d2f0d9f7aa6488be966ffbfe602f80764a47b7077892d92324bff5eb47'
             'SKIP'
-            '6fe4c5eb7332f5eebdd7e08e46256a3d344bd375e9134be66013fbc52059e1ac'
+            'bc693fe587283edeb0df343e51ca41bada41fe92ef8a1d0f7a8961931d0a72a0'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
             '2da1ede016ca328f254bfb10e95ff0a5ef2790382a9a87ffde77524956a31749')
 
