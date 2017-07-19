@@ -44,10 +44,10 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   patch -Np1 < ../postgresql-run-socket.patch
   patch -Np1 < ../agensgraph.patch
-  export JAVA_LIBRARY_PATH="/usr/lib/jvm/default-runtime/lib/amd64/server"
 }
 build() {
   cd "${srcdir}/${_pkgname}"
+  export JAVA_LIBRARY_PATH="/usr/lib/jvm/default-runtime/lib/amd64/server"
 
   ./configure \
     --prefix=/usr \
