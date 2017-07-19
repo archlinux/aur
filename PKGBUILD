@@ -6,6 +6,7 @@ pkgname=jre
 _major=8
 _minor=141
 _build=b15
+_hash=336fa29ff2bb4ef291e347e091f7f4a7
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Runtime Environment"
@@ -43,8 +44,8 @@ backup=("etc/java-$_jname/amd64/jvm.cfg"
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "policytool-$_jname.desktop")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/336fa29ff2bb4ef291e347e091f7f4a7/$pkgname-$pkgver-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/336fa29ff2bb4ef291e347e091f7f4a7/$pkgname-$pkgver-linux-x64.tar.gz")
+source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$hash/$pkgname-$pkgver-linux-i586.tar.gz")
+source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$hash/$pkgname-$pkgver-linux-x64.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '762729fa0faba8ff2b5a29c249c95079')
 md5sums_i686=('a66f26ee7665a499a2511fb470b60140')
