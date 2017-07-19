@@ -2,7 +2,7 @@
 
 pkgname=git-annex-remote-b2-git
 pkgver=v0.3.r6.g2bf053c
-pkgrel=1
+pkgrel=2
 pkgdesc="A git-annex special remote for Backblaze's B2"
 arch=("x86_64" "i686")
 url="https://github.com/encryptio/git-annex-remote-b2"
