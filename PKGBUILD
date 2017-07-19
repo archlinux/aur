@@ -4,7 +4,7 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=3.1.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=3
+pkgrel=4
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -96,32 +96,39 @@ _common_build_params=(
     --libdispatch
 )
 
+_build_script_wrapper() {
+    # Makepkg now adds -fno-plt to C(XX)FLAGS by default, which clang doesn't understand
+    export CFLAGS=$(echo "$CFLAGS" | sed -e 's/\(\W\+\|^\)-fno-plt\b//')
+    export CXXFLAGS=$(echo "$CXXFLAGS" | sed -e 's/\(\W\+\|^\)-fno-plt\b//')
+
+    export SWIFT_SOURCE_ROOT="$srcdir"
+    ./utils/build-script "$@"
+}
+
 build() {
     cd "$srcdir/swift"
 
-    export SWIFT_SOURCE_ROOT="$srcdir"
     export PATH="$PATH:/usr/bin/core_perl"
-    utils/build-script -R "${_common_build_params[@]}"
+    _build_script_wrapper -R "${_common_build_params[@]}"
 
     # Run the build a second time, this time with SourceKit enabled
     # This is required because SourceKit depends on libdispatch, which
     # in turn depends on swift, where SourceKit is located
-    utils/build-script -R "${_common_build_params[@]}" \
+    _build_script_wrapper -R "${_common_build_params[@]}" \
         --extra-cmake-options="-DSWIFT_BUILD_SOURCEKIT=TRUE" \
         --reconfigure
-
-    # Fix the lldb swig binding's import path (matches Arch LLDB package)
-    # Need to do this before check(), since the test suite uses the lldb
-    # python bindings directly from the build dir
-    sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
-        "${srcdir}/build/Ninja-ReleaseAssert/lldb-linux-${CARCH}/lib/python2.7/site-packages/lldb/__init__.py"
 }
 
 check() {
     cd "$srcdir/swift"
 
-    export SWIFT_SOURCE_ROOT="$srcdir"
-    utils/build-script -R -t
+    # Fix the lldb swig binding's import path (matches Arch LLDB package)
+    # Need to do this here as well as the install since the test suite
+    # uses the lldb python bindings directly from the build dir
+    sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
+        "${srcdir}/build/Ninja-ReleaseAssert/lldb-linux-${CARCH}/lib/python2.7/site-packages/lldb/__init__.py"
+
+    _build_script_wrapper -R -t
 }
 
 package_swift() {
@@ -132,8 +139,7 @@ package_swift() {
 
     cd "$srcdir/swift"
 
-    export SWIFT_SOURCE_ROOT="$srcdir"
-    utils/build-script -R "${_common_build_params[@]}" \
+    _build_script_wrapper -R "${_common_build_params[@]}" \
         --install-destdir="$pkgdir" \
         --install-llbuild --install-swiftpm --install-xctest \
         --install-foundation
@@ -178,10 +184,15 @@ package_swift-lldb() {
 
     cd "$srcdir/swift"
 
-    export SWIFT_SOURCE_ROOT="$srcdir"
-    utils/build-script -R "${_common_build_params[@]}" \
+    _build_script_wrapper -R "${_common_build_params[@]}" \
         --install-destdir="$pkgdir" \
         --install-lldb
+
+    # Fix the lldb swig binding's import path (matches Arch LLDB package)
+    # We have to do this again because the build-script recreates the "bad"
+    # version of the source file.
+    sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
+        "${pkgdir}/usr/lib/python2.7/site-packages/lldb/__init__.py"
 
     # This should be provided from python2-six
     rm "$pkgdir/usr/lib/python2.7/site-packages/six.py"
