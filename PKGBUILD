@@ -12,8 +12,16 @@ md5sums=('65d3616852dbf7b1a6d4b53b00626032')
 package() {
 
   install -D -m644 legalcode.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  echo "Please make sure that you actually have rust installed!"
-  echo "If not, run 'curl https://sh.rustup.rs -sSf | sh'"
+  cat << EOF
+
+   ╭────────────────────────────────────────────────────╮
+   │                                                    │
+   │  Make sure that you actually have rust installed!  │
+   │       'curl https://sh.rustup.rs -sSf | sh'        │
+   │                                                    │
+   ╰────────────────────────────────────────────────────╯
+
+EOF
 }
  
 
