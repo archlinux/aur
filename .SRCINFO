@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-extension-cpufreq
+pkgbase = gnome-shell-extension-cpufreq-git
 	pkgdesc = The simple program to switch the monitor with one klick betwin single and dual mode
 	pkgver = 87.75fa137
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = gnome-shell-extension-cpufreq
 	source = git://github.com/konkor/cpufreq.git
 	sha256sums = SKIP
 
-pkgname = gnome-shell-extension-cpufreq
+pkgname = gnome-shell-extension-cpufreq-git
 

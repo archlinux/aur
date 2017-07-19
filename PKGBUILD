@@ -1,6 +1,6 @@
 # Maintainer: Alex S. shantanna_at_hotmail_dot_com>
 
-pkgname=gnome-shell-extension-cpufreq
+pkgname=gnome-shell-extension-cpufreq-git
 _pkgname=cpufreq
 pkgver=87.75fa137
 pkgrel=1
