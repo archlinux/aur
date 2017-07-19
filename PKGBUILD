@@ -3,8 +3,8 @@
 
 pkgname=firefox-wayland-git
 _pkgname=firefox
-pkgver=ea5f69b51549
-pkgrel=8
+pkgver=56.2.1.r2119.g2802cca2af95
+pkgrel=9
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -45,7 +45,7 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 pkgver() {
   cd "gecko-dev"
-  git describe --always --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --always --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/firefox\.wayland\.//g'
 }
 
 prepare() {
