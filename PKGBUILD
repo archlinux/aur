@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=4.0.0
+pkgver=4.0.1
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
@@ -19,7 +19,7 @@ source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgv
         user.conf
         tmpfile.conf
         mattermost.sh)
-sha256sums=('08b8fd8081a73ee15dd9ca6c020c41fcf1b345ee0b35302ec813512e4e2f2431'
+sha256sums=('8a2bd30bb66bccef748174b496290c006d7670591d6c8cba5ec79583b6f32b56'
             'b3fbb2d04e72396677b2c8e34df089ff135796f7a0e8a42d45e989773d6d5b07'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd'
             '42277f740be74081126e5ac20a90bdf11cc9588f9b16e6bc1e2f6f106bedb8a6'
@@ -40,7 +40,9 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/src/github.com/mattermost/platform
+  cd "$srcdir"/src/github.com/mattermost/platform/webapp
+  make clean
+  cd ..
   GOPATH="$srcdir" BUILD_NUMBER=$_pkgver-$pkgrel make package
 }
 
