@@ -2,7 +2,7 @@
 
 pkgname=(freedm freedoom1 freedoom2)
 pkgbase=freedoom
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('asciidoc' 'deutex-devel' 'imagemagick' 'python' 'ttf-liberation')
 source=(https://github.com/$pkgbase/$pkgbase/archive/v$pkgver.tar.gz
         https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/v$pkgver.tar.gz.asc)
-sha512sums=('4c46aaebedf5a084595b1e4081d273855366c8a6a71dc7bd1fad40844e12b2a822de2ee45b74450256f8aa999cc5cc18009653a55d13c0077b9e53cd7ae9da3c'
+sha512sums=('51e0d5f7ca7c846c556fcba36b0f9c815090bfc76a80200aebd1526291da16b71145fbe254100cc5ad37ffc044d4380ef07b8bd4bdb811f00b9150e7b34dd636'
             'SKIP')
 validpgpkeys=('99459CE2770037FF5566EB4B8649B37607A08042')
 
