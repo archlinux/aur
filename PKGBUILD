@@ -3,15 +3,15 @@
 #
 
 pkgname=gnome-shell-frippery
-pkgver=3.22.0
-pkgrel=2
+pkgver=3.24.0
+pkgrel=1
 pkgdesc="An unofficial extension pack providing GNOME2 like features for GNOME3."
 arch=('any')
 url="http://frippery.org/extensions/index.html"
 license=('GPL2')
-depends=('gnome-shell>=3.22' 'gnome-shell<3.23')
+depends=('gnome-shell>=3.24' 'gnome-shell<3.25')
 source=(http://frippery.org/extensions/$pkgname-$pkgver.tgz)
-sha256sums=('51be0c6e3bfec1d248106a734e3b2a1f28218ebf3febfeb92b7672b416b99dbc')
+sha256sums=('2ec4e814949fc9b8c1f7f93b45937aad9004ffaacc0e44b926cd4c00358cfcdb')
 
 package() {
     cd "$srcdir/"
