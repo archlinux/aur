@@ -1,13 +1,14 @@
 # Maintainer: Michael Gwin <oksijun+arch at gmail dot com>
 
 pkgname=qspeakers
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="DIY speaker design software"
 url="http://brouits.free.fr/qspeakers/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('qwt-qt5')
+depends=('qwt')
+makedepends=('qt5-tools')
 conflicts=('qspeakers-svn')
 source=(
   "http://brouits.free.fr/${pkgname}/${pkgname}-${pkgver}.tar.gz"
@@ -15,14 +16,14 @@ source=(
 )
  
 sha256sums=(
-  'ab2f8fc98287f25c9be6dae914cd51fa387cd487c0f2c6dc03dc0c6db981263f'
+  'e6019339c0de727579020c751f5bbae7d727deaa36952048f1eda57b61cbc329'
   'e46d4dccb277f1a6ff5b9996184321fff3094e3ba59991bc273e8b97129bd7ac'
 )
  
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i ../qwt-qt5.patch
-  qmake-qt5 PREFIX=/usr -config release
+  qmake PREFIX=/usr -config release
   make
 }
 
