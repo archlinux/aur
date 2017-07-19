@@ -1,6 +1,3 @@
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
 # Maintainer: Pavle <xpio at tut.by>
 pkgname=klooni1010-git
 pkgver=0.6.1.r13.gb0abab1
@@ -9,7 +6,6 @@ pkgdesc="Puzzle game based on the original 1010!"
 arch=('any')
 url="https://lonamiwebs.github.io/klooni"
 license=('GPL3')
-groups=()
 depends=('bash' 'java-environment')
 makedepends=('jdk8-openjdk' 'git' 'gendesk')
 provides=('klooni1010')
@@ -18,7 +14,6 @@ source=('git://github.com/LonamiWebs/Klooni1010')
 md5sums=('SKIP')
 
 _gitname='Klooni1010'
-
 
 pkgver() {
   cd "$_gitname"
