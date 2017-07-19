@@ -4,22 +4,21 @@
 _keyaccount=6822
 _productUrname='OnlineFotoservice'
 _productRename='CEWE Fotoservice'
-_setupFilename='setup_OnlineFotoservice'
 
 pkgname=cewe-fotoservice
 conflicts=(cewe-fotobuch)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
-md5sums=('6b8b2ad275fd5f968ed7625447c242a4'
+md5sums=('cbfd154aa3a5c26ccda51281fbd41b1c'
          '422a405d520e18ef9afade2e7c24440b')
 
-pkgver=6.2.1
-pkgrel=4
+pkgver=6.2.4
+pkgrel=1
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base')
 makedepends=('unzip')
 arch=('i686' 'x86_64')
-source=("http://dls.photoprintit.de/download/Data/$_keyaccount/hps/$_setupFilename.tgz"
+source=("https://dls.photoprintit.com/download/Data/$_keyaccount-de_DE/hps/setup_${_productUrname// /_}.tgz"
 	'updater.pl')
 install=$pkgname.install
 
