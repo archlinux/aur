@@ -15,8 +15,8 @@ optdepends=("java-runtime>=$_major: Run examples"
             "java-environment>=$_major: Compile and run examples"
             "gradle: Compile examples")
 options=('!strip')
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/$hash/jdk-$pkgver-linux-i586-demos.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/$hash/jdk-$pkgver-linux-x64-demos.tar.gz")
+source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/$_hash/jdk-$pkgver-linux-i586-demos.tar.gz")
+source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/$_hash/jdk-$pkgver-linux-x64-demos.tar.gz")
 md5sums_i686=('0a60a8fd2707fa15fbd219b91c2dbeb4')
 md5sums_x86_64=('5155ab183320c6b598537d0ad9a20337')
 
