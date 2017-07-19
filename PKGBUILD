@@ -7,8 +7,8 @@
 
 _srcname=mpv
 pkgname=mpv-full
-pkgver=0.25.0
-pkgrel=8
+pkgver=0.26.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -19,7 +19,7 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
         'libxrandr' 'jack' 'vapoursynth' 'libarchive' 'uchardet' 'rsound' 'sndio'
     # AUR:
-        'uchardet' 'rsound' 'sndio'
+        'mujs' 'uchardet' 'rsound' 'sndio'
 )
 depends_i686=(
     'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
@@ -35,7 +35,7 @@ provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
 source=("${_srcname}-${pkgver}.tar.gz"::"https://github.com/mpv-player/${_srcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('07423ffad6921ec4da32f703cd7fbfb27012301dcb736ac8542ac8e6083b0bce')
+sha256sums=('daf3ef358d5f260f2269f7caabce27f446c291457ec330077152127133b71b46')
 
 build() {
     cd "${_srcname}-${pkgver}"
@@ -67,7 +67,6 @@ build() {
         --disable-pdf-build \
         \
         --enable-cplugins \
-        --enable-vf-dlopen-filters \
         --enable-zsh-comp \
         --disable-test \
         --disable-clang-database \
@@ -78,6 +77,7 @@ build() {
         --enable-shm \
         --enable-libsmbclient \
         --enable-lua \
+        --enable-javascript \
         --enable-libass \
         --enable-libass-osd \
         --enable-encoding \
@@ -142,12 +142,12 @@ build() {
         --enable-gl \
         \
         --enable-vaapi-hwaccel \
-        --enable-vaapi-hwaccel-new \
-        --disable-videotoolbox-hwaccel \
+        --disable-videotoolbox-hwaccel-new \
+        --disable-videotoolbox-hwaccel-old \
         --disable-videotoolbox-gl \
         --enable-vdpau-hwaccel \
-        --enable-vdpau-hwaccel-new \
         --disable-d3d-hwaccel \
+        --disable-d3d-hwaccel-new \
         "$_cuda" \
         \
         --enable-tv \
