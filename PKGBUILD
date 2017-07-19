@@ -27,8 +27,8 @@ source=("${FX_SRC_URI}.txt"
         "$pkgname.desktop"
         "vendor.js")
 
-sha512sums=('0a9f1be275ad0dd3f87a2e8843e198280233258cf08f918ee7912ff8618e6b7367ba02a57e6d43561edffae90d4ee46782f74bf5c83ccf902d26f12ed30dda6b'
-            '4aac8e8da92178e5967726e2a7cca1fadc04920bcd522034c8ad3ac738c617e767331db26c77d7274bfc5e712ea7c81de45e4acff5c2597c4d02da304e8322eb'
+sha512sums=('SKIP'
+            'SKIP'
             'c75c6d5b6f48e25a3c2ea666ae9b42f4e3372de9aaf6cd4270f3356c7046f9f19caa1651e5d779b95d790edfd4dd39dc3f4261361d882a62166dc9e91e9e8cb1'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 
