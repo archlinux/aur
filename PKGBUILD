@@ -2,7 +2,7 @@
 # Contributor: Stephan Conrad <stephan@conrad.pics>
 
 pkgname=modsecurity
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('APACHE')
 
 depends=(
 	'apache' 'apr-util' 'pcre'
-	'libxml2' 'lua51' 'curl' 'yajl'
+	'libxml2' 'lua' 'curl' 'yajl'
 )
 provides=("${pkgname}=${pkgver}")
 
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277' # Felipe Zimmerle
 )
 sha256sums=(
-	'958cc5a7a7430f93fac0fd6f8b9aa92fc1801efce0cda797d6029d44080a9b24'
+	'41a8f73476ec891f3a9e8736b98b64ea5c2105f1ce15ea57a1f05b4bf2ffaeb5'
 	'SKIP' # GPG signature
 )
 

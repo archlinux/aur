@@ -1,6 +1,6 @@
 pkgbase = modsecurity
 	pkgdesc = A cross platform web application firewall engine for Apache, IIS and Nginx
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://modsecurity.org/
 	arch = i686
@@ -10,14 +10,14 @@ pkgbase = modsecurity
 	depends = apr-util
 	depends = pcre
 	depends = libxml2
-	depends = lua51
+	depends = lua
 	depends = curl
 	depends = yajl
-	provides = modsecurity=2.9.1
-	source = https://github.com/SpiderLabs/ModSecurity/releases/download/v2.9.1/modsecurity-2.9.1.tar.gz
-	source = https://github.com/SpiderLabs/ModSecurity/releases/download/v2.9.1/modsecurity-2.9.1.tar.gz.asc
+	provides = modsecurity=2.9.2
+	source = https://github.com/SpiderLabs/ModSecurity/releases/download/v2.9.2/modsecurity-2.9.2.tar.gz
+	source = https://github.com/SpiderLabs/ModSecurity/releases/download/v2.9.2/modsecurity-2.9.2.tar.gz.asc
 	validpgpkeys = 190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277
-	sha256sums = 958cc5a7a7430f93fac0fd6f8b9aa92fc1801efce0cda797d6029d44080a9b24
+	sha256sums = 41a8f73476ec891f3a9e8736b98b64ea5c2105f1ce15ea57a1f05b4bf2ffaeb5
 	sha256sums = SKIP
 
 pkgname = modsecurity
