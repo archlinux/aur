@@ -2,7 +2,7 @@
 
 _pkgname=beets-follow
 pkgname=${_pkgname}-git
-pkgver=0.r16.f533f73
+pkgver=1.1.r0.geb504a0
 pkgrel=1
 pkgdesc='Manage muspy subscriptions via beets.'
 arch=('any')
