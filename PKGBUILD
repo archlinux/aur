@@ -1,6 +1,6 @@
 # Maintainer: João Miguel <jmcf125 at openmailbox dot org>
 pkgname=apparmor-openrc
-pkgver=20160816
+pkgver=20170719
 pkgrel=1
 pkgdesc="Apparmor init script for OpenRC (from systemd-free.org - not apg's way)"
 arch=('any')
@@ -19,10 +19,14 @@ pkgver() {
 _inst_initd(){
    install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
+   #        vv--- should work without this, but actually does not (at boot)
    sed -e 's|#!/sbin/runscript|#!/usr/bin/openrc-run|' \
-	 -e 's|/var/run|/run|g' \
-	 -i "${pkgdir}/etc/init.d/$1"
-   # ^^--- should work without this, but actually does not (at boot)
+         -e 's|/var/run|/run|g' \
+         -e 's|libexec|lib/apparmor|' \
+         -i "${pkgdir}/etc/init.d/$1"
+   # /usr/libexec/rc.apparmor.functions is needed: /usr/libexec used to be a
+   # link created by some apparmor package, but not anymore (see:
+   # https://wiki.archlinux.org/index.php/Arch_packaging_standards#Package_etiquette)
 }
 
 package() {
