@@ -6,7 +6,7 @@ _commit=c8ee4e290bfcd50302553ab3cc7b6234bbdaa204
 pkgrel=3
 pkgdesc="Qt5 IM Module for Fcitx"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/fcitx"
+url="https://github.com/fcitx/fcitx-qt5"
 license=('GPL')
 groups=('fcitx-im')
 depends=('fcitx' 'libxkbcommon' 'qt5-base=5.9.1')
