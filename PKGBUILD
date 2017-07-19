@@ -1,15 +1,15 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-googlepinyin
 pkgver=0.1.6
 pkgrel=5
 pkgdesc="Fcitx Wrapper for googlepinyin"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/fcitx"
+url="https://github.com/fcitx/fcitx-googlepinyin"
 license=('GPL')
 depends=('fcitx' 'libgooglepinyin')
 makedepends=('cmake' 'intltool')
-source=("http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz")
+source=("https://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 md5sums=('7ee33bbb66d29536819b0d2f73b69713')
 
 build() {
