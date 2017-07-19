@@ -1,8 +1,8 @@
 # Contributor: tuxce <tuxce.net@gmail.com>
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 pkgname=package-query
-pkgver=1.8
-pkgrel=2
+pkgver=1.9
+pkgrel=1
 pkgdesc="Query ALPM and AUR"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="https://github.com/archlinuxfr/package-query/"
@@ -23,4 +23,4 @@ package ()
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('ce65626c7555173204757917233d07e3b33c2a0d9328566e71434c16ba2fc3d6')
+sha256sums=('88bc3970fd05a16778c52d5aafc19e930aadd0d6b4c6b142f8fff47ec22ef785')

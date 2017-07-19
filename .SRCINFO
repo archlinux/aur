@@ -1,7 +1,7 @@
 pkgbase = package-query
 	pkgdesc = Query ALPM and AUR
-	pkgver = 1.8
-	pkgrel = 2
+	pkgver = 1.9
+	pkgrel = 1
 	url = https://github.com/archlinuxfr/package-query/
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = package-query
 	license = GPL
 	depends = pacman>=5.0
 	depends = yajl>=2.0
-	source = http://mir.archlinux.fr/releases/package-query/package-query-1.8.tar.gz
-	sha256sums = ce65626c7555173204757917233d07e3b33c2a0d9328566e71434c16ba2fc3d6
+	source = http://mir.archlinux.fr/releases/package-query/package-query-1.9.tar.gz
+	sha256sums = 88bc3970fd05a16778c52d5aafc19e930aadd0d6b4c6b142f8fff47ec22ef785
 
 pkgname = package-query
 
