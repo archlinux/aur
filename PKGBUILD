@@ -9,7 +9,7 @@ depends=('java-runtime=8')
 install='crate.install'
 source=(https://cdn.crate.io/downloads/releases/$pkgname-$pkgver.tar.gz
         crate.service
-        crate)
+        crate.env)
 
 backup=('etc/crate/crate.yml'
         'etc/crate/logging.yml')
