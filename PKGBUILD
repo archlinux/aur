@@ -1,5 +1,5 @@
 pkgname=cen64-git
-pkgver=r764.62f0f9b
+pkgver=r768.b0af355
 pkgrel=1
 epoch=1
 pkgdesc="Cycle-accurate Nintendo 64 emulator"
@@ -24,7 +24,15 @@ prepare() {
 build() {
     # Change to whichever matches your CPU architecture
     # Select between "SSE2", "SSSE3", "SSE4.1", "AVX"
-    _arch_support="SSSE3"
+    if [[ `cat /proc/cpuinfo | grep avx | wc -l` -gt 0 ]]; then
+        _arch_support="AVX"
+    elif [[ `cat /proc/cpuinfo | grep sse4_1 | wc -l` -gt 0 ]]; then
+        _arch_support="SSE4.1"
+    elif [[ `cat /proc/cpuinfo | grep ssse3 | wc -l` -gt 0 ]]; then
+        _arch_support="SSSE3"
+    else
+        _arch_support="SSE2"
+    fi
 
     # Enable busy-wait-detection for better performance
     _detect_wait_loops="ON"
