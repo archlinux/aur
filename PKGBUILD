@@ -15,8 +15,8 @@ url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
-source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${hash}/jdk-${pkgver}-docs-all.zip"
-        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-${_build_javafx}/${hash}/javafx-${pkgver}-apidocs.zip"
+source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/jdk-${pkgver}-docs-all.zip"
+        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-${_build_javafx}/${_hash}/javafx-${pkgver}-apidocs.zip"
         'LICENSE-Documentation.txt'
         'LICENSE-Oracle-Legal-Notices.txt')
 md5sums=('fa55f38231a4fe86d5265c07b0c1b002'
