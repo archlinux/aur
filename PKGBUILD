@@ -1,13 +1,13 @@
 # Maintainer: Alex S. shantanna_at_hotmail_dot_com>
 
-pkgname=gnome-shell-extension-cpufreq-git
-_gitname=cpufreq
+pkgname=gnome-shell-extension-cpufreq
+_pkgname=cpufreq
 pkgver=87.75fa137
-pkgrel=0
-pkgdesc="Gnome Shell CPU Frequency Monitor and Governor Manager."
+pkgrel=1
+pkgdesc="The simple program to switch the monitor with one klick betwin single and dual mode"
 arch=('any')
 url="https://github.com/konkor/cpufreq"
-license=('unknown')
+license=('BSD')
 depends=('gnome-shell')
 makedepends=('git')
 source=('git://github.com/konkor/cpufreq.git')
