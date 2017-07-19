@@ -1,0 +1,16 @@
+post_install() {
+	echo "---------------------------------------------------------
+Sar2RRD - quick howto:
+systemctl enable sysstat-collect.timer  # enable and start data collection
+systemctl start sysstat-collect.timer
+# wait a few minutes
+cd /tmp; mkdir rrd img
+sar -A >/tmp/test.sar
+sar2rrd -f /tmp/test.sar
+# check out graphs in img/
+---------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install
+}
