@@ -1,8 +1,8 @@
 # Maintainer: Peter Mayr <petermayr@ymail.com>
 
 pkgname=lunzip
-pkgver=1.8
-pkgrel=0
+pkgver=1.9
+pkgrel=1
 pkgdesc='For extracting and viewing files in .lzip archives'
 url='http://www.nongnu.org/lzip/lunzip.html'
 arch=('i686' 'x86_64')
