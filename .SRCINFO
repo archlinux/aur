@@ -1,0 +1,51 @@
+pkgbase = agensgraph-git
+	pkgdesc = A multi-model graph database based on PostgreSQL.
+	pkgver = 1.1.0.r41.gaf9b283
+	pkgrel = 1
+	url = http://bitnine.net/agensgraph/
+	install = postgresql.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = tcl
+	makedepends = jdk
+	depends = libxml2
+	depends = readline
+	depends = zlib
+	depends = openssl
+	depends = krb5
+	depends = python2
+	depends = perl
+	optdepends = python2: for PL/Python support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	provides = postgresql-libs=9.6.2
+	provides = postgresql=9.6.2
+	provides = postgresql-client
+	conflicts = postgresql
+	conflicts = postgresql-libs
+	conflicts = postgresql-testing
+	conflicts = postgresql-client
+	conflicts = postgresql-git
+	options = !strip
+	backup = etc/pam.d/postgresql
+	backup = etc/logrotate.d/postgresql
+	source = git+https://github.com/bitnine-oss/agensgraph
+	source = postgresql-run-socket.patch
+	source = agensgraph.patch
+	source = postgresql.pam
+	source = postgresql.logrotate
+	source = agensgraph.service
+	source = postgresql.tmpfiles.conf
+	source = postgresql-check-db-dir
+	sha256sums = SKIP
+	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
+	sha256sums = 0cfec996d06aa83d0ddd08d0ced3ebc9187d26fd05f90d54788a85bf6b7bd7b3
+	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
+	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
+	sha256sums = daab6220ef01c729574384a3095f0659bf25617d6c195248a0cd28ede9b6c054
+	sha256sums = 7e086d70e0dcaa6ce45693b4e826ce92d770192b3aff5642319b1ef279d88dc4
+	sha256sums = 40da687da4fb1f6b35f406dd0f48922065d8c905d678e2a27da05806f874b780
+
+pkgname = agensgraph-git
+

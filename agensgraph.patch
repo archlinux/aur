@@ -1,0 +1,10 @@
+--- agensgraph/contrib/hadoop_fdw/Makefile	2017-07-18 01:38:12.548453982 +0300
++++ agensgraph.new/contrib/hadoop_fdw/Makefile	2017-07-18 03:55:46.723320712 +0300
+@@ -33,7 +33,7 @@
+  
+ PG_CPPFLAGS=-D'PKG_LIB_DIR=$(pkglibdir)'
+ 
+-JFLAGS = -d $(pkglibdir)
++JFLAGS = -d ../../../
+ 
+ all:$(TRGTS)
