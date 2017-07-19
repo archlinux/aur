@@ -6,7 +6,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=storcli
 _pkgname=StorCLI
 pkgver=1.23.02
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ sha512sums=('2018c8b40d7371077f01bbe586ed1135d683823b9d243fde14d45404c8bab8328f3
 
 build() {
 	# they changed their file structure layout. AGAIN.
-	cd ${srcdir}/versionChangeSet/univ_viva_cli_rel
+	cd ${srcdir}
 	bsdtar -p -C . -xf ./storcli_All_OS.zip
 	cd storcli_All_OS/Linux
 	ls
@@ -48,7 +48,7 @@ build() {
 	# Thanks to sl1pkn07 on AUR for letting me know bsdtar can do RPMs now. Yay!
 	#bsdtar -p -o -C . -xf ./${pkgname}-${pkgver}-${_pkgrel}.noarch.rpm
 	# I hate this package. People at Avago need to be fired.
-	bsdtar -p -o -C . -xf ./${pkgname}-1.21.06-${_pkgrel}.noarch.rpm
+	bsdtar -p -o -C . -xf ./${pkgname}-${pkgver}-${_pkgrel}.noarch.rpm
 }
 
 package() {
@@ -61,11 +61,11 @@ package() {
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
 	# AVAGO. GET. IT. TOGETHER. STOP CHANGING THE FILE TREE.
 	#install -m 0755 "${srcdir}/${pkgname}_All_OS/storcli_All_OS/Linux/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -m 0644 "${srcdir}/versionChangeSet/univ_viva_cli_rel/${pkgname}_All_OS/Linux/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -m 0644 "${srcdir}/${pkgname}_All_OS/Linux/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	# Worst. Company. Ever.
 	#install -m 0755 "${srcdir}/${pkgname}_All_OS/storcli_All_OS/Linux/opt/MegaRAID/${pkgname}/${pkgname}${_bits}" "${pkgdir}/usr/bin/${pkgname}"
-	install -m 0755 "${srcdir}/versionChangeSet/univ_viva_cli_rel/${pkgname}_All_OS/Linux/opt/MegaRAID/${pkgname}/${pkgname}${_bits}" "${pkgdir}/usr/bin/${pkgname}"
+	install -m 0755 "${srcdir}/${pkgname}_All_OS/Linux/opt/MegaRAID/${pkgname}/${pkgname}${_bits}" "${pkgdir}/usr/bin/${pkgname}"
 	#install -m 0644 "${srcdir}/${pkgname}_All_OS/storcli_All_OS/EFI/UDK/storcli.efi" "${pkgdir}/usr/share/${pkgname}/${pkgname}.efi"
-	install -m 0644 "${srcdir}/versionChangeSet/univ_viva_cli_rel/${pkgname}_All_OS/EFI/UDK/storcli.efi" "${pkgdir}/usr/share/${pkgname}/${pkgname}.efi"
+	install -m 0644 "${srcdir}/${pkgname}_All_OS/EFI/UDK/storcli.efi" "${pkgdir}/usr/share/${pkgname}/${pkgname}.efi"
 }
 
