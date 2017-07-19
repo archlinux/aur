@@ -8,7 +8,7 @@ pkgdesc='Manage muspy subscriptions via beets.'
 arch=('any')
 url="https://github.com/nolsto/${_pkgname}"
 license=('MIT')
-depends=('python2' 'beets')
+depends=('python' 'beets')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -23,7 +23,7 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
   rm 'beetsplug/__init__.py'
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python3 setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm644 README.rst "$pkgdir/usr/share/doc/${_pkgname}/README.rst"
 }
