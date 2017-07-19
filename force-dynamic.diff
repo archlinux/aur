@@ -1,0 +1,13 @@
+diff --git a/config.mk.in b/config.mk.in
+index ab2dca1..6324ad7 100644
+--- a/config.mk.in
++++ b/config.mk.in
+@@ -16,7 +16,7 @@ exec_prefix     = @exec_prefix@
+ 
+ GHC		= @GHC@
+ # GHCFLAGS	:= -Wall -O -recomp
+-GHCFLAGS        = -O
++GHCFLAGS        = -O -dynamic
+ 
+ HUGS            = @HUGS@
+ 
