@@ -1,0 +1,14 @@
+pkgbase = nodejs-reveal-md
+	pkgdesc = Get beautiful reveal.js presentations from your Markdown file
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://webpro.github.io/reveal-md/
+	arch = any
+	license = MIT
+	depends = npm
+	noextract = reveal-md-0.3.4.tgz
+	source = http://registry.npmjs.org/reveal-md/-/reveal-md-0.3.4.tgz
+	sha256sums = aff164af39d29f19dc71f472d7000cdabac506d259410f122ce891055929b130
+
+pkgname = nodejs-reveal-md
+
