@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python2' 'beets')
 makedepends=('git')
 provides=("$_pkgname")
-conflicts=$provides
+conflicts=("$_pkgname")
 source=("git+${url}.git")
 md5sums=('SKIP')
 
