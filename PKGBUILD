@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=svgcleaner-gui-git
-pkgver=0.6.91.56.g6eda679
+pkgver=0.6.91.58.gde82e46
 pkgrel=1
 pkgdesc="main GUI for svgcleaner"
 url="https://github.com/RazrFalcon/svgcleaner-gui"
