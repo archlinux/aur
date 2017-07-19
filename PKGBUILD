@@ -7,19 +7,19 @@ pkgrel=1
 pkgdesc='A reverse engineering driver for the Clevo laptop models backlight keyboard.'
 arch=('i686' 'x86_64')
 license=('GPL')
-url='https://bitbucket.org/lynthium/clevo-xsm-wmi'
-source=("clevo-xsm-wmi-${pkgver}.src.tar.gz::https://bitbucket.org/lynthium/clevo-xsm-wmi/get/v${pkgver}.tar.gz")
+url='https://bitbucket.org/tuxedocomputers/clevo-xsm-wmi'
+source=("clevo-xsm-wmi-${pkgver}.src.tar.gz::https://bitbucket.org/tuxedocomputers/clevo-xsm-wmi/get/v${pkgver}.tar.gz")
 options=(!emptydirs)
 makedepends=('linux-headers')
 install='clevo-xsm-wmi.install'
 
 build() {
-    cd "${srcdir}/lynthium-clevo-xsm-wmi-${_pkgtag}/module"
+    cd "${srcdir}/tuxedocomputers-clevo-xsm-wmi-${_pkgtag}/module"
     make
 }
 
 package() {
-    cd "${srcdir}/lynthium-clevo-xsm-wmi-${_pkgtag}/module"
+    cd "${srcdir}/tuxedocomputers-clevo-xsm-wmi-${_pkgtag}/module"
 
     _PACKAGES=`pacman -Qsq linux`
     _KERNELS=`pacman -Ql $_packages | grep /modules.alias.bin | sed 's/.*\/lib\/modules\/\(.*\)\/modules.alias.bin/\1/g'`
@@ -45,4 +45,4 @@ package() {
     mkdir -p "${pkgdir}/etc/modules-load.d"
     echo "clevo-xsm-wmi" > "${pkgdir}/etc/modules-load.d/clevo-xsm-wmi.conf"
 }
-sha256sums=('43e7eadbec5cf0d92d10bb1fd511a77cb4a11a7fa29f3a2df33dacbeb65c5f09')
+sha256sums=('630ff6dbfa90c8a9285badf75b60579b2a9495e85862b62ef77a3654535e4b72')
