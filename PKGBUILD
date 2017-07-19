@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdk-pixbuf2
-pkgver=2.36.4
+pkgver=2.36.7
 pkgrel=1
 pkgdesc='An image loading library (mingw-w64)'
 arch=(any)
@@ -19,7 +19,7 @@ depends=(
 options=(!strip !buildflags staticlibs)
 source=(
   "https://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz")
-sha256sums=('0b19901c3eb0596141d2d48ddb9dac79ad1524bdf59366af58ab38fcb9ee7463')
+sha256sums=('1b6e5eef09d98f05f383014ecd3503e25dfb03d7e5b5f5904e5a65b049a6a4d8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -32,6 +32,8 @@ build() {
       --enable-relocations \
       --with-included-loaders \
       --with-libjasper
+    # We don't build dynamic modules, so we can use an empty file here.
+    touch gdk-pixbuf/loaders.cache
     make
     cd ..
   done
