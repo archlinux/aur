@@ -1,7 +1,7 @@
 # Maintainer: DATSD <dastudiodirector at gmail dot com>
 _basename=da-exception
 pkgname=${_basename}-git
-pkgver=r5.58517f1
+pkgver=r6.d4c26b0
 pkgrel=1
 pkgdesc='exception by DA'
 arch=('any')
@@ -24,5 +24,5 @@ package()
 {
 	cd "${srcdir}/${_basename}"
 	install -d "${pkgdir}/usr/include/DA"
-	install -Dm644 exception.hpp "${pkgdir}/usr/include/DA"
+	install -Dm644 "include/DA/exception.hpp" "${pkgdir}/usr/include/DA"
 }
