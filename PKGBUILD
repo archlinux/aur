@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.4.1
-pkgrel=6
+pkgrel=7
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
@@ -24,12 +24,9 @@ prepare() {
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
-	old_IFS=${IFS}
-	IFS=\'
-	configure_arguments=($(nginx -V |& grep configure | cut -d ' ' -f 3-))
-	IFS=${old_IFS}
-	./configure ${configure_arguments[0]}"${configure_arguments[1]}" \
-		${configure_arguments[2]} \
+	opts=$(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@')
+	IFS=$'\n' opts=( $(xargs -n1 <<< "$opts") )
+	./configure "${opts[@]}" \
 		--add-dynamic-module=../ngx-$_modname-$pkgver
 	make modules
 }
