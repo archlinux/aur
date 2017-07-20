@@ -6,7 +6,7 @@
 pkgname=redsocks2-git
 pkgver=0.66.r17.g56015a6
 pkgrel=1
-pkgdesc='Transparent redirector of any TCP connection to proxy using your firewall'
+pkgdesc='Transparent redirector of any TCP connection to proxy using your firewall (adapted redsocks2 to compile with openssl-1.0 in archlinux)'
 arch=('i686' 'x86_64')
 url='https://github.com/semigodking/redsocks'
 license=('GPL3')
