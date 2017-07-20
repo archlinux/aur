@@ -1,5 +1,5 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
