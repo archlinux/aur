@@ -5,7 +5,7 @@
 # Contributor: Guillem Rieu <guillemr@gmx.net>
 pkgname=ocamlnet
 pkgver=4.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for Web and Internet programming in OCaml"
 arch=('i686' 'x86_64')
 url="http://projects.camlcity.org/projects/ocamlnet.html"
@@ -20,7 +20,9 @@ md5sums=('cc8b3434119e51b0e855b33a687e9c4b' 'fdf36378ab1d29585c33a1a9a9aeb0c8')
 build(){
   cd "$srcdir/$pkgname-$pkgver"
   ./configure -enable-gnutls -enable-gssapi -enable-pcre -bindir /usr/bin
-  cp ../../netsys_posix.ml src/netsys/netsys_posix.ml   # overwrite file with changed one
+  echo -n "pwd: "; pwd
+  echo -n "ls -l ../.. => "; ls -l ../..
+  cp -av ../../netsys_posix.ml src/netsys/netsys_posix.ml   # overwrite file with changed one
 
   # You also could configure to add some more support,
   # if you have installed the according modules:
