@@ -1,31 +1,33 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
-_gitname=KindleTool
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
+_pkgname=KindleTool
 pkgname=kindletool-git
-pkgver=1.6.4.r0.g4fb53f6
+pkgver=1.6.4.r97.gb057128
 pkgrel=1
 pkgdesc="Tool for creating/extracting Kindle updates and more"
 arch=('i686' 'x86_64')
-url="https://github.com/NiLuJe/${_gitname}"
+url="https://github.com/NiLuJe/${_pkgname}"
 license=('GPL')
 depends=('libarchive' 'nettle')
 makedepends=('git')
-provides=('kindletool')
-conflicts=('kindletool')
-source=("git://github.com/NiLuJe/${_gitname}.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-
+    cd "${srcdir}/${_pkgname}"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_gitname}"
+    cd "${srcdir}/${_pkgname}"
     make
 }
 
 package() {
-    cd "${srcdir}/${_gitname}"
+    cd "${srcdir}/${_pkgname}"
     make DESTDIR="${pkgdir}/" install
 }
