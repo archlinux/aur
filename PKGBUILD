@@ -2,9 +2,9 @@
 # Contributor: Mohammad Alsaleh <msal@tormail.org>
 # Maintainer: Steven Allen <steven@stebalien.com>
 
-_date=2017-02-13
+_date=2017-07-20
 pkgname=rust-nightly-bin
-pkgver=1.17.0_2017.02.12
+pkgver=1.20.0_2017.07.19
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
@@ -21,6 +21,9 @@ sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE')
 options=(staticlibs !strip)
 
+_date(){
+  date +%Y-%m-%d
+}
 pkgver() {
   cd ${srcdir}/rust-nightly-${CARCH}-unknown-linux-gnu
   ver="$(expr "$(cat version)" : '\(.*\)-nightly')"
