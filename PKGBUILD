@@ -3,26 +3,26 @@
 
 _gemname=googleauth
 pkgname=ruby-$_gemname
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc='Google Auth Library for Ruby'
 arch=(any)
 url='https://github.com/google/google-auth-library-ruby'
 license=(Apache-2.0)
 depends=(
   ruby
-  'ruby-faraday<1' 'ruby-faraday>=0.9'
-  'ruby-logging<3' 'ruby-logging>=2'
-  'ruby-jwt<2' 'ruby-jwt>=1.4'
-  'ruby-memoist<1' 'ruby-memoist>=0.12'
-  'ruby-multi_json<2' 'ruby-multi_json>=1.11'
-  'ruby-os<1' 'ruby-os>=0.9'
-  'ruby-signet<1' 'ruby-signet>=0.7'
+  'ruby-faraday>=0.12' 'ruby-faraday<1'
+  'ruby-jwt>=1.4' 'ruby-jwt<2'
+  'ruby-logging>=2' 'ruby-logging<3'
+  'ruby-memoist>=0.12' 'ruby-memoist<1'
+  'ruby-multi_json>=1.11' 'ruby-multi_json<2'
+  'ruby-os>=0.9' 'ruby-os<1'
+  'ruby-signet>=0.7' 'ruby-signet<1'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2eb9d9be8b8bc360a5ebda1cb0aff5eca138c4e9')
+sha1sums=('941bd06a0b8d913f37087bb75a2908b09e7f1714')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
