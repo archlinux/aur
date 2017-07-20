@@ -1,18 +1,32 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
-pkgname='python-perf'
-pkgver='0.1'
+# Maintainer: j605
+
+_pkgname="perf"
+pkgbase="python-$_pkgname"
+pkgname=("python-$_pkgname" "python2-$_pkgname")
+pkgver=1.4
 pkgrel=1
-pkgdesc='Interface with the Linux profiling infrastructure'
-arch=('x86_64')
-url='https://perf.wiki.kernel.org'
-license=('GPL2')
-depends=('python2')
-source=('ftp://195.220.108.108/linux/fedora/linux/updates/24/x86_64/p/python-perf-4.5.7-300.fc24.x86_64.rpm')
-sha256sums=('c6f913f3a842a52be1549ff92a05cbbacf673a83e9b6e2b1d3d5a2ea50c8b95f')
+pkgdesc="Python module to generate and modify perf"
+arch=('any')
+license=('MIT')
+url="https://github.com/haypo/perf"
+makedepends=('python' 'python2' 'python-six' 'python2-six' 'python2-statistics')
+source=("https://pypi.python.org/packages/de/c1/7f8ef204eec8dd31ad4c1e618a820d8b5dd4a89426b1a2e705901bab79ef/perf-1.4.tar.gz")
+md5sums=("fcf55a43d601522e1d5d8603af9af6f0")
 
+package_python2-perf() {
+  depends=('python2-six' 'python2-statistics')
 
-package() {
-            cd "${srcdir}/usr/lib64/python2.7/site-packages/"
-            install -dm755 "${pkgdir}/usr/lib/python2.7/site-packages/"
-            cp * "${pkgdir}/usr/lib/python2.7/site-packages/"
+  cd $_pkgname-$pkgver
+  python2 setup.py install --prefix=/usr --root="${pkgdir}"
+
+  install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python-perf(){
+depends=('python-six')
+
+  cd $_pkgname-$pkgver
+  python setup.py install --prefix=/usr --root="${pkgdir}"
+
+  install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
