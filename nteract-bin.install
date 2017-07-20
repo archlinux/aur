@@ -1,14 +1,6 @@
 post_install() {
-  cat << EOF
-
-   ╭────────────────────────────────────────────────────────╮
-   │                                                        │
-   │     For help installing additional kernels, visit:     │
-   │  https://wiki.archlinux.org/index.php/Jupyter#Kernels  │
-   │                                                        │
-   ╰────────────────────────────────────────────────────────╯
-
-EOF
+  echo "==> If you require help installing additional kernels, please visit:"
+  echo "==> https://wiki.archlinux.org/index.php/Jupyter#Kernels"
 }
 
 post_upgrade() {
