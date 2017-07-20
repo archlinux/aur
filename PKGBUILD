@@ -1,11 +1,11 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: Curtis McEnroe <programble@gmail.com>
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=git-extras-git
-pkgver=4.4.0.r0.gbe8a154
+pkgver=4.4.0.r4.gc59ddb7
 pkgrel=1
 pkgdesc="GIT utilities -- repo summary, repl, changelog population, author commit percentages and more"
 arch=('any')
