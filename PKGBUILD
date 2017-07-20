@@ -5,7 +5,7 @@
 # Contributor: Alexander <chronischzuspaet at gmail dot com> Kempen
 
 pkgname=scidavis
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('gsl' 'glu' 'mesa' 'muparser' 'python2-pyqt4' 'shared-mime-info'
          'qwt5' 'qwtplot3d')
 source=("http://prdownloads.sourceforge.net/sourceforge/scidavis/${pkgname}-${pkgver}.tar.gz"
         "scidavis-python2.patch")
-md5sums=('3479b7805517630a9b5aeb6254adb9ed'
+md5sums=('5c4af1e3bb1e1b9adaf1c839892c5382'
          '70665013c8f456c0ebbff8373d4c8d30')
 install="${pkgname}.install"
 
