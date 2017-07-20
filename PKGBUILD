@@ -18,7 +18,7 @@ provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
 #_x86md5=21ca14bffcdc1a2361ead2d763d0313d
-_x64md5=d584cbab01041777a15d62cbef69a976
+_x64md5=2d0769bea2bf6041511d6901a1cf69c3
 
 case "$CARCH" in
 	'i686')
