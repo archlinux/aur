@@ -1,0 +1,15 @@
+pkgbase = python-trakt-git
+	pkgdesc = API Python for trakt
+	pkgver = 20161105
+	pkgrel = 1
+	url = https://github.com/moogar0880/PyTrakt
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = PyTrakt::git+https://github.com/moogar0880/PyTrakt.git
+	sha512sums = SKIP
+
+pkgname = python-trakt-git
+
