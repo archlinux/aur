@@ -1,7 +1,7 @@
 pkgbase = python-louvain
-	pkgdesc = Python library for validating Python data structures.
+	pkgdesc = Louvain algorithm for community detection
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taynaud/python-louvain
 	arch = any
 	license = BSD

@@ -2,8 +2,8 @@
 
 pkgname=python-louvain
 pkgver=0.8
-pkgrel=1
-pkgdesc='Python library for validating Python data structures.'
+pkgrel=2
+pkgdesc='Louvain algorithm for community detection'
 arch=(any)
 url="https://github.com/taynaud/$pkgname"
 license=(BSD)
