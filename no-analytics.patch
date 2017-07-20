@@ -1,0 +1,174 @@
+diff -ura a/browser/finder/index.js b/browser/finder/index.js
+--- a/browser/finder/index.js	2017-06-24 06:28:49.000000000 +0200
++++ b/browser/finder/index.js	2017-07-20 08:32:42.563239708 +0200
+@@ -10,7 +10,6 @@
+ import NoteList from './NoteList'
+ import NoteDetail from './NoteDetail'
+ import SideNavFilter from 'browser/components/SideNavFilter'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ require('!!style!css!stylus?sourceMap!../main/global.styl')
+ require('../lib/customMeta')
+ 
+@@ -95,7 +94,6 @@
+ 
+     if (e.keyCode === 13) {
+       this.refs.detail.saveToClipboard()
+-      AwsMobileAnalyticsConfig.recordDynamitCustomEvent('COPY_FINDER')
+       hideFinder()
+       e.preventDefault()
+     }
+diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/MarkdownNoteDetail.js
+--- a/browser/main/Detail/MarkdownNoteDetail.js	2017-06-24 06:28:49.000000000 +0200
++++ b/browser/main/Detail/MarkdownNoteDetail.js	2017-07-20 08:32:12.599711118 +0200
+@@ -13,7 +13,6 @@
+ import StatusBar from '../StatusBar'
+ import _ from 'lodash'
+ import { findNoteTitle } from 'browser/lib/findNoteTitle'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ const electron = require('electron')
+ const { remote } = electron
+@@ -117,7 +116,6 @@
+           type: 'UPDATE_NOTE',
+           note: note
+         })
+-        AwsMobileAnalyticsConfig.recordDynamitCustomEvent('EDIT_NOTE')
+       })
+   }
+ 
+@@ -156,7 +154,6 @@
+ 
+   handleStarButtonClick (e) {
+     let { note } = this.state
+-    if (!note.isStarred) AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_STAR')
+ 
+     note.isStarred = !note.isStarred
+ 
+diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/SnippetNoteDetail.js
+--- a/browser/main/Detail/SnippetNoteDetail.js	2017-06-24 06:28:49.000000000 +0200
++++ b/browser/main/Detail/SnippetNoteDetail.js	2017-07-20 08:31:34.192793920 +0200
+@@ -16,7 +16,6 @@
+ import ConfigManager from 'browser/main/lib/ConfigManager'
+ import _ from 'lodash'
+ import { findNoteTitle } from 'browser/lib/findNoteTitle'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ function pass (name) {
+   switch (name) {
+@@ -111,7 +110,6 @@
+           type: 'UPDATE_NOTE',
+           note: note
+         })
+-        AwsMobileAnalyticsConfig.recordDynamitCustomEvent('EDIT_NOTE')
+       })
+   }
+ 
+@@ -150,7 +148,6 @@
+ 
+   handleStarButtonClick (e) {
+     let { note } = this.state
+-    if (!note.isStarred) AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_STAR')
+ 
+     note.isStarred = !note.isStarred
+ 
+diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
+--- a/browser/main/Detail/TagSelect.js	2017-06-24 06:28:49.000000000 +0200
++++ b/browser/main/Detail/TagSelect.js	2017-07-20 08:31:01.162578215 +0200
+@@ -2,7 +2,6 @@
+ import CSSModules from 'browser/lib/CSSModules'
+ import styles from './TagSelect.styl'
+ import _ from 'lodash'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ class TagSelect extends React.Component {
+   constructor (props) {
+@@ -57,7 +56,6 @@
+   }
+ 
+   submitTag () {
+-    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_TAG')
+     let { value } = this.props
+     let newTag = this.refs.newTag.value.trim().replace(/ +/g, '_')
+ 
+diff -ura a/browser/main/Main.js b/browser/main/Main.js
+--- a/browser/main/Main.js	2017-06-24 06:28:49.000000000 +0200
++++ b/browser/main/Main.js	2017-07-20 08:30:37.005753639 +0200
+@@ -12,7 +12,6 @@
+ import modal from 'browser/main/lib/modal'
+ import InitModal from 'browser/main/modals/InitModal'
+ import mixpanel from 'browser/main/lib/mixpanel'
+-import mobileAnalytics from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ import eventEmitter from 'browser/main/lib/eventEmitter'
+ 
+ function focused () {
+@@ -23,10 +22,6 @@
+   constructor (props) {
+     super(props)
+ 
+-    if (process.env.NODE_ENV === 'production') {
+-      mobileAnalytics.initAwsMobileAnalytics()
+-    }
+-
+     let { config } = props
+ 
+     this.state = {
+diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/CreateFolderModal.js
+--- a/browser/main/modals/CreateFolderModal.js	2017-06-24 06:28:49.000000000 +0200
++++ b/browser/main/modals/CreateFolderModal.js	2017-07-20 08:29:52.188793645 +0200
+@@ -5,7 +5,6 @@
+ import store from 'browser/main/store'
+ import consts from 'browser/lib/consts'
+ import ModalEscButton from 'browser/components/ModalEscButton'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ class CreateFolderModal extends React.Component {
+   constructor (props) {
+@@ -49,7 +48,6 @@
+   }
+ 
+   confirm () {
+-    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_FOLDER')
+     if (this.state.name.trim().length > 0) {
+       let { storage } = this.props
+       let input = {
+diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteModal.js
+--- a/browser/main/modals/NewNoteModal.js	2017-06-24 06:28:49.000000000 +0200
++++ b/browser/main/modals/NewNoteModal.js	2017-07-20 08:29:20.798587895 +0200
+@@ -5,7 +5,6 @@
+ import { hashHistory } from 'react-router'
+ import ee from 'browser/main/lib/eventEmitter'
+ import ModalEscButton from 'browser/components/ModalEscButton'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ class NewNoteModal extends React.Component {
+   constructor (props) {
+@@ -24,8 +23,6 @@
+   }
+ 
+   handleMarkdownNoteButtonClick (e) {
+-    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_MARKDOWN')
+-    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_ALLNOTE')
+     let { storage, folder, dispatch, location } = this.props
+     dataApi
+       .createNote(storage, {
+@@ -56,8 +53,6 @@
+   }
+ 
+   handleSnippetNoteButtonClick (e) {
+-    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_SNIPPET')
+-    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_ALLNOTE')
+     let { storage, folder, dispatch, location } = this.props
+ 
+     dataApi
+diff -ura a/package.json b/package.json
+--- a/package.json	2017-06-24 06:28:49.000000000 +0200
++++ b/package.json	2017-07-20 08:28:25.641559039 +0200
+@@ -50,8 +50,6 @@
+   "dependencies": {
+     "@rokt33r/markdown-it-math": "^4.0.1",
+     "@rokt33r/season": "^5.3.0",
+-    "aws-sdk": "^2.48.0",
+-    "aws-sdk-mobile-analytics": "^0.9.2",
+     "codemirror": "^5.19.0",
+     "electron-config": "^0.2.1",
+     "electron-gh-releases": "^2.0.2",

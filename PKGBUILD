@@ -7,19 +7,20 @@ pkgname=boostnote
 _pkgname=Boostnote
 pkgver=0.8.11
 _pkgver=v.0.8.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
 url="https://boostnote.io/"
 license=('GPL3')
 depends=('electron' 'nodejs')
-makedepends=('yarn' 'grunt-cli' 'git')
+makedepends=('npm' 'grunt-cli' 'git')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/BoostIO/"${_pkgname}"/archive/"${_pkgver}".tar.gz"
   "${pkgname}.js"
   "${pkgname}.desktop"
   "warning-fix.patch"
+  "no-analytics.patch"
   )
 
 sha512sums=(
@@ -27,19 +28,22 @@ sha512sums=(
   'f0abbdcca34d7f74d3dc66ffc2d0995416e7708c715d55fa58c4c2abc31d191ea42f3434e3105292b4817f83ac0ca89f456f5f93007ae80ab2426c8941f615f9'
   '18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40'
   '64fb4c4823744322b5777736fc1792fb377e433608b5456cb0e0b7053507d104a1bbe3fdc6fe193b41dfddadc1943e8220a27e26ec6d4166704f3e61e2572437'
+  '03588f657122a34874f2ededc4329df6b349f4c7a99015aa622b84aa7093cc611b975219eed773f7f8251db556dbb94f102e24dacdfb4a4e618ea2b6e4f25ef6'
   )
 
 prepare() {
   cd "${_pkgname}-${_pkgver}"
 
   patch -Np1 -i "${srcdir}/warning-fix.patch"
+  patch -Np1 -i "${srcdir}/no-analytics.patch"
 }
 
 build() {
   cd "${_pkgname}-${_pkgver}"
-  yarn --ignore-optional
+  npm install --no-optional
   grunt compile
-  yarn install --production --ignore-scripts --prefer-offline
+  rm -r node_modules/
+  npm install --production --no-optional
 }
 
 package() {
