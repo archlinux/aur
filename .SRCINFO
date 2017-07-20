@@ -1,33 +1,23 @@
 pkgbase = eolie-git
-	pkgdesc = Web browser for GNOME
-	pkgver = 0.1.r1.ge5a7d6f
+	pkgdesc = Simple web browser for GNOME
+	pkgver = 0.9.r1.ge5a7d6f
 	pkgrel = 1
-	url = https://github.com/gnumdk/eolie
-	arch = i686
+	url = https://gnumdk.github.io/eolie-web/
 	arch = x86_64
+	arch = i686
 	license = GPL3
-	makedepends = git
-	makedepends = gnome-common
+	makedepends = gobject-introspection
 	makedepends = intltool
 	makedepends = itstool
-	makedepends = python
-	makedepends = yelp-tools
-	depends = desktop-file-utils
-	depends = gobject-introspection
-	depends = gtk3
-	depends = python-dbus
-	depends = python-gobject
+	depends = gtkspell3
+	depends = python-beautifulsoup4
 	depends = python-cairo
-	depends = libsecret
+	depends = python-gobject
 	depends = webkit2gtk
-	depends = python-cryptography
-	depends = python-crypto
-	optdepends = python-wikipedia: display advanced artist information
-	provides = eolie=0.1.r1.ge5a7d6f
+	provides = eolie=0.9.r1.ge5a7d6f
 	conflicts = eolie
-	options = !emptydirs
 	source = git+https://github.com/gnumdk/eolie.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = eolie-git
 
