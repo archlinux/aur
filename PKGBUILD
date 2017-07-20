@@ -2,10 +2,10 @@
 
 pkgname=audenc
 pkgver=3.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='a batch shell script for encoding audio files in directories from one format to another.'
 arch=(any)
-url='https://sourceforge.net/projects/audenc/'
+url='https://audenc.sourceforge.io/'
 license=(GPL2)
 depends=(mediainfo
          mplayer)
