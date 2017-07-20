@@ -1,4 +1,4 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=rapydscript-ng-git
 pkgver=0.7.17.r2.g15db838
