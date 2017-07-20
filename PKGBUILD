@@ -1,20 +1,18 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-# Warning: If you are downgrading from the development branch (Wine 2.1.x,
+# Warning: If you are downgrading from the development branch (Wine >= 2.1,
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 
 source=(https://dl.winehq.org/wine/source/2.0/wine-$pkgver.tar.xz{,.sign}
-        30-win32-aliases.conf
-        0001-programs-winhlp32-Use-noyywrap-for-macro.lex.l-and-p.patch)
-sha512sums=('b32d07443655898768383b7409c21093b60c028fef166a596dad5dfab5a329b9fce4552e612c6d182e4f67eb1f28ed497fe2ed6af55d0000d3e96a124547722d'
+        30-win32-aliases.conf)
+sha512sums=('3f37080a951819304cd3475f6012f1d6b5a94879b137cdf816cac4c8fde68ddc777905e92277ec5dce96437d8c32c43d55d3750b582781a9f9774b118f1a5b90'
             'SKIP'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            '21b964e4ee7d99b8773d27238691759456fe82f49a98095d3307e66674df94da271e055d184a50040e72ceffdee6f8f5461d74f203c831fffa604c2d0c15bcfc')
+            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
@@ -25,7 +23,7 @@ options=(staticlibs)
 license=(LGPL)
 
 depends=(desktop-file-utils fontconfig freetype2 gettext glu lcms2
-    libpcap libsm libxcursor libxdamage libxi libxml2 libxrandr)
+  libpcap libsm libxcursor libxdamage libxi libxml2 libxrandr)
 
 depends_x86_64=(lib32-fontconfig lib32-freetype2 lib32-gcc-libs
   lib32-gettext lib32-glu lib32-lcms2 lib32-libpcap lib32-libsm
