@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="https://github.com/archlinuxfr/package-query/"
 license=('GPL')
 depends=('pacman>=5.0' 'yajl>=2.0')
-source=(http://mir.archlinux.fr/releases/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://mir.archlinux.fr/releases/$pkgname/$pkgname-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

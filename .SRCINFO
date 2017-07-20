@@ -13,7 +13,7 @@ pkgbase = package-query
 	license = GPL
 	depends = pacman>=5.0
 	depends = yajl>=2.0
-	source = http://mir.archlinux.fr/releases/package-query/package-query-1.9.tar.gz
+	source = https://mir.archlinux.fr/releases/package-query/package-query-1.9.tar.gz
 	sha256sums = 88bc3970fd05a16778c52d5aafc19e930aadd0d6b4c6b142f8fff47ec22ef785
 
 pkgname = package-query
