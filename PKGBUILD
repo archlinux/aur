@@ -15,15 +15,11 @@ provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git"
         "wire-desktop.desktop")
 sha256sums=('SKIP'
-            'e0b05829d1a91d935ffbafb319f676968716241804094e46f080093aebf61f79')
+            '84d869ca111010a5f45f3d5cb8ef4320fa46ac01104773559fb3a7c501f8313b')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/release\///g'
-}
-
-prepare() {
-  gendesk -f -n --name=Wire --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
 }
 
 build() {
