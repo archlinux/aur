@@ -15,6 +15,7 @@ package() {
   _uuid='status-area-horizontal-spacing@mathematical.coffee.gmail.com'
 
   cd mathematicalcoffee-status-area-horizontal-spacing-gnome-shell-extension-*
+  make
   install -d "${pkgdir}/usr/share/gnome-shell/extensions"
 
   cp -af "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
