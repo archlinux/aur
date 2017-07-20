@@ -2,7 +2,7 @@
 pkgname=python2-pycoast
 _gitname=pycoast
 pkgver="0.6.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Writing of coastlines, borders and rivers to images in Python"
 arch=('any')
 url="https://pypi.python.org/pypi/pycoast"
@@ -11,9 +11,9 @@ depends=('python2')
 options=(!emptydirs)
 makedepends=('git')
 source=(git://github.com/pytroll/$_gitname.git
-        http://www.soest.hawaii.edu/pwessel/gshhg/gshhg-shp-2.3.6.zip)
+        http://www.soest.hawaii.edu/pwessel/gshhg/gshhg-shp-2.3.7.zip)
 md5sums=('SKIP'
-         'f2ab44f82d31edbe67e9651216695372')
+         'cb82015f8533f9611b4adba2c404ba44')
 
 build() {
   cd "$srcdir/$_gitname"
