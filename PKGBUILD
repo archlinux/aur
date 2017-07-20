@@ -1,19 +1,21 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=2.15.2750.r0.gd08a6f5
+pkgver=2.15.2751.r2.g8fa5025
 pkgrel=1
-pkgdesc='Modern, private messenger. Based on Electron.'
+pkgdesc='Modern, private messenger'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-makedepends=('cargo' 'gendesk' 'npm' 'python2')
+makedepends=('cargo' 'npm' 'python2')
 optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
-source=("git://github.com/wireapp/wire-desktop.git")
-sha256sums=('SKIP')
+source=("git://github.com/wireapp/wire-desktop.git"
+        "wire-desktop.desktop")
+sha256sums=('SKIP'
+            'e0b05829d1a91d935ffbafb319f676968716241804094e46f080093aebf61f79')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -27,27 +29,13 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
   npm install
-  $(npm bin)/grunt 'clean:linux' 'update-keys' 'release-prod' 'bundle'
-  if [ $CARCH == 'x86_64' ]; then
-    build_arch="x64"
-  elif [ $CARCH == 'i686' ]; then
-    build_arch="ia32"
-  else
-    echo "Unsupported architecture"; exit 1;
-  fi
-  $(npm bin)/grunt --arch=${build_arch} --target="dir" "electronbuilder:linux_other"
+  $(npm bin)/grunt 'linux-other'
 }
 
 package() {
   # Place files
   install -d "${pkgdir}/usr/lib/${_pkgname}"
-  if [ $CARCH == 'x86_64' ]; then
-    cp -a "${srcdir}/${_pkgname}/wrap/dist/linux-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
-  elif [ $CARCH == 'i686' ]; then
-    cp -a "${srcdir}/${_pkgname}/wrap/dist/linux-ia32-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
-  else
-    echo "Unsupported architecture"; exit 1;
-  fi
+  cp -a "${srcdir}/${_pkgname}/wrap/dist/linux*unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
   
   # Symlink main binary
   install -d "${pkgdir}/usr/bin"
