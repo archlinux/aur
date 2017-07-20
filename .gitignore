@@ -1,7 +1,5 @@
 /pkg/
 /src/
-/ovmf/
-/seabios/
 /xsa*
 
 *.tar

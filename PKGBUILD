@@ -20,10 +20,10 @@ _build_stubdom=${build_stubdom:-false}
 # Versions
 #####
 
-_xen_version='4.8.0'
+_xen_version='4.9.0'
 _xen_major_version='4'
-_xen_minor_version='8'
-# grep IPXE_GIT_TAG src/xen-*/tools/firmware/etherboot
+_xen_minor_version='9'
+# grep -R IPXE_GIT_TAG src/xen-*/tools/firmware/etherboot
 _git_tag_ipxe='827dd1bfee67daa683935ce65316f7e0f057fe1c'
 # grep '_VERSION=' src/xen-*/stubdom/configure
 if [ "${_build_stubdom}" = true ]; then
@@ -46,7 +46,7 @@ fi
 pkgbase=xen
 pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=7
+pkgrel=1
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -93,25 +93,12 @@ makedepends=(
 
 # Sources
 source=(
-	"http://bits.xensource.com/oss-xen/release/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
-	"http://bits.xensource.com/oss-xen/release/${pkgver}/${pkgbase}-${pkgver}.tar.gz.sig"
+	"https://downloads.xenproject.org/release/xen/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
+	"https://downloads.xenproject.org/release/xen/${pkgver}/${pkgbase}-${pkgver}.tar.gz.sig"
 	"http://xenbits.xen.org/xen-extfiles/ipxe-git-${_git_tag_ipxe}.tar.gz"
 
 	# XSA patches
-	'https://xenbits.xen.org/xsa/xsa203-4.8.patch'
-	'https://xenbits.xen.org/xsa/xsa204-4.8.patch'
-	'https://xenbits.xen.org/xsa/xsa207.patch'
-	'https://xenbits.xen.org/xsa/xsa208-qemut.patch'
-	'https://xenbits.xen.org/xsa/xsa208-qemuu.patch'
-	'https://xenbits.xen.org/xsa/xsa209-qemut.patch'
-	'https://xenbits.xen.org/xsa/xsa209-qemuu/0001-display-cirrus-ignore-source-pitch-value-as-needed-i.patch'
-	'https://xenbits.xen.org/xsa/xsa209-qemuu/0002-cirrus-add-blit_is_unsafe-call-to-cirrus_bitblt_cput.patch'
-	'https://xenbits.xen.org/xsa/xsa210.patch'
-	'https://xenbits.xen.org/xsa/xsa211-qemut.patch'
-	'https://xenbits.xen.org/xsa/xsa211-qemuu-4.8.patch'
-	'https://xenbits.xen.org/xsa/xsa212.patch'
-	'https://xenbits.xen.org/xsa/xsa213-4.8.patch'
-	'https://xenbits.xen.org/xsa/xsa214.patch'
+	# None yet
 
 	# Files
 	'grub-mkconfig-helper'
@@ -136,31 +123,18 @@ if [ "${_build_stubdom}" = true ] ; then
 fi
 
 sha256sums=(
-	'1e15c713ab7ba3bfda8b4a285ed973529364fd1100e6dd5a61f29583dc667b04'
+	'cade643fe3310d4d6f97d0c215c6fa323bc1130d7e64d7e2043ffaa73a96f33b'
 	'SKIP'
 	'36deacb946c59ad1d6600f6e5b89d6a7a8961e65eb000900e184075920120f49'
 
 	# XSA patches
-	'4218fcfff11ec4788462a3ea9dddecb25b9d9fb1beaad17ca0f723b07b6675e4'
-	'fa2a69682868104b6263655abbfc6b326f76deebdac3273b4b65da6673f5d977'
-	'e9bcf807b3785ac4d78b621fba4a9395cd713d6e57cdaa66559bccf95ded1cd9'
-	'afde3e9d4bf5225f92c36dec9ff673b0b1b0bad4452d406f0c12edc85e2fec72'
-	'e492d528141be5899d46c2ac0bcd0c40ca9d9bfc40906a8e7a565361f17ce38d'
-	'167af9ed7163fa7cf4abb52f865290ced3163c7684151bdc1324eb5e534faf13'
-	'e698b73d8de24af0fe33968a43561e5e1d094f4caf2443caa447b552677d2683'
-	'50c60e45151ef2265cce4f92b204e9fd75f8bc8952f097e77ab4fe1c1446bc98'
-	'10e26c017c916dcac261c6a3c92656831f0ad037f792940e6faf6905c6e23861'
-	'9d0cf413dcc9654ee95f6b04fa9c5714f36775cbc9ab0390a3041ec4a68845ab'
-	'bea7cf4065bd9d0085f4dfc3395e59c3ca9d4de9d786a3018c8dc7fd9f3d8b6e'
-	'be1255bcda06158cdb86eb5297e8a271e05318e88cd21035c58a67f9ada6ccba'
-	'20c12810ac73809ba74cfde811d420b1b544a07f759c393380afde1a09eb5274'
-	'1c038c3927d08e6abdf3ce320bb8b0b68a106e6ac86b4e8194035dc5e4726d64'
+	# None yet. Last checked: XSA-225
 	# PKGBUILD files
 	'06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
 	'3f0af16958c3e057b9baa5afc47050d9adf7dd553274dd97ae4f35938fefb568'
 	'50a9b7fd19e8beb1dea09755f07318f36be0b7ec53d3c9e74f3266a63e682c0c'
-	'40e0760810a49f925f2ae9f986940b40eba477dc6d3e83a78baaae096513b3cf'
+	'80227f8daa62a49c08fb7ffcc7de8cabbd0645396e46c04f7caaa71b04f446f0'
 )
 
 
@@ -204,26 +178,18 @@ prepare() {
 
 	# XSA Patches
 	msg2 'Applying XSA Patches...'
-	patch -Np1 -i "${srcdir}/xsa203-4.8.patch"
-	patch -Np1 -i "${srcdir}/xsa204-4.8.patch"
-	patch -Np1 -i "${srcdir}/xsa207.patch"
-	patch -Np1 -i "${srcdir}/xsa210.patch"
-	patch -Np1 -i "${srcdir}/xsa212.patch"
-	patch -Np1 -i "${srcdir}/xsa213-4.8.patch"
-	patch -Np1 -i "${srcdir}/xsa214.patch"
+	# None yet. Example:
+	#patch -Np1 -i "${srcdir}/xsa214.patch"
 	# qemu-xen-traditional
-	pushd 'tools/qemu-xen-traditional'
-	patch -Np1 -i "${srcdir}/xsa208-qemut.patch"
-	patch -Np1 -i "${srcdir}/xsa209-qemut.patch"
-	patch -Np1 -i "${srcdir}/xsa211-qemut.patch"
-	popd
+	pushd 'tools/qemu-xen-traditional' >/dev/null
+	# None yet. Example:
+	#patch -Np1 -i "${srcdir}/xsa211-qemut.patch"
+	popd >/dev/null >/dev/null
 	# qemu-xen upstream
-	pushd 'tools/qemu-xen'
-	patch -Np1 -i "${srcdir}/xsa208-qemuu.patch"
-	patch -Np1 -i "${srcdir}/0001-display-cirrus-ignore-source-pitch-value-as-needed-i.patch"
-	patch -Np1 -i "${srcdir}/0002-cirrus-add-blit_is_unsafe-call-to-cirrus_bitblt_cput.patch"
-	patch -Np1 -i "${srcdir}/xsa211-qemuu-4.8.patch"
-	popd
+	pushd 'tools/qemu-xen' >/dev/null
+	# None yet. Example:
+	#patch -Np1 -i "${srcdir}/xsa211-qemuu-4.8.patch"
+	popd >/dev/null
 
 	# Patch EFI binary build with mingw
 	msg2 'Patching EFI build...'
@@ -251,10 +217,11 @@ prepare() {
 		cp "${srcdir}/tpm_emulator-${_tpmemu_version}.tar.gz" stubdom/
 	fi
 
-	# Workaround for cannot compute sizeof (unsigned short) 
-	# Makefile:170: recipe for target 'gmp-x86_64' failed
-	# Probably not safe!
-	#sed -i.bak "/< gmp.patch/a\	sed -i.bak 's/\\\\(\\\\s*\\\\)\\\\(fprintf (f,\\\\)\\\\(.*\\\\)/\\\\1\\\\2\\\\3\\\\n\\\\1clearerr(f);/' \$@/configure" stubdom/Makefile
+	# Patch out Werror
+	msg2 'Patching out Werror...'
+	# Copied from Gentoo's xen 4.8.1-r2 ebuild
+	find . \( -name 'Makefile*' -o -name '*.mk' -o -name 'common.make' \) -exec sed -i 's/ *-Werror */ /' '{}' ';'
+	sed -i 's/, "-Werror"//' 'tools/python/setup.py'
 }
 
 build() {
@@ -280,7 +247,12 @@ build() {
 		--with-extra-qemuu-configure-args="--disable-bluez --disable-gtk --enable-spice --enable-usb-redir --disable-werror"
 
 	msg2 'Building Xen...'
-	make LANG=C PYTHON=python2 APPEND_CFLAGS=-Wno-error dist
+	# NO_WERROR is required for iPXE, as the sources are not extracted before the build
+	# and the Werror cannot be patched out
+	make LANG=C PYTHON=python2 NO_WERROR=1 dist || :
+	# This is an honestly ugly hack. If someone finds out why the build fails the first time, please contact me.
+	# It's ugly but it makes the package build
+	make LANG=C PYTHON=python2 NO_WERROR=1 dist
 }
 
 package_xen() {
@@ -318,7 +290,7 @@ package_xen() {
 		"etc/${pkgbase}/xl.conf"
 	)
 	install="${pkgbase}.install"
-	conflicts=(xen-4.2{,-testing-hg} xen-{gdbsx,hg-unstable,rc,git,igvtg} xen-4.3{,-testing-hg} xen-4.{4..8})
+	conflicts=(xen-4.2{,-testing-hg} xen-{gdbsx,hg-unstable,rc,git,igvtg} xen-4.3{,-testing-hg} xen-4.{4..9})
 	provides=("xen-${pkgver}")
 
 	cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -365,15 +337,15 @@ package_xen() {
 	# Hypervisor symlinks
 	rm -f boot/xen{,-${_xen_major_version}{,.${_xen_minor_version}}}.{gz,efi}
 
+	# sysvinit files
+	rm -r etc/init.d
+
 	# Documentation cleanup ( see xen-docs package )
 	rm -rf usr/share/doc
 	rm -rf usr/share/man
 
 	# Temporary directories
-	rmdir run/xen run/xenstored
-
-	# sysvinit scripts
-	rm -rf etc/init.d
+	rmdir var/run/xen var/run/xenstored var/run
 
 	# Unnecessary qemu support files
 	rm usr/share/qemu-xen/qemu/{palcode,openbios}-*

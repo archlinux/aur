@@ -1,3 +1,9 @@
+2017-07-20 Janne Heß
+	* 4.9.0
+	Xen 4.9.0
+	Completely patch out Werror
+	Remove all obsolete patches
+
 2017-05-06 Janne Heß
 	* 4.8.0-7
 	Apply XSA patches: 213 214
