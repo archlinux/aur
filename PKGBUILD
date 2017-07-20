@@ -3,7 +3,7 @@
 
 pkgname=carla-git
 pkgver=1.9.7b.r2.gc57e8169
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Audio Plugin Host"
 arch=("i686" "x86_64")
@@ -12,6 +12,7 @@ license=("GPL2")
 conflicts=("carla")
 provides=("carla")
 depends=(
+    'clthreads'
     'file'
     'fluidsynth'
     'glu'
