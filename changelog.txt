@@ -1,0 +1,9 @@
+2017-07-20 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:1.9.7b.r2.gc57e8169-1 :
+	New PKBUILD maintainer.
+	Added 'changelog.txt' file.
+	Set epoch to 1, since version number now has a 'b' prefix.
+	Fixed missing Qt5 plugin bridge.
+	Removed obsolete 'carla.install' file.
+	Updated / cleaned / fixed dependencies.
