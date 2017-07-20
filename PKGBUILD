@@ -5,7 +5,7 @@ pkgname=magics++
 Pkgname=Magics
 pkgver=2.34.1
 _attnum=3473464
-pkgrel=3
+pkgrel=4
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/MAGP"
@@ -28,7 +28,7 @@ build() {
   cmake -DCMAKE_LINKER_FLAGS="-pthread" \
     -DCMAKE_SHARED_LINKER_FLAGS="-pthread" \
     -DCMAKE_EXE_LINKER_FLAGS="-pthread" \
-    -DODB_API_DIR=/usr \
+    -Dodb_api_DIR=/usr/share/odb_api/cmake \
     -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=gcc \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
