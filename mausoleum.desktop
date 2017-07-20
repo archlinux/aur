@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.8.3
+Name=mausoleum
+Exec=/usr/bin/mausoleum-gui
+Terminal=false
+Icon=/usr/lib/python3.6/site-packages/mausoleum/images/ic_vpn_key_black_48dp_1x.png
+Type=Application
+Categories=Application;Security;
+Comment=Graphical wrapper for Tomb
