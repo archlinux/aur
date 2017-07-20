@@ -3,7 +3,7 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=2.33.0
+pkgver=2.34.1
 _attnum=3473464
 pkgrel=3
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
@@ -14,7 +14,7 @@ depends=('qt5-base' 'proj' 'fftw' 'pango' 'netcdf-cxx-legacy' 'eccodes' 'python'
 optdepends=('libaec' 'odb_api')
 makedepends=('perl-xml-parser' 'gcc-fortran' 'swig' 'python2-numpy' 'cmake' 'boost' 'emos')
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz patch g++7.patch)
-md5sums=('8d513fd2244f2974b3517a8b30dd51f6'
+md5sums=('1ecc5cc20cb0c3f2f0b9171626f09d53'
          '73b04ae78df8c2f6e88b2a36dcd2dd96'
          '79ff00492ab8bbfce1a1c7b2e82c5e48')
 
