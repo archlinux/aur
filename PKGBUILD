@@ -2,8 +2,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.11
-pkgver=4.11.3
+_srcname=linux-4.12
+pkgver=4.12.2
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config-i686
 	config-x86_64)
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
-            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
-            '48b1dd003c53e8f0f82e16a85dff881a2f4f0949438e327bcc9100a6e871d0b6'
-            'ba8231cb89d669dca9cefb76e180566e319daedfd0463c7947b7f0ba13b49050')
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
+            '8447d28c88834bac75653a0370a6f30615688db4756b953720e9b024537e34ac'
+            '29737340513e981d1c310d494832473cf2e01af1b4058ab16c2cefda6eea9540'
+            '20f1b557fe3ee649a9423950caa667200fd5b240ee8eb5e0ad5477cc7f8fa3c5')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
