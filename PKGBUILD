@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=odb_api
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="ECMWF Observational data library"
 arch=(i686 x86_64)
@@ -12,6 +12,7 @@ makedepends=(boost cmake netcdf eccodes)
 optdepends=(git openmpi lapack cuda doxygen bison flex eigen armadillo viennacl libaio intel-mkl python)
 options=('staticlibs')
 source=(https://software.ecmwf.int/wiki/download/attachments/61117379/${pkgname}_bundle-${pkgver}-Source.tar.gz)
+md5sums=('37b4480873c10765a8896c4de9390afe')
 
 build() {
   cd ${srcdir}/${pkgname}_bundle-${pkgver}-Source
@@ -30,4 +31,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('336fdbf6dda05bdf2f1b02c3cc4cb4d5')
