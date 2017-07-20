@@ -2,7 +2,7 @@
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.0.143
+pkgver=1.0.153
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
 _x86md5=21ca14bffcdc1a2361ead2d763d0313d
-_x64md5=75761eae209158d8415d562b3771fbec
+_x64md5=d584cbab01041777a15d62cbef69a976
 
 case "$CARCH" in
 	'i686')
@@ -31,8 +31,10 @@ case "$CARCH" in
 		;;
 esac
 
-source=("https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-${pkgver}-${_arch}.deb")
+#source=("https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-${pkgver}-${_arch}.deb")
 #source=("https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-${pkgver}-amd64.deb")
+source=(https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-xenial-${pkgver}-amd64.deb)
+
 install="$pkgname".install
 
 package() {
