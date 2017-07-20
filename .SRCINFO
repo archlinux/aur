@@ -1,7 +1,7 @@
 pkgbase = spotio
 	pkgdesc = A proof-of-concept Rdio-inspired skin for Spotify.
-	pkgver = 1.0.2_1.0.53.758.gde3fc4b2
-	pkgrel = 3
+	pkgver = 1.0.2_1.0.59.395.ge6ca9946
+	pkgrel = 1
 	url = http://spotio.devinhalladay.com/
 	arch = x86_64
 	arch = i686
@@ -37,10 +37,10 @@ pkgbase = spotio
 	sha256sums = 3fdc1ebd9e64bae98cfd2bc9fc3199427bd7ec680254cd6361d9b0f4bb121134
 	sha256sums = abab92b537b10c861023927db10d71c5cd6bcc0afc7ab7a5ffae7094cc3c6f46
 	sha256sums = SKIP
-	source_x86_64 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.53.758.gde3fc4b2-33_amd64.deb
-	sha256sums_x86_64 = 6fac209d35828bc9a8bc5449320b92310462a2f78201e3ea620e743fc45e06ea
-	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.53.758.gde3fc4b2-34_i386.deb
-	sha256sums_i686 = 1c559e776481ae8b03d966bd931f788030d41ad9cd751c43fe99616494a7d84a
+	source_x86_64 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.59.395.ge6ca9946-18_amd64.deb
+	sha256sums_x86_64 = 8fbe821fd516f5cd77eb2d5085e5acd8f1852b97f7b7294846fcc57b810ef515
+	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.59.395.ge6ca9946-18_i386.deb
+	sha256sums_i686 = 9366d1845dae64637afbc666da31dbe52b843f4003ebc5dc642b1a5984295fb0
 
 pkgname = spotio
 
