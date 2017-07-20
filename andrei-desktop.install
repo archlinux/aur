@@ -1,27 +1,7 @@
 post_install() {
-	mkdir -p /tmp
-	cd /tmp
-	if [[ -d "andrei-linux-$1" ]]; then
-		cd "andrei-linux-$1"
-		git pull
-	else
-		git clone -q https://gitlab.com/webative-open-source/andrei-linux.git "andrei-linux-$1"
-		cd "andrei-linux-$1"
-	fi
-
-	setfacl --restore=./permissions.acl 2>&1
-
-	rsync -qacAXb --suffix=.pacsave ./files/etc /
-	rsync -qacAXb --suffix=.pacsave ./files/root /
-
-	echo "Please run \"andrei-desktop-install.sh\" in order to update existing users' configuration files."
+	echo "Please run \"andrei-desktop-install.sh\" in order to update configuration files."
 	echo
 	echo "Type \"andrei-desktop-install.sh -h\" for usage details."
-	echo
-	echo "For reviewing the new configuration files in \"/etc\", please run:"
-	echo
-	echo "# updatedb"
-	echo "# pacdiff -l"
 	echo
 }
 
