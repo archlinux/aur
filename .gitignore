@@ -1,0 +1,7 @@
+libphobos*
+dmd/
+druntime/
+phobos/
+src/
+pkg/
+dmd-*
