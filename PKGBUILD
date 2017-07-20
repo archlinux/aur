@@ -1,51 +1,46 @@
-# Maintainer: 1213 <lambertacampo at gmail dot com>
-pkgname=exaile-git
-pkgver=3.4.5.r569.g0f06dfe
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: 1213 <lambertacampo at gmail dot com>
+
+_pkgname=exaile
+pkgname=${_pkgname}-git
+pkgver=4.0.0.beta2.r27.g643975c2
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
-arch=('any')
+arch=('x86_64' 'i686')
 url="http://www.exaile.org"
 license=('GPL')
-depends=(
-  'python2>=2.7.0' 
-  'gtk3>=3.10' 
-  'gstreamer>=1.4' 
-  'mutagen>=1.10' 
-  'python2-dbus'
-  'python2-gobject>=3.13.2'
-  'python2-cairo'
-  'udisks2'
-  'librsvg'
-  'gst-plugins-good')
+depends=('gtk3' 'gstreamer' 'mutagen' 'python2-dbus'
+         'python2-gobject' 'python2-cairo' 'udisks2' 'librsvg' 'gst-plugins-good')
+makedepends=('git' 'help2man')
+optdepends=('python2-feedparser: podcasts plugin'
+            'webkit2gtk: wikipedia plugin'
+            'python2-lxml: LyricsMania plugin'
+            'cddb-py: look up CD tags'
+            'libkeybinder3: Multimedia keys plugin'
+            'python2-beautifulsoup4: Lyrics Wiki plugin'
+            'libnotify: Notify plugin'
+            'streamripper: Streamripper plugin'
+            'gnome-screensaver: Pause on screensaver plugin'
+            'mate-screensaver: Pause on screensaver plugin'
+            'cinnamon-screensaver: Pause on screensaver plugin')
 
-makedepends=(
-  'git'
-  'help2man')
-
-optdepends=(
-  'python2-beautifulsoup3: lyricwiki plugin'
-  )
-provides=('exaile')
-conflicts=('exaile')
-source=(git://github.com/exaile/exaile.git)
-md5sums=('SKIP')
-
-_gitname=exaile
+provides=("${_pkgname}=${pkgver%.r*}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}"::git+https://github.com/exaile/exaile.git)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
+  cd "${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_gitname"
+  cd "${_pkgname}"
   make
 }
 
 package() {
-  cd "$_gitname"
+  cd "${_pkgname}"
   make DESTDIR="$pkgdir/" PREFIX="/usr" install
   make clean
 }
-
-# vim:set ts=2 sw=2 et:
