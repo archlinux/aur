@@ -2,18 +2,18 @@
 
 pkgname=xreader
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project."
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('ghostscript' 'poppler-glib' 'djvulibre' 'desktop-file-utils'
-    'gsettings-desktop-schemas' 'gtk3' 'gtk2' 'libsecret' 'libspectre' 'webkit2gtk')
-makedepends=('mate-common' 'yelp-tools')
+    'gsettings-desktop-schemas' 'gtk3' 'libsecret' 'libspectre' 'webkit2gtk')
+makedepends=('mate-common' 'yelp-tools' 'gobject-introspection')
 optdepends=('nemo: nemo extension'
     'caja: caja extension'
     'gtk3-print-backends: printer support in gtk3 apps'
     'texlive-bin: support for dvi files')
-provides=($_pkgname)
+provides=($pkgname)
 conflicts=('xreader-git')
 url='https://github.com/linuxmint/xreader'
 install=xreader.install
@@ -29,6 +29,7 @@ build() {
     ./autogen.sh --prefix="/usr" \
          --localstatedir="/var" \
          --libexecdir="/usr/lib/${pkgname}" \
+         --enable-introspection \
          "$NEMO_EXT_FLAG" "$CAJA_EXT_FLAG"
     make
 }
