@@ -5,19 +5,19 @@
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 # Contributor: cameel <cameel2/gmail/com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: LuminousIncal (AUR)
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=rednotebook-git
 _gitname="rednotebook"
-pkgver=v2.0.r4.gae67507
+pkgver=v2.0.r13.g17af02d
 pkgrel=1
 pkgdesc="A simple desktop diary."
 arch=('any')
 url="http://rednotebook.sourceforge.net"
 license=('GPL2')
-depends=('python-yaml' 'pywebkitgtk' 'hicolor-icon-theme')
-optdepends=('python-chardet: Python module for character encoding auto-detection'
-            'python-gtkspellcheck: for spellchecking')
+depends=('python-yaml' 'webkit2gtk' 'python-gobject' 'hicolor-icon-theme')
+optdepends=('python-pyenchant: for spellchecking')
 provides=('rednotebook')
 conflicts=('rednotebook')
 source=("git://github.com/jendrikseipp/rednotebook.git")
