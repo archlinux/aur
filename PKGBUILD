@@ -1,10 +1,10 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=vim-eunuch-git
-pkgver=1.1.r12.g7eeb681
-pkgrel=2
+pkgver=1.1.r19.gb536b88
+pkgrel=1
 pkgdesc="Vim sugar for the UNIX shell commands that need it the most, by tpope"
 arch=('any')
 url="https://github.com/tpope/${pkgname%-git}"
@@ -14,7 +14,7 @@ depends=('vim')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/tpope/${pkgname%-git}.git")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {

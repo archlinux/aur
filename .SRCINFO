@@ -1,7 +1,7 @@
 pkgbase = vim-eunuch-git
 	pkgdesc = Vim sugar for the UNIX shell commands that need it the most, by tpope
-	pkgver = 1.1.r12.g7eeb681
-	pkgrel = 2
+	pkgver = 1.1.r19.gb536b88
+	pkgrel = 1
 	url = https://github.com/tpope/vim-eunuch
 	arch = any
 	groups = vim-plugins
@@ -10,7 +10,7 @@ pkgbase = vim-eunuch-git
 	depends = vim
 	provides = vim-eunuch
 	conflicts = vim-eunuch
-	source = git://github.com/tpope/vim-eunuch.git
+	source = git+https://github.com/tpope/vim-eunuch.git
 	sha512sums = SKIP
 
 pkgname = vim-eunuch-git
