@@ -1,10 +1,10 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=2.14.0.r0.gaa39d72
+pkgver=2.14.0.r18.gf2e63f3
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
