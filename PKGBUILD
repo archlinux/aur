@@ -1,8 +1,8 @@
 # Maintainer: Terje Larsen <terlar@gmail.com>
 pkgname=oni
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
-pkgdesc='NeoVim front-end UI focused on IDE-like extensibility'
+pkgdesc='An IDE built around Neovim'
 arch=(any)
 url="https://github.com/extr0py/oni"
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('nodejs' 'neovim' 'gconf' 'libxss')
 makedepends=('tar')
 source=("https://github.com/extr0py/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "oni.sh")
-sha256sums=('464c290262e986a95f137df8ba5cd1fea0f33d5e26f61cb983f714e19cea7bf4'
+sha256sums=('317253d60e95c617714e9f96887fdccece236dd2e2f33a5daed8cfdbe50f378d'
             '72a945d501f33cfc2fd0d8e832942ba75c09518abd2248973c4df461c3229aee')
 
 package() {
