@@ -2,8 +2,8 @@
 
 pkgname=('python-elektronn2-git' 'python2-elektronn2-git')
 _gitname='ELEKTRONN2'
-pkgver=rev59
-pkgrel=1
+pkgver=0.3.0
+pkgrel=0
 pkgdesc='A highly configurable toolkit for training 3D/2D CNNs and general Neural Networks'
 url='https://github.com/ELEKTRONN/ELEKTRONN2'
 license=('GPLv3')
@@ -13,8 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$_gitname"
-    echo "rev$(git rev-list --all --count)"
-    #git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --always --tags | sed 's/^v//;s/-/+/;s/-/./g'
 }
 
 package_python-elektronn2-git() {
@@ -37,7 +36,7 @@ package_python-elektronn2-git() {
         'python-pydotplus'
         'python-psutil'
     )
-    makedepends=('python-setuptools' 'python-numpy')
+    makedepends=('python-setuptools')
     conflicts=('python-elektronn2')
 
     cd "${srcdir}/${_gitname}"
@@ -64,10 +63,11 @@ package_python2-elektronn2-git() {
         'python2-pydotplus'
         'python2-psutil'
     )
-    makedepends=('python2-setuptools' 'python2-numpy')
+    makedepends=('python2-setuptools')
     conflicts=('python2-elektronn2')
 
     cd "${srcdir}/${_gitname}"
     python2 setup.py install --root="${pkgdir}" --optimize=1
     mv "${pkgdir}/usr/bin/elektronn2-train" "${pkgdir}/usr/bin/elektronn2-train2"
+    mv "${pkgdir}/usr/bin/elektronn2-profile" "${pkgdir}/usr/bin/elektronn2-profile2"
 }
