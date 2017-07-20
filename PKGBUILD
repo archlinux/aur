@@ -1,7 +1,9 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=vim-endwise-git
-pkgver=1.2.r22.gf06abe3
+pkgver=1.2.r28.gd565526
 pkgrel=1
 pkgdesc='Wisely add "end" in ruby, endfunction/endif/more in vim script, etc'
 arch=('any')
@@ -12,12 +14,12 @@ depends=('vim')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/tpope/${pkgname%-git}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
