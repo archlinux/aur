@@ -1,7 +1,7 @@
 pkgbase = mausoleum
 	pkgdesc = A Python GUI application, command line interface, and wrapper for Tomb
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mandeep/Mausoleum
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = mausoleum
 	depends = python-appdirs
 	provides = mausoleum
 	provides = mausoleum-gui
-	conflicts = mausoleum
+	conflicts = mausoleum-git
 	source = https://github.com/mandeep/Mausoleum/archive/v0.8.3.tar.gz
 	source = mausoleum.desktop
 	sha512sums = 23ec29c2393125558da0db9f04bbdf995a46d8166dee8ba6dbe4d66bb669f48c6ce8f40c41db2073897deb5f329fe8c203ac3ba42da8d2aefddb3d5068d53106

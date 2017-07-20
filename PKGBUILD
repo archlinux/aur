@@ -3,7 +3,7 @@
 _name='mausoleum'
 pkgname="${_name}"
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python GUI application, command line interface, and wrapper for Tomb'
 arch=('any')
 url='https://github.com/mandeep/Mausoleum'
@@ -14,7 +14,7 @@ depends=('tomb'
          'python-pytoml'
          'python-click'
          'python-appdirs')
-conflicts=("${_name}")
+conflicts=("${_name}-git")
 provides=("${_name}" "${_name}-gui")
 source=("https://github.com/mandeep/Mausoleum/archive/v${pkgver}.tar.gz"
         "mausoleum.desktop")
