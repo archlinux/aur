@@ -12,7 +12,7 @@ license=('BSD')
 depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gnome-themes-standard' 'gtk2' 'harfbuzz' 'harfbuzz-icu'
          'hicolor-icon-theme' 'icu' 'libpng' 'libxss' 'libxtst' 'nss' 'opus' 'snappy' 'speech-dispatcher'
          'ttf-font' 'xdg-utils')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+optdepends=('kdialog: needed for file dialogs in KDE'
             'ttf-liberation: fix fonts for some PDFs')
 options=('!emptydirs' '!strip')
 
