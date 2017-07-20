@@ -1,4 +1,4 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
@@ -14,7 +14,7 @@ depends=('vim')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/tpope/${pkgname%-git}.git")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {

@@ -10,7 +10,7 @@ pkgbase = vim-flagship-git
 	depends = vim
 	provides = vim-flagship
 	conflicts = vim-flagship
-	source = git://github.com/tpope/vim-flagship.git
+	source = git+https://github.com/tpope/vim-flagship.git
 	sha512sums = SKIP
 
 pkgname = vim-flagship-git
