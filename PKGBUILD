@@ -4,7 +4,7 @@ pkgname=ddrescueview
 _pkgver=0.4
 _pkgver_alpha=3
 pkgver=${_pkgver}_alpha_${_pkgver_alpha}
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical viewer for GNU ddrescue log files"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/ddrescueview"
@@ -13,8 +13,15 @@ provides=(ddrescueview)
 conflicts=(ddrescueview)
 depends=('gtk2')
 makedepends=('xz' 'lazarus-gtk2')
-source=(https://downloads.sourceforge.net/project/${pkgname}/Test\ builds/v${_pkgver}\ alpha\ ${_pkgver_alpha}/${pkgname}-source-${_pkgver}~alpha${_pkgver_alpha}.tar.xz)
-md5sums=('c936b77ca781a0b7b082cf6a5e994be8')
+source=(  https://downloads.sourceforge.net/project/${pkgname}/Test\ builds/v${_pkgver}\ alpha\ ${_pkgver_alpha}/${pkgname}-source-${_pkgver}~alpha${_pkgver_alpha}.tar.xz
+          block.inspector.resize.block.input.field.patch)
+md5sums=('c936b77ca781a0b7b082cf6a5e994be8'
+         '2f1fed9e38bfadf26cbc74283faa216e')
+
+prepare() {
+  cd ${srcdir}
+  patch -Np0 -i block.inspector.resize.block.input.field.patch
+}
 
 build() {
   cd ${srcdir}/source

@@ -1,0 +1,15 @@
+diff -Naur source.orig/BlockInspector.lfm source.new/BlockInspector.lfm
+--- source/BlockInspector.lfm	2016-07-18 04:59:08.000000000 +0200
++++ source.new/BlockInspector.lfm	2017-07-18 17:04:20.828093447 +0200
+@@ -34,9 +34,10 @@
+       Left = 33
+       Height = 23
+       Top = 0
+-      Width = 66
++      Width = 88
+       Align = alLeft
+       BorderSpacing.Left = 4
++      MaxValue = 100000
+       OnChange = BlockEditChange
+       TabOrder = 0
+     end
