@@ -1,4 +1,4 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=lastpass
 pkgver=4.1.54
