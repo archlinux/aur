@@ -4,7 +4,7 @@ _gitname=chimp
 _gitver=0.49.1
 pkgname=nodejs-${_gitname}
 pkgver=$_gitver
-pkgrel=1
+pkgrel=2
 pkgdesc="Develop acceptance tests & end-to-end tests with realtime feedback"
 arch=(any)
 url="http://chimp.readme.io"
@@ -23,8 +23,7 @@ package() {
   cd "$srcdir/$_gitname-$_gitver"
   # remove PhantomJS
   sed -i "/phantomjs-prebuilt/d" package.json
-  rm src/lib/phantom.js
-  touch src/lib/phantom.js
+  echo "module.exports = function() {};" > src/lib/phantom.js
   # build and install
   /usr/bin/npm i -g --unsafe-perm --prefix "$pkgdir/usr"
   cp -a dist "$module_dir"
