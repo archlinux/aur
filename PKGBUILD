@@ -6,18 +6,18 @@
 # Gray color: https://aur.archlinux.org/packages/obsidian-icon-theme-gray/
 
 pkgname=obsidian-icon-theme-gray
-pkgver=20170626
+pkgver=20170718
 pkgrel=1
 pkgdesc="Obsidian Icon Theme - Gray Color"
 arch=('any')
 url="https://www.gnome-look.org/p/1169579"
 license=('GPL')
-_git_sha=bc9d5dc3ca1edd411ae01a7aebd0b00483861de1
+_git_sha=ce1770f2527843c65db8c4b0c4c3885e6946ab89
 source=(
 	"https://github.com/madmaxms/iconpack-obsidian/archive/$_git_sha.tar.gz"
 )
 sha256sums=(
-	'36e15a54c4def904d2dcbf87c7dffefed79dc149c23f031e4c24fad457862030'
+	'22c35d8f232fe899fe9ac8e0bc061264e5585684fb72d0ed9462528105f7ff00'
 )
 
 package() {
