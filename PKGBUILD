@@ -31,7 +31,6 @@ sha256sums=('SKIP'
 
 build() {
     cd $srcdir/dmd/src
-    echo $pkgver > ../VERSION
     make -f posix.mak MODEL=$_archbits RELEASE=1 AUTO_BOOTSTRAP=1
 
     cd $srcdir/druntime
