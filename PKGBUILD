@@ -15,7 +15,7 @@ makedepends=('git' 'help2man')
 optdepends=('python2-feedparser: podcasts plugin'
             'webkit2gtk: wikipedia plugin'
             'python2-lxml: LyricsMania plugin'
-            'cddb-py: look up CD tags'
+            'pycddb: look up CD tags'
             'libkeybinder3: Multimedia keys plugin'
             'python2-beautifulsoup4: Lyrics Wiki plugin'
             'libnotify: Notify plugin'
