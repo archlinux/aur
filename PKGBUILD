@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=metview
-pkgver=4.8.4
+pkgver=4.8.7
 pkgrel=1
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
@@ -17,11 +17,13 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz)
 noextract=()
+md5sums=('79ebe622c3d6480f3940d524f21db302')
 
 build() {
   cd Metview-${pkgver}-Source
   mkdir -p build && cd build
-  cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=gcc \
+  cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=/usr/bin/gcc \
+    -Dmagics_DIR=/usr/share/magics/cmake \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share -DENABLE_QT5=ON \
     -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
@@ -35,4 +37,3 @@ package()
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('0a07273ffdae3b6dddbe40f06723ea8a')
