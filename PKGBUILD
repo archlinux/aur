@@ -16,7 +16,12 @@ source=('git+https://github.com/shadowsocksr/shadowsocksr-libev.git'
         shadowsocks-libev-tunnel@.service
         shadowsocks-libev@.service
         )
-sha1sums=('SKIP')
+sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP')
+
 
 _gitname='shadowsocksr-libev'
 
