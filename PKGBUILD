@@ -22,7 +22,8 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  ./configure && make
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
