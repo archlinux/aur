@@ -31,6 +31,8 @@ pkgver() {
 }
 
 prepare() {
+  cd "$srcdir/${pkgname%-git}"
+
   mkdir -p build
 }
 
