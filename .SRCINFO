@@ -1,6 +1,6 @@
 pkgbase = apt
 	pkgdesc = Command-line package manager used on Debian-based systems
-	pkgver = 1.4.4
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = http://packages.debian.org
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = apt
 	provides = apt-utils
 	conflicts = apt-git
 	replaces = apt-git
-	source = git+https://anonscm.debian.org/git/apt/apt.git#tag=1.4.4
+	source = git+https://anonscm.debian.org/git/apt/apt.git#tag=1.4.6
 	sha256sums = SKIP
 
 pkgname = apt
