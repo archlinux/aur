@@ -1,0 +1,16 @@
+pkgbase = deepin-libwine
+	pkgdesc = Deepin Libwine
+	pkgver = 1.9_42
+	pkgrel = 2
+	url = http://www.deepin.org
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	noextract = deepin-libwine_1.9-42_i386.deb
+	options = !strip
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-libwine_1.9-42_i386.deb
+	md5sums = SKIP
+
+pkgname = deepin-libwine
+
