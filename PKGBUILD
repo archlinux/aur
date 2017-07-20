@@ -1,5 +1,5 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Maintainer: Eschwartz <eschwartz93@gmail.com>
+# Maintainer: Eschwartz <eschwartz@archlinux.org>
 # Contributors: Ner0, Sevenseven
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
