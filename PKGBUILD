@@ -16,7 +16,7 @@ epoch=1
 arch=('i686' 'x86_64')
 url="http://www.dlang.org"
 conflicts=('dmd')
-makedepends=('git' 'gcc' 'make' 'd-compiler')
+makedepends=('git' 'gcc' 'make')
 source=("git+https://github.com/dlang/dmd.git#tag=v$pkgver"
         "git+https://github.com/dlang/druntime.git#tag=v$pkgver"
         "git+https://github.com/dlang/phobos.git#tag=v$pkgver"
@@ -32,7 +32,7 @@ sha256sums=('SKIP'
 build() {
     cd $srcdir/dmd/src
     echo $pkgver > ../VERSION
-    make -f posix.mak MODEL=$_archbits RELEASE=1
+    make -f posix.mak MODEL=$_archbits RELEASE=1 AUTO_BOOTSTRAP=1
 
     cd $srcdir/druntime
     make -f posix.mak MODEL=$_archbits DMD=$srcdir/dmd/src/dmd RELEASE=1 PIC=1
