@@ -1,23 +1,34 @@
 # Maintainer: David Stark <david@starkers.org>
 
-pkgname=telepresence
 pkgver=0.61
-pkgrel=1
+pkgrel=2
+pkgname=telepresence
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
 arch=('any')
-license=('GPL3')
+license=('Apache')
 url="https://github.com/datawire/telepresence"
-depends=('python')
-makedepends=('git')
-source=("$pkgname::git+https://github.com/datawire/telepresence.git")
+makedepends=()
+backup=()
+depends=(
+    'git'
+    'python'
+    'python-virtualenv'
+    'socat'
+    'sshfs'
+    'torsocks'
+    )
+
+source=("https://github.com/datawire/telepresence/archive/${pkgver}.tar.gz")
 md5sums=('SKIP')
 
-
-pkgver() {
-  cd $pkgname
-  git describe --tags
+build(){
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make virtualenv/bin/sshuttle-telepresence
 }
 
 package(){
-  install -Dm 755 "$srcdir/telepresence/cli/telepresence" "$pkgdir/usr/bin/telepresence"
+  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/cli/telepresence" "${pkgdir}/usr/bin/telepresence"
+  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/virtualenv/bin/sshuttle-telepresence" "${pkgdir}/usr/bin/sshuttle-telepresence"
 }
+
+# vim:set ts=2 sw=2 et:
