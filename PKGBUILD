@@ -2,20 +2,20 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2, with selection of features."
 url="https://mpv.io"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('ffmpeg' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'hicolor-icon-theme' 'libxinerama')
+depends=('ffmpeg' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'libxinerama')
 makedepends=('mesa' 'python-docutils')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('07423ffad6921ec4da32f703cd7fbfb27012301dcb736ac8542ac8e6083b0bce')
+sha256sums=('daf3ef358d5f260f2269f7caabce27f446c291457ec330077152127133b71b46')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -33,7 +33,6 @@ build() {
     --enable-libmpv-shared \
     --enable-termios \
     --enable-shm \
-    --disable-libsmbclient \
     --disable-encoding \
     --disable-libbluray \
     --disable-rubberband \
@@ -46,11 +45,9 @@ build() {
     --disable-opensles \
     --disable-xv \
     --disable-caca \
-    --disable-tv \
     --disable-tv-v4l2 \
     --disable-libv4l2 \
-    --disable-audio-input \
-    --disable-dvbin
+    --disable-audio-input
 
   ./waf build
 }
