@@ -1,0 +1,36 @@
+diff -aur src/ode-0.11.1/ode/demo/demo_jointPR.cpp src.new/ode-0.11.1/ode/demo/demo_jointPR.cpp
+--- src/ode-0.11.1/ode/demo/demo_jointPR.cpp	2009-06-09 05:27:20.000000000 +0200
++++ src.new/ode-0.11.1/ode/demo/demo_jointPR.cpp	2017-07-20 10:37:04.576068855 +0200
+@@ -329,7 +329,7 @@
+             {
+                 int j = i+1;
+                 if ( j+1 > argc      ||  // Check if we have enough arguments
+-                        argv[j] == '\0' ||  // We should have a path here
++                        *argv[j] == '\0' ||  // We should have a path here
+                         argv[j][0] == '-' ) // We should have a path not a command line
+                     Help(argv);
+                 else
+diff -aur src/ode-0.11.1/ode/demo/demo_jointPU.cpp src.new/ode-0.11.1/ode/demo/demo_jointPU.cpp
+--- src/ode-0.11.1/ode/demo/demo_jointPU.cpp	2009-06-09 05:27:20.000000000 +0200
++++ src.new/ode-0.11.1/ode/demo/demo_jointPU.cpp	2017-07-20 10:26:48.911936102 +0200
+@@ -577,7 +577,7 @@
+       if (0 == strcmp ("-t", argv[i]) || 0 == strcmp ("--texture-path", argv[i]) ) {
+         int j = i+1;
+         if ( j+1 > argc      ||  // Check if we have enough arguments
+-             argv[j] == '\0' ||  // We should have a path here
++             *argv[j] == '\0' ||  // We should have a path here
+              argv[j][0] == '-' ) // We should have a path not a command line
+           Help (argv);
+         else
+diff -aur src/ode-0.11.1/ode/demo/demo_piston.cpp src.new/ode-0.11.1/ode/demo/demo_piston.cpp
+--- src/ode-0.11.1/ode/demo/demo_piston.cpp	2009-06-09 05:27:20.000000000 +0200
++++ src.new/ode-0.11.1/ode/demo/demo_piston.cpp	2017-07-20 10:27:14.258330130 +0200
+@@ -659,7 +659,7 @@
+                 {
+                     int j = i+1;
+                     if ( j+1 > argc      ||  // Check if we have enough arguments
+-                            argv[j] == '\0' ||  // We should have a path here
++                            *argv[j] == '\0' ||  // We should have a path here
+                             argv[j][0] == '-' ) // We should have a path not a command line
+                         Help (argv);
+                     else
