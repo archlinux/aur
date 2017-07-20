@@ -15,7 +15,11 @@ depends=(
   kxmlgui
   kwindowsystem
 )
-makedepends=(git)
+makedepends=(
+  git
+  extra-cmake-modules
+  kdoctools
+)
 provides=(${pkgname%-git})
 conflicts=(
   ${pkgname%-git}
