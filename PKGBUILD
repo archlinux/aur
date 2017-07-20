@@ -1,10 +1,10 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=lastpass-cli-git
-pkgver=1.2.1.r0.geda59f8
+pkgver=1.2.1.r2.ge72a522
 pkgrel=1
 pkgdesc="LastPass command line interface tool (git version)"
 arch=('i686' 'x86_64')
