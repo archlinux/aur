@@ -4,7 +4,7 @@ pkgname=("pzl_common" "pzl_akari" "pzl_boggle" "pzl_codeword" "pzl_futoshiki" "p
 pkgbase="pzl_games"
 pkgver=8.0
 _pkgver=8_0
-pkgrel=1
+pkgrel=2
 pkgdesc="Small collection of computer games."
 arch=('any')
 url="http://pzl.org.uk/"
@@ -26,7 +26,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
 	"pzl_suguru.desktop"
 	"pzl_hidato.desktop" )
 
-md5sums=('de1504b78e1b0da7662a9fe5b0026e75'
+md5sums=('5745c1a75bb7bffea49d7db8bc11ee4e'
          'b7d0a414fc22aa750b7e4d758a6e04cd'
          '898534ec921c3c165fc11a7b5ef9b8d2'
          '02df03e4c57e8b77062df51971f7c582'
