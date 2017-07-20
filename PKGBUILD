@@ -1,13 +1,14 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
 pkgname=rapydscript-ng-git
-pkgver=0.7.16.r0.ge6cf962
+pkgver=0.7.17.r2.g15db838
 pkgrel=1
 pkgdesc="Pythonic JavaScript that doesn't suck"
 arch=('any')
 url="https://github.com/kovidgoyal/${pkgname%-git}"
 license=('BSD')
 depends=('nodejs')
+makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
 comflicts=("${pkgname%-git}")
 source=("git+${url}.git")
