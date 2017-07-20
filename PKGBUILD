@@ -31,7 +31,7 @@ build() {
 package() {
   # Place files
   install -d "${pkgdir}/usr/lib/${_pkgname}"
-  cp -a "${srcdir}/${_pkgname}/wrap/dist/linux*unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
+  cp -a "${srcdir}/${_pkgname}"/wrap/dist/linux*unpacked/* "${pkgdir}/usr/lib/${_pkgname}"
   
   # Symlink main binary
   install -d "${pkgdir}/usr/bin"
