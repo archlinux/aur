@@ -1,0 +1,14 @@
+pkgbase = python-louvain
+	pkgdesc = Python library for validating Python data structures.
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/taynaud/python-louvain
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/python-louvain/python-louvain-0.8.tar.gz
+	sha256sums = 7cdc7bcb6a8b2f5599b4826315b84bc390b4f964b644cdef781fb7e0ebf4c006
+
+pkgname = python-louvain
+
