@@ -2,7 +2,7 @@
 Name=Blizcord
 Comment=A Discord Bot
 Exec=blizcord-gui
+Icon=blizcord
 Type=Application
 StartupNotify=true
 Categories=Network;InstantMessaging;
-
