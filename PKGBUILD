@@ -1,4 +1,7 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 _gitname=KindleTool
 pkgname=kindletool
 pkgver=1.6.4
@@ -8,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/NiLuJe/${_gitname}"
 license=('GPL')
 depends=('libarchive' 'nettle')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1876e13f33fe1026c51632ce3602ef8a011738af9ed7ed933fd18767f967da21')
 
 build() {

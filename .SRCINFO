@@ -8,7 +8,7 @@ pkgbase = kindletool
 	license = GPL
 	depends = libarchive
 	depends = nettle
-	source = https://github.com/NiLuJe/KindleTool/archive/v1.6.4.tar.gz
+	source = kindletool-1.6.4.tar.gz::https://github.com/NiLuJe/KindleTool/archive/v1.6.4.tar.gz
 	sha256sums = 1876e13f33fe1026c51632ce3602ef8a011738af9ed7ed933fd18767f967da21
 
 pkgname = kindletool
