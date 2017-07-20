@@ -3,7 +3,7 @@
 
 pkgname=newsfeed
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An RSS/RDF/Atom reader and aggregator"
 arch=('any')
 url="http://mdoege.github.io/3NewsFeed/"
@@ -33,7 +33,7 @@ package() {
     --root="$pkgdir" \
     --install-data=/usr/share/$pkgname
   mkdir -p $pkgdir/usr/share/icons
-  cp $srcdir/../newsfeed.png $pkgdir/usr/share/icons
+  cp $srcdir/newsfeed.png $pkgdir/usr/share/icons
   mkdir -p $pkgdir/usr/share/applications
-  cp $srcdir/../newsfeed.desktop $pkgdir/usr/share/applications
+  cp $srcdir/newsfeed.desktop $pkgdir/usr/share/applications
 }
