@@ -7,7 +7,7 @@ pkgbase = vim-sensible
 	groups = vim-plugins
 	license = custom:vim
 	depends = vim
-	source = https://github.com/tpope/vim-sensible/archive/v1.1.tar.gz
+	source = vim-sensible-1.1.tar.gz::https://github.com/tpope/vim-sensible/archive/v1.1.tar.gz
 	sha256sums = c503b7e45659749a1644fbe04c9000446984a862582fa05f529bcf5543cf3341
 
 pkgname = vim-sensible
