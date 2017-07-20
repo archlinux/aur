@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('nvidia-utils' 'ncurses')
 makedepends=('cmake' 'cuda')
 source=('https://github.com/Syllo/nvtop/archive/0.1.0.tar.gz')
-sha256sums=('21e251655ab44c230c120a8dec080b7ce577b4dbc972930649c2fbce4703f540')
+sha256sums=('7d4955d071469df099e687c06d94ad1fc25793087433016b3528e08e919fd5f6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
