@@ -6,7 +6,7 @@
 pkgbase=python-openapi-codec
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-openapi-codec python2-openapi-codec)
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='An OpenAPI codec for Core API.'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/core-api/${pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('38ff5fb6e6196e509fc052959020a730931fb5c8eac7e2a0d72d4dddbd4213bb')
+sha256sums=('c882cffb5bb46183a4397efc4304aad0840f2413807b5d424b097bb70d5cf7ac')
 
 package_python-openapi-codec() {
   depends=('python-coreapi')

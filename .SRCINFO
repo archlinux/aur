@@ -1,6 +1,6 @@
 pkgbase = python-openapi-codec
 	pkgdesc = An OpenAPI codec for Core API.
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/core-api/python-openapi-codec/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-openapi-codec
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/core-api/python-openapi-codec/archive/1.3.1.tar.gz
-	sha256sums = 38ff5fb6e6196e509fc052959020a730931fb5c8eac7e2a0d72d4dddbd4213bb
+	source = https://github.com/core-api/python-openapi-codec/archive/1.3.2.tar.gz
+	sha256sums = c882cffb5bb46183a4397efc4304aad0840f2413807b5d424b097bb70d5cf7ac
 
 pkgname = python-openapi-codec
 	depends = python-coreapi
