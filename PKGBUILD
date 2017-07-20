@@ -2,7 +2,7 @@
 
 pkgname=peerflix
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming torrent client for node.js"
 arch=('any')
 url="https://github.com/mafintosh/peerflix"
@@ -17,7 +17,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr"
+  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr" ../*.tar.gz
 }
 
 # vim:set ts=2 sw=2 et:
