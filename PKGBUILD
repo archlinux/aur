@@ -1,12 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.26.0.1.g9e124933e5
+pkgver=v0.26.0.3.gf676f6d2b9
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
 depends=('desktop-file-utils'
-         'smbclient'
          'libxv'
          'libcdio-paranoia'
          'openal'
@@ -37,12 +36,14 @@ depends=('desktop-file-utils'
          'libvdpau'
          'fribidi'
          'libmysofa-git'
+         'mujs'
          )
 license=('GPL2' 'GPL3' 'LGPL')
 url='http://mpv.io'
 makedepends=('git'
              'python-docutils'
              'yasm'
+             'nasm'
              'ladspa'
              'fontconfig'
              'fribidi'
@@ -103,7 +104,8 @@ prepare() {
     '--htmldir=/usr/share/doc/mpv/html'
     '--disable-test'
     '--disable-build-date'
-    '--enable-cplugins'
+    '--disable-vapoursynth-lazy'
+    '--lua=luajit'
     '--enable-cdda'
     '--enable-dvdnav'
     '--enable-dvdread'
@@ -112,10 +114,9 @@ prepare() {
     '--enable-sdl2'
     '--enable-zsh-comp'
     '--enable-libarchive'
-    '--lua=luajit'
-    '--enable-libavdevice'
-    '--disable-vapoursynth-lazy'
     '--enable-html-build'
+    '--enable-tv'
+    '--enable-dvbin'
     )
 
 if [ ${_enable_cuda} = "1" ]; then
