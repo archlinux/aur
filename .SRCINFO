@@ -15,6 +15,7 @@ pkgbase = mate-meta-dev
 	depends = mate-media-dev
 	depends = mate-meta-dev
 	depends = mate-panel-dev
+	depends = mate-session-manager-dev
 	depends = pluma-dev
 
 pkgname = mate-meta-dev
