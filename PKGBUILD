@@ -2,7 +2,7 @@ pkgname=ghdl
 _tag=2017-03-01
 # The .99 is for pre-release
 pkgver=0.33.99.${_tag//-/.}
-pkgrel=1
+pkgrel=2
 _gccver=6.4.0
 _islver=0.16.1
 arch=('i686' 'x86_64')
@@ -79,6 +79,8 @@ build() {
     --disable-multilib \
     --disable-werror \
     --enable-checking=release \
+    --enable-default-pie \
+    --enable-default-ssp \
     \
     --enable-languages=vhdl \
     --disable-bootstrap \

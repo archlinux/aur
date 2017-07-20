@@ -1,7 +1,7 @@
 pkgbase = ghdl
 	pkgdesc = VHDL simulator
 	pkgver = 0.33.99.2017.03.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tgingold/ghdl
 	install = ghdl.install
 	arch = i686
