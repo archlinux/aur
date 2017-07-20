@@ -1,4 +1,6 @@
-# Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-installer
 pkgver=0.3
@@ -10,7 +12,7 @@ license=('GPL')
 depends=('wget' 'python')
 conflicts=('calibre')
 install=${pkgname}.install
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('6ed98488393116144867d2ca687b34a6cd741a6f90937def44d40894a716afce')
 
 package() {
