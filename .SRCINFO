@@ -1,0 +1,14 @@
+pkgbase = magma-ctglab
+	pkgdesc = MAGMA is a tool for gene analysis and generalized gene-set analysis of GWAS data
+	pkgver = 1.06
+	pkgrel = 1
+	url = https://ctg.cncr.nl/software/magma
+	arch = i686
+	arch = x86_64
+	license = GPL v3.0
+	depends = gcc
+	source = https://ctg.cncr.nl/software/MAGMA/prog/magma_v1.06_source.zip
+	md5sums = 71b5942d1b15c02bede23c4cd0312a6e
+
+pkgname = magma-ctglab
+
