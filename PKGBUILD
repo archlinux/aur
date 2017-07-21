@@ -1,14 +1,15 @@
-# Maintainer: twa022 <twa022 at gmail dot com>
+# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Contributor: twa022 <twa022 at gmail dot com>
 # Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=17.10.7
-_umsver=17.10.11
+pkgver=17.10.9
+_umsver=17.10.16
 pkgrel=1
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
-url="https://bitbucket.org/ubuntu-mate/mate-tweak"
+url="https://github.com/ubuntu-mate/mate-tweak"
 license=('GPL')
 depends=('libnotify' 'mate-applets' 'python-configobj' 'python-gobject' 'python-psutil' 'python-setproctitle')
 makedepends=('python-distutils-extra' 'python-setuptools')
@@ -19,18 +20,18 @@ optdepends=('mate-applet-dock: for Mutiny panel layout'
             'synapse: to enable launcher'
             'tilda: to enable pull-down terminal'
             'topmenu-gtk: for Mutiny panel layout')
-source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/ubuntu-mate/$pkgname/get/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/$pkgname/archive/$pkgver.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz")
-sha256sums=('73779d7d047d2e88c9a0cd3eb8005917e5da38504f449c3bbf17c344df245a2a'
-            'e08054b9ee01e84932a4d2745bcf2754f7ea6c61a611aeabe00e7ac2ed120353')
+sha256sums=('e4fcf699cccdb01f7bd8b00b5f4ba25ab943c59b254c3ac36d2622ea1820b352'
+            '53ea6ab31a9e59066059a36b4cd1dbdc63749c77115b5687f8e0000bd886940d')
 
 prepare() {
-  cd ubuntu-mate-$pkgname-*
+  cd "$pkgname-$pkgver"
   sed -i 's|/usr/lib/mate-applets/topmenu-mate-panel-applet|/usr/lib/topmenu-gtk/topmenu-mate-panel-applet|' mate-tweak
 }
 
 package() {
-  cd ubuntu-mate-$pkgname-*
+  cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
   cp -r "$srcdir"/ubuntu-mate-settings/usr/share/mate-panel "$pkgdir/usr/share"
 }

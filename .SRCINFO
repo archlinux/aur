@@ -1,8 +1,8 @@
 pkgbase = mate-tweak
 	pkgdesc = Tweak tool for MATE (fork of MintDesktop)
-	pkgver = 17.10.7
+	pkgver = 17.10.9
 	pkgrel = 1
-	url = https://bitbucket.org/ubuntu-mate/mate-tweak
+	url = https://github.com/ubuntu-mate/mate-tweak
 	arch = any
 	license = GPL
 	makedepends = python-distutils-extra
@@ -20,10 +20,10 @@ pkgbase = mate-tweak
 	optdepends = synapse: to enable launcher
 	optdepends = tilda: to enable pull-down terminal
 	optdepends = topmenu-gtk: for Mutiny panel layout
-	source = mate-tweak-17.10.7.tar.gz::https://bitbucket.org/ubuntu-mate/mate-tweak/get/17.10.7.tar.gz
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_17.10.11.tar.xz
-	sha256sums = 73779d7d047d2e88c9a0cd3eb8005917e5da38504f449c3bbf17c344df245a2a
-	sha256sums = e08054b9ee01e84932a4d2745bcf2754f7ea6c61a611aeabe00e7ac2ed120353
+	source = mate-tweak-17.10.9.tar.gz::https://github.com/ubuntu-mate/mate-tweak/archive/17.10.9.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_17.10.16.tar.xz
+	sha256sums = e4fcf699cccdb01f7bd8b00b5f4ba25ab943c59b254c3ac36d2622ea1820b352
+	sha256sums = 53ea6ab31a9e59066059a36b4cd1dbdc63749c77115b5687f8e0000bd886940d
 
 pkgname = mate-tweak
 
