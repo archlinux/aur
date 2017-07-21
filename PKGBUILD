@@ -1,13 +1,12 @@
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=newmat  
-pkgver=10D
+pkgver=10
 pkgrel=1
 pkgdesc="C++ matrix library"
 url="http://www.robertnz.net"
 arch=('i686' 'x86_64')
 license=('custom')
-source=(http://www.robertnz.net/ftp/${pkgname}10.tar.gz filelist)
-md5sums=('cc7408a10ee3d4775fc5f86e523bf56a'
+source=("http://www.robertnz.net/ftp/$pkgname$pkgver.tar.gz" filelist)
+md5sums=('c78aab80613db1989d1ec4c525d9d69c'
          '1257a4599e437254666aeac610b7d5c5')
 options=('staticlibs')
 
