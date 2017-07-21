@@ -1,6 +1,6 @@
 pkgbase = newmat
 	pkgdesc = C++ matrix library
-	pkgver = 10D
+	pkgver = 10
 	pkgrel = 1
 	url = http://www.robertnz.net
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = newmat
 	options = staticlibs
 	source = http://www.robertnz.net/ftp/newmat10.tar.gz
 	source = filelist
-	md5sums = cc7408a10ee3d4775fc5f86e523bf56a
+	md5sums = c78aab80613db1989d1ec4c525d9d69c
 	md5sums = 1257a4599e437254666aeac610b7d5c5
 
 pkgname = newmat
-
