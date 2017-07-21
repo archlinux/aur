@@ -1,7 +1,7 @@
 # Maintainer: Stephen Lester <stephen@lester.codes>
 pkgname=wire-desktop-bin
 pkgver=2.15.2751
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
 url='https://wire.com/'
@@ -13,6 +13,7 @@ source_i686=("https://wire-app.wire.com/linux/debian/pool/main/wire_${pkgver}_i3
 source_x86_64=("https://wire-app.wire.com/linux/debian/pool/main/wire_${pkgver}_amd64.deb")
 sha256sums_i686=('6ad4c8dc1b443a473be82b7c998dcafb7019f1ec1ebc1e489cfc411525cddd0c')
 sha256sums_x86_64=('10dc23f64dedb5e30b275a6c5455118a4f510be837f546a841cbb2ec71be68e3')
+options=(!strip)
 
 package() {
   if [ "$CARCH" = "i686" ] ; then
