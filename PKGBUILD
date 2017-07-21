@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=cbca220e00828cbecc8cc73067935033d0af67390
+pkgver=ce95d95df565a1589902ed0233d5ecbed03de9b0e
 pkgrel=1
 conflicts=("kshare")
 pkgdesc="A ShareX inspired cross platform utility written with Qt."
@@ -17,12 +17,16 @@ build() {
   git checkout dev
   git submodule update --init --recursive  
   qmake
-  make
+  make -j$(($(nproc) + 1))
 }
 
 package() {
   cd "${srcdir}/KShare"
   mkdir -p "$pkgdir/usr/bin"
   install ./KShare "$pkgdir/usr/bin/kshare"
+  mkdir -p "$pkgdir/usr/share/pixmaps"
+  install "${srcdir}/KShare/icons/icon.png"
+  mkdir -p "$pkgdir/usr/share/applications"
+  install KShare.desktop "$pkgdir/usr/share/applications"
 }
 
