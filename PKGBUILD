@@ -2,8 +2,8 @@
 
 pkgname=trelby-git
 _pkgname=trelby
-pkgver=0.r806.a29e8bb
-pkgrel=3
+pkgver=0.r809.580222d
+pkgrel=1
 pkgdesc="Free screenwriting application"
 url=http://www.trelby.org
 arch=('any')
