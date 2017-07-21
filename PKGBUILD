@@ -1,8 +1,8 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_srcname=linux-4.11
-pkgver=4.11.8
+_srcname=linux-4.12
+pkgver=4.12.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/steven/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -21,12 +21,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         '0001-xhci-demote-annoying-warning.patch'
         )
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            'c390540524e9647efa3752550cb04b02f47a60a5d45f26d56a07cd8a67501929'
+            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
             'SKIP'
-            'a15f7f98854ee379535bed77bf5cffa0174ebda042b4e2d9e4ce61c439c56d76'
-            '8be2bec4a5020dffeef458a72109e72d386d0df6def363be476c76f05175b82c'
+            'b462f3dff25ed509c5f2763741da538ee3888912f80d7d754865b4433303c388'
+            '0096f7771a7204538a565b7ea2d235fe5b2ed156e602e171c6cb9f0e4993f2f5'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
             'f4ee2c2aed01b984b7ede924cbabefaccedc854b338901568d03a45320ea8056')
