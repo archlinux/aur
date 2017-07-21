@@ -4,7 +4,7 @@
 
 pkgname=vimb
 pkgver=3.0.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 arch=('i686' 'x86_64')
 pkgdesc="The vim like browser"
@@ -18,7 +18,7 @@ md5sums=('feb013e251eccf2a1b8a7728dd0816e1')
 sha256sums=('0cf8f6226d2471bf43d8ee969f00dedab048601aa869f1d190c1ed47c0acbfe2')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/vimb-3.0-alpha"
   if [ -e $SRCDEST/config.h ]; then
     msg "Using custom config.h";
     cp $SRCDEST/config.h "$srcdir/$pkgname/src"
@@ -26,12 +26,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/vimb-3.0-alpha"
   make DEXTENSIONDIR=/usr/lib/vimb V=1 DESTDIR="$pkgdir" PREFIX="/usr"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/vimb-3.0-alpha"
   make DEXTENSIONDIR=/usr/lib/vimb V=1 DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
