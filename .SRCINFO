@@ -1,0 +1,15 @@
+pkgbase = tty0tty-git
+	pkgdesc = tty0tty Virtual Serial Cable (DKMS)
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/freemed/tty0tty
+	arch = i686
+	arch = x86_64
+	license = GPL2/Apache2
+	depends = dkms
+	conflicts = tty0tty
+	source = git+https://github.com/freemed/tty0tty
+	sha256sums = SKIP
+
+pkgname = tty0tty-git
+
