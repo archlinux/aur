@@ -2,8 +2,8 @@
 #Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
 
 pkgname=zfw-module
-pkgver=3.1
-pkgrel=4
+pkgver=3.1.1
+pkgrel=1
 arch=("x86_64")
 pkgdesc="It's a module for calculate a aircraft's Z.F.W." 
 url="https://github.com/CompFile/My_AUR_PKG/tree/master/Sources/$pkgname/$pkgname-$pkgver.r$pkgrel"
