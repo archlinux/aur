@@ -1,13 +1,13 @@
 pkgbase = zbectl-git
-	pkgdesc = script for managing boot environments using zfs
-	pkgver = v0.2.r6.ge272cd8
+	pkgdesc = Utility for managing ZFS Boot Environments in Arch Linux
+	pkgver = v1.0.r4.g7ec3f6f
 	pkgrel = 1
 	url = https://github.com/Finic8/zbectl
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = zfs
-	depends = bash
+	depends = grub
 	provides = zbectl
 	source = zbectl-git::git+https://github.com/Finic8/zbectl
 	md5sums = SKIP
