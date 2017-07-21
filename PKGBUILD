@@ -7,6 +7,7 @@ pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axo
 arch=('i686' 'x86_64')
 url='https://github.com/gkdr/lurch'
 license=('GPL')
+makedepends=('cmake')
 depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
 optdepends=('libpurple-carbons-git: message carbons support')
 conflicts=('libpurple-lurch-git')
