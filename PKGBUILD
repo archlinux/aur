@@ -1,8 +1,7 @@
-#Maintainer wicast <wicastchen at hotmail>
-
+# Maintainer: Jesús Castro <51v4n@openmailbox.org>
 pkgname=glide-git
-pkgver=0.10.2.r47.ge73500c
-pkgrel=1
+pkgver=0.12.3
+pkgrel=2
 pkgdesc="Simplified Go project management, dependency management, and vendoring."
 arch=('any')
 url='https://github.com/Masterminds/glide'
@@ -32,5 +31,6 @@ package() {
     ln -s $srcdir/$pkgname $srcdir/src/github.com/Masterminds/glide
     cd $srcdir/src/github.com/Masterminds/glide
     make DESTDIR="$pkgdir/" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"2
 }
+
