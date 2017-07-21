@@ -6,7 +6,7 @@ pkgname=dwire-debug-git
 _pkgname=dwire-debug
 pkgver=r129.beb3806
 pkgrel=1
-pkgdesc="Simple stand-alone debugger for ATtiny 45 and ATMEL AVR DebugWIRE chips connected directly to an FT232R or similar"
+pkgdesc="Simple stand-alone debugger for ATtiny 45 and other ATMEL AVR DebugWIRE chips connected directly to an FT232R or similar"
 arch=("i686" "x86_64")
 url="https://github.com/dcwbrown/dwire-debug"
 license=("GPL2")
@@ -29,7 +29,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   #make DESTDIR="${pkgdir}/" install
-  #cd "${srcdir}/${pkgname}/src"
   install -D --mode=0755 dwdebug "${pkgdir}/usr/bin/dwdebug"
 }
 
