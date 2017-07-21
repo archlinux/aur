@@ -42,20 +42,23 @@ sha256sums=('163e729a0c4a78f4cd8acb9c82cae806bd66d6e1612aa52b94c1345a85384460')
 _qmake_cmd=qmake
 
 build() {
-  local src_dir=${startdir}/src/
+  set -o nounset
+  local src_dir=${srcdir}/${_filename}
   [[ -d build ]] && rm -r build
   mkdir build && cd build
 
-  QMAKESPEC=linux-clang QTC_PREFIX=/usr LLVM_INSTALL_DIR=/usr ${_qmake_cmd} QMAKE_CFLAGS_ISYSTEM=-I CONFIG+=journald -r ../${_filename}/qtcreator.pro
-  make
-  make docs -j1
+  qbs -f ${src_dir} --all-products project.withAutotests:false release
+  set +o nounset
 }
 
 package() {
+  set -o nounset
+  local _src_dir=${srcdir}/${_filename}
+  local _pkg_dir=${pkgdir}/usr/
+
   cd build
 
-  make INSTALL_ROOT="${pkgdir}/usr/" install
-  make INSTALL_ROOT="${pkgdir}/usr/" install_docs
+  qbs install -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false release
 
   # Workaround for FS#40583
   mv "${pkgdir}"/usr/bin/qtcreator "${pkgdir}"/usr/bin/qtcreator-bin
@@ -64,4 +67,5 @@ package() {
   chmod +x "${pkgdir}"/usr/bin/qtcreator
 
   install -Dm644 ${srcdir}/${_filename}/LICENSE.GPL3-EXCEPT ${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+  set +o nounset
 }
