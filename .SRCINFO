@@ -1,0 +1,13 @@
+pkgbase = vim-wwdc17-theme-git
+	pkgdesc = Colorful light color scheme for Vim inspired by Apple's WWDC17 page
+	pkgver = v1.0.0.r20.gad0bf69
+	pkgrel = 1
+	url = https://github.com/lifepillar/vim-wwdc17-theme
+	arch = any
+	license = unknown
+	makedepends = git
+	source = git+https://github.com/lifepillar/vim-wwdc17-theme.git
+	md5sums = SKIP
+
+pkgname = vim-wwdc17-theme-git
+
