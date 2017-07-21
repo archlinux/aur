@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-united-archers-git
 	pkgdesc = GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept.
-	pkgver = v2.1.3.r15.g8c0b0af
+	pkgver = v2.1.3.r16.ge583734
 	pkgrel = 1
 	url = https://github.com/godlyranchdressing/United-GNOME
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = gtk-theme-united-archers-git
 	depends = gtk-engine-murrine
 	optdepends = gnome-shell>=3.20: The GNOME Shell
 	optdepends = gnome-tweak-tool: A graphical tool to tweak gnome settings
-	provides = United-GNOME=v2.1.3.r15.g8c0b0af
+	provides = United-GNOME=v2.1.3.r16.ge583734
 	source = United-Arch.tar.gz::https://github.com/godlyranchdressing/United-GNOME/blob/master/United-Arch.tar.gz?raw=true
-	sha256sums = 7b5cf42706d54434e31842a38a51b84cf06b05fffb86410874ee5777bdc5a46a
+	sha256sums = 6625c47f319b5f732cd25fd9a700101be4dfd2fee739e06046e96845fabb9e85
 
 pkgname = gtk-theme-united-archers-git
 
