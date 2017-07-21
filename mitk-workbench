@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MITK_DIR="/opt/MITK-2016.3.0"
+MITK_DIR="/opt/MITK-2016.11.0"
 
 export QT_PLUGIN_PATH="/usr/lib/qt/plugins"
 export LD_LIBRARY_PATH="$MITK_DIR:$MITK_DIR/plugins:$LD_LIBRARY_PATH"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MITK Workbench
+GenericName=Image Visualization
+Comment=Medical Imaging Interaction Toolkit (MITK) Workbench
+Exec=mitk-workbench %U
+TryExec=mitk-workbench
+Terminal=false
+Type=Application
+Categories=Graphics;Science
+MimeType=image/jpeg;image/png;image/tiff
