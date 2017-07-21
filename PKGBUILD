@@ -8,7 +8,7 @@ arch=("i686" "x86_64")
 url="https://www.arangodb.com/"
 license=('APACHE')
 depends=('openssl' 'systemd' 'curl' 'zlib')
-makedepends=("cmake" "python2")
+makedepends=("cmake" "gcc5" "python2")
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
@@ -28,6 +28,9 @@ build() {
   ln -s -f /usr/bin/python2 python
   export PATH="`pwd`:$PATH"
   export LD="ld.gold"
+  # I'm not proud of this but currently it's the only way to compile this.
+  export CC="gcc-5"
+  export CXX="g++-5"
 
   msg2 "Configuring ArangoDB."
   cd $srcdir/ArangoDB-$pkgver
