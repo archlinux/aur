@@ -3,33 +3,19 @@
 # Maintainer: Robert Timm <mail@rtti.de>
 
 pkgname=vimb
-pkgver=3.0.0.r1466.5bca294
+pkgver=3.0.0.1
 pkgrel=1
 epoch=
 arch=('i686' 'x86_64')
 pkgdesc="The vim like browser"
-url="https://github.com/fanglingsu/vimb"
 url="http://fanglingsu.github.io/vimb"
 license=('GPLv3')
 depends=('webkit2gtk>=2.8')
-makedepends=('git')
-optdepends=()
-checkdepends=()
 provides=('vimb')
 conflicts=('vimb2' 'vimb-gtk2' 'vimb-git')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-source=("$pkgname::git+https://github.com/fanglingsu/vimb.git")
-noextract=()
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "3.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=('vimb-3.0.0.tar.gz::https://github.com/fanglingsu/vimb/archive/3.0-alpha.tar.gz')
+md5sums=('feb013e251eccf2a1b8a7728dd0816e1')
+sha256sums=('0cf8f6226d2471bf43d8ee969f00dedab048601aa869f1d190c1ed47c0acbfe2')
 
 prepare() {
   cd "$srcdir/$pkgname"
