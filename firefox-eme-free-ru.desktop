@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Firefox EME free
-GenericName=Web Browser EME Free
-Icon=firefox-eme-free
+Name=Firefox EME free (RU)
+GenericName=Web Browser EME Free (RU)
+Icon=/opt/firefox-eme-free-ru/browser/icons/mozicon128.png
 Type=Application
 Categories=Application;Network;
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
