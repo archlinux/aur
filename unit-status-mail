@@ -1,0 +1,27 @@
+#!/bin/bash
+MAILTO="root"
+MAILFROM="unit-status-mailer"
+UNIT=$1
+DATE=$(date '+%F')
+
+EXTRA=""
+for e in "${@:2}"; do
+  EXTRA+="$e"$'\n'
+done
+
+UNITSTATUS=$(journalctl -S $DATE -l -n 100000 -u $UNIT)
+
+sendmail $MAILTO <<ENDOFMAILCONTENT
+From:$MAILFROM
+To:$MAILTO
+Subject:Status mail for unit: $UNIT
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+
+Status report for unit: $UNIT
+$EXTRA
+
+$UNITSTATUS
+ENDOFMAILCONTENT
+
+echo -e "Status mail sent to: $MAILTO for unit: $UNIT"

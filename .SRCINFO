@@ -1,0 +1,15 @@
+pkgbase = systemd-unit-status-mail
+	pkgdesc = Service to mail a systemd's unit status
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = coreutils
+	depends = smtp-forwarder
+	source = unit-status-mail
+	source = unit-status-mail@.service
+	sha256sums = f7f5808650bd09d75707059a918f451d7f150ff26e0e64526ed4e9e4ff2a80f1
+	sha256sums = 7905bce82e8bbf387358f0360eeac49d6724a06eae0be1b8db5ae4ae8d4c8732
+
+pkgname = systemd-unit-status-mail
+

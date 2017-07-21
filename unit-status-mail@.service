@@ -1,0 +1,7 @@
+[Unit]
+Description=Unit Status Mailer Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/unit-status-mail %i "Hostname: %H" "Machine ID: %m" "Boot ID: %b"
