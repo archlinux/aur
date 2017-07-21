@@ -6,5 +6,5 @@ diff -ura lwks/pkg/lwks/usr/bin/lightworks lwks.patched/pkg/lwks/usr/bin/lightwo
  
  #Launch the app
 -/usr/lib/lightworks/ntcardvt
-+GDK_BACKEND=x11 LD_PRELOAD="libcrypto-compat.so.1.0.0 libssl-compat.so.1.0.0 libcurl-openssl-1.0.so" /usr/lib/lightworks/ntcardvt
-Only in lwks: wayland_and_openssl.patch
++GDK_BACKEND=x11 /usr/lib/lightworks/ntcardvt
+Only in lwks: wayland.patch
