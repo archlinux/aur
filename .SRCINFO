@@ -8,6 +8,7 @@ pkgbase = zbectl-git
 	makedepends = git
 	depends = zfs
 	depends = grub
+	depends = efibootmgr
 	provides = zbectl
 	source = zbectl-git::git+https://github.com/Finic8/zbectl
 	md5sums = SKIP
