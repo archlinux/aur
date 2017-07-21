@@ -1,6 +1,6 @@
 pkgbase = spotify
 	pkgdesc = A proprietary music streaming service
-	pkgver = 1.0.57.474
+	pkgver = 1.0.59.395
 	pkgrel = 1
 	url = http://www.spotify.com
 	arch = x86_64
@@ -29,10 +29,10 @@ pkgbase = spotify
 	sha256sums = 989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34
 	sha256sums = af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3
 	sha256sums = 4e8bea31ca27e16cac9c9dcd8f6ec27e1f82b45de86d6fee7a1e77e23f884b92
-	source_x86_64 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.57.474.gca9c9538-30_amd64.deb
-	sha256sums_x86_64 = fe46f2084c45c756bee366f744d2821d79e82866b19942e30bb2a20c1e597437
-	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.57.474.gca9c9538-30_i386.deb
-	sha256sums_i686 = 8f2f4e6c71fe923512062e1c0378424a74651f5c107c05e8daf3b7bf67fd6de1
+	source_x86_64 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.59.395.ge6ca9946-18_amd64.deb
+	sha256sums_x86_64 = 8fbe821fd516f5cd77eb2d5085e5acd8f1852b97f7b7294846fcc57b810ef515
+	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.59.395.ge6ca9946-18_i386.deb
+	sha256sums_i686 = 9366d1845dae64637afbc666da31dbe52b843f4003ebc5dc642b1a5984295fb0
 
 pkgname = spotify
 
