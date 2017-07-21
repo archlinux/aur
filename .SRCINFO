@@ -6,7 +6,6 @@ pkgbase = golly
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gendesk
 	makedepends = perl
 	makedepends = python2
 	depends = wxgtk

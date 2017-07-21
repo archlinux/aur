@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://golly.sourceforge.net/"
 license=('GPL')
 depends=('wxgtk')
-makedepends=('gendesk' 'perl' 'python2')
+makedepends=('perl' 'python2')
 optdepends=('perl: for Perl scripting support'
             'python2: for Python scripting support')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-src.tar.gz"
