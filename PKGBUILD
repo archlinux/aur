@@ -3,7 +3,7 @@
 
 pkgname=caffe
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -91,14 +91,21 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
+    _gcc5_cxxflags="$(printf '%s' "$CXXFLAGS" | sed 's/-fno-plt//')"
+    _gcc5_cflags="$(  printf '%s' "$CFLAGS"   | sed 's/-fno-plt//')"
+    
     msg2 "Building target 'all'..."
-    make all
+    CXXFLAGS="$_gcc5_cxxflags" CFLAGS="$_gcc5_cflags" make all
+    
     msg2 "Building target 'pycaffe'..."
-    make pycaffe
+    CXXFLAGS="$_gcc5_cxxflags" CFLAGS="$_gcc5_cflags" make pycaffe
+    
     msg2 "Building target 'docs'..."
-    make docs
+    rm -rf doxygen
+    CXXFLAGS="$_gcc5_cxxflags" CFLAGS="$_gcc5_cflags" make docs
+    
     msg2 "Building target 'distribute'..."
-    make distribute
+    CXXFLAGS="$_gcc5_cxxflags" CFLAGS="$_gcc5_cflags" make distribute
 }
 
 # uncomment this block if you want to run the checks/tests
