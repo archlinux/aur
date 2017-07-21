@@ -2,13 +2,15 @@
 
 pkgname=ocaml-ctypes-git
 pkgver=0.12.1.13.g75b9010
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for binding to C libraries using pure OCaml'
 arch=('i686' 'x86_64')
 url=https://github.com/ocamllabs/ocaml-ctypes
 license=('custom')
 depends=('ocaml' 'libffi' 'ocaml-integers')
 makedepends=('ocaml-findlib>=1.5.3' 'git')
+conflicts=('ocaml-ctypes')
+provides=('ocaml-ctypes')
 options=('!strip')
 source=("git+$url.git")
 md5sums=('SKIP')
