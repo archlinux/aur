@@ -6,7 +6,6 @@ pkgbase = scaleft-server-tools
 	install = scaleft-server-tools.install
 	arch = x86_64
 	license = custom
-	makedepends = rpmextract
 	depends = glibc
 	source = https://pkg.scaleft.com/rpm/scaleft-server-tools-1.29.5-1.x86_64.rpm
 	sha256sums = b1e5890655c1a0039939af1ab572a54966af754d112b1f873bd84abf733a7028

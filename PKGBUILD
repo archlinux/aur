@@ -8,14 +8,9 @@ arch=('x86_64')
 url="https://scaleft.com"
 license=('custom')
 install=${pkgname}.install
-makedepends=('rpmextract')
 depends=('glibc')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm")
 sha256sums=('b1e5890655c1a0039939af1ab572a54966af754d112b1f873bd84abf733a7028')
-
-prepare() {
-	rpmextract.sh ${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm
-}
 
 package() {
   install -Dm0644 etc/systemd/system/sftd.service \
