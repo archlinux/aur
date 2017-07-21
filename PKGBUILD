@@ -3,8 +3,7 @@
 # Contributor bitwave < aur [at] oomlu [d0t] de >
 # Alex say thanks to Filip about support this package while he was away from Arch.
 pkgname=(scst scst_local iscsi-scst scstadmin)
-pkgver=3.2.0.7058
-kversion=4.10.8
+pkgver=3.2.0.7211
 pkgrel=1
 pkgdesc="Generic SCSI Target Subsystem For Linux"
 arch=('i686' 'x86_64')
@@ -13,14 +12,12 @@ license=('GPL')
 install=${pkgname}.install
 makedepends=('linux' 'linux-headers')
 source=(
-    "scst-${pkgver}.tar.bz2::https://sourceforge.net/projects/scst/files/scst-${pkgver}.tar.bz2/download"
-    "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-${kversion}.tar.xz"
-    'queue.patch'
+# use SVN version so we succeeded with latest kernel
+    "scst-svn-7211-branches-3.2.x.zip:https://sourceforge.net/code-snapshots/svn/s/sc/scst/svn/scst-svn-7211-branches-3.2.x.zip"
+#    "scst-${pkgver}.tar.bz2::https://sourceforge.net/projects/scst/files/scst-${pkgver}.tar.bz2/download"
 )
 md5sums=(
     'SKIP'
-    'SKIP'
-    '0e0c06a0f050f8aca3824e7d371b9a50'
 )
 
 _base() {
@@ -70,7 +67,7 @@ _package_module() {
 prepare() {
     cd $(find "$srcdir" -maxdepth 1 -type d -name 'scst*')
 
-    patch -Np0 -i "$srcdir/queue.patch"
+#    patch -Np0 -i "$srcdir/queue.patch"
 }
 
 build() {
@@ -80,8 +77,8 @@ build() {
 
     # Fix problems with linux-headers package
     # (rdma headers is missing)
-    _kern_inc=("$srcdir"/linux-*/include/)
-    cp -r "$_kern_inc/rdma" "scst/include"
+#    _kern_inc=("$srcdir"/linux-*/include/)
+#    cp -r "$_kern_inc/rdma" "scst/include"
     #export CFLAGS="$CFLAGS -I'$_kern_inc'"
 
     for d in scst scst_local iscsi-scst; do
