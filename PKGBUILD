@@ -1,3 +1,4 @@
+# Maintainer: Sampson Crowley <sampsonsprojects at gmail dot com>
 #Contributors:
 # Trương Xuân Tính <xuantinh@gmail.com>
 # henning mueller <henning@orgizm.net>
@@ -5,27 +6,34 @@
 
 pkgname=pgpool-ii
 _pkgname=pgpool-II
-pkgver=3.2.5
-pkgrel=1
-pkgdesc='pgpool-II is a connection pool server for PostgreSQL.'
+pkgver=3.6.4
+pkgrel=2
+pkgdesc="Middleware that works between PostgreSQL servers and a PostgreSQL database client."
+arch=()
+url="http://www.pgpool.net"
 arch=(i686 x86_64)
-url='http://www.pgpool.net'
 license=(custom)
-depends=(postgresql-libs)
+depends=(openssl postgresql-libs)
 options=(!libtool)
 replaces=(pgpool)
 backup=(etc/conf.d/$pkgname)
 source=(
   http://www.pgpool.net/download.php?f=$_pkgname-$pkgver.tar.gz
-  $pkgname.{service,conf.d}
+  $pkgname.{service,conf.d,diff}  
 )
+
+prepare(){
+  cd $srcdir/$_pkgname-$pkgver
+  patch -Np1 -i "$srcdir/$pkgname.diff"
+}
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/pgpool \
-    --mandir=/usr/share/man
+    --mandir=/usr/share/man \
+    --with-openssl=openssl
   make
 }
 
@@ -37,15 +45,18 @@ package() {
 
   make DESTDIR=$pkgdir install
 
-  mkdir -p $pkgdir/{var/run/pgpool,usr/share/doc}
+  mkdir -p $pkgdir/{run/pgpool,usr/share/doc}
 
   install -D COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
   cp -r doc $pkgdir/usr/share/doc/$pkgname
 
   mv $pkgdir/usr/share/$_pkgname $pkgdir/usr/share/$pkgname
-  cp sample/* $pkgdir/usr/share/$pkgname
+  cd $srcdir/$_pkgname-$pkgver/src/sql/pgpool-recovery
+  sudo make && sudo make install
 }
 
-sha256sums=('aecac952fd3d292584c9aa359d72f89b144c29f45c9f848cb030e46215a814f7'
-            '6c797a94c1648890a613e201c2ce2e3e2b602103daecc009ebf189578e8e15a0'
-            '9d0c12d735595424fad799499d50bc4da8b7f1e7ffc2c21317f8824559bb7aea')
+md5sums=('e31eedc9cf00b0b27596449a20f4c83d'
+         '6f1996c211e6f512289565e162752b04'
+         '74e1450ec40a5915341d7901736aca45'
+         'b11938850095c777c80238ed878e158d')
+

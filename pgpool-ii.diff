@@ -1,0 +1,286 @@
+diff --git a/src/context/pool_query_context.c b/src/context/pool_query_context.c
+index 88464d0..b450cd8 100644
+--- a/src/context/pool_query_context.c
++++ b/src/context/pool_query_context.c
+@@ -304,7 +304,7 @@ int pool_virtual_master_db_node_id(void)
+ 		return REAL_MASTER_NODE_ID;
+ 	}
+ 
+-	if (sc->query_context)
++	if (sc->in_progress && sc->query_context)
+ 	{
+ 		int node_id = sc->query_context->virtual_master_node_id;
+ 
+diff --git a/src/protocol/pool_process_query.c b/src/protocol/pool_process_query.c
+index 547ec3e..92c19ef 100644
+--- a/src/protocol/pool_process_query.c
++++ b/src/protocol/pool_process_query.c
+@@ -3179,6 +3179,7 @@ void read_kind_from_backend(POOL_CONNECTION *frontend, POOL_CONNECTION_POOL *bac
+ 				ereport(DEBUG1,
+ 						(errmsg("read_kind_from_backend: sync pending message exists")));
+ 				session_context->query_context = NULL;
++				pool_unset_ignore_till_sync();
+ 				pool_unset_query_in_progress();
+ 			}
+ 			else
+@@ -3386,16 +3387,28 @@ void read_kind_from_backend(POOL_CONNECTION *frontend, POOL_CONNECTION_POOL *bac
+ 		 * various scenario, probably we should employ this strategy for 'Z'
+ 		 * (ready for response) case only, since it's a good candidate to
+ 		 * re-sync primary and standby.
++		 *
++		 * 2017/7/16 Tatsuo Ishii wrote: The issue above has been solved since
++		 * the pending message mechanism was introduced.  However, in error
++		 * cases it is possible that similar issue could happen since returned
++		 * messages do not follow the sequence recorded in the pending
++		 * messages because the backend ignores requests till sync message is
++		 * received. In this case we need to re-sync either master or
++		 * standby. So we check not only the standby but master node.
+ 		 */
+-
+ 		if (session_context->load_balance_node_id != MASTER_NODE_ID &&
+-			kind_list[MASTER_NODE_ID] == 'Z' && STREAM)
++			(kind_list[MASTER_NODE_ID] == 'Z' ||
++			 kind_list[session_context->load_balance_node_id] == 'Z')
++			&& STREAM)
+ 		{
+ 			POOL_CONNECTION *s;
+ 			char *buf;
+ 			int len;
+ 
+-			s = CONNECTION(backend, session_context->load_balance_node_id);
++			if (kind_list[MASTER_NODE_ID] == 'Z')
++				s = CONNECTION(backend, session_context->load_balance_node_id);
++			else
++				s = CONNECTION(backend, MASTER_NODE_ID);
+ 
+ 			/* skip len and contents corresponding standby data */
+ 			pool_read(s, &len, sizeof(len));
+diff --git a/src/protocol/pool_proto_modules.c b/src/protocol/pool_proto_modules.c
+index dea6367..3a0a387 100644
+--- a/src/protocol/pool_proto_modules.c
++++ b/src/protocol/pool_proto_modules.c
+@@ -96,6 +96,9 @@ static char *
+ flatten_set_variable_args(const char *name, List *args);
+ static bool
+ process_pg_terminate_backend_func(POOL_QUERY_CONTEXT *query_context);
++static void pool_wait_till_ready_for_query(POOL_CONNECTION_POOL *backend);
++static void pool_discard_except_sync_and_ready_for_query(POOL_CONNECTION *frontend,
++														 POOL_CONNECTION_POOL *backend);
+ 
+ /*
+  * This is the workhorse of processing the pg_terminate_backend function to
+@@ -1570,8 +1573,8 @@ POOL_STATUS Close(POOL_CONNECTION *frontend, POOL_CONNECTION_POOL *backend,
+ 			query_context->where_to_send[session_context->load_balance_node_id] = true;
+ 		}
+ 
+-		pool_extended_send_and_wait(query_context, "C", len, contents, 1, MASTER_NODE_ID, false);
+-		pool_extended_send_and_wait(query_context, "C", len, contents, -1, MASTER_NODE_ID, false);
++		pool_extended_send_and_wait(query_context, "C", len, contents, 1, MASTER_NODE_ID, true);
++		pool_extended_send_and_wait(query_context, "C", len, contents, -1, MASTER_NODE_ID, true);
+ 
+ 		/* Add pending message */
+ 		pmsg = pool_pending_message_create('C', len, contents);
+@@ -2212,8 +2215,9 @@ POOL_STATUS ErrorResponse3(POOL_CONNECTION *frontend,
+ 	if (ret != POOL_CONTINUE)
+ 		return ret;
+ 
+-	raise_intentional_error_if_need(backend);
+-	
++	if (!STREAM)
++		raise_intentional_error_if_need(backend);
++
+ 	return POOL_CONTINUE;
+ }
+ 
+@@ -2462,6 +2466,12 @@ POOL_STATUS ProcessFrontendResponse(POOL_CONNECTION *frontend,
+ 			else if (!pool_is_query_in_progress())
+ 				pool_set_query_in_progress();
+ 			status = SimpleForwardToBackend(fkind, frontend, backend, len, contents);
++
++			if (STREAM)
++			{
++				/* Wait till Ready for query received */
++				pool_wait_till_ready_for_query(backend);
++			}
+ 			break;
+ 
+ 		case 'F':	/* FunctionCall */
+@@ -2635,7 +2645,7 @@ POOL_STATUS ProcessBackendResponse(POOL_CONNECTION *frontend,
+ 					{
+ 						/* parse_before_bind() was called. Do not foward the
+ 						 * close complete message to frontend. */
+-						ereport(LOG,
++						ereport(DEBUG1,
+ 								(errmsg("processing backend response"),
+ 								 errdetail("do not forward close complete message to frontend")));
+ 						pool_discard_packet_contents(backend);
+@@ -2662,31 +2672,8 @@ POOL_STATUS ProcessBackendResponse(POOL_CONNECTION *frontend,
+ 				{
+ 					pool_set_ignore_till_sync();
+ 					pool_unset_query_in_progress();
+-
+ 					if (STREAM)
+-					{
+-						POOL_PENDING_MESSAGE *pmsg;
+-						int i;
+-
+-						/* Remove all pending messages */
+-						do
+-						{
+-							pmsg = pool_pending_message_pull_out();
+-							pool_pending_message_free_pending_message(pmsg);
+-						}
+-						while (pmsg);
+-
+-						pool_pending_message_reset_previous_message();
+-
+-						/* Discard read buffer */
+-						for (i=0;i<NUM_BACKENDS;i++)
+-						{
+-							if (VALID_BACKEND(i))
+-							{
+-								pool_discard_read_buffer(CONNECTION(backend, i));
+-							}
+-						}
+-					}
++						pool_discard_except_sync_and_ready_for_query(frontend, backend);
+ 				}
+ 				break;
+ 
+@@ -3528,3 +3515,136 @@ flatten_set_variable_args(const char *name, List *args)
+ 	
+ 	return buf.data;
+ }
++
++/* Called when sync message is received.
++ * Wait till ready for query received.
++ */
++static void pool_wait_till_ready_for_query(POOL_CONNECTION_POOL *backend)
++{
++	char kind;
++	int len;
++	int poplen;
++	char *buf;
++	int i;
++	
++	for (i=0;i<NUM_BACKENDS;i++)
++	{
++		if (VALID_BACKEND(i))
++		{
++			for (;;)
++			{
++				pool_read(CONNECTION(backend, i), &kind, sizeof(kind));
++				pool_push(CONNECTION(backend, i), &kind, sizeof(kind));
++				pool_read(CONNECTION(backend, i), &len, sizeof(len));
++				pool_push(CONNECTION(backend, i), &len, sizeof(len));
++				if ((ntohl(len)-sizeof(len)) > 0)
++				{
++					buf = pool_read2(CONNECTION(backend, i), ntohl(len)-sizeof(len));
++					pool_push(CONNECTION(backend, i), buf, ntohl(len)-sizeof(len));
++				}
++				
++				if (kind == 'Z')	/* Ready for query? */
++				{
++					pool_pop(CONNECTION(backend, i), &poplen);
++					ereport(DEBUG1,
++							(errmsg("pool_wait_till_ready_for_query: backend:%d ready for query found. buffer length:%d",
++									i, CONNECTION(backend, i)->len)));
++					break;
++				}
++			}
++		}
++	}
++}
++
++/*
++ * Called when error response received in streaming replication mode and doing
++ * extended query. Remove all pending messages and backend message buffer data
++ * except POOL_SYNC pending message and ready for query.  If sync message is
++ * not received yet, call ProcessFrontendResponse() to read data from
++ * frontend.
++ */
++static void pool_discard_except_sync_and_ready_for_query(POOL_CONNECTION *frontend,
++														 POOL_CONNECTION_POOL *backend)
++{
++	POOL_PENDING_MESSAGE *pmsg;
++	int i;
++
++	if (!pool_is_doing_extended_query_message() || !STREAM)
++		return;
++
++	/*
++	 * Check to see if we aready received a sync
++	 * message. If not, call ProcessFrontendResponse() to
++	 * get the sync message from client.
++	 */
++	pmsg = pool_pending_message_get(POOL_SYNC);
++	if (pmsg == NULL)
++	{
++		ProcessFrontendResponse(frontend, backend);
++	}
++	pool_pending_message_free_pending_message(pmsg);						
++
++	/* Remove all pending messages except sync message */
++	do
++	{
++		pmsg = pool_pending_message_head_message();
++		if (pmsg && pmsg->type == POOL_SYNC)
++		{
++			ereport(LOG,
++					(errmsg("Process backend response: sync pending message found after receiving error response")));
++			pool_unset_ignore_till_sync();
++			pool_pending_message_free_pending_message(pmsg);
++			break;
++		}
++		pool_pending_message_free_pending_message(pmsg);
++		pmsg = pool_pending_message_pull_out();
++		pool_pending_message_free_pending_message(pmsg);
++	}
++	while (pmsg);
++
++	pool_pending_message_reset_previous_message();
++
++	/* Discard read buffer execpt "Ready for query" */
++	for (i=0;i<NUM_BACKENDS;i++)
++	{
++		if (VALID_BACKEND(i))
++		{
++			char kind;
++			int len;
++			int sts;
++
++			while (!pool_read_buffer_is_empty(CONNECTION(backend, i)))
++			{
++				sts = pool_read(CONNECTION(backend, i), &kind, sizeof(kind));
++				if (sts < 0 || kind == '\0')
++				{
++					ereport(DEBUG1,
++							(errmsg("pool_discard_except_sync_and_ready_for_query: EOF detected while reading from backend: %d buffer length: %d sts: %d",
++									i, CONNECTION(backend, i)->len, sts)));
++					pool_unread(CONNECTION(backend, i), &kind, sizeof(kind));
++					break;
++				}
++									
++				if (kind == 'Z')	/* Ready for query? */
++				{
++					pool_unread(CONNECTION(backend, i), &kind, sizeof(kind));
++					ereport(DEBUG1,
++							(errmsg("pool_discard_except_sync_and_ready_for_query: Ready for query found. backend:%d",
++									i)));
++					break;
++				}
++				else
++				{
++					/* Read and discard packet */
++					pool_read(CONNECTION(backend, i), &len, sizeof(len));
++					if ((ntohl(len)-sizeof(len)) > 0)
++					{
++						pool_read2(CONNECTION(backend, i), ntohl(len)-sizeof(len));
++					}
++					ereport(DEBUG1,
++							(errmsg("pool_discard_except_sync_and_ready_for_query: discarding packet %c (len:%lu) of backend:%d", kind, ntohl(len)-sizeof(len), i)));
++				}
++			}
++		}
++	}
++}
