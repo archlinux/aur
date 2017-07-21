@@ -6,23 +6,24 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=20.0
-pkgrel=2
+pkgver=20.0.1
+pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
 license=('Apache')
 depends=('ncurses' 'openssl')
-makedepends=('perl' 'lksctp-tools' 'unixodbc' 'git' 'libxslt' 'fop'
-             'java-environment')
+makedepends=('lksctp-tools' 'unixodbc' 'git' 'libxslt' 'fop' 'java-environment')
 conflicts=('erlang')
 optdepends=('erlang-unixodbc: database support'
             'java-environment: for Java support'
             'lksctp-tools: for SCTP support')
 options=('staticlibs')
-source=("git+https://github.com/erlang/otp.git#tag=OTP-20.0"
-        "http://www.erlang.org/download/otp_doc_man_20.0.tar.gz"
-        'epmd.service' 'epmd.socket' 'epmd.conf')
+source=("git+https://github.com/erlang/otp.git#tag=OTP-$pkgver"
+        "http://www.erlang.org/download/otp_doc_man_${pkgver%.*}.tar.gz"
+        'epmd.service'
+        'epmd.socket'
+        'epmd.conf')
 sha256sums=('SKIP'
             'b7f1542a94a170f8791f5d80a85706f9e8838924ea65d4301032d0c0cfb845cc'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
@@ -38,7 +39,11 @@ prepare() {
 build() {
   cd otp
 
-  ./configure --prefix=/usr --enable-smp-support --with-odbc --enable-builtin-zlib
+  ./configure \
+    --prefix=/usr \
+    --enable-smp-support \
+    --with-odbc \
+    --enable-builtin-zlib
   make
 }
 
