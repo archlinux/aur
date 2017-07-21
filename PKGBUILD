@@ -35,7 +35,7 @@ optdepends=('qbs'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support')
-makedepends=('clang' 'qt5-base')
+makedepends=('qbs' 'clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
 sha256sums=('163e729a0c4a78f4cd8acb9c82cae806bd66d6e1612aa52b94c1345a85384460')
 
