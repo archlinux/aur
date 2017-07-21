@@ -2,7 +2,7 @@
 
 pkgname='scaleft-server-tools'
 pkgdesc='ScaleFT(TM) daemon and shell'
-pkgver=1.27.1
+pkgver=1.29.5
 pkgrel=1
 arch=('x86_64')
 url="https://scaleft.com"
@@ -11,7 +11,7 @@ install=${pkgname}.install
 makedepends=('rpmextract')
 depends=('glibc')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm")
-sha256sums=('8ea089a15c2e591a3599befbd6e7ab20ad3613bcad827869e8b35dfde41f448e')
+sha256sums=('b1e5890655c1a0039939af1ab572a54966af754d112b1f873bd84abf733a7028')
 
 prepare() {
 	rpmextract.sh ${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm
