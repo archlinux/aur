@@ -2,7 +2,7 @@
 
 pkgname=leave
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Reminds you when you have to leave"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/leave/1.12-2.1"
@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  gcc -o leave leave.c -D__COPYRIGHT\(x\)= -D__RCSID\(x\)=
+  gcc -v -o leave leave.c $CFLAGS -D__COPYRIGHT\(x\)= -D__RCSID\(x\)=
 }
 
 package() {
