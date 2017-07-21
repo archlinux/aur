@@ -2,8 +2,8 @@
 # Contributor: stqn
 
 # Set this to 'true' to build and install the plugins
-_build_feedreader=true
-_build_voip=true
+_plugin_feedreader=true
+_plugin_voip=true
 
 # Set this to 'true' to enable auto login
 #_autologin='true'
@@ -18,7 +18,7 @@ _build_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.2.r348.g86118d9de
+pkgver=v0.6.3.RC1.r1.gaa471e5b2
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -35,8 +35,8 @@ source=("${_pkgname}::git+https://github.com/RetroShare/RetroShare.git")
 sha256sums=('SKIP')
 
 # Add missing dependencies if needed
-[[ "$_build_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
-[[ "$_build_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
+[[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
+[[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
 [[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libgnome-keyring')
 
@@ -69,8 +69,8 @@ build() {
 	fi
 
 	# remove unwanted plugins
-	[[ "$_build_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
-	[[ "$_build_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
+	[[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
+	[[ "$_plugin_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
 
 	# call version scripts
 	cd libretroshare/src
@@ -82,7 +82,6 @@ build() {
 	cd ../..
 
 	qmake   CONFIG-=debug CONFIG+=release \
-		CONFIG+=rs_nodeprecatedwarning \
 		${_optAutol} ${_optClang} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
