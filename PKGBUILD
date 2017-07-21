@@ -2,7 +2,7 @@
 
 pkgname=caffe2-git
 pkgver=0.7.0.r657.ga01c46a7
-pkgrel=1
+pkgrel=2
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (git version, gpu enabled)'
 arch=('x86_64')
 url='http://caffe2.ai/'
@@ -121,73 +121,73 @@ build() {
     cd build
     
     cmake \
-        -DBLAS:STRING=Eigen \
+        -DBLAS:STRING='Eigen' \
         \
-        -DBUILD_BINARY:BOOL=ON \
-        -DBUILD_PYTHON:BOOL=ON \
-        -DBUILD_SHARED_LIBS:BOOL=ON \
+        -DBUILD_BINARY:BOOL='ON' \
+        -DBUILD_PYTHON:BOOL='ON' \
+        -DBUILD_SHARED_LIBS:BOOL='ON' \
         \
-        -DBUILD_TEST:BOOL=OFF \
+        -DBUILD_TEST:BOOL='OFF' \
         \
-        -DCAFFE2_CPU_FLAGS:BOOL=OFF \
-        -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_COLOR_MAKEFILE:BOOL=ON \
-        -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 \
-        -DCMAKE_C_COMPILER=/usr/bin/gcc-5 \
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=NO \
-        -DCMAKE_SKIP_RPATH:BOOL=NO \
-        -DCMAKE_VERBOSE_MAKEFILE:BOOL=FALSE \
+        -DCAFFE2_CPU_FLAGS:BOOL='OFF' \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_CXX_COMPILER='/usr/bin/g++-5' \
+        -DCMAKE_C_COMPILER='/usr/bin/gcc-5' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
+        -DCMAKE_SKIP_RPATH:BOOL='NO' \
+        -DCMAKE_VERBOSE_MAKEFILE:BOOL='FALSE' \
         \
-        -DCUDA_64_BIT_DEVICE_CODE:BOOL=ON \
-        -DCUDA_ARCH_NAME:STRING=Auto \
-        -DCUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE:BOOL=ON \
-        -DCUDA_BUILD_CUBIN:BOOL=OFF \
-        -DCUDA_BUILD_EMULATION:BOOL=OFF \
-        -DCUDA_HOST_COMPILATION_CPP:BOOL=ON \
-        -DCUDA_HOST_COMPILER:FILEPATH=/usr/bin/gcc-5 \
-        -DCUDA_NVCC_EXECUTABLE:FILEPATH=/opt/cuda/bin/nvcc \
-        -DCUDA_PROPAGATE_HOST_FLAGS:BOOL=ON \
-        -DCUDA_SDK_ROOT_DIR:PATH=/opt/cuda \
-        -DCUDA_SEPARABLE_COMPILATION:BOOL=OFF \
-        -DCUDA_TOOLKIT_INCLUDE:PATH=/opt/cuda/include \
-        -DCUDA_TOOLKIT_ROOT_DIR:PATH=/opt/cuda \
-        -DCUDA_USE_STATIC_CUDA_RUNTIME:BOOL=OFF \
-        -DCUDA_VERBOSE_BUILD:BOOL=OFF \
-        -DCUDA_VERSION:STRING=8.0 \
-        -DCUDNN_INCLUDE_DIR:PATH=/opt/cuda/include \
-        -DCUDNN_ROOT_DIR:PATH=/opt/cuda \
+        -DCUDA_64_BIT_DEVICE_CODE:BOOL='ON' \
+        -DCUDA_ARCH_NAME:STRING='Auto' \
+        -DCUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE:BOOL='ON' \
+        -DCUDA_BUILD_CUBIN:BOOL='OFF' \
+        -DCUDA_BUILD_EMULATION:BOOL='OFF' \
+        -DCUDA_HOST_COMPILATION_CPP:BOOL='ON' \
+        -DCUDA_HOST_COMPILER:FILEPATH='/usr/bin/gcc-5' \
+        -DCUDA_NVCC_EXECUTABLE:FILEPATH='/opt/cuda/bin/nvcc' \
+        -DCUDA_PROPAGATE_HOST_FLAGS:BOOL='ON' \
+        -DCUDA_SDK_ROOT_DIR:PATH='/opt/cuda' \
+        -DCUDA_SEPARABLE_COMPILATION:BOOL='OFF' \
+        -DCUDA_TOOLKIT_INCLUDE:PATH='/opt/cuda/include' \
+        -DCUDA_TOOLKIT_ROOT_DIR:PATH='/opt/cuda' \
+        -DCUDA_USE_STATIC_CUDA_RUNTIME:BOOL='OFF' \
+        -DCUDA_VERBOSE_BUILD:BOOL='OFF' \
+        -DCUDA_VERSION:STRING='8.0' \
+        -DCUDNN_INCLUDE_DIR:PATH='/opt/cuda/include' \
+        -DCUDNN_ROOT_DIR:PATH='/opt/cuda' \
         \
-        -DGLOO_STATIC_OR_SHARED:STRING=STATIC \
-        -DNCCL_INCLUDE_DIR:PATH=/opt/cuda/include \
-        -DNCCL_LIBRARY:FILEPATH=/opt/cuda/lib64/libnccl.so \
-        -DNCCL_ROOT_DIR:PATH=/opt/cuda \
+        -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
+        -DNCCL_INCLUDE_DIR:PATH='/opt/cuda/include' \
+        -DNCCL_LIBRARY:FILEPATH='/opt/cuda/lib64/libnccl.so' \
+        -DNCCL_ROOT_DIR:PATH='/opt/cuda' \
         \
-        -DOpenCV_DIR:PATH=/usr/share/OpenCV \
+        -DOpenCV_DIR:PATH='/usr/share/OpenCV' \
         \
-        -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2.7 \
-        -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY:FILEPATH=/usr/lib/libpython2.7.so \
+        -DPYTHON_EXECUTABLE:FILEPATH='/usr/bin/python2.7' \
+        -DPYTHON_INCLUDE_DIR:PATH='/usr/include/python2.7' \
+        -DPYTHON_LIBRARY:FILEPATH='/usr/lib/libpython2.7.so' \
         \
-        -DUSE_CNMEM:BOOL=OFF \
-        -DUSE_CUDA:BOOL=ON \
-        -DUSE_GFLAGS:BOOL=ON \
-        -DUSE_GLOG:BOOL=ON \
-        -DUSE_GLOO:BOOL=ON \
-        -DUSE_LEVELDB:BOOL=ON \
-        -DUSE_LITE_PROTO:BOOL=OFF \
-        -DUSE_LMDB:BOOL=ON \
-        -DUSE_MPI:BOOL=ON \
-        -DUSE_NCCL:BOOL=ON \
-        -DUSE_NERVANA_GPU:BOOL=ON \
-        -DUSE_NNPACK:BOOL=ON \
-        -DUSE_OPENCV:BOOL=OFF \
-        -DUSE_FFMPEG:BOOL=OFF \
-        -DUSE_OPENMP:BOOL=ON \
-        -DUSE_REDIS:BOOL=ON \
-        -DUSE_ROCKSDB:BOOL=OFF \
-        -DUSE_THREADS:BOOL=ON \
-        -DUSE_ZMQ:BOOL=ON \
+        -DUSE_CNMEM:BOOL='OFF' \
+        -DUSE_CUDA:BOOL='ON' \
+        -DUSE_GFLAGS:BOOL='ON' \
+        -DUSE_GLOG:BOOL='ON' \
+        -DUSE_GLOO:BOOL='ON' \
+        -DUSE_LEVELDB:BOOL='ON' \
+        -DUSE_LITE_PROTO:BOOL='OFF' \
+        -DUSE_LMDB:BOOL='ON' \
+        -DUSE_MPI:BOOL='ON' \
+        -DUSE_NCCL:BOOL='ON' \
+        -DUSE_NERVANA_GPU:BOOL='ON' \
+        -DUSE_NNPACK:BOOL='ON' \
+        -DUSE_OPENCV:BOOL='OFF' \
+        -DUSE_FFMPEG:BOOL='OFF' \
+        -DUSE_OPENMP:BOOL='ON' \
+        -DUSE_REDIS:BOOL='ON' \
+        -DUSE_ROCKSDB:BOOL='OFF' \
+        -DUSE_THREADS:BOOL='ON' \
+        -DUSE_ZMQ:BOOL='ON' \
         \
         -Wno-dev \
         ..
@@ -210,8 +210,8 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # move/rename folders to the right location
-    mv -f "${pkgdir}/usr/caffe"    "${pkgdir}/usr/lib/python2.7/site-packages"
-    mv -f "${pkgdir}/usr/caffe2"   "${pkgdir}/usr/lib/python2.7/site-packages"
+    mv -f "${pkgdir}/usr/caffe"  "${pkgdir}/usr/lib/python2.7/site-packages"
+    mv -f "${pkgdir}/usr/caffe2" "${pkgdir}/usr/lib/python2.7/site-packages"
     
     # license
     cd "${srcdir}/${pkgname}"
