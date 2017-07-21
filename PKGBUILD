@@ -2,7 +2,7 @@
 # Contributor: Dmitry Korzhevin <dkorzhevin at gmail dot com>
 
 pkgname=sportstracker
-pkgver=7.3.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="Application for people who want to track their sporting activities"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('java-environment' 'java-openjfx')
 source=(http://downloads.sourceforge.net/sportstracker/SportsTracker-$pkgver-bin.zip
         sportstracker.sh
         sportstracker.desktop)
-sha1sums=('8fe247946bc2b8cb2511d964fa48c35ace1e665d'
+sha1sums=('390bd5b94d2a9ca1214676696f95cd095cb4f050'
           '14f7feca091a697ad9b0f6ef73bd3a4dd8797c53'
           '663d2bf00a87c1bddc8bda2c7f6dacd8d869c281')
 
