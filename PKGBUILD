@@ -1,6 +1,6 @@
 # Maintainer: tgsachse (Tiger Sachse) <tgsachse@gmail.com>
 pkgname=viento-git
-pkgver=0.3.0
+pkgver=v0.4.0
 pkgrel=1
 
 pkgdesc="Daemon and CLI interface for cloud storage management."
@@ -19,5 +19,5 @@ pkgver(){
 package() {
     cd viento
 	install -Dm 0777 -t ${pkgdir}/usr/bin viento
-    install -Dm 0777 -t "${pkgdir}/usr/lib/python3.6/site-packages" viento_s.py viento_d.py 
+    install -Dm 0777 -t "${pkgdir}/usr/lib/python3.6/site-packages" viento_setup.py viento_daemon.py viento_utils.py
 }
