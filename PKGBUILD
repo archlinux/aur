@@ -12,7 +12,7 @@ groups=("MBC")
 depends=("qt5-base>=5.9.1")
 makedepends=("tar" "gcc" "qt5-base>=5.9.1")
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz")
-md5sums=('5e721a72c321b6735b6f9d36a7147559')
+md5sums=('03e7a7a0117fa49b3b1ba127f5364cba')
 
 
 prepare() 
