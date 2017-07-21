@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.37.16.10.g7ddb47936
+pkgver=1.37.16.13.g3d438a7ca
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
 license=('custom')
 depends=('nodejs' 'python2' 'python')
-makedepends=('git' 'cmake' 'clang' 'libxml2')
+makedepends=('git' 'cmake' 'clang' 'libxml2' 'ocaml-ctypes')
 optdepends=('java-environment: for using clojure'
 	    'gcc-go: for using llvm-go, go may also work'
 	    'ruby: for running some scripts')
