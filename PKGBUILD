@@ -1,5 +1,5 @@
 pkgname=alacritty-git
-pkgver=0.1.0.542.gb4a839a
+pkgver=0.1.0.553.g2821902
 pkgrel=1
 pkgdesc="A cross-platform, GPU enhanced terminal emulator"
 arch=('x86_64' 'i686')
