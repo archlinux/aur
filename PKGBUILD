@@ -1,7 +1,7 @@
 # Maintainer: DATSD <dastudiodirector at gmail dot com>
 _basename=xmake
 pkgname=${_basename}-git
-pkgver=2.1.4.r255
+pkgver=2.1.4.r415
 pkgrel=1
 pkgdesc='A make-like build utility based on Lua'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver()
 build()
 {
 	cd "${srcdir}/${_basename}"
-	make build
+	make build CC=gcc LD=gcc
 }
 
 package()
