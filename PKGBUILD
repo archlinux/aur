@@ -5,30 +5,29 @@
 # Contributor: Davi da Silva Böger <dsboger@gmail.com>
 
 pkgname=gnome-exe-thumbnailer
-pkgver=0.9.3
-pkgrel=3
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Wine executable (.exe/.msi/.dll/.lnk) thumbnailer for GNOME"
 arch=('any')
-url="https://launchpad.net/ubuntu/+source/gnome-exe-thumbnailer"
+url="https://github.com/gnome-exe-thumbnailer/gnome-exe-thumbnailer"
 license=('LGPL2.1')
 depends=('bash' 'imagemagick' 'icoutils' 'glib2')
-optdepends=('wine: to support .msi installers and .lnk shortcuts')
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}-2_all.deb")
-sha256sums=('d4e94813b8e16667762a04ce06d5fd19542a410f5a33de9e5f6938b8365c6104')
-
-prepare() {
-  bsdtar xf data.tar.xz
-}
+optdepends=('wine: to support .lnk shortcuts'
+            'msitools: to support .msi installers')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('1b59acf7005bf42aca85a71b08a771dc5b74ce44dca1ef34972a876fb4212e2d')
 
 package() {
+  cd $pkgname-$pkgver
+
   install -Dm0755 usr/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
 
-  cd usr/share
-  install -Dm0644 thumbnailers/exe-dll-msi.thumbnailer \
+  install -Dm0644 usr/share/thumbnailers/exe-dll-msi.thumbnailer \
     "$pkgdir"/usr/share/thumbnailers/exe-dll-msi.thumbnailer
 
-  install -Dm0644 man/man1/$pkgname.1.gz "$pkgdir"/usr/share/man/man1/$pkgname.1.gz
-
   install -d "$pkgdir"/usr/share/pixmaps
-  cp -r pixmaps/$pkgname "$pkgdir"/usr/share/pixmaps
+  cp -r usr/share/pixmaps/$pkgname "$pkgdir"/usr/share/pixmaps
+
+  install -d "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm0644 CHANGELOG README "$pkgdir"/usr/share/doc/$pkgname
 }
