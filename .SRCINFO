@@ -1,7 +1,7 @@
 pkgbase = webp-pixbuf-loader
 	pkgdesc = WebM GDK Pixbuf Loader library
 	pkgver = 20160329
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aruiz/webp-pixbuf-loader
 	arch = x86_64
 	arch = i686
