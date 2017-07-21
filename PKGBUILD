@@ -5,7 +5,7 @@ MOZJS_DEBUG=
 
 pkgname=js52
 pkgver=52.2.1esr
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript interpreter and libraries"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
@@ -15,14 +15,20 @@ makedepends=(python2 zip autoconf2.13)
 options=(!staticlibs)
 [[ -z "$MOZJS_DEBUG" ]] || options+=(!strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
-        link-mozglue.patch)
-md5sums=('148418b75a026e3f7fe09c9f76e7fb78'
-         '31bf0b1a043169bd1c651331ef9c9dd8')
+        link-mozglue.patch
+        mozjs52-shell-version.patch
+        mozjs52-pkg-config-version.patch)
+sha256sums=('8ee3ae10e8e782d867e9164eaed4613783959266fd7d01daf972159ca426efdb'
+            '770d6122e95d062050ffa9039dd41f085e6f4e6da3c56958a9a0cc2897fc8ca6'
+            'e5470391fd9e3fde866d9a5046f4e778b001e632342fcd5ba6273e8956a2924b'
+            'fcdc86524d3abb89244310bded9e994833b1ecad2cb181821cbb523e2c1b567a')
 
 prepare() {
   cd firefox-$pkgver
   # Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1236085
   patch -p1 -i ../link-mozglue.patch
+  patch -Np1 -i ../mozjs52-shell-version.patch
+  patch -Np1 -i ../mozjs52-pkg-config-version.patch
 
   cd js/src
   rm configure
@@ -43,19 +49,15 @@ build() {
 
 check() {
   cd "$srcdir/firefox-$pkgver/js/src/tests"
-  python2 jstests.py ../js/src/js
+  python2 jstests.py ../js/src/$pkgname
 
   cd "$srcdir/firefox-$pkgver/js/src/jit-test"
-  python2 jit_test.py ../js/src/js
+  python2 jit_test.py ../js/src/$pkgname
 }
 
 package() {
   cd firefox-$pkgver/js/src
   make DESTDIR="$pkgdir" install
-
-  mv "$pkgdir"/usr/bin/js{,52}
-  mv "$pkgdir"/usr/bin/js{,52}-config
-  mv "$pkgdir"/usr/lib/pkgconfig/js{,52}.pc
 
   install -Dm644 mozglue/build/libmozglue.a "$pkgdir"/usr/lib/libmozglue.a
 }
