@@ -10,7 +10,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.12
-pkgrel=3
+pkgrel=4
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=$_pkgbasever
@@ -146,9 +146,9 @@ prepare()
     patch -p1 < ../wine-patches-master/0003-wine-list.h-linked-list-cache-line-prefetching.patch
     patch -p1 < ../wine-patches-master/0004-ntdll-heap.c-freelist_balance-prefetch-next-entry-ca.patch
 #   This patch has been upstreamed 
-#   patch -p1 < ../wine-patches-master/0005-oleaut32-typelib.c-fix-cursor2-having-the-wrong-type.patch
+#    patch -p1 < ../wine-patches-master/0005-oleaut32-typelib.c-fix-cursor2-having-the-wrong-type.patch
     patch -p1 < ../wine-patches-master/0006-Ensure-16-byte-alignment-of-data.patch
-    patch -p1 < ../wine-patches-master/0007-wined3d-use-SwitchToThread-waits-in-wined3d_pause.patch
+#    patch -p1 < ../wine-patches-master/0007-wined3d-use-SwitchToThread-waits-in-wined3d_pause.patch
     
     patch -p1 < ../wbemprox_query_v2.patch
 
