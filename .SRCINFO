@@ -1,7 +1,7 @@
 pkgbase = vimb
 	pkgdesc = The vim like browser
 	pkgver = 3.0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fanglingsu.github.io/vimb
 	arch = i686
 	arch = x86_64
