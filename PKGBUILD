@@ -13,7 +13,7 @@ depends=(
     'python2'
     'python2-setuptools'
     'python2-lxml'
-    'wxpython2.8'
+    'wxpython'
 )
 source=("$_pkgname"::'git://github.com/oskusalerma/trelby.git')
 md5sums=('SKIP')
