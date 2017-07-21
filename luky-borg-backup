@@ -1,0 +1,76 @@
+#!/bin/sh
+CONFFILE=/etc/luky-borg-backup.conf
+. $CONFFILE
+
+if [ -z "$REPOSITORY" ]; then
+	echo "ERROR: No REPOSITORY set. Please edit $CONFFILE"
+	exit
+fi
+
+# Try to mount the MOUNTPOINT first (if one exists)
+premounted="1" # assume all mounts were already in place before we started
+mounted="1" # assume a mounted state until proven otherwise
+if [ ! -z "$MOUNTPOINT" ]; then
+	premounted="0"
+	mounted="0"
+
+	if [ `mount | grep -c "$MOUNTPOINT"` -ne "0" ]; then
+	        premounted="1"
+	        mounted="1"
+	        echo "$MOUNTPOINT was already mounted..."
+	else
+	        echo "Mounting $MOUNTPOINT..."
+	        mount "$MOUNTPOINT"
+	        if [ "$?" -ne "0" ]; then
+	                echo "ERROR: $MOUNTPOINT could not be mounted!"
+	        else
+	                echo " Mounted $MOUNTPOINT!"
+	                mounted="1"
+	        fi
+	fi
+fi
+
+if [ "$mounted" -eq "1" ]; then
+	# Backup all necessary files and directories using deduplication and lz4 conpression
+
+        echo
+	echo "Backing up to $REPOSITORY..."
+	borg create -v -s --noatime -C lz4 $REPOSITORY::'{hostname}-{now:%Y-%m-%dT%H:%M:%S.%f}' $SOURCES
+	echo " Backed up to $REPOSITORY!"
+        echo
+
+	# Use the `prune` subcommand to maintain 7 daily, 4 weekly and 6 monthly
+	# archives of THIS machine. The '{hostname}-' prefix is very important to
+	# limit prune's operation to this machine's archives and not apply to
+	# other machine's archives also.
+	borg prune -v --list $REPOSITORY --prefix '{hostname}-' --keep-daily=7 --keep-weekly=4 --keep-monthly=12
+
+	if [ ! -z "$CLOUDFOLDER" ]; then
+                echo
+	        echo "Syncing $REPOSITORY with $CLOUDFOLDER..."
+		owncloudcmd -u $CLOUDUSER -s -p $CLOUDPASSWORD -h $REPOSITORY $CLOUDFOLDER
+	    	echo " Synced $REPOSITORY with $CLOUDFOLDER!"
+	fi
+
+	if [ ! -z "$MOUNTPOINT" ]; then
+	        echo
+	        echo "=============================================="
+	        echo "Usage of filesystem at $MOUNTPOINT after backing up:"
+	        echo "----------------------------------------------"
+	        df -hT ${MOUNTPOINT}
+	        echo "=============================================="
+	        echo
+
+	        if [ "$premounted" -eq "0" ]; then
+	                echo "Unmounting $MOUNTPOINT..."
+	                umount "$MOUNTPOINT"
+	                if [ "$?" -eq "0" ]; then
+	                        echo " Unmounted $MOUNTPOINT"
+	                else
+	                        echo "ERROR: $MOUNTPOINT could not be unmountedi!"
+	                fi
+	        else
+	                echo "Keeping $MOUNTPOINT mounted because it was already mounted!"
+	        fi
+	fi
+fi

@@ -1,0 +1,19 @@
+pkgbase = luky-borg-backup
+	pkgdesc = Automated backup scripts using Borg Backup, systemd and optionally Nextcloud/ownCloud/Stack
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = borg
+	optdepends = owncloud-client: For backing up to Nextcloud/ownCloud/Stack
+	source = luky-borg-backup
+	source = luky-borg-backup.service
+	source = luky-borg-backup.timer
+	source = luky-borg-backup.conf
+	md5sums = e98689841afd51b0f8572085aa2d1917
+	md5sums = 1d2f47ca460ab2d477b3753f9a86ae07
+	md5sums = 5b876c8ae21d8ce159c161993e97536d
+	md5sums = b1ef1610ffd6f3dd792da4869910a917
+
+pkgname = luky-borg-backup
+

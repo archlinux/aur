@@ -1,0 +1,6 @@
+[Unit]
+Description=LukyLX Incremental Backup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/luky-borg-backup
