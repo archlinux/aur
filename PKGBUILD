@@ -41,7 +41,7 @@ sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 pkgver() {
-  echo "${_version}.$(head -n1 ${_src}-${CARCH}.txt | cut -c-8)"
+  echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt | cut -c-8)"
 }
 
 package() {
