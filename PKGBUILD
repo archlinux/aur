@@ -10,7 +10,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.12
-pkgrel=1
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=$_pkgbasever
@@ -30,7 +30,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 sha1sums=('9f155f56c6d28d90733d2039a52aff4f6a744605'
 	  '83fa25468637a14878bb71e04ae411b581a08b38'
 	  '0c45c2e050a7642acd5c7dec6fd5b03f8b5cd658'
-	  'b9ca93f8afcd01cf12460d40022df733010069d2'
+	  'SKIP'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
 	  '0663651dd32b1537055bf560e6ec098623785238'
 	  'f3febb8836f38320742a546c667106608d4c4395'
@@ -148,6 +148,7 @@ prepare()
 #   This patch has been upstreamed 
 #   patch -p1 < ../wine-patches-master/0005-oleaut32-typelib.c-fix-cursor2-having-the-wrong-type.patch
     patch -p1 < ../wine-patches-master/0006-Ensure-16-byte-alignment-of-data.patch
+    patch -p1 < ../wine-patches-master/0007-wined3d-use-SwitchToThread-waits-in-wined3d_pause.patch
     
     patch -p1 < ../wbemprox_query_v2.patch
 
