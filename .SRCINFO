@@ -5,7 +5,6 @@ pkgbase = scaleft-client-tools
 	url = https://scaleft.com
 	arch = x86_64
 	license = custom
-	makedepends = rpmextract
 	depends = glibc
 	source = https://pkg.scaleft.com/rpm/scaleft-client-tools-1.29.5-1.x86_64.rpm
 	sha256sums = 2d33ce411115ffc6c017e8bac7676f00bfc81255e748dd29ecbba4d9088860f5

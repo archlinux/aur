@@ -7,14 +7,9 @@ pkgrel=1
 arch=('x86_64')
 url="https://scaleft.com"
 license=('custom')
-makedepends=('rpmextract')
 depends=('glibc')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm")
 sha256sums=('2d33ce411115ffc6c017e8bac7676f00bfc81255e748dd29ecbba4d9088860f5')
-
-prepare() {
-	rpmextract.sh ${pkgname}-${pkgver}-${pkgrel}.${arch}.rpm
-}
 
 package() {
   install -Dm0755 usr/bin/sft ${pkgdir}/usr/bin/sft
