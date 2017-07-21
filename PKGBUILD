@@ -4,19 +4,20 @@
 # Contributor: Thomas Weißschuh <thomas_weissschuh lavabit.com>
 
 pkgname=mosh
-pkgver=1.3.0
-pkgrel=4
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
 url='https://mosh.org/'
 license=('GPL3')
-depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
-source=("https://mosh.org/$pkgname-$pkgver.tar.gz")
-sha256sums=('320e12f461e55d71566597976bd9440ba6c5265fa68fbf614c6f1c8401f93376')
+depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl-io-tty' 'libutempter')
+makedepends=('git')
 options=('!emptydirs')
+source=("git+https://github.com/mobile-shell/mosh#tag=$pkgname-$pkgver")
+sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   ./autogen.sh
   ./configure --prefix=/usr
@@ -24,8 +25,9 @@ build() {
 }
 
 package() {
-  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
-  install -Dm644 "$pkgname-$pkgver/conf/bash-completion/completions/$pkgname" \
+  make -C "$pkgname" DESTDIR="$pkgdir" install
+
+  install -Dm644 "$pkgname/conf/bash-completion/completions/$pkgname" \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }
 
