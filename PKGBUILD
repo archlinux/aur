@@ -24,7 +24,7 @@ _protobuf_version='3.1.0' # commit 'a428e42072765993ff674fda72863c9f1aa2d268' is
 _srcname=caffe2
 pkgname=caffe2-cpu
 pkgver=0.7.0
-pkgrel=10
+pkgrel=11
 pkgdesc='A new lightweight, modular, and scalable deep learning framework (cpu only)'
 arch=('i686' 'x86_64')
 url='http://caffe2.ai/'
@@ -144,50 +144,50 @@ build() {
     cd build
     
     cmake \
-        -DBLAS:STRING=Eigen \
+        -DBLAS:STRING='Eigen' \
         \
-        -DBUILD_BINARY:BOOL=ON \
-        -DBUILD_PYTHON:BOOL=ON \
-        -DBUILD_SHARED_LIBS:BOOL=ON \
+        -DBUILD_BINARY:BOOL='ON' \
+        -DBUILD_PYTHON:BOOL='ON' \
+        -DBUILD_SHARED_LIBS:BOOL='ON' \
         \
-        -DBUILD_TEST:BOOL=OFF \
+        -DBUILD_TEST:BOOL='OFF' \
         \
-        -DCAFFE2_CPU_FLAGS:BOOL=OFF \
-        -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_COLOR_MAKEFILE:BOOL=ON \
-        -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 \
-        -DCMAKE_C_COMPILER=/usr/bin/gcc-5 \
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=NO \
-        -DCMAKE_SKIP_RPATH:BOOL=NO \
-        -DCMAKE_VERBOSE_MAKEFILE:BOOL=FALSE \
+        -DCAFFE2_CPU_FLAGS:BOOL='OFF' \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+        -DCMAKE_CXX_COMPILER='/usr/bin/g++-5' \
+        -DCMAKE_C_COMPILER='/usr/bin/gcc-5' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_SKIP_INSTALL_RPATH:BOOL='NO' \
+        -DCMAKE_SKIP_RPATH:BOOL='NO' \
+        -DCMAKE_VERBOSE_MAKEFILE:BOOL='FALSE' \
         \
-        -DGLOO_STATIC_OR_SHARED:STRING=STATIC \
+        -DGLOO_STATIC_OR_SHARED:STRING='STATIC' \
         \
-        -DOpenCV_DIR:PATH=/usr/share/OpenCV \
+        -DOpenCV_DIR:PATH='/usr/share/OpenCV' \
         \
-        -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2.7 \
-        -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY:FILEPATH=/usr/lib/libpython2.7.so \
+        -DPYTHON_EXECUTABLE:FILEPATH='/usr/bin/python2.7' \
+        -DPYTHON_INCLUDE_DIR:PATH='/usr/include/python2.7' \
+        -DPYTHON_LIBRARY:FILEPATH='/usr/lib/libpython2.7.so' \
         \
-        -DUSE_CNMEM:BOOL=OFF \
-        -DUSE_CUDA:BOOL=OFF \
-        -DUSE_GFLAGS:BOOL=ON \
-        -DUSE_GLOG:BOOL=ON \
-        -DUSE_GLOO:BOOL=ON \
-        -DUSE_LEVELDB:BOOL=ON \
-        -DUSE_LITE_PROTO:BOOL=OFF \
-        -DUSE_LMDB:BOOL=ON \
-        -DUSE_MPI:BOOL=ON \
-        -DUSE_NCCL:BOOL=OFF \
-        -DUSE_NERVANA_GPU:BOOL=OFF \
-        -DUSE_NNPACK:BOOL=ON \
-        -DUSE_OPENCV:BOOL=OFF \
-        -DUSE_OPENMP:BOOL=ON \
-        -DUSE_REDIS:BOOL=ON \
-        -DUSE_ROCKSDB:BOOL=OFF \
-        -DUSE_THREADS:BOOL=ON \
-        -DUSE_ZMQ:BOOL=ON \
+        -DUSE_CNMEM:BOOL='OFF' \
+        -DUSE_CUDA:BOOL='OFF' \
+        -DUSE_GFLAGS:BOOL='ON' \
+        -DUSE_GLOG:BOOL='ON' \
+        -DUSE_GLOO:BOOL='ON' \
+        -DUSE_LEVELDB:BOOL='ON' \
+        -DUSE_LITE_PROTO:BOOL='OFF' \
+        -DUSE_LMDB:BOOL='ON' \
+        -DUSE_MPI:BOOL='ON' \
+        -DUSE_NCCL:BOOL='OFF' \
+        -DUSE_NERVANA_GPU:BOOL='OFF' \
+        -DUSE_NNPACK:BOOL='ON' \
+        -DUSE_OPENCV:BOOL='OFF' \
+        -DUSE_OPENMP:BOOL='ON' \
+        -DUSE_REDIS:BOOL='ON' \
+        -DUSE_ROCKSDB:BOOL='OFF' \
+        -DUSE_THREADS:BOOL='ON' \
+        -DUSE_ZMQ:BOOL='ON' \
         \
         -Wno-dev \
         ..
