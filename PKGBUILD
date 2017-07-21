@@ -1,29 +1,39 @@
 # Maintainer: Zoron <zoronlivingston@gmail.com>
 
 pkgname=zrandr
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="A PyQt front end for xrandr"
+pkgdesc="A simple Qt front end for xrandr"
 arch=('any')
 url="https://github.com/fralonra/zrandr"
 license=('GPL')
-depends=('xorg-xrandr' 'python' 'python-pyqt4')
-source=("https://github.com/fralonra/zrandr/archive/${pkgver}.tar.gz")
-md5sums=('b37bc326887793bc64e42abc3550e97e')
+depends=('xorg-xrandr' 'qt5-base')
+source=("https://github.com/fralonra/$pkgname/archive/v${pkgver}.tar.gz")
+md5sums=('66ab5fc2792e298a648faf785fb68acf')
+
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+	qmake $pkgname.pro
+	make
+}
+
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
+	make -k check
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/zrandr"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm644 zrandr.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 zrandr.py -t "$pkgdir/usr/share/zrandr/"
-  install -Dm755 zrandr -t "$pkgdir/usr/bin/"
+  install -Dm644 build/$pkgname.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm755 $pkgname -t "$pkgdir/usr/bin/"
 
   for _i in 16 64 128 256; do
-    install -Dm644 icons/zrandr-${_i}x${_i}.png \
-    "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/zrandr.png"
+    install -Dm644 build/icons/$pkgname-${_i}x${_i}.png \
+    "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/$pkgname.png"
   done
 
   for prog in zrandr; do
-    install -Dm644 icons/${prog}.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$prog.svg"
+    install -Dm644 build/icons/${prog}.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$prog.svg"
   done
 }
