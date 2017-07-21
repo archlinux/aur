@@ -1,7 +1,7 @@
 pkgbase = batman-adv
 	pkgdesc = batman kernel module
 	pkgver = 2017.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.open-mesh.net/
 	install = batman-adv.install
@@ -13,8 +13,12 @@ pkgbase = batman-adv
 	depends = linux
 	source = https://downloads.open-mesh.org/batman/releases/batman-adv-2017.1/batman-adv-2017.1.tar.gz
 	source = batman-adv.install
+	source = batman-adv-Fix-inconsistent-teardown-and-release-of-private-netdev-state..patch::https://patchwork.open-mesh.org/patch/17043/mbox/
+	source = batman-adv-only-enable-priv-destructor.patch::https://patchwork.open-mesh.org/patch/17074/mbox/
 	sha256sums = ec1848023308c41710eeefb544580f5853d68b88a627a3f2dabaa3472b988c15
 	sha256sums = 347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37
+	sha256sums = 3518772d87fe23d233e46d91cc10de003029f7af64b6e2e4744d6f10c2a0081e
+	sha256sums = 150a8acad0ba8a88b9643fe098fcdcc81ccc63b97f11b87e9c16af960081b660
 
 pkgname = batman-adv
 
