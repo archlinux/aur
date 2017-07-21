@@ -7,13 +7,11 @@ pkgrel=1
 arch=('any')
 url="https://scaleft.com"
 license=('custom')
-makedepends=('rpmextract')
 depends=('scaleft-client-tools' 'python2')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.noarch.rpm")
 sha256sums=('1b235e74501658cfc422b55f9241192e6771d97407a14b07fe6fc3e20dbc0979')
 
 prepare() {
-	rpmextract.sh ${pkgname}-${pkgver}-${pkgrel}.noarch.rpm
   # patch code to force it to use python2.7
   sed -i 's/python$/python2.7/' usr/bin/scaleft-url-handler
 }

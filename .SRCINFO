@@ -5,7 +5,6 @@ pkgbase = scaleft-url-handler
 	url = https://scaleft.com
 	arch = any
 	license = custom
-	makedepends = rpmextract
 	depends = scaleft-client-tools
 	depends = python2
 	source = https://pkg.scaleft.com/rpm/scaleft-url-handler-1.29.5-1.noarch.rpm
