@@ -14,6 +14,9 @@ makedepends=('npm')
 
 package () {
   cd "${pkgname}-${pkgver}"
+  pushd fava/static
+  npm install
+  popd
   make
   python setup.py install --prefix=/usr --root="${pkgdir}"
 }
