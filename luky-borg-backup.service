@@ -1,5 +1,7 @@
 [Unit]
 Description=LukyLX Incremental Backup
+Wants=unit-status-mail@%n.service
+Before=unit-status-mail@%n.service
 
 [Service]
 Type=oneshot
