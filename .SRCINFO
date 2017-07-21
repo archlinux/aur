@@ -1,0 +1,16 @@
+pkgbase = imageplay
+	pkgdesc = rapid prototyping application for image processing.
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = http://imageplay.io/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = freeimage
+	depends = opencv
+	source = imageplay-6.1.0.tar.gz::https://github.com/cpvrlab/ImagePlay/archive/6.1.0.tar.gz
+	sha256sums = 6797a84fd28612e1fdfa95430cbcdb8d4921caf244f49b3e006a50d658a4238e
+
+pkgname = imageplay
+
