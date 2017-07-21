@@ -5,12 +5,12 @@
 
 pkgname=erlang-docs
 pkgver=20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML and PDF documentation for Erlang'
 arch=('any')
-url='http://www.erlang.org/doc/'
+url='http://erlang.org/doc/'
 license=('custom')
-source=("http://www.erlang.org/download/otp_doc_html_${pkgver}.tar.gz")
+source=("http://erlang.org/download/otp_doc_html_$pkgver.tar.gz") # no https available
 sha256sums=('1ab25110b148ce263d6e68cd5a3b912299b6066cfcd9d2fce416a4e9b7d2543a')
 
 package() {
@@ -19,4 +19,4 @@ package() {
   install -Dm0644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
