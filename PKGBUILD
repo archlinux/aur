@@ -1,7 +1,7 @@
 # Maintainer: Kien Dang Tran loganeast257@gmail.com
 # Ex-Maintainer: Samantha McVey samantham@posteo.net
 # Based off the official Chromium package, but with a patch to enable VA-API
-# The VA-API patch is taken from the chromium-dev package source 
+# The VA-API patch is taken from the chromium-dev package source
 # Official Arch Linux Chromium package Maintainers and Contributors:
 #
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
@@ -12,7 +12,7 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg     # https://crbug.com/723537
+  #[ffmpeg]=ffmpeg     # https://crbug.com/731766
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
   #[icu]=icu           # Enable again when upstream supports ICU 59
@@ -30,56 +30,64 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium-vaapi
-pkgver=59.0.3071.109
+pkgver=59.0.3071.115
 pkgrel=1
 _launcher_ver=5
+_freetype_rev=5a3490e054bda8a318ebde482
 pkgdesc="Chromium compiled with VA-API support for Intel Graphics"
 arch=('i686' 'x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'desktop-file-utils'
-         'hicolor-icon-theme')
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
+         'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
-optdepends=('kdialog: needed for file dialogs in KDE'
+optdepends=('pepper-flash: support for Flash content'
+            'kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
             'libva-intel-driver: Needed to support VA-API for Intel graphics cards')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        chromium-freetype2::git+https://chromium.googlesource.com/chromium/src/third_party/freetype2#commit=$_freetype_rev
         chromium.desktop
         chromium-system-ffmpeg-r6.patch
         0001-ClientNativePixmapFactoryDmabuf-uses-ioctl-instead-o.patch
         0001-Fix-kernel-version-condition-for-including-dma-buf.h.patch
+        0001-Clip-FreeType-glyph-bitmap-to-mask.patch
         chromium-blink-gcc7.patch
         chromium-v8-gcc7.patch
         chromium-widevine.patch
         vaapi_patch_r2.patch)
-sha256sums=('83faeb3537428d83728258b28e907caaee6e6572bcd7d9b9a5f6009e7ea758d9'
-            '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'            
+sha256sums=('37cbc9955ae3b25cd4e9851a82ea97a0035021cc90658902938ad1c20f263170'
+            '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
+            'SKIP'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '2fc21f48b95f9f2c2bd8576742fcf8028a8877c6b6e96c04d88184915982234e'
             '9c081c84a4f85dbef82a9edf34cf0b1e8377c563874fd9c1b4efddf1476748f9'
             '42eb6ada30d5d507f2bda2d2caece37e397e7086bc0d430db776fad143562fb6'
+            'e60aa0ff01f8bee67e45fde7bbe932901194984673ec4b10ea82bba1bace0cd7'
             'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
             '46dacc4fa52652b7d99b8996d6a97e5e3bac586f879aefb9fb95020d2c4e5aec'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             '2c507aa6186e8295cac27a71d409796cb233fdc59737298a92c939d7e259d1b6')
 
-# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
-# more information.
+# get your own set of keys.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
+
+  # https://groups.google.com/a/chromium.org/d/msg/chromium-packagers/wuInaKJkosg/kMfIV_7wDgAJ
+  mv "$srcdir/chromium-freetype2" third_party/freetype/src
 
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
@@ -90,6 +98,9 @@ prepare() {
   # https://bugs.chromium.org/p/chromium/issues/detail?id=707604
   patch -Np1 -i ../0001-ClientNativePixmapFactoryDmabuf-uses-ioctl-instead-o.patch
   patch -Np1 -i ../0001-Fix-kernel-version-condition-for-including-dma-buf.h.patch
+
+  # https://bugs.chromium.org/p/skia/issues/detail?id=6663
+  patch -Np1 -d third_party/skia <../0001-Clip-FreeType-glyph-bitmap-to-mask.patch
 
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853347
   patch -Np1 -i ../chromium-blink-gcc7.patch
@@ -111,14 +122,14 @@ prepare() {
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
   # VA-API patch
-  patch -p1 -i "${srcdir}/vaapi_patch_r2.patch" 
+  patch -p1 -i "${srcdir}/vaapi_patch_r2.patch"
   # Fix paths.
   sed -e 's|i386-linux-gnu/||g' \
       -e 's|x86_64-linux-gnu/||g' \
       -e 's|/usr/lib/va/drivers|/usr/lib/dri|g' \
       -e 's|/usr/lib64/va/drivers|/usr/lib/dri|g' \
       -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
-  
+
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries

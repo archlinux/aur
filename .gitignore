@@ -1,7 +1,9 @@
 *.pkg.tar.xz
 chromium*.tar.xz
+chromium*.tar.gz
 src/
 build/
 pkg/
 *.log
 build/
+chromium-freetype2/
