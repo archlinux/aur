@@ -45,9 +45,8 @@ build() {
   set -o nounset
   local src_dir=${srcdir}/${_filename}
   [[ -d build ]] && rm -r build
-  mkdir build && cd build
 
-  qbs -f ${src_dir} --all-products project.withAutotests:false release
+  qbs -d build -f ${src_dir} --all-products project.withAutotests:false release
   set +o nounset
 }
 
@@ -56,9 +55,7 @@ package() {
   local _src_dir=${srcdir}/${_filename}
   local _pkg_dir=${pkgdir}/usr/
 
-  cd build
-
-  qbs install -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false release
+  qbs install -d build -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false release
 
   # Workaround for FS#40583
   mv "${pkgdir}"/usr/bin/qtcreator "${pkgdir}"/usr/bin/qtcreator-bin
