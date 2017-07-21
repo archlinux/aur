@@ -1,6 +1,6 @@
 diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
---- old/source/fitz/color-lcms.c	2017-06-22 17:13:06.561681566 +0200
-+++ new/source/fitz/color-lcms.c	2017-06-22 18:11:29.183797391 +0200
+--- old/source/fitz/color-lcms.c	2017-07-21 13:15:33.210544762 -1000
++++ new/source/fitz/color-lcms.c	2017-07-21 13:18:23.943567031 -1000
 @@ -66,7 +66,7 @@
  static int
  fz_lcms_num_devcomps(cmsContext cmm_ctx, fz_iccprofile *profile)
@@ -10,27 +10,27 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  }
  
  static void
-@@ -124,8 +124,8 @@
+@@ -132,8 +132,8 @@
  	DEBUG_LCMS_MEM(("@@@@@@@ Transform Pixmap Start:: mupdf ctx = %p lcms ctx = %p link = %p \n", (void*)ctx, (void*)cmm_ctx, (void*)link->cmm_handle));
  
  	/* check the channels. */
--	cmm_num_src = T_CHANNELS(cmsGetTransformInputFormat(cmm_ctx, hTransform));
--	cmm_num_des = T_CHANNELS(cmsGetTransformOutputFormat(cmm_ctx, hTransform));
-+	cmm_num_src = T_CHANNELS(cmsGetTransformInputFormat(hTransform));
-+	cmm_num_des = T_CHANNELS(cmsGetTransformOutputFormat(hTransform));
- 	if (cmm_num_src != sn - sa || cmm_num_des != dn - da || sa != da)
- 		fz_throw(ctx, FZ_ERROR_GENERIC, "Mismatching color setup in cmm pixmap transformation: src: %d vs %d+%d, dst: %d vs %d+%d", cmm_num_src, sn-sa, sa, cmm_num_des, dn-da, da);
- 
-@@ -139,7 +139,7 @@
+-	src_format = cmsGetTransformInputFormat(cmm_ctx, hTransform);
+-	dst_format = cmsGetTransformOutputFormat(cmm_ctx, hTransform);
++	src_format = cmsGetTransformInputFormat(hTransform);
++	dst_format = cmsGetTransformOutputFormat(hTransform);
+ 	cmm_num_src = T_CHANNELS(src_format);
+ 	cmm_num_des = T_CHANNELS(dst_format);
+ 	cmm_extras = T_EXTRA(src_format);
+@@ -150,7 +150,7 @@
  		for (; h > 0; h--)
  		{
- 			fz_lcms_unmultiply_row(ctx, sn, sw, buffer, inputpos);
--			cmsDoTransform(cmm_ctx, hTransform, inputpos, outputpos, sw);
-+			cmsDoTransform(hTransform, inputpos, outputpos, sw);
- 			fz_lcms_premultiply_row(ctx, dn, dw, outputpos);
+ 			fz_lcms_unmultiply_row(ctx, sn, sc, sw, buffer, inputpos);
+-			cmsDoTransform(cmm_ctx, hTransform, buffer, outputpos, sw);
++			cmsDoTransform(hTransform, buffer, outputpos, sw);
+ 			fz_lcms_premultiply_row(ctx, dn, dc, dw, outputpos);
  			inputpos += ss;
  			outputpos += ds;
-@@ -150,7 +150,7 @@
+@@ -161,7 +161,7 @@
  	{
  		for (; h > 0; h--)
  		{
@@ -39,7 +39,7 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  			inputpos += ss;
  			outputpos += ds;
  		}
-@@ -165,7 +165,7 @@
+@@ -176,7 +176,7 @@
  	cmsContext cmm_ctx = (cmsContext)instance;
  	cmsHTRANSFORM hTransform = (cmsHTRANSFORM) link->cmm_handle;
  
@@ -48,7 +48,7 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  }
  
  void
-@@ -183,19 +183,19 @@
+@@ -194,19 +194,19 @@
  	DEBUG_LCMS_MEM(("@@@@@@@ Create Link Start:: mupdf ctx = %p lcms ctx = %p src = %p des = %p \n", (void*)ctx, (void*)cmm_ctx, (void*)src->cmm_handle, (void*)dst->cmm_handle));
  
  	/* src */
@@ -60,7 +60,7 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  		lcms_src_cs = 0;
 -	src_num_chan = cmsChannelsOf(cmm_ctx, src_cs);
 +	src_num_chan = cmsChannelsOf(src_cs);
- 	src_data_type = (COLORSPACE_SH(lcms_src_cs) | CHANNELS_SH(src_num_chan) | DOSWAP_SH(src->bgr) | BYTES_SH(num_bytes) | EXTRA_SH(alpha));
+ 	src_data_type = (COLORSPACE_SH(lcms_src_cs) | CHANNELS_SH(src_num_chan) | DOSWAP_SH(src->bgr) | BYTES_SH(num_bytes) | EXTRA_SH(extras));
  
  	/* dst */
 -	des_cs = cmsGetColorSpace(cmm_ctx, dst->cmm_handle);
@@ -71,10 +71,10 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  		lcms_des_cs = 0;
 -	des_num_chan = cmsChannelsOf(cmm_ctx, des_cs);
 +	des_num_chan = cmsChannelsOf(des_cs);
- 	des_data_type = (COLORSPACE_SH(lcms_des_cs) | CHANNELS_SH(des_num_chan) | DOSWAP_SH(dst->bgr) | BYTES_SH(num_bytes) | EXTRA_SH(alpha));
+ 	des_data_type = (COLORSPACE_SH(lcms_des_cs) | CHANNELS_SH(des_num_chan) | DOSWAP_SH(dst->bgr) | BYTES_SH(num_bytes) | EXTRA_SH(extras));
  
  	/* flags */
-@@ -241,17 +241,17 @@
+@@ -252,17 +252,17 @@
  			cmsUInt32Number prf_data_type;
  			cmsHPROFILE hProfiles[3];
  
@@ -97,7 +97,7 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  			if (!src_to_prf_profile)
  				fz_throw(ctx, FZ_ERROR_GENERIC, "cmsTransform2DeviceLink failed");
  
-@@ -259,7 +259,7 @@
+@@ -270,7 +270,7 @@
  			hProfiles[1] = prf->cmm_handle;
  			hProfiles[2] = dst->cmm_handle;
  			link->cmm_handle = cmsCreateMultiprofileTransformTHR(cmm_ctx, hProfiles, 3, src_data_type, des_data_type, INTENT_RELATIVE_COLORIMETRIC, flag);
@@ -106,7 +106,7 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  			if (!link->cmm_handle)
  				fz_throw(ctx, FZ_ERROR_GENERIC, "cmsCreateMultiprofileTransform failed");
  		}
-@@ -274,7 +274,7 @@
+@@ -285,7 +285,7 @@
  	cmsContext cmm_ctx = (cmsContext)instance;
  	DEBUG_LCMS_MEM(("Free Link:: link = %p \n", (void*)link->cmm_handle));
  	if (link->cmm_handle != NULL)
@@ -115,7 +115,7 @@ diff -ur old/source/fitz/color-lcms.c new/source/fitz/color-lcms.c
  	link->cmm_handle = NULL;
  }
  
-@@ -328,7 +328,7 @@
+@@ -339,7 +339,7 @@
  	cmsContext cmm_ctx = (cmsContext)instance;
  	DEBUG_LCMS_MEM(("Free Profile:: profile = %p \n", (void*) profile->cmm_handle));
  	if (profile->cmm_handle != NULL)

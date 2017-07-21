@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20170622.3b4bd73e
+pkgver=20170721.bc5284fb
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS and CBZ viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,7 +18,7 @@ source=('git://git.ghostscript.com/mupdf.git'
         'desktop')
 sha256sums=('SKIP'
             'SKIP'
-            '0989b34c68da7fe115e57f3050e45c4b3fd1e4ba13c9b9b4cbb80c4d073ffc1b'
+            '4728d2e4906db23de93fdea23ec8c5c0e5a41cba5d7446195b9d84e11ef0635e'
             '3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd')
 
 conflicts=("${_pkgname}")
@@ -41,6 +41,8 @@ prepare() {
 	# embedding CJK fonts into binaries is madness...
 	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
 
+	# fix moronic lcms2 version
+	sed 's/lcms2art/lcms2/g' -i source/fitz/color-lcms.c
 	patch -p1 -i ../cmm_ctx_gone.patch
 }
 
