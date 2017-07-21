@@ -6,16 +6,17 @@
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
 pkgname=qtcreator-prerelease
-_pkgvermajmin=4.3
+_pkgvermajmin=4.4
 pkgver=${_pkgvermajmin}.0
-_verpostfix=""
-pkgrel=3
-_pkgver=${pkgver}${_verpostfix}
-_filename=qt-creator-opensource-src-${_pkgver}
+_verpostfix="beta1"
+pkgrel=1
+_pkgver=${pkgver}
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
+  _pkgver=${_pkgver}-${_verpostfix}
   _urlbase="https://download.qt.io/development_releases"
 fi
+_filename=qt-creator-opensource-src-${_pkgver}
 pkgdesc='Qt Creator prerelease/latest'
 arch=('x86_64')
 url='http://qt.io/ide'
@@ -36,14 +37,9 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('e99eaaf4098d575578424f57936bc5ad678499824523666c32d85c71fc8471d8')
+sha256sums=('163e729a0c4a78f4cd8acb9c82cae806bd66d6e1612aa52b94c1345a85384460')
 
 _qmake_cmd=qmake
-_qt_sdk_dir=/opt/qt-sdk
-
-if [[ -d ${_qt_sdk_dir} ]]; then
-  _qmake_cmd=${_qt_sdk_dir}/bin/qmake
-fi
 
 build() {
   local src_dir=${startdir}/src/
