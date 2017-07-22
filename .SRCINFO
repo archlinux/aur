@@ -1,5 +1,5 @@
 pkgbase = x264-git
-	pkgver = 148.20151011.r2638
+	pkgver = 152.20170626.r2851
 	pkgrel = 1
 	url = http://www.videolan.org/developers/x264.html
 	arch = i686

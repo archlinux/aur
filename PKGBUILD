@@ -16,7 +16,7 @@ _8bit=0
 
 pkgname=('x264-git' 'libx264-git' 'libx264-10bit-git')
 _pkgname=x264
-pkgver=148.20151011.r2638
+pkgver=152.20170626.r2851
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.videolan.org/developers/x264.html'
@@ -83,7 +83,7 @@ package_x264-git() {
   replaces=('x264-10bit')
 
   make -C ${_pkgname} DESTDIR="${pkgdir}" install-cli
-  install -m 755 ${pkgbase}-10bit/x264 "${pkgdir}"/usr/bin/x264-10bit
+  install -m 755 ${_pkgname}-10bit/x264 "${pkgdir}"/usr/bin/x264-10bit
 }
 
 package_libx264-git() {
