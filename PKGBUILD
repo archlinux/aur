@@ -2,14 +2,14 @@
 
 pkgname=cubemap
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 _commit=dcaac16b8d823bc0b1bf0ce45a99bba68f03553c
 pkgdesc="A scalable video reflector, designed to be used with VLC."
 arch=(x86_64)
 url="https://git.sesse.net/?p=cubemap"
 license=('GPL2')
-depends=()
-makedepends=('gcc' 'protobuf' 'libsystemd')
+depends=('protobuf' 'libsystemd')
+makedepends=('gcc' 'systemd')
 provides=('cubemap')
 source=("$pkgname.tar.gz::https://git.sesse.net/?p=cubemap;a=snapshot;h=${_commit};sf=tgz")
 sha256sums=('09c34d77f27c4e116f9cfedd2511a836137189f887fcc819b0930bffaf43eaab')
