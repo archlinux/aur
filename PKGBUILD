@@ -13,6 +13,7 @@ sha256sums=('721d8d9dbd13df2187e7d6ffad5b00894908dd18dbc90d65c85272422f84f4a5')
 
 build() {
   cd "$pkgname-$pkgver"
+  shards
   make build
   crystal eval 'STDIN.blocking = true'
 }
