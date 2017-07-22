@@ -8,7 +8,7 @@ pkgbase = deepin-wine-uninstaller
 	license = Proprietary
 	makedepends = tar
 	noextract = deepin-wine-uninstaller_0.1deepin2_i386.deb
-	source = https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin-wine-uninstaller/deepin-wine-uninstaller_0.1deepin2_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine-uninstaller/deepin-wine-uninstaller_0.1deepin2_i386.deb
 	md5sums = SKIP
 
 pkgname = deepin-wine-uninstaller
