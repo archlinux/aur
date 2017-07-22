@@ -11,8 +11,6 @@ Group=root
 KillMode=control-group
 
 ExecStartPre=/bin/sh -c "mkdir -p /var/run/xvfb"
-ExecStartPre=/bin/sh -c "mkdir -p $(grep -e '^IbDir=' /etc/ibcontroller/%I.ini | tr -cd '\040-\176' | cut -d '=' -f 2)"
-ExecStartPre=/bin/sh -c "echo -e '[IBGateway]\nApiOnly=true" > $(grep -e '^IbDir=' /etc/ibcontroller/%I.ini | tr -cd '\040-\176' | cut -d '=' -f 2)/tws.ini"
 ExecStart=/usr/sbin/xvfb-run --auto-servernum -f /var/run/xvfb/%I /usr/share/ib-tws/jre/bin/java -cp /usr/share/ib-tws/jars/*:/usr/share/java/ibcontroller/ibcontroller.jar -Xmx512M ibcontroller.IBGatewayController /etc/ibcontroller/%I.ini
 
 [Install]
