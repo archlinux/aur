@@ -1,0 +1,15 @@
+pkgbase = python-lesscpy
+	pkgdesc = Python LESS compiler
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/lesscpy/lesscpy
+	arch = any
+	license = MIT
+	makedepends = python3
+	depends = python
+	depends = python-ply
+	source = https://pypi.python.org/packages/32/38/a55150ec018cf6fe11012bf1d988cd737af7f82227e4ac753619f0fb27a4/lesscpy-0.12.0.tar.gz
+	md5sums = 0a5a3ca4091ad3fb62ac6f705f8463d4
+
+pkgname = python-lesscpy
+
