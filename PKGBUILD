@@ -1,14 +1,14 @@
 # Maintainer: Allen M. <ase1590@hotmail.com>
 
 pkgname=wxpython-phoenix-git
-pkgver=r2752.g8304ec1b
+pkgver=r3225.g172bd50d
 pkgrel=1
 pkgdesc="Python 3 implementation of the WxPython UI library"
 arch=('x86_64' 'i686')
 url="https://github.com/wxWidgets/Phoenix"
 license=('custom:wxWindows')
 depends=('python' 'wxgtk')
-makedepends=('mesa' 'glu' 'git' 'libpng' 'libjpeg-turbo' 'webkitgtk2' 'libtiff' 'sdl' 'gst-plugins-base' 'libnotify' 'freeglut' 'gtk2')
+makedepends=('mesa' 'glu' 'git' 'libpng' 'libjpeg-turbo' 'libtiff' 'sdl' 'gst-plugins-base' 'libnotify' 'freeglut' 'gtk3' 'webkit2gtk')
 source=("$pkgname::git+${url}"
 		"git+https://github.com/wxWidgets/wxWidgets.git")
 md5sums=('SKIP' 'SKIP')
@@ -29,12 +29,12 @@ prepare(){
 
 build(){
 	cd "$srcdir/$pkgname"
-	python build.py dox etg --nodoc sip
+	python build.py dox etg --nodoc sip build --gtk3
 }
 
 package(){
 	cd "$srcdir/$pkgname"
-	python setup.py install --root="$pkgdir/"
+	python setup.py install --skip-build --root="$pkgdir/"
 	cd "$pkgdir/usr/bin/"
 	for file in *
 	do
