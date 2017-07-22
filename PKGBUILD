@@ -3,7 +3,7 @@
 pkgname=powershell
 _pkgver=6.0.0-beta.3
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform automation and configuration tool/framework (latest release)"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
@@ -19,6 +19,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'f5841baa62b1322c07f9394940cec818')
+install=powershell.install
 
 prepare() {
   cd $pkgname

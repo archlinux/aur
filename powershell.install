@@ -1,0 +1,11 @@
+post_install() {
+  grep -qe '^/usr/bin/powershell$' etc/shells || echo '/usr/bin/powershell' >> etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  sed -ri '\|^/usr/bin/powershell$|d' etc/shells
+}
