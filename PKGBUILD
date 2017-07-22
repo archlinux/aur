@@ -7,11 +7,11 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.14.99
-pkgrel=1
+pkgrel=2
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1500718139
+epoch=1500726360
 
 # The most recent commit at the time of this package update.
 _commit=c3b88a0f29b3c387ec7bbbdd2395bbf876da1543
@@ -21,8 +21,8 @@ arch=('i686' 'x86_64')
 url='https://namecoin.org/'
 license=('MIT')
 depends=('desktop-file-utils' 'openssl' 'db4.8' 'boost' 'boost-libs' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
-provides=('namecoin-core-wallet' namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
-conflicts=('namecoin-core-wallet' namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
+provides=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
+conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
 source=('git://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
         'namecoin1500x1500.png')
