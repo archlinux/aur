@@ -1,4 +1,5 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: fauno <fauno at kiwwwi.com.ar>
 # Contributor: Olivier Ramonat <olivier at ramonat dot fr>
@@ -7,7 +8,7 @@
 pkgbase=notmuch-git
 _pkgname=notmuch
 pkgname=('notmuch-git' 'notmuch-vim-git' 'notmuch-mutt-git' 'notmuch-runtime-git')
-pkgver=0.25_rc0.2.15.g33e7441f
+pkgver=0.25_rc1.2.1.gc28ac94a
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://notmuchmail.org/"
