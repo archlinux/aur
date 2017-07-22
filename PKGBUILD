@@ -15,7 +15,7 @@ depends=('knotifyconfig' 'kpty' 'kparts')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 optdepends=('kdebase-keditbookmarks: to manage bookmarks')
 replaces=('kdebase-konsole' 'konsole')
-conflicts=('kdebase-konsole<4.14.3-2')
+conflicts=('kdebase-konsole<4.14.3-2' 'konsole')
 source=("http://download.kde.org/stable/applications/${pkgver}/src/konsole-${pkgver}.tar.xz" 
         "0001-remove-cursor-height-padding-from-top.patch")
 sha1sums=('a9a99d46d17f5b49f35e84a9e5cb682658c10716'
