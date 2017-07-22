@@ -1,0 +1,13 @@
+diff --git a/src/TerminalDisplay.cpp b/src/TerminalDisplay.cpp
+index 7b083a6c..f6281e81 100644
+--- a/src/TerminalDisplay.cpp
++++ b/src/TerminalDisplay.cpp
+@@ -763,7 +763,7 @@ void TerminalDisplay::drawCursor(QPainter& painter,
+ 
+     // shift rectangle top down one pixel to leave some space
+     // between top and bottom
+-    QRect cursorRect = rect.adjusted(0, 1, 0, 0);
++    QRect cursorRect = rect.adjusted(0, 0, 0, 0);
+ 
+     QColor cursorColor = _cursorColor.isValid() ? _cursorColor : foregroundColor;
+     painter.setPen(cursorColor);

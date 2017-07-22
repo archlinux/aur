@@ -1,12 +1,12 @@
-# Maintainer: leaeasy <leaeasy at gmail.com>
+# Maintainer: Stanislav Seletskiy <s.seletskiy@gmail.com>
 
-pkgname=konsole-blurry
+pkgname=konsole-cursor
 _pkgname=konsole
-pkgver=16.12.2
+pkgver=17.04.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://kde.org/applications/system/konsole/'
-pkgdesc="Konsole with blurry support"
+pkgdesc="Konsole with better cursor"
 license=('GPL' 'LGPL' 'FDL')
 groups=('kde-applications' 'kdebase')
 conflicts=('konsole')
@@ -14,17 +14,17 @@ provides=('konsole')
 depends=('knotifyconfig' 'kpty' 'kparts')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 optdepends=('kdebase-keditbookmarks: to manage bookmarks')
-replaces=('kdebase-konsole')
+replaces=('kdebase-konsole' 'konsole')
 conflicts=('kdebase-konsole<4.14.3-2')
 source=("http://download.kde.org/stable/applications/${pkgver}/src/konsole-${pkgver}.tar.xz" 
-        "0001-add-blur-effect-when-set-transparency.patch")
-sha1sums=('d889147f592bcdd40576756a4ba3a861807cee24'
-          'b3f8b444181e8e6f60d15d160375c26804429e9b')
+        "0001-remove-cursor-height-padding-from-top.patch")
+sha1sums=('a9a99d46d17f5b49f35e84a9e5cb682658c10716'
+          'f4c8e0d88c89c43b2863ced4399e6af9683271b5')
 
 prepare() {
   mkdir -p build
   cd ${srcdir}/$_pkgname-$pkgver
-  patch -Np1 -i ${srcdir}/0001-add-blur-effect-when-set-transparency.patch
+  patch -Np1 -i ${srcdir}/0001-remove-cursor-height-padding-from-top.patch
 }
 
 build() {
