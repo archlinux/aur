@@ -2,7 +2,7 @@
 Version=1.0
 Name=Firefox Developer
 GenericName=Web Browser
-Icon=firefox-developer-icon
+Icon=firefox-developer
 Type=Application
 Categories=Application;Network;
 MimeType=text/html
