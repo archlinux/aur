@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mkcl-git
-pkgver=1.1.10.14.g16ceee1
+pkgver=1.1.10.16.g313d15d
 pkgrel=1
 pkgdesc="ManKai Common Lisp -- git-version"
 arch=('i686' 'x86_64')
