@@ -3,7 +3,7 @@
 pkgname=zcash
 pkgver=1.0.10_1
 _commit=d6ec3954c68200e8774b46527a5680bf4cf4ccf0
-pkgrel=1
+pkgrel=2
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
