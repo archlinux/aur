@@ -14,7 +14,8 @@ sha256sums=('721d8d9dbd13df2187e7d6ffad5b00894908dd18dbc90d65c85272422f84f4a5')
 build() {
   cd "$pkgname-$pkgver"
   shards
-  make build
+  mkdir -p bin
+  crystal build -o bin/amber src/amber_cmd.cr -s -p --release --no-debug
   crystal eval 'STDIN.blocking = true'
 }
 
