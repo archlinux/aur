@@ -21,7 +21,6 @@ prepare() {
 }
 
 build() {
-    ''
   cd build
   cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
