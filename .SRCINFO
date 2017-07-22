@@ -1,6 +1,6 @@
 pkgbase = chromium-vaapi-bin
 	pkgdesc = Chromium compiled with VA-API support for Intel Graphics
-	pkgver = 59.0.3071.109
+	pkgver = 59.0.3071.115
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = chromium-vaapi-bin
 	depends = dbus
 	depends = libpulse
 	depends = pciutils
+	depends = json-glib
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = flac
@@ -29,6 +30,7 @@ pkgbase = chromium-vaapi-bin
 	depends = libwebp
 	depends = libjpeg
 	depends = snappy
+	optdepends = pepper-flash: support for Flash content
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
@@ -36,8 +38,8 @@ pkgbase = chromium-vaapi-bin
 	provides = chromium
 	conflicts = chromium
 	conflicts = chromium-vaapi
-	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-59.0.3071.109-1-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = f62f581c21aabfd61fe8215e17c75db877c0d97ffaa675d6f1c633a1b2bc4b46
+	source_x86_64 = https://github.com/maximbaz/chromium-vaapi-bin/raw/master/x86_64/chromium-vaapi-59.0.3071.115-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 17e29b3a15cc35cd954eb103ef672133523c19da096acad09d4b30da983755ed
 
 pkgname = chromium-vaapi-bin
 
