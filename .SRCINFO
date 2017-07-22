@@ -1,0 +1,16 @@
+pkgbase = github-desktop
+	pkgdesc = GUI for managing Git and GitHub.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://desktop.github.com
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = electron
+	depends = nodejs
+	optdepends = hub: CLI interface for GitHub.
+	source = https://github.com/gengjiawen/desktop/releases/download/v0.7.0/desktop_0.7.0_amd64.deb
+	md5sums = 452cd025172b9431e77a1e321f67cc7e
+
+pkgname = github-desktop
+
