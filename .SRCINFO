@@ -9,7 +9,7 @@ pkgbase = deepin-libwine
 	makedepends = tar
 	noextract = deepin-libwine_1.9-42_i386.deb
 	options = !strip
-	source = https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin-wine/deepin-libwine_1.9-42_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-libwine_1.9-42_i386.deb
 	md5sums = SKIP
 
 pkgname = deepin-libwine
