@@ -1,0 +1,22 @@
+pkgbase = gmailieer-git
+	pkgdesc = Fast fetch and two-way tag synchronization between notmuch and GMail
+	pkgver = v0.1.r10.25de95b
+	pkgrel = 1
+	url = https://github.com/gauteh/gmailieer
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tqdm
+	depends = python-google-api-python-client
+	depends = python-oauth2client
+	depends = notmuch
+	provides = gmailieer
+	conflicts = gmailieer
+	options = !emptydirs
+	source = gmailieer-git::git://github.com/gauteh/gmailieer.git
+	md5sums = SKIP
+
+pkgname = gmailieer-git
+
