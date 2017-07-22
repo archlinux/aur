@@ -4,7 +4,7 @@
 
 pkgname=python26
 pkgver=2.6.9
-pkgrel=11
+pkgrel=12
 _pybasever=2.6
 pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
 arch=('i686' 'x86_64' 'arm')
@@ -97,9 +97,13 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
+  # pacman 5.0.2-2 adds -fno-plt to default makepkg flags, which is unsupported by gcc5
+  export CFLAGS="${CFLAGS/-fno-plt/}"
+  export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
   export OPT="${CFLAGS}"
-  export CPPFLAGS="-DOPENSSL_NO_SSL3 -I/usr/include/openssl-1.0"
-  export LDFLAGS="-L/usr/lib/openssl-1.0"
+  export CPPFLAGS="${CPPFLAGS} -DOPENSSL_NO_SSL3 -I/usr/include/openssl-1.0"
+  export LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0"
   # A lot of tests fail under GCC >= 6.x
   export CPP="cpp-5"
   export CC="gcc-5"

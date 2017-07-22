@@ -1,7 +1,7 @@
 pkgbase = python26
 	pkgdesc = Legacy version Python 2.6 of the high-level scripting language
 	pkgver = 2.6.9
-	pkgrel = 11
+	pkgrel = 12
 	url = http://www.python.org/
 	changelog = ChangeLog
 	arch = i686
