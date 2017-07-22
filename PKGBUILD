@@ -1,15 +1,15 @@
 # Maintainer: Zoron <zoronlivingston@gmail.com>
 
 pkgname=zrandr
-pkgver=0.2
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="A simple Qt front end for xrandr"
+pkgdesc="A simple Qt5 front end for xrandr"
 arch=('any')
 url="https://github.com/fralonra/zrandr"
 license=('GPL')
 depends=('xorg-xrandr' 'qt5-base')
 source=("https://github.com/fralonra/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('66ab5fc2792e298a648faf785fb68acf')
+md5sums=('1a906ab97f5dc86b6a37b5663728ba4c')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

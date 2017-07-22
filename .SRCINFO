@@ -1,14 +1,14 @@
 pkgbase = zrandr
-	pkgdesc = A simple Qt front end for xrandr
-	pkgver = 0.2
+	pkgdesc = A simple Qt5 front end for xrandr
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/fralonra/zrandr
 	arch = any
 	license = GPL
 	depends = xorg-xrandr
 	depends = qt5-base
-	source = https://github.com/fralonra/zrandr/archive/v0.2.tar.gz
-	md5sums = 66ab5fc2792e298a648faf785fb68acf
+	source = https://github.com/fralonra/zrandr/archive/v0.2.2.tar.gz
+	md5sums = 1a906ab97f5dc86b6a37b5663728ba4c
 
 pkgname = zrandr
 
