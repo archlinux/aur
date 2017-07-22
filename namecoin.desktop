@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Namecoin Core
+Comment=Connect to the Namecoin P2P Network
+Exec=namecoin-qt %u
+Terminal=false
+Type=Application
+Icon=namecoin1500x1500
+MimeType=x-scheme-handler/namecoin;
+Categories=Office;Finance;
+Comment[de]=Verbinde mit dem Namecoin peer-to-peer Netzwerk
+Comment[fr]=Namecoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Namecoin, eşten eşe kriptografik sanal para birimi

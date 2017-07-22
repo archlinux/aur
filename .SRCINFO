@@ -1,0 +1,35 @@
+pkgbase = namecoin-core-wallet
+	pkgdesc = This package provides the Namecoin Core GUI client and CLI daemon. This package does not create a systemd service.
+	pkgver = v0.14.99
+	pkgrel = 1
+	epoch = 1500718139
+	url = https://namecoin.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = desktop-file-utils
+	depends = openssl
+	depends = db4.8
+	depends = boost
+	depends = boost-libs
+	depends = libevent
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qrencode
+	depends = miniupnpc
+	depends = protobuf
+	depends = zeromq
+	provides = namecoin-core-wallet
+	provides = namecoin-cli namecoin-daemon namecoin-qt namecoin-tx) conflicts=(namecoin-core-wallet namecoin-cli
+	provides = namecoin-daemon
+	provides = namecoin-qt
+	provides = namecoin-tx
+	source = git://github.com/namecoin/namecoin-core
+	source = namecoin.desktop
+	source = namecoin1500x1500.png
+	sha256sums = SKIP
+	sha256sums = 0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc
+	sha256sums = f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04
+
+pkgname = namecoin-core-wallet
+
