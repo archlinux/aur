@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=upterm
-pkgver=0.2.159
+pkgver=0.2.161
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('apm' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'upterm.desktop'
         'upterm.js')
-sha256sums=('f9a3f66a71c39d1d635f682a31e130425344bd6ba8718fa6ca4f35a6f6ae3b82'
+sha256sums=('e66d47a21658be366f3244b2a28b906c7d36e252cbcda92a7f285b50b9a58e37'
             '2d55728dcd4f0b25195474d8676f8994c266f24e8e928ddbb9ff86959c3ac96f'
             '5522f5f78c0686d5e419661f4264e2d2f5f0856582f1494010e457c150f67910')
 
@@ -25,17 +25,16 @@ prepare() {
 build() {
     cd ${pkgname}-${pkgver}
 
-    ATOM_HOME="${PWD}" apm install --production
-    rmdir packages
-
+    npm install immutable node-pty
     types=('@types/chokidar' '@types/enzyme' '@types/fs-extra' '@types/klaw' '@types/lodash' '@types/node' '@types/react')
     npm install "${types[@]}"
     npm install --ignore-scripts electron
     npm install typescript
     npm run tsc
-    npm uninstall typescript
-    npm uninstall electron
-    npm uninstall "${types[@]}"
+    rm -r node_modules
+
+    ATOM_HOME="${PWD}" apm install --production
+    rmdir packages
 
     install -Dm644 -t compiled/src/views src/views/index.html
 }
@@ -67,7 +66,7 @@ package() {
         "${pkgdir}"/usr/share/licenses/${pkgname}
 
     # Clean up
-    rm -r "${pkgdir}"${appdir}/{housekeeping,src}
+    rm -r "${pkgdir}"${appdir}/src
     find "${pkgdir}"${appdir} \
         -name "package.json" \
             -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${appdir}|" \
