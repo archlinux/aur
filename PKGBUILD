@@ -15,7 +15,7 @@ build() {
   cd "$pkgname-$pkgver"
   shards
   mkdir -p bin
-  crystal build -o bin/amber src/amber_cmd.cr -s -p --release --no-debug
+  crystal build -o bin/amber src/amber_cmd.cr -s -p --no-debug
   crystal eval 'STDIN.blocking = true'
 }
 
