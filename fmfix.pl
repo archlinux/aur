@@ -14,6 +14,10 @@ require 5.008;
 # which could have been obtained much less obtusely with the likes of sed, awk, cut, expr,
 # or a crufty perl script similar to this one.
 
+# Testing:
+#   gs -q -sDEVICE=tiffg3 -sFONTPATH=/usr/share/fonts/Type1 /var/spool/hylafax/bin/genfontmap.ps > fmtest.txt
+#   fmfix.pl < fmtest.txt > Fontmap.HylaFAX
+
 # gsfontmap.ps used to produce all lines with filenames:
 # (Hershey-Script-Simplex-Bold) (hrscsb.gsf) ;
 # but now for some fonts it just puts the name:
@@ -32,28 +36,94 @@ require 5.008;
 # 6 hex codes, mostly consistent but might contain a \n
 # %!PS-AdobeFont-...: MyFontName ...\n
 
+# Quit changing names!
+# This translates from the first line of *.pfb to the second column in the .gs listing
+my %brokenxlat=(
+  'BookmanURW-DemBol' => 'URWBookman-Demi',
+  'BookmanURW-DemBolIta' => 'URWBookman-DemiItalic',
+  'BookmanURW-Lig' => 'URWBookman-Light',
+  'BookmanURW-LigIta' => 'URWBookman-LightItalic',
+  'CenturySchURW-Bol' => 'C059-Bold',
+  'CenturySchURW-BolIta' => 'C059-BdIta',
+  'CenturySchURW-Ita' => 'C059-Italic',
+  'CenturySchURW-Rom' => 'C059-Roman',
+  'ChanceryURW-MedIta' => 'Z003-MediumItalic',
+  'Dingbats' => 'D050000L',
+  'NimbusMono-Bold' => 'NimbusMonoPS-Bold',
+  'NimbusMono-BoldOblique' => 'NimbusMonoPS-BoldItalic',
+  'NimbusMono-Oblique' => 'NimbusMonoPS-Italic',
+  'NimbusMono-Regular' => 'NimbusMonoPS-Regular',
+  'NimbusRomNo9L-Med' => 'NimbusRoman-Bold',
+  'NimbusRomNo9L-MedIta' => 'NimbusRoman-BoldItalic',
+  'NimbusRomNo9L-Reg' => 'NimbusRoman-Italic',
+  'NimbusRomNo9L-RegIta' => 'NimbusRoman-Regular',
+  'NimbusSanL-Bol' => 'NimbusSans-Bold',
+  'NimbusSanL-BolIta' => 'NimbusSans-BoldOblique',
+  'NimbusSanL-Reg' => 'NimbusSans-Regular',
+  'NimbusSanL-RegIta' => 'NimbusSans-Oblique',
+  'NimbusSanNar-Bol' => 'NimbusSansNarrow-Bold',
+  'NimbusSanNar-BolIta' => 'NimbusSansNarrow-BdOblique',
+  'NimbusSanNar-Ita' => 'NimbusSansNarrow-Oblique',
+  'NimbusSanNar-Reg' => 'NimbusSansNarrow-Regular',
+# A bad match to Palatino. At least the names have some of the same letters.
+  'PalladioURW-Bol' => 'P052-Bold',
+  'PalladioURW-BolIta' => 'P052-BoldItalic',
+  'PalladioURW-Ita' => 'P052-Italic',
+  'PalladioURW-Rom' => 'P052-Roman',
+  'StandardSymL' => 'StandardSymbolsPS',
+  'URWGothic-Boo' => 'URWGothic-Book',
+  'URWGothic-BooObl' => 'URWGothic-BookOblique',
+  'URWGothic-Dem' => 'URWGothic-Demi',
+  'URWGothic-DemObl' => 'URWGothic-DemiOblique',
+);
+
 use strict;
 use warnings;
-my $gsfolder="/usr/share/fonts/Type1"; # Arch Linux package 'gsfonts'
+my $gsfolder="/usr/share/fonts/Type1"; # Arch Linux package 'gsfonts-type1'
 opendir(GSFONTS, $gsfolder) or die "Can't open directory: $!\n";
 my $liner;
 my $file;
 my %fontxlat;
 while ($file = readdir(GSFONTS)) {
-  if ($file =~ m/[^.]+\.pfb/ ) {
+  if ($file =~ m/\.pfb$/ ) {
     open(FONT,"<",$gsfolder."/".$file) or die;
-    read (FONT, $liner,6, 0);
+    read (FONT, $liner,6, 0); # discard first 6 characters
     $liner = <FONT>;
-    if ( $liner =~ m/%!PS-AdobeFont[^:]+: ([^ ]+) /) {
-      #print "$file = $1\n"
-      $fontxlat{$1}=$file;
-    }
     close(FONT);
+    if ( $liner =~ m/%!PS-AdobeFont[^:]+: ([^ ]+) /) {
+      if ($brokenxlat{$1}) {
+        $fontxlat{$brokenxlat{$1}}=$file;
+      } else {
+        #print STDERR "  '$1' => '',\n";
+        $fontxlat{$1}=$file;
+      }
+    } else {
+      print STDERR "Not found $file\n";
+    }
   }
 }
 closedir(GSFONTS);
-
+#exit 1;
 #open(FONTMAP,"<","Fontmap.HylaFAX") or die;
+
+# Manually translate from the second column to a best match font name
+$fontxlat{'ArialMT'}="n019003l.pfb";
+$fontxlat{'Arial-BoldMT'}="n019004l.pfb";
+$fontxlat{'Arial-BoldItalicMT'}="n019024l.pfb";
+$fontxlat{'Arial-ItalicMT'}="n019023l.pfb";
+$fontxlat{'TimesNewRomanPSMT'}="n021023l.pfb";
+$fontxlat{'TimesNewRomanPS-BoldMT'}="n021004l.pfb";
+$fontxlat{'TimesNewRomanPS-BoldItalicMT'}="n021024l.pfb";
+$fontxlat{'TimesNewRomanPS-ItalicMT'}="n021003l.pfb";
+# Arial looks good to me!
+$fontxlat{'Cyrillic-Regular'}="n019003l.pfb";
+$fontxlat{'Shareware-Cyrillic-Italic'}="n019023l.pfb";
+$fontxlat{'Shareware-Cyrillic-Regular'}="n019003l.pfb";
+# Times looks good to me
+$fontxlat{'CharterBT-Bold'}="n021004l.pfb";
+$fontxlat{'CharterBT-BoldItalic'}="n021024l.pfb";
+$fontxlat{'CharterBT-Italic'}="n021003l.pfb";
+$fontxlat{'CharterBT-Roman'}="n021023l.pfb";
 
 # Convert all lines of the form
 # (BoringFontName)\t/AnotherBoringFontName ;

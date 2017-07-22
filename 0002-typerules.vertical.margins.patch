@@ -1,0 +1,28 @@
+--- typerules.orig	2017-07-19 00:24:44.000000000 -0400
++++ typerules	2017-07-19 01:02:17.200865735 -0400
+@@ -148,11 +148,11 @@
+ #
+ 0	string		WNGZWZSS	error	Wingz spreadsheet support not configured
+ 0       string          #Inventor V	error	IRIS Inventor file  support not configured
+ >15     string          binary		error	binary IRIS Inventor file support not configured
+ >15     string          ascii		ps	%F/textfmt -B -f Courier-Bold\
+-						-Ml=0.4in -p 11 -s %s >%o <%i
++						-Ml=0.30in,r=0.30in,t=0.1in,b=0.1in -p 11 -s %s >%o <%i
+ 
+ # The following image types are not handled natively, but
+ # can be used when a converter is installed.  Enable the 
+ # conversion match and disable the corresponding error.
+ 0	string		GIF		error	filetype conversion support not configured
+@@ -209,11 +209,11 @@
+ 
+ #
+ # This causes anything else with ascii-only data to be treated as text.
+ #
+ 0	ascii		x		ps	%F/textfmt -B -f Courier-Bold\
+-						-Ml=0.4in -p 11 -s %s >%o <%i
++						-Ml=0.30in,r=0.30in,t=0.1in,b=0.1in -p 11 -s %s >%o <%i
+ 
+ #
+ # Use enscript, instead of HylaFAX textfmt, for converting text into ps.
+ # 1) Comment out the 2 lines above referring to textfmt
+ # 2) Un-comment the following 3 lines

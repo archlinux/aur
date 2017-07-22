@@ -1,0 +1,32 @@
+--- cover.templ.default	2017-07-20 17:39:15.000000000 -0400
++++ cover.templ	2017-07-21 00:04:11.587625035 -0400
+@@ -281,12 +281,27 @@ grestore
+   } loop
+   breakLines
+ end
+ } def
+ 
+-drawlogo
+-drawtext
++% Graphic logo:
++% Comment out one or both SGI lines below.
++% Uncomment gsave and grestore.
++% Load logo into Gimp, export as .ps or .eps and paste most
++% between gsave and grestore in place of the sample lines.
++% Adjust translate line for page placement.
++%%% gsave
++
++% Translate to begin of first scanline
++%%% 60 760 translate
++%%% ...
++%%EndData
++
++%%% grestore
++
++drawlogo % SGI logo
++drawtext % SGI text
+ 
+ 0 0 0 setrgbcolor
+ /Helvetica-Bold-SHOWISO findfont 24 scalefont setfont
+ %164.063 644 M 168.356 644 M (Applications Consulting) S
+ %gsave 164.063 642 M 442 642 L stroke grestore

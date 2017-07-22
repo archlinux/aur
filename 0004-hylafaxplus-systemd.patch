@@ -1,0 +1,157 @@
+--- etc/faxsetup.sh.in.Arch	2017-02-17 20:03:09.000000000 -0500
++++ etc/faxsetup.sh.in	2017-07-21 20:06:57.802780575 -0400
+@@ -113,11 +113,11 @@ PATH_IMPRIP=@IMPRIP@		# pathname of IRIX
+ POSIXLY_CORRECT=1; export POSIXLY_CORRECT		# disable GNU extensions
+ 
+ #
+ # Location of sysv init script
+ #
+-DIR_SYSVINIT=@SYSVINITDIR@
++DIR_SYSVINIT="systemd"
+ FAXQ_SERVER=@FAXQ_SERVER@
+ HFAXD_SERVER=@HFAXD_SERVER@
+ HFAXD_SNPP_SERVER=@HFAXD_SNPP_SERVER@
+ 
+ #
+@@ -1892,11 +1892,20 @@ fi
+ #
+ # Check that for servers being started at system boot.
+ #
+ if onServer; then
+     signalINETD=no
+-    if [ -f ${DIR_SYSVINIT}/hylafax ]; then
++    ishylaInit ()
++    {
++    if [ "${DIR_SYSVINIT}" = "systemd" ]; then
++        systemctl -q is-active hfaxd.service
++    else
++        [ -f ${DIR_SYSVINIT}/hylafax ]
++    fi
++    }
++
++    if ishylaInit; then
+ 	# started by init at boot time
+         if [ $FAXQ_SERVER = no ]; then
+             cat <<EOF
+ 
+ Warning faxq will NOT be automatically started on reboot!
+@@ -2389,11 +2398,13 @@ if onServer; then
+ 	else
+ 	    x=
+ 	    echo
+ 	fi
+ 	if isOK "$x"; then
+-	    if kill $HFAXD; then
++	    if [ "${DIR_SYSVINIT}" = "systemd" ]; then
++	        systemctl stop hfaxd.service
++	    elif kill $HFAXD; then
+ 		echo "Sent a SIGTERM to processes $HFAXD."
+ 	    else
+ 		echo "Unable to send a SIGTERM to processes $HFAXD."
+ 	    fi
+ 	    while true; do
+@@ -2407,11 +2418,14 @@ if onServer; then
+ 
+ Warning: hfaxd is still running!
+ 
+ Something is hung.  The command
+ 
+-    kill $HFAXD
++    kill $HFAXD (SysV)
++or
++    systemctl stop hfaxd.service (systemd)
++
+     
+ did not terminate the hfaxd processes as expected.
+ EOF
+ 		prompt "Should we continue to wait [no]?";
+ 		if [ "$INTERACTIVE" != "no" ]; then
+@@ -2437,11 +2451,15 @@ EOF
+ 	else
+ 	    x=
+ 	    echo
+ 	fi
+ 	if isOK "$x"; then
+-	    $DIR_SBIN/faxquit >/dev/null 2>&1
++	    if [ "$DIR_SYSVINIT" = "systemd" ]; then
++	        systemctl stop faxq.service
++	    else
++	        $DIR_SBIN/faxquit >/dev/null 2>&1
++	    fi
+ 	    while true; do
+ 		for delay in 1 1 2 2 5 5; do
+ 		    FAXQ="`findproc faxq`"
+ 		    test "$FAXQ" || break
+ 		    sleep $delay
+@@ -2524,11 +2542,21 @@ EOF
+ 	x=
+ 	echo
+     fi
+     if isOK "$x"; then
+ 	echo ""
+-	if [ -x ${DIR_SYSVINIT}/hylafax ]; then
++	# The systemd code does not adequately duplicate the functionality of SysV
++	if [ "$DIR_SYSVINIT" = "systemd" ]; then
++	    if isOK "$FAXQ_SERVER"; then systemctl start faxq.service; fi
++	    if isOK "$HFAXD_SNPP_SERVER"; then
++	        sed -i -e 's|^\(ExecStart=/usr/bin/hfaxd -i hylafax\)\(.*\)$|\1 -s snpp|g' /usr/lib/systemd/system/hfaxd.service
++	    else
++	        sed -i -e 's|^\(ExecStart=/usr/bin/hfaxd -i hylafax\)\(.*\)$|\1|g' /usr/lib/systemd/system/hfaxd.service
++	    fi
++	    systemctl daemon-reload
++	    if isOK "$HFAXD_SERVER"; then systemctl start hfaxd.service; fi
++	elif [ -x ${DIR_SYSVINIT}/hylafax ]; then
+ 	    echo ${DIR_SYSVINIT}/hylafax start
+ 	    ${DIR_SYSVINIT}/hylafax start
+ 	else
+ 	    echo $DIR_SBIN/faxq; $DIR_SBIN/faxq
+ 	    hfaxdopts=
+@@ -2582,17 +2610,24 @@ EOF
+ 	    fi
+ 	    if isOK "$x"; then
+ 		for x in $DEVS; do
+ 		    devid="`expr $x : 'config.\(.*\)'`"
+ 		    if [ -w $DIR_SPOOL/FIFO.$devid ]; then
+-			echo $DIR_SBIN/faxquit $devid
+-			$DIR_SBIN/faxquit $devid >/dev/null 2>&1
++			if [ "$DIR_SYSVINIT" = "systemd" ]; then
++			    systemctl enable "faxgetty@$devid.service"
++			    systemctl restart "faxgetty@$devid.service"
++			else
++			    echo $DIR_SBIN/faxquit $devid
++			    $DIR_SBIN/faxquit $devid >/dev/null 2>&1
++			fi
+ 		    fi
+ 		done
+ 	    fi
+ 	else
+-	    if [ -f /etc/inittab ]; then
++	    if [ "$DIR_SYSVINIT" = "systemd" ]; then
++	        FAXGETTY="`cd /etc/systemd/system/multi-user.target.wants; echo faxgetty@*.service`"; test "$FAXGETTY" = "faxgetty@*.service" && unset FAXGETTY
++	    elif [ -f /etc/inittab ]; then
+ 		FAXGETTY="`$GREP '[^#].*:respawn:faxgetty.*' /etc/inittab`"
+ 	    elif [ -f /etc/ttys ]; then
+ 		FAXGETTY="`$GREP '[^#].*faxgetty.*' /etc/ttys`"
+ 	    fi
+ 	    if [ "$FAXGETTY" ]; then
+@@ -2610,11 +2645,19 @@ EOF
+ 		    x=
+ 		    echo
+ 		fi
+ 		if isOK "$x"; then
+ 		    init="`findproc init`"
+-		    if [ "$init" ]; then
++		    if [ "$DIR_SYSVINIT" = "systemd" ]; then
++		      for x in $DEVS; do
++		        devid="`expr $x : 'config.\(.*\)'`"
++		        if [ -w $DIR_SPOOL/FIFO.$devid ]; then
++		            systemctl enable "faxgetty@$devid.service"
++		            systemctl restart "faxgetty@$devid.service"
++		        fi
++		      done
++		    elif [ "$init" ]; then
+ 			if kill -HUP $init; then
+ 			    echo "Sent init a SIGHUP; the faxgetty processes should be started."
+ 			else
+ 			    echo "Unable to send init a SIGHUP; you may need to do this yourself."
+ 			fi
