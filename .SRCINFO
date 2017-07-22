@@ -1,0 +1,21 @@
+pkgbase = kickpass-git
+	pkgdesc = Stupid simple password safe
+	pkgver = v0.0.0.r220.gfafef62
+	pkgrel = 1
+	url = http://kickpass.pw/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	makedepends = check
+	depends = libsodium
+	depends = libbsd
+	depends = libevent
+	depends = libx11
+	provides = kickpass
+	conflicts = kickpass
+	source = git+https://github.com/kickpass/kickpass.git#branch=feature/libkickpass
+	sha256sums = SKIP
+
+pkgname = kickpass-git
+
