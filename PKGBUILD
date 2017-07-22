@@ -1,9 +1,9 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
-pkgname=libinput-git
-pkgver=1.8.0.r7.gca9d6a8
+pkgname=libinput-fix101796-git
+pkgver=1.8.0.r48.g27ebea9
 pkgrel=1
-pkgdesc='Input device management and event handling library'
+pkgdesc='Input device management and event handling library (patched to fix bug #101796)'
 arch=(i686 x86_64)
 url='http://freedesktop.org/wiki/Software/libinput/'
 provides=("libinput=${pkgver}")
@@ -12,8 +12,13 @@ depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 checkdepends=('valgrind')
 makedepends=('git' 'meson' 'doxygen' 'graphviz' 'gtk3')
 conflicts=('libinput')
-source=(git://anongit.freedesktop.org/wayland/libinput)
-sha1sums=('SKIP')
+source=('git://anongit.freedesktop.org/wayland/libinput' 'fix-101796.patch')
+sha1sums=('SKIP' '47a933749448928edf23a07c82d6d75be04e4285')
+
+prepare() {
+	cd libinput
+	patch -p1 -i ../fix-101796.patch
+}
 
 pkgver() {
 	cd libinput
