@@ -1,6 +1,6 @@
 pkgbase = pli-bin
 	pkgdesc = Iron Spring PL/I compiler - statically linked 386-binary
-	pkgver = 0.9.9a
+	pkgver = 0.9.9b
 	pkgrel = 1
 	epoch = 1
 	url = http://www.iron-spring.com/
@@ -8,8 +8,8 @@ pkgbase = pli-bin
 	arch = x86_64
 	license = LGPL
 	options = staticlibs
-	source = http://www.iron-spring.com/pli-0.9.9a.tgz
-	md5sums = eb87d7a1a7f3cd34df22ff358cab9f8e
+	source = http://www.iron-spring.com/pli-0.9.9b.tgz
+	sha512sums = 6cf06475e87977a47ff51b3cc6c51fc5f3958f729db0d2d18853b238ef86b2e1c858eec3ee262a108b2cbf485eb648dba73648360ac158b705ee8b564d407b17
 
 pkgname = pli-bin
 
