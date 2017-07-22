@@ -3,38 +3,35 @@
 
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
 url="http://kombu.readthedocs.org/"
 license=('BSD')
 options=('!emptydirs')
-makedepends=('python-amqp' 'python2-amqp' 'python-setuptools' 'python2-setuptools' 'git')
+makedepends=('python-amqp' 'python2-amqp' 'python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-redis' 'python2-redis'
-              'python-yaml' 'python2-yaml' 'python-msgpack' 'python2-msgpack' 'python2-boto'
+              'python-yaml' 'python2-yaml' 'python-msgpack' 'python2-msgpack'
               'python-pycurl' 'python2-pycurl' 'python-case' 'python2-case' 'python-pymongo'
-              'python2-pymongo' 'python-pytz' 'python2-pytz' 'python-couchdb' 'python2-couchdb'
+              'python2-pymongo' 'python-pytz' 'python2-pytz'
               'python-sqlalchemy' 'python2-sqlalchemy' 'python-pyro' 'python2-pyro'
-              'python2-librabbitmq')
-              # 'python-boto'
-              # https://github.com/celery/kombu/issues/661
-              # https://github.com/celery/kombu/issues/662
-              # https://github.com/celery/kombu/issues/663
-source=("git+https://github.com/celery/kombu.git#tag=v$pkgver")
-sha256sums=('SKIP')
+              'python2-librabbitmq' 'python-boto3')
+              # 'python2-boto3': Not packaged yet
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/celery/kombu/archive/v$pkgver.tar.gz")
+sha512sums=('de754a0a6410ab17f2f9a81afc374fe95d1baac8965b6b5f2e0760726982b8c927b8f15cab9dcc42f03c36ddffbe76452c3c962a0645d154af8a7b3e906bfccb')
 
 prepare() {
-  sed -i 's/for qname, queue in items(self._queues):/for qname, queue in list(items(self._queues)):/' kombu/kombu/messaging.py
-  cp -a kombu{,-py2}
+  sed -i 's/for qname, queue in items(self._queues):/for qname, queue in list(items(self._queues)):/' kombu-$pkgver/kombu/messaging.py
+  cp -a kombu-$pkgver{,-py2}
 }
 
 check() {
-  cd "$srcdir"/kombu
-  python setup.py ptr
+  cd "$srcdir"/kombu-$pkgver
+  python setup.py pytest
 
-  cd "$srcdir"/kombu-py2
-  python2 setup.py ptr
+  cd "$srcdir"/kombu-$pkgver-py2
+  python2 setup.py pytest
 }
 
 package_python-kombu() {
@@ -44,17 +41,14 @@ package_python-kombu() {
               'python-pyro: for Pyro support'
               'python-redis: for Redis support'
               'python-sqlalchemy: for SQLAlchemy support'
-              'python-boto: for Amazon SQS support'
+              'python-boto3: for Amazon SQS support'
               'python-pycurl: for Amazon SQS support'
-              'python-yaml: for YAML support'
-              'python-pyzmq: for ZeroMQ support'
-              'python-couchdb: for CouchDB support')
+              'python-yaml: for YAML support')
               # 'python-softlayer-messaging: for SoftLayer Message Queue support': Not packaged yet
               # 'python-kazoo: for Zookeeper support': Not packaged yet
               # 'python-librabbitmq: C optimization for AMQP transport' Not available for python 3 yet
-              # 'python-beanstalkc: for Beanstalk Support' Not available for python 3 yet
 
-  cd "$srcdir"/kombu
+  cd "$srcdir"/kombu-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
@@ -66,17 +60,14 @@ package_python2-kombu() {
               'python2-pyro: for Pyro support'
               'python2-redis: for Redis support'
               'python2-sqlalchemy: for SQLAlchemy support'
-              'python2-boto: for Amazon SQS support'
               'python2-pycurl: for Amazon SQS support'
               'python2-yaml: for YAML support'
-              'python2-pyzmq: for ZeroMQ support'
-              'python2-librabbitmq: C optimization for AMQP transport'
-              'python2-couchdb: for CouchDB support')
+              'python2-librabbitmq: C optimization for AMQP transport')
               # 'python2-softlayer-messaging: for SoftLayer Message Queue support': Not packaged yet
               # 'python2-kazoo: for Zookeeper support': Not packaged yet
-              # 'python2-beanstalkc: for Beanstalk Support' Not packaged yet
+              # 'python2-boto3: for Amazon SQS support': Not packaged yet
 
-  cd "$srcdir"/kombu-py2
+  cd "$srcdir"/kombu-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
