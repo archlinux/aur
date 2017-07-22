@@ -1,0 +1,13 @@
+pkgbase = rxcpp-git
+	pkgdesc = Reactive Extensions for C++
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/Reactive-Extensions/RxCpp
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	source = git+https://github.com/Reactive-Extensions/RxCpp.git#tag=v4.0.0
+	sha256sums = SKIP
+
+pkgname = rxcpp-git
+
