@@ -7,12 +7,13 @@
 # TODO: kernel bug lspci: The RocketPort PCI 4J is claimed to have RJ11 connectors. It has RJ45 connectors. The 8J has RJ11 connectors.
 
 # This is for PCI and uPCI, not Express or Infinity
+# This blacklists and replaces the built in driver
 
 _opt_DKMS=1           # This can be toggled between installs
 
-# ls -l /dev/ttyR*
+# ls -l /dev/ttyR[0-9]*
 # lsmod | grep rocket
-# lspci -v | grep -A4 -i rocket
+# lspci -v | grep -B7 -i rocket
 # sudo cat /proc/tty/driver/rocketupci
 
 # dmesg | grep -A8 -i rocket
@@ -24,6 +25,9 @@ _opt_DKMS=1           # This can be toggled between installs
 #[    4.140448] 0000:07:02.0: ttyR3 at I/O 0x1c006 (irq = 18, base_baud = 921600) is a RP UPCI Plus 4 port RJ45
 #[    4.140504] rocketupci 0000:07:02.0: polling at 100Hz
 
+_modulename='rocketupci'
+_origmodname='rocket'
+
 set -u
 pkgname='comtrol-rocketport-upci'
 pkgver='4.05'
@@ -33,14 +37,12 @@ arch=('i686' 'x86_64')
 url='http://downloads.comtrol.com/html/RPuPCI_drivers.htm'
 license=('GPL')
 makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
-backup=('etc/modprobe.d/rocketupci.conf')
+backup=("etc/modprobe.d/${_modulename}.conf")
 install="${pkgname}-install.sh"
 _srcdir="rocketport-linux-${pkgver}"
 source=("http://downloads.comtrol.com/rport/drivers/u_pci/linux/rocketport-linux-${pkgver}.tar.gz" 'rocketport-upci-firmware.sh')
 sha256sums=('370f65a2dc5128e57cb7480aff5756996ceb24ad4312d1454f5debb1611fe5da'
             '6fa93b24ffe0ff6849b9b05bcd55dcaf4eb09c13321c55bbb2f04b369008d149')
-
-_modulename='rocketupci'
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -53,12 +55,12 @@ _install_check() {
   local _ckvar
   local _ckline
   local _pkgname="${pkgname}"
-  for _ckvar in _pkgname _modulename; do
+  for _ckvar in '_pkgname' '_modulename' '_origmodname'; do
     _ckline="${_ckvar}='${!_ckvar}'"
     if ! grep -q "^${_ckline}"'$' "${startdir}/${install}"; then
-      set +u
       msg "${install} must be fixed"
       echo "${_ckline}"
+      set +u
       false
     fi
   done
@@ -75,16 +77,16 @@ prepare() {
   sed -e 's:/lib/:/usr/lib/:g' -i 'Makefile'
 
   # Branding
-  sed -e '/printk/ s@DRV_VERS@& " Arch Linux'" https://aur.archlinux.org/packages/${pkgname}/"'" @g' -i 'rocket.c'
+  sed -e '/printk/ s@DRV_VERS@& " Arch Linux'" https://aur.archlinux.org/packages/${pkgname}/"'" @g' -i "${_origmodname}.c"
 
-  # Change module name to prevent conflict with rocket.ko (C)2003 for RocketPort PCI
-  if [ "${_modulename}" != 'rocket' ]; then
-    sed -e "s:rocket:${_modulename}:g" -i 'Makefile'
-    sed -e "s|rocket:|${_modulename}:|g" \
-        -e "/DRV_NAME/ s:rocket:${_modulename}:g" \
-      -i 'rocket.c'
-    sed -e "s:rocket:${_modulename}:g" -i 'install.sh'
-    mv 'rocket.c' "${_modulename}.c"
+  # Change module name to prevent conflict with built in module
+  if [ "${_modulename}" != "${_origmodname}" ]; then
+    sed -e "s:${_origmodname}:${_modulename}:g" -i 'Makefile'
+    sed -e "s|\"${_origmodname}:|\"${_modulename}:|g" \
+        -e "/DRV_NAME/ s:\"${_origmodname}:\"${_modulename}:g" \
+      -i "${_origmodname}.c"
+    sed -e "s:${_origmodname}:${_modulename}:g" -i 'install.sh'
+    mv "${_origmodname}.c" "${_modulename}.c"
   fi
 
   # Fix loadrm2 makefile
@@ -97,7 +99,7 @@ prepare() {
   sed -e "s:/etc/:/usr/lib/firmware/${pkgname}/:g" -i 'loadrm2/loadrm2.h'
 
   # Make installer package compatible
-  cp -p 'install.sh' 'install.Arch.sh' # debugging
+  #cp -p 'install.sh' 'install.Arch.sh' # debugging
   sed -e '1a set -e' -e '1a set -u' -e '#1a set -x' -e '1a DESTDIR=' -i 'install.sh'
   sed -e '# Fix sbin and lib' \
       -e 's:/usr/sbin/:/usr/bin/:g' \
@@ -135,7 +137,6 @@ package() {
   install -d \
     "${pkgdir}/usr/bin" \
     "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers" \
-    "${pkgdir}/etc" \
     "${pkgdir}/etc/modules-load.d" \
     "${pkgdir}/etc/modprobe.d"
   ln -s '/usr/bin/true' "${pkgdir}/usr/bin/depmod"
@@ -147,10 +148,10 @@ package() {
   # Modern kernels detect and load automatically
   rm -r "${pkgdir}/etc/modules-load.d"
 
-  # Blacklist exiting incomplete rocket module
-  cat >> "${pkgdir}/etc/modprobe.d/rocketupci.conf" << EOF
-# Do not load old rocket module that only supports RocketPort PCI
-blacklist rocket
+  # Blacklist exiting incomplete built in module
+  cat >> "${pkgdir}/etc/modprobe.d/${_modulename}.conf" << EOF
+# Do not load built in module with only barebones support
+blacklist ${_origmodname}
 EOF
 
   # The module is in the same folder as DKMS. Compress to a different name to prevent conflict.
