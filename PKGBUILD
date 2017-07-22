@@ -10,6 +10,8 @@ _opt_DKMS=1           # This can be toggled between installs
 # lspci -v | grep -B7 -i rp2
 # sudo cat /proc/tty/driver/rocketrp2
 
+# See /etc/modprobe.d/rocketrp2.conf to set port mode to RS-422 or RS-485
+
 # dmesg | grep -A8 -i rp2
 #[ 2697.826224] rocketrp2: Comtrol RocketPort Infinity/Express driver version 2.06 Arch Linux https://aur.archlinux.org/packages/comtrol-rocketport-express-infinity/ (Polled mode)
 #[ 2697.826339] rocketrp2 0000:06:00.0: found RocketPort Express 8, Octa DB, Selectable with 8 ports
@@ -30,7 +32,7 @@ set -u
 pkgname='comtrol-rocketport-express-infinity'
 pkgver='2.06'
 pkgrel='1'
-pkgdesc='kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 port'
+pkgdesc='kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 485 port'
 arch=('i686' 'x86_64')
 url='http://downloads.comtrol.com/html/rp_express_drivers.htm'
 license=('GPL')
