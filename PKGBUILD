@@ -2,19 +2,21 @@
 # Contributor: redfish <redfish at galactica.pw>
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: André Vitor de Lima Matos <andre.vmatos at gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=1.0.1.4.r989.gc33b823a1
-# ↓to be used in pkgver() where we need version without git revision
-upstream_release_version=1.0.1.4
+_pkgbase=BitcoinUnlimited
+pkgver=1.0.3.0.r1124.g21a81e275
+# ↓to be used in pkgver() when we need version without git revision
+upstream_release_version=1.0.3.0
 pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64' 'armv7h')
-url="http://www.bitcoinunlimited.info"
+url="https://www.bitcoinunlimited.info"
 depends=('boost'
          'boost-libs'
          'miniupnpc'
-         'openssl')
+         'openssl-1.0')
 makedepends=('autoconf'
              'automake'
              'binutils'
@@ -42,7 +44,7 @@ conflicts=('bitcoin' 'bitcoin-unlimited' 'bitcoin-cli' 'bitcoin-daemon' 'bitcoin
 install=bitcoin.install
 
 pkgver() {
-  cd "$srcdir/BitcoinUnlimited"
+  cd "$srcdir/$_pkgbase"
 
   # The latest version was not tagged, so throw away the version we get
   # from the top-most tag, but keep, the commit hash
@@ -51,7 +53,16 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/BitcoinUnlimited"
+  cd "$srcdir/$_pkgbase"
+
+  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
+  export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl -lcrypto"
+
+  export SSL_CFLAGS="-I/usr/include/openssl-1.0"
+  export SSL_LIBS="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
+
+  export CRYPTO_CFLAGS="-I/usr/include/openssl-1.0"
+  export CRYPTO_LIBS="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
 
   msg2 'Building...'
   ./autogen.sh
@@ -70,7 +81,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/BitcoinUnlimited"
+  cd "$srcdir/$_pkgbase"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
