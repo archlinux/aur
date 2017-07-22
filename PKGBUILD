@@ -21,7 +21,7 @@ sha256sums=('a5792263a5f832ab3ad005d019b2bfc75aac712a285aff3138f9f4eb33d64b01'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
             '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
-            'b44f8be46934e93a4cd1bc1d9db0fbb9ce7186760ee8ba0d5be80e966dc1c1e2')
+            'c8a667f7138a504f0a3018b48eb687814cfc741f4d38d8699b0b3b5234b25fea')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')

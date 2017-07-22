@@ -33,7 +33,6 @@ _rmuser() {
   echo "done"
 }
 
-echo ""
 read -d '' bitcoin <<'EOI'
 Bitcoin ABC
 ___________
