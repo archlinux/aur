@@ -7,7 +7,7 @@
 
 pkgname=doomsday
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('i686' 'x86_64')
@@ -43,7 +43,6 @@ package() {
     mkdir -p "${pkgdir}/etc/doomsday"
     echo "iwaddir: /usr/share/games/doom" > "${pkgdir}/etc/doomsday/paths"
     # For Music
-    echo "To obtain music work properly, in options set show taskbar go to sound options of the engine and go to path /usr/share/soundfonts and choose your soundfont"
-    echo "And do not forget to start fluidsynth service!"
+    echo "Do not forget to start fluidsynth service after adding your soundfonts to etc/conf.d/fluidsynth (SOUND_FONT line) if you want to use fluidsynth music output"
 }
 
