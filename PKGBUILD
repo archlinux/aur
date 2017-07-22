@@ -1,6 +1,6 @@
 pkgbase=tmkernel-bfq       # Build kernel with a different name
-_srcname=linux-4.11
-pkgver=4.12
+_srcname=linux-4.12
+pkgver=4.12.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -15,12 +15,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '90-linux.hook'
         'linux.preset')
 
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '8df4bb9871d154e8af02eb5a95800661dc0e84ed32ee4a5edc5a2ec9b304c128'
+            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
             'SKIP'
             'dfb53fb48bad4d9f61bbea5e364d5619137460e7224bdf0e7bde5e137bc512d5'
-            '619d66c52a4e6fae509a12f249999295c84cadd85b86885c13326bd756912433'
+            'e61601ba911d957c149d52b1b1bca8c841b31ab800ac930bae9677e74a508c3f'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
