@@ -3,7 +3,7 @@
 
 pkgname=minetest-git
 _pkgname=minetest
-pkgver=20170325.22567d107
+pkgver=20170603.dd0a058e1
 pkgrel=1
 pkgdesc='Infiniminer/Minecraft inspired game'
 url='http://www.minetest.net/'
