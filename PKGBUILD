@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=emojione-fonts
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Colored emoji fonts from EmojiOne project."
 url="https://github.com/emojione/emojione"
 arch=(any)
@@ -10,17 +10,17 @@ depends=('fontconfig')
 optdepends=('cairo-coloredemoji: (Recommended) display color emoji in all GTK+ apps.')
 provides=("$pkgname" 'ttf-emojione')
 conflicts=("$pkgname" 'noto-fonts-emoji' 'ttf-emojione')
-source=("https://github.com/emojione/emojione/blob/master/extras/fonts/emojione-android.ttf"
-        "https://github.com/emojione/emojione/blob/master/extras/fonts/emojione-svg.otf"
-        "https://github.com/emojione/emojione/blob/master/extras/fonts/emojione-svg.woff"
-        "https://github.com/emojione/emojione/blob/master/extras/fonts/emojione-svg.woff2"
+source=("https://github.com/emojione/emojione/raw/v${pkgver}/extras/fonts/emojione-android.ttf"
+        "https://github.com/emojione/emojione/raw/v${pkgver}/extras/fonts/emojione-svg.otf"
+        "https://github.com/emojione/emojione/raw/v${pkgver}/extras/fonts/emojione-svg.woff"
+        "https://github.com/emojione/emojione/raw/v${pkgver}/extras/fonts/emojione-svg.woff2"
         "70-emojione-color.conf"
         "license-free.pdf")
 sha256sums=('6efb1a43873876bcc9476562e20cf8d875eca20bab456d83a580f46a39321139'
-            'c9e4fe12f2d11e6a5f4d351ecfcf6dc513873fd77e8090fefe91cd230a4e3c6b'
-            '3e0cb4d82f6398c17e378bba4c9eb879af71ef85969a7a0f5f8d1c83fef799fb'
-            'ce592217c59d2199f1453c703176313a8a63e78e82da27b2762b17341a4f95c7'
-            'b2914972168b71bfa8959c76db52b38b4bee9bf8f0e9288e48718551f28b238c'
+            '36b72bfe47556375cd6eee083233da3a9253a3f8a20087a97cd723cd32ffc300'
+            '1f759604f74e422cb23870f688f1f03497a194acf320db2bc8bcd87bd28591b1'
+            '99f99986c58b813c3f3eb282a4962c6b84ca509a59b02fea3ff942060de44d53'
+            'a059c1fa2070d7eb778d8a6048f975d76e343da9e7d946780ccd03d0a83e2cad'
             '2898feeb41e03acd1a655ba5ddad0072aac83a014ee184fdcdebc7a66d353650')
 
 package() {
