@@ -1,9 +1,10 @@
 # Contributor: Campbell Barton <ideasman42@gmail.com>
-# Maintainer: Pablo Lezaeta <prflr88@gmail.com>
+# Contributor: Noel Kuntze "Thermi"
+# Maintainer: Pablo Lezaeta <prflr88 arro'a gmail puntocom>
 
 pkgname=pax
 pkgver=3.4
-pkgrel=8
+pkgrel=9
 pkgdesc="The POSIX standard archive tool, supporting the two most common forms of standard Unix archive (backup) files - CPIO and TAR."
 arch=("i686" "x86_64")
 url="http://downloads.yoctoproject.org/mirror/sources"
@@ -24,6 +25,7 @@ source=("http://downloads.yoctoproject.org/mirror/sources/$pkgname-$pkgver.tar.b
 	"005-pax-3.4_abs100.patch"
 	"006-pax-3.4_rdtruncate.patch"
 	"007-pax-3.4_fix_for_compile_with_gcc-6.1.patch"
+	"008-Fix-implicit-fallthrough-in-src-options.c.patch"
 	)
 
 prepare() {
@@ -37,6 +39,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/005-pax-3.4_abs100.patch"
   patch -Np1 -i "${srcdir}/006-pax-3.4_rdtruncate.patch"
   patch -p1 -i "${srcdir}/007-pax-3.4_fix_for_compile_with_gcc-6.1.patch"
+  patch -Np2 -i "${srcdir}/008-Fix-implicit-fallthrough-in-src-options.c.patch"
 }
 
 build() {
@@ -55,11 +58,14 @@ package(){
           bindir=/usr/bin sbindir=/usr/bin install
   install -D -m644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
-md5sums=('fbd9023b590b45ac3ade95870702a0d6'
-         'fc4f9f3133b4be4c9e512b76209982c2'
-         'b67b9ab3ace38b0c7aaa7cb47f4232de'
-         '65c475b6d6461182591bd65704c0fb3c'
-         '4a7cdc1d3f94f4d7d7e3b7637d3dd441'
-         'f4cc0c8219c28290c45e559d93fea3ec'
-         'ff6796fcecfecdc3a87a4e4762bcba19'
-         '93fb100dab84000c164e7b6eb0b42937')
+
+sha256sums=('ac3c06048e02828077cf7757d3d142241429238893b91d529af29a2e8cc5623b'
+            '45d08ba749e473525bd4882bfdaf2f16b2ab5ef97413d678e042874e2ce4b70b'
+            '7b244542dcbc53f1e78ce1c57af401846ff1ec2269195f321ed2b2d9bf297f2d'
+            'b67343324bef2a65b1be0f7bf2167c3a8d208ac2f1bdab6349562f1d73fda3b9'
+            '50987ce7bef75dc670c4ba81d482bd586fc0bf0944234a5fb5e9c9451168939b'
+            'c515b529601aa2a431b964afe291802e55fdd426b3a6cfb87ae74fb3fb8b70f9'
+            '30a6c084600c47af73a988abf8d4514e1766cee36f1efedb5a76772bf3b2c793'
+            '82a7d29126193e902a2f0d5ba6f790502df3591fd28b09af7c49eec0295cab1e'
+            'd9d015ceb80c9907bd5d91cf1f2f3f4257f0152bcacc85057a41b0fe5e3ac5ba')
+
