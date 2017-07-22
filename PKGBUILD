@@ -9,18 +9,8 @@ url="https://github.com/Reactive-Extensions/RxCpp"
 license=('Apache')
 groups=()
 depends=()
-makedepends=('gcc')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+makedepends=('gcc' 'make' 'cmake')
 source=("git+https://github.com/Reactive-Extensions/RxCpp.git#tag=v4.0.0")
-noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 

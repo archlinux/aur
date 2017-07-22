@@ -6,6 +6,8 @@ pkgbase = rxcpp-git
 	arch = x86_64
 	license = Apache
 	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
 	source = git+https://github.com/Reactive-Extensions/RxCpp.git#tag=v4.0.0
 	sha256sums = SKIP
 
