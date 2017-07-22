@@ -2,7 +2,7 @@
 # Contributor:  D. Bohdan <http://dbohdan.com/contact/>
 
 pkgname=s2png-git
-pkgver=v0.7.0.13.g1b39277
+pkgver=v0.7.2
 pkgrel=1
 
 pkgdesc='stuff to PNG'
