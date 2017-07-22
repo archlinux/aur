@@ -2,7 +2,7 @@
 # Contributor: Raziel23 <venom23 at runbox dot com>
 
 pkgname=vcmi-git
-pkgver=r6215.da1c9cf
+pkgver=r6730.1b9daecd
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
     -DCMAKE_SKIP_RPATH='FALSE' \
+    -DENABLE_TEST=OFF \
     -DCMAKE_BUILD_TYPE='RelWithDebInfo'
   make
 }
