@@ -1,15 +1,17 @@
 pkgbase = swaygrab-helper
 	pkgdesc = Put your screenshots to XDG_PICTURES_DIR folder
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://bitbucket.org/all_gravy/swaygrab-helper
 	arch = any
-	license = GPL
+	license = Apache
 	depends = sway
 	depends = xdg-user-dirs
-	noextract = swaygrab-helper-1.0.1.tar.bz2
-	source = swaygrab-helper-1.0.1.tar.bz2::https://bitbucket.org/all_gravy/swaygrab-helper/get/1.0.1.tar.bz2
-	sha256sums = 5a78ada991c3c923e4231862ffa23fee1b7d5985e8bdd5eb27db967e919bbe16
+	optdepends = xsel: copy the full path to clipboard (or xclip)
+	optdepends = xclip: copy the full path to clipboard (or xsel)
+	noextract = swaygrab-helper-1.1.0.tar.bz2
+	source = swaygrab-helper-1.1.0.tar.bz2::https://bitbucket.org/all_gravy/swaygrab-helper/get/1.1.0.tar.bz2
+	sha256sums = ed6b90e6590a56d6ecbac2b4d1f405007454e1757df39c1fbe500f6bf6db7cd2
 
 pkgname = swaygrab-helper
 
