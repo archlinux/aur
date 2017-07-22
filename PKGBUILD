@@ -1,36 +1,13 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc-qt
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
-pkgdesc="Bitcoin ABC qt wallet"
+pkgdesc="Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
-depends=('boost'
-         'boost-libs'
-         'desktop-file-utils'
-         'libevent'
-         'qt5-base'
-         'miniupnpc'
-         'qrencode'
-         'protobuf'
-         'zeromq')
-makedepends=('autoconf'
-             'automake'
-             'binutils'
-             'boost'
-             'boost-libs'
-             'libevent'
-             'libtool'
-             'm4'
-             'make'
-             'miniupnpc'
-             'pkg-config'
-             'protobuf'
-             'qrencode'
-             'qt5-base'
-             'qt5-tools'
-             'zeromq')
+depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode')
+makedepends=('boost' 'qt5-tools')
 license=('MIT')
 source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin.conf
@@ -38,7 +15,7 @@ source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin.service
         bitcoin-reindex.service
         bitcoin.install)
-sha256sums=('5e2d5ee094ce35b4b57506fee1ac1116a4872a7bd3e62f0668e0766d59d4b934'
+sha256sums=('a5792263a5f832ab3ad005d019b2bfc75aac712a285aff3138f9f4eb33d64b01'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
@@ -50,10 +27,6 @@ provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt')
 install=bitcoin.install
 
-# half of available processing units or one if only one is available
-_nproc=$(($(nproc)/2))
-[[ ${_nproc} < 1 ]] && _nproc=1
-
 build() {
   cd "$srcdir/bitcoin-abc-$pkgver"
 
@@ -61,7 +34,6 @@ build() {
   ./autogen.sh
   ./configure \
     --prefix=/usr \
-    --sbindir=/usr/bin \
     --libexecdir=/usr/lib/bitcoin \
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/bitcoin \
@@ -69,15 +41,18 @@ build() {
     --enable-hardening \
     --with-gui=qt5 \
     --with-gnu-ld \
-    --with-incompatible-bdb
-  make -j$_nproc
+    --with-incompatible-bdb \
+    --disable-maintainer-mode \
+    --enable-reduce-exports \
+    --disable-gui-tests
+  make
 }
 
 check() {
   cd "$srcdir/bitcoin-abc-$pkgver"
 
   msg2 'Testing...'
-  make -j$_nproc check
+  make check
 }
 
 package() {
@@ -98,6 +73,14 @@ package() {
 
   msg2 'Installing man pages...'
   install -Dm 644 doc/man/*.1 -t "$pkgdir/usr/share/man/man1"
+
+  msg2 'Installing rpcuser.py...'
+  sed 's/python2/python/' <share/rpcuser/rpcuser.py >rpcuser.py
+  install -Dm 755 rpcuser.py -t "$pkgdir/etc/bitcoin"
+
+  msg2 'Installing examples...'
+  install -Dm644 "contrib/debian/examples/bitcoin.conf" \
+    -t "$pkgdir/usr/share/doc/bitcoin/examples"
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
