@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/gauteh/gmailieer"
 license=('GPL3')
 groups=()
-depends=('python' 'python-tqdm' 'python-google-api-python-client' 'python-oauth2client' 'notmuch')
+depends=('python' 'python-tqdm' 'python-google-api-python-client' 'python-oauth2client' 'notmuch>=0.25')
 makedepends=('git' 'python-setuptools')
 optdepends=()
 provides=("${pkgname%-git}")
