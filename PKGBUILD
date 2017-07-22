@@ -2,12 +2,12 @@
 _pkgname=pjproject
 pkgname=${_pkgname}-savoirfairelinux
 pkgver=2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source SIP stack and media stack, built with patches from SavoirFaire Linux (mostly GnuTLS support)"
 arch=('i686' 'x86_64')
 url="http://www.pjsip.org/"
 license=('GPL')
-depends=('gnutls' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux-ng' 'ffmpeg' 'libsrtp' 'opus')
+depends=('util-linux' 'gnutls' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'ffmpeg' 'libsrtp' 'opus')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("http://www.pjsip.org/release/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
