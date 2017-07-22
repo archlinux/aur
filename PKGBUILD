@@ -2,7 +2,7 @@
 
 pkgname="adwaita-dark-darose"
 pkgver=3.22.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Adwaita theme hacked to use my custom color scheme.  (Dark blues instead of greys.)"
 url="none"
 license=('GPL')
@@ -25,24 +25,40 @@ build() {
     echo '@import url("gtk-contained-dark.css");' > gtk-3.0/gtk.css
     echo '@import url("gtk-contained-dark.css");' > gtk-3.0/gtk-dark.css
 
-    sed -i 's|#33393b|#181c28|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#232729|#00001b|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#ffffff|#c3c3c3|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|white|#c3c3c3|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#262b2d|#1a1e2c|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#215d9c|#566b96|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#2d3234|#1c202e|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#2c3233|#00001b|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#272c2e|#00001b|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#2c3234|#181c28|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#252a2c|#00001b|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#2b3032|#181c28|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#272c2d|#171b27|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#33393b|#181c28|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#33393b|#181c28|g' gtk-2.0/gtkrc
+    sed -i 's|#232729|#00001b|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#232729|#00001b|g' gtk-2.0/gtkrc
+    sed -i 's|#ffffff|#c3c3c3|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#ffffff|#c3c3c3|g' gtk-2.0/gtkrc
+    sed -i 's|white|#c3c3c3|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|white|#c3c3c3|g' gtk-2.0/gtkrc
+    sed -i 's|#262b2d|#1a1e2c|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#262b2d|#1a1e2c|g' gtk-2.0/gtkrc
+    sed -i 's|#215d9c|#566b96|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#215d9c|#566b96|g' gtk-2.0/gtkrc
+    sed -i 's|#2d3234|#1c202e|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2d3234|#1c202e|g' gtk-2.0/gtkrc
+    sed -i 's|#2c3233|#00001b|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2c3233|#00001b|g' gtk-2.0/gtkrc
+    sed -i 's|#272c2e|#00001b|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#272c2e|#00001b|g' gtk-2.0/gtkrc
+    sed -i 's|#2c3234|#181c28|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2c3234|#181c28|g' gtk-2.0/gtkrc
+    sed -i 's|#252a2c|#00001b|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#252a2c|#00001b|g' gtk-2.0/gtkrc
+    sed -i 's|#2b3032|#181c28|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2b3032|#181c28|g' gtk-2.0/gtkrc
+    sed -i 's|#272c2d|#171b27|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#272c2d|#171b27|g' gtk-2.0/gtkrc
 
     # dark gradient
-    sed -i 's|#2e3436|#293045|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#2a2e30|#1c202e|' gtk-3.0/gtk-contained-dark.css
-    sed -i 's|#25292b|#171b27|' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2e3436|#293045|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2e3436|#293045|g' gtk-2.0/gtkrc
+    sed -i 's|#2a2e30|#1c202e|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#2a2e30|#1c202e|g' gtk-2.0/gtkrc
+    sed -i 's|#25292b|#171b27|g' gtk-3.0/gtk-contained-dark.css
+    sed -i 's|#25292b|#171b27|g' gtk-2.0/gtkrc
 
     mkdir gtk-3.0/assets
     for f in $(gresource list /usr/lib/libgtk-3.so.0 | grep Adwaita/assets); do

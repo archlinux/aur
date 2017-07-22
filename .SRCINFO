@@ -1,7 +1,7 @@
 pkgbase = adwaita-dark-darose
 	pkgdesc = Adwaita theme hacked to use my custom color scheme. (Dark blues instead of greys.)
 	pkgver = 3.22.3
-	pkgrel = 6
+	pkgrel = 7
 	url = none
 	arch = any
 	license = GPL
