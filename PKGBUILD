@@ -3,7 +3,7 @@
 
 pkgname=modsecurity
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx'
 arch=('i686' 'x86_64')
 url='https://modsecurity.org/'
@@ -17,6 +17,7 @@ provides=("${pkgname}=${pkgver}")
 
 source=(
 	"https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+	'fix_lua_detection.patch'
 )
 validpgpkeys=(
 	'190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277' # Felipe Zimmerle
@@ -24,6 +25,7 @@ validpgpkeys=(
 sha256sums=(
 	'41a8f73476ec891f3a9e8736b98b64ea5c2105f1ce15ea57a1f05b4bf2ffaeb5'
 	'SKIP' # GPG signature
+	'cf9d149d3c2a0e8e7960d55fc86789168df64c4511200551b67c457a87752934'
 )
 
 prepare() {
@@ -32,6 +34,10 @@ prepare() {
 
 	cd "${srcdir}"/build
 	cp -a "${srcdir}"/${pkgname}-${pkgver}/* ./
+
+	# Fix LUA detection
+	patch -Np1 < ../fix_lua_detection.patch
+
 	./autogen.sh
 }
 
