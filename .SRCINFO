@@ -8,7 +8,7 @@ pkgbase = deepin-wine32
 	license = Proprietary
 	makedepends = tar
 	noextract = deepin-wine32_1.9-42_i386.deb
-	source = https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin-wine/deepin-wine32_1.9-42_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine32_1.9-42_i386.deb
 	md5sums = SKIP
 
 pkgname = deepin-wine32
