@@ -6,8 +6,8 @@ pkgdesc="CLI for Amber framework that makes interfacing with your file system an
 arch=(i686 x86_64)
 url='https://github.com/Amber-Crystal/amber_cmd'
 license=(MIT)
-depends=('sqlite')
-makedepends=('crystal' 'shards' 'llvm')
+depends=('crystal' 'shards' 'sqlite')
+makedepends=('llvm')
 source=("https://github.com/Amber-Crystal/amber_cmd/archive/v$pkgver.tar.gz")
 sha256sums=('721d8d9dbd13df2187e7d6ffad5b00894908dd18dbc90d65c85272422f84f4a5')
 
