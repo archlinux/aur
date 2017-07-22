@@ -3,7 +3,7 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -13,6 +13,9 @@ source=("git+https://github.com/ONLYOFFICE/DocumentServer.git#tag=ONLYOFFICE-Doc
 sha512sums=("SKIP")
 
 prepare() {
+  mkdir path
+  ln -s /usr/bin/python2 path/python
+
   cd "${srcdir}/DocumentServer"
   git submodule init
   git submodule update
@@ -20,6 +23,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/DocumentServer"
+
+  export PATH="$srcdir/path:$PATH"
 
   # Download & build third party modules 
   cd core/Common/3dParty
