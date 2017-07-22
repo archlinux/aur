@@ -1,13 +1,12 @@
 pkgbase = firmtool-git
 	pkgdesc = A tool to parse, extract, and build 3DS firmware files
-	pkgver = r17.375e66c
+	pkgver = r28.0d54877
 	pkgrel = 1
 	url = https://github.com/TuxSH/firmtool
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	makedepends = git
-	depends = python
-	depends = python-setuptools
 	depends = python-cryptography
 	source = git+https://github.com/TuxSH/firmtool.git
 	md5sums = SKIP
