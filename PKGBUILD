@@ -34,7 +34,7 @@ pkgver=9.0.32150
 #pkgver=11.0.57095
 #pkgver=11.0.67687
 #pkgver=12.0.69753
-#pkgver=12.0.71510
+#pkgver=12.0.76279
 pkgrel=1
 _pkgver_major="${pkgver%%.*}"
 
