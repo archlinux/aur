@@ -10,7 +10,7 @@ license=('MIT')
 depends=('systemd' 'lxc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
 backup=('etc/conf.d/openvpn-lxc-snapshot.conf' 'etc/conf.d/pihole-lxc-snapshot.conf')
-sha256sums=('6dd193814275c28bbae3568d5ea1f85801149169f2947f1daf42954d98442c95')
+sha256sums=('0722a6df8ac7fdbe6f412f6f5d21e575fb99568e943eaf4a227c5adbd8445228')
 
 build() {
   cd "$pkgname-$pkgver"
