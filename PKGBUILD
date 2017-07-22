@@ -2,12 +2,12 @@
 
 pkgname=wxpython-phoenix-git
 pkgver=r3225.g172bd50d
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3 implementation of the WxPython UI library"
 arch=('x86_64' 'i686')
 url="https://github.com/wxWidgets/Phoenix"
 license=('custom:wxWindows')
-depends=('python' 'wxgtk')
+depends=('python')
 makedepends=('mesa' 'glu' 'git' 'libpng' 'libjpeg-turbo' 'libtiff' 'sdl' 'gst-plugins-base' 'libnotify' 'freeglut' 'gtk3' 'webkit2gtk')
 source=("$pkgname::git+${url}"
 		"git+https://github.com/wxWidgets/wxWidgets.git")
