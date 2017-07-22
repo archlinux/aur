@@ -3,11 +3,11 @@
 
 pkgname=onlyoffice-documentserver
 pkgver=4.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
-makedepends=('npm' 'nodejs' 'grunt-cli')
+makedepends=('npm' 'nodejs' 'grunt-cli' 'qt5-base' 'git' 'wget' '7zip')
 license=('AGPL')
 source=("git+https://github.com/ONLYOFFICE/DocumentServer.git#tag=ONLYOFFICE-DocumentServer-4.4.1")
 sha512sums=("SKIP")
