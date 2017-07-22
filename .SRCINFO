@@ -1,0 +1,11 @@
+pkgbase = autotorrent-git
+	pkgdesc = Make torrent files using Go and preset profiles.
+	pkgver = r2.edcfa75
+	pkgrel = 1
+	arch = any
+	makedepends = go
+	source = git+https://github.com/varyoo/mktorrent
+	md5sums = SKIP
+
+pkgname = autotorrent-git
+
