@@ -8,8 +8,8 @@
 
 
 pkgname=bitcoin-segwit2x-git
-pkgver=v0.14.1.6.g20aa12154
-pkgrel=4
+pkgver=v1.14.5.2.ga301696f4
+pkgrel=1
 
 pkgdesc='The "official" segwit2x software representing the New York scaling agreement, a.k.a. the Silbert agreement'
 arch=('i686' 'x86_64')
