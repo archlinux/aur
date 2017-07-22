@@ -1,5 +1,5 @@
 pkgname=windows-gaming-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r48.899632f
+pkgver=r174.b2cc949
 pkgrel=1
 pkgdesc="Windows gaming utils"
 arch=('x86_64')
