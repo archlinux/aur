@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=USBMaker
+GenericName=Bootable USB creator
+Icon=usbmaker
+Exec=usbmaker_polkit
+Terminal=false
+Categories=Utility;Qt
