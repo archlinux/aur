@@ -2,7 +2,7 @@
 # Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: TJM <tommy.mairo@gmail.com>
 
-pkgbase=vim
+pkgbase=vim-clipboard
 pkgname=(vim-clipboard vim-runtime)
 pkgver=8.0.0722
 _versiondir=80
