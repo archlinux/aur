@@ -1,0 +1,25 @@
+pkgbase = mcpelauncher-linux
+	pkgdesc = Minecraft PE launcher for Linux
+	pkgver = 20170722.r91.1b6dcd6
+	pkgrel = 1
+	url = https://kris27mc.github.io
+	arch = x86_64
+	license = BSD
+	makedepends = wget
+	makedepends = cmake
+	makedepends = gcc-multilib
+	depends = lib32-zlib
+	depends = lib32-ncurses
+	depends = gts
+	depends = libglvnd
+	depends = lib32-libglvnd
+	depends = lib32-libxext
+	depends = lib32-libx11
+	depends = lib32-libpng
+	depends = lib32-util-linux
+	depends = lib32-glibc
+	source = git+https://github.com/kris27mc/mcpelauncher-linux.git
+	md5sums = SKIP
+
+pkgname = mcpelauncher-linux
+
