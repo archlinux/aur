@@ -2,18 +2,30 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.0.34.156
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
 license=('custom')
-depends=('libgl' 'gstreamer0.10-good')
+depends=('libgl' 'qt5-webengine')
 optdepends=(albion-online-live-game-data-bin albion-online-staging-game-data-bin)
 source=(${pkgname}-${pkgver}.zip::"https://live.albiononline.com/clients//albion-online-setup" "albion-online-launcher.desktop")
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 md5sums=('19756c7be3be70eba49a8cc36d6aae90'
          '14b5dfae0a7b3b0dc5e2f2975aa4892c')
+
+prepare() {
+  pushd "${srcdir}/data/launcher"
+  rm libQt5* qt.conf xdelta3 QtWebEngineProcess libicu*
+  popd
+
+  pushd "${srcdir}/data"
+  sed -i 's,export LD_LIBRARY_PATH=.*,export LD_LIBRARY_PATH=/usr/lib,g' Albion-Online
+  sed -i 's,export QT_QPA_PLATFORM_PLUGIN_PATH=.*,export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins/platforms,g' Albion-Online
+  sed -i 's,export QT_PLUGIN_PATH=.*,export QT_PLUGIN_PATH=/usr/lib/qt/plugins,g' Albion-Online
+  popd
+}
 
 package() {
   mkdir -p "${pkgdir}/opt"
@@ -25,7 +37,7 @@ package() {
   mkdir ${pkgdir}/opt/${pkgname}/game_x64
   chmod 777 ${pkgdir}/opt/${pkgname}/game_x64
   
-  # link launcher exe
+  # link launcher launcher
   mkdir -p ${pkgdir}/usr/bin
   ln -s "/opt/$pkgname/Albion-Online" "${pkgdir}/usr/bin/albion-online-launcher"
 
