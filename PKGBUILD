@@ -8,6 +8,7 @@ url="https://github.com/trehn/termtrack"
 license=("GPL")
 depends=("python" "python-click" "python-pillow" "python-pyephem" "python-requests" "python-pyephem" "python-pyshp")
 optdepends=()
+conflicts=("termtrack")
 sha256sums=("SKIP")
 source=("git+https://github.com/trehn/termtrack")
 
