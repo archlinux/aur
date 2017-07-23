@@ -1,5 +1,4 @@
 # Maintainer: wszqkzqk <wszqkzqk@gmail.com>
-# Maintainer: arkli <LFZ0107@outlook.com>
 pkgname=deepin.com.thunderspeed
 pkgver=7.10.35.366deepin17
 pkgrel=2
