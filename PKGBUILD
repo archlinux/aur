@@ -2,34 +2,35 @@
 # Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: TJM <tommy.mairo@gmail.com>
 
+pkgbase=vim
 pkgname=(vim-clipboard vim-runtime)
 pkgver=8.0.0722
 _versiondir=80
 pkgrel=1
-arch=(i686 x86_64 armv7h)
+arch=(i686 x86_64)
 license=('custom:vim')
 url='http://www.vim.org'
-provides=("vim-runtime")
-conflicts=("vim-runtime")
-makedepends=(gpm python2 python ruby libxt lua gawk tcl)
-source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
+makedepends=(gpm python2 python ruby libxt gtk3 lua gawk tcl)
+source=(vim-$pkgver.tar.gz::https://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
-        #vimdoc.hook
         archlinux.vim
-        )
+        vimdoc.hook)
 sha1sums=('24824406544144938f07f021fd9aa8a9821eccea'
-          '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
-          #'adc4c82b6c4097944e5a767270a772721455eb8c'
-          '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
+          '539bfaa0517dfff6d61c37f9c2d81a0db756a4c9'
+          '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2'
+          'adc4c82b6c4097944e5a767270a772721455eb8c')
 
 prepare() {
-  cd "${srcdir}"/vim-$pkgver/src
+  cd $srcdir/vim-$pkgver/src
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' feature.h
   sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' feature.h
 
   autoconf
+
+  cd "$srcdir"
+  cp -a vim-$pkgver gvim-$pkgver
 }
 
 build() {
@@ -57,7 +58,7 @@ build() {
 
 check() {
   cd "${srcdir}"/vim-$pkgver
-  make test
+  TERM=xterm make -j1 test
 }
 
 package_vim-runtime() {
@@ -106,16 +107,17 @@ package_vim-runtime() {
 }
 
 package_vim-clipboard() {
-  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor with +clipboard enabled'
-  depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'libxt')
+  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
+  depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'acl')
   optdepends=('python2: Python 2 language support'
               'python: Python 3 language support'
               'ruby: Ruby language support'
               'lua: Lua language support'
               'perl: Perl language support'
               'tcl: Tcl language support')
-  conflicts=('vim' 'vim-minimal' 'vim-python3')
-  provides=("vim=${pkgver}-${pkgrel}" 'xxd' 'vim-minimal' 'vim-python3')
+  conflicts=('gvim' 'vim-minimal' 'vim-python3')
+  provides=('xxd' 'vim-minimal' 'vim-python3')
+  replaces=('vim-python3' 'vim-minimal')
 
   cd "${srcdir}"/vim-$pkgver
   make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
@@ -133,12 +135,12 @@ package_vim-clipboard() {
 
   # Runtime provided by runtime package
   rm -r "${pkgdir}"/usr/share/vim
-  
-  # no gvim stuff
-  rm -r "${pkgdir}"/usr/share/icons
-  rm "${pkgdir}"/usr/share/applications/gvim.desktop
+
+  # no desktop files and icons
+  rm -r "${pkgdir}"/usr/share/{applications,icons}
 
   # license
   install -Dm644 runtime/doc/uganda.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
 }
+
