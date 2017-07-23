@@ -5,4 +5,3 @@ Exec=/opt/mBlock/mblock
 Icon=/usr/share/icons/mBlock/48x48.png
 Terminal=false
 Type=Application
-Name[he_IL]=mblock.desktop

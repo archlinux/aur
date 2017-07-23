@@ -3,7 +3,7 @@
 pkgname=mblock
 orginalname=mBlock
 pkgver="4.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Program Robots / Arduino Without writing a single line of code"
 arch=('x86_64')
 url="http://www.mblock.cc/"
@@ -34,7 +34,7 @@ options=(!strip)
 package() {
 
   install -dm 755 $pkgdir/{opt,/usr/{share/{applications,icons/$pkgname},lib/sysusers.d,bin},/etc/udev/rules.d}
-  cp -r "${srcdir}/${orginalname}" $pkgdir/opt
+  cp -r "${srcdir}/${orginalname}" $pkgdir/opt/$pkgname
   chmod -R 755 $pkgdir/opt/$pkgname
   install -dm 777 $pkgdir/opt/$pkgname/mblock-setting
   
