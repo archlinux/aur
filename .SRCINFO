@@ -1,8 +1,9 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://desktop.github.com
+	install = github-desktop.install
 	arch = x86_64
 	license = MIT
 	depends = git

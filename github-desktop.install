@@ -1,5 +1,13 @@
 post_install()  {
-    ln -s /opt/GitHubDesktop/desktop /usr/bin
+    echo "LD_PRELOAD=libcurl.so.3 /opt/GithubDesktop/desktop "$@"" > /usr/bin/github-desktop
+    chmod 755 /usr/bin/github-desktop
+    echo "[Desktop Entry]" > /usr/share/applications/desktop.desktop
+    echo "Name=GitHub Desktop" >> /usr/share/applications/desktop.desktop
+    echo "Comment=Extend your GitHub workflow beyond your browser with GitHub Desktop" >> /usr/share/applications/desktop.desktop
+    echo "Exec="/usr/bin/github-desktop" %U" >> /usr/share/applications/desktop.desktop
+    echo "Terminal=false" >> /usr/share/applications/desktop.desktop
+    echo "Type=Application" >> /usr/share/applications/desktop.desktop
+    echo "Icon=github" >> /usr/share/applications/desktop.desktop
 }
 
 post_remove()   {
@@ -9,5 +17,5 @@ post_remove()   {
     rm -rf icons/hicolor/512x512/apps/desktop.png
     rm -rf icons/hicolor/256x256/apps/desktop.png
     rm -rf icons/hicolor/1024x1024/apps/desktop.png
-    rm -rf /usr/bin/desktop
+    rm -rf /usr/bin/github-desktop
 }
