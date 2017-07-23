@@ -22,5 +22,5 @@ package() {
 	install -Dm 0644 images/connect-four-preview.png "${pkgdir}/usr/share/gamebox/images/connect-four-preview.png"
 	install -Dm 0644 images/mill-preview.png "${pkgdir}/usr/share/gamebox/images/mill-preview.png"
         install -Dm 0644 images/checkers-preview.png "${pkgdir}/usr/share/gamebox/images/checkers-preview.png"
-        install -Dm 0644 images/checkers.png "${pkdir}/usr/share/gamebox/images/checkers.png"
+        install -Dm 0644 images/checkers.png "${pkgdir}/usr/share/gamebox/images/checkers.png"
 }
