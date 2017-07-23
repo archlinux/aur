@@ -1,0 +1,18 @@
+pkgbase = freelarn
+	pkgdesc = The officially maintained version of Larn that is developed by Gibbon
+	pkgver = Xvart
+	pkgrel = 1
+	url = https://github.com/atsb/RL_M/releases/tag/Xvart
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = ncurses
+	makedepends = jsoncpp
+	depends = ncurses
+	depends = jsoncpp
+	source = https://github.com/atsb/RL_M/releases/download/Xvart/RL_M-Xvart.tar.gz
+	md5sums = c2820e243af9bb73b62f5a93b0f5850b
+
+pkgname = freelarn
+
