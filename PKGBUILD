@@ -3,7 +3,7 @@
 # TODO: manpages?
 
 pkgname='libcs50'
-pkgver=8.0.4
+pkgver=8.0.5
 pkgrel=1
 pkgdesc="Harvard's cs50 C library"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/cs50/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '034725f1bcac5f224dfabe5ccbb98a6c4ccf94baaf848223b465b5dd092a3703'
+  '26a9feddc489285cb858328bc012c7aca1ffcab3b8410727b23e8c43a585fd04'
 )
 
 build() {
