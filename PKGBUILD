@@ -4,7 +4,7 @@
 # Contributor: Thomas Weißschuh <thomas_weissschuh lavabit.com>
 
 pkgname=mosh
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
