@@ -1,6 +1,6 @@
 # Maintainer: JannikHv <JannikHv@gmail.com>
 pkgname=gamebox-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=0
 pkgdesc="Gamebox is a collection of minigames written in C using Gtk+-3.0"
 arch=('i686' 'x86_64')
@@ -21,4 +21,6 @@ package() {
 	install -Dm 0644 images/tictactoe-preview.png "${pkgdir}/usr/share/gamebox/images/tictactoe-preview.png"
 	install -Dm 0644 images/connect-four-preview.png "${pkgdir}/usr/share/gamebox/images/connect-four-preview.png"
 	install -Dm 0644 images/mill-preview.png "${pkgdir}/usr/share/gamebox/images/mill-preview.png"
+        install -Dm 0644 images/checkers-preview.png "${pkgdir}/usr/share/gamebox/images/checkers-preview.png"
+        install -Dm 0644 images/checkers.png "${pkdir}/usr/share/gamebox/images/checkers.png"
 }

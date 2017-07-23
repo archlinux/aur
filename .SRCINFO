@@ -1,6 +1,6 @@
 pkgbase = gamebox-git
 	pkgdesc = Gamebox is a collection of minigames written in C using Gtk+-3.0
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 0
 	url = https://github.com/JannikHv/gamebox
 	arch = i686
