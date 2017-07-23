@@ -3,7 +3,7 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki@gmail.com>
 _gitname='rust'
 pkgname=('rust-git' 'rust-docs-git' 'rust-src-git' 'rust-analysis-git' 'cargo-git' 'rls-git')
-pkgver=1.19.0.r64389.4f9c9ed1a5
+pkgver=1.20.0.r65852.c35a0c1d05
 epoch=3
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency"
@@ -133,7 +133,7 @@ package_cargo-git() {
     depends=('rust')
     provides=('cargo')
     conflicts=('cargo')
-    pkgver=$(cd "$_gitname/$_srcdir" && echo "$(cargo_pkgver).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)").rust.$(pkgver)
+    #pkgver=$(cd "$_gitname/$_srcdir" && echo "$(cargo_pkgver).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)").rust.$(pkgver)
 
     cd "$_gitname"
 
@@ -149,7 +149,7 @@ package_rls-git() {
     depends=('rust-git' 'rust-src-git' 'rust-analysis-git')
     provides=('rls')
     conflicts=('rls')
-    pkgver=$(cd "$_gitname/$_srcdir" && echo "$(cargo_pkgver).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)").rust.$(pkgver)
+    #pkgver=$(cd "$_gitname/$_srcdir" && echo "$(cargo_pkgver).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)").rust.$(pkgver)
 
     cd "$_gitname"
 
