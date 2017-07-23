@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-analog24hclock
 	pkgdesc = Analog 24h clock
-	pkgver = 99999999
+	pkgver = r5.5043d8f
 	pkgrel = 1
 	url = https://github.com/sleepywitti/analog24hclock-plasmoid/
 	arch = any

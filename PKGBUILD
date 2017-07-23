@@ -1,6 +1,6 @@
 # Maintainer: T. Witt
 pkgname=plasma5-applets-analog24hclock
-pkgver=99999999
+pkgver=r5.5043d8f
 pkgrel=1
 pkgdesc="Analog 24h clock"
 arch=('any')
@@ -13,16 +13,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
-
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  mkdir build
+  mkdir -p build
 }
 
 build() {
