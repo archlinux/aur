@@ -3,7 +3,7 @@
 
 pkgname=github-desktop
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
@@ -17,7 +17,7 @@ md5sums=('452cd025172b9431e77a1e321f67cc7e')
 package()   {
     ar x desktop_${pkgver}_amd64.deb
     tar xvf data.tar.xz
-    sudo cp -r "${pkgdir}/../../src/usr/share/" /usr/
-    sudo cp -r "${pkgdir}/../../src/opt/GithubDesktop" /opt/
+    cp -r "${pkgdir}/../../src/usr/share/" /usr/
+    cp -r "${pkgdir}/../../src/opt/GithubDesktop" /opt/
 }
 
