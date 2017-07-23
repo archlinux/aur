@@ -1,6 +1,6 @@
 pkgbase = bwsyncandshare
 	pkgdesc = file sync and share client
-	pkgver = 11.3.417
+	pkgver = 11.3.476
 	pkgrel = 1
 	url = https://bwsyncandshare.kit.edu
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = bwsyncandshare
 	depends = gtk2
 	noextract = bwSyncAndShare_Latest_Linux.tar.gz
 	source = https://download.bwsyncandshare.kit.edu/clients/bwSyncAndShare_Latest_Linux.tar.gz
-	source = bwsyncandshare-11.3.417.patch
-	sha256sums = 7405eeeb668555e6a0ca46effbd691dc9db936d4deac4f59ec95c212a9bcd08b
+	source = bwsyncandshare-11.3.476.patch
+	sha256sums = a26368ec9b930e53a6d749e877d3c396bcfd9ab2ed01550b9352950c28b2b5d6
 	sha256sums = ebe8be90d0364090744b80609cdc5a71e360fc7f3e3188b2a534c7c4921e6c50
 
 pkgname = bwsyncandshare
