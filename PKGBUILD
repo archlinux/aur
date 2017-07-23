@@ -3,16 +3,11 @@ pkgname=plasma5-applets-analog24hclock
 pkgver=99999999
 pkgrel=1
 pkgdesc="Analog 24h clock"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/sleepywitti/analog24hclock-plasmoid/"
 license=('GPL3')
-depends=(
-  plasma-framework
-  plasma-workspace
-  kconfigwidgets
-  kxmlgui
-)
-makedepends=(git)
+depends=('plasma-workspace')
+makedepends=('git' 'extra-cmake-modules')
 source=("${pkgname}::git+https://github.com/sleepywitti/analog24hclock-plasmoid.git")
 md5sums=('SKIP')
 
@@ -27,20 +22,19 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-
-  mkdir -p build
+  mkdir build
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_USE_QT_SYS_PATHS=ON ..
   make
 }
 
 package() {
   cd "$srcdir/${pkgname}"
+
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
   cd build

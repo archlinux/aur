@@ -3,14 +3,11 @@ pkgbase = plasma5-applets-analog24hclock
 	pkgver = 99999999
 	pkgrel = 1
 	url = https://github.com/sleepywitti/analog24hclock-plasmoid/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
-	depends = plasma-framework
+	makedepends = extra-cmake-modules
 	depends = plasma-workspace
-	depends = kconfigwidgets
-	depends = kxmlgui
 	source = plasma5-applets-analog24hclock::git+https://github.com/sleepywitti/analog24hclock-plasmoid.git
 	md5sums = SKIP
 
