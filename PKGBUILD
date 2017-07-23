@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20170705.10703
+pkgver=20170722.10787
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -56,14 +56,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-build"
-  export QMAKE=qmake-qt4
-  export MOC=moc-qt4
-  export UIC=uic-qt4
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --libexecdir=/usr/lib \
               --with-guile="guile-config1.8" \
+              --with-qt=/usr/lib/qt4/bin \
               LIBS="-ldl"
   make -j$(nproc)
 }
