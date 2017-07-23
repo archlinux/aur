@@ -1,7 +1,7 @@
 pkgbase = mcpelauncher-linux
 	pkgdesc = Minecraft PE launcher for Linux
-	pkgver = 20170723.r93.586e669
-	pkgrel = 2
+	pkgver = 20170723.r94.fba491e
+	pkgrel = 1
 	url = https://kris27mc.github.io
 	arch = x86_64
 	license = BSD
