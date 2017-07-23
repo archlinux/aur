@@ -3,6 +3,7 @@
 pkgname=nexuiz-data
 pkgver=2.5.2
 pkgrel=1
+epoch=1
 arch=('any')
 pkgdesc="Fast-paced multiplayer first-person shooter (data files only)."
 url="http://www.alientrap.com/games/nexuiz/"
