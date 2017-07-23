@@ -85,12 +85,13 @@
 # please use the official pam_ssh_agent_auth code base instead.
 
 pkgname=pam_ssh_agent_auth-git
-pkgver=r19.0ff7282
-pkgrel=1
+pkgver=r22.f4b3932
+pkgrel=2
 pkgdesc="PAM module which permits authentication for arbitrary services via ssh-agent. (Git version including experimental ECC support)"
 arch=('i686' 'x86_64')
 url="http://github.com/jbeverly/pam_ssh_agent_auth/"
 license=('custom:OpenSSL')
+depends=('openssl-1.0')
 optdepends=('openssh: standard ssh-agent'
             'gnupg: gpg ssh-agent')
 provides=('pam_ssh_agent_auth')
@@ -109,6 +110,18 @@ pkgver() {
 }
 
 prepare() {
+  if ! [ -e openssl-1.0 ] ; then
+    mkdir openssl-1.0
+  fi
+
+  if ! [ -e openssl-1.0/include ] ; then
+    ln -s /usr/include/openssl-1.0 openssl-1.0/include
+  fi
+
+  if ! [ -e openssl-1.0/lib ] ; then
+    ln -s /usr/lib/openssl-1.0 openssl-1.0/lib
+  fi
+
   cd "pam_ssh_agent_auth/"
   git submodule init
   git submodule update
@@ -116,7 +129,7 @@ prepare() {
            
 build() {
   cd "pam_ssh_agent_auth/"
-  ./configure --prefix=/usr --with-mantype=man --libexecdir=/usr/lib/security
+  ./configure --prefix=/usr --with-mantype=man --libexecdir=/usr/lib/security --with-ssl-dir=../openssl-1.0
   make
 }
 
