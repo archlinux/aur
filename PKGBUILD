@@ -2,7 +2,7 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.0.34.156
-pkgrel=2
+pkgrel=3
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -24,6 +24,7 @@ prepare() {
   sed -i 's,export LD_LIBRARY_PATH=.*,export LD_LIBRARY_PATH=/usr/lib,g' Albion-Online
   sed -i 's,export QT_QPA_PLATFORM_PLUGIN_PATH=.*,export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins/platforms,g' Albion-Online
   sed -i 's,export QT_PLUGIN_PATH=.*,export QT_PLUGIN_PATH=/usr/lib/qt/plugins,g' Albion-Online
+  sed -i 's,.*launcher/Albion-Online" &,LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 "$SCRIPTPATH/launcher/Albion-Online" &,g' Albion-Online
   popd
 }
 
