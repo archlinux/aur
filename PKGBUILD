@@ -6,8 +6,8 @@ _cfgdir=/opt/openresty/nginx/conf
 _tmpdir=/var/lib/openresty
 _openssl_ver=1.0.2l
 pkgname=openresty
-pkgver=1.11.2.3
-pkgrel=4
+pkgver=1.11.2.4
+pkgrel=1
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
@@ -15,13 +15,10 @@ license=('BSD')
 depends=('perl>=5.6.1' 'readline' 'pcre')
 install=$pkgname.install
 options=(!purge)
-validgpgkeys=('iQEcBAEBAgAGBQJY+EzlAAoJELVQ4J6g6YBmKyoH/3ExFtvtdkEis6s6tAmjheJv
-Jrtgt8ecjYi7XmmtkwltU2eoqOOZI+zo6TZ+V0Pn6TbAy95onnLIzmtJxI9QNRyM
-gewKi2q86ccxZaT6uzzFPLNzaIRQN1Rv6Rw/8ZA0dpG/j9sCM+NKlXBPJ0ymppEu
-jVcyT32YJy/yKbTKcczBbMf+lcRsMhhgg1jelp/GrY1ZXJIZk3VJas/18cJFjL8E
-ByhB2SPe8iJNIFYXi3KM5BvzL+tUDymu0hpEe16ZAFOmoQyRcjAWAsuN+hMyLT34
-DAlvVBIbMI+7Esp0T6L0azoq6Hp1S/sSGAfgXlR88aiDUMCWoyG136/271W0U1U=
-=It8U')
+validgpgkeys=(
+'25451EB088460026195BD62CB550E09EA0E98066'
+)
+
 source=(https://openresty.org/download/$pkgname-$pkgver.tar.gz{,.asc}
         service
         $pkgname.logrotate
@@ -30,7 +27,7 @@ source=(https://openresty.org/download/$pkgname-$pkgver.tar.gz{,.asc}
         $pkgname.sh
         )
 noextract=()
-sha256sums=('7a0a8570fd3eb193913eb2287f7c926b47e363f376e80c7aa332c35d0fccde69'
+sha256sums=('07679171450a6c083f983f6130056de3c4e13cc2d117dea68e1c6990e2e49ac9'
             'SKIP'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
             '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23'
