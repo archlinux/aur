@@ -2,12 +2,13 @@
 
 pkgname=atmel-firmware
 pkgver=1.3
-pkgrel=4
+pkgrel=4.1
 _atmel=$pkgname-$pkgver.orig
 pkgdesc="Firmware and aplications for Atmel at76c5XXx wireless networking chips"
 url="http://www.thekelleys.org.uk/atmel"
 license=('custom:BSD' 'GPL')
 arch=('any')
+dependency=('perl')
 source=("$pkgname.tar.gz::http://ftp.de.debian.org/debian/pool/non-free/a/atmel-firmware/atmel-firmware_1.3.orig.tar.gz"
 	"LICENSE")
 
@@ -26,8 +27,8 @@ package(){
 	cp -r -av "${srcdir}/$_atmel/COPYING"		"${pkgdir}/usr/share/doc/$pkgname/COPYING"
 
 
-	mkdir -p "${pkgdir}/usr/share/license/${pkgname}/"
-	cp -r -av "${srcdir}/LICENSE"			"${pkgdir}/usr/share/license/${pkgname}/"
+	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+	cp -r -av "${srcdir}/LICENSE"			"${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 md5sums=('77cb6f8fb9c79241a6892069b38c5081'
