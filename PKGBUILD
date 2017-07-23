@@ -4,7 +4,7 @@
 
 pkgname=lib32-openal
 pkgver=1.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 arch=(x86_64)
 url="https://github.com/kcat/openal-soft"
