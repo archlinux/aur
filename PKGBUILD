@@ -4,8 +4,8 @@ pkgname=coveo-linq-git
 pkgver=r24.15f2fef
 pkgrel=1
 pkgdesc="A C++ library implementing LINQ operators similar to .NET's"
-url="https://github.com/coveo/linq"
-arch=('i686' 'x86_64')
+url='https://github.com/coveo/linq'
+arch=('any')
 license=('APACHE')
 makedepends=('git' 'cmake>=3.6.0')
 conflicts=('coveo-linq')
