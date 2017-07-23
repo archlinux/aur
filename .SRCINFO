@@ -1,11 +1,11 @@
 pkgbase = aacskeys
 	pkgdesc = A library and program to retrieve decryption keys for HD discs
 	pkgver = 0.4.0e
-	pkgrel = 7.3
+	pkgrel = 7.4
 	url = http://forum.doom9.org/showthread.php?t=123311
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = custom:Public Domain
 	makedepends = java-environment
 	makedepends = premake
 	depends = openssl-1.0

@@ -5,11 +5,11 @@
 pkgname=aacskeys
 pkgver="0.4.0e"
 _dmover="dmo7"
-pkgrel=7.3
+pkgrel=7.4
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://forum.doom9.org/showthread.php?t=123311"
-license=("custom")
+license=('custom:Public Domain')
 depends=("openssl-1.0")
 makedepends=("java-environment" "premake")
 source=("http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}.orig.tar.gz"
@@ -38,6 +38,7 @@ prepare() {
 	[ -e /etc/profile.d/jdk8.sh ] && source /etc/profile.d/jdk8.sh
   fi
 
+  # Make sure use resent premake
   sed -i 's|/usr/local/ssl/include|/usr/include|' premake.lua
   sed -i 's|/usr/local/ssl/lib|/usr/lib|' premake.lua
   sed -i 's|/usr/lib/jvm/java-6-sun/include|$JAVA_HOME/include|' premake.lua
@@ -67,14 +68,21 @@ package() {
 
   # Install lib
   mkdir -p "${pkgdir}/usr/lib"
-  cp lib/linux/*.so "${pkgdir}/usr/lib/"
+  mkdir -p "${pkgdir}/usr/share/dumphd/"
+  cp -v "lib/linux/"*.so "${pkgdir}/usr/lib/"
+  cp -v "${pkgdir}/usr/lib/libaacskeys.so" "${pkgdir}/usr/share/dumphd/libaacskeys.so"
+
 
   # Install program
   mkdir -p "${pkgdir}/usr/bin"
-  cp bin/linux/aacskeys "${pkgdir}/usr/bin"
+  cp -v "bin/linux/aacskeys" "${pkgdir}/usr/bin"
 
   # Install resources
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   cp ./debian/HostKeyCertificate_PS3.txt "${pkgdir}/usr/share/${pkgname}/HostKeyCertificate.txt"
   cp ./debian/ProcessingDeviceKeysSimple.txt "${pkgdir}/usr/share/${pkgname}/"
+
+  # Author just say is public domain on upstream usr forum thread once but later 
+  #        it went MiA so no full license or ammend exist.
+  #install -D -m644 "${srcdir}/license" "${pkgdir}/usr/share/licenses/${pkgbase}/license"
 }
