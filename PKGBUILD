@@ -2,19 +2,14 @@
 
 pkgname='mythes-pt_pt'
 pkgver=20060817
-pkgrel=3
+pkgrel=4
 pkgdesc="Portuguese (European) thesaurus"
 arch=('any')
 url="http://download.services.openoffice.org/contrib/dictionaries/"
 license=('GPL')
 optdepends=('libmythes: offers thesaurus library functions')
 source=("http://download.services.openoffice.org/contrib/dictionaries/thes_pt_PT_v2.zip")
-md5sums=('2fa9a6845405ebb574c2f82a5cddbcbf')
-PKGEXT='.pkg.tar'
-
-build() {
-  /bin/true
-}
+sha256sums=('287e56dc278e49cbb60a08ee96330dc1a7e8945b1fab700408bcc700592e9903')
 
 package() {
   cd $srcdir
