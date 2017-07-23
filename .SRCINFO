@@ -1,11 +1,12 @@
 pkgbase = atmel-firmware
 	pkgdesc = Firmware and aplications for Atmel at76c5XXx wireless networking chips
 	pkgver = 1.3
-	pkgrel = 4.1
+	pkgrel = 5
 	url = http://www.thekelleys.org.uk/atmel
 	arch = any
 	license = custom:BSD
 	license = GPL
+	depends = perl
 	source = atmel-firmware.tar.gz::http://ftp.de.debian.org/debian/pool/non-free/a/atmel-firmware/atmel-firmware_1.3.orig.tar.gz
 	source = LICENSE
 	md5sums = 77cb6f8fb9c79241a6892069b38c5081
