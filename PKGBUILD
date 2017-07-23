@@ -9,6 +9,8 @@ pkgrel=1
 arch=(i686 x86_64 armv7h)
 license=('custom:vim')
 url='http://www.vim.org'
+provides=("vim-runtime")
+conflicts=("vim-runtime")
 makedepends=(gpm python2 python ruby libxt lua gawk tcl)
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
