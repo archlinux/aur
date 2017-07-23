@@ -73,7 +73,7 @@ fi
 
   #Hosted apk
   if [[ "$answer" == "2" ]]; then
-    wget https://kris27mc.github.io/files/mcpe.apk
+    sudo wget https://kris27mc.github.io/files/mcpe.apk
   #  /usr/bin/cp mcpe.apk ~/mcpelauncher
   fi
 
