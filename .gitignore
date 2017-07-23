@@ -1,5 +1,1 @@
-pkg/
-src/
-*.pkg.*
-*.src.*
-darkplaces-rm-git/
+*
