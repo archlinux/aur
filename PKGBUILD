@@ -2,7 +2,7 @@
 
 pkgname=madedit-svn
 pkgver=r589
-pkgrel=5
+pkgrel=6
 pkgdesc="Open-Source & Cross-Platform Text/Hex Editor written in C++ and wxWidgets."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/madedit/develop"
@@ -20,14 +20,13 @@ source=("madedit::svn://svn.code.sf.net/p/madedit/code/trunk"
 		madedit-add-file-changed-event.patch
 		madedit-max-linelength-fix.patch
 		madedit-desktop-file.patch)
-md5sums=('SKIP'
-         'a2dc343f7bc7f83f8941e47ed4a18200'
-         '5e89e938d1122a5fe299a68fc583edb2'
-		 '7985f66c07a1e27ee65bc01524274796'
-         '661acd7e6c5f3c53177157f681335459'
-         '9d9e75d6519c723e5870801d5d43bf37'
-         'cdce3aba22e7106a1278a512b7f6a028')
-PKGEXT='.pkg.tar'
+sha256sums=('SKIP'
+            '815a5d9faac4dbd523fbcf3fe1065e443c0bbf43427c44aa423422c6ec4c2e31'
+            'dd83851552b501026d2f6d0c271276e52fcfc403f4d755dee5c67f85b5a3dddf'
+            '7c69d771a0d1f82d96d8d82f5496cabf14cc619c143a3581bc31c182cee2a3bd'
+            '4cfe63f9647344fb025861d461b2b569f7190a34abe63718223ddf580cfed1e3'
+            '8a85d47515e9259ffebdac9f9f28214c9abd8e4b162e0e4bfac03ea5c8aab589'
+            '37af5a79f0ab9cde84778bfb511cab3b3fd170d4c2683905a22e07c9f939ab92')
 
 pkgver() {
   cd "$srcdir/madedit/madedit"
