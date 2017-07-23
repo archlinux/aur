@@ -8,16 +8,15 @@
 pkgbase=notmuch-git
 _pkgname=notmuch
 pkgname=('notmuch-git' 'notmuch-vim-git' 'notmuch-mutt-git' 'notmuch-runtime-git')
-pkgver=0.25_rc1.2.1.gc28ac94a
-pkgrel=1
+pkgver=0.25_rc1.2.0.gd95ccfe9
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://notmuchmail.org/"
 license=('GPL3')
 makedepends=('python2' 'python' 'python-sphinx' 'emacs' 'gnupg' 'ruby' 'pkgconfig' 'xapian-core' 'gmime' 'talloc')
 options=(!distcc !makeflags)
-source=("git://notmuchmail.org/git/notmuch" not_byte_compile_notmuch_el.patch)
-md5sums=('SKIP'
-         '07fa5cbbf2c7e0d5a19352c652e9c9cf')
+source=("git+https://github.com/notmuch/notmuch")
+md5sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
@@ -28,13 +27,10 @@ prepare(){
   cp -dpr --no-preserve=ownership "$srcdir/${_pkgname}"/bindings/python{,2}
   find "$srcdir/${_pkgname}/bindings/python" -name '*.py' -exec sed -i -e '1s,python$,python3,' {} +
   find "$srcdir/${_pkgname}/bindings/python2" -name '*.py' -exec sed -i -e '1s,python$,python2,' {} +
-  cd $_pkgname
-  patch -Np1 < $srcdir/not_byte_compile_notmuch_el.patch||true
 }
 
 build() {
   cd $_pkgname
-
   ./configure --prefix=/usr --sysconfdir=/etc --includedir=/usr/include --without-zsh-completion
   make 
   
@@ -73,7 +69,6 @@ package_notmuch-vim-git(){
   make -C ${_pkgname}/vim DESTDIR="$pkgdir" prefix="/usr/share/vim/vimfiles" install
 }
 
-
 package_notmuch-git(){
     pkgdesc="Not much of an email program"
     depends=('notmuch-runtime')
@@ -91,7 +86,7 @@ package_notmuch-git(){
 
     # Install emacs parts
     make DESTDIR="$pkgdir/" install-emacs
-
+    
     # Install manpages
     make DESTDIR="$pkgdir" prefix="/usr" install-man
 
