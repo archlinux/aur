@@ -2,7 +2,7 @@
 
 pkgname=casetta
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Collection of free (as speech) softwares to open, edit, convert and transfer data with a Casio graphical calculator."
 license=('GPL2')
 arch=('i686' 'x86_64')
