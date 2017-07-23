@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.12
-pkgrel=4
+pkgrel=5
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -36,7 +36,6 @@ sha256sums=('5509d4279cfb316f33730c5cb06f8162ae212c7f4d31d206642d67cc8be245c1'
             'f31a0ba891dd705ef68174afeb651bdc3426a63202d058d98510907de43248f7'
             'e94d011c98bd336f37d6d4923e5d63a22ebd10d8f2c6486b6bcd6617524d6484'
             'ef179c054ed79399cdb2cdf9e43e565d5556891e7676b795e55d126b2641a919')
-PKGEXT='.pkg.tar'
 CPPFLAGS="$CPPFLAGS -O2"
 
 prepare() {
@@ -52,8 +51,8 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}/linux/CLI/"
     make CONF="${_release}" build
 
-    [[ "$CARCH" == "i686" ]] && _release="Release"
     cd "${srcdir}/${pkgname}-${pkgver}/LinuxPBA/"
+    [[ "$CARCH" == "i686" ]] && _release="Release"
     make CONF="${_release}" build
 }
 
