@@ -40,8 +40,8 @@ post_upgrade() {
 }
 
 post_remove() {
-  rm  -rf /etc/freeswitch
-  echo 'Not removing /usr/share/freeswitch/conf/ config directories!!  If you do not want to keep them, rm -rf them away'
+  #rm  -rf /etc/freeswitch  # uncommend for /etc path fix
+  #echo 'Not removing /usr/share/freeswitch/conf/ config directories!!  If you do not want to keep them, rm -rf them away'  # ""
   userdel -rf freeswitch
   getent group freeswitch &> /dev/null && groupdel freeswitch
   true

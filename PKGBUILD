@@ -53,7 +53,7 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname='freeswitch-git'
-pkgver=1.7.16.r32469.cda7343841
+pkgver=1.7.0.r32606.f1ae0b3841
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
@@ -70,7 +70,7 @@ depends=('curl'
          'postgresql-libs'
 	 'libshout'
 	 'lua'
-	 'openssl-1.0'
+	 'openssl'
 	 'opus'
 	 'freetype2')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
@@ -99,22 +99,19 @@ conflicts=('freeswitch'
 install=freeswitch.install
 backup=('etc/freeswitch/private/passwords.xml'
         'etc/freeswitch/vars.xml')
-source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git"
+source=("git+https://freeswitch.org/stash/scm/fs/freeswitch.git/"
         'freeswitch.conf.d'
         'README.freeswitch'
         'run.freeswitch'
         'run_log.freeswitch'
         'conf_log.freeswitch'
         'freeswitch.service'
-	'freeswitch-arch.patch'  # required for 1.6.17
 	'freeswitch.conf.d.sig'
 	'README.freeswitch.sig'
 	'run.freeswitch.sig'
 	'run_log.freeswitch.sig'
 	'conf_log.freeswitch.sig'
-	'freeswitch.service.sig'
-	'freeswitch-arch.patch.sig')  # required for 1.6.17
-changelog='ChangeLog'
+	'freeswitch.service.sig')
 _pkgname="freeswitch"
 sha512sums=('SKIP'
             'a9c0f8397e9375b26f8c3950c07fff9ce2c60684bd99cfb371cd19cce2bfb2f042a5380a38751bcd212096611d38731a2613a93d037b53f0c1cf356180b98912'
@@ -123,8 +120,6 @@ sha512sums=('SKIP'
             'e0ad57847905d11540567512fb224587a96db086ecaefd949964bd7e5bf29e448497fb3d6df5d88dbedd69beb5ae4618bb0e8462cbbb9fad84947c6932fc0b46'
             'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
             '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
-	    '30adb4a387c3579ed2080ea6bd3f84062d8767d97e7c2c2cab645e637f34f28667754a2252668c0e0ce176ed48cafe59627ed93a46027d83af38ce440c8e906c'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -176,11 +171,8 @@ build() {
   sleep 5
 
   # CONFIGURE
-  #./configure \
-  # We need to override some things for the ./configure for 1.6.17
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
-  CFLAGS+=" -I/usr/include/openssl-1.0" \
-  LDFLAGS+=" -I/usr/lib/openssl-1.0" ./configure \
+  #sed -i -re 's@^(confdir=)"$prefix/conf"@"/etc/freeswitch"@g' ./configure  # uncomment to fix /etc path
+  ./configure \
     --prefix=/var/lib/freeswitch \
     --with-python=/usr/bin/python2 \
     --bindir=/usr/bin \
@@ -200,8 +192,6 @@ build() {
     --with-scriptdir=/usr/share/freeswitch/scripts \
     --with-certsdir=/etc/freeswitch/certs \
     --with-rundir=/run/freeswitch
-
-    patch -Np1 < ../freeswitch-arch.patch  # needed for 1.6.17
 
   # COMPILE
   make
@@ -263,8 +253,8 @@ package() {
   echo "<X-PRE-PROCESS cmd=\"set\" data=\"default_password=$(tr -dc 0-9 < /dev/urandom | head -c10)\"/>" > etc/freeswitch/private/passwords.xml
   chmod 700 etc/freeswitch/private
   chmod 600 etc/freeswitch/private/passwords.xml
-  ln -sf /etc/freeswitch var/lib/freeswitch/conf
-  cp -a etc/freeswitch/* usr/share/doc/freeswitch/examples/conf.default/
+  ln -sf /etc/freeswitch var/lib/freeswitch/conf  # remove for fixed /etc path
+  cp -a etc/freeswitch/* usr/share/doc/freeswitch/examples/conf.default/  # ""
   install -d -m 0755 etc/freeswitch/certs
 
   for _mod in ${_enabled_modules[@]};do
@@ -275,8 +265,8 @@ package() {
     disable_mod_xml $_mod
   done
 
-  mv etc/freeswitch/* usr/share/doc/freeswitch/examples/conf.archlinux/
-  rmdir etc/freeswitch
+  mv etc/freeswitch/* usr/share/doc/freeswitch/examples/conf.archlinux/  # removed for fixed /etc path
+  rmdir etc/freeswitch  # ""
   install -D -m 0755 -d usr/share/freeswitch/conf
   install -D -m 0755 "${srcdir}/run.freeswitch" usr/share/freeswitch/run
   install -D -m 0755 "${srcdir}/run_log.freeswitch" usr/share/freeswitch/log/run
