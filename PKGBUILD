@@ -2,7 +2,7 @@
 
 pkgname='libcs50-git'
 _gitname='libcs50'
-pkgver=7.1.2.r64.g8157c87
+pkgver=8.0.5
 pkgrel=1
 pkgdesc="CS50 Library for C"
 arch=('x86_64' 'i686')
@@ -32,7 +32,8 @@ build() {
 package() {
   cd "${_gitname}"
 
-  cp -rp build/* "${pkgdir}"
+  install -d -m 755 "${pkgdir}/usr/"
+  cp -rp build/* "${pkgdir}/usr"
 }
 
 # vim: ts=2 sw=2 et:
