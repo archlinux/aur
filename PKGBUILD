@@ -5,8 +5,8 @@ pkgdesc='Game addons for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-game"
 license=('GPL')
-makedepends=('cmake' 'git' )
-depends=('kodi')
+makedepends=('cmake' 'git')
+depends=('kodi-git')
 source=("$pkgname::git+https://github.com/xbmc/xbmc.git")
 md5sums=('SKIP')
 
