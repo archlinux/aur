@@ -1,7 +1,7 @@
 # Maintainer <tianyu at vt dot edu>
 
 pkgname=pinegrow
-pkgver=3.03
+pkgver=3.04
 pkgrel=1
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends_x86_64+=(gtk2 gconf alsa-lib nss libxss libxtst gendesk)
 source=("http://download.pinegrow.com/PinegrowLinux64.${pkgver}.zip"
         "${url}/Pinegrow_EULA.pdf")
 noextract=("Pinegrow_EULA.pdf")
-sha1sums=("a9b31e9a5915ef234391c84135706d1435b6310f"
+sha1sums=("ddfb4a82d968b66744eb56fb8d5fbcf3b9c67d47"
           "a69404f2d55d4c8dd8d47c54dbadad9e08573e6c")
 options=('!strip')
 install=${pkgname}.install
