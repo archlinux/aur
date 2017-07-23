@@ -1,30 +1,32 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-live-game-data-bin
-pkgver=1.0.318.79019
+pkgver=1.0.327.91835
 pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO -- game data files for live server"
 url="https://albiononline.com/"
 arch=('x86_64')
 license=('custom')
 depends=('libgl' 'albion-online-launcher-bin')
-source=("https://live.albiononline.com/autoupdate/albiononline-linux-full-${pkgver}.zip" "albion-online-live.desktop")
-noextract=("albiononline-linux-full-${pkgver}.zip")
+source=("http://live.albiononline.com/clients/albion-online-fullgame-linux.zip" "albion-online-live.desktop")
+noextract=("albion-online-fullgame-linux.zip")
+#source=("https://live.albiononline.com/autoupdate/albiononline-linux-full-${pkgver}.zip" "albion-online-live.desktop")
+#noextract=("albiononline-linux-full-${pkgver}.zip")
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-md5sums=('56cad8dd8b4264ad5ebd6e65c03df603'
+md5sums=('09525201cff7509815f0bcccfc824e41'
          '0bde53bc71f7d3f5fec295f156a34235')
 
 PKGEXT='.pkg.tar'
 
 package() {
   mkdir -p "${pkgdir}/opt/albion-online-launcher-bin/game_x64"
-  bsdtar --verbose --extract --directory "${pkgdir}/opt/albion-online-launcher-bin/game_x64" --file "albiononline-linux-full-${pkgver}.zip"
+  bsdtar --verbose --extract --directory "${pkgdir}/opt/albion-online-launcher-bin/game_x64" --file "albion-online-fullgame-linux.zip"
   chmod +x "${pkgdir}/opt/albion-online-launcher-bin/game_x64/Albion-Online"
 
   mkdir -p "${pkgdir}/usr/bin"
   echo "#!/bin/sh" > "${pkgdir}/usr/bin/albion-online-live"
-  echo "/opt/albion-online-launcher-bin/game_x64/Albion-Online" >> "${pkgdir}/usr/bin/albion-online-live"
+  echo "LD_PRELOAD=/opt/albion-online-launcher-bin/game_x64/Albion-Online_Data/Plugins/x86_64/libSDL2-2.0.so.0 /opt/albion-online-launcher-bin/game_x64/Albion-Online" >> "${pkgdir}/usr/bin/albion-online-live"
   chmod +x "${pkgdir}/usr/bin/albion-online-live"
 
   # install .desktop file
