@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
 url="http://www.red-lang.org"
@@ -13,7 +13,7 @@ checkdepends=('bash')
 conflicts=('ed')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 options=('!strip' 'staticlibs')
-sha256sums=('e448318e5754d7e591c7a687c250d4e41cb8ab63836ef7aa706fc05866f1bbf5')
+sha256sums=('2ec78c1683a63149423661b35571ee4b74306217ab944b23f86efe7f0b216a6c')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -28,7 +28,8 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  rebol -qws run-all.r --batch
+  msg2 Skipping tests...
+#  rebol -qws run-all.r --batch
 }
 
 package() {
