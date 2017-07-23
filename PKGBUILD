@@ -4,12 +4,12 @@
 
 pkgname=orion
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'i686')
 url="https://github.com/alamminsalo/orion/"
 license=('GPL')
-depends=('mpv' 'qt5-svg' 'qt5-quickcontrols2')
+depends=('mpv' 'qt5-svg' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects')
 provides=("${pkgname}")
 conflicts=("$pkgname-git")
 source=("https://github.com/alamminsalo/orion/archive/v${pkgver//_/\-}.tar.gz")
