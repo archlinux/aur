@@ -1,8 +1,8 @@
 # Maintainer: Hugues Chabot <at google mail>
 _npmname=budo
-_npmver=10.0.3
+_npmver=10.0.4
 pkgname=nodejs-budo # All lowercase
-pkgver=10.0.3
+pkgver=10.0.4
 pkgrel=1
 pkgdesc="a browserify server for rapid prototyping"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(8cdaf3b503aab5a7b70711fda24ca4cbb94c6124)
+sha1sums=(e846e6160a9be0244b26a69d815208e412340c2a)
 
 package() {
   cd $srcdir
