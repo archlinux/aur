@@ -1,0 +1,23 @@
+--- AriaSrc-1.4.13/SConstruct	2017-01-02 15:42:09.000000000 -0500
++++ AriaSrc-1.4.13b/SConstruct	2017-07-23 15:51:33.441819641 -0400
+@@ -280,17 +280,10 @@ def compile_Aria(which_os):
+     else:
+         wxversion = subprocess.check_output([WXCONFIG,"--version"]).strip()
+         print ">> wxWidgets version : " + wxversion
+-        is_wx_3 = (wxversion[0] == '3' or (wxversion[0] == '2' and wxversion[2] == '9'))
+-        if is_wx_3:
+-            if renderer == "opengl":
+-                env.ParseConfig( [WXCONFIG] + ['--cppflags','--libs','core,base,adv,gl,net,webview'])
+-            else:
+-                env.ParseConfig( [WXCONFIG] + ['--cppflags','--libs','core,base,adv,net,webview'])
++        if renderer == "opengl":
++            env.ParseConfig( [WXCONFIG] + ['--cppflags','--libs','core,base,adv,net,gl'])
+         else:
+-            if renderer == "opengl":
+-                env.ParseConfig( [WXCONFIG] + ['--cppflags','--libs','core,base,adv,net,gl'])
+-            else:
+-                env.ParseConfig( [WXCONFIG] + ['--cppflags','--libs','core,net,adv,base'])
++            env.ParseConfig( [WXCONFIG] + ['--cppflags','--libs','core,net,adv,base'])
+             
+     # check build type and init build flags
+     if build_type == "debug":
