@@ -12,7 +12,7 @@ depends=('sdl2' 'zlib')
 optdepends=(
     'curl: download missing custom content while playing online, used for other purposes by some games'
     'd0_blind_id-git: encryption support (required for Xonotic)'
-    'libfreetype: TTF and OTF fonts support (required by some games)'
+    'freetype2: TTF and OTF fonts support (required by some games)'
     'libircclient: IRC integration for supporting games'
     'libjpeg: decode JPEG textures (required by most games)'
     'libmaxminddb: provides ip-to-country resolution for supporting games'
