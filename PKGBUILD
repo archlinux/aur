@@ -54,6 +54,10 @@ build() {
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
+  
+  # GCC 4.9 doesn't understand -fno-plt
+  CFLAGS=${CFLAGS/-fno-plt/}
+  CXXFLAGS=${CXXFLAGS/-fno-plt/}
 
   ${srcdir}/${_basedir}/configure --prefix=/usr \
       --build=${CHOST} \
