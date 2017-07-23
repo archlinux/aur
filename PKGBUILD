@@ -11,7 +11,7 @@ pkgname=('virtualbox-i3'
          'virtualbox-i3-guest-utils-nox'
          'virtualbox-i3-ext-vnc')
 pkgver=5.1.22
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL' 'custom')
@@ -369,7 +369,7 @@ package_virtualbox-i3-guest-utils-nox() {
 
 package_virtualbox-i3-ext-vnc() {
     pkgdesc='VirtualBox VNC extension pack'
-    depends=('virtualbox' 'libvncserver')
+    depends=('virtualbox-i3' 'libvncserver')
     optdepends=('tigervnc: vnc client')
     install=virtualbox-ext-vnc.install
 
