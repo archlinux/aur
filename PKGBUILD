@@ -6,8 +6,8 @@
 
 _pkgname=get_iplayer
 pkgname=$_pkgname-git
-pkgver=3.00
-pkgrel=1
+pkgver=3.01
+pkgrel=2
 pkgdesc="Download TV and radio programmes from BBC iPlayer"
 arch=('any')
 url="https://github.com/get-iplayer/get_iplayer"
@@ -16,16 +16,14 @@ license=('GPL3')
 # perl-libwww is the LWP module
 depends=('perl-libwww'
          'perl-lwp-protocol-https'
-         'perl-mojolicious'
          'perl-xml-libxml'
          'perl-xml-simple')
 
-# Having only 'optdepends atomicparsley' is sufficient to install either atomicparsley or atomicparsley-largefile-hg.
-# However, added 'optdepends atomicparsley-largefile-hg' so 'pacman -Qi' will show 'atomicparsley-largefile-hg [installed]'
 optdepends=(
-  'atomicparsley: MP4 and M4A files metadata tagging'
-  'atomicparsley-largefile-hg: MP4 and M4A files metadata tagging (preferred)'
-  'ffmpeg: FLV files to MP4, M4A, MP3 or AVI files')
+  'atomicparsley: metadata tagging for MP4 and M4A files'
+  'atomicparsley-largefile-hg: metadata tagging for MP4 and M4A files (preferred)'
+  'ffmpeg: convert DASH audio/video, MPEG-TS, FLV files to MP4 and M4A'
+  'perl-mojolicious: reduce cache update time')
 
 makedepends=('git')
 conflicts=($_pkgname)
