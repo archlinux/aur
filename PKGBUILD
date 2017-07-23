@@ -1,27 +1,27 @@
-# $Id: PKGBUILD 246539 2015-09-17 21:02:31Z foutrelis $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
-_pkgname=vlc
+_srcname=vlc
 pkgname=vlc-decklink
-pkgver=2.2.1
-pkgrel=7
-pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
+pkgver=2.2.6
+pkgrel=1
+pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (with decklink support)'
 arch=('i686' 'x86_64')
-url="http://www.videolan.org/vlc/"
+url='http://www.videolan.org/vlc/'
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy'
          'sdl_image' 'libdvdnav' 'libtiger' 'lua' 'libmatroska'
-         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
+         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg2.8' 'faad2' 'libupnp'
          'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms' 'libtar'
          'libxinerama')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
              'libdc1394' 'libavc1394' 'lirc' 'libcaca' 'gtk2'
              'librsvg' 'portaudio' 'libgme' 'xosd' 'projectm'
-             'twolame' 'aalib' 'libmtp' 'libdvdcss' 'gnome-vfs'
-             'libgoom2' 'vcdimager' 'opus' 'libssh2' 'mesa'
-			 'decklink-sdk')
+             'twolame' 'aalib' 'libmtp' 'libdvdcss' 'smbclient'
+             'libgoom2' 'vcdimager' 'opus' 'libssh2' 'mesa' 'qt4'
+			 'blackmagic-decklink-sdk')
 optdepends=('avahi: for service discovery using bonjour protocol'
             'libnotify: for notification plugin'
             'ncurses: for ncurses interface support'
@@ -52,64 +52,67 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'opus: for opus support'
             'libssh2: for sftp support'
             'lua-socket: for http interface'
-            'decklink: for decklink support')
-conflicts=('vlc-plugin' 'vlc')
+            'qt4: for the GUI')
 provides=('vlc')
+conflicts=('vlc-plugin' 'vlc' 'vlc-git')
 replaces=('vlc-plugin')
-backup=('usr/share/vlc/lua/http/.hosts'
-        'usr/share/vlc/lua/http/dialogs/.hosts')
 options=('!emptydirs')
-install=vlc.install
-source=("http://download.videolan.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        "lua53_compat.patch")
-md5sums=('42273945758b521c408fabc7fd6d9946'
-         '96d3b346d9149ffb1b430066dfb6249a')
+source=("http://download.videolan.org/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.xz"
+        'lua53_compat.patch'
+        'update-vlc-plugin-cache.hook')
+sha256sums=('c403d3accd9a400eb2181c958f3e7bc5524fe5738425f4253d42883b425a42a8'
+            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
+            '4105af8697ac641867a76ddef5f91c69999bf6f980a5681bc36155bbce021f02')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
-  sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
-
-  patch -p1 < "${srcdir}/lua53_compat.patch"
-
-  # dirty hack because of VLC's configure
-  [ -d decklink-sdk ] || mkdir decklink-sdk
-  ln -sf /usr/src/decklink-sdk decklink-sdk/include
+    cd "${_srcname}-${pkgver}"
+    
+    sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
+    sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+    
+    patch -Np1 -i "${srcdir}/lua53_compat.patch"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" \
-  ./configure --prefix=/usr \
-              --sysconfdir=/etc \
-              --disable-rpath \
-              --enable-faad \
-              --enable-nls \
-              --enable-lirc \
-              --enable-ncurses \
-              --enable-realrtsp \
-              --enable-aa \
-              --enable-vcdx \
-              --enable-upnp \
-              --enable-opus \
-              --enable-sftp \
-              --enable-decklink \
-              --with-decklink-sdk="${srcdir}/${_pkgname}-${pkgver}/decklink-sdk" \
-              LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
-              RCC=/usr/bin/rcc-qt4
-
-  make
+    cd "${_srcname}-${pkgver}"
+    
+    export PKG_CONFIG_PATH='/usr/lib/ffmpeg2.8/pkgconfig'
+    export CFLAGS+=' -I/usr/include/samba-4.0'
+    export CPPFLAGS+=' -I/usr/include/samba-4.0'
+    export CXXFLAGS+=' -std=c++11'
+    export LUAC='/usr/bin/luac'
+    export LUA_LIBS="$(pkg-config --libs lua)"
+    export RCC='/usr/bin/rcc-qt4'
+    
+    ./configure \
+        --prefix='/usr' \
+        --sysconfdir='/etc' \
+        --disable-rpath \
+        --enable-faad \
+        --enable-nls \
+        --enable-lirc \
+        --enable-ncurses \
+        --enable-realrtsp \
+        --enable-aa \
+        --enable-vcdx \
+        --enable-upnp \
+        --enable-opus \
+        --enable-sftp \
+        --enable-decklink
+    
+    make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${_srcname}-${pkgver}"
 
-  make DESTDIR="${pkgdir}" install
-
-  for res in 16 32 48 128; do
-    install -D -m644 "${srcdir}/vlc-${pkgver}/share/icons/${res}x${res}/vlc.png" \
-                     "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
-  done
+    make DESTDIR="${pkgdir}" install
+    
+    for _res in 16 32 48 128
+    do
+        install -D -m644 "${srcdir}/vlc-${pkgver}/share/icons/${_res}x${_res}/vlc.png" \
+                         "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/vlc.png"
+    done
+    
+    install -D -m644 "${srcdir}/update-vlc-plugin-cache.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
 }
