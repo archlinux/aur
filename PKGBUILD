@@ -2,7 +2,7 @@
 
 pkgname=systemd-ckboot
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks boot files and MBR for changes"
 arch=('any')
 url="https://sourceforge.net/projects/ckboot"
@@ -11,8 +11,7 @@ depends=('zenity' 'systemd')
 backup=('etc/ckboot.conf')
 install='ckboot.install'
 source=("https://downloads.sourceforge.net/project/ckboot/ckboot-${pkgver}.tar.gz")
-md5sums=('b59dac8618371ec58ad9da192e5fbd7c')
-PKGEXT='.pkg.tar'
+sha256sums=('2acf7aaf1fc11542a7319ae7a9b95fb4997030b0e1c129fbb34ddb777a1a0149')
 
 package() {
     # Install files
