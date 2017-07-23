@@ -1,0 +1,19 @@
+pkgbase = termtrack-git
+	pkgdesc = Track orbiting objects (such as the International Space Station) in your terminal
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/trehn/termtrack
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-click
+	depends = python-pillow
+	depends = python-pyephem
+	depends = python-requests
+	depends = python-pyephem
+	depends = python-pyshp
+	source = git+https://github.com/trehn/termtrack
+	sha256sums = SKIP
+
+pkgname = termtrack-git
+
