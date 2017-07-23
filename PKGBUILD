@@ -58,5 +58,5 @@ package() {
 
 pkgver() {
   	cd "${_pkgname}"
-	echo "$(git describe  | cut -d- -f1 | sed 's/^v//')"
+	git describe | cut -d- -f1 | sed 's/^v//'
 }
