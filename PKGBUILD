@@ -14,12 +14,12 @@ conflicts=("vim-runtime")
 makedepends=(gpm python2 python ruby libxt lua gawk tcl)
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
-        vimdoc.hook
+        #vimdoc.hook
         archlinux.vim
         )
 sha1sums=('24824406544144938f07f021fd9aa8a9821eccea'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
-          'adc4c82b6c4097944e5a767270a772721455eb8c'
+          #'adc4c82b6c4097944e5a767270a772721455eb8c'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
 prepare() {
