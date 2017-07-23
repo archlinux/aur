@@ -36,12 +36,16 @@ pkgname = vim-clipboard
 	optdepends = tcl: Tcl language support
 	provides = xxd
 	provides = vim-minimal
+	provides = vim-runtime
 	provides = vim-python3
-	conflicts = gvim
 	conflicts = vim-minimal
+	conflicts = vim
+	conflicts = vim-runtime
 	conflicts = vim-python3
 	replaces = vim-python3
 	replaces = vim-minimal
+	replaces = vim
+	replaces = vim-runtime
 
 pkgname = vim-runtime-clipboard
 	pkgdesc = Runtime for vim and gvim

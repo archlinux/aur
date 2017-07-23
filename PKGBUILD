@@ -115,9 +115,9 @@ package_vim-clipboard() {
               'lua: Lua language support'
               'perl: Perl language support'
               'tcl: Tcl language support')
-  conflicts=('gvim' 'vim-minimal' 'vim-python3')
-  provides=('xxd' 'vim-minimal' 'vim-python3')
-  replaces=('vim-python3' 'vim-minimal')
+  conflicts=('vim-minimal' 'vim' 'vim-runtime' 'vim-python3')
+  provides=('xxd' 'vim-minimal' 'vim-runtime' 'vim-python3')
+  replaces=('vim-python3' 'vim-minimal' 'vim' 'vim-runtime')
 
   cd "${srcdir}"/vim-$pkgver
   make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
