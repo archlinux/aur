@@ -40,7 +40,7 @@ function build
 {
     cd "${srcdir}/${_local_repo}/"
 
-    make DP_JPEG_VERSION=80 sdl-release sv-release
+    make CPUOPTIMIZATIONS="$CFLAGS" DP_JPEG_VERSION=80 sdl-release sv-release
 }
 
 function package
