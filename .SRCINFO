@@ -1,13 +1,13 @@
 pkgbase = python-serpent
 	pkgdesc = Serialization based on ast.literal_eval
-	pkgver = 1.22
+	pkgver = 1.23
 	pkgrel = 1
 	url = https://github.com/irmen/Serpent
 	arch = any
 	license = MIT
 	depends = python
-	source = https://pypi.io/packages/source/s/serpent/serpent-1.22.tar.gz
-	md5sums = 6950f234edcacfa1d31b6655ac3c6256
+	source = https://pypi.io/packages/source/s/serpent/serpent-1.23.tar.gz
+	md5sums = d9d6afa51f2560cf5933dcdfd947011d
 
 pkgname = python-serpent
 
