@@ -1,0 +1,18 @@
+pkgbase = rmqcc-git
+	pkgdesc = RocketMinsta QuakeC Compiler (FTEQCC fork)
+	pkgver = r419.c1f930e
+	pkgrel = 1
+	url = https://github.com/kasymovga/rmqcc
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	provides = rmqcc
+	conflicts = rmqcc
+	source = git+https://github.com/kasymovga/rmqcc
+	md5sums = SKIP
+
+pkgname = rmqcc-git
+
