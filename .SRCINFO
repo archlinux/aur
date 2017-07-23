@@ -1,0 +1,30 @@
+pkgbase = rexuiz-git
+	pkgdesc = An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter.
+	pkgver = r77.24e4125
+	pkgrel = 1
+	url = http://rexuiz.top/
+	arch = any
+	license = GPL2
+	makedepends = make
+	depends = nexuiz-data
+	depends = rexuiz-bytecode-git
+	depends = darkplaces-rm-git
+	depends = curl
+	depends = freetype2
+	depends = libjpeg
+	depends = libpng
+	depends = libtheora
+	depends = libvorbis
+	optdepends = libircclient: IRC integration (server-side)
+	optdepends = libmaxminddb: scoreboard country flags support (server-side)
+	provides = rexuiz
+	conflicts = rexuiz
+	source = git+https://github.com/kasymovga/rexuiz
+	source = https://raw.githubusercontent.com/kasymovga/RexuizLauncher/master/src/resources/icon.png
+	source = rexuiz.sh
+	sha256sums = SKIP
+	sha256sums = a5ebbae57d6375693bdeae8b71047c8b6a3b6b2b4038614c31c97092c6d0a508
+	sha256sums = 75b3a530887e79582fd352b4afd8f9b03194d36a4babd53ee0ae48db12c01e5b
+
+pkgname = rexuiz-git
+
