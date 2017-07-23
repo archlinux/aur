@@ -5,15 +5,14 @@
 pkgname=lib32-openal
 pkgver=1.18.0
 pkgrel=2
-pkgdesc="A cross-platform 3D audio library (32-bit)"
+pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 arch=(x86_64)
-url="http://www.openal.org/"
+url="https://github.com/kcat/openal-soft"
 license=(LGPL)
 depends=(lib32-glibc openal)
 makedepends=(lib32-alsa-lib pkgconfig cmake lib32-libpulse lib32-portaudio lib32-jack
              git gcc-multilib)
 _commit=61e43d4039277c538f3f6e0af7c988e7d71d8558  # tags/openal-soft-1.18.0
-options=('!strip' 'debug')
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -25,6 +24,9 @@ pkgver() {
 prepare() {
   mkdir build
   cd openal-soft
+
+  # https://bugs.archlinux.org/task/54908
+  git cherry-pick -n d4f3490a880f779f460332689a396ade69840f50
 }
 
 build() {
