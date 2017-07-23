@@ -18,6 +18,7 @@ md5sums=('452cd025172b9431e77a1e321f67cc7e')
 package()   {
     ar x desktop_${pkgver}_amd64.deb
     tar xvf data.tar.xz
+    fakeroot
     install -d "${pkgdir}/../../src/usr/share/" /usr/
     install -d "${pkgdir}/../../src/opt/GithubDesktop" /opt/
 }

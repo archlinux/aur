@@ -1,4 +1,5 @@
 post_install()  {
+    fakeroot
     echo "LD_PRELOAD=libcurl.so.3 /opt/GithubDesktop/desktop "$@"" > /usr/bin/github-desktop
     chmod 755 /usr/bin/github-desktop
     echo "[Desktop Entry]" > /usr/share/applications/desktop.desktop
@@ -11,6 +12,7 @@ post_install()  {
 }
 
 post_remove()   {
+    fakeroot
     rm -rf /opt/GithubDesktop
     rm -rf /usr/share/applications/desktop.desktop
     rm -rf /usr/share/doc/desktop
