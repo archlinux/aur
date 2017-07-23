@@ -5,14 +5,14 @@
 
 pkgname=xcursor-polar
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Polar XCursor Theme"
 arch=('any')
 url="https://store.kde.org/content/show.php?content=27913"
 #url="https://www.gnome-look.org/p/999968/"
 license=('GPL')
 source=(https://dl.opendesktop.org/api/files/download/id/1460735356/27913-PolarCursorThemes.tar.bz2)
-md5sums=('886068e0feadd2a07c8b206b211548ec')
+sha256sums=('03d77c528c89f507eb240d4efd2dfcb0b5d8245cd20c94f9cf8a87e50c16f598')
 
 package() {
 	mkdir -p "${pkgdir}"/usr/share/icons/{Polar,Polar-Green,Polar-Blue}
