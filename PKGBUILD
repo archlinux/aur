@@ -8,8 +8,7 @@ arch=('i686' 'x86_64')
 url="http://cidrmerge.sourceforge.net/"
 license=('GPL')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d273347b639d11fcb65873c3c3362057')
-PKGEXT='.pkg.tar'
+sha256sums=('21b36fc8004d4fc4edae71dfaf1209d3b7c8f8f282d1a582771c43522d84f088')
 
 build() {
     cd "${srcdir}/${pkgname}"
