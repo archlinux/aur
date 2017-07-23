@@ -3,12 +3,12 @@
 
 pkgname=xubuntu-artwork
 pkgver=17.04
-pkgrel=2
+pkgrel=3
 _uver=zesty
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
-license=("gpl2" "gpl3" "cc-by-sa-3.0")
+license=("gpl2" "gpl3" "custom:cc-by-sa-3.0")
 #depends=("xfce-theme-albatross" "xfce-theme-bluebird" "xfce-theme-greybird" "shimmer-wallpapers")
 makedepends=("zip")
 optdepends=("plymouth: For the plymouth theme to work"
@@ -18,7 +18,8 @@ optdepends=("plymouth: For the plymouth theme to work"
         "xfce-theme-bluebird: Official theming, git or stable version"
         "xfce-theme-greybird: Official theming, git or stable version"
 	"elementary-xfce-icons: For matching icon theme, or the git version")
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz")
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz"
+	"CC-BY-SA-3.0.txt")
 
 package() {
   #cd "${srcdir}/trunk"
@@ -39,7 +40,9 @@ package() {
 
   msg2 "Remove redundant and empty files."
   rm -frv "${pkgdir}"/usr/share/xfce4/backdrops
+
+  install -D -m644 "${srcdir}/CC-BY-SA-3.0.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/CC-BY-SA-3.0.txt"
 }
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
-
-md5sums=('e8dba4027755d01be541e16fabf4b6f5')
+md5sums=('e8dba4027755d01be541e16fabf4b6f5'
+         'd55fbe17f8a79a738b1337f0b96aa064')
