@@ -3,7 +3,7 @@
 
 pkgname='libscrypt-git'
 _gitname='libscrypt'
-pkgver=1.21.r5.g164525d
+pkgver=1.21.r2.gf2b7923
 pkgrel=1
 pkgdesc='Shared library that implements scrypt() functionality - a replacement for bcrypt()'
 arch=('i686' 'x86_64')
