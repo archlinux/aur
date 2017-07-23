@@ -96,6 +96,15 @@ sha256sums=('fcc918000b8c5ece553541ec10a9182410a742b7266257c76dda895dcd389899'
             'e606144f6629070b6aefddf93c44173cd87bc2fa0a7c3512e6296a805705b90b'
             '24d33c00da2d79ce578b5a35e816d11f9e61c5317fe4415fc08a2cbcd5f1c001')
 
+replaces=('virtualbox' 
+          'virtualbox-host-dkms' 
+          'virtualbox-guest-dkms'
+          'virtualbox-sdk'
+          'virtualbox-guest-utils'
+          'virtualbox-guest-utils-nox'
+          'virtualbox-ext-vnc'
+          'virtualbox-ose')
+
 prepare() {
     cd "VirtualBox-$pkgver"
 
