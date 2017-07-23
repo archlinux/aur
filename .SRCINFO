@@ -1,5 +1,5 @@
 pkgbase = hdl-dump-git
-	pkgdesc = Playstation 2 HDLoader Image Dump/Install utility.
+	pkgdesc = PlayStation 2 HDLoader image dump/install utility
 	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/AKuHAK/hdl-dump
