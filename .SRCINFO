@@ -1,13 +1,13 @@
 pkgbase = openvpn-nordvpn
 	pkgdesc = OpenVPN helper script for nordvpn.com
-	pkgver = 0.1.19
+	pkgver = 0.1.21
 	pkgrel = 1
 	url = https://github.com/nstinus/nordvpn
 	install = openvpn-nordvpn.install
 	arch = any
 	license = MIT
 	makedepends = coreutils
-	makedepends = pandoc
+	makedepends = asciidoc
 	depends = openvpn
 	depends = systemd
 	depends = openvpn-update-resolv-conf-git
@@ -21,7 +21,7 @@ pkgbase = openvpn-nordvpn
 	optdepends = python-pandas: run nordvpn infos command
 	optdepends = bash-completion: auto-complete commands
 	provides = nordvpn
-	source = git+https://github.com/nstinus/nordvpn.git#commit=v0.1-19-g1dbfe40
+	source = git+https://github.com/nstinus/nordvpn.git#commit=v0.1-21-g3093830
 	sha1sums = SKIP
 
 pkgname = openvpn-nordvpn
