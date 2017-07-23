@@ -1,32 +1,33 @@
 # Maintainer: mesmer <mesmer@fisica.if.uff.br>
+# Contributor: xiretza <xiretza+aur@gmail.com>
+# Contributor: TJM <tommy.mairo@gmail.com>
 
-pkgname=(vim-clipboard)
-pkgver=8.0.0628
-_versiondir=74
+pkgname=(vim-clipboard vim-runtime)
+pkgver=8.0.0722
+_versiondir=80
 pkgrel=1
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 license=('custom:vim')
 url='http://www.vim.org'
-makedepends=(gpm python2 python ruby libxt desktop-file-utils gtk2 gtk3 lua gawk tcl)
+makedepends=(gpm python2 python ruby libxt lua gawk tcl)
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
-        archlinux.vim)
-sha1sums=('a6345466133f84874f11c93c4f59b82a069a3b46'
+        vimdoc.hook
+        archlinux.vim
+        )
+sha1sums=('24824406544144938f07f021fd9aa8a9821eccea'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
+          'adc4c82b6c4097944e5a767270a772721455eb8c'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
-
 prepare() {
-  cd vim-$pkgver/src
+  cd "${srcdir}"/vim-$pkgver/src
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
   sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' feature.h
   sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' feature.h
 
   autoconf
-
-  cd "$srcdir"
-  cp -a vim-$pkgver gvim-$pkgver
 }
 
 build() {
@@ -50,36 +51,11 @@ build() {
     --enable-luainterp=dynamic \
     --enable-tclinterp=dynamic
   make
-
-  cd "${srcdir}"/gvim-$pkgver
-  ./configure \
-    --prefix=/usr \
-    --localstatedir=/var/lib/vim \
-    --with-features=huge \
-    --with-compiledby='Arch Linux' \
-    --enable-gpm \
-    --enable-acl \
-    --with-x=yes \
-    --enable-gui=gtk2 \
-    --enable-multibyte \
-    --enable-cscope \
-    --enable-netbeans \
-    --enable-perlinterp=dynamic \
-    --enable-pythoninterp=dynamic \
-    --enable-python3interp=dynamic \
-    --enable-rubyinterp=dynamic \
-    --enable-luainterp=dynamic \
-    --enable-tclinterp=dynamic
-  make
 }
 
 check() {
-  # disable tests because they seem to freeze
   cd "${srcdir}"/vim-$pkgver
-  #make test
-
-  cd "${srcdir}"/gvim-$pkgver
-  #make test
+  make test
 }
 
 package_vim-runtime() {
@@ -115,24 +91,29 @@ package_vim-runtime() {
   install -Dm644 runtime/rgb.txt \
     "${pkgdir}"/usr/share/vim/vim${_versiondir}/rgb.txt
 
+  # no desktop files and icons
+  rm -r "${pkgdir}"/usr/share/{applications,icons}
+
   # license
   install -dm755 "${pkgdir}"/usr/share/licenses/vim-runtime
   ln -s /usr/share/vim/vim${_versiondir}/doc/uganda.txt \
     "${pkgdir}"/usr/share/licenses/vim-runtime/license.txt
+
+  # pacman hook for documentation helptags
+  install -Dm644 "${srcdir}"/vimdoc.hook "${pkgdir}"/usr/share/libalpm/hooks/vimdoc.hook
 }
 
 package_vim-clipboard() {
   pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor with +clipboard enabled'
-  depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'acl')
+  depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'libxt')
   optdepends=('python2: Python 2 language support'
               'python: Python 3 language support'
               'ruby: Ruby language support'
               'lua: Lua language support'
               'perl: Perl language support'
               'tcl: Tcl language support')
-  conflicts=('gvim' 'vim-minimal' 'vim-python3')
-  provides=('xxd' 'vim-minimal' 'vim-python3')
-  replaces=('vim-python3' 'vim-minimal')
+  conflicts=('vim' 'vim-minimal' 'vim-python3')
+  provides=("vim=${pkgver}-${pkgrel}" 'xxd' 'vim-minimal' 'vim-python3')
 
   cd "${srcdir}"/vim-$pkgver
   make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
@@ -150,47 +131,12 @@ package_vim-clipboard() {
 
   # Runtime provided by runtime package
   rm -r "${pkgdir}"/usr/share/vim
+  
+  # no gvim stuff
+  rm -r "${pkgdir}"/usr/share/icons
+  rm "${pkgdir}"/usr/share/applications/gvim.desktop
 
   # license
   install -Dm644 runtime/doc/uganda.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
-}
-
-package_gvim() {
-  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with advanced features, such as a GUI)'
-  depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'libxt' 'desktop-file-utils' 'gtk2')
-  optdepends=('python2: Python 2 language support'
-              'python: Python 3 language support'
-              'ruby: Ruby language support'
-              'lua: Lua language support'
-              'perl: Perl language support'
-              'tcl: Tcl language support')
-  provides=("vim=${pkgver}-${pkgrel}" "xxd")
-  conflicts=('vim-minimal' 'vim')
-  replaces=('gvim-python3')
-  install=gvim.install
-
-  cd "${srcdir}"/gvim-$pkgver
-  make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
-
-  # provided by (n)vi in core
-  rm "${pkgdir}"/usr/bin/{ex,view}
-
-  # delete some manpages
-  find "${pkgdir}"/usr/share/man -type d -name 'man1' 2>/dev/null | \
-    while read _mandir; do
-    cd ${_mandir}
-    rm -f ex.1 view.1 # provided by (n)vi
-  done
-
-  # need to remove since this is provided by vim-runtime
-  rm -r "${pkgdir}"/usr/share/vim
-
-  # freedesktop links
-  install -Dm644 runtime/gvim.desktop "${pkgdir}"/usr/share/applications/gvim.desktop
-  install -Dm644 runtime/vim48x48.png "${pkgdir}"/usr/share/pixmaps/gvim.png
-
-  # license
-   install -Dm644 runtime/doc/uganda.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/license.txt
 }
