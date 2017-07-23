@@ -7,11 +7,11 @@
 
 pkgname=geany-gtk3
 _pkgname=geany
-pkgver=1.30.1
+pkgver=1.31
 pkgrel=1
 pkgdesc='Fast and lightweight IDE'
 arch=('x86_64' 'i686')
-url='http://www.geany.org/'
+url='https://www.geany.org/'
 license=('GPL')
 depends=('gtk3' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('perl-xml-parser' 'intltool')
@@ -20,14 +20,14 @@ optdepends=('geany-plugins-gtk3: various extra features'
             'python2')
 provides=('geany')
 conflicts=('geany')
-source=("http://download.geany.org/${_pkgname}-$pkgver.tar.bz2")
-md5sums=('75081b600560c5c8366eda0e1b8cc531')
+source=("https://download.geany.org/${_pkgname}-$pkgver.tar.bz2")
+md5sums=('386000be6b26972c6a699939c37cda34')
 
 prepare() {
 cd "${_pkgname}-$pkgver"
 
 # Python2 fix
-sed -i '0,/on/s//on2/' data/templates/files/main.py
+#sed -i '0,/on/s//on2/' data/templates/files/main.py
 
 # Syntax highlighting for PKGBUILD files
 sed -i 's/Sh=/Sh=PKGBUILD;/' data/filetype_extensions.conf
