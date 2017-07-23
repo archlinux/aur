@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=r111932.57239e923f3
+pkgver=r112054.2a3006438d4
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
@@ -16,32 +16,32 @@ provides=('mono' 'monodoc')
 conflicts=('mono' 'monodoc')
 install="${_gitname}.install"
 source=(
-    'git+https://github.com/mono/mono.git'
-    'git+https://github.com/mono/aspnetwebstack.git'
-    'git+https://github.com/mono/Newtonsoft.Json.git'
-    'git+https://github.com/mono/cecil.git'
-    'git+https://github.com/mono/rx.git#branch=rx-oss-v2.2'
-    'ikvm::git+https://github.com/mono/ikvm-fork.git'
-    'git+https://github.com/mono/ikdasm.git'
-    'binary-reference-assemblies::git+https://github.com/mono/reference-assemblies.git'
-    'nunit-lite::git+https://github.com/mono/NUnitLite.git'
-    'nuget-buildtasks::git+https://github.com/mono/NuGet.BuildTasks'
-    'cecil-legacy::git+https://github.com/mono/cecil.git#branch=mono-legacy-0.9.5'
-    'git+https://github.com/mono/boringssl.git#branch=mono'
-    'git+https://github.com/mono/corefx.git'
-    'git+https://github.com/mono/bockbuild.git'
-    'git+https://github.com/mono/linker.git'
-    'git+https://github.com/mono/roslyn-binaries.git'
-    'git+https://github.com/mono/corert.git'
-    'git+https://github.com/mono/xunit-binaries.git'
-    'git+https://github.com/mono/api-doc-tools.git'
-    'git+https://github.com/mono/api-snapshot.git'
-    'mono.binfmt.d'
+  'git+https://github.com/mono/mono.git'
+  'git+https://github.com/mono/aspnetwebstack.git'
+  'git+https://github.com/mono/Newtonsoft.Json.git'
+  'git+https://github.com/mono/cecil.git'
+  'git+https://github.com/mono/rx.git#branch=rx-oss-v2.2'
+  'ikvm::git+https://github.com/mono/ikvm-fork.git'
+  'git+https://github.com/mono/ikdasm.git'
+  'binary-reference-assemblies::git+https://github.com/mono/reference-assemblies.git'
+  'nunit-lite::git+https://github.com/mono/NUnitLite.git'
+  'nuget-buildtasks::git+https://github.com/mono/NuGet.BuildTasks'
+  'cecil-legacy::git+https://github.com/mono/cecil.git#branch=mono-legacy-0.9.5'
+  'git+https://github.com/mono/boringssl.git#branch=mono'
+  'git+https://github.com/mono/corefx.git'
+  'git+https://github.com/mono/bockbuild.git'
+  'git+https://github.com/mono/linker.git'
+  'git+https://github.com/mono/roslyn-binaries.git'
+  'git+https://github.com/mono/corert.git'
+  'git+https://github.com/mono/xunit-binaries.git'
+  'git+https://github.com/mono/api-doc-tools.git'
+  'git+https://github.com/mono/api-snapshot.git'
+  'mono.binfmt.d'
 )
 sha256sums=(
-    'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-    'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-    '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425'
 )
 
 pkgver() {
