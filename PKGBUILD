@@ -2,7 +2,7 @@
 
 pkgname=candy-gtk-theme
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat style gtk&gnome-shell theme.Based on flat-plat and adapta"
 arch=('any')
 url="https://github.com/levinit/candy-gtk-theme"
