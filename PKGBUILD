@@ -2,11 +2,11 @@
 
 pkgname=('dmailmanager-git')
 pkgver=r2.e3d20be
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage mail using notmuch"
 arch=('i686' 'x86_64')
 url="https://github.com/Vild/DMailManager"
-license=("MIT")
+license=("MPLv2")
 groups=('dlang')
 makedepends=('dmd' 'git' 'dub')
 depends=('libphobos' 'dub' 'dcd' 'dfmt' 'dscanner')
