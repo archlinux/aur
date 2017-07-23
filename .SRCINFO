@@ -1,6 +1,6 @@
 pkgbase = sope2
 	pkgdesc = application server used by SOGo
-	pkgver = 2.3.20
+	pkgver = 2.3.22
 	pkgrel = 1
 	url = http://www.sogo.nu/files/downloads/SOGo/Sources/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = sope2
 	optdepends = postgresql: run database server for sogo locally
 	conflicts = sope
 	options = !strip
-	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-2.3.20.tar.gz
+	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-2.3.22.tar.gz
 	source = sope_configure.patch
 	sha256sums = 2735bff8ac57e551587524c652c4806019e4522b8106ac03e57fb3534121048c
 	sha256sums = 7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a

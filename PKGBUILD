@@ -3,7 +3,7 @@
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope2
-pkgver=2.3.20
+pkgver=2.3.22
 pkgrel=1
 pkgdesc="application server used by SOGo"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ options=('!strip')
 source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-${pkgver}.tar.gz"
         "sope_configure.patch")
 
-sha256sums=('2735bff8ac57e551587524c652c4806019e4522b8106ac03e57fb3534121048c'
+sha256sums=('5e57f9be6caed584510b0d0425cdbc37f85664fd8bf1b6df33fb83870dc82807'
             '7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a')
 
 prepare() {
