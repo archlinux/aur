@@ -4,18 +4,18 @@
 _pkgbase=pygobject
 pkgbase=pygobject-patched
 pkgname=(python-gobject-patched python2-gobject-patched pygobject-devel-patched)
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="Python Bindings for GLib/GObject/GIO/GTK+"
 url="https://wiki.gnome.org/Projects/PyGObject"
 arch=(i686 x86_64)
 license=(LGPL)
 depends=(gobject-introspection-runtime)
-makedepends=(python-cairo-git python2-cairo gobject-introspection)
+makedepends=(python-cairo-git python2-cairo gobject-introspection gnome-common)
 optdepends=('cairo: Cairo bindings')
 source=("https://download.gnome.org/sources/${_pkgbase}/${pkgver:0:4}/${_pkgbase}-${pkgver}.tar.xz"
 		"01_cairo_region.patch")
-sha256sums=('4e228b1c0f36e810acd971fad1c7030014900d8427c308d63a560f3f1037fa3c'
+sha256sums=('a628a95aa0909e13fb08230b1b98fc48adef10b220932f76d62f6821b3fdbffd'
             '70d890c4f56cb677a386dcd5cfe554957c200802b788e582b22b09ba49a423a2')
 
 prepare() {
