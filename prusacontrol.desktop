@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=PrusaControl
+Comment=Alternative user interface for Slic3r Prusa Edition.
+Path=/opt/prusacontrol
+Exec=python /opt/prusacontrol/main.py
+Icon=/opt/prusacontrol/data/icon/favicon_256.png
+Terminal=false
+Type=Application
+X-Desktop-File-Install-Version=0.23
