@@ -2,15 +2,17 @@
 pkgname=bterm-git
 _pkgname=bterm
 pkgver=v1.0.0.r2.255e6a3
-pkgrel=1
+pkgrel=2
 pkgdesc="cross-platform terminal emulator"
 arch=('x86_64' 'i686')
 url="https://github.com/bleenco/bterm"
 license=('MIT')
 depends=('nodejs')
-makedepends=('git' 'npm') 
-source=("bterm-git::git+$url.git")
-sha256sums=('SKIP')
+makedepends=('git' 'npm' "libicns") 
+source=("bterm-git::git+$url.git"
+        "$_pkgname.desktop")
+sha256sums=('SKIP'
+            '04b703f72879dcdb23adc339cdc2e9c2c33dddca07d417bd677699603a6bd1c3')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -40,4 +42,7 @@ package() {
       done
 ln -s /usr/lib/bterm/bterm $pkgdir/usr/bin/$_pkgname
 install -Dm644 assets/icon.svg $pkgdir/$_icon_dir/scalable/apps/$pkgname.svg
+
+ msg2 "  -> Installing .desktop file..."
+  install -Dm644 ../../bterm.desktop $pkgdir/usr/share/applications/bterm.desktop
 }
