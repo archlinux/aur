@@ -7,12 +7,12 @@ pkgdesc="Collection of free (as speech) softwares to open, edit, convert and tra
 license=('GPL2')
 arch=('i686' 'x86_64')
 url="http://casetta.tuxfamily.org/"
-depends=('python2' 'python2-pyserial' 'python2-pillow' 'gtk' 'pygtk')
+depends=('python2' 'python2-pyserial' 'python2-pillow' 'gtk2' 'pygtk')
 makedepends=('python2')
 source=("http://download.tuxfamily.org/casetta/casetta-0.3/casetta-$pkgver.tar.gz"
         'fixes20150517.patch')
-md5sums=('0d95ce37cacd99f79f826fe06eb4104a'
-         'ce51dbbb3e1649051acd671c56bb2065')
+sha256sums=('6a06ae8d41d188cd716803a0e85a4a25102a01851e5b24538d0794ef50346f44'
+            'c29ad28de27826b44346c045d50541b986ce359735272e736a736869c7925419')
 
 prepare() {
     cd "${srcdir}/$pkgname-$pkgver"
