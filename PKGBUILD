@@ -2,7 +2,7 @@
 
 pkgname=mcpelauncher-linux
 pkgver=20170723.r93.586e669
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft PE launcher for Linux"
 arch=('x86_64')
 url="https://kris27mc.github.io"
