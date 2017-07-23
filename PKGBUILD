@@ -5,7 +5,7 @@
 
 pkgname=kradio-git
 pkgver=1275.8696844f
-pkgrel=1
+pkgrel=2
 pkgdesc='Comfortable KDE internet and AM/FM radio application'
 arch=('i686' 'x86_64')
 url='http://kradio.sourceforge.net/'
@@ -13,8 +13,7 @@ license=('GPL2')
 depends=('kdebase-runtime' 'lirc-utils' 'libmms' 'ffmpeg')
 makedepends=('automoc4' 'cmake' 'boost')
 install="${pkgname}.install"
-# source=("http://downloads.sourceforge.net/${pkgname}/kradio4-${pkgver}.tar.bz2")
-source=("git://git.code.sf.net/p/${pkgname}/code")
+source=("git://git.code.sf.net/p/kradio/code")
 sha256sums=('SKIP')
 
 pkgver() {
