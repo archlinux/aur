@@ -6,6 +6,7 @@ pkgbase = github-desktop
 	install = github-desktop.install
 	arch = x86_64
 	license = MIT
+	makedepends = libcurl-openssl-1.0
 	depends = git
 	depends = electron
 	depends = nodejs
