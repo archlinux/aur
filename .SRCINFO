@@ -1,7 +1,7 @@
 pkgbase = cataclysm-dda-tiles
 	pkgdesc = A post-apocalyptic roguelike,tiles only
 	pkgver = 0.C.2017.07.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://en.cataclysmdda.com/
 	arch = x86_64
 	license = CCPL:by-sa
@@ -23,7 +23,7 @@ pkgbase = cataclysm-dda-tiles
 	source = https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip
 	source = fix_locale_and_build_error.patch
 	md5sums = SKIP
-	md5sums = b27d839e4a9918eca019e3cd9a4d910b
+	md5sums = 20797e08fd4a35e6688f70e1bfbe86e7
 
 pkgname = cataclysm-dda-tiles
 
