@@ -35,7 +35,7 @@ pkgname = vim-clipboard
 	provides = xxd
 	provides = vim-minimal
 	provides = vim-python3
-	provides = vim=${pkgver}-${pkgrel}
+	provides = vim
 	conflicts = vim-minimal
 	conflicts = vim-python3
 	conflicts = vim

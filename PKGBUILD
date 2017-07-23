@@ -65,7 +65,7 @@ package_vim-clipboard() {
               'perl: Perl language support'
               'tcl: Tcl language support')
   conflicts=('vim-minimal' 'vim-python3' 'vim')
-  provides=('xxd' 'vim-minimal' 'vim-python3' 'vim=${pkgver}-${pkgrel}')
+  provides=('xxd' 'vim-minimal' 'vim-python3' 'vim')
   replaces=('vim-python3' 'vim-minimal' 'vim')
 
   cd "${srcdir}"/vim-$pkgver
