@@ -5,6 +5,7 @@ pkgbase = guacamole-server
 	url = http://guacamole.sourceforge.net/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL3
 	makedepends = libpulse
 	makedepends = libvorbis
