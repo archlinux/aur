@@ -6,7 +6,7 @@
 
 pkgname=ariamaestosa
 pkgver=1.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc='MIDI editor, player, tracker and composer'
 arch=('x86_64' 'i686')
 url='http://ariamaestosa.sourceforge.net/'
@@ -18,11 +18,15 @@ optdepends=('timidity++: for midi playback'
             'fluidsynth: for midi playback')
 makedepends=('setconf' 'python2')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/$pkgname/AriaSrc-$pkgver.tar.bz2")
-sha256sums=('6d58dd721a5cdd1a17db9004bc835c59b29ec14dbd56556a3e90899e9df943b3')
+source=("http://downloads.sourceforge.net/$pkgname/AriaSrc-$pkgver.tar.bz2"
+        "$pkgname.patch")
+sha256sums=('6d58dd721a5cdd1a17db9004bc835c59b29ec14dbd56556a3e90899e9df943b3'
+            '4d43e6793e32386fc063a5660ae55696387e477b3c5011cb8f72f59ce9c3a2f4')
 
 prepare() {
   cd "AriaSrc-$pkgver"
+
+  patch -p1 -i ../$pkgname.patch
 
   setconf Freedesktop/Aria.desktop Exec "$pkgname"
   sed -i -e "/^Version/s:1.4.1:$pkgver:" -e "/^Icon/s:/local::" \
