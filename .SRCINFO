@@ -1,20 +1,22 @@
 pkgbase = kicadlibrarian-git
 	pkgdesc = A utility to manage and maintain KiCad libraries with schematic symbols and footprints
-	pkgver = r21.d7c0c4e
+	pkgver = r32.eccc226
 	pkgrel = 1
-	url = http://www.compuphase.com/electronics/kicadlibrarian_en.htm
+	url = https://github.com/compuphase/KiCad-Librarian
+	install = kicadlibrarian-git.install
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = make
+	makedepends = cmake
 	depends = desktop-file-utils
-	depends = gcc-libs-multilib
 	depends = wxgtk
 	depends = curl
 	depends = libharu
 	provides = kicadlibrarian
 	conflicts = kicadlibrarian
-	source = kicadlibrarian-git::git+git://github.com/compuphase/KiCad-Librarian.git
+	source = kicadlibrarian-git::git+git://github.com/melak/KiCad-Librarian.git#branch=fix/update_unqlite
 	md5sums = SKIP
 
 pkgname = kicadlibrarian-git
