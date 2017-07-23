@@ -1,6 +1,6 @@
 pkgbase = python-django-channels
 	pkgdesc = Developer-friendly asynchrony for Django
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 2
 	url = https://channels.readthedocs.io
 	arch = any
