@@ -1,0 +1,17 @@
+pkgbase = deepin.com.thunderspeed
+	pkgdesc = Deepin Wine Thunderspeed
+	pkgver = 7.10.35.366deepin17
+	pkgrel = 2
+	url = http://office.qq.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	depends = deepin-wine
+	conflicts = wine-tim
+	noextract = deepin.com.thunderspeed_7.10.35.366deepin17_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.thunderspeed/deepin.com.thunderspeed_7.10.35.366deepin17_i386.deb
+	md5sums = SKIP
+
+pkgname = deepin.com.thunderspeed
+
