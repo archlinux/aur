@@ -3,14 +3,13 @@
 
 pkgname='hyphen-en-us'
 pkgver=2.8.8
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://hunspell.sf.net"
 license=('GPL2' 'LGPL2.1' 'MPL')
 pkgdesc="English hyphenation rules (en_US only)"
 source=(http://downloads.sourceforge.net/hunspell/hyphen-${pkgver}.tar.gz)
-sha1sums=('0556c392beb59433e577e3517575801212201df6')
-PKGEXT='.pkg.tar'
+sha256sums=('304636d4eccd81a14b6914d07b84c79ebb815288c76fe027b9ebff6ff24d5705')
 
 package() {
   cd hyphen-${pkgver}
