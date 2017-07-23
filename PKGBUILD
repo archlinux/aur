@@ -2,8 +2,8 @@
 
 _gitname=wget2
 pkgname=${_gitname}-git
-pkgver=0.0.r1110.gdd2f4b5
-pkgrel=2
+pkgver=0.0.r1346.g689e403
+pkgrel=1
 pkgdesc="Updated version of popular Wget tool"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/wget/wget.html"
