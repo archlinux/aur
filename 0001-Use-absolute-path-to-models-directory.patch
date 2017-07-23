@@ -1,0 +1,39 @@
+From 5d761cf214e2f345aef3560a3f92b223f93130c0 Mon Sep 17 00:00:00 2001
+From: "Andrei \"Akari\" Alexeyev" <akari@alienslab.net>
+Date: Sun, 23 Jul 2017 16:19:36 +0300
+Subject: [PATCH] Use absolute path to models directory
+
+---
+ lib/settings.lua | 2 +-
+ waifu2x.lua      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/settings.lua b/lib/settings.lua
+index 03830e4..7e88ee7 100644
+--- a/lib/settings.lua
++++ b/lib/settings.lua
+@@ -22,7 +22,7 @@ cmd:option("-seed", 11, 'RNG seed')
+ cmd:option("-data_dir", "./data", 'path to data directory')
+ cmd:option("-backend", "cunn", '(cunn|cudnn)')
+ cmd:option("-test", "images/miku_small.png", 'path to test image')
+-cmd:option("-model_dir", "./models", 'model directory')
++cmd:option("-model_dir", "/usr/share/waifu2x/models", 'model directory')
+ cmd:option("-method", "scale", 'method to training (noise|scale|noise_scale|user)')
+ cmd:option("-model", "vgg_7", 'model architecture (vgg_7|vgg_12|upconv_7|upconv_8_4x|dilated_7)')
+ cmd:option("-noise_level", 1, '(0|1|2|3)')
+diff --git a/waifu2x.lua b/waifu2x.lua
+index 6ffa98d..e54e348 100644
+--- a/waifu2x.lua
++++ b/waifu2x.lua
+@@ -254,7 +254,7 @@ local function waifu2x()
+    cmd:option("-scale", 2, 'scale factor')
+    cmd:option("-o", "(auto)", 'path to output file')
+    cmd:option("-depth", 8, 'bit-depth of the output image (8|16)')
+-   cmd:option("-model_dir", "./models/upconv_7/art", 'path to model directory')
++   cmd:option("-model_dir", "/usr/share/waifu2x/models/upconv_7/art", 'path to model directory')
+    cmd:option("-name", "user", 'model name for user method')
+    cmd:option("-m", "noise_scale", 'method (noise|scale|noise_scale|user)')
+    cmd:option("-method", "", 'same as -m')
+-- 
+2.13.3
+
