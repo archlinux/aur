@@ -3,12 +3,13 @@
 
 pkgname=nwjs
 pkgver=0.23.6
-pkgrel=2
+pkgrel=3
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
 license=("MIT")
 depends=("alsa-lib" "gconf" "gtk2" "nss" "ttf-font" "libxtst" "libxss")
+makedepends=("depot-tools-git")
 optdepends=(
     "nodejs: npm package support"
     "nw-gyp: native add-on build tool for node-webkit"
@@ -22,11 +23,22 @@ sha512sums=("b7a03e3b09c5c439af68e728b21e500fed2eb940b25c4b0c712bb0eefbf9c7e1752
 	    "698fbc1924048b5043b3607b06d85cdbe295bb0fab0234ed15b89778da75dd63006662fb48371c8b7ed91a1209b42d4397e9fb06787a06addf2f17e8d4d43ce9"
 	    "86b94a63b0da1d1644d76c57be326adbde8f82c6cf704e2990f9e812d5d7a5d367b1d0f33304b9878ed02db77c4958099e438b6d96e7d3b6f1924b0d862a68fc")
 
+prepare() {
+  cd "${srcdir}/"
+  mkdir -p path
+  ln -s /usr/bin/python2 path/python
+}
+  
 build() {
   cd "${srcdir}/"
-  mkdir nwjs
+  mkdir -p nwjs
   cd nwjs
+
+  export PATH="/opt/depot_tools:$PATH"
+  export PATH="${srcdir}/path:$PATH"
+
   gclient config --name=src https://github.com/nwjs/chromium.src.git@origin/nw17
+  gclient sync --with_branch_heads
 }
 
 package() {
