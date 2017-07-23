@@ -33,7 +33,8 @@ _localmodcfg=
 # Alternative I/O scheduler by Paolo Valente
 # Set this if you want it enabled globally i.e. for all devices in your system
 # If you want it enabled on a device-by-device basis, leave this unset and see:
-# https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
+# https://wiki.archlinux.org/index.php/Improving_performance#Tuning_IO_schedulers
+
 _BFQ_enable_=
 
 # Use the current kernel's .config file
@@ -47,8 +48,8 @@ _use_current=
 
 pkgbase=linux-ck-fbcondecor
 _srcname=linux-4.11
-pkgver=4.11.3
-pkgrel=2
+pkgver=4.11.12
+pkgrel=1
 _ckpatchversion=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -72,12 +73,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'fbcondecor-4.11.patch')
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            '5847b5d2a3252cd19a28ed1dc13a238d041396792c7863e9ff0bbf5b79cd5e90'
+            '707c5f18dfb795761b0b7ac6f946f03774f9f99317306fd54d8724d17d9c7729'
             'SKIP'
             '1acde415a6a35d301beb65bc09bd20903f3a9c835c6c850f4c5a0ce0ab236bc1'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            'a77b7147a730ba4c47f8e6f5a87e329b59ea305f2a84c02aaebd082f4d4e5458'
-            'ad1fa7abca1865226c912a97adfbe6af99fbd50f6aa5e106d68bacb29140fb64'
+            '252bef6e73eb70fb0a8ebd58e762b634fb03c70a78545c6a749add808284d3d4'
+            'aca3077371f0a1720cb1e92d4c42e6c5da8fd916d076041fc29dab205a9f3bd6'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '0671b52ba9498ba2027fa643ba0e3b524696b358fe983fbad1c586f9446a17a6')
@@ -277,7 +278,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
