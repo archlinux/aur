@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bisq
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
@@ -10,8 +10,8 @@ license=('AGPL3')
 depends=('java-openjfx')
 makedepends=('maven' 'jdk8-openjdk' 'protobuf')
 source=("${pkgname}::git+https://github.com/bitsquare/bitsquare.git#tag=v${pkgver}"
-        "git+https://github.com/bitsquare/bitcoinj.git#commit=c7aee7e0d91ca3d84281156ee2b2b9fddc3a8d56"
-        "git+https://github.com/bitsquare/libdohj.git#commit=b88940e29cbae01619fbd091df92935b326d94e7"
+        "git+https://github.com/bitsquare/bitcoinj.git#commit=cf384d0f0ea41024a0686faf8f06d480d4451996"
+        "git+https://github.com/bitsquare/libdohj.git#commit=232124cbcc2141e5240e729cba7cab644615d9c6"
         "git+https://github.com/bitsquare/btcd-cli4j.git#commit=9d7ff85ab450b96c890e569dc9b584eae7bf13ad"
         "bisq.sh"
         "bisq.desktop")
