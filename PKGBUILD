@@ -3,7 +3,7 @@
 # Contributor: Fredrick Brennan <admin@8chan.co>
 
 pkgname=waifu2x-git
-pkgver=r512.7dad4bc
+pkgver=0.13.1.r39.g7dad4bc
 pkgrel=1
 epoch=1
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
@@ -69,5 +69,5 @@ package() {
 
 pkgver() {
     cd waifu2x
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
