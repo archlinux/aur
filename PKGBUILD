@@ -16,7 +16,7 @@ source=(vim-$pkgver.tar.gz::https://github.com/vim/vim/archive/v$pkgver.tar.gz
         archlinux.vim
         vimdoc.hook)
 sha1sums=('24824406544144938f07f021fd9aa8a9821eccea'
-          '539bfaa0517dfff6d61c37f9c2d81a0db756a4c9'
+          '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2'
           'adc4c82b6c4097944e5a767270a772721455eb8c')
 
