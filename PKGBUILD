@@ -4,12 +4,12 @@
 
 pkgname=saleae-logic-beta
 pkgver=1.2.14
-pkgrel=3
+pkgrel=4
 pkgdesc="High speed USB logic analyzer."
 arch=('x86_64')
 url="http://www.saleae.com/"
 license=('unknown')  # closed source, none given
-depends=('qt5-base')
+depends=('qt5-base' 'openssl-1.0')
 conflicts=(saleae-logic)
 provides=(saleae-logic)
 
