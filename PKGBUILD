@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=openclonk-music
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary music addon package for openclonk"
 arch=('any')
 url="http://www.openclonk.org/"
@@ -10,7 +10,7 @@ depends=('openclonk')
 _filename='Music.ocg'
 source=("http://www.openclonk.org/download/$_filename")
 noextract=("$_filename")
-sha256sums=('affac5cc0bdcb40148b5f6e8c8b2a83486c0713387fe8e9630fac3eebc89147a')
+sha256sums=('d809790c0f75d8eddae0f4f98c58bb389e975ad5695d8a9eaa79a693d38b0988')
 
 prepare() {
 	c4group "$_filename" -u
@@ -19,7 +19,7 @@ prepare() {
 build() {
 	cd "$_filename"
 	# Remove music included in the original distribution.
-	rm $(pacman -Ql openclonk | sed -n 's#.*Music.ocg/\(.*\.ogg\)$#\1#p')
+	rm -f $(pacman -Ql openclonk | sed -n 's#.*Music.ocg/\(.*\.ogg\)$#\1#p')
 }
 
 package() {
