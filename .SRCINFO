@@ -1,11 +1,12 @@
 pkgbase = jelly-git
 	pkgdesc = An esoratic programming language
-	pkgver = r244.4f93f63
-	pkgrel = 1
+	pkgver = r253.4f3a7ea
+	pkgrel = 2
 	url = http://github.com/DennisMitchell/jelly
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = git
+	makedepends = python3
 	depends = python3
 	depends = python-sympy
 	depends = python-numpy

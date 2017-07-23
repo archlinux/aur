@@ -1,13 +1,13 @@
-# Maintainer: Moses Miller <Majora320@gmail.com>
+# Maintainer: Moses Miller <Majora320 at gmail dot com>
 pkgname=jelly-git
-pkgver=r244.4f93f63
-pkgrel=1
+pkgver=r253.4f3a7ea
+pkgrel=2
 pkgdesc="An esoratic programming language"
 arch=('any')
 url="http://github.com/DennisMitchell/jelly"
-license=('unknown')
+license=('MIT')
 depends=('python3' 'python-sympy' 'python-numpy')
-makedepends=('git')
+makedepends=('git' 'python3')
 source=("jelly-git::git+http://github.com/DennisMitchell/jelly")
 md5sums=('SKIP')
 
@@ -23,6 +23,7 @@ package() {
 	install -D -m444 dictionary.py "$libdestdir/dictionary.py"
 	install -D -m444 jelly.py "$libdestdir/jelly.py"
 	install -D -m555 jelly "$libdestdir/jelly"
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	mkdir -p "$bindestdir"
 	ln -s "../lib/python$_python3ver/jelly/jelly" "$bindest"
