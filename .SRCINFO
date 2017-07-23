@@ -9,7 +9,7 @@ pkgbase = kodi-addon-game-libretro-git
 	license = GPL
 	makedepends = cmake
 	makedepends = git
-	depends = kodi-git
+	depends = kodi
 	source = kodi-addon-game-libretro-git::git+https://github.com/xbmc/xbmc.git
 	md5sums = SKIP
 

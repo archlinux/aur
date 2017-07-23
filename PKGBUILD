@@ -6,7 +6,7 @@ arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-game"
 license=('GPL')
 makedepends=('cmake' 'git')
-depends=('kodi-git')
+depends=('kodi')
 source=("$pkgname::git+https://github.com/xbmc/xbmc.git")
 md5sums=('SKIP')
 
@@ -40,6 +40,6 @@ package() {
   mkdir -p "$pkgdir/usr/share/kodi/addons"
   
   rm -rf $srcdir/$pkgname/build/dest/{share,lib}
-  cp -Tr "$srcdir/$pkgname/build/dest/"  "$pkgdir/usr/share/kodi/addons"
+  cp -Tr "$srcdir/$pkgname/build/dest/" "$pkgdir/usr/share/kodi/addons"
 }
 
