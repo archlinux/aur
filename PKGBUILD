@@ -2,20 +2,22 @@
 
 pkgname=libertas-firmware
 pkgver=9.70.7.p0.0
-pkgrel=2
-pkgdesc="Firmware for Marvell's libertas wireless chip series"
+pkgrel=4
+pkgdesc="Firmware for the Marvell Libertas wlan chipsets (OLPC, GuruPlug)"
 url="http://dev.laptop.org/pub/firmware/libertas/"
 license=("custom")
 arch=("any")
 # Use Debian Sid source, they found (now) missing firmwares in upstream server
-source=("$pkgname.tar.gz::http://ftp.de.debian.org/debian/pool/non-free/libe/libertas-firmware/libertas-firmware_9.70.7.p0.0.orig.tar.gz"
+source=("${pkgname}-${pkgname}.tar.gz::http://ftp.de.debian.org/debian/pool/non-free/libe/libertas-firmware/libertas-firmware_9.70.7.p0.0.orig.tar.gz"
 	"License")
 
 package(){
-	install -d 644 "$pkgdir/usr/lib/firmware"
-	install -d 644 "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm 755 "$srcdir/License" "$pkgdir/usr/share/doc/$pkgname"
-	cp -r -a $srcdir/$pkgname-$pkgver/*bin $pkgdir/usr/lib/firmware
+
+	install -d 644 "${pkgdir}/usr/lib/firmware"
+	install -D -m644 "${srcdir}/License" "${pkgdir}/usr/share/licenses/${pkgname}/License"
+	cp -rav "${srcdir}/${pkgname}-${pkgver}/"*bin "${pkgdir}/usr/lib/firmware"
+	
+	# Present on linux-firmware
 	rm "$pkgdir/usr/lib/firmware/lbtf_usb.bin"
 }
 
