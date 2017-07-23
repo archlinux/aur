@@ -1,0 +1,15 @@
+pkgbase = nexuiz-data
+	pkgdesc = Fast-paced multiplayer first-person shooter (data files only).
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = http://www.alientrap.com/games/nexuiz/
+	arch = any
+	license = GPL2
+	makedepends = unzip
+	conflicts = nexuiz
+	noextract = nexuiz-252.zip
+	source = https://downloads.sourceforge.net/project/nexuiz/NexuizRelease/Nexuiz%202.5.2/nexuiz-252.zip
+	sha256sums = a5e27ebcc9775c4a490d0d3536c32e4a8f8f96b038c0b6a78d1823c37a962000
+
+pkgname = nexuiz-data
+
