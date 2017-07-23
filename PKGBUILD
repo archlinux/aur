@@ -18,12 +18,12 @@ source=("kradio-git::git://git.code.sf.net/p/kradio/code")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgbuild}"
+  cd "${srcdir}/${pkgname}"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${srcdir}/${pkgbuild}"
+  cd "${srcdir}/${pkgname}"
   mkdir build
   cd build
   cmake -Wno-dev ".." \
@@ -33,6 +33,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgbuild}/build"
+  cd "${srcdir}/${pkgname}/build"
   make DESTDIR="${pkgdir}" install
 }
