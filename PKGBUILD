@@ -32,16 +32,20 @@ prepare(){
 
 package(){
     cd "${srcdir}/terraria/data/noarch"
+
     # Install game
     install -d "${pkgdir}/opt/${pkgname}/"
     install -d "${pkgdir}/opt/${pkgname}/support"
     install -d "${pkgdir}/usr/bin/"
+
     cp -r "game/" "${pkgdir}/opt/${pkgname}/"
+    find "${pkgdir}/opt/${pkgname}/" -type d -exec chmod 755 "{}" \;
     install -Dm755 "start.sh" \
         "${pkgdir}/opt/${pkgname}/"
     install -Dm755 support/*.{sh,shlib} -t \
         "${pkgdir}/opt/${pkgname}/support"
-    install -Dm644 gameinfo "$pkgdir/opt/$pkgname/gameinfo"
+    install -Dm644 gameinfo \
+        "${pkgdir}/opt/${pkgname}/gameinfo"
 
     # Desktop integration
     install -Dm644 "support/icon.png" \
@@ -50,5 +54,6 @@ package(){
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "${srcdir}/${pkgname}" \
+        "${pkgdir}/usr/bin/${pkgname}"
 }
