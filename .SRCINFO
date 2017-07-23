@@ -3,13 +3,11 @@ pkgbase = cliqr
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/flipflop97/cliqr
-	arch = any
+	arch = x86_64
 	license = Creative Commons Attribution-ShareAlike 4.0 International Public License
-	makedepends = git
-	makedepends = qrencode
 	provides = cliqr
-	source = cliqr::git+https://github.com/flipflop97/cliqr.git
-	sha256sums = SKIP
+	source = cliqr::https://github.com/flipflop97/cliqr/releases/download/v1.0.0/cliqr
+	sha256sums = 6dd03ab1388234b3b47cb23285157ef49798a62cca17966b5531c8619f3dfbfc
 
 pkgname = cliqr
 
