@@ -5,7 +5,7 @@
 pkgname=bfa-firmware
 pkgver=3.2.23.0.2.el6
 _pkgver=3.2.23.0-2.el6
-pkgrel=10
+pkgrel=10.1
 pkgdesc="Brocade Fibre Channel HBA Firmware"
 arch=('any')
 license=('custom')
@@ -20,7 +20,6 @@ build() {
 package() {
 	mkdir -p "${pkgdir}/usr/lib/firmware"
 	cp -rav "${srcdir}/lib/firmware/"*.bin "${pkgdir}/usr/lib/firmware/"
-	install -Dm644 "${srcdir}/usr/share/doc/${pkgname}-3.2.23.0/LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 	
 	# Already on linux-firmware
 	rm "${pkgdir}/usr/lib/firmware/cbfw-3.2.1.1.bin"
@@ -29,6 +28,8 @@ package() {
 	rm "${pkgdir}/usr/lib/firmware/ct2fw-3.2.3.0.bin"
 	rm "${pkgdir}/usr/lib/firmware/ctfw-3.2.1.1.bin"
 	rm "${pkgdir}/usr/lib/firmware/ctfw-3.2.3.0.bin"
+
+	install -Dm644 "${srcdir}/usr/share/doc/${pkgname}-3.2.23.0/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 md5sums=('708d8b3bce0564692a928bcc3a582f56')
