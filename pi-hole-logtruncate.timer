@@ -2,6 +2,7 @@
 Description=Daily reset of dnsmasq/pi-hole query log
 
 [Timer]
+OnUnitActiveSec=0
 OnCalendar=daily
 AccuracySec=5m
 Persistent=true
