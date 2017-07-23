@@ -15,11 +15,14 @@ makedepends=('libcurl-openssl-1.0')
 source=(https://github.com/gengjiawen/desktop/releases/download/v${pkgver//_/-}/desktop_${pkgver}_amd64.deb)
 md5sums=('452cd025172b9431e77a1e321f67cc7e')
 
+prepare()   {
+    sudo -v
+}
+
 package()   {
     ar x desktop_${pkgver}_amd64.deb
     tar xvf data.tar.xz
-    fakeroot
-    install -d "${pkgdir}/../../src/usr/share/" /usr/
-    install -d "${pkgdir}/../../src/opt/GithubDesktop" /opt/
+    sudo install -d "${pkgdir}/../../src/usr/share/" /usr/
+    sudo install -d "${pkgdir}/../../src/opt/GithubDesktop" /opt/
 }
 
