@@ -1,7 +1,7 @@
 # Maintainer: Swix
 
 pkgname=gog-terraria
-pkgver=2.17.0.20
+pkgver=2.17.0.21
 pkgrel=1
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
@@ -13,7 +13,7 @@ optdepends=('firejail: Automatically sandbox this application from your OS')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop"
         "$pkgname")
-sha256sums=('60e076e51cf8792cfcfad0b3ef5017d90313df47edc7df4687031ed3a4bae863'
+sha256sums=('630469066fafb8ab8c105f835d74be81b528095065fcfac871bd4e6eb5e62b5e'
             '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093'
             '939f39e8b8cbb30ae95648d299008df030b6c6e8e583893da1916e024b493e5b')
 
