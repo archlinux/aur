@@ -4,12 +4,12 @@
 
 pkgname=saleae-logic-beta
 pkgver=1.2.14
-pkgrel=2
+pkgrel=3
 pkgdesc="High speed USB logic analyzer."
 arch=('x86_64')
 url="http://www.saleae.com/"
 license=('unknown')  # closed source, none given
-depends=('qt5-base' 'libopenssl-1.0-compat')
+depends=('qt5-base')
 conflicts=(saleae-logic)
 provides=(saleae-logic)
 
@@ -47,7 +47,7 @@ package() {
   # launch script
   install -d "$pkgdir/usr/bin"
   touch "$pkgdir/usr/bin/logic"
-  echo -e "#!/bin/sh\nexport LD_LIBRARY_PATH=/usr/lib/openssl-1.0-compat\nexec /opt/saleae-logic/Logic > /dev/null 2>&1" > "$pkgdir/usr/bin/logic"
+  echo -e "#!/bin/sh\nexec /opt/saleae-logic/Logic > /dev/null 2>&1" > "$pkgdir/usr/bin/logic"
   chmod +x "$pkgdir/usr/bin/logic"
 }
 
