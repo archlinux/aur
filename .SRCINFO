@@ -43,7 +43,7 @@ pkgname = vim-clipboard
 	replaces = vim-python3
 	replaces = vim-minimal
 
-pkgname = vim-runtime
+pkgname = vim-runtime-clipboard
 	pkgdesc = Runtime for vim and gvim
 	backup = etc/vimrc
 

@@ -3,7 +3,7 @@
 # Contributor: TJM <tommy.mairo@gmail.com>
 
 pkgbase=vim-clipboard
-pkgname=(vim-clipboard vim-runtime)
+pkgname=(vim-clipboard vim-runtime-clipboard)
 pkgver=8.0.0722
 _versiondir=80
 pkgrel=1
@@ -61,7 +61,7 @@ check() {
   TERM=xterm make -j1 test
 }
 
-package_vim-runtime() {
+package_vim-runtime-clipboard() {
   pkgdesc='Runtime for vim and gvim'
   backup=('etc/vimrc')
 
