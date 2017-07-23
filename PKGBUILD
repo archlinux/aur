@@ -3,7 +3,7 @@
 # Contributor: TJM <tommy.mairo@gmail.com>
 
 pkgbase=vim-clipboard
-pkgname=(vim-clipboard vim-runtime-clipboard)
+pkgname=(vim-clipboard)
 pkgver=8.0.0722
 _versiondir=80
 pkgrel=1
@@ -14,12 +14,11 @@ makedepends=(gpm python2 python ruby libxt gtk3 lua gawk tcl)
 source=(vim-$pkgver.tar.gz::https://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
         archlinux.vim
-        vimdoc.hook)
+        )
 sha1sums=('24824406544144938f07f021fd9aa8a9821eccea'
           '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2'
-          'adc4c82b6c4097944e5a767270a772721455eb8c')
-
+          )
 prepare() {
   cd $srcdir/vim-$pkgver/src
 
@@ -56,56 +55,6 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}"/vim-$pkgver
-  TERM=xterm make -j1 test
-}
-
-package_vim-runtime-clipboard() {
-  pkgdesc='Runtime for vim and gvim'
-  backup=('etc/vimrc')
-
-  cd "${srcdir}"/vim-$pkgver
-
-  make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
-  # man and bin files belong to 'vim'
-  rm -r "${pkgdir}"/usr/share/man/ "${pkgdir}"/usr/bin/
-
-  # Don't forget logtalk.dict
-  install -Dm644 runtime/ftplugin/logtalk.dict \
-    "${pkgdir}"/usr/share/vim/vim${_versiondir}/ftplugin/logtalk.dict
-
-  # fix FS#17216
-  sed -i 's|messages,/var|messages,/var/log/messages.log,/var|' \
-    "${pkgdir}"/usr/share/vim/vim${_versiondir}/filetype.vim
-
-  # patch filetype.vim for better handling of pacman related files
-  sed -i "s/rpmsave/pacsave/;s/rpmnew/pacnew/;s/,\*\.ebuild/\0,PKGBUILD*,*.install/" \
-    "${pkgdir}"/usr/share/vim/vim${_versiondir}/filetype.vim
-  sed -i "/find the end/,+3{s/changelog_date_entry_search/changelog_date_end_entry_search/}" \
-    "${pkgdir}"/usr/share/vim/vim${_versiondir}/ftplugin/changelog.vim
-
-  # rc files
-  install -Dm644 "${srcdir}"/vimrc "${pkgdir}"/etc/vimrc
-  install -Dm644 "${srcdir}"/archlinux.vim \
-    "${pkgdir}"/usr/share/vim/vimfiles/archlinux.vim
-
-  # rgb.txt file
-  install -Dm644 runtime/rgb.txt \
-    "${pkgdir}"/usr/share/vim/vim${_versiondir}/rgb.txt
-
-  # no desktop files and icons
-  rm -r "${pkgdir}"/usr/share/{applications,icons}
-
-  # license
-  install -dm755 "${pkgdir}"/usr/share/licenses/vim-runtime
-  ln -s /usr/share/vim/vim${_versiondir}/doc/uganda.txt \
-    "${pkgdir}"/usr/share/licenses/vim-runtime/license.txt
-
-  # pacman hook for documentation helptags
-  install -Dm644 "${srcdir}"/vimdoc.hook "${pkgdir}"/usr/share/libalpm/hooks/vimdoc.hook
-}
-
 package_vim-clipboard() {
   pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
   depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'acl')
@@ -115,9 +64,9 @@ package_vim-clipboard() {
               'lua: Lua language support'
               'perl: Perl language support'
               'tcl: Tcl language support')
-  conflicts=('vim-minimal' 'vim' 'vim-runtime' 'vim-python3')
-  provides=('xxd' 'vim-minimal' 'vim-runtime' 'vim-python3')
-  replaces=('vim-python3' 'vim-minimal' 'vim' 'vim-runtime')
+  conflicts=('vim-minimal' 'vim-python3' 'vim')
+  provides=('xxd' 'vim-minimal' 'vim-python3' 'vim=${pkgver}-${pkgrel}')
+  replaces=('vim-python3' 'vim-minimal' 'vim')
 
   cd "${srcdir}"/vim-$pkgver
   make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install

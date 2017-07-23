@@ -17,11 +17,9 @@ pkgbase = vim-clipboard
 	source = vim-8.0.0722.tar.gz::https://github.com/vim/vim/archive/v8.0.0722.tar.gz
 	source = vimrc
 	source = archlinux.vim
-	source = vimdoc.hook
 	sha1sums = 24824406544144938f07f021fd9aa8a9821eccea
 	sha1sums = 15ebf3f48693f1f219fe2d8edb7643683139eb6b
 	sha1sums = 94f7bb87b5d06bace86bc4b3ef1372813b4eedf2
-	sha1sums = adc4c82b6c4097944e5a767270a772721455eb8c
 
 pkgname = vim-clipboard
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor
@@ -36,18 +34,12 @@ pkgname = vim-clipboard
 	optdepends = tcl: Tcl language support
 	provides = xxd
 	provides = vim-minimal
-	provides = vim-runtime
 	provides = vim-python3
+	provides = vim=${pkgver}-${pkgrel}
 	conflicts = vim-minimal
-	conflicts = vim
-	conflicts = vim-runtime
 	conflicts = vim-python3
+	conflicts = vim
 	replaces = vim-python3
 	replaces = vim-minimal
 	replaces = vim
-	replaces = vim-runtime
-
-pkgname = vim-runtime-clipboard
-	pkgdesc = Runtime for vim and gvim
-	backup = etc/vimrc
 
