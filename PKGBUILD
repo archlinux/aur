@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=mcpelauncher-linux
-pkgver=20170723.r94.fba491e
+pkgver=20170723.r98.8995f13
 pkgrel=1
 pkgdesc="Minecraft PE launcher for Linux"
 arch=('x86_64')
@@ -74,7 +74,6 @@ fi
   #Hosted apk
   if [[ "$answer" == "2" ]]; then
     sudo wget https://kris27mc.github.io/files/mcpe.apk
-  #  /usr/bin/cp mcpe.apk ~/mcpelauncher
   fi
 
   #Local file
@@ -82,7 +81,7 @@ fi
     printf "Please enter the full path to your apk.\n"
     printf "Path to APK: "
     read -e pathtoapk
-    if grep mcpe.apk <<< echo "$pathtoapk"; then
+    if grep "mcpe.apk" <<< echo "$pathtoapk"; then
       sudo cp "$pathtoapk" /usr/share/mcpelauncher/mcpe-new.apk
     else
       sudo cp "$pathtoapk" /usr/share/mcpelauncher
@@ -103,7 +102,9 @@ fi
 
   #Creates desktop launcher
   sudo cp mcpelauncher.desktop /usr/share/applications
+  if [[ ! -e "/usr/bin/mcpelauncher" ]]; then
   sudo ln -s /usr/share/mcpelauncher/mcpelauncher /usr/bin/mcpelauncher
+  fi
 
   #printf "\nWould you like to create a shortcut on your desktop? (y/n)\n"
   #read input
