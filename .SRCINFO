@@ -1,6 +1,6 @@
 pkgbase = virtualbox-i3
 	pkgver = 5.1.22
-	pkgrel = 4
+	pkgrel = 5
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
@@ -187,7 +187,7 @@ pkgname = virtualbox-i3-guest-utils-nox
 pkgname = virtualbox-i3-ext-vnc
 	pkgdesc = VirtualBox VNC extension pack
 	install = virtualbox-ext-vnc.install
-	depends = virtualbox
+	depends = virtualbox-i3
 	depends = libvncserver
 	optdepends = tigervnc: vnc client
 
