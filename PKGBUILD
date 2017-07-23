@@ -1,7 +1,7 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 name=colmap
 pkgname=${name}-git
-pkgver=3.1.r20.gb1af506
+pkgver=3.1.r34.gb44473e
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ prepare() {
 
 
 build() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}
   
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
@@ -54,13 +54,13 @@ build() {
   cd build
   #export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe"
   #export CXXFLAGS="${CFLAGS}"
-  cmake -DTESTS_ENABLED=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ${_EXTRAOPTS} ../
+  cmake -DTESTS_ENABLED=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ${_EXTRAOPTS} -DCUDA_NVCC_FLAGS="--compiler-options -fPIC" ../${pkgname}
   make
 }
 
 
 package() {
-  cd ${srcdir}/${pkgname}/build
+  cd ${srcdir}/build
   make DESTDIR=${pkgdir} install
 
   # install desktop entry

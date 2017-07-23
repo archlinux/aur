@@ -1,6 +1,6 @@
 pkgbase = colmap-git
 	pkgdesc = COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.1.r20.gb1af506
+	pkgver = 3.1.r34.gb44473e
 	pkgrel = 1
 	url = https://colmap.github.io/
 	install = colmap-git.install
