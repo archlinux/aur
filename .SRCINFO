@@ -1,6 +1,6 @@
 pkgbase = hardcode-tray
 	pkgdesc = Fixes Hardcoded Tray Icons
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/bil-elmoussaoui/Hardcode-Tray
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = hardcode-tray
 	provides = hardcode-tray
 	conflicts = hardcode-tray-fixer-git
 	conflicts = hardcode-tray-git
-	source = https://github.com/bil-elmoussaoui/Hardcode-Tray/archive/v4.0.tar.gz
-	sha256sums = 432ed1bb9d13e04344838ccd8259f91e4303e82138b3080bad9a52235c313bec
+	source = https://github.com/bil-elmoussaoui/Hardcode-Tray/archive/v4.1.tar.gz
+	sha256sums = 579ffbfbf96ab2692b2853b5e588832cfc101dc926ab851c919a5367f2da5145
 	optdepends_x86_64 = lib32-sni-qt-patched-git: 32-bit patched qt4 sni plugin to enable icon modification
 
 pkgname = hardcode-tray
