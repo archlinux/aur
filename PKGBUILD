@@ -4,7 +4,7 @@
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo2
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=2.3.20
+pkgver=2.3.22
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
@@ -47,7 +47,7 @@ source=(
   sogo.confd
 )
 
-sha256sums=('191a0abadbfcb1d35c70e175fd8f192b21cb764b91a60c5a277795bc414fd503'
+sha256sums=('cf1e9ecce4c8d8874f69fbb9146798f5bde3f3b9497f90cb5cfc1a9542ec726a'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
