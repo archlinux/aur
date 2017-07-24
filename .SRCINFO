@@ -1,0 +1,13 @@
+pkgbase = python-elftools
+	pkgdesc = Library for analyzing ELF files and DWARF debugging information
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://github.com/eliben/pyelftools
+	arch = any
+	license = custom:Public domain
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyelftools/pyelftools-0.24.tar.gz
+	md5sums = c960d5fe0a9308d96ba38b4beec8ac8e
+
+pkgname = python-elftools
+
