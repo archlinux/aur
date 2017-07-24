@@ -1,0 +1,13 @@
+diff --git a/sigviewer.pro b/sigviewer.pro
+index 4033090..275d968 100644
+--- a/sigviewer.pro
++++ b/sigviewer.pro
+@@ -46,7 +46,7 @@ INCLUDEPATH += \
+ 
+ LIBS += \
+     -L$$PWD/external/lib \
+-    -lbiosig -lxdf
++    -lbiosig -lxdf -lcholmod -lz
+ 
+ RESOURCES = $$PWD/src/src.qrc
+ win32:RC_FILE = $$PWD/src/src.rc
