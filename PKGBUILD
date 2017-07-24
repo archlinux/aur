@@ -5,7 +5,7 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-git
-pkgver=4.13.3.r5.gb7e544b
+pkgver=4.13.3.r14.ga4089e7
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications - git checkout"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('libxfce4util' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
 makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools' 'gobject-introspection' 'git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}" "${_pkgname}-devel")
-source=("${_pkgname}::git+https://git.xfce.org/xfce/libxfce4ui")
+source=("${_pkgname}::git://git.xfce.org/xfce/libxfce4ui")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +27,8 @@ pkgver() {
 build() {
   cd "${_pkgname}"
 
-  ./autogen.sh \
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
@@ -35,6 +36,7 @@ build() {
     --disable-static \
     --enable-gtk-doc \
     --disable-debug \
+    --enable-maintainer-mode \
     --with-vendor-info='Arch Linux'
   make
 }
