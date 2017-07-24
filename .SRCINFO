@@ -1,14 +1,14 @@
 pkgbase = astra
 	pkgdesc = VC/PM identifiers for bash
-	pkgver = 1.6.5
-	pkgrel = 1
+	pkgver = 1.8.2
+	pkgrel = 2
 	url = https://github.com/inoriy/astra
 	arch = any
 	license = MIT
 	depends = ncurses
 	depends = perl
-	source = https://github.com/inoriy/astra/archive/v1.6.5-1.tar.gz
-	md5sums = 3b05c3f0934d91c1e6b649b92b88c113
+	source = https://github.com/inoriy/astra/archive/v1.8.2-2.tar.gz
+	md5sums = ae2bab9ddef11907b6a3c76d483def3f
 
 pkgname = astra
 
