@@ -2,7 +2,7 @@
 
 pkgname=('dmailmanager-git')
 pkgver=r2.e3d20be
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage mail using notmuch"
 arch=('i686' 'x86_64')
 url="https://github.com/Vild/DMailManager"
@@ -27,7 +27,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/DMailManager"
-	git submodule update --init --recursive
 	dub upgrade
 }
 
