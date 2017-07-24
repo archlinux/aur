@@ -3,7 +3,7 @@
 pkgname=jdk-devel-docs
 _major=9
 #_minor=1
-_build=178
+_build=179
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -17,7 +17,7 @@ optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
 source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"
         'LICENSE-Early-Adopter-Terms.txt')
-sha256sums=('8860780ccb8e2bfbd07d7cffb5580ee3446e44938227bbe6471c7a3327065d93'
+sha256sums=('cde945e0d6fbde16476dc2fa2f2a12d5f384eab1bd123b7fbfe222fa0cb3d41b'
             'a8b0ecff3221f39c53092d910dfd903ff243a185835ad6d121abbbe82225d335')
 
 package() {
