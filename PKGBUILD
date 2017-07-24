@@ -3,7 +3,7 @@
 
 pkgname=('dcd-git')
 pkgver=0.9.0.r6.cbcc6fa
-pkgrel=1
+pkgrel=2
 pkgdesc="D Completion Daemon: auto-complete for the D programming language"
 arch=('i686' 'x86_64')
 url="https://github.com/dlang-community/DCD"
@@ -35,7 +35,7 @@ sha256sums=(
 
 pkgver() {
 	cd "$srcdir/DCD"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 prepare() {
