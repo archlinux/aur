@@ -1,4 +1,4 @@
-pkgbase = parallels-tools
+pkgbase = parallels11-tools
 	pkgdesc = Parallels virtualization integration services & drivers
 	pkgver = 11.2.2.32663
 	pkgrel = 5
@@ -13,18 +13,18 @@ pkgbase = parallels-tools
 	conflicts = xorg-server<1.16
 	conflicts = X-ABI-VIDEODRV_VERSION<20
 	conflicts = X-ABI-VIDEODRV_VERSION>=21
-	source = dir://parallels-tools/tools/prltools.x64.tar.gz
-	source = dir://parallels-tools/kmods/prl_mod.tar.gz
-	source = dir://parallels-tools/tools/prlmouse.conf
-	source = dir://parallels-tools/tools/xorg-prlmouse.rules
-	source = dir://parallels-tools/tools/99prltoolsd-hibernate
-	source = dir://parallels-tools/tools/mount.prl_fs.8
-	source = dir://parallels-tools/installer/blacklist-parallels.conf
-	source = dir://parallels-tools/installer/prltoolsd.sh
-	source = dir://parallels-tools/installer/prltoolsd.service
-	source = dir://parallels-tools/installer/prl-x11.sh
-	source = dir://parallels-tools/installer/prl-x11.service
-	source = dir://parallels-tools/installer/prlfsmountd.sh
+	source = dir://parallels11-tools/tools/prltools.x64.tar.gz
+	source = dir://parallels11-tools/kmods/prl_mod.tar.gz
+	source = dir://parallels11-tools/tools/prlmouse.conf
+	source = dir://parallels11-tools/tools/xorg-prlmouse.rules
+	source = dir://parallels11-tools/tools/99prltoolsd-hibernate
+	source = dir://parallels11-tools/tools/mount.prl_fs.8
+	source = dir://parallels11-tools/installer/blacklist-parallels.conf
+	source = dir://parallels11-tools/installer/prltoolsd.sh
+	source = dir://parallels11-tools/installer/prltoolsd.service
+	source = dir://parallels11-tools/installer/prl-x11.sh
+	source = dir://parallels11-tools/installer/prl-x11.service
+	source = dir://parallels11-tools/installer/prlfsmountd.sh
 	source = 0001-fix-for-4.9.y.patch
 	source = 0001-fix-4.10.y.patch
 	source = 0001-fix-4.11.y.patch
@@ -44,8 +44,12 @@ pkgbase = parallels-tools
 	sha1sums = 078ecd2bb95b05006e94007dc8428d9c8fcc519e
 	sha1sums = dec42902094d221f14f453fa3281d62bb7731748
 
-pkgname = parallels-tools
+pkgname = parallels11-tools
+	provides = parallels-tools
+	conflicts = parallels-tools
 
-pkgname = parallels-tools-dkms
+pkgname = parallels11-tools-dkms
 	depends = dkms
+	provides = parallels-tools-dkms
+	conflicts = parallels-tools-dkms
 

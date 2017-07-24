@@ -1,6 +1,6 @@
 # Maintainer: Cody P Schafer < aur [at] codyps.com >
-pkgbase=parallels-tools
-pkgname=(parallels-tools parallels-tools-dkms)
+pkgbase=parallels11-tools
+pkgname=(parallels11-tools parallels11-tools-dkms)
 pkgver=11.2.2.32663
 pkgrel=5
 pkgdesc="Parallels virtualization integration services & drivers"
@@ -20,18 +20,18 @@ XORG_VERSION=1.18
 
 DLAGENTS+=("dir::/usr/bin/echo Install and configure dir-dlagent to specify CD-ROM location")
 source=(
-	dir://parallels-tools/tools/prltools.x64.tar.gz
-	dir://parallels-tools/kmods/prl_mod.tar.gz
-	dir://parallels-tools/tools/prlmouse.conf
-	dir://parallels-tools/tools/xorg-prlmouse.rules
-	dir://parallels-tools/tools/99prltoolsd-hibernate
-	dir://parallels-tools/tools/mount.prl_fs.8
-	dir://parallels-tools/installer/blacklist-parallels.conf
-	dir://parallels-tools/installer/prltoolsd.sh
-	dir://parallels-tools/installer/prltoolsd.service
-	dir://parallels-tools/installer/prl-x11.sh
-	dir://parallels-tools/installer/prl-x11.service
-	dir://parallels-tools/installer/prlfsmountd.sh
+	dir://${pkgbase}/tools/prltools.x64.tar.gz
+	dir://${pkgbase}/kmods/prl_mod.tar.gz
+	dir://${pkgbase}/tools/prlmouse.conf
+	dir://${pkgbase}/tools/xorg-prlmouse.rules
+	dir://${pkgbase}/tools/99prltoolsd-hibernate
+	dir://${pkgbase}/tools/mount.prl_fs.8
+	dir://${pkgbase}/installer/blacklist-parallels.conf
+	dir://${pkgbase}/installer/prltoolsd.sh
+	dir://${pkgbase}/installer/prltoolsd.service
+	dir://${pkgbase}/installer/prl-x11.sh
+	dir://${pkgbase}/installer/prl-x11.service
+	dir://${pkgbase}/installer/prlfsmountd.sh
 	'0001-fix-for-4.9.y.patch'
 	'0001-fix-4.10.y.patch'
 	'0001-fix-4.11.y.patch'
@@ -59,7 +59,10 @@ prepare() {
 	patch -p1 -i ../0001-fix-4.11.y.patch
 }
 
-package_parallels-tools() {
+package_parallels11-tools() {
+	provides=(parallels-tools)
+	conflicts=(parallels-tools)
+
 	cp -r "${srcdir}"/xorg.${XORG_VERSION}/usr "${pkgdir}"
 	# xorg.7.1 is COMMON_TOOLS_DIR
 	cp -r "${srcdir}"/xorg.7.1/usr/bin/{prlcc,prlcp,prlsga,prldnd} \
@@ -114,8 +117,10 @@ package_parallels-tools() {
 	done
 }
 
-package_parallels-tools-dkms() {
+package_parallels11-tools-dkms() {
 	depends=('dkms')
+	provides=(parallels-tools-dkms)
+	conflicts=(parallels-tools-dkms)
 
 	_dkms_dir="${pkgdir}"/usr/src/${pkgbase}-${pkgver}
 	install -d -m 0755 "${_dkms_dir}"
