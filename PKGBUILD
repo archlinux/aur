@@ -2,8 +2,8 @@
 
 pkgname=libmpack
 pkgver=1.0.5
-pkgrel=1
-arch=('any')
+pkgrel=2
+arch=('i686' 'x86_64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=('MIT')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
