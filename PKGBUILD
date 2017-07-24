@@ -4,14 +4,14 @@
 # Contributor: Funkmuscle
 
 pkgname=guitarix-git
-pkgver=0.35.4.r0.g5980862d
+pkgver=0.35.5.r2.g07625ed7
 pkgrel=1
 pkgdesc="A virtual guitar amplifier for Linux"
 arch=('i686' 'x86_64')
 url="http://guitarix.sourceforge.net"
 license=('GPL')
-#depends=('gtkmm' 'liblrdf' 'lilv' 'bluez-libs' 'boost-libs' 'zita-convolver' 'zita-resampler')
-depends=(jack liblrdf gtkmm fftw bluez-libs ffmpeg lilv boost-libs)
+depends=('gtkmm' 'liblrdf' 'lilv' 'bluez-libs' 'boost-libs' 'zita-convolver' 'zita-resampler')
+#depends=(jack liblrdf gtkmm fftw bluez-libs ffmpeg lilv boost-libs)
 makedepends=('python' 'python2' 'boost' 'eigen' 'gperf' 'intltool' 'lv2')
 optdepends=('meterbridge: sound meters')
 provides=("${pkgname%-*}" "guitarix2" "gx_head")
@@ -28,7 +28,7 @@ build() {
   cd "${pkgname%-*}/trunk"
   python2 waf configure --prefix=/usr \
                         --includeresampler \
-                        --convolver-ffmpeg \
+                        --includeconvolver \
                         --no-desktop-update \
                         --no-ldconfig \
                         --no-faust \
