@@ -2,7 +2,7 @@
 pkgbase=parallels12-tools
 pkgname=(parallels12-tools parallels12-tools-dkms)
 pkgver=12.2.1.41615
-pkgrel=2
+pkgrel=3
 pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
 url="https://parallels.com"
@@ -33,6 +33,7 @@ source=(
 	dir://${pkgbase}/installer/prl-x11.service
 	dir://${pkgbase}/installer/prlfsmountd.sh
 	dir://${pkgbase}/installer/prl-functions.sh
+	dir://${pkgbase}/installer/xserver-config.py
 )
 
 sha1sums=('fdd278b5caee0647f1c062512fb83e1da4d5fdb2'
@@ -47,9 +48,11 @@ sha1sums=('fdd278b5caee0647f1c062512fb83e1da4d5fdb2'
           '8a20a07b905a5dcdd0b182844ff781344b78a8b5'
           'ff52471a3c6acec6f4a59e2a8f2aff6a937bf09e'
           'b3e540bd8b1a96bfff81e1fd7f90ab978f504475'
-          '524a64269bd1204415e7133e2e5ae821e5e03f2e')
+          '524a64269bd1204415e7133e2e5ae821e5e03f2e'
+          'd33c38b0ad1b46b96274ccb7f72c5efe058d3bf7')
 
 package_parallels12-tools() {
+	install=parallels12-tools.install
 	provides=(parallels-tools)
 	conflicts+=(parallels-tools)
 
@@ -74,8 +77,8 @@ package_parallels12-tools() {
 
 	install -m 0755 prlfsmountd.sh "${pkgdir}/usr/bin/prlfsmountd"
 
-	install -d -m 0755 "${pkgdir}/etc/X11/xorg.conf.d"
-	install -m 0644 prlmouse.conf "${pkgdir}/etc/X11/xorg.conf.d/50-prlmouse.conf"
+	install -d -m 0755 "${pkgdir}/usr/share/X11/xorg.conf.d"
+	install -m 0644 prlmouse.conf "${pkgdir}/usr/share/X11/xorg.conf.d/50-prlmouse.conf"
 
 	install -d -m 0755 "${pkgdir}/usr/share/man/man8"
 	install -m 0644 mount.prl_fs.8 "${pkgdir}/usr/share/man/man8"
@@ -99,6 +102,7 @@ package_parallels12-tools() {
 
 	install -d -m 0755 "${pkgdir}/usr/lib/parallels-tools/installer"
 	install -m 0644 prl-functions.sh "${pkgdir}/usr/lib/parallels-tools/installer"
+	install -m 0755 xserver-config.py "${pkgdir}/usr/lib/parallels-tools/installer"
 
 	# These have very strange /usr/local rpaths, strip them out
 	#chrpath -d "${pkgdir}/usr/lib/libglx.so.1.0.0"

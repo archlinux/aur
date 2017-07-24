@@ -1,7 +1,7 @@
 pkgbase = parallels12-tools
 	pkgdesc = Parallels virtualization integration services & drivers
 	pkgver = 12.2.1.41615
-	pkgrel = 2
+	pkgrel = 3
 	url = https://parallels.com
 	arch = x86_64
 	license = custom: commercial
@@ -26,6 +26,7 @@ pkgbase = parallels12-tools
 	source = dir://parallels12-tools/installer/prl-x11.service
 	source = dir://parallels12-tools/installer/prlfsmountd.sh
 	source = dir://parallels12-tools/installer/prl-functions.sh
+	source = dir://parallels12-tools/installer/xserver-config.py
 	sha1sums = fdd278b5caee0647f1c062512fb83e1da4d5fdb2
 	sha1sums = fa61d1eddb0d6c2130c3dbb9166e80b71c988584
 	sha1sums = 52a6c4b6cd493aac8c932a77a25efc17e0e075e5
@@ -39,8 +40,10 @@ pkgbase = parallels12-tools
 	sha1sums = ff52471a3c6acec6f4a59e2a8f2aff6a937bf09e
 	sha1sums = b3e540bd8b1a96bfff81e1fd7f90ab978f504475
 	sha1sums = 524a64269bd1204415e7133e2e5ae821e5e03f2e
+	sha1sums = d33c38b0ad1b46b96274ccb7f72c5efe058d3bf7
 
 pkgname = parallels12-tools
+	install = parallels12-tools.install
 	provides = parallels-tools
 	conflicts = xorg-server<1.16
 	conflicts = X-ABI-VIDEODRV_VERSION<23

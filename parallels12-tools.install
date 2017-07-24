@@ -1,0 +1,18 @@
+x11_conf=/usr/share/X11/xorg.conf.d/40-prltools.conf
+x11_ver=1.19
+
+## arg 1:  the new package version
+post_install() {
+	python /usr/lib/parallels-tools/installer/xserver-config.py xorg "$x11_ver" '' "$x11_conf"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	python /usr/lib/parallels-tools/installer/xserver-config.py xorg "$x11_ver" '' "$x11_conf"
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	rm -f "$x11_conf"
+}
