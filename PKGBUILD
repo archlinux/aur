@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=20170724.r113.9969a94
+pkgver=20170724.r116.7eb21ad
 pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=('lib32-zlib' 'lib32-ncurses' 'gts' 'libglvnd' 'lib32-libglvnd' 'lib32-l
 makedepends=('wget' 'cmake' 'gcc-multilib')
 optdepends=()
 source=("git+https://github.com/kris27mc/minecraft-linux.git")
+md5sums=('SKIP')
 
 pkgver() {
 cd minecraft-linux
@@ -23,9 +24,12 @@ printf "%s.r%s.%s" \
          }
 
 build() {
-  cd minecraft-linux
-  if grep -qi "amd" /proc/cpuinfo;  then
-  /usr/bin/cp -r libs/AMD/* libs/
+cd minecraft-linux
+
+rm install.sh
+#Determines necessary libs
+if grep -qi "amd" /proc/cpuinfo;  then
+  cp -r libs/AMD/* libs/
   printf "Using compatibility libs"
   sleep 3
 fi
@@ -34,7 +38,68 @@ fi
 cmake .
 make
 
+#Moves compiled files to new dir
+if [ ! -e "meme" ]; then
+  sudo mkdir "meme"
+fi
+sudo cp -t meme "minecraftlauncher" "extract.sh" "LICENSE" "minecraftlauncher.desktop" "minecraftlauncher.png"
+sudo cp -r libs "meme/libs"
+cd /meme
+
+#Acquires apk
+printf "\nWhich method would you like to use to acquire an APK?\n"
+printf "1) Google-Play-API (currently broken)\n"
+printf "2) Hosted download (ONLY USE IF YOU OWN MINECRAFT!)\n"
+printf "3) Local file\n"
+printf "\nEnter your selection: "
+read answer
+#Google-Play-API
+if [[ "$answer" == "1" ]]; then
+  git clone https://github.com/MCMrARM/Google-Play-API.git
+  cd Google-Play-API
+  cmake .
+  make
+  ./gplaydl -tos -a com.mojang.minecraftpe
+  sudo cp *.apk /meme
+  cd ..
+  sudo rm -R Google-Play-API
+fi
+
+#Hosted apk
+if [[ "$answer" == "2" ]]; then
+  sudo wget https://kris27mc.github.io/files/minecraft.apk
+fi
+
+#Local file
+if [[ "$answer" == "3" ]]; then
+  printf "Please enter the full path to your apk.\n"
+  printf "Path to APK: "
+  read -e pathtoapk
+  if grep "minecraft.apk" <<< echo "$pathtoapk"; then
+    sudo cp "$pathtoapk" /meme/minecraft-new.apk
+  else
+    sudo cp "$pathtoapk" /meme
+  fi
+fi
+
+#Extracts apk into assets
+if [[ "$answer" == "1" || "$answer" == "3" ]]; then
+    if [ ! -e "oldapks"]; then
+      sudo mkdir oldapks
+    fi
+    if [ -f "minecraft.apk" ]; then
+      sudo mv minecraft.apk oldapks
+    fi
+    sudo mv *.apk minecraft.apk
+fi
+
+sudo ./extract.sh minecraft.apk
+sudo chmod -R 777 /meme
+        }
+
+check() {
 #Checks for complete build
+cd minecraft-linux
 if [ ! -e "minecraftlauncher" ]; then
   echo "Error: minecraftlauncher missing. Build failed"
   exit
@@ -42,71 +107,9 @@ fi
         }
 
 package(){
-  cd minecraft-linux
-  #Moves compiled files to new dir
-  if [ ! -e "/usr/share/minecraftlauncher" ]; then
-  sudo mkdir /usr/share/minecraftlauncher
-fi
-  sudo cp -t /usr/share/minecraftlauncher minecraftlauncher extract.sh LICENSE minecraftlauncher.desktop icon.png
-  sudo cp -r libs /usr/share/minecraftlauncher/libs
-  cd /usr/share/minecraftlauncher
-
-  #Acquires apk
-  printf "\nWhich method would you like to use to acquire an APK?\n"
-  printf "1) Google-Play-API (currently broken)\n"
-  printf "2) Hosted download (ONLY USE IF YOU OWN MINECRAFT!)\n"
-  printf "3) Local file\n"
-  printf "\nEnter your selection: "
-  read answer
-  echo "$answer"
-  #Google-Play-API
-  if [[ "$answer" == "1" ]]; then
-    git clone https://github.com/MCMrARM/Google-Play-API.git
-    cd Google-Play-API
-    cmake .
-    make
-    ./gplaydl -tos -a com.mojang.minecraftpe
-    sudo cp *.apk /usr/share/minecraftlauncher
-    cd /usr/share/minecraftlauncher
-    sudo rm -R Google-Play-API
-  fi
-
-  #Hosted apk
-  if [[ "$answer" == "2" ]]; then
-    sudo wget https://kris27mc.github.io/files/minecraft.apk
-  fi
-
-  #Local file
-  if [[ "$answer" == "3" ]]; then
-    printf "Please enter the full path to your apk.\n"
-    printf "Path to APK: "
-    read -e pathtoapk
-    if grep "minecraft.apk" <<< echo "$pathtoapk"; then
-      sudo cp "$pathtoapk" /usr/share/minecraftlauncher/minecraft-new.apk
-    else
-      sudo cp "$pathtoapk" /usr/share/minecraftlauncher
-    fi
-  fi
-
-  #Extracts apk into assets
-  if [[ "$answer" == "1" || "$answer" == "3" ]]; then
-      if [ ! -e "oldapks"]; then
-        sudo mkdir oldapks
-      fi
-      if [ -f "minecraft.apk" ]; then
-        sudo mv minecraft.apk oldapks
-      fi
-      sudo mv *.apk minecraft.apk
-  fi
-
-  sudo ./extract.sh minecraft.apk
-  sudo chmod -R 777 /usr/share/minecraftlauncher
-
-  #Creates desktop launcher
-  if [ -e "/usr/share/applications/minecraftlauncher.desktop" ]; then
-    sudo rm "/usr/share/applications/minecraftlauncher.desktop"
-  fi
-  sudo cp minecraftlauncher.desktop /usr/share/applications
-
+cd minecraft-linux
+install meme -d "$pkgdir/usr/share/minecraftlauncher"
+cd meme
+install -Dm644 "minecraftlauncher.desktop" "$pkgdir/usr/share/applications/minecraftlauncher.desktop"
+install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('SKIP')
