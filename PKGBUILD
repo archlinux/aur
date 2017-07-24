@@ -3,7 +3,7 @@
 pkgname=mblock
 orginalname=mBlock
 pkgver="4.0.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="Program Robots / Arduino Without writing a single line of code"
 arch=('x86_64')
 url="http://www.mblock.cc/"
@@ -44,6 +44,6 @@ package() {
   install -Dm644 ${srcdir}/{32x32,48x48,128x128}.png "${pkgdir}/usr/share/icons/$pkgname"
   
   echo "#!/bin/bash" > $srcdir/$pkgname.sh
-  echo "/opt/mBlock/mblock" >> $srcdir/$pkgname.sh
+  echo "/opt/$pkgname/$pkgname" >> $srcdir/$pkgname.sh
   install -Dm755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
 }
