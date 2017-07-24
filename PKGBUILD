@@ -1,8 +1,8 @@
 # Maintainer: Dan Printzell <me@vild.io>
 
 pkgname=('dwin-git')
-pkgver=r68.820e610
-pkgrel=2
+pkgver=r73.ca40bda
+pkgrel=1
 pkgdesc="A window manager written in D"
 arch=('i686' 'x86_64')
 url="https://github.com/vild/dwin"
@@ -14,35 +14,36 @@ provides=('dwin')
 conflicts=('dwin')
 
 source=(
-	"git+https://github.com/vild/dwin"
+	"git+https://github.com/Vild/DWin"
 )
 sha256sums=(
 	'SKIP'
 )
 
 pkgver() {
-	cd $srcdir/dwin
+	cd "$srcdir/DWin"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd $srcdir/dwin
+	cd "$srcdir/DWin"
 	git submodule update --init --recursive
 	dub upgrade
 }
 
 build() {
-	cd $srcdir/dwin
+	cd "$srcdir/DWin"
 	dub build
-	strip dwin
 }
 
 package() {
-	cd $srcdir/dwin
-
 	# binaries
-	mkdir -p $pkgdir/usr/bin
-	install -D -m755 dwin "${pkgdir}/usr/bin/dwin"
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -d -m644 scripts "${pkgdir}/usr/share/dwin/scripts"
+	install -Dm755 "$srcdir/DWin/dwin" "$pkgdir/usr/bin/dwin"
+
+	# license
+	install -Dm644 "$srcdir/DWin/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	# scripts
+	install -d "$pkgdir/usr/share/dwin/scripts"
+	find "$srcdir/DWin/scripts/" -type f -exec install -m 644 "{}" "$pkgdir/usr/share/dwin/scripts" \;
 }
