@@ -6,11 +6,11 @@
 
 pkgname=luakit-git
 gitname=luakit
-pkgver=r3532.cbcd08c5
+pkgver=r3592.fb97b2f7
 pkgrel=1
-pkgdesc='fork of luakit using webkit2'
+pkgdesc='Luakit: now updated for WebKit 2'
 arch=('x86_64' 'i686' 'armv7h')
-url='https://github.com/aidanholm/luakit'
+url='https://github.com/luakit/luakit'
 license=('GPL3')
 makedepends=('git' 'pkg-config')
 checkdepends=('lua51-luacheck' 'lua51-luassert' )
