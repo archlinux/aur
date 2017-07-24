@@ -1,6 +1,6 @@
 # Maintainer: Daniel Manila <daniel.develop@manilas.net>
 pkgname=weresync
-pkgver=1.0.2
+pkgver=1.0.7
 pkgrel=1
 _name=WereSync
 pkgdesc='Incrementally clone linux drives'
@@ -12,8 +12,8 @@ depends=('python' 'python-parse' 'python-yapsy')
 makedepends=('python' 'python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-#WereSync v1.0.2 md5sum
-md5sums=('a7620b0f2e6abf0bb89025efb29549b1')
+#WereSync v1.0.7 md5sum
+md5sums=('e86bf6cd5a6708ae9d1ad30a5e710951')
 
 package() {
   cd "$srcdir/${_name}-$pkgver"
