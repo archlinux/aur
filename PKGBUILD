@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=mcpelauncher-linux
-pkgver=20170724.r102.ca7b9c7
+pkgver=20170724.r104.fb2d62c
 pkgrel=1
 pkgdesc="Minecraft PE launcher for Linux"
 arch=('x86_64')
