@@ -2,4 +2,5 @@ src/
 pkg/
 openssl-pmk-dumper/
 *.tar.gz
+*.tar.xz
 *.pkg.tar

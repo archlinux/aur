@@ -4,7 +4,7 @@
 pkgbase=pmk-dumper-git
 pkgname=('pmk-dumper-git')
 
-pkgver=r4.b2598e5
+pkgver=r5.fb531d0
 pkgrel=1
 pkgdesc="Dumps premaster keys from programs that use openssl encryption"
 arch=('any')
@@ -26,10 +26,10 @@ prepare() {
 
 
 build() {
-  cd "${srcdir}/openssl-pmk-dumper/upstream/src"
+  cd "${srcdir}/openssl-pmk-dumper/upstream/upstream/src"
   make
 }
 
 package() {
- install -m755 -D "${srcdir}/openssl-pmk-dumper/upstream/src/libsslkeylog.so" -t "${pkgdir}/usr/lib" 
+ install -m755 -D "${srcdir}/openssl-pmk-dumper/upstream/upstream/src/libsslkeylog.so" -t "${pkgdir}/usr/lib" 
 }
