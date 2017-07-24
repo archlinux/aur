@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <arch@vild.io>
 
 pkgname=('dfmt-git')
-pkgver=r419.ea72aa5
+pkgver=0.5.0.r4.ea72aa5
 pkgrel=1
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
@@ -15,19 +15,24 @@ conflicts=('dfmt')
 
 source=(
 	"git+https://github.com/dlang-community/dfmt"
+	"git+https://github.com/Hackerpilot/libdparse"
 )
 sha256sums=(
+	'SKIP'
 	'SKIP'
 )
 
 pkgver() {
 	cd "$srcdir/dfmt"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd "$srcdir/dfmt"
-	git submodule update --init --recursive
+
+	git submodule init
+	git config submodule.libdparse.url "$srcdir/libdparse"
+	git submodule update
 }
 
 build() {
