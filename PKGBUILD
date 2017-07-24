@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='VPN Unlimited client application'
 arch=('x86_64' 'i686')
 url='https://www.vpnunlimitedapp.com'
-license=('custom:"Copyright (c) 2017 KeepSolid Inc"')
+license=('custom:"Copyright (c) 2017 KeepSolid Inc."')
 
 source_x86_64=("vpn-unlimited" "vpn-unlimited-daemon.service"
   "http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_${pkgver}_amd64.deb")
@@ -44,6 +44,10 @@ package() {
   # Copy the wrapper file
   mv "${pkgdir}/usr/bin/vpn-unlimited" "${pkgdir}/usr/share/vpn-unlimited/"
   install -Dm755 "${srcdir}/vpn-unlimited" "${pkgdir}/usr/bin/"
+
+  # Copy the license file
+  install -Dm644 "${pkgdir}/usr/share/doc/vpn-unlimited/copyright" \
+    "${pkgdir}/usr/share/licenses/vpn-unlimited/copyright"
 
   chmod --recursive go-w "${pkgdir}/usr"
 }
