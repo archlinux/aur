@@ -2,7 +2,7 @@
 
 pkgname=vagrant-libvirt
 pkgver=0.0.40
-pkgrel=4
+pkgrel=6
 _foglibvirtver=0.3.0
 _fogcorever=1.43.0
 _fogjsonver=1.0.2
@@ -15,7 +15,7 @@ arch=(i686 x86_64)
 url="https://github.com/vagrant-libvirt/vagrant-libvirt"
 license=("MIT")
 depends=("vagrant" "libvirt" "openssl-1.0")
-makedepends=("git")
+makedepends=("git" "chrpath")
 # "https://rubygems.org/downloads/vagrant-libvirt-$pkgver.gem"
 source=("https://github.com/vagrant-libvirt/vagrant-libvirt/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "nokogiri-version.patch"
@@ -62,6 +62,8 @@ package() {
 
     local GEM_HOME=/opt/vagrant/embedded/gems
 
+    export CFLAGS="$CFLAGS -DHAVE_VIRNETWORKGETDHCPLEASES -DHAVE_VIRDOMAINMANAGEDSAVE -DHAVE_VIRDOMAINATTACHDEVICEFLAGS -DHAVE_VIRDOMAINISACTIVE -DHAVE_VIRNETWORKISACTIVE -DHAVE_VIRSTORAGEPOOLISPERSISTENT -DHAVE_VIRSTORAGEPOOLISACTIVE -DHAVE_VIRDOMAINGETVCPUPININFO"
+
     for gem in ${noextract[@]}; do
         CONFIGURE_ARGS="with-ldflags='-L/opt/vagrant/embedded/lib -l:libruby.so.2.3' with-libvirt-include=/usr/include with-libvirt-lib=/usr/lib" \
         GEM_HOME=$GEM_HOME \
@@ -69,4 +71,10 @@ package() {
         PATH=/opt/vagrant/embedded/bin:$PATH \
         /opt/vagrant/embedded/bin/gem install --ignore-dependencies --no-user-install -N -i "$pkgdir$GEM_HOME" $gem
     done
+
+    cd "$pkgdir"/opt/vagrant/embedded/gems
+    chrpath -r /usr/lib:/opt/vagrant/embedded/lib \
+      gems/ruby-libvirt-*/lib/_libvirt.so \
+      gems/ruby-libvirt-*/ext/libvirt/_libvirt.so \
+      extensions/*/*/ruby-libvirt-*/_libvirt.so
 }
