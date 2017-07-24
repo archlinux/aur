@@ -1,7 +1,7 @@
 pkgbase = parallels12-tools
 	pkgdesc = Parallels virtualization integration services & drivers
 	pkgver = 12.2.1.41615
-	pkgrel = 0
+	pkgrel = 1
 	url = https://parallels.com
 	arch = x86_64
 	license = custom: commercial
@@ -11,8 +11,8 @@ pkgbase = parallels12-tools
 	depends = sh
 	depends = zlib
 	conflicts = xorg-server<1.16
-	conflicts = X-ABI-VIDEODRV_VERSION<20
-	conflicts = X-ABI-VIDEODRV_VERSION>=21
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
 	source = dir://parallels12-tools/tools/prltools.x64.tar.gz
 	source = dir://parallels12-tools/kmods/prl_mod.tar.gz
 	source = dir://parallels12-tools/tools/prlmouse.conf
@@ -40,6 +40,9 @@ pkgbase = parallels12-tools
 
 pkgname = parallels12-tools
 	provides = parallels-tools
+	conflicts = xorg-server<1.16
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
 	conflicts = parallels-tools
 
 pkgname = parallels12-tools-dkms

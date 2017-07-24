@@ -2,7 +2,7 @@
 pkgbase=parallels12-tools
 pkgname=(parallels12-tools parallels12-tools-dkms)
 pkgver=12.2.1.41615
-pkgrel=0
+pkgrel=1
 pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
 url="https://parallels.com"
@@ -12,11 +12,11 @@ makedepends=(dir-dlagent dkms)
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=('xorg-server<1.16' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21')
+conflicts=('xorg-server<1.16' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
 install=
 options=()
 
-XORG_VERSION=1.18
+XORG_VERSION=1.19
 
 DLAGENTS+=("dir::/usr/bin/echo Install and configure dir-dlagent to specify CD-ROM location")
 source=(
@@ -49,7 +49,7 @@ sha1sums=('fdd278b5caee0647f1c062512fb83e1da4d5fdb2'
 
 package_parallels12-tools() {
 	provides=(parallels-tools)
-	conflicts=(parallels-tools)
+	conflicts+=(parallels-tools)
 
 	install -d "${pkgdir}/usr/bin"
 
