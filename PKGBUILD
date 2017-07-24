@@ -7,8 +7,8 @@
 
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.13-rc1
-pkgver=4.13rc1
+_srcname=linux-4.13-rc2
+pkgver=4.13rc2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
         'linux.preset'
         )
 
-sha256sums=('d5346f9a52adde7f98e408e445e734fa29cc734914fc6cfd99db8c21eef4abdd'
+sha256sums=('2e56aafeb1b8058fef6f7da701fd82e6dea87c387c7d466caf14cf8ff6f820da'
             'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1'
             'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
