@@ -42,9 +42,8 @@ build() {
   #make
 
   cd samples
-  # samples are broken (1.0.8 release)
-  #cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ -Wno-dev .
-  #make
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ -Wno-dev .
+  make
 }
 
 package() {
@@ -56,11 +55,11 @@ package() {
 
   #make install DESTDIR="$pkgdir" #There is no installer for the samples
   install -d "$pkgdir/usr/bin"
-  #samples are broken (1.0.8 release)
-  #install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
-  #install -m 755 "$srcdir/openvr/samples/bin/cube_texture.png" "$pkgdir/usr/" #TODO: fix source code to look in proper place
-  #install -m 755 "$srcdir/openvr/samples/bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
-  #install -m 755 "$srcdir/openvr/samples/bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
+
+  install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
+  install -m 755 "$srcdir/openvr/samples/bin/cube_texture.png" "$pkgdir/usr/" #TODO: fix source code to look in proper place
+  install -m 755 "$srcdir/openvr/samples/bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
+  install -m 755 "$srcdir/openvr/samples/bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
   
   #install -m 755 "$srcdir/build/samples/hellovr_opengl/run_hellovr.sh" "$pkgdir/usr/bin/run_hellovr.sh"
   
