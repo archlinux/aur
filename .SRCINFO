@@ -1,0 +1,20 @@
+pkgbase = perl-io-async
+	pkgdesc = Asynchronous event-driven programming
+	pkgver = 0.71
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IO-Async
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-fatal
+	makedepends = perl-test-identity
+	makedepends = perl-test-refcount
+	depends = perl>=5.10.0
+	depends = perl-future
+	depends = perl-struct-dumb
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/IO-Async-0.71.tar.gz
+	md5sums = a6925ea309ad98258aadf3fd9f7b0238
+
+pkgname = perl-io-async
+
