@@ -27,8 +27,6 @@ pkgver() {
 build() {
   cd "${pkgname%-*}/trunk"
   python2 waf configure --prefix=/usr \
-                        --includeresampler \
-                        --includeconvolver \
                         --no-desktop-update \
                         --no-ldconfig \
                         --no-faust \
