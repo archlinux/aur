@@ -55,8 +55,9 @@ prepare() {
 build() {
     cd build
 
-    qmake LLVM_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
-        DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES "$srcdir"/qt-creator/qtcreator.pro
+    QTC_FORCE_CLANG_LIBTOOLING=1 \
+        qmake LLVM_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
+            "$srcdir"/qt-creator/qtcreator.pro
     make
     make docs
 }
