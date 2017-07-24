@@ -1,8 +1,8 @@
-# Maintainer: Dan Printzell <xwildn00bx@gmail.com>
-#Contributor: Mihails Strasuns <public@dicebot.lv>
+# Maintainer: Dan Printzell <arch@vild.io>
+# Contributor: Mihails Strasuns <public@dicebot.lv>
 
 pkgname=('dcd-git')
-pkgver=r824.0ebef7b
+pkgver=r857.cbcc6fa
 pkgrel=1
 pkgdesc="D Completion Daemon: auto-complete for the D programming language"
 arch=('i686' 'x86_64')
@@ -27,35 +27,35 @@ sha256sums=(
 )
 
 pkgver() {
-	cd $srcdir/DCD
+	cd "$srcdir/DCD"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd $srcdir/DCD
+	cd "$srcdir/DCD"
 	git submodule update --init --recursive
 }
 
 build() {
-	cd $srcdir/DCD
+	cd "$srcdir/DCD"
 	make
 }
 
-package(){
-	cd $srcdir/DCD
-
+package() {
 	# binaries
-	mkdir -p $pkgdir/usr/bin
-	install -m755 -t $pkgdir/usr/bin ./bin/dcd-server
-	install -m755 -t $pkgdir/usr/bin ./bin/dcd-client
+	install -Dm755 "$srcdir/DCD/bin/dcd-server" "$pkgdir/usr/bin/dcd-server"
+	install -Dm755 "$srcdir/DCD/bin/dcd-client" "$pkgdir/usr/bin/dcd-client"
 
 	# documentation
-	mkdir -p $pkgdir/usr/share/man/man1
-	install -Dm644 man1/* $pkgdir/usr/share/man/man1/
+	install -d "$pkgdir/usr/share/man/man1/"
+	find "$srcdir/DCD/man1/" -type f -exec install -m 644 "{}" "$pkgdir/usr/share/man/man1/" \;
+
+	# license
+	install -Dm644 "$srcdir/DCD/License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# systemd service
-	install -Dm644 $srcdir/dcd.service ${pkgdir}/usr/lib/systemd/system/dcd.service
+	install -Dm644 "$srcdir/dcd.service" "$pkgdir/usr/lib/systemd/system/dcd.service"
 
 	# global config
-	install -Dm644 $srcdir/dcd.conf ${pkgdir}/etc/dcd.conf
+	install -Dm644 "$srcdir/dcd.conf" "$pkgdir/etc/dcd.conf"
 }
