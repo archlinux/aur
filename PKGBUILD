@@ -1,23 +1,23 @@
 # Maintainer: TrekDev <trekdev0 at gmail dot com>
 pkgname=truffle
-pkgver=3.2.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc='A development framework for Ethereum'
-url='https://github.com/ConsenSys/truffle'
+url='https://github.com/trufflesuite/truffle'
 arch=('any')
 license=('MIT')
-source=("https://github.com/ConsenSys/truffle/archive/v${pkgver}.tar.gz")
+source=("https://github.com/trufflesuite/truffle/archive/v${pkgver}.tar.gz")
 makedepends=('npm')
 depends=('nodejs')
 conflicts=('truffle-git')
-md5sums=('a7dbc8bc497ae9ebddca478b04f9fd66')
+md5sums=('9ab95a71ee53f47dd2c0f6b103b3f535')
 provides=('truffle')
 optdepends=('mocha: testing support'
-            'testrpc: contract deployment'
-            'geth: contract deployment')
+            'testrpc: testing support'
+            'geth: contract deployment'
+            'parity: contract deployment')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  npm install -g --prefix "$pkgdir/usr"
+  npm install -g --production --prefix "$pkgdir/usr" "v${pkgver}.tar.gz"
   install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
