@@ -2,15 +2,13 @@
 
 pkgname=ttf-mmcedar
 pkgver=20101113a
-pkgrel=5
+pkgrel=6
 pkgdesc="A combined font that uses Motoya L Cedar and M+ fonts"
 url="http://www.geocities.jp/ep3797/modified_fonts_01.html"
 license=('custom' 'APACHE')
 arch=('any')
-depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
+depends=('fontconfig')
 source=(http://jaist.dl.osdn.jp/users/8/8844/mmcedar-${pkgver}.tar.lzma)
-md5sums=('04b31f5fecde115a2d253eaa56be019b')
 sha256sums=('1e9edf63bda2fa5e46e0c1dcb11a52095d7e81f37bf78a720ef24ed57feeb0a5')
 
 package() {
