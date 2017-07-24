@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=i3status-rust-git
-pkgver=0.9.0.r307.gcc79921
+pkgver=0.9.0.r318.g8969303
 pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status, written in pure Rust'
 arch=('i686' 'x86_64')
@@ -11,6 +11,8 @@ depends=('dbus' 'i3-wm')
 makedepends=('cargo' 'git')
 optdepends=('alsa-utils: For volume block'
             'lm_sensors: For temperature block'
+            'powerline-fonts: For all themes using the powerline arrow char'
+            'speedtest-cli: For the speedtest block'
             'ttf-font-awesome: For the awesome icons')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")

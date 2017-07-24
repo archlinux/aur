@@ -1,6 +1,6 @@
 pkgbase = i3status-rust-git
 	pkgdesc = Very resourcefriendly and feature-rich replacement for i3status, written in pure Rust
-	pkgver = 0.9.0.r307.gcc79921
+	pkgver = 0.9.0.r318.g8969303
 	pkgrel = 1
 	url = https://github.com/greshake/i3status-rust
 	install = i3status-rust.install
@@ -13,6 +13,8 @@ pkgbase = i3status-rust-git
 	depends = i3-wm
 	optdepends = alsa-utils: For volume block
 	optdepends = lm_sensors: For temperature block
+	optdepends = powerline-fonts: For all themes using the powerline arrow char
+	optdepends = speedtest-cli: For the speedtest block
 	optdepends = ttf-font-awesome: For the awesome icons
 	provides = i3status-rust
 	conflicts = i3status-rust
