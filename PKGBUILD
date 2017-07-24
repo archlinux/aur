@@ -2,7 +2,7 @@
 
 pkgname=('dscanner-git')
 pkgver=0.4.0.r73.0b064a0
-pkgrel=1
+pkgrel=2
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
 url="https://github.com/dlang-community/D-Scanner"
@@ -32,7 +32,7 @@ sha256sums=(
 
 pkgver() {
 	cd "$srcdir/D-Scanner"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 prepare() {
