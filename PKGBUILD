@@ -3,14 +3,13 @@
 pkgname=ttf-mplus
 pkgver=TESTFLIGHT_062
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="M+ Japanese outline fonts"
 arch=('any')
 url="http://mplus-fonts.osdn.jp/mplus-outline-fonts/index-en.html"
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
-_mirror="jaist" # keihanna, jaist, iij, osdn
+depends=('fontconfig')
+_mirror="jaist"
 source=(http://${_mirror}.dl.osdn.jp/mplus-fonts/62344/mplus-${_pkgver}.tar.xz)
 sha256sums=('0ac2b66f814129dcf327061944b6b409b6dae9e22f94f1a383d216556ddd84b8')
 
