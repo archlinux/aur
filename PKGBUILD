@@ -8,13 +8,13 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v4.3.0.r274.gee17a71a1f
+pkgver=v4.4.0.beta1.r74.g42844215ca
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
 url='https://www.qt.io/ide/'
 license=('GPL')
-depends=('clang' 'qbs' 'qt5-svg' 'qt5-tools')
+depends=('clang' 'qt5-svg' 'qt5-tools')
 makedepends=('git' 'llvm' 'mesa')
 options=('docs')
 optdepends=('bzr: bazaar support'
@@ -29,14 +29,15 @@ optdepends=('bzr: bazaar support'
             'subversion: subversion support'
             'valgrind: analyze support'
             'x11-ssh-askpass: ssh support')
-provides=('qtcreator')
-conflicts=('qtcreator')
-source=('git+https://code.qt.io/qt-creator/qt-creator.git')
-md5sums=('SKIP')
+provides=('qtcreator' 'qbs')
+conflicts=('qtcreator' 'qbs')
+source=('git+https://code.qt.io/qt-creator/qt-creator.git'
+        'git+https://code.qt.io/qt-labs/qbs.git')
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
     cd qt-creator
-
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -46,14 +47,15 @@ prepare() {
 
     # fix hardcoded libexec path
     sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qt-creator/qtcreator.pri
-    # use system qbs
-    rm -r qt-creator/src/shared/qbs
+
+    # Do *NOT* use system Qbs: qt creator master is *NOT* compatible with any released Qbs!
+    ( cd qt-creator/src/shared && rm -rf qbs && ln -s ../../../qbs qbs )
 }
 
 build() {
     cd build
 
-    qmake LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
+    qmake LLVM_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
         DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES "$srcdir"/qt-creator/qtcreator.pro
     make
     make docs
