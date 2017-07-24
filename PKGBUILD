@@ -9,7 +9,7 @@ arch=('any')
 url="https://gitlab.com/madflow/shrr"
 license=(MIT)
 groups=()
-depends=('python>=3.3' 'python-flask')
+depends=('python>=3.3' 'python-flask' 'python-netifaces')
 makedepends=('python-setuptools' 'python-pip')
 optdepends=()
 provides=()
