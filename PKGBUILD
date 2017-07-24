@@ -8,8 +8,8 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=20170626
-pkgrel=2
+pkgver=20170723
+pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
 url="https://github.com/google/fonts"
