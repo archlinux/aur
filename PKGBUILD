@@ -1,11 +1,11 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-njs
-pkgver=0.1.10 # http://hg.nginx.org/njs/tags
-pkgrel=2
+pkgver=0.1.11 # http://hg.nginx.org/njs/tags
+pkgrel=3
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.13.2
+_nginxver=1.13.3
 
 pkgdesc='nginScript module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -18,12 +18,12 @@ source=(
 	njs-$pkgver.tar.gz::http://hg.nginx.org/njs/archive/$pkgver.tar.gz
 )
 
-sha256sums=('d77f234d14989d273a363f570e1d892395c006fef2ec04789be90f41a1919b70'
-            '17658ef9efa127f13b4d2541a69ddb4359267c63a11c19beda1d3220d4a2fe0d')
+sha256sums=('5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72'
+            '9940239ef502a4f2368e001c72d8862beccd8c96772ecc9cf7e45b871cd7e9d2')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
-	./configure $(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@') --add-dynamic-module=../njs-$pkgver/nginx
+	./configure --with-compat --with-stream --add-dynamic-module=../njs-$pkgver/nginx
 	make modules
 }
 
