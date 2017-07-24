@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <me@vild.io>
 
 pkgname=('workspace-d-git')
-pkgver=r176.76224e3
+pkgver=2.11.0.r0.76224e3
 pkgrel=1
 pkgdesc="Wraps dcd, dfmt and dscanner to one unified environment managed by dub"
 arch=('i686' 'x86_64')
@@ -22,12 +22,11 @@ sha256sums=(
 
 pkgver() {
 	cd "$srcdir/workspace-d"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 prepare() {
 	cd "$srcdir/workspace-d"
-	git submodule update --init --recursive
 	dub upgrade
 }
 
