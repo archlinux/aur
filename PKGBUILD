@@ -1,13 +1,13 @@
 # Maintainer: Cyano Hao < c at cyano dot cn >
 # Contributor: Jose Riha
 
-# $Id: PKGBUILD 291948 2017-03-31 16:11:31Z tpowa $
+# $Id$
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-pae       # Build kernel with a different name
-_srcname=linux-4.10
-pkgver=4.10.8
+pkgbase=linux-pae
+_srcname=linux-4.12
+pkgver=4.12.3
 pkgrel=1
 arch=('i686')
 url="https://www.kernel.org/"
@@ -25,11 +25,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            'ceb385486e34084dd53425e5ba50b9fba4a8e380d8f2815bfde142852d797da0'
+            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
             'SKIP'
-            'f7fdea891aff7373c2a8ee25b4c4e5c9816e70d85a7701d3cc41b663c3172cdd'
+            'c0855aca3bc5af1b16a0cb9d94451683f06d5e315a1c4affec0381a9b9e3cfff'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -44,6 +44,8 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # security patches
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -153,7 +155,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi soc sound trace uapi video xen; do
+    media net pcmcia rdma scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
