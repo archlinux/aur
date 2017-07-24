@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-_pkgver=2.1.2
+_pkgver=2.1.3
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -8,7 +8,7 @@ pkgdesc="Core DNF Plugins"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
-depends=('dnf>=2.4.0' 'python')
+depends=('dnf>=2.6.1' 'python')
 makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('createrepo_c: for local plugin')
@@ -18,7 +18,7 @@ backup=('etc/dnf/plugins/debuginfo-install.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('0ed39b15a99647e721f81a31f99b2fd4')
+md5sums=('336e3f5e8d2b2c7d1ed4d3f5f3a57033')
 
 prepare() {
 	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
