@@ -5,7 +5,7 @@
 
 # Maintainer: Nick Saika <nicksaika@gmail.com>
 pkgname=fstrm
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 epoch=
 pkgdesc="A C implementation of the Frame Streams data transport protocol"
@@ -25,7 +25,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/farsightsec/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("a61ec0bb88b1e7bab05a6c854219deb451137c4de15800fc1ee2bee4b9b0d22a")
+sha256sums=("16112cda18aece363e32a04cd2265174b09944f3f3dcffa5c8312a293ec93737")
 noextract=()
 validpgpkeys=()
 
