@@ -9,7 +9,7 @@ pkgbase = fstrm
 	makedepends = pkg-config
 	makedepends = libevent
 	depends = libevent
-	source = https://github.com/farsightsec/fstrm/archive/v0.3.1.tar.gz
+	source = https://github.com/farsightsec/fstrm/archive/v0.3.2.tar.gz
 	sha256sums = 16112cda18aece363e32a04cd2265174b09944f3f3dcffa5c8312a293ec93737
 
 pkgname = fstrm
