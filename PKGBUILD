@@ -2,7 +2,7 @@
 
 pkgname=('serve-d-git')
 pkgver=r22.b5137df
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft language server protocol implementation for D using workspace-d"
 arch=('i686' 'x86_64')
 url="https://github.com/Pure-D/serve-d"
@@ -27,7 +27,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/serve-d"
-	git submodule update --init --recursive
 	dub upgrade
 }
 
@@ -42,5 +41,4 @@ package() {
 
 	# license
 	install -Dm644 "$srcdir/serve-d/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }
