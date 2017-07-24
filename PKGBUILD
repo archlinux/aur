@@ -2,8 +2,8 @@
 # Contributor louipc base64:TG91aSBDaGFuZyA8bG91aXBjLmlzdEBnbWFpbC5jb20+
 pkgname="oysttyer-git"
 _pkgname="oysttyer"
-pkgver=134.c6ff39e
-pkgrel=2
+pkgver=278.ac2c34d
+pkgrel=1
 pkgdesc="interactive command-line Twitter client"
 url="https://github.com/oysttyer/oysttyer"
 arch=('any')
