@@ -8,7 +8,7 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
-pkgver=384.47
+pkgver=384.59
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -34,9 +34,9 @@ source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg
 md5sums=('4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7'
          'cc8941b6898d9daa0fb67371f57a56b6')
-md5sums_i686=('5846a6a4c700555d26beca33e8ac3f5b')
-md5sums_x86_64=('588fe97d3446578cf7b3b2f0c61118ff')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('c6bcdbda63704e5b372dcc86a17b19fd')
+md5sums_i686=('8d2a2049d0509875c5dc0d9a0275aee4')
+md5sums_x86_64=('778318b0fd2d5d511474a8987cc7dbe5')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('0f42f6706da80d32574371c8a0894e60')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
