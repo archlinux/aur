@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=20170724.r112.fe70ef3
+pkgver=20170724.r113.9969a94
 pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
@@ -103,6 +103,9 @@ fi
   sudo chmod -R 777 /usr/share/minecraftlauncher
 
   #Creates desktop launcher
+  if [ -e "/usr/share/applications/minecraftlauncher.desktop" ]; then
+    sudo rm "/usr/share/applications/minecraftlauncher.desktop"
+  fi
   sudo cp minecraftlauncher.desktop /usr/share/applications
 
 }
