@@ -6,10 +6,10 @@ pkgver=0.0.20140703
 pkgrel=2
 pkgdesc='Corporate-design for LaTeX from Technische Universität Darmstadt'
 arch=('any')
-url='http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/'
+url='https://www.intern.tu-darmstadt.de/arbeitsmittel/corporate_design_vorlagen/index.de.jsp'
 license=('custom')
 depends=('texlive-core' 'latex-tuddesign' 'latex-tuddesign-fonts')
-source=(http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/latex/latex-tuddesign-thesis/${pkgname}\_${pkgver}.zip)
+source=(local://${pkgname//dd/d}\_${pkgver//./}.zip)
 sha512sums=('d7685ace3e512ac048e23ccb768b9bd6b26e0bc1c0bee5a1cfea6e4510c5b47180b5f93c5655ddfefa1d60fb32a3fd3d5be04ca13612b3866a7993796ae3eb9b')
 
 package() {
