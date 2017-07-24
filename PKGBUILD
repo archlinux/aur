@@ -1,6 +1,6 @@
 # Maintainer: Janosch Dobler <janosch.dobler AT gmx DOT de>
 pkgname=libgtkflow-git
-pkgver=r305.6033bac
+pkgver=r312.c17154f
 pkgrel=1
 pkgdesc="Flowgraphs for Gtk+3"
 arch=('i686' 'x86_64')
@@ -21,13 +21,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir/$_gitname"
-
-  sed --in-place \
-    's/arrange(List<Node> nodes)/arrange(List<unowned Node> nodes)/' \
-    libgtkflow/layout.vala
-}
 
 build() {
   cd "$srcdir/$_gitname"
