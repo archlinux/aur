@@ -1,29 +1,24 @@
 # Maintainer: Mikołaj Baranowski <mikolajb@gmail.com>
 
 pkgname=gitfetch
-pkgver=0.1.r2.g1f8fdaf
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc='Gitfetch performs git featch on multiple repositories, can be used as a daemon'
 license=('MIT')
 arch=('x86_64' 'i686')
 url='https://github.com/mikolajb/gitfetch'
 depends=()
 makedepends=('go' 'glide')
-source=("${pkgname}-${pkgver}::git+http://github.com/mikolajb/${pkgname}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd ${srcdir}/${pkgname}-${pkgver}/
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mikolajb/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('1e8c02a38ab000f722318dfe0949bcc59ff7a847e0e414ed6fba0a53cefcb295')
 
 build() {
   msg2 'Settgin GOPATH'
   cd "${srcdir}/${pkgname}-${pkgver}"
   export GOPATH="${srcdir}"
   mkdir -p "${GOPATH}/src/github.com/mikolajb"
-  ln -sf "$(pwd)" "${GOPATH}/src/github.com/mikolajb/gitfetch"
-  cd "${GOPATH}/src/github.com/mikolajb/gitfetch"
+  ln -sf "$(pwd)" "${GOPATH}/src/github.com/mikolajb/${pkgname}"
+  cd "${GOPATH}/src/github.com/mikolajb/${pkgname}"
 
   msg2 'Fetching dependencies...'
   glide install

@@ -1,15 +1,15 @@
 pkgbase = gitfetch
 	pkgdesc = Gitfetch performs git featch on multiple repositories, can be used as a daemon
-	pkgver = 0.1.r2.g1f8fdaf
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/mikolajb/gitfetch
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
 	makedepends = glide
-	source = gitfetch-0.1.r2.g1f8fdaf::git+http://github.com/mikolajb/gitfetch
-	sha256sums = SKIP
+	source = gitfetch-0.2.tar.gz::https://github.com/mikolajb/gitfetch/archive/0.2.tar.gz
+	sha256sums = 1e8c02a38ab000f722318dfe0949bcc59ff7a847e0e414ed6fba0a53cefcb295
 
 pkgname = gitfetch
 
