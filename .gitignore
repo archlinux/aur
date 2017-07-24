@@ -1,4 +1,7 @@
-*.tar
-*.tar.gz
-src/
-pkg/
+# Blacklist:
+*
+
+# Whitelist:
+!.gitignore
+!PKGBUILD
+!.SCRINFO

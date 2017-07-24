@@ -1,23 +1,27 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
-pkgname=rust-src
-pkgver=1.17.0
+pkgname='rust-src'
+pkgver=1.19.0
 pkgrel=1
-pkgdesc="Rust source files"
+pkgdesc='rustc source'
 arch=('any')
-url="http://rust-lang.org"
-license=('MIT' 'Apache')
+url='http://rust-lang.org'
+license=('Apache' 'MIT')
 options=(!strip)
-source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz")
-sha256sums=('4baba3895b75f2492df6ce5a28a916307ecd1c088dc1fd02dbfa8a8e86174f87')
+source=("rust-${pkgver}.tar.gz::https://github.com/rust-lang/rust/archive/${pkgver}.tar.gz")
+sha256sums=('7e1ecb476118b79b5abed02bc7a724bb65413057e26f1d2b8538c572f7463be0')
 
 prepare() {
-    cd "rustc-${pkgver}-src"
-    find . -type d -exec chmod 755 {} \;
-    find . -type f -exec chmod 644 {} \;
+  cd "rust-${pkgver}"
+
+  find . -type d -exec chmod 755 {} \;
+  find . -type f -exec chmod 644 {} \;
 }
 
 package() {
-    cd "rustc-${pkgver}-src"
-    mkdir -p "$pkgdir/usr/src/rust/"
-    cp -r * "$pkgdir/usr/src/rust/"
+  cd "rust-${pkgver}"
+
+  install -d -m 755 "${pkgdir}/usr/src/rust/"
+  cp -p -r * "${pkgdir}/usr/src/rust/"
 }
+
+# vim: ts=2 sw=2 et:
