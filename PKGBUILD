@@ -2,7 +2,7 @@
 
 pkgname=('dscanner')
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
 url="https://github.com/dlang-community/D-Scanner"
@@ -10,19 +10,34 @@ license=("BSL")
 groups=('dlang')
 makedepends=('dmd' 'git')
 depends=('libphobos')
-provides=('dscanner')
-conflicts=('dscanner')
 
 source=(
-	"git+https://github.com/dlang-community/D-Scanner#tag=v${pkgver}"
+	"git+https://github.com/dlang-community/D-Scanner#tag=v$pkgver"
+	"git+https://github.com/Hackerpilot/libdparse"
+	"git+https://github.com/burner/inifiled"
+	"git+https://github.com/economicmodeling/containers"
+	"git+https://github.com/Hackerpilot/dsymbol"
+	"git+https://github.com/economicmodeling/libddoc"
 )
 sha256sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'SKIP'
 )
 
 prepare() {
 	cd "$srcdir/D-Scanner"
-	git submodule update --init --recursive
+
+	git submodule init
+	git config submodule.libdparse.url "$srcdir/libdparse"
+	git config submodule.inifiled.url "$srcdir/inifiled"
+	git config submodule.containers.url "$srcdir/containers"
+	git config submodule.dsymbol.url "$srcdir/dsymbol"
+	git config submodule.libddoc.url "$srcdir/libddoc"
+	git submodule update
 }
 
 build() {
