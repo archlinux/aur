@@ -1,0 +1,36 @@
+pkgbase = vpn-unlimited
+	pkgdesc = VPN Unlimited client application
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://www.vpnunlimitedapp.com
+	arch = x86_64
+	arch = i686
+	license = custom:"Copyright (c) 2017 KeepSolid Inc"
+	depends = glibc>=2.9
+	depends = qt5-base>=5.2.1
+	depends = qt5-script>=5.2.1
+	depends = qt5-webkit>=5.1.1
+	depends = gcc-libs>=4.4.15
+	depends = zlib>=1.2.0
+	depends = openvpn
+	depends = openresolv
+	depends = lzo>=2.0
+	depends = libcurl-openssl-1.0
+	depends = iproute
+	depends = net-tools
+	depends = c-ares>=1.10.0
+	source_x86_64 = vpn-unlimited
+	source_x86_64 = vpn-unlimited-daemon.service
+	source_x86_64 = http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_4.1_amd64.deb
+	md5sums_x86_64 = 8623605b1bef9eda0f451a9b4447629f
+	md5sums_x86_64 = b4a4b36065e1026ca4054ba584003272
+	md5sums_x86_64 = 4fa9c4e38467c29d972b300f29f03f75
+	source_i686 = vpn-unlimited
+	source_i686 = vpn-unlimited-daemon.service
+	source_i686 = http://apt.keepsolid.com/debian/pool/main/v/vpn-unlimited/vpn-unlimited_4.1_i386.deb
+	md5sums_i686 = 8623605b1bef9eda0f451a9b4447629f
+	md5sums_i686 = 53d6de7ea5facf7ee1a31d2dace29dcc
+	md5sums_i686 = 5bc6a3c909feefc6451b42311c2aa7fc
+
+pkgname = vpn-unlimited
+

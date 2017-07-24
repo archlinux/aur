@@ -1,0 +1,8 @@
+[Unit]
+Description=VPN Unlimited daemon
+
+[Service]
+ExecStart=/usr/bin/vpn-unlimited-daemon
+
+[Install]
+WantedBy=multi-user.target
