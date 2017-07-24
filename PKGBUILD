@@ -8,7 +8,7 @@ url="https://github.com/inoriy/astra"
 license=("MIT")
 
 source=("https://github.com/inoriy/astra/archive/v$pkgver-$pkgrel.tar.gz")
-md5sums=('9bb345fab256cfecc665b614720f78f3')
+md5sums=('03467ddfb97b4f26d37ec526d55f3e21')
 
 arch=("any")
 depends=("ncurses" "perl")
