@@ -9,7 +9,7 @@ url="https://github.com/Reactive-Extensions/RxCpp"
 license=('Apache')
 groups=()
 depends=()
-makedepends=('gcc' 'make' 'cmake')
+makedepends=('gcc' 'make' 'cmake' 'libcatch-cpp-headers')
 source=("git+https://github.com/Reactive-Extensions/RxCpp.git#tag=v4.0.0")
 sha256sums=('SKIP')
 validpgpkeys=()
@@ -17,6 +17,12 @@ validpgpkeys=()
 build() {
 	cd "RxCpp/projects/CMake"
 	cmake .
+	make
+}
+
+check() {
+	cd "RxCpp/projects/CMake/test"
+	ctest
 }
 
 package() {

@@ -8,6 +8,7 @@ pkgbase = rxcpp-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = cmake
+	makedepends = libcatch-cpp-headers
 	source = git+https://github.com/Reactive-Extensions/RxCpp.git#tag=v4.0.0
 	sha256sums = SKIP
 
