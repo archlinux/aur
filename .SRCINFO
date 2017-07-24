@@ -8,7 +8,7 @@ pkgbase = base16-manager
 	depends = bash
 	depends = git
 	source = https://github.com/AuditeMarlow/base16-manager/archive/1.0.0.tar.gz
-	md5sums = 92c55c0457ed9e7089eada19e8989384
+	md5sums = 2898be2310016b053259d7a1e95e59d2
 
 pkgname = base16-manager
 

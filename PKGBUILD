@@ -13,7 +13,7 @@ url='https://github.com/AuditeMarlow/base16-manager'
 license=('MIT')
 depends=('bash' 'git')
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('92c55c0457ed9e7089eada19e8989384')
+md5sums=('2898be2310016b053259d7a1e95e59d2')
 
 package() {
   cd "$pkgname-$pkgver"
