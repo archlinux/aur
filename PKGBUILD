@@ -24,7 +24,7 @@
 pkgname=ttf-google-fonts-opinionated-git
 pkgver=20160311
 pkgrel=1
-pkgdesc="TrueType fonts from the Google Fonts project"
+pkgdesc="TrueType fonts from Google Fonts, but with updated versions of some fonts"
 arch=('any')
 url="https://github.com/google/fonts"
 license=('various')
