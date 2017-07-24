@@ -1,9 +1,9 @@
-# Maintainer: Dan Printzell <xwildn00bx@gmail.com>
+# Maintainer: Dan Printzell <arch@vild.io>
 # Contributor: Marius O<marius@habarnam.ro>
 
 pkgname=('coedit-bin')
 pkgver=3_update_3
-pkgrel=1
+pkgrel=2
 pkgdesc="Coedit is an IDE for the DMD D2 compiler."
 url="https://github.com/BBasile/Coedit"
 license=('MIT')
@@ -35,20 +35,21 @@ source_x86_64=(
 	"coedit.desktop"
 )
 
-sha256sums_i686=(
-	'cb3a94ae707db17edbccafe0ebdc942a1d05bd8ee9237bc0cf900124c9deedfd'
-	'SKIP'
-)
-sha256sums_x86_64=(
-	'18661dff321add37980cdd19c242e04dbbfd12bb70fd633c9256d5c478cdfabf'
-	'SKIP'
-)
+sha256sums_i686=('c07f76872be6de4c5dba63cb4430f8204c44bf2fb89f03054fb3a0547be0f83f'
+                 '9bcecc4297d96667bafe7a3d30b6e36095c1e91d7fa687afc6fc8fda5f1842ab')
+
+sha256sums_x86_64=('b7a2001c90537d9c29885d17c6cfd1be0d10c6efd9a857f3846f0bcdb4a5f4e7'
+                   '9bcecc4297d96667bafe7a3d30b6e36095c1e91d7fa687afc6fc8fda5f1842ab')
 
 package() {
-    install -Dm755 $srcdir/coedit*/coedit ${pkgdir}/usr/bin/coedit
-    install -Dm755 $srcdir/coedit*/dastworx ${pkgdir}/usr/bin/dastworx
+	# binaries
+	install -Dm755 "$srcdir/coedit-$CARCH/coedit" "$pkgdir/usr/bin/coedit"
+	install -Dm755 "$srcdir/coedit-$CARCH/dastworx" "$pkgdir/usr/bin/dastworx"
 
-    install -Dm644 $srcdir/coedit*/coedit.png ${pkgdir}/usr/share/icons/coedit.png 
-    install -Dm644 $srcdir/coedit*/coedit.license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
-    install -Dm644 coedit.desktop ${pkgdir}/usr/share/applications/coedit.desktop 
+	# license
+	install -Dm644 "$srcdir/coedit-$CARCH/coedit.license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	# .desktop
+	install -Dm644 "$srcdir/coedit-$CARCH/coedit.png" "$pkgdir/usr/share/icons/coedit.png"
+  install -Dm644 coedit.desktop "$pkgdir/usr/share/applications/coedit.desktop"
 }
