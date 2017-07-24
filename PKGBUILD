@@ -1,8 +1,8 @@
 # Maintainer: Cody P Schafer < aur [at] codyps.com >
-pkgbase=parallels11-tools
-pkgname=(parallels11-tools parallels11-tools-dkms)
-pkgver=11.2.2.32663
-pkgrel=5
+pkgbase=parallels12-tools
+pkgname=(parallels12-tools parallels12-tools-dkms)
+pkgver=12.2.1.41615
+pkgrel=0
 pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
 url="https://parallels.com"
@@ -32,43 +32,31 @@ source=(
 	dir://${pkgbase}/installer/prl-x11.sh
 	dir://${pkgbase}/installer/prl-x11.service
 	dir://${pkgbase}/installer/prlfsmountd.sh
-	'0001-fix-for-4.9.y.patch'
-	'0001-fix-4.10.y.patch'
-	'0001-fix-4.11.y.patch'
 )
 
-sha1sums=('1bb6c8d9b1fc8ff781d89cdd3856995002670911'
-          'af8932e2abd88d50c8135b9d1effa38abb3664ff'
-          '8d7b264653f8167904d0328e1fc540fc0b7bc7eb'
-          'a20911495461ed1950bee069d128fe6c7103c97d'
-          'da5fcbc6a93f1d3939752838e53d1daea13307cb'
-          '9af7dba4990c69493e6d60bd60bb684f36aee13f'
-          'a5f638186352484b9153191ace3fb8a4ce826b1f'
-          'c8042c5ada41dd17f2b67347871dff41c4bce9c9'
-          'c50bf939719eba4ebb34e4bd8a0921e1cbe4d901'
-          '82ab36a2876a1d30fad92ebf06d87b0d8d7210a8'
-          'bd681d740b4a1a68adfd4f94afec5934c2ea69ac'
-          '56d3fc7c9abb7c63b9c6356422261f0a87cf3b22'
-          'e955e6d9215a0d104a0482b69bb7d7399f8c9f36'
-          '078ecd2bb95b05006e94007dc8428d9c8fcc519e'
-          'dec42902094d221f14f453fa3281d62bb7731748')
+sha1sums=('fdd278b5caee0647f1c062512fb83e1da4d5fdb2'
+          'fa61d1eddb0d6c2130c3dbb9166e80b71c988584'
+          '52a6c4b6cd493aac8c932a77a25efc17e0e075e5'
+          '89aef4d9e61d5835e3133951fa34e889525ba7cc'
+          '887812861a52271ea242b09fbfdf3b480cddc779'
+          '75d753bfa2d352eec36bc0fcea2a6a6e068a85d3'
+          'a927134a9c51af9c372c9fa388bbdec53c56d808'
+          '3bba1a27f912f8c8ef6167f5b19244215251189c'
+          '32b2028480668ca8f75888de0c681c74d613864f'
+          '8a20a07b905a5dcdd0b182844ff781344b78a8b5'
+          'ff52471a3c6acec6f4a59e2a8f2aff6a937bf09e'
+          'b3e540bd8b1a96bfff81e1fd7f90ab978f504475')
 
-prepare() {
-	patch -p1 -i ../0001-fix-for-4.9.y.patch
-	patch -p1 -i ../0001-fix-4.10.y.patch
-	patch -p1 -i ../0001-fix-4.11.y.patch
-}
-
-package_parallels11-tools() {
+package_parallels12-tools() {
 	provides=(parallels-tools)
 	conflicts=(parallels-tools)
 
+	install -d "${pkgdir}/usr/bin"
+
 	cp -r "${srcdir}"/xorg.${XORG_VERSION}/usr "${pkgdir}"
 	# xorg.7.1 is COMMON_TOOLS_DIR
-	cp -r "${srcdir}"/xorg.7.1/usr/bin/{prlcc,prlcp,prlsga,prldnd} \
+	cp -r "${srcdir}"/xorg.7.1/usr/bin/{prlcc,prlcp,prlsga,prldnd,prltimesync} \
 		"${pkgdir}/usr/bin"
-	cp -r "${srcdir}"/xorg.7.1/usr/lib/libprl_wmouse_watcher.so \
-		"${pkgdir}/usr/lib/libprl_wmouse_watcher.so.1.0.0"
 
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/lib"
@@ -108,22 +96,28 @@ package_parallels11-tools() {
 	install -m 0755 99prltoolsd-hibernate "${pkgdir}/etc/pm/sleep.d"
 
 	# These have very strange /usr/local rpaths, strip them out
-	chrpath -d "${pkgdir}/usr/lib/libglx.so.1.0.0"
-	for b in prlshprint prl_wmouse_d prlshprof prlsga prl_nettool \
-		prl_showvmcfg prlhosttime prldnd prlcc prl_snapshot prlcp \
-		prltoolsd;
-	do
-		chrpath -d "${pkgdir}/usr/bin/$b"
-	done
+	#chrpath -d "${pkgdir}/usr/lib/libglx.so.1.0.0"
+	#for b in prlshprint prlshprof prlsga prl_nettool \
+	#	prl_showvmcfg prlhosttime prldnd prlcc prl_snapshot prlcp \
+	#	prltoolsd;
+	#do
+	#	chrpath -d "${pkgdir}/usr/bin/$b"
+	#done
 }
 
-package_parallels11-tools-dkms() {
+package_parallels12-tools-dkms() {
 	depends=('dkms')
 	provides=(parallels-tools-dkms)
 	conflicts=(parallels-tools-dkms)
+	arch=(any)
 
 	_dkms_dir="${pkgdir}"/usr/src/${pkgbase}-${pkgver}
 	install -d -m 0755 "${_dkms_dir}"
 	install -m0644 dkms.conf Makefile.kmods "${_dkms_dir}"
 	cp -r prl_fs prl_fs_freeze prl_tg prl_eth "${_dkms_dir}"
 }
+
+# TODO:
+#	- install script: udevadm control --reload-rules && udevadm trigger
+#         Unless pacman does that for us already
+
