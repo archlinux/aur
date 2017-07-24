@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-TryExec=extraterm
-Exec=extraterm
-Icon=extraterm
+TryExec=bterm
+Exec=bterm
+Icon=bterm
 Terminal=false
 Categories=System;TerminalEmulator;
-Name=Extratern
+Name=bterm
 GenericName=Terminal
 Comment=Command line access

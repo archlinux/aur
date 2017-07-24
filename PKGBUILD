@@ -1,18 +1,19 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=bterm-git
 _pkgname=bterm
-pkgver=v1.0.0.r2.255e6a3
-pkgrel=2
+pkgver=v1.0.0.r10.8b9d9f2
+pkgrel=1
 pkgdesc="cross-platform terminal emulator"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/bleenco/bterm"
 license=('MIT')
 depends=('nodejs')
-makedepends=('git' 'npm' "libicns") 
+#dpkg is not actually needed, it's just to avoid a build failure
+makedepends=('git' 'npm' "libicns" "dpkg")
 source=("bterm-git::git+$url.git"
         "$_pkgname.desktop")
 sha256sums=('SKIP'
-            '04b703f72879dcdb23adc339cdc2e9c2c33dddca07d417bd677699603a6bd1c3')
+            '38ed1e551459aa69afd86f432168f0488bf88e16b727e6d2c0962a18b6bbe565')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -25,7 +26,7 @@ printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 build() {
 	cd "$srcdir/${pkgname}"
   npm install
-  npm run dist
+  npm run app:linux
 }
 
 package() {
@@ -34,7 +35,7 @@ package() {
   install -d "$pkgdir/usr/bin/"
   local _icon_dir="usr/share/icons/hicolor"
   install -d "${pkgdir}"${appdir}
-  cp -r build/linux-unpacked/* "${pkgdir}"${appdir}
+  cp -r dist/bterm-linux-x64/* "${pkgdir}"${appdir}
   for size in  32 512; do
         install -Dm644 \
             assets/icon_${size}x${size}.png \
