@@ -1,0 +1,16 @@
+pkgbase = th
+	pkgdesc = Embed/pack binary file into C/C++ header
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Antyradek/tinyhead
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = popt
+	source = https://github.com/Antyradek/tinyhead/archive/1.2.0.tar.gz
+	md5sums = a98bd7bc5405f78f8fd4086ec20ac84e
+
+pkgname = th
+
