@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SwitchHosts
+Comment=Switch hosts quickly!
+Exec=switchhosts
+Icon=/usr/share/icons/hicolor/apps/switchhosts-bin.png
+Terminal=false
+Type=Application
+Categories=Development;

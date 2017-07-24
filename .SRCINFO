@@ -1,0 +1,30 @@
+pkgbase = switchhosts-bin
+	pkgdesc = Switch hosts quickly!
+	pkgver = 3.3.6
+	pkgrel = 5287
+	url = https://oldj.github.io/SwitchHosts
+	arch = any
+	license = MIT
+	makedepends = imagemagick
+	makedepends = npm
+	depends = gconf
+	depends = gtk2
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = python2
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = alsa-lib
+	options = !strip
+	source = https://github.com/oldj/SwitchHosts/releases/download/v3.3.6/SwitchHosts-linux-x64_v3.3.6.5287.zip
+	source = https://raw.githubusercontent.com/oldj/SwitchHosts/master/assets/app.ico
+	source = switchhosts-bin.install
+	source = switchhosts-bin.desktop
+	md5sums = c051e239ce81a89d22b14c099c1afd66
+	md5sums = 88fe4a72cf9630119dd512c91b54edd9
+	md5sums = 0b6211b511da48346cecdc1d2f963c76
+	md5sums = 30df36e53ef2d815a2c2395f0378f9bb
+
+pkgname = switchhosts-bin
+
