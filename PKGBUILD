@@ -2,7 +2,7 @@
 
 pkgname=('dwin-git')
 pkgver=r73.ca40bda
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager written in D"
 arch=('i686' 'x86_64')
 url="https://github.com/vild/dwin"
@@ -27,7 +27,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/DWin"
-	git submodule update --init --recursive
 	dub upgrade
 }
 
