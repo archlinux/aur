@@ -1,4 +1,5 @@
-# Maintainer: Veeti Paananen <veeti.paananen@rojekti.fi>
+# Maintainer: Kai Ninomiya <kainino1@gmail.com>
+# Submitter: Veeti Paananen <veeti.paananen@rojekti.fi>
 # Contributor: Sebastian Stammler <stammler.s@gmail.com>
 # Contributor: Sarkasper <echo a2FzcGVyLm1lbnRlbkBnbXguY29tCg== | base64 -d>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
