@@ -9,7 +9,7 @@ url="https://github.com/Vild/DMailManager"
 license=("MPLv2")
 groups=('dlang')
 makedepends=('dmd' 'git' 'dub')
-depends=('libphobos' 'dub' 'dcd' 'dfmt' 'dscanner')
+depends=('libphobos')
 provides=('dmailmanager')
 conflicts=('dmailmanager')
 
@@ -21,25 +21,22 @@ sha256sums=(
 )
 
 pkgver() {
-        cd $srcdir/DMailManager
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/DMailManager"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd $srcdir/DMailManager
+	cd "$srcdir/DMailManager"
 	git submodule update --init --recursive
 	dub upgrade
 }
 
 build() {
-	cd $srcdir/DMailManager
+	cd "$srcdir/DMailManager"
 	dub build
 }
 
-package(){
-	cd $srcdir/DMailManager
-
+package() {
 	# binaries
-	mkdir -p $pkgdir/usr/bin
-	install -m755 -t $pkgdir/usr/bin ./dmailmanager
+	install -Dm755 "$srcdir/DMailManager/dmailmanager" "$pkgdir/usr/bin/dmailmanager"
 }
