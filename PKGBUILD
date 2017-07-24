@@ -22,7 +22,7 @@
 # Inconsolata: Google ships a modified version.
 
 pkgname=ttf-google-fonts-opinionated-git
-pkgver=20160311
+pkgver=20170723
 pkgrel=1
 pkgdesc="TrueType fonts from Google Fonts, but with updated versions of some fonts"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = ttf-google-fonts-opinionated-git
 	pkgdesc = TrueType fonts from Google Fonts, but with updated versions of some fonts
-	pkgver = 20150721
+	pkgver = 20170723
 	pkgrel = 1
 	url = https://github.com/google/fonts
 	install = ttf-google-fonts-opinionated-git.install
