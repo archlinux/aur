@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <arch@vild.io>
 
 pkgname=('dscanner-git')
-pkgver=r1098.0b064a0
+pkgver=0.4.0.r73.0b064a0
 pkgrel=1
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
@@ -15,19 +15,36 @@ conflicts=('dscanner')
 
 source=(
 	"git+https://github.com/dlang-community/D-Scanner"
+	"git+https://github.com/Hackerpilot/libdparse"
+	"git+https://github.com/burner/inifiled"
+	"git+https://github.com/economicmodeling/containers"
+	"git+https://github.com/Hackerpilot/dsymbol"
+	"git+https://github.com/economicmodeling/libddoc"
 )
 sha256sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'SKIP'
 )
 
 pkgver() {
 	cd "$srcdir/D-Scanner"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd "$srcdir/D-Scanner"
-	git submodule update --init --recursive
+
+	git submodule init
+	git config submodule.libdparse.url "$srcdir/libdparse"
+	git config submodule.inifiled.url "$srcdir/inifiled"
+	git config submodule.containers.url "$srcdir/containers"
+	git config submodule.dsymbol.url "$srcdir/dsymbol"
+	git config submodule.libddoc.url "$srcdir/libddoc"
+	git submodule update
 }
 
 build() {
