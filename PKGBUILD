@@ -3,15 +3,15 @@
 # Contributor: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=('dub-git')
-pkgver=1.4.0.rc.1.r46.46a74e2
+pkgver=1.4.0rc1.r46.46a74e2
 pkgrel=1
 pkgdesc="Package manager for D packages, git version"
 arch=('i686' 'x86_64')
 url="https://github.com/D-Programming-Language/dub"
 license=('MIT')
 groups=('dlang')
-depends=('curl')
 makedepends=('git' 'dmd')
+depends=('libphobos' 'curl')
 provides=('dub')
 conflicts=('dub')
 
@@ -20,19 +20,18 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/dub"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 build() {
-  DC=dmd
+	DC=dmd
 	cd "$srcdir/dub"
 
-  echo Generating version file...
-  GITVER=${pkgver}
-  echo "module dub.version_;" > source/dub/version_.d
-  echo "enum dubVersion = \"$GITVER\";" >> source/dub/version_.d
+	echo Generating version file...
+	echo "module dub.version_;" > source/dub/version_.d
+	echo "enum dubVersion = \"$pkgver\";" >> source/dub/version_.d
 
-  $DC -ofbin/dub -w -O -g -version=DubUseCurl -Isource -L-lcurl @build-files.txt
+	$DC -ofbin/dub -w -O -g -version=DubUseCurl -Isource -L-lcurl @build-files.txt
 }
 
 package() {
