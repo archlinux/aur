@@ -12,7 +12,10 @@ depends=('gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'boo
 makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen')
 optdepends=('cuda: for cuda sfm/mvs acceleration')
 provides=()
-options=()
+# Fix: -fno-plt flag not supported by cuda host compiler (gcc5)
+options=(!makeflags)
+CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong"
+CXXFLAGS="${CFLAGS}"
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git"
         "nvm-export.patch"
@@ -52,8 +55,6 @@ build() {
 
   mkdir -p build
   cd build
-  #export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe"
-  #export CXXFLAGS="${CFLAGS}"
   cmake -DTESTS_ENABLED=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ${_EXTRAOPTS} -DCUDA_NVCC_FLAGS="--compiler-options -fPIC" ../${pkgname}
   make
 }
