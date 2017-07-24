@@ -1,14 +1,14 @@
 pkgbase = csvfilter
 	pkgdesc = Filter for csv files.
-	pkgver = 0.1.r0.g8425b0a
-	pkgrel = 1
+	pkgver = 0.1
+	pkgrel = 2
 	url = https://github.com/mikolajb/csvfilter
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	source = csvfilter::git+https://github.com/mikolajb/csvfilter.git
-	sha256sums = SKIP
+	source = csvfilter-0.1.tar.gz::https://github.com/mikolajb/csvfilter/archive/0.1.tar.gz
+	sha256sums = faa0f02017b64c8e003a4f356637940033c20f4b26adae802e33f27a078551f1
 
 pkgname = csvfilter
 
