@@ -3,7 +3,7 @@
 pkgname=git-annex-remote-gdrive
 pkgver=0.6
 pkgrel=1
-pkgdesc='A git-annex special remote using rclone'
+pkgdesc='A git-annex special remote for Google Drive'
 arch=('any')
 url='https://github.com/Lykos153/git-annex-remote-gdrive'
 license=('GPL3')
