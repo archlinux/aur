@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
 url="http://www.red-lang.org"
@@ -35,7 +35,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -d "$pkgdir"/opt/red
-  find ./quick-test/runnable -type f -executable -print0 | xargs -0 rm
+  find ./quick-test -type f -executable -print0 | xargs -0 rm
   cp -R * "$pkgdir"/opt/red/
   install -Dm755 "$pkgdir"/opt/red/console "$pkgdir"/usr/bin/red
   rm "$pkgdir"/opt/red/console
