@@ -2,15 +2,15 @@
 # Contributor: Pascal Wittmann <mail@pascal-wittmann.de>
 
 pkgname=latex-tuddesign
-pkgver=1.0.20140928
-pkgrel=2
+pkgver=2016.03.01
+pkgrel=1
 pkgdesc='Corporate-design for LaTeX from Technische Universität Darmstadt'
 arch=('any')
-url='http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/'
+url='https://www.intern.tu-darmstadt.de/arbeitsmittel/corporate_design_vorlagen/index.de.jsp'
 license=('custom')
 depends=('texlive-core' 'latex-tuddesign-fonts')
-source=(http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/latex/latex-tuddesign/${pkgname}\_${pkgver}.zip)
-sha512sums=('0b5ef53bc782b9fe9f98735fdf9d60b68bc777ff14273cd89517786e55706122d7e29d3e70c501021dfc23edc6f00a8119e61291d4fdb83018bc6a3db916e5ca')
+source=(local://${pkgname//dd/d}_${pkgver//\./-}.zip)
+sha512sums=('4c7d6e189ab0f309b61f40883abaa009fbc81a8e3d532348453e29288025c1ff8327bec3677d521437b0d82550ccc2aceb9b72b9c2bd627d262a95ea6f2f1f2b')
 
 package() {
     cd texmf
