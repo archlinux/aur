@@ -84,13 +84,13 @@ fi
 
 #Extracts apk into assets
 if [[ "$answer" == "1" || "$answer" == "3" ]]; then
-    if [ ! -e "oldapks"]; then
+    if [ ! -e "oldapks" ]; then
       sudo mkdir oldapks
     fi
     if [ -f "minecraft.apk" ]; then
       sudo mv minecraft.apk oldapks
     fi
-    sudo mv *.apk minecraft.apk
+    sudo mv "*.apk" minecraft.apk
 fi
 
 sudo ./extract.sh minecraft.apk
