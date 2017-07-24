@@ -18,10 +18,11 @@ pkgbase = cef-minimal
 	depends = libxss
 	depends = libxtst
 	depends = libxcomposite
-	source_i686 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3071.1639.g96f7e9_linux32_minimal.tar.bz2
-	sha256sums_i686 = 9956ca56064596f1dc36a5ee4a6cba8829ae7042356ef167f86718142387379c
-	source_x86_64 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3071.1636.g2718da5_linux64_minimal.tar.bz2
-	sha256sums_x86_64 = 5c5475d4ff16951bc2443ed1bc6d7586d13cf40707580cc27fb20458e3d15055
+	depends = gtk2
+	source_i686 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3071.1649.g98725e6_linux32_minimal.tar.bz2
+	sha1sums_i686 = 28f83276ced6e957645ad54fb318e1a0fb063a6b
+	source_x86_64 = http://opensource.spotify.com/cefbuilds/cef_binary_3.3071.1649.g98725e6_linux64_minimal.tar.bz2
+	sha1sums_x86_64 = bf554a5c19e18aac5ab8f2c4ba9247f4d738e221
 
 pkgname = cef-minimal
 
