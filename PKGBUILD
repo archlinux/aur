@@ -20,7 +20,8 @@ pkgver() {
 
   git describe --tags                  \
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-    | sed 's/v//'
+    | sed 's/v//'                      \
+    | sed 's/deb//'
 }
 
 build() {
