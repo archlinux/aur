@@ -4,7 +4,7 @@
 
 _pkgname=sxhkd
 pkgname=${_pkgname}-git
-pkgver=112
+pkgver=166.a96fb0f
 pkgrel=1
 pkgdesc='A simple X hotkey daemon'
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git rev-list --count HEAD
+    echo `git rev-list --count HEAD`.`git rev-parse --short HEAD`
 }
 
 build() {
