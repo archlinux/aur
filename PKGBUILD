@@ -10,7 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=generic-service-handler
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=10
 pkgdesc='easy service handling'
 arch=('any')
