@@ -46,10 +46,16 @@ pkgbase = parallels11-tools
 
 pkgname = parallels11-tools
 	provides = parallels-tools
+	conflicts = xorg-server<1.16
+	conflicts = X-ABI-VIDEODRV_VERSION<20
+	conflicts = X-ABI-VIDEODRV_VERSION>=21
 	conflicts = parallels-tools
 
 pkgname = parallels11-tools-dkms
 	depends = dkms
 	provides = parallels-tools-dkms
+	conflicts = xorg-server<1.16
+	conflicts = X-ABI-VIDEODRV_VERSION<20
+	conflicts = X-ABI-VIDEODRV_VERSION>=21
 	conflicts = parallels-tools-dkms
 

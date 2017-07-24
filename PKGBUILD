@@ -61,7 +61,7 @@ prepare() {
 
 package_parallels11-tools() {
 	provides=(parallels-tools)
-	conflicts=(parallels-tools)
+	conflicts+=(parallels-tools)
 
 	cp -r "${srcdir}"/xorg.${XORG_VERSION}/usr "${pkgdir}"
 	# xorg.7.1 is COMMON_TOOLS_DIR
@@ -120,7 +120,7 @@ package_parallels11-tools() {
 package_parallels11-tools-dkms() {
 	depends=('dkms')
 	provides=(parallels-tools-dkms)
-	conflicts=(parallels-tools-dkms)
+	conflicts+=(parallels-tools-dkms)
 
 	_dkms_dir="${pkgdir}"/usr/src/${pkgbase}-${pkgver}
 	install -d -m 0755 "${_dkms_dir}"
