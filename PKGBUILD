@@ -5,10 +5,10 @@ _ndkver=0.3.0
 
 pkgname=nginx-mainline-mod-ndk-set-misc
 pkgver=$_setmiscver+$_ndkver
-pkgrel=5
+pkgrel=6
 
 _modname=set-misc
-_nginxver=1.13.2
+_nginxver=1.13.3
 
 pkgdesc="Various set_xxx directives added to nginx's rewrite + ngx_devel_kit (module for mainline nginx)"
 arch=('i686' 'x86_64')
@@ -24,13 +24,13 @@ source=(
 	https://github.com/simpl/ngx_devel_kit/archive/v$_ndkver/ngx_devel_kit-$_ndkver.tar.gz
 )
 
-sha256sums=('d77f234d14989d273a363f570e1d892395c006fef2ec04789be90f41a1919b70'
+sha256sums=('5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72'
             '97946a68937b50ab8637e1a90a13198fe376d801dc3e7447052e43c28e9ee7de'
             '88e05a99a8a7419066f5ae75966fb1efc409bad4522d14986da074554ae61619')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
-	./configure $(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@') \
+	./configure --with-compat \
 	  --add-dynamic-module=../ngx_devel_kit-$_ndkver \
 	  --add-dynamic-module=../$_modname-nginx-module-$_setmiscver
 	make modules
