@@ -2,7 +2,7 @@
 pkgbase=parallels12-tools
 pkgname=(parallels12-tools parallels12-tools-dkms)
 pkgver=12.2.1.41615
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
 url="https://parallels.com"
@@ -32,6 +32,7 @@ source=(
 	dir://${pkgbase}/installer/prl-x11.sh
 	dir://${pkgbase}/installer/prl-x11.service
 	dir://${pkgbase}/installer/prlfsmountd.sh
+	dir://${pkgbase}/installer/prl-functions.sh
 )
 
 sha1sums=('fdd278b5caee0647f1c062512fb83e1da4d5fdb2'
@@ -45,7 +46,8 @@ sha1sums=('fdd278b5caee0647f1c062512fb83e1da4d5fdb2'
           '32b2028480668ca8f75888de0c681c74d613864f'
           '8a20a07b905a5dcdd0b182844ff781344b78a8b5'
           'ff52471a3c6acec6f4a59e2a8f2aff6a937bf09e'
-          'b3e540bd8b1a96bfff81e1fd7f90ab978f504475')
+          'b3e540bd8b1a96bfff81e1fd7f90ab978f504475'
+          '524a64269bd1204415e7133e2e5ae821e5e03f2e')
 
 package_parallels12-tools() {
 	provides=(parallels-tools)
@@ -55,7 +57,7 @@ package_parallels12-tools() {
 
 	cp -r "${srcdir}"/xorg.${XORG_VERSION}/usr "${pkgdir}"
 	# xorg.7.1 is COMMON_TOOLS_DIR
-	cp -r "${srcdir}"/xorg.7.1/usr/bin/{prlcc,prlcp,prlsga,prldnd,prltimesync} \
+	cp -r "${srcdir}"/xorg.7.1/usr/bin/{prlcc,prlcp,prlsga,prldnd,prltimesync,prltoolsd} \
 		"${pkgdir}/usr/bin"
 
 	mkdir -p "${pkgdir}/usr/bin"
@@ -94,6 +96,9 @@ package_parallels12-tools() {
 
 	install -d -m 0755 "${pkgdir}/etc/pm/sleep.d"
 	install -m 0755 99prltoolsd-hibernate "${pkgdir}/etc/pm/sleep.d"
+
+	install -d -m 0755 "${pkgdir}/usr/lib/parallels-tools/installer"
+	install -m 0644 prl-functions.sh "${pkgdir}/usr/lib/parallels-tools/installer"
 
 	# These have very strange /usr/local rpaths, strip them out
 	#chrpath -d "${pkgdir}/usr/lib/libglx.so.1.0.0"

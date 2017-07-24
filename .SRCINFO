@@ -1,7 +1,7 @@
 pkgbase = parallels12-tools
 	pkgdesc = Parallels virtualization integration services & drivers
 	pkgver = 12.2.1.41615
-	pkgrel = 1
+	pkgrel = 2
 	url = https://parallels.com
 	arch = x86_64
 	license = custom: commercial
@@ -25,6 +25,7 @@ pkgbase = parallels12-tools
 	source = dir://parallels12-tools/installer/prl-x11.sh
 	source = dir://parallels12-tools/installer/prl-x11.service
 	source = dir://parallels12-tools/installer/prlfsmountd.sh
+	source = dir://parallels12-tools/installer/prl-functions.sh
 	sha1sums = fdd278b5caee0647f1c062512fb83e1da4d5fdb2
 	sha1sums = fa61d1eddb0d6c2130c3dbb9166e80b71c988584
 	sha1sums = 52a6c4b6cd493aac8c932a77a25efc17e0e075e5
@@ -37,6 +38,7 @@ pkgbase = parallels12-tools
 	sha1sums = 8a20a07b905a5dcdd0b182844ff781344b78a8b5
 	sha1sums = ff52471a3c6acec6f4a59e2a8f2aff6a937bf09e
 	sha1sums = b3e540bd8b1a96bfff81e1fd7f90ab978f504475
+	sha1sums = 524a64269bd1204415e7133e2e5ae821e5e03f2e
 
 pkgname = parallels12-tools
 	provides = parallels-tools
