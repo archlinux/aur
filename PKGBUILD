@@ -2,7 +2,7 @@
 
 pkgname='libcs50-git'
 _gitname='libcs50'
-pkgver=8.0.5
+pkgver=8.0.5.r0.g763a51e
 pkgrel=1
 pkgdesc="CS50 Library for C"
 arch=('x86_64' 'i686')
@@ -18,10 +18,9 @@ md5sums=('SKIP')
 pkgver() {
   cd "${_gitname}"
 
-  git describe --tags                  \
+  git describe --tags --long           \
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-    | sed 's/v//'                      \
-    | sed 's/deb//'
+    | sed 's/v//'
 }
 
 build() {
