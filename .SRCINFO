@@ -1,13 +1,15 @@
 pkgbase = shrr
-	pkgdesc = Lets you share a file or folder via HTTP
-	pkgver = 0.1
+	pkgdesc = Share files via HTTP
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/madflow/shrr
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-setuptools,
+	makedepends = python-pip
 	depends = python>=3.3,
 	depends = python-flask
+	source = https://gitlab.com/madflow/shrr/uploads/8fbbb075695c61427816039d46173821/shrr-0.1.1-py3-none-any.whl
 
 pkgname = shrr
 

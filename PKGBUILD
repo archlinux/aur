@@ -1,14 +1,16 @@
-# Maintainer: madflow <madflow@localhost>
+# Do not edit PKGBUILD directly. Edit PKGBUILD.tpl and update the setup.json file
+
+# Maintainer: madflow <madflow@web.de>
 pkgname=shrr
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Lets you share a file or folder via HTTP"
+pkgdesc="Share files via HTTP"
 arch=('any')
 url="https://gitlab.com/madflow/shrr"
 license=(MIT)
 groups=()
 depends=('python>=3.3', 'python-flask')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools', 'python-pip')
 optdepends=()
 provides=()
 conflicts=()
@@ -17,19 +19,11 @@ backup=()
 options=()
 install=
 changelog=
-source=()
+source=(https://gitlab.com/madflow/shrr/uploads/8fbbb075695c61427816039d46173821/shrr-0.1.1-py3-none-any.whl)
 noextract=()
 md5sums=() #autofill using updpkgsums
 
-build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --prefix=/usr
-  make
-}
-
 package() {
-  cd "$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgname-$pkgver"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 }
