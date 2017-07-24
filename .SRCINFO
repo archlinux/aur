@@ -1,0 +1,14 @@
+pkgbase = python-collective-checkdocs
+	pkgdesc = Distutils command to view and validate restructured text in package’s long_description
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/collective/collective.checkdocs
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-docutils
+	source = https://pypi.python.org/packages/source/c/collective.checkdocs/collective.checkdocs-0.2.zip
+	md5sums = 472a6c7cafad4ee274c905ebd1603fb3
+
+pkgname = python-collective-checkdocs
+
