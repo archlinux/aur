@@ -54,9 +54,9 @@ package() {
     make DESTDIR="${pkgdir}" install
     rm -r "$pkgdir"/usr/${_arch}/lib/ctk-*/designer
     mkdir -p "$pkgdir"/usr/${_arch}/bin
-    mv "$pkgdir"/usr/${_arch}/lib/ctk-*/*.dll "$pkgdir"/usr/${_arch}/bin/
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/ctk-*/*.a
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/lib/ctk-*/*.dll
+    cp "$pkgdir"/usr/${_arch}/lib/ctk-*/*.dll "$pkgdir"/usr/${_arch}/bin/
     cd "${srcdir}/CTK"
     cp \
       CMake/ctkFunctionGeneratePluginUseFile.cmake \
