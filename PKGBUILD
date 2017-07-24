@@ -10,7 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=proxy
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=11
 pkgdesc='automate your installation process'
 arch=('any')
