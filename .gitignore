@@ -2,6 +2,7 @@
 *.pkg.tar.xz
 *.tar.xz
 *.zip
+launcher-linux-setup*
 albion-online-setup
 pkg/
 src/

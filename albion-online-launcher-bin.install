@@ -1,0 +1,14 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  groupadd -r albion &> /dev/null
+
+    cat << "EOM"
+==> If you'd like to allow the launcher to update the game client, add your user to the albion group
+EOM
+
+  chgrp -R albion "/opt/albion-online-launcher-bin/game_x64"
+  chgrp -R albion "/opt/albion-online-launcher-bin/staging_x64"
+}
