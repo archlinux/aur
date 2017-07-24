@@ -2,14 +2,20 @@ post_install() {
   echo
   echo "To complete the installation, please add this script to your OpenVPN"
   echo "settings for each of the VPNs you wish it to manage the DNS for:"
-  echo "    setenv PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   echo "    script-security 2"
-  echo "    up /etc/openvpn/update-systemd-resolved"
-  echo "    down /etc/openvpn/update-systemd-resolved"
+  echo "    setenv PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  echo "    up /etc/openvpn/scripts/update-systemd-resolved"
+  echo "    down /etc/openvpn/scripts/update-systemd-resolved"
   echo "    down-pre"
   echo
 }
 
 post_upgrade() {
-    post_install
+  post_install
+  echo
+  echo "The path to the script has changed. Please ensure you update all your"
+  echo "configuration files to match this:"
+  echo "    up /etc/openvpn/scripts/update-systemd-resolved"
+  echo "    down /etc/openvpn/scripts/update-systemd-resolved"
+  echo
 }
