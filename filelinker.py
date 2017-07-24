@@ -44,7 +44,7 @@ try:
 except builtins.ImportError:
     pyinotify = None
 
-sys.path.append(os.environ['ILU_PUBLIC_REPOSITORY_PATH'])
+sys.path.append('./node_modules/')
 
 # # python3.5 pass
 from boostnode import convert_to_unicode
