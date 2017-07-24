@@ -24,6 +24,5 @@ noextract=()
 md5sums=('5c303a33178da9917df6b11c8a8c8adf')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 }
