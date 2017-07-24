@@ -3,22 +3,20 @@ python=python
 
 _libname=pushbullet.py
 pkgname=python-$_libname
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A simple python client for pushbullet.com."
 depends=('python-requests' 'python-magic' 'python-websocket-client')
 makedepends=('python-setuptools')
 arch=('any')
-source=(https://pypi.python.org/packages/source/p/pushbullet.py/${_libname}-${pkgver}.tar.gz)
-md5sums=('24db6917a12e1c9b3fecca102615376b')
+source=(https://github.com/randomchars/${_libname}/archive/${pkgver}.tar.gz)
+md5sums=('3ce16295be29fbc4272a47ba5c2243c9')
 
 url="https://github.com/randomchars/pushbullet.py"
 license=("MIT")
 
 build() {
     cd $srcdir/$_libname-$pkgver
-
-    sed -i 's/==/>=/g' requirements.txt
 
     $python setup.py build || return 1
 }
