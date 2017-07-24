@@ -1,7 +1,7 @@
-# Maintainer: Dan Printzell <xwildn00bx@gmail.com>
+# Maintainer: Dan Printzell <arch@vild.io>
 
 pkgname=('dfmt-git')
-pkgver=r409.a93efb6
+pkgver=r419.ea72aa5
 pkgrel=1
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
@@ -12,7 +12,6 @@ makedepends=('dmd' 'git')
 depends=('libphobos')
 provides=('dfmt')
 conflicts=('dfmt')
-options=('!strip')
 
 source=(
 	"git+https://github.com/dlang-community/dfmt"
@@ -22,28 +21,24 @@ sha256sums=(
 )
 
 pkgver() {
-	cd $srcdir/dfmt
+	cd "$srcdir/dfmt"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd $srcdir/dfmt
+	cd "$srcdir/dfmt"
 	git submodule update --init --recursive
 }
 
 build() {
-	cd $srcdir/dfmt
+	cd "$srcdir/dfmt"
 	make
 }
 
-package(){
-	cd $srcdir/dfmt
-
+package() {
 	# binaries
-	mkdir -p $pkgdir/usr/bin
-	install -m755 -t $pkgdir/usr/bin ./bin/dfmt
+	install -Dm755 "$srcdir/dfmt/bin/dfmt" "$pkgdir/usr/bin/dfmt"
 
 	# license
-	mkdir -p $pkgdir/usr/share/licenses/${pkgname}
-	install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "$srcdir/dfmt/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
