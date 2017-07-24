@@ -1,6 +1,6 @@
 pkgbase = mate-applets-dev
 	pkgdesc = Applets for MATE panel
-	pkgver = 1.17.0
+	pkgver = 1.19.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -9,16 +9,16 @@ pkgbase = mate-applets-dev
 	license = GPL
 	makedepends = docbook2x
 	makedepends = docbook-xsl
-	makedepends = mate-common-dev
+	makedepends = mate-common>=1.19
 	makedepends = yelp-tools
 	makedepends = gtksourceview3
-	makedepends = mate-panel-dev
+	makedepends = mate-panel>=1.19
 	depends = glib2
 	depends = gtksourceview2
 	depends = gtk-update-icon-cache
 	depends = libgtop
 	depends = libnotify
-	depends = mate-panel-dev
+	depends = mate-panel>=1.19
 	depends = polkit
 	depends = python2-dbus
 	depends = python2-gobject
@@ -29,8 +29,8 @@ pkgbase = mate-applets-dev
 	provides = mate-applets-gtk3
 	conflicts = mate-applets
 	conflicts = mate-applets-gtk3
-	source = http://pub.mate-desktop.org/releases/1.17/mate-applets-1.17.0.tar.xz
-	sha1sums = 64742a98be03cf89099dbdd14e7b6baf2f9a0c2f
+	source = http://pub.mate-desktop.org/releases/1.19/mate-applets-1.19.0.tar.xz
+	sha1sums = c218364c2cf8f77cc4cbb240a73e9920f055d16c
 
 pkgname = mate-applets-dev
 	pkgdesc = Applets for MATE panel (GTK3 version)
