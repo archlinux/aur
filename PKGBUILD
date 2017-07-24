@@ -44,7 +44,7 @@ if [ ! -e "meme" ]; then
 fi
 sudo cp -t meme "minecraftlauncher" "extract.sh" "LICENSE" "minecraftlauncher.desktop" "minecraftlauncher.png"
 sudo cp -r libs "meme/libs"
-cd /meme
+cd meme
 
 #Acquires apk
 printf "\nWhich method would you like to use to acquire an APK?\n"
@@ -76,9 +76,9 @@ if [[ "$answer" == "3" ]]; then
   printf "Path to APK: "
   read -e pathtoapk
   if grep "minecraft.apk" <<< echo "$pathtoapk"; then
-    sudo cp "$pathtoapk" /meme/minecraft-new.apk
+    sudo cp "$pathtoapk" meme/minecraft-new.apk
   else
-    sudo cp "$pathtoapk" /meme
+    sudo cp "$pathtoapk" meme
   fi
 fi
 
@@ -94,7 +94,7 @@ if [[ "$answer" == "1" || "$answer" == "3" ]]; then
 fi
 
 sudo ./extract.sh minecraft.apk
-sudo chmod -R 777 /meme
+sudo chmod -R 777 meme
         }
 
 check() {
