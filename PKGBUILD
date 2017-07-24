@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=8631.01e1b8bfd
+pkgver=8989.63d1d8f06
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=faust2"
 	"git+https://github.com/rukano/emacs-faust-mode.git"
 	"python2-fix.patch")
 md5sums=('SKIP' 'SKIP'
-         '6f0a99a68e1b774200a53c7140364f37')
+         '8680b87fc4e34445e02f34781ee45f19')
 
 pkgver() {
   cd $srcdir/$pkgname
