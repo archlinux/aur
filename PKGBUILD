@@ -1,35 +1,35 @@
+
+# Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurutils-git
-pkgver=1.5.0.r0.g4655b49
+pkgver=1.5.3.r170.g19a5ed9
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
+url='https://github.com/AladW/aurutils'
 arch=('any')
-url=https://github.com/AladW/aurutils
 license=('ISC')
-source=("git+$url")
-md5sums=('SKIP')
+source=('git+https://github.com/AladW/aurutils')
+sha256sums=('SKIP')
 conflicts=('aurutils')
 provides=('aurutils')
 depends=('pacman>=5.0' 'git' 'jq' 'pacutils')
 checkdepends=('shellcheck')
 makedepends=('git')
-optdepends=('devtools: systemd-nspawn support'
-	'vifm: build file interaction'
-	'aria2: threaded downloads'
-	'parallel: threaded downloads'
-	'expac: aursift script'
-	'repose: repo-add alternative')
+optdepends=('devtools: aurbuild_chroot'
+            'expac: aursift'
+            'parallel: threaded downloads'
+            'vifm: build file interaction')
 
 pkgver() {
-  cd aurutils
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+    cd aurutils
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 check() {
-  cd aurutils
-  make check
+    cd aurutils
+    make check
 }
 
 package() {
-  cd aurutils
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+    cd aurutils
+    make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
