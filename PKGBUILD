@@ -21,7 +21,7 @@ install=
 changelog=
 source=(https://gitlab.com/madflow/shrr/uploads/8fbbb075695c61427816039d46173821/shrr-0.1.1-py3-none-any.whl)
 noextract=()
-md5sums=() #autofill using updpkgsums
+md5sums=('5c303a33178da9917df6b11c8a8c8adf')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
