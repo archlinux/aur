@@ -1,14 +1,14 @@
 pkgbase = servedir
 	pkgdesc = Simple tool for sharing and uploading files through HTTP protocol.
-	pkgver = 0.2.r0.g6721fc2
-	pkgrel = 1
+	pkgver = 0.2
+	pkgrel = 2
 	url = https://github.com/mikolajb/servedir
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	source = servedir::git+https://github.com/mikolajb/servedir.git
-	sha256sums = SKIP
+	source = servedir-0.2.tar.gz::https://github.com/mikolajb/servedir/archive/0.2.tar.gz
+	sha256sums = 200b87f62706807d12cbcb5ecadc2caf73299aeb47804a9dd19b7d2bee5b4747
 
 pkgname = servedir
 
