@@ -1,4 +1,4 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Jesús Castro <51v4n@openmailbox.org>
 pkgname=freebsd-man-pages
 pkgver=11.0
 pkgrel=2
