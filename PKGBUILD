@@ -5,8 +5,8 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.17.5
-pkgrel=3
+pkgver=2.17.9
+pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="http://packages.qa.debian.org/d/devscripts.html"
@@ -18,6 +18,7 @@ makedepends=(
     'bash-completion'
     'git'
     'perl-file-desktopentry'
+    'perl-file-homedir'
     'perl-file-basedir'
     'perl-git-wrapper'
     'perl-libwww'
@@ -34,11 +35,15 @@ source=(
 	fixes.patch
 )
 sha256sums=('SKIP'
-            '9d038e5425848734874a03e2bdc0c8b86b1f42e9626f37dd916c1b7d73ad9141')
+            'e5fef21e1d8aee3128c6499078bc2f38e8f80189b30882df817637388f1e7717')
+
+prepare(){
+  cd "$pkgname"
+  patch -p1 -i "$srcdir/fixes.patch"
+}
 
 build() {
   cd "$pkgname"
-  patch -p1 -i "$srcdir/fixes.patch"
   make
 }
 

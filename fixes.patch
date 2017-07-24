@@ -1,5 +1,5 @@
 diff --git a/po4a/Makefile b/po4a/Makefile
-index f19b24df..0c0dcd35 100644
+index f19b24df..6a43f037 100644
 --- a/po4a/Makefile
 +++ b/po4a/Makefile
 @@ -28,7 +28,7 @@ de/%.de.1: de/%.de.pod translate
@@ -7,7 +7,7 @@ index f19b24df..0c0dcd35 100644
  de/%.de.1: de/%.de.dbk translate
  	xsltproc --nonet -o $@ \
 -	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
-+	  /usr/share/xml/docbook/xsl-stylesheets-1.79.1/manpages/docbook.xsl $<
++	  /usr/share/xml/docbook/xsl-stylesheets-1.79.2/manpages/docbook.xsl $<
  # xsltproc writes out to foo.1 even if you tell it to do otherwise, so we have
  # to rename the file after it's generated
  	mv de/$*.1 $@
@@ -16,24 +16,24 @@ index f19b24df..0c0dcd35 100644
  fr/%.fr.1: fr/%.fr.dbk translate
  	xsltproc --nonet -o $@ \
 -	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
-+	  /usr/share/xml/docbook/xsl-stylesheets-1.79.1/manpages/docbook.xsl $<
++	  /usr/share/xml/docbook/xsl-stylesheets-1.79.2/manpages/docbook.xsl $<
  # xsltproc writes out to foo.1 even if you tell it to do otherwise, so we have
  # to rename the file after it's generated
  	mv fr/$*.1 $@
 diff --git a/scripts/Makefile b/scripts/Makefile
-index 931143a5..4696472c 100644
+index ece5455a..78bdb942 100644
 --- a/scripts/Makefile
 +++ b/scripts/Makefile
-@@ -63,7 +63,7 @@ endif
+@@ -64,7 +64,7 @@ endif
  	pod2man --utf8 --center=" " --release="Debian Utilities" $< > $@
  %.1: %.dbk
  	xsltproc --nonet -o $@ \
 -	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
-+	  /usr/share/xml/docbook/xsl-stylesheets-1.79.1/manpages/docbook.xsl $<
++	  /usr/share/xml/docbook/xsl-stylesheets-1.79.2/manpages/docbook.xsl $<
  
  # There is a slight chance this gets called twice, once here from here and once
  # from ../po4a/Makefile. Treat files with care.
-@@ -92,7 +92,7 @@ test:
+@@ -93,7 +93,7 @@ test:
  	$(foreach python,$(shell py3versions -r ../debian/control),$(python) setup.py test$(\n))
  
  install: all
