@@ -1,4 +1,4 @@
-# Maintainer: Dan Printzell <xwildn00bx@gmail.com>
+# Maintainer: Dan Printzell <arch@vild.io>
 
 pkgname=('dscanner')
 pkgver=0.4.0
@@ -12,7 +12,6 @@ makedepends=('dmd' 'git')
 depends=('libphobos')
 provides=('dscanner')
 conflicts=('dscanner')
-options=('!strip')
 
 source=(
 	"git+https://github.com/dlang-community/D-Scanner#tag=v${pkgver}"
@@ -22,25 +21,19 @@ sha256sums=(
 )
 
 prepare() {
-	cd $srcdir/D-Scanner
+	cd "$srcdir/D-Scanner"
 	git submodule update --init --recursive
 }
 
 build() {
-	cd $srcdir/D-Scanner
+	cd "$srcdir/D-Scanner"
 	make
-
-	strip bin/dscanner
 }
 
-package(){
-	cd $srcdir/D-Scanner
-
+package() {
 	# binaries
-	mkdir -p $pkgdir/usr/bin
-	install -m755 -t $pkgdir/usr/bin ./bin/dscanner
+	install -Dm755 "$srcdir/D-Scanner/bin/dscanner" "$pkgdir/usr/bin/dscanner"
 
 	# license
-	mkdir -p $pkgdir/usr/share/licenses/${pkgname}
-	install -m644 LICENSE_1_0.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "$srcdir/D-Scanner/LICENSE_1_0.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
