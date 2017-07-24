@@ -1,46 +1,36 @@
 # Maintainer: Mikołaj Baranowski <mikolajb@gmail.com>
 
 pkgname=wallpaper-switch
-pkgver=0.2.r0.g42536ed
+pkgver=0.3
 pkgrel=1
 pkgdesc='Runs in backgroud and changes Gnome backgroud to NASA picture of the day.'
 license=('MIT')
 arch=('x86_64' 'i686')
 url='https://github.com/mikolajb/wallpaper-switch'
 depends=()
-makedepends=('go')
-source=("${pkgname}::git+http://github.com/mikolajb/wallpaper-switch")
-sha256sums=('SKIP')
-_gotoml=github.com/BurntSushi/toml
-_gogouuid=github.com/nu7hatch/gouuid
-_gohtml=golang.org/x/net/html
-
-pkgver() {
-  cd ${srcdir}/${pkgname}/
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+makedepends=('go' 'glide')
+source=("${pkgname}-${pkgver}::https://github.com/mikolajb/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('ef78605575b5466d4e0974a44efbb3b0c53542cbaa559cf9d3b01776e083da24')
 
 build() {
+  msg2 'Settgin GOPATH'
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"
+  mkdir -p "${GOPATH}/src/github.com/mikolajb"
+  ln -sf "$(pwd)" "${GOPATH}/src/github.com/mikolajb/${pkgname}"
+  cd "${GOPATH}/src/github.com/mikolajb/${pkgname}"
+
+  msg2 'Fetching dependencies...'
+  glide install
+
   msg2 'Compiling...'
-
-  GOPATH="$srcdir" go get -fix -v -x ${_gotoml}/
-  GOPATH="$srcdir" go get -fix -v -x ${_gogouuid}/
-  GOPATH="$srcdir" go get -fix -v -x ${_gohtml}/
-
-  cd ${srcdir}/${pkgname}/
-  GOPATH="$GOPATH:$srcdir" go build -o wallpaper-switch
+  go build -o wallpaper-switch
 }
-
-# check() {
-#   GOPATH="$GOPATH:$srcdir" go test -v -x ${_gotoml}/...
-#   GOPATH="$GOPATH:$srcdir" go test -v -x ${_gogouuid}/...
-#   GOPATH="$GOPATH:$srcdir" go test -v -x ${_gohtml}/...
-# }
 
 package() {
   msg2 'Installing...'
 
-  install -Dm755 ${srcdir}/${pkgname}/wallpaper-switch ${pkgdir}/usr/bin/wallpaper-switch
-  install -Dm644 ${srcdir}/${pkgname}/wallpaper-switch.service ${pkgdir}/usr/lib/systemd/user/wallpaper-switch.service
-  install -Dm644 ${srcdir}/${pkgname}/wallpaper-switch.timer ${pkgdir}/usr/lib/systemd/user/wallpaper-switch.timer
+  install -Dm755 ${srcdir}/${pkgname}-${pkgver}/wallpaper-switch ${pkgdir}/usr/bin/wallpaper-switch
+  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/wallpaper-switch.service ${pkgdir}/usr/lib/systemd/user/wallpaper-switch.service
+  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/wallpaper-switch.timer ${pkgdir}/usr/lib/systemd/user/wallpaper-switch.timer
 }
