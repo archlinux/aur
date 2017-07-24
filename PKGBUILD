@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=4851.967be1faa
+pkgver=4973.bb77cc5bb
 pkgrel=1
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev
 	"git+https://github.com/rukano/emacs-faust-mode.git"
 	"python2-fix.patch")
 md5sums=('SKIP' 'SKIP'
-         '6f0a99a68e1b774200a53c7140364f37')
+         '8680b87fc4e34445e02f34781ee45f19')
 
 pkgver() {
   cd $srcdir/$pkgname
