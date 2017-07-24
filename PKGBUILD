@@ -25,7 +25,7 @@ depends=("glibc>=2.9" "qt5-base>=5.2.1" "qt5-script>=5.2.1" "qt5-webkit>=5.1.1"
          "libcurl-openssl-1.0" "iproute" "net-tools" "c-ares>=1.10.0")
 
 package() {
-	cd "${srcdir}"
+  cd "${srcdir}"
 
   # Extract the package
   tar --extract --file data.tar.xz --directory "${pkgdir}"
@@ -43,7 +43,7 @@ package() {
 
   # Copy the wrapper file
   mv "${pkgdir}/usr/bin/vpn-unlimited" "${pkgdir}/usr/share/vpn-unlimited/"
-  install -Dm755 "${srcdir}/vpn-unlimited" "${pkgdir}/usr/bin/"
+  install -Dm755 "${srcdir}/vpn-unlimited" "${pkgdir}/usr/bin/vpn-unlimited"
 
   # Copy the license file
   install -Dm644 "${pkgdir}/usr/share/doc/vpn-unlimited/copyright" \
