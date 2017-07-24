@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-passenger
-pkgver=5.1.4
-pkgrel=3
+pkgver=5.1.6
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.13.3
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=('5b73f98004c302fb8e4a172abf046d9ce77739a82487e4873b39f9b0dcbb0d72'
-            '8e96a39eb7a07a8455fc3d22337e1981e77c67477796b8d54094c2dbcf4e61c8')
+            'ecca42b736e24afeaf318ad6eff565213a81df3a7a525340ddfe5478a3e0825e')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
