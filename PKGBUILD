@@ -1,38 +1,27 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 pkgname=qarte
-pkgver=3.1.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.'
 url='https://launchpad.net/qarte'
-arch=('i686' 'x86_64')
+arch=('any')
 license=('GPL3')
 source=(http://ppa.launchpad.net/vincent-vandevyvre/vvv/ubuntu/pool/main/q/qarte/${pkgname}_${pkgver}.orig.tar.gz)
 depends=('qt5-translations' 'python-pyqt5')
 optdepends=('cronie: for differed download')
-md5sums=('5f8a304d0e5d4a4589788443a0362639')
+sha256sums=('f1f03975fe3129fb6aad90efb438e7311e6e0ec83a7c08f1593cb3d6d6922db7')
 
 package() {
-	cd $srcdir/${pkgname}-${pkgver}
+  cd $pkgname-$pkgver
 
-	# Man compression
-	gzip qarte.1
+  install -Dm755 qarte "$pkgdir"/usr/bin/qarte
+  install -Dm644 qarte.1 "$pkgdir"/usr/share/man/man1/qarte.1
+  install -Dm644 q_arte.desktop "$pkgdir"/usr/share/applications/q_arte.desktop
+  install -Dm644 qarte.png "$pkgdir"/usr/share/pixmaps/qarte.png
 
-	bin_dir="$pkgdir/usr/bin"
-	man_dir="$pkgdir/usr/share/man/man1"
-	application_dir="$pkgdir/usr/share/applications"
-	pixmaps_dir="$pkgdir/usr/share/pixmaps"
-	qarte_dir="$pkgdir/usr/share/${pkgname}"
+  install -d "$pkgdir"/usr/share/qarte
+  cp -rp * "$pkgdir"/usr/share/qarte
 
-	mkdir -p $bin_dir
-	mkdir -p $man_dir
-	mkdir -p $application_dir
-	mkdir -p $pixmaps_dir
-	mkdir -p $qarte_dir
-
-	mv qarte $bin_dir
-	mv qarte.1.gz $man_dir
-	mv q_arte.desktop $application_dir
-	mv qarte.png $pixmaps_dir
-	chmod 0644 $pixmaps_dir/qarte.png
-	mv * $qarte_dir
+  mv "$pkgdir"/usr/share/qarte/locale "$pkgdir"/usr/share
+  rm "$pkgdir"/usr/share/qarte/{qarte,qarte.1,q_arte.desktop,qarte.png}
 }
