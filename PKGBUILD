@@ -4,7 +4,7 @@
 _gemname=glib2
 pkgname=ruby-$_gemname
 pkgver=3.1.8
-pkgrel=2
+pkgrel=1
 pkgdesc='Ruby/GLib2 is a Ruby binding of GLib-2.x.'
 arch=(i686 x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
