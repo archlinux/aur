@@ -2,7 +2,7 @@
 
 pkgname=('workspace-d')
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wraps dcd, dfmt and dscanner to one unified environment managed by dub"
 arch=('i686' 'x86_64')
 url="https://github.com/Pure-D/workspace-d"
@@ -21,21 +21,20 @@ sha256sums=(
 )
 
 prepare() {
-	cd $srcdir/workspace-d
+	cd "$srcdir/workspace-d"
 	git submodule update --init --recursive
 	dub upgrade
 }
 
 build() {
-	cd $srcdir/workspace-d
+	cd "$srcdir/workspace-d"
 	dub build
-	strip workspace-d
 }
 
-package(){
-	cd $srcdir/workspace-d
-
+package() {
 	# binaries
-	mkdir -p $pkgdir/usr/bin
-	install -m755 -t $pkgdir/usr/bin ./workspace-d
+	install -Dm755 "$srcdir/workspace-d/workspace-d" "$pkgdir/usr/bin/workspace-d"
+
+	# license
+	install -Dm644 "$srcdir/workspace-d/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
