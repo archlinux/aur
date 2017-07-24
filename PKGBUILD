@@ -2,7 +2,7 @@
 
 pkgname="python-pypillowfight"
 _pkgname="pypillowfight"
-pkgver="0.2.1"
+pkgver="0.2.2"
 pkgrel="1"
 pkgdesc="Library containing various image processing algorithms"
 url="https://github.com/jflesch/libpillowfight"
@@ -12,7 +12,7 @@ license=('GPL3')
 arch=('any')
 changelog="ChangeLog"
 source=("https://github.com/jflesch/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('cf372a544d90d3cf29f3ec89fa3ebee5')
+md5sums=('6fafd282c5ff1b6edde728d80bc7c0d6')
 
 build() {
     cd ${srcdir}/libpillowfight-${pkgver}
