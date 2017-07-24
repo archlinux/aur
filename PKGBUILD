@@ -23,7 +23,7 @@ sha256sums=('ac658672952419e786c876e9c96b61e52036326bbb3d7942a7603b8f48290988'
 		'5d5c2619045c83428dc85145b42041a43ec148e462a1ddab7ba283caffa17a13'
 		'e5edbba14326e507f5272356acc587ef62fb40b2854f0719d304312ff43fc5bc'
 		'80cbfc60432811b9b48306cb294a70830c1531f36279933263daf2e99311acd2'
-		'ed96f9e4cf3af7b0f77b3ea67428362f9dc1f954a97febd63111cbd998973f95'
+		'9f22e57b50dcb097d60e739b3d4c00ccb2693526a4d518e26990e761de21a058'
 		'7ea6dc9c9d5b4eb5f7834493ac403234643cb40b9753d691dba6ce96d2ab896a'
 		'7ea6dc9c9d5b4eb5f7834493ac403234643cb40b9753d691dba6ce96d2ab896a'
 		'7ea6dc9c9d5b4eb5f7834493ac403234643cb40b9753d691dba6ce96d2ab896a'		
@@ -34,7 +34,7 @@ options=(!strip)
 package() {
 
   install -dm 755 $pkgdir/{opt,/usr/{share/{applications,icons/$pkgname},lib/sysusers.d,bin},/etc/udev/rules.d}
-  cp -r "${srcdir}/${orginalname}" $pkgdir/opt
+  cp -r "${srcdir}/${orginalname}" $pkgdir/opt/$pkgname
   chmod -R 755 $pkgdir/opt/$pkgname
   install -dm 777 $pkgdir/opt/$pkgname/mblock-setting
   
