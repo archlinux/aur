@@ -1,6 +1,6 @@
 # Maintainer: inori <github.com/inoriy>
 pkgname=astra
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="VC/PM identifiers for bash"
 
