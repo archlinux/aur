@@ -2,7 +2,7 @@
 
 pkgname=('dfmt')
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Dfmt is a formatter for D source code "
 arch=('i686' 'x86_64')
 url="https://github.com/dlang-community/dfmt"
@@ -10,19 +10,22 @@ license=("BSL")
 groups=('dlang')
 makedepends=('dmd' 'git')
 depends=('libphobos')
-provides=('dfmt')
-conflicts=('dfmt')
 
 source=(
-	"git+https://github.com/dlang-community/dfmt#tag=v${pkgver}"
+	"git+https://github.com/dlang-community/dfmt#tag=v$pkgver"
+	"git+https://github.com/Hackerpilot/libdparse"
 )
 sha256sums=(
+	'SKIP'
 	'SKIP'
 )
 
 prepare() {
 	cd "$srcdir/dfmt"
-	git submodule update --init --recursive
+
+	git submodule init
+	git config submodule.libdparse.url "$srcdir/libdparse"
+	git submodule update
 }
 
 build() {
