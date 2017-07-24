@@ -1,6 +1,6 @@
 # Maintainer: Zdenek Janak <janak@astronomie.cz>
 pkgname=munipack
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="A general astronomical image processing software"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=(gcc-fortran)
 optdepends=('fitspng: for FITS to PNG conversion'
             'rawtran: for RAW to FITS conversion')
 source=(ftp://integral.physics.muni.cz/pub/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('68a296488126d3c8324c48c221b37b31')
+md5sums=('e95008291ee3cfb10d51893acb35a24f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
