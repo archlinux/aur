@@ -1,28 +1,37 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+# Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot-bzr
-pkgver=2.0.r541
+pkgver=2.3.4.r825
 pkgrel=1
 epoch=1
-pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
+pkgdesc='An open-source, non-linear video editor for Linux based on MLT framework (bzr version)'
 arch=('any')
-url="http://www.openshotvideo.com/"
+url='http://www.openshot.org/'
 license=('GPL')
-conflicts=(openshot)
-depends=('python' 'python-pyqt5' 'desktop-file-utils' 'shared-mime-info' 'libopenshot' 'qt5-webkit' 'python-pyzmq' 'python-httplib2')
-makedepends=('bzr')
-install=openshot.install
-source=(bzr+lp:openshot/2.0)
-md5sums=('SKIP')
+depends=('mlt-python-bindings' 'sdl' 'librsvg' 'mplayer'
+         'pyxdg' 'python-pyqt5' 'python-httplib2' 'python-pillow' 'dvgrab'
+         'ladspa' 'sox' 'vid.stab' 'qt5-svg' 'sdl_image'
+         'libopenshot' 'python-pyzmq' 'qt5-webkit' 'python-setuptools'
+         'python-requests')
+makedepends=('bzr' 'python-setuptools')
+optdepends=('frei0r-plugins: effects'
+            'libquicktime' 'libavc1394' 'faac' 'jack' 'jack-rack')
+provides=('openshot')
+conflicts=('openshot')
+source=("$pkgname"::'bzr+lp:openshot/2.0')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd $srcdir/2.0
-    printf "2.0.r%s" "$(bzr revno)"
+    cd "$pkgname"
+    local _version="$(grep '^VERSION = .*' src/classes/info.py | sed 's/^VERSION = //;s/-.*$//;s/["]//g')"
+    local _revision="$(bzr revno)"
+    printf '%s.r%s' "$_version" "$_revision"
 }
 
 package() {
-  cd $srcdir/2.0
-  python setup.py install --root=$pkgdir/ --optimize=1
+  cd "$pkgname"
+  python setup.py install --root="$pkgdir" --optimize='1'
 }
