@@ -1,6 +1,6 @@
 pkgbase = gns3-server-git
 	pkgdesc = GNS3 network simulator. Server package.
-	pkgver = 2.0.3
+	pkgver = 2.1.0a1
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
@@ -25,9 +25,9 @@ pkgbase = gns3-server-git
 	provides = gns3-server
 	conflicts = gns3-server
 	replaces = gns3-server
-	source = gns3-server-2.0.3.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.0.3.tar.gz
+	source = gns3-server-2.1.0a1.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.1.0a1.tar.gz
 	source = gns3-server@.service
-	md5sums = 63ae2f4c276aa5f6bf07f38b46372f0f
+	md5sums = ac5b1782f1eec49faaf857afe3ed1bee
 	md5sums = 3dcc54e56818a62859d0e7614e2aaa18
 
 pkgname = gns3-server-git
