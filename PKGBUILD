@@ -11,7 +11,7 @@ url="https://github.com/zaufi/kate-cpp-helper-plugin"
 license=('GPL')
 depends=('boost' 'clang>=3.3' 'kdesdk-kate' 'xapian-core')
 makedepends=('automoc4' 'cmake')
-source=("http://kde-apps.org/CONTENT/content-files/148606-${_pkgname}-${pkgver}.tar.bz2")
+source=("https://dl.opendesktop.org/api/files/download/id/1466627965/148606-${_pkgname}-${pkgver}.tar.bz2")
 md5sums=('d7d21b39548bbe2e99032f718afc2c32')
 
 prepare() {
