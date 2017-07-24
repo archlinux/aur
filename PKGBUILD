@@ -1,3 +1,4 @@
+# Maintainer: Colin Reeder <vpzomtrrfrt@gmail.com>
 pkgname=wunderlistux-bin
 pkgver=0.0.8
 pkgrel=1
