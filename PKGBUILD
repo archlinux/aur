@@ -2,7 +2,7 @@
 
 pkgname=minecraft-linux
 pkgver=20170724.r116.7eb21ad
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
 url="https://kris27mc.github.io"
@@ -94,7 +94,7 @@ if [[ "$answer" == "1" || "$answer" == "3" ]]; then
 fi
 
 sudo ./extract.sh minecraft.apk
-sudo chmod -R 777 meme
+sudo chmod -R 777 *
         }
 
 check() {
