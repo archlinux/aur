@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url='https://github.com/mikolajb/wallpaper-switch'
 depends=()
 makedepends=('go' 'glide')
-source=("${pkgname}-${pkgver}::https://github.com/mikolajb/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mikolajb/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('ef78605575b5466d4e0974a44efbb3b0c53542cbaa559cf9d3b01776e083da24')
 
 build() {
