@@ -1,9 +1,9 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=c91b8831e16a2be13b8a24bd7b2eabbc120916a6d
+pkgver=c309b2af8238317142a3ca418e4fde8b8f8a155c7
 pkgrel=1
 conflicts=("kshare")
-pkgdesc="A ShareX inspired cross platform utility written with Qt."
+pkgdesc="The free and open source and cross platform screen sharing software."
 arch=('i686' 'x86_64')
 url="https://github.com/ArsenArsen/KShare"
 license=('MIT')
