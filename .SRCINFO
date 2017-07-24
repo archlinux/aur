@@ -1,0 +1,14 @@
+pkgbase = pet-bin
+	pkgdesc = Simple command-line snippet manager, written in Go.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/knqyf263/pet
+	arch = x86_64
+	license = MIT
+	provides = pet-bin
+	conflicts = pet-bin
+	source = pet_0.2.3_linux_amd64.zip::https://github.com/knqyf263/pet/releases/download/v0.2.3/pet_0.2.3_linux_amd64.zip
+	md5sums = 5da43e150d099135f025be76a582f8a0
+
+pkgname = pet-bin
+
