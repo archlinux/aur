@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=mcpelauncher-linux
-pkgver=20170724.r104.fb2d62c
+pkgver=20170724.r105.5478043
 pkgrel=1
 pkgdesc="Minecraft PE launcher for Linux"
 arch=('x86_64')
@@ -102,17 +102,6 @@ fi
 
   #Creates desktop launcher
   sudo cp mcpelauncher.desktop /usr/share/applications
-  if [[ ! -e "/usr/bin/mcpelauncher" ]]; then
-  sudo ln -s /usr/share/mcpelauncher/mcpelauncher /usr/bin/mcpelauncher
-  fi
-
-  #printf "\nWould you like to create a shortcut on your desktop? (y/n)\n"
-  #read input
-  #if [[ $input == "Y" || "$input" == "y" ]]; then
-  #  printf "Creating a shortcut..."
-  #  cp mcpelauncher.desktop ~/Desktop
-  #else
-  #  printf "No desktop shortcut created."
-  #fi
+  
 }
 md5sums=('SKIP')
