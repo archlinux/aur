@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=20170724.r117.7c940ea
+pkgver=20170724.r118.5b69c88
 pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
@@ -56,7 +56,7 @@ package(){
 
   #Moves files to directory
   install -Dm755 "minecraftlauncher" "$pkgdir/usr/share/minecraftlauncher"
-  install -Dm644 "minecraftlauncher.desktop" "$pkgdir/usr/share/minecraftlauncher"
+  install -Dm644 "minecraftlauncher.desktop" "$pkgdir/usr/share/applications"
   install -Dm644 "minecraftlauncher.png" "$pkgdir/usr/share/minecraftlauncher"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/minecraftlauncher"
   install -dm755 "libs" "$pkgdir/usr/share/minecraftlauncher"
