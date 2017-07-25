@@ -56,5 +56,5 @@ build() {
 package() {
   make -C py2 DESTDIR="$pkgdir" install
   make -C py3 DESTDIR="$pkgdir" install
-  install -Dm644 "libtorrent/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "libtorrent/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
