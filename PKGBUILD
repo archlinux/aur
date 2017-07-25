@@ -1,9 +1,12 @@
 # Maintainer: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
+# ToDo: Enable propretary codec
+# Bugs: Permission issue, wants to write to /opt/depot_tools/external_bin chmod -R a+w :/
+
 pkgname=nwjs
 pkgver=0.23.6
-pkgrel=3
+pkgrel=4
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
@@ -38,7 +41,23 @@ build() {
   export PATH="${srcdir}/path:$PATH"
 
   gclient config --name=src https://github.com/nwjs/chromium.src.git@origin/nw17
+  gclient sync --with_branch_heads --nohooks
+
+  mv "${srcdir}/nw.js-nw-v${pkgver}" src/content/nw
+  mv "${srcdir}/node-nw-v${pkgver}" src/third_party/node-nw
+  mv "${srcdir}/v8-nw-v${pkgver}" src/v8
+
   gclient sync --with_branch_heads
+
+  cd src
+  gn gen out/nw
+
+  GYP_CHROMIUM_NO_ACTION=0 ./build/gyp_chromium -I third_party/node-nw/common.gypi third_party/node-nw/node.gyp
+
+  ninja -C out/nw nwjs
+  ninja -C out/Release node
+  ninja -C out/nw copy_node
+
 }
 
 package() {
