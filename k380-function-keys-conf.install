@@ -1,0 +1,8 @@
+post_install() {
+    echo "Reloading udev rules"
+    udevadm control --reload
+}
+
+post_upgrade() {
+    post_install
+}
