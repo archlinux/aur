@@ -10,7 +10,7 @@
 
 pkgname=qtcreator-opt-git
 pkgver=4.3.0.r592.g345680a159
-_pkgcommit=345680a159b4c09ee40411f81cd9b2151675312f
+_pkgcommit=6979a8f2f5f622edcf08efd337d62d5c62eac926
 pkgrel=4
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')

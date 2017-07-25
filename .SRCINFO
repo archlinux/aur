@@ -28,7 +28,7 @@ pkgbase = qtcreator-opt-git
 	options = docs
 	options = debug
 	options = strip
-	source = git+https://code.qt.io/qt-creator/qt-creator.git#commit=345680a159b4c09ee40411f81cd9b2151675312f
+	source = git+https://code.qt.io/qt-creator/qt-creator.git#commit=6979a8f2f5f622edcf08efd337d62d5c62eac926
 	source = git+https://code.qt.io/qt-labs/qbs.git
 	source = QtProject-QtCreator-opt-git.xml
 	source = qtcreator-opt-git.1
