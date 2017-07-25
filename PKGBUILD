@@ -4,7 +4,7 @@
 pkgname=waterfox-kde
 _pkgname=Waterfox
 pkgver=54.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -81,6 +81,9 @@ ac_add_options --enable-optimize="-O3 -msse2 -mfpmath=sse -march=native -mtune=n
 ac_add_options --target=x86_64-pc-linux-gnu
 ac_add_options --with-ccache=ccache
 
+# If you have pulse audio, uncomment this line:
+# ac_add_options --enable-pulseaudio
+
 # If you have pulse audio, comment this line:
 ac_add_options --disable-pulseaudio 
 
@@ -96,9 +99,6 @@ mk_add_options MOZ_MAKE_FLAGS=-j6
 ac_add_options --prefix=/usr
 ac_add_options --libdir=/opt
 
-ac_add_options --enable-release
-ac_add_options --enable-application=browser
-ac_add_options --enable-eme=widevine
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
 ac_add_options --with-branding=browser/branding/official
@@ -123,13 +123,6 @@ ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
 ac_add_options --enable-system-pixman
 ac_add_options --disable-libproxy
-
-# Enable wanted features
-ac_add_options --enable-jemalloc
-ac_add_options --enable-gio 
-ac_add_options --with-pthreads
-ac_add_options --enable-strip
-ac_add_options --enable-startup-notification
 
 # Disable unwanted features
 ac_add_options --disable-crashreporter
@@ -159,7 +152,16 @@ ac_add_options --disable-webrtc
 # If you want to have gamepad support, comment this line:
 ac_add_options --disable-gamepad
 
-# vim:set ft=sh:
+# Enable wanted features
+ac_add_options --enable-jemalloc
+ac_add_options --enable-gio 
+ac_add_options --with-pthreads
+ac_add_options --enable-strip
+ac_add_options --enable-startup-notification
+ac_add_options --enable-release
+ac_add_options --enable-application=browser
+ac_add_options --enable-eme=widevine
+
 END
 
   msg "Patching for KDE"
