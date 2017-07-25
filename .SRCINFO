@@ -1,13 +1,13 @@
 pkgbase = emacs-minimap
 	pkgdesc = Minimap for emacs
-	pkgver = 20150224
+	pkgver = 1.2
 	pkgrel = 1
 	url = http://www.emacswiki.org/emacs/MiniMap
 	arch = any
 	license = GPL
 	depends = emacs
-	source = git://github.com/dengste/minimap
-	md5sums = SKIP
+	source = emacs-minimap-1.2.zip::https://github.com/dengste/minimap/archive/master.zip
+	md5sums = 6d87f14e55833af30e2354441c969ea9
 
 pkgname = emacs-minimap
 
