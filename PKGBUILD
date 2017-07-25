@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=igv
-pkgver=2.3.97
+pkgver=2.3.98
 pkgrel=1
 pkgdesc="High-performance visualization tool for interactive exploration of large, integrated genomic datasets."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('java-environment' 'sh')
 source=("http://www.broadinstitute.org/igv/projects/downloads/IGV_$pkgver.zip" \
 	"http://www.broadinstitute.org/software/igv/sites/cancerinformatics.org.igv/files/images/tools.png" \
   "$pkgname.sh" "$pkgname.desktop")
-sha512sums=('a43a95c49bf0e39d7503dfc51fc9166ff31acd58e297325a6d874b3e29caa59d0e3e65ed1b56845b23390802b56f04297083849cf354e831c6ffa974f1838fd6'
+sha512sums=('e8b2f4f3a1dcaaff043646fd748d939a2e6b114c3ff5c3ab8cfa8d33e0269b85b3c62efd790103ee56f60878cabf0a8f85b864324f5c1733d81bc4829bf97a76'
             'e71a0dc70c717b3db00268632500b5723b8cddb1ecfbd8ce48b77ffad59bf93a8d275cc5ebd18b9eb1025200438ac55ec348def343b1b5f72a2c982b5dc4cc90'
             'bfda39fac975ce8112a0060b28e7e5bfd5bb4db9481f091c0da487dd3b974803de000bea3b6d4d6378cee04f7cd45955b648c6fb62779044703fb18ba0eced30'
             '32249be8c636570a9f2a9700cbd8a43613c3837e81df4bd9baa2b6ec9cf70b45bd28c0f597e5fc899a6fad22a66b0e8f8baf01952efae2e84ca986e1232163d0')
