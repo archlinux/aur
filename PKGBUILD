@@ -1,7 +1,7 @@
 # Maintainer: Alexander Drozdov <adrozdoff@gmail.com>
 pkgname=qtcreator-cmakeprojectmanager2-plugin-opt-git
 pkgver=4.3.82.r706.1945b3a
-_pkgcommit=1945b3a0e9dc95c387eed057f2228e25c56e9a58
+_pkgcommit=3787eb71e47b4fe3dedf087312a3014c6b3ef04e
 _pkgbranch=master
 pkgrel=2
 pkgdesc="Enhanced CMake Project Manager plugin for Qt Creator."
