@@ -1,0 +1,16 @@
+pkgbase = texlive-slashbox
+	pkgdesc = A LaTeX package for producing split cell.
+	pkgver = 1993.05.27
+	pkgrel = 1
+	url = https://ctan.org/pkg/slashbox
+	install = texlive-slashbox.install
+	arch = any
+	license = unknown
+	depends = texlive-core
+	source = http://mirrors.ctan.org/macros/latex/contrib/slashbox/slashbox.sty
+	source = http://mirrors.ctan.org/macros/latex/contrib/slashbox/slashbox.tex
+	md5sums = ce2190dc09125c3010b0dfd2226dd182
+	md5sums = f8479d69e1d4e5583adb36d224cc10b6
+
+pkgname = texlive-slashbox
+

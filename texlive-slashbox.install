@@ -1,0 +1,16 @@
+post_install() {
+    post_remove
+    echo "The files was installed in:"
+    kpsewhich slashbox.sty
+    kpsewhich slashbox.tex
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "Upgrading package database..."
+    texhash
+}
+
