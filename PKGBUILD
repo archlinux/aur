@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.8.10
-_strver=0-8-10
+pkgver=0.9.0
+_strver=0-9-0
 pkgrel=1
 pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
@@ -40,14 +40,14 @@ source_i686=(
   "${pkgname}-${_strver}-32.deb::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux32-${_strver}.deb"
 )
 sha256sums_i686=(
-  "8b6a66a1ca3dd27a8fb1a5ae56feee718fd97d3602205ca1b82a767a0c861b55"
+  "5ad1aa5723c7ecf63bcb3066df354b40232082c9768b62f600d48bd11e3639d5"
 )
 source_x86_64=(
   "${pkgname}-${_strver}-64.deb::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux64-${_strver}.deb"
 
 )
 sha256sums_x86_64=(
-  "92c3cfad2d9b93cfe4b222aad5f24b965bf367686d78ddecfc624427a0a7ae96"
+  "8af076ed1b601651a5a767d39443585c5a5c2b3d8c9adb457aec3c3ad9f640a0"
 )
 
 prepare() {
@@ -72,6 +72,7 @@ package() {
 
   install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
+  sed -i 's/Exec="\/opt\/Mist\/mist"/Exec="\/usr\/bin\/mist"/' "${pkgdir}/usr/share/applications/mist.desktop";
 
   msg2 'Installing Libnode...'
   install -d "${pkgdir}/usr/lib"
