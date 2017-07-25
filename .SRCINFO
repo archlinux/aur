@@ -1,0 +1,14 @@
+pkgbase = contemporary-widgets-gtk
+	pkgdesc = Contemporary Widget Theme for GTK
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/contemporary-theme
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	source = contemporary-widgets-gtk-1.0::git+https://github.com/vicr123/contemporary-theme#branch=gtk3
+	md5sums = SKIP
+
+pkgname = contemporary-widgets-gtk
+
