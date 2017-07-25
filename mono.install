@@ -1,0 +1,7 @@
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+    cert-sync /etc/ssl/certs/ca-certificates.crt
+}
