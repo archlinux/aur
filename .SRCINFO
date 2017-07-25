@@ -1,18 +1,18 @@
 pkgbase = libidn2
 	pkgdesc = A free software implementation of IDNA2008
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://www.gnu.org/software/libidn/libidn2/manual/libidn2.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = LGPL3
-	makedepends = gtk-doc
+	makedepends = gtk-doc ruby-ronn
 	depends = libunistring
-	source = https://ftp.gnu.org/gnu/libidn/libidn2-2.0.2.tar.gz
-	source = https://ftp.gnu.org/gnu/libidn/libidn2-2.0.2.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/libidn/libidn2-2.0.3.tar.gz
+	source = https://ftp.gnu.org/gnu/libidn/libidn2-2.0.3.tar.gz.sig
 	validpgpkeys = 1CB27DBC98614B2D5841646D08302DB6A2670428
-	sha1sums = 41d862133af08e33dde166505a0d1a2ccd5a5438
+	sha1sums = 9264dfafbad5979a9b38d8092e9f3fe6481843ea
 	sha1sums = SKIP
 
 pkgname = libidn2
