@@ -1,5 +1,5 @@
 # ignore build files                                                                                                                                                                           
-*.pkg.tar.xz
+*.pkg.*
 *.sig
 src/
 pkg/
