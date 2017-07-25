@@ -1,13 +1,13 @@
 pkgbase = git-annex-remote-rclone
 	pkgdesc = A git-annex special remote using rclone
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DanielDent/git-annex-remote-rclone
 	arch = any
 	license = GPL3
 	depends = git-annex
 	depends = rclone>=1.29
-	depends = rclone<=1.36
+	depends = rclone<=1.37
 	depends = bash
 	source = https://github.com/DanielDent/git-annex-remote-rclone/archive/v0.5.tar.gz
 	sha512sums = 3dd0493856952eee93f95ba637bd95c4971a00ae4a2e160894f9bc787f0090fbe5ab456de28e5ba0f7dae83320450d75813c0a3e3887de4aefa938483571cd2f
