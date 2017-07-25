@@ -2,7 +2,7 @@
 # Sun Jun 25 12:03:14 UTC 2017
 pkgbase = sendanywhere
 	pkgdesc = Direct file sharing across all platforms/devices. Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time.
-	pkgver = 3.6.19.1
+	pkgver = latest
 	pkgrel = 1
 	url = https://www.send-anywhere.com
 	install = sendanywhere.install

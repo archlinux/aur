@@ -1,7 +1,7 @@
 # Maintainer: Ashwin Vishnu <ashuwish+arch at gmail dot com>
 
 pkgname=sendanywhere
-pkgver=3.6.19.1
+pkgver=latest
 pkgrel=1
 pkgdesc="Direct file sharing across all platforms/devices. Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
 arch=('i686' 'x86_64')
