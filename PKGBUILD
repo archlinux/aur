@@ -8,7 +8,7 @@ url="https://www.gnu.org/software/libidn/libidn2/manual/libidn2.html"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL3')
 depends=('libunistring')
-makedepends=('gtk-doc ruby-ronn')
+makedepends=('gtk-doc' 'ruby-ronn')
 source=(https://ftp.gnu.org/gnu/libidn/${pkgname}-${pkgver}.tar.gz{,.sig})
 sha1sums=('9264dfafbad5979a9b38d8092e9f3fe6481843ea'
           'SKIP')
