@@ -15,5 +15,5 @@ depends=("ncurses" "perl")
 
 package(){
 	cd "$pkgname-$pkgver-$pkgrel"
-	make ROOT="$pkgdir"
+	make ROOT="$pkgdir" VERSION="$pkgver-$pkgrel"
 }
