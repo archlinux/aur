@@ -1,0 +1,18 @@
+pkgbase = aom
+	pkgdesc = An open, royalty-free video coding format designed for video transmissions over the Internet
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://aomedia.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom:PATENTS
+	makedepends = git
+	makedepends = perl
+	makedepends = yasm
+	depends = glibc
+	source = git+https://aomedia.googlesource.com/aom#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = aom
+
