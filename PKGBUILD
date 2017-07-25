@@ -2,8 +2,8 @@
 
 pkgbase=linux-baytrail411 
 _srcname=linux-baytrail411
-_gitver=c6aeac2680dcc4bd10a9c3f6f6bb76d6693e55a9
-pkgver=4.11.7
+_gitver=3fc9429c5a2955029da37a1ecdbec923bf976e34
+pkgver=4.11.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
