@@ -3,7 +3,7 @@
 
 pkgname=transmission-remote-gui-gtk2
 _pkgname=transgui
-pkgver=5.8.1
+pkgver=5.8.2
 pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=(i686 x86_64)
@@ -13,11 +13,10 @@ depends=(gtk2 desktop-file-utils)
 makedepends=(lazarus unzip)
 provides=(transmission-remote-gui)
 conflicts=(transmission-remote-gui-qt4 transmission-remote-gui-svn transmission-remote-gui)
-install=transmission-remote-gui.install
 source=(https://github.com/leonsoft-kras/transmisson-remote-gui/archive/v${pkgver}.zip
         ${_pkgname}.desktop)
-md5sums=(cd9a83712607d7709bf87afdd284c108
-         c0504cb6d4e970892ac7be9206c787b5)
+md5sums=('4699f0c95a644b1c969c3215abca4c04'
+         'c0504cb6d4e970892ac7be9206c787b5')
 _ws=gtk2
 
 build() {
