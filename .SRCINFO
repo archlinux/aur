@@ -1,0 +1,34 @@
+pkgbase = simplix-theme
+	pkgver = r6.e860f1e
+	pkgrel = 2
+	url = http://sixsixfive.deviantart.com/art/simpliX-346404452
+	arch = any
+	license = CCPL:cc-by-sa-4.0
+	makedepends = git
+	makedepends = gtk-engine-murrine
+	makedepends = gtk-engines
+	source = git+https://github.com/sixsixfive/simpliX.git
+	sha512sums = SKIP
+
+pkgname = openbox-theme-simplix-git
+	pkgdesc = A very bright, simple but daily usable theme for Openbox
+	depends = simplix-theme-common-git
+	optdepends = openbox: to use this theme
+	provides = openbox-theme-simplix-git=r6.e860f1e
+	conflicts = openbox-theme-simplix
+	replaces = openbox-theme-simplix
+
+pkgname = xfce-theme-simplix-git
+	pkgdesc = A very bright, simple but daily usable theme for Xfce
+	depends = simplix-theme-common-git
+	depends = gtk-engines
+	depends = gtk-engine-murrine
+	optdepends = xfwm4: to use this theme
+	provides = xfce-theme-simplix-git=r6.e860f1e
+	conflicts = xfce-theme-simplix
+	replaces = xfce-theme-simplix
+
+pkgname = simplix-theme-common-git
+	pkgdesc = Common data files for simplix-theme
+	provides = simplix-theme-common-git=r6.e860f1e
+
