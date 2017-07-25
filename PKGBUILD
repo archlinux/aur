@@ -2,8 +2,8 @@
 _host=https://github.com/jergusg
 _pkgname=k380-function-keys-conf
 pkgname=$_pkgname-git
-pkgver=r3.b1798b8
-pkgrel=2
+pkgver=r8.ed8eb60
+pkgrel=1
 pkgdesc="Make function keys on Logitech K380 bluetooth keyboard default"
 arch=(x86_64 i686)
 url=${_host}/${_pkgname}
@@ -16,10 +16,10 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=${_pkgname}.install
 source=("${_pkgname}::git+${_host}/${_pkgname}" 70-k380.rules k380_enable_function_keys.sh)
 noextract=()
-md5sums=(SKIP 496b213ea14e39337d2269afd705c831 39780ae6cbb26dc2c9e179c53155e33e)
+md5sums=(SKIP 429c5f97b7fc599b8e8ed198f1a5447f 39780ae6cbb26dc2c9e179c53155e33e)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -47,7 +47,11 @@ _adapt_udev_rule() {
 package() {
   mkdir -p                                                $pkgdir/usr/bin
   cp       $srcdir/$_pkgname/k380_conf                    $pkgdir/usr/bin
-  cp       $srcdir/k380_enable_function_keys.sh           $pkgdir/usr/bin
-  _adapt_udev_rule
+  cp       $srcdir/$_pkgname/fn_on.sh                     $pkgdir/usr/bin/${_pkgname}-enable.sh
+
+  mkdir -p                                                $pkgdir/usr/lib/udev/rules.d
+  cp       $srcdir/70-k380.rules                          $pkgdir/usr/lib/udev/rules.d
+
+  # _adapt_udev_rule
 }
 # vim:set ts=2 sw=2 et:
