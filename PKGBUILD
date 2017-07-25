@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=20170724.r118.5b69c88
+pkgver=20170725.r120.5465019
 pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
@@ -53,13 +53,15 @@ package(){
   install -dm755 "$pkgdir/usr/share/applications/"
   install -dm755 "$pkgdir/usr/share/minecraftlauncher"
   install -dm755 "$pkgdir/usr/share/licenses/minecraftlauncher"
+  #install -dm755 "$pkgdir/usr/share/minecraftlauncher/libs"
 
   #Moves files to directory
   install -Dm755 "minecraftlauncher" "$pkgdir/usr/share/minecraftlauncher"
-  install -Dm644 "minecraftlauncher.desktop" "$pkgdir/usr/share/applications"
-  install -Dm644 "minecraftlauncher.png" "$pkgdir/usr/share/minecraftlauncher"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/minecraftlauncher"
-  install -dm755 "libs" "$pkgdir/usr/share/minecraftlauncher"
+  install -Dm755 "minecraftlauncher.desktop" "$pkgdir/usr/share/applications"
+  install -Dm755 "minecraftlauncher.png" "$pkgdir/usr/share/minecraftlauncher"
+  install -Dm755 "LICENSE" "$pkgdir/usr/share/licenses/minecraftlauncher"
+  cp -r "libs" "$pkgdir/usr/share/minecraftlauncher"
+  chmod -R 755 "$pkgdir/usr/share/minecraftlauncher/libs"
 
   #Extracts apk
   cd "$srcdir/"
