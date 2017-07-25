@@ -4,20 +4,19 @@ pkgdesc="ROS - tf is a package that lets the user keep track of multiple coordin
 url='http://www.ros.org/wiki/tf'
 
 pkgname='ros-kinetic-tf'
-pkgver='1.11.8'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-message-filters
-  ros-kinetic-tf2
   ros-kinetic-message-generation
   ros-kinetic-geometry-msgs
+  ros-kinetic-rostime
   ros-kinetic-tf2-ros
   ros-kinetic-std-msgs
   ros-kinetic-roscpp
-  ros-kinetic-rostest
   ros-kinetic-sensor-msgs
   ros-kinetic-angles
   ros-kinetic-rosconsole
@@ -26,7 +25,6 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-kinetic-message-filters
-  ros-kinetic-tf2
   ros-kinetic-geometry-msgs
   ros-kinetic-roswtf
   ros-kinetic-message-runtime
@@ -47,7 +45,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry-release-release-kinetic-tf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/kinetic/tf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b36ed7b60743f961314119cde9f92351cb05ae5a5a20d9cab4ba7744bd499ee2')
+sha256sums=('145ad3bd3c5ea0b4b1ff224c39eb03ba5b719f016609f6960589658a9687f53f')
 
 build() {
   # Use ROS environment variables
