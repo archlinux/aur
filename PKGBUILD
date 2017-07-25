@@ -2,7 +2,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r695.d71fc17
+pkgver=r769.205d755
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -41,6 +41,7 @@ optdepends=(
   'usbutils: USB Device Utilities'
   'wget: A network utility to retrieve files from the Web'
   'xorg-xdpyinfo: Display information utility for X'
+  'xorg-xset: User preference utility for X'
 )
 makedepends=('binutils' 'coreutils' 'git')
 conflicts=('airgeddon-git')
