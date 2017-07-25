@@ -1,0 +1,14 @@
+pkgbase = ntrig_fix
+	pkgdesc = systemd script to fix ntrig touchscreen after wake from suspend/hibernation
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dwroland/ntrig_fix
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = systemd
+	source = git://github.com/dwroland/ntrig_fix
+	md5sums = SKIP
+
+pkgname = ntrig_fix
+
