@@ -1,0 +1,8 @@
+post_install() {
+	echo "==> Run \"chaptedit -h\" for help"
+	echo "==> or \"chaptedit -H\" for extended help"
+}
+
+post_upgrade() {
+	post_install
+}
