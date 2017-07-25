@@ -4,13 +4,13 @@
 pkgname=visit
 pkgver=2.12.2
 _pkgver=${pkgver//./_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
 license=('BSD' 'custom')
 makedepends=('cmake' 'java-runtime' 'gcc-fortran')
-depends=('qt5-webkit' 'qt5-x11extras' 'qwt-qt5'
+depends=('qt5-webkit' 'qt5-x11extras' 'qwt'
          'python2-numpy'
          'gperftools' 'icet' 'java-environment'
          'vtk-visit'
@@ -19,11 +19,13 @@ conflicts=('visit-bin' 'visit-build')
 source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
         "visit.sh"
         "visit_FindIceT.patch"
-        "visit_frontendlauncher.patch")
+        "visit_frontendlauncher.patch"
+        "visit_fix_gcc7.patch")
 sha256sums=('55897d656ac2ea4eb87a30118b2e3963d6c8a391dda0790268426a73e4b06943'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
-            '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f')
+            '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f'
+            'd1daa5da6ec25c5a6bfcabb3cf0bf02ab97ec87a332886a2f42695072fe8568d')
 options=(!emptydirs)
 
 prepare(){
@@ -66,6 +68,8 @@ prepare(){
 
   # IceT, use the IceTConfig.cmake provided by IceT
   patch CMake/FindIceT.cmake "${srcdir}/visit_FindIceT.patch"
+
+  patch -p0 < "${srcdir}/visit_fix_gcc7.patch"
 
   # Fix Qwt include
   sed -i 's:<qwt_:<qwt/qwt_:g' \
