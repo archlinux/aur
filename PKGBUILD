@@ -3,8 +3,8 @@
 
 _target=arm-none-eabi
 pkgname=$_target-newlib-linaro-git
-_gitver=cf38811335370ab2bcd044801c56a2b081a0c5bf
-pkgver=20170519
+_gitver=443e554aca9069f42f8082440584c09eb836e7af
+pkgver=20170623
 pkgrel=1
 _libname=newlib
 _upstream_ver=snapshot-"${pkgver}"
