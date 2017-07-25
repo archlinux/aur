@@ -3,7 +3,7 @@
 # Contributor: ask
 
 pkgname=rust-bindgen-git
-pkgver=0.25.0.18b7e62
+pkgver=0.28.0.23dbe48
 pkgrel=1
 pkgdesc="Binding generator for rust language"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/rust-bindgen"
-	printf "%s.%s" "`grep version Cargo.toml | sed "s/version\ = \"\([^\"]\+\)\"/\1/"`" "$(git log --pretty=format:%h --abbrev-commit -n1)"
+    version=`grep version Cargo.toml -h --color=never | head -n 1 | sed "s/version = \"\([^\n]\+\)\"/\1/"`
+	printf "%s.%s" "$version" "$(git log --pretty=format:%h --abbrev-commit -n1)"
 }
 
 build() {
