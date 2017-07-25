@@ -1,6 +1,6 @@
 pkgbase = scanpy-git
 	pkgdesc = Efficient tools for analyzing and simulating large-scale single-cell data
-	pkgver = 0.1+9.g8607c60
+	pkgver = 0.2.3+2.g5624f7d
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
@@ -15,9 +15,16 @@ pkgbase = scanpy-git
 	depends = python-h5py
 	depends = python-scikit-learn
 	depends = python-statsmodels
+	depends = python-networkx
+	depends = python-igraph
+	depends = python-louvain-igraph
 	depends = python-natsort
 	depends = python-joblib
 	depends = python-profilehooks
+	depends = python-tqdm
+	provides = scanpy
+	provides = python-scanpy
+	conflicts = scanpy
 	source = scanpy::git://github.com/theislab/scanpy.git
 	md5sums = SKIP
 

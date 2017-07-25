@@ -1,13 +1,15 @@
-# Maintainer: willemw <willemw12@gmail.com>
+# Maintainer: Phil Schaf <flying-sheep@web.de>
 
 _pkgname=scanpy
 pkgname=$_pkgname-git
-pkgver=0.1+9.g8607c60
+pkgver=0.2.3+2.g5624f7d
 pkgrel=1
 pkgdesc='Efficient tools for analyzing and simulating large-scale single-cell data'
 arch=(any)
+provides=(scanpy python-scanpy)
+conflicts=(scanpy)
 url='https://github.com/theislab/scanpy'
-license=('GPL3')
+license=(GPL3)
 depends=(
 	cython
 	python-matplotlib
@@ -19,9 +21,13 @@ depends=(
 	python-h5py
 	python-scikit-learn
 	python-statsmodels
+	python-networkx
+	python-igraph
+	python-louvain-igraph
 	python-natsort
 	python-joblib
-	python-profilehooks)
+	python-profilehooks
+	python-tqdm)
 source=($_pkgname::git://github.com/theislab/scanpy.git)
 md5sums=(SKIP)
 
