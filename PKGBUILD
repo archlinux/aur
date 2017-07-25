@@ -1,15 +1,16 @@
 # Maintainer: Alexander Drozdov <adrozdoff@gmail.com>
 pkgname=qtcreator-cmakeprojectmanager2-plugin-opt-git
-pkgver=4.3.82.r706.3787eb7
+pkgver=4.4.0.beta1.r706.3787eb7
 _pkgcommit=3787eb71e47b4fe3dedf087312a3014c6b3ef04e
 _pkgbranch=master
+_qtc_version=4.4.0.beta1.r72
 pkgrel=1
 pkgdesc="Enhanced CMake Project Manager plugin for Qt Creator."
 arch=(i686 x86_64)
 url="https://github.com/h4tr3d/cmakeprojectmanager2"
 license=('GPL')
 groups=('qtcreator-opt-git')
-depends=('qtcreator-opt-git>=4.4.0.beta1.r72')
+depends=("qtcreator-opt-git>=${_qtc_version}")
 makedepends=('git')
 # debug+strip to provide ${pkgname}-debug package
 options=('docs' 'debug' 'strip')
@@ -21,7 +22,8 @@ pkgver() {
 
     local REV=$(git rev-parse --short HEAD)
     local CNT=$(git rev-list --count $_pkgbranch)
-    local QTC_VER=$(cat /usr/src/qtcreator-opt-git/qtcreator.pri | grep '^QTCREATOR_VERSION' | awk '{print $3}')
+    #local QTC_VER=$(cat /usr/src/qtcreator-opt-git/qtcreator.pri | grep '^QTCREATOR_VERSION' | awk '{print $3}')
+    local QTC_VER=$(echo ${_qtc_version} | sed 's|\.r[0-9]\+$||')
 
     printf "%s" ${QTC_VER}.r${CNT}.${REV}
 }
