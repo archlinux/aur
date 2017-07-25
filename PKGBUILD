@@ -3,12 +3,12 @@
 
 pkgname=ocaml-mysql
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="OCaml bindings for MySQL"
 arch=('i686' 'x86_64')
 url="http://ocaml-mysql.forge.ocamlcore.org/"
 license=('LGPL')
-makedepends=('ocaml' 'ocaml-findlib' 'libmysqlclient')
+makedepends=('ocaml' 'ocaml-findlib' 'libmariadbclient')
 depends=(camlp4)
 options=('!strip' 'staticlibs')
 #install=
