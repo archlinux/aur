@@ -4,7 +4,7 @@
 _pypi_name=mypy
 pkgname=${_pypi_name}
 pkgver=0.521
-pkgrel=1
+pkgrel=2
 pkgdesc='Optional static typing for Python 2 and 3'
 url="https://github.com/python/mypy"
 arch=('any')
@@ -14,11 +14,11 @@ conflicts=('python-mypy-lang' 'python-mypy')
 depends=('python-typed-ast')
 source=(
     "$_pypi_name-$pkgver.tar.gz::https://pypi.org/packages/source/m/$_pypi_name/$_pypi_name-$pkgver.tar.gz"
-    "LICENSE::$url/raw/v$pkgver/LICENSE")
+    "$pkgname.LICENSE::$url/raw/v$pkgver/LICENSE")
 
 package() {
     cd "$srcdir"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 "$pkgname.LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     cd "${srcdir}/${_pypi_name}-${pkgver}"
     python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
