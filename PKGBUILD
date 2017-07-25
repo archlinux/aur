@@ -2,7 +2,7 @@
 
 pkgname=rexuiz-git
 pkgver=r78.ce815fa
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter."
 url="http://rexuiz.top/"

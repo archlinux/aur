@@ -1,7 +1,7 @@
 pkgbase = rexuiz-git
 	pkgdesc = An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter.
 	pkgver = r78.ce815fa
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rexuiz.top/
 	arch = any
 	license = GPL2
