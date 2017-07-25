@@ -1,6 +1,6 @@
 pkgbase = arm-frc-linux-gnueabi-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (arm-frc-linux-gnueabi)
-	pkgver = 2.28
+	pkgver = 2.29
 	pkgrel = 1
 	url = http://sources.redhat.com/binutils
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = arm-frc-linux-gnueabi-binutils
 	options = !libtool
 	options = !buildflags
 	options = !emptydirs
-	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.28.tar.bz2
-	md5sums = 9e8340c96626b469a603c15c9d843727
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2
+	md5sums = 23733a26c8276edbb1168c9bee60e40e
 
 pkgname = arm-frc-linux-gnueabi-binutils
 
