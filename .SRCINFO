@@ -1,7 +1,7 @@
 pkgbase = emacs-clojure-mode
 	pkgdesc = Emacs major mode for the clojure language
 	pkgver = 5.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/clojure-emacs/clojure-mode
 	install = emacs-clojure-mode.install
 	arch = any

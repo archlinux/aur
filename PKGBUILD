@@ -6,11 +6,11 @@
 
 pkgname=emacs-clojure-mode
 pkgver=5.4.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Emacs major mode for the clojure language"
 url="https://github.com/clojure-emacs/clojure-mode"
-license=("GPL3")
+license=('GPL3')
 depends=('emacs')
 optdepends=('paredit: enhanced LISP structure editing')
 install='emacs-clojure-mode.install'
@@ -19,7 +19,7 @@ sha256sums=('013dccfb444ca1855e481e81f969a343bc362b267ed7caebaea85a02b1dcf584')
 
 build() {
   cd clojure-mode-${pkgver}
-  CASK=./Cask make
+  emacs -Q --batch -f batch-byte-compile clojure-mode.el
 }
 
 package() {
