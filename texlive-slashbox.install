@@ -1,6 +1,6 @@
 post_install() {
     post_remove
-    echo "The files was installed in:"
+    echo "The files were installed in:"
     kpsewhich slashbox.sty
     kpsewhich slashbox.tex
 }
