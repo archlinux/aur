@@ -1,0 +1,8 @@
+post_install() {
+	echo "==> Run \"subedit -h\" for help"
+	echo "==> or \"subedit -H for extended help"
+}
+
+post_upgrade() {
+	post_install
+}
