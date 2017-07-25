@@ -1,0 +1,8 @@
+[Unit]
+Description=udevmon
+
+[Service]
+ExecStart=/usr/bin/nice -n -20 /usr/bin/udevmon -c /etc/udevmon.yaml
+
+[Install]
+WantedBy=multi-user.target
