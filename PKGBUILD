@@ -1,7 +1,7 @@
 # Maintainer: Andrei Alexeyev <akari@alienslab.net>
 
 pkgname=rexuiz-bytecode-git
-pkgver=r933.b3ec98d
+pkgver=r934.ea1d95f
 pkgrel=1
 arch=('any')
 pkgdesc="An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter (game bytecode)."
@@ -11,6 +11,7 @@ depends=()
 makedepends=(
     'make'
     'rmqcc-git'
+    'zip'
 )
 optdepends=()
 conflicts=('rexuiz-bytecode')
