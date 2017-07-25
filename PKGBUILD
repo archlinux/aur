@@ -1,8 +1,8 @@
-# Maintainer: Afri 5chdn <aur@cach.co>
+# Maintainer: Afri 5chdn <aur@5chdn.co>
 # Available from AUR: https://aur.archlinux.org/packages/solidity-git/
 
 pkgname=solidity-git
-pkgver=0.4.4.20161027.49089f6
+pkgver=0.4.14.20170725.cfb11ff7
 pkgrel=1
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc, lllc; from latest unstable git version)"
 arch=('i686' 'x86_64')
