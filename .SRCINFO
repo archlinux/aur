@@ -1,10 +1,11 @@
 pkgbase = trifusion-git
 	pkgdesc = Streamlining phylogenomic data gathering, processing and visualization
-	pkgver = 0.5.0.41.ga0ecddc
+	pkgver = 1.0.0rc1
 	pkgrel = 1
 	url = https://github.com/ODiogoSilva/TriFusion
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python2-kivy
 	depends = python2-numpy
 	depends = python2-scipy
