@@ -9,9 +9,9 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-opt-git
-pkgver=4.3.0.r592.g345680a159
+pkgver=4.4.0.beta1.r72.g6979a8f2f5
 _pkgcommit=6979a8f2f5f622edcf08efd337d62d5c62eac926
-pkgrel=4
+pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
 url='https://www.qt.io/ide/'
