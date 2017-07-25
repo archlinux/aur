@@ -1,11 +1,10 @@
 # Maintainer: Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>
-# This is my first package, I'll gladly improve the PKGBUILD if needs be
 
 # maintenance
-pkgver="0.8.10"
+pkgver="0.9.0"
 pkgrel=1
-sha256sums_i686=("8afc6b230f290408e74a2716815966f9508b22e4acb7097886c00feeb91efcee")
-sha256sums_x86_64=("ddb769a361a65915aef43a0782610db382634a0205aff92c065a05904957f77f")
+md5sums_i686=("c1b9099fbffd4a459adb6beb36a6ac26")
+md5sums_x86_64=("17ab26c80a364642683d81ca281bd2cb")
 
 # info
 pkgname="ethereumwallet-bin"
