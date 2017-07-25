@@ -1,8 +1,8 @@
-# Maintainer: David Parrish <daveparrish@tutanota.com>
-# Co-Maintainer: Afri 5chdn <aur@cach.co>
+# Maintainer: Afri 5chdn <aur@5chdn.co>
+# Contributor: David Parrish <daveparrish@tutanota.com>
 
 pkgname=geth-git
-pkgver=1.5.5.r31.g115364b0a
+pkgver=1.6.7.r24.g3a678a15c
 pkgrel=1
 pkgdesc="Ethereum Go Client"
 arch=('i686' 'x86_64')
@@ -15,7 +15,18 @@ conflicts=(
   'go-ethereum'
   'go-ethereum-git'
 )
-provides=('geth')
+optdepends=(
+  'mist: Mist dapp browser and Ethereum wallet.'
+)
+provides=(
+    'geth'
+    'abigen'
+    'bootnode'
+    'disasm'
+    'evm'
+    'gethrpctest'
+    'rlpdump'
+)
 source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git#branch=master")
 sha256sums=('SKIP')
 
@@ -26,11 +37,17 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgbase}"
-  make
+  make all
 }
 
 package() {
   cd "$pkgbase"
   install -Dm755 build/bin/geth "$pkgdir"/usr/bin/geth
+  install -Dm755 build/bin/geth "$pkgdir"/usr/bin/abigen
+  install -Dm755 build/bin/geth "$pkgdir"/usr/bin/bootnode
+  install -Dm755 build/bin/geth "$pkgdir"/usr/bin/disasm
+  install -Dm755 build/bin/geth "$pkgdir"/usr/bin/evm
+  install -Dm755 build/bin/geth "$pkgdir"/usr/bin/gethrpctest
+  install -Dm755 build/bin/geth "$pkgdir"/usr/bin/rlpdump
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
