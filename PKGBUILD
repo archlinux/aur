@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/h4tr3d/cmakeprojectmanager2"
 license=('GPL')
 groups=('qtcreator-opt-git')
-depends=('qtcreator-opt-git>=4.3.0.r592')
+depends=('qtcreator-opt-git>=4.4.0.beta1.r72')
 makedepends=('git')
 # debug+strip to provide ${pkgname}-debug package
 options=('docs' 'debug' 'strip')

@@ -8,7 +8,7 @@ pkgbase = qtcreator-cmakeprojectmanager2-plugin-opt-git
 	groups = qtcreator-opt-git
 	license = GPL
 	makedepends = git
-	depends = qtcreator-opt-git>=4.3.0.r592
+	depends = qtcreator-opt-git>=4.4.0.beta1.r72
 	options = docs
 	options = debug
 	options = strip
