@@ -1,7 +1,7 @@
 # Maintainer: helix <stargr@gmail.com>
 pkgname=subedit
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Subtitle editor written in bash'
 arch=('any')
 license=('GPL2')

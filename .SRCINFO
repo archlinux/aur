@@ -1,7 +1,7 @@
 pkgbase = subedit
 	pkgdesc = Subtitle editor written in bash
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/helixarch/subedit
 	install = subedit.install
 	arch = any
