@@ -2,9 +2,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=1.3.0.20170125.6f0c62e75
+pkgver=1.3.0.20170725.b18e9e4ce
 pkgrel=1
-pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, cpp-ethereum including ethminer and eth, latest unstable git version)"
+pkgdesc="The Cpp-Ethereum platform (C++ toolkit, cpp-ethereum including ethminer and eth, latest unstable git version)"
 arch=('i686' 'x86_64')
 depends=(
   'boost'
@@ -47,6 +47,10 @@ provides=(
 conflicts=(
   'ethereum'
   'cpp-ethereum'
+)
+optdepends=(
+  'geth: The go-ethereum commandline client (geth cli).'
+  'parity: The fast, light, robust Ethereum client.'
 )
 
 pkgver() {
