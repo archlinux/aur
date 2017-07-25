@@ -1,19 +1,19 @@
-# Maintainer: Niels Poulsen <apakoh@apakoh.dk>
+# Maintainer: Niels Sonnich Poulsen <niels@nielssp.dk>
 pkgname=ctodo
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A simple ncurses-based task manager."
 url="http://ctodo.apakoh.dk"
 arch=('x86_64' 'i686')
 license=('MIT')
-depends=('ncurses')
+depends=('ncurses' 'readline')
 makedepends=('cmake')
 conflicts=()
 replaces=()
 backup=()
 install=
 source=("https://github.com/nielssp/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('475f62b95bb025d3a954fcebdd986f65')
+md5sums=('27f97d2ea65f0f48dd054b19ddcdbb6a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
