@@ -1,0 +1,25 @@
+# $Id$
+# Maintainer: Michael Greene <mgreene@securityinnovation.com>
+
+pkgname='python-utmp'
+pkgver=0.4
+pkgrel=1
+pkgdesc="Pure-Python library to decode/read utmp and wtmp files"
+arch=('any')
+license=(custom)
+url='https://pypi.python.org/pypi/utmp'
+makedepends=('python-six' 'flake8')
+source=("https://pypi.io/packages/source/u/utmp/utmp-${pkgver}.tar.gz")
+sha256sums=('c8fb6fbed754744764b24ffffabb62c56b27fd8cb51decbb3dc616d740835b2b')
+sha384sums=('8be2be6fd32e1f6825cbddd11675435a9778a8b59a0fef896733f09c29a7eec42aa0e9715f1fcc13d1753779b0b4efa5')
+sha512sums=('802345227a9de972a7ae1127a006aab6bb51e1a7e81772a58b9c19bee74c79c4f5219519743133e8c02b90f8a72f52e22ab668c8a78a898c00e0a9a147a68472')
+
+build() {
+    cd ${srcdir}/utmp-${pkgver}
+    python3 setup.py build
+}
+
+package_python-utmp() {
+    cd utmp-${pkgver}
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}
