@@ -1,0 +1,16 @@
+post_install () {
+echo 
+echo "==> To enable clojure-mode, add this to your \$HOME/.emacs:"
+echo
+echo "	 (require 'clojure-mode)"
+echo
+echo "==> There are also a clojurescript-mode and a clojure-test-mode"
+echo "==> available - to get more information on those, please refer to"
+echo "==> the package homepage."
+echo 
+}
+
+post_upgrade () {
+             post_install $1
+}
+
