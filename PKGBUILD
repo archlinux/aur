@@ -2,10 +2,9 @@
 
 _target=msp430-elf
 pkgname=${_target}-binutils #-git
-_pkgver=2.28
+_pkgver=2.29
 pkgver=${_pkgver}
-#pkgver=2.25.r84308.c576455
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
 options=('!libtool' '!buildflags') 
@@ -13,23 +12,8 @@ url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=('zlib')
 checkdepends=('dejagnu' 'bc')
-# build from trunk
-# provides=("${_target}-binutils=${_pkgver}")
-# conflicts=("${_target}-binutils")
-# makedepends=('git')
-# source=("binutils-${_pkgver}::git+git://sourceware.org/git/binutils-gdb.git")
-# sha256sums=('SKIP')
-
-# build from source
-source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('6297433ee120b11b4b0a1c8f3512d7d73501753142ab9e2daa13c5a3edd32a72')
-
-# pkgver() {
-#   cd "${srcdir}/binutils-${_pkgver}"
-#   printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" \
-#     "$(git rev-parse --short HEAD)"
-# 
-# }
+source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz)
+sha256sums=('0b871e271c4c620444f8264f72143b4d224aa305306d85dd77ab8dce785b1e85')
 
 prepare() {
   cd "${srcdir}/binutils-${_pkgver}"
@@ -73,8 +57,6 @@ package() {
   rm -f "${pkgdir}"/usr/bin/{ar,as,ld,nm,objdump,ranlib,strip,objcopy}
   rm -f "${pkgdir}"/usr/lib/libiberty.a
   rm -rf "${pkgdir}/usr/share/info"
-  # rm -rf "${pkgdir}/usr/share/gdb"
-  # rm -rf "${pkgdir}/usr/include/gdb"
 }
 
 # vim:set ts=2 sw=2 et:
