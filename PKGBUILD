@@ -1,21 +1,21 @@
 # Maintainer:  Ainola
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Sven-Hendrik Haase
 # Contributor: Xyne
 # Contributor: Rick Chen (stuffcorpse)
-# Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
-# Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
-# Contributor: Camille Moncelier <pix@devlife.org>
+# Contributor: Jaroslaw Swierczynski
+# Contributor: Roman Kyrylych
+# Contributor: Camille Moncelier
 
 pkgname=nexuiz
 pkgver=2.5.2
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 pkgdesc="Fast-paced multiplayer first-person shooter."
 url="http://www.alientrap.org/nexuiz/"
 license=("GPL2")
 depends=('alsa-lib' 'libjpeg>=8' 'libxpm' 'libxxf86dga' 'libxxf86vm' 'hicolor-icon-theme' 'sdl')
-makedepends=('mesa')
 conflicts=('nexuiz-data')
+provides=('nexuiz-data')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver//./}.zip" \
         "nexuiz-glx.desktop" "nexuiz-sdl.desktop" \
         "libpng14.patch" "nex-icons.tar.gz")
@@ -33,7 +33,7 @@ build(){
     cd darkplaces
     patch -Np1 -i "${srcdir}/libpng14.patch"
 
-    #build the binaries separately instead to avoid truncated files
+    # Build the binaries separately instead to avoid truncated files
     make CPUOPTIMIZATIONS="$CFLAGS" DP_FS_BASEDIR=/usr/share/nexuiz/ DP_LINK_TO_LIBJPEG=1 cl-nexuiz
     make CPUOPTIMIZATIONS="$CFLAGS" DP_FS_BASEDIR=/usr/share/nexuiz/ DP_LINK_TO_LIBJPEG=1 sdl-nexuiz
     make CPUOPTIMIZATIONS="$CFLAGS" DP_FS_BASEDIR=/usr/share/nexuiz/ DP_LINK_TO_LIBJPEG=1 sv-nexuiz
@@ -45,13 +45,13 @@ package(){
     install -Dm755 "Nexuiz/darkplaces/nexuiz-sdl" "${pkgdir}/usr/bin/nexuiz-sdl"
     install -Dm644 "${srcdir}/"*.desktop -t "${pkgdir}/usr/share/applications"
 
-    #docs
+    # Documentation
     install -dm755 "${pkgdir}/usr/share/doc/nexuiz/"
     mv "${srcdir}/Nexuiz/Docs/"* "${pkgdir}/usr/share/doc/nexuiz/"
     find "${pkgdir}/usr/share/doc/nexuiz" -type d -exec chmod 755 {} \;
     find "${pkgdir}/usr/share/doc/nexuiz" -type f -exec chmod 644 {} \;
 
-    #install game data, then set proper permissions
+    # Game Data
     install -dm755 "${pkgdir}/usr/share/nexuiz"
     for dir in data havoc server; do
         mv "${srcdir}/Nexuiz/${dir}" "${pkgdir}/usr/share/nexuiz/"
@@ -59,11 +59,11 @@ package(){
         find "${pkgdir}/usr/share/nexuiz/${dir}" -type f -exec chmod 644 {} \;
     done
 
-    #remove unneeded cruft
+    # Remove unneeded cruft
     find "${pkgdir}/usr/share/nexuiz/server" -name "*_windows.bat" -exec rm {} \;
     find "${pkgdir}/usr/share/nexuiz/server" -name "*_mac.sh" -exec rm {} \;
 
-    #icons
+    # Icons
     for size in 16 22 24 32 48 64 128 256 512; do
         install -Dm644 "${srcdir}/nex${size}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/nexuiz.png"
