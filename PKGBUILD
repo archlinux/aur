@@ -2,17 +2,15 @@
 
 pkgname=openbox-theme-surreal
 pkgver=20070916
-pkgrel=5
-pkgdesc='A dark gray theme for Openbox.'
+pkgrel=6
+pkgdesc='A dark gray theme for Openbox'
 arch=('any')
 url='http://box-look.org/content/show.php?content=66397'
 license=('GPL3')
 
-depends=('openbox')
+optdepends=('openbox: to use this theme')
 provides=("${pkgname}=${pkgver}")
 
-# Mirror
-# https://www.dropbox.com/s/k9k98zsrcjw7ue7/66397-Surreal.tar.bz2
 source=(
 	'https://dl.opendesktop.org/api/files/download/id/1460769300/66397-Surreal.tar.bz2'
 	'osd_tweaks.patch'
@@ -28,7 +26,7 @@ prepare() {
 }
 
 package() {	
-	# Copy theme
+	# Install theme
 	mkdir -p "${pkgdir}"/usr/share/themes
 	cp -R "${srcdir}"/Surreal "${pkgdir}"/usr/share/themes
 }

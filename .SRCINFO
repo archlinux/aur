@@ -1,11 +1,11 @@
 pkgbase = openbox-theme-surreal
-	pkgdesc = A dark gray theme for Openbox.
+	pkgdesc = A dark gray theme for Openbox
 	pkgver = 20070916
-	pkgrel = 5
+	pkgrel = 6
 	url = http://box-look.org/content/show.php?content=66397
 	arch = any
 	license = GPL3
-	depends = openbox
+	optdepends = openbox: to use this theme
 	provides = openbox-theme-surreal=20070916
 	source = https://dl.opendesktop.org/api/files/download/id/1460769300/66397-Surreal.tar.bz2
 	source = osd_tweaks.patch
