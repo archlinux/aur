@@ -13,7 +13,7 @@ depends=('openal' 'desktop-file-utils' 'enet' 'gcc-libs' 'sdl2')
 optdepends=('7kaa-music')
 conflicts=('7kaa-data')
 provides=('7kaa-data')
-source=("http://downloads.sourceforge.net/project/skfans/7KAA%20${pkgver}/${pkgname}-${pkgver}.tar.xz"
+source=("https://github.com/the3dfxdude/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.ico")
