@@ -1,7 +1,7 @@
 pkgbase = minecraft-linux
 	pkgdesc = Minecraft launcher for Linux
-	pkgver = 20170724.r116.7eb21ad
-	pkgrel = 2
+	pkgver = 20170724.r117.7c940ea
+	pkgrel = 1
 	url = https://kris27mc.github.io
 	arch = x86_64
 	license = BSD

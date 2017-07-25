@@ -1,8 +1,8 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=20170724.r116.7eb21ad
-pkgrel=2
+pkgver=20170724.r117.7c940ea
+pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
 url="https://kris27mc.github.io"
@@ -15,101 +15,58 @@ source=("git+https://github.com/kris27mc/minecraft-linux.git")
 md5sums=('SKIP')
 
 pkgver() {
-cd minecraft-linux
+  cd "$srcdir/minecraft-linux"
 
-printf "%s.r%s.%s" \
- "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
- "$(git rev-list --count HEAD)" \
- "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" \
+   "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
+   "$(git rev-list --count HEAD)" \
+   "$(git rev-parse --short HEAD)"
          }
 
 build() {
-cd minecraft-linux
+  cd "$srcdir/minecraft-linux"
+  #Determines necessary libs
+  if grep -qi "amd" /proc/cpuinfo;  then
+    cp -r libs/AMD/* libs
+    printf "Using compatibility libs"
+    sleep 2
+  fi
 
-rm install.sh
-#Determines necessary libs
-if grep -qi "amd" /proc/cpuinfo;  then
-  cp -r libs/AMD/* libs/
-  printf "Using compatibility libs"
-  sleep 3
-fi
-
-#Compiles minecraftlauncher
-cmake .
-make
-
-#Moves compiled files to new dir
-if [ ! -e "meme" ]; then
-  sudo mkdir "meme"
-fi
-sudo cp -t meme "minecraftlauncher" "extract.sh" "LICENSE" "minecraftlauncher.desktop" "minecraftlauncher.png"
-sudo cp -r libs "meme/libs"
-cd meme
-
-#Acquires apk
-printf "\nWhich method would you like to use to acquire an APK?\n"
-printf "1) Google-Play-API (currently broken)\n"
-printf "2) Hosted download (ONLY USE IF YOU OWN MINECRAFT!)\n"
-printf "3) Local file\n"
-printf "\nEnter your selection: "
-read answer
-#Google-Play-API
-if [[ "$answer" == "1" ]]; then
-  git clone https://github.com/MCMrARM/Google-Play-API.git
-  cd Google-Play-API
+  #Compiles minecraftlauncher
   cmake .
   make
-  ./gplaydl -tos -a com.mojang.minecraftpe
-  sudo cp *.apk /meme
-  cd ..
-  sudo rm -R Google-Play-API
-fi
-
-#Hosted apk
-if [[ "$answer" == "2" ]]; then
-  sudo wget https://kris27mc.github.io/files/minecraft.apk
-fi
-
-#Local file
-if [[ "$answer" == "3" ]]; then
-  printf "Please enter the full path to your apk.\n"
-  printf "Path to APK: "
-  read -e pathtoapk
-  if grep "minecraft.apk" <<< echo "$pathtoapk"; then
-    sudo cp "$pathtoapk" meme/minecraft-new.apk
-  else
-    sudo cp "$pathtoapk" meme
-  fi
-fi
-
-#Extracts apk into assets
-if [[ "$answer" == "1" || "$answer" == "3" ]]; then
-    if [ ! -e "oldapks" ]; then
-      sudo mkdir oldapks
-    fi
-    if [ -f "minecraft.apk" ]; then
-      sudo mv minecraft.apk oldapks
-    fi
-    sudo mv "*.apk" minecraft.apk
-fi
-
-sudo ./extract.sh minecraft.apk
-sudo chmod -R 777 *
         }
 
 check() {
-#Checks for complete build
-cd minecraft-linux
-if [ ! -e "minecraftlauncher" ]; then
-  echo "Error: minecraftlauncher missing. Build failed"
-  exit
-fi
+  #Checks for complete build
+  cd "$srcdir/minecraft-linux"
+  if [ ! -e "minecraftlauncher" ]; then
+    echo "Error: minecraftlauncher missing. Build failed"
+    exit
+  fi
         }
 
 package(){
-cd minecraft-linux
-install meme -d "$pkgdir/usr/share/minecraftlauncher"
-cd meme
-install -Dm644 "minecraftlauncher.desktop" "$pkgdir/usr/share/applications/minecraftlauncher.desktop"
-install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
+  cd "$srcdir/minecraft-linux"
+
+  #Creates necessary directories
+  install -dm755 "$pkgdir/usr/share/applications/"
+  install -dm755 "$pkgdir/usr/share/minecraftlauncher"
+  install -dm755 "$pkgdir/usr/share/licenses/minecraftlauncher"
+
+  #Moves files to directory
+  install -Dm755 "minecraftlauncher" "$pkgdir/usr/share/minecraftlauncher"
+  install -Dm644 "minecraftlauncher.desktop" "$pkgdir/usr/share/minecraftlauncher"
+  install -Dm644 "minecraftlauncher.png" "$pkgdir/usr/share/minecraftlauncher"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/minecraftlauncher"
+  install -dm755 "libs" "$pkgdir/usr/share/minecraftlauncher"
+
+  #Extracts apk
+  cd "$srcdir/"
+  wget "https://kris27mc.github.io/files/minecraft.apk"
+  #mkdir "$srcdir/assets"
+  unzip "minecraft.apk" -d "$srcdir/assets"
+  install -dm755 "$srcdir/assets" "$pkgdir/usr/share/minecraftlauncher"
+  install -Dm644 "$srcdir/assets/lib/x86/libminecraftpe.so" "$pkgdir/usr/share/minecraftlauncher/libs/libminecraft.so"
+
+          }
