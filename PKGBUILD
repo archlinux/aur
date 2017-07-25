@@ -5,13 +5,13 @@
 pkgname=mono-beta
 _pkgname=mono
 pkgver=5.2.0.196
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the .NET platform including runtime and compiler"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL2.1' 'MPL')
 url="http://www.mono-project.com/"
 depends=('zlib' 'libgdiplus' 'sh' 'python' 'ca-certificates')
-makedepends=('cmake')
+makedepends=('cmake' 'mono')
 provides=('mono' 'monodoc')
 conflicts=('mono' 'monodoc')
 install="${_pkgname}.install"
