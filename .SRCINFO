@@ -1,11 +1,11 @@
 pkgbase = openbox-theme-mythos
-	pkgdesc = A dark blue theme for Openbox.
+	pkgdesc = A dark blue theme for Openbox
 	pkgver = 20150104
-	pkgrel = 3
+	pkgrel = 4
 	url = http://box-look.org/content/show.php?content=88560
 	arch = any
 	license = GPL3
-	depends = openbox
+	optdepends = openbox: to use this theme
 	provides = openbox-theme-mythos=20150104
 	source = https://dl.opendesktop.org/api/files/download/id/1460769207/88560-Mythos_OB.tar.gz
 	sha512sums = 1774264dd799b008f47a61facd0b6bdd3983048f3a795eeb84076bdfed77422b63acf158204f77ef21487a541a5f6d13da570344b48d0c374a17fd2e42b8d3ce

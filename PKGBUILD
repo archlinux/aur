@@ -2,17 +2,15 @@
 
 pkgname=openbox-theme-mythos
 pkgver=20150104
-pkgrel=3
-pkgdesc='A dark blue theme for Openbox.'
+pkgrel=4
+pkgdesc='A dark blue theme for Openbox'
 arch=('any')
 url='http://box-look.org/content/show.php?content=88560'
 license=('GPL3')
 
-depends=('openbox')
+optdepends=('openbox: to use this theme')
 provides=("${pkgname}=${pkgver}")
 
-# Mirror
-# https://www.dropbox.com/s/q40ppjtue8z2me7/88560-Mythos_OB.tar.gz
 source=(
 	'https://dl.opendesktop.org/api/files/download/id/1460769207/88560-Mythos_OB.tar.gz'
 )
@@ -21,7 +19,7 @@ sha512sums=(
 )
 
 package() {	
-	# Copy theme
+	# Install theme
 	mkdir -p "${pkgdir}"/usr/share/themes
 	cp -R "${srcdir}"/Mythos "${pkgdir}"/usr/share/themes
 }
