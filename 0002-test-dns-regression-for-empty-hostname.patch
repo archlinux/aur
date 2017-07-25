@@ -1,0 +1,55 @@
+From 683cf19b56dad3bc7b5915e2765b3e3c325c2dfe Mon Sep 17 00:00:00 2001
+From: Azat Khuzhin <a3at.mail@gmail.com>
+Date: Fri, 25 Mar 2016 00:21:06 +0300
+Subject: [PATCH] test/dns: regression for empty hostname
+
+Refs: #332
+
+Conflicts:
+	test/regress_dns.c
+---
+ test/regress_dns.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/test/regress_dns.c b/test/regress_dns.c
+index 4d90d67..1817fb3 100644
+--- a/test/regress_dns.c
++++ b/test/regress_dns.c
+@@ -562,6 +562,26 @@ end:
+ 
+ 	regress_clean_dnsserver();
+ }
++static void
++dns_search_empty_test(void *arg)
++{
++	struct basic_test_data *data = arg;
++	struct event_base *base = data->base;
++	struct evdns_base *dns = NULL;
++
++	dns = evdns_base_new(base, 0);
++
++	evdns_base_search_add(dns, "whatever.example.com");
++
++	n_replies_left = 1;
++	exit_base = base;
++
++	tt_ptr_op(evdns_base_resolve_ipv4(dns, "", 0, generic_dns_callback, NULL), ==, NULL);
++
++end:
++	if (dns)
++		evdns_base_free(dns, 0);
++}
+ 
+ static int request_count = 0;
+ static struct evdns_request *current_req = NULL;
+@@ -1831,6 +1851,7 @@ struct testcase_t dns_testcases[] = {
+ 	DNS_LEGACY(gethostbyname6, TT_FORK|TT_NEED_BASE|TT_NEED_DNS),
+ 	DNS_LEGACY(gethostbyaddr, TT_FORK|TT_NEED_BASE|TT_NEED_DNS),
+ 	{ "resolve_reverse", dns_resolve_reverse, TT_FORK, NULL, NULL },
++	{ "search_empty", dns_search_empty_test, TT_FORK|TT_NEED_BASE, &basic_setup, NULL },
+ 	{ "search", dns_search_test, TT_FORK|TT_NEED_BASE, &basic_setup, NULL },
+ 	{ "search_cancel", dns_search_cancel_test,
+ 	  TT_FORK|TT_NEED_BASE, &basic_setup, NULL },
+-- 
+2.1.4
+
