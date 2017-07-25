@@ -2,7 +2,7 @@
 
 pkgname=tibia
 pkgver=11.40.5409
-pkgrel=1
+pkgrel=2
 pkgdesc="fast-paced free massively multiplayer online role-playing game"
 arch=('x86_64')
 url="http://www.tibia.com"
@@ -41,5 +41,6 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/opt/Tibia/start-tibia.sh" "${pkgdir}/usr/bin/tibia"
+  cd "${pkgdir}/usr/bin/"
+  ln -s "../../opt/Tibia/start-tibia.sh" tibia
 }

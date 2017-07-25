@@ -1,7 +1,7 @@
 pkgbase = tibia
 	pkgdesc = fast-paced free massively multiplayer online role-playing game
 	pkgver = 11.40.5409
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tibia.com
 	arch = x86_64
 	license = custom
