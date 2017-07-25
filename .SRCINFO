@@ -1,0 +1,17 @@
+pkgbase = interception-caps2esc
+	pkgdesc = caps2esc: transforming the most useless key ever in the most useful one
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/interception/linux/plugins/caps2esc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = interception-tools
+	conflicts = caps2esc
+	source = https://gitlab.com/interception/linux/plugins/caps2esc/repository/archive.tar.gz?ref=v0.1.0
+	md5sums = a493a0c2a3ca056998e8eb0fd77f6a93
+
+pkgname = interception-caps2esc
+
