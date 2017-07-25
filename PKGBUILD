@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=20170725.r120.5465019
+pkgver=20170725.r123.ebcf9d8
 pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
