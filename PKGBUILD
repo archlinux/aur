@@ -1,15 +1,15 @@
 # Original packager: tantalum <tantalum at online dot de>
 # Package by Andrea Girotto <andrea (dot) girotto (at) gmail (dot) com>
 pkgname=guile-www
-pkgver=2.39
+pkgver=2.40
 pkgrel=1
 pkgdesc='A set of Guile Scheme modules to facilitate HTTP, URL and CGI programming'
 arch=(any)
 license=(GPL3)
 depends=(guile)
 url=http://www.nongnu.org/guile-www/
-source=(http://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.xz)
-md5sums=('4d0f5b7d79a6a26b93398619888107fd')
+source=(http://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.lz)
+md5sums=('1c2e045af35052be4be321e33caf9c35')
 
 build(){
    cd ${srcdir}/${pkgname}-${pkgver}

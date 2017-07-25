@@ -1,13 +1,13 @@
 pkgbase = guile-www
 	pkgdesc = A set of Guile Scheme modules to facilitate HTTP, URL and CGI programming
-	pkgver = 2.39
+	pkgver = 2.40
 	pkgrel = 1
 	url = http://www.nongnu.org/guile-www/
 	arch = any
 	license = GPL3
 	depends = guile
-	source = http://download.savannah.gnu.org/releases/guile-www/guile-www-2.39.tar.xz
-	md5sums = 4d0f5b7d79a6a26b93398619888107fd
+	source = http://download.savannah.gnu.org/releases/guile-www/guile-www-2.40.tar.lz
+	md5sums = 1c2e045af35052be4be321e33caf9c35
 
 pkgname = guile-www
 
