@@ -1,7 +1,7 @@
 pkgbase = php70
 	pkgdesc = PHP scripting language package for stable release of 7.0 series
 	pkgver = 7.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgname = php70
 	provides = php=7.0.21
 	conflicts = php70-ldap
 	replaces = php70-ldap
-	backup = etc/${pkgbase}/php.ini
+	backup = etc/php70/php.ini
 
 pkgname = php70-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
