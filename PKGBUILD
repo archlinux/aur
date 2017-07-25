@@ -10,7 +10,7 @@ license=('Apache')
 groups=()
 depends=()
 makedepends=('gcc' 'make' 'cmake' 'libcatch-cpp-headers')
-source=("git+https://github.com/Reactive-Extensions/RxCpp.git#tag=v4.0.0")
+source=("git+https://github.com/Reactive-Extensions/RxCpp.git#commit=5b7b2a5519f712a7831053865a4ae6082dac4ed5")
 sha256sums=('SKIP')
 validpgpkeys=()
 
