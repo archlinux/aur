@@ -1,7 +1,7 @@
 # Maintainer: Andrei Alexeyev <akari@alienslab.net>
 
 pkgname=rexuiz-git
-pkgver=r77.24e4125
+pkgver=r78.ce815fa
 pkgrel=1
 arch=('any')
 pkgdesc="An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter."
@@ -20,6 +20,8 @@ depends=(
 )
 makedepends=(
     'make'
+    'zip'
+    'unzip'
 )
 optdepends=(
     'libircclient: IRC integration (server-side)'
