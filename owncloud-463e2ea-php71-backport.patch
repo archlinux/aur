@@ -1,0 +1,22 @@
+From 463e2ea15d6fb71b96363d60c7e4bdc2c020eddf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20M=C3=BCller?= <thomas.mueller@tmit.eu>
+Date: Mon, 4 Jul 2016 13:47:03 +0200
+Subject: [PATCH] Initialize array elements properly
+
+---
+ lib/private/App/InfoParser.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/private/App/InfoParser.php b/lib/private/App/InfoParser.php
+index c158e5c..843ed02 100644
+--- a/lib/private/App/InfoParser.php
++++ b/lib/private/App/InfoParser.php
+@@ -141,7 +141,7 @@ function xmlToArray($xml) {
+ 			$totalElement = count($xml->{$element});
+ 
+ 			if (!isset($array[$element])) {
+-				$array[$element] = "";
++				$array[$element] = $totalElement > 1 ? [] : "";
+ 			}
+ 			/** @var \SimpleXMLElement $node */
+ 			// Has attributes

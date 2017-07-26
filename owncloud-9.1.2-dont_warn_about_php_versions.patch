@@ -1,0 +1,89 @@
+diff --git a/console.php b/console.php
+index 7235965..1f4b721 100644
+--- a/console.php
++++ b/console.php
+@@ -33,21 +33,6 @@ use Symfony\Component\Console\Output\ConsoleOutput;
+ 
+ define('OC_CONSOLE', 1);
+ 
+-// Show warning if a PHP version below 5.4.0 is used, this has to happen here
+-// because base.php will already use 5.4 syntax.
+-if (version_compare(PHP_VERSION, '5.4.0') === -1) {
+-	echo 'This version of ownCloud requires at least PHP 5.4.0'.PHP_EOL;
+-	echo 'You are currently running ' . PHP_VERSION . '. Please update your PHP version.'.PHP_EOL;
+-	return;
+-}
+-
+-// Show warning if PHP 7.1 is used as ownCloud is not compatible with PHP 7.1 until
+-// version 9.2.0.
+-if (version_compare(PHP_VERSION, '7.1.0') !== -1) {
+-	echo 'This version of ownCloud is not compatible with PHP 7.1.<br/>';
+-	echo 'You are currently running ' . PHP_VERSION . '. Please use at least ownCloud 9.2.0.';
+-	return;
+-}
+ 
+ function exceptionHandler($exception) {
+ 	echo "An unhandled exception has been thrown:" . PHP_EOL;
+@@ -78,7 +63,7 @@ try {
+ 			echo "Console has to be executed with the user that owns the file config/config.php" . PHP_EOL;
+ 			echo "Current user: " . $user['name'] . PHP_EOL;
+ 			echo "Owner of config.php: " . $configUser['name'] . PHP_EOL;
+-			echo "Try adding 'sudo -u " . $configUser['name'] . " ' to the beginning of the command (without the single quotes)" . PHP_EOL;  
++			echo "Try adding 'sudo -u " . $configUser['name'] . " ' to the beginning of the command (without the single quotes)" . PHP_EOL;
+ 			exit(0);
+ 		}
+ 	}
+diff --git a/index.php b/index.php
+index 136ddcb..5230cb2 100644
+--- a/index.php
++++ b/index.php
+@@ -24,31 +24,9 @@
+  *
+  */
+ 
+-// Show warning if a PHP version below 5.4.0 is used, this has to happen here
+-// because base.php will already use 5.4 syntax.
+-if (version_compare(PHP_VERSION, '5.4.0') === -1) {
+-	echo 'This version of ownCloud requires at least PHP 5.4.0<br/>';
+-	echo 'You are currently running ' . PHP_VERSION . '. Please update your PHP version.';
+-	return;
+-}
+-
+-// Show warning if PHP 7.1 is used as ownCloud is not compatible with PHP 7.1 until
+-// version 9.2.0.
+-if (version_compare(PHP_VERSION, '7.1.0') !== -1) {
+-	echo 'This version of ownCloud is not compatible with PHP 7.1.<br/>';
+-	echo 'You are currently running ' . PHP_VERSION . '. Please use at least ownCloud 9.2.0.';
+-	return;
+-}
+-
+-// running oC on Windows is unsupported since 8.1, this has to happen here because
+-// is seems that the autoloader on Windows fails later and just throws an exception.
+-if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+-	echo 'ownCloud Server does not support Microsoft Windows.';
+-	return;
+-}
+ 
+ try {
+-	
++
+ 	require_once 'lib/base.php';
+ 
+ 	OC::handleRequest();
+diff --git a/settings/Controller/CheckSetupController.php b/settings/Controller/CheckSetupController.php
+index 52ef34d..e39fdf2 100644
+--- a/settings/Controller/CheckSetupController.php
++++ b/settings/Controller/CheckSetupController.php
+@@ -349,11 +349,7 @@ Raw output
+ 	protected function isEndOfLive() {
+ 		$eol = false;
+ 
+-		//PHP 5.4 is EOL on 14 Sep 2015
+-		if (version_compare(PHP_VERSION, '5.5.0') === -1) {
+-			$eol = true;
+-			return $eol;
+-		}
++        // Red Hat support PHP so don't EOL
+ 		return $eol;
+ 	}
+ }

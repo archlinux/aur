@@ -1,0 +1,13 @@
+diff --git a/settings/Controller/SecuritySettingsController.php b/settings/Controller/SecuritySettingsController.php
+index 88b2803..5c6f174 100644
+--- a/settings/Controller/SecuritySettingsController.php
++++ b/settings/Controller/SecuritySettingsController.php
+@@ -60,7 +60,7 @@ protected function returnSuccess() {
+ 	 * @return array
+ 	 */
+ 	public function trustedDomains($newTrustedDomain) {
+-		$trustedDomains = $this->config->getSystemValue('trusted_domains');
++		$trustedDomains = $this->config->getSystemValue('trusted_domains', []);
+ 		$trustedDomains[] = $newTrustedDomain;
+ 		$this->config->setSystemValue('trusted_domains', $trustedDomains);
+ 
