@@ -34,7 +34,7 @@ url='http://php.net'
 makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'sqlite' 'unixodbc' 'net-snmp' 'libzip' 'enchant' 'file' 'freetds'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu' 'curl' 'libxslt'
-             'openssl' 'db' 'gmp' 'systemd')
+             'openssl-1.0' 'db' 'gmp' 'systemd')
 
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
@@ -142,6 +142,7 @@ build() {
 
 	export EXTENSION_DIR=/usr/lib/${pkgbase}/modules
 	export PEAR_INSTALLDIR=/usr/share/${pkgbase}/pear
+        export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
 	cd ${srcdir}/${_pkgbase}-${pkgver}
 
@@ -209,7 +210,7 @@ build() {
 
 package_php55() {
 	pkgdesc='An HTML-embedded scripting language'
-	depends=('pcre' 'libxml2' 'curl' 'libzip')
+	depends=('pcre' 'libxml2' 'curl' 'libzip' 'openssl-1.0')
 	backup=("etc/${pkgbase}/php.ini")
 	provides=("${_pkgbase}=$pkgver")
 
