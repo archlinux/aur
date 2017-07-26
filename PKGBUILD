@@ -1,8 +1,8 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=oktopi-git
 pkgver=r1.9895a4b
-pkgrel=2
+pkgrel=3
 pkgdesc='A fork of Pacman’s GUI Octopi for Chakra.'
 arch=('i686' 'x86_64')
 url='http://gitorious.org/chakra/oktopi'
@@ -13,35 +13,26 @@ provides=(oktopi)
 conflicts=(oktopi)
 source=(oktopi.desktop)
 sha512sums=('4ce42d0249afd9c307ce1ce67b209fd69996646fc5c3cc261faf4bbf3f2e0a785b69bf1f3ea4ade1b75c95a4140278a2e0d615abad8a9dd706bfb9aebe548f28')
-_gitroot='http://gitorious.org/chakra/oktopi.git'
+_gitroot='https://gitorious.org/chakra/oktopi.git'
 _gitname='oktopi'
 
 pkgver(){
   cd "$srcdir"
   if [[ ! -d "$_gitname" ]]; then
     git clone --depth 1 "$_gitroot" "$_gitname"
+  else
+    ( cd "$_gitname"
+    git pull >&2 )
   fi
 
   cd "$srcdir"/$_gitname
-  set -o pipefail
+  ( set -o pipefail
   git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
 }
+
 build(){
   cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname"
-    git pull origin
-    msg "The local files are updated."
-  else
-    git clone --depth 1 "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
 
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
