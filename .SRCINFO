@@ -8,7 +8,7 @@ pkgbase = hastebin
 	depends = python
 	depends = python-requests
 	source = hastebin
-	sha256sums = 63fe4333dffa1c5226efad77ffe754ea752363b050d9bae4376871ed626c63fc
+	sha256sums = b2ac5a7a8fab997e0b9454fcd54eaf8d3fc2a937bcca8bd2605d2bdd6a04a789
 
 pkgname = hastebin
 
