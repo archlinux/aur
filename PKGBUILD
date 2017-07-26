@@ -6,13 +6,13 @@
 
 pkgname=nwjs
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
 license=("MIT")
 depends=("alsa-lib" "gconf" "gtk2" "nss" "ttf-font" "libxtst" "libxss")
-makedepends=("depot-tools-git")
+makedepends=("depot-tools-git" "libtinfo5")
 optdepends=(
     "nodejs: npm package support"
     "nw-gyp: native add-on build tool for node-webkit"
@@ -28,8 +28,14 @@ sha512sums=("97ec6f8c1bfd9b5dcec2edaf84a546a7d88572f127fab0dbdda4b85ee5c19caf798
 
 prepare() {
   cd "${srcdir}/"
+
+  # Fix forced Python2 requirement
   mkdir -p path
   ln -s /usr/bin/python2 path/python
+
+  # Removing references to git version in build config,
+  # since we will use the stable source tarball
+  sed -i '/\"\:commit_id\"/d' "nw.js-nw-v${pkgver}/content/nw/BUILD.gn"
 }
   
 build() {
@@ -39,25 +45,25 @@ build() {
 
   export PATH="/opt/depot_tools:$PATH"
   export PATH="${srcdir}/path:$PATH"
+  export GYP_DEFINES="target_arch=x64"
 
-  gclient config --name=src https://github.com/nwjs/chromium.src.git@origin/nw17
+  gclient config --name=src https://github.com/nwjs/chromium.src.git@origin/nw24
   gclient sync --with_branch_heads --nohooks
 
   mv "${srcdir}/nw.js-nw-v${pkgver}" src/content/nw
   mv "${srcdir}/node-nw-v${pkgver}" src/third_party/node-nw
   mv "${srcdir}/v8-nw-v${pkgver}" src/v8
 
-  gclient sync --with_branch_heads
+  gclient runhooks
 
   cd src
   gn gen out/nw --args='is_debug=false is_component_ffmpeg=true target_cpu="x64"'
 
   GYP_CHROMIUM_NO_ACTION=0 ./build/gyp_chromium -I third_party/node-nw/common.gypi third_party/node-nw/node.gyp
 
-  ninja -C out/nw nwjs
-  ninja -C out/Release node
-  ninja -C out/nw copy_node
-
+  /usr/bin/ninja -C out/nw nwjs
+  /usr/bin/ninja -C out/Release node
+  /usr/bin/ninja -C out/nw copy_node
 }
 
 package() {
