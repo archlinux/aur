@@ -21,15 +21,15 @@
 +
 +    script = "../../tools/generate_stubs/generate_stubs.py"
 +    sources = [
-+      "../../media/gpu/va.sigs",
++      "../../media/gpu/vaapi/va.sigs",
 +    ]
 +    inputs = [
 +      extra_header,
 +    ]
-+    sources += [ "../../media/gpu/va_x11.sigs" ]
++    sources += [ "../../media/gpu/vaapi/va_x11.sigs" ]
 +    if (use_ozone) {
 +      sources += [
-+        "../../media/gpu/va_drm.sigs",
++        "../../media/gpu/vaapi/va_drm.sigs",
 +        "va_wayland.sigs",
 +      ]
 +    }
@@ -412,15 +412,15 @@
      sources += [
        "vp8_decoder.cc",
        "vp8_decoder.h",
-@@ -269,7 +269,7 @@
+@@ -259,7 +259,7 @@ component("gpu") {
+         "EGL",
          "GLESv2",
        ]
-     }
--    if (current_cpu == "arm") {
-+    if (current_cpu == "arm" && is_chromeos) {
-       sources += [
-         "tegra_v4l2_device.cc",
-         "tegra_v4l2_device.h",
+-      if (current_cpu == "arm") {
++      if (current_cpu == "arm" && is_chromeos) {
+         sources += [
+           "tegra_v4l2_device.cc",
+           "tegra_v4l2_device.h",
 --- a/media/gpu/gpu_video_decode_accelerator_factory.cc
 +++ b/media/gpu/gpu_video_decode_accelerator_factory.cc
 @@ -16,7 +16,7 @@
