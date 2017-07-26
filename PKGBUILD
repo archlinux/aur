@@ -6,7 +6,7 @@
 pkgname=nicotine-plus-git
 _gitname=nicotine-plus
 pkgver=r2105.e91f0e9
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of Nicotine, a graphical client for Soulseek."
 arch=('i686' 'x86_64')
 url="http://nicotine-plus.org"
@@ -16,8 +16,6 @@ makedepends=('git' 'python2')
 optdepends=('miniupnpc: To enable UPnP support'
 	'python-sexy: To enable spell checking'
 	'python-geoip: To enable geographical blocker')
-conflicts=('nicotine' 'nicotine-plus')
-replaces=('nicotine' 'nicotine-plus')
 source=(git+https://github.com/Nicotine-Plus/${_gitname}.git)
 sha512sums=('SKIP')
 
