@@ -3,7 +3,7 @@
 # Contributor: Gilles Hamel <hamelg at laposte dot net>
 _pkgname=grafana
 pkgname=${_pkgname}-git
-pkgver=v4.1.0.beta1.r170.ge1b82e72e
+pkgver=v4.4.1.r59.gce4939bd5
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb"
 url="http://grafana.org"
