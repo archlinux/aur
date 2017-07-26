@@ -1,0 +1,124 @@
+From 81ee936dcdde4f4a7d4036479dbbff77da1e72bb Mon Sep 17 00:00:00 2001
+From: Jozef Lawrynowicz <jozef.l@somniumtech.com>
+Date: Wed, 12 Apr 2017 14:45:45 +0000
+Subject: [PATCH] Use GET_MODE_BITSIZE when setting TYPE_SIZE
+
+2017-05-XX	Jozef Lawrynowicz	<jozef.l@somniumtech.com>
+
+	gcc/
+	PR target/78849
+	* stor-layout.c (initialize_sizetypes): Use GET_MODE_BITSIZE when setting TYPE_SIZE.
+	* tree.c (build_common_tree_nodes): Likewise.
+
+	gcc/testsuite
+	PR target/78849
+	* gcc.target/msp430/pr78849.c: New test.
+	* gcc.target/msp430/msp430.exp: Remove -pedantic-errors option from DEFAULT_CFLAGS.
+---
+ gcc/stor-layout.c                          |  5 +++--
+ gcc/testsuite/gcc.target/msp430/msp430.exp | 13 +++++++++----
+ gcc/testsuite/gcc.target/msp430/pr78849.c  | 21 +++++++++++++++++++++
+ gcc/tree.c                                 |  6 ++++--
+ 4 files changed, 37 insertions(+), 8 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/msp430/pr78849.c
+
+diff --git a/gcc/stor-layout.c b/gcc/stor-layout.c
+index 10e9a32..1dbaba0 100644
+--- a/gcc/stor-layout.c
++++ b/gcc/stor-layout.c
+@@ -2602,13 +2602,14 @@ initialize_sizetypes (void)
+   /* Now layout both types manually.  */
+   SET_TYPE_MODE (sizetype, smallest_mode_for_size (precision, MODE_INT));
+   SET_TYPE_ALIGN (sizetype, GET_MODE_ALIGNMENT (TYPE_MODE (sizetype)));
+-  TYPE_SIZE (sizetype) = bitsize_int (precision);
++  TYPE_SIZE (sizetype) = bitsize_int (GET_MODE_BITSIZE (TYPE_MODE (sizetype)));
+   TYPE_SIZE_UNIT (sizetype) = size_int (GET_MODE_SIZE (TYPE_MODE (sizetype)));
+   set_min_and_max_values_for_integral_type (sizetype, precision, UNSIGNED);
+ 
+   SET_TYPE_MODE (bitsizetype, smallest_mode_for_size (bprecision, MODE_INT));
+   SET_TYPE_ALIGN (bitsizetype, GET_MODE_ALIGNMENT (TYPE_MODE (bitsizetype)));
+-  TYPE_SIZE (bitsizetype) = bitsize_int (bprecision);
++  TYPE_SIZE (bitsizetype)
++    = bitsize_int (GET_MODE_BITSIZE (TYPE_MODE (bitsizetype)));
+   TYPE_SIZE_UNIT (bitsizetype)
+     = size_int (GET_MODE_SIZE (TYPE_MODE (bitsizetype)));
+   set_min_and_max_values_for_integral_type (bitsizetype, bprecision, UNSIGNED);
+diff --git a/gcc/testsuite/gcc.target/msp430/msp430.exp b/gcc/testsuite/gcc.target/msp430/msp430.exp
+index e54d531..ce5c3dc 100644
+--- a/gcc/testsuite/gcc.target/msp430/msp430.exp
++++ b/gcc/testsuite/gcc.target/msp430/msp430.exp
+@@ -24,10 +24,15 @@ if { ![istarget msp430-*-*] } then {
+ # Load support procs.
+ load_lib gcc-dg.exp
+ 
+-# If a testcase doesn't have special options, use these.
++# The '-pedantic-errors' option in the global variable DEFAULT_CFLAGS that is
++# set by other drivers causes an error when the __int20 type is used, so remove
++# this option from DEFAULT_CFLAGS for the msp430 tests.
+ global DEFAULT_CFLAGS
+-if ![info exists DEFAULT_CFLAGS] then {
+-    set DEFAULT_CFLAGS ""
++if [info exists DEFAULT_CFLAGS] then {
++    set MSP430_DEFAULT_CFLAGS \
++      [ string map { "-pedantic-errors" "" } $DEFAULT_CFLAGS ]
++} else {
++    set MSP430_DEFAULT_CFLAGS ""
+ }
+ 
+ # Initialize `dg'.
+@@ -35,7 +40,7 @@ dg-init
+ 
+ # Main loop.
+ dg-runtest [lsort [glob -nocomplain $srcdir/$subdir/*.\[cCS\]]] \
+-	"" $DEFAULT_CFLAGS
++	"" $MSP430_DEFAULT_CFLAGS
+ 
+ # All done.
+ dg-finish
+diff --git a/gcc/testsuite/gcc.target/msp430/pr78849.c b/gcc/testsuite/gcc.target/msp430/pr78849.c
+new file mode 100644
+index 0000000..97792e9
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/msp430/pr78849.c
+@@ -0,0 +1,21 @@
++/* { dg-do link } */
++
++struct s_1
++{
++  __int20 array[2];
++  char elem;
++};
++
++struct s_1 instance =
++{
++    {
++      0,
++      1,
++    },
++    2
++};
++
++int main (void)
++{
++  return 0;
++}
+diff --git a/gcc/tree.c b/gcc/tree.c
+index 72dbba4..12f2635 100644
+--- a/gcc/tree.c
++++ b/gcc/tree.c
+@@ -10285,8 +10285,10 @@ build_common_tree_nodes (bool signed_char)
+     {
+       int_n_trees[i].signed_type = make_signed_type (int_n_data[i].bitsize);
+       int_n_trees[i].unsigned_type = make_unsigned_type (int_n_data[i].bitsize);
+-      TYPE_SIZE (int_n_trees[i].signed_type) = bitsize_int (int_n_data[i].bitsize);
+-      TYPE_SIZE (int_n_trees[i].unsigned_type) = bitsize_int (int_n_data[i].bitsize);
++      TYPE_SIZE (int_n_trees[i].signed_type)
++	= bitsize_int (GET_MODE_BITSIZE (int_n_data[i].m));
++      TYPE_SIZE (int_n_trees[i].unsigned_type)
++	= bitsize_int (GET_MODE_BITSIZE (int_n_data[i].m));
+ 
+       if (int_n_data[i].bitsize > LONG_LONG_TYPE_SIZE
+ 	  && int_n_enabled_p[i])
+-- 
+1.8.3.1
+

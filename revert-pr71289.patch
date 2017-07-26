@@ -1,0 +1,20 @@
+diff -rupN gcc-7.1.0-pristine/gcc/match.pd gcc-7.1.0-modified/gcc/match.pd
+--- gcc-7.1.0-pristine/gcc/match.pd	2017-04-04 05:06:04.000000000 -0400
++++ gcc-7.1.0-modified/gcc/match.pd	2017-07-26 10:46:14.079911462 -0400
+@@ -3071,16 +3071,6 @@ DEFINE_INT_AND_FLOAT_ROUND_FN (RINT)
+        && types_match (TREE_TYPE (@0), TREE_TYPE (@1)))
+    (out (imagpart @2) { build_zero_cst (TREE_TYPE (@0)); }))))
+ 
+-/* For unsigned operands, -1 / B < A checks whether A * B would overflow.
+-   Simplify it to __builtin_mul_overflow (A, B, <unused>).  */
+-(for cmp (lt ge)
+-     out (ne eq)
+- (simplify
+-  (cmp:c (trunc_div:s integer_all_onesp @1) @0)
+-  (if (TYPE_UNSIGNED (TREE_TYPE (@0)) && !VECTOR_TYPE_P (TREE_TYPE (@0)))
+-   (with { tree t = TREE_TYPE (@0), cpx = build_complex_type (t); }
+-    (out (imagpart (IFN_MUL_OVERFLOW:cpx @0 @1)) { build_zero_cst (t); })))))
+-
+ /* Simplification of math builtins.  These rules must all be optimizations
+    as well as IL simplifications.  If there is a possibility that the new
+    form could be a pessimization, the rule should go in the canonicalization
