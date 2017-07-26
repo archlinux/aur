@@ -39,7 +39,7 @@ sha256sums=('3645214d6b9527dc218b4cdcbbf1d01809aaba14435d644b545bee0274c88fd0'
 package() {
     # install license
     install -d "$pkgdir"/usr/share/licenses/${pkgname}
-    cp "$srcdir"/${pkgname}/COPYING-* "$pkgdir"/usr/share/licenses/${pkgname}
+    cp "$srcdir"/${pkgname}/COPYING "$pkgdir"/usr/share/licenses/${pkgname}
 
     # install project
     install -d "$pkgdir"/usr/share/webapps/
