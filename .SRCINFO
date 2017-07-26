@@ -1,6 +1,6 @@
 pkgbase = minecraft-linux
 	pkgdesc = Minecraft launcher for Linux
-	pkgver = 20170725.r123.ebcf9d8
+	pkgver = 20170726.r126.387248b
 	pkgrel = 1
 	url = https://kris27mc.github.io
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = minecraft-linux
 	makedepends = gcc-multilib
 	depends = lib32-zlib
 	depends = lib32-ncurses
-	depends = gts
 	depends = libglvnd
+	depends = gts
 	depends = lib32-libglvnd
 	depends = lib32-libxext
 	depends = lib32-libx11

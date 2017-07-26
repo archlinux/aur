@@ -1,14 +1,14 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=20170725.r123.ebcf9d8
+pkgver=20170726.r126.387248b
 pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
 url="https://kris27mc.github.io"
 license=('BSD')
 groups=()
-depends=('lib32-zlib' 'lib32-ncurses' 'gts' 'libglvnd' 'lib32-libglvnd' 'lib32-libxext' 'lib32-libx11' 'lib32-libpng' 'lib32-util-linux' 'lib32-glibc')
+depends=('lib32-zlib' 'lib32-ncurses' 'libglvnd' 'gts' 'lib32-libglvnd' 'lib32-libxext' 'lib32-libx11' 'lib32-libpng' 'lib32-util-linux' 'lib32-glibc')
 makedepends=('wget' 'cmake' 'gcc-multilib')
 optdepends=()
 source=("git+https://github.com/kris27mc/minecraft-linux.git")
@@ -27,7 +27,7 @@ build() {
   cd "$srcdir/minecraft-linux"
   #Determines necessary libs
   if grep -qi "amd" /proc/cpuinfo;  then
-    cp -r libs/AMD/* libs
+    /usr/bin/cp -r libs/AMD/* libs
     printf "Using compatibility libs"
     sleep 2
   fi
@@ -51,24 +51,23 @@ package(){
 
   #Creates necessary directories
   install -dm755 "$pkgdir/usr/share/applications/"
-  install -dm755 "$pkgdir/usr/share/minecraftlauncher"
-  install -dm755 "$pkgdir/usr/share/licenses/minecraftlauncher"
-  #install -dm755 "$pkgdir/usr/share/minecraftlauncher/libs"
+  install -dm755 "$pkgdir/usr/share/minecraft-linux"
+  install -dm755 "$pkgdir/usr/share/licenses/minecraft-linux"
+  install -dm755 "$pkgdir/usr/share/minecraft-linux/assets"
 
   #Moves files to directory
-  install -Dm755 "minecraftlauncher" "$pkgdir/usr/share/minecraftlauncher"
+  install -Dm755 "minecraftlauncher" "$pkgdir/usr/share/minecraft-linux"
   install -Dm755 "minecraftlauncher.desktop" "$pkgdir/usr/share/applications"
-  install -Dm755 "minecraftlauncher.png" "$pkgdir/usr/share/minecraftlauncher"
-  install -Dm755 "LICENSE" "$pkgdir/usr/share/licenses/minecraftlauncher"
-  cp -r "libs" "$pkgdir/usr/share/minecraftlauncher"
-  chmod -R 755 "$pkgdir/usr/share/minecraftlauncher/libs"
+  install -Dm755 "minecraftlauncher.png" "$pkgdir/usr/share/minecraft-linux"
+  install -Dm755 "LICENSE" "$pkgdir/usr/share/licenses/minecraft-linux"
+  cp -r "libs" "$pkgdir/usr/share/minecraft-linux"
+  chmod -R 755 "$pkgdir/usr/share/minecraft-linux/libs"
+  install -Dm755 "extract.sh" "$pkgdir/usr/share/minecraft-linux"
 
   #Extracts apk
   cd "$srcdir/"
   wget "https://kris27mc.github.io/files/minecraft.apk"
-  #mkdir "$srcdir/assets"
-  unzip "minecraft.apk" -d "$srcdir/assets"
-  install -dm755 "$srcdir/assets" "$pkgdir/usr/share/minecraftlauncher"
-  install -Dm644 "$srcdir/assets/lib/x86/libminecraftpe.so" "$pkgdir/usr/share/minecraftlauncher/libs/libminecraft.so"
-
+  install -Dm755 "minecraft.apk" "$pkgdir/usr/share/minecraft-linux"
+  cd "$pkgdir/usr/share/minecraft-linux"
+  ./extract.sh minecraft.apk
           }
