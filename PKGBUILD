@@ -10,12 +10,12 @@ url="https://github.com/mrichar1/clipster"
 license=("AGPL")
 depends=("python" "python-gobject" "libwnck3")
 makedepends=("git")
-source=("$pkgname-$pkgver::git+https://github.com/mrichar1/clipster.git#tag=$pkgver")
+source=("${pkgname}-${pkgver}::git+https://github.com/mrichar1/clipster.git#tag=${pkgver}")
 sha256sums=("SKIP")
 provides=("clipster")
 conflicts=("clipster-git")
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
