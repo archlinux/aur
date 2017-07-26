@@ -1,4 +1,4 @@
-# Maintainer: Håvard Pettersson <mail@haavard.me>
+# Maintainer: Maxime BORGES <maxime.borges@gmail.com>
 
 pkgname=simplicitystudio3
 pkgver=3.3
