@@ -1,7 +1,7 @@
 pkgbase = svg2pdf-git
 	pkgdesc = Conversion of SVGs to PDFs via cairo
-	pkgver = 20100911
-	pkgrel = 2
+	pkgver = r6.301dd48
+	pkgrel = 1
 	url = http://cairographics.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = svg2pdf-git
 	depends = librsvg>=2.0
 	depends = cairo
 	provides = svg2pdf
+	source = svg2pdf-git::git://people.freedesktop.org/~cworth/svg2pdf
+	md5sums = SKIP
 
 pkgname = svg2pdf-git
 
