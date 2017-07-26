@@ -15,7 +15,7 @@ _opt_SSP=1  # Stack Smashing Protection
 set -u
 _pkgver='6.3'
 pkgname="gcc${_pkgver//\./}-multilib"
-_snapshot='6-20170621'
+_snapshot='6-20170719'
 pkgver="${_pkgver}_${_snapshot#*-}"
 _islver='0.17'
 #_commit='4fc407888a30c5d953816b05c8a8e98ec2ab3101' # Pulling commits this big is too slow!
@@ -24,10 +24,11 @@ pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
 url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('zlib' 'gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath')
+depends=('zlib' 'libmpc>=0.8.1' 'classpath')
 makedepends=( # https://gcc.gnu.org/install/prerequisites.html
   'binutils>=2.28'
   'gcc-libs-multilib'
+  'lib32-glibc>=2.25'
   'bash'
   'gzip>=1.2.4'
   'bzip2>=1.0.2'
@@ -38,13 +39,12 @@ makedepends=( # https://gcc.gnu.org/install/prerequisites.html
   'doxygen'
 )
 if [ "${_opt_JAVA}" -ne 0 ]; then
-  makedepends+=('jack') # gcc63
   depends+=('gtk2' 'libxtst' 'alsa-lib') # from gcc63
+  makedepends+=('jack') # gcc63
 fi
 if [ "${_opt_ADA}" -ne 0 ]; then
   makedepends+=('gcc-ada-multilib') # GNAT
 fi
-makedepends+=('lib32-glibc>=2.25')
 if [ ! -z "${_commit:-}" ]; then
   makedepends+=('git')
 fi
@@ -61,7 +61,7 @@ source=(
 if [ ! -z "${_cloogver:=}" ]; then
   source+=("http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
 fi
-sha256sums=('dcc81ad0ee8a67fab24269016b3830e7708addfc872db675198611181c711437'
+sha256sums=('ab0f54e6fa115539c79f4fba7a69f93a0fc4173a338ddf95b66cdb68c43dbca8'
             '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb')
 
 PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
@@ -76,7 +76,7 @@ fi
 
 # https://gcc.gnu.org/mirrors.html
 _setmirror() {
-  local _cmd="${BASH_SOURCE[*]}" # want * not @
+  local _cmd="${BASH_SOURCE[*]}" # want [*] not [@]
   local _lang="${LANG:-}" # mksrcinfo removes LANG
   if [ "${_cmd/makepkg/}" != "${_cmd}" ] && [ ! -z "${_lang}" ]; then
     local _mirrors=()
