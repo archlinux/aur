@@ -24,7 +24,7 @@ install=$pkgname.install
 _channel=beta
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
-        'google-chrome-beta.sh')
+        "google-chrome-$_channel.sh")
 md5sums=('68fa6d3963c78fe6a0a5714b4abc7e6d'
          'SKIP'
          'ca16d5162eed85b1ba4e6b9fc37f9e35')
