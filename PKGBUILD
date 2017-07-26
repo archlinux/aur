@@ -5,8 +5,8 @@
 # Bugs: Permission issue, wants to write to /opt/depot_tools/external_bin chmod -R a+w :/
 
 pkgname=nwjs
-pkgver=0.23.6
-pkgrel=4
+pkgver=0.24.0
+pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
@@ -21,10 +21,10 @@ source=("nwjs-nw-v${pkgver}.tar.gz::https://github.com/nwjs/nw.js/archive/nw-v${
 	"node-nw-v${pkgver}.tar.gz::https://github.com/nwjs/node/archive/nw-v${pkgver}.tar.gz"
 	"v8-nw-v${pkgver}.tar.gz::https://github.com/nwjs/v8/archive/nw-v${pkgver}.tar.gz"
 	"chromium-nw-v${pkgver}.tar.gz::https://github.com/nwjs/chromium.src/archive/nw-v${pkgver}.tar.gz")
-sha512sums=("b7a03e3b09c5c439af68e728b21e500fed2eb940b25c4b0c712bb0eefbf9c7e17524fcaf13b15c2489437f1f484f45c46afe46023f2be723347f27e59ee5b431"
-	    "aa0d6cf62dfd0f07b75bcfb8db30525669f13a2ee699225fc37bb13c00b3c67daa0a65d68af0b98a284cc3a31e3b5fe40ff8157b28747ae197059aaa9409148f"
-	    "698fbc1924048b5043b3607b06d85cdbe295bb0fab0234ed15b89778da75dd63006662fb48371c8b7ed91a1209b42d4397e9fb06787a06addf2f17e8d4d43ce9"
-	    "86b94a63b0da1d1644d76c57be326adbde8f82c6cf704e2990f9e812d5d7a5d367b1d0f33304b9878ed02db77c4958099e438b6d96e7d3b6f1924b0d862a68fc")
+sha512sums=("97ec6f8c1bfd9b5dcec2edaf84a546a7d88572f127fab0dbdda4b85ee5c19caf798fa87cd51b12a3f13fbd3d55dc2b3225dfb27e9b221a280bb7c7039e629f2a"
+	    "0d2fdce53635f5109d9a408b8a536f502c73fc724507fd917205919a7456dce8d9de8a32360b44b25c6eadf0d5589af488c3658847deda9fff61f6f86eea41cc"
+	    "467556bc39fd3fdc9a6feab79fe6e1364a96b6656ec3d8051defe7ae6b7af37a4044eeb1f3e0bcb5eb14513026fe068110e15ce33ce4bd0a39baad8dc6384431"
+	    "0a5008643cfb8f2fe44653dde422a87810c51373edc7314c53517cddb0c0486f0bd8b4c2eb63b01b14771cdf41a624078e6eada50146fd24e98478424ad7a4f3")
 
 prepare() {
   cd "${srcdir}/"
@@ -50,7 +50,7 @@ build() {
   gclient sync --with_branch_heads
 
   cd src
-  gn gen out/nw
+  gn gen out/nw --args='is_debug=false is_component_ffmpeg=true target_cpu="x64"'
 
   GYP_CHROMIUM_NO_ACTION=0 ./build/gyp_chromium -I third_party/node-nw/common.gypi third_party/node-nw/node.gyp
 
