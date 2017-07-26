@@ -1,6 +1,6 @@
 pkgbase = subsurface-git
 	pkgdesc = Divelog program
-	pkgver = 20170601.ec34ebfb
+	pkgver = 20170725.efc5f4d9
 	pkgrel = 1
 	url = https://subsurface-divelog.org/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = subsurface-git
 	depends = sqlite
 	depends = libusb
 	depends = libgit2
-	depends = subsurface-libdc
+	depends = subsurface-libdc-git
 	depends = subsurface-marble
 	depends = qt5-connectivity
 	depends = grantlee

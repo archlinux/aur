@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20170601.ec34ebfb
+pkgver=20170725.efc5f4d9
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
@@ -11,7 +11,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake' 'asciidoc')
 depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2'
-         'subsurface-libdc' 'subsurface-marble'
+         'subsurface-libdc-git' 'subsurface-marble'
          'qt5-connectivity' 'grantlee')
 source=('git://git.subsurface-divelog.org/subsurface')
 sha256sums=('SKIP')
@@ -38,6 +38,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DMARBLE_LIBRARIES=/usr/lib/libssrfmarblewidget.so \
 		-DMARBLE_INCLUDE_DIR=/usr/include/subsurface/marble \
+		-DLIBDIVECOMPUTER_INCLUDE_DIR=/usr/include/libdivecomputer \
 		..
 	make
 }
