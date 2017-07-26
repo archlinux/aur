@@ -1,0 +1,20 @@
+pkgbase = butteraugli-git
+	pkgdesc = A tool for measuring perceived differences between images
+	pkgver = 290e395
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/google/butteraugli
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = glibc
+	depends = libjpeg
+	depends = libpng
+	provides = butteraugli
+	conflicts = butteraugli
+	source = git+https://github.com/google/butteraugli.git
+	sha256sums = SKIP
+
+pkgname = butteraugli-git
+
