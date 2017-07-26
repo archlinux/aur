@@ -21,7 +21,7 @@ sha256sums=('06d675b4d498cc939aaffcdae5abbb9ae7dc3bb1238117bc467b2db8f21de51b'
 
 prepare() {
     # create desktop file and run script
-    gendesk -f -n --pkgname ${pkgname} --pkgdesc "${pkgdesc}" --exec="${pkgname}"
+    gendesk -f -n --pkgname ${pkgname} --pkgdesc "${pkgdesc}" --exec="${pkgname}" --name='Simplicity Studio 3'
 }
 
 package() {
