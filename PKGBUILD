@@ -9,7 +9,7 @@ url='https://liri.io'
 license=('GPL3')
 depends=('systemd' 'wayland-protocols' 'libdrm' 'libinput' 'qt5-declarative' 'qt5-wayland'
          'xkeyboard-config' 'libxkbcommon' 'glib2' 'fontconfig' 'freetype2')
-makedepends=('git' 'qbs' 'xcb-util-cursor' 'libxcursor')
+makedepends=('git' 'liri-qbs-shared-git' 'xcb-util-cursor' 'libxcursor')
 conflicts=('greenisland' 'greenisland-git' 'liri-wayland')
 replaces=('greenisland' 'greenisland-git' 'liri-wayland')
 provides=('liri-wayland')
