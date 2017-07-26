@@ -14,7 +14,7 @@ depends=('php55>=5.5')
 options=('!makeflags')
 backup=('etc/php55/conf.d/xdebug.ini')
 provides=("${_pkgbase}=${pkgver}-${pkgrel}" "php-${_pkgbase}=${pkgver}-${pkgrel}")
-source=("http://www.xdebug.org/files/${_pkgbase}-${pkgver}.tgz"
+source=("https://www.xdebug.org/files/${_pkgbase}-${pkgver}.tgz"
         "xdebug.ini")
 md5sums=('5306da5948e195c2e4585c9abd7741f9'
          '0e601dfb867b248f28d6a647611e4400')
