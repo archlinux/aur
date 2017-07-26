@@ -31,7 +31,7 @@ sha256sums=(
   '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
 )
 
-# Package is 3 Gib smaller without "strip" but it's skipped because it takes a long time and generates many warnings
+# Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
 options=(!strip)
 
 prepare() {
