@@ -1,0 +1,17 @@
+pkgbase = srt-git
+	pkgdesc = Secure Reliable Transport (Git version)
+	pkgver = 1.2.0.r103.7607d70
+	pkgrel = 1
+	url = https://github.com/Haivision/srt
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = pkgconfig
+	depends = openssl
+	provides = srt=1.2.0.r103.7607d70
+	source = git+https://github.com/Haivision/srt.git
+	md5sums = SKIP
+
+pkgname = srt-git
+
