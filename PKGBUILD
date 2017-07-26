@@ -24,11 +24,17 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
+prepare() {
+  cd "${_plug}"
+  ./autogen.sh
+}
+
 build() {
   cd "${_plug}"
-  ./autogen.sh \
+  ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
+
   make
 }
 
