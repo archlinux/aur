@@ -1,21 +1,21 @@
 #! /bin/bash
 # Maintainer: Rafael Cavalcanti <rc.cavalcanti at gmail dot com>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
-# Contributor: x-demon 
+# Contributor: x-demon
 
 pkgname=nicotine-plus-git
 _gitname=nicotine-plus
-pkgver=r1824.86583b9
+pkgver=r2105.e91f0e9
 pkgrel=1
-pkgdesc="A fork of Nicotine, a graphical client for the SoulSeek peer-to-peer system."
+pkgdesc="A fork of Nicotine, a graphical client for Soulseek."
 arch=('i686' 'x86_64')
 url="http://nicotine-plus.org"
 license=('GPL')
 depends=('pygtk' 'gtk2' 'mutagen')
 makedepends=('git' 'python2')
 optdepends=('miniupnpc: To enable UPnP support'
-	    'python-sexy: To enable spell checking'
-	    'python-geoip: To enable geographical blocker')
+	'python-sexy: To enable spell checking'
+	'python-geoip: To enable geographical blocker')
 conflicts=('nicotine' 'nicotine-plus')
 replaces=('nicotine' 'nicotine-plus')
 source=(git+https://github.com/Nicotine-Plus/${_gitname}.git)
@@ -27,11 +27,10 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-
-  python2 setup.py install --root=$srcdir/pkg
+	cd "$srcdir/$_gitname"
+	python2 setup.py install --root=$srcdir/pkg
 }
 
 package() {
-  mv ${srcdir}/pkg/* ${pkgdir}  
+	mv ${srcdir}/pkg/* ${pkgdir}
 }
