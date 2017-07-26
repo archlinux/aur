@@ -1,6 +1,6 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=snap-telemetry-git
-pkgver=1.0.0.r20.gb72424b
+pkgver=1.3.0.r12.gf9aa843d
 pkgrel=1
 pkgdesc="An open telemetry framework designed to simplify the collection, processing and publishing of system data through a single API."
 arch=('x86_64' 'i386')
@@ -20,8 +20,8 @@ prepare() {
 }
 
 pkgver() {
-	cd "$GOPATH/src/github.com/intelsdi-x/snap"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/src/github.com/intelsdi-x/snap"
+        git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
