@@ -2,11 +2,10 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 # ToDo: Enable propretary codec
-# Bugs: Permission issue, wants to write to /opt/depot_tools/external_bin chmod -R a+w :/
 
 pkgname=nwjs
 pkgver=0.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
@@ -36,6 +35,9 @@ prepare() {
   # Removing references to git version in build config,
   # since we will use the stable source tarball
   sed -i '/\"\:commit_id\"/d' "nw.js-nw-v${pkgver}/content/nw/BUILD.gn"
+
+  # Local copy of depot_tools to manage temporary write permissions
+  cp -r /opt/depot_tools .
 }
   
 build() {
@@ -43,7 +45,7 @@ build() {
   mkdir -p nwjs
   cd nwjs
 
-  export PATH="/opt/depot_tools:$PATH"
+  export PATH="${srcdir}/depot_tools:$PATH"
   export PATH="${srcdir}/path:$PATH"
   export GYP_DEFINES="target_arch=x64"
 
