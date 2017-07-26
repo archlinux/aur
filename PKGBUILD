@@ -1,10 +1,11 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
+# Maintainer: Damian Nowak <nowaker@virtkick.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 # Based on owncloud-git PKGBUILD by Alexander Ovsyannikov
 
 pkgname=owncloud
-pkgver=9.1.3
-pkgrel=2
+pkgver=10.0.2
+pkgrel=1
 pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
 url="https://owncloud.org/"
@@ -29,22 +30,11 @@ backup=('etc/webapps/owncloud/apache.example.conf')
 validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
 source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.asc}
         'apache.example.conf'
-	owncloud-463e2ea-php71-backport.patch
-	owncloud-9.1.2-dont_warn_about_php_versions.patch
-	owncloud-b129d5d-php71-backport.patch)
-sha256sums=('e0a1eb35fffb61dab5ca41f6d3fdb4ddcc3ec09683cd620b8094846785d4f6e9'
+)
+sha256sums=('3645214d6b9527dc218b4cdcbbf1d01809aaba14435d644b545bee0274c88fd0'
             'SKIP'
             '4a2ad4b4ecc6ede355bec9a21cbf8c8c4b9144033bdf0ed3366617bcb4df1144'
-            '9a68c60cba0ee12c05467a66b581adad284447f4d22cb56eec55ed8e4ab0a7d6'
-            '5821d6b3234967d9cc86c4ccd1778190d2a95930316821455059ab63b417999e'
-            '5916b893303a10eaff72f23394ca8fb566af6413460f16d74877ad822f2e8694')
-
-prepare() {
-  cd "$srcdir"/${pkgname}
-  patch -p1 <"$srcdir"/owncloud-463e2ea-php71-backport.patch
-  patch -p1 <"$srcdir"/owncloud-9.1.2-dont_warn_about_php_versions.patch
-  patch -p1 <"$srcdir"/owncloud-b129d5d-php71-backport.patch
-}
+)
 
 package() {
     # install license
