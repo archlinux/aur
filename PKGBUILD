@@ -23,13 +23,16 @@ source=(
   'disable-pie.patch'
 )
 
-md5sums=(
+sha256sums=(
   'SKIP'
-  'c7fc35a7eb9e23c0a9b7c593f7f9878d'
-  'f1a95777bea1abc3f4731d9f0f68b610'
-  'abe70f602445e9465c1eff2769bc7d61'
-  'b40c01de8396ec85b82717e5dad4d9cc'
+  '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
+  'd0a43ec1958790be11c3260d6b93c8fd29d9c7fd3c3f57574d5807b9390a95fa'
+  '84730f07cc501b65e015b1ff5d860e596b40c43ad37101aeacb681cc95205a9c'
+  '32ab20e37f5595eff73fb7ee7916ecae19a47f72875f448663941621d166c13b'
 )
+
+# Package is 3 Gib smaller without "strip" but it's skipped because it takes a long time and generates many warnings
+options=(!strip)
 
 prepare() {
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
