@@ -1,6 +1,6 @@
 pkgbase = emacs-icicles
 	pkgdesc = an emacs library that enhances minibuffer completion
-	pkgver = 23710
+	pkgver = 23711
 	pkgrel = 1
 	url = http://www.emacswiki.org/emacs/Icicles
 	install = icicles.install
@@ -8,7 +8,7 @@ pkgbase = emacs-icicles
 	license = GPL
 	makedepends = wget
 	source = icicles.zip::https://github.com/emacsmirror/icicles/archive/master.zip
-	md5sums = e674331f00557429e5f093f4993d0695
+	md5sums = 4394e032d20a913aae4b552d10071000
 
 pkgname = emacs-icicles
 

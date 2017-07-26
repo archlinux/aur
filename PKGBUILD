@@ -2,14 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-icicles
-pkgver=23710 # Taken from icicles.el
+pkgver=23711 # Taken from icicles.el
 pkgrel=1
 pkgdesc="an emacs library that enhances minibuffer completion"
 arch=('any')
 url="http://www.emacswiki.org/emacs/Icicles"
 license=('GPL')
 source=("icicles.zip::https://github.com/emacsmirror/icicles/archive/master.zip")
-md5sums=('e674331f00557429e5f093f4993d0695')
+md5sums=('4394e032d20a913aae4b552d10071000')
 makedepends=(wget)
 install=icicles.install
 
