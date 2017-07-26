@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/google/butteraugli"
 license=('Apache')
 depends=('glibc' 'libjpeg' 'libpng')
-makedepends=('git')                               #bazel
+makedepends=('git')
 provides=('butteraugli')
 conflicts=('butteraugli')
 source=("git+https://github.com/google/butteraugli.git")
@@ -23,9 +23,9 @@ pkgver() {
 }
 
 build() {
-  cd "butteraugli/butteraugli"
+  cd "butteraugli"
 
-  make
+  make --directory="butteraugli"
 }
 
 package() {
