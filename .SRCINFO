@@ -1,7 +1,7 @@
 pkgbase = 7kaa
 	pkgdesc = Seven Kingdoms: Ancient Adversaries is a real-time strategy (RTS) computer game developed by Trevor Chan
 	pkgver = 2.14.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://7kfans.com/
 	arch = i686
 	arch = x86_64

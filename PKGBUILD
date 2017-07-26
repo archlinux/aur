@@ -4,7 +4,7 @@
 
 pkgname=7kaa
 pkgver=2.14.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Seven Kingdoms: Ancient Adversaries is a real-time strategy (RTS) computer game developed by Trevor Chan'
 url='http://7kfans.com/'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ package() {
 
   # main file
   install -dm755 "${pkgdir}/opt/${pkgname}/"
-  install -D -m755 "${srcdir}/${pkgname}-${pkgver}/src/client/${pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
+  install -D -m755 "${srcdir}/${pkgname}-${pkgver}/src/${pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
 
   # bash script
   install -D -m755 "$srcdir/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
