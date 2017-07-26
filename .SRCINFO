@@ -1,6 +1,6 @@
 pkgbase = casync-git
 	pkgdesc = Content-Addressable Data Synchronization Tool
-	pkgver = 1.r101.geffa00a
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/systemd/casync
 	arch = x86
