@@ -7,17 +7,19 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
-  #[ffmpeg]=ffmpeg     # https://crbug.com/731766
+  #[ffmpeg]=ffmpeg           # https://crbug.com/731766
   [flac]=flac
+  #[freetype]=freetype2      # https://crbug.com/pdfium/733
   [harfbuzz-ng]=harfbuzz-icu
-  #[icu]=icu           # Enable again when upstream supports ICU 59
+  #[icu]=icu                 # Enable again when upstream supports ICU 59
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
-  #[libvpx]=libvpx     # https://bugs.gentoo.org/show_bug.cgi?id=611394
+  #[libvpx]=libvpx           # https://bugs.gentoo.org/611394
   [libwebp]=libwebp
-  [libxml]=libxml2
+  #[libxml]=libxml2          # https://bugs.gentoo.org/616818
   [libxslt]=libxslt
+  [opus]=opus
   [re2]=re2
   [snappy]=snappy
   [yasm]=
@@ -25,10 +27,9 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium
-pkgver=59.0.3071.115
+pkgver=60.0.3112.78
 pkgrel=1
 _launcher_ver=5
-_freetype_rev=5a3490e054bda8a318ebde482
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('i686' 'x86_64')
 url="https://www.chromium.org/Home"
@@ -45,22 +46,16 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-freetype2::git+https://chromium.googlesource.com/chromium/src/third_party/freetype2#commit=$_freetype_rev
         chromium.desktop
-        chromium-system-ffmpeg-r6.patch
-        0001-ClientNativePixmapFactoryDmabuf-uses-ioctl-instead-o.patch
-        0001-Fix-kernel-version-condition-for-including-dma-buf.h.patch
+        chromium-gn-bootstrap-r8.patch
         0001-Clip-FreeType-glyph-bitmap-to-mask.patch
         chromium-blink-gcc7.patch
         chromium-v8-gcc7.patch
         chromium-widevine.patch)
-sha256sums=('37cbc9955ae3b25cd4e9851a82ea97a0035021cc90658902938ad1c20f263170'
+sha256sums=('a82db2aa1b9348b619c01894db565eba686780de0e6fa9e83a8f406d06ce03ea'
             '4dc3428f2c927955d9ae117f2fb24d098cc6dd67adb760ac9c82b522ec8b0587'
-            'SKIP'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '2fc21f48b95f9f2c2bd8576742fcf8028a8877c6b6e96c04d88184915982234e'
-            '9c081c84a4f85dbef82a9edf34cf0b1e8377c563874fd9c1b4efddf1476748f9'
-            '42eb6ada30d5d507f2bda2d2caece37e397e7086bc0d430db776fad143562fb6'
+            '06345804c00d9618dad98a2dc04f31ef19912cdf6e9d6e577ef7ffb1fa57003f'
             'e60aa0ff01f8bee67e45fde7bbe932901194984673ec4b10ea82bba1bace0cd7'
             'f94310a7ba9b8b777adfb4442bcc0a8f0a3d549b2cf4a156066f8e2e28e2f323'
             '46dacc4fa52652b7d99b8996d6a97e5e3bac586f879aefb9fb95020d2c4e5aec'
@@ -76,18 +71,11 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # https://groups.google.com/a/chromium.org/d/msg/chromium-packagers/wuInaKJkosg/kMfIV_7wDgAJ
-  mv "$srcdir/chromium-freetype2" third_party/freetype/src
-
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
-
-  # https://bugs.chromium.org/p/chromium/issues/detail?id=707604
-  patch -Np1 -i ../0001-ClientNativePixmapFactoryDmabuf-uses-ioctl-instead-o.patch
-  patch -Np1 -i ../0001-Fix-kernel-version-condition-for-including-dma-buf.h.patch
 
   # https://bugs.chromium.org/p/skia/issues/detail?id=6663
   patch -Np1 -d third_party/skia <../0001-Clip-FreeType-glyph-bitmap-to-mask.patch
@@ -99,7 +87,7 @@ prepare() {
   patch -Np1 -i ../chromium-v8-gcc7.patch
 
   # Fixes from Gentoo
-  patch -Np1 -i ../chromium-system-ffmpeg-r6.patch
+  patch -Np1 -i ../chromium-gn-bootstrap-r8.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
