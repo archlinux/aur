@@ -3,8 +3,9 @@
 # Contributor: Jonathan Steel <jsteel at aur.archlinux.org>
 
 set -u
-pkgname='pear-net-socket'
 _pkgnick='Net_Socket'
+_pkgnickl="${_pkgnick,,}"
+pkgname="pear-${_pkgnickl//_/-}"
 pkgver='1.2.2'
 pkgrel='1'
 pkgdesc='Net_Socket is a class interface to TCP sockets. It provides blocking and non-blocking operation, with different reading and writing modes'
