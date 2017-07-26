@@ -1,0 +1,28 @@
+pkgbase = python-flask-ask
+	pkgdesc = Rapid Alexa Skills Kit Development for Amazon Echo Devices in Python.
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = https://github.com/johnwheeler/flask-ask
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/johnwheeler/flask-ask/archive/v0.8.8.tar.gz
+	sha256sums = f718ca5c58055654b7a74889f29de2c5efc2a10c2b866eee14c2f87e8e6fd13c
+
+pkgname = python-flask-ask
+	pkgdesc = Rapid Alexa Skills Kit Development for Amazon Echo Devices in Python. (python3 version)
+	depends = python-aniso8601
+	depends = python-flask
+	depends = python-pyopenssl
+	depends = python-yaml
+	depends = python-six
+
+pkgname = python2-flask-ask
+	pkgdesc = Rapid Alexa Skills Kit Development for Amazon Echo Devices in Python. (python2 version)
+	depends = python2-aniso8601
+	depends = python2-flask
+	depends = python2-pyopenssl
+	depends = python2-yaml
+	depends = python2-six
+
