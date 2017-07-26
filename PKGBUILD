@@ -1,10 +1,8 @@
 pkgname=ghdl
-_tag=2017-03-01
-# The .99 is for pre-release
-pkgver=0.33.99.${_tag//-/.}
-pkgrel=2
-_gccver=6.4.0
-_islver=0.16.1
+pkgver=0.34
+pkgrel=1
+_gccver=7.1.0
+_islver=0.18
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator'
 url='https://github.com/tgingold/ghdl'
@@ -14,14 +12,14 @@ install=ghdl.install
 options=(!emptydirs staticlibs)
 
 source=(
-  "git+https://github.com/tgingold/ghdl#tag=${_tag}"
-  "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
-  "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
+  "git+https://github.com/tgingold/ghdl#tag=v${pkgver}"
+  "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
+  "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
 md5sums=(
   'SKIP'
-  '11ba51a0cfb8471927f387c8895fe232'
-  'ac1f25a0677912952718a51f5bc20f32'
+  '6bf56a2bca9dac9dbbf8e8d1036964a8'
+  '11436d6b205e516635b666090b94ab32'
 )
 
 prepare() {
@@ -91,10 +89,9 @@ build() {
 
   cd "${srcdir}/ghdl"
   make -j1 \
-    GHDL="${srcdir}/gcc-build/gcc/ghdl" \
-    ANALYZE_OPTS="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
-    STD_GHDL_FLAGS="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
-    vhdl.libs.all libs.vhdl.standard libgrt.a
+    GHDL_GCC_BIN="${srcdir}/gcc-build/gcc/ghdl" \
+    GHDL1_GCC_BIN="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
+    ghdllib
 }
 
 package() {
