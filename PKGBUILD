@@ -10,7 +10,7 @@ url="https://github.com/CompFile/My_AUR_PKG/tree/master/PKG/$pkgname/"
 pkgdesc="It's breath icon theme revisited by MBC" 
 license=("custom")
 groups=("MBC")
-makedepends=("tar" "gcc")
+makedepends=("tar")
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz")
 md5sums=('992a3a82c501b3dd4f5e3589feb3cbdb')
 
