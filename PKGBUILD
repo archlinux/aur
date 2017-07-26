@@ -3,7 +3,7 @@
 # Contributor: TuxSpirit <tuxspirit AT archlinux DOT fr>
 
 pkgname=rar-beta
-pkgver=5.5.b5
+pkgver=5.5.b6
 pkgrel=1
 pkgdesc="A command-line port of the rar compression utility (beta 
 version)"
