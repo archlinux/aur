@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=vym-devel
-pkgver=2.5.0
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="A mindmapping tool"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-svg' 'desktop-file-utils')
 install=$pkgname.install
 source=(https://sourceforge.net/projects/vym/files/Development/vym-$pkgver.tar.bz2
         vym.desktop)
-sha256sums=('55550549fcc8cc151ff6235a09bb8fc1412f0b598cc6f9072345058c5e12b9f3'
+sha256sums=('2ec528b2f9783ea12a80471f1cfcbefcb5eeac42bf5f3c5209ef334c6c561aba'
             'e299c69c213e7aac3f5b5d0ab088132b4ec7cb63a391f272e75ed64f049d541b')
 
 build() {
