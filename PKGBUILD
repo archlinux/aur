@@ -36,8 +36,8 @@ makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu' 'curl' 'libxslt'
              'openssl' 'db' 'gmp' 'systemd')
 
-source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
-        "http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
+source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
+        "https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
 md5sums=('72302e26f153687e2ca922909f927443'
