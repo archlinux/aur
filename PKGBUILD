@@ -2,9 +2,9 @@
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit
-pkgver=2.12.2
+pkgver=2.12.3
 _pkgver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -19,13 +19,11 @@ conflicts=('visit-bin' 'visit-build')
 source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgname}${pkgver}.tar.gz"
         "visit.sh"
         "visit_FindIceT.patch"
-        "visit_frontendlauncher.patch"
-        "visit_fix_gcc7.patch")
-sha256sums=('55897d656ac2ea4eb87a30118b2e3963d6c8a391dda0790268426a73e4b06943'
+        "visit_frontendlauncher.patch")
+sha256sums=('2dd351a291ee3e79926bc00391ca89b202cfa4751331b0fdee1b960c7922161f'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
-            '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f'
-            'd1daa5da6ec25c5a6bfcabb3cf0bf02ab97ec87a332886a2f42695072fe8568d')
+            '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f')
 options=(!emptydirs)
 
 prepare(){
@@ -68,8 +66,6 @@ prepare(){
 
   # IceT, use the IceTConfig.cmake provided by IceT
   patch CMake/FindIceT.cmake "${srcdir}/visit_FindIceT.patch"
-
-  patch -p0 < "${srcdir}/visit_fix_gcc7.patch"
 
   # Fix Qwt include
   sed -i 's:<qwt_:<qwt/qwt_:g' \
