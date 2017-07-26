@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git' 'qt5-gsettings-git'
          'libqtxdg' 'pam' 'liri-wayland-git' 'libliri-git' 'vibe-git' 'liri-workspace-git' 'liri-platformtheme-git')
 optdepends=('weston: nested mode support')
-makedepends=('git' 'qbs')
+makedepends=('git' 'liri-qbs-shared-git')
 conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-shell')
 replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-shell')
 provides=('liri-shell')
@@ -37,7 +37,7 @@ build() {
 	qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 	qbs setup-qt /usr/bin/qmake-qt5 qt5
 	qbs config profiles.qt5.baseProfile gcc
-	qbs build --no-install -d build profile:qt5 qbs.installRoot:/ qbs.installPrefix:usr lirideployment.qmlDir:lib/qt/qml lirideployment.pluginsDir:lib/qt/plugins
+	qbs build --no-install -d build profile:qt5 qbs.installRoot:/ qbs.installPrefix:usr modules.lirideployment.qmlDir:lib/qt/qml modules.lirideployment.pluginsDir:lib/qt/plugins
 }
 
 package() {
