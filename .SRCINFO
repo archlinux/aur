@@ -1,6 +1,6 @@
 pkgbase = bookworm-git
 	pkgdesc = A simple user centric eBook reader which displays multiple eBooks formats uniformly
-	pkgver = 0.9.r162.g2e5b702
+	pkgver = 0.9.0.r8.g78de3fa
 	pkgrel = 1
 	url = https://babluboy.github.io/bookworm
 	arch = i686

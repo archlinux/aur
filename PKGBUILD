@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=bookworm-git
-pkgver=0.9.r162.g2e5b702
+pkgver=0.9.0.r8.g78de3fa
 pkgrel=1
 pkgdesc='A simple user centric eBook reader which displays multiple eBooks formats uniformly'
 arch=('i686' 'x86_64')
@@ -16,8 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  ver=$(grep -oP -m 1 'VERSION "\K[^"]+' CMakeLists.txt)
-  printf "%s.r%s.g%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
