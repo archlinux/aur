@@ -1,5 +1,5 @@
 # Maintainer: Tom Nguyen <tom81094@gmail.com>
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: Jonathan Chan <jyc@fastmail.fm>
