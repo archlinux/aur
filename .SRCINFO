@@ -1,7 +1,7 @@
 pkgbase = sfnt2woff
 	pkgdesc = Tools to convert existing TrueType/OpenType fonts to WOFF and inversely (sfnt2woff and woff2sfnt)
 	pkgver = 20091003
-	pkgrel = 2
+	pkgrel = 3
 	url = https://people.mozilla.org/~jkew/woff/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = sfnt2woff
 	license = MPL
 	license = GPL
 	license = LGPL
-	source = https://people.mozilla.org/~jkew/woff/woff-code-latest.zip
-	sha512sums = 3a2d5c0f495f8dda2b311d80b6a1e4ad5b98fd098cc5573e92e5e7193d0f0746f8e3e90f7b1dddbaad8c336a68874a32c028ac650c067cfb2cce2f540411e2f9
+	source = https://github.com/wget/sfnt2woff/archive/20091003.tar.gz
+	sha512sums = da6883276b5134bdd9e5e602b545cbdeab2930d0b1f39ee5b847d82f1af8d649aa84c7cb014ecd21c839547bb400da6c114b3b280e549e3553fec0949f8e4c3c
 
 pkgname = sfnt2woff
 
