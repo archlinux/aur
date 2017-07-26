@@ -1,7 +1,7 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=python-influxdb-git
 _pkgname=influxdb-python
-pkgver=v4.0.0.r30.g11c71f2
+pkgver=v4.1.1.r5.g87683f4
 pkgrel=1
 pkgdesc="Python client for InfluxDB (build from git)"
 arch=('any')
