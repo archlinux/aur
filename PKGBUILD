@@ -3,6 +3,7 @@ pkgver='0.1.0'
 pkgrel=1
 pkgdesc='Upload data to hastebin.com via stdin'
 license=('GPL2')
+url='https://github.com/kevr/sprunge'
 
 arch=('any')
 depends=('python' 'python-requests')
