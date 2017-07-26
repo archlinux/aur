@@ -5,8 +5,17 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Running with a 1000 HZ tick rate 
+# Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
+_use_tentative_patches=y
+
+# Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
+
+### Enable fancontrol for DELL
+_dell_fancontrol=
+
+### Set performance governor as default
+_per_gov=
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
 # actually run slower with NUMA enabled. Most users will want to set this option
@@ -36,26 +45,46 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+### Disable Deadline I/O scheduler
+_deadline_disable=
+
+### Disable CFQ I/O scheduler
+_CFQ_disable=
+
+### Disable Kyber I/O scheduler
+_kyber_disable=
+
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.11
-pkgver=4.11.12
+_srcname=linux-4.12
+pkgver=4.12.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
+_bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
+_bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfq_mq_patch='4.11-bfq-mq-20170617.patch'
+_bfq_mq_patch='4.12-bfq-mq-20170717.patch'
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
-        "https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq/${_bfq_mq_patch}"
+        # mainline block merges and bfq-mq patches
+        "${_bfqpath}/4.13-uuid-block-merge.patch"
+        "${_bfqpath}/4.13-linux-block-for-linus.patch"
+        "${_bfqpath}/${_bfq_mq_patch}"
+        # tentative patches
+        "${_bfqgroup}/64eca229f59f8/0001-Add-extra-checks-related-to-ioprio-class-changes.patch?part=0.1&authuser=0&view=1"
+        "${_bfqgroup}/65e9cfd65b3d0/0001-Add-specific-check-on-st-idle-in-__bfq_requeue_entit.patch?part=0.1&authuser=0&view=1"
+        "${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
+        "${_bfqgroup}/6a0784839f358/0001-block-bfq-reset-in_service_entity-if-the-pointed-ent.patch?part=0.1&authuser=0&view=1"
+        "${_bfqgroup}/6a9952e018b84/0001-Consider-also-in_service_entity-to-state-whether-an-.patch?part=0.1&authuser=0&view=1"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -63,14 +92,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '707c5f18dfb795761b0b7ac6f946f03774f9f99317306fd54d8724d17d9c7729'
+            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
-            '1503a068ff8760db1ba94cf32b9be4af492ab4c3d8b250ccd3d3a0d2ba5c5e69'
-            'd0fb9f05857124246b613505934da979990f6080631eedec615236d8dad6f06e'
-            'c8df5b77b43c426d34fd8a9e690df1632f2f0efbbbedfc8e98337b74c7cc1c40'
+            '37c9f788ab7bfe91171bd678138befc2691f8ab68e17bd921215d17b38f2836a'
+            '4eb34ccb95c3264f8896207bba59b193cc0ebaaf2fcd3814e40ad311e914ffc4'
+            '25862f0ea3e8f1b072ce3ca7bec520a7c19b27bf56ab1ffc5f0ea861a30cecc6'
+            '31da25bdd31d6d850b14cc4182f722afeb8fe9ac86a8fe6fe8480f09f599cd0b'
+            '1533c4724a890a6c7784fa25e70012be168172ccf2993b36fbbe0ff0f4686572'
+            'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
+            '7254a81c0744b21d03ee37ab9013d4b2732694fc61d4b378bca1da6af15013be'
+            'ddc1a826f2343cff629c4b03c3ca2f21df3af4048643025be03196faf82d99df'
+            'cca8c6ff580c2726c6f24ab8a24b8b9fdc77cf279d42182f6ad6c5354e845bb3'
+            '3364f97d63126c3c365ba55f699c33d73a3f7e15fdccc796937e2456ed99308a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -83,16 +119,34 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  # add upstream patch
+  ### Add upstream patch
+  msg "Add upstream patch"
   patch -Np1 -i "${srcdir}/patch-${pkgver}"
 
+  ### Patch source with BFQ-MQ
+  msg "Fix naming schema in BFQ-MQ patch"
+  sed -i -e "s|PATCHLEVEL = 13|PATCHLEVEL = 12|g" "${srcdir}/${_bfq_mq_patch}"
+  sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = 3|g" "${srcdir}/${_bfq_mq_patch}"
+  sed -i -e "s|EXTRAVERSION = -rc1|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
+  sed -i -e "s|EXTRAVERSION = -bfq-rc1|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
+  sed -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
+
+  msg "Patching source with block and BFQ-MQ patches"
+  patch -Np1 -i "${srcdir}/4.13-uuid-block-merge.patch"
+  patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus.patch"
   patch -Np1 -i "${srcdir}/${_bfq_mq_patch}"
+
+  # Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
+  if [ -n "$_use_tentative_patches" ]; then
+    msg "Apply tentative patches"
+    for p in "${srcdir}"/0001*.patch*; do patch -Np1 -i "$p"; done
+  fi
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # Patch source to unlock additional gcc CPU optimizatons
-  # https://github.com/graysky2/kernel_gcc_patch
+  ### Patch source to enable more gcc CPU optimizatons via the make nconfig
+  msg "Patching source with gcc patch to enable more cpus types"
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
   # Clean tree and copy ARCH config over
@@ -100,12 +154,31 @@ prepare() {
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
-  ### Optionally set tickrate to 1000 
+  ### Optionally set tickrate to 1000
   if [ -n "$_1k_HZ_ticks" ]; then
-  msg "Setting tick rate to 1k..."
-  sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-      -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-      -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+    msg "Setting tick rate to 1k..."
+    sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+        -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+        -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+  fi
+
+  ### Enable fancontrol
+  if [ -n "$_dell_fancontrol" ]; then
+    msg "Enabling I8K for Dell..."
+    sed -i -e s'/CONFIG_I8K=m/CONFIG_I8K=y/' ./.config
+    sed -i -e s'/CONFIG_SENSORS_DELL_SMM=m/CONFIG_SENSORS_DELL_SMM=y/' ./.config
+  fi
+
+  ### Set performance governor
+  if [ -n "$_per_gov" ]; then
+    msg "Setting performance governor.."
+    sed -i -e s'/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' ./.config
+    sed -i -e s'/# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' ./.config
+    msg "Disabling uneeded governors..."
+    sed -i -e s'/CONFIG_CPU_FREQ_GOV_ONDEMAND=m/# CONFIG_CPU_FREQ_GOV_ONDEMAND is not set/' ./.config
+    sed -i -e s'/CONFIG_CPU_FREQ_GOV_CONSERVATIVE=m/# CONFIG_CPU_FREQ_GOV_CONSERVATIVE is not set/' ./.config
+    sed -i -e s'/CONFIG_CPU_FREQ_GOV_USERSPACE=m/# CONFIG_CPU_FREQ_GOV_USERSPACE is not set/' ./.config
+    sed -i -e s'/CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_GOV_SCHEDUTIL is not set/' ./.config
   fi
 
   ### Optionally disable NUMA for 64-bit kernels only
@@ -141,6 +214,26 @@ prepare() {
     fi
   fi
 
+  ### Disable Deadline I/O scheduler
+  if [ -n "$_deadline_disable" ]; then
+    msg "Disabling Deadline I/O scheduler..."
+    sed -i -e s'/CONFIG_IOSCHED_DEADLINE=y/# CONFIG_IOSCHED_DEADLINE is not set/' ./.config
+    sed -i -e s'/CONFIG_MQ_IOSCHED_DEADLINE=y/# CONFIG_MQ_IOSCHED_DEADLINE is not set/' ./.config
+  fi
+
+  ### Disable CFQ I/O scheduler
+  if [ -n "$_CFQ_disable" ]; then
+    msg "Disabling CFQ I/O scheduler..."
+    sed -i -e s'/CONFIG_IOSCHED_CFQ=y/# CONFIG_IOSCHED_CFQ is not set/' ./.config
+    sed -i -e s'/CONFIG_CFQ_GROUP_IOSCHED=y/# CONFIG_CFQ_GROUP_IOSCHED is not set/' ./.config
+  fi
+
+  ### Disable Kyber I/O scheduler
+  if [ -n "$_kyber_disable" ]; then
+    msg "Disabling Kyber I/O scheduler..."
+    sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
+  fi
+
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
@@ -154,10 +247,10 @@ prepare() {
 
   # get kernel version
   make prepare
-  
+
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
-    if [ -n "$_localmodcfg" ]; then
+  if [ -n "$_localmodcfg" ]; then
     msg "If you have modprobed-db installed, running it in recall mode now"
     if [ -e /usr/bin/modprobed-db ]; then
       [[ -x /usr/bin/sudo ]] || {
@@ -191,10 +284,10 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with BFQ-MQ"
-  [ "${pkgbase}" = "linux" ] && groups=('base')
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the BFQ-MQ scheduler"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+  provides=("${pkgbase}=${pkgver}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
