@@ -1,21 +1,16 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 
-# As of 4.11 repowering the serial server crashes the kernel on TCP connection loss
-# The 4.11 patch is disabled to prevent it from compiling on 4.11
+# Crashes kernel 4.11, 4.9, 4.4
 
 _opt_DKMS=1            # This can be toggled between installs
 #_opt_defaultmode='666' # default: 660
 
-# Todo: Implement defaultmode
+# Todo: Implement _opt_defaultmode
 # Todo: Test secure mode
 
 # Todo: python tools should be updated to python3
-# Todo: nslinkadmin ethdevname needs to be adjustable when launched from command line, not "eth0".
-# Todo: nslinktool add systemd support
-# Todo: nslinktool needs an eth selector
-# Todo: nslinktool what does the "Load" button do?
 # Todo: nslinktool Config Driver needs an up down button to reorder entries
-# Todo: separate firmware updater
+# Todo: TUI firmware updater.
 # Todo: Comtrol icons for nslinktool and the firmware updater
 # Todo: The IP is backwards in /proc/driver/nslink/status
 # Todo: nslinktool set the mouse pointer to a spinning circle far too long after startup
@@ -27,9 +22,9 @@ _opt_DKMS=1            # This can be toggled between installs
 
 set -u
 pkgname='nslink'
-pkgver='7.15'
-pkgrel='3'
-pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial Hub console terminal device server'
+pkgver='7.22'
+pkgrel='1'
+pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -39,32 +34,26 @@ depends=('glibc' 'openssl' 'python2' 'sed' 'groff' 'tcl' 'tk' 'util-linux') # py
 optdepends=(
   'gksu: NS-Link Manager GUI'
 )
-makedepends=()
 backup=("etc/nslink.conf")
 options=('!zipman')
 install="${pkgname}-install.sh"
 _verwatch=('http://downloads.comtrol.com/html/DM_PRO_RTS_SERIALHUB_drivers.htm' '.*/devicemaster-linux-\([0-9\.]\+\)\.tar\.gz' 'l')
 _srcdir="devicemaster-linux-${pkgver}"
-_srcdir2="DM-Firmware-Updater-1.06"
+_srcdir2="DM-Firmware-Updater-1.06" # http://downloads.comtrol.com/html/DM_PRO_RTS_SERIALHUB_pvdx2.htm
 #source=("ftp://ftp.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz")
 source=("http://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz")
 #source+=('ftp://ftp.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
 source+=('http://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz')
-source+=('dmupdate.py.usage.patch' 'nslinktool.systemd.patch' 'nslink-patch-signal_pending-kernel-4-11.patch')
-sha256sums=('f166dc53d53c856a790b4c21f40f3f9df66684aa687fa84b502a795a8130dafc'
+source+=('dmupdate.py.usage.patch')
+sha256sums=('1754211e69ccc058b7cb2f2dfaa870fe5b54bf96a872a09c2cf9e4ecc8e374ad'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
-            '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
-            'c6e4b4c3ee31cbad8f18db5973d0b0c677443ce9d55f86326557e51e94752097'
-            '20c01753d9d32fdc88853a42ead7c5e8cffb1f4c9ab1c2ba028b3c5e89e1d711')
+            '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
 else
   makedepends+=('linux-headers')
 fi
-
-_opt_ethernet_data='eno_____________________________'
-_opt_ethernet_keystring='<-<-<-ArchLinux_ethernet_keystring->->->'
 
 prepare() {
   set -u
@@ -80,15 +69,6 @@ prepare() {
     false
   fi
   unset _ver
-
-  # Minor fixes to Makefile
-  sed -e '# Fix a path' \
-      -e 's:/lib/:/usr/lib/:g' \
-      -e '# These lines look dangerous so well disable them' \
-      -e 's:^ifneq "$(wildcard /usr/src/.*$:ifneq "ArchLinux" "ArchLinux":g' \
-      -e '# We can force this one true' \
-      -e 's:^ifneq "$(wildcard /usr/lib/.*$:ifneq "ArchLinux" "0":g' \
-    -i 'Makefile'
 
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison
   sed -e '# Fix some paths' \
@@ -112,11 +92,7 @@ prepare() {
       -e '# Get rid of the start messages lest someone believes them' \
       -e 's:^\s\+if\s\[\s"$WillStart"\s=\syes\s\]:return\n&:g' \
     -i 'install.sh'
-  if [ -s 'install.sh.Arch' ]; then
-    echo 'Disable testmode to build'
-    set +u
-    false
-  fi
+  test -s 'install.sh.Arch' && echo "${}"
 
   # Switch to python2
   sed -e '# Why using local on just this one?' \
@@ -124,48 +100,18 @@ prepare() {
       -e 's:/usr/bin/python:&2:g' \
     -i *.py 'nslinktool'
 
-  # The command line tool is unusable without the proper ethernet card in it.
-  # There's a parameter but who would know! We'll add a searchable string
-  # that a launcher can modify.
-  sed -e 's:"eth0":"'"${_opt_ethernet_data}${_opt_ethernet_keystring}"'":g' -i 'nslinkadmin.c'
-
   # Branding in dmesg
   sed -e '/^int nrp_init(/,/^}/ s:version %s %s:& Arch Linux:g' -i 'nslink.c'
-
-  # nslinktool has the same problem but it's a GUI app. The best we can
-  # do is start with the right network card. It really needs to become
-  # a dropdown.
-  local _neweth
-  local _neweths=($(ip addr | grep ' UP ' | cut -d':' -f2))
-  if [ "${#_neweths[@]}" -ne 0 ]; then
-    _neweth="s:eth0:${_neweths[0]}:g"
-  else
-    _neweth='#'
-  fi
+  grep -qF 'Arch Linux' 'nslink.c' || echo "${}"
 
   # Fix nslinktool. We'll get rid of the tabs while we're here.
-  cp -p 'nslinktool' 'nslinktool.orig'
-  sed -e '# Fix paths and enable our fixed admin tool:g' \
-      -e 's:/usr/sbin/nslinkadmin:/usr/bin/nslinkadmin.exec:g' \
-      -e 's:/usr/local/man:/usr/share/man:g' \
-      -e '# Cosmetic cleanup for simpler patch editing' \
-      -e 's:\s\+$::g' \
-      -e '# Ethernet fix from above' \
-      -e "${_neweth}" \
-    'nslinktool.orig' | expand -i > 'nslinktool'
+  expand -i 'nslinktool' | sed -e 's:\s\+$::g' > 'nslinktool.orig'
+  sed -e 's:/usr/local/man:/usr/share/man:g' 'nslinktool.orig' > 'nslinktool'
   rm 'nslinktool.orig'
-  unset _neweth _neweths
-
-  # Patch systemd code into the GUI tool
-  #diff -pNau5 nslinktool{.orig,} > '../nslinktool.systemd.patch'
-  patch -Nbup0 < "${srcdir}/nslinktool.systemd.patch"
 
   # Convert the live config entries to samples. This eliminates
   # special handling for detecting a blank configuration.
   sed -e 's:^:#&:g' -i 'nslink.conf'
-
-  #diff -pNau5 nslink.c{.orig,} > '../nslink-patch-signal_pending-kernel-4-11.patch'
-  #patch -Nbup0 < "${srcdir}/nslink-patch-signal_pending-kernel-4-11.patch"
 
   # Fix up the firmware downloaders
   cd "${srcdir}/${_srcdir2}"
@@ -238,101 +184,6 @@ Categories=Application;Utilities;
 MimeType=application/x-executable
 EOF
   ) "${pkgdir}/usr/share/applications/nslinktool.desktop"
-
-  # Generate launcher
-  mv "${pkgdir}/usr/bin"/{'nslinkadmin','nslinkadmin.exec'}
-  install -Dm755 <(cat << EOF
-#!/bin/bash
-# Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# https://aur.archlinux.org/
-
-# A launcher to detect UP ethernet interfaces and sed the selected on into a temp executable.
-# The executable has been compiled with a special string that we can replace.
-
-set -e
-set -u
-
-neweths=(\$(ip addr | grep ' UP ' | cut -d':' -f2))
-
-DEBUG=0
-if [ "\${DEBUG}" -ne 0 ]; then
-  if [ "\${EUID}" -eq 0 ]; then
-    echo 'Must not be root'
-    exit 1
-  fi
-  adminbin='./nslinkadmin.exec'
-  admintmp="\${adminbin}.tmp"
-  cp -pn "\${adminbin}" "\${adminbin}.bak"
-  neweths+=(Arch Linux)
-else
-  if [ "\${EUID}" -ne 0 ]; then
-    echo 'Must be root'
-    exit 1
-  fi
-  adminbin='/usr/bin/nslinkadmin.exec'
-  admintmp="/tmp/nslinkadmin.tmp.\$$"
-fi
-
-case "\${#neweths[@]}" in
-0)
-  echo 'No network cards are available in the UP state. Try ip addr'
-  exit 2
-  ;;
-1)
-  neweth="\${neweths[0]}"
-  #echo "Auto selecting only NIC \${neweth}" # The next program shows this so we don't need to.
-  ;;
-*)
-  echo 'Available UP network cards'
-  idx=0
-  for neweth in "\${neweths[@]}"; do
-    idx=\$((idx+1))
-    echo -n "\${idx}-\${neweth}  "
-  done
-  echo ''
-  wantidx=-1
-  while [ "\${wantidx}" -lt 0 ]; do
-    echo -n "Select network card or 0 to quit:"
-    read wantidx
-    if [ -z "\${wantidx}" ] || [[ ! "\${wantidx}" =~ ^[0-9]+$ ]] || [ "\${wantidx}" -lt 0 ] || [ "\${wantidx}" -gt "\${idx}" ]; then
-      wantidx=-1
-    fi
-    if [ "\${wantidx}" -eq 0 ]; then
-      exit 0
-    fi
-  done
-  neweth="\${neweths[\$((wantidx-1))]}"
-esac
-
-if [ "\${DEBUG}" -ne 0 ]; then
-  set -x
-fi
-
-# These values are compiled into the executable by the PKGBUILD and must not be changed here
-neweth="\$(printf "%-${#_opt_ethernet_data}s" "\${neweth}")"
-neweth="\${neweth// /\\\\x00}" # binary replace
-
-set +e
-(
-umask 077
-rm -f "\${admintmp}"
-sed -e 's:${_opt_ethernet_data}${_opt_ethernet_keystring}:'"\${neweth}${_opt_ethernet_keystring}:" "\${adminbin}" > "\${admintmp}"
-)
-chmod 700 "\${admintmp}"
-
-rv=0
-if [ "\${DEBUG}" -eq 0 ] || [ "\$(stat -c '%s' "\${adminbin}")" -eq "\$(stat -c '%s' "\${adminbin}.bak")" ]; then
-  trap "{ rm -f "\${admintmp}"; exit 255; }" SIGINT
-  set +e
-  "\${admintmp}" "\$@"
-  rv="\$?"
-  if [ "\${DEBUG}" -eq 0 ]; then
-    rm "\${admintmp}"
-  fi
-fi
-exit "\${rv}"
-EOF
-  ) "${pkgdir}/usr/bin/nslinkadmin"
 
   # DKMS
   if [ "${_opt_DKMS}" -ne 0 ]; then
