@@ -1,5 +1,5 @@
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
-# Maintainer: Chrys <mail@chrys.de>
+# Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
+# Maintainer: Chrys <chrys@linux-a11y.org>
 
 _gitname='fenrir'
 pkgname="${_gitname}-git"
