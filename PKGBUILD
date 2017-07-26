@@ -1,5 +1,5 @@
-#By MBC (Matteo's Basic Computing)
-#Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
+# By MBC (Matteo's Basic Computing)
+# Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
 
 
 pkgname=breath-icon-theme-mbc
