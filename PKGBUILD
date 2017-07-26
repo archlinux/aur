@@ -16,7 +16,7 @@ pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
 url='https://www.qt.io/ide/'
 license=('GPL')
-depends=('clang' 'qt5-svg' 'qt5-tools' 'qt5-webengine')
+depends=('clang' 'qt5-svg' 'qt5-tools' 'qt5-webengine' 'qt5-script')
 makedepends=('git' 'llvm' 'mesa')
 # debug+strip to produce ${pkgname}-debug package with debug symbols
 options=('docs' 'debug' 'strip')
