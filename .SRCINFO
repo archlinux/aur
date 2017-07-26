@@ -1,0 +1,14 @@
+pkgbase = json-parser-git
+	pkgdesc = Very low footprint JSON parser written in portable ANSI C
+	pkgver = v1.1.0.r19.gb1b09b5
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/udp/json-parser
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = json-parser::git+https://github.com/udp/json-parser
+	sha512sums = SKIP
+
+pkgname = json-parser-git
+
