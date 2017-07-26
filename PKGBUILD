@@ -1,35 +1,38 @@
 # $Id: PKGBUILD 207928 2017-01-18 21:39:02Z jelle $
-# Maintainer: Angel Velasquez <angvp@archlinux.org> 
+# Maintainer:  Laurent Soest <laurent.soest@gmail.com>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Armando M. Baratti <amblistas@ajato.com.br>
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 pkgname=('python-cherrypy' 'python2-cherrypy')
-pkgver=8.9.1
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="A pythonic, object-oriented web development framework"
 arch=('any')
 url="http://www.cherrypy.org"
 license=('BSD')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-checkdepends=('python-mock' 'python2-mock' 'python-nose')
-source=("https://pypi.python.org/packages/56/aa/91005730bdc5c0da8291a2f411aacbc5c3729166c382e2193e33f28044a3/CherryPy-8.9.1.tar.gz")
-md5sums=('7abe5198e48f14cfee57a07d23875a4b')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-setuptools-scm' 'python2-setuptools-scm')
+checkdepends=('python-tox' 'python2-tox')
+source=("https://github.com/cherrypy/cherrypy/archive/v$pkgver.tar.gz")
+md5sums=('bb432eb2e919d449a1f644b36b8db4f1')
 
 build() {
-  cp -r CherryPy-${pkgver} CherryPy-${pkgver}-py2
+  cp -r "${srcdir}/cherrypy-${pkgver}" "${srcdir}/cherrypy-${pkgver}-py2"
 
-  cd CherryPy-${pkgver}
+  # setuptools wont find version from git tag
+  export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
+  cd "${srcdir}/cherrypy-${pkgver}"
   python ./setup.py build
 
-  cd "${srcdir}/CherryPy-${pkgver}-py2"
+  cd "${srcdir}/cherrypy-${pkgver}-py2"
   python2 ./setup.py build
 }
 
 package_python-cherrypy() {
-  depends=('python' 'python-six')
+  depends=('python')
 
-  cd CherryPy-${pkgver}
+  cd cherrypy-${pkgver}
 
   python ./setup.py install --root="${pkgdir}" --optimize=1
 
@@ -40,7 +43,7 @@ package_python-cherrypy() {
 package_python2-cherrypy() {
   depends=('python2')
 
-  cd CherryPy-${pkgver}-py2
+  cd cherrypy-${pkgver}-py2
 
   python2 ./setup.py install --root="${pkgdir}" --optimize=1
   mv "${pkgdir}/usr/bin/cherryd" "${pkgdir}/usr/bin/cherryd2"
@@ -50,11 +53,9 @@ package_python2-cherrypy() {
 }
 
 check() {
-  # backports.unittest_mock is not packaged..
-  cd CherryPy-${pkgver}-py2/cherrypy
-  #LANG="en_US.UTF-8" pytest2 test/
+  cd cherrypy-${pkgver}-py2
+  tox2
 
-  cd $srcdir/CherryPy-${pkgver}/cherrypy
-  LANG="en_US.UTF-8" nosetests test/
-
+  cd $srcdir/cherrypy-${pkgver}
+  tox
 }
