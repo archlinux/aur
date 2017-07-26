@@ -1,11 +1,12 @@
 pkgbase = rocketchat-server
 	pkgdesc = An open source web chat platform
 	pkgver = 0.57.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rocket.chat
 	install = rocketchat-server.install
 	arch = any
 	license = MIT
+	depends = npm
 	depends = nodejs
 	depends = mongodb
 	depends = graphicsmagick

@@ -3,12 +3,12 @@
 
 pkgname=rocketchat-server
 pkgver=0.57.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source web chat platform"
 arch=("any")
 url="https://rocket.chat"
 license=("MIT")
-depends=("nodejs" "mongodb" "graphicsmagick" "curl")
+depends=("npm" "nodejs" "mongodb" "graphicsmagick" "curl")
 makedepends=()
 optdepends=()
 backup=("etc/rocketchat/${pkgname}.conf")
