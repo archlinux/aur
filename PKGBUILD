@@ -3,7 +3,7 @@
 
 pkgname=visit-build
 _pkgname=visit
-pkgver=2.12.2
+pkgver=2.12.3
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool (built with build_visit)."
@@ -21,8 +21,8 @@ source=("https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/build
         'no_extract_visit.patch'
         "xdmf_stdc++.patch"
         'qt5-qpa.patch')
-sha256sums=('c28173a62fafae606280411186e15001bf939c248cfe07cb15ca0f6dbe512566'
-            '55897d656ac2ea4eb87a30118b2e3963d6c8a391dda0790268426a73e4b06943'
+sha256sums=('d4575d1088f131005ae627e19aaa80917f3cc2a3d0c062eb018dd4c7d145a021'
+            '2dd351a291ee3e79926bc00391ca89b202cfa4751331b0fdee1b960c7922161f'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '8ec6767c3943c3b93c9817ef0d051799c5ebfac75e73e58175befd08bfd320e0'
             '6dfdf3fdf6e64437106fc4f9facc79e80ab204de12bb480c6209c6b3fc5b4e07'
