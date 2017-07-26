@@ -8,7 +8,7 @@
 pkgname='pekwm-git'
 _pkgname='pekwm'
 epoch=1
-pkgver=0.1.17.r132.gdf78e7d
+pkgver=0.1.17.r143.g6d68fafe
 pkgrel=1
 pkgdesc='Small, fast, functional, and flexible window manager'
 arch=('x86_64' 'i686')
@@ -34,7 +34,7 @@ backup=(etc/pekwm/autoproperties
         etc/pekwm/start
         etc/pekwm/vars)
 #source=("$pkgname::git+http://www.pekwm.org/git/pekwm.git")
-source=("$pkgname::git+http://projects.pekdon.net/git/pekwm.git"
+source=("$pkgname::git+https://projects.pekdon.net/git/pekwm.git"
         'harbour-no-border.patch')
 md5sums=('SKIP'
          '74c74a53743dab90e605eb73e0579528')
