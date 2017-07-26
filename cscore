@@ -110,7 +110,7 @@ class Score:
         cur_total_grade = 0.0
         for course in cur_tmp:
             cur_credit += float(course[0])
-            if course[1] != "":
+            if course[1].strip() != "":
                 cur_total_grade += float(course[0]) * float(course[1])
         if(cur_credit == 0):
             return
