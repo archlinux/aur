@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.6.2
-pkgrel=4
+pkgver=1.6.3
+pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686')
@@ -83,10 +83,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/arc
 		"fixes-${pkgver}.diff"
 		)
 
-sha256sums=('815e709e018d5cb0fcc6153c67f4809f77de5599341ad62c97bc56b90a6660fb'
+sha256sums=('0d89fc4966c71b209a0f566458b1651dfa11b651b5e772cbe599177270e8c13f'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f'
-            '983f45276e2eeb40d2cc813a29d484e16464af1941b1ddf2ee46af630bb8e4c8')
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
