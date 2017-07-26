@@ -8,6 +8,7 @@ pkgbase = theslate
 	makedepends = git
 	depends = xdg-utils
 	depends = qt5-base
+	depends = qtermwidget
 	source = theslate-0.2::git+https://github.com/vicr123/theslate.git
 	md5sums = SKIP
 
