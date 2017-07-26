@@ -8,7 +8,7 @@ pkgrel=1
 arch=("x86_64")
 pkgdesc="It's a module for calculate a aircraft's Z.F.W." 
 url="https://github.com/CompFile/My_AUR_PKG/tree/master/Sources/$pkgname/$pkgname-$pkgver.r$pkgrel"
-license=("custom")
+license=("GPL")
 groups=("MBC")
 depends=("qt5-base>=5.9.1")
 makedepends=("tar" "gcc" "qt5-base>=5.9.1")
