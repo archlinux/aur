@@ -18,8 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=61.0.3141.7
-_launcher_ver=5
+pkgver=61.0.3159.5
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -75,12 +74,13 @@ optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
             )
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
-        "git+https://github.com/foutrelis/chromium-launcher.git#tag=v${_launcher_ver}"
+        "git+https://github.com/foutrelis/chromium-launcher.git"
         'chromium-dev.svg'
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r11.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r13.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc-r1.patch'
         # Misc Patches
         'minizip.patch'
         'vaapi_patch_r2.patch'
@@ -94,7 +94,8 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '07df380530299b0450045edd655f924f0e0442abccb05c2336ed2aea9d5ee044'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            'feeacc5ec4a2d16487c27cc8d68a8ae394f1e37e8bced04d956f0ac6b90204e9'
+            '3303ca2f12058ece85318dd2c5089dab369acb5a8716b388800af9b0625484e7'
+            '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
             # Misc Patches
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce'
@@ -306,6 +307,7 @@ _flags=(
   'treat_warnings_as_errors=false'
   "enable_nacl=${_nacl}"
   "enable_nacl_nonsfi=${_nacl}"
+  'use_custom_libcxx=false'
 )
 
 # Set the bundled/external components.
@@ -382,7 +384,7 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r11.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r13.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -457,6 +459,7 @@ _set_gcc() {
     )
     export CC="${_ccache} gcc -Wall"
     export CXX="${_ccache} g++ -Wall"
+    patch -p1 "${srcdir}/chromium-gcc-r1.patch"
 }
 
   # Setup compilers.
@@ -474,7 +477,8 @@ _set_gcc() {
         'clang_use_chrome_plugins=true'
       )
       _clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
-      export CXXFLAGS="${CXXFLAGS} -Wno-unknown-warning-option"
+      export CXXFLAGS="${CXXFLAGS//-fno-plt/} -Wno-unknown-warning-option"
+      export CFLAGS="${CXXFLAGS//-fno-plt/}"
       export CC="${_ccache} ${_clang_path}/clang -Qunused-arguments"
       export CXX="${_ccache} ${_clang_path}/clang++ -Qunused-arguments"
     fi
