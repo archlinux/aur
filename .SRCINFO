@@ -1,6 +1,6 @@
 pkgbase = pycharm-professional
 	pkgdesc = Powerful Python and Django IDE. Professional edition.
-	pkgver = 2017.1.5
+	pkgver = 2017.2.0
 	pkgrel = 1
 	url = http://www.jetbrains.com/pycharm/
 	install = pycharm-professional.install
@@ -35,18 +35,18 @@ pkgbase = pycharm-professional
 	options = !strip
 	backup = opt/pycharm-professional/bin/pycharm.vmoptions
 	backup = opt/pycharm-professional/bin/pycharm64.vmoptions
-	source = https://download.jetbrains.com/python/pycharm-professional-2017.1.5.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-professional-2017.2.tar.gz
 	source = pycharm-professional.desktop
 	source = pycharm-professional.install
 	source = pycharm
 	source = charm.desktop
 	source = charm
-	sha256sums = 52519dfd0e913b5ccb8767155cd4d1fd413967d5010e8474cdc9a1fa688016ce
+	sha256sums = 005c4f9fb4ac7f040d73a9b58a57e32998d53be5bbf583779a0e24b379150833
 	sha256sums = 016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49
 	sha256sums = c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958
 	sha256sums = 54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607
 	sha256sums = e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb
-	sha256sums = d5b2d3408ff68e6f44201493f38330d7a1a10c6126ec768d0e22a61ce4a20b62
+	sha256sums = 998a6fdf6d04791a7b3e918e11ccf8fb017a15755aaa9407f70069cecdcc2745
 
 pkgname = pycharm-professional
 

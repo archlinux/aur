@@ -1,8 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2017.1.5
-_pkgver=2017.1.5
+pkgver=2017.2.0
+_pkgver=2017.2
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('any')
@@ -44,12 +44,12 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'jupyter: For support Jupyter Notebook')
 # for no-jdk:
 # sha256sums=('84cea5993e25daf54e6e28ec1aa554a5f03a03510c29cfd1d88dff1ceef58e9d'
-sha256sums=('52519dfd0e913b5ccb8767155cd4d1fd413967d5010e8474cdc9a1fa688016ce'
+sha256sums=('005c4f9fb4ac7f040d73a9b58a57e32998d53be5bbf583779a0e24b379150833'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
             '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
             'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
-            'd5b2d3408ff68e6f44201493f38330d7a1a10c6126ec768d0e22a61ce4a20b62')
+            '998a6fdf6d04791a7b3e918e11ccf8fb017a15755aaa9407f70069cecdcc2745')
 
 package() {
   # compile PyDev debugger used by PyCharm to speedup debugging
