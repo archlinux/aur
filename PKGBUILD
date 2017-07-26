@@ -2,9 +2,9 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc
-pkgver=6.3.0
+pkgver=7.1.0
 _islver=0.18
-pkgrel=2
+pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -14,28 +14,30 @@ options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!st
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        fix-insn-delay_cycles_32x.patch
-        sync-devicelist.patch)
-sha256sums=('f06ae7f3f790fbf0f018f6d40e844451e6bc3b7bc96e128e63b09825c1f8b29f'
-            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
-            '0cd87771d1fd8ec5d0c413ae8c18b9b2599f2c66a0fa8b5fd4aa2f01ac1b5f86'
-            'c9fdb1ac5f86dcbde673c0aed448a5e61d706fc4cbfa417f91be95e292cb5c26')
+source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
+        ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
+        revert-pr71289.patch
+        0001-Use-GET_MODE_BITSIZE-when-setting-TYPE_SIZE.patch)
+sha256sums=('6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
+            '8a8136c235f64c6fef69cac0d73a46a1a09bb250776a050aec8f9fc880bebc17'
+            '836ecb799c88b1c4db7e6ef2df72437a8fe162d1a2d3fb395198fba702f7d9d6'
+            '28f39dd3ef931d87de1eccf7700406c5b76fa7a6ecf47cfb3f199b33cd1fdf02')
+
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
   [[ -L isl ]] && rm -f isl
   ln -s ../isl-${_islver} isl
 
-  # synchronize device list with binutils
-  patch -p1 < ../sync-devicelist.patch
-
-  # this did not make it into 6.3.0
-  patch -p1 < ../fix-insn-delay_cycles_32x.patch
-
   [[ -d gcc-build ]] && rm -rf gcc-build
   mkdir gcc-build
+
+  # Until pr79242 is resolved, revert pr71289. Yes, the underlying bug is still
+  # there, but I do not have the time to investigate it and fix it at the
+  # moment. Patches/comments are welcome.
+  patch -p1 < ../revert-pr71289.patch
+  # while we are at it, fix pr78849
+  patch -p1 < ../0001-Use-GET_MODE_BITSIZE-when-setting-TYPE_SIZE.patch
 }
 
 build() {
