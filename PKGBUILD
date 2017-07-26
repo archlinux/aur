@@ -1,7 +1,7 @@
 # Maintainer: David Stark <david@starkers.org>
 
-pkgver=0.61
-pkgrel=2
+pkgver=0.62
+pkgrel=4
 pkgname=telepresence
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster - http://www.telepresence.io"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://github.com/datawire/telepresence"
 makedepends=()
 backup=()
 depends=(
+    'conntrack-tools'
     'git'
     'python'
     'python-virtualenv'
