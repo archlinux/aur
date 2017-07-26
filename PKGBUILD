@@ -113,7 +113,7 @@ build() {
 		--with-imap=shared \
 		--with-kerberos=/usr \
 		--with-jpeg-dir=/usr \
-		--with-vpx-dir=/usr \
+		--with-vpx-dir=no \
 		--with-ldap=shared \
 		--with-ldap-sasl \
 		--with-mcrypt=shared \
