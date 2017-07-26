@@ -23,7 +23,7 @@ install=$pkgname.install
 _channel=stable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
-        'google-chrome-stable.sh')
+        "google-chrome-$_channel.sh")
 md5sums=('129a9dd66da2e37f74c6d9f43b5b8c0b'
          'SKIP'
          '99fa93d5e7fb5d622cef0f9621f3ffa3')
