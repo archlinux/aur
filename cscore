@@ -56,7 +56,7 @@ class Score:
             raise Exception('无法获取成绩')
         self.bs = BeautifulSoup(req.text, 'lxml')
         tmp = self.bs.find_all('table')[4]
-        self.all_courses = tmp.find_all('tr')[1:]
+        self.all_courses = tmp.find_all('tr')
 
     def __get_score(self):
         ret = []
@@ -97,11 +97,12 @@ class Score:
             all_tmp.append([td[3].find('p').text, td[9].find('p').text])
         for course in self.courses:
             td = course.find_all('td')
-            cur_tmp.append([td[2].find('p').text, td[6].find('p').text])
+            cur_tmp.append([td[4].find('p').text, td[10].find('p').text])
         credit = 0.0
         total_grade = 0.0
-        for course in all_tmp:
-            if(float(course[1]) >= 60.0):
+        for i in range(1, len(all_tmp)):
+            course = all_tmp[i]
+            if float(course[1]) >= 60.0:
                 credit += float(course[0])
                 total_grade += float(course[0]) * float(course[1])
         self.gpa = total_grade / credit / 100 * 4
@@ -109,7 +110,8 @@ class Score:
         cur_total_grade = 0.0
         for course in cur_tmp:
             cur_credit += float(course[0])
-            cur_total_grade += float(course[0]) * float(course[1])
+            if course[1] != "":
+                cur_total_grade += float(course[0]) * float(course[1])
         if(cur_credit == 0):
             return
         else:
