@@ -3,14 +3,14 @@
 
 pkgname=clipster
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python clipboard manager"
 arch=("any")
 url="https://github.com/mrichar1/clipster"
 license=("AGPL")
 depends=("python" "python-gobject" "libwnck3")
 makedepends=("git")
-source=("$pkgname-$pkgver::git+https://github.com/mrichar1/clipster.git#tag=1.0.3")
+source=("$pkgname-$pkgver::git+https://github.com/mrichar1/clipster.git#tag=$pkgver")
 sha256sums=("SKIP")
 provides=("clipster")
 conflicts=("clipster-git")
