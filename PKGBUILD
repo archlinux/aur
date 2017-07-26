@@ -3,7 +3,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited
-pkgver=1.0.1.4
+pkgver=1.0.3.0
 pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,7 +22,7 @@ makedepends=('autoconf'
              'make'
              'pkg-config')
 license=('MIT')
-source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#tag=1.0.1.3
+source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#tag=v$pkgver
         bitcoin.conf
         bitcoin.logrotate)
 sha256sums=('SKIP'
