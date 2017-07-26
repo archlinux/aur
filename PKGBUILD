@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Based on the lvm2 package in [core]
 pkgname="python-lvm"
-pkgver=2.02.172
+pkgver=2.02.173
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://sourceware.org/lvm2/"
@@ -9,7 +9,7 @@ license=('LGPL2.1')
 pkgdesc="Python 3 bindings for LVM"
 depends=('python' 'lvm2')
 source=(https://mirrors.kernel.org/sourceware/lvm2/releases/LVM2.${pkgver}.tgz{,.asc})
-sha256sums=('eab09d4132e6ade4db22249e554919045948efb908ffa40409e8e8e0c316f708'
+sha256sums=('ceb9168c7e009ef487f96a1fe969b23cbb07d920ffb71769affdbdf30fea8d64'
             'SKIP')
 validpgpkeys=('88437EF5C077BD113D3B7224228191C1567E2C17')
 
