@@ -4,7 +4,7 @@
 
 pkgname=asterisk
 pkgver=14.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64' 'armv7h')
 backup=('etc/asterisk/acl.conf'
@@ -118,7 +118,7 @@ backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/xmpp.conf')
 url="http://www.asterisk.org"
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject' 'opus')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject' 'opus' 'termcap')
 makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
 source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
@@ -133,7 +133,7 @@ sha256sums=('46543dac3ca42124bc9439ecbc8c3869f2588e14293ae8514b266c77559372b4'
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-libedit=internal
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin 
   make
 }
 
