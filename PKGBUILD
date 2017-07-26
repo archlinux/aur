@@ -1,3 +1,4 @@
+# Maintainer: Tom Nguyen <tom81094@gmail.com>
 # Maintainer: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -9,7 +10,13 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Running with a 1000 HZ tick rate 
-_1k_HZ_ticks=y
+_1k_HZ_ticks=
+
+### Enable fancontrol for DELL
+_dell_fancontrol=
+
+### Set performance governor as default
+_per_gov=
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
 # actually run slower with NUMA enabled. Most users will want to set this option
@@ -39,13 +46,22 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+### Disable Deadline I/O scheduler
+_deadline_disable=
+
+### Disable CFQ I/O scheduler
+_CFQ_disable=
+
+### Disable Kyber I/O scheduler
+_kyber_disable=
+
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-mq-git
 _pkgver=4.13-rc1
 _srcname=bfq-mq
 pkgver=4.13rc1.b5a5208f027a
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -57,7 +73,7 @@ source=('git+https://github.com/Algodev-github/bfq-mq'
         # pacman hook for initramfs regeneration
         '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        "linux.preset")
+        'linux.preset')
 sha256sums=('SKIP'
             '5ee9eccf242465d2d5fd0f4b9e149aa4dc97b5bf540cc16f090e5b4d48a23667'
             '4bdbdf4e3e05efeb688d8afe713a16871cb07bc301554abf8547079067e4f5ce'
@@ -87,6 +103,25 @@ prepare() {
   sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
       -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
       -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+  fi
+
+  ### Enable fancontrol
+  if [ -n "$_dell_fancontrol" ]; then
+    msg "Enabling I8K for Dell..."
+    sed -i -e s'/CONFIG_I8K=m/CONFIG_I8K=y/' ./.config
+    sed -i -e s'/CONFIG_SENSORS_DELL_SMM=m/CONFIG_SENSORS_DELL_SMM=y/' ./.config
+  fi
+
+  ### Set performance governor
+  if [ -n "$_per_gov" ]; then
+    msg "Setting performance governor.."
+    sed -i -e s'/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set/' ./.config
+    sed -i -e s'/# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/' ./.config
+    msg "Disabling uneeded governors..."
+    sed -i -e s'/CONFIG_CPU_FREQ_GOV_ONDEMAND=m/# CONFIG_CPU_FREQ_GOV_ONDEMAND is not set/' ./.config
+    sed -i -e s'/CONFIG_CPU_FREQ_GOV_CONSERVATIVE=m/# CONFIG_CPU_FREQ_GOV_CONSERVATIVE is not set/' ./.config
+    sed -i -e s'/CONFIG_CPU_FREQ_GOV_USERSPACE=m/# CONFIG_CPU_FREQ_GOV_USERSPACE is not set/' ./.config
+    sed -i -e s'/CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y/# CONFIG_CPU_FREQ_GOV_SCHEDUTIL is not set/' ./.config
   fi
 
   ### Optionally disable NUMA for 64-bit kernels only
@@ -120,6 +155,26 @@ prepare() {
       warning "Aborting!"
       exit
     fi
+  fi
+
+  ### Disable Deadline I/O scheduler
+  if [ -n "$_deadline_disable" ]; then
+    msg "Disabling Deadline I/O scheduler..."
+    sed -i -e s'/CONFIG_IOSCHED_DEADLINE=y/# CONFIG_IOSCHED_DEADLINE is not set/' ./.config
+    sed -i -e s'/CONFIG_MQ_IOSCHED_DEADLINE=y/# CONFIG_MQ_IOSCHED_DEADLINE is not set/' ./.config
+  fi
+
+  ### Disable CFQ I/O scheduler
+  if [ -n "$_CFQ_disable" ]; then
+    msg "Disabling CFQ I/O scheduler..."
+    sed -i -e s'/CONFIG_IOSCHED_CFQ=y/# CONFIG_IOSCHED_CFQ is not set/' ./.config
+    sed -i -e s'/CONFIG_CFQ_GROUP_IOSCHED=y/# CONFIG_CFQ_GROUP_IOSCHED is not set/' ./.config
+  fi
+
+  ### Disable Kyber I/O scheduler
+  if [ -n "$_kyber_disable" ]; then
+    msg "Disabling Kyber I/O scheduler..."
+    sed -i -e s'/CONFIG_MQ_IOSCHED_KYBER=y/# CONFIG_MQ_IOSCHED_KYBER is not set/' ./.config
   fi
 
   # set localversion to git commit
@@ -169,10 +224,10 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules (git version)"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the BFQ-MQ scheduler"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-  provides=('linux')
+  provides=("${pkgbase}=${pkgver}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
