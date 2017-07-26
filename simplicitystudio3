@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pkgname=simplicitystudio # set by PKGBUILD
+pkgname=simplicitystudio3 # set by PKGBUILD
 
 cd "/opt/$pkgname"
 exec ./studio "$@"

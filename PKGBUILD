@@ -15,15 +15,13 @@ depends_x86_64=(lib32-gtk2 lib32-libxtst)
 options=('!strip')
 
 source=(http://www.silabs.com/Support%20Documents/Software/SimplicityStudio.tgz
-        simplicitystudio.patch
-        simplicitystudio)
+        simplicitystudio3)
 sha256sums=('06d675b4d498cc939aaffcdae5abbb9ae7dc3bb1238117bc467b2db8f21de51b'
-            '22dadf833916b51d85a04d50db595cb8446c9a9c1644e9dfab8e0875d8f9f906'
-            'ad55e8352d5d3d9cba50553086ca6d8b1d5072dc87b2763a79f34210f7bc2b5d')
+            'ce8ba5d1b75f19da2f5f27b18c811fa7348cfda12684575175770c1aeb5507c6')
 
 prepare() {
-    cd "$srcdir/SimplicityStudio_v3"
-    patch -p1 -i "$srcdir/simplicitystudio.patch"
+    # create desktop file and run script
+    gendesk -f -n --pkgname ${pkgname} --pkgdesc "${pkgdesc}" --exec="${pkgname}"
 }
 
 package() {
@@ -31,14 +29,17 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications/"
     install -dm755 "$pkgdir/etc/udev/rules.d"
 
+    cp -a $srcdir/SimplicityStudio_v3/common/tcf/plugins/*.rules "$pkgdir/etc/udev/rules.d/"
     cp -a "$srcdir/SimplicityStudio_v3" "$pkgdir/opt/$pkgname"
-
-    DESTDIR="$pkgdir" "$pkgdir/opt/$pkgname/setup.sh"
 
     # installation directory has to be writable
     find "$pkgdir/opt/$pkgname" -type d -exec chmod a+w {} +
     find "$pkgdir/opt/$pkgname" -type f -exec chmod a+w {} +
 
-    install -Dm755 "$srcdir/simplicitystudio" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/simplicitystudio3" "$pkgdir/usr/bin/$pkgname"
     sed -i "s/^pkgname=.*/pkgname=$pkgname/" "$pkgdir/usr/bin/$pkgname"
+
+    # install .desktop file and icon
+    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "$srcdir/SimplicityStudio_v3/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
 }
