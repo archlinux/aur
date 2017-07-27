@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=libxlsxwriter-git
-pkgver=0.6.9.r475.ccb53c9
+pkgver=0.7.2.r490.cc960e7
 pkgrel=1
 pkgdesc="A C library for creating Excel XLSX files"
 arch=('i686' 'x86_64')
