@@ -5,7 +5,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=163.0.0
+pkgver=164.0.0
 pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
@@ -27,13 +27,13 @@ options=('!strip' 'staticlibs')
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
 sha256sums_x86_64=(
-  '261bc89bd2306d6bef9185fd0a2241f0f64b1a86a04eb3e12c38d883bfabe70b'
+  '90e60639ce4f8ca709c076bdbacb30e33695f40931e725c88942d8c7198e2e45'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
 sha256sums_i686=(
-  'e8bfb369823f59e08f877754a5e2df09361345a9165b72439365077093893c4b'
+  'fdfa7a2b8a0b52ea1f2979e9531e0fefe6c49c0c6f897d07811548a2e5c36f2c'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 
 prepare() {
@@ -86,13 +86,6 @@ package() {
   find "$pkgdir/opt/$pkgname/bin/" -maxdepth 1 -type f -exec \
     sed -i 's/CLOUDSDK_PYTHON=python\b/CLOUDSDK_PYTHON=python2/g' {} \;
 
-  # These are only present in the direct numbered downloads we use
-  msg2 "Installing man pages"
-  mkdir -p "$pkgdir/usr/share"
-  mv -f "$pkgdir/opt/$pkgname/help/man" "$pkgdir/usr/share/"
-  chmod 0755 "$pkgdir/usr/share/man"
-  chmod 0755 "$pkgdir/usr/share/man/man1"
-
   msg2 "Creating symlinks for binaries"
   mkdir -p "$pkgdir/usr/bin"
   find "$pkgdir/opt/$pkgname/bin" -maxdepth 1 -type f -printf \
@@ -101,7 +94,6 @@ package() {
   # The tarball is rather sloppy with it's file permissions
   msg2 "Fixing file permissions"
   chown -R root:root "$pkgdir"
-  chmod -x "$pkgdir"/usr/share/man/man1/*
   find "$pkgdir/opt/$pkgname" -name "*.html" -print0 | xargs -0 chmod -x
   find "$pkgdir/opt/$pkgname" -name "*.json" -print0 | xargs -0 chmod -x
   find "$pkgdir/opt/$pkgname" -name "*_test.py" -print0 | xargs -0 chmod +x
