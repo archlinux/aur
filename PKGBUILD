@@ -1,8 +1,7 @@
-# $Id$
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Adrià Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.17.4
+pkgver=2.17.5
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
@@ -10,7 +9,7 @@ url="http://webkitgtk.org/"
 license=('custom')
 depends=(libxt libxslt enchant geoclue2 gst-plugins-base-libs
 	 libsecret libwebp harfbuzz-icu gtk3 libnotify hyphen)
-makedepends=(gtk2 gperf gobject-introspection ruby gtk-doc cmake python python2 ninja gcc5)
+makedepends=(gtk2 gperf gobject-introspection ruby gtk-doc cmake python python2 ninja)
 optdepends=('gtk2: Netscape plugin support'
             'gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
@@ -20,7 +19,7 @@ provides=(webkit2gtk)
 options=('!emptydirs')
 
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha1sums=('8073cb71a794fee919c47ec092b1d1a5bac4dc84')
+sha1sums=('e579bc8af2fb7a51235ec6592b7f54372a9ba2d7')
 
 prepare() {
   [ -d build ] && rm -rf build 
@@ -33,7 +32,6 @@ prepare() {
 
 build() {
   cd build
-  CC=gcc-5 CXX=g++-5 \
   cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=/usr \
         -DLIB_INSTALL_DIR=/usr/lib -DLIBEXEC_INSTALL_DIR=/usr/lib/webkit2gtk-4.0 \
