@@ -4,12 +4,12 @@
 
 pkgname=('jdk-docs' 'javafx-docs')
 _major=8
-_minor=141
-_build=b15
+_minor=144
+_build=b01
 _build_javafx=b14
-_hash=336fa29ff2bb4ef291e347e091f7f4a7
+_hash=090f390dda5b47b9b721c7dfaa008135
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=1
 arch=('any')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
@@ -19,8 +19,8 @@ source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash
         "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor}-${_build_javafx}/${_hash}/javafx-${pkgver}-apidocs.zip"
         'LICENSE-Documentation.txt'
         'LICENSE-Oracle-Legal-Notices.txt')
-md5sums=('fa55f38231a4fe86d5265c07b0c1b002'
-         '78ec6d01a354558117a7c17028fb6da1'
+md5sums=('739986e75020948fab09b27f4ebd626a'
+         '477d9862374177c810b0b7d73b4f1e53'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
 
