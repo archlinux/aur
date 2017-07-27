@@ -1,12 +1,5 @@
-# Current maintainer(s):
-#   - Dan Beste <dan.ray.beste@gmail.com>
-# Previously:
-#   - Ainola
-
-# Current contributor(s):
-#   - None
-# Previously:
-#   - N/A
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: Ainola
 
 # Notes:
 #   + gog:// DLAGENT:
