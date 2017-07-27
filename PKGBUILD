@@ -1,13 +1,13 @@
 pkgname=gnatcoll
 pkgver=2017
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Gnat components collection.'
 url='http://libre.adacore.com/tools/gnat-component-collection/'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('gcc-ada' 'readline' 'libgpr' 'gtkada' 'xmlada')
+depends=('gcc-ada' 'readline' 'libgpr' 'gtkada' 'xmlada' 'python2-gobject')
 makedepends=('git' 'gprbuild' 'postgresql' 'sqlite3')
 optdepends=('postgresql' 'sqlite3')
 
