@@ -1,7 +1,7 @@
 pkgbase = noto-fonts-cjk-otf
 	pkgdesc = Google Noto CJK fonts, use OTF type to solve some font fallback problems
 	pkgver = 20170601
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.google.com/get/noto/
 	install = noto-fonts-cjk-otf.install
 	arch = any

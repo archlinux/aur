@@ -3,7 +3,7 @@
 pkgname=noto-fonts-cjk-otf
 pkgver=20170601
 _commit=32a5844539f2e348ed36b44e990f9b06d7fb89fe
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Noto CJK fonts, use OTF type to solve some font fallback problems"
 arch=(any)
 url="https://www.google.com/get/noto/"
