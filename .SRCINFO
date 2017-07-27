@@ -1,6 +1,6 @@
 pkgbase = i3lock-fancy-git
 	pkgdesc = i3lock-color script: blurs background, adds lock icon and text, offers dark/light background detection.
-	pkgver = r112.fe7fe47
+	pkgver = r136.b81db64
 	pkgrel = 1
 	url = https://github.com/meskarune/i3lock-fancy
 	arch = i686
@@ -19,9 +19,7 @@ pkgbase = i3lock-fancy-git
 	optdepends = gnome-screenshot: alternative screenshot creator
 	provides = i3lock-fancy
 	source = git+https://github.com/meskarune/i3lock-fancy.git
-	source = package.patch
 	md5sums = SKIP
-	md5sums = 56d24ac20d8b6fd90c2473da609355f7
 
 pkgname = i3lock-fancy-git
 
