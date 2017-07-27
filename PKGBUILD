@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/hyperledger/fabric"
 license=('APACHE')
 groups=('hyperledger-fabric')
-depends=('go')
+depends=('go' 'docker')
 source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz")
 
 prepare() {
