@@ -1,0 +1,24 @@
+diff -aur gdal-1.11.5/frmts/wms/gdalwmsdataset.cpp gdal-1.11.5.new/frmts/wms/gdalwmsdataset.cpp
+--- gdal-1.11.5/frmts/wms/gdalwmsdataset.cpp	2016-07-01 10:55:06.000000000 +0200
++++ gdal-1.11.5.new/frmts/wms/gdalwmsdataset.cpp	2017-07-28 01:42:12.689071430 +0200
+@@ -380,7 +380,7 @@
+     
+     if (ret == CE_None) {
+         const char *pszHttpZeroBlockCodes = CPLGetXMLValue(config, "ZeroBlockHttpCodes", "");
+-        if(pszHttpZeroBlockCodes == '\0') {
++        if(*pszHttpZeroBlockCodes == '\0') {
+             m_http_zeroblock_codes.push_back(204);
+         } else {
+             char **kv = CSLTokenizeString2(pszHttpZeroBlockCodes,",",CSLT_HONOURSTRINGS);
+diff -aur gdal-1.11.5/ogr/ogrsf_frmts/vfk/vfkfeature.cpp gdal-1.11.5.new/ogr/ogrsf_frmts/vfk/vfkfeature.cpp
+--- gdal-1.11.5/ogr/ogrsf_frmts/vfk/vfkfeature.cpp	2016-07-01 10:55:03.000000000 +0200
++++ gdal-1.11.5.new/ogr/ogrsf_frmts/vfk/vfkfeature.cpp	2017-07-28 01:41:49.675883164 +0200
+@@ -245,7 +245,7 @@
+     for (poChar = pszLine; *poChar != '\0' && *poChar != ';'; poChar++)
+         /* skip data block name */
+         ;
+-    if (poChar == '\0')
++    if (*poChar == '\0')
+         return FALSE; /* nothing to read */
+ 
+     poChar++; /* skip ';' after data block name*/

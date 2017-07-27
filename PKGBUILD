@@ -12,7 +12,7 @@
 pkgname=gdal1
 _pkgname=gdal
 pkgver=1.11.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A translator library for raster geospatial data formats"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -26,15 +26,21 @@ changelog=$pkgname.changelog
 source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz
         gdal-1.5.1-python-install.patch
         poppler-0.31.patch
-		glibc.patch)
+	glibc.patch
+	jpeg2000.patch
+	ptr_int_cmp.patch)
 sha256sums=('49f99971182864abed9ac42de10545a92392d88f7dbcfdb11afe449a7eb754fe'
             '55a0a961b2d1caddf80f18b6763a96690b0b6443fbd5a0c89e29503ded3bcea6'
             '4fc42bdb729cec92920236ef9f3302fab497069dbb7d41d81222e7e48a36e7a6'
-            'f0096bfbd9219a000d173a97ee10e30d8939c3fff40ef44e2dfb1a494b617a9f')
+            'f0096bfbd9219a000d173a97ee10e30d8939c3fff40ef44e2dfb1a494b617a9f'
+            'fbc8c12a2e7b368e827b6bd60fbc0192ffd9231feb938d2a798c4a2f064f9e12'
+            '0146e06294a2ad32b78cd434af04ddac1c461a62900cec1265f71b53387451b0')
 
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
   patch -Np0 -i "${srcdir}"/gdal-1.5.1-python-install.patch
+  patch -Np0 -i "${srcdir}"/jpeg2000.patch frmts/jpeg2000/jpeg2000_vsil_io.cpp
+  patch -Np1 -i "${srcdir}"/ptr_int_cmp.patch
   # patch -Np1 -i "${srcdir}"/poppler-0.31.patch
   # patch -Np3 -i "${srcdir}"/glibc.patch
 
@@ -51,7 +57,6 @@ prepare() {
 build() {
   cd "${srcdir}"/$_pkgname-$pkgver
   export CFLAGS="$CFLAGS -fno-strict-aliasing"
-  export CXXFLAGS="$CXXFLAGS -fpermissive"
 
 # bug #23654
   export LDFLAGS="$LDFLAGS -Wl,--as-needed"
