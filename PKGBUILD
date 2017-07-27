@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.5.1.beta.r5546.g94a07c18
+pkgver=2.6.1.beta.r5714.ga55ed0de
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ optdepends=(
             'p7zip: 7z archive support'
             # additional apps
             'keditbookmarks: Manage Bookmarks functionality'
-            'kde-cli-tools: manage file associations'
+            'kde-cli-tools: manage file associations, root mode'
             'kompare: file contents comparison'
             'kdiff3: file contents comparison'
             'krename: advanced rename tool'
@@ -54,10 +54,9 @@ prepare() {
 build() {
   cd build
   cmake ../krusader \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DBUILD_TESTING=OFF
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDESU_PATH="/usr/lib/kf5/kdesu"
   make
 }
 

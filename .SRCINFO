@@ -1,6 +1,6 @@
 pkgbase = krusader-git
 	pkgdesc = Advanced twin panel file manager for KDE. (GIT version)
-	pkgver = 2.5.1.beta.r5546.g94a07c18
+	pkgver = 2.6.1.beta.r5714.ga55ed0de
 	pkgrel = 1
 	url = http://www.krusader.org
 	arch = i686
@@ -43,7 +43,7 @@ pkgbase = krusader-git
 	optdepends = unace: ACE decompression support
 	optdepends = p7zip: 7z archive support
 	optdepends = keditbookmarks: Manage Bookmarks functionality
-	optdepends = kde-cli-tools: manage file associations
+	optdepends = kde-cli-tools: manage file associations, root mode
 	optdepends = kompare: file contents comparison
 	optdepends = kdiff3: file contents comparison
 	optdepends = krename: advanced rename tool
