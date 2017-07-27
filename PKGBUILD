@@ -1,42 +1,25 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
+# Co-Maintainer: Henry Kohli <henr-h@cks-the-pla.net>
+
 pkgname=smartbg-git
-pkgver=20120106
+pkgver=20120525
 pkgrel=1
 pkgdesc="A smart wallpaper setter for multi-head X displays"
 arch=(any)
-url="http://code.schnouki.net/p/smartbg/"
+url="https://code.schnouki.net/schouki/smartbg/"
 license=('custom:WTFPL')
-depends=('pygtk' 'python-xlib')
+depends=('pygtk' 'python2-xlib')
 makedepends=('git')
-source=()
-md5sums=()
-sha256sums=()
+source=("smartbg::git+https://code.schnouki.net/schnouki/smartbg.git")
+md5sums=("SKIP")
 
-_gitroot="git://code.schnouki.net/smartbg.git"
-_gitname="smartbg"
+pkgver() {
+cd smartbg
+git log -1 --format=%ci | grep -Eo "[0-9]{4}\-[0-9].\-[0-9]." | tr -d "\-[:space:]"
+}
 
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING || return 1
-  install -Dm755 smartbg $pkgdir/usr/bin/smartbg
+package() {
+cd smartbg
+install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING || return 1
+install -Dm755 smartbg $pkgdir/usr/bin/smartbg
 } 
