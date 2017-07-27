@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname="tilix"
-pkgver=1.6.1
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ provides=('terminix')
 conflicts=('terminix')
 replaces=('terminix')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1b3b0b7a5242400cec613b8f227b53b04b5889a6cb9b71ea95be7f42c9313426')
+sha256sums=('abd2f9cf3ac3fde5e4bad90e5fda4985a198498f078bbfee9d6153789e0b93d0')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr PO4A_TRANS=/usr/bin/vendor_perl/po4a-translate
     make DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace'
 }
 
