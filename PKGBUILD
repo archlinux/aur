@@ -15,6 +15,6 @@ sha256sums=('31e53af3f5e97ae021f24f960608e98f64aaa12804eda7fb583dcfaa8d496ebf')
 
 package() {
   mkdir -p "$pkgdir"/usr/share/fonts/OTF/noto-cjk
-  install -m644 $_commit/*.otf "$pkgdir"/usr/share/fonts/OTF/noto-cjk
-  install -Dm644 $_commit/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -m644 noto-cjk-$_commit/*.otf "$pkgdir"/usr/share/fonts/OTF/noto-cjk
+  install -Dm644 noto-cjk-$_commit/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
