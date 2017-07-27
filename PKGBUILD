@@ -7,15 +7,14 @@
 pkgname=deluge-stable-git
 _gitname="deluge"
 _gitbranch="1.3-stable"
-epoch=1
-pkgver=1.3.12.r57.g90a22af
+pkgver=1.3.15.r6.g6d14be18b
 pkgrel=1
 pkgdesc="A bittorrent client written with python and pygtk - Git Stable branch Version"
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
 depends=('python2-xdg'
-         'twisted'
+         'python2-twisted'
          'python2-pyopenssl'
          'xdg-utils'
          'python2-chardet'
