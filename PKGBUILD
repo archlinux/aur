@@ -2,14 +2,14 @@
 
 pkgname=python2-kolabformat
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for Kolab XML Format Schema Definitions Library'
 url='http://www.kolab.org'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libkolabxml')
 makedepends=('cmake' 'boost' 'xsd' 'qt4' 'swig')
-source=("http://mirror.kolabsys.com/pub/releases/libkolabxml-${pkgver}.tar.gz")
+source=("https://mirror.kolabenterprise.com/pub/releases/libkolabxml-${pkgver}.tar.gz")
 sha256sums=('e48d7f5de1860a381da27981f6c70de1c9f38c4cd536bc6558b6529ce95f0677')
 
 prepare() {
