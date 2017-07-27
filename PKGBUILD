@@ -3,7 +3,7 @@
 
 pkgname=munge
 pkgver=0.5.12
-pkgrel=1
+pkgrel=2
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64')
 url="https://github.com/dun/munge/wiki"
@@ -18,7 +18,10 @@ sha512sums=('551b3da8de11a50e2cfbdb19de5c2e64dae9d8082bc55219d4f532a48ba01e802e3
 build() {
 	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
 
+	# '--with-crypto-lib=libgcrypt' is a temporary workaround for an OpenSSL 1.1.0 conversion bug
+	# refer to https://github.com/dun/munge/issues/54 for more information
 	./configure \
+		--with-crypto-lib=libgcrypt \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--localstatedir=/var \
