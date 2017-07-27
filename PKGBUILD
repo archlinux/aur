@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=guam
-pkgver=0.8
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='A smart, unjustly outcasted Reverse IMAP Proxy that lives at the perimeter of your IMAP environment.'
 arch=('any')
@@ -12,19 +12,19 @@ makedepends=()
 backup=("etc/${pkgname}/sys.config")
 url='http://kolab.org'
 install="guam.install"
-source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz")
+source=("https://mirror.kolabenterprise.com/pub/releases/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('d6c22b0eec71c87c7abc684d2d89a7aadb99a2b27a573d179952d6ea4b053d2d')
+sha256sums=('940287d6a683147445d913c9346632bfb09a783fd10a6038fd659aa4c829dbcd')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i "s|/usr/sbin/guam|/opt/kolab_guam/bin/kolab_guam|g" contrib/guam.service
-    make deps-up
+    make deps
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make
+    make guam
 }
             
 package() {
