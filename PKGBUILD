@@ -19,7 +19,7 @@ source=("https://oss.sonatype.org/service/local/repositories/releases/content/or
 noextract=('$_jarname')
 
 md5sums=('660b6e34ef469b854e8de124e2a8d225'
-         'e942678878fe16db39279fc444afa500')
+         '23c4bda6a18cc167ebd9e8fb8ef6e500')
 
 package() {
   install -Dm644 $srcdir/$_jarname     $pkgdir/usr/share/java/scalastyle/$_jarname
