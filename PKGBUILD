@@ -8,7 +8,7 @@
 
 # Maintainer: Ning Humbert <galaxy0419@gmail.com>
 pkgname=hitwh-cscore
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Scores checker for undergraduate students in HITwh"
 arch=('i686' 'x86_64')

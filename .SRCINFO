@@ -1,6 +1,6 @@
 pkgbase = hitwh-cscore
 	pkgdesc = Scores checker for undergraduate students in HITwh
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
