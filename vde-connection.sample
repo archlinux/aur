@@ -1,6 +1,0 @@
-# You can add vde switch connections below
-# just without the # at the beginning:
-# vde_plug /var/run/vde/sample.sock = vde_plug /var/run/vde/sample2.sock
-# or if hosts are different use this syntax:
-# vde_plug /var/run/vde/sample.sock = ssh host2 vde_plug /var/run/vde/sample.sock
-
