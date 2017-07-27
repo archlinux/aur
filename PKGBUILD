@@ -1,4 +1,4 @@
-# Maintainer: Ryan Farley <ryan.farley@gmx.com>
+# Maintainer: Ryan Farley <rcf@sdf.org>
 pkgname=shoebill
 pkgver=0.0.5
 pkgrel=1
