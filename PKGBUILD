@@ -4,26 +4,23 @@
 
 pkgname=ninja-git
 epoch=2
-pkgver=r2019.a88b75d
+pkgver=r2306.7bbc708f
 pkgrel=1
 pkgdesc='Small build system with a focus on speed'
 arch=('i686' 'x86_64')
-url='http://martine.github.com/ninja/'
+url='https://ninja-build.org/'
 license=(Apache)
 depends=('gcc-libs')
 makedepends=('asciidoc' 'python2' 're2c')
-# makedepends+=('emacs')
-optdepends=('emacs: for Emacs mode')
+#makedepends+=('emacs-nox')
 provides=('ninja')
 conflicts=('ninja')
 install=ninja-git.install
 
-source=('git://github.com/martine/ninja.git')
+source=('git+https://github.com/ninja-build/ninja.git')
 md5sums=('SKIP')
 
-_python="python2"
-
-pkgver() {
+function pkgver() {
 	cd ninja
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -32,31 +29,25 @@ pkgver() {
 build() {
 	cd ninja
 
-	./configure.py --bootstrap
-	if [[ "${makedepends[@]}" =~ "emacs" ]]; then
+	python2 ./configure.py --bootstrap
+	if [[ "${makedepends[@]}" =~ "emacs-nox" ]]; then
 		emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
 	fi
-	asciidoc doc/manual.asciidoc
 }
 
 package() {
 	cd ninja
 
-	# Main binary
-	install -m755 -D ninja \
-						"${pkgdir}/usr/bin/ninja"
+	install -m755 -D ninja "$pkgdir/usr/bin/ninja"
+	install -m644 -D doc/manual.asciidoc "$pkgdir/usr/share/doc/ninja/manual.asciidoc"
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
-	# Manual
-	install -m644 -D doc/manual.asciidoc \
-						"${pkgdir}/usr/share/doc/ninja/manual.asciidoc"
-	install -m644 -D doc/manual.html \
-						"${pkgdir}/usr/share/doc/ninja/manual.html"
-
-	# Emacs mode
-	install -m644 -D misc/ninja-mode.el \
-						"${pkgdir}/usr/share/emacs/site-lisp/ninja-mode.el"
-	if [[ "${makedepends[@]}" =~ "emacs" ]]; then
-		install -m644 -D misc/ninja-mode.elc \
-						"${pkgdir}/usr/share/emacs/site-lisp/ninja-mode.elc"
+	install -m644 -D misc/ninja-mode.el "$pkgdir/usr/share/emacs/site-lisp/ninja-mode.el"
+	if [[ "${makedepends[@]}" =~ "emacs-nox" ]]; then
+		install -m644 -D misc/ninja-mode.elc "$pkgdir/usr/share/emacs/site-lisp/ninja-mode.elc"
 	fi
+	install -m644 -D misc/ninja.vim "$pkgdir/usr/share/vim/vimfiles/syntax/ninja.vim"
+
+	install -m644 -D misc/bash-completion "$pkgdir/usr/share/bash-completion/completions/ninja"
+	install -m644 -D misc/zsh-completion "$pkgdir/usr/share/zsh/site-functions/_ninja"
 }
