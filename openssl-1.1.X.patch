@@ -1,0 +1,44 @@
+diff -ruN karlyriceditor-2.2/src/kfn_file_parser.cpp karlyriceditor-2.2-fixed/src/kfn_file_parser.cpp
+--- karlyriceditor-2.2/src/kfn_file_parser.cpp	2013-02-05 08:52:34.795945000 +0700
++++ karlyriceditor-2.2-fixed/src/kfn_file_parser.cpp	2017-07-11 02:04:10.331059063 +0700
+@@ -314,10 +314,9 @@
+ 
+ #if defined (KFN_SUPPORT_ENCRYPTION)
+ 	// A file is encrypted, decrypt it
+-	EVP_CIPHER_CTX ctx;
+-	EVP_CIPHER_CTX_init( &ctx );
++	EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+ 
+-	EVP_DecryptInit_ex( &ctx, EVP_aes_128_ecb(), 0, (const unsigned char*) m_aesKey.data(), 0 );
++	EVP_DecryptInit_ex( ctx, EVP_aes_128_ecb(), 0, (const unsigned char*) m_aesKey.data(), 0 );
+ 
+ 	QByteArray array( entry.length_out, 0 );
+ 	int total_in = 0, total_out = 0;
+@@ -335,15 +334,15 @@
+ 
+ 		if ( bytesRead != toRead )
+ 		{
+-			EVP_CIPHER_CTX_cleanup( &ctx );
++			EVP_CIPHER_CTX_free(ctx);
+ 			m_errorMsg = "File truncated";
+ 			return QByteArray();
+ 		}
+ 
+ 		// Decrypt the content
+-		if ( !EVP_DecryptUpdate( &ctx, (unsigned char*) outbuf, &toWrite, (unsigned char*) buffer, bytesRead ) )
++		if ( !EVP_DecryptUpdate( ctx, (unsigned char*) outbuf, &toWrite, (unsigned char*) buffer, bytesRead ) )
+ 		{
+-			EVP_CIPHER_CTX_cleanup( &ctx );
++			EVP_CIPHER_CTX_free(ctx);
+ 			m_errorMsg = "Decryption failed";
+ 			return QByteArray();
+ 		}
+@@ -353,7 +352,7 @@
+ 		total_in += bytesRead;
+ 	}
+ 
+-	EVP_CIPHER_CTX_cleanup( &ctx );
++	EVP_CIPHER_CTX_free(ctx);
+ 	return array;
+ #else
+ 	m_errorMsg = "File is encrypted, but decryption support is not compiled in";
