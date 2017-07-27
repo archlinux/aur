@@ -10,6 +10,7 @@ url="https://github.com/hyperledger/fabric"
 license=('APACHE')
 groups=('hyperledger-fabric')
 depends=('go' 'docker')
+makedepends=('git')
 source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz")
 
 prepare() {
