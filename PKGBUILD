@@ -4,7 +4,8 @@
 pkgbase=otf-fira-code
 pkgname=('otf-fira-code' 'ttf-fira-code')
 pkgver=1.204
-pkgrel=1
+pkgrel=2
+url="https://github.com/tonsky/FiraCode"
 pkgdesc="monospaced font with programming ligatures"
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
