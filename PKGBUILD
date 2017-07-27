@@ -4,7 +4,7 @@
 
 pkgname=banshee
 pkgver=2.6.2
-pkgrel=10
+pkgrel=11
 pkgdesc="Music management and playback for GNOME"
 arch=('i686' 'x86_64')
 url="http://banshee.fm/"
