@@ -2,14 +2,14 @@
 
 pkgname=roundcubemail-skin-chameleon
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Chameleon skin (from Kolab) for the Roundcube Webmailer'
 arch=('any')
 url='http://www.kolab.org'
 license=('AGPL3')
 depends=('roundcubemail')
 makedepends=('nodejs-less')
-source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz")
+source=("https://mirror.kolabenterprise.com/pub/releases/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('594d81fb30fd969b40bad0d7fe7473d282c548418b3ec2f0066d8f4fc4cc2003')
 
 build() {
