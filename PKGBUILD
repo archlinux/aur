@@ -2,7 +2,7 @@
 
 pkgname=irony
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Kolab Groupware Access Protocol Layers (Cal/Card/GroupDAV support)'
 arch=('any')
 license=('GPL3')
@@ -11,7 +11,7 @@ optdepends=('pykolab: configuration tool')
 makedepends=('php-composer' 'git')
 url='http://kolab.org'
 install=irony.install
-source=("http://mirror.kolabsys.com/pub/releases/iRony-${pkgver}.tar.gz"
+source=("https://mirror.kolabenterprise.com/pub/releases/iRony-${pkgver}.tar.gz"
         "composer.patch"
         "php.ini"
         "${pkgname}.install"
