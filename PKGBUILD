@@ -64,7 +64,7 @@ pkgbase=linux-bfq-mq-git
 _pkgver=4.13-rc1
 _srcname=bfq-mq
 pkgver=4.13rc1.b5a5208f027a
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -313,8 +313,9 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel (git version)"
-  provides=('linux-headers')
+pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel (git version)"
+  provides=("${pkgbase}-headers=${pkgver}")
+  depends=("${pkgbase}=${pkgver}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -438,8 +439,9 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
-  provides=('linux-docs')
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  provides=("${pkgbase}-docs=${pkgver}")
+  depends=("${pkgbase}=${pkgver}")
 
   cd "${_srcname}"
 
