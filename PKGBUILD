@@ -1,18 +1,18 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=kolab-syncroton
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc='ActiveSync Kolab Backend for Syncroton'
 arch=('any')
 license=('GPL3')
 depends=('roundcubemail-plugins-kolab' 'php-kolabformat')
 url="http://kolab.org"
-source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
+source=("https://mirror.kolabenterprise.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "apache.patch")
 optdepends=('pykolab: configuration tool')
 
-sha256sums=('80241e25e1541c383cdfb28e527d1a863a33a774fe2bbb085e4dc9c75d145a28'
+sha256sums=('c1139231ce2c8ee60192d2588e795513ec301fc21701ae5884c460e08ad5e585'
             'ca7860ec91bcffe3fc328204069d8580779d1164fb7262f0c5724b81d987faf3')
 
 
