@@ -1,11 +1,11 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
 
 _nginxver=1.12.1
-_passengerver=5.1.5
+_passengerver=5.1.6
 
 pkgname=nginx-passenger
 pkgver=1.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTP Server with Passenger Module"
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -34,10 +34,11 @@ source=($url/download/nginx-$_nginxver.tar.gz{,.asc}
         logrotate
         packaging.patch)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
-              'D5F0851426939232F437AB722AC745A50A212A8C') # Phusion Software Signing <software-signing@phusion.nl>
+              'D5F0851426939232F437AB722AC745A50A212A8C'  # Phusion Software Signing <software-signing@phusion.nl>
+              '16378A33A6EF16762922526E561F9B9CAC40B2F7') # Phusion Automated Software Signing (Used by automated tools to sign software packages) <auto-software-signing@phusion.nl>
 sha256sums=('8793bf426485a30f91021b6b945a9fd8a84d87d17b566562c3797aba8fac76fb'
             'SKIP'
-            'ea4139d2f0d9f7aa6488be966ffbfe602f80764a47b7077892d92324bff5eb47'
+            'e897cc5f0ec6446bfdc226404dca4bd29f7418ae92010c389661b9f024a3cf24'
             'SKIP'
             'bc693fe587283edeb0df343e51ca41bada41fe92ef8a1d0f7a8961931d0a72a0'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
