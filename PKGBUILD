@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=pykolab
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.8.7
+pkgrel=1
 pkgdesc='Kolab Python Utilities'
 arch=('any')
 license=('GPL3')
@@ -12,8 +12,8 @@ depends=('python2' 'python2-nose' 'python2-ldap' 'python2-augeas' 'python2-cheet
 url='http://kolab.org'
 install=pykolab.install
 backup=('etc/kolab/kolab.conf')
-source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
-        "http://mirror.kolabsys.com/pub/releases/kolab-schema-3.3.tar.gz"
+source=("https://mirror.kolabenterprise.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
+        "https://mirror.kolabenterprise.com/pub/releases/kolab-schema-3.3.tar.gz"
         "systemd-services.patch"
         "setup-script.patch"
         "templates.patch"
@@ -35,7 +35,7 @@ optdepends=('cyrus-imapd-ldap: Only supported IMAP backend so far'
             'kolab-syncroton: ActiveSync support'
             'kolab-webadmin: Administration tool')
 
-sha256sums=('4870cfe488b339c892ecfeb221ba412071cb7c26cfd7f1ef9aa9f7317133336e'
+sha256sums=('f3bf46043bf795f46e5ed2bcb99ca154bcea961073fbb14d853cd0365332792a'
             'c5d2129f944c4c15ed7b23adc2d6475e1247205b9c95b1f8ce65a820e04ec103'
             'a515f068b5fe12c858f327fa0558087e61b4d39070d67dfba9a2b6d19a83c2c6'
             '87fc4b8d1dcaaa23d5416ceecadeb85cba4f6668becf97092cdf84b62bb779f4'
