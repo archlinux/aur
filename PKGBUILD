@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/hyperledger/fabric-chaintool"
 license=('APACHE')
 groups=('hyperledger-fabric')
-depends=('go' 'protobuf' 'java-environment')
+depends=('go' 'protobuf' 'jdk8-openjdk')
 makedepends=('leiningen')
 source=("https://github.com/hyperledger/fabric-chaintool/archive/v$pkgver.tar.gz")
 
