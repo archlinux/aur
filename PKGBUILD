@@ -1,7 +1,7 @@
 # Maintainer: Kris McCleary <kris27mc@gmail.com>
 
 pkgname=minecraft-linux
-pkgver=20170726.r127.2dff67d
+pkgver=1.0
 pkgrel=1
 pkgdesc="Minecraft launcher for Linux"
 arch=('x86_64')
@@ -14,18 +14,19 @@ optdepends=()
 source=("git+https://github.com/kris27mc/minecraft-linux.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/minecraft-linux"
+#pkgver() {
+#  cd "$srcdir/minecraft-linux"
 
-  printf "%s.r%s.%s" \
-   "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
-   "$(git rev-list --count HEAD)" \
-   "$(git rev-parse --short HEAD)"
-         }
+#  printf "%s.r%s.%s" \
+#   "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
+#   "$(git rev-list --count HEAD)" \
+#   "$(git rev-parse --short HEAD)"
+#         }
 
 build() {
   cd "$srcdir/minecraft-linux"
   #Determines necessary libs
+  git checkout ${pkgver} > /dev/null 2>&1
   if grep -qi "amd" /proc/cpuinfo;  then
     /usr/bin/cp -r libs/AMD/* libs
     printf "Using compatibility libs"
