@@ -1,7 +1,7 @@
 # Maintainer: Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
 
 pkgname=nana
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="An opensource cross-platform GUI library written in modern C++11 for static linking"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ license=("custom:Boost Software License")
 depends=("alsa-lib" "libjpeg-turbo" "libpng" "libx11" "libxft")
 makedepends=("alsa-lib" "cmake" "libjpeg-turbo" "libpng" "libx11" "libxft" "xproto")
 source=("http://downloads.sourceforge.net/project/nanapro/Nana/Nana 1.x/${pkgname} ${pkgver}.zip")
-sha256sums=('97e1e465f3c07e07f5267b7e8ad8baf97f35204b19f573c94d8655d4f06436a6')
+sha256sums=('f430c7b20f6d2d654054c341fece21221058f14eecb100ec591660650a4db3bd')
 
 prepare() {
     cd ${srcdir}/${pkgname}
