@@ -1,6 +1,6 @@
 # Maintainer: White-Oak <lpzhelud@gmail.com>
 pkgname=servo-latest
-pkgver=r20161128
+pkgver=r20170726
 pkgrel=1
 pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
 arch=('x86_64')
@@ -34,7 +34,15 @@ package() {
 	chmod -R 755 "$srcdir/servo"
 	cp -r "$srcdir/servo" "$pkgdir/opt"
 
-	sed -i -e 's/\.\//\/opt\/servo\//g' "$srcdir/servo/runservo.sh"
+	
+    install -d "$pkgdir/etc/profile.d" 
+    echo 'export PATH=$PATH:/opt/servo' > "$pkgdir/etc/profile.d/${_pkgname}.sh"
+    echo 'setenv PATH ${PATH}:/opt/servo' > "$pkgdir/etc/profile.d/${_pkgname}.csh"
+    chmod 755 "$pkgdir/etc/profile.d/${_pkgname}".{csh,sh}
 
-	install -Dm755 "$srcdir/servo/runservo.sh" "$pkgdir/usr/bin/$pkgname"
+    # Install a wrapper to avoid confusion about binary path
+       install -Dm755 /dev/stdin "$pkgdir/usr/bin/servo" <<END
+       #!/bin/sh
+       exec /opt/servo/servo "\$@"
+END
 }
