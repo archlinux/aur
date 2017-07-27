@@ -2,14 +2,14 @@
 
 pkgname=kolab-freebusy
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Kolab Free/Busy Web Application'
 arch=('any')
 license=('GPL3')
 depends=('roundcubemail-plugins-kolab' 'chwala' 'pear-net-ldap3')
 makedepends=('php-composer' 'git')
 url='http://kolab.org'
-source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
+source=("https://mirror.kolabenterprise.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "apache.patch"
         "composer.patch")
 optdepends=('pykolab: configuration tool')
