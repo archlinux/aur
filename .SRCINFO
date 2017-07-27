@@ -1,0 +1,12 @@
+pkgbase = tic-80
+	pkgdesc = TIC-80 tiny computer emulator
+	pkgver = 0.30.0
+	pkgrel = 1
+	url = https://tic.computer/
+	arch = x86_64
+	license = custom
+	source = https://github.com/nesbox/tic.computer/releases/download/v0.30.0/tic_64bit_0.30.0.tar.gz
+	md5sums = 9846448171bc27ee6e287a510ac9febe
+
+pkgname = tic-80
+
