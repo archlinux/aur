@@ -1,6 +1,7 @@
-# Maintainer: wookietreiber <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+
 pkgname=scalastyle
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Examines your Scala code and indicates potential problems with it."
 arch=(any)
@@ -17,7 +18,7 @@ source=("https://oss.sonatype.org/service/local/repositories/releases/content/or
 
 noextract=('$_jarname')
 
-md5sums=('b587a28c2c18f9b16fab150a430c4ee8'
+md5sums=('660b6e34ef469b854e8de124e2a8d225'
          'e942678878fe16db39279fc444afa500')
 
 package() {
