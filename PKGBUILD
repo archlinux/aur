@@ -3,19 +3,19 @@
 
 pkgname=quagga-fpm
 _pkgname=quagga
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite (FPM enabled)'
 arch=('i686' 'x86_64')
 url='http://www.quagga.net'
 license=('GPL2')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
-depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl')
+depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl' 'c-ares' 'openssl')
 options=('!buildflags')
 install=quagga.install
 validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
-source=("http://download.savannah.gnu.org/releases/$_pkgname/$_pkgname-$pkgver.tar.gz"{,.asc}
+source=("https://download.savannah.gnu.org/releases/$_pkgname/$_pkgname-$pkgver.tar.gz"{,.asc}
         'quagga.sysusers'
         'quagga.tmpfiles'
         'babeld.service'
@@ -26,9 +26,8 @@ source=("http://download.savannah.gnu.org/releases/$_pkgname/$_pkgname-$pkgver.t
         'pimd.service'
         'ripd.service'
         'ripngd.service'
-        'zebra.service'
-        'nocomplain.patch')
-md5sums=('daa303871e07ea5856aae6fd79e89722'
+        'zebra.service')
+md5sums=('b1546de89062f7070d56e780b30be4b1'
          'SKIP'
          '286c545efadcc7b463eb603c25473cb4'
          '9dfa2f649a2c83a2e52f5f89dec3b167'
@@ -40,8 +39,7 @@ md5sums=('daa303871e07ea5856aae6fd79e89722'
          'af6571185d6a6a6e1f070c7be0e4333a'
          'b6e3549d780355914ae8edd43e15630a'
          '72dd63c49fdaea41729a4318d0fbac79'
-         '577f1e7caeea31d910f2dc29c28ada7d'
-         'f0164d52c986bf6be85aed4a7f78aefd')
+         '577f1e7caeea31d910f2dc29c28ada7d')
 
 prepare() {
   cd $_pkgname-$pkgver

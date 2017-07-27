@@ -1,7 +1,7 @@
 pkgbase = quagga-fpm
 	pkgdesc = BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite (FPM enabled)
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = http://www.quagga.net
 	install = quagga.install
 	arch = i686
@@ -13,11 +13,13 @@ pkgbase = quagga-fpm
 	depends = readline
 	depends = ncurses
 	depends = perl
-	provides = quagga=1.1.0
+	depends = c-ares
+	depends = openssl
+	provides = quagga=1.2.1
 	conflicts = quagga
 	options = !buildflags
-	source = http://download.savannah.gnu.org/releases/quagga/quagga-1.1.0.tar.gz
-	source = http://download.savannah.gnu.org/releases/quagga/quagga-1.1.0.tar.gz.asc
+	source = https://download.savannah.gnu.org/releases/quagga/quagga-1.2.1.tar.gz
+	source = https://download.savannah.gnu.org/releases/quagga/quagga-1.2.1.tar.gz.asc
 	source = quagga.sysusers
 	source = quagga.tmpfiles
 	source = babeld.service
@@ -29,8 +31,7 @@ pkgbase = quagga-fpm
 	source = ripd.service
 	source = ripngd.service
 	source = zebra.service
-	source = nocomplain.patch
-	md5sums = daa303871e07ea5856aae6fd79e89722
+	md5sums = b1546de89062f7070d56e780b30be4b1
 	md5sums = SKIP
 	md5sums = 286c545efadcc7b463eb603c25473cb4
 	md5sums = 9dfa2f649a2c83a2e52f5f89dec3b167
@@ -43,7 +44,6 @@ pkgbase = quagga-fpm
 	md5sums = b6e3549d780355914ae8edd43e15630a
 	md5sums = 72dd63c49fdaea41729a4318d0fbac79
 	md5sums = 577f1e7caeea31d910f2dc29c28ada7d
-	md5sums = f0164d52c986bf6be85aed4a7f78aefd
 
 pkgname = quagga-fpm
 
