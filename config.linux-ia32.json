@@ -2,5 +2,8 @@
     "platforms": [
         "linux-ia32"
     ],
-    "electronVersion": "1.2.0"
+    "electronVersion": "1.6.6",
+    "installable": [
+        "linux"
+    ]
 }

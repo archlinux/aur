@@ -1,0 +1,12 @@
+diff -ruN sozi-org/index-electron.html sozi-new/index-electron.html
+--- sozi-org/index-electron.html	2017-06-07 11:52:06.000000000 +0430
++++ sozi-new/index-electron.html	2017-07-27 21:32:01.736255103 +0430
+@@ -15,8 +15,6 @@
+         <link rel="stylesheet" href="css/sozi.editor.view.Timeline.css">
+         <link rel="stylesheet" href="css/sozi.editor.view.Toolbar.css">
+ 
+-        <script src="https://apis.google.com/js/client.js" defer></script>
+-
+         <script>
+             require("./js/editor.js");
+         </script>

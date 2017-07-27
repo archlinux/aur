@@ -7,11 +7,11 @@ pkgname=('sozi'
          'sozi-tools_texts2paths'
          'sozi-extras_media')
 
-pkgver=17.02
+pkgver=17.06
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
-_buildver=17.02.072116
+_buildver=17.06.021848
 _pkgverpostfix=""
-pkgrel=3
+pkgrel=1
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -20,34 +20,31 @@ arch=('i686' 'x86_64')
 license=('custom:MPL2.0')
 
 makedepends=('npm' 'bower' 'nodejs-grunt-cli'
+  'ttf-droid'
   'jq' 'semver')
 
 source=("https://github.com/senshu/Sozi/archive/${pkgver}${_pkgverpostfix}.tar.gz"
-  "http://www.1001freefonts.com/d/5854/droid_sans.zip"
+  "https://github.com/electron/electron/releases/download/v1.6.6/SHASUMS256.txt"
   "sozi-package-json.patch"
-  "sozi.png"
-  "sozi.desktop"
-  "player.html.patch"
+  "index-electron.html.patch"
   "texts2paths.patch")
-sha1sums=('2554484cfa63dcafd29fde01e533ae7ec7419ee3'
-  '265b6cc7b7cea7bcfb74eec52bc9c0e44f039740'
+sha1sums=('f8c9db7f3315bfb9e0002a70618886b27b7280b0'
+  '9aae9284c2a6fc0f3ddefdea2f59ffe428f39c75'
   'a10b5cad0c35caa7cfa412f95b58d81f6150173a'
-  '230b60efe9de03b2418c8a10c040491bf7899f43'
-  '04adcecb5bfc696ed7e9d5b8c111017725bd62b1'
-  '75bd3f6f4f4c0064a55b43b50cfc2024b132fc80'
+  '81cb22c9207dbc1fe78e273eafadf087568da020'
   'ebaf4c68d77391a701b3acfc21282eb78d8077fd')
 
-source_i686=('https://github.com/electron/electron/releases/download/v1.2.0/electron-v1.2.0-linux-ia32.zip'
+source_i686=('https://github.com/electron/electron/releases/download/v1.6.6/electron-v1.6.6-linux-ia32.zip'
   'config.linux-ia32.json')
-sha1sums_i686=('c582f02e070de9e11abfd7ad64962a61d604b4b7'
-  '3ee3e039972f0744c84511d82c4f5d5dc23ad3db')
-source_x86_64=('https://github.com/electron/electron/releases/download/v1.2.0/electron-v1.2.0-linux-x64.zip'
+sha1sums_i686=('6f2f8a7a7bda727370c383cc87952a430b322443'
+  '6920e964fc11b746450264036e2b82c7dcc76814')
+source_x86_64=('https://github.com/electron/electron/releases/download/v1.6.6/electron-v1.6.6-linux-x64.zip'
   'config.linux-x64.json')
-sha1sums_x86_64=('d6a061bbb8106a68a0f0ce7c64302269b81059f6'
-  '195143cfaca94c84070964830cb10cbbd039a6cc')
+sha1sums_x86_64=('2d4a85623cdb17b4485cd2780232ad56a59d1f68'
+  '1faf77f8153ef858eaa71d816dcca38ba9491a39')
 
-noextract=('electron-v1.2.0-linux-x64.zip'
-  'electron-v1.2.0-linux-ia32.zip')
+noextract=('electron-v1.6.6-linux-x64.zip'
+  'electron-v1.6.6-linux-ia32.zip')
 
 options=(!strip)
 
@@ -64,21 +61,22 @@ prepare() {
   cp package.original.json package.json
   patch package.json "${srcdir}/sozi-package-json.patch"
 
-  install -D -m644 "${srcdir}/DroidSans.ttf" "vendor/DroidSans/DroidSans.ttf"
-  install -D -m644 "${srcdir}/DroidSans-Bold.ttf" "vendor/DroidSans/DroidSans-Bold.ttf"
+  install -D -m644 "/usr/share/fonts/TTF/DroidSans.ttf" "vendor/DroidSans/DroidSans.ttf"
+  install -D -m644 "/usr/share/fonts/TTF/DroidSans-Bold.ttf" "vendor/DroidSans/DroidSans-Bold.ttf"
 
   rm -rf "cache" "dist"
   mkdir -p "cache/"
   if [[ $CARCH == "x86_64" ]]; then
-    cp "${srcdir}/electron-v1.2.0-linux-x64.zip" "cache/"
+    cp "${srcdir}/electron-v1.6.6-linux-x64.zip" "cache/"
     cp "${srcdir}/config.linux-x64.json" "config.default.json"
   else
-    cp "${srcdir}/electron-v1.2.0-linux-ia32.zip" "cache/"
+    cp "${srcdir}/electron-v1.6.6-linux-ia32.zip" "cache/"
     cp "${srcdir}/config.linux-ia32.json" "config.default.json"
   fi
+  cp "${srcdir}/SHASUMS256.txt" "cache/SHASUMS256.txt-1.6.6"
 
   patch -p1 < "${srcdir}/texts2paths.patch"
-  patch -p1 < "${srcdir}/player.html.patch"
+  patch -p1 < "${srcdir}/index-electron.html.patch"
 }
 
 bestmatch() {
@@ -318,15 +316,15 @@ package_sozi() {
   mkdir -p "${pkgdir}/opt/sozi-${pkgver}${_pkgverpostfix}/"
   cp -a * "${pkgdir}/opt/sozi-${pkgver}${_pkgverpostfix}/"
 
+  install -D -m644 "install/sozi.png" "${pkgdir}/usr/share/pixmaps/sozi.png"
+  install -D -m755 "install/sozi.desktop" "${pkgdir}/usr/share/applications/sozi.desktop"
+
   mkdir -p "${pkgdir}/usr/bin/"
   cd "${pkgdir}/usr/bin/"
   ln -s "/opt/sozi-${pkgver}${_pkgverpostfix}/Sozi" sozi
 
   cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/MPL2.0"
-
-  install -D -m644 "${srcdir}/sozi.png" "${pkgdir}/opt/sozi-${pkgver}${_pkgverpostfix}/sozi.png"
-  install -D -m755 "${srcdir}/sozi.desktop" "${pkgdir}/usr/share/applications/sozi.desktop"
 }
 
 package_sozi-tools_texts2paths() {
