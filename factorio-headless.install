@@ -1,15 +1,13 @@
 post_install() {
     systemd-sysusers factorio.conf
     [[ -d /var/lib/factorio ]] || install -dm 770 -o factorio -g games /var/lib/factorio
+    chown factorio:games /etc/factorio/*
 }
 
 post_upgrade() {
-    (( $(vercmp $2 '0.12.26-4') < 0 )) && chown -R root:root /usr/share/factorio || true
-    (( $(vercmp $2 '0.12.26-4') < 0 )) && post_install "$1" || true
-    (( $(vercmp $2 '0.14.12-1') < 0 )) && {
-        echo "AUTOSAVE_INTERVAL and AUTOSAVE_SLOTS must now be declared in /etc/factorio/server-settings.json"
-        echo "Please update /etc/factorio/server-settings.json and /etc/conf.d/factorio now."
-        echo
+    (( $(vercmp $2 '0.15.31-2') >= 0 )) || {
         echo "The systemd service file has been updated, don't forget to run 'systemctl daemon-reload' before restarting factorio."
-    } || true
+        post_install $1 &&
+        chmod 600 /etc/factorio/server-settings.json
+    }
 }

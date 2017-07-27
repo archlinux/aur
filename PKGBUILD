@@ -4,7 +4,7 @@
 
 pkgname=factorio-headless-experimental
 pkgver=0.15.31
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories - Server version (experimental branch)"
 arch=('x86_64')
 url="http://www.factorio.com/"
@@ -15,6 +15,8 @@ install=factorio-headless.install
 options=(!strip)
 backup=(etc/conf.d/factorio
         etc/factorio/server-settings.json
+        etc/factorio/map-gen-settings.json
+        etc/factorio/map-settings.json
 )
 
 source=(LICENSE
@@ -25,8 +27,8 @@ source=(LICENSE
 )
 
 sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
-            'ab67c31cd6ef6ad2477f1e7daa534f73972ef69e1b39932bd8fa1e35e01bf98b'
-            'b85c31d17bdce596a6d3b33b8f72954e5719ac54b071a8af82702ac5d35fac6c'
+            '72bbef31fced163e5993eff0e73a836a557165775eb77e0d69b24fe5ec4690a7'
+            'd384e69bac3807006b0af787d1c5dcd9f247ad49c7250ac18a3737763d755d47'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
             '3d510c9db3cad7d211a74e68ef54780164b9b78558f5f14e6f3eb60ce4356ecd')
 
@@ -36,15 +38,18 @@ sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
 # - config in ~/.factorio
 
 package() {
-  install -Dm755 "${srcdir}/factorio/bin/x64/factorio" "$pkgdir/usr/bin/factorio"
+  install -Dm755 "${srcdir}/factorio/bin/x64/factorio" "${pkgdir}/usr/bin/factorio"
   install -d "${pkgdir}/usr/share/factorio"
   cp -r "${srcdir}/factorio/data"/* "${pkgdir}/usr/share/factorio"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/factorio-headless/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm644 "${srcdir}/factorio-headless.sysusers" "$pkgdir/usr/lib/sysusers.d/factorio.conf"
+  install -Dm644 "${srcdir}/factorio-headless.sysusers" "${pkgdir}/usr/lib/sysusers.d/factorio.conf"
   install -Dm644 "${srcdir}/factorio-headless.conf" "${pkgdir}/etc/conf.d/factorio"
   install -Dm644 "${srcdir}/factorio-headless.service" "${pkgdir}/usr/lib/systemd/system/factorio.service"
-  install -Dm644 "${srcdir}/factorio/data/server-settings.example.json" "${pkgdir}/etc/factorio/server-settings.json"
+  # server-settings.json can contain sensitive data so we need to make it only readable by the factorio user
+  install -Dm600  "${srcdir}/factorio/data/server-settings.example.json" "${pkgdir}/etc/factorio/server-settings.json"
+  install -Dm644 "${srcdir}/factorio/data/map-gen-settings.example.json" "${pkgdir}/etc/factorio/map-gen-settings.json"
+  install -Dm644 "${srcdir}/factorio/data/map-settings.example.json" "${pkgdir}/etc/factorio/map-settings.json"
 
   # public isn't really a good default especially with the default name/description
   sed -i 's/^    "public": true/    "public": false/' "${pkgdir}/etc/factorio/server-settings.json"
