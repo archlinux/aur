@@ -16,7 +16,7 @@ depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' \
 	'babl>=0.1.27' 'gegl-git>=0.3.15' 'openexr>=1.6.1' 'libmypaint>=1.3.0')
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' \
                    'gnome-python>=2.16.2' 'poppler>=0.12.4' \
-                   'alsa-lib>=1.0.0' 'libxslt')
+                   'alsa-lib>=1.0.0' 'libxslt' 'glib-networking')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'poppler-glib: for pdf support'
             'alsa-lib: for MIDI event controller module'
