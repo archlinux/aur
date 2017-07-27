@@ -3,7 +3,7 @@
 # Inspiration for service and config files: https://github.com/Bisa/factorio-init
 
 pkgname=factorio-headless
-pkgver=0.14.23
+pkgver=0.15.31
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories - Server version (stable branch)"
 arch=('x86_64')
@@ -13,18 +13,22 @@ conflicts=('factorio' 'factorio-demo' 'factorio-experimental' 'factorio-headless
 install=factorio-headless.install
 backup=(etc/conf.d/factorio
         etc/factorio/server-settings.json
+        etc/factorio/map-gen-settings.json
+        etc/factorio/map-settings.json
 )
 
 source=(LICENSE
         factorio-headless.service
         factorio-headless.conf
         factorio-headless.sysusers
-        factorio_headless_x64_${pkgver}.tar.gz::http://www.factorio.com/get-download/${pkgver}/headless/linux64)
-sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
-            'd06a47498ac5e540e8f4e653213b8bd5b21ae9424df718b9b065268f571900c6'
-            '5c7b9dcb07167d680de3dd6a0435b21ee4ee448fb7f6ce429f028ee5b543e9ab'
+        factorio_headless_x64_${pkgver}.tar.xz::http://www.factorio.com/get-download/${pkgver}/headless/linux64
+)
+
+sha256sums=('8859e0c8650bd90a7ff35f6ec15df91cbbc5ef6ffab6119876731feb811861d1'
+            '72bbef31fced163e5993eff0e73a836a557165775eb77e0d69b24fe5ec4690a7'
+            'd384e69bac3807006b0af787d1c5dcd9f247ad49c7250ac18a3737763d755d47'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
-            '96c3e7acd4e0f066a499baba01823cac7c1caf0e50dbddcea5793f57bd60dc8c')
+            '3d510c9db3cad7d211a74e68ef54780164b9b78558f5f14e6f3eb60ce4356ecd')
 
 
 # no modifications needed, the executable looks for:
@@ -32,15 +36,18 @@ sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
 # - config in ~/.factorio
 
 package() {
-  install -Dm755 "${srcdir}/factorio/bin/x64/factorio" "$pkgdir/usr/bin/factorio"
+  install -Dm755 "${srcdir}/factorio/bin/x64/factorio" "${pkgdir}/usr/bin/factorio"
   install -d "${pkgdir}/usr/share/factorio"
   cp -r "${srcdir}/factorio/data"/* "${pkgdir}/usr/share/factorio"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/factorio-headless/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm644 "${srcdir}/factorio-headless.sysusers" "$pkgdir/usr/lib/sysusers.d/factorio.conf"
+  install -Dm644 "${srcdir}/factorio-headless.sysusers" "${pkgdir}/usr/lib/sysusers.d/factorio.conf"
   install -Dm644 "${srcdir}/factorio-headless.conf" "${pkgdir}/etc/conf.d/factorio"
   install -Dm644 "${srcdir}/factorio-headless.service" "${pkgdir}/usr/lib/systemd/system/factorio.service"
-  install -Dm644 "${srcdir}/factorio/data/server-settings.example.json" "${pkgdir}/etc/factorio/server-settings.json"
+  # server-settings.json can contain sensitive data so we need to make it only readable by the factorio user
+  install -Dm600 "${srcdir}/factorio/data/server-settings.example.json" "${pkgdir}/etc/factorio/server-settings.json"
+  install -Dm644 "${srcdir}/factorio/data/map-gen-settings.example.json" "${pkgdir}/etc/factorio/map-gen-settings.json"
+  install -Dm644 "${srcdir}/factorio/data/map-settings.example.json" "${pkgdir}/etc/factorio/map-settings.json"
 
   # public isn't really a good default especially with the default name/description
   sed -i 's/^    "public": true/    "public": false/' "${pkgdir}/etc/factorio/server-settings.json"

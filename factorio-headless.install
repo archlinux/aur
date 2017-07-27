@@ -1,23 +1,52 @@
 post_install() {
     systemd-sysusers factorio.conf
     [[ -d /var/lib/factorio ]] || install -dm 770 -o factorio -g games /var/lib/factorio
+    chown factorio:games /etc/factorio/*
+}
 
-    source /etc/conf.d/factorio
-
-    # create empty game
-    if [[ ! -f "$SAVE_FILE" ]]; then
-        echo "Generating initial save file: $SAVE_FILE"
-        su - factorio -s /bin/sh -c "factorio --create '$SAVE_FILE' 2>&1 >/dev/null"
-    fi
+pre_upgrade() {
+    (( $(vercmp $2 '0.15.31-1') >= 0 )) || {
+        if systemctl is-active -q factorio.service; then
+            echo Stopping factorio.service...
+            systemctl stop factorio.service &>/dev/null
+        fi
+    }
 }
 
 post_upgrade() {
-    (( $(vercmp $2 '0.12.26-4') < 0 )) && chown -R root:root /usr/share/factorio || true
-    (( $(vercmp $2 '0.12.26-4') < 0 )) && post_install "$1" || true
-    (( $(vercmp $2 '0.14.12-1') < 0 )) && {
-        echo "AUTOSAVE_INTERVAL and AUTOSAVE_SLOTS must now be declared in /etc/factorio/server-settings.json"
-        echo "Please update /etc/factorio/server-settings.json and /etc/conf.d/factorio now."
-        echo
+    (( $(vercmp $2 '0.15.31-1') >= 0 )) || {
+        # Source previous settings (or default setting if the config file was untouched)
+        local old_path=/var/lib/factorio/.factorio/saves/factorio-service-save.zip
+        local new_path=/var/lib/factorio/factorio-service-save.zip
+
+        if [[ -f $old_path ]]; then
+            if [[ -f $new_path ]]; then
+                echo "The default save file location was changed from '$old_path' to '$new_path' but this file already exists so it won't be overwritten."
+            else
+                echo "The default save file location was changed. Copying the old file to the new location."
+                cp -v $old_path $new_path
+            fi
+            echo
+        fi
+
+        if [[ -f /etc/conf.d/factorio.pacnew ]]; then
+            source /etc/conf.d/factorio
+            if [[ -z $SAVE_FILE || $SAVE_FILE == $old_path ]]; then
+                SAVE_FILE=$new_path
+            fi
+
+            SAVE_NAME=$(cd /var/lib/factorio; realpath "$SAVE_FILE" --relative-base /var/lib/factorio/)
+            SAVE_NAME=${SAVE_NAME%%.zip}
+
+            echo "The SAVE_FILE setting has been replaced by the SAVE_NAME setting which doesn't include the .zip suffix anymore"
+            echo "Based on your current settings, you should set (in /etc/conf.d/factorio):"
+            echo "SAVE_NAME=$SAVE_NAME"
+            echo
+        fi
+
         echo "The systemd service file has been updated, don't forget to run 'systemctl daemon-reload' before restarting factorio."
-    } || true
+
+        post_install $1
+        chmod 600 /etc/factorio/server-settings.json
+    }
 }
