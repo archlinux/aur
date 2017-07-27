@@ -6,7 +6,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-de'
-pkgver='7.0.2'
+pkgver='7.0.3'
 _language='de'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymes Surfen mit Firefox und Tor'
@@ -34,9 +34,9 @@ source+=("${pkgname}.desktop"
 md5sums=('5b0844612fcbed11666e3c766072b092'
          '494afbfa60fb4ce21840244cc3f7208c'
          'bb53b2544e2038943e703c7c6ccf48a1')
-md5sums_x86_64=('9ac09123db9614fcc4f1f5def2aaf2cd'
+md5sums_x86_64=('4e21910736affb71403160d6083b9266'
                 'SKIP')
-md5sums_i686=('31b88411bdc38d9b4b644ecc7145aecf'
+md5sums_i686=('9f38370e2b99aae2aa71f6fe319fe578'
               'SKIP')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
