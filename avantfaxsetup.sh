@@ -36,6 +36,7 @@ _opt_HYLA_BIN_DIR="/usr/bin"
 # reboot, halt, # I'm not the only one who thinks that this is a bad idea.
 _opt_SUDO_LINE="${_opt_WWWUSER} ALL = NOPASSWD: ${_opt_HYLA_BIN_DIR}/faxdeluser, ${_opt_HYLA_BIN_DIR}/faxadduser"
 _opt_AVANT_CMTTAG="##AvantFAX##"
+_opt_AVANT_FAXCOVER=0
 
 if [ ! -z "${_opt_SOURCEONLY}" ]; then
   return 0
@@ -248,13 +249,13 @@ _fn_setup_pre() {
       if [ "$?" -ne 0 ]; then
         _fn_sql_boom "Can't create ${_opt_ADFB_USER} user"
       fi
-      echo "### Creating ${_opt_ADFB_USER} account with password ${_opt_ADFB_PASS} for DB ${_opt_AFDB_NAME}"
-      ${_opt_MYSQL} --user='root' --password="${_opt_ROOTMYSQLPWD}" 'mysql' -e "GRANT ALL PRIVILEGES ON ${_opt_AFDB_NAME}.* TO '${_opt_ADFB_USER}'@'localhost' IDENTIFIED BY \"${_opt_ADFB_PASS}\""
-      if [ "$?" -ne 0 ]; then
-        _fn_sql_boom "Can't grant to ${_opt_ADFB_USER} user"
-      fi
-      echo "`basename "$0"`: SQL configuration complete."
     fi
+    echo "### Creating ${_opt_ADFB_USER} account with password ${_opt_ADFB_PASS} for DB ${_opt_AFDB_NAME}"
+    ${_opt_MYSQL} --user='root' --password="${_opt_ROOTMYSQLPWD}" 'mysql' -e "GRANT ALL PRIVILEGES ON ${_opt_AFDB_NAME}.* TO '${_opt_ADFB_USER}'@'localhost' IDENTIFIED BY \"${_opt_ADFB_PASS}\""
+    if [ "$?" -ne 0 ]; then
+      _fn_sql_boom "Can't grant to ${_opt_ADFB_USER} user"
+    fi
+    echo "`basename "$0"`: SQL configuration complete."
   elif [ "$1" -eq 2 ]; then
     echo '### Backing up old AvantFAX into /root/avantfaxbackup'
     mkdir -p '/root/avantfaxbackup'
@@ -379,11 +380,14 @@ EOF
 
   ####### SYMLINK AVANTFAX SCRIPTS #######
 
-  _var_file="${_var_HYLACONF_DIR}/sendfax.conf"
-  if ! grep -q "^CoverCmd:\s\+${_opt_INST_DIR}/" "${_var_file}" >/dev/null 2>&1; then
-    echo "CoverCmd:		${_opt_INST_DIR}/includes/faxcover.php  ${_opt_AVANT_CMTTAG}" >> "${_var_file}"
+  # AvantFAX subs it's own faxcover in for ours
+  if [ "${_opt_AVANT_FAXCOVER}" -ne 0 ]; then
+    _var_file="${_var_HYLACONF_DIR}/sendfax.conf"
+    if ! grep -q "^CoverCmd:\s\+${_opt_INST_DIR}/" "${_var_file}" >/dev/null 2>&1; then
+      echo "CoverCmd:		${_opt_INST_DIR}/includes/faxcover.php  ${_opt_AVANT_CMTTAG}" >> "${_var_file}"
+    fi
+    chmod 644 "${_var_file}"
   fi
-  chmod 644 "${_var_file}"
 
   _var_file="${_opt_INST_DIR}/includes/local_config.php"
   cp -p "${_opt_INST_DIR}/includes/local_config-example.php" "${_var_file}"
@@ -540,15 +544,16 @@ _fn_setup_preun() {
 # For files that don't have a .d folder, clean out our tagged lines, preserving permissions.
 _fn_cleanfile() {
   if [ -s "$1" ]; then
-    rm -f '/tmp/avantfax.cleanfile'
+    #rm -f '/tmp/avantfax.cleanfile'
     if grep -q "${_opt_AVANT_CMTTAG}"'$' "$1" >/dev/null 2>&1; then
-      cp -p "$1" '/tmp/avantfax.cleanfile'
-      grep -v "${_opt_AVANT_CMTTAG}"'$' '/tmp/avantfax.cleanfile' > "$1"
-      rm -f '/tmp/avantfax.cleanfile'
-      if [ ! -s "$1" ]; then
-        rm -f "$1"
-      fi
-      return 0
+    #  cp -p "$1" '/tmp/avantfax.cleanfile'
+    #  grep -v "${_opt_AVANT_CMTTAG}"'$' '/tmp/avantfax.cleanfile' > "$1"
+    #  rm -f '/tmp/avantfax.cleanfile'
+    #  if [ ! -s "$1" ]; then
+    #    rm -f "$1"
+    #  fi
+       sed -e "/${_opt_AVANT_CMTTAG}"'$/ d' -i "$1"
+    #  return 0
     fi
   fi
   return 1
@@ -571,8 +576,10 @@ _fn_setup_postun() {
     rm -f "/etc/cron.d/${_opt_AVANTFAX_SERVERNAME}" "${_opt_HYLASPOOL}/bin/notify.php" "${_opt_HYLASPOOL}/bin/faxrcvd.php" "${_opt_HYLASPOOL}/bin/dynconf.php"
 
     # Clean up modem files
-    for _var_file in "${_opt_HYLASPOOL}/etc/config"*; do
-      _fn_cleanfile "${_var_file}"
+    for _var_file in "${_opt_HYLASPOOL}/etc/config"* '/usr/lib/fax'/*; do
+      if [ ! -L "${_var_file}" ]; then
+        _fn_cleanfile "${_var_file}"
+      fi
     done
 
     _var_file='/etc/mail/trusted-users'
