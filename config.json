@@ -1,0 +1,13 @@
+{
+  "port": 80,
+  "address": "127.0.0.1",
+  "database": "/var/lib/caddy-filemanager/database.db",
+  "scope": "/var/lib/caddy-filemanager/files",
+  "allowCommands": true,
+  "allowEdit": true,
+  "allowNew": true,
+  "commands": [
+    "git",
+    "svn"
+  ]
+}

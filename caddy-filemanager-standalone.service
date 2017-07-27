@@ -1,0 +1,9 @@
+[Unit]
+Description=Caddy filemanager - standalone
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/caddy-filemanager-standalone --config=/etc/caddy-filemanager-standalone/config.json
+
+[Install]
+WantedBy=multi-user.target
