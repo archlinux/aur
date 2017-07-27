@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=kolab-webadmin
-pkgver=3.2.10
+pkgver=3.2.11
 pkgrel=1
 pkgdesc='Kolab Web Administration Panel'
 arch=('any')
@@ -11,11 +11,11 @@ depends=('php-ldap' 'pear-net-ldap3')
 url="http://kolab.org"
 install=kolab-webadmin.install
 #backup=()
-source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
+source=("https://mirror.kolabenterprise.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "apache.patch")
 optdepends=('pykolab: configuration tool')
 
-sha256sums=('d4a72d677f63bff1aeee976815b930a7f0eccc652f788eeea03774c6b77a16a8'
+sha256sums=('4e0c56459ba3828b21e671af950fd7bc14d7102cd5f95b7568d2c7302eca8cb0'
             '9f3c03d486a66437fb57ecefc883bd740af6b8b74237b2f819d13ad5df9b034c')
 
 prepare() {
