@@ -60,7 +60,7 @@ pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.12
 pkgver=4.12.3
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -340,6 +340,8 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  provides=("${pkgbase}-headers=${pkgver}")
+  depends=("${pkgbase}=${pkgver}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -468,6 +470,8 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  provides=("${pkgbase}-docs=${pkgver}")
+  depends=("${pkgbase}=${pkgver}")
 
   cd "${srcdir}/${_srcname}"
 
