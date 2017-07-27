@@ -3,7 +3,7 @@
 
 pkgname=binkplayer
 pkgver=2.7b
-pkgrel=2
+pkgrel=3
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
 arch=('i686' 'x86_64')
@@ -28,9 +28,6 @@ package() {
   fi
 
   # Desktop integration
-  mkdir -p "$pkgdir/usr/share/mime/packages/"
-  mkdir -p "$pkgdir/usr/share/pixmaps/"
-  mkdir -p "$pkgdir/usr/share/applications/"
   install -Dm644 "$srcdir/x-binkvideo.xml" \
                  "$pkgdir/usr/share/mime/video/x-binkvideo.xml"
   install -Dm644 "$srcdir/$pkgname.desktop" \
