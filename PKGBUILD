@@ -1,5 +1,5 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
-# Co-Maintainer: Henry Kohli <henr-h@cks-the-pla.net>
+# Co-Maintainer: Henry Kohli <henry-h@cks-the-pla.net>
 
 pkgname=smartbg-git
 pkgver=20120525
