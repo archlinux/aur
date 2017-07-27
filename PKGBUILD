@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 pkgname=chwala
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Kolab File Management'
 arch=('any')
 license=('AGPL3')
@@ -10,7 +10,7 @@ depends=('php-mcrypt' 'pear-http-request2' 'roundcubemail' 'smarty3' 'php-kolabf
 url='http://kolab.org'
 install=chwala.install
 #backup=()
-source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
+source=("https://mirror.kolabenterprise.com/pub/releases/${pkgname}-${pkgver}.tar.gz"
         "chwala.install"
         "chwala.tmpfiles"
         "apache.patch")
