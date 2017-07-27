@@ -1,16 +1,14 @@
 pkgbase = noto-fonts-cjk-otf
 	pkgdesc = Google Noto CJK fonts, use OTF type to solve some font fallback problems
-	pkgver = 1.004
+	pkgver = 20170601
 	pkgrel = 1
 	url = https://www.google.com/get/noto/
 	install = noto-fonts-cjk-otf.install
 	arch = any
 	license = custom:SIL
-	depends = fontconfig
-	provides = noto-fonts-cjk=1.004
 	conflicts = noto-fonts-cjk
-	source = https://github.com/googlei18n/noto-cjk/archive/v1.004.tar.gz
-	sha256sums = 835a42755c1e8d6a4a406f32609da1f0fa7f9674d05760f0be658d9d6f4ab71c
+	source = https://github.com/googlei18n/noto-cjk/archive/32a5844539f2e348ed36b44e990f9b06d7fb89fe.zip
+	sha256sums = 31e53af3f5e97ae021f24f960608e98f64aaa12804eda7fb583dcfaa8d496ebf
 
 pkgname = noto-fonts-cjk-otf
 

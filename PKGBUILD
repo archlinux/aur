@@ -1,18 +1,17 @@
 # Maintainer: Len Zhang <zyldragoon@gmail.com>
 
 pkgname=noto-fonts-cjk-otf
-pkgver=1.004
+pkgver=20170601
+_commit=32a5844539f2e348ed36b44e990f9b06d7fb89fe
 pkgrel=1
 pkgdesc="Google Noto CJK fonts, use OTF type to solve some font fallback problems"
 arch=(any)
 url="https://www.google.com/get/noto/"
 license=(custom:SIL)
-depends=(fontconfig)
 conflicts=('noto-fonts-cjk')
-provides=("noto-fonts-cjk=$pkgver")
 install=$pkgname.install
-source=("https://github.com/googlei18n/noto-cjk/archive/v$pkgver.tar.gz")
-sha256sums=('835a42755c1e8d6a4a406f32609da1f0fa7f9674d05760f0be658d9d6f4ab71c')
+source=("https://github.com/googlei18n/noto-cjk/archive/$_commit.zip")
+sha256sums=('31e53af3f5e97ae021f24f960608e98f64aaa12804eda7fb583dcfaa8d496ebf')
 
 package() {
   mkdir -p "$pkgdir"/usr/share/fonts/OTF/noto-cjk
