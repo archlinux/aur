@@ -1,5 +1,13 @@
 See https://github.com/gaenserich/hostsblock/commits/master for a complete list of updates
 
+Version 0.999.4 (Alpha 4) (07.23.2017)
+*Massive simplification of script, removing excess verbosity options, combining hostsblock.sh with hostsblock-urlcheck.sh
+*Mandate that hostsblock now runs as unpriviledged user, i.e. 'hostsblock' (see hostsblock.conf)
+*Mandate the use of gzip for annotation file and HOSTS file backup
+*Now uses /var/lib/hostsblock as its default configuration and /var/lib/hostsblock/cache as its default cache directories (to aid with priviledge containment).
+*Removed repetitive grep calls with single grep call with multiple "-e" options.
+*For performance improvements, replaced regex-aware grep with grep -F when regex not needed.
+
 Version 0.999.3 (Alpha 3) (30.10.2015)
 *Added more optional source files to hostsblock.conf. Added user agent info to curl to make work with more sites. Sanitized hostsblock.conf file a little bit.
 *Added function to force target file update even if no changes are found to source files

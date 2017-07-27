@@ -1,8 +1,54 @@
-post_install() {
-  cat << EOF
-If you will be running hostsblock on your main '/etc/hosts' file, copy your
-original to '/etc/hostsblock/hosts.head' to preserve your entries.
+add_user_group() {
+    _changed=0
+    if getent passwd | grep -q "^hostsblock:"; then
+        true
+    else
+        _changed=1
+        useradd -d /var/lib/hostsblock -c "hostsblock" -m -U hostsblock
+    fi
+    if getent group | grep -q "^hostsblock:"; then
+        true
+    else
+        _changed=1
+        groupadd hostsblock
+    fi
+    if [ $_changed == 1 ]; then
+        gpasswd -a hostsblock hostsblock
+        gpasswd -A hostsblock hostsblock
+        chmod 750 /var/lib/hostsblock
+        chmod -R 640 /var/lib/hostsblock/*
+        chown -R hostsblock:hostsblock /var/lib/hostsblock
+    fi
+}
 
-A documented configuration file is available under '/etc/hostsblock/rc.conf'.
+post_install() {
+    add_user_group
+    chown hostsblock:hostsblock /usr/bin/hostsblock
+    cat << EOF
+
+As of 0.999.4, hostsblock requires additional sudo permissions.
+Please see https://github.com/gaenserich/hostsblock for details.
+
+EOF
+}
+
+post_upgrade() {
+    add_user_group
+    chown hostsblock:hostsblock /usr/bin/hostsblock
+    cat << EOF
+
+As of 0.999.4, hostsblock requires additional sudo permissions.
+Please see https://github.com/gaenserich/hostsblock for details.
+
+EOF
+}
+
+post_remove() {
+    userdel hostsblock
+    groupdel hostsblock
+    cat << EOF
+hostsblock's configuration and cache directory (/var/lib/hostsblock) has not been removed.
+
+You should now remove the entries you put into sudoers (via sudo visudo) for hostsblock.
 EOF
 }
