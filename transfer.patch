@@ -1,0 +1,13 @@
+--- imagegw/shifter_imagegw/transfer.py	2017-05-08 23:53:14.000000000 +0800
++++ imagegw/shifter_imagegw/transfer.py	2017-07-31 00:16:39.167788950 +0800
+@@ -170,6 +170,10 @@
+         try:
+             mv_cmd = sh_cmd(system, 'mv', temp_fn, target_fn)
+             ret = _exec_and_log(mv_cmd, logger)
++            if ret == 0:
++                ## fix permissions on the image file
++                chmod_cmd = sh_cmd(system, 'chmod', 'a+r', target_fn)
++                ret = _exec_and_log(chmod_cmd, logger)
+             return ret == 0
+         except:
+             ### TODO we might also need to remove target_fn in this case
