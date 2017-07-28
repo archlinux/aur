@@ -1,7 +1,7 @@
 pkgbase = eom-gtk2
 	pkgdesc = An image viewing and cataloging program for MATE (GTK2 version)
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = eom-gtk2
 	depends = lcms2
 	depends = libexif
 	depends = libjpeg-turbo
-	depends = mate-desktop-gtk2
+	depends = mate-desktop
+	provides = eom
 	conflicts = eom
-	conflicts = eom-gtk3
 	source = http://pub.mate-desktop.org/releases/1.16/eom-1.16.1.tar.xz
 	sha1sums = 125c51120c15f96cb012530ebdbffceb73fb01cb
 
