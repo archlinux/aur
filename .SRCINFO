@@ -1,7 +1,7 @@
 pkgbase = mate-utils-gtk2
 	pkgdesc = Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files (GTK2 version)
-	pkgver = 1.16.0
-	pkgrel = 2
+	pkgver = 1.16.1
+	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -11,15 +11,15 @@ pkgbase = mate-utils-gtk2
 	makedepends = itstool
 	makedepends = mate-panel-gtk2
 	depends = gtk2
-	depends = mate-desktop-schemas-gtk2
+	depends = mate-desktop-schemas
 	depends = libcanberra
 	depends = libgtop
 	depends = libsm
-	optdepends = mate-panel-gtk2: Look up words in dictionaries from the panel
+	optdepends = mate-panel: Look up words in dictionaries from the panel
+	provides = mate-utils
 	conflicts = mate-utils
-	conflicts = mate-utils-gtk3
-	source = http://pub.mate-desktop.org/releases/1.16/mate-utils-1.16.0.tar.xz
-	sha1sums = 8435a42773bd2f5fcf27e2e6e71373fbf216eef9
+	source = http://pub.mate-desktop.org/releases/1.16/mate-utils-1.16.1.tar.xz
+	sha1sums = 3e63c5e2de5c3c4328707475653f3b56b866d019
 
 pkgname = mate-utils-gtk2
 
