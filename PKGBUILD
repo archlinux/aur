@@ -10,7 +10,7 @@ url="https://github.com/PawkyPenguin/${_pkgname}"
 license=('GPL3')
 depends=('vim')
 groups=('vim-plugins')
-source=("git+https://github.com/PawkyPenguin/${_pkgname}.git")
+source=("${pkgname}::git+https://github.com/PawkyPenguin/${_pkgname}.git")
 sha256sums=('SKIP')
 makedepends=('git')
 
