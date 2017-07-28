@@ -1,4 +1,4 @@
-# Maintainer: Ryan Farley <rcf@sdf.org>
+# Maintainer: Ryan Farley <ryan.farley@gmx.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: François Charette <firmicus@gmx.net>
 
