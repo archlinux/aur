@@ -2,7 +2,7 @@
 # Contributor: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=17.4.43
+pkgver=17.7.46
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -36,14 +36,14 @@ prepare() {
 
   # Check checksum
   chksum=($(sed '15q;d' "${pkgname}_${_pkgver}.dsc"))
-  filesum=($(sha256sum "${pkgname}_${_pkgver}.tar.gz"))
+  filesum=($(sha256sum "${pkgname}_${_pkgver}.tar.xz"))
   if [ $chksum != $filesum  ]; then
       error "Checksums not matching"
       exit
   fi
 
   # Extract, patch
-  tar --strip-components=1 -zxvf "${pkgname}_${_pkgver}.tar.gz"
+  tar --strip-components=1 -Jxvf "${pkgname}_${_pkgver}.tar.xz"
 
   sed -i \
     's|/usr/bin/cli|/usr/bin/mono|g' \
