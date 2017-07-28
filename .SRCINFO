@@ -1,7 +1,7 @@
 pkgbase = mate-utils-gtk2
 	pkgdesc = Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files (GTK2 version)
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mate-utils-gtk2
 	makedepends = itstool
 	makedepends = mate-panel-gtk2
 	depends = gtk2
-	depends = mate-desktop-schemas
+	depends = mate-desktop-schemas-gtk2
 	depends = libcanberra
 	depends = libgtop
 	depends = libsm
