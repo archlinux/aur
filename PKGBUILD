@@ -4,18 +4,19 @@
 _ver=1.16
 _pkgbase=pluma
 pkgname=${_pkgbase}-gtk2
-pkgver=${_ver}.0
-pkgrel=3
+pkgver=${_ver}.2
+pkgrel=1
 pkgdesc="A powerful text editor for MATE (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('iso-codes' 'mate-desktop-schemas-gtk2' 'pygtksourceview2' 'zenity')
+depends=('iso-codes' 'mate-desktop-schemas' 'pygtksourceview2' 'zenity')
 makedepends=('intltool' 'itstool')
 groups=('mate-extra-gtk2')
-conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('14a0497fade1e3fd40a39eafb28390975abd12a6')
+sha1sums=('b648d1beebbbf5d82a1670762b1fe1d780658499')
 
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
