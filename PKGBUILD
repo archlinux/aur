@@ -39,7 +39,6 @@ make_args=(
     "USR_DIR_INSTALL=yes"
     "prefix=/usr"
     "CONFIGS=shared cpp11-shared"
-    "LANGUAGES=cpp java"
     "SKIP=slice2py"
 )
 
@@ -52,7 +51,8 @@ gradle_args=(
 build() {
     cd ${srcdir}/ice-${pkgver}
     msg "Building Ice"
-    make "${make_args[@]}" -j$(nproc) srcs
+    msg2 "Compiling..."
+    make srcs -j$(nproc) "${make_args[@]}" "LANGUAGES=cpp java"
 }
 
 package_zeroc-ice() {
@@ -62,10 +62,10 @@ package_zeroc-ice() {
         "etc/icegridregistry.conf"
     )
 
-    cd ${srcdir}/ice-${pkgver}/cpp
+    cd ${srcdir}/ice-${pkgver}
 
     msg "Installing Ice for C++"
-    make install "${make_args[@]}" DESTDIR="${pkgdir}"
+    make install "${make_args[@]}" DESTDIR="${pkgdir}" "LANGUAGES=cpp"
 
     msg2 "Installing Ice License..."
     install -Dm644 ${srcdir}/ice-${pkgver}/ICE_LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
