@@ -6,7 +6,7 @@ pkgdesc="PhantomBot is a Twitch chat bot powered by Java."
 arch=('x86_64')
 url="https://phantombot.tv/"
 license=('GPL3')
-depends=('java-runtime')
+depends=('jre8-openjdk')
 install=phantombot.install
 source=("https://github.com/PhantomBot/PhantomBot/releases/download/v${pkgver}/PhantomBot-${pkgver}.zip"
 	"phantombot"
