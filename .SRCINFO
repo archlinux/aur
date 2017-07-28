@@ -1,0 +1,15 @@
+pkgbase = vim-please-dont-git
+	pkgdesc = A vim plugin that adds auto-indentation for deliberately poor style
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/PawkyPenguin/vim-please-dont
+	arch = any
+	groups = vim-plugins
+	license = GPL3
+	makedepends = git
+	depends = vim
+	source = git+https://github.com/PawkyPenguin/vim-please-dont.git
+	sha256sums = SKIP
+
+pkgname = vim-please-dont-git
+
