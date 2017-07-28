@@ -1,4 +1,7 @@
+# Maintainer: Wei Congrui < crvv.mail at gmail dot com >
 # Maintainer: Carl George < arch at cgtx dot us >
+# Contributor: Eric Engeström <eric at engestrom dot ch>
+# Contributor: Andreas Linz <klingt.net at gmail dot com>
 
 _gopkgname='github.com/mholt/caddy'
 
