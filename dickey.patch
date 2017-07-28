@@ -1,42 +1,11 @@
-# patch by Thomas E. Dickey <dic...@invisible-island.net>
+# patch by Thomas E. Dickey <dic...@invisible-island.net>, color.cc-part removed
 # created  Sat Jul 22 14:39:46 UTC 2017
 # ------------------------------------------------------------------------------
-# color.cc    |    6 +++---
 # edit.cc     |   26 ++++++++++++++++++--------
 # keynames.cc |    2 +-
 # regex.c     |    8 ++++++--
 # 4 files changed, 28 insertions(+), 14 deletions(-)
 # ------------------------------------------------------------------------------
-Index: src/color.cc
---- le-1.16.3/src/color.cc	2013-03-18 13:44:31.000000000 +0000
-+++ le-1.16.3-fix/src/color.cc	2017-07-22 12:42:26.382956801 +0000
-@@ -33,7 +33,7 @@
- int   can_use_default_colors;
- 
- int   next_pair;
--static int find_pair(int fg,int bg)
-+static int find_or_init_pair(int fg,int bg)
- {
-    if(!can_use_default_colors)
-    {
-@@ -67,7 +67,7 @@
-       attr_table[an].n_attr=0;
-       if(pal[i].fg!=NO_COLOR || pal[i].bg!=NO_COLOR)
-       {
--	 pair=find_pair(pal[i].fg,pal[i].bg);
-+	 pair=find_or_init_pair(pal[i].fg,pal[i].bg);
- 	 attr_table[an].n_attr|=COLOR_PAIR(pair);
-       }
-       attr_table[an].n_attr|=pal[i].attr;
-@@ -94,7 +94,7 @@
- 	 else
- 	 {
- 	    attr_table[i].so_attr=(attr_table[i].n_attr|hl->attr)&~A_COLOR;
--	    pair=find_pair(hl->fg,pal[p].bg);
-+	    pair=find_or_init_pair(hl->fg,pal[p].bg);
- 	    attr_table[i].so_attr|=COLOR_PAIR(pair);
- 	 }
-       }
 Index: src/edit.cc
 --- le-1.16.3/src/edit.cc	2015-12-03 07:15:40.000000000 +0000
 +++ le-1.16.3-fix/src/edit.cc	2017-07-22 13:15:35.326113146 +0000

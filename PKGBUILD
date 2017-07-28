@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=le-editor-git
-pkgver=685.6fe8ab9
+pkgver=687.a5e169a
 pkgrel=1
 pkgdesc="A text editor in memorial to Norton Editor with block and binary operations - git version"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('le' 'le-editor')
 source=(git://git.sv.gnu.org/gnulib le-editor::git://github.com/lavv17/le.git dickey.patch)
 md5sums=('SKIP'
          'SKIP'
-         '4d180d25f95e07c275e6dce101ba2b52')
+         '1281bdd659535f2d86d680d08d1250e6')
 options=('!makeflags')
 _gitname="le-editor"
 
