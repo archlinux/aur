@@ -3,8 +3,8 @@
 _gopkgname='github.com/mholt/caddy'
 
 pkgname=caddy
-pkgver=0.10.4
-pkgrel=2
+pkgver=0.10.5
+pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -19,7 +19,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'caddy.conf'
         'plugins.go')
-sha256sums=('411e6bf10520e938712887a31f2132bfd19e2c79543e7aef158f7c77d03ae2bf'
+sha256sums=('4e54aff931aa42565ae49dae2c9d8f5654d8b1a410eb6be70035d68561f6265c'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '69e25def317a6172011472bd060655142f3085a0c81392f8a7a9c42b6a58bbd9'
@@ -75,6 +75,7 @@ plugins=(
 #    'hook.service'
 #    'http.authz'
 #    'http.awslambda'
+#    'http.cache'
 #    'http.cgi'
 #    'http.cors'
 #    'http.datadog'
@@ -82,6 +83,7 @@ plugins=(
 #    'http.filemanager'
 #    'http.filter'
 #    'http.git'
+#    'http.gopkg'
 #    'http.grpc'
 #    'http.hugo'
 #    'http.ipfilter'
@@ -89,12 +91,15 @@ plugins=(
 #    'http.login'
 #    'http.mailout'
 #    'http.minify'
+#    'http.nobots'
 #    'http.prometheus'
 #    'http.proxyprotocol'
 #    'http.ratelimit'
 #    'http.realip'
 #    'http.reauth'
+#    'http.restic'
 #    'http.upload'
+#    'http.webdav'
 #    'net'
 #    'tls.dns.cloudflare'
 #    'tls.dns.digitalocean'
