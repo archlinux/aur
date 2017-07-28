@@ -5,7 +5,7 @@
 _pkgbase=freeminer
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-server-git" "${_pkgbase}-common-git")
-pkgver=0.4.14.8.897.gb72980e7c
+pkgver=0.4.14.8.899.gc291133b9
 pkgrel=2
 arch=('i686' 'x86_64')
 url='http://freeminer.org/'
@@ -15,7 +15,7 @@ makedepends=(
 	'leveldb' 'curl' 'hiredis' 'sqlite' 'luajit'
 	'irrlicht' 'openal' 'enet' 'jsoncpp' 'libvorbis'
 	'hicolor-icon-theme' 'freetype2' 'cmake' 'msgpack-c' 'clang'
-	'git'
+	'ccache' 'git'
 )
 
 source=(
