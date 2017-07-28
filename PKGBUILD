@@ -5,19 +5,20 @@ _ver=1.14
 _pkgbase=engrampa
 pkgname=(${_pkgbase}-gtk2)
 pkgver=${_ver}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Archive manipulator for MATE (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk2' 'gzip' 'libarchive' 'tar' 'unzip' 'zip')
 makedepends=('caja-gtk2' 'intltool' 'itstool')
-optdepends=('caja-gtk2: file archiver extension'
+optdepends=('caja: file archiver extension'
             'p7zip: 7Z and ARJ archive support'
             'unace: ACE archive support'
             'unrar: RAR archive support')
 groups=('mate-extra-gtk2')
-conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz"
         fr-rpm-bsdtar.patch)
 sha1sums=('1245f5203b37b842cfaf818781b17cd22f1234b1'
