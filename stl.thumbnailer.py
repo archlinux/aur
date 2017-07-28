@@ -21,7 +21,7 @@ def main( ):
 	ff = "/tmp/stl_to_png_%s.scad" % m.hexdigest()
 
 	f = open(ff,"w")
-	f.write("import(\"%s\");"%fin)
+	f.write("color([__color__]) import(\"%s\");"%fin)
 	f.close()
 
 

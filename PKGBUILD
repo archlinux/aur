@@ -1,4 +1,11 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
+
+# you can change color of rendered object here
+# format: RGB
+# scale: [0,1]
+
+__color__="1,1,1"
+
 pkgname=stl-thumbnailer
 pkgver=1
 pkgrel=1
@@ -8,11 +15,16 @@ url="https://www.thingiverse.com/thing:258653"
 license=('GPL')
 groups=()
 depends=(openscad python2)
-makedepends=()
+makedepends=(sed)
 source=("stl.thumbnailer"
         "stl.thumbnailer.py")
 md5sums=('2e86d05c56f013b5030caf6e5b03a856'
-         '7e1cfa75271e806ef339f1bb3f62b8dc')
+         '8ab41a0aa264ecdeff07d427d35a21e1')
+
+prepare() {
+	cd ${srcdir}
+	sed -i "s/__color__/$__color__/" stl.thumbnailer.py
+}
 
 package() {
 	cd ${srcdir}
