@@ -8,7 +8,6 @@ pkgname=('virtualbox-i3'
          'virtualbox-i3-guest-dkms'
          'virtualbox-i3-sdk'
          'virtualbox-i3-guest-utils'
-         'virtualbox-i3-guest-utils-nox'
          'virtualbox-i3-ext-vnc')
 pkgver=5.1.22
 pkgrel=5
@@ -61,7 +60,6 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         '60-vboxguest.rules'
         'LocalConfig.kmk'
         'vboxservice.service'
-        'vboxservice-nox.service'
         'vboxweb.service'
         'vboxreload'
         '002-dri-driver-path.patch'
@@ -83,7 +81,6 @@ sha256sums=('fcc918000b8c5ece553541ec10a9182410a742b7266257c76dda895dcd389899'
             '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
             '0105ce26b79dbe533085423decf042ac0f5e6aa28edb5e6a9bc713cca2ab04c5'
             '94a808f46909a51b2d0cf2c6e0a6c9dea792034943e6413bf9649a036c921b21'
-            '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
             'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
             '2a9d7748dc58f9d091f791da06b733a696943114f7c0d580fa00a0752eb1d2ac'
             'ee54fe188e27b6e80e2044ea9ba1874db2ca2c026ad04f393be1be69c18d440d'
@@ -101,7 +98,6 @@ replaces=('virtualbox'
           'virtualbox-guest-dkms'
           'virtualbox-sdk'
           'virtualbox-guest-utils'
-          'virtualbox-guest-utils-nox'
           'virtualbox-ext-vnc'
           'virtualbox-ose')
 
@@ -354,26 +350,6 @@ package_virtualbox-i3-guest-utils() {
     install -Dm644 virtualbox-guest-utils.sysusers "$pkgdir/usr/lib/sysusers.d/virtualbox-guest-utils.conf"
     # licence
     install -Dm644 VirtualBox-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_virtualbox-i3-guest-utils-nox() {
-    pkgdesc='VirtualBox Guest userspace utilities without X support'
-    depends=('glibc' 'pam' 'VIRTUALBOX-GUEST-MODULES')
-    conflicts=('virtualbox-guest-utils')
-
-    source "VirtualBox-$pkgver/env.sh"
-    pushd "VirtualBox-$pkgver/out/linux.$BUILD_PLATFORM_ARCH/release/bin/additions"
-    install -d "$pkgdir/usr/bin"
-    install -m755 VBoxControl VBoxService mount.vboxsf "$pkgdir/usr/bin"
-    install -m755 -D pam_vbox.so "$pkgdir/usr/lib/security/pam_vbox.so"
-    popd
-    # systemd stuff
-    install -Dm644 60-vboxguest.rules "$pkgdir/usr/lib/udev/rules.d/60-vboxguest.rules"
-    install -Dm644 vboxservice-nox.service "$pkgdir/usr/lib/systemd/system/vboxservice.service"
-    install -Dm644 virtualbox-guest-utils.sysusers "$pkgdir/usr/lib/sysusers.d/virtualbox-guest-utils.conf"
-    # licence
-    install -Dm644 "$srcdir/VirtualBox-$pkgver/COPYING" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_virtualbox-i3-ext-vnc() {
