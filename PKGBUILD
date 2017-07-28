@@ -1,4 +1,4 @@
-# Maintainer: Ryan Farley <rcf@sdf.org>
+# Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=keepass-plugin-qrcodeview
 pkgver=1.0.3.2
