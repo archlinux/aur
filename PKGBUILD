@@ -4,7 +4,7 @@
 _ver=1.16
 _pkgbase=mate-desktop
 pkgname=(${_pkgbase}-schemas-gtk2)
-pkgver=${_ver}.1
+pkgver=${_ver}.2
 pkgrel=1
 pkgdesc="GSettings schemas for MATE Desktop (GTK2 version)"
 url="http://mate-desktop.org"
@@ -14,8 +14,9 @@ options=('!emptydirs')
 makedepends=('gobject-introspection' 'intltool')
 groups=('mate-gtk2')
 conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('bcded93e383e810817e9737ce2796050f9038b2a')
+sha1sums=('8f8ee79eff741f4c6613cbf27c7639b10b0387eb')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"

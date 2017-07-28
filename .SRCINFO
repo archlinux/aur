@@ -1,6 +1,6 @@
 pkgbase = mate-desktop-schemas-gtk2
 	pkgdesc = GSettings schemas for MATE Desktop (GTK2 version)
-	pkgver = 1.16.1
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -10,10 +10,11 @@ pkgbase = mate-desktop-schemas-gtk2
 	license = LGPL
 	makedepends = gobject-introspection
 	makedepends = intltool
+	provides = mate-desktop
 	conflicts = mate-desktop
 	options = !emptydirs
-	source = http://pub.mate-desktop.org/releases/1.16/mate-desktop-1.16.1.tar.xz
-	sha1sums = bcded93e383e810817e9737ce2796050f9038b2a
+	source = http://pub.mate-desktop.org/releases/1.16/mate-desktop-1.16.2.tar.xz
+	sha1sums = 8f8ee79eff741f4c6613cbf27c7639b10b0387eb
 
 pkgname = mate-desktop-schemas-gtk2
 
