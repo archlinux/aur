@@ -3,7 +3,7 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.8.0.r158.gab5f340a
+pkgver=2.8.0.r245.g0c6c33de
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -13,14 +13,12 @@ depends=('qt5-base' 'glu' 'mesa' 'vxl' 'ffmpeg' 'cgal')
 makedepends=('git' 'cmake' 'pcl' 'doxygen' 'liblas')
 optdepends=('pcl' 'liblas')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
-        "cgal.patch")
-md5sums=('SKIP'
-         'c731a6b09c7a54ecc8ba67f4557e2b0c')
+        )
+md5sums=('SKIP')
 
 prepare() {
   cd ${srcdir}/${name}
   git submodule update --init --recursive
-  patch -Np1 -i ../cgal.patch
 }
 
 pkgver() {

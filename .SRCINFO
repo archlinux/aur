@@ -20,7 +20,6 @@ pkgbase = cloudcompare-git
 	optdepends = pcl
 	optdepends = liblas
 	source = cloudcompare::git+https://github.com/CloudCompare/CloudCompare.git
-	source = cgal.patch
 	md5sums = SKIP
 	md5sums = c731a6b09c7a54ecc8ba67f4557e2b0c
 
