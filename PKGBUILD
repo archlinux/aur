@@ -14,38 +14,50 @@
 # packages for your favorite kernel package built using the archzfs build tools, submit a request in the Issue tracker on the
 # archzfs github page.
 #
-pkgname="zfs-linux-git"
-pkgver=0.7.0_rc4_r95_g94b25662c_4.11.9_1
+pkgbase="zfs-linux-git"
+pkgname=("zfs-linux-git" "zfs-linux-git-headers")
+pkgver=0.7.0_r1_g0f69f42b4_4.11.9_1
 pkgrel=1
-pkgdesc="Kernel modules for the Zettabyte File System."
-depends=("kmod" "spl-linux-git" "zfs-utils-linux-git" "linux=4.11.9-1")
-makedepends=("linux-headers=4.11.9-1" "git")
+makedepends=("linux-headers=4.11.9-1" "git" "spl-linux-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
-groups=("archzfs-linux-git")
 license=("CDDL")
-install=zfs.install
-provides=("zfs")
-conflicts=('zfs-linux' 'zfs-linux-lts' 'zfs-linux-lts-git')
+depends=("kmod" "spl-linux-git" "zfs-utils-common-git" "linux=4.11.9-1")
 
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5.10 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.7.0 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.11.9-1-ARCH/build \
                 --with-linux-obj=/usr/lib/modules/4.11.9-1-ARCH/build
     make
 }
 
-package() {
+package_zfs-linux-git() {
+    pkgdesc="Kernel modules for the Zettabyte File System."
+    install=zfs.install
+    provides=("zfs")
+    groups=("archzfs-linux-git")
+    conflicts=('zfs-linux')
+    replaces=("zfs-git")
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
+    # Remove src dir
+    rm -r "${pkgdir}"/usr/src
+}
+
+package_zfs-linux-git-headers() {
+    pkgdesc="Kernel headers for the Zettabyte File System."
+    conflicts=('zfs-linux-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers')
+    cd "${srcdir}/zfs"
+    make DESTDIR="${pkgdir}" install
+    rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
     sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.11.9-1-ARCH/Module.symvers
 }
