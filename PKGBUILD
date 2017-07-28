@@ -41,7 +41,7 @@ prepare() {
   cd "${_basedir}"
 
   # Do not run fixincludes
-  sed -i -e 's@\./fixinc\.sh@-c true@' 'gcc/Makefile.in'
+  sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
   # fix build with GCC 6
   patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
@@ -51,17 +51,17 @@ prepare() {
 
   # Arch Linux installs x86_64 libraries /lib
   case "${CARCH}" in
-  'x86_64') sed -i -e '/m64=/s/lib64/lib/' 'gcc/config/i386/t-linux64' ;;
+  'x86_64') sed -e '/m64=/ s/lib64/lib/' -i 'gcc/config/i386/t-linux64' ;;
   esac
 
   echo "${pkgver}" > 'gcc/BASE-VER'
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i -e '/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/' {libiberty,gcc}/configure
+  sed -e '/^ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
 
   # installing libiberty headers is broken
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=56780#c6
-  sed -i -e 's#@target_header_dir@#libiberty#' 'libiberty/Makefile.in'
+  sed -e 's#@target_header_dir@#libiberty#' -i 'libiberty/Makefile.in'
 
   # Doesn't like FORTIFY_SOURCE
   export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
@@ -75,42 +75,16 @@ prepare() {
   export CFLAGS="${CFLAGS/-pipe/}"
   export CXXFLAGS="${CXXFLAGS/-pipe/}"
 
+  # Flags from new compilers that old compilers don't recognize
+  export CFLAGS="${CFLAGS/-fno-plt/}"
+  export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+  export CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
+  export CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
+
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
   cd 'gcc-build'
-
-  # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-  ../configure \
-    --build="${CHOST}" \
-    --disable-libstdcxx-pch \
-    --disable-libunwind-exceptions \
-    --disable-multilib \
-    --disable-werror \
-    --enable-__cxa_atexit \
-    --enable-checking='release' \
-    --enable-clocale='gnu' \
-    --enable-cloog-backend='isl' \
-    --enable-gnu-unique-object \
-    --enable-gold \
-    --enable-languages='c,c++,fortran' \
-    --enable-ld=default \
-    --enable-linker-build-id \
-    --enable-lto \
-    --enable-plugin \
-    --enable-shared \
-    --enable-threads='posix' \
-    --enable-version-specific-runtime-libs \
-    --infodir='/usr/share/info' \
-    --libdir='/usr/lib' \
-    --libexecdir='/usr/lib' \
-    --mandir='/usr/share/man' \
-    --program-suffix="-${_pkgver}" \
-    --with-bugurl='https://bugs.archlinux.org/' \
-    --with-plugin-ld='ld.gold' \
-    --with-ppl \
-    --with-system-zlib \
-    --prefix='/usr'
-#    CXX='g++-4.9' CC='gcc-4.9'
 
   set +u
 }
@@ -119,9 +93,44 @@ build() {
   set -u
   cd "${_basedir}/gcc-build"
 
+  if [ ! -s 'Makefile' ]; then
+    # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
+    ../configure \
+      --build="${CHOST}" \
+      --disable-libstdcxx-pch \
+      --disable-libunwind-exceptions \
+      --disable-multilib \
+      --disable-werror \
+      --enable-__cxa_atexit \
+      --enable-checking='release' \
+      --enable-clocale='gnu' \
+      --enable-cloog-backend='isl' \
+      --enable-gnu-unique-object \
+      --enable-gold \
+      --enable-languages='c,c++,fortran' \
+      --enable-ld='default' \
+      --enable-linker-build-id \
+      --enable-lto \
+      --enable-plugin \
+      --enable-shared \
+      --enable-threads='posix' \
+      --enable-version-specific-runtime-libs \
+      --infodir='/usr/share/info' \
+      --libdir='/usr/lib' \
+      --libexecdir='/usr/lib' \
+      --mandir='/usr/share/man' \
+      --program-suffix="-${_pkgver}" \
+      --with-bugurl='https://bugs.archlinux.org/' \
+      --with-plugin-ld='ld.gold' \
+      --with-ppl \
+      --with-system-zlib \
+      --prefix='/usr'
+#      CXX='g++-4.9' CC='gcc-4.9'
+  fi
+
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  # LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  make -s -j "${_nproc}"
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  nice make -j "${_nproc}" # -s
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
@@ -151,13 +160,13 @@ package() {
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
   rm -rf "${pkgdir}/usr"/{share,include}/
-  find "${pkgdir}/" -name '*iberty*' | xargs rm
+  find "${pkgdir}/" -name '*iberty*' -exec rm '{}' '+'
 
   # Move potentially conflicting stuff to version specific subdirectory
   case "${CARCH}" in
   'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" ;;
   esac
-  #mv ${pkgdir}/usr/lib/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
+  #mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
 
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
