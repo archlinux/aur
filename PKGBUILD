@@ -5,7 +5,7 @@
 
 pkgname=nwjs
 pkgver=0.24.0
-pkgrel=6
+pkgrel=7
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
@@ -67,16 +67,21 @@ build() {
   GYP_CHROMIUM_NO_ACTION=0 ./build/gyp_chromium -I third_party/node-nw/common.gypi third_party/node-nw/node.gyp
 
   /usr/bin/ninja -C out/nw nwjs
+
+  # Fix some wired compile errors
+  find third_party/icu -type f -exec sed -i 's/<math\.h>/<cmath>/g' {} \;
+  find third_party/node-nw ! -name 'des_locl.h' -type f -exec sed -i 's/<math\.h>/<cmath>/g' {} \;
+  export C_INCLUDE_PATH="{pkgsrc}/nwjs/src/nwjs/src/build/linux/debian_jessie_amd64-sysroot/usr/include/x86_64-linux-gnu"
+  export CPLUS_INCLUDE_PATH="{pkgsrc}/nwjs/src/build/linux/debian_jessie_amd64-sysroot/usr/include/x86_64-linux-gnu"
+
   /usr/bin/ninja -C out/Release node
   /usr/bin/ninja -C out/nw copy_node
 }
 
 package() {
-  cd "$srcdir/$_pkgname-v$pkgver-linux-$_arch"
-  install -Ddm755 "$pkgdir/opt/$_pkgname"
-  install -Ddm755 "$pkgdir/usr/bin"
-  chmod -R +r *
-  chmod +x nw lib lib/lib{ffmpeg,node,nw}.so locales
-  cp -r * "$pkgdir/opt/$_pkgname"
-  ln -s "/opt/$_pkgname/nw" "$pkgdir/usr/bin/nw"
+  cd "${srcdir}/nwjs/src"
+  install -Ddm755 "${pkgdir}/var/lib/nwjs"
+  install -Ddm755 "${pkgdir}/usr/bin"
+  cp -r out/nw/{nw,lib,locales,natives_blob.bin,nw_100_percent.pak,nw_200_percent.pak,resources.pak,snapshot_blob.bin,icudtl.dat} "${pkgdir}/var/lib/nwjs/"
+  ln -s "/var/lib/nwjs/nw" "${pkgdir}/usr/bin/nw"
 }
