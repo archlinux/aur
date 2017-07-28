@@ -3,10 +3,10 @@
 pkgname=python-pysodium
 _pkgname=pysodium
 pkgver=0.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for libsodium"
 arch=('any')
-depends=('libsodium' 'python' 'python-cffi')
+depends=('libsodium' 'python')
 makedepends=('python-setuptools')
 url="https://github.com/stef/pysodium"
 license=('BSD')
