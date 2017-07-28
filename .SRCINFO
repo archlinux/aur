@@ -1,0 +1,21 @@
+pkgbase = python-kubernetes
+	pkgdesc = Python client for the kubernetes API
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kubernetes-incubator/client-python
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-websocket-client
+	depends = python-urllib3
+	depends = python-six
+	depends = python-dateutil
+	depends = python-oauth2client
+	depends = python-ipaddress
+	depends = python-certifi
+	source = https://github.com/kubernetes-incubator/client-python/archive/v2.0.0.tar.gz
+	sha256sums = 12c3837c95e9e7237f1273712de6fbb4bec4172559e066a97f10edd281d0ad0c
+
+pkgname = python-kubernetes
+
