@@ -1,9 +1,10 @@
 # Maintainer: Rudy Matela <rudy@matela.com.br>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: _le34n$ <4le34n@gmail.com>
 
 pkgname=nfdump
 pkgver=1.6.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of tools to collect and process netflow data."
 arch=('i686' 'x86_64')
 url="https://github.com/phaag/nfdump/"
@@ -21,6 +22,13 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
+
+	# Fix error:    "configure.ac:10: error: version mismatch. This is Automake 1.1
+	#                configure.ac:10: but the definition used by this AM_INIT_AUTOMA
+	#                configure.ac:10: comes from Automake 1.15. You should recreate
+	#                configure.ac:10: aclocal.m4 with aclocal and run automake again
+	#                WARNING: 'automake-1.15' is probably too old."
+	autoreconf
 
 	./configure --prefix=/usr \
 	  --enable-nfprofile \
