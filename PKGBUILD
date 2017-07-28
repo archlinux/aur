@@ -4,18 +4,19 @@
 _ver=1.16
 _pkgbase=mate-panel
 pkgname=${_pkgbase}-gtk2
-pkgver=${_ver}.1
+pkgver=${_ver}.2
 pkgrel=1
 pkgdesc="The MATE Panel (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dbus-glib' 'libwnck' 'libcanberra' 'libmateweather-gtk2' 'libsm' 'mate-menus' 'mate-desktop-gtk2')
+depends=('dbus-glib' 'libwnck' 'libcanberra' 'libmateweather' 'libsm' 'mate-menus' 'mate-desktop')
 makedepends=('intltool' 'itstool' 'gobject-introspection')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate-gtk2')
-conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
-sha1sums=('799ef0b7d718e2120aa1ffdcae604c356213ef12')
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
+sha1sums=('b6029edf7c54a751effd498871119f302625c91f')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
