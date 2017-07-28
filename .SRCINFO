@@ -1,7 +1,7 @@
 pkgbase = mate-control-center-gtk2
 	pkgdesc = The Control Center for MATE (GTK2 version)
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = mate-control-center-gtk2
 	makedepends = intltool
 	makedepends = itstool
 	depends = mate-menus
-	depends = mate-settings-daemon-gtk2
-	depends = marco-gtk2
+	depends = mate-settings-daemon
+	depends = marco
 	depends = libunique
 	depends = libxss
+	provides = mate-control-center
 	conflicts = mate-control-center
-	conflicts = mate-control-center-gtk3
 	source = http://pub.mate-desktop.org/releases/1.16/mate-control-center-1.16.1.tar.xz
 	sha1sums = 49f65c992fdc27e0c5c57cd57e7143813b67d76b
 
