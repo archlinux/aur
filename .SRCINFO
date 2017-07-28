@@ -1,7 +1,7 @@
 pkgbase = mate-system-monitor-gtk2
 	pkgdesc = A system monitor for MATE (GTK2 version)
-	pkgver = 1.12.1
-	pkgrel = 2
+	pkgver = 1.12.2
+	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = mate-system-monitor-gtk2
 	depends = libwnck
 	depends = librsvg
 	optdepends = yelp: for reading MATE help documents
+	provides = mate-system-monitor
 	conflicts = mate-system-monitor
-	conflicts = mate-system-monitor-gtk3
-	source = http://pub.mate-desktop.org/releases/1.12/mate-system-monitor-1.12.1.tar.xz
-	sha1sums = 58fd0ab16ff76a1d0871053698c13cb28f407bf1
+	source = http://pub.mate-desktop.org/releases/1.12/mate-system-monitor-1.12.2.tar.xz
+	sha1sums = aa53f50d8c94135b703fabe64a921e9fdeb61961
 
 pkgname = mate-system-monitor-gtk2
 
