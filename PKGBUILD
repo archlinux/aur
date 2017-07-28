@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=bterm-git
 _pkgname=bterm
-pkgver=v1.0.0.r13.95e17d6
+pkgver=v1.0.0.r15.b554087
 pkgrel=1
 pkgdesc="cross-platform terminal emulator"
 arch=('x86_64')
