@@ -9,7 +9,7 @@ pkgname=${_name}-${_channel}-${_lang,,}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=56.0a1
-pkgver=56.0a1.20170726.100241
+pkgver=56.0a1.20170727.162531
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -29,13 +29,14 @@ _url_l10n="${_url}-l10n"
 _src="${_name}-${_version}.${_lang}.linux"
 _src_en_us="${_name}-${_version}.en-US.linux"
 _filename="$(date --utc +%Y%m%d)-${_src}"
+_filename_en_us="$(date --utc +%Y%m%d)-${_src_en_us}"
 source=('firefox-nightly.desktop' 'vendor.js')
 source_i686=("${_filename}-i686.tar.bz2"::"${_url_l10n}/${_src}-i686.tar.bz2"
              "${_filename}-i686.tar.bz2.asc"::"${_url_l10n}/${_src}-i686.tar.bz2.asc"
-             "${_filename}-i686.txt"::"${_url}/${_src_en_us}-i686.txt")
+             "${_filename_en_us}-i686.txt"::"${_url}/${_src_en_us}-i686.txt")
 source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url_l10n}/${_src}-x86_64.tar.bz2"
                "${_filename}-x86_64.tar.bz2.asc"::"${_url_l10n}/${_src}-x86_64.tar.bz2.asc"
-               "${_filename}-x86_64.txt"::"${_url}/${_src_en_us}-x86_64.txt")
+               "${_filename_en_us}-x86_64.txt"::"${_url}/${_src_en_us}-x86_64.txt")
 sha512sums=(
     'b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
     'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
@@ -45,7 +46,7 @@ sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 pkgver() {
-  echo "${_version}.$(head -n1 ${_filename}-${CARCH}.txt | cut -c-8).$(head -n1 ${_filename}-${CARCH}.txt | cut -c9-14)"
+  echo "${_version}.$(head -n1 ${_filename_en_us}-${CARCH}.txt | cut -c-8).$(head -n1 ${_filename_en_us}-${CARCH}.txt | cut -c9-14)"
 }
 
 package() {
