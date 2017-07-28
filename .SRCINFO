@@ -1,20 +1,20 @@
 pkgbase = mate-session-manager-gtk2
 	pkgdesc = The MATE Session Handler (GTK2 version)
 	pkgver = 1.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	groups = mate-gtk2
 	license = GPL
 	makedepends = intltool
-	depends = mate-desktop-gtk2
-	depends = mate-polkit-gtk2
-	depends = mate-settings-daemon-gtk2
+	depends = mate-desktop
+	depends = mate-polkit
+	depends = mate-settings-daemon
 	optdepends = gnome-keyring: keyring support
 	optdepends = xdg-user-dirs-gtk: manage user directories
+	provides = mate-session-manager
 	conflicts = mate-session-manager
-	conflicts = mate-session-manager-gtk3
 	source = http://pub.mate-desktop.org/releases/1.14/mate-session-manager-1.14.1.tar.xz
 	sha1sums = 385fdef7045a6a5abe42756b992b2f2f46e2bbdb
 
