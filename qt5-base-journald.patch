@@ -1,0 +1,190 @@
+From 0c8f3229de8ec4a8e70d4b41672074b94a45b1fe Mon Sep 17 00:00:00 2001
+From: Lars Knoll <lars.knoll@qt.io>
+Date: Fri, 18 Nov 2016 12:57:53 +0100
+Subject: [PATCH] Clean up config handling of logging backends
+
+Turn them into proper private features, and remove setting of
+defines in the pri file.
+
+Change-Id: Iafc11e93d4a9349bf15971dc1adac9a828ea03f6
+Reviewed-by: Oswald Buddenhagen <oswald.buddenhagen@qt.io>
+---
+ src/corelib/configure.json                |  7 +++----
+ src/corelib/global/global.pri             | 12 ++----------
+ src/corelib/global/qconfig-bootstrapped.h |  3 +++
+ src/corelib/global/qlogging.cpp           | 23 ++++++++++++-----------
+ 4 files changed, 20 insertions(+), 25 deletions(-)
+
+diff --git a/src/corelib/configure.json b/src/corelib/configure.json
+index 0d1954c3a8..89f824d880 100644
+--- a/src/corelib/configure.json
++++ b/src/corelib/configure.json
+@@ -289,7 +289,7 @@
+             "label": "journald",
+             "autoDetect": false,
+             "condition": "libs.journald",
+-            "output": [ "privateConfig" ]
++            "output": [ "privateFeature" ]
+         },
+         "std-atomic64": {
+             "label": "64 bit atomic operations",
+@@ -363,14 +363,13 @@
+         "slog2": {
+             "label": "slog2",
+             "condition": "libs.slog2",
+-            "emitIf": "config.qnx",
+-            "output": [ "privateConfig" ]
++            "output": [ "privateFeature" ]
+         },
+         "syslog": {
+             "label": "syslog",
+             "autoDetect": false,
+             "condition": "tests.syslog",
+-            "output": [ "privateConfig" ]
++            "output": [ "privateFeature" ]
+         },
+         "threadsafe-cloexec": {
+             "label": "Threadsafe pipe creation",
+diff --git a/src/corelib/global/global.pri b/src/corelib/global/global.pri
+index f74662b464..36655ca1dd 100644
+--- a/src/corelib/global/global.pri
++++ b/src/corelib/global/global.pri
+@@ -47,19 +47,11 @@ if(linux*|hurd*):!cross_compile:!static:!*-armcc* {
+    DEFINES += ELF_INTERPRETER=\\\"$$system(LC_ALL=C readelf -l /bin/ls | perl -n -e \'$$prog\')\\\"
+ }
+ 
+-slog2 {
++qtConfig(slog2): \
+     LIBS_PRIVATE += -lslog2
+-    DEFINES += QT_USE_SLOG2
+-}
+ 
+-journald {
++qtConfig(journald): \
+     QMAKE_USE_PRIVATE += journald
+-    DEFINES += QT_USE_JOURNALD
+-}
+-
+-syslog {
+-    DEFINES += QT_USE_SYSLOG
+-}
+ 
+ gcc:ltcg {
+     versiontagging_compiler.commands = $$QMAKE_CXX -c $(CXXFLAGS) $(INCPATH)
+diff --git a/src/corelib/global/qconfig-bootstrapped.h b/src/corelib/global/qconfig-bootstrapped.h
+index 4629a57485..0cbd52c205 100644
+--- a/src/corelib/global/qconfig-bootstrapped.h
++++ b/src/corelib/global/qconfig-bootstrapped.h
+@@ -69,10 +69,13 @@
+ #define QT_CRYPTOGRAPHICHASH_ONLY_SHA1
+ #define QT_NO_DATASTREAM
+ #define QT_FEATURE_iconv -1
++#define QT_FEATURE_journald -1
+ #define QT_NO_LIBRARY
+ #define QT_FEATURE_library -1
+ #define QT_NO_QOBJECT
+ #define QT_NO_SYSTEMLOCALE
++#define QT_FEATURE_slog2 -1
++#define QT_FEATURE_syslog -1
+ #define QT_NO_THREAD
+ #define QT_FEATURE_timezone -1
+ #define QT_FEATURE_topleveldomain -1
+diff --git a/src/corelib/global/qlogging.cpp b/src/corelib/global/qlogging.cpp
+index f344873276..0506d372b6 100644
+--- a/src/corelib/global/qlogging.cpp
++++ b/src/corelib/global/qlogging.cpp
+@@ -39,6 +39,7 @@
+ **
+ ****************************************************************************/
+ 
++#include "qglobal_p.h"
+ #include "qlogging.h"
+ #include "qlist.h"
+ #include "qbytearray.h"
+@@ -59,7 +60,7 @@
+ #ifdef Q_OS_WIN
+ #include <qt_windows.h>
+ #endif
+-#ifdef QT_USE_SLOG2
++#if QT_CONFIG(slog2)
+ #include <slog2.h>
+ #endif
+ 
+@@ -67,12 +68,12 @@
+ #include <android/log.h>
+ #endif
+ 
+-#if defined(QT_USE_JOURNALD) && !defined(QT_BOOTSTRAPPED)
++#if QT_CONFIG(journald)
+ # define SD_JOURNAL_SUPPRESS_LOCATION
+ # include <systemd/sd-journal.h>
+ # include <syslog.h>
+ #endif
+-#if defined(QT_USE_SYSLOG) && !defined(QT_BOOTSTRAPPED)
++#if QT_CONFIG(syslog)
+ # include <syslog.h>
+ #endif
+ #ifdef Q_OS_UNIX
+@@ -93,7 +94,7 @@
+ #  endif
+ #endif
+ 
+-#if defined(QT_USE_SLOG2)
++#if QT_CONFIG(slog2)
+ extern char *__progname;
+ #endif
+ 
+@@ -1281,7 +1282,7 @@ static QString formatBacktraceForLogMessage(const QMessagePattern::BacktracePara
+ }
+ #endif // QLOGGING_HAVE_BACKTRACE && !QT_BOOTSTRAPPED
+ 
+-#if defined(QT_USE_SLOG2)
++#if QT_CONFIG(slog2)
+ #ifndef QT_LOG_CODE
+ #define QT_LOG_CODE 9000
+ #endif
+@@ -1330,7 +1331,7 @@ static void slog2_default_handler(QtMsgType msgType, const char *message)
+     //writes to the slog2 buffer
+     slog2c(NULL, QT_LOG_CODE, severity, message);
+ }
+-#endif // QT_USE_SLOG2
++#endif // slog2
+ 
+ Q_GLOBAL_STATIC(QMessagePattern, qMessagePattern)
+ 
+@@ -1479,7 +1480,7 @@ static QBasicAtomicPointer<void (QtMsgType, const char*)> msgHandler = Q_BASIC_A
+ // pointer to QtMessageHandler debug handler (with context)
+ static QBasicAtomicPointer<void (QtMsgType, const QMessageLogContext &, const QString &)> messageHandler = Q_BASIC_ATOMIC_INITIALIZER(qDefaultMessageHandler);
+ 
+-#if defined(QT_USE_JOURNALD) && !defined(QT_BOOTSTRAPPED)
++#if QT_CONFIG(journald)
+ static void systemd_default_message_handler(QtMsgType type,
+                                             const QMessageLogContext &context,
+                                             const QString &message)
+@@ -1513,7 +1514,7 @@ static void systemd_default_message_handler(QtMsgType type,
+ }
+ #endif
+ 
+-#ifdef QT_USE_SYSLOG
++#if QT_CONFIG(syslog)
+ static void syslog_default_message_handler(QtMsgType type, const char *message)
+ {
+     int priority = LOG_INFO; // Informational
+@@ -1577,14 +1578,14 @@ static void qDefaultMessageHandler(QtMsgType type, const QMessageLogContext &con
+         logMessage.append(QLatin1Char('\n'));
+         OutputDebugString(reinterpret_cast<const wchar_t *>(logMessage.utf16()));
+         return;
+-#elif defined(QT_USE_SLOG2)
++#elif QT_CONFIG(slog2)
+         logMessage.append(QLatin1Char('\n'));
+         slog2_default_handler(type, logMessage.toLocal8Bit().constData());
+         return;
+-#elif defined(QT_USE_JOURNALD) && !defined(QT_BOOTSTRAPPED)
++#elif QT_CONFIG(journald)
+         systemd_default_message_handler(type, context, logMessage);
+         return;
+-#elif defined(QT_USE_SYSLOG) && !defined(QT_BOOTSTRAPPED)
++#elif QT_CONFIG(syslog)
+         syslog_default_message_handler(type, logMessage.toUtf8().constData());
+         return;
+ #elif defined(Q_OS_ANDROID)
