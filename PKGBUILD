@@ -1,13 +1,13 @@
 # Maintainer: Kyle Brooks <brookskd@gmail.com>
 pkgname=cmvs-pmvs-git
-pkgver=r20.a5c2bc1
-pkgrel=2
+pkgver=r24.a067274
+pkgrel=3
 pkgdesc='Takes output from structure from motion frameworks (SfM) and produces dense 3D reconstruction from the camera poses and imagery.'
 arch=('i686' 'x86_64')
 url='https://github.com/pmoulon/CMVS-PMVS'
 license=('GPL')
 depends=('libjpeg' 'boost-libs')
-makedepends=('gcc5' 'git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost')
 provides=('cmvs' 'pmvs')
 conflicts=('cmvs' 'pmvs')
 _gitname='CMVS-PMVS'
@@ -25,7 +25,7 @@ build() {
   cd "${srcdir}"
   mkdir -p cmvs-pmvs_build
   cd cmvs-pmvs_build
-  cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_CXX_COMPILER=g++-5 "../${_gitname}/program"
+  cmake -DCMAKE_BUILD_TYPE=RELEASE "../${_gitname}/program"
   make
 }
 
