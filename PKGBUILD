@@ -6,7 +6,7 @@ _pkgname=jdk
 pkgname=bin32-jdk-devel
 _major=9
 #_minor=1
-_build=179
+_build=180
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -48,7 +48,7 @@ source=("http://download.java.net/java/jdk${_major}/archive/${_build}/binaries/$
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop"
         'LICENSE-Early-Adopter-Terms.txt')
-sha256sums=('e7810b6f6e35330e71dfd95a64988588b64b26d02bb2b53d5a7da5355fd5d203'
+sha256sums=('949e3abb6e9bb0ecc3a3d138af598ff7a8e725f263409656cb902c7db4f781b1'
             '4699009a941791cc82e6bcc85e80365b4c5b10f217e5f023a84f917abbe98ae1'
             '082c7594570133117e06f2b3a74c9e40ecea89384ab874fa1ef111e1c998302e'
             '653729575c23d7faaef6bb106fdc4889e9a2240723540ad92a74bf1972367faf'
