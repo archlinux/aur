@@ -1,15 +1,15 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=mongoclient
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="MongoDB administration client"
 arch=('i686' 'x86_64')
-url="http://www.mongoclient.com/"
+url="https://www.nosqlclient.com/"
 license=('MIT')
-source=("https://github.com/rsercano/mongoclient/releases/download/${pkgver}/linux-portable-x64.zip"
-        "https://raw.githubusercontent.com/rsercano/mongoclient/master/public/logo/new/image_only.png"
+source=("https://github.com/nosqlclient/nosqlclient/releases/download/${pkgver}/linux-portable-x64.zip"
+        "https://github.com/nosqlclient/nosqlclient/raw/master/public/logo/new/image_only.png"
         "${pkgname}.desktop")
-sha256sums=("2d9158e407bd7bbb776bb0c8aa3e330348135616c8bd24143fd9142eb2261b2e"
+sha256sums=("c4ec62ebd882f2c29d5405bafc9d0ccf3d2f53bf183a1df5c8bc9516109e159e"
             "576f36bc7c797f9ccc7695035016885824f13cc92a6ac9b95dc70bdc0a1cc637"
             "e108b25a50b304dc96f8ec1ac54f97d2cafe126058c3430e8c9209357463d937")
 noextract=(*.zip)
@@ -30,7 +30,7 @@ package() {
 
   install -Dm644 "image_only.png" "${pkgdir}/usr/share/${pkgname}/img/icon.png"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgdir}/opt/${pkgname}/Mongoclient-linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Ddm777 "${pkgdir}/opt/${pkgname}/resources/app/db"
 }
