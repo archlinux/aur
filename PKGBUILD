@@ -7,7 +7,7 @@
 
 pkgname=wxformbuilder-git
 _gitname=wxFormBuilder
-pkgver=3.5.2.RC2.rf6dbe4c
+pkgver=3.6.0.r47eac39
 pkgrel=1
 pkgdesc="Designer, GUI builder, and RAD tool For wxWidgets"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url="https://sourceforge.net/projects/wxformbuilder/"
 license=('GPL')
 provides=('wxformbuilder')
 conflicts=('wxformbuilder' 'wxformbuilder-svn')
-depends=('wxgtk')
+depends=('wxgtk' 'boost')
 makedepends=('git')
 source=("git://github.com/wxFormBuilder/wxFormBuilder.git")
 md5sums=('SKIP')
