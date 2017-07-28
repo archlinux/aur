@@ -3,7 +3,7 @@
 _pkgname=fabric
 pkgname=hyperledger-${_pkgname}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(x86_64)
 url="https://github.com/hyperledger/fabric"
@@ -11,8 +11,8 @@ license=('APACHE')
 groups=('hyperledger-fabric')
 depends=('go' 'docker')
 makedepends=('git')
-source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz"
-	fabric.sh)
+install=$pkgname.install
+source=("https://github.com/hyperledger/fabric/archive/v$pkgver.tar.gz")
 
 prepare() {
   export GOPATH="$PWD"/.gopath
@@ -30,13 +30,13 @@ package() {
   cd $srcdir/${_pkgname}-$pkgver
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-  install -Dm 644 -t "$pkgdir/etc/profile.d/" ../fabric.sh
 
   cp -r release/linux-amd64/bin "$pkgdir/usr"
   mkdir -p $pkgdir/etc/hyperledger/fabric
   cp -r sampleconfig/* $pkgdir/etc/hyperledger/fabric
 
+  mkdir -p $pkgdir/var/hyperledger/{db,production}
+
 }
 
-md5sums=('a3b3b80224c88fe984207e6321ccdb04'
-         '1da047c0fd9780e71a485013ade06060')
+md5sums=('a3b3b80224c88fe984207e6321ccdb04')

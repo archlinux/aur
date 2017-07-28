@@ -1,0 +1,14 @@
+post_install() {
+   echo "Add this line to /etc/environment"
+   echo "	export FABRIC_CFG_PATH=/etc/hyperledger/fabric/"
+}
+
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+   echo "Remove this line to /etc/environment"
+   echo "       export FABRIC_CFG_PATH=/etc/hyperledger/fabric/"
+}
