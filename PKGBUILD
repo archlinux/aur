@@ -5,13 +5,13 @@
 pkgname=armory-goatpig-git
 _name=${pkgname%-*-*}
 _py2ver=$(pacman -Qi python2 | sed -n 's/\(.*Version *: \)\(.*\..*\)\(\..*\)/\2/p')
-pkgver=v0.96.r0.ga3d01aa7
+pkgver=v0.96.1.r1.gb77932c8
 pkgrel=1
 pkgdesc="Armory Bitcoin wallet, built from new, official github repo w/auto selection of current python2 version"
 arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
 license=('AGPL3')
-depends=('crypto++' 'swig' 'python2' 'twisted' 'qt4' 'python2-pyqt4' 'python2-bsddb' 'python2-psutil' 'rsync')
+depends=('crypto++' 'swig' 'python2' 'qt4' 'python2-pyqt4' 'python2-bsddb' 'python2-psutil' 'rsync')
 makedepends=('git' 'gcc' 'make' 'icoutils')
 optdepends=('bitcoin-daemon: Communicate with the Bitcoin network')
 install="${_name}.install"
@@ -33,17 +33,13 @@ prepare() {
 
 build() {
   cd "$srcdir/$_name"
-  "$srcdir/$_name/configure" PYTHON_VERSION="$_py2ver"
+  "$srcdir/$_name/configure" --prefix="/usr" PYTHON_VERSION="$_py2ver"
   PYTHON_VERSION="$_py2ver" make -j"${nproc}"
 }
 
 package() {
   cd "$srcdir/$_name"
   make DESTDIR="$pkgdir/" install
-
-  find "$pkgdir/usr/local" -depth -mindepth 1 -maxdepth 1 \
-  -execdir bash -c 'mv "'"$pkgdir"'/usr/local/$1" "'"$pkgdir"'/usr/$1"' _ {} \;
-  rm -d "$pkgdir/usr/local"
 
   mkdir -p "$pkgdir/usr/share/pixmaps"
   icotool -x -w 256 "$pkgdir/usr/share/armory/img/armory256x256.ico" \
