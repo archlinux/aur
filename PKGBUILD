@@ -17,7 +17,7 @@
 #
 pkgbase="zfs-linux-lts-git"
 pkgname=("zfs-linux-lts-git" "zfs-linux-lts-git-headers")
-pkgver=0.7.0_rc5_r1_g4265a9293_4.9.37_1
+pkgver=0.7.0_r1_g0f69f42b4_4.9.37_1
 pkgrel=1
 makedepends=("linux-lts-headers=4.9.37-1" "libelf" "git" "spl-linux-lts-git-headers")
 arch=("x86_64")
@@ -32,7 +32,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5.11 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.7.0 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.9.37-1-lts/build \
                 --with-linux-obj=/usr/lib/modules/4.9.37-1-lts/build
     make
