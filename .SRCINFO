@@ -1,0 +1,13 @@
+pkgbase = ttf-dnk
+	pkgdesc = Damn Noisy Kids Font
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.dafont.com/damn-noisy-kids.font
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = dnk.zip::http://dl.dafont.com/dl/?f=damn_noisy_kids
+	sha512sums = 76c60d1268311fcfe2e2b7f3b59278391eb1b1b6e16667ed717e8f50ba2bca27da8d4cbfa6b0c319453675c42dfe17e5a97b81eca02994d21786cbdcda2e126e
+
+pkgname = ttf-dnk
+
