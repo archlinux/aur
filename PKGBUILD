@@ -1,8 +1,8 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=lebab
-_npmver=2.7.2
+_npmver=2.7.4
 pkgname=lebab # All lowercase
-pkgver=2.7.2
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="Turn your JavaScript ES5 code into readable ES6/ES7"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('b232483e2dc5a9e970a73d09c425665575c8f3b7')
+sha1sums=('67fcef3b3ff7b4cee3dc6684bd62444bc3936f66')
