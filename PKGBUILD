@@ -3,7 +3,7 @@
 
 pkgname=qt5-webengine-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
-pkgver=58.0.3029.110
+pkgver=60.0.3112.78
 pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source_i686=("http://mirror.retrosnub.co.uk/apt/google/pool/main/g/google-chrome
 source_x86_64=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb")
 sha256sums=('e93c01576427cad9099f2cf0df0be70d0a2cc0a3a66c743318b2138aa7c4ed93')
 sha256sums_i686=('7401ad3698a28bf2b45e350fd2b941c44cb51dbb3f87b0e7dd1a2da72c42f594')
-sha256sums_x86_64=('2d1eed9be2687c0b393699381d1a93bf8913a50eaf8df6b4596e3bfc4b15dd6d')
+sha256sums_x86_64=('9a64c54d87724b58ea5cff53b05a48583e1c26b48108d9e5723ff69ff05a7871')
 
 prepare() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevinecdm.so,libwidevinecdmadapter.so}
