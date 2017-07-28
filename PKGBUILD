@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=extempore-git
-pkgver=0.7.0.r251.g9ff1bb32
+pkgver=0.7.0.r306.g30cac218
 pkgrel=1
 pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
@@ -47,7 +47,9 @@ package() {
 
   # emacs and vim files
   install -D "${srcdir}/extempore/extras/extempore.el" "${pkgdir}/usr/share/emacs/site-lisp/extempore/extempore.el"
-  install -D "${srcdir}/extempore/extras/extempore.vim" "${pkgdir}/usr/share/vim/vimfiles/plugin/extempore.vim"
+
+  # NOTE: The vim file interferes with vim, overriding global bindins.
+  # install -D "${srcdir}/extempore/extras/extempore.vim" "${pkgdir}/usr/share/vim/vimfiles/plugin/extempore.vim"
 
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/extempore/extempore "${pkgdir}/usr/bin/extempore"

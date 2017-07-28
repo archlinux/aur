@@ -1,6 +1,6 @@
 pkgbase = extempore-git
 	pkgdesc = A cyber-physical programming environment for live coding
-	pkgver = 0.7.0.r251.g9ff1bb32
+	pkgver = 0.7.0.r306.g30cac218
 	pkgrel = 1
 	url = http://extempore.moso.com.au
 	arch = i686
