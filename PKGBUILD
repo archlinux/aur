@@ -1,7 +1,7 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 name=hpmvs
 pkgname=${name}-git
-pkgver=r11.be7fad6
+pkgver=r18.f003e54
 pkgrel=1
 pkgdesc="Progressive multiview stero, generate dense surface form  sparse 3D model."
 arch=('i686' 'x86_64')
@@ -15,17 +15,10 @@ provides=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/alexlocher/hpmvs.git"
-        "missing_headers.patch"
         "http://www.vision.ee.ethz.ch/~alocher/pdf/locher_cvpr16_progressive_prioritized_mvs.pdf"
         )
 md5sums=('SKIP'
-         '042189728d33a8315d81a1c04ce970f3'
          'd2bb5ce95c7ec1e02bc50922c18ac884')
-
-prepare() {
-  cd ${pkgname}
-  patch -Np1 -i ../missing_headers.patch
-}
 
 pkgver() {
   cd "$pkgname"
