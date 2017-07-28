@@ -1,10 +1,9 @@
 [Desktop Entry]
-Version=2.2.0
-Name=Substance Painter 2
+Name=Substance Painter
 Exec=/usr/bin/substance-painter
 Icon=substance-painter-icon
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Utility;Application;
+Categories=Graphics
 
