@@ -1,4 +1,4 @@
-# Maintainer: Ryan Farley <rcf@sdf.org>
+# Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=nrsc5-git 
 pkgver=r79.89b155a
 pkgrel=3
