@@ -2,7 +2,7 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 pkgname=neovim-git
-pkgver=0.2.0.r368.gca385db4d
+pkgver=0.2.0.r612.g3b45f676c
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64')
@@ -48,8 +48,6 @@ package() {
   cd "${pkgname}/build"
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 ../runtime/nvim.desktop "${pkgdir}/usr/share/applications/nvim.desktop"
-  install -Dm644 ../runtime/nvim.png "${pkgdir}/usr/share/pixmaps/nvim.png"
 }
 
 # vim:set sw=2 sts=2 et:
