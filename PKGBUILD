@@ -2,7 +2,8 @@
 
 _name=quarter-tiling
 pkgname=kwin-scripts-quarter-tiling-git
-pkgver=20170727
+epoch=1
+pkgver=r116.9ed708b
 pkgrel=1
 pkgdesc='Quarter Tiling Script for KWin (git version)'
 arch=('any')
@@ -18,12 +19,12 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git log -1 --format="%cd" --date=short | tr -d '-'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
     install -d "${pkgdir}/usr/share/kwin/scripts/${_name}"
     cp -a ./{contents,metadata.desktop} "${pkgdir}/usr/share/kwin/scripts/${_name}"
-    install -Dm644 metadata.desktop "${pkgdir}/usr/share/kservices5/${_name}.desktop"
+    install -Dm644 metadata.desktop "${pkgdir}/usr/share/kservices5/kwin-script-quarter-tiling.desktop.desktop"
 }
