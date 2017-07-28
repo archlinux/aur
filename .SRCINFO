@@ -1,7 +1,7 @@
 pkgbase = marco-gtk2
 	pkgdesc = A window manager for MATE (GTK2 version)
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = marco-gtk2
 	depends = gtk2
 	depends = libcanberra
 	depends = libgtop
-	depends = mate-desktop-schemas
+	depends = mate-desktop-schemas-gtk2
 	depends = startup-notification
 	depends = zenity
 	provides = marco
