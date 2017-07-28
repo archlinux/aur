@@ -8,7 +8,7 @@ pkgbase = vim-please-dont-git
 	license = GPL3
 	makedepends = git
 	depends = vim
-	source = git+https://github.com/PawkyPenguin/vim-please-dont.git
+	source = vim-please-dont-git::git+https://github.com/PawkyPenguin/vim-please-dont.git
 	sha256sums = SKIP
 
 pkgname = vim-please-dont-git

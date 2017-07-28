@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 makedepends=('git')
 
 package() {
-    cd "${_pkgname}"
+    cd "${pkgname}"
 
     local installpath="${pkgdir}/usr/share/vim/vimfiles"
 
