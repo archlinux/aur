@@ -1,0 +1,37 @@
+pre_install() {
+  if ! getent group phantombot >/dev/null; then
+    groupadd --system phantombot
+  fi
+  if ! getent passwd phantombot >/dev/null; then
+    useradd -m --system -c 'phantombot daemon user' -g phantombot -s /bin/false phantombot -d /opt/PhantomBot
+  fi
+  chsh phantombot -s /bin/bash
+}
+
+post_install(){
+  chown -R phantombot:phantombot /opt/PhantomBot
+
+  systemctl daemon-reload
+}
+
+pre_upgrade(){
+  pre_install $1
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  systemctl stop phantombot.service
+  systemctl disable phantombot.service
+}
+
+post_remove() {
+  if getent passwd phantombot >/dev/null; then
+    userdel -r phantombot
+  fi
+  if getent group phantombot >/dev/null; then
+    groupdel phantombot
+  fi
+}

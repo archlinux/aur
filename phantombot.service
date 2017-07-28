@@ -1,0 +1,12 @@
+[Unit]
+Description=Phantombot
+
+[Service]
+WorkingDirectory=/opt/PhantomBot
+User=phantombot
+Group=phantombot
+Type=simple
+ExecStart=/usr/bin/phantombot-service
+
+[Install]
+WantedBy=multi-user.target
