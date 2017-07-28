@@ -2,6 +2,7 @@
 
 _pkgname=vim-please-dont
 pkgname=${_pkgname}-git
+pkgbase=$_pkgname
 pkgver=1.0
 pkgrel=1
 pkgdesc='A vim plugin that adds auto-indentation for deliberately poor style'
