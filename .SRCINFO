@@ -1,7 +1,7 @@
 pkgbase = pluma-gtk2
 	pkgdesc = A powerful text editor for MATE (GTK2 version)
 	pkgver = 1.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pluma-gtk2
 	makedepends = intltool
 	makedepends = itstool
 	depends = iso-codes
-	depends = mate-desktop-schemas
+	depends = mate-desktop-schemas-gtk2
 	depends = pygtksourceview2
 	depends = zenity
 	provides = pluma
