@@ -1,16 +1,13 @@
 # Maintainer: Cycloheptan <carl.schneider+archlinux@rub.de>
 pkgname=phantombot
 pkgver=2.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="PhantomBot is a Twitch chat bot powered by Java."
 arch=('x86_64')
 url="https://phantombot.tv/"
 license=('GPL3')
 depends=('java-runtime')
 install=phantombot.install
-backup=("opt/PhantomBot/botlogin.txt"
-	"opt/PhantomBot/phantombot.db"
-	"opt/PhantomBot/phantombot.db-journal")
 source=("https://github.com/PhantomBot/PhantomBot/releases/download/v${pkgver}/PhantomBot-${pkgver}.zip"
 	"phantombot"
 	"phantombot-service"
