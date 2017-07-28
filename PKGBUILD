@@ -1,5 +1,5 @@
-#By MBC (Matteo's Basic Computing)
-#Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
+# By MBC (Matteo's Basic Computing)
+# Maintainer : Matteo Rossillol <mbasiccomputing@gmail.com>
 
 
 pkgname=zfw-module
@@ -11,19 +11,10 @@ url="https://github.com/CompFile/My_AUR_PKG/tree/master/Sources/$pkgname/$pkgnam
 license=("GPL")
 groups=("MBC")
 depends=("qt5-base>=5.9.1")
-makedepends=("tar" "gcc" "qt5-base>=5.9.1")
+makedepends=("gcc" "qt5-base>=5.9.1")
 source=("https://github.com/CompFile/My_AUR_PKG/raw/master/PKG/$pkgname/$pkgname-$pkgver.r$pkgrel.tar.gz")
 md5sums=('03e7a7a0117fa49b3b1ba127f5364cba')
 
-
-prepare() 
-{
-    cd "$srcdir"
-    echo "#Decompressing $pkgname-$pkgver.r$pkgrel.tar.gz"
-    tar -xzvf "$pkgname-$pkgver.r$pkgrel.tar.gz"
-    echo "#Removing $pkgname-$pkgver.r$pkgrel.tar.gz"
-    rm -v "$pkgname-$pkgver.r$pkgrel.tar.gz"
-}
 
 build()
 {
@@ -34,11 +25,11 @@ build()
 
 package()
 {
-    mkdir -p $pkgdir/usr/share/pixmaps
-    mkdir -p $pkgdir/usr/bin
-    mkdir -p $pkgdir/usr/share/applications
+    install -d $pkgdir/usr/share/pixmaps
+    install -d $pkgdir/usr/bin
+    install -d $pkgdir/usr/share/applications
     cd "$srcdir/$pkgname-$pkgver.r$pkgrel"
-    cp -v zfw-module-31r4 $pkgdir/usr/bin/ZFW
-    cp -v _Install/_Desktop/zfw-module.png $pkgdir/usr/share/pixmaps
-    cp -v _Install/_Desktop/ZFW.desktop $pkgdir/usr/share/applications
+    install -m644 zfw-module-31r4 $pkgdir/usr/bin/ZFW
+    install -m644 _Install/_Desktop/zfw-module.png $pkgdir/usr/share/pixmaps
+    install -m644 _Install/_Desktop/ZFW.desktop $pkgdir/usr/share/applications
 }
