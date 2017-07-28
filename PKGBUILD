@@ -10,7 +10,7 @@ depends=('libcap' 'mbedtls' 'libev' 'libsodium'
          'udns' 'pcre' 'libcorkipset' 'libbloom')
 makedepends=('git' 'gcc' 'autoconf' 'libtool' 'automake' 'make' 'zlib' 'openssl' 'asciidoc' 'xmlto')
 options=('docs' '!strip')
-source=('git+https://github.com/shadowsocksr/shadowsocksr-libev.git'
+source=('git+https://github.com/shadowsocksr-backup/shadowsocksr-libev.git'
         shadowsocks-libev-redir@.service
         shadowsocks-libev-server@.service
         shadowsocks-libev-tunnel@.service
