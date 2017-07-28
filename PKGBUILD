@@ -2,25 +2,22 @@
 
 _name=qzdoom
 pkgname=${_name}
-pkgver=1.3.0.1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Advanced Doom source port with true color renderer'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
-license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
+license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('hicolor-icon-theme'
          'libgl'
          'libjpeg'
          'libgme'
-         'libsndfile'
-         'mpg123'
          'sdl2')
 makedepends=('cmake'
              'desktop-file-utils'
              'fluidsynth'
              'git'
-             'gtk3'
-             'openal')
+             'gtk3')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
@@ -35,6 +32,8 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'kdialog: crash dialog (KDE)'
+            'libsndfile: WAV/FLAC/OGG audio support'
+            'mpg123: MP3 audio support'
             'openal: in-game sound'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
@@ -50,7 +49,6 @@ build() {
     cd $_name
 
     cmake -DCMAKE_BUILD_TYPE=Release \
-          -DNO_FMOD=ON \
           -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
@@ -65,6 +63,7 @@ package() {
     cd $_name
 
     make install DESTDIR="$pkgdir"
+    install -D -m644 gzdoom.sf2 "$pkgdir"/usr/share/$_name
 
     desktop-file-install --dir="$pkgdir"/usr/share/applications \
                          "$srcdir"/${_name}.desktop
