@@ -1,7 +1,7 @@
 pkgbase = mate-notification-daemon-gtk2
 	pkgdesc = Notification daemon for MATE (GTK2 version)
 	pkgver = 1.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,8 @@ pkgbase = mate-notification-daemon-gtk2
 	depends = libcanberra
 	depends = libwnck
 	depends = libnotify
-	provides = notification-daemon
+	provides = mate-notification-daemon
 	conflicts = mate-notification-daemon
-	conflicts = mate-notification-daemon-gtk3
 	source = http://pub.mate-desktop.org/releases/1.14/mate-notification-daemon-1.14.1.tar.xz
 	sha1sums = 10e863c16112b45935d6d5e6e003088df43f87ab
 
