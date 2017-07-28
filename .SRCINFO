@@ -1,0 +1,16 @@
+pkgbase = text2pdf
+	pkgdesc = Converts text files to PDF on the command line
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.eprg.org/pdfcorner/text2pdf/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.eprg.org/pdfcorner/text2pdf/text2pdf.c
+	source = http://www.eprg.org/pdfcorner/text2pdf/text2pdf.1
+	sha256sums = a11d07787f4e9febddd96888ff319c5c527a5436d27c75a4bac16d11fcf45600
+	sha256sums = 5f21feda206bd26df11938e1ff9d9c246e04a6c250225d5561e0242f38af68fe
+
+pkgname = text2pdf
+
