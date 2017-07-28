@@ -17,7 +17,7 @@
 #
 pkgbase="spl-linux-lts-git"
 pkgname=("spl-linux-lts-git" "spl-linux-lts-git-headers")
-pkgver=0.7.0_rc5_r0_gae42190_4.9.37_1
+pkgver=0.7.0_r0_g1f2671b_4.9.37_1
 pkgrel=1
 makedepends=("linux-lts-headers=4.9.37-1" "libelf" "git")
 arch=("x86_64")
