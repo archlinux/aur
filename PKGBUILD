@@ -1,7 +1,7 @@
 # Maintainer: Cycloheptan <carl.schneider+archlinux@rub.de>
 pkgname=phantombot
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="PhantomBot is a Twitch chat bot powered by Java."
 arch=('x86_64')
 url="https://phantombot.tv/"
@@ -26,7 +26,7 @@ package() {
 	cp -r $srcdir/PhantomBot-${pkgver}/*/ "$pkgdir/opt/PhantomBot/";
 	cp -r $srcdir/PhantomBot-${pkgver}/PhantomBot.jar "$pkgdir/opt/PhantomBot/";
 
-	chmod -R 755 "$pkgdir/opt/PhantomBot";
+	chmod -R 700 "$pkgdir/opt/PhantomBot";
 
 	install -Dm0755 "$srcdir/phantombot" "$pkgdir/usr/bin/phantombot";
 	install -Dm0755 "$srcdir/phantombot-service" "$pkgdir/usr/bin/phantombot-service";
