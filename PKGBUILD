@@ -3,6 +3,7 @@
 # Contributor: Yardena Cohen <yardenack AT gmail DOT com>
 # Contributor: Max Roder <maxroder AT web DOT de>
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
+# Contributor: Alexiobash <me@alexiobash.com>
 
 #
 # Before running makepkg, you must do this:
