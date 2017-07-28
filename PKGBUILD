@@ -16,15 +16,15 @@
 #
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
-pkgver=0.7.0_4.11.9_1
+pkgver=0.7.0_4.12.3_1
 pkgrel=1
-makedepends=("linux-headers=4.11.9-1" "spl-linux-headers")
+makedepends=("linux-headers=4.12.3-1" "spl-linux-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.0/zfs-0.7.0.tar.gz")
 sha256sums=("6907524f5ca4149b799fe65cd31b552b0ae90dba5dc20524e1a24fc708d807d2")
 license=("CDDL")
-depends=("kmod" "spl-linux" "zfs-utils-common" "linux=4.11.9-1")
+depends=("kmod" "spl-linux" "zfs-utils-common" "linux=4.12.3-1")
 
 build() {
     cd "${srcdir}/zfs-0.7.0"
@@ -32,8 +32,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.0 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.11.9-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.11.9-1-ARCH/build
+                --with-linux=/usr/lib/modules/4.12.3-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.12.3-1-ARCH/build
     make
 }
 
@@ -59,5 +59,5 @@ package_zfs-linux-headers() {
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.11.9-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.12.3-1-ARCH/Module.symvers
 }
