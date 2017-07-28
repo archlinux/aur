@@ -1,0 +1,16 @@
+pkgbase = python-pyamg
+	pkgdesc = PyAMG: Algebraic Multigrid Solvers in Python
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/pyamg/pyamg
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyamg/pyamg-3.3.0.tar.gz
+	sha256sums = af80053c23c6618da3786f88d1f89fb98714e5ce7f47a1de2cecfdc1f16d18d2
+
+pkgname = python-pyamg
+	depends = python
+
