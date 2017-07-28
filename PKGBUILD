@@ -2,7 +2,7 @@
 pkgname=xorg-xdm-xlogin
 _pkgname=xorg-xdm
 pkgver=1.1.11
-pkgrel=8
+pkgrel=9
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 #url="http://xorg.freedesktop.org/"
@@ -14,9 +14,9 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 makedepends=('pkgconfig' 'xorg-util-macros' 'xtrans')
 backup=(etc/X11/xdm/Xaccess etc/X11/xdm/Xresources etc/X11/xdm/Xservers etc/X11/xdm/xdm-config etc/pam.d/xdm etc/pam.d/greeter etc/X11/xdm/Xsetup_0 etc/X11/xdm/Xsession)
-source=("xdm.zip::https://github.com/bbidulock/xdm/archive/8281bca39125a5362ff3ac8f0056ed04564819b3.zip"
+source=("xdm.zip::https://github.com/bbidulock/xdm/archive/2806205d33afa981ed2228355699eb2c0d3150d0.zip"
 	xdm.pam)
-sha256sums=('2ccc7c45da6bdbe7da5bf1e80b229c19ae48e20a58c3bea687da7f7bab949d44'
+sha256sums=('bc83891ad601e275c50ea310b6673ef510d8decd08352bcf73e87313c9b7e6c5'
             'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0')
 
 build() {
