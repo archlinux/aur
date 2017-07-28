@@ -17,5 +17,5 @@ package()
 {
     install -d $pkgdir/usr/share/icons
     cd "$srcdir"
-    install -m644 $pkgname-$pkgver.r$pkgrel $pkgdir/usr/share/icons/
+    cp -r $pkgname-$pkgver.r$pkgrel $pkgdir/usr/share/icons/
 }
