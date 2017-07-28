@@ -1,0 +1,16 @@
+pkgbase = stl-thumbnailer
+	pkgdesc = Allow file managers (nautilus,caja etc) to geterate thumbnails for stl files using openscad
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.thingiverse.com/thing:258653
+	arch = any
+	license = GPL
+	depends = openscad
+	depends = python2
+	source = stl.thumbnailer
+	source = stl.thumbnailer.py
+	md5sums = 2e86d05c56f013b5030caf6e5b03a856
+	md5sums = 7e1cfa75271e806ef339f1bb3f62b8dc
+
+pkgname = stl-thumbnailer
+
