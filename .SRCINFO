@@ -1,7 +1,7 @@
 pkgbase = ckb-next
 	pkgdesc = Corsair Keyboard and Mouse Input Driver, release version
 	pkgver = 0.2.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mattanger/ckb-next
 	install = ckb-next.install
 	arch = i686
