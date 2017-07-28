@@ -23,7 +23,7 @@ source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash
         'LICENSE-Documentation.txt'
         'LICENSE-Oracle-Legal-Notices.txt')
 md5sums=('739986e75020948fab09b27f4ebd626a'
-         '477d9862374177c810b0b7d73b4f1e53'
+         '78ec6d01a354558117a7c17028fb6da1'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
 
