@@ -5,18 +5,19 @@ _ver=1.16
 _pkgbase=mate-power-manager
 pkgname=(${_pkgbase}-gtk2)
 pkgver=${_ver}.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Power management tool for the MATE desktop (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('dbus-glib' 'libcanberra' 'libgnome-keyring' 'libnotify' 'libunique' 'upower')
 makedepends=('intltool' 'itstool' 'mate-panel-gtk2')
-optdepends=('mate-panel-gtk2: Set brightness and inhibit power 
+optdepends=('mate-panel: Set brightness and inhibit power 
 management from the panel')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate-extra-gtk2')
-conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 sha1sums=('d688f8903216819ccd6c6000aea6d6a847706a52')
 
 build() {

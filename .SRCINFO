@@ -1,7 +1,7 @@
 pkgbase = mate-power-manager-gtk2
 	pkgdesc = Power management tool for the MATE desktop (GTK2 version)
 	pkgver = 1.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = mate-power-manager-gtk2
 	depends = libnotify
 	depends = libunique
 	depends = upower
-	optdepends = mate-panel-gtk2: Set brightness and inhibit power management from the panel
+	optdepends = mate-panel: Set brightness and inhibit power management from the panel
+	provides = mate-power-manager
 	conflicts = mate-power-manager
-	conflicts = mate-power-manager-gtk3
 	source = http://pub.mate-desktop.org/releases/1.16/mate-power-manager-1.16.2.tar.xz
 	sha1sums = d688f8903216819ccd6c6000aea6d6a847706a52
 
