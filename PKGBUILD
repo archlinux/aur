@@ -2,8 +2,8 @@
 
 pkgname=sbt-latest
 _pkgname=${pkgname%-*}
-pkgver=0.13.15
-pkgrel=4
+pkgver=0.13.16
+pkgrel=1
 pkgdesc='A build tool for Scala, Java, and more'
 arch=('any')
 url='http://www.scala-sbt.org/'
@@ -11,9 +11,9 @@ license=('BSD')
 depends=('rsync'
          'sh')
 conflicts=('sbt')
-source=("https://dl.bintray.com/${_pkgname}/native-packages/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tgz"
+source=("http://11a36.http.tor01.cdn.softlayer.net/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.zip"
         "https://raw.githubusercontent.com/${_pkgname}/${_pkgname}/v${pkgver}/LICENSE")
-sha256sums=('b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef'
+sha256sums=('e94d95ff2d64247b754782ea85e99187ea890dc4c918a7ba7dcb6091fdb5968c'
             '70b7b72694a56a3e922deaf5482273e7c33bab2c00c0c67fc0ccc5d33927ffed')
 
 package() {
