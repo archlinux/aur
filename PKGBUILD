@@ -14,21 +14,17 @@
 # packages for your favorite kernel package built using the archzfs build tools, submit a request in the Issue tracker on the
 # archzfs github page.
 #
-pkgname="spl-linux-git"
-pkgver=0.7.0_rc4_r5_g7a35f2b_4.11.9_1
+pkgbase="spl-linux-git"
+pkgname=("spl-linux-git" "spl-linux-git-headers")
+pkgver=0.7.0_r0_g1f2671b_4.11.9_1
 pkgrel=1
-pkgdesc="Solaris Porting Layer kernel modules."
-depends=("spl-utils-linux-git" "kmod" "linux=4.11.9-1")
 makedepends=("linux-headers=4.11.9-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
-groups=("archzfs-linux-git")
 license=("GPL")
-install=spl.install
-provides=("spl")
-conflicts=('spl-utils-linux' 'spl-utils-linux-lts' 'spl-utils-linux-lts-git')
+depends=("spl-utils-common-git" "kmod" "linux=4.11.9-1")
 
 build() {
     cd "${srcdir}/spl"
@@ -40,10 +36,26 @@ build() {
     make
 }
 
-package() {
+package_spl-linux-git() {
+    pkgdesc="Solaris Porting Layer kernel modules."
+    install=spl.install
+    provides=("spl")
+    groups=("archzfs-linux-git")
+    conflicts=('spl-linux')
+    replaces=("spl-git")
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
+    # Remove src dir
+    rm -r "${pkgdir}"/usr/src
+}
+
+package_spl-linux-git-headers() {
+    pkgdesc="Solaris Porting Layer kernel headers."
+    conflicts=('spl-linux-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers')
+    cd "${srcdir}/spl"
+    make DESTDIR="${pkgdir}" install
+    rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
     sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.11.9-1-ARCH/Module.symvers
 }
