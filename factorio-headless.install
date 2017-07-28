@@ -7,7 +7,7 @@ post_install() {
 post_upgrade() {
     (( $(vercmp $2 '0.15.31-2') >= 0 )) || {
         echo "The systemd service file has been updated, don't forget to run 'systemctl daemon-reload' before restarting factorio."
-        post_install $1 &&
+        post_install $1
         chmod 600 /etc/factorio/server-settings.json
     }
 }
