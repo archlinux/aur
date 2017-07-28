@@ -4,22 +4,23 @@
 _ver=1.16
 _pkgbase=mate-settings-daemon
 pkgname=(${_pkgbase}-gtk2)
-pkgver=${_ver}.1
+pkgver=${_ver}.2
 pkgrel=1
 pkgdesc="The MATE Settings daemon (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dbus-glib' 'libcanberra' 'libmatekbd-gtk2' 'libmatemixer' 'libnotify'
-         'mate-desktop-gtk2' 'nss' 'polkit')
+depends=('dbus-glib' 'libcanberra' 'libmatekbd' 'libmatemixer' 'libnotify'
+         'mate-desktop' 'nss' 'polkit')
 makedepends=('intltool')
 optdepends=('libcanberra-pulse: PulseAudio support'
             'pulseaudio-alsa: PulseAudio support')
 groups=('mate-gtk2')
-conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 options=('!emptydirs')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('8fcb4ae0571e9bd507b47a67e0e4245e6558693e')
+sha1sums=('16fa21ca156b3cb9ae46aae3c90b2b5e0f14e76f')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
