@@ -5,11 +5,12 @@
 pkgname=('jdk-docs' 'javafx-docs')
 _major=8
 _minor=144
-_minor_javafx=141
 _build=b01
-_build_javafx=b14
 _hash=090f390dda5b47b9b721c7dfaa008135
 pkgver=${_major}u${_minor}
+_minor_javafx=141
+_build_javafx=b14
+_hash_javafx=336fa29ff2bb4ef291e347e091f7f4a7
 pkgver_javafx=${_major}u${_minor_javafx}
 pkgrel=2
 arch=('any')
@@ -18,7 +19,7 @@ license=('custom:Oracle')
 optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/jdk-${pkgver}-docs-all.zip"
-        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor_javafx}-${_build_javafx}/${_hash}/javafx-${pkgver_javafx}-apidocs.zip"
+        "http://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minor_javafx}-${_build_javafx}/${_hash_javafx}/javafx-${pkgver_javafx}-apidocs.zip"
         'LICENSE-Documentation.txt'
         'LICENSE-Oracle-Legal-Notices.txt')
 md5sums=('739986e75020948fab09b27f4ebd626a'
