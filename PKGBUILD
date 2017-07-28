@@ -5,13 +5,13 @@
 
 pkgname=nwjs
 pkgver=0.24.0
-pkgrel=3
+pkgrel=6
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
 license=("MIT")
 depends=("alsa-lib" "gconf" "gtk2" "nss" "ttf-font" "libxtst" "libxss")
-makedepends=("depot-tools-git" "libtinfo5")
+makedepends=("depot-tools-git" "libtinfo5" "python" "perl" "gperf" "nss" "alsa-lib" "gconf" "glib2" "gtk2" "nspr" "ttf-ms-fonts" "freetype2" "cairo" "dbus" "libgnome-keyring")
 optdepends=(
     "nodejs: npm package support"
     "nw-gyp: native add-on build tool for node-webkit"
@@ -34,7 +34,7 @@ prepare() {
 
   # Removing references to git version in build config,
   # since we will use the stable source tarball
-  sed -i '/\"\:commit_id\"/d' "nw.js-nw-v${pkgver}/content/nw/BUILD.gn"
+  # sed -i '/\"\:commit_id\"/d' "nw.js-nw-v${pkgver}/BUILD.gn"
 
   # Local copy of depot_tools to manage temporary write permissions
   cp -r /opt/depot_tools .
@@ -52,9 +52,12 @@ build() {
   gclient config --name=src https://github.com/nwjs/chromium.src.git@origin/nw24
   gclient sync --with_branch_heads --nohooks
 
-  mv "${srcdir}/nw.js-nw-v${pkgver}" src/content/nw
-  mv "${srcdir}/node-nw-v${pkgver}" src/third_party/node-nw
-  mv "${srcdir}/v8-nw-v${pkgver}" src/v8
+  #mv "${srcdir}/nw.js-nw-v${pkgver}" src/content/nw
+  #mv "${srcdir}/node-nw-v${pkgver}" src/third_party/node-nw
+  #mv "${srcdir}/v8-nw-v${pkgver}" src/v8
+  git clone -b nw24 https://github.com/nwjs/node.git src/third_party/node-nw
+  git clone -b nw24 https://github.com/nwjs/v8.git src/v8
+  git clone -b nw24 https://github.com/nwjs/nw.js.git src/content/nw
 
   gclient runhooks
 
