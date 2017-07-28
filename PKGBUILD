@@ -5,11 +5,12 @@
 _name=firefox
 _channel=nightly
 _lang=en-GB
+_pkgname_en_us=${_name}-${_channel}
 pkgname=${_name}-${_channel}-${_lang,,}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=56.0a1
-pkgver=56.0a1.20170727.162531
+pkgver=56.0a1.20170728.100358
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -50,24 +51,24 @@ pkgver() {
 }
 
 package() {
-  OPT_PATH="opt/${pkgname}"
+  OPT_PATH="opt/${_pkgname_en_us}"
 
   # Install the package files
   install -d "${pkgdir}"/{usr/bin,opt}
   cp -r ${_name} "${pkgdir}"/${OPT_PATH}
-  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/firefox-nightly
+  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${_pkgname_en_us}
 
   # Install .desktop files
-  install -Dm644 "${srcdir}"/firefox-nightly.desktop -t "${pkgdir}"/usr/share/applications
+  install -Dm644 "${srcdir}"/${_pkgname_en_us}.desktop -t "${pkgdir}"/usr/share/applications
 
   # Install icons
   SRC_LOC="${srcdir}"/${_name}/browser
   DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
   for i in 16 32 48
   do
-      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
+      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${_pkgname_en_us}.png
   done
-  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${pkgname}.png
+  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${_pkgname_en_us}.png
 
   # Disable auto-updates
   install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
