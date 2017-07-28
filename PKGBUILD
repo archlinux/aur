@@ -13,8 +13,6 @@ license=('GPL' 'LGPL')
 options=('!emptydirs')
 makedepends=('gobject-introspection' 'intltool')
 groups=('mate-gtk2')
-conflicts=("${_pkgbase}")
-provides=("${_pkgbase}")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('8f8ee79eff741f4c6613cbf27c7639b10b0387eb')
 
