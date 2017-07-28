@@ -5,11 +5,12 @@
 pkgname=('jdk-docs' 'javafx-docs')
 _major=8
 _minor=144
+_minor_javafx=141
 _build=b01
 _build_javafx=b14
 _hash=090f390dda5b47b9b721c7dfaa008135
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
