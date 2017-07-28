@@ -1,6 +1,6 @@
 pkgbase = python-html5-parser
 	pkgdesc = Fast C based HTML 5 parsing for python
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/kovidgoyal/html5-parser
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = python-html5-parser
 	makedepends = python2-chardet
 	makedepends = python2-lxml
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/h/html5-parser/html5-parser-0.4.2.tar.gz
-	source = https://files.pythonhosted.org/packages/source/h/html5-parser/html5-parser-0.4.2.tar.gz.asc
+	source = https://files.pythonhosted.org/packages/source/h/html5-parser/html5-parser-0.4.3.tar.gz
+	source = https://files.pythonhosted.org/packages/source/h/html5-parser/html5-parser-0.4.3.tar.gz.asc
 	validpgpkeys = 3CE1780F78DD88DF45194FD706BC317B515ACE7C
-	sha256sums = 0e28e1e4acf2fa6c5ee1f4e983f61eb4fc37c4d6ec18fdd745f42379c3aa06a4
+	sha256sums = dd5e3647c5919439c41600172ef96b5fdbf278028bd4000476f87412c4fb7b9c
 	sha256sums = SKIP
 
 pkgname = python-html5-parser
