@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 55.0b12
+	pkgver = 55.0b13
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	install = firefox-beta-bin.install
@@ -18,13 +18,13 @@ pkgbase = firefox-beta-bin
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = pulseaudio
 	optdepends = upower: Battery API
-	provides = firefox=55.0b12
+	provides = firefox=55.0b13
 	source = firefox-beta-bin.desktop
 	sha512sums = 865c832fe683f4ebeca7704058d56f834ec5d9d56391d31912cf4a928c56a268cf25064965cf8bbf935a45f638d0a8b24ffa744a47934e5ed8b8bb78883db4c0
-	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/55.0b12/linux-i686/en-US/firefox-55.0b12.tar.bz2
-	sha512sums_i686 = 6703cf08ffc4446971c2bea02e9e2da13bac8cdb040b8f61d9b0bb25417c4ca67b47a2dad19ab0dca6cb1a57866f3829c268cb3a4c24918db711c7ff0c829e76
-	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/55.0b12/linux-x86_64/en-US/firefox-55.0b12.tar.bz2
-	sha512sums_x86_64 = abb8a8b786b95b7960812e56d6dfbcef33f5f20d17c177cbcfa6cd7f63e7928a0000ed136003a37370258901845c55148a0ebdfb34b1de96c1446b3ebf49ee49
+	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/55.0b13/linux-i686/en-US/firefox-55.0b13.tar.bz2
+	sha512sums_i686 = 13895af69a87388d35f5bf738e842607d7b5615e5a889e36eb6abfdfff467b3247615c8480ac3a38b0f0e1bac93d15f0679bff955f301721bc6d39b71d620881
+	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/55.0b13/linux-x86_64/en-US/firefox-55.0b13.tar.bz2
+	sha512sums_x86_64 = c50d8a2f5ae70153052919b5fe16cdaec5cb49776ec8306dd46cd2e8f16d0eaf0dad9ad901be616450c2f0d5b138ecd18a8aa3c4b5caf05a7dbbb5dd940de8d6
 
 pkgname = firefox-beta-bin
 
