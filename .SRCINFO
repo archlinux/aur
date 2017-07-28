@@ -1,0 +1,28 @@
+pkgbase = musikcube-git
+	pkgdesc = a terminal-based cross-platform music player, audio engine, metadata indexer, and server
+	pkgver = r1473.05ef7949
+	pkgrel = 1
+	url = https://github.com/clangen/musikcube
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = faad2
+	depends = libogg
+	depends = libvorbis
+	depends = flac
+	depends = libmicrohttpd
+	depends = lame
+	depends = ncurses
+	depends = boost
+	depends = pulseaudio
+	depends = libpulse
+	depends = alsa-lib
+	depends = curl
+	source = musikcube::git+https://github.com/clangen/musikcube.git
+	source = LICENSE.txt
+	md5sums = SKIP
+	md5sums = e6df0c6007ed2ff48cf09efb93ea4593
+
+pkgname = musikcube-git
+
