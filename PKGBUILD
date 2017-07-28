@@ -11,18 +11,23 @@
 set -u
 _opt_Debug=0
 # 0 = standard build
-# 1 = debug build.
+# 1 = debug build
 # 2 = debug build with slow compile to make compile errors easy to see
 # Debug builds must be launched from the command line to allow
-# sudo to change a system setting.
+# sudo to change a system setting. If you need to keep the desktop file
+# set the option below.
 
 _opt_clang=0
 # 0 = gcc
 # 1 = clang
 
+_opt_keepdesktop=0
+# 0 = normal
+# 1 = install desktop file even in debug modes. This is dangerous as launching su in a .desktop crashes the DE
+
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre6.1.dev.530.g844d5366
+pkgver=2.0pre7.dev.5.gc075b50d
 pkgrel=1
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
@@ -111,7 +116,7 @@ _configure() { # makepkg -e compatible
     ./autogen.sh
     local _opts=()
     if [ "${_opt_Debug}" -ne 0 ]; then
-      _opts+=('-d')
+      _opts+=('-d' '--enable-debug')
       #_opts+=('-d' '--disable-xbacktrace')
     fi
     if [ "${_opt_clang}" -ne 0 ]; then
@@ -143,7 +148,7 @@ package() {
   set -u
   cd 'dosemu2'
   make DESTDIR="${pkgdir}" install
-  if [ "${_opt_Debug}" -eq 0 ]; then # sudo in the launcher crashes cinnamon
+  if [ "${_opt_Debug}" -eq 0 ] || [ "${_opt_keepdesktop}" -ne 0 ]; then # sudo in the launcher crashes cinnamon
     install -Dm644 <(cat << EOF
 [Desktop Entry]
 Name=DOSEMU
