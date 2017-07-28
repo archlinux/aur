@@ -1,7 +1,7 @@
 pkgbase = mate-media-gtk2
 	pkgdesc = MATE Media Tools (GTK2 version)
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = mate-media-gtk2
 	depends = libcanberra
 	depends = libmatemixer
 	depends = libunique
-	depends = mate-desktop-gtk2
+	depends = mate-desktop
+	provides = mate-media
 	conflicts = mate-media
-	conflicts = mate-media-gtk3
 	source = http://pub.mate-desktop.org/releases/1.16/mate-media-1.16.0.tar.xz
 	sha1sums = e071d27c13e80b182f10a33d7a190825642d6f75
 
