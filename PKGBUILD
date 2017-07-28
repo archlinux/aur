@@ -29,7 +29,7 @@ package()
     install -d $pkgdir/usr/bin
     install -d $pkgdir/usr/share/applications
     cd "$srcdir/$pkgname-$pkgver.r$pkgrel"
-    install -m644 zfw-module-31r4 $pkgdir/usr/bin/ZFW
+    install -m755 -s zfw-module-31r4 $pkgdir/usr/bin/ZFW
     install -m644 _Install/_Desktop/zfw-module.png $pkgdir/usr/share/pixmaps
-    install -m644 _Install/_Desktop/ZFW.desktop $pkgdir/usr/share/applications
+    install -m755 _Install/_Desktop/ZFW.desktop $pkgdir/usr/share/applications
 }
