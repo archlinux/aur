@@ -1,15 +1,15 @@
 # Maintainer: Ross Whitfield <whitfieldre@ornl.gov>
 pkgname=('python-periodictable' 'python2-periodictable')
 _pkgname='periodictable'
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Extensible periodic table of the elements"
 url="http://www.reflectometry.org/danse/elements.html"
 arch=("any")
 license=('public domain')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/pkienzle/periodictable/archive/v$pkgver.tar.gz")
-md5sums=('c18a230824f135f82c75114d62d98b3a')
+md5sums=('f7e0d8199b0fe829868d24a0a734398e')
 
 prepare() {
     cp -a "${srcdir}/${_pkgname}-$pkgver"{,-py2}
