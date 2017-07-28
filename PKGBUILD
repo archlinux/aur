@@ -9,12 +9,12 @@
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=2.12
-pkgrel=4
+pkgver=2.13
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
-_d3d9ver=$_pkgbasever
-#_d3d9ver=2.12
+#_d3d9ver=$_pkgbasever
+_d3d9ver=2.12
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
@@ -22,17 +22,15 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 	"https://github.com/wine-compholio/wine-staging/raw/master/patches/ntdll-Heap_FreeLists/0001-ntdll-Improve-heap-allocation-performance-by-using-m.patch"
 	"https://github.com/laino/wine-patches/archive/master.tar.gz"
         30-win32-aliases.conf
-	gcc_7_fix.patch
 	keybindings.patch
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('9f155f56c6d28d90733d2039a52aff4f6a744605'
+sha1sums=('8af7b938a5e66101de316fc0c214fa79d9ff025c'
 	  '83fa25468637a14878bb71e04ae411b581a08b38'
 	  '0c45c2e050a7642acd5c7dec6fd5b03f8b5cd658'
 	  'SKIP'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-	  '0663651dd32b1537055bf560e6ec098623785238'
 	  'f3febb8836f38320742a546c667106608d4c4395'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
@@ -139,15 +137,15 @@ prepare()
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/wine-d3d9.patch"
     patch -p1 < ../steam.patch
 
-    patch -p1 -R < ../0001-ntdll-Improve-heap-allocation-performance-by-using-m.patch
+#    patch -p1 -R < ../0001-ntdll-Improve-heap-allocation-performance-by-using-m.patch
 
-    patch -p1 < ../wine-patches-master/0001-ntdll-improve-heap-allocation-performance.patch
-    patch -p1 < ../wine-patches-master/0002-ntdll-heap.c-align-everything-to-64-byte-to-reduce-f.patch
+#    patch -p1 < ../wine-patches-master/0001-ntdll-improve-heap-allocation-performance.patch
+#    patch -p1 < ../wine-patches-master/0002-ntdll-heap.c-align-everything-to-64-byte-to-reduce-f.patch
     patch -p1 < ../wine-patches-master/0003-wine-list.h-linked-list-cache-line-prefetching.patch
-    patch -p1 < ../wine-patches-master/0004-ntdll-heap.c-freelist_balance-prefetch-next-entry-ca.patch
+#    patch -p1 < ../wine-patches-master/0004-ntdll-heap.c-freelist_balance-prefetch-next-entry-ca.patch
 #   This patch has been upstreamed 
 #    patch -p1 < ../wine-patches-master/0005-oleaut32-typelib.c-fix-cursor2-having-the-wrong-type.patch
-    patch -p1 < ../wine-patches-master/0006-Ensure-16-byte-alignment-of-data.patch
+#    patch -p1 < ../wine-patches-master/0006-Ensure-16-byte-alignment-of-data.patch
 #    patch -p1 < ../wine-patches-master/0007-wined3d-use-SwitchToThread-waits-in-wined3d_pause.patch
     
     patch -p1 < ../wbemprox_query_v2.patch
