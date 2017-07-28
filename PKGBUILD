@@ -3,8 +3,8 @@
 # Contributer: Sébastien Luttringer <seblu@aur.archlinux.org>
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules virtualbox-ck-guest-modules)
-pkgver=5.1.24
-pkgrel=2
+pkgver=5.1.26
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -73,6 +73,7 @@ package_virtualbox-ck-guest-modules() {
   printf "vboxguest\nvboxsf\nvboxvideo\n" >  \
 		"$pkgdir/usr/lib/modules-load.d/virtualbox-guest-modules-ck.conf"
 }
+
 
 
 
