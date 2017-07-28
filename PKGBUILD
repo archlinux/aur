@@ -5,14 +5,15 @@ _ver=1.16
 _pkgbase=libmateweather
 pkgname=(${_pkgbase}-gtk2)
 pkgver=${_ver}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides access to weather information from the Internet. (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('dconf' 'gtk2' 'libsoup')
 makedepends=('intltool' 'libsoup')
-conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('912eb67104da9414eb47c4a9b0631735d2528794')
 

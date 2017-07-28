@@ -1,7 +1,7 @@
 pkgbase = libmateweather-gtk2
 	pkgdesc = Provides access to weather information from the Internet. (GTK2 version)
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = libmateweather-gtk2
 	depends = dconf
 	depends = gtk2
 	depends = libsoup
+	provides = libmateweather
 	conflicts = libmateweather
-	conflicts = libmateweather-gtk3
 	source = http://pub.mate-desktop.org/releases/1.16/libmateweather-1.16.1.tar.xz
 	sha1sums = 912eb67104da9414eb47c4a9b0631735d2528794
 
