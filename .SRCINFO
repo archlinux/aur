@@ -1,7 +1,7 @@
 pkgbase = mate-user-share-gtk2
 	pkgdesc = User level public file sharing via WebDAV for MATE (GTK2 version)
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = mate-user-share-gtk2
 	depends = dconf
 	depends = libunique
 	depends = mod_dnssd
-	optdepends = caja-gtk2: File sharing extension
+	optdepends = caja: File sharing extension
+	provides = mate-user-share
 	conflicts = mate-user-share
-	conflicts = mate-user-share-gtk3
 	source = http://pub.mate-desktop.org/releases/1.16/mate-user-share-1.16.0.tar.xz
 	sha1sums = 7b241f0d969005653a164223b4d458beb9256910
 
