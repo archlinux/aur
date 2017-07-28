@@ -5,17 +5,18 @@ _ver=1.16
 _pkgbase=mate-applets
 pkgname=(${_pkgbase}-gtk2)
 pkgver=${_ver}.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Applets for MATE panel (GTK2 version)"
 arch=('i686' 'x86_64')
 url="http://mate-desktop.org"
 license=('GPL')
-depends=('gtksourceview2' 'libgtop' 'libnotify' 'mate-panel-gtk2' 'polkit'
+depends=('gtksourceview2' 'libgtop' 'libnotify' 'mate-panel' 'polkit'
          'python2-dbus' 'python2-gobject' 'upower' 'wireless_tools')
 makedepends=('intltool' 'itstool')
 optdepends=('fortune-mod: for displaying fortune cookies in the Wanda the Fish applet')
 groups=('mate-extra-gtk2')
-conflicts=("${_pkgbase}" "${_pkgbase}-gtk3" 'mate-netspeed' 'mate-netspeed-gtk3')
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('6e6b51089bcb6450a466ba358b71fcfd7aba3a6a')
 
