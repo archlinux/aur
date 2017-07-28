@@ -1,0 +1,19 @@
+pkgbase = kube-shell
+	pkgdesc = An integrated shell for working with the Kubernetes CLI
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = https://github.com/cloudnativelabs/kube-shell
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-prompt_toolkit
+	depends = python-pygments
+	depends = python-click
+	depends = python-fuzzyfinder
+	depends = python-kubernetes
+	provides = kube-shell
+	source = https://github.com/cloudnativelabs/kube-shell/releases/download/v0.0.21/kube_shell-0.0.21-py2.py3-none-any.whl
+	sha256sums = afae1b7f91ca9a80bea0da02ce0075367103f8294ed0cc0cb33489e0dac5441a
+
+pkgname = kube-shell
+
