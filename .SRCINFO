@@ -1,7 +1,7 @@
 pkgbase = atril-gtk2
 	pkgdesc = MATE document viewer (GTK2 version)
 	pkgver = 1.16.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = atril-gtk2
 	depends = libgxps
 	depends = mathjax
 	depends = poppler-glib
-	optdepends = caja-gtk2: Document Properties extension
+	optdepends = caja: Document Properties extension
 	optdepends = texlive-bin: DVI support
+	provides = atril
 	conflicts = atril
-	conflicts = atril-gtk3
 	source = http://pub.mate-desktop.org/releases/1.16/atril-1.16.1.tar.xz
 	sha1sums = 7a05ec3e856335ce6a49a97f545ab401d9221f6e
 
