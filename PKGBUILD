@@ -1,9 +1,9 @@
-# Main://aur.archlinux.org/plantuml-pdf.gittainer: Mikołaj Chwalisz <m.chwalisz@gmail.com>
+# Maintainer: Mikołaj Chwalisz <m.chwalisz@gmail.com>
 
 _appname_=plantuml
 pkgname=${_appname_}-pdf
 pkgver=1.2017.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Component that allows to quickly write uml diagrams, with PDF support."
 arch=(any)
 url="http://plantuml.com/"

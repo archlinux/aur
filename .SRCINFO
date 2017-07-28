@@ -1,7 +1,7 @@
 pkgbase = plantuml-pdf
 	pkgdesc = Component that allows to quickly write uml diagrams, with PDF support.
 	pkgver = 1.2017.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plantuml.com/
 	arch = any
 	license = GPL
