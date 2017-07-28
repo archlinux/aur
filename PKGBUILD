@@ -5,14 +5,15 @@ _ver=1.14
 _pkgbase=libmatekbd
 pkgname=(${_pkgbase}-gtk2)
 pkgver=${_ver}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MATE keyboard library (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('dconf' 'gtk2' 'libxklavier')
 makedepends=('intltool')
-conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('71fcb3a85ead07dcbb7f4ac3516590dd03ba483f')
 
