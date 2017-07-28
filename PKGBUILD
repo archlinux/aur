@@ -1,4 +1,4 @@
-# Maintainer: Ryan Farley <ryan.farleyl@gmx.com>
+# Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=moshy-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r8.df0b2bc
 pkgrel=1
