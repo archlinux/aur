@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-cpufreq-git
-	pkgdesc = The simple program to switch the monitor with one klick betwin single and dual mode
-	pkgver = 87.75fa137
-	pkgrel = 1
+	pkgdesc = Gnome Shell CPU Frequency Monitor and Governor Manager.
+	pkgver = a56f8d2
+	pkgrel = 0
 	url = https://github.com/konkor/cpufreq
 	arch = any
 	license = BSD
