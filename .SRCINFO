@@ -1,0 +1,27 @@
+pkgbase = saga-gis-ltr
+	pkgdesc = A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis. Compactible with QGIS
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = http://www.saga-gis.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = wxgtk
+	depends = webkitgtk
+	depends = proj
+	depends = gdal
+	depends = libtiff
+	depends = unixodbc
+	depends = jasper
+	depends = swig
+	optdepends = opencv2
+	optdepends = vigra
+	optdepends = liblas
+	optdepends = libharu
+	provides = saga-gis
+	conflicts = saga-gis
+	source = https://pilotfiber.dl.sourceforge.net/project/saga-gis/SAGA%20-%202/SAGA%202.3.1/saga_2.3.1.tar.gz
+	md5sums = 035b2054790721028b97766e025bb340
+
+pkgname = saga-gis-ltr
+
