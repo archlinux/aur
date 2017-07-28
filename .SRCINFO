@@ -1,7 +1,7 @@
 pkgbase = mozo-gtk2
 	pkgdesc = MATE menu editing tool (GTK2 version)
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = any
 	groups = mate-extra-gtk2
@@ -10,8 +10,8 @@ pkgbase = mozo-gtk2
 	depends = mate-menus
 	depends = pygtk
 	depends = python2-gobject
+	provides = mozo
 	conflicts = mozo
-	conflicts = mozo-gtk3
 	source = http://pub.mate-desktop.org/releases/1.12/mozo-1.12.0.tar.xz
 	sha1sums = 7538b8e6e72a6ef6a7b146cdb807bc64e1453734
 
