@@ -23,7 +23,7 @@ url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
 depends=('zlib')
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
-makedepends+=('lib32-glibc>=2.20')
+makedepends+=('lib32-glibc>=2.20' 'texinfo')
 checkdepends=('dejagnu' 'inetutils')
 provides=("gcc${_pkgver//\./}") # no version as it is completely contained in the name
 conflicts=("gcc${_pkgver//\./}")
@@ -85,6 +85,13 @@ prepare() {
   export CFLAGS="${CFLAGS/-pipe/}"
   export CXXFLAGS="${CXXFLAGS/-pipe/}"
 
+  # Flags from new compilers that old compilers don't recognize
+  export CFLAGS="${CFLAGS/-fno-plt/}"
+  export CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+  export CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
+  export CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
+
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
   cd 'gcc-build'
@@ -134,7 +141,7 @@ build() {
 
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}"
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
