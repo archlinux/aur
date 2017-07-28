@@ -59,8 +59,9 @@ _kyber_disable=
 pkgbase=linux-bfq-mq
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.12
-pkgver=4.12.3
-pkgrel=3
+_srcpatch=4
+pkgver=4.12.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -77,7 +78,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # mainline block merges and bfq-mq patches
         "${_bfqpath}/4.13-uuid-block-merge.patch"
-        "${_bfqpath}/4.13-linux-block-for-linus.patch"
+        "${_bfqpath}/4.13-linux-block-for-linus_sir_lucjan.patch"
         "${_bfqpath}/${_bfq_mq_patch}"
         # tentative patches
         "${_bfqgroup}/64eca229f59f8/0001-Add-extra-checks-related-to-ioprio-class-changes.patch?part=0.1&authuser=0&view=1"
@@ -94,11 +95,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
+            '7cabddeaba0f9bd85278254ddd6e8af883539df70ec0ed1bda18ce83f57b304a'
             'SKIP'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '37c9f788ab7bfe91171bd678138befc2691f8ab68e17bd921215d17b38f2836a'
-            '4eb34ccb95c3264f8896207bba59b193cc0ebaaf2fcd3814e40ad311e914ffc4'
+            'fbb5f70bb456a7a17f4d16dfb1bd8b5b2e8fd64fa36f650811774b492bb3719c'
             '25862f0ea3e8f1b072ce3ca7bec520a7c19b27bf56ab1ffc5f0ea861a30cecc6'
             '31da25bdd31d6d850b14cc4182f722afeb8fe9ac86a8fe6fe8480f09f599cd0b'
             '1533c4724a890a6c7784fa25e70012be168172ccf2993b36fbbe0ff0f4686572'
@@ -126,14 +127,17 @@ prepare() {
   ### Patch source with BFQ-MQ
   msg "Fix naming schema in BFQ-MQ patch"
   sed -i -e "s|PATCHLEVEL = 13|PATCHLEVEL = 12|g" "${srcdir}/${_bfq_mq_patch}"
-  sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = 3|g" "${srcdir}/${_bfq_mq_patch}"
+  sed -i -e "s|SUBLEVEL = 0|SUBLEVEL = ${_srcpatch}|g" "${srcdir}/${_bfq_mq_patch}"
   sed -i -e "s|EXTRAVERSION = -rc1|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
   sed -i -e "s|EXTRAVERSION = -bfq-rc1|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
   sed -i -e "s|EXTRAVERSION =-bfq-mq|EXTRAVERSION =|g" "${srcdir}/${_bfq_mq_patch}"
 
-  msg "Patching source with block and BFQ-MQ patches"
+  msg "Patch source with block and BFQ-MQ patches"
+  msg "-> Apply for-4.13/block merge"
   patch -Np1 -i "${srcdir}/4.13-uuid-block-merge.patch"
-  patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus.patch"
+  msg "-> Apply for-linus linux-block merge"
+  patch -Np1 -i "${srcdir}/4.13-linux-block-for-linus_sir_lucjan.patch"
+  msg "-> Apply bfq-mq patch"
   patch -Np1 -i "${srcdir}/${_bfq_mq_patch}"
 
   # Patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
@@ -146,7 +150,7 @@ prepare() {
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   ### Patch source to enable more gcc CPU optimizatons via the make nconfig
-  msg "Patching source with gcc patch to enable more cpus types"
+  msg "Patch source with gcc patch to enable more cpus types"
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
   # Clean tree and copy ARCH config over
