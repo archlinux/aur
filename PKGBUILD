@@ -6,14 +6,14 @@
 
 pkgname=saga-gis
 _pkgname=saga
-pkgver=4.1.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis."
 url="http://www.saga-gis.org"
 license=("GPL3")
 arch=('i686' 'x86_64')
-depends=('wxgtk>=3.0.0'
-         'webkitgtk2'
+depends=('wxgtk'
+         'webkitgtk'
          'proj'
          'gdal'
          'libtiff'
@@ -24,8 +24,8 @@ optdepends=('opencv'
             'vigra'
             'liblas'
             'libharu')
-source=("http://sourceforge.net/projects/saga-gis/files/SAGA - 4/SAGA - ${pkgver}/saga-${pkgver}.tar.gz")
-md5sums=('422738636d65a7e8ea32269e96911b0c')
+source=("http://sourceforge.net/projects/saga-gis/files/SAGA - 5/SAGA - ${pkgver}/saga-${pkgver}.tar.gz")
+md5sums=('475adff7b2e05cbdf5ccabfbbca449ac')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
