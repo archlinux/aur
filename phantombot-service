@@ -8,6 +8,7 @@
 #
 
 unset DISPLAY
+export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
 
 if [[ $(uname) -eq "Darwin" ]]; then
     SOURCE="${BASH_SOURCE[0]}"
