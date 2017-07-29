@@ -14,6 +14,7 @@ pkgbase = mips-harvard-os161-gdb
 	depends = gmp
 	depends = mpfr
 	depends = libmpc
+        depends = guile2.0
 	options = staticlibs
 	options = !libtool
 	options = !emptydirs
