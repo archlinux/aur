@@ -5,7 +5,7 @@
 
 pkgname=betcon
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Sports betting management"
 url="https://github.com/soker90/betcon"
 arch=('any')
@@ -22,8 +22,8 @@ package() {
 	mkdir -p ${pkgdir}/usr/bin/
 	cp -r ${srcdir}/${pkgname}-${pkgver}/src ${pkgdir}/usr/share/betcon/
 	cp -r ${srcdir}/${pkgname}-${pkgver}/ui ${pkgdir}/usr/share/betcon/
-	cp -r ${srcdir}/resources/bookies ${pkgdir}/usr/share/betcon/resources/
-	cp -r ${srcdir}/resources/sports ${pkgdir}/usr/share/betcon/resources/
+	cp -r ${srcdir}/${pkgname}-${pkgver}/resources/bookies/ ${pkgdir}/usr/share/betcon/resources/
+	cp -r ${srcdir}/${pkgname}-${pkgver}/resources/sports/ ${pkgdir}/usr/share/betcon/resources/
 	cp ${srcdir}/${pkgname}-${pkgver}/default/database.sql ${pkgdir}/usr/share/betcon/default/
 	cp ${srcdir}/${pkgname}-${pkgver}/resources/betcon.desktop ${pkgdir}/usr/share/applications/
 	cp ${srcdir}/${pkgname}-${pkgver}/resources/icon.png ${pkgdir}/usr/share/pixmaps/betcon.png
