@@ -12,6 +12,9 @@ SED_PASSWD=""
 
 echo ""
 
+sleep 1
+udevadm settle -t 10
+
 if [[ -e "$KEYRING" ]]
 then
 
@@ -19,6 +22,7 @@ then
 
     if [[ -e "/usr/bin/ykchalresp" && -e "/usr/bin/ykinfo" ]]
     then
+        udevadm settle -t 3
         ykinfo -s &>/dev/null
         if [[ $? -eq 0 ]]
         then
@@ -47,16 +51,6 @@ then
             SED_PASSWD="$(cat /dev/mapper/keyring)"
             cryptsetup close keyring
         fi
-    fi
-
-    if [[ "x$SED_PASSWD" = "x" ]]
-    then
-        WAIT=6
-        while [[ ! -b "$KFNAME" && "$WAIT" -gt 0 ]]
-        do
-            sleep 0.5
-            let WAIT-=1
-        done
     fi
 
     if [[ -e "$KFNAME" && "x$SED_PASSWD" = "x" ]]
