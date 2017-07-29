@@ -1,0 +1,15 @@
+pkgbase = advent
+	pkgdesc = WELCOME TO ADVENTURE!!
+	pkgver = 0
+	pkgrel = 1
+	url = http://www.russotto.net/~mrussotto/ADVENT/
+	arch = i686
+	arch = x86_64
+	license = none
+	source_i686 = http://eris.club/pit/advent-i686.tar.gz
+	md5sums_i686 = 66e3565d19c67be525ff32affbd104af
+	source_x86_64 = http://eris.club/pit/advent-x86_64.tar.gz
+	md5sums_x86_64 = 24fe4965f8c8fa57ed3d95e14815d6e5
+
+pkgname = advent
+
