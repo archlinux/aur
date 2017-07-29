@@ -76,7 +76,7 @@ _pkgvermajmin="5.9"
 _pkgverpatch=".1"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=1
+pkgrel=2
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}
@@ -294,6 +294,7 @@ if $_patching; then
   #patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
 
   cd ${_declarativedir}
+  patch -p1 < ${startdir}/0001-Fix-memory-leak-in-QSGAtlasTexture-Manager-create.patch
   #patch -p1 < ${startdir}/0001-Fix-crash-in-QQuickPixmapReader-friends.patch
   #patch -p1 < ${startdir}/0001-Fix-build-with-qreal-as-float.patch
 
