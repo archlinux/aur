@@ -1,4 +1,4 @@
-pkgbase = izulu
+pkgbase = izulu-git
 	pkgdesc = weather aware desktop background images
 	pkgver = 1.0.1
 	pkgrel = 1
