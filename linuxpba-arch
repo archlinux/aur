@@ -12,7 +12,7 @@ SED_PASSWD=""
 
 echo ""
 
-sleep 1
+sleep 2
 udevadm settle -t 10
 
 if [[ -e "$KEYRING" ]]
