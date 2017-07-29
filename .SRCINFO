@@ -1,6 +1,6 @@
 pkgbase = wine-overwatch-git
 	pkgdesc = WINE with patchs to run overwatch
-	pkgver = r117912.94ea5ad606
+	pkgver = r119520.e5b254b968
 	pkgrel = 1
 	url = https://github.com/gamax92/wine-overwatch
 	arch = any
@@ -118,9 +118,9 @@ pkgbase = wine-overwatch-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = bin32-wine=r117912.94ea5ad606
-	provides = wine=r117912.94ea5ad606
-	provides = wine-wow64=r117912.94ea5ad606
+	provides = bin32-wine=r119520.e5b254b968
+	provides = wine=r119520.e5b254b968
+	provides = wine-wow64=r119520.e5b254b968
 	conflicts = bin32-wine
 	conflicts = wine
 	conflicts = wine-wow64
