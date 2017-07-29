@@ -5,7 +5,7 @@
 
 pkgname=nwjs
 pkgver=0.24.0
-pkgrel=7
+pkgrel=8
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js"
 arch=("i686" "x86_64")
 url="https://nwjs.io/"
@@ -71,8 +71,8 @@ build() {
   # Fix some wired compile errors
   find third_party/icu -type f -exec sed -i 's/<math\.h>/<cmath>/g' {} \;
   find third_party/node-nw ! -name 'des_locl.h' -type f -exec sed -i 's/<math\.h>/<cmath>/g' {} \;
-  export C_INCLUDE_PATH="{pkgsrc}/nwjs/src/nwjs/src/build/linux/debian_jessie_amd64-sysroot/usr/include/x86_64-linux-gnu"
-  export CPLUS_INCLUDE_PATH="{pkgsrc}/nwjs/src/build/linux/debian_jessie_amd64-sysroot/usr/include/x86_64-linux-gnu"
+  export C_INCLUDE_PATH="${srcdir}/nwjs/src/build/linux/debian_jessie_amd64-sysroot/usr/include/x86_64-linux-gnu"
+  export CPLUS_INCLUDE_PATH="${srcdir}/nwjs/src/build/linux/debian_jessie_amd64-sysroot/usr/include/x86_64-linux-gnu"
 
   /usr/bin/ninja -C out/Release node
   /usr/bin/ninja -C out/nw copy_node
