@@ -29,7 +29,7 @@ conflicts=('texmacs')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
+  LANG=en svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
 }
 
 prepare() {
