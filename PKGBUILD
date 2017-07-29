@@ -3,7 +3,7 @@
 
 pkgname=munt
 pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://munt.sourceforge.net'
@@ -40,5 +40,4 @@ package() {
   install -Dm644 "${srcdir}/munt.desktop" "${pkgdir}/usr/share/applications/munt.desktop"
 }
 
-md5sums=('347efbdc665ac5b53782ce25e6facbaa')
-
+md5sums=('d1dc319f30477ff7299c83f08a767890')
