@@ -1,6 +1,6 @@
 pkgbase = kshare-git
 	pkgdesc = The free and open source and cross platform screen sharing software.
-	pkgver = c9f57a10bb8e99f45aaffda8ac421b32d12f6934a
+	pkgver = cf77519da0b400ce042466f779d1836b737d3ff1f
 	pkgrel = 1
 	url = https://github.com/ArsenArsen/KShare
 	arch = i686

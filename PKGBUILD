@@ -1,6 +1,6 @@
 # Maintainer: ArsenArsen <arsenarsentmc@outlook.com>
 pkgname=kshare-git
-pkgver=c9f57a10bb8e99f45aaffda8ac421b32d12f6934a
+pkgver=cf77519da0b400ce042466f779d1836b737d3ff1f
 pkgrel=1
 conflicts=("kshare")
 pkgdesc="The free and open source and cross platform screen sharing software."
