@@ -2,7 +2,7 @@
 
 pkgname=gtk-theme-united-gnome
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept."
 arch=(any)
