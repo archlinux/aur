@@ -1,8 +1,8 @@
 # Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 
 pkgname=tflint
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A linter for Terraform code"
 arch=('i686' 'x86_64')
 _vendor="github.com/wata727/${pkgname}"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("https://${_vendor}/releases/download/v${pkgver}/tflint_linux_386.zip")
-md5sums=('c12d5132b833350c8a1b91b795da1998')
+md5sums=('608ffe936b7c817fedef25bf6aca7982')
 
 _vendorpath="gopath/src/$_vendor"
 
