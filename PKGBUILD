@@ -11,7 +11,7 @@ arch=('any')
 url="http://gnome-look.org/content/show.php/Mist-Redmond?content=155580"
 license=('GPL')
 depends=('gtk-engines')
-source=("$pkgname-$pkgver.zip::http://gnome-look.org/CONTENT/content-files/155580-gtk3.8-theme_Mist-Redmond.zip")
+source=("$pkgname-$pkgver.zip::https://dl.opendesktop.org/api/files/download/id/1460761501/155580-gtk3.8-theme_Mist-Redmond.zip")
 sha256sums=('c1d91fcdc52a4ff52fff3b1530ddbde37572fbb703fcc35dbade58f963e03f6e')
 
 package() {

@@ -6,7 +6,7 @@ pkgbase = gtk-theme-mist-redmond
 	arch = any
 	license = GPL
 	depends = gtk-engines
-	source = gtk-theme-mist-redmond-1.2.zip::http://gnome-look.org/CONTENT/content-files/155580-gtk3.8-theme_Mist-Redmond.zip
+	source = gtk-theme-mist-redmond-1.2.zip::https://dl.opendesktop.org/api/files/download/id/1460761501/155580-gtk3.8-theme_Mist-Redmond.zip
 	sha256sums = c1d91fcdc52a4ff52fff3b1530ddbde37572fbb703fcc35dbade58f963e03f6e
 
 pkgname = gtk-theme-mist-redmond
