@@ -1,11 +1,12 @@
 pkgbase = aosp-devel
 	pkgdesc = Metapackage to pull all dependencies required to build modern Android
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Android#Building_Android
 	arch = x86_64
 	license = None
 	depends = gcc-multilib
+	depends = repo
 	depends = git
 	depends = gnupg
 	depends = flex
