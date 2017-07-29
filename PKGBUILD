@@ -4,7 +4,7 @@
 
 pkgbase="spl-dkms-rc"
 pkgname=("spl-dkms-rc" "spl-utils-rc")
-_pkgver=0.7.0-rc4
+_pkgver=0.7.0-rc5
 _pkgver_base=${_pkgver%-*}
 pkgver=${_pkgver//-rc/.}
 pkgrel=1
