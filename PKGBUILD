@@ -27,7 +27,7 @@ pkgver=5.0.0svn_r305635
 pkgrel=1
 
 arch=('i686' 'x86_64')
-url='http://llvm.org/'
+url='https://llvm.org/'
 license=('custom:University of Illinois')
 
 makedepends=(
@@ -45,11 +45,11 @@ makedepends=(
 options=('staticlibs' '!strip')
 
 source=(
-    "${_pkgname}::svn+http://llvm.org/svn/llvm-project/llvm/trunk"
-    'clang::svn+http://llvm.org/svn/llvm-project/cfe/trunk'
-    'clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
-    'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
-    'lld::svn+http://llvm.org/svn/llvm-project/lld/trunk'
+    "${_pkgname}::svn+https://llvm.org/svn/llvm-project/llvm/trunk"
+    'clang::svn+https://llvm.org/svn/llvm-project/cfe/trunk'
+    'clang-tools-extra::svn+https://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
+    'compiler-rt::svn+https://llvm.org/svn/llvm-project/compiler-rt/trunk'
+    'lld::svn+https://llvm.org/svn/llvm-project/lld/trunk'
     'llvm-Config-llvm-config.h'
 )
 
@@ -326,7 +326,7 @@ package_lld-svn() {
 
 package_clang-svn() {
     pkgdesc='C language family frontend for LLVM'
-    url='http://clang.llvm.org/'
+    url='https://clang.llvm.org/'
     depends=(
         "llvm-svn=${pkgver}-${pkgrel}"
     )
@@ -409,7 +409,7 @@ package_clang-svn() {
 
 package_clang-analyzer-svn() {
     pkgdesc='Source code analysis tool for Clang, supporting C, C++, and Objective-C'
-    url='http://clang-analyzer.llvm.org/'
+    url='https://clang-analyzer.llvm.org/'
     depends=(
         "clang-svn=${pkgver}-${pkgrel}"
         'perl'
@@ -435,7 +435,7 @@ package_clang-analyzer-svn() {
 
 package_clang-compiler-rt-svn() {
     pkgdesc='The "compiler-rt" set of runtime libraries for Clang and LLVM'
-    url='http://compiler-rt.llvm.org/'
+    url='https://compiler-rt.llvm.org/'
     depends=(
         "clang-svn=${pkgver}-${pkgrel}"
     )
@@ -452,7 +452,7 @@ package_clang-compiler-rt-svn() {
 
 package_clang-tools-extra-svn() {
     pkgdesc='Standalone tools for Clang: syntax checking, formatting, refactoring, etc.'
-    url='http://clang.llvm.org/docs/ClangTools.html'
+    url='https://clang.llvm.org/docs/ClangTools.html'
     depends=(
         "clang-svn=${pkgver}-${pkgrel}"
     )
