@@ -4,7 +4,7 @@
 
 pkgbase="zfs-dkms-rc"
 pkgname=("zfs-dkms-rc" "zfs-utils-rc")
-_pkgver=0.7.0-rc4
+_pkgver=0.7.0-rc5
 _pkgver_base=${_pkgver%-*}
 pkgver=${_pkgver//-rc/.}
 pkgrel=1
