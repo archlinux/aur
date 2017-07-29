@@ -1,14 +1,15 @@
 # Maintainer: PitBall
 
 pkgname=ryzom-client
-pkgver=0.12.0.r7512
+pkgver=0.12.0.r8921
 pkgrel=1
 pkgdesc="Ryzom is a Free to Play MMORPG .This version is for playing on an official server"
 arch=('i686' 'x86_64')
 url="http://www.ryzom.com/"
 license=('AGPL3')
 depends=('ryzom-data' 'curl' 'freealut' 'libvorbis' 'libjpeg' 'giflib' 'rrdtool'
-         'boost' 'lua53bind' 'libsquish' 'libxrandr' 'libxcursor' 'hicolor-icon-theme')
+         'boost' 'lua53bind' 'libsquish' 'libxrandr' 'libxcursor'
+         'hicolor-icon-theme' 'openssl-1.0')
 conflicts=('ryzom-client-latest-hg' 'ryzom-client-hg')
 makedepends=('mercurial' 'cpptest' 'cmake' 'bison' 'mesa')
 provides=('libnel' 'ryzom' 'ryzomcore')
@@ -52,7 +53,10 @@ build() {
     -DWITH_LUA53=ON -DWITH_LUA51=OFF -DWITH_LUA52=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr -DWITH_GCC_FPMATH_BOTH=ON \
     -DRYZOM_ETC_PREFIX=/etc/ryzom -DRYZOM_SHARE_PREFIX=/usr/share/ryzom \
-    -DRYZOM_BIN_PREFIX=/usr/bin -DRYZOM_GAMES_PREFIX=/usr/bin
+    -DRYZOM_BIN_PREFIX=/usr/bin -DRYZOM_GAMES_PREFIX=/usr/bin \
+    -DOPENSSL_INCLUDE_DIR="/usr/include/openssl-1.0/" \
+    -DOPENSSL_SSL_LIBRARY="/usr/lib/openssl-1.0/libssl.so" \
+    -DOPENSSL_CRYPTO_LIBRARY="/usr/lib/openssl-1.0/libcrypto.so"
 
     cmake --build build
 
@@ -68,7 +72,7 @@ package() {
     sed -r -e 's|^(PatchServer\s*=\s*).*|\1"";|' \
            -e '/PatchServer/aPatchWanted = 0;' \
            -e 's|^(PatchletUrl\s*=\s*).*|\1"";|' \
-	   -e '/appzone.xml/d' \
+           -e '/appzone.xml/d' \
            -i ${pkgdir}/etc/ryzom/client_default.cfg
 }
 
