@@ -6,9 +6,11 @@ post_upgrade() {
   groupadd -r albion &> /dev/null
 
     cat << "EOM"
-==> If you'd like to allow the launcher to update the game client, add your user to the albion group
+==> New group installed: albion
+==> Your user must be in the albion group for the launcher to work properly, eg.
+==> sudo usermod -a -G albion ${USER}
 EOM
-
+  chgrp -R albion "/opt/albion-online-launcher-bin/launcher"
   chgrp -R albion "/opt/albion-online-launcher-bin/game_x64"
   chgrp -R albion "/opt/albion-online-launcher-bin/staging_x64"
 }

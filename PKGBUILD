@@ -2,7 +2,7 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.0.34.162
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
