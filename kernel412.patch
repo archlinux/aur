@@ -1,0 +1,13 @@
+diff -ruN frandom-1.1/frandom.c frandom-1.1-patched/frandom.c
+--- frandom-1.1/frandom.c	2011-07-27 23:14:14.000000000 +0100
++++ frandom-1.1-patched/frandom.c	2017-07-29 20:56:05.891476396 +0100
+@@ -26,6 +26,9 @@
+ #include <linux/random.h>
+ 
+ #include <asm/uaccess.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
++#include <linux/uaccess.h>
++#endif
+ #include <linux/cdev.h>
+ #include <linux/err.h>
+ #include <linux/device.h>
