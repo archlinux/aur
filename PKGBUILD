@@ -24,7 +24,7 @@ conflicts=('kubernetes')
 install=kubernetes.install
 sha256sums=('a283ff30b243b94474d07ec0ed52c4d42a2ca427610a58f1a6dffe456fbb3b6a'
             'ab36d4243baf8cd47aba94f22f4c41a2980cf2ffca51ccda28b1e7685f500282'
-            '175fc9360d4f26b5f60b467798d851061f01d0ca555c254ef44a8a9822cf7560'
+            'b281a1b0ff2f0f38e88642d492e184aa087a985baf54bcaae588948e675d96a3'
             'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
 
 package() {
