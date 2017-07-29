@@ -2,7 +2,7 @@
 
 pkgname=Bash-Snippets
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of small bash scripts for heavy terminal users"
 arch=('any')
 url="https://github.com/alexanderepstein/Bash-Snippets"
