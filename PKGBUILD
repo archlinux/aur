@@ -1,6 +1,6 @@
 # Maintainer: Score_Under <seejay.11@gmail.com>
 pkgname=pngwolf-zopfli-git
-pkgver=0.r76.952f812
+pkgver=0.r80.31b3399
 pkgrel=1
 pkgdesc="A PNG optimizer using a genetic algorithm to find effective compression parameters"
 arch=('i686' 'x86_64' 'armv7h')
@@ -36,8 +36,6 @@ build() {
   # endings -- for shame!
   SOURCES="pngwolf.cxx $(awk '/^ *galib/{gsub("\r",""); print "../" $1}' CMakeLists.txt)"
   CPPFLAGS="-I../galib $CPPFLAGS"
-  # -fpermissive required because the author tries to implicitly drop a const qualifier
-  CXXFLAGS="$CXXFLAGS -fpermissive"
   LDLIBS="-lz -lzopfli -ldeflate $LDLIBS"
   (
     set -x
