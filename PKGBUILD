@@ -103,7 +103,7 @@ package_libx264-all-git() {
   pkgdesc="Library for encoding H264/AVC video streams (all depths) (Git)"
   provides=('libx264-all')
   conflicts=('libx264-all')
-  _ver=$(grep '#define X264_BUILD' x264.h | cut -d' ' -f3)
+  _ver=$(grep '#define X264_BUILD' "${_pkgname}"/x264.h | cut -d' ' -f3)
 
   install -d "${pkgdir}"/usr/lib/x264
 
