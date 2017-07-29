@@ -1,8 +1,8 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=wimlib
-pkgver=1.11.0
-pkgrel=3
+pkgver=1.12.0
+pkgrel=1
 pkgdesc="A library and program to extract, create, and modify WIM files"
 arch=("i686" "x86_64")
 url="https://wimlib.net"
@@ -37,4 +37,4 @@ package() {
 	done
 }
 
-sha256sums=('16d19c3fbbda1c3ac8034b0884f42962e70ec0608ac54defc60f84328ae447a0')
+sha256sums=('852cf59d682a91974f715f09fa98cab621b740226adcfea7a42360be0f86464f')
