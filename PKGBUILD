@@ -13,7 +13,7 @@ license=("custom:commercial")
 groups=("MBC")
 depends=("zlib" "mesa" "libxcb" "glibc>=2.19")
 source=("http://download.navigraph.com/software/fmsdatamanager/$_dname-$pkgver.$arch.rpm"
-        "LICENSE")
+        "COPYING")
 md5sums=('bebed1bb93388714867552326caa1ce0'
          'bb50f767914fa907cfc7244e5544077e')
 
@@ -22,5 +22,5 @@ package()
     cd $srcdir
     cp -r usr $pkgdir
     install -d "$pkgdir/usr/share/licenses/$pkgname"
-    install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname
+    install -m644 COPYING $pkgdir/usr/share/licenses/$pkgname
 }
