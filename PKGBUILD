@@ -21,7 +21,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/bin/
 	cp -r ${srcdir}/${pkgname}-${pkgver}/src ${pkgdir}/usr/share/betcon/
 	cp -r ${srcdir}/${pkgname}-${pkgver}/ui ${pkgdir}/usr/share/betcon/
-	cp -r ${srcdir}/${pkgname}resources/images ${pkgdir}/usr/share/betcon/
+	cp -r ${srcdir}/${pkgname}/resources/images ${pkgdir}/usr/share/betcon/
 	cp ${srcdir}/${pkgname}-${pkgver}/default/database.sql ${pkgdir}/usr/share/betcon/default/
 	cp ${srcdir}/${pkgname}-${pkgver}/resources/betcon.desktop ${pkgdir}/usr/share/applications/
 	cp ${srcdir}/${pkgname}-${pkgver}/resources/icon.png ${pkgdir}/usr/share/pixmaps/betcon.png
