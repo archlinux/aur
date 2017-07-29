@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
-_use_tentative_patches=y
+_use_tentative_patches=
 
 # Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
@@ -61,7 +61,7 @@ pkgbase=linux-bfq-mq
 _srcname=linux-4.12
 _srcpatch=4
 pkgver=4.12.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -70,7 +70,7 @@ options=('!strip')
 _bfqpath="https://gitlab.com/tom81094/custom-patches/raw/master/bfq-mq"
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfq_mq_patch='4.12-bfq-mq-20170717.patch'
+_bfq_mq_patch='4.12-bfq-mq-20170729.patch'
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -81,11 +81,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_bfqpath}/4.13-linux-block-for-linus_sir_lucjan.patch"
         "${_bfqpath}/${_bfq_mq_patch}"
         # tentative patches
-        "${_bfqgroup}/64eca229f59f8/0001-Add-extra-checks-related-to-ioprio-class-changes.patch?part=0.1&authuser=0&view=1"
-        "${_bfqgroup}/65e9cfd65b3d0/0001-Add-specific-check-on-st-idle-in-__bfq_requeue_entit.patch?part=0.1&authuser=0&view=1"
         "${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
-        "${_bfqgroup}/6a0784839f358/0001-block-bfq-reset-in_service_entity-if-the-pointed-ent.patch?part=0.1&authuser=0&view=1"
-        "${_bfqgroup}/6a9952e018b84/0001-Consider-also-in_service_entity-to-state-whether-an-.patch?part=0.1&authuser=0&view=1"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -100,12 +96,8 @@ sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             '0f3e4930c3a603cc99fffa9fcac0f2cf7c58fc14a7ef8557345358c0bcd2bf66'
             '37c9f788ab7bfe91171bd678138befc2691f8ab68e17bd921215d17b38f2836a'
             'fbb5f70bb456a7a17f4d16dfb1bd8b5b2e8fd64fa36f650811774b492bb3719c'
-            '25862f0ea3e8f1b072ce3ca7bec520a7c19b27bf56ab1ffc5f0ea861a30cecc6'
-            '31da25bdd31d6d850b14cc4182f722afeb8fe9ac86a8fe6fe8480f09f599cd0b'
-            '1533c4724a890a6c7784fa25e70012be168172ccf2993b36fbbe0ff0f4686572'
+            '7921b48ab9ed984569b5e859f6d8b089f16ef8cb3b8a27c4a5cf61f3674bc929'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '7254a81c0744b21d03ee37ab9013d4b2732694fc61d4b378bca1da6af15013be'
-            'ddc1a826f2343cff629c4b03c3ca2f21df3af4048643025be03196faf82d99df'
             'cca8c6ff580c2726c6f24ab8a24b8b9fdc77cf279d42182f6ad6c5354e845bb3'
             '3364f97d63126c3c365ba55f699c33d73a3f7e15fdccc796937e2456ed99308a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
