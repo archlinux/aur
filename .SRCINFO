@@ -13,6 +13,10 @@ pkgbase = kvantum-qt5
 	depends = qt5-x11extras
 	depends = libx11
 	depends = libxext>
+	conflicts = qt5-style-kvantum-svn
+	conflicts = qt4-style-kvantum-svn
+	conflicts = kvantum-kde4-colorscheme-svn
+	conflicts = kvantum-tools-qt5-svn
 	source = https://github.com/tsujan/Kvantum/archive/V0.10.4.tar.gz
 	sha256sums = 0fda33ebca0708435eb2a03f04a850bc7490ba415122e442820a11ce6511bc58
 
