@@ -1,7 +1,7 @@
 # Maintainer: Mesmer  <mesmer@fisica.if.uff.br>
 
 pkgname=wine-overwatch-git
-pkgver=r117912.94ea5ad606
+pkgver=r119520.e5b254b968
 pkgrel=1
 pkgdesc='WINE with patchs to run overwatch'
 arch=('any')
