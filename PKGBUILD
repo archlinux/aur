@@ -4,7 +4,7 @@
 # format: RGB
 # scale: [0,1]
 
-__color__="1,1,1"
+__color__="1,.5,0"
 
 pkgname=stl-thumbnailer
 pkgver=1
