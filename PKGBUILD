@@ -10,7 +10,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Use tentative patches from https://groups.google.com/forum/#!forum/bfq-iosched
-_use_tentative_patches=y
+_use_tentative_patches=
 
 # Running with a 1000 HZ tick rate 
 _1k_HZ_ticks=
@@ -63,8 +63,8 @@ _kyber_disable=
 pkgbase=linux-bfq-mq-git
 _pkgver=4.13-rc1
 _srcname=bfq-mq
-pkgver=4.13rc1.b5a5208f027a
-pkgrel=4
+pkgver=4.13rc1.5908f43fcb3c
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -73,11 +73,7 @@ options=('!strip')
 _bfqgroup="https://groups.google.com/group/bfq-iosched/attach"
 source=('git+https://github.com/Algodev-github/bfq-mq'
         # patches related to BUG_ON(entity->tree && entity->tree != &st->active) in __bfq_requeue_entity();
-        "${_bfqgroup}/64eca229f59f8/0001-Add-extra-checks-related-to-ioprio-class-changes.patch?part=0.1&authuser=0&view=1"
-        "${_bfqgroup}/65e9cfd65b3d0/0001-Add-specific-check-on-st-idle-in-__bfq_requeue_entit.patch?part=0.1&authuser=0&view=1"
         "${_bfqgroup}/6646a2679ff98/0001-Check-presence-on-tree-of-every-entity-after-every-a.patch?part=0.1&authuser=0&view=1"
-        "${_bfqgroup}/6a0784839f358/0001-block-bfq-reset-in_service_entity-if-the-pointed-ent.patch?part=0.1&authuser=0&view=1"
-        "${_bfqgroup}/6a9952e018b84/0001-Consider-also-in_service_entity-to-state-whether-an-.patch?part=0.1&authuser=0&view=1"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -85,11 +81,7 @@ source=('git+https://github.com/Algodev-github/bfq-mq'
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 sha256sums=('SKIP'
-            '31da25bdd31d6d850b14cc4182f722afeb8fe9ac86a8fe6fe8480f09f599cd0b'
-            '1533c4724a890a6c7784fa25e70012be168172ccf2993b36fbbe0ff0f4686572'
             'eb3cb1a9e487c54346b798b57f5b505f8a85fd1bc839d8f00b2925e6a7d74531'
-            '7254a81c0744b21d03ee37ab9013d4b2732694fc61d4b378bca1da6af15013be'
-            'ddc1a826f2343cff629c4b03c3ca2f21df3af4048643025be03196faf82d99df'
             '5ee9eccf242465d2d5fd0f4b9e149aa4dc97b5bf540cc16f090e5b4d48a23667'
             '4bdbdf4e3e05efeb688d8afe713a16871cb07bc301554abf8547079067e4f5ce'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
