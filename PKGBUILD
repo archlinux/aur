@@ -1,9 +1,9 @@
 # Maintainer:  Eric Biggers <ebiggers3@gmail.com>
 
 pkgname=libdeflate-git
-pkgver=0.7.r2.g671e2bb
+pkgver=0.8.r0.g3d96a83
 pkgrel=1
-pkgdesc='Heavily optimized library for DEFLATE/zlib/gzip (de)compression'
+pkgdesc='Heavily optimized library for DEFLATE/zlib/gzip compression and decompression'
 arch=('i686' 'x86_64')
 url='https://github.com/ebiggers/libdeflate'
 license=('MIT')
