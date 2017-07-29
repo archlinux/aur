@@ -1,0 +1,14 @@
+pkgbase = storebackup
+	pkgdesc = A backup utility that stores files on other disks
+	pkgver = 3.5
+	pkgrel = 3
+	url = http://savannah.nongnu.org/projects/storebackup
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = util-linux
+	source = http://download.savannah.gnu.org/releases/storebackup/storeBackup-3.5.tar.bz2
+	md5sums = 07881dfea171142009d0ac70d7dac479
+
+pkgname = storebackup
+
