@@ -14,11 +14,12 @@ arch=('x86_64')
 url="http://www.gurobi.com/products/gurobi-optimizer"
 license=('custom')
 depends=('python>=3.5.0' 'python<3.7')
+depends=('python>=2.7.0' 'python<2.8')
 optdepends=(
   'gcc: C/C++ programming interfaces support'
   'java-environment: Java programming interface support'
   'mono: .NET programming interface support'
-  'matlab: MATLAB programming interface support, versions 2008b to 2015b'
+  'matlab: MATLAB programming interface support, versions 2008b onwards'
 )
 source=(
   "${_basename}${pkgver}_linux64.tar.gz::file://${_basename}${pkgver}_linux64.tar.gz"
