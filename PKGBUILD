@@ -1,6 +1,6 @@
 
 pkgname=newrelic-infra
-pkgver=1.0.336
+pkgver=1.0.726
 pkgrel=2
 license=('custom')
 arch=('x86_64')
