@@ -3,10 +3,10 @@
 
 pkgname=signal
 pkgver=0.41.2
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
-depends=('nwjs-bin')
+depends=('nwjs')
 makedepends=('npm' 'ruby-sass')
 arch=("i686" "x86_64")
 url='https://whispersystems.org'
