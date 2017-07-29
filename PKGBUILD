@@ -1,8 +1,8 @@
 # Maintainer: Mauro Santos <registo.mailling@gmail.com>
 
 pkgname=sedutil
-pkgver=1.12
-pkgrel=6
+pkgver=1.15
+pkgrel=1
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -23,9 +23,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${
         'linuxpba.conf.lib'
         'linuxpba.hook'
         'linuxpba.install'
-        'getpasswd.c'
-        'nvme_ioctl.patch::https://github.com/bcarmo-caio/sedutil/commit/5ca6100917a025f6e11ae20838e1e37e7db2d587.patch')
-sha256sums=('5509d4279cfb316f33730c5cb06f8162ae212c7f4d31d206642d67cc8be245c1'
+        'getpasswd.c')
+sha256sums=('6711fa34c95a96066570e2b1bca05fc7ecd825e817fd675683db76a58fa4d797'
             '40d785c16a28a5a8a43050d1731174482ee24459be215d2e4e27ffba3b2e28b2'
             '77c725e4eee095dbede512d2bca13b8f2c139a67b9b87a11d98be94e6df0e1d7'
             'b860d4d6fcc14a61d110c1d805d919fdfcf0fffaa8f0175b5ecddf60051f7941'
@@ -34,14 +33,8 @@ sha256sums=('5509d4279cfb316f33730c5cb06f8162ae212c7f4d31d206642d67cc8be245c1'
             'a110e6d6da0fd658412d8c79f7f2cbc58a9b0067c34c34c94c8f623801eecc78'
             'd9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447'
             'f31a0ba891dd705ef68174afeb651bdc3426a63202d058d98510907de43248f7'
-            'e94d011c98bd336f37d6d4923e5d63a22ebd10d8f2c6486b6bcd6617524d6484'
-            'ef179c054ed79399cdb2cdf9e43e565d5556891e7676b795e55d126b2641a919')
+            'e94d011c98bd336f37d6d4923e5d63a22ebd10d8f2c6486b6bcd6617524d6484')
 CPPFLAGS="$CPPFLAGS -O2"
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
-    patch -p1 < "${srcdir}/nvme_ioctl.patch"
-}
 
 build() {
     _release="Release_$CARCH"
