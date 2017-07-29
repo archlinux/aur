@@ -22,7 +22,6 @@ then
 
     if [[ -e "/usr/bin/ykchalresp" && -e "/usr/bin/ykinfo" ]]
     then
-        udevadm settle -t 3
         ykinfo -s &>/dev/null
         if [[ $? -eq 0 ]]
         then
