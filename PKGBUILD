@@ -1,25 +1,30 @@
-# Maintainer: SY Zhang <lastavengers@outlook.com>
+# Maintainer: Shengyu Zhang <arch at srain.im>
 
 pkgname=srain
-pkgver=0.05.1
-pkgrel=4
-pkgdesc="It does not look like a irc client"
+pkgver=0.06
+pkgrel=1
+pkgdesc="Modern, beautiful IRC client written in GTK+ 3"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/SilverRainZ/srain"
-depends=('gtk3' 'python' 'libircclient' 'curl' 'libnotify')
-optdepends=('python-urllib3' 'python-requests')
-makedepends=('make' 'gcc' 'pkg-config' 'gettext' 'imagemagick')
+depends=('gtk3' 'python' 'curl' 'libnotify' 'libconfig')
+makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'imagemagick')
+optdepends=(
+    'glib-networking: TLS connection support'
+    'python-sphinx: for generating documentation'
+    'python-urllib3: avatar and pastebin support'
+    'python-requests: avatar and pastebin support'
+    )
 conflicts=('srain-git')
 provides=('srain')
 source=("https://github.com/SilverRainZ/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('2c68b500f94b804b44e15588194e03d07e340a95455cac8ad50524a1c21ba2e3')
+sha256sums=('2bbe3b9e76965ca3d7b9742c823be2468b611383404ada52cf3962c462e49057')
 
 build() {
     cd ${pkgname}-${pkgver}
 
     mkdir build || true
-    ./configure --prefix=/usr --disable-debug
+    ./configure --prefix=/usr --config-dir=/etc --disable-debug
     make
 }
 
