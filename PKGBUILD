@@ -7,7 +7,7 @@
 
 pkgname=('gurobi')
 _basename=gurobi
-pkgver=7.0.1
+pkgver=7.5.1
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "gurobi.sh"
   "gurobi_setup.m"
 )
-sha256sums=('2af561c9c4511374728cbf8b4dce901845dc9c6660c299a1ecde7a5e84d9f472'
+sha256sums=('7f5c8b0c3d3600ab7a1898f43e238a9d9a32ac1206f2917fb60be9bbb76111b6'
             '30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8'
             'fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c')
 
@@ -44,10 +44,6 @@ package_gurobi() {
   install=${_basename}.install
 
   cd "$srcdir/${_basename}${pkgver//./}/linux64/"
-
-  awk 'NR==22 {$0="if version != (2, 7) and version != (3, 5) and version != (3, 6):"} 1' setup.py > setup2.py
-  mv setup2.py setup.py
-  cp -r lib/python3.5_utf32 lib/python3.6_utf32 
 
   install -d "${pkgdir}/usr/bin/" "${pkgdir}/usr/share/doc/${_basename}/" \
           "${pkgdir}/usr/include/" "${pkgdir}/usr/lib/${_basename}/matlab/"
@@ -73,7 +69,7 @@ package_gurobi() {
   # Programming interfaces
   install lib/*.so* "${pkgdir}/usr/lib/"
   install -m644 lib/*.a "${pkgdir}/usr/lib/"
-  ln -sf ./libgurobi.so.7.0.1 "${pkgdir}/usr/lib/libgurobi65.so"
+  ln -sf ./libgurobi.so.7.5.1 "${pkgdir}/usr/lib/libgurobi75.so"
   ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
