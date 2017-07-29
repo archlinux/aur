@@ -50,7 +50,7 @@ build() {
   for _b in 8 10; do (
     cd build-${_b}bit
 
-    msg2 "Configuring (${_b}bit)..."
+    msg2 "Configuring ${_b}bit..."
     ../${_pkgname}/configure \
       --prefix='/usr' \
       --enable-shared \
@@ -58,7 +58,7 @@ build() {
       --enable-lto \
       --bit-depth="${_b}"
 
-    msg2 "Making (${_b}bit)..."
+    msg2 "Making ${_b}bit..."
     make
   ) done
 }
@@ -73,7 +73,7 @@ package_x264-git() {
   for _b in {8,10}bit; do
     provides+=("x264-${_b}")
 
-    msg2 "Make-installing (${_b}bit)..."
+    msg2 "Make-installing ${_b}..."
     make -C build-${_b} DESTDIR="${pkgdir}" install-cli
     mv "${pkgdir}"/usr/bin/x264{,-${_b}}
   done
@@ -103,13 +103,14 @@ package_libx264-all-git() {
   pkgdesc="Library for encoding H264/AVC video streams (all depths) (Git)"
   provides=('libx264-all')
   conflicts=('libx264-all')
+  _ver=$(grep '#define X264_BUILD' x264.h | cut -d' ' -f3)
 
   install -d "${pkgdir}"/usr/lib/x264
 
   for _b in {8,10}bit; do
     provides+=("libx264-${_b}.so")
 
-    msg2 "Make-installing (${_b}bit)..."
+    msg2 "Make-installing ${_b}..."
     make -C build-${_b} DESTDIR="${pkgdir}" install-lib-shared
 
     mv "${pkgdir}"/usr/lib/libx264.so.${_ver} "${pkgdir}"/usr/lib/x264/libx264-${_b}.so.${_ver}
