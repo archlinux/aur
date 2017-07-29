@@ -266,7 +266,7 @@ package_llvm-libs-svn() {
     # Moved from the llvm-svn package here
     mv "${srcdir}"/{BugpointPasses,LLVMgold,LLVMHello}.so "${pkgdir}/usr/lib/"
 
-    # Ref: http://llvm.org/docs/GoldPlugin.html
+    # Ref: https://llvm.org/docs/GoldPlugin.html
     install -m755 -d "${pkgdir}/usr/lib/bfd-plugins"
     ln -s {/usr/lib,"${pkgdir}/usr/lib/bfd-plugins"}/LLVMgold.so
 
