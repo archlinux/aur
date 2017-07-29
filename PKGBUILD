@@ -5,7 +5,7 @@
 
 pkgname=betcon
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Sports betting management"
 url="https://github.com/soker90/betcon"
 arch=('any')
