@@ -7,7 +7,7 @@ _pkgbase="dddvb"
 pkgname="dddvb-dkms"
 pkgdesc="Official Digital Devices driver package as DKMS"
 pkgver=0.9.29
-pkgrel=2
+pkgrel=3
 arch=("any")
 url="http://download.digital-devices.de"
 license=("GPL2")
@@ -19,10 +19,14 @@ provides=('dddvb-dkms')
 install="${pkgname}.install"
 source=("https://github.com/DigitalDevices/$_pkgbase/archive/$pkgver.tar.gz"
 	"https://github.com/4s1/dddvb/commit/0f1ce19840b313ec4f4bbb840ff4ef22080aeba5.patch"
-	"https://github.com/4s1/dddvb/commit/2752e86e87afe3b40a429fb7439b2021e108b098.patch")
+	"https://github.com/4s1/dddvb/commit/2752e86e87afe3b40a429fb7439b2021e108b098.patch"
+	"https://github.com/DigitalDevices/dddvb/commit/452771913eb555ce6311958938809317db802db9.patch"
+        "https://github.com/DigitalDevices/dddvb/commit/023ae44411d8a1b4ac0b0addf2493073880d695a.patch")
 sha256sums=('4c5df07c799c8590a1bd0e463fee7dce36d89bb4519d5c3815adcb839b1653e0'
 		'56442eb7e5cc3730be2c0965ce8804501e5913edc5d1924d62db0b5d4e99766b'
-		'dca344ba27e0160e6709087a93607903183d7131e61b27148d681a65b960dc8f')
+		'dca344ba27e0160e6709087a93607903183d7131e61b27148d681a65b960dc8f'
+		'ce3d08c2db3109211b609fc9e8b6677ad3f899bf3dc8fddae289632157ab68f3'
+                '8a2e134eb30a323358005865de0398455bdd4280198145879d77d7a5ceff06dd')
 
 prepare() {
   cd "$srcdir"
@@ -36,6 +40,8 @@ prepare() {
   cd "$srcdir/$_pkgbase-$pkgver"
   patch < ../0f1ce19840b313ec4f4bbb840ff4ef22080aeba5.patch
   patch < ../2752e86e87afe3b40a429fb7439b2021e108b098.patch
+  patch -p1 < ../452771913eb555ce6311958938809317db802db9.patch
+  patch -p1 < ../023ae44411d8a1b4ac0b0addf2493073880d695a.patch
   sed -i '/apps/d' Makefile
   sed -i 's/lib\/modules/usr\/lib\/modules/g' Makefile
 }
