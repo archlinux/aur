@@ -5,8 +5,8 @@
 
 pkgname=('mysql' 'libmysqlclient' 'mysql-clients')
 pkgbase=mysql
-pkgver=5.7.18
-pkgrel=2
+pkgver=5.7.19
+pkgrel=1
 pkgdesc="Fast SQL database server, community edition"
 arch=('i686' 'x86_64')
 makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'libaio' 'jemalloc')
@@ -24,7 +24,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${pkgbase}-${pkgver}.tar.
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "my-default.cnf")
-sha256sums=('0b5d71ed608656cd8181d3bb0434d3e36bac192899038dbdddf5a7594aaea1a2'
+sha256sums=('3e51e76f93179ca7b165a7008a6cc14d56195b3aef35d26d3ac194333d291eb1'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '1353162f5ae6e3dd4b0b8660738adbbc36c6d514d65331c013d9c45359665c52'
             'ca49f11ed70d4673d14df700caff4380ae27b81d4d10c7a49297d5b56f0eb288'
@@ -94,7 +94,7 @@ build() {
 
 package_libmysqlclient(){
   pkgdesc="MySQL client libraries"
-  depends=('openssl' 'zlib')
+  depends=('libsasl' 'zlib')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}")
 
@@ -115,7 +115,7 @@ package_libmysqlclient(){
 
 package_mysql-clients(){
   pkgdesc="MySQL client tools"
-  depends=('libmysqlclient' 'jemalloc')
+  depends=('libmysqlclient' 'zlib' 'openssl' 'jemalloc')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}")
 
@@ -144,7 +144,7 @@ package_mysql(){
   pkgdesc="Fast SQL database server, community edition"
   backup=('etc/mysql/my.cnf')
   install="${pkgbase}.install"
-  depends=('mysql-clients' 'libaio')
+  depends=('mysql-clients' 'libsasl' 'zlib' 'jemalloc' 'libaio')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}")
   options=('emptydirs')
@@ -163,6 +163,7 @@ package_mysql(){
   rm "${pkgdir}/usr/bin/mysql_client_test_embedded"
   rm "${pkgdir}/usr/bin/mysqltest_embedded"
   rm "${pkgdir}"/usr/lib/libmysql*
+  rm "${pkgdir}/usr/lib/mysql/plugin/authentication_ldap_sasl_client.so"
   rm -r "${pkgdir}/usr/include/"
   rm "${pkgdir}/usr/share/man/man1/mysql_config.1"
   rm "${pkgdir}/usr/share/man/man1/mysql_client_test_embedded.1"
