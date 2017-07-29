@@ -1,4 +1,5 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Niklas <dev@n1klas.net>
+# Contributor: Justin Dray <justin@dray.be>
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 # Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
 
