@@ -2,9 +2,9 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
-pkgver=2.52.2+9+g3245eba16
+pkgver=2.52.3
 pkgrel=1
-_commit=3245eba169c439180cc13ed3c76f47298d723031  # glib-2-52
+_commit=90bb8778f2eabf00bee5bff1259c48f1e7b791b8  # tags/2.52.3^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext)
