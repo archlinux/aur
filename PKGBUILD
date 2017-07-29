@@ -1,3 +1,5 @@
+# Maintainer: Craig Barnes <cr@igbarn.es>
+
 pkgname='dte'
 pkgver='1.1'
 pkgrel='1'
