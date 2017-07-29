@@ -1,11 +1,12 @@
-# Maintainer: Jan Korte <j.korte@me.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Co-maintainer: Jan Korte <j.korte@me.com>
 
 pkgname=retext-git
-pkgver=20170125
+pkgver=7.0.0.r33.g5f5fe0c
 pkgrel=1
-pkgdesc="A simple editor for Markdown and ReStructuredText markup languages"
+pkgdesc="A simple editor for Markdown and ReStructuredText markup languages."
 arch=('any')
-url="http://retext.sourceforge.net/"
+url="https://github.com/retext-project/retext"
 license=('GPL3')
 depends=('python-pyqt5'
          'python-markups'
@@ -17,17 +18,24 @@ makedepends=('imagemagick' 'git' 'qt5-tools')
 optdepends=('python-markdown: for Markdown language support'
             'python-docutils: for reStructuredText language support'
             'python-pyenchant: for spell checking support')
-provides=('retext')
-conflicts=('retext')
-source=("$pkgname::git+https://github.com/retext-project/retext"
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+${url}.git"
         "retext.desktop"
         "x-retext-markdown.xml"
         "x-retext-rst.xml")
-install="$pkgname".install
-md5sums=('SKIP'
-         'ac6cb2a020238fe03f0f52610c976cdd'
-         '48becfce7b920c7a2b875626386d1e74'
-         '8c32c71bc2b2f49e15595a1808780d42')
+sha256sums=('SKIP'
+            'a784275c951b330c2fc2ac2f5ac82b457ca09d37a0cf6e9e27e1e5716084d118'
+            'b51611479d3224eec2b58264ed91ace3eccb502b7b806dae3e7a3ab4aab8c4b8'
+            '6fef80cccb14813d9cc74810c397a6cd7831d1ca243536759a47c6e8b6cc977a')
+
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
 build () {
 	cd $srcdir/$pkgname/locale
