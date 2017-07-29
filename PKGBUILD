@@ -7,14 +7,14 @@ _lang=it
 pkgname="${_name}-${_channel}-${_lang}"
 pkgdesc='Standalone web browser from mozilla.org, Developer Edition - Italian'
 url='https://www.mozilla.org/firefox/developer/'
-pkgver=55.0b11
+pkgver=55.0b13
 pkgrel=2
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 source=("https://ftp.mozilla.org/pub/devedition/releases/$pkgver/linux-x86_64/$_lang/firefox-$pkgver.tar.bz2"
         "firefox-$_channel.desktop"
         "vendor.js")
-sha512sums=('ce7ed89a75d176654bfdf77d843c0c81c31f568e1ac4898ddc9cb88d0cff3019ef7d575f0bdf064686e32d8d531b9e8438ccddbe21f175499507dd65acf846c2'
+sha512sums=('e438d3232aab3fc14f08130aeeff037f54dd9a2a1c2c72088631b27dc39780fba19314a31fc676740f8fccb88f8fc56e3d9c52b9d8cd8f9f71b7c899cab85c76'
             '9e7bb3b08d58c7ec50fd24a5ecab9a6462084a37deb8ec61b089e2c1ad5364c82f71e3fcba918738ded9c61d58bfe8b2dea24abb48e53175332b03727c26c33a'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib' 'gtk-update-icon-cache')
