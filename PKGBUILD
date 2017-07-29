@@ -1,35 +1,45 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}
-pkgver=4.1.0
+pkgver=4.1.2
 pkgrel=1
+_tag="${_pkgname}-${pkgver}"
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
 arch=('i686' 'x86_64')
 url="https://developers.yubico.com/yubioath-desktop/"
 license=('GPL')
-depends=('yubikey-manager' 'pcsclite' 'ccid' 'python-pyside' 'python-pyscard' 
-'python-pbkdf2' 'python-setuptools' 'python-pyside-tools' 'python-crypto' 
-'yubikey-personalization' 'python-click' 'python-pyotherside' 'qt-solutions-git')
-source=("git://github.com/Yubico/yubioath-desktop.git#tag=yubioath-desktop-4.1.0")
-sha256sums=('SKIP')
+depends=('pcsclite' 'ccid' 'python-pyotherside' 'yubikey-manager' 'qt5-quickcontrols')
+makedepends=('swig' 'git')
+validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3') # Dag Heyman <dag@yubico.com>
+source=("git+https://github.com/Yubico/yubioath-desktop.git#tag=${_tag}"
+'git+https://github.com/thp/pyotherside.git'
+'git+https://github.com/Yubico/yubikey-manager.git'
+'git+https://github.com/qtproject/qt-solutions')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 conflicts=('yubico-yubioath-desktop-git')
 
 prepare() {
-    cd "${srcdir}/$_pkgname"
-    git submodule init
-    git submodule update
+  cd "${srcdir}/${_pkgname}"
+
+  git config --file=.gitmodules submodule.vendor/pyotherside.url ../pyotherside/
+  git config --file=.gitmodules submodule.vendor/yubikey-manager.url ../yubikey-manager/
+  git config --file=.gitmodules submodule.ykman-gui/vendor/qt-solutions.url ../qt-solutions/
+
+  git submodule init
+  git submodule update
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+
+  qmake-qt5
+  make
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr/bin
-	
-    cd "${srcdir}/$_pkgname"
-    qmake
-    make
+  cd "${srcdir}/${_pkgname}"
 
-    install -D -m0755 ${srcdir}/yubioath-desktop/yubioath-desktop ${pkgdir}/usr/bin/
-    mkdir -p ${pkgdir}/usr/share/applications/
-    mkdir -p ${pkgdir}/usr/share/icons/
-    install -D -m0644 ${srcdir}/$_pkgname/resources/yubioath.desktop ${pkgdir}/usr/share/applications/
-    install -D -m0644 ${srcdir}/$_pkgname/resources/icons/yubioath.png ${pkgdir}/usr/share/icons/
+  make INSTALL_ROOT="${pkgdir}/" install
+  install -D -m0644 resources/yubioath.desktop "${pkgdir}/usr/share/applications/yubioath.desktop"
+  install -D -m0644 resources/icons/yubioath.png "${pkgdir}/usr/share/pixmaps/yubioath.png"
 }
