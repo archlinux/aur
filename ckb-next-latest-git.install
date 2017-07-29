@@ -23,6 +23,8 @@ post_install() {
 # arg 1:  the new package version
 # arg 2:  the old package version
 pre_upgrade() {
+    msg_blue "Terminating ckb-next GUI..."
+    killall -9 ckb
     msg_blue "Terminating ckb-next daemon..."
     systemctl daemon-reload
     systemctl stop ckb-daemon
@@ -40,6 +42,8 @@ post_upgrade() {
 
 # arg 1:  the old package version
 pre_remove() {
+    msg_blue "Terminating ckb-next GUI..."
+    killall -9 ckb
     msg_blue "Terminating ckb-next daemon..."
     systemctl daemon-reload
     systemctl stop ckb-daemon
