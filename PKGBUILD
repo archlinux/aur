@@ -25,7 +25,7 @@ source=("git+https://git.videolan.org/git/x264.git")
 sha256sums=('SKIP')
 
 # 8bit or 10bit?
-if [[ ${_build} = 1 ]] || pacman -Q libx264-git &>/dev/null; then
+if [[ ${_build} = 1 ]] || ( [[ ${_build} = 0 ]] && pacman -Q libx264-git &>/dev/null ); then
   pkgname=('x264-git' 'libx264-git' 'libx264-all-git')
 elif [[ ${_build} = 2 ]] || pacman -Q libx264-10bit-git &>/dev/null; then
   pkgname=('x264-git' 'libx264-10bit-git' 'libx264-all-git')
