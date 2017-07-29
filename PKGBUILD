@@ -306,6 +306,7 @@ package_llvm-ocaml-svn() {
 
 package_lld-svn() {
     pkgdesc='A linker from the LLVM project'
+    url='https://lld.llvm.org/'
     depends=(
         "llvm-libs-svn=${pkgver}-${pkgrel}"
     )
