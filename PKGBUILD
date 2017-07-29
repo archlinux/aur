@@ -6,12 +6,12 @@
 set -u
 pkgname='pmacct'
 pkgver='1.6.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
 url='http://www.pmacct.net/'
 license=('GPL2')
-depends=('libpcap' 'libmysqlclient' 'postgresql-libs' 'sqlite3')
+depends=('libpcap' 'libmariadbclient' 'postgresql-libs' 'sqlite3')
 _verwatch=("${url}" "${url}${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
 source=("${url}${pkgname}-${pkgver}.tar.gz"
         'pmacctd.rc.d' \
@@ -24,16 +24,12 @@ sha256sums=('e6ede7f500fb1771b5cdfb63dfa016e34c19b8aa2d2f672bd4c63016a5d6bbe2'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
             'dbfd2210e9e96d672483916c3c2dd38a58c1725920823a7221a2a2cd3f43c48a')
 
-prepare() {
-  set -u
-  cd "${pkgname}-${pkgver}"
-  ./configure --prefix='/usr' --mandir='/usr/share/man' --sbindir='/usr/bin' --enable-ipv6 --enable-mysql --enable-pgsql --enable-sqlite3 --enable-64bit --enable-threads
-  set +u
-}
-
 build() {
   set -u
   cd "${pkgname}-${pkgver}"
+  if [ ! -s 'Makefile' ]; then
+    ./configure --prefix='/usr' --mandir='/usr/share/man' --sbindir='/usr/bin' --enable-ipv6 --enable-mysql --enable-pgsql --enable-sqlite3 --enable-64bit --enable-threads --enable-jansson
+  fi
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   nice make -s -j "${_nproc}"
   set +u
