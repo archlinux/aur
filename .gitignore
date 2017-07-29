@@ -1,0 +1,7 @@
+/icingaweb2-module-grafana-*.tar.*
+/icingaweb2-module-grafana-*.log
+/PKGBUILD-namcap.log
+/src/
+/pkg/
+*~
+*.swp
