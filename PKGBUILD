@@ -4,16 +4,16 @@
 
 pkgname=shine
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Super fast fixed-point MP3 encoder'
 arch=('arm' 'i686' 'x86_64')
 url="https://github.com/savonet/shine"
-source=(https://github.com/toots/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::https://github.com/toots/$pkgname/archive/$pkgver.tar.gz)
 license=(GPL2)
 depends=('glibc')
 makedepends=('automake' 'autoconf' 'make' 'libtool')
 options=('!libtool' '!strip')
-sha256sums=('58e61e70128cf73f88635db495bfc17f0dde3ce9c9ac070d505a0cd75b93d384')
+sha256sums=('565b87867d6f8e6616a236445d194e36f4daa9b4e7af823fcf5010af7610c49e')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
         ./bootstrap
