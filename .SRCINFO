@@ -6,8 +6,8 @@ pkgbase = gurobi
 	install = gurobi.install
 	arch = x86_64
 	license = custom
-	depends = python3>=3.5.0
-	depends = python3<3.7
+	depends = python>=3.5.0
+	depends = python<3.7
 	depends = python2>=3.7.0
 	optdepends = gcc: C/C++ programming interfaces support
 	optdepends = java-environment: Java programming interface support
