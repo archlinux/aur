@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='nextcloud-client'
-pkgver='2.3.1'
+pkgver='2.3.2'
 pkgrel='1'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
@@ -15,34 +15,34 @@ optdepends=('python2-nautilus: integration with Nautilus'
 	    'kio: Resource and network access abstraction (KDE)'
 	    'libgnome-keyring: GNOME keyring client')
 conflicts=('owncloud-client')
-source=("${pkgname}::git+https://github.com/nextcloud/client_theming.git")
-sha256sums=('SKIP')
+source=("https://github.com/nextcloud/client_theming/archive/v${pkgver}.tar.gz")
+sha256sums=('fbebbcfc538654d7a5373062d2165638a9bd9e5dbe62b5f4552a942b0b931617')
 backup=('etc/Nextcloud/sync-exclude.lst')
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  mkdir -p "${srcdir}/client_theming-${pkgver}/build-linux"
+  git clone git://github.com/owncloud/client.git "${srcdir}/client_theming-${pkgver}/client"
+  cd "${srcdir}/client_theming-${pkgver}/client"
   git submodule update --init --recursive
-  mkdir -p "${srcdir}/${pkgname}/build-linux"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/build-linux"
+  cd "${srcdir}/client_theming-${pkgver}/build-linux"
 
-  cmake -D OEM_THEME_DIR=${srcdir}/${pkgname}/nextcloudtheme ../client \
+  cmake -D OEM_THEME_DIR="${srcdir}/client_theming-${pkgver}/nextcloudtheme" ../client \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc/${pkgname}
-
   make
   make doc-man
 }
 
 check() {
-  sed -Ei 's|Icon(\[.*\])?=nextcloud|Icon\1=Nextcloud|g' "${srcdir}/${pkgname}/build-linux/src/gui/nextcloud.desktop"
+  sed -Ei 's|Icon(\[.*\])?=nextcloud|Icon\1=Nextcloud|g' "${srcdir}/client_theming-${pkgver}/build-linux/src/gui/nextcloud.desktop"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build-linux"
+  cd "${srcdir}/client_theming-${pkgver}/build-linux"
   make DESTDIR="${pkgdir}" install
 }
