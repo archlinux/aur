@@ -1,6 +1,6 @@
 diff -ura a/browser/finder/index.js b/browser/finder/index.js
---- a/browser/finder/index.js	2017-06-24 06:28:49.000000000 +0200
-+++ b/browser/finder/index.js	2017-07-20 08:32:42.563239708 +0200
+--- a/browser/finder/index.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/finder/index.js	2017-07-29 09:15:29.836430857 +0200
 @@ -10,7 +10,6 @@
  import NoteList from './NoteList'
  import NoteDetail from './NoteDetail'
@@ -13,67 +13,67 @@ diff -ura a/browser/finder/index.js b/browser/finder/index.js
  
      if (e.keyCode === 13) {
        this.refs.detail.saveToClipboard()
--      AwsMobileAnalyticsConfig.recordDynamitCustomEvent('COPY_FINDER')
+-      AwsMobileAnalyticsConfig.recordDynamicCustomEvent('COPY_FINDER')
        hideFinder()
        e.preventDefault()
      }
 diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/MarkdownNoteDetail.js
---- a/browser/main/Detail/MarkdownNoteDetail.js	2017-06-24 06:28:49.000000000 +0200
-+++ b/browser/main/Detail/MarkdownNoteDetail.js	2017-07-20 08:32:12.599711118 +0200
+--- a/browser/main/Detail/MarkdownNoteDetail.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/Detail/MarkdownNoteDetail.js	2017-07-29 09:17:01.436368456 +0200
 @@ -13,7 +13,6 @@
  import StatusBar from '../StatusBar'
  import _ from 'lodash'
  import { findNoteTitle } from 'browser/lib/findNoteTitle'
 -import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
- 
- const electron = require('electron')
- const { remote } = electron
-@@ -117,7 +116,6 @@
+ import TrashButton from './TrashButton'
+ import InfoButton from './InfoButton'
+ import InfoPanel from './InfoPanel'
+@@ -121,7 +120,6 @@
            type: 'UPDATE_NOTE',
            note: note
          })
--        AwsMobileAnalyticsConfig.recordDynamitCustomEvent('EDIT_NOTE')
+-        AwsMobileAnalyticsConfig.recordDynamicCustomEvent('EDIT_NOTE')
        })
    }
  
-@@ -156,7 +154,6 @@
+@@ -160,7 +158,6 @@
  
    handleStarButtonClick (e) {
      let { note } = this.state
--    if (!note.isStarred) AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_STAR')
+-    if (!note.isStarred) AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_STAR')
  
      note.isStarred = !note.isStarred
  
 diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/SnippetNoteDetail.js
---- a/browser/main/Detail/SnippetNoteDetail.js	2017-06-24 06:28:49.000000000 +0200
-+++ b/browser/main/Detail/SnippetNoteDetail.js	2017-07-20 08:31:34.192793920 +0200
+--- a/browser/main/Detail/SnippetNoteDetail.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/Detail/SnippetNoteDetail.js	2017-07-29 09:17:39.492978037 +0200
 @@ -16,7 +16,6 @@
  import ConfigManager from 'browser/main/lib/ConfigManager'
  import _ from 'lodash'
  import { findNoteTitle } from 'browser/lib/findNoteTitle'
 -import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
- 
- function pass (name) {
-   switch (name) {
-@@ -111,7 +110,6 @@
+ import TrashButton from './TrashButton'
+ import InfoButton from './InfoButton'
+ import InfoPanel from './InfoPanel'
+@@ -115,7 +114,6 @@
            type: 'UPDATE_NOTE',
            note: note
          })
--        AwsMobileAnalyticsConfig.recordDynamitCustomEvent('EDIT_NOTE')
+-        AwsMobileAnalyticsConfig.recordDynamicCustomEvent('EDIT_NOTE')
        })
    }
  
-@@ -150,7 +148,6 @@
+@@ -154,7 +152,6 @@
  
    handleStarButtonClick (e) {
      let { note } = this.state
--    if (!note.isStarred) AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_STAR')
+-    if (!note.isStarred) AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_STAR')
  
      note.isStarred = !note.isStarred
  
 diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
---- a/browser/main/Detail/TagSelect.js	2017-06-24 06:28:49.000000000 +0200
-+++ b/browser/main/Detail/TagSelect.js	2017-07-20 08:31:01.162578215 +0200
+--- a/browser/main/Detail/TagSelect.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/Detail/TagSelect.js	2017-07-29 09:18:10.999584995 +0200
 @@ -2,7 +2,6 @@
  import CSSModules from 'browser/lib/CSSModules'
  import styles from './TagSelect.styl'
@@ -86,13 +86,24 @@ diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
    }
  
    submitTag () {
--    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_TAG')
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_TAG')
      let { value } = this.props
      let newTag = this.refs.newTag.value.trim().replace(/ +/g, '_')
  
+diff -ura a/browser/main/lib/ConfigManager.js b/browser/main/lib/ConfigManager.js
+--- a/browser/main/lib/ConfigManager.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/lib/ConfigManager.js	2017-07-29 09:22:04.355519453 +0200
+@@ -15,7 +15,6 @@
+   navWidth: 200,
+   sortBy: 'UPDATED_AT', // 'CREATED_AT', 'UPDATED_AT', 'APLHABETICAL'
+   listStyle: 'DEFAULT', // 'DEFAULT', 'SMALL'
+-  amaEnabled: true,
+   hotkey: {
+     toggleFinder: OSX ? 'Cmd + Alt + S' : 'Super + Alt + S',
+     toggleMain: OSX ? 'Cmd + Alt + L' : 'Super + Alt + E'
 diff -ura a/browser/main/Main.js b/browser/main/Main.js
---- a/browser/main/Main.js	2017-06-24 06:28:49.000000000 +0200
-+++ b/browser/main/Main.js	2017-07-20 08:30:37.005753639 +0200
+--- a/browser/main/Main.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/Main.js	2017-07-29 09:19:05.342790885 +0200
 @@ -12,7 +12,6 @@
  import modal from 'browser/main/lib/modal'
  import InitModal from 'browser/main/modals/InitModal'
@@ -113,8 +124,8 @@ diff -ura a/browser/main/Main.js b/browser/main/Main.js
  
      this.state = {
 diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/CreateFolderModal.js
---- a/browser/main/modals/CreateFolderModal.js	2017-06-24 06:28:49.000000000 +0200
-+++ b/browser/main/modals/CreateFolderModal.js	2017-07-20 08:29:52.188793645 +0200
+--- a/browser/main/modals/CreateFolderModal.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/modals/CreateFolderModal.js	2017-07-29 09:19:50.945995347 +0200
 @@ -5,7 +5,6 @@
  import store from 'browser/main/store'
  import consts from 'browser/lib/consts'
@@ -127,13 +138,13 @@ diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/Creat
    }
  
    confirm () {
--    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_FOLDER')
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_FOLDER')
      if (this.state.name.trim().length > 0) {
        let { storage } = this.props
        let input = {
 diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteModal.js
---- a/browser/main/modals/NewNoteModal.js	2017-06-24 06:28:49.000000000 +0200
-+++ b/browser/main/modals/NewNoteModal.js	2017-07-20 08:29:20.798587895 +0200
+--- a/browser/main/modals/NewNoteModal.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/modals/NewNoteModal.js	2017-07-29 09:20:27.279212901 +0200
 @@ -5,7 +5,6 @@
  import { hashHistory } from 'react-router'
  import ee from 'browser/main/lib/eventEmitter'
@@ -146,8 +157,8 @@ diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteMod
    }
  
    handleMarkdownNoteButtonClick (e) {
--    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_MARKDOWN')
--    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_ALLNOTE')
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_MARKDOWN')
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_ALLNOTE')
      let { storage, folder, dispatch, location } = this.props
      dataApi
        .createNote(storage, {
@@ -155,15 +166,99 @@ diff -ura a/browser/main/modals/NewNoteModal.js b/browser/main/modals/NewNoteMod
    }
  
    handleSnippetNoteButtonClick (e) {
--    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_SNIPPET')
--    AwsMobileAnalyticsConfig.recordDynamitCustomEvent('ADD_ALLNOTE')
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_SNIPPET')
+-    AwsMobileAnalyticsConfig.recordDynamicCustomEvent('ADD_ALLNOTE')
      let { storage, folder, dispatch, location } = this.props
  
      dataApi
+diff -ura a/browser/main/modals/PreferencesModal/index.js b/browser/main/modals/PreferencesModal/index.js
+--- a/browser/main/modals/PreferencesModal/index.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/modals/PreferencesModal/index.js	2017-07-29 09:24:26.231548394 +0200
+@@ -45,10 +45,7 @@
+     switch (this.state.currentTab) {
+       case 'INFO':
+         return (
+-          <InfoTab
+-            dispatch={dispatch}
+-            config={config}
+-          />
++          <InfoTab />
+         )
+       case 'HOTKEY':
+         return (
+diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modals/PreferencesModal/InfoTab.js
+--- a/browser/main/modals/PreferencesModal/InfoTab.js	2017-07-29 08:04:53.000000000 +0200
++++ b/browser/main/modals/PreferencesModal/InfoTab.js	2017-07-29 09:23:38.431776264 +0200
+@@ -1,9 +1,6 @@
+ import React from 'react'
+ import CSSModules from 'browser/lib/CSSModules'
+ import styles from './InfoTab.styl'
+-import ConfigManager from 'browser/main/lib/ConfigManager'
+-import store from 'browser/main/store'
+-import AwsMobileAnalyticsConfig from 'browser/main/lib/AwsMobileAnalyticsConfig'
+ 
+ const electron = require('electron')
+ const { shell, remote } = electron
+@@ -14,7 +11,6 @@
+     super(props)
+ 
+     this.state = {
+-      config: this.props.config
+     }
+   }
+ 
+@@ -23,28 +19,6 @@
+     e.preventDefault()
+   }
+ 
+-  handleConfigChange (e) {
+-    const newConfig = { amaEnabled: this.refs.amaEnabled.checked }
+-
+-    this.setState({ config: newConfig })
+-  }
+-
+-  handleSaveButtonClick (e) {
+-    let newConfig = {
+-      amaEnabled: this.state.config.amaEnabled
+-    }
+-
+-    ConfigManager.set(newConfig)
+-
+-    store.dispatch({
+-      type: 'SET_CONFIG',
+-      config: newConfig
+-    })
+-    if (!newConfig.amaEnabled) {
+-      AwsMobileAnalyticsConfig.recordDynamicCustomEvent('DISABLE_AMA')
+-    }
+-  }
+-
+   render () {
+     return (
+       <div styleName='root'>
+@@ -94,18 +68,6 @@
+             License: GPL v3
+           </li>
+         </ul>
+-        <hr />
+-        <div styleName='policy'>Data collection policy</div>
+-        <p>We collect only the number of DAU for Boostnote and DO NOT collect any detail information</p>
+-        <p>such as your note content. You can see how it works on <a href='https://github.com/BoostIO/Boostnote' onClick={(e) => this.handleLinkClick(e)}>GitHub</a>.</p>
+-        <p>These data are only used for Boostnote improvements.</p>
+-        <input onChange={(e) => this.handleConfigChange(e)}
+-          checked={this.state.config.amaEnabled}
+-          ref='amaEnabled'
+-          type='checkbox'
+-        />
+-        Enable to send analytics to our servers<br />
+-        <button styleName='policy-submit' onClick={(e) => this.handleSaveButtonClick(e)}>Save</button>
+       </div>
+     )
+   }
 diff -ura a/package.json b/package.json
---- a/package.json	2017-06-24 06:28:49.000000000 +0200
-+++ b/package.json	2017-07-20 08:28:25.641559039 +0200
-@@ -50,8 +50,6 @@
+--- a/package.json	2017-07-29 08:04:53.000000000 +0200
++++ b/package.json	2017-07-29 09:20:48.735806094 +0200
+@@ -49,8 +49,6 @@
    "dependencies": {
      "@rokt33r/markdown-it-math": "^4.0.1",
      "@rokt33r/season": "^5.3.0",
