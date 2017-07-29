@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.12
-pkgrel=5
+pkgrel=6
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
