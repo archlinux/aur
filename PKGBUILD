@@ -3,7 +3,7 @@
 
 pkgname=dehydrated-git
 _pkgname=dehydrated
-pkgver=v0.1.0.r76.ga316a09
+pkgver=v0.4.0.r40.g0be0ab0
 pkgrel=1
 pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
 arch=(any)
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
