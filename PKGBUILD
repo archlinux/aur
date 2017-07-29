@@ -5,9 +5,8 @@
 # Contributor: Romain Bazile <gromain {dot} baz {at} gmail {dot} com>
 pkgname=boostnote
 _pkgname=Boostnote
-pkgver=0.8.11
-_pkgver=v.0.8.11
-pkgrel=3
+pkgver=0.8.12
+pkgrel=1
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
 url="https://boostnote.io/"
@@ -16,30 +15,30 @@ depends=('electron' 'nodejs')
 makedepends=('npm' 'grunt-cli' 'git')
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/BoostIO/"${_pkgname}"/archive/"${_pkgver}".tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/BoostIO/"${_pkgname}"/archive/v"${pkgver}".tar.gz"
   "${pkgname}.js"
   "${pkgname}.desktop"
   "warning-fix.patch"
-  "no-analytics.patch"
+  "disable-analytics.patch"
   )
 
 sha512sums=(
-  'bf3c640ced78c141299010012d75c2d391013446ec9f73ca5d7045112cad877a13094e9b6639b049f9e9d410652e46226717de363e0f74d880dd0549c1878fc7'
+  'aca35f68c7d579191e0019db873352b9cbce1206b4728cd0e1d609dcffc8bd02236aa6d383b97738950837eecb7ee1d14b91a03c6666f80445bfd5db2891e6dc'
   'f0abbdcca34d7f74d3dc66ffc2d0995416e7708c715d55fa58c4c2abc31d191ea42f3434e3105292b4817f83ac0ca89f456f5f93007ae80ab2426c8941f615f9'
   '18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40'
   '64fb4c4823744322b5777736fc1792fb377e433608b5456cb0e0b7053507d104a1bbe3fdc6fe193b41dfddadc1943e8220a27e26ec6d4166704f3e61e2572437'
-  '03588f657122a34874f2ededc4329df6b349f4c7a99015aa622b84aa7093cc611b975219eed773f7f8251db556dbb94f102e24dacdfb4a4e618ea2b6e4f25ef6'
+  '951a57d051d6961563915bd480155bdb28b0e779716311c657f5cfca63b4fdaa9d71de2dc3a12cdf3d57f4a0b0a735a7599781a8085c7189be40d5974f065fb9'
   )
 
 prepare() {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   patch -Np1 -i "${srcdir}/warning-fix.patch"
-  patch -Np1 -i "${srcdir}/no-analytics.patch"
+  patch -Np1 -i "${srcdir}/disable-analytics.patch"
 }
 
 build() {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-${pkgver}"
   npm install --no-optional
   grunt compile
   rm -r node_modules/
@@ -47,7 +46,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   appdir="/usr/lib/${pkgname}"
 
