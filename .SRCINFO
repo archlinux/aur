@@ -1,0 +1,23 @@
+pkgbase = phpbrew
+	pkgdesc = Brew & manage PHP versions in pure PHP at HOME
+	pkgver = 1.22.8
+	pkgrel = 1
+	url = http://phpbrew.github.io/phpbrew/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = php>=5.3
+	depends = curl
+	depends = gcc
+	depends = binutils
+	depends = autoconf
+	depends = libxml2
+	depends = zlib
+	depends = readline
+	provides = phpbrew
+	conflicts = phpbrew
+	source = https://github.com/phpbrew/phpbrew/raw/1.22.8/phpbrew
+	md5sums = 152b25c1ab39548c968a8b78e8defcf0
+
+pkgname = phpbrew
+
