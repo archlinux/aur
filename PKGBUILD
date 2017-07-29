@@ -21,7 +21,7 @@ pkgver=5.0.0svn_r305635
 pkgrel=1
 
 arch=('x86_64')
-url='http://llvm.org/'
+url='https://llvm.org/'
 license=('custom:University of Illinois')
 
 makedepends=(
@@ -37,9 +37,9 @@ makedepends=(
 options=('staticlibs' '!strip')
 
 source=(
-    "${_pkgname}::svn+http://llvm.org/svn/llvm-project/llvm/trunk"
-    'clang::svn+http://llvm.org/svn/llvm-project/cfe/trunk'
-    'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
+    "${_pkgname}::svn+https://llvm.org/svn/llvm-project/llvm/trunk"
+    'clang::svn+https://llvm.org/svn/llvm-project/cfe/trunk'
+    'compiler-rt::svn+https://llvm.org/svn/llvm-project/compiler-rt/trunk'
 )
 
 sha256sums=(
@@ -194,7 +194,7 @@ package_lib32-llvm-libs-svn() {
     # Moved from the llvm-svn package here
     mv "${srcdir}"/{BugpointPasses,LLVMgold}.so "${pkgdir}/usr/lib32/"
 
-    # Ref: http://llvm.org/docs/GoldPlugin.html
+    # Ref: https://llvm.org/docs/GoldPlugin.html
     install -m755 -d "${pkgdir}/usr/lib32/bfd-plugins"
     ln -s {/usr/lib32,"${pkgdir}/usr/lib32/bfd-plugins"}/LLVMgold.so
 
@@ -214,7 +214,7 @@ package_lib32-llvm-libs-svn() {
 
 package_lib32-clang-svn() {
     pkgdesc='C language family frontend for LLVM (32-bit)'
-    url='http://clang.llvm.org/'
+    url='https://clang.llvm.org/'
     depends=(
         'clang'
         "lib32-llvm-svn=${pkgver}-${pkgrel}"
