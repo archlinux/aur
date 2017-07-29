@@ -1,0 +1,15 @@
+pkgbase = windscribe-cli
+	pkgdesc = Port of Windscribe's VPN command line interface
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://windscribe.com/
+	install = windscribe-cli.install
+	arch = any
+	license = GPL-2+
+	depends = openvpn
+	replaces = windscribe-cli
+	source = .deb::https://windscribe.com/install/desktop/linux_deb
+	sha256sums = 9b173b1548c04524861839ff6c2e49a2a0e6143e7438cf5f5a784301010d15d1
+
+pkgname = windscribe-cli
+
