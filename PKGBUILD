@@ -4,7 +4,7 @@
 
 pkgname='minisatip-git'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)"
-pkgver=0.7.4_gdf73793
+pkgver=0.7.6_g6548479
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://minisatip.org"
@@ -16,7 +16,7 @@ depends=('libdvbcsa' 'linuxtv-dvb-apps')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
-source=("git+https://github.com/catalinii/minisatip"
+source=("git+https://github.com/catalinii/minisatip#branch=0.7-ca"
         'minisatip.service'
         'minisatip.sysuser'
         'minisatip.conf')
