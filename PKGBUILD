@@ -19,7 +19,7 @@
 
 pkgname=trilinos-git
 _pkgname=Trilinos
-pkgver=r73423.32d771b900
+pkgver=12.12.0.gd3b096f4f1
 pkgrel=1
 pkgdesc="An effort to develop algorithms and enabling technologies within an object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems."
 arch=('i686' 'x86_64')
@@ -36,7 +36,8 @@ options=('ccache')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed -e 's/root-of-trilinos-release-//' -e 's/branch-//' -e 's/^v//;s/-/./g'
 }
 
 build() {
