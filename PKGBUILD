@@ -2,7 +2,7 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 
 pkgname="wp-desktop"
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
@@ -14,8 +14,8 @@ provides=("${pkgname}")
 source_i686=("wp-desktop-linux-i686-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
 source_x86_64=("wp-desktop-linux-x64-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
 
-sha256sums_i686=('62f35efaa21c1f4003c94904e34684954e5e2211f9c0bdec6e34e2aa8d333fce')
-sha256sums_x86_64=('62f35efaa21c1f4003c94904e34684954e5e2211f9c0bdec6e34e2aa8d333fce')
+sha256sums_i686=('9d59ad659eb9bf13dd55248c6979fdc9fc781f5c1583b944e68adb51b255c0ce')
+sha256sums_x86_64=('9d59ad659eb9bf13dd55248c6979fdc9fc781f5c1583b944e68adb51b255c0ce')
 
 _wpcom_desktop="[Desktop Entry]
 Name=WordPress.com
