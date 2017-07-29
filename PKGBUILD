@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=tcharmap-git
-pkgver=r25.b7ad24e
+pkgver=r26.0e8a6f2
 pkgrel=1
 pkgdesc="Overview of unicode characters and their LaTeX counterpart"
 arch=('any')
