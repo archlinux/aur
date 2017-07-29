@@ -5,57 +5,24 @@
 # Most of this PKGBUILD + patches were taken from Fedora's dcmtk spec file, so thanks to the Fedora packagers for making this package work!
 
 pkgname=dcmtk
-pkgver=3.6.0
+pkgver=3.6.2
 
-# Fedora release (from Koji)
-_fedora_rel=18.fc22
-# Newer Fedora releases in the future can be found at http://koji.fedoraproject.org/
-
-pkgrel=6
-pkgdesc="a collection of libraries and applications implementing large parts the DICOM standard"
+pkgrel=0
+pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
 license=('other')
 depends=('zlib' 'libpng' 'libtiff' 'libxml2' 'openssl' 'charls' 'libssh')
 makedepends=('cmake' 'make')
-source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk360/${pkgname}-${pkgver}.tar.gz"
-        "http://kojipkgs.fedoraproject.org/packages/dcmtk/${pkgver}/${_fedora_rel}/src/${pkgname}-${pkgver}-${_fedora_rel}.src.rpm")
-noextract=("${pkgname}-${pkgver}-${_fedora_rel}.src.rpm")
-sha512sums=('2a9d866bafcaea72d889d24b51ff2341ee39c717aacf9ae5825c8588cd5cb01c3e341b6173abce751f6cb32c45be8888e81ccb08967cae2cca7fdcb2b61be53c'
-            'aa6ec7968f27c9b4dfde46e14ba429b3f82ce595594676667c8b70d727e3b0881485cd4557c7bc3a4acdb31a6f49e33588303060d335025b1053d0b61d848b60')
+source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk362/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('a3190287b068ae17984909dd9e8d920ddea3b590fc3888c42fc33fca4a3cdcf7dcc9bd64d994620303eef7c7ab7b4184ac21ebd1167ae2c17e4a88f641d7ef94')
 #Currently it's not building otherwise
 options=(!buildflags)
 
 build() {
   cd "${srcdir}"
 
-  # Extract RPM into another directory
-  if [ ! -d fedora ]; then 
-    mkdir fedora
-  fi
-  
-  pushd fedora
-  bsdtar -xf "../${pkgname}-${pkgver}-${_fedora_rel}.src.rpm"
-  popd
-
-  sum_original=`sha512sum "${srcdir}/fedora/${pkgname}-${pkgver}.tar.gz" | awk '{print $1}'`
-  sum_fedora=`sha512sum "${srcdir}/${pkgname}-${pkgver}.tar.gz" | awk '{print $1}'`
-
-  # Verify the authenticity of both the Fedora source and the upstream source
-  if [[ $sum_fedora != $sum_original ]]; then
-    error "sha512 sums of Fedora's source and upstream source do not match!"
-    exit
-  fi
-
   cd "${pkgname}-${pkgver}"
-
-  # Apply Fedora patches (fixes build)
-  for i in $(cat "${srcdir}/fedora/${pkgname}.spec" | grep "Patch[0-9]*:" | awk '{print $2}'); do
-    patch -p1 -i "${srcdir}/fedora/${i}"
-  done
-
-  # Remove bundled charls
-  rm -rf dcmjpls/libcharls/
 
   # Fix linker flags
   export LDFLAGS="-lssh -lz ${LDFLAGS}"
