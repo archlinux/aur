@@ -1,7 +1,7 @@
 # Maintainer: Tobias Bauer <archlinux@tobias-bauer.de>
 pkgname=ucx
 pkgver=17.0.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc="UltraCompare is a powerful compare tool for files and folders."
 arch=('i686' 'x86_64')
 url="https://www.ultraedit.com/products/ultracompare/"
@@ -33,9 +33,8 @@ package() {
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/pixmaps" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cp -R "${srcdir}/ucx" "${pkgdir}/opt"
+  cp "${srcdir}/uc.png" "${pkgdir}/opt/ucx/share/ucx"
   ln -s "/opt/ucx/bin/ucx" "${pkgdir}/usr/bin/ucx"
-  mkdir -p "${pkgdir}/usr/share/ucx"
-  mv "${srcdir}/uc.png" "${pkgdir}/usr/share/ucx"
   ln -s "/opt/ucx/share/ucx/uc.png" "${pkgdir}/usr/share/pixmaps/ucx.png"
   ln -s "/opt/ucx/share/ucx/ucx.desktop" "${pkgdir}/usr/share/applications/ucx.desktop"
   ln -s "/opt/ucx/share/doc/uex/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
