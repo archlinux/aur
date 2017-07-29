@@ -1,0 +1,9 @@
+[Unit]
+Description=SSH and HTTPS switcher
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/switcher --listen :443 --ssh 127.0.0.1:22 --default 127.0.0.1:4433
+
+[Install]
+WantedBy=multi-user.target

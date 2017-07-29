@@ -1,0 +1,9 @@
+[Unit]
+Conflicts=switcher.service
+
+[Socket]
+ListenStream=443
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

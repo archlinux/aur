@@ -1,0 +1,19 @@
+pkgbase = switcher-git
+	pkgdesc = Run SSH and HTTP(S) on the same port
+	pkgver = r7.c9d4705
+	pkgrel = 1
+	url = https://github.com/jamescun/switcher
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc-go
+	source = git+https://github.com/jamescun/switcher.git
+	source = switcher.service
+	source = switcher.socket
+	sha1sums = SKIP
+	sha1sums = a8fe9ff7916611d5f042a3bf63c592b2baafec9e
+	sha1sums = b2f36de929c1131e41c8e29037c51bedbbfb82de
+
+pkgname = switcher-git
+
