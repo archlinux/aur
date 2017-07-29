@@ -1,0 +1,16 @@
+pkgbase = believer-git
+	pkgdesc = xrandr wrapper for quick and carefree setup of multiple screens
+	pkgver = v0.1.0.r0.g323c571
+	pkgrel = 1
+	url = https://github.com/michcioperz/believer
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = xorg-xrandr
+	source = git+https://github.com/michcioperz/believer
+	md5sums = SKIP
+
+pkgname = believer-git
+
