@@ -1,11 +1,11 @@
 pkgbase = x264-git
 	pkgver = 152.20170626.r2851
 	pkgrel = 1
-	url = http://www.videolan.org/developers/x264.html
+	url = https://www.videolan.org/developers/x264.html
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = yasm
+	makedepends = nasm
 	makedepends = git
 	makedepends = ffmpeg
 	makedepends = l-smash
@@ -20,28 +20,28 @@ pkgname = x264-git
 	depends = libavutil.so
 	depends = liblsmash.so
 	depends = libswscale.so
-	provides = x264-10bit
 	provides = x264
-	conflicts = x264-10bit
+	provides = x264-
 	conflicts = x264
-	replaces = x264-10bit
 
 pkgname = libx264-git
-	pkgdesc = Library for encoding H264/AVC video streams (Git)
+	pkgdesc = Library for encoding H264/AVC video streams (8bit depth) (Git)
+	provides = libx264-8bit
 	provides = libx264.so
-	provides = x264-dev
 	provides = libx264
-	conflicts = x264-dev
 	conflicts = libx264
-	replaces = x264-dev
 
 pkgname = libx264-10bit-git
-	pkgdesc = Library for encoding H264/AVC video streams - 10bit-depth (Git)
-	provides = libx264.so
+	pkgdesc = Library for encoding H264/AVC video streams (10bit depth) (Git)
 	provides = libx264
-	provides = x264-dev
+	provides = libx264.so
 	provides = libx264-10bit
 	conflicts = libx264
-	conflicts = x264-dev
 	conflicts = libx264-10bit
+
+pkgname = libx264-all-git
+	pkgdesc = Library for encoding H264/AVC video streams (all depths) (Git)
+	provides = libx264-all
+	provides = libx264-.so
+	conflicts = libx264-all
 
