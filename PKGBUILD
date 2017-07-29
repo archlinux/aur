@@ -1,13 +1,13 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-orc
 pkgver=0.4.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=('any')
 license=('custom')
 url="https://cgit.freedesktop.org/gstreamer/orc/"
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
+makedepends=('mingw-w64-gcc' 'mingw-w64-configure' 'git')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 #source=(https://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz{,.asc}
 _commit=1163fd1027010ce16ff25bc5448948f4a5073844  # tags/orc-0.4.27^0
