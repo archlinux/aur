@@ -21,6 +21,11 @@ source=('mksh::git+http://github.com/MirBSD/mksh#branch=master'
 md5sums=('SKIP'
          'SKIP')
 
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 check() {
   cd "$srcdir/$_pkgname"
   ./test.sh
