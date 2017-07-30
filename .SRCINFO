@@ -1,6 +1,6 @@
 pkgbase = oblige
 	pkgdesc = A random level maker for games based on the Doom engine
-	pkgver = 7.50
+	pkgver = 7.666
 	pkgrel = 1
 	url = http://oblige.sourceforge.net/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = oblige
 	makedepends = xdg-utils
 	depends = fltk>=1.3.0
 	depends = hicolor-icon-theme
-	source = http://downloads.sourceforge.net/oblige/oblige-750-source.zip
-	sha256sums = b90ab697e55d51a8554cdda220beeaec71c650fbad86d58329bc513e59f9fcad
+	source = http://downloads.sourceforge.net/oblige/oblige-7666-source.zip
+	sha256sums = 21e056ad66115b47768871420bfb70e056b6a92877ec7eda72a04e69640307d6
 
 pkgname = oblige
 

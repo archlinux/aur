@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=oblige
-pkgver=7.50
+pkgver=7.666
 pkgrel=1
 pkgdesc='A random level maker for games based on the Doom engine'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('fltk>=1.3.0' 'hicolor-icon-theme')
 makedepends=('xdg-utils')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver/./}-source.zip")
-sha256sums=('b90ab697e55d51a8554cdda220beeaec71c650fbad86d58329bc513e59f9fcad')
+sha256sums=('21e056ad66115b47768871420bfb70e056b6a92877ec7eda72a04e69640307d6')
 
 build() {
     cd Oblige-${pkgver}-source
