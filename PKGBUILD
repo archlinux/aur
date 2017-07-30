@@ -1,0 +1,30 @@
+# Maintainer: Morten Linderud <morten@linderud.pw>  
+pkgbase="python-anyconfig"
+pkgname=("python-anyconfig" "python2-anyconfig")
+pkgver=0.9.3
+pkgrel=1
+pkgdesc='Generic access to configuration files in any formats (to be in the future)'
+url='https://github.com/ssato/python-anyconfig'
+arch=('any')
+license=('MIT')
+makedepends=('python' 'python-setuptools'
+             'python2' 'python2-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ssato/python-anyconfig/archive/RELEASE_${pkgver}.tar.gz")
+sha256sums=('f6a65fa80c5a8718e9b2aebd23395db4df31aa02e965c9aca6b110c4b1f762c6')
+
+build() {
+    cd "${srcdir}/${pkgbase}-RELEASE_${pkgver}"
+    python setup.py build
+    python2 setup.py build
+}
+
+package_python-anyconfig() {
+    cd "${srcdir}/${pkgbase}-RELEASE_${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}
+
+package_python2-anyconfig() {
+    cd "${srcdir}/${pkgbase}-RELEASE_${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}
+# vim:set ft=sh ts=2 sw=2 et:
