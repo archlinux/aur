@@ -1,4 +1,4 @@
-# Maintainers: edoz90
+# Maintainer: edoz90
 
 pkgname=t50
 _major=5
@@ -18,12 +18,12 @@ md5sums=('51ad7a01543cd07ecb19882eed6ff0ee')
 build() {
   cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr --mandir=/usr/share/man
-  make
+  make sbindir=/usr/bin
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir/" sbindir=/usr/bin install
 }
 
 # vim:set et sw=2 sts=2 tw=80:
