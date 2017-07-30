@@ -1,6 +1,6 @@
 # Maintainer: ber532k <ber532k@gmx.de>
 pkgname=bower-mail
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="A curses terminal client for the Notmuch email system"
 arch=('any')
