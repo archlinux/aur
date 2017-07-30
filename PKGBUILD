@@ -27,11 +27,12 @@ build() {
 	cd ${srcdir}/${pkgname}
 
 	export CFLAGS="-mtune=generic"
-	./configure --prefix=${pkgdir}/usr
+	./configure --prefix=/usr
 	make
 }
 
 package() {
 	cd ${srcdir}/${pkgname}
-	make install
+
+	make DESTDIR=${pkgdir} install
 }
