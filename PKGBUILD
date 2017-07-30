@@ -14,7 +14,7 @@ license=('custom')
 arch=('i686' 'x86_64')
 depends=('glibc') # Make namcap happy.
 makedepends=('git')
-conflicts=('mksh')
+conflicts=('mksh' 'mksh-static' 'mksh-static-git')
 install=mksh.install
 source=('mksh::git+http://github.com/MirBSD/mksh#branch=master'
         'https://www.mirbsd.org/TaC-mksh.txt')
