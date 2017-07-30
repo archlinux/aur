@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kcodecs
-pkgver=5.34.0
+pkgver=5.36.0
 pkgrel=1
 arch=(any)
 pkgdesc="Provide a collection of methods to manipulate strings using various encodings (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kcodecs-${pkgver}.tar.xz"{,.sig})
-sha256sums=('50ab884a0ec9ee535ea5354323645858fe9969f93af3e1503478024731d1a14c'
+sha256sums=('6cff3e88f9cd623509caad8cc4e20993189fdc5071f9b5c05fbcf58850dabe6c'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
