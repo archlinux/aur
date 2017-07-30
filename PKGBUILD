@@ -2,11 +2,11 @@
 
 pkgname=srain-git
 pkgver=0.679.28fac2b
-pkgrel=1
-pkgdesc="Modern, beautiful IRC client written in GTK+ 3"
+pkgrel=2
+pkgdesc="Modern, beautiful IRC client written in GTK+ 3, git version"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="https://github.com/SilverRainZ/srain"
+url="https://srain.im"
 makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'imagemagick')
 depends=('gtk3' 'python' 'curl' 'libnotify' 'libconfig')
 optdepends=(
@@ -28,7 +28,6 @@ pkgver() {
 build() {
     cd ${pkgname%-git}
 
-    mkdir build || true
     ./configure --prefix=/usr --config-dir=/etc --disable-debug
     make
 }
