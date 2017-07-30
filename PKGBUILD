@@ -13,7 +13,7 @@ url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('glibc') # Make namcap happy.
-conflicts=('mksh')
+conflicts=('mksh' 'mksh-git' 'mksh-static-git')
 install=mksh.install
 source=("https://www.mirbsd.org/MirOS/dist/mir/mksh/$_pkgname-$_pkgver.tgz"
         'https://www.mirbsd.org/TaC-mksh.txt')
