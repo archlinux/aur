@@ -20,7 +20,7 @@ prepare()   {
 }
 
 package()   {
-    ar x desktop_${pkgver}_amd64.deb
+    ar x desktop_${pkgver//_/-}_amd64.deb
     tar xvf data.tar.xz
     sudo cp -r "${pkgdir}/../../src/usr/share/" /usr/
     sudo cp -r "${pkgdir}/../../src/opt/GithubDesktop" /opt/
