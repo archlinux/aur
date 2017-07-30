@@ -1,7 +1,7 @@
 # Maintainer: Shengyu Zhang <arch at srain.im>
 
 pkgname=srain-dev
-pkgver=0.679.28fac2b
+pkgver=0.682.7e22a1e
 pkgrel=1
 pkgdesc="Modern, beautiful IRC client written in GTK+ 3, develop and debug version"
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ conflicts=('srain')
 provides=('srain')
 source=("git+https://github.com/SilverRainZ/srain.git#branch=dev")
 sha256sums=('SKIP')
+options=('!strip')
 
 _prefix='/usr'
 
@@ -44,7 +45,7 @@ package() {
 
     cat << EOF > ${pkgdir}${_prefix}/bin/srain
 !/bin/sh
-gdb ${pkgdir}${_prefix}/bin/srain-dev -ex 'r' -ex 'bt' -ex 'q'
+gdb ${_prefix}/bin/srain-dev -ex 'r' -ex 'bt' -ex 'q'
 EOF
 
     chmod 755 ${pkgdir}${_prefix}/bin/srain
