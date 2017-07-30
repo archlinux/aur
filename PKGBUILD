@@ -7,11 +7,11 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 # latest commit on stable branch
-_commit='27c7bc970d9e7ffe060688a8dd77b7747503a564'
+_commit='d52e2bb9c20216972754c054e8534bca28baab66'
 # Bump this to latest major release for signed tag verification,
 # the commit count is handled by pkgver() function.
-pkgver=233.75
-pkgrel=3
+pkgver=234.11
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
 groups=('selinux')
@@ -19,7 +19,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
-             'libselinux')
+             'meson' 'libselinux')
 options=('strip')
 # Retrieve the splash-arch.bmp image from systemd package sources, as this
 # file is too big to fit in the AUR.
@@ -54,21 +54,9 @@ validpgpkeys=(
 )
 
 _backports=(
-  # build-sys: make RPM macros installation path configurable
-  'ff2e33db54719bfe8feea833571652318c6d197c'
-  # resolved: do not start LLMNR or mDNS stack when no network enables them
-  '2c7ef56459bf6fe7761595585aa4eed5cd183f27^..2c7ef56459bf6fe7761595585aa4eed5cd183f27^2'
-  # networkd: RFC compliant autonomous prefix handling (#5636)
-  '6554550f35a7976f9110aff94743d3576d5f02dd'
-  # core: do not print color console message about gc-ed jobs
-  '047d7219fde661698d3487fc49e9878c61eefd77'
 )
 
 _reverts=(
-  # core: store the invocation ID in the per-service keyring
-  'b3415f5daef49642be3d5f417b8880c078420ff7'
-  # core: run each system service with a fresh session keyring
-  '74dd6b515fa968c5710b396a7664cac335e25ca8'
 )
 
 _validate_tag() {
@@ -124,50 +112,39 @@ prepare() {
     git revert -n "$_commit"
   done
 
-  # nss-resolve: drop the internal fallback to libnss_dns
-  git show '5486a31d287f26bcd7c0a4eb2abfa4c074b985f1' -- \
-    'Makefile.am' 'src/nss-resolve/nss-resolve.c' | git apply --index
-  
-  # Resolved packet size (#6214) (FS#54619, CVE-2017-9445)
-  git show '751ca3f1de316ca79b60001334dbdf54077e1d01' \
-    'db848813bae4d28c524b3b6a7dad135e426659ce' \
-    '88795538726a5bbfd9efc13d441cb05e1d7fc139' \
-    '64a21fdaca7c93f1c30b21f6fdbd2261798b161a' \
-    -- . ':!src/resolve/meson.build'  | git apply --index
-
-  ./autogen.sh
+  # core: store the invocation ID in the per-service keyring
+  # core: run each system service with a fresh session keyring
+  git show 'b3415f5daef49642be3d5f417b8880c078420ff7' \
+    '74dd6b515fa968c5710b396a7664cac335e25ca8' \
+    -- . ':!src/test/test-id128.c' | git apply --reverse --index
 }
 
 build() {
-  cd "${pkgbase/-selinux}-stable"
-
   local timeservers=({0..3}.arch.pool.ntp.org)
 
-  local configure_options=(
-    --libexecdir=/usr/lib
-    --localstatedir=/var
-    --sysconfdir=/etc
+  local meson_options=(
+    -Daudit=true
+    -Dgnuefi=true
+    -Dima=false
+    -Dlz4=true
+    -Db_lto=true
+    -Dselinux=true
 
-    --enable-audit
-    --enable-lz4
-    --enable-gnuefi
-    --enable-selinux
-    --disable-ima
-
-    --with-sysvinit-path=
-    --with-sysvrcnd-path=
-    --with-ntp-servers="${timeservers[*]}"
-    --with-default-dnssec=no
-    --with-dbuspolicydir=/usr/share/dbus-1/system.d
-    --without-kill-user-processes
-    --with-rpmmacrosdir=no
+    -Ddbuspolicydir=/usr/share/dbus-1/system.d
+    -Ddefault-dnssec=no
     # TODO(dreisner): consider changing this to unified
-    --with-default-hierarchy=hybrid
+    -Ddefault-hierarchy=hybrid
+    -Ddefault-kill-user-processes=false
+    -Dfallback-hostname='archlinux'
+    -Dntp-servers="${timeservers[*]}"
+    -Drpmmacrosdir=no
+    -Dsysvinit-path=
+    -Dsysvrcnd-path=
   )
 
-  ./configure "${configure_options[@]}"
+  meson "${pkgbase/-selinux}-stable" build "${meson_options[@]}"
 
-  make
+  ninja -C build
 }
 
 package_systemd-selinux() {
@@ -197,7 +174,7 @@ package_systemd-selinux() {
           etc/udev/udev.conf)
   install="systemd.install"
 
-  make -C "${pkgbase/-selinux}-stable" DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
@@ -266,7 +243,12 @@ package_libsystemd-selinux() {
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=("${pkgname/-selinux}")
 
-  make -C "${pkgbase/-selinux}-stable" DESTDIR="$pkgdir" install-rootlibLTLIBRARIES
+  # meson does not support installing subsets of files, no?
+  # So do a full install to temporary directory, then install what we need.
+  DESTDIR="$srcdir"/full-install ninja -C build install
+
+  install -dm755 "$pkgdir"/usr/lib/
+  cp --archive "$srcdir"/full-install/usr/lib/lib{nss_*,systemd,udev}.so* "$pkgdir"/usr/lib/
 }
 
 package_systemd-sysvcompat-selinux() {
@@ -279,7 +261,7 @@ package_systemd-sysvcompat-selinux() {
 
   install -dm755 "$pkgdir"/usr/share/man/man8
   cp -d --no-preserve=ownership,timestamp \
-    "${pkgbase/-selinux}-stable"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
+    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
     "$pkgdir"/usr/share/man/man8
 
   install -dm755 "$pkgdir/usr/bin"
