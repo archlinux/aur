@@ -38,7 +38,7 @@ NOGZ="YES"        # Don't compress el files. Info and man pages are
 
 #######################################################################
 pkgname=emacs-git
-pkgver=26.0.50.129666
+pkgver=26.0.50.130000
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
@@ -177,10 +177,16 @@ if [[ $ATHENA = "YES" ]]; then
   );
 fi
 
+# Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
+# dconf and gconf break font settings set in ~/.emacs
+# If you insist you'll need to play gymnastics with
+# set-frame-font and set-menu-font. Good luck!
 if [[ $GTK2 = "YES" ]]; then 
-  _conf+=( '--with-x-toolkit=gtk2' '--with-gconf' '--without-gsettings' );
+  #_conf+=( '--with-x-toolkit=gtk2' '--with-gconf' '--without-gsettings' );
+  _conf+=( '--with-x-toolkit=gtk2' '--without-gconf' '--without-gsettings' );
 else
-  _conf+=( '--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings' ); 
+  #_conf+=( '--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings' ); 
+  _conf+=( '--with-x-toolkit=gtk3' '--without-gconf' '--without-gsettings' ); 
 fi
 
 if [[ ! $GPM = "YES" ]]; then 
