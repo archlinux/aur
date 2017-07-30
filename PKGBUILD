@@ -4,12 +4,12 @@ pkgver=0.1.19
 pkgrel=1
 pkgdesc="CLI for Amber framework that makes interfacing with your file system and applications much smoother."
 arch=(i686 x86_64)
-url='https://github.com/Amber-Crystal/amber_cmd'
+url='https://github.com/amber-crystal/amber-cmd'
 license=(MIT)
 depends=('sqlite' 'gc' 'libatomic_ops' 'libevent' 'llvm-libs' 'pcre')
 makedepends=('crystal' 'shards' 'llvm')
 source=("https://github.com/amber-crystal/amber-cmd/archive/v$pkgver.tar.gz")
-sha256sums=('721d8d9dbd13df2187e7d6ffad5b00894908dd18dbc90d65c85272422f84f4a5')
+sha256sums=('37110d180bccd4a78294e96cadde067b264d0b4bc14e977012b34d16a72e03d5')
 
 build() {
   cd "$pkgname-$pkgver"
