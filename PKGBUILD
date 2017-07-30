@@ -7,7 +7,7 @@ url='http://www.captvty.fr'
 license=('custom')
 depends=('winetricks' 'wine-mono' 'libjpeg6-turbo')
 depends_x86_64=('lib32-libjpeg6-turbo')
-makedepends=('imagemagick' 'gendesk' 'icoutils')
+makedepends=('imagemagick' 'gendesk')
 _code=$(curl -s http://captvty.fr/ | grep -Pom 1 '(?<=ref=\")[^\"].*captvty-.*.zip' | awk -F "/" '{print $(NF-1)}')
 source=("http://releases.captvty.fr/$_code/captvty-$pkgver.zip"
         "${pkgname}.ico::http://captvty.fr/favicon.ico?v=2"
