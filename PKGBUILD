@@ -1,8 +1,8 @@
 # Maintainer: Andrei Alexeyev <akari@alienslab.net>
 
 pkgname=rexuiz-git
-pkgver=r78.ce815fa
-pkgrel=2
+pkgver=r83.3a38192
+pkgrel=1
 arch=('any')
 pkgdesc="An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter."
 url="http://rexuiz.top/"
@@ -10,6 +10,7 @@ license=("GPL2")
 depends=(
     'nexuiz-data'
     'rexuiz-bytecode-git'
+    'rexuiz-dlc-essential-git'
     'darkplaces-rm-git'
     'curl'
     'freetype2'
@@ -26,6 +27,7 @@ makedepends=(
 optdepends=(
     'libircclient: IRC integration (server-side)'
     'libmaxminddb: scoreboard country flags support (server-side)'
+    'rexuiz-dlc-extra-git: additional content, downloaded in-game if not installed'
 )
 conflicts=('rexuiz')
 provides=('rexuiz')
