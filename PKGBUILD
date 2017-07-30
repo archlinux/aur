@@ -11,7 +11,7 @@ makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://www.netlib.org/f2c/libf2c.zip" libf2c-1.patch)
 noextract=("libf2c.zip")
-sha256sums=('5dff29c58b428fa00cd36b1220e2d71b9882a658fdec1aa094fb7e6e482d6765'
+sha256sums=('ca404070e9ce0a9aaa6a71fc7d5489d014ade952c5d6de7efb88de8e24f2e8e0'
             '87094ca646b67339bcb8faef5d400249e4abf744086398788d15c17f306eda36')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
