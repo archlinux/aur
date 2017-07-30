@@ -1,6 +1,7 @@
+# Maintainer: Benjamin Maisonnas <ben@wainei.net>
 _pkgname=backupninja
 pkgname=$_pkgname-borg-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A centralized way to configure and schedule many different backup utilities"
 arch=('any')

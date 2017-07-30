@@ -1,6 +1,6 @@
 pkgbase = backupninja-borg-git
 	pkgdesc = A centralized way to configure and schedule many different backup utilities
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://0xacab.org/riseuplabs/backupninja
 	arch = any
