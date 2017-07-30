@@ -1,6 +1,6 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.29.2
+	pkgver = 2.30.1
 	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/utils/util-linux/
 	arch = i686
@@ -9,38 +9,36 @@ pkgbase = util-linux-selinux
 	license = GPL2
 	makedepends = systemd
 	makedepends = python
+	makedepends = libcap-ng
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.29/util-linux-2.29.2.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.29/util-linux-2.29.2.tar.sign
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.30/util-linux-2.30.1.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.30/util-linux-2.30.1.tar.sign
 	source = pam-login
 	source = pam-common
 	source = pam-su
 	source = util-linux.sysusers
-	source = 0001-sfdisk-support-empty-label-use-case.patch
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
-	md5sums = 63c40c2068fcbb7e1d5c1d281115d973
+	md5sums = 5e5ec141e775efe36f640e62f3f8cd0d
 	md5sums = SKIP
 	md5sums = 4368b3f98abd8a32662e094c54e7f9b1
 	md5sums = a31374fef2cba0ca34dfc7078e2969e4
 	md5sums = fa85e5cce5d723275b14365ba71a8aad
 	md5sums = dfc9904f67ebc54bb347ca3cc430ef2b
-	md5sums = 6d2e3915124938577f0ff18ef701c87f
 
 pkgname = util-linux-selinux
 	depends = pam-selinux
 	depends = shadow-selinux
 	depends = coreutils-selinux
 	depends = libsystemd-selinux
+	depends = libcap-ng
 	depends = libutil-linux-selinux
 	optdepends = python: python bindings to libmount
-	provides = util-linux-ng=2.29.2
 	provides = eject
 	provides = zramctl
-	provides = util-linux=2.29.2-2
-	provides = selinux-util-linux=2.29.2-2
-	conflicts = util-linux-ng
+	provides = util-linux=2.30.1-2
+	provides = selinux-util-linux=2.30.1-2
 	conflicts = eject
 	conflicts = zramctl
 	conflicts = util-linux
@@ -59,6 +57,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.29.2-2
+	provides = libutil-linux=2.30.1-2
 	conflicts = libutil-linux
 

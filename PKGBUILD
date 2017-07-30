@@ -8,8 +8,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-_pkgmajor=2.29
-pkgver=${_pkgmajor}.2
+_pkgmajor=2.30
+pkgver=${_pkgmajor}.1
 pkgrel=2
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
@@ -20,27 +20,19 @@ groups=('selinux')
 #   systemd depends on libutil-linux and util-linux depends on libudev
 #   provided by libsystemd (FS#39767).  To break this cycle, make
 #   util-linux-selinux depend on systemd at build time.
-makedepends=('systemd' 'python' 'libselinux')
+makedepends=('systemd' 'python' 'libcap-ng' 'libselinux')
 license=('GPL2')
 options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
         pam-{login,common,su}
-        'util-linux.sysusers'
-        '0001-sfdisk-support-empty-label-use-case.patch')
-md5sums=('63c40c2068fcbb7e1d5c1d281115d973'
+        'util-linux.sysusers')
+md5sums=('5e5ec141e775efe36f640e62f3f8cd0d'
          'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
          'fa85e5cce5d723275b14365ba71a8aad'
-         'dfc9904f67ebc54bb347ca3cc430ef2b'
-         '6d2e3915124938577f0ff18ef701c87f')
-
-prepare() {
-  cd "${pkgbase/-selinux}-$pkgver"
-
-  patch -Np1 <../0001-sfdisk-support-empty-label-use-case.patch
-}
+         'dfc9904f67ebc54bb347ca3cc430ef2b')
 
 build() {
   cd "${pkgbase/-selinux}-$pkgver"
@@ -63,13 +55,13 @@ build() {
 }
 
 package_util-linux-selinux() {
-  conflicts=('util-linux-ng' 'eject' 'zramctl'
+  conflicts=('eject' 'zramctl'
              "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-  provides=("util-linux-ng=$pkgver" 'eject' 'zramctl'
+  provides=('eject' 'zramctl'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}"
             "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
-           'libsystemd-selinux' 'libutil-linux-selinux')
+           'libsystemd-selinux' 'libcap-ng' 'libutil-linux-selinux')
   optdepends=('python: python bindings to libmount')
   backup=(etc/pam.d/chfn
           etc/pam.d/chsh
@@ -102,12 +94,6 @@ package_util-linux-selinux() {
 
   ### runtime libs are shipped as part of libutil-linux
   rm "$pkgdir"/usr/lib/lib*.{a,so}*
-
-  ### tailf has been deprecated for a while. let's not include it anymore.
-  rm \
-    "$pkgdir"/usr/bin/tailf \
-    "$pkgdir"/usr/share/bash-completion/completions/tailf \
-    "$pkgdir"/usr/share/man/man1/tailf.1
 
   ### install systemd-sysusers
   install -Dm644 "$srcdir/util-linux.sysusers" \
