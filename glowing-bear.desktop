@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=GlowingBear
+Comment=A web client for WeeChat
+Comment[fr]=Un client web pour Weechat
+Exec=glowing-bear
+Icon=glowing-bear
+Terminal=false
+Categories=Internet;Communication;IRC;
