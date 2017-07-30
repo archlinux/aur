@@ -1,5 +1,5 @@
 # Maintainer: Faustino Aguilar <faustinoaq.github.io>
-pkgname=amber_cmd
+pkgname=amber-cmd
 pkgver=0.1.19
 pkgrel=1
 pkgdesc="CLI for Amber framework that makes interfacing with your file system and applications much smoother."
