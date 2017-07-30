@@ -15,5 +15,5 @@ md5sums=('793d19f5172b4b56d052609c5a5f1713')
 
 
 package() {
-    make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir/" PREFIX="/usr" install
+    make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir" PREFIX="/usr" install
 }
