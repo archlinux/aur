@@ -3,8 +3,8 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=linux-selinux
-_srcname=linux-4.11
-pkgver=4.11.9
+_srcname=linux-4.12
+pkgver=4.12.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -23,12 +23,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            'a112d1330817bac401dbbd1e2c8aacb1b725bc28239e2ca58281ea3754deceb5'
+            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
             'SKIP'
-            '07caad444b2bfea964135d161742ea84601bed448393f3389a486b5cd10f6db5'
-            '6dd031414c3677ecafb2886a38616bca0e8a52850150f9341bc95038118541c4'
+            'b8c051b5000824ef7877c27b44a7987376927dc66f9a04d08f9abaf4f49618d5'
+            '2dce86e0d0639bb648641cca1a9c9d05646871ba01af84f4c73f3f022de47272'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
