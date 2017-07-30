@@ -1,0 +1,18 @@
+pkgbase = php-livereload-git
+	pkgdesc = LiveReload server in PHP
+	pkgver = 0.1.2.0.g11759b9
+	pkgrel = 1
+	url = https://github.com/RickySu/php-livereload
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = composer
+	makedepends = php-box
+	depends = php
+	provides = php-livereload
+	conflicts = php-livereload
+	source = git+https://github.com/RickySu/php-livereload
+	md5sums = SKIP
+
+pkgname = php-livereload-git
+
