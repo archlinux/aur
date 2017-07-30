@@ -2,8 +2,8 @@
 # Maintainer: Mark Weiman <markzz@archlinux.net>
 
 pkgbase=linux-vfio
-_srcname=linux-4.11
-pkgver=4.11.9
+_srcname=linux-4.12
+pkgver=4.12.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,16 +23,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # patches for pci passthrough
         'add-acs-overrides.patch'
         'i915-vga-arbiter.patch')
-sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
+sha256sums=('a45c3becd4d08ce411c14628a949d08e2433d8cdeca92036c7013980e93858ab'
             'SKIP'
-            'a112d1330817bac401dbbd1e2c8aacb1b725bc28239e2ca58281ea3754deceb5'
+            '13ad942e5144acafb849942c320aa6ab887cd2ffbba033c622f7a88eb2c32143'
             'SKIP'
-            'f330007da72867bb86556d1f8b84b8a4c8148a5ed5195ae25570a5da61428733'
-            '9dd9aa4a8ec613cc8261e40db897685d75e3d426219ed8d21fa3a6bc72a27a32'
+            'df55887a43dcbb6bd35fd2fb1ec841427b6ea827334c0880cbc256d4f042a7a1'
+            'bf84528c592d1841bba0662242f0339a24a1de384c31f28248631e8be9446586'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
-            '773b2a7db63dbc38336e04e25d5017a2a02c49e424cfa32beedb4e47a5027d2c'
-            'e82ea0c7752b5845655043bb209e39ca3a9fe9c0841b100a5d182261c1ab7068')
+            'ea3322ba02df2ea376132fcb268b66ceede1b582bf6505b47227259b091d39e1'
+            '80139dc580ca1ccaff3099eff6642311172ae950178aae5838fcfe4474e38f98')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
