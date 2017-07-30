@@ -1,7 +1,7 @@
-pkgbase=('python-flask-socketio-git-git')
-pkgname=('python-flask-socketio-git-git')
+pkgbase=('python-flask-socketio-git')
+pkgname=('python-flask-socketio-git')
 _module='Flask-SocketIO'
-pkgver='2.9.0'
+pkgver='2.9.1'
 pkgrel=1
 pkgdesc="Socket.IO integration for Flask applications"
 url="http://github.com/miguelgrinberg/Flask-SocketIO/"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/f/flask-socketio/Flask-SocketIO-${pkgver}.tar.gz")
-md5sums=('d558846ee48f9d72b16c25cf3f6d9798')
+md5sums=('f95e187a8013fbdd7aeb09560785d98b')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
