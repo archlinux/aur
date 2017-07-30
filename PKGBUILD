@@ -1,8 +1,8 @@
 # Maintainer: Lex Black <autumn-wind at web dot de>
 
 pkgname=rofi-pass
-pkgver=1.5.0
-pkgrel=3
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="bash script to handle pass storages in a convenient way"
 arch=('any')
 url='https://github.com/carnager/rofi-pass'
@@ -11,7 +11,7 @@ depends=('xdg-utils' 'rofi' 'gawk' 'pass' 'pwgen' 'xdotool' 'xclip')
 optdepends=('passed-git: change fieldnames in password files')
 conflicts=('rofi-pass-git')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/carnager/${pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('23c6bf26b1d13952bec7a7bb96083db1')
+md5sums=('793d19f5172b4b56d052609c5a5f1713')
 
 
 package() {
