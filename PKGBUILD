@@ -7,7 +7,7 @@ _pkgname=sdl
 pkgname=$_pkgname-hg
 _pkgver=1.2.15
 pkgver=1.2.15.r11056.1138bf8c009a
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard"
 arch=('i686' 'x86_64')
 url="https://www.libsdl.org"
@@ -24,7 +24,13 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "SDL/"
-  printf "%s.r%s.%s" "$_pkgver" "$(hg identify -n)" "$(hg identify -i)"
+  printf "%s.r%s.%s" "$_pkgver" "$(hg identify -n | sed 's/+//')" "$(hg identify -i | sed 's/+//')"
+}
+
+prepare() {
+  cd "SDL/"
+  # https://bugzilla.libsdl.org/show_bug.cgi?id=1430
+  hg backout --no-commit 5620:ad4ed9f0336f
 }
 
 build() {
