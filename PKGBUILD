@@ -3,6 +3,7 @@
 pkgname="tpm2-abrmd"
 pkgver="1.1.0"
 pkgrel=1
+pkgdesc="TPM2 Access Broker & Resource Manager"
 license=('BSD')
 arch=('x86_64')
 depends=('glib2' 'tpm2-tss')
