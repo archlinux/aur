@@ -6,8 +6,8 @@ pkgdesc="CLI for Amber framework that makes interfacing with your file system an
 arch=(i686 x86_64)
 url='https://github.com/amber-crystal/amber-cmd'
 license=(MIT)
-depends=('sqlite' 'gc' 'libatomic_ops' 'libevent' 'llvm-libs' 'pcre')
-makedepends=('crystal' 'shards' 'llvm')
+depends=('sqlite' 'gc' 'libevent' 'libyaml' 'pcre')
+makedepends=('crystal' 'shards')
 source=("https://github.com/amber-crystal/amber-cmd/archive/v$pkgver.tar.gz")
 sha256sums=('37110d180bccd4a78294e96cadde067b264d0b4bc14e977012b34d16a72e03d5')
 
@@ -28,5 +28,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 bin/amber "$pkgdir/usr/bin/amber"
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/amber/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/amber-cmd/LICENSE
 }
