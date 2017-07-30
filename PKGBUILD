@@ -2,7 +2,7 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
-pkgver=0.7.0
+pkgver=0.7.1_beta4
 pkgrel=4
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
@@ -12,8 +12,8 @@ install=github-desktop.install
 depends=('git' 'electron' 'nodejs')
     optdepends=('hub: CLI interface for GitHub.' )
 makedepends=('libcurl-openssl-1.0')
-source=(https://github.com/gengjiawen/desktop/releases/download/v${pkgver//_/-}/desktop_${pkgver}_amd64.deb)
-md5sums=('452cd025172b9431e77a1e321f67cc7e')
+source=(https://github.com/gengjiawen/desktop/releases/download/v${pkgver//_/-}/desktop_${pkgver//_/-}_amd64.deb)
+md5sums=('2d232e9856d9f658ba33ebc533e3505c')
 
 prepare()   {
     sudo -v
