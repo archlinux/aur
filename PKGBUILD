@@ -40,7 +40,7 @@ package_python2-data() {
   depends=('python2' 'python2-setuptools' 'python2-funcsigs'
            'python2-decorator' 'python2-six')
   cd "$srcdir/data-$pkgver-python2"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
   
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
