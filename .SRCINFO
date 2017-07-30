@@ -1,7 +1,7 @@
 pkgbase = rofi-pass
 	pkgdesc = bash script to handle pass storages in a convenient way
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/carnager/rofi-pass
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = rofi-pass
 	depends = rofi
 	depends = gawk
 	depends = pass
+	depends = pwgen
 	depends = xdotool
 	depends = xclip
 	optdepends = passed-git: change fieldnames in password files
