@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://fiji.sc/'
 license=('GPL')
 _licenses_plugins=('GPL' 'AL' 'SPL' 'LGPL' 'EPL' 'GPL2' 'PD' 'BIG' 'imagescience' 'BSD' 'AGPL' 'MPL1.1' 'CPL' 'PSF2' 'JSF2.1' 'JPSL' 'BSD-like' 'CPL1.0' 'BSDR' 'Citationware') ## Each component has it's individual license, but the AUR does not allow such a big license array ("Error - Package license cannot be greater than 40 characters"), so they are listed in this variable just for information purposes. (The PKGBUILD does not deal with that variable at all.)
-depends=('java-runtime>=6')
+depends=('java-runtime>=8')
 optdepends=('java3d: For the 3D viewer plugin.')
 provides=("fiji=${pkgver}" "fiji-binary=${pkgver}")
 replaces=("fiji<=${pkgver}" "fiji-binary<=${pkgver}")
