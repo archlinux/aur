@@ -1,0 +1,15 @@
+pkgbase = cec-utils
+	pkgdesc = This package provides the CEC utility programs.
+	pkgver = 4.0.1
+	pkgrel = 0
+	url = http://libcec.pulse-eight.com
+	arch = x86_64
+	license = GPL
+	makedepends = ncurses
+	makedepends = libtinfo
+	makedepends = p8-platform
+	source = http://ftp.br.debian.org/debian/pool/main/libc/libcec/cec-utils_4.0.1+dfsg1-1_amd64.deb
+	sha512sums = 3caa8ee9137c7458068c331a55709ac06bcf201f4e519ac91aad055244e736c22dc1480b5fc39a9caa843326bbbb233a2edbcd9a141445b5aa21dc2ac0fe4746
+
+pkgname = cec-utils
+
