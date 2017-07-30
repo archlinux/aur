@@ -1,0 +1,18 @@
+pkgbase = python-xapian
+	pkgdesc = Python 3 bindings for Xapian
+	pkgver = 1.4.4
+	pkgrel = 1
+	epoch = 1
+	url = http://xapian.org/docs/bindings/python/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-sphinx
+	makedepends = xapian-core=1:1.4.4
+	source = http://oligarchy.co.uk/xapian/1.4.4/xapian-bindings-1.4.4.tar.xz
+	sha512sums = 006e771b3ea654130b4f76f1a1caee576fd5a3fa6317ca44f1e5483671e8c83073ecbde4f3fc7f84c75590eec53acb59701af4cf9bcd72355ed9d53924492b53
+
+pkgname = python-xapian
+	depends = python
+	depends = xapian-core=1:1.4.4
+
