@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Tjahneee <b2t@protonmail.com>
+# Maintainer: Tjahneee <t3e@protonmail.com>
 
 pkgname=tic-80
 pkgver=0.30.0
