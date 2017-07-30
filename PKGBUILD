@@ -13,9 +13,10 @@ arch=('i686' 'x86_64')
 url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'custom')
 depends=('glibc' 'binutils' 'gmp' 'mpfr' 'libmpc' 'ppl' 'isl' 'cloog' 'elfutils')
-makedepends=('flex' 'bison' 'setconf') # 'gcc49') # gcc48 also works if you change -4.9 below
-conflicts=('gcc45-multilib')
-options=('!buildflags' 'staticlibs' '!libtool')
+makedepends=('flex' 'bison' 'setconf')
+#makedepends+=('gcc49')
+conflicts=("gcc${_pkgver//\./}-multilib")
+options=('staticlibs' '!libtool')
 source=(
   "http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
   'gcc-hash-style-both.patch'
@@ -33,15 +34,15 @@ prepare() {
   cd "${_basedir}"
 
   # Do not install libiberty
-  sed -i -e 's:install_to_$(INSTALL_DEST) ::' 'libiberty/Makefile.in'
+  sed -e 's/install_to_$(INSTALL_DEST) //' -i 'libiberty/Makefile.in'
 
   # Do not run fixincludes
-  sed -i -e 's@\./fixinc\.sh@-c true@' 'gcc/Makefile.in'
+  sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
   patch -Np0 -i "${srcdir}/gcc-hash-style-both.patch"
 
   case "${CARCH}" in
-  'x86_64') patch -Np1 -i "${srcdir}/gcc_pure64.patch";;
+  'x86_64') patch -Np1 -i '../gcc_pure64.patch';;
   esac
 
   echo "${pkgver}" > 'gcc/BASE-VER'
@@ -50,31 +51,6 @@ prepare() {
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-  cd 'gcc-build'
-
-  # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-  ../configure \
-    --build="${CHOST}" \
-    --disable-libgomp \
-    --disable-libmudflap \
-    --disable-libssp \
-    --disable-libstdcxx-pch \
-    --disable-multilib \
-    --enable-__cxa_atexit \
-    --enable-clocale='gnu' \
-    --enable-languages='c,c++,fortran,objc,obj-c++' \
-    --enable-shared \
-    --infodir='/usr/share/info' \
-    --libdir='/usr/lib' \
-    --libexecdir='/usr/lib' \
-    --mandir='/usr/share/man' \
-    --program-suffix="-${_pkgver}" \
-    --with-cloog \
-    --with-ppl \
-    --with-system-zlib \
-    --with-tune='generic' \
-    --prefix='/usr'
-#    CXX='g++-4.9' CC='gcc-4.9'
 
   set +u
 }
@@ -83,9 +59,54 @@ build() {
   set -u
   cd "${_basedir}/gcc-build"
 
+  if [ ! -s 'Makefile' ]; then
+    # Doesn't like FORTIFY_SOURCE
+    CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
+
+    # Doesn't like -fstack-protector-strong
+    CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
+    CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
+
+    # using -pipe causes spurious test-suite failures
+    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
+    CFLAGS="${CFLAGS/-pipe/}"
+    CXXFLAGS="${CXXFLAGS/-pipe/}"
+
+    # Flags from new compilers that old compilers don't recognize
+    CFLAGS="${CFLAGS/-fno-plt/}"
+    CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+    CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
+    CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
+
+    # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
+    ../configure \
+      --build="${CHOST}" \
+      --disable-libgomp \
+      --disable-libmudflap \
+      --disable-libssp \
+      --disable-libstdcxx-pch \
+      --disable-multilib \
+      --enable-__cxa_atexit \
+      --enable-clocale='gnu' \
+      --enable-languages='c,c++,fortran,objc,obj-c++' \
+      --enable-shared \
+      --infodir='/usr/share/info' \
+      --libdir='/usr/lib' \
+      --libexecdir='/usr/lib' \
+      --mandir='/usr/share/man' \
+      --program-suffix="-${_pkgver}" \
+      --with-cloog \
+      --with-ppl \
+      --with-system-zlib \
+      --with-tune='generic' \
+      --prefix='/usr'
+#      CXX='g++-4.9' CC='gcc-4.9'
+  fi
+
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}"
   set +u
 }
 
@@ -93,6 +114,7 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
   make -s -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
@@ -100,16 +122,19 @@ package() {
   #find "${pkgdir}/" -name '*iberty*' | xargs rm
 
   # Move potentially conflicting stuff to version specific subdirectory
-  mv ${pkgdir}/usr/lib/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
-
-  # Install Runtime Library Exception
-  install -Dpm644 '../COPYING.RUNTIME' \
-    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
+  #case "${CARCH}" in
+  #'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" ;;
+  #esac
+  mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
 
   # Create links for gcc- build environment (useful for CUDA)
   mkdir -p "${pkgdir}/opt/gcc-${_pkgver}"
   ln -s "/usr/bin/gcc-${_pkgver}" "${pkgdir}/opt/gcc-${_pkgver}/gcc"
   ln -s "/usr/bin/g++-${_pkgver}" "${pkgdir}/opt/gcc-${_pkgver}/g++"
+
+  # Install Runtime Library Exception
+  install -Dpm644 '../COPYING.RUNTIME' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
   set +u
 }
 set +u
