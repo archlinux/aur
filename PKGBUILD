@@ -3,16 +3,19 @@ _pkgname='testinfra'
 pkgbase="python-testinfra"
 pkgname=("python-testinfra" "python2-testinfra")
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Testinfra test your infrastructures'
 url='https://github.com/philpep/testinfra'
 arch=('any')
 license=('Apache')
-makedepends=('python' 'python-setuptools'
-             'python2' 'python2-setuptools')
+makedepends=('python' 'python-setuptools' 'python-pbr'
+             'python2' 'python2-setuptools' 'python2-pbr')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/philpep/testinfra/archive/${pkgver}.tar.gz")
 sha256sums=('e05a6e19bd57d328d788215ce344b4e0d5543bd518fbab0c0d9bfbb118730c0c')
 
+prepare() {
+  export PBR_VERSION=$pkgver
+}
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
