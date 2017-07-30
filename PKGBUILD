@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-asmjit
-pkgver=r102.d7fc62d
+pkgver=r255.1370fe6
 pkgrel=1
 pkgdesc="Complete x86/x64 JIT and Remote Assembler for C++ (mingw-w64)"
 arch=('any')
@@ -21,8 +21,11 @@ pkgver() {
 
 build () {
   cd "$srcdir/asmjit"
+
+  # https://github.com/asmjit/asmjit/pull/177
+  sed -i 's|DESTINATION "lib\${LIB_SUFFIX}")|LIBRARY DESTINATION lib\${LIB_SUFFIX} ARCHIVE DESTINATION lib\${LIB_SUFFIX} RUNTIME DESTINATION bin)|g' CxxProject.cmake
+ 
   for _arch in ${_architectures}; do
-    unset LDFLAGS
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
