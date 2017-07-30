@@ -1,0 +1,14 @@
+pkgbase = cryptop
+	pkgdesc = Easy terminal colors, with chainable methods.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/cryptop/
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/c/cryptop/cryptop-0.1.0.tar.gz
+	sha512sums = 3e6db0bae16754274a40ff83528837276d1166a4d94db1c4d79ea40c778deb7faa95102f9285e082e0943da18957043f3cb8cd491b6d1cad52afd0eca8bf1e22
+
+pkgname = cryptop
+
