@@ -32,7 +32,7 @@ build() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
     cp -r libf2c build-${_arch} && pushd build-${_arch}   
-    make -f makefile.u CC=${_arch}-gcc AR=${_arch}-ar LD=${_arch}-ld RANLIB=${_arch}-ranlib CFLAGS='-O -DUSE_CLOCK'
+    make -f makefile.u CC=${_arch}-gcc AR=${_arch}-ar LD=${_arch}-ld RANLIB=${_arch}-ranlib CFLAGS='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -DUSE_CLOCK'
     popd
   done
 }
