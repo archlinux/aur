@@ -1,0 +1,23 @@
+pkgbase = rexuiz-dlc-git
+	pkgdesc = An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter (downloadable content).
+	pkgver = r10.0ae1815
+	pkgrel = 1
+	url = http://rexuiz.top/
+	arch = any
+	license = GPL2
+	makedepends = zip
+	provides = rexuiz-dlc
+	conflicts = rexuiz-dlc
+	source = git+https://github.com/kasymovga/rexdlc
+	sha256sums = SKIP
+
+pkgname = rexuiz-dlc-essential-git
+	pkgdesc = An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter (downloadable content - essential).
+	provides = rexuiz-dlc-essential
+	conflicts = rexuiz-dlc-essential
+
+pkgname = rexuiz-dlc-extra-git
+	pkgdesc = An updated fork of Nexuiz, a fast-paced multiplayer first-person shooter (downloadable content - extra).
+	provides = rexuiz-dlc-extra
+	conflicts = rexuiz-dlc-extra
+
