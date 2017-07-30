@@ -7,6 +7,7 @@ post_install()  {
     sudo echo "Exec="/usr/bin/github-desktop" %U" >> /usr/share/applications/desktop.desktop
     sudo echo "Terminal=false" >> /usr/share/applications/desktop.desktop
     sudo echo "Type=Application" >> /usr/share/applications/desktop.desktop
+    sudo echo "Categories=Development;" >> /usr/share/applications/desktop.desktop
     sudo echo "Icon=github" >> /usr/share/applications/desktop.desktop
 }
 
