@@ -1,8 +1,8 @@
 pkgname=kvirc-git
-pkgver=4.3.2.r7104.48fd3bc45
+pkgver=4.3.2.r7134.549d6f1a7
 _pkgver=4.3.2
 pkgrel=1
-pkgdesc="Qt5 based IRC-Client, compiled with kde4 support - Git Version"
+pkgdesc="Qt5 based IRC-Client, compiled with kde5 support - Git Version"
 arch=('i686' 'x86_64')
 url="http://www.kvirc.net"
 license=('GPL')
