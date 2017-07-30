@@ -2,7 +2,7 @@
 # Based on heirloom-mailx PKGBUILD
 
 pkgname=s-nail-git
-pkgver=14.9.0_pre1_x6_gfcd2892
+pkgver=14.9.0_x15_g1dd0ed30
 pkgrel=1
 pkgdesc="Commandline utility for sending and receiving email"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ build() {
 	     ${config_target:-} \
 	     config
 
-	make -f mk.mk _update-version
+	make -f mk-config.mk _update-version ||:
 
 	make build
 }
