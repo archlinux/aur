@@ -7,7 +7,7 @@
 
 pkgbase=linux-tomoyo
 _srcname=linux-4.11
-pkgver=4.11.9
+pkgver=4.11.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -28,7 +28,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('b67ecafd0a42b3383bf4d82f0850cbff92a7e72a215a6d02f42ddbafcf42a7d6'
             'SKIP'
-            'a112d1330817bac401dbbd1e2c8aacb1b725bc28239e2ca58281ea3754deceb5'
+            '707c5f18dfb795761b0b7ac6f946f03774f9f99317306fd54d8724d17d9c7729'
             'SKIP'
             'f330007da72867bb86556d1f8b84b8a4c8148a5ed5195ae25570a5da61428733'
             '9dd9aa4a8ec613cc8261e40db897685d75e3d426219ed8d21fa3a6bc72a27a32'
