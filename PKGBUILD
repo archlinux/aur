@@ -3,7 +3,7 @@
 
 pkgname=github-desktop
 pkgver=0.7.1_beta4
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
@@ -16,13 +16,12 @@ source=(https://github.com/gengjiawen/desktop/releases/download/v${pkgver//_/-}/
 md5sums=('2d232e9856d9f658ba33ebc533e3505c')
 
 prepare()   {
-    sudo -v
+    bsdtar -xJf data.tar.xz
 }
 
 package()   {
-    ar x desktop_${pkgver//_/-}_amd64.deb
-    tar xvf data.tar.xz
-    sudo cp -r "${pkgdir}/../../src/usr/share/" /usr/
-    sudo cp -r "${pkgdir}/../../src/opt/GithubDesktop" /opt/
+    cp --preserve=mode -r {opt,usr} "${pkgdir}"
+
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
