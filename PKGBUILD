@@ -9,7 +9,7 @@ url="https://github.com/bradford-smith94/$pkgname"
 license=('MIT')
 depends=('git')
 source=("https://github.com/bradford-smith94/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('')
+sha256sums=('da716a211daea66ff62537d4187f852efc237d696b04e37812beb33074ad3cea')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
