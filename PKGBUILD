@@ -1,21 +1,21 @@
 # Maintainer: Faustino Aguilar <faustinoaq.github.io>
 pkgname=amber_cmd
-pkgver=0.1.17
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="CLI for Amber framework that makes interfacing with your file system and applications much smoother."
 arch=(i686 x86_64)
 url='https://github.com/Amber-Crystal/amber_cmd'
 license=(MIT)
-depends=('crystal' 'shards' 'sqlite')
-makedepends=('llvm')
-source=("https://github.com/Amber-Crystal/amber_cmd/archive/v$pkgver.tar.gz")
+depends=('sqlite' 'gc' 'libatomic_ops' 'libevent' 'llvm-libs' 'pcre')
+makedepends=('crystal' 'shards' 'llvm')
+source=("https://github.com/amber-crystal/amber-cmd/archive/v$pkgver.tar.gz")
 sha256sums=('721d8d9dbd13df2187e7d6ffad5b00894908dd18dbc90d65c85272422f84f4a5')
 
 build() {
   cd "$pkgname-$pkgver"
   shards
   mkdir -p bin
-  crystal build -o bin/amber src/amber_cmd.cr -s -p --no-debug
+  make build
   crystal eval 'STDIN.blocking = true'
 }
 
@@ -28,4 +28,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 bin/amber "$pkgdir/usr/bin/amber"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/amber/LICENSE
 }
