@@ -19,3 +19,8 @@ post_remove()   {
     sudo rm -rf icons/hicolor/1024x1024/apps/desktop.png
     sudo rm -rf /usr/bin/github-desktop
 }
+
+pre_install()   {
+    sudo -v
+    sudo pacman -Rns github-desktop
+}
