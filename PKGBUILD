@@ -1,16 +1,16 @@
 # Maintainer: Craig Barnes <cr@igbarn.es>
 
 pkgname='dte'
-pkgver='1.1'
+pkgver='1.2'
 pkgrel='1'
 pkgdesc='A small and easy to use text editor'
 url='https://github.com/craigbarnes/dte'
 arch=('i686' 'x86_64' 'armv7l')
 license=('GPL2')
 depends=('glibc' 'ncurses')
-source=('https://craigbarnes.gitlab.io/dte/dist/dte-1.1.tar.gz')
-md5sums=('11e0a9e57f2be966bfa91c1db8205879')
-sha1sums=('f62eb1606a69c0373ff302c533f36308ba94b08f')
+source=("https://craigbarnes.gitlab.io/dte/dist/dte-$pkgver.tar.gz")
+md5sums=('f93a7efa6e167be466b90fc11c8646c6')
+sha1sums=('b0dbf08694e920ca8730b7630a2cb8e975995597')
 
 build() {
     cd "$pkgname-$pkgver"
