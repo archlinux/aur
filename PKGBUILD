@@ -9,8 +9,8 @@ _pkgnames=('United-Antergos-Compact'
 	'United-Manjaro'
 )
 pkgname=gtk-theme-united-archers-git
-pkgver=v2.1.3.r19.gf1de93f
-_revision=19
+pkgver=v2.1.3.r20.gf1de93f
+_revision=20
 pkgrel=1
 pkgdesc='GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept.'
 arch=('any')
