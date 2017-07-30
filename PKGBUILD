@@ -1,0 +1,19 @@
+# Maintainer: Tim Savannah <kata198@gmail.com>
+
+pkgname=python-mkdoc
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="An amazing helper script to generate pydoc for your python projects"
+arch=('any')
+license=('GPLv3')
+url="http://github.com/kata198/python-mkdoc"
+makedepends=('python-setuptools' 'python')
+depends=('python-setuptools' 'python' 'python-advancedhtmlparser')
+source=("https://github.com/kata198/python-mkdoc/archive/${pkgver}.tar.gz")
+sha512sums=("4e68c337d5336e1df99956f69b6225b017e8c224fffa2b15f9af4ff572a0b898f79e19ef8d878eaa490317ad837060567bfb71b7fb23ef4ea7404215066465ad")
+
+package() {
+  cd python-mkdoc-$pkgver
+
+  ./install.sh DESTDIR="${pkgdir}"
+}
