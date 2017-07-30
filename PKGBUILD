@@ -42,13 +42,13 @@ prepare() {
   cd "${_basedir}"
 
   # "Add" ppl-0.11 compatibility
-  sed -i -e '/ppl_minor_version=/s#10#11#' 'configure'
+  sed -e '/ppl_minor_version=/s#10#11#' -i 'configure'
 
   # Do not install libiberty
-  sed -i -e 's/install_to_$(INSTALL_DEST) //' 'libiberty/Makefile.in'
+  sed -e 's/install_to_$(INSTALL_DEST) //' -i 'libiberty/Makefile.in'
 
   # Do not run fixincludes
-  sed -i -e 's@\./fixinc\.sh@-c true@' 'gcc/Makefile.in'
+  sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
   # Update gcc.texi to gcc49 version, needed as of texinfo>=6.3 and possibly texinfo=6.2
   patch -p0 -c < "${srcdir}/gcc.texi.49.patch"
@@ -61,51 +61,26 @@ prepare() {
   echo "${pkgver}" > 'gcc/BASE-VER'
 
   # Doesn't like FORTIFY_SOURCE
-  export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
+  CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
 
   # Doesn't like -fstack-protector-strong
-  export CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
-  export CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
+  CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
+  CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
+
+  # using -pipe causes spurious test-suite failures
+  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
+  CFLAGS="${CFLAGS/-pipe/}"
+  CXXFLAGS="${CXXFLAGS/-pipe/}"
+
+  # Flags from new compilers that old compilers don't recognize
+  CFLAGS="${CFLAGS/-fno-plt/}"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
+  CFLAGS="${CFLAGS/-Wformat-overflow=[0-9]/}"
+  CXXFLAGS="${CXXFLAGS/-Wformat-overflow=[0-9]/}"
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-  cd 'gcc-build'
-
-  # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-  ../configure \
-    --build="${CHOST}" \
-    --disable-libssp \
-    --disable-libstdcxx-pch \
-    --disable-libunwind-exceptions \
-    --enable-multilib \
-    --disable-werror \
-    --enable-__cxa_atexit \
-    --enable-checking='release' \
-    --enable-clocale='gnu' \
-    --enable-cloog-backend='isl' \
-    --enable-gnu-unique-object \
-    --enable-gold \
-    --enable-languages='c,c++,fortran' \
-    --enable-ld='default' \
-    --enable-libstdcxx-time \
-    --enable-linker-build-id \
-    --enable-lto \
-    --enable-plugin \
-    --enable-shared \
-    --enable-threads='posix' \
-    --enable-version-specific-runtime-libs \
-    --infodir='/usr/share/info' \
-    --libdir='/usr/lib' \
-    --libexecdir='/usr/lib' \
-    --mandir='/usr/share/man' \
-    --program-suffix="-${_pkgver}" \
-    --with-bugurl='https://bugs.archlinux.org/' \
-    --with-fpmath='sse' \
-    --with-plugin-ld='ld.gold' \
-    --with-ppl \
-    --with-system-zlib \
-    --prefix='/usr'
-#    CXX='g++-4.9' CC='gcc-4.9'
 
   set +u
 }
@@ -114,9 +89,47 @@ build() {
   set -u
   cd "${_basedir}/gcc-build"
 
+  if [ ! -s 'Makefile' ]; then
+    # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
+    ../configure \
+      --build="${CHOST}" \
+      --disable-libssp \
+      --disable-libstdcxx-pch \
+      --disable-libunwind-exceptions \
+      --enable-multilib \
+      --disable-werror \
+      --enable-__cxa_atexit \
+      --enable-checking='release' \
+      --enable-clocale='gnu' \
+      --enable-cloog-backend='isl' \
+      --enable-gnu-unique-object \
+      --enable-gold \
+      --enable-languages='c,c++,fortran' \
+      --enable-ld='default' \
+      --enable-libstdcxx-time \
+      --enable-linker-build-id \
+      --enable-lto \
+      --enable-plugin \
+      --enable-shared \
+      --enable-threads='posix' \
+      --enable-version-specific-runtime-libs \
+      --infodir='/usr/share/info' \
+      --libdir='/usr/lib' \
+      --libexecdir='/usr/lib' \
+      --mandir='/usr/share/man' \
+      --program-suffix="-${_pkgver}" \
+      --with-bugurl='https://bugs.archlinux.org/' \
+      --with-fpmath='sse' \
+      --with-plugin-ld='ld.gold' \
+      --with-ppl \
+      --with-system-zlib \
+      --prefix='/usr'
+#      CXX='g++-4.9' CC='gcc-4.9'
+  fi
+
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   #LD_PRELOAD='/usr/lib/libstdc++.so' \\
-  make -s -j "${_nproc}"
+  nice make -s -j "${_nproc}"
 
   set +u
 }
