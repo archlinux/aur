@@ -1,5 +1,5 @@
-pkgbase=('python-flask-socketio-git')
-pkgname=('python-flask-socketio-git')
+pkgbase=('python-flask-socketio-git-git')
+pkgname=('python-flask-socketio-git-git')
 _module='Flask-SocketIO'
 pkgver='2.9.0'
 pkgrel=1
