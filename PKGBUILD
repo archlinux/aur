@@ -170,7 +170,11 @@ package() {
 
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.remacs}
-  mv "$pkgdir"/usr/share/man/man2/{ctags.1.gz,ctags.remacs.1.gz}
+  mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.remacs.1.gz}
+  mv "$pkgdir"/usr/share/man/man1/{etags.1.gz,etags.remacs.1.gz}
+  mv "$pkgdir"/usr/share/man/man1/{ebrowse.1.gz,ebrowse.remacs.1.gz}
+  mv "$pkgdir"/usr/share/man/man1/{emacs.1.gz,remacs.1.gz}
+  mv "$pkgdir"/usr/share/man/man1/{emacsclient.1.gz,remacsclient.1.gz}
   mv "$pkgdir"/usr/bin/{etags,etags.remacs}
   mv "$pkgdir"/usr/bin/{ebrowse,ebrowse.remacs}
 
