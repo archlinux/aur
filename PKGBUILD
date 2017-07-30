@@ -42,7 +42,7 @@ package_python2-latex() {
            'python2-tempdir' 'python2-future' 'python2-shutilwhich'
            'python2-six')
   cd "$srcdir/latex-$pkgver-python2"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
   
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
