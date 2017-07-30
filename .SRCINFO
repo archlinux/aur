@@ -9,9 +9,9 @@ pkgbase = kubernetes-helm
 	depends = socat
 	optdepends = kubectl-bin: Check Kubernetes status
 	source_i686 = https://kubernetes-helm.storage.googleapis.com/helm-v2.5.1-linux-386.tar.gz
-	sha512sums_i686 = f99c979e7fbe67b4c556c6682f11d5c1ad77f3803507b610f614e1643219cfd806d258b6b241ca4bbc3bb82a4c62b8aa913d01ad398274b2abb4e475056e6192
+	sha512sums_i686 = 820c531ad2c716fcea0cd78316d1dd0d37d5f8adb81331b69d7ab473e4d39dfb2f650c37427d72c8bb35042a5f0739c098afbaee30110f07de8c5c92f4b7e502
 	source_x86_64 = https://kubernetes-helm.storage.googleapis.com/helm-v2.5.1-linux-amd64.tar.gz
-	sha512sums_x86_64 = 00236f6bd5d51aac3d7e3c44c6841f1dc41939288b9bbc9e472500a0a69b0a9507e7154aed366b5584d6ccc492793ed4e96e2d9b6863be04a4f89f9f7cfd2d11
+	sha512sums_x86_64 = b2ff0e75459e7eb560e5a08fea364f211095ef9b28f9b5a7c8cf305208ed2007f33119771d29b5c27aea42ad53cc535c3d03d5b2bf7238b94d51d0815d97df55
 
 pkgname = kubernetes-helm
 
