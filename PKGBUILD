@@ -2,7 +2,7 @@
 # Contributor: mickael9 <mickael9 at gmail dot com>
 
 pkgname=factorio
-pkgver=0.14.23
+pkgver=0.15.31
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio-demo' 'factorio-experimental' 'factorio-headless')
 depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
+makedepends=('xz')
 source=(factorio.desktop
         LICENSE)
 sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
@@ -21,7 +22,7 @@ elif test "$CARCH" == x86_64; then
   __factorio_arch=x64
   _url=https://www.factorio.com/get-download/${pkgver}/alpha/linux64
 fi
-_gamepkg=factorio_alpha_${__factorio_arch}_$pkgver.tar.gz
+_gamepkg=factorio_alpha_${__factorio_arch}_$pkgver.tar.xz
 _pkgpaths_tries=("$startdir"
                  "$SRCDEST"
                  "$HOME/Downloads")
@@ -53,7 +54,7 @@ build() {
 
   # unpack game tarball
   msg "Found game package, unpacking..."
-  tar xzf "${pkgpath}/${_gamepkg}" -C "${srcdir}"
+  tar xf "${pkgpath}/${_gamepkg}" -C "${srcdir}"
 }
 
 # no modifications needed, the executable looks for:
