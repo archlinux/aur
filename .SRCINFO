@@ -1,0 +1,18 @@
+pkgbase = jbuilder-git
+	pkgdesc = Compatibility Result module (git master)
+	pkgver = r672.ea377ef
+	pkgrel = 1
+	url = https://github.com/janestreet/jbuilder
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = opam
+	depends = ocaml
+	provides = jbuilder
+	options = !strip
+	source = jbuilder::git+https://github.com/janestreet/jbuilder.git
+	sha256sums = SKIP
+
+pkgname = jbuilder-git
+
