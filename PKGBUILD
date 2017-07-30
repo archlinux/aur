@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.187
+pkgver=0.188
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -28,20 +28,12 @@ makedepends=('nasm'
              )
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
-        'extras.tar.gz'
         )
-sha256sums=('5ac6950158ba6f550b3c5f19434752e837f17edf0d83c41ab07d0f02cca787b0'
+sha256sums=('d3e55ec783fde39124bdb867ded9eadfcf769697d6c3d933444a29a785d6c99b'
             '201e9cc3d0d7397e15a4aaf7477f8b32a379a9ba2134b94180cdaf2067d1f859'
-            '5ba55ce8c33743207a12a7509efdf13dd98f5d87fa12f0e471ea523d3ae4f4ac'
             )
 install=sdlmame-wout-toolkits.install
 noextract=('extras.tar.gz')
-
-prepare() {
-  cd "mame-mame${pkgver/./}"
-
-  bsdtar -xf ../extras.tar.gz
-}
 
 build() {
   cd "mame-mame${pkgver/./}"
@@ -99,7 +91,7 @@ package() {
   install -Dm755 unidasm    "${pkgdir}/usr/bin/unidasm"
 
   # Install the extra bits
-  for i in artwork bgfx ctrlr hash hlsl ini keymaps language plugins; do
+  for i in artwork bgfx hash hlsl ini keymaps language plugins; do
     for e in $(find ${i} -type f); do install -Dm644 "${e}" ${pkgdir}/usr/share/sdlmame/${e}; done
   done
   install -d "${pkgdir}/usr/share/sdlmame/shader"
@@ -114,11 +106,4 @@ package() {
 
   # documentation
   (cd docs; for i in $(find . -maxdepth 1 -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}/${i}"; done)
-
-  # FS#28203
-  sed -e 's|KEYCODE_2_PAD|KEYCODE_2PAD|' \
-      -e 's|KEYCODE_4_PAD|KEYCODE_4PAD|' \
-      -e 's|KEYCODE_6_PAD|KEYCODE_6PAD|' \
-      -e 's|KEYCODE_8_PAD|KEYCODE_8PAD|' \
-      -i "${pkgdir}/usr/share/sdlmame/ctrlr/"*.cfg
 }
