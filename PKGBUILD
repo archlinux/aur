@@ -1,16 +1,16 @@
 # Maintainer: Morten Linderud <morten@linderud.pw>  
 pkgname="molecule"
 pkgver=2.0.0.rc12
-pkgrel=1
+pkgrel=2
 pkgdesc='Molecule aids in the development and testing of Ansible roles.'
 url='https://github.com/metacloud/molecule/tree/2.0.0.rc12'
 arch=('any')
 license=('MIT')
 makedepends=('python' 'python-setuptools')
-depends=('ansible-lint' 'python-colorama' 'flake8'
+depends=('ansible-lint' 'python-ansible' 'python-colorama' 'flake8'
          'python-jinja' 'python-marshmallow' 'python-gilt'
          'python-tabulate' 'python-pbr' 'python-pexpect'
-         'python-yaml' 'python-sh' 'python-click' 'yamllint')
+         'python-yaml' 'python-sh' 'python-click' 'yamllint' 'python-anyconfig')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/metacloud/molecule/archive/${pkgver}.tar.gz")
 sha256sums=('f27894ac47e37cf54be159a45e84b6adfae4127ec77e9c46a9c4bfeb5fc8ee24')
 
