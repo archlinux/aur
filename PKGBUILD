@@ -3,7 +3,7 @@
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Daniel Hommel <dhommel@gmail.com>
 
-pkgname=mksh-git
+pkgname=mksh-static
 _pkgname=mksh
 _pkgver=R55
 pkgver=55
