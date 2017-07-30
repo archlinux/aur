@@ -3,13 +3,13 @@ pkgname=shallot-git
 _gitname=Shallot
 _gitauthor=katmagic
 pkgver=0.0.3.r26.g831de01
-pkgrel=1
+pkgrel=2
 pkgdesc="Shallot allows you to create customized .onion addresses for your hidden service."
 arch=('i686' 'x86_64')
 source=("git://github.com/$_gitauthor/$_gitname.git")
-url=("https://github.com/$_gitauthor/$_gitname")
+url="https://github.com/$_gitauthor/$_gitname"
 license=('custom')
-makedepends=('git')
+makedepends=('git' 'openssl-1.0')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -19,6 +19,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
+  # Openssl-1.0
+  sed -i 's@-I/usr/include @-I/usr/include/openssl-1.0 @' Makefile
 
   # Build
   ./configure --prefix=/usr
