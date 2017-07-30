@@ -5,7 +5,7 @@ _modname=$_pkgbase
 pkgname="${_pkgbase}-dkms"
 pkgver='1.1'
 _pkgtag='6bfe9fe44e04'
-pkgrel=4
+pkgrel=5
 pkgdesc='A reverse engineering driver for the Clevo SM series backlight keyboard (DKMS version)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,13 +17,13 @@ depends=('dkms' 'gcc' 'make' 'linux-headers')
 source=("clevo-xsm-wmi-${pkgver}.src.tar.gz::https://bitbucket.org/tuxedocomputers/clevo-xsm-wmi/get/v${pkgver}.tar.gz"
         "dkms.conf"
         "Makefile")
-sha256sums=('43e7eadbec5cf0d92d10bb1fd511a77cb4a11a7fa29f3a2df33dacbeb65c5f09'
+sha256sums=('630ff6dbfa90c8a9285badf75b60579b2a9495e85862b62ef77a3654535e4b72'
             '0cdf0213692a71d69f54730d1856d9f1e7b3d363d9b2a66a5d6bb363e8d8212f'
             'fb20847bde676a305fda41b865b46aff52ae9de60e1262d6e9725a71d72b806b')
 install='clevo-xsm-wmi-dkms.install'
 
 package() {
-    cd "${srcdir}/lynthium-clevo-xsm-wmi-${_pkgtag}/module"
+    cd "${srcdir}/tuxedocomputers-clevo-xsm-wmi-${_pkgtag}/module"
 
     # Copy sources (including Makefile)
     install -dm755 "${pkgdir}/usr/src/${_modname}-${pkgver}/"
