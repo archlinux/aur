@@ -1,7 +1,7 @@
 # Maintainer: Jeff Keyte <jeff@keyte.me>
 
 pkgname=pascalcoin
-pkgver=2.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='PascalCoin Wallet and Daemon'
 arch=('i686' 'x86_64')
