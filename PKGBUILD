@@ -38,7 +38,7 @@ package_python-tempdir() {
 package_python2-tempdir() {
   depends=('python2' 'python2-setuptools')
   cd "$srcdir/tempdir-$pkgver-python2"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
   
   install -Dm644 docs/license.rst "$pkgdir"/usr/share/licenses/$pkgname/license.rst
 }
