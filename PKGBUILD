@@ -1,7 +1,7 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 
 pkgname=tpm2-tss-git
-pkgver=r657.64b11df
+pkgver=1.1.0.r231.g64b11df
 _pkgname=TPM2.0-TSS
 pkgrel=1
 pkgdesc="TPM (Trusted Platform Module) 2.0 Software Stack (TSS)"
@@ -17,7 +17,11 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    (
+        set -o pipefail
+        git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
