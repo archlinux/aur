@@ -1,5 +1,5 @@
 pkgbase = cryptop
-	pkgdesc = Easy terminal colors, with chainable methods.
+	pkgdesc = command line crypto portfolio
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/cryptop/
