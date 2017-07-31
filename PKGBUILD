@@ -7,12 +7,12 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 pkgname=('python-cherrypy' 'python2-cherrypy')
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pythonic, object-oriented web development framework"
 arch=('any')
 url="http://www.cherrypy.org"
 license=('BSD')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-setuptools-scm' 'python2-setuptools-scm' 'python-six' 'python2-six' 'python-cheroot' 'python2-cheroot' )
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-setuptools-scm' 'python2-setuptools-scm' 'python-six' 'python2-six' 'python-cheroot' 'python2-cheroot' 'python-portend' 'python2-portend')
 checkdepends=('python-tox' 'python2-tox')
 source=("https://github.com/cherrypy/cherrypy/archive/v$pkgver.tar.gz")
 md5sums=('bb432eb2e919d449a1f644b36b8db4f1')
