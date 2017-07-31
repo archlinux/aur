@@ -5,7 +5,7 @@
 
 pkgbase=openal-git
 pkgname=(openal-git openal-examples-git)
-pkgver=1.18.0.r103.g12db67f5
+pkgver=1.18.1.r0.gbf9c3640
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd openal-soft
-  git describe --tags | sed 's/^openal-soft-//;s/-/.r/;s/-/./g'
+  git describe --long --tags | sed 's/^openal-soft-//;s/-/.r/;s/-/./g'
 }
 
 build() {
