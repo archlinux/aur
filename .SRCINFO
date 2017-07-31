@@ -1,0 +1,18 @@
+pkgbase = zlib-static
+	pkgver = 1.2.11
+	pkgrel = 2
+	epoch = 1
+	url = http://www.zlib.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	provides = zlib
+	conflicts = zlib
+	options = staticlibs
+	source = http://zlib.net/zlib-1.2.11.tar.gz
+	md5sums = 1c9f62f0778697a09d36121ead88e08e
+
+pkgname = zlib-static
+	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP
+
