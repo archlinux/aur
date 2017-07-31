@@ -2,7 +2,7 @@
 
 pkgname=python-pywal
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate and change colorschemes on the fly"
 arch=('any')
 url="https://github.com/dylanaraps/pywal/"
@@ -18,7 +18,7 @@ md5sums=('0016206b7fde4b719411db1637664350')
 package() {
   cd "${pkgname#python-}-${pkgver}"
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
-  install -Dm644 "$srcdir/${pkgname#python-}/LICENSE.md" \
+  install -Dm644 "$srcdir/${pkgname#python-}-${pkgver}/LICENSE.md" \
                  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
