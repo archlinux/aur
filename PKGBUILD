@@ -2,13 +2,13 @@
 
 _pkgname=lxqt-runner
 pkgname=$_pkgname-git
-pkgver=0.10.0.16.g935b7c5
+pkgver=0.11.1.24.g1e40e33
 pkgrel=1
 pkgdesc="The LXQt application launcher"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("kwindowsystem" "lxqt-globalkeys-git" "menu-cache" "qt5-script" "muparser")
+depends=("kwindowsystem" "lxqt-globalkeys-git" "menu-cache" "muparser")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
