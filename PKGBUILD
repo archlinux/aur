@@ -1,12 +1,11 @@
 pkgname=captvty
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Accédez aux directs et à une multitude d’émissions proposées au rattrapage par différentes chaînes de télévision'
 arch=('any')
 url='http://www.captvty.fr'
 license=('custom')
-depends=('winetricks' 'wine-mono' 'libjpeg6-turbo')
-depends_x86_64=('lib32-libjpeg6-turbo')
+depends=('winetricks' 'wine-mono')
 makedepends=('imagemagick' 'gendesk')
 _code=$(curl -s http://captvty.fr/ | grep -Pom 1 '(?<=ref=\")[^\"].*captvty-.*.zip' | awk -F "/" '{print $(NF-1)}')
 source=("http://releases.captvty.fr/$_code/captvty-$pkgver.zip"
