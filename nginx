@@ -1,0 +1,70 @@
+server {
+	listen  80; ## listen for ipv4; this line is default and impilied
+	#listen  [::]:80 default ipv6only=on; ## listen for ipv6
+	
+	server_name nfsen.example.com www.nfsen.example.com;
+	root /srv/http/nfsen;
+
+	error_page  500 502 503 504  /50x.html;
+	access_log /var/log/nginx/nfsen-access.log;
+	error_log /var/log/nginx/nfsen-error.log;
+
+	location = /50x.html {
+		root  /usr/share/nginx/html;
+	}
+
+	location = / {
+		root  /srv/http/nfsen;
+		index nfsen.php;
+	}
+
+        location ~ \.php$ {
+	    try_files $uri =404;
+	    root           /srv/http/nfsen;
+            fastcgi_pass   unix:/run/php-fpm/php-fpm.sock;
+            fastcgi_index  nfsen.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+
+}
+#server {
+#	listen  443 ssl; ## listen for ipv4; this line is default and impilied
+#	#listen  [::]:443 ssl default ipv6only=on; ## listen for ipv6
+#	
+#	server_name nfsen.example.com www.nfsen.example.com;
+#
+#	ssl_certificate		cert.crt;
+#	ssl_certificate_key	cert.key;
+#
+#	ssl_session_cache	shared:SSL:1m;
+#	ssl_session_timeout	5m;
+#
+#	ssl_ciphers		HIGH:!aNULL:!MD5;
+#	ssl_prefer_server_ciphers	on;
+#
+#	root /srv/http/nfsen;
+#
+#	error_page  500 502 503 504  /50x.html;
+#	access_log /var/log/nginx/ssl.nfsen-access.log;
+#	error_log /var/log/nginx/ssl.nfsen-error.log;
+#
+#	location = /50x.html {
+#		root  /usr/share/nginx/html;
+#	}
+#
+#	location = / {
+#		root  /srv/http/nfsen;
+#		index nfsen.php;
+#	}
+#
+#        location ~ \.php$ {
+#	    try_files $uri =404;
+#	    root           /srv/http/nfsen;
+#            fastcgi_pass   unix:/run/php-fpm/php-fpm.sock;
+#            fastcgi_index  nfsen.php;
+#            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+#            include        fastcgi_params;
+#        }
+#
+#}

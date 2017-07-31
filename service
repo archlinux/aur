@@ -1,0 +1,14 @@
+[Unit]
+Description=NFSen network monitoring system
+After=network.target
+Requires=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/nfsen/bin/nfsen start
+ExecStop=/opt/nfsen/bin/nfsen stop
+ExecReload=/opt/nfsen/bin/nfsen reload
+PIDFile=/run/nfsen/nfsend.pid
+
+[Install]
+WantedBy=multi-user.target
