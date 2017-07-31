@@ -1,0 +1,20 @@
+pkgbase = lz4-static
+	pkgdesc = Extremely fast compression algorithm (static version)
+	pkgver = 1.7.5
+	pkgrel = 1
+	epoch = 1
+	url = http://www.lz4.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	checkdepends = diffutils
+	makedepends = git
+	depends = glibc
+	provides = lz4
+	conflicts = lz4
+	options = staticlibs
+	source = git+https://github.com/lz4/lz4.git#tag=v1.7.5
+	md5sums = SKIP
+
+pkgname = lz4-static
+
