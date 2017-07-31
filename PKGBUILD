@@ -1,5 +1,5 @@
 pkgname=mingw-w64-hunspell
-pkgver=1.5.4
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Spell checker and morphological analyzer library (mingw-w64)"
 arch=(any)
@@ -10,15 +10,16 @@ depends=(mingw-w64-gettext)
 optdepends=(mingw-w64-readline)
 options=(!strip !buildflags staticlibs !debug !emptydirs)
 source=("https://github.com/hunspell/hunspell/archive/v${pkgver}.tar.gz"
-"0005-windows-sub-dicts-paths.patch")
-md5sums=('9849a2381bacbeb2714034ad825bede8'
-         '8f3f269734623b2c57521202877c51bd')
+"01-relocate.patch")
+sha256sums=('30f593733c50b794016bb03d31fd2a2071e4610c6fa4708e33edad2335102c49'
+            '2730c6cbca341db54f5d4a53a81c89f8e91ac6e3060af9740f5bb15185067806')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd hunspell-${pkgver}
-  patch -Np1 -i "${srcdir}"/0005-windows-sub-dicts-paths.patch
+  rm -rf src/tools/pathtools.cxx src/tools/pathtools.hxx
+  patch -Np1 -i ${srcdir}/01-relocate.patch
 	autoreconf -fi
 }
 
@@ -31,10 +32,6 @@ build() {
       --enable-threads=win32 \
       --with-ui \
       --with-readline
-		# temporarily copy hunvisapi.h to work around build process
-		# where the file is not spotted.
-		cp ${srcdir}/hunspell-${pkgver}/build-${_arch}/src/hunspell/hunvisapi.h \
-       "${srcdir}/hunspell-${pkgver}/src/hunspell"
     make
     popd
   done
