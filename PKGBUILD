@@ -2,20 +2,25 @@
 # Maintainer: Shuwen Jethro Sun <jethro.sun7+arch@gmail.com>
 
 pkgname=ns3
-pkgver=3.25
+pkgver=3.26
 pkgrel=1
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
 url='http://www.nsnam.org/'
 license=('GPL')
 depends=(
-    'gsl' # GNU Scientific Library
-    'gtk2'
-    'libxml2' 'sqlite' 'boost' 'boost-libs'
-    'doxygen'
-    'graphviz' 'imagemagick' 'dia' 'qt4'
-    'python2' 'python2-setuptools' 'python2-pydot' 'goocanvas' 'pygoocanvas' 'pygccxml' 'pygtk' 'python2-pygraphviz'
-    'pygccxml-svn'
+    'gcc' 'python2' 'python2-setuptools' 'qt4' 'mercurial'
+    'cmake' 'cvs' 'unzip' 'bzr' 'p7zip' 'linux-headers' # FIXME
+    'doxygen' 'graphviz' 'python2-pygraphviz'
+    'sqlite'
+    'libxml2' 'gtk2' 'pygtk'
+    'boost' 'boost-libs' 'git' 'gdb' 'valgrind'
+    'python2-sphinx'
+# extra stuff
+    'imagemagick' 'dia'  
+    'goocanvas' 'pygccxml' 'pygoocanvas'
+    'texlive-bin'
+    'uncrustify' # utils/check-style.py style check program
     'openmpi' # MPI for HPC
     'flex' # for nsc
     )
@@ -24,13 +29,7 @@ makedepends=(
     'findutils'
     )
 optdepends=(
-    'tcpdump' 'wireshark-gtk'
-    'gdb' 'valgrind'
-    'mercurial'
-    'bzr'
-    'texlive-bin'
-    'python2-sphinx'
-    'uncrustify' # utils/check-style.py style check program
+    'gsl' 'tcpdump' 'wireshark-gtk'
     )
 source=(
     "https://www.nsnam.org/release/ns-allinone-${pkgver}.tar.bz2"
@@ -40,20 +39,26 @@ source=(
     "ns3-brite-hg::hg+http://code.nsnam.org/jpelkey3/BRITE"
 #"ns3-nsc-hg::hg+https://secure.wand.net.nz/mercurial/nsc"
     )
-md5sums=('55742e93177b662a874fb9dd04bb7c08' 'SKIP' 'SKIP' 'SKIP')
-sha1sums=('493505203e8d3b74541bfe196aaa9dcd5806a8ff' 'SKIP' 'SKIP' 'SKIP')
-
+md5sums=('286b4bc3f89c448850a0a6c0bca79742'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+sha1sums=('4db9fb6cff2e7302f56fd2e625153735c0027dd1'
+          'SKIP'
+          'SKIP'
+          'SKIP')
+    
 pkgver_git() {
   cd "${srcdir}/${pkgname}"
     local ver="$(git show | grep commit | awk '{print $2}' )"
-#printf "r%s" "${ver//[[:alpha:]]}"
+    printf "r%s" "${ver//[[:alpha:]]}"  
     echo ${ver:0:7}
 }
 
 pkgver_svn() {
   cd "${srcdir}/${pkgname}"
     local ver="$(svn info | grep Revision | awk '{print $2}' )"
-#printf "r%s" "${ver//[[:alpha:]]}"
+    printf "r%s" "${ver//[[:alpha:]]}"
     echo ${ver:0:7}
 }
 
@@ -61,7 +66,6 @@ pkgver_svn() {
 #    pkgver_git
 #}
 
-#cd "${srcdir}/${pkgname}"
 prepare() {
   cd $srcdir/ns-allinone-$pkgver
 
@@ -115,6 +119,7 @@ build() {
     --with-nsclick=$srcdir/ns3-click-git \
     --with-openflow=$srcdir/ns3-openflow-hg \
     --with-brite=$srcdir/ns3-brite-hg \
+    --libdir=/usr/lib \
 #--with-nsc=$srcdir/ns3-nsc-hg \
 #--enable-examples \
 #--enable-tests \
@@ -149,11 +154,3 @@ package() {
     ./waf install --destdir=$pkgdir/
 }
 
-md5sums=('55742e93177b662a874fb9dd04bb7c08'
-         'SKIP'
-         'SKIP'
-         'SKIP')
-sha1sums=('493505203e8d3b74541bfe196aaa9dcd5806a8ff'
-          'SKIP'
-          'SKIP'
-          'SKIP')
