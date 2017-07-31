@@ -16,15 +16,15 @@
 #
 pkgbase="zfs-linux-git"
 pkgname=("zfs-linux-git" "zfs-linux-git-headers")
-pkgver=0.7.0_r1_g0f69f42b4_4.12.3_1
-pkgrel=1
+pkgver=0.7.0_r6_g1e0565d10_4.12.3_1
+pkgrel=2
 makedepends=("linux-headers=4.12.3-1" "git" "spl-linux-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-git" "zfs-utils-common-git" "linux=4.12.3-1")
+depends=("kmod" "spl-linux-git" "zfs-utils-common-git>=0.7.0_r6_g1e0565d10" "linux=4.12.3-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -54,7 +54,7 @@ package_zfs-linux-git() {
 
 package_zfs-linux-git-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-linux-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers')
+    conflicts=('zfs-archiso-linux-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers'  )
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
