@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab-git
 pkgver=2016.12.r177.g70b9dd7f
-pkgrel=1
+pkgrel=2
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
@@ -23,6 +23,7 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "mpir.patch"
         "rpath.patch"
         "import_bundle_out.patch"
+        "meshlabplugins.align.patch"
         "meshlab.desktop")
 md5sums=('SKIP'
          'SKIP'
@@ -36,6 +37,7 @@ md5sums=('SKIP'
          'cb5a75c2f2cdf154ad61f753439f226f'
          '07da2fc11c1667e6c6a07f0042a2757d'
          '765a59b64dd05b74f6a4bdf3962a1d93'
+         '664dd92112695930b2564c08b04b57c5'
          '18aed0a21276a22325bf8c32166fb110')
 
 pkgver() {
@@ -69,6 +71,8 @@ prepare() {
   patch -Np0 -i shaders_dir.patch
   msg "fix import bundler/nvm"
   patch -Np0 -i import_bundle_out.patch
+  msg "fix align plugin incompatible with latest vcglib"
+  patch -Np0 -i meshlabplugins.align.patch
 }
 
 build() {

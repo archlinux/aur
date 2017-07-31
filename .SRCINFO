@@ -1,7 +1,7 @@
 pkgbase = meshlab-git
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
 	pkgver = 2016.12.r177.g70b9dd7f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.meshlab.net
 	install = meshlab-git.install
 	arch = i686
@@ -33,6 +33,7 @@ pkgbase = meshlab-git
 	source = mpir.patch
 	source = rpath.patch
 	source = import_bundle_out.patch
+	source = meshlabplugins.align.patch
 	source = meshlab.desktop
 	md5sums = SKIP
 	md5sums = SKIP
@@ -46,6 +47,7 @@ pkgbase = meshlab-git
 	md5sums = cb5a75c2f2cdf154ad61f753439f226f
 	md5sums = 07da2fc11c1667e6c6a07f0042a2757d
 	md5sums = 765a59b64dd05b74f6a4bdf3962a1d93
+	md5sums = 664dd92112695930b2564c08b04b57c5
 	md5sums = 18aed0a21276a22325bf8c32166fb110
 
 pkgname = meshlab-git

@@ -1,0 +1,31 @@
+diff --git a/src/meshlabplugins/edit_align/align/AlignGlobal.cpp b/src/meshlabplugins/edit_align/align/AlignGlobal.cpp
+index 509c940f..7203fb51 100644
+--- meshlab/src/meshlabplugins/edit_align/align/AlignGlobal.cpp
++++ b/src/meshlabplugins/edit_align/align/AlignGlobal.cpp
+@@ -429,11 +429,11 @@ Per ogni componente connessa,
+ 
+ ******************************/
+ 
+-bool AlignGlobal::GlobalAlign(const std::map<int,string> &Names, 	const double epsilon, int maxiter, bool Rigid, FILE *elfp, CallBack* cb )
++bool AlignGlobal::GlobalAlign(const std::map<int,string> &Names, 	const double epsilon, int maxiter, bool Rigid, FILE *elfp, CallBackPos* cb )
+ {
+   double change;
+   int step, localmaxiter;
+-  cb("Global Alignment...");
++  cb(1,"Global Alignment...");
+   LOG(elfp,"----------------\n----------------\nGlobalAlignment (target eps %7.3f)\n",epsilon);
+ 
+   queue<AlignGlobal::Node *>	Q;
+diff --git a/src/meshlabplugins/edit_align/align/AlignGlobal.h b/src/meshlabplugins/edit_align/align/AlignGlobal.h
+index c306f53d..42c5614f 100644
+--- meshlab/src/meshlabplugins/edit_align/align/AlignGlobal.h
++++ b/src/meshlabplugins/edit_align/align/AlignGlobal.h
+@@ -115,7 +115,7 @@ public:
+ 	Node *ChooseDormantWithMostActiveLink  ();
+   void MakeAllDormant();
+   void Clear();
+-  bool GlobalAlign(const std::map<int,std::string> &Names, 	const double epsilon, int maxiter, bool Rigid, FILE *elfp=0, CallBack * cb=DummyCallBack );
++  bool GlobalAlign(const std::map<int,std::string> &Names, 	const double epsilon, int maxiter, bool Rigid, FILE *elfp=0, CallBackPos *cb=DummyCallBackPos);
+ 
+     bool CheckGraph();
+ 
