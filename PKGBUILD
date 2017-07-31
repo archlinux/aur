@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-git
-pkgver=17.03.70.r7995.206f776
+pkgver=17.11.70.r8528.5e0b0db07
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
