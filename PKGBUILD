@@ -43,6 +43,7 @@ package() {
   ln -sf libblas_*-r$pkgver.so libblas.so
   ln -sf libblas_*-r$pkgver.so libblas.so.3
   sed -i -e "s%$pkgdir%%" "$pkgdir/usr/lib/cmake/openblas/OpenBLASConfig.cmake"
+  sed -i -e "s%$pkgdir%%" "$pkgdir/usr/lib/pkgconfig/openblas.pc"
 }
 
 # vim:set ts=2 sw=2 et:
