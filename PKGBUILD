@@ -1,7 +1,7 @@
 # Maintainer: Joseph Brains <jnbrains@gmail.com>
 _pkgname=gns3-server
 pkgname=${_pkgname}-git
-pkgver=2.1.0a1
+pkgver=2.1.0a2
 pkgrel=1
 pkgdesc='GNS3 network simulator. Server package.'
 arch=('any')
@@ -12,7 +12,7 @@ replaces=('gns3-server')
 provides=('gns3-server')
 conflicts=('gns3-server')
 makedepends=('python-setuptools')
-depends=('python-jsonschema>=2.4.0' 'python-jinja>=2.7.3' 'python-raven>=5.23.0' 'python-psutil>=3.0.0' 'python-zipstream-gns3' 'python-typing-gns3' 'python-yarl-gns3' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3')
+depends=('python-jsonschema>=2.4.0' 'python-jinja>=2.7.3' 'python-raven>=5.23.0' 'python-psutil>=3.0.0' 'python-zipstream-gns3' 'python-typing-gns3' 'python-yarl-gns3' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3' 'python-prompt_toolkit')
 optdepends=('dynamips: Cisco router emulator.'
             'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS.'
             'vpcs: Simple PC emulation for basic network operations.'
@@ -22,7 +22,7 @@ optdepends=('dynamips: Cisco router emulator.'
 install="${_pkgname}.install"
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${_pkgname}/archive/v${pkgver}.tar.gz"
         "${_pkgname}@.service")
-md5sums=('ac5b1782f1eec49faaf857afe3ed1bee'
+md5sums=('95ad4f334686962df11f36e621f63d8d'
          '3dcc54e56818a62859d0e7614e2aaa18')
 
 package() {
