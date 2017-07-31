@@ -1,5 +1,5 @@
 pkgbase = weechat-discord-git
-	pkgdesc = discord plugin for weechat
+	pkgdesc = Discord plugin for weechat
 	pkgver = r61.67d74d1
 	pkgrel = 1
 	url = https://github.com/khyperia/weechat-discord
