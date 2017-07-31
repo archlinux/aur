@@ -2,9 +2,9 @@
 pkgname=cliqz
 _pkgname=browser-f
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 _cqzbuildid=20170706154045
-pkgdesc="Firefox-based privacy aware web browser"
+pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
@@ -14,8 +14,8 @@ makedepends=(unzip zip diffutils python2 yasm mesa gconf inetutils xorg-server-x
              autoconf2.13 cargo gcc5)
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
-        "fix-wifi-scanner.diff")
-sha256sums=('f56d5759d2f2d589269903350d7acc37899007f5ed8568186f74e9a9e403da60'
+        'fix-wifi-scanner.diff')
+sha256sums=('2cbef2d9a57f54de9c1582cfbe1e578997151eb3090071bb937da52e7354aebf'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 options=(!emptydirs !makeflags !strip)
 
@@ -24,6 +24,21 @@ prepare() {
   sed -i 's/ifeq ($(OS_ARCH), Linux)/ifeq ($(OS_ARCH), Nope)/' toolkit/mozapps/installer/upload-files.mk
   sed -i "s/@MOZ_APP_DISPLAYNAME@/$pkgname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
   sed -i "s/@MOZ_APP_NAME@/$pkgname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
+  sed -i "s|^Exec=${pkgname}$|Exec=/usr/lib/${pkgname}/${pkgname} %u|" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
+
+  cat >> toolkit/mozapps/installer/linux/rpm/mozilla.desktop <<END
+Actions=new-forget-window;
+
+[Desktop Action new-forget-window]
+Name=New Forget Window
+Name[de]=Neues privates Fenste
+Name[en_US]=New Forget Window
+Name[fr]=Nouvelle fenêtre de navigation privée
+Exec=/usr/lib/cliqz/cliqz --private-window %u
+END
+
+  # Quickfix only for 1.14.1
+  echo "$pkgver" > browser/config/version_display.txt
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   patch -Np1 -i $srcdir/fix-wifi-scanner.diff
@@ -40,7 +55,7 @@ prepare() {
   # more information.
   echo -n "16674381-f021-49de-8622-3021c5942aff" > browser/mozilla-desktop-geoloc-api.key
 
-  cat >.mozconfig <<END
+  cat > .mozconfig <<END
 ac_add_options --prefix=/usr
 ac_add_options --enable-gold
 ac_add_options --enable-pie
@@ -70,12 +85,10 @@ END
 build() {
   cd $srcdir/$_pkgname-$pkgver
 
-  # Quickfix only for 1.14.1
-  echo "$pkgver" > mozilla-release/browser/config/version_display.txt
-
   # Rewrite to avoid multiple -pipe
   march=$(gcc -Q --help=target | grep march | sed -nr 's/^.*\s+([^\s]+)$/\1/p')
   CFLAGS="-march=${march} -mtune=generic -O2 -fstack-protector-strong"
+  CXXFLAGS="-march=${march} -mtune=generic -O2 -fstack-protector-strong"
 
   # Hardening is currently deactivated as it hangs on my current machine
   # Hardening
