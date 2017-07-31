@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.26.0.3.gf676f6d2b9
+pkgver=v0.26.0.55.g53188a14bf
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -35,7 +35,7 @@ depends=('desktop-file-utils'
          'v4l-utils'
          'libvdpau'
          'fribidi'
-         'libmysofa-git'
+         'libmysofa'
          'mujs'
          )
 license=('GPL2' 'GPL3' 'LGPL')
