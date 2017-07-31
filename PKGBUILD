@@ -13,18 +13,27 @@ provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
 backup=(opt/$pkgname/bin/pycharm.vmoptions opt/$pkgname/bin/pycharm64.vmoptions)
-# for no-jdk:
-# depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
-depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
+if [ ! -z $pycharm_professional_nojdk ] && [ $pycharm_professional_nojdk = "yes" ]; then
+    depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
+else
+    depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
+fi
 makedepends=('python2-setuptools' 'python-setuptools')
-# for no-jdk:
-# source=(https://download.jetbrains.com/python/$pkgname-$_pkgver-no-jdk.tar.gz
-source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
-        'pycharm-professional.desktop'
-        'pycharm-professional.install'
-        'pycharm'
-        'charm.desktop'
-        'charm')
+if [ ! -z $pycharm_professional_nojdk ] && [ $pycharm_professional_nojdk = "yes" ]; then
+    source=(https://download.jetbrains.com/python/$pkgname-$_pkgver-no-jdk.tar.gz
+            'pycharm-professional.desktop'
+            'pycharm-professional.install'
+            'pycharm'
+            'charm.desktop'
+            'charm')
+else
+    source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
+            'pycharm-professional.desktop'
+            'pycharm-professional.install'
+            'pycharm'
+            'charm.desktop'
+            'charm')
+fi
 optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'ipython: For enhanced interactive Python shell v3 inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -42,14 +51,21 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python2-tox: Python environments for testing tool with Python 2'
             'python-tox: Python environments for testing tool with Python 3', 
             'jupyter: For support Jupyter Notebook')
-# for no-jdk:
-# sha256sums=('84cea5993e25daf54e6e28ec1aa554a5f03a03510c29cfd1d88dff1ceef58e9d'
-sha256sums=('005c4f9fb4ac7f040d73a9b58a57e32998d53be5bbf583779a0e24b379150833'
-            '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
-            'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
-            '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
-            'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
-            '998a6fdf6d04791a7b3e918e11ccf8fb017a15755aaa9407f70069cecdcc2745')
+if [ ! -z $pycharm_professional_nojdk ] && [ $pycharm_professional_nojdk = "yes" ]; then
+    sha256sums=('c83c6edd0e0ae9a29ce41a0985c20cb71479005b99cf169a0744b3df80cf47f4'
+                '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
+                'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
+                '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
+                'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
+                '998a6fdf6d04791a7b3e918e11ccf8fb017a15755aaa9407f70069cecdcc2745')
+else
+    sha256sums=('005c4f9fb4ac7f040d73a9b58a57e32998d53be5bbf583779a0e24b379150833'
+                '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
+                'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
+                '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
+                'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
+                '998a6fdf6d04791a7b3e918e11ccf8fb017a15755aaa9407f70069cecdcc2745')
+fi
 
 package() {
   # compile PyDev debugger used by PyCharm to speedup debugging
