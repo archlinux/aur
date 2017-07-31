@@ -1,17 +1,17 @@
 pkgbase = ttf-tahoma
 	pkgdesc = Tahoma and Tahoma Bold fonts from the Wine project
-	pkgver = 1.7.27
+	pkgver = 2.13
 	pkgrel = 1
 	epoch = 1
-	url = http://www.winehq.org/
+	url = https://www.winehq.org/
 	install = ttf.install
 	arch = any
 	license = LGPL
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = tahoma-1.7.27.ttf::http://source.winehq.org/source/fonts/tahoma.ttf?!v=wine-1.7.27&_raw=1
-	source = tahomabd-1.7.27.ttf::http://source.winehq.org/source/fonts/tahomabd.ttf?!v=wine-1.7.27&_raw=1
+	source = tahoma-2.13.ttf::https://source.winehq.org/source/fonts/tahoma.ttf?!v=wine-2.13&_raw=1
+	source = tahomabd-2.13.ttf::https://source.winehq.org/source/fonts/tahomabd.ttf?!v=wine-2.13&_raw=1
 	sha256sums = 8385eb7b3930798411953b8789245ae47e9a9e8480f7f37ecb8da1d895363954
 	sha256sums = c29342ba99a04f983193756f01eb6de946fd4d33ba0bb7061aff11e70871b6f2
 
