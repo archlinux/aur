@@ -5,10 +5,10 @@
 
 pkgname=frotz
 pkgver=2.44
-pkgrel=4
+pkgrel=5
 pkgdesc='Z-machine interpreter for interactive fiction games'
 arch=('x86_64' 'i686')
-url='http://frotz.sourceforge.net/'
+url='http://frotz.sf.net/'
 license=('GPL')
 makedepends=('setconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidGriffith/frotz/archive/$pkgver.tar.gz")
@@ -23,14 +23,15 @@ prepare() {
     MAN_PREFIX="$pkgdir/usr/share" \
     OPTS='${CFLAGS}'
   do setconf -a "$pkgname-$pkgver/Makefile" $opt; done
+  sed '/@e/d' -i "$pkgname-$pkgver/Makefile"
 }
 
 build() {
-  CFLAGS="$CFLAGS -w" make -C "$pkgname-$pkgver" -j 8 all > /dev/null
+  CFLAGS="$CFLAGS -w" make -s -C "$pkgname-$pkgver" -j $(grep -c ^processor /proc/cpuinfo)
 }
 
 package() {
   make -s -C "$pkgname-$pkgver" install
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:ts=2 sw=2 et:
