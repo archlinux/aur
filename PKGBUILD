@@ -50,7 +50,7 @@ package_shifter-runtime() {
              'json-c' 'xfsprogs' 'wget')
     install="${pkgname}.install"
     provides=('shifter-runtime')
-    conflicts=('shifter-runtime-slurm')
+    conflicts=('shifter-slurm-runtime')
     cd "${srcdir}/shifter-${pkgver}_${pkgrel}"
     make DESTDIR="${pkgdir}" install
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -72,7 +72,7 @@ package_shifter-imagegw() {
              'python2-redis' 'gunicorn-python2' 'python2-pylint')
     install="${pkgname}.install"
     provides=('shifter-imagegw')
-    conflicts=('shifter-imagegw-slurm')
+    conflicts=('shifter-slurm-imagegw')
     cd "${srcdir}/shifter-${pkgver}_${pkgrel}"
     make DESTDIR="${pkgdir}" install
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

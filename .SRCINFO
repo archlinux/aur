@@ -39,7 +39,7 @@ pkgname = shifter-runtime
 	depends = xfsprogs
 	depends = wget
 	provides = shifter-runtime
-	conflicts = shifter-runtime-slurm
+	conflicts = shifter-slurm-runtime
 
 pkgname = shifter-imagegw
 	install = shifter-imagegw.install
@@ -57,5 +57,5 @@ pkgname = shifter-imagegw
 	depends = gunicorn-python2
 	depends = python2-pylint
 	provides = shifter-imagegw
-	conflicts = shifter-imagegw-slurm
+	conflicts = shifter-slurm-imagegw
 
