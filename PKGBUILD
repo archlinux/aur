@@ -4,11 +4,11 @@
 pkgname=munt
 pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://munt.sourceforge.net'
 license=('GPL2')
-depends=('qt4' 'portaudio' 'libpulse' 'alsa-lib')
+depends=('qt5-base' 'qt5-multimedia' 'portaudio' 'libpulse' 'alsa-lib')
 makedepends=('cmake' 'imagemagick' 'gendesk')
 options=('staticlibs')
 __mt32suffix=libmt32emu
