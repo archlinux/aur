@@ -1,7 +1,7 @@
 # Maintainer: Sean Haugh <seanphaugh@gmail.com>
 
 pkgname=python-pywal
-pkgver=0.5.0.r11.g8ba377d
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Generate and change colorschemes on the fly"
 arch=('any')
@@ -12,18 +12,14 @@ depends=('python'
 optdepends=('feh: set wallpaper'
             'nitrogen: set wallpaper')
 provides=("python-pywal=$pkgver-$pkgrel")
-source=('git+https://github.com/dylanaraps/pywal.git')
-md5sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname#python-}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
+source=("https://github.com/dylanaraps/${pkgname#python-}/archive/${pkgver}.tar.gz")
+md5sums=('0016206b7fde4b719411db1637664350')
 
 package() {
-  cd "${pkgname#python-}"
+  cd "${pkgname#python-}-${pkgver}"
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
-  install -Dm644 "$srcdir/${pkgname#python-}/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/${pkgname#python-}/LICENSE.md" \
+                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
