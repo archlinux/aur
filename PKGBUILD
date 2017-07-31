@@ -4,7 +4,7 @@
 pkgname=kvantum-qt5-git
 pluginname=kvantum
 gitname=Kvantum
-pkgver=V0.10.4.r78.gdffafb6
+pkgver=0.10.4.r78.gdffafb6
 pkgrel=1
 pkgdesc="SVG-based Qt5 theme engine plus a config tool and extra themes"
 arch=('x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${gitname}"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
