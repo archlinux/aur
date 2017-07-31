@@ -1,0 +1,20 @@
+pkgbase = repkg
+	pkgdesc = A tool to manage rebuilding of AUR packages based on their dependencies
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Baum42/repkg
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = qt5-tools
+	makedepends = git
+	depends = qt5-base
+	depends = pacman
+	optdepends = pacaur: Adds support for synchronizing AUR packages
+	source = repkg-1.0.0::git+https://github.com/Skycoder42/repkg.git#tag=1.0.0
+	source = repkg.rule
+	sha256sums = SKIP
+	sha256sums = f4b9afd13da458db0ad55e8e1e99565a6485fc60a7745ad816f01f816e5bee22
+
+pkgname = repkg
+
