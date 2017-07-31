@@ -1,9 +1,9 @@
 pkgname=spim-svn
-pkgver=691
+pkgver=711
 pkgrel=1
 pkgdesc="A MIPS32 simulator (SVN version)"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/spimsimulator/"
+url="https://sourceforge.net/projects/spimsimulator/"
 license=('custom:BSD')
 groups=('emulators')
 depends=('glibc')
@@ -11,7 +11,7 @@ makedepends=('subversion')
 conflicts=('spim')
 provides=('spim')
 
-_svntrunk='svn+http://svn.code.sf.net/p/spimsimulator/code'
+_svntrunk='svn+https://svn.code.sf.net/p/spimsimulator/code'
 source=("${_svntrunk}/spim"
         "${_svntrunk}/CPU")
 md5sums=('SKIP'
