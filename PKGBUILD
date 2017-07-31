@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='python-pyarrow'
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('i686' 'x86_64')
@@ -12,20 +12,20 @@ checkdepends=('python-pytest')
 optdepends=()
 makedepends=('cmake' 'cython')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('a4fd4aaa3a2f671d031f0c31b4ed72df948d60c1b5aba84188b032da56e409e3')
+sha256sums=('eeb036e152a28289c3ab248d846901524a3e715771c4c460c30015317db59b7c')
 
 build(){
   cd "$srcdir/arrow-apache-arrow-$pkgver/python"
   ARROW_HOME=/usr PARQUET_HOME=/usr \
     python setup.py build_ext --build-type=release \
-    --with-parquet --with-jemalloc --inplace
+    --with-parquet --inplace
 }
 
 package(){
   cd "$srcdir/arrow-apache-arrow-$pkgver/python"
   ARROW_HOME=/usr PARQUET_HOME=/usr \
   python setup.py build_ext --build-type=release \
-  --with-parquet --with-jemalloc install --root=$pkgdir
+  --with-parquet install --root=$pkgdir
 }
 
 check(){

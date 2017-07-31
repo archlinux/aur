@@ -1,6 +1,6 @@
 pkgbase = python-pyarrow
 	pkgdesc = A columnar in-memory analytics layer for big data.
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://arrow.apache.org
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-pyarrow
 	depends = arrow
 	depends = jemalloc
 	depends = parquet-cpp
-	source = https://github.com/apache/arrow/archive/apache-arrow-0.4.1.tar.gz
-	sha256sums = a4fd4aaa3a2f671d031f0c31b4ed72df948d60c1b5aba84188b032da56e409e3
+	source = https://github.com/apache/arrow/archive/apache-arrow-0.5.0.tar.gz
+	sha256sums = eeb036e152a28289c3ab248d846901524a3e715771c4c460c30015317db59b7c
 
 pkgname = python-pyarrow
 
