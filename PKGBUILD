@@ -1,9 +1,10 @@
 # Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
+_next_commit='820899d07102b990b19e8b02121221e41f7fbf06'
 pkgname='nextcloud-client'
 pkgver='2.3.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
@@ -23,6 +24,7 @@ prepare() {
   mkdir -p "${srcdir}/client_theming-${pkgver}/build-linux"
   git clone git://github.com/owncloud/client.git "${srcdir}/client_theming-${pkgver}/client"
   cd "${srcdir}/client_theming-${pkgver}/client"
+  git checkout "${_next_commit}"
   git submodule update --init --recursive
 }
 
