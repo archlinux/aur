@@ -1,6 +1,6 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jamovi-rbundle
-pkgver=1
+pkgver=2017.07.31
 pkgrel=1
 epoch=
 pkgdesc="R Bundle for Jamovi"
@@ -15,8 +15,8 @@ source=("rbundle.R"
 	"git+https://github.com/jamovi/jmv.git"
         )
 noextract=()
-md5sums=('a4e28de7c48767ca7836dd778c5ba502'
-         '15436079c0f279bc403bae5026b8f3fa'
+md5sums=('47804c91eefab8d14f3ad1af7486e11f'
+         '1ee17071cf13a1b642c378c0e0f46092'
          'SKIP'
          'SKIP')
 validpgpkeys=()
