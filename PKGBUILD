@@ -1,6 +1,6 @@
 pkgname=ghdl
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 _gccver=7.1.0
 _islver=0.18
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ install=ghdl.install
 options=(!emptydirs staticlibs)
 
 source=(
-  "git+https://github.com/tgingold/ghdl#tag=v${pkgver}"
+  "git+https://github.com/tgingold/ghdl#tag=GHDL-v${pkgver}"
   "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
   "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
