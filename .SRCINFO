@@ -1,7 +1,7 @@
 pkgbase = icewm2
 	pkgdesc = A window manager designed for speed, usability and consitency (enhanced)
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = http://github.com/bbidulock/icewm
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = icewm2
 	provides = icewm
 	conflicts = icewm
 	replaces = icewm
-	source = https://github.com/bbidulock/icewm/releases/download/1.4.1/icewm-1.4.1.tar.bz2
-	md5sums = 2aef71cb95c3d54f8d795b63842bbd4b
+	source = https://github.com/bbidulock/icewm/releases/download/1.4.2/icewm-1.4.2.tar.bz2
+	md5sums = 3e7c3a95e7f8518346267f48a11966cd
 
 pkgname = icewm2
 
