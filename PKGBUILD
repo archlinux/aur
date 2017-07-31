@@ -13,13 +13,13 @@ provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
 backup=(opt/$pkgname/bin/pycharm.vmoptions opt/$pkgname/bin/pycharm64.vmoptions)
-if [ ! -z $pycharm_professional_nojdk ] && [ $pycharm_professional_nojdk = "yes" ]; then
+if [[ $pycharm_professional_nojdk = "yes" ]]; then
     depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
 else
     depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
 fi
 makedepends=('python2-setuptools' 'python-setuptools')
-if [ ! -z $pycharm_professional_nojdk ] && [ $pycharm_professional_nojdk = "yes" ]; then
+if [[ $pycharm_professional_nojdk = "yes" ]]; then
     source=(https://download.jetbrains.com/python/$pkgname-$_pkgver-no-jdk.tar.gz
             'pycharm-professional.desktop'
             'pycharm-professional.install'
@@ -51,7 +51,7 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python2-tox: Python environments for testing tool with Python 2'
             'python-tox: Python environments for testing tool with Python 3', 
             'jupyter: For support Jupyter Notebook')
-if [ ! -z $pycharm_professional_nojdk ] && [ $pycharm_professional_nojdk = "yes" ]; then
+if [[ $pycharm_professional_nojdk = "yes" ]]; then
     sha256sums=('c83c6edd0e0ae9a29ce41a0985c20cb71479005b99cf169a0744b3df80cf47f4'
                 '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
                 'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
