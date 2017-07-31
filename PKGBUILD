@@ -1,12 +1,13 @@
 pkgname=batman-adv-dkms
 pkgver=v2017.2
-pkgrel=1
+pkgrel=2
 pkgdesc='batman kernel module (dkms package)'
 arch=('any')
 url='https://www.open-mesh.org/projects/batman-adv'
 license=('GPL')
+commit=382d020fe3fa528b1f65f8107df8fc023eb8cacb
 source=(
-	"batman-adv::git+https://git.open-mesh.org/batman-adv.git#commit=82dbea37fbd4000ac4af38651a7206b04eb16800"
+	"batman-adv::git+https://git.open-mesh.org/batman-adv.git#commit=${commit}"
 	'dkms.conf'
 )
 sha256sums=('SKIP'
