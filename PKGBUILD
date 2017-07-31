@@ -2,24 +2,22 @@
 # Based on UMS PKGBUILD
 
 pkgname=ums-headless
-pkgver=6.5.1
+pkgver=6.7.2
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems. Build based on Java 8."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'arm')
 url="http://www.universalmediaserver.com/"
 license=('GPL2')
-depends=('ffmpeg-headless' 'libmediainfo' 'java-runtime=8')
+depends=('java-runtime=8')
 conflicts=('ums')
 optdepends=("mencoder: Free command line video decoding, encoding and filtering tool"
             "ts-muxer-cli-ng: Remux/mux elementary streams without re-encoding")
 makedepends=("unzip")
 [ "$CARCH" = "x86_64" ] && \
-optdepends=("dcraw: thumbnails creation support"
-            "lib32-gcc-libs: tsMuxeR support"
-            "lib32-glibc: tsMuxeR support")
+optdepends=("dcraw: thumbnails creation support")
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
-source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver-Java8.tgz"
+source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
         'ums.desktop'
         'ums.service')
 sha256sums=('cadfd435915e3ef5c506bbbd81c49ec5811522ebc405779974f013ee94f3adcb'
@@ -33,10 +31,6 @@ package() {
   chmod -R 755 $srcdir/ums-$pkgver/plugins $srcdir/ums-$pkgver/documentation
   rm -R $srcdir/ums-$pkgver/linux/*
   cp -r $srcdir/ums-$pkgver/* $pkgdir/opt/ums/
-  ln -s /usr/bin/ffmpeg $pkgdir/opt/ums/linux/ffmpeg
-  ln -s /usr/bin/ffmpeg $pkgdir/opt/ums/linux/ffmpeg64
-  ln -s /usr/bin/tsMuxeR $pkgdir/opt/ums/linux/tsMuxeR
-  ln -s /usr/bin/tsMuxeR $pkgdir/opt/ums/linux/tsMuxeR-new
   chmod +x $pkgdir/opt/ums/UMS.sh
   touch $pkgdir/opt/ums/UMS.conf
   touch $pkgdir/opt/ums/debug.log
