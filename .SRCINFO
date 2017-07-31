@@ -1,7 +1,7 @@
 pkgbase = amide-hg
 	pkgdesc = Medical Imaging Data Examiner - mercurial checkout
 	pkgver = 1.0.6r109.7b8fc8a59fd2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://amide.sourceforge.net/packages.html
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = amide-hg
 	makedepends = gnome-doc-utils
 	makedepends = gtk-doc
 	makedepends = intltool
-	depends = dcmtk-git
+	depends = dcmtk
 	depends = xmedcon
 	depends = libgnomecanvas
 	depends = gnome-vfs
