@@ -4,8 +4,8 @@
 
 pkgname=mopidy-git
 _gitname=mopidy
-pkgver=2.1.0.r36.g616f9ff1
-pkgrel=3
+pkgver=2.1.0.r38.g33856830
+pkgrel=1
 pkgdesc="An extensible music server written in Python"
 arch=('any')
 url="http://www.mopidy.com"
