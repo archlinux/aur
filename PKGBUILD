@@ -6,7 +6,7 @@
 #
 #
 pkgname="spl-utils-common-git"
-pkgver=0.7.0_r0_g1f2671b
+pkgver=0.7.0_r1_geed143d
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
