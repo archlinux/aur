@@ -1,14 +1,14 @@
 # Maintainer: Amos Onn <amosonn at gmail dot com>
 pkgname=python-distributed
 pkgver=1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python library for distributed computation."
 arch=('any')
 url="http://distributed.readthedocs.org/en/stable/"
 license=('BSD-3-clause')
-depends=('python>=3.5' 'python-tornado>=4.2' 'python-toolz>=0.7.4'
-    'python-cloudpickle>=0.2.2' 'python-dask>=0.14.0' 'python-click>=6.6'
-    'python-psutil' 'python-zict>=0.1.1' 'python-sortedcollections' 'python-six'
+depends=('python>=3.5' 'python-tornado>=4.4' 'python-toolz>=0.7.4'
+    'python-cloudpickle>=0.2.2' 'python-dask>=0.14.1' 'python-click>=6.6'
+    'python-psutil' 'python-zict>=0.1.2' 'python-sortedcontainers' 'python-six'
     'python-tblib' 'python-msgpack')
 # For supporting other versions of python:
 # futures; python_version < '3.0'
