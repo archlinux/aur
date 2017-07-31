@@ -1,14 +1,15 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Marcin Mikołajczak <me@m4sk.in>
+# Previous maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lximage-qt
 pkgname=$_pkgname-git
-pkgver=0.4.0.8.g512f1cf
+pkgver=0.5.1.23.g88eef99
 pkgrel=1
 pkgdesc="The LXQt image viewer"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("pcmanfm-qt" "qt5-x11extras")
+depends=("pcmanfm-qt" "libfm-qt" "qt5-x11extras")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
