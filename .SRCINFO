@@ -1,7 +1,7 @@
 pkgbase = scribus-git
 	pkgdesc = Desktop publishing software built from git mirror
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.scribus.net/
 	arch = i386
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = scribus-git
 	depends = librevenge
 	depends = harfbuzz-icu
 	conflicts = scribus
+	source = no-python.patch
+	md5sums = c2745f610c86aa58fb81090eb2480f2d
 
 pkgname = scribus-git
 

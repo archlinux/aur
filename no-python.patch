@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f14e02181..dec05e36e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -736,13 +736,13 @@ endif()
+ 
+ #<< PYTHON
+ #set(PythonLibs_FIND_VERSION 2)
+-find_package(PythonLibs 2 REQUIRED)
+-if (PYTHON_LIBRARY)
+-	message("Python Library Found OK")
+-	set(HAVE_PYTHON 1)
+-	set(COMPILE_PYTHON 1)
+-endif()
+-#>> PYTHON
++#find_package(PythonLibs 2 REQUIRED)
++#if (PYTHON_LIBRARY)
++#	message("Python Library Found OK")
++#	set(HAVE_PYTHON 1)
++#	set(COMPILE_PYTHON 1)
++#endif()
++##>> PYTHON
+ 
+ #<< FreeType2
+ find_package(Freetype REQUIRED)
