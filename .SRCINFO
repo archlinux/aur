@@ -1,0 +1,20 @@
+pkgbase = vkmark-git
+	pkgdesc = Vulkan benchmark
+	pkgver = r84.7fd7768
+	pkgrel = 1
+	url = https://github.com/vkmark/vkmark
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = vulkan-headers
+	makedepends = meson
+	makedepends = ninja
+	depends = vulkan-icd-loader
+	depends = libpng
+	depends = mesa
+	source = git+https://github.com/vkmark/vkmark.git
+	sha1sums = SKIP
+
+pkgname = vkmark-git
+
