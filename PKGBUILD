@@ -1,9 +1,9 @@
-# Maintainer: emersion <contact@emersion.fr>
+# Maintainer: emersion <contact emersion.fr>
 pkgname=browserpass
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/dannyvankooten/browserpass"
 license=('MIT')
 depends=('pass')
