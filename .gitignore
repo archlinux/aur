@@ -1,5 +1,6 @@
 *
 !.gitignore
+!prepare4uploadpkg.sh
 !PKGBUILD
 !.SRCINFO
 !*.patch
