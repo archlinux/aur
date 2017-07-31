@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='arrow'
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ license=('Apache')
 depends=('flatbuffers' 'rapidjson' 'boost-libs')
 checkdepends=()
 optdepends=()
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'brotli-static' 'lz4-static' 'zlib-static' 'zstd-static')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('a4fd4aaa3a2f671d031f0c31b4ed72df948d60c1b5aba84188b032da56e409e3')
+sha256sums=('eeb036e152a28289c3ab248d846901524a3e715771c4c460c30015317db59b7c')
 
 build(){
   cd "$srcdir"
