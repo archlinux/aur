@@ -1,7 +1,7 @@
 pkgbase = scribus-git
 	pkgdesc = Desktop publishing software built from git mirror
 	pkgver = latest
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.scribus.net/
 	arch = i386
 	arch = x86_64

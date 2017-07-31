@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=scribus-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop publishing software built from git mirror"
 arch=('i386' 'x86_64')
 url="https://www.scribus.net/"
@@ -29,9 +29,7 @@ prepare() {
   fi
 
   msg "GIT checkout done or server timeout"
-}
 
-build() {
   cd "$srcdir/$_gitname"
   mkdir build
   cd build
@@ -39,6 +37,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
 
+}
+
+build() {
+  cd "$srcdir/$_gitname/build"
   make
 }
 
