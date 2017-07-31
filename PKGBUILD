@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=snapcraft
-pkgver=2.32
+pkgver=2.33
 pkgrel=1
 pkgdesc="Build Ubuntu snappy packages."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 optdepends=('lxd')
 options=(!emptydirs)
 source=("https://github.com/ubuntu-core/snapcraft/archive/${pkgver}.tar.gz")
-sha256sums=('334b8fb10b5aa64f6aa7ed820571cbd808a2f5035046c667112cc4e1be74ab2e')
+sha256sums=('8e464e2fb7b0dcb4b0ef26bdc7f6e427a3db9389ae5afe7bdd79739c295463c5')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"  
