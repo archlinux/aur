@@ -5,7 +5,7 @@ pkgname=('qmc2-common-svn'
          'qmc2-sdlmame-svn'
          'qmc2-arcade-svn'
          )
-pkgver=0.66.7702
+pkgver=0.188.8092
 pkgrel=1
 pkgdesc="Qt based UNIX MAME frontend supporting SDLMAME. (SVN version)"
 url='http://qmc2.arcadehits.net/wordpress'
@@ -24,7 +24,7 @@ makedepends=('subversion'
              'wget'
              'ccache'
              )
-source=("qmc2::svn://svn.code.sf.net/p/qmc2/code/trunk")
+source=('qmc2::svn://svn.code.sf.net/p/qmc2/code/trunk')
 sha1sums=('SKIP')
 
 _buildopts="PREFIX=/usr MAN_DIR=/usr/share/man QMAKE=/usr/bin/qmake-qt5 LRELEASE=/usr/bin/lrelease-qt5 LUPDATE=/usr/bin/lupdate-qt5 JOYSTICK=1 SDL=2 LIBARCHIVE=1 WIP=1 CCACHE=1"
