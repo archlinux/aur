@@ -17,15 +17,15 @@
 #
 pkgbase="zfs-linux-lts-git"
 pkgname=("zfs-linux-lts-git" "zfs-linux-lts-git-headers")
-pkgver=0.7.0_r1_g0f69f42b4_4.9.37_1
+pkgver=0.7.0_r6_g1e0565d10_4.9.40_1
 pkgrel=1
-makedepends=("linux-lts-headers=4.9.37-1" "libelf" "git" "spl-linux-lts-git-headers")
+makedepends=("linux-lts-headers=4.9.40-1" "libelf" "git" "spl-linux-lts-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-lts-git" "zfs-utils-common-git" "linux-lts=4.9.37-1")
+depends=("kmod" "spl-linux-lts-git" "zfs-utils-common-git>=0.7.0_r6_g1e0565d10" "linux-lts=4.9.40-1")
 
 build() {
     cd "${srcdir}/zfs"
@@ -33,8 +33,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.0 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.9.37-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.37-1-lts/build
+                --with-linux=/usr/lib/modules/4.9.40-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.40-1-lts/build
     make
 }
 
@@ -54,10 +54,10 @@ package_zfs-linux-lts-git() {
 
 package_zfs-linux-lts-git-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-linux-lts-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers')
+    conflicts=('zfs-archiso-linux-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers' 'zfs-linux-lts-headers'  'zfs-linux-headers' 'zfs-linux-git-headers' )
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.9.37-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.9.40-1-lts/Module.symvers
 }
