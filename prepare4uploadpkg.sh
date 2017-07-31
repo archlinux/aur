@@ -5,7 +5,7 @@
 # _  __  / __  ___/__    / ______ \  ___  __ \__  /| |_  /     __  __/
 # / /_/ /  _  /    _    |   ____/ /  __  /_/ /_  ___ |/ /___   _  /___
 # \__,_/   /_/     /_/|_|  /_____/   _  .___/ /_/  |_|\____/   /_____/
-#                                    /_/           drxspace@gmail.com
+#                                    /_/        drxspace-4T-gmail.com
 #
 
 sum() {
@@ -34,7 +34,7 @@ makepkg --nobuild --skipinteg
 
 sed -i "$(rplcsum ${_pkgnames[*]})" PKGBUILD
 
-rm -rfv src/ United-Arch/ United-*.tar.gz gtk-theme-united-archers-git-*.tar.xz
+rm -rfv src/ United-Arch/ United-*.tar.gz
 
 namcap PKGBUILD && makepkg --printsrcinfo > .SRCINFO || exit 1
 git add . || exit 1 # PKGBUILD prepare4uploadpkg.sh .SRCINFO

@@ -9,10 +9,10 @@ _pkgnames=('United-Antergos-Compact'
 	'United-Manjaro'
 )
 _pkgver=2.2
-_revision=1
+_revision=3
 pkgname=gtk-theme-united-archers-git
 pkgver=v2.2.r1.gf1de93f
-pkgrel=2
+pkgrel=1
 pkgdesc='GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept.'
 arch=('any')
 url="https://github.com/godlyranchdressing/${_gitname}"
