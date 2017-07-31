@@ -1,7 +1,7 @@
 pkgbase = parquet-cpp
 	pkgdesc = A C++ library to read and write the Apache Parquet columnar data format.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0_rc1
+	pkgrel = 1
 	url = https://arrow.apache.org
 	arch = i686
 	arch = x86_64
@@ -9,14 +9,12 @@ pkgbase = parquet-cpp
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
-	makedepends = snappy-static
 	makedepends = thrift-static
-	depends = gcc-libs
-	depends = brotli
-	depends = boost-libs
 	depends = arrow
-	source = git+https://github.com/apache/parquet-cpp.git#commit=ce5e1e7dd6799df5411148479f0eb2626e3fff72
-	sha256sums = SKIP
+	depends = boost-libs
+	depends = gcc-libs
+	source = https://github.com/apache/parquet-cpp/archive/apache-parquet-cpp-1.2.0-rc1.tar.gz
+	sha256sums = d68268c07c2caeb347be4386c3e7c4c26add3816412f607c6b254fea9e2a0f2d
 
 pkgname = parquet-cpp
 
