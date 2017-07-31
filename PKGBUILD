@@ -1,13 +1,13 @@
 # Maintainer: Josh Klar <j@iv597.com>
 pkgname=git-staredown-git
-pkgver=r4.50f2f27
+pkgver=r9.121f916
 pkgrel=1
 pkgdesc="A utility to find which GitHub pull requests have been associated with a file"
 arch=(any)
 url="https://github.com/iv597/git-staredown"
 license=("MIT")
 groups=()
-depends=("python-pygit2" "python-github3")
+depends=("python-pygit2" "python-github3" "python-colorama")
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -31,5 +31,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -D -m0755 git-staredown.py "${pkgdir}/usr/bin/git-staredown"
+	make DESTDIR="${pkgdir}/usr" INSTALLED_DESTDIR="/usr" install
 }
