@@ -3,7 +3,7 @@
 pkgname=ldfpcfix
 pkgver=1.0
 pkgrel=1
-pkgdesc='Workaround for the ld \"contains output sections\" warning when compiling with fpc'
+pkgdesc='Workaround for the ld "contains output sections" warning when compiling with fpc'
 arch=('any')
 url='https://github.com/xyproto/ldfpcfix'
 license=('MIT')
