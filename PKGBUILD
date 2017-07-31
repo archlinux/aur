@@ -2,8 +2,8 @@
 # Contributor: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=clipster
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Python clipboard manager"
 arch=("any")
 url="https://github.com/mrichar1/clipster"

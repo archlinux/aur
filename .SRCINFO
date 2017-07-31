@@ -1,7 +1,7 @@
 pkgbase = clipster
 	pkgdesc = Python clipboard manager
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/mrichar1/clipster
 	arch = any
 	license = AGPL
@@ -11,7 +11,7 @@ pkgbase = clipster
 	depends = libwnck3
 	provides = clipster
 	conflicts = clipster-git
-	source = clipster-1.1.1::git+https://github.com/mrichar1/clipster.git#tag=1.1.1
+	source = clipster-1.2.2::git+https://github.com/mrichar1/clipster.git#tag=1.2.2
 	sha256sums = SKIP
 
 pkgname = clipster
