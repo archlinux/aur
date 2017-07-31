@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-united-archers-git
 	pkgdesc = GTK2/3 + GNOME Shell theme based on a Ubuntu 18.04 design concept.
 	pkgver = v2.2.r1.gf1de93f
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/godlyranchdressing/United-GNOME
 	arch = any
 	license = GPL3
