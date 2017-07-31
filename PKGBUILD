@@ -4,8 +4,8 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal-git
-pkgver=1.18.0.r103.g12db67f5
-pkgrel=2
+pkgver=1.18.1.r0.gbf9c3640
+pkgrel=1
 pkgdesc="A cross-platform 3D audio library (32-bit)"
 arch=(x86_64)
 url="http://www.openal.org/"
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd openal-soft
-  git describe --tags | sed 's/^openal-soft-//;s/-/.r/;s/-/./g'
+  git describe --long --tags | sed 's/^openal-soft-//;s/-/.r/;s/-/./g'
 }
 
 build() {
