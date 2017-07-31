@@ -16,15 +16,15 @@
 #
 pkgbase="spl-linux-git"
 pkgname=("spl-linux-git" "spl-linux-git-headers")
-pkgver=0.7.0_r0_g1f2671b_4.12.3_1
-pkgrel=1
+pkgver=0.7.0_r1_geed143d_4.12.3_1
+pkgrel=2
 makedepends=("linux-headers=4.12.3-1" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
 sha256sums=("SKIP")
 license=("GPL")
-depends=("spl-utils-common-git" "kmod" "linux=4.12.3-1")
+depends=("spl-utils-common-git>=0.7.0_r1_geed143d" "kmod" "linux=4.12.3-1")
 
 build() {
     cd "${srcdir}/spl"
@@ -52,7 +52,7 @@ package_spl-linux-git() {
 
 package_spl-linux-git-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-linux-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers')
+    conflicts=('spl-archiso-linux-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers'  )
     cd "${srcdir}/spl"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
