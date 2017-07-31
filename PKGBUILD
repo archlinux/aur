@@ -1,7 +1,7 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
 
 pkgname=gridcoinresearch-qt
-pkgver=3.5.9.7
+pkgver=3.5.9.8
 pkgrel=1
 pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
 depends=('boost-libs' 'qrencode' 'qt5-base' 'qt5-charts' 'libzip' 'miniupnpc' 'curl' 'boinc')
@@ -16,7 +16,7 @@ _sourcename="Gridcoin-Research-$pkgver"
 source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz"
         'gridcoinresearch-qt.desktop')
 
-sha256sums=('237aedbcfbefdfc7f8660cc25389d99e213794022bbb5852c08712a208861a77'
+sha256sums=('65cf9e6bfdb8cfacfeabdd28da8b14ed6bf113fa3546dcd98fa0c6d543f17c21'
             '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
 
 build() {
