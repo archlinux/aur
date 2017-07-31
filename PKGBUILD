@@ -7,13 +7,14 @@
 
 pkgname=osc
 pkgver=0.159.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
 license=('GPL2')
 depends=('python2'
          'python2-m2crypto'
+         'python2-typing'
          'urlgrabber')
 optdepends=('obs-build: required to run local builds'
             'obs-service-format_spec_file: for running the format_spec_file source service'
