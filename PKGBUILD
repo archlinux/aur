@@ -1,6 +1,6 @@
 # Maintainer: Amos Onn <amosonn at gmail dot com>
 pkgname=python-distributed
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A python library for distributed computation."
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
     'python-ipywidgets' # crick, hdfs-3
 )
 source=(https://codeload.github.com/dask/distributed/tar.gz/$pkgver)
-sha256sums=('2654ef9cfbbb1cb2de025e47acbea89270a8d88be7158f4683a8fc352f3a7ee4')
+sha256sums=('3fca385b2e597ef40a0164cd3e7a216ca7654ee5b8a7967054d88dbfc136c493')
 
 package() {
   cd $srcdir/distributed-$pkgver
