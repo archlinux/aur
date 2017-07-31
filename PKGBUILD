@@ -9,7 +9,7 @@ pkgbase=gcc63
 _ver=6.3
 pkgname=('gcc63' 'gcc63-fortran' 'gcc63-objc' 'gcc63-ada' 'gcc63-go' 'gcc63-gcj')
 pkgver=6.3.1
-pkgrel=4
+pkgrel=5
 _islver=0.17
 _cloogver=0.18.4
 _commit=4ca53f06ff7d346ef8021a23108f23a5406a0417
@@ -18,7 +18,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=('gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath')
-makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'libart-lgpl' 'gcc-ada' 'gcc-objc' 'gcc-go' 'gcc-fortran' 'git' 'gcc-gcj-ecj')
+makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'libart-lgpl' 'gcc-ada' 'gcc-objc' 'gcc-go' 'gcc-fortran' 'git')
 optdepends=('python2: for running /usr/bin/aot-compile'
   'java-environment: for runnig some jars')
 options=('!libtool' '!makeflags')
