@@ -1,7 +1,7 @@
 # Maintainer: David Z. Kil <dave at thekilempire dot com>
 
 pkgname=packer-io-git
-pkgver=0.12.3.r363.g69daca2a3
+pkgver=1.0.3.r23.gc2f142eea
 pkgver() {
   cd "$srcdir/packer"
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -13,16 +13,12 @@ arch=('x86_64' 'i686')
 license=('MPL2')
 conflicts=('packer-io')
 makedepends=('mercurial' 'go' 'bzr')
-source=('packer::git+http://github.com/hashicorp/packer'
-        'esx5_HostKeyCallback.patch')
-md5sums=('SKIP'
-         '0f5fd9e12b4b53ddfc577a0d28a24d30')
+source=('packer::git+http://github.com/hashicorp/packer')
+md5sums=('SKIP')
 
 prepare() {
   export GOPATH=$srcdir
   go get -u github.com/hashicorp/packer
-  cd "$srcdir/src/github.com/hashicorp/packer"
-  patch -p1 -i "$srcdir/esx5_HostKeyCallback.patch"
 }
 
 build() {
