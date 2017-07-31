@@ -1,13 +1,13 @@
 pkgbase = nodejs-jpm
 	pkgdesc = Jetpack Mechanic utilities for creating, testing, running and packaging Mozilla Jetpack Addons
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm
 	arch = any
 	license = custom:MPL2
 	makedepends = npm
 	depends = nodejs
-	source = http://registry.npmjs.org/jpm/-/jpm-1.3.1.tgz
+	source = https://registry.npmjs.org/jpm/-/jpm-1.3.1.tgz
 	sha256sums = 8e575106504014341eaa141cc87340b4232e49d1ed73d3297029994d7a7413d4
 
 pkgname = nodejs-jpm
