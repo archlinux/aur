@@ -1,5 +1,5 @@
 pkgname=mingw-w64-openal
-pkgver=1.17.2
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
 source=(http://kcat.strangesoft.net/openal-releases/openal-soft-$pkgver.tar.bz2)
-md5sums=('1764e0d8fec499589b47ebc724e0913d')
+sha256sums=('2d51a6529526ef22484f51567e31a5c346a599767991a3dc9d4dcd9d9cec71dd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
