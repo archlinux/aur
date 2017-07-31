@@ -3,7 +3,7 @@
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
 pkgver=20170730_192107
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
 arch=('any')
 url="https://foldoc.org/"
@@ -15,8 +15,8 @@ conflicts=('dictd-foldoc')
 install=$pkgname.install
 source=("https://foldoc.org/Dictionary.txt"
         'sedfile')
-md5sums=('SKIP'
-         '187e91f7b0734a85a81105d8745522c0')
+sha512sums=('SKIP'
+            '94f123fc5d7042e918db098f03f31356953ef3cd09ee388d348797d7c61d414a2f3058009e7050490c52b83d529913f862bde29cfa9ddd9b3e273664d01ee4fd')
 
 pkgver()
 {
