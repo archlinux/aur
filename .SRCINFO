@@ -1,17 +1,26 @@
 pkgbase = dict-gcide
 	pkgdesc = GNU version of the Collaborative International Dictionary of English for dictd et al.
-	pkgver = 0.48.1
-	pkgrel = 7
-	url = http://www.dict.org/
+	pkgver = 0.51
+	pkgrel = 1
+	url = http://gcide.gnu.org.ua/
 	install = dict-gcide.install
 	arch = any
 	license = GPL
+	license = GPL3
 	makedepends = dictd
+	makedepends = sed
 	optdepends = dictd: dict client and server
 	provides = dictd-gcide
 	conflicts = dictd-gcide
-	source = ftp://ftp.debian.org/debian/pool/main/d/dict-gcide/dict-gcide_0.48.1.tar.gz
-	sha512sums = 87a5aae9952316e03e029424de06e36bec46ce1a24dd300eecaf73577f6785c18cbade1d4227ac38b505a8b64ad36bac64893f4a7dc25b87760df0a4e384fbc4
+	source = fixes.sed
+	source = http://ftp.debian.org/debian/pool/main/d/dict-gcide/dict-gcide_0.48.4.tar.xz
+	source = ftp://ftp.gnu.org/gnu/gcide/gcide-0.51.tar.xz
+	source = ftp://ftp.gnu.org/gnu/gcide/gcide-0.51.tar.xz.sig
+	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
+	sha512sums = 3adc1c75e9f96883966236131518b4b8f4c6c588759112417ec46c35d421da87ddd1bac156fa0bf55c64f939cbe1efd235d0854b4dfe8cfa1278917d6fef07f5
+	sha512sums = 82939f8c9e2bb30368b673784abaf85724a04fb9ebab382b6908034e0978d4d47039b7667573b88fe074bb29ea232b9e11129ac30ba6e88d5b9271df3b2ad302
+	sha512sums = a388a43d255c28a933d301140f233ae602249dc1fa223dd91ea8c4b2fc0736ff88ed60357b08050217b5513638c7015e4c99dfd084cfad61eec503822558711a
+	sha512sums = SKIP
 
 pkgname = dict-gcide
 
