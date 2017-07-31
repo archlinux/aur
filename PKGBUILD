@@ -17,14 +17,14 @@
 pkgbase="spl-linux"
 pkgname=("spl-linux" "spl-linux-headers")
 pkgver=0.7.0_4.12.3_1
-pkgrel=1
+pkgrel=2
 makedepends=("linux-headers=4.12.3-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.0/spl-0.7.0.tar.gz")
 sha256sums=("567f461435f99f862efb1b740ed0876b52a2a539aafad6e5372a84a06a5da4d3")
 license=("GPL")
-depends=("spl-utils-common" "kmod" "linux=4.12.3-1")
+depends=("spl-utils-common>=0.7.0" "kmod" "linux=4.12.3-1")
 
 build() {
     cd "${srcdir}/spl-0.7.0"
@@ -52,7 +52,7 @@ package_spl-linux() {
 
 package_spl-linux-headers() {
     pkgdesc="Solaris Porting Layer kernel headers."
-    conflicts=('spl-linux-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers')
+    conflicts=('spl-archiso-linux-headers' 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers'  'spl-linux-git-headers' )
     cd "${srcdir}/spl-0.7.0"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
