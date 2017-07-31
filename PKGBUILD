@@ -1,13 +1,13 @@
 # Maintainer: Tesx <tesfabpel@gmail.com>
 pkgname=goxel
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source 3D voxel editor for Mac, Windows and Linux."
 arch=('i686' 'x86_64')
 url="https://guillaumechereau.github.io/goxel/"
 license=('GPL3')
 groups=()
-makedepends=(scons pkg-config)
+makedepends=(scons pkg-config patch)
 depends=(glfw gtk3)
 source=("https://github.com/guillaumechereau/$pkgname/archive/v$pkgver.tar.gz"
 	"goxel.desktop"
