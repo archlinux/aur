@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MidiEditor
+Comment=Midi Editor
+Exec=midieditor
+Icon=midieditor
+Terminal=false
+Categories=AudioVideo;Audio;
