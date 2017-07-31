@@ -3,7 +3,7 @@
 
 _pkgname='2048term'
 pkgname="${_pkgname}-git"
-pkgver=20170730.8d361aada
+pkgver=20170730.8d361aa
 pkgrel=1
 pkgdesc='Console version of the game "2048"'
 url='https://github.com/alewmoose/2048-in-terminal.git'
