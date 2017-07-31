@@ -1,0 +1,19 @@
+pkgbase = python-kodi-voice
+	pkgdesc = Package to make interfacing with Kodi very easy.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/johnwheeler/flask-ask
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/m0ngr31/kodi-voice/archive/0.9.4.tar.gz
+	sha256sums = 35f59804c414b11067edccf91c7d0db32df090c22a49cac3657316d63695b4af
+
+pkgname = python2-kodi-voice
+	pkgdesc = Package to make interfacing with Kodi very easy. (python2 version)
+	depends = python2-fuzzywuzzy
+	depends = python2-requests
+	depends = python2-roman
+	depends = python2-num2words
+
