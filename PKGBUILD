@@ -17,15 +17,15 @@
 #
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
-pkgver=0.7.0_4.9.37_1
+pkgver=0.7.0_4.9.40_1
 pkgrel=1
-makedepends=("linux-lts-headers=4.9.37" "libelf" "spl-linux-lts-headers")
+makedepends=("linux-lts-headers=4.9.40" "libelf" "spl-linux-lts-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.0/zfs-0.7.0.tar.gz")
 sha256sums=("6907524f5ca4149b799fe65cd31b552b0ae90dba5dc20524e1a24fc708d807d2")
 license=("CDDL")
-depends=("kmod" "spl-linux-lts" "zfs-utils-common" "linux-lts=4.9.37")
+depends=("kmod" "spl-linux-lts" "zfs-utils-common>=0.7.0" "linux-lts=4.9.40")
 
 build() {
     cd "${srcdir}/zfs-0.7.0"
@@ -33,8 +33,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.7.0 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.9.37-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.9.37-1-lts/build
+                --with-linux=/usr/lib/modules/4.9.40-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.9.40-1-lts/build
     make
 }
 
@@ -54,10 +54,10 @@ package_zfs-linux-lts() {
 
 package_zfs-linux-lts-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers')
+    conflicts=('zfs-archiso-linux-headers' 'zfs-linux-hardened-headers' 'zfs-linux-hardened-git-headers'  'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' )
     cd "${srcdir}/zfs-0.7.0"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.9.37-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.9.40-1-lts/Module.symvers
 }
