@@ -1,0 +1,27 @@
+pkgbase = perl-travel-routing-de-vrr-git
+	pkgdesc = Unofficial efa.vrr.de command line client and Perl module
+	pkgver = 2.16+gdb888ca
+	pkgrel = 1
+	url = http://finalrewind.org/projects/Travel-Routing-DE-VRR/
+	arch = any
+	license = custom:WTFPL
+	makedepends = perl-module-build
+	makedepends = perl-file-slurp
+	makedepends = perl-test-compile
+	makedepends = perl-test-fatal
+	makedepends = perl-test-pod
+	depends = perl-class-accessor
+	depends = perl-exception-class
+	depends = perl-libwww
+	depends = perl-xml-libxml
+	provides = perl-travel-routing-de-vrr=2.16+gdb888ca
+	conflicts = perl-travel-routing-de-vrr
+	replaces = perl-travel-routing-de-vrr<=2.16+gdb888ca
+	options = !emptydirs
+	source = Travel-Routing-DE-VRR::git+http://git.finalrewind.org/Travel-Routing-DE-VRR
+	source = http://www.wtfpl.net/txt/copying/COPYING
+	sha256sums = SKIP
+	sha256sums = 0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5
+
+pkgname = perl-travel-routing-de-vrr-git
+
