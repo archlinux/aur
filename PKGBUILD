@@ -24,11 +24,14 @@ source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
   'openpht.conf'
 )
 prepare() {
+  rm -rf 
+  mkdir patches
+  cd patches 
   git init
   git remote add openpht git://github.com/RasPlex/OpenPHT.git
-  git fetch openpht tags/${openpht}
+  git fetch openpht
   git checkout tags/${openpht} -- lib/ffmpeg/patches/
-  install -D -m 644 -t "${srcdir}"/ffmpeg-"${pkgver}"/patches "${srcdir}"/lib/ffmpeg/patches/*
+  install -D -m 644 -t "${srcdir}"/ffmpeg-"${pkgver}"/patches "${srcdir}"/patches/lib/ffmpeg/patches/*
   cd "${srcdir}"
 }
 
