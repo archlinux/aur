@@ -1,7 +1,7 @@
 pkgname=archlinux-python-helper
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="Litle Helper-Script to change current Python-Version like archlinux-java"
+pkgdesc="A Helper-Script to change Symlinks of python to change Python-Version. Syntax like archlinux-java"
 arch=('any')
 license=('GPL')
 
