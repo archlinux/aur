@@ -1,7 +1,7 @@
 pkgbase = openboardview-git
 	pkgdesc = Linux SDL/ImGui edition software for viewing .brd files
-	pkgver = r532.9fc1822
-	pkgrel = 1
+	pkgver = r564.27817bd
+	pkgrel = 2
 	url = http://openboardview.org/
 	arch = i686
 	arch = x86_64

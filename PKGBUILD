@@ -3,8 +3,8 @@
 _pkgname=openboardview
 __pkgname=OpenBoardView
 pkgname=${_pkgname}-git
-pkgver=r532.9fc1822
-pkgrel=1
+pkgver=r564.27817bd
+pkgrel=2
 pkgdesc="Linux SDL/ImGui edition software for viewing .brd files"
 arch=('i686' 'x86_64')
 url="http://openboardview.org/"
@@ -22,17 +22,22 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
-  ./build.sh
+  mkdir -p build && cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
   mkdir -p "${pkgdir}"/usr/bin
-  install -D -m755 bin/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
   install -D -m755 utilities/bvconv.sh "${pkgdir}/usr/bin/bvconv"
 
   mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  cd "${srcdir}/${pkgname}/build"
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
