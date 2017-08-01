@@ -1,0 +1,38 @@
+post_install() {
+	post_upgrade
+
+	echo -e "\e[39;1m- Please make sure that the Shifter runtimes and the image gateway has the same munge key.\e[0m"
+	echo -e "\e[39;1m- Check the configuration file (/etc/shifter/udiRoot.conf) before pulling images or starting containers.\e[0m"
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+
+	echo -e "\e[34;1m==>\e[39;1m Enabling munge.service... \e[0m"
+	systemctl is-enabled munge.service >/dev/null || systemctl enable munge.service
+
+	echo -e "\e[34;1m==>\e[39;1m Starting munge.service... \e[0m"
+	systemctl is-active munge.service >/dev/null || systemctl start munge.service
+
+	echo -e "\e[34;1m==>\e[39;1m Copying /etc/passwd... \e[0m"
+	cp -f /etc/passwd /etc/shifter/shifter_etc_files/passwd
+
+	echo -e "\e[34;1m==>\e[39;1m Copying /etc/group... \e[0m"
+	cp -f /etc/group /etc/shifter/shifter_etc_files/group
+
+	echo -e "\e[34;1m==>\e[39;1m Loading kernel modules... \e[0m"
+	[ -z "$(lsmod | grep ^ext4)" ] && modprobe ext4
+	[ -n "$(lsmod | grep ^ext4)" ] && echo -e "    \e[34;1m==>\e[39;1m ext4... loaded\e[0m"
+	[ -z "$(lsmod | grep ^loop)" ] && modprobe loop
+	[ -n "$(lsmod | grep ^loop)" ] && echo -e "    \e[34;1m==>\e[39;1m loop... loaded\e[0m"
+	[ -z "$(lsmod | grep ^squashfs)" ] && modprobe squashfs
+	[ -n "$(lsmod | grep ^squashfs)" ] && echo -e "    \e[34;1m==>\e[39;1m squashfs... loaded\e[0m"
+}
+
+pre_remove() {
+	echo -e "\e[34;1m==>\e[39;1m Deleting /etc/shifter/shifter_etc_files/passwd... \e[0m"
+	rm -f /etc/shifter/shifter_etc_files/passwd
+
+	echo -e "\e[34;1m==>\e[39;1m Deleting /etc/shifter/shifter_etc_files/group... \e[0m"
+	rm -f /etc/shifter/shifter_etc_files/group
+}

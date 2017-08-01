@@ -1,0 +1,75 @@
+--- dep/build_ssh.sh	2017-05-08 23:53:14.000000000 +0800
++++ dep/build_ssh.sh	2017-07-27 15:51:29.847977423 +0800
+@@ -8,7 +8,7 @@
+ INST_PREFIX=${INST_PREFIX:-/opt/udiImage}
+ SPRT_PREFIX=$( mktemp -d )
+ PREFIX=$( mktemp -d )
+-MUSL_VERSION=1.1.8
++MUSL_VERSION=latest
+ LIBRESSL_VERSION=2.1.6
+ ZLIB_VERSION=1.2.8
+ OPENSSH_VERSION=6.8p1
+@@ -23,12 +23,6 @@
+     exit 1
+ fi
+ 
+-if [[ ! -e "musl-${MUSL_VERSION}.tar.gz" && -n "$DEPTAR_DIR" && -e "$DEPTAR_DIR/musl-${MUSL_VERSION}.tar.gz" ]]; then
+-    cp "$DEPTAR_DIR/musl-${MUSL_VERSION}.tar.gz" .
+-fi
+-if [[ ! -e "musl-${MUSL_VERSION}.tar.gz" ]]; then
+-    curl -o "musl-${MUSL_VERSION}.tar.gz" "http://www.musl-libc.org/releases/musl-${MUSL_VERSION}.tar.gz"
+-fi
+ if [[ ! -e "libressl-${LIBRESSL_VERSION}.tar.gz" && -n "$DEPTAR_DIR" && -e "$DEPTAR_DIR/libressl-${LIBRESSL_VERSION}.tar.gz" ]]; then
+     cp "$DEPTAR_DIR/libressl-${LIBRESSL_VERSION}.tar.gz" .
+ fi
+@@ -48,31 +42,11 @@
+     curl -o "openssh-${OPENSSH_VERSION}.tar.gz" "http://mirrors.sonic.net/pub/OpenBSD/OpenSSH/portable/openssh-${OPENSSH_VERSION}.tar.gz"
+ fi
+ 
+-mkdir -p musl
+-tar xf "musl-${MUSL_VERSION}.tar.gz" -C musl --strip-components=1
+-cd musl
+-./configure "--prefix=${SPRT_PREFIX}" --enable-static --disable-shared
+-make
+-make install
+-cd "${builddir}"
+-
+-dirs="linux asm asm-generic x86_64-linux-gnu/asm"
+-for dir in $dirs; do
+-    if [[ -e "/usr/include/$dir" ]]; then
+-        if [[ -L "/usr/include/$dir" ]]; then
+-            # SLES has symlinks for asm
+-            realpath=$(readlink -f "/usr/include/$dir")
+-            cp -rp "$realpath" "${SPRT_PREFIX}/include/"
+-        fi
+-        cp -rp "/usr/include/$dir" "${SPRT_PREFIX}/include/"
+-    fi
+-done
+-
+ cd "${builddir}"
+ mkdir -p libressl
+ tar xf "libressl-${LIBRESSL_VERSION}.tar.gz" -C libressl --strip-components=1
+ cd libressl
+-CC="${SPRT_PREFIX}/bin/musl-gcc" ./configure "--prefix=${SPRT_PREFIX}" --enable-static --disable-shared
++./configure "--prefix=${SPRT_PREFIX}" --enable-static --disable-shared
+ make
+ make install
+ 
+@@ -80,7 +54,7 @@
+ mkdir -p zlib
+ tar xf "zlib-${ZLIB_VERSION}.tar.gz" -C zlib --strip-components=1
+ cd zlib
+-CC="${SPRT_PREFIX}/bin/musl-gcc" ./configure "--prefix=${SPRT_PREFIX}"
++./configure "--prefix=${SPRT_PREFIX}"
+ make
+ make install
+ 
+@@ -93,7 +67,7 @@
+ ## the image is not infected with all kinds of silly paths (sshd sets PATH to
+ ## very nearly the path it was built with)
+ export PATH="/usr/bin:/bin"
+-LDFLAGS="-L${SPRT_PREFIX}/lib -L${SPRT_PREFIX}/lib64" CC="${SPRT_PREFIX}/bin/musl-gcc" ./configure --without-pam "--with-ssl-dir=${SPRT_PREFIX}" --without-ssh1 --enable-static --disable-shared "--with-zlib=${SPRT_PREFIX}" "--prefix=${INST_PREFIX}"
++./configure --without-pam "--with-ssl-dir=${SPRT_PREFIX}" --without-ssh1 --enable-static --disable-shared "--with-zlib=${SPRT_PREFIX}" "--prefix=${INST_PREFIX}"
+ make
+ make install "DESTDIR=${PREFIX}"
+ cd "${builddir}"

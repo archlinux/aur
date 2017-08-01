@@ -1,0 +1,32 @@
+post_install() {
+	post_upgrade
+
+	echo -e "\e[39;1m- Please make sure that the Shifter runtimes and the image gateway has the same munge key.\e[0m"
+	echo -e "\e[39;1m- Check the configuration file (/etc/shifter/imagemanager.json) before starting the shifter-imagegw.service.\e[0m"
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+
+	echo -e "\e[34;1m==>\e[39;1m Enabling mongodb.service... \e[0m"
+	systemctl is-enabled mongodb.service >/dev/null || systemctl enable mongodb.service
+
+	echo -e "\e[34;1m==>\e[39;1m Starting mongodb.service... \e[0m"
+	systemctl is-active mongodb.service >/dev/null || systemctl start mongodb.service
+
+	echo -e "\e[34;1m==>\e[39;1m Enabling redis.service... \e[0m"
+	systemctl is-enabled redis.service >/dev/null || systemctl enable redis.service
+
+	echo -e "\e[34;1m==>\e[39;1m Starting redis.service... \e[0m"
+	systemctl is-active redis.service >/dev/null || systemctl start redis.service
+
+	echo -e "\e[34;1m==>\e[39;1m Enabling munge.service... \e[0m"
+	systemctl is-enabled munge.service >/dev/null || systemctl enable munge.service
+
+	echo -e "\e[34;1m==>\e[39;1m Starting munge.service... \e[0m"
+	systemctl is-active munge.service >/dev/null || systemctl start munge.service
+
+	echo -e "\e[34;1m==>\e[39;1m Loading kernel modules... \e[0m"
+	[ -z "$(lsmod | grep ^squashfs)" ] && modprobe squashfs
+	[ -n "$(lsmod | grep ^squashfs)" ] && echo -e "    \e[34;1m==>\e[39;1m squashfs... loaded\e[0m"
+}
