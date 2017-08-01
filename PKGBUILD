@@ -3,12 +3,12 @@
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=17.30.458935
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
 makedepends=('wget')
-depends=('ocl-icd')
+depends=('libdrm' 'ocl-icd')
 conflicts=('amdgpocl')
 
 DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Driver-for-Linux-Release-Notes.aspx -N %u'
@@ -48,6 +48,10 @@ package() {
 	mv "${srcdir}/opencl/${shared}/libamdocl12cl64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/libdrm/${shared}/libdrm_amdgpo.so.1.0.0" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/libdrm/${shared}/libdrm_amdgpo.so.1" "${pkgdir}/usr/lib/"
+
+        mkdir -p "${pkgdir}/opt/amdgpu-pro/share/libdrm"
+        cd "${pkgdir}/opt/amdgpu-pro/share/libdrm"
+        ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
 
 	rm -r "${srcdir}/opencl"
 	rm -r "${srcdir}/libdrm"
