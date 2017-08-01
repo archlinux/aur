@@ -1,6 +1,6 @@
 pkgbase = lua-gumbo-git
 	pkgdesc = Lua bindings for gumbo, Google's pure-C HTML5 parser
-	pkgver = 0.4+37+ge783ebe
+	pkgver = 0.4+121+gc583572
 	pkgrel = 1
 	url = https://github.com/craigbarnes/lua-gumbo
 	arch = i686
