@@ -1,10 +1,10 @@
 # Contributor: Sébastien Duquette <ekse.0x@gmail.com>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
-# Maintainer: CRT <cirkit@archlinux.email>
+# Maintainer: crt <cirkit@archlinux.email>
 
 pkgname=lft
-pkgver=3.73
+pkgver=3.79
 pkgrel=1
 pkgdesc="A layer four traceroute implementing numerous other features"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 url="http://pwhois.org/lft/"
 depends=('libpcap')
 source=("http://pwhois.org/dl/index.who?file=${pkgname}-${pkgver}.tar.gz")
-md5sums=('fd1277f55019786a0f03d4ce61f0e2c4')
+md5sums=('746dc08f2e20d0e0240f28873b3bb244')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
