@@ -1,7 +1,7 @@
 # Maintainer: Tim Savannah <kata198@gmail.com>
 
 pkgname=md-to-rst
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Tool to convert markdown to restructed text (md to rst)"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://github.com/kata198/mdToRst"
 makedepends=('python-setuptools' 'python')
 depends=('python-setuptools' 'python')
 source=("https://github.com/kata198/mdToRst/archive/${pkgver}.tar.gz")
-sha512sums=("0d14e4c89e010f7ea11c5e5b75830146d244a0f24e124b3ea2782b9fc4cd3cc76f92b23c6c7c23fb36d469d6c2ca19f519e7263969808d94263915d042343b09")
+sha512sums=("c58fda65f7af3db875d6ca5b330e14b5fc74a02d1e97593a77438479efb3c5995e9900f3ce25b30a4fc98db99875a7c9233eff0810e0520666bb74cbf0318cbf")
 
 build() {
   cd "$srcdir"/mdToRst-$pkgver
