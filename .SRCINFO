@@ -1,34 +1,33 @@
 pkgbase = xmobar-alsa
 	pkgdesc = A Minimalistic Text Based Status Bar compiled with ALSA
-	pkgver = 0.24.3
-	pkgrel = 3
+	pkgver = 0.24.5
+	pkgrel = 1
 	url = https://hackage.haskell.org/package/xmobar
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = ghc=8.0.1
-	makedepends = haskell-x11
-	makedepends = haskell-x11-xft
-	makedepends = haskell-utf8-string
-	makedepends = haskell-network-uri
-	makedepends = haskell-hinotify
-	makedepends = haskell-stm
-	makedepends = haskell-parsec
-	makedepends = haskell-mtl
-	makedepends = haskell-regex-base
-	makedepends = haskell-regex-compat
-	makedepends = haskell-http
 	depends = haskell-alsa-core>=0.5.0
 	depends = haskell-alsa-mixer>0.2.0.2
-	depends = gmp
 	depends = libxft
 	depends = libxinerama
 	depends = wireless_tools
 	depends = libxrandr
 	depends = libxpm
+	depends = ghc
+	depends = haskell-x11
+	depends = haskell-x11-xft
+	depends = haskell-utf8-string
+	depends = haskell-network-uri
+	depends = haskell-hinotify
+	depends = haskell-stm
+	depends = haskell-parsec
+	depends = haskell-mtl
+	depends = haskell-regex-base
+	depends = haskell-regex-compat
+	depends = haskell-http
 	conflicts = xmobar
-	source = https://hackage.haskell.org/packages/archive/xmobar/0.24.3/xmobar-0.24.3.tar.gz
-	md5sums = 8d0b8e12da0346ab74b113b83bed11d0
+	source = https://hackage.haskell.org/packages/archive/xmobar/0.24.5/xmobar-0.24.5.tar.gz
+	md5sums = 9befdb157b5adedd7150e4e07f0efbde
 
 pkgname = xmobar-alsa
 
