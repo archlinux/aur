@@ -1,0 +1,22 @@
+pkgbase = zsilencer
+	pkgdesc = Online multiplayer team based CTF 2D game, platformer action.
+	pkgver = r52.16f7c7c
+	pkgrel = 1
+	url = http://zsilencer.com
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = zlib
+	provides = zsilencer
+	conflicts = zsilencer
+	source = zsilencer::git+https://github.com/zsilencer/zSILENCER.git#branch=master
+	sha256sums = SKIP
+
+pkgname = zsilencer
+
