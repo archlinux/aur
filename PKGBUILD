@@ -1,11 +1,12 @@
-# Maintainer: Jeff Keyte <jeff@keyte.me>
+# Maintainer: Jason Mooradian <cowmix@gmail.com>
+# Contributor: Jeff Keyte <jeff@keyte.me>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Daniel Wallace <daniel.wallace@gatech.edu>
 
 pkgname=openpht
-pkgver=1.7.1.137
-_pkghash=b604995c
-pkgrel=3
+pkgver=1.8.0.148
+_pkghash=573b6d73
+pkgrel=1
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
@@ -27,7 +28,7 @@ source=("https://github.com/RasPlex/OpenPHT/archive/v${pkgver}-${_pkghash}.tar.g
         'plexhometheater.sh'
 	'fribidi.patch'
 	'plexhometheater.desktop')
-sha256sums=('e1b324a5ebb42d3a6f011592ff3dad0c4f08b3e937ff77977d3aa2ac51f8d415'
+sha256sums=('a3e4ab3995634f6b17d8426e8fdadfa2a028ee42e3d17d59321a63f555760171'
             '8a2d9ac55bc4e05520a9dc5893bb19c5e0e28991dbcdd9b4af5feaec20fc4f2d'
 	    '966edfa84fa09cf9c54281dff2adfd6fad41309b17893511e7cf01dc85def1ea'
 	    '354429ce7dcafaa8b619b000000f4f4f8fc0a1545b9656f6beb9f85ebb8f4e41')
