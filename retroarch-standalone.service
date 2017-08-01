@@ -1,17 +1,14 @@
 [Unit]
 Description=Systemd service and user to run Retroarch in stand-alone mode
-After=systemd-user-sessions.service network.target sound.target
-Conflicts=getty@tty1.service
 
 [Service]
 User=retroarch
 Group=retroarch
 PAMName=login
-TTYPath=/dev/tty1
-ExecStartPre=/usr/bin/sleep 2s
-ExecStart=/usr/bin/xinit /usr/bin/retroarch --appendconfig=/etc/retroarch-standalone.cfg -- :0 -nolisten tcp vt1
-Restart=on-abort
-StandardInput=tty
+Type=simple
+ExecStart=/usr/bin/retroarch --appendconfig=/etc/retroarch-standalone.cfg
+TimeoutStopSec=30
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

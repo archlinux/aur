@@ -6,12 +6,12 @@ pkgdesc="Systemd service and user to run Retroarch in stand-alone mode"
 url=""
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('MIT')
-depends=('retroarch' 'retroarch-assets-xmb' 'retroarch-autoconfig-udev' 'xorg-server' 'xorg-xinit')
+depends=('retroarch' 'retroarch-assets-xmb' 'retroarch-autoconfig-udev')
 install='retroarch-standalone.install'
 source=('retroarch-standalone.service'
         'retroarch-standalone.sysuser'
         'retroarch-standalone.cfg')
-md5sums=('07380c15f8b7f158908a1a6c9ac95d29'
+md5sums=('f73e83f0b6d17f06354d7c3db840afa1'
          'dff58d483453816a80dcdbc8d272e8b8'
          '560492141cfd3737f20c73ed15fe9475')
 
