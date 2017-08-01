@@ -26,11 +26,9 @@ build() {
 
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
-    --libexecdir=/usr/lib/networkmanager \
-    --with-pppd-plugin-dir=/usr/lib/pppd/2.4.7 \
-    --enable-more-warnings=yes \
-    --localstatedir=/var
-
+    --localstatedir=/var --libexecdir=/usr/lib/NetworkManager \
+    --with-pppd-plugin-dir=/usr/lib/pppd/2.4.7
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
