@@ -1,14 +1,14 @@
 # Maintainer: inori <github.com/inoriy>
 pkgname=astra
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="VC/PM identifiers for bash"
 
 url="https://github.com/inoriy/astra"
 license=("GPL-3.0")
 
 source=("https://github.com/inoriy/astra/archive/v$pkgver-$pkgrel.tar.gz")
-md5sums=('3dd7616759111381c11ed3c761bbb1df')
+md5sums=('3154c9ffebe9129c4a730d765c4eb014')
 
 arch=("any")
 depends=("glibc" "perl")
