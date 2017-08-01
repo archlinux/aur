@@ -1,0 +1,25 @@
+post_install () {
+
+cat << EOF
+
+==> Add this code to your .emacs file to use the mode:
+
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+(setq feature-default-i18n-file "/usr/share/emacs/site-lisp/feature-mode/i18n.yml") ; Or point at a different i18n.yml
+(setq feature-default-language "en") ; See i18n.yml for list of languages
+
+==> Or do the above with use-package:
+
+(use-package feature-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+  (setq feature-default-i18n-file "/usr/share/emacs/site-lisp/feature-mode/i18n.yml")
+  (setq feature-default-language "en"))
+
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}
