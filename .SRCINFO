@@ -1,0 +1,11 @@
+pkgbase = archlinux-python-helper
+	pkgdesc = A Helper-Script to change Symlinks of python to change Python-Version. Syntax like archlinux-java
+	pkgver = 0.1.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+
+	source = local://archlinux-python.sh
+	md5sums = SKIP
+
+pkgname = archlinux-python-helper
