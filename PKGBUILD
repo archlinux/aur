@@ -1,8 +1,9 @@
 # Maintainer: pzl <alsoelp@gmail.com>
 
 pkgname=pacvcs
-pkgver=6.56a4c7c
+pkgver=1.0.0
 pkgrel=1
+epoch=1
 pkgdesc="Pacman VCS version checker"
 arch=('any')
 url="https://github.com/pzl/pacvcs"
@@ -13,17 +14,13 @@ makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=()
-source=('git+https://github.com/pzl/pacvcs.git')
-md5sums=('SKIP')
-sha256sums=('SKIP')
+source=('https://github.com/pzl/pacvcs/archive/v1.0.0.tar.gz')
+md5sums=('a76e87abe366daaa3d39036a69cde8ea')
+sha256sums=('d1b0222099b57dec2b041b6dc446416bac3e8db43f1787b908102110934589ee')
 
-pkgver() {
-    cd "$srcdir/$pkgname"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 "$pkgname" "${pkgdir}/usr/bin/$pkgname"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
