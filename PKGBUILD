@@ -14,7 +14,7 @@ sha256sums=('a73fc979538e2a7ff20864c09519acbb5b88c5cd591603ad804f41950ac3118d')
 build() {
   cd "$srcdir/$pkgname-$pkgver"-*
 
-  make
+  make advent advent.6
 }
 
 check() {
@@ -29,6 +29,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/licences/$pkgname"
   install -d "$pkgdir/usr/share/doc/$pkgname"
+  install -d "$pkgdir/usr/share/man/man6"
   install -m755 advent "$pkgdir/usr/bin"
   install -m644 COPYING "$pkgdir/usr/share/licences/$pkgname"
   install -m644 NEWS "$pkgdir/usr/share/doc/$pkgname"
@@ -36,4 +37,5 @@ package() {
   install -m644 history.adoc "$pkgdir/usr/share/doc/$pkgname"
   install -m644 README.adoc "$pkgdir/usr/share/doc/$pkgname"
   install -m644 notes.adoc "$pkgdir/usr/share/doc/$pkgname"
+  install -m644 advent.6 "$pkgdir/usr/share/man/man6"
 }
