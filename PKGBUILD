@@ -6,7 +6,7 @@ pkgdesc="Port of the 'Colossal Cave Adventure' text-based adventure game"
 arch=('i686' 'x86_64')
 url="http://www.catb.org/~esr/open-adventure/"
 license=('BSD')
-makedepends=('python' 'python-yaml')
+makedepends=('python' 'python-yaml' 'asciidoc')
 conflicts=('advent')
 source=(${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/esr/open-adventure/repository/archive.tar.bz2?ref=1.2)
 sha256sums=('a73fc979538e2a7ff20864c09519acbb5b88c5cd591603ad804f41950ac3118d')
