@@ -1,12 +1,12 @@
 pkgname=mergerfs-tools-git
 _pkgname=mergerfs-tools
-pkgver=r51.0de2e49
+pkgver=r55.adf8b9e
 pkgrel=1
 pkgdesc="Tools to help manage data in a mergerfs pool"
 arch=('i686' 'x86_64')
 url="https://github.com/trapexit/mergerfs-tools"
 license=('MIT')
-depends=('python-xattr' 'python2-xattr')
+depends=('python-xattr' 'python2-xattr' 'rsync')
 source=("git://github.com/trapexit/mergerfs-tools")
 sha512sums=('SKIP')
 
