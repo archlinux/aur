@@ -2,13 +2,13 @@
 # Maintainer: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=isolate-git
-pkgver=r79.450096d
+pkgver=r98.8d6435e
 pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('i686' 'x86_64')
 url="https://github.com/ioi/isolate"
 license=('GPL2')
-depends=()
+depends=('libcap')
 makedepends=('git' 'gcc' 'asciidoc')
 provides=('isolate')
 conflicts=('isolate')
