@@ -9,6 +9,7 @@ arch=(any)
 url="http://sigrok.org/wiki/Fx2lafw"
 license=(GPL2)
 depends=()
+conflicts=("sigrok-firmware-fx2lafw-bin")
 makedepends=(sdcc)
 source=("http://sigrok.org/download/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('56db016987fd05131762b958e8dea705315aa44604ba63c2dffafdee0df33fbfa5a167c3a8ee7568ffd0fb0cd90df01c72627203ea8427f5e849c55a00e54478')
