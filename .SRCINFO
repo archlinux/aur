@@ -1,0 +1,19 @@
+pkgbase = txt2tags-git
+	pkgdesc = A text formatting and conversion tool - Development version
+	pkgver = 2.6.99
+	pkgrel = 1
+	url = http://www.txt2tags.org
+	arch = any
+	license = GPL
+	makedepends = gettext,
+	makedepends = git
+	depends = python2
+	optdepends = ruby: for running t2tmake.rb
+	optdepends = sh: for running html-update.sh
+	optdepends = vim: for using the vim-files
+	conflicts = txt2tags
+	source = git://github.com/txt2tags/txt2tags.git
+	md5sums = SKIP
+
+pkgname = txt2tags-git
+
