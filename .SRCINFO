@@ -9,7 +9,7 @@ pkgbase = ug
 	depends = libxaw
 	depends = openmpi
 	source = https://gitlab.dune-project.org/ug/ug/repository/archive.tar.bz2?ref=v3.13.0
-	md5sums = SKIP
+	md5sums = 80d93c8f674d5dd07bcd7ecd91fa51fd
 
 pkgname = ug
 
