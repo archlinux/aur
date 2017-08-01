@@ -5,7 +5,6 @@ pkgbase = txt2tags-git
 	url = http://www.txt2tags.org
 	arch = any
 	license = GPL
-	makedepends = gettext,
 	makedepends = git
 	depends = python2
 	optdepends = ruby: for running t2tmake.rb
