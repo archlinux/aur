@@ -1,0 +1,13 @@
+pkgbase = mdli
+	pkgdesc = A MDL interpreter
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://russotto.net/git/mrussotto/confusion
+	arch = any
+	license = GPL
+	makedepends = gcc43
+	source = http://www.russotto.net/git/mrussotto/confusion/archive/v0.2.tar.gz
+	md5sums = 2ed2454e1553c9ef85545cc2b7d40891
+
+pkgname = mdli
+
