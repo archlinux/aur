@@ -11,7 +11,7 @@ source=("https://github.com/inoriy/astra/archive/v$pkgver-$pkgrel.tar.gz")
 md5sums=('3dd7616759111381c11ed3c761bbb1df')
 
 arch=("any")
-depends=("ncurses" "perl")
+depends=("glibc" "perl")
 
 package(){
 	cd "$pkgname-$pkgver-$pkgrel"
