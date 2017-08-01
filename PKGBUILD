@@ -4,13 +4,13 @@
 
 pkgname=dunst-git
 _gitname=dunst
-pkgver=1.2.0.7.g7104c42.857
+pkgver=1.2.0.14.g111fcaf.864
 pkgrel=1
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://dunst-project.org/"
 license=('BSD')
-depends=('libxinerama' 'libxss' 'pango' 'libnotify' 'gtk2')
+depends=('libxinerama' 'libxss' 'pango' 'libnotify' 'gtk2' 'gtk3')
 if [ ! -e ${SRCDEST}/config.h ]; then
   depends+=('libxdg-basedir')
 fi
