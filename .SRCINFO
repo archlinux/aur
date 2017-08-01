@@ -38,6 +38,8 @@ pkgname = shifter-runtime
 	depends = wget
 	provides = shifter-runtime
 	conflicts = shifter-slurm-runtime
+	conflicts = shifter-runtime-git
+	conflicts = shifter-slurm-runtime-git
 
 pkgname = shifter-imagegw
 	install = shifter-imagegw.install
@@ -56,4 +58,6 @@ pkgname = shifter-imagegw
 	depends = python2-pylint
 	provides = shifter-imagegw
 	conflicts = shifter-slurm-imagegw
+	conflicts = shifter-imagegw-git
+	conflicts = shifter-slurm-imagegw-git
 
