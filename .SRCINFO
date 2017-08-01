@@ -16,7 +16,7 @@ pkgbase = bower-mail
 	optdepends = w3m: dump HTML emails
 	conflicts = bower
 	source = https://github.com/wangp/bower/archive/0.8.tar.gz
-	md5sums = SKIP
+	md5sums = 0cad190eb8df2b92f8c397fc1efa73d1
 
 pkgname = bower-mail
 
