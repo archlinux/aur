@@ -8,12 +8,19 @@ license=(custom:BSD)
 url='http://flasm.sourceforge.net/'
 source=(
 	http://www.nowrap.de/download/flasm16src.zip
+	in_word_set.patch
 )
 depends=(zlib)
 makedepends=(gperf)
 sha512sums=(
 	'af53c8902bac9bc03a4274f51280abe7e595f19d8ee367c0237868634df58a42144bb6c335a99f860c494da90d483072c66064897ef1ad467b7621c648ca322a'
+	'f8b1c4c8407ceadf2727fb9217af032983cfe298f4a7c898267180285b7c8f7caff35b2a50e0e355b88fbf3d4d68f5142f78d98dfa39bcbcd4c4f6d16cbfd97f'
 )
+
+prepare() {
+	cd "$srcdir"
+	patch -Np1 < in_word_set.patch
+}
 
 build() {
 	cd "$srcdir"

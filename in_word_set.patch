@@ -1,0 +1,26 @@
+Index: flasm/src/keywords.gperf
+===================================================================
+--- src/keywords.gperf
++++ src/keywords.gperf
+@@ -11,7 +11,7 @@ All rights reserved. See LICENSE.TXT for
+ #ifdef MEMWATCH
+ #include "memwatch.h"
+ #endif
+-struct keyword *in_word_set(register const char *str, register unsigned int len);
++struct keyword *in_word_set(register const char *str, register size_t len);
+ %}
+ struct keyword {}
+ %%
+Index: flasm/src/util.h
+===================================================================
+--- src/util.h
++++ src/util.h
+@@ -47,7 +47,7 @@ struct keyword {
+     int token;
+ };
+ 
+-extern struct keyword *in_word_set(register const char *str, register unsigned int len);
++extern struct keyword *in_word_set(register const char *str, register size_t len);
+ 
+ void checkByteOrder(void);
+ int longintCompare(const void *ap, const void *bp);
