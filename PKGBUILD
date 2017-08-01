@@ -1,13 +1,13 @@
 # Maintainer: Jan Buchar <Teyras@gmail.com>
 pkgname=nvidia-docker-compose
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="GPU enabled docker-compose wrapper"
 arch=("any")
 url="https://github.com/eywalker/nvidia-docker-compose"
 license=()
 groups=()
-depends=('python', 'docker-compose', 'python-yaml', 'python-jinja')
+depends=('python' 'docker-compose' 'python-yaml' 'python-jinja')
 makedepends=('python-setuptools')
 source=("https://github.com/eywalker/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('becddafeb537c3956407a8ee2911d4c6')
