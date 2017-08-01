@@ -1,3 +1,5 @@
+# maintainer: <atthis at eris dot club>
+
 pkgname=mdli
 pkgver=0.2
 pkgrel=1
