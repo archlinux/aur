@@ -1,0 +1,11 @@
+[Unit]
+Description=Shifter Image Gateway
+Wants=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/shifter/imagegw/start-imagegw.sh
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
