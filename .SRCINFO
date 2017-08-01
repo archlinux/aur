@@ -1,0 +1,16 @@
+pkgbase = alt-git
+	pkgdesc = Command line utility that attempts to find the "alternate path" for the provided path
+	pkgver = 103
+	pkgrel = 1
+	url = https://github.com/uptech/alt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/uptech/alt.git
+	md5sums = SKIP
+
+pkgname = alt-git
+
