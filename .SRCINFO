@@ -1,6 +1,6 @@
 pkgbase = ug
 	pkgdesc = Numerical solution of PDEs on unstructured meshes
-	pkgver = 3.11.0
+	pkgver = 3.13.0
 	pkgrel = 1
 	url = http://www.iwr.uni-heidelberg.de/frame/iwrwikiequipment/software/ug
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = ug
 	license = LGPL2.1
 	depends = libxaw
 	depends = openmpi
-	source = http://conan.iwr.uni-heidelberg.de/download/ug-3.11.0.tar.gz
-	md5sums = 639bc7df483d999673847119ca63f154
+	source = https://gitlab.dune-project.org/ug/ug/repository/archive.tar.bz2?ref=v3.13.0
+	md5sums = SKIP
 
 pkgname = ug
 

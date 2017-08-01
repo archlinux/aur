@@ -1,9 +1,7 @@
-# Maintainer: Lukas Böger <dev___AT___lboeger___DOT___de>
-
+# Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com > 
 pkgname=ug
-pkgver=3.11.0
+pkgver=3.13.0
 pkgrel=1
-
 pkgdesc='Numerical solution of PDEs on unstructured meshes'
 url='http://www.iwr.uni-heidelberg.de/frame/iwrwikiequipment/software/ug'
 
@@ -12,23 +10,21 @@ license=('LGPL2.1')
 
 depends=('libxaw' 'openmpi')
 
-source=("http://conan.iwr.uni-heidelberg.de/download/${pkgname}-${pkgver}.tar.gz")
-
-md5sums=('639bc7df483d999673847119ca63f154')
+source=("https://gitlab.dune-project.org/${pkgname}/${pkgname}/repository/archive.tar.bz2?ref=v${pkgver}")
+md5sums=('SKIP')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-v${pkgver}-b192b4ced50617cfdf6a75865771cb493dac1738"
 
     autoreconf -ifs
 
-    CFLAGS=-Wno-narrowing CXXFLAGS=-Wno-narrowing CC=g++ ./configure --prefix=/usr \
-        --enable-dune --enable-parallel
-
+    CFLAGS="-Wno-narrowing -fPIC" CXXFLAGS="-Wno-narrowing -fPIC" CC=g++ ./configure --prefix=/usr \
+        --enable-dune --enable-parallel 
     make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-v${pkgver}-b192b4ced50617cfdf6a75865771cb493dac1738"
 
     make install DESTDIR="${pkgdir}"
 }
