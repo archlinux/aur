@@ -1,0 +1,13 @@
+[Unit]
+Description=Filemanager Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/filemanager --config /etc/filemanager/config.json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

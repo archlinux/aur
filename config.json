@@ -1,0 +1,15 @@
+{
+  "port": 80,
+  "address": "0.0.0.0",
+  "database": "/usr/share/filemanager/database.db",
+  "log": "stdout",
+  "plugin": "",
+  "scope": "/usr/share/filemanager/storage/",
+  "allowCommands": true,
+  "allowEdit": true,
+  "allowNew": true,
+  "commands": [
+    "git",
+    "svn"
+  ]
+}
