@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 pkgname=open-adventure
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of the 'Colossal Cave Adventure' text-based adventure game"
 arch=('i686' 'x86_64')
 url="http://www.catb.org/~esr/open-adventure/"
