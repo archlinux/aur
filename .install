@@ -1,0 +1,13 @@
+## arg 1:  the new package version
+pre_install() {
+    useradd -M jobber_client
+}
+
+## arg 1:  the new package version
+post_install() {
+    chmod 04755 /usr/bin/jobber
+    chown jobber_client:root /usr/bin/jobber
+    chmod 0755 /usr/lib/jobber/jobberd
+    chown root:root /usr/lib/jobber/jobberd
+}
+
