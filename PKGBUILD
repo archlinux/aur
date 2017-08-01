@@ -1,8 +1,8 @@
 # Maintainer: lazant <a.l.i.c.e at outlook.com>
 pkgname="google-play-music-desktop-player-bin"
 _pkgname="google-play-music-desktop-player"
-pkgver=4.3.0
-pkgrel=3
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music"
 arch=("x86_64")
 url="https://www.googleplaymusicdesktopplayer.com/"
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("imagemagick")
 source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v$pkgver/google-play-music-desktop-player-$pkgver.x86_64.rpm"
         "google-play-music-desktop-player.svg")
-md5sums=('4545f0756a78578d68ed979769fc64c9'
+md5sums=('cad27c08acddbe31cf94f115cdc306dd'
          'd1228e3d4612a3a59115e404793936a2')
 
 package() {
