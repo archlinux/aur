@@ -1,12 +1,14 @@
 pkgbase = python-tempora
 	pkgdesc = Objects and routines pertaining to date and time (tempora).
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaraco/tempora
 	arch = any
 	license = MIT
 	checkdepends = python-tox
 	checkdepends = python2-tox
+	checkdepends = python-backports.unittest_mock
+	checkdepends = python2-backports.unittest_mock
 	makedepends = python
 	makedepends = python2
 	makedepends = python-setuptools
