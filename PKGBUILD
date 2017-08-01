@@ -6,7 +6,7 @@ _pkgname=perl-travel-status-de-iris
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=1.16+g274be67
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to IRIS-based web departure monitors (as used by DeutscheBahn)'
 url='http://finalrewind.org/projects/Travel-Status-DE-IRIS/'
 license=('PerlArtistic')
@@ -15,6 +15,7 @@ depends=(
   'perl-class-accessor'
   'perl-datetime'
   'perl-datetime-format-strptime'
+  'perl-package-deprecationmanager'
   'perl-list-compare'
   'perl-list-moreutils'
   'perl-list-utilsby'
@@ -31,7 +32,6 @@ makedepends=(
 )
 checkdepends=(
   'perl-geo-distance'
-  'perl-package-deprecationmanager'
   'perl-test-number-delta'
 )
 provides=("${_pkgname}=${pkgver}")
