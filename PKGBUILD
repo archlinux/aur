@@ -2,13 +2,13 @@
 
 pkgname='plantumlqeditor-git'
 pkgver='2.1_20170801'
-pkgrel=1
+pkgrel=2
 pkgdesc='PlantUML QEditor is a simple editor written in Qt5 for PlantUML'
 arch=('any')
-url='https://github.com/jalbersol/plantumlqeditor'
+url='https://github.com/borco/plantumlqeditor'
 license=('GPL3')
 depends=('qt5-webengine' 'plantuml' 'qt5-base' 'graphviz')
-source=('git+https://github.com/jalbersol/plantumlqeditor.git')
+source=('git+https://github.com/borco/plantumlqeditor.git')
 md5sums=('SKIP')
 install="$pkgname".install
 
