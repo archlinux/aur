@@ -6,13 +6,15 @@ pkgbase = android-sdk-build-tools-25.0.1
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = lib32-gcc-libs
-	depends = lib32-zlib
+	depends = ncurses5-compat-libs
+	depends = java-environment
+	depends = bash
 	options = !strip
 	source = https://dl-ssl.google.com/android/repository/build-tools_r25.0.1-linux.zip
 	sha1sums = ff063d252ab750d339f5947d06ff782836f22bac
 	depends_i686 = gcc-libs
 	depends_i686 = zlib
+	depends_x86_64 = lib32-zlib
 
 pkgname = android-sdk-build-tools-25.0.1
 

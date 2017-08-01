@@ -10,7 +10,8 @@ url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends_i686=('gcc-libs' 'zlib')
 optdepends=()
-depends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
+depends=(ncurses5-compat-libs java-environment bash)
+depends_x86_64=(lib32-zlib)
 _sdk=android-sdk
 
 source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver}-linux.zip")
