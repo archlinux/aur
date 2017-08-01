@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist-git
-pkgver=r12122.a77e6c032
+pkgver=r12686.638dd3d9f
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='http://dnsdist.org/'
 license=('GPL2')
 source=("${pkgname}::git+https://github.com/PowerDNS/pdns")
 sha512sums=('SKIP')
-makedepends=('boost' 'git' 'pandoc' 'ragel' 'systemd')
+makedepends=('boost' 'git' 'pandoc' 'python-virtualenv' 'ragel' 'systemd')
 depends=('libedit' 'libsodium' 'libsystemd' 'lua' 'net-snmp' 'protobuf' 're2')
 provides=('dnsdist')
 conflicts=('dnsdist')
