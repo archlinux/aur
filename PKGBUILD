@@ -3,38 +3,39 @@
 
 pkgname=networkmanager-l2tp
 _pkgname=network-manager-l2tp
-pkgver=1.2.4
-pkgrel=3
-pkgdesc="L2TP support for NetworkManager"
+pkgver=1.2.8
+pkgrel=1
+pkgdesc='L2TP support for NetworkManager'
 arch=('i686' 'x86_64')
 url="https://github.com/nm-l2tp/NetworkManager-l2tp"
 license=('GPL2')
-depends=('gtk2' 'gconf' 'libgnome-keyring' 'intltool' 'networkmanager>=1.2.0'
-'libnm-glib>=1.2.0' 'ppp>=2.4.7' 'xl2tpd')
+depends=('gtk3' 'libnm-glib' 'ppp' 'xl2tpd' 'libsecret')
+makedepends=('intltool')
 optdepends=(
-  'libreswan: IPSec support (recommended)',
-  'strongswan: IPSec support',
-  )
-options=()
-makedepends=()
-provides=('networkmanager-l2tp')
-source=(https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('7928aa33fde92b66559360d7ee52cb82')
+  'libreswan: IPSec support (recommended)'
+  'strongswan: IPSec support'
+)
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz"
+        "https://github.com/nm-l2tp/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz.asc")
+validpgpkeys=('E48BD89A1C51BFA28413D18349A7787EF8D3C039') # Douglas Kosovic
+md5sums=('fc0dd71c27c7dc4143448029a02e5dca'
+         'SKIP')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd $_pkgname-$pkgver
 
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
     --libexecdir=/usr/lib/networkmanager \
     --with-pppd-plugin-dir=/usr/lib/pppd/2.4.7 \
-    --enable-more-warnings=yes
+    --enable-more-warnings=yes \
+    --localstatedir=/var
 
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd $_pkgname-$pkgver
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
