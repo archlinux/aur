@@ -1,5 +1,6 @@
+# Maintainer: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Brad Pitcher <bradpitcher@gmail.com>
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=networkmanager-l2tp
 _pkgname=network-manager-l2tp
@@ -21,10 +22,15 @@ validpgpkeys=('E48BD89A1C51BFA28413D18349A7787EF8D3C039') # Douglas Kosovic
 md5sums=('fc0dd71c27c7dc4143448029a02e5dca'
          'SKIP')
 
+prepare() {
+  cd $_pkgname-$pkgver
+
+  NOCONFIGURE=1 ./autogen.sh
+}
+
 build() {
   cd $_pkgname-$pkgver
 
-  ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
     --localstatedir=/var --libexecdir=/usr/lib/NetworkManager \
     --with-pppd-plugin-dir=/usr/lib/pppd/2.4.7
