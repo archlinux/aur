@@ -23,15 +23,11 @@ _commit=59857e8f20aa07bbdaa621eecccb31accc717edb  # tags/3.22.17^0
 source=("git+https://git.gnome.org/browse/gtk+#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
-        gtk-update-icon-cache.hook
-        gtk-update-icon-cache.script
         https://gist.githubusercontent.com/Dudemanguy911/c172394e30e1e7d0f477ad15c719bc71/raw/$_patchver/gtk3-filechooser-icon-view.patch)        
 
 sha256sums=('SKIP'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
-            '496064a9dd6214bd58f689dd817dbdc4d7f17d42a8c9940a87018c3f829ce308'
-            'f1d3a0dbfd82f7339301abecdbe5f024337919b48bd0e09296bb0e79863b2541'
             '0bb72e50a53430c9ea37d210ed3d7b6e4f8a5927d0a8337ebb53b861b4b2320b')
 
 pkgver() {
@@ -71,7 +67,5 @@ package() {
 
   install -Dm644 ../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
   install -Dm644 ../gtk-query-immodules-3.0.hook "$pkgdir/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook"
-  install -Dm644 ../gtk-update-icon-cache.hook "$pkgdir/usr/share/libalpm/hooks/gtk-update-icon-cache.hook"
-  install -D ../gtk-update-icon-cache.script "$pkgdir/usr/share/libalpm/scripts/gtk-update-icon-cache"
 }
 
