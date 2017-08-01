@@ -1,13 +1,13 @@
 # Maintainer: crystaly <crystaly [ at ] posteo [ dot ] de>
 pkgname=spotify-connect-web
-pkgver=0.0.3.alpha.r8.gf160e43
+pkgver=0.0.3.alpha.r16.g9a17414
 pkgrel=1
 pkgdesc="Simple Web client for accessing Spotify connect api (Raspberry Pi 2)"
 arch=('armv7h')
 url="https://github.com/Fornoth/spotify-connect-web"
 license=('MIT')
 groups=()
-depends=('python2-flask' 'python2-flask-bootstrap' 'python2-flask-cors' 'python2-pyalsaaudio' 'python2-gevent' 'python2-cffi' 'python2-pycparser' 'python2' 'alsa-utils')
+depends=('python2-flask' 'python2-flask-bootstrap' 'python2-flask-cors' 'python2-pyalsaaudio' 'python2-gevent' 'python2-cffi' 'python2-pycparser' 'python2' 'alsa-utils' 'python2-pylast')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'python2-pyspotify-connect')
