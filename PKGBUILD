@@ -26,17 +26,18 @@ pkgver() {
 
 check() {
   cd "$srcdir/lua-gumbo"
-  make check
+  make check-lua53
 }
 
 build() {
   cd "$srcdir/lua-gumbo"
-  make LDFLAGS="$LDFLAGS -shared"
+  ./configure
+  make build-lua53
 }
 
 package() {
   cd "$srcdir/lua-gumbo"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install-lua53
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm0644 "$srcdir/lua-gumbo/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
