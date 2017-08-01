@@ -1,9 +1,9 @@
+# Maintainer: Web Dawg <webdawg at hackspherelabs.com>
 # Contributor: Claudio Riva <firetux83@gmail.com>
-# Contributor2: Web Dawg <webdawg@gmail.com>
 
 pkgname=quicksynergy
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical interface (GUI) for easily configuring Synergy2"
 url="http://quicksynergy.sourceforge.net/"
 license=('GPL')
@@ -26,6 +26,6 @@ package() {
   make 
   make DESTDIR=$pkgdir/ install
   install -m644 -D src/logo/qslogo.png $pkgdir/usr/share/pixmaps/${pkgname}.png
-  install -m644 -D $startdir/src/${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop
+  install -m644 -D $srcdir/${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop
 
 }
