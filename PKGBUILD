@@ -61,7 +61,7 @@ pkgbase=linux-bfq-mq
 _srcname=linux-4.12
 _srcpatch=4
 pkgver=4.12.4
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://github.com/Algodev-github/bfq-mq/"
 license=('GPL2')
@@ -283,7 +283,7 @@ _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the BFQ-MQ scheduler"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-  provides=("${pkgbase}=${pkgver}")
+  provides=("${pkgbase}=${pkgver}" "linux=${pkgver}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
@@ -336,7 +336,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("${pkgbase}-headers=${pkgver}")
+  provides=("${pkgbase}-headers=${pkgver}" "linux-headers=${pkgver}")
   depends=("${pkgbase}=${pkgver}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -466,7 +466,7 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  provides=("${pkgbase}-docs=${pkgver}")
+  provides=("${pkgbase}-docs=${pkgver}" "linux-docs=${pkgver}")
   depends=("${pkgbase}=${pkgver}")
 
   cd "${srcdir}/${_srcname}"
