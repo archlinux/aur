@@ -10,9 +10,9 @@
 # Contributor: hugelgupf <ckoch (at) cs.nmt.edu>
 
 pkgname=dpkg
-pkgver=1.18.18
-_commit=24e2c6ec842dceb1dc25875e5a30143d325edc52 # 1.18.18
-pkgrel=2
+pkgver=1.18.24
+_commit=4fd7def03c96e82c03773c6eca111cf244bae8c0
+pkgrel=1
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/dpkg"
