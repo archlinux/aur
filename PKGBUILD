@@ -1,7 +1,7 @@
 # Maintainer: Harsha Kuchampudi <harshakuchampudi@gmail.com>
 pkgname=windscribe-cli
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of Windscribe's VPN command line interface"
 arch=('any')
 url="https://windscribe.com/"

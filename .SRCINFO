@@ -1,7 +1,7 @@
 pkgbase = windscribe-cli
 	pkgdesc = Port of Windscribe's VPN command line interface
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://windscribe.com/
 	install = windscribe-cli.install
 	arch = any
