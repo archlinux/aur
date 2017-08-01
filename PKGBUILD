@@ -2,14 +2,14 @@
 
 pkgname='scaleft-url-handler'
 pkgdesc='ScaleFT(TM) URL handler'
-pkgver=1.29.5
+pkgver=1.29.6
 pkgrel=1
 arch=('any')
 url="https://scaleft.com"
 license=('custom')
 depends=('scaleft-client-tools' 'python2')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.noarch.rpm")
-sha256sums=('1b235e74501658cfc422b55f9241192e6771d97407a14b07fe6fc3e20dbc0979')
+sha256sums=('53c8fdf05b1e0b01256b681f08e70c53beb1c2d475506e032f6e33129b790a3b')
 
 prepare() {
   # patch code to force it to use python2.7
