@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://tic.computer/"
 license=('custom')
 
-source_i686=("https://github.com/nesbox/tic.computer/releases/download/v0.30.0/tic_32bit_0.30.0.tar.gz")
+source_i686=("https://github.com/nesbox/tic.computer/releases/download/v$pkgver/tic_32bit_$pkgver.tar.gz")
 source_x86_64=("https://github.com/nesbox/tic.computer/releases/download/v$pkgver/tic_64bit_$pkgver.tar.gz")
 
 sha256sums_i686=('e3062ed4a0b456d4e4ea00c4d65dda57c795ddae84171c1d52fb562a3da893d0')
