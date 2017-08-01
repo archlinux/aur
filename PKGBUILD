@@ -6,13 +6,13 @@
 pkgname=({freedm,freedoom1,freedoom2}-git)
 pkgbase=freedoom-git
 pkgdesc="Free game data files for Doom gaming engines"
-pkgver=0.11.r194.g617a1535
+pkgver=0.11.r210.g1383f50e
 pkgrel=1
 epoch=1
 arch=('any')
 url="http://freedoom.github.io/"
 license=('BSD')
-makedepends=('git' 'imagemagick' 'deutex-git' 'python2' 'python2-virtualenv' 'asciidoc')
+makedepends=('git' 'python-pillow' 'deutex-git' 'python' 'python-virtualenv' 'asciidoc')
 source=(git+https://github.com/freedoom/freedoom.git)
 md5sums=(SKIP)
 
