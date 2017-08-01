@@ -1,14 +1,14 @@
 pkgbase = archnews2
 	pkgdesc = Utility for displaying Arch news feed in console
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/mjiricka/archnews
 	arch = any
 	license = MIT
 	depends = python
 	conflicts = archnews-git
-	source = https://github.com/mjiricka/archnews/archive/v1.0.0.tar.gz
-	md5sums = 2802d6ceed91b6c6544124713377181a
+	source = https://github.com/mjiricka/archnews/archive/v1.1.0.tar.gz
+	md5sums = 79fca4947c9effb2a92e37719fe666a0
 
 pkgname = archnews2
 

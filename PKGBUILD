@@ -1,8 +1,8 @@
 # Maintainer: Martin Jiřička <mjiricka at gmail dot com>
 
 pkgname=archnews2
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Utility for displaying Arch news feed in console"
 arch=("any")
 url="https://github.com/mjiricka/archnews"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python")
 conflicts=("archnews-git")
 source=("https://github.com/mjiricka/${pkgname%2}/archive/v${pkgver}.tar.gz")
-md5sums=("2802d6ceed91b6c6544124713377181a")
+md5sums=("79fca4947c9effb2a92e37719fe666a0")
 
 package() {
     cd "${srcdir}/${pkgname%2}-${pkgver}"
