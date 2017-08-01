@@ -1,0 +1,16 @@
+pkgbase = python-flask-jsonrpc
+	pkgdesc = Adds JSONRPC support to Flask.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/cenobites/flask-jsonrpc
+	arch = any
+	license = BSD 3-clause
+	makedepends = python-setuptools
+	depends = python-flask
+	options = !emptydirs
+	source = https://pypi.python.org/packages/cb/1f/e6d66e8498609ba04bac76155b2ea884df95531e93501bf4ef009d40a83c/Flask-JSONRPC-0.3.1.tar.gz
+	md5sums = 5c0592f53b2f18e34d5be435acee8842
+	sha256sums = 4d0cc9c20874093306af91f5a48009fb8659a041428dcdb11703598ffbbc97d0
+
+pkgname = python-flask-jsonrpc
+
