@@ -4,11 +4,11 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=deutex-git
-pkgver=5.0.0.beta.2.r22.gc3ccc93
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A WAD file composer for Doom, Heretic, Hexen and Strife"
 arch=('i686' 'x86_64')
-url="http://www.teaser.fr/~amajorel/deutex/"
+url="https://github.com/Doom-Utils/deutex"
 license=('GPL2')
 depends=('glibc' 'libpng')
 makedepends=('git' 'asciidoc')
