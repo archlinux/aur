@@ -26,7 +26,7 @@ build() {
 package() {
     cd "$srcdir"/build
     mkdir -p "$pkgdir"/usr/bin/
-    cp release/plantumlqeditor "$pkgdir"/usr/bin/
+    cp plantumlqeditor "$pkgdir"/usr/bin/
 
     cd "$srcdir"/plantumlqeditor
     mkdir -p "$pkgdir"/usr/share/applications/
@@ -34,7 +34,7 @@ package() {
     mkdir -p "$pkgdir"/usr/share/icons/hicolor/48x48/apps
     mkdir -p "$pkgdir"/usr/share/icons/hicolor/64x64/apps
     cp plantumlqeditor.desktop "$pkgdir"/usr/share/applications/plantumlqeditor.desktop
-    cp resources/icon32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/plantumlqeditor.png
-    cp resources/icon48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/plantumlqeditor.png
-    cp resources/icon64.png "$pkgdir"/usr/share/icons/hicolor/64x64/apps/plantumlqeditor.png
+    cp icon32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/plantumlqeditor.png
+    cp icon48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/plantumlqeditor.png
+    cp icon64.png "$pkgdir"/usr/share/icons/hicolor/64x64/apps/plantumlqeditor.png
 }
