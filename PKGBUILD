@@ -1,15 +1,14 @@
 # Maintainer: Hui Yiqun <huiyiqun@gmail.com>
 pkgname=nginx-rtmp
 _pkgname=nginx
-pkgver=1.12.0
-_rtmpver=1.1.11
+pkgver=1.12.1
+_rtmpver=1.2.0
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with nginx-rtmp-module'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip')
-makedepends=('hardening-wrapper')
 provides=('nginx')
 conflicts=('nginx')
 backup=('etc/nginx/fastcgi.conf'
@@ -27,9 +26,9 @@ source=($url/download/nginx-$pkgver.tar.gz
         https://github.com/arut/nginx-rtmp-module/archive/v$_rtmpver.tar.gz
         service
         logrotate)
-md5sums=('995eb0a140455cf0cfc497e5bd7f94b3'
-         'a87ab77c4414f80d394d712cceb39016'
-         '09862c34cd9593bc40da81f88c5fc4b2'
+md5sums=('a307e74aca95403e5ee00f153807ce58'
+         '1a47951b64f3f726a9d4620774643759'
+         'ef491e760e7c1ffec9ca25441a150c83'
          '6a01fb17af86f03707c8ae60f98a2dc2')
 
 _common_flags=(
