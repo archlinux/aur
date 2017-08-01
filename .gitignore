@@ -4,4 +4,6 @@
 *.zip
 *.gz
 /mpv
-id_aur_rsa*
+id_aur_rsa
+id_aur_rsa.pub
+id_*_rsa*
