@@ -2,7 +2,7 @@
 
 pkgname=trx-git
 _pkgname=trx
-pkgver=21aa558
+pkgver=0.2.7.g14927fb
 pkgrel=1
 pkgdesc="Toolset for sending and receiving encoded audio over IP networks"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver()
 {
-	cd "${srcdir}/${_gitname}"
+	cd "${srcdir}/${pkgname}"
 	git describe --always | sed 's|-|.|g'
 }
 
