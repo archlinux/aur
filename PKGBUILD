@@ -2,19 +2,18 @@
 # Contributor: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=glib2-patched-thumbnailer
 pkgname=glib2-patched-thumbnailer
 pkgver=2.52.3
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="http://gist.github.com/ahodesuka/49c1d0eea4b64f24c4c7"
 arch=(i686 x86_64)
-provides=("glib2=$pkgver" "glib2-docs")
+provides=("glib2=$pkgver")
 conflicts=('glib2')
 makedepends=('gettext' 'gtk-doc' 'libffi' 'pcre' 'zlib' 'shared-mime-info' 'python' 'libelf' 'git' 'util-linux')
 checkdepends=(desktop-file-utils dbus)
-
-
+options=('!docs' '!emptydirs')
+license=(LGPL)
 _commit=90bb8778f2eabf00bee5bff1259c48f1e7b791b8  # tags/2.52.3^0
 _patchver=d0edf118e1c27700300038c1d82b3ff775c0216b
 source=("git://git.gnome.org/glib#commit=$_commit"
@@ -63,12 +62,7 @@ build() {
 #  make check
 #}
 
-package_glib2-patched-thumbnailer() {
-  depends=('pcre' 'libffi' 'tumbler' 'libutil-linux')
-  optdepends=('python: for gdbus-codegen and gtester-report'
-            'libelf: gresource inspection tool')
-  options=(!emptydirs)
-  license=(LGPL)
+package() {
 
   cd glib
   make DESTDIR="$pkgdir" install
@@ -80,16 +74,3 @@ package_glib2-patched-thumbnailer() {
     "$pkgdir/usr/share/libalpm/hooks/"
 }
 
-package_glib2-docs() {
-  pkgdesc="Documentation for glib2"
-  conflicts=(gobject2-docs)
-  replaces=(gobject2-docs)
-  license=(custom)
-  options=(!emptydirs)
-
-  cd glib/docs
-  make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/usr/share/man"
-
-  install -Dm644 reference/COPYING "$pkgdir/usr/share/licenses/glib2-docs/COPYING"
-}
