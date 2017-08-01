@@ -2,7 +2,7 @@
 
 _pkgname=weechat-discord
 pkgname=weechat-discord-git
-pkgver=r61.67d74d1
+pkgver=r63.9ea013a
 pkgrel=1
 pkgdesc="Discord plugin for weechat"
 arch=('i686' 'x86_64')
