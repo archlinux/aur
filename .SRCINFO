@@ -1,0 +1,26 @@
+pkgbase = python-bempp-git
+	pkgdesc = The BEM++ boundary element library
+	pkgver = v3.1.2.r29.g4257c235
+	pkgrel = 2
+	epoch = 1
+	url = https://bempp.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = dune-common
+	makedepends = dune-geometry
+	makedepends = ug
+	makedepends = doxygen
+	makedepends = intel-tbb
+	depends = python-scipy
+	depends = gmsh
+	depends = python-mpi4py
+	optdepends = ipython: interactive console
+	optdepends = gmsh: external plots
+	provides = python-bempp
+	options = !strip
+	source = git+https://bitbucket.org/bemppsolutions/bempp.git#branch=development
+	sha256sums = SKIP
+
+pkgname = python-bempp-git
+
