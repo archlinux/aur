@@ -1,8 +1,8 @@
-#Maintainer: Yan Burdonsky <psyrccio@gmail.com>
-#Contributor: Yan Burdonsky <psyrccio@gmail.com>
+#Maintainer: John Gleezowood <psyrccio@gmail.com>
+#Contributor: John Gleezowood <psyrccio@gmail.com>
 pkgname=mandelbulber2-git
 _pkgname=mandelbulber2
-pkgver=20170425
+pkgver=20170801
 pkgrel=1
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Git version."
 arch=('any')
@@ -17,14 +17,15 @@ md5sums=('SKIP')
 
 pkgver()
 {
+
 	cd $_pkgname
 	git log -1 --format="%cd" --date=short | sed "s|-||g"
 }
 
 build()
 {
-	cd $_pkgname/$_pkgname/Release
-	qmake-qt5 mandelbulber.pro
+	cd $_pkgname/$_pkgname
+	qmake-qt5 qmake/mandelbulber.pro
 	make PREFIX=/usr
 }
 
@@ -39,12 +40,12 @@ package()
 	install -m755 -d "${pkgdir}/usr/share/applications"
 	install -m755 -d "${pkgdir}/usr/share/icons"
 
-	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/data" "$pkgdir/usr/share/${_pkgname}/data"
+	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/data" "$pkgdir/usr/share/${_pkgname}/data"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/examples" "$pkgdir/usr/share/${_pkgname}/examples"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/icons" "$pkgdir/usr/share/${_pkgname}/icons"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/language" "$pkgdir/usr/share/${_pkgname}/language"
-	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/qt_data" "$pkgdir/usr/share/${_pkgname}/qt_data"
+	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/formula" "$pkgdir/usr/share/${_pkgname}/formula"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/textures" "$pkgdir/usr/share/${_pkgname}/textures"
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/toolbar" "$pkgdir/usr/share/${_pkgname}/toolbar"
-	install -m755 "${srcdir}/${_pkgname}/${_pkgname}/Release/mandelbulber2" "${pkgdir}/usr/bin/"
+	install -m755 "${srcdir}/${_pkgname}/${_pkgname}/mandelbulber2" "${pkgdir}/usr/bin/"
 }
