@@ -1,0 +1,13 @@
+pkgbase = libelf_manpages-git
+	pkgdesc = Manpages for the libelf ELF access library.
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/alyptik/libelf_manpages.git
+	arch = any
+	license = Solaris
+	options = zipman
+	source = git://github.com/alyptik/libelf_manpages.git
+	sha256sums = SKIP
+
+pkgname = libelf_manpages-git
+
