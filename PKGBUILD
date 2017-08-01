@@ -3,16 +3,16 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal
-pkgver=1.18.0
-pkgrel=3
+pkgver=1.18.1
+pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 arch=(x86_64)
 url="https://github.com/kcat/openal-soft"
 license=(LGPL)
 depends=(lib32-glibc openal)
-makedepends=(lib32-alsa-lib pkgconfig cmake lib32-libpulse lib32-portaudio lib32-jack
-             git gcc-multilib)
-_commit=61e43d4039277c538f3f6e0af7c988e7d71d8558  # tags/openal-soft-1.18.0
+makedepends=(lib32-alsa-lib lib32-libpulse lib32-fluidsynth lib32-portaudio lib32-jack
+             git cmake ninja gcc-multilib)
+_commit=bf9c36408af9d45c99bc12b5b7b995aee628bdb6  # tags/openal-soft-1.18.1
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -35,11 +35,14 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd build
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_LIBDIR=lib32 ../openal-soft
-  make
+  cmake ../openal-soft -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_LIBDIR=lib32
+  ninja
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
   rm -rv "$pkgdir"/usr/{include,share,bin}
 }
