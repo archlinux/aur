@@ -1,7 +1,7 @@
 # Maintainer: chengen12 <googledrive70@aaedu.edu.pl>
 
 pkgname=fcitx-xxm
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='XiaoXima for fcitx.'
 arch=('any')
@@ -14,6 +14,7 @@ md5sums=('SKIP')
 package() {
   cd $pkgname
   mkdir -p "$pkgdir/usr/share/fcitx/table"
+  install -Dm644 xxm.png "$pkgdir"/usr/share/fcitx/imicon/xxm.png
   install -Dm644 xxm.conf xxm.mb "$pkgdir/usr/share/fcitx/table"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
