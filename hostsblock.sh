@@ -77,11 +77,11 @@ _extract_entries() {
 }
 
 _check_url() {
-    _url_escaped=$(echo "$@" | sed "s/\./\\\./g")
+    which pigz &>/dev/null
     if [ $? -eq 0 ]; then
-        _matches=$(pigz -dc "$annotate" | grep -F " $_url_escaped ")
+        _matches=$(pigz -dc "$annotate" | grep -F " $@ ")
     else
-        _matches=$(gzip -dc "$annotate" | grep -F " $_url_escaped ")
+        _matches=$(gzip -dc "$annotate" | grep -F " $@ ")
     fi
     _block_matches=$(echo "$_matches" | grep -- "^$redirecturl" | sed "s/.* \!\(.*\)$/\1/g" | tr '\n' ',' | sed "s/,$//g")
     _redirect_matches=$(echo "$_matches" | grep -v "^$redirecturl" | \
@@ -280,6 +280,8 @@ if [ $_check -eq 1 ] || [ "${0##*/}" == "hostsblock-urlcheck" ]; then
     # URLCHECK
     [ -f "$tmpdir"/hostsblock/changed ] && rm -f "$tmpdir"/hostsblock/changed
     echo "Checking to see if url is blocked or not..."
+    # If run from symlink "hostsblock-urlcheck" _URL will not be set by getopts
+    [ "$_URL" == "" ] && _URL="$1"
     _check_url $(echo "$_URL" | sed -e "s/.*https*:\/\///g" -e "s/[\/?'\" :<>\(\)].*//g")
     if [ -f "$tmpdir"/hostsblock/changed ]; then
         if [ $_verbosity -ge 1 ]; then
@@ -464,7 +466,7 @@ else
 
         # APPEND BLACKLIST ENTRIES
         while read _blacklistline; do
-            echo "$redirecturl $_blacklistline \! $blacklist" >> "$tmpdir"/"${annotate##*/}".tmp
+            echo "$redirecturl $_blacklistline \! $blacklist" >> "$tmpdir"/hostsblock/"${annotate##*/}".tmp
             grep -Fqx "$_blacklistline" "$hostsfile" || echo "$redirecturl $_blacklistline" >> "$hostsfile"
         done < "$blacklist" || _notify 1 "FAILED to append blacklisted entries to $hostsfile."
 

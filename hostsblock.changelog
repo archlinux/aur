@@ -1,5 +1,9 @@
 See https://github.com/gaenserich/hostsblock/commits/master for a complete list of updates
 
+Version 0.999.5 (Alpha 5) (01.08.2017)
+*Fixed issues with hostsblock-urlblock symlink
+*Fixed typo that prevented the annotation file from correctly writing
+
 Version 0.999.4 (Alpha 4) (07.23.2017)
 *Massive simplification of script, removing excess verbosity options, combining hostsblock.sh with hostsblock-urlcheck.sh
 *Mandate that hostsblock now runs as unpriviledged user, i.e. 'hostsblock' (see hostsblock.conf)

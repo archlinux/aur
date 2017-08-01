@@ -1,7 +1,7 @@
 # Maintainer/Originator: Jake VanderKolk <jakevanderkolk@gmail.com>
 pkgname=hostsblock
-pkgver=0.999.4
-pkgrel=2
+pkgver=0.999.5
+pkgrel=1
 pkgdesc="A script that downloads, sorts, and compiles multiple ad- and malware-blocking hosts files."
 arch=(any)
 url="http://gaenserich.github.com/hostsblock/"
@@ -17,7 +17,7 @@ backup=('var/lib/hostsblock/hostsblock.conf' 'var/lib/hostsblock/black.list' 'va
 changelog=$pkgname.changelog
 install=$pkgname.install
 source=('hostsblock.sh' 'hostsblock.conf' 'black.list' 'white.list' 'hosts.head' 'hostsblock.service' 'hostsblock.timer')
-sha1sums=('344d904a3710e980d8a7770db210e8f3af7c409c'
+sha1sums=('798fe7d07a9fab689c44243b025f4bfa4da345ed'
           'd9db54fb078ff0e674a1f32a886ad29969830459'
           '30fdaad1ee0497b9b88b61cfbd958d20c644801b'
           '11ab0a6bac002879a04872ec06a3611c32c80e1d'
