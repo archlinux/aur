@@ -1,0 +1,27 @@
+post_install() {
+  echo ">>> Building refpolicy-git policy store. Please wait ..."
+  /usr/bin/semodule -s refpolicy-git -i /usr/share/selinux/refpolicy-git/*.pp
+  if [ -e /etc/selinux/config ]
+  then
+    echo ">>> In order to use this policy, set SELINUXTYPE=refpolicy-git in /etc/selinux/config."
+  else
+    /usr/bin/ln -v -s config.refpolicy-git /etc/selinux/config
+  fi
+  echo ">>> Relabeling the filesystem may be needed."
+  echo ">>> This can be done with: /usr/bin/restorecon -rF /"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ">>> Removing refpolicy-git left-over files in /var/lib/selinux"
+  /usr/bin/rm -rf /var/lib/selinux/refpolicy-git
+
+  if [ -L /etc/selinux/config ] && ! [ -e /etc/selinux/config ]
+  then
+    echo ">>> Removing now-broken symbolic link /etc/selinux/config"
+    /usr/bin/rm /etc/selinux/config
+  fi
+}
