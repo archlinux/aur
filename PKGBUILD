@@ -5,14 +5,18 @@ pkgver=20160209.640bf64
 pkgrel=1
 pkgdesc="Free multimedia container format. (Git Version)"
 arch=('i686' 'x86_64')
-url="http://wiki.multimedia.cx/index.php?title=NUT"
+url='http://wiki.multimedia.cx/index.php?title=NUT'
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-conflicts=('nut-multimedia' 'libnut-git')
-provides=('nut-multimedia' 'libnut')
-source=('git://git.ffmpeg.org/nut.git')
-sha1sums=('SKIP')
+conflicts=('nut-multimedia'
+           'libnut-git'
+           )
+provides=('nut-multimedia'
+          'libnut'
+          )
+source=('git+https://git.ffmpeg.org/nut.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd nut
