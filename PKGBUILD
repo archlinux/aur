@@ -1,9 +1,9 @@
 # Maintainer: Lukas Böger <dev___AT___lboeger___DOT___de>
 
 pkgbase=dune-core
-pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-grid' 'dune-istl')
+pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-istl' 'dune-grid' 'dune-uggrid' )
 
-pkgver=2.4.1
+pkgver=2.5.1
 pkgrel=3
 
 pkgdesc='Core modules of the DUNE framework'
@@ -14,26 +14,29 @@ arch=('i686' 'x86_64')
 license=('custom')
 
 makedepends=('cmake' 'gcc-fortran' 'openmpi' 'gmp' 'lapack' 'boost' 'superlu' 'suitesparse'
-    'parmetis' 'alberta=3.0.1' 'psurface' 'ug=3.11.0')
+    'parmetis' 'alberta=3.0.1' 'psurface' )
+
+
+export CFLAGS="-fPIC ${CFLAGS}"
+export CXXFLAGS="-fPIC ${CFLAGS}" 
 
 for _module in "${pkgname[@]}"; do
     source+=("http://www.dune-project.org/download/${pkgver}/${_module}-${pkgver}.tar.gz")
 done
 
-md5sums=(
-    '4dd80f7b1a4fc9c447f83625961ea64b'
-    'd8fba0d67a22f7d17642adf9e2820b2c'
-    'f71510efa886369f21868f3f49451026'
-    '4281815782bc01f532c11f678f81cb78'
-    '601a7111369c6f0f269022f12ab5eb89'
-)
+md5sums=('71676b07bd489321d9f67b2d77d9f2d6'
+         '3d0ea46cad71c5087f304f462ccc5068'
+         'a4a6d31714d9a46ac8be2ad8303e4531'
+         'b16be825d8f0c2acdfdebde91894c6ef'
+         '8394d8aa7811f4a548df6449b448796a'
+         '4ce8cf2291fe12454695c3d94e195310')
 
-_dunecontrol="./dune-common-${pkgver}/bin/dunecontrol --use-cmake"
+_dunecontrol="./dune-common-${pkgver}/bin/dunecontrol"
 
 prepare() {
     cd "dune-istl-${pkgver}"
 
-    patch -p1 -i ../../avoid-boost-fusion-1.61.patch
+#    patch -p1 -i ../../avoid-boost-fusion-1.61.patch
 }
 
 package() {
@@ -45,8 +48,8 @@ package() {
 }
 
 build() {
-    CMAKE_FLAGS='-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib' \
-        $_dunecontrol configure
+    CMAKE_FLAGS='-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -fPIC -DBUILD_SHARED_LIBS:BOOL=OFF' \
+        $_dunecontrol configure --enabled-shared
 
     $_dunecontrol make
 }
@@ -73,12 +76,25 @@ package_dune-localfunctions() {
 
 package_dune-grid() {
     pkgdesc='Nonconforming, hierarchically nested, multi-element-type, parallel grids'
+    arch=('any')
+    package
+}
 
+package_dune-uggrid() {
+    pkgdesc='UG grid manager'
+    arch=('any')
     package
 }
 
 package_dune-istl() {
     pkgdesc='Iterative solver template library'
+    arch=('any')
+
+    package
+}
+
+package_dune-alugrid() {
+    pkgdesc='Unstructured simplicial and cube DUNE grids'
     arch=('any')
 
     package
