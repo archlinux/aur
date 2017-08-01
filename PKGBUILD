@@ -21,7 +21,7 @@ sha512sums=('3f2b89e5ad2fa5ea011fd63d9bcd727884c9578b4d49b4df9f4772fd2e77fdeccaa
             'fe312d7c637ec20bd946f2e22681243a51f29afc1052ae3fe5afd0fe01f77c222bf1e2c98f0afad8d5385466215653b7ffa8718da05b6dac100ba768ff2be1d6')
 
 package_phpstorm() {
-  optdepends=('webstorm-jre: JetBrains custom Java Runtime (Recommended)'
+  optdepends=('phpstorm-jre: JetBrains custom Java Runtime (Recommended)'
               'java-runtime>=8: JRE - Required if webstorm-jre is not installed'
               'gnome-keyring: save login/deployment credentials safely')
 
