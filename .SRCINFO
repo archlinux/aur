@@ -1,0 +1,12 @@
+pkgbase = fcitx-xxm
+	pkgdesc = XiaoXima for fcitx.
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = fcitx
+	source = git://github.com/chengen12/fcitx-xxm.git
+	md5sums = SKIP
+
+pkgname = fcitx-xxm
+
