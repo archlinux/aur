@@ -11,8 +11,7 @@ license=('LGPL2.1')
 depends=('libxaw' 'openmpi')
 
 source=("https://gitlab.dune-project.org/${pkgname}/${pkgname}/repository/archive.tar.bz2?ref=v${pkgver}")
-md5sums=('SKIP')
-
+md5sums=('80d93c8f674d5dd07bcd7ecd91fa51fd')
 build() {
     cd "${pkgname}-v${pkgver}-b192b4ced50617cfdf6a75865771cb493dac1738"
 
