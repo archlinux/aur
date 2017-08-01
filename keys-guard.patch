@@ -1,0 +1,18 @@
+--- a/client/keys.h
++++ b/client/keys.h
+@@ -21,6 +21,9 @@
+ //
+ // these are the key numbers that should be passed to Key_Event
+ //
++#ifndef _KEYS_H_
++#define _KEYS_H_
++
+ typedef enum {
+    K_TAB = 9,
+    K_ENTER = 13,
+@@ -113,3 +116,5 @@
+ void Key_SetBinding (int keynum, char *binding);
+ void Key_ClearStates (void);
+ int Key_GetKey (void);
++
++#endif

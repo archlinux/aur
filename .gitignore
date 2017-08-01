@@ -1,0 +1,6 @@
+*.pkx
+q2-3.20-x86-full.exe
+*.pkg.tar*
+src/
+pkg/
+quake2xp/
