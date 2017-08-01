@@ -9,10 +9,10 @@ post_upgrade() {
 	systemctl daemon-reload
 
 	echo -e "\e[34;1m==>\e[39;1m Enabling munge.service... \e[0m"
-	systemctl is-enabled munge.service || systemctl enable munge.service
+	systemctl is-enabled munge.service >/dev/null || systemctl enable munge.service
 
 	echo -e "\e[34;1m==>\e[39;1m Starting munge.service... \e[0m"
-	systemctl is-active munge.service || systemctl start munge.service
+	systemctl is-active munge.service >/dev/null || systemctl start munge.service
 
 	echo -e "\e[34;1m==>\e[39;1m Copying /etc/passwd... \e[0m"
 	cp -f /etc/passwd /etc/shifter/shifter_etc_files/passwd
