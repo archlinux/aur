@@ -4,7 +4,7 @@
 pkgname=regen
 pkgver=0.95
 pkgrel=7
-pkgdesc="An accuracy focused emulator for Sega Genesis/Mega Drive"
+pkgdesc="An accuracy focused emulator for Sega Genesis/Megadrive"
 arch=("i686" "x86_64")
 url="http://aamirm.hacking-cult.org/index_files/regen.htm"
 license=('custom')
