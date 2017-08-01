@@ -3,7 +3,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=papilio-loader-git
-pkgver=20150703
+pkgver=20170106
 pkgrel=1
 pkgdesc="Bitstream loader for Papilio One FPGA board."
 arch=("i686" "x86_64")
@@ -13,7 +13,8 @@ depends=(libftdi-compat)
 makedepends=(git gcc)
 #makedepends=(git gcc libftd2xx flex bison)
 options=('!strip')
-source=(git://github.com/GadgetFactory/Papilio-Loader.git)
+_gitname=Papilio-Loader
+source=(git://github.com/GadgetFactory/$_gitname.git)
 #source=(git://github.com/ivanovp/Papilio-Loader.git)
 md5sums=('SKIP')
 
@@ -24,7 +25,7 @@ pkgver() {
 
 build() {
 # msg "GIT checkout done or server timeout"
-  cd "$srcdir/Papilio-Loader/papilio-prog"
+  cd "$srcdir/$_gitname/papilio-prog"
   if [ ! -f ./configure ]; then
     chmod +x ./autogen.sh
     ./autogen.sh
@@ -35,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir//Papilio-Loader/papilio-prog"
+  cd "$srcdir/$_gitname/papilio-prog"
   make DESTDIR="$pkgdir" install
   install -d $pkgdir/usr/share/$pkgname
   cd "../Fpga"
