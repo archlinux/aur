@@ -27,13 +27,13 @@ build() {
 }
 
 package_python-tempora() {
-    depends=('python')
+    depends=('python' 'python-six' 'python-pytz')
     cd "$srcdir/tempora-$pkgver"
     python ./setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-tempora() {
-    depends=('python2')
+    depends=('python2' 'python2-six' 'python2-pytz')
     cd "$srcdir/tempora-$pkgver-py2"
     python2 ./setup.py install --root="${pkgdir}" --optimize=1
     mv "${pkgdir}/usr/bin/calc-prorate" "${pkgdir}/usr/bin/calc-prorate2"

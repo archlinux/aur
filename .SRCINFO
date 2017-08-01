@@ -22,7 +22,11 @@ pkgbase = python-tempora
 
 pkgname = python-tempora
 	depends = python
+	depends = python-six
+	depends = python-pytz
 
 pkgname = python2-tempora
 	depends = python2
+	depends = python2-six
+	depends = python2-pytz
 
