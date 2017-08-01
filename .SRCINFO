@@ -5,7 +5,7 @@ pkgbase = archlinux-python-helper
 	arch = any
 	license = GPL
 
-	source = local://archlinux-python.sh
+	source = archlinux-python.sh
 	md5sums = SKIP
 
 pkgname = archlinux-python-helper
