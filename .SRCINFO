@@ -1,0 +1,24 @@
+pkgbase = perl-travel-status-de-ura-git
+	pkgdesc = Travel::Status::DE::URA is an inofficial interface to URA-based departure monitors (as used by ASEAG)
+	pkgver = 2.01+g5fdcd34
+	pkgrel = 1
+	url = http://finalrewind.org/projects/Travel-Status-DE-URA/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-file-slurp
+	makedepends = perl-test-pod
+	depends = perl-class-accessor
+	depends = perl-datetime
+	depends = perl-datetime-format-duration
+	depends = perl-list-moreutils
+	depends = perl-text-csv
+	provides = perl-travel-status-de-ura=2.01+g5fdcd34
+	conflicts = perl-travel-status-de-ura
+	replaces = perl-travel-status-de-ura<=2.01+g5fdcd34
+	options = !emptydirs
+	source = Travel-Status-DE-URA::git+http://git.finalrewind.org/Travel-Status-DE-URA
+	md5sums = SKIP
+
+pkgname = perl-travel-status-de-ura-git
+
