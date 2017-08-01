@@ -1,13 +1,18 @@
 post_install() {
+	post_upgrade
+
+	echo -e "\e[39;1m- Please make sure that the Shifter runtimes and the image gateway has the same munge key.\e[0m"
+	echo -e "\e[39;1m- Check the configuration file (/etc/shifter/udiRoot.conf) before pulling images or starting containers.\e[0m"
+}
+
+post_upgrade() {
 	systemctl daemon-reload
 
 	echo -e "\e[34;1m==>\e[39;1m Enabling munge.service... \e[0m"
-	MUNGE_ENABLED="$(systemctl list-unit-files | grep enabled | grep munge.service)"
-	[ -z "$MUNGE_ENABLED" ] && systemctl enable munge.service
+	systemctl is-enabled munge.service || systemctl enable munge.service
 
 	echo -e "\e[34;1m==>\e[39;1m Starting munge.service... \e[0m"
-	MUNGE_STARTED="$(systemctl | grep running | grep munge.service)"
-	[ -z "$MUNGE_STARTED" ] && systemctl start munge.service
+	systemctl is-active munge.service || systemctl start munge.service
 
 	echo -e "\e[34;1m==>\e[39;1m Copying /etc/passwd... \e[0m"
 	cp -f /etc/passwd /etc/shifter/shifter_etc_files/passwd
@@ -22,25 +27,6 @@ post_install() {
 	[ -n "$(lsmod | grep ^loop)" ] && echo -e "    \e[34;1m==>\e[39;1m loop... loaded\e[0m"
 	[ -z "$(lsmod | grep ^squashfs)" ] && modprobe squashfs
 	[ -n "$(lsmod | grep ^squashfs)" ] && echo -e "    \e[34;1m==>\e[39;1m squashfs... loaded\e[0m"
-
-	echo -e "\e[39;1m- Please make sure that the Shifter runtimes and the image gateway has the same munge key.\e[0m"
-	echo -e "\e[39;1m- Check the configuration file (/etc/shifter/udiRoot.conf) before pulling images or starting containers.\e[0m"
-}
-
-post_upgrade() {
-	echo -e "\e[34;1m==>\e[39;1m Enabling munge.service... \e[0m"
-	MUNGE_ENABLED="$(systemctl list-unit-files | grep enabled | grep munge.service)"
-	[ -z "$MUNGE_ENABLED" ] && systemctl enable munge.service
-
-	echo -e "\e[34;1m==>\e[39;1m Starting munge.service... \e[0m"
-	MUNGE_STARTED="$(systemctl | grep running | grep munge.service)"
-	[ -z "$MUNGE_STARTED" ] && systemctl start munge.service
-
-	echo -e "\e[34;1m==>\e[39;1m Copying /etc/passwd... \e[0m"
-	cp -f /etc/passwd /etc/shifter/shifter_etc_files/passwd
-
-	echo -e "\e[34;1m==>\e[39;1m Copying /etc/group... \e[0m"
-	cp -f /etc/group /etc/shifter/shifter_etc_files/group
 }
 
 pre_remove() {
