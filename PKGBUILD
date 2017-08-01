@@ -43,6 +43,9 @@ package() {
   echo "Configuring bash completion"
   mkdir $pkgdir/etc
   cp -r "${srcdir}/data/etc/bash_completion.d" "${pkgdir}/etc/"
+  # Make windscribe directory
+  echo "Creating windscribe directory"
+  mkdir $pkgdir/etc/windscribe
   # Configure systemd service
   echo "Configuring systemd service"
   mkdir -p $pkgdir/etc/systemd/system/
