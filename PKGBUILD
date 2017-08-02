@@ -16,6 +16,7 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-setuptools-scm' 'p
 checkdepends=('python-tox' 'python2-tox')
 source=("https://github.com/cherrypy/cherrypy/archive/v$pkgver.tar.gz")
 md5sums=('bb432eb2e919d449a1f644b36b8db4f1')
+BUILDENV+=('!check')
 
 build() {
   cp -r "${srcdir}/cherrypy-${pkgver}" "${srcdir}/cherrypy-${pkgver}-py2"
