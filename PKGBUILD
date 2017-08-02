@@ -5,15 +5,15 @@
 
 pkgbase=openal-git
 pkgname=(openal-git openal-examples-git)
-pkgver=1.18.1.r0.gbf9c3640
+pkgver=1.18.1.r4.g8a735d0b
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(i686 x86_64)
 url="https://github.com/kcat/openal-soft"
 license=(LGPL)
 depends=(glibc)
-makedepends=(alsa-lib pkgconfig cmake libpulse qt5-base fluidsynth portaudio jack sdl2 sdl_sound
-             ffmpeg git)
+makedepends=(alsa-lib libpulse fluidsynth portaudio jack qt5-base sdl2 sdl_sound ffmpeg
+             git cmake ninja)
 source=("git+https://github.com/kcat/openal-soft")
 md5sums=('SKIP')
 
@@ -23,13 +23,14 @@ pkgver() {
 }
 
 build() {
-  mkdir -p build examples
+  rm -rf build examples
+  mkdir build examples
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        ../openal-soft
-  make
+  cmake ../openal-soft -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_LIBDIR=lib
+  ninja
 }
 
 package_openal-git() {
@@ -38,8 +39,7 @@ package_openal-git() {
   provides=("openal=$pkgver")
   conflicts=("openal")
 
-  make -C build DESTDIR="$pkgdir" install
-
+  DESTDIR="$pkgdir" ninja -C build install
   install -Dt "$pkgdir/usr/share/doc/openal" -m644 openal-soft/docs/*
 
 ### Split openal-examples
