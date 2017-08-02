@@ -28,5 +28,5 @@ check() {
 package() {
   cd "amber-cmd-$pkgver"
   install -Dm755 bin/amber "$pkgdir/usr/bin/amber"
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/amber-cmd/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/amber_cmd/LICENSE
 }
