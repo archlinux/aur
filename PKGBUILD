@@ -2,7 +2,7 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 pkgname=lhapdf
 pkgver=6.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files."
 arch=('x86_64' 'i686')
 url="http://lhapdf.hepforge.org/"
@@ -33,6 +33,9 @@ package() {
 	# If python2 is present, also build a library for it
 	if [ -x /usr/bin/python2 ]; then
 	  PYTHON=/usr/bin/python2 ./configure --prefix=/usr
-	   make DESTDIR="$pkgdir/" install
+	  make DESTDIR="$pkgdir/" install
 	fi
+
+	# make /usr/share/LHAPDF world writable, so lhapdf get works as an ordinary user
+	chmod -R uog+rwX $pkgdir/usr/share/LHAPDF
 }
