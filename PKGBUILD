@@ -2,7 +2,7 @@
 
 pkgname=albion-online-live-game-data-bin
 pkgver=1.0.327.93586
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO -- game data files for live server"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -29,9 +29,9 @@ read_dom () {
 parse_dom () {
   if [[ $TAG_NAME = "file" ]] ; then
     eval local ${ATTRIBUTES::-1}
-    #echo "$TAG_NAME path is: $path"
-    #echo "$TAG_NAME md5 is: $md5"
-    echo "Fetching $path..."
+    #msg2 "$TAG_NAME path is: $path"
+    #msg2 "$TAG_NAME md5 is: $md5"
+    msg2 "Fetching $path..."
     mkdir -p "${srcdir}/opt/albion-online-launcher-bin/game_x64/$(dirname "$path")"
     curl -# -L "${_URL_PREFIX}/${path// /%20}" | bsdtar -xf - -C "${srcdir}/opt/albion-online-launcher-bin/game_x64/$(dirname "$path")"
   fi
