@@ -1,8 +1,100 @@
 # Change Log
 
-## [Unreleased](https://github.com/langurmonkey/gaiasky/tree/HEAD)
+## [1.5.0](https://github.com/langurmonkey/gaiasky/tree/1.5.0) (2017-08-02)
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/1.0.4...1.5.0)
 
-[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/1.0.3...HEAD)
+**Implemented enhancements:**
+
+- Integrate particle groups with levels of detail [\#170](https://github.com/langurmonkey/gaiasky/issues/170)
+- Set up renderer using asset manager [\#167](https://github.com/langurmonkey/gaiasky/issues/167)
+- Set up post processor through the asset manager [\#166](https://github.com/langurmonkey/gaiasky/issues/166)
+- Scale point primitives by ratio to default [\#163](https://github.com/langurmonkey/gaiasky/issues/163)
+- Implement GPU-based implementation for star catalogs [\#162](https://github.com/langurmonkey/gaiasky/issues/162)
+- Additive blending [\#160](https://github.com/langurmonkey/gaiasky/issues/160)
+- Enable star particle groups [\#159](https://github.com/langurmonkey/gaiasky/issues/159)
+- Expose high accuracy positons setting in the GUI [\#157](https://github.com/langurmonkey/gaiasky/issues/157)
+- Allow high accuracy in VSOP87 model [\#156](https://github.com/langurmonkey/gaiasky/issues/156)
+- Front end to manage game controller mappings [\#155](https://github.com/langurmonkey/gaiasky/issues/155)
+- Add nearby galaxies, NBG [\#154](https://github.com/langurmonkey/gaiasky/issues/154)
+- Add Oort cloud [\#152](https://github.com/langurmonkey/gaiasky/issues/152)
+- Add Pluto [\#151](https://github.com/langurmonkey/gaiasky/issues/151)
+- Abstract controller mappings, use files to define them [\#150](https://github.com/langurmonkey/gaiasky/issues/150)
+- Add target mode in free camera [\#148](https://github.com/langurmonkey/gaiasky/issues/148)
+- Add 'land on object' function [\#147](https://github.com/langurmonkey/gaiasky/issues/147)
+- On-demand catalog loading from disk [\#146](https://github.com/langurmonkey/gaiasky/issues/146)
+- French translation [\#145](https://github.com/langurmonkey/gaiasky/issues/145)
+- Allow for controller look y-axis to be inverted [\#143](https://github.com/langurmonkey/gaiasky/issues/143)
+- Support lazy texture initialisation for faster startup [\#140](https://github.com/langurmonkey/gaiasky/issues/140)
+- Add Saturn moons [\#139](https://github.com/langurmonkey/gaiasky/issues/139)
+- Revamp debug info [\#138](https://github.com/langurmonkey/gaiasky/issues/138)
+- Add non cinematic camera mode [\#135](https://github.com/langurmonkey/gaiasky/issues/135)
+- Discard current star shader based on noise and use texture instead [\#134](https://github.com/langurmonkey/gaiasky/issues/134)
+- Apply screen mode without restart [\#128](https://github.com/langurmonkey/gaiasky/issues/128)
+- Make network checker \(simbad, wiki\) asynchronous [\#127](https://github.com/langurmonkey/gaiasky/issues/127)
+- Deprecate current swing-based preferences [\#125](https://github.com/langurmonkey/gaiasky/issues/125)
+- Apply skin change without restarting [\#124](https://github.com/langurmonkey/gaiasky/issues/124)
+- Colour code proper motion vectors with direction/magnitude [\#123](https://github.com/langurmonkey/gaiasky/issues/123)
+- Fix layout of controls window [\#121](https://github.com/langurmonkey/gaiasky/issues/121)
+- Add context menu with some options [\#120](https://github.com/langurmonkey/gaiasky/issues/120)
+- Rearrange UI, fix HiDPI themes [\#119](https://github.com/langurmonkey/gaiasky/issues/119)
+- Add button to stop current camera play session [\#117](https://github.com/langurmonkey/gaiasky/issues/117)
+- UI animations [\#116](https://github.com/langurmonkey/gaiasky/issues/116)
+- Add Slovene language [\#109](https://github.com/langurmonkey/gaiasky/issues/109)
+- Add new Parallel View stereoscopic profile [\#105](https://github.com/langurmonkey/gaiasky/issues/105)
+- Upgrade to Lwjgl 3 [\#103](https://github.com/langurmonkey/gaiasky/issues/103)
+
+**Fixed bugs:**
+
+- Fix eye separation in spacecraft+stereoscopic modes [\#168](https://github.com/langurmonkey/gaiasky/issues/168)
+- Random crash at startup [\#165](https://github.com/langurmonkey/gaiasky/issues/165)
+- Fix postprocessing framebuffer resize issue [\#164](https://github.com/langurmonkey/gaiasky/issues/164)
+- Scale point primitives by ratio to default [\#163](https://github.com/langurmonkey/gaiasky/issues/163)
+- Milky Way texture off when rotated [\#158](https://github.com/langurmonkey/gaiasky/issues/158)
+- Fix controller input in non-cinematic mode [\#142](https://github.com/langurmonkey/gaiasky/issues/142)
+- Fix smooth transitions in multithread mode [\#141](https://github.com/langurmonkey/gaiasky/issues/141)
+- Fixe Quad line renderer artifacts [\#137](https://github.com/langurmonkey/gaiasky/issues/137)
+- Make network checker \\(simbad, wiki\\) asynchronous [\#127](https://github.com/langurmonkey/gaiasky/issues/127)
+- Fix cast error when multithreading is on [\#126](https://github.com/langurmonkey/gaiasky/issues/126)
+- Label flickering when star is perfectly aligned with camera direction [\#122](https://github.com/langurmonkey/gaiasky/issues/122)
+- Fix main controls window alignments [\#118](https://github.com/langurmonkey/gaiasky/issues/118)
+- Fix gaia scan mode [\#114](https://github.com/langurmonkey/gaiasky/issues/114)
+- Add timeout to version check [\#112](https://github.com/langurmonkey/gaiasky/issues/112)
+- Fix config file lookup crash when running from source [\#111](https://github.com/langurmonkey/gaiasky/issues/111)
+- Fix focus issue with objects text field [\#106](https://github.com/langurmonkey/gaiasky/issues/106)
+- Fix stereoscopic mode for large distances/eye separations [\#89](https://github.com/langurmonkey/gaiasky/issues/89)
+- Gaia Sky crashes on Windows 10 32bit - JRE 8u102 [\#77](https://github.com/langurmonkey/gaiasky/issues/77)
+- Fix octant detection in very low fov angles [\#70](https://github.com/langurmonkey/gaiasky/issues/70)
+
+**Closed issues:**
+
+- Incorrect size of "Sol" via scripting interface [\#174](https://github.com/langurmonkey/gaiasky/issues/174)
+- Parsing of version string breaks when custom git tags are used [\#173](https://github.com/langurmonkey/gaiasky/issues/173)
+- Test script "getobject-test.py" crashes [\#172](https://github.com/langurmonkey/gaiasky/issues/172)
+- Constellation "Antlia" misspelled as "Antila" [\#153](https://github.com/langurmonkey/gaiasky/issues/153)
+- Closest object and camera speed in scripting interface [\#149](https://github.com/langurmonkey/gaiasky/issues/149)
+- Cinematic camera setting not saved [\#144](https://github.com/langurmonkey/gaiasky/issues/144)
+- Running Gaia Sky in Oculus Rift [\#136](https://github.com/langurmonkey/gaiasky/issues/136)
+- Scripting interface: asynchronous mode? [\#133](https://github.com/langurmonkey/gaiasky/issues/133)
+- Scripting interface: issues with setCameraPostion method [\#132](https://github.com/langurmonkey/gaiasky/issues/132)
+- Scripting interface: calling setStarBrightness\(\) seems to change the ambient light [\#131](https://github.com/langurmonkey/gaiasky/issues/131)
+- Scripting interface: calling setVisibility toggles independent of parameter [\#130](https://github.com/langurmonkey/gaiasky/issues/130)
+- Scripting interface: calling setCameraLock\(\) causes Exception in thread "LWJGL Application" [\#129](https://github.com/langurmonkey/gaiasky/issues/129)
+- Translation [\#107](https://github.com/langurmonkey/gaiasky/issues/107)
+
+**Merged pull requests:**
+
+- Fix ARI url [\#176](https://github.com/langurmonkey/gaiasky/pull/176) ([vga101](https://github.com/vga101))
+- Fix method comment for displayTextObject [\#175](https://github.com/langurmonkey/gaiasky/pull/175) ([vga101](https://github.com/vga101))
+- Fix customobjects-test.py [\#171](https://github.com/langurmonkey/gaiasky/pull/171) ([vga101](https://github.com/vga101))
+- Suggested improvements for German translation [\#169](https://github.com/langurmonkey/gaiasky/pull/169) ([vga101](https://github.com/vga101))
+- Fix URL to home page [\#161](https://github.com/langurmonkey/gaiasky/pull/161) ([vga101](https://github.com/vga101))
+- Fix README rendering [\#115](https://github.com/langurmonkey/gaiasky/pull/115) ([rogersachan](https://github.com/rogersachan))
+- Fix links to scripting documentation [\#113](https://github.com/langurmonkey/gaiasky/pull/113) ([vga101](https://github.com/vga101))
+- Fix TGAS extraction path in running instructions [\#110](https://github.com/langurmonkey/gaiasky/pull/110) ([vga101](https://github.com/vga101))
+- Slovene translation [\#108](https://github.com/langurmonkey/gaiasky/pull/108) ([kcotar](https://github.com/kcotar))
+
+## [1.0.4](https://github.com/langurmonkey/gaiasky/tree/1.0.4) (2016-12-07)
+[Full Changelog](https://github.com/langurmonkey/gaiasky/compare/1.0.3...1.0.4)
 
 **Implemented enhancements:**
 
@@ -52,7 +144,6 @@
 **Fixed bugs:**
 
 - Configuration dialog should appear at the center of focused screen [\#90](https://github.com/langurmonkey/gaiasky/issues/90)
-- Fix stereoscopic mode for large distances/eye separations [\#89](https://github.com/langurmonkey/gaiasky/issues/89)
 - Fix resizing and fullscreen toggle [\#86](https://github.com/langurmonkey/gaiasky/issues/86)
 - Crash - Vector pool null pointer when multithreading is on [\#83](https://github.com/langurmonkey/gaiasky/issues/83)
 - Fix connection to archive for DR1 sources [\#78](https://github.com/langurmonkey/gaiasky/issues/78)
@@ -62,7 +153,6 @@
 **Closed issues:**
 
 - Gaia Sky crashes on Windows 10, Java 1.8.0\_101 [\#79](https://github.com/langurmonkey/gaiasky/issues/79)
-- Please consider uploading gaiasandbox to Debian [\#39](https://github.com/langurmonkey/gaiasky/issues/39)
 
 ## [1.0.0](https://github.com/langurmonkey/gaiasky/tree/1.0.0) (2016-09-13)
 [Full Changelog](https://github.com/langurmonkey/gaiasky/compare/0.800b...1.0.0)
