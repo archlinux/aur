@@ -2,7 +2,7 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.0.34.162
-pkgrel=2
+pkgrel=3
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -46,6 +46,8 @@ package() {
 
   mkdir "${pkgdir}/opt/${pkgname}/game_x64"
   chmod 775 "${pkgdir}/opt/${pkgname}/game_x64"
+
+  chmod 775 "${pkgdir}/opt/${pkgname}/launcher"
   
   # link launcher launcher
   mkdir -p "${pkgdir}/usr/bin"
