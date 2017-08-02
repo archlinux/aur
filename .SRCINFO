@@ -1,7 +1,7 @@
 pkgbase = pahole
 	pkgdesc = Various DWARF utils
-	pkgver = 1.10
-	pkgrel = 2
+	pkgver = 1.11
+	pkgrel = 1
 	url = http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary
 	changelog = pahole.changelog
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = pahole
 	depends = elfutils
 	depends = python
 	replaces = dwarves
-	source = pahole-remove-tag-mutable.diff
-	md5sums = fced1e021c244ff7403cab816da63e98
-	sha1sums = 5b5c3dbd9bc2313119fb478db857033745babea4
+	source = https://git.kernel.org/pub/scm/devel/pahole/pahole.git/snapshot/pahole-1.11.tar.gz
+	md5sums = 33d2603497a599188b9d26ec3e416a98
+	sha1sums = d1e0aace518342203c713b87024ebada848acd64
 
 pkgname = pahole
 
