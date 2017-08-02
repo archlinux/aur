@@ -2,18 +2,19 @@
 # Brought to you by: amedico, cordovano, jessekornblum, lowej, mlevendo
 
 pkgname=dc3dd
-pkgver=7.2.641
+pkgver=7.2.646
 pkgrel=1
 pkgdesc="is a patch to the GNU dd program, this version has several features intended for forensic acquisition of data."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/dc3dd/"
 license=('GPL3')
 makedepends=('autoconf' 'perl-locale-gettext')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/7.2/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('7f50aadc38649845ab11014d11013928411c9d2128c941e9630939d4c28cae6d')
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}%20${pkgver}/${pkgname}-${pkgver}.zip")
+sha256sums=('c4e325e5cbdae49e3855b0849ea62fed17d553428724745cea53fe6d91fd2b7f')
 
 build() {
   cd "${pkgname}-${pkgver}"
+  chmod u+x ./configure
   ./configure --prefix=/usr --libexecdir="/usr/lib/${pkgname}"
   make
 }
