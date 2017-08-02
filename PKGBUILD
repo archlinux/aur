@@ -5,20 +5,20 @@
 
 pkgname=pdftk
 pkgver=2.02
-pkgrel=16
+pkgrel=17
 pkgdesc="Pdftk is a simple tool for doing everyday things with PDF documents"
 arch=('i686' 'x86_64')
 url="http://www.pdfhacks.com/pdftk"
 license=("GPL")
-depends=('gcc63-gcj' 'gcc-gcj-ecj')
+depends=('gcc6-gcj' 'gcc-gcj-ecj')
 options=('!makeflags')
 source=("http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/${pkgname}-${pkgver}-src.zip"
 	"Makefile.Arch"
 	"pdftk"
 )
 sha1sums=('a4a27e984c5e1401cfa44b8e92a64113d7396a06'
-          '50da68be80a2ed9cf9ae2c24d0016ea19f0eec0d'
-          '9ccacd5bf6a759563f2548a5ecb66fbe5132d1e7')
+          '0c8e1a442d266eb6782349e41652c6c07464222e'
+          '668240583dc4f8564edd5eaec3c769ec6fdd4cc0')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver-dist/$pkgname"
@@ -48,5 +48,7 @@ package() {
 	install -D -m 644 "pdftk.1" "$pkgdir/usr/share/man/man1/pdftk.1"
 
         # Install wrapper that sets the proper environment variables.
-	install -D -m 755 "${srcdir}/pdftk" "${pkgdir}/usr/bin/pdftk" 
+	sed -i "s/CARCH/${CARCH}/" ${srcdir}/pdftk
+	sed -i "s/GCCVER/`gcc-6 -dumpversion`/" ${srcdir}/pdftk
+	install -D -m 755 ${srcdir}/pdftk ${pkgdir}/usr/bin/pdftk
 }
