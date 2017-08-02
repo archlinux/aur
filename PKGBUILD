@@ -17,24 +17,24 @@
 #
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
-pkgver=0.7.0_rc5_r1_g4265a9293_4.12.1.b_1
-pkgrel=1
-makedepends=("linux-hardened-headers=4.12.1.b-1" "git" "spl-linux-hardened-git-headers")
+pkgver=0.7.0_r8_gaf0f84288_4.12.4.a_1
+pkgrel=2
+makedepends=("linux-hardened-headers=4.12.4.a-1" "git" "spl-linux-hardened-git-headers")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
 sha256sums=("SKIP")
 license=("CDDL")
-depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git" "linux-hardened=4.12.1.b-1")
+depends=("kmod" "spl-linux-hardened-git" "zfs-utils-common-git>=0.7.0_r8_gaf0f84288" "linux-hardened=4.12.4.a-1")
 
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5.11 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.12.1-1-hardened/build \
-                --with-linux-obj=/usr/lib/modules/4.12.1-1-hardened/build
+                --libexecdir=/usr/lib/zfs-0.7.0 --with-config=kernel \
+                --with-linux=/usr/lib/modules/4.12.4-1-hardened/build \
+                --with-linux-obj=/usr/lib/modules/4.12.4-1-hardened/build
     make
 }
 
@@ -54,10 +54,10 @@ package_zfs-linux-hardened-git() {
 
 package_zfs-linux-hardened-git-headers() {
     pkgdesc="Kernel headers for the Zettabyte File System."
-    conflicts=('zfs-linux-hardened-headers' 'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers')
+    conflicts=('zfs-archiso-linux-headers' 'zfs-utils-common-git-headers' 'zfs-linux-hardened-headers'  'zfs-linux-lts-headers' 'zfs-linux-lts-git-headers' 'zfs-linux-headers' 'zfs-linux-git-headers' )
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.12.1-1-hardened/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.12.4-1-hardened/Module.symvers
 }
