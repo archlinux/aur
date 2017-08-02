@@ -1,10 +1,10 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=repkg
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to manage rebuilding of AUR packages based on their dependencies"
 arch=('i686' 'x86_64')
-url="https://github.com/Baum42/$pkgname"
+url="https://github.com/Skycoder42/$pkgname"
 license=('BSD')
 depends=('qt5-base' 'pacman' )
 makedepends=('qt5-tools' 'git')
