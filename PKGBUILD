@@ -1,5 +1,5 @@
 # Maintainer: Faustino Aguilar <faustinoaq.github.io>
-pkgname=amber-cmd
+pkgname=amber_cmd
 pkgver=0.1.20
 pkgrel=1
 pkgdesc="CLI for Amber framework that makes interfacing with your file system and applications much smoother."
@@ -12,7 +12,7 @@ source=("https://github.com/amber-crystal/amber-cmd/archive/v$pkgver.tar.gz")
 sha256sums=('45ded959182ef17ac7a106bd653f6570a2d194f6d0900a1b16273c302caca33e')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "amber-cmd-$pkgver"
   shards
   mkdir -p bin
   make build
@@ -20,13 +20,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "amber-cmd-$pkgver"
   crystal spec --no-debug -p
   crystal eval 'STDIN.blocking = true'
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "amber-cmd-$pkgver"
   install -Dm755 bin/amber "$pkgdir/usr/bin/amber"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/amber-cmd/LICENSE
 }
