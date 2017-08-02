@@ -4,9 +4,9 @@
 
 pkgname=gcc-gcj-ecj
 pkgver=4.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A fork of the Eclipse Java bytecode compiler for GCJ"
-depends=('gcc63-gcj')
+depends=('gcc6-gcj')
 provides=('eclipse-ecj')
 conflicts=('eclipse-ecj')
 arch=('any')
@@ -20,4 +20,4 @@ package() {
 	install -D -m755 $srcdir/ecj1 $pkgdir/usr/bin/ecj1
 }
 md5sums=('7339f199ba11c941890031fd9981d7be'
-         '0db4f01e6e3fe1aedc2823be5e3e75f4')
+         'ee312c2f80c73152dde859ea66e494d0')
