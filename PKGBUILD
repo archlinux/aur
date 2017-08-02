@@ -3,7 +3,7 @@
 # Contributor: Jonas Strassel <jo.strassel@gmail.com>
 
 pkgname=pdfbeads
-pkgver=1.1.2.pre.beta
+pkgver=v1.1.2.pre.beta
 pkgrel=0
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=(any)
