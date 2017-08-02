@@ -1,4 +1,4 @@
-# Maintainer: Lukas Böger <dev___AT___lboeger___DOT___de>
+# Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgname=dune-alugrid
 pkgver=2.5.0
 pkgrel=1
