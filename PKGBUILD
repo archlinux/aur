@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 pkgver=1.14.1
-pkgrel=2
+pkgrel=3
 _cqzbuildid=20170706154045
 pkgdesc="Firefox-based privacy aware web browser, build from sources"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(MPL2)
 depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
          nss hunspell sqlite ttf-font libpulse icu libvpx)
 makedepends=(unzip zip diffutils python2 yasm mesa gconf inetutils xorg-server-xvfb
-             autoconf2.13 cargo gcc5)
+             autoconf2.13 rust gcc5)
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         'fix-wifi-scanner.diff')
