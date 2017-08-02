@@ -1,15 +1,15 @@
 pkgbase = dune-typetree
 	pkgdesc = A template library for statically typed object trees
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://www.dune-project.org/pdelab
 	arch = any
 	groups = dune
 	license = custom
 	makedepends = cmake
-	makedepends = dune-common=2.4.1
-	source = http://dune-project.org/download/pdelab/2.4.1/dune-typetree-2.4.1.tar.gz
-	md5sums = 13e5bccb0aec611c87987fd09c36f76e
+	makedepends = dune-common>=2.5.0
+	source = git+https://gitlab.dune-project.org/staging/dune-typetree.git#tag=v2.5.0
+	md5sums = SKIP
 
 pkgname = dune-typetree
 
