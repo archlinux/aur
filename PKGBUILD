@@ -1,19 +1,31 @@
 # Contributor: Nikita Nikishin <i.nnikishi@gmail.com>
 # Contributor: Christian Mauderer <oss@c-mauderer.de>
+# Contributor: Jonas Strassel <jo.strassel@gmail.com>
+
 pkgname=pdfbeads
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.1.2.pre.beta
+pkgrel=0
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=(any)
 url="http://rubygems.org/gems/pdfbeads"
 license=('GPL')
-depends=('ruby' 'ruby-iconv' 'jbig2enc-git' 'ruby-nokogiri>=1.5.10' 
-'ruby-pdf-reader>=1.0.0' 
-'ruby-rmagick>=2.13.0' 'openjpeg2')
-makedepends=(rubygems)
-source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
+
+depends=(
+'ruby>=2.0.0'
+'jbig2enc-git'
+'openjpeg2'
+)
+
+optdepends=(
+'ruby-iconv>=1.0.0'
+'ruby-nokogiri>=1.7.0.0'
+'ruby-rmagick>=2.0.0'
+)
+
+makedepends=(ruby)
+source=(https://github.com/boredland/pdfbeads/releases/download/$pkgver/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-md5sums=('5aa0a7c57e6ce683a5bd4eb1a5d9eb76')
+md5sums=('68beffdd3b50d581a5325e68d43999c2')
 
 package() {
   cd "$srcdir"
@@ -21,7 +33,6 @@ package() {
 
   gem install \
     --no-user-install \
-    --ignore-dependencies \
     --verbose \
     -i "$pkgdir$_gemdir" \
     -n "$pkgdir"/usr/bin \
