@@ -1,9 +1,9 @@
 # Maintainer: Romain GERARD <erebe@erebe.eu>
 
 pkgname=greenclip
-pkgver=1.3
-pkgrel=3
-epoch=3
+pkgver=2.0
+epoch=0
+pkgrel=0
 pkgdesc="Clipboard manager to use with rofi"
 arch=('x86_64')
 url="https://github.com/erebe/greenclip"
@@ -20,9 +20,9 @@ backup=()
 options=('!strip')
 install=
 changelog=changelog
-source=("https://github.com/erebe/greenclip/releases/download/1.3/greenclip")
+source=("https://github.com/erebe/greenclip/releases/download/2.0/greenclip")
 noextract=()
-sha256sums=("42fec634df88c34a5b27bb2b8599b51b71e1b3adfb6aa191c81d9dc91fb2a3f1")
+sha256sums=("2b67042439c4af86fd8ec0fa37f029c200811017d439cc9acb7125dc599406cf")
 
 package() {
         install -Dm 755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
