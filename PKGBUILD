@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx
-pkgver=17.04.3
+pkgver=17.08
 pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
@@ -13,8 +13,8 @@ optdepends=('mashup: for composing pages to print from within fotoxx'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz" 'no_leafpad.patch')
-sha512sums=('cf4b4a920c8f69ff8f5dbcfd96778f12859187c4aa382aee134a2c41ea3e3e05103a4ce3ba2c698ff6cd46b2c83bf6c162f389d6872dcd79fd766d569c4b9b6f'
-            '7f119d502ac8281935f02b1e60788e1db76012b882b971ceb7c82fec9e6843b4449f7dc18a050e910c375d9de6287b26da4074fb734a2f6c0839e4cf0cb1d393')
+sha512sums=('ca67cd3568824179671120111edbd6cdd64d5b5c38124012837dcde7dd61f594b3028a2a182cf53e0e8c83c9d418c4f7e876f17e571555e9a761b0bcb8a1fc85'
+            'ea97fcc4d2442c872fafe0a5f748a975c3cc08018f72e4813985a3515921b7128aea70c51a63c847fa24378de06e369784e220cd636b5eec2ce80c99c79a3738')
 options=('!makeflags')
 
 prepare() {
