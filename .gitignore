@@ -1,0 +1,16 @@
+# Created by .ignore support plugin (hsz.mobi)
+### ArchLinuxPackages template
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+.idea/
