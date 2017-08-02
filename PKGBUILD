@@ -2,12 +2,12 @@
 #Contributor: matthiaskrgr <matthias · krueger _strange_curved_character_ famsike · de>
 
 pkgname=widelands-bzr
-pkgver=r7282
-pkgrel=2
+pkgver=r8411
+pkgrel=1
 pkgdesc="A realtime strategy game with emphasis on economy and transport - development version"
 arch=(i686 x86_64)
 license=('GPL2')
-depends=('glew' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'sdl2_ttf')
+depends=('glew' 'sdl2_image' 'boost-libs' 'sdl2_mixer' 'sdl2_ttf')
 makedepends=('bzr' 'cmake' 'python'  'boost')
 provides=('widelands')
 conflicts=('widelands' 'widelands-data')
@@ -45,6 +45,7 @@ build() {
 	msg2 "Running cmake..."
 	# if this failes on an existing build because of an mismatch of src and build cmake files, just delete build and try again.
 	cmake .. -DCMAKE_BUILD_TYPE=Release \
+		-DOPTION_BUILD_WEBSITE_TOOLS=OFF \
 		-DCMAKE_INSTALL_PREFIX=/usr/bin \
 		-DWL_INSTALL_DATADIR=/usr/share/widelands 
 	msg2 "Running make..."

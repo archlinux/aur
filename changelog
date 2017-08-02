@@ -1,3 +1,8 @@
+Version r8411-1
+	* Don't build website tools anymore
+	* Add boost-libs dependency
+	* remove sdl2_net dependency
+
 Version r7282-2
 	* Remove sdl2_gfx dependency.
 
