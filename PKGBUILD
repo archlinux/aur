@@ -1,6 +1,6 @@
 # Contrinutor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=gst-rtsp-server
-pkgver=1.10.2
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='RTSP server library based on GStreamer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -8,7 +8,7 @@ url='http://gstreamer.freedesktop.org/modules/gst-rtsp-server.html'
 license=('LGPL')
 depends=("gst-plugins-base>=$pkgver")
 source=(http://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz)
-md5sums=('3ed8878f076e84c59b3ed5bd38ab31ed')
+md5sums=('022757cab183f5b970086e9101c60a98')
 
 build() {
 	cd $pkgname-$pkgver
