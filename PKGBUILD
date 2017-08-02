@@ -15,35 +15,47 @@
 # archzfs github page.
 #
 #
-pkgname="spl-archiso-linux"
-pkgver=0.6.5.8_4.7.2_1
+pkgbase="spl-archiso-linux"
+pkgname=("spl-archiso-linux" "spl-archiso-linux-headers")
+pkgver=0.7.0_4.12.3_1
 pkgrel=1
-pkgdesc="Solaris Porting Layer kernel modules."
-depends=("spl-utils-archiso-linux" "kmod" "linux=4.7.2")
-makedepends=("linux-headers=4.7.2")
+makedepends=("linux-headers=4.12.3")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.8/spl-0.6.5.8.tar.gz")
-sha256sums=("2d22117106782222d2b7da88cc657b7b9c44d281b1cc74d60761e52d33ab1155")
-groups=("archzfs-archiso-linux")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.0/spl-0.7.0.tar.gz")
+sha256sums=("567f461435f99f862efb1b740ed0876b52a2a539aafad6e5372a84a06a5da4d3")
 license=("GPL")
-install=spl.install
-provides=("spl")
+depends=("spl-utils-common>=0.7.0" "kmod" "linux=4.12.3")
 
 build() {
-    cd "${srcdir}/spl-0.6.5.8"
+    cd "${srcdir}/spl-0.7.0"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.7.2-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.7.2-1-ARCH/build \
+                --with-linux=/usr/lib/modules/4.12.3-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.12.3-1-ARCH/build \
                 --with-config=kernel
     make
 }
 
-package() {
-    cd "${srcdir}/spl-0.6.5.8"
+package_spl-archiso-linux() {
+    pkgdesc="Solaris Porting Layer kernel modules."
+    install=spl.install
+    provides=("spl")
+    groups=("archzfs-archiso-linux")
+    conflicts=()
+    cd "${srcdir}/spl-0.7.0"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
+    # Remove src dir
+    rm -r "${pkgdir}"/usr/src
+}
+
+package_spl-archiso-linux-headers() {
+    pkgdesc="Solaris Porting Layer kernel headers."
+    conflicts=( 'spl-linux-hardened-headers' 'spl-linux-hardened-git-headers' 'spl-linux-lts-headers' 'spl-linux-lts-git-headers' 'spl-linux-headers' 'spl-linux-git-headers' )
+    cd "${srcdir}/spl-0.7.0"
+    make DESTDIR="${pkgdir}" install
+    rm -r "${pkgdir}/lib"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.7.2-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.12.3-1-ARCH/Module.symvers
 }
