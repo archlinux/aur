@@ -3,8 +3,8 @@
 pkgbase=('python-rosdep')
 pkgname=('python-rosdep')
 _module='rosdep'
-pkgver='0.11.5'
-pkgrel=2
+pkgver='0.11.7'
+pkgrel=1
 pkgdesc="rosdep package manager abstrction tool for ROS"
 url="http://wiki.ros.org/rosdep"
 depends=('python' 'python-catkin_pkg' 'python-rosdistro' 'python-rospkg' 'python-yaml')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/r/rosdep/rosdep-${pkgver}.tar.gz")
-md5sums=('2c5669bc5cafcb1df8cd21ce14844cc4')
+md5sums=('48c14a114c3ac3cda1e8179e1b830504')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
