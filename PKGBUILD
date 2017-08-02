@@ -1,4 +1,4 @@
-# Maintainer: Austin Haedicke
+# Maintainer: Austin Haedicke (austin.haedicke@gmail.com)
 
 # If you find errors or have suggestions feel free to file an issue
 # or submit a pull request @ https://github.com/gtbjj/pkgbuild
@@ -8,7 +8,7 @@
 # Contributor: Rafał Przywara <ptah.peteh (at) gmail (dot) com>
 
 pkgname=rakudo-star
-pkgver=2017.04
+pkgver=2017.07
 pkgrel=2
 pkgdesc="Rakudo Perl6 on MoarVM with additional modules"
 arch=('i686' 'x86_64')
