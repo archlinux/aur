@@ -22,7 +22,7 @@ sha256sums=('0c835229d1dcba43cbb79014ef0782edbd7b58d156a6aa2886a07bb52232666e'
 
 package() {
   install -Dm644 "${srcdir}/grafana.service" "$pkgdir/usr/lib/systemd/system/grafana.service"
-  cd "${srcdir}/${_pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/var/lib/grafana"
   install -dm755 "${pkgdir}/var/log/grafana"
   install -Dm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
