@@ -1,0 +1,19 @@
+pkgbase = python-mirobo
+	pkgdesc = Python library & console tool for controlling Xiaomi Vacuum cleaner robot
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rytilahti/python-mirobo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python-setuptools
+	depends = python-typing
+	depends = python-cryptography
+	depends = python-pretty-cron
+	depends = python-click
+	depends = python-construct
+	source = https://github.com/rytilahti/python-mirobo/archive/0.1.2.tar.gz
+	md5sums = e619350ee9735dbdd4cd59779eebcdb8
+
+pkgname = python-mirobo
+
