@@ -3,7 +3,7 @@
 pkgname=('rdma-core-git')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='r3435'
+pkgver='r3501'
 pkgrel='1'
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
@@ -71,7 +71,6 @@ package() {
     install -D --mode=0644 rdma.mlx4.conf "${pkgdir}/etc/rdma/mlx4.conf"
     install -D --mode=0644 rdma.service "${pkgdir}/usr/lib/systemd/system/rdma.service"
     install -D --mode=0644 rdma.udev-ipoib-naming.rules "${pkgdir}/etc/udev/rules.d/70-persistent-ipoib.rules"
-    install -D --mode=0644 rdma.mlx4.user.modprobe "${pkgdir}/etc/modprobe.d/mlx4.conf"
     install -D --mode=0755 rdma.modules-setup.sh "${pkgdir}/usr/lib/dracut/modules.d/05rdma/module-setup.sh"
     install -D --mode=0644 rdma.udev-rules "${pkgdir}/usr/lib/udev/rules.d/98-rdma.rules"
     install -D --mode=0644 rdma.mlx4.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/libmlx4.conf"
