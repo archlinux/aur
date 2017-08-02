@@ -2,7 +2,7 @@
 # Contributor: Nicole Fontenot <nfontenot27@gmail.com>
 
 pkgname=osu-lazer-git
-pkgver=2017.721.0_104_gb2119efd
+pkgver=2017.802.0
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
@@ -53,7 +53,7 @@ build() {
 	nuget restore
 
 	# Build
-	xbuild
+	xbuild /property:Configuration=Release
 }
 
 package() {
@@ -75,7 +75,7 @@ package() {
 	install -m644 "${pkgname%-git}.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 
 	# Compiled binaries
-	cd "$srcdir/osu/osu.Desktop/bin/Debug"
+	cd "$srcdir/osu/osu.Desktop/bin/Release"
 	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
 	for binary in *.exe *.dll; do
 		install -m755 "$binary" "$pkgdir/usr/lib/${pkgname%-git}/$binary"
