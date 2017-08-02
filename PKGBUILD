@@ -2,7 +2,7 @@
  
 pkgname=guacamole-client-git
 _gitname=guacamole-client
-pkgver=0.9.12.incubating.r89.g1c197ae4
+pkgver=0.9.13.incubating.r82.ga5ebc073
 pkgrel=1
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
