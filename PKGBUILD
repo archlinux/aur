@@ -7,14 +7,14 @@ arch=('any')
 url="https://github.com/acrisci/i3-style"
 license=('custom:BSD 2-Clause')
 depends=('nodejs')
-makedepends=('npm coffee-script')
+makedepends=('npm' 'coffee-script')
 options=(!emptydirs)
 source=("https://github.com/acrisci/i3-style/archive/v$pkgver.tar.gz")
 sha256sums=("e052063abe7a07f24bdc93e3aa18ff93b81282093b4641cfb245ba3b74baddf3")
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p $pkgdir/usr
+  mkdir -p "$pkgdir/usr"
   cake build
   npm install --user root -g --prefix="$pkgdir/usr"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
