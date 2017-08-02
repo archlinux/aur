@@ -4,15 +4,15 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal-git
-pkgver=1.18.1.r0.gbf9c3640
+pkgver=1.18.1.r4.g8a735d0b
 pkgrel=1
 pkgdesc="A cross-platform 3D audio library (32-bit)"
 arch=(x86_64)
 url="http://www.openal.org/"
 license=(LGPL)
 depends=(lib32-glibc openal)
-makedepends=(lib32-alsa-lib pkgconfig cmake lib32-libpulse lib32-portaudio lib32-jack
-             git gcc-multilib)
+makedepends=(lib32-alsa-lib lib32-libpulse lib32-fluidsynth lib32-portaudio lib32-jack
+             git cmake ninja gcc-multilib)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/kcat/openal-soft")
@@ -28,23 +28,24 @@ build() {
   export CXX="g++ -m32 -mstackrealign"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  mkdir -p build
+  rm -rf build
+  mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_LIBDIR=lib32 \
-        -DALSOFT_UTILS=0 \
-        -DALSOFT_NO_CONFIG_UTIL=1 \
-        -DALSOFT_EXAMPLES=0 \
-        -DALSOFT_TESTS=0 \
-        -DALSOFT_CONFIG=0 \
-        -DALSOFT_HRTF_DEFS=0 \
-        -DALSOFT_AMBDEC_PRESETS=0 \
-        ../openal-soft
-  make
+  cmake ../openal-soft -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_LIBDIR=lib32 \
+    -DALSOFT_UTILS=0 \
+    -DALSOFT_NO_CONFIG_UTIL=1 \
+    -DALSOFT_EXAMPLES=0 \
+    -DALSOFT_TESTS=0 \
+    -DALSOFT_CONFIG=0 \
+    -DALSOFT_HRTF_DEFS=0 \
+    -DALSOFT_AMBDEC_PRESETS=0
+  ninja
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
   rm -rv "$pkgdir"/usr/include
 }
