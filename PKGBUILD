@@ -1,7 +1,7 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=blastem
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator"
 arch=('x86_64' 'i686')
 url="https://www.retrodev.com/blastem/changes.html"
@@ -40,13 +40,16 @@ package() {
 	cd "$srcdir/${pkgname}"
 	./install.sh
 	mkdir -p "$pkgdir/opt/blastem"
-	install -d "$pkgdir/opt/blastem"
-	install -m 755 -D to_install/* "$pkgdir/opt/blastem"
-	install -m 666 -D default.cfg "$pkgdir/opt/blastem"
-	install -m 666 rom.db gamecontrollerdb.txt "$pkgdir/opt/blastem"
-	install -m 644 -d "$pkgdir/opt/blastem/shaders"
-	install -m 644 -D shaders/* "$pkgdir/opt/blastem/shaders"
+	install -d -g games "$pkgdir/opt/blastem"
+	install -m 755 -g games -D to_install/* "$pkgdir/opt/blastem"
+	install -m 666 -g games -D default.cfg "$pkgdir/opt/blastem"
+	install -m 666 -g games rom.db gamecontrollerdb.txt "$pkgdir/opt/blastem"
+	install -m 644 -g games -d "$pkgdir/opt/blastem/shaders"
+	install -m 644 -g games -D shaders/* "$pkgdir/opt/blastem/shaders"
 	chmod 755 "$pkgdir/opt/blastem/blastem"
+	chown root:games "$pkgdir/opt/blastem"
+	chown root:games "$pkgdir/opt/blastem/shaders"
+	chmod 755 "$pkgdir/opt/blastem/shaders"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/blastem/blastem" "$pkgdir/usr/bin/blastem"
 }
