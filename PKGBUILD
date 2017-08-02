@@ -1,6 +1,6 @@
 # Maintainer: Faustino Aguilar <faustinoaq.github.io>
 pkgname=amber-cmd
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="CLI for Amber framework that makes interfacing with your file system and applications much smoother."
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=(MIT)
 depends=('sqlite' 'gc' 'libevent' 'libyaml' 'pcre')
 makedepends=('crystal' 'shards')
 source=("https://github.com/amber-crystal/amber-cmd/archive/v$pkgver.tar.gz")
-sha256sums=('37110d180bccd4a78294e96cadde067b264d0b4bc14e977012b34d16a72e03d5')
+sha256sums=('45ded959182ef17ac7a106bd653f6570a2d194f6d0900a1b16273c302caca33e')
 
 build() {
   cd "$pkgname-$pkgver"

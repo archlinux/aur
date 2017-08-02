@@ -1,6 +1,6 @@
 pkgbase = amber_cmd
 	pkgdesc = CLI for Amber framework that makes interfacing with your file system and applications much smoother.
-	pkgver = 0.1.19
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://github.com/amber-crystal/amber-cmd
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = amber_cmd
 	depends = libevent
 	depends = libyaml
 	depends = pcre
-	source = https://github.com/amber-crystal/amber-cmd/archive/v0.1.19.tar.gz
-	sha256sums = 37110d180bccd4a78294e96cadde067b264d0b4bc14e977012b34d16a72e03d5
+	source = https://github.com/amber-crystal/amber-cmd/archive/v0.1.20.tar.gz
+	sha256sums = 45ded959182ef17ac7a106bd653f6570a2d194f6d0900a1b16273c302caca33e
 
 pkgname = amber_cmd
 
