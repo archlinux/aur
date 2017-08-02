@@ -2,9 +2,9 @@
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-transparent
-_atomver=1.17.0
-pkgver=1.17.0.0
-pkgrel=2
+_atomver=1.18.0
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="Atom is a hackable text editor for the 21st century built on Electron - with transparent background support"
 arch=('x86_64')
 url="https://github.com/atom/atom"
@@ -17,7 +17,7 @@ optdepends=('gvfs: file deletion support')
 conflicts=('atom' 'atom-editor' 'atom-editor-bin' 'atom-editor-git' 'atom-editor-git-tagged' 'apm' 'atom-notracking')
 install=$pkgname.install
 
-sha384sums=('abc4154731856bd52dc86d29fb80894a6aaf791016441fde40bfd7be505b08c3b751644658f7e1d1321893c282a9e4b2'
+sha384sums=('d0c461eded687bace8ba8913f5b7c7c8a57fb26fbf11937aaf26708eab77d5e5950ebdf379db25a42effc82495452a01'
             '1e027cc6eef1921d0ab08e30c0f44f49e9966503452cf3821782574dd8486bf59fd9170efe051171efb2375635499f7f'
             '7b28df309d5aae71a71edca781537b808c507ca156f6e7c559f6f8482fc450eb3c8c9e15b10ac9570302c652666cbc2f')
 
@@ -40,7 +40,7 @@ prepare() {
     echo "applying atom-transparent.patch"
     patch -p1 < "${srcdir}"/atom-transparent.patch
 }
-# https://github.com/atom/atom/archive/v1.17.0.tar.gz
+# https://github.com/atom/atom/archive/v1.18.0.tar.gz
 build() {
     cd ${srcdir}/atom-${_atomver}
     mkdir -p ${srcdir}/install
