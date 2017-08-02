@@ -1,10 +1,11 @@
-# Maintainer: Tristelune <tristelune@archlinux.info>
+# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Contributor: Tristelune <tristelune@archlinux.info>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 # Contributor: Frederic Bezies <fredbezies@gmail.com>
 # Contributor: tlm
 
 pkgname=gimagereader
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A graphical frontend to tesseract-ocr"
 arch=('i686' 'x86_64')
@@ -13,12 +14,11 @@ license=('GPL3')
 depends=('gtksourceviewmm' 'hicolor-icon-theme' 'libxml++2.6' 'sane' 'podofo' 'tesseract' 'gtkspellmm')
 #depends=('hicolor-icon-theme' 'sane' 'tesseract' 'qtspell' 'poppler-qt4')
 makedepends=('desktop-file-utils' 'intltool' 'poppler-glib' 'cmake')
-#makedepends=('desktop-file-utils' 'intltool')
 install=${pkgname}.install
 source=(
   "https://github.com/manisandro/gImageReader/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
 )
-sha256sums=('8dc08ca6f36f4c226203fa7fdb2709953d69309dcc78263621231d89d1c1c26e')
+sha256sums=('8ca6b8900671eba7a00fe1f9a728fee6c2ea3ed1ae10cc62dafb0e3f08574420')
 
 build() {
   cd "$pkgname-$pkgver"
