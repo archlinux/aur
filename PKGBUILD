@@ -2,18 +2,20 @@
 
 _plug=tcanny
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r7.0.g5e48ea1
+pkgver=r10.0.gd309511
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171136'
 license=('GPL')
-depends=('vapoursynth')
+depends=('vapoursynth'
+         'ocl-icd'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TCanny.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -30,6 +32,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
+
   make
 }
 
