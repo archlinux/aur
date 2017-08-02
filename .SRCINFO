@@ -1,0 +1,16 @@
+pkgbase = perl-authen-krb5
+	pkgdesc = Perl/CPAN module Authen::Krb5
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://search.cpan.org/~jhorwitz/Krb5/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/J/JH/JHORWITZ/Krb5-1.9.tar.gz
+	md5sums = b8bb8feb0b79464d04d17f472872b03e
+
+pkgname = perl-authen-krb5
+
