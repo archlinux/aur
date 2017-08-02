@@ -2,7 +2,7 @@
 
 pkgname=ppp-git
 pkgver=2.4.7.r28.ga3f379b
-pkgrel=1
+pkgrel=2
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
 url="https://ppp.samba.org/"
@@ -65,7 +65,7 @@ build() {
 package() {
   cd "ppp"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir/usr" install
 
   install -D -m644 "$srcdir/options" "$pkgdir/etc/ppp/options"
   install -D -m755 "$srcdir/ip-up"   "$pkgdir/etc/ppp/ip-up"
