@@ -80,7 +80,6 @@ package() {
     install -D --mode=0755 rdma.sriov-init "${pkgdir}/usr/lib/rdma/rdma-set-sriov-vf"
     install -D --mode=0644 rdma.fixup-mtrr.awk "${pkgdir}/usr/lib/rdma/rdma-fixup-mtrr.awk"
     install -D --mode=0755 rdma.mlx4-setup.sh "${pkgdir}/usr/lib/rdma/mlx4-setup.sh"
-    install -D --mode=0644 ibacm.service "${pkgdir}/usr/lib/systemd/system/ibacm.service"
 
     cd "${srcdir}/${_srcname}"
     install -D --mode=0644 COPYING.BSD_MIT "${pkgdir}/usr/share/licenses/${pkgname[0]%-git}/COPYING.BSD_MIT"
