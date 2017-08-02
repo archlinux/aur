@@ -310,7 +310,7 @@ backupBTRFSSystem() {
         sudo btrfs subvolume snapshot /mnt/root \
             "/mnt/rootBackup${timestamp}" && \
         # NOTE: Autocompletion should be done by sudo. Not bash as user.
-        sudo bash -c "cp /boot/* \"/mnt/rootBackup${timestamp}/boot/\"" && \
+        sudo bash -c "cp --recursive /boot/* \"/mnt/rootBackup${timestamp}/boot/\"" && \
         sudo umount /mnt
     elif [[ "$1" == delete ]] && [[ "$2" ]]; then
         sudo mount PARTLABEL=system /mnt && \
