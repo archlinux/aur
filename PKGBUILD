@@ -2,7 +2,7 @@
 # https://github.com/FabioLolix
 
 pkgname=obsidian-icon-theme-git
-pkgver=r126.17fe027
+pkgver=r128.1d987cd
 pkgrel=1
 pkgdesc="Gnome Icon Pack based upon Faenza, optimized for dark themes. All colors"
 arch=('any')
@@ -11,6 +11,7 @@ license=('GPL3')
 provides=('obsidian-icon-theme')
 conflicts=('obsidian-icon-theme' 'obsidian-icon-theme-git')
 makedepends=('git')
+options=(!strip)
 source=("iconpack-obsidian-blue::git+https://github.com/madmaxms/iconpack-obsidian.git"
         "https://github.com/madmaxms/iconpack-obsidian/archive/green.zip"
         "https://github.com/madmaxms/iconpack-obsidian/archive/gray.zip")
