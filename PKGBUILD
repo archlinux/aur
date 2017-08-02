@@ -1,9 +1,22 @@
 # $Id: $
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
+# If you have issues with gcc63, build a split package:
+#    sudo pacman -S devtools
+#    CHROOT=/tmp/chroot
+#    mkdir $CHROOT
+#    sudo mount /tmp -o remount,suid
+#    mkarchroot $CHROOT/root base-devel
+#    git clone https://aur.archlinux.org/gcc63.git
+#    cd gcc63
+#    makechrootpkg -c -r $CHROOT
+#    sudo pacman -U gcc63-6.3.1-5-x86_64.pkg.tar.xz
+# This would consume 8.5G of tmp space. Use /var/tmp instead
+# of /tmp if you have less than 16G of RAM.
+
 pkgname=clickhouse
-pkgver=1.1.54242
-pkgrel=2
+pkgver=1.1.54245
+pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
@@ -13,7 +26,7 @@ makedepends=('poco' 'cmake' 'gcc63')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz
         clickhouse-server.service
         re2-length.patch)
-md5sums=('71554342277b2a91cc15ecf92a61c3ab'
+md5sums=('9d19d2ec452688186f3ca49a7f7bdc10'
          'f9f5663b0a9a58e99f481efe9d193e85'
          '143f0146c3ef3a6832191fba352b70c4')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
@@ -37,7 +50,7 @@ package() {
   ln -s clickhouse-client $pkgdir/usr/bin/clickhouse-server
   cp dbms/src/Server/config.xml dbms/src/Server/users.xml $pkgdir/etc/clickhouse-server/
   cp dbms/src/Server/clickhouse $pkgdir/usr/bin/clickhouse-client
-  cp dbms/src/Server/config-client.xml $pkgdir/etc/clickhouse-client/config.xml
+  cp dbms/src/Server/clickhouse-client.xml $pkgdir/etc/clickhouse-client/config.xml
   cp dbms/libclickhouse.so.1 $pkgdir/usr/lib/libclickhouse.so.$pkgver
   sed -e 's:/opt/clickhouse:/var/lib/clickhouse:g' -i $pkgdir/etc/clickhouse-server/config.xml
   sed -e '/listen_host/s%::<%::1<%' -i $pkgdir/etc/clickhouse-server/config.xml
