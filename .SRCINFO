@@ -1,0 +1,19 @@
+pkgbase = phoronix-test-suite-milestone
+	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux, milestone version
+	pkgver = 7.4.0m1
+	pkgrel = 1
+	url = http://www.phoronix-test-suite.com/
+	install = phoronix-test-suite-milestone.install
+	arch = any
+	license = GPL3
+	depends = php
+	optdepends = php-gtk
+	optdepends = php-gd
+	provides = phoronix-test-suite
+	conflicts = phoronix-test-suite
+	conflicts = phoronix-test-suite-milestone
+	source = http://www.phoronix-test-suite.com/releases/development/phoronix-test-suite-7.4.0m1.tar.gz
+	sha256sums = 9a06c832c11f38f5fe97430156c48bde99acbc304b3562e36a02aa76029627b7
+
+pkgname = phoronix-test-suite-milestone
+
