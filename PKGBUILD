@@ -1,11 +1,11 @@
-# Contributor: Denys Popov <besisland@besisland.name>
+# Contributor: Denys Popov <denys@denyspopov.biz>
 
 pkgname=wolfenstein3d
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Wolfenstein 3D, cult first person shooter video game from id Software and Apogee"
 arch=(any)
-url="http://www.idsoftware.com/games/wolfenstein/wolf3d/"
+url="https://en.wikipedia.org/wiki/Wolfenstein_3D"
 license=('custom')
 depends=('dosbox')
 makedepends=('unzip')
@@ -17,7 +17,7 @@ source=(\
     'dosbox.conf' \
     'runme' \
     'wolfenstein3d.desktop' \
-    'http://www.gamesprays.com/images/icons/wolfenstein-3d-mechahitler-animated-spray-1806_preview.png' \
+    'wolfenstein3d.png' \
 )
 sha256sums=(\
     'daf535328cb428bba937ffde5db99db18f2b9eac338cb213f8ea1dda7e2f8d9e' \
@@ -27,7 +27,7 @@ sha256sums=(\
     '5a3c5e5a5d65614d90b92174f4318cee5631ec9fbaeda480d8740b79f145a422' \
     'eaa4ff9fb046685a38e368dbd70424d3ec3660f85e02cbbe4099b909f9a7a804' \
     'ecc61d3754c7a1c2d7547f029f5b456e3efafcbb73b30d843287905b48ead1d6' \
-    '23d898edb45cbd0c64a155592e84f27495848ab147faafa65bf4dffb1223d4ce' \
+    'e16be2fb5546bc8b46e1cb11c0143172a8f765d92d19c4c7bbbdf4ce191e4ba9' \
 )
 
 build() {
@@ -47,7 +47,7 @@ package() {
     install -m 0755 runme ${pkgdir}/opt/wolfenstein3d/runme
 
     install -D -m 0644 wolfenstein3d.desktop ${pkgdir}/usr/share/applications/wolfenstein3d.desktop
-    install -D -m 0644 wolfenstein-3d-mechahitler-animated-spray-1806_preview.png ${pkgdir}/usr/share/pixmaps/wolfenstein3d.png
+    install -D -m 0644 wolfenstein3d.png ${pkgdir}/usr/share/pixmaps/wolfenstein3d.png
 
     install -D -m 0644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
