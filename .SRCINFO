@@ -1,6 +1,6 @@
 pkgbase = windows-gaming-git
 	pkgdesc = Windows gaming utils
-	pkgver = r174.b2cc949
+	pkgver = r200.ba1cfc4
 	pkgrel = 1
 	install = windows-gaming.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = windows-gaming-git
 	depends = coreutils
 	depends = hwids
 	depends = libinput
-	depends = libx11
+	depends = libxcb
 	optdepends = samba: shared folder
 	optdepends = qemu: windowed setup
 	provides = windows-gaming
