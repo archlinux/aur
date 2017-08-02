@@ -1,6 +1,6 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=carp
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="EncFS gui and cli front-end"
 arch=("any")
@@ -11,7 +11,7 @@ optdepends=("openssh: sync support"
             "rsync: sync support")
 makedepends=("python-setuptools")
 source=("https://git.deparis.io/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8e02109cf44b519f67939737f19f04ff9043c06bee959bd10595811f3df11c18')
+sha256sums=('5564610f4c4158cc1ba63d6b2413d9d6a2a259112eed9ecb83ba711c89902399')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
