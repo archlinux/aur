@@ -3,7 +3,7 @@
 
 _gemname=retriable
 pkgname=ruby-$_gemname
-pkgver=3.0.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='Retriable is an simple DSL to retry failed code blocks with randomized exponential backoff'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ea5f759e0d372d22f220d05a0a3e4a1f19b05daf')
+sha1sums=('a519e31629c0adfc4d2a44fbc9d4d2fe18c074ab')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
