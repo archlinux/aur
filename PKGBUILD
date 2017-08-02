@@ -14,7 +14,7 @@ depends=('ncurses' 'diffutils' 'sed')
 conflicts=('grub')
 makedepends_x86_64=('gcc-multilib')
 optdepends=('xfsprogs: freezing of xfs /boot in install-grub script')
-source=(ftp://alpha.gnu.org/gnu/grub/${_srcname}-${pkgver}.tar.gz
+source=(ftp://alpha.gnu.org/gnu/grub/${_srcname}-${pkgver}.tar.gz{,.sig}
         menu.lst
         install-grub
         040_all_grub-0.96-nxstack.patch
@@ -29,6 +29,7 @@ source=(ftp://alpha.gnu.org/gnu/grub/${_srcname}-${pkgver}.tar.gz
         automake-pkglib.patch)
 backup=('boot/grub/menu.lst')
 sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
+          'SKIP'
           '33d43d48000b2027f9baec8fc99d33e0c4500c96'
           '60e8f7e4c113b85165fd5d9cd724e8413a337a12'
           '157b81dbad3576536b08642242accfa1aeb093a9'
@@ -41,6 +42,7 @@ sha1sums=('2580626c4579bd99336d3af4482c346c95dac4fb'
           'a36f34e51efed540f1ddafd78e9c9f6d83e4c8d4'
           '61c4b58d2eaa3c1561d8e9d8fc41341ce8882869'
           '776ed278eb8ff80e949834f763fad68b8741e7cd')
+validpgpkeys=('1C2F76A695C9C8DCA55E4A431DDAE7A2FE06BDEF') # Yoshinori K. Okuji <SURNAME at gnu org>
 
 build() {
   cd ${srcdir}/${_srcname}-${pkgver}
