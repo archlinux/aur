@@ -1,7 +1,7 @@
 pkgbase = dune-alugrid
 	pkgdesc = Unstructured simplicial and cube DUNE grids
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://gitlab.dune-project.org/extensions/dune-alugrid
 	arch = i686
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = dune-alugrid
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	makedepends = dune-common=2.4.1
-	makedepends = dune-grid=2.4.1
-	makedepends = dune-geometry=2.4.1
+	makedepends = dune-common
+	makedepends = dune-grid
+	makedepends = dune-geometry
 	makedepends = openmpi
 	makedepends = zlib
 	makedepends = metis
 	makedepends = parmetis
-	source = dune-alugrid-2.4.0::git+https://gitlab.dune-project.org/extensions/dune-alugrid.git#tag=v2.4.0
+	source = git+https://gitlab.dune-project.org/extensions/dune-alugrid.git#branch=releases/2.5
 	md5sums = SKIP
 
 pkgname = dune-alugrid
