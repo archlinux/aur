@@ -1,5 +1,4 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
-# Category: devel
 
 # Todo: service for Pro/5 DataServer
 
@@ -70,15 +69,13 @@
 
 # Install instructions
 
-# Quick:
+# TL;DR
 # * Purchase license
-# * install basis-pro5 package
-# * run BLM installer
-# * install basis-pro5 package
-# * start the BLM service
+# * install package
+# * run standalone BLM
+# * install package again
+# * systemctl enable --now basis_lmgrd.service
 # * configure Pro/5 installations to use BLM server
-# * copy the licenses to the PKGBUILD folder
-# * remake the package with the licenses inside
 
 # There are two installers. "./install" is found in /usr/local/basis.
 # The "BLM installer" is in the build folder. Some functionality is offered
@@ -91,16 +88,13 @@
 # 2. Install the basis-pro5 package.
 #
 # 3. Run the BLM installer.
-# The BLM installer requires the Oracle Java JDK.
-# Oracle JRE is not recommended and OpenJDK will not work.
-# The right version will be installed by the basis-pro5 package.
-# The BLM installer will run in GUI or Text mode.
-#   sudo java -jar BLM1600_03-11-2016_1203.jar
+#  Original command: sudo java -jar BLM1600_09-29-2016_1212.jar
+#  Use the provided helper script
+#    sudo /usr/local/basis/blmgr/BLMrun
 #
-# You can overwrite the files in /usr/local/basis/blmgr
-# The server should be provided Internet access. The BLM installer will
-# submit the serial and auth and retrieve the license.
-# Stop at step "Configure BLM Startup"
+# Internet access will make registration and reregistration easier.
+# The BLM installer automatically retrieves the license.
+# Stop at step "Configure BLM Startup" which is done by the package
 
 # The first time the license is activated, the activated license for your BLM
 # can be returned in as little as two minutes. If the license has already been
@@ -116,21 +110,10 @@
 #
 # 4. Install the basis-pro5 package again to replace some patched files
 # overwritten by the BLM installer.
-# If you submitted by email, from ./install select: BLM, INSTALL
-# Specify the .txt file you received. Enable and start your BLM with the
-# systemctl commands below.
 #
-# 5. On all your Pro/5 installations run ./install and select
+# 5. On all your Pro/5 installations run /usr/local/basis/install and select
 # PRO5, SERVER
 # and specify the IP or DNS name of your running BLM server.
-
-# Once installed you can copy the license files into your build folder
-# for faster installs. Copy these files from /usr/local/basis into the
-# package folder and make the package again.
-
-# blmgr/*.lic -> zblmgr/
-# blmgr/Register.properties -> zblmgr/
-# pro5/BASIS.lic -> zpro5/
 
 _opt_blmgr_user='nobody' # default: root, the license manager should not be run as root
 _opt_blmgr_group='nobody'
@@ -184,44 +167,60 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 # to your operating config.bbx. Old utilities should be removed if there are
 # no modified versions. Many of the supplied utilities won't work unless all
 # the utilities are the same version. To keep you from becoming dependant on
-# custom changes to these files they are locked on install so even
-# root can't edit them. If you want to customize an included utility, make
+# custom changes to these files they are locked on install.
+# If you want to customize an included utility, make
 # a copy with a new name.
 
 # Uninstall cleanup: rm -rf /var/log/basis /usr/local/basis
 
 set -u
+# _basefolder can be /usr/local or /usr/share
+# Whatever is chosen must have the same number of characters as /usr/local
+# Anything other than those two folders will require amending the install.
+# An upgrade after a change here will generate 3 harmless chattr errors on install that are handled.
+_basefolder='/usr/local'
+_basedir="${_basefolder}/basis"
+_servicefile='basis_lmgrd.service'
+_logfolder='/var/log/basis'
+
 pkgname='basis-pro5'
-pkgver='15.01'
-pkgrel='4'
+pkgver='16.00'
+pkgrel='1'
 pkgdesc='BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj'
 url='http://www.basis.com/'
 license=('custom')
 depends=('glibc' 'jdk' 'wget' 'gzip') # The Windows install recommends jdk over jre so we do too. OpenJDK does not work.
 optdepends=('ncompress: Original compress for logs instead of gzip')
+#backup=("${_basedir##/}/blmgr/Register.properties")
 options=('!docs' 'emptydirs' '!strip') # strip is so poorly implemented that it changes the content and date on executables, even when there's nothing to strip! What were they thinking?
-install="${pkgname}-install.sh" # I can find no way to get makepkg to delete this when done
+install="${pkgname}-install.sh"
 #_verwatch=("${url}availability" '<td class="revision".*">\([0-9\.]\+\).*' 'f') # Almost works
 #_blmjar='BLM1600_03-11-2016_1203.jar'
 #_blmjar='BLM1600_04-11-2016_1107.jar'
-_blmjar='BLM1600_08-10-2016_1012.jar'
+_blmjar='BLM1600_09-29-2016_1212.jar'
+_blmjarwebstart='BLM1600_08-10-2016_1012.jar' # 
 source=("http://public.basis.com/blm/jar/${_blmjar}")
-
+noextract=("${_blmjar}") # BBjWebstartBootstrap.jar is left out of BLM1600_09-29-2016_1212.jar
+if :; then
+  source+=("http://public.basis.com/blm/jar/${_blmjarwebstart}")
+  noextract+=("${_blmjarwebstart}")
+fi
 _file='@::file://@' # convince the git submission that these files aren't on the web and don't need to be supplied
 # 32-bit Rev 15.00 Linux Kernel 2.6.17-1.2142_FC4+ AND glibc v2.3+
 # 10455yyyy.Z          = Pro/5            Port 1045
 # 12455yyyy.Z          = Pro/5 DataServer Port 1245
-for _src in '104551501.Z' '124551500.Z'; do
+for _src in '104551600.Z' '124551500.Z'; do
   source_i686+=("${_file//@/${_src}}")
 done
 
-sha256sums=('9eec614a94cd2a1fefc321847bd0216c6a18d3386554c5c4cbf9dbb2689db8ee')
-sha256sums_i686=('505080b9283ca5037453a844ea9781f047d5bfd6bcec2bd9a7e028497fb6dfdb'
+sha256sums=('2471303c9ae4370e3f845461994b1e472df9f42a2e30e3aff3bf22065af1eef3'
+            '9eec614a94cd2a1fefc321847bd0216c6a18d3386554c5c4cbf9dbb2689db8ee')
+sha256sums_i686=('c2ff3b6949df2243bcec36fa6f82270563d66a6bfaa25338fdd8f0d6327c7d71'
                  '55052c4bcb1628017f051b18880de686c544144adf002dc2fdd1adc30b1e2e24')
-sha256sums_x86_64=('42f1d5143249df9672069bc2d64754ccd17a573cfce756dd8caf5056e4f5abd9'
+sha256sums_x86_64=('cd45ce77bdf8c0929765b1cf29aa1e51679c30a5c0d01dae4aed6084675893eb'
                    'fe1114e619755bed70255e08bad2f9830887cf336bb5f013cc271314dc631604')
 
-for _src in '604551501.Z' '624551500.Z'; do
+for _src in '604551600.Z' '624551500.Z'; do
   source_x86_64+=("${_file//@/${_src}}")
 done
 # 64-bit Rev 15.00 Linux Kernel v2.6+ and glibc v2.3+
@@ -242,63 +241,93 @@ else
   depends+=('lib32-glibc')
 fi
 
-# _basefolder can be /usr/local or /usr/share
-# Whatever is chosen must have the same number of characters as /usr/local
-# Anything other than those two folders will require amending the install.
-# An upgrade after a change here will generate 3 harmless chattr errors on install that are handled.
-_basefolder='/usr/local'
-_basedir="${_basefolder}/basis"
-_servicefile='basis_lmgrd.service'
-
 # Approximate update frequency, yearly
 # 10455 has some old versions attached to it
 _vercheck() {
   curl -s -l "${url}availability" | grep -FA1 $'60455\n10455' | sed -e 's:<[^>]\+>::g' | grep '^[0-9]\+\.[0-9]\+$' | tr '.' ':' | LC_ALL=C sort -n | tr ':' '.' # 1>&2
 }
 
+# We can't modify .install but we can stop and force the user to fix it.
+_install_check() {
+  local _ckvar
+  local _ckline
+  for _ckvar in _opt_blmgr_user _opt_blmgr_group _basedir _basefolder _logfolder _servicefile; do
+    _ckline="${_ckvar}='${!_ckvar}'"
+    if ! grep -q "^${_ckline}"'$' "${startdir}/${install}"; then
+      set +u
+      msg "${install} must be fixed"
+      echo "${_ckline}"
+      false
+    fi
+  done
+}
+
 prepare() {
   set -u
-  eval 'cd "${star''tdir}"' # keep git-aurcheck from complaining
-  mkdir -p 'zblmgr' 'zpro5'
-  chmod 644 *.Z zblmgr/* zpro5/* 2>/dev/null || :
+  _install_check
+
+  if [ "${#_basedir}" -ne 16 ] || [ "${#_basefolder}" -ne 10 ]; then
+    echo 'Due to replacements within binary files the following strings must be the same length as the sample string'
+    echo '_basedir same length as /usr/local/basis'
+    echo '_basefolder same length as /usr/local'
+    set +u
+    false
+  fi
+
   cd "${srcdir}"
 
   # unpack most of the new BLM, removing files customized by the BLM installer
   # for seamless reinstalls and upgrades.
-  rm -rf 'blmgr' 'com' 'org' 'META-INF' 'blminstall.xml'
-  mkdir 'blmgr' 'Archtemp'
+  rm -rf 'blmgr' 'blmgr.tmp'
+  mkdir 'blmgr.tmp'
+  mkdir 'blmgr'
+  cd 'blmgr.tmp'
+  bsdtar -x -f "${srcdir}/${_blmjar}"
+  if [ ! -s 'BBjWebstartBootstrap.jar' ]; then
+    mkdir 'webstart.tmp'
+    cd 'webstart.tmp'
+    bsdtar -x -f "${srcdir}/${_blmjarwebstart}"
+    mv 'BBjWebstartBootstrap.jar' ..
+    cd ..
+    rm -r 'webstart.tmp'
+  fi
+  rm -r 'com' 'org' 'META-INF' 'blminstall.xml'
+  mkdir 'Archtemp'
   cd 'Archtemp'
   bsdtar -x -f '../package_blm.jar'
   declare -A _arch=([any]='32' [i686]='32' [x86_64]='64')
-  mv 'unix'/* "2145/blm/${_arch[${CARCH}]}"/* '../blmgr'
-  mv '../blmgr/bin/basisrunlm' '../blmgr'
-  rm -f '../blmgr/bin/unixautostart'
-  mv '../blmgr/bin/admin' '../blmgr/bin/blmadmin'
-  cd ..
-  rm -rf 'Archtemp'
+  mv 'unix'/* "2145/blm/${_arch[${CARCH}]}"/* "${srcdir}/blmgr"
+  mv "${srcdir}/blmgr/bin/basisrunlm" "${srcdir}/blmgr"
+  rm "${srcdir}/blmgr/bin/unixautostart"
+  # mv "${srcdir}/blmgr/bin/admin" "${srcdir}/blmgr/bin/blmadmin"
+  rm "${srcdir}/blmgr/bin/admin" # Java isn't using this version any more
+  cd '..'
+  rm -r 'Archtemp'
   mkdir 'Archtemp'
   cd 'Archtemp'
   bsdtar -x -f '../package_install.jar' 'lib/' 'unix'
-  rm -f 'unix/images'/*.png 'unix/images/BasisB.xpm' 'unix'/*.directory 'unix'/*.menu 'unix/bin/.envsetup'
+  rm 'unix/images'/*.png 'unix/images/BasisB.xpm' 'unix'/*.directory 'unix'/*.menu 'unix/bin/.envsetup'
   local _df
   for _df in 'unix'/*/; do
     local _df2="${_df%/}"
-    mv "${_df2}"/* "../blmgr/${_df2##*/}"
+    mv "${_df2}"/* "${srcdir}/blmgr/${_df2##*/}"
     rmdir "${_df2}"
   done
   rmdir 'unix'
-  mv * '../blmgr'
-  cd '../blmgr'
-  bsdtar -x -f '../package_native_2145.jar'
-  rm -rf 'META-INF'
+  mv * "${srcdir}/blmgr"
+  cd ..
+  mv 'BBjWebstartBootstrap.jar' "${srcdir}/blmgr/lib"
+  cd "${srcdir}/blmgr"
+  bsdtar -x -f '../blmgr.tmp/package_native_2145.jar'
+  rm -r 'META-INF'
   mkdir -p 'cfg' 'log' 'uninstall/com/basis/install/'
-  rm -f "${srcdir}"/*.jar
-  rmdir "${srcdir}/Archtemp"
   cd "${srcdir}"
+  rm -r 'blmgr.tmp'
 
+  cd "${srcdir}"
   # The permissions on these files are horrendous
   local _file
-  for _file in $(find . -type f); do
+  for _file in $(find . -type 'f'); do
     #echo "${_file}"
     local _pm_executable=0
     local _pm_type="$(file "${_file}")"
@@ -331,12 +360,12 @@ prepare() {
   unset _pm_isdata
   unset _pm_isdata
 
-  find . -type d -exec chmod 755 '{}' ';'
-  chmod 644 scripts/* # these are all sourced
-  chmod 755 install # only root can run install (the installer is fixed with an EUID check later)
+  find . -type 'd' -exec chmod 755 '{}' '+'
+  chmod 644 'scripts'/* # these are all sourced
+  chmod 755 'install' # only root can run install (the installer is fixed with an EUID check later)
 
   # these will be marked immutable during install to prevent root from modifying
-  chmod 444 pro5/{ext,std,graphics}/*
+  chmod 444 'pro5'/{ext,std,graphics}/*
 
   # Fix a few missing utility files with old names for easier upgrades.
   ln -s '_ask.utl' 'pro5/ext/_ask.pub'
@@ -348,7 +377,7 @@ prepare() {
   #ln -s '_warn.utl' 'pro5/ext/_warn'
 
   # Branding the EXE eliminates the need for the license path in an ENV variable
-  # Branding didn't work with the Basis installer. Only two files contain BLM_LICLOC.
+  # Branding didn't work in the Basis installer. Only two files contain BLM_LICLOC.
   # Branding causes a linker error if done in package when fakeroot is active.
   local _touches
   for _touches in 'pro5/pro5'{b,s}; do
@@ -359,31 +388,26 @@ prepare() {
   unset _touches
 
   # Fix the date on every file modified
-  local _badfiles=($(grep -larF $'/usr/local/\n/usr/tmp' .))
+  local _badfiles
+  readarray -t _badfiles <<<"$(grep -larF $'/usr/local/\n/usr/tmp')"
   local _badfile
   for _badfile in "${_badfiles[@]}"; do
     touch -r "${_badfile}" "${_badfile}.Archtmp"
   done
 
   # Fix a little sbin, within the protection of touch
-  sed -i -e 's:/usr/sbin:/usr/bin:g' 'scripts/BasisFuns'
-
-  if [ "${#_basedir}" -ne 16 -o "${#_basefolder}" -ne 10 ]; then
-    echo '_basefolder is being replaced in binary files so must be exactly the same length as /usr/local'
-    set +u
-    false
-  fi
+  sed -e 's:/usr/sbin:/usr/bin:g' -i 'scripts/BasisFuns'
 
   # We are modifying binary files so replace strings must be exactly the same length.
-  sed -i -e '# fix /usr/local' \
-         -e "s:/usr/local/:${_basefolder}/:g" \
-         -e '# fix /usr/tmp' \
-         -e 's:/usr/tmp:/var/tmp:g' \
-    "${_badfiles[@]}"
+  sed -e '# fix /usr/local' \
+      -e "s:/usr/local/:${_basefolder}/:g" \
+      -e '# fix /usr/tmp' \
+      -e 's:/usr/tmp:/var/tmp:g' \
+    -i "${_badfiles[@]}"
 
   for _badfile in "${_badfiles[@]}"; do
     touch -r "${_badfile}.Archtmp" "${_badfile}"
-    rm -f "${_badfile}.Archtmp"
+    rm "${_badfile}.Archtmp"
   done
   unset _badfiles
   unset _badfile
@@ -401,10 +425,6 @@ package() {
   for _basis_pkg in *; do
     if [ ! -h "${_basis_pkg}" ]; then
       mv "${_basis_pkg}" "${pkgdir}${_basedir}/"
-      # bring in license files if provided
-      if [ -d "${pkgdir}${_basedir}/${_basis_pkg}/" ] && [ -d "${srcdir}/../z${_basis_pkg}/" ]; then
-        install -pm644 "../z${_basis_pkg}/"* -t "${pkgdir}${_basedir}/${_basis_pkg}/" || : # ignore error on copy
-      fi
     fi
   done
   unset _basis_pkg
@@ -412,8 +432,63 @@ package() {
   # The source folders are gone so let's move
   cd "${pkgdir}${_basedir}"
 
+  # The BLMGR gets used a lot so it needs to be installed with a helper script
+  install -pm644 "${srcdir}/${_blmjar}" -t 'blmgr'
+  install -m744 <(cat << EOF
+#!/usr/bin/bash
+
+# This executes the BLM and makes the necessary changes to apply any new licenses
+
+# Automatically added by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
+# https://aur.archlinux.org/
+
+cd "\$(dirname "\$0")" # guarantee that chown works on the right folder
+set -u
+shopt -s nullglob
+list1=(*.lic*)
+
+# Can't use openjdk even if present. Use the highest version of jdk
+pushd '/usr/lib/jvm' > /dev/null
+wantjdk=''
+for jdk in java-*-jdk/; do
+  jdk="\${jdk%/}"
+  if [ -x "\${jdk}/bin/java" ]; then
+    if [ -z "\${wantjdk}" ] || [ "\$(vercmp "\${jdk}" "\${wantjdk}")" -gt 0 ]; then
+      wantjdk="\${jdk}"
+    fi
+  fi
+done
+popd > /dev/null
+unset jdk
+
+echo "Using jdk \${wantjdk}"
+echo 'Exit when you see: Configure BLM Startup'
+
+# findHome only works when basis_lmgrd is already running.
+# This makes it work on the first run
+cat > 'ps' << EOR
+#!/bin/sh
+echo '2 1 ./basis_lmgrd -c /usr/local/basis/blmgr'
+EOR
+chmod 755 'ps'
+PATH="${_basedir}/blmgr/:\${PATH}" \
+/usr/lib/jvm/\${wantjdk}/bin/java -jar '${_blmjar}' # -p '/usr/local/basis/blmgr/BLM/Install.properties'
+rm 'ps'
+chown -R '${_opt_blmgr_user}:${_opt_blmgr_group}' *
+list2=(*.lic*)
+if [ "\${#list1[@]}" -ne "\${#list2[@]}" ] && systemctl -q is-enabled '${_servicefile}'; then
+  systemctl restart '${_servicefile}'
+  echo 'License manager restarted'
+fi
+EOF
+  ) 'blmgr/BLMrun'
+  touch -r "${srcdir}/${_blmjar}" 'blmgr/BLMrun'
+
   # Provide a minimal configuration
-  install -pm644 <(cat << EOF
+  install -m644 <(cat << EOF
+# Automatically added by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
+# https://aur.archlinux.org/
+
 ALIAS T0 /dev/tty xterm
 prefix '${_basedir}/pro5/std/' '${_basedir}/pro5/ext/' '${_basedir}/pro5/graphics/'
 EOF
@@ -422,11 +497,11 @@ EOF
   # Perform the BLM CREATE step, auto-Install the BasisRunLM
   local _outfile='scripts/BasisLicManager'
   cp -p "${_outfile}" "${_outfile}.Arch"
-  sed -i -e '# disable all the pauses' \
-         -e 's/ read / funcread /g' \
-         -e '# fix a cosmetic script bug.' \
-         -e 's/License Manager not found: ${lmgrdcom}/License Manager not found: \\${lmgrdcom}/g' \
-    "${_outfile}.Arch"
+  sed -e '# disable all the pauses' \
+      -e 's/ read / funcread /g' \
+      -e '# fix a cosmetic script bug.' \
+      -e 's/License Manager not found: ${lmgrdcom}/License Manager not found: \\${lmgrdcom}/g' \
+    -i "${_outfile}.Arch"
 cat >> "${_outfile}.Arch" << EOF
 PrintFile() {
   :
@@ -442,23 +517,21 @@ funcread() {
 }
 CreateRunLM "${pkgdir}${_basedir}/blmgr"
 EOF
-  sh "${_outfile}.Arch" >/dev/null
-  rm -f "${_outfile}.Arch"
+  sh -e -u "${_outfile}.Arch" >/dev/null
+  rm "${_outfile}.Arch"
 
   # We had to add ${pkgdir} to get the install to put the file in the right place
   # now we remove the ${pkgdir} slop from the generated file
-  local _logfolder='/var/log/basis'
-  sed -i -e "s:${pkgdir}/:/:g" \
-         -e "# The systemd service doesn't work right unless you have hash bang on the front" \
-         -e '1i #!/usr/bin/sh' \
-         -e '# Place the log where logs belong. A logrotate is included.' \
-         -e "s:${_basedir}/blmgr/log:${_logfolder}:g" \
-    'blmgr/BasisRunLM'
+  sed -e "s:${pkgdir}/:/:g" \
+      -e "# The systemd service doesn't work right unless you have hash bang on the front" \
+      -e '1i #!/usr/bin/sh' \
+      -e '# Place the log where logs belong. A logrotate is included.' \
+      -e "s:${_basedir}/blmgr/log:${_logfolder}:g" \
+    -i 'blmgr/BasisRunLM'
+  touch -r "${srcdir}/${_blmjar}" 'blmgr/BasisRunLM'
 
   # the log must be world writable so we can run the manager under a non root user's account
-  install -d "${pkgdir}${_logfolder}"
-  chmod 777 "${pkgdir}${_logfolder}"
-  # should we chown this on install?
+  install -dm775 "${pkgdir}${_logfolder}"
 
   # disable BLM CREATE ADD START STOP. We do all this here in PKGBUILD.
   # CREATE won't work because they can't fix the hash bang problem fixed above.
@@ -468,7 +541,7 @@ EOF
     cat >> "${_outfile}" << EOF
 
 # Automatically added by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 # The commands
 # BLM CREATE ADD START STOP
@@ -529,21 +602,22 @@ StopBLM ()
 }
 EOF
     touch -r "${_outfile}.Arch" "${_outfile}"
-    rm -f "${_outfile}.Arch"
+    rm "${_outfile}.Arch"
   fi
-  unset _logfolder
 
   # systemd support
-  install -Dpm644 <(cat << EOF
+  install -Dm644 <(cat << EOF
 [Unit]
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 Description=Basis License Manager for Pro/5 (BLM)
 After=network.target
 
 # Changing the user name here may require the following:
 # rm -rf /var/tmp/{.flexlm,lockbasis}
+# chmod root:group '${_logfolder}'
+# chmod -R user:group '${_logfolder}'/*
 [Service]
 User=${_opt_blmgr_user}
 Type=forking
@@ -557,14 +631,14 @@ EOF
 ) "${pkgdir}/usr/lib/systemd/system/${_servicefile}"
 
   # Install a profile.d script. Branding makes this env variable unnecessary.
-  # This requires a reboot or a relogin. Branding works immediately and
-  # can't be broken by someone messing with scripts.
+  # This variable requires a reboot or a relogin. Branding works immediately and
+  # can't be broken by someone messing with profile scripts.
   if ! :; then
     local _licfile
     for _licfile in 'csh' 'sh'; do
       install -Dm755 <(cat << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
+# https://aur.archlinux.org/
 
 # This file tells Basis Pro/5 where to look for it's license file
 
@@ -578,45 +652,46 @@ EOF
 
   # Fix script error in 14.0,15.00 that makes the user wonder why the installer doesn't reread the phone
   touch -r 'scripts/BasisReg' 'scripts/BasisReg.Arch'
-  sed -i -e 's:"Delivery"[)]    :"Phone")blr_phone="${blr_propval}" ;;\n"Delivery") :g' 'scripts/BasisReg'
+  sed -e 's:"Delivery"[)]    :"Phone")blr_phone="${blr_propval}" ;;\n"Delivery") :g' -i 'scripts/BasisReg'
   touch -r 'scripts/BasisReg.Arch' 'scripts/BasisReg'
-  rm -f 'scripts/BasisReg.Arch'
+  rm 'scripts/BasisReg.Arch'
 
   # turns out that submission by OTHER works perfectly so we don't need all these hacks.
-  # it's here in case someone wants to see how this can be done
+  # it's here in case someone wants to see how this can be done. The new BLM doesn't
+  # register with install at all and has it's own online submission system.
   if ! :; then
     # Make a workable email system for those who don't have sendmail
     # Enable automatic operation
-    sed -i -e 's: blr_orighostid="\$: $blr_readreturn\nblr_orighostid="\$:g' 'scripts/BasisReg'
+    sed -e 's: blr_orighostid="\$: $blr_readreturn\nblr_orighostid="\$:g' -i 'scripts/BasisReg'
 
-    sed -i -e 's: glr_mthd="\$1":\nif [ "$glr_tmpfolder" = "" ]; then\n  glr_tmpfolder=".."\nfi\nglr_mthd="$1":g' \
-           -e 's:\.\./\${glr_tmpfile}:${glr_tmpfolder}/${glr_tmpfile}:g' \
-      'scripts/BasisFuns'
+    sed -e 's: glr_mthd="\$1":\nif [ "$glr_tmpfolder" = "" ]; then\n  glr_tmpfolder=".."\nfi\nglr_mthd="$1":g' \
+        -e 's:\.\./\${glr_tmpfile}:${glr_tmpfolder}/${glr_tmpfile}:g' \
+      -i 'scripts/BasisFuns'
 
-    sed -i -e 's: blm|BLM[)]: email|EMAIL) cd "${CurDir}/blmgr";blr_readreturn="return";BasisLicRegister;glr_tmpfolder="/tmp";GenLicRequest EMAIL;echo "";echo "Generated $glr_tmpfolder/$glr_tmpfile";echo "";echo "How to send\:";echo "Compose new message in your email.";echo "Disable HTML or Rich Text--send as text only";echo "Subject\: (blank subject)";echo "Paste $glr_tmpfile into body (not as attachment)";echo "Copy To\: address to your To\: field";echo "Remove To\: address and first blank line from email body";echo "Erase or disable any signatures";echo "Send Email";echo "rm $glr_tmpfolder/$glr_tmpfile" ;;\nblm|BLM):g' install
-    _emailfile="${srcdir}/genemail.sh"
+    sed -e 's: blm|BLM[)]: email|EMAIL) cd "${CurDir}/blmgr";blr_readreturn="return";BasisLicRegister;glr_tmpfolder="/tmp";GenLicRequest EMAIL;echo "";echo "Generated $glr_tmpfolder/$glr_tmpfile";echo "";echo "How to send\:";echo "Compose new message in your email.";echo "Disable HTML or Rich Text--send as text only";echo "Subject\: (blank subject)";echo "Paste $glr_tmpfile into body (not as attachment)";echo "Copy To\: address to your To\: field";echo "Remove To\: address and first blank line from email body";echo "Erase or disable any signatures";echo "Send Email";echo "rm $glr_tmpfolder/$glr_tmpfile" ;;\nblm|BLM):g' -i 'install'
 
+    local _emailfile="${srcdir}/genemail.sh"
     rm -f "${_emailfile}"
     cat > "${_emailfile}" << EOF
 #!/bin/sh
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
-# http://aur.archlinux.org/
-cd "\`dirname "\$0"\`"
-if [ ! -s "blmgr/Register.properties" ]; then
-  echo "Please run the installer"
-  echo "BLM REG"
-  echo "Select EMAIL as your delivery preference"
+# https://aur.archlinux.org/
+cd "\$(dirname "\$0"\)"
+if [ ! -s 'blmgr/Register.properties' ]; then
+  echo 'Please run the installer'
+  echo 'BLM REG'
+  echo 'Select EMAIL as your delivery preference'
 else
   ./install email
 fi
 EOF
 
     install -Dpm755 "${_emailfile}" "${pkgdir}/${_basedir}"
-    rm -f "${_emailfile}"
+    rm "${_emailfile}"
   fi
 
   # Root only for installer. Better than chmod 744.
-  sed -i -e 's:^\(CurDir=\):if [ "${EUID}" -ne 0 ]; then\n  echo "Must be root"\n  exit 1\nfi\n\n \1:g' 'install'
+  sed -e 's:^\(CurDir=\):if [ "${EUID}" -ne 0 ]; then\n  echo "Must be root"\n  exit 1\nfi\n\n \1:g' -i 'install'
 
   # select executable
   install -d "${pkgdir}/usr/bin"
@@ -630,76 +705,15 @@ EOF
   unset _pro5exe
   # a symlink is better than what the Basis installer does
   ln -s "${_opt_pro5_sql}" "${pkgdir}/${_basedir}/pro5/pro5"
+
+  # Broken BLM writes files to /root
+  install -dm750 "${pkgdir}/root"
+  install -d "${pkgdir}/${_basedir}/blmgr/BLM"
+  touch "${pkgdir}/${_basedir}/blmgr/BLM"/{Install.properties,install.log}
+  ln -s "${_basedir}/blmgr" "${pkgdir}/root/BASIS"
+  ln -s "${_basedir}/blmgr/BLM" "${pkgdir}/root/BLM"
+
   set +u
-
-  # Ensure there are no forbidden paths. Place at the end of package() and comment out as you find or need exceptions. (git-aurcheck)
-  ! test -d "${pkgdir}/bin" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
-  ! test -d "${pkgdir}/sbin" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! test -d "${pkgdir}/lib" || { echo "Line ${LINENO} Forbidden: /lib"; false; }
-  ! test -d "${pkgdir}/share" || { echo "Line ${LINENO} Forbidden: /share"; false; }
-  ! test -d "${pkgdir}/usr/sbin" || { echo "Line ${LINENO} Forbidden: /usr/sbin"; false; }
-  #! test -d "${pkgdir}/usr/local" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
-  ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
-  # /usr/local exists in Arch. The PKGBUILD can switch _basefolder to /usr/share
-  # My concern is that this change makes Arch diverge too much from the
-  # instructions which will confuse those who would want to upgrade from OS
-  # where /usr/local is the normal install location.
-  #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  # I can't fix these /bin without sed negative lookbehind
-  #! pcre2grep -Ilr "(?<!usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 
-cat > "${install}" << EOF
-post_upgrade() {
-  systemctl daemon-reload
-  if systemctl -q is-enabled "${_servicefile}"; then
-    systemctl start "${_servicefile}"
-  fi
-  #echo "Startup scripts updated or installed"
-  # This prevents editing of the supplied utilites. Please make a copy.
-  # chattr ensures that even root can't do it
-  chattr -f +i "${_basedir}/pro5"/{ext,std,graphics}/*
-  # Allow dynamic licenses to self update
-  chown -R '${_opt_blmgr_user}:${_opt_blmgr_group}' '${_basefolder}/basis/blmgr'
-}
-
-post_install() {
-  post_upgrade
-  # It's a shame this path is hard coded into the license manager.
-  # This, or maybe a binary patch?
-  # Binary patch complete. gnu sed is binary compatible.
-  # ln -s '/tmp' '/usr/tmp' || :
-}
-
-pre_upgrade() {
-  systemctl stop "${_servicefile}"
-  rm -rf '/var/tmp/.flexlm'
-  rm -f '/var/tmp/lockbasis' # otherwise a user change cannot work
-  if ! chattr -f -i "${_basedir}/pro5"/{ext,std,graphics}/*; then
-    # We must do this because of bug https://bugs.archlinux.org/task/45988
-    case "${_basedir}" in
-    '/usr/local/basis') chattr -f -i '/usr/share/basis/pro5'/{ext,std,graphics}/*;;
-    '/usr/share/basis') chattr -f -i '/usr/local/basis/pro5'/{ext,std,graphics}/*;;
-    esac
-  fi
-set +x
-}
-
-pre_remove() {
-  pre_upgrade
-}
-
-post_remove() {
-  systemctl daemon-reload
-  #echo "startup scripts removed"
-  # Having created this outside of the package manager, it isn't safe to delete.
-  # Another package may have created it first.
-  # Another Install may have configured based on its presence.
-  # The admin will need to remove it and put it back if there's problems.
-  #if [ -L '/usr/tmp' ]; then
-  #  rm -f '/usr/tmp'
-  #fi
-}
-EOF
 set +u
