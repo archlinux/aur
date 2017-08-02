@@ -3,12 +3,12 @@
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=vips
-pkgver=8.5.6
+pkgver=8.5.7
 pkgrel=1
 pkgdesc="A free image processing system"
 arch=('i686' 'x86_64')
 license=('LGPL')
-url="https://github.com/jcupitt/libvips"
+url="https://jcupitt.github.io/libvips/"
 depends=('libxml2' 'fftw' 'imagemagick' 'orc' 'openexr' 'pango' 'libexif')
 optdepends=('python2: vipsprofile')
 # less used depends: 'libwebp' 'cfitsio'
@@ -16,7 +16,7 @@ optdepends=('python2: vipsprofile')
 # minimal depends: 'libxml2'
 options=('!libtool')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('19a77ab200eb0ddfcd8babab130fe43c7730880d1f1fdfbdd8def519af32c4b8')
+sha256sums=('a6c70794a240c64dbaa0b03902d25f1f82fd2d4d657878df901f1fc98bf77bf1')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
