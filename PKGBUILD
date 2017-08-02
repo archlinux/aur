@@ -1,6 +1,6 @@
 pkgname=captvty
 pkgver=2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Accédez aux directs et à une multitude d’émissions proposées au rattrapage par différentes chaînes de télévision'
 arch=('any')
 url='http://www.captvty.fr'
@@ -14,7 +14,7 @@ source=("http://releases.captvty.fr/$_code/captvty-$pkgver.zip"
         'LICENSE')
 sha1sums=('873e71ef1a097461723b5b18db4ed36a713f6732'
           '7210acfa98cb21ab32de463ccf0456743241b48e'
-          '2ee170fc5ab5d46d373074518d8a69ef72418268'
+          'ecd98eeb60b838edf16dc48ebc37d6a6ca520b91'
           'a1a03fcff4541bbf212eb20730d5e344ae817a5d')
 
 prepare() {
