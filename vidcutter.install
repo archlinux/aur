@@ -1,7 +1,7 @@
 post_install() {
-    update-desktop-database -q
-    update-mime-database /usr/share/mime
-    xdg-icon-resource install --noupdate --context mimetypes --size 128 /usr/share/icons/hicolor/128x128/apps/vidcutter.png application-x-vidcutter
+    update-desktop-database -q &> /dev/null
+    update-mime-database /usr/share/mime &> /dev/null
+    xdg-icon-resource install --noupdate --context mimetypes --size 128 /usr/share/icons/hicolor/128x128/apps/vidcutter.png application-x-vidcutter &> /dev/null
     xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }
 

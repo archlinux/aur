@@ -1,3 +1,13 @@
+vidcutter (4.0.0-1) stable; urgency=medium
+
+  * pure OpenGL rendered window output
+
+  * manual join without cut ability via new add button under index
+
+  * improved checks and changes to join and merge routines
+
+  * TBA ... more changelog data inserted soon
+
 vidcutter (3.5.0-1) stable; urgency=medium
 
  * changelog added to AUR package; copied from the app's Debian build scripts
