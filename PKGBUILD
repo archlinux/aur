@@ -16,11 +16,10 @@ source_i386=(linux-386-filemanager.tar.gz::https://github.com/hacdias/filemanage
 source_x86_64=(linux-amd64-filemanager.tar.gz::https://github.com/hacdias/filemanager/releases/download/v$pkgver/linux-amd64-filemanager.tar.gz)
 
 md5sums=('9edb695128abd99b44f9d38fa3a8e5bc'
-         '1ec9697d0ba9b77a24e1a623684524d1'
-         '3148172145f5db55faeecd0c217c9703')
+         '158da0caf1696c91157605a7a968883e'
+         '2d3a0fe85d0564db2467a85b3da7c52c')
 md5sums_i386=('1fca78d31ef563f926471e2cafa97129')
 md5sums_x86_64=('3406da0520989b4b642e2a94d0889be3')
-
 
 package() {
   dir="$srcdir"
@@ -28,4 +27,5 @@ package() {
   install -Dm644 config.json ${pkgdir}/etc/filemanager/config.json
   install -Dm755 $dir/filemanager ${pkgdir}/usr/bin/filemanager
   install -Dm644 README.txt ${pkgdir}/usr/share/filemanager/storage/README.txt
+  cat ${pkgdir}/usr/share/filemanager/storage/README.txt
 }
