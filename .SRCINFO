@@ -1,0 +1,27 @@
+pkgbase = ntp-smeared
+	pkgdesc = Network Time Protocol reference implementation with enabled smearing
+	pkgver = 4.2.8.p10
+	pkgrel = 2
+	url = http://www.ntp.org/
+	install = ntp.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = openssl
+	depends = libcap
+	depends = libedit
+	provides = ntp
+	conflicts = ntp
+	options = !emptydirs
+	backup = etc/ntp.conf
+	source = https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p10.tar.gz
+	source = ntp.conf
+	source = ntpd.service
+	source = ntpdate.service
+	sha1sums = 503d68cfd3e6a9354e0e28dd38b39d850b1228b2
+	sha1sums = ffb67177707c86c632ecc2fbe1bc4f903fc498fb
+	sha1sums = 0cccca872385e0142888ab48d273fec0669b30a8
+	sha1sums = 059b382d1af0c55202e2d17f2ae065a2cbfec9ee
+
+pkgname = ntp-smeared
+
