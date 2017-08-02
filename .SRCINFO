@@ -1,15 +1,15 @@
 pkgbase = canto-daemon
 	pkgdesc = News aggregator for Atom/RSS/RDF
-	pkgver = 0.9.6
-	pkgrel = 3
+	pkgver = 0.9.7
+	pkgrel = 1
 	url = https://codezen.org/canto-ng/
 	arch = any
 	license = GPL
 	depends = python-feedparser
 	optdepends = python-requests: Needed by inoreader plugin
-	provides = canto-next-git=0.9.6
-	source = canto-daemon-0.9.6.tar.gz::https://github.com/themoken/canto-next/archive/v0.9.6.tar.gz
-	md5sums = 680791cdf352ef4e46d4f439802bd9cf
+	provides = canto-next-git=0.9.7
+	source = canto-daemon-0.9.7.tar.gz::https://github.com/themoken/canto-next/archive/v0.9.7.tar.gz
+	md5sums = cd95ca7bcd34b66e72094035a408e8f7
 
 pkgname = canto-daemon
 

@@ -2,17 +2,17 @@
 
 _pkgname=canto-next
 pkgname=canto-daemon
-pkgver=0.9.6
-pkgrel=3
+pkgver=0.9.7
+pkgrel=1
 pkgdesc="News aggregator for Atom/RSS/RDF"
 url="https://codezen.org/canto-ng/"
 license=('GPL')
 arch=('any')
 depends=('python-feedparser')
 optdepends=('python-requests: Needed by inoreader plugin')
-provides=('canto-next-git=0.9.6')
+provides=('canto-next-git=0.9.7')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/themoken/${_pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('680791cdf352ef4e46d4f439802bd9cf')
+md5sums=('cd95ca7bcd34b66e72094035a408e8f7')
 
 
 build() {
