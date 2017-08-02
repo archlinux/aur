@@ -1,21 +1,21 @@
 pkgbase = dune-pdelab
 	pkgdesc = Assembly for partial differential equations in DUNE
-	pkgver = 2.4.1
-	pkgrel = 2
-	url = http://www.dune-project.org/pdelab
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://gitlab.dune-project.org/extensions/dune-pdelab
 	arch = i686
 	arch = x86_64
 	groups = dune
 	license = custom
 	makedepends = cmake
 	makedepends = gcc-fortran
-	makedepends = dune-common=2.4.1
-	makedepends = dune-typetree=2.4.1
-	makedepends = dune-geometry=2.4.1
-	makedepends = dune-grid=2.4.1
-	makedepends = dune-istl=2.4.1
-	makedepends = dune-localfunctions=2.4.1
-	makedepends = dune-alugrid>=2.4.0
+	makedepends = dune-common>=2.5.0
+	makedepends = dune-typetree
+	makedepends = dune-geometry
+	makedepends = dune-grid
+	makedepends = dune-istl
+	makedepends = dune-localfunctions
+	makedepends = dune-alugrid>=2.5.0
 	makedepends = openmpi
 	makedepends = eigen
 	makedepends = superlu
@@ -23,8 +23,8 @@ pkgbase = dune-pdelab
 	makedepends = suitesparse
 	makedepends = alberta
 	makedepends = gmp
-	source = http://dune-project.org/download/pdelab/2.4.1/dune-pdelab-2.4.1.tar.gz
-	md5sums = c43dcdbcc92bb4440c2657ce12ad3f2b
+	source = git+https://gitlab.dune-project.org/extensions/dune-pdelab.git#branch=releases/2.5
+	md5sums = SKIP
 
 pkgname = dune-pdelab
 
