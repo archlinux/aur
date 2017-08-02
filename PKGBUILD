@@ -23,4 +23,5 @@ build() {
 package() {
   cd libsigrok-$pkgver
   make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -m644 -D contrib/z60_libsigrok.rules $pkgdir/usr/lib/udev/rules.d/z60_libsigrok.rules
 }
