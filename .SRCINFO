@@ -1,0 +1,24 @@
+pkgbase = ros-kinetic-geographic-msgs
+	pkgdesc = ROS - ROS messages for Geographic Information Systems.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://wiki.ros.org/geographic_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-uuid-msgs
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-uuid-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-geometry-msgs
+	source = geographic_msgs::git+https://github.com/ros-geographic-info/geographic_info-release.git#tag=release/kinetic/geographic_msgs/0.5.2-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-geographic-msgs
+
