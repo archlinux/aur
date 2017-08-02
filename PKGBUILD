@@ -3,13 +3,13 @@
 pkgname=autosubst-devel
 _pkgname=autosubst
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Automation for de Bruijn syntax and substition in Coq."
 url="https://github.com/tebbi/autosubst"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('coq')
-makedepends=('camlp5-transitional>=6.12')
+makedepends=('camlp5-transitional>=6.12' 'git')
 source=("autosubst::git+https://github.com/tebbi/${_pkgname}#branch=coq86-devel")
 sha256sums=('SKIP')
 sha512sums=('SKIP')
