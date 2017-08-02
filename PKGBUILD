@@ -4,26 +4,26 @@
 
 pkgname=dunst-git
 _gitname=dunst
-pkgver=1.2.0.14.g111fcaf.864
+pkgver=1.2.0.14.864.g111fcaf
 pkgrel=1
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://dunst-project.org/"
 license=('BSD')
-depends=('libxinerama' 'libxss' 'pango' 'libnotify' 'gtk2' 'gtk3')
+depends=('libxinerama' 'libxss' 'pango' 'libnotify' 'gtk3')
 if [ ! -e ${SRCDEST}/config.h ]; then
   depends+=('libxdg-basedir')
 fi
 makedepends=('git' 'perl')
-provides=("dunst" 'notification-daemon')
-conflicts=("dunst")
+provides=('dunst' 'notification-daemon' 'dunstify')
+conflicts=('dunst' 'dunstify')
 source=('git+https://github.com/dunst-project/dunst')
 md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
   cd ${srcdir}/${_gitname}
-  echo $(git describe --tags | sed 's+v++g'|sed 's+-+.+g').$(git rev-list --count HEAD)
+  printf %s $(git describe --tags | tr -d v | sed 's+-+.+'|sed "s+-+.$(git rev-list --count HEAD).+")
 }
 
 prepare() {
