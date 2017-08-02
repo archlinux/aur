@@ -6,7 +6,6 @@ pkgbase = grub-legacy
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gcc-multilib
 	depends = ncurses
 	depends = diffutils
 	depends = sed
@@ -39,6 +38,7 @@ pkgbase = grub-legacy
 	sha1sums = a36f34e51efed540f1ddafd78e9c9f6d83e4c8d4
 	sha1sums = 61c4b58d2eaa3c1561d8e9d8fc41341ce8882869
 	sha1sums = 776ed278eb8ff80e949834f763fad68b8741e7cd
+	makedepends_x86_64 = gcc-multilib
 
 pkgname = grub-legacy
 
