@@ -8,19 +8,15 @@ url="https://github.com/acrisci/i3-style"
 license=('custom:BSD 2-Clause')
 depends=('nodejs')
 makedepends=('npm' 'coffee-script')
-options=(!emptydirs)
-source=("https://github.com/acrisci/i3-style/archive/v$pkgver.tar.gz")
-sha256sums=("e052063abe7a07f24bdc93e3aa18ff93b81282093b4641cfb245ba3b74baddf3")
+source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
+sha256sums=("eec470851b87304f18465c859759d3767acd6c141736c49d2fd49c172b114519")
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p "$pkgdir/usr"
-  cake build
-  npm install --user root -g --prefix="$pkgdir/usr"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
-  find "${pkgdir}" -name "package.json" -exec sed -e "s|${srcdir}||" -i {} \;
+  cd "$srcdir"
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  mkdir -p $_npmdir
+  cd $_npmdir
+  npm install -g --prefix "$pkgdir/usr" $pkgname@$pkgver
 }
 
 # vim:set ts=2 sw=2 et:
-
