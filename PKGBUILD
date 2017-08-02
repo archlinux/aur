@@ -1,18 +1,18 @@
-# $Id$
-# Maintainer: darkfeline@felesatra.moe
+# Maintainer: nixi <nixi at cock dot li>
+# Contributor: <darkfeline@felesatra.moe>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Douglas Soares de Andrade <dsandrade@gmail.com>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname=sqlitebrowser-git
-pkgver=v3.8.0.r31.g1efec0c
+pkgver=v3.10.0.beta1.r19.g7195acf
 pkgrel=1
 pkgdesc="SQLite Database browser is a light GUI editor for SQLite databases, built on top of Qt"
 arch=('i686' 'x86_64')
 url="http://sqlitebrowser.org/"
 license=('GPL')
-provides='sqlitebrowser'
-conflicts='sqlitebrowser'
+provides=('sqlitebrowser')
+conflicts=('sqlitebrowser')
 depends=('qt5-base' 'sqlite' 'libxkbcommon-x11')
 makedepends=('cmake' 'qt5-tools')
 install=sqlitebrowser.install
