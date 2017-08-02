@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesrc-build
-pkgver=16.10
-pkgrel=2
+pkgver=17.08
+pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url='https://kdesrc-build.kde.org/'
 arch=('any')
