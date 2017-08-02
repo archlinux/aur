@@ -1,7 +1,7 @@
 pkgbase = guacamole-server-git
 	pkgdesc = Guacamole proxy daemon
-	pkgver = 0.9.12.incubating.r68.g04205a9b
-	pkgrel = 2
+	pkgver = 0.9.13.incubating.r42.g6236eb8f
+	pkgrel = 1
 	url = http://guacamole.sourceforge.net/
 	arch = i686
 	arch = x86_64

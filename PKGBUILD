@@ -2,8 +2,8 @@
 
 pkgname=guacamole-server-git
 _gitname=guacamole-server
-pkgver=0.9.12.incubating.r68.g04205a9b
-pkgrel=2
+pkgver=0.9.13.incubating.r42.g6236eb8f
+pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64')
 url="http://guacamole.sourceforge.net/"
@@ -43,7 +43,7 @@ build() {
 		--with-openssl \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
-		CPPFLAGS="-Wno-error=pedantic"
+		CPPFLAGS="-Wno-error=pedantic -Wno-error=format-overflow"
 	make
 }
  
