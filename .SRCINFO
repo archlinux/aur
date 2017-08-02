@@ -1,0 +1,20 @@
+pkgbase = ros-kinetic-uuid-msgs
+	pkgdesc = ROS - ROS messages for universally unique identifiers.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://ros.org/wiki/uuid_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-std-msgs
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-message-runtime
+	source = uuid_msgs::git+https://github.com/ros-geographic-info/unique_identifier-release.git#tag=release/kinetic/uuid_msgs/1.0.5-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-uuid-msgs
+
