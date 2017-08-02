@@ -1,7 +1,7 @@
 pkgbase = trustedgrub2
 	pkgdesc = TPM enabled GRUB2 Bootloader
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sirrix-AG/TrustedGRUB2/
 	arch = i686
 	arch = x86_64

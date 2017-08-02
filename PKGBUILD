@@ -1,7 +1,7 @@
 # Maintainer: n0vember <n0vember at half-9 dot net>
 pkgname=trustedgrub2
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TPM enabled GRUB2 Bootloader"
 arch=('i686' 'x86_64')
 url="https://github.com/Sirrix-AG/TrustedGRUB2/"
@@ -14,13 +14,15 @@ conflicts=("$pkgname" "grub")
 source=('git+https://github.com/Sirrix-AG/TrustedGRUB2' 'grub.default')
 sha256sums=('SKIP' '8f156cb0a372686549f8aab166f89470777e0f78d352866f93379a96423907c6')
 
+pkgverfix="temp-unused-val-fix"
+
 prepare() {
   cd "$srcdir/TrustedGRUB2"
 }
 
 build() {
   cd "$srcdir/TrustedGRUB2"
-  git checkout tags/$pkgver -b $pkgver
+  git checkout tags/$pkgver -b $pkgverfix
   ./autogen.sh
   ./configure --prefix=/usr \
         --bindir="/usr/bin" \
