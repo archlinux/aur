@@ -7,7 +7,7 @@
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-headless' 'ppsspp-qt')
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A PSP emulator written in C++'
 arch=('x86_64')
 url='http://www.ppsspp.org/'
