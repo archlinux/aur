@@ -1,0 +1,260 @@
+diff -ruN app/mainwindow.cpp app/mainwindow.cpp
+--- app/mainwindow.cpp	2017-04-03 15:32:04.000000000 +0300
++++ app/mainwindow.cpp	2017-08-03 02:46:49.903250355 +0300
+@@ -286,6 +286,12 @@
+     action->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T));
+     connect(action, SIGNAL(triggered()), m_sessionStack, SLOT(addSession()));
+ 
++    action = actionCollection()->addAction(QStringLiteral("clone-session"));
++    action->setText(xi18nc("@action", "New Session (Same Working Directory)"));
++    action->setIcon(QIcon(QStringLiteral("tab-duplicate")));
++    action->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_C));
++    connect(action, SIGNAL(triggered()), m_sessionStack, SLOT(addSessionSameWorkingDir()));
++
+     action = actionCollection()->addAction(QStringLiteral("new-session-two-horizontal"));
+     action->setText(xi18nc("@action", "Two Terminals, Horizontally"));
+     action->setIcon(QIcon(QStringLiteral("tab-new")));
+diff -ruN app/session.cpp app/session.cpp
+--- app/session.cpp	2017-04-03 15:32:04.000000000 +0300
++++ app/session.cpp	2017-08-03 02:46:49.903250355 +0300
+@@ -26,7 +26,7 @@
+ 
+ int Session::m_availableSessionId = 0;
+ 
+-Session::Session(SessionType type, QWidget* parent) : QObject(parent)
++Session::Session(SessionType type, const QString& directory, QWidget* parent) : QObject(parent)
+ {
+     m_sessionId = m_availableSessionId;
+     m_availableSessionId++;
+@@ -38,7 +38,7 @@
+     m_baseSplitter = new Splitter(Qt::Horizontal, parent);
+     connect(m_baseSplitter, SIGNAL(destroyed()), this, SLOT(prepareShutdown()));
+ 
+-    setupSession(type);
++    setupSession(type, directory);
+ }
+ 
+ Session::~Session()
+@@ -48,13 +48,13 @@
+     emit destroyed(m_sessionId);
+ }
+ 
+-void Session::setupSession(SessionType type)
++void Session::setupSession(SessionType type, const QString& directory)
+ {
+     switch (type)
+     {
+         case Single:
+         {
+-            Terminal* terminal = addTerminal(m_baseSplitter);
++            Terminal* terminal = addTerminal(directory, m_baseSplitter);
+             setActiveTerminal(terminal->id());
+ 
+             break;
+@@ -64,8 +64,8 @@
+         {
+             int splitterWidth = m_baseSplitter->width();
+ 
+-            Terminal* terminal = addTerminal(m_baseSplitter);
+-            addTerminal(m_baseSplitter);
++            Terminal* terminal = addTerminal(directory, m_baseSplitter);
++            addTerminal(directory, m_baseSplitter);
+ 
+             QList<int> newSplitterSizes;
+             newSplitterSizes << (splitterWidth / 2) << (splitterWidth / 2);
+@@ -88,8 +88,8 @@
+ 
+             int splitterHeight = m_baseSplitter->height();
+ 
+-            Terminal* terminal = addTerminal(m_baseSplitter);
+-            addTerminal(m_baseSplitter);
++            Terminal* terminal = addTerminal(directory, m_baseSplitter);
++            addTerminal(directory, m_baseSplitter);
+ 
+             QList<int> newSplitterSizes;
+             newSplitterSizes << (splitterHeight / 2) << (splitterHeight / 2);
+@@ -119,11 +119,11 @@
+             Splitter* lowerSplitter = new Splitter(Qt::Horizontal, m_baseSplitter);
+             connect(lowerSplitter, SIGNAL(destroyed()), this, SLOT(cleanup()));
+ 
+-            Terminal* terminal = addTerminal(upperSplitter);
+-            addTerminal(upperSplitter);
++            Terminal* terminal = addTerminal(directory, upperSplitter);
++            addTerminal(directory, upperSplitter);
+ 
+-            addTerminal(lowerSplitter);
+-            addTerminal(lowerSplitter);
++            addTerminal(directory, lowerSplitter);
++            addTerminal(directory, lowerSplitter);
+ 
+             QList<int> newSplitterSizes;
+             newSplitterSizes << (splitterHeight / 2) << (splitterHeight / 2);
+@@ -147,16 +147,16 @@
+ 
+         default:
+         {
+-            addTerminal(m_baseSplitter);
++            addTerminal(directory, m_baseSplitter);
+ 
+             break;
+         }
+     }
+ }
+ 
+-Terminal* Session::addTerminal(QWidget* parent)
++Terminal* Session::addTerminal(const QString& directory, QWidget* parent)
+ {
+-    Terminal* terminal = new Terminal(parent);
++    Terminal* terminal = new Terminal(directory, parent);
+     connect(terminal, SIGNAL(activated(int)), this, SLOT(setActiveTerminal(int)));
+     connect(terminal, SIGNAL(manuallyActivated(Terminal*)), this, SIGNAL(terminalManuallyActivated(Terminal*)));
+     connect(terminal, SIGNAL(titleChanged(int,QString)), this, SLOT(setTitle(int,QString)));
+@@ -284,7 +284,7 @@
+         if (splitter->orientation() != orientation)
+             splitter->setOrientation(orientation);
+ 
+-        terminal = addTerminal(splitter);
++        terminal = addTerminal(terminal->currentWorkingDirectory(), splitter);
+ 
+         QList<int> newSplitterSizes;
+         newSplitterSizes << (splitterWidth / 2) << (splitterWidth / 2);
+@@ -310,7 +310,7 @@
+ 
+         terminal->setSplitter(newSplitter);
+ 
+-        terminal = addTerminal(newSplitter);
++        terminal = addTerminal(terminal->currentWorkingDirectory(), newSplitter);
+ 
+         splitter->setSizes(splitterSizes);
+         QList<int> newSplitterSizes;
+diff -ruN app/session.h app/session.h
+--- app/session.h	2017-04-03 15:32:04.000000000 +0300
++++ app/session.h	2017-08-03 02:46:49.903250355 +0300
+@@ -41,7 +41,7 @@
+         enum SessionType { Single, TwoHorizontal, TwoVertical, Quad };
+         enum GrowthDirection { Up, Right, Down, Left };
+ 
+-        explicit Session(SessionType type = Single, QWidget* parent = 0);
++        explicit Session(SessionType type = Single, const QString& directory = QString(), QWidget* parent = 0);
+          ~Session();
+ 
+         int id() { return m_sessionId; }
+@@ -118,9 +118,9 @@
+ 
+ 
+     private:
+-        void setupSession(SessionType type);
++        void setupSession(SessionType type, const QString& directory);
+ 
+-        Terminal* addTerminal(QWidget* parent);
++        Terminal* addTerminal(const QString& directory, QWidget* parent);
+         int split(Terminal* terminal, Qt::Orientation orientation);
+ 
+         static int m_availableSessionId;
+diff -ruN app/sessionstack.cpp app/sessionstack.cpp
+--- app/sessionstack.cpp	2017-04-03 15:32:04.000000000 +0300
++++ app/sessionstack.cpp	2017-08-03 02:46:49.903250355 +0300
+@@ -24,6 +24,7 @@
+ #include "settings.h"
+ #include "terminal.h"
+ #include "visualeventoverlay.h"
++#include "terminal.h"
+ 
+ #include "config-yakuake.h"
+ 
+@@ -49,9 +50,9 @@
+ {
+ }
+ 
+-int SessionStack::addSession(Session::SessionType type)
++int SessionStack::addSession(Session::SessionType type, const QString& directory)
+ {
+-    Session* session = new Session(type, this);
++    Session* session = new Session(type, directory, this);
+     connect(session, SIGNAL(titleChanged(int,QString)), this, SIGNAL(titleChanged(int,QString)));
+     connect(session, SIGNAL(terminalManuallyActivated(Terminal*)), this, SLOT(handleManualTerminalActivation(Terminal*)));
+     connect(session, SIGNAL(keyboardInputBlocked(Terminal*)), m_visualEventOverlay, SLOT(indicateKeyboardInputBlocked(Terminal*)));
+@@ -72,6 +73,18 @@
+     return session->id();
+ }
+ 
++int SessionStack::addSessionSameWorkingDir()
++{
++    Session* currentSession = m_sessions.value(m_activeSessionId);
++    Terminal* currentTerminal = currentSession ? currentSession->getTerminal(currentSession->activeTerminalId()) : NULL;
++    QString directory;
++
++    if (currentTerminal)
++        directory = currentTerminal->currentWorkingDirectory();
++
++    return addSession(Session::Single, directory);
++}
++
+ int SessionStack::addSessionTwoHorizontal()
+ {
+     return addSession(Session::TwoHorizontal);
+diff -ruN app/sessionstack.h app/sessionstack.h
+--- app/sessionstack.h	2017-04-03 15:32:04.000000000 +0300
++++ app/sessionstack.h	2017-08-03 02:46:49.903250355 +0300
+@@ -54,7 +54,8 @@
+ 
+ 
+     public Q_SLOTS:
+-        Q_SCRIPTABLE int addSession(Session::SessionType type = Session::Single);
++        Q_SCRIPTABLE int addSession(Session::SessionType type = Session::Single, const QString& directory = QString());
++        Q_SCRIPTABLE int addSessionSameWorkingDir();
+         Q_SCRIPTABLE int addSessionTwoHorizontal();
+         Q_SCRIPTABLE int addSessionTwoVertical();
+         Q_SCRIPTABLE int addSessionQuad();
+diff -ruN app/terminal.cpp app/terminal.cpp
+--- app/terminal.cpp	2017-04-03 15:32:04.000000000 +0300
++++ app/terminal.cpp	2017-08-03 02:50:24.725018007 +0300
+@@ -42,7 +42,7 @@
+ 
+ int Terminal::m_availableTerminalId = 0;
+ 
+-Terminal::Terminal(QWidget* parent) : QObject(parent)
++Terminal::Terminal(const QString& directory, QWidget* parent) : QObject(parent)
+ {
+     m_terminalId = m_availableTerminalId;
+     m_availableTerminalId++;
+@@ -86,7 +86,7 @@
+         disableOffendingPartActions();
+ 
+         m_terminalInterface = qobject_cast<TerminalInterface*>(m_part);
+-        if (m_terminalInterface) m_terminalInterface->showShellInDir(QDir::homePath());
++        if (m_terminalInterface) m_terminalInterface->showShellInDir(directory.isEmpty() ? QDir::homePath() : directory);
+     }
+     else
+         displayKPartLoadError();
+@@ -228,6 +228,11 @@
+     emit titleChanged(m_terminalId, m_title);
+ }
+ 
++QString Terminal::currentWorkingDirectory() const
++{
++    return m_terminalInterface->currentWorkingDirectory();
++}
++
+ void Terminal::runCommand(const QString& command)
+ {
+     m_terminalInterface->sendInput(command + QStringLiteral("\n"));
+diff -ruN app/terminal.h app/terminal.h
+--- app/terminal.h	2017-04-03 15:32:04.000000000 +0300
++++ app/terminal.h	2017-08-03 02:46:49.903250355 +0300
+@@ -37,13 +37,14 @@
+     Q_OBJECT
+ 
+     public:
+-        explicit Terminal(QWidget* parent = 0);
++        explicit Terminal(const QString& directory, QWidget* parent = 0);
+          ~Terminal();
+ 
+         bool eventFilter(QObject* watched, QEvent* event);
+ 
+         int id() { return m_terminalId; }
+         const QString title() { return m_title; }
++        QString currentWorkingDirectory() const;
+ 
+         QWidget* partWidget() { return m_partWidget; }
+         QWidget* terminalWidget() { return m_terminalWidget; }
