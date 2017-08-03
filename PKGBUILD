@@ -18,7 +18,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=61.0.3159.5
+pkgver=61.0.3163.25
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
@@ -58,10 +58,7 @@ makedepends=('libexif'
              'nodejs'
              'wget'
              )
-optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
-            'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
-            'libva-intel-driver: HW video acceleration for Intel users'
-            #
+optdepends=(
             'pepper-flash: PPAPI Flash Player'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
             #
@@ -72,6 +69,12 @@ optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
             #
             'libappindicator-gtk3: Needed for show systray icon in the panel'
             )
+if [ "${_enable_vaapi}" = "1" ]; then
+  optdepends+=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
+               'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
+               'libva-intel-driver: HW video acceleration for Intel users'
+               )
+fi
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "git+https://github.com/foutrelis/chromium-launcher.git"
@@ -79,8 +82,9 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r13.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r14.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gcc-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-atk-r1.patch'
         # Misc Patches
         'minizip.patch'
         'vaapi_patch_r2.patch'
@@ -94,8 +98,9 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '07df380530299b0450045edd655f924f0e0442abccb05c2336ed2aea9d5ee044'
             # Patch form Gentoo
             'fa3f703d599051135c5be24b81dfcb23190bb282db73121337ac76bc9638e8a5'
-            '3303ca2f12058ece85318dd2c5089dab369acb5a8716b388800af9b0625484e7'
+            '98784c4a0a793ecf34987bc8f91ae360d78596a4a59dd47651411381f752a080'
             '11cffe305dd49027c91638261463871e9ecb0ecc6ecc02bfa37b203c5960ab58'
+            'fc0e9abb77b6f8e21a7601ff53f267a854736d711b530be5bbd80d976678e98d'
             # Misc Patches
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '4ec8b2df4859b9d26b8ea4afc205f563f59844c54a6659bb279776b93163a0ce'
@@ -384,7 +389,8 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE-r2.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r13.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r14.patch"
+  patch -p1 -i "${srcdir}/chromium-atk-r1.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
