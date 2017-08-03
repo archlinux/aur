@@ -2,7 +2,7 @@
 
 pkgname=koala-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Koala is a GUI application for LESS, Sass and CoffeeScript compilation, to help web developers use these tools more efficiently for development."
 arch=('x86_64' 'i686')
 url="http://koala-app.com/"
