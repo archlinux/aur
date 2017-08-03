@@ -1,13 +1,13 @@
 # Maintainer: IanDury
 
 pkgname=domoticz-latest
-pkgver=3.5877
-pkgrel=2
+pkgver=3.8153
+pkgrel=1
 pkgdesc="Web based home automation"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.domoticz.com"
 license=('GPL')
-depends=('openzwave-git' 'libusb-compat' 'curl' 'sqlite' 'boost-libs' 'libcurl-compat')
+depends=('openzwave-git' 'libusb-compat' 'curl' 'sqlite' 'boost-libs' 'libcurl-compat' 'openssl-1.0')
 conflicts=('domoticz-svn' 'domoticz-git' 'domoticz-beta' 'domoticz')
 install='domoticz.install'
 case $CARCH in

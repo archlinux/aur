@@ -1,7 +1,7 @@
 pkgbase = domoticz-latest
 	pkgdesc = Web based home automation
-	pkgver = 3.5877
-	pkgrel = 2
+	pkgver = 3.8153
+	pkgrel = 1
 	url = http://www.domoticz.com
 	install = domoticz.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = domoticz-latest
 	depends = sqlite
 	depends = boost-libs
 	depends = libcurl-compat
+	depends = openssl-1.0
 	conflicts = domoticz-svn
 	conflicts = domoticz-git
 	conflicts = domoticz-beta
