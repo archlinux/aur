@@ -40,13 +40,17 @@ source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
 sha256sums=('163e729a0c4a78f4cd8acb9c82cae806bd66d6e1612aa52b94c1345a85384460')
 
 _qmake_cmd=qmake
+_tmp_dir=$(mktemp -d)
+_qbs_settings="--settings-dir ${_tmp_dir}"
+_qbs_profile="sysqtprofile"
+_qbs_args="profile:${_qbs_profile}"
 
 build() {
   set -o nounset
   local src_dir=${srcdir}/${_filename}
   [[ -d build ]] && rm -r build
 
-  qbs -d build -f ${src_dir} --all-products project.withAutotests:false release
+  qbs ${_qbs_settings} -d build -f ${src_dir} --all-products project.withAutotests:false profile:${_qbs_profile} release
   set +o nounset
 }
 
@@ -55,7 +59,7 @@ package() {
   local _src_dir=${srcdir}/${_filename}
   local _pkg_dir=${pkgdir}/usr/
 
-  qbs install -d build -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false release
+  qbs install ${_qbs_settings} -d build -f ${_src_dir} --install-root ${_pkg_dir} --all-products project.withAutotests:false profile:${_qbs_profile} release
 
   # Workaround for FS#40583
   mv "${pkgdir}"/usr/bin/qtcreator "${pkgdir}"/usr/bin/qtcreator-bin
@@ -64,5 +68,8 @@ package() {
   chmod +x "${pkgdir}"/usr/bin/qtcreator
 
   install -Dm644 ${srcdir}/${_filename}/LICENSE.GPL3-EXCEPT ${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+  rm -Rf ${_tmp_dir}
   set +o nounset
 }
+
+qbs setup-qt ${_qbs_settings} /usr/bin/qmake ${_qbs_profile}
