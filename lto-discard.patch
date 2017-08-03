@@ -1,5 +1,5 @@
---- binutils-2.26/ld/scripttempl/i386go32.sc
-+++ binutils-2.26/ld/scripttempl/i386go32.sc
+--- binutils-2.29/ld/scripttempl/i386go32.sc
++++ binutils-2.29/ld/scripttempl/i386go32.sc
 @@ -19,6 +19,7 @@
      *(SORT(.dtors.*))
      *(.dtor) *(.dtors)
@@ -7,7 +7,7 @@
 +DISCARDED="/DISCARD/ : { *(.note.GNU-stack) *(.gnu_debuglink) *(.gnu.lto_*) }"
  
  cat <<EOF
- /* Copyright (C) 2014-2015 Free Software Foundation, Inc.
+ /* Copyright (C) 2014-2017 Free Software Foundation, Inc.
 @@ -82,5 +83,6 @@
  . $srcdir/scripttempl/DWARF.sc
  

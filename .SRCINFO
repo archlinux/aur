@@ -1,25 +1,24 @@
 pkgbase = djgpp-binutils
-	pkgdesc = Cross binutils for the djgpp cross-compiler
-	pkgver = 2.27
+	pkgdesc = Binutils for the djgpp cross-compiler
+	pkgver = 2.29
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils
 	arch = i686
 	arch = x86_64
-	groups = djgpp-toolchain
 	groups = djgpp
 	license = GPL
 	depends = zlib
 	options = !libtool
 	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.bz2
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.bz2.sig
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2.sig
 	source = xtors.patch
 	source = lto-discard.patch
 	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
-	sha512sums = cf276f84935312361a2ca077e04d0b469d23a3aed979d8ba5d92ea590904ffb2c2e7ed12cc842822bfc402836be86f479660cef3791aa62f3753d8a1a6f564cb
-	sha512sums = SKIP
-	sha512sums = d1d1052167e84720a771cd526166997c8a2b14135bb7c1f956d7940cfc2336191825118426cfe4c5fdfd1c8718088c1ba327d90874658baf2738c8d5a7ed0bec
-	sha512sums = 85c58eed0fa01fe2295a0c402cb0e2252c00ed38529f679cd9cdd0e1336a192152665b856971114a9a3d1175b72ea71f0e278cf33fd806491c8d184bbd01d2a9
+	sha256sums = 29a29549869039aad75fdf507ac30366da5ad0b974fbff4a8e7148dbf4f40ebf
+	sha256sums = SKIP
+	sha256sums = a54efa3f29f14c938fedf29fb352d4f104e8c0ec065c74b0cd3f753fe3e9d4ef
+	sha256sums = a7978c3110dbccde7290fb3517121f5cae427728c04e6fb76736f36857514ec9
 
 pkgname = djgpp-binutils
 

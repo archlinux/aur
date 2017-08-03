@@ -1,5 +1,5 @@
---- binutils-2.26/ld/scripttempl/i386go32.sc
-+++ binutils-2.26/ld/scripttempl/i386go32.sc
+--- binutils-2.29/ld/scripttempl/i386go32.sc
++++ binutils-2.29/ld/scripttempl/i386go32.sc
 @@ -13,11 +13,11 @@
  # conditional expansion.
  CTOR='.ctor : {
