@@ -11,7 +11,7 @@ license=('LGPL')
 arch=('i686' 'x86_64')
 depends=('libusb')
 makedepends=('git')
-source=('git://git.subsurface-divelog.org/libdc#branch=Subsurface-branch')
+source=('git+https://github.com/Subsurface-divelog/libdc')
 sha256sums=('SKIP')
 
 conflicts=('subsurface-libdc')
