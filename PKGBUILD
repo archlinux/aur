@@ -2,13 +2,13 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=pgcli-git
-pkgver=v1.1.0.r0.gaf46609
+pkgver=v1.7.0.r32.g9d59fa5
 pkgrel=1
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
 arch=(any)
 license=('BSD')
-depends=('python' 'python-sqlparse' 'python-psycopg2' 'python-click' 'python-prompt_toolkit' 'python-humanize' 'python-configobj' 'python-pgspecial' )
+depends=('python' 'python-sqlparse' 'python-psycopg2' 'python-click' 'python-prompt_toolkit' 'python-humanize' 'python-configobj' 'python-pgspecial' 'python-setproctitle' 'python-cli_helpers')
 makedepends=('python-distribute')
 source=("git://github.com/amjith/pgcli.git")
 md5sums=('SKIP')
