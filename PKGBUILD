@@ -3,7 +3,7 @@
 
 pkgname=quicksynergy
 pkgver=0.9.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A graphical interface (GUI) for easily configuring Synergy2"
 url="http://quicksynergy.sourceforge.net/"
 license=('GPL')
