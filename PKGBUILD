@@ -2,7 +2,7 @@
 
 pkgname=domoticz-latest
 pkgver=3.8153
-pkgrel=1
+pkgrel=2
 pkgdesc="Web based home automation"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.domoticz.com"
@@ -26,7 +26,7 @@ source=("https://releases.domoticz.com/releases/release/domoticz_linux_${_target
         "https://releases.domoticz.com/releases/release/history_linux_${_target_arch}.txt"
         'domoticz.service')
 sha256sums=('SKIP' 'SKIP'
-            'bf9e8cd4e1215ac3847bee60e7078777dbcd14787b33ecc443de451a1b0a1728')
+            '10f8c51d5ee4c2e42510e877ae891cb1290d14e601d0cb6c59fdf1dbb0538249')
 
 pkgver() {
   echo "$(grep ^Version history_linux_${_target_arch}.txt | head -1 | cut -d' ' -f2)"

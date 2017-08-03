@@ -1,7 +1,7 @@
 pkgbase = domoticz-latest
 	pkgdesc = Web based home automation
 	pkgver = 3.8153
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.domoticz.com
 	install = domoticz.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = domoticz-latest
 	source = domoticz.service
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = bf9e8cd4e1215ac3847bee60e7078777dbcd14787b33ecc443de451a1b0a1728
+	sha256sums = 10f8c51d5ee4c2e42510e877ae891cb1290d14e601d0cb6c59fdf1dbb0538249
 
 pkgname = domoticz-latest
 

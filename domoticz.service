@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Environment=LD_PRELOAD=/usr/lib/libcurl.so.3
 User=http
-ExecStart=/opt/domoticz/domoticz -www 8080 -daemon
+ExecStart=/opt/domoticz/domoticz -www 8080
 WorkingDirectory=/opt/domoticz
 RestartSec=5
 Restart=on-failure
