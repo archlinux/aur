@@ -17,10 +17,10 @@ depends=('alsa-lib' 'libidn' 'libutil-linux' 'libxv' 'libgl' 'glu'
          'gcc-libs' 'zlib' 'libpng' 'qtwebkit' 'zenity')
 optdepends=('flashplugin: Join meetings via web browser')
 
-source_i686=("https://join.vidyo.com/upload/VidyoDesktopInstaller-ubuntu-TAG_VD_3_6_3_017.deb")
+source_i686=("https://client-downloads.vidyocloud.com/VidyoDesktopInstaller-ubuntu-TAG_VD_3_6_3_017.deb")
 md5sums_i686=('46c8d283e40957cc80049bd37dbf3aac')
 
-source_x86_64=("https://join.vidyo.com/upload/VidyoDesktopInstaller-ubuntu64-TAG_VD_3_6_3_017.deb")
+source_x86_64=("https://client-downloads.vidyocloud.com/VidyoDesktopInstaller-ubuntu64-TAG_VD_3_6_3_017.deb")
 md5sums_x86_64=('ede8e63b96cf47d0ea12779a32480c9a')
 
 prepare() {
