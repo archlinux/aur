@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=prompter
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Dumb prompter'
 url="http://github.com/cdown/$pkgname"
@@ -10,10 +10,13 @@ license=('Public Domain')
 depends=()
 
 source=("https://github.com/cdown/${pkgname}/archive/${pkgver}.zip")
-md5sums=('cf94c7edb62574fc0167ee2339aa96a6')
+md5sums=('1f21783af14c41a23043b9c111d0ed5e')
 
 package() {
     install -D -m755 \
         "${srcdir?}/$pkgname-$pkgver/prompter" \
         "${pkgdir?}/usr/bin/prompter"
+    install -D -m644 \
+        "${srcdir?}/$pkgname-$pkgver/prompter.service" \
+        "${pkgdir?}/usr/lib/systemd/user/prompter.service"
 }

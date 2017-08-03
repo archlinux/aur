@@ -1,12 +1,12 @@
 pkgbase = prompter
 	pkgdesc = Dumb prompter
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://github.com/cdown/prompter
 	arch = any
 	license = Public Domain
-	source = https://github.com/cdown/prompter/archive/0.1.0.zip
-	md5sums = cf94c7edb62574fc0167ee2339aa96a6
+	source = https://github.com/cdown/prompter/archive/0.2.0.zip
+	md5sums = 1f21783af14c41a23043b9c111d0ed5e
 
 pkgname = prompter
 
