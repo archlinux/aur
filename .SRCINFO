@@ -7,7 +7,6 @@ pkgbase = nifskope-git
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = gcc-libs-multilib
 	depends = qt5-base
 	source = git://github.com/niftools/nifskope.git
 	source = git://github.com/niftools/nifdocsys.git
