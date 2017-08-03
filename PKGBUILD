@@ -44,7 +44,7 @@ prepare() {
 
 build() {
   cd build
-  meson --prefix=/usr --buildtype=release ../$pkgname
+  meson ../$pkgname --prefix=/usr --buildtype=release -Db_lto=true
   ninja
 }
 
