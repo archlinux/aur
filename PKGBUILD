@@ -3,7 +3,7 @@
 
 pkgname=qt5-webengine-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
-pkgver=60.0.3112.78
+pkgver=60.0.3112.90
 pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
