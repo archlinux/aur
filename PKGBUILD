@@ -1,9 +1,9 @@
 # Maintainer: Atnanasis <ys2000pro@gmail.com>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
-pkgver=20161110
+pkgver=20170803
 pkgrel=1
-_hash="1.1.3-dev.18"
+_hash="1.3.1-dev.13"
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
@@ -11,10 +11,12 @@ license=('MIT')
 optdepends=(xclip)
 conflicts=( "micro-git" "micro" )
 provides=("micro")
+# Binary tar files from github 
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux32.tar.gz")
-sha256sums_x86_64=('fcdf641bbac9f386d0c3e8bffe1ba21232022768bf8edf673a84ae65a42d9e1a')
-sha256sums_i686=('f7be311396824b9015fc19af49a333977351e3bc23281f46b80b3b7bdc38e622')
+# Check sums for files downloaded
+sha256sums_x86_64=('c791657db072976f7e67aec93c5676526e7b8cf60d7796b3106453096a7a1841')
+sha256sums_i686=('a29b15d42191a86a32a40069c773cc8666270d717d2e9178b3e3c0fac702631f')
 
 
 package(){
