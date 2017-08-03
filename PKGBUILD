@@ -1,4 +1,4 @@
-# Maintainer: willemw12@gmail.com
+# Maintainer: willemw <willemw12@gmail.com>
 # Contributor: Daniel YC Lin <dlin.tw at gmail>
 
 _pkgname=tmux-mem-cpu-load
