@@ -4,8 +4,8 @@
 
 pkgname=mono-beta
 _pkgname=mono
-pkgver=5.2.0.196
-pkgrel=2
+pkgver=5.2.0.213
+pkgrel=0
 pkgdesc="Free implementation of the .NET platform including runtime and compiler"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL2.1' 'MPL')
@@ -17,7 +17,7 @@ conflicts=('mono' 'monodoc')
 install="${_pkgname}.install"
 source=(https://download.mono-project.com/sources/mono/${_pkgname}-${pkgver}.tar.bz2
         mono.binfmt.d)
-sha256sums=('731634b24c89680660fed1efd63a39ec6c052e519ae9a2dce61f875598329366'
+sha256sums=('21ab8b6bcff6af4e3e1b65aa1d87fe98cdcff97f702ce1e5bea7ed9bf525d661'
             '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425')
 
 build() {
