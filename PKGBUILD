@@ -1,13 +1,13 @@
 # Maintainer: Tom Zander
 
 pkgname=bitcoin-classic-daemon
-pkgver=1.2.5
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Bitcoin Classic with bitcoind, bitcoin-tx, and bitcoin-cli'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
-depends=('boost-libs' 'libevent' 'openssl-1.0' 'miniupnpc' 'zeromq')
+depends=('boost-libs' 'libevent' 'openssl' 'miniupnpc' 'zeromq')
 makedepends=('boost')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-tx')
@@ -16,15 +16,12 @@ backup=("etc/bitcoin/bitcoin.conf")
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/bitcoinclassic/bitcoinclassic/archive/v${pkgver}.tar.gz"
     "bitcoin.logrotate"
     "bitcoin.conf")
-sha256sums=('900218eb2cd40c96a357a601e17fc6eacc91970f369761462de5a695c20701d5'
+sha256sums=('2a709967fcdb1d9f09c0a083c14029891360e22f6b82813b89b39cc4eff6ce77'
     "7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73"
     "c8787560c6423605796c8d3e080cb522ed849cea12b5c23293c22e405a015a53")
 
 build() {
   cd "bitcoinclassic-$pkgver"
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  export CXXFLAGS+=" -I/usr/include/openssl-1.0"
-  export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=no --enable-hardening \
         --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode
