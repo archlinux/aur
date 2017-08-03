@@ -1,0 +1,26 @@
+pkgbase = dnsmasq-git
+	pkgdesc = Lightweight, easy to configure DNS forwarder and DHCP server
+	pkgver = 2.78test2.r6.g69a815a
+	pkgrel = 1
+	url = https://www.gnu.org/software/libmicrohttpd/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = gmp
+	depends = libidn2
+	depends = libdbus
+	depends = libnetfilter_conntrack
+	depends = nettle
+	provides = dnsmasq
+	conflicts = dnsmasq
+	source = git://thekelleys.org.uk/dnsmasq.git
+	source = dnsmasq-sysusers.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/dnsmasq-sysusers.conf?h=packages/dnsmasq
+	source = dnsmasq.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/dnsmasq.service?h=packages/dnsmasq
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dnsmasq-git
+
