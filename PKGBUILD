@@ -9,7 +9,7 @@ pkgver=3.8.3
 pkgrel=2
 
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
-url="http://ddclient.sourceforge.net"
+url="https://ddclient.sourceforge.net"
 arch=('any')
 license=('GPL2')
 
@@ -18,7 +18,7 @@ backup=('etc/ddclient/ddclient.conf')
 depends=('perl-io-socket-ssl' 'perl-digest-sha1' 'net-tools')
 optdepends=('perl-json-any: needed for cloudflare module')
 
-source=(http://downloads.sourceforge.net/sourceforge/ddclient/ddclient-$pkgver.tar.bz2
+source=(https://downloads.sourceforge.net/sourceforge/ddclient/ddclient-$pkgver.tar.bz2
         ddclient.service)
 
 sha256sums=('d40e2f1fd3f4bff386d27bbdf4b8645199b1995d27605a886b8c71e44d819591'
