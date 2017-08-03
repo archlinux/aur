@@ -20,12 +20,19 @@ provides=('murmur')
 backup=("etc/murmur.ini")
 install=murmur.install
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig}
-         murmur.tmpfilesd)
+	murmur.tmpfilesd
+	murmur-ice3.7.patch)
 sha256sums=('e08c5f5a3e0fdb147b917657d2e20a015ba4864fc2917642af8c61cd0ef26917'
             'SKIP'
-            '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e')
+            '25bf2dbd7574459724b4621fb93c09484dc7520297fa1d0f247a19b592d8cb8e'
+            '4e67c3de52d7fe856dd9e0eb7be5eabb0f088bd85c7ded413108e1b8bf4fe327')
 validpgpkeys=('C4666C6767A26017CE68406988048D0D625297A0')
 
+prepare() {
+    cd $srcdir/mumble-${pkgver//_/\~}~snapshot
+
+    patch -p1 -i "${srcdir}/murmur-ice3.7.patch"
+}
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
