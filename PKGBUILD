@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=bitcoin-classic
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Bitcoin Classic with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt'
 arch=('i686' 'x86_64')
@@ -15,16 +15,13 @@ install=bitcoin.install
 backup=("etc/bitcoin/bitcoin.conf")
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/bitcoinclassic/bitcoinclassic/archive/v${pkgver}.tar.gz"
     "bitcoin.logrotate"
-    "bitcoin.conf"
-    "patch131")
-sha256sums=('7e05c3974eb77df18ba0ef371cdf6056a240ce93b67ad09eef94e6eddd8345aa'
+    "bitcoin.conf")
+sha256sums=('2a709967fcdb1d9f09c0a083c14029891360e22f6b82813b89b39cc4eff6ce77'
     "7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73"
-    "c8787560c6423605796c8d3e080cb522ed849cea12b5c23293c22e405a015a53"
-    "c47d1c75de911bf8feeee1b513b065ce8e99c2a78b05026bf0397b406b633721")
+    "c8787560c6423605796c8d3e080cb522ed849cea12b5c23293c22e405a015a53")
 
 build() {
   cd "bitcoinclassic-$pkgver"
-  patch -p1 < ${srcdir}/patch131
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5 --enable-hardening \
         --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode
