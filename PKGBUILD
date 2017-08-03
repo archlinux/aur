@@ -1,9 +1,9 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=1.0.0
-_pypkgver=1.0.0
-pkgrel=5
+pkgver=1.0.1
+_pypkgver=1.0.1
+pkgrel=1
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
@@ -31,19 +31,16 @@ optdepends=(
 )
 source=(
     "git+https://github.com/$_pkgname/$_pkgname#tag=v$pkgver"
-    'Rlib.patch'
     'lua51.patch'
 )
 md5sums=('SKIP'
-         '2888336abcbb122a49cb5817ac98f36c'
-         'a25fe3562664dbef433a3f2cc20d6c39')
+         '284e72ada1848a2b99b3c9b8a6916979')
 
 prepare() {
     cd "$_pkgname"
 
     mkdir -p build
 
-    patch -Np1 -i ../Rlib.patch
     patch -Np1 -i ../lua51.patch
 }
 

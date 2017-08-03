@@ -11,38 +11,26 @@
  if(LUA_EXECUTABLE)
 --- a/Wrapping/Lua/CMakeLists.txt	2016-07-15 02:21:14.748778896 +0800
 +++ Wrapping/Lua/CMakeLists.txt.orig	2016-07-15 02:20:55.322111581 +0800
-@@ -5,14 +5,7 @@
+@@ -5,7 +5,7 @@
  include(../../CMake/sitkProjectLanguageCommon.cmake)
  
  
--if (CMAKE_VERSION VERSION_LESS "3")
--  find_package ( Lua51 ${_QUIET} )
--  if ( NOT LUA_FOUND )
--    find_package ( Lua50 ${_QUIET} )
--  endif()
--else()
--  find_package ( Lua ${_QUIET} )
--endif()
-+find_package ( Lua51 ${_QUIET} )
+-find_package ( Lua REQUIRED )
++find_package ( Lua51 REQUIRED )
  
  set( LUA_ADDITIONAL_LIBRARIES "" CACHE STRING "Additional libraries which may be needed for lua executable such as readline.")
  mark_as_advanced( LUA_ADDITIONAL_LIBRARIES )
 --- a/CMake/sitkLanguageOptions.cmake	2016-07-15 17:56:50.830654990 +0800
 +++ b/CMake/sitkLanguageOptions.cmake	2016-07-15 17:57:23.547322749 +0800
-@@ -31,15 +31,8 @@
+@@ -31,9 +31,9 @@
  # Setup the option for each language
  #
  set_QUIET( WRAP_LUA )
--if (CMAKE_VERSION VERSION_LESS "3")
--  find_package ( Lua51 ${_QUIET} )
--  if ( NOT LUA_FOUND )
--    find_package ( Lua50 ${_QUIET} )
--  endif()
--else()
--  find_package ( Lua ${_QUIET} )
--endif()
+-find_package ( Lua ${_QUIET} )
+-
 -if ( LUA_FOUND )
 +find_package ( Lua51 ${_QUIET} )
++
 +if ( LUA51_FOUND )
    set( WRAP_LUA_DEFAULT ${WRAP_DEFAULT} )
  else()

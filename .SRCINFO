@@ -1,7 +1,7 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages.
-	pkgver = 1.0.0
-	pkgrel = 5
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://www.simpleitk.org/
 	arch = i686
 	arch = x86_64
@@ -32,12 +32,10 @@ pkgbase = simpleitk
 	optdepends = ruby: Ruby bindings
 	optdepends = tcl: Tcl/TK bindings
 	optdepends = tk: Tcl/TK bindings
-	source = git+https://github.com/SimpleITK/SimpleITK#tag=v1.0.0
-	source = Rlib.patch
+	source = git+https://github.com/SimpleITK/SimpleITK#tag=v1.0.1
 	source = lua51.patch
 	md5sums = SKIP
-	md5sums = 2888336abcbb122a49cb5817ac98f36c
-	md5sums = a25fe3562664dbef433a3f2cc20d6c39
+	md5sums = 284e72ada1848a2b99b3c9b8a6916979
 
 pkgname = simpleitk
 
