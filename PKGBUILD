@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=le-editor-git
-pkgver=687.a5e169a
+pkgver=693.b3b541c
 pkgrel=1
 pkgdesc="A text editor in memorial to Norton Editor with block and binary operations - git version"
 arch=('i686' 'x86_64')
@@ -11,21 +11,15 @@ depends=('ncurses' 'bash' 'hicolor-icon-theme')
 makedepends=('git')
 provides=('le' 'le-editor')
 conflicts=('le' 'le-editor')
-source=(git://git.sv.gnu.org/gnulib le-editor::git://github.com/lavv17/le.git dickey.patch)
+source=(git://git.sv.gnu.org/gnulib le-editor::git://github.com/lavv17/le.git)
 md5sums=('SKIP'
-         'SKIP'
-         '1281bdd659535f2d86d680d08d1250e6')
+         'SKIP')
 options=('!makeflags')
 _gitname="le-editor"
 
 pkgver() {
   cd $srcdir/$_gitname
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's|-|.|g'
-}
-
-prepare() {
-  cd $_gitname
-  patch -Np1 < $srcdir/dickey.patch
 }
 
 build() {
