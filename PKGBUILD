@@ -1,12 +1,12 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname='qmapshack-hg'
-pkgver=r2393.ed1a61d9786d
+pkgver=r3004.43b0987e3069
 pkgrel=1
 pkgdesc='Plan your next outdoor trip'
 arch=('x86_64')
 url='https://bitbucket.org/maproom/qmapshack/'
 license=('GPL3')
-depends=('gdal' 'routino>=3.1' 'qt5-tools' 'qt5-script')
+depends=('hicolor-icon-theme' 'gdal' 'quazip' 'qt5-script' 'qt5-webkit' 'routino>=3.1')
 makedepends=('cmake' 'mercurial')
 conflicts=('qmapshack')
 provides=('qmapshack')
