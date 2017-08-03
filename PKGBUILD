@@ -3,7 +3,7 @@
 
 pkgname=paperwork
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
 url='https://github.com/openpaperwork/paperwork'
@@ -16,13 +16,19 @@ depends=('pygobject2-devel' 'pygtk' 'python-pycountry'
          'python-simplebayes' 'python-pypillowfight' 'python-cairo'
          'glade' 'gnome-icon-theme-symbolic' 'gnome-icon-theme' 'poppler-glib'
          'python-natsort' 'python-xdg' )
-makedepends=('python' 'python-setuptools' 'git')
+makedepends=('python' 'python-setuptools' 'git' 'gendesk')
 optdeps=('cuneiform: alternativer OCR')
 source=("paperwork-gui-${pkgver}.tgz::https://github.com/openpaperwork/paperwork/archive/${pkgver}.tar.gz"
         "paperwork-backend-${pkgver}.tgz::https://github.com/openpaperwork/paperwork-backend/archive/${pkgver}.tar.gz")
 md5sums=('00a5c26c8ffc65adb1f9c277491e2bf6'
          'a55cd895b2e2e5826fffe67dd25234a5')
 install=paperwork.install
+
+prepare()
+{
+  cd "${srcdir}"
+  gendesk -n -f
+}
 
 build() {
   cd "${srcdir}/${pkgname}-backend-${pkgver}"
@@ -38,5 +44,8 @@ package() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/data/${pkgname}_halo.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
 }
