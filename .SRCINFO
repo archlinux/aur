@@ -1,0 +1,17 @@
+pkgbase = gperf-git
+	pkgdesc = A perfect hash function generator
+	pkgver = 3.1.r5.g793a229
+	pkgrel = 1
+	url = https://www.gnu.org/software/gperf/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = gperf
+	conflicts = gperf
+	source = git+https://git.savannah.gnu.org/git/gperf.git
+	sha256sums = SKIP
+
+pkgname = gperf-git
+
