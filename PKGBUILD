@@ -39,7 +39,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DYAB_PORTS='qt' \
     -DYAB_NETWORK='ON' \
-    -DYAB_OPTIMIZED_DMA='ON'
+    -DYAB_OPTIMIZED_DMA='ON' \
+    -DSH2_DYNAREC=OFF    # https://github.com/Yabause/yabause/issues/270
   make
 }
 
