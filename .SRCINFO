@@ -1,7 +1,7 @@
 pkgbase = icewm2
 	pkgdesc = A window manager designed for speed, usability and consitency (enhanced)
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/bbidulock/icewm
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = icewm2
 	depends = libsm
 	depends = gdk-pixbuf2
 	depends = libsndfile
+	optdepends = icewm-extra-themes: extra themes
 	provides = icewm
 	conflicts = icewm
 	replaces = icewm

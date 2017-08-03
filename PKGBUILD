@@ -3,7 +3,7 @@
 pkgname=icewm2
 _realname=icewm
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager designed for speed, usability and consitency (enhanced)"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/icewm"
@@ -13,6 +13,7 @@ conflicts=($_realname)
 replaces=($_realname)
 depends=('libxrandr' 'libxinerama' 'libxft' 'libsm' 'gdk-pixbuf2' 'libsndfile')
 makedepends=('xorg-mkfontdir' 'linuxdoc-tools')
+optdepends=('icewm-extra-themes: extra themes')
 source=("https://github.com/bbidulock/$_realname/releases/download/$pkgver/$_realname-$pkgver.tar.bz2")
 md5sums=('3e7c3a95e7f8518346267f48a11966cd')
 
