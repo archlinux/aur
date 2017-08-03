@@ -294,7 +294,8 @@ if $_patching; then
   #patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
 
   cd ${_declarativedir}
-  patch -p1 < ${startdir}/0001-Fix-memory-leak-in-QSGAtlasTexture-Manager-create.patch
+  bunzip2 ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch.bz2
+  patch -p1 < ${startdir}/0001-Move-qt-declarative-to-4c3246e49521b6341ddcc513814ae.patch
   #patch -p1 < ${startdir}/0001-Fix-crash-in-QQuickPixmapReader-friends.patch
   #patch -p1 < ${startdir}/0001-Fix-build-with-qreal-as-float.patch
 
