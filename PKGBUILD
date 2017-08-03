@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20170730.2fa66f7a
+pkgver=20170802.37b45224
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
@@ -12,8 +12,8 @@ arch=('i686' 'x86_64')
 makedepends=('git' 'cmake' 'asciidoc' 'qt5-tools')
 depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2'
          'subsurface-libdc-git' 'qt5-svg' 'qt5-location'
-         'qt5-connectivity' 'qt5-webkit' 'grantlee')
-source=('git://git.subsurface-divelog.org/subsurface')
+         'qt5-connectivity' 'qt5-webkit' 'grantlee' 'googlemaps')
+source=('git+https://github.com/Subsurface-divelog/subsurface')
 sha256sums=('SKIP')
 
 # qt5-webkit still used for: printing, manual, facebook
