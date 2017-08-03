@@ -3,7 +3,7 @@
 
 pkgname=vidyodesktop
 pkgver=3.6.3.017
-pkgrel=3
+pkgrel=4
 pkgdesc="VidyoDesktop(TM) video conferencing client"
 arch=('i686' 'x86_64')
 url="http://www.vidyo.com"
