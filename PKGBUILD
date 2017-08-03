@@ -13,12 +13,11 @@
 # limitations under the License.
 
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
-
-_nanopbver=0.3.7
+# Contributor: Victor Aurélio Santos <victoraur.santos@gmail.com>
 
 pkgbase=grpc
 pkgname=('grpc' 'php-grpc')
-pkgver=1.1.4
+pkgver=1.4.2
 #_pkgver=release-$(echo $pkgver | tr . _)
 _pkgprefix=v
 _pkgver="$(echo "$pkgver" | tr _ -)"
@@ -27,30 +26,28 @@ pkgdesc="A high performance, open source, general RPC framework that puts mobile
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
-makedepends=('re2c' 'openssl' 'protobuf>=3' 'php')
+makedepends=('re2c' 'openssl-1.0' 'protobuf>=3' 'php' 'c-ares'
+             'chrpath'
+)
 source=(
     https://github.com/$pkgname/$pkgname/archive/$_pkgprefix$_pkgver.tar.gz
-    https://github.com/nanopb/nanopb/archive/nanopb-$_nanopbver.tar.gz
 )
 noextract=("nanopb-$_nanopbver.tar.gz")
-md5sums=('8d800c3640a605cc95dff2d197452d1a'
-         '3b3141b1eaba4feb614314659da2d8f1')
+md5sums=('de84c023389b7c36025f4bd0703c5a1e')
 
 prepare() {
   cd "$srcdir/$pkgname-$_pkgver"
 
-  # Patch
-  sed -r 's|GetUmbrellaClassName|GetReflectionClassName|g' -i src/compiler/csharp_generator.cc
-  sed -r 's|^PROTOBUF_CHECK_CMD = \$\(PKG_CONFIG\) --atleast-version=[^[:space:]]+ protobuf|PROTOBUF_CHECK_CMD = $(PKG_CONFIG) --atleast-version=3.0.0 protobuf|' -i Makefile
-
-  # Nanopb missing
-  tar xf "$srcdir/nanopb-$_nanopbver.tar.gz" -C third_party
-  rm -rf third_party/nanopb
-  mv third_party/"nanopb-nanopb-$_nanopbver" third_party/nanopb
+  # We are not interested in being strict here
+  # regardless of warning type.
+  sed -r 's|-Werror||g' -i Makefile
 }
 
 build() {
   cd "$srcdir/$pkgname-$_pkgver"
+
+  # gRPC is not compatible yet with openssl-1.1
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
   # Core
   # Avoid collision with yaourt's environment variable
@@ -78,7 +75,7 @@ _install_dir() (
 )
 
 package_grpc() {
-  depends=('openssl' 'protobuf>=3')
+  depends=('c-ares' 'openssl-1.0' 'protobuf>=3')
 
   cd "$srcdir/$pkgname-$_pkgver"
   _install_dir 755 bins/opt usr/bin
@@ -91,8 +88,13 @@ package_grpc() {
 package_php-grpc() {
   depends=("grpc=${pkgver}-${pkgrel}" 'php')
 
+  # Install PHP extension.
   cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
   make install "INSTALL_ROOT=$pkgdir"
-  cd "$srcdir/$pkgbase-$_pkgver/src/php"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # Fix wrong RPATH.
+  chrpath -r '/usr/lib' "$pkgdir/usr/lib/php/modules/grpc.so"
   # Do we need to install something else? Contributions are welcome.
+  cd "$srcdir/$pkgbase-$_pkgver/src/php"
 }
