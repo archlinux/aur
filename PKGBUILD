@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=buku
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="cmdline bookmark management utility written in Python3 and SQLite3"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('make')
 url="https://github.com/jarun/Buku"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v$pkgver)
-sha256sums=('7bc3f162d6bfc2e89b9f41fab93fba596729598bea7bbf86eac52377a024041c')
+sha256sums=('2375fc22e7e417fe23814589257f007cfdc1b1e3f8e47619a7d6e83ff0fb4f09')
 
 package() {
   cd "$srcdir/Buku-$pkgver"
