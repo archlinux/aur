@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 224581 2017-04-23 14:47:41Z ttoepper $
 # Maintainer: Matthew T Hoare <matthew dot t dot hoare at gmail dot com>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Daniel Hommel <dhommel@gmail.com>
