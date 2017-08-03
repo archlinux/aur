@@ -3,7 +3,7 @@
 pkgname=include-what-you-use
 epoch=1
 pkgver=0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="http://include-what-you-use.org"
 license=('LLVM Release License')
