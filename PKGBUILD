@@ -1,6 +1,6 @@
 # Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 pkgname=casync-git
-pkgver=2
+pkgver=2.r3.gca268c8
 pkgrel=1
 pkgdesc="Content-Addressable Data Synchronization Tool"
 arch=(x86 x86_64)
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  meson --buildtype=release --prefix=/usr build/
+  meson --buildtype=release --prefix=/usr -Db_lto=true build/
   ninja -C build/
 }
 
