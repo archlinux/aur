@@ -1,8 +1,8 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Maintainer: McNoggins <gagnon88 at gmail>
 pkgname=h5utils
-pkgver=1.12.1
-pkgrel=8
+pkgver=1.13
+pkgrel=1
 pkgdesc="Software for visualization/conversion of scientific data in the HDF5 format"
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/H5utils"
@@ -10,8 +10,8 @@ license=('MIT' 'GPL')
 depends=('hdf5' 'libpng')
 optdepends=('libmatheval: support symbolic expressions')
 options=('!makeflags')
-source=(http://ab-initio.mit.edu/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('7290290ca5d5d4451d757a70c86baaa70d23a28edb09c951b6b77c22b924a38d')
+source=(https://github.com/stevengj/h5utils/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('7e8b05942908975455e81e12b0dcbc7bc12e9560c29d5203fce3b25d7de6e494')
 
 
 build() {
