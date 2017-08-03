@@ -3,8 +3,8 @@
 
 pkgname=barman
 _realname=barman
-pkgver=1.4.0
-pkgrel=8
+pkgver=2.2
+pkgrel=1
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('i686' 'x86_64')
 url="http://www.pgbarman.org"
@@ -15,7 +15,7 @@ provides=('barman')
 options=(!emptydirs)
 
 source=(http://sourceforge.net/projects/pgbarman/files/${pkgver}/barman-${pkgver}.tar.gz)
-md5sums=('8f1dece6dc46c5ea469aaba8e7d0fb4b')
+md5sums=('1be7b8beefa2225ae77602f0a87f6938')
 
 package()
 {
