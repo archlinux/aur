@@ -4,7 +4,7 @@
 _ver=1.4.0
 _pkgname=telegram-purple
 pkgname=${_pkgname}-git
-pkgver=1.4.0.ceec1a9
+pkgver=1.4.0.af200e0
 pkgrel=1
 pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers."
 arch=('i686' 'x86_64')
