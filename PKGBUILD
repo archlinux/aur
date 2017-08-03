@@ -33,6 +33,5 @@ package() {
   install -D -m644 "${srcdir}/koala.png" "${pkgdir}/usr/share/koala/koala.png"
   chmod +x "${srcdir}/koala.desktop"
   install -D -m644 "${srcdir}/koala.desktop" "${pkgdir}/usr/share/applications/koala.desktop"
-  ln -s "${pkgdir}/usr/share/koala/Koala" "${pkgdir}/usr/bin/koala"
-
+  ln -s "/usr/share/koala/Koala" "${pkgdir}/usr/bin/koala"
 }
