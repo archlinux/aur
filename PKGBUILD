@@ -2,7 +2,7 @@
 name=hpmvs
 pkgname=${name}-git
 pkgver=r18.f003e54
-pkgrel=1
+pkgrel=2
 pkgdesc="Progressive multiview stero, generate dense surface form  sparse 3D model."
 arch=('i686' 'x86_64')
 url="https://github.com/alexlocher/hpmvs"
@@ -10,10 +10,8 @@ license=('GPL')
 groups=()
 depends=('libjpeg' 'google-glog' 'gflags')
 makedepends=('git' 'cmake' 'eigen')
-#optdepends=('cuda: for cuda sfm/mvs acceleration')
 provides=()
 options=()
-#install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/alexlocher/hpmvs.git"
         "http://www.vision.ee.ethz.ch/~alocher/pdf/locher_cvpr16_progressive_prioritized_mvs.pdf"
         )
@@ -39,14 +37,10 @@ package() {
   cd ${srcdir}/${pkgname}/build
   make DESTDIR=${pkgdir} install
 
-  # install desktop entry
-#  install -d -m755 "${pkgdir}/usr/share/applications"
-#  install -m644 "${srcdir}/${name}.desktop" "${pkgdir}/usr/share/applications"
-#  sed -i "s#Version=.*#Version=$pkgver#" "${pkgdir}/usr/share/applications/${name}.desktop"
   # install introduction paper in doc
   msg "install introduction paper in doc folder"
-  install -d -m755 ${pkgdir}/${pkgname}/usr/share/doc/${pkgname}
-  install -m644 ${srcdir}/locher_cvpr16_progressive_prioritized_mvs.pdf ${pkgdir}/${pkgname}/usr/share/doc/${pkgname}
+  install -d -m755 ${pkgdir}/usr/share/doc/${pkgname}
+  install -m644 ${srcdir}/locher_cvpr16_progressive_prioritized_mvs.pdf ${pkgdir}/usr/share/doc/${pkgname}
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = hpmvs-git
 	pkgdesc = Progressive multiview stero, generate dense surface form sparse 3D model.
-	pkgver = r11.be7fad6
-	pkgrel = 1
+	pkgver = r18.f003e54
+	pkgrel = 2
 	url = https://github.com/alexlocher/hpmvs
 	arch = i686
 	arch = x86_64
