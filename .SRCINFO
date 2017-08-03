@@ -1,0 +1,17 @@
+pkgbase = openstopmotion
+	pkgdesc = OpenStopMotion Animation Capture
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://www.pfp.de/osm/
+	install = openstopmotion.install
+	arch = x86_64
+	license = GPL
+	makedepends = pacman>=4.2.0
+	depends = pcre
+	depends = libtiff
+	provides = openstopmotion=0.6.3
+	source = https://downloads.sourceforge.net/project/openstopmotion/Ubuntu%2012.04/OpenStopMotion-0.6.3-Ubuntu-12.04-amd64.deb
+	sha256sums = bfc614f76fede8ee4074b738682db4a22cf8754979f72baea2609cdd175dea37
+
+pkgname = openstopmotion
+
