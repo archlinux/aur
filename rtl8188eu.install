@@ -1,7 +1,13 @@
 post_install() {
-	_kver=$(uname -r)
-	echo -e "\nPlease run following command by yourself:\n"
-	echo "sudo depmod -a ${_kver}"
-	echo -e "sudo modprobe 8188eu\n"
+    EXTRAMODULES='extramodules-4.12-ARCH'
+    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    post_install
 }
 
